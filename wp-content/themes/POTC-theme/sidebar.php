@@ -16,7 +16,7 @@ $subcategories = get_terms( 'category', array('parent' => $parentId, 'hide_empty
 
 ?>
 
-<h3>Table of Contents for <?php echo $parentName; ?></h3>
+<h3><a href="../">Table of Contents for <?php echo $parentName; ?></a></h3>
 
 <ul id="menu-table-of-contents" class="menu">
 
