@@ -11,14 +11,14 @@
         <meta name="keywords" content="THATCamp, The Humanities and Technology Camp, humanities, technology, digital humanities, unconference, BARCamp, host a thatcamp, host an unconference, how to host a THATCamp, how to host an unconference, graduate students, faculty, librarians, libraries, archivists, archives, museums, museum studies, universities, colleges, cultural heritage, programming, programmers, software development, open source, open access, new media, text mining, visualization, mapping, History, English, Philosophy, Computer Science, information science, Mellon Foundation, what is THATCamp, what is an unconference, what is digital humanities, definition of digital humanities, humanities computing, BootCamp, BootCamp fellowships, apply for a fellowship, anti-conference, workshops, training, fun times, beer" />
         <meta name="author" content="Center for History and New Media" />
         <meta name="robots" content="index,follow" />
-    
+
         <!-- Stylesheets -->
         <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
     	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
     	<script type="text/javascript">
     	google.load("jquery", "1");
     	</script>
-            
+
         <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
         <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
@@ -41,7 +41,7 @@
     <body<?php if(is_home()) echo ' id="home"'; if(is_page('campers') || is_author()) echo ' id="campers"'; if(is_page('blog') || is_single()) echo ' id="blog"'; if(is_page('schedule')) echo ' id="schedule"';?>>
         <div id="wrap" class="group">
         	<div id="header">
-                <h1 id="thatcamp"><a href="<?php bloginfo('home'); ?>"><img src="<?php echo get_stylesheet_directory_uri() ?>
+                <h1 id="thatcamp"><a href="<?php bloginfo('url'); ?>"><img src="<?php echo get_stylesheet_directory_uri() ?>
 /images/logo.gif" alt="THATCamp" title="THATCamp" /></a></h1>
                 <?php /* ?>
 				<div id="user-login"><?php global $current_user;
