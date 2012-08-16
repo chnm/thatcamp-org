@@ -1,0 +1,606 @@
+/*  
+Theme Name: THATCamp
+Theme URI: http://thatcampdev.info/
+Description: The awesome theme for THATCamp
+Version: 1.0
+Author: Jeremy Boggs
+Author URI: http://clioweb.org/
+*/
+
+/* == Reset == */
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+body {
+    line-height: 1;
+}
+ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* == Generic == */
+body {
+    color: #444; 
+    font:62.5% "Lucida Grande", Arial, Helvetica, sans-serif;
+    background: #444;
+}
+
+/* Headings */
+h1 {
+    font-size:3em;
+    line-height: 1.3333em;
+    margin-bottom:0.6667em;
+}
+
+h2 {
+    font-size:2em;
+    line-height: 1.5em;
+    margin-bottom:0.25em;
+    margin-top: .5em;
+    color: #999;
+}
+
+h3 {
+    font-size:1.5em;
+    line-height: 1.3333em;
+    margin-bottom:.5em;
+    font-weight:bold;
+}
+h1 a, h2 a, h3 a {text-decoration:none;}
+
+/* Misc Elements */
+p,ul,ol,dl,blockquote,address {
+    font-size:1.3em;
+    margin-bottom: 1.5384em;
+    line-height:1.5384em;
+}
+
+ul {
+    list-style:disc;
+}
+
+ul ul, ol ul {
+    font-size:1em;
+    list-style:circle;
+    margin-left:1.5384em;
+    margin-bottom: .2em;
+}
+
+ol {
+margin-left: 5em;
+list-style: decimal;
+}
+
+ol ol {
+margin-left: 3em;
+list-style: lower-alpha;
+font-size: 1em;
+}
+
+dl {}
+blockquote p { font-size: 1em;  margin-left: 5em; }
+address {}
+
+em,i {font-style:italic;}
+strong,b {font-weight:bold; color:#000000;}
+
+textarea {
+    max-width:100%;
+}
+
+/* Components */
+
+.pic p, p.caption {font-size:11px; font-weight:bold; }
+.project p {font-weight:bold;}
+
+a {font-weight:bold;text-decoration:none;}
+a:link {color: #c50;}
+a:visited {color: #c80;}
+a:focus {color: #c80;}
+a:hover {color: #c80; text-decoration:underline; }
+a:active {color: #c50;}
+
+/* Reusable classes */
+
+.group:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+* html .group {
+    zoom: 1;
+}
+
+/* == Wrap == */
+
+#wrap, #login {background: #fcfcfc; border: 10px solid #333; border-width: 10px 0;margin: 25px auto;width:850px; padding: 0 60px 40px;
+    box-shadow:0 0 30px rgba(0,0,0,0.5);
+    -moz-box-shadow:0 0 30px rgba(0,0,0,0.5);
+    -webkit-box-shadow:0 0 30px rgba(0,0,0,0.5);
+    }
+
+/* Header == */
+#header {margin: 0 -60px 40px; padding: 50px 60px 30px; border-bottom:1px dotted #999;position:relative; background: #444;}
+	
+	#user-login {position:absolute; top:0; padding: 12px 18px 8px; background: #333;right: 0px; text-align:right; font-size: 11px; color: #fafafa;}
+	#user-login a {color: #eee;}
+
+/* == Content == */
+#explanation {
+    font-size:1.8em;
+    line-height:1.5em;
+    font-weight:bold;
+}
+
+#explanation a {
+    color: #c50 !important;
+}
+
+#primary {
+    float:left; 
+    width: 602px;
+}
+
+#schedule #primary {
+    float:none;
+    width: 100%;
+}
+
+#schedule #secondary {
+    float:none;
+    width: 100%;
+}
+
+#campers .camper {
+    float:left; 
+    width: 48%;
+    margin-right:2%;
+}
+
+.camper img {
+    width: 50px;
+    height: 50px;
+}
+
+.childlist {
+    list-style-type: none; 
+    font-size: large; 
+    margin-left: 2em;
+}
+
+.childlist li ul {
+    margin-left: 3em;
+}
+
+.entry ul {
+     margin-left: 3em;
+}
+
+.entry ul li {
+     margin-bottom: .5em;
+}
+
+.entry ul li ul {
+     margin-top: .5em;
+}
+
+.post .entry blockquote ul, .post .entry blockquote ul li {
+	font-size: small;
+	margin-left: 4em;
+}
+
+.thatcamp-list {
+	margin-top: 1em;
+	list-style-type: circle; 
+	line-height: 1em;    
+}
+
+.thatcamp-list li {
+	margin-bottom: 25px !important;
+}
+
+.thatcamp-name {
+	font-size: medium;
+	line-height: 1.3em;
+}
+
+.thatcamp-info {
+margin-left: 3em;
+}
+
+.yes {
+margin-left: .5em;
+font-size: xx-small;
+font-weight: bold;
+color: #009933;
+}
+
+.maybe {
+margin-left: .5em;
+font-size: xx-small;
+font-weight: bold;
+color: #FFD014;
+}
+
+.no { 
+margin-left: .5em;
+font-size: xx-small;
+font-weight: bold;
+color: #FF0000;
+}
+
+/*== Sidebar ==*/
+
+ul .sub-menu li {
+margin-left: 2em !important;
+list-style-type: circle; 
+}
+
+ul .sub-menu .sub-menu li {
+margin-left: .5em !important;
+}
+
+#secondary {
+    float:right; 
+    width: 210px; 
+}
+
+#secondary a {
+    color: #357;
+    text-decoration:underline;
+}
+
+#secondary a:hover {
+    color: #38c;
+}
+
+#secondary .widget {
+    margin-right: -100px;
+    padding: 20px;
+    background: #b3deea;
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.4);
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.4);
+    margin-bottom:20px;
+}
+
+#secondary .widget .title {
+    font-size:1.7em;
+    font-weight: bold;
+    line-height: 1.5384em;
+    margin:-20px -20px 20px;
+    background:#79a5b1;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+#secondary .widget ul li {
+     margin-bottom: 1px;
+     margin-top: 1px;
+     margin-left: 1.5384em;
+     font-weight:bold;
+}  
+
+#secondary .widget ul li a {
+    text-decoration:none;
+    font-weight:bold;
+}
+
+#secondary .widget ul li ul li {
+     margin-left: .25em;
+} 
+
+#secondary .widget ul li ul li ul li {
+     list-style-type: square;
+} 
+
+#searchform {
+     display: inline;
+}
+
+.menu ul {
+     list-style-type: disc;
+     margin-left: 0px;
+     margin-bottom: 1px;
+     margin-top: 1px;
+}
+.menu ul li {
+     margin-bottom: 1px;
+     margin-top: 1px;
+}
+
+.menu ul li ul {
+     list-style-type: circle;
+     margin-left: 2em;
+     margin-bottom: 1px;
+     margin-top: 1px;
+}
+
+.alignleft {
+display:inline; 
+float: left; 
+text-align:left; 
+}
+
+.alignright {
+display:inline; 
+float: right; 
+text-align:right; 
+}
+
+#register {
+    padding:0;
+}
+#register a {
+    text-decoration:none;
+    background: #c62;
+    color: #fff;
+    font-size: 1.5em;
+    text-align:center;
+    display:block;
+    padding: 20px 0;
+}
+
+#register a:hover {
+    background: #c50;
+    color: #fff;
+    text-decoration:none;
+}
+.twitter {
+    list-style-type:none;
+    margin-left: -10px;
+}
+
+.twitter-item {
+    border-bottom: 1px dotted #79a5b1;
+    padding-bottom:10px;
+    padding-top:10px;
+    font-size:0.8em;
+}
+
+.twitter-item a {
+    border:none;
+    padding:0;
+    background:transparent;
+}
+
+.twitter-item abbr {
+    display: block;
+    margin-right: 100px;
+}
+
+.twitter-item img {
+    display: block; 
+    float:left; 
+    margin-right: 5px; 
+    border:4px solid #79a5b1;
+}
+
+#recent-comments, #recent-comments ul { 
+     list-style: none; 
+     margin-top: -1em;
+}
+
+#recent-comments li ul li { 
+    border-bottom: 1px dotted #79a5b1;
+    padding-top:20px;
+    font-size: .9em;
+    padding-bottom: 20px; 
+}
+    
+#countdown-timer, #countdown-timer ul { 
+     list-style: none; 
+     margin-top: -1em;
+}
+
+#post-list, #post-list ul { 
+     margin-top: -1em;
+}
+
+#post-list li { 
+    padding-top:10px;
+    font-size: 1.2em;
+    padding-bottom: 10px; 
+}
+
+#bottom-navigation {
+
+     font-size: 1.5em;
+}
+
+/* == Login == */
+
+.login {margin-top:0 !important;border-top-width:0 !important;}
+.login form {
+    width: 472px;
+    margin-left:0;
+    padding:0;
+    font-weight:normal;
+    -moz-border-radius:0;
+    -khtml-border-radius:0;
+    -webkit-border-radius:0;
+    border-radius:0;
+    background:#fff;
+    border:0 !important;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    -khtml-box-shadow:none;
+    box-shadow:none;
+}
+#login h1 a {
+    display:block;
+    background-color: #444;
+    background-image:none;
+    background-image:url("/ui/i/thatcamp-logo.gif");
+    background-position:50% 50%;
+    height: 200px;
+    width: 850px;
+    
+}
+
+#login h1 {display:block; width: 850px; background: #444; margin: 0 -60px 40px; padding: 10px 60px;}
+
+#registration-message h1 {margin-bottom:18px;}
+
+.login #nav {
+    margin-left:0; padding-left:0;
+    border-top:1px dotted #ccc;
+    margin-top: 40px;
+}
+
+#login #about,
+#login .custom_textarea {
+    height: 200px;
+}
+
+body.login #login #registration-message h1 {display:block;}
+
+body.login #login #login_error {width: 468px; float:left; border-width:0; background-color: #fff09e; font-size:13px;margin:0 0 18px; padding:18px;}
+
+#nav { clear:left; width: 504px; margin:0;}
+
+#backtoblog {display:none;}
+
+#registerform p input, #registerform p textarea {background:#f6f6f6; border:1px solid #ccc;font-size:14px; font-family:"Lucida Grande", Arial, sans-serif; color: #333;margin-bottom:18px;}
+#registerform p input:focus, #registerform p textarea:focus {background:#fff;}
+
+#registerform p input {margin-bottom:18px;}
+#registerform p small {display:none;}
+
+#loginform p {
+    text-align:left !important;
+}
+
+/* == Single Post == */
+#post-navigation {overflow:hidden; border-top:1px dotted #ddd; padding-top:18px; clear:both;}
+#post-navigation li {display:block; float:left; width: 48%;}
+#post-navigation li.alignright {float:right; text-align:right;}
+
+#respond {clear:both; border-top: 1px dotted #ddd; padding-top: 18px;}
+#commentform textarea, #commentform input {border:1px solid #bbb; padding: 4px;border-bottom-color: #ddd; border-right-color: #ddd;}
+#commentform textarea {width: 604px; }
+
+#commentform input#submit {border:1px solid #ddd; border-bottom-color: #bbb; border-right-color: #bbb;}
+
+/* == Footer == */
+#footer {
+    margin: 0 -60px -40px;
+    padding: 40px 60px;
+    clear:both;
+    background: #eee;
+}
+
+#siteinfo {
+font-size: 1em;
+line-height: 1.7em;
+text-align: center;
+}
+
+#license {
+text-align: center; 
+}
+
+/* == Comments == */
+
+li p { 
+     font-size: 12px !important; 
+}
+
+/* == Nav Spacing Fix (Sorry so awkward -- AF) == */
+
+.page-item-67 {
+      margin-bottom: -18px; 
+}
+
+
+
+/* == Camper Bios / VCard == */
+
+ul#info {
+list-style-type: none; 
+}
+
+ul#blog { 
+margin-left: 2em;
+}
+
+ul#blog li {
+padding-top: .5em;
+}
+
+/* == Links Shortcode plugin output == */ 
+
+.links_sc {
+font-size: 125%;
+}
+
+/* Campers and Organizer templates */
+	
+	.camper_info {
+	padding: 2%;
+	margin: 2%;
+	float: left;
+	width: 16%;
+	min-height: 150px;
+	}
+	
+	.camper_avatar {
+		border: none;
+		display: inline;
+		overflow: hidden;
+	}
+	
+	.camper_name, .camper_posts {
+		font-size: 13px;
+	}
+
+.bottom, h2 { 
+clear: both; 
+}

@@ -1,0 +1,450 @@
+# Greek translation of the WordPress theme Twenty Ten
+# Copyright (C) 2010 Greek translators of WordPress
+# This file is distributed under the same license as the Twenty Ten package.
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: WordPress 3.0 Twenty Ten\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/twentyten\n"
+"POT-Creation-Date: 2010-06-15 16:21+0000\n"
+"PO-Revision-Date: 2010-06-22 20:24+0200\n"
+"Last-Translator: Demetris Kikizas <op111.net@gmail.com>\n"
+"Language-Team: op111.net <op111.net@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Greek\n"
+"X-Poedit-Country: GREECE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: 404.php:16
+#: loop.php:33
+msgid "Not Found"
+msgstr "Δεν βρέθηκε!"
+
+#: 404.php:18
+msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
+msgstr "Η σελίδα που ζητήσατε δεν βρέθηκε.  Αν θέλετε, δοκιμάστε την αναζήτηση."
+
+#: archive.php:33
+#, php-format
+msgid "Daily Archives: <span>%s</span>"
+msgstr "Αρχείο ημέρας <span>%s</span>"
+
+#: archive.php:35
+#, php-format
+msgid "Monthly Archives: <span>%s</span>"
+msgstr "Αρχείο μηνός <span>%s</span>"
+
+#: archive.php:37
+#, php-format
+msgid "Yearly Archives: <span>%s</span>"
+msgstr "Αρχείο έτους <span>%s</span>"
+
+#: archive.php:39
+msgid "Blog Archives"
+msgstr "Αρχείο ιστολογίου"
+
+#: attachment.php:17
+#, php-format
+msgid "Return to %s"
+msgstr "Επιστροφή στο %s"
+
+#. translators: %s - title of parent post
+#: attachment.php:19
+#, php-format
+msgid "<span class=\"meta-nav\">&larr;</span> %s"
+msgstr "<span class=\"meta-nav\">&larr;</span> %s"
+
+#: attachment.php:27
+#, php-format
+msgid "<span class=\"%1$s\">By</span> %2$s"
+msgstr "<span class=\"%1$s\">Από</span> %2$s"
+
+#: attachment.php:31
+#: functions.php:509
+#, php-format
+msgid "View all posts by %s"
+msgstr "Δείτε όλα τα άρθρα του/της %s"
+
+#: attachment.php:38
+#, php-format
+msgid "<span class=\"%1$s\">Published</span> %2$s"
+msgstr "<span class=\"%1$s\">Δημοσιεύτηκε</span> %2$s"
+
+#: attachment.php:48
+#, php-format
+msgid "Full size is %s pixels"
+msgstr "Το πλήρες μέγεθος είναι %s εικονοστοιχεία"
+
+#: attachment.php:51
+msgid "Link to full-size image"
+msgstr "Σύνδεσμος για πλήρεις διαστάσεις"
+
+#: attachment.php:58
+#: attachment.php:105
+#: loop.php:94
+#: loop.php:117
+#: loop.php:159
+#: onecolumn-page.php:27
+#: page.php:32
+#: single.php:53
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: attachment.php:98
+#: functions.php:299
+#: loop.php:109
+#: loop.php:137
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Συνέχεια <span class=\"meta-nav\">&rarr;</span>"
+
+#: attachment.php:99
+#: loop.php:138
+#: onecolumn-page.php:26
+#: page.php:31
+#: single.php:31
+msgid "Pages:"
+msgstr "Σελίδες:"
+
+#: author.php:27
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Αρχείο συντάκτη %s"
+
+#: author.php:37
+#: single.php:40
+#, php-format
+msgid "About %s"
+msgstr "Σχετικά με %s"
+
+#: category.php:16
+#, php-format
+msgid "Category Archives: %s"
+msgstr "Αρχείο κατηγορίας %s"
+
+#: comments.php:18
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "Το άρθρο έχει συνθηματικό. Πληκτρολογήστε το συνθηματικό για να δείτε τα σχόλια."
+
+#: comments.php:35
+#, php-format
+msgid "One Response to %2$s"
+msgid_plural "%1$s Responses to %2$s"
+msgstr[0] "Μία απάντηση στο %2$s"
+msgstr[1] "%1$s απαντήσεις στο %2$s"
+
+#: comments.php:41
+#: comments.php:60
+msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgstr "<span class=\"meta-nav\">&larr;</span> Προηγούμενα σχόλια"
+
+#: comments.php:42
+#: comments.php:61
+msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Επόμενα σχόλια <span class=\"meta-nav\">&rarr;</span>"
+
+#: comments.php:72
+msgid "Comments are closed."
+msgstr "Τα σχόλια έχουν κλείσει."
+
+#. #-#-#-#-#  twentyten.pot (Twenty Ten 1.0)  #-#-#-#-#
+#. Theme URI of the plugin/theme
+#: footer.php:33
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: footer.php:34
+msgid "Semantic Personal Publishing Platform"
+msgstr "Σημασιολογικό σύστημα ιστοδημοσιεύσεων"
+
+#: footer.php:35
+#, php-format
+msgid "Proudly powered by %s."
+msgstr "Με τη δύναμη του %s."
+
+#: functions.php:97
+msgid "Primary Navigation"
+msgstr "Κύριο μενού"
+
+#. translators: header image description
+#: functions.php:133
+msgid "Berries"
+msgstr "Μουριά"
+
+#. translators: header image description
+#: functions.php:139
+msgid "Cherry Blossoms"
+msgstr "Άνθη κερασιάς"
+
+#. translators: header image description
+#: functions.php:145
+msgid "Concave"
+msgstr "Θόλος"
+
+#. translators: header image description
+#: functions.php:151
+msgid "Fern"
+msgstr "Φτέρη"
+
+#. translators: header image description
+#: functions.php:157
+msgid "Forest Floor"
+msgstr "Δάσος"
+
+#. translators: header image description
+#: functions.php:163
+msgid "Inkwell"
+msgstr "Μελανοδοχείο"
+
+#. translators: header image description
+#: functions.php:169
+msgid "Path"
+msgstr "Διαδρομή"
+
+#. translators: header image description
+#: functions.php:175
+msgid "Sunset"
+msgstr "Ηλιοβασίλεμα"
+
+#: functions.php:237
+#, php-format
+msgid "Search results for %s"
+msgstr "Αποτελέσματα αναζήτησης για %s"
+
+#: functions.php:240
+#: functions.php:257
+#, php-format
+msgid "Page %s"
+msgstr "Σελίδα %s"
+
+#: functions.php:366
+#, php-format
+msgid "%s <span class=\"says\">says:</span>"
+msgstr "Ο/Η %s <span class=\"says\">λέει:</span>"
+
+#: functions.php:369
+msgid "Your comment is awaiting moderation."
+msgstr "Το σχόλιό σας αναμένει έγκριση."
+
+#. translators: 1: date, 2: time
+#: functions.php:376
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s, %2$s"
+
+#: functions.php:376
+#: functions.php:393
+msgid "(Edit)"
+msgstr "(Επεξεργασία)"
+
+#: functions.php:393
+msgid "Pingback:"
+msgstr "Πίνγκμπακ:"
+
+#: functions.php:412
+msgid "Primary Widget Area"
+msgstr "Κύριο πάνελ"
+
+#: functions.php:414
+msgid "The primary widget area"
+msgstr "Κύρια περιοχή μονάδων"
+
+#: functions.php:423
+msgid "Secondary Widget Area"
+msgstr "Συμπληρωματικό πάνελ"
+
+#: functions.php:425
+msgid "The secondary widget area"
+msgstr "Συμπληρωματική περιοχή μονάδων"
+
+#: functions.php:434
+msgid "First Footer Widget Area"
+msgstr "1ο περιοχή μονάδων στο υποσέλιδο"
+
+#: functions.php:436
+msgid "The first footer widget area"
+msgstr "2ο πάνελ υποσέλιδου"
+
+#: functions.php:445
+msgid "Second Footer Widget Area"
+msgstr "2ο πάνελ υποσέλιδου"
+
+#: functions.php:447
+msgid "The second footer widget area"
+msgstr "2η περιοχή μονάδοων στο υποσέλιδο"
+
+#: functions.php:456
+msgid "Third Footer Widget Area"
+msgstr "3ο πάνελ υποσέλιδου"
+
+#: functions.php:458
+msgid "The third footer widget area"
+msgstr "3η περιοχή μονάδων στο υποσέλιδο"
+
+#: functions.php:467
+msgid "Fourth Footer Widget Area"
+msgstr "4ο πάνελ υποσέλιδου"
+
+#: functions.php:469
+msgid "The fourth footer widget area"
+msgstr "4η περιοχή μονάδων στο υποσέλιδο"
+
+#: functions.php:500
+#, php-format
+msgid "<span class=\"%1$s\">Posted on</span> %2$s <span class=\"meta-sep\">by</span> %3$s"
+msgstr "<span class=\"%1$s\">Καταχωρήθηκε στις </span> %2$s <span class=\"meta-sep\">από τον/την</span> %3$s"
+
+#: functions.php:526
+#, php-format
+msgid "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Κατηγορίες:  %1$s.  Ετικέτες:  %2$s.  <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">Προσθήκη στους σελιδοδείκτες</a>."
+
+#: functions.php:528
+#, php-format
+msgid "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Κατηγορίες:  %1$s.  <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">Προσθήκη στους σελιδοδείκτες</a>."
+
+#: functions.php:530
+#, php-format
+msgid "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "<a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">Προσθήκη στους σελιδοδείκτες</a>."
+
+#: header.php:71
+msgid "Skip to content"
+msgstr "Μετάβαση σε περιεχόμενο"
+
+#: loop.php:25
+#: loop.php:172
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Προηγούμενα άρθρα"
+
+#: loop.php:26
+#: loop.php:173
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Επόμενα άρθρα <span class=\"meta-nav\">&rarr;</span>"
+
+#: loop.php:35
+msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
+msgstr "Κανένα αποτέλεσμα για το αρχείο αυτό.  Ίσως η αναζήτηση αποδώσει κάτι σχετικό."
+
+#: loop.php:60
+#: loop.php:91
+msgctxt "gallery category slug"
+msgid "gallery"
+msgstr "συλλογή"
+
+#: loop.php:62
+#: loop.php:82
+#: loop.php:125
+#, php-format
+msgid "Permalink to %s"
+msgstr "Μόνιμος σύνδεσμος του %s"
+
+#: loop.php:81
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr "Η συλλογή αυτή περιέχει <a %1$s>%2$s φωτογραφίες</a>."
+
+#: loop.php:91
+msgid "View posts in the Gallery category"
+msgstr "Δείτε άρθρα της κατηγορίας Συλλογή"
+
+#: loop.php:91
+msgid "More Galleries"
+msgstr "Περισσότερες συλλογές"
+
+#: loop.php:93
+#: loop.php:116
+#: loop.php:158
+msgid "Leave a comment"
+msgstr "Γράψτε σχόλιο"
+
+#: loop.php:93
+#: loop.php:116
+#: loop.php:158
+msgid "1 Comment"
+msgstr "1 σχόλιο"
+
+#: loop.php:93
+#: loop.php:116
+#: loop.php:158
+msgid "% Comments"
+msgstr "% σχόλια"
+
+#: loop.php:100
+msgctxt "asides category slug"
+msgid "asides"
+msgstr "μικροάρθρα"
+
+#: loop.php:145
+#, php-format
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr "<span class=\"%1$s\">Κατηγορίες:</span> %2$s"
+
+#: loop.php:154
+#, php-format
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr "<span class=\"%1$s\">Ετικέτες:</span> %2$s"
+
+#: search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Αποτελέσματα για %s"
+
+#: search.php:26
+msgid "Nothing Found"
+msgstr "Κανένα αποτέλεσμα"
+
+#: search.php:28
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr "Η αναζήτησή σας δεν απέδωσε αποτελέσματα.  Αν θέλετε, δοκιμάστε με διαφορετικούς όρους."
+
+#: sidebar.php:27
+msgid "Archives"
+msgstr "Αρχείο"
+
+#: sidebar.php:34
+msgid "Meta"
+msgstr "Μεταστοιχεία"
+
+#: single.php:18
+#: single.php:58
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr "&larr; Επιστροφή στο %s"
+
+#: single.php:19
+#: single.php:59
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr "&rarr;"
+
+#: single.php:44
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Δείτε όλα τα άρθρα του/της %s <span class=\"meta-nav\">&rarr;</span>"
+
+#: tag.php:16
+#, php-format
+msgid "Tag Archives: %s"
+msgstr "Αρχείο ετικέτας %s"
+
+#. Theme Name of the plugin/theme
+msgid "Twenty Ten"
+msgstr "Twenty Ten"
+
+#. Description of the plugin/theme
+msgid "The 2010 default theme for WordPress."
+msgstr "Το βασικό θέμα του WordPress για το 2010."
+
+#. Author of the plugin/theme
+msgid "the WordPress team"
+msgstr "η ομάδα WordPress"
+
+#. Tags of the plugin/theme
+msgid "black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style"
+msgstr "black, blue, white, two-columns, fixed-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style"
+

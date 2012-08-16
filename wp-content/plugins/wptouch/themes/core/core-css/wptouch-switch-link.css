@@ -1,0 +1,98 @@
+/* @override http://www.bravenewcode.com/wordpress/wp-content/plugins/wptouch/themes/core/core-css/wptouch-switch-link.css */
+
+/* WPtouch Switch Link CSS */
+
+/* This CSS loads on your regular site theme when it is viewed on our supported devices, and doesn't affect your regular css */
+
+/* @group Toggle Button */
+#switch {
+	margin: 50px auto;
+	background-color: #fff;
+	border: 1px solid #b1b1b1;
+	padding: 12px 8px;
+	position: relative;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	box-shadow: rgba(255,255,255,.8) 0px 1px 0px;
+	color: #333;
+	text-shadow: none;
+	width: 300px;
+	font: bold 130% "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#switch a {
+	text-decoration: none;
+}
+
+#switch div {
+	border: 1px solid #b1b1b1;
+
+	-webkit-border-radius: 24px;
+	-moz-border-radius: 24px;
+	border-radius: 24px;
+
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding-box;
+	background-clip: padding-box;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-touch-callout: none;
+
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#d3d3d3), color-stop(.5, #eee), color-stop(.51, #e9e9e9));
+	background: -webkit-linear-gradient(top, #fff, #d3d3d3, #eee .5, #e9e9e9 .51);
+	background: -moz-linear-gradient(top, #fff, #d3d3d3, #eee .5, #e9e9e9 .51);
+	background: -o-linear-gradient(top, #fff, #d3d3d3, #eee .5, #e9e9e9 .51);
+	background: -ms-linear-gradient(top, #fff, #d3d3d3, #eee .5, #e9e9e9 .51);
+	background: linear-gradient(top, #fff, #d3d3d3, #eee .5, #e9e9e9 .51);
+	color: #333;
+	text-shadow: #fff 0 1px 0;
+	margin: 0;
+	padding: 0;
+}
+
+#switch-on {
+	padding: 4px 8px 4px 12px;
+	float: left;
+	display: block;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding-box;
+	background-clip: padding-box;
+	border-right: 1px solid #b1b1b1;
+}
+
+#switch-off {
+	border-top-right-radius: 18px;
+	border-bottom-right-radius: 18px;
+
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding-box;
+	background-clip: padding-box;
+	padding: 4px 12px 4px 8px;
+	display: block;
+	float: right;
+	border-left: 1px solid #b1b1b1;
+}
+
+#switch .active {
+	background: -webkit-gradient(linear, left bottom, left top, from(#fff), to(#d3d3d3), color-stop(.5, #eee), color-stop(.51, #e9e9e9));
+	background: -webkit-linear-gradient(,, #fff, #d3d3d3, #eee .5, #e9e9e9 .51);
+	background: -moz-linear-gradient(,, #fff, #d3d3d3, #eee .5, #e9e9e9 .51);
+	background: -o-linear-gradient(,, #fff, #d3d3d3, #eee .5, #e9e9e9 .51);
+	background: -ms-linear-gradient(,, #fff, #d3d3d3, #eee .5, #e9e9e9 .51);
+	background: linear-gradient(,, #fff, #d3d3d3, #eee .5, #e9e9e9 .51);
+	text-shadow: #FFF 0 1px 0;
+
+	-webkit-box-shadow: inset rgba(0,0,0,.4) 0px 0px 7px;
+	-moz-box-shadow: inset rgba(0,0,0,.4) 0px 0px 7px;
+	box-shadow: inset rgba(0,0,0,.4) 0px 0px 7px;
+	border-style: none;
+	color: #666;
+}
+
+/* @end */

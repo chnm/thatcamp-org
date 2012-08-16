@@ -1,0 +1,11 @@
+Release Notes: THATCamp Twenty Ten 1.0 
+
+* Theme is now fully "childified," which means that it functions sort of parasitically with the Twenty Ten theme, but in a good way. When the WordPress team releases updates to the Twenty Ten theme, they won't break the customizations in the THATCamp Twenty Ten theme. Read more about WordPress child themes at http://codex.wordpress.org/Child_Themes and http://cogdogblog.com/2010/05/29/those-darn-kids/ (the latter mentions Jim Groom, so you know already it's awesome -- nobody gets cited like the Bava). 
+
+* Removed default Twenty Ten headers and replaced them with six new THATCamp headers in different colors. All of them now include the computer graphic, as well, although we do still encourage people to use customized logos developed from the files available at http://thatcampdev.info/logos. 
+
+* Added THATCamp-specific footer with links to CHNM and THATCamp.org, plus Creative Commons license. 
+
+* Changed default font to Lucida Grande to make the theme match http://thatcampdev.info better. 
+
+Write info@thatcampdev.info with any questions. 

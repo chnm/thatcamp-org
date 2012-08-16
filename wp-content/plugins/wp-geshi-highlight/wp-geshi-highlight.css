@@ -1,0 +1,71 @@
+.wp-geshi-highlight {
+    font-size: 12px;
+    line-height: 13px;
+    width: 100%;
+    background-color: #FFFFFF;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    }
+
+.wp-geshi-highlight pre {
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    }
+    
+.wp-geshi-highlight ol {
+    padding-right: 0;
+    }       
+
+.wp-geshi-highlight li {
+    padding-left: 2px;
+    }
+
+/* fancy shadows. original source:
+   http://www.thestyleworks.de/tut-art/shadow.shtml*/    
+div.wp-geshi-highlight-wrap, div.wp-geshi-highlight-wrap2, div.wp-geshi-highlight-wrap3, div.wp-geshi-highlight-wrap4,
+div.wp-geshi-highlight-wrap5 {
+   padding: 1px;
+   border-radius: 10px;
+   -moz-border-radius: 10px;
+   }
+div.wp-geshi-highlight-wrap {
+   background-color: #8e8e8e;
+   border: 1px solid #959595;
+   margin: 0px;
+   }
+div.wp-geshi-highlight-wrap2 {
+   background-color: #aaa;
+   border: 1px solid #bebebe;
+   margin: 0;
+   }
+div.wp-geshi-highlight-wrap3 {
+   background-color: #d1d1d1;
+   border: 1px solid #e1e1e1;
+   margin: 0;
+   }
+div.wp-geshi-highlight-wrap4 {
+   background-color: #ededed;
+   border: 1px solid #f6f6f6;
+   margin: 0;
+   }
+div.wp-geshi-highlight-wrap5 {
+   /* you should set these colors so that they fit to your background color */
+   background-color: #F5F5F5;
+   border: 1px solid #F5F5F5;
+   margin-left: 0px;
+   }
+div.wp-geshi-highlight-wrap5 .wp-geshi-highlight {
+   border: 0px solid #666;
+   margin: -2px;
+   display:block;
+   position: relative;
+   top: -3px;
+   left: -3px;
+   -moz-opacity:0.55;
+   }

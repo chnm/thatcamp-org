@@ -1,0 +1,673 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Arclite 1.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-13 03:50+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Marián Hamráček <majoham@post.sk>\n"
+"Language-Team: digitalnature.ro <hello@digitalnature.ro>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Slovak\n"
+"X-Poedit-Country: SLOVAKIA\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: c:\\wamp\\www\\wordpress\\wp-content\\themes\\arclite\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPath-2: ..\n"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/404.php:19
+msgid "Page not found (404)"
+msgstr "Stránka nenájdená (404)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/404.php:22
+msgid "Try one of these links:"
+msgstr "Vyskúšajtie niektorú z týchto liniek:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:22
+#, php-format
+msgid "Archive for category %s"
+msgstr "Archív kategórie %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:24
+#, php-format
+msgid "Posts Tagged %s"
+msgstr "Článok pridaný %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:26
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:28
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:30
+#, php-format
+msgid "Archive for %s"
+msgstr "Archív pre %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:26
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:646
+msgid "F jS, Y"
+msgstr "F jS, Y"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:28
+msgid "F, Y"
+msgstr "F, Y"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:30
+msgid "Y"
+msgstr "Y"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:32
+msgid "Author Archive"
+msgstr "Archív autora"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:34
+msgid "Blog Archives"
+msgstr "Archív stránky"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:43
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:26
+msgid "Permanent Link:"
+msgstr "Permanentný link:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:45
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:28
+msgid "M"
+msgstr "M"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:46
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:29
+msgid "j"
+msgstr "j"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:49
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:32
+#, php-format
+msgid "Posted by %s in %s"
+msgstr "Uverejnil %s v %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:49
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:51
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:32
+#, php-format
+msgid "Posts by %s"
+msgstr "Články autora %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:50
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:33
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "No Comments"
+msgstr "Bez komentára"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:50
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:33
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "1 Comment"
+msgstr "1 Komentár"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:50
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:33
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "% Comments"
+msgstr "% Komentárov"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:50
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:33
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "Comments off"
+msgstr "Komentáre vypnuté"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:50
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:33
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "Edit"
+msgstr "Upraviť"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:39
+msgid "Read the rest of this entry &raquo;"
+msgstr "Prečítať zvyšok článku &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:61
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:44
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "Tags:"
+msgstr "Tagy:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:72
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:64
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:58
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:26
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:46
+msgid "&laquo; Older Entries"
+msgstr "&laquo; Staršie príspevky"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:73
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:65
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:59
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:27
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:47
+msgid "Newer Entries &raquo;"
+msgstr "Novšie príspevky &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:79
+#, php-format
+msgid "Sorry, but there aren't any posts in the %s category yet."
+msgstr "Ospravedlňujeme sa, ale v kategórii %s nie sú žiadne príspevky."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:81
+msgid "Sorry, but there aren't any posts with this date."
+msgstr "Ospravedlňujeme sa, ale s týmto dátumom nie sú žiadne príspevky."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:84
+#, php-format
+msgid "Sorry, but there aren't any posts by %s yet."
+msgstr "Ospravedlňujeme sa, ale od autora %s nie sú žiadne príspevky."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:86
+msgid "No posts found."
+msgstr "Nenájdené žiadne príspevky."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:34
+msgid "This user hasn't shared any biographical information"
+msgstr "Tento užívateľ nezdieľa žiadne informácie"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:39
+msgid "Homepage:"
+msgstr "Domáca stránka:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:40
+msgid "Yahoo Messenger:"
+msgstr "Yahoo:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:41
+msgid "Jabber/GTalk:"
+msgstr "Jabber/GTalk:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:42
+msgid "AIM:"
+msgstr "AIM:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:55
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:37
+msgid "l, F jS, Y"
+msgstr "l, F jS, Y"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+#, php-format
+msgid "Posted in %s"
+msgstr "Uverejnené v %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:71
+msgid "No posts found by this author."
+msgstr "Žiadne príspevky od tohto autora."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:3
+msgid "Enter your password to view comments"
+msgstr "Pre prehliadanie komentárov zadajte svoje heslo"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:18
+#, php-format
+msgid "%s Comment"
+msgstr "%s Komentár"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:18
+#, php-format
+msgid "%s Comments"
+msgstr "%s Komentárov"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:19
+msgid "and one trackback"
+msgstr "a jeden trackback"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:20
+#, php-format
+msgid "and %s trackbacks"
+msgstr "a %s trackbackov"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:37
+msgid "No comments yet."
+msgstr "Zatiaľ žiadne komentáre."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:58
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Musíte byť <a href=\"%s\">prihlásený</a> pre pridávanie komentárov."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:66
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:101
+msgid "Your name (required)"
+msgstr "Vaše meno (povinné)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:67
+msgid "Please enter your name"
+msgstr "Prosím zadajte svoje meno"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:70
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:104
+msgid "Your e-mail (required, will not be published)"
+msgstr "Váš e-mail (povinné, nebude zverejnené)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:71
+msgid "Please enter your email address"
+msgstr "Prosím zadajte svoju e-mailovú adresu"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:74
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:118
+msgid "Type your comment here"
+msgstr "Napíšte svoj komentár"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:75
+msgid "Please type a comment"
+msgstr "Prosím napíšte svoj komentár"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:78
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:107
+msgid "Your website"
+msgstr "Vaša webstránka"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:85
+msgid "Cancel Reply"
+msgstr "Odmietnuť odpoveď"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:91
+#, php-format
+msgid "Logged in as %s."
+msgstr "Prihlásený ako %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:93
+msgid "Log out of this account"
+msgstr "Odhlásiť sa"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:93
+msgid "Logout &raquo;"
+msgstr "Odhlásiť sa &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:97
+#, php-format
+msgid "Welcome back <strong>%s</strong>."
+msgstr "Vitajte späť <strong>%s</strong>."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:97
+msgid "Change &raquo;"
+msgstr "Zmeniť &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:97
+msgid "Close &raquo;"
+msgstr "Zatvoriť &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:125
+#, php-format
+msgid "Spam protection: Sum of %s+%s = ?"
+msgstr "Ochrana proti spamu: Súčet %s+%s = ?"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:138
+msgid "Submit Comment"
+msgstr "Pridať komentár"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:153
+msgid "Comments are closed."
+msgstr "Komentáre sú uzavreté."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:21
+#, php-format
+msgid "Arclite theme by %s"
+msgstr "Téma Arclite %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:23
+#, php-format
+msgid "powered by %s"
+msgstr "vyvynutá %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:27
+msgid "Entries (RSS)"
+msgstr "Príspevky (RSS)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:27
+msgid "and"
+msgstr "a"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:27
+msgid "Comments (RSS)"
+msgstr "Komentáre (RSS)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:156
+msgid "Arclite settings"
+msgstr "Nastavenia Arclite"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:163
+msgid "Arclite theme settings"
+msgstr "Nastavenia témy Arclite"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:165
+msgid "Settings saved."
+msgstr "Nastavenia uložené."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:228
+msgid "General"
+msgstr "Všeobecné"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:236
+msgid "Imageless layout"
+msgstr "Zobrazenie bez obrázkov"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:236
+msgid "(no background images; reduces pages to just a few KB, with the cost of less graphic details)"
+msgstr "(bez obrázkov pozadia)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:238
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:250
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:300
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:336
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:393
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:442
+msgid "Yes"
+msgstr "Áno"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:240
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:252
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:302
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:338
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:396
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:445
+msgid "No"
+msgstr "Nie"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:248
+msgid "Use jQuery"
+msgstr "Použiť jQuery"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:248
+msgid "(for testing purposes only, you shouldnt change this)"
+msgstr "(pre potreby testovania, nemeniť)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:259
+msgid "Homepage meta keywords"
+msgstr "META kľúčové slová stránky"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:259
+msgid "(Separate with commas. Tags are used as keywords on other pages. Leave empty if you are using a SEO plugin)"
+msgstr "(Oddelené čiarkami.)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:271
+msgid "Content background"
+msgstr "Pozadie obsahu"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:287
+msgid "Index page/Archives show:"
+msgstr "Index stránka/Archív zobrazí:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:289
+msgid "Full posts"
+msgstr "Všetky príspevky"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:291
+msgid "Excerpts only"
+msgstr "Excerpts only"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:298
+msgid "Enable 3rd column on all pages"
+msgstr "Povoliť tretí stĺpec na všetkých stránkach."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:298
+msgid "(apply the 3-column template if you only want it on certain pages)"
+msgstr "(použite 3 stĺpcový template ak ho chcete iba na niektorých stránkach)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:315
+msgid "Header"
+msgstr "Hlavička"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:323
+msgid "Top navigation shows"
+msgstr "Horná navigácia zobrazuje"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:325
+msgid "Pages"
+msgstr "Stránky"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:327
+msgid "Categories"
+msgstr "Kategórie"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:334
+msgid "Show search"
+msgstr "Zobraziť vyhľadávanie"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:346
+msgid "Header background"
+msgstr "Pozadie hlavičky"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:358
+msgid "User defined image (upload)"
+msgstr "Užívateľský obrázok (upload)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:359
+msgid "User defined color"
+msgstr "Užívateľská farba"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:365
+msgid "Centered image (upload a 960x190 image for best fit):"
+msgstr "Vystredený obrázok (ahrajte obrázok 960x190)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:369
+msgid "Tiled image, repeats itself across the entire header (centered image will show on top of it, if specified):"
+msgstr "Opakujúci sa obrázok zobrazený na celej hlavičke(vytredený obrázok sa zobrazí nad ním ak je nahraný)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:373
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:403
+#, php-format
+msgid "Files are uploaded to %s"
+msgstr "Súbory sú nahraté do %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:375
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:405
+#, php-format
+msgid "Can't upload! Directory %s is not writable!<br />Change write permissions with CHMOD 755 or 777"
+msgstr "Nemôžem nahrať. Adresár %s nie je zapisovateľný<br />Zmente práva na zápis CHMOD 755 or 777 "
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:381
+msgid "Pick a color"
+msgstr "Vyberte farbu"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:391
+msgid "Logo image"
+msgstr "Logo obrázok"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:400
+msgid "Upload a custom logo image"
+msgstr "Nahrajte vlastný Logo obrázok"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:420
+msgid "Sidebar"
+msgstr "Bočný panel"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:429
+msgid "Sidebar position"
+msgstr "Pozícia bočného panelu"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:431
+msgid "Left"
+msgstr "Vľavo"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:434
+msgid "Right"
+msgstr "Vpravo"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:440
+msgid "Show theme-default category block"
+msgstr "Ukáž prednastavený blok kategórii."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:452
+msgid "Widget title background"
+msgstr "Pozadie nadpisu pre Widget"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:475
+msgid "Footer"
+msgstr "Zápätie"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:484
+msgid "Add content"
+msgstr "Pridať obsah"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:484
+msgid "(HTML allowed)"
+msgstr "(HTML povolené)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:501
+msgid "User CSS code"
+msgstr "Užívateľský CSS kód"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:510
+msgid "Modify anything related to design using simple CSS"
+msgstr "Modifikuje čokoľvek spojené s dizajnom použitím jednoduchého CSS"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:510
+msgid "Avoid modifying theme files and use this option instead to preserve changes after update"
+msgstr "Predídťe zmenám súborov tém a použite túto možnosť čím zabezpečíte zachovanie zmien po aktualizácii."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:620
+msgid "Trackback:"
+msgstr "Trackback:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:620
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:646
+#, php-format
+msgid "%s by %s on %s"
+msgstr "%s od %s na %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:646
+msgid "H:i"
+msgstr "H:i"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:654
+msgid "Reply"
+msgstr "Odpoveď"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:656
+msgid "Quote"
+msgstr "Citovať"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:667
+msgid "Your comment is awaiting moderation."
+msgstr "Váš komentár čaká na moderovanie."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:113
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/searchform.php:6
+msgid "Search"
+msgstr "Hľadať"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:131
+msgid "You are Home"
+msgstr "Ste na úvodnej stránke"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:131
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:133
+msgid "Home"
+msgstr "Úvod"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:133
+msgid "Click for Home"
+msgstr "Odkaz na Úvod"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:64
+msgid "Not Found"
+msgstr "Nenájdené"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:65
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr "Prepáčte, ale hľadanie bolo neúspešné."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/links.php:21
+msgid "Links:"
+msgstr "Odkazy:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/page-nosidebar.php:23
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/page.php:23
+msgid "Read the rest of this page &raquo;"
+msgstr "Prečítať zvyšok strany &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/page-nosidebar.php:25
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/page.php:25
+msgid "Edit this entry"
+msgstr "Editovať tento príspevok"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:21
+msgid "Search Results"
+msgstr "Výsledky vyhľadávania"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:52
+msgid "No posts found. Try a different search?"
+msgstr "Príspevok nenájdený. Skúste iné hľadanie."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar-secondary.php:12
+msgid "You enabled the secondary sidebar. Add widgets here from the Dashboard"
+msgstr "Povolili ste druhý bočný panel. Pridať Widgety z Dashboardu."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:12
+#, php-format
+msgid "You are currently browsing the archives for the %s category."
+msgstr "Práve prezeráte archív článkov v kategórii %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:15
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:18
+#, php-format
+msgid "You are currently browsing the archives for %s"
+msgstr "Práve prezeráte archív pre %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:21
+#, php-format
+msgid "You are currently browsing the archives for the year %s"
+msgstr "Práve prezeráte archív z roku %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:24
+#, php-format
+msgid "You have searched the archives for %s."
+msgstr "Práve ste prehľadali archív pre %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:27
+msgid "You are currently browsing the archives."
+msgstr "Práve prezeráte archív."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:56
+msgid "Archives"
+msgstr "Archív"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:79
+msgid "Meta"
+msgstr "Meta"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:42
+#, php-format
+msgid "This entry was posted on %s and is filed under %s. You can follow any responses to this entry through %s."
+msgstr "Tento príspevok bol pridaný %s a vyplnený %s. Odpovede môžete posielať cez %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:46
+#, php-format
+msgid "You can <a href=\"#respond\">leave a response</a>, or <a href=\"%s\" rel=\"trackback\">trackback</a> from your own site."
+msgstr "Môžete <a href=\"#respond\">nechať odpoveď</a>, alebo <a href=\"%s\" rel=\"trackback\">trackback</a> z vašej stránky."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:50
+#, php-format
+msgid "Responses are currently closed, but you can <a href=\"%s\" rel=\"trackback\">trackback</a> from your own site."
+msgstr "Odpovede sú momentálne uzavreté, ale môžte poslať <a href=\"%s\" rel=\"trackback\">trackback</a> z vašej stránky."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:54
+msgid "You can skip to the end and leave a response. Pinging is currently not allowed."
+msgstr "Môžete preskočiť nakoniec a zanechať odkaz. Pingovanie nie je momentálne povolené."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:58
+msgid "Both comments and pings are currently closed."
+msgstr "Komentáre a pingovanie sú uzavreté."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:68
+msgid "Sorry, no posts matched your criteria."
+msgstr "Ospravedlňujeme sa. Žiadny príspevok nevyhovuje vaším kritériám."
+

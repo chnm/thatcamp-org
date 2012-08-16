@@ -1,0 +1,43 @@
+/* == Generic styles ======== */
+body {font-family: "Lucida Grande", Arial, Helvetica, sans-serif;}
+
+/* Headings */
+h1 {font-size:30px; line-height:36px; margin-bottom:18px; font-weight:bold;}
+h2 {font-size:24px; line-height:36px; margin-bottom:18px; font-weight:bold;}
+h3 {font-size:18px; line-height:1em; margin-bottom:1em; font-weight:bold;}
+h4 {font-size:15px; line-height: 18px; margin-bottom:18px; font-weight:bold;}
+h5 {}
+h6 {}
+
+h1 a, h2 a, h3 a {text-decoration:none;}
+
+/* Misc Elements */
+p,ul,ol,dl,blockquote,address {font-size:13px; line-height:18px; margin-bottom:18px;}
+ul {}
+ol {}
+dl {}
+blockquote {}
+address {}
+
+em,i {font-style:italic;}
+strong,b {font-weight:bold;}
+/* Components */
+
+.pic p, p.caption {font-size:11px; font-weight:bold; }
+.project p {font-weight:bold;}
+
+/* == Wrap == */
+#wrap {}
+
+/* == Header == */
+#header {}
+
+/* == Content == */
+#content {}
+
+	#primary {}
+	#secondary {}
+	#tertiary {}
+	
+/* == Footer == */
+#footer {}

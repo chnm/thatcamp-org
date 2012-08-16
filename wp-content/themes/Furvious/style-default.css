@@ -1,0 +1,79 @@
+#topbar{
+	background: url(images/topnavbg.jpg) repeat-x top;
+	border-right: 1px solid #206E78;
+	}
+ul#menu{
+	background: url(images/topnavbit.jpg) no-repeat left;
+	}
+ul#menu li a{
+	border-right: 1px solid #2B9199;
+	}
+	ul#menu li a:hover{
+		 border-right: 1px solid #37ABAD;
+		 background: url(images/menuhover.jpg) repeat-x top;
+		 }
+	ul#menu li.current_page_item a{
+		border-right: 1px solid #37ABAD;
+		}	
+	ul#menu li.current_page_item a{
+		background: url(images/menuhover.jpg) repeat-x top;
+		}		
+.feedbar{
+	background: url(images/feedbar.jpg) no-repeat left;		 
+	}	
+p.feedbaricon{
+	text-shadow: #FFAB59 0px 1px;  
+	}
+h2.sideheading{
+	text-shadow: #fff 0px 1px;
+	}	 
+#bigg{
+	background: url(images/bgg.jpg) repeat-y;	
+	}
+.entry_info .sidedateblock{
+	background: url(images/dateblock.png) no-repeat top;
+	color: #fff;
+	text-shadow: #C73200 1px 1px;
+	}		 
+span.contenttop{
+	background: #BABABA url(images/bgtopcontent.jpg) no-repeat bottom left;
+	} 
+span.contentbottom{
+	background: url(images/contentbottombg.jpg) no-repeat top left;
+	}
+.entry_info img.avatar{
+	border: 4px solid #1F7781;
+	}
+.entry_info ul li.sidecategory a{
+	background: #1F7781;
+	color: #BED8DA;
+	}
+	.entry_info ul li.sidecategory a:hover{
+		color: #fff;
+		}
+ul.sidebarlist li a {
+	background: #ccc;
+	}
+ul.sidebarlist li a:hover {
+	background: #B3B3B3;
+	}
+.post a{
+	text-decoration: underline;
+	}
+.post a.more-link{
+	background: #288E9A;
+	}
+	a.more-link:hover{
+		background: #319799;
+		}
+ 
+.promote_bottombg{
+		background: #FE8C12;
+		border: 1px solid #CB621E;
+		}
+		.p_leftcol{
+		border-right:1px solid #CB621E;
+		}
+		.p_leftcol li{
+		border-bottom: 1px solid #CB621E;
+		}

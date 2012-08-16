@@ -1,0 +1,682 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Arclite 1.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-08-05 04:13+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: digitalnature <hello@digitalnature.ro>\n"
+"Language-Team: digitalnature.ro <hello@digitalnature.ro>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: c:\\wamp\\www\\wordpress\\wp-content\\themes\\arclite\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPath-2: ..\n"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/404.php:19
+msgid "Page not found (404)"
+msgstr "Сторінку не знайдено"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/404.php:22
+msgid "Try one of these links:"
+msgstr "Спробуйте одне з цих посилань:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:22
+#, php-format
+msgid "Archive for category %s"
+msgstr "Архів категорії %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:24
+#, php-format
+msgid "Posts Tagged %s"
+msgstr "Записи з тегом %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:26
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:28
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:30
+#, php-format
+msgid "Archive for %s"
+msgstr "Архів (%s)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:26
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:643
+msgid "F jS, Y"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:28
+msgid "F, Y"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:30
+msgid "Y"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:32
+msgid "Author Archive"
+msgstr "Архів автора"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:34
+msgid "Blog Archives"
+msgstr "Архіви блогу"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:43
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:26
+msgid "Permanent Link:"
+msgstr "Постійне посилання"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:45
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:28
+msgid "M"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:46
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:29
+msgid "j"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:49
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:32
+#, php-format
+msgid "Posted by %s in %s"
+msgstr "Написано %s у %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:49
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:51
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:32
+#, php-format
+msgid "Posts by %s"
+msgstr "Записи %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:50
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:33
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "No Comments"
+msgstr "Без коментарів"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:50
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:33
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "1 Comment"
+msgstr "1 коментар"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:50
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:33
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "% Comments"
+msgstr "% коментар(і, ів)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:50
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:33
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+#, fuzzy
+msgid "Comments off"
+msgstr "% коментар(і, ів)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:50
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:33
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "Edit"
+msgstr "Редагувати"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/image.php:26
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:39
+msgid "Read the rest of this entry &raquo;"
+msgstr "Читати решту запису &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:61
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:44
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "Tags:"
+msgstr "Теги:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:72
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:64
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:58
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:26
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:46
+msgid "&laquo; Older Entries"
+msgstr "&laquo; Старіші записи"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:73
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:65
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:59
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:27
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:47
+msgid "Newer Entries &raquo;"
+msgstr "Новіші записи &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:79
+#, php-format
+msgid "Sorry, but there aren't any posts in the %s category yet."
+msgstr "Вибачте, але ще немає записів у категорії %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:81
+msgid "Sorry, but there aren't any posts with this date."
+msgstr "Вибачте, але немає записів за цю дату."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:84
+#, php-format
+msgid "Sorry, but there aren't any posts by %s yet."
+msgstr "Вибачте, але записів %s ще немає."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:86
+msgid "No posts found."
+msgstr "Записи не знайдені."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:34
+msgid "This user hasn't shared any biographical information"
+msgstr "Цей користувач не поділився своєю біографією"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:39
+msgid "Homepage:"
+msgstr "Домашня сторінка:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:40
+msgid "Yahoo Messenger:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:41
+msgid "Jabber/GTalk:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:42
+msgid "AIM:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:55
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/image.php:31
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:37
+msgid "l, F jS, Y"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+#, fuzzy, php-format
+msgid "Posted in %s"
+msgstr "Написано %s у %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:71
+msgid "No posts found by this author."
+msgstr "Нема записів цього автора."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:3
+msgid "Enter your password to view comments"
+msgstr "Введіть пароль для перегляду коментарів"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:18
+#, php-format
+msgid "%s Comment"
+msgstr "%s коментар"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:18
+#, php-format
+msgid "%s Comments"
+msgstr "%s коментар(і, ів)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:19
+msgid "and one trackback"
+msgstr "і один трекбек"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:20
+#, php-format
+msgid "and %s trackbacks"
+msgstr "і %s трекбек(і, ів)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:37
+msgid "No comments yet."
+msgstr "Коментарів ще нема."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:58
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Ви маєте <a href=\"%s\">увійти</a> для цоментування"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:66
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:101
+msgid "Your name (required)"
+msgstr "Ім’я (обов’язково)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:67
+msgid "Please enter your name"
+msgstr "Введіть своє ім’я"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:70
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:104
+msgid "Your e-mail (required, will not be published)"
+msgstr "Ваша електропошта (обов’язково, але не буде опубліковано)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:71
+msgid "Please enter your email address"
+msgstr "Введіть свою електропошту"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:74
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:118
+msgid "Type your comment here"
+msgstr "Введіть коментар тут"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:75
+#, fuzzy
+msgid "Please type a comment"
+msgstr "Введіть своє ім’я"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:78
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:107
+msgid "Your website"
+msgstr "Ваш веб-сайт"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:85
+msgid "Cancel Reply"
+msgstr "Відмінити відгук"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:91
+#, php-format
+msgid "Logged in as %s."
+msgstr "Увійшов як %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:93
+msgid "Log out of this account"
+msgstr "Вийти з цього акаунта"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:93
+msgid "Logout &raquo;"
+msgstr "Вийти &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:97
+#, php-format
+msgid "Welcome back <strong>%s</strong>."
+msgstr "З поверненням <strong>%s</strong>."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:97
+msgid "Change &raquo;"
+msgstr "Змінити &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:97
+msgid "Close &raquo;"
+msgstr "Закрити &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:125
+#, php-format
+msgid "Spam protection: Sum of %s+%s = ?"
+msgstr "Захист від спаму: сума %s+%s = ?"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:137
+msgid "Submit Comment"
+msgstr "Надіслати коментар"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:153
+msgid "Comments are closed."
+msgstr "Коментування закрите."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:21
+#, php-format
+msgid "Arclite theme by %s"
+msgstr "Тема Arclite %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:23
+#, php-format
+msgid "powered by %s"
+msgstr "працює на %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:27
+msgid "Entries (RSS)"
+msgstr "Записи (RSS)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:27
+msgid "and"
+msgstr "і"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:27
+msgid "Comments (RSS)"
+msgstr "Коментарі (RSS)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:153
+msgid "Arclite settings"
+msgstr "Налаштування Arclite"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:160
+msgid "Arclite theme settings"
+msgstr "Налаштування теми Arclite"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:162
+msgid "Settings saved."
+msgstr "Налаштування збережені."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:225
+msgid "General"
+msgstr "Загальне"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:233
+msgid "Imageless layout"
+msgstr "Шар без малюнків"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:233
+msgid "(no background images; reduces pages to just a few KB, with the cost of less graphic details)"
+msgstr "(відсутні фонові зображення; зменшує сторінку на кілька кілобайтів за рахунок меншої кількості зображень)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:235
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:247
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:297
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:333
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:390
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:439
+msgid "Yes"
+msgstr "Так"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:237
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:249
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:299
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:335
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:393
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:442
+msgid "No"
+msgstr "Ні"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:245
+msgid "Use jQuery"
+msgstr "Використовувати jQuery"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:245
+msgid "(for testing purposes only, you shouldnt change this)"
+msgstr "(лише для тестування, не змінюйте це)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:256
+msgid "Homepage meta keywords"
+msgstr "Ключові слова домашньої сторінки"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:256
+msgid "(Separate with commas. Tags are used as keywords on other pages. Leave empty if you are using a SEO plugin)"
+msgstr "(Розділяти комами. Теги використовуються як ключові слова на інших сторінках. Залиште пустим, якщо використовуєте плагін SEO)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:268
+msgid "Content background"
+msgstr "Фон наповнення"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:284
+msgid "Index page/Archives show:"
+msgstr "Індексна сторінка/Архіви:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:286
+msgid "Full posts"
+msgstr "Повні записи"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:288
+msgid "Excerpts only"
+msgstr "Тільки витяги"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:295
+msgid "Enable 3rd column on all pages"
+msgstr "Включити третю колонку на всіх сторінках"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:295
+msgid "(apply the 3-column template if you only want it on certain pages)"
+msgstr "(застосовує шаблон трьох колонок лише на бажаних сторінках)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:312
+msgid "Header"
+msgstr "Заголовок"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:320
+msgid "Top navigation shows"
+msgstr "Верхня навігація показує"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:322
+msgid "Pages"
+msgstr "Сторінки"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:324
+msgid "Categories"
+msgstr "Категорії"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:331
+msgid "Show search"
+msgstr "Показувати пошук"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:343
+msgid "Header background"
+msgstr "Фон заголовку"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:355
+msgid "User defined image (upload)"
+msgstr "Користувацьке зображення"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:356
+msgid "User defined color"
+msgstr "Користувацький колір"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:362
+msgid "Centered image (upload a 960x190 image for best fit):"
+msgstr "Центроване зображення (краще 960x150):"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:366
+msgid "Tiled image, repeats itself across the entire header (centered image will show on top of it, if specified):"
+msgstr "Зображення плиткою, повторюється у заголовку:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:370
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:400
+#, php-format
+msgid "Files are uploaded to %s"
+msgstr "Файли завантажені до %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:372
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:402
+#, php-format
+msgid "Can't upload! Directory %s is not writable!<br />Change write permissions with CHMOD 755 or 777"
+msgstr "Не можу завантажити! Каталог %s не має прав на запис!"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:378
+msgid "Pick a color"
+msgstr "Оберіть колір"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:388
+msgid "Logo image"
+msgstr "Малюнок логотипу"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:397
+msgid "Upload a custom logo image"
+msgstr "Завантажити довільний малюнок логотипу"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:417
+msgid "Sidebar"
+msgstr "Бокова панель"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:426
+msgid "Sidebar position"
+msgstr "Позиція бокової панелі"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:428
+msgid "Left"
+msgstr "Ліворуч"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:431
+msgid "Right"
+msgstr "Праворуч"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:437
+msgid "Show theme-default category block"
+msgstr "Показувати блоки теми за змовчуванням"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:449
+msgid "Widget title background"
+msgstr "Заголовок фону віджета"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:472
+msgid "Footer"
+msgstr "Нижня частина"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:481
+msgid "Add content"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:481
+msgid "(HTML allowed)"
+msgstr "(HTML дозволено)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:498
+msgid "User CSS code"
+msgstr "Користувацький CSS-код"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:507
+msgid "Modify anything related to design using simple CSS"
+msgstr "Змініть щось із дизайну із використанням простого CSS"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:507
+msgid "Avoid modifying theme files and use this option instead to preserve changes after update"
+msgstr "Уникати зміни файлів теми"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:617
+msgid "Trackback:"
+msgstr "Трекбеки:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:617
+msgid "Pingback:"
+msgstr "Пінгбеки:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:643
+#, php-format
+msgid "%s by %s on %s"
+msgstr "%s %s %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:643
+msgid "H:i"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:651
+msgid "Reply"
+msgstr "Відповісти"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:653
+msgid "Quote"
+msgstr "Цитата"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:664
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш коментар очікує модерації."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:116
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/searchform.php:6
+msgid "Search"
+msgstr "Пошук"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:134
+msgid "You are Home"
+msgstr "Ви вдома"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:134
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:136
+msgid "Home"
+msgstr "Домашня"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:136
+msgid "Click for Home"
+msgstr "Натисніть аби перейти додому"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/image.php:31
+#, php-format
+msgid "This entry was posted on %s and is filed under %s. You can follow any responses to this entry through %s."
+msgstr "Запис написано %s у %s. Можете відслідковувати відгуки за допомогою %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/image.php:35
+#, php-format
+msgid "You can <a href=\"#respond\">leave a response</a>, or <a href=\"%s\" rel=\"trackback\">trackback</a> from your own site."
+msgstr "Ви можете <a href=\"#respond\">лишити відгук</a> або <a href=\"%s\" rel=\"trackback\">трекбек</a> з Вашог сайту."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/image.php:39
+#, php-format
+msgid "Responses are currently closed, but you can <a href=\"%s\" rel=\"trackback\">trackback</a> from your own site."
+msgstr "Відгуки зараз заборонені, але Ви можете лишити <a href=\"%s\" rel=\"trackback\">трекбек</a> з Вашого сайту."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/image.php:43
+msgid "You can skip to the end and leave a response. Pinging is currently not allowed."
+msgstr "Можете перейти донизу і лишити відгук. Пінгування заборонене."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/image.php:47
+msgid "Both comments and pings are currently closed."
+msgstr "Коментарі та пінгування заборонені."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/image.php:49
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/page-nosidebar.php:25
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/page.php:25
+msgid "Edit this entry"
+msgstr "Редагувати запис"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/image.php:60
+#, fuzzy
+msgid "Sorry, no attachments matched your criteria."
+msgstr "Вибачте, жоден запис не підходить під Ваш критерій."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:64
+msgid "Not Found"
+msgstr "Не знайдено"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:65
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr "Вибачте, але Ви шукаєте те, чого тут нема."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/links.php:21
+msgid "Links:"
+msgstr "Посилання:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/page-nosidebar.php:23
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/page.php:23
+msgid "Read the rest of this page &raquo;"
+msgstr "Читати решту запису &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:21
+msgid "Search Results"
+msgstr "Результати пошуку"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:52
+msgid "No posts found. Try a different search?"
+msgstr "Записів не знайдено. Спробувати ще?"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar-secondary.php:12
+msgid "You enabled the secondary sidebar. Add widgets here from the Dashboard"
+msgstr "Ви увімкнули другу бокову панель. Додайте віджети"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:12
+#, php-format
+msgid "You are currently browsing the archives for the %s category."
+msgstr "Ви зараз дивитеся архіви категорії %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:15
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:18
+#, php-format
+msgid "You are currently browsing the archives for %s"
+msgstr "Ви зараз дивитеся архіви %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:21
+#, php-format
+msgid "You are currently browsing the archives for the year %s"
+msgstr "Ви зараз дивитеся архіви %s року"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:24
+#, php-format
+msgid "You have searched the archives for %s."
+msgstr "Ви шукали архіви %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:27
+msgid "You are currently browsing the archives."
+msgstr "Ви зараз дивитеся архіви."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:56
+msgid "Archives"
+msgstr "Архіви"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:79
+msgid "Meta"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:68
+msgid "Sorry, no posts matched your criteria."
+msgstr "Вибачте, жоден запис не підходить під Ваш критерій."
+

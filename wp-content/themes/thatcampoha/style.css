@@ -1,0 +1,957 @@
+/*
+	Theme Name: THATCampOHA
+	Theme URI: http://aarontgrogg.com/boilerplate/
+	Description: A responsive single-column theme for THATCamp: Oral History Association, 2012. Built on the stripped-down Boilerplate theme (v. 3.4.4) by Aaron T. Grogg.
+	Author: Erin Bell
+	Author URI: http://oha2012.thatcampdev.info/
+	Version: 1.0
+	Tags: custom-menu, editor-style, theme-options, threaded-comments, sticky-post, microformats, rtl-language-support, translation-ready
+
+	License: GNU General Public License v2.0
+	License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+	This CSS file is a concatenation of style.css from HTML5 Boilerplate and style.css from Starkers.
+	Comment blocks indicate where each begins and ends, like this, for example...
+*/
+
+/** START HTML5 Boilerplate CSS **/
+
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ *
+ * Detailed information about this CSS: h5bp.com/css
+ *
+ * ==|== normalize ==========================================================
+ */
+
+
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video {max-width: 100%; display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+/*
+ * 1. Correct text resizing oddly in IE6/7 when body font-size is set using em units
+ * 2. Prevent iOS text size adjust on device orientation change, without disabling user zoom: h5bp.com/g
+ */
+
+html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+html, button, input, select, textarea { font-family: sans-serif; color: #222; }
+
+body { margin: 0; font-size: 1em; line-height: 1.4; }
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate
+ * Also: hot pink! (or customize the background color to match your design)
+ */
+
+::-moz-selection { background: #009f9f; color: #fff; text-shadow: none; }
+::selection { background: #009f9f; color: #fff; text-shadow: none; }
+
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+a { color: #00e; }
+a:visited { color: #551a8b; }
+a:hover { color: #06e; }
+a:focus { outline: thin dotted; }
+
+/* Improve readability when focused and hovered in all browsers: h5bp.com/h */
+a:hover, a:active { outline: 0; }
+
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+abbr[title] { border-bottom: 1px dotted; }
+
+b, strong { font-weight: bold; }
+
+blockquote {
+    color: #555555;
+    font-size: 0.9em;
+    font-style: italic;
+    margin: 1em 40px;
+}
+
+dfn { font-style: italic; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+/* Redeclare monospace font family: h5bp.com/j */
+pre, code, kbd, samp { font-family: monospace, serif; _font-family: 'courier new', monospace; font-size: 1em; }
+
+/* Improve readability of pre-formatted text in all browsers */
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+
+small { font-size: 85%; }
+
+/* Position subscript and superscript content without affecting line-height: h5bp.com/k */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+
+/*
+ * 1. Improve image quality when scaled in IE7: h5bp.com/d
+ * 2. Remove the gap between images and borders on image containers: h5bp.com/i/440
+ */
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+/*
+ * Correct overflow not hidden in IE9
+ */
+
+svg:not(:root) { overflow: hidden; }
+
+
+/* =============================================================================
+   Figures
+   ========================================================================== */
+
+figure { margin: 0; }
+
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+
+/* Indicate that 'label' will shift focus to the associated form element */
+label { cursor: pointer; }
+
+/*
+ * 1. Correct color not inheriting in IE6/7/8/9
+ * 2. Correct alignment displayed oddly in IE6/7
+ */
+
+legend { border: 0; *margin-left: -7px; padding: 0; white-space: normal; }
+
+/*
+ * 1. Correct font-size not inheriting in all browsers
+ * 2. Remove margins in FF3/4 S5 Chrome
+ * 3. Define consistent vertical alignment display in all browsers
+ */
+
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+
+/*
+ * 1. Define line-height as normal to match FF3/4 (set using !important in the UA stylesheet)
+ */
+
+button, input { line-height: normal; }
+
+/*
+ * 1. Display hand cursor for clickable form elements
+ * 2. Allow styling of clickable form elements in iOS
+ * 3. Correct inner spacing displayed oddly in IE7 (doesn't effect IE6)
+ */
+
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
+
+/*
+ * Re-set default cursor for disabled elements
+ */
+
+button[disabled], input[disabled] { cursor: default; }
+
+/*
+ * Consistent box sizing and appearance
+ */
+
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; *width: 13px; *height: 13px; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+/*
+ * Remove inner padding and border in FF3/4: h5bp.com/l
+ */
+
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+/*
+ * 1. Remove default vertical scrollbar in IE6/7/8/9
+ * 2. Allow only vertical resizing
+ */
+
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+/* Colors for form validity */
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+
+/* =============================================================================
+   Chrome Frame Prompt
+   ========================================================================== */
+
+.chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
+
+
+/* ==|== primary styles =====================================================
+   Author:
+   ========================================================================== */
+
+
+/*BASIC
+**/
+#akismet-credit-insert, #wpadminbar{display: none !important; visibility: hidden !important;height:0 !important;}
+
+	/* images */
+	img{max-width: 100%;}
+	img.alignleft{padding:0.5em 0.5em 0.5em 0}
+	img.alignright{padding:0.5em 0em 0.5em}
+	img.aligncenter{padding:0.5em}
+	
+	/* links */
+	a:link,a:visited,a{color:#A60000}
+	
+	
+	/* headlines and paragraphs */
+	h1,h2,h3,h4,h5,h6{font-family: GillSans, Trebuchet, Calibri, sans-serif;}
+	div.entry-content,p{font-family: Cambria, Georgia, Times, "Times New Roman", serif;}
+
+/*MENU
+**/
+
+
+nav#access[role="navigation"] a.skip{}
+nav#access[role="navigation"]{
+    box-shadow: 0 3px 12px #333333;
+    float: left;
+    margin: 0;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    width: 100%;
+    opacity: 0.98;
+	background: #000; /* Old browsers */
+	background: -moz-linear-gradient(top,  #45484d 0%, #000000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #45484d 0%,#000000 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #45484d 0%,#000000 100%); /* IE10+ */
+	background: linear-gradient(top,  #45484d 0%,#000000 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+    
+}
+div.menu, div.menu-header{width:95%;margin:0 auto;}
+div.menu ul,div.menu-header ul{width:100%; max-width:60em;margin:0 auto;}
+div.menu ul li a,div.menu-header ul li a{width:22%;display:inline;padding:0.5em 0.1em;float:left;text-align: center;color:#fafafa;text-decoration: none;text-shadow: 0 1px 0 #555;border-bottom:1px solid #000; border-top:1px solid #000;font-weight: lighter}
+div.menu-header ul li:nth-child(2) a{
+	border-right:1px solid #777;border-left:1px solid #777;
+	}
+div.menu-header ul li:nth-child(3) a{border-right:1px solid #777;}	
+
+nav#access[role="navigation"] div#wide-access{display:none;visibility: hidden;}
+
+/*HEADER
+**/
+header{
+    margin:1.25em auto 0;
+    width:100%;
+    max-width: 50em;
+    }
+header h1{}
+header p{}
+header img{
+    float: left;
+    margin: 0 auto;
+    max-height: 20em;
+    max-width: 50em;
+    position: relative;
+    width: 100%;
+    z-index: 0;
+    }
+header img#header-logo{}
+
+header a:hover img, header a:visited img, header a:active img, header a:link img{text-decoration:none;}
+section#content{width:95%;max-width:45em; margin:0 auto;clear:both;}
+
+
+/*SLIDE-IN MENU
+**/
+
+.offscreen-widgets,.onscreen-widgets{
+transition: all 0.25s;
+-moz-transition: all 0.25s; /* Firefox 4 */
+-webkit-transition: all 0.25s; /* Safari and Chrome */
+-o-transition: all 0.25s; /* Opera */
+}
+
+.offscreen-widgets{
+    margin-top: -1000px;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    width:95%;
+    max-width: 45em;  
+    background: none transparent;
+    color:none transparent;  
+    box-shadow: none transparent;
+    }
+.onscreen-widgets{
+    background: none repeat scroll 0 0 #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 5px #000;
+    margin: 0 auto;
+    width:95%;
+    max-width: 45em;
+    position: absolute;
+    top: 0;
+    z-index: 1;	
+	}
+section#content div#menu.onscreen-widgets ul.xoxo h3{box-shadow:none;text-align: left;}
+
+.onscreen-widgets select{margin:0.5em;}
+.onscreen-widgets .tagcloud{margin:0.25em 0.5em;}
+
+#close-menu{
+    background: none repeat scroll 0 0 #000000;
+    clear: both;
+    color: #FFFFFF;
+    float: left;
+    margin-top: 1em;
+    text-align: center;
+    width: 100%;
+    }
+#close-menu a{color:#fff;}
+
+/* POST
+**/
+
+article.post{margin:1em auto 3.5em;border-bottom: 1px dotted #CCCCCC;padding-bottom:3em;}
+article.post:first-child{}
+
+
+h2.entry-title{}
+h2.entry-title a{
+    clear: left;
+    display: block;
+    font-size: 0.85em;
+}
+div.entry-meta{background: #fff;font-size: small; color:#777;}
+div.entry-meta a{}
+
+div.entry-content{}
+div.entry-content p{}
+
+div.entry-content #intro {
+    background: none repeat scroll 0 0 #F7F7F7;
+    border-bottom: 5px solid #000000;
+    box-shadow: 0 0 3px #000000;
+    padding: 10px 10px;
+    text-shadow: 0 -1px #FFFFFF;
+}
+
+div.entry-content #intro span.fancy{font-weight: bold;font-family: GillSans,Trebuchet,Calibri,sans-serif;font-variant: small-caps;}
+
+div.entry-content #intro span#quick-links a{
+    background: none repeat scroll 0 0 #000000;
+    border-radius: 2px 2px 2px 2px;
+    color: #FFFFFF;
+    font-family: sans-serif;
+    font-size: 0.85em;
+    font-weight: lighter;
+    padding: 5px 6px 3px;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px #AAAAAA;
+    }
+div.entry-content #intro span#quick-links{margin-top:1em;display: block;width: 100%; text-align: right;}
+
+footer.entry-utility{margin-top:1em;color:#777;font-size:small;clear:both;}
+
+nav#nav-below.navigation{width:100%;margin-top:1em;}
+a[rel="next"],a[rel="prev"]{max-width:45%;display:block;text-decoration: none;background: #f7f7f7;text-shadow:0 1px 0 #fff;padding:0.2em;}
+a[rel="next"]{float:right}
+a[rel="prev"]{float:left}
+nav#nav-below.navigation a span.np-post {
+    font-size: small;
+    text-decoration: none;
+    text-shadow: none;
+    margin-left: 0.1em;
+    color:#000;
+    }
+
+#entry-author-info{background: #e2e2e2;padding:0.8em 0.8em  1.8em;border-bottom:5px solid #000;margin-bottom: 2em;margin-top:0.5em;clear:both;}
+#entry-author-info h2{text-shadow:0 1px 0 #fff;}
+#entry-author-info img{float:left;margin: 0.5em 0.25em 0.25em 0;padding:0.25em;background: #fff;}
+a:link#author-meta-link, a#author-meta-link, a:active#author-meta-link, a:visited#author-meta-link{color:#006464}
+
+#entry-author-info span.bio{
+    display: none;
+    visibility: hidden;
+    font-size: 0.8em;
+    font-style: italic;
+    line-height: 1.4em;
+    margin-top: 1em;
+    margin-bottom:0.5em;
+    max-width: 95%;
+	    }
+
+#entry-author-info span.bio.show{
+    display: block;
+    visibility: visible;
+    }
+
+a#author-meta-link{
+    background: none repeat scroll 0 0 #F7F7F7;
+    float: right;
+    margin-bottom: 3em;
+    margin-top: 1.5em;
+    padding: 0.25em 1em;
+    text-align: right;
+    box-shadow: 0 0 2px #000;
+    overflow: hidden;
+    font-size: smaller;
+    }
+
+a#author-meta-link, 
+span#author-meta-description,
+h2#author-meta-name{
+margin-left:85px;
+}
+
+span#author-meta-description{min-height:45px;}
+
+span#author-meta-description span.links{display: block;margin-top:0.5em;}
+
+span#author-meta-description span.links h4{margin:0;overflow: hidden;}
+span#author-meta-description span.links a{overflow: hidden;}
+
+
+span#author-meta-description,
+h2#author-meta-name{display:block;}
+span#author-meta-description a{overflow: hidden;}
+h2#author-meta-name{margin-top:0;margin-bottom:0;}
+
+/* FOOTER
+**/
+footer{clear: both;}
+footer p{}
+footer[role="contentinfo"]{
+    margin:3em auto 0;
+    width:100%;
+    padding-top:1em;
+    border-top:5px solid #000;
+    background: #ccc;
+    text-shadow: 0 1px 0 #fff;
+     }
+footer[role="contentinfo"] ul.xoxo{}
+
+
+
+a[rel="home"],
+a[rel="generator"]{text-align: center;width:100%;float:left;margin:0 auto;margin-bottom:0.5em;}
+
+select#page-dropdown{text-align: center;width:100%;margin:0.5em auto 2em;}
+.page-dropdown,#page-dropdown{display:inline;visibility: visible;}
+
+/*WIDGETS
+**/
+ul.xoxo{
+clear:both;list-style: none;
+    display: block;
+    height: auto;
+    margin: 0 auto 2em;
+    padding: 0;
+    width: 90%;
+    }
+ul.xoxo li.widget-container{}
+ul.xoxo li.widget-container h3{}
+ul.xoxo li.widget-container div{}
+
+/* primary and secondary widgets 
+**/
+section#content ul.xoxo#primary,section#content ul.xoxo#secondary{
+	transition: .2s all ease;
+	font-size: small			
+	}
+section#content ul.xoxo#primary,section#content ul.xoxo#secondary{width:auto}
+
+section#content ul#primary.xoxo {
+    margin-top: 6em;
+}
+section#content ul.xoxo#secondary{display:none;visibility: hidden}
+
+section#content #menu ul.xoxo h3{
+    display: block;
+    padding: 0.25em 0.5em 0;
+    text-align: center;
+    text-shadow: 0 1px 0 #FFFFFF;
+    }
+
+section#content ul.xoxo#primary li{}
+section#content ul.xoxo#secondary li{}
+
+
+section#content ul.xoxo#primary li ul,section#content ul.xoxo#secondary li ul{list-style: none;padding: 0;}
+section#content ul.xoxo#primary li ul li,section#content ul.xoxo#secondary li ul li{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 1px dotted #CCCCCC;
+    clear: both;
+    padding: 0.5em;
+    list-style: none;
+    }
+
+
+/*SPONSORS
+**/
+#sponsors a.sponsor img{visibility:hidden;display: none;}
+#sponsors p{padding-bottom:1em;background: #f7f7f7;box-shadow:0 0 2px #333;padding:0.5em;color:#777;font-weight: lighter;}
+#sponsors a{color:#555;text-decoration: none;}
+
+p.sponsorship-text a {
+    border-bottom: 1px dotted #CCCCCC;
+}
+
+
+/*COMMENTS
+**/
+#respond input,#respond textarea{padding:0.25em;display:block;}
+#respond input{width:97%;margin:0.25em auto 0 0;max-width:30em;}
+#respond textarea{width:97%;margin:0.5em auto;}
+#respond p.form-submit input#submit{width:auto !important; padding:0.5em;float:right;background: #000;color:#fff;text-shadow: 0 1px 0 #555;clear: both;}
+#respond span.required{color:#A60000;}
+p.form-allowed-tags{font-size:small;}
+
+ol.comments{padding:0;}
+ol li.comment{list-style: none;}
+
+ol.comments article{border-bottom:1px dotted #ccc;padding-bottom:1em;}
+
+div.comment-author.vcard{background: #eaeaea;border-bottom:3px solid #000;}
+
+footer.comment-meta.commentmetadata{text-align: right;width:100%;}
+footer.comment-meta.commentmetadata a{color:#888;font-size: smaller;}
+
+cite.fn{font-style: normal;margin-left:0.25em;}
+span.says{font-size: smaller;}
+
+
+/*Search
+**/
+input#searchsubmit{width:auto !important; padding:0.25em;background: #000;color:#fff;text-shadow: 0 1px 0 #555;clear: both;}
+input#s{padding:0.25em;}
+input[placeholder]{color:#777}
+
+
+
+/* special overrides for mobile phones -- these get explicitly undone below... sorry, this part is kinda messy 
+/* awesome icons via: http://blog.twg.ca/2010/11/retina-display-icon-set/
+**/
+div.menu ul, div.menu-header ul{font-size:0.75em;}
+li#mobile-home a,
+li#mobile-campers a,
+li#mobile-posts a,
+li#menu-top a{padding-top: 3em;}
+
+li#mobile-home a{background-image: url("images/icon_home.png");background-position: center 0.3em;background-repeat: no-repeat;background-size: 30px;}
+li#mobile-campers a{background-image: url("images/icon_users.png");background-position: center 0.3em;background-repeat: no-repeat;background-size: 30px;}
+li#mobile-posts a{background-image: url("images/icon_post.png");background-position: center 0.3em;background-repeat: no-repeat;background-size: 30px;}
+li#menu-top a{background-image: url("images/icon_list_bullets.png");background-position: center 0.3em;background-repeat: no-repeat;background-size: 30px;}
+
+header {margin: 4.25em auto 0;}
+
+li#mobile-home{margin-left: 1.25em;}
+/*end special*/
+
+
+
+ul#list-pages{
+    float: right;
+    margin: 1em;
+    width: 95%;
+    padding-left:0;
+    }
+ul#list-pages li{
+    list-style: none outside none;
+    width: 100%;
+    background: #ccc;
+    padding:0.25em;
+    border-bottom: 3px solid #fff;
+    }
+ul#list-pages li a{}
+
+/* ==|== media queries ======================================================
+   EXAMPLE Media Query for Responsive Design.
+   This example overrides the primary ('mobile first') styles
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 40em) {
+  /* Style adjustments for viewports that meet the condition */
+  
+/* undoing special overrides for mobile*/
+div.menu ul, div.menu-header ul{font-size:1em;}
+li#mobile-home a,
+li#mobile-campers a,
+li#mobile-posts a,
+li#menu-top a{padding-top: 0.5em;}
+
+li#mobile-home a{background-image: url(none);}
+li#mobile-campers a{background-image: url(none);}
+li#mobile-posts a{background-image: url(none);}
+li#menu-top a{background-image: url(none);}
+
+header {margin: 2.25em auto 0;}
+/*end special*/
+  
+  footer[role="contentinfo"]{padding-top:2em;border-top:0 none transparent;padding-top:0;}
+  
+  footer[role="contentinfo"] ul.xoxo {width: 22%; max-width: 30em; float:left; margin-left:3%;clear:right;display:inline; margin-top:2em;}
+  
+  footer[role="contentinfo"] ul.xoxo#sponsorship-footer{width: 100%;max-width: none; margin:0 auto;clear:both;display:block; float:none;margin-bottom:0;box-shadow: 0 0 2px #ccc;
+		background: #f7f7f7; /* Old browsers */
+}
+  
+  footer[role="contentinfo"] ul.xoxo#sponsorship-footer li{margin:0 auto 0;background: #f7f7f7;padding:0.5em 2em 0.5em 2em;box-shadow: 0 0 10px #000;}
+  
+	#sponsors{}
+	#sponsors h3.sponsorship-text{display:none;visibility:hidden;}
+	#sponsors p {
+    color: #AAAAAA;
+    font-size: small;
+    padding: 0.5em;
+    background: none;
+    box-shadow: none;
+    font-weight: normal;
+	}
+	#sponsors a{color:#555;text-decoration: none;}
+	#sponsors a.sponsor img{display:inline;visibility:visible; width:10%;margin:1%;}
+	#sponsors a.sponsor#ohc img{width:17%;}
+	#sponsors a.sponsor#csu img{width:8%;}
+	#sponsors a.sponsor#cphdh img{width:18%;}
+	#sponsors a.sponsor#oha img{}
+	#sponsors a.sponsor#gmu img{}
+	#sponsors a.sponsor#chnm img{width:8%}
+	#sponsors a.sponsor#thatcamp img{width:22%;}  
+
+	section#content article, section#content ul.xoxo#primary,section#content ul.xoxo#secondary{}
+	section#content ul.xoxo#primary,section#content ul.xoxo#secondary{
+	clear: none;
+    display: inline;
+    margin: 3em 5% 0;
+    width: 35%;
+    }
+	
+	section#content ul.xoxo#primary{float:left;}
+	section#content ul.xoxo#primary ul li{}
+	section#content ul.xoxo#secondary{float:right;visibility: visible;display: inline;width:45%;}
+	
+	section#content ul.xoxo#primary li{}
+	section#content ul.xoxo#secondary li{}
+	
+	section#content ul.xoxo#primary li ul,section#content ul.xoxo#secondary li ul{list-style: square;padding: auto;}
+	section#content ul.xoxo#primary li ul li,section#content ul.xoxo#secondary li ul li{
+    background: none;
+    border-bottom: 1px dotted #CCCCCC;
+    clear: both;
+    padding: 0.5em;
+    }
+    
+    .page-dropdown,#page-dropdown{display:none;visibility: hidden;}	
+
+ul#list-pages{
+    max-width: 30%;
+    margin:0 0 1.5em 1.5em;
+    }
+
+}
+
+/* Wider screens */
+@media only screen and (min-width: 50em) {
+
+/* undoing special overrides for mobile*/
+div.menu ul, div.menu-header ul{font-size:1em;}
+li#mobile-home a,
+li#mobile-campers a,
+li#mobile-posts a,
+li#menu-top a{padding-top: auto;}
+
+li#mobile-home a{background-image: url(none);}
+li#mobile-campers a{background-image: url(none);}
+li#mobile-posts a{background-image: url(none);}
+li#menu-top a{background-image: url(none);}
+
+header {margin: 1.25em auto 0;}
+/*end special*/
+		
+		    
+		nav#access[role="navigation"] ul#menu-primary{display:none;visibility: hidden;height: 0;}
+		
+		nav#access[role="navigation"]{
+		    position: absolute;
+		    z-index: 0;
+		    top: 0;
+		    width: 100%;
+		    height:auto;
+		    background: #000;
+		    }	
+		
+		nav#access[role="navigation"] div#wide-access{display:block;visibility: visible;}	
+		    
+		nav#access[role="navigation"] div#wide-access{
+		    width:100%; 
+		    max-width:45em;
+		    margin:0 auto;
+		    }
+		    
+		#outer{
+		    background: url(images/noize.png) repeat scroll 0 0 #999;
+    		height: 222px;
+    		}    
+		    
+		.onscreen-widgets,.offscreen-widgets{margin-top:-1000px;display:none;visibility: hidden;height:0;}
+		    
+		    
+		div#wide-access a{
+		    color: #fff;
+		    float: left;
+		    font-weight: lighter;
+		    min-width: 14%;
+		    padding: 0.65em 1em;
+		    text-align: center;
+		    text-decoration: none;
+		    text-shadow: 0 1px 0 #000;
+		    }
+		    
+		div#wide-access a:hover{background: #fff;color:#222;text-shadow: 0 1px 0 #ccc;opacity: 1;}
+		
+		header{min-height:18em;z-index: 0;position: relative;margin-top:0;width: 100%;max-width: 38em;}
+		nav#access[role="navigation"] {
+		    top: 222px;
+		    z-index: 1;
+		}
+		section#content{margin-top:3em;}
+		
+		
+		
+		section#content ul#primary.xoxo, section#content ul#secondary.xoxo{float:none;margin:none;clear:none;}
+		
+		section#content #menu ul#primary,section#content #menu ul#secondary{margin:0;}
+		
+		section#content #menu ul.xoxo h3, section#content ul#primary.xoxo li ul li, section#content ul#secondary.xoxo li ul li, ul.xoxo li.widget-container div {text-align:right;border-bottom: none;}
+		ul.xoxo li select{float:right;}
+		
+		
+		
+		footer[role="contentinfo"]{background: #fff;max-width: 60em;}
+		
+		footer[role="contentinfo"] ul#sponsorship-footer.xoxo {max-width: 55em;box-shadow:none;background: #fff;}
+		footer[role="contentinfo"] ul#sponsorship-footer.xoxo li{max-width: none;box-shadow:none;background: #fff;}
+
+		#sponsors p{text-align: center;color:#888;}
+		
+		#entry-author-info{background: none;}
+		
+		#entry-author-info span.bio{
+		color: #777777;
+		display:block;
+		visibility: visible;
+    	}
+    	
+    	.page-dropdown,#page-dropdown{display:none;visibility: hidden;}	
+		
+		
+}
+		
+		
+		
+
+/* ==|== non-semantic helper classes ========================================
+   Please define your styles before this section.
+   ========================================================================== */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+
+
+/* ==|== print styles =======================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* h5bp.com/t */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+
+
+/** END HTML5 Boilerplate CSS **/
+
+
+/** START Starkers CSS **/
+
+/* LAYOUT */
+/* ----------------------------------------- */
+
+/* These rather presentational classes are generated by WordPress, so it's useful to have some styles for them. Edit as you see fit. More info: http://codex.wordpress.org/CSS */
+.aligncenter { display:block; margin:0 auto }
+.alignleft { float:left }
+.alignright { float:right }
+.wp-caption { border:1px solid #666; text-align:center; background:#ccc; padding:10px; margin:10px }
+
+/* You might find the following useful */
+/* div, ul, li { position:relative } This will save you having to declare each div / ul / li's position as 'relative' and allows you to absolutely position elements inside them
+br.clear { clear:both; display:block; height:1px; margin:-1px 0 0 0 } /* Use this br class to clear your floated columns */
+li#theme-switcher { background:#fff; border:10px solid red; padding:20px; position:fixed; top:0; right:0 } /* Use this if you have the Theme Switcher Reloaded plugin (http://themebot.com/webmaster-tools/1-wordpress-theme-switcher-reloaded) installed and want to make it nice and obvious */
+*/
+/* TYPOGRAPHY */
+/* ----------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 { font-weight:bold } /* This helps to identify headings at the initial build stage, so I thought it'd be useful to have it */
+.alert { background:red; color:white } /* 'alert' has a basic style, since it's useful to have it standing out for testing purposes.
+
+
+
+/* Font stack options
+
+	The following represents a list of font stacks, as recommended by Nathan Ford in
+	http://unitinteractive.com/blog/2008/06/26/better-css-font-stacks/
+
+	I've added inverted commas around the relevant family names to ensure compatibility.
+	p = balanced for paragraphs or body copy
+	t = balanced for headlines or titles
+
+	- - - -
+
+Arial, "Helvetica Neue", Helvetica, sans-serif - p, t
+
+Baskerville, "Times New Roman", Times, serif - p
+Baskerville, "Times, Times New Roman", serif - t
+
+Cambria, Georgia, Times, "Times New Roman", serif - p, t
+"Century Gothic", "Apple Gothic", sans-serif - p, t
+
+Consolas, "Lucida Console", Monaco, monospace - p, t
+
+"Copperplate Light", "Copperplate Gothic Light", serif - p, t
+
+"Courier New", Courier, monospace - p, t
+
+"Franklin Gothic Medium", "Arial Narrow Bold", Arial, sans-serif - p, t
+
+Futura, "Century Gothic", "Apple Gothic", sans-serif - p, t
+
+Garamond, "Hoefler Text", "Times New Roman", Times, serif - p
+Garamond, "Hoefler Text", Palatino, "Palatino Linotype", serif - t
+
+Geneva, "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif - p
+Geneva, Verdana, "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif - t
+
+Georgia, Palatino, "Palatino Linotype", Times, "Times New Roman", serif - p
+Georgia, Times, "Times New Roman", serif - t
+
+GillSans, Calibri, Trebuchet, sans-serif - p
+GillSans, Trebuchet, Calibri, sans-serif - t
+
+"Helvetica Neue", Arial, Helvetica, sans-serif - p
+Helvetica, "Helvetica Neue", Arial, sans-serif - t
+
+Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif - p, t
+
+"Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif - p, t
+
+Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif - p
+Palatino, "Palatino Linotype", "Hoefler Text", Times, "Times New Roman", serif - t
+
+Tahoma, Geneva, Verdana - p
+Tahoma, Verdana, Geneva - t
+
+Times, "Times New Roman", Georgia, serif - p, t
+
+Trebuchet, "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif - p
+Trebuchet, Tahoma, Arial, sans-serif - t
+
+Verdana, Geneva, Tahoma, sans-serif - p
+Verdana, Tahoma, Geneva, sans-serif - t
+
+*/
+
+/** END Starkers CSS **/
+
+/** START WordPress-Defined CSS Classes **/
+.wp-caption-text{}
+.gallery-caption{}
+.bypostauthor{}
+.sticky{}
+/** END WordPress-Defined CSS Classes **/

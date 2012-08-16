@@ -1,0 +1,27 @@
+<?php get_header(); ?>
+<div id="content">
+    <div id="primary">
+	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+		<div class="post" id="post-<?php the_ID(); ?>">
+			<h1><a href="<?php echo get_permalink() ?>" rel="bookmark" title="Permanent Link: <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+				<p><strong><?php the_time('F jS, Y') ?></strong> | <?php the_author_posts_link(); ?></p>
+			<div class="entry">
+				<?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
+
+				<?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
+			</div>
+		</div>
+	<?php comments_template(); ?>
+	<ul id="post-navigation" class="navigation">
+		<li class="alignleft"><?php previous_post_link('&laquo; %link') ?></li>
+		<li class="alignright"><?php next_post_link('%link &raquo;') ?></li>
+	</ul>
+	<?php endwhile; else: ?>
+
+		<p>Sorry, no posts matched your criteria.</p>
+
+<?php endif; ?>
+</div>
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

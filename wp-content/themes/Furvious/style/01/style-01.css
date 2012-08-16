@@ -1,0 +1,27 @@
+a,a:visited{color: #5A6F1B;}
+#topbar{background: url(topnavbg.jpg) repeat-x top;border-right: 1px solid #206E78;}
+ul#menu{background: url(topnavbit.jpg) no-repeat left;}
+ul#menu li a{border-right: 1px solid #394400;}
+	ul#menu li a:hover{ border-right: 1px solid #576800;background: url(menuhover.jpg) repeat-x top;}	
+	ul#menu li.current_page_item a{border-right: 1px solid #576800;}	
+	ul#menu li.current_page_item a{background: url(menuhover.jpg) repeat-x top;}		
+.feedbar{background: url(feedbar.jpg) no-repeat left;}
+h2.sideheading{text-shadow: #F4EFC7 0px 1px;}	
+p.feedbaricon{text-shadow: #DAE252 0px 1px;}
+#bigg{background: url(bgg.jpg) repeat-y;}
+.entry_info .sidedateblock{background: url(dateblock.png) no-repeat top;color: #000;text-shadow: #BDC275 1px 1px;}
+span.contenttop{background: #BABABA url(bgtopcontent.jpg) no-repeat bottom left;}
+span.contentbottom{background: url(contentbottombg.jpg) no-repeat top left;}
+.entry_info{color: #ccc;}
+.entry_info img.avatar{border: 4px solid #E9D9A6;}
+.entry_info ul li.sidecategory a{background:#6E6E6E;color: #000;}
+	.entry_info ul li.sidecategory a:hover{color: #000;}
+	.post a{text-decoration: underline;}
+ul.sidebarlist li a {background: #F4E4AE;}
+ul.sidebarlist li a:hover {background: #FCECB3;}
+	.post a.more-link{background:#A6AE27;}
+		a.more-link:hover{background: #939A20;}
+.promote_bottombg{background: #9CA224;border: 1px solid #777D1B;}
+		#promote a{color: #fcffc6;}		
+		.p_leftcol{border-right:1px solid #777D1B;}
+		.p_leftcol li{border-bottom: 1px solid #777D1B;}

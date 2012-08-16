@@ -1,0 +1,49 @@
+Cite this CHANGES
+=================
+
+Cite This 0.3.1 (2008-02-09T00:14:24+0800)
+------------------------------------------
+Added: Post status checking
+Deled: `GetCTdynamicPath()`
+Fixed: Author name doesn't show up, if no first name and last name settings.
+
+Cite This 0.3.0.1 (2007-11-21T08:43:20+0800)
+--------------------------------------------
+Fixed: 5 - Deactivate Plugin not working.
+Fixed: 6 - Reset All Options messes Citation Style up.
+Moded: Change plugin name to 'Cite This'
+
+Cite This 0.3 (2007-11-19T14:00:26+0800)
+----------------------------------------
+Moded: Using built-in (un)serialize mechanism for options.
+Moded: Rewrite the text in Options Page.
+Moded: Show widget in pages.
+Fixed: Typo in option name `CTgerneralOptions`.
+
+* The following issues were filed in old tracker of Google Code *
+
+Cite this 0.2.3 (09/22/2007)
+----------------------------
+Moded: compatible with WordPress 2.3
+Fixed: #9 canonical.php in 2.3 breaks .../citations/ links - 
+Fixed: #10 CT can't access jquery in 2.3 - Use jQuery instead of $.
+
+Cite this 0.2 (08/27/2007)
+--------------------------
+Fixed: Missing post title in title of window through (new window) link.
+Moded: #7 - Citation block's style.
+Moded: #6 - Add /citations/new/, also add &citations=new, &citations=partial
+       as query parameters.
+
+Cite this 0.1.1 (08/05/2007)
+----------------------------
+Moded: XHTML 1.0 Strict
+Fixed: #3 Error message for nonexistent post
+Fixed: #4 Problem when trying to edit cite styles or addind new ones
+Fixed: lots of mis-assignment attribute of input elements with type="input"
+Fixed: No escape of '/' in Javascript
+Deled: Remove dbx from options page
+
+Cite this 0.1 (07/24/2007)
+--------------------------
+First release.

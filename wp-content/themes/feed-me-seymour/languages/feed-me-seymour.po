@@ -1,0 +1,646 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: c.bavota <c@bavotasan.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+#. Text in echo
+#: feed-me-seymour/single.php:11
+msgid " and is filed under "
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/single.php:11
+msgid " at "
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/single.php:11
+msgid " feed."
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/archive.php:39
+#: feed-me-seymour/search.php:24
+msgid "% Comments &#187;"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/footer.php:12
+msgid "%1$s created by %2$s"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/search.php:2
+msgid "%1$s search results for \"%2$s\""
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/archive.php:46
+#: feed-me-seymour/search.php:29
+#: feed-me-seymour/index.php:55
+msgid "&laquo; Older Entries"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/comments.php:35
+msgid "&larr; Older Comments"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:693
+msgid "(Edit)"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_feature.php:78
+msgid "(Note: The selected will be excluded from the main content on the index page)"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_feature.php:69
+msgid "(max 5)"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/archive.php:39
+#: feed-me-seymour/search.php:24
+msgid "1 Comment &#187;"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "1024px"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:465
+msgid "180px"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:465
+msgid "300px"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "800px"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/functions.php:699
+msgid "<em>Your comment is awaiting moderation.</em>"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/archive.php:50
+msgid "<h2 class='center'>No posts found.</h2>"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/archive.php:50
+msgid "<h2 class='center'>Sorry, but there aren't any posts by %s yet.</h2>"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/archive.php:50
+msgid "<h2 class='center'>Sorry, but there aren't any posts in the %s category yet.</h2>"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/archive.php:50
+msgid "<h2>Sorry, but there aren't any posts with this date.</h2>"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/single.php:8
+msgid "<p class=\"tags\"><small>Tags: "
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:228
+msgid "A lot of hard work went into creating %s. If you would like to show your support, please use the donate link below."
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Add meta tag description (Excerpt used on single posts and pages)"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Add meta tag keywords, separate by comma (Tags are used on single posts)"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Add your Google Analytics code"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/functions.php:218
+msgid "Affiliates Program"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/sidebar.php:16
+msgid "Archive"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/archive.php:12
+#: feed-me-seymour/archive.php:14
+#: feed-me-seymour/archive.php:16
+msgid "Archive for "
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/archive.php:18
+msgid "Author Archive"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/archive.php:20
+msgid "Blog Archives"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/functions.php:370
+#: feed-me-seymour/functions.php:373
+#: feed-me-seymour/functions.php:376
+#: feed-me-seymour/functions.php:379
+msgid "Buy Now"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_feature.php:17
+msgid "By"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/sidebar-second.php:12
+msgid "Calendar"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:262
+msgid "Close All"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/comments.php:46
+msgid "Comments are closed."
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_login.php:5
+#: feed-me-seymour/header.php:39
+msgid "Control Panel"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/footer.php:12
+msgid "Copyright &copy; %1$d %2$s. All Rights Reserved."
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_login.php:8
+msgid "Dashboard"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/widgets/widget_feature.php:80
+msgid "Displays featured posts from one category"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/functions.php:226
+msgid "Donate"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/archive.php:39
+#: feed-me-seymour/search.php:24
+msgid "Edit"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/widgets/widget_feature.php:80
+msgid "FMS - Featured Post"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/widgets/widget_login.php:27
+msgid "FMS - User Login"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "First Sidebar Width"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_feature.php:71
+msgid "From which category: "
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Google Analytics"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:245
+msgid "Header &amp; Footer"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Header Logo"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/sidebar.php:3
+msgid "Home"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "How many posts would you like to appear on the main page?"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/functions.php:346
+msgid "How to Customize a Basic Theme"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/functions.php:346
+msgid "If you have any questions, comments, or if you encounter a bug, please visit our <a href=\"http://support.bavotasan.com/\">Support Forum</a> and let us know."
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "If you would like to display a logo in the header, please enter the file path above."
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:245
+msgid "Info"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/functions.php:346
+msgid "Instruction Manual"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Keywords"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:163
+#: feed-me-seymour/functions.php:205
+msgid "Layout Options"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/header.php:52
+msgid "Log In"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_login.php:15
+#: feed-me-seymour/header.php:44
+msgid "Log Out"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_login.php:7
+#: feed-me-seymour/header.php:38
+msgid "Logged in as:"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Logo or Blog Name Location"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_login.php:24
+msgid "Lost your password"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:245
+msgid "Main"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/functions.php:370
+#: feed-me-seymour/functions.php:373
+#: feed-me-seymour/functions.php:376
+#: feed-me-seymour/functions.php:379
+msgid "More Info"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/comments.php:36
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/archive.php:47
+#: feed-me-seymour/search.php:30
+#: feed-me-seymour/index.php:56
+msgid "Newer Entries &raquo;"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "No"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/archive.php:39
+#: feed-me-seymour/search.php:24
+msgid "No Comments &#187;"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:465
+#: feed-me-seymour/functions.php:708
+msgid "None"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Number of Posts"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_feature.php:67
+msgid "Number of posts to show: "
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:262
+msgid "Open All"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:206
+msgid "Options Saved"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/single.php:15
+#: feed-me-seymour/page.php:7
+msgid "Pages"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/archive.php:25
+#: feed-me-seymour/search.php:9
+#: feed-me-seymour/index.php:36
+msgid "Permanent Link to %s"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/archive.php:39
+#: feed-me-seymour/search.php:24
+msgid "Posted in"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/archive.php:9
+msgid "Posts Tagged &#8216; %s &#8217;"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/footer.php:12
+msgid "Powered by %s"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:245
+msgid "Premium Themes"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_login.php:14
+#: feed-me-seymour/header.php:43
+msgid "Profile"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "RSS Button"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/index.php:48
+msgid "Read More &raquo;"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:556
+msgid "Read more &raquo;"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_login.php:23
+#: feed-me-seymour/header.php:51
+msgid "Register"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/comments.php:30
+msgid "Reply"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/functions.php:213
+msgid "Resources"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:245
+msgid "SEO"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Second Sidebar Width"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Select the width of your site."
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Sidebar Location"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:245
+msgid "Sidebars"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Site Description"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Site Width"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/search.php:34
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/single.php:19
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/sidebar.php:30
+#: feed-me-seymour/header.php:68
+msgid "Subscribe to RSS"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/functions.php:217
+msgid "Support Forum"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Tag Line"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/archive.php:39
+#: feed-me-seymour/sidebar.php:22
+#: feed-me-seymour/search.php:24
+msgid "Tags"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/functions.php:346
+msgid "There are tons of layout possibilities available with this theme, as well as a bunch of cool features that will surely help you get your site looking and working it's best."
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/single.php:11
+msgid "This entry was posted on "
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/comments.php:3
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Thumbnail"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_feature.php:64
+msgid "Title: "
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+#: feed-me-seymour/widgets/widget_login.php:20
+msgid "User Login"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/widgets/widget_login.php:27
+msgid "User login and control panel"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:346
+msgid "Version"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/functions.php:370
+#: feed-me-seymour/functions.php:373
+#: feed-me-seymour/functions.php:376
+#: feed-me-seymour/functions.php:379
+msgid "View Demo"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "What would you like your first sidebar width to be?"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "What would you like your second sidebar width to be?"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Where do you want your Logo or Blog Name located?"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Where would you like your sidebars located?"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Would you like an RSS Button in your header?"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Would you like to display a tag line beneath your blog name/logo?"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Would you like to have a User Login section at the top of your site?"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/widgets/widget_login.php:11
+#: feed-me-seymour/header.php:41
+msgid "Write"
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:708
+msgid "Yes"
+msgstr ""
+
+#. Text in echo
+#: feed-me-seymour/single.php:11
+msgid "You can follow any responses to this entry through the "
+msgstr ""
+
+#. Text in function
+#: feed-me-seymour/functions.php:693
+msgid "on %1$s at %2$s"
+msgstr ""
+

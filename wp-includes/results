@@ -1,0 +1,48 @@
+class-wp-admin-bar.php:		add_action( 'wp_head', 'wp_admin_bar_header' );
+class-wp-admin-bar.php:		add_action('wp_head', $header_callback);
+class-wp.php:		$headers = apply_filters('wp_headers', $headers, $this);
+default-filters.php:add_action( 'wp_head',             'wp_enqueue_scripts',              1     );
+default-filters.php:add_action( 'wp_head',             'feed_links',                      2     );
+default-filters.php:add_action( 'wp_head',             'feed_links_extra',                3     );
+default-filters.php:add_action( 'wp_head',             'rsd_link'                               );
+default-filters.php:add_action( 'wp_head',             'wlwmanifest_link'                       );
+default-filters.php:add_action( 'wp_head',             'adjacent_posts_rel_link_wp_head', 10, 0 );
+default-filters.php:add_action( 'wp_head',             'locale_stylesheet'                      );
+default-filters.php:add_action( 'wp_head',             'noindex',                          1    );
+default-filters.php:add_action( 'wp_head',             'wp_print_styles',                  8    );
+default-filters.php:add_action( 'wp_head',             'wp_print_head_scripts',            9    );
+default-filters.php:add_action( 'wp_head',             'wp_generator'                           );
+default-filters.php:add_action( 'wp_head',             'rel_canonical'                          );
+default-filters.php:add_action( 'wp_head',             'wp_shortlink_wp_head',            10, 0 );
+default-filters.php:    add_action( 'wp_head', 'wp_no_robots' );
+default-widgets.php:			add_action( 'wp_head', array(&$this, 'recent_comments_style') );
+deprecated.php:		remove_action( 'wp_head', 'feed_links_extra', 3 ); // Just do this yourself in 3.0+
+functions.php:	global $wp_header_to_desc;
+functions.php:	if ( !isset( $wp_header_to_desc ) ) {
+functions.php:		$wp_header_to_desc = array(
+functions.php:	if ( isset( $wp_header_to_desc[$code] ) )
+functions.php:		return $wp_header_to_desc[$code];
+functions.wp-scripts.php: * Called by admin-header.php and by wp_head hook. Since it is called by wp_head
+functions.wp-scripts.php:	if ( '' === $handles ) // for wp_head
+functions.wp-styles.php:	if ( '' === $handles ) // for wp_head
+general-template.php: * Fire the wp_head action
+general-template.php: * @uses do_action() Calls 'wp_head' hook.
+general-template.php:function wp_head() {
+general-template.php:	do_action('wp_head');
+general-template.php: * output to tell web robots not to index the page content. Add this to the wp_head action.
+general-template.php: * Typical usage is as a wp_head callback. add_action( 'wp_head', 'noindex' );
+general-template.php: * Typical usage is as a wp_head callback. add_action( 'wp_head', 'wp_no_robots' );
+general-template.php: * Display the XHTML generator that is generated on the wp_head hook.
+link-template.php: * This is meant to be attached to actions like 'wp_head'. Do not call this directly in plugins or theme templates.
+link-template.php:function adjacent_posts_rel_link_wp_head() {
+link-template.php: *  Attached to the wp_head action.
+link-template.php:function wp_shortlink_wp_head() {
+script-loader.php: * Runs first in wp_head() where all is_home(), is_page(), etc. functions are available.
+theme.php: * content for the 'wp_head' action. The parameter $admin_header_callback
+theme.php: * @param callback $header_callback Call on 'wp_head' action.
+theme.php:		add_action('wp_head', $header_callback);
+theme.php:	remove_action( 'wp_head', $callback[0]['callback'] );
+theme.php: * content for the 'wp_head' action. The parameter $admin_header_callback
+theme.php: * @param callback $header_callback Call on 'wp_head' action.
+theme.php:	add_action( 'wp_head', $header_callback );
+theme.php:	remove_action( 'wp_head', $callback[0]['callback'] );

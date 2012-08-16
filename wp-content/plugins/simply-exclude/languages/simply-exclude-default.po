@@ -1,0 +1,318 @@
+# Translation of the WordPress plugin   by .
+# Copyright (C) 2012
+# This file is distributed under the same license as the  package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: simply-exclude\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/simply-exclude\n"
+"POT-Creation-Date: 2012-03-05 13:54-0600\n"
+"PO-Revision-Date: 2012-03-05 14:57-0500\n"
+"Last-Translator: Paul Menard <paul@codehooligans.com>\n"
+"Language-Team:  <simply-exclude@codehooligans.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+
+#: simplyexclude.php:48
+#: simplyexclude.php:660
+#: simplyexclude.php:669
+#: simplyexclude.php:678
+msgid "Simply Exclude"
+msgstr ""
+
+#: simplyexclude.php:111
+msgid "Settings"
+msgstr ""
+
+#: simplyexclude.php:301
+#: simplyexclude.php:344
+#: simplyexclude.php:406
+msgid "Action Name"
+msgstr ""
+
+#: simplyexclude.php:302
+#: simplyexclude.php:345
+#: simplyexclude.php:407
+msgid "Description "
+msgstr ""
+
+#: simplyexclude.php:303
+#: simplyexclude.php:346
+#: simplyexclude.php:408
+msgid "Inclusion/Exclusion"
+msgstr ""
+
+#: simplyexclude.php:319
+#: simplyexclude.php:362
+#: simplyexclude.php:424
+#: simplyexclude.php:2579
+#: simplyexclude.php:2589
+#: simplyexclude.php:2598
+msgid "Include only"
+msgstr ""
+
+#: simplyexclude.php:321
+#: simplyexclude.php:364
+#: simplyexclude.php:426
+#: simplyexclude.php:2580
+#: simplyexclude.php:2590
+#: simplyexclude.php:2599
+msgid "Exclude"
+msgstr ""
+
+#: simplyexclude.php:371
+#: simplyexclude.php:380
+msgid "Include All"
+msgstr ""
+
+#: simplyexclude.php:458
+#: simplyexclude.php:467
+#: simplyexclude.php:492
+#: simplyexclude.php:501
+#: simplyexclude.php:526
+#: simplyexclude.php:535
+msgid "Active"
+msgstr ""
+
+#: simplyexclude.php:463
+msgid "Is this Taxonomy active? This is sometimes convenient instead of unsetting all Taxonomy terms."
+msgstr ""
+
+#: simplyexclude.php:470
+#: simplyexclude.php:504
+#: simplyexclude.php:538
+msgid "Disabled"
+msgstr ""
+
+#: simplyexclude.php:497
+msgid "Is this Post Type Active? This is sometimes convenient instead of unsetting all Post Type items."
+msgstr ""
+
+#: simplyexclude.php:531
+msgid "Active?"
+msgstr ""
+
+#: simplyexclude.php:567
+#: simplyexclude.php:598
+#: simplyexclude.php:629
+msgid "Show/Hide"
+msgstr ""
+
+#: simplyexclude.php:572
+msgid "Show the extra columns on the Taxonomy listing and the Taxonomy edit form?"
+msgstr ""
+
+#: simplyexclude.php:576
+#: simplyexclude.php:607
+#: simplyexclude.php:638
+msgid "Show"
+msgstr ""
+
+#: simplyexclude.php:579
+#: simplyexclude.php:610
+#: simplyexclude.php:641
+msgid "Hide"
+msgstr ""
+
+#: simplyexclude.php:603
+msgid "Show the extra columns on the Post Type listing and the Post Type edit form?"
+msgstr ""
+
+#: simplyexclude.php:634
+msgid "Show the extra columns on the listing and the edit form?"
+msgstr ""
+
+#: simplyexclude.php:660
+#: simplyexclude.php:669
+#: simplyexclude.php:678
+msgid "show"
+msgstr ""
+
+#: simplyexclude.php:1025
+msgctxt "Simply Exclude"
+msgid "Simply Exclude"
+msgstr ""
+
+#: simplyexclude.php:1599
+#: simplyexclude.php:1721
+#: simplyexclude.php:1816
+msgid "Front/Home"
+msgstr ""
+
+#: simplyexclude.php:1603
+#: simplyexclude.php:1820
+msgid "Visibility on the front/main page."
+msgstr ""
+
+#: simplyexclude.php:1616
+#: simplyexclude.php:1738
+#: simplyexclude.php:1834
+msgid "Archives"
+msgstr ""
+
+#: simplyexclude.php:1620
+#: simplyexclude.php:1838
+msgid "Visibility on the archive of categories on the sidebar."
+msgstr ""
+
+#: simplyexclude.php:1634
+#: simplyexclude.php:1772
+#: simplyexclude.php:1852
+msgid "Searches"
+msgstr ""
+
+#: simplyexclude.php:1638
+#: simplyexclude.php:1776
+#: simplyexclude.php:1856
+msgid "Visibility in search results."
+msgstr ""
+
+#: simplyexclude.php:1652
+#: simplyexclude.php:1755
+#: simplyexclude.php:1870
+msgid "Feeds"
+msgstr ""
+
+#: simplyexclude.php:1656
+#: simplyexclude.php:1759
+#: simplyexclude.php:1874
+msgid "Visibility in RSS/RSS2/Atom feeds."
+msgstr ""
+
+#: simplyexclude.php:1670
+msgid "Widget: Categories"
+msgstr ""
+
+#: simplyexclude.php:1674
+msgid "Exclude from WordPress List Category Widget."
+msgstr ""
+
+#: simplyexclude.php:1691
+msgid "Widget: Tag Cloud"
+msgstr ""
+
+#: simplyexclude.php:1695
+msgid "Exclude from WordPress Tag Cloud Widget."
+msgstr ""
+
+#: simplyexclude.php:1725
+msgid "Visibility on the front/main page. Set 'Include All' to have this Post Type displayed in addition to the normal Posts."
+msgstr ""
+
+#: simplyexclude.php:1742
+msgid "Visibility on the Post Type archive."
+msgstr ""
+
+#: simplyexclude.php:1788
+msgid "Widget: Pages"
+msgstr ""
+
+#: simplyexclude.php:1792
+msgid "Exclude from WordPress Pages Widget. Child pages are automatically excluded if the parent is Excluded."
+msgstr ""
+
+#: simplyexclude.php:2577
+msgid "Set the checkbox to exclude the User items from the action"
+msgstr ""
+
+#: simplyexclude.php:2578
+#: simplyexclude.php:2588
+#: simplyexclude.php:2597
+msgid "So what is the difference between <strong>Include only</strong> and <strong>Exclude</strong>?"
+msgstr ""
+
+#: simplyexclude.php:2579
+msgid "For example you have 3 Users but always want to show Posts for only 1  specific User in the Archives. New Users are automatically hidden."
+msgstr ""
+
+#: simplyexclude.php:2580
+msgid "For example you have 3 Users but want to hide Posts from one User in the Archives. New Users will by visible."
+msgstr ""
+
+#: simplyexclude.php:2587
+msgid "Set the checkbox to exclude the Taxonomy items from the action"
+msgstr ""
+
+#: simplyexclude.php:2589
+msgid "For example you have 100 tags but only always want 3 to be used on the home page. New tags added are automatically hidden."
+msgstr ""
+
+#: simplyexclude.php:2590
+msgid "For example you have 100 categories but want to hide 3 from being seen. New tags will be visible."
+msgstr ""
+
+#: simplyexclude.php:2596
+msgid "Set the checkbox to exclude the Post Type items from the action"
+msgstr ""
+
+#: simplyexclude.php:2598
+msgid "For example you have 10 Pages but only always want to include only 4 Pages shown in a Search. New Pages are automatically hidden."
+msgstr ""
+
+#: simplyexclude.php:2599
+msgid "For example you have 10 Pages and want to hide 3 specific Pages from Search. New Pages will be visible."
+msgstr ""
+
+#: simplyexclude.php:2614
+msgctxt "Options Page Title"
+msgid "Simply Exclude Manage Settings"
+msgstr ""
+
+#: simplyexclude.php:2690
+msgid "Your Simply Excluded has successfully been reloaded."
+msgstr ""
+
+#: simplyexclude.php:2693
+msgid ""
+"Version 2.0 and 2.0.1 of the plugins incorrectly converted your previous configuration of excluded items into a new format. You can use this \n"
+"\t\t\toption to force a reload of your Simply Exclude configuration into the new format."
+msgstr ""
+
+#: simplyexclude.php:2701
+msgid "Reload Configuration"
+msgstr ""
+
+#: simplyexclude.php:2710
+msgid "The Simply Exclude plugin now works with a few other plugins. Check the box for support of the listed third party plugins options below"
+msgstr ""
+
+#: simplyexclude.php:2711
+msgid "When you update this section you will then also need to go back into the Simply Exclude Category or Pages section and re-save the settings. This re-save will then update the third-party plugin settings with the update excluded values. On the respective Category or Pages sections of Simply Exclude you can use either include or exclude action."
+msgstr ""
+
+#: simplyexclude.php:2712
+msgid "Warning: Once enabled it is suggested you make edits to the exclusion/inclusion via Simply Exclude. Any Page or Category exclusion made in the third-party plugins will be over written by changed from Simply Exclude."
+msgstr ""
+
+#: simplyexclude.php:2717
+msgid "Plugin Name"
+msgstr ""
+
+#: simplyexclude.php:2718
+msgid "Description of Functionality"
+msgstr ""
+
+#: simplyexclude.php:2719
+msgid "Actions"
+msgstr ""
+
+#: simplyexclude.php:2774
+msgid "Plugin Homepage"
+msgstr ""
+
+#: simplyexclude.php:2780
+msgid "Show your support of this plugin by making a small donation to support future development. No donation amount too small."
+msgstr ""
+
+#: simplyexclude.php:2783
+msgid "Make a donation today"
+msgstr ""
+
+#: simplyexclude.php:2792
+msgctxt "Options Page Title"
+msgid "Simply Exclude Help"
+msgstr ""
+

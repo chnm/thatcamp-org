@@ -1,0 +1,165 @@
+# Copyright (C) 2004-2011 Scott Reilly
+# This file is distributed under the same license as the Auto-hyperlink URLs package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Auto-hyperlink URLs 4.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/autohyperlink-urls\n"
+"POT-Creation-Date: 2011-07-25 04:41:37+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#. #-#-#-#-#  autohyperlink-urls.pot (Auto-hyperlink URLs 4.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: autohyperlink-urls.php:99 autohyperlink-urls.php:153
+msgid "Auto-hyperlink URLs"
+msgstr ""
+
+#: autohyperlink-urls.php:100
+msgid "Auto-hyperlink"
+msgstr ""
+
+#: autohyperlink-urls.php:104
+msgid "Auto-hyperlink comments?"
+msgstr ""
+
+#: autohyperlink-urls.php:106
+msgid "Hyperlink email addresses?"
+msgstr ""
+
+#: autohyperlink-urls.php:108
+msgid "Strip protocol?"
+msgstr ""
+
+#: autohyperlink-urls.php:109
+msgid ""
+"Remove the protocol (i.e. 'http://') from the displayed auto-hyperlinked "
+"link?"
+msgstr ""
+
+#: autohyperlink-urls.php:111
+msgid "Open auto-hyperlinked links in new window?"
+msgstr ""
+
+#: autohyperlink-urls.php:113
+msgid "Enable <a href=\"http://en.wikipedia.org/wiki/Nofollow\">nofollow</a>?"
+msgstr ""
+
+#: autohyperlink-urls.php:115
+msgid "Hyperlink Mode/Truncation"
+msgstr ""
+
+#: autohyperlink-urls.php:116
+msgid ""
+"This determines what text should appear as the link.  Use <code>0</code> to "
+"show the full URL, use <code>1</code> to show just the hostname, or use a "
+"value greater than <code>10</code> to indicate how many characters of the "
+"URL you want shown before it gets truncated.  <em>If</em> text gets "
+"truncated, the truncation before/after text values above will be used."
+msgstr ""
+
+#: autohyperlink-urls.php:118
+msgid "Text to show before link truncation"
+msgstr ""
+
+#: autohyperlink-urls.php:120
+msgid "Text to show after link truncation"
+msgstr ""
+
+#: autohyperlink-urls.php:122
+msgid "Extra domain extensions."
+msgstr ""
+
+#: autohyperlink-urls.php:123
+msgid ""
+"Space and/or comma-separated list of extensions/<acronym title=\"Top-Level "
+"Domains\">TLDs</acronym>.<br />These are already built-in: com, org, net, "
+"gov, edu, mil, us, info, biz, ws, name, mobi, cc, tv"
+msgstr ""
+
+#. #-#-#-#-#  autohyperlink-urls.pot (Auto-hyperlink URLs 4.0)  #-#-#-#-#
+#. Description of the plugin/theme
+#: autohyperlink-urls.php:154
+msgid ""
+"Automatically hyperlink text URLs and email addresses originally written "
+"only as plaintext."
+msgstr ""
+
+#: c2c-plugin.php:77
+msgid "Invalid file specified for C2C_Plugin: %s"
+msgstr ""
+
+#: c2c-plugin.php:304
+msgid "Settings reset."
+msgstr ""
+
+#: c2c-plugin.php:315 c2c-plugin.php:323
+msgid "A value is required for: \"%s\""
+msgstr ""
+
+#: c2c-plugin.php:332
+msgid "Expected integer value for: %s"
+msgstr ""
+
+#: c2c-plugin.php:442
+msgid "More information about %1$s %2$s"
+msgstr ""
+
+#: c2c-plugin.php:443
+msgid "Click for more help on this plugin"
+msgstr ""
+
+#: c2c-plugin.php:444
+msgid " (especially check out the \"Other Notes\" tab, if present)"
+msgstr ""
+
+#: c2c-plugin.php:535
+msgid "Settings"
+msgstr ""
+
+#: c2c-plugin.php:770
+msgid "See the \"Help\" link to the top-right of the page for more help."
+msgstr ""
+
+#: c2c-plugin.php:791
+msgid "A plugin by coffee2code"
+msgstr ""
+
+#: c2c-plugin.php:802
+msgid "Save Changes"
+msgstr ""
+
+#: c2c-plugin.php:803
+msgid "Reset Settings"
+msgstr ""
+
+#: c2c-plugin.php:809
+msgid "Scott Reilly, aka coffee2code"
+msgstr ""
+
+#: c2c-plugin.php:810
+msgid "This plugin brought to you by %s."
+msgstr ""
+
+#: c2c-plugin.php:811
+msgid "Please consider a donation"
+msgstr ""
+
+#: c2c-plugin.php:812
+msgid "Did you find this plugin useful?"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://coffee2code.com/wp-plugins/auto-hyperlink-urls/"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Scott Reilly"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://coffee2code.com"
+msgstr ""

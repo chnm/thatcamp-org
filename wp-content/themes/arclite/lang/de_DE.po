@@ -1,0 +1,619 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Arclite 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-22 14:28+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: digitalnature <hello@digitalnature.ro>\n"
+"Language-Team: tate83 <tate83@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: Switzerland\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../404.php:19
+msgid "Page not found (404)"
+msgstr "Seite nicht gefunden (404)"
+
+#: ../archive.php:22
+#, php-format
+msgid "Archive for category %s"
+msgstr "Archiv der Kategorie %s"
+
+#: ../archive.php:24
+#, php-format
+msgid "Posts Tagged %s"
+msgstr "Artikel getaggt mit %s"
+
+#: ../archive.php:26
+#: ../archive.php:28
+#: ../archive.php:30
+#, php-format
+msgid "Archive for %s"
+msgstr "Archiv für %s"
+
+#: ../archive.php:26
+#: ../functions.php:603
+msgid "F jS, Y"
+msgstr "l, j. F Y"
+
+#: ../archive.php:28
+#: ../sidebar.php:18
+msgid "F, Y"
+msgstr "F Y"
+
+#: ../archive.php:30
+#: ../sidebar.php:21
+msgid "Y"
+msgstr "Y"
+
+#: ../archive.php:32
+msgid "Author Archive"
+msgstr "Autorenarchiv"
+
+#: ../archive.php:34
+msgid "Blog Archives"
+msgstr "Blogarchiv"
+
+#: ../archive.php:43
+#: ../index.php:26
+msgid "Permanent Link:"
+msgstr "Permanenter Link"
+
+#: ../archive.php:45
+#: ../index.php:28
+msgid "M"
+msgstr "M"
+
+#: ../archive.php:46
+#: ../index.php:29
+msgid "j"
+msgstr "j"
+
+#: ../archive.php:49
+#: ../index.php:32
+#, php-format
+msgid "Posted by %s in %s"
+msgstr "Gepostet von %s in %s"
+
+#: ../archive.php:49
+#: ../author.php:51
+#: ../index.php:32
+#, php-format
+msgid "Posts by %s"
+msgstr "Beitr&auml;ge von %s"
+
+#: ../archive.php:49
+#: ../author.php:56
+#: ../index.php:32
+#: ../search.php:38
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: ../archive.php:54
+#: ../index.php:37
+#: ../single.php:31
+msgid "Read the rest of this entry &raquo;"
+msgstr "Den Rest des Eintrags lesen. &raquo;"
+
+#: ../archive.php:59
+#: ../author.php:56
+#: ../index.php:42
+#: ../search.php:38
+#: ../single.php:37
+msgid "Tags:"
+msgstr "Tags:"
+
+#: ../archive.php:68
+#: ../author.php:56
+#: ../index.php:51
+#: ../search.php:38
+msgid "No Comments"
+msgstr "Keine Kommentare"
+
+#: ../archive.php:68
+#: ../author.php:56
+#: ../index.php:51
+#: ../search.php:38
+msgid "1 Comment"
+msgstr "1 Kommentar"
+
+#: ../archive.php:68
+#: ../author.php:56
+#: ../index.php:51
+#: ../search.php:38
+msgid "% Comments"
+msgstr "% Kommentare"
+
+#: ../archive.php:79
+#: ../author.php:64
+#: ../index.php:64
+#: ../search.php:26
+#: ../search.php:46
+msgid "&laquo; Older Entries"
+msgstr "&laquo; &Auml;ltere Eintr&auml;ge"
+
+#: ../archive.php:80
+#: ../author.php:65
+#: ../index.php:65
+#: ../search.php:27
+#: ../search.php:47
+msgid "Newer Entries &raquo;"
+msgstr "Neuere Eintr&auml;ge &raquo;"
+
+#: ../archive.php:86
+#, php-format
+msgid "Sorry, but there aren't any posts in the %s category yet."
+msgstr "Entschuldigung, aber es noch keine Beitr&auml;ge in der Kategorie %s."
+
+#: ../archive.php:88
+msgid "Sorry, but there aren't any posts with this date."
+msgstr "Entschuldigung, aber es gibt keine Beitr&auml;ge mit diesem Datum."
+
+#: ../archive.php:91
+#, php-format
+msgid "Sorry, but there aren't any posts by %s yet."
+msgstr "Entschuldigung, es gibt noch keine Beitr&auml;ge von %s."
+
+#: ../archive.php:93
+msgid "No posts found."
+msgstr "Keine Beitr&auml;ge gefunden."
+
+#: ../author.php:34
+msgid "This user hasn't shared any biographical information"
+msgstr "Dieser Benutzer hat keine Details eingegeben."
+
+#: ../author.php:39
+msgid "Homepage:"
+msgstr "Homepage:"
+
+#: ../author.php:40
+msgid "Yahoo Messenger:"
+msgstr "Yahoo Messenger:"
+
+#: ../author.php:41
+msgid "Jabber/GTalk:"
+msgstr "Jabber/GTalk:"
+
+#: ../author.php:42
+msgid "AIM:"
+msgstr "AIM:"
+
+#: ../author.php:55
+#: ../search.php:37
+#: ../sidebar.php:15
+#: ../single.php:42
+msgid "l, F jS, Y"
+msgstr "l, j. F Y"
+
+#: ../author.php:56
+#: ../search.php:38
+#, php-format
+msgid "Posted in %s"
+msgstr "Gepostet in %s"
+
+#: ../author.php:71
+msgid "No posts found by this author."
+msgstr "Keine Beitr&auml;ge von diesem Autor gefunden."
+
+#: ../comments.php:3
+msgid "Enter your password to view comments"
+msgstr "Bitte Passwort eingeben um Kommentare anzuschauen."
+
+#: ../comments.php:18
+msgid "Comments"
+msgstr "Kommentare"
+
+#: ../comments.php:19
+#: ../comments.php:43
+msgid "Trackbacks"
+msgstr "Trackbacks"
+
+#: ../comments.php:37
+msgid "No comments yet."
+msgstr "Bisher keine Kommentare."
+
+#: ../comments.php:47
+msgid "No trackbacks yet."
+msgstr "Bisher keine Trackbacks."
+
+#: ../comments.php:72
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Du musst <a href=\"%s\">eingeloggt</a> sein um einen Kommentar zu schreiben."
+
+#: ../comments.php:79
+msgid "Cancel Reply"
+msgstr "Antworten abbrechen"
+
+#: ../comments.php:85
+#, php-format
+msgid "Logged in as %s."
+msgstr "Angemeldet als %s."
+
+#: ../comments.php:87
+msgid "Log out of this account"
+msgstr "Abmelden."
+
+#: ../comments.php:87
+msgid "Logout &raquo;"
+msgstr "Abmelden &raquo;"
+
+#: ../comments.php:91
+#, php-format
+msgid "Welcome back <strong>%s</strong>."
+msgstr "Willkommen zur&uuml;ck <strong>%s</strong>."
+
+#: ../comments.php:91
+msgid "Change &raquo;"
+msgstr "Wechseln &raquo;"
+
+#: ../comments.php:91
+msgid "Close &raquo;"
+msgstr "Schliessen &raquo;"
+
+#: ../comments.php:95
+msgid "Name"
+msgstr "Name"
+
+#: ../comments.php:95
+#: ../comments.php:99
+msgid "(required)"
+msgstr "(ben&ouml;tigt)"
+
+#: ../comments.php:99
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: ../comments.php:99
+msgid "(will not be published)"
+msgstr "(wird nicht ver&ouml;ffentlicht)"
+
+#: ../comments.php:103
+msgid "Website"
+msgstr "Website"
+
+#: ../comments.php:122
+msgid "Submit Comment"
+msgstr "Kommentar absenden"
+
+#: ../comments.php:138
+msgid "Comments are closed."
+msgstr "Keine Kommentare mehr m&ouml;glich."
+
+#: ../footer.php:20
+#, php-format
+msgid "Arclite theme by %s"
+msgstr "Arclite Theme von %s"
+
+#: ../footer.php:22
+#, php-format
+msgid "powered by %s"
+msgstr "powered by %s"
+
+#: ../footer.php:26
+msgid "Entries (RSS)"
+msgstr "Eintr&auml;ge (RSS)"
+
+#: ../footer.php:26
+msgid "and"
+msgstr "und"
+
+#: ../footer.php:26
+msgid "Comments (RSS)"
+msgstr "Kommentare (RSS)"
+
+#: ../functions.php:151
+msgid "Arclite settings"
+msgstr "Arclite Einstellungen"
+
+#: ../functions.php:158
+msgid "Arclite theme settings"
+msgstr "Arclite Theme Einstellungen"
+
+#: ../functions.php:160
+msgid "Settings saved."
+msgstr "Einstellungen gespeichert."
+
+#: ../functions.php:223
+msgid "General"
+msgstr "Allgemein"
+
+#: ../functions.php:231
+msgid "Imageless layout"
+msgstr "Bildloses Layout"
+
+#: ../functions.php:231
+msgid "(no background images; reduces pages to just a few KB, with the cost of less graphic details)"
+msgstr "(ohne Hintergrundsbilder; verkleinert Seiten auf ein paar wenige KB, aber zeigt weniger grafische Details)"
+
+#: ../functions.php:233
+#: ../functions.php:245
+#: ../functions.php:324
+#: ../functions.php:371
+#: ../functions.php:419
+msgid "Yes"
+msgstr "Ja"
+
+#: ../functions.php:235
+#: ../functions.php:247
+#: ../functions.php:326
+#: ../functions.php:374
+#: ../functions.php:422
+msgid "No"
+msgstr "Nein"
+
+#: ../functions.php:243
+msgid "Use jQuery"
+msgstr "Nutze jQuery"
+
+#: ../functions.php:243
+msgid "(for testing purposes only, you shouldnt change this)"
+msgstr "(nur f&uuml;r Tests, bitte nicht &auml;ndern)"
+
+#: ../functions.php:254
+msgid "Homepage meta keywords"
+msgstr "Homepage Meta Schl&uuml;sselw&ouml;rter"
+
+#: ../functions.php:254
+msgid "(Separate with commas. Tags are used as keywords on other pages. Leave empty if you are using a SEO plugin)"
+msgstr "(Mit Kommas unterteilen. Tags werden als Schl&uuml;sselw&ouml;rter auf anderen Seiten verwendet. Dieses Feld leer lassen wenn ein SEO Plugin verwendet wird)"
+
+#: ../functions.php:266
+msgid "Content background"
+msgstr "Inhalt Hintergrundsbild"
+
+#: ../functions.php:282
+msgid "Index page/Archives show:"
+msgstr "Index Seite/Archiv zeigt:"
+
+#: ../functions.php:284
+msgid "Full posts"
+msgstr "Gesamtartikel"
+
+#: ../functions.php:286
+msgid "Excerpts only"
+msgstr "Nur Ausschnitte"
+
+#: ../functions.php:303
+msgid "Header"
+msgstr "Header"
+
+#: ../functions.php:311
+msgid "Top navigation shows"
+msgstr "Hauptnavigation zeigt"
+
+#: ../functions.php:313
+msgid "Pages"
+msgstr "Seiten"
+
+#: ../functions.php:315
+msgid "Categories"
+msgstr "Kategorien"
+
+#: ../functions.php:322
+msgid "Show search"
+msgstr "Suchfeld anzeigen"
+
+#: ../functions.php:334
+msgid "Header background"
+msgstr "Header Hintergrund"
+
+#: ../functions.php:344
+msgid "User defined image (upload)"
+msgstr "Benutzerdefiniertes Bild (hochladen)"
+
+#: ../functions.php:345
+msgid "User defined color"
+msgstr "Benutzerdefinierte Farbe"
+
+#: ../functions.php:350
+msgid "Centered image (upload a 960x190 image for best fit):"
+msgstr "Zentriertes Bild (Das Bild sollte 960x190 gr&ouml;sse haben):"
+
+#: ../functions.php:353
+msgid "Tiled image, repeats itself across the entire header (centered image will show on top of it, if specified):"
+msgstr "Bildausschnitt, wird über den ganzen Header wiederholt (Zentriertes Bild wird dar&uuml;ber angezeigt, falls vorhanden):"
+
+#: ../functions.php:359
+msgid "Pick a color"
+msgstr "W&auml;hle eine Farbe"
+
+#: ../functions.php:369
+msgid "Logo image"
+msgstr "Logo-Bild"
+
+#: ../functions.php:377
+msgid "Upload a custom logo image"
+msgstr "Ein eigenes Logo-Bild hochladen"
+
+#: ../functions.php:397
+msgid "Sidebar"
+msgstr "Seitenmenu"
+
+#: ../functions.php:406
+msgid "Sidebar position"
+msgstr "Position des Seitenmenus"
+
+#: ../functions.php:408
+msgid "Left"
+msgstr "Links"
+
+#: ../functions.php:411
+msgid "Right"
+msgstr "Rechts"
+
+#: ../functions.php:417
+msgid "Show theme-default category block"
+msgstr "Zeige den Kategorien-Block nach themenstandard."
+
+#: ../functions.php:429
+msgid "Widget title background"
+msgstr "Widget Titel Hintergrund"
+
+#: ../functions.php:452
+msgid "Footer"
+msgstr "Footer"
+
+#: ../functions.php:461
+msgid "Add content"
+msgstr "F&uuml;ge Inhalt hinzu."
+
+#: ../functions.php:461
+msgid "(HTML allowed)"
+msgstr "(HTML erlaubt)"
+
+#: ../functions.php:480
+msgid "User CSS code"
+msgstr "Benutzerdefinierten CSS Code"
+
+#: ../functions.php:489
+msgid "Modify anything related to design using simple CSS"
+msgstr "Ver&auml;ndere alle Designoptionen mit einfachem CSS Code"
+
+#: ../functions.php:489
+msgid "Avoid modifying theme files and use this option instead to preserve changes after update"
+msgstr "Vermeide es, die Themendateien direkt zu ver&auml;ndern, da diese sonst bei einem Update verloren gehen"
+
+#: ../functions.php:603
+#, php-format
+msgid "%s by %s at %s"
+msgstr "%s von %s am %s"
+
+#: ../functions.php:603
+msgid "H:i"
+msgstr "H:i"
+
+#: ../functions.php:612
+msgid "Reply"
+msgstr "Beantworten"
+
+#: ../functions.php:614
+msgid "Quote"
+msgstr "Zitieren"
+
+#: ../functions.php:628
+msgid "Your comment is awaiting moderation."
+msgstr "Dein Kommentar wartet auf die &Uuml;berpr&uuml;fung"
+
+#: ../header.php:112
+#: ../searchform.php:6
+msgid "Search"
+msgstr "Suchen"
+
+#: ../header.php:129
+msgid "You are Home"
+msgstr "Du bist auf der Startseite"
+
+#: ../header.php:129
+#: ../header.php:131
+msgid "Home"
+msgstr "Startseite"
+
+#: ../header.php:131
+msgid "Click for Home"
+msgstr "Klicken um zur Startseite zu gelangen"
+
+#: ../index.php:70
+msgid "Not Found"
+msgstr "Nicht gefunden"
+
+#: ../index.php:71
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr "Entschuldigung, aber du suchst etwas das nicht da ist."
+
+#: ../links.php:21
+msgid "Links:"
+msgstr "Links:"
+
+#: ../page-nosidebar.php:23
+#: ../page.php:23
+msgid "Read the rest of this page &raquo;"
+msgstr "Den Rest der Seite anschauen &raquo;"
+
+#: ../page-nosidebar.php:25
+#: ../page.php:25
+#: ../single.php:60
+msgid "Edit this entry"
+msgstr "Diesen Eintrag bearbeiten"
+
+#: ../search.php:21
+msgid "Search Results"
+msgstr "Suchresultate"
+
+#: ../search.php:52
+msgid "No posts found. Try a different search?"
+msgstr "Keine Beitr&auml;ge gefunden. Etwas anderes Suchen?"
+
+#: ../sidebar.php:12
+#, php-format
+msgid "You are currently browsing the archives for the %s category."
+msgstr "Du befindest dich momentan auf der Archivseite der Kategorie %s."
+
+#: ../sidebar.php:15
+#: ../sidebar.php:18
+#, php-format
+msgid "You are currently browsing the archives for %s"
+msgstr "Du befindest dich momentan auf der Archivseite von %s."
+
+#: ../sidebar.php:21
+#, php-format
+msgid "You are currently browsing the archives for the year %s"
+msgstr "Du befindest dich momentan auf der Archivseite des Jahres %s."
+
+#: ../sidebar.php:24
+#, php-format
+msgid "You have searched the archives for %s."
+msgstr "Du hast im Archiv nach %s gesucht."
+
+#: ../sidebar.php:27
+msgid "You are currently browsing the archives."
+msgstr "Du befindest dich momentan im Archiv."
+
+#: ../sidebar.php:56
+msgid "Archives"
+msgstr "Archiv"
+
+#: ../sidebar.php:79
+msgid "Meta"
+msgstr "Meta"
+
+#: ../single.php:42
+#, php-format
+msgid "This entry was posted on %s and is filed under %s. You can follow any responses to this entry through %s."
+msgstr "Dieser Beitrag wurde am %s unter %s ver&ouml;ffentlicht. Du kannst allen Antworten zu diesem Beitrag durch %s folgen."
+
+#: ../single.php:46
+#, php-format
+msgid "You can <a href=\"#respond\">leave a response</a>, or <a href=\"%s\" rel=\"trackback\">trackback</a> from your own site."
+msgstr "Du kannst <a href=\"#respond\">eine Antwort schreiben</a> oder einen <a href=\"%s\" rel=\"trackback\">Trackback</a> von deiner eigenen Seite hinterlassen."
+
+#: ../single.php:50
+#, php-format
+msgid "Responses are currently closed, but you can <a href=\"%s\" rel=\"trackback\">trackback</a> from your own site."
+msgstr "Anworten sind momentan ausgeschaltet, aber du kannst einen <a href=\"%s\" rel=\"trackback\">Trackback</a> von deiner eigenen Seite hinterlassen."
+
+#: ../single.php:54
+msgid "You can skip to the end and leave a response. Pinging is currently not allowed."
+msgstr "Du kannst direkt zum Ende gehen und eine Antwort hinterlassen. Pinging ist momentan nicht m&ouml;glich."
+
+#: ../single.php:58
+msgid "Both comments and pings are currently closed."
+msgstr "Kommentare und Pings sind momentan ausgeschalten."
+
+#: ../single.php:68
+msgid "Sorry, no posts matched your criteria."
+msgstr "Entschuldige, keine Beitr&auml;ge zu deiner Anfrage gefunden."
+
+#~ msgid "Disable all design-related images"
+#~ msgstr "Deaktiviere alle designspezifischen Bilder"
+#~ msgid "(Full CSS layout, no background images)"
+#~ msgstr "(Komplettes CSS Layout ohne Hintergrundbilder)"
+#~ msgid "Repeat background (same size, optional):"
+#~ msgstr "Hintergrundbild wiederholen (gleiche Gr&ouml;sse optional):"
+

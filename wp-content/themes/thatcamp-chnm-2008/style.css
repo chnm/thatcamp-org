@@ -1,0 +1,120 @@
+Theme Name: THATCamp CHNM 2008 
+Description: The theme for THATCamp CHNM 2008. Based on the famous <a href="http://binarybonsai.com/kubrick/">Kubrick</a>.
+Version: 1.0
+Author: Jeremy Boggs 
+Author URI: http://clioweb.org
+
+/* 
+Grid: 846px wide, 12 columns at 54px each, 11 gutters at 18px each.
+1 = 54px
+2 = 126px (6 columns)
+3 = 198px (4 columns)
+4 = 270px (3 columns)
+5 = 342px
+6 = 414px (2 columns)
+7 = 486px
+8 = 558px
+9 = 630px
+10 = 702px
+11 = 774px
+12 = 846px
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,
+font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl,
+dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0;
+font-weight: inherit; font-style: inherit; font-size: 100%; font-family:
+inherit; vertical-align: baseline; }
+
+/* remember to define focus styles! */
+
+:focus { outline: 0;}
+
+body {color: black; background: white;}
+
+ol, ul {list-style: none; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+
+table {border-collapse: separate; border-spacing: 0;}
+
+caption, th, td {text-align: left;font-weight: normal;}
+
+blockquote:before, blockquote:after, q:before, q:after { content: ""; }
+
+blockquote, q {quotes: "" ""; }
+
+
+body {font:62.5% "Lucida Grande",Verdana, sans-serif; color: #333; background:#eee; padding:36px 0;}
+
+h1 {}
+h2 {font-size:2.4em; font-weight:bold; line-height:1em; margin-bottom:1em;}
+h3 {font-size:1.8em; line-height:1em; margin-bottom:0.5em; font-weight:bold;}
+h4 {}
+h5 {}
+h6 {}
+
+a:link {color:#38c;}
+a:visited {color:#777;}
+a:focus {color:#38c;}
+a:hover {color:#555;}
+a:active {color:#38c;}
+
+h1 a, h2 a, h3 a {text-decoration:none;}
+p,ul,ol,dl {font-size:1.2em; line-height:1.5em; margin-bottom:1.5em;}
+
+table {font-size:1.2em; width: 100%; margin-bottom:1.5em;}
+
+th,td {padding:5px;}
+th {border-bottom:2px solid #999; font-weight:bold;}
+td {border:1px solid #ccc; border-width:0 1px 1px 0;border-collapse:collapse;}
+
+tr.everyone {background:#eee;}
+ul {list-style:disc; margin-left:1.5em;}
+li * {font-size:1em;}
+
+b,strong {font-weight:bold;}
+
+textarea {width: 556px; border:1px solid #ccc;}
+
+#wrap {width: 846px; padding:18px; margin: 0 auto; background:#fff;}
+
+#header {background:#124a63; overflow:hidden; }
+h1 a {display:block;background:#124a63;float:left; width: 270px; }
+
+#nav { float:right; width: 520px; margin:0; margin-bottom:9px; text-align:left; }
+	#nav li {display:block; float:left; width: 120px; }
+		#nav li a {text-decoration:none; background:#124A63; color:#fff;width: 121px;border-left:1px solid #fff;float:left; display:block;padding:18px 0 28px 18px;}
+		#nav li a:hover {color:#fff; background:#3D6B7F;}
+#content {overflow:hidden;padding-top:18px;}
+	#primary, #secondary {float:left; width: 414px;}
+	#secondary {float:right;}
+
+#post-2 #event-details {float:right; width: 270px; font-size:1.5em; margin-bottom:1.2em; line-height:1.2em; color: #777; font-weight:bold;}
+#post-2 h3, #post-2 p {margin-right: 288px;}
+
+.widecolumn .post {width: 558px;}
+.widecolumn .commentlist {width: 558px;}
+
+.staff-list {margin-right: -18px;}
+.staff-list .photo {width: 54px; height:54px;display:block; background:#eee;overflow:hidden;float:left; margin-right:9px;}
+	.staff-list .vcard {float:left; width: 270px; margin-right:18px; margin-bottom:18px; border-bottom:1px solid #ccc; padding-bottom:18px;}
+	.staff-list .photo img {width: 54px;}
+
+.blog .post {width: 558px;}
+.post .entry-meta {font-weight:bold; margin-bottom:0;}
+#info {float:right; width:558px;}
+	#photo {width: 270px;float:left;margin-bottom:18px;}
+	
+#bio {float:right; clear:right;width: 558px;}
+#footer {background:#38c;overflow:hidden;padding:18px; color:#fff;}
+#logos li {width: 150px; float:left; display:block;}
+
+.navigation {overflow:hidden; zoom:1; margin-bottom:1.5em; font-size:1.2em;width: 558px;}
+.navigation div {float:left; width: 49%;}
+.navigation .alignright {float:right; text-align:right;}
+
+.campers .camper {float:left; width: 45%; margin-right: 2%;}
+

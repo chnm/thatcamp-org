@@ -1,0 +1,26 @@
+.menu-item-settings .cpmp-description
+{
+        float: left;
+        margin: 0 10px 0 0;
+        padding: 3px 5px 5px;
+        border: 1px solid #DFDFDF;
+}
+
+
+.menu-item-settings .cpmp-description .description-thirds
+{
+        float: left;
+        width: 110px;
+        margin-right: 10px;
+}
+
+.menu-item-settings .cpmp-description .description-thin
+{
+        width: 170px;
+}
+
+
+.menu-item-settings .cpmp-description .description-wide
+{
+        width: 370px;
+}

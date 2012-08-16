@@ -1,0 +1,118 @@
+/* Tabs */
+.aa-tabs {
+}
+.aa-tabs .ui-tabs-nav {
+	padding: 0;
+	margin: 0;
+	position: relative;
+	float: left;
+}
+.aa-tabs .ui-tabs-nav li {
+	float: left;
+	border-bottom: 0 !important;
+	margin: 0 .2em -1px 0;
+	padding: 0;
+	list-style: none;
+}
+.aa-tabs .ui-tabs-nav li a {
+	display:block;
+	text-decoration: none;
+	padding: .3em 1em;
+	-moz-border-radius-topleft:3px;
+	-moz-border-radius-topright:3px;
+	
+	color: #2583AD;
+	background-color:#CEE1EF;
+}
+.aa-tabs .ui-tabs-nav li.ui-tabs-selected {
+	padding-bottom: .1em;
+	border-bottom: 0;
+	font-weight: bold;
+}
+.aa-tabs .ui-tabs-nav li.ui-tabs-selected a{
+	background-color: white;
+	color:#333333;
+}
+.aa-tabs .ui-tabs-nav li.ui-tabs-disabled,
+.aa-tabs .ui-tabs-nav li.ui-state-disabled {
+	display: none !important;
+}
+
+.aa-tabs .ui-tabs-panel {
+	clear: left;
+	padding: 1em 1.4em;
+	display: block;
+	border: 0;
+	margin: 0;
+	background-color: white;
+	height: 300px;
+	overflow: auto;
+}
+.aa-tabs .ui-tabs-hide {
+	display: none !important;
+}
+
+/* Columns */
+.aa-columns {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+.aa-columns .column-left,
+.aa-columns .column-right {
+	float: left;
+	width: 48%;
+	min-height: 260px;
+
+}
+.aa-columns .column-left {
+	padding-right: 1%;
+	border-right: 1px solid #ddd;
+}
+.aa-columns .column-right {
+	padding-left: 2%;
+}
+
+/* form */
+.aa-form-error {
+	background-color: #FFB6B6;
+}
+
+/* widget*/
+.aa-widget-control-panel h5{
+	font-size: 1.3em;
+	margin: 0 0 .5em 0;
+}
+.aa-widget-control-panel {
+	background-color: white;
+	padding: 1em;
+}
+.aa-widget-control-panel .aa-colums {
+	margin-bottom: 1.3em;
+}
+
+/* Resizable
+----------------------------------*/
+.avatar_size_preview .ui-resizable { position: relative;}
+.avatar_size_preview .ui-resizable-handle { position: absolute;font-size: 0.1px;z-index: 99999; display: block; background-color:#F2F2F2; border: 1px solid #808080;}
+.avatar_size_preview .ui-resizable-disabled .ui-resizable-handle,
+.avatar_size_preview .ui-resizable-autohide .ui-resizable-handle { display: none;}
+.avatar_size_preview .ui-resizable-n { cursor: n-resize; height: 7px; width: 100%; top: -5px; left: 0px; }
+.avatar_size_preview .ui-resizable-s { cursor: s-resize; height: 7px; width: 100%; bottom: -5px; left: 0px; }
+.avatar_size_preview .ui-resizable-e { cursor: e-resize; width: 7px; right: -5px; top: 0px; height: 100%; }
+.avatar_size_preview .ui-resizable-w { cursor: w-resize; width: 7px; left: -5px; top: 0px; height: 100%; }
+.avatar_size_preview .ui-resizable-se { cursor: se-resize; width: 9px; height: 9px; right: -5px; bottom: -5px; }
+.avatar_size_preview .ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: -5px; bottom: -5px; }
+.avatar_size_preview .ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
+.avatar_size_preview .ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}
+
+/* initially hide everything (shortcode wizard)*/
+.fields_type_authoravatars,
+.fields_type_show_avatar {
+	display: none;
+}
+
+/* Clearfix */
+.aa-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+* html .aa-clearfix {height: 1%;} /* IE6 */ 
+*:first-child+html .aa-clearfix {min-height: 1px;} /* IE7 */

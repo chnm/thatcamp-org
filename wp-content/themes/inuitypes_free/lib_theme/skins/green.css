@@ -1,0 +1,12 @@
+/* GREEN skin */
+
+body{ background-color:#EEF4ED }
+#loopedSlider .slides .format_text { background-color:#15710C }
+#loopedSlider span.cat { background-color:#15710C }
+
+#loopedSlider span.cat a { color:#ffffff }
+#loopedSlider h2 a { color:#ffffff }
+
+.sf-menu li.current_page_item a { background-color:#15710C }
+ul.lpag li.active a { background-color:#15710C }
+ul.lpag li.current span { background-color:#15710C }

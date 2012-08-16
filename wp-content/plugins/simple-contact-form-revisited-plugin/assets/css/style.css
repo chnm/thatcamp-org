@@ -1,0 +1,34 @@
+.contactform p {
+	margin-bottom:10px;
+}
+.contactform label {
+	padding-left:6px;
+}
+
+.contactform input, 
+.contactform textarea {
+    background-color: #EEEEEE;
+    border: 1px solid #444444;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 12px;
+    margin-bottom: 5px !important;
+    padding: 3px !important;
+    color: #222222 !important;
+    text-shadow: none !important;
+}
+
+.contactform .text_input {
+	float: left;
+}
+
+.contactform .invalid {
+	border: 1px solid red !important;
+}
+
+.contactform .text_input {
+	width:65% !important;
+}
+
+.contactform .textarea {
+	width:98% !important;
+}

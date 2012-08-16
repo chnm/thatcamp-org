@@ -1,0 +1,268 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR <a href="http://mind2.de">Benedikt Forchhammer</a>, Idea: <a href="http://bearne.com">Paul Bearne</a>
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Author Avatars List in italiano\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/author-avatars\n"
+"POT-Creation-Date: 2009-06-02 11:39+0000\n"
+"PO-Revision-Date: 2009-06-24 18:24+0100\n"
+"Last-Translator: Gianni Diurno (aka gidibao) <gidibao@gmail.com>\n"
+"Language-Team: Gianni Diurno | http://gidibao.net/ <gidibao@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+
+#: lib/AuthorAvatars.class.php:13
+msgid "Author avatars: system check failed."
+msgstr "Author avatars: verifica del sistema fallita!"
+
+#: lib/AuthorAvatars.class.php:16
+msgid "Author avatars: install check failed."
+msgstr "Author avatars: verifica installazione fallita!"
+
+#: lib/AuthorAvatars.class.php:19
+msgid "Author avatars: update check failed."
+msgstr "Author avatars: verifica aggiornamento fallita!"
+
+#: lib/AuthorAvatars.class.php:240
+#: lib/AuthorAvatarsWidget.class.php:19
+msgid "Blog Authors"
+msgstr "Autori del blog"
+
+#: lib/AuthorAvatarsEditorButton.class.php:83
+msgid "Author avatars shortcodes"
+msgstr "Shortcode avatar autore"
+
+#: lib/AuthorAvatarsEditorButton.class.php:118
+#: lib/AuthorAvatarsWidget.class.php:175
+msgid "Basic"
+msgstr "Configurazione di base"
+
+#: lib/AuthorAvatarsEditorButton.class.php:135
+#: lib/AuthorAvatarsWidget.class.php:187
+msgid "Advanced"
+msgstr "Configurazione avanzata"
+
+#: lib/AuthorAvatarsEditorButton.class.php:145
+msgid "Cancel"
+msgstr "Annulla"
+
+#: lib/AuthorAvatarsEditorButton.class.php:148
+msgid "Insert"
+msgstr "Inserisci"
+
+#: lib/AuthorAvatarsForm.class.php:119
+msgid "Show users from blogs"
+msgstr "Mostra gli utenti dai blog"
+
+#: lib/AuthorAvatarsForm.class.php:120
+msgid "If no blog is selected only users from the current blog are displayed."
+msgstr "Qualora nessun blog fosse stato selezionato, verranno mostrati i soli utenti del blog in uso."
+
+#: lib/AuthorAvatarsForm.class.php:161
+msgid "Group by blogs"
+msgstr "Gruppo per blog"
+
+#: lib/AuthorAvatarsForm.class.php:171
+msgid "User list grouping"
+msgstr "Gruppo lista utenti"
+
+#: lib/AuthorAvatarsForm.class.php:200
+msgid "Show roles"
+msgstr "Mostra i ruoli"
+
+#: lib/AuthorAvatarsForm.class.php:249
+msgid "Hidden users"
+msgstr "Utenti nascosti"
+
+#: lib/AuthorAvatarsForm.class.php:250
+msgid "Comma separate list of user login ids"
+msgstr "Separa con una virgola le ID-login degli utenti"
+
+#: lib/AuthorAvatarsForm.class.php:288
+msgid "Show Name"
+msgstr "Visualizza il nome"
+
+#: lib/AuthorAvatarsForm.class.php:295
+msgid "Display options"
+msgstr "Mostra le opzioni"
+
+#: lib/AuthorAvatarsForm.class.php:311
+msgid "Date of Registration"
+msgstr "Data di registrazione"
+
+#: lib/AuthorAvatarsForm.class.php:312
+msgid "Display Name"
+msgstr "Mostra il nome"
+
+#: lib/AuthorAvatarsForm.class.php:313
+msgid "Login Name"
+msgstr "Nome login"
+
+#: lib/AuthorAvatarsForm.class.php:314
+msgid "Number of Posts"
+msgstr "Numero di articoli"
+
+#: lib/AuthorAvatarsForm.class.php:315
+msgid "Random"
+msgstr "Random"
+
+#: lib/AuthorAvatarsForm.class.php:316
+msgid "User Id"
+msgstr "ID utente"
+
+#: lib/AuthorAvatarsForm.class.php:319
+msgid "Recent Activity"
+msgstr "Attività recente"
+
+#: lib/AuthorAvatarsForm.class.php:324
+msgid "Sorting order"
+msgstr "Ordina per"
+
+#: lib/AuthorAvatarsForm.class.php:340
+msgid "Author Page"
+msgstr "Pagina autore"
+
+#: lib/AuthorAvatarsForm.class.php:341
+msgid "Website"
+msgstr "Sito web"
+
+#: lib/AuthorAvatarsForm.class.php:344
+msgid "BP Member Page"
+msgstr "Pagina membro BP"
+
+#: lib/AuthorAvatarsForm.class.php:347
+msgid "Blog"
+msgstr "Blog"
+
+#: lib/AuthorAvatarsForm.class.php:352
+msgid "Link users to"
+msgstr "Collegamento utenti a"
+
+#: lib/AuthorAvatarsForm.class.php:367
+msgid "Ascending"
+msgstr "Ascendente"
+
+#: lib/AuthorAvatarsForm.class.php:368
+msgid "Descending"
+msgstr "Discendente"
+
+#: lib/AuthorAvatarsForm.class.php:373
+msgid "Sorting direction"
+msgstr "Direzione"
+
+#: lib/AuthorAvatarsForm.class.php:389
+msgid "Max. number of avatars shown"
+msgstr "Numero massimo di avatar visibili"
+
+#: lib/AuthorAvatarsForm.class.php:406
+msgid "Avatar Size"
+msgstr "Dimensione avatar"
+
+#: lib/AuthorAvatarsForm.class.php:430
+msgid "Single Avatar"
+msgstr "Avatar singolo"
+
+#: lib/AuthorAvatarsForm.class.php:431
+msgid "List of Users"
+msgstr "Lista utenti"
+
+#: lib/AuthorAvatarsForm.class.php:436
+msgid "Shortcode Type"
+msgstr "Tipo di shortcode"
+
+#: lib/AuthorAvatarsForm.class.php:455
+msgid "Email address or user id"
+msgstr "Indirizzo email o ID utente"
+
+#: lib/AuthorAvatarsForm.class.php:471
+msgid "None"
+msgstr "No"
+
+#: lib/AuthorAvatarsForm.class.php:472
+msgid "Left"
+msgstr "Sinistra"
+
+#: lib/AuthorAvatarsForm.class.php:473
+msgid "Center"
+msgstr "Centro"
+
+#: lib/AuthorAvatarsForm.class.php:474
+msgid "Right"
+msgstr "Destra"
+
+#: lib/AuthorAvatarsForm.class.php:479
+msgid "Alignment"
+msgstr "Allineamento"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:35
+msgid "Sitewide Author Avatars Configuration"
+msgstr "Configurazione Sitewide Author Avatars"
+
+#. #-#-#-#-#  plugin.pot (PACKAGE VERSION)  #-#-#-#-#
+#. Plugin Name of an extension
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:35
+msgid "Author Avatars List"
+msgstr "Author Avatars List"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:60
+msgid "Options saved."
+msgstr "Le opzioni sono state salvate"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:66
+msgid "Sitewide Author Avatars Options"
+msgstr "Opzioni Sitewide Author Avatars"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:69
+msgid "Avatar list settings"
+msgstr "Impostazioni lista avatar"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:76
+msgid "Save Changes"
+msgstr "Salva le modifiche"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:86
+msgid "Enable blog filter"
+msgstr "Attiva filtro blog"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:93
+msgid "Select the blogs which you would like the blog filter to be enabled. Only blogs selected here can display users from other blogs."
+msgstr "Seleziona i blog per i quali desideri sia attivato il filtro. Solamente i blog che saranno stati selezionati qui potranno mostrare gli utenti da altri blog."
+
+#: lib/AuthorAvatarsWidget.class.php:55
+msgid "Displays avatars of blog users."
+msgstr "Mostra gli avatar degli utenti del blog."
+
+#: lib/AuthorAvatarsWidget.class.php:163
+msgid "Title"
+msgstr "Titolo"
+
+#: lib/FormHelper.class.php:56
+msgid "Sorry, no choices available."
+msgstr "Nessuna scelta disponibile."
+
+#: lib/ShowAvatarShortcode.class.php:63
+msgid "[show_author shortcode: please set id/email attribute]"
+msgstr "[show_author shortcode: please set id/email attribute]"
+
+#: lib/UserList.class.php:127
+msgid "No users found."
+msgstr "Nessun utente é stato trovato."
+
+#. Plugin URI of an extension
+msgid "http://wordpress.org/extend/plugins/author-avatars/"
+msgstr "http://wordpress.org/extend/plugins/author-avatars/"
+
+#. Description of an extension
+msgid "Display lists of user avatars using <a href=\"widgets.php\">widgets</a> or <a href=\"http://codex.wordpress.org/User:Bforchhammer/Author_Avatars_ShortCode_Documentation\">shortcodes</a>."
+msgstr "Mostra la lista degli utenti <a href=\"widgets.php\">widgets</a> or <a href=\"http://codex.wordpress.org/User:Bforchhammer/Author_Avatars_ShortCode_Documentation\">shortcodes</a>."
+
+#. Author of an extension
+msgid "<a href=\"http://mind2.de\">Benedikt Forchhammer</a>, Idea: <a href=\"http://bearne.com\">Paul Bearne</a>"
+msgstr "<a href=\"http://mind2.de\">Benedikt Forchhammer</a>, Idea: <a href=\"http://bearne.com\">Paul Bearne</a>"
+

@@ -1,0 +1,118 @@
+# Translation of the WordPress plugin Next Page 1.3 by Stephanie Leary.
+# Copyright (C) 2010 Stephanie Leary
+# This file is distributed under the same license as the Next Page package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Next Page 1.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/next-page\n"
+"POT-Creation-Date: 2010-02-01 04:58+0000\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: next-page.php:76
+msgid "Previous:"
+msgstr ""
+
+#: next-page.php:80
+msgid "Up one level:"
+msgstr ""
+
+#: next-page.php:84
+msgid "Next:"
+msgstr ""
+
+#: next-page.php:106
+msgid "Settings"
+msgstr ""
+
+#: next-page.php:133
+msgid "Next Page Options"
+msgstr ""
+
+#: next-page.php:135
+msgid "Exclude pages: "
+msgstr ""
+
+#: next-page.php:138
+msgid "Enter page IDs separated by commas."
+msgstr ""
+
+#: next-page.php:141
+msgid "Previous Page Display:"
+msgstr ""
+
+#: next-page.php:142
+msgid "Before previous page link: "
+msgstr ""
+
+#: next-page.php:146
+msgid "Previous page link text: <small>Use %title% for the page title</small>"
+msgstr ""
+
+#: next-page.php:150
+msgid "After previous page link: "
+msgstr ""
+
+#: next-page.php:158
+msgid "Parent Page Display:"
+msgstr ""
+
+#: next-page.php:159
+msgid "Before parent page link: "
+msgstr ""
+
+#: next-page.php:163
+msgid "Parent page link text: <small>Use %title% for the page title</small>"
+msgstr ""
+
+#: next-page.php:167
+msgid "After parent page link: "
+msgstr ""
+
+#: next-page.php:175
+msgid "Next Page Display:"
+msgstr ""
+
+#: next-page.php:176
+msgid "Before next page link: "
+msgstr ""
+
+#: next-page.php:180
+msgid "Next page link text: <small>Use %title% for the page title</small>"
+msgstr ""
+
+#: next-page.php:184
+msgid "After next page link: "
+msgstr ""
+
+#: next-page.php:192
+msgid "Update Options"
+msgstr ""
+
+#. Plugin Name of an extension
+msgid "Next Page"
+msgstr ""
+
+#. Plugin URI of an extension
+msgid "http://sillybean.net/code/wordpress/next-page/"
+msgstr ""
+
+#. Description of an extension
+msgid ""
+"Provides shortcodes and template tags for next/previous navigation in pages."
+msgstr ""
+
+#. Author of an extension
+msgid "Stephanie Leary"
+msgstr ""
+
+#. Author URI of an extension
+msgid "http://sillybean.net/"
+msgstr ""

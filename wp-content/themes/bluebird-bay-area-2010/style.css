@@ -1,0 +1,32 @@
+/*
+Theme Name: Bluebird Bay Area 2010
+Theme URI: http://bayarea2010.thatcampdev.info/
+Description: A child theme for THATCamp Bay Area based on Bluebird, by Randa Clay
+Version: .1
+Author: Amanda French and Jon Voss
+Template: bluebird
+*/
+
+@import url("../bluebird/style.css");
+
+html {
+margin-top: 0; 
+}
+
+#head{
+        text-align: left;
+        background-color: #ffffff;
+        background-image: url(images/header2.gif);
+        background-repeat: repeat-x;
+        height: 343px;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+}
+
+#headleft {
+        background-image: url(images/TCBA_patch_final_sm.gif);	
+        background-repeat: no-repeat;
+        height: 343px;
+        float: left;
+}

@@ -1,0 +1,29 @@
+#se_admin_nav  {
+	background-color: #E4F2FD;
+	border-bottom-color: #C6D9E9;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	padding: 1px 0;
+	margin: 27px 0 0 0;
+}
+
+#se_admin_nav ul {
+	height:15px;
+	margin:5px 0 6px;
+	padding:0 0 0 2px;
+}
+
+#se_admin_nav ul li  {
+	margin: 0 0 0 0;
+	padding:0 0 0 0;
+}
+
+#se_admin_nav ul li a {
+	border-width:0px;
+	padding:5px 10px;
+}
+
+#se_admin_nav ul li a.current, #se_admin_nav ul li a:hover {
+	border-width:0px;
+	color:#D54E21;
+}

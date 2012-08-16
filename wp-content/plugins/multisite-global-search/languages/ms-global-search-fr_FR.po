@@ -1,0 +1,241 @@
+# Translation of the WordPress plugin Multisite Global Search 1.2.5 by Alicia García Holgado.
+# Copyright (C) 2011 Alicia García Holgado
+# This file is distributed under the same license as the Multisite Global Search package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Multisite Global Search 1.2.6\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/multisite-global-search\n"
+"POT-Creation-Date: 2011-09-26 00:33+0200\n"
+"PO-Revision-Date: 2011-09-26 00:48+0100\n"
+"Last-Translator: Alicia García Holgado <alicia.alicia1986gh@gmail.com>\n"
+"Language-Team: Fabrice Perrinel\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+
+#: inc/class.widgets.php:21
+#: inc/class.widgets.php:29
+msgid "Global Search"
+msgstr "Recherche globale"
+
+#: inc/class.widgets.php:29
+#: inc/shortcodes.php:264
+msgid "globalsearch"
+msgstr "globalsearch"
+
+#: inc/class.widgets.php:33
+msgid "Title"
+msgstr "Titre"
+
+#: inc/class.widgets.php:38
+msgid "Page"
+msgstr "Page"
+
+#: inc/class.widgets.php:43
+msgid "Form"
+msgstr "Formulaire"
+
+#: inc/class.widgets.php:45
+msgid "Horizontal"
+msgstr "Horizontal"
+
+#: inc/class.widgets.php:47
+msgid "Vertical"
+msgstr "Vertical"
+
+#: inc/class.widgets.php:52
+msgid "Searching by default on pages"
+msgstr "Rechercher par défaut dans les pages"
+
+#: inc/class.widgets.php:57
+msgid "Disable search options"
+msgstr "Désactiver les options de recherche"
+
+#: inc/class.widgets.php:119
+#: inc/class.widgets.php:154
+#: inc/shortcodes.php:270
+#: inc/shortcodes.php:294
+msgid "Search across all blogs:"
+msgstr "Rechercher parmi tous les blogs :"
+
+#: inc/class.widgets.php:121
+#: inc/class.widgets.php:156
+#: inc/shortcodes.php:272
+#: inc/shortcodes.php:296
+msgid "Search"
+msgstr "Rechercher"
+
+#: inc/class.widgets.php:124
+#: inc/class.widgets.php:128
+#: inc/class.widgets.php:129
+#: inc/class.widgets.php:159
+#: inc/class.widgets.php:163
+#: inc/class.widgets.php:164
+#: inc/shortcodes.php:275
+#: inc/shortcodes.php:279
+#: inc/shortcodes.php:280
+#: inc/shortcodes.php:299
+#: inc/shortcodes.php:303
+#: inc/shortcodes.php:304
+msgid "Search on pages"
+msgstr "Rechercher dans les pages"
+
+#: inc/class.widgets.php:125
+#: inc/class.widgets.php:134
+#: inc/class.widgets.php:160
+#: inc/class.widgets.php:168
+#: inc/shortcodes.php:276
+#: inc/shortcodes.php:284
+#: inc/shortcodes.php:300
+#: inc/shortcodes.php:309
+msgid "Search on all blogs"
+msgstr "Rechercher dans tous les blogs"
+
+#: inc/class.widgets.php:134
+#: inc/class.widgets.php:168
+#: inc/shortcodes.php:284
+#: inc/shortcodes.php:309
+msgid "All"
+msgstr "Tous"
+
+#: inc/class.widgets.php:135
+#: inc/class.widgets.php:169
+#: inc/shortcodes.php:285
+#: inc/shortcodes.php:311
+msgid "Search only on blogs where I'm a member"
+msgstr "Rechercher seulement parmi les blogs dont je suis membre"
+
+#: inc/class.widgets.php:135
+#: inc/class.widgets.php:169
+#: inc/shortcodes.php:285
+#: inc/shortcodes.php:311
+msgid "Blogs where I'm a member"
+msgstr "Blogs dont je suis membre"
+
+#: inc/init.php:8
+#: inc/views.php:97
+msgid "<strong>Multisite Global Search</strong></a> requires multisite installation. Please <a href=\"http://codex.wordpress.org/Create_A_Network\">create a network</a> first, or <a href=\"plugins.php\">deactivate Multisite Global Search</a>."
+msgstr "<strong>Multisite Global Search</strong></a> exige une installation multisite. Veuillez <a href=\"http://codex.wordpress.org/Create_A_Network\">créer un réseau</a> avant tout, ou <a href=\"plugins.php\">désactivez Multisite Global Search</a>."
+
+#: inc/init.php:14
+msgid "<strong>Multisite Global Search Widget</strong></a> not support default permalinks. Please <a target=\"_blank\" href=\"options-permalink.php\">Change Permalinks</a> first."
+msgstr "<strong>Multisite Global Search Widget</strong></a> ne fonctionne pas avec la valeur par défaut des permaliens. Veuillez <a target=\"_blank\" href=\"options-permalink.php\">changer les permaliens</a> avant tout."
+
+#: inc/shortcodes.php:14
+#: inc/shortcodes.php:28
+msgid "This post is password protected. To view it please enter your password below:"
+msgstr "Cet article est protégé par un mot de passe. Pour le consulter, veuillez saisir votre mot de passe ci-dessous."
+
+#: inc/shortcodes.php:15
+#: inc/shortcodes.php:29
+msgid "Password"
+msgstr "Mot de passe"
+
+#: inc/shortcodes.php:15
+#: inc/shortcodes.php:29
+msgid "Submit"
+msgstr "Envoyer"
+
+#: inc/shortcodes.php:46
+msgid "(Read more)"
+msgstr "(Lire la suite)"
+
+#: inc/shortcodes.php:101
+msgid "Edit post"
+msgstr "Modifier l’article"
+
+#: inc/shortcodes.php:101
+msgid "Edit"
+msgstr "Modifier l’article"
+
+#: inc/shortcodes.php:113
+msgid "Comments off"
+msgstr "Commentaires désactivés"
+
+#: inc/shortcodes.php:118
+msgid "Enter your password to view comments"
+msgstr "Saisissez votre mot de passe pour lire les commentaires"
+
+#: inc/shortcodes.php:145
+#, php-format
+msgid "Comment on %s"
+msgstr "Commentaire pour %s"
+
+#: inc/shortcodes.php:147
+msgid "% Comments"
+msgstr "% commentaires"
+
+#: inc/shortcodes.php:149
+msgid "No Comments"
+msgstr "Aucun commentaire"
+
+#: inc/shortcodes.php:151
+msgid "1 Comment"
+msgstr "1 commentaire"
+
+#: inc/shortcodes.php:205
+#: inc/shortcodes.php:253
+msgid "Not found"
+msgstr "Aucune correspondance pour :"
+
+#: inc/shortcodes.php:205
+#: inc/shortcodes.php:215
+msgid "in your blogs"
+msgstr "dans vos blogs"
+
+#: inc/shortcodes.php:206
+#: inc/shortcodes.php:254
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr "Désolé, aucune correspondance n’a été trouvée."
+
+#: inc/shortcodes.php:211
+msgid "match with"
+msgstr "correspondance pour"
+
+#: inc/shortcodes.php:213
+msgid "matches with"
+msgstr "correspondances pour"
+
+#: inc/shortcodes.php:230
+msgid "Permanent Link to"
+msgstr "Lien permanent vers"
+
+#: inc/shortcodes.php:233
+msgid "j/m/y, G:i"
+msgstr "j/m/y, G:i"
+
+#: inc/views.php:84
+#: inc/views.php:89
+#: inc/views.php:94
+msgid "Error creating search views in the database. <a href=\"plugins.php\">Deactivate Multisite Global Search</a> and check you have create views privilege in your WordPress database."
+msgstr "Erreur lors de la création de la recherche dans la base de données. <a href=\"plugins.php\">Désactivez Multisite Global Search</a> et vérifiez que vous possédez le privilège \"create views\" dans votre base de données Wordpress."
+
+#. Plugin Name of the plugin/theme
+msgid "Multisite Global Search"
+msgstr "Multisite Global Search"
+
+#. Plugin URI of the plugin/theme
+msgid "http://grial.usal.es/agora/pfcgrial/multisite-search"
+msgstr "http://grial.usal.es/agora/pfcgrial/multisite-search"
+
+#. Description of the plugin/theme
+msgid "Adds the ability to search through blogs into your WordPress Multisite installation. Based on my other plugin WPMU GLobal Search."
+msgstr "Permet des recherches parmi les blogs d’une installation Wordpress Multisite. Basé sur mon autre plug-in WPMU Global Search."
+
+#. Author of the plugin/theme
+msgid "Alicia García Holgado"
+msgstr "Alicia García Holgado"
+
+#. Author URI of the plugin/theme
+msgid "http://grial.usal.es/agora/mambanegra"
+msgstr "http://grial.usal.es/agora/mambanegra"
+
+#~ msgid "Search only blogs where I'm a member"
+#~ msgstr "Rechercher seulement parmi les blogs dont je suis membre"
+
+#~ msgid "My blogs"
+#~ msgstr "Mes blogs"

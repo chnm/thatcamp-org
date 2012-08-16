@@ -1,0 +1,212 @@
+/*
+Theme Name: THATCamp Arclite
+Theme URI: http://thatcampdev.info/website
+Description: A customized child theme for THATCamp based on the WordPress template theme Arclite, by digitalnature. Theme has a fluid layout. Sidebar can be set to right or left, and a third column can be added. Widget titles can be set to one of four colors, content background can be set to one of three colors / textures, header background can be set to one of eight pre-set colors / textures or to a custom color, and a custom header image can be uploaded. Create your own custom 990 x 148 THATCamp header for this theme with the files at http://thatcampdev.info/logos/.  
+Author: Amanda French
+Author URI: http://thatcampdev.info/author/amandafrench/
+Template: arclite
+Version: 1.0
+*/
+
+@import url("../arclite/style.css");
+
+/* Fonts */
+body,
+input,
+textarea,
+.page-title span,
+.pingback a.url { font-family: "Lucida Grande", Arial, Helvetica, sans-serif; }
+h3#comments-title,
+h3#reply-title,
+#access .menu,
+#access div.menu ul,
+#cancel-comment-reply-link,
+.form-allowed-tags,
+#site-info,
+#site-title,
+#wp-calendar,
+.comment-meta,
+.comment-body tr th,
+.comment-body thead th,
+.entry-content label,
+.entry-content tr th,
+.entry-content thead th,
+.entry-meta,
+.entry-title,
+.entry-utility,
+#respond label,
+.navigation,
+.page-title,
+.pingback p,
+.reply,
+.widget-title,
+.wp-caption-text,
+input[type=submit] { font-family: "Lucida Grande", Arial, Helvetica, sans-serif; }
+pre { font-family: "Courier 10 Pitch", Courier, monospace; }
+code { font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace; }
+
+/* Header */
+#pagetitle { padding: 0 0 0 1em; }
+
+#pagetitle h4{
+  float: left;
+  border-left: 1px solid #8e7762;
+  padding: 1em 0 .6em .8em;
+  margin-left: 1em;
+  color: #e9e2c9;
+}
+
+/* search */
+.search-block {
+  background: none;
+  position: absolute;
+  right: 2em;
+  bottom: 1em;
+}
+
+.search-block .searchform-wrap{
+  width: 246px;
+  height: 30px;
+}
+
+.search-block input{
+  background: none;
+  border: 0;
+  color: #928a85;
+  float: left;
+  width: 195px;
+  height: 22px;
+  padding: 0;
+  margin: 0;
+}
+
+.search-block input.searchfield{
+  margin: 5px 0 0 8px;
+  background-color: white;
+}
+
+.search-block fieldset{
+  border: 0;
+  padding: 0;
+}
+
+.search-block input.go{
+  width: 36px;
+  height: 30px;
+  text-transform: uppercase;
+  text-align: center;
+  float: right;
+  color: #fff;
+}
+
+/* Content */
+
+a:link {
+text-decoration:none;
+}
+
+p {
+line-height: 1.3em;
+}
+
+ul {
+margin-left: 2em;
+}
+
+ul li { 
+font-size: 1.2em;
+font-family: sans-serif;
+line-height: 1.3em;
+}
+
+.authors {
+list-style-type: none;
+}
+
+.authors li {
+font-size: x-large;
+}
+
+.twitter-item {
+list-style:none; margin-left: -12px; font-size: 1em; padding: 5px; 
+}
+
+.twitter-item img {
+float:left; margin-right: 3px; margin-top: 3px;
+}
+
+.twitter-item abbr {
+display:block; 
+}
+
+/* Footer */
+#site-info
+{
+	width: 100% !important;
+	/* for ie 6 */
+	min-width: 780px;
+	max-width: 1200px;
+	margin: 0 auto;
+	display: block;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 1.8em;
+}
+
+#site-info a { color: #057DBD; }
+
+#cclicense
+{
+	display: block;
+	width: 960px;
+	/* for ie 6 */
+	min-width: 780px;
+	max-width: 1200px;
+	margin: .5em auto;
+}
+
+#ccl
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Campers Template */
+
+	.campers_title {
+		padding-bottom: 1em;
+	}
+	
+	.camper_info {
+		float: left; 
+		padding: 0 15px 15px 0;
+		width: 180px;
+		height: 180px; 
+	}
+	
+	.camper_avatar {
+		//* border: 1px solid #B39061; *//
+		overflow: hidden;
+	}
+	
+	.camper_name, .camper_posts {
+		font-size: 13px;
+		line-height: 16px;
+		margin-left: 15px;
+	}
+	
+	.entry_post { 
+		list-style-type: none; 
+	}
+
+/* Registration form */ 
+
+label { 
+font-weight: bold; 
+font-size: large; 
+}
+
+fieldset div {
+margin-bottom: 3%; 
+}

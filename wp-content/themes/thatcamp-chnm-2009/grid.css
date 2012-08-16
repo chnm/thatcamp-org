@@ -1,0 +1,46 @@
+/* 
+Grid: 828px wide, 8 columns at 72px each, 7 gutters at 36px each.
+1 = 72px
+2 = 180px (4 columns)
+3 = 288px 
+4 = 396px (2 columns)
+5 = 504px
+6 = 612px
+7 = 720px
+8 = 828px
+9 = 936px
+*/
+
+/* Grid Classes */
+
+.one {width:72px;}
+.two {width: 180px;}
+.three {width: 288px;}
+.four {width: 396px;}
+.five {width: 504px;}
+.six {width: 612px;}
+.seven {width: 720px;}
+.eight {width:828px;}
+.nine {width:936px;}
+
+.pic, .project {float:left;}
+.inset {float:right;margin-left:18px;}
+.outset {float:right; width: 342px;}
+.full {width: auto;}
+
+p.caption {float:right; margin-right:0;}
+
+/* == Wrap == */
+#wrap {width: 936px;}
+
+/* == Header == */
+#header {}
+
+/* == Content == */
+#content {}
+	#primary {}
+	#secondary {}
+	#tertiary {}
+	
+/* == Footer == */
+#footer {}

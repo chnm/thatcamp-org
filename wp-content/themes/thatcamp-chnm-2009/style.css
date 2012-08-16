@@ -1,0 +1,128 @@
+/*  
+Theme Name: THATCamp CHNM 2009
+Theme URI: http://thatcampdev.info/
+Description: The awesome theme for THATCamp CHNM 2009. 
+Version: 1.0
+Author: Jeremy Boggs
+Author URI: http://clioweb.org/
+*/
+
+@import url('reset.css');
+@import url('typography.css');
+@import url('grid.css');
+
+/* == Generic == */
+html {margin:0; padding:0; background:transparent;}
+body {color: #444; background: #444 url("/ui/i/macro/thatcamp08-3.jpg") 0 -100px no-repeat fixed;}
+h2 {}
+
+a {font-weight:bold;text-decoration:none;}
+a:link {color: #c50;}
+a:visited {color: #c80;}
+a:focus {color: #c80;}
+a:hover {color: #c80; text-decoration:underline; }
+a:active {color: #c50;}
+
+/* == Wrap == */
+
+#wrap {background: #fcfcfc; border: 9px solid #404040; border-width: 9px 0;margin: 36px auto;width:828px; padding: 0 36px 36px; overflow:hidden; zoom:1;}
+
+/* Header == */
+#header {margin: 0 -36px 36px; padding: 80px 36px 18px; border-bottom:1px dotted #999;position:relative;}
+
+#primary-nav {margin:0; font-size: 12px; position:absolute; top: 0; left:0; overflow:hidden; margin:0; width: 900px; background: #404040;}
+	#primary-nav li {display:inline;}
+	#primary-nav a {display:block; float:left; margin-right: 1px;width: 150px;background: #ddd;color:#555;text-align:left; text-indent: 36px;padding: 12px 0; border-bottom:1px solid #444;}
+	#primary-nav a:hover {background: #eee; color: #333; text-decoration:none;}
+
+	#about #primary-nav #nav-about a,
+	#home #primary-nav #nav-home a,
+	#campers #primary-nav #nav-campers a,
+	#blog #primary-nav #nav-blog a {background: #fcfcfc; color: #c60;border-bottom-color: #fcfcfc;}
+	
+	#user-login {position:absolute; top:0; padding: 12px 18px 8px; background: #404040;right: 0px; text-align:right; font-size: 11px; color: #fafafa;}
+	#user-login a {color: #eee;}
+/* == Logo == */
+#thatcamp, #login h1 {margin: 0; width: 810px;}
+
+/* == Content == */
+#primary .explanation {font-weight:bold; font-size: 20px; line-height: 30px; margin-bottom:36px;}
+
+#registration {font-size:24px; text-align:center;margin-bottom:36px; }
+	#registration a {color: #fff; background: #c50; padding: 18px;margin-bottom:36px;}
+	#registration a:hover {text-decoration:none; background: #c80;}
+	
+	#registration em {display:block; font-weight:bold; font-style:normal; margin-top:36px;}
+#deadline {font-size:13px; font-weight:bold;}
+
+
+
+#primary {float:left;}
+#primary h2 {margin-left: -36px;background:#edbe04;padding-left:36px; font-size:15px;}
+#secondary {float:right;clear:right;}
+#secondary h2 {border:none; padding-left:0; color:#777; font-size:14px; font-weight:bold; margin-bottom:0;}
+
+#register a {text-decoration:none; background: #c50; color: #fff; display:block; text-align:center;width: 396px; padding: 18px 0; font-size: 20px;}
+#register a:hover {background: #c30;}
+
+#twitter li {margin-right:-36px; padding-right: 36px; border-top: 1px solid #eee; overflow:hidden; zoom:1; padding-top: 18px;}
+#twitter li * {font-size:1em;}
+#twitter li img {float:left; margin-right: 18px;width: 36px; height: 36px;}
+#twitter li p {margin-left: 54px;}
+
+#flickr {margin-right: -36px;}
+#flickr img {width: 90px; height: 90px; margin-right:9px; margin-bottom:9px;}
+
+.campers {}
+.campers .camper {float:left; display:block; position:relative; width: 180px; padding: 0 0 18px 48px; margin-right: 18px;}
+.camper h2 {font-size: 15px; margin:0;}
+.campers .camper img {width: 30px; height: 30px; position:absolute; top: 0; left:0;}
+
+/* == Login == */
+
+body.login {margin-top:0 !important;border-top-width:0 !important;}
+
+#login h1 {display:none;}
+#login h1#thatcamp {display:block; width: 810px; height: 190px;}
+#login h1#thatcamp a {background-image:none; height:190px; width: 810px; text-indent:0;}
+#login #thatcamp {display:block;}
+#login #useless {margin: 0 -36px 36px; border-bottom:1px solid #ccc;}
+body.login div#login {background:#fff;overflow:hidden; zoom:1; margin: 36px auto; padding: 36px; width: 828px;border-top:9px solid #404040;}
+body.login div#registration-message {border:0;float:left; width: 504px;}
+#registration-message h1 {margin-bottom:18px;}
+
+body.login #login #registration-message h1 {display:block;}
+
+body.login #login #login_error {width: 468px; float:left; border-width:0; background-color: #fff09e; font-size:13px;margin:0 0 18px; padding:18px;}
+
+#registerform {float:left; width: 504px;background:none;}
+#nav { clear:left; width: 504px; margin:0;}
+
+form #about, form .custom_textarea {height: 250px;}
+#backtoblog {display:none;}
+
+#registerform p input, #registerform p textarea {background:#f6f6f6; border:1px solid #ccc;font-size:14px; font-family:"Lucida Grande", Arial, sans-serif; color: #333;margin-bottom:18px;}
+#registerform p input:focus, #registerform p textarea:focus {background:#fff;}
+
+#registerform p input {margin-bottom:18px;}
+#registerform p small {display:none;}
+
+/* == Single Post == */
+#post-navigation {overflow:hidden; border-top:1px dotted #ddd; padding-top:18px; clear:both;}
+#post-navigation li {display:block; float:left; width: 48%;}
+#post-navigation li.alignright {float:right; text-align:right;}
+
+#respond {clear:both; border-top: 1px dotted #ddd; padding-top: 18px;}
+#commentform textarea, #commentform input {border:1px solid #bbb; padding: 4px;border-bottom-color: #ddd; border-right-color: #ddd;}
+#commentform textarea {width: 604px; }
+
+#commentform input#submit {border:1px solid #ddd; border-bottom-color: #bbb; border-right-color: #bbb;}
+
+/* ==Schedule == */
+
+#schedule table {font-size:70%; margin-bottom: 20px; width: 840px;}
+#schedule th,td {padding:10px;}
+#schedule th {border-bottom:2px solid #999; font-weight:bold;}
+#schedule td {border:1px solid #ccc; border-width:0 0 1px 0;border-collapse:collapse;}
+#schedule tbody th {font-weight:bold;}
+#schedule tr.everyone td {background:#eee !important;}

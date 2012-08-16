@@ -1,0 +1,26 @@
+php_flag apc.cache_by_default On
+
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+
+# uploaded files
+RewriteRule ^files/(.+) wp-includes/ms-files.php?file=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule  ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
+RewriteRule  ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]
+RewriteRule . index.php [L]
+
+Redirect 301 /gratitude http://thatcampdev.info/people/sponsors
+Redirect 301 /bootcamp http://thatcampdev.info/plan/first/workshops
+Redirect 301 /applications http://thatcampdev.info/plan/before/registrations
+Redirect 301 /plan/before/applications http://thatcampdev.info/plan/before/registrations
+Redirect 301 /go/fellowships http://thatcampdev.info/about/fellowships
+Redirect 301 /plan/first http://thatcampdev.info/plan/
+Redirect 301 /plan/before http://thatcampdev.info/plan/
+Redirect 301 /plan/during http://thatcampdev.info/plan/
+Redirect 301 /plan/after http://thatcampdev.info/plan/
+

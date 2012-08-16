@@ -1,0 +1,182 @@
+/*
+Theme Name: THATCamp Graphene
+Theme URI: http://thatcampdev.info/website
+Description: A customized child theme for THATCamp based on the WordPress template theme Graphene, by Syahir Hakim. Front page of blog displays an animated "slider" where you can feature the latest blog posts or posts from a particular category, and there are many theme options. Theme comes with a black textured background that can be changed to a custom image or color, and a custom THATCamp header can be uploaded. Create your own custom 960 x 198 THATCamp header for this theme with the files at http://thatcampdev.info/logos/.  
+Author: Amanda French
+Author URI: http://thatcampdev.info/author/amandafrench/
+Template: graphene
+Version: 1.3
+*/
+
+@import url("../graphene/style.css");
+
+
+/* Custom styles */
+
+#nav a { 
+font-size: 13pt !important; 
+} 
+
+.post .date {
+margin-left: 10px;
+}
+
+p.default_date {
+color: white;
+}
+
+.entry-title {
+margin-left: 2.2em;
+}
+
+.entry-content {
+margin: 15px;
+}
+
+.entry-content p {
+font-size: 13pt;
+line-height: 20pt;
+}
+
+.entry-content ul li { 
+font-size: 12pt;
+line-height: 16pt;
+}
+
+br {
+margin-top: 3pt; 
+}
+.post-title a {
+font-size: 16pt; 
+}
+
+.sidebar-wrap ul li, .sidebar-wrap ul li a {
+font-size: 10pt; 
+}
+
+#previous a, #next-post a {
+font-size: 16pt;
+}
+
+/* Footer */
+
+#footer
+{
+	background: url(images/sprite_h.png) left -100px repeat-x #000;
+	margin-bottom: 50px;
+	height: 150px;
+	width: 960px;
+}
+
+#site-info
+{
+	min-width: 750px;
+	max-width: 960px;
+	display: block;
+	margin: 0 auto;
+	padding: 10px 25px 10px 25px;
+	color: #7e7d78;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 1.8em;
+}
+
+#cclicense
+{
+	display: block;
+	width: 960px;
+	/* for ie 6 */
+	min-width: 750px;
+	max-width: 960px;
+	margin: 1em auto;
+}
+
+#ccl
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Campers Template */
+
+	.camper_info {
+		float: left;
+		position: relative;
+		width: 132px;
+		height:170px;
+		padding: 0px 15px 10px 0;
+	}
+	
+	.camper_avatar {
+		position: relative;
+		bottom: 0;
+		top: 5;
+	}
+	
+	.camper_name 
+		position: relative; 
+		top: 5;
+		left: 10;
+		font-size: 13px;
+		line-height: 16px;
+	
+	
+	.camper_posts {
+		bottom: 5;
+		font-size: 13px;
+		line-height: 16px;
+	}
+
+/* Authors Template */
+
+#author-info {
+margin-right: .5em; 
+margin-bottom: .3em;
+list-style: none;
+font-weight: bold;
+font-size: 1.2em;
+}
+
+h3.author-post-list {
+margin-left: -30px;
+margin-top: 0px;
+}
+
+.camper-posts {
+list-style: none;
+}
+
+.camper-posts a {
+font-size: 1.4em;
+}
+
+.camper-post-meta {
+margin-bottom: 1em;
+}
+
+/* THATCamp Registration Plugin */
+
+.formitem {
+margin-bottom: 1.5em;
+}
+
+legend {
+display:none; 
+}
+
+label {
+font-style: bold;
+font-size: 11pt;
+}
+
+p.explanation {
+display:block;
+margin-top: 0;
+font-size: 10pt;
+font-style:italic;
+}
+
+div.entry-content form fieldset div {
+margin-top: 1.5em;
+}

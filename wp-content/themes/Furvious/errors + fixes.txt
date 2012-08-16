@@ -1,0 +1,39 @@
+1. Documentation Panel 
+------------------------
+------------------------
+
+2. Archive Widget Error
+------------------------
+<div class="clear"></div> added
+------------------------
+
+3. Featured Post Image
+------------------------
+I suggest adding phpThumb to it
+------------------------
+
+4. Single Page Share Open in the same window
+------------------------
+Added _blank
+------------------------
+
+5. No Search Form
+------------------------
+Added a search form
+------------------------
+
+6. Header Pages, No Hover/Child Pages
+------------------------
+There is no styling done, so i cannot add the option to do so.
+------------------------
+
+7. Sidebar ul styling Problems
+------------------------
+Fixed
+------------------------
+
+8. Advertisement Options In Admin Page
+------------------------
+Removed as no advertisement options
+------------------------
+

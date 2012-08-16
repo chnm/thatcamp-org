@@ -1,0 +1,162 @@
+/*
+Theme Name: Twenty Twelve THATCamp Prime
+Theme URI: http://chnm2012.thatcampdev.info
+Description: A customized child theme based on the Twenty Eleven theme. The 2011 theme for WordPress is sophisticated, lightweight, and adaptable. Make it yours with a custom menu, header image, and background — then go further with available theme options for light or dark color scheme, custom link colors, and three layout choices. Twenty Eleven comes equipped with a Showcase page template that transforms your front page into a showcase to show off your best content, widget support galore (sidebar, three footer areas, and a Showcase page widget area), and a custom “Ephemera” widget to display your Aside, Link, Quote, or Status posts. Included are styles for print and for the admin editor, support for featured images (as custom header images on posts and pages and as large images on featured “sticky” posts), and special styles for six different post formats. Create your own custom 1000 x 288 THATCamp header for this theme with the files at http://thatcampdev.info/logos/.
+Author: Chris A. Raymond
+Author URI: http://www.designtank.ws
+Template: twentyeleven
+Version: 1.0
+*/
+
+@import url("../twentyeleven/style.css");
+
+@font-face {
+    font-family: 'BebasNeueRegular';
+    src: url('bebas-neue/BebasNeue-webfont.eot');
+    src: url('bebas-neue/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('bebas-neue/BebasNeue-webfont.woff') format('woff'),
+         url('bebas-neue/BebasNeue-webfont.ttf') format('truetype'),
+         url('bebas-neue/BebasNeue-webfont.svg#webfontj1CI1MAi') format('svg');
+}
+/* RESETS
+div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, img, form, fieldset, input, textarea {
+    margin: 0; padding: 0; border: 0;
+}*/
+
+/* =Typography */
+body {line-height:18px;font-size:13px;}
+
+blockquote {padding-left:24px; border-left: 1px dotted #a1a82e;margin-left:18px;}
+
+h1, h2, h3, h4, h5, h6, .entry-title, .entry-title a, .menu ul, .singular h1.entry-title 
+	{
+	font-family: 'BebasNeueRegular', arial, sans-serif;
+	font-weight: normal !important;
+	font-style: normal !important;
+	color: #a1a82e;
+	letter-spacing: .05em;
+	}
+.entry-content h1, .entry-content h2, .comment-content h1, .comment-content h2 {color: #a1a82e;}
+h4, h5, h6 {color: #333;}
+p + h2, p + h3, p + h4, p + h5, p + h6, ul + h2, 
+.entry-content h1, .entry-content h2, .comment-content h1, .comment-content h2  
+	{
+	margin:22px 0 2px;
+	}
+
+p {margin-bottom:18px;}
+	
+#content article h2.post-title, h2.title, .entry-title {
+    font-size: 30px;padding-bottom:0;}
+
+h1 {font-size:30px;line-height:1;}
+h2 {font-size:24px;line-height:110%;}
+h3, .entry-content h3, .comment-content h3 {
+	font-size:18px;line-height:125%;
+	}
+h4 {font-size:12px;line-height:125%;}
+
+#content article h3, #comments h3, h3 {
+       font-size: 18px; margin: 0 0 18px 0;
+       font-weight: normal;
+   }
+   
+   #content article h4, #sidebar h3 {
+       font-size: 20px; margin: 0 0 18px 0;
+       font-weight: normal;
+   }
+   
+   #content article h5, #comments-title {
+       font-size: 16px; margin: 0 0 18px 0;
+       font-weight: normal;
+   }
+
+.widget-title {
+	font-size:14px;
+	line-height:14px;
+	margin:0 0 6px;
+	}
+
+#secondary.widget-title, #secondary h3.widget-title, .widget_twitter h3.widget-title {color: #555;}
+
+.entry-meta {font-style:italic;}
+
+/* =Links */
+#main a:hover {color:white !important;background: #a1a82e; padding:3px;}
+#secondary a {border-bottom:1px dotted #a1a82e;} 
+	#secondary a:hover {text-decoration:none; border-bottom:0;}
+
+/* =Menu and Lists */
+#access {
+	background: #222; /* Show a solid color for older browsers */
+	background: -moz-linear-gradient(#252525, #0a0a0a);
+	background: -o-linear-gradient(#252525, #0a0a0a);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#252525), to(#0a0a0a)); /* older webkit syntax */
+	background: -webkit-linear-gradient(#252525, #0a0a0a);}
+	
+#access ul {font-size:16px;letter-spacing:1px;}
+	#access a {line-height:30px;color: #a1a82e;}
+	#access .current-menu-item > a, 
+	#access .current-menu-ancestor > a, 
+	#access .current_page_item > a, 
+	#access .current_page_ancestor > a {
+		font-weight:normal;color: #fff;}
+		
+	#access li:hover > a,
+	#access a:focus {
+		background: #f9f9f9; /* Show a solid color for older browsers */
+		background: -moz-linear-gradient(#f9f9f9, #e5e5e5);
+		background: -o-linear-gradient(#f9f9f9, #e5e5e5);
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9f9f9), to(#e5e5e5)); /* Older webkit syntax */
+		background: -webkit-linear-gradient(#f9f9f9, #e5e5e5);
+		color: #373737;
+	}
+
+ul {list-style: square inside none;margin:6px 0;}	
+	p + ul {margin-top:0px;}
+	#content ul li {margin-bottom:6px;}
+	#secondary ul {list-style:square outside;padding-left:15px;}
+	
+/* =Layout */
+#page {
+	-webkit-box-shadow: 0px 2px 4px #111111;
+	-moz-box-shadow: 0px 2px 4px #111111;
+	box-shadow: 0px 2px 4px #111111;
+}
+
+#branding {border-top:2px solid #a1a82e; }
+
+#content article {margin:0 0 36px 0;}
+
+/* =Single*/
+.singular .hentry {padding-top:2.875em;}
+
+/* =Footer */
+#supplementary {background: #a1a82e;}
+	.widget ul li.twitter-item {color: #121212;}
+	li.twitter-item a {color: #fff;}
+	.twitter-timestamp abbr {
+		font-style:italic;border-bottom:none;color: #444;padding-left:3px;
+		}
+		
+#site-generator {font-size:9px;padding:1em .5em;background: #121212;border-color: #ffffff;}
+
+/* =Comments */
+#comments-title {line-height:1em;padding-bottom: .5em;}
+/* Wordpress Alignment Stuff */
+
+.centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alignright {
+    float: right;
+    margin-left: 15px;
+}
+
+.alignleft {
+    float: left;
+    margin-right: 15px;
+}

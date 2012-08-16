@@ -1,0 +1,990 @@
+--- Log opened Sat May 31 10:19:27 2008
+10:19 -!- thatcampbot [n=eos8d@aleph.lib.Virginia.EDU] has joined #thatcamp
+10:19 -!- Irssi: #thatcamp: Total of 16 nicks [0 ops, 0 halfops, 0 voices, 16 normal]
+10:19 -!- Irssi: Join to #thatcamp was synced in 1 secs
+10:19 < epistemographer> just imagine if we were all piling on one collaborative spreadsheet
+10:19 < asolove> so can whoever controls thatcampbot consider the room-specific IRC channels?
+10:19 < thatcampbot> ok
+10:20 < jgsmith> a wiki page for the schedule?
+10:20 -!- JasonRhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-c0a55791870f7979] has joined #thatcamp
+10:21 < thatcampbot> give me a sec to figure this out
+10:21 -!- JasonRhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-c0a55791870f7979] has left #thatcamp []
+10:21 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-8ce2786a1475921b] has joined #thatcamp
+10:21 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-df74887e92c3957a] has joined #thatcamp
+10:21 < dancohen> is it possible to simultaneously irc chat, twitter, blog, and podcast? I'm going to try.
+--- Log opened Sat May 31 10:26:08 2008
+10:26 -!- thatcampbot [n=eos8d@aleph.lib.Virginia.EDU] has joined #thatcamp
+10:26 -!- Irssi: #thatcamp: Total of 16 nicks [0 ops, 0 halfops, 0 voices, 16 normal]
+10:26 -!- Irssi: Join to #thatcamp was synced in 1 secs
+10:26 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-8ce2786a1475921b] has quit ["http://www.mibbit.com ajax IRC Client"]
+10:27 -!- bess__ [n=eos8d@129.174.112.5] has quit []
+10:27 -!- dancohen [n=dancohen@129.174.112.5] has quit []
+10:28 -!- asolove [n=asolove@129.174.112.5] has joined #thatcamp
+10:29 < asolove> thatcamp450 for rdf discussion
+10:30 -!- sharum_ [n=chatzill@129.174.112.5] has joined #thatcamp
+10:30 < willynills> about to start the text mining session
+10:31 < DruidSmith> RDF...  am curious if anyone is working with AJAX or JavaScript browsing and navigation of OWL ontologies
+10:31 -!- epistemographer [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+10:31 -!- karindalziel [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+10:31 -!- sharum [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+10:31 -!- dancohen [n=dancohen@129.174.112.5] has joined #thatcamp
+10:32 -!- sharum_ is now known as sharum
+10:32 -!- shekhar [n=shekhar@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+10:32 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-f7872af983f59258] has joined #thatcamp
+10:32 -!- karindalziel [n=chatzill@129.174.112.5] has joined #thatcamp
+10:33 -!- mkl [n=mikel@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+10:33 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-496829f5eb35f5f1] has joined #thatcamp
+10:34 -!- bess__ [n=eos8d@129.174.112.5] has joined #thatcamp
+10:34 -!- bess_ [n=eos8d@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+10:34 -!- matthewgaventa [n=matthewg@129.174.112.5] has joined #thatcamp
+10:34 < willynills> text analysis software: http://www.lib.uchicago.edu/efts/ARTFL/philologic/
+10:35 < willynills> philomine: http://philologic.uchicago.edu/philomine/
+10:35 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-5fcfc2ffc1020357] has joined #thatcamp
+10:36 -!- doug_knox [i=81ae7005@gateway/web/ajax/mibbit.com/x-088d0856c391a420] has joined #thatcamp
+10:37 < dancohen> in the text mining session in the lab (rm 462)
+10:37 -!- bess_ [n=eos8d@paz.mesa.gmu.edu] has joined #thatcamp
+10:37 -!- epistemographer [n=chatzill@129.174.112.5] has joined #thatcamp
+10:37 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+10:38 -!- dchud [i=81ae7005@gateway/web/ajax/mibbit.com/x-bb936061206d1428] has joined #thatcamp
+10:39 < dancohen> sean takats is explaining CHNM's upcoming NEH-funded text-mining project
+10:40 < epistemographer> Sean's not a "better" historian, he's a "different" kind of historian
+10:40 < dchud> dancohen: hooray for funding :)
+10:40 -!- elli [n=elli@129.174.112.5] has joined #thatcamp
+10:40 -!- clioweb [n=clioweb@clioweb.mesa.gmu.edu] has joined #thatcamp
+10:40 -!- elli is now known as elli-m
+10:40 -!- elli-m is now known as elli
+10:41 < bess_> the techies are having an impromptu "keeping the wheels on" meeting -- sustainability from a technical point of view
+10:42 < dancohen> good thing we're inside--just got a tornado watch alert from the fairfax messaging system, active until 10:30 tonight
+10:42 < epistemographer> yowza
+10:42 < doug_knox> RDF group talking about bibliographic data, citations, Zotero, data about museum/library objects
+10:42 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-f7872af983f59258] has quit ["http://www.mibbit.com ajax IRC Client"]
+10:43 < willynills> according sean: three aspects of text mining:  locating or finding documents,  automatically extracting data from documents (instead of manually reading), analysis of corpus
+10:45 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-a7414fc08e2de941] has joined #thatcamp
+10:45 < willynills> according to laura mandell: text mining can be used to identify terms of analysis not within your discipline
+10:45 < matthewgaventa> wow. really doesn't LOOK like tornado weather (at least through my small window)
+10:46 < jackflaps> it feels like it, though
+10:47 -!- davelester [n=dlester@129.174.112.5] has joined #thatcamp
+10:48 -!- foundhistory [n=foundhis@129.174.112.5] has joined #thatcamp
+10:48 < davelester> it's great  to see everyone on IRC!
+10:51 < elli> RDF: used to define relationships in restricted domains, perhaps more interesting. But movement in developing it is to make it applicable to broader and broader domains.
+10:52 < bess_> davelester: I set up thatcampbot to record the channel. I'll give you the logs afterwards.
+10:52 < davelester> thanks bess_ :)
+10:53 -!- bess__ [n=eos8d@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+10:53 -!- shekhar [n=shekhar@129.174.112.5] has joined #thatcamp
+10:56 -!- doug_knox [i=81ae7005@gateway/web/ajax/mibbit.com/x-088d0856c391a420] has quit ["http://www.mibbit.com ajax IRC Client"]
+10:56 -!- mib_m0b9t2 [i=81ae7005@gateway/web/ajax/mibbit.com/x-148428e72da25e49] has joined #thatcamp
+10:56 < asolove> can someone add thatcampbot to thatcamp450
+10:56 < davelester> asolove++ great idea.  can you do that bess_?
+10:57 < willynills> dan cohen: text mining tools need to useful for historians and may not be
+10:58 < willynills> text mining tasks: summarization, classification, extractions
+10:59 < bess_> asolove and davelester : I'll give it a shot
+10:59 < bess_> asolove and davelester : I'll get to  it on the break, I'm in the middle of a good conversation
+10:59 < davelester> np
+11:00 -!- mib_m0b9t2 [i=81ae7005@gateway/web/ajax/mibbit.com/x-148428e72da25e49] has quit [Client Quit]
+11:03 < asolove> ok thanks
+11:06 < karindalziel> I will be posting the URL's we are talking about on del.icio.us with tag thatcamp
+11:07 < jackflaps> I'm going to start doing that for the RDF session as well
+11:08 -!- jeanne_kramer-sm [i=81ae7005@gateway/web/ajax/mibbit.com/x-383da818ba8d6af6] has joined #thatcamp
+11:10 < willynills> text mining does more than speed up historical thought; it should give us a new level of comprehension
+11:11 < clioweb> FYI  - I updated the schedule, so that should be current based on the last change we tried to implement downstairs
+11:11 < clioweb> thanks to everyone for patience and input
+11:11 < clioweb> schedule at http://thatcampdev.info/schedule/
+11:12 -!- doug_knox [i=81ae7005@gateway/web/ajax/mibbit.com/x-ed4e03364ba2faf9] has joined #thatcamp
+11:12 < dancohen> clioweb: thanks--you did a great job with the schedule; hard to optimize something that complicated
+11:12 < clioweb> I think it worked out well
+11:13 < davelester> clioweb++
+11:14 < clioweb> people should feel free to use other rooms and spaces for ad hoc meetings
+11:17 -!- benwbrum [n=benwbrum@129.174.112.5] has joined #thatcamp
+11:17 -!- BenBrumfield [n=benwbrum@129.174.112.5] has joined #thatcamp
+11:20 < BenBrumfield> Karin, is there any chance you could let us use your wiki?
+11:20 -!- lbjay [n=lbjay@li25-184.members.linode.com] has left #thatcamp []
+11:21 -!- foundhistory [n=foundhis@129.174.112.5] has quit []
+11:25 < karindalziel> ben - sure, pass is karin
+11:25 < karindalziel> I'll clean up later
+11:26 -!- nowviskie [n=nowviski@129.174.112.5] has quit []
+11:29 < dancohen> http://www.dancohen.org/2006/08/08/mapping-what-americans-did-on-september-11/
+11:30 < dancohen> my best effort on text mining + geolocation
+11:30 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+11:32 < BenBrumfield> Karin, can you paste the URL?
+11:33 -!- jonlesser [n=jonlesse@c-68-34-98-247.hsd1.md.comcast.net] has joined #thatcamp
+11:33 -!- jonlesser [n=jonlesse@c-68-34-98-247.hsd1.md.comcast.net] has quit [Client Quit]
+11:34 -!- clioweb_ [n=clioweb@clioweb.mesa.gmu.edu] has joined #thatcamp
+11:34 -!- clioweb [n=clioweb@clioweb.mesa.gmu.edu] has quit [Read error: 104 (Connection reset by peer)]
+11:35 < BenBrumfield> Got it
+11:35 -!- clioweb_ [n=clioweb@clioweb.mesa.gmu.edu] has quit [Client Quit]
+11:35 < davelester> could people post their session notes on the blog?  that'd be great
+11:35 < dancohen> so far, been able to blog, tweet, and irc chat all at once; adding in the podcasting might be hard...
+11:36 < DruidSmith> There was a GREAT discussion of technology and sustainability at EPA's Science Forum last week - William McDonough, author of The Cradle to Cradle Revolution - http://www.amazon.com/Cradle-Remaking-Way-Make-Things/dp/0865475873/ref=sr_1_1?ie=UTF8&s=books&qid=1212248155&sr=8-1
+11:37 < davelester> dancohen: I'd love to see a live digital campus :)
+11:37 < epistemographer> me too - do it, Dan :)
+11:37 < karindalziel> actually, just set up a new wiki http://www.nirak.net/thatcamp/pmwiki.php?n=Main.HomePage
+11:37 < dancohen> davelester: tom and I were thinking of doing it
+11:37 < BenBrumfield> Oh.  Sweet!
+11:38 < dancohen> anyone mind if I look like I'm manning a McDonald's drive-thru?
+11:38 < BenBrumfield> Well, I need a place to put the DorkShorts material now, so I'll get started with Karin's
+11:38 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+11:38 < davelester> there's already a whiteboard in the main room for dork shorts with a list of names
+11:38 < karindalziel> feel free to do whatever you want there
+11:41 -!- foundhistory [n=foundhis@129.174.112.5] has joined #thatcamp
+11:43 < willynills> Bill: text mining, given abundant texts, can ask questions about simultaneity and co-incidence.
+11:43 < sgillies> epiphany!
+11:44 -!- davelester [n=dlester@129.174.112.5] has quit []
+11:44 < DruidSmith> add geotagging to the mix and you also have geo-enabled text mining :)
+11:45 < DruidSmith> and temporal coincidence / simultaneity?
+11:46 -!- sharum [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+11:50 < asolove> what is the method for getting slides in to Dork Shorts?
+11:51 < BenBrumfield> Karin, can you enable uploads on the wiki?  http://www.nirak.net/thatcamp/pmwiki.php?n=PmWiki.Uploads
+11:52 < foundhistory> asolove ... thumbdrive?
+11:52 -!- bess_ [n=eos8d@paz.mesa.gmu.edu] has quit []
+11:53 < asolove> hmm
+11:53 < asolove> I can just download from email
+11:53 -!- sharum_ [n=chatzill@129.174.112.5] has joined #thatcamp
+11:53 -!- sharum_ is now known as sharum
+11:53 < foundhistory> if that works.  what kind of slides? ppt? keynote?
+11:53 < BenBrumfield> Will we be able to hook up the projector to our own laptops?
+11:53 -!- matthewgaventa [n=matthewg@129.174.112.5] has quit []
+11:53 < asolove> it's actually just xul
+11:54 < foundhistory> oh
+11:54 < foundhistory> np
+11:54 < foundhistory> ben... that's going to be tough
+11:54 -!- doug_knox [i=81ae7005@gateway/web/ajax/mibbit.com/x-ed4e03364ba2faf9] has quit ["http://www.mibbit.com ajax IRC Client"]
+11:54 -!- asolove [n=asolove@129.174.112.5] has quit []
+11:54 < foundhistory> we're going to be pretty pressed for time
+11:54 < BenBrumfield> Okay -- wiki it is
+11:54 < foundhistory> but we could add another dork shorts session maybe
+11:55 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-a7414fc08e2de941] has quit ["http://www.mibbit.com ajax IRC Client"]
+11:55 -!- elli [n=elli@129.174.112.5] has quit []
+11:55 < sgillies> session 1 made me think of "glass house"
+11:56 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-496829f5eb35f5f1] has quit ["http://www.mibbit.com ajax IRC Client"]
+11:56 < foundhistory> Lunch is served!!!
+11:56 < foundhistory> and Dork Shorts is starting!
+11:58 -!- foundhistory [n=foundhis@129.174.112.5] has quit []
+11:59 -!- epistemographer [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:00 < sgillies> great adhoc session in 402. thanks, everybody
+12:00 -!- sgillies [n=sgillies@129.174.112.5] has quit []
+12:01 -!- nowviskie [n=nowviski@129.174.112.5] has quit []
+12:02 -!- dancohen [n=dancohen@129.174.112.5] has quit []
+12:03 -!- dchud [i=81ae7005@gateway/web/ajax/mibbit.com/x-bb936061206d1428] has quit ["http://www.mibbit.com ajax IRC Client"]
+12:03 -!- shekhar [n=shekhar@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:04 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-5fcfc2ffc1020357] has quit ["http://www.mibbit.com ajax IRC Client"]
+12:07 -!- jeanne_kramer-sm [i=81ae7005@gateway/web/ajax/mibbit.com/x-383da818ba8d6af6] has quit ["http://www.mibbit.com ajax IRC Client"]
+12:08 -!- benwbrum [n=benwbrum@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:08 -!- BenBrumfield [n=benwbrum@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:09 -!- stakats [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:11 -!- willynills [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:12 -!- sharum [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:13 < karindalziel> lunch is teh awesome. Great spreat, guys!!
+12:14 -!- jackflaps [n=kevin@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:18 -!- jeanne_kramer-sm [i=81ae7005@gateway/web/ajax/mibbit.com/x-69638fdf72ea65f9] has joined #thatcamp
+12:18 -!- asolove [n=asolove@129.174.112.5] has joined #thatcamp
+12:19 -!- jackflaps [n=kevin@129.174.112.5] has joined #thatcamp
+12:21 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+12:22 < sgillies> syndication architecture ++
+12:22 -!- sharum_ [n=chatzill@129.174.112.5] has joined #thatcamp
+12:22 -!- sharum_ is now known as sharum
+12:26 -!- epistemographer [n=chatzill@129.174.112.5] has joined #thatcamp
+12:28 -!- bess_ [n=eos8d@129.174.112.5] has joined #thatcamp
+12:29 < asolove> lunch was excellent
+12:29 -!- sharum [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:33 < epistemographer> omeka in action: http://exhibitions.nypl.org/eminent/
+12:34 -!- bess__ [n=eos8d@129.174.112.5] has joined #thatcamp
+12:36 -!- dancohen [n=dancohen@129.174.112.5] has joined #thatcamp
+12:36 -!- foundhistory [n=foundhis@129.174.112.5] has joined #thatcamp
+12:36 -!- foundhistory [n=foundhis@129.174.112.5] has quit [Remote closed the connection]
+12:37 -!- foundhistory [n=foundhis@129.174.112.5] has joined #thatcamp
+12:37 < dancohen> enjoying the dork shorts
+12:39 -!- matthewgaventa [n=matthewg@129.174.112.5] has joined #thatcamp
+12:39 < bess__> oooh, pretty! typographia
+12:39 -!- sharum_ [n=chatzill@129.174.112.5] has joined #thatcamp
+12:39 -!- sharum_ is now known as sharum
+12:41 < bess__> can anyone read the url? 
+12:42 < jackflaps> http://www4.ncsu.edu/~dmrieder/typographia
+12:42 < jeanne_kramer-sm> http://www4.ncsu.edu/~dmrieder/typographia
+12:43 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-9e1b3273f326ccac] has joined #thatcamp
+12:44 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-507821977edb7d83] has joined #thatcamp
+12:45 -!- bess___ [n=eos8d@129.174.112.5] has joined #thatcamp
+12:45 -!- karindalziel_ [n=chatzill@129.174.112.5] has joined #thatcamp
+12:46 -!- sharum [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:47 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+12:47 -!- Netsplit calvino.freenode.net <-> irc.freenode.net quits: asolove, karindalziel, bess__, bess_, matthewgaventa, epistemographer, jgsmith, dancohen, sgillies
+12:47 -!- karindalziel_ is now known as karindalziel
+12:47 -!- foundhistory [n=foundhis@129.174.112.5] has quit []
+12:48 -!- elli [n=elli@129.174.112.5] has joined #thatcamp
+12:48 -!- sharum_ [n=chatzill@129.174.112.5] has joined #thatcamp
+12:48 -!- foundhistory [n=foundhis@129.174.112.5] has joined #thatcamp
+12:48 -!- sharum_ is now known as sharum
+12:50 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-9e1b3273f326ccac] has quit ["http://www.mibbit.com ajax IRC Client"]
+12:50 -!- sharum_ [n=chatzill@129.174.112.5] has joined #thatcamp
+12:50 -!- nowviskie [n=nowviski@129.174.112.5] has quit [Client Quit]
+12:51 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-507821977edb7d83] has quit ["http://www.mibbit.com ajax IRC Client"]
+12:51 -!- elli [n=elli@129.174.112.5] has quit [Client Quit]
+12:53 -!- Netsplit over, joins: dancohen
+12:53 -!- davelester [n=dlester@129.174.112.5] has joined #thatcamp
+12:53 -!- Netsplit over, joins: sgillies
+12:54 -!- Netsplit over, joins: epistemographer
+12:55 -!- Netsplit over, joins: bess_
+12:55 -!- dancohen [n=dancohen@129.174.112.5] has quit [Client Quit]
+12:56 -!- bess_ [n=eos8d@129.174.112.5] has quit [Client Quit]
+12:56 -!- sgillies [n=sgillies@129.174.112.5] has quit [Client Quit]
+12:57 -!- travis [i=81ae7005@gateway/web/ajax/mibbit.com/session] has joined #thatcamp
+12:58 < travis> Collaborative annotation: http://ecomma.cwrl.utexas.edu/0.2.0/
+12:58 -!- davelester [n=dlester@129.174.112.5] has quit []
+12:58 -!- sharum [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:59 -!- sharum_ [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:59 -!- benwbrum [n=benwbrum@129.174.112.5] has joined #thatcamp
+13:00 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+13:00 -!- asolove [n=asolove@129.174.112.5] has joined #thatcamp
+13:00 -!- BenBrumfield [n=benwbrum@129.174.112.5] has joined #thatcamp
+13:00 -!- foundhistory [n=foundhis@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+13:01 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/session] has joined #thatcamp
+13:02 < tjowens> #thatcamp401
+13:02 < tjowens> doh
+13:02 -!- bess_ [n=eos8d@129.174.112.5] has joined #thatcamp
+13:03 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/session] has joined #thatcamp
+13:04 -!- kindaspatial [n=Jesse@pool-72-84-37-230.clrk.east.verizon.net] has joined #thatcamp
+13:04 -!- dancohen [n=dancohen@129.174.112.5] has joined #thatcamp
+13:05 -!- davelester [n=dlester@129.174.112.5] has joined #thatcamp
+13:05 -!- sharum_ [n=chatzill@129.174.112.5] has joined #thatcamp
+13:05 -!- sharum_ is now known as sharum
+13:05 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+13:06 -!- dchud [i=81ae7005@gateway/web/ajax/mibbit.com/session] has joined #thatcamp
+13:06 < dancohen> In session on search, listening to Karin Dalziel show some interesting, wide-ranging examples.
+13:07 < sgillies> i'd never seen etsy
+13:07 < sgillies> nice
+13:08 -!- shekhar [n=shekhar@129.174.112.5] has joined #thatcamp
+13:08 -!- willynills [n=chatzill@129.174.112.5] has joined #thatcamp
+13:08 < bess_> etsy++
+13:10 < bess_> All of the stuff Karin's talking about is also available at http://www.nirak.net/2008/05/29/alternative-search-analyzing-document/
+13:10 -!- bess___ [n=eos8d@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+13:10 -!- kerri [n=khicks@pool-71-245-65-31.prvdri.fios.verizon.net] has joined #thatcamp
+13:11 -!- stakats [n=chatzill@129.174.112.5] has joined #thatcamp
+13:13 < tjowens> learning about iggy pop's beat down
+13:14 < sgillies> etsy beer can hat: http://www.etsy.com/view_listing.php?listing_id=10966874
+13:14 < jackflaps> cleveland rocks
+13:14 -!- elli [n=elli@129.174.112.5] has joined #thatcamp
+13:15 -!- UMProf [n=umprof@129.174.112.5] has joined #thatcamp
+13:15 -!- karindalziel [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+13:15 -!- Raymond_Yee [n=rdhyee@129.174.112.5] has joined #thatcamp
+13:16 < davelester> http://tinyurl.com/3cmfdy
+13:17 < dancohen> davelester: thanks, dave.
+13:17 < tjowens> that better not be atsly
+13:17 -!- willynills [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+13:17 < bess_> Josh G. says "It's all about leveraging solipsism." Love it! 
+13:17 < asolove> that's cruel
+13:18 -!- karindalziel_ [n=chatzill@129.174.112.5] has joined #thatcamp
+13:18 -!- karindalziel_ is now known as karindalziel
+13:18 -!- sharum_ [n=chatzill@129.174.112.5] has joined #thatcamp
+13:18 -!- rknels [n=chatzill@129.174.112.5] has joined #thatcamp
+13:33 < jeanne_kramer-sm> http://www.gilderlehrman.org/collection/battlelines/chapter3/chapter3_1a.html
+13:33 -!- sharum [n=chatzill@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+13:35 -!- mkl [n=mikel@129.174.112.5] has joined #thatcamp
+13:35 -!- Raymond_Yee [n=rdhyee@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+13:36 -!- Krissy [i=81ae7005@gateway/web/ajax/mibbit.com/session] has joined #thatcamp
+13:36 < erazlogo> crowdsource transcribing first, then present like this: http://dohistory.org/diary/exercises/lens/index.html
+13:36 -!- sgillies [n=sgillies@129.174.112.5] has quit []
+13:41 < davelester> twitter is down again?  boo
+13:42 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+13:44 < asolove> the rain must have gotten it
+13:46 < bess_> omg the rain! 
+13:46 < jackflaps> twitter's a little slow
+13:46 < jackflaps> if you poke at it with sticks a little it eventually loads
+13:51 -!- Krissy [i=81ae7005@gateway/web/ajax/mibbit.com/x-711385b376f7c6d3] has quit ["http://www.mibbit.com ajax IRC Client"]
+14:06 < epistemographer> we got crazy geeky in the Search session
+14:07 -!- elli [n=elli@129.174.112.5] has quit []
+14:08 -!- davelester [n=dlester@129.174.112.5] has quit []
+14:09 -!- bess_ [n=eos8d@129.174.112.5] has quit []
+14:09 -!- sgillies [n=sgillies@129.174.112.5] has quit []
+14:10 -!- dancohen [n=dancohen@129.174.112.5] has quit []
+14:10 -!- dchud [i=81ae7005@gateway/web/ajax/mibbit.com/x-b6eddcf245073b60] has quit ["http://www.mibbit.com ajax IRC Client"]
+14:11 -!- nowviskie [n=nowviski@129.174.112.5] has quit []
+14:12 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-eed45188378760a0] has quit ["http://www.mibbit.com ajax IRC Client"]
+14:12 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+14:12 < jeanne_kramer-sm> hoping that folks might post what was discussed in the Search session on the wiki...
+14:13 -!- rknels [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:14 -!- epistemographer [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:14 < nowviskie> lisa spiro takes kick-ass notes and will be sharing a summary of the "research methods" session on the blog.
+14:14 -!- asolove [n=asolove@129.174.112.5] has quit []
+14:14 -!- karindalziel [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:15 -!- nowviskie [n=nowviski@129.174.112.5] has quit [Client Quit]
+14:18 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+14:22 -!- UMProf [n=umprof@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:22 -!- mkl [n=mikel@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:23 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-0c0fdb5560bc5375] has joined #thatcamp
+14:24 -!- stakats [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:25 -!- benwbrum [n=benwbrum@129.174.112.5] has quit [Read error: 113 (No route to host)]
+14:26 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-688490a7c82b1653] has quit ["http://www.mibbit.com ajax IRC Client"]
+14:26 -!- BenBrumfield [n=benwbrum@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:27 -!- sharum_ [n=chatzill@129.174.112.5] has quit [Read error: 113 (No route to host)]
+14:27 -!- asolove [n=asolove@129.174.112.5] has joined #thatcamp
+14:29 -!- dancohen [n=dancohen@129.174.112.5] has joined #thatcamp
+14:31 -!- travis [i=81ae7005@gateway/web/ajax/mibbit.com/x-c88893ecbbd8eaef] has quit ["http://www.mibbit.com ajax IRC Client"]
+14:32 -!- elli [n=elli@129.174.112.5] has joined #thatcamp
+14:32 -!- elli [n=elli@129.174.112.5] has quit [Client Quit]
+14:33 -!- bess_ [n=eos8d@129.174.112.5] has joined #thatcamp
+14:36 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-2330794d897ce592] has joined #thatcamp
+14:36 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-2330794d897ce592] has quit [Client Quit]
+14:38 -!- sgillies [n=sgillies@129.174.112.5] has quit []
+14:39 -!- shekhar [n=shekhar@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:44 -!- arem [i=81ae7005@gateway/web/ajax/mibbit.com/x-ad0c6e7020757293] has joined #thatcamp
+14:46 -!- bess_ [n=eos8d@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:48 -!- asolove [n=asolove@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:49 -!- dancohen [n=dancohen@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:49 -!- bess_ [n=eos8d@129.174.112.5] has joined #thatcamp
+14:49 -!- dancohen [n=dancohen@129.174.112.5] has joined #thatcamp
+14:52 -!- ajturner [n=ajturner@md00f36d0.tmodns.net] has joined #thatcamp
+14:52 -!- epistemographer [n=chatzill@129.174.112.5] has joined #thatcamp
+14:58 -!- arem [i=81ae7005@gateway/web/ajax/mibbit.com/x-ad0c6e7020757293] has quit ["http://www.mibbit.com ajax IRC Client"]
+14:58 -!- bess__ [n=eos8d@129.174.112.5] has joined #thatcamp
+15:00 < epistemographer> quick call out: what's being talked about in the sessions people are in?
+15:00 -!- dancohen [n=dancohen@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+15:01 < epistemographer> in "Museums" we're talking about the difference between how museums, libraries and archives approach digita vs. physical issues
+15:03 < jackflaps> in Games we're talking about how to evaluate history-based video games based on their value as teaching tools
+15:07 -!- bess_ [n=eos8d@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+15:09 -!- bess__ [n=eos8d@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+15:11 -!- arem [i=81ae7005@gateway/web/ajax/mibbit.com/x-a6b8d0dda4e991e3] has joined #thatcamp
+15:12 -!- arem [i=81ae7005@gateway/web/ajax/mibbit.com/x-a6b8d0dda4e991e3] has quit [Client Quit]
+15:13 -!- arem [i=81ae7005@gateway/web/ajax/mibbit.com/x-caecf91c3927e99a] has joined #thatcamp
+15:13 -!- ajturner [n=ajturner@md00f36d0.tmodns.net] has quit []
+15:14 -!- jpaoletti [i=81ae7005@gateway/web/ajax/mibbit.com/x-0d792dabf153b5c7] has joined #thatcamp
+15:25 -!- jpaoletti [i=81ae7005@gateway/web/ajax/mibbit.com/x-0d792dabf153b5c7] has left #thatcamp []
+15:27 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-0c0fdb5560bc5375] has quit ["http://www.mibbit.com ajax IRC Client"]
+15:38 -!- shekhar [n=shekhar@129.174.114.217] has joined #thatcamp
+15:38 -!- rknels [n=chatzill@129.174.114.217] has joined #thatcamp
+15:38 -!- dancohen [n=dancohen@129.174.114.217] has joined #thatcamp
+15:38 -!- asolove_ [n=asolove@129.174.114.217] has joined #thatcamp
+15:38 -!- jgsmith [n=jgsmith@oldschool.tamu.edu] has joined #thatcamp
+15:38 -!- davelester [n=dlester@129.174.112.5] has joined #thatcamp
+15:39 -!- paregorios [n=tom@12-207-101-208.client.mchsi.com] has joined #thatcamp
+15:39 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-744f5d69d3510b2f] has joined #thatcamp
+15:42 -!- bess_ [n=bess@129.174.114.217] has joined #thatcamp
+15:43 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-acd337d2fa374dd2] has joined #thatcamp
+15:43 -!- elli [n=elli@129.174.112.5] has joined #thatcamp
+15:44 -!- Krissy [i=81ae7005@gateway/web/ajax/mibbit.com/x-fd69b96ea1e85c9f] has joined #thatcamp
+15:45 -!- Krissy [i=81ae7005@gateway/web/ajax/mibbit.com/x-fd69b96ea1e85c9f] has quit [Client Quit]
+15:45 -!- arem [i=81ae7005@gateway/web/ajax/mibbit.com/x-caecf91c3927e99a] has quit ["http://www.mibbit.com ajax IRC Client"]
+15:45 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-744f5d69d3510b2f] has quit ["http://www.mibbit.com ajax IRC Client"]
+15:48 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+15:49 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+15:49 -!- davelester [n=dlester@129.174.112.5] has quit []
+15:50 -!- asolove_ [n=asolove@129.174.114.217] has quit []
+15:50 < dancohen> https://www.zotero.org/download/dev/zotero-1.5a.sync1.xpi
+15:50 -!- doug_knox [n=doug_kno@129.174.114.217] has joined #thatcamp
+15:50 -!- asolove [n=asolove@129.174.114.217] has joined #thatcamp
+15:50 -!- davelester [n=dlester@129.174.112.5] has joined #thatcamp
+15:51 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-acd337d2fa374dd2] has quit ["http://www.mibbit.com ajax IRC Client"]
+15:51 < shekhar> is patrick in here?
+15:51 -!- davelester [n=dlester@129.174.112.5] has quit [Client Quit]
+15:51 -!- sgillies [n=sgillies@129.174.112.5] has quit [Client Quit]
+15:52 -!- elli [n=elli@129.174.112.5] has quit []
+15:53 -!- nowviskie [n=nowviski@129.174.112.5] has quit [Client Quit]
+15:55 -!- asolove_ [n=asolove@129.174.114.217] has joined #thatcamp
+15:55 -!- asolove_ [n=asolove@129.174.114.217] has quit [Client Quit]
+15:55 -!- epistemographer [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+15:56 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+15:57 -!- _jackflaps [n=kevin@129.174.112.5] has joined #thatcamp
+15:58 -!- doug_knox [n=doug_kno@129.174.114.217] has left #thatcamp []
+15:58 -!- bess_ [n=bess@129.174.114.217] has quit []
+16:00 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+16:00 -!- dancohen [n=dancohen@129.174.114.217] has quit []
+16:00 -!- asolove_ [n=asolove@129.174.114.217] has joined #thatcamp
+16:00 -!- benwbrum [n=benwbrum@129.174.112.5] has joined #thatcamp
+16:00 -!- BenBrumfield [n=benwbrum@129.174.112.5] has joined #thatcamp
+16:01 -!- bess_ [n=bess@129.174.114.217] has joined #thatcamp
+16:01 -!- asolove [n=asolove@129.174.114.217] has quit [Read error: 104 (Connection reset by peer)]
+16:01 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-58dc29e2a8e09e62] has joined #thatcamp
+16:02 -!- rknels__ [n=chatzill@129.174.114.217] has joined #thatcamp
+16:03 -!- davelester [n=dlester@129.174.112.5] has joined #thatcamp
+16:06 -!- elli [n=elli@129.174.112.5] has joined #thatcamp
+16:06 -!- jackflaps [n=kevin@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+16:07 -!- _jackflaps is now known as jackflaps
+16:07 -!- paregorios [n=tom@12-207-101-208.client.mchsi.com] has quit [Remote closed the connection]
+16:07 -!- dancohen [n=dancohen@Macintosh-83.mesa.gmu.edu] has joined #thatcamp
+16:08 < dancohen> sustainability has been moved to rm 450
+16:08 -!- paregorios [n=tom@12-207-101-208.client.mchsi.com] has joined #thatcamp
+16:08 -!- asolove [n=asolove@129.174.112.5] has joined #thatcamp
+16:08 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-d3d260e128928848] has joined #thatcamp
+16:10 -!- mib_hxx7vf [i=81ae7005@gateway/web/ajax/mibbit.com/x-3974778ea2f0310b] has joined #thatcamp
+16:11 -!- mib_hxx7vf [i=81ae7005@gateway/web/ajax/mibbit.com/x-3974778ea2f0310b] has quit [Client Quit]
+16:11 < BenBrumfield> Dorkshorts is nearly empty.  We'll probably wrap up early.
+16:12 < davelester> aw
+16:12 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-76f17b1a932fe01e] has joined #thatcamp
+16:14 -!- epistemographer [n=chatzill@129.174.112.5] has joined #thatcamp
+16:16 -!- bess___ [n=bess@129.174.112.5] has joined #thatcamp
+16:18 -!- rknels [n=chatzill@129.174.114.217] has quit [Read error: 110 (Connection timed out)]
+16:20 -!- bess_ [n=bess@129.174.114.217] has quit [Read error: 110 (Connection timed out)]
+16:22 -!- shekhar [n=shekhar@129.174.114.217] has quit [Read error: 110 (Connection timed out)]
+16:22 -!- asolove_ [n=asolove@129.174.114.217] has quit [Read error: 110 (Connection timed out)]
+16:23 -!- doug_kno1 [n=doug_kno@129.174.112.5] has joined #thatcamp
+16:24 -!- elli [n=elli@129.174.112.5] has quit []
+16:25 -!- rknels__ [n=chatzill@129.174.114.217] has quit [Read error: 110 (Connection timed out)]
+16:27 -!- elli [n=elli@129.174.112.5] has joined #thatcamp
+16:28 < elli> open street maps project offers lots of potential for dh projects to create maps for their own purposes (historical, not street based, available)
+16:29 -!- shekhar [n=shekhar@129.174.112.5] has joined #thatcamp
+16:37 < bess___> elli: would you please post any notes you have on historical applications for open street maps? I was sorry to miss that session. 
+16:38 < shekhar> bess___: we're not talking about historical maps in OSM... yet...
+16:39 < shekhar> http://openstreetmap.org
+16:39 < elli> bess_: I"ll do my best,
+16:43 < elli> Now we are discussing how you might use the technology to walk places and map traces of roads, settlements, battlegrounds, and use the OSM software to incorporate this information
+16:45 -!- stakats [n=chatzill@96.241.116.7] has joined #thatcamp
+16:45 < dancohen> discussing sustainability models for zotero
+16:45 -!- BenBrumfield [n=benwbrum@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+16:45 -!- benwbrum [n=benwbrum@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+16:45 -!- benwbrum [n=benwbrum@129.174.112.5] has joined #thatcamp
+16:46 -!- BenBrumfield [n=benwbrum@129.174.112.5] has joined #thatcamp
+16:46 < dancohen> anyone who is not in rm 450 who has ideas, drop them into IRC or Twitter
+16:46 -!- jeanne_kramer-sm [i=81ae7005@gateway/web/ajax/mibbit.com/x-69638fdf72ea65f9] has quit ["http://www.mibbit.com ajax IRC Client"]
+16:46 < elli> Mapping: http://freemap.in site with links to open source mapping software
+16:49 < elli> Mapping: Shekhar is showing a free map of Mumbai with historical layers overlaid from the freemap site.
+17:00 < bess___> I've heard a bit about processing, but I had no idea how awesome it was. What a great session!
+17:02 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-d3d260e128928848] has quit ["http://www.mibbit.com ajax IRC Client"]
+17:03 -!- asolove [n=asolove@129.174.112.5] has quit []
+17:05  * shekhar just showed http://mumbai.freemap.in and the testing version of a zotero openstreetmap plugin http://web.mit.edu/shekhar/zotero-maps.xpi
+17:06 -!- davelester [n=dlester@129.174.112.5] has quit []
+17:06 -!- doug_kno1 [n=doug_kno@129.174.112.5] has left #thatcamp []
+17:08 -!- bess___ [n=bess@129.174.112.5] has quit []
+17:08 -!- jackflaps [n=kevin@129.174.112.5] has quit []
+17:08 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-76f17b1a932fe01e] has quit ["http://www.mibbit.com ajax IRC Client"]
+17:08 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-58dc29e2a8e09e62] has quit ["http://www.mibbit.com ajax IRC Client"]
+17:08 -!- asolove [n=asolove@129.174.112.5] has joined #thatcamp
+17:08 -!- nowviskie [n=nowviski@129.174.112.5] has quit []
+17:09 -!- BenBrumfield [n=benwbrum@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+17:09 -!- epistemographer [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+17:09 -!- benwbrum [n=benwbrum@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+17:09 -!- elli [n=elli@129.174.112.5] has quit []
+17:10 -!- sgillies [n=sgillies@129.174.112.5] has quit []
+17:10 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-fd2ae6abdaeb4f7e] has joined #thatcamp
+17:13 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+17:13 -!- shekhar [n=shekhar@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+17:18 -!- arem [i=81ae7005@gateway/web/ajax/mibbit.com/x-0ce71bf6668f6f9f] has joined #thatcamp
+17:19 -!- dancohen [n=dancohen@Macintosh-83.mesa.gmu.edu] has quit [Read error: 110 (Connection timed out)]
+17:19 -!- arem [i=81ae7005@gateway/web/ajax/mibbit.com/x-0ce71bf6668f6f9f] has quit [Client Quit]
+17:20 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-875ef7a199be7b5b] has joined #thatcamp
+17:26 -!- nowviskie [n=nowviski@129.174.112.5] has quit []
+17:26 -!- asolove [n=asolove@129.174.112.5] has quit []
+17:27 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-fd2ae6abdaeb4f7e] has quit ["http://www.mibbit.com ajax IRC Client"]
+17:29 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-875ef7a199be7b5b] has quit ["http://www.mibbit.com ajax IRC Client"]
+17:35 -!- stakats [n=chatzill@96.241.116.7] has quit [Remote closed the connection]
+18:04 -!- davelester [n=dlester@129.174.112.5] has joined #thatcamp
+18:05 -!- davelester [n=dlester@129.174.112.5] has quit [Client Quit]
+18:46 -!- kindaspatial [n=Jesse@pool-72-84-37-230.clrk.east.verizon.net] has quit []
+19:29 -!- davelester [n=davelest@64-249-251-66.client.dsl.net] has joined #thatcamp
+19:30 < davelester> howdy all
+19:34 < kerri> Hi Dave. Wish I was there. :-(
+19:35 < davelester> aw, maybe next year? :D
+19:36 < kerri> :-) Sounds like it has been great!
+19:36 < kerri> Elli will surely debrief me when she returns.
+19:37 < davelester> definitely
+19:50 -!- cg_ [n=chatzill@pool-71-114-57-164.washdc.dsl-w.verizon.net] has joined #thatcamp
+19:51 < cg_> #thatcamp port 7000 at GMU.
+19:51 < cg_> #thatcamp port 7000 at GMU
+19:55 -!- cg_ [n=chatzill@pool-71-114-57-164.washdc.dsl-w.verizon.net] has quit ["ChatZilla 0.9.82.1 [Firefox 2.0.0.14/2008040413]"]
+20:26 -!- sgillies [n=sgillies@static-66-16-242-244.dsl.cavtel.net] has joined #thatcamp
+20:33 -!- davelester [n=davelest@64-249-251-66.client.dsl.net] has quit []
+21:03 -!- davelester [n=dlester@65.201.148.146] has joined #thatcamp
+21:10 -!- karindalziel [n=chatzill@64-249-251-66.client.dsl.net] has joined #thatcamp
+21:14 -!- davelester [n=dlester@65.201.148.146] has quit [Read error: 104 (Connection reset by peer)]
+21:14 -!- bess_ [n=bess@dhcp65-74-197-215.hifo.dca.wayport.net] has joined #thatcamp
+21:18 -!- elli [n=elli@72-255-30-80.client.stsn.net] has joined #thatcamp
+21:44 -!- elli [n=elli@72-255-30-80.client.stsn.net] has quit []
+21:45 < bess_> hello? 
+21:46 -!- tjowens [i=4464b6a7@gateway/web/ajax/mibbit.com/x-d30584bf8a6a5881] has joined #thatcamp
+21:53 < karindalziel> hiya. I am just hanging out in here while working on a blog post. :)
+21:55 -!- tjowens [i=4464b6a7@gateway/web/ajax/mibbit.com/x-d30584bf8a6a5881] has quit ["http://www.mibbit.com ajax IRC Client"]
+22:01 -!- dchud [n=dchud@pool-71-127-57-230.washdc.east.verizon.net] has joined #thatcamp
+22:03 < karindalziel> soooo....is everyone else exhausted, or is it just me?
+22:21 < bess_> karindalziel: also exhausted
+22:21 < bess_> karindalziel: it's so great to meet you! We have a lot of the same research interests. 
+22:22 < karindalziel> I am somehow wired too. Brain is racing. Which is good! 
+22:22 < karindalziel> bess: Great to meet you too!
+22:23 -!- dchud [n=dchud@pool-71-127-57-230.washdc.east.verizon.net] has quit []
+22:23 < karindalziel> I feel like I have SO much to learn. 
+22:23 < bess_> karindalziel: You might enjoy this paper: http://www.ualberta.ca/~sruecker/links/07_Ruecker_Pill_Identification.pdf
+22:24 < bess_> It's an interface I worked on while at U of Alberta. 
+22:24 < bess_> Stan Ruecker was the primary investigator, and if you don't know his work you might also enjoy it... http://www.ualberta.ca/~sruecker/
+22:24 < karindalziel> cool- thanks! Something to read ont he plane ride home. :)
+22:26 < karindalziel> Are you leading any discussions tomorrow?
+22:26 < bess_> no, I don't think so
+22:26 < bess_> I plan to be an "active participant" in the omeka one, though! 
+22:27 < karindalziel> I can't decide betwen that and interface design. So many tough choices. 
+22:27 < bess_> oh damn, did they schedule those across from each other? 
+22:28  * bess_ runs off to check the schedule
+22:29 -!- stakats [n=stakats@96.241.116.7] has joined #thatcamp
+22:29 < bess_> Dammit, I want to attend every single one of the first sessions
+22:30 < bess_> I mean the second session
+22:30 < karindalziel> I know. :/ 
+22:30 < bess_> I'm sure all the first sessions will be great, too, but mashup is the only one for me. :)
+22:30 < karindalziel> Hopefully people will blog their sessions/
+22:30 < bess_> but GIS, interface design, omeka, and bibliographic standards... I'm working on every one of those right now. :(
+22:31 < karindalziel> I will go to management since it pertains most to my job. Unless I change my mind tomorrow morning.
+22:31 < bess_> management? really? what kind of management? 
+22:32 < karindalziel> Project management.. lemme go find link
+22:32 < karindalziel> http://thatcampdev.info/2008/05/2-ideas/
+22:35 < karindalziel> geez, linking blog posts takes forever
+22:36 -!- BenBrumfield [n=benwbrum@64-249-251-66.client.dsl.net] has joined #thatcamp
+22:36 -!- benwbrum [n=benwbrum@64-249-251-66.client.dsl.net] has joined #thatcamp
+22:36 < karindalziel> hi ben
+22:39 -!- davelester [n=dlester@64-249-251-66.client.dsl.net] has joined #thatcamp
+22:41 < karindalziel> Done with THAT Camp day 1 recap
+22:41 < karindalziel> http://www.nirak.net/2008/05/31/that-camp-day-1/
+22:41 < karindalziel> and with that, off to read for a bit before bed. *yawn*
+22:41 < sgillies> anybody else got a 5:11 flight from dulles and want to share a cab? lemme know
+22:41 -!- jeanne_ks [i=62cceec0@gateway/web/ajax/mibbit.com/x-7939d96e81ea83bd] has joined #thatcamp
+22:43 < karindalziel> hope I didn't get anyone's name wrong. 
+22:43 < sgillies> good recap
+22:43 < karindalziel> wow, you're quick!
+22:43 < karindalziel> ok, really going now. :)
+22:44 < jeanne_ks> where is the recap?
+22:45 < sgillies> http://www.nirak.net/2008/05/31/that-camp-day-1/
+22:46 < jeanne_ks> thanks!
+22:46 < sgillies> see you all in the morning
+22:46 -!- sgillies [n=sgillies@static-66-16-242-244.dsl.cavtel.net] has quit []
+22:53 < davelester> anyone in #thatcamp coming to the 'hacking omeka' session tomorrow?  I'm still deciding what I want to show
+22:55 < bess_> davelester: I'll be there
+22:55 < davelester> nice, I saw your tweet
+22:56 < davelester> I'll definitely show off the OAI-PMH ingestion plugin
+22:56 < bess_> davelester: NYPL and UVA are both very interested in how we can bring digital repository objects into omeka exhibits.
+22:56 -!- dancohen [n=dancohen@207-172-96-59.c3-0.slvr-ubr1.lnh-slvr.md.cable.rcn.com] has joined #thatcamp
+22:56 < bess_> davelester: I'd also like some advice on how to get started writing omeka themes and plugins
+22:57 < bess_> davelester: I think the more eyecandy themes we can provide for omeka the more people will oooh and ahhh. :)
+22:57 < davelester> agreed!
+22:58 < bess_> davelester: I'm really looking forward to it, but now I have to go to sleep so I can wake up on time. See you tomorrow!
+22:58 -!- bess_ [n=bess@dhcp65-74-197-215.hifo.dca.wayport.net] has quit ["gotta go..."]
+22:59 -!- karindalziel_ [n=chatzill@64-249-251-66.client.dsl.net] has joined #thatcamp
+23:02 -!- dancohen [n=dancohen@207-172-96-59.c3-0.slvr-ubr1.lnh-slvr.md.cable.rcn.com] has quit []
+23:04 -!- dchud [n=dchud@pool-71-127-57-230.washdc.east.verizon.net] has joined #thatcamp
+23:04 -!- karindalziel [n=chatzill@64-249-251-66.client.dsl.net] has quit [Read error: 110 (Connection timed out)]
+23:04 -!- karindalziel_ is now known as karindalziel
+23:04 -!- stakats [n=stakats@96.241.116.7] has quit ["The computer fell asleep"]
+23:15 < jeanne_ks> Having trouble deciding 'Hacking Omeka' vs 'GIS/Maps' vs 'Interface Design'!
+23:21 -!- karindalziel [n=chatzill@64-249-251-66.client.dsl.net] has quit ["ChatZilla 0.9.82.1 [Firefox 2.0.0.14/2008040413]"]
+23:29 -!- dchud [n=dchud@pool-71-127-57-230.washdc.east.verizon.net] has quit []
+23:39 -!- BenBrumfield [n=benwbrum@64-249-251-66.client.dsl.net] has quit [Read error: 110 (Connection timed out)]
+23:39 -!- benwbrum [n=benwbrum@64-249-251-66.client.dsl.net] has quit [Read error: 110 (Connection timed out)]
+23:48 -!- shekhar [n=shekhar@c-68-49-88-138.hsd1.dc.comcast.net] has joined #thatcamp
+--- Day changed Sun Jun 01 2008
+00:00 -!- davelester [n=dlester@64-249-251-66.client.dsl.net] has quit []
+00:18 -!- asolove [n=asolove@c-69-143-27-153.hsd1.va.comcast.net] has joined #thatcamp
+00:36 -!- sgillies [n=sgillies@static-66-16-242-244.dsl.cavtel.net] has joined #thatcamp
+00:41 -!- jeanne_ks [i=62cceec0@gateway/web/ajax/mibbit.com/x-7939d96e81ea83bd] has quit ["http://www.mibbit.com ajax IRC Client"]
+00:44 -!- asolove [n=asolove@c-69-143-27-153.hsd1.va.comcast.net] has quit []
+01:02 -!- sgillies [n=sgillies@static-66-16-242-244.dsl.cavtel.net] has quit []
+02:55 -!- sgillies [n=sgillies@static-66-16-242-244.dsl.cavtel.net] has joined #thatcamp
+03:12 -!- sgillies [n=sgillies@static-66-16-242-244.dsl.cavtel.net] has quit [Read error: 113 (No route to host)]
+06:34 -!- davelester [n=dlester@64-249-251-66.client.dsl.net] has joined #thatcamp
+06:38 -!- davelester [n=dlester@64-249-251-66.client.dsl.net] has quit [Client Quit]
+06:41 -!- sgillies [n=sgillies@static-66-16-242-244.dsl.cavtel.net] has joined #thatcamp
+07:07 -!- sgillies [n=sgillies@static-66-16-242-244.dsl.cavtel.net] has quit []
+07:11 -!- dchud [n=dchud@pool-71-127-57-230.washdc.east.verizon.net] has joined #thatcamp
+07:11 < dchud> mornin'
+07:11 < dchud> how do i see what everybody has twittered to @thatcamp all at once?
+07:14 -!- sgillies [n=sgillies@static-66-16-242-244.dsl.cavtel.net] has joined #thatcamp
+07:24 -!- shekhar [n=shekhar@c-68-49-88-138.hsd1.dc.comcast.net] has quit [Read error: 110 (Connection timed out)]
+07:31 -!- sgillies [n=sgillies@static-66-16-242-244.dsl.cavtel.net] has quit []
+07:44 -!- sgillies [n=sgillies@static-66-16-242-244.dsl.cavtel.net] has joined #thatcamp
+07:44 < sgillies> morning
+07:46 -!- dchud [n=dchud@pool-71-127-57-230.washdc.east.verizon.net] has quit []
+07:46 -!- elli [n=elli@72-255-22-64.client.stsn.net] has joined #thatcamp
+07:46 -!- sgillies [n=sgillies@static-66-16-242-244.dsl.cavtel.net] has quit [Client Quit]
+07:59 -!- elli [n=elli@72-255-22-64.client.stsn.net] has quit []
+08:24 -!- karindalziel [n=chatzill@129.174.112.5] has joined #thatcamp
+08:29 -!- foundhistory [n=foundhis@mbp.mesa.gmu.edu] has joined #thatcamp
+08:30 -!- epistemographer [n=chatzill@129.174.112.5] has joined #thatcamp
+08:32 -!- karindalziel [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+08:34 -!- karindalziel [n=chatzill@129.174.112.5] has joined #thatcamp
+08:44 -!- epistemographer [n=chatzill@129.174.112.5] has quit [Remote closed the connection]
+08:46 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+08:47 -!- nowviskie [n=nowviski@129.174.112.5] has quit [Client Quit]
+08:50 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-edb49a6b79a72147] has joined #thatcamp
+08:55 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+09:00 -!- karindalziel [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+09:01 -!- foundhistory [n=foundhis@mbp.mesa.gmu.edu] has quit [Read error: 110 (Connection timed out)]
+09:05 -!- foundhistory [n=foundhis@129.174.112.5] has joined #thatcamp
+09:08 -!- karindalziel [n=chatzill@129.174.112.5] has joined #thatcamp
+09:10 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+09:11 -!- dancohen [n=dancohen@129.174.112.5] has joined #thatcamp
+09:13 -!- epistemographer [n=chatzill@129.174.112.5] has joined #thatcamp
+09:14 -!- jackflaps [n=kevin@129.174.112.5] has joined #thatcamp
+09:14 -!- elli [n=elli@129.174.112.5] has joined #thatcamp
+09:14 -!- jkramer_ks [i=81ae7005@gateway/web/ajax/mibbit.com/x-4c1f873acee2c29a] has joined #thatcamp
+09:14 < sgillies> asolove breaking free of xml!
+09:14 -!- jkramer_ks [i=81ae7005@gateway/web/ajax/mibbit.com/x-4c1f873acee2c29a] has left #thatcamp []
+09:14 -!- jkramer_ks [i=81ae7005@gateway/web/ajax/mibbit.com/x-4c1f873acee2c29a] has joined #thatcamp
+09:17 -!- bess_ [n=bess@129.174.112.5] has joined #thatcamp
+09:18 -!- rknels [n=chatzill@129.174.112.5] has joined #thatcamp
+09:19 -!- sgillies [n=sgillies@129.174.112.5] has quit []
+09:20 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-66f7b019cd510af1] has joined #thatcamp
+09:21 -!- dchud [n=dchud@129.174.112.5] has joined #thatcamp
+09:21 -!- bess__ [n=bess@129.174.112.5] has joined #thatcamp
+09:28 -!- shekhar [n=shekhar@129.174.112.5] has joined #thatcamp
+09:30 -!- nowviskie [n=nowviski@129.174.112.5] has quit []
+09:31 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+09:32 -!- ajturner [n=ajturner@pool-71-191-160-85.washdc.fios.verizon.net] has joined #thatcamp
+09:37 -!- bess_ [n=bess@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+09:38 -!- nowviskie [n=nowviski@129.174.112.5] has quit []
+09:41 -!- ajturner [n=ajturner@pool-71-191-160-85.washdc.fios.verizon.net] has quit []
+09:42 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+09:47 -!- karindalziel [n=chatzill@129.174.112.5] has quit ["ChatZilla 0.9.82.1 [Firefox 2.0.0.14/2008040413]"]
+10:01 -!- dancohen_ [n=dancohen@129.174.112.5] has joined #thatcamp
+10:03 -!- davelester_ [n=dlester@129.174.114.164] has joined #thatcamp
+10:06 -!- stakats [n=stakats@129.174.112.5] has joined #thatcamp
+10:06 -!- asolove [n=asolove@129.174.112.5] has joined #thatcamp
+10:09 -!- dancohen__ [n=dancohen@129.174.112.5] has joined #thatcamp
+10:09 < asolove> text session has been interesting
+10:10 < bess__> mashup session is fascinating. 
+10:10 < asolove> what was covered?
+10:10 < elli> what was covered in text?
+10:10 < asolove> just using Yahoo/Google/Simile tools, or something additional?
+10:11 < elli> mashups talked more about APIs, permanence and guidelines for APIs, and not so much about tools and implementations.
+10:11 < asolove> uh huh
+10:11 < asolove> we discussed some uses and issues with TEI, alternate storage formats 
+10:11 < elli> (importance of spending the time to develop APIs and make available)
+10:12 < asolove> and cool graphical interfaces for creating digital texts without knowing XML
+10:12 < elli> what alternate storage formats
+10:12 < asolove> very interesting
+10:13 < bess__> asolove: we're talking about everything from google maps, to library of congress web services, to the importance of permanent urls and the implications for scholarship
+10:14 < bess__> excellent conversation, I'm generating way more ideas than I'll possibly be able to implement
+10:14 < asolove> sounds very interesting, sorry I had to present this round
+10:15 < bess__> asolove: I get the feeling there will be lots of blog posts and writeups about this one
+10:15 < elli> Raymond closed with http://programmableweb,com
+10:16 -!- jackflaps [n=kevin@129.174.112.5] has quit []
+10:17 -!- jackflaps [n=kevin@129.174.112.5] has joined #thatcamp
+10:17 -!- bess__ [n=bess@129.174.112.5] has quit []
+10:17 -!- dancohen [n=dancohen@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+10:18 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-edb49a6b79a72147] has quit ["http://www.mibbit.com ajax IRC Client"]
+10:18 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-66f7b019cd510af1] has quit ["http://www.mibbit.com ajax IRC Client"]
+10:18 -!- dancohen__ [n=dancohen@129.174.112.5] has quit []
+10:21 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-7ed212c012042f7e] has joined #thatcamp
+10:23 -!- asolove [n=asolove@129.174.112.5] has quit []
+10:23 -!- stakats [n=stakats@129.174.112.5] has quit ["The computer fell asleep"]
+10:24 -!- epistemographer [n=chatzill@129.174.112.5] has quit [Remote closed the connection]
+10:24 -!- nowviskie [n=nowviski@129.174.112.5] has quit []
+10:25 -!- foundhistory [n=foundhis@129.174.112.5] has quit []
+10:25 -!- dancohen_ [n=dancohen@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+10:26 -!- elli [n=elli@129.174.112.5] has quit []
+10:27 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-7ed212c012042f7e] has quit ["http://www.mibbit.com ajax IRC Client"]
+10:29 -!- _jackflaps [n=kevin@129.174.112.5] has joined #thatcamp
+10:29 -!- jackflaps [n=kevin@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+10:29 -!- _jackflaps is now known as jackflaps
+10:29 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+10:35 -!- davelester___ [n=dlester@129.174.112.5] has joined #thatcamp
+10:35 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-f16ea8d085c8ac0e] has joined #thatcamp
+10:36 < jkramer_ks> fyi.. I posted a summary of the Text Mining session from yesterday: http://www.spellboundblog.com/2008/06/01/thatcamp-2008-text-mining-and-the-persian-carpet-effect/
+10:37 -!- BenBrumfield [n=benwbrum@129.174.112.5] has joined #thatcamp
+10:37 -!- benwbrum [n=benwbrum@129.174.112.5] has joined #thatcamp
+10:38 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+10:38 -!- asolove [n=asolove@129.174.112.5] has joined #thatcamp
+10:39 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-d6aefd492cf29007] has joined #thatcamp
+10:39 -!- elli [n=elli@129.174.112.5] has joined #thatcamp
+10:40 -!- jkramer_ks [i=81ae7005@gateway/web/ajax/mibbit.com/x-4c1f873acee2c29a] has quit ["http://www.mibbit.com ajax IRC Client"]
+10:40 -!- epistemographer [n=chatzill@129.174.112.5] has joined #thatcamp
+10:41 < asolove> INTERFACE DESIGN IN 401
+10:41 < asolove> whoops
+10:41 -!- bess_ [n=bess@129.174.112.5] has joined #thatcamp
+10:43 < epistemographer> asolove: what's the discussion about in 401?
+10:43 < asolove> funny
+10:43 < asolove> I think we're looking at the JGAAP interface
+10:45 -!- davelester_ [n=dlester@129.174.114.164] has quit [Read error: 110 (Connection timed out)]
+10:46 < nowviskie> can't believe I didn't realize you can put a URL to a KML file like this in the search blank for Google Maps!
+10:46 < nowviskie> http://pleiades.stoa.org/places/archaic.kml
+10:47 -!- doug_knox [n=doug_kno@129.174.112.5] has joined #thatcamp
+10:47 -!- dancohen [n=dancohen@129.174.112.5] has joined #thatcamp
+10:47 < bess_> nowviskie: wow! I didn't know you could do that either!
+10:49 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-ec848812a599dc84] has joined #thatcamp
+10:49 < nowviskie> yeah, bess -- guess what's going to be on Joe's to-do list when we get home! :)
+10:49 < elli> Bibliograph session
+10:50 < elli> I mean Bibliography
+10:50 < elli> Zotero is a good tool for moving bibliographic information from one place to another
+10:51 < elli> Bruce D'Arcus style language for bib (CSL)
+10:51 < dchud> bibliograph(y or ic) :)
+10:52 < nowviskie> re: mashing up georeferenced data -- this also works in Google Maps: http://pleiades.stoa.org/places/archaic.atom
+10:52 < dancohen> if the biblio group would like me to come over to 450, let me know
+10:52 < elli> we have Trevor here! 
+10:53 < dancohen> ok, just checking
+10:53 < erazlogo> for future thatcamp - find software for all urls opened in all sessions to be automatically saved into one big links file (coins-enabled?) so people could later follow links from sessions they missed
+10:53 -!- matthewgaventa [n=matthewg@129.174.112.5] has joined #thatcamp
+10:55 < elli> http://zotero/content/tools/csleit.xul
+10:57 -!- rknels [n=chatzill@129.174.112.5] has quit ["ChatZilla 0.9.82.1 [Firefox 3.0/2008051206]"]
+10:57 -!- sfern [i=8a58dd29@gateway/web/ajax/mibbit.com/x-30d974abc03c4297] has joined #thatcamp
+10:59 < bess_> nowviskie: maybe we could give David G. access to the google sat imagery that way... allow people to export a kml file of the layer he wants and open it in google maps / google earth
+11:00 < dchud> tjowens: note the second author at http://rfc.net/rfc1165.html
+11:02 -!- karindalziel [n=chatzill@129.174.112.5] has joined #thatcamp
+11:02 -!- benwbrum [n=benwbrum@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+11:03 -!- BenBrumfield [n=benwbrum@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+11:05 < dancohen> in the interface design session (rm 401) we're debating how much to ask users what a good UI is for a tool or collection
+11:07 < jgsmith> re ui: unix tends to optimize for the most common use case, which is the experienced user -- explains why man pages tend to be cryptic for those unfamiliar with a particular command
+11:08 < dancohen> jgsmith: right. good point.
+11:10 < bess_> in the omeka hacking talk we're making unreasonable demands of the omeka dev team
+11:10 < davelester___> :)
+11:11 < dchud> jgsmith: does unix optimize for the most common use case, or the simplest, decomposed, filterable use case?
+11:11 < asolove> it optimizes for the case of people who have write access to the man page in a project
+11:11 < bess_> asolove++ # so true!
+11:12 < jgsmith> well, most people using unix are experienced in unix -- the inexperience period is short compared to the rest of a person's career
+11:12 < matthewgaventa> nice parallel: in bibliography, we're bordering on making unreasonable demands on the zotero team
+11:12 < bess_> matthewgaventa: I'm going to make my unreasonable demands during the lunchtime zotero session
+11:13 < jgsmith> doesn't mean an interface should be poorly designed -- but designed for the person familiar with the process or the concepts involved
+11:13 < asolove> the design might encourage users to learn the underlying system
+11:14 < jgsmith> asolove: -nod- -- easier to do in a GUI than a CLI
+11:15 < dancohen> note to people making unreasonable demands of CHNMers: don't make us release the hounds on you.
+11:17 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-ec848812a599dc84] has quit ["http://www.mibbit.com ajax IRC Client"]
+11:18 < epistemographer> unreasonable demands++
+11:19 < dancohen> http://fluidproject.org/ and Yahoo UI provide open source nice-looking widgets for websites
+11:19 < dancohen> that are tested across many browsers
+11:20 < epistemographer> for reference: URL I demo-ed is http://labs.nypl.org/projects/maps/transparent.html
+11:21 -!- dancohen_ [n=dancohen@129.174.112.5] has joined #thatcamp
+11:26 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-46571bb13dc22a42] has joined #thatcamp
+11:33 -!- asolove [n=asolove@129.174.112.5] has quit []
+11:38 -!- dancohen [n=dancohen@129.174.112.5] has quit [Read error: 113 (No route to host)]
+11:38 -!- jonlesser [n=jonlesse@129.174.112.5] has joined #thatcamp
+11:39 -!- finnarne [i=81ae7005@gateway/web/ajax/mibbit.com/x-b2a3f24c0545a58d] has joined #thatcamp
+11:40 < bess_> OAI/PMH plugin for omeka is fantastic. I've never cared deeply about OAI before, but I think I just started.
+11:42 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-46571bb13dc22a42] has quit ["http://www.mibbit.com ajax IRC Client"]
+11:42 -!- epistemographer [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+11:42 -!- finnarne [i=81ae7005@gateway/web/ajax/mibbit.com/x-b2a3f24c0545a58d] has quit [Client Quit]
+11:42 < elli> http://bibliographicontology.com/
+11:44 -!- davelester___ [n=dlester@129.174.112.5] has quit []
+11:47 -!- finnarne [i=81ae7005@gateway/web/ajax/mibbit.com/x-383c39e6cb9734bc] has joined #thatcamp
+11:49 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-b9e2f8218b725cc7] has joined #thatcamp
+11:50 < erazlogo> use for upcoming mapping plugin in zotero--map your research trips by where archives are located--could be done if there is an archival collection item type with a "place" field
+11:50 -!- jackflaps [n=kevin@129.174.112.5] has quit []
+11:52 -!- doug_knox [n=doug_kno@129.174.112.5] has left #thatcamp []
+11:52 -!- doug_knox [n=doug_kno@129.174.112.5] has joined #thatcamp
+11:55 -!- shekhar [n=shekhar@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+11:56 -!- nowviskie [n=nowviski@129.174.112.5] has quit []
+11:57 -!- elli [n=elli@129.174.112.5] has quit []
+11:57 -!- matthewgaventa [n=matthewg@129.174.112.5] has quit []
+11:58 < dchud> http://simile.mit.edu/wiki/Zotz
+11:58 -!- dchud [n=dchud@129.174.112.5] has quit []
+11:58 -!- karindalziel [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:00 -!- tjowens [i=81ae7005@gateway/web/ajax/mibbit.com/x-f16ea8d085c8ac0e] has quit ["http://www.mibbit.com ajax IRC Client"]
+12:01 -!- davelester [n=dlester@129.174.112.5] has joined #thatcamp
+12:01 -!- bess_ [n=bess@129.174.112.5] has quit []
+12:02 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-b9e2f8218b725cc7] has quit ["http://www.mibbit.com ajax IRC Client"]
+12:03 -!- sgillies [n=sgillies@129.174.112.5] has quit []
+12:06 -!- matthewgaventa [n=matthewg@129.174.112.5] has joined #thatcamp
+12:07 -!- karindalziel [n=chatzill@129.174.112.5] has joined #thatcamp
+12:16 -!- davelester [n=dlester@129.174.112.5] has quit []
+12:17 -!- davelester_ [n=dlester@129.174.112.5] has joined #thatcamp
+12:19 -!- karindalziel [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+12:21 < davelester_> Lightning talks: first up, Mark Tebeau presenting the Euclid Corridor
+12:24 -!- jackflaps [n=kevin@129.174.112.5] has joined #thatcamp
+12:25 -!- dchud [n=dchud@129.174.112.5] has joined #thatcamp
+12:27 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+12:28 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-edc990db8b317223] has joined #thatcamp
+12:28 < matthewgaventa> next up in dork shorts: jeffrey talking about CSS file structure and organization
+12:29 -!- elli [n=elli@129.174.112.5] has joined #thatcamp
+12:30 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+12:33 -!- asolove [n=asolove@129.174.112.5] has joined #thatcamp
+12:35 -!- elli [n=elli@129.174.112.5] has quit []
+12:36 -!- elli [n=elli@129.174.112.5] has joined #thatcamp
+12:36 -!- bess_ [n=bess@129.174.112.5] has joined #thatcamp
+12:37 < asolove> dancohen is about to start the zotero demo
+12:38 -!- dancohen [n=dancohen@129.174.112.5] has joined #thatcamp
+12:39 < matthewgaventa> dave lester is talking about scholarpress
+12:39 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-d6aefd492cf29007] has quit ["http://www.mibbit.com ajax IRC Client"]
+12:40 -!- dancohen__ [n=dancohen@129.174.112.5] has joined #thatcamp
+12:41 < asolove> zotero demo starting
+12:45 -!- jonlesser [n=jonlesse@129.174.112.5] has quit []
+12:45 -!- bess__ [n=bess@129.174.112.5] has joined #thatcamp
+12:46 -!- erazlogo [i=81ae7005@gateway/web/ajax/mibbit.com/x-edc990db8b317223] has quit ["http://www.mibbit.com ajax IRC Client"]
+12:49 < elli> Goodbye and thank you to everyone at ThatCamp, enjoy the rest of the day. It's been great camping with you all.
+12:49 < asolove> leaving early?
+12:50 < sgillies> cheers, elli. great to meet you
+12:50 < elli> yes. have to take a train. It's been great to meet you, too.
+12:51 -!- elli [n=elli@129.174.112.5] has quit []
+12:53 < asolove> Twitter seems to be down
+12:53 < asolove> just thing
+12:53 -!- karindalziel [n=chatzill@129.174.112.5] has joined #thatcamp
+12:53 < asolove> Jobs at WWDC, Cohen announcing Zotero server
+12:55 -!- dancohen_ [n=dancohen@129.174.112.5] has quit [Read error: 113 (No route to host)]
+12:56 -!- dancohen [n=dancohen@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+12:57 -!- davelester_ [n=dlester@129.174.112.5] has quit []
+12:57 -!- bess_ [n=bess@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+12:59 -!- sgillies [n=sgillies@129.174.112.5] has quit []
+12:59 -!- nowviskie [n=nowviski@129.174.112.5] has quit []
+12:59 -!- bess_ [n=bess@129.174.112.5] has joined #thatcamp
+12:59 -!- matthewgaventa [n=matthewg@129.174.112.5] has quit []
+13:00 -!- davelester [n=dlester@129.174.112.5] has joined #thatcamp
+13:01 -!- sfern [i=8a58dd29@gateway/web/ajax/mibbit.com/x-30d974abc03c4297] has left #thatcamp []
+13:01 -!- davelester [n=dlester@129.174.112.5] has quit [Client Quit]
+13:01 -!- sfern [i=8a58dd29@gateway/web/ajax/mibbit.com/x-30d974abc03c4297] has joined #thatcamp
+13:04 -!- jonlesser [n=jonlesse@129.174.112.5] has joined #thatcamp
+13:05 -!- jonlesser [n=jonlesse@129.174.112.5] has quit [Client Quit]
+13:06 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+13:08 -!- nowviskie [n=nowviski@129.174.112.5] has joined #thatcamp
+13:09 -!- asolove [n=asolove@129.174.112.5] has quit []
+13:09 -!- bess___ [n=bess@129.174.112.5] has joined #thatcamp
+13:11 -!- dancohen__ [n=dancohen@129.174.112.5] has quit []
+13:12 -!- asolove_ [n=asolove@129.174.112.5] has joined #thatcamp
+13:13 -!- sgillies [n=sgillies@129.174.112.5] has quit []
+13:14 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+13:14 -!- bess__ [n=bess@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+13:16 -!- dancohen [n=dancohen@129.174.112.5] has joined #thatcamp
+13:18 -!- dancohen_ [n=dancohen@129.174.112.5] has joined #thatcamp
+13:19 -!- bess__ [n=bess@129.174.112.5] has joined #thatcamp
+13:20 -!- BenBrumfield [n=benwbrum@129.174.112.5] has joined #thatcamp
+13:20 < karindalziel> The librarians on twitter are asking me lots of questions about Zotero server. Much excitement. :)
+13:24 -!- bess_ [n=bess@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+13:27 -!- benwbrum [n=benwbrum@129.174.112.5] has joined #thatcamp
+13:28 -!- sgillies [n=sgillies@129.174.112.5] has quit []
+13:30 -!- dancohen__ [n=dancohen@129.174.112.5] has joined #thatcamp
+13:32 -!- arem [i=81ae7005@gateway/web/ajax/mibbit.com/x-e1da9694525d81f6] has joined #thatcamp
+13:32 < dancohen__> good visualizations anyone? post them to IRC
+13:33 < jgsmith> http://en.wikipedia.org/wiki/Edward_Tufte - Tufte's done a lot of work on data visualization in general
+13:34 < asolove_> Interesting discussion of event microformat standard
+13:34 -!- dancohen [n=dancohen@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+13:34 -!- bess___ [n=bess@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+13:35 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+13:35 < asolove_> and now the event discussion is moving into visualization issues and we ought to be talking to the people in 402
+13:36 < dancohen__> hey people talking about time in rm 462: why not join us in rm 402?
+13:37 < asolove_> winds changed and now we're into interdisciplinary discussion
+13:39 < dchud> if only we could fold time and space.  and then visualize that.
+13:39 -!- bess_ [n=bess@129.174.112.5] has joined #thatcamp
+13:41 < dancohen__> come on down!
+13:42 -!- bess_ [n=bess@129.174.112.5] has quit [Client Quit]
+13:42 < dchud> somehow i read that as "interplanetary"
+13:42 -!- shekhar [n=shekhar@129.174.112.5] has joined #thatcamp
+13:42 -!- asolove_ [n=asolove@129.174.112.5] has quit []
+13:44 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-d2f6978e8435e8f4] has joined #thatcamp
+13:44 -!- asolove [n=asolove@129.174.112.5] has joined #thatcamp
+13:44 < asolove> whoops, misunderstood visualization
+13:44 -!- bess_ [n=bess@129.174.112.5] has joined #thatcamp
+13:46 -!- dancohen_ [n=dancohen@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+13:48 < karindalziel> asolove: What did you think visualization meant?
+13:49 < asolove> I thought we were talking about GIS type issues and graphing not quick display of information
+13:50 -!- davelester [n=dlester@129.174.112.5] has joined #thatcamp
+13:50 -!- dancohen [n=dancohen@129.174.112.5] has joined #thatcamp
+13:50 -!- asolove [n=asolove@129.174.112.5] has quit []
+13:50 < karindalziel> asolove:ah, OK
+13:52 -!- bess___ [n=bess@129.174.112.5] has joined #thatcamp
+13:55 -!- finnarne [i=81ae7005@gateway/web/ajax/mibbit.com/x-383c39e6cb9734bc] has quit ["http://www.mibbit.com ajax IRC Client"]
+13:55 -!- bess__ [n=bess@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+13:58 -!- dancohen_ [n=dancohen@129.174.112.5] has joined #thatcamp
+14:01 -!- bess__ [n=bess@129.174.112.5] has joined #thatcamp
+14:02 < bess__> we solved all our problems in the international issues session, so we've dispersed to other sessions
+14:06 -!- dancohen__ [n=dancohen@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+14:07 -!- bess_ [n=bess@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+14:08 -!- bess____ [n=bess@129.174.112.5] has joined #thatcamp
+14:08 -!- dancohen__ [n=dancohen@129.174.112.5] has joined #thatcamp
+14:09 -!- sgillies [n=sgillies@129.174.112.5] has quit []
+14:09 -!- jackflaps [n=kevin@129.174.112.5] has quit []
+14:12 -!- bess_ [n=bess@129.174.112.5] has joined #thatcamp
+14:12 -!- arem [i=81ae7005@gateway/web/ajax/mibbit.com/x-e1da9694525d81f6] has quit ["http://www.mibbit.com ajax IRC Client"]
+14:13 -!- jasonrhody [i=81ae7005@gateway/web/ajax/mibbit.com/x-d2f6978e8435e8f4] has quit ["http://www.mibbit.com ajax IRC Client"]
+14:14 -!- nowviskie [n=nowviski@129.174.112.5] has quit []
+14:14 -!- dancohen__ [n=dancohen@129.174.112.5] has quit []
+14:15 -!- dchud [n=dchud@129.174.112.5] has quit []
+14:15 -!- dancohen [n=dancohen@129.174.112.5] has quit [Read error: 113 (No route to host)]
+14:15 -!- dchud [n=dchud@129.174.112.5] has joined #thatcamp
+14:16 -!- dchud [n=dchud@129.174.112.5] has quit [Client Quit]
+14:17 -!- bess___ [n=bess@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+14:18 -!- sfern [i=8a58dd29@gateway/web/ajax/mibbit.com/x-30d974abc03c4297] has left #thatcamp []
+14:20 -!- sgillies [n=sgillies@129.174.112.5] has joined #thatcamp
+14:20 -!- dancohen_ [n=dancohen@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:20 -!- sgillies [n=sgillies@129.174.112.5] has quit [Client Quit]
+14:21 -!- karindalziel [n=chatzill@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:23 -!- bess____ [n=bess@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:24 -!- bess_ [n=bess@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:24 -!- bess__ [n=bess@129.174.112.5] has quit [Read error: 110 (Connection timed out)]
+14:28 -!- shekhar [n=shekhar@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:45 -!- davelester [n=dlester@129.174.112.5] has quit []
+14:49 -!- BenBrumfield [n=benwbrum@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+14:49 -!- benwbrum [n=benwbrum@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+15:13 -!- doug_knox [n=doug_kno@129.174.112.5] has quit [Read error: 104 (Connection reset by peer)]
+15:27 -!- doug_knox [n=doug_kno@72-255-48-138.client.stsn.net] has joined #thatcamp
+15:32 -!- doug_knox [n=doug_kno@72-255-48-138.client.stsn.net] has left #thatcamp []
+15:41 -!- stakats [n=stakats@96.241.116.7] has joined #thatcamp
+15:43 -!- matthewgaventa [n=matthewg@76.4.71.143] has joined #thatcamp
+15:54 -!- stakats [n=stakats@96.241.116.7] has quit ["The computer fell asleep"]
+16:07 -!- stakats [n=stakats@96.241.116.7] has joined #thatcamp
+16:34 -!- stakats [n=stakats@96.241.116.7] has quit ["The computer fell asleep"]
+17:24 -!- matthewgaventa [n=matthewg@76.4.71.143] has quit []
+17:30 -!- davelester [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has joined #thatcamp
+17:36 -!- jonlesser [n=jonlesse@c-68-34-98-247.hsd1.md.comcast.net] has joined #thatcamp
+17:50 -!- omeka-bot [n=supybot@clio.gmu.edu] has joined #thatcamp
+18:21 -!- davelester [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has quit []
+18:36 -!- jonlesser [n=jonlesse@c-68-34-98-247.hsd1.md.comcast.net] has quit []
+18:37 -!- davelester_ [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has joined #thatcamp
+18:43 -!- jonlesser [n=jonlesse@c-68-34-98-247.hsd1.md.comcast.net] has joined #thatcamp
+19:15 -!- jonlesser [n=jonlesse@c-68-34-98-247.hsd1.md.comcast.net] has quit [Remote closed the connection]
+19:15 -!- jonlesser [n=jonlesse@c-68-34-98-247.hsd1.md.comcast.net] has joined #thatcamp
+19:31 -!- dancohen [n=dancohen@207-172-96-59.c3-0.slvr-ubr1.lnh-slvr.md.cable.rcn.com] has joined #thatcamp
+19:59 -!- dancohen [n=dancohen@207-172-96-59.c3-0.slvr-ubr1.lnh-slvr.md.cable.rcn.com] has quit []
+20:30 -!- jeanne_ks [i=62cceec0@gateway/web/ajax/mibbit.com/x-d9736452c080e648] has joined #thatcamp
+20:30 -!- jeanne_ks [i=62cceec0@gateway/web/ajax/mibbit.com/x-d9736452c080e648] has quit [Client Quit]
+20:39 -!- davelester_ [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has quit [Read error: 104 (Connection reset by peer)]
+20:45 -!- dchud [n=dchud@pool-71-127-57-230.washdc.east.verizon.net] has joined #thatcamp
+20:46 -!- davelester [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has joined #thatcamp
+21:24 -!- shekhar [n=shekhar@c-68-49-88-138.hsd1.dc.comcast.net] has joined #thatcamp
+21:27 < shekhar> any thatcampers want to grab a drink in DC?
+21:28  * shekhar opens a beer for thatcampbot
+22:02 < davelester> hey shekhar, where in DC are you at?  I'm in Arlington right now
+22:14 < shekhar> davelester: i'm in columbia heights
+22:14 < shekhar> a bit far, i imagine
+22:14  * shekhar passes the pipe to omeka-bot
+22:39 -!- kerri [n=khicks@pool-71-245-65-31.prvdri.fios.verizon.net] has quit []
+22:56 -!- dchud [n=dchud@pool-71-127-57-230.washdc.east.verizon.net] has left #thatcamp []
+23:26 -!- kerri [n=khicks@pool-71-245-65-31.prvdri.fios.verizon.net] has joined #thatcamp
+23:51 -!- kerri [n=khicks@pool-71-245-65-31.prvdri.fios.verizon.net] has quit []
+--- Day changed Mon Jun 02 2008
+06:14 -!- paregorios [n=tom@12-207-101-208.client.mchsi.com] has quit ["leaving orbit for fun and adventure ..."]
+07:03 -!- jonlesser_ [n=jonlesse@c-68-34-98-247.hsd1.md.comcast.net] has joined #thatcamp
+07:18 -!- jonlesser_ [n=jonlesse@c-68-34-98-247.hsd1.md.comcast.net] has quit []
+07:20 -!- jonlesser [n=jonlesse@c-68-34-98-247.hsd1.md.comcast.net] has quit [Read error: 110 (Connection timed out)]
+08:20 -!- davelester [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has quit []
+10:25 -!- shekhar [n=shekhar@c-68-49-88-138.hsd1.dc.comcast.net] has left #thatcamp []
+10:39 -!- DruidSmith [n=DruidSmi@pool-71-181-164-6.sctnpa.east.verizon.net] has quit [Read error: 110 (Connection timed out)]
+10:39 -!- sgillies [n=sgillies@dsl-140-139.dynamic-dsl.frii.net] has joined #thatcamp
+11:06 -!- shekhar [n=shekhar@c-68-49-88-138.hsd1.dc.comcast.net] has joined #thatcamp
+11:10 -!- shekhar [n=shekhar@c-68-49-88-138.hsd1.dc.comcast.net] has quit [Remote closed the connection]
+11:12 -!- shekhar [n=shekhar@c-68-49-88-138.hsd1.dc.comcast.net] has joined #thatcamp
+11:19 -!- shekhar [n=shekhar@c-68-49-88-138.hsd1.dc.comcast.net] has quit [Remote closed the connection]
+11:20 -!- DruidSmith [n=DruidSmi@pool-71-181-145-233.sctnpa.east.verizon.net] has joined #thatcamp
+11:21 -!- DruidSmith is now known as DruidSmith_
+11:21 -!- DruidSmith_ is now known as DruidSmith
+11:21 -!- shekhar [n=shekhar@c-68-49-88-138.hsd1.dc.comcast.net] has joined #thatcamp
+11:28 -!- jonlesser [n=jonlesse@mbp.mesa.gmu.edu] has joined #thatcamp
+11:34 -!- shekhar [n=shekhar@c-68-49-88-138.hsd1.dc.comcast.net] has quit [Remote closed the connection]
+11:36 -!- shekhar [n=shekhar@c-68-49-88-138.hsd1.dc.comcast.net] has joined #thatcamp
+12:05 -!- davelester [n=dlester@129.174.114.164] has joined #thatcamp
+13:26 -!- DruidSmith [n=DruidSmi@pool-71-181-145-233.sctnpa.east.verizon.net] has quit [Read error: 110 (Connection timed out)]
+13:35 -!- foundhistory [n=foundhis@129.174.114.55] has joined #thatcamp
+13:38 -!- shekhar [n=shekhar@c-68-49-88-138.hsd1.dc.comcast.net] has quit [Read error: 110 (Connection timed out)]
+14:03 < davelester> sgillies and jgsmith: great to meet you both this weekend!
+14:03 < davelester> hope you enjoyed #thatcamp
+14:04 < sgillies> davelester: it rocked
+14:04 < sgillies> i have a feeling that good things will ripple out of it
+14:36 -!- clioweb [n=clioweb@clioweb.mesa.gmu.edu] has joined #thatcamp
+14:53 -!- davelester_ [n=dlester@129.174.114.164] has joined #thatcamp
+14:53 -!- davelester [n=dlester@129.174.114.164] has quit [Read error: 104 (Connection reset by peer)]
+14:53 -!- clioweb [n=clioweb@clioweb.mesa.gmu.edu] has quit [Read error: 104 (Connection reset by peer)]
+14:56 -!- foundhistory [n=foundhis@129.174.114.55] has quit []
+17:11 -!- davelester_ [n=dlester@129.174.114.164] has quit [Read error: 110 (Connection timed out)]
+17:25 -!- shekhar [n=shekhar@68-244-11-138.area3.spcsdns.net] has joined #thatcamp
+17:55 -!- davelester [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has joined #thatcamp
+18:11 -!- jonlesser [n=jonlesse@mbp.mesa.gmu.edu] has quit [Read error: 110 (Connection timed out)]
+18:12 -!- davelester [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has quit []
+18:14 -!- davelester [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has joined #thatcamp
+19:01 -!- shekhar [n=shekhar@68-244-11-138.area3.spcsdns.net] has quit [Read error: 110 (Connection timed out)]
+20:19 -!- DruidSmith [n=DruidSmi@pool-71-181-164-6.sctnpa.east.verizon.net] has joined #thatcamp
+21:14 -!- davelester [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has quit []
+21:27 -!- jonlesser [n=jonlesse@c-68-34-98-247.hsd1.md.comcast.net] has joined #thatcamp
+22:04 -!- jonlesser [n=jonlesse@c-68-34-98-247.hsd1.md.comcast.net] has quit []
+22:34 -!- davelester [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has joined #thatcamp
+23:08 -!- davelester [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has quit []
+23:41 -!- dchud [n=dchud@pool-71-127-57-230.washdc.east.verizon.net] has joined #thatcamp
+23:45 -!- DruidSmith [n=DruidSmi@pool-71-181-164-6.sctnpa.east.verizon.net] has quit [Read error: 110 (Connection timed out)]
+--- Day changed Tue Jun 03 2008
+00:19 -!- davelester [n=dlester@c-69-143-138-249.hsd1.va.comcast.net] has joined #thatcamp
+02:26 -!- dchud [n=dchud@pool-71-127-57-230.washdc.east.verizon.net] has quit []
+06:15 -!- dchud [n=dchud@pool-71-127-57-230.washdc.east.verizon.net] has joined #thatcamp
+06:18 -!- dchud [n=dchud@pool-71-127-57-230.washdc.east.verizon.net] has quit [Client Quit]
+07:04 -!- kerri [n=khicks@pool-71-245-65-31.prvdri.fios.verizon.net] has joined #thatcamp
+07:23 -!- kerri [n=khicks@pool-71-245-65-31.prvdri.fios.verizon.net] has quit []
+07:25 -!- DruidSmith [n=DruidSmi@pool-71-181-164-6.sctnpa.east.verizon.net] has joined #thatcamp
+07:25 -!- DruidSmith is now known as DruidSmith_
+07:25 -!- DruidSmith_ is now known as DruidSmith
+07:46 -!- DruidSmith [n=DruidSmi@pool-71-181-164-6.sctnpa.east.verizon.net] has quit [Read error: 110 (Connection timed out)]
+10:54 -!- foundhistory [n=foundhis@c-69-255-192-152.hsd1.dc.comcast.net] has joined #thatcamp
+10:58 -!- shekhar [n=shekhar@cpe-72-229-219-90.nyc.res.rr.com] has joined #thatcamp
+11:32 -!- foundhistory [n=foundhis@c-69-255-192-152.hsd1.dc.comcast.net] has quit []
+12:30 -!- shekhar [n=shekhar@cpe-72-229-219-90.nyc.res.rr.com] has left #thatcamp []

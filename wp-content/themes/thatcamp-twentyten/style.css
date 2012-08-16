@@ -1,0 +1,137 @@
+/*
+Theme Name: THATCamp Twenty Ten
+Theme URI: http://thatcampdev.info/website
+Description: A customized child theme for THATCamp based on the WordPress template theme Twenty Ten, by the WordPress team. Allows any custom background image or color as well as any custom header image. Create your own custom 940 x 198 THATCamp header for this theme with the files at http://thatcampdev.info/logos/.  
+Author: Amanda French
+Author URI: http://thatcampdev.info/author/amandafrench/
+Template: twentyten
+Version: 1.0
+*/
+
+@import url("../twentyten/style.css");
+
+/* =Fonts
+-------------------------------------------------------------- */
+
+body,
+input,
+textarea,
+.page-title span,
+.pingback a.url { font-family: "Lucida Grande", Arial, Helvetica, sans-serif; }
+h3#comments-title,
+h3#reply-title,
+#access .menu,
+#access div.menu ul,
+#cancel-comment-reply-link,
+.form-allowed-tags,
+#site-info,
+#site-title,
+#wp-calendar,
+.comment-meta,
+.comment-body tr th,
+.comment-body thead th,
+.entry-content label,
+.entry-content tr th,
+.entry-content thead th,
+.entry-meta,
+.entry-title,
+.entry-utility,
+#respond label,
+.navigation,
+.page-title,
+.pingback p,
+.reply,
+.widget-title,
+.wp-caption-text,
+input[type=submit] { font-family: "Lucida Grande", Arial, Helvetica, sans-serif; }
+pre { font-family: "Courier 10 Pitch", Courier, monospace; }
+code { font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace; }
+
+/* Comments */
+
+.commentlist li.comment
+{
+	border-bottom: 1px solid #e7e7e7;
+	line-height: 24px;
+	margin: 0 0 24px 0;
+	padding: 0 0 0 90px;
+	position: relative;
+}
+
+.commentlist p { font-size: 85%; }
+
+/* Footer */
+#site-info
+{
+	font-size: 11px;
+	font-weight: normal;
+}
+
+#site-generator a { font-family: Georgia, "Bitstream Charter", serif; }
+
+#cclicense a
+{
+	background: none !important;
+	display: inline-block;
+	line-height: 16px;
+	margin-top: 12px;
+	padding-left: 20px;
+}
+
+img#ccl { border: none; }
+
+/* Campers page template */
+
+	.camper_info {
+		float: left; 
+		display: inline; 
+		padding: 0 12px 15px 0;
+		width: 140px; 
+		height: 160px; 
+	}
+	
+	.camper_info a:link {
+	text-decoration: none !important;
+	}
+	
+	.camper_avatar {
+		/* border: 1px solid #B39061; */
+		overflow: hidden;
+	}
+	
+	.campers_title {
+	padding-bottom: 1em;
+	}
+	
+	.camper_name, .camper_posts {
+		font-size: 13px;
+		line-height: 16px;
+	}
+	
+	.entry_post { 
+		list-style-type: none; 
+	}
+
+/* One-column page template */
+
+.one-column #content, .one-column #content p {
+margin: 25px; 
+width: 90%; 
+}
+
+/* Twitter items */
+
+li .twitter-item {
+display: block;
+float: left; 
+list-style: none;
+margin-top: 1em;
+margin-left: -.25em;
+margin-bottom: .5em;
+}
+
+li .twitter-item img {
+float: left;
+margin-right: .5em;
+margin-top: .5em; 
+}

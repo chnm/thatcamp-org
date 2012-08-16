@@ -1,0 +1,31 @@
+div.citations {
+    margin: 5px;
+    padding: 5px;
+	background-color: #f8f8f8;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+    clear: both;
+    }
+div.citations div.loading {
+    text-align: center;
+    }
+
+//*
+h3.citations-title {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid black;
+    text-transform: uppercase !important;
+    }
+*//
+
+dl.citations {
+    margin-top: 5px;
+    }
+
+a.citation-manual-dynamic,
+a.citation-manual {
+    cursor: pointer;
+    }
+a.citation-new-window {
+    }

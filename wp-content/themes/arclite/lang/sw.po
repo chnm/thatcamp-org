@@ -1,0 +1,693 @@
+# translation of sw.po to swahili
+# mrfroasty <mrfroasty@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: sw\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-06-17 08:35+0200\n"
+"PO-Revision-Date: 2009-06-24 13:39+0200\n"
+"Last-Translator: mrfroasty <mrfroasty@gmail.com>\n"
+"Language-Team: American English <translation-team-sw@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: "
+"c:\\wamp\\www\\wordpress\\wp-content\\themes\\arclite\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPath-2: ..\n"
+"X-Generator: Lokalize 0.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/404.php:19
+msgid "Page not found (404)"
+msgstr "Nakala haionekani (404)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:22
+#, php-format
+msgid "Archive for category %s"
+msgstr "Tenganisho la maktaba %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:24
+#, php-format
+msgid "Posts Tagged %s"
+msgstr "Posti Imetagiwa %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:26
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:28
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:30
+#, php-format
+msgid "Archive for %s"
+msgstr "Maktaba ya %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:26
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:621
+msgid "F jS, Y"
+msgstr "F jS, Y"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:28
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:18
+msgid "F, Y"
+msgstr "F, Y"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:30
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:21
+msgid "Y"
+msgstr "Y"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:32
+msgid "Author Archive"
+msgstr "Mtunzi wa Maktaba"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:34
+msgid "Blog Archives"
+msgstr "Maktaba ya Blogi"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:43
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:26
+msgid "Permanent Link:"
+msgstr "Kiungo Dumu:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:45
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:28
+msgid "M"
+msgstr "M"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:46
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:29
+msgid "j"
+msgstr "j"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:49
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:32
+#, php-format
+msgid "Posted by %s in %s"
+msgstr "Imetumwa na %s kwenye %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:49
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:51
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:32
+#, php-format
+msgid "Posts by %s"
+msgstr "Imetumwa na %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:49
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:32
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "Edit"
+msgstr "Hariri"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:54
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:37
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:31
+msgid "Read the rest of this entry &raquo;"
+msgstr "Soma maingizo yaliyobaki &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:59
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:42
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:37
+msgid "Tags:"
+msgstr "Tagi:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:68
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:51
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "No Comments"
+msgstr "Hakuna Maoni"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:68
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:51
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "1 Comment"
+msgstr "Maoni 1"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:68
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:51
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+msgid "% Comments"
+msgstr "% Maoni"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:79
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:64
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:64
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:26
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:46
+msgid "&laquo; Older Entries"
+msgstr "&laquo; Maingizo ya Zamani"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:80
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:65
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:65
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:27
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:47
+msgid "Newer Entries &raquo;"
+msgstr "Maingizo Mepya &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:86
+#, php-format
+msgid "Sorry, but there aren't any posts in the %s category yet."
+msgstr "Samahani, hakuna posti katika %s mgawanyo bado."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:88
+msgid "Sorry, but there aren't any posts with this date."
+msgstr "Samahani, hakuna posti kwenye tarehe hii."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:91
+#, php-format
+msgid "Sorry, but there aren't any posts by %s yet."
+msgstr "Samahani, hakuna posti bado kwenye %s bado."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/archive.php:93
+msgid "No posts found."
+msgstr "Hakuna posti ilionekana."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:34
+msgid "This user hasn't shared any biographical information"
+msgstr "Mtumiaji huu hajaweka bayografia yake"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:39
+msgid "Homepage:"
+msgstr "Nakala-mama:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:40
+msgid "Yahoo Messenger:"
+msgstr "Yahoo Messenger:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:41
+msgid "Jabber/GTalk:"
+msgstr "Jabber/GTalk:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:42
+msgid "AIM:"
+msgstr "AIM:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:55
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:37
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:15
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:42
+msgid "l, F jS, Y"
+msgstr "l, F jS, Y"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:56
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:38
+#, php-format
+msgid "Posted in %s"
+msgstr "Imetumwa kwenye %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/author.php:71
+msgid "No posts found by this author."
+msgstr "Hakuna posti zilizoonekana kwa mtunzi huu."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:3
+msgid "Enter your password to view comments"
+msgstr "Ingiza neno-lako la siri kuona maoni"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:18, php-format
+msgid "%s Comments"
+msgstr "% Maoni"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:19
+msgid "and one trackback"
+msgstr "ongeza trakibeki moja"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:20, php-format
+msgid "and %s trackbacks"
+msgstr "na %s trakibeki"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:37
+msgid "No comments yet."
+msgstr "Hakuna maoni bado."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:58
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Ni lazima  <a href=\"%s\">uingie ndani</a> kutoa maoni."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:66
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:97
+msgid "Your name (required)"
+msgstr "Jina lako (lazima)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:67
+msgid "Please enter your name"
+msgstr "Tafadhali ingiza jina lako."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:70
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:100
+msgid "Your e-mail (required, will not be published)"
+msgstr "Barua-e yako (ni lazima, haitochapishwa)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:71
+msgid "Please enter your email address"
+msgstr "Tafadhali ingiza anwani yako ya barua-e."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:74
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:114
+msgid "Type your comment here"
+msgstr "Andika maoni hapa"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:75
+msgid "Please type a comment"
+msgstr "Tafadhali andika maoni"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:81
+msgid "Cancel Reply"
+msgstr "Ghairi Kujibu"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:87
+#, php-format
+msgid "Logged in as %s."
+msgstr "Tambuliwa kama %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:89
+msgid "Log out of this account"
+msgstr "Toka nje ya akaunti"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:89
+msgid "Logout &raquo;"
+msgstr "Toka-nje &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:93
+#, php-format
+msgid "Welcome back <strong>%s</strong>."
+msgstr "Karibu tena <strong>%s</strong>."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:93
+msgid "Change &raquo;"
+msgstr "Badilisha &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:93
+msgid "Close &raquo;"
+msgstr "Funga &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:103
+msgid "Your website"
+msgstr "Saiti yako"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:121
+#, php-format
+msgid "Spam protection: Sum of %s+%s = ?"
+msgstr "Uzuiaji wa spamu:Juma ya %s+%s = ?"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:134
+msgid "Submit Comment"
+msgstr "Toa Maoni"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/comments.php:149
+msgid "Comments are closed."
+msgstr "Maoni yamefungwa"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:21
+#, php-format
+msgid "Arclite theme by %s"
+msgstr "Arclite dhimu na %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:23
+#, php-format
+msgid "powered by %s"
+msgstr "tengenezwa na %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:27
+msgid "Entries (RSS)"
+msgstr "Maingizo (RSS)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:27
+msgid "and"
+msgstr "na"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/footer.php:27
+msgid "Comments (RSS)"
+msgstr "Maoni (RSS)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:151
+msgid "Arclite settings"
+msgstr "Seting za Arclite"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:158
+msgid "Arclite theme settings"
+msgstr "Seting za dhimu ya Arclite"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:160
+msgid "Settings saved."
+msgstr "Seting zimehifadhiwa."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:223
+msgid "General"
+msgstr "Jumla"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:231
+msgid "Imageless layout"
+msgstr "Mpangilio wa picha-kidogo "
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:231
+msgid ""
+"(no background images; reduces pages to just a few KB, with the cost of less "
+"graphic details)"
+msgstr ""
+"(bila ya picha; inapunguza ukubwa wa nakala kwa KB kidogo, kwa gharama ya "
+"picha kidogo)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:233
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:245
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:320
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:374
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:423
+msgid "Yes"
+msgstr "Ndio"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:235
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:247
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:322
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:377
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:426
+msgid "No"
+msgstr "Hapana"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:243
+msgid "Use jQuery"
+msgstr "Tumia jQuery"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:243
+msgid "(for testing purposes only, you shouldnt change this)"
+msgstr "(kwa ajili ya majaribio tuu, usibadilishe hii)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:254
+msgid "Homepage meta keywords"
+msgstr "Nakala-mama vineno vijulishaji"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:254
+msgid ""
+"(Separate with commas. Tags are used as keywords on other pages. Leave empty "
+"if you are using a SEO plugin)"
+msgstr ""
+"(Tenganisha na vituo vidogo.Tagi zinatumika kama vineno kwenye nakala "
+"zengine.Acha tupu kama unatumia SEO plugini)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:266
+msgid "Content background"
+msgstr "Yaliyomo ukuta-wa nyuma"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:282
+msgid "Index page/Archives show:"
+msgstr "Indeksi onesha nakala/Maktaba:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:284
+msgid "Full posts"
+msgstr "Posti zote"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:286
+msgid "Excerpts only"
+msgstr "Wingi tuu"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:299
+msgid "Header"
+msgstr "Kichwa"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:307
+msgid "Top navigation shows"
+msgstr "Onesha vavigasheni maradufu "
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:309
+msgid "Pages"
+msgstr "Nakala"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:311
+msgid "Categories"
+msgstr "Migawanyo"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:318
+msgid "Show search"
+msgstr "Onesha utafutaji"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:330
+msgid "Header background"
+msgstr "Nyuma ya Kichwa"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:340
+msgid "User defined image (upload)"
+msgstr "Picha liochaguliwa na mtumiaji (upakizi)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:341
+msgid "User defined color"
+msgstr "Rangi zilichaguliwa na mtumiaji"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:347
+msgid "Centered image (upload a 960x190 image for best fit):"
+msgstr "Picha ya kati (pakizi 960X190):"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:350
+msgid ""
+"Tiled image, repeats itself across the entire header (centered image will "
+"show on top of it, if specified):"
+msgstr ""
+"Picha ya mawimbi, itajirudia kwenye kichwa chote (picha iliowekwa kati "
+"itajionesha juu yake, kama ikichaguliwa):"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:354
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:384
+#, php-format
+msgid "Files are uploaded to %s"
+msgstr "Faili limepakiwa kwenda %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:356
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:386
+#, php-format
+msgid ""
+"Can't upload! Directory %s is not writable!<br />Change write permissions "
+"with CHMOD 755 or 777"
+msgstr ""
+"Haiwezekani kupakia!Dairektori haliandikiki! %s<br />Badilisha kwa kutumia "
+"CHMOD 755 au 777"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:362
+msgid "Pick a color"
+msgstr "Chagua rangi"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:372
+msgid "Logo image"
+msgstr "Picha ya logo"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:381
+msgid "Upload a custom logo image"
+msgstr "Pakia logo enyeji"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:401
+msgid "Sidebar"
+msgstr "Kilango pembe"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:410
+msgid "Sidebar position"
+msgstr "Mahali pa kilango pembe"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:412
+msgid "Left"
+msgstr "Kushoto"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:415
+msgid "Right"
+msgstr "Kulia"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:421
+msgid "Show theme-default category block"
+msgstr "Onesha bloki ya dhimu-msingi "
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:433
+msgid "Widget title background"
+msgstr "Kichwa cha wijeti ukuta nyuma"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:456
+msgid "Footer"
+msgstr "Kiguu"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:465
+msgid "Add content"
+msgstr "Ongeza yaliyomo"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:465
+msgid "(HTML allowed)"
+msgstr "(HTML inaruhusiwa)"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:482
+msgid "User CSS code"
+msgstr "Kodi za CSS za mtumiaji"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:491
+msgid "Modify anything related to design using simple CSS"
+msgstr "Badilisha kwa kitu chochote kwa kutumia CSS"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:491
+msgid ""
+"Avoid modifying theme files and use this option instead to preserve changes "
+"after update"
+msgstr ""
+"Kimbia ubadilishaji wa mafaili ya dhimu, tumia opsheni badala yake kuepuka "
+"mabadiliko ya uboreshaji"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:595
+msgid "Trackback:"
+msgstr "Trakibeki"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:595
+msgid "Pingback:"
+msgstr "Pinginyuma:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:621, php-format
+msgid "%s by %s on %s"
+msgstr "%s na %s siku ya %s"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:621
+msgid "H:i"
+msgstr "H:i"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:629
+msgid "Reply"
+msgstr "Jibu"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:632
+msgid "Quote"
+msgstr "Nukuu"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/functions.php:643
+msgid "Your comment is awaiting moderation."
+msgstr "Maoni yako yanasubiri ridhaa."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:111
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/searchform.php:6
+msgid "Search"
+msgstr "Tafuta"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:129
+msgid "You are Home"
+msgstr "Uko Nyumbani"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:129
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:131
+msgid "Home"
+msgstr "Nyumbani"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/header.php:131
+msgid "Click for Home"
+msgstr "Bonyeza kwa Nyumbani"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:70
+msgid "Not Found"
+msgstr "Haionekani"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/index.php:71
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr "Samahani, lakini unatafuta kitu ambacho hakipo hapa."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/links.php:21
+msgid "Links:"
+msgstr "Viungo:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/page-nosidebar.php:23
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/page.php:23
+msgid "Read the rest of this page &raquo;"
+msgstr "Soma mabakio ya nakala hii  &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/page-nosidebar.php:25
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/page.php:25
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:60
+msgid "Edit this entry"
+msgstr "Hariri ingizo hili"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:21
+msgid "Search Results"
+msgstr "Matokeo"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/search.php:52
+msgid "No posts found. Try a different search?"
+msgstr "Hakuna posti ilionekana.Utajaribu tafuto jengine?"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:12
+#, php-format
+msgid "You are currently browsing the archives for the %s category."
+msgstr "Sasa unatembelea tenganisho la maktaba ya %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:15
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:18
+#, php-format
+msgid "You are currently browsing the archives for %s"
+msgstr "Sasa unatembelea maktaba ya %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:21
+#, php-format
+msgid "You are currently browsing the archives for the year %s"
+msgstr "Sasa unatembelea maktaba ya mwaka %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:24
+#, php-format
+msgid "You have searched the archives for %s."
+msgstr "Umetafuta maktaba kwa %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:27
+msgid "You are currently browsing the archives."
+msgstr "Sasa unatembelea maktaba ya %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:56
+msgid "Archives"
+msgstr "Maktaba"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/sidebar.php:79
+msgid "Meta"
+msgstr "Meta"
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:42
+#, php-format
+msgid ""
+"This entry was posted on %s and is filed under %s. You can follow any "
+"responses to this entry through %s."
+msgstr ""
+"Ingizo hili limetumwa siku ya %s na kuhifadhiwa kwenye %s.Unaweza "
+"ukafuatilia maoni yote ya ingizo hili kwa %s."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:46
+#, php-format
+msgid ""
+"You can <a href=\"#respond\">leave a response</a>, or <a href=\"%s\" rel="
+"\"trackback\">trackback</a> from your own site."
+msgstr ""
+"Unaweza <a href=\"#respond\"> kutoa maoni </a>, au <a href=\"%s\" rel="
+"\"trackback\">traki-nyuma</a> kutoka kwenye saiti yako."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:50
+#, php-format
+msgid ""
+"Responses are currently closed, but you can <a href=\"%s\" rel=\"trackback"
+"\">trackback</a> from your own site."
+msgstr ""
+"Maoni yamefugwa kwa sasa, lakini unaweza  <a href=\"%s\" rel=\"trackback"
+"\">trackback</a> kutoka saiti yako."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:54
+msgid ""
+"You can skip to the end and leave a response. Pinging is currently not "
+"allowed."
+msgstr "Unaweza ruka hadi mwisho kutoa maoni.Pingi hairuhusiwi kwa sasa."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:58
+msgid "Both comments and pings are currently closed."
+msgstr "Zote pingi na maoni yamefungwa kwa sasa."
+
+#: c:\wamp\www\wordpress\wp-content\themes\arclite/single.php:68
+msgid "Sorry, no posts matched your criteria."
+msgstr "Samahani, hakuna posti ya vigezo vyako."
+
+#~ msgid "Comments"
+#~ msgstr "Maoni"
+
+#~ msgid "Name"
+#~ msgstr "Jina"
+
+#~ msgid "E-Mail"
+#~ msgstr "Barua-e"
