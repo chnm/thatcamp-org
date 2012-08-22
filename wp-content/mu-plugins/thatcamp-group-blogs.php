@@ -60,14 +60,19 @@ function thatcamp_migrate_existing_blogs() {
 
 		$group_id = groups_create_group( $create_args );
 
+		groups_update_groupmeta( $group_id, 'blog_id', $blog_id );
+
 		groups_update_groupmeta( $group_id, 'total_member_count', 1 );
 		groups_update_groupmeta( $group_id, 'invite_status', 'members' );
 
-		// Get a real last activity time. Tricky.
+		// Get a real last activity time
 		$last_post = $wpdb->get_var( $wpdb->prepare( "SELECT post_modified FROM {$wpdb->get_blog_prefix( $blog_id )}posts ORDER BY post_modified DESC LIMIT 1" ) );
 		$last_comment = $wpdb->get_var( $wpdb->prepare( "SELECT comment_date FROM {$wpdb->get_blog_prefix( $blog_id )}comments ORDER BY comment_date DESC LIMIT 1" ) );
 		$last_activity = strtotime( $last_post ) > strtotime( $last_comment ) ? $last_post : $last_comment;
 		groups_update_groupmeta( $group_id, 'last_activity', $last_activity );
+
+		// Run the member sync
+		thatcamp_group_blog_member_sync( $blog_id );
 	}
 }
 add_action( 'admin_init', 'thatcamp_migrate_existing_blogs' );
@@ -85,5 +90,42 @@ function thatcamp_get_blog_group( $blog_id = 0 ) {
 
 	$retval = $group_id ? (int) $group_id : false;
 	return $retval;
+}
+
+/**
+ * Sync blog membership to group
+ */
+function thatcamp_group_blog_member_sync( $blog_id = 0 ) {
+	$group_id = thatcamp_get_blog_group( $blog_id );
+
+	if ( ! $group_id ) {
+		return;
+	}
+
+	// Call up blog users
+	$users = new WP_User_Query( array( 'blog_id' => $blog_id ) );
+
+	foreach ( $users->results as $user ) {
+		$caps_key = 'wp_' . $blog_id . '_capabilities';
+		$caps = get_user_meta( $user->ID, $caps_key, true );
+
+		$new_member                = new BP_Groups_Member;
+		$new_member->group_id      = $group_id;
+		$new_member->user_id       = $user->ID;
+		$new_member->inviter_id    = 0;
+		$new_member->is_admin      = 0;
+		$new_member->user_title    = '';
+		$new_member->date_modified = bp_core_current_time();
+		$new_member->is_confirmed  = 1;
+		$new_member->save();
+
+		groups_update_groupmeta( $group_id, 'total_member_count', (int) groups_get_groupmeta( $group_id, 'total_member_count') + 1 );
+
+		if ( isset( $caps['administrator'] ) ) {
+			groups_promote_member( $user->ID, $group_id, 'admin' );
+		} else if ( isset( $caps['editor'] ) ) {
+			groups_promote_member( $user->ID, $group_id, 'mod' );
+		}
+	}
 }
 ?>
