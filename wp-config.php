@@ -72,6 +72,9 @@ define( 'SITE_ID_CURRENT_SITE', 1 );
 define( 'BLOG_ID_CURRENT_SITE', 1 );
 define( "EDIT_ANY_USER", true );
 
+// BuddyPress constants
+define( 'BP_GROUPS_SLUG', 'camps' );
+
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
