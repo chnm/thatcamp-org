@@ -11,6 +11,56 @@
  */
 
 /**
+ * On blog creation, create a new group
+ */
+function thatcamp_create_group_for_new_blog( $blog_id  ) {
+	// Assemble some data to create the group
+	$create_args = array();
+
+	// The group admin should be the blog admin. If no blog admin is found, default to Amanda (id 7)
+	$blog_admin = get_user_by( 'email', get_blog_option( $blog_id, 'admin_email' ) );
+	$create_args['creator_id'] = is_a( $blog_admin, 'WP_User' ) ? $blog_admin->ID : '7';
+
+	$create_args['name'] = get_blog_option( $blog_id, 'blogname' );
+	$create_args['description'] = $create_args['name'];
+
+	$create_args['slug'] = sanitize_title( $create_args['name'] );
+
+	$create_args['status'] = 'public';
+	$create_args['enable_forum'] = false;
+	$create_args['date_created'] = bp_core_current_time();
+
+	$group_id = groups_create_group( $create_args );
+
+	groups_update_groupmeta( $group_id, 'blog_id', $blog_id );
+
+	groups_update_groupmeta( $group_id, 'total_member_count', 1 );
+	groups_update_groupmeta( $group_id, 'invite_status', 'members' );
+
+	return $group_id;
+}
+add_action( 'wpmu_new_blog', 'thatcamp_create_group_for_new_blog' );
+
+/**
+ * Get a blog's group_id
+ *
+ * @param int $blog_id
+ * @return int|bool Returns a blog id if one is found; otherwise returns false
+ */
+function thatcamp_get_blog_group( $blog_id = 0 ) {
+	global $wpdb, $bp;
+
+	$group_id = $wpdb->get_var( $wpdb->prepare( "SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'blog_id' AND meta_value = %d", $blog_id ) );
+
+	$retval = $group_id ? (int) $group_id : false;
+	return $retval;
+}
+
+/**************************************************
+ * MIGRATION
+ *************************************************/
+
+/**
  * Create groups for existing blogs
  *
  * This is for migrating existing blogs to the new group setup. To use, visit
@@ -43,27 +93,7 @@ function thatcamp_migrate_existing_blogs() {
 			continue;
 		}
 
-		// Assemble some data to create the group
-		$create_args = array();
-
-		$blog_admin = get_user_by( 'email', get_blog_option( $blog_id, 'admin_email' ) );
-		$create_args['creator_id'] = is_a( $blog_admin, 'WP_User' ) ? $blog_admin->ID : '7';
-
-		$create_args['name'] = get_blog_option( $blog_id, 'blogname' );
-		$create_args['description'] = $create_args['name'];
-
-		$create_args['slug'] = sanitize_title( $create_args['name'] );
-
-		$create_args['status'] = 'public';
-		$create_args['enable_forum'] = false;
-		$create_args['date_created'] = bp_core_current_time();
-
-		$group_id = groups_create_group( $create_args );
-
-		groups_update_groupmeta( $group_id, 'blog_id', $blog_id );
-
-		groups_update_groupmeta( $group_id, 'total_member_count', 1 );
-		groups_update_groupmeta( $group_id, 'invite_status', 'members' );
+		$group_id = thatcamp_create_group_for_new_blog( $blog_id );
 
 		// Get a real last activity time
 		$last_post = $wpdb->get_var( $wpdb->prepare( "SELECT post_modified FROM {$wpdb->get_blog_prefix( $blog_id )}posts ORDER BY post_modified DESC LIMIT 1" ) );
@@ -76,21 +106,6 @@ function thatcamp_migrate_existing_blogs() {
 	}
 }
 add_action( 'admin_init', 'thatcamp_migrate_existing_blogs' );
-
-/**
- * Get a blog's group_id
- *
- * @param int $blog_id
- * @return int|bool Returns a blog id if one is found; otherwise returns false
- */
-function thatcamp_get_blog_group( $blog_id = 0 ) {
-	global $wpdb, $bp;
-
-	$group_id = $wpdb->get_var( $wpdb->prepare( "SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'blog_id' AND meta_value = %d", $blog_id ) );
-
-	$retval = $group_id ? (int) $group_id : false;
-	return $retval;
-}
 
 /**
  * Sync blog membership to group
@@ -128,4 +143,3 @@ function thatcamp_group_blog_member_sync( $blog_id = 0 ) {
 		}
 	}
 }
-?>
