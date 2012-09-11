@@ -42,6 +42,27 @@ function thatcamp_create_group_for_new_blog( $blog_id  ) {
 add_action( 'wpmu_new_blog', 'thatcamp_create_group_for_new_blog' );
 
 /**
+ * When a user is added to a blog, add him to the corresponding group
+ *
+ * @param int
+ */
+function thatcamp_add_user_to_group( $user_id, $role, $blog_id ) {
+	$group_id = thatcamp_get_blog_group( $blog_id );
+
+	if ( $group_id ) {
+		$group_role = 'member';
+		if ( 'administrator' == $role ) {
+			$group_role = 'admin';
+		} else if ( 'editor' == $role ) {
+			$group_role = 'mod';
+		}
+
+		thatcamp_add_member_to_group( $user_id, $group_id, $group_role );
+	}
+}
+add_action( 'add_user_to_blog', 'thatcamp_add_user_to_group', 10, 3 );
+
+/**
  * Get a blog's group_id
  *
  * @param int $blog_id
@@ -54,6 +75,51 @@ function thatcamp_get_blog_group( $blog_id = 0 ) {
 
 	$retval = $group_id ? (int) $group_id : false;
 	return $retval;
+}
+
+/**
+ * A short version of groups_join_group(), without notification baggage
+ *
+ * @param int $user_id
+ * @param int $group_id
+ * @role string Desired group role. 'member', 'mod', or 'admin'
+ */
+function thatcamp_add_member_to_group( $user_id, $group_id, $role ) {
+	$new_member                = new BP_Groups_Member;
+	$new_member->group_id      = $group_id;
+	$new_member->user_id       = $user_id;
+	$new_member->inviter_id    = 0;
+	$new_member->is_admin      = 0;
+	$new_member->user_title    = '';
+	$new_member->date_modified = bp_core_current_time();
+	$new_member->is_confirmed  = 1;
+	$new_member->save();
+
+	groups_update_groupmeta( $group_id, 'total_member_count', (int) groups_get_groupmeta( $group_id, 'total_member_count') + 1 );
+
+	if ( 'admin' == $role || 'mod' == $role ) {
+		groups_promote_member( $user_id, $group_id, $role );
+	}
+}
+
+/**
+ * Converts a WP capabilities value to a corresponding group role
+ *
+ * 'administrator' becomes 'admin'; 'editor' becomes 'mod';
+ * everything else becomes 'member'
+ *
+ * @param array $caps The value of get_user_meta( $uid, 'wp_x_capabilities', true )
+ */
+function thatcamp_convert_caps_to_group_role( $caps ) {
+	// Convert blog caps to group caps
+	$role = 'member';
+	if ( isset( $caps['administrator'] ) ) {
+		$role = 'admin';
+	} else if ( isset( $caps['editor'] ) ) {
+		$role = 'mod';
+	}
+
+	return $role;
 }
 
 /**************************************************
@@ -124,22 +190,8 @@ function thatcamp_group_blog_member_sync( $blog_id = 0 ) {
 		$caps_key = 'wp_' . $blog_id . '_capabilities';
 		$caps = get_user_meta( $user->ID, $caps_key, true );
 
-		$new_member                = new BP_Groups_Member;
-		$new_member->group_id      = $group_id;
-		$new_member->user_id       = $user->ID;
-		$new_member->inviter_id    = 0;
-		$new_member->is_admin      = 0;
-		$new_member->user_title    = '';
-		$new_member->date_modified = bp_core_current_time();
-		$new_member->is_confirmed  = 1;
-		$new_member->save();
+		$role = thatcamp_convert_caps_to_group_role( $caps );
 
-		groups_update_groupmeta( $group_id, 'total_member_count', (int) groups_get_groupmeta( $group_id, 'total_member_count') + 1 );
-
-		if ( isset( $caps['administrator'] ) ) {
-			groups_promote_member( $user->ID, $group_id, 'admin' );
-		} else if ( isset( $caps['editor'] ) ) {
-			groups_promote_member( $user->ID, $group_id, 'mod' );
-		}
+		thatcamp_add_member_to_group( $user->ID, $group_id, $role );
 	}
 }
