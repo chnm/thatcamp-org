@@ -1,0 +1,135 @@
+/*--------------------------------------------------------------
+4.0 - Navigation
+--------------------------------------------------------------*/
+a {
+    color: @greenThatcampLight;
+    text-decoration: none;
+}
+a:visited {
+    color: @greenThatcampLight;
+    text-decoration: none;
+}
+a:hover {
+    color: @greenThatcampDark;
+    text-decoration: underline;
+}
+a.camplink, a:visited.camplink, a:hover.camplink, a:link.camplink{
+	color: @greenThatcampLight;
+}
+
+a.postlink, a:visited.postlink, a:hover.postlink, a:link.postlink,
+.meta-author a, .meta-author a:visited, .meta-author a:link, .meta-author a:hover{
+	color: @redThatcampLight;
+}
+.skip-link,
+.assistive-text {
+	display: none;
+}
+nav#top-nav {
+	float: right;
+	display: inline-block;
+	margin-top: 1px;
+	margin-top: 0.1rem;
+	font-family : @navigationFont;
+
+	ul {
+		margin: -5px 0 0 0;
+		text-indent: 0;
+	}
+	li a{
+		text-decoration: none;
+		float: right;
+		background: url('assets/images/nav-off.jpg');
+		padding: 20px 20px 30px 20px;
+		border-right: 3px solid #E1D5B8;
+		border-bottom: 3px solid #E1D5B8;
+		border-left: 3px solid #E1D5B8;
+		.border-radius(0, 10px, 10px, 0);
+		color: #333;
+	}
+	li a:hover{
+		background: url('assets/images/nav-on.jpg');
+		color: #fff;
+		border-right: 3px solid #111;
+		border-bottom: 3px solid #111;
+		border-left: 3px solid #111;
+		.border-radius(0, 10px, 10px, 0);
+	}
+
+	li {
+		position: relative;
+		margin: 0 10px 0;
+		list-style: none;
+		display:inline-block;
+	}
+	li:last-child {
+		border-right: none;
+	}
+	li ul {
+		display: none;
+		position: absolute;
+		top: 100%;
+		margin: 0;
+		z-index: 1;
+		background: #eee;
+	}
+	li:hover ul {
+		display: block;
+	}
+	li ul li,
+	li ul li a {
+		text-align: left;
+	}
+	li ul li a {
+		display: block;
+		width: 100px;
+	}
+}
+
+nav[role="navigation"].main-small-navigation {
+	text-align: left;
+}
+nav[role="navigation"] li a {
+	padding: 10px 0;
+	line-height: 1.2;
+}
+nav#bottom-nav ul {
+	margin: 0;
+	padding: 0;
+}
+nav#bottom-nav ul li {
+	list-style: none;
+	float: right;
+	margin: 0 0 0 30px;
+	margin: 0 0 0 3rem;
+}
+nav#bottom-nav ul li a,nav#bottom-nav ul li a:visited {
+}
+#nav-below {
+	margin: 10px 0 20px 0;
+	margin: 1rem 0 2rem 0;
+}
+select.mobileMenu {
+	width: 100%;
+}
+.assistive-text {
+	position: absolute!important;
+	clip: rect(1px 1px 1px 1px);/* IE6,IE7 */
+	clip:rect(1px,1px,1px,1px);
+}
+.pagination{
+	clear:both;
+}
+#pag-top{
+	border-bottom: 1px dashed #333;
+	overflow:hidden;
+}
+.pagination-links{
+	float: right;
+}
+#pag-top h3{
+	float: left;
+}
+#pag-bottom{
+	border-top: 1px dashed #333;
+}

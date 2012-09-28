@@ -1,0 +1,127 @@
+/*
+Theme Name:ThatCamp Dev
+Theme Date:12/06/2012
+Version:1.0
+Theme URI:www.thatcamp.info
+Description:ThatCamp Dev Theme
+Author:Tammie Lister
+Author URI:www.thelogicalbinary.com
+Tags:fixed-width
+License:GNU General Public License,v2 (or newer)
+License URI:http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+*/
+/*----------------------------------------------------------
+Welcome to the stylesheet for logicalbones Theme
+------------------------------------------------------------
+>>> TABLE OF CONTENTS
+------------------------------------------------------------
+1.0 - Useful bits
+2.0 - Structural
+-2.1 - Content
+-2.2 - Header
+-2.3 - Footer
+-2.4 - Sidebar
+3.0 - Non-structural
+-3.1 - Typography
+-3.1.2 - Headers
+-3.2 - Lists
+-3.3 - Tables
+-3.4 - Images
+-3.5 - Forms
+4.0 - Navigation
+5.0 - WordPress specific
+-5.1 - Comments
+-5.2 - Gallery
+-5.3 - Posts
+-5.4 - Widgets
+6.0 - BuddyPress
+-6.1 - Activity
+ -6.1.1 - Activity Listing
+ -6.1.2 - Activity Comments
+-6.2 - Toolbar
+-6.3 - Directories - Members, Groups, Blogs, Forums
+-6.4 - Error / Success Messages
+-6.5 - Forms
+-6.6 - Ajax Loading
+-6.7 - Topics and Tables - Forums and General
+-6.8 - Headers, Lists and Tabs - Activity, Groups, Blogs, Forums
+-6.9 - Private Messaging Threads
+-6.10 - Extended Profiles
+7.0 - Browser specific
+8.0 - Media queries
+----------------------------------------------------------*/
+// Add some useful mixins into the mix :)
+@import "mixins.less";
+@import "variables.less";
+
+/*--------------------------------------------------------------
+1.0 - Useful Tags
+--------------------------------------------------------------*/
+@import "usefultags.less";
+
+/*--------------------------------------------------------------
+2.0 - Structural
+--------------------------------------------------------------*/
+@import "structure.less";
+
+/*--------------------------------------------------------------
+3.0 - Non-structural
+--------------------------------------------------------------*/
+@import "typography.less";
+
+/*--------------------------------------------------------------
+3.3 - Tables
+--------------------------------------------------------------*/
+@import "tables.less";
+
+/*--------------------------------------------------------------
+3.4 - Images
+--------------------------------------------------------------*/
+@import "images.less";
+
+/*--------------------------------------------------------------
+3.5 - Forms
+--------------------------------------------------------------*/
+@import "forms.less";
+
+/*--------------------------------------------------------------
+4.0 - Navigation
+--------------------------------------------------------------*/
+@import "navigation.less";
+
+/*--------------------------------------------------------------
+5.0 - WordPress specific
+--------------------------------------------------------------*/
+@import "wordpress.less";
+
+/*--------------------------------------------------------------
+6.0 - BuddyPress specific
+--------------------------------------------------------------*/
+@import "buddypress.less";
+
+/*--------------------------------------------------------------
+7.0 - Browser specific
+--------------------------------------------------------------*/
+@import "browser.less";
+
+/*--------------------------------------------------------------
+8.0 - Media queries
+--------------------------------------------------------------*/
+@media only screen and (min-width:480px) {/* Styles */
+	@import "logical-480.less";
+}
+@media only screen and (min-width:600px) {/* Styles */
+	@import "logical-600.less";
+}
+@media only screen and (min-width:768px) {
+	@import "logical-768.less";
+}
+@media only screen and (min-width:992px) {
+	@import "logical-992.less";
+}
+@media only screen and (min-width:1382px) {
+	@import "logical-1382.less";
+}
+@media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (min--moz-device-pixel-ratio:1.5),only screen and (min-device-pixel-ratio:1.5) {/* Styles */
+	@import "logical-2x.less";
+}
