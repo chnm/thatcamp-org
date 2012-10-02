@@ -5,20 +5,15 @@
  * @package thatcamp
  * @since thatcamp 1.0
  */
+if ( post_password_required() )
+	return;
 ?>
 <div id="comments">
-<?php if ( post_password_required() ) : ?>
-	<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'thatcamp'); ?></p>
-</div>
-<?php
-return;
-endif;
-?>
 <?php if ( have_comments() ) : ?>
-	<h3 id="comment-title"><?php
+	<h2 id="comment-title"><?php
 	printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'thatcamp'),
 	number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
-	?></h3>
+	?></h2>
 	<?php do_action( 'bp_before_blog_comment_list' ); ?>
 	<ol class="commentlist">
 		<?php wp_list_comments( array( 'callback' => 'thatcamp_comment', 'type' => 'comment') );?>
@@ -32,18 +27,11 @@ endif;
 		</nav>
 	<?php endif;  ?>
 
-<?php else : ?>
-
-	<?php if ( pings_open() && !comments_open() && ( is_single() || is_page() ) && post_type_supports( get_post_type(), 'comments' ) ) : ?>
-		<p class="nocomments comments-closed pings-open">
-			<?php printf( __( 'Comments are closed, but <a href="%1$s" title="Trackback URL for this post">trackbacks</a> and pingbacks are open.', 'thatcamp' ), trackback_url( '0' ) ); ?>
-		</p>
-	<?php elseif ( !comments_open() && ( is_single() || is_page() ) ) : ?>
-		<p class="nocomments">
-			<?php _e( 'Comments are closed.', 'thatcamp' ); ?>
-		</p>
+<?php // If comments are closed and there are comments, let's leave a little note.
+		elseif ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+	?>
+		<p class="nocomments"><?php _e( 'Comments are closed.', 'twentytwelve' ); ?></p>
 	<?php endif; ?>
-<?php if ( comments_open() ) : ?>
+
 	<?php comment_form(); ?>
-<?php endif; ?>
 </div>
