@@ -47,6 +47,7 @@ function thatcamp_build() {
 	// Register navigation menus
 	register_nav_menu('top', __('Top', 'thatcamp'));
 	register_nav_menu('bottom', __('Bottom', 'thatcamp'));
+	register_nav_menu('documents', __('Documents', 'thatcamp'));
 	
 	// Add post format support
 	add_theme_support( 'post-formats', array( 'aside', 'image', 'link', 'quote' ) );
