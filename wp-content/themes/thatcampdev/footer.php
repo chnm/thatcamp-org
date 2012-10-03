@@ -16,11 +16,11 @@
 				<!-- add in themename call -->
 					<div id="copyright">&copy; <?php the_time('Y')?>  </div>
 					<div id="credits"><?php do_action( 'bp_dtheme_credits' ); ?></div>
-					<?php wp_nav_menu( array(
+					<?php /*wp_nav_menu( array(
 						'theme_location' => 'bottom', 
 						'menu_class' => 'bottom_menu',
 						'container' => ''
-					)); ?>
+					));*/ ?>
 				</nav>
 				<?php do_action( 'bp_footer' ); ?>
 			</footer>
