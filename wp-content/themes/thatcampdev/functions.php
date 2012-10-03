@@ -124,18 +124,6 @@ function thatcamp_load_scripts() {
 endif;
 add_action( 'wp_enqueue_scripts', 'thatcamp_load_scripts' );
 
-// Add support for custom backgrounds
-function thatcamp_custom_background() {
-	$defaults = array(
-		'default-color'          => '',
-		'default-image'          => '',
-		'wp-head-callback'       => '_custom_background_cb',
-		'admin-head-callback'    => '',
-		'admin-preview-callback' => ''
-	);
-	add_theme_support( 'custom-background', $defaults );
-}
-
 // thatcamp widgets
 if ( ! function_exists( 'thatcamp_widgets_init' ) ) :
 function thatcamp_widgets_init() {
@@ -144,6 +132,17 @@ function thatcamp_widgets_init() {
 			'name'          => __( 'Sidebar', 'thatcamp'),
 			'id'            => 'sidebar',
 			'description'   => 'Sidebar',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">', 	  
+			'after_widget' => '</aside>',
+       		'before_title' => '<h3 class="widgettitle">',
+       		'after_title' => '</h3>'
+			)
+	);
+	register_sidebar(
+		array(
+			'name'          => __( 'Sidebar Documents', 'thatcamp'),
+			'id'            => 'sidebar-documents',
+			'description'   => 'Sidebar Documents',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">', 	  
 			'after_widget' => '</aside>',
        		'before_title' => '<h3 class="widgettitle">',
