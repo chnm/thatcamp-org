@@ -207,11 +207,22 @@ function thatcamp_camp_date( $group_id = 0, $format = '' ) {
 /**
  * Does this THATCamp have workshops?
  *
- * @return bool
+ * @return string 'yes', 'maybe', 'no'
  */
-function thatcamp_camp_has_workshops() {
-	return 'yes' == groups_get_groupmeta( bp_get_group_id(), 'has_workshops' );
+function thatcamp_camp_has_workshops( $group_id = 0 ) {
+	echo thatcamp_get_camp_has_workshops( $group_id );
 }
+	function thatcamp_get_camp_has_workshops( $group_id = 0 ) {
+		$group_id = thatcamp_fallback_group( $group_id );
+
+		$values = array( 'yes', 'maybe', 'no' );
+		$value  = groups_get_groupmeta( $group_id, 'thatcamp_has_workshops' );
+		if ( ! in_array( $value, $values ) ) {
+			$value = 'no';
+		}
+
+		return $value;
+	}
 
 /**************************************************
  * MIGRATION

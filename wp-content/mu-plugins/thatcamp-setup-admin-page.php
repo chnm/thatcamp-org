@@ -23,6 +23,7 @@ function thatcamp_menu_page() {
 	$group_id = thatcamp_get_blog_group( get_current_blog_id() );
 
 	$date = thatcamp_get_camp_date( $group_id, 'mmddyy' );
+	$has_workshops = thatcamp_get_camp_has_workshops( $group_id );
 
 	?>
 	<form method="post">
@@ -39,6 +40,20 @@ function thatcamp_menu_page() {
 				<td>
 					<input id="thatcamp_date" name="thatcamp_date" type="text" value="<?php echo esc_attr( $date ) ?>" />
 					<p class="description">Use the <code>MM/DD/YYYY</code> format</p>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row">
+					<label for="thatcamp_has_workshops">Will your THATCamp have workshops?</label>
+				</th>
+
+				<td>
+					<select id="thatcamp_has_workshops" name="thatcamp_has_workshops" type="text">
+						<option value="yes" <?php selected( $has_workshops, 'yes' ) ?>>Yes</option>
+						<option value="maybe" <?php selected( $has_workshops, 'maybe' ) ?>>Maybe</option>
+						<option value="no" <?php selected( $has_workshops, 'no' ) ?>>No</option>
+					</select>
 				</td>
 			</tr>
 		</table>
@@ -69,6 +84,12 @@ function thatcamp_admin_catch_submit() {
 		// Date
 		$date = isset( $_POST['thatcamp_date'] ) ? strtotime( $_POST['thatcamp_date'] ) : '';
 		groups_update_groupmeta( $group_id, 'thatcamp_date', $date );
+
+		// Has workshops
+		$has_workshops = isset( $_POST['thatcamp_has_workshops'] ) ? $_POST['thatcamp_has_workshops'] : '';
+		if ( ! in_array( $has_workshops, array( 'yes', 'maybe', 'no' ) ) )
+			$has_workshops = 'no';
+		groups_update_groupmeta( $group_id, 'thatcamp_has_workshops', $has_workshops );
 
 		wp_redirect( add_query_arg( array(
 			'page' => 'thatcamp_setup',
