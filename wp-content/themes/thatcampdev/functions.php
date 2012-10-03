@@ -15,6 +15,8 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 640;
 }
 
+add_filter('show_admin_bar', '__return_false'); 
+
 // thatcamp set up function
 add_action( 'after_setup_theme', 'thatcamp_build' );
 if ( ! function_exists( 'thatcamp_build' ) ) :

@@ -10,6 +10,7 @@
 	<div id="sidebar-innerleft">
 		<?php if ( is_active_sidebar( 'sidebar-documents' ) ) : ?>
 		<?php dynamic_sidebar( 'sidebar-documents' ); ?>
+		<?php endif; ?>
 	</div>
 	<div id="sidebar-innerright">
 		<nav id="side-nav" role="navigation">

@@ -11,6 +11,7 @@
 	<?php do_action( 'bp_inside_before_sidebar' ); ?>
 		<?php if ( is_active_sidebar( 'sidebar' ) ) : ?>
 		<?php dynamic_sidebar( 'sidebar' ); ?>
+		<?php endif; ?>
 	<?php do_action( 'bp_inside_after_sidebar' ); ?>
 </div>
 <?php do_action( 'bp_after_sidebar' ); ?>
