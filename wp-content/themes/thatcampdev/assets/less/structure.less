@@ -1,0 +1,117 @@
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background-color: @bodyColor;
+}
+#site-wrapper{
+	padding: 0 10px;
+	padding: 0 1rem;
+}
+/* for when site has multiple full widths */
+.wrapper{
+	margin: 0 auto;
+	max-width: @siteWidth;
+}
+/*--------------------------------------------------------------
+2.1 - Content
+--------------------------------------------------------------*/
+.main-content{
+	padding: @siteGutter 0;
+}
+#primary{
+	float:right;
+	width:65%;
+}
+#primary-documents{
+	float:right;
+	width: 60%;
+}
+.feature-box{
+	border: 2px solid #eee;
+	background: @white;
+	padding: @siteGutter;
+}
+#upcoming-camps{
+	margin: 0 0 -60px 0;
+}
+.camp-listdate{
+	float: left;
+	width: 20%;
+	border-right: 1px solid #CCC;
+	margin-right: 3%;
+	color: #888;
+	text-align: right;
+	padding: 0 @siteGutter 10px 0;
+}
+.camp-listitem{
+	clear:both;
+	padding: @siteGutter 0 0 0;
+	border-bottom: 1px dashed #ccc;
+}
+.camp-listmeta{
+	margin: 0 0 0 26%;
+}
+#latest-posts{
+	margin: 100px 0 0 0;
+}
+.spacer-bottom{
+	margin-bottom: @siteGutter;
+}
+/*--------------------------------------------------------------
+2.2 - Header
+--------------------------------------------------------------*/
+#sitebar-wrapper, #about-wrapper{
+	background: url('assets/images/classy_fabric.png');
+	padding: @siteGutter 0;
+}
+#header-wrapper{
+	border-top: 4px solid #fff;
+	border-bottom: 4px solid #fff;
+}
+#about-wrapper{
+	border-top: 2px solid #111;
+	border-bottom: 2px solid #111;
+	color: @white;
+}
+#site-logo{
+	background: url('assets/images/thatcamp-logo.png') no-repeat;
+	text-indent: 100%;
+	height: 80px;
+	width: 320px;
+	float: left;
+	margin: 10px 0 0 0;
+	overflow: hidden;
+}
+/*--------------------------------------------------------------
+2.3 - Footer
+--------------------------------------------------------------*/
+#footer-wrapper{
+	
+}
+#bottom-footer {
+	clear: both;
+	padding: 10px;
+	padding: 1rem;
+}
+#copyright {
+}
+/*--------------------------------------------------------------
+2.4 - Sidebar
+--------------------------------------------------------------*/
+#sidebar {
+	width: 320px;
+	float: left;
+}
+#sidebar-documents{
+	width: 35%;
+	float: left;
+}
+#sidebar-innerleft{
+	float: left;
+	width: 60%;
+}
+#sidebar-innerright{
+	float: right;
+	width: 30%;
+}

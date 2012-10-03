@@ -2,7 +2,7 @@
 /*
 Plugin Name: CW Author Base
 Plugin URI: http://clioweb.org
-Description: Very simple plugin that lets you use change the author base for author URLs. 
+Description: Very simple plugin that lets you use change the author base for author URLs.
 Author: Jeremy Boggs
 Version: 1.0
 Author URI: http://clioweb.org
@@ -54,7 +54,7 @@ function cw_author_base_edit() {
 
 <?php }
 function cw_author_base_add_options_page() {
-add_options_page('CW Author Base', 'CW Author Base', 8, 'testoptions', 'cw_author_base_edit');
+add_options_page('CW Author Base', 'CW Author Base', 'manage_options', 'testoptions', 'cw_author_base_edit');
 }
 
 add_action('admin_menu', 'cw_author_base_add_options_page');

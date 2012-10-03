@@ -27,3 +27,4 @@ wp-content/debug.log
 *.php.orig
 .svn
 *.swp
+/tags
