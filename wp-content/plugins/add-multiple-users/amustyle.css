@@ -1,0 +1,299 @@
+/* Add Multiple Users CSS Styles - version 1.2.2 */
+/* surround to protect styles from other admin pages */
+#amu{}
+#amu p.amu_error{
+	font-style:italic;
+	color:#C30;
+}
+#amu span.important {
+	font-size:11px;
+	font-style:italic;
+}
+#amu .hidegenopt{
+	display:none;
+}
+#amu .infosection, #amu .moreinfosection {
+	background:#fafafa;
+    border:1px solid #eee;
+    float:left;
+    margin:10px 0 0;
+    padding:0 10px;
+    width:748px;
+	position:relative;
+}
+#amu .pluginfoswitch{
+	display:block;
+	font-weight:bold;
+	color:#21759B;
+	position:absolute;
+	right:5px;
+	top:10px;
+	padding:5px;
+	cursor:pointer;
+}
+#amu .pluginfoswitch:hover{
+	text-decoration:underline;
+}
+/* form and styles */
+#amu form {
+	float:left;
+	width:770px;
+}
+#amu form .toolintro{
+	float:left;
+	margin:10px 0 0;
+}
+#amu #sortfield {
+	background:#fafafa;
+	padding:10px;
+	border:1px solid #eee;
+	float:left;
+	width:748px;
+	margin:0 0 10px;
+}
+#amu .optcol{
+	float:left;
+	padding:3px;
+	margin:5px 0;
+	width:100px;
+}
+#amu .optcol .optcolline{
+	float:left;
+	width:100%;
+}
+#amu .optcol .optcolline select{
+	width:100%;
+}
+#amu .optcol .optcolline span{
+	cursor:pointer;
+    display:block;
+    float:left;
+    font-size:12px;
+    font-weight:bold;
+    margin:1px;
+    padding:1px 0;
+    text-align:center;
+    width:20px;
+	background:#fff;
+	border:1px solid #eee;
+}
+#amu .optcol .optcolline span:hover{
+	color:#21759B;
+}
+#amu form .textfillbox {
+	width:100%;
+	font-size:12px;
+}
+#amu .button-toolbar{
+	float:left;
+	border:none;
+	background:none;
+	cursor:pointer;
+	margin:0;
+	padding:1.05em 0;
+	width:14%;
+	color:#21759B;
+}
+#amu .button-toolbar:hover{
+	text-decoration:underline;
+}
+#amu .formhead {
+	float:left;
+	width:100%;
+}
+#amu .toolbar {
+	background:#fafafa;
+	border:1px solid #eee;
+	float:left;
+	width:768px;
+}
+#amu .formhead p.headtitle{
+	float:left;
+}
+#amu .formhead p.exp-genopt{
+	display:block;
+	float:right;
+	cursor:pointer;
+}
+#amu .genoptionwrap {
+	background:#fafafa;
+	padding:0 10px;
+	border:1px solid #eee;
+	float:left;
+	width:748px;
+	margin:0 0 10px;
+}
+#amu .optionbox {
+	width:100%;
+	float:left;
+	font-size:12px;
+	padding:10px 0;
+	border-bottom:1px solid #eee;
+}
+#amu .lastoption {
+	border-bottom:none;
+}
+#amu .optionbox label {
+	float:left;
+	width:80%;
+	line-height:1.3em;
+}
+#amu .optionbox input, #amu .optionbox select {
+	float:right;
+}
+#amu .optionbox input[type="text"]{
+	width:100%;
+	clear:both;
+	margin:10px 0 0;
+}
+#amu .optionbox input.custheadfield {
+	float:left;
+	width:100%;
+	padding:3px;
+}
+#amu .optionbox label.custheadlabel {
+	width:100%;
+	float:left;
+	padding:0 0 5px;
+	font-weight:bold;
+}
+#amu .optionbox select{
+	font-size:12px;
+}
+#amu .buttonline {
+	width:100%;
+	float:left;
+	margin:10px 0;
+}
+#amu .fieldsetwrap {
+	border:1px solid #eee;
+	float:left;
+	width:100%;
+}
+#amu .formwrap {
+	padding:0 10px 10px;
+	float:left;
+}
+#amu .wrapwhite {
+	background:#fff;
+}
+#amu .wrapgrey {
+	background:#f9f9f9;
+}
+#amu .formline {
+	margin:10px 0 0;
+	width:100%;
+	float:left;
+	font-size:11px;
+}
+#amu .userline {
+	padding:10px 0;
+	width:100%;
+	float:left;
+	font-size:11px;
+}
+#amu span.countline {
+	width:20px;
+	float:left;
+	padding:4px 0 0;
+	font-weight:bold;
+}
+#amu input.button-right{
+	float:right;
+	margin:0 0 10px;
+}
+#amu .optioninstructions{
+	font-size:11px;
+}
+#amu .formline label {
+	float:left;
+	padding:4px 10px;
+	width:50px;
+}
+#amu .formline input {
+	float:left;
+	font-size:11px;
+	width:110px;
+}
+/* add existing user line styles */
+#amu .userline input {
+	float:left;
+	width:5%;
+}
+#amu .userline label {
+	float:left;
+	padding:0;
+	width:80%;
+	font-size:12px;
+}
+#amu .userline label span{
+	float:left;
+	display:block;
+	overflow:hidden;
+}
+#amu .userline label span.eu_userid{
+	width:15%;
+}
+#amu .userline label span.eu_userlogin{
+	width:30%;
+}
+#amu .userline label span.eu_useremail{
+	width:54%;
+}
+#amu .userline select {
+	float:left;
+	width:13%;
+}
+#amu .formline select {
+	float:left;
+	width:110px;
+	font-size:11px;
+}
+#amu .validationtag {
+	float:left;
+	padding:4px 10px;
+}
+#amu .linevalid {
+	float:left;
+	padding:4px 0;
+	font-weight:bold;
+}
+#amu h3, #amu h4{
+	color:#21759B;
+}
+#amu .regnotice{
+	background-color:#FFFFE0;
+    border:1px solid #E6DB55;
+	padding:0 10px 10px;
+	float:left;
+	width:748px;
+}
+#amu .regnotice p{
+	font-size:11px;
+	margin:5px 0;
+}
+input.amushort, input.amumatchuser, input.amuerror{
+	background-color:#ffc3c3;
+}
+input.amubad{
+	background-color:#ffdab6;
+}
+input.amugood{
+	background-color:#fff7b6;
+}
+input.amustrong, input.amuvalid{
+	background-color:#dfffd0;
+}
+.amutooltip{
+	display:none;
+	position:absolute;
+	z-index:999;
+	background-color:#21759B;
+	color:#eee;
+	line-height:1.15em;
+	padding:5px;
+	border:1px solid #444;
+	width: 150px;
+	border-radius:5px;
+	height:25px;
+}
