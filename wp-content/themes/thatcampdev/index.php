@@ -12,9 +12,23 @@
 		<div id="upcoming-camps" class="clearfix feature-box">
 			<h2>Upcoming THATCamps</h2>
 
-			<?php $group_args = array(
+			<?php /* Set up the groups loop */ ?>
+			<?php
+
+			$meta_filter_args = array(
+				'filters' => array(
+					'thatcamp_date' => false, // doesn't matter what it is
+				),
+				'orderby' => 'thatcamp_date',
+				'order' => 'DESC',
+			);
+
+			$meta_filter = new BP_Groups_Meta_Filter( $meta_filter_args );
+
+			$group_args = array(
 				'per_page' => 10
-			) ?>
+			);
+			?>
 
 			<?php if ( bp_has_groups( $group_args ) ) : while ( bp_groups() ) : bp_the_group() ?>
 
@@ -25,6 +39,8 @@
 			</article>
 
 			<?php endwhile; endif ?>
+
+			<?php $meta_filter->remove_filters() ?>
 		</div>
 
 		<div id="latest-posts" class="clearfix feature-box">
