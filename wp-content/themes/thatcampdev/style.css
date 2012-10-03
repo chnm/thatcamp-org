@@ -230,8 +230,7 @@ body {
 2.2 - Header
 --------------------------------------------------------------*/
 #sitebar-wrapper,
-#about-wrapper,
-#footer-wrapper {
+#about-wrapper {
   background: url('assets/images/classy_fabric.png');
   padding: 2rem 0;
 }
@@ -256,10 +255,20 @@ body {
 /*--------------------------------------------------------------
 2.3 - Footer
 --------------------------------------------------------------*/
+#footer-wrapper {
+  background: url('assets/images/classy_fabric.png');
+  padding: 10px 0;
+}
 #bottom-footer {
   clear: both;
-  padding: 10px;
-  padding: 1rem;
+}
+#logos-wrapper {
+  background-color: #e8e5de;
+  padding: 2rem 0;
+}
+#logos {
+  margin: 0 auto;
+  max-width: 1140px;
 }
 /*--------------------------------------------------------------
 2.4 - Sidebar

@@ -9,6 +9,10 @@
 				</div>
 			</div>
 			<?php do_action( 'bp_after_container' ); ?>
+			<div id="logos-wrapper">
+				<div id="logos">
+				</div>
+			</div>
 			<?php do_action( 'bp_before_footer'   ); ?>
 			<div id="footer-wrapper">
 			<footer id="bottom-footer" class="wrapper" role="contentinfo">
