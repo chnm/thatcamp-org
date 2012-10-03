@@ -10,9 +10,9 @@ Description: Display the most recent comments or trackbacks with your own format
 
 
 */
-
-if ( function_exists("is_plugin_page") && is_plugin_page() ) {
-	kjgrc_options_page(); 
+global $plugin_page;
+if ( ! empty( $plugin_page ) ) {
+	kjgrc_options_page();
 	return;
 }
 
@@ -26,8 +26,8 @@ function kjgrc_subpage_misc()
 
 <p class="submit"><input type="submit" name="Submit" value="<?php _e('Update Options &raquo;') ?>" /></p>
 
-<fieldset class="options"> 
-<legend><?php _e('Smileys') ?></legend> 
+<fieldset class="options">
+<legend><?php _e('Smileys') ?></legend>
 <?php
 $converter = "WordPress";
 if (function_exists("csm_convert") ) {
@@ -40,7 +40,7 @@ WordPress offers conversion of emoticons like :-) and :-P to graphics on display
 }
 ?>
 
-<table class="optiontable"> 
+<table class="optiontable">
 
 <th scope="row"><?php _e('The plugin should:') ?> </th>
 <td>
@@ -51,15 +51,15 @@ WordPress offers conversion of emoticons like :-) and :-P to graphics on display
 
 </tr>
 </table>
-</fieldset> 
+</fieldset>
 
-<fieldset class="options"> 
-<legend><?php _e('Cache') ?></legend> 
+<fieldset class="options">
+<legend><?php _e('Cache') ?></legend>
 If there are no new comments, the plugin fetches the output from the cache,
 instead of querying the database. If you want the plugin to ask the database
 every time, a web page is generated, you can disable this feature.
 
-<table class="optiontable"> 
+<table class="optiontable">
 
 <th scope="row"><?php _e('The plugin should:') ?> </th>
 <td>
@@ -68,26 +68,26 @@ every time, a web page is generated, you can disable this feature.
 
 </tr>
 </table>
-</fieldset> 
+</fieldset>
 
 <p class="submit"><input type="submit" name="Submit" value="<?php _e('Update Options &raquo;') ?>" />
-<input type="hidden" name="action" value="update" /> 
-<input type="hidden" name="page_options" value="blogname,blogdescription,siteurl,admin_email,users_can_register,gmt_offset,date_format,time_format,home,start_of_week,comment_registration,default_role" /> 
+<input type="hidden" name="action" value="update" />
+<input type="hidden" name="page_options" value="blogname,blogdescription,siteurl,admin_email,users_can_register,gmt_offset,date_format,time_format,home,start_of_week,comment_registration,default_role" />
 </p>
 </form>
 
-</div> 
+</div>
 <?php
 }
 
-function kjgrc_subpage_gravatar() 
+function kjgrc_subpage_gravatar()
 {
 	$gravatar_checked[0] = '';
 	$gravatar_checked[1] = '';
 	$gravatar_checked[2] = '';
 	$gravatar_checked[3] = '';
 	$gravatar_checked[kjgrc_get_option('gravatar','rating')] = "checked=\"checked\" ";
-	
+
 ?>
 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=get-recent-comments.php&amp;subpage=5&amp;updated=true">
 <input type="hidden" name="function" value="gravatar">
@@ -101,30 +101,30 @@ function kjgrc_subpage_gravatar()
 Valid values are between 1 and 80 pixels.
 </td>
 </tr>
-<tr valign="top"> 
-        <th scope="row">Alternative URL:</th> 
+<tr valign="top">
+        <th scope="row">Alternative URL:</th>
         <td><input name="gravatar_alt_url" type="text" style="width: 95%" value="<?php echo kjgrc_get_option("gravatar","alt_url"); ?>" size="45" />
         <br />
-This is an <strong>optional</strong> image that will be displayed if no gravatar is found. Enter the full URL (with http://). If left empty, gravatar.com returns a transparent pixel.</td> 
-</tr> 
+This is an <strong>optional</strong> image that will be displayed if no gravatar is found. Enter the full URL (with http://). If left empty, gravatar.com returns a transparent pixel.</td>
+</tr>
 <tr>
-        <th scope="row">Display gravatars up to this rating:</th> 
+        <th scope="row">Display gravatars up to this rating:</th>
         <td> <label for="gravatar_rating0"><input name="gravatar_rating" id="gravatar_rating0" type="radio" value="0" <?php echo $gravatar_checked[0]; ?>/> G (All audiences)</label><br />
 <label for="gravatar_rating1"><input name="gravatar_rating" id="gravatar_rating1" type="radio" value="1" <?php echo $gravatar_checked[1]; ?>/> PG</label><br />
 <label for="gravatar_rating2"><input name="gravatar_rating" id="gravatar_rating2" type="radio" value="2" <?php echo $gravatar_checked[2]; ?>/> R</label><br />
-<label for="gravatar_rating3"><input name="gravatar_rating" id="gravatar_rating3" type="radio" value="3" <?php echo $gravatar_checked[3]; ?>/> X</label></td> 
-</tr> 
+<label for="gravatar_rating3"><input name="gravatar_rating" id="gravatar_rating3" type="radio" value="3" <?php echo $gravatar_checked[3]; ?>/> X</label></td>
+</tr>
 
 </table>
 
 <p class="submit">
 <input type="submit" name="Submit" value="<?php _e('Update Options') ?> &raquo;" />
 </p>
-</form> 
+</form>
 <?php
 } // kjgrc_subpage_gravatar
 
-function kjgrc_subpage_exclude_cat() 
+function kjgrc_subpage_exclude_cat()
 {
 	global $wpdb;
 	if (function_exists("get_categories")) {
@@ -161,11 +161,11 @@ function kjgrc_subpage_exclude_cat()
 <p class="submit">
 <input type="submit" name="Submit" value="<?php _e('Update Options') ?> &raquo;" />
 </p>
-</form> 
+</form>
 <?php
 } // kjgrc_subpage_exclude_cat
 
-function kjgrc_subpage_grc() 
+function kjgrc_subpage_grc()
 {
 ?>
 <script type="text/javascript">
@@ -194,13 +194,13 @@ function toggle_exclude_blog_owner2()
 <form name="get_recent_comments_form" method=post action="<?php echo $_SERVER['PHP_SELF']; ?>?page=get-recent-comments.php&amp;updated=true">
 <input type="hidden" name="function" value="grc">
 <h2><?php _e('Recent Comments') ?></h2>
-<fieldset class="options"> 
+<fieldset class="options">
 <table width="100%" cellspacing="2" cellpadding="5" class="editform">
 <tr valign="top">
 <th width="33%" scope="row"><?php _e('Show the most recent:') ?></th>
 <td><input name="max_comments" type="text" id="max_comments" value="<?php echo kjgrc_get_option("grc","max_comments"); ?>" size="3" /> <?php _e('comments') ?></td>
 <td rowspan="6"><pre><div style='font-size: 10px; border-left: 1px solid; margin: 0px;'> %comment_excerpt - Shortened comment.
- %comment_link    - Link to the comment. 
+ %comment_link    - Link to the comment.
  %comment_author  - Name left by the commenter
  %comment_date    - Date of comment
  %comment_time    - Time of comment
@@ -213,7 +213,7 @@ function toggle_exclude_blog_owner2()
  %author_url      - URL of author or trackback
  %author_url_href - href="%author_url" or empty
  %post_title      - Title of the posting
- %post_link       - Link to the posting 
+ %post_link       - Link to the posting
  %post_date       - Date of the posting
  %post_counter    - Number of comments to this post</pre></div></td>
 </tr>
@@ -284,7 +284,7 @@ function toggle_exclude_blog_owner2()
 <strong>Result</strong>
 <?php $result=kjgrc_create_recent_comments('grc_sample');  substr_count($result, "\n");?>
 <textarea cols="60" rows="<?php $result=kjgrc_create_recent_comments('grc_sample');  substr_count($result, "\n"); echo substr_count($result, "\n")+1;?>" style="width: 98%; font-size: 12px; left-margin: 30;" class="code" wrap="off" readonly><?php echo trim($result); ?></textarea>
-</td>         
+</td>
 </tr>
 
 </table>
@@ -296,16 +296,16 @@ function toggle_exclude_blog_owner2()
 </form>
 
 <?php
-} // kjgrc_subpage_grc 
+} // kjgrc_subpage_grc
 
-function kjgrc_subpage_grt () 
+function kjgrc_subpage_grt ()
 {
 ?>
 
 <form name="trackback_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=get-recent-comments.php&amp;updated=true&amp;subpage=2">
 <input type="hidden" name="function" value="grt">
 <h2><?php _e('Recent Trackbacks') ?></h2>
-<fieldset class="options"> 
+<fieldset class="options">
 <table width="100%" cellspacing="2" cellpadding="5" class="editform">
 <tr valign="top">
 <th width="33%" scope="row"><?php _e('Show the most recent:') ?></th>
@@ -351,7 +351,7 @@ function kjgrc_subpage_grt ()
 <strong>Result</strong>
 <?php $result=kjgrc_create_recent_comments('grc_sample');  substr_count($result, "\n");?>
 <textarea cols="60" rows="<?php $result=kjgrc_create_recent_trackbacks('grt_sample');  substr_count($result, "\n"); echo substr_count($result, "\n")+1;?>" style="width: 98%; font-size: 12px; left-margin: 30;" class="code" wrap="off" readonly><?php echo trim($result); ?></textarea>
-</td>         
+</td>
 </tr>
 
 </table>
@@ -361,15 +361,15 @@ function kjgrc_subpage_grt ()
 <input type="submit" id="deletepost" name="reset_template" value="<?php _e('Reset template to default') ?> &raquo;" onclick="return confirm('You are about to reset your template for \'Recent Trackbacks\'.\n  \'Cancel\' to stop, \'OK\' to delete.')" />
 <input type="submit" name="Submit" value="<?php _e('Update Recent Trackbacks Options') ?> &raquo;" />
 </p>
-</form>   
+</form>
 </fieldset>
 
-<?php 
+<?php
 } //kjgrc_subpage_grt
 
-function kjgrc_subpage_instructions () 
+function kjgrc_subpage_instructions ()
 {
-?>   
+?>
 <h2><?php _e('Instructions') ?></h2>
 <p><strong>1. What this plugin does</strong></p>
 It shows excerpts of the latest comments and/or trackbacks in your sidebar. You
@@ -396,7 +396,7 @@ box. And you might want to change the title. All done.
 <p><strong>2.2 Old school theme without widget support</strong></p>
 
 <p>
-You need to insert the following code snippet into the <a href="theme-editor.php">sidebar template</a>. 
+You need to insert the following code snippet into the <a href="theme-editor.php">sidebar template</a>.
 </p>
 
 <span class="code">wp-content/themes/default/sidebar.php</span>
@@ -406,7 +406,7 @@ You need to insert the following code snippet into the <a href="theme-editor.php
 <span style='color:#000000;  '>   </span><span style='color:#7f0055;  '>&lt;</span><span style='color:#7f0055;  font-weight:bold; '>li</span><span style='color:#7f0055;  '>></span><span style='color:#7f0055;  '>&lt;</span><span style='color:#7f0055;  font-weight:bold; '>h2</span><span style='color:#7f0055;  '>></span><span style='color:#7f0055; background:#ffffe8; '>&lt;?php</span><span style='color:#000000; background:#ffffe8; '> _e</span><span style='color:#000000; background:#ffffe8; '>(</span><span style='color:#2a00ff; background:#ffffe8; '>'Recent Comments:'</span><span style='color:#000000; background:#ffffe8; '>)</span><span style='color:#000000; background:#ffffe8; '>;</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#7f0055; background:#ffffe8; '>?></span><span style='color:#7f0055;'>&lt;/</span><span style='color:#7f0055;  font-weight:bold; '>h2</span><span style='color:#7f0055;  '>></span><span style='color:#000000;  '></span>
 <span style='color:#000000;  '>   </span><span style='color:#7f0055;  '>&lt;</span><span style='color:#7f0055;  font-weight:bold; '>ul</span><span style='color:#7f0055;  '>></span><span style='color:#7f0055; background:#ffffe8; '>&lt;?php</span><span style='color:#000000; background:#ffffe8; '> get_recent_comments</span><span style='color:#000000; background:#ffffe8; '>(</span><span style='color:#000000; background:#ffffe8; '>)</span><span style='color:#000000; background:#ffffe8; '>;</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#7f0055; background:#ffffe8; '>?></span><span style='color:#7f0055;  '>&lt;/</span><span style='color:#7f0055;  font-weight:bold; '>ul</span><span style='color:#7f0055;  '>></span><span style='color:#000000;  '></span>
 <span style='color:#000000;  '>   </span><span style='color:#7f0055;  '>&lt;/</span><span style='color:#7f0055;  font-weight:bold; '>li</span><span style='color:#7f0055;  '>></span><span style='color:#000000;  '></span>
-<span style='color:#7f0055; background:#ffffe8; '>&lt;?php</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#000000; background:#ffffe8; '>}</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#7f0055; background:#ffffe8; '>?></span>   
+<span style='color:#7f0055; background:#ffffe8; '>&lt;?php</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#000000; background:#ffffe8; '>}</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#7f0055; background:#ffffe8; '>?></span>
 
 <span style='color:#7f0055; background:#ffffe8; '>&lt;?php</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#7f0055; background:#ffffe8; font-weight:bold; '>if</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#000000; background:#ffffe8; '>(</span><span style='color:#7f0055; background:#ffffe8; font-weight:bold; '>function_exists</span><span style='color:#000000; background:#ffffe8; '>(</span><span style='color:#2a00ff; background:#ffffe8; '>'get_recent_trackbacks'</span><span style='color:#000000; background:#ffffe8; '>)</span><span style='color:#000000; background:#ffffe8; '>)</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#000000; background:#ffffe8; '>{</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#7f0055; background:#ffffe8; '>?></span><span style='color:#000000;  '></span>
 <span style='color:#000000;  '>   </span><span style='color:#7f0055;  '>&lt;</span><span style='color:#7f0055;  font-weight:bold; '>li</span><span style='color:#7f0055;  '>></span><span style='color:#7f0055;  '>&lt;</span><span style='color:#7f0055;  font-weight:bold; '>h2</span><span style='color:#7f0055;  '>></span><span style='color:#7f0055; background:#ffffe8; '>&lt;?php</span><span style='color:#000000; background:#ffffe8; '> _e</span><span style='color:#000000; background:#ffffe8; '>(</span><span style='color:#2a00ff; background:#ffffe8; '>'Recent Trackbacks:'</span><span style='color:#000000; background:#ffffe8; '>)</span><span style='color:#000000; background:#ffffe8; '>;</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#7f0055; background:#ffffe8; '>?></span><span style='color:#7f0055;  '>&lt;/</span><span style='color:#7f0055;  font-weight:bold; '>h2</span><span style='color:#7f0055;  '>></span><span style='color:#000000;  '></span>
@@ -423,7 +423,7 @@ The strongest feature of the plugin is that you can change the html layout in th
 <p><strong>3.1 Using the Macros</strong></p>
 <table>
 <tr><td valign="top" nowrap>%comment_excerpt</td><td>The text of the comment. It might get shorted to the number of characters you entered in <em>"Long comments are chopped off at..."</em></td></tr>
-<tr><td valign="top" nowrap>%comment_link</td><td>The URL to the cited comment.</td></tr> 
+<tr><td valign="top" nowrap>%comment_link</td><td>The URL to the cited comment.</td></tr>
 <tr><td valign="top" nowrap>%comment_author</td><td>The name, the commenter entered in the comment form. If she left the field empty, the name is "Anonymous".</td></tr>
 <tr><td valign="top" nowrap>%comment_date</td><td>The date, when the comment was posted in the style you configured as <a href="options-general.php">default date format</a>.</td></tr>
 <tr><td valign="top" nowrap>%comment_time</td><td>The time, when the comment was posted</td></tr>
@@ -436,7 +436,7 @@ The strongest feature of the plugin is that you can change the html layout in th
 <tr><td valign="top" nowrap>%author_url</td><td>The URL, the comment author left in the comment form, or if the comment is a trackback, the URL of the site that issued the trackback.</td></tr>
 <tr><td valign="top" nowrap>%author_url_href</td><td>The same like %author_url but inside a href statement. If there is no URL, the whole macro is empty. Without a href="" statement the link looks like a link, but is inactive. Use it like this: &lt;a %author_url_href title="%comment_date"&gt;comment_author&lt;/a&gt;</td></tr>
 <tr><td valign="top" nowrap>%post_title</td><td>The title of the posting that was commented.</td></tr>
-<tr><td valign="top" nowrap>%post_link</td><td>The URL of the posting that was commented.</td></tr> 
+<tr><td valign="top" nowrap>%post_link</td><td>The URL of the posting that was commented.</td></tr>
 <tr><td valign="top" nowrap>%post_date</td><td>The date when the commented posting was published.</td></tr>
 <tr><td valign="top" nowrap>%post_counter</td><td>The number of comments this post has..</td></tr>
 <tr><td valign="top" nowrap>%trackback_title</td><td>Only applicable in trackbacks: The title of the trackback. It  might get shorted to the number of characters you entered in <em>"Long trackbacks are chopped off at..."</em></td></tr>
@@ -454,18 +454,18 @@ html markup that is generated by the templates:
 <!--
 .top-example { vertical-align:top; }
 .top-ital { vertical-align:top; font-style:italic; padding-left: 10px; }
-#example { font-family:monospace; 
-           font-weight:bold; 
+#example { font-family:monospace;
+           font-weight:bold;
            border: 1px solid;
            border-color: #ccc;
            margin: 15px;
            background: #eee;
-}	
+}
 #example pre {
 	margin: 0;
 }
 #example td {
-	
+
 }
 -->
 </style>
@@ -544,9 +544,9 @@ that occur when you have a link to your own site in a post.</li>
 ">Profile Pics Plugin</a> is present, you may use to macro <em>%profile_picture</em> to obtain an URL to the profile picture of the commentator (read in the macro section for a working example).</li>
 <li>If <a href="http://fredfred.net/skriker/index.php/polyglot">malyfred's</a> <a href="http://fredfred.net/skriker/index.php/polyglot">Polyglot</a> Plugin is present, additional filters are applied to comments, titles, dates and times, which select the right language for the user.</li>
 </ul>
-</div>  
+</div>
 
-<?php  
+<?php
 }
 
 function kjgrc_subpage_header ($kjgrc_selected_tab) {
@@ -569,26 +569,26 @@ function kjgrc_subpage_header ($kjgrc_selected_tab) {
         padding: 3px 2em 0 1em;
 	paddi/ng: 0 0 0 0;
 }
-                                                                                     
+
 #adminmenu3 .current {
         background: #f9fcfe;
         border-top: 1px solid #045290;
         border-right: 2px solid #045290;
         color: #000;
 }
-                                                                                     
+
 #adminmenu3 a {
         border: none;
         color: #fff;
         font-size: 12px;
         padding: .3em .4em .33em;
 }
-                                                                                     
+
 #adminmenu3 a:hover {
         background: #ddeaf4;
         color: #393939;
 }
-                                                                                     
+
 -->
 </style>
 <ul id="submenu">
@@ -610,9 +610,9 @@ function kjgrc_subpage_header ($kjgrc_selected_tab) {
 // 	  	fwrite($handle,date("r").": $msg\n");
 // 		fclose($handle);
 // 	}
-// }	
+// }
 
-function kjgrc_set_option($key,$value) 
+function kjgrc_set_option($key,$value)
 {
 	global $kjgrc_options_loaded;
 	// Fetch dummy value just to enforce migration if needed
@@ -628,7 +628,7 @@ function kjgrc_get_option($section,$option_name)
 	global $wpdb,$kjgrc_options_loaded;
 	$version = 11; // If version differs from saved value -> insert new defaults
 	$kjgrc_options = get_option("kjgrc_options");
-	if ($kjgrc_options == NULL || $kjgrc_options['version'] != $version) 
+	if ($kjgrc_options == NULL || $kjgrc_options['version'] != $version)
 	{
 		$default_options = array (
 			"grc_max_comments" => 5,
@@ -657,17 +657,17 @@ function kjgrc_get_option($section,$option_name)
 			"grc_sidebar_title" => "Recent Comments",
 			"grt_sidebar_title" => "Recent Trackbacks"
 		);
-		$old_keys = array("grc_max_comments","grc_chars_per_comment","grc_chars_per_word","grc_format","grt_max_comments","grt_chars_per_comment","grt_chars_per_word","grt_format","misc_exclude_cat","gravatar_size","gravatar_alt_url","gravatar_rating","grt_ignore_ip"); 
+		$old_keys = array("grc_max_comments","grc_chars_per_comment","grc_chars_per_word","grc_format","grt_max_comments","grt_chars_per_comment","grt_chars_per_word","grt_format","misc_exclude_cat","gravatar_size","gravatar_alt_url","gravatar_rating","grt_ignore_ip");
 		// This might be an upgrade from < 1.4 to 1.4 or newer version. If there are old keys, migrate them to the new array:
 		add_option('gravatar_alt_url','');
 		if ($kjgrc_options == NULL) {
 			foreach ($old_keys as $key) {
 				$sql = "SELECT option_value,option_id FROM $wpdb->options WHERE option_name = 'kjgrc_$key'";
 				$old_value = $wpdb->get_row($sql,ARRAY_N); // $old_value[0] = old value, $old_value[1] = option id
-				if ($old_value[1] != NULL) { 
+				if ($old_value[1] != NULL) {
 					$kjgrc_options[$key] = $old_value[0];
 					delete_option("kjgrc_$key");
-				} 
+				}
 			}
 		}
 		// Whether it's a new installation or an introduction of new options: Fill in default values
@@ -699,10 +699,10 @@ function kjgrc_options_page ()
 ?>
 <?php
 	$function = $_POST['function'];
-	if (isset($_GET['updated']) && ($_GET['updated'] == 'true') && 
-		(!empty($_POST['max_comments'])) && 
-		(!empty($_POST['chars_per_comment'])) &&         
-		(!empty($_POST['chars_per_word'])) && 
+	if (isset($_GET['updated']) && ($_GET['updated'] == 'true') &&
+		(!empty($_POST['max_comments'])) &&
+		(!empty($_POST['chars_per_comment'])) &&
+		(!empty($_POST['chars_per_word'])) &&
 		(!empty($_POST['function'])) )
 		// todo: check new params
 	{
@@ -730,11 +730,11 @@ function kjgrc_options_page ()
 		}
 		if ($function == 'grc') {
 
-			if ($_POST['grc_exclude_blog_owner_checkbox'] == 'on') 
+			if ($_POST['grc_exclude_blog_owner_checkbox'] == 'on')
 				kjgrc_set_option('grc_exclude_blog_owner',1);
-			else 
+			else
 				kjgrc_set_option('grc_exclude_blog_owner',0);
-			if ($_POST['grc_exclude_blog_owner2_checkbox'] == 'on') 
+			if ($_POST['grc_exclude_blog_owner2_checkbox'] == 'on')
 				kjgrc_set_option('grc_exclude_blog_owner2',1);
 			else
 				kjgrc_set_option('grc_exclude_blog_owner2',0);
@@ -762,7 +762,7 @@ function kjgrc_options_page ()
 	}
 	if (isset($_GET['updated']) && ($_GET['updated'] == 'true'))
 	{
-	   	if ($function == 'exclude_cat') 
+	   	if ($function == 'exclude_cat')
         	{
 			if (count($_POST['exclude_category']) == 0) {
 				kjgrc_set_option('misc_exclude_cat','');
@@ -805,7 +805,7 @@ function kjgrc_options_page ()
 	}
 	kjgrc_subpage_header($kjgrc_subpage);
 	if ($kjgrc_subpage == 1) {
-		kjgrc_subpage_grc(); 
+		kjgrc_subpage_grc();
 	} elseif ($kjgrc_subpage == 2) {
 		kjgrc_subpage_grt();
 	} elseif ($kjgrc_subpage == 3) {
@@ -819,9 +819,9 @@ function kjgrc_options_page ()
 	}
 }
 
-function kjgrc_add_options_page() 
+function kjgrc_add_options_page()
 {
-	add_options_page('Get Recent Comments Plugin', 'Recent Comments', 8, 'get-recent-comments.php','kjgrc_options_page');
+	add_options_page('Get Recent Comments Plugin', 'Recent Comments', 'manage_options', 'get-recent-comments.php','kjgrc_options_page');
 }
 
 function kjgrc_get_exclude_cat ()
@@ -891,7 +891,7 @@ function kjgrc_prepare_cache($cache)
 		$start = strpos($cache,'<%time_since:',$last);
 	}
 	$newcache = $newcache . substr($cache,$last);
-	return $newcache;	
+	return $newcache;
 }
 
 function kjgrc_cache($type)
@@ -966,7 +966,7 @@ function kjgrc_create_recent_comments ($caller='')
 		$entries .
 		'</ul></div>' .
 		$after_widget;
-        } 
+        }
 	return $entries;
 }
 
@@ -1015,7 +1015,7 @@ function kjgrc_get_users_of_blog( $id = '' ) {
         global $wpdb, $blog_id;
         if ( empty($id) )
                 $id = (int) $blog_id;
-        $users = $wpdb->get_results( "SELECT user_id, user_login, display_name, user_email, meta_value FROM $wpdb->users, $wpdb->usermeta WHERE " . $wpdb->users . 
+        $users = $wpdb->get_results( "SELECT user_id, user_login, display_name, user_email, meta_value FROM $wpdb->users, $wpdb->usermeta WHERE " . $wpdb->users .
 ".ID = " . $wpdb->usermeta . ".user_id AND meta_key = '" . $wpdb->prefix . "capabilities' ORDER BY {$wpdb->usermeta}.user_id" );
         return $users;
 }
@@ -1036,7 +1036,7 @@ function kjgrc_is_wordpress_user($comment)
 	foreach ($kjgrc_wordpress_users as $user) {
 		if (strcasecmp($comment->comment_author_email,$user->user_email) == 0 ) {
 			if ( (strcasecmp($comment->comment_author,$user->user_login) == 0) ||
-			     (strcasecmp($comment->comment_author,$user->display_name) == 0) ) 
+			     (strcasecmp($comment->comment_author,$user->display_name) == 0) )
 			{
 				return TRUE;
 			}
@@ -1071,7 +1071,7 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 	//x// if (kjgrc_get_option("grc","show_trackbacks") == 1) {
 	//x// 	$sql_comment_type = '';
 	//x// }
-	
+
 	// grt
 	//// $max_comments = kjgrc_get_option("grt","max_comments");
 	//// $chars_per_comment = kjgrc_get_option("grt","chars_per_comment");
@@ -1086,12 +1086,12 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 	//// 	"AND ( comment_type = 'trackback' OR comment_type = 'pingback' ) ".
         ////         $sql_ignore_ip .
 	//// 	"ORDER BY comment_date DESC LIMIT $max_comments";
-	
+
 	$sql_ignore_ip = '';
 	$sql_exclude_owner = '';
 	$grouped_by_post = 0;
 	if ($requested_comment_type == 'grt')
-	{	
+	{
 		if (kjgrc_get_option("grt","ignore_ip") != '') {
 			$sql_ignore_ip = "AND comment_author_IP != '". kjgrc_get_option("grt","ignore_ip") ."' ";
 		}
@@ -1111,13 +1111,13 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 		}
 	}
 
-	while ($comments_number < $requested_number_of_comments) 
+	while ($comments_number < $requested_number_of_comments)
 	{
-		$query = "SELECT * from $wpdb->comments WHERE comment_approved= '1' AND " . 
+		$query = "SELECT * from $wpdb->comments WHERE comment_approved= '1' AND " .
 			 $sql_comment_type .
 			 $sql_exclude_owner .
 			 $sql_ignore_ip .
-			 "ORDER BY comment_date DESC LIMIT " . ($batch_number*$batch_size) . ",$batch_size"; 
+			 "ORDER BY comment_date DESC LIMIT " . ($batch_number*$batch_size) . ",$batch_size";
 		// echo "$query<br><br>";
 		$comments = $wpdb->get_results($query);
 		if (!$comments) {
@@ -1136,8 +1136,8 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 			$comma_separated = implode(",", array_keys($missing_post));
 			if (empty($wpdb->term_relationships)) {
 				$query = "SELECT * from $wpdb->posts JOIN $wpdb->post2cat ON ID = post_id WHERE ID IN ($comma_separated);";
-			} else { 
-				$query = "SELECT * from $wpdb->posts JOIN $wpdb->term_relationships ON ($wpdb->term_relationships.object_id=ID)  WHERE ID IN ($comma_separated);"; 
+			} else {
+				$query = "SELECT * from $wpdb->posts JOIN $wpdb->term_relationships ON ($wpdb->term_relationships.object_id=ID)  WHERE ID IN ($comma_separated);";
 			}
 			// echo "$query<br>";
 			$posts = $wpdb->get_results($query);
@@ -1148,7 +1148,7 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 					$cat_cache[$post->ID][$post->category_id] = 1;
 				} else {
 					$cat_cache[$post->ID][$post->term_taxonomy_id] = 1;
-				}	
+				}
 			}
 		}
 		// echo "-------<br>";
@@ -1157,26 +1157,26 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
         	// 2. post_status = 'publish' OR post_status = 'static'
 		// 3. post_password = ''
 		// 4. AND user_id = '0' -> in select
-		// 5. AND comment_author_IP != '1.2.3.4' -> in select	
+		// 5. AND comment_author_IP != '1.2.3.4' -> in select
 		// 6. "AND category_id  != '$cat'
     		// 7. limit_comments_per_post
 
-		foreach ($comments as $comment) 
+		foreach ($comments as $comment)
 		{
 			if ($post_cache[$comment->comment_post_ID]->post_status != 'publish' &&
-                            $post_cache[$comment->comment_post_ID]->post_status != 'static' ) 
-			{	
+                            $post_cache[$comment->comment_post_ID]->post_status != 'static' )
+			{
 				// echo "drop $comment->comment_ID (". $post_cache[$comment->comment_post_ID]->post_status .")<br>";
 				continue;
-			}	
+			}
 			if ($post_cache[$comment->comment_post_ID]->post_password != '') {
 				// echo "drop $comment->comment_ID (protected)<br>";
 				continue;
 			}
 			/* Optional additional check for wordpress users who are not logged in */
-			if ((kjgrc_get_option("grc","exclude_blog_owner") == 1) && 
-			    (kjgrc_get_option("grc","exclude_blog_owner2") == 1)	
-			   ) 
+			if ((kjgrc_get_option("grc","exclude_blog_owner") == 1) &&
+			    (kjgrc_get_option("grc","exclude_blog_owner2") == 1)
+			   )
 			{
 				if (kjgrc_is_wordpress_user($comment)) {
 					// echo "drop $comment->comment_ID (is_wordpress_user)<br>";
@@ -1196,7 +1196,7 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 							$is_in_excluded_cat = 0;
 						}
 						// echo "drop $comment->comment_ID (is in excluded cat $cat)<br>";
-						
+
 					}
 				}
 				if ($is_in_excluded_cat) {
@@ -1219,8 +1219,8 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 			}
 		}
 		$batch_number++;
-		
-	} 
+
+	}
         // comments are selected. now format them
 
 	if (!(strpos($format,"%gravatar") !== false))
@@ -1253,19 +1253,19 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 		} else {
 			$comment_excerpt = $comment->comment_content;
 		}
-		// comment_author, 
+		// comment_author,
 		$comment_type = "Comment";
-		if ($comment->comment_type == 'pingback') 
+		if ($comment->comment_type == 'pingback')
 		{
-			
+
 			$comment_type = "Pingback";
 			list($comment_author,$trackback_title) = kjgrc_parse_pingback($comment->comment_author);
-			if(strpos($comment_excerpt,'[...]') == 0) 
+			if(strpos($comment_excerpt,'[...]') == 0)
 				$comment_excerpt = trim(substr($comment_excerpt,5));
 			if(strpos($comment_excerpt,'[...]') == strlen($comment_excerpt)-5)
 				$comment_excerpt = trim(substr($comment_excerpt,0,strlen($comment_excerpt)-5));
 		}
-		elseif ($comment->comment_type == 'trackback') 
+		elseif ($comment->comment_type == 'trackback')
 		{
 			$comment_type = "Trackback";
 			$trackback_title = preg_replace("/^<strong>(.+?)<\/strong>.*/s","$1",$comment->comment_content);
@@ -1278,16 +1278,16 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 				$trackback_title = preg_replace("/\s{2,}/"," ",$trackback_title);
                         	$trackback_title = wordwrap($trackback_title,$chars_per_word,' ',1);
 			}
-										
+
 			$comment_excerpt = preg_replace("/^<strong>.+?<\/strong>/","",$comment->comment_content,1);
 			$comment_author = $comment->comment_author;
 		}
-		else 
+		else
 		{
 			$comment_author = $comment->comment_author;
 			if (!$comment_author)
 				$comment_author = "Anonymous";
-		}	
+		}
 		$comment_excerpt = strip_tags(wptexturize($comment_excerpt));
 
 		$comment_excerpt = preg_replace("/[\n\t\r]/"," ",$comment_excerpt); // whitespace into 1 blank
@@ -1321,18 +1321,18 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 		$comment_date = mysql2date(get_settings('date_format'),$comment->comment_date);
 		$comment_time = mysql2date(get_settings('time_format'),$comment->comment_date); // Thanks to Keith
 
-		if ($has_gravatar && $comment_author != '') 
+		if ($has_gravatar && $comment_author != '')
 		{
 			if ($md5_cache && array_key_exists($comment->comment_author,$md5_cache)) {
 				$gravatar_md5 = $md5_cache[$comment->comment_author];
 			} else {
 				$gravatar_md5 = md5(strtolower($comment->comment_author_email));
-				$md5_cache[$comment->comment_author_email] = $gravatar_md5; 
+				$md5_cache[$comment->comment_author_email] = $gravatar_md5;
 			}
 			$comment_gravatar_url = "http://www.gravatar.com/avatar.php?" .
 				"gravatar_id=$gravatar_md5" .
 				$gravatar_options;
-				
+
 			$comment_gravatar = "<img src=\"" . $comment_gravatar_url .
 				"\" alt=\"\" width=\"$gravatar_size\" height=\"$gravatar_size\" class=\"kjgrcGravatar\" />";
 		}
@@ -1368,11 +1368,11 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 		$output = str_replace("%author_url_href", $author_url_href,  $output);
 		$output = str_replace("%author_url",      $author_url,       $output);
 		$output = str_replace("%userid",  	  $comment->user_id, $output);
-		
+
 		$output = str_replace("%gravatar_url",    $comment_gravatar_url, $output);
 		$output = str_replace("%gravatar",        $comment_gravatar, $output);
 
-		// function author_image_path($authorID, $display = true, $type = 'url') 
+		// function author_image_path($authorID, $display = true, $type = 'url')
 		if (function_exists("author_image_path")) {
 			$profile_pict = author_image_path($comment->user_id,false,'url');
 			$output = str_replace("%profile_picture",  $profile_pict,   $output);
@@ -1384,11 +1384,11 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 		$output = str_replace("%comment_date",    $comment_date,     $output);
 		$output = str_replace("%comment_time",    $comment_time,     $output);
 
-		
+
 		//$output = str_replace("%time_since",    'time_since_' . $comment->unixdate . ' - ' . gmdate('U') .' = '. ($comment->unixdate-gmdate('U')),    $output);
 		$utc_time = kjgrc_utc2unixtime($comment->comment_date_gmt); //2006-12-30 17:05:59
 		$output = str_replace("%time_since",    "<%time_since:$utc_time>",    $output);
-		
+
 		$output = str_replace("%comment_type",    $comment_type,     $output);
 		$output = str_replace("%post_title",      $post_title,       $output);
 		$output = str_replace("%post_link",       $post_link,        $output);
@@ -1401,7 +1401,7 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 		$visible = strip_tags($output);
 		if (strpos($visible,'%comment_excerpt') !== false) {
 			$comment_excerpt = kjgrc_excerpt($comment_excerpt,$chars_per_comment,$chars_per_word,'%comment_excerpt',$output);
-		} 
+		}
 		elseif (strpos($visible,'%trackback_title') !== false) {
 			$trackback_title = kjgrc_excerpt($trackback_title,$chars_per_comment,$chars_per_word,'%trackback_title',$output);
 		}
@@ -1410,7 +1410,7 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 		if (kjgrc_get_option("misc","convert_smileys")) {
 			if (function_exists("csm_convert") ) {
 				$comment_excerpt = csm_convert($comment_excerpt);
-			} 
+			}
 			else {
 				if (get_settings('use_smilies')) {
 					$comment_excerpt = convert_smilies($comment_excerpt);
@@ -1419,7 +1419,7 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 		}
 
 		$trackback_title = kjgrc_excerpt($trackback_title,$chars_per_comment,$chars_per_word,'%trackback_title',$output);
-		
+
 		$output = str_replace("%comment_excerpt", $comment_excerpt, $output);
 		$output = str_replace("%trackback_title", $trackback_title, $output);
 		// Replacement done
@@ -1429,7 +1429,7 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 		// . " (" . time_since(strtotime($comment->comment_date_gmt." GMT")) ." ago)";
 		// *** Das aber nur bei recent comments, nicht bei trackbacks!
 		// if (kjgrc_get_option("grc","limit_comments_per_post") == 1) {
-		// 	if (count($comment_list[$comment->comment_post_ID]) < kjgrc_get_option("grc","comments_per_post")) { 
+		// 	if (count($comment_list[$comment->comment_post_ID]) < kjgrc_get_option("grc","comments_per_post")) {
 		// 		$comment_list[$comment->comment_post_ID][] = $output;
 		// 	}
 		// } else {
@@ -1447,22 +1447,22 @@ function kjgrc_get_comments2 ($requested_comment_type,$caller)
 		}
 
 		$all_entries .= "\t$output\n";
-		if ($caller == 'grc_sample' || $caller ==  'grt_sample') 
+		if ($caller == 'grc_sample' || $caller ==  'grt_sample')
 			break;
 	} // foreach comments
 
 	if ($grouped_by_post == 1)
-	{	
+	{
 		$all_entries = '';
 		foreach (array_keys($post_list) as $post_id) {
 			$all_entries .= $post_list[$post_id] . "\n";
 			foreach ($comment_list[$post_id] as $tmp) {
 				$all_entries .= $tmp ."\n";
-			} 
+			}
 			$all_entries .= kjgrc_get_option("grc","grouped_by_post_b") ."\n";
 		}
 	}
-		
+
 	return $all_entries;
 }
 
@@ -1489,7 +1489,7 @@ function kjgrc_format_seconds($seconds)
 	$d = floor($seconds / (24 * 3600));
 	if ($d == 1) $d_str = "day";
 	$seconds = $seconds - ($d * 24 * 3600);
-	
+
 	$h = floor($seconds / 3600);
 	if ($h == 1) $h_str = "hour";
 	$seconds = $seconds - ($h * 3600);
@@ -1497,10 +1497,10 @@ function kjgrc_format_seconds($seconds)
 	$m = floor($seconds / 60);
 	if ($m == 1) $m_str = "minute";
 	$seconds = $seconds - ($m * 60);
-	
+
 	$s = $seconds;
 	if ($s == 1) $s_str = "second";
-	
+
 	if ($d > 0) return "$d $d_str $h $h_str";
 	if ($h > 0) return "$h $h_str $m $m_str";
 	if ($m > 0) return "$m $m_str $s $s_str";
@@ -1517,7 +1517,7 @@ function kjgrc_excerpt ($text,$chars_per_comment,$chars_per_word,$tag,$output)
 	$length = $chars_per_comment - $length;
 	$length = $length -2; // we will add three dots at the end
 	if ($length < 0) $length = 0;
-	if (function_exists('mb_strlen') && function_exists('mb_substr') && function_exists('mb_strrpos')) 
+	if (function_exists('mb_strlen') && function_exists('mb_substr') && function_exists('mb_strrpos'))
 	{
 		if (mb_strlen($text) > $length) {
 			$text = mb_substr($text,0,$length);
@@ -1528,10 +1528,10 @@ function kjgrc_excerpt ($text,$chars_per_comment,$chars_per_word,$tag,$output)
         	        if ((mb_strlen($text) - @mb_strrpos($text,' ')) > $chars_per_word-2)
 			{
         	                $text = mb_substr($text,0,mb_strlen($text)-3);
-        	        } 
+        	        }
 			$text = $text . "...";
 		}
-	} else 
+	} else
 	{
 		if (strlen($text) > $length) {
                 	$text = substr($text,0,$length);
@@ -1539,7 +1539,7 @@ function kjgrc_excerpt ($text,$chars_per_comment,$chars_per_word,$tag,$output)
                 	// last word exceeds max word length:
                 	if ((strlen($text) - strrpos($text,' ')) > $chars_per_word) {
                         	$text = substr($text,0,strlen($text)-3);
-                	} 
+                	}
                 	$text = $text . "...";
         	}
 
@@ -1569,8 +1569,8 @@ function widget_kj_get_recent_comments_init() {
 		echo '<input type="hidden" id="get_recent_comments-submit" name="get_recent_comments-submit" value="1" />';
 		echo 'More options are on the <a href="options-general.php?page=get-recent-comments.php&amp;subpage=1">plugin page</a>.';
 	}
-	register_sidebar_widget('Get Recent Comments', 'widget_get_recent_comments');
-	register_widget_control('Get Recent Comments', 'widget_get_recent_comments_control', 300, 100);
+	wp_register_sidebar_widget('get_recent_comments_widget', 'Get Recent Comments', 'widget_get_recent_comments');
+	wp_register_widget_control('get_recent_comments_widget', 'Get Recent Comments', 'widget_get_recent_comments_control', 300, 100);
 }
 
 function widget_kj_get_recent_trackbacks_init() {
@@ -1594,9 +1594,9 @@ function widget_kj_get_recent_trackbacks_init() {
 		echo '<input type="hidden" id="get_recent_trackbacks-submit" name="get_recent_trackbacks-submit" value="1" />';
 		echo 'More options are on the <a href="options-general.php?page=get-recent-comments.php&amp;subpage=2">plugin page</a>.';
 	}
-	
-	register_sidebar_widget('Get Recent Trackbacks', 'widget_get_recent_trackbacks');
-	register_widget_control('Get Recent Trackbacks', 'widget_get_recent_trackbacks_control', 300, 100);
+
+	wp_register_sidebar_widget('get_recent_trackbacks_widget', 'Get Recent Trackbacks', 'widget_get_recent_trackbacks');
+	wp_register_widget_control('get_recent_trackbacks_widget', 'Get Recent Trackbacks', 'widget_get_recent_trackbacks_control', 300, 100);
 }
 
 add_action('admin_menu', 'kjgrc_add_options_page');

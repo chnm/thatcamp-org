@@ -11,6 +11,18 @@
  */
 
 /**
+ * Fallback logic for "current" group
+ */
+function thatcamp_fallback_group( $group_id ) {
+	if ( ! intval( $group_id ) ) {
+		if ( $group_id = bp_get_group_id() ) {}
+		else if ( $group_id = bp_get_current_group_id() ) {}
+	}
+
+	return (int) $group_id;
+}
+
+/**
  * On blog creation, create a new group
  */
 function thatcamp_create_group_for_new_blog( $blog_id  ) {
@@ -66,7 +78,7 @@ add_action( 'add_user_to_blog', 'thatcamp_add_user_to_group', 10, 3 );
  * Get a blog's group_id
  *
  * @param int $blog_id
- * @return int|bool Returns a blog id if one is found; otherwise returns false
+ * @return int|bool Returns a group id if one is found; otherwise returns false
  */
 function thatcamp_get_blog_group( $blog_id = 0 ) {
 	global $wpdb, $bp;
@@ -75,6 +87,22 @@ function thatcamp_get_blog_group( $blog_id = 0 ) {
 
 	$retval = $group_id ? (int) $group_id : false;
 	return $retval;
+}
+
+/**
+ * Get a group's blog_id
+ *
+ * @param int $group_id
+ * @return int|bool Returns a group id if one is found; otherwise returns false
+ */
+function thatcamp_get_group_blog( $group_id = 0 ) {
+	$blog_id = groups_get_groupmeta( $group_id, 'blog_id' );
+
+	if ( $blog_id ) {
+		return (int) $blog_id;
+	} else {
+		return false;
+	}
 }
 
 /**
@@ -121,6 +149,80 @@ function thatcamp_convert_caps_to_group_role( $caps ) {
 
 	return $role;
 }
+
+////////////////////////
+// TEMPLATE FUNCTIONS //
+////////////////////////
+
+/**
+ * Echoes the permalink of a THATCamp
+ *
+ * Used within the groups loop, and returns a link to the group's blog
+ *
+ * Use this instead of bp_group_permalink()
+ */
+function thatcamp_camp_permalink() {
+	echo thatcamp_get_camp_permalink();
+}
+	function thatcamp_get_camp_permalink() {
+		$blog_id = thatcamp_get_group_blog( bp_get_group_id() );
+		return get_blog_option( $blog_id, 'siteurl' );
+	}
+
+/**
+ * Echoes the THATCamp's date
+ *
+ * Used within the groups loop
+ */
+function thatcamp_camp_date( $group_id = 0, $format = '' ) {
+	echo thatcamp_get_camp_date( $group_id, $format );
+}
+	function thatcamp_get_camp_date( $group_id = 0, $format = '' ) {
+		$group_id = thatcamp_fallback_group( $group_id );
+
+		$date = groups_get_groupmeta( $group_id, 'thatcamp_date' );
+
+		if ( ! $date ) {
+			return '';
+		}
+
+		$formats = array( 'text', 'mmddyy' );
+		if ( ! in_array( $format, $formats ) ) {
+			$format = 'text';
+		}
+
+		switch ( $format ) {
+			case 'text' :
+				$date_format = "F j, Y";
+				break;
+
+			case 'mmddyy' :
+				$date_format = "m/d/Y";
+				break;
+		}
+
+		return date( $date_format, $date );
+	}
+
+/**
+ * Does this THATCamp have workshops?
+ *
+ * @return string 'yes', 'maybe', 'no'
+ */
+function thatcamp_camp_has_workshops( $group_id = 0 ) {
+	echo thatcamp_get_camp_has_workshops( $group_id );
+}
+	function thatcamp_get_camp_has_workshops( $group_id = 0 ) {
+		$group_id = thatcamp_fallback_group( $group_id );
+
+		$values = array( 'yes', 'maybe', 'no' );
+		$value  = groups_get_groupmeta( $group_id, 'thatcamp_has_workshops' );
+		if ( ! in_array( $value, $values ) ) {
+			$value = 'no';
+		}
+
+		return $value;
+	}
 
 /**************************************************
  * MIGRATION
@@ -195,3 +297,4 @@ function thatcamp_group_blog_member_sync( $blog_id = 0 ) {
 		thatcamp_add_member_to_group( $user->ID, $group_id, $role );
 	}
 }
+

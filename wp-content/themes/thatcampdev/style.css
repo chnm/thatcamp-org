@@ -6,7 +6,7 @@ Theme URI:www.thatcamp.info
 Description:ThatCamp Dev Theme
 Author:Tammie Lister
 Author URI:www.thelogicalbinary.com
-Tags:fixed-width
+Tags:fixed-width, buddypress
 License:GNU General Public License,v2 (or newer)
 License URI:http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
@@ -2777,13 +2777,13 @@ body.register div.page ul {
   /* Styles */
 }
 @media only screen and (min-width: 768px) {
-  
+
 }
 @media only screen and (min-width: 992px) {
-  
+
 }
 @media only screen and (min-width: 1382px) {
-  
+
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   /* Styles */

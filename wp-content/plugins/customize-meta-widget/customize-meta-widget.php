@@ -13,12 +13,12 @@ Author URI: http://jehy.en.html
 */
 function replace_meta_widget()
 {
-unregister_sidebar_widget ('meta');
+wp_unregister_sidebar_widget ('meta');
 $widget_ops = array('classname' => 'widget_meta', 'description' => __( "Log in/out, admin, feed and WordPress links") );
 wp_register_sidebar_widget('meta', __('Meta'), 'wp_widget_meta_modified', $widget_ops);
 }
 
-add_action('widgets_init',replace_meta_widget);
+add_action('widgets_init','replace_meta_widget');
 
 function wp_widget_meta_modified($args) {
 	extract($args);
@@ -37,7 +37,7 @@ function wp_widget_meta_modified($args) {
 			</ul>
 		<?php
 #WIDGET ENDS HERE.
-echo $after_widget; 
+echo $after_widget;
 
 }
 ?>

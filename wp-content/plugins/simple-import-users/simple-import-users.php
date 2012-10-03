@@ -19,7 +19,7 @@ add_action( 'bp_init', 'ddiu_init_bp' );
 
 function ddiu2_add_management_pages() {
 	if (function_exists('add_management_page')) {
-		add_management_page('Import Users', 'Import Users', 8, __FILE__, 'ddiu2_management_page');
+		add_management_page('Import Users', 'Import Users', 'manage_options', __FILE__, 'ddiu2_management_page');
 	}
 }
 
@@ -54,7 +54,7 @@ function ddiu2_management_page() {
 			'content_new' => $_POST['email-content-new'],
 			'content_added' => $_POST['email-content-all']
 		);
-		
+
 		update_option( 'ddui_email_defaults', $new_defaults );
 
 		?><div id="message" class="updated fade"><p><strong><?php
@@ -80,7 +80,7 @@ function ddiu2_management_page() {
 		else{
 			$result .= "<p>No names entered in field.</p>";
 		}
-		
+
 		if ($_FILES['ddui_file']['error'] != UPLOAD_ERR_NO_FILE){#Earlier versions of PHP may use $HTTP_POST_FILES
 			$file = $_FILES['ddui_file'];
 			if($file['error']){
@@ -119,7 +119,7 @@ function ddiu2_management_page() {
 				if (! (list($u_e )  = @split($delimiter, $ut, 6))){
 					$result .= "<p>Regex ".$delimiter." not valid.</p>";
 				}
-				
+
 				$u_e = trim($u_e);
 
 				$u_data[$i]['email'] = $u_e;
@@ -128,7 +128,7 @@ function ddiu2_management_page() {
 			}
 
 		}
-		
+
 		// process each user
 
 		$errors = array();
@@ -160,7 +160,7 @@ function ddiu2_management_page() {
 			ddiu2_save_import( $results );
 			echo '<div style="border: 1px solid #000000; padding: 10px;">';
 			echo '<h4>Results</h4>';
-			
+
 			$has_errors = false;
 			$has_new = false;
 			$has_added = false;
@@ -172,9 +172,9 @@ function ddiu2_management_page() {
 					$has_new = true;
 				if ( $r['added_success'] )
 					$has_added = true;
-			}			
-	
-			
+			}
+
+
 		?>
 			<?php if ( $has_new ) : ?>
 			<p><strong>The following new users have been created:</strong>
@@ -186,8 +186,8 @@ function ddiu2_management_page() {
 				<?php endforeach; ?>
 			</ol>
 			<?php endif; ?>
-		
-			
+
+
 			<?php if ( $has_added ) : ?>
 			<p><strong>The following users were added to the blog:</strong>
 			<ol>
@@ -198,7 +198,7 @@ function ddiu2_management_page() {
 				<?php endforeach; ?>
 			</ol>
 			<?php endif; ?>
-			
+
 			<?php if ( $has_errors ) : ?>
 			<div style="border: 2px solid #f00; padding: 5px;">
 			<p><strong>These users could not be processed.</strong>
@@ -212,12 +212,12 @@ function ddiu2_management_page() {
 			<p><em>Data for these users has been placed back in the User Data box below. Please reconcile and errors and try submitting again.</em></p>
 			</div>
 			<?php endif; ?>
-		
+
 		<?php
 
-			
-			
-			
+
+
+
 			echo '</div>';
 		}
 	?>
@@ -236,8 +236,8 @@ function ddiu2_management_page() {
 					$retry_text .= implode( $del, $result['ud'] ) . "\n";
 				}
 			}
-		}	
-	
+		}
+
 		$blog_name = get_bloginfo( 'name' );
 		$blog_url = site_url();
 		$admin_url = admin_url();
@@ -251,35 +251,35 @@ Username: [USERNAME]
 Password: [PASSWORD]
 
 ', $blog_name ) ),
-				'content_added' => sprintf( 'You have been added as a user on the blog %s at %s. 
+				'content_added' => sprintf( 'You have been added as a user on the blog %s at %s.
 
 Log into %s at %s', $blog_name, $blog_url, $blog_name, $admin_url )
-			
-			);		
+
+			);
 		}
-	
+
 	?>
-	
-		
+
+
 
 
 	<div style="padding: 0 0 15px 12px;">
 
 		<input type="hidden" name="delimiter" value="[|]" />
-		
+
 		<?php $formatinfo = '<p><strong>The data you enter MUST be in the following format:</strong><br />
 			&nbsp;&nbsp;&nbsp;email<br />
 			&nbsp;&nbsp;&nbsp;email<br />
 			&nbsp;&nbsp;&nbsp;etc...<br />
 		</p>';
 ?>
-		
+
 		<h3>User Data</h3>
 		<?php echo $formatinfo; ?>
 		<br />
 		<textarea name="ddui_data" cols="100" rows="12"><?php echo $retry_text ?></textarea>
 		<br />
-		
+
 		<div style="margin: 6px 0 0 0;">
 		<br /><b>Role for these users:</b>
 		<select name="ddui_role">
@@ -291,22 +291,22 @@ Log into %s at %s', $blog_name, $blog_url, $blog_name, $admin_url )
 					echo '<option value="'.$role.'" selected="selected">'.$roleName.'</option>';
 				else
 					echo '<option value="'.$role.'">'.$roleName.'</option>';
-			
+
 			}
 		?>
 		</select>
 		</div>
-		
+
 		<h3>Email content</h3>
-		
+
 		<p>You can edit the content of the email, but be sure to include the important bracketed information (like <strong>[USERNAME]</strong>), which will ensure that each member gets his or her personalized login information.</p>
-		
+
 		<label for="email-subject-new">Subject (sent to <strong>new</strong> accounts)</label><br />
 		<input name="email-subject-new" type="text" size="100" value="<?php echo $email_defaults['subject_new'] ?>" /><br /><br />
 		<label for="email-subject-existing">Subject (sent to <strong>existing</strong> accounts)</label><br />
 		<input name="email-subject-existing" type="text" size="100" value="<?php echo $email_defaults['subject_existing'] ?>" /><br /><br />
-		
-		
+
+
 		<label for="email-content-new">Content (sent to <strong>new</strong> accounts)</label><br />
 		<textarea name="email-content-new" cols="75" rows="6"><?php echo $email_defaults['content_new'] ?></textarea><br /><br />
 		<label for="email-content-all">Content (sent to <strong>all</strong> accounts)</label><br />
@@ -326,34 +326,34 @@ function ddiu2_process_user( $ud ) {
 
 	// Look up existing users by email and by name
 	$user_by_email = get_user_by_email( $ud['email'] );
-	
+
 	if ( !$user_by_email->ID ) {
 		// This is a new user and must be created
 		$return = ddiu2_add_new_user( $ud );
-		
+
 	} else {
 		// Add existing user
 		$ud['username'] = $user_by_email->user_login;
 		$return = ddiu2_add_existing_user( $user_by_email->ID, $ud, false );
 	}
-	
+
 	$return['ud'] = $ud;
 
 	return $return;
 }
 
 function ddiu2_add_new_user( $user ) {
-	
+
 	// generate passwords if none were provided in the import
 	if ($user['password'] == '') {
 		$user['password'] = substr(md5(uniqid(microtime())), 0, 7);
 	} else {
 		$password = $user['password'];
 	}
-	
+
 	$uarray = split( '@', $user['email'] );
 	$user['username'] = sanitize_user( $uarray[0] );
-	
+
 	$args = array(
 		"user_login" => $user['username'],
 		"user_pass" => $user['password'],
@@ -369,30 +369,30 @@ function ddiu2_add_new_user( $user ) {
 	} else {
 		$message = 'Username <strong>' . $user['username'] . '</strong> was successfully created.';
 		$return = array( 'create_success' => $message );
-		
+
 		$mailinfo = $args;
-		
+
 		$added = ddiu2_add_existing_user( $user_id, $user, $mailinfo );
-		
+
 		if ( isset( $added['added_success'] ) )
 			$return['added_success'] = $added['added_success'];
 		else
 			$return['added_error'] = 'Could not be added';
 	}
-	
+
 	return $return;
 }
 
 
 function ddiu2_add_existing_user( $user_id, $ud, $mailinfo = false ) {
 	global $current_blog, $the_role;
-	
+
 	// set role
 	if ( $ud['role'] )
 		$role = $ud['role'];
 	else
 		$role = $the_role;
-	
+
 	add_user_to_blog( $current_blog->blog_id, $user_id, $role );
 
 	// Send the welcome mail
@@ -403,40 +403,40 @@ function ddiu2_add_existing_user( $user_id, $ud, $mailinfo = false ) {
 	// The subject of emails to newly created accounts
 	$new_account_subject = $_POST['email-subject-new'];
 	// The subject of emails to existing members who've been added to the blog
-	$newly_added_subject = $_POST['email-subject-existing']; 
-	
+	$newly_added_subject = $_POST['email-subject-existing'];
+
 	$subject = ( $mailinfo ) ? $new_account_subject : $newly_added_subject;
 
 	// The content of the mail
-	
+
 	$mail_message = '';
-	
+
 	// Newly created users get the following text at the top of their email
 	if ( $mailinfo ) {
 		$raw_mail_message = $_POST['email-content-new'];
-		
+
 		$search = array(
 			'[USERNAME]',
 			'[PASSWORD]'
 		);
-		
+
 		$replace = array(
 			$ud['username'],
 			$ud['password'],
 		);
-		
+
 		$mail_message .= str_replace( $search, $replace, $raw_mail_message );;
 
 		$mail_message = apply_filters( 'ddiu_bp_filter', $mail_message, $user_id );
-	}	
-	
+	}
+
 	// Both existing and newly created users get the following
 	$newly_added_message = $_POST['email-content-all'];
-	
+
 	$mail_message .= $newly_added_message;
 
 	$to = $ud['email'];
-	
+
 	wp_mail( $to, $subject, $mail_message );
 
 	$message = 'Username <strong>' . $ud['username'] . '</strong> has been added successfully to the blog';
@@ -448,11 +448,11 @@ function ddiu2_save_import( $results ) {
 		add_option( 'ddiu2_imports', '', 'Previously imported users', 'no' );
 		$imports = array();
 	}
-	
+
 	$time = time();
-	
+
 	$imports[$time] = $results;
-	
+
 	update_option( 'ddiu2_imports', $imports );
 }
 
