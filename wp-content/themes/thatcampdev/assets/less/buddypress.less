@@ -75,7 +75,6 @@ body.activity-permalink ul.activity-list li.has-comments {
 	padding-bottom: 0;
 }
 .activity-list li.mini {
-	.font-size-rems(11);
 	min-height: 35px;
 	padding: 15px 0 0 0;
 	position: relative;
@@ -97,6 +96,7 @@ body.activity-permalink .activity-list > li:first-child {
 }
 .activity-list li .activity-content {
 	position: relative;
+	color: #999;
 }
 .activity-list li.mini .activity-content p {
 	margin: 0;
@@ -130,7 +130,6 @@ body.activity-permalink li.mini .activity-meta {
 }
 .activity-list .activity-content {
 	margin-left: 70px;
-	margin-bottom: 15px;
 }
 body.activity-permalink .activity-list li .activity-content {
 	background: #fff;
@@ -151,11 +150,11 @@ body.activity-permalink .activity-list li .activity-header > p {
 }
 .activity-list .activity-content .activity-header,
 .activity-list .activity-content .comment-header {
-	.font-size-rems(11);
 	line-height: 220%;
 }
 .activity-header {
 	margin-right: 20px;
+	color: #333;
 }
 .activity-header a,
 .comment-meta a,
@@ -165,6 +164,13 @@ body.activity-permalink .activity-list li .activity-header > p {
 .activity-list .activity-content .activity-header img.avatar {
 	float: none !important;
 	margin: 0 5px 0 0;
+}
+.activity-list p{
+	padding: 0;
+	margin: 0;
+}
+ul.item-list.activity-list li:hover{
+	background: #f3efe7;
 }
 a.bp-secondary-action,
 span.highlight {
@@ -223,9 +229,6 @@ body.activity-permalink .activity-content blockquote {
 /*--------------------------------------------------------------
 6.1.2 - Activity Comments
 --------------------------------------------------------------*/
-div.activity-meta {
-	margin: 18px 0;
-}
 body.activity-permalink div.activity-meta {
 	margin-bottom: 6px;
 }

@@ -591,7 +591,9 @@ img {
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
-.twitter-item img {
+.twitter-item img,
+.post-meta-author img,
+.comment-author img {
   float: left;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -756,6 +758,12 @@ a:visited.button,
 a:link.button,
 a:hover.button {
   color: #fff;
+}
+.activity-list a.button,
+.activity-list a:visited.button,
+.activity-list a:link.button,
+.activity-list a:hover.button {
+  color: #333;
 }
 .campbutton {
   background: url('assets/images/thatcamp-greenbutton.jpg');
@@ -977,8 +985,8 @@ select.mobileMenu {
 }
 #comments article {
   zoom: 1;
-  margin: 20px 0 50px 0;
-  margin: 2rem 0 5rem 0;
+  margin: 20px 0 20px 0;
+  margin: 2rem 0 2rem 0;
 }
 #comments article:before,
 #comments article:after {
@@ -1061,8 +1069,9 @@ select.mobileMenu {
 #comments ol.commentlist li.comment-pingback {
   clear: left;
   list-style: none;
-  margin-bottom: 40px;
-  margin-bottom: 4rem;
+  margin-bottom: 10px;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed #333;
 }
 #comments ol.commentlist ul.children li {
   margin-bottom: 0;
@@ -1138,32 +1147,15 @@ a.comment-reply-link {
 #comment-nav-above {
   clear: both;
 }
-li article {
-  padding: 0 0 0 20px;
-  padding: 0 0 0 2rem;
-}
 .comment-meta,
 .comment-body {
-  float: right;
-  width: 82%;
+  margin: 0 0 0 100px;
 }
 .comment-reply {
   margin: 10px 0 0 0;
   margin: 1rem 0 0 0;
 }
-.comment-reply,
-.comment-edit {
-  float: left;
-  width: 16%;
-  clear: both;
-}
-.post-meta i {
-  margin: 0 10px 0 0;
-  margin: 0 1rem 0 0;
-}
 #comment-title {
-  float: right;
-  width: 80%;
   margin: 10px 0 20px 0p
 	margin: 1rem 0 2rem 0;
 }
@@ -1240,9 +1232,14 @@ dd.wp-caption p.wp-caption-text,
   padding: 0 0 2rem 0;
   border-bottom: 1px dashed #ccc;
 }
-.pageentry .post-header {
-  float: none;
-  width: 100%;
+.post-header {
+  border-bottom: 1px dashed #ccc;
+  padding: 0 0 20px 0;
+  padding: 0 0 2rem 0;
+}
+#latest-posts .post-header {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 .post-meta .edit-link {
   margin: 0;
@@ -1269,13 +1266,17 @@ dd.wp-caption p.wp-caption-text,
   text-align: right;
   padding: 0 2rem 0 0;
 }
-.post-meta {
+#latest-posts .post-meta {
   border-left: 1px solid #ccc;
   padding: 0 0 0 3%;
   margin: 0 0 0 23%;
+  background: none;
 }
 .meta-date {
   color: #888;
+}
+.post-right {
+  margin: 0 0 0 100px;
 }
 /*--------------------------------------------------------------
 4.4 - Widgets
@@ -1425,8 +1426,6 @@ body.activity-permalink ul.activity-list li.has-comments {
   padding-bottom: 0;
 }
 .activity-list li.mini {
-  font-size: 11px;
-  font-size: 1.1rem;
   min-height: 35px;
   padding: 15px 0 0 0;
   position: relative;
@@ -1448,6 +1447,7 @@ body.activity-permalink .activity-list > li:first-child {
 }
 .activity-list li .activity-content {
   position: relative;
+  color: #999;
 }
 .activity-list li.mini .activity-content p {
   margin: 0;
@@ -1483,7 +1483,6 @@ body.activity-permalink li.mini .activity-meta {
 }
 .activity-list .activity-content {
   margin-left: 70px;
-  margin-bottom: 15px;
 }
 body.activity-permalink .activity-list li .activity-content {
   background: #fff;
@@ -1505,12 +1504,11 @@ body.activity-permalink .activity-list li .activity-header > p {
 }
 .activity-list .activity-content .activity-header,
 .activity-list .activity-content .comment-header {
-  font-size: 11px;
-  font-size: 1.1rem;
   line-height: 220%;
 }
 .activity-header {
   margin-right: 20px;
+  color: #333;
 }
 .activity-header a,
 .comment-meta a,
@@ -1520,6 +1518,13 @@ body.activity-permalink .activity-list li .activity-header > p {
 .activity-list .activity-content .activity-header img.avatar {
   float: none !important;
   margin: 0 5px 0 0;
+}
+.activity-list p {
+  padding: 0;
+  margin: 0;
+}
+ul.item-list.activity-list li:hover {
+  background: #f3efe7;
 }
 a.bp-secondary-action,
 span.highlight {
@@ -1576,9 +1581,6 @@ body.activity-permalink .activity-content blockquote {
 /*--------------------------------------------------------------
 6.1.2 - Activity Comments
 --------------------------------------------------------------*/
-div.activity-meta {
-  margin: 18px 0;
-}
 body.activity-permalink div.activity-meta {
   margin-bottom: 6px;
 }

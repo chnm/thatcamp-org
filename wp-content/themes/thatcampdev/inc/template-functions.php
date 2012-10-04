@@ -52,8 +52,7 @@ function thatcamp_comment( $comment, $args, $depth ) {
 	
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 		<article id="comment-<?php comment_ID(); ?>">
-			<footer class="comment-meta">
-				<div class="comment-author vcard">
+			<div class="comment-author vcard">
 					<?php
 					// this needs deciding if want smaller / works even with smaller
 						$avatar_size = 64;
@@ -65,8 +64,9 @@ function thatcamp_comment( $comment, $args, $depth ) {
 					<?php else : ?>
 						<?php echo get_avatar( $comment, $avatar_size ); ?>
 					<?php endif; ?>
-					<?php printf( __( '%s <span class="says">says:</span>', '_s' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
-				</div>
+			</div>
+			<footer class="comment-meta">
+						<?php printf( __( '%s <span class="says">says:</span>', '_s' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
 						<?php if ( current_user_can( 'edit_comment', $comment->comment_ID ) ) : ?>
 						<div class="comment-edit">
 							<?php edit_comment_link( __( 'Edit', 'thatcamp' ), '<span class="edit-link">', '</span>' ); ?>
@@ -77,8 +77,6 @@ function thatcamp_comment( $comment, $args, $depth ) {
 					<?php
 						printf( __( '%1$s at %2$s', '_s' ), get_comment_date(), get_comment_time() ); ?>
 					</time></a>
-					<?php edit_comment_link( __( '(Edit)', '_s' ), ' ' );
-					?>
 					</div>	
 				<?php if ( $comment->comment_approved == '0' ) : ?>
 					<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'thatcamp' ); ?></em>

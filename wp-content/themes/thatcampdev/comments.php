@@ -10,10 +10,10 @@ if ( post_password_required() )
 ?>
 <div id="comments">
 <?php if ( have_comments() ) : ?>
-	<h2 id="comment-title"><?php
+	<!--<h2 id="comment-title"><?php
 	printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'thatcamp'),
 	number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
-	?></h2>
+	?></h2>-->
 	<?php do_action( 'bp_before_blog_comment_list' ); ?>
 	<ol class="commentlist">
 		<?php wp_list_comments( array( 'callback' => 'thatcamp_comment', 'type' => 'comment') );?>

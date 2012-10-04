@@ -11,8 +11,8 @@
 
 	article {
 		zoom: 1;
-		margin: 20px 0 50px 0;
-		margin: 2rem 0 5rem 0;
+		margin: 20px 0 20px 0;
+		margin: 2rem 0 2rem 0;
 
 		&:before,&:after {
 			display: table;
@@ -96,8 +96,9 @@
 		li.comment,li.comment-pingback {
 			clear: left;
 			list-style: none;
-			margin-bottom: 40px;
-			margin-bottom: 4rem;
+			margin-bottom: 10px;
+			margin-bottom: 1rem;
+			border-bottom: 1px dashed #333;
 		}
 		ul.children li {
 			margin-bottom: 0;
@@ -175,30 +176,16 @@ a.comment-reply-link {
 #comment-nav-above {
 	clear: both;
 }
-li article {
-	padding: 0 0 0 20px;
-	padding: 0 0 0 2rem;
-}
 .comment-meta,.comment-body {
-	float: right;
-	width: 82%;
+	margin: 0 0 0 100px;
 }
 .comment-reply {
 	margin: 10px 0 0 0;
 	margin: 1rem 0 0 0;
 }
 .comment-reply,.comment-edit {
-	float: left;
-	width: 16%;
-	clear: both;
-}
-.post-meta i {
-	margin: 0 10px 0 0;
-	margin: 0 1rem 0 0;
 }
 #comment-title {
-	float: right;
-	width: 80%;
 	margin: 10px 0 20px 0p
 	margin: 1rem 0 2rem 0;
 
@@ -281,9 +268,14 @@ dd.wp-caption p.wp-caption-text,
 	padding: 0 0 2rem 0;
 	border-bottom: 1px dashed #ccc;
 }
-.pageentry .post-header {
-	float: none;
-	width: 100%;
+.post-header {
+	border-bottom: 1px dashed #ccc;
+	padding: 0 0 20px 0;
+	padding: 0 0 2rem 0;
+}
+#latest-posts .post-header{
+	border-bottom: none;
+	padding-bottom: 0;
 }
 .post-meta .edit-link {
 	margin: 0;
@@ -308,13 +300,17 @@ dd.wp-caption p.wp-caption-text,
 	text-align: right;
 	padding: 0 @siteGutter 0 0;
 }
-.post-meta{
+#latest-posts .post-meta{
 	border-left: 1px solid #ccc;
 	padding: 0 0 0 3%;
 	margin: 0 0 0 23%;
+	background: none;
 }
 .meta-date{
 	color: #888;
+}
+.post-right{
+	margin: 0 0 0 100px;
 }
 /*--------------------------------------------------------------
 4.4 - Widgets
