@@ -2,15 +2,6 @@
 
 /* useful stuff */
 
-// show or hide the admin bar
-if ( ! function_exists( 'thatcamp_adminbar_hide' ) ) :
-function thatcamp_register_menus($hide) {
-	if ($show == "yes"){
-		add_filter( 'show_admin_bar', '__return_false' );
-	}
-}
-endif;
-
 // thatcamp special functions
 // thatcamp fallback menu 
 function thatcamp_fallback_menu() {

@@ -591,6 +591,12 @@ img {
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
+.twitter-item img {
+  float: left;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
 img.wp-smiley {
   border: none !important;
   clear: none !important;
@@ -1307,12 +1313,36 @@ dd.wp-caption p.wp-caption-text,
 .widget li {
   list-style: none;
 }
+.twitter .twitter-item {
+  position: relative;
+  padding: 10px 0 10px 70px;
+  border-bottom: 1px dashed #333;
+  margin: 10px 0;
+  font-size: 90%;
+}
+.twitter .twitter-imagelink {
+  position: absolute;
+  left: 0;
+}
+.twitter a,
+.twitter a:link,
+.twitter a:hover,
+.twitter a:visited {
+  color: #118899;
+}
+.twitter .twitter-timestamp {
+  display: block;
+  color: #999;
+}
 h3.widgettitle {
   font-family: Lucinda Grande, sans-serif;
   border-bottom: 1px dashed #333;
   padding: 0 0 10px 0;
   font-size: 18px;
   font-size: 1.8rem;
+}
+.widget_twitter h3.widgettitle {
+  font-family: 'Francois One', sans-serif;
 }
 /*--------------------------------------------------------------
 6.0 - BuddyPress specific

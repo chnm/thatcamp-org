@@ -59,7 +59,65 @@
 		<?php do_action( 'bp_after_header'     ); ?>
 	</div>
 	<div id="avatarwall">
-	</div>
+		<!--	don't load avatars for moment as broken<div id="ri-grid" class="ri-grid ri-grid-size-2">
+					<ul>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/1.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/2.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/3.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/4.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/5.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/6.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/7.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/8.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/9.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/10.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/11.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/12.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/13.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/14.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/15.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/16.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/17.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/18.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/19.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/20.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/21.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/22.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/23.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/24.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/25.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/26.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/27.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/28.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/29.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/30.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/31.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/32.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/33.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/34.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/35.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/36.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/37.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/38.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/39.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/40.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/41.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/42.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/43.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/44.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/45.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/46.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/47.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/48.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/49.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/50.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/51.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/52.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/53.jpg"/></a></li>
+						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/54.jpg"/></a></li>
+					</ul>
+				</div>
+	</div>-->
 	<div id="about-wrapper" class="clearfix">
 		<div id="about" class="wrapper">
 			<h2><?php _e( 'What is THATCamp?', 'thatcamp' ); ?></h3>

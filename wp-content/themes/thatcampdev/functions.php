@@ -93,7 +93,7 @@ function thatcamp_load_scripts() {
 	/* bare bones print styles */
 	wp_enqueue_style( 'print',  get_template_directory_uri() . '/assets/css/print.css', array());
 
-	wp_enqueue_style( 'gridscript',  get_template_directory_uri() . '/assets/css/gridscipt.css', array());
+	wp_enqueue_style( 'gridscript',  get_template_directory_uri() . '/assets/css/gridscript.css', array());
 	
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 

@@ -353,9 +353,34 @@ dd.wp-caption p.wp-caption-text,
 		list-style: none;
 	}
 }
+
+.twitter{
+	.twitter-item{
+		position:relative;
+		padding: 10px 0 10px 70px;
+		border-bottom: 1px dashed #333;
+		margin: 10px 0;
+		font-size: 90%;
+	}
+	.twitter-imagelink{
+		position: absolute;
+		left: 0;
+	}
+	a, a:link, a:hover, a:visited{
+		color: @blueThatcampLight;
+	}
+	.twitter-timestamp{
+		display: block;
+		color: #999;
+	}
+}
 h3.widgettitle{
 	font-family: @baseFont;
 	border-bottom: 1px dashed #333;
 	padding: 0 0 10px 0;
 	.font-size-rems(18);
+}
+
+.widget_twitter h3.widgettitle{
+	font-family: @baseHeadingFont;
 }
