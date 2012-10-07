@@ -195,7 +195,7 @@ body {
 2.1 - Content
 --------------------------------------------------------------*/
 .main-content {
-  padding: 2rem 0;
+  padding: 20px 0;
 }
 #primary {
   float: right;
@@ -208,7 +208,7 @@ body {
 .feature-box {
   border: 2px solid #eee;
   background: #ffffff;
-  padding: 2rem;
+  padding: 20px;
 }
 #upcoming-camps {
   margin: 0 0 -60px 0;
@@ -230,11 +230,11 @@ body {
   margin-right: 3%;
   color: #888;
   text-align: right;
-  padding: 0 2rem 10px 0;
+  padding: 0 20px 10px 0;
 }
 .camp-listitem {
   clear: both;
-  padding: 2rem 0 0 0;
+  padding: 20px 0 0 0;
   border-bottom: 1px dashed #ccc;
 }
 .camp-listmeta {
@@ -254,7 +254,7 @@ body {
   clear: both;
 }
 .spacer-bottom {
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
 }
 #content {
   *zoom: 1;
@@ -274,7 +274,7 @@ body {
 #sitebar-wrapper,
 #about-wrapper {
   background: url('assets/images/classy_fabric.png');
-  padding: 2rem 0;
+  padding: 20px 0;
   *zoom: 1;
   zoom: 1;
 }
@@ -339,7 +339,7 @@ body {
 }
 #logos-wrapper {
   background-color: #e8e5de;
-  padding: 2rem 0;
+  padding: 20px 0;
   *zoom: 1;
   zoom: 1;
 }
@@ -1349,7 +1349,7 @@ dd.wp-caption p.wp-caption-text,
   display: inline-block;
   float: left;
   text-align: right;
-  padding: 0 2rem 0 0;
+  padding: 0 20px 0 0;
 }
 #latest-posts .post-meta {
   border-left: 1px solid #ccc;
@@ -1856,7 +1856,7 @@ div.activity-comments form div.ac-reply-content {
 6.3 - Directories - Members, Groups, Blogs, Forums
 --------------------------------------------------------------*/
 div.dir-search {
-  padding: 2rem 0;
+  padding: 20px 0;
 }
 div.dir-search input[type=text] {
   padding: 1px 3px;
@@ -2575,7 +2575,7 @@ ul.item-list.activity-list li {
   padding-bottom: 0;
   background: #ffffff;
   border-bottom: 1px dashed #ccc;
-  padding: 2rem;
+  padding: 20px;
   list-style: none;
 }
 ul.single-line li {
