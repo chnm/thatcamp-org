@@ -12,7 +12,7 @@ get_header( 'thatcamp' ); ?>
 	<?php do_action( 'bp_before_directory_blogs_content' ); ?>
 
 	<div id="primary" class="main-content">
-	<div id="content" class="clearfix" role="main">
+	<div id="content" role="main">
 		
 		<?php do_action( 'bp_before_create_blog_content_template' ); ?>
 

@@ -8,7 +8,7 @@
 ?>
 <?php get_header('signup'); ?>
 <div id="primary" class="main-content">
-	<div id="content" class="clearfix">
+	<div id="content">
 		<div id="category-archives" class="feature-box" role="main">
 		<header class="post-header">
 			<h1 class="post-title">

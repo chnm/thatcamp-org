@@ -8,7 +8,7 @@
 ?>
 <?php get_header('signup'); ?>
 <div id="primary" class="main-content">
-	<div id="content" class="clearfix">
+	<div id="content">
 		<?php do_action( 'bp_before_archive' ); ?>
 		<div id="blog-archives" class="feature-box" role="main">
 		<?php if ( have_posts() ) the_post(); ?>

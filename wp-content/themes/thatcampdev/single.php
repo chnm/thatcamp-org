@@ -8,7 +8,7 @@
 ?>
 <?php get_header(); ?>
 <div id="primary" class="main-content">
-	<div id="content" class="clearfix">
+	<div id="content">
 		<div id="single-view" role="main">
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 			<div class="feature-box">

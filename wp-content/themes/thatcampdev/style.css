@@ -175,6 +175,16 @@ body {
 #site-wrapper {
   padding: 0 10px;
   padding: 0 1rem;
+  *zoom: 1;
+  zoom: 1;
+}
+#site-wrapper:before,
+#site-wrapper:after {
+  display: table;
+  content: "";
+}
+#site-wrapper:after {
+  clear: both;
 }
 /* for when site has multiple full widths */
 .wrapper {
@@ -202,6 +212,16 @@ body {
 }
 #upcoming-camps {
   margin: 0 0 -60px 0;
+  *zoom: 1;
+  zoom: 1;
+}
+#upcoming-camps:before,
+#upcoming-camps:after {
+  display: table;
+  content: "";
+}
+#upcoming-camps:after {
+  clear: both;
 }
 .camp-listdate {
   float: left;
@@ -222,9 +242,31 @@ body {
 }
 #latest-posts {
   margin: 100px 0 0 0;
+  *zoom: 1;
+  zoom: 1;
+}
+#latest-posts:before,
+#latest-posts:after {
+  display: table;
+  content: "";
+}
+#latest-posts:after {
+  clear: both;
 }
 .spacer-bottom {
   margin-bottom: 2rem;
+}
+#content {
+  *zoom: 1;
+  zoom: 1;
+}
+#content:before,
+#content:after {
+  display: table;
+  content: "";
+}
+#content:after {
+  clear: both;
 }
 /*--------------------------------------------------------------
 2.2 - Header
@@ -233,10 +275,33 @@ body {
 #about-wrapper {
   background: url('assets/images/classy_fabric.png');
   padding: 2rem 0;
+  *zoom: 1;
+  zoom: 1;
+}
+#sitebar-wrapper:before,
+#about-wrapper:before,
+#sitebar-wrapper:after,
+#about-wrapper:after {
+  display: table;
+  content: "";
+}
+#sitebar-wrapper:after,
+#about-wrapper:after {
+  clear: both;
 }
 #header-wrapper {
   border-top: 4px solid #fff;
   border-bottom: 4px solid #fff;
+  *zoom: 1;
+  zoom: 1;
+}
+#header-wrapper:before,
+#header-wrapper:after {
+  display: table;
+  content: "";
+}
+#header-wrapper:after {
+  clear: both;
 }
 #about-wrapper {
   border-top: 2px solid #111;
@@ -258,6 +323,16 @@ body {
 #footer-wrapper {
   background: url('assets/images/classy_fabric.png');
   padding: 10px 0;
+  *zoom: 1;
+  zoom: 1;
+}
+#footer-wrapper:before,
+#footer-wrapper:after {
+  display: table;
+  content: "";
+}
+#footer-wrapper:after {
+  clear: both;
 }
 #bottom-footer {
   clear: both;
@@ -265,6 +340,16 @@ body {
 #logos-wrapper {
   background-color: #e8e5de;
   padding: 2rem 0;
+  *zoom: 1;
+  zoom: 1;
+}
+#logos-wrapper:before,
+#logos-wrapper:after {
+  display: table;
+  content: "";
+}
+#logos-wrapper:after {
+  clear: both;
 }
 #logos {
   margin: 0 auto;

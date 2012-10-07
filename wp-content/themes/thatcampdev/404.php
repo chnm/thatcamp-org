@@ -8,7 +8,7 @@
 ?>
 <?php get_header('signup'); ?>
 <div id="primary" class="main-content">
-	<div id="content" class="clearfix" role="main" >
+	<div id="content" role="main" >
 		<?php do_action( 'bp_before_404' ); ?>
 			<article id="post-0" class="post error404 not-found">
 				<header class="post-header">

@@ -8,7 +8,7 @@
 ?>
 <?php get_header(); ?>
 <div id="primary" class="main-content">
-	<div id="content" class="clearfix">
+	<div id="content">
 		<div id="links-template" class="feature-box" role="main">
 			<?php do_action( 'bp_before_blog_links' ); ?>
 			<h2 class="pagetitle"><?php _e( 'Links', 'thatcamp' ); ?></h2>

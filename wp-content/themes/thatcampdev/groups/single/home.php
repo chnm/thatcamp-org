@@ -1,7 +1,7 @@
 <?php get_header( 'thatcamp' ); ?>
 
 	<div id="primary" class="main-content">
-	<div id="content" class="clearfix" role="main">
+	<div id="content" role="main">
 
 			<?php if ( bp_has_groups() ) : while ( bp_groups() ) : bp_the_group(); ?>
 

@@ -12,7 +12,7 @@ get_header( 'thatcamp' ); ?>
 <?php do_action( 'bp_before_member_home_content' ); ?>	
 	<?php get_sidebar( 'profile' ); ?>
 	<div id="primary" class="main-content">
-	<div id="content" class="clearfix" role="main">
+	<div id="content" role="main">
 		<div id="item-header">
 			<h2>
 				<a href="<?php bp_displayed_user_link(); ?>"><?php bp_displayed_user_fullname(); ?></a>

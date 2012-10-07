@@ -8,7 +8,7 @@
 ?>
 <?php get_header(); ?>
 <div id="primary" class="main-content">
-	<div id="content" class="clearfix">
+	<div id="content">
 		<div id="page" class="feature-box" role="main">
 		<?php while ( have_posts() ) : the_post(); ?>
 			<?php get_template_part( 'content', 'page' );?>

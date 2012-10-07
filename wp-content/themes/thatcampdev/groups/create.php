@@ -11,7 +11,7 @@ get_header( 'thatcamp' ); ?>
 
 	
 	<div id="primary" class="main-content">
-	<div id="content" class="clearfix" role="main">
+	<div id="content" role="main">
 		
 		<?php do_action( 'bp_before_create_group_content_template' ); ?>
 

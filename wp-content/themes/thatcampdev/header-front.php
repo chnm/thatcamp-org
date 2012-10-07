@@ -23,11 +23,11 @@
 </head>
 <body <?php body_class() ?> id="logicalbones_hug">
 	<?php do_action( 'bp_before_header' ); ?>
-	<div id="sitebar-wrapper" class="clearfix">
+	<div id="sitebar-wrapper">
 		<div id="sitebar">
 		</div>
 	</div>
-	<div id="header-wrapper" class="clearfix">	
+	<div id="header-wrapper">	
 		<header id="branding" class="wrapper" role="banner">
 				<div id="site-logo">
 					<a href="<?php echo site_url(); ?>">ThatCamp</a>
@@ -118,7 +118,7 @@
 					</ul>
 				</div>
 	</div>-->
-	<div id="about-wrapper" class="clearfix">
+	<div id="about-wrapper">
 		<div id="about" class="wrapper">
 			<h2><?php _e( 'What is THATCamp?', 'thatcamp' ); ?></h3>
 			<p>
@@ -129,5 +129,5 @@
 		</div>
 	</div>
 	<?php do_action( 'bp_before_container' ); ?>
-	<div id="main-wrapper" class="clearfix">
+	<div id="main-wrapper">
 		<div class="wrapper">

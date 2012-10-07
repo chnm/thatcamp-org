@@ -8,8 +8,8 @@
 ?>
 <?php get_header('front'); ?>
 <div id="primary" class="main-content">
-	<div id="content" class="clearfix" role="main">
-		<div id="upcoming-camps" class="clearfix feature-box">
+	<div id="content" role="main">
+		<div id="upcoming-camps" class="feature-box">
 			<h2>Upcoming THATCamps</h2>
 
 			<?php /* Set up the groups loop */ ?>
@@ -43,7 +43,7 @@
 			<?php $meta_filter->remove_filters() ?>
 		</div>
 
-		<div id="latest-posts" class="clearfix feature-box">
+		<div id="latest-posts" class="feature-box">
 			<h2>Blog posts</h2>
 			<?php rewind_posts();
 			while ( have_posts() ) : the_post();
