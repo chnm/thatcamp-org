@@ -342,6 +342,7 @@ body {
   padding: 20px 0;
   *zoom: 1;
   zoom: 1;
+  clear: both;
 }
 #logos-wrapper:before,
 #logos-wrapper:after {
@@ -918,7 +919,11 @@ a:link.postlink,
 .post a,
 .post a:visited,
 .post a:link,
-.post a:hover {
+.post a:hover,
+.single a,
+.single a:visited,
+.single a:link,
+.single a:hover {
   color: #bb1122;
 }
 .skip-link,
