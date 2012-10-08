@@ -931,10 +931,11 @@ span.activity {
 	padding: 1px 8px;
 }
 span.user-nicename {
-	color: @grayLight;
 	display: inline-block;
 	.font-size-rems(16);
 	font-weight: bold;
+	float: right;
+	margin: 8px 0 0 0;
 }
 span.activity,
 div#message p {
@@ -949,6 +950,9 @@ div#message p {
 }
 div#item-header {
 	overflow: hidden;
+	border-bottom: 1px dashed #333;
+	padding: 0 0 10px 0;
+	margin: 0 0 10px 0;
 }
 div#item-header div#item-header-content {
 	margin-left: 170px;
@@ -957,9 +961,9 @@ div#item-header h2 {
 	font-size: 28px;
 	line-height: 120%;
 	margin: 0 0 15px 0;
+	float: left;
 }
 div#item-header h2 a {
-	color: @grayLight;
 	text-decoration: none;
 }
 div#item-header img.avatar {
