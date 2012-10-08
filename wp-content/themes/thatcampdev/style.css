@@ -70,7 +70,7 @@ Useful tags - you can override any of these you want
 /* image replacement */
 .ir {
   border: 0;
-  font: a;
+  font: 0/0 a;
   text-shadow: none;
   color: transparent;
   background-color: transparent;
@@ -199,7 +199,7 @@ body {
 }
 #primary {
   float: right;
-  width: 65%;
+  width: 70%;
 }
 #primary-documents {
   float: right;
@@ -914,7 +914,11 @@ a:link.postlink,
 .meta-author a,
 .meta-author a:visited,
 .meta-author a:link,
-.meta-author a:hover {
+.meta-author a:hover,
+.post a,
+.post a:visited,
+.post a:link,
+.post a:hover {
   color: #bb1122;
 }
 .skip-link,
@@ -1322,7 +1326,8 @@ dd.wp-caption p.wp-caption-text,
   padding: 0 0 20px 0;
   padding: 0 0 2rem 0;
 }
-#latest-posts .post-header {
+#latest-posts .post-header,
+.archive .post-header {
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -1351,7 +1356,8 @@ dd.wp-caption p.wp-caption-text,
   text-align: right;
   padding: 0 20px 0 0;
 }
-#latest-posts .post-meta {
+#latest-posts .post-meta,
+.archive .post-meta {
   border-left: 1px solid #ccc;
   padding: 0 0 0 3%;
   margin: 0 0 0 23%;
@@ -2071,7 +2077,7 @@ div.generic-button a,
   background: -ms-linear-gradient(top, #ffffff 0%, #ededed 100%);
   /* IE10+ */
 
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
   /* IE6-9 */
 
   background: linear-gradient(top, #ffffff 0%, #ededed 100%);
@@ -2110,7 +2116,7 @@ div.generic-button a:hover,
   background: -ms-linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
   /* IE10+ */
 
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#e0e0e0', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e0e0e0', GradientType=0);
   /* IE6-9 */
 
   background: linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
@@ -2158,7 +2164,7 @@ input[type="reset"].loading {
   background-image: url(../images/ajax-loader.gif), -ms-linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
   /* IE10+ */
 
-  filter: progid:dximagetransform.microsoft.gradient(enabled=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=0);
   /* IE6-9 */
 
   background-image: url(../images/ajax-loader.gif), linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
@@ -2187,7 +2193,7 @@ input[type="reset"].loading:hover {
   background-image: url(../images/ajax-loader.gif), -ms-linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
   /* IE10+ */
 
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#e0e0e0', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e0e0e0', GradientType=0);
   /* IE6-9 */
 
   background-image: url(../images/ajax-loader.gif), linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
@@ -2235,7 +2241,7 @@ a.disabled:hover {
   background: -ms-linear-gradient(top, #ffffff 0%, #ededed 100%);
   /* IE10+ */
 
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
   /* IE6-9 */
 
   background: linear-gradient(top, #ffffff 0%, #ededed 100%);
@@ -2643,8 +2649,12 @@ div.item-list-tabs#subnav ul li {
   border-bottom: 1px dashed #333;
   padding: 0 0 10px 0;
 }
+#activity-filter-select label {
+  float: left;
+  margin: 0 10px 0 0;
+}
 div.item-list-tabs ul li.last {
-  margin: 7px 20px 0 0;
+  margin: 7px 0 0 0;
 }
 div.item-list-tabs#subnav ul li.last {
   margin-top: 4px;

@@ -19,7 +19,7 @@
 		while ( have_posts() ) : the_post(); 
 			get_template_part( 'content', get_post_format() );
 		endwhile;
-			logicalbones_content_nav( 'nav-below' ); ?>		
+			thatcamp_content_nav( 'nav-below' ); ?>		
 		</div>
 	</div>
 </div>
