@@ -10,10 +10,10 @@
 ?>
 <?php get_header(); ?>
 <div id="primary" class="main-content">
-	<div id="content" class="clearfix feature-box" role="main">
+	<div id="content" class="clearfix feature-box thatcamp-stream" role="main">
 		<?php rewind_posts();
 		while ( have_posts() ) : the_post();
-			get_template_part( 'content', 'latestposts' );
+			get_template_part( 'content');
 		endwhile;?>
 	</div>
 </div>

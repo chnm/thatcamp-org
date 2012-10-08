@@ -6,7 +6,7 @@ Theme URI:www.thatcamp.info
 Description:ThatCamp Dev Theme
 Author:Tammie Lister
 Author URI:www.thelogicalbinary.com
-Tags:fixed-width
+Tags:buddypress, fixed-width
 License:GNU General Public License,v2 (or newer)
 License URI:http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
@@ -1327,7 +1327,8 @@ dd.wp-caption p.wp-caption-text,
   padding: 0 0 2rem 0;
 }
 #latest-posts .post-header,
-.archive .post-header {
+.archive .post-header,
+.thatcamp-stream .post-header {
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -1357,7 +1358,8 @@ dd.wp-caption p.wp-caption-text,
   padding: 0 20px 0 0;
 }
 #latest-posts .post-meta,
-.archive .post-meta {
+.archive .post-meta,
+.thatcamp-stream .post-meta {
   border-left: 1px solid #ccc;
   padding: 0 0 0 3%;
   margin: 0 0 0 23%;
