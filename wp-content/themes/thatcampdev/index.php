@@ -20,7 +20,7 @@
 					'thatcamp_date' => false, // doesn't matter what it is
 				),
 				'orderby' => 'thatcamp_date',
-				'order' => 'DESC',
+				'order' => 'ASC',
 			);
 
 			$meta_filter = new BP_Groups_Meta_Filter( $meta_filter_args );
