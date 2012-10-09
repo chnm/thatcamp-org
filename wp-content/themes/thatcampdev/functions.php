@@ -102,11 +102,6 @@ function thatcamp_load_scripts() {
 	
 	wp_enqueue_script('modernizr', get_template_directory_uri() . '/assets/scripts/modernizr-2.5.3-min.js', array("jquery"), '2.0');
 	
-	wp_enqueue_script('transit', get_template_directory_uri() . '/assets/scripts/jquery.transit.min.js', array("jquery"), '2.0');
-	wp_enqueue_script('gridrotator', get_template_directory_uri() . '/assets/scripts/jquery.gridrotator.js', array("jquery"), '2.0');
-	
-	wp_enqueue_script('custom', get_template_directory_uri() . '/assets/scripts/custom.js', array("jquery"), '2.0');
-	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
