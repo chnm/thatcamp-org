@@ -50,7 +50,7 @@
 		<?php do_action( 'bp_activity_entry_content' ); ?>
 
 		<?php if ( is_user_logged_in() ) : ?>
-
+			<!--
 			<div class="activity-meta">
 
 				<?php if ( bp_activity_can_comment() ) : ?>
@@ -78,7 +78,7 @@
 				<?php do_action( 'bp_activity_entry_meta' ); ?>
 
 			</div>
-
+			-->
 		<?php endif; ?>
 
 	</div>
