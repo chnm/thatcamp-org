@@ -680,8 +680,8 @@ table tbody tr:hover th {
 5.0 - Images
 --------------------------------------------------------------*/
 img {
-  width: auto !important;
   max-width: 100%;
+  height: auto;
   vertical-align: middle;
 }
 .post-avatar img.avatar,

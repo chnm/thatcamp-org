@@ -34,6 +34,7 @@ function thatcamp_content_nav( $nav_id ) {
 }
 
 
+
 // thatcamp comments
 if ( ! function_exists( 'thatcamp_comment' ) ) :
 function thatcamp_comment( $comment, $args, $depth ) {
