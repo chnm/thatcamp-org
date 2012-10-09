@@ -24,7 +24,14 @@
 <body <?php body_class() ?> id="logicalbones_hug">
 	<?php do_action( 'bp_before_header' ); ?>
 	<div id="sitebar-wrapper">
-		<div id="sitebar">
+		<div id="sitebar" class="wrapper">
+			<div id="user-section">
+				<a href="<?php echo bp_loggedin_user_domain(); ?>">
+					<?php bp_loggedin_user_avatar( 'type=thumb&width=40&height=40' ); ?>
+				</a>
+				<h4><?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?></h4>
+				<a class="button logout" href="<?php echo wp_logout_url( wp_guess_url() ); ?>"><?php _e( 'Log Out', 'thatcamp' ); ?></a>
+			</div>
 		</div>
 	</div>
 	<div id="header-wrapper">	
@@ -58,8 +65,8 @@
 		</header>
 		<?php do_action( 'bp_after_header'     ); ?>
 	</div>
-	<div id="avatarwall">
-		<!--	don't load avatars for moment as broken<div id="ri-grid" class="ri-grid ri-grid-size-2">
+	<!--<div id="avatarwall">
+			don't load avatars for moment as broken<div id="ri-grid" class="ri-grid ri-grid-size-2">
 					<ul>
 						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/1.jpg"/></a></li>
 						<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/themes/thatcampdev/assets/images/medium/2.jpg"/></a></li>

@@ -10,6 +10,9 @@
 <div id="sidebar" role="complementary">	
 	<?php do_action( 'bp_inside_before_sidebar' ); ?>
 	<!-- demo sidebar content -->
+
+	<a class="email-thatcamplink">Contact Us</a>
+	
 	<a class="rss-thatcamplink">RSS</a>
 	<aside id="dummytext" class="widget">
 		<h3 class="widgettitle">Widget title here</h3>
