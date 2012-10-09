@@ -10,7 +10,7 @@
 <?php do_action( 'bp_before_blog_post' ); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="post-avatar">
-		<?php echo get_avatar( get_the_author_meta( 'user_email' ), '50' ); ?>
+			<span class="img-wrapper floatright"><?php echo get_avatar( get_the_author_meta( 'user_email' ), '50' ); ?></span>
 	</div>
 	<div class="post-meta">
 		<header class="post-header">

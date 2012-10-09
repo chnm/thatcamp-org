@@ -724,6 +724,32 @@ img {
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
+.img-wrapper {
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -moz-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -o-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  background: #FAFAFA;
+  overflow: hidden;
+  display: block;
+  padding: 3px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+}
+.activity-avatar img.avatar {
+  float: right;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -moz-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -o-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+}
+.img-wrapper.floatright {
+  float: right;
+}
 img.wp-smiley {
   border: none !important;
   clear: none !important;
