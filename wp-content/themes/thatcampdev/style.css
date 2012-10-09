@@ -467,7 +467,7 @@ blockquote {
   margin: 0 0 2rem 2rem;
   padding-left: 24px;
   padding-left: 2.4rem;
-  font-family: Cambria, Georgia, Times, "Times New Roman";
+  font-family: 'Courgette', cursive;
   font-style: italic;
 }
 q {
@@ -632,6 +632,17 @@ h6,
   padding: 10px;
   font-weight: 200;
 }
+.item-avatar,
+#item-header-avatar {
+  text-align: center;
+}
+.item-avatar h4,
+#item-header-avatar h4 {
+  font-family: 'Courgette', cursive;
+  padding: 0 0 20px 0;
+  font-size: 15px;
+  font-size: 1.5rem;
+}
 /*--------------------------------------------------------------
 3.3 - Tables
 --------------------------------------------------------------*/
@@ -787,17 +798,26 @@ img.alignleft {
   margin: 1rem 0;
 }
 #profile-right .item-avatar,
-#profile-right #item-header-avatar,
-#members-list .item-avatar,
-#members-list #item-header-avatar {
+#profile-right #item-header-avatar {
   background: url('assets/images/polaroid.png');
-  padding: 5px 10px 40px 15px;
+  padding: 5px 10px 0 15px;
   border: 1px solid #ddd;
   overflow: hidden;
   -webkit-box-shadow: 0 8px 6px -6px #cccccc;
   -moz-box-shadow: 0 8px 6px -6px #cccccc;
   box-shadow: 0 8px 6px -6px #cccccc;
-  width: 150px;
+  width: 60%;
+}
+#members-list .item-avatar,
+#members-list #item-header-avatar {
+  background: url('assets/images/polaroid.png');
+  padding: 5px 10px 0 15px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  -webkit-box-shadow: 0 8px 6px -6px #cccccc;
+  -moz-box-shadow: 0 8px 6px -6px #cccccc;
+  box-shadow: 0 8px 6px -6px #cccccc;
+  width: 80%;
 }
 #groups-list .item-avatar,
 #blogs-list .item-avatar {
@@ -2739,7 +2759,6 @@ ul.item-list li div.item-title,
 ul.item-list li h4 {
   font-weight: normal;
   margin: 0;
-  width: 75%;
 }
 ul.item-list li div.item-title span {
   color: #999999;

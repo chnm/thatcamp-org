@@ -14,9 +14,6 @@ get_header( 'thatcamp' ); ?>
 	<div id="primary" class="main-content">
 	<div id="content" role="main">
 		<div id="item-header">
-			<h2>
-				<a href="<?php bp_displayed_user_link(); ?>"><?php bp_displayed_user_fullname(); ?></a>
-			</h2>
 			<span class="user-nicename">@<?php bp_displayed_user_username(); ?></span>
 		</div>
 		<div class="feature-box">
