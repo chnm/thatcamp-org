@@ -16,11 +16,9 @@
 <?php if ( bp_has_blogs( bp_ajax_querystring( 'blogs' ) ) ) : ?>
 
 	<div id="pag-top" class="pagination">
+		<h3><?php _e( 'Camps', 'thatcamp' ); ?><?php if ( is_user_logged_in() && bp_blog_signup_enabled() ) : ?> &nbsp;<a class="button" href="<?php echo bp_get_root_domain() . '/' . bp_get_blogs_root_slug() . '/create/' ?>"><?php _e( 'Create a Site', 'thatcamp' ); ?></a><?php endif; ?></h3>
 
-		<div class="pag-count" id="blog-dir-count-top">
-			<?php bp_blogs_pagination_count(); ?>
-		</div>
-
+		
 		<div class="pagination-links" id="blog-dir-pag-top">
 			<?php bp_blogs_pagination_links(); ?>
 		</div>
@@ -39,24 +37,13 @@
 			</div>
 
 			<div class="item">
-				<div class="item-title"><a href="<?php bp_blog_permalink(); ?>"><?php bp_blog_name(); ?></a></div>
-				<div class="item-meta"><span class="activity"><?php bp_blog_last_active(); ?></span></div>
-
+				<h4 class="item-title"><a href="<?php bp_blog_permalink(); ?>"><?php bp_blog_name(); ?></a></h4>
+				<div class="item-meta">
+					<span class="activity"><?php bp_blog_last_active(); ?></span>
+					<p>A bit about the camp goes here</p>
+				</div>
 				<?php do_action( 'bp_directory_blogs_item' ); ?>
 			</div>
-
-			<div class="action">
-
-				<?php do_action( 'bp_directory_blogs_actions' ); ?>
-
-				<div class="meta">
-
-					<?php bp_blog_latest_post(); ?>
-
-				</div>
-
-			</div>
-
 			<div class="clear"></div>
 		</li>
 

@@ -785,6 +785,32 @@ img.alignleft {
   margin: 10px 0;
   margin: 1rem 0;
 }
+#profile-right .item-avatar,
+#profile-right #item-header-avatar,
+members-list .item-avatar,
+#members-list #item-header-avatar {
+  background: url('assets/images/polaroid.png');
+  padding: 5px 10px 40px 15px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  -webkit-box-shadow: 0 8px 6px -6px #cccccc;
+  -moz-box-shadow: 0 8px 6px -6px #cccccc;
+  box-shadow: 0 8px 6px -6px #cccccc;
+  width: 150px;
+}
+#groups-list .item-avatar,
+#blogs-list .item-avatar {
+  padding: 5px 8px 15px 10px;
+  width: 50px;
+  background: url('assets/images/polaroid.png');
+  border: 1px solid #ddd;
+  overflow: hidden;
+  -webkit-box-shadow: 0 8px 6px -6px #cccccc;
+  -moz-box-shadow: 0 8px 6px -6px #cccccc;
+  box-shadow: 0 8px 6px -6px #cccccc;
+  float: left;
+  margin: 0 10px 0 0;
+}
 /*--------------------------------------------------------------
 3.5 - Forms
 --------------------------------------------------------------*/
@@ -2563,10 +2589,8 @@ table.forum p.topic-meta {
 }
 span.activity {
   display: inline-block;
-  font-size: 11px;
-  font-size: 1.1rem;
-  opacity: 0.8;
-  padding: 1px 8px;
+  font-size: 12px;
+  font-size: 1.2rem;
 }
 span.user-nicename {
   display: inline-block;
@@ -2578,14 +2602,10 @@ span.user-nicename {
 }
 span.activity,
 div#message p {
-  border: 1px solid #e1ca82;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
   font-weight: normal;
   margin-top: 3px;
   text-decoration: none;
-  background: #ffeaa6;
+  color: #999999;
 }
 div#item-header {
   overflow: hidden;
@@ -2695,6 +2715,7 @@ ul.item-list {
 ul.item-list li {
   padding: 15px 0;
   position: relative;
+  list-style: none;
 }
 ul.item-list.activity-list li {
   padding-bottom: 0;
@@ -2713,8 +2734,6 @@ ul.item-list li img.avatar {
 ul.item-list li div.item-title,
 ul.item-list li h4 {
   font-weight: normal;
-  font-size: 14px;
-  font-size: 1.4rem;
   margin: 0;
   width: 75%;
 }
@@ -2843,17 +2862,6 @@ div.item-list-tabs ul li.feed a {
   list-style: none;
   margin-right: 2%;
 }
-.item-avatar,
-#item-header-avatar {
-  background: url('assets/images/polaroid.png');
-  padding: 5px 10px 40px 15px;
-  border: 1px solid #ddd;
-  overflow: hidden;
-  -webkit-box-shadow: 0 8px 6px -6px #cccccc;
-  -moz-box-shadow: 0 8px 6px -6px #cccccc;
-  box-shadow: 0 8px 6px -6px #cccccc;
-  width: 150px;
-}
 #item-header-avatar {
   margin: 20px;
 }
@@ -2904,6 +2912,10 @@ a:hover#user-forums {
 }
 a:hover#user-settings {
   background: url('assets/images/icon-sevenhover.png') no-repeat;
+}
+.item-meta p {
+  padding: 0;
+  margin: 0;
 }
 /*--------------------------------------------------------------
 6.9 - Private Messaging Threads
