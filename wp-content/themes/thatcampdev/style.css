@@ -356,6 +356,7 @@ body {
   padding: 10px 0;
   *zoom: 1;
   zoom: 1;
+  color: #ffffff;
 }
 #footer-wrapper:before,
 #footer-wrapper:after {
@@ -787,7 +788,7 @@ img.alignleft {
 }
 #profile-right .item-avatar,
 #profile-right #item-header-avatar,
-members-list .item-avatar,
+#members-list .item-avatar,
 #members-list #item-header-avatar {
   background: url('assets/images/polaroid.png');
   padding: 5px 10px 40px 15px;
