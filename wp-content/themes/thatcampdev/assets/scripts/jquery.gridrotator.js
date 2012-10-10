@@ -75,14 +75,7 @@
 		this.$el	= $( element );
 		if( Modernizr.backgroundsize ) {
 
-			var _self = this;
-			this.$el.addClass( 'ri-grid-loading' );
-
-			$( '<img/>' ).load( function() {
-
-				_self._init( options );
-
-			} ).attr( 'src', 'images/loading.gif' );
+		this._init( options );
 
 		}
 		
@@ -180,6 +173,8 @@
 			var loaded			= 0,
 				$imgs			= this.$list.find( 'img' ),
 				count			= $imgs.length;
+
+			this.$el.addClass( 'ri-grid-loading' );
 
 			$imgs.each( function() {
 

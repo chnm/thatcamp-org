@@ -30,14 +30,6 @@
 			</footer>
 		</div>
 		<?php do_action( 'bp_after_footer' ); ?>
-		<?php
-
-		wp_enqueue_script('transit', get_template_directory_uri() . '/assets/scripts/jquery.transit.min.js', array("jquery"), '2.0');
-		wp_enqueue_script('gridrotator', get_template_directory_uri() . '/assets/scripts/jquery.gridrotator.js', array("jquery"), '2.0');
-	
-		wp_enqueue_script('custom', get_template_directory_uri() . '/assets/scripts/custom.js', array("jquery"), '2.0');
-			
-		?>
 		<?php wp_footer(); ?>
 	</body>
 </html>

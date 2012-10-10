@@ -123,7 +123,11 @@ function thatcamp_load_scripts() {
 		'remove_fav'	    => __( 'Remove Favorite', 'thatcamp' )
 	);
 	wp_localize_script( 'dtheme-ajax-js', 'BP_DTheme', $params );
+	wp_enqueue_script('transit', get_template_directory_uri() . '/assets/scripts/jquery.transit.min.js', array("jquery"), '2.0');
+	wp_enqueue_script('gridrotator', get_template_directory_uri() . '/assets/scripts/jquery.gridrotator.js', array("jquery"), '2.0');
 	
+	wp_enqueue_script('custom', get_template_directory_uri() . '/assets/scripts/custom.js', array("jquery"), '2.0');
+		
 }
 endif;
 add_action( 'wp_enqueue_scripts', 'thatcamp_load_scripts' );

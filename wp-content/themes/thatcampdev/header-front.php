@@ -112,7 +112,7 @@
 
                   while ( $i <= 50 ) {
 
-                      echo '<li><div class="grid-image-wrap"><img src="' . $directory . '/images/medium/' . $i . '.jpg" alt="Decorative Image ' . $i . '"/></div></li>';
+                      echo '<li><img src="' . $directory . '/images/medium/' . $i . '.jpg" alt="Decorative Image ' . $i . '"/></li>';
                       $i++;
                   }
 
