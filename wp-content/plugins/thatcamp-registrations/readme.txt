@@ -11,7 +11,7 @@ THATCamp Registrations lets you manage event registrations using user accounts i
 
 THATCamp Registrations lets you manage event registrations using user accounts in WordPress. The plugin is optimized for WordPress multisite, so each event can have its own blog, while users can register across events without create a new user account.
 
-Visit [THATCamp Plugins](http://thatcampdev.info/plugins "THATCamp Plugins") to learn more about THATCamp Registrations and other plugins by THATCamp.
+Visit [THATCamp Plugins](http://thatcamp.org/plugins "THATCamp Plugins") to learn more about THATCamp Registrations and other plugins by THATCamp.
 
 == Installation ==
 
@@ -29,7 +29,7 @@ Once THATCamp Registrations has been activated, you can begin using it on your s
 1. Add the [thatcamp-registration] shortcode to your registration page.
 2. Visit Dashboard > TC Registrations to change your settings and start managing registrations for your event.
 
-More documentation can be found at [THATCamp Plugins](http://thatcampdev.info/plugins "THATCamp Plugins").
+More documentation can be found at [THATCamp Plugins](http://thatcamp.org/plugins "THATCamp Plugins").
 
 == Changelog ==
 

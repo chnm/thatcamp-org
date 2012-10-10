@@ -3,17 +3,17 @@
 if ( !class_exists( 'Thatcamp_Registrations_Public_Registration' ) ) :
 
 class Thatcamp_Registrations_Public_Registration {
-    
+
     private $options;
     private $current_user;
-    
+
     function thatcamp_registrations_public_registration() {
-        add_shortcode('thatcamp-registration', array($this, 'shortcode'));  
-        $this->options = get_option('thatcamp_registrations_options');  
+        add_shortcode('thatcamp-registration', array($this, 'shortcode'));
+        $this->options = get_option('thatcamp_registrations_options');
         $this->current_user = wp_get_current_user();
     }
-    
-    
+
+
     function shortcode($attr) {
         if (thatcamp_registrations_option('open_registration') == 1) {
             ob_start();
@@ -25,7 +25,7 @@ class Thatcamp_Registrations_Public_Registration {
             return 'Registration is closed.';
         }
     }
-    
+
     /**
      * Displays the registration information on the public site.
      *
@@ -40,7 +40,7 @@ class Thatcamp_Registrations_Public_Registration {
             if ( empty( $_POST['application_text']) ) {
                 $alerts['application_text'] = __('Please tell us why you want to come to THATCamp. What you write here will NOT be publicly displayed.', 'thatcamp-registrations');
             }
-            
+
             // User email is required.
             if (!is_user_logged_in()) {
                 if ( empty( $_POST['first_name']) ) {
@@ -50,20 +50,24 @@ class Thatcamp_Registrations_Public_Registration {
                 if ( empty( $_POST['last_name']) ) {
                     $alerts['application_text'] = __('You must add a last name.', 'thatcamp-registrations');
                 }
-                
+
                 if ( empty( $_POST['user_email'] ) ) {
                     $alerts['user_email'] = __('You must add an email address.', 'thatcamp-registrations');
                 }
+
+	        if ( $_POST['user_email'] == get_option( 'admin_email' ) ) {
+		    $alerts['user_email'] = __( 'You cannot register using this site\'s admin email address.', 'thatcamp-registrations' );
+		}
             }
-            
+
             $userEmail = is_user_logged_in() ? $this->current_user->user_email : @$_POST['user_email'];
 
             if ($existingApp = thatcamp_registrations_get_registration_by_applicant_email($userEmail)) {
                 $alerts['existing_application'] = __('You have already submitted the form with that email address.','thatcamp-registrations');
             }
-            
+
         }
-        
+
         // If user registration is required, and the user isn't logged in.
         if ( thatcamp_registrations_user_required() && !is_user_logged_in() ) {
             echo '<div>You must have a user account to complete the form. Please <a href="<?php echo wp_login_url( get_permalink() ); ?>" title="Login">log in</a>.</div>';
@@ -71,24 +75,35 @@ class Thatcamp_Registrations_Public_Registration {
         // If the currently authenticated user has submitted a registration.
         elseif (is_user_logged_in() && $existingApp = thatcamp_registrations_get_registration_by_user_id($this->current_user->ID)) {
             echo '<div>'.__('You have already submitted the form.','thatcamp-registrations').'</div>';
-            
+
         }
         elseif ((!empty($_POST)) && empty($alerts)) {
             thatcamp_registrations_add_registration();
             echo '<p>The information you submitted has been saved.</p>';
         }
         else {
-            
+
             if (!empty($alerts)) {
                 foreach ($alerts as $alert) {
                     echo '<p style="background:#fc0; padding: 4px;">'.$alert.'</p>';
                 }
             }
-            
+
+	    $login_link = add_query_arg( 'redirect_to', wp_guess_url(), wp_login_url() );
+
+	    // Nudge the user to log in
+	    if ( ! is_user_logged_in() ) {
+		    echo "<h3>Already have a THATCamp account?</h3>";
+		    echo "<p>If you've attended a THATCamp in the past, you probably already have an account on thatcamp.org. <a href='<?php echo $login_link ?>'>Log in</a> and we'll pre-fill some of your information for you.</p>";
+	    } else {
+		    echo "<h3>Welcome back!</h3>";
+		    echo sprintf( '<p>You are logged in as <strong>%1$s</strong>, using the the email address <strong>%2$s</strong></p>', $this->current_user->display_name, $this->current_user->user_email );
+	    }
+
             echo '<form method="post" action="">';
-            
+
             $this->_application_form();
-            
+
             // If user login is not required, display the user info form.
             if ( !thatcamp_registrations_user_required() && !is_user_logged_in()) {
                 $this->_user_info_form();
@@ -96,15 +111,15 @@ class Thatcamp_Registrations_Public_Registration {
                 echo '<input type="hidden" name="user_id" value="'. $this->current_user->ID .'" />';
                 echo '<input type="hidden" name="user_email" value="'. $this->current_user->user_email .'" />';
             }
-            
+
             echo '<input type="submit" name="thatcamp_registrations_save_registration" value="'. __('Submit Registration', 'thatcamp-registrations') .'" />';
             echo '</form>';
         }
     }
-    
+
     function _user_info_form() {
     ?>
-    <p class="explanation" style="margin: 1em 0 1em 0;">Please note that the following pieces of information may be displayed publicly on this website: <strong>First Name</strong>, <strong>Last Name</strong>, <strong>Website</strong>, <strong>Twitter Screenname</strong>, <strong>Position / Job Title</strong>, <strong>Organization</strong>, and <strong>Biography</strong>. We will not display your e-mail address or your reasons for coming to THATCamp.  
+    <p class="explanation" style="margin: 1em 0 1em 0;">Please note that the following pieces of information may be displayed publicly on this website: <strong>First Name</strong>, <strong>Last Name</strong>, <strong>Website</strong>, <strong>Twitter Screenname</strong>, <strong>Position / Job Title</strong>, <strong>Organization</strong>, and <strong>Biography</strong>. We will not display your e-mail address or your reasons for coming to THATCamp.
     <fieldset>
         <legend>Personal Information</legend>
         <div>
@@ -168,7 +183,7 @@ class Thatcamp_Registrations_Public_Registration {
 	<option value="womens_l">Women's Large</option>
 	<option value="womens_xl">Women's Extra Large</option>
 	<option value="womens_xxl">Women's Extra Extra Large</option>
-	</select>        
+	</select>
 	</div>
         <div>
             <label for="dietary_preferences"><?php _e('Dietary Preferences'); ?></label><br/>
@@ -178,28 +193,28 @@ class Thatcamp_Registrations_Public_Registration {
     </fieldset>
     <?php
     }
-    
+
     function _application_form() {
-    ?>
-    <fieldset>
-        <legend>Registration Information</legend>
-    <div>
-        <label for="application_text"><?php _e('Why do you want to come to THATCamp?', 'thatcamp-registrations'); ?>*</label><br />
-        <p class="explanation">
-        <?php _e('In a few sentences, no more than a couple of paragraphs, please 
-        tell us why you want to come to THATCamp. You might tell us what task 
-        you want to accomplish, what problem you want to solve, what new 
-        perspective you want to understand, what issue you want to discuss, or 
-        what skill you want to learn. Remember, though: no paper proposals! 
-        THATCamp is for working and talking with others, not for presenting to 
-        a silent audience.', 'thatcamp-registrations'); ?>
-        </p>
-        <textarea cols="45" rows="8" name="application_text"><?php echo @$_POST['application_text']; ?></textarea>
-    </div>
-    <input type="hidden" name="date" value="<?php echo current_time('mysql'); ?>">
-    
-    </fieldset>
-    <?php
+	?>
+	<fieldset>
+	<legend>Registration Information</legend>
+	<div>
+	<label for="application_text"><?php _e('Why do you want to come to THATCamp?', 'thatcamp-registrations'); ?>*</label><br />
+	<p class="explanation">
+	<?php _e('In a few sentences, no more than a couple of paragraphs, please
+	tell us why you want to come to THATCamp. You might tell us what task
+	you want to accomplish, what problem you want to solve, what new
+	perspective you want to understand, what issue you want to discuss, or
+	what skill you want to learn. Remember, though: no paper proposals!
+	THATCamp is for working and talking with others, not for presenting to
+	a silent audience.', 'thatcamp-registrations'); ?>
+	</p>
+	<textarea cols="45" rows="8" name="application_text"><?php echo @$_POST['application_text']; ?></textarea>
+	</div>
+	<input type="hidden" name="date" value="<?php echo current_time('mysql'); ?>">
+
+	</fieldset>
+	<?php
     }
 }
 
