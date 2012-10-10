@@ -17,6 +17,10 @@ body {
 /*--------------------------------------------------------------
 2.1 - Content
 --------------------------------------------------------------*/
+#main-wrapper{
+	padding: @siteGutter 0;
+	.clearfix();
+}
 .main-content{
 	padding: @siteGutter 0;
 }
@@ -75,6 +79,10 @@ body {
 #header-wrapper{
 	border-top: 4px solid #fff;
 	border-bottom: 4px solid #fff;
+	-moz-box-shadow: 0px 1px 6px rgba(204,204,204,1);
+	-webkit-box-shadow: 0px 1px 6px rgba(204,204,204,1);
+	box-shadow: 0px 1px 6px rgba(204,204,204,1);
+	background: url('assets/images/header-background.jpg');
 	.clearfix();
 }
 #about-wrapper{
@@ -112,6 +120,7 @@ body {
 	background: url('assets/images/classy_fabric.png');
 	padding: 10px 0;
 	.clearfix();
+	color: @white;
 }
 #bottom-footer {
 	clear: both;
@@ -134,6 +143,7 @@ body {
 #sidebar {
 	width: 320px;
 	float: left;
+	padding: @siteGutter 0;
 }
 #sidebar-documents{
 	width: 35%;

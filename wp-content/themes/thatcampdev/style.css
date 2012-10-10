@@ -194,6 +194,19 @@ body {
 /*--------------------------------------------------------------
 2.1 - Content
 --------------------------------------------------------------*/
+#main-wrapper {
+  padding: 20px 0;
+  *zoom: 1;
+  zoom: 1;
+}
+#main-wrapper:before,
+#main-wrapper:after {
+  display: table;
+  content: "";
+}
+#main-wrapper:after {
+  clear: both;
+}
 .main-content {
   padding: 20px 0;
 }
@@ -292,6 +305,10 @@ body {
 #header-wrapper {
   border-top: 4px solid #fff;
   border-bottom: 4px solid #fff;
+  -moz-box-shadow: 0px 1px 6px #cccccc;
+  -webkit-box-shadow: 0px 1px 6px #cccccc;
+  box-shadow: 0px 1px 6px #cccccc;
+  background: url('assets/images/header-background.jpg');
   *zoom: 1;
   zoom: 1;
 }
@@ -339,6 +356,7 @@ body {
   padding: 10px 0;
   *zoom: 1;
   zoom: 1;
+  color: #ffffff;
 }
 #footer-wrapper:before,
 #footer-wrapper:after {
@@ -376,6 +394,7 @@ body {
 #sidebar {
   width: 320px;
   float: left;
+  padding: 20px 0;
 }
 #sidebar-documents {
   width: 35%;
@@ -448,7 +467,7 @@ blockquote {
   margin: 0 0 2rem 2rem;
   padding-left: 24px;
   padding-left: 2.4rem;
-  font-family: Cambria, Georgia, Times, "Times New Roman";
+  font-family: 'Courgette', cursive;
   font-style: italic;
 }
 q {
@@ -606,6 +625,24 @@ h6,
   font-size: 1.4rem;
   display: block;
 }
+#user-section h4 {
+  font-family: Lucinda Grande, sans-serif;
+  font-size: 14px;
+  font-size: 1.4rem;
+  padding: 10px;
+  font-weight: 200;
+}
+.item-avatar,
+#item-header-avatar {
+  text-align: center;
+}
+.item-avatar h4,
+#item-header-avatar h4 {
+  font-family: 'Courgette', cursive;
+  padding: 0 0 20px 0;
+  font-size: 15px;
+  font-size: 1.5rem;
+}
 /*--------------------------------------------------------------
 3.3 - Tables
 --------------------------------------------------------------*/
@@ -680,8 +717,8 @@ table tbody tr:hover th {
 5.0 - Images
 --------------------------------------------------------------*/
 img {
-  width: auto !important;
   max-width: 100%;
+  height: auto;
   vertical-align: middle;
 }
 .post-avatar img.avatar,
@@ -698,6 +735,32 @@ img {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
+}
+.img-wrapper {
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -moz-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -o-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  background: #FAFAFA;
+  overflow: hidden;
+  display: block;
+  padding: 3px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+}
+.activity-avatar img.avatar {
+  float: right;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -moz-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -o-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+}
+.img-wrapper.floatright {
+  float: right;
 }
 img.wp-smiley {
   border: none !important;
@@ -733,6 +796,41 @@ img.alignleft {
   border-radius: 0;
   margin: 10px 0;
   margin: 1rem 0;
+}
+#profile-right .item-avatar,
+#profile-right #item-header-avatar {
+  background: url('assets/images/polaroid.png');
+  padding: 5px 10px 0 15px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  -webkit-box-shadow: 0 8px 6px -6px #cccccc;
+  -moz-box-shadow: 0 8px 6px -6px #cccccc;
+  box-shadow: 0 8px 6px -6px #cccccc;
+  width: 60%;
+}
+#members-list .item-avatar,
+#members-list #item-header-avatar {
+  background: url('assets/images/polaroid.png');
+  padding: 5px 10px 0 15px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  -webkit-box-shadow: 0 8px 6px -6px #cccccc;
+  -moz-box-shadow: 0 8px 6px -6px #cccccc;
+  box-shadow: 0 8px 6px -6px #cccccc;
+  width: 80%;
+}
+#groups-list .item-avatar,
+#blogs-list .item-avatar {
+  padding: 5px 8px 15px 10px;
+  width: 50px;
+  background: url('assets/images/polaroid.png');
+  border: 1px solid #ddd;
+  overflow: hidden;
+  -webkit-box-shadow: 0 8px 6px -6px #cccccc;
+  -moz-box-shadow: 0 8px 6px -6px #cccccc;
+  box-shadow: 0 8px 6px -6px #cccccc;
+  float: left;
+  margin: 0 10px 0 0;
 }
 /*--------------------------------------------------------------
 3.5 - Forms
@@ -840,6 +938,28 @@ input[type=submit] {
 div.dir-search input[type="text"] {
   float: left;
 }
+.header-button {
+  background-color: #2EC0FE;
+  background-image: -o-linear-gradient(-90deg, #414141 0%, #2b2b2b 100%);
+  background-image: -moz-linear-gradient(-90deg, #414141 0%, #2b2b2b 100%);
+  background-image: -webkit-linear-gradient(-90deg, #414141 0%, #2b2b2b 100%);
+  background-image: -ms-linear-gradient(-90deg, #414141 0%, #2b2b2b 100%);
+  background-image: linear-gradient(-90deg, #414141 0%, #2b2b2b 100%);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 2px 8px;
+  display: inline-block;
+  border: 2px solid #111;
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+a.header-button,
+a:visited.header-button,
+a:link.header-button,
+a:hover.header-button {
+  color: #fff;
+}
 .button {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -939,6 +1059,27 @@ a:link.postlink,
 .single a:link,
 .single a:hover {
   color: #bb1122;
+}
+a.rss-thatcamplink {
+  background: url('assets/images/rss-thatcampicon.png') no-repeat;
+  padding: 10px 0 10px 70px;
+  height: 30px;
+  color: #ff7800;
+  display: block;
+  margin: 10px 0;
+}
+a.email-thatcamplink {
+  background: url('assets/images/email-thatcampicon.png') no-repeat;
+  padding: 10px 0 10px 70px;
+  height: 30px;
+  color: #bb1122;
+  display: block;
+}
+#user-section a,
+#user-section a:link,
+#user-section a:visited,
+#user-section a:hover {
+  color: #ccc;
 }
 .skip-link,
 .assistive-text {
@@ -1389,6 +1530,9 @@ dd.wp-caption p.wp-caption-text,
 }
 .post-right {
   margin: 0 0 0 100px;
+}
+.post-meta-author {
+  float: left;
 }
 /*--------------------------------------------------------------
 4.4 - Widgets
@@ -2469,10 +2613,8 @@ table.forum p.topic-meta {
 }
 span.activity {
   display: inline-block;
-  font-size: 11px;
-  font-size: 1.1rem;
-  opacity: 0.8;
-  padding: 1px 8px;
+  font-size: 12px;
+  font-size: 1.2rem;
 }
 span.user-nicename {
   display: inline-block;
@@ -2484,14 +2626,10 @@ span.user-nicename {
 }
 span.activity,
 div#message p {
-  border: 1px solid #e1ca82;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
   font-weight: normal;
   margin-top: 3px;
   text-decoration: none;
-  background: #ffeaa6;
+  color: #999999;
 }
 div#item-header {
   overflow: hidden;
@@ -2601,6 +2739,7 @@ ul.item-list {
 ul.item-list li {
   padding: 15px 0;
   position: relative;
+  list-style: none;
 }
 ul.item-list.activity-list li {
   padding-bottom: 0;
@@ -2619,10 +2758,7 @@ ul.item-list li img.avatar {
 ul.item-list li div.item-title,
 ul.item-list li h4 {
   font-weight: normal;
-  font-size: 14px;
-  font-size: 1.4rem;
   margin: 0;
-  width: 75%;
 }
 ul.item-list li div.item-title span {
   color: #999999;
@@ -2749,17 +2885,6 @@ div.item-list-tabs ul li.feed a {
   list-style: none;
   margin-right: 2%;
 }
-.item-avatar,
-#item-header-avatar {
-  background: url('assets/images/polaroid.png');
-  padding: 5px 10px 40px 15px;
-  border: 1px solid #ddd;
-  overflow: hidden;
-  -webkit-box-shadow: 0 8px 6px -6px #cccccc;
-  -moz-box-shadow: 0 8px 6px -6px #cccccc;
-  box-shadow: 0 8px 6px -6px #cccccc;
-  width: 150px;
-}
 #item-header-avatar {
   margin: 20px;
 }
@@ -2810,6 +2935,10 @@ a:hover#user-forums {
 }
 a:hover#user-settings {
   background: url('assets/images/icon-sevenhover.png') no-repeat;
+}
+.item-meta p {
+  padding: 0;
+  margin: 0;
 }
 /*--------------------------------------------------------------
 6.9 - Private Messaging Threads

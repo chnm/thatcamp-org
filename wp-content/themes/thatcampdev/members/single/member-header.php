@@ -15,6 +15,10 @@
 	<a href="<?php bp_displayed_user_link(); ?>">
 		<?php bp_displayed_user_avatar( 'width=140&height=140' ); ?>
 	</a>
+	<h4>
+		<a href="<?php bp_displayed_user_link(); ?>"><?php bp_displayed_user_fullname(); ?></a>
+	</h4>
+	
 </div>
 
 <div id="item-header-content">

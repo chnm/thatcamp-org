@@ -16,21 +16,21 @@ get_header( 'thatcamp' ); ?>
 	<div id="content" role="main">
 
 		<?php do_action( 'bp_before_directory_groups' ); ?>
-
+		
 		<form action="" method="post" id="groups-directory-form" class="dir-form">
 
 			<h3><?php _e( 'Groups Directory', 'thatcamp' ); ?><?php if ( is_user_logged_in() && bp_user_can_create_groups() ) : ?> &nbsp;<a class="button" href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_groups_root_slug() . '/create' ); ?>"><?php _e( 'Create a Group', 'thatcamp' ); ?></a><?php endif; ?></h3>
 
 			<?php do_action( 'bp_before_directory_groups_content' ); ?>
-
+			<!--
 			<div id="group-dir-search" class="dir-search" role="search">
 
 				<?php bp_directory_groups_search_form(); ?>
 
-			</div><!-- #group-dir-search -->
-
+			</div>--><!-- #group-dir-search -->
+		
 			<?php do_action( 'template_notices' ); ?>
-
+			<!--
 			<div class="item-list-tabs" role="navigation">
 				<ul>
 					<li class="selected" id="groups-all"><a href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_groups_root_slug() ); ?>"><?php printf( __( 'All Groups <span>%s</span>', 'thatcamp' ), bp_get_total_group_count() ); ?></a></li>
@@ -66,7 +66,7 @@ get_header( 'thatcamp' ); ?>
 					</li>
 				</ul>
 			</div>
-
+			-->
 			<div id="groups-dir-list" class="groups dir-list">
 
 				<?php locate_template( array( 'groups/groups-loop.php' ), true ); ?>

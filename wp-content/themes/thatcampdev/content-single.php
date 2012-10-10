@@ -10,7 +10,9 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="post-header">
 		<div class="post-meta-author">
-			<?php echo get_avatar( get_the_author_meta( 'user_email' ), '80' ); ?>
+			<span class="img-wrapper">
+				<?php echo get_avatar( get_the_author_meta( 'user_email' ), '80' ); ?>
+			</span>
 		</div>
 		<div class="post-right">
 			<h1 class="post-title"><?php the_title(); ?></h1>

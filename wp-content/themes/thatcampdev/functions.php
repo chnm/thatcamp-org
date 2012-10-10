@@ -102,11 +102,6 @@ function thatcamp_load_scripts() {
 	
 	wp_enqueue_script('modernizr', get_template_directory_uri() . '/assets/scripts/modernizr-2.5.3-min.js', array("jquery"), '2.0');
 	
-	wp_enqueue_script('transit', get_template_directory_uri() . '/assets/scripts/jquery.transit.min.js', array("jquery"), '2.0');
-	wp_enqueue_script('gridrotator', get_template_directory_uri() . '/assets/scripts/jquery.gridrotator.js', array("jquery"), '2.0');
-	
-	wp_enqueue_script('custom', get_template_directory_uri() . '/assets/scripts/custom.js', array("jquery"), '2.0');
-	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -128,7 +123,11 @@ function thatcamp_load_scripts() {
 		'remove_fav'	    => __( 'Remove Favorite', 'thatcamp' )
 	);
 	wp_localize_script( 'dtheme-ajax-js', 'BP_DTheme', $params );
+	wp_enqueue_script('transit', get_template_directory_uri() . '/assets/scripts/jquery.transit.min.js', array("jquery"), '2.0');
+	wp_enqueue_script('gridrotator', get_template_directory_uri() . '/assets/scripts/jquery.gridrotator.js', array("jquery"), '2.0');
 	
+	wp_enqueue_script('custom', get_template_directory_uri() . '/assets/scripts/custom.js', array("jquery"), '2.0');
+		
 }
 endif;
 add_action( 'wp_enqueue_scripts', 'thatcamp_load_scripts' );
@@ -147,6 +146,8 @@ function thatcamp_widgets_init() {
        		'after_title' => '</h3>'
 			)
 	);
+	
+	
 	register_sidebar(
 		array(
 			'name'          => __( 'Sidebar Documents', 'thatcamp'),
@@ -158,6 +159,20 @@ function thatcamp_widgets_init() {
        		'after_title' => '</h3>'
 			)
 	);
+	
+	register_sidebar(
+		array(
+			'name'          => __( 'Sidebar Home', 'thatcamp'),
+			'id'            => 'sidebar-home',
+			'description'   => 'Sidebar Home',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">', 	  
+			'after_widget' => '</aside>',
+       		'before_title' => '<h3 class="widgettitle">',
+       		'after_title' => '</h3>'
+			)
+	);
+	
+	
 }
 endif;
 add_action( 'widgets_init', 'thatcamp_widgets_init' );
