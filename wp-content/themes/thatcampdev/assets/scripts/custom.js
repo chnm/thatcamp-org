@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
 			
-			var gridRows = 3;
+			var gridRows = 2;
 
 				$( '#ri-grid' ).gridrotator( {
 					rows		: gridRows,

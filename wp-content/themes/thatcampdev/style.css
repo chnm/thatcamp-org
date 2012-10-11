@@ -324,6 +324,7 @@ body {
   border-top: 2px solid #111;
   border-bottom: 2px solid #111;
   color: #ffffff;
+  padding: 20px 0;
 }
 #site-logo {
   background: url('assets/images/thatcamp-logo.png') no-repeat;
@@ -407,6 +408,9 @@ body {
 #sidebar-innerright {
   float: right;
   width: 30%;
+}
+#sidebar .campbutton {
+  margin-bottom: 40px;
 }
 /*--------------------------------------------------------------
 3.0 - Non-structural

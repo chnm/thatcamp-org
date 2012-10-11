@@ -10,7 +10,11 @@
 <div id="sidebar" role="complementary">	
 	<?php do_action( 'bp_inside_before_sidebar' ); ?>
 	<!-- demo sidebar content -->
-
+	
+	<a href="" class="button campbutton">
+		<span class="button-inner">Organise a THATCamp</span>
+	</a>
+		
 	<a class="email-thatcamplink">Contact Us</a>
 	
 	<a class="rss-thatcamplink">RSS</a>
