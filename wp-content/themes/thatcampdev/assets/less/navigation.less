@@ -94,7 +94,7 @@ nav#top-nav {
 		top: 100%;
 		margin: 0;
 		z-index: 1;
-		background: #eee;
+		background: #333;
 	}
 	li:hover ul {
 		display: block;
@@ -102,11 +102,27 @@ nav#top-nav {
 	li ul li,
 	li ul li a {
 		text-align: left;
+		background: none;
+		padding: 5px 10px;
+		border-right: none;
+		border-bottom:none;
+		border-left:none;
+		.border-radius(0);
+		color: #fff;
 	}
 	li ul li a {
 		display: block;
 		width: 100px;
 	}
+	li ul li a:hover{
+		background: none;
+		color: #fff;
+		border-right: none;
+		border-bottom:none;
+		border-left:none;
+		.border-radius(0);
+	}
+	
 }
 
 nav#side-nav{
