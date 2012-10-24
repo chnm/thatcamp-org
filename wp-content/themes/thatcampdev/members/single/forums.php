@@ -30,14 +30,14 @@
 <?php
 
 if ( bp_is_current_action( 'favorites' ) ) :
-	locate_template( array( 'members/single/forums/topics.php' ), true );
+	get_template_part( 'members/single/forums/topics'); 
 
 else :
 	do_action( 'bp_before_member_forums_content' ); ?>
 
 	<div class="forums myforums">
 
-		<?php locate_template( array( 'forums/forums-loop.php' ), true ); ?>
+		<?php get_template_part( 'forums/forums', 'loop'); 
 
 	</div>
 

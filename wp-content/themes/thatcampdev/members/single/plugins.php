@@ -23,7 +23,8 @@
 
 			<div id="item-header">
 
-				<?php locate_template( array( 'members/single/member-header.php' ), true ); ?>
+				<?php 
+			get_template_part( 'members/single/member', 'header');
 
 			</div>
 

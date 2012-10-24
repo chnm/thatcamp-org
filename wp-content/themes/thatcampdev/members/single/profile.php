@@ -27,16 +27,16 @@
 
 	<?php
 		if ( bp_is_current_action( 'edit' ) )
-			locate_template( array( 'members/single/profile/edit.php' ), true );
+			get_template_part( 'members/single/profile/edit');
 
 		elseif ( bp_is_current_action( 'change-avatar' ) )
-			locate_template( array( 'members/single/profile/change-avatar.php' ), true );
+			get_template_part( 'members/single/profile/change', 'avatar');
 
 		elseif ( bp_is_active( 'xprofile' ) )
-			locate_template( array( 'members/single/profile/profile-loop.php' ), true );
+			get_template_part( 'members/single/profile/profile', 'loop');
 
 		else
-			locate_template( array( 'members/single/profile/profile-wp.php' ), true );
+			get_template_part( 'members/single/profile/profile', 'wp');
 	?>
 
 </div>

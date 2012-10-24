@@ -17,7 +17,7 @@
 		</header>
 		<?php $categorydesc = category_description(); if ( ! empty( $categorydesc ) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' );
 		while ( have_posts() ) : the_post(); 
-			get_template_part( 'content', get_post_format() );
+			get_template_part( 'parts/content', get_post_format() );
 		endwhile;
 			thatcamp_content_nav( 'nav-below' ); ?>		
 		</div>

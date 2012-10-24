@@ -20,7 +20,7 @@ get_header( 'thatcamp' ); ?>
 			
 		<div id="members-dir-list" class="members dir-list">
 
-				<?php locate_template( array( 'members/members-loop.php' ), true ); ?>
+				<?php get_template_part( 'members/members', 'loop'); ?>
 
 			</div>
 

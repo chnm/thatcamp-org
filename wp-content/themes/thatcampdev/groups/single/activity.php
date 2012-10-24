@@ -26,14 +26,14 @@
 <?php do_action( 'bp_before_group_activity_post_form' ); ?>
 
 <?php if ( is_user_logged_in() && bp_group_is_member() ) : ?>
-	<?php locate_template( array( 'activity/post-form.php'), true ); ?>
+	<?php get_template_part( 'activity/post', 'form'); ?>
 <?php endif; ?>
 
 <?php do_action( 'bp_after_group_activity_post_form' ); ?>
 <?php do_action( 'bp_before_group_activity_content' ); ?>
 
 <div class="activity single-group" role="main">
-	<?php locate_template( array( 'activity/activity-loop.php' ), true ); ?>
+	<?php get_template_part( 'activity/activity', 'loop'); ?>
 </div>
 
 <?php do_action( 'bp_after_group_activity_content' ); ?>

@@ -27,10 +27,10 @@
 <?php
 
 	if ( bp_is_current_action( 'compose' ) ) :
-		locate_template( array( 'members/single/messages/compose.php' ), true );
+		get_template_part( 'members/single/messages/compose');
 
 	elseif ( bp_is_current_action( 'view' ) ) :
-		locate_template( array( 'members/single/messages/single.php' ), true );
+		get_template_part( 'members/single/messages/single'); 
 
 	else :
 		do_action( 'bp_before_member_messages_content' ); ?>
@@ -39,9 +39,9 @@
 
 		<?php
 			if ( bp_is_current_action( 'notices' ) )
-				locate_template( array( 'members/single/messages/notices-loop.php' ), true );
+				get_template_part( 'members/single/messages/notices', 'loop');
 			else
-				locate_template( array( 'members/single/messages/messages-loop.php' ), true );
+				get_template_part( 'members/single/messages/messages', 'loop');
 		?>
 
 	</div>

@@ -13,7 +13,7 @@
 	<div id="content" class="clearfix feature-box thatcamp-stream" role="main">
 		<?php rewind_posts();
 		while ( have_posts() ) : the_post();
-			get_template_part( 'content');
+			get_template_part( 'parts/content');
 		endwhile;?>
 	</div>
 </div>

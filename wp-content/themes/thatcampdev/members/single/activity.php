@@ -20,7 +20,7 @@ do_action( 'bp_before_member_activity_content' ); ?>
 
 <div class="activity" role="main">
 
-	<?php locate_template( array( 'activity/activity-loop.php' ), true ); ?>
+	<?php get_template_part( 'activity/activity', 'loop');  ?>
 
 </div>
 

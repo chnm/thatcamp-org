@@ -36,14 +36,14 @@
 <?php
 
 if ( bp_is_current_action( 'requests' ) ) :
-	 locate_template( array( 'members/single/friends/requests.php' ), true );
+	get_template_part( 'members/single/friends/requests'); 
 
 else :
 	do_action( 'bp_before_member_friends_content' ); ?>
 
 	<div class="members friends">
 
-		<?php locate_template( array( 'members/members-loop.php' ), true ); ?>
+		<?php get_template_part( 'members/members', 'loop'); ?>
 
 	</div>
 

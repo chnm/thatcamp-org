@@ -12,7 +12,7 @@
 		<?php do_action( 'bp_before_attachment' ); ?>
 		<div id="single-view" class="feature-box" role="main">
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); 
-			get_template_part( 'content', 'attachment' );
+			get_template_part( 'parts/content', 'attachment' );
 			thatcamp_content_nav( 'nav-below' );
 			comments_template( '', true ); 
 		endwhile; ?>

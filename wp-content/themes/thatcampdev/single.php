@@ -12,7 +12,7 @@
 		<div id="single-view" role="main">
 		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 			<div class="feature-box">
-				<?php get_template_part( 'content', 'single' );
+				<?php get_template_part( 'parts/content', 'single' );
 				thatcamp_content_nav( 'nav-below' ); ?>
 			</div>
 			<?php comments_template( '', true ); 

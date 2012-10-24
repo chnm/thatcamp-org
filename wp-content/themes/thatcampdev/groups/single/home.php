@@ -9,7 +9,7 @@
 
 			<div id="item-header" role="complementary">
 
-				<?php locate_template( array( 'groups/single/group-header.php' ), true ); ?>
+				<?php get_template_part( 'groups/single/group', 'header'); ?>
 
 			</div>
 
@@ -60,7 +60,7 @@
 					<?php do_action( 'bp_after_group_status_message' );
 
 				else :
-					locate_template( array( 'groups/single/front.php' ), true );
+					get_template_part( 'groups/single/front'); 
 
 				endif;
 

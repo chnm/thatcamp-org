@@ -30,7 +30,7 @@
 		<?php rewind_posts();?>
 		
 		<?php while ( have_posts() ) : the_post();
-			get_template_part( 'content', get_post_format() );
+			get_template_part( 'parts/content', get_post_format() );
 		endwhile; 
 			logicalbones_content_nav( 'nav-below' ); ?>
 		</div>

@@ -8,7 +8,7 @@
 			<?php do_action( 'bp_before_group_plugin_template' ); ?>
 
 			<div id="item-header">
-				<?php locate_template( array( 'groups/single/group-header.php' ), true ); ?>
+				<?php get_template_part( 'groups/single/group', 'header'); ?>
 			</div>
 
 			<div id="item-nav">

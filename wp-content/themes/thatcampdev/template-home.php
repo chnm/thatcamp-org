@@ -48,7 +48,7 @@
 			<h2>Blog posts</h2>
 			<?php rewind_posts();
 			while ( have_posts() ) : the_post();
-				get_template_part( 'content', 'latestposts' );
+				get_template_part( 'parts/content', 'latestposts' );
 			endwhile;?>
 			<a href="" class="button postbutton offset">
 				<span class="button-inner">View all posts</span>

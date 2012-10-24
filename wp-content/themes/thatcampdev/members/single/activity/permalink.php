@@ -8,7 +8,7 @@
 		<ul id="activity-stream" class="activity-list item-list">
 		<?php while ( bp_activities() ) : bp_the_activity(); ?>
 
-			<?php locate_template( array( 'activity/entry.php' ), true ); ?>
+			<?php get_template_part( 'activity/entry');  ?>
 
 		<?php endwhile; ?>
 		</ul>

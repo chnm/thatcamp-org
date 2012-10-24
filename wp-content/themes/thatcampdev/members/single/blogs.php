@@ -33,7 +33,7 @@
 
 <div class="blogs myblogs" role="main">
 
-	<?php locate_template( array( 'blogs/blogs-loop.php' ), true ); ?>
+	<?php get_template_part( 'blogs/blogs', 'loop');   ?>
 
 </div>
 

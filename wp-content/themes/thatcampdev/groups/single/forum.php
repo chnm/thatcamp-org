@@ -3,10 +3,10 @@
 do_action( 'bp_before_group_forum_content' );
 
 if ( bp_is_group_forum_topic_edit() ) :
-	locate_template( array( 'groups/single/forum/edit.php' ), true );
+	get_template_part( 'groups/single/forum/edit');
 
 elseif ( bp_is_group_forum_topic() ) :
-	locate_template( array( 'groups/single/forum/topic.php' ), true );
+	get_template_part( 'groups/single/forum/topic'); 
 
 else : ?>
 
@@ -48,7 +48,7 @@ else : ?>
 
 	<div class="forums single-forum" role="main">
 
-		<?php locate_template( array( 'forums/forums-loop.php' ), true ); ?>
+		<?php get_template_part( 'forums/forums', 'loop');  ?>
 
 	</div>
 <?php endif; ?>

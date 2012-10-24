@@ -22,9 +22,7 @@ get_header( 'thatcamp' ); ?>
 			<?php do_action( 'bp_before_directory_activity_list' ); ?>
 
 			<div class="activity" role="main">
-
-				<?php locate_template( array( 'activity/activity-loop.php' ), true ); ?>
-
+				<?php get_template_part( 'activity/activity', 'loop'); ?>
 			</div>
 
 			<?php do_action( 'bp_after_directory_activity_list' ); ?>

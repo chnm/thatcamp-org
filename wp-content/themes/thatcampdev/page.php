@@ -11,7 +11,7 @@
 	<div id="content">
 		<div id="page" class="feature-box" role="main">
 		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'content', 'page' );?>
+			<?php get_template_part( 'parts/content', 'page' );?>
 		<?php endwhile; ?>
 		</div>
 	</div>

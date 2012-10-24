@@ -69,7 +69,7 @@ get_header( 'thatcamp' ); ?>
 			-->
 			<div id="groups-dir-list" class="groups dir-list">
 
-				<?php locate_template( array( 'groups/groups-loop.php' ), true ); ?>
+				<?php get_template_part( 'groups/groups', 'loop'); ?>
 
 			</div>
 
