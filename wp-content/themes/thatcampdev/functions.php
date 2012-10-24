@@ -26,16 +26,12 @@ function thatcamp_build() {
 	require( get_template_directory() . '/assets/scripts/ajax.php' );
 
 	// template contents and structure functions
-	require( get_template_directory() . '/inc/template-functions.php' );
-	// snippets and 'doing things' collection
-	require( get_template_directory() . '/inc/logical-snippets.php' );
+	require( get_template_directory() . '/functions/template-functions.php' );
 
 	// Language set up
 	load_theme_textdomain('thatcamp', get_template_directory() . '/languages/');
 	
 	add_theme_support( 'thatcamp' );
-	
-	add_theme_support( 'bp-default-responsive' );
 
 	// Add RSS feed links
 	add_theme_support('automatic-feed-links');
@@ -80,7 +76,7 @@ function thatcamp_build() {
 			add_action( 'bp_directory_blogs_actions',  'bp_blogs_visit_blog_button' );
 	}
 	
-	require( get_template_directory() . '/inc/buddypress-functions.php' );
+	require( get_template_directory() . '/functions/buddypress-functions.php' );
 }
 endif;
 
