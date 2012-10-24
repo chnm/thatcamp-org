@@ -10,11 +10,11 @@ jQuery(document).ready(function($){
 					interval	: 500,
 					step		: 1,
 					w320		: {
-						rows	: 3,
+						rows	: 2,
 						columns	: 4
 					},
 					w240		: {
-						rows	: 3,
+						rows	: 2,
 						columns	: 4
 					}
 				} );
