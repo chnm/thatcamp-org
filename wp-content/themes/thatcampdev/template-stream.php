@@ -15,8 +15,15 @@
 
 		<?php
 			$stream_args = array();
-			if ( isset( $_GET['category'] ) )
-				$stream_args['category_name'] = urldecode( $_GET['category'] );
+                        $category_name = $category_slug = '';
+			if ( isset( $_GET['category'] ) ) {
+                                $category_slug = urldecode( $_GET['category'] );
+				$stream_args['category_name'] = $category_slug;
+                                $category = get_term_by( 'slug', $category_slug, 'category' );
+                                if ( $category ) {
+                                        $category_name = $category->name;
+                                }
+                        }
 
 			if ( isset( $_GET['per_page'] ) )
 				$stream_args['posts_per_page'] = intval( $_GET['per_page'] );
@@ -24,6 +31,7 @@
                         $stream_args['paged'] = thatcamp_get_paged();
 		?>
 
+                <h1>THATCamp Stream<?php if ( $category_name ) : ?>: <?php echo esc_html( $category_name ) ?><?php endif ?></h1>
 		<?php $stream_query = new WP_Query( $stream_args ) ?>
 		<?php if ( $stream_query->have_posts() ) :
 			while ( $stream_query->have_posts() ) : $stream_query->the_post();
