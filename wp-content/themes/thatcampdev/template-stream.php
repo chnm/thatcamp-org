@@ -21,8 +21,7 @@
 			if ( isset( $_GET['per_page'] ) )
 				$stream_args['posts_per_page'] = intval( $_GET['per_page'] );
 
-			if ( isset( $_GET['paged'] ) )
-				$stream_args['paged'] = intval( $_GET['paged'] );
+                        $stream_args['paged'] = thatcamp_get_paged();
 		?>
 
 		<?php $stream_query = new WP_Query( $stream_args ) ?>
@@ -34,9 +33,7 @@
 
 		<?php restore_current_blog() ?>
 
-		<?php if ( get_next_posts_link( null, $stream_query->max_num_pages ) ) : ?>
-		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'thatcamp' ), $stream_query->max_num_pages ); ?></div>
-		<?php endif; ?>
+		<div class="nav-previous"><?php thatcamp_next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'thatcamp' ), $stream_query->max_num_pages ); ?></div>
 
 		<?php if ( get_previous_posts_link() ) : ?>
 		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'thatcamp' ) ); ?></div>
