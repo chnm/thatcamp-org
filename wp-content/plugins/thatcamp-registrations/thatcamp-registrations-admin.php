@@ -9,8 +9,27 @@ class Thatcamp_Registrations_Admin {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 	}
 
+	/**
+	 * Catch any incoming requests before the screen is rendered
+	 */
 	function init() {
-	    do_action( 'thatcamp_registrations_admin_init' );
+		if ( isset( $_GET['page'] ) && 'thatcamp-registrations' == $_GET['page'] && current_user_can( 'manage_options' ) ) {
+			if ( isset( $_GET['id'] )&& isset( $_GET['action'] ) && 'spam' == $_GET['action'] ) {
+				check_admin_referer( 'tcspam' );
+				self::delete_spam_registration( intval( $_GET['id'] ) );
+			}
+
+			if ( isset( $_POST['tcr_bulk_action'] ) && isset( $_POST['registration_ids'] ) ) {
+				check_admin_referer( 'tcr_bulk_action' );
+				self::process_bulk_action( $_POST['tcr_bulk_action'], $_POST['registration_ids'] );
+			}
+
+			if ( isset( $_GET['trc_csv'] ) ) {
+				self::render_csv();
+			}
+		}
+
+		do_action( 'thatcamp_registrations_admin_init' );
 	}
 
     function admin_menu() {
@@ -131,7 +150,7 @@ class Thatcamp_Registrations_Admin {
                 	<h3>Registration Text</h3>
                 	<?php echo $registration->application_text; ?>
 
-                	<?php echo $registration->additional_information; ?>
+                	<?php if ( ! empty( $registration->additional_information ) ) : echo $registration->additional_information; endif; ?>
 
                 	<h3>Previous THATCamps</h3>
                 	<?php echo $applicant->previous_thatcamps; ?>
@@ -150,13 +169,6 @@ class Thatcamp_Registrations_Admin {
 
 		<h3>Organization</h3>
 		<?php echo $applicant->user_organization; ?>
-
-		<h3>T-shirt size</h3>
-		<?php echo $applicant->tshirt_size; ?>
-
-		<h3>Dietary preferences</h3>
-		<?php echo $applicant->dietary_preferences; ?>
-
 
 </div>
             <?php
@@ -186,6 +198,32 @@ class Thatcamp_Registrations_Admin {
             </div>
             <?php endif; ?>
 
+	    <?php if ( ! empty( $_GET['success'] ) ) : ?>
+		<div class="updated">
+		<?php
+			switch ( $_GET['success'] ) {
+				case 'accepted' :
+					$message = __( 'Successfully accepted!', 'thatcamp-registrations' );
+					break;
+
+				case 'pending' :
+					$message = __( 'Successfully marked as pending!', 'thatcamp-registrations' );
+					break;
+
+				case 'rejected' :
+					$message = __( 'Successfully rejected!', 'thatcamp-registrations' );
+					break;
+
+				case 'spammed' :
+					$message = __( 'Successfully spammed!', 'thatcamp-registrations' );
+					break;
+			}
+		?>
+
+		<p><?php echo $message ?></p>
+		</div>
+	    <?php endif ?>
+
             <?php
             $bootcampRegistrations = thatcamp_registrations_get_registrations(array('bootcamp' => '1'));
             $registrations = thatcamp_registrations_get_registrations();
@@ -194,22 +232,44 @@ class Thatcamp_Registrations_Admin {
                 <p>There are <?php echo count($registrations); ?> total registrations.</p>
                 <form action="" method="post">
 
+		<div class="tablenav top">
+			<div class="alignleft actions">
+				<select name="tcr_bulk_action">
+					<option selected="selected" value=""><?php _e( 'Bulk Actions', 'thatcamp-registrations' ) ?></option>
+					<option value="mark_accepted"><?php _e( 'Mark Accepted', 'thatcamp-registrations' ) ?></option>
+					<option value="mark_pending"><?php _e( 'Mark Pending', 'thatcamp-registrations' ) ?></option>
+					<option value="mark_rejected"><?php _e( 'Mark Rejected', 'thatcamp-registrations' ) ?></option>
+					<option value="mark_spam"><?php _e( 'Spam', 'thatcamp-registrations' ) ?></option>
+				</select>
+
+				<input type="submit" value="Apply" class="button-secondary action" id="doaction" name="">
+			</div>
+
+			<div class="alignright actions">
+				<a class="button-secondary action" href="<?php echo add_query_arg( 'trc_csv', '1' ) ?>"><?php _e( 'Export to CSV' ) ?></a>
+			</div>
+		</div>
+
                 <table class="widefat fixed" cellspacing="0">
                 <thead>
                 <tr class="thead">
+		    <th id="cb" class="manage-column column-cb check-column" scope="col"><input type="checkbox" /></th>
                     <th>Applicant Name</th>
                     <th>Applicant Email</th>
                     <th>Status</th>
                     <th>View</th>
+                    <th>Mark Spam</th>
                 </tr>
                 </thead>
 
                 <tfoot>
                 <tr class="thead">
+		    <th id="cb" class="manage-column column-cb check-column" scope="col"><input type="checkbox" /></th>
                     <th>Applicant Name</th>
                     <th>Applicant Email</th>
                     <th>Status</th>
                     <th>View</th>
+                    <th>Spam</th>
                 </tr>
                 </tfoot>
 
@@ -217,14 +277,18 @@ class Thatcamp_Registrations_Admin {
                 <?php foreach ( $registrations as $registration ): ?>
                     <tr>
                         <?php $applicant = thatcamp_registrations_get_applicant_info($registration); ?>
+			<th class="check-column"><input type="checkbox" name="registration_ids[]" value="<?php echo intval( $registration->id ) ?>" /></th>
                         <td><?php echo $applicant->first_name; ?> <?php echo $applicant->last_name; ?></td>
                         <td><?php echo $applicant->user_email; ?></td>
                         <td><?php echo ucwords($registration->status); ?></td>
                         <td><a href="admin.php?page=thatcamp-registrations&amp;id=<?php echo $registration->id; ?>">View Full Registration</a></td>
+                        <td><a href="<?php echo wp_nonce_url( add_query_arg( array( 'id' => $registration->id, 'page' => 'thatcamp-registrations', 'action' => 'spam' ), 'admin.php' ), 'tcspam' ) ?>" class="spam" onclick="return confirm('Are you sure you want to delete this registration as spam? There is no undo.');">Spam</a></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
                 </table>
+
+		<?php wp_nonce_field( 'tcr_bulk_action' ) ?>
                 </form>
                 <?php else: ?>
                     <p>You don't have any registrations yet.</p>
@@ -241,17 +305,20 @@ class Thatcamp_Registrations_Admin {
             $newOptions = array(
                 'open_registration'             =>  $_POST['open_registration'],
                 'create_user_accounts'          =>  $_POST['create_user_accounts'],
-                'require_login'                 =>  $_POST['require_login'],
                 'pending_application_email'     =>  $_POST['pending_application_email'],
                 'accepted_application_email'    =>  $_POST['accepted_application_email'],
                 'rejected_application_email'    =>  $_POST['rejected_application_email']
                 );
 
+	    $admin_notify_emails = $_POST['admin_notify_emails'];
+	    $admin_notify_emails = array_map( 'trim', explode( "\n", $admin_notify_emails ) );
+	    $newOptions['admin_notify_emails'] = $admin_notify_emails;
+
             update_option('thatcamp_registrations_options', $newOptions);
 
         }
 
-        $options = get_option('thatcamp_registrations_options');
+        $options = thatcamp_registrations_options();
 
     ?>
         <div class="wrap">
@@ -278,6 +345,15 @@ class Thatcamp_Registrations_Admin {
                                 <option value="0" <?php if($options['create_user_accounts'] == 0) { echo ' selected="selected"';} ?>><?php _e('No'); ?> </option>
                             </select>
                             <p class="description"><?php _e('If &#8220;Yes&#8221;, approving a registration will add the registrant to this site as a user with Author privileges. If &#8220;No&#8221, approving a registration will not add the registrant as a user to this site.', 'thatcamp-registrations'); ?></p>
+                        </td>
+                    </tr>
+
+		    <tr>
+                        <th scope="row"><label for="admin_notify_emails"><?php _e( 'Application notification addresses', 'thatcamp-registrations' ) ?></label></th>
+                        <td>
+                            <textarea name="admin_notify_emails"><?php thatcamp_registrations_application_notification_emails_textarea() ?></textarea>
+
+                            <p class="description"><?php _e('These addresses will receive a notification whenever a new registration is submitted. One per line.', 'thatcamp-registrations'); ?></p>
                         </td>
                     </tr>
 
@@ -338,6 +414,117 @@ class Thatcamp_Registrations_Admin {
         </div>
     <?php
     }
+
+	function delete_spam_registration( $reg_id ) {
+		thatcamp_registrations_delete_registration( $reg_id );
+		$redirect_to = remove_query_arg( array( 'id', 'action', '_wpnonce' ) );
+		$redirect_to = add_query_arg( 'success', 'spammed', $redirect_to );
+		wp_safe_redirect( $redirect_to );
+	}
+
+	function process_bulk_action( $action, $reg_ids ) {
+		$reg_ids = wp_parse_id_list( $reg_ids );
+
+		foreach ( $reg_ids as $reg_id ) {
+			switch( $action ) {
+				case 'mark_accepted' :
+					$status = 'accepted';
+					thatcamp_registrations_process_registrations( $reg_ids, $status );
+					break;
+
+				case 'mark_pending' :
+					$status = 'pending';
+					thatcamp_registrations_process_registrations( $reg_ids, $status );
+					break;
+
+				case 'mark_rejected' :
+					$status = 'rejected';
+					thatcamp_registrations_process_registrations( $reg_ids, $status );
+					break;
+
+				case 'mark_spam' :
+					$status = 'spammed';
+					thatcamp_registrations_delete_registration( $reg_id );
+					break;
+			}
+		}
+
+		$redirect_to = remove_query_arg( array( 'id', 'action', '_wpnonce', 'success' ) );
+		$redirect_to = add_query_arg( 'success', $status, $redirect_to );
+		wp_safe_redirect( $redirect_to );
+	}
+
+	function render_csv() {
+		$registrations = thatcamp_registrations_get_registrations();
+
+		$ud	      = wp_upload_dir();
+		$csv_dir      = trailingslashit( $ud['basedir'] ) . trailingslashit( 'thatcamp-registrations' );
+		$csv_basename = 'registrations-' . date( 'Ymd' ) . '.csv';
+
+		if ( ! is_dir( $csv_dir ) ) {
+			mkdir( $csv_dir );
+		}
+
+		$csv_path = $csv_dir . $csv_basename;
+		$fp = fopen( $csv_path, 'w' );
+
+		// Build an array that will represent the proper column headers
+		$cols = array(
+			array( 'ukey' => 'id', 'title' => 'Registration ID #' ),
+			array( 'ukey' => 'date', 'title' => 'Date' ),
+			array( 'ukey' => 'user_id', 'title' => 'WP User ID' ),
+			array( 'ukey' => 'user_email', 'title' => 'Email' ),
+			array( 'ukey' => 'first_name', 'title' => 'First Name' ),
+			array( 'ukey' => 'last_name', 'title' => 'Last Name' ),
+			array( 'ukey' => 'user_url', 'title' => 'URL' ),
+			array( 'ukey' => 'description', 'title' => 'Description' ),
+			array( 'ukey' => 'previous_thatcamps', 'title' => 'Previous THATCamps' ),
+			array( 'ukey' => 'user_title', 'title' => 'Title' ),
+			array( 'ukey' => 'user_organization', 'title' => 'Organization' ),
+			array( 'ukey' => 'user_twitter', 'title' => 'Twitter' ),
+			array( 'ukey' => 'tshirt_size', 'title' => 'T-shirt Size' ),
+			array( 'ukey' => 'dietary_preferences', 'title' => 'Dietary Preferences' ),
+			array( 'ukey' => 'application_text', 'title' => 'Application Text' ),
+			array( 'ukey' => 'status', 'title' => 'Status' ),
+		);
+
+		// Column headers
+		$headers = wp_list_pluck( $cols, 'title' );
+		fputcsv( $fp, $headers );
+
+		foreach ( $registrations as $reg ) {
+			$reg_array = array();
+			foreach ( $reg as $rkey => $rvalue ) {
+				// applicant_info should be exploded out
+				if ( $rkey == 'applicant_info' ) {
+					$applicant_info = maybe_unserialize( $rvalue );
+					foreach ( $applicant_info as $info_key => $info_value ) {
+						$reg_array[ $info_key ] = $info_value;
+					}
+				} else {
+					$reg_array[ $rkey ] = $rvalue;
+				}
+			}
+
+			// Create a clean array
+			$reg_array_clean = array();
+			foreach ( $cols as $col ) {
+				$user_col_value = isset( $reg_array[ $col['ukey'] ] ) ? $reg_array[ $col['ukey'] ] : '';
+				$reg_array_clean[ $col['ukey'] ] = $user_col_value;
+			}
+			fputcsv( $fp, $reg_array_clean );
+		}
+		fclose( $fp );
+
+		header("Content-type: application/force-download");
+		header('Content-Disposition: inline; filename="' . $csv_path . '"');
+		header("Content-Transfer-Encoding: Binary");
+		header("Content-length: ".filesize($csv_path));
+		header('Content-Type: application/excel');
+		header('Content-Disposition: attachment; filename="'.$csv_basename.'"');
+		readfile($csv_path);
+		exit;
+	}
 }
 
 endif; // class exists
