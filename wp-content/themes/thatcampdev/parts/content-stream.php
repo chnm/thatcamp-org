@@ -23,10 +23,10 @@
 
 				// We need some data about the source blog
 				$source_blog_url = $source_blog_name = $source_blog_link = '';
-				$source_blog_id = get_post_meta( get_the_ID(), 'blogid' );
+				$source_blog_id = get_post_meta( get_the_ID(), 'blogid', true );
 				if ( $source_blog_id ) {
-					$source_blog_url  = get_blog_option( $source_blog_id, 'home' );
-					$source_blog_name = get_blog_option( $source_blog_id, 'blogname' );
+					$source_blog_url  = get_blog_option( $source_blog_id, 'home', true );
+					$source_blog_name = get_blog_option( $source_blog_id, 'blogname', true );
 					$source_blog_link = '<a href="' . $source_blog_url . '">' . $source_blog_name . '</a>';
 				}
 			?>

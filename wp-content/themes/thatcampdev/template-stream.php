@@ -15,16 +15,23 @@
 
 		<?php
 			$stream_args = array();
-			if ( isset( $_GET['category'] ) )
-				$stream_args['category_name'] = urldecode( $_GET['category'] );
+                        $category_name = $category_slug = '';
+			if ( isset( $_GET['category'] ) ) {
+                                $category_slug = urldecode( $_GET['category'] );
+				$stream_args['category_name'] = $category_slug;
+                                $category = get_term_by( 'slug', $category_slug, 'category' );
+                                if ( $category ) {
+                                        $category_name = $category->name;
+                                }
+                        }
 
 			if ( isset( $_GET['per_page'] ) )
 				$stream_args['posts_per_page'] = intval( $_GET['per_page'] );
 
-			if ( isset( $_GET['paged'] ) )
-				$stream_args['paged'] = intval( $_GET['paged'] );
+                        $stream_args['paged'] = thatcamp_get_paged();
 		?>
 
+                <h1>THATCamp Stream<?php if ( $category_name ) : ?>: <?php echo esc_html( $category_name ) ?><?php endif ?></h1>
 		<?php $stream_query = new WP_Query( $stream_args ) ?>
 		<?php if ( $stream_query->have_posts() ) :
 			while ( $stream_query->have_posts() ) : $stream_query->the_post();
@@ -34,9 +41,7 @@
 
 		<?php restore_current_blog() ?>
 
-		<?php if ( get_next_posts_link( null, $stream_query->max_num_pages ) ) : ?>
-		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'thatcamp' ), $stream_query->max_num_pages ); ?></div>
-		<?php endif; ?>
+		<div class="nav-previous"><?php thatcamp_next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'thatcamp' ), $stream_query->max_num_pages ); ?></div>
 
 		<?php if ( get_previous_posts_link() ) : ?>
 		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'thatcamp' ) ); ?></div>
