@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: THATCamp Profile Fields
-Plugin URI: http://thatcampdev.info
+Plugin URI: http://thatcamp.org
 Description: Adds THATCamp-specific fields to user profile.
 Version: 1.1
 Author: Roy Rosenzweig Center for History and New Media
@@ -39,7 +39,7 @@ Note that these profile fields have the same data as that collected in the regis
 
 ?>
 <h3><?php _e("THATCamp Profile Information"); ?></h3>
-<p>The THATCamp profile information you fill out below will be available on all the sites hosted on http://thatcampdev.info for THATCamps that you've been to (not on the sites for THATCamps you haven't been to, and not on THATCamp sites hosted elsewhere, e.g., http://greatlakesthatcampdev.info).</p>
+<p>The THATCamp profile information you fill out below will be available on all the sites hosted on http://thatcamp.org for THATCamps that you've been to (not on the sites for THATCamps you haven't been to, and not on THATCamp sites hosted elsewhere, e.g., http://greatlakesthatcamp.org).</p>
 
 <table class="form-table">
 
@@ -97,43 +97,6 @@ Note that these profile fields have the same data as that collected in the regis
     </td>
     </tr>
  
- <!-- T-shirt size -->
- 
-<tr>
-<th><label for="tshirt_size"><?php _e("T-Shirt Size"); ?></label></th>
-<td>
-    <select name="tshirt_size">
-        <option>Select a size</option>
-        <?php
-        $sizes = array('s', 'm', 'l', 'xl', 'xxl');
-        $cuts = array('womens', 'mens');
-        
-        foreach ($cuts as $cut) {
-            foreach ($sizes as $size) {
-                $value = $cut.'_'.$size;
-                if (get_the_author_meta( 'tshirt_size', $user->ID ) == $value) {
-                    $selected = ' selected="selected"';
-                } else {
-                    $selected = '';
-                }
-                echo '<option value="'.$value.'"'.$selected.'>'. ucwords($cut).' '.strtoupper($size).'</option>';
-            }
-        }
-        ?>
-    </select><br />
-<span class="description"><?php _e("Your preferred t-shirt size."); ?></span>
-</td>
-</tr>
-
- <!-- Dietary preferences -->
-
-<tr>
-<th><label for="dietary_preferences"><?php _e("Dietary Preferences"); ?></label></th>
-<td>
-<textarea name="dietary_preferences" id="dietary_preferences"><?php echo esc_attr( get_the_author_meta( 'dietary_preferences', $user->ID ) ); ?></textarea><br />
-<span class="description"><?php _e("Please let us know if you have any dietary preferences or restrictions, and we'll try our best to accommodate you."); ?></span>
-</td>
-</tr>
 </table><br />
 <?php
 }
@@ -145,8 +108,6 @@ function thatcamp_profile_fields_save($userId)
         update_usermeta( $userId, 'user_title', $_POST['user_title'] );
         update_usermeta( $userId, 'user_organization', $_POST['user_organization'] );
         update_usermeta( $userId, 'user_twitter', $_POST['user_twitter'] );
-        update_usermeta( $userId, 'tshirt_size', $_POST['tshirt_size'] );
-        update_usermeta( $userId, 'dietary_preferences', $_POST['dietary_preferences'] );
     }
     return false;
 }
