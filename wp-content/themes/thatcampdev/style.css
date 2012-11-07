@@ -349,6 +349,9 @@ body {
 #user-section .button {
   float: left;
 }
+#branding {
+  position: relative;
+}
 /*--------------------------------------------------------------
 2.3 - Footer
 --------------------------------------------------------------*/
@@ -1094,6 +1097,7 @@ nav#top-nav {
   display: inline-block;
   margin-top: 1px;
   margin-top: 0.1rem;
+  display: none;
 }
 nav#top-nav ul {
   margin: -5px 0 0 0;
@@ -1309,6 +1313,32 @@ select.mobileMenu {
 }
 #pag-bottom {
   border-top: 1px dashed #333;
+}
+nav#show-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 32px;
+  font-size: 3.2rem;
+  cursor: pointer;
+}
+#responsive-menu {
+  display: none;
+}
+#responsive-menu ul {
+  margin: 0;
+  padding: 0;
+}
+#responsive-menu li {
+  background: #333;
+  border-bottom: 1px dashed #fff;
+  padding: 5px 10px;
+}
+#responsive-menu li a {
+  color: #fff;
+}
+#responsive-menu li:hover {
+  background: #217d72;
 }
 /*--------------------------------------------------------------
 5.0 - WordPress specific
@@ -3186,8 +3216,27 @@ body.register div.page ul {
 @media only screen and (min-width: 992px) {
   
 }
+@media only screen and (min-width: 1140px) {
+  nav#top-nav {
+    display: block;
+  }
+  nav#show-menu {
+    display: none;
+  }
+  #responsive-menu {
+    display: none;
+  }
+}
 @media only screen and (min-width: 1382px) {
-  
+  nav#top-nav {
+    display: block;
+  }
+  nav#show-menu {
+    display: none;
+  }
+  #responsive-menu {
+    display: none;
+  }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   /* Styles */

@@ -81,6 +81,19 @@
 						'container' => ''
 					)); ?>
 				</nav>
+				<nav id="show-menu"><i class="icon-reorder"></i></nav>
+				<div id="responsive-menu">
+					<nav id="responsive-nav" role="navigation">
+						<h3 class="assistive-text"><?php _e( 'Menu', 'thatcamp' ); ?></h3>
+						<div class="skip-link assistive-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'thatcamp' ); ?>"><?php _e( 'Skip to content', 'thatcamp' ); ?></a></div>
+						<?php wp_nav_menu( array(
+							'theme_location' => 'middle', 
+							'menu_class' => 'responsive_menu',
+							'container' => ''
+						)); ?>
+					</nav>
+				</div>
+				
 			<!--<div id="search-bar">
 					<form action="<?php echo bp_search_form_action(); ?>" method="post" id="search-form">
 							<label for="search-terms" class="accessibly-hidden"><?php _e( 'Search for:', 'thatcamp' ); ?></label>

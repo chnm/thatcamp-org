@@ -45,6 +45,7 @@ function thatcamp_build() {
 	// Register navigation menus
 	register_nav_menu('top', __('Top', 'thatcamp'));
 	register_nav_menu('bottom', __('Bottom', 'thatcamp'));
+	register_nav_menu('middle', __('Middle', 'thatcamp'));
 	register_nav_menu('documents', __('Documents', 'thatcamp'));
 
 	// Add post format support
