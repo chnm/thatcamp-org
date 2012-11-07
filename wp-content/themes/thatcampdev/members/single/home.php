@@ -13,14 +13,6 @@ get_header( 'thatcamp' ); ?>
 	<?php get_sidebar( 'profile' ); ?>
 	<div id="primary" class="main-content">
 	<div id="content" role="main">
-		<div id="item-header">
-			<span class="user-nicename">@<?php bp_displayed_user_username(); ?></span>
-		</div>
-		<div class="feature-box">
-			<p>
-				Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-			</p>
-		</div>
 			<div id="item-body">
 				<?php do_action( 'bp_before_member_body' );
 

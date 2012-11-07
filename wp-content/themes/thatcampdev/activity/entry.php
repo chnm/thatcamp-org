@@ -20,6 +20,37 @@
 				<?php bp_activity_avatar(); ?>
 			</a>
 	</div>
+	<?php if ( is_user_logged_in() ) : ?>
+		
+		<div class="activity-meta">
+
+			<?php if ( bp_activity_can_comment() ) : ?>
+
+				<a href="<?php bp_get_activity_comment_link(); ?>" class="button acomment-reply bp-primary-action" id="acomment-comment-<?php bp_activity_id(); ?>"><?php printf( __( 'Comment <span>%s</span>', 'thatcamp' ), bp_activity_get_comment_count() ); ?></a>
+
+			<?php endif; ?>
+
+			<?php if ( bp_activity_can_favorite() ) : ?>
+
+				<?php if ( !bp_get_activity_is_favorite() ) : ?>
+
+					<a href="<?php bp_activity_favorite_link(); ?>" class="button fav bp-secondary-action" title="<?php esc_attr_e( 'Mark as Favorite', 'thatcamp' ); ?>"><?php _e( 'Favorite', 'thatcamp' ); ?></a>
+
+				<?php else : ?>
+
+					<a href="<?php bp_activity_unfavorite_link(); ?>" class="button unfav bp-secondary-action" title="<?php esc_attr_e( 'Remove Favorite', 'thatcamp' ); ?>"><?php _e( 'Remove Favorite', 'thatcamp' ); ?></a>
+
+				<?php endif; ?>
+
+			<?php endif; ?>
+
+			<?php if ( bp_activity_user_can_delete() ) bp_activity_delete_link(); ?>
+
+			<?php do_action( 'bp_activity_entry_meta' ); ?>
+
+		</div>
+		
+	<?php endif; ?>
 
 	<div class="activity-content">
 
@@ -48,38 +79,6 @@
 		<?php endif; ?>
 
 		<?php do_action( 'bp_activity_entry_content' ); ?>
-
-		<?php if ( is_user_logged_in() ) : ?>
-			<!--
-			<div class="activity-meta">
-
-				<?php if ( bp_activity_can_comment() ) : ?>
-
-					<a href="<?php bp_get_activity_comment_link(); ?>" class="button acomment-reply bp-primary-action" id="acomment-comment-<?php bp_activity_id(); ?>"><?php printf( __( 'Comment <span>%s</span>', 'thatcamp' ), bp_activity_get_comment_count() ); ?></a>
-
-				<?php endif; ?>
-
-				<?php if ( bp_activity_can_favorite() ) : ?>
-
-					<?php if ( !bp_get_activity_is_favorite() ) : ?>
-
-						<a href="<?php bp_activity_favorite_link(); ?>" class="button fav bp-secondary-action" title="<?php esc_attr_e( 'Mark as Favorite', 'thatcamp' ); ?>"><?php _e( 'Favorite', 'thatcamp' ); ?></a>
-
-					<?php else : ?>
-
-						<a href="<?php bp_activity_unfavorite_link(); ?>" class="button unfav bp-secondary-action" title="<?php esc_attr_e( 'Remove Favorite', 'thatcamp' ); ?>"><?php _e( 'Remove Favorite', 'thatcamp' ); ?></a>
-
-					<?php endif; ?>
-
-				<?php endif; ?>
-
-				<?php if ( bp_activity_user_can_delete() ) bp_activity_delete_link(); ?>
-
-				<?php do_action( 'bp_activity_entry_meta' ); ?>
-
-			</div>
-			-->
-		<?php endif; ?>
 
 	</div>
 

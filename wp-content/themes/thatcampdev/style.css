@@ -1712,15 +1712,7 @@ form#whats-new-form h5 {
   font-size: 12px;
   font-size: 1.2rem;
   margin: 0;
-  margin-left: 76px;
   padding: 0 0 3px 0;
-}
-form#whats-new-form #whats-new-avatar {
-  float: left;
-}
-form#whats-new-form #whats-new-content {
-  margin-left: 54px;
-  padding-left: 22px;
 }
 form#whats-new-form textarea {
   font-size: 14px;
@@ -1728,9 +1720,14 @@ form#whats-new-form textarea {
   height: 20px;
   padding: 6px;
   width: 98%;
+  border: none;
 }
 body.no-js form#whats-new-form textarea {
   height: 50px;
+}
+form#whats-new-form {
+  background: #f3efe6;
+  padding: 20px;
 }
 form#whats-new-form #whats-new-options select {
   max-width: 200px;
@@ -1925,6 +1922,30 @@ body.activity-permalink .activity-content blockquote {
   margin: 15px 0;
   padding: 10px 15px;
   text-align: center;
+}
+.activity-meta {
+  float: right;
+  line-height: 50px;
+}
+.activity-meta a {
+  text-indent: 100%;
+  height: 40px;
+  width: 40px;
+  overflow: hidden;
+  float: right;
+}
+a.acomment-reply {
+  background: url('assets/images/icon-nine.png') no-repeat;
+}
+a.fav {
+  background: url('assets/images/icon-eight.png') no-repeat;
+}
+a.unfav {
+  background: url('assets/images/icon-eighthover.png') no-repeat;
+}
+.activity-meta .button {
+  padding: 0;
+  margin: 0;
 }
 /*--------------------------------------------------------------
 6.1.2 - Activity Comments

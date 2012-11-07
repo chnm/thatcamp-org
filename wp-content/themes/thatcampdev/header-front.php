@@ -110,9 +110,9 @@
                   $i = 1;
                   $directory = '/wp-content/themes/thatcampdev/assets/';
 
-                  while ( $i <= 50 ) {
+                  while ( $i <= 30 ) {
 
-                      echo '<li><img src="' . $directory . '/images/medium/' . $i . '.jpg" alt="Decorative Image ' . $i . '"/></li>';
+                      echo '<li><a href="#"><img src="' . $directory . '/images/medium/' . $i . '.jpg" alt="Decorative Image ' . $i . '"/></a></li>';
                       $i++;
                   }
 
