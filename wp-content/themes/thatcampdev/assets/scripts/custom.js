@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
 			
 	$( '#ri-grid' ).gridrotator( {
 		rows		: 2,
-		columns		: 12,
+		columns		: 15,
 		animType	: 'fadeInOut',
 		animSpeed	: 1000,
 		interval	: 600,

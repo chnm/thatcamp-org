@@ -83,19 +83,19 @@
 
 	$.GridRotator.defaults	= {
 		// number of rows
-		rows			: 2,
+		rows			: 4,
 		// number of columns 
 		columns			: 10,
 		w1024			: {
-			rows	: 2,
+			rows	: 3,
 			columns	: 8
 		},
 		w768			: {
-			rows	: 2,
+			rows	: 3,
 			columns	: 7
 		},
 		w480			: {
-			rows	: 2,
+			rows	: 3,
 			columns	: 5
 		},
 		w320			: {
