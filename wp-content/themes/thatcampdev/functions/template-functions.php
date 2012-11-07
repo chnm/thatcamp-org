@@ -45,12 +45,12 @@ function thatcamp_comment( $comment, $args, $depth ) {
 		?>
 	<li class="article-pingback">
 		<p><?php _e( 'Pingback:', 'thatcamp'); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'thatcamp'), ' ' ); ?></p>
-		<?php break; 
+		<?php break;
 		default:
 		// Proceed with normal comments.
 		global $post;
 	?>
-	
+
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 		<article id="comment-<?php comment_ID(); ?>">
 			<div class="comment-author vcard">
@@ -78,12 +78,12 @@ function thatcamp_comment( $comment, $args, $depth ) {
 					<?php
 						printf( __( '%1$s at %2$s', '_s' ), get_comment_date(), get_comment_time() ); ?>
 					</time></a>
-					</div>	
+					</div>
 				<?php if ( $comment->comment_approved == '0' ) : ?>
 					<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'thatcamp' ); ?></em>
 				<?php endif; ?>
-		</footer>	
-		<div class="comment-body">	
+		</footer>
+		<div class="comment-body">
 			<?php comment_text(); ?>
 		</div>
 		<div class="comment-reply">
@@ -94,11 +94,38 @@ function thatcamp_comment( $comment, $args, $depth ) {
 	endswitch;
 }
 endif;
-// thatcamp fallback menu 
+// thatcamp fallback menu
 function thatcamp_fallback_menu() {
 	echo '<ul class="topmenu">';
     wp_list_pages('sort_column=menu_order&title_li=');
 	echo '</ul>';
 };
+
+function thatcamp_next_posts_link( $link_text, $max_pages ) {
+        $paged = thatcamp_get_paged();
+
+        if ( $paged >= $max_pages ) {
+                return;
+        }
+
+        $p = $paged + 1;
+        if ( false !== strpos( wp_guess_url(), '/page/' ) ) {
+                $url = preg_replace( '|/page/[0-9]+/|', '/page/' . $p . '/', wp_guess_url() );
+        } else {
+                $url = add_query_arg( 'paged', $p, wp_guess_url() );
+        }
+
+        echo '<a href="' . $url . '">' . $link_text . '</a>';
+}
+
+function thatcamp_get_paged() {
+        global $paged;
+
+        if ( ! $paged ) {
+                $paged = 1;
+        }
+
+        return $paged;
+}
 
 ?>

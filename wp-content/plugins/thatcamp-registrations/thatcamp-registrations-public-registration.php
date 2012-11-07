@@ -41,6 +41,10 @@ class Thatcamp_Registrations_Public_Registration {
                 $alerts['application_text'] = __('Please tell us why you want to come to THATCamp. What you write here will NOT be publicly displayed.', 'thatcamp-registrations');
             }
 
+	    if ( ! empty( $_POST['tcppl-field'] ) ) {
+	        $alerts['spammer'] = __( "It looks like you filled in the spammer field. No account for you!", 'thatcamp-registrations' );
+	    }
+
             // User email is required.
             if (!is_user_logged_in()) {
                 if ( empty( $_POST['first_name']) ) {
@@ -93,20 +97,20 @@ class Thatcamp_Registrations_Public_Registration {
 
 	    // Nudge the user to log in
 	    if ( ! is_user_logged_in() ) {
-		    echo "<h3>Already have a THATCamp account?</h3>";
-		    echo "<p>If you've attended a THATCamp in the past, you probably already have an account on thatcamp.org. <a href='<?php echo $login_link ?>'>Log in</a> and we'll pre-fill some of your information for you.</p>";
+		    echo "<h3>" . __( "Already have a THATCamp account?", 'thatcamp-registrations' ) . "</h3>";
+		    echo "<p>" . sprintf( __( "If you've attended a THATCamp in the past, you probably already have an account on thatcamp.org. <a href='%s'>Log in</a> and we'll pre-fill some of your information for you.", 'thatcamp-registrations' ), $login_link ) . "</p>";
 	    } else {
-		    echo "<h3>Welcome back!</h3>";
-		    echo sprintf( '<p>You are logged in as <strong>%1$s</strong>, using the the email address <strong>%2$s</strong></p>', $this->current_user->display_name, $this->current_user->user_email );
+		    echo "<h3>" . __( "Welcome back!", 'thatcamp-registrations' ) . "</h3>";
+		    echo "<p>" . sprintf( __( 'You are logged in as <strong>%1$s</strong>, using the the email address <strong>%2$s</strong>', 'thatcamp-registrations' ), $this->current_user->display_name, $this->current_user->user_email ) . "</p>";
 	    }
 
             echo '<form method="post" action="">';
 
-            $this->_application_form();
+	    $this->_application_form();
 
-            // If user login is not required, display the user info form.
-            if ( !thatcamp_registrations_user_required() && !is_user_logged_in()) {
-                $this->_user_info_form();
+	    // If user login is not required, display the user info form.
+	    if ( !thatcamp_registrations_user_required() && !is_user_logged_in()) {
+		    $this->_user_info_form();
             } elseif (is_user_logged_in()) {
                 echo '<input type="hidden" name="user_id" value="'. $this->current_user->ID .'" />';
                 echo '<input type="hidden" name="user_email" value="'. $this->current_user->user_email .'" />';
@@ -123,15 +127,15 @@ class Thatcamp_Registrations_Public_Registration {
     <fieldset>
         <legend>Personal Information</legend>
         <div>
-            <label for="first_name"><?php _e('First Name'); ?>*</label><br />
+            <label for="first_name"><?php _e('First Name'); ?>* (required)</label><br />
             <input type="text" name="first_name" value="<?php echo $this->current_user->first_name; ?>" class="textfield" />
         </div>
         <div>
-            <label for="last_name"><?php _e('Last Name'); ?>*</label><br />
+            <label for="last_name"><?php _e('Last Name'); ?>* (required)</label><br />
             <input type="text" name="last_name" value="<?php echo @$this->current_user->last_name; ?>" class="textfield" />
         </div>
         <div>
-            <label for="user_email"><?php _e('Email'); ?>*</label><br />
+            <label for="user_email"><?php _e('Email'); ?>* (required)</label><br />
             <input type="text" name="user_email" value="<?php echo @$this->current_user->user_email; ?>" class="textfield" />
         </div>
         <div>
@@ -169,27 +173,16 @@ class Thatcamp_Registrations_Public_Registration {
             <p class="explanation"><?php _e('Tell us a little about yourself: your background with the humanities and/or technology, your research or professional interests, your opinion of Nicholas Carr or Slavoj Žižek, your best score at Galaga, and so forth.', 'thatcamp-registrations'); ?></p>
             <textarea cols="45" rows="8" name="description"><?php echo @$this->current_user->description; ?></textarea>
         </div>
-        <div>
-          <label for="tshirt_size"><?php _e('T-shirt Size (not all THATCamps provide t-shirts, but many do)', 'thatcamp-registrations'); ?></label><br/>
-	<select name="tshirt_size" value="<?php echo @$this->current_user->tshirt_size; ?>">
-	<option>Select a t-shirt size</option>
-	<option value="mens_s">Men's Small</option>
-	<option value="mens_m">Men's Medium</option>
-	<option value="mens_l">Men's Large</option>
-	<option value="mens_xl">Men's Extra Large</option>
-	<option value="mens_xxl">Men's Extra Extra Large</option>
-	<option value="womens_s">Women's Small</option>
-	<option value="womens_m">Women's Medium</option>
-	<option value="womens_l">Women's Large</option>
-	<option value="womens_xl">Women's Extra Large</option>
-	<option value="womens_xxl">Women's Extra Extra Large</option>
-	</select>
+
+	<style type="text/css">
+		#tcppl { display: none; visibility: hidden; }
+	</style>
+
+	<div id="tcppl">
+		<label for="tcppl-field"><?php _e( "This field should be left blank. It's a trap for spambots.", 'thatcamp-registrations' ) ?></label>
+		<input type="text" id="tcppl-field" name="tcppl-field" />
 	</div>
-        <div>
-            <label for="dietary_preferences"><?php _e('Dietary Preferences'); ?></label><br/>
-            <p class="explanation"><?php _e('Let us know if you have dietary needs or preferences.', 'thatcamp-registrations'); ?></p>
-            <textarea cols="45" rows="8" name="dietary_preferences"><?php echo @$this->current_user->dietary_preferences; ?></textarea>
-        </div>
+        <!-- Removed t-shirt size and dietary preferences fields. 10/17/2012 AF -->
     </fieldset>
     <?php
     }
@@ -199,10 +192,9 @@ class Thatcamp_Registrations_Public_Registration {
 	<fieldset>
 	<legend>Registration Information</legend>
 	<div>
-	<label for="application_text"><?php _e('Why do you want to come to THATCamp?', 'thatcamp-registrations'); ?>*</label><br />
+	<label for="application_text"><?php _e('Why do you want to come to THATCamp?', 'thatcamp-registrations'); ?>* (required)</label><br />
 	<p class="explanation">
-	<?php _e('In a few sentences, no more than a couple of paragraphs, please
-	tell us why you want to come to THATCamp. You might tell us what task
+	<?php _e('In a few sentences, please tell us why you want to come to THATCamp. You might tell us what task
 	you want to accomplish, what problem you want to solve, what new
 	perspective you want to understand, what issue you want to discuss, or
 	what skill you want to learn. Remember, though: no paper proposals!

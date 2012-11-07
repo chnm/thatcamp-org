@@ -38,5 +38,5 @@ get_header( 'thatcamp' ); ?>
 
 	<?php do_action( 'bp_after_directory_activity_page' ); ?>
 
-<?php get_sidebar( 'dummycontent' ); ?>
+<?php get_sidebar( 'activity' ); ?>
 <?php get_footer( 'thatcamp' ); ?>
