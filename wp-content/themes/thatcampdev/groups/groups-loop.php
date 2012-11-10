@@ -15,12 +15,6 @@
 
 	<div id="pag-top" class="pagination">
 
-		<div class="pag-count" id="group-dir-count-top">
-
-			<?php bp_groups_pagination_count(); ?>
-
-		</div>
-
 		<div class="pagination-links" id="group-dir-pag-top">
 
 			<?php bp_groups_pagination_links(); ?>
@@ -36,10 +30,7 @@
 	<?php while ( bp_groups() ) : bp_the_group(); ?>
 
 		<li>
-			<div class="item-avatar">
-				<a href="<?php thatcamp_camp_permalink(); ?>"><?php bp_group_avatar( 'type=thumb&width=50&height=50' ); ?></a>
-			</div>
-
+			
 			<div class="item">
 				<div class="item-title"><a href="<?php thatcamp_camp_permalink(); ?>"><?php bp_group_name(); ?></a></div>
 				<div class="item-meta"><span class="activity"><?php printf( __( 'active %s', 'thatcamp' ), bp_get_group_last_active() ); ?></span></div>
