@@ -326,7 +326,7 @@ body {
   color: #ffffff;
   padding: 20px 0;
 }
-#site-logo {
+#site-logo a {
   background: url('assets/images/thatcamp-logo.png') no-repeat;
   text-indent: 100%;
   height: 80px;
