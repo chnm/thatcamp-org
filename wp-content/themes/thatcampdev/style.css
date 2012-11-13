@@ -1204,6 +1204,7 @@ nav#top-nav li ul {
   margin: 0;
   z-index: 1;
   background: #333;
+  padding: 0;
 }
 nav#top-nav li:hover ul {
   display: block;
