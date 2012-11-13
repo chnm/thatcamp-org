@@ -287,7 +287,7 @@ body {
 #sitebar-wrapper,
 #about-wrapper {
   background: url('assets/images/classy_fabric.png');
-  padding: 10px 0;
+  padding: 12px 0 0 0;
   *zoom: 1;
   zoom: 1;
 }
@@ -1001,14 +1001,18 @@ a:hover.button {
   color: #333;
 }
 .campbutton {
-  background: url('assets/images/thatcamp-greenbutton.jpg');
+  background: #668800 url('assets/images/thatcamp-greenbutton.jpg');
   border: 3px solid #668800;
+  opacity: 1;
 }
 a.button.campbutton,
 a:visited.button.campbutton,
 a:link.button.campbutton,
 a:hover.button.campbutton {
   text-decoration: -1px -1px 0px #668800;
+}
+.button:hover {
+  opacity: 0.9;
 }
 .postbutton {
   background: url('assets/images/thatcamp-redbutton.jpg');
@@ -1032,6 +1036,31 @@ a:hover.button.socialbutton {
 }
 .offset {
   float: right;
+}
+#sidebar-login-form label {
+  display: none;
+}
+#sidebar-login-form input {
+  float: left;
+  margin: 0 10px 0 0;
+}
+#sidebar-login-form {
+  float: left;
+  *zoom: 1;
+  zoom: 1;
+}
+#sidebar-login-form:before,
+#sidebar-login-form:after {
+  display: table;
+  content: "";
+}
+#sidebar-login-form:after {
+  clear: both;
+}
+#sitebar #search-submit,
+#sitebar #sidebar-wp-submit {
+  background: #111;
+  padding: 5px 10px;
 }
 /*--------------------------------------------------------------
 4.0 - Navigation
@@ -2281,8 +2310,21 @@ ul.button-nav li.current a {
 }
 .standard-form#sidebar-login-form input[type=text],
 .standard-form#sidebar-login-form input[type=password] {
-  padding: 4px;
-  width: 95%;
+  padding: 2px 4px;
+  width: 30%;
+  background: #222;
+  border: 1px solid #111;
+}
+#search-bar {
+  float: right;
+  width: 45%;
+}
+#search-bar input {
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 2px 4px;
+  background: #222;
+  border: 1px solid #111;
 }
 .standard-form #basic-details-section input[type=password],
 .standard-form #blog-details-section input#signup_blog_url {

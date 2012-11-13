@@ -37,24 +37,12 @@
 
 					<?php do_action( 'bp_before_sidebar_login_form' ); ?>
 
-				<!--	<?php if ( bp_get_signup_allowed() ) : ?>
-		
-						<p id="login-text">
-
-							<?php printf( __( 'Please <a href="%s" title="Create an account">create an account</a> to get started.', 'thatcamp' ), bp_get_signup_page() ); ?>
-
-						</p>
-
-					<?php endif; ?>
-
 					<form name="login-form" id="sidebar-login-form" class="standard-form" action="<?php echo site_url( 'wp-login.php', 'login_post' ); ?>" method="post">
-						<label><?php _e( 'Username', 'thatcamp' ); ?><br />
-						<input type="text" name="log" id="sidebar-user-login" class="input" value="<?php if ( isset( $user_login) ) echo esc_attr(stripslashes($user_login)); ?>" tabindex="97" /></label>
+						<label><?php _e( 'Username', 'thatcamp' ); ?></label>
+						<input type="text" name="log" id="sidebar-user-login" class="input" value="<?php if ( isset( $user_login) ) echo esc_attr(stripslashes($user_login)); ?>" tabindex="97" placeholder="Username" />
 
-						<label><?php _e( 'Password', 'thatcamp' ); ?><br />
-						<input type="password" name="pwd" id="sidebar-user-pass" class="input" value="" tabindex="98" /></label>
-
-						<p class="forgetmenot"><label><input name="rememberme" type="checkbox" id="sidebar-rememberme" value="forever" tabindex="99" /> <?php _e( 'Remember Me', 'thatcamp' ); ?></label></p>
+						<label><?php _e( 'Password', 'thatcamp' ); ?></label>
+						<input type="password" name="pwd" id="sidebar-user-pass" class="input" value="" tabindex="98" />
 
 						<?php do_action( 'bp_sidebar_login_form' ); ?>
 						<input type="submit" name="wp-submit" id="sidebar-wp-submit" value="<?php _e( 'Log In', 'thatcamp' ); ?>" tabindex="100" />
@@ -62,9 +50,20 @@
 					</form>
 
 					<?php do_action( 'bp_after_sidebar_login_form' ); ?>
-					-->
+				
 				<?php endif; ?>
 			</div>
+			<div id="search-bar">
+					<form action="<?php echo bp_search_form_action(); ?>" method="post" id="search-form">
+							<input type="text" id="search-terms" name="search-terms" placeholder="Search" value="<?php echo isset( $_REQUEST['s'] ) ? esc_attr( $_REQUEST['s'] ) : ''; ?>" />
+
+						<input type="submit" name="search-submit" id="search-submit" value="<?php _e( 'Search', 'thatcamp' ); ?>" />
+
+							<?php wp_nonce_field( 'bp_search_form' ); ?>
+					</form>
+				<?php do_action( 'bp_search_login_bar' ); ?>
+			</div>
+			
 		</div>
 	</div>
 	<div id="header-wrapper">	
@@ -93,20 +92,6 @@
 						)); ?>
 					</nav>
 				</div>
-				
-			<!--<div id="search-bar">
-					<form action="<?php echo bp_search_form_action(); ?>" method="post" id="search-form">
-							<label for="search-terms" class="accessibly-hidden"><?php _e( 'Search for:', 'thatcamp' ); ?></label>
-							<input type="text" id="search-terms" name="search-terms" value="<?php echo isset( $_REQUEST['s'] ) ? esc_attr( $_REQUEST['s'] ) : ''; ?>" />
-
-							<?php echo bp_search_form_type_select(); ?>
-
-							<input type="submit" name="search-submit" id="search-submit" value="<?php _e( 'Search', 'thatcamp' ); ?>" />
-
-							<?php wp_nonce_field( 'bp_search_form' ); ?>
-					</form>
-				<?php do_action( 'bp_search_login_bar' ); ?>
-			</div>-->
 			<?php do_action( 'bp_header' ); ?>
 		</header>
 		<?php do_action( 'bp_after_header'     ); ?>

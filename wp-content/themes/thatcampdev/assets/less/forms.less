@@ -135,11 +135,16 @@ a.button, a:visited.button, a:link.button, a:hover.button{
 	color:#333;
 }
 .campbutton{
-	background: url('assets/images/thatcamp-greenbutton.jpg');
+	background: @greenThatcampDark url('assets/images/thatcamp-greenbutton.jpg');
 	border: 3px solid @greenThatcampDark;
+	opacity: 1;
 }
 a.button.campbutton, a:visited.button.campbutton, a:link.button.campbutton, a:hover.button.campbutton{
 	text-decoration: -1px -1px 0px @greenThatcampDark;
+}
+
+.button:hover{
+	opacity: 0.9;
 }
 
 .postbutton{
@@ -160,4 +165,23 @@ a.button.socialbutton, a:visited.button.socialbutton, a:link.button.socialbutton
 
 .offset{
 	float: right;
+}
+
+#sidebar-login-form label{
+	display: none;
+}
+
+#sidebar-login-form input{
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#sidebar-login-form{
+	float: left;
+	.clearfix;
+}
+
+#sitebar #search-submit, #sitebar #sidebar-wp-submit{
+	background: #111;
+	padding: 5px 10px;
 }
