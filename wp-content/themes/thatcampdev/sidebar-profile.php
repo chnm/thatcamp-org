@@ -15,6 +15,19 @@
 	</div>
 	<div id="profile-right" role="complementary">
 		<?php locate_template( array( 'members/single/member-header.php' ), true ); ?>
+		<div id="item-header-content">
+			<?php do_action( 'bp_before_member_header_meta' ); ?>
+			<div id="item-meta">
+				<div id="item-buttons">
+					<?php do_action( 'bp_member_header_actions' ); ?>
+				</div>
+				<?php
+				 do_action( 'bp_profile_header_meta' );
+				 ?>
+			</div>
+		</div>
+
+		
 	<div id="subnav" class="item-list-tabs no-ajax" role="navigation">
 	<ul>
 		<li id="activity-filter-select" class="last">
