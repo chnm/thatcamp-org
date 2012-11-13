@@ -1729,7 +1729,7 @@ dd.wp-caption p.wp-caption-text,
   margin: 0;
 }
 .widget li {
-  list-style: none;
+  list-style: circle;
 }
 .twitter .twitter-item {
   position: relative;
