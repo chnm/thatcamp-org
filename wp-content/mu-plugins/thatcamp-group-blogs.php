@@ -186,23 +186,59 @@ function thatcamp_camp_date( $group_id = 0, $format = '' ) {
 			return '';
 		}
 
-		$formats = array( 'text', 'mmddyy' );
+		$formats = array( 'text', 'mmddyy', 'unix' );
 		if ( ! in_array( $format, $formats ) ) {
 			$format = 'text';
 		}
 
 		switch ( $format ) {
 			case 'text' :
-				$date_format = "F j, Y";
+				$date = date( "F j, Y", $date );
 				break;
 
 			case 'mmddyy' :
-				$date_format = "m/d/Y";
+				$date = date( "m/d/Y", $date );
+				break;
+
+			case 'unix' :
+				$date = date( "U", intval( $date ) );
 				break;
 		}
 
-		return date( $date_format, $date );
+		return $date;
 	}
+
+/**
+ * Is a camp in the future?
+ *
+ * We do a little adjustment to make sure that camps happening today show up in this list
+ */
+function thatcamp_is_in_the_future() {
+	 $camp_date = thatcamp_get_camp_date( bp_get_group_id(), 'unix' );
+	 $date = new DateTime( '@' . $camp_date );
+	 $date->add( new DateInterval( 'P1D' ) );
+	 return $date->getTimestamp() >= time();
+}
+
+/**
+ * Get a list of group ids that don't have dates associated with them
+ */
+function thatcamp_groups_without_dates() {
+	global $bp, $wpdb;
+
+	$all_groups  = array_map( 'intval', $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name}" ) );
+	$date_groups = array_map( 'intval', $wpdb->get_col( "SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date'" ) );
+
+	// Misc exceptions. Add more here if you want
+	$except = array( bp_get_root_blog_id() );
+
+	if ( function_exists( 'get_sitewide_tags_option' ) ) {
+		$except[] = get_sitewide_tags_option( 'tags_blog_id' );
+	}
+
+	//var_dump( array_diff( $all_groups, $date_groups, $except ));
+	return array_diff( $all_groups, $date_groups, $except );
+}
 
 /**
  * Does this THATCamp have workshops?
