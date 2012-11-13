@@ -36,7 +36,6 @@
 			<article class="camp-listitem">
 				<div class="camp-listdate"><?php thatcamp_camp_date() ?></div>
 				<h3><a href="<?php thatcamp_camp_permalink() ?>" class="camplink"><?php bp_group_name() ?></a></h3>
-				<p class="camp-listmeta">Workshops <span class="camp-list<?php thatcamp_camp_has_workshops() ?>"><?php thatcamp_camp_has_workshops() ?></span></p>
 			</article>
 
 			<?php endwhile; endif ?>
