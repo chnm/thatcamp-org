@@ -9,18 +9,6 @@
 
 ?>
 
-<?php if ( bp_is_my_profile() ) : ?>
-
-	<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
-		<ul>
-
-			<?php bp_get_options_nav(); ?>
-
-		</ul>
-	</div>
-
-<?php endif; ?>
-
 <?php do_action( 'bp_before_profile_content' ); ?>
 
 <div class="profile" role="main">

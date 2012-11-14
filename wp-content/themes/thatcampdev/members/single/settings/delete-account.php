@@ -21,15 +21,6 @@
 
 				<?php do_action( 'bp_before_member_body' ); ?>
 
-				<div class="item-list-tabs no-ajax" id="subnav">
-					<ul>
-
-						<?php bp_get_options_nav(); ?>
-
-						<?php do_action( 'bp_member_plugin_options_nav' ); ?>
-
-					</ul>
-				</div>
 
 				<h3><?php _e( 'Delete Account', 'thatcamp' ); ?></h3>
 
