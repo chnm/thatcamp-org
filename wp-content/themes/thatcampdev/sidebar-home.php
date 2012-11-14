@@ -12,12 +12,12 @@
 	<!-- demo sidebar content -->
 	
 	<a href="" class="button campbutton">
-		<span class="button-inner">Organise a THATCamp</span>
+		<span class="button-inner"><?php _e( 'Oraganize A THATCamp', 'thatcamp' ); ?></span>
 	</a>
 		
-	<a class="email-thatcamplink">Contact Us</a>
+	<a class="email-thatcamplink"><?php _e( 'Contact Us', 'thatcamp' ); ?></a>
 	
-	<a class="rss-thatcamplink">RSS</a>
+	<a class="rss-thatcamplink"><?php _e( 'RSS', 'thatcamp' ); ?></a>
 	
 
 	<?php if ( is_active_sidebar( 'sidebar-home' ) ) : ?>
@@ -29,7 +29,7 @@
 			<?php dynamic_sidebar( 'sidebar-twitter' ); ?>
 		<?php endif; ?>
 		<a href="" class="button socialbutton">
-			<span class="button-inner">Follow us</span>
+			<span class="button-inner"><?php _e( 'Follow Us', 'thatcamp' ); ?>s</span>
 		</a>
 	</div>
 	

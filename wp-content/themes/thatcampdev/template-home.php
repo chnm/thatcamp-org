@@ -11,7 +11,7 @@
 <div id="primary" class="main-content">
 	<div id="content" role="main">
 		<div id="upcoming-camps" class="feature-box">
-			<h2>Upcoming THATCamps</h2>
+			<h2><?php _e( 'Upcoming THATCamps', 'thatcamp' ); ?></h2>
 
 			<?php /* Set up the groups loop */ ?>
 			<?php
@@ -44,13 +44,13 @@
 		</div>
 
 		<div id="latest-posts" class="feature-box">
-			<h2>Blog posts</h2>
+			<h2><?php _e( 'Blog Posts', 'thatcamp' ); ?></h2>
 			<?php rewind_posts();
 			while ( have_posts() ) : the_post();
 				get_template_part( 'parts/content', 'latestposts' );
 			endwhile;?>
 			<a href="" class="button postbutton offset">
-				<span class="button-inner">View all posts</span>
+				<span class="button-inner"><?php _e( 'View All Posts', 'thatcamp' ); ?></span>
 			</a>
 		</div>
 	</div>

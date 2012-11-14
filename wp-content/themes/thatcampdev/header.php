@@ -69,7 +69,7 @@
 	<div id="header-wrapper">	
 		<header id="branding" class="wrapper" role="banner">
 				<div id="site-logo">
-					<a href="<?php echo site_url(); ?>">ThatCamp</a>
+					<a href="<?php echo site_url(); ?>"><?php _e( 'THATCamp', 'thatcamp' ); ?></a>
 				</div>
 				<nav id="top-nav" role="navigation">
 					<h3 class="assistive-text"><?php _e( 'Menu', 'thatcamp' ); ?></h3>
