@@ -29,6 +29,7 @@
 
 		
 	<div id="subnav" class="item-list-tabs no-ajax" role="navigation">
+		<?php if ( bp_is_user_activity()): ?>
 	<ul>
 		<li id="activity-filter-select" class="last">
 			<label for="activity-filter-by"><?php _e( 'Show:', 'thatcamp' ); ?></label>
@@ -72,6 +73,27 @@
 
 			</select>
 		</li>
+	<?php endif; ?>
+	<?php if ( bp_is_my_profile() )  ?>
+
+	<?php if ( !bp_is_current_action( 'invites' ) ) : ?>
+
+		<li id="groups-order-select" class="last filter">
+
+			<label for="groups-sort-by"><?php _e( 'Order By:', 'thatcamp' ); ?></label>
+			<select id="groups-sort-by">
+				<option value="active"><?php _e( 'Last Active', 'thatcamp' ); ?></option>
+				<option value="popular"><?php _e( 'Most Members', 'thatcamp' ); ?></option>
+				<option value="newest"><?php _e( 'Newly Created', 'thatcamp' ); ?></option>
+				<option value="alphabetical"><?php _e( 'Alphabetical', 'thatcamp' ); ?></option>
+
+				<?php do_action( 'bp_member_group_order_options' ); ?>
+
+			</select>
+		</li>
+
+	<?php endif; ?>
+	
 		<?php bp_get_options_nav(); ?>
 	</ul>
 	</div>

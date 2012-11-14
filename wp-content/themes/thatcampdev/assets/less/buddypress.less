@@ -1004,9 +1004,6 @@ div#item-header h2 {
 }
 div#item-header span.activity,
 div#item-header h2 span.highlight {
-	.font-size-rems(11);
-	font-weight: normal;
-	line-height: 170%;
 	margin-bottom: 7px;
 	vertical-align: middle;
 }
@@ -1056,6 +1053,12 @@ div#item-header ul hr {
 	display: none;
 }
 div#item-header ul li {
+	float: right;
+}
+div#item-header .user-nicename{
+	float: left;
+}
+div#item-header .activity{
 	float: right;
 }
 div#item-header ul img.avatar,
@@ -1146,7 +1149,7 @@ div.item-list-tabs#subnav ul li {
 	border-bottom: 1px dashed #333;
 	padding: 0 0 10px 0;
 }
-#activity-filter-select label{
+#activity-filter-select label, #groups-order-select label{
 	float: left;
 	margin: 0 10px 0 0;
 }
@@ -1156,13 +1159,13 @@ div.item-list-tabs ul li.last {
 div.item-list-tabs#subnav ul li.last {
 	margin-top: 4px;
 }
-div.item-list-tabs ul li.last select {
+div.item-list-tabs ul li.last select, li#groups-order-select select {
 	max-width: 175px;
 }
 div.item-list-tabs ul li a,
 div.item-list-tabs ul li span {
 	display: block;
-	padding: 5px 10px;
+	padding: 5px 10px 5px 0;
 	text-decoration: none;
 }
 div.item-list-tabs ul li a span {

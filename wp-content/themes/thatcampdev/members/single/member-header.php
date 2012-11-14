@@ -16,8 +16,7 @@
 		<?php bp_displayed_user_avatar( 'width=140&height=140' ); ?>
 	</a>
 	<h4>
-		<span class="user-nicename">@<?php bp_displayed_user_username(); ?></span>
-		<span class="activity"><?php bp_member_last_active(); ?></span>
+		<a href="<?php bp_displayed_user_link(); ?>"><?php bp_displayed_user_fullname(); ?></a>
 	</h4>
 	
 </div>

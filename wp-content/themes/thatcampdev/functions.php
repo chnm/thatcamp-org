@@ -192,6 +192,19 @@ function thatcamp_widgets_init() {
        		'after_title' => '</h3>'
 			)
 	);
+	
+	register_sidebar(
+		array(
+			'name'          => __( 'Sidebar Twitter', 'thatcamp'),
+			'id'            => 'sidebar-twitter',
+			'description'   => 'Sidebar twitter',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget' => '</aside>',
+       		'before_title' => '<h3 class="widgettitle">',
+       		'after_title' => '</h3>'
+			)
+	);
+	
 
 	require( get_stylesheet_directory() . '/functions/widgets.php' );
 }

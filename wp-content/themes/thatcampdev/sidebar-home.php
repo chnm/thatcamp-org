@@ -24,6 +24,15 @@
 		<?php dynamic_sidebar( 'sidebar-home' ); ?>
 	<?php endif; ?>
 	
+	<div id="twitterwidget-wrapper">
+		<?php if ( is_active_sidebar( 'sidebar-twitter' ) ) : ?>
+			<?php dynamic_sidebar( 'sidebar-twitter' ); ?>
+		<?php endif; ?>
+		<a href="" class="button socialbutton">
+			<span class="button-inner">Follow us</span>
+		</a>
+	</div>
+	
 	
 	<?php do_action( 'bp_inside_after_sidebar' ); ?>
 </div>

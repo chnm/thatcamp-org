@@ -620,11 +620,16 @@ h6,
   font-size: 1.4rem;
   letter-spacing: 1px;
 }
-.readmore {
+.readmore,
+div#item-header .user-nicename,
+div#item-header .activity {
   font-family: 'Francois One', sans-serif;
   font-size: 18px;
   font-size: 1.8rem;
   display: block;
+}
+div#item-header .activity {
+  padding: 10px 0 0 0;
 }
 .camp-listdate {
   font-family: 'Francois One', sans-serif;
@@ -1030,6 +1035,8 @@ a:hover.button.postbutton {
 .socialbutton {
   background: url('assets/images/thatcamp-bluebutton.jpg');
   border: 3px solid #006677;
+  margin: 0;
+  float: right;
 }
 a.button.socialbutton,
 a:visited.button.socialbutton,
@@ -1723,8 +1730,8 @@ dd.wp-caption p.wp-caption-text,
   display: inline;
 }
 .widget {
-  padding: 20px 20px 20px 0;
-  padding: 2rem 2rem 2rem 0;
+  padding: 20px 0;
+  padding: 2rem 0;
   text-align: left;
 }
 .widget ul {
@@ -1733,6 +1740,7 @@ dd.wp-caption p.wp-caption-text,
 }
 .widget li {
   list-style: circle;
+  margin: 0 0 0 15px;
 }
 .twitter .twitter-item {
   position: relative;
@@ -2825,10 +2833,6 @@ div#item-header h2 {
 }
 div#item-header span.activity,
 div#item-header h2 span.highlight {
-  font-size: 11px;
-  font-size: 1.1rem;
-  font-weight: normal;
-  line-height: 170%;
   margin-bottom: 7px;
   vertical-align: middle;
 }
@@ -2882,6 +2886,12 @@ div#item-header ul hr {
   display: none;
 }
 div#item-header ul li {
+  float: right;
+}
+div#item-header .user-nicename {
+  float: left;
+}
+div#item-header .activity {
   float: right;
 }
 div#item-header ul img.avatar,
@@ -2975,7 +2985,8 @@ div.item-list-tabs#subnav ul li {
   border-bottom: 1px dashed #333;
   padding: 0 0 10px 0;
 }
-#activity-filter-select label {
+#activity-filter-select label,
+#groups-order-select label {
   float: left;
   margin: 0 10px 0 0;
 }
@@ -2985,13 +2996,14 @@ div.item-list-tabs ul li.last {
 div.item-list-tabs#subnav ul li.last {
   margin-top: 4px;
 }
-div.item-list-tabs ul li.last select {
+div.item-list-tabs ul li.last select,
+li#groups-order-select select {
   max-width: 175px;
 }
 div.item-list-tabs ul li a,
 div.item-list-tabs ul li span {
   display: block;
-  padding: 5px 10px;
+  padding: 5px 10px 5px 0;
   text-decoration: none;
 }
 div.item-list-tabs ul li a span {

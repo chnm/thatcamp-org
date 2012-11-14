@@ -13,6 +13,7 @@
 
 <div id="item-header">
 	<span class="user-nicename">@<?php bp_displayed_user_username(); ?></span>
+		<span class="activity"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 </div>
 <div class="feature-box">
 	<p>
