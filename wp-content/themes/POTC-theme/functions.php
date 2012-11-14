@@ -1,7 +1,7 @@
-<?php 
+<?php
 
-if ( function_exists('register_sidebar') )
-    
+if ( function_exists('register_sidebar') ) :
+
     register_sidebar(array(
         'name' => 'Footer',
         'before_widget' => '',
@@ -9,8 +9,23 @@ if ( function_exists('register_sidebar') )
         'before_title' => '<div class="title">',
         'after_title' => '</div>',
     ));
-    
-    
+
+	register_sidebar(
+		array(
+			'name'          => __( 'Sidebar Stream', 'thatcamp'),
+			'id'            => 'sidebar-stream',
+			'description'   => 'Sidebar Stream',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<h3 class="widgettitle">',
+			'after_title' => '</h3>'
+		)
+	);
+endif;
+
+// Require our widget file
+require( dirname(__FILE__) . '/widgets.php' );
+
 function register_my_menus() {
   register_nav_menus(
     array('main-menu' => __( 'Main Menu' ) )
@@ -45,6 +60,34 @@ wp_enqueue_script('selectivizr-min', get_template_directory_uri() . '/javascript
 wp_enqueue_script('jquery.cookie', get_template_directory_uri() . '/javascripts/jquery.cookie.js',array('jquery'),'1.0',true);
 wp_enqueue_script('jquery.hoverIntent.minified', get_template_directory_uri('jquery') . '/javascripts/jquery.hoverIntent.minified.js',array(),'1.0',true);
 wp_enqueue_script('jquery.dcjqaccordion.2.7.min', get_template_directory_uri('jquery') . '/javascripts/jquery.dcjqaccordion.2.7.min.js',array(),'1.0',true);
+
+function thatcamp_next_posts_link( $link_text, $max_pages ) {
+        $paged = thatcamp_get_paged();
+
+        if ( $paged >= $max_pages ) {
+                return;
+        }
+
+        $p = $paged + 1;
+        if ( false !== strpos( wp_guess_url(), '/page/' ) ) {
+                $url = preg_replace( '|/page/[0-9]+/|', '/page/' . $p . '/', wp_guess_url() );
+        } else {
+                $url = add_query_arg( 'paged', $p, wp_guess_url() );
+        }
+
+        echo '<a href="' . $url . '">' . $link_text . '</a>';
+}
+
+function thatcamp_get_paged() {
+        global $paged;
+
+        if ( ! $paged ) {
+                $paged = 1;
+        }
+
+        return $paged;
+}
+
 
 
 ?>
