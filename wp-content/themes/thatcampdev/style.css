@@ -211,12 +211,12 @@ body {
   padding: 20px 0;
 }
 #primary {
-  float: right;
-  width: 70%;
+  float: none;
+  width: 100%;
 }
 #primary-documents {
-  float: right;
-  width: 60%;
+  float: none;
+  width: 100%;
 }
 .feature-box {
   border: 2px solid #eee;
@@ -352,6 +352,9 @@ body {
 #branding {
   position: relative;
 }
+#avatarwall {
+  display: none;
+}
 /*--------------------------------------------------------------
 2.3 - Footer
 --------------------------------------------------------------*/
@@ -396,21 +399,21 @@ body {
 2.4 - Sidebar
 --------------------------------------------------------------*/
 #sidebar {
-  width: 320px;
-  float: left;
+  width: 100%;
+  float: none;
   padding: 20px 0;
 }
 #sidebar-documents {
-  width: 35%;
-  float: left;
+  width: 100%;
+  float: none;
 }
 #sidebar-innerleft {
-  float: left;
-  width: 55%;
+  float: none;
+  width: 100%;
 }
 #sidebar-innerright {
-  float: right;
-  width: 40%;
+  float: none;
+  width: 100%;
 }
 #sidebar .campbutton {
   margin-bottom: 40px;
@@ -1730,6 +1733,7 @@ dd.wp-caption p.wp-caption-text,
   display: inline;
 }
 .widget {
+  display: none;
   padding: 20px 0;
   padding: 2rem 0;
   text-align: left;
