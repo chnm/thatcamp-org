@@ -84,7 +84,9 @@ class THATCamp_Network_Posts extends WP_Widget {
 	}
 
 	function filter_term_link( $term_link, $term, $taxonomy ) {
-		$term_link  = trailingslashit( get_blog_option( 1, 'home' ) );
+                global $wpdb;
+                $proceedings_blog_id = $wpdb->get_var( "SELECT blog_id FROM $wpdb->blogs WHERE domain LIKE 'proceedings%'" );
+		$term_link  = trailingslashit( get_blog_option( $proceedings_blog_id, 'home' ) );
 		$term_link .= 'stream/';
 		$term_link  = add_query_arg( 'category', $term->slug, $term_link );
 		return $term_link;
