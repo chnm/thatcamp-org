@@ -50,7 +50,7 @@ class FeedWordPressAdminPage {
 		elseif ($this->save_requested_in($post)) : // User mashed Save Changes
 			$this->save_settings($post);
 		endif;
-		do_action($this->dispatch.'_post', &$post, &$this);		
+		do_action($this->dispatch.'_post', $post, $this);		
 	}
 
 	function update_feed () {
@@ -81,7 +81,7 @@ class FeedWordPressAdminPage {
 	}
 
 	function save_settings ($post) {
-		do_action($this->dispatch.'_save', &$post, &$this);
+		do_action($this->dispatch.'_save', $post, $this);
 
 		if ($this->for_feed_settings()) :
 			// Save settings
@@ -257,7 +257,7 @@ class FeedWordPressAdminPage {
 			"Feed" => array('page' => 'feeds-page.php', 'long' => 'Feeds & Updates'),
 			"Posts" => array('page' => 'posts-page.php', 'long' => 'Posts & Links'),
 			"Authors" => array('page' => 'authors-page.php', 'long' => 'Authors'),
-			'Categories' => array('page' => 'categories-page.php', 'long' => 'Categories'.FEEDWORDPRESS_AND_TAGS),
+			'Categories' => array('page' => 'categories-page.php', 'long' => 'Categories & Tags'),
 		);
 		
 		$hrefPrefix = 'admin.php?';
@@ -1118,8 +1118,17 @@ function fwp_syndication_manage_page_links_table_rows ($links, $page, $visible =
 				endif;
 
 				// Prep: get last error timestamp, if any
+				$fileSizeLines = array();
 				if (is_null($sLink->setting('update/error'))) :
 					$errorsSince = '';
+					if (!is_null($sLink->setting('link/item count'))) :
+						$N = $sLink->setting('link/item count');	
+						$fileSizeLines[] = sprintf((($N==1) ? __('%d item') : __('%d items')), $N);
+					endif;
+
+					if (!is_null($sLink->setting('link/filesize'))) :
+						$fileSizeLines[] = size_format($sLink->setting('link/filesize')). ' total';
+					endif;
 				else :
 					$trClass[] = 'feed-error';
 
@@ -1173,6 +1182,11 @@ function fwp_syndication_manage_page_links_table_rows ($links, $page, $visible =
 				endif;
 				$nextUpdate .= "</div></div>";
 
+				$fileSize = '';
+				if (count($fileSizeLines) > 0) :
+					$fileSize = '<div>'.implode(" / ", $fileSizeLines)."</div>";
+				endif;
+				
 				unset($sLink);
 				
 				$alt_row = !$alt_row;
@@ -1221,6 +1235,7 @@ function fwp_syndication_manage_page_links_table_rows ($links, $page, $visible =
 	<input type="submit" class="button" name="update_uri[<?php print esc_html($link->link_rss); ?>]" value="<?php _e('Update Now'); ?>" />
 	</div>
 	<?php print $lastUpdated; ?>
+	<?php print $fileSize; ?>
 	<?php print $errorsSince; ?>
 	<?php print $nextUpdate; ?>
 	</td>

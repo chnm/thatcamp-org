@@ -3,7 +3,7 @@
 Plugin Name: FeedWordPress
 Plugin URI: http://feedwordpress.radgeek.com/
 Description: simple and flexible Atom/RSS syndication for WordPress
-Version: 2011.1019
+Version: 2012.0810
 Author: Charles Johnson
 Author URI: http://radgeek.com/
 License: GPL
@@ -11,7 +11,7 @@ License: GPL
 
 /**
  * @package FeedWordPress
- * @version 2011.1019
+ * @version 2012.0810
  */
 
 # This uses code derived from:
@@ -34,7 +34,7 @@ License: GPL
 
 # -- Don't change these unless you know what you're doing...
 
-define ('FEEDWORDPRESS_VERSION', '2011.1019');
+define ('FEEDWORDPRESS_VERSION', '2012.0810');
 define ('FEEDWORDPRESS_AUTHOR_CONTACT', 'http://radgeek.com/contact');
 
 if (!defined('FEEDWORDPRESS_BLEG')) :
@@ -54,6 +54,8 @@ else :
 	endif;
 endif;
 define ('FEEDWORDPRESS_DEBUG', $feedwordpress_debug);
+$feedwordpress_compatibility = true;
+define ('FEEDWORDPRESS_COMPATIBILITY', $feedwordpress_compatibility);
 
 define ('FEEDWORDPRESS_CAT_SEPARATOR_PATTERN', '/[:\n]/');
 define ('FEEDWORDPRESS_CAT_SEPARATOR', "\n");
@@ -119,6 +121,8 @@ require_once("${dir}/feedwordpresshtml.class.php");
 require_once("${dir}/feedwordpress-content-type-sniffer.class.php");
 require_once("${dir}/inspectpostmeta.class.php");
 require_once("${dir}/syndicationdataqueries.class.php");
+require_once("${dir}/feedwordpie.class.php");
+require_once("${dir}/feedwordpie_item.class.php");
 require_once("${dir}/feedwordpress_file.class.php");
 require_once("${dir}/feedwordpress_parser.class.php");
 require_once("${dir}/feedwordpressrpc.class.php");
@@ -392,23 +396,12 @@ function get_syndication_feed_guid ($original = NULL, $id = NULL) {
 function get_syndication_feed_id ($id = NULL) { list($u) = get_post_custom_values('syndication_feed_id', $id); return $u; }
 function the_syndication_feed_id ($id = NULL) { echo get_syndication_feed_id($id); }
 
-$feedwordpress_linkcache =  array (); // only load links from database once
 function get_syndication_feed_object ($id = NULL) {
-	global $feedwordpress_linkcache;
-
-	$link = NULL;
-
+	global $feedwordpress;
+	
 	$feed_id = get_syndication_feed_id($id);
-	if (strlen($feed_id) > 0):
-		if (isset($feedwordpress_linkcache[$feed_id])) :
-			$link = $feedwordpress_linkcache[$feed_id];
-		else :
-			$link = new SyndicatedLink($feed_id);
-			$feedwordpress_linkcache[$feed_id] = $link;
-		endif;
-	endif;
-	return $link;
-}
+	return $feedwordpress->subscription($feed_id);
+} /* function get_syndication_feed_object() */
 
 function get_feed_meta ($key, $id = NULL) {
 	$ret = NULL;
@@ -418,7 +411,7 @@ function get_feed_meta ($key, $id = NULL) {
 		$ret = $link->settings[$key];
 	endif;
 	return $ret;
-} /* get_feed_meta() */
+} /* function get_feed_meta() */
 
 function get_syndication_permalink ($id = NULL) {
 	list($u) = get_post_custom_values('syndication_permalink', $id); return $u;
@@ -700,7 +693,7 @@ function fwp_add_pages () {
 
 	do_action('feedwordpress_admin_menu_pre_categories', $menu_cap, $settings_cap);
 	add_submenu_page(
-		$syndicationMenu, 'Categories'.FEEDWORDPRESS_AND_TAGS, 'Categories'.FEEDWORDPRESS_AND_TAGS,
+		$syndicationMenu, 'Categories & Tags', 'Categories & Tags',
 		$settings_cap, FeedWordPress::path('categories-page.php')
 	);
 
@@ -797,7 +790,13 @@ function fwp_publish_post_hook ($post_id) {
 }
 
 	function feedwordpress_add_post_edit_controls () {
+		global $feedwordpress;
+		
+		// Put in Manual Editing checkbox
 		add_meta_box('feedwordpress-post-controls', __('Syndication'), 'feedwordpress_post_edit_controls', 'post', 'side', 'high');
+		
+		add_filter('user_can_richedit', array($feedwordpress, 'user_can_richedit'), 1000, 1);
+		
 		if (FeedWordPress::diagnostic_on('syndicated_posts:static_meta_data')) :
 			$GLOBALS['inspectPostMeta'] = new InspectPostMeta;
 		endif;
@@ -897,19 +896,53 @@ class FeedWordPress {
 	);
 
 	var $feeds = NULL;
-
+	var $feedurls = NULL;
 	var $httpauth = NULL;
+	
 	# function FeedWordPress (): Contructor; retrieve a list of feeds 
 	function FeedWordPress () {
 		$this->feeds = array ();
+		$this->feedurls  = array();
 		$links = FeedWordPress::syndicated_links();
 		if ($links): foreach ($links as $link):
-			$this->feeds[] = new SyndicatedLink($link);
+			$id = intval($link->link_id);
+			$url = $link->link_rss;
+			
+			// Store for later reference.
+			$this->feeds[$id] = $id;
+			if (strlen($url) > 0) :
+				$this->feedurls[$url] = $id;
+			endif;
 		endforeach; endif;
-		
+
 		$this->httpauth = new FeedWordPressHTTPAuthenticator;
 	} // FeedWordPress::FeedWordPress ()
 
+	function subscribed ($id) {
+		return (isset($this->feedurls[$id]) or isset($this->feeds[$id]));
+	} /* FeedWordPress::subscribed () */
+	
+	function subscription ($which) {
+		$sub = NULL;
+		
+		if (is_string($which) and isset($this->feedurls[$which])) :
+			$which = $this->feedurls[$which];
+		endif;
+		
+		if (isset($this->feeds[$which])) :
+			$sub = $this->feeds[$which];
+		endif;
+		
+		// Load 'er up if you haven't already.
+		if (!is_null($sub) and !($sub InstanceOf SyndicatedLink)) :
+			$link = new SyndicatedLink($sub);
+			$this->feeds[$which] = $link;
+			$sub = $link;
+		endif;
+		
+		return $sub;
+	} /* FeedWordPress::subscriptions () */
+	
 	# function update (): polls for updates on one or more Contributor feeds
 	#
 	# Arguments:
@@ -986,7 +1019,7 @@ class FeedWordPress {
 		endif;
 		
 		// Randomize order for load balancing purposes
-		$feed_set = $this->feeds;
+		$feed_set = array_keys($this->feeds);
 		shuffle($feed_set);
 
 		$updateWindow = (int) get_option('feedwordpress_update_window', DEFAULT_UPDATE_PERIOD) * 60 /* sec/min */;
@@ -1001,10 +1034,13 @@ class FeedWordPress {
 		), $uri);
 
 		$feed_set = apply_filters('feedwordpress_update_feeds', $feed_set, $uri);
-
+		
+	
 		// Loop through and check for new posts
 		$delta = NULL; $remaining = $max_polls;
-		foreach ($feed_set as $feed) :
+		foreach ($feed_set as $feed_id) :
+
+			$feed = $this->subscription($feed_id);
 
 			// Has this process overstayed its welcome?
 			if (
@@ -1174,14 +1210,48 @@ class FeedWordPress {
 			wp_enqueue_style('dashboard');
 			wp_enqueue_style('feedwordpress-elements');
 		
-			if (function_exists('wp_admin_css')) :
+			/*if (function_exists('wp_admin_css')) :
 				wp_admin_css('css/dashboard');
-			endif;
+			endif;*/
 		endif;
+
+		// This is a special post status for hiding posts that have expired
+		register_post_status('fwpretired', array(
+		'label' => _x('Retired', 'post'),
+		'label_count' => _n_noop('Retired <span class="count">(%s)</span>', 'Retired <span class="count">(%s)</span>'),
+		'exclude_from_search' => true,
+		'public' => false,
+		'publicly_queryable' => false,
+		'show_in_admin_all_list' => false,
+		'show_in_admin_status_list' => true,
+		));
+		add_action(
+			/*hook=*/ 'template_redirect',
+			/*function=*/ array(&$this, 'redirect_retired'),
+			/*priority=*/ -100
+		);
 
 		$this->clear_cache_magic_url();
 		$this->update_magic_url();
 	} /* FeedWordPress::init() */
+	
+	function redirect_retired () {
+		global $wp_query;
+		if (is_singular()) :
+			if ('fwpretired'==$wp_query->post->post_status) :
+				do_action('feedwordpress_redirect_retired', $wp_query->post);
+				
+				if (!($template = get_404_template())) :
+					$template = get_index_template();
+				endif;
+				if ($template = apply_filters('template_include', $template)) :
+					header("HTTP/1.1 410 Gone");
+					include($template);
+				endif;
+				exit;
+			endif;
+		endif;
+	}
 	
 	function dashboard_setup () {
 		$see_it = FeedWordPress::menu_cap();
@@ -1244,6 +1314,20 @@ class FeedWordPress {
 		$syndicationPage->dashboard_box($syndicationPage);
 	} /* FeedWordPress::dashboard () */
 
+	function user_can_richedit ($rich_edit) {
+
+		global $post;
+		
+		if (is_syndicated($post->ID)) :
+			// Disable visual editor and only allow operations
+			// directly on HTML if post is syndicated.
+			$rich_edit = false;
+		endif;
+		
+		return $rich_edit;
+
+	} /* FeedWordPress::user_can_richedit () */
+	
 	function update_magic_url () {
 		global $wpdb;
 
@@ -1604,11 +1688,11 @@ class FeedWordPress {
 		endif;
 		$timeout = intval($timeout);
 		
-		$pie_class = apply_filters('feedwordpress_simplepie_class', 'SimplePie');
+		$pie_class = apply_filters('feedwordpress_simplepie_class', 'FeedWordPie');
 		$cache_class = apply_filters('feedwordpress_cache_class', 'WP_Feed_Cache');
 		$file_class = apply_filters('feedwordpress_file_class', 'FeedWordPress_File');
 		$parser_class = apply_filters('feedwordpress_parser_class', 'FeedWordPress_Parser');
-
+		$item_class = apply_filters('feedwordpress_item_class', 'FeedWordPie_Item');
 		$sniffer_class = apply_filters('feedwordpress_sniffer_class', 'FeedWordPress_Content_Type_Sniffer');
 
 		$feed = new $pie_class;
@@ -1619,8 +1703,9 @@ class FeedWordPress {
 		$feed->set_content_type_sniffer_class($sniffer_class);
 		$feed->set_file_class($file_class);
 		$feed->set_parser_class($parser_class);
+		$feed->set_item_class($item_class);
 		$feed->force_feed($force_feed);
-		$feed->set_cache_duration(FeedWordPress::cache_duration());
+		$feed->set_cache_duration(FeedWordPress::cache_duration($params));
 		$feed->init();
 		$feed->handle_content_type();
 		
@@ -1657,9 +1742,15 @@ class FeedWordPress {
 		return ($magpies + $simplepies);
 	} /* FeedWordPress::clear_cache () */
 
-	function cache_duration () {
+	function cache_duration ($params = array()) {
+		$params = wp_parse_args($params, array(
+		"cache" => true,
+		));
+		
 		$duration = NULL;
-		if (defined('FEEDWORDPRESS_CACHE_AGE')) :
+		if (!$params['cache']) :
+			$duration = 0;
+		elseif (defined('FEEDWORDPRESS_CACHE_AGE')) :
 			$duration = FEEDWORDPRESS_CACHE_AGE;
 		endif;
 		return $duration;
@@ -1760,6 +1851,7 @@ class FeedWordPress {
 					error_log(FeedWordPress::log_prefix().' '.$out);
 					break;
 				case 'email' :
+					
 					if (is_null($persist)) :
 						$sect = 'occurrent';
 						$hook = (isset($dlog['mesg'][$sect]) ? count($dlog['mesg'][$sect]) : 0);
@@ -1801,9 +1893,135 @@ class FeedWordPress {
 		return $ret;
 	}
 	
-	function email_diagnostic_log () {
-} /* FeedWordPress::email_diagnostic_log () */
-/* I deleted a bunch of code here as per http://wordpress.org/support/topic/feedwordpress-email_diagnostic_log-slowing-down-page-loads in an effort to improve site load time. --AF */
+	function email_diagnostic_log ($params = array()) {
+		$params = wp_parse_args($params, array(
+		"force" => false,
+		));
+
+		$dlog = get_option('feedwordpress_diagnostics_log', array());
+		
+		if ($this->has_emailed_diagnostics($dlog)) :
+			if ($this->ready_to_email_diagnostics($dlog)) :
+				// No news is good news; only send if
+				// there are some messages to send.
+				$body = NULL;
+				if (!isset($dlog['mesg'])) : $dlog['mesg'] = array(); endif;
+				
+				foreach ($dlog['mesg'] as $sect => $mesgs) :
+					if (count($mesgs) > 0) :
+						if (is_null($body)) : $body = ''; endif;
+						
+						$paradigm = reset($mesgs);
+						$body .= "<h2>".ucfirst($sect)." issues</h2>\n"
+							."<table>\n"
+							."<thead><tr>\n";
+						foreach ($paradigm as $col => $value) :
+							$body .= '<th scope="col">'.$col."</th>\n";
+						endforeach;
+						$body .= "</tr></thead>\n"
+							."<tbody>\n";
+						
+						foreach ($mesgs as $line) :
+							$body .= "<tr>\n";
+							foreach ($line as $col => $cell) :
+								if (is_numeric($cell)) :
+									$cell = date('j-M-y, h:i a', $cell);
+								endif;
+								$class = strtolower(preg_replace('/\s+/', '-', $col));
+								$body .= "<td class=\"$class\">${cell}</td>";
+							endforeach;
+							$body .= "</tr>\n";
+						endforeach;
+						
+						$body .= "</tbody>\n</table>\n\n";
+					endif;
+				endforeach;
+				
+				$body = apply_filters('feedwordpress_diagnostic_email_body', $body, $dlog);
+				if (!is_null($body)) :
+					$home = feedwordpress_display_url(get_bloginfo('url'));
+					$subj = apply_filters('feedwordpress_diagnostic_email_subject', $home . " syndication issues", $dlog);
+					$agent = 'FeedWordPress '.FEEDWORDPRESS_VERSION;
+					$body = <<<EOMAIL
+<html>
+<head>
+<title>$subj</title>
+<style type="text/css">
+	body { background-color: white; color: black; }
+	table { width: 100%; border: 1px solid black; }
+	table thead tr th { background-color: #ff7700; color: white; border-bottom: 1px solid black; }
+	table thead tr { border-bottom: 1px solid black; }
+	table tr { vertical-align: top; }
+	table .since { width: 20%; }
+	table .time { width: 20%; }
+	table .most-recently { width: 20%; }
+	table .message { width: auto; }
+</style>
+</head>
+<body>
+<h1>Syndication Issues encountered by $agent on $home</h1>
+$body
+</body>
+</html>
+
+EOMAIL;
+
+					$ded = get_option('feedwordpress_diagnostics_email_destination', 'admins');
+
+					// e-mail address
+					if (preg_match('/^mailto:(.*)$/', $ded, $ref)) :
+						$recipients = array($ref[1]);
+						
+					// userid
+					elseif (preg_match('/^user:(.*)$/', $ded, $ref)) :
+						$userdata = get_userdata((int) $ref[1]);
+						$recipients = array($userdata->user_email);
+					
+					// admins
+					else :
+						$recipients = FeedWordPressDiagnostic::admin_emails();
+					endif;
+
+					$mesgId = 'feedwordpress+'.time().'@'.$home;
+					$parentId = get_option('feedwordpress_diagnostics_email_root_message_id', NULL);
+
+					$head = array("Message-ID: <$mesgId>");
+					if (!is_null($parentId)) :
+						// We've already sent off a diagnostic message in the past. Let's do some
+						// magic to help with threading, in the hopes that all diagnostic messages
+						// get threaded together.
+						$head[] = "References: <$parentId>";
+						$head[] = "In-Reply-To: <$parentId>";
+						$subj = "Re: ".$subj;
+					else :
+						// This is the first of its kind. Let's mark it as such.
+						update_option('feedwordpress_diagnostics_email_root_message_id', $mesgId);
+					endif;
+					$head = apply_filters('feedwordpress_diagnostic_email_headers', $head);
+
+					foreach ($recipients as $email) :						
+						add_filter('wp_mail_content_type', array('FeedWordPress', 'allow_html_mail'));
+						wp_mail($email, $subj, $body, $head);
+						remove_filter('wp_mail_content_type', array('FeedWordPress', 'allow_html_mail'));
+					endforeach;
+				endif;
+				
+				// Clear the logs
+				$dlog['mesg']['persistent'] = array();
+				$dlog['mesg']['occurrent'] = array();
+				
+				// Set schedule for next update
+				$dlog['schedule']['last'] = time();
+			endif;
+		else :
+			$dlog['schedule'] = array(
+				'freq' => 24 /*hr*/ * 60 /*min*/ * 60 /*s*/,
+				'last' => time(),
+			);
+		endif;
+		
+		update_option('feedwordpress_diagnostics_log', $dlog);
+	} /* FeedWordPress::email_diagnostic_log () */
 	
 	function allow_html_mail () {
 		return 'text/html';
