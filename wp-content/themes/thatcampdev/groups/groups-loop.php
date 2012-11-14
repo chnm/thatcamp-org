@@ -32,24 +32,14 @@
 		<li>
 			
 			<div class="item">
+				<div class="item-visit"><a href="<?php thatcamp_camp_permalink(); ?>" class="button campbutton">Visit Camp</a>
+					<?php do_action( 'bp_directory_groups_actions' ); ?>
+				</div>
 				<div class="item-title"><a href="<?php thatcamp_camp_permalink(); ?>"><?php bp_group_name(); ?></a></div>
-				<div class="item-meta"><span class="activity"><?php printf( __( 'active %s', 'thatcamp' ), bp_get_group_last_active() ); ?></span></div>
-
+			
 				<div class="item-desc"><?php bp_group_description_excerpt(); ?></div>
 
 				<?php do_action( 'bp_directory_groups_item' ); ?>
-
-			</div>
-
-			<div class="action">
-
-				<?php do_action( 'bp_directory_groups_actions' ); ?>
-
-				<div class="meta">
-
-					<?php bp_group_type(); ?> / <?php bp_group_member_count(); ?>
-
-				</div>
 
 			</div>
 

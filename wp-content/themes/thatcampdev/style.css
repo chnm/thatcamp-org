@@ -983,6 +983,9 @@ a:hover.header-button {
   display: inline-block;
   margin: 0 -40px -40px 0;
 }
+.item-visit .button {
+  margin: 0;
+}
 .button-inner {
   display: inline-block;
   border: 1px dashed #fff;
@@ -1078,7 +1081,7 @@ a:visited {
 }
 a:hover {
   color: #668800;
-  text-decoration: underline;
+  text-decoration: none;
 }
 a.camplink,
 a:visited.camplink,
@@ -2452,6 +2455,9 @@ div.generic-button a:hover,
   margin: 0 0 10px 0;
   border-bottom: 1px dashed #333;
   padding: 0 0 10px 0;
+}
+.item-visit {
+  float: right;
 }
 /*--------------------------------------------------------------
 6.6 - Ajax Loading
