@@ -11,6 +11,13 @@
 		<?php if ( is_active_sidebar( 'sidebar-documents' ) ) : ?>
 		<?php dynamic_sidebar( 'sidebar-documents' ); ?>
 		<?php endif; ?>
+		<?php
+		  $children = wp_list_pages('title_li=&child_of=823&echo=0');
+		  if ($children) { ?>
+		  <ul>
+		  <?php echo $children; ?>
+		  </ul>
+		  <?php } ?>
 	</div>
 	<div id="sidebar-innerright">
 		<nav id="side-nav" role="navigation">
