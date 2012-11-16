@@ -11,22 +11,31 @@
 		<?php if ( is_active_sidebar( 'sidebar-documents' ) ) : ?>
 		<?php dynamic_sidebar( 'sidebar-documents' ); ?>
 		<?php endif; ?>
-		<?php
-		  $children = wp_list_pages('title_li=&child_of=823&echo=0');
-		  if ($children) { ?>
-		  <ul>
-		  <?php echo $children; ?>
-		  </ul>
-		  <?php } ?>
 	</div>
 	<div id="sidebar-innerright">
 		<nav id="side-nav" role="navigation">
-			<div class="skip-link assistive-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'thatcamp' ); ?>"><?php _e( 'Skip to content', 'thatcamp' ); ?></a></div>
-			<?php wp_nav_menu( array(
-				'theme_location' => 'documents', 
-				'menu_class' => 'side_menu',
-				'container' => ''
-			)); ?>
+			<nav id="side-nav" role="navigation">
+				<?php
+				  if($post->post_parent) {
+				  $children = wp_list_pages("title_li=&child_of=".$post->post_parent."&echo=0");
+				  $titlenamer = get_the_title($post->post_parent);
+				  }
+
+				  else {
+				  $children = wp_list_pages("title_li=&child_of=".$post->ID."&echo=0");
+				  $titlenamer = get_the_title($post->ID);
+				  }
+				  if ($children) { ?>
+
+				  <h2> <?php echo $titlenamer; ?> </h2>
+				  <ul class="side_menu">
+				  <?php echo $children; ?>
+				  </ul>
+
+				<?php } ?>
+			
+			</nav>
+		
 		</nav>
 	</div>
 </div>
