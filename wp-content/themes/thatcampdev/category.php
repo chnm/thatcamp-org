@@ -2,8 +2,8 @@
 /**
  * Category page
  *
- * @package logicalbones
- * @since logicalbones 1.0
+ * @package thatcamp
+ * @since thatcamp 1.0
  */
 ?>
 <?php get_header('signup'); ?>
@@ -12,7 +12,7 @@
 		<div id="category-archives" class="feature-box" role="main">
 		<header class="post-header">
 			<h1 class="post-title">
-				<?php printf( __( 'Category Archives: %s', 'logicalbones'), '<span>' . single_cat_title( '', false ) . '</span>' );
+				<?php printf( __( 'Category Archives: %s', 'thatcamp'), '<span>' . single_cat_title( '', false ) . '</span>' );
 ?></h1>
 		</header>
 		<?php $categorydesc = category_description(); if ( ! empty( $categorydesc ) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' );

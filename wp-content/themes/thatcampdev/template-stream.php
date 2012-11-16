@@ -31,7 +31,7 @@
                         $stream_args['paged'] = thatcamp_get_paged();
 		?>
 
-                <h1>THATCamp Stream<?php if ( $category_name ) : ?>: <?php echo esc_html( $category_name ) ?><?php endif ?></h1>
+                <h1><?php _e( 'THATCamp Stream', 'thatcamp' ); ?><?php if ( $category_name ) : ?>: <?php echo esc_html( $category_name ) ?><?php endif ?></h1>
 		<?php $stream_query = new WP_Query( $stream_args ) ?>
 		<?php if ( $stream_query->have_posts() ) :
 			while ( $stream_query->have_posts() ) : $stream_query->the_post();

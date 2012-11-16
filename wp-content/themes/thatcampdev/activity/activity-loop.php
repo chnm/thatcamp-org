@@ -5,8 +5,8 @@
  *
  * Querystring is set via AJAX in _inc/ajax.php - bp_dtheme_object_filter()
  *
- * @package logicalbones
- * @since logicalbones 1.0
+ * @package thatcamp
+ * @since thatcamp 1.0
  */
 
 ?>

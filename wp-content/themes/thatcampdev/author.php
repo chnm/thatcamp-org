@@ -2,8 +2,8 @@
 /**
  * Author page
  *
- * @package logicalbones
- * @since logicalbones 1.0
+ * @package thatcamp
+ * @since thatcamp 1.0
  */
 ?>
 <?php get_header('signup'); ?>
@@ -12,7 +12,7 @@
 		<div id="author-archives" class="feature-box" role="main">
 		<?php	if ( have_posts() ) the_post();?>
 		<header class="post-header">
-			<h1 class="post-title author"><?php printf( __( 'Author Archives: %s', 'logicalbones'), "<span class='vcard'><a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a></span>" ); ?></h1>
+			<h1 class="post-title author"><?php printf( __( 'Author Archives: %s', 'thatcamp'), "<span class='vcard'><a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a></span>" ); ?></h1>
 		</header>
 			<div id="entry-author-content">
 				<div id="author-image">
@@ -22,7 +22,7 @@
 			
 				<?php if ( get_the_author_meta( 'description' ) ) : ?>
 				<div id="author-details">
-					<h2><?php printf( __( 'About %s', 'logicalbones'), get_the_author() ); ?></h2>
+					<h2><?php printf( __( 'About %s', 'thatcamp'), get_the_author() ); ?></h2>
 					<?php the_author_meta( 'description' ); ?>
 				</div>
 		<?php endif; ?>
@@ -32,7 +32,7 @@
 		<?php while ( have_posts() ) : the_post();
 			get_template_part( 'parts/content', get_post_format() );
 		endwhile; 
-			logicalbones_content_nav( 'nav-below' ); ?>
+			thatcamp_content_nav( 'nav-below' ); ?>
 		</div>
 	</div>	
 </div>

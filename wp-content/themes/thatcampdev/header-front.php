@@ -22,7 +22,7 @@
 	<?php do_action( 'bp_head' ); ?>	
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class() ?> id="logicalbones_hug">
+<body <?php body_class() ?> id="thatcamp">
 	<?php do_action( 'bp_before_header' ); ?>
 	<div id="sitebar-wrapper">
 		<div id="sitebar" class="wrapper">

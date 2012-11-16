@@ -6,8 +6,8 @@
  * This template is used by bp_activity_comments() functions to show
  * each activity.
  *
- * @package logicalbones
- * @since logicalbones 1.0
+ * @package thatcamp
+ * @since thatcamp 1.0
  */
 
 ?>

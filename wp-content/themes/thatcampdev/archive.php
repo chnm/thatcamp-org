@@ -2,8 +2,8 @@
 /**
  * Archive page
  *
- * @package logicalbones
- * @since logicalbones 1.0
+ * @package thatcamp
+ * @since thatcamp 1.0
  */
 ?>
 <?php get_header('signup'); ?>
@@ -15,13 +15,13 @@
 			<header class="post-header">
 				<h1 class="post-title">
 					<?php if ( is_day() ) : ?>
-						<?php printf( __( 'Daily Archives: <span>%s</span>', 'logicalbones'), get_the_date() ); ?>
+						<?php printf( __( 'Daily Archives: <span>%s</span>', 'thatcamp'), get_the_date() ); ?>
 					<?php elseif ( is_month() ) : ?>
-						<?php printf( __( 'Monthly Archives: <span>%s</span>', 'logicalbones'), get_the_date( 'F Y' ) ); ?>
+						<?php printf( __( 'Monthly Archives: <span>%s</span>', 'thatcamp'), get_the_date( 'F Y' ) ); ?>
 					<?php elseif ( is_year() ) : ?>
-						<?php printf( __( 'Yearly Archives: <span>%s</span>', 'logicalbones'), get_the_date( 'Y' ) ); ?>
+						<?php printf( __( 'Yearly Archives: <span>%s</span>', 'thatcamp'), get_the_date( 'Y' ) ); ?>
 					<?php else : ?>
-						<?php _e( 'Blog Archives', 'logicalbones'); ?>
+						<?php _e( 'Blog Archives', 'thatcamp'); ?>
 					<?php endif; ?>
 				</h1>
 			</header>
@@ -30,7 +30,7 @@
 		while ( have_posts() ) : the_post();
 			get_template_part( 'parts/content', get_post_format() );
 		endwhile;
-			logicalbones_content_nav( 'nav-below' );?>
+			thatcamp_content_nav( 'nav-below' );?>
 		</div>
 		<?php do_action( 'bp_after_archive' ); ?>
 	</div>

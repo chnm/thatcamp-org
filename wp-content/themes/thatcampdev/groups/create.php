@@ -3,8 +3,8 @@
 /**
  * BuddyPress - Create Group
  *
- * @package logicalbones
- * @since logicalbones 1.0
+ * @package thatcamp
+ * @since thatcamp 1.0
  */
 
 get_header( 'thatcamp' ); ?>

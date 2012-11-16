@@ -6,8 +6,8 @@
  * This template is used by activity-loop.php and AJAX functions to show
  * each activity.
  *
- * @package logicalbones
- * @since logicalbones 1.0
+ * @package thatcamp
+ * @since thatcamp 1.0
  */
 
 ?>
