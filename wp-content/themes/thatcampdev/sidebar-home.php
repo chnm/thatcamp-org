@@ -29,7 +29,7 @@
 			<?php dynamic_sidebar( 'sidebar-twitter' ); ?>
 		<?php endif; ?>
 		<a href="" class="button socialbutton">
-			<span class="button-inner"><?php _e( 'Follow Us', 'thatcamp' ); ?>s</span>
+			<span class="button-inner"><?php _e( 'Follow Us', 'thatcamp' ); ?></span>
 		</a>
 	</div>
 	

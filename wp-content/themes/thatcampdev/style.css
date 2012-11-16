@@ -833,13 +833,13 @@ img.alignleft {
 #members-list .item-avatar,
 #members-list #item-header-avatar {
   background: url('assets/images/polaroid.png');
-  padding: 5px 10px 0 15px;
+  padding: 5px 20px 0 20px;
   border: 1px solid #ddd;
   overflow: hidden;
   -webkit-box-shadow: 0 8px 6px -6px #cccccc;
   -moz-box-shadow: 0 8px 6px -6px #cccccc;
   box-shadow: 0 8px 6px -6px #cccccc;
-  width: 80%;
+  width: 140px;
 }
 #groups-list .item-avatar,
 #blogs-list .item-avatar {
@@ -2302,6 +2302,11 @@ ul.button-nav li.current a {
   background: #ffffff;
   padding: 20px;
 }
+#user-section .standard-form {
+  background: none;
+  padding: 0;
+  border: none;
+}
 .standard-form select {
   padding: 3px;
 }
@@ -3072,7 +3077,6 @@ div.item-list-tabs ul li.feed a {
   width: 250px;
 }
 #members-list li {
-  width: 23%;
   float: left;
   list-style: none;
   margin-right: 2%;
