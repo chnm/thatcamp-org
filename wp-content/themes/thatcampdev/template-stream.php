@@ -25,8 +25,13 @@
                                 }
                         }
 
-			if ( isset( $_GET['per_page'] ) )
+			if ( isset( $_GET['per_page'] ) ) {
 				$stream_args['posts_per_page'] = intval( $_GET['per_page'] );
+			}
+
+			if ( isset( $_GET['s'] ) ) {
+				$stream_args['s'] = urldecode( $_GET['s'] );
+			}
 
                         $stream_args['paged'] = thatcamp_get_paged();
 		?>
