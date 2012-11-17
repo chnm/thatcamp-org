@@ -1816,6 +1816,9 @@ h3.widgettitle {
 .widget_twitter h3.widgettitle {
   font-family: 'Francois One', sans-serif;
 }
+#twitterwidget-wrapper {
+  display: none;
+}
 /*--------------------------------------------------------------
 6.0 - BuddyPress specific
 --------------------------------------------------------------*/
@@ -3329,6 +3332,10 @@ ie9 #user-section {
   margin: 0;
   clear: none;
 }
+ie8 #twitterwidget-wrapper,
+ie9 #twitterwidget-wrapper {
+  display: block;
+}
 /*--------------------------------------------------------------
 8.0 - Media queries
 --------------------------------------------------------------*/
@@ -3393,6 +3400,9 @@ ie9 #user-section {
     float: left;
     width: 30%;
   }
+  #twitterwidget-wrapper {
+    display: block;
+  }
 }
 @media only screen and (min-width: 1140px) {
   nav#top-nav {
@@ -3452,6 +3462,9 @@ ie9 #user-section {
     float: left;
     width: 30%;
   }
+  #twitterwidget-wrapper {
+    display: block;
+  }
 }
 @media only screen and (min-width: 1382px) {
   nav#top-nav {
@@ -3510,6 +3523,9 @@ ie9 #user-section {
   #user-section {
     float: left;
     width: 30%;
+  }
+  #twitterwidget-wrapper {
+    display: block;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
