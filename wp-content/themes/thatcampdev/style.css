@@ -661,7 +661,7 @@ div#item-header .activity {
 .item-avatar h4,
 #item-header-avatar h4 {
   font-family: 'Courgette', cursive;
-  padding: 0 0 20px 0;
+  padding: 10px 0 20px 0;
   font-size: 15px;
   font-size: 1.5rem;
 }
@@ -830,7 +830,7 @@ img.alignleft {
 #profile-right .item-avatar,
 #profile-right #item-header-avatar {
   background: url('assets/images/polaroid.png');
-  padding: 5px 10px 0 15px;
+  padding: 10px 10px 0 15px;
   border: 1px solid #ddd;
   overflow: hidden;
   -webkit-box-shadow: 0 8px 6px -6px #cccccc;
@@ -841,7 +841,7 @@ img.alignleft {
 #members-list .item-avatar,
 #members-list #item-header-avatar {
   background: url('assets/images/polaroid.png');
-  padding: 5px 20px 0 20px;
+  padding: 10px 20px 0 20px;
   border: 1px solid #ddd;
   overflow: hidden;
   -webkit-box-shadow: 0 8px 6px -6px #cccccc;
@@ -851,7 +851,7 @@ img.alignleft {
 }
 #groups-list .item-avatar,
 #blogs-list .item-avatar {
-  padding: 5px 8px 15px 10px;
+  padding: 10px 8px 15px 10px;
   width: 50px;
   background: url('assets/images/polaroid.png');
   border: 1px solid #ddd;
@@ -3102,7 +3102,7 @@ div.item-list-tabs ul li.feed a {
   padding-top: 10px;
 }
 #profile-right {
-  float: right;
+  float: left;
   width: 250px;
 }
 #members-list li {
@@ -3381,7 +3381,53 @@ ie9 #user-section {
   /* Styles */
 }
 @media only screen and (min-width: 768px) {
-  
+  .widget {
+    display: block;
+  }
+  #sidebar {
+    width: 320px;
+    float: left;
+    padding: 20px 0;
+    margin: 0;
+    clear: none;
+  }
+  #sidebar-documents {
+    width: 35%;
+    float: left;
+  }
+  #sidebar-innerleft {
+    float: left;
+    width: 55%;
+  }
+  #sidebar-innerright {
+    float: right;
+    width: 40%;
+  }
+  #primary {
+    float: right;
+    width: 60%;
+    clear: none;
+  }
+  #primary-documents {
+    float: right;
+    width: 60%;
+  }
+  #avatarwall {
+    display: block;
+  }
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1140px;
+    padding: 0;
+  }
+  #search-bar {
+    float: right;
+    width: 60%;
+  }
+  #user-section {
+    float: left;
+    width: 30%;
+  }
 }
 @media only screen and (min-width: 992px) {
   .widget {
