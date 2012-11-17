@@ -83,10 +83,9 @@
 						'container' => ''
 					)); ?>
 				</nav>
-				<nav id="show-menu"><i class="icon-reorder"></i></nav>
+				<nav id="show-menu"><?php _e( 'Menu', 'thatcamp' ); ?>&nbsp;<i class="icon-reorder"></i></nav>
 				<div id="responsive-menu">
 					<nav id="responsive-nav" role="navigation">
-						<h3 class="assistive-text"><?php _e( 'Menu', 'thatcamp' ); ?></h3>
 						<div class="skip-link assistive-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'thatcamp' ); ?>"><?php _e( 'Skip to content', 'thatcamp' ); ?></a></div>
 						<?php wp_nav_menu( array(
 							'theme_location' => 'middle', 

@@ -189,6 +189,7 @@ body {
 .wrapper {
   margin: 0 auto;
   max-width: 1140px;
+  padding: 0 20px;
 }
 /*--------------------------------------------------------------
 2.1 - Content
@@ -335,8 +336,8 @@ body {
   overflow: hidden;
 }
 #user-section {
-  float: left;
-  width: 30%;
+  float: none;
+  width: 100%;
 }
 #user-section img {
   float: left;
@@ -1378,15 +1379,14 @@ select.mobileMenu {
   border-top: 1px dashed #333;
 }
 nav#show-menu {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  clear: both;
   font-size: 32px;
   font-size: 3.2rem;
   cursor: pointer;
 }
 #responsive-menu {
   display: none;
+  clear: both;
 }
 #responsive-menu ul {
   margin: 0;
@@ -1394,14 +1394,14 @@ nav#show-menu {
 }
 #responsive-menu li {
   background: #333;
-  border-bottom: 1px dashed #fff;
+  border-bottom: 1px solid #111;
   padding: 5px 10px;
 }
 #responsive-menu li a {
   color: #fff;
 }
 #responsive-menu li:hover {
-  background: #217d72;
+  background: #111;
 }
 /*--------------------------------------------------------------
 5.0 - WordPress specific
@@ -2366,8 +2366,11 @@ ul.button-nav {
   border: 1px solid #111;
 }
 #search-bar {
+  float: none;
+  width: 100%;
+}
+#search-bar form {
   float: right;
-  width: 40%;
 }
 #search-bar input {
   float: left;
@@ -3325,6 +3328,34 @@ body.register div.page ul {
 .ie9 #avatarwall {
   display: block;
 }
+ie8 img.wrapper,
+img,
+img.avatar,
+ie9 img.wrapper,
+img,
+img.avatar {
+  border: none !important;
+  clear: none !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+ie8 .wrapper,
+ie9 .wrapper {
+  margin: 0 auto;
+  max-width: 1140px;
+  padding: 0;
+}
+ie8 #search-bar,
+ie9 #search-bar {
+  float: right;
+  width: 60%;
+}
+ie8 #user-section,
+ie9 #user-section {
+  float: left;
+  width: 30%;
+}
 /*--------------------------------------------------------------
 8.0 - Media queries
 --------------------------------------------------------------*/
@@ -3369,6 +3400,15 @@ body.register div.page ul {
   #avatarwall {
     display: block;
   }
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1140px;
+    padding: 0;
+  }
+  #search-bar {
+    float: right;
+    width: 60%;
+  }
 }
 @media only screen and (min-width: 1140px) {
   nav#top-nav {
@@ -3411,6 +3451,15 @@ body.register div.page ul {
   #avatarwall {
     display: block;
   }
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1140px;
+    padding: 0;
+  }
+  #search-bar {
+    float: right;
+    width: 60%;
+  }
 }
 @media only screen and (min-width: 1382px) {
   nav#top-nav {
@@ -3452,6 +3501,15 @@ body.register div.page ul {
   }
   #avatarwall {
     display: block;
+  }
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1140px;
+    padding: 0;
+  }
+  #search-bar {
+    float: right;
+    width: 60%;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
