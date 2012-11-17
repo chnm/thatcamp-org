@@ -1075,7 +1075,7 @@ a:hover.button.socialbutton {
   text-shadow: -1px -1px 0px #006677;
 }
 .offset {
-  float: right;
+  float: none;
 }
 #sidebar-login-form label {
   display: none;
@@ -3349,7 +3349,9 @@ ie9 #twitterwidget-wrapper {
   
 }
 @media only screen and (min-width: 992px) {
-  
+  #avatarwall {
+    display: block;
+  }
 }
 @media only screen and (min-width: 1024px) {
   .widget {
