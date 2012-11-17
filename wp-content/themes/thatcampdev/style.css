@@ -213,6 +213,7 @@ body {
 #primary {
   float: none;
   width: 100%;
+  clear: both;
 }
 #primary-documents {
   float: none;
@@ -3323,6 +3324,7 @@ body.register div.page ul {
 .ie9 #primary {
   float: right;
   width: 70%;
+  clear: none;
 }
 .ie8 #primary-documents,
 .ie9 #primary-documents {
@@ -3407,6 +3409,7 @@ ie9 #user-section {
   #primary {
     float: right;
     width: 70%;
+    clear: none;
   }
   #primary-documents {
     float: right;
@@ -3464,6 +3467,7 @@ ie9 #user-section {
   #primary {
     float: right;
     width: 70%;
+    clear: none;
   }
   #primary-documents {
     float: right;
@@ -3521,6 +3525,7 @@ ie9 #user-section {
   #primary {
     float: right;
     width: 70%;
+    clear: none;
   }
   #primary-documents {
     float: right;

@@ -1,4 +1,9 @@
 <?php
+/**
+ * The following is taken from the default theme for BuddyPress
+ * 
+ * @since thatcamp (1.0)
+ */
 
 if ( !function_exists( 'bp_dtheme_page_on_front' ) ) :
 /**

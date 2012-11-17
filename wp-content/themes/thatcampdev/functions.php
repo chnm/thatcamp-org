@@ -5,19 +5,51 @@
  * @package thatcamp
  * @since thatcamp 1.0
  */
-/* thatcamp setup functions */
+ 
+ 
+// Check to see if BuddyPress is active, otherwise load default WordPress theme
 if ( ! function_exists( 'bp_is_active' ) ) {
 	switch_theme( WP_DEFAULT_THEME, WP_DEFAULT_THEME );
 	return;
 }
 
+
+// Content width set
 if ( ! isset( $content_width ) ) {
 	$content_width = 640;
 }
 
+// Don't sohw the admin bar
 add_filter('show_admin_bar', '__return_false');
 
-// thatcamp set up function
+
+/**
+ * Sets up Theme
+ *
+ * Performs various theme set ups and links in files.
+ *
+ * Adds in:
+ * - Ajax.php for BuddyPress
+ * - Template Functions - a functions file for commenting and other theme related functions
+ * - BuddyPress Functions - a functions file modified from BP Default theme
+ *
+ * Sets up:
+ * - Langauges and textdomain for thatcamp
+ * - Feed links
+ * - Editor Style
+ * - Post Thumbnails
+ * - Post formats - aside, image, link, quote all supported
+ * - BuddyPress buttons - add friend, messsage (private and public), join, topic, blog, visit
+ *
+ * Registers the following Menus:
+ * - Top (In Header)
+ * - Bottom (In Footer)
+ * - Middle (Responsive menu)
+ * - Documents (Document template pages only)
+ *
+ * @since thatcamp (1.0)
+ */
+
 add_action( 'after_setup_theme', 'thatcamp_build' );
 if ( ! function_exists( 'thatcamp_build' ) ) :
 function thatcamp_build() {
@@ -81,7 +113,27 @@ function thatcamp_build() {
 }
 endif;
 
-// thatcamp load scripts
+
+/**
+ * Loads all scripts/stylesheets used in theme
+ *
+ * Loads the following scripts and stylesheets:
+ * - Normalise.css : resets all CSS
+ * - Print.css : a minimal print stylesheet
+ * - Style.css : this is generated from the files in assets/less - the theme uses LESS and auto generates the style.css
+ * - Gridscript.css : this is for the avatar grid on the home page
+ * - Font-awesome.css : This is an icon font that can be reused throughout the site
+ * - Grid script files : transit.min.js, gridrotator.js - this is for the avatar grid on the home page
+ * - Custom.js : Custom grid scripting and also custom scripting for the responsive menu
+ * - Modernizr : Polyfill and shim along with CSS transitions
+ * 
+ * It sets up:
+ * - Threaded comments
+ * - Favourites and other scripts for BuddyPress to work
+ *
+ * @since thatcamp (1.0)
+ */
+
 if ( ! function_exists( 'thatcamp_load_scripts' ) ) :
 function thatcamp_load_scripts() {
 
@@ -95,7 +147,7 @@ function thatcamp_load_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 	/* font awesome is rolled into Logical Bones */
-	wp_enqueue_style( 'font-awesome',  get_template_directory_uri() . '/assets/css/font-awesome.css', array());
+	wp_enqueue_style( 'font-awesome',  get_template_directory_uri() . '/assets/css/font-awesome.css', array(), '2.0');
 
 	wp_enqueue_script('modernizr', get_template_directory_uri() . '/assets/scripts/modernizr-2.6.2-min.js', array("jquery"), '2.0');
 
@@ -129,7 +181,20 @@ function thatcamp_load_scripts() {
 endif;
 add_action( 'wp_enqueue_scripts', 'thatcamp_load_scripts' );
 
-// thatcamp widgets
+
+/**
+ * Sets up the widget areas
+ *
+ * The following widget areas are available:
+ * - Sidebar (Default Sidebar)
+ * - Home
+ * - Stream
+ * - Activity
+ * - Twitter (Widget area just for Twitter Widget)
+ * 
+ *
+ * @since thatcamp (1.0)
+ */
 if ( ! function_exists( 'thatcamp_widgets_init' ) ) :
 function thatcamp_widgets_init() {
 	register_sidebar(
@@ -198,6 +263,13 @@ function thatcamp_widgets_init() {
 endif;
 add_action( 'widgets_init', 'thatcamp_widgets_init' );
 
+/**
+ * Site Search
+ *
+ * Drop down filterable search. 
+ *
+ * @since thatcamp (1.0)
+ */
 remove_action( 'bp_init', 'bp_core_action_search_site', 7 );
 function thatcamp_action_search_site() {
 	if ( !bp_is_current_component( bp_get_search_slug() ) )
@@ -241,6 +313,7 @@ function thatcamp_action_search_site() {
 }
 add_action( 'bp_init', 'thatcamp_action_search_site', 7 );
 
+// Gets the blog ID
 function thatcamp_proceedings_blog_id() {
 	global $wpdb;
 	return $wpdb->get_var( "SELECT blog_id FROM $wpdb->blogs WHERE domain LIKE 'proceedings.%'" );

@@ -1,5 +1,21 @@
 <?php
-// thatcamp content navigation
+/**
+ * Template functions
+ *
+ * A collection of functions used in the theme
+ *
+ * @since thatcamp 1.0
+ */
+
+
+/**
+ * Post navigation function
+ *
+ * Simple output function to style the post navigation.
+ * 
+ *
+ * @since thatcamp (1.0)
+ */
 function thatcamp_content_nav( $nav_id ) {
 	global $wp_query;
 
@@ -11,12 +27,12 @@ function thatcamp_content_nav( $nav_id ) {
 	<nav id="<?php echo $nav_id; ?>" class="<?php echo $nav_class; ?>" role="navigation">
 		<h1 class="assistive-text"><?php _e( 'Post navigation', 'thatcamp' ); ?></h1>
 
-	<?php if ( is_single() ) : // navigation links for single posts ?>
+	<?php if ( is_single() ) : ?>
 
 		<?php previous_post_link( '<div class="nav-previous">%link</div>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'thatcamp' ) . '</span> %title' ); ?>
 		<?php next_post_link( '<div class="nav-next">%link</div>', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'thatcamp' ) . '</span>' ); ?>
 
-	<?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
+	<?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : ?>
 
 		<?php if ( get_next_posts_link() ) : ?>
 		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'thatcamp' ) ); ?></div>
@@ -33,9 +49,14 @@ function thatcamp_content_nav( $nav_id ) {
 	<?php
 }
 
-
-
-// thatcamp comments
+/**
+ * Comments function
+ *
+ * Simple output function to style the comments.
+ * 
+ *
+ * @since thatcamp (1.0)
+ */
 if ( ! function_exists( 'thatcamp_comment' ) ) :
 function thatcamp_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
@@ -47,7 +68,6 @@ function thatcamp_comment( $comment, $args, $depth ) {
 		<p><?php _e( 'Pingback:', 'thatcamp'); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'thatcamp'), ' ' ); ?></p>
 		<?php break;
 		default:
-		// Proceed with normal comments.
 		global $post;
 	?>
 
@@ -55,7 +75,6 @@ function thatcamp_comment( $comment, $args, $depth ) {
 		<article id="comment-<?php comment_ID(); ?>">
 			<div class="comment-author vcard">
 					<?php
-					// this needs deciding if want smaller / works even with smaller
 						$avatar_size = 64;
 						if ( '0' != $comment->comment_parent )
 							$avatar_size = 32;
@@ -94,6 +113,12 @@ function thatcamp_comment( $comment, $args, $depth ) {
 	endswitch;
 }
 endif;
+
+/**
+ * Paging function
+ * 
+ * @since thatcamp (1.0)
+ */
 
 function thatcamp_next_posts_link( $link_text, $max_pages ) {
         $paged = thatcamp_get_paged();
