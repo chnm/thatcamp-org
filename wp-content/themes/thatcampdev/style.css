@@ -331,10 +331,10 @@ body {
   padding: 20px 0;
 }
 #site-logo a {
-  background: url('assets/images/thatcamp-logo.png') no-repeat;
+  background: url('assets/images/thatcamp-logoiphone.png') no-repeat;
   text-indent: 100%;
-  height: 80px;
-  width: 320px;
+  height: 40px;
+  width: 220px;
   float: left;
   margin: 10px 0 0 0;
   display: block;
@@ -3333,9 +3333,20 @@ ie9 #user-section {
   margin: 0;
   clear: none;
 }
-ie8 #twitterwidget-wrapper,
-ie9 #twitterwidget-wrapper {
+.ie8 #twitterwidget-wrapper,
+.ie9 #twitterwidget-wrapper {
   display: block;
+}
+.ie8 #site-logo a,
+.ie9 #site-logo a {
+  background: url('assets/images/thatcamp-logoiphone.png') no-repeat;
+  text-indent: 100%;
+  height: 80px;
+  width: 320px;
+  float: left;
+  margin: 10px 0 0 0;
+  display: block;
+  overflow: hidden;
 }
 /*--------------------------------------------------------------
 8.0 - Media queries
