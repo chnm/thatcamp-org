@@ -1805,6 +1805,9 @@ dd.wp-caption p.wp-caption-text,
   display: block;
   color: #999;
 }
+.twitter li {
+  list-style: none;
+}
 h3.widgettitle {
   font-family: Lucinda Grande, sans-serif;
   border-bottom: 1px dashed #333;
@@ -1814,10 +1817,6 @@ h3.widgettitle {
 }
 .widget_twitter h3.widgettitle {
   font-family: 'Francois One', sans-serif;
-}
-.twitterwidget-wrapper .widget li {
-  list-style: none;
-  margin: 0 0 0 15px;
 }
 /*--------------------------------------------------------------
 6.0 - BuddyPress specific
