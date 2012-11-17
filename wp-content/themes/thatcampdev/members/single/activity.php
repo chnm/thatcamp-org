@@ -15,12 +15,13 @@
 	<span class="user-nicename">@<?php bp_displayed_user_username(); ?></span>
 		<span class="activity"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 </div>
+<!--
 <div class="feature-box">
 	<p>
 		Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
 	</p>
 </div>
-
+-->
 <?php
 
 if ( is_user_logged_in() && bp_is_my_profile() && ( !bp_current_action() || bp_is_current_action( 'just-me' ) ) )
