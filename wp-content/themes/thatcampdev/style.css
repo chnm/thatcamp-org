@@ -3304,10 +3304,6 @@ ie9 img.wrapper,
 img,
 img.avatar {
   border: none !important;
-  clear: none !important;
-  float: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
 }
 ie8 .wrapper,
 ie9 .wrapper {
@@ -3343,55 +3339,12 @@ ie9 #user-section {
   /* Styles */
 }
 @media only screen and (min-width: 768px) {
-  .widget {
-    display: block;
-  }
-  #sidebar {
-    width: 320px;
-    float: left;
-    padding: 20px 0;
-    margin: 0;
-    clear: none;
-  }
-  #sidebar-documents {
-    width: 35%;
-    float: left;
-  }
-  #sidebar-innerleft {
-    float: left;
-    width: 55%;
-  }
-  #sidebar-innerright {
-    float: right;
-    width: 40%;
-  }
-  #primary {
-    float: right;
-    width: 60%;
-    clear: none;
-  }
-  #primary-documents {
-    float: right;
-    width: 60%;
-  }
-  #avatarwall {
-    display: block;
-  }
-  .wrapper {
-    margin: 0 auto;
-    max-width: 1140px;
-    padding: 0;
-  }
-  #search-bar {
-    float: right;
-    width: 60%;
-  }
-  #user-section {
-    float: left;
-    width: 30%;
-  }
+  
 }
 @media only screen and (min-width: 992px) {
+  
+}
+@media only screen and (min-width: 1024px) {
   .widget {
     display: block;
   }
@@ -3416,7 +3369,7 @@ ie9 #user-section {
   }
   #primary {
     float: right;
-    width: 70%;
+    width: 60%;
     clear: none;
   }
   #primary-documents {
@@ -3429,7 +3382,8 @@ ie9 #user-section {
   .wrapper {
     margin: 0 auto;
     max-width: 1140px;
-    padding: 0;
+    padding: 0 20px;
+    overflow: visible;
   }
   #search-bar {
     float: right;
@@ -3488,6 +3442,7 @@ ie9 #user-section {
     margin: 0 auto;
     max-width: 1140px;
     padding: 0;
+    overflow: visible;
   }
   #search-bar {
     float: right;
@@ -3546,6 +3501,7 @@ ie9 #user-section {
     margin: 0 auto;
     max-width: 1140px;
     padding: 0;
+    overflow: visible;
   }
   #search-bar {
     float: right;
