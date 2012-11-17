@@ -1659,7 +1659,8 @@ dd.wp-caption p.wp-caption-text,
   padding: 10px 0;
   padding: 1rem 0;
 }
-.post {
+.post,
+.search .page {
   margin: 0 0 20px 0;
   margin: 0 0 2rem 0;
   overflow: hidden;
@@ -1675,7 +1676,8 @@ dd.wp-caption p.wp-caption-text,
 }
 #latest-posts .post-header,
 .archive .post-header,
-.thatcamp-stream .post-header {
+.thatcamp-stream .post-header,
+.search .post-header {
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -1706,7 +1708,8 @@ dd.wp-caption p.wp-caption-text,
 }
 #latest-posts .post-meta,
 .archive .post-meta,
-.thatcamp-stream .post-meta {
+.thatcamp-stream .post-meta,
+.search .post-meta {
   border-left: 1px solid #ccc;
   padding: 0 0 0 3%;
   margin: 0 0 0 23%;
@@ -3358,6 +3361,14 @@ ie9 #user-section {
   float: left;
   width: 30%;
 }
+.ie8 #sidebar,
+.ie9 #sidebar {
+  width: 320px;
+  float: left;
+  padding: 20px 0;
+  margin: 0;
+  clear: none;
+}
 /*--------------------------------------------------------------
 8.0 - Media queries
 --------------------------------------------------------------*/
@@ -3378,6 +3389,8 @@ ie9 #user-section {
     width: 320px;
     float: left;
     padding: 20px 0;
+    margin: 0;
+    clear: none;
   }
   #sidebar-documents {
     width: 35%;
@@ -3433,6 +3446,8 @@ ie9 #user-section {
     width: 320px;
     float: left;
     padding: 20px 0;
+    margin: 0;
+    clear: none;
   }
   #sidebar-documents {
     width: 35%;
@@ -3488,6 +3503,8 @@ ie9 #user-section {
     width: 320px;
     float: left;
     padding: 20px 0;
+    margin: 0;
+    clear: none;
   }
   #sidebar-documents {
     width: 35%;
