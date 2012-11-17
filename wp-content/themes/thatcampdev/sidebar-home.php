@@ -20,8 +20,8 @@
 	<a class="rss-thatcamplink"><?php _e( 'RSS', 'thatcamp' ); ?></a>
 	
 
-	<?php if ( is_active_sidebar( 'sidebar-home' ) ) : ?>
-		<?php dynamic_sidebar( 'sidebar-home' ); ?>
+	<?php if ( is_active_sidebar( 'sidebar' ) ) : ?>
+		<?php dynamic_sidebar( 'sidebar' ); ?>
 	<?php endif; ?>
 	
 	<div id="twitterwidget-wrapper">

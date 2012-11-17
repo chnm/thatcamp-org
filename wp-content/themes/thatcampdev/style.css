@@ -394,6 +394,10 @@ body {
   margin: 0 auto;
   max-width: 1140px;
 }
+#logos img {
+  float: left;
+  margin: 10px 20px 10px 0;
+}
 /*--------------------------------------------------------------
 2.4 - Sidebar
 --------------------------------------------------------------*/
@@ -1097,6 +1101,10 @@ a:visited.camplink,
 a:hover.camplink,
 a:link.camplink {
   color: #88aa11;
+}
+#about a {
+  color: #ffffff;
+  text-decoration: underline;
 }
 a.postlink,
 a:visited.postlink,
