@@ -93,8 +93,9 @@
 		</li>
 
 	<?php endif; ?>
-	
+	<?php if ( bp_is_my_profile() ) : ?>
 		<?php bp_get_options_nav(); ?>
+	<?php endif; ?>
 	</ul>
 	</div>
 	</div>

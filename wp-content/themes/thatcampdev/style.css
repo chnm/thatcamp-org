@@ -897,6 +897,7 @@ textarea {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  padding: 4px 10px;
 }
 input[type=checkbox],
 input[type=radio] {
@@ -922,6 +923,11 @@ input[type=file] {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}
+#message-threads a.button {
+  color: #668800;
+  display: block;
+  margin: 0;
 }
 input[type=button],
 input[type=reset],
@@ -3231,8 +3237,11 @@ div#message-thread div.message-options {
   text-align: right;
 }
 div.message-search {
-  float: right;
+  float: left;
   margin: 0 20px;
+}
+div.message-search label {
+  float: left;
 }
 /*--------------------------------------------------------------
 6.9 - Extended Profiles
