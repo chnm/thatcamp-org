@@ -33,7 +33,7 @@
 			
 			<div class="item">
 				<div class="item-visit"><a href="<?php thatcamp_camp_permalink(); ?>" class="button campbutton">Visit Camp</a>
-					<?php do_action( 'bp_directory_groups_actions' ); ?>
+					<?php //do_action( 'bp_directory_groups_actions' ); ?>
 				</div>
 				<div class="item-title"><a href="<?php thatcamp_camp_permalink(); ?>"><?php bp_group_name(); ?></a></div>
 			
