@@ -12,7 +12,7 @@
 	<!-- demo sidebar content -->
 	
 	<a href="" class="button campbutton">
-		<span class="button-inner"><?php _e( 'Oraganize A THATCamp', 'thatcamp' ); ?></span>
+		<span class="button-inner"><?php _e( 'Organize A THATCamp', 'thatcamp' ); ?></span>
 	</a>
 		
 	<a class="email-thatcamplink"><?php _e( 'Contact Us', 'thatcamp' ); ?></a>

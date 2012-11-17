@@ -92,7 +92,6 @@ body.activity-permalink .activity-list > li:first-child {
 	padding-top: 0;
 }
 .activity-list li .activity-content {
-	position: relative;
 	color: #999;
 }
 .activity-list li.mini .activity-content p {
@@ -106,7 +105,7 @@ body.activity-permalink li.mini .activity-meta {
 	margin-top: 4px;
 }
 .activity-list li .activity-inreplyto {
-	background: url( ../images/replyto_arrow.gif ) 7px 0 no-repeat;
+	background: url( assets/images/replyto_arrow.gif ) 7px 0 no-repeat;
 	.font-size-rems(11);
 	margin-left: 5px;
 	margin-top: 5px;
@@ -140,7 +139,7 @@ body.activity-permalink .activity-list li .activity-content {
 	padding: 15px;
 }
 body.activity-permalink .activity-list li .activity-header > p {
-	background: url( ../images/activity_arrow.gif ) top left no-repeat;
+	background: url( assets/images/activity_arrow.gif ) top left no-repeat;
 	height: 35px;
 	margin-bottom: 0;
 	padding: 5px 0 0 35px;
@@ -232,15 +231,15 @@ body.activity-permalink .activity-content blockquote {
 	overflow:hidden;
 	float: right;
 }
-a.acomment-reply{
+.activity-meta a.acomment-reply{
 	background: url('assets/images/icon-nine.png') no-repeat;
 }
 
-a.fav{
+.activity-meta a.fav{
 	background: url('assets/images/icon-eight.png') no-repeat;
 }
 
-a.unfav{
+.activity-meta a.unfav{
 	background: url('assets/images/icon-eighthover.png') no-repeat;
 }
 
@@ -256,7 +255,6 @@ body.activity-permalink div.activity-meta {
 	margin-bottom: 6px;
 }
 div.activity-meta a {
-	font: normal 11px/20px Arial, Tahoma, Verdana, sans-serif;
 	padding: 4px 8px;
 }
 a.activity-time-since {
@@ -286,7 +284,6 @@ a.bp-primary-action:hover span,
 }
 div.activity-comments {
 	margin: 0 0 0 70px;
-	position: relative;
 	width: auto;
 	clear: both;
 }
@@ -296,7 +293,6 @@ body.activity-permalink div.activity-comments {
 	width: auto;
 }
 div.activity-comments > ul {
-	background: @grayLighter;
 	padding: 0 0 0 10px;
 }
 div.activity-comments ul,
@@ -376,7 +372,7 @@ div.activity-comments div#message {
 	margin-bottom: 0;
 }
 div.activity-comments form.loading {
-	background-image: url( ../images/ajax-loader.gif );
+	background-image: url( assets/images/ajax-loader.gif );
 	background-position: 2% 95%;
 	background-repeat: no-repeat;
 }
@@ -423,7 +419,10 @@ div.activity-comments form div.ac-reply-content {
 .acomment-options a:hover {
 	color: inherit;
 }
-
+.acomment-avatar{
+	float: left;
+	margin: 0 15px 0 0;
+}
 
 /*--------------------------------------------------------------
 6.2 - Toolbar
@@ -715,14 +714,14 @@ div.generic-button a:hover,
 --------------------------------------------------------------*/
 a.loading,
 input.loading {
-    background-image: url( ../images/ajax-loader.gif );
+  	background: #fff url( assets/images/ajax-loader.gif );
     background-position: 95% 50%;
     background-repeat: no-repeat;
     padding-right: 25px;
 }
 a.loading:hover,
 input.loading:hover {
-    background-image: url( ../images/ajax-loader.gif );
+  	background: #fff url( assets/images/ajax-loader.gif );
     background-position: 95% 50%;
     background-repeat: no-repeat;
     padding-right: 25px;
@@ -732,13 +731,7 @@ a.button.loading,
 input[type="submit"].loading,
 input[type="button"].loading,
 input[type="reset"].loading {
-	background-image: url( ../images/ajax-loader.gif ), -moz-linear-gradient(top, #ffffff 0%, #e0e0e0 100%); /* FF3.6+ */
-	background-image: url( ../images/ajax-loader.gif ), -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
-	background-image: url( ../images/ajax-loader.gif ), -webkit-linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* Chrome10+,Safari5.1+ */
-	background-image: url( ../images/ajax-loader.gif ), -o-linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* Opera11.10+ */
-	background-image: url( ../images/ajax-loader.gif ), -ms-linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* IE10+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( enabled=0 ); /* IE6-9 */
-	background-image: url( ../images/ajax-loader.gif ), linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* W3C */
+  	background: #fff url( assets/images/ajax-loader.gif );
 	background-position: 95% 50%;
 	background-repeat: no-repeat;
 	padding-right: 25px;
@@ -747,13 +740,7 @@ a.button.loading:hover,
 input[type="submit"].loading:hover,
 input[type="button"].loading:hover,
 input[type="reset"].loading:hover {
-  	background-image: url( ../images/ajax-loader.gif ), -moz-linear-gradient(top, #ffffff 0%, #e0e0e0 100%); /* FF3.6+ */
-	background-image: url( ../images/ajax-loader.gif ), -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
-	background-image: url( ../images/ajax-loader.gif ), -webkit-linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* Chrome10+,Safari5.1+ */
-	background-image: url( ../images/ajax-loader.gif ), -o-linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* Opera11.10+ */
-	background-image: url( ../images/ajax-loader.gif ), -ms-linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* IE10+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
-	background-image: url( ../images/ajax-loader.gif ), linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* W3C */
+  	background: #fff url( assets/images/ajax-loader.gif );
 	border: 1px solid #ccc;
 	padding-right: 25px;
 }
@@ -781,13 +768,7 @@ button.pending:hover,
 button.disabled:hover,
 div.pending a:hover,
 a.disabled:hover {
-	background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Opera11.10+ */
-	background: -ms-linear-gradient(top, #ffffff 0%,#ededed 100%); /* IE10+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
-	background: linear-gradient(top, #ffffff 0%,#ededed 100%); /* W3C */
+	background: #fff;
     border-color: #eee;
     color: #bbb;
 }
@@ -1337,7 +1318,9 @@ div.messages-options-nav {
 	.font-size-rems(11);
 	margin: 0;
 	padding: 5px 15px;
-	text-align: right;
+}
+table#message-threads{
+	background: #f3f3f3;
 }
 div#message-thread div.message-box {
 	margin: 0;
