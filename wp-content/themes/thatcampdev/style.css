@@ -1790,6 +1790,7 @@ dd.wp-caption p.wp-caption-text,
   border-bottom: 1px dashed #333;
   margin: 10px 0;
   font-size: 90%;
+  list-style: none;
 }
 .twitter .twitter-imagelink {
   position: absolute;
@@ -1804,9 +1805,6 @@ dd.wp-caption p.wp-caption-text,
 .twitter .twitter-timestamp {
   display: block;
   color: #999;
-}
-.twitter li {
-  list-style: none;
 }
 h3.widgettitle {
   font-family: Lucinda Grande, sans-serif;
