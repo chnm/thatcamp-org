@@ -3409,6 +3409,10 @@ ie9 #user-section {
     float: right;
     width: 60%;
   }
+  #user-section {
+    float: left;
+    width: 30%;
+  }
 }
 @media only screen and (min-width: 1140px) {
   nav#top-nav {
@@ -3460,6 +3464,10 @@ ie9 #user-section {
     float: right;
     width: 60%;
   }
+  #user-section {
+    float: left;
+    width: 30%;
+  }
 }
 @media only screen and (min-width: 1382px) {
   nav#top-nav {
@@ -3510,6 +3518,10 @@ ie9 #user-section {
   #search-bar {
     float: right;
     width: 60%;
+  }
+  #user-section {
+    float: left;
+    width: 30%;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
