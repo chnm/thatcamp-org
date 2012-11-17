@@ -10,7 +10,7 @@
 			</div>
 			<?php do_action( 'bp_after_container' ); ?>
 			<div id="logos-wrapper">
-				<div id="logos">
+				<div id="logos"  class="wrapper">
 					<a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cc-logo.png" alt="Creative Commons"/>
 					</a>
