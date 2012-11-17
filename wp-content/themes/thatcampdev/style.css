@@ -340,7 +340,7 @@ body {
 }
 #user-section img {
   float: left;
-  margin: 0 10px 0 0;
+  margin: 0 10px 5px 0;
 }
 #user-section h4 {
   float: left;
@@ -1077,6 +1077,10 @@ a:hover.button.socialbutton {
 #sitebar #sidebar-wp-submit {
   background: #111;
   padding: 5px 10px;
+}
+#search-which {
+  float: left;
+  margin: 0 10px 0 0;
 }
 /*--------------------------------------------------------------
 4.0 - Navigation
@@ -2363,7 +2367,7 @@ ul.button-nav {
 }
 #search-bar {
   float: right;
-  width: 28%;
+  width: 40%;
 }
 #search-bar input {
   float: left;
