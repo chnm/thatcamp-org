@@ -14,6 +14,8 @@
 			<h2><?php _e( 'Upcoming THATCamps', 'thatcamp' ); ?></h2>
 
 			<?php /* Set up the groups loop */ ?>
+			<?php /* We do two separate loops: One for upcoming camps with dates,
+			         and one for those without any dates */ ?>
 			<?php
 
 			$meta_filter_args = array(
@@ -21,39 +23,70 @@
 					'thatcamp_date' => false, // doesn't matter what it is
 				),
 				'orderby' => 'thatcamp_date',
-				'order' => 'ASC',
+				'order'   => 'ASC',
 			);
 
 			$meta_filter = new BP_Groups_Meta_Filter( $meta_filter_args );
 
 			$group_args = array(
-				'per_page' => 10
+				'per_page' => null
 			);
 			?>
 
 			<?php if ( bp_has_groups( $group_args ) ) : while ( bp_groups() ) : bp_the_group() ?>
 
-			<article class="camp-listitem">
-				<div class="camp-listdate"><?php thatcamp_camp_date() ?></div>
-				<h3><a href="<?php thatcamp_camp_permalink() ?>" class="camplink"><?php bp_group_name() ?></a></h3>
-			</article>
+			<?php /* Hack alert: Instead of querying intelligently, just skip old camps */ ?>
+			<?php if ( thatcamp_is_in_the_future()) : ?>
+				<article class="camp-listitem">
+					<div class="camp-listdate"><?php thatcamp_camp_date() ?></div>
+					<h3><a href="<?php thatcamp_camp_permalink() ?>" class="camplink"><?php bp_group_name() ?></a></h3>
+				</article>
+			<?php endif ?>
 
 			<?php endwhile; endif ?>
 
 			<?php $meta_filter->remove_filters() ?>
+
+			<?php /* Round two */ ?>
+
+			<?php
+
+			$all_group_args = array(
+				'per_page' => null,
+				'include'  => thatcamp_groups_without_dates(),
+			);
+
+			?>
+
+			<?php if ( bp_has_groups( $all_group_args ) ) : while ( bp_groups() ) : bp_the_group() ?>
+
+				<article class="camp-listitem">
+					<div class="camp-listdate"><?php _e( 'TBA', 'thatcamp' ); ?></div>
+					<h3><a href="<?php thatcamp_camp_permalink() ?>" class="camplink"><?php bp_group_name() ?></a></h3>
+				</article>
+
+			<?php endwhile; endif ?>
+
+
+			<a href="<?php echo site_url(); ?>/camps" class="button campbutton offset">
+				<span class="button-inner"><?php _e( 'View All Camps', 'thatcamp' ); ?></span>
+			</a>
+
+
 		</div>
 
-		<div id="latest-posts" class="feature-box">
+	<!--	<div id="latest-posts" class="feature-box">
 			<h2><?php _e( 'Blog Posts', 'thatcamp' ); ?></h2>
 			<?php rewind_posts();
 			while ( have_posts() ) : the_post();
 				get_template_part( 'parts/content', 'latestposts' );
 			endwhile;?>
-			<a href="" class="button postbutton offset">
+			<a href="<?php echo site_url(); ?>/posts/" class="button postbutton offset">
 				<span class="button-inner"><?php _e( 'View All Posts', 'thatcamp' ); ?></span>
 			</a>
-		</div>
+		</div>-->
 	</div>
 </div>
-<?php get_sidebar('home'); ?>
+<?php get_sidebar(); ?>
 <?php get_footer() ?>
+

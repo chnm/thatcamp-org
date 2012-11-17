@@ -1742,8 +1742,9 @@ dd.wp-caption p.wp-caption-text,
   margin: 0;
 }
 .widget li {
-  list-style: circle;
+  list-style: disc;
   margin: 0 0 0 15px;
+  color: #999;
 }
 .twitter .twitter-item {
   position: relative;
@@ -1775,6 +1776,10 @@ h3.widgettitle {
 }
 .widget_twitter h3.widgettitle {
   font-family: 'Francois One', sans-serif;
+}
+.twitterwidget-wrapper .widget li {
+  list-style: none;
+  margin: 0 0 0 15px;
 }
 /*--------------------------------------------------------------
 6.0 - BuddyPress specific

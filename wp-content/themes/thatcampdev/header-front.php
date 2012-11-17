@@ -124,9 +124,7 @@
 		<div id="about" class="wrapper">
 			<h2><?php _e( 'What is THATCamp?', 'thatcamp' ); ?></h3>
 			<p>
-				<?php _e('Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Duis mollis, 
-				est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Nullam 
-				id dolor id nibh ultricies vehicula ut id elit.', 'thatcamp'); ?>
+				<?php _e('THATCamp is an open, inexpensive meeting where humanists and technologists of all skill levels learn and build together in sessions proposed on the spot', 'thatcamp'); ?> <a href="<?php echo site_url(); ?>/about"><?php _e( 'Learn More', 'thatcamp' ); ?></a>
 			</p>
 		</div>
 	</div>

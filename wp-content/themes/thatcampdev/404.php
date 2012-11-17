@@ -20,7 +20,7 @@
 					<p><a href="http://thatcamp.org/registry"><?php _e( 'Register a new THATCamp', 'thatcamp' ); ?></a></p>
 					<?php do_action( 'bp_404' ); ?>
 				</div>
-			</article>>
+			</article>
 			<?php do_action( 'bp_after_404' ); ?>
 	</div>
 </div>

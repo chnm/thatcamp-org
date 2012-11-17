@@ -10,7 +10,7 @@
 <div id="primary" class="main-content">
 	<div id="content" role="main">
 		<div id="upcoming-camps" class="feature-box">
-			<h2>Upcoming THATCamps</h2>
+			<h2><?php _e( 'Upcoming THATCamps', 'thatcamp' ); ?>s</h2>
 
 			<?php /* Set up the groups loop */ ?>
 			<?php /* We do two separate loops: One for upcoming camps with dates,
@@ -60,26 +60,30 @@
 			<?php if ( bp_has_groups( $all_group_args ) ) : while ( bp_groups() ) : bp_the_group() ?>
 
 				<article class="camp-listitem">
-					<div class="camp-listdate">TBA</div>
+					<div class="camp-listdate"><?php _e( 'TBA', 'thatcamp' ); ?></div>
 					<h3><a href="<?php thatcamp_camp_permalink() ?>" class="camplink"><?php bp_group_name() ?></a></h3>
 				</article>
 
 			<?php endwhile; endif ?>
 
 
+			<a href="<?php echo site_url(); ?>/camps" class="button campbutton offset">
+				<span class="button-inner"><?php _e( 'View All Camps', 'thatcamp' ); ?></span>
+			</a>
+
 
 		</div>
 
-		<div id="latest-posts" class="feature-box">
+	<!--	<div id="latest-posts" class="feature-box">
 			<h2>Blog posts</h2>
 			<?php rewind_posts();
 			while ( have_posts() ) : the_post();
 				get_template_part( 'parts/content', 'latestposts' );
 			endwhile;?>
 			<a href="" class="button postbutton offset">
-				<span class="button-inner">View all posts</span>
+				<span class="button-inner"><?php _e( 'View All Posts', 'thatcamp' ); ?></span>
 			</a>
-		</div>
+		</div>-->
 	</div>
 </div>
 <?php get_sidebar(); ?>
