@@ -337,6 +337,7 @@ body {
   width: 320px;
   float: left;
   margin: 10px 0 0 0;
+  display: block;
   overflow: hidden;
 }
 #user-section {
@@ -3405,6 +3406,9 @@ ie9 #twitterwidget-wrapper {
   #twitterwidget-wrapper {
     display: block;
   }
+  .offset {
+    float: right;
+  }
 }
 @media only screen and (min-width: 1140px) {
   nav#top-nav {
@@ -3467,6 +3471,9 @@ ie9 #twitterwidget-wrapper {
   #twitterwidget-wrapper {
     display: block;
   }
+  .offset {
+    float: right;
+  }
 }
 @media only screen and (min-width: 1382px) {
   nav#top-nav {
@@ -3528,6 +3535,9 @@ ie9 #twitterwidget-wrapper {
   }
   #twitterwidget-wrapper {
     display: block;
+  }
+  .offset {
+    float: right;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
