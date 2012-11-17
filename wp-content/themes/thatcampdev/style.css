@@ -405,6 +405,8 @@ body {
 #sidebar {
   width: 100%;
   float: none;
+  clear: both;
+  margin: 20px 0;
   padding: 20px 0;
 }
 #sidebar-documents {
