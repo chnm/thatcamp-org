@@ -126,7 +126,7 @@
 		<div id="about" class="wrapper">
 			<h2><?php _e( 'What is THATCamp?', 'thatcamp' ); ?></h3>
 			<p>
-				<?php _e('THATCamp is an open, inexpensive meeting where humanists and technologists of all skill levels learn and build together in sessions proposed on the spot', 'thatcamp'); ?> <a href="<?php echo site_url(); ?>/about"><?php _e( 'Learn More', 'thatcamp' ); ?></a>
+				<?php _e('THATCamp, The Humanities and Technology Camp, is an open, inexpensive meeting where humanists and technologists of all skill levels learn and build together in sessions proposed on the spot.', 'thatcamp'); ?> <a href="<?php echo site_url(); ?>/about"><?php _e( 'Learn More', 'thatcamp' ); ?></a>
 			</p>
 		</div>
 	</div>

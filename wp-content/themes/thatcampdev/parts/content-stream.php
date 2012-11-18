@@ -37,6 +37,6 @@
 		<?php if ( $source_blog_link ) : ?>
 			<span class="meta-source"><?php printf( _x( 'on %s', 'From the blog...', 'thatcamp' ), $source_blog_link ) ?></span>
 		<?php endif ?>
-		<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="readmore postlink">Read more...</a>
+		<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="readmore postlink"><?php _e( 'Read more...', 'thatcamp' ); ?></a>
 	</div>
 </article>

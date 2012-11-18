@@ -11,8 +11,8 @@
 	<?php do_action( 'bp_inside_before_sidebar' ); ?>
 	<!-- demo sidebar content -->
 	
-	<a href="<?php echo site_url(); ?>/about" class="button campbutton">
-		<span class="button-inner"><?php _e( 'Organize A THATCamp', 'thatcamp' ); ?></span>
+	<a href="<?php echo site_url(); ?>/registry" class="button campbutton">
+		<span class="button-inner"><?php _e( 'Organize a THATCamp', 'thatcamp' ); ?></span>
 	</a>
 		
 	<a href="<?php echo site_url(); ?>/contact" class="email-thatcamplink"><?php _e( 'Contact Us', 'thatcamp' ); ?></a>

@@ -17,7 +17,7 @@
 		</header>
 		<span class="meta-date"><?php echo get_the_date(); ?></span>
 		<span class="meta-author"><?php printf( _x( 'by %s', 'Post written by...', 'thatcamp' ), bp_core_get_userlink( $post->post_author ) ); ?></span>
-		<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="readmore postlink">Read more...</a>
+		<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="readmore postlink"><?php _e( 'Read more...', 'thatcamp' ); ?></a>
 	</div>
 </article>
 <?php do_action( 'bp_after_blog_single_post' ); ?>
