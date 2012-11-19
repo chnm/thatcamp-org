@@ -56,11 +56,20 @@ class Thatcamp_Registrations_Admin {
 
             if (isset($_POST['update_status'])) {
     			thatcamp_registrations_process_registration($_GET['id'], $_POST['status']);
-    			if (isset($_POST['user_account']) && $_POST['user_account'] == 1) {
-    			    thatcamp_registrations_process_user($id);
+
+			// If this is an approval, and if the user_account flag is set to 1,
+			// attempt to create a new WP user (or associate an existing one)
+			// with this registration
+    			if (
+				isset( $_POST['user_account'] ) &&
+				$_POST['user_account'] == 1 &&
+				'accepted' == $_POST['status']
+			   ) {
+				thatcamp_registrations_process_user($id);
     			}
-                wp_redirect( get_admin_url() . 'admin.php?page=thatcamp-registrations&applicant_saved=1' );
-    		}
+
+			wp_redirect( get_admin_url() . 'admin.php?page=thatcamp-registrations&applicant_saved=1' );
+	    }
         }
     ?>
     <style type="text/css" media="screen">
@@ -127,6 +136,7 @@ class Thatcamp_Registrations_Admin {
 
                <form action="admin.php?page=thatcamp-registrations&amp;id=<?php echo $id; ?>&amp;noheader=true" method="post">
                     <h3>Registration Status</h3>
+
                     <select name="status">
                         <option name="pending" id="pending" value="pending"<?php if($registration->status == "pending") { echo ' selected="selected"';} ?>><?php _e('Pending', 'thatcamp-registrations'); ?> </option>
                         <option name="approved" id="approved" value="approved"<?php if($registration->status == "approved") { echo ' selected="selected"';} ?>><?php _e('Approved', 'thatcamp-registrations'); ?> </option>
@@ -170,6 +180,12 @@ class Thatcamp_Registrations_Admin {
 		<h3>Organization</h3>
 		<?php echo $applicant->user_organization; ?>
 
+		<h3><?php _e( 'Discipline', 'thatcamp-registrations' ) ?></h3>
+		<?php echo $applicant->discipline; ?>
+
+		<h3><?php _e( 'Technology Skill Level', 'thatcamp-registrations' ) ?></h3>
+		<?php echo $applicant->technology_skill_level; ?>
+
 </div>
             <?php
             // Otherwise, we need to view the list of registrations.
@@ -202,8 +218,8 @@ class Thatcamp_Registrations_Admin {
 		<div class="updated">
 		<?php
 			switch ( $_GET['success'] ) {
-				case 'accepted' :
-					$message = __( 'Successfully accepted!', 'thatcamp-registrations' );
+				case 'approved' :
+					$message = __( 'Successfully approved!', 'thatcamp-registrations' );
 					break;
 
 				case 'pending' :
@@ -236,7 +252,7 @@ class Thatcamp_Registrations_Admin {
 			<div class="alignleft actions">
 				<select name="tcr_bulk_action">
 					<option selected="selected" value=""><?php _e( 'Bulk Actions', 'thatcamp-registrations' ) ?></option>
-					<option value="mark_accepted"><?php _e( 'Mark Accepted', 'thatcamp-registrations' ) ?></option>
+					<option value="mark_approved"><?php _e( 'Mark Approved', 'thatcamp-registrations' ) ?></option>
 					<option value="mark_pending"><?php _e( 'Mark Pending', 'thatcamp-registrations' ) ?></option>
 					<option value="mark_rejected"><?php _e( 'Mark Rejected', 'thatcamp-registrations' ) ?></option>
 					<option value="mark_spam"><?php _e( 'Spam', 'thatcamp-registrations' ) ?></option>
@@ -306,7 +322,7 @@ class Thatcamp_Registrations_Admin {
                 'open_registration'             =>  $_POST['open_registration'],
                 'create_user_accounts'          =>  $_POST['create_user_accounts'],
                 'pending_application_email'     =>  $_POST['pending_application_email'],
-                'accepted_application_email'    =>  $_POST['accepted_application_email'],
+                'approved_application_email'    =>  $_POST['approved_application_email'],
                 'rejected_application_email'    =>  $_POST['rejected_application_email']
                 );
 
@@ -388,9 +404,9 @@ class Thatcamp_Registrations_Admin {
                         </td>
                     </tr>
                     <tr valign="top">
-                        <th scope="row"><label for="accepted_application_email"><?php _e('Accepted registration email', 'thatcamp-registrations'); ?></label></th>
+                        <th scope="row"><label for="approved_application_email"><?php _e('Approved registration email', 'thatcamp-registrations'); ?></label></th>
                         <td>
-                            <textarea name="accepted_application_email" id="accepted_application_email" rows="5" cols="50"><?php if( !empty($options['accepted_application_email']) ) echo $options['accepted_application_email']; ?></textarea>
+                            <textarea name="approved_application_email" id="approved_application_email" rows="5" cols="50"><?php if( !empty($options['approved_application_email']) ) echo $options['approved_application_email']; ?></textarea>
                              <p class="description"><?php _e('This e-mail will be sent by the system from an automated account; you may therefore wish to include your own name and e-mail address in the message itself so that users may contact you. The e-mail will be composed in HTML format, so links and e-mail addresses will automatically be hyperlinked, and no additional HTML codes are necessary. If no text is entered, no e-mail will be sent.'); ?></p>
                         </td>
                     </tr>
@@ -427,19 +443,19 @@ class Thatcamp_Registrations_Admin {
 
 		foreach ( $reg_ids as $reg_id ) {
 			switch( $action ) {
-				case 'mark_accepted' :
-					$status = 'accepted';
-					thatcamp_registrations_process_registrations( $reg_ids, $status );
+				case 'mark_approved' :
+					$status = 'approved';
+					thatcamp_registrations_process_registration( $reg_id, $status );
 					break;
 
 				case 'mark_pending' :
 					$status = 'pending';
-					thatcamp_registrations_process_registrations( $reg_ids, $status );
+					thatcamp_registrations_process_registration( $reg_id, $status );
 					break;
 
 				case 'mark_rejected' :
 					$status = 'rejected';
-					thatcamp_registrations_process_registrations( $reg_ids, $status );
+					thatcamp_registrations_process_registration( $reg_id, $status );
 					break;
 
 				case 'mark_spam' :
@@ -482,8 +498,8 @@ class Thatcamp_Registrations_Admin {
 			array( 'ukey' => 'user_title', 'title' => 'Title' ),
 			array( 'ukey' => 'user_organization', 'title' => 'Organization' ),
 			array( 'ukey' => 'user_twitter', 'title' => 'Twitter' ),
-			array( 'ukey' => 'tshirt_size', 'title' => 'T-shirt Size' ),
-			array( 'ukey' => 'dietary_preferences', 'title' => 'Dietary Preferences' ),
+			array( 'ukey' => 'discipline', 'title' => __( 'Discipline', 'thatcamp-registrations' ) ),
+			array( 'ukey' => 'technology_skill_level', 'title' => __( 'Technology Skill Level', 'thatcamp-registrations' ) ),
 			array( 'ukey' => 'application_text', 'title' => 'Application Text' ),
 			array( 'ukey' => 'status', 'title' => 'Status' ),
 		);

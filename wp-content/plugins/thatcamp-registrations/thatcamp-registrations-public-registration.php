@@ -173,6 +173,21 @@ class Thatcamp_Registrations_Public_Registration {
             <p class="explanation"><?php _e('Tell us a little about yourself: your background with the humanities and/or technology, your research or professional interests, your opinion of Nicholas Carr or Slavoj Žižek, your best score at Galaga, and so forth.', 'thatcamp-registrations'); ?></p>
             <textarea cols="45" rows="8" name="description"><?php echo @$this->current_user->description; ?></textarea>
         </div>
+        <div>
+            <label for="discipline"><?php _e( 'Discipline', 'thatcamp-registrations' ); ?></label><br/>
+            <p class="explanation"><?php _e('e.g., Art History, English, Library Science', 'thatcamp-registrations'); ?></p>
+            <input id="discipline" name="discipline"><?php echo @$this->current_user->discipline; ?></textarea>
+        </div>
+        <div>
+            <label for="technology_skill_level"><?php _e( 'Technology Skill Level', 'thatcamp-registrations' ); ?></label><br/>
+            <p class="explanation"><?php _e('I consider my technology skill level to be:', 'thatcamp-registrations'); ?></p>
+	    <?php $current_tech_level = isset( $this->current_user->technology_skill_level ) ? $this->current_user->technology_skill_level : 'intermediate' ?>
+	    <select id="technology_skill_level" name="technology_skill_level">
+		<option value="advanced" <?php selected( $current_tech_level, 'advanced' ) ?>><?php _e( 'Advanced (can code)', 'thatcamp-registrations' ) ?></option>
+		<option value="intermediate" <?php selected( $current_tech_level, 'intermediate' ) ?>><?php _e( 'Intermediate (can get things up on the web)', 'thatcamp-registrations' ) ?></option>
+		<option value="beginner" <?php selected( $current_tech_level, 'beginner' ) ?>><?php _e( 'Beginner (interested in learning more)', 'thatcamp-registrations' ) ?></option>
+	    </select>
+        </div>
 
 	<style type="text/css">
 		#tcppl { display: none; visibility: hidden; }

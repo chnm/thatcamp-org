@@ -27,6 +27,8 @@ function thatcamp_registrations_add_registration($status = 'pending') {
         'user_title',
         'user_organization',
         'user_twitter',
+        'discipline',
+        'technology_skill_level',
     );
 
     foreach ( $applicant_fields as $field) {
@@ -102,16 +104,25 @@ function thatcamp_registrations_process_registrations($ids = array(), $status) {
     }
 
     if ($status && !empty($idArray)) {
+	// Update the database entry
         $wpdb->update(
             $table,
             array('status' => $status),
             $idArray
             );
-        if ($status == 'approved' && thatcamp_registrations_create_user_accounts()) {
-            foreach ($ids as $id) {
-                thatcamp_registrations_process_user($id);
-            }
-        }
+
+	// Maybe create/associate WP accounts with the registration
+	if ( thatcamp_registrations_create_user_accounts() ) {
+		if ( $status == 'approved' ) {
+			foreach ($ids as $id) {
+				thatcamp_registrations_process_user($id);
+			}
+		} else if ( $status == 'rejected' ) {
+			foreach ( $ids as $id ) {
+				thatcamp_registrations_maybe_remove_wp_user( $id );
+			}
+		}
+	}
 
         // Notify the user of the change
         if ( 'approved' == $status || 'rejected' == $status ) {
@@ -202,6 +213,21 @@ function thatcamp_registrations_process_user($registrationId = null, $role = 'au
     }
 
     return $userId;
+}
+
+/**
+ * Remove the WP user associated with a registration from the current blog
+ */
+function thatcamp_registrations_maybe_remove_wp_user( $registration_id ) {
+
+	$registration = thatcamp_registrations_get_registration_by_id( $registration_id );
+
+	if ( $registration ) {
+		$userId = $registration->user_id ? $registration->user_id : email_exists($registration->applicant_email);
+		if ( $userId ) {
+			remove_user_from_blog( $userId, get_current_blog_id() );
+		}
+	}
 }
 
 /**
@@ -489,10 +515,10 @@ function thatcamp_registrations_send_admin_notification( $reg_id ) {
 		$registration = thatcamp_registrations_get_registrations( array( 'id' => $reg_id ) );
 		if ( ! empty( $registration ) ) {
 			$blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
-			$subject  = sprintf( __( 'New application at %s', 'thatcamp-registrations' ), $blogname );
-			$content  = sprintf( __( 'You have received a new application at %1$s. To view this application, visit %2$s', 'thatcamp-registrations' ),
+			$subject  = sprintf( __( 'New registration at %s', 'thatcamp-registrations' ), $blogname );
+			$content  = sprintf( __( 'You have received a new registration at %1$s. To view this registration, visit %2$s', 'thatcamp-registrations' ),
 				$blogname,
-				admin_url( 'page=thatcamp-registrations&id=' . intval( $reg_id ) )
+				admin_url( '?page=thatcamp-registrations&id=' . intval( $reg_id ) )
 			);
 
 			foreach ( $emails as $email ) {
