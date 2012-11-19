@@ -62,6 +62,10 @@ class Thatcamp_Registrations_Public_Registration {
 	        if ( $_POST['user_email'] == get_option( 'admin_email' ) ) {
 		    $alerts['user_email'] = __( 'You cannot register using this site\'s admin email address.', 'thatcamp-registrations' );
 		}
+
+		if ( empty( $_POST['description'] ) ) {
+			$alerts['description'] = __( 'You must provide a biography', 'thatcamp-registrations' );
+		}
             }
 
             $userEmail = is_user_logged_in() ? $this->current_user->user_email : @$_POST['user_email'];
@@ -123,7 +127,7 @@ class Thatcamp_Registrations_Public_Registration {
 
     function _user_info_form() {
     ?>
-    <p class="explanation" style="margin: 1em 0 1em 0;">Please note that the following pieces of information may be displayed publicly on this website: <strong>First Name</strong>, <strong>Last Name</strong>, <strong>Website</strong>, <strong>Twitter Screenname</strong>, <strong>Position / Job Title</strong>, <strong>Organization</strong>, and <strong>Biography</strong>. We will not display your e-mail address or your reasons for coming to THATCamp.
+    <p class="explanation" style="margin: 1em 0 1em 0;">Please note that the following pieces of information may be displayed publicly on this website: <strong>First Name</strong>, <strong>Last Name</strong>, <strong>Biography</strong>, <strong>Website</strong>, <strong>Twitter Screenname</strong>, <strong>Position / Job Title</strong>, <strong>Organization</strong>, and <strong>Discipline</strong>. We will not display your e-mail address or your reasons for coming to THATCamp.
     <fieldset>
         <legend>Personal Information</legend>
         <div>
@@ -139,6 +143,11 @@ class Thatcamp_Registrations_Public_Registration {
             <input type="text" name="user_email" value="<?php echo @$this->current_user->user_email; ?>" class="textfield" />
         </div>
         <div>
+            <label for="description"><?php _e('Biography'); ?>* (required)</label><br/>
+            <p class="explanation"><?php _e('Tell us a little about yourself: your background with the humanities and/or technology, your research or professional interests, your opinion of Nicholas Carr or Slavoj Žižek, your best score at Galaga, and so forth.', 'thatcamp-registrations'); ?></p>
+            <textarea cols="45" rows="8" name="description"><?php echo @$this->current_user->description; ?></textarea>
+        </div>
+        <div>
             <label for="user_url"><?php _e('Website'); ?></label><br />
             <p class="explanation"><?php _e('Example: thatcampdev.info'); ?></p>
             <input type="text" name="user_url" value="<?php echo @$this->current_user->user_url; ?>" class="textfield" />
@@ -147,16 +156,6 @@ class Thatcamp_Registrations_Public_Registration {
             <label for="user_twitter"><?php _e('Twitter Screenname', 'thatcamp-registrations'); ?></label><br />
             <p class="explanation"><?php _e('Example: @thatcamp', 'thatcamp-registrations'); ?></p>
             <input type="text" name="user_twitter" value="<?php echo @$this->current_user->user_twitter; ?>" class="textfield" />
-        </div>
-        <div>
-            <label for="previous_thatcamps"><?php _e('Number of previous THATCamps attended'); ?></label><br />
-            <p class="explanation"><?php _e('How many THATCamps have you been to before?', 'thatcamp-registrations'); ?></p>
-	<select name="previous_thatcamps" value="<?php echo @$this->current_user->previous_thatcamps; ?>">
-	<option>Select an answer</option>
-	<option value="0">0</option>
-	<option value="1">1</option>
-	<option value="More than one">More than one</option>
-	</select>
         </div>
         <div>
             <label for="user_title"><?php _e('Position/Job Title', 'thatcamp-registrations'); ?></label><br/>
@@ -169,25 +168,32 @@ class Thatcamp_Registrations_Public_Registration {
             <input type="text" name="user_organization" value="<?php echo @$this->current_user->user_organization; ?>" class="textfield" />
         </div>
         <div>
-            <label for="description"><?php _e('Biography'); ?></label><br/>
-            <p class="explanation"><?php _e('Tell us a little about yourself: your background with the humanities and/or technology, your research or professional interests, your opinion of Nicholas Carr or Slavoj Žižek, your best score at Galaga, and so forth.', 'thatcamp-registrations'); ?></p>
-            <textarea cols="45" rows="8" name="description"><?php echo @$this->current_user->description; ?></textarea>
-        </div>
-        <div>
             <label for="discipline"><?php _e( 'Discipline', 'thatcamp-registrations' ); ?></label><br/>
             <p class="explanation"><?php _e('e.g., Art History, English, Library Science', 'thatcamp-registrations'); ?></p>
             <input id="discipline" name="discipline"><?php echo @$this->current_user->discipline; ?></textarea>
         </div>
         <div>
+            <label for="previous_thatcamps"><?php _e('Number of previous THATCamps attended'); ?></label><br />
+            <p class="explanation"><?php _e('How many THATCamps have you been to before?', 'thatcamp-registrations'); ?></p>
+	<select name="previous_thatcamps" value="<?php echo @$this->current_user->previous_thatcamps; ?>">
+	<option>Select an answer</option>
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="More than one">More than one</option>
+	</select>
+        </div>
+        <div>
             <label for="technology_skill_level"><?php _e( 'Technology Skill Level', 'thatcamp-registrations' ); ?></label><br/>
             <p class="explanation"><?php _e('I consider my technology skill level to be:', 'thatcamp-registrations'); ?></p>
-	    <?php $current_tech_level = isset( $this->current_user->technology_skill_level ) ? $this->current_user->technology_skill_level : 'intermediate' ?>
-	    <select id="technology_skill_level" name="technology_skill_level">
-		<option value="advanced" <?php selected( $current_tech_level, 'advanced' ) ?>><?php _e( 'Advanced (can code)', 'thatcamp-registrations' ) ?></option>
-		<option value="intermediate" <?php selected( $current_tech_level, 'intermediate' ) ?>><?php _e( 'Intermediate (can get things up on the web)', 'thatcamp-registrations' ) ?></option>
+	    <select id="technology_skill_level" name="technology_skill_level" value="<?php echo @$this->current_user->technology_skill_level; ?>">
+	    	<option>Select an answer</option>
 		<option value="beginner" <?php selected( $current_tech_level, 'beginner' ) ?>><?php _e( 'Beginner (interested in learning more)', 'thatcamp-registrations' ) ?></option>
-	    </select>
+		<option value="intermediate" <?php selected( $current_tech_level, 'intermediate' ) ?>><?php _e( 'Intermediate (can get things up on the web)', 'thatcamp-registrations' ) ?></option>
+		<option value="advanced" <?php selected( $current_tech_level, 'advanced' ) ?>><?php _e( 'Advanced (can code)', 'thatcamp-registrations' ) ?></option>
+	    </select><br />
         </div>
+
+<p>&nbsp;</p>
 
 	<style type="text/css">
 		#tcppl { display: none; visibility: hidden; }

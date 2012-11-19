@@ -345,8 +345,8 @@ function thatcamp_registrations_options()
 		);
 	}
 
-	if ( empty( $options['accepted_application_email'] ) ) {
-		$options['accepted_application_email'] = sprintf( __( 'Your registration for %1$s has been approved! We\'ll see you at %1$s. You should receive a separate e-mail with your login and password information. Please log in at %2$s and update your profile. It\'s never too early to begin proposing ideas for sessions, either -- see %3$s or %4$s for more information on that. Contact %5$s with any questions.', 'thatcamp-registrations' ),
+	if ( empty( $options['approved_application_email'] ) ) {
+		$options['approved_application_email'] = sprintf( __( 'Your registration for %1$s has been approved! We\'ll see you at %1$s. You should receive a separate e-mail with your login and password information. Please log in at %2$s and update your profile. It\'s never too early to begin proposing ideas for sessions, either -- see %3$s or %4$s for more information on that. Contact %5$s with any questions.', 'thatcamp-registrations' ),
 			get_option( 'blogname' ),
 			wp_login_url(),
 			home_url( 'propose' ),
@@ -409,7 +409,7 @@ function thatcamp_registrations_send_applicant_email($to, $status = "pending")
         switch ($status) {
             case 'approved':
                 $subject = __('Registration Approved', 'thatcamp-registrations');
-                $message = thatcamp_registrations_option('accepted_application_email');
+                $message = thatcamp_registrations_option('approved_application_email');
             break;
 
             case 'rejected':

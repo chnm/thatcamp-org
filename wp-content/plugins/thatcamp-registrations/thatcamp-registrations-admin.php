@@ -63,7 +63,7 @@ class Thatcamp_Registrations_Admin {
     			if (
 				isset( $_POST['user_account'] ) &&
 				$_POST['user_account'] == 1 &&
-				'accepted' == $_POST['status']
+				'approved' == $_POST['status']
 			   ) {
 				thatcamp_registrations_process_user($id);
     			}
