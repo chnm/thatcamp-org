@@ -215,9 +215,8 @@ function thatcamp_camp_date( $group_id = 0, $format = '' ) {
  */
 function thatcamp_is_in_the_future() {
 	 $camp_date = thatcamp_get_camp_date( bp_get_group_id(), 'unix' );
-	 $date = new DateTime( '@' . $camp_date );
-	 $date->add( new DateInterval( 'P1D' ) );
-	 return $date->getTimestamp() >= time();
+	 $day_after = $camp_date + 60*60*24;
+	 return $day_after >= time();
 }
 
 /**
