@@ -67,7 +67,7 @@ class easy_categories_manage
 		</label></p>
 		<p>Enter ID number(s) of Categories, e.g <code>2,5,12</code></p>
 			<p><label>
-			<strong>Enable Post Count ?<strong><br />
+			<strong>Enable Post Count ?</strong><br />
 			<input class="widefat" type="text" name="easy_categories_management_count" value="<?php echo get_option( 'easy_categories_management_count' ); ?>"	 />
 		</label></p>
 		<p>Enter the value as Number:<br><code>1=SHOW & 0=HIDE</code></p>
