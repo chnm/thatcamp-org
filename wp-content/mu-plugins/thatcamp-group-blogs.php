@@ -106,6 +106,20 @@ function thatcamp_get_group_blog( $group_id = 0 ) {
 }
 
 /**
+ * Keep people from visiting group pages
+ */
+function thatcamp_redirect_from_group_pages() {
+	if ( bp_is_group() ) {
+		$blog_id = thatcamp_get_group_blog( bp_get_current_group_id() );
+		$blog_url = get_blog_option( $blog_id, 'home' );
+		if ( $blog_url ) {
+			bp_core_redirect( $blog_url );
+		}
+	}
+}
+add_action( 'bp_actions', 'thatcamp_redirect_from_group_pages' );
+
+/**
  * A short version of groups_join_group(), without notification baggage
  *
  * @param int $user_id
