@@ -74,6 +74,7 @@ define( "EDIT_ANY_USER", true );
 
 // BuddyPress constants
 define( 'BP_GROUPS_SLUG', 'camps' );
+define( 'BP_MEMBERS_SLUG', 'people' );
 
 /* That's all, stop editing! Happy blogging. */
 
