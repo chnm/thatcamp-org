@@ -261,9 +261,9 @@ class Thatcamp_Registrations_Admin {
 				<input type="submit" value="Apply" class="button-secondary action" id="doaction" name="">
 			</div>
 
-			<div class="alignright actions">
+<!--			<div class="alignright actions">
 				<a class="button-secondary action" href="<?php echo add_query_arg( 'trc_csv', '1' ) ?>"><?php _e( 'Export to CSV' ) ?></a>
-			</div>
+			</div>-->
 		</div>
 
                 <table class="widefat fixed" cellspacing="0">
