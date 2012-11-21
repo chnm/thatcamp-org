@@ -17,7 +17,7 @@
 
 	<div id="pag-top" class="pagination">
 
-	<h3><?php _e( 'Members Directory', 'thatcamp' ); ?></h3>
+		<h3><?php _e( 'People', 'thatcamp' ); ?></h3>
 
 		<div class="pagination-links" id="member-dir-pag-top">
 
