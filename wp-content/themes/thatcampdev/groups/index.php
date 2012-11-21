@@ -19,7 +19,7 @@ get_header( 'thatcamp' ); ?>
 		
 		<form action="" method="post" id="groups-directory-form" class="dir-form">
 
-			<h3><?php _e( 'Groups Directory', 'thatcamp' ); ?></h3>
+			<h3><?php _e( 'THATCamps', 'thatcamp' ); ?></h3>
 
 			<?php do_action( 'bp_before_directory_groups_content' ); ?>
 		
