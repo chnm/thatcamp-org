@@ -50,6 +50,7 @@ function bp_import_blog_activity_admin_screen() {
 				echo "Blog name: <strong>" . get_bloginfo('name') . "</strong>";
 				echo "<br />";
 
+				$blog_id = $blog['blog_id'];
 
 				if ( have_posts() ) {
 					while ( have_posts() ) {
@@ -66,7 +67,7 @@ function bp_import_blog_activity_admin_screen() {
 							if ( (int)get_blog_option( $blog['blog_id'], 'blog_public' ) ) {
 								$post_permalink = get_permalink();
 
-								$activity_action = sprintf( __( '%s wrote a new blog post: %s', 'buddypress' ), bp_core_get_userlink( (int)$post->post_author ), '<a href="' . $post_permalink . '">' . $post->post_title . '</a>' );
+								$activity_action  = sprintf( __( '%1$s wrote a new post, %2$s, on the site %3$s', 'buddypress' ), bp_core_get_userlink( (int) $post->post_author ), '<a href="' . $post_permalink . '">' . $post->post_title . '</a>', '<a href="' . get_blog_option( $blog_id, 'home' ) . '">' . get_blog_option( $blog_id, 'blogname' ) . '</a>' );
 								$activity_content = $post->post_content;
 								$post_id = get_the_ID();
 
@@ -90,10 +91,8 @@ function bp_import_blog_activity_admin_screen() {
 
 							$user = get_user_by( 'email', $recorded_comment->comment_author_email );
 
-							if ( is_wp_error( $user ) || ! is_a( 'WP_User', $user ) ) {
+							if ( is_wp_error( $user ) || ! is_a( $user, 'WP_User' ) ) {
 								continue;
-							} else {
-								var_Dump( $user ); die();
 							}
 
 							$user_id = $user->ID;
@@ -103,7 +102,7 @@ function bp_import_blog_activity_admin_screen() {
 
 							if ( empty($activities->activities) ) {
 
-								if ( (int)get_blog_option( $recorded_comment->blog_id, 'blog_public' )) {
+								if ( (int)get_blog_option( $blog_id, 'blog_public' )) {
 									global $post;
 									$comment_link = $post_permalink . '#comment-' . $recorded_comment->comment_ID;
 
@@ -113,9 +112,9 @@ function bp_import_blog_activity_admin_screen() {
 									/* Record this in activity streams */
 									bp_blogs_record_activity( array(
 										'user_id' => $user_id,
-										'action' => apply_filters( 'bp_blogs_activity_new_comment_action', $activity_action, $comment, $recorded_comment, $comment_link ),
-										'content' => apply_filters( 'bp_blogs_activity_new_comment_content', $activity_content, $comment, $recorded_comment, $comment_link ),
-										'primary_link' => apply_filters( 'bp_blogs_activity_new_comment_primary_link', $comment_link, $comment, $recorded_comment ),
+										'action' => $activity_action,
+										'content' => $activity_content,
+										'primary_link' => $comment_link,
 										'type' => 'new_blog_comment',
 										'item_id' => $blog['blog_id'],
 										'secondary_item_id' => $recorded_comment->comment_ID,
