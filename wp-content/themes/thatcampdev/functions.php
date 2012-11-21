@@ -5,8 +5,8 @@
  * @package thatcamp
  * @since thatcamp 1.0
  */
- 
- 
+
+
 // Check to see if BuddyPress is active, otherwise load default WordPress theme
 if ( ! function_exists( 'bp_is_active' ) ) {
 	switch_theme( WP_DEFAULT_THEME, WP_DEFAULT_THEME );
@@ -126,7 +126,7 @@ endif;
  * - Grid script files : transit.min.js, gridrotator.js - this is for the avatar grid on the home page
  * - Custom.js : Custom grid scripting and also custom scripting for the responsive menu
  * - Modernizr : Polyfill and shim along with CSS transitions
- * 
+ *
  * It sets up:
  * - Threaded comments
  * - Favourites and other scripts for BuddyPress to work
@@ -191,7 +191,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_load_scripts' );
  * - Stream
  * - Activity
  * - Twitter (Widget area just for Twitter Widget)
- * 
+ *
  *
  * @since thatcamp (1.0)
  */
@@ -244,7 +244,7 @@ function thatcamp_widgets_init() {
        		'after_title' => '</h3>'
 			)
 	);
-	
+
 	register_sidebar(
 		array(
 			'name'          => __( 'Sidebar Twitter', 'thatcamp'),
@@ -266,7 +266,7 @@ add_action( 'widgets_init', 'thatcamp_widgets_init' );
 /**
  * Site Search
  *
- * Drop down filterable search. 
+ * Drop down filterable search.
  *
  * @since thatcamp (1.0)
  */
@@ -318,3 +318,21 @@ function thatcamp_proceedings_blog_id() {
 	global $wpdb;
 	return $wpdb->get_var( "SELECT blog_id FROM $wpdb->blogs WHERE domain LIKE 'proceedings.%'" );
 }
+
+/**
+ * Fixes directory titles
+ */
+function thatcamp_filter_title( $full_title, $title, $sep, $sep_location ) {
+	if ( bp_is_groups_component() && bp_is_directory() ) {
+		return 'THATCamps Directory | THATCamp';
+	} else if ( bp_is_members_component() && bp_is_directory() ) {
+		return 'People Directory | THATCamp';
+	} else if ( bp_is_activity_component() && bp_is_directory() ) {
+		return 'THATCamp Activity | THATCamp';
+	} else {
+		$new_title = $title;
+	}
+
+	return $new_title . ' ' . $sep . ' ';
+}
+add_filter( 'bp_modify_page_title', 'thatcamp_filter_title', 10, 4 );
