@@ -192,6 +192,26 @@ a.button.socialbutton, a:visited.button.socialbutton, a:link.button.socialbutton
 	.clearfix;
 }
 
+#user-section .input {
+    color: #aaa;
+    display: block;
+    position: relative;
+    text-indent: 5px;
+}
+
+#user-section input {
+    background-color: transparent;
+    left: 0;
+    position: absolute; 
+    top: 0;   
+    z-index: 1;
+}
+
+#user-section input:focus, #user-section input:first-line {
+    background-color: #222;
+}
+
+
 #sitebar #search-submit, #sitebar #sidebar-wp-submit{
 	background: #111;
 	padding: 5px 10px;
