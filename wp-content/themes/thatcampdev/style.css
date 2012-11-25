@@ -1720,7 +1720,8 @@ dd.wp-caption p.wp-caption-text,
 #latest-posts .post-header,
 .archive .post-header,
 .thatcamp-stream .post-header,
-.search .post-header {
+.search .post-header,
+#blog-archives .post-header {
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -1752,7 +1753,8 @@ dd.wp-caption p.wp-caption-text,
 #latest-posts .post-meta,
 .archive .post-meta,
 .thatcamp-stream .post-meta,
-.search .post-meta {
+.search .post-meta,
+#blog-archives .post-meta {
   border-left: 1px solid #ccc;
   padding: 0 0 0 3%;
   margin: 0 0 0 23%;

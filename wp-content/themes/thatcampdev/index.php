@@ -1,23 +1,26 @@
 <?php
 /**
- * Index main page
+ * Index page
  *
  * @package thatcamp
  * @since thatcamp 1.0
  */
 ?>
-<?php get_header('front'); ?>
+<?php get_header('signup'); ?>
 <div id="primary" class="main-content">
-	<div id="content" role="main">
-		<div id="latest" class="feature-box">
-				<?php 
-				if ( have_posts() ) : ?>
-					<?php while ( have_posts() ) : the_post(); 
-						get_template_part( 'content', get_post_format() );
-					endwhile;
-						blogilates_content_nav( 'nav-below' ); ?>
-				<?php endif; ?>
+	<div id="content">
+		<?php do_action( 'bp_before_archive' ); ?>
+		<div id="blog-archives" class="feature-box" role="main">
+		<?php if ( have_posts() ) the_post(); ?>
+		<?php
+		while ( have_posts() ) : the_post();
+			get_template_part( 'parts/content', get_post_format() );
+		endwhile;
+			thatcamp_content_nav( 'nav-below' );?>
+		</div>
+		<?php do_action( 'bp_after_archive' ); ?>
 	</div>
 </div>
-<?php get_sidebar('home'); ?>
-<?php get_footer() ?>
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>
+
