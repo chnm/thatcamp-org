@@ -1250,6 +1250,9 @@ li#xprofile-personal-li{
 li#blogs-personal-li{
 	background: url('assets/images/icon-three.png') no-repeat;
 }
+li#messages-personal-li{
+	background: url('assets/images/icon-twelve.png') no-repeat;
+}
 li#friends-personal-li{
 	background: url('assets/images/icon-four.png') no-repeat;
 }
@@ -1282,6 +1285,9 @@ li#forums-personal-li:hover{
 }
 li#settings-personal-li:hover{
 	background: url('assets/images/icon-sevenhover.png') no-repeat;
+}
+li#messages-personal-li:hover{
+	background: url('assets/images/icon-twelvehover.png') no-repeat;
 }
 
 .item-meta p{
@@ -1406,4 +1412,28 @@ body.register div.page ul {
 .field-visibility-settings legend,
 .field-visibility-settings-toggle {
 	font-style: italic;
+}
+
+.profile-titlemember{
+	width: 30%;
+	display: inline-block;
+	font-family: @baseHeadingFont;
+	.font-size-rems(18);
+	font-weight: 200;
+	color: #888;
+	text-shadow: -1px -1px 0px #fff;
+}
+
+.profile-line{
+	border-bottom: 1px dashed #333;
+	margin: 0 0 10px 0;
+	padding: 0 0 10px 0;
+}
+
+#member-bio{
+	margin: 0 0 20px 0;
+}
+
+#member-fields{
+	margin: 0 0 20px 0;
 }

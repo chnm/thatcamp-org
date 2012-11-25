@@ -15,13 +15,44 @@
 	<span class="user-nicename">@<?php bp_displayed_user_username(); ?></span>
 		<span class="activity"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 </div>
-<!--
-<div class="feature-box">
-	<p>
-		Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-	</p>
+<div id="member-fields">
+		<?php if ( $data = bp_get_profile_field_data( 'field=2' ) ) : ?>
+	<div id="member-bio" class="feature-box">
+		<p>
+			<?php echo $data; ?>
+		</p>
+	</div>
+	<?php endif ?>
+	<?php if ( $data = bp_get_profile_field_data( 'field=5' ) ) : ?>
+	<div id="member-twitter" class="profile-line">
+		<span class="profile-titlemember">Twitter:</span><a href="http://twitter.com/<?php echo $data ?>" title="<?php echo $data ?>">
+		@<?php echo $data; ?></a></span>
+	</div>
+	<?php endif ?>
+		<?php if ( $data = bp_get_profile_field_data( 'field=4' ) ) : ?>
+	<div id="member-website" class="profile-line">
+
+		<span class="profile-titlemember">Website:</span><a href="http://<?php echo $data ?>" title="<?php echo $data ?>">
+		<?php echo $data; ?></a></span>
+	</div>
+	<?php endif ?>
+	<?php if ( $data = bp_get_profile_field_data( 'field=6' ) ) : ?>
+	<div id="member-position" class="profile-line">
+
+		<span class="profile-titlemember">Position/Job Title:</span><?php echo $data; ?>
+	</div>
+	<?php endif ?>
+		<?php if ( $data = bp_get_profile_field_data( 'field=7' ) ) : ?>
+	<div id="member-organisation" class="profile-line">
+		<span class="profile-titlemember">Organisation:</span><?php echo $data; ?>
+	</div>
+	<?php endif ?>
+		<?php if ( $data = bp_get_profile_field_data( 'field=8' ) ) : ?>
+	<div id="member-camps" class="profile-line">
+			<span class="profile-titlemember">Previous THATcamps:</span><?php echo $data; ?>
+	</div>
+	<?php endif ?>
 </div>
--->
 <?php
 
 if ( is_user_logged_in() && bp_is_my_profile() && ( !bp_current_action() || bp_is_current_action( 'just-me' ) ) )
