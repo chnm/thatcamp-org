@@ -16,40 +16,45 @@
 		<span class="activity"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 </div>
 <div id="member-fields">
-		<?php if ( $data = bp_get_profile_field_data( 'field=2' ) ) : ?>
+	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'description', true ) ) : ?>
 	<div id="member-bio" class="feature-box">
 		<p>
 			<?php echo $data; ?>
 		</p>
 	</div>
 	<?php endif ?>
-	<?php if ( $data = bp_get_profile_field_data( 'field=4' ) ) : ?>
+
+	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'user_twitter', true ) ) : ?>
 	<div id="member-twitter" class="profile-line">
 		<span class="profile-titlemember">Twitter:</span><a href="http://twitter.com/<?php echo $data ?>" title="<?php echo $data ?>">
 		@<?php echo $data; ?></a></span>
 	</div>
 	<?php endif ?>
-		<?php if ( $data = bp_get_profile_field_data( 'field=3' ) ) : ?>
+
+	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'user_url', true ) ) : ?>
 	<div id="member-website" class="profile-line">
 
 		<span class="profile-titlemember">Website:</span><a href="http://<?php echo $data ?>" title="<?php echo $data ?>">
 		<?php echo $data; ?></a></span>
 	</div>
 	<?php endif ?>
-	<?php if ( $data = bp_get_profile_field_data( 'field=5' ) ) : ?>
+
+	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'user_title', true ) ) : ?>
 	<div id="member-position" class="profile-line">
 
 		<span class="profile-titlemember">Position/Job Title:</span><?php echo $data; ?>
 	</div>
 	<?php endif ?>
-		<?php if ( $data = bp_get_profile_field_data( 'field=6' ) ) : ?>
+
+	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'user_organization', true ) ) : ?>
 	<div id="member-organisation" class="profile-line">
-		<span class="profile-titlemember">Organisation:</span><?php echo $data; ?>
+		<span class="profile-titlemember">Organization:</span><?php echo $data; ?>
 	</div>
 	<?php endif ?>
-		<?php if ( $data = bp_get_profile_field_data( 'field=7' ) ) : ?>
+
+	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'previous_thatcamps', true ) ) : ?>
 	<div id="member-camps" class="profile-line">
-			<span class="profile-titlemember">Previous THATcamps:</span><?php echo $data; ?>
+		<span class="profile-titlemember">Previous THATcamps:</span><?php echo $data; ?>
 	</div>
 	<?php endif ?>
 </div>
