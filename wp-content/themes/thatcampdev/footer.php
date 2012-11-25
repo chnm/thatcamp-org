@@ -11,9 +11,6 @@
 			<?php do_action( 'bp_after_container' ); ?>
 			<div id="logos-wrapper">
 				<div id="logos"  class="wrapper">
-					<a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cc-logo.png" alt="Creative Commons"/>
-					</a>
 					<a href="http://mellon.org/" title="Mellon">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/mellon.png" alt="Mellon"/>
 					</a>
@@ -29,7 +26,10 @@
 			<div id="footer-wrapper">
 			<footer id="bottom-footer" class="wrapper" role="contentinfo">
 				<nav id="bottom-nav" role="navigation">
-					<div id="copyright">&copy; <?php the_time('Y')?>  </div>
+					<div id="copyright">&copy; <?php the_time('Y')?>  
+					<a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cc.png" alt="Creative Commons"/>
+					</a></div>
 					<div id="credits"><?php do_action( 'bp_dtheme_credits' ); ?></div>
 					<?php wp_nav_menu( array(
 						'theme_location' => 'bottom', 
