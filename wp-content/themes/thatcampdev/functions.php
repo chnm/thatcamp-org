@@ -336,3 +336,19 @@ function thatcamp_filter_title( $full_title, $title, $sep, $sep_location ) {
 	return $new_title . ' ' . $sep . ' ';
 }
 add_filter( 'bp_modify_page_title', 'thatcamp_filter_title', 10, 4 );
+
+/**
+ * Modify the user nav before it gets rendered, so we remove redundant items
+ */
+function thatcamp_mod_user_nav() {
+	global $bp;
+
+	if ( bp_is_active( 'xprofile' ) ) {
+		bp_core_remove_nav_item( 'profile' );
+	}
+
+	if ( bp_is_active( 'blogs' ) ) {
+		bp_core_remove_nav_item( 'blogs' );
+	}
+}
+add_action( 'bp_actions', 'thatcamp_mod_user_nav', 1 );
