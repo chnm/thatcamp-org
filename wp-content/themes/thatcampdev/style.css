@@ -404,6 +404,9 @@ body {
   float: left;
   margin: 10px 20px 10px 0;
 }
+#logos img.nospace {
+  margin: 10px 0 10px 0;
+}
 .home #logos-wrapper {
   margin: 80px 0 0 0;
 }

@@ -11,15 +11,17 @@
 			<?php do_action( 'bp_after_container' ); ?>
 			<div id="logos-wrapper">
 				<div id="logos"  class="wrapper">
+					<a href="http://chnm.gmu.edu/" title="CHNM.gmu.edu">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/RCHN-logo.png" alt="RCHN"/>
+					</a>
+
 					<a href="http://mellon.org/" title="Mellon">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/mellon.png" alt="Mellon"/>
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/mellon.png" alt="Mellon" class="nospace"/>
 					</a>
 					<a href="http://mellon.org/" title="Mellon">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/mellonlogo.png" alt="Mellon"/>
 					</a>
-					<a href="http://chnm.gmu.edu/" title="CHNM.gmu.edu">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/RCHN-logo.png" alt="RCHN"/>
-					</a>
+					
 				</div>
 			</div>
 			<?php do_action( 'bp_before_footer'   ); ?>
