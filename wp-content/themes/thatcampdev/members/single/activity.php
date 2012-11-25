@@ -23,31 +23,31 @@
 		</p>
 	</div>
 	<?php endif ?>
-	<?php if ( $data = bp_get_profile_field_data( 'field=5' ) ) : ?>
+	<?php if ( $data = bp_get_profile_field_data( 'field=4' ) ) : ?>
 	<div id="member-twitter" class="profile-line">
 		<span class="profile-titlemember">Twitter:</span><a href="http://twitter.com/<?php echo $data ?>" title="<?php echo $data ?>">
 		@<?php echo $data; ?></a></span>
 	</div>
 	<?php endif ?>
-		<?php if ( $data = bp_get_profile_field_data( 'field=4' ) ) : ?>
+		<?php if ( $data = bp_get_profile_field_data( 'field=3' ) ) : ?>
 	<div id="member-website" class="profile-line">
 
 		<span class="profile-titlemember">Website:</span><a href="http://<?php echo $data ?>" title="<?php echo $data ?>">
 		<?php echo $data; ?></a></span>
 	</div>
 	<?php endif ?>
-	<?php if ( $data = bp_get_profile_field_data( 'field=6' ) ) : ?>
+	<?php if ( $data = bp_get_profile_field_data( 'field=5' ) ) : ?>
 	<div id="member-position" class="profile-line">
 
 		<span class="profile-titlemember">Position/Job Title:</span><?php echo $data; ?>
 	</div>
 	<?php endif ?>
-		<?php if ( $data = bp_get_profile_field_data( 'field=7' ) ) : ?>
+		<?php if ( $data = bp_get_profile_field_data( 'field=6' ) ) : ?>
 	<div id="member-organisation" class="profile-line">
 		<span class="profile-titlemember">Organisation:</span><?php echo $data; ?>
 	</div>
 	<?php endif ?>
-		<?php if ( $data = bp_get_profile_field_data( 'field=8' ) ) : ?>
+		<?php if ( $data = bp_get_profile_field_data( 'field=7' ) ) : ?>
 	<div id="member-camps" class="profile-line">
 			<span class="profile-titlemember">Previous THATcamps:</span><?php echo $data; ?>
 	</div>
