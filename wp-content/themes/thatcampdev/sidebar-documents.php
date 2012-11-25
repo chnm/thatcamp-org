@@ -6,13 +6,7 @@
  * @since thatcamp 1.0
  */
 ?>	
-<div id="sidebar-documents" role="complementary">	
-	<div id="sidebar-innerleft">
-		<?php if ( is_active_sidebar( 'sidebar-documents' ) ) : ?>
-		<?php dynamic_sidebar( 'sidebar-documents' ); ?>
-		<?php endif; ?>
-	</div>
-	<div id="sidebar-innerright">
+<div id="sidebar" role="complementary">	
 		<nav id="side-nav" role="navigation">
 			<?php
 			  if($post->post_parent) {
@@ -32,7 +26,10 @@
 			  </ul>
 
 			<?php } ?>
+
+			<?php if ( is_active_sidebar( 'sidebar-documents' ) ) : ?>
+			<?php dynamic_sidebar( 'sidebar-documents' ); ?>
+			<?php endif; ?>
 			
 		</nav>
-	</div>
 </div>
