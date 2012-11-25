@@ -1689,7 +1689,8 @@ dd.wp-caption p.wp-caption-text,
 4.3 - Posts
 --------------------------------------------------------------*/
 .bypostauthor {
-  background: #fff400;
+  background: #ffffff;
+  padding: 10px;
 }
 .sticky {
   background: #fff400;
