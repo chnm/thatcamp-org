@@ -7,14 +7,20 @@
  */
 ?>	
 <div id="sidebar" role="complementary">	
-	<div id="object-nav" class="item-list-tabs no-ajax" role="navigation">
-		<ul>
-			<?php bp_get_displayed_user_nav(); ?>
-			<?php do_action( 'bp_member_options_nav' ); ?>
-		</ul>
-	</div>
 	<div id="profile-right" role="complementary">
 		<?php locate_template( array( 'members/single/member-header.php' ), true ); ?>
+		<div id="item-nav">
+			<div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
+				<ul>
+
+					<?php bp_get_displayed_user_nav(); ?>
+
+					<?php do_action( 'bp_member_options_nav' ); ?>
+
+				</ul>
+			</div>
+		</div><!-- #item-nav -->
+		
 		<div id="item-header-content">
 			<?php do_action( 'bp_before_member_header_meta' ); ?>
 			<div id="item-meta">

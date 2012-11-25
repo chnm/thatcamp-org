@@ -1223,13 +1223,7 @@ div.item-list-tabs ul li.feed a {
 	overflow: auto;
 }
 #object-nav{
-	float: left;
-	width: 50px;
-	padding-top: 10px;
-}
-#profile-right{
-	float: left;
-	width: 250px;
+	margin: 10px 0;
 }
 #members-list li{
 	float: left;
@@ -1241,52 +1235,55 @@ div.item-list-tabs ul li.feed a {
 }
 /* profile buttons */
 #object-nav li a{
-	text-indent: 100%;
-	height: 40px;
-	width: 40px;	
+	border-bottom: 1px dashed #E0D5B6;
+	padding: 5px 10px 15px 50px;
+	margin: 0 0 5px 0;
+	font-family: @baseHeadingFont;
+	.font-size-rems(18);
 }
-a#user-activity{
+li#activity-personal-li{
 	background: url('assets/images/icon-one.png') no-repeat;
 }
-a#user-xprofile{
+li#xprofile-personal-li{
 	background: url('assets/images/icon-two.png') no-repeat;
 }
-a#user-messages{
+li#blogs-personal-li{
 	background: url('assets/images/icon-three.png') no-repeat;
 }
-a#user-friends{
+li#friends-personal-li{
 	background: url('assets/images/icon-four.png') no-repeat;
 }
-a#user-groups{
+li#groups-personal-li{
 	background: url('assets/images/icon-five.png') no-repeat;
 }
-a#user-forums{
+li#forums-personal-li{
 	background: url('assets/images/icon-six.png') no-repeat;
 }
-a#user-settings{
+li#settings-personal-li{
 	background: url('assets/images/icon-seven.png') no-repeat;
 }
-a:hover#user-activity{
+li#activity-personal-li:hover{
 	background: url('assets/images/icon-onehover.png') no-repeat;
 }
-a:hover#user-xprofile{
+li#xprofile-personal-li:hover{
 	background: url('assets/images/icon-twohover.png') no-repeat;
 }
-a:hover#user-messages{
+li#blogs-personal-li:hover{
 	background: url('assets/images/icon-threehover.png') no-repeat;
 }
-a:hover#user-friends{
+li#friends-personal-li:hover{
 	background: url('assets/images/icon-fourhover.png') no-repeat;
 }
-a:hover#user-groups{
+li#groups-personal-li:hover{
 	background: url('assets/images/icon-fivehover.png') no-repeat;
 }
-a:hover#user-forums{
+li#forums-personal-li:hover{
 	background: url('assets/images/icon-sixhover.png') no-repeat;
 }
-a:hover#user-settings{
+li#settings-personal-li:hover{
 	background: url('assets/images/icon-sevenhover.png') no-repeat;
 }
+
 .item-meta p{
 	padding: 0;
 	margin: 0;
