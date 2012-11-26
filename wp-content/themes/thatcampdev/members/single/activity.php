@@ -54,7 +54,7 @@
 
 	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'previous_thatcamps', true ) ) : ?>
 	<div id="member-camps" class="profile-line">
-		<span class="profile-titlemember">Previous THATcamps:</span><?php echo $data; ?>
+		<span class="profile-titlemember">Previous THATCamps:</span><?php echo $data; ?>
 	</div>
 	<?php endif ?>
 </div>
