@@ -41,7 +41,6 @@
 			<label for="activity-filter-by"><?php _e( 'Show:', 'thatcamp' ); ?></label>
 			<select id="activity-filter-by">
 				<option value="-1"><?php _e( 'Everything', 'thatcamp' ); ?></option>
-				<option value="activity_update"><?php _e( 'Updates', 'thatcamp' ); ?></option>
 
 				<?php
 				if ( !bp_is_current_action( 'groups' ) ) :
@@ -65,13 +64,6 @@
 
 					<option value="new_forum_topic"><?php _e( 'Forum Topics', 'thatcamp' ); ?></option>
 					<option value="new_forum_post"><?php _e( 'Forum Replies', 'thatcamp' ); ?></option>
-
-				<?php endif;
-
-				if ( bp_is_active( 'groups' ) ) : ?>
-
-					<option value="created_group"><?php _e( 'New Groups', 'thatcamp' ); ?></option>
-					<option value="joined_group"><?php _e( 'Group Memberships', 'thatcamp' ); ?></option>
 
 				<?php endif;
 
