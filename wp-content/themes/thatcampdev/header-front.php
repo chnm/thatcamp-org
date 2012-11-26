@@ -20,7 +20,7 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<link href='http://fonts.googleapis.com/css?family=Francois+One' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
-	<?php do_action( 'bp_head' ); ?>	
+	<?php do_action( 'bp_head' ); ?>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class() ?> id="thatcamp">
@@ -51,7 +51,7 @@
 					</form>
 
 					<?php do_action( 'bp_after_sidebar_login_form' ); ?>
-				
+
 				<?php endif; ?>
 			</div>
 			<div id="search-bar">
@@ -62,10 +62,10 @@
 					</form>
 				<?php do_action( 'bp_search_login_bar' ); ?>
 			</div>
-			
+
 		</div>
 	</div>
-	<div id="header-wrapper">	
+	<div id="header-wrapper">
 		<header id="branding" class="wrapper" role="banner">
 				<div id="site-logo">
 					<a href="<?php echo site_url(); ?>"><?php _e( 'THATCamp', 'thatcamp' ); ?></a>
@@ -74,7 +74,7 @@
 					<h3 class="assistive-text"><?php _e( 'Menu', 'thatcamp' ); ?></h3>
 					<div class="skip-link assistive-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'thatcamp' ); ?>"><?php _e( 'Skip to content', 'thatcamp' ); ?></a></div>
 					<?php wp_nav_menu( array(
-						'theme_location' => 'top', 
+						'theme_location' => 'top',
 						'menu_class' => 'top_menu',
 						'container' => ''
 					)); ?>
@@ -85,7 +85,7 @@
 						<h3 class="assistive-text"><?php _e( 'Menu', 'thatcamp' ); ?></h3>
 						<div class="skip-link assistive-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'thatcamp' ); ?>"><?php _e( 'Skip to content', 'thatcamp' ); ?></a></div>
 						<?php wp_nav_menu( array(
-							'theme_location' => 'middle', 
+							'theme_location' => 'middle',
 							'menu_class' => 'responsive_menu',
 							'container' => ''
 						)); ?>
@@ -126,7 +126,7 @@
 			</p>
 		</div>
 	</div>
-	
+
 	<?php do_action( 'bp_before_container' ); ?>
 	<div id="main-wrapper">
 		<div class="wrapper">
