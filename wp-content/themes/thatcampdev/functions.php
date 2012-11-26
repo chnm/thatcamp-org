@@ -351,6 +351,14 @@ function thatcamp_mod_user_nav() {
 		bp_core_remove_nav_item( 'blogs' );
 	}
 
+	if ( bp_is_active( 'settings' ) ) {
+		bp_core_remove_nav_item( 'settings' );
+	}
+
+	if ( isset( $bp->bp_nav['forums'] ) ) {
+		unset( $bp->bp_nav['forums'] );
+	}
+
 	// Cheating: Change 'Activity' to 'About'
 	if ( isset( $bp->bp_nav[ bp_get_activity_slug() ] ) ) {
 		$bp->bp_nav[ bp_get_activity_slug() ]['name'] = 'About';
