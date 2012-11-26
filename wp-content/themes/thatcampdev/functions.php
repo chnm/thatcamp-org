@@ -350,5 +350,15 @@ function thatcamp_mod_user_nav() {
 	if ( bp_is_active( 'blogs' ) ) {
 		bp_core_remove_nav_item( 'blogs' );
 	}
+
+	// Cheating: Change 'Activity' to 'About'
+	if ( isset( $bp->bp_nav[ bp_get_activity_slug() ] ) ) {
+		$bp->bp_nav[ bp_get_activity_slug() ]['name'] = 'About';
+	}
+
+	// Cheating: Put Camps before Friends
+	if ( isset( $bp->bp_nav[ bp_get_groups_slug() ] ) ) {
+		$bp->bp_nav[ bp_get_groups_slug() ]['position'] = 55;
+	}
 }
 add_action( 'bp_actions', 'thatcamp_mod_user_nav', 1 );
