@@ -52,7 +52,7 @@
 	</div>
 	<?php endif ?>
 
-	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'previous_thatcamps', true ) ) : ?>
+	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'previous_thatcamps', true ) && 'Select an answer' != $data ) : ?>
 	<div id="member-camps" class="profile-line">
 		<span class="profile-titlemember">Previous THATCamps:</span><?php echo $data; ?>
 	</div>
