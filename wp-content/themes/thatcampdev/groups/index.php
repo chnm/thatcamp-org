@@ -25,10 +25,9 @@ get_header( 'thatcamp' ); ?>
 			<h3><?php _e( 'THATCamps', 'thatcamp' ); ?></h3>
 
 			<ul class="tc-selector">
-				<li<?php if ( 'alphabetical' == $current_view ) : ?> class="current"<?php endif ?>><a href="<?php echo add_query_arg( 'tctype', 'alphabetical', $base_url ) ?>">Alphabetical</a></li>
-				<li<?php if ( 'past' == $current_view ) : ?> class="current"<?php endif ?>><a href="<?php echo add_query_arg( 'tctype', 'past', $base_url ) ?>">Past</a></li>
-				<li<?php if ( 'upcoming' == $current_view ) : ?> class="current"<?php endif ?>><a href="<?php echo add_query_arg( 'tctype', 'upcoming', $base_url ) ?>">Upcoming</a></li>
-				<li<?php if ( 'alphabetical' == $current_view ) : ?> class="current"<?php endif ?>><a href="<?php echo add_query_arg( 'tctype', 'alphabetical', $base_url ) ?>">Alphabetical</a></li>
+				<?php thatcamp_directory_selector( 'alphabetical' ) ?>
+				<?php thatcamp_directory_selector( 'past' ) ?>
+				<?php thatcamp_directory_selector( 'upcoming' ) ?>
 			</ul>
 
 			<?php do_action( 'bp_before_directory_groups_content' ); ?>

@@ -362,6 +362,13 @@ function thatcamp_mod_user_nav() {
 }
 add_action( 'bp_actions', 'thatcamp_mod_user_nav', 1 );
 
+/**
+ * Wrapper function to grab user data set by the TCRegistrations plugin
+ *
+ * We need this wrapper in some cases because the free-form text must be
+ * interpolated into a string with certain requirements (such as a Twitter
+ * handle or a URL). So we provide some validation for those types.
+ */
 function thatcamp_get_user_data( $user_id, $key ) {
 	$data = get_user_meta( $user_id, $key, true );
 
@@ -394,15 +401,61 @@ function thatcamp_get_user_data( $user_id, $key ) {
 	return $data;
 }
 
+/**
+ * Is this a valid URL?
+ */
 function thatcamp_validate_url( $string ) {
 	return preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $string);
 }
 
+/**
+ * Get the current 'tctype' view out of $_GET and sanitize
+ */
+function thatcamp_directory_current_view() {
+	$current_view = isset( $_GET['tctype'] ) && in_array( $_GET['tctype'], array( 'alphabetical', 'past', 'upcoming' ) ) ? $_GET['tctype'] : 'alphabetical';
+	return $current_view;
+}
+
+function thatcamp_directory_selector( $view ) {
+	$base_url     = bp_get_root_domain() . '/' .  bp_get_groups_root_slug();
+	$current_view = thatcamp_directory_current_view();
+
+	$html  = '<li';
+
+	if ( $view == $current_view ) {
+		$html .= ' class="current"';
+	}
+
+	$html .= '>';
+
+	if ( $view != $current_view ) {
+		$html .= '<a href="' . add_query_arg( 'tctype', $view, $base_url ) . '">';
+	}
+
+	$html .= ucwords( $view );
+
+	if ( $view != $current_view ) {
+		$html .= '</a>';
+	}
+
+	$html .= '</li>';
+
+	echo $html;
+}
+
+/**
+ * Filters group directory query strings to ensure that the proper groups show
+ *
+ * There are three TC views: alphabetical, past, and upcoming. This ensures
+ * that the queries reflect these different views.
+ *
+ * Note that 'upcoming' also includes TBD THATCamps. See thatcamp_add_tbd_to_upcoming()
+ */
 function thatcamp_filter_group_directory( $query ) {
 	global $bp, $wpdb;
 
 	if ( bp_is_groups_component() && bp_is_directory() ) {
-		$current_view = isset( $_GET['tctype'] ) && in_array( $_GET['tctype'], array( 'alphabetical', 'past', 'upcoming' ) ) ? $_GET['tctype'] : 'alphabetical';
+		$current_view = thatcamp_directory_current_view();
 
 		if ( 'alphabetical' != $current_view ) {
 			// Filter by date
@@ -434,10 +487,20 @@ function thatcamp_filter_group_directory( $query ) {
 add_filter( 'bp_groups_get_paged_groups_sql', 'thatcamp_filter_group_directory' );
 add_filter( 'bp_groups_get_total_groups_sql', 'thatcamp_filter_group_directory' );
 
+/**
+ * Adds TBD THATCamps to the Upcoming directory
+ *
+ * TBD THATCamps have to thatcamp_date groupmeta. But we still want them to
+ * appear in the Upcoming directory (where thatcamp_date is greater than now).
+ * We do this by appending them, alphabetically, to the end of the standard
+ * Upcoming list. But this causes all sorts of issues related to pagination,
+ * so we have to do a bunch of logic to reconfigure the $groups_template
+ * global. This is akin to BP's do_stickies logic for forum posts.
+ */
 function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 	global $bp, $wpdb, $groups_template;
 
-	$current_view = isset( $_GET['tctype'] ) && in_array( $_GET['tctype'], array( 'alphabetical', 'past', 'upcoming' ) ) ? $_GET['tctype'] : 'alphabetical';
+	$current_view = thatcamp_directory_current_view();
 
 	if ( bp_is_groups_component() && bp_is_directory() && 'upcoming' == $current_view ) {
 		$tbds = $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name} WHERE id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' ) ORDER BY name ASC" );
@@ -502,7 +565,6 @@ function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 		if ( ! empty( $groups_template->groups ) ) {
 			$has_groups = true;
 		}
-		//var_Dump( $groups_template );
 	}
 
 	return $has_groups;
