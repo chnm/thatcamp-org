@@ -397,3 +397,35 @@ function thatcamp_get_user_data( $user_id, $key ) {
 function thatcamp_validate_url( $string ) {
 	return preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $string);
 }
+
+function thatcamp_filter_group_directory( $query ) {
+	global $bp, $wpdb;
+
+	if ( bp_is_groups_component() && bp_is_directory() ) {
+		$current_view = isset( $_GET['tctype'] ) && in_array( $_GET['tctype'], array( 'alphabetical', 'past', 'upcoming' ) ) ? $_GET['tctype'] : 'alphabetical';
+
+		if ( 'alphabetical' != $current_view ) {
+			// Filter by date
+			$qarray = explode( ' WHERE ', $query );
+
+			$qarray[0] .= ", {$bp->groups->table_name_groupmeta} gmd ";
+			$qarray[1]  = " gmd.group_id = g.id AND gmd.meta_key = 'thatcamp_date' AND " . $qarray[1];
+
+			if ( 'past' == $current_view ) {
+				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) < NOW() AND " . $qarray[1];
+				$qarray[1] = preg_replace( '/ORDER BY .*? /', 'ORDER BY CONVERT(gmd.meta_value, SIGNED) ', $qarray[1] );
+				$qarray[1] = preg_replace( '/(ASC|DESC)/', 'ASC', $qarray[1] );
+			} else if ( 'upcoming' == $current_view ) {
+				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) > NOW() AND " . $qarray[1];
+				$qarray[1] = preg_replace( '/ORDER BY .*? /', 'ORDER BY CONVERT(gmd.meta_value, SIGNED) ', $qarray[1] );
+				$qarray[1] = preg_replace( '/(ASC|DESC)/', 'ASC', $qarray[1] );
+			}
+//			var_dump( $qarray );
+			$query = implode( ' WHERE ', $qarray );
+		}
+	}
+
+	return $query;
+}
+add_filter( 'bp_groups_get_paged_groups_sql', 'thatcamp_filter_group_directory' );
+add_filter( 'bp_groups_get_total_groups_sql', 'thatcamp_filter_group_directory' );
