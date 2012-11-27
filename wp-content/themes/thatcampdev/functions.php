@@ -412,11 +412,11 @@ function thatcamp_filter_group_directory( $query ) {
 			$qarray[1]  = " gmd.group_id = g.id AND gmd.meta_key = 'thatcamp_date' AND " . $qarray[1];
 
 			if ( 'past' == $current_view ) {
-				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) < NOW() AND " . $qarray[1];
+				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) < UNIX_TIMESTAMP(NOW()) AND " . $qarray[1];
 				$qarray[1] = preg_replace( '/ORDER BY .*? /', 'ORDER BY CONVERT(gmd.meta_value, SIGNED) ', $qarray[1] );
 				$qarray[1] = preg_replace( '/(ASC|DESC)/', 'ASC', $qarray[1] );
 			} else if ( 'upcoming' == $current_view ) {
-				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) > NOW() AND " . $qarray[1];
+				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) > UNIX_TIMESTAMP(NOW()) AND " . $qarray[1];
 				$qarray[1] = preg_replace( '/ORDER BY .*? /', 'ORDER BY CONVERT(gmd.meta_value, SIGNED) ', $qarray[1] );
 				$qarray[1] = preg_replace( '/(ASC|DESC)/', 'ASC', $qarray[1] );
 			}
