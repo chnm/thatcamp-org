@@ -14,8 +14,9 @@
     <?php get_sidebar( 'stream' ); ?>
 </div>
 
-<div id="article" class="ten columns offset-by-two omega">
-	<div id="content" class="clearfix feature-box thatcamp-stream" role="main">
+<div id="stream">
+
+	<div class="clearfix thatcamp-stream" role="main">
 		<?php if ( function_exists( 'get_sitewide_tags_option' ) ) switch_to_blog( get_sitewide_tags_option( 'tags_blog_id' ) ); ?>
 
 		<?php

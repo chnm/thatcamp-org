@@ -10,12 +10,12 @@ Version: 0.1
 ===========================*/
 
 @font-face {
-	font-family: 'IcoMoon';
-	src: url('fonts/IcoMoon.eot');
-	src: url('fonts/IcoMoon.eot?#iefix') format('embedded-opentype'),
-		url('fonts/IcoMoon.svg#IcoMoon') format('svg'),
-		url('fonts/IcoMoon.woff') format('woff'),
-		url('fonts/IcoMoon.ttf') format('truetype');
+	font-family: 'icomoon';
+	src: url('fonts/icomoon.eot');
+	src: url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.svg#icomoon') format('svg'),
+		url('fonts/icomoon.woff') format('woff'),
+		url('fonts/icomoon.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -166,14 +166,17 @@ header nav .social {
 
     header nav .social li:hover { border-left: 1px solid rgba(255,255,255,0.01); }
 
-        header nav .social li .RSS:before {
-            content: "\28";
-            font-family: "IcoMoon";
+        header nav .social li .RSS:before, header nav .social li .email:before {
+            font-family: "icomoon";
             display: inline-block;
-            line-height: 39px;
+            line-height: 35px;
             margin: 0 5px 0 0;
             text-indent: 0;
         }
+
+        header nav .social li .RSS:before { content: "\28"; }
+
+        header nav .social li .email:before { content: "\21"; }
 
 header .current_page_item {
     background-color: #fbfbfb !important;
@@ -455,6 +458,15 @@ footer {
     text-transform: uppercase;
     margin-bottom: 50px;
     }
+
+.tags {
+    text-transform: none;
+    font-size: 12px;
+}
+
+.tags a:link { color: #8A9900; }
+.tags a:visited { color: #454D00; }
+.tags a:hover, a:active{ color: #006666; }
 
 .wp-caption {
     margin: 40px auto;
@@ -833,8 +845,9 @@ footer {
 
 .post {
     border-bottom: 1px solid #e8e8e8;
-    margin-bottom: 40px;
-    padding-bottom: 40px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    padding-bottom: 30px;
     }
 
     .post:first-child { border-top: 1px solid #e8e8e8; }
@@ -922,4 +935,19 @@ footer {
     =============== */
     .uppercase {
     text-transform: uppercase;
+    }
+
+    /* Stream
+    ============================*/
+
+    #stream {
+    width: 620px;
+    float: left;
+	padding-left: 120px;
+    margin-top: 65px;
+    border: 0;
+    }
+
+    #article a img {
+    display: block;
     }
