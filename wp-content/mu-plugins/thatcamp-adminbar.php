@@ -4,6 +4,23 @@
  * Mods the admin bar
  */
 
+function thatcamp_clear_boone() {
+	if ( is_super_admin() && ! empty( $_GET['clear_boone'] ) ) {
+		global $wpdb;
+
+		$blogs = $wpdb->get_results( "SELECT blog_id, domain FROM $wpdb->blogs" );
+		$boone = $wpdb->get_var( "SELECT ID FROM $wpdb->users WHERE user_login = 'boone'" );
+
+		$boone_camps = array( 2, 3, 21, 57, 77, 122, );
+		foreach ( $blogs as $blog ) {
+			if ( ! in_array( $blog->blog_id, $boone_camps ) ) {
+				remove_user_from_blog( $boone, $blog->blog_id );
+				echo $blog->domain . '<br />';
+			}
+		}
+	}
+}
+//add_action( 'admin_init', 'thatcamp_clear_boone' );
 
 function thatcamp_modify_admin_bar( $admin_bar ) {
 
