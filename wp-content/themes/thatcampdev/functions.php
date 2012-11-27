@@ -370,3 +370,39 @@ function thatcamp_mod_user_nav() {
 	}
 }
 add_action( 'bp_actions', 'thatcamp_mod_user_nav', 1 );
+
+function thatcamp_get_user_data( $user_id, $key ) {
+	$data = get_user_meta( $user_id, $key, true );
+
+	if ( ! empty( $data ) ) {
+		switch ( $key ) {
+			case 'user_twitter' :
+				// Strip leading '@'
+				$data = preg_replace( '/^\@/', '', $data );
+
+				// Make sure the user didn't enter a URL
+				if ( thatcamp_validate_url( $data ) ) {
+					$data = preg_replace( '|^http(s)?://twitter\.com/([a-zA-Z0-9-\.]+?)(/.*)?|', '$2', $data );
+				}
+
+				break;
+
+			case 'user_url' :
+				if ( ! thatcamp_validate_url( $data ) ) {
+					// Assume that http:// was left off
+					$maybe_data = 'http://' . $data;
+					if ( thatcamp_validate_url( $maybe_data ) ) {
+						$data = $maybe_data;
+					}
+				}
+
+				break;
+		}
+	}
+
+	return $data;
+}
+
+function thatcamp_validate_url( $string ) {
+	return preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $string);
+}
