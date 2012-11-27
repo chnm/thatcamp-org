@@ -272,7 +272,7 @@ add_action( 'widgets_init', 'thatcamp_widgets_init' );
  */
 remove_action( 'bp_init', 'bp_core_action_search_site', 7 );
 function thatcamp_action_search_site() {
-	if ( !bp_is_current_component( bp_get_search_slug() ) )
+	if ( ! bp_is_current_component( bp_get_search_slug() ) )
 		return;
 
 	if ( empty( $_POST['search-terms'] ) ) {
@@ -285,29 +285,20 @@ function thatcamp_action_search_site() {
 	$search_which = !empty( $_POST['search-which'] ) ? $_POST['search-which'] : '';
 	$query_string = '/?s=';
 
-	switch ( $search_which ) {
-		case 'thatcamporg':
-			$slug = '';
-			$var  = '/?s=';
+	$slug = '';
+	$var  = '/?s=';
 
-			// If posts aren't displayed on the front page, find the post page's slug.
-			if ( 'page' == get_option( 'show_on_front' ) ) {
-				$page = get_post( get_option( 'page_for_posts' ) );
+	// If posts aren't displayed on the front page, find the post page's slug.
+	if ( 'page' == get_option( 'show_on_front' ) ) {
+		$page = get_post( get_option( 'page_for_posts' ) );
 
-				if ( !is_wp_error( $page ) && !empty( $page->post_name ) ) {
-					$slug = $page->post_name;
-					$var  = '?s=';
-				}
-			}
-
-			$redirect = home_url( $slug . $query_string . urlencode( $search_terms ) );
-			break;
-
-		case 'all_thatcamps':
-		default:
-			$redirect = get_blog_option( thatcamp_proceedings_blog_id(), 'home' ) . $query_string . urlencode( $search_terms );
-			break;
+		if ( !is_wp_error( $page ) && !empty( $page->post_name ) ) {
+			$slug = $page->post_name;
+			$var  = '?s=';
+		}
 	}
+
+	$redirect = home_url( $slug . $query_string . urlencode( $search_terms ) );
 
 	bp_core_redirect( $redirect );
 }
