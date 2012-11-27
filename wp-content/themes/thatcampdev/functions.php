@@ -409,19 +409,23 @@ function thatcamp_filter_group_directory( $query ) {
 			$qarray = explode( ' WHERE ', $query );
 
 			$qarray[0] .= ", {$bp->groups->table_name_groupmeta} gmd ";
-			$qarray[1]  = " gmd.group_id = g.id AND gmd.meta_key = 'thatcamp_date' AND " . $qarray[1];
 
 			if ( 'past' == $current_view ) {
+				$qarray[1]  = " gmd.group_id = g.id AND gmd.meta_key = 'thatcamp_date' AND " . $qarray[1];
 				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) < UNIX_TIMESTAMP(NOW()) AND " . $qarray[1];
 				$qarray[1] = preg_replace( '/ORDER BY .*? /', 'ORDER BY CONVERT(gmd.meta_value, SIGNED) ', $qarray[1] );
 				$qarray[1] = preg_replace( '/(ASC|DESC)/', 'ASC', $qarray[1] );
 			} else if ( 'upcoming' == $current_view ) {
+				$qarray[1]  = " gmd.group_id = g.id AND gmd.meta_key = 'thatcamp_date' AND " . $qarray[1];
 				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) > UNIX_TIMESTAMP(NOW()) AND " . $qarray[1];
 				$qarray[1] = preg_replace( '/ORDER BY .*? /', 'ORDER BY CONVERT(gmd.meta_value, SIGNED) ', $qarray[1] );
 				$qarray[1] = preg_replace( '/(ASC|DESC)/', 'ASC', $qarray[1] );
 			}
-//			var_dump( $qarray );
+
 			$query = implode( ' WHERE ', $qarray );
+		} else {
+			$query = preg_replace( '/ORDER BY .*? /', 'ORDER BY g.name ', $query );
+			$query = preg_replace( '/(ASC|DESC)/', 'ASC', $query );
 		}
 	}
 
@@ -429,3 +433,78 @@ function thatcamp_filter_group_directory( $query ) {
 }
 add_filter( 'bp_groups_get_paged_groups_sql', 'thatcamp_filter_group_directory' );
 add_filter( 'bp_groups_get_total_groups_sql', 'thatcamp_filter_group_directory' );
+
+function thatcamp_add_tbd_to_upcoming( $has_groups ) {
+	global $bp, $wpdb, $groups_template;
+
+	$current_view = isset( $_GET['tctype'] ) && in_array( $_GET['tctype'], array( 'alphabetical', 'past', 'upcoming' ) ) ? $_GET['tctype'] : 'alphabetical';
+
+	if ( bp_is_groups_component() && bp_is_directory() && 'upcoming' == $current_view ) {
+		$tbds = $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name} WHERE id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' ) ORDER BY name ASC" );
+
+		$dated_count = $groups_template->total_group_count;
+		$tbds_count  = count( $tbds );
+
+		$page_start_num = ( ( $groups_template->pag_page - 1 ) * $groups_template->pag_num ) + 1;
+		$page_end_num 	= $groups_template->pag_page * $groups_template->pag_num;
+
+		$groups_template->total_group_count += count( $tbds );
+
+		// 1. This page has no TBDs (haven't gotten there yet)
+		if ( $dated_count >= $page_end_num ) {
+			// nothing to do?
+			// total counts get adjusted for pagination after new groups are added
+
+		// 2. This page is all TBDs
+		} else if ( $dated_count < $page_start_num ) {
+			// Find the TBD offset
+			$tbd_start_num   = $page_start_num - $dated_count;
+			$tbd_fetch_count = $groups_template->pag_num;
+			$tbd_fetch_ids   = array_slice( $tbds, $tbd_start_num, $tbd_fetch_count );
+
+		// 3. This page has some TBDs
+		} else {
+			$tbd_fetch_count = $page_end_num - $dated_count;
+			$tbd_fetch_ids   = array_slice( $tbds, 0, $tbd_fetch_count );
+		}
+
+		if ( ! empty( $tbd_fetch_ids ) ) {
+			remove_filter( 'bp_groups_get_paged_groups_sql', 'thatcamp_filter_group_directory' );
+			remove_filter( 'bp_groups_get_total_groups_sql', 'thatcamp_filter_group_directory' );
+
+			$tbd_groups = groups_get_groups( array(
+				'type'            => 'alphabetical',
+				'include'         => $tbd_fetch_ids,
+			) );
+
+			$groups_template->groups = array_merge( $groups_template->groups, $tbd_groups['groups'] );
+
+			add_filter( 'bp_groups_get_paged_groups_sql', 'thatcamp_filter_group_directory' );
+			add_filter( 'bp_groups_get_total_groups_sql', 'thatcamp_filter_group_directory' );
+		}
+
+		if ( $tbds_count + $dated_count >= $page_end_num ) {
+			$groups_template->group_count = $groups_template->pag_num;
+		} else {
+			$groups_template->group_count = ( $dated_count + $tbds_count ) - $page_start_num;
+		}
+
+		$groups_template->pag_links = paginate_links( array(
+			'base'      => add_query_arg( array( 'grpage' => '%#%', 'num' => $groups_template->pag_num ) ),
+			'format'    => '',
+			'total'     => ceil( (int) $groups_template->total_group_count / (int) $groups_template->pag_num ),
+			'current'   => $groups_template->pag_page,
+			'prev_text' => _x( '&larr;', 'Group pagination previous text', 'buddypress' ),
+			'next_text' => _x( '&rarr;', 'Group pagination next text', 'buddypress' ),
+			'mid_size'  => 1
+		) );
+
+		if ( ! empty( $groups_template->groups ) ) {
+			$has_groups = true;
+		}
+		//var_Dump( $groups_template );
+	}
+
+	return $has_groups;
+}
+add_filter( 'bp_has_groups', 'thatcamp_add_tbd_to_upcoming' );
