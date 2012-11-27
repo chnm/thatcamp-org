@@ -56,6 +56,24 @@ function thatcamp_menu_page() {
 					</select>
 				</td>
 			</tr>
+
+			<tr>
+				<th scope="row">
+					<label for="thatcamp_organizers">Organizers</label>
+				</th>
+
+				<td>
+					<ul id="organizer-list">
+					<?php $users = new WP_User_Query( array( 'blog_id' => get_current_blog_id() ) ) ?>
+					<?php foreach ( $users->results as $user ) : ?>
+						<?php $is_organizer = get_user_meta( $user->ID, 'wp_' . get_current_blog_id() . '_is_organizer', true ) ?>
+						<li><input name="thatcamp_organizers[]" value="<?php echo esc_attr( $user->ID ) ?>" <?php checked( 'yes', $is_organizer ) ?> type="checkbox"> <?php echo bp_core_get_userlink( $user->ID ) ?></li>
+					<?php endforeach ?>
+					</ul>
+
+					<p class="description">Select all users who should be labeled as 'organizers' of your THATCamp.</p>
+				</td>
+			</tr>
 		</table>
 
 		<br /><br />
@@ -90,6 +108,31 @@ function thatcamp_admin_catch_submit() {
 		if ( ! in_array( $has_workshops, array( 'yes', 'maybe', 'no' ) ) )
 			$has_workshops = 'no';
 		groups_update_groupmeta( $group_id, 'thatcamp_has_workshops', $has_workshops );
+
+		// Organizers
+		$organizers = isset( $_POST['thatcamp_organizers'] ) ? $_POST['thatcamp_organizers'] : '';
+		$organizers = wp_parse_id_list( $organizers );
+
+		$org_key = 'wp_' . get_current_blog_id() . '_is_organizer';
+
+		$existing = new WP_User_Query( array( 'meta_key' => $org_key, 'meta_value' => 'yes' ) );
+		$existing_ids = array();
+
+		if ( ! empty( $existing->results ) ) {
+			$existing_ids = wp_list_pluck( $existing->results, 'ID' );
+		}
+
+		// Add passed organizers
+		foreach ( $organizers as $org ) {
+			update_user_meta( $org, $org_key, 'yes' );
+		}
+
+		// Remove others
+		foreach ( $existing_ids as $existing_id ) {
+			if ( ! in_array( $existing_id, $organizers ) ) {
+				delete_user_meta( $existing_id, $org_key );
+			}
+		}
 
 		wp_redirect( add_query_arg( array(
 			'page' => 'thatcamp_setup',

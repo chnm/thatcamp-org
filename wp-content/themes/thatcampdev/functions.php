@@ -272,7 +272,7 @@ add_action( 'widgets_init', 'thatcamp_widgets_init' );
  */
 remove_action( 'bp_init', 'bp_core_action_search_site', 7 );
 function thatcamp_action_search_site() {
-	if ( !bp_is_current_component( bp_get_search_slug() ) )
+	if ( ! bp_is_current_component( bp_get_search_slug() ) )
 		return;
 
 	if ( empty( $_POST['search-terms'] ) ) {
@@ -285,29 +285,20 @@ function thatcamp_action_search_site() {
 	$search_which = !empty( $_POST['search-which'] ) ? $_POST['search-which'] : '';
 	$query_string = '/?s=';
 
-	switch ( $search_which ) {
-		case 'thatcamporg':
-			$slug = '';
-			$var  = '/?s=';
+	$slug = '';
+	$var  = '/?s=';
 
-			// If posts aren't displayed on the front page, find the post page's slug.
-			if ( 'page' == get_option( 'show_on_front' ) ) {
-				$page = get_post( get_option( 'page_for_posts' ) );
+	// If posts aren't displayed on the front page, find the post page's slug.
+	if ( 'page' == get_option( 'show_on_front' ) ) {
+		$page = get_post( get_option( 'page_for_posts' ) );
 
-				if ( !is_wp_error( $page ) && !empty( $page->post_name ) ) {
-					$slug = $page->post_name;
-					$var  = '?s=';
-				}
-			}
-
-			$redirect = home_url( $slug . $query_string . urlencode( $search_terms ) );
-			break;
-
-		case 'all_thatcamps':
-		default:
-			$redirect = get_blog_option( thatcamp_proceedings_blog_id(), 'home' ) . $query_string . urlencode( $search_terms );
-			break;
+		if ( !is_wp_error( $page ) && !empty( $page->post_name ) ) {
+			$slug = $page->post_name;
+			$var  = '?s=';
+		}
 	}
+
+	$redirect = home_url( $slug . $query_string . urlencode( $search_terms ) );
 
 	bp_core_redirect( $redirect );
 }
@@ -351,6 +342,14 @@ function thatcamp_mod_user_nav() {
 		bp_core_remove_nav_item( 'blogs' );
 	}
 
+	if ( bp_is_active( 'settings' ) ) {
+		bp_core_remove_nav_item( 'settings' );
+	}
+
+	if ( isset( $bp->bp_nav['forums'] ) ) {
+		unset( $bp->bp_nav['forums'] );
+	}
+
 	// Cheating: Change 'Activity' to 'About'
 	if ( isset( $bp->bp_nav[ bp_get_activity_slug() ] ) ) {
 		$bp->bp_nav[ bp_get_activity_slug() ]['name'] = 'About';
@@ -362,3 +361,212 @@ function thatcamp_mod_user_nav() {
 	}
 }
 add_action( 'bp_actions', 'thatcamp_mod_user_nav', 1 );
+
+/**
+ * Wrapper function to grab user data set by the TCRegistrations plugin
+ *
+ * We need this wrapper in some cases because the free-form text must be
+ * interpolated into a string with certain requirements (such as a Twitter
+ * handle or a URL). So we provide some validation for those types.
+ */
+function thatcamp_get_user_data( $user_id, $key ) {
+	$data = get_user_meta( $user_id, $key, true );
+
+	if ( ! empty( $data ) ) {
+		switch ( $key ) {
+			case 'user_twitter' :
+				// Strip leading '@'
+				$data = preg_replace( '/^\@/', '', $data );
+
+				// Make sure the user didn't enter a URL
+				if ( thatcamp_validate_url( $data ) ) {
+					$data = preg_replace( '|^http(s)?://twitter\.com/([a-zA-Z0-9-\.]+?)(/.*)?|', '$2', $data );
+				}
+
+				break;
+
+			case 'user_url' :
+				if ( ! thatcamp_validate_url( $data ) ) {
+					// Assume that http:// was left off
+					$maybe_data = 'http://' . $data;
+					if ( thatcamp_validate_url( $maybe_data ) ) {
+						$data = $maybe_data;
+					}
+				}
+
+				break;
+		}
+	}
+
+	return $data;
+}
+
+/**
+ * Is this a valid URL?
+ */
+function thatcamp_validate_url( $string ) {
+	return preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $string);
+}
+
+/**
+ * Get the current 'tctype' view out of $_GET and sanitize
+ */
+function thatcamp_directory_current_view() {
+	$current_view = isset( $_GET['tctype'] ) && in_array( $_GET['tctype'], array( 'alphabetical', 'past', 'upcoming' ) ) ? $_GET['tctype'] : 'alphabetical';
+	return $current_view;
+}
+
+function thatcamp_directory_selector( $view ) {
+	$base_url     = bp_get_root_domain() . '/' .  bp_get_groups_root_slug();
+	$current_view = thatcamp_directory_current_view();
+
+	$html  = '<li';
+
+	if ( $view == $current_view ) {
+		$html .= ' class="current"';
+	}
+
+	$html .= '>';
+
+	if ( $view != $current_view ) {
+		$html .= '<a href="' . add_query_arg( 'tctype', $view, $base_url ) . '">';
+	}
+
+	$html .= ucwords( $view );
+
+	if ( $view != $current_view ) {
+		$html .= '</a>';
+	}
+
+	$html .= '</li>';
+
+	echo $html;
+}
+
+/**
+ * Filters group directory query strings to ensure that the proper groups show
+ *
+ * There are three TC views: alphabetical, past, and upcoming. This ensures
+ * that the queries reflect these different views.
+ *
+ * Note that 'upcoming' also includes TBD THATCamps. See thatcamp_add_tbd_to_upcoming()
+ */
+function thatcamp_filter_group_directory( $query ) {
+	global $bp, $wpdb;
+
+	if ( bp_is_groups_component() && bp_is_directory() ) {
+		$current_view = thatcamp_directory_current_view();
+
+		if ( 'alphabetical' != $current_view ) {
+			// Filter by date
+			$qarray = explode( ' WHERE ', $query );
+
+			$qarray[0] .= ", {$bp->groups->table_name_groupmeta} gmd ";
+
+			if ( 'past' == $current_view ) {
+				$qarray[1]  = " gmd.group_id = g.id AND gmd.meta_key = 'thatcamp_date' AND " . $qarray[1];
+				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) < UNIX_TIMESTAMP(NOW()) AND " . $qarray[1];
+				$qarray[1] = preg_replace( '/ORDER BY .*? /', 'ORDER BY CONVERT(gmd.meta_value, SIGNED) ', $qarray[1] );
+				$qarray[1] = preg_replace( '/(ASC|DESC)/', 'ASC', $qarray[1] );
+			} else if ( 'upcoming' == $current_view ) {
+				$qarray[1]  = " gmd.group_id = g.id AND gmd.meta_key = 'thatcamp_date' AND " . $qarray[1];
+				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) > UNIX_TIMESTAMP(NOW()) AND " . $qarray[1];
+				$qarray[1] = preg_replace( '/ORDER BY .*? /', 'ORDER BY CONVERT(gmd.meta_value, SIGNED) ', $qarray[1] );
+				$qarray[1] = preg_replace( '/(ASC|DESC)/', 'ASC', $qarray[1] );
+			}
+
+			$query = implode( ' WHERE ', $qarray );
+		} else {
+			$query = preg_replace( '/ORDER BY .*? /', 'ORDER BY g.name ', $query );
+			$query = preg_replace( '/(ASC|DESC)/', 'ASC', $query );
+		}
+	}
+
+	return $query;
+}
+add_filter( 'bp_groups_get_paged_groups_sql', 'thatcamp_filter_group_directory' );
+add_filter( 'bp_groups_get_total_groups_sql', 'thatcamp_filter_group_directory' );
+
+/**
+ * Adds TBD THATCamps to the Upcoming directory
+ *
+ * TBD THATCamps have to thatcamp_date groupmeta. But we still want them to
+ * appear in the Upcoming directory (where thatcamp_date is greater than now).
+ * We do this by appending them, alphabetically, to the end of the standard
+ * Upcoming list. But this causes all sorts of issues related to pagination,
+ * so we have to do a bunch of logic to reconfigure the $groups_template
+ * global. This is akin to BP's do_stickies logic for forum posts.
+ */
+function thatcamp_add_tbd_to_upcoming( $has_groups ) {
+	global $bp, $wpdb, $groups_template;
+
+	$current_view = thatcamp_directory_current_view();
+
+	if ( bp_is_groups_component() && bp_is_directory() && 'upcoming' == $current_view ) {
+		$tbds = $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name} WHERE id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' ) ORDER BY name ASC" );
+
+		$dated_count = $groups_template->total_group_count;
+		$tbds_count  = count( $tbds );
+
+		$page_start_num = ( ( $groups_template->pag_page - 1 ) * $groups_template->pag_num ) + 1;
+		$page_end_num 	= $groups_template->pag_page * $groups_template->pag_num;
+
+		$groups_template->total_group_count += count( $tbds );
+
+		// 1. This page has no TBDs (haven't gotten there yet)
+		if ( $dated_count >= $page_end_num ) {
+			// nothing to do?
+			// total counts get adjusted for pagination after new groups are added
+
+		// 2. This page is all TBDs
+		} else if ( $dated_count < $page_start_num ) {
+			// Find the TBD offset
+			$tbd_start_num   = $page_start_num - $dated_count;
+			$tbd_fetch_count = $groups_template->pag_num;
+			$tbd_fetch_ids   = array_slice( $tbds, $tbd_start_num, $tbd_fetch_count );
+
+		// 3. This page has some TBDs
+		} else {
+			$tbd_fetch_count = $page_end_num - $dated_count;
+			$tbd_fetch_ids   = array_slice( $tbds, 0, $tbd_fetch_count );
+		}
+
+		if ( ! empty( $tbd_fetch_ids ) ) {
+			remove_filter( 'bp_groups_get_paged_groups_sql', 'thatcamp_filter_group_directory' );
+			remove_filter( 'bp_groups_get_total_groups_sql', 'thatcamp_filter_group_directory' );
+
+			$tbd_groups = groups_get_groups( array(
+				'type'            => 'alphabetical',
+				'include'         => $tbd_fetch_ids,
+			) );
+
+			$groups_template->groups = array_merge( $groups_template->groups, $tbd_groups['groups'] );
+
+			add_filter( 'bp_groups_get_paged_groups_sql', 'thatcamp_filter_group_directory' );
+			add_filter( 'bp_groups_get_total_groups_sql', 'thatcamp_filter_group_directory' );
+		}
+
+		if ( $tbds_count + $dated_count >= $page_end_num ) {
+			$groups_template->group_count = $groups_template->pag_num;
+		} else {
+			$groups_template->group_count = ( $dated_count + $tbds_count ) - $page_start_num;
+		}
+
+		$groups_template->pag_links = paginate_links( array(
+			'base'      => add_query_arg( array( 'grpage' => '%#%', 'num' => $groups_template->pag_num ) ),
+			'format'    => '',
+			'total'     => ceil( (int) $groups_template->total_group_count / (int) $groups_template->pag_num ),
+			'current'   => $groups_template->pag_page,
+			'prev_text' => _x( '&larr;', 'Group pagination previous text', 'buddypress' ),
+			'next_text' => _x( '&rarr;', 'Group pagination next text', 'buddypress' ),
+			'mid_size'  => 1
+		) );
+
+		if ( ! empty( $groups_template->groups ) ) {
+			$has_groups = true;
+		}
+	}
+
+	return $has_groups;
+}
+add_filter( 'bp_has_groups', 'thatcamp_add_tbd_to_upcoming' );
