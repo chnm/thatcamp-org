@@ -247,7 +247,7 @@ function thatcamp_widgets_init() {
 
 	register_sidebar(
 		array(
-			'name'          => __( 'Sidebar Twitter', 'thatcamp'),
+			'name'          => __( 'Twitter Button', 'thatcamp'),
 			'id'            => 'sidebar-twitter',
 			'description'   => 'Sidebar twitter',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',

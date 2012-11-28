@@ -1000,7 +1000,8 @@ div.dir-search input[type="text"] {
   float: left;
 }
 .header-button,
-#search-bar #search-submit {
+#search-bar #search-submit,
+#sidebar-wp-submit {
   background-color: #2EC0FE;
   background-image: -o-linear-gradient(-90deg, #414141 0%, #2b2b2b 100%);
   background-image: -moz-linear-gradient(-90deg, #414141 0%, #2b2b2b 100%);
@@ -1114,17 +1115,6 @@ a:hover.button.socialbutton {
   display: block;
   position: relative;
   text-indent: 5px;
-}
-#user-section input {
-  background-color: transparent;
-  left: 0;
-  position: absolute;
-  top: 0;
-  z-index: 1;
-}
-#user-section input:focus,
-#user-section input:first-line {
-  background-color: #222;
 }
 #sitebar #search-submit,
 #sitebar #sidebar-wp-submit {
