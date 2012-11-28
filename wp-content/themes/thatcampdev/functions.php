@@ -391,11 +391,8 @@ function thatcamp_mod_user_nav() {
 	global $bp;
 
 	if ( bp_is_active( 'xprofile' ) ) {
-		// We want to maintain access to change-avatar, so we can't
-		// remove the nav item altogether
-		unset( $bp->bp_nav['profile'] );
-		bp_core_remove_subnav_item( 'profile', 'public' );
-		bp_core_remove_subnav_item( 'profile', 'edit' );
+		$bp->bp_nav['profile']['name'] = 'About';
+		$bp->bp_nav['profile']['position'] = 5;
 	}
 
 	if ( bp_is_active( 'blogs' ) ) {
@@ -412,11 +409,6 @@ function thatcamp_mod_user_nav() {
 
 	if ( isset( $bp->bp_nav['forums'] ) ) {
 		unset( $bp->bp_nav['forums'] );
-	}
-
-	// Cheating: Change 'Activity' to 'About'
-	if ( isset( $bp->bp_nav[ bp_get_activity_slug() ] ) ) {
-		$bp->bp_nav[ bp_get_activity_slug() ]['name'] = 'About';
 	}
 
 	// Cheating: Put Camps before Friends

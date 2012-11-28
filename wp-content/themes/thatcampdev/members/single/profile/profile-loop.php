@@ -1,48 +1,45 @@
-<?php do_action( 'bp_before_profile_loop_content' ); ?>
+<div id="member-fields">
+	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'description', true ) ) : ?>
+	<div id="member-bio" class="feature-box">
+		<p>
+			<?php echo $data; ?>
+		</p>
+	</div>
+	<?php endif ?>
 
-<?php if ( bp_has_profile() ) : ?>
+	<?php if ( $data = thatcamp_get_user_data( bp_displayed_user_id(), 'user_twitter' ) ) : ?>
+	<div id="member-twitter" class="profile-line">
+		<span class="profile-titlemember">Twitter:</span><a href="http://twitter.com/<?php echo $data ?>" title="<?php echo $data ?>">
+		@<?php echo $data; ?></a></span>
+	</div>
+	<?php endif ?>
 
-	<?php while ( bp_profile_groups() ) : bp_the_profile_group(); ?>
+	<?php if ( $data = thatcamp_get_user_data( bp_displayed_user_id(), 'user_url' ) ) : ?>
+	<div id="member-website" class="profile-line">
 
-		<?php if ( bp_profile_group_has_fields() ) : ?>
+		<span class="profile-titlemember">Website:</span><a href="<?php echo esc_url( $data ) ?>" title="<?php echo $data ?>">
+		<?php echo $data; ?></a></span>
+	</div>
+	<?php endif ?>
 
-			<?php do_action( 'bp_before_profile_field_content' ); ?>
+	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'user_title', true ) ) : ?>
+	<div id="member-position" class="profile-line">
 
-			<div class="bp-widget <?php bp_the_profile_group_slug(); ?>">
+		<span class="profile-titlemember">Position/Job Title:</span><?php echo $data; ?>
+	</div>
+	<?php endif ?>
 
-				<h4><?php bp_the_profile_group_name(); ?></h4>
+	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'user_organization', true ) ) : ?>
+	<div id="member-organisation" class="profile-line">
+		<span class="profile-titlemember">Organization:</span><?php echo $data; ?>
+	</div>
+	<?php endif ?>
 
-				<table class="profile-fields">
-
-					<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
-
-						<?php if ( bp_field_has_data() ) : ?>
-
-							<tr<?php bp_field_css_class(); ?>>
-
-								<td class="label"><?php bp_the_profile_field_name(); ?></td>
-
-								<td class="data"><?php bp_the_profile_field_value(); ?></td>
-
-							</tr>
-
-						<?php endif; ?>
-
-						<?php do_action( 'bp_profile_field_item' ); ?>
-
-					<?php endwhile; ?>
-
-				</table>
+	<?php if ( $data = get_user_meta( bp_displayed_user_id(), 'previous_thatcamps', true ) ) : ?>
+		<?php if ( 'Select an answer' != $data ) : ?>
+			<div id="member-camps" class="profile-line">
+				<span class="profile-titlemember">Previous THATCamps:</span><?php echo $data; ?>
 			</div>
-
-			<?php do_action( 'bp_after_profile_field_content' ); ?>
-
-		<?php endif; ?>
-
-	<?php endwhile; ?>
-
-	<?php do_action( 'bp_profile_field_buttons' ); ?>
-
-<?php endif; ?>
-
-<?php do_action( 'bp_after_profile_loop_content' ); ?>
+		<?php endif ?>
+	<?php endif ?>
+</div>
