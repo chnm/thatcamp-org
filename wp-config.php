@@ -74,7 +74,7 @@ define( 'SITE_ID_CURRENT_SITE', 1 );
 define( 'BLOG_ID_CURRENT_SITE', 1 );
 define( "EDIT_ANY_USER", true );
 
-define( 'NOBLOGREDIRECT', 'http://thatcampdev.info/site-not-found/?referer=' . urlencode( $_SERVER['HTTP_HOST'] ) );
+define( 'NOBLOGREDIRECT', 'http://' . DOMAIN_CURRENT_SITE . '/site-not-found/?referer=' . urlencode( $_SERVER['HTTP_HOST'] ) );
 
 // BuddyPress constants
 define( 'BP_GROUPS_SLUG', 'camps' );
