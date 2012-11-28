@@ -211,42 +211,6 @@ function thatcamp_widgets_init() {
 
 	register_sidebar(
 		array(
-			'name'          => __( 'Sidebar Home', 'thatcamp'),
-			'id'            => 'sidebar-home',
-			'description'   => 'Sidebar Home',
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget' => '</aside>',
-       		'before_title' => '<h3 class="widgettitle">',
-       		'after_title' => '</h3>'
-			)
-	);
-
-	register_sidebar(
-		array(
-			'name'          => __( 'Sidebar Stream', 'thatcamp'),
-			'id'            => 'sidebar-stream',
-			'description'   => 'Sidebar Stream',
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget' => '</aside>',
-       		'before_title' => '<h3 class="widgettitle">',
-       		'after_title' => '</h3>'
-			)
-	);
-
-	register_sidebar(
-		array(
-			'name'          => __( 'Sidebar Activity', 'thatcamp'),
-			'id'            => 'sidebar-activity',
-			'description'   => 'Sidebar Activity',
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget' => '</aside>',
-       		'before_title' => '<h3 class="widgettitle">',
-       		'after_title' => '</h3>'
-			)
-	);
-
-	register_sidebar(
-		array(
 			'name'          => __( 'Twitter Button', 'thatcamp'),
 			'id'            => 'sidebar-twitter',
 			'description'   => 'Sidebar twitter',
