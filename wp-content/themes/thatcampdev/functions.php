@@ -304,6 +304,62 @@ function thatcamp_action_search_site() {
 }
 add_action( 'bp_init', 'thatcamp_action_search_site', 7 );
 
+/**
+ * The People page features nested forms, which are breaking the ability to
+ * show a members search term as a URL GET parameter. Also, we need to have
+ * a custom param key, to bypass BP's native member search
+ */
+function thatcamp_action_search_members() {
+	if ( ! bp_is_members_component() ) {
+		return;
+	}
+
+	if ( empty( $_POST['msearch'] ) ) {
+		return;
+	}
+
+	bp_core_redirect( add_query_arg( 'msearch', urlencode( $_REQUEST['msearch'] ), trailingslashit( bp_get_root_domain() . '/' . bp_get_members_root_slug() ) ) );
+}
+add_action( 'bp_init', 'thatcamp_action_search_members', 7 );
+
+/**
+ * Filter the ajax_querystring to make the custom member search work
+ */
+function thatcamp_search_querystring( $qs ) {
+	global $bp, $wpdb;
+
+	if ( bp_is_members_component() && ! empty( $_GET['msearch'] ) ) {
+		$search_terms = like_escape( urldecode( $_GET['msearch'] ) );
+
+		// Find a list of matching members to pass to the 'includes' param
+		// Search against: user_nicename as well as the thatcamp profile fields
+		$tc_fields = function_exists( 'thatcamp_registrations_fields' ) ? thatcamp_registrations_fields( 'all' ) : array();
+		$tc_fields_keys = array();
+		foreach ( $tc_fields as $tc_field ) {
+			if ( ! empty( $tc_field['public'] ) ) {
+				$tc_fields_keys[] = "'" . $tc_field['id'] . "'";
+			}
+		}
+
+		// Two separate searches, because, hey, why not
+		$user_nicename_matches = $wpdb->get_col( "SELECT ID FROM $wpdb->users WHERE user_nicename LIKE '%" . $search_terms . "%'" );
+		$user_meta_matches     = $wpdb->get_col( "SELECT DISTINCT user_id FROM $wpdb->usermeta WHERE meta_key IN (" . implode( ',', $tc_fields_keys ) . ") AND meta_value LIKE '%" . $search_terms . "%'" );
+
+		// Merge and sanitize
+		$user_ids = wp_parse_id_list( array_unique( array_merge( $user_nicename_matches, $user_meta_matches ) ) );
+
+		// Convert to a query arg
+		if ( ! empty( $qs ) ) {
+			$qs .= '&';
+		}
+
+		$qs .= 'include=' . implode( ',', $user_ids );
+	}
+
+	return $qs;
+}
+add_action( 'bp_ajax_querystring', 'thatcamp_search_querystring', 999 );
+
 // Gets the blog ID
 function thatcamp_proceedings_blog_id() {
 	global $wpdb;

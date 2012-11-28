@@ -11,6 +11,16 @@
  */
 
 /**
+ * Prevent regular 404s from getting the Site Not Found redirect
+ *
+ * WordPress lumps together blog-not-found redirects with regular page-not-
+ * found redirects when using NOBLOGREDIRECT. This is dumb. In any case, here
+ * we override blog_redirect_404 so that regular page-not-found 404s resolve
+ * normally, while still preserving our NOBLOGREDIRECT for non-existent blogs
+ */
+add_action( 'blog_redirect_404', '__return_false' );
+
+/**
  * Fallback logic for "current" group
  */
 function thatcamp_fallback_group( $group_id ) {

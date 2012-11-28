@@ -5,20 +5,28 @@
  * @package thatcamp
  * @since thatcamp 1.0
  */
-?>	
+?>
 <?php do_action( 'bp_before_sidebar' ); ?>
-<div id="sidebar" role="complementary">	
+<div id="sidebar" role="complementary">
 	<form action="" method="post" id="members-directory-form" class="dir-form">
 
 			<?php do_action( 'bp_before_directory_members_content' ); ?>
 
 			<div id="members-dir-search" class="dir-search" role="search">
 
-				<?php bp_directory_members_search_form(); ?>
+				<?php
+				$default_search_value = bp_get_search_default_text( 'members' );
+				$search_value         = !empty( $_REQUEST['msearch'] ) ? stripslashes( $_REQUEST['msearch'] ) : $default_search_value;
+				?>
+
+				<form action="" method="get" id="search-members-form">
+					<label><input type="text" name="msearch" id="members_search" placeholder="<?php echo esc_attr( $search_value ) ?>" /></label>
+					<input type="submit" id="members_search_submit" name="members_search_submit" value="<?php _e( 'Search', 'buddypress' ) ?>" />
+				</form>
 
 			</div>
 
-		
+
 			<div class="item-list-tabs" id="subnav" role="navigation">
 				<ul>
 
