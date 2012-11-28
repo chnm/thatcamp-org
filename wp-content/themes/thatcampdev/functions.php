@@ -391,11 +391,19 @@ function thatcamp_mod_user_nav() {
 	global $bp;
 
 	if ( bp_is_active( 'xprofile' ) ) {
-		bp_core_remove_nav_item( 'profile' );
+		// We want to maintain access to change-avatar, so we can't
+		// remove the nav item altogether
+		unset( $bp->bp_nav['profile'] );
+		bp_core_remove_subnav_item( 'profile', 'public' );
+		bp_core_remove_subnav_item( 'profile', 'edit' );
 	}
 
 	if ( bp_is_active( 'blogs' ) ) {
 		bp_core_remove_nav_item( 'blogs' );
+	}
+
+	if ( bp_is_active( 'messages' ) ) {
+		bp_core_remove_nav_item( 'messages' );
 	}
 
 	if ( bp_is_active( 'settings' ) ) {
