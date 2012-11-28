@@ -455,6 +455,13 @@ function thatcamp_mod_user_nav() {
 	if ( isset( $bp->bp_nav[ bp_get_groups_slug() ] ) ) {
 		$bp->bp_nav[ bp_get_groups_slug() ]['position'] = 55;
 	}
+
+	// Correct the Edit My Profile link
+	if ( isset( $bp->bp_options_nav['profile']['edit'] ) ) {
+		remove_filter( 'edit_profile_url', 'bp_members_edit_profile_url', 10, 3 );
+		$bp->bp_options_nav['profile']['edit']['link'] = get_edit_profile_url( get_current_user_id() );
+		add_filter( 'edit_profile_url', 'bp_members_edit_profile_url', 10, 3 );
+	}
 }
 add_action( 'bp_actions', 'thatcamp_mod_user_nav', 1 );
 
