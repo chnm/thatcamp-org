@@ -13,6 +13,8 @@
 
 <div class="profile" role="main">
 
+	<?php get_template_part( 'members/single/content-header' ) ?>
+
 	<?php
 		if ( bp_is_current_action( 'edit' ) )
 			get_template_part( 'members/single/profile/edit');

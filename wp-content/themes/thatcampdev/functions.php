@@ -391,11 +391,16 @@ function thatcamp_mod_user_nav() {
 	global $bp;
 
 	if ( bp_is_active( 'xprofile' ) ) {
-		bp_core_remove_nav_item( 'profile' );
+		$bp->bp_nav['profile']['name'] = 'About';
+		$bp->bp_nav['profile']['position'] = 5;
 	}
 
 	if ( bp_is_active( 'blogs' ) ) {
 		bp_core_remove_nav_item( 'blogs' );
+	}
+
+	if ( bp_is_active( 'messages' ) ) {
+		bp_core_remove_nav_item( 'messages' );
 	}
 
 	if ( bp_is_active( 'settings' ) ) {
@@ -404,11 +409,6 @@ function thatcamp_mod_user_nav() {
 
 	if ( isset( $bp->bp_nav['forums'] ) ) {
 		unset( $bp->bp_nav['forums'] );
-	}
-
-	// Cheating: Change 'Activity' to 'About'
-	if ( isset( $bp->bp_nav[ bp_get_activity_slug() ] ) ) {
-		$bp->bp_nav[ bp_get_activity_slug() ]['name'] = 'About';
 	}
 
 	// Cheating: Put Camps before Friends

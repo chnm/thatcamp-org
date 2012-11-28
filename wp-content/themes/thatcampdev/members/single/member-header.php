@@ -18,7 +18,7 @@
 	<h4>
 		<a href="<?php bp_displayed_user_link(); ?>"><?php bp_displayed_user_fullname(); ?></a>
 	</h4>
-	
+
 </div>
 <?php do_action( 'bp_after_member_header' ); ?>
 

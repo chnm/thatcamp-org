@@ -12,7 +12,7 @@
  * Post navigation function
  *
  * Simple output function to style the post navigation.
- * 
+ *
  *
  * @since thatcamp (1.0)
  */
@@ -53,7 +53,7 @@ function thatcamp_content_nav( $nav_id ) {
  * Comments function
  *
  * Simple output function to style the comments.
- * 
+ *
  *
  * @since thatcamp (1.0)
  */
@@ -116,7 +116,7 @@ endif;
 
 /**
  * Paging function
- * 
+ *
  * @since thatcamp (1.0)
  */
 
@@ -146,5 +146,3 @@ function thatcamp_get_paged() {
 
         return $paged;
 }
-
-?>
