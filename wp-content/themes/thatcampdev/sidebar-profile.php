@@ -5,8 +5,8 @@
  * @package thatcamp
  * @since thatcamp 1.0
  */
-?>	
-<div id="sidebar" role="complementary">	
+?>
+<div id="sidebar" role="complementary">
 	<div id="profile-right" role="complementary">
 		<?php locate_template( array( 'members/single/member-header.php' ), true ); ?>
 		<div id="item-nav">
@@ -20,7 +20,7 @@
 				</ul>
 			</div>
 		</div><!-- #item-nav -->
-		
+
 		<div id="item-header-content">
 			<?php do_action( 'bp_before_member_header_meta' ); ?>
 			<div id="item-meta">
