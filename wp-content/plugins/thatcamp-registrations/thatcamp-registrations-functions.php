@@ -1,5 +1,152 @@
 <?php
 /**
+ * Returns the set of fields defined by the plugin
+ *
+ * @param string $type 'limited' returns only the fields the admin has
+ *   whitelisted. 'all' returns all fields (mainly for Dashboard)
+ */
+function thatcamp_registrations_fields( $type = 'limited' ) {
+	$fields = array(
+		array(
+			'id'          => 'first_name',
+			'name'        => __( 'First Name', 'thatcamp-registrations' ),
+			'required'    => true,
+			'public'      => true,
+		),
+		array(
+			'id'          => 'last_name',
+			'name'        => __( 'Last Name', 'thatcamp-registrations' ),
+			'required'    => true,
+			'public'      => true,
+		),
+		array(
+			'id'          => 'user_email',
+			'name'        => __( 'Email', 'thatcamp-registrations' ),
+			'required'    => true,
+			'public'      => false,
+		),
+		array(
+			'id'          => 'description',
+			'name'        => __( 'Biography', 'thatcamp-registrations' ),
+			'required'    => true,
+			'explanation' => __( 'Tell us a little about yourself: your background with the humanities and/or technology, your research or professional interests, your opinion of Nicholas Carr or Slavoj Žižek, your best score at Galaga, and so forth.', 'thatcamp-registrations' ),
+			'type'        => 'textarea',
+			'public'      => true,
+		),
+		array(
+			'id'          => 'user_url',
+			'name'        => __( 'Website', 'thatcamp-registrations' ),
+			'explanation' => __( 'Example: thatcamp.org', 'thatcamp-registrations' ),
+			'public'      => true,
+		),
+		array(
+			'id'          => 'user_twitter',
+			'name'        => __( 'Twitter Screenname', 'thatcamp-registrations' ),
+			'explanation' => __( 'Example: @thatcamp', 'thatcamp-registrations' ),
+			'public'      => true,
+		),
+		array(
+			'id'          => 'user_title',
+			'name'        => __( 'Position/Job Title', 'thatcamp-registrations' ),
+			'explanation' => __( 'Examples: Assistant Professor, Instructional Technologist, Archivist, Software Engineer, Graduate student', 'thatcamp-registrations' ),
+			'public'      => true,
+		),
+		array(
+			'id'          => 'user_organization',
+			'name'        => __( 'Organization', 'thatcamp-registrations' ),
+			'explanation' => __( 'Examples: George Mason University, New York Public Library, Automattic', 'thatcamp-registrations' ),
+			'public'      => true,
+		),
+		array(
+			'id'          => 'discipline',
+			'name'        => __( 'Discipline', 'thatcamp-registrations' ),
+			'explanation' => __( 'e.g., Art History, English, Library Science', 'thatcamp-registrations' ),
+			'public'      => true,
+		),
+		array(
+			'id'          => 'previous_thatcamps',
+			'name'        => __( 'Number of previous THATCamps attended', 'thatcamp-registrations' ),
+			'explanation' => __( 'How many THATCamps have you been to before?', 'thatcamp-registrations' ),
+			'public'      => false,
+			'type'        => 'select',
+			'options'     => array(
+				array(
+					'value' => '',
+					'text'  => __( 'Select an answer', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => '0',
+					'text'  => __( '0', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => '1',
+					'text'  => __( '1', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'More than one',
+					'text'  => __( 'More than one', 'thatcamp-registrations' ),
+				),
+			),
+		),
+		array(
+			'id'          => 'technology_skill_level',
+			'name'        => __( 'Technology Skill Level', 'thatcamp-registrations' ),
+			'explanation' => __( 'I consider my technology skill level to be:', 'thatcamp-registrations' ),
+			'public'      => false,
+			'type'        => 'select',
+			'options'     => array(
+				array(
+					'value' => '',
+					'text'  => __( 'Select an answer', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'beginner',
+					'text'  => __( 'Beginner (interested in learning more)', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'intermediate',
+					'text'  => __( 'Intermediate (can get things up on the web)', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'advanced',
+					'text'  => __( 'Advanced (can code)', 'thatcamp-registrations' ),
+				),
+			),
+		),
+	);
+
+	if ( 'limited' == $type ) {
+		$limited = thatcamp_registrations_selected_fields();
+		foreach ( $fields as $field_key => $field ) {
+			if ( empty( $field['required'] ) && ! in_array( $field['id'], $limited ) ) {
+				unset( $fields[ $field_key ] );
+			}
+		}
+		$fields = array_values( $fields );
+	}
+
+	return $fields;
+}
+
+/**
+ * Pull up the fields that the admin has opted to display on the registration
+ * form
+ *
+ * We have a wrapper function here because the it should default to all fields,
+ * when the admin has not yet saved anything
+ */
+function thatcamp_registrations_selected_fields() {
+	$selected = get_option( 'thatcamp_registrations_selected_fields' );
+
+	if ( empty( $selected ) ) {
+		$fields = thatcamp_registrations_fields( 'all' );
+		$selected = wp_list_pluck( $fields, 'id' );
+	}
+
+	return $selected;
+}
+
+/**
  * Adds a single registration entry. This is a motley function.
  *
  * @param string The status of the registration record.
@@ -82,6 +229,8 @@ function thatcamp_registrations_get_registrations($params = array()) {
     } elseif ( isset($params['status']) && $status = $params['status']) {
         $sql .= " WHERE status = CONVERT( _utf8 '$status' USING latin1 )";
     }
+
+    $sql .= " ORDER BY date ASC ";
 
     // echo $sql; exit;
     $results = $wpdb->get_results($sql, OBJECT);

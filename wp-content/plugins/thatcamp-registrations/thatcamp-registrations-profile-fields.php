@@ -25,16 +25,16 @@ You should have received a copy of the GNU General Public License along with
 this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-add_action( 'show_user_profile', 'thatcamp_profile_fields_form' );
-add_action( 'edit_user_profile', 'thatcamp_profile_fields_form' );
-add_action( 'personal_options_update', 'thatcamp_profile_fields_save' );
-add_action( 'edit_user_profile_update', 'thatcamp_profile_fields_save' );
+add_action( 'show_user_profile', 'thatcamp_registration_profile_fields_form' );
+add_action( 'edit_user_profile', 'thatcamp_registration_profile_fields_form' );
+add_action( 'personal_options_update', 'thatcamp_registration_profile_fields_save' );
+add_action( 'edit_user_profile_update', 'thatcamp_registration_profile_fields_save' );
 
-function thatcamp_profile_fields_form($user)
+function thatcamp_registration_profile_fields_form($user)
 {
 
 /*
-Note that these profile fields have the same data as that collected in the registration form in thatcamp-registrations-public-registration.php, defined in the applicant_info array in thatcamp-registrations-functions.php, and displayed to site administrators in thatcamp-registrations-admin.php. If new data fields are added in any of those files, they should be added in the others.  
+Note that these profile fields have the same data as that collected in the registration form in thatcamp-registrations-public-registration.php, defined in the applicant_info array in thatcamp-registrations-functions.php, and displayed to site administrators in thatcamp-registrations-admin.php. If new data fields are added in any of those files, they should be added in the others.
 */
 
 ?>
@@ -44,7 +44,7 @@ Note that these profile fields have the same data as that collected in the regis
 <table class="form-table">
 
 <!-- Previous THATCamps -->
-  
+
   <tr>
     <th><label for="previous_thatcamps"><?php _e("Previous THATCamps"); ?></label></th>
     <td>
@@ -52,7 +52,7 @@ Note that these profile fields have the same data as that collected in the regis
 <option>Select an answer</option>
         <?php
         $previous_thatcamps = array('0', '1', 'More than one');
-      
+
         foreach ($previous_thatcamps as $previous_thatcamp) {
                 $value = $previous_thatcamp;
                 if (get_the_author_meta( 'previous_thatcamps', $user->ID ) == $value) {
@@ -76,9 +76,9 @@ Note that these profile fields have the same data as that collected in the regis
     <span class="description"><?php _e("Your position or job title, such as Assistant Professor, Instructional Technologist, Archivist, Software Engineer, or graduate student."); ?></span>
     </td>
   </tr>
-  
+
 <!-- Organization -->
-  
+
   <tr>
     <th><label for="user_organization"><?php _e("Organization"); ?></label></th>
     <td>
@@ -96,12 +96,12 @@ Note that these profile fields have the same data as that collected in the regis
     <span class="description"><?php _e("Your twitter screenname, so others can follow all those awesome tweets you're tweeting."); ?></span>
     </td>
     </tr>
- 
+
 </table><br />
 <?php
 }
 
-function thatcamp_profile_fields_save($userId)
+function thatcamp_registration_profile_fields_save($userId)
 {
     if ( current_user_can( 'edit_user', $userId ) ) {
         update_usermeta( $userId, 'previous_thatcamps', $_POST['previous_thatcamps'] );

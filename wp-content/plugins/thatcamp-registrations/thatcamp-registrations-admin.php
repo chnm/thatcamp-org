@@ -332,6 +332,8 @@ class Thatcamp_Registrations_Admin {
 
             update_option('thatcamp_registrations_options', $newOptions);
 
+	    $fields = $_POST['fields'];
+	    update_option( 'thatcamp_registrations_selected_fields', $fields );
         }
 
         $options = thatcamp_registrations_options();
@@ -418,6 +420,23 @@ class Thatcamp_Registrations_Admin {
 
                         </td>
                     </tr>
+
+                    <tr valign="top">
+                        <th scope="row"><?php _e( 'Registration fields', 'thatcamp-registrations' ) ?></th>
+                        <td>
+				<?php $fields = thatcamp_registrations_fields( 'all' ) ?>
+				<?php $selected = thatcamp_registrations_selected_fields() ?>
+				<?php foreach ( $fields as $field ) : ?>
+					<?php
+					$checked  = ! empty( $field['required'] ) || in_array( $field['id'], $selected ) ? ' checked="checked"' : '';
+					$disabled = ! empty( $field['required'] ) ? ' disabled="disabled"' : '';
+					?>
+
+					<input type="checkbox" name="fields[]" value="<?php echo esc_attr( $field['id'] ) ?>"<?php echo $checked ?> <?php echo $disabled ?> /> <?php echo esc_html( $field['name'] ) ?> <?php if ( $disabled ) : ?><em><?php _e( '(required)', 'thatcamp-registrations' ) ?></em><?php endif ?><br />
+				<?php endforeach ?>
+			</td>
+		    </tr>
+
                     <tr valign="top">
                         <th scope="row"></th>
                         <td>

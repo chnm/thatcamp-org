@@ -125,73 +125,60 @@ class Thatcamp_Registrations_Public_Registration {
         }
     }
 
-    function _user_info_form() {
-    ?>
-    <p class="explanation" style="margin: 1em 0 1em 0;">Please note that the following pieces of information may be displayed publicly on this website: <strong>First Name</strong>, <strong>Last Name</strong>, <strong>Biography</strong>, <strong>Website</strong>, <strong>Twitter Screenname</strong>, <strong>Position / Job Title</strong>, <strong>Organization</strong>, and <strong>Discipline</strong>. We will not display your e-mail address or your reasons for coming to THATCamp.
-    <fieldset>
-        <legend>Personal Information</legend>
-        <div>
-            <label for="first_name"><?php _e('First Name'); ?>* (required)</label><br />
-            <input type="text" name="first_name" value="<?php echo $this->current_user->first_name; ?>" class="textfield" />
-        </div>
-        <div>
-            <label for="last_name"><?php _e('Last Name'); ?>* (required)</label><br />
-            <input type="text" name="last_name" value="<?php echo @$this->current_user->last_name; ?>" class="textfield" />
-        </div>
-        <div>
-            <label for="user_email"><?php _e('Email'); ?>* (required)</label><br />
-            <input type="text" name="user_email" value="<?php echo @$this->current_user->user_email; ?>" class="textfield" />
-        </div>
-        <div>
-            <label for="description"><?php _e('Biography'); ?>* (required)</label><br/>
-            <p class="explanation"><?php _e('Tell us a little about yourself: your background with the humanities and/or technology, your research or professional interests, your opinion of Nicholas Carr or Slavoj Žižek, your best score at Galaga, and so forth.', 'thatcamp-registrations'); ?></p>
-            <textarea cols="45" rows="8" name="description"><?php echo @$this->current_user->description; ?></textarea>
-        </div>
-        <div>
-            <label for="user_url"><?php _e('Website'); ?></label><br />
-            <p class="explanation"><?php _e('Example: thatcampdev.info'); ?></p>
-            <input type="text" name="user_url" value="<?php echo @$this->current_user->user_url; ?>" class="textfield" />
-        </div>
-        <div>
-            <label for="user_twitter"><?php _e('Twitter Screenname', 'thatcamp-registrations'); ?></label><br />
-            <p class="explanation"><?php _e('Example: @thatcamp', 'thatcamp-registrations'); ?></p>
-            <input type="text" name="user_twitter" value="<?php echo @$this->current_user->user_twitter; ?>" class="textfield" />
-        </div>
-        <div>
-            <label for="user_title"><?php _e('Position/Job Title', 'thatcamp-registrations'); ?></label><br/>
-            <p class="explanation"><?php _e('Examples: Assistant Professor, Instructional Technologist, Archivist, Software Engineer, Graduate student', 'thatcamp-registrations'); ?></p>
-            <input type="text" name="user_title" value="<?php echo @$this->current_user->user_title; ?>" class="textfield" />
-        </div>
-        <div>
-            <label for="user_organization"><?php _e('Organization', 'thatcamp-registrations'); ?></label><br />
-            <p class="explanation"><?php _e('Examples: George Mason University, New York Public Library, Automattic', 'thatcamp-registrations'); ?></p>
-            <input type="text" name="user_organization" value="<?php echo @$this->current_user->user_organization; ?>" class="textfield" />
-        </div>
-        <div>
-            <label for="discipline"><?php _e( 'Discipline', 'thatcamp-registrations' ); ?></label><br/>
-            <p class="explanation"><?php _e('e.g., Art History, English, Library Science', 'thatcamp-registrations'); ?></p>
-            <input id="discipline" name="discipline"><?php echo @$this->current_user->discipline; ?></textarea>
-        </div>
-        <div>
-            <label for="previous_thatcamps"><?php _e('Number of previous THATCamps attended'); ?></label><br />
-            <p class="explanation"><?php _e('How many THATCamps have you been to before?', 'thatcamp-registrations'); ?></p>
-	<select name="previous_thatcamps" value="<?php echo @$this->current_user->previous_thatcamps; ?>">
-	<option>Select an answer</option>
-	<option value="0">0</option>
-	<option value="1">1</option>
-	<option value="More than one">More than one</option>
-	</select>
-        </div>
-        <div>
-            <label for="technology_skill_level"><?php _e( 'Technology Skill Level', 'thatcamp-registrations' ); ?></label><br/>
-            <p class="explanation"><?php _e('I consider my technology skill level to be:', 'thatcamp-registrations'); ?></p>
-	    <select id="technology_skill_level" name="technology_skill_level" value="<?php echo @$this->current_user->technology_skill_level; ?>">
-	    	<option>Select an answer</option>
-		<option value="beginner" <?php selected( $current_tech_level, 'beginner' ) ?>><?php _e( 'Beginner (interested in learning more)', 'thatcamp-registrations' ) ?></option>
-		<option value="intermediate" <?php selected( $current_tech_level, 'intermediate' ) ?>><?php _e( 'Intermediate (can get things up on the web)', 'thatcamp-registrations' ) ?></option>
-		<option value="advanced" <?php selected( $current_tech_level, 'advanced' ) ?>><?php _e( 'Advanced (can code)', 'thatcamp-registrations' ) ?></option>
-	    </select><br />
-        </div>
+	function _user_info_form() {
+		$fields = thatcamp_registrations_fields();
+
+		$public_fields = array();
+		foreach ( $fields as $field ) {
+			if ( ! empty( $field['public'] ) ) {
+				$public_fields[] = '<strong>' . $field['name'] . '</strong>';
+			}
+		}
+		$public_fields = implode( ', ', $public_fields );
+
+		?>
+
+		<fieldset>
+			<legend><?php _e( 'Personal Information', 'thatcamp-registrations' ) ?></legend>
+
+			<p class="explanation" style="margin: 1em 0 1em 0;"><?php printf( __( 'Please note that the following pieces of information may be displayed publicly on this website: %s. We will not display your e-mail address or your reasons for coming to THATCamp.', 'thatcamp-registrations' ), $public_fields ) ?></p>
+
+			<?php foreach ( $fields as $field ) : ?>
+
+				<?php $required = ! empty( $field['required'] ) ?>
+				<?php $type = ! empty( $field['type'] ) ? $field['type'] : 'text' ?>
+
+				<div>
+					<?php /* LABEL */ ?>
+					<label for="<?php echo esc_attr( $field['id'] ) ?>"><?php echo esc_html( $field['name'] ) ?><?php if ( $required ) : ?>* (required)<?php endif ?></label><br />
+
+					<?php /* EXPLANATION */ ?>
+					<?php if ( ! empty( $field['explanation'] ) ) : ?>
+						<p class="explanation"><?php echo esc_html( $field['explanation'] ) ?></p>
+					<?php endif ?>
+
+					<?php /* INPUT */ ?>
+					<?php if ( 'text' == $type ) : ?>
+
+						<input type="text" name="<?php echo esc_attr( $field['id'] ) ?>" id="<?php echo esc_attr( $field['id'] ) ?>" class="textfield" />
+
+					<?php elseif ( 'textarea' == $type ) : ?>
+
+						<textarea cols="45" rows="8" name="<?php echo esc_attr( $field['id'] ) ?>" id="<?php echo esc_attr( $field['id'] ) ?>"></textarea>
+
+					<?php elseif ( 'select' == $type ) : ?>
+
+						<select name="<?php echo esc_attr( $field['id'] ) ?>" id="<?php echo esc_attr( $field['id'] ) ?>">
+							<?php foreach ( $field['options'] as $option ) : ?>
+								<option value="<?php echo esc_attr( $option['value'] ) ?>"><?php echo esc_attr( $option['text'] ) ?></option>
+							<?php endforeach ?>
+						</select>
+
+					<?php endif ?>
+				</div>
+
+			<?php endforeach ?>
+		</fieldset>
 
 <p>&nbsp;</p>
 

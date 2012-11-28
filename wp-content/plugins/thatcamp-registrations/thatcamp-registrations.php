@@ -33,13 +33,12 @@ class Thatcamp_Registrations_Loader {
 	* The main loader. The heavyweight. Hooks our stuff into WP
 	*/
 	function thatcamp_registrations_loader() {
-
 		add_action( 'init', array ( $this, 'init' ) );
 		add_action( 'plugins_loaded', array ( $this, 'loaded' ) );
-		add_action( 'wpmu_new_blog', array ( $this, 'new_blog' ) ); 		
+		add_action( 'wpmu_new_blog', array ( $this, 'new_blog' ) );
 		add_action( 'thatcamp_registrations_loaded', array ( $this, 'includes' ) );
 		add_action( 'thatcamp_registrations_init', array ( $this, 'textdomain' ) );
-		
+
 		register_activation_hook( __FILE__, array( $this, 'activation' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 	}
@@ -48,20 +47,21 @@ class Thatcamp_Registrations_Loader {
 	function init() {
 		do_action( 'thatcamp_registrations_init' );
 	}
-	
+
 	// Let plugins know that we're done loading
 	function loaded() {
 		do_action( 'thatcamp_registrations_loaded' );
 	}
 
 	function includes() {
+	    require( dirname( __FILE__ ) . '/thatcamp-registrations-profile-fields.php' );
 	    require( dirname( __FILE__ ) . '/thatcamp-registrations-functions.php' );
 	    require( dirname( __FILE__ ) . '/thatcamp-registrations-public-registration.php' );
 		if ( is_admin() ) {
 			require( dirname( __FILE__ ) . '/thatcamp-registrations-admin.php' );
         }
 	}
-	
+
 	// Allow this plugin to be translated by specifying text domain
 	// Todo: Make the logic a bit more complex to allow for custom text within a given language
 	function textdomain() {
@@ -71,13 +71,13 @@ class Thatcamp_Registrations_Loader {
 		$mofile_custom = WP_CONTENT_DIR . "/thatcamp-registrations-files/languages/thatcamp-registration-$locale.mo";
 		$mofile_packaged = WP_PLUGIN_DIR . "/thatcamp-registrations/languages/thatcamp-registration-$locale.mo";
 
-    	if ( file_exists( $mofile_custom ) ) {
-      		load_textdomain( 'thatcamp-registrations', $mofile_custom );
-      		return;
-      	} else if ( file_exists( $mofile_packaged ) ) {
-      		load_textdomain( 'thatcamp-registrations', $mofile_packaged );
-      		return;
-      	}
+		if ( file_exists( $mofile_custom ) ) {
+			load_textdomain( 'thatcamp-registrations', $mofile_custom );
+			return;
+		} else if ( file_exists( $mofile_packaged ) ) {
+			load_textdomain( 'thatcamp-registrations', $mofile_packaged );
+			return;
+		}
 	}
 
     function activation() {
@@ -94,13 +94,13 @@ class Thatcamp_Registrations_Loader {
     			}
     			switch_to_blog($old_blog);
     			return;
-    		}	
-    	} 
+    		}
+    	}
     	$this->_create_table();
         // First-Run-Only parameters: Check if schedule table exists:
 
     }
-    
+
     function _create_table() {
     	global $wpdb;
         $table_name = $wpdb->prefix . 'thatcamp_registrations';
@@ -121,10 +121,10 @@ class Thatcamp_Registrations_Loader {
         		) {$charset_collate};";
 
         	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        	dbDelta($sql);        
+        	dbDelta($sql);
         }
     }
-    
+
     function new_blog($newBlogId) {
     	global $wpdb;
     	if (is_plugin_active_for_network('thatcamp-registrations/thatcamp-registrations.php')) {
@@ -134,7 +134,7 @@ class Thatcamp_Registrations_Loader {
     		switch_to_blog($oldBlogId);
     	}
     }
-    
+
     function deactivation() {}
 }
 
