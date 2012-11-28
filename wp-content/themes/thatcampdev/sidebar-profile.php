@@ -33,10 +33,10 @@
 			</div>
 		</div>
 
-		
+
 	<div id="subnav" class="item-list-tabs no-ajax" role="navigation">
 			<ul>
-		<?php if ( bp_is_user_activity()): ?>
+		<?php if ( bp_is_user_activity() && ! thatcamp_activity_type() ): ?>
 		<li id="activity-filter-select" class="last">
 			<label for="activity-filter-by"><?php _e( 'Show:', 'thatcamp' ); ?></label>
 			<select id="activity-filter-by">
