@@ -15,8 +15,8 @@
 
 <?php
 
-if ( is_user_logged_in() && bp_is_my_profile() && ( !bp_current_action() || bp_is_current_action( 'just-me' ) ) )
-get_template_part( 'activity/post', 'form');
+if ( is_user_logged_in() && bp_is_my_profile() && ( !bp_current_action() || bp_is_current_action( 'just-me' ) ) && ! thatcamp_activity_type() )
+	get_template_part( 'activity/post', 'form');
 
 do_action( 'bp_after_member_activity_post_form' );
 do_action( 'bp_before_member_activity_content' ); ?>

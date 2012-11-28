@@ -322,7 +322,45 @@ function thatcamp_search_querystring( $qs ) {
 
 	return $qs;
 }
-add_action( 'bp_ajax_querystring', 'thatcamp_search_querystring', 999 );
+add_filter( 'bp_ajax_querystring', 'thatcamp_search_querystring', 999 );
+
+/**
+ * Filter the ajax_querystring on member activity pages
+ *
+ * This allows the custom nav items to work
+ */
+function thatcamp_activity_querystring( $qs ) {
+	if ( bp_is_user() && bp_is_activity_component() ) {
+
+		$filter = '';
+		switch ( thatcamp_activity_type() ) {
+			case 'blog_posts' :
+				$filter = 'action=new_blog_post&type=new_blog_post';
+				break;
+
+			case 'blog_comments' :
+				$filter = 'action=new_blog_comment&type=new_blog_comment';
+				break;
+
+			case 'forums' :
+				$filter = 'action=new_forum_post,new_forum_reply&type=new_forum_post,new_forum_reply';
+				break;
+
+			case 'favorites' :
+				$filter = 'scope=favorites';
+				break;
+		}
+
+		if ( ! empty( $qs ) ) {
+			$qs .= '&';
+		}
+
+		$qs .= $filter;
+	}
+
+	return $qs;
+}
+add_filter( 'bp_ajax_querystring', 'thatcamp_activity_querystring', 999 );
 
 // Gets the blog ID
 function thatcamp_proceedings_blog_id() {
@@ -371,9 +409,47 @@ function thatcamp_mod_user_nav() {
 		bp_core_remove_nav_item( 'settings' );
 	}
 
-	if ( isset( $bp->bp_nav['forums'] ) ) {
-		unset( $bp->bp_nav['forums'] );
-	}
+	$activity_base = trailingslashit( bp_displayed_user_domain() . bp_get_activity_slug() );
+
+	$bp->bp_nav['blogs'] = array(
+		'name'                    => 'Blog Posts',
+		'slug'                    => 'blogs',
+		'link'                    => add_query_arg( 'a_type', 'blog_posts', $activity_base ),
+		'css_id'                  => 'blogs',
+		'show_for_displayed_user' => true,
+		'position'                => 70,
+		'screen_function'         => 'bp_activity_screen_my_activity',
+	);
+
+	$bp->bp_nav['comments'] = array(
+		'name'                    => 'Blog Comments',
+		'slug'                    => 'comments',
+		'link'                    => add_query_arg( 'a_type', 'blog_comments', $activity_base ),
+		'css_id'                  => 'comments',
+		'show_for_displayed_user' => true,
+		'position'                => 73,
+		'screen_function'         => 'bp_activity_screen_my_activity',
+	);
+
+	$bp->bp_nav['forums'] = array(
+		'name'                    => 'Forums',
+		'slug'                    => 'forums',
+		'link'                    => add_query_arg( 'a_type', 'forums', $activity_base ),
+		'css_id'                  => 'forums',
+		'show_for_displayed_user' => true,
+		'position'                => 90,
+		'screen_function'         => 'bp_activity_screen_my_activity',
+	);
+
+	$bp->bp_nav['favorites'] = array(
+		'name'                    => 'Favorites',
+		'slug'                    => 'favorites',
+		'link'                    => add_query_arg( 'a_type', 'favorites', $activity_base ),
+		'css_id'                  => 'favorites',
+		'show_for_displayed_user' => false,
+		'position'                => 100,
+		'screen_function'         => 'bp_activity_screen_my_activity',
+	);
 
 	// Cheating: Put Camps before Friends
 	if ( isset( $bp->bp_nav[ bp_get_groups_slug() ] ) ) {
@@ -381,6 +457,13 @@ function thatcamp_mod_user_nav() {
 	}
 }
 add_action( 'bp_actions', 'thatcamp_mod_user_nav', 1 );
+
+/**
+ * Get the a_type out of the $_GET
+ */
+function thatcamp_activity_type() {
+	return isset( $_GET['a_type'] ) ? $_GET['a_type'] : '';
+}
 
 /**
  * Wrapper function to grab user data set by the TCRegistrations plugin
