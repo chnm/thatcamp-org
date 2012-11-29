@@ -405,11 +405,17 @@ function thatcamp_mod_user_nav() {
 		bp_core_remove_nav_item( 'messages' );
 	}
 
-	if ( bp_is_active( 'settings' ) ) {
+	if ( bp_is_active( 'settings' ) && is_user_logged_in() ) {
 		bp_core_remove_nav_item( 'settings' );
 	}
 
-	$activity_base = trailingslashit( bp_displayed_user_domain() . bp_get_activity_slug() );
+        // There's a baffling bug in BuddyPress that makes this necessary
+        // I blame the Buddybar
+        if ( is_user_logged_in() ) {
+                $activity_base = trailingslashit( bp_displayed_user_domain() . bp_get_activity_slug() );
+        } else {
+                $activity_base = bp_get_activity_slug() . '/';
+        }
 
 	$bp->bp_nav['blogs'] = array(
 		'name'                    => 'Blog Posts',
