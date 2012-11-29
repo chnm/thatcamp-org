@@ -3127,8 +3127,20 @@ li#activity-personal-li:hover {
 li#xprofile-personal-li:hover {
   background: url('assets/images/icon-twohover.png') no-repeat;
 }
-li#blogs-personal-li:hover {
-  background: url('assets/images/icon-threehover.png') no-repeat;
+li#xprofile-personal-li:hover {
+  background: url('assets/images/icon-twohover.png') no-repeat;
+}
+li#comments-personal-li {
+  background: url('assets/images/icon-ten.png') no-repeat;
+}
+li#favorites-personal-li:hover {
+  background: url('assets/images/icon-elevenhover.png') no-repeat;
+}
+li#favorites-personal-li {
+  background: url('assets/images/icon-eleven.png') no-repeat;
+}
+li#comments-personal-li:hover {
+  background: url('assets/images/icon-tenhover.png') no-repeat;
 }
 li#friends-personal-li:hover {
   background: url('assets/images/icon-fourhover.png') no-repeat;
