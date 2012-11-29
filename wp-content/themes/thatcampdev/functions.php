@@ -343,7 +343,7 @@ function thatcamp_activity_querystring( $qs ) {
 				break;
 
 			case 'forums' :
-				$filter = 'action=new_forum_post,new_forum_reply&type=new_forum_post,new_forum_reply';
+				$filter = 'action=bbp_topic_create,bbp_reply_create&type=bbp_topic_create,bbp_reply_create';
 				break;
 
 			case 'favorites' :
