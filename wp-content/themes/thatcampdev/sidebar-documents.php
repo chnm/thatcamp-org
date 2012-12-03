@@ -30,16 +30,6 @@
 			<?php if ( is_active_sidebar( 'sidebar-documents' ) ) : ?>
 			<?php dynamic_sidebar( 'sidebar-documents' ); ?>
 			<?php endif; ?>
-	
-			<div id="twitterwidget-wrapper">
-				<?php if ( is_active_sidebar( 'sidebar-twitter' ) ) : ?>
-					<?php dynamic_sidebar( 'sidebar-twitter' ); ?>
-				<?php endif; ?>
-				<a href="https://twitter.com/thatcamp" class="button socialbutton">
-					<span class="button-inner"><?php _e( 'Follow Us', 'thatcamp' ); ?></span>
-				</a>
-			</div>
-	
 			
 			
 		</nav>
