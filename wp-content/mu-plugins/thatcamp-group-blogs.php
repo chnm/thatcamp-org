@@ -11,6 +11,15 @@
  */
 
 /**
+ * Ensure that bbPress forum topics are posted to activity
+ *
+ * bbPress checks to see whether the current site is public before posting an
+ * item to the activity stream. Not sure why. In any case, we need to work
+ * around this.
+ */
+add_action( 'bbp_is_site_public', '__return_true', 9999 );
+
+/**
  * Prevent regular 404s from getting the Site Not Found redirect
  *
  * WordPress lumps together blog-not-found redirects with regular page-not-
