@@ -584,7 +584,7 @@ h4,
 h5,
 h6 {
   margin: 0;
-  font-weight: 700;
+  font-weight: 200;
   color: inherit;
   text-rendering: optimizelegibility;
   font-family: 'Francois One', sans-serif;
@@ -1232,7 +1232,8 @@ nav#top-nav li a {
   background-clip: padding-box;
   color: #333;
 }
-nav#top-nav li a:hover {
+nav#top-nav li a:hover,
+nav#top-nav li.current_page_item a {
   background: url('assets/images/nav-on.jpg');
   color: #fff;
   border-right: 3px solid #111;
