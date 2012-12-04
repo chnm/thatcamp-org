@@ -42,40 +42,20 @@ class THATCamp_Network_Posts extends WP_Widget {
 
 		$cat_args = array('orderby' => 'name', 'show_count' => $c, 'hierarchical' => $h);
 
-		if ( $d ) {
-			$cat_args['show_option_none'] = __('Select Category');
-			wp_dropdown_categories(apply_filters('widget_categories_dropdown_args', $cat_args));
-?>
+		echo '<ul>';
 
-<script type='text/javascript'>
-/* <![CDATA[ */
-	var dropdown = document.getElementById("cat");
-	function onCatChange() {
-		if ( dropdown.options[dropdown.selectedIndex].value > 0 ) {
-			location.href = "<?php echo home_url(); ?>/?cat="+dropdown.options[dropdown.selectedIndex].value;
-		}
-	}
-	dropdown.onchange = onCatChange;
-/* ]]> */
-</script>
-
-<?php
-		} else {
-?>
-		<ul>
-<?php
 		$cat_args['title_li'] = '';
 
 		// We need to filter the category links, but only right here
 		add_filter( 'term_link', array( $this, 'filter_term_link' ), 10, 3 );
+		add_filter( 'get_terms', array( $this, 'filter_get_terms' ), 10, 3 );
 
 		wp_list_categories(apply_filters('widget_categories_args', $cat_args));
 
 		remove_filter( 'term_link', array( $this, 'filter_term_link' ), 10, 3 );
-?>
-		</ul>
-<?php
-		}
+		remove_filter( 'get_terms', array( $this, 'filter_get_terms' ), 10, 3 );
+
+		echo '</ul>';
 
 		echo $after_widget;
 
@@ -89,6 +69,54 @@ class THATCamp_Network_Posts extends WP_Widget {
 		$term_link .= 'stream/';
 		$term_link  = add_query_arg( 'category', $term->slug, $term_link );
 		return $term_link;
+	}
+
+	/**
+	 * Filter against the cat whitelist
+	 */
+	function filter_get_terms( $terms, $taxonomies, $args ) {
+		$cat_whitelist = array(
+			'Archives',
+			'Blogging',
+			'Coding',
+			'Collaboration',
+			'Copyright',
+			'Crowdsourcing',
+			'Data Mining',
+			'Digital Literacy',
+			'Funding',
+			'Games',
+			'General',
+			'Jobs',
+			'Libraries',
+			'Licensing',
+			'Linked Data',
+			'Mapping',
+			'Metadata',
+			'Mobile',
+			'Museums',
+			'Open Access',
+			'Project Management',
+			'Publishing',
+			'Research Methods',
+			'Scholarly Editions',
+			'Search',
+			'Session Proposals',
+			'Social Media',
+			'Teaching',
+			'Tenure and Promotion',
+			'Text Mining',
+			'Visualization',
+			'Workshops',
+		);
+
+		foreach ( $terms as $tkey => $t ) {
+			if ( ! in_array( $t->name, $cat_whitelist ) ) {
+				unset( $terms[ $tkey ] );
+			}
+		}
+
+		return array_values( $terms );
 	}
 }
 register_widget( 'THATCamp_Network_Posts' );
