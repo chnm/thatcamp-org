@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The Create Notepad widget
+ * The THATCamp Network Posts widget
  */
 class THATCamp_Network_Posts extends WP_Widget {
 	public function __construct() {
@@ -80,7 +80,6 @@ class THATCamp_Network_Posts extends WP_Widget {
 		echo $after_widget;
 
 		restore_current_blog();
-		echo 'foo';
 	}
 
 	function filter_term_link( $term_link, $term, $taxonomy ) {
@@ -93,3 +92,57 @@ class THATCamp_Network_Posts extends WP_Widget {
 	}
 }
 register_widget( 'THATCamp_Network_Posts' );
+
+/**
+ * The THATCamp Network Posts widget
+ */
+class THATCamp_Network_Search extends WP_Widget {
+	public function __construct() {
+		parent::__construct(
+			'thatcamp_network_search',
+			'THATCamp Network Search',
+			array(
+				'description' => 'Search the entire THATCamp network.',
+			)
+		);
+	}
+
+	/**
+	 * Don't think we need any options
+	 */
+	public function form() {}
+	public function update() {}
+
+	public function widget( $args, $instance ) {
+		$potc_url = $this->proceedings_link();
+
+		extract( $args );
+
+		switch_to_blog( $tags_blog_id );
+
+		$title = 'Search';
+		$value = ! empty( $_GET['tcs'] ) ? urldecode( $_GET['tcs'] ) : '';
+
+		echo $before_widget;
+		if ( $title )
+			echo $before_title . $title . $after_title;
+
+		?>
+
+		<form method="get" action="<?php echo $potc_url . 'stream/' ?>">
+			<input id="thatcamp_network_search" name="tcs" value="<?php echo esc_attr( $value ) ?>" />
+		</form>
+
+		<?php
+		echo $after_widget;
+
+	}
+
+	function proceedings_link() {
+                global $wpdb;
+                $proceedings_blog_id = $wpdb->get_var( "SELECT blog_id FROM $wpdb->blogs WHERE domain LIKE 'proceedings%'" );
+		$term_link  = trailingslashit( get_blog_option( $proceedings_blog_id, 'home' ) );
+		return $term_link;
+	}
+}
+register_widget( 'THATCamp_Network_Search' );

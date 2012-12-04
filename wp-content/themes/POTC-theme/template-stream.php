@@ -31,10 +31,15 @@
                                 }
                         }
 
-			if ( isset( $_GET['per_page'] ) )
+			if ( isset( $_GET['per_page'] ) ) {
 				$stream_args['posts_per_page'] = intval( $_GET['per_page'] );
+			}
 
                         $stream_args['paged'] = thatcamp_get_paged();
+
+			if ( isset( $_GET['tcs'] ) ) {
+				$stream_args['s'] = urldecode( $_GET['tcs'] );
+			}
 		?>
 
                 <h1>THATCamp Stream<?php if ( $category_name ) : ?>: <?php echo esc_html( $category_name ) ?><?php endif ?></h1>
@@ -72,9 +77,11 @@
 						<?php endif ?>
 						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="readmore postlink">Read more...</a>
 					</div>
-				</article><?php
-			endwhile;
-		      endif; ?>
+				</article>
+			<?php endwhile; ?>
+		<?php else : ?>
+			<p>No posts were found.</p>
+		<?php endif; ?>
 
 		<?php restore_current_blog() ?>
 
