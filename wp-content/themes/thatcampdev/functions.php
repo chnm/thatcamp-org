@@ -378,13 +378,48 @@ function thatcamp_filter_title( $full_title, $title, $sep, $sep_location ) {
 		return 'People Directory | THATCamp';
 	} else if ( bp_is_activity_component() && bp_is_directory() ) {
 		return 'THATCamp Activity | THATCamp';
-	} else {
-		$new_title = $title;
-	}
+	} else if ( bp_displayed_user_id() ) {
 
-	return $new_title . ' ' . $sep . ' ';
+		if ( bp_is_user_profile() ) {
+			return str_replace( 'Extended Profiles', 'Profile', $title );
+		} else if ( bp_is_user_activity() ) {
+			$atype = thatcamp_activity_type();
+
+			switch ( $atype ) {
+				case 'blog_posts' :
+					$tag = 'Blog Posts';
+					break;
+				case 'blog_comments' :
+					$tag = 'Blog Comments';
+					break;
+				case 'forums' :
+					$tag = 'Forums';
+					break;
+
+				default :
+					return str_replace( ' Streams', '', $title );
+					break;
+			}
+
+			return str_replace( ' Streams', '', $full_title ) . ' ' . $tag;
+		} else {
+			return $title;
+		}
+	} else {
+		return $full_title;
+	}
 }
 add_filter( 'bp_modify_page_title', 'thatcamp_filter_title', 10, 4 );
+
+/**
+ * Don't let bbPress filter user profile titles
+ */
+function thatcamp_prevent_bbpress_title_filter() {
+	if ( bp_displayed_user_id() ) {
+		remove_filter( 'wp_title', 'bbp_title', 10, 3 );
+	}
+}
+add_action( 'bp_actions', 'thatcamp_prevent_bbpress_title_filter' );
 
 /**
  * Modify the user nav before it gets rendered, so we remove redundant items
