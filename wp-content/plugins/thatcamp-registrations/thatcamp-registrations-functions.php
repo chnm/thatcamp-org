@@ -138,7 +138,7 @@ function thatcamp_registrations_fields( $type = 'limited' ) {
 function thatcamp_registrations_selected_fields() {
 	$selected = get_option( 'thatcamp_registrations_selected_fields' );
 
-	if ( empty( $selected ) ) {
+	if ( '' == $selected ) {
 		$fields = thatcamp_registrations_fields( 'all' );
 		$selected = wp_list_pluck( $fields, 'id' );
 	}

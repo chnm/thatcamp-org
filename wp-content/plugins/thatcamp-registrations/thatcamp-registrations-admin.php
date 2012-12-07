@@ -261,9 +261,9 @@ class Thatcamp_Registrations_Admin {
 				<input type="submit" value="Apply" class="button-secondary action" id="doaction" name="">
 			</div>
 
-<!--			<div class="alignright actions">
+			<div class="alignright actions">
 				<a class="button-secondary action" href="<?php echo add_query_arg( 'trc_csv', '1' ) ?>"><?php _e( 'Export to CSV' ) ?></a>
-			</div>-->
+			</div>
 		</div>
 
                 <table class="widefat fixed" cellspacing="0">
@@ -332,7 +332,7 @@ class Thatcamp_Registrations_Admin {
 
             update_option('thatcamp_registrations_options', $newOptions);
 
-	    $fields = $_POST['fields'];
+	    $fields = isset( $_POST['fields'] ) ? $_POST['fields'] : array();
 	    update_option( 'thatcamp_registrations_selected_fields', $fields );
         }
 
@@ -401,21 +401,21 @@ class Thatcamp_Registrations_Admin {
                     <tr valign="top">
                         <th scope="row"><label for="pending_application_email"><?php _e('Pending registration email', 'thatcamp-registrations'); ?></label></th>
                         <td>
-                            <textarea name="pending_application_email" id="pending_application_email" rows="5" cols="50"><?php if( !empty($options['pending_application_email']) ) echo $options['pending_application_email']; ?></textarea>
+                            <textarea name="pending_application_email" id="pending_application_email" rows="5" cols="50"><?php if( !empty($options['pending_application_email']) ) echo stripslashes( $options['pending_application_email'] ); ?></textarea>
                             <p class="description"><?php _e('This e-mail will be sent by the system from an automated account; you may therefore wish to include your own name and e-mail address in the message itself so that users may contact you. The e-mail will be composed in HTML format, so links and e-mail addresses will automatically be hyperlinked, and no additional HTML codes are necessary. If no text is entered, no e-mail will be sent.'); ?></p>
                         </td>
                     </tr>
                     <tr valign="top">
                         <th scope="row"><label for="approved_application_email"><?php _e('Approved registration email', 'thatcamp-registrations'); ?></label></th>
                         <td>
-                            <textarea name="approved_application_email" id="approved_application_email" rows="5" cols="50"><?php if( !empty($options['approved_application_email']) ) echo $options['approved_application_email']; ?></textarea>
+                            <textarea name="approved_application_email" id="approved_application_email" rows="5" cols="50"><?php if( !empty($options['approved_application_email']) ) echo stripslashes( $options['approved_application_email'] ); ?></textarea>
                              <p class="description"><?php _e('This e-mail will be sent by the system from an automated account; you may therefore wish to include your own name and e-mail address in the message itself so that users may contact you. The e-mail will be composed in HTML format, so links and e-mail addresses will automatically be hyperlinked, and no additional HTML codes are necessary. If no text is entered, no e-mail will be sent.'); ?></p>
                         </td>
                     </tr>
                     <tr valign="top">
                         <th scope="row"><label for="rejected_application_email"><?php _e('Rejected registration email', 'thatcamp-registrations'); ?></label></th>
                         <td>
-                            <textarea name="rejected_application_email" id="rejected_application_email" rows="5" cols="50"><?php if( !empty($options['rejected_application_email']) ) echo $options['rejected_application_email']; ?></textarea>
+                            <textarea name="rejected_application_email" id="rejected_application_email" rows="5" cols="50"><?php if( !empty($options['rejected_application_email']) ) echo stripslashes( $options['rejected_application_email'] ); ?></textarea>
                             <p class="description"><?php _e('This e-mail will be sent by the system from an automated account; you may therefore wish to include your own name and e-mail address in the message itself so that users may contact you. The e-mail will be composed in HTML format, so links and e-mail addresses will automatically be hyperlinked, and no additional HTML codes are necessary. If no text is entered, no e-mail will be sent.'); ?></p>
 
                         </td>

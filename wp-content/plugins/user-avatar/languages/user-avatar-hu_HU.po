@@ -1,0 +1,83 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: User Avatar 1.3.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-23 10:13+0100\n"
+"PO-Revision-Date: 2012-07-14 10:27+0100\n"
+"Last-Translator: Feriman <feriman@postafiok.hu>\n"
+"Language-Team: INTERNOZEROUNO <info@interno01.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;gettext;gettext_noop;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Language: Hungarian\n"
+"X-Poedit-Country: HUNGARY\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../user-avatar.php:157
+msgid "Uploads"
+msgstr "Feltöltések"
+
+#: ../user-avatar.php:157
+msgid "WordPress"
+msgstr "WordPress ( Fordította: Ingyenblog.hu )"
+
+#: ../user-avatar.php:190
+msgid "You are not allowed to do that."
+msgstr "Nem vagy jogosult erre."
+
+#: ../user-avatar.php:213
+msgid "Choose an image from your computer:"
+msgstr "Válassz ki egy képet a számítógépedről:"
+
+#: ../user-avatar.php:236
+msgid "Please upload an image file (.jpeg, .gif, .png)."
+msgstr "Kérjük, tölts fel egy fájlt (.jpeg, .gif, .png)."
+
+#: ../user-avatar.php:278
+msgid "Choose the part of the image you want to use as your profile image."
+msgstr "Válaszd ki a kép azon részét, amelyet hazsnálni szeretnél."
+
+#: ../user-avatar.php:390
+msgid "Sorry, No file available"
+msgstr "Bocs, a fájl nem elérhető"
+
+#: ../user-avatar.php:414
+msgid "Image could not be processed.  Please go back and try again."
+msgstr "A képet nem sikerült feldolgozni. Kérjük, próbáld meg később."
+
+#: ../user-avatar.php:414
+msgid "Image Processing Error"
+msgstr "Kép feldolgozási hiba"
+
+#: ../user-avatar.php:421
+msgid "Here's your new profile picture..."
+msgstr "Itt az új profilképed..."
+
+#: ../user-avatar.php:427
+msgid "Close"
+msgstr "Bezár"
+
+#: ../user-avatar.php:710
+msgid "Picture"
+msgstr "Kép"
+
+#: ../user-avatar.php:712
+msgid "Upload and Crop an Image to be Displayed"
+msgstr "Kép feltöltése és kiválasztása a megjelenítéshez"
+
+#: ../user-avatar.php:712
+msgid "Update Picture"
+msgstr "Kép feltöltése"
+
+#: ../user-avatar.php:724
+msgid "Remove User Avatar Image"
+msgstr "Avatar kép eltávolítása"
+
+#: ../user-avatar.php:724
+#: ../user-avatar.php:735
+msgid "Remove"
+msgstr "Eltávolítás"
+
