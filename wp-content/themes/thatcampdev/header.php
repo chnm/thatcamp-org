@@ -54,6 +54,8 @@
 
 				<?php endif; ?>
 			</div>
+			<div class="signup"><a href="<?php echo site_url(); ?>/accounts"><?php _e( 'How do I get an account?', 'thatcamp' ); ?></a></div>
+		
 			<div id="search-bar">
 					<form action="<?php echo bp_search_form_action(); ?>" method="post" id="search-form">
 						<input type="text" id="search-terms" name="search-terms" placeholder="Looking for..." value="<?php echo isset( $_REQUEST['s'] ) ? esc_attr( $_REQUEST['s'] ) : ''; ?>" />

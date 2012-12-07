@@ -68,9 +68,6 @@ function thatcamp_build() {
 	// Add RSS feed links
 	add_theme_support('automatic-feed-links');
 
-	// If having editor style add this
-	add_editor_style();
-
 	// Enable support for post thumbnails
 	add_theme_support('post-thumbnails');
 
