@@ -3085,6 +3085,7 @@ div.item-list-tabs ul li.feed a {
   float: left;
   list-style: none;
   margin-right: 2%;
+  min-height: 250px;
 }
 #item-header-avatar {
   margin: 20px;
@@ -3540,7 +3541,7 @@ ie9 #user-section {
   }
   #search-bar {
     float: right;
-    width: 40%;
+    width: 60%;
   }
   #user-section {
     float: left;
@@ -3561,10 +3562,6 @@ ie9 #user-section {
     margin: 10px 0 0 0;
     display: block;
     overflow: hidden;
-  }
-  .signup {
-    float: left;
-    width: 20%;
   }
 }
 @media only screen and (min-width: 1382px) {
@@ -3619,7 +3616,7 @@ ie9 #user-section {
   }
   #search-bar {
     float: right;
-    width: 40%;
+    width: 60%;
   }
   #user-section {
     float: left;
@@ -3640,10 +3637,6 @@ ie9 #user-section {
     margin: 10px 0 0 0;
     display: block;
     overflow: hidden;
-  }
-  .signup {
-    float: left;
-    width: 20%;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
