@@ -16,7 +16,7 @@ global $graphene_settings;
     <?php 	/* Widgetized sidebar, if supported. */
     if ( ! is_front_page() && is_active_sidebar( 'sidebar-widget-area' ) ) { // Not home, display normal sidebar if active
 		dynamic_sidebar('sidebar-widget-area');
-	} elseif ( is_front_page() && !$graphene_settings['alt_home_sidebar'] && is_active_sidebar( 'sidebar-widget-area' ) ) { // Home, but alternate sidebar disabled, display normal sidebar if active
+	} elseif ( is_front_page() && ! $graphene_settings['alt_home_sidebar'] && is_active_sidebar( 'sidebar-widget-area' ) ) { // Home, but alternate sidebar disabled, display normal sidebar if active
 		dynamic_sidebar('sidebar-widget-area');
 	} elseif ( is_front_page() && $graphene_settings['alt_home_sidebar'] && is_active_sidebar( 'home-sidebar-widget-area' ) ) { // Home, alternate sidebar enabled, display alternate sidebar if active
 		dynamic_sidebar( 'home-sidebar-widget-area' );

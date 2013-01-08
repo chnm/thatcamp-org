@@ -8,9 +8,9 @@ function graphene_register_styles(){
 	if ( ! is_admin() ){
 		wp_register_style( 'graphene-stylesheet', get_stylesheet_uri(), array(), false, 'screen' );
 		wp_register_style( 'graphene-stylesheet-rtl', get_template_directory_uri() . '/rtl.css', array(), false, 'screen' );
-		wp_register_style( 'graphene-light-header', get_template_directory_uri() . '/style-light.css', array(), false, 'screen' );
-		wp_register_style( 'graphene-print', get_template_directory_uri() . '/style-print.css', array(), false, 'print' );
-		wp_register_style( 'graphene-bbpress', get_template_directory_uri() . '/style-bbpress.css', array(), false, 'screen' );
+		wp_register_style( 'graphene-light-header', get_template_directory_uri() . '/style-light.css', array( 'graphene-stylesheet' ), false, 'screen' );
+		wp_register_style( 'graphene-print', get_template_directory_uri() . '/style-print.css', array( 'graphene-stylesheet' ), false, 'print' );
+		wp_register_style( 'graphene-bbpress', get_template_directory_uri() . '/style-bbpress.css', array( 'graphene-stylesheet' ), false, 'screen' );
 	}
 	
 	wp_register_style( 'jquery-ui-slider', get_template_directory_uri() . '/js/jquery-ui/jquery.ui.custom.css', array(), false, 'screen' );
@@ -44,6 +44,7 @@ function graphene_register_scripts(){
 	global $graphene_settings;
 	
 	wp_register_script( 'graphene-jquery-tools', get_template_directory_uri() . '/js/jquery-tools-1.2.5.min.js', array( 'jquery' ), '', true);
+	wp_register_script( 'graphene-admin-js', get_template_directory_uri() . '/admin/js/admin.js', array( 'jquery' ), '', false );
 	
 	// Register scripts for older versions of WordPress
 	if ( ! graphene_is_wp_version( '3.3' ) ){

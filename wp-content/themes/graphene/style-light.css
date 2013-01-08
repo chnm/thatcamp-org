@@ -10,6 +10,7 @@
 /* Top level header menu, default state */
 #header-menu-wrap {
 	background: url(images/sprite_h.png) left -300px repeat-x #ddd;
+	border-bottom: 1px solid #ddd;
 }
 #header-menu > li > a {
 	color: #000;

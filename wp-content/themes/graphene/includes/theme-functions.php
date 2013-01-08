@@ -6,16 +6,10 @@ if ( ! function_exists( 'graphene_get_header_image' ) ) :
 	function graphene_get_header_image( $post_id = NULL){
 		global $graphene_settings;
 		
-		if ( is_singular() && has_post_thumbnail( $post_id ) && ( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'post-thumbnail' ) ) &&  $image[1] >= HEADER_IMAGE_WIDTH && !$graphene_settings['featured_img_header']) {
+		if ( is_singular() && has_post_thumbnail( $post_id ) && ( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'post-thumbnail' ) ) &&  $image[1] >= HEADER_IMAGE_WIDTH && !$graphene_settings['featured_img_header'] ) {
 			// Houston, we have a new header image!
-			// Gets only the image url. It's a pain, I know! Wish WordPress has better options on this one
-			$header_img = get_the_post_thumbnail( $post_id, 'post-thumbnail' );
-			$header_img = explode( '" class="', $header_img);
-			$header_img = $header_img[0];
-			$header_img = explode( 'src="', $header_img);
-			$header_img = $header_img[1]; // only the url
-		}
-		else if ( $graphene_settings['use_random_header_img']){
+			$header_img = $image[0]; // only the url
+		} else if ( $graphene_settings['use_random_header_img'] ){
 			$default_header_images = graphene_get_default_headers();
 			$randomkey = array_rand( $default_header_images);
 			$header_img = str_replace( '%s', get_template_directory_uri(), $default_header_images[$randomkey]['url']);
@@ -34,6 +28,11 @@ endif;
 */
 function graphene_body_class( $classes ){
     
+	global $graphene_settings;
+	
+	if ( $graphene_settings['slider_full_width'] ) $classes[] = 'full-width-slider';
+	if ( $graphene_settings['slider_position'] ) $classes[] = 'bottom-slider';
+	
     $column_mode = graphene_column_mode();
     $classes[] = $column_mode;
     // for easier CSS
@@ -42,6 +41,8 @@ function graphene_body_class( $classes ){
     } else if ( strpos( $column_mode, 'three_col' ) === 0 ){
         $classes[] = 'three-columns';
     }
+	
+	if ( has_nav_menu( 'secondary-menu' ) ) $classes[] = 'have-secondary-menu';
     
     // Prints the body class
     return $classes;
@@ -63,7 +64,7 @@ add_filter( 'post_class', 'graphene_sticky_post_class' );
 
 
 /**
- * Add Facebook and Twitter icon to top bar
+ * Add Social Media icons in top bar
 */
 function graphene_top_bar_social(){
     global $graphene_settings;
@@ -72,18 +73,25 @@ function graphene_top_bar_social(){
     $social_profiles = $graphene_settings['social_profiles'];
 	if ( in_array( false, $social_profiles) ) return;
 	
+	$count = 1;
     foreach ( $social_profiles as $social_key => $social_profile ) : 
         if ( ! empty( $social_profile['url'] ) || $social_profile['type'] == 'rss' ) : 
             $title = graphene_determine_social_medium_title( $social_profile );
             $class = 'mysocial social-' . $social_profile['type'];
+			$id = 'social-id-' . $count;
             $extra = $graphene_settings['social_media_new_window'] ?  ' target="_blank"' : '';
             $url = ( $social_profile['type'] == 'rss' && empty( $social_profile['url'] ) ) ? get_bloginfo('rss2_url') : $social_profile['url'];
             if ( $social_profile['type'] == 'custom' ) {
-                $extra .= ' style="background-image:url(' . $social_profile['icon_url']. ')"';
-                $class = 'mysocial-icon';
-            } ?>
-            <a href="<?php echo $url; ?>" title="<?php echo $title; ?>" class="<?php echo $class; ?>"<?php echo $extra; ?>><span><?php echo $title; ?></span></a>                
-    <?php endif;
+				$icon_url = $social_profile['icon_url'];
+                $class = 'mysocial social-custom';
+            } else {
+				$icon_url = get_template_directory_uri() . '/images/social/' . $social_profile['type'] . '.png';
+			}
+		?>
+            <a href="<?php echo esc_url( $url ); ?>" title="<?php echo esc_attr( $title ); ?>" id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>"<?php echo $extra; ?>>
+            	<img src="<?php echo esc_url( $icon_url ); ?>" alt="<?php echo esc_attr( $social_profile['name'] ); ?>" title="<?php echo esc_attr( $title ); ?>" />
+            </a>
+    	<?php endif; $count++;
     endforeach;
 }
 add_action( 'graphene_social_profiles', 'graphene_top_bar_social' );
@@ -95,9 +103,8 @@ add_action( 'graphene_social_profiles', 'graphene_top_bar_social' );
  */
 function graphene_determine_social_medium_title( $social_medium ) {
     if ( isset( $social_medium['title'] ) && ! empty( $social_medium['title']) ) {
-        return esc_attr__( $social_medium['title'] );
-    }
-    else {
+        return esc_attr( $social_medium['title'] );
+    } else {
         /* translators: %1$s is the website's name, %2$s is the social media name */
         return sprintf( esc_attr__( 'Visit %1$s\'s %2$s page', 'graphene' ), get_bloginfo( 'name' ), ucfirst( $social_profile['type'] ) );
     }

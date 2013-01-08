@@ -22,7 +22,7 @@ get_header(); ?>
 		$cats = $graphene_settings['frontpage_posts_cats'];
 		
 		// Display the sticky posts first
-		$stickies = get_option('sticky_posts');
+		$stickies = get_option( 'sticky_posts' );
 		if ( get_query_var( 'paged' ) < 2 && ( $stickies ) ) {
 			$args = array( 'category__in' => $cats, 'post__in' => $stickies );
 			query_posts( apply_filters( 'graphene_frontpage_posts_cats_sticky_args', $args ) );
@@ -31,7 +31,10 @@ get_header(); ?>
 			$wp_query->is_archive = false;
 		
 			if ( have_posts() ){
-				get_template_part( 'loop', 'index' );
+				while ( have_posts() ) {
+					the_post();
+					get_template_part( 'loop', 'index' );
+				}
 			}
 			
 			wp_reset_query();

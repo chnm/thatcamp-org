@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene theme for WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-21 21:34+1200\n"
+"POT-Creation-Date: 2012-04-03 08:27+1200\n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Hameed Qamishi <zadizanst@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,28 +12,28 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Language: Kurdish\n"
 
-#: 404.php:25
+#: 404.php:23
 #, php-format
 msgid "Searching for: <span>%s</span>"
 msgstr "گەڕان بۆ : <span>%s</span>"
 
-#: 404.php:31
+#: 404.php:29
 msgid "Error 404 - Page Not Found"
 msgstr "هەڵەی ژمارە ٤٠٤: پەڕە نەدۆزرایەوە!"
 
-#: 404.php:33
+#: 404.php:31
 msgid "Sorry, I've looked everywhere but I can't find the page you're looking for."
 msgstr "بەداخەوە، لەهەموو شوێنێك گەڕام. بەس نەمتوانی ئەو پەڕەیەی تۆ بەدویدا دەگوڕێیت بدۆزمەوە."
 
-#: 404.php:34
+#: 404.php:32
 msgid "If you follow the link from another website, I may have removed or renamed the page some time ago. You may want to try searching for the page:"
 msgstr "ئەگەر لە بەستەرێکی ناو سایتێکی ترەوە هاتووی بۆ ئێرە، ئەوا بۆی هەیە ئەو پەڕەیەم گواستبێتەوە یان ناوم گۆڕێبێت. لەوانەیە پێویست بێت لەناو ماڵپەڕەکە خۆێد بەدوای پەڕە داواکراوەکەدا بگەڕێیت:"
 
-#: 404.php:42
+#: 404.php:40
 msgid "Automated search"
 msgstr "گەڕانی خۆکار"
 
-#: 404.php:45
+#: 404.php:43
 #, php-format
 msgid "Searching for the terms <strong>%s</strong> ..."
 msgstr "گەڕان بۆ زاراوەکانی <strong>%s</strong> ..."
@@ -48,7 +48,6 @@ msgstr "ئەرشیفی ڕۆژانە:  %s"
 msgid "Monthly Archive: %s"
 msgstr "ئەرشیفی مانگانە: %s"
 
-#. translators: F will be replaced with month, and Y will be replaced with year, so "F Y" in English would be replaced with something like "June 2008".
 #: archive.php:28
 msgid "F Y"
 msgstr "F Y"
@@ -80,36 +79,33 @@ msgstr "ئەرشیفی هاوپۆلەکان: <span>%s</span>"
 msgid "This post is password protected. Enter the password to view any comments."
 msgstr "ئەم بابەتە پارێزراوە بەوشەی نهێنی، تکایە وشەی نهێنی داخڵبکە بۆئەوەی بتوانیت بۆچوون بنووسیت!."
 
-#: comments.php:49
+#: comments.php:58
 #: loop-author.php:85
-#: loop.php:166
+#: loop-post-formats.php:47
+#: loop.php:170
 #, php-format
 msgid "1 comment"
 msgid_plural "%d comments"
 msgstr[0] "١ بۆچوون"
 msgstr[1] "%d بۆچوون"
 
-#: comments.php:51
+#: comments.php:60
 #, php-format
 msgid "1 ping"
 msgid_plural "%d pings"
 msgstr[0] "١ پینگ"
 msgstr[1] "%d پینگ"
 
-#: comments.php:109
+#: comments.php:118
 msgid "Comments have been disabled."
 msgstr "بۆچوون ڕاگیراوە."
 
-#: comments.php:126
+#: comments.php:135
 #, php-format
 msgid "You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags and attributes: %s"
 msgstr "ئەتوانیت ئەمە بەکاربینیت  <abbr title=\"HyperText Markup Language\">HTML</abbr> تاگ و ئەتریبیوتەکاان:"
 
-#: comments.php:131
-msgid "Your email address will not be published."
-msgstr "ئیمەیلەکەت بڵاوناکرێتەوە"
-
-#: comments.php:134
+#: comments.php:142
 msgid "Submit Comment"
 msgstr "ناردنی بۆچوون"
 
@@ -117,11 +113,10 @@ msgstr "ناردنی بۆچوون"
 msgid "Copyright"
 msgstr "مافی لەبەرگرتنەوە"
 
-#. translators: %s will replaced by a link to the Creative Commons licence page, with "Creative Commons Licence" as the link text.
 #: footer.php:56
 #, php-format
 msgid "Except where otherwise noted, content on this site is licensed under a %s."
-msgstr "ئەگەر ئاماژە بەشتێکی تر نەدرابێت، ئەوا ناوەرۆکی ئەم ماڵپەڕە ڕێپێدراوە لە ژێر  %s."
+msgstr "بۆ هیچ که‌سێك نی یه‌ به‌بێ پرس یان ناوهێنانی ماڵپه‌ڕه‌که‌ به‌شێك له‌ به‌شه‌کانی ئه‌م ماڵپه‌ڕه‌ به‌کاربهێنێت. ئەم ماڵپەڕە ڕێپێدراوە لە ژێر  %s."
 
 #: footer.php:56
 msgid "Creative Commons Licence"
@@ -135,7 +130,6 @@ msgstr "Creative Commons Licence BY-NC-ND"
 msgid "Return to top"
 msgstr "گەڕانەوە بۆ سەرەوە"
 
-#. translators: %1$s is the link to WordPress.org, %2$s is the theme's name
 #: footer.php:89
 #, php-format
 msgid "Powered by %1$s and the %2$s."
@@ -145,17 +139,8 @@ msgstr "ئەم ماڵپەڕە دروستکراوە بە %1$s و %2$s."
 msgid "Graphene Theme"
 msgstr "ڕووکاری گرافین"
 
-#: header.php:36
-#, php-format
-msgid "Subscribe to %s's RSS feed"
-msgstr "بەشداری بکە لە %s's RSS دا  "
-
-#: header.php:36
-msgid "Subscribe to RSS feed"
-msgstr "بەشداری بکە لە RSS دا"
-
-#: header.php:82
-#: header.php:102
+#: header.php:77
+#: header.php:98
 msgid "Go back to the front page"
 msgstr "گەڕانەوە بۆ پەڕەی سەرەکی"
 
@@ -163,7 +148,6 @@ msgstr "گەڕانەوە بۆ پەڕەی سەرەکی"
 msgid "Author's details"
 msgstr "دەربارەی نووسەر"
 
-#. translators: %1$s is the first name, %2$s is the last name
 #: loop-author.php:25
 #, php-format
 msgid "<strong>Name:</strong> %1$s %2$s"
@@ -192,9 +176,9 @@ msgstr "بەستەری سەرەکی بۆ %s"
 #: loop-author.php:85
 #: loop-children.php:45
 #: loop-page.php:8
-#: loop-page.php:35
-#: loop-post-formats.php:36
-#: loop-single.php:67
+#: loop-page.php:31
+#: loop-post-formats.php:31
+#: loop-single.php:63
 #: loop.php:31
 #: loop.php:66
 msgid "(No title)"
@@ -206,7 +190,7 @@ msgstr "زۆرترین بۆ چوونەکان"
 
 #: loop-children.php:45
 #: loop-children.php:53
-#: loop-post-formats.php:36
+#: loop-post-formats.php:31
 #: loop.php:65
 #: loop.php:134
 #, php-format
@@ -229,97 +213,103 @@ msgstr "بەداخەوە ئەوەی تۆ بۆی دەگەڕێیت نەدۆزرا�
 msgid "Sorry, but no results were found for that keyword. Wanna try an alternative keyword search?"
 msgstr "بەداخەوە، ئەوەی تۆ بەدوایدا دەگەڕێیت لێرە بوونی نی یە. هەوڵبدە ووشەی گەڕانەکە بگۆڕێت!."
 
-#: loop-page.php:23
-#: loop-page.php:24
-#, php-format
-msgid "Print this %s"
-msgstr "چاپی بکە %s"
-
-#: loop-page.php:45
-#: loop-single.php:83
+#: loop-page.php:41
+#: loop-single.php:79
 #: loop.php:85
 #, php-format
 msgid "Edit %s"
 msgstr "دەستکاریکردنی %s"
 
-#: loop-page.php:66
-#: loop-single.php:122
-#: loop.php:148
+#: loop-page.php:62
+#: loop-single.php:118
+#: loop.php:152
 msgid "Pages:"
 msgstr "پەڕەکان:"
 
-#: loop-page.php:90
-#: loop-post-formats.php:89
-#: loop-single.php:172
-#: loop.php:179
+#: loop-page.php:86
+#: loop-post-formats.php:98
+#: loop-single.php:166
+#: loop.php:188
 msgid "Permanent link to this article:"
 msgstr "بەستەری هەمیشەیی بۆ ئەم بابەتە: "
 
-#: loop-post-formats.php:15
+#: loop-post-formats.php:9
 msgid "Status update"
 msgstr "دۆخی نوێکردنەوە"
 
-#: loop-post-formats.php:16
+#: loop-post-formats.php:10
+msgid "Link"
+msgstr "بەستەر"
+
+#: loop-post-formats.php:11
 msgid "Audio"
 msgstr "دەنگ"
 
-#: loop-post-formats.php:17
+#: loop-post-formats.php:12
 msgid "Image"
 msgstr "وێنە"
 
-#: loop-post-formats.php:18
+#: loop-post-formats.php:13
 msgid "Video"
 msgstr "ڤیدیۆ"
 
-#: loop-post-formats.php:19
+#: loop-post-formats.php:14
 msgid "Post format"
 msgstr "فۆرماتی بابەت"
 
-#. translators: This is the PHP date formatting string for the status post format. See http://php.net/manual/en/function.date.php for more details.
-#: loop-post-formats.php:32
+#: loop-post-formats.php:27
 msgid "l F j, Y"
 msgstr "l F j, Y"
 
-#: loop-post-formats.php:32
+#: loop-post-formats.php:27
 msgid "g:i A"
 msgstr "g:i A"
 
-#: loop-post-formats.php:42
+#: loop-post-formats.php:38
 msgid "Edit post"
 msgstr "دەستکاریکردنی بابەت/هەواڵ"
 
-#. translators: This is the PHP date formatting string for the image post format. See http://php.net/manual/en/function.date.php for more details.
-#: loop-post-formats.php:77
+#: loop-post-formats.php:47
+#: loop.php:170
+msgid "Leave comment"
+msgstr "بۆچوون بنوسە"
+
+#: loop-post-formats.php:47
+#: loop.php:170
+msgid "Comments off"
+msgstr "بۆچوون داخراوە"
+
+#: loop-post-formats.php:86
 #, php-format
 msgid "Posted on: %s"
 msgstr "نوسراوە لە بەرواری: %s"
 
-#: loop-post-formats.php:77
+#: loop-post-formats.php:86
 msgid "F j, Y"
 msgstr "F j, Y"
 
-#: loop-single.php:76
+#: loop-single.php:72
 #: loop.php:78
 msgid "Categories:"
 msgstr "هاوپۆلەکان:"
 
-#: loop-single.php:98
+#: loop-single.php:94
 #: loop.php:102
 #, php-format
 msgid "by %s"
 msgstr "لەلایەن %s"
 
-#: loop-single.php:132
-#: loop.php:158
+#: loop-single.php:128
+#: loop.php:162
 msgid "Tags:"
 msgstr "تاگەکان:"
 
-#: loop-single.php:132
-#: loop.php:158
+#: loop-single.php:128
+#: loop.php:162
 msgid "This post has no tag"
 msgstr "هیچ تاگێك نی یە"
 
-#: loop-single.php:153
+#: loop-single.php:147
 msgid "About the author"
 msgstr "دەربارەی نوسەر"
 
@@ -327,23 +317,14 @@ msgstr "دەربارەی نوسەر"
 msgid "Read the rest of this entry &raquo;"
 msgstr "خوێندنەوەدرێژە &raquo;"
 
-#: loop.php:166
-msgid "Leave comment"
-msgstr "بۆچوون بنوسە"
-
-#: loop.php:166
-msgid "Comments off"
-msgstr "بۆچوون داخراوە"
-
 #: search-404.php:14
 msgid "Suggested results"
 msgstr "ئەنجامی پێشنیارکراو"
 
-#. translators: %s is the search term
 #: search-404.php:18
 #, php-format
-msgid "I've done a courtesy search for the term %s for you. See if you can find what you're looking for in the list below:"
-msgstr "لەبەرخاتری بەڕێزتان بەووردی لەو دەستەواژەیە گەڕام، بەڵام هیچم نەدۆزیەوە. سەیرکە بزانە ئەوەی دەتەوێت لەم لیستەی خوارەوەدا بیدۆزیتەوە:"
+msgid "I've done a courtesy search for the term %s for you. See if you can find what you're looking for in the list below."
+msgstr "لەبەرخاتری بەڕێزتان بەووردی لە دەستەواژەی %s  گەڕام، بەڵام هیچم نەدۆزیەوە. سەیرکە بزانە به‌ڵكه‌ ئەوەی دەتەوێت لەم لیستەی خوارەوەدا بیدۆزیتەوە:"
 
 #: search-404.php:35
 msgid "<strong>Sorry, couldn't find anything.</strong> Try searching for alternative terms using the search form above."
@@ -359,37 +340,21 @@ msgstr "ئەنجامی گەڕان بۆ : %s"
 msgid "Search"
 msgstr "گەڕان"
 
-#: sidebar-two.php:35
-#: sidebar.php:41
-msgid "Meta"
-msgstr "هاوپێچ"
+#: sidebar-two.php:29
+msgid "Front Page Sidebar Two Widget Area"
+msgstr "ناوچەی ویجیتی لاتەنیشتی دووەمی پەڕەی سەرەکی "
 
-#: sidebar-two.php:40
-#: sidebar.php:46
-msgid "Posts RSS"
-msgstr "RSS ی بابەتەکان"
+#: sidebar-two.php:31
+msgid "Sidebar Two Widget Area"
+msgstr "ناوچەی ویجیتی لاتەنیشتی دووەم"
 
-#: sidebar-two.php:41
-#: sidebar.php:47
-msgid "Comments RSS"
-msgstr "RSS ی بۆچوونەکان"
+#: sidebar.php:28
+msgid "Front Page Sidebar Widget Area"
+msgstr "ناوچەی ویجیتی لاتەنیشتی پەڕەی سەرەکی"
 
-#. translators: %s is the link to wordpress.org
-#: sidebar-two.php:43
-#: sidebar.php:49
-#, php-format
-msgid "Powered by %s"
-msgstr "ئەم ماڵپەڕە دروستکراوە بە %s."
-
-#: sidebar-two.php:43
-#: sidebar.php:49
-msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform."
-msgstr "بەهێزکراوە بە وۆردپرێس کە پلاتفۆرمێکی بڵاوکردنەوەی شاکار و پڕمانایە "
-
-#: sidebar-two.php:48
-#: sidebar.php:34
-msgid "Archives"
-msgstr "ئەرشیڤ"
+#: sidebar.php:30
+msgid "Sidebar Widget Area"
+msgstr "ناوچەی ویجیتی لاتەنیشت"
 
 #: tag.php:13
 #, php-format
@@ -404,83 +369,101 @@ msgstr "ڕێکخستنە تایبەت بە بابەتەکانی گرافین"
 msgid "Graphene page-specific options"
 msgstr "ڕێکخستنە تایبەت بە پەڕەکانی گرافین"
 
-#: admin/custom-fields.php:97
+#: admin/custom-fields.php:99
 msgid "These settings will only be applied to this particular post or page you're editing. They will override the global settings set in the Graphene Options or Graphene Display options page."
 msgstr "ئەم ڕێکخستنانە تەنها بۆ ئەو بابەت و پەڕانەی دەسکاریان دەکەیت جێبەجێ دەبێت. ئەمانە لە پێش ڕێکخستنە گشتیەکان یان ڕێکخستنەکانی ناو پەڕەی ڕێکخستنەکانی دەرکەوتنی  ڕووکاری گرافینەوە دێن."
 
-#: admin/custom-fields.php:98
+#: admin/custom-fields.php:100
 msgid "Slider options"
 msgstr "ڕێکخستنەکانی سلایدەر"
 
-#: admin/custom-fields.php:102
+#: admin/custom-fields.php:104
 msgid "Slider image"
 msgstr "وێنەی سلایدەر"
 
-#: admin/custom-fields.php:106
-#: admin/custom-fields.php:132
-#: admin/custom-fields.php:146
+#: admin/custom-fields.php:108
+#: admin/custom-fields.php:143
+#: admin/custom-fields.php:157
 msgid "Use global setting"
 msgstr "ڕێکخستنە گشتی یەکان بەکاربهێنە"
 
-#: admin/custom-fields.php:107
+#: admin/custom-fields.php:109
 msgid "Don't show image"
 msgstr "وێنە نیشان مەدە"
 
-#: admin/custom-fields.php:108
+#: admin/custom-fields.php:110
 msgid "Featured Image"
 msgstr "وێنە ی وێنەکای"
 
-#: admin/custom-fields.php:109
+#: admin/custom-fields.php:111
 msgid "First image in post"
 msgstr "یەکەم وێنەی ناو بابەت"
 
-#: admin/custom-fields.php:110
+#: admin/custom-fields.php:112
 msgid "Custom URL"
 msgstr "ئەدرەسی خۆچێکراو"
 
-#: admin/custom-fields.php:116
+#: admin/custom-fields.php:118
 msgid "Custom slider image URL"
 msgstr "ئەدرەسی وێنەی سلایدەری خۆچێکراو"
 
-#: admin/custom-fields.php:120
+#: admin/custom-fields.php:122
 msgid "Make sure you select Custom URL in the slider image option above to use this custom url."
 msgstr "لەوە دڵنیابە کە ئەدرەسی خۆچێکراوت لە ڕێکخستنەکانی وێنەی سلایدەکەی سەرەوەدا هەڵبژاردووە بۆئەوەی ئەم ئەدرەسە خۆچێکراوە هەڵبژێریت."
 
-#: admin/custom-fields.php:124
+#: admin/custom-fields.php:127
+msgid "Custom slider URL"
+msgstr "ئەدرەسی سلایدەری خۆچێکراو"
+
+#: admin/custom-fields.php:131
+msgid "Use this to override the link that is used in the slider."
+msgstr "ئه‌مه‌ به‌كاربهێنه‌ بۆئه‌وه‌ی له‌جیاتی به‌سته‌ری به‌كارهاتووی ناو سلایده‌ره‌كه‌ به‌كاربێت."
+
+#: admin/custom-fields.php:135
 msgid "Display options"
 msgstr "ڕێکخستنەکانی دەرکەوتن"
 
-#: admin/custom-fields.php:128
+#: admin/custom-fields.php:139
 msgid "AddThis Social Sharing button"
 msgstr "دووگمەی AddThis بۆ بڵاوکردنەوە لە تۆڕەکۆمەڵایەتیەکاندا"
 
-#: admin/custom-fields.php:133
+#: admin/custom-fields.php:144
 msgid "Show button"
 msgstr "نیشاندانی دووگمە"
 
-#: admin/custom-fields.php:134
+#: admin/custom-fields.php:145
 msgid "Hide button"
 msgstr "شاردنەوەی دووگمە"
 
-#: admin/custom-fields.php:142
+#: admin/custom-fields.php:153
 msgid "Post date display"
 msgstr "دەرکەوتنی بەرواری بابەت"
 
-#: admin/custom-fields.php:147
+#: admin/custom-fields.php:158
 msgid "Hide date"
 msgstr "شاردنەوەی بەروار"
 
-#: admin/custom-fields.php:155
+#: admin/custom-fields.php:166
 msgid "Navigation options"
 msgstr "ڕێکخستنەکانی ڕێدۆزینەوە"
 
-#: admin/custom-fields.php:159
+#: admin/custom-fields.php:170
 msgid "Description"
 msgstr "وەسف"
 
-#: admin/custom-fields.php:163
+#: admin/custom-fields.php:174
 msgid "Only required if you need a description in the navigation menu and you are not using a custom menu."
 msgstr "داواکراوە تەنها لەکاتێکدا کە وەسفێکی مینوی ڕێدۆزینەوە Navigation barت پێویستە و مینوی خۆچێکراو بەکارناهێنیت."
+
+#: admin/db-updater.php:227
+#, php-format
+msgid "Follow %s on Twitter"
+msgstr "شوێنمان کەوە لە %s تویتەر"
+
+#: admin/db-updater.php:238
+#, php-format
+msgid "Visit %s's Facebook page"
+msgstr "سەردانی پەرەی فەسبووک %s's بکە"
 
 #: admin/faq.php:11
 msgid "Graphene's Frequently Asked Questions"
@@ -511,8 +494,8 @@ msgid "Can I modify Graphene to my heart's content without paying anything?"
 msgstr "ئایا دەتوانم ڕووکاری گرافین بگۆڕم بۆئەوەی لەگەڵ ناوەرۆکی ماڵپەڕەکەمدا بیگونجێنم بەبێئەوەی هیچ پارەیەک بدەم؟"
 
 #: admin/faq.php:24
-msgid "The Graphene WordPress theme, along with all the other themes in the WordPress.org Official Free Themes Directory, is released under the GNU General Public License (GPL) Version 2. The full text of that licence is included with the theme in the <code>licence.txt</code> file in the theme's folder. Releasing the theme under that licence means, among others, that you are <em>free to modify the theme in any way for any purpose (including commercial)</em> without any obligation to the theme's author. However, if you decide to redistribute the theme, the licence dictates that you must release the theme under the same licence, GPLv3."
-msgstr "ڕووکاری گرافینی وۆردپرێس هەر وەک هەموو ڕووکارەکانی تری وۆردپرێس سەرچاوە کراوەیە و خۆڕایە. بە گنو بڵاوکراوەتەوە و لەژێر لیسانسی هاوبەشی گشتی GPL وەشانی دوو دایە. دەقی تەواوی لیسانسەکە لە پەڕگەی <code>licence.txt</code>دا کە لەبوخچەی ڕووکارەکەدایە دانراوە. بڵاوکردنەوەی ڕووکارەکە لەژێر ئەو لیسانسە مانای ئەوەیە کە تۆ <em>ئازادیت لە گۆڕینی ڕووکارەکە بەهەر شێوەیەک و هەر مەبەستێک بێت (تەنانەت بۆ مەبەستی بازرگانیش)</em>   بەبێ هیچ پرسکردنێک بە دانەری ڕووکارەکە. بەڵام لەگەڵ ئەوەشدا ئەگەر بڕیارتدا کە ڕووکارەکە دیسان بڵاوبکەیتەوە ئەوا بەپێی لیسانسەکە دەبێت هەر لەژێر ئەم لیسانسەدا بڵاوی بکەیتەوە، GPLv3."
+msgid "The Graphene WordPress theme, along with all the other themes in the WordPress.org Official Free Themes Directory, is released under the GNU General Public License (GPL) Version 3. The full text of that licence is included with the theme in the <code>licence.txt</code> file in the theme's folder. Releasing the theme under that licence means, among others, that you are <em>free to modify the theme in any way for any purpose (including commercial)</em>. However, if you decide to redistribute the theme, the licence dictates that you must release the theme under the same licence, GPLv3, and attributes the copyright of the original theme to the original author."
+msgstr "ڕووکاری گرافینی وۆردپرێس هەر وەک هەموو ڕووکارەکانی تری وۆردپرێس سەرچاوە کراوەیە و خۆڕایە. بە گنو بڵاوکراوەتەوە و لەژێر لیسانسی هاوبەشی گشتی GPL وەشانی سێ دایە. دەقی تەواوی لیسانسەکە لە پەڕگەی <code>licence.txt</code>دا کە لەبوخچەی ڕووکارەکەدایە دانراوە. بڵاوکردنەوەی ڕووکارەکە لەژێر ئەو لیسانسە مانای ئەوەیە کە تۆ <em>ئازادیت لە گۆڕینی ڕووکارەکە بەهەر شێوەیەک و هەر مەبەستێک بێت (تەنانەت بۆ مەبەستی بازرگانیش)</em>   بەبێ هیچ پرسکردنێک بە دانەری ڕووکارەکە. بەڵام لەگەڵ ئەوەشدا ئەگەر بڕیارتدا کە ڕووکارەکە دیسان بڵاوبکەیتەوە ئەوا بەپێی لیسانسەکە دەبێت هەر لەژێر ئەم لیسانسەدا بڵاوی بکەیتەوە، GPLv3."
 
 #: admin/faq.php:25
 msgid "But of course, the author would always appreciate <a href=\"themes.php?page=graphene_options\">donations</a> to support ongoing and future developments of the theme."
@@ -559,7 +542,7 @@ msgid "But no worries! If you're a seasoned user of the Graphene theme, or whene
 msgstr "بەڵام خەم مەخۆ! ئەگەر تۆ بەکارهێنەرێکی پێشکەوتووی ڕووکاری گرا[فین بیت، یان هەر کاتێک هەستتکرد کە ئامادەیت بۆ گۆڕینی زیاتری شێوەی ماڵپەڕەکەت، ئەوا تەنها کلیکی بەستەری  \"نیشاندانی هەموو ڕێکخستنەکان\" بکە و هەموویان بۆت واڵا دەبن."
 
 #: admin/options-advanced.php:12
-#: admin/options.php:350
+#: admin/options.php:353
 msgid "Preview"
 msgstr "پێشبینین"
 
@@ -586,6 +569,11 @@ msgstr "کلیک بکە بۆئەوەی نیشانەکردنی چالاکی بۆ 
 #: admin/options-advanced.php:56
 msgid "Rescan action hooks"
 msgstr "سکانکردنەوەی نیشانەکردنەکانی چالاکیەکان"
+
+#: admin/options-defaults.php:77
+#, php-format
+msgid "Subscribe to %s's RSS feed"
+msgstr "بەشداری بکە لە %s's RSS دا  "
 
 #: admin/options-display.php:13
 msgid "Header Display Options"
@@ -623,583 +611,654 @@ msgstr "ئەمە هەڵبژێرە بۆئەوەی وێنەی پێپەڕەی هە�
 msgid "<strong>Note:</strong> only works on pages where a specific header image is not defined."
 msgstr "<strong>تێبینی:</strong> تەنها لە پەڕەکاندا کاردەکات کاتێك کە وێنەیەکی سەرپەڕە دیاری نەکرابێت."
 
-#: admin/options-display.php:52
+#: admin/options-display.php:51
+msgid "Header image height"
+msgstr "به‌رزی وێنه‌ی سەرپەڕە"
+
+#: admin/options-display.php:60
 msgid "Search box location"
 msgstr "شوێنی سندوقی گەڕان"
 
-#: admin/options-display.php:56
+#: admin/options-display.php:64
 msgid "Top bar"
 msgstr "توڵباری سەرووی ماڵپەڕ Topbar"
 
-#: admin/options-display.php:57
+#: admin/options-display.php:65
 msgid "Navigation bar"
 msgstr "توڵباری ڕێدۆزینەوە Navigation bar"
 
-#: admin/options-display.php:58
+#: admin/options-display.php:66
 msgid "Disable search box"
 msgstr "سندوقی گەڕان ناچالاک بکە"
 
-#: admin/options-display.php:71
+#: admin/options-display.php:79
 msgid "Column Options"
 msgstr "ڕێکخستنەکانی ستوون"
 
-#: admin/options-display.php:77
+#: admin/options-display.php:85
 msgid "Column mode"
 msgstr "شێوازی ستوون"
 
-#: admin/options-display.php:86
-#: admin/options-display.php:131
+#: admin/options-display.php:94
+#: admin/options-display.php:139
 msgid "One column"
 msgstr "یەک ستوون"
 
-#: admin/options-display.php:93
-#: admin/options-display.php:138
+#: admin/options-display.php:101
+#: admin/options-display.php:146
 msgid "Two columns (with sidebar right)"
 msgstr "دوو ستوون (لەگەڵ تەنیشتی لای ڕاست)"
 
-#: admin/options-display.php:97
-#: admin/options-display.php:142
+#: admin/options-display.php:105
+#: admin/options-display.php:150
 msgid "Two columns (with sidebar left)"
 msgstr "دوو ستوون (لەگەڵ تەنیشتی لای چەپ)"
 
-#: admin/options-display.php:104
-#: admin/options-display.php:149
+#: admin/options-display.php:112
+#: admin/options-display.php:157
 msgid "Three columns (with two sidebars right)"
 msgstr "سێ ستوون (لەگەڵ دوو تەنیشت لە لای ڕاست)"
 
-#: admin/options-display.php:108
-#: admin/options-display.php:153
+#: admin/options-display.php:116
+#: admin/options-display.php:161
 msgid "Three columns (with two sidebars left)"
 msgstr "سێ ستوون (لەگەڵ دوو تەنیشت لە لای چەپ)"
 
-#: admin/options-display.php:112
-#: admin/options-display.php:157
+#: admin/options-display.php:120
+#: admin/options-display.php:165
 msgid "Three columns (with sidebars left and right)"
 msgstr "سێ ستوون (لەگەڵ تەنیشت لای ڕاست و لای چەپ)"
 
-#: admin/options-display.php:122
+#: admin/options-display.php:130
 msgid "bbPress column mode"
 msgstr "شێوازی ستوونی bbPress"
 
-#: admin/options-display.php:173
+#: admin/options-display.php:181
 msgid "Column Width Options"
 msgstr "ڕێکخستنەکانی پانی ستوون"
 
-#: admin/options-display.php:176
+#: admin/options-display.php:184
 msgid "Note: Leave values empty to reset to the default values."
 msgstr "تێبینی: نرخەکان بە بەتاڵی جێ بهێڵە بۆ گەڕاندنەوە بۆ نرخە بنەڕەتیەکان"
 
-#: admin/options-display.php:180
+#: admin/options-display.php:188
 msgid "Container width"
 msgstr "پانی ناوەرۆک"
 
-#: admin/options-display.php:197
-#: admin/options-display.php:220
+#: admin/options-display.php:205
+#: admin/options-display.php:228
 msgid "Column width"
 msgstr "پانی ستوون"
 
-#: admin/options-display.php:197
+#: admin/options-display.php:205
 msgid "two-column mode"
 msgstr "شێوازی دوو ستوونی"
 
-#: admin/options-display.php:201
-#: admin/options-display.php:228
+#: admin/options-display.php:209
+#: admin/options-display.php:236
 msgid "Content"
 msgstr "ناوەرۆک"
 
-#: admin/options-display.php:205
+#: admin/options-display.php:213
 msgid "Sidebar"
 msgstr "لاتەنیشت"
 
-#: admin/options-display.php:220
+#: admin/options-display.php:228
 msgid "three-column mode"
 msgstr "شێوازی سێ ستوونی"
 
-#: admin/options-display.php:224
+#: admin/options-display.php:232
 msgid "Left sidebar"
 msgstr "تەنیشتی لای چەپ"
 
-#: admin/options-display.php:232
+#: admin/options-display.php:240
 msgid "Right sidebar"
 msgstr "تەنیشتی لای ڕاست"
 
-#: admin/options-display.php:253
+#: admin/options-display.php:261
 msgid "Posts Display Options"
 msgstr "ڕێکخستنەکانی دەرکەوتنی بابەتەکان"
 
-#: admin/options-display.php:259
+#: admin/options-display.php:267
 msgid "Hide post author"
 msgstr "نووسەری بابەت بشارەوە"
 
-#: admin/options-display.php:269
+#: admin/options-display.php:277
 msgid "Hidden"
 msgstr "شارراوە"
 
-#: admin/options-display.php:270
+#: admin/options-display.php:278
 msgid "As an icon (without the year)"
 msgstr "وەک ئایکۆنێک (بەبێ ساڵەکە)"
 
-#: admin/options-display.php:271
+#: admin/options-display.php:279
 msgid "As an icon (including the year)"
 msgstr "وەک ئایکۆنێک (لەگەڵ ساڵەکە)"
 
-#: admin/options-display.php:272
+#: admin/options-display.php:280
 msgid "As inline text"
 msgstr "وەک دەقێکی ناوەکی"
 
-#: admin/options-display.php:274
-msgid "Note: displaying date as inline text allows more space for the content area, especially useful for a three-column layout configuration."
-msgstr "تێبینی: دەرخستنی بەروار وەک دەقێکی ناوەکی بۆشایی زیاتر دەهێڵێتەوە بۆ ناوچەی نااوەرۆکەکە، ئەمە بەتایبەتی زۆر بەسوودە بۆ شێوەپێدانی شێوازی سێ ستوونی."
-
-#: admin/options-display.php:279
+#: admin/options-display.php:286
 msgid "Hide post categories"
 msgstr "شاردنەوەی هاوپۆلەکانی بابەت"
 
-#: admin/options-display.php:285
+#: admin/options-display.php:292
 msgid "Hide post tags"
 msgstr "شاردنەوەی تاگەکانی بابەت"
 
-#: admin/options-display.php:291
+#: admin/options-display.php:298
 msgid "Hide post comment count"
 msgstr "شاردنەوەی بۆچوونەکانی بابەت"
 
-#: admin/options-display.php:292
+#: admin/options-display.php:299
 msgid "Only affects posts listing (such as the front page) and not single post view."
 msgstr "تەنها کاریگەری لەسەر ڕیزکردنی بابەتەکان دەبێت (وەک بۆ نمونە لە پەڕەی سەرەکیدا) کاریگەری لەسەر دەرکەوتنی بابەتەکان بە تەنها نابێت.."
 
-#: admin/options-display.php:297
+#: admin/options-display.php:304
 msgid "Show post author's <a href=\"http://en.gravatar.com/\">gravatar</a>"
 msgstr "ئەڤاتاری نووسەر نیشان بدە <a href=\"http://en.gravatar.com/\">ئەڤاتار</a>"
 
-#: admin/options-display.php:301
+#: admin/options-display.php:308
 msgid "Show post author's info"
 msgstr "نیشاندانی زانیاری نووسەر"
 
-#: admin/options-display.php:313
+#: admin/options-display.php:320
 msgid "Excerpts Display Options"
 msgstr "ڕێکخستنەکانی دەرکەوتنی پوختەکان"
 
-#: admin/options-display.php:319
+#: admin/options-display.php:326
 msgid "Show excerpts in front page"
 msgstr "پوختەی بابەتەکان لە پەڕەی سەرەکیدا دەربخە"
 
-#: admin/options-display.php:325
+#: admin/options-display.php:332
 msgid "Show full content in archive pages"
 msgstr "هەموو بابەتەکە لە پەڕەکانی ئەرشیفدا نیشان بدە"
 
-#: admin/options-display.php:329
+#: admin/options-display.php:336
 msgid "Note: Archive pages include the archive for category, tags, time, and search results pages. Enabling this option will cause the full content of posts and pages listed in those archives to displayed instead of the excerpt, and truncated by the Read More tag if used."
 msgstr "تێبینی: پەڕەکاانی ئەرشیف ئەرشیفی هاوپۆل و تاگ و کات و پەڕەکانی ئەنجامی گەڕانەکانیان تێدایە. چالاککردنی ئەم ڕێکخستنە وادەکات هەموو ناوەرۆکی ئەو بابەت و پەڕانەی لەو ئەرشیفانەدا ڕیزکراون لە جیاتی تەنها دەرخستنی پوختە دەربکەون."
 
-#: admin/options-display.php:333
+#: admin/options-display.php:340
 msgid "Show More link for manual excerpts"
 msgstr "بەستەری زیاتر دەربخە بۆ پوختە دەستکردەکان "
 
-#: admin/options-display.php:337
+#: admin/options-display.php:344
 msgid "Retain these HTML tags in excerpts"
 msgstr "ئەم تاگی HTML انە لە پوختەکاندا نیشان بدە"
 
-#: admin/options-display.php:340
+#: admin/options-display.php:347
 msgid "Enter the HTML tags you'd like to retain in excerpts. For example, enter <code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> to retain <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, and <code>&lt;li&gt;</code> HTML tags."
 msgstr "ئەو تاگی HTML انە بنووسە کە دەتەوێت لە پوختەکاندا دەربکەون. بۆ نمونە ئەم تاگانە داخڵبکە <code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> بۆ هێماکردنی <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, و <code>&lt;li&gt;</code> "
 
-#: admin/options-display.php:353
+#: admin/options-display.php:360
 msgid "Comments Display Options"
 msgstr "ڕێکخستنەکانی دەرکەوتنی بۆچوونەکان"
 
-#: admin/options-display.php:359
+#: admin/options-display.php:366
 msgid "Hide allowed tags in comment form"
 msgstr "شاردنەوەی تاگە ڕێپێدراوەکان لە فۆرمی بۆچوونەکاندا"
 
-#: admin/options-display.php:372
+#: admin/options-display.php:379
 msgid "Colours Options"
 msgstr "ڕێکخستنەکانی ڕەنگ"
 
-#: admin/options-display.php:375
+#: admin/options-display.php:382
 msgid "Changing colours for your website involves a lot more than just trial and error. Simply mixing and matching colours without regard to their compatibility may do more damage than good to your site's aesthetics."
 msgstr "گۆڕینی ڕەنگەکانی ماڵپەڕەکەت شتی زیاتر لەگەڵ خۆیدا دەهێنێت لەوەی تەنها تاقیکردنەوە و هەڵەکردن بێت. تەنها تێکەڵاوکردن و گونجاندنی ڕەنگەکان بەبێ گوێدانە دانوو کوڵانیان لەگەڵ یەکتری لەوانەیە ببێتە هۆی زیان گەیاندن بە جوانکاری ماڵپەڕەکەت."
 
-#: admin/options-display.php:376
+#: admin/options-display.php:383
 #, php-format
 msgid "It's generally a good idea to stick to colours from colour pallettes that are aesthetically pleasing. Try the %s website for a kickstart on some colour palettes you can use."
 msgstr "بەشێوەیەکی گشتی کارێکی باشە ئەگەر کۆمەلە ڕەنگێک بەکارببەیت کە جوان بن. ماڵپەڕی %s تاقیبکەرەوە بۆئەوەی سەرەتایەکی باش لەهەندێک پالێتی ڕەنگ فێرببیت کە دەکرێت بەکاریان بهێنیت. "
 
-#: admin/options-display.php:377
+#: admin/options-display.php:384
 msgid "When you've got the perfect combination, you can even share it with fellow Graphene theme users through the <a href=\"http://forum.khairul-syahir.com/\">Support Forum</a>."
 msgstr "کاتێک تێکەڵکردنێکی دروستت دۆزیەوە ئەوا دەتوانیت لەگەر بتەوێت لەگەڵ بەکارهێنەرانی تری ڕووکاری گرافیندا هاوبەشی پێبکەیت لە ڕێگەی <a href=\"http://forum.khairul-syahir.com/\">مەکۆکانی یارمەتی</a>"
 
-#: admin/options-display.php:378
+#: admin/options-display.php:385
 msgid "<strong>Note:</strong> The previews work best on modern Gecko- and Webkit-based browsers, such as Mozilla Firefox and Google Chrome."
 msgstr "<strong>تێبینی: </strong>پێشبینیەکان بە باشی لەگەڵ Gecko مۆدێرنەکان و وێبگەڕەکانی کەلەسەر webkit ەکان دامەزراون کاردەکەن، وەکو وێبگەڕی فایەرفۆکس و گوگڵ کرۆم."
 
-#: admin/options-display.php:379
+#: admin/options-display.php:386
 msgid "<strong>Note:</strong> To reset any of the colours to their default value, just click on \"Clear\" beside the colour field and save the settings. The theme will automatically revert the value to the default colour."
 msgstr "<strong>تێبینی: </strong> بۆ گێڕڕاندنەوەی هەر ڕەنگێک بۆ نرخە بنەڕەتیەکەی، تەنها کلیکی  \"سڕینەوە\"  بکە کە لە تەنیشت خانەی ڕەنگەکەوە هەیە و پاشان ڕێکخستنەکان پاشەکەوت بکە. بەمە ڕووکارەکە خۆکارانە ڕەنگەکە دەگێڕێتەوە بۆ ڕەنگە بنەڕەتیەکە."
 
-#: admin/options-display.php:380
+#: admin/options-display.php:388
+msgid "Colour presets"
+msgstr "ڕه‌نگه‌ بنه‌ڕه‌تیه‌كان"
+
+#: admin/options-display.php:390
+msgid "These are some colour presets that you may use, either as is or tweak them further to your liking."
+msgstr "ئه‌مانه‌ چه‌ند ڕه‌نگێكی پێشتر هه‌ڵبژێراون كه‌ ده‌توانیت به‌كاریان ببه‌یت، یان هه‌روه‌ك خۆیان یانیش به‌و شێوه‌یان لێبكه‌یت كه‌ خۆت حه‌زده‌كه‌یت."
+
+#: admin/options-display.php:394
+msgid "Default"
+msgstr "بنەڕەت"
+
+#: admin/options-display.php:395
+msgid "Dream Magnet"
+msgstr "موگناتیسی خه‌یاڵ و پڵاو"
+
+#: admin/options-display.php:396
+msgid "Curiosity Killed"
+msgstr "حه‌زی شت فێربوون دامركاوه‌ته‌وه‌"
+
+#: admin/options-display.php:399
 msgid "Content area"
 msgstr "ناوچەی ناوەرۆک"
 
-#: admin/options-display.php:384
+#: admin/options-display.php:403
 msgid "Main content wrapper background"
 msgstr "پاشبنەمای ناوەرۆکی سەرەکی"
 
-#: admin/options-display.php:385
+#: admin/options-display.php:404
 msgid "Post and pages content background"
 msgstr "پاشەبنەمای ناوەرۆکی بابەت و پەڕەکان"
 
-#: admin/options-display.php:386
+#: admin/options-display.php:405
 msgid "Post meta and footer border"
 msgstr "هاوپێجی بابەت و سنووری پێپەڕە"
 
-#: admin/options-display.php:387
+#: admin/options-display.php:406
 msgid "Post and pages top border"
 msgstr "سنوری لای سەرووی پۆست و بابەتەکان"
 
-#: admin/options-display.php:388
+#: admin/options-display.php:407
 msgid "Post and pages bottom border"
 msgstr "سنوری لای خوارووی پۆست و بابەتەکان"
 
-#: admin/options-display.php:398
-#: admin/options-display.php:428
-#: admin/options-display.php:454
-#: admin/options-display.php:481
-#: admin/options-display.php:510
-#: admin/options-display.php:646
-#: admin/options-display.php:667
+#: admin/options-display.php:417
+#: admin/options-display.php:448
+#: admin/options-display.php:474
+#: admin/options-display.php:502
+#: admin/options-display.php:531
+#: admin/options-display.php:558
+#: admin/options-display.php:573
+#: admin/options-display.php:583
+#: admin/options-display.php:600
 msgid "Clear"
 msgstr "سڕینەوە"
 
-#: admin/options-display.php:405
+#: admin/options-display.php:424
 msgid "Widgets"
 msgstr "ویجیتەکان"
 
-#: admin/options-display.php:408
+#: admin/options-display.php:427
 msgid "Widget preview"
 msgstr "پێشبینینی ویجیت"
 
-#: admin/options-display.php:409
+#: admin/options-display.php:428
 msgid "Widget title"
 msgstr "ناونیشانی ویجیت"
 
-#: admin/options-display.php:409
+#: admin/options-display.php:428
 msgid "List item"
 msgstr "لیستی پڕگەی ژمارە"
 
-#: admin/options-display.php:413
+#: admin/options-display.php:432
 msgid "Widget item background"
 msgstr "پاشەبنەمای بڕگەکان"
 
-#: admin/options-display.php:414
+#: admin/options-display.php:433
 msgid "Widget item list border"
 msgstr "سنووری لیستی بڕگەی"
 
-#: admin/options-display.php:415
+#: admin/options-display.php:434
 msgid "Widget header border"
 msgstr "سنووری سەرپەڕەی ویجیت"
 
-#: admin/options-display.php:416
+#: admin/options-display.php:435
 msgid "Widget title colour"
 msgstr "ڕەنگی ناونیشانی ویجیت"
 
-#: admin/options-display.php:417
+#: admin/options-display.php:436
 msgid "Widget title text shadow colour"
 msgstr "ڕەنگی سێبەری دەقی ناونیشانی ویجیت"
 
-#: admin/options-display.php:418
+#: admin/options-display.php:437
 msgid "Widget header gradient bottom colour"
 msgstr "ڕەنگی خوارووی گرادیەنتی سەرپەڕەی ویجیت"
 
-#: admin/options-display.php:419
+#: admin/options-display.php:438
 msgid "Widget header gradient top colour"
 msgstr "ڕەنگی سەرووی گرادیەنتی سەرپەڕەی ویجیت"
 
-#: admin/options-display.php:436
+#: admin/options-display.php:439
+msgid "Widget box shadow"
+msgstr "ڕەنگی سێبەری چوارچێوه‌ی ویجیت"
+
+#: admin/options-display.php:456
 msgid "Slider"
 msgstr "سلایدەر"
 
-#: admin/options-display.php:439
+#: admin/options-display.php:459
 msgid "Slider background preview"
 msgstr "پێشبینینی پاشەبنەمای سلایدەر"
 
-#: admin/options-display.php:444
+#: admin/options-display.php:464
 msgid "Slider top left colour"
 msgstr "ڕەنگی لای چەپی سەرووی سلایدەر"
 
-#: admin/options-display.php:445
+#: admin/options-display.php:465
 msgid "Slider bottom right colour"
 msgstr "ڕەنگی لای ڕاستی خوارووی سلایدەر"
 
-#: admin/options-display.php:462
+#: admin/options-display.php:482
 msgid "Block buttons"
 msgstr "دووگمەکانی بلۆک"
 
-#: admin/options-display.php:465
+#: admin/options-display.php:485
 msgid "Block button preview"
 msgstr "پێشبینینی دووگمەی بلۆک"
 
-#: admin/options-display.php:466
+#: admin/options-display.php:486
 msgid "Button label"
 msgstr "پێناسی دووگمە"
 
-#: admin/options-display.php:470
+#: admin/options-display.php:490
 msgid "Button background colour"
 msgstr "ڕەنگی پاشەبنەمای دووگمە"
 
-#: admin/options-display.php:471
+#: admin/options-display.php:491
 msgid "Button label colour"
 msgstr "ڕەنگی پێناسی دووگمە"
 
-#: admin/options-display.php:472
+#: admin/options-display.php:492
 msgid "Button label text shadow"
 msgstr "سێبەری دەقی پێناسی دووگمە"
 
-#: admin/options-display.php:489
+#: admin/options-display.php:493
+msgid "Button box shadow"
+msgstr "سێبەری چوارچێوه‌ی دووگمە"
+
+#: admin/options-display.php:510
 msgid "Archive title"
 msgstr "ناونیشانی ئەرسیف"
 
-#: admin/options-display.php:492
+#: admin/options-display.php:513
 msgid "Archive title preview"
 msgstr "پێشبینینی ناونیشانی دووگمە"
 
-#: admin/options-display.php:493
+#: admin/options-display.php:514
 msgid "Archive title:"
 msgstr "ناونیشانی ئەرشیف"
 
-#: admin/options-display.php:493
+#: admin/options-display.php:514
 msgid "Sample title"
 msgstr "نموونە ناونیشان"
 
-#: admin/options-display.php:497
+#: admin/options-display.php:518
 msgid "Archive background gradient left colour"
 msgstr "ڕەنگی لای چەپی گرادیەنتی پاشەبنەمای ئەرشیف "
 
-#: admin/options-display.php:498
+#: admin/options-display.php:519
 msgid "Archive background gradient right colour"
 msgstr "ڕەنگی لای ڕاستی گرادیەنتی پاشەبنەمای ئەرشیف "
 
-#: admin/options-display.php:499
+#: admin/options-display.php:520
 msgid "Archive label colour"
 msgstr "ڕەنگی پێناسی ئەرشیف"
 
-#: admin/options-display.php:500
+#: admin/options-display.php:521
 msgid "Archive text colour"
 msgstr "ڕەنگی دەقی ئەرشیف"
 
-#: admin/options-display.php:501
+#: admin/options-display.php:522
 msgid "Archive label and text shadow colour"
 msgstr "ڕەنگی سێبەری دەق و پێناسی ئەرشیف"
 
-#: admin/options-display.php:525
-msgid "Text Style Options"
-msgstr "ڕێکخستنەکانی ستایلی تێکست"
+#: admin/options-display.php:539
+msgid "Comments area"
+msgstr "ناوچەی بۆچوونه‌كان"
 
-#: admin/options-display.php:528
-msgid "Note that these are CSS properties, so any valid CSS values for each particular property can be used."
-msgstr "تێبینی ئەوە بکە کە ئەمانە تایبەتمەندی CSS ن، لەبەرئەوە ئەگەری ئەوە هەیە تایبەتمەندی تایبەت بۆ نرخی هەر CSS ێکی دروست بەکاربێت."
-
-#: admin/options-display.php:529
-msgid "Some example CSS properties values:"
-msgstr "هەندێک نمونەی نرخی تایبەتمەندیەکانی  CSS:"
-
-#: admin/options-display.php:532
-msgid "Text font:"
-msgstr "فۆنتی دەق:"
-
-#: admin/options-display.php:536
-msgid "Text size and line height:"
-msgstr "قەبارەی دەق و بەرزی هێڵ"
-
-#: admin/options-display.php:540
-msgid "Text weight:"
-msgstr "کێشی دەق:"
+#: admin/options-display.php:543
+msgid "Comments background"
+msgstr "پاشه‌بنه‌مای بۆچوونه‌كان"
 
 #: admin/options-display.php:544
-msgid "Text style:"
-msgstr "ستایلی دەق:"
+msgid "Comments text"
+msgstr "تێكستی بۆچوونه‌كان"
+
+#: admin/options-display.php:545
+msgid "Threaded comments border"
+msgstr "سنووری بۆچوونه‌كان"
+
+#: admin/options-display.php:546
+msgid "Author comments background"
+msgstr "پاشەبنەمای بۆچوونه‌كانی نووسه‌ر"
+
+#: admin/options-display.php:547
+msgid "Author comments top border"
+msgstr "سنووری سه‌رووی بۆچوونه‌كانی نووسه‌ر"
 
 #: admin/options-display.php:548
-msgid "Text colour:"
-msgstr "ڕەنگی دەق:"
+msgid "Author comments text"
+msgstr "ده‌قی بۆچوونه‌كانی نووسه‌ر"
 
-#: admin/options-display.php:553
-msgid "Header Text"
+#: admin/options-display.php:549
+msgid "Comment form background"
+msgstr "بۆچوونه‌كانی دواوه‌"
+
+#: admin/options-display.php:550
+msgid "Comment form text"
+msgstr "بۆچوون له‌ ده‌قه‌وه‌"
+
+#: admin/options-display.php:565
+#: admin/options-display.php:569
+msgid "Content text"
+msgstr "تێكستی ناوەرۆک"
+
+#: admin/options-display.php:579
+msgid "Title text"
 msgstr "دەقی ناونیشان"
 
-#: admin/options-display.php:557
-msgid "Title text font"
-msgstr "فۆنتی دەقی ناونیشان"
-
-#: admin/options-display.php:563
-msgid "Title text size"
-msgstr "قەبارەی دەقی ناونیشان"
-
-#: admin/options-display.php:569
-msgid "Title text weight"
-msgstr "کێشی دەقی ناونیشان"
-
-#: admin/options-display.php:575
-msgid "Title text line height"
-msgstr "بەرزی هێڵی دەقی ناونیشان"
-
-#: admin/options-display.php:581
-msgid "Title text style"
-msgstr "ستایلی دەقی ناونیشان"
-
-#: admin/options-display.php:590
-msgid "Description text font"
-msgstr "فۆنتی دەقی وەسف"
-
-#: admin/options-display.php:596
-msgid "Description text size"
-msgstr "قەبارەی دەقی وەسف"
-
-#: admin/options-display.php:602
-msgid "Description text weight"
-msgstr "کێشی دەقی وەسف"
-
-#: admin/options-display.php:608
-msgid "Description text line height"
-msgstr "بەرزی هێڵی دەقی وەسف"
-
-#: admin/options-display.php:614
-msgid "Description text style"
-msgstr "ستایلی دەقی وەسف"
-
-#: admin/options-display.php:620
-msgid "Content Text"
-msgstr "دەقی ناوەرۆک"
-
-#: admin/options-display.php:624
-msgid "Text font"
-msgstr "فۆنتی دەق"
-
-#: admin/options-display.php:630
-msgid "Text size"
-msgstr "قەبارەی دەق"
-
-#: admin/options-display.php:636
-msgid "Text line height"
-msgstr "بەرزی هێڵی دەق"
-
-#: admin/options-display.php:642
-msgid "Text colour"
-msgstr "ڕەنگی دەق"
-
-#: admin/options-display.php:652
-msgid "Link Text"
-msgstr "تێکستی بەستەر"
-
-#: admin/options-display.php:656
+#: admin/options-display.php:589
 msgid "Link colour (normal state )"
 msgstr "ڕەنگی بەستەر (دۆخی ئاسایی)"
 
-#: admin/options-display.php:657
+#: admin/options-display.php:590
 msgid "Link colour (visited state )"
 msgstr "ڕەنگی بەستەر (دۆخی سەردانکراوی)"
 
-#: admin/options-display.php:658
+#: admin/options-display.php:591
 msgid "Link colour (hover state )"
 msgstr "ڕەنگی بەستەر (دۆخی دەست لەسەر ڕاگیراو)"
 
-#: admin/options-display.php:675
+#: admin/options-display.php:614
+msgid "Text Style Options"
+msgstr "ڕێکخستنەکانی ستایلی تێکست"
+
+#: admin/options-display.php:617
+msgid "Note that these are CSS properties, so any valid CSS values for each particular property can be used."
+msgstr "تێبینی ئەوە بکە کە ئەمانە تایبەتمەندی CSS ن، لەبەرئەوە ئەگەری ئەوە هەیە تایبەتمەندی تایبەت بۆ نرخی هەر CSS ێکی دروست بەکاربێت."
+
+#: admin/options-display.php:618
+msgid "Some example CSS properties values:"
+msgstr "هەندێک نمونەی نرخی تایبەتمەندیەکانی  CSS:"
+
+#: admin/options-display.php:621
+msgid "Text font:"
+msgstr "فۆنتی دەق:"
+
+#: admin/options-display.php:625
+msgid "Text size and line height:"
+msgstr "قەبارەی دەق و بەرزی هێڵ"
+
+#: admin/options-display.php:629
+msgid "Text weight:"
+msgstr "کێشی دەق:"
+
+#: admin/options-display.php:633
+msgid "Text style:"
+msgstr "ستایلی دەق:"
+
+#: admin/options-display.php:637
+msgid "Text colour:"
+msgstr "ڕەنگی دەق:"
+
+#: admin/options-display.php:642
+msgid "Header Text"
+msgstr "دەقی ناونیشان"
+
+#: admin/options-display.php:646
+msgid "Title text font"
+msgstr "فۆنتی دەقی ناونیشان"
+
+#: admin/options-display.php:652
+msgid "Title text size"
+msgstr "قەبارەی دەقی ناونیشان"
+
+#: admin/options-display.php:658
+msgid "Title text weight"
+msgstr "کێشی دەقی ناونیشان"
+
+#: admin/options-display.php:664
+msgid "Title text line height"
+msgstr "بەرزی هێڵی دەقی ناونیشان"
+
+#: admin/options-display.php:670
+msgid "Title text style"
+msgstr "ستایلی دەقی ناونیشان"
+
+#: admin/options-display.php:679
+msgid "Description text font"
+msgstr "فۆنتی دەقی وەسف"
+
+#: admin/options-display.php:685
+msgid "Description text size"
+msgstr "قەبارەی دەقی وەسف"
+
+#: admin/options-display.php:691
+msgid "Description text weight"
+msgstr "کێشی دەقی وەسف"
+
+#: admin/options-display.php:697
+msgid "Description text line height"
+msgstr "بەرزی هێڵی دەقی وەسف"
+
+#: admin/options-display.php:703
+msgid "Description text style"
+msgstr "ستایلی دەقی وەسف"
+
+#: admin/options-display.php:709
+msgid "Content Text"
+msgstr "دەقی ناوەرۆک"
+
+#: admin/options-display.php:713
+msgid "Text font"
+msgstr "فۆنتی دەق"
+
+#: admin/options-display.php:719
+msgid "Text size"
+msgstr "قەبارەی دەق"
+
+#: admin/options-display.php:725
+msgid "Text line height"
+msgstr "بەرزی هێڵی دەق"
+
+#: admin/options-display.php:731
+msgid "Link Text"
+msgstr "تێکستی بەستەر"
+
+#: admin/options-display.php:735
 msgid "Text decoration (normal state )"
 msgstr "دیکۆری تێکست (دۆخی ئاسایی)"
 
-#: admin/options-display.php:681
+#: admin/options-display.php:741
 msgid "Text decoration (hover state )"
 msgstr "دیکۆری تێکست (دۆخی دەست لەسەر ڕاگیراو)"
 
-#: admin/options-display.php:694
+#: admin/options-display.php:754
 msgid "Footer Widget Display Options"
 msgstr "ڕێکخستنەکانی دەرکەوتنی ویجیتی پێپەڕە"
 
-#: admin/options-display.php:700
+#: admin/options-display.php:760
 msgid "Number of columns to display"
 msgstr "ژمارەی ستوونەکان کە دەتەوێت دەرکەون"
 
-#: admin/options-display.php:707
+#: admin/options-display.php:767
 msgid "Number of columns to display for front page footer widget"
 msgstr "ژمارەی ئەو ستوونانەی لە ویجیتی پێپەرەی پەڕەی سەرەکیدا دەردەکەون"
 
-#: admin/options-display.php:721
+#: admin/options-display.php:781
 msgid "Navigation Menu Display Options"
 msgstr "ڕێکخستنەکانی دەرکەوتنی مینوی ڕێدۆزینەوە Navigation bar"
 
-#: admin/options-display.php:727
+#: admin/options-display.php:787
 msgid "Dropdown menu item width"
 msgstr "پانی بڕگەکانی مینوی کردنەوە بۆ خوارەوە"
 
-#: admin/options-display.php:733
+#: admin/options-display.php:793
 msgid "Disable description in Header Menu"
 msgstr "وەسف ناچالاک بکە لە مینوی سەرپەڕەدا"
 
-#: admin/options-display.php:741
+#: admin/options-display.php:801
 msgid "Description for default menu \"Home\" item"
 msgstr "وەسفی بڕگەی مینوی بنەڕەتی  \"سەرەکی\"  "
 
-#: admin/options-display.php:757
+#: admin/options-display.php:817
 msgid "Miscellaneous Display Options"
 msgstr "ڕێکخسنەکانی دەرکەوتنی شتی جۆراوجۆر"
 
-#: admin/options-display.php:760
+#: admin/options-display.php:820
 msgid "Site title options"
 msgstr "ڕێکخستنەکانی ناونیشانی ماڵپەڕ"
 
-#: admin/options-display.php:761
+#: admin/options-display.php:821
 msgid "Use these tags to customise your own site title structure: <code>#site-name</code>, <code>#site-desc</code>, <code>#post-title</code>"
 msgstr "ئەم تاگانە بەکاربهێنە بۆ ئەوەی پێکهاتەی ناونیشانی ماڵپەڕەکەت خۆماڵی بکەیت: <code>#site-name</code>, <code>#site-desc</code>, <code>#post-title</code>"
 
-#: admin/options-display.php:765
+#: admin/options-display.php:825
 msgid "Custom front page site title"
 msgstr "ناونیشانی خۆچێکراوی ماڵپەڕ لە پەڕەی سەرەکیدا"
 
-#: admin/options-display.php:769
+#: admin/options-display.php:829
 msgid "Defaults to <code>#site-name &raquo; #site-desc</code>. The <code>#post-title</code> tag cannot be used here."
 msgstr "بنەڕەتی <code>#site-name &raquo; #site-desc</code> کە تاگی  <code>#post-title</code>ە ناتوانرێت لێرەدا بەکارببرێت."
 
-#: admin/options-display.php:774
+#: admin/options-display.php:834
 msgid "Custom content pages site title"
 msgstr "ناونیشانی خۆچێکراوی ماڵپەڕ لە پەڕەکاندا"
 
-#: admin/options-display.php:778
+#: admin/options-display.php:838
 msgid "Defaults to <code>#post-title &raquo; #site-name</code>."
 msgstr "دەکرێتە بنەڕەت بۆ <code>#post-title &raquo; #site-name</code>. "
 
-#: admin/options-display.php:783
+#: admin/options-display.php:843
 msgid "Favicon options"
 msgstr "ڕێکخستنەکانی ئایکۆنی دڵخواز"
 
-#: admin/options-display.php:787
+#: admin/options-display.php:847
 msgid "Favicon URL"
 msgstr "ئەدرەسی ئایکۆنی دڵخواز"
 
-#: admin/options-display.php:791
-#: admin/options-general.php:98
+#: admin/options-display.php:851
+#: admin/options-general.php:118
 msgid "Upload or select image from gallery"
 msgstr "وێنەیەک لە کۆمپیوتەرەوە باربکە یان وێنەیەک لە گەلەریەوە هەڵبژێرە"
 
-#: admin/options-display.php:791
+#: admin/options-display.php:851
 msgid "Simply enter the full URL to your favicon file here to enable favicon. Make sure you include the <code>http://</code> in front of the URL as well. Or use the WordPress media uploader to upload an image, or select one from the media library."
 msgstr "بەئاسانی ئەدرەسی تەواوی پەڕگەی ئایکۆنی دڵخواز لێرەدا داخڵبکە بۆئەوەی ئایکۆنی دڵخواز چالاک بکەیت. ئەوەت لەبیر نەچێت کە دەبێت <code>http://</code> لەسەرەتای ئەدرەسەکەوە بنووسیت. یان دەتوانیت بارکەری ڕەنگاڵەی وۆردپرێس بەکاربهێنیت بۆئەوەی وێنەیەک لە کۆمپیوتەرەوە باربکەیت یان وێنەیەک لە ڕەنگاڵەوە هەڵبژێریت."
 
-#: admin/options-display.php:796
+#: admin/options-display.php:856
 msgid "WordPress Editor options"
 msgstr "ڕێکخستنەکانی دەسکاریکەری وۆرد پرێس"
 
-#: admin/options-display.php:800
+#: admin/options-display.php:860
 msgid "Disable custom editor styles"
 msgstr "ستایلەکانی دەستاریکەری خۆچێکراو ناچالاک بکە"
 
-#: admin/options-display.php:813
+#: admin/options-display.php:873
 msgid "Custom CSS"
 msgstr "CSS ی خۆچێکراو"
 
-#: admin/options-display.php:818
+#: admin/options-display.php:878
 msgid "Custom CSS styles"
 msgstr "ستایلەکانی CSS ی خۆچێکراو"
 
-#: admin/options-display.php:820
+#: admin/options-display.php:880
 msgid "You can enter your own CSS codes below to modify any other aspects of the theme's appearance that is not included in the options."
 msgstr "دەتوانیت لە خوارەوە کۆدی CSS ی خۆت داخڵبکەیت بۆئەوەی هەر شتێکی ڕووکارەکە کە لە ڕێکخستنەکاندا نی یە بەئارەزووی خۆت بگۆڕیت."
 
@@ -1232,12 +1291,12 @@ msgid "Show posts from categories"
 msgstr "نیشاندانی بابەت لە هاوپۆلەکانەوە"
 
 #: admin/options-general.php:44
-#: admin/options-general.php:258
+#: admin/options-general.php:278
 msgid "Posts and/or pages to display"
 msgstr "ئەو بابەتانە و/یان ئەو پەڕانەی دەتەوێت دەربکەون"
 
 #: admin/options-general.php:49
-#: admin/options-general.php:263
+#: admin/options-general.php:283
 msgid "Enter ID of posts and/or pages to be displayed, separated by comma. Example: <code>1,13,45,33</code>"
 msgstr "پێناسی ئەو بابەت و/یان پەڕانە داخڵبکە کە دەتەوێت دەربکەون، بە کۆما لە یەکیان جیاکەرەوە. نمونە: <code>1,13,45,33</code>"
 
@@ -1254,498 +1313,530 @@ msgid "All posts within the categories selected here will be displayed on the sl
 msgstr "هەموو بابەتەکانی ناو ئەو هاوپۆلەی لێرەدا هەڵبژێراوە لە سلایدەرەکەدا دەردەکەون. نمونەی بەکارهێنان: هاوپۆلێکی نوێ دروستبکە  \"دیارترین\"  و پاشان هەموو ئەو بابەتانەی کە دەتەوێت لە سلایدەرەکەدا دەربکەون بخەرە ناو ئەو هاوپۆلەوە و ئەنجا ئەو هاوپۆلە لێرەدا هەڵبژێرە."
 
 #: admin/options-general.php:73
+msgid "Exclude the categories from posts listing"
+msgstr "هاوپۆله‌كان له‌ لیستی بابه‌ته‌كان/هه‌واڵه‌كاندا لابه‌ره‌"
+
+#: admin/options-general.php:77
+msgid "Disabled"
+msgstr "ناچالاککراوە"
+
+#: admin/options-general.php:78
+msgid "Home Page"
+msgstr "پەڕەی سەرەکی"
+
+#: admin/options-general.php:79
+msgid "Everywhere"
+msgstr " له‌ هه‌موو شوێنێكدا"
+
+#: admin/options-general.php:85
+msgid "Show posts from categories in random order"
+msgstr "نیشاندانی بابەت لە هاوپۆلەکانەوە  به‌ شێوه‌یه‌كی هه‌ره‌مه‌كی"
+
+#: admin/options-general.php:93
 msgid "Number of posts to display"
 msgstr "ژمارەی بابەتی نیشاندراو"
 
-#: admin/options-general.php:104
+#: admin/options-general.php:124
 msgid "Slider display style"
 msgstr "ستایلی دەرکەوتنی سلایدەر"
 
-#: admin/options-general.php:108
+#: admin/options-general.php:128
 msgid "Thumbnail and excerpt"
 msgstr "وێنۆچکە و پوختە"
 
-#: admin/options-general.php:109
+#: admin/options-general.php:129
 msgid "Background image and excerpt"
 msgstr "وێنەی پاشەبنەما و پوختە"
 
-#: admin/options-general.php:110
+#: admin/options-general.php:130
 msgid "Full post content"
 msgstr "هەموو ناوەرۆکی بابەت"
 
-#: admin/options-general.php:116
+#: admin/options-general.php:136
 msgid "Slider animation"
 msgstr "ئەنیمەیشنی سلایدەر"
 
-#: admin/options-general.php:121
+#: admin/options-general.php:141
 msgid "Horizontal slide"
 msgstr "سلایدەری ئاسۆیی"
 
-#: admin/options-general.php:122
+#: admin/options-general.php:142
 msgid "Vertical slide"
 msgstr "سلایدەری ستوونی"
 
-#: admin/options-general.php:123
+#: admin/options-general.php:143
 msgid "Fade"
 msgstr "کزبوون و لەناوچوون"
 
-#: admin/options-general.php:124
+#: admin/options-general.php:144
 msgid "No effect"
 msgstr "هیچ ئەنیمەیشنێک"
 
-#: admin/options-general.php:130
+#: admin/options-general.php:150
 msgid "Slider height"
 msgstr "بەرزی سلایدەر"
 
-#: admin/options-general.php:138
+#: admin/options-general.php:158
 msgid "Slider speed"
 msgstr "خێرایی سلایدەر"
 
-#: admin/options-general.php:141
-#: admin/options-general.php:150
+#: admin/options-general.php:161
+#: admin/options-general.php:170
 msgid "milliseconds"
 msgstr "میلی چرکە"
 
-#: admin/options-general.php:142
+#: admin/options-general.php:162
 msgid "This is the duration that each slider item will be shown"
 msgstr "ئەمە ئەو ماوەیەیە کە هەر بڕگەیەکی سلایدەرەکە تیایدا نیشان دەدرێت"
 
-#: admin/options-general.php:147
+#: admin/options-general.php:167
 msgid "Slider transition speed"
 msgstr "خێرایی گۆڕانی سلایدەر"
 
-#: admin/options-general.php:151
+#: admin/options-general.php:171
 msgid "This is the speed of the slider transition. Lower values = higher speed."
 msgstr "ئەمە خێرایی گۆڕانی سلایدەرەکەیە. نرخی نزمتر = خێرایی زیاتر"
 
-#: admin/options-general.php:156
+#: admin/options-general.php:176
 msgid "Move slider to bottom of page"
 msgstr "سلیدەر ببەرە بنکەی پەڕەکە"
 
-#: admin/options-general.php:169
+#: admin/options-general.php:189
 msgid "Front Page Options"
 msgstr "ڕێکخستنەکانی پەڕەی سەرەکی"
 
-#: admin/options-general.php:175
+#: admin/options-general.php:195
 msgid "Front page posts categories"
 msgstr "هاوپۆلی بابەتەکانی پەڕەی سەرەکی"
 
-#: admin/options-general.php:177
+#: admin/options-general.php:197
 msgid "Only posts that belong to the categories selected here will be displayed on the front page. Does not affect Static Front Page."
 msgstr "تەنها بابەتەکانی ئەو هاوپۆلەی لێرەدا هەڵدەبژێررێت لە پەڕەی سەرەکیدا نیشاندەدرێن. ئەمە هیچ کار لە پەڕەی سەرەکی جێگیر ناکات"
 
-#: admin/options-general.php:182
+#: admin/options-general.php:202
 msgid "--Disabled--"
 msgstr "--ناچالاککراوە--"
 
-#: admin/options-general.php:190
+#: admin/options-general.php:210
 msgid "You may select multiple categories by holding down the CTRL key."
 msgstr "دەکرێت چەند هاوپۆلێک هەڵبژێریت بەداگرتنی دووگمەی CTRL."
 
-#: admin/options-general.php:202
+#: admin/options-general.php:222
 msgid "Homepage Panes"
 msgstr "توڵبارەکانی لاتەنیشتی پەڕەی سەرەکی"
 
-#: admin/options-general.php:209
+#: admin/options-general.php:229
 msgid "Disable homepage panes"
 msgstr "ناچالاککردنی توڵبارەکانی لاتەنیشتی پەڕەی سەرەکی"
 
-#: admin/options-general.php:219
+#: admin/options-general.php:239
 msgid "Type of content to show"
 msgstr "جۆری ئەو ناورۆکەی کە دەتەوێت نیشانبدرێت"
 
-#: admin/options-general.php:226
+#: admin/options-general.php:246
 msgid "Latest posts by category"
 msgstr "دوا بابەرەکان بەپێی هاوپۆل"
 
-#: admin/options-general.php:229
+#: admin/options-general.php:249
 msgid "Posts and/or pages"
 msgstr "بابەت و/یان پەڕەکان"
 
-#: admin/options-general.php:234
+#: admin/options-general.php:254
 msgid "Number of latest posts to display"
 msgstr "ژمارەی دوا بابەتەکان کە دەتەوێت نیشانبدرێن"
 
-#: admin/options-general.php:238
+#: admin/options-general.php:258
 msgid "Applicable only if <strong>Latest posts</strong> or <strong>Latest posts by category</strong> is selected above."
 msgstr "تەنها کاتێک جێبەجێ دەبێت کە <strong>دوا بابەتەکان</strong> یان <strong>دوابابەتەکان لە هاوپۆلەکانەوە</strong> لە سەرەوە هەڵبژێرابێت."
 
-#: admin/options-general.php:243
+#: admin/options-general.php:263
 msgid "Category to show latest posts from"
 msgstr "ئەو هاوپۆلەی کە دەتەوێت دوا بابەتەکانی نیشانبدرێن"
 
-#: admin/options-general.php:253
+#: admin/options-general.php:273
 msgid "Applicable only if <strong>Latest posts by category</strong> is selected above."
 msgstr "تەنها کاتێک جێبەجێ دەبێت کە  <strong>دوابابەتەکان لە هاوپۆلەکانەوە</strong> لە سەرەوە هەڵبژێرابێت."
 
-#: admin/options-general.php:264
+#: admin/options-general.php:284
 msgid "Applicable only if <strong>Posts and/or pages</strong> is selected above."
 msgstr "تەنها کاتێک جێبەجێ دەبێت کە  <strong>بابەت و/یان پەڕەکان</strong> لە سەرەوە هەڵبژێرابێت."
 
-#: admin/options-general.php:270
+#: admin/options-general.php:290
 msgid "<strong>Note:</strong> homepage panes are only displayed when using a <a href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">static front page</a>."
 msgstr "<strong>تێبینی:</strong> توڵبارەکانی پەڕەی سەرەکی تەنها لە کاتی بەکارهێنانی <a href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">پەڕەی سەرەکی جێگیر</a>دەردەکەون."
 
-#: admin/options-general.php:280
+#: admin/options-general.php:300
 msgid "Comments Options"
-msgstr "	 بۆچوونەکان"
+msgstr "ڕێكخستنه‌كانی  بۆچوونەکان"
 
-#: admin/options-general.php:286
+#: admin/options-general.php:306
 msgid "Commenting"
 msgstr "بۆچوون نووسین"
 
-#: admin/options-general.php:290
+#: admin/options-general.php:310
 msgid "Use WordPress settings"
 msgstr "ڕێکخستنەکانی وۆرد پرێس بەکاربهێنە"
 
-#: admin/options-general.php:291
+#: admin/options-general.php:311
 msgid "Disabled for pages"
 msgstr "بۆ پەڕەکان ناچالاکی بکە"
 
-#: admin/options-general.php:292
+#: admin/options-general.php:312
 msgid "Disabled completely"
 msgstr "بەتەواوی ناچالاکی بکە"
 
-#: admin/options-general.php:294
+#: admin/options-general.php:314
 msgid "Note: this setting overrides the global WordPress Discussion Setting called \"Allow people to post comments on new articles\" and also the \"Allow comments\" option for individual posts/pages."
 msgstr "تێبینی: ئەم ڕێکخستنە لەپێش  ڕێکخستنی گفتوگۆ گشتی یەکانی وۆردپرێسەوە دێت کە پێی دەوترێت  \"ڕێبدە کە خەڵک بۆچوون لەسەر بابەتە نوێکان بنووسن\"هەروەها \"ڕێگەدان بە بۆچوون\" کە ڕێکخستنی بابەت/پەڕەکانە."
 
-#: admin/options-general.php:306
+#: admin/options-general.php:326
 msgid "Child Page Options"
 msgstr "ڕێکخستنەکانی پەڕەی بەچکە"
 
-#: admin/options-general.php:312
+#: admin/options-general.php:332
 msgid "Hide parent box if content is empty"
 msgstr "خانەی باوان بشارەوە ئەگەر بەتاڵ بوو"
 
-#: admin/options-general.php:318
+#: admin/options-general.php:338
 msgid "Child page listings"
 msgstr "لیستی پەڕە بەچکەکان"
 
-#: admin/options-general.php:322
+#: admin/options-general.php:342
 msgid "Show listing"
 msgstr "نیشاندانی لیست"
 
-#: admin/options-general.php:323
+#: admin/options-general.php:343
 msgid "Hide listing"
 msgstr "شاردنەوەی لیست"
 
-#: admin/options-general.php:324
+#: admin/options-general.php:344
 msgid "Only show listing if parent content is empty"
 msgstr "تەنها کاتێک لیست نیشانبدە ئەگەر ناورۆکی باوان بەتاڵ بێت"
 
-#: admin/options-general.php:337
+#: admin/options-general.php:357
 msgid "Widget Area Options"
 msgstr "ڕێکخستنەکانی ناوچەی ویجیت"
 
-#: admin/options-general.php:340
+#: admin/options-general.php:360
 msgid "Header widget area"
 msgstr "ناوچەی ویجیتی سەرپەڕە"
 
-#: admin/options-general.php:341
+#: admin/options-general.php:361
 msgid "<strong>Important:</strong> This widget area is unstyled, as it is often used for advertisement banners, etc. If you enable it, make sure you style it to your needs using the Custom CSS option."
 msgstr "<strong>گرنگ:</strong> ئەم ناوچەی ویجیتە ستایلی نەدراوەتێ، چونکە بەززۆری بۆ بانەری ڕێکلام و شتی تر بەکاردێت. ئەگەر چالاکی بکەیت، لەوە دڵنیابە کە بەشێوەیەک ستایلی بدەیتی کە لەگەڵ پێویستی خۆتدا بگونجێت ئەمەش بە بەکارهێنانی ڕێکخستنی CSS."
 
-#: admin/options-general.php:345
+#: admin/options-general.php:365
 msgid "Enable header widget area"
 msgstr "ناوچەی ویجیتی سەرپەڕە چالااک بکە"
 
-#: admin/options-general.php:354
+#: admin/options-general.php:374
 msgid "Alternate Widgets"
 msgstr "ویجیتە جێگرەوەکان"
 
-#: admin/options-general.php:355
+#: admin/options-general.php:375
 msgid "You can enable the theme to show different widget areas in the front page than the rest of the website. If you enable this option, additional widget areas that will only be displayed on the front page will be added to the Widget settings page."
 msgstr "دەتوانی وا لە ڕووکارەکە بکەیت کە ناوچەی ویجیتەکانی پەڕەی سەرەکی جیاوازبێت لە پەڕەکانی تری ماڵپەڕەکە. ئەگەر ئەم ڕێکخستنە چالاک بکەیت ئەوا ناوچەی ویجیتی زیاتر لەوەی کە تەنها لەپەڕەی سەرەکیدا دەردەکەون لە پەڕەی ڕێکخستنی ویجیتەکاندا دەردەکەون. "
 
-#: admin/options-general.php:358
+#: admin/options-general.php:378
 msgid "Enable alternate front page sidebar widget area"
 msgstr "ناوچەی ویجیتی جێگرەوەی لاتەنیشتی پەڕەی سەرەکی چالاک بکە "
 
-#: admin/options-general.php:362
+#: admin/options-general.php:382
 msgid "Enable alternate front page footer widget area"
 msgstr "ناوچەی ویجیتی جێگرەوەی پێپەڕەی پەڕەی سەرەکی چالاک بکە "
 
-#: admin/options-general.php:363
+#: admin/options-general.php:383
 msgid "You can also specify different column counts for the front page footer widget and the rest-of-site footer widget if you enable this option."
 msgstr "دەشتوانیت ژمارەکردنێکی تر بۆ ستوونەکانی ناوچەی ویجیتی پێپەڕەی پەڕەی سەرەکی و پێپەڕەی پەڕەکانی تر (ئەگەر ئەم ڕێکخستنەت چالاککردبێت) ی ماڵپەڕ دیاری بکەیت  "
 
-#: admin/options-general.php:376
+#: admin/options-general.php:396
 msgid "Top Bar Options"
 msgstr "ڕێکخستنەکانی توڵباری سەرووی ماڵپەڕ Topbar"
 
-#: admin/options-general.php:382
+#: admin/options-general.php:402
 msgid "Hide the top bar"
 msgstr "شاردنەوەی توڵباری سەرووی ماڵپەڕ Topbar"
 
-#: admin/options-general.php:390
-msgid "Hide feed icon"
-msgstr "شاردنەوەی ئایکۆنی RSS"
+#: admin/options-general.php:408
+msgid "Social Media"
+msgstr "تۆڕی کۆمەڵایەتی"
 
-#: admin/options-general.php:394
-msgid "Use custom feed URL"
-msgstr "ئەدرەسێکی خۆچێکراو بۆ RSS بەکاربهێنە"
-
-#: admin/options-general.php:397
-msgid "This custom feed URL will replace the default WordPress RSS feed URL."
-msgstr "ئەم ئەدرەسی RSS ی خۆچێکراوە جێگەی ئەدرەسی RSS ی بنەڕەتی وۆردپرێس دەگرێتەوە."
-
-#: admin/options-general.php:401
+#: admin/options-general.php:411
 msgid "Open social media links in new window"
 msgstr "بەستەری تۆڕەکۆمەڵایەتیەکان لە پەنجەرەیەکی نوێدا بکەرەوە"
 
-#: admin/options-general.php:405
-msgid "Twitter URL"
-msgstr "ئەدرەسی تویتەر"
-
-#: admin/options-general.php:408
-msgid "Enter the URL to your Twitter page."
-msgstr "ئەدرەسی پەڕەی تویتەرەکەت داخڵبکە."
-
-#: admin/options-general.php:412
-msgid "Facebook URL"
-msgstr "ئەدرەسی فەیسبووک"
-
 #: admin/options-general.php:415
-msgid "Enter the URL to your Facebook profile page."
-msgstr "ئەدرەسی پەڕەی پڕۆفایلی فەسبووکەکەت داخڵبکە."
+msgid "<strong>Hint:</strong> drag and drop to rearrange the placement of the social media icons."
+msgstr "<strong>ئامۆژگاری</strong> به‌هۆی ڕاكێشان و به‌ره‌ڵاكردنه‌وه‌ شوێنی ئایكۆنی تۆڕه‌كۆمه‌ڵایه‌تیه‌كان ئاڵوگۆڕ پێبكه‌."
 
-#. translators: %s will be replaced by the social media service name. Example: LinkedIn Title
-#: admin/options-general.php:426
-#, php-format
-msgid "%s Title"
-msgstr "ناونیشانی %s "
-
-#: admin/options-general.php:431
-#, php-format
-msgid "The title is empty and the following title will be shown: <strong>%s</strong>"
-msgstr "ناونیشان بەتاڵە و ئەم ناونیشانەی خوارەوە نیشان دەدرێت: <strong>%s</strong>"
-
-#. translators: %s will be replaced by the social media service name. Example: LinkedIn URL
+#: admin/options-general.php:422
 #: admin/options-general.php:437
-#, php-format
-msgid "%s URL"
-msgstr "ئەدرەس %s"
+#: admin/js/admin.js.php:90
+msgid "Custom"
+msgstr "خۆچێکراو"
 
-#. translators: %s will be replaced by the social media service name. Example: LinkedIn icon URL
-#: admin/options-general.php:442
-#, php-format
-msgid "%s icon URL"
-msgstr "ئەدرەسی ئایکۆن %s"
+#: admin/options-general.php:449
+#: admin/options-general.php:499
+#: admin/js/admin.js.php:110
+msgid "Title attribute"
+msgstr "ئه‌تریبیوتی ناونیشان"
 
-#: admin/options-general.php:445
+#: admin/options-general.php:453
+#: admin/options-general.php:503
+#: admin/js/admin.js.php:114
+msgid "URL"
+msgstr "ئەدرەس"
+
+#: admin/options-general.php:457
+#: admin/options-general.php:505
+msgid "Leave the URL empty to use the default RSS URL."
+msgstr "ئه‌دره‌س بە بەتاڵی جێ بهێڵە بۆ ئه‌وه‌ی ئه‌دره‌سی RSS ی بنه‌ڕه‌تی به‌كارببه‌یت"
+
+#: admin/options-general.php:463
+#: admin/options-general.php:509
+#: admin/js/admin.js.php:97
+msgid "Icon URL"
+msgstr "ئەدرەسی ئایکۆن"
+
+#: admin/options-general.php:467
+#: admin/js/admin.js.php:118
 msgid "Delete"
 msgstr "سڕینەوە"
 
-#: admin/options-general.php:453
-msgid "Add new social media icon"
-msgstr "زیادکردنی ئایکۆنی تۆڕی کۆمەڵایەتی نوێ"
+#: admin/options-general.php:479
+msgid "Add Social Media Profile"
+msgstr "زیادكردنی پڕۆفایلێكی تۆڕێكی کۆمەڵایەتی"
 
-#: admin/options-general.php:465
+#: admin/options-general.php:484
+msgid "Type"
+msgstr "جۆر"
+
+#: admin/options-general.php:487
+msgid "Choose type"
+msgstr "جۆر هه‌ڵبژێره‌"
+
+#: admin/options-general.php:513
+msgid "Add new Social Media Profile"
+msgstr "زیادکردنی پڕۆفایلێكی نوێ ی تۆڕی کۆمەڵایەتی"
+
+#: admin/options-general.php:527
 msgid "Social Sharing Buttons"
 msgstr "دووگمەی بڵاوکردنەوە لە تۆڕەکۆمەڵایەتیەکاندا"
 
-#: admin/options-general.php:470
+#: admin/options-general.php:532
 msgid "Show social sharing button"
 msgstr "نیشاندانی دووگمەی بڵاوکردنەوە لە تۆڕەکۆمەڵایەتیەکاندا"
 
-#: admin/options-general.php:476
+#: admin/options-general.php:538
 msgid "Show in Pages as well?"
 msgstr "لە پەڕەکانیشدا نیشانی بدرێن؟"
 
-#: admin/options-general.php:480
+#: admin/options-general.php:542
+msgid "Show in home and archive pages?"
+msgstr "بابه‌ته‌كه‌ له‌ په‌ڕه‌ی سه‌ره‌كی و په‌ڕه‌ی ئه‌رشیفدا نیشانبدرێت؟"
+
+#: admin/options-general.php:545
+#, php-format
+msgid "Enabling this will cause the social sharing buttons to appear on posts listing pages, like the home page and archive pages. Use the available tags in the code below to get the post's URL, title, and excerpt. Otherwise, all your buttons will share the same URL and title. If you're using AddThis, see the %s."
+msgstr "چالاككردنی ئه‌مه‌ ده‌بێته‌ هۆی ئه‌وه‌ی كه‌ دووگمه‌كانی بڵاوكردنه‌وه‌ له‌ تۆڕه‌ كۆمه‌ڵایه‌تیه‌كاندا له‌ په‌ڕه‌ی بابه‌ته‌كان&هه‌واڵه‌كاندا ده‌ربكه‌ون به‌ هه‌مان شێوه‌ی په‌ڕه‌ی سه‌ره‌كی و په‌ڕه‌كانی ئه‌رشیف. ئه‌و تاگانه‌ی له‌م كۆده‌ی خواره‌وه‌دان به‌كاربهێنه‌ بۆئه‌وه‌ی ئه‌دره‌س و سه‌ردێڕ و پوخته‌ی ئه‌م بابه‌تانه‌/هه‌واڵانه‌ت چنگبكه‌وێت، ئه‌گه‌ر وانه‌كیت ئه‌وا هه‌موو دووگمه‌كان هه‌مان ئه‌دره‌س و سه‌ردێڕ به‌كارده‌به‌ن. ئه‌گه‌ر AddThis به‌كارده‌به‌یت سه‌یری %s  بكه‌."
+
+#: admin/options-general.php:545
+msgid "AddThis Client API"
+msgstr "API ی AddThis ی به‌كارهێنه‌ر"
+
+#: admin/options-general.php:549
 msgid "Social sharing buttons location"
 msgstr "شوێنی دووگمەکانی بڵاوکردنەوە لە تۆڕەکۆمەڵایەتیەکاندا"
 
-#: admin/options-general.php:483
+#: admin/options-general.php:552
 msgid "Bottom of posts"
 msgstr "خوارووی بابەتەکان"
 
-#: admin/options-general.php:484
+#: admin/options-general.php:553
 msgid "Top of posts"
 msgstr "سەرووی بابەتەکان"
 
-#: admin/options-general.php:485
+#: admin/options-general.php:554
 msgid "Both top and bottom"
 msgstr "سەروو و خوارووی بابەتەکان"
 
-#: admin/options-general.php:491
+#: admin/options-general.php:560
 msgid "Your social sharing button code"
 msgstr "کۆدی دوگمەی بڵاوکردنەوە لە تۆڕەکۆمەڵایەتیەکاندا"
 
-#: admin/options-general.php:492
+#: admin/options-general.php:561
 msgid "You can use codes from any popular social sharing sites, like Facebook, Digg, AddThis, etc."
 msgstr "دەتوانیت کۆدی تۆڕەکۆمەڵایەتیە باوەکانی وەک فەیسبووک و Digg و AddThis و هی تر بەکاربهێنیت. "
 
-#: admin/options-general.php:495
+#: admin/options-general.php:564
 msgid "You may use these tags to get the post's URL, title, and excerpt:"
 msgstr "دەکرێت ئەم تاگانە بەکاربهێنیت بۆئەوەی ئەدرەس و ناونیشان و پوختەی بابەتەکان وەربگریت:"
 
-#: admin/options-general.php:507
+#: admin/options-general.php:576
 msgid "Adsense Options"
 msgstr "ڕێکخستنەکانی Adsense"
 
-#: admin/options-general.php:513
+#: admin/options-general.php:582
 msgid "Show Adsense advertising"
 msgstr "نیشاندانی ڕێکلامی Adsense "
 
-#: admin/options-general.php:521
+#: admin/options-general.php:590
 msgid "Show ads on front page as well"
 msgstr "نیشاندانی ڕێکلامی تر لە پەڕەی سەرەکیدا"
 
-#: admin/options-general.php:527
+#: admin/options-general.php:596
 msgid "Your Adsense code"
 msgstr "کۆدی Adsense ی خۆت"
 
-#: admin/options-general.php:540
+#: admin/options-general.php:609
 msgid "Google Analytics Options"
 msgstr "ڕێکخستنەکانی Google Analytics"
 
-#: admin/options-general.php:545
+#: admin/options-general.php:614
 msgid "Enable Google Analytics tracking"
 msgstr "شوێنپێهەڵگرتنی Google Analytics چالاک بکە"
 
-#: admin/options-general.php:552
+#: admin/options-general.php:621
 msgid "<strong>Note:</strong> the theme now places the Google Analytics script in the <code>&lt;head&gt;</code> element to better support the new asynchronous Google Analytics script. Please make sure you update your script to use the new asynchronous script from Google Analytics."
 msgstr "<strong>تێبینی: </strong>ئێستا ڕووکارەکە سکریپتی Googlw Analytics دەخاتە ناو بەشی <code>&lt;head&gt;</code> ە وە بۆئەوەی باشتر پشتیوانی لە هاوکاتکردنی سکریپتی Google Analytics بکات. تکایە لەوە دڵنیابە کە سکریپتەکەت نوێکردۆتەوە بۆئەوەی سکریپتی هاوکاتکراوی نوێی Google Analytics بەکارببەیت."
 
-#: admin/options-general.php:556
+#: admin/options-general.php:625
 msgid "Google Analytics tracking code"
 msgstr "کۆدی شوێنپێهەڵگرتنی Google Analytics"
 
-#: admin/options-general.php:557
+#: admin/options-general.php:626
 msgid "Make sure you include the full tracking code (including the <code>&lt;script&gt;</code> and <code>&lt;/script&gt;</code> tags) and not just the <code>UA-#######-#</code> code."
 msgstr "لەوە دڵنیابە کە هەموو کۆدی شوێنپێهەڵگرتنەکەت داخڵکردووە (بە تاگەکانی  <code>&lt;script&gt;</code> و <code>&lt;/script&gt;</code> شەوە) نەک تەنها کۆدی <code>UA-#######-#</code>."
 
-#: admin/options-general.php:570
+#: admin/options-general.php:639
 msgid "Footer Options"
 msgstr "ڕێکخستنەکانی پێپەڕە"
 
-#: admin/options-general.php:575
+#: admin/options-general.php:644
 msgid "Use Creative Commons licence for content"
 msgstr "لیسانسی Creative Commons licence بۆ ناوەرۆکی ماڵپەڕ بەکاربهێنە."
 
-#: admin/options-general.php:580
+#: admin/options-general.php:649
 msgid "Copyright text (html allowed)"
 msgstr "تێکستی مافی لەبەرگرتنەوە  (html ڕێگە پێدراوە)"
 
-#: admin/options-general.php:581
+#: admin/options-general.php:650
 msgid "If this field is empty, the following default copyright text will be displayed:"
 msgstr "ئەگەر ئەم خانەیە بەتاڵبێت، ئەوا ئەم تێکستە بنەڕەتیە بۆ مافی لەبەرگرتنەوە دەردەکەوێت:"
 
-#: admin/options-general.php:587
+#: admin/options-general.php:656
 msgid "Do not show copyright info"
 msgstr "زانیاری مافی لەبەرگرتنەوە نیشان مەدە"
 
-#: admin/options-general.php:591
+#: admin/options-general.php:660
 msgid "Do not show the \"Return to top\" link"
 msgstr "بەستەری \"گەڕانەوە بۆ سەرەوە\" نیشان مەدە"
 
-#: admin/options-general.php:603
+#: admin/options-general.php:672
 msgid "Print Options"
 msgstr "ڕێکخستنەکانی چاپکردن"
 
-#: admin/options-general.php:608
+#: admin/options-general.php:677
 msgid "Enable print CSS for single posts and pages?"
 msgstr "چاپکردنی CSS بۆ تاکە بابەت و پەڕەکان چالاک بکرێت؟"
 
-#: admin/options-general.php:614
+#: admin/options-general.php:683
 msgid "Show print button"
 msgstr "نیشاندانی دووگمەی چاپکردن"
 
-#: admin/options-import.php:38
-#: admin/options-import.php:169
-#: admin/options-presets.php:48
+#: admin/options-import.php:47
+#: admin/options-import.php:178
+#: admin/options-presets.php:47
 #: admin/uninstall.php:32
 msgid "ERROR: You are not authorised to perform that operation"
 msgstr "هەڵە: تۆ ڕێگەت پێنەدراوە ئەو کردارە جێبەجێبکەیت"
 
-#: admin/options-import.php:59
+#: admin/options-import.php:68
 msgid "Before you can upload your import file, you will need to fix the following error:"
 msgstr "پێشئەوەی بتوانیت پەڕگە هاوردەکراوەکەت باربکەیت، پێویستە ئەم هەڵەیەی لای خوارەوە ڕاستبکەیتەوە:"
 
-#: admin/options-import.php:65
-#: admin/options-import.php:98
+#: admin/options-import.php:74
+#: admin/options-import.php:107
 msgid "Import Graphene Theme Options"
 msgstr "ڕێکخستنەکانی ڕووکاری گرافین بهێنەرە ناوەوە."
 
-#: admin/options-import.php:67
+#: admin/options-import.php:76
 msgid "<strong>Note:</strong> This is an experimental feature. Please report any problem at the <a href=\"http://forum.khairul-syahir.com/forum/bug-report\">Support Forum</a>."
 msgstr "<strong>تێبینی: </strong> ئەم تایبەتمەندیە لەژێر تاقیکردنەوەدایە. تکایە هەر کێشەیەک هەبوو لە <a href=\"http://forum.khairul-syahir.com/forum/bug-report\">مەکۆکانی یاارمەتیدا</a> پێمان بڵێ."
 
-#: admin/options-import.php:69
+#: admin/options-import.php:78
 msgid "Choose a file from your computer:"
 msgstr "پەڕگەیەک لە کۆمپیوتەرەوە هەڵبژێرە"
 
-#: admin/options-import.php:69
+#: admin/options-import.php:78
 #, php-format
 msgid "Maximum size: %s"
 msgstr "گەورەترین قەبارە: %s"
 
-#: admin/options-import.php:76
+#: admin/options-import.php:85
 msgid "Upload file and import"
 msgstr "پەڕگە باربکە و بیهێنە ناوەوە"
 
-#: admin/options-import.php:141
+#: admin/options-import.php:150
 msgid "Options import completed"
 msgstr "هاوردنی ڕێکخستنەکاان تەواوبوو"
 
-#: admin/options-import.php:142
+#: admin/options-import.php:151
 msgid "Go to the Graphene options page"
 msgstr "بڕۆ بۆ پەڕەی ڕێکخستنەکانی ڕووکاری گرافین"
 
-#: admin/options-import.php:145
-#: admin/options-import.php:150
-#: admin/options-import.php:155
+#: admin/options-import.php:154
+#: admin/options-import.php:159
+#: admin/options-import.php:164
 msgid "Sorry, there has been an error."
 msgstr "بەداخەوە، هەڵەیەک ڕوویدا."
 
-#: admin/options-import.php:146
+#: admin/options-import.php:155
 msgid "The uploaded file does not contain valid Graphene options."
 msgstr "پەڕگە بارکراوەکە هیچ ڕێکخستنێکی دروستی ڕووکاری گرافینی تێدا نی یە."
 
-#: admin/options-import.php:151
+#: admin/options-import.php:160
 msgid "The uploaded file could not be read."
 msgstr "پەڕگە بارکراوەکە نەتوانرا بخوێنرێتەوە"
 
-#: admin/options-import.php:156
+#: admin/options-import.php:165
 msgid "The uploaded file is not supported."
 msgstr "جۆری پەڕگە بارکراوەکە نە ناسراوە"
 
-#: admin/options-import.php:164
+#: admin/options-import.php:173
 msgid "File is empty. Please upload something more substantial. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini."
 msgstr "پەڕگەکە بەتاڵە. تکایە شتێکی تری باشتر باربکە. ئەم هەڵەیە لەو کاتەشدا ڕوودەدات ئەگەر بارکردن لە پەڕگەی php.ini دا ناچالاککرابێت یان post_max_size  نرخێکی بچووکتری لە upload_max_filesize لە php.ini دا بۆ دیاریکرابێت"
 
-#: admin/options-init.php:34
+#: admin/options-init.php:35
 msgid "Graphene Options"
 msgstr "ڕێکخستنەکانی ڕووکاری گرافیبن"
 
-#: admin/options-init.php:35
+#: admin/options-init.php:36
 msgid "Graphene FAQs"
 msgstr "پرسیارە هەمیشە دووبارەبووەکانی ڕووکاری گرافین"
 
-#: admin/options-init.php:85
+#: admin/options-init.php:86
 msgid "Toggle all options boxes"
 msgstr "هەموو بۆکسی ڕێکخستنەکان دابخە/بکەرەوە"
 
-#: admin/options-init.php:127
+#: admin/options-init.php:128
 msgid "Template preview not found."
 msgstr "پێشبینینی تێمپلەیت نەدۆزرایەوە"
 
-#: admin/options-init.php:130
+#: admin/options-init.php:131
 msgid "default"
 msgstr "بنەڕەت"
 
-#: admin/options-init.php:186
-#: admin/options-init.php:190
+#: admin/options-init.php:187
+#: admin/options-init.php:191
 msgid "Theme default"
 msgstr "بنەڕەتەکانی ڕووکار"
 
-#: admin/options-presets.php:36
+#: admin/options-presets.php:35
 msgid "The \"Normal website\" settings preset has been applied."
 msgstr " \"ڕێکخستنە ئاساییەکاانی\" ماڵپەڕ کە ئێستا جێبەجێکراون."
 
-#: admin/options-presets.php:41
+#: admin/options-presets.php:40
 msgid "Settings have been reset."
 msgstr "ڕێکخستنەکان گێڕڕانەوە بۆ باری سەرەتا"
 
@@ -1765,320 +1856,321 @@ msgstr "هەڵە: دەبێت بەلایەنی کەمەوە هاوپۆلێکت ه
 msgid "ERROR: Invalid category selected for the slider categories."
 msgstr "هەڵە: هاوپۆلێکی نادروست بۆ هاوپۆلی سلایدەرەکە هەڵبژێراوە"
 
-#: admin/options-validator.php:46
+#: admin/options-validator.php:44
+msgid "ERROR: Invalid option for the slider categories exclusion from posts listing is specified."
+msgstr "هەڵە: هه‌ڵبژاردنێكی نادرووست بۆ هاوپۆله‌كانی سلایده‌ر به‌ده‌ر له‌ لیستی بابه‌ت/هه‌واڵه‌كان دیاریكراوه‌."
+
+#: admin/options-validator.php:50
 msgid "ERROR: The number of posts to displayed in the slider must be a an integer value."
 msgstr "هەڵە: ژمارەی ئەو بابەتانەی کە دەتەوێت لە سلایدەرکەدا نیشان بدرێن دەبێت ژمارەیەکی تەواو بێت."
 
-#: admin/options-validator.php:49
+#: admin/options-validator.php:53
 msgid "ERROR: Invalid option for the slider image is specified."
 msgstr "هەڵە: ڕێکخستنێکی نادروست بۆ وێنەی سلایدەرەکە دیاریکراوە"
 
-#: admin/options-validator.php:51
+#: admin/options-validator.php:55
 msgid "ERROR: Bad URL entered for the custom slider image URL."
 msgstr "هەڵە: ئەدرەسێکی ناڕاست بۆ ئەدرەسی وێنەی سلایدەری خۆچێکراو داخڵکروە"
 
-#: admin/options-validator.php:53
+#: admin/options-validator.php:57
 msgid "ERROR: Invalid option for the slider display style is specified."
 msgstr "هەڵە: ڕێکخستنێکی نادروست بۆ ستایلی دەرکەوتنی سلایدەرەکە دیاریکراوە"
 
-#: admin/options-validator.php:55
+#: admin/options-validator.php:59
 msgid "ERROR: The value for slider height must be an integer."
 msgstr "هەڵە: نرخی بەرزی سلایدەرەکە دەبێت ژمارەیەکی تەواو بێت."
 
-#: admin/options-validator.php:57
+#: admin/options-validator.php:61
 msgid "ERROR: The value for slider speed must be an integer."
 msgstr "هەڵە: نرخی خێرایی سلایدەرەکە دەبێت ژمارەیەکی تەواو بێت."
 
-#: admin/options-validator.php:59
+#: admin/options-validator.php:63
 msgid "ERROR: The value for slider transition speed must be an integer."
 msgstr "هەڵە: نرخی خێرایی گواستنەوەی سلایدەرەکە دەبێت ژمارەیەکی تەواو بێت."
 
-#: admin/options-validator.php:61
+#: admin/options-validator.php:65
 msgid "ERROR: Invalid slider animation."
 msgstr "هەڵە: ئەنیمەیشنێکی نادروست بۆ سلایدەرەکە"
 
-#: admin/options-validator.php:75
+#: admin/options-validator.php:79
 msgid "ERROR: Invalid category selected for the front page posts categories."
 msgstr "هەڵە: هاوپۆلێکی نادروست هەڵبژێراوە بۆ هاوپۆلی بابەتەکانی پەڕەی سەرەکی."
 
-#: admin/options-validator.php:86
+#: admin/options-validator.php:90
 msgid "ERROR: Invalid option for the type of content to show in homepage panes."
 msgstr "هەڵە: ڕێکخستنێکی نادروست بۆ ئەو جۆری ناوەرۆکەی کە دەتەوێت لە توڵبارەکانی پەڕەی سەرکیدا دەربکەوێت."
 
-#: admin/options-validator.php:88
+#: admin/options-validator.php:92
 msgid "ERROR: The value for the number of latest posts to display in homepage panes must be an integer."
 msgstr "هەڵە: نرخی ژمارەی ئەو دوا بابەتانەی کە دەتەوێت لە توڵبارەکانی پەڕەی سەرەکیدا دەربکەون دەبێت ژمارەیەکی تەواو بێت."
 
-#: admin/options-validator.php:93
+#: admin/options-validator.php:97
 msgid "ERROR: Invalid category selected for the latest posts to show from in the homepage panes."
 msgstr "هەڵە: هاوپۆلی نادروست کە دوا بابەتەکانی ناو توڵبارەکانی پەڕەی سەرەکی تێدایە هەڵبژێراوە"
 
-#: admin/options-validator.php:107
+#: admin/options-validator.php:111
 msgid "ERROR: Invalid option for the comments option."
 msgstr "هەڵە: ڕێکخستنی نادروست بۆ ڕێکخستنەکانی بۆچوونەکان"
 
-#: admin/options-validator.php:116
+#: admin/options-validator.php:120
 msgid "ERROR: Invalid option for the child page listings."
 msgstr "هەڵە: ڕێکخستنی نادروست بۆ ڕیزکردنی پەڕە بەچکەکان"
 
-#: admin/options-validator.php:134
-msgid "ERROR: Bad URL entered for the custom feed URL."
-msgstr "هەڵە: ئەدرەسێکی ناڕاست بۆ ئەدرەسی RSS ی خۆچێکراو داخڵکراوە"
+#: admin/options-validator.php:131
+msgid "ERROR: You must supply an URL for the custom RSS Feed."
+msgstr "هەڵە: ده‌بێت ئه‌دره‌سێك بۆ RSS ه‌ خۆچێكراوه‌كه‌ داخڵبكه‌یت."
 
-#: admin/options-validator.php:138
-msgid "ERROR: Bad URL entered for the Twitter URL."
-msgstr "هەڵە: ئەدرەسێکی ناڕاست بۆ ئەدرەسی تویتەر داخڵکروە"
+#: admin/options-validator.php:133
+msgid "ERROR: Bad URL entered for the custom RSS Feed URL."
+msgstr "هەڵە: ئەدرەسێکی ناڕاست بۆ ئەدرەسی RSS ی خۆچێکراو داخڵکراوه‌"
 
-#: admin/options-validator.php:140
-msgid "ERROR: Bad URL entered for the Facebook URL."
-msgstr "هەڵە: ئەدرەسێکی ناڕاست بۆ ئەدرەسی فەیسبووک داخڵکراوە"
+#: admin/options-validator.php:164
+#, php-format
+msgid "ERROR: Bad URL entered for the %s URL."
+msgstr "هەڵە: ئەدرەسێکی ناڕاست بۆ ئەدرەسی  %s داخڵکروە"
 
-#: admin/options-validator.php:152
-msgid "ERROR: Bad URL entered for the social media icon URL."
-msgstr "هەڵە: ئەدرەسێکی ناڕاست بۆ ئەدرەسی ئایکۆنی تۆڕی کۆمەڵایەتی داخڵكراوە."
-
-#: admin/options-validator.php:153
-msgid "ERROR: Bad URL entered for the social media URL."
-msgstr "هەڵە: ئەدرەسێکی ناڕاست بۆ ئەدرەسی تۆڕی کۆمەڵایەتی داخڵكراوە."
-
-#: admin/options-validator.php:169
+#: admin/options-validator.php:190
 msgid "ERROR: Invalid option for the social sharing buttons location."
 msgstr "هەڵە: ڕێکخستنێکی نادروست بۆ شوێنی دووگمەی بڵاوکردنەوە لە تۆڕەکۆمەڵایەتیەکاندا."
 
-#: admin/options-validator.php:229
+#: admin/options-validator.php:250
+msgid "ERROR: The value for the header image height must be an integer."
+msgstr "هەڵە: نرخی بەرزی وێنه‌ی سه‌رپه‌ڕه‌ دەبێت ژمارەیەکی تەواو بێت."
+
+#: admin/options-validator.php:251
 msgid "ERROR: Invalid option for the Search box location."
 msgstr "هەڵە: ڕێکخستنێکی نادروست بۆ شوێنی سندوقی گەڕان."
 
-#: admin/options-validator.php:234
+#: admin/options-validator.php:256
 msgid "ERROR: Invalid option for the column mode."
 msgstr "هەڵە: ڕێکستنێکی نادروست بۆ شێوازی ستوونەکان"
 
-#: admin/options-validator.php:235
+#: admin/options-validator.php:257
 msgid "ERROR: Invalid option for the bbPress column mode."
 msgstr "هەڵە: ڕێکستنێکی نادروست بۆ شێوازی bbPress ی ستوونەکان"
 
-#: admin/options-validator.php:242
+#: admin/options-validator.php:264
 #, php-format
 msgid "ERROR: Invalid width for %s. Width value must be positive number without units."
 msgstr "هەڵە: پانیەکی نادروست بۆ %s. نری پانی دەبێت ژمارەیەکی موجەب بێت و هیچ یەکەیەکی نەبێت."
 
-#: admin/options-validator.php:250
+#: admin/options-validator.php:272
 msgid "ERROR: Invalid option for the post date display."
 msgstr "هەڵە: ڕێکستنێکی نادروست بۆ دەرکەوتنی بەرواری بابەتەکە."
 
-#: admin/options-validator.php:316
+#: admin/options-validator.php:353
 msgid "ERROR: The number of columns to be displayed in the footer widget must be a an integer value."
 msgstr "هەڵە: ژمارەی ستوونەکانی کە دەتەوێت لە ناوچەی ویجیتی پێپەڕەدا دەربکەون دەبێت ژمارەیەکی تەواو بێت."
 
-#: admin/options-validator.php:321
+#: admin/options-validator.php:358
 msgid "ERROR: The width of the submenu must be a an integer value."
 msgstr "هەڵە: پانی بنە مینوەکان دەبێت ژمارەیەکی تەواوبێت"
 
-#: admin/options-validator.php:329
+#: admin/options-validator.php:366
 msgid "ERROR: Bad URL entered for the favicon URL."
 msgstr "هەڵە: ئەدرەسێکی ناڕاست بۆ ئەدرەسی ئایکۆنی دڵخواز داخڵکراوە."
 
-#: admin/options-validator.php:344
+#: admin/options-validator.php:381
 msgid "ERROR: Invalid action hook selected widget action hooks."
 msgstr "هەڵە: نیشانەکردنێکی چالاکی نادروست بۆ ویجیتی هەڵبژێراو."
 
-#: admin/options.php:81
+#: admin/options.php:84
 #: admin/uninstall.php:23
 msgid "Uninstall Graphene"
 msgstr "سڕینەوەی گرافین"
 
-#: admin/options.php:82
+#: admin/options.php:85
 msgid "Please confirm that you would like to uninstall the Graphene theme. All of the theme's options in the database will be deleted."
 msgstr "تکایە ئەوە پشتڕاست بکەرەوە کە دەتەوێت دامەزراندنی ڕووکاری گراافین هەڵبوەشێنیتەوە. هەموو ڕێکخستنەکانی ڕووکارەکە لە بنەکی دراوەکاندا دەسڕێنەوە."
 
-#: admin/options.php:83
+#: admin/options.php:86
 msgid "This action is not reversible."
 msgstr "ئەم کردارە پاشگەزبوونەوەی نی یە."
 
-#: admin/options.php:87
-#: admin/options.php:339
+#: admin/options.php:90
+#: admin/options.php:342
 msgid "Uninstall Theme"
 msgstr "سڕینەوەی ڕووکار"
 
-#: admin/options.php:101
+#: admin/options.php:104
 msgid "Graphene Theme Options"
 msgstr "ڕێکخستنەکانی ڕووکاری گرافین"
 
-#: admin/options.php:103
+#: admin/options.php:106
 msgid "These are the global settings for the theme. You may override some of the settings in individual posts and pages."
 msgstr "ئەمانە ڕێکخستنە گشتی یەکانی ڕووکارەکەن. دەکرێت هەندێك لەم ڕێکخستنانە ڕێکخستنی تریان لە تاکە بابەت و پەڕەکاندا بەسەردا زاڵ بکەیت."
 
-#: admin/options.php:111
+#: admin/options.php:114
 msgid "General"
 msgstr "گشتی"
 
-#: admin/options.php:112
+#: admin/options.php:115
 msgid "Display"
 msgstr "دەرکەوتن"
 
-#: admin/options.php:113
+#: admin/options.php:116
 msgid "Advanced"
 msgstr "پێشکەوتوو"
 
-#: admin/options.php:152
+#: admin/options.php:155
 msgid "Save Options"
 msgstr "ڕێکخستنەکان پاشەکەوت بکە"
 
-#: admin/options.php:164
+#: admin/options.php:167
 msgid "Need help?"
 msgstr "یارمەتیت پێویستە؟"
 
-#: admin/options.php:168
+#: admin/options.php:171
 msgid "Documentation Wiki"
 msgstr "ویکی دۆکۆمێنتەکان"
 
-#: admin/options.php:169
+#: admin/options.php:172
 msgid "Support Forum"
 msgstr "مەکۆکانی یارمەتی و پشتیوانی"
 
-#: admin/options.php:171
+#: admin/options.php:174
 #, php-format
 msgid "Also, find out how you can %s."
 msgstr "هەروەها ببینە چۆن دەتوانیت %s."
 
-#: admin/options.php:171
+#: admin/options.php:174
 msgid "support the Graphene theme"
 msgstr "پشتیوانی ڕووکاری گرافین بکە"
 
-#: admin/options.php:178
+#: admin/options.php:181
 msgid "Support the developer"
 msgstr "پشتیوانی پەرەپێدەرەکە بکە"
 
-#: admin/options.php:181
+#: admin/options.php:184
 msgid "Developing this awesome theme took a lot of effort and time, months and months of continuous voluntary unpaid work. If you like this theme or if you are using it for commercial websites, please consider a donation to the developer to help support future updates and development."
 msgstr "دانان و پەرەپێدانی ئەم ڕووکارە کاتێکی زۆری خایاندووە و ڕەنجی زۆری لەگەڵ کێشراوە. تکایە ئەگەر ڕووکارەکە بۆ مەبەستی بازرگانی بەکاردەبەیت بزانە بەڵکو بتوانیت هاوکاریەکی دارایی دانەری ڕووکارەکە بکەیت بۆئەوەی بەهۆی ئەمەوە بەشداری بکەیت لە بەردەوامی پێدان و پەرەپێدانی زیاتری ڕووکارەکە."
 
-#: admin/options.php:195
+#: admin/options.php:198
 msgid "Graphene Theme news"
 msgstr "نوێکاریەکانی ڕووکاری گرافین"
 
-#: admin/options.php:206
+#: admin/options.php:209
 msgid "No news items."
 msgstr "هیچ بڕگەیەکی نوێ نی یە."
 
-#: admin/options.php:223
+#: admin/options.php:226
 msgid "Graphene Usage Survey"
 msgstr "ڕاپرسی بەکارهێنانی ڕووکاری گرافین"
 
-#: admin/options.php:226
+#: admin/options.php:229
 msgid "Help us to get to know you better. Take the Graphene theme usage survey now! Every opinion counts towards making the theme better. The survey is very short, and is completely anonymous."
 msgstr "  یارمەتیمان بدە بۆئەوەی باشتر بتناسین، ئێستا ڕاپرسی بەکارهێنانی ڕووکاری گرافین ئەنجامبدە! هەموو ڕا و بۆچوونەکان بەشداری دەکەن لە باشترکردنی ڕووکارەکەدا. ڕاپرسیەکە ۆر کورتە و بەتەواوی نهێنی یە"
 
-#: admin/options.php:227
+#: admin/options.php:230
 msgid "Take the survey"
 msgstr "ڕاپرسی ئەنجامندە"
 
-#: admin/options.php:237
+#: admin/options.php:240
 msgid "Add-ons and plugins"
 msgstr "زیادکراو و پێوەکراو"
 
-#: admin/options.php:240
+#: admin/options.php:243
 msgid "Add-ons"
 msgstr "زیادکراو"
 
-#: admin/options.php:241
+#: admin/options.php:244
 msgid "Add-ons are not shipped with the theme, but can be installed separately to extend the theme's capability."
 msgstr "زیادکراوە لەگەڵ ڕووکارەکەدا نەهاتوون، بەڵام دەکرێت بە جیا دابمەزرێنرێن بۆئەوەی تواناکانی ڕووکارەکە بەهێزتر بکرێن."
 
-#: admin/options.php:245
+#: admin/options.php:248
 msgid "Installed"
 msgstr "دامەزرێنراوە"
 
-#: admin/options.php:246
-#: admin/options.php:265
+#: admin/options.php:249
+#: admin/options.php:268
 msgid "Not installed"
 msgstr "دانەمەزراوە"
 
-#: admin/options.php:246
+#: admin/options.php:249
 msgid "Learn more"
 msgstr "زیاتر فێرببە"
 
-#: admin/options.php:247
+#: admin/options.php:250
 msgid "Mobile extension developed specifically for optimised display of your site on mobile devices, such as iPhone and Android devices."
 msgstr "زیادکراوەی مۆبایل بەتایبەتی پەرەیانپێدراوە بۆئەوەی ماڵپەڕەکەت بەباشترین شیوە لە ئامێری مۆبایلەکانی وەک ئایفۆن و مۆبایلە ئاندرۆیدەکاندا دەربکەوێت."
 
-#: admin/options.php:250
+#: admin/options.php:253
 msgid "Plugins"
 msgstr "پێوەکراو"
 
-#: admin/options.php:251
+#: admin/options.php:254
 msgid "The plugins listed here are natively supported by the theme. All you need to do is install the plugins and activate them."
 msgstr "ئەم پێوەکراوانەی لە خوارەوە ڕیزکراون هەر لەبنەڕەتدا لەلایەن ڕووکارەکەوە پشتیوانیکراون. ئەوەی تۆ دەبێت بیکەیت تەها ئەوەیە پێوەکراوەکان دابمەزرێنیت و چالاکیان بکەیت. "
 
-#: admin/options.php:264
+#: admin/options.php:267
 msgid "Activated"
 msgstr "چالاککرا"
 
-#: admin/options.php:277
+#: admin/options.php:280
 msgid "Options Presets"
 msgstr "ڕێکخستنە پێشتر دیاریکراوەکان"
 
-#: admin/options.php:280
+#: admin/options.php:283
 msgid "The default settings for the theme is preconfigured for use in blogs. If you're using this theme primarily for a normal website, or if you want to reset the settings to their default values, you can apply one of the available options presets below."
 msgstr "ڕێکخستنە بنەڕەتیەکانی ڕووکارەکە پێشتر ڕێکخراون بۆئەوەی بۆ بلاگ بەکاربێت. ئەگەر تۆ بەشێوەیەکی سەرەکی ڕووکارەکە بۆ ماڵپەڕە ئاساییەکان بەکاربهێنیت یان ئەگەر بتەوێت ڕێکخستنەکان بگێڕیتەوە بۆ نرخە بنەڕەتیەکانیان ئەوا دەتوانیت یەکێک لەم دوو هەڵبژاردنانەی لای خوارەوە جێبەجێ بکەیت."
 
-#: admin/options.php:281
+#: admin/options.php:284
 msgid "Note that you can still configure the individual settings after you apply any preset."
 msgstr "تێبینی ئەوە بکە کە هەر دەتوانیت گۆڕان لە ڕێکخستنە تاکەکاندا بکەیت دوای ئەوەش هەر نرخدانانێکت جێبەجێ کردبێت."
 
-#: admin/options.php:286
+#: admin/options.php:289
 msgid "Select Options Preset"
 msgstr "ڕێکخستنە پێشتر دیاریکراوەکان هەڵبژێرە"
 
-#: admin/options.php:289
+#: admin/options.php:292
 msgid "Normal website"
 msgstr "ماڵپەڕی ئاسایی"
 
-#: admin/options.php:292
+#: admin/options.php:295
 msgid "Reset to default settings"
 msgstr "گێڕڕانەوە بۆ ڕێکخستنە بنەڕەتیەکان"
 
-#: admin/options.php:297
+#: admin/options.php:300
 msgid "Apply Options Preset"
 msgstr "ڕێکخستن پێشتر دیاریکراوەکان جێبەەجێ بکە"
 
-#: admin/options.php:307
+#: admin/options.php:310
 msgid "Import/export theme options"
 msgstr "ڕێکخستنەکانی هەناردن و هێنانی ڕووکار"
 
-#: admin/options.php:310
+#: admin/options.php:313
 msgid "Import"
 msgstr "هێنان"
 
-#: admin/options.php:313
+#: admin/options.php:316
 msgid "Import Theme options"
 msgstr "ڕێکخستنەکانی ڕووکار بهێنە"
 
-#: admin/options.php:315
+#: admin/options.php:318
 msgid "Export"
 msgstr "هەناردن"
 
-#: admin/options.php:319
+#: admin/options.php:322
 msgid "Export Theme options"
 msgstr "ڕێکخستنەکانی هەناردنی ڕووکار"
 
-#: admin/options.php:329
+#: admin/options.php:332
 msgid "Uninstall theme"
 msgstr "سڕینەوەی ڕووکار"
 
-#: admin/options.php:332
+#: admin/options.php:335
 msgid "<strong>Be careful!</strong> Uninstalling the theme will remove all of the theme's options from the database. Do this only if you decide not to use the theme anymore."
 msgstr "<strong>ئاگاداربە </strong>!  سڕینەوەی ڕووکارەکە هەموو هەڵبژاردن و ڕێکخستنەکانی ڕووکارەکە لە بنکەی دراوەکاندا دەسڕێتەوە. ئەمە ئەنجامبدە تەنها لەکاتێکدا کە بڕیارت داوە ئیتر ڕووکارەکە جارێکی تر بەکارنەهێنیت."
 
-#: admin/options.php:333
+#: admin/options.php:336
 msgid "If you just want to try another theme, there is no need to uninstall this theme. Simply activate the other theme in the Appearance &gt; Themes admin page."
 msgstr "ئەگەر تەنها دەتەوێت ڕووکارێکی تر تاقیبکەیتەوە، ئەوا هیچ پێویست ناکات ئەم ڕووکارە بسڕیتەوە. زۆر بەئاسانی ڕووکارێکی تر چالاک بکە."
 
-#: admin/options.php:334
+#: admin/options.php:337
 msgid "Note that uninstalling this theme <strong>does not remove</strong> the theme's files. To delete the files after you have uninstalled this theme, go to Appearances &gt; Themes and delete the theme from there."
 msgstr "تێبینی ئەوە بکە کە سڕینەوەی ئەم ڕووکارە <strong>پەڕگەکانی ڕووکارەکە ناسڕێتەوە </strong>. بۆئەوەی دوای ئەوەی ڕووکارەکەت سڕیەوە پەڕگەکانیش بسڕێنەوە بڕۆ بۆ دەرکەوتن &gt; ڕووکارەکان و لەوێدا ڕووکارەکە بسڕەوە."
 
-#: admin/options.php:351
+#: admin/options.php:354
 msgid "The preview will be updated when the \"Save Options\" button above is clicked."
 msgstr "پێشبینین نوێ دەبێتەوە کاتێک دووگمەی  \"ڕێکخستنەکان پاشەکەوت بکە\" ی لای سەرەوە کلیککرابێت."
 
@@ -2111,40 +2203,6 @@ msgstr "تکایە ئەدرەسی تەواو (بە <code>http://</code>یشەو�
 msgid "<strong>Important: </strong>Image width must be less than or equal to <strong>150px</strong>."
 msgstr "<strong>گرنگt: </strong>پانی وێنەکە دەبێت کەمتربێت لە یان یەکسان بێت بە  <strong>150px</strong>."
 
-#: admin/js/admin.js.php:47
-msgid "Social Media name"
-msgstr "ناوی تۆڕی کۆمەڵایەتی"
-
-#: admin/js/admin.js.php:50
-msgid "Name of the social media, e.g. LinkedIn, etc."
-msgstr "ناوی تۆڕی کۆمەڵآیەتی، بۆ نمونە LinkedIn و هیتر."
-
-#: admin/js/admin.js.php:54
-msgid "Social Media title"
-msgstr "ناونیشانی تۆڕی کۆمەڵایەتی"
-
-#: admin/js/admin.js.php:57
-msgid "Title for the social media, leave empty for generated title."
-msgstr "ناونیشانی تۆڕە کۆمەڵایەتیەکە، بەبەتاڵی جێی بهێڵە بۆ ئەوەی ناونیشانەکە خۆکارانە دروستببێت."
-
-#: admin/js/admin.js.php:61
-msgid "Social Media profile URL"
-msgstr "ئەدرەسی پڕۆفایلی تۆڕە کۆمەڵایەتیەکە"
-
-#: admin/js/admin.js.php:64
-msgid "URL to your page for the social media."
-msgstr "ئەدرەسی پەڕەی خۆت لە تۆڕە کۆمەڵایەتیەکەدا."
-
-#: admin/js/admin.js.php:68
-msgid "Social Media icon URL"
-msgstr "ئەدرەسی ئایکۆنی تۆڕ یان میدیای کۆمەڵایەتی"
-
-#: admin/js/admin.js.php:71
-#, php-format
-msgid "URL to the social media icon. Note: the theme uses the %s icon set for the social media icons. Please do not hotlink the icons on the site. Download the icons you need and upload them to your server instead."
-msgstr "ئەدرەسی ئایکۆنی تۆڕەکۆمەڵایەتیەکە. تێبینی: ڕووکارەکە کۆمەڵە ئایکۆنی  %s بەکارێنێت بۆ ئایکۆنی تۆڕە کۆمەڵایەتیەکان. تکایە ئایکۆنەکان لە ماڵپەڕەکەدا مەکە بە بەستەر. لە جیاتی ئەوە ئەو ئایکۆنانەی دەتەوێن دابگرە و پاشان بەرزیان بکەرەوە بۆ ڕاژەکارەکەی خۆت."
-
-#. translators: %1$s is the comment date, %2$s is the comment time
 #: includes/theme-comments.php:34
 #, php-format
 msgid "%1$s at %2$s"
@@ -2154,168 +2212,165 @@ msgstr "%1$s کاتژمێر %2$s"
 msgid "Edit comment"
 msgstr "دەستکاریکردنی بۆچوون"
 
-#: includes/theme-comments.php:40
+#: includes/theme-comments.php:37
+msgid "Link to this comment"
+msgstr "به‌سته‌ری ئه‌م بۆچوونه‌"
+
+#: includes/theme-comments.php:41
 msgid "Reply"
 msgstr "وەڵام"
 
-#: includes/theme-comments.php:51
+#: includes/theme-comments.php:52
 msgid "Your comment is awaiting moderation."
 msgstr "بۆچوونەکەت چاوەڕوانی پێداچوونەوەیە"
 
-#: includes/theme-comments.php:76
+#: includes/theme-comments.php:83
 msgid "Name:"
 msgstr "ناو:"
 
-#: includes/theme-comments.php:81
+#: includes/theme-comments.php:88
 msgid "Email:"
 msgstr "ئیمەیل:"
 
-#: includes/theme-comments.php:86
+#: includes/theme-comments.php:93
 msgid "Website:"
 msgstr "ماڵپەڕ:"
 
-#: includes/theme-comments.php:100
+#: includes/theme-comments.php:107
 msgid "Message:"
 msgstr "پەیام:"
 
-#: includes/theme-functions.php:72
-#, php-format
-msgid "Follow %s on Twitter"
-msgstr "شوێنمان کەوە لە %s تویتەر"
-
-#: includes/theme-functions.php:75
-#, php-format
-msgid "Visit %s's Facebook page"
-msgstr "سەردانی پەرەی فەسبووک %s's بکە"
-
-#: includes/theme-functions.php:97
+#: includes/theme-functions.php:102
 #, php-format
 msgid "Visit %1$s's %2$s page"
 msgstr "سەردانی پەڕەی %1$s's و %2$s بکە"
+
+#: includes/theme-functions.php:264
+#, php-format
+msgid "You haven't placed any widget into this widget area. Go to %1$s and place some widgets in the widget area called %2$s."
+msgstr "هیچ ویجیتێكت له‌م ناوچه‌ی ویجیته‌دا دانه‌ناوه‌. بڕۆ بۆ %1$s و چه‌ند ویجیتێك له‌و ناوچه‌ی ویجیته‌ی كه‌ناوی %2$s  یه‌ دابنێ."
+
+#: includes/theme-functions.php:264
+msgid "WP Admin > Appearance > Widgets"
+msgstr "په‌ڕێوه‌به‌رایه‌تی > ده‌ركه‌وتن > ویجیته‌كان"
+
+#: includes/theme-functions.php:265
+msgid "This notice will not be displayed to your site's visitors."
+msgstr "ئه‌م تێبنی یه‌ له‌ ماڵپه‌ڕه‌كه‌تدا نیشان نادرێت."
 
 #: includes/theme-loop.php:85
 msgid "Continue reading &raquo;"
 msgstr "زیاتر بخوێنەرەوە &raquo;"
 
-#: includes/theme-loop.php:137
+#: includes/theme-loop.php:143
 msgid "Older posts &laquo;"
 msgstr "هەواڵی کۆن &laquo;"
 
-#: includes/theme-loop.php:138
+#: includes/theme-loop.php:144
 msgid "&raquo; Newer posts"
 msgstr "&raquo; دوا هەواڵ "
 
-#: includes/theme-loop.php:140
+#: includes/theme-loop.php:146
 msgid "Next page &raquo;"
 msgstr "پەرەی دواتر &raquo;"
 
-#: includes/theme-loop.php:141
+#: includes/theme-loop.php:147
 msgid "&laquo; Previous page"
 msgstr "&laquo; پەڕەی پێشتر"
 
-#: includes/theme-loop.php:221
+#: includes/theme-loop.php:247
 msgid "<strong>ERROR: You must supply the post ID to get the image from as an argument when calling the graphene_get_post_image() function.</strong>"
 msgstr "<strong>هەڵە: ئەبێ ID ی ئەو بابەتە بدەیت کە دەتەوێت وێنەکەی لێوەرگریت وەک پاڵپشتی یەک کاتێک کە بانگی تایبەتمەندی graphene_get_post_image() دەکەیت. </strong>"
+
+#: includes/theme-loop.php:442
+#: includes/theme-loop.php:443
+#, php-format
+msgid "Print this %s"
+msgstr "چاپی بکە %s"
 
 #: includes/theme-menu.php:65
 msgid "Home"
 msgstr "سەرەکی"
 
-#: includes/theme-panes.php:93
+#: includes/theme-panes.php:100
 msgid "Read more"
 msgstr "زیاتر بخوێنەرەوە"
 
-#: includes/theme-setup.php:90
+#: includes/theme-setup.php:99
 msgid "Header Menu"
 msgstr "مینوی سەرپەڕە"
 
-#: includes/theme-setup.php:91
+#: includes/theme-setup.php:100
 msgid "Secondary Menu"
 msgstr "مینوی دووەمی"
 
-#: includes/theme-setup.php:92
+#: includes/theme-setup.php:101
 msgid "Footer Menu"
 msgstr "مینوی پێپەڕە"
 
-#: includes/theme-setup.php:125
+#: includes/theme-setup.php:134
 msgid "Header image by Syahir Hakim"
 msgstr "وێنەی سەرپەڕە لەلایەن سەیاهیر حەکیمەوە"
 
-#: includes/theme-setup.php:129
+#: includes/theme-setup.php:138
 msgid "This is the default Graphene theme header image, cropped from image by Quantin Houyoux at sxc.hu"
 msgstr "ئەمە وێنەی سەرپەڕەی بنەڕەتی ڕووکاری گرافینە، کە لە وێنەیەکی دروستکراو لە لایەن کوانتین لە sxc.hu ەوە بڕڕاوە."
 
-#: includes/theme-setup.php:133
-#: includes/theme-setup.php:137
-#: includes/theme-setup.php:141
-#: includes/theme-setup.php:145
-#: includes/theme-setup.php:149
+#: includes/theme-setup.php:142
+#: includes/theme-setup.php:146
+#: includes/theme-setup.php:150
+#: includes/theme-setup.php:154
+#: includes/theme-setup.php:158
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "وێنەی سەرپەڕە کە لە وێنەیەکی دروستکراو لەلایەن ئیلکۆ لە sxc.hu بڕڕاوە"
 
-#: includes/theme-setup.php:204
-msgid "Sidebar Widget Area"
-msgstr "ناوچەی ویجیتی لاتەنیشت"
-
-#: includes/theme-setup.php:206
+#: includes/theme-setup.php:226
 msgid "The first sidebar widget area (will always be displayed on the right hand side)."
 msgstr "ناوچەی ویجیتی لاتەنیشتی یەکەم ( هەمیشە لە لای ڕاستدا دەردەکەوێت)."
 
-#: includes/theme-setup.php:213
-msgid "Sidebar Two Widget Area"
-msgstr "ناوچەی ویجیتی لاتەنیشتی دووەم"
-
-#: includes/theme-setup.php:215
+#: includes/theme-setup.php:235
 msgid "The second sidebar widget area (will always be displayed on the left hand side)."
 msgstr "ناوچەی ویجیتی لا تەنیشتی دووەم ( هەمیشە لە لای چەپدا دەردەکەوێت)."
 
-#: includes/theme-setup.php:222
+#: includes/theme-setup.php:242
 msgid "Footer Widget Area"
 msgstr "ناوچەی ویجیتی ژێرپەڕە"
 
-#: includes/theme-setup.php:224
+#: includes/theme-setup.php:244
 msgid "The footer widget area. Leave empty to disable. Set the number of columns to display at the theme's Display Options page."
 msgstr "ناوچەی ویجیتی ژێرپەڕە. بۆ ناچالاککردنی بەبەتاڵی جێی بهێڵە. ژمارەی ئەو ستوونانە دیاری بکە کە دەتەوێت لە پەڕەی ڕێکخستنەکانی نیشاندانی ڕووکارەکەدا دەربکەوێت."
 
-#: includes/theme-setup.php:239
-msgid "Front Page Sidebar Widget Area"
-msgstr "ناوچەی ویجیتی لاتەنیشتی پەڕەی سەرەکی"
-
-#: includes/theme-setup.php:241
+#: includes/theme-setup.php:261
 msgid "The first sidebar widget area that will only be displayed on the front page."
 msgstr "ناوچەی ویجیتی لا تەنیشتی یەکەم کە تەنها لە پەڕەی سەرەکیدا دەردەکەوێت"
 
-#: includes/theme-setup.php:248
-msgid "Front Page Sidebar Two Widget Area"
-msgstr "ناوچەی ویجیتی لاتەنیشتی دووەمی پەڕەی سەرەکی "
-
-#: includes/theme-setup.php:250
+#: includes/theme-setup.php:270
 msgid "The second sidebar widget area that will only be displayed on the front page."
 msgstr "ناوچەی ویجیتی لا تەنیشتی دووەم کە تەنها لە پەڕەی سەرەکیدا دەردەکەوێت"
 
-#: includes/theme-setup.php:259
+#: includes/theme-setup.php:279
 msgid "Front Page Footer Widget Area"
 msgstr "ناوچەی ویجیتی پێپەڕەی پەڕەی سەرەکی"
 
-#: includes/theme-setup.php:261
+#: includes/theme-setup.php:281
 msgid "The footer widget area that will only be displayed on the front page. Leave empty to disable. Set the number of columns to display at the theme's Display Options page."
 msgstr "ناوچەی ویجیتی ژێرپەڕە کە تەنها لە پەڕەی سەرەکیدا دەردەکەوێت. بۆ ناچالاککردنی بەبەتاڵی جێی بهێڵە. ژمارەی ئەو ستوونانە دیاری بکە کە دەتەوێت لە پەڕەی ڕێکخستنەکانی نیشاندانی ڕووکارەکەدا دەربکەوێت."
 
-#: includes/theme-setup.php:271
+#: includes/theme-setup.php:291
 msgid "Header Widget Area"
 msgstr "ناوچەی ویجیتی سەرپەڕە"
 
-#: includes/theme-setup.php:273
+#: includes/theme-setup.php:293
 msgid "The header widget area."
 msgstr "ناوچەی ویجیتی سەرپەڕە."
 
-#: includes/theme-setup.php:290
+#: includes/theme-setup.php:310
 #, php-format
 msgid "Dynamically added widget area. This widget area is attached to the %s action hook."
 msgstr "ناوچەی ویجیت کە بەشێوەیەکی دینامیکی زیادکراوە. ئەم ناوچەی ویجیتە هاوپێچکراوە بۆ  %s ی  نیشانەی ڕاست لێدانی چالاکیەکان"
 
-#: includes/theme-slider.php:115
-#: includes/theme-slider.php:143
+#: includes/theme-slider.php:128
+#: includes/theme-slider.php:156
 msgid "View full post"
 msgstr "هەمووی ببینە"
 
@@ -2323,48 +2378,155 @@ msgstr "هەمووی ببینە"
 msgid "Display the latest Twitter status updates."
 msgstr "دواترین دۆخی نوێکردنەوەکانی تویتەر نیشان بدە "
 
-#: includes/theme-widgets.php:46
+#: includes/theme-widgets.php:48
 msgid "Loading tweets..."
 msgstr "بارکردنی جریوەکان..."
 
-#: includes/theme-widgets.php:50
-msgid "Follow me on Twitter"
-msgstr "شوێنمان کەوە لە تویتەر"
+#: includes/theme-widgets.php:51
+#, php-format
+msgid "Follow %s"
+msgstr "شوێنكه‌وتنی %s"
 
-#: includes/theme-widgets.php:60
-msgid "follower"
-msgstr "شوێنکەوتوو"
-
-#: includes/theme-widgets.php:61
-msgid "followers"
-msgstr "شوێنکەوتووان"
-
-#: includes/theme-widgets.php:93
+#: includes/theme-widgets.php:90
 msgid "Latest tweets"
 msgstr "دواترین جریوەکان"
 
-#: includes/theme-widgets.php:100
+#: includes/theme-widgets.php:97
 msgid "Title:"
 msgstr "ناونیشان:"
 
-#: includes/theme-widgets.php:104
+#: includes/theme-widgets.php:101
 msgid "Twitter Username:"
 msgstr "ناوی تویتەرەکەت:"
 
-#: includes/theme-widgets.php:108
+#: includes/theme-widgets.php:105
 msgid "Number of tweets to display:"
 msgstr "ژمارەی جریوەی نیشاندراو"
 
-#: includes/theme-widgets.php:112
+#: includes/theme-widgets.php:109
 msgid "Show followers count"
 msgstr "کۆی شوێنکەوتوان نیشان بدە"
 
-#: includes/theme-widgets.php:116
+#: includes/theme-widgets.php:113
 msgid "Open links in new window"
 msgstr "بەستەر لە پەنجەریەکی نوێدا بکەرەوە"
 
-#~ msgid "No comment yet"
-#~ msgstr "هیچ بۆچوونێك نی یە."
+#~ msgid "Your email address will not be published."
+#~ msgstr "ئیمەیلەکەت بڵاوناکرێتەوە"
+
+#~ msgid "Subscribe to RSS feed"
+#~ msgstr "بەشداری بکە لە RSS دا"
+
+#~ msgid "Meta"
+#~ msgstr "هاوپێچ"
+
+#~ msgid "Posts RSS"
+#~ msgstr "RSS ی بابەتەکان"
+
+#~ msgid "Comments RSS"
+#~ msgstr "RSS ی بۆچوونەکان"
+
+#~ msgid "Powered by %s"
+#~ msgstr "ئەم ماڵپەڕە دروستکراوە بە %s."
+
+#~ msgid ""
+#~ "Powered by WordPress, state-of-the-art semantic personal publishing "
+#~ "platform."
+#~ msgstr ""
+#~ "بەهێزکراوە بە وۆردپرێس کە پلاتفۆرمێکی بڵاوکردنەوەی شاکار و پڕمانایە "
+
+#~ msgid "Archives"
+#~ msgstr "ئەرشیڤ"
+
+#~ msgid ""
+#~ "Note: displaying date as inline text allows more space for the content "
+#~ "area, especially useful for a three-column layout configuration."
+#~ msgstr ""
+#~ "تێبینی: دەرخستنی بەروار وەک دەقێکی ناوەکی بۆشایی زیاتر دەهێڵێتەوە بۆ "
+#~ "ناوچەی نااوەرۆکەکە، ئەمە بەتایبەتی زۆر بەسوودە بۆ شێوەپێدانی شێوازی سێ "
+#~ "ستوونی."
+
+#~ msgid "Text colour"
+#~ msgstr "ڕەنگی دەق"
+
+#~ msgid "Hide feed icon"
+#~ msgstr "شاردنەوەی ئایکۆنی RSS"
+
+#~ msgid "Use custom feed URL"
+#~ msgstr "ئەدرەسێکی خۆچێکراو بۆ RSS بەکاربهێنە"
+
+#~ msgid ""
+#~ "This custom feed URL will replace the default WordPress RSS feed URL."
+#~ msgstr ""
+#~ "ئەم ئەدرەسی RSS ی خۆچێکراوە جێگەی ئەدرەسی RSS ی بنەڕەتی وۆردپرێس "
+#~ "دەگرێتەوە."
+
+#~ msgid "Twitter URL"
+#~ msgstr "ئەدرەسی تویتەر"
+
+#~ msgid "Enter the URL to your Twitter page."
+#~ msgstr "ئەدرەسی پەڕەی تویتەرەکەت داخڵبکە."
+
+#~ msgid "Facebook URL"
+#~ msgstr "ئەدرەسی فەیسبووک"
+
+#~ msgid "Enter the URL to your Facebook profile page."
+#~ msgstr "ئەدرەسی پەڕەی پڕۆفایلی فەسبووکەکەت داخڵبکە."
+
+#~ msgid "%s Title"
+#~ msgstr "ناونیشانی %s "
+
+#~ msgid ""
+#~ "The title is empty and the following title will be shown: <strong>%s</"
+#~ "strong>"
+#~ msgstr ""
+#~ "ناونیشان بەتاڵە و ئەم ناونیشانەی خوارەوە نیشان دەدرێت: <strong>%s</strong>"
+
+#~ msgid "%s icon URL"
+#~ msgstr "ئەدرەسی ئایکۆن %s"
+
+#~ msgid "ERROR: Bad URL entered for the Facebook URL."
+#~ msgstr "هەڵە: ئەدرەسێکی ناڕاست بۆ ئەدرەسی فەیسبووک داخڵکراوە"
+
+#~ msgid "ERROR: Bad URL entered for the social media icon URL."
+#~ msgstr ""
+#~ "هەڵە: ئەدرەسێکی ناڕاست بۆ ئەدرەسی ئایکۆنی تۆڕی کۆمەڵایەتی داخڵكراوە."
+
+#~ msgid "ERROR: Bad URL entered for the social media URL."
+#~ msgstr "هەڵە: ئەدرەسێکی ناڕاست بۆ ئەدرەسی تۆڕی کۆمەڵایەتی داخڵكراوە."
+
+#~ msgid "Name of the social media, e.g. LinkedIn, etc."
+#~ msgstr "ناوی تۆڕی کۆمەڵآیەتی، بۆ نمونە LinkedIn و هیتر."
+
+#~ msgid "Social Media title"
+#~ msgstr "ناونیشانی تۆڕی کۆمەڵایەتی"
+
+#~ msgid "Title for the social media, leave empty for generated title."
+#~ msgstr ""
+#~ "ناونیشانی تۆڕە کۆمەڵایەتیەکە، بەبەتاڵی جێی بهێڵە بۆ ئەوەی ناونیشانەکە "
+#~ "خۆکارانە دروستببێت."
+
+#~ msgid "URL to your page for the social media."
+#~ msgstr "ئەدرەسی پەڕەی خۆت لە تۆڕە کۆمەڵایەتیەکەدا."
+
+#~ msgid "Social Media icon URL"
+#~ msgstr "ئەدرەسی ئایکۆنی تۆڕ یان میدیای کۆمەڵایەتی"
+
+#~ msgid ""
+#~ "URL to the social media icon. Note: the theme uses the %s icon set for "
+#~ "the social media icons. Please do not hotlink the icons on the site. "
+#~ "Download the icons you need and upload them to your server instead."
+#~ msgstr ""
+#~ "ئەدرەسی ئایکۆنی تۆڕەکۆمەڵایەتیەکە. تێبینی: ڕووکارەکە کۆمەڵە ئایکۆنی  %s "
+#~ "بەکارێنێت بۆ ئایکۆنی تۆڕە کۆمەڵایەتیەکان. تکایە ئایکۆنەکان لە ماڵپەڕەکەدا "
+#~ "مەکە بە بەستەر. لە جیاتی ئەوە ئەو ئایکۆنانەی دەتەوێن دابگرە و پاشان "
+#~ "بەرزیان بکەرەوە بۆ ڕاژەکارەکەی خۆت."
+
+#~ msgid "Follow me on Twitter"
+#~ msgstr "شوێنمان کەوە لە تویتەر"
+
+#~ msgid "follower"
+#~ msgstr "شوێنکەوتوو"
 
 #~ msgid "% comments"
 #~ msgstr "% بۆچوونەکان"

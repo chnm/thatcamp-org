@@ -68,6 +68,8 @@ function graphene_options_display() {
                         </td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -170,6 +172,8 @@ function graphene_options_display() {
                     </tr>
                     <?php endif; ?>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -251,6 +255,8 @@ function graphene_options_display() {
                         </td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -309,6 +315,8 @@ function graphene_options_display() {
                         <td><input type="checkbox" name="graphene_settings[show_post_author]" id="show_post_author" <?php checked( $graphene_settings['show_post_author'] ); ?> value="true" /></td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -348,6 +356,8 @@ function graphene_options_display() {
                         </td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
       
@@ -368,240 +378,8 @@ function graphene_options_display() {
                         <td><input type="checkbox" name="graphene_settings[hide_allowedtags]" id="hide_allowedtags" <?php checked( $graphene_settings['hide_allowedtags'] ); ?> value="true" /></td>
                     </tr>
                 </table>
-            </div>
-        </div>
-        
-        
-        <?php /* Colours Options */ ?>
-        <div class="postbox non-essential-option">
-            <div class="head-wrap">
-                <div title="Click to toggle" class="handlediv"><br /></div>
-        		<h3 class="hndle"><?php _e( 'Colours Options', 'graphene' ); ?></h3>
-            </div>
-            <div class="panel-wrap inside">
-            	<p><?php _e("Changing colours for your website involves a lot more than just trial and error. Simply mixing and matching colours without regard to their compatibility may do more damage than good to your site's aesthetics.", 'graphene' ); ?>
-				<?php printf( __("It's generally a good idea to stick to colours from colour pallettes that are aesthetically pleasing. Try the %s website for a kickstart on some colour palettes you can use.", 'graphene' ), '<a href="http://www.colourlovers.com/palettes/">COLOURlovers</a>' ); ?></p>
-                <p><?php _e("When you've got the perfect combination, you can even share it with fellow Graphene theme users through the <a href=\"http://forum.khairul-syahir.com/\">Support Forum</a>.", 'graphene' ); ?></p>
-            	<p><?php _e( '<strong>Note:</strong> The previews work best on modern Gecko- and Webkit-based browsers, such as Mozilla Firefox and Google Chrome.', 'graphene' ); ?></p>
-                <p><?php _e( '<strong>Note:</strong> To reset any of the colours to their default value, just click on "Clear" beside the colour field and save the settings. The theme will automatically revert the value to the default colour.', 'graphene' ); ?></p>
                 
-                <h4><?php _e( 'Colour presets', 'graphene' ); ?></h4>
-                <p>
-					<?php _e( 'These are some colour presets that you may use, either as is or tweak them further to your liking.', 'graphene' ); ?>
-                </p>
-                <?php /* These colour presets are handled using javascript. See graphene/admin/js/admin.js */ ?>
-                <select class="colour-presets" name="graphene_settings[colour_preset]">
-                	<option value="default" <?php selected( $graphene_settings['colour_preset'], 'default' ); ?>><?php _e( 'Default', 'graphene' ); ?></option>
-                    <option value="dream-magnet" <?php selected( $graphene_settings['colour_preset'], 'dream-magnet' ); ?>><?php _e( 'Dream Magnet', 'graphene' ); ?></option>
-                    <option value="curiosity-killed" <?php selected( $graphene_settings['colour_preset'], 'curiosity-killed' ); ?>><?php _e( 'Curiosity Killed', 'graphene' ); ?></option>
-                </select>
-                
-            	<h4><?php _e( 'Content area', 'graphene' ); ?></h4>
-                <table class="form-table">
-                	<?php                                                 
-						$colour_opts = array(
-							'bg_content_wrapper' => array( 'title' => __( 'Main content wrapper background', 'graphene' ) ),
-							'bg_content' => array( 'title' => __( 'Post and pages content background', 'graphene' ) ),
-							'bg_meta_border' => array( 'title' => __( 'Post meta and footer border', 'graphene' ) ),
-							'bg_post_top_border' => array( 'title' => __( 'Post and pages top border', 'graphene' ) ),
-							'bg_post_bottom_border' => array( 'title' => __( 'Post and pages bottom border', 'graphene' ) ),
-						);
-												
-						foreach ( $colour_opts as $key => $colour_opt) :
-					?>
-                    <tr>
-                        <th scope="row"><label for="<?php echo $key; ?>"><?php echo $colour_opt['title']; ?></label></th>
-                        <td>
-                        	<input type="text" class="code color" name="graphene_settings[<?php echo $key; ?>]" id="<?php echo $key; ?>" value="<?php echo $graphene_settings[$key]; ?>" />
-                        	<a href="#" class="clear-color"><?php _e( 'Clear', 'graphene' ); ?></a>
-                            <div class="colorpicker" id="picker_<?php echo $key; ?>"></div>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </table>
-                
-                <h4><?php _e( 'Widgets', 'graphene' ); ?></h4>
-                <table class="form-table">
-                	<tr>
-                    	<th scope="row"><?php _e( 'Widget preview', 'graphene' ); ?></th>
-                        <td><div class="sidebar graphene"><div class="sidebar-wrap"><h3><?php _e( 'Widget title', 'graphene' ); ?></h3><ul><li><?php _e( 'List item', 'graphene' ); ?> 1</li><li><?php _e( 'List item', 'graphene' ); ?> 2</li><li><a href="#"><?php _e( 'List item', 'graphene' ); ?> 3</a></li></ul></div></div></td>
-                    </tr>
-                	<?php 
-						$colour_opts = array(
-							'bg_widget_item' => array( 'title' => __( 'Widget item background', 'graphene' ) ),
-							'bg_widget_list' => array( 'title' => __( 'Widget item list border', 'graphene' ) ),
-							'bg_widget_header_border' => array( 'title' => __( 'Widget header border', 'graphene' ) ),
-							'bg_widget_title' => array( 'title' => __( 'Widget title colour', 'graphene' ) ),
-							'bg_widget_title_textshadow' => array( 'title' => __( 'Widget title text shadow colour', 'graphene' ) ),
-							'bg_widget_header_bottom' => array( 'title' => __( 'Widget header gradient bottom colour', 'graphene' ) ),
-							'bg_widget_header_top' => array( 'title' => __( 'Widget header gradient top colour', 'graphene' ) ),
-							'bg_widget_box_shadow' => array( 'title' => __( 'Widget box shadow', 'graphene' ) ),
-						);
-
-						foreach ( $colour_opts as $key => $colour_opt) :
-					?>
-                    <tr>
-                        <th scope="row"><label for="<?php echo $key; ?>"><?php echo $colour_opt['title']; ?></label></th>
-                        <td>
-                        	<input type="text" class="code color" name="graphene_settings[<?php echo $key; ?>]" id="<?php echo $key; ?>" value="<?php echo $graphene_settings[$key]; ?>" />
-                        	<a href="#" class="clear-color"><?php _e( 'Clear', 'graphene' ); ?></a>
-                            <div class="colorpicker" id="picker_<?php echo $key; ?>"></div>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                    
-                </table>
-                
-                <h4><?php _e( 'Slider', 'graphene' ); ?></h4>
-                <table class="form-table">
-                	<tr>
-                    	<th scope="row"><?php _e( 'Slider background preview', 'graphene' ); ?></th>
-                        <td><div id="grad-box"></div></td>
-                    </tr>
-                	<?php 
-						$colour_opts = array(
-							'bg_slider_top' => array( 'title' => __( 'Slider top left colour', 'graphene' ) ),
-							'bg_slider_bottom' => array( 'title' => __( 'Slider bottom right colour', 'graphene' ) ),
-						);
-
-						foreach ( $colour_opts as $key => $colour_opt) :
-					?>
-                    <tr>
-                        <th scope="row"><label for="<?php echo $key; ?>"><?php echo $colour_opt['title']; ?></label></th>
-                        <td>
-                        	<input type="text" class="code color" name="graphene_settings[<?php echo $key; ?>]" id="<?php echo $key; ?>" value="<?php echo $graphene_settings[$key]; ?>" />
-                        	<a href="#" class="clear-color"><?php _e( 'Clear', 'graphene' ); ?></a>
-                            <div class="colorpicker" id="picker_<?php echo $key; ?>"></div>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                    
-                </table>
-                
-                <h4><?php _e( 'Block buttons', 'graphene' ); ?></h4>
-                <table class="form-table">
-                	<tr class="colour-preview">
-                    	<th scope="row"><?php _e( 'Block button preview', 'graphene' ); ?></th>
-                        <td><a class="block-button" href="#"><?php _e( 'Button label', 'graphene' ); ?></a></td>
-                    </tr>
-                	<?php 
-						$colour_opts = array(
-							'bg_button' => array( 'title' => __( 'Button background colour', 'graphene' ) ),
-							'bg_button_label' => array( 'title' => __( 'Button label colour', 'graphene' ) ),
-							'bg_button_label_textshadow' => array( 'title' => __( 'Button label text shadow', 'graphene' ) ),
-							'bg_button_box_shadow' => array( 'title' => __( 'Button box shadow', 'graphene' ) ),
-						);
-
-						foreach ( $colour_opts as $key => $colour_opt) :
-					?>
-                    <tr>
-                        <th scope="row"><label for="<?php echo $key; ?>"><?php echo $colour_opt['title']; ?></label></th>
-                        <td>
-                        	<input type="text" class="code color" name="graphene_settings[<?php echo $key; ?>]" id="<?php echo $key; ?>" value="<?php echo $graphene_settings[$key]; ?>" />
-                        	<a href="#" class="clear-color"><?php _e( 'Clear', 'graphene' ); ?></a>
-                            <div class="colorpicker" id="picker_<?php echo $key; ?>"></div>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                    
-                </table>
-                
-                <h4><?php _e( 'Archive title', 'graphene' ); ?></h4>
-                <table class="form-table">
-                	<tr>
-                    	<th scope="row"><?php _e( 'Archive title preview', 'graphene' ); ?></th>
-                        <td><div class="archive-title-preview"><span class="page-title"><?php _e( 'Archive title:', 'graphene' ); ?> <span><?php _e( 'Sample title', 'graphene' ); ?></span></span></div></td>
-                    </tr>
-                	<?php 
-						$colour_opts = array(
-							'bg_archive_left' => array( 'title' => __( 'Archive background gradient left colour', 'graphene' ) ),
-                                                        'bg_archive_right' => array( 'title' => __( 'Archive background gradient right colour', 'graphene' ) ),
-							'bg_archive_label' => array( 'title' => __( 'Archive label colour', 'graphene' ) ),
-							'bg_archive_text' => array( 'title' => __( 'Archive text colour', 'graphene' ) ),
-                                                        'bg_archive_textshadow' => array( 'title' => __( 'Archive label and text shadow colour', 'graphene' ) ),
-						);
-
-						foreach ( $colour_opts as $key => $colour_opt) :
-					?>
-                    <tr>
-                        <th scope="row"><label for="<?php echo $key; ?>"><?php echo $colour_opt['title']; ?></label></th>
-                        <td>
-                        	<input type="text" class="code color" name="graphene_settings[<?php echo $key; ?>]" id="<?php echo $key; ?>" value="<?php echo $graphene_settings[$key]; ?>" />
-                        	<a href="#" class="clear-color"><?php _e( 'Clear', 'graphene' ); ?></a>
-                            <div class="colorpicker" id="picker_<?php echo $key; ?>"></div>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                    
-                </table>
-                
-                <h4><?php _e( 'Comments area', 'graphene' ); ?></h4>
-                <table class="form-table">
-                	<?php 
-						$colour_opts = array(
-							'bg_comments' => array( 'title' => __( 'Comments background', 'graphene' ) ),
-							'comments_text_colour' => array( 'title' => __( 'Comments text', 'graphene' ) ),
-							'threaded_comments_border' => array( 'title' => __( 'Threaded comments border', 'graphene' ) ),
-							'bg_author_comments' => array( 'title' => __( 'Author comments background', 'graphene' ) ),
-							'bg_author_comments_border' => array( 'title' => __( 'Author comments top border', 'graphene' ) ),
-							'author_comments_text_colour' => array( 'title' => __( 'Author comments text', 'graphene' ) ),
-							'bg_comment_form' => array( 'title' => __( 'Comment form background', 'graphene' ) ),
-							'comment_form_text' => array( 'title' => __( 'Comment form text', 'graphene' ) ),
-						);
-						foreach ( $colour_opts as $key => $colour_opt) :
-					?>
-                    <tr>
-                        <th scope="row"><label for="<?php echo $key; ?>"><?php echo $colour_opt['title']; ?></label></th>
-                        <td>
-                        	<input type="text" class="code color" name="graphene_settings[<?php echo $key; ?>]" id="<?php echo $key; ?>" value="<?php echo $graphene_settings[$key]; ?>" />
-                        	<a href="#" class="clear-color"><?php _e( 'Clear', 'graphene' ); ?></a>
-                            <div class="colorpicker" id="picker_<?php echo $key; ?>"></div>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </table>
-                
-                <h4><?php _e( 'Content text', 'graphene' ); ?></h4>
-                <table class="form-table">
-                	<tr>
-                        <th scope="row">
-                            <label for="content_font_colour"><?php _e( 'Content text', 'graphene' ); ?></label>
-                        </th>
-                        <td>
-                            <input type="text" class="code color" name="graphene_settings[content_font_colour]" id="content_font_colour" value="<?php echo $graphene_settings['content_font_colour']; ?>" />
-                            <a href="#" class="clear-color"><?php _e( 'Clear', 'graphene' ); ?></a>
-                            <div class="colorpicker" id="picker_content_font_colour"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label for="content_font_colour"><?php _e( 'Title text', 'graphene' ); ?></label>
-                        </th>
-                        <td>
-                            <input type="text" class="code color" name="graphene_settings[title_font_colour]" id="title_font_colour" value="<?php echo $graphene_settings['title_font_colour']; ?>" />
-                            <a href="#" class="clear-color"><?php _e( 'Clear', 'graphene' ); ?></a>
-                            <div class="colorpicker" id="picker_title_font_colour"></div>
-                        </td>
-                    </tr>
-                	<?php 
-						$colour_opts = array(
-							'link_colour_normal' => array( 'title' => __( 'Link colour (normal state )', 'graphene' ) ),
-							'link_colour_visited' => array( 'title' => __( 'Link colour (visited state )', 'graphene' ) ),
-							'link_colour_hover' => array( 'title' => __( 'Link colour (hover state )', 'graphene' ) ),
-						);
-
-						foreach ( $colour_opts as $key => $colour_opt) :
-					?>
-                    <tr>
-                        <th scope="row"><label for="<?php echo $key; ?>"><?php echo $colour_opt['title']; ?></label></th>
-                        <td>
-                        	<input type="text" class="code color" name="graphene_settings[<?php echo $key; ?>]" id="<?php echo $key; ?>" value="<?php echo $graphene_settings[$key]; ?>" />
-                        	<a href="#" class="clear-color"><?php _e( 'Clear', 'graphene' ); ?></a>
-                            <div class="colorpicker" id="picker_<?php echo $key; ?>"></div>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </table>
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -613,7 +391,19 @@ function graphene_options_display() {
         		<h3 class="hndle"><?php _e( 'Text Style Options', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
-                <p><?php _e( 'Note that these are CSS properties, so any valid CSS values for each particular property can be used.', 'graphene' ); ?></p>
+            	<h4><?php _e( 'Google Webfonts', 'graphene' ); ?></h4>
+                <table class="form-table">
+                        <tr>
+                            <th scope="row"><label for="graphene-webfont-families"><?php _e( 'Font families', 'graphene' ); ?></label></th>
+                            <td>
+                            	<textarea class="code" cols="40" rows="7" id="graphene-webfont-families" name="graphene_settings[webfont_families]"><?php echo $graphene_settings['webfont_families']; ?></textarea><br />
+								<span class="description"><?php _e( 'Enter the Google Webfont font family string in the format that is used in the Webfont Loader, one font family per line.', 'graphene' ); ?></span><br />
+				                <span class="description"><?php _e( 'Example:', 'graphene' ); ?> <code>Pontano+Sans::latin,latin-ext</code></span>
+                            </td>
+                        </tr>
+                </table>
+                
+                <p><?php _e( 'The following options are CSS properties, so any valid CSS values for each particular property can be used.', 'graphene' ); ?></p>
                 <p><?php _e( 'Some example CSS properties values:', 'graphene' ); ?></p>
                 <table class="graphene-code-example">
                     <tr>
@@ -742,6 +532,8 @@ function graphene_options_display() {
                         <td><input type="text" class="code" name="graphene_settings[link_decoration_hover]" id="link_decoration_hover" value="<?php echo $graphene_settings['link_decoration_hover']; ?>" /></td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
 		
@@ -769,6 +561,8 @@ function graphene_options_display() {
                     </tr>
                     <?php endif; ?>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
             
@@ -805,6 +599,8 @@ function graphene_options_display() {
                         </td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -846,7 +642,7 @@ function graphene_options_display() {
                         	<label for="favicon_url"><?php _e( 'Favicon URL', 'graphene' ); ?></label>
                         </th>
                         <td>
-                        	<input type="text" class="widefat code" value="<?php echo $graphene_settings['favicon_url']; ?>" name="graphene_settings[favicon_url]" id="favicon_url" />
+                        	<input type="text" class="widefat code" value="<?php echo esc_url( $graphene_settings['favicon_url'] ); ?>" name="graphene_settings[favicon_url]" id="favicon_url" />
                                 <span class="description"><a href="#" class="upload_image_button"><?php _e( 'Upload or select image from gallery', 'graphene' );?></a> - <?php _e( 'Simply enter the full URL to your favicon file here to enable favicon. Make sure you include the <code>http://</code> in front of the URL as well. Or use the WordPress media uploader to upload an image, or select one from the media library.', 'graphene' ); ?></span>                                
                         </td>
                     </tr>
@@ -856,11 +652,13 @@ function graphene_options_display() {
                 <table class="form-table">
                     <tr>
                         <th scope="row" style="width:250px;">
-                        	<label for="favicon_url"><?php _e( 'Disable custom editor styles', 'graphene' ); ?></label>
+                        	<label for="disable_editor_style"><?php _e( 'Disable custom editor styles', 'graphene' ); ?></label>
                         </th>
                         <td><input type="checkbox" name="graphene_settings[disable_editor_style]" id="disable_editor_style" <?php checked( $graphene_settings['disable_editor_style'] ); ?> value="true" /></td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
                     
@@ -881,6 +679,8 @@ function graphene_options_display() {
                         </td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>                  
         

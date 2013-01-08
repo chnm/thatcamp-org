@@ -1,6 +1,9 @@
 <?php 
 	global $graphene_settings; 
 	$post_type = get_post_type_object( get_post_type() );
+	
+	/* Display a return to parent link if this is a child page */
+	graphene_parent_return_link( $post );
 ?>
 
 <?php if ( $graphene_settings['hide_parent_content_if_empty'] && $post->post_content == '' ) : ?>
@@ -23,7 +26,7 @@
 		<?php endif; ?>
 		
 		<?php /* Add an email post icon if the WP-Email plugin is installed and activated */
-		if( function_exists( 'wp_email' ) && is_singular() ) { echo '<p class="email">'; email_link(); echo '</p>'; }
+		if( function_exists( 'wp_email' ) && is_singular() ) { echo '<p class="email wp-email-button">'; email_link(); echo '</p>'; }
 		?>
         
 		<?php /* Post title */ ?>

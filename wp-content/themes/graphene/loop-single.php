@@ -55,7 +55,7 @@ if ( function_exists( 'get_post_format' ) ) {
 		<?php endif; ?>
         
         <?php /* Add an email post icon if the WP-Email plugin is installed and activated */
-			if( function_exists( 'wp_email' ) ) { echo '<p class="email">'; email_link(); echo '</p>'; }
+			if( function_exists( 'wp_email' ) ) { echo '<p class="email wp-email-button">'; email_link(); echo '</p>'; }
 		?>
         
 		<?php /* Post title */ ?>

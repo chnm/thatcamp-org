@@ -45,7 +45,7 @@ class Graphene_Description_Walker extends Walker_Nav_Menu {
 		$item_output .= $args->after;
 		
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-		}
+	}
 }
 
 
@@ -62,7 +62,9 @@ if ( ! function_exists( 'graphene_default_menu' ) ) :
             <?php if (get_option( 'show_on_front' ) == 'posts' ) : ?>
             <li <?php if ( is_single() || is_front_page() ) { echo 'class="current_page_item current-menu-item"'; } ?>>
             	<a href="<?php echo get_home_url(); ?>">
+                	<?php if ( ! $graphene_settings['disable_menu_desc'] ) echo '<strong>'; ?>
                 	<?php _e( 'Home','graphene' ); ?>
+                    <?php if ( ! $graphene_settings['disable_menu_desc'] ) echo '</strong>'; ?>
                     <?php if ( $graphene_settings['navmenu_home_desc']) {echo '<span>'.$graphene_settings['navmenu_home_desc'].'</span>';} ?>
                 </a>
             </li>
@@ -72,10 +74,11 @@ if ( ! function_exists( 'graphene_default_menu' ) ) :
 						'echo' 			=> 1,
 						'depth' 		=> 5,
 						'title_li' 		=> '',
-						'walker' 		=> new Walker_PageDescription() 
+						'walker' 		=> new Graphene_Walker_Page() 
 					);
-				
+			add_filter( 'page_css_class', 'graphene_page_ancestor_class', 10, 4 );
 			wp_list_pages( apply_filters( 'graphene_default_menu_args', $args ) );
+			remove_filter( 'page_css_class', 'graphene_page_ancestor_class', 10, 4 );
 			?>
         </ul>
 <?php
@@ -84,110 +87,123 @@ if ( ! function_exists( 'graphene_default_menu' ) ) :
 	
 endif;
 
-class Walker_PageDescription extends Walker_Page {
+class Graphene_Walker_Page extends Walker_Page {
     
     /**
-     * Code exact copied from: wp-includes\post-template.pgp >> Walker_Page::start_el() 
+     * Code exact copied from: wp-includes\post-template.php >> Walker_Page::start_el() 
      * @since 2.1.0
      */
-    function start_el( &$output, $page, $depth, $args, $current_page ) {
-		
+	function start_el( &$output, $page, $depth, $args, $current_page = 0 ) {
 		global $graphene_settings;
 		
-        if ( $depth )
-            $indent = str_repeat("\t", $depth);
-        else
-            $indent = '';
-        extract( $args, EXTR_SKIP);
-        $css_class = array( 'page_item', 'page-item-'.$page->ID);
-		if ( !empty( $current_page) ) {
+		if ( $depth )
+			$indent = str_repeat("\t", $depth);
+		else
+			$indent = '';
+
+		extract($args, EXTR_SKIP);
+		$css_class = array('page_item', 'page-item-'.$page->ID);
+		if ( !empty($current_page) ) {
 			$_current_page = get_page( $current_page );
-			_get_post_ancestors( $_current_page);
-			if ( isset( $_current_page->ancestors) && in_array( $page->ID, (array) $_current_page->ancestors) ) {
+			_get_post_ancestors($_current_page);
+			if ( isset($_current_page->ancestors) && in_array($page->ID, (array) $_current_page->ancestors) )
 				$css_class[] = 'current_page_ancestor';
-				$css_class[] = 'current-menu-ancestor';
-			}
-			if ( $page->ID == $current_page ) {
+			if ( $page->ID == $current_page )
 				$css_class[] = 'current_page_item';
-				$css_class[] = 'current-menu-item';
-			}
-			elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
+			elseif ( $_current_page && $page->ID == $_current_page->post_parent )
 				$css_class[] = 'current_page_parent';
-				$css_class[] = 'current-menu-ancestor';
-				$css_class[] = 'current-menu-parent';
-			}
-		} elseif ( $page->ID == get_option( 'page_for_posts' ) ) {
+		} elseif ( $page->ID == get_option('page_for_posts') ) {
 			$css_class[] = 'current_page_parent';
-			$css_class[] = 'current-menu-ancestor';
-			$css_class[] = 'current-menu-parent';
-		}
-		
-		// Check if page has children
-		if ( get_pages( array( 'child_of' => $page->ID, 'parent' => $page->ID ) ) ) {
-			$css_class[] = 'menu-item-ancestor';
 		}
 
-		$css_class = implode( ' ', apply_filters( 'page_css_class', $css_class, $page) );
-                
+		$css_class = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+		
 		$title = apply_filters( 'the_title', $page->post_title, $page->ID );
 		
-		// get the graphene description if it is set otherwise the wordpress default -> title
-		$menu_title = apply_filters( 'the_title', $page->post_title, $page->ID );
 		if ( ! $depth && ! $graphene_settings['disable_menu_desc'] ){
-			$menu_title = '<strong>' . $menu_title . '</strong>';
+			$title = '<strong>' . $title . '</strong>';
+			$nav_desc = graphene_get_post_meta( $page->ID, 'nav_description' );
+			$title .= ( $nav_desc ) ? '<span>' . $nav_desc . '</span>' : '';
 		}
-		if ( ! $graphene_settings['disable_menu_desc'] ){
-			$menu_title .= ( get_post_meta( $page->ID, '_graphene_nav_description', true ) && ! $depth ) ? 
-							'<span>' . get_post_meta( $page->ID, '_graphene_nav_description', true ) . '</span>' : 
-							'';
-		}
-                
-		$output .= $indent . '<li class="' . $css_class . '"><a href="' . get_permalink( $page->ID) . '">' . $link_before . $menu_title . $link_after . '</a>';
 
-		if ( !empty( $show_date) ) {
+		$output .= $indent . '<li class="' . $css_class . '"><a href="' . get_permalink($page->ID) . '">' . $link_before . $title . $link_after . '</a>';
+
+		if ( !empty($show_date) ) {
 			if ( 'modified' == $show_date )
 				$time = $page->post_modified;
 			else
 				$time = $page->post_date;
 
-			$output .= " " . mysql2date( $date_format, $time);
+			$output .= " " . mysql2date($date_format, $time);
 		}
 		
 		$output = apply_filters( 'graphene_page_description_walker_output', $output, $page, $depth, $args, $current_page );
-    }
+	}
 }
 
 
 /*
- * Adds a menu-item-ancestor class to menu items with children for styling.
- * Code taken from the Menu-item-ancestor plugin by Valentinas Bakaitis
+ * Adds a menu-item-ancestor class to menu items with children when using custom menu
+ *
+ * @package Graphene
+ * @since Graphene 1.8
 */
-function graphene_add_ancestor_class( $classlist, $item){
-	global $wp_query, $wpdb;
-	//get the ID of the object, to which menu item points
-	$id = get_post_meta( $item->ID, '_menu_item_object_id', true);
-	//get first menu item that is a child of that object
-	$children = $wpdb->get_var( 'SELECT post_id FROM '.$wpdb->postmeta.' WHERE meta_key like "_menu_item_menu_item_parent" AND meta_value='.$item->ID.' LIMIT 1' );
-	//if there is at least one item, then $children variable will contain it's ID (which is of course more than 0)
-	if( $children > 0)
-		//in that case - add the CSS class
-		$classlist[] = 'menu-item-ancestor';
-	//return class list
-	return $classlist;
+function graphene_menu_item_ancestor( $items ) {
+
+    foreach ( $items as $item ) {
+        if ( graphene_menu_has_sub( $item->ID, $items ) ) {
+            $item->classes[] = 'menu-item-ancestor';
+        }
+    }
+    return $items;    
+}
+add_filter( 'wp_nav_menu_objects', 'graphene_menu_item_ancestor' );
+
+
+/**
+ * Check if a Custom Menu menu item has sub-menu item
+ *
+ * @package Graphene
+ * @since Graphene 1.8
+ */
+function graphene_menu_has_sub( $menu_item_id, &$items ) {
+	foreach ( $items as $item ) {
+		if ( $item->menu_item_parent && $item->menu_item_parent==$menu_item_id ) {
+			return true;
+		}
+	}
+	return false;
+};
+
+
+/*
+ * Adds a menu-item-ancestor class to menu items with children when using default menu
+ *
+ * @package Graphene
+ * @since Graphene 1.8
+*/
+function graphene_page_ancestor_class( $css_class, $page, $depth, $args ) {
+    if ( ! empty( $args['has_children'] ) )
+        $css_class[] = 'menu-item-ancestor';
+	
+	if ( array_search( 'current_page_ancestor', $css_class ) ) $css_class[] = 'current-menu-ancestor';
+	if ( array_search( 'current_page_parent', $css_class ) ) $css_class[] = 'current-menu-ancestor';
+	if ( array_search( 'current_page_item', $css_class ) ) $css_class[] = 'current-menu-item';
+	
+    return $css_class;
 }
 
-//add filter to nav_menu_css_class list
-add_filter( 'nav_menu_css_class', 'graphene_add_ancestor_class', 2, 10);
 
+/**
+ * Add additional navigation menu class
+ */
 function graphene_get_menu_class( $menu_class ){
     global $graphene_settings;
     
     // if the search box is located in the navigation bar restrict the width of the menu to 12 grid columns
-    if (($search_box_location = $graphene_settings['search_box_location']) && $search_box_location == 'nav_bar'){
+    if ( ( $search_box_location = $graphene_settings['search_box_location']) && $search_box_location == 'nav_bar' ){
         $menu_class .= ' grid_12';
     }
     
-    return $menu_class;
+    return apply_filters( 'graphene_menu_class', $menu_class );
 }
-
-?>

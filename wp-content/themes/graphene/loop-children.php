@@ -46,7 +46,8 @@ if ( $graphene_settings['child_page_listing'] == 'show_always' ||
                     </h2>
 
                     <?php /* The excerpt */ 
-                    the_excerpt();
+	                    the_excerpt();
+						do_action( 'graphene_child_page_content' );
                     ?>
 
                     <?php /* View page link */ ?>

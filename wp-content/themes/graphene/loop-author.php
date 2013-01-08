@@ -52,7 +52,7 @@
             <h4><?php _e( 'Latest posts', 'graphene' ); ?></h4>
             <ol>	
             <?php while ( $postsQuery->have_posts() ) : $postsQuery->the_post(); ?>
-                <li><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php printf( esc_attr__( 'Permalink Link to %s', 'graphene' ), the_title_attribute( 'echo=0' ) ); ?>"><?php if ( get_the_title() == '' ) {_e( '(No title)','graphene' );} else {the_title();} ?></a> &mdash; <?php echo get_the_date(); ?></li>    
+                <li><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php printf( esc_attr__( 'Permalink to %s', 'graphene' ), the_title_attribute( 'echo=0' ) ); ?>"><?php if ( get_the_title() == '' ) {_e( '(No title)','graphene' );} else {the_title();} ?></a> &mdash; <?php echo get_the_date(); ?></li>    
             <?php endwhile;  ?>
             </ol>
             <?php do_action( 'graphene_author_latestposts' ); ?>
@@ -82,7 +82,7 @@
                              * and the post is not password-protected */
                             if (comments_open() && empty( $post->post_password) && $nr_comments != 0){
                                 $have_comments = TRUE;
-                                $comments_ol_html .= '<li><a href="'. get_permalink() .'" rel="bookmark" title="'. sprintf(esc_attr__( 'Permalink Link to %s', 'graphene' ), the_title_attribute( 'echo=0' ) ) .'">'. ( get_the_title() == '' ? __( '(No title)','graphene' ) : get_the_title() ) . '</a> &mdash; '. ( sprintf( _n( '1 comment', '%d comments', $nr_comments, 'graphene' ), number_format_i18n( $nr_comments ) ) ). '</li>';
+                                $comments_ol_html .= '<li><a href="'. get_permalink() .'" rel="bookmark" title="'. sprintf(esc_attr__( 'Permalink to %s', 'graphene' ), the_title_attribute( 'echo=0' ) ) .'">'. ( get_the_title() == '' ? __( '(No title)','graphene' ) : get_the_title() ) . '</a> &mdash; '. ( sprintf( _n( '%d comment', '%d comments', $nr_comments, 'graphene' ), number_format_i18n( $nr_comments ) ) ). '</li>';
                             }
                         }
 			

@@ -21,6 +21,12 @@ function graphene_options_general() {
                     </tr>
                 </table>
                 <table class="form-table<?php if ( $graphene_settings['slider_disable'] == true ) echo ' hide'; ?>">
+                	<tr>
+                        <th scope="row">
+                            <label for="slider_full_width"><?php _e( 'Extend slider to full width of the theme', 'graphene' ); ?></label>
+                        </th>
+                        <td><input type="checkbox" name="graphene_settings[slider_full_width]" id="slider_full_width" <?php checked( $graphene_settings['slider_full_width'] ); ?> value="true" /></td>
+                    </tr>
                     <tr>
                         <th scope="row">
                             <label><?php _e( 'What do you want to show in the slider', 'graphene' ); ?></label><br />                            
@@ -114,7 +120,7 @@ function graphene_options_general() {
                             <label for="slider_imgurl"><?php _e( 'Custom slider image URL', 'graphene' ); ?></label>
                         </th>
                         <td>
-                            <input type="text" name="graphene_settings[slider_imgurl]" id="slider_imgurl" value="<?php echo $graphene_settings['slider_imgurl']; ?>" size="60" class="widefat code" /><br />
+                            <input type="text" name="graphene_settings[slider_imgurl]" id="slider_imgurl" value="<?php echo esc_url( $graphene_settings['slider_imgurl'] ); ?>" size="60" class="widefat code" /><br />
                             <span class="description"><a href="#" class="upload_image_button"><?php _e( 'Upload or select image from gallery', 'graphene' );?></a> - <?php _e( 'Make sure you select Custom URL in the slider image option above to use this custom url.', 'graphene' ); ?></span>
                             
                         </td>
@@ -178,6 +184,8 @@ function graphene_options_general() {
                         <td><input type="checkbox" name="graphene_settings[slider_position]" id="slider_position" <?php checked( $graphene_settings['slider_position'] ); ?> value="true" /></td>
                     </tr>                    
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -211,6 +219,8 @@ function graphene_options_general() {
                         </td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -289,6 +299,8 @@ function graphene_options_general() {
                 <?php else : ?>
                 <p><?php _e( '<strong>Note:</strong> homepage panes are only displayed when using a <a href="http://codex.wordpress.org/Creating_a_Static_Front_Page">static front page</a>.', 'graphene' ); ?></p>
                 <?php endif; ?>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -315,6 +327,8 @@ function graphene_options_general() {
                         </td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -346,6 +360,8 @@ function graphene_options_general() {
                         </td>                            
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -385,6 +401,8 @@ function graphene_options_general() {
                         <td><input type="checkbox" name="graphene_settings[alt_home_footerwidget]" id="alt_home_footerwidget" <?php checked( $graphene_settings['alt_home_footerwidget'] ); ?> value="true" /></td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
                 
@@ -405,7 +423,7 @@ function graphene_options_general() {
                     </tr>
                 </table>
                 
-                <h4 class="social-media-table"><?php _e( 'Social Media', 'graphene' ); ?></h4>
+                <h4 class="social-media-table<?php if ( $graphene_settings['hide_top_bar'] == true ) echo ' hide'; ?>"><?php _e( 'Social Media', 'graphene' ); ?></h4>
                 <table class="form-table social-media-table<?php if ( $graphene_settings['hide_top_bar'] == true ) echo ' hide'; ?>">
                     <tr class="non-essential-option">
                         <th scope="row"><label for="social_media_new_window"><?php _e( 'Open social media links in new window', 'graphene' ); ?></label></th>
@@ -418,36 +436,38 @@ function graphene_options_general() {
                         <td colspan="2" id="socialprofile-sortable">                            
                             <?php        
                                 /*
-								 * Credits go to Benjamin Reid for the icons - Social Media Bookmark Icon +
-								 * http://www.nouveller.com/general/free-social-media-bookmark-icon-pack-the-ever-growing-icon-set/
+								 * Available profiles according to the icons available in ElegantThemes Social Media Icon Set
 								 */
-                                $available_profiles = array (   'Twitter', 'Facebook', 'LinkedIn', 'RSS', '-', __( 'Custom', 'graphene' ), '-',
-                                                    'audioBoo', 'Bebo', 'Behance', 'Blogger', 'Buzz', 'CreativeCommons', 'DailyBooth', 'Delicious', 'DesignFloat', 'DeviantArt', 
-                                                    'Digg', 'Dopplr', 'Dribbble', 'Email', 'Ember', 'Flickr', 'Forrst', 'Friendfeed', 'Google', 
-                                                    'Gowalla', 'Grooveshark', 'Hyves', 'LastFM', 'LiveJournal', 'Lockerz', 'Megavideo', 'MySpace', 'Piano', 
-                                                    'Playfire', 'PlayStation', 'Reddit', 'Skype', 'Socialvibe', 'SoundCloud', 'Spotify', 'Steam', 'StumbleUpon', 
-                                                    'Technorati', 'Tumblr', 'TwitPic', 'Typepad', 'Vimeo', 'Wakoopa', 'WordPress', 'Xing', 'Yahoo', 'YouTube' );
+                                $available_profiles = array (   'Twitter', 'Facebook', 'LinkedIn', 'YouTube', 'RSS', '-', 'Custom', '-',
+                                                    'AIM', 'Ask', 'Bebo', 'BetVibes', 'BlinkList', 'Blogger', 'Buzz', 'Delicious', 'DeviantArt',
+													'Digg', 'Diigo', 'Evernote', 'Flickr', 'FriendFeed', 'Friendster', 'Furl', 'Google', 
+													'LastFM', 'LiveJournal', 'Mixx', 'MySpace', 'Newsvine', 'Orkut', 'Plaxo', 'Plurk', 'Posterous',
+													'Reddit', 'ShoutWire', 'Spurl', 'Squidoo', 'StumbleUpon', 'Technorati', 'Tumblr', 'Vimeo', 'WordPress',
+													'Xanga', 'Yahoo!' );
 
                                 $social_profiles = ( ! empty( $graphene_settings['social_profiles'] ) ) ? $graphene_settings['social_profiles'] : array();
                             ?>
                             <?php 
 								if ( ! in_array( false, $social_profiles) ) : 
-								foreach ($social_profiles as $profile_key => $profile_data) : 
+								foreach ($social_profiles as $profile_key => $profile_data) :
+									$profile_data['url'] = esc_url( $profile_data['url'] );
+									if ( $profile_data['type'] == 'custom' ) 
+										$profile_data['icon_url'] = esc_url( $profile_data['icon_url'] );
 							?>
                                 <table class="form-table socialprofile-table">
                                     <tr>
-                                        <th scope="row" rowspan="<?php echo $profile_data['type'] == sanitize_title( __( 'Custom', 'graphene' ) ) ? '3' : '2'; ?>" class="small-row">                            
-                                            <?php echo $profile_data['name']; ?><br />
-                                            <input type="hidden" name="graphene_settings[social_profiles][<?php echo $profile_key; ?>][type]" value="<?php echo $profile_data['type']; ?>" />
-                                            <input type="hidden" name="graphene_settings[social_profiles][<?php echo $profile_key; ?>][name]" value="<?php echo $profile_data['name']; ?>" />
+                                        <th scope="row" rowspan="<?php echo $profile_data['type'] == 'custom' ? '3' : '2'; ?>" class="small-row">                            
+                                            <?php if ( $profile_data['type'] == 'custom' ) _e( 'Custom', 'graphene' ); else echo $profile_data['name']; ?><br />
+                                            <input type="hidden" name="graphene_settings[social_profiles][<?php echo $profile_key; ?>][type]" value="<?php echo esc_attr( $profile_data['type'] ); ?>" />
+                                            <input type="hidden" name="graphene_settings[social_profiles][<?php echo $profile_key; ?>][name]" value="<?php echo esc_attr( $profile_data['name'] ); ?>" />
                                             <?php if ( $profile_data['type'] == 'custom' ) : ?>
                                             <img class="mysocial-icon" src="<?php echo $profile_data['icon_url']; ?>" alt="" />
                                             <?php else : ?>
-                                            <div class="mysocial social-<?php echo $profile_data['type']; ?>">&nbsp;</div>
+                                            <div class="mysocial social-<?php echo esc_attr( $profile_data['type'] ); ?>">&nbsp;</div>
                                             <?php endif; ?>
                                         </th>
                                         <th class="small-row"><?php _e( 'Title attribute', 'graphene' ); ?></th>
-                                        <td><input type="text" name="graphene_settings[social_profiles][<?php echo $profile_key; ?>][title]" value="<?php echo $profile_data['title']; ?>" class="widefat code" /></td>
+                                        <td><input type="text" name="graphene_settings[social_profiles][<?php echo $profile_key; ?>][title]" value="<?php echo esc_attr( $profile_data['title'] ); ?>" class="widefat code" /></td>
                                     </tr>
                                     <tr>
                                         <th class="small-row"><?php _e('URL', 'graphene'); ?></th>
@@ -479,8 +499,8 @@ function graphene_options_general() {
                                         <strong><?php _e( 'Add Social Media Profile', 'graphene' ); ?></strong>
                                         <input type="hidden" id="socialprofile-next-index" value="<?php echo count($social_profiles)+1; ?>" />                                                                                
                                         <input type="hidden" id="new-socialprofile-data" 
-                                                data-icon-url="<?php echo get_template_directory_uri() . '/images/social/'; ?>"
-                                                data-custom-title="<?php echo sanitize_title( __( 'Custom', 'graphene' ) ); ?>"
+                                                data-icon-url="<?php echo esc_attr( get_template_directory_uri() . '/images/social/' ); ?>"
+                                                data-custom-title="custom"
                                                 data-text-icon-url="<?php _e('Icon URL', 'graphene'); ?>"
                                                 data-text-title-attr="<?php _e('Title attribute', 'graphene'); ?>"
                                                 data-text-url="<?php _e('URL', 'graphene'); ?>"
@@ -495,6 +515,8 @@ function graphene_options_general() {
                                             <?php foreach ( $available_profiles as $profile_type) : ?>                                
                                                 <?php if ($profile_type == '-') : ?>
                                                 <option disabled="disabled" value="-">-----------------------</option>
+                                                <?php elseif ($profile_type == 'Custom') : ?>
+                                                <option value="custom"><?php _e( 'Custom', 'graphene' ); ?></option>
                                                 <?php else : ?>
                                                 <option value="<?php echo sanitize_title( $profile_type ); ?>"><?php echo $profile_type; ?></option>
                                                 <?php endif; ?>
@@ -517,12 +539,14 @@ function graphene_options_general() {
                                     <td><input type="text" id="new-socialprofile-iconurl" class="widefat code" /></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><a href="#" id="new-socialprofile-add"><?php _e( 'Add new Social Media Profile', 'graphene' ); ?></a></td>
+                                    <td colspan="2"><a href="#" id="new-socialprofile-add"><?php _e( 'Add this social media profile', 'graphene' ); ?></a></td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -572,6 +596,8 @@ function graphene_options_general() {
                         </td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div> 
         
@@ -605,6 +631,8 @@ function graphene_options_general() {
                         <td><textarea name="graphene_settings[adsense_code]" id="adsense_code" cols="60" rows="10" class="widefat code"><?php echo htmlentities(stripslashes( $graphene_settings['adsense_code'] ) ); ?></textarea></td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -635,6 +663,8 @@ function graphene_options_general() {
                         <td><textarea name="graphene_settings[ga_code]" id="ga_code" cols="60" rows="7" class="widefat code"><?php echo htmlentities(stripslashes( $graphene_settings['ga_code'] ) ); ?></textarea></td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
         
@@ -668,6 +698,8 @@ function graphene_options_general() {
                         <td><input type="checkbox" name="graphene_settings[hide_return_top]" id="hide_return_top" <?php checked( $graphene_settings['hide_return_top'] ); ?> value="true" /></td>
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div> 
         
@@ -691,6 +723,8 @@ function graphene_options_general() {
                         <td><input type="checkbox" name="graphene_settings[print_button]" id="print_button" <?php checked( $graphene_settings['print_button'] ); ?> value="true" /></td>                        
                     </tr>
                 </table>
+                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>  
 

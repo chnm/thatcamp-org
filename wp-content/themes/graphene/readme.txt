@@ -2,6 +2,9 @@ GRAPHENE WORDPRESS THEME README
 by Syahir Hakim
 http://www.khairul-syahir.com
 
+Graphene WordPress Theme, Copyright 2010-2012 Syahir Hakim
+Graphene is distributed under the terms of the GNU GPL version 3
+
 The Graphene theme is a stylish, neat, and tight WordPress theme built for WordPress 3.0. It supports many (if not all) of the new features introduced in WordPress 3.0 as well as a host of other features introduced in earlier versions of WordPress.
 
 Graphene theme is confirmed compatible with IE7, IE8, Mozilla Firefox, Safari, and Google Chrome.
@@ -61,8 +64,8 @@ If you have translated the theme to other languages than those listed above, or 
 
 SOCIAL MEDIA ICON CREDITS
 
-The social media iconds used in this theme is taken from the free Social Media Bookmark Icon + icon set by Benjamin Reid.
-The original link from where the social media icons are taken is http://www.nouveller.com/general/free-social-media-bookmark-icon-pack-the-ever-growing-icon-set/
+Credits go to Nicholas Roach (eleganthemes.com) for the ElegantThemes Social Media Icon Set, which is bundled together with the theme.
+The icons  are dual-licensed under MIT and GPLv3 licence, and can be downloaded from http://www.elegantthemes.com/blog/resources/free-social-media-icon-set
 
 HEADER IMAGE CREDITS
 
@@ -75,7 +78,3 @@ My gratitude to these image authors who have allowed me to include their royalty
 OTHER NOTES
 
 To display the codes within the <code> element with the preformatted styling, include the class attribute class="block". Example: <code class="block">some code here</code>.
-
-The theme is released under the GPLv2 licence, which means that you are free to use, modify, and redistribute the theme however you like it, as long as you keep the licence together with the theme. This also means that you are free to use it for commercial purposes without any charges. Please read the included license.txt for the full licence.
-
-The Creative Commons licence at the bottom of the page is for the *content* of the website should the website owner wants to use that licence. It is *not* the licence for the theme itself.

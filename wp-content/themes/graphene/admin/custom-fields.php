@@ -23,80 +23,73 @@ add_action( 'add_meta_boxes', 'graphene_add_meta_box' );
  * Add or update the options
 */
 function graphene_save_custom_meta( $post_id ){
-	
-	/** 
-	 * verify this came from our screen and with proper authorization, because
-	 * save_post can be triggered at other times 
-	*/
-	if (isset( $_POST['graphene_save_custom_meta']) ){
-		if ( ! wp_verify_nonce( $_POST['graphene_save_custom_meta'], 'graphene_save_custom_meta' ) ) {
-			  return $post_id;
-		}
+
+	/* Verify this came from our screen and with proper authorization */
+	if ( isset( $_POST['graphene_save_custom_meta'] ) ) {
+		if ( ! wp_verify_nonce( $_POST['graphene_save_custom_meta'], 'graphene_save_custom_meta' ) ) return $post_id;
 	} else {
 		return $post_id;
 	}
   
-	/**
-	 * verify if this is an auto save routine. If it is our form has not been submitted, 
-	 * so we dont want to do anything
-	*/
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
-	  return $post_id;
+	/* Don't do anything if it's an autosave */
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
   
 	/* Check permissions */
 	if ( 'page' == $_POST['post_type']) {
-	  if ( ! current_user_can( 'edit_page', $post_id) )
-		return $post_id;
+		if ( ! current_user_can( 'edit_page', $post_id ) ) return $post_id;
 	} else {
-	  if ( ! current_user_can( 'edit_post', $post_id) )
-		return $post_id;
+		if ( ! current_user_can( 'edit_post', $post_id ) ) return $post_id;
 	}
 
-	/* OK, we're authenticated: saving the data */
-	update_post_meta( $post_id, '_graphene_slider_img', $_POST['graphene_slider_img']);        
-	update_post_meta( $post_id, '_graphene_slider_imgurl', $_POST['graphene_slider_imgurl']);
-        update_post_meta( $post_id, '_graphene_slider_url', $_POST['graphene_slider_url']);
-	update_post_meta( $post_id, '_graphene_show_addthis', $_POST['graphene_show_addthis']);
-        
+	/* OK, we're authenticated: process the data */
+	$graphene_meta = array();
+	if ( in_array( $_POST['graphene_slider_img'], array( 'disabled', 'featured_image', 'post_image', 'custom_url' ) ) )
+		$graphene_meta['slider_img'] = $_POST['graphene_slider_img'];
+	if ( in_array( $_POST['graphene_show_addthis'], array( 'show', 'hide' ) ) )
+		$graphene_meta['show_addthis'] = $_POST['graphene_show_addthis'];
+	if ( $_POST['graphene_slider_imgurl'] )
+		$graphene_meta['slider_imgurl'] = esc_url_raw( $_POST['graphene_slider_imgurl'] );
+	if ( $_POST['graphene_slider_url'] )
+	    $graphene_meta['slider_url'] = esc_url_raw( $_POST['graphene_slider_url'] );
+	
 	/* Post-specific options */
 	if ( 'post' == $_POST['post_type'] ) {
-		update_post_meta( $post_id, '_graphene_post_date_display', $_POST['graphene_post_date_display'] );
+		if ( in_array( $_POST['graphene_post_date_display'], array( 'show', 'hide' ) ) )
+			$graphene_meta['post_date_display'] = $_POST['graphene_post_date_display'];
 	}
-		
+	
 	/* Page-specific options */
 	if ( 'page' == $_POST['post_type']) {
-		update_post_meta( $post_id, '_graphene_nav_description', $_POST['graphene_nav_description']);        
+		if ( $_POST['graphene_nav_description'] )
+			$graphene_meta['nav_description'] = wp_kses_post( $_POST['graphene_nav_description'] );
 	}
+	
+	$graphene_meta_defaults = graphene_custom_fields_defaults();
+	foreach ( $graphene_meta as $key => $value ){
+		if ( $value == $graphene_meta_defaults[$key] ) unset( $graphene_meta[$key] );
+	}
+	
+	if ( $graphene_meta ) update_post_meta( $post_id, '_graphene_meta', $graphene_meta );
+	else delete_post_meta( $post_id, '_graphene_meta' );
 }
 add_action( 'save_post', 'graphene_save_custom_meta' );
-
-
 
 
 /**
  * Display the custom meta box content
 */
-function graphene_custom_meta( $post){ 
+function graphene_custom_meta( $post ){ 
 
 	// Use nonce for verification
 	wp_nonce_field( 'graphene_save_custom_meta', 'graphene_save_custom_meta' );
 	
 	/* Get the current settings */
-	$slider_img = ( get_post_meta( $post->ID, '_graphene_slider_img', true ) ) ? get_post_meta( $post->ID, '_graphene_slider_img', true ) : 'global';
-        $slider_url = ( get_post_meta( $post->ID, '_graphene_slider_url', true ) ) ? get_post_meta( $post->ID, '_graphene_slider_url', true ) : '';
-	$slider_imgurl = ( get_post_meta( $post->ID, '_graphene_slider_imgurl', true ) ) ? get_post_meta( $post->ID, '_graphene_slider_imgurl', true ) : '';
-	$show_addthis = ( get_post_meta( $post->ID, '_graphene_show_addthis', true ) ) ? get_post_meta( $post->ID, '_graphene_show_addthis', true ) : 'global';
-        
-	if ( 'post' == $post->post_type ){
-		$post_date_display = ( get_post_meta( $post->ID, '_graphene_post_date_display', true ) ) ? get_post_meta( $post->ID, '_graphene_post_date_display', true ) : '';
-	}
-
-	if ( 'page' == $post->post_type){
-		$nav_description = ( get_post_meta( $post->ID, '_graphene_nav_description', true ) ) ? get_post_meta( $post->ID, '_graphene_nav_description', true ) : '';
-	}
+	$graphene_meta = get_post_meta( $post->ID, '_graphene_meta', true );
+	if ( ! $graphene_meta ) $graphene_meta = array();
+	$graphene_meta = array_merge( graphene_custom_fields_defaults(), $graphene_meta );	
 	?>
     
-	<p><?php _e("These settings will only be applied to this particular post or page you're editing. They will override the global settings set in the Graphene Options or Graphene Display options page.", 'graphene' ); ?></p>
+	<p><?php _e( "These settings will only be applied to this particular post or page you're editing. They will override the global settings set in the Graphene Options or Graphene Display options page.", 'graphene' ); ?></p>
     <h4><?php _e( 'Slider options', 'graphene' ); ?></h4>    
     <table class="form-table">
     	<tr>
@@ -105,11 +98,11 @@ function graphene_custom_meta( $post){
             </th>
             <td>
                 <select id="graphene_slider_img" name="graphene_slider_img">
-                	<option value="global" <?php selected( $slider_img, 'global' ); ?>><?php _e( 'Use global setting', 'graphene' ); ?></option>
-                    <option value="disabled" <?php selected( $slider_img, 'disabled' ); ?>><?php _e("Don't show image", 'graphene' ); ?></option>
-                    <option value="featured_image" <?php selected( $slider_img, 'featured_image' ); ?>><?php _e("Featured Image", 'graphene' ); ?></option>
-                    <option value="post_image" <?php selected( $slider_img, 'post_image' ); ?>><?php _e("First image in post", 'graphene' ); ?></option>
-                    <option value="custom_url" <?php selected( $slider_img, 'custom_url' ); ?>><?php _e("Custom URL", 'graphene' ); ?></option>
+                	<option value="" <?php selected( $graphene_meta['slider_img'], '' ); ?>><?php _e( 'Use global setting', 'graphene' ); ?></option>
+                    <option value="disabled" <?php selected( $graphene_meta['slider_img'], 'disabled' ); ?>><?php _e("Don't show image", 'graphene' ); ?></option>
+                    <option value="featured_image" <?php selected( $graphene_meta['slider_img'], 'featured_image' ); ?>><?php _e('Featured Image', 'graphene' ); ?></option>
+                    <option value="post_image" <?php selected( $graphene_meta['slider_img'], 'post_image' ); ?>><?php _e('First image in post', 'graphene' ); ?></option>
+                    <option value="custom_url" <?php selected( $graphene_meta['slider_img'], 'custom_url' ); ?>><?php _e('Custom URL', 'graphene' ); ?></option>
                 </select>
             </td>
         </tr>        
@@ -118,7 +111,7 @@ function graphene_custom_meta( $post){
                 <label for="graphene_slider_imgurl"><?php _e( 'Custom slider image URL', 'graphene' ); ?></label>
             </th>
             <td>
-                <input type="text" id="graphene_slider_imgurl" name="graphene_slider_imgurl" value="<?php echo $slider_imgurl; ?>" size="60" /><br />
+                <input type="text" id="graphene_slider_imgurl" name="graphene_slider_imgurl" class="widefat code" value="<?php echo $graphene_meta['slider_imgurl']; ?>" size="60" /><br />
                 <span class="description"><?php _e( 'Make sure you select Custom URL in the slider image option above to use this custom url.', 'graphene' ); ?></span>                        
             </td>
         </tr>
@@ -127,7 +120,7 @@ function graphene_custom_meta( $post){
                 <label for="graphene_slider_url"><?php _e( 'Custom slider URL', 'graphene' ); ?></label>
             </th>
             <td>
-                <input type="text" id="graphene_slider_url" name="graphene_slider_url" value="<?php echo $slider_url; ?>" size="60" /><br />
+                <input type="text" id="graphene_slider_url" name="graphene_slider_url" class="widefat code" value="<?php echo $graphene_meta['slider_url']; ?>" size="60" /><br />
                 <span class="description"><?php _e( 'Use this to override the link that is used in the slider.', 'graphene' ); ?></span>                        
             </td>
         </tr>
@@ -140,9 +133,9 @@ function graphene_custom_meta( $post){
             </th>
             <td>
                 <select id="graphene_show_addthis" name="graphene_show_addthis">
-                	<option value="global" <?php selected( $show_addthis, 'global' ); ?>><?php _e( 'Use global setting', 'graphene' ); ?></option>
-                    <option value="show" <?php selected( $show_addthis, 'show' ); ?>><?php _e("Show button", 'graphene' ); ?></option>
-                    <option value="hide" <?php selected( $show_addthis, 'hide' ); ?>><?php _e("Hide button", 'graphene' ); ?></option>
+                	<option value="" <?php selected( $graphene_meta['show_addthis'], '' ); ?>><?php _e( 'Use global setting', 'graphene' ); ?></option>
+                    <option value="show" <?php selected( $graphene_meta['show_addthis'], 'show' ); ?>><?php _e( 'Show button', 'graphene' ); ?></option>
+                    <option value="hide" <?php selected( $graphene_meta['show_addthis'], 'hide' ); ?>><?php _e( 'Hide button', 'graphene' ); ?></option>
                 </select>
             </td>
         </tr>
@@ -154,8 +147,8 @@ function graphene_custom_meta( $post){
             </th>
             <td>
                 <select id="graphene_post_date_display" name="graphene_post_date_display">
-                	<option value="global" <?php selected( $post_date_display, 'global' ); ?>><?php _e( 'Use global setting', 'graphene' ); ?></option>
-                    <option value="hide" <?php selected( $post_date_display, 'hide' ); ?>><?php _e( 'Hide date', 'graphene' ); ?></option>
+                	<option value="" <?php selected( $graphene_meta['post_date_display'], '' ); ?>><?php _e( 'Use global setting', 'graphene' ); ?></option>
+                    <option value="hide" <?php selected( $graphene_meta['post_date_display'], 'hide' ); ?>><?php _e( 'Hide date', 'graphene' ); ?></option>
                 </select>
             </td>
         </tr>
@@ -170,7 +163,7 @@ function graphene_custom_meta( $post){
                 <label for="graphene_nav_description"><?php _e( 'Description', 'graphene' ); ?></label>
             </th>
             <td>
-                <input type="text" id="graphene_nav_description" name="graphene_nav_description" value="<?php echo $nav_description; ?>" size="60" /><br />
+                <input type="text" id="graphene_nav_description" name="graphene_nav_description" value="<?php echo $graphene_meta['nav_description']; ?>" size="60" /><br />
                 <span class="description"><?php _e( 'Only required if you need a description in the navigation menu and you are not using a custom menu.', 'graphene' ); ?></span>                        
             </td>
         </tr>
@@ -179,4 +172,24 @@ function graphene_custom_meta( $post){
 <?php	
 }
 
+
+/**
+ * Set the default values for the custom fields
+ *
+ * @return array Array containing default key-value pairs of the theme's custom fields
+ *
+ * @package Graphene
+ * @since Graphene 1.8
+ */
+function graphene_custom_fields_defaults(){
+	$defaults = array(
+					'slider_img' 		=> '',
+					'show_addthis' 		=> '',
+					'slider_imgurl' 	=> '',
+					'slider_url' 		=> '',
+					'post_date_display' => '',
+					'nav_description'	=> '',
+				);
+	return $defaults;
+}
 ?>

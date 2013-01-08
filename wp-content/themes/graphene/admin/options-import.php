@@ -20,6 +20,7 @@ function graphene_export_options(){
 		$name = 'graphene_options.txt';
 		
 		$data = $graphene_settings;
+		if ( array_key_exists( 'template_dir', $data ) ) unset( $data['template_dir'] );
 		/* Only export options that have different values than the default values - disabled for now
 		foreach ( $data as $key => $value ){
 			if ( $graphene_defaults[$key] === $value || $value === '' ) {
