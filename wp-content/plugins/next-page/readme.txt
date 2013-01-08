@@ -3,7 +3,7 @@ Contributors: sillybean
 Tags: page
 Requires at least: 2.5
 Tested up to: 3.1
-Stable tag: 1.5.1
+Stable tag: 1.5.2
 
 
 This plugin provides shortcodes and template tags for next/previous navigation in pages. 
@@ -25,11 +25,16 @@ This plugin provides shortcodes and template tags for next/previous navigation i
 == Translations ==
 
 * Belorussian translation by <a href="http://pc.de/">Marcis Gasuns</a>
+* Romanian translation Web Geek Science (<a href="http://webhostinggeeks.com/">Web
+Hosting Geeks</a>)
 
 If you would like to send me a translation, please write to me through <a href="http://sillybean.net/about/contact/">my contact page</a>. Let me know which plugin you've translated and how you would like to be credited. I will write you back so you can attach the files in your reply.
 
 == Changelog ==
 
+= 1.5.2 =
+* Romanian translation Web Geek Science (<a href="http://webhostinggeeks.com/">Web
+Hosting Geeks</a>)
 = 1.5.1 =
 * Better handling of international characters. (Thanks, jflycn!) (January 5, 2011)
 = 1.5 =
