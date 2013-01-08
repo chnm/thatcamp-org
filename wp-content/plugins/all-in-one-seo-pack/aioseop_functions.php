@@ -349,6 +349,7 @@ if (!function_exists('aiosp_meta')) {
 		$description = htmlspecialchars(stripcslashes(get_post_meta($post_id, '_aioseop_description', true)));
 	   	$aiosp_meta = htmlspecialchars(stripcslashes(get_post_meta($post_id, '_aiosp_meta', true)));
 	    	$aiosp_disable = htmlspecialchars(stripcslashes(get_post_meta($post_id, '_aioseop_disable', true)));
+	    	$aiosp_disable_analytics = htmlspecialchars(stripcslashes(get_post_meta($post_id, '_aioseop_disable_analytics', true)));
 	    	$aiosp_titleatr = htmlspecialchars(stripcslashes(get_post_meta($post_id, '_aioseop_titleatr', true)));
 	    	$aiosp_menulabel = htmlspecialchars(stripcslashes(get_post_meta($post_id, '_aioseop_menulabel', true)));	
 		?>
@@ -410,6 +411,18 @@ if (!function_exists('aiosp_meta')) {
 			<input type="checkbox" name="aiosp_disable" <?php if ($aiosp_disable) echo "checked=\"1\""; ?>/>
 			</td>
 			</tr>
+
+<?php if ( $aiosp_disable ) { ?>
+                                                <tr>
+                                                        <th scope="row" style="text-align:right; vertical-align:top;">
+                                                                <?php _e('Disable Google Analytics:', 'all_in_one_seo_pack')?>
+                                                        </th>
+                                                        <td>
+                                                                <input type="checkbox" name="aiosp_disable_analytics" <?php if ($aiosp_disable_analytics) echo "checked=\"1\""; ?>/>
+                                                        </td>
+                                                </tr>
+<?php } ?>
+
 			</table>
 		<?php
 	}
