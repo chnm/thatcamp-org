@@ -151,10 +151,10 @@ class Jetpack_Signature {
 		$names  = array_keys( $array );
 		$values = array_values( $array );
 
-		$names  = array_map( array( &$this, 'encode_3986' ), $names  );
-		$values = array_map( array( &$this, 'encode_3986' ), $values );
+		$names  = array_map( array( $this, 'encode_3986' ), $names  );
+		$values = array_map( array( $this, 'encode_3986' ), $values );
 
-		$pairs  = array_map( array( &$this, 'join_with_equal_sign' ), $names, $values );
+		$pairs  = array_map( array( $this, 'join_with_equal_sign' ), $names, $values );
 
 		sort( $pairs );
 
@@ -171,12 +171,6 @@ class Jetpack_Signature {
 	}
 }
 
-if ( version_compare( PHP_VERSION, 5, '<' ) ) :
-function jetpack_sha1_base64( $text ) {
-	return base64_encode( pack( 'H40', sha1( $text ) ) );
-}
-else :
 function jetpack_sha1_base64( $text ) {
 	return base64_encode( sha1( $text, true ) );
 }
-endif;
