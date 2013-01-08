@@ -1,10 +1,10 @@
 ﻿=== Author Avatars List ===
 Contributors: pbearne, bforchhammer
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CP96HL6QE6WWN
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=MZTZ5S8MGF75C&lc=CA&item_name=Wordpress%20Development%20%2f%20Paul%20Bearne&item_number=AuthorAvatarsList%20Plugin&currency_code=CAD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: Avatar, Author, BuddyPress, Comment, Editor, Image, Multisite, Photo, Picture, Profile, Shortcode, Random, Sidebar, Thumbnail, User, Widget, Wpmu
 Requires at least: 2.8
-Tested up to: 3.3
-Stable tag: 1.5.0
+Tested up to: 3.4.1
+Stable tag: 1.6.1
 
 Display lists of user avatars using widgets or shortcodes.
 
@@ -57,6 +57,18 @@ You can find information for developers [on this page](http://authoravatars.word
 5. List of users with name and biography
 
 == Changelog ==
+
+
+= 1.6.1 =
+* Fixed a bug that stoped the loading of default CSS sheet for the plugin that I added a bug in in 1.6 
+
+= 1.6.0 =
+* Added the option to link to BBpress profile in the link to the shortcode and generator  user_link=bbpress_memberpage
+* Fixed bug - the the shortcode generator was shown up in the tinyMCE edit if it was loaded on a page (BBpress forum posts) the popup was 404'ing so add a $pagenow != 'index.php' to make sure we are in the addmin section
+* Fixed bug causing the RTL layout to break	 
+
+= 1.5.1 =
+*  Added  Hindi language (by Love Chandel:  Outshine Solutions - http://outshinesolutions.com)
 
 = 1.5 =
 *  Added Paging to the short code
