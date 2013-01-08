@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.8.3
+ * Transposh v0.9.0
  * http://transposh.org/
  *
  * Copyright 2012, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 28 May 2012 14:38:35 +0300
+ * Date: Thu, 13 Dec 2012 04:47:49 +0200
  */
 
 /*
@@ -42,7 +42,7 @@ class transposh_3rdparty {
         add_action('sm_addurl', array(&$this, 'add_sm_transposh_urls'));
 
         // google analyticator
-        if ($this->transposh->options->get_transposh_collect_stats()) {
+        if ($this->transposh->options->transposh_collect_stats) {
             add_action('google_analyticator_extra_js_after', array(&$this, 'add_analyticator_tracking'));
         }
     }
@@ -60,35 +60,35 @@ class transposh_3rdparty {
         $GLOBALS['wp_cache_request_uri'] = preg_replace('/[ <>\'\"\r\n\t\(\)]/', '', str_replace('/index.php', '/', str_replace('..', '', preg_replace("/(\?.*)?$/", '', $GLOBALS['wp_cache_request_uri']))));
         // get some supercache variables
         extract(wp_super_cache_init());
-        
+        tp_logger(wp_super_cache_init());
         // this is hackery for logged in users, a cookie is added to the request somehow and gzip is not correctly set, so we forcefully fix this
         if (!$cache_file) {
             $GLOBALS['wp_cache_gzip_encoding'] = gzip_accepted();
             unset($_COOKIE[key($_COOKIE)]);
             extract(wp_super_cache_init());
-            
+            tp_logger(wp_super_cache_init());
         }
 
         $dir = get_current_url_supercache_dir();
         // delete possible files that we can figure out, not deleting files for other cookies for example, but will do the trick in most cases
         $cache_fname = "{$dir}index.html";
-        
+        tp_logger("attempting delete of supercache: $cache_fname");
         @unlink($cache_fname);
         $cache_fname = "{$dir}index.html.gz";
-        
+        tp_logger("attempting delete of supercache: $cache_fname");
         @unlink($cache_fname);
-        
+        tp_logger("attempting delete of wp_cache: $cache_file");
         @unlink($cache_file);
-        
+        tp_logger("attempting delete of wp_cache_meta: $meta_pathname");
         @unlink($meta_pathname);
 
         // go at edit pages too
         $GLOBALS['wp_cache_request_uri'] .="?edit=1";
         extract(wp_super_cache_init());
-        
-        
+        tp_logger(wp_super_cache_init());
+        tp_logger("attempting delete of edit_wp_cache: $cache_file");
         @unlink($cache_file);
-        
+        tp_logger("attempting delete of edit_wp_cache_meta: $meta_pathname");
         @unlink($meta_pathname);
     }
 
@@ -101,7 +101,7 @@ class transposh_3rdparty {
         $lang = transposh_utils::get_language_from_url($uri, $this->transposh->home_url);
         //TODO - check using get_clean_url
         $uri = transposh_utils::cleanup_url($uri, $this->transposh->home_url);
-        if ($this->transposh->options->get_enable_url_translate()) {
+        if ($this->transposh->options->enable_url_translate) {
             $uri = transposh_utils::get_original_url($uri, '', $lang, array($this->transposh->database, 'fetch_original'));
         }
         return $uri;
@@ -178,19 +178,24 @@ class transposh_3rdparty {
      * @param GoogleSitemapGeneratorPage $sm_page Object containing the page information
      */
     function add_sm_transposh_urls($sm_page) {
-        
+        tp_logger("in sitemap add url: " . $sm_page->GetUrl() . " " . $sm_page->GetPriority(), 4);
         $sm_page = clone $sm_page;
         // we need the generator object (we know it must exist...)
         $generatorObject = &GoogleSitemapGenerator::GetInstance();
         // we reduce the priorty by 0.2, but not below zero
         $sm_page->SetProprity(max($sm_page->GetPriority() - 0.2, 0));
 
-        $viewable_langs = explode(',', $this->transposh->options->get_viewable_langs());
+        /* <xhtml:link 
+          rel="alternate"
+          hreflang="de"
+          href="http://www.example.com/de" /> */
+
+        $viewable_langs = explode(',', $this->transposh->options->viewable_languages);
         $orig_url = $sm_page->GetUrl();
         foreach ($viewable_langs as $lang) {
             if (!$this->transposh->options->is_default_language($lang)) {
                 $newloc = $orig_url;
-                if ($this->transposh->options->get_enable_url_translate()) {
+                if ($this->transposh->options->enable_url_translate) {
                     $newloc = transposh_utils::translate_url($newloc, $this->transposh->home_url, $lang, array(&$this->transposh->database, 'fetch_translation'));
                 }
                 $newloc = transposh_utils::rewrite_url_lang_param($newloc, $this->transposh->home_url, $this->transposh->enable_permalinks_rewrite, $lang, false);

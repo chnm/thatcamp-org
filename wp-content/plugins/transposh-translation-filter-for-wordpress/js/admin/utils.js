@@ -1,0 +1,16 @@
+/*
+ * Transposh v0.9.0
+ * http://transposh.org/
+ *
+ * Copyright 2012, Team Transposh
+ * Licensed under the GPL Version 2 or higher.
+ * http://transposh.org/license
+ *
+ * Date: Wed, 12 Dec 2012 22:23:17 +0200
+ */
+(function(a){a(function(){a.ajaxSetup({cache:false});a("#transposh-reset-options").click(function(){if(!confirm("Are you sure you want to do this?"))return false;if(!confirm("Are you REALLY sure you want to do this, your configuration will be reset?"))return false;a.post(ajaxurl,{action:"tp_reset"})});backupclick=function(){a("#transposh-backup").unbind("click").click(function(){return false}).text("Backup In Progress");a.post(ajaxurl,{action:"tp_backup"},function(b){var c="red";b[0]=="2"&&(c="green");
+a("#backup_result").html(b).css("color",c);a("#transposh-backup").unbind("click").click(backupclick).text("Do Backup Now")});return false};a("#transposh-backup").click(backupclick);cleanautoclick=function(b,c){if(!confirm("Are you sure you want to do this?"))return false;if(b==0&&!confirm("Are you REALLY sure you want to do this?"))return false;var d=c.text();c.unbind("click").click(function(){return false}).text("Cleanup in progress");a.post(ajaxurl,{action:"tp_cleanup",days:b},function(){c.unbind("click").click(function(){cleanautoclick(b,
+c);return false}).text(d)});return false};a("#transposh-clean-auto").click(function(){cleanautoclick(0,a(this));return false});a("#transposh-clean-auto14").click(function(){cleanautoclick(14,a(this));return false});maintclick=function(b){if(!confirm("Are you sure you want to do this?"))return false;var c=b.text();b.unbind("click").click(function(){return false}).text("Maintenance in progress");a.post(ajaxurl,{action:"tp_maint"},function(){b.unbind("click").click(function(){maintclick(b);return false}).text(c)});
+return false};a("#transposh-maint").click(function(){maintclick(a(this));return false});do_translate_all=function(){a("#progress_bar_all").progressbar({value:0});stop_translate_var=false;a("#tr_loading").data("done",true);a.ajaxSetup({cache:false});a.ajax({url:ajaxurl,dataType:"json",data:{action:"tp_translate_all"},cache:false,success:function(b){dotimer=function(c){a("#tr_allmsg").text("");clearTimeout(timer2);a("#tr_loading").data("done")||a("#tr_loading").data("attempt")>4?(a("#progress_bar_all").progressbar("value",
+(c+1)/b.length*100),a("#tr_loading").data("attempt",0),translate_post(b[c]),typeof b[c+1]!=="undefined"&&!stop_translate_var&&(timer2=setTimeout(function(){dotimer(c+1)},5E3),a("#tr_allmsg").text("Waiting 5 seconds..."))):(a("#tr_loading").data("attempt",a("#tr_loading").data("attempt")+1),timer2=setTimeout(function(){dotimer(c)},15E3),a("#tr_allmsg").text("Translation incomplete - Waiting 15 seconds - attempt "+a("#tr_loading").data("attempt")+"/5"))};timer2=setTimeout(function(){dotimer(0)},0)}});
+a("#transposh-translate").text("Stop translate");a("#transposh-translate").unbind("click").click(stop_translate);return false};stop_translate=function(){clearTimeout(timer2);stop_translate_var=true;a("#transposh-translate").text("Translate All Now");a("#transposh-translate").unbind("click").click(do_translate_all);return false};a("#transposh-translate").click(do_translate_all)})})(jQuery);

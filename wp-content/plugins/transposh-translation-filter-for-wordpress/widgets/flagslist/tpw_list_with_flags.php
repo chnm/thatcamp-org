@@ -11,14 +11,14 @@
  */
 
 /*
- * Transposh v0.8.3
+ * Transposh v0.9.0
  * http://transposh.org/
  *
  * Copyright 2012, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 28 May 2012 14:38:35 +0300
+ * Date: Wed, 12 Dec 2012 22:23:17 +0200
  */
 
 class tpw_list_with_flags extends transposh_base_widget {
@@ -28,7 +28,7 @@ class tpw_list_with_flags extends transposh_base_widget {
      * @global transposh_plugin $my_transposh_plugin
      */
     static function tp_widget_css($file, $dir, $url) {
-        wp_enqueue_style("flags/tpw_flags", "$url/widgets/flags/tpw_flags.css", array(), TRANSPOSH_PLUGIN_VER);
+        wp_enqueue_style("flags_tpw_flags", "$url/widgets/flags/tpw_flags.css", array(), TRANSPOSH_PLUGIN_VER);
     }
 
     /**

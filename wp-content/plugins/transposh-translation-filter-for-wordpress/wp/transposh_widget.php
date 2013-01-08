@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.8.3
+ * Transposh v0.9.0
  * http://transposh.org/
  *
  * Copyright 2012, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 28 May 2012 14:38:35 +0300
+ * Date: Thu, 13 Dec 2012 04:47:49 +0200
  */
 
 /*
@@ -38,10 +38,11 @@ class transposh_base_widget {
      * @param string $plugin_url 
      */
     static function tp_widget_css($file, $plugin_dir, $plugin_url) {
+        tp_logger('looking for css:' . $file, 4);
         $basefile = substr($file, 0, -4);
         $widget_css = TRANSPOSH_DIR_WIDGETS . '/' . $basefile . ".css";
         if (file_exists($plugin_dir . $widget_css)) {
-            wp_enqueue_style($basefile, $plugin_url . '/' . $widget_css, '', TRANSPOSH_PLUGIN_VER);
+            wp_enqueue_style(str_replace('/', '_', $basefile), $plugin_url . '/' . $widget_css, '', TRANSPOSH_PLUGIN_VER);
         }
     }
 
@@ -52,6 +53,7 @@ class transposh_base_widget {
      * @param string $plugin_url 
      */
     static function tp_widget_js($file, $plugin_dir, $plugin_url) {
+        tp_logger('looking for js:' . $file, 4);
         $basefile = substr($file, 0, -4);
         $widget_js = TRANSPOSH_DIR_WIDGETS . '/' . $basefile . ".js";
         if (file_exists($plugin_dir . $widget_js)) {
@@ -88,8 +90,10 @@ class transposh_plugin_widget extends WP_Widget {
         // We only need to add those actions once, makes life simpler
         if (is_active_widget(false, false, $this->id_base) && self::$first_init) {
             self::$first_init = false;
-            add_action('wp_print_styles', array(&$this, 'add_transposh_widget_css'));
-            add_action('wp_print_scripts', array(&$this, 'add_transposh_widget_js'));
+            if (!is_admin()) {
+                add_action('wp_print_styles', array(&$this, 'add_transposh_widget_css'));
+                add_action('wp_print_scripts', array(&$this, 'add_transposh_widget_js'));
+            }
         }
     }
 
@@ -98,8 +102,8 @@ class transposh_plugin_widget extends WP_Widget {
      */
     function update($new_instance, $old_instance) {
         $instance = $old_instance;
-        
-        
+        tp_logger($instance);
+        tp_logger($new_instance);
         $instance['title'] = strip_tags(stripslashes($new_instance['title']));
         $instance['widget_file'] = strip_tags(stripslashes($new_instance['widget_file']));
         return $instance;
@@ -125,7 +129,7 @@ class transposh_plugin_widget extends WP_Widget {
         echo '<p><label for="' . $this->get_field_name('widget_file') . '">' . __('Style:', TRANSPOSH_TEXT_DOMAIN) .
         '<select id="' . $this->get_field_id('widget_file') . '" name="' . $this->get_field_name('widget_file') . '">';
         foreach ($widgets as $file => $widget) {
-            
+            tp_logger($widget, 4);
             $selected = ($instance['widget_file'] == $file) ? ' selected="selected"' : '';
             echo "<option value=\"$file\"$selected>{$widget['Name']}</option>";
         }
@@ -138,6 +142,7 @@ class transposh_plugin_widget extends WP_Widget {
      * Loads the subwidget class code
      */
     function load_widget($file) {
+        tp_logger("widget loaded: $file", 4);
         $widget_src = $this->transposh->transposh_plugin_dir . TRANSPOSH_DIR_WIDGETS . '/' . $file;
         if ($file && file_exists($widget_src)) {
             include_once $widget_src;
@@ -169,7 +174,7 @@ class transposh_plugin_widget extends WP_Widget {
                 $tmpclass->tp_widget_css($key, $this->transposh->transposh_plugin_dir, $this->transposh->transposh_plugin_url);
             }
         }
-        
+        tp_logger('Added transposh_widget_css', 4);
     }
 
     /**
@@ -192,7 +197,7 @@ class transposh_plugin_widget extends WP_Widget {
                 $tmpclass->tp_widget_js($key, $this->transposh->transposh_plugin_dir, $this->transposh->transposh_plugin_url);
             }
         }
-        
+        tp_logger('Added transposh_widget_js', 4);
     }
 
     /**
@@ -213,12 +218,11 @@ class transposh_plugin_widget extends WP_Widget {
         foreach ($this->transposh->options->get_sorted_langs() as $code => $langrecord) {
             list ($langname, $language, $flag) = explode(',', $langrecord);
 
-            // Only send languages which are viewable or (editable and the user is a translator)
-            if ($this->transposh->options->is_viewable_language($code) ||
-                    ($this->transposh->options->is_editable_language($code) && $this->transposh->is_translator()) ||
+            // Only send languages which are active
+            if ($this->transposh->options->is_active_language($code) ||
                     ($this->transposh->options->is_default_language($code))) {
                 // now we alway do this... maybe cache this to APC/Memcache
-                if ($this->transposh->options->get_enable_url_translate() && !$this->transposh->options->is_default_language($code)) {
+                if ($this->transposh->options->enable_url_translate && !$this->transposh->options->is_default_language($code)) {
                     $page_url = transposh_utils::translate_url($clean_page_url, '', $code, array(&$this->transposh->database, 'fetch_translation'));
                 } else {
                     $page_url = $clean_page_url;
@@ -230,7 +234,7 @@ class transposh_plugin_widget extends WP_Widget {
                     'langorig' => $language,
                     'flag' => $flag,
                     'isocode' => $code,
-                    'url' => $page_url,
+                    'url' => htmlentities($page_url), // fix that XSS
                     'active' => ($this->transposh->target_language == $code));
             }
         }
@@ -244,7 +248,7 @@ class transposh_plugin_widget extends WP_Widget {
     function widget($args, $instance) {
         // extract args given by wordpress
         extract($args);
-        
+        tp_logger($args, 4);
 
         // we load the class needed and get its base name for later
         $class = $this->load_widget($instance['widget_file']);
@@ -254,16 +258,16 @@ class transposh_plugin_widget extends WP_Widget {
 
         $clean_page = $this->transposh->get_clean_url();
 
-        
+        tp_logger("WIDGET: clean page url: $clean_page", 4);
 
         $widget_args = $this->create_widget_args($clean_page);
         // at this point the widget args are ready
 
-        
+        tp_logger('Enter widget', 4);
 
         // widget default title
         //echo $before_widget . $before_title . __('Translation', TRANSPOSH_TEXT_DOMAIN) . $after_title; - hmm? po/mo?
-        echo $before_widget;
+        if (isset($before_widget)) echo $before_widget;
         if ($instance['title']) {
             /* TRANSLATORS: no need to translate this string */
             echo $before_title . __($instance['title'], TRANSPOSH_TEXT_DOMAIN) . $after_title;
@@ -279,7 +283,7 @@ class transposh_plugin_widget extends WP_Widget {
         //at least one language showing - add the edit box if applicable
         if (!empty($widget_args)) {
             // this is the set default language line
-            if ($this->transposh->options->get_widget_allow_set_default_language()) {
+            if ($this->transposh->options->widget_allow_set_deflang) {
                 If ((isset($_COOKIE['TR_LNG']) && $_COOKIE['TR_LNG'] != $this->transposh->target_language) || (!isset($_COOKIE['TR_LNG']) && !$this->transposh->options->is_default_language($this->transposh->target_language))) {
                     echo '<a id="' . SPAN_PREFIX . 'setdeflang' . self::$draw_calls . '" class="' . SPAN_PREFIX . 'setdeflang' . '" onClick="return false;" href="' . admin_url('admin-ajax.php') . '?action=tp_cookie_bck">' . __('Set as default language', TRANSPOSH_TEXT_DOMAIN) . '</a><br/>';
                 }
@@ -307,7 +311,7 @@ class transposh_plugin_widget extends WP_Widget {
         // last - you can now remove the logo in exchange to a few percentage of ad and affiliate revenues on your pages, isn't that better?
         $plugpath = parse_url($this->transposh->transposh_plugin_url, PHP_URL_PATH);
 
-        if (!$this->transposh->options->get_widget_remove_logo()) {
+        if (!$this->transposh->options->widget_remove_logo) {
             $tagline = esc_attr__('Transposh', TRANSPOSH_TEXT_DOMAIN) . ' - ';
             switch (ord(md5($_SERVER['REQUEST_URI'])) % 5) {
                 case 0:
@@ -334,12 +338,12 @@ class transposh_plugin_widget extends WP_Widget {
         }
 
         echo '<div id="' . SPAN_PREFIX . 'credit' . self::$draw_calls . '">';
-        if (!$this->transposh->options->get_widget_remove_logo()) {
+        if (!$this->transposh->options->widget_remove_logo) {
             echo 'by <a href="http://tran' . 'sposh.org/' . $extralang . '"><img height="16" width="16" src="' .
-            $plugpath . '/img/tplog' . 'o.png" style="padding:1px;border:0px" title="' . $tagline . '" alt="' . $tagline . '"/></a>';
+            $plugpath . '/img/tplog' . 'o.png" style="padding:1px;border:0;box-shadow:0 0;border-radius:0" title="' . $tagline . '" alt="' . $tagline . '"/></a>';
         }
         echo '</div>';
-        echo $after_widget;
+        if (isset($after_widget)) echo $after_widget;
         // increase the number of calls for unique IDs
         self::$draw_calls++;
     }
@@ -397,14 +401,6 @@ class transposh_plugin_widget extends WP_Widget {
         return $tp_widgets;
     }
 
-}
-
-/**
- * Function provided for old widget include code compatability
- * @param array $args Not needed
- */
-function transposh_widget($args = array(), $instance= array('title' => 'Translation')) {
-    $GLOBALS['my_transposh_plugin']->widget->widget($args, $instance);
 }
 
 ?>
