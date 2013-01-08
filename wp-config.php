@@ -22,6 +22,20 @@ define('DB_CHARSET', 'utf8');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
+//Added by WP-Cache Manager
+
+define('WP_CACHE', true); 
+
+//Added by WP-Cache Manager
+
+define( 'WPCACHEHOME', '/websites/thatcamp/home/www/wp-content/plugins/wp-super-cache/' ); 
+
+// Enable the WordPress Object Cache:
+define(ENABLE_CACHE, true);
+
+define('WP_DEBUG', true);
+
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -89,3 +103,7 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+
+
+
+
