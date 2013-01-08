@@ -30,6 +30,7 @@ class SyndicatedPost {
 	
 	var $_freshness = null;
 	var $_wp_id = null;
+	var $_wp_post = null;
 
 	/**
 	 * SyndicatedPost constructor: Given a feed item and the source from
@@ -1188,7 +1189,7 @@ class SyndicatedPost {
 				$pattern = FeedWordPressHTML::attributeRegex($tag, $attr);
 				$content = preg_replace_callback (
 					$pattern,
-					array(&$obj, 'resolve_single_relative_uri'),
+					array($obj, 'resolve_single_relative_uri'),
 					$content
 				);
 			endforeach;
@@ -1217,7 +1218,7 @@ class SyndicatedPost {
 
 			$content = preg_replace_callback (
 				$pattern,
-				array(&$obj, 'strip_attribute_from_tag'),
+				array($obj, 'strip_attribute_from_tag'),
 				$content
 			);
 		endforeach;
@@ -1343,7 +1344,8 @@ class SyndicatedPost {
 					endif;
 					$this->_freshness = 1; // Updated content
 					$this->_wp_id = $old_post->ID;
-					
+					$this->_wp_post = $old_post;
+
 					// We want this to keep a running list of all the
 					// processed update hashes.
 					$this->post['meta']['syndication_item_hash'] = array_merge(
@@ -1473,8 +1475,13 @@ class SyndicatedPost {
 		if (!$this->filtered() and $freshness > 0) :
 			// Filter some individual fields
 			
+			// If there already is a post slug (from syndication or by manual
+			// editing) don't cause WP to overwrite it by sending in a NULL
+			// post_name. Props Chris Fritz 2012-11-28.
+			$post_name = (is_null($this->_wp_post) ? NULL : $this->_wp_post->post_name);			
+
 			// Allow filters to set post slug. Props niska.
-			$post_name = apply_filters('syndicated_post_slug', NULL, $this);
+			$post_name = apply_filters('syndicated_post_slug', $post_name, $this);
 			if (!empty($post_name)) :
 				$this->post['post_name'] = $post_name;
 			endif;
@@ -1492,7 +1499,7 @@ class SyndicatedPost {
 		// Hook in early to make sure these get inserted if at all possible
 		add_action(
 			/*hook=*/ 'transition_post_status',
-			/*callback=*/ array(&$this, 'add_rss_meta'),
+			/*callback=*/ array($this, 'add_rss_meta'),
 			/*priority=*/ -10000, /* very early */
 			/*arguments=*/ 3
 		);
@@ -1532,7 +1539,7 @@ class SyndicatedPost {
 		// Remove add_rss_meta hook
 		remove_action(
 			/*hook=*/ 'transition_post_status',
-			/*callback=*/ array(&$this, 'add_rss_meta'),
+			/*callback=*/ array($this, 'add_rss_meta'),
 			/*priority=*/ -10000, /* very early */
 			/*arguments=*/ 3
 		);
@@ -1576,7 +1583,7 @@ class SyndicatedPost {
 			// tax_input, with no apparent way to override. Ugh.
 			add_action(
 			/*hook=*/ 'transition_post_status',
-			/*callback=*/ array(&$this, 'add_terms'),
+			/*callback=*/ array($this, 'add_terms'),
 			/*priority=*/ -10001, /* very early */
 			/*arguments=*/ 3
 			);
@@ -1585,7 +1592,7 @@ class SyndicatedPost {
 			// post_modified. Ugh.
 			add_action(
 			/*hook=*/ 'transition_post_status',
-			/*callback=*/ array(&$this, 'fix_post_modified_ts'),
+			/*callback=*/ array($this, 'fix_post_modified_ts'),
 			/*priority=*/ -10000, /* very early */
 			/*arguments=*/ 3
 			);
@@ -1599,14 +1606,14 @@ class SyndicatedPost {
 
 			remove_action(
 			/*hook=*/ 'transition_post_status',
-			/*callback=*/ array(&$this, 'add_terms'),
+			/*callback=*/ array($this, 'add_terms'),
 			/*priority=*/ -10001, /* very early */
 			/*arguments=*/ 3
 			);
 
 			remove_action(
 			/*hook=*/ 'transition_post_status',
-			/*callback=*/ array(&$this, 'fix_post_modified_ts'),
+			/*callback=*/ array($this, 'fix_post_modified_ts'),
 			/*priority=*/ -10000, /* very early */
 			/*arguments=*/ 3
 			);
@@ -2190,21 +2197,6 @@ EOM;
 		endif;
 		return $terms;
 	} // function SyndicatedPost::category_ids ()
-
-	function use_api ($tag) {
-		global $wp_db_version;
-		switch ($tag) :
-		case 'wp_insert_post':
-			// Before 2.2, wp_insert_post does too much of the wrong stuff to use it
-			// In 1.5 it was such a resource hog it would make PHP segfault on big updates
-			$ret = (isset($wp_db_version) and $wp_db_version > FWP_SCHEMA_21);
-			break;
-		case 'post_status_pending':
-			$ret = (isset($wp_db_version) and $wp_db_version > FWP_SCHEMA_23);
-			break;
-		endswitch;
-		return $ret;		
-	} // function SyndicatedPost::use_api ()
 
 } /* class SyndicatedPost */
 
