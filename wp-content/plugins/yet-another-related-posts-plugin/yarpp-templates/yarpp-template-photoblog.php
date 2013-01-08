@@ -1,5 +1,7 @@
-<?php /*
-Example photoblog template for use with Yet Another Photoblog
+<?php
+/*
+YARPP Template: Yet Another Photoblog
+Description: Requires the Yet Another Photoblog plugin
 Author: mitcho (Michael Yoshitaka Erlewine)
 */ ?>
 <h3>Related Photos</h3>

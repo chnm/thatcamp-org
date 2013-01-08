@@ -1,6 +1,8 @@
-<?php /*
-Example template
+<?php 
+/*
+YARPP Template: Simple
 Author: mitcho (Michael Yoshitaka Erlewine)
+Description: A simple example YARPP template.
 */
 ?><h3>Related Posts</h3>
 <?php if (have_posts()):?>

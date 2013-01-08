@@ -2,14 +2,14 @@
 /*
 Plugin Name: Yet Another Related Posts Plugin
 Plugin URI: http://yarpp.org/
-Description: Returns a list of related entries based on a unique algorithm for display on your blog and RSS feeds. Now with custom post type support!
-Version: 3.5.1
+Description: Returns a list of related entries based on a unique algorithm for display on your blog and RSS feeds. Now with Now with thumbnail support built-in!
+Version: 4.0.3
 Author: mitcho (Michael Yoshitaka Erlewine)
 Author URI: http://mitcho.com/
 Donate link: http://tinyurl.com/donatetomitcho
 */
 
-define('YARPP_VERSION', '3.5.1');
+define('YARPP_VERSION', '4.0.3');
 define('YARPP_DIR', dirname(__FILE__));
 define('YARPP_NO_RELATED', ':(');
 define('YARPP_RELATED', ':)');
@@ -42,10 +42,6 @@ add_action( 'init', 'yarpp_init' );
 function yarpp_init() {
 	global $yarpp;
 	$yarpp = new YARPP;
-
-	// new in 3.3: include BlogGlue meta box
-	if ( file_exists( YARPP_DIR . '/blogglue.php' ) && date('Ym') < 201204 )
-		include_once( YARPP_DIR . '/blogglue.php' );
 }
 
 function yarpp_set_option($options, $value = null) {
@@ -56,18 +52,6 @@ function yarpp_set_option($options, $value = null) {
 function yarpp_get_option($option = null) {
 	global $yarpp;
 	return $yarpp->get_option($option);
-}
-
-// since 3.3.2: fix for WP 3.0.x
-if ( !function_exists( 'self_admin_url' ) ) {
-	function self_admin_url($path = '', $scheme = 'admin') {
-		if ( defined( 'WP_NETWORK_ADMIN' ) && WP_NETWORK_ADMIN )
-			return network_admin_url($path, $scheme);
-		elseif ( defined( 'WP_USER_ADMIN' ) && WP_USER_ADMIN )
-			return user_admin_url($path, $scheme);
-		else
-			return admin_url($path, $scheme);
-	}
 }
 
 function yarpp_plugin_activate() {

@@ -19,7 +19,7 @@ function yarpp_related_exist($args = array(), $reference_ID = false) {
 		return;
 	}
 	
-	return $yarpp->related_exist($reference_ID, $args, $echo);
+	return $yarpp->related_exist($reference_ID, $args);
 }
 
 function yarpp_get_related($args = array(), $reference_ID = false) {

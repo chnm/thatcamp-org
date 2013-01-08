@@ -1,6 +1,7 @@
-<?php /*
-Example template: random
-This template gives you some random other post in case there are no related posts
+<?php
+/*
+YARPP Template: Random
+Description: This template gives you a random other post in case there are no related posts
 Author: mitcho (Michael Yoshitaka Erlewine)
 */ ?>
 <h3>Related Posts</h3>

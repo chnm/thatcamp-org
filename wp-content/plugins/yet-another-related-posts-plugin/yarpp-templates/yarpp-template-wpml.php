@@ -1,5 +1,7 @@
-<?php /*
-Example template for use with WPML (WP Multilingual, http://wpml.org)
+<?php
+/*
+YARPP Template: WPML
+Description: An example template for use with the WPML plugin
 Author: mitcho (Michael Yoshitaka Erlewine)
 */
 

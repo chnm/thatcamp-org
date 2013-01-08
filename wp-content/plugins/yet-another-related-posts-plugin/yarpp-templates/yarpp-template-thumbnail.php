@@ -1,6 +1,7 @@
-<?php /*
-Example template for use with post thumbnails
-Requires a theme which supports post thumbnails
+<?php
+/*
+YARPP Template: Thumbnails
+Description: Requires a theme which supports post thumbnails
 Author: mitcho (Michael Yoshitaka Erlewine)
 */ ?>
 <h3>Related Photos</h3>

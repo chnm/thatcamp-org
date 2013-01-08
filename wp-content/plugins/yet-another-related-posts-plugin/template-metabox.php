@@ -1,7 +1,7 @@
 <?php
 global $yarpp;
 
-$yarpp->cache->enforce($reference_ID, false); // enforce the cache, but don't force it
+$yarpp->cache->enforce((int) $reference_ID, false); // enforce the cache, but don't force it
 
 if ($yarpp->debug) {
 	$keywords = $yarpp->cache->get_keywords($reference_ID);

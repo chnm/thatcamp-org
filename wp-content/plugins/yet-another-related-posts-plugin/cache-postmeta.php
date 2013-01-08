@@ -53,6 +53,11 @@ class YARPP_Cache_Postmeta extends YARPP_Cache {
 			LIMIT $limit OFFSET $offset");
 	}
 
+	public function stats() {
+		global $wpdb;
+		return wp_list_pluck($wpdb->get_results("select num, count(*) as ct from (select 0 + if(meta_value = '" . YARPP_NO_RELATED . "', 0, substring(substring_index(meta_value,':',2),3)) as num from `{$wpdb->postmeta}` where meta_key = '" . YARPP_POSTMETA_RELATED_KEY . "') as t group by num order by num asc", OBJECT_K), 'ct');
+	}
+
 	/**
 	 * MAGIC FILTERS
 	 */
@@ -139,26 +144,23 @@ class YARPP_Cache_Postmeta extends YARPP_Cache {
 		return YARPP_RELATED;
 	}
 
-	public function clear($reference_ID) {
-		if (is_int($reference_ID))
-			$reference_ID = array($reference_ID);
-		// make sure that we have a non-trivial array
-		if (!is_array($reference_ID) || !count($reference_ID))
+	public function clear( $reference_IDs ) {
+		$reference_IDs = wp_parse_id_list( $reference_IDs );
+	
+		if ( !count($reference_IDs) )
 			return;
+		
 		// clear each cache
-		foreach($reference_ID as $id) {
+		foreach( $reference_IDs as $id ) {
 			delete_post_meta( $id, YARPP_POSTMETA_RELATED_KEY );
 			delete_post_meta( $id, YARPP_POSTMETA_KEYWORDS_KEY );
 		}
 	}
 
-	// @return YARPP_NO_RELATED | YARPP_RELATED | YARPP_NOT_CACHED
-	public function update($reference_ID) {
+	// @return YARPP_NO_RELATED | YARPP_RELATED
+	// @used by enforce
+	protected function update($reference_ID) {
 		global $wpdb;
-
-		// $reference_ID must be numeric
-		if ( !$reference_ID = absint($reference_ID) )
-			return YARPP_NOT_CACHED;
 
 		$original_related = $this->related($reference_ID);
 		$related = $wpdb->get_results($this->sql($reference_ID), ARRAY_A);

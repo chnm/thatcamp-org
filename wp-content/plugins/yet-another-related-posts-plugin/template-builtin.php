@@ -13,6 +13,7 @@ $options = array( 'before_title', 'after_title', 'show_excerpt', 'excerpt_length
 extract( $this->parse_args( $args, $options ) );
 
 if (have_posts()) {
+	$output .= $before_related . "\n";
 	while (have_posts()) {
 		the_post();
 
@@ -29,7 +30,7 @@ if (have_posts()) {
 		$output .=  $after_title."\n";
 
 	}
-	$output = $before_related . "\n" . $output . $after_related;
+	$output .= $after_related . "\n";
 } else {
-	$output = $no_results;
+	$output .= $no_results;
 }
