@@ -18,6 +18,35 @@ jQuery(document).ready(function() {
         }
         return true;
     });
+
+	//also update the filter form with a new hidden field
+	//is the filter form present on the page?
+	if (jQuery("form#filter").length>0) {
+
+		//code for retrieving GET vars (we want the value of widget_id)
+		var widget_id = '';
+		document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+			function decode(s) {
+				return decodeURIComponent(s.split("+").join(" "));
+			}
+
+			var key = decode(arguments[1]);
+			if (key == 'widget_id') {
+				widget_id = decode(arguments[2]);
+			}
+		});
+
+		if (widget_id.length > 0) {//do we have a value?
+
+			//insert hidden field into form
+			jQuery('form#filter').append(
+				jQuery('<input/>')
+				.attr('type', 'hidden')
+				.attr('name', 'widget_id')
+				.val(widget_id)
+			);
+		}
+	}
 });
 
 
