@@ -2,8 +2,8 @@
 Contributors: iandstewart, chrisgossmann, emhr
 Tags: white, three-columns, two-columns, fixed-width, theme-options, left-sidebar, right-sidebar, threaded-comments, sticky-post, microformats
 Requires at least: 3.2
-Tested up to: 3.4
-Stable tag: 1.0.2.1
+Tested up to: 3.4.2
+Stable tag: 1.0.3.2
 
 The ultimate in SEO-ready themes, Thematic is a highly extensible, WordPress Theme Framework featuring 13 widget-ready areas, &amp; a whole lot more.
 
@@ -28,6 +28,41 @@ Features:
 * Options for multi-author blogs
 
 == Changelog ==
+= 1.0.3.2 =
+* Changed: Samplechildtheme custom header styling
+* Fixed: Syntax error in links.php
+= 1.0.3.1 =
+* Updated: Spanish and Catalan localization files
+* Added: Simplified Chinese and Serbian localization files
+* Added: XML configuration file for compatibility with WPML multilingual plugin
+* Fixed: restored missing #comment-id on comment permalinks 
+= 1.0.3 = 
+* Updated: Swedish, French, Estonian localization files
+* Updated: regeneration of .pot file after major update of localization strings
+* Fixed: adjusted filter for title tags on static front pages
+* Fixed: minor bug in theme options page, props petskratt
+* Updated: sample childtheme includes code to add support for custom background and custom header images
+* Deprecated: thematic_canonical_url(), props rowatt
+* Deprecated: all theme constants 
+	- replaced THEMATIC_COMPATIBLE_FEEDLINKS with add_theme_support( 'thematic_legacy_feed_links' )
+	- replaced THEMATIC_COMPATIBLE_COMMENT_HANDLING with add_theme_support( 'thematic_legacy_comment_handling' )
+	- replaced THEMATIC_COMPATIBLE_BODY_CLASS with add_theme_support( 'thematic_legacy_body_class' )
+	- replaced THEMATIC_COMPATIBLE_POST_CLASS with add_theme_support( 'thematic_legacy_post_class' )
+	- replaced THEMATIC_COMPATIBLE_COMMENT_FORM with add_theme_support( 'thematic_legacy_comment_form' )
+	- Removed: THEMATIC_THEMENAME
+	- Removed: THEMATIC_THEMEAUTHOR
+	- Removed: THEMATIC_THEMEURI
+	- Removed: THEMATIC_VERSION
+	- Removed: THEMATIC_TEMPLATEAUTHOR
+	- Removed: THEMATIC_TEMPLATEURI
+	- Removed: THEMATIC_TEMPLATEVERSION
+* Deprecated: thematic_body_class(), modified it to filter body_class() instead
+* Deprecated: thematic_post_class(), modified it to filter post_class() instead
+* Fixed: replaced get_current_theme() with wp_get_theme() for Theme Review Recommendations
+* Updated: superfish/supersubs, load all superfish-related scripts in footer
+= 1.0.2.2 =
+* fixed invalid markup (extra span) in thematic_postmeta_authorlink()
+* fixed broken feed links in thematic_show_rss() and thematic_show_comment_rss() 
 = 1.0.2.1 =
 * Added: $hook argument to <code>apply_filters()</code> in <code>thematic_before_widget_area()</code> and <code>thematicafter_widget_area()</code> to filter attribute id
 * Fixed: <code>thematic_wptitle</code> to use <code>!thematic_seo()</code> logic
@@ -375,3 +410,8 @@ Features:
 * Fixed: a bug in thematic_page_title() not displaying a correct title in attachement.php
 * Fixed: Fixed the widget area 'Index Insert'.
 * Fixed: Fixed a bug in thematic_create_robots().
+
+== Upgrade Notice ==
+
+= 1.0.3 =
+Small bugfixes, Major localization optimization. Note: your language files might be out of date. Grab the latest from http://translate.thematictheme.com/projects/thematic-framework

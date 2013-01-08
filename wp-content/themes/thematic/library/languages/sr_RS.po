@@ -1,83 +1,83 @@
-# Translation of Thematic 1.0.3 in Spanish (Spain)
+# Translation of Thematic 1.0.3 in Serbian
 # This file is distributed under the same license as the Thematic 1.0.3 package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2012-10-22 09:59:06+0000\n"
+"PO-Revision-Date: 2012-10-22 10:00:05+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: GlotPress/0.1\n"
 "Project-Id-Version: Thematic 1.0.3\n"
 
 #: archives.php:20 template-page-blog.php:22
 msgid "The template %s"
-msgstr "La plantilla %s"
+msgstr "Темплејт %s"
 
 #: attachment.php:54 library/extensions/content-extensions.php:630
 #: library/extensions/content-extensions.php:689
 msgid "Pages:"
-msgstr "Páginas:"
+msgstr "Стране:"
 
 #: author.php:67
 msgid "Email "
-msgstr "Email"
+msgstr "Е-пошта"
 
 #: comments.php:24
 msgid "Please do not load this page directly."
-msgstr "Por favor, no cargues esta página directamente."
+msgstr "Молим Вас да не учитавате ову страницу директно."
 
 #: comments.php:33
 msgid "This post is password protected. Enter the password to view any comments."
-msgstr "Esta entrada está protegida por contraseña. Intrdouce la contraseña para ver los comentarios."
+msgstr "Овај чланак је заштићен шифром. Унестите шифру како бисте видели коментаре."
 
 #: comments.php:111
 msgid "Trackbacks"
-msgstr "Trackbacks"
+msgstr "Трекбекови"
 
 #: comments.php:111
 msgctxt "%1$ and %2$s are <span> tags"
 msgid "%1$sOne%2$s Trackback"
-msgstr "%1$sUn%2$s Trackback"
+msgstr "%1$sЈедан%2$s Трекбек"
 
 #: functions.php:194
 msgid "Primary Menu"
-msgstr "Menú Primario"
+msgstr "Примарни мени"
 
 #: library/extensions/comments-extensions.php:120
 msgctxt "One Comment, where %$1s and %$2s are <span> tags"
 msgid "%1$sOne%2$s Comment"
-msgstr "%1$sUn%2$s Comentario"
+msgstr "%1$sЈедан%2$s Коментар"
 
 #: library/extensions/comments-extensions.php:131
 msgid "Comments"
-msgstr "Comentarios"
+msgstr "Коментари"
 
 #: library/extensions/comments-extensions.php:155
 msgid "Post a Comment"
-msgstr "Publicar un Comentario"
+msgstr "Објавите коментар"
 
 #: library/extensions/comments-extensions.php:167
 msgid "Post a Reply to %s"
-msgstr "Publica una respuesta para %s"
+msgstr "Одговорите на %s"
 
 #: library/extensions/comments-extensions.php:179
 msgctxt "noun"
 msgid "Comment"
-msgstr "Comentario"
+msgstr "Коментар"
 
 #: library/extensions/comments-extensions.php:190
 msgid "Cancel reply"
-msgstr "Cancelar respuesta"
+msgstr "Поништите одговор"
 
 #: library/extensions/comments-extensions.php:202
 msgid "Post Comment"
-msgstr "Publicar Comentario"
+msgstr "Објавите коментар"
 
 #: library/extensions/comments-extensions.php:228
 #: library/legacy/deprecated.php:357
 msgid "Name"
-msgstr "Nombre"
+msgstr "Име"
 
 #: library/extensions/comments-extensions.php:228
 #: library/extensions/comments-extensions.php:229
@@ -88,105 +88,105 @@ msgstr "*"
 #: library/extensions/comments-extensions.php:229
 #: library/legacy/deprecated.php:362
 msgid "Email"
-msgstr "Email"
+msgstr "Е-пошта"
 
 #: library/extensions/comments-extensions.php:230
 #: library/legacy/deprecated.php:367
 msgid "Website"
-msgstr "Sitio Web"
+msgstr "Вебсајт"
 
 #: library/extensions/comments-extensions.php:238
 #: library/legacy/deprecated.php:354
 msgctxt "%$1s and %$2s are <em> tags for emphasis on never"
 msgid "Your email is %1$snever%2$s published nor shared."
-msgstr "Tu email %1$snunca%2$s se publicará ni se compartirá."
+msgstr "Ваша е-пошта неће %1$sникад%2$s бити објављена или прослеђена наком."
 
 #: library/extensions/comments-extensions.php:238
 msgctxt "%$1s and %$2s are <span> tags"
 msgid "Required fields are marked %1$s*%2$s"
-msgstr "Los campos obligatorios están marcados con un %1$s*%2$s"
+msgstr "Захтевана поља су обележена %1$s*%2$s"
 
 #: library/extensions/comments-extensions.php:240
 #: library/legacy/deprecated.php:336
 msgid "You must be %1$slogged in%2$s to post a comment."
-msgstr "Debes %1$siniciar una sesión%2$s para escribir un comentario."
+msgstr "Морате се %1$пријавити %2$s да бисте оставили коментар"
 
 #: library/extensions/comments-extensions.php:240
 #: library/legacy/deprecated.php:336
 msgid "Log in"
-msgstr "Iniciar sesión"
+msgstr "Пријави се"
 
 #: library/extensions/comments-extensions.php:242
 #: library/legacy/deprecated.php:349
 msgid "Logged in as %s"
-msgstr "Sesión iniciada como %s"
+msgstr "Пријављен као %s"
 
 #: library/extensions/comments-extensions.php:242
 #: library/legacy/deprecated.php:349
 msgid "Log out of this account"
-msgstr "Cerrar la sesión"
+msgstr "Изађите из овог налога"
 
 #: library/extensions/comments-extensions.php:242
 #: library/legacy/deprecated.php:349
 msgid "Log out?"
-msgstr "¿Cerrar la sesión?"
+msgstr "Желите да се одјавите?"
 
 #: library/extensions/comments-extensions.php:244
 #: library/legacy/deprecated.php:379
 msgctxt "%$1s and %$2s are <abbr> tags"
 msgid "You may use these %1$sHTML%2$s tags and attributes"
-msgstr "Puedes usar estas etiquetas y atributos %1$sHTML%2$s"
+msgstr "Можете користити ове %1$sHTML%2$s ознаке и атрибуте"
 
 #: library/extensions/content-extensions.php:334
 msgid "Author Archives:"
-msgstr "Autor:"
+msgstr "Архиве аутора"
 
 #: library/extensions/content-extensions.php:339
 #: library/extensions/header-extensions.php:103
 msgid "Category Archives:"
-msgstr "Categoría:"
+msgstr "Архиве категорија"
 
 #: library/extensions/content-extensions.php:347
 #: library/extensions/header-extensions.php:99
 msgid "Search Results for:"
-msgstr "Resultados de la búsqueda:"
+msgstr "Резултати претраге за:"
 
 #: library/extensions/content-extensions.php:352
 #: library/extensions/header-extensions.php:107
 msgid "Tag Archives:"
-msgstr "Etiqueta:"
+msgstr "Таг архива"
 
 #: library/extensions/content-extensions.php:361
 #: library/extensions/content-extensions.php:368
 msgid "Archives:"
-msgstr "Archivos:"
+msgstr "Архиве:"
 
 #: library/extensions/content-extensions.php:373
 msgid "Daily Archives: %s"
-msgstr "Día: %s"
+msgstr "Дневни архиви: %s"
 
 #: library/extensions/content-extensions.php:377
 msgid "Monthly Archives: %s"
-msgstr "Mes: %s"
+msgstr "Месечни архиви: %s"
 
 #: library/extensions/content-extensions.php:381
 msgid "Yearly Archives: %s"
-msgstr "Año: %s"
+msgstr "Годишнји архиви: %s"
 
 #: library/extensions/content-extensions.php:424
 #: library/extensions/content-extensions.php:1706
 msgid "Older posts"
-msgstr "Entradas más antiguas"
+msgstr "Старији чланци"
 
 #: library/extensions/content-extensions.php:426
 #: library/extensions/content-extensions.php:1708
 msgid "Newer posts"
-msgstr "Entradas más recientes"
+msgstr "Новији чланци"
 
 #: library/extensions/content-extensions.php:888
 #: library/extensions/content-extensions.php:1418
 msgid "Edit post"
-msgstr "Editar entrada"
+msgstr "Измена чланка"
 
 #: library/extensions/content-extensions.php:890
 #: library/extensions/content-extensions.php:1420
@@ -194,436 +194,437 @@ msgstr "Editar entrada"
 #: library/extensions/discussion.php:84 links.php:54 page.php:52
 #: template-page-archives.php:55 template-page-fullwidth.php:53
 msgid "Edit"
-msgstr "Editar"
+msgstr "Измена"
 
 #: library/extensions/content-extensions.php:918
 #: library/extensions/header-extensions.php:111
 msgid "Not Found"
-msgstr "No Encontrado"
+msgstr "Ништа није пронађено"
 
 #: library/extensions/content-extensions.php:923
 #: library/extensions/content-extensions.php:1141
 #: library/extensions/content-extensions.php:1145
 #: library/extensions/content-extensions.php:1376
 msgid "Permalink to %s"
-msgstr "Enlace permanente a %s"
+msgstr "Пермалинк на %s"
 
 #: library/extensions/content-extensions.php:983
 msgid "By"
-msgstr "Por"
+msgstr "Од "
 
 #: library/extensions/content-extensions.php:994
 msgid "View all posts by %s"
-msgstr "Ver todas las entradas escritas por %s"
+msgstr "Погледај све чланке од %s"
 
 #: library/extensions/content-extensions.php:1023
 msgid "Published:"
-msgstr "Publicado:"
+msgstr "Објављено: "
 
 #: library/extensions/content-extensions.php:1199
 msgid "Archives by Category"
-msgstr "Archivos por Categoría"
+msgstr "Архиве по категоријама"
 
 #: library/extensions/content-extensions.php:1230
 msgid "Archives by Month"
-msgstr "Archivos por Mes"
+msgstr "Архиве по месецу"
 
 #: library/extensions/content-extensions.php:1291
 msgid "Apologies, but we were unable to find what you were looking for. Perhaps searching will help."
-msgstr "Disculpa las molestias, pero no hemos podido encontrar lo que buscabas. El buscador puede serte de ayuda."
+msgstr "Извините, али ми нисмо у могућности да пронађемо оно сте тражили. Можда Вам претрага може помоћи. "
 
 #: library/extensions/content-extensions.php:1297 search.php:70
 msgid "Find"
-msgstr "Buscar"
+msgstr "Пронађи"
 
 #: library/extensions/content-extensions.php:1316
 msgid "Read More %s"
-msgstr "Leer más %s"
+msgstr "Прочитај више %s"
 
 #: library/extensions/content-extensions.php:1368
 msgid "Browse the %s archive."
-msgstr "Explorar el archivo de %s."
+msgstr "Претражи %s архиву."
 
 #: library/extensions/content-extensions.php:1370
 msgid "Permalink to %s Archive"
-msgstr "Enlace permanente al archivo de %s"
+msgstr "Пермалинк до  %s Архиве"
 
 #: library/extensions/content-extensions.php:1376
 msgctxt "1s and 2s are the a href link wrappers, do not reverse them"
 msgid "Bookmark the %1$spermalink%2$s."
-msgstr "Guardar el %1$senlace permanente%2$s."
+msgstr "Забележи (bookmark)  %1$sпермалинк%2$s."
 
 #: library/extensions/content-extensions.php:1534
 msgid "This entry was posted in %s"
-msgstr "Esta entrada fue publicada en %s"
+msgstr "Унос је објављен у %s"
 
 #: library/extensions/content-extensions.php:1545
 msgid "Also posted in %s"
-msgstr "También publicado en %s"
+msgstr "Такође објављено у %s"
 
 #: library/extensions/content-extensions.php:1549
 msgid "Posted in %s"
-msgstr "Publicado en %s"
+msgstr "Објављено у %s"
 
 #: library/extensions/content-extensions.php:1575
 msgid "This entry is tagged"
-msgstr "Esta entrada está etiquetada como"
+msgstr "Унос је означен (tagged)"
 
 #: library/extensions/content-extensions.php:1578
 msgid "and tagged"
-msgstr "y etiquetada como"
+msgstr "и означен (tagged)"
 
 #: library/extensions/content-extensions.php:1581
 msgid "Also tagged"
-msgstr "También etiquetada como"
+msgstr "Такође означен (tagged)"
 
 #: library/extensions/content-extensions.php:1583
 msgid "Tagged"
-msgstr "Etiquetas:"
+msgstr "Oзначен (tagged)"
 
 #: library/extensions/content-extensions.php:1613
 #: library/extensions/content-extensions.php:1619
 msgid "Comment on %s"
-msgstr "Comentar en %s"
+msgstr "Коментар на %s"
 
 #: library/extensions/content-extensions.php:1615
 msgid "%s Response"
 msgid_plural "%s Responses"
-msgstr[0] "%s Respuesta"
-msgstr[1] "%s Respuestas"
+msgstr[0] "%s Одговор"
+msgstr[1] "%s Одговора"
+msgstr[2] "%s Одговора"
 
 #: library/extensions/content-extensions.php:1620
 msgid "Leave a comment"
-msgstr "Dejar un comentario"
+msgstr "Остави коментар"
 
 #: library/extensions/content-extensions.php:1623
 msgid "Comments closed"
-msgstr "Comentarios cerrados"
+msgstr "Коментари су затворени"
 
 #: library/extensions/content-extensions.php:1647
 msgctxt "1s and 2s are the a href link wrappers, do not reverse them. 3s is trackback url."
 msgid "%1$sPost a comment%2$s or leave a trackback: %3$s"
-msgstr "%1$sAñade un comentario%2$s o deja un trackback: %3$s"
+msgstr "%1$sОбјави коментар%2$s или остави трекбек: %3$s"
 
 #: library/extensions/content-extensions.php:1648
 #: library/extensions/content-extensions.php:1663
 msgid "Post a comment"
-msgstr "Publica un comentario"
+msgstr "Објави коментар"
 
 #: library/extensions/content-extensions.php:1652
 #: library/extensions/content-extensions.php:1659
 msgid "Trackback URL for your post"
-msgstr "URL del Trackback para tu entrada"
+msgstr "Трекбек URL за Ваш чланак"
 
 #: library/extensions/content-extensions.php:1653
 #: library/extensions/content-extensions.php:1660
 msgid "Trackback URL"
-msgstr "URL del Trackback"
+msgstr "Трекбек URL"
 
 #: library/extensions/content-extensions.php:1656
 msgctxt "%s is trackback url, wrapped in link tags"
 msgid "Comments are closed, but you can leave a trackback: %s"
-msgstr "Los comentarios están cerrados, pero puedes dejar un trackback: %s"
+msgstr "Коментари су затворени, али ви можете оставити трекбек: %s"
 
 #: library/extensions/content-extensions.php:1663
 msgid "Trackbacks are closed, but you can %1$spost a comment%2$s."
-msgstr "Los trackbacks están cerrados, pero puedes %1$sañadir un comentario%2$s."
+msgstr "Трекбекови су затворени, али можете %1$sобјавити коментар%2$s."
 
 #: library/extensions/content-extensions.php:1665
 msgid "Both comments and trackbacks are currently closed."
-msgstr "Tanto los comentarios como los trackbacks están cerrados."
+msgstr "И коментари и трекбекови су тренутно затворени"
 
 #: library/extensions/discussion-extensions.php:27
 msgctxt "Posted {$date} at {$time}"
 msgid "Posted %s at %s"
-msgstr "Escrito el %s a las %s"
+msgstr "Објављено %s код %s"
 
 #: library/extensions/discussion-extensions.php:31
 msgid "Permalink to this comment"
-msgstr "Enlace permanente a este comentario"
+msgstr "Пермалинк на овај коментар"
 
 #: library/extensions/discussion-extensions.php:31
 msgid "Permalink"
-msgstr "Enlace permanente"
+msgstr "Пермалинк"
 
 #: library/extensions/discussion-extensions.php:36
 msgid "Edit comment"
-msgstr "Editar comentario"
+msgstr "Измена коментара"
 
 #: library/extensions/discussion.php:37
 msgid "Your comment is awaiting moderation"
-msgstr "Tu comentario está esperando aprobación"
+msgstr "Ваш коменатар чека проверу од стране модератора"
 
 #: library/extensions/discussion.php:52
 msgid "Reply"
-msgstr "Respuesta"
+msgstr "Одговор"
 
 #: library/extensions/discussion.php:53
 msgid "Log in to reply."
-msgstr "Inicia sesión para responder."
+msgstr "Пријави се ради одговора"
 
 #: library/extensions/discussion.php:80
 msgctxt "By {$authorlink} on {$date} at {$time}"
 msgid "By %1$s on %2$s at %3$s"
-msgstr "Por %1$s el %2$s a las %3$s"
+msgstr "Од %1$s на %2$s код %3$s"
 
 #: library/extensions/discussion.php:90
 msgid "Your trackback is awaiting moderation"
-msgstr "Tu trackback está esperando aprobación"
+msgstr "Ваш трекбек чека проверу модератора"
 
 #: library/extensions/header-extensions.php:319
 #: library/extensions/widgets.php:157
 msgid "Posts RSS feed"
-msgstr "Canal RSS de entradas"
+msgstr "RSS feed о чланцима"
 
 #: library/extensions/header-extensions.php:343
 #: library/extensions/widgets.php:158
 msgid "Comments RSS feed"
-msgstr "Canal RSS de comentarios"
+msgstr "RSS feed о коментарима"
 
 #: library/extensions/header-extensions.php:642
 msgid "Skip navigation to the content"
-msgstr "Saltar la navegación al contenido"
+msgstr "Прескочи навигацију  до садржаја"
 
 #: library/extensions/header-extensions.php:642
 msgid "Skip to content"
-msgstr "Saltar al contenido"
+msgstr "Иди на садржај"
 
 #: library/extensions/helpers.php:50 library/extensions/helpers.php:69
 msgid "There is no excerpt because this is a protected post."
-msgstr "No hay ningún extracto porque esta entrada esta protegida."
+msgstr "Није могућ приступ, ово је заштићени чланак"
 
 #: library/extensions/theme-options.php:50
 msgid "Index Insert Position"
-msgstr "Posición del área insertada en la portada"
+msgstr "Индекс Унос Позиција"
 
 #: library/extensions/theme-options.php:51
 msgid "Info on Author Page"
-msgstr "Info en Página de Autor"
+msgstr "Информације о аутору стране"
 
 #: library/extensions/theme-options.php:52
 msgid "Text in Footer"
-msgstr "Texto en Pie de Página"
+msgstr "Текст у подножју странице (footer)"
 
 #: library/extensions/theme-options.php:56
 msgid "Remove Legacy Options"
-msgstr "Eliminar opciones heredadas"
+msgstr "Уклони Опције о правима"
 
 #: library/extensions/theme-options.php:170
 msgid "Theme Options"
-msgstr "Opciones del tema"
+msgstr "Опције за тему"
 
 #: library/extensions/theme-options.php:202
 msgid "For more information:"
-msgstr "Para más información:"
+msgstr "За више информација:"
 
 #: library/extensions/theme-options.php:204
 msgid "For support:"
-msgstr "Soporte:"
+msgstr "За подршку:"
 
 #: library/extensions/theme-options.php:206
 msgid "forums"
-msgstr "foros"
+msgstr "форуми"
 
 #: library/extensions/theme-options.php:210
 msgid "The options below are enabled by the Thematic Theme framework and/or a child theme."
-msgstr "Las opciones siguientes están activadas por el framework Thematic Theme y/o un sub-tema."
+msgstr "Опције испод су омогућене од стране фрејмворка Thematic теме и/или њене child теме."
 
 #: library/extensions/theme-options.php:211
 msgid "New options can be added and the default ones removed by creating a child theme. This contextual help can be customized in a child theme also."
-msgstr "Se pueden añadir o eliminar opciones creando un sub-tema. Esta ayuda contextual también se puede personalizar desde un sub-tema."
+msgstr "Нове опције се могу додати и оне стандарне постојеће се могу уклонити креирањем једне Thematic теме. Ова контекстуална помоћ се такође може прилагодити у оквиру те Thematic  теме."
 
 #: library/extensions/theme-options.php:217
 msgid "Overview"
-msgstr "Resumen"
+msgstr "Oсврт на "
 
 #: library/extensions/theme-options.php:244
 msgctxt "%1$s and %2$s are <a> tags"
 msgid "For more information about this theme, %1$svisit ThematicTheme.com%2$s"
-msgstr "Para más información acerca de este tema, %1$svisita ThematicTheme.com%2$s"
+msgstr "За више информација о овој теми, %1$посетите ThematicTheme.com%2$s"
 
 #: library/extensions/theme-options.php:244
 msgctxt "%1$s and %2$s are <a> tags"
 msgid "Please visit the %1$sThematicTheme.com Forums%2$s if you have any questions about Thematic."
-msgstr "Por favor, visita los %1$sForos de ThematicTheme.com%2$s si tienes dudas acerca de Thematic."
+msgstr "Молимо Вас посетете %1$sThematicTheme.com форуме%2$s уколико имате нека питања о Thematic"
 
 #: library/extensions/theme-options.php:256
 msgctxt "{$current theme} Theme Options"
 msgid "%s Theme Options"
-msgstr "Opciones del tema %s"
+msgstr "%s Опције теме"
 
 #: library/extensions/theme-options.php:294
 msgid "The Index Insert widget area will appear after this post number. Entering nothing or 0 will disable this feature."
-msgstr "El área insertada en la portada aparecerá después de este número de entrada. Si no escribes nada o escribes 0 se desactivará esta característica."
+msgstr "Индекс за унос widget области ће се појавити после овог броја чланка. Не уношењем ничега или 0 ће онемогућити ово својство. "
 
 #: library/extensions/theme-options.php:307
 msgctxt "%1$s and %2$s are <a> tags"
 msgid "Display a %1$smicroformatted vCard%2$s with the author's avatar, bio and email on the author page."
-msgstr "Mostrar una %1$svCard con microformato%2$s con el avatar, la biografía y el correo electrónico del autor en su página."
+msgstr "Прикажи %1$smicroformatted vCard%2$s на аватару аутора, био и е-пошту на ауторвој страни"
 
 #: library/extensions/theme-options.php:320
 msgctxt "%s are shortcode tags"
 msgid "You can use HTML and shortcodes in your footer text. Shortcode examples: %s"
-msgstr "Puedes usar HTML y etiquetas en el texto del pie de página. Ejemplos de etiquetas: %s"
+msgstr "Можете користити и кодовне скраћенице у подножју Вашег текста. Примери кодовних скраћеница: %s"
 
 #: library/extensions/theme-options.php:333
 msgctxt "{$current theme} Theme Options"
 msgid "%s Theme Options have been upgraded to an improved format. Remove the legacy options from the database."
-msgstr "Las opciones del tema %s se han actualizado a un formato mejorado. Elimina las opciones antiguas de la base de datos."
+msgstr "%s Опције теме ће бити надограђене у једну унапређену опцију. Уклоните опције о правима из базе података. "
 
 #: library/extensions/theme-options.php:360
 msgid "The index insert position value must be a number equal to or greater than zero. This setting has been reverted to the previous value."
-msgstr "La posición del área insertada en la portada debe ser un número igual o mayor que cero. Esta opción ha vuelto a su valor anterior."
+msgstr "Вредност индекса позиције уноса мора бити број који је једнак или већи од нуле. Ово подешавање ће бити враћено на претходну вредност."
 
 #: library/extensions/widgets-extensions.php:34
 msgid "To search, type and hit enter"
-msgstr "Para buscar, escribe y pulsa enter"
+msgstr "За претрагу, унесите појам и притисните Enter"
 
 #: library/extensions/widgets-extensions.php:40
 #: library/extensions/widgets.php:56 library/extensions/widgets.php:61
 msgid "Search"
-msgstr "Buscar"
+msgstr "Претрага"
 
 #: library/extensions/widgets-extensions.php:70
 msgid "Primary Aside"
-msgstr "Barra lateral principal"
+msgstr "Примарни Aside"
 
 #: library/extensions/widgets-extensions.php:72
 msgid "The primary widget area, most often used as a sidebar."
-msgstr "El área de widgets principal, generalmente usada como barra lateral."
+msgstr "Примарна widget област , се често користи у оквиру Sidebar-а"
 
 #: library/extensions/widgets-extensions.php:85
 msgid "Secondary Aside"
-msgstr "Barra lateral secundaria"
+msgstr "Секундарни Aside"
 
 #: library/extensions/widgets-extensions.php:87
 msgid "The secondary widget area, most often used as a sidebar."
-msgstr "El área de widgets secundaria, generalmente usada como barra lateral secundaria."
+msgstr "Секундарна widget област, се често користи у оквиру Sidebar-а "
 
 #: library/extensions/widgets-extensions.php:100
 msgid "1st Subsidiary Aside"
-msgstr "1º bloque secundario"
+msgstr "1. Помоћни Aside"
 
 #: library/extensions/widgets-extensions.php:102
 msgid "The 1st widget area in the footer."
-msgstr "La primera área de widgets del pie de página."
+msgstr "1. widget област у подножју странице (footer)"
 
 #: library/extensions/widgets-extensions.php:115
 msgid "2nd Subsidiary Aside"
-msgstr "2º bloque secundario"
+msgstr "2. Помоћни Aside "
 
 #: library/extensions/widgets-extensions.php:117
 msgid "The 2nd widget area in the footer."
-msgstr "La segunda área de widgets del pie de página."
+msgstr "2. widget област у подножју сајта (footer) "
 
 #: library/extensions/widgets-extensions.php:130
 msgid "3rd Subsidiary Aside"
-msgstr "3º bloque secundario"
+msgstr "3. Помоћни Aside "
 
 #: library/extensions/widgets-extensions.php:132
 msgid "The 3rd widget area in the footer."
-msgstr "La tercera área de widgets del pie de página."
+msgstr "3. widget област у подножју сајта (footer) "
 
 #: library/extensions/widgets-extensions.php:145
 msgid "Index Top"
-msgstr "Área superior de la portada"
+msgstr "Индекс Врх"
 
 #: library/extensions/widgets-extensions.php:147
 msgid "The top widget area displayed on the index page."
-msgstr "El área de widgets superior mostrada en la portada."
+msgstr "Горња widget област приказана на index страни"
 
 #: library/extensions/widgets-extensions.php:160
 msgid "Index Insert"
-msgstr "Área insertada en la portada"
+msgstr "Индекс Унос"
 
 #: library/extensions/widgets-extensions.php:162
 msgid "The widget area inserted after x posts on the index page."
-msgstr "El área de widgets insertada después de x entradas en la portada."
+msgstr "Widget oбласт се убацује након x чланака на index страни."
 
 #: library/extensions/widgets-extensions.php:175
 msgid "Index Bottom"
-msgstr "Área inferior de la portada"
+msgstr "Индекс При дну"
 
 #: library/extensions/widgets-extensions.php:177
 msgid "The bottom widget area displayed on the index page."
-msgstr "El área de widgets inferior mostrada en la portada."
+msgstr "Widget област при дну приказана на index страни"
 
 #: library/extensions/widgets-extensions.php:190
 msgid "Single Top"
-msgstr "Área superior de una entrada"
+msgstr "Појединачан Врх"
 
 #: library/extensions/widgets-extensions.php:192
 msgid "The top widget area displayed on a single post."
-msgstr "El área de widgets superior mostrada en una entrada."
+msgstr "Widget област при врху приказана напојединачном чланку "
 
 #: library/extensions/widgets-extensions.php:205
 msgid "Single Insert"
-msgstr "Área de inserción de una entrada"
+msgstr "Појединачан Унос"
 
 #: library/extensions/widgets-extensions.php:207
 msgid "The widget area inserted between the post and the comments on a single post."
-msgstr "El área de widgets insertada entre la entrada y sus comentarios en una entrada."
+msgstr "Widget област унешена између одређеног чланка и коментара на појединачном чланку."
 
 #: library/extensions/widgets-extensions.php:220
 msgid "Single Bottom"
-msgstr "Área inferior de una entrada"
+msgstr "Сингл При дну"
 
 #: library/extensions/widgets-extensions.php:222
 msgid "The bottom widget area displayed on a single post."
-msgstr "El área de widgets inferior mostrada en una entrada."
+msgstr "Widget област при дну приказана на појединачном чланку"
 
 #: library/extensions/widgets-extensions.php:235
 msgid "Page Top"
-msgstr "Área superior de una página"
+msgstr "Страна При врху"
 
 #: library/extensions/widgets-extensions.php:237
 msgid "The top widget area displayed on a page."
-msgstr "El área de widgets superior mostrada en una página."
+msgstr "Widget област при врху приказана на једној страни."
 
 #: library/extensions/widgets-extensions.php:250
 msgid "Page Bottom"
-msgstr "Área inferior de una página"
+msgstr "Страна При дну"
 
 #: library/extensions/widgets-extensions.php:252
 msgid "The bottom widget area displayed on a page."
-msgstr "El área de widgets inferior mostrada en una página."
+msgstr "Widget област при дну приказана на једној страни."
 
 #: library/extensions/widgets.php:55
 msgid "A search form for your blog"
-msgstr "Un formulario de búsqueda para tu blog"
+msgstr "Форма за претрагу за Ваш блог"
 
 #: library/extensions/widgets.php:77 library/extensions/widgets.php:132
 #: library/extensions/widgets.php:175
 msgid "Title:"
-msgstr "Título:"
+msgstr "Наслов:"
 
 #: library/extensions/widgets.php:100
 msgid "Log in/out and admin"
-msgstr "Iniciar sesión/Cerrar sesión y Administración"
+msgstr "Пријава/Одјава и админ"
 
 #: library/extensions/widgets.php:101 library/extensions/widgets.php:106
 msgid "Meta"
-msgstr "Meta"
+msgstr "Мета"
 
 #: library/extensions/widgets.php:145
 msgid "Links to your posts and comments feed"
-msgstr "Enlaces a tus canales RSS de entradas y comentarios"
+msgstr "Линкови ка feed-ovima Ваших чланака и коментара"
 
 #: library/extensions/widgets.php:146 library/extensions/widgets.php:151
 msgid "RSS Links"
-msgstr "Enlaces RSS"
+msgstr "RSS линкови"
 
 #: library/extensions/widgets.php:157
 msgid "All posts"
-msgstr "Todas las entradas"
+msgstr "Сви чланци"
 
 #: library/extensions/widgets.php:158
 msgid "All comments"
-msgstr "Todos los comentarios"
+msgstr "Сви коментари"
 
 #: library/legacy/deprecated.php:349
 msgid "Logged in as"
-msgstr "Sesión iniciada como"
+msgstr "Пријављен као"
 
 #: library/legacy/deprecated.php:357 library/legacy/deprecated.php:362
 msgid "<span class=\"required\">*</span>"
@@ -631,19 +632,19 @@ msgstr "<span class=\"required\">*</span>"
 
 #: page.php:50 template-page-fullwidth.php:51
 msgid "Pages: "
-msgstr "Páginas: "
+msgstr "Стране:"
 
 #: search.php:56
 msgid "Nothing Found"
-msgstr "No se ha encontrado nada"
+msgstr "Ништа није пронађено"
 
 #: search.php:60
 msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
-msgstr "Lo sentimos pero no se ha encontrado nada. Por favor, inténtalo de nuevo con otros términos."
+msgstr "Извините, али ништа није пронађено за Ваш критеријум претраге. Молимо Вас, покушајте поново са различитим кључним речима претраге."
 
 #: template-page-blog.php:22
 msgid "You can include a %s in a childtheme"
-msgstr "Puedes incluir un %s en un sub-tema"
+msgstr "Можете укључити %s у child тему"
 
 msgid "Thematic"
 msgstr "Thematic"
@@ -652,28 +653,30 @@ msgid "http://thematictheme.com"
 msgstr "http://thematictheme.com"
 
 msgid "The ultimate in SEO-ready themes, Thematic is a highly extensible, WordPress Theme Framework featuring 13 widget-ready areas, drop-down menus, grid-based layout samples, plugin integration, shortcodes for your footer, &amp; a whole lot more. Perfect for any blog and <strong><em>the</em></strong> starting point for theme development."
-msgstr "Uno de los mejores temas optimizados para SEO, Thematic es un framework WordPress muy extensible, con 13 áreas de widgets, menús desplegables, varios diseños de rejilla, integración con extensiones, etiquetas para tu pie de página, y mucho más. Ideal para un blog y <strong><em>el</em></strong> punto de partida para el desarrollo de temas."
+msgstr "Ултимативна SEO спремна тема, Thematic је веома проширив, WordPress Theme Framework, са 13 widget спремних области, drop-down менији, семплови layout-a који си засновани на grid-y, пинтеграција додатака (plugin), кодовних скраћеница за Ваше подножје странице, &amp; и још много тога. Одлично за било који блог и као <strong><em>добра</em></strong> полазна основа за развој своје теме."
 
 msgid "<a href=\"http://themeshaper.com/\">Ian Stewart</a> &amp; <a href=\"http://thematic4you.com/\">Chris Go&szlig;mann</a>"
 msgstr "<a href=\"http://themeshaper.com/\">Ian Stewart</a> &amp; <a href=\"http://thematic4you.com/\">Chris Go&szlig;mann</a>"
 
 msgid "http://themeshaper.com/"
-msgstr "http://themeshaper.com/"
+msgstr "http://themeshaper.com/ "
 
 msgid "white, three-columns, two-columns, fixed-width, theme-options, left-sidebar, right-sidebar, threaded-comments, sticky-post, microformats"
-msgstr "white, three-columns, two-columns, fixed-width, theme-options, left-sidebar, right-sidebar, threaded-comments, sticky-post, microformats"
+msgstr ""
+"Бела, са три колоне, две колоне, фиксираним дужинама, опцјама теме, левим sidebar-ом, деним sidebar-ом, threaded коментарима, лепљивим коментарима, microformat-има\n"
+" "
 
 msgid "Deprecated Archives Template"
-msgstr "Plantilla de Archivos Obsoleta"
+msgstr "Темплејт са старим архивама"
 
 msgid "Links Page"
-msgstr "Página de Enlaces"
+msgstr "Страна са линковима"
 
 msgid "Archives Page"
-msgstr "Página de Archivos"
+msgstr "Страна са архивама"
 
 msgid "Deprecated Blog Template"
-msgstr "Plantilla de Blog Obsoleta"
+msgstr "Темплејт са старим чланцима "
 
 msgid "Full Width"
-msgstr "Ancho Completo"
+msgstr "Пуна дужина"
