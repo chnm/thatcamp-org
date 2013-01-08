@@ -28,3 +28,4 @@ wp-content/debug.log
 .svn
 *.swp
 /tags
+wp-content/themes/inuitypes_free/custom/cache/*
