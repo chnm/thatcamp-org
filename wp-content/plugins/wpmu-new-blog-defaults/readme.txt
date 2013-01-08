@@ -2,7 +2,7 @@
 Contributors: DeannaS, kgraeme, MadtownLems
 Tags: WPMU, Wordpress Mu, Wordpress Multiuser, Blog Defaults, Set Defaults 
 Requires at least: 3.0
-Tested up to: 3.1
+Tested up to: 3.4.2
 Stable tag: trunk
 
 
@@ -48,6 +48,9 @@ No, it's not designed to affect current blogs. Settings will only affect new blo
 You will have to pull a tagged version from the repository. Version 2.1 of this plugin works on older versions of WordPress.
 
 == Changelog ==
+
+2.2.2 - Minor cleanup and removed some notices
+
 2.2 - Moved admin page to Network->Settings for 3.1.  Increased required WP Version to 3.0. (stopped support for lower version)
 
 2.1 - Fixed deprecated parameter on add_sub_menu page
