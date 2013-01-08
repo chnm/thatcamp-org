@@ -3,7 +3,7 @@ Contributors: aliciagh
 Tags: search, multisite, buddypress, widget, multilingual, global, shortcode
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 1.2.8
+Stable tag: 1.2.9
 
 Adds the ability to search through blogs into your WordPress Multisite installation.
 
@@ -20,6 +20,7 @@ Currently in the following languages:
 * Portuguese (pt_PT) by Jose Anjos
 * Russian (ru_RU) by Sam Savinov
 * Romanian (ro_RO) by Alexander Ovsov [Web Geek Science](http://webhostinggeeks.com/science/)
+* Slovak (sk_SK) by Branco [WebHostingGeeks.com](http://webhostinggeeks.com/blog/)
 * Spanish (es_ES)
 
 If you have created your own language pack, or have an update of an existing one, you can send [gettext .po and .mo files](http://codex.wordpress.org/Translating_WordPress) to me so that I can bundle it into Multisite Global Search.
@@ -85,7 +86,13 @@ Default attribute value is `globalsearch`.
 
 = Can I put search form into PHP files using a function? =
 
-Yes, put this code into your files: `Multisite_Global_Search::ms_global_search_vertical_form(your_results_page)` or `Multisite_Global_Search::ms_global_search_horizontal_form(your_results_page)`
+Yes. For example, this is a results page for word 'e-learning': http://grial.usal.es/agora/busqueda/?mssearch=e-learning&msp=1&mswhere=all
+
+In this case, the name of the results page is 'busqueda' so the code that it will have to put in the PHP template must be:
+
+`<?php Multisite_Global_Search::ms_global_search_vertical_form('busqueda') ?>`
+or
+`<?php Multisite_Global_Search::ms_global_search_horizontal_form('busqueda') ?>`
 
 = Get error "check you have create views privilege in your WordPress database. Illegal mix of collations for operation 'UNION'". =
 
@@ -102,6 +109,10 @@ Check option "Search by default on pages" when you configure Multisite Global Se
 If you use shortcode `[multisite_search_form]` use `search_on_pages` attribute to search by default on pages. For example: `[multisite_search_form search_on_pages="1"]`.
 Default attribute value is `0`.
 
+= Customizing search form =
+
+You have to copy the CSS code from the stylesheet in the Multisite Global Search directory, paste it in your own stylesheet and modify it.
+
 == Screenshots ==
 
 1. Widget configuration.
@@ -109,6 +120,9 @@ Default attribute value is `0`.
 3. Horizontal Global Search widget.
 
 == Changelog ==
+
+= 1.2.9 =
+* Added: Slovak language pack
 
 = 1.2.8 =
 * Added: search multiple keywords regardless of the order

@@ -79,6 +79,7 @@ function ms_global_search_v_query( $blogs ) {
     
     // Create or replace views.
     if( $blogs != null ) {
+        // $wpdb->query("SET collation_connection = utf8_general_ci"); 
 	    $v_query1  = "CREATE OR REPLACE VIEW `{$wpdb->base_prefix}v_posts` AS ".$posts_select_query;
 		if ( $wpdb->query( $wpdb->prepare( $v_query1 ) ) === false ) {
 			wp_die( __( 'Error creating search views in the database. <a href="plugins.php">Deactivate Multisite Global Search</a> and check you have create views privilege in your WordPress database.', 'ms-global-search' ).'<br />'. $wpdb->last_error );

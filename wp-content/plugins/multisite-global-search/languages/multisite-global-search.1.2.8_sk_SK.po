@@ -1,0 +1,229 @@
+# Translation of the WordPress plugin Multisite Global Search 1.2.6 by Alicia García Holgado.
+# Copyright (C) 2011 Alicia García Holgado
+# This file is distributed under the same license as the Multisite Global Search package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Multisite Global Search 1.2.6\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/multisite-global-search\n"
+"POT-Creation-Date: 2011-09-26 01:03+0200\n"
+"PO-Revision-Date: 2012-12-03 15:26+0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: inc/class.widgets.php:21 inc/class.widgets.php:29
+msgid "Global Search"
+msgstr "Globálne hľadanie"
+
+#: inc/class.widgets.php:29 inc/shortcodes.php:264
+msgid "globalsearch"
+msgstr "globalsearch"
+
+#: inc/class.widgets.php:33
+msgid "Title"
+msgstr "Názov"
+
+#: inc/class.widgets.php:38
+msgid "Page"
+msgstr "Stránka"
+
+#: inc/class.widgets.php:43
+msgid "Form"
+msgstr "Formulár"
+
+#: inc/class.widgets.php:45
+msgid "Horizontal"
+msgstr "Horizontálne"
+
+#: inc/class.widgets.php:47
+msgid "Vertical"
+msgstr "Vertikálne"
+
+#: inc/class.widgets.php:52
+msgid "Searching by default on pages"
+msgstr "Vyhľadávanie podľa predvoleného nastavenia na stránkach"
+
+#: inc/class.widgets.php:57
+msgid "Disable search options"
+msgstr "Vypnúť možnosti vyhľadávania"
+
+#: inc/class.widgets.php:119 inc/class.widgets.php:154 inc/shortcodes.php:270
+#: inc/shortcodes.php:294
+msgid "Search across all blogs:"
+msgstr "Hľadať vo všetkých blogov:"
+
+#: inc/class.widgets.php:121 inc/class.widgets.php:156 inc/shortcodes.php:272
+#: inc/shortcodes.php:296
+msgid "Search"
+msgstr "Hľadať"
+
+#: inc/class.widgets.php:124 inc/class.widgets.php:128
+#: inc/class.widgets.php:129 inc/class.widgets.php:159
+#: inc/class.widgets.php:163 inc/class.widgets.php:164 inc/shortcodes.php:275
+#: inc/shortcodes.php:279 inc/shortcodes.php:280 inc/shortcodes.php:299
+#: inc/shortcodes.php:303 inc/shortcodes.php:304
+msgid "Search on pages"
+msgstr "Vyhľadávanie na stránkach"
+
+#: inc/class.widgets.php:125 inc/class.widgets.php:134
+#: inc/class.widgets.php:160 inc/class.widgets.php:168 inc/shortcodes.php:276
+#: inc/shortcodes.php:284 inc/shortcodes.php:300 inc/shortcodes.php:309
+msgid "Search on all blogs"
+msgstr "Vyhľadávanie na všetky blogy"
+
+#: inc/class.widgets.php:134 inc/class.widgets.php:168 inc/shortcodes.php:284
+#: inc/shortcodes.php:309
+msgid "All"
+msgstr "Všetky"
+
+#: inc/class.widgets.php:135 inc/class.widgets.php:169 inc/shortcodes.php:285
+#: inc/shortcodes.php:311
+msgid "Search only on blogs where I'm a member"
+msgstr "Hľadať len na blogy, kde som členom"
+
+#: inc/class.widgets.php:135 inc/class.widgets.php:169 inc/shortcodes.php:285
+#: inc/shortcodes.php:311
+msgid "Blogs where I'm a member"
+msgstr "Blogy, kde som členom"
+
+#: inc/init.php:8 inc/views.php:97
+msgid ""
+"<strong>Multisite Global Search</strong></a> requires multisite "
+"installation. Please <a href=\"http://codex.wordpress.org/Create_A_Network"
+"\">create a network</a> first, or <a href=\"plugins.php\">deactivate "
+"Multisite Global Search</a>."
+msgstr ""
+"<strong> Viacmiestne Global Search </ strong> </ a> vyžaduje Viacmiestne "
+"inštaláciu. Prosím <a href=\"http://codex.wordpress.org/Create_A_Network\"> "
+"vytvoriť sieť </ a> prvý, alebo <a href=\"plugins.php\"> deaktivovať "
+"Viacmiestne Globálne vyhľadávania </ a >."
+
+#: inc/init.php:14
+msgid ""
+"<strong>Multisite Global Search Widget</strong></a> not support default "
+"permalinks. Please <a target=\"_blank\" href=\"options-permalink.php"
+"\">Change Permalinks</a> first."
+msgstr ""
+"<strong> Viacmiestne Global Search Widget </ strong> </ a> nepodporuje "
+"predvolené permalinks. Prosím <a target=\"_blank\" href=\"options-permalink."
+"php\"> Zmena Permalinks </ a> ako prvý."
+
+#: inc/shortcodes.php:14 inc/shortcodes.php:28
+msgid ""
+"This post is password protected. To view it please enter your password below:"
+msgstr ""
+"Tento príspevok je chránený heslom. Ak ju chcete zobraziť, zadajte prosím "
+"heslo nižšie:"
+
+#: inc/shortcodes.php:15 inc/shortcodes.php:29
+msgid "Password"
+msgstr "Heslo"
+
+#: inc/shortcodes.php:15 inc/shortcodes.php:29
+msgid "Submit"
+msgstr "Predložiť"
+
+#: inc/shortcodes.php:46
+msgid "(Read more)"
+msgstr "(Viac informácii)"
+
+#: inc/shortcodes.php:101
+msgid "Edit post"
+msgstr "Upraviť príspevok"
+
+#: inc/shortcodes.php:101
+msgid "Edit"
+msgstr "Upraviť"
+
+#: inc/shortcodes.php:113
+msgid "Comments off"
+msgstr "Komentáre Vypnuté"
+
+#: inc/shortcodes.php:118
+msgid "Enter your password to view comments"
+msgstr "Ak chcete zobraziť komentáre zadajte heslo"
+
+#: inc/shortcodes.php:145
+#, php-format
+msgid "Comment on %s"
+msgstr "Komentovať %s"
+
+#: inc/shortcodes.php:147
+msgid "% Comments"
+msgstr "% Komentáre"
+
+#: inc/shortcodes.php:149
+msgid "No Comments"
+msgstr "Žiadne komentáre"
+
+#: inc/shortcodes.php:151
+msgid "1 Comment"
+msgstr "1 Komentár"
+
+#: inc/shortcodes.php:205 inc/shortcodes.php:253
+msgid "Not found"
+msgstr "Nebol nájdený"
+
+#: inc/shortcodes.php:205 inc/shortcodes.php:215
+msgid "in your blogs"
+msgstr "vo svoje blogy"
+
+#: inc/shortcodes.php:206 inc/shortcodes.php:254
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr "Prepáčte, ale hľadáte niečo, čo tu nie je."
+
+#: inc/shortcodes.php:211
+msgid "match with"
+msgstr "zápas s"
+
+#: inc/shortcodes.php:213
+msgid "matches with"
+msgstr "zápasy s"
+
+#: inc/shortcodes.php:230
+msgid "Permanent Link to"
+msgstr "Trvalý odkaz na"
+
+#: inc/shortcodes.php:233
+msgid "j/m/y, G:i"
+msgstr "j/m/y, G:i"
+
+#: inc/views.php:84 inc/views.php:89 inc/views.php:94
+msgid ""
+"Error creating search views in the database. <a href=\"plugins.php"
+"\">Deactivate Multisite Global Search</a> and check you have create views "
+"privilege in your WordPress database."
+msgstr ""
+"Chyba pri vytváraní vyhľadávania pohľady v databáze. <a href=\"plugins.php"
+"\"> Deaktivovať Viacmiestne Globálne vyhľadávania </ a> a skontrolujte, či "
+"ste vytvoriť pohľady privilégium v databáze WordPress."
+
+#. Plugin Name of the plugin/theme
+msgid "Multisite Global Search"
+msgstr "Viacmiestnych globálne hľadanie"
+
+#. Plugin URI of the plugin/theme
+msgid "http://grial.usal.es/agora/pfcgrial/multisite-search"
+msgstr "http://Grial.USAL.ES/Agora/pfcgrial/multisite-Search"
+
+#. Description of the plugin/theme
+msgid ""
+"Adds the ability to search through blogs into your WordPress Multisite "
+"installation. Based on my other plugin WPMU GLobal Search."
+msgstr ""
+"Pridá schopnosť vyhľadávať prostredníctvom blogov do vášho WordPress "
+"inštaláciu Viacmiestne. Na základe mojej ďalšej plugin WPMU Globálne "
+"hľadanie."
+
+#. Author of the plugin/theme
+msgid "Alicia García Holgado"
+msgstr "Alicia García Holgado"
+
+#. Author URI of the plugin/theme
+msgid "http://grial.usal.es/agora/mambanegra"
+msgstr "http://Grial.USAL.ES/Agora/mambanegra"
