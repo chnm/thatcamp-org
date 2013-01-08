@@ -68,9 +68,6 @@ function thatcamp_build() {
 	// Add RSS feed links
 	add_theme_support('automatic-feed-links');
 
-	// If having editor style add this
-	add_editor_style();
-
 	// Enable support for post thumbnails
 	add_theme_support('post-thumbnails');
 
@@ -537,6 +534,9 @@ function thatcamp_get_user_data( $user_id, $key ) {
 				break;
 
 			case 'user_url' :
+				// Use the real WP value instead
+				$user = new WP_User( $user_id );
+				$data = $user->user_url;
 				if ( ! thatcamp_validate_url( $data ) ) {
 					// Assume that http:// was left off
 					$maybe_data = 'http://' . $data;

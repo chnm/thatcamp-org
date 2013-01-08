@@ -1,5 +1,18 @@
 <?php
 
+function thatcamp_edit_profile_url( $url ) {
+	$path = 'profile.php';
+	$scheme = 'admin';
+	$active = get_active_blog_for_user( get_current_user_id() );
+	if ( $active )
+		$url = get_admin_url( $active->blog_id, $path, $scheme );
+	else
+		$url = user_admin_url( $path, $scheme );
+
+	return $url;
+}
+add_filter( 'edit_profile_url', 'thatcamp_edit_profile_url' );
+
 /**
  * Creates the 'THATCamp Setup' admin page
  */
