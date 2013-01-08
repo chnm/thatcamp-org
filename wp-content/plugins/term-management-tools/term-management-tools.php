@@ -1,29 +1,13 @@
 <?php
 /*
 Plugin Name: Term Management Tools
-Version: 1.1
+Version: 1.1.1
 Description: Allows you to merge terms and set term parents in bulk
 Author: scribu
 Author URI: http://scribu.net/
 Plugin URI: http://scribu.net/wordpress/term-management-tools
 Text Domain: term-management-tools
 Domain Path: /lang
-
-
-Copyright (C) 2010-2012 Cristi Burcă ( scribu@gmail.com )
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or
-( at your option ) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
 class Term_Management_Tools {
@@ -51,15 +35,18 @@ class Term_Management_Tools {
 	}
 
 	function handler() {
-		$taxonomy = @$_REQUEST['taxonomy'];
+		$defaults = array(
+			'taxonomy' => 'post_tag',
+			'delete_tags' => false,
+			'action' => false,
+			'action2' => false
+		);
 
-		if ( empty( $taxonomy ) )
-			$taxonomy = 'post_tag';
+		$data = shortcode_atts( $defaults, $_REQUEST );
 
-		if ( !taxonomy_exists( $taxonomy ) )
+		$tax = get_taxonomy( $data['taxonomy'] );
+		if ( !$tax )
 			return;
-
-		$tax = get_taxonomy( $taxonomy );
 
 		if ( !current_user_can( $tax->cap->manage_terms ) )
 			return;
@@ -67,15 +54,25 @@ class Term_Management_Tools {
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'script' ) );
 		add_action( 'admin_footer', array( __CLASS__, 'inputs' ) );
 
-		$term_ids = @$_REQUEST['delete_tags'];
+		$action = false;
+		foreach ( array( 'action', 'action2' ) as $key ) {
+			if ( $data[ $key ] && '-1' != $data[ $key ] ) {
+				$action = $data[ $key ];
+			}
+		}
 
+		if ( !$action )
+			return;
+
+		self::delegate_handling( $action, $data['taxonomy'], $data['delete_tags'] );
+	}
+
+	protected static function delegate_handling( $action, $taxonomy, $term_ids ) {
 		if ( empty( $term_ids ) )
 			return;
 
-		$actions = array_keys( self::get_actions( $taxonomy ) );
-
-		foreach ( $actions as $key ) {
-			if ( 'bulk_' . $key == @$_REQUEST['action'] || 'bulk_' . $key == @$_REQUEST['action2'] ) {
+		foreach ( array_keys( self::get_actions( $taxonomy ) ) as $key ) {
+			if ( 'bulk_' . $key == $action ) {
 				check_admin_referer( 'bulk-tags' );
 				$r = call_user_func( array( __CLASS__, 'handle_' . $key ), $term_ids, $taxonomy );
 				break;
@@ -96,11 +93,18 @@ class Term_Management_Tools {
 	}
 
 	function notice() {
-		if ( 'tmt-updated' == @$_GET['message'] )
-			echo '<div id="message" class="updated"><p>' . __( 'Terms updated.', 'term-management-tools' ) . '</p></div>';
+		if ( !isset( $_GET['message'] ) )
+			return;
 
-		if ( 'tmt-error' == @$_GET['message'] )
+		switch ( $_GET['message'] ) {
+		case  'tmt-updated':
+			echo '<div id="message" class="updated"><p>' . __( 'Terms updated.', 'term-management-tools' ) . '</p></div>';
+			break;
+
+		case 'tmt-error':
 			echo '<div id="message" class="error"><p>' . __( 'Terms not updated.', 'term-management-tools' ) . '</p></div>';
+			break;
+		}
 	}
 
 	function handle_merge( $term_ids, $taxonomy ) {
