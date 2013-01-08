@@ -4,10 +4,10 @@ Plugin Name: Popular Widget
 Plugin URI: http://xparkmedia.com/plugins/popular-widget/
 Description: Display most viewed, most commented and tags in one widget (with tabs)
 Author: Hafid R. Trujillo Huizar
-Version: 1.5.4
+Version: 1.5.7
 Author URI: http://www.xparkmedia.com
 Requires at least: 3.0.0
-Tested up to: 3.4.0
+Tested up to: 3.5.0
 
 Copyright 2011-2012 by Hafid Trujillo http://www.xparkmedia.com
 
@@ -43,17 +43,15 @@ class PopularWidget extends PopularWidgetFunctions {
 	function PopularWidget( ){
 		
 		$this->tabs = array();
-		$this->version = "1.5.4";
-		$this->domain  = "pop-wid";
+		$this->version = "1.5.7";
+		$this->load_text_domain();
 		
 		parent::PopularWidgetFunctions( ); 
 
 		define( 'POPWIDGET_FOLDER', plugin_basename( dirname( __FILE__ ) ) );
 		define( 'POPWIDGET_URL', WP_PLUGIN_URL . "/" . plugin_basename(dirname(__FILE__)) . "/" );
 		define( 'POPWIDGET_ABSPATH', str_replace("\\","/", dirname( __FILE__ ) ) );
-		
-		$this->load_text_domain( );
-		
+				
 		$this->defaults = apply_filters( 'pop_defaults_settings', array(
 			'nocomments' => false, 'nocommented' => false, 'noviewed' => false, 'norecent' => false,
 			'imgsize' => 'thumbnail', 'counter' => false, 'excerptlength' => 15, 'tlength' => 20, 'userids' => false,
@@ -62,19 +60,19 @@ class PopularWidget extends PopularWidgetFunctions {
 		) );
 		
 		$this->tabs = apply_filters( 'pop_defaults_tabs', array(
-			 'recent' =>  __( '<span>Recent </span> Posts', $this->domain ) , 
-			 'comments' => __( '<span>Recent </span>Comments', $this->domain ) , 
-			 'commented' => __( '<span>Most </span>Commented', $this->domain ), 
-			 'viewed' => __( '<span>Most </span>Viewed', $this->domain ), 
-			 'tags' => __( 'Tags', $this->domain ) 
+			 'recent' =>  __( '<span>Recent </span> Posts', 'pop-wid' ) , 
+			 'comments' => __( '<span>Recent </span>Comments', 'pop-wid' ) , 
+			 'commented' => __( '<span>Most </span>Commented', 'pop-wid' ), 
+			 'viewed' => __( '<span>Most </span>Viewed', 'pop-wid' ), 
+			 'tags' => __( 'Tags', 'pop-wid' ) 
 		 ) );
 		 
 		add_action( 'template_redirect',array( &$this,'set_post_view') );
 		add_action( 'admin_print_styles',array(&$this,'load_admin_styles') );
 		add_action( 'wp_enqueue_scripts',array(&$this,'load_scripts_styles') );
 		
-		$widget_ops = array( 'classname' => 'popular-widget', 'description' => __( "Display most popular posts and tags", $this->domain ));
-		$this->WP_Widget( 'popular-widget', __( 'Popular Widget',$this->domain ), $widget_ops );
+		$widget_ops = array( 'classname' => 'popular-widget', 'description' => __( "Display most popular posts and tags", 'pop-wid' ));
+		$this->WP_Widget( 'popular-widget', __( 'Popular Widget','pop-wid' ), $widget_ops );
 	}
 	
 	/**
@@ -84,13 +82,57 @@ class PopularWidget extends PopularWidgetFunctions {
 	* @since 0.5.0 
 	*/
 	function load_text_domain(){
-		$locale 	= get_locale( );
-		$filedir 	= POPWIDGET_ABSPATH . '/langs/'. $this->domain . '-' . $locale . '.mo';
+		$this->locale = get_locale();
 		
-		if( function_exists( 'load_plugin_textdomain' ) )
-			load_plugin_textdomain( $this->domain, false, apply_filters( 'pop_load_textdomain', POPWIDGET_FOLDER . '/langs', $this->domain , $locale ) );
-		elseif( function_exists( 'load_textdomain' ) )
-			load_textdomain( $this->domain, apply_filters( 'pop_load_textdomain', $filedir, $this->domain , $locale ) );
+		if ($this->locale == 'en_US' || is_textdomain_loaded('pop-wid'))
+			return;
+
+		$filedir = WP_CONTENT_DIR . '/languages/' . 'pop-wid' . '-' . $this->locale . '.mo';
+		if (!file_exists($filedir) && is_admin() && current_user_can('activate_plugins')) {
+			$time = get_option('_pop_wid_no_lan_file');
+			if ($time + (86400 * 2) <= current_time('timestamp'))
+				$this->download_language_file($filedir);
+		}
+
+		if (function_exists('load_plugin_textdomain'))
+			load_plugin_textdomain('pop-wid', false, apply_filters('pop_load_textdomain', '../languages/', 'pop-wid', $this->locale));
+		elseif (function_exists('load_textdomain'))
+			load_textdomain('pop-wid', apply_filters('pop_load_textdomain', $filedir, 'pop-wid', $this->locale));
+	}
+	
+	/**
+	 * Download language file
+	 *
+	 * @return void
+	 * @since 1.5.6
+	 */
+	function download_language_file($filedir) {
+
+		add_option('_pop_wid_no_lan_file', current_time('timestamp'));
+		$data = @file_get_contents("http://xparkmedia.com/xm/wp-content/languages/pop-wid-" . $this->locale . ".zip");
+		
+		if (empty($data))
+			return;
+
+		if (!file_exists($path = dirname($filedir)))
+			@mkdir($path, 0755, true);
+		
+		if(!is_writable($path))
+			return;
+			
+		$temp = $path . '/temp.zip';
+		@file_put_contents($temp, $data);
+
+		include_once( ABSPATH . 'wp-admin/includes/class-pclzip.php' );
+		$PclZip = new PclZip($temp);
+
+		if (false == ( $archive = $PclZip->extract(PCLZIP_OPT_EXTRACT_AS_STRING)))
+			return;
+		
+		foreach ($archive as $file)
+			@file_put_contents($path . "/" . $file['filename'], $file['content']);
+
+		@unlink($temp);
 	}
 	
 	/**
@@ -196,38 +238,38 @@ class PopularWidget extends PopularWidgetFunctions {
 		?>
 		
 		<p>
-	 		<label for="<?php $this->field_id( 'title') ?>"><?php _e( 'Title', $this->domain ) ?> 
+	 		<label for="<?php $this->field_id( 'title') ?>"><?php _e( 'Title', 'pop-wid' ) ?> 
 				<input class="widefat" id="<?php $this->field_id( 'title') ?>" name="<?php $this->field_name( 'title' ) ?>" type="text" value="<?php echo esc_attr( $title ) ?>" />
 			</label>
 		</p>
 		
 		<p>
-			<label for="<?php $this->field_id( 'lastdays') ?>"><?php _e('In the last',$this->domain)?> 
+			<label for="<?php $this->field_id( 'lastdays') ?>"><?php _e('In the last','pop-wid')?> 
 				<input id="<?php $this->field_id( 'lastdays' )?>" name="<?php $this->field_name( 'lastdays' )?>" size="4" type="text" value="<?php echo esc_attr( $lastdays ) ?>"/> 
-				<?php _e( 'days',$this->domain )?>
+				<?php _e( 'days','pop-wid' )?>
 			</label>
 		</p>
 		
 		<p>
-			<label for="<?php $this->field_id( 'limit' )?>"><?php _e( 'Show how many posts?', $this->domain )?> 
+			<label for="<?php $this->field_id( 'limit' )?>"><?php _e( 'Show how many posts?', 'pop-wid' )?> 
 				<input id="<?php $this->field_id( 'limit' )?>" name="<?php $this->field_name('limit')?>" size="5" type="text" value="<?php echo esc_attr( $limit ) ?>"/>
 			</label>
 		</p>
 		
 		<p>
-			<label for="<?php $this->field_id( 'userid' )?>"><?php _e( 'Filter by user id', $this->domain )?> 
+			<label for="<?php $this->field_id( 'userid' )?>"><?php _e( 'Filter by user id', 'pop-wid' )?> 
 				<input  class="widefat" id="<?php $this->field_id( 'userids' )?>" name="<?php $this->field_name('userids')?>" size="20" type="text" value="<?php echo esc_attr( $userids ) ?>"/>
-			</label><br /><small><?php _e( 'comma-separated user IDs', $this->domain )?> </small>
+			</label><br /><small><?php _e( 'comma-separated user IDs', 'pop-wid' )?> </small>
 		</p>
 		
 		<p>
-			<label for="<?php $this->field_id( 'cats' )?>"><?php _e( 'In categories', $this->domain )?> 
+			<label for="<?php $this->field_id( 'cats' )?>"><?php _e( 'In categories', 'pop-wid' )?> 
 				<input  class="widefat" id="<?php $this->field_id( 'cats' )?>" name="<?php $this->field_name( 'cats' )?>" size="20" type="text" value="<?php echo esc_attr( $cats ) ?>"/>
-			</label><br /><small><?php _e( 'comma-separated category IDs', $this->domain )?> </small>
+			</label><br /><small><?php _e( 'comma-separated category IDs', 'pop-wid' )?> </small>
 		</p>
 		
 		<p>
-			<label for="<?php $this->field_id( 'imgsize' )?>"><?php _e('Image Size',$this->domain)?>
+			<label for="<?php $this->field_id( 'imgsize' )?>"><?php _e('Image Size','pop-wid')?>
 			<select id="<?php $this->field_id( 'imgsize' ) ?>" name="<?php $this->field_name( 'imgsize' ) ?>">
 			<?php foreach( get_intermediate_image_sizes() as $size ):?>
 				<option value="<?php echo $size?>" <?php selected( $size, $imgsize )?>><?php echo $size ?></option>
@@ -236,7 +278,7 @@ class PopularWidget extends PopularWidgetFunctions {
 			</label>
 		</p>
 		
-		<p><label for="<?php  $this->field_id( 'taxonomy' )?>"><?php _e( 'Tags taxonomy' ,$this->domain)?>
+		<p><label for="<?php  $this->field_id( 'taxonomy' )?>"><?php _e( 'Tags taxonomy' ,'pop-wid')?>
 		<select id="<?php $this->field_id( 'taxonomy' ); ?>" name="<?php $this->field_name(  'taxonomy' ); ?>">
 			<?php foreach( get_taxonomies( array('public'=>true), 'names') as $tax => $taxname ):?>
 				<option value="<?php echo $tax?>" <?php selected( $tax, $taxonomy )?>><?php echo $taxname ?></option>
@@ -245,57 +287,57 @@ class PopularWidget extends PopularWidgetFunctions {
 		</p>
 		
 		
-		<h4 class="popw-collapse"><?php _e( 'Display:', $this->domain )?><span></span></h4>
+		<h4 class="popw-collapse"><?php _e( 'Display:', 'pop-wid' )?><span></span></h4>
 		<div class="popw-inner">
 			<p>
 				<label for="<?php $this->field_id( 'counter' )?>">
 					<input id="<?php $this->field_id( 'counter' )?>" name="<?php $this->field_name('counter')?>" type="checkbox" <?php checked( 'on', $counter ) ?> /> 
-					<?php _e( 'Display count', $this->domain )?>
+					<?php _e( 'Display count', 'pop-wid' )?>
 				</label><br />		
 				
 				<label for="<?php $this->field_id( 'thumb' )?>">
 					<input id="<?php $this->field_id( 'thumb' )?>" name="<?php $this->field_name( 'thumb' )?>" type="checkbox" <?php checked( 'on', $thumb ) ?> /> 
-					<?php _e( 'Display thumbnail', $this->domain )?>
+					<?php _e( 'Display thumbnail', 'pop-wid' )?>
 				</label><br />
 				
 				<label for="<?php $this->field_id('excerpt')?>">
 					<input id="<?php $this->field_id('excerpt')?>" name="<?php $this->field_name('excerpt')?>" type="checkbox" <?php checked( 'on', $excerpt ) ?> /> 
-					<?php _e( 'Display post excerpt', $this->domain )?>
+					<?php _e( 'Display post excerpt', 'pop-wid' )?>
 				</label>
 			</p>
 			
 			<p>
-				<label for="<?php $this->field_id( 'tlength' )?>"><?php _e( 'Title length', $this->domain )?> 
+				<label for="<?php $this->field_id( 'tlength' )?>"><?php _e( 'Title length', 'pop-wid' )?> 
 					<input id="<?php $this->field_id( 'tlength' )?>" name="<?php $this->field_name( 'tlength' )?>" size="4" type="text" value="<?php echo esc_attr( $tlength ) ?>"/> 
-					<?php _e( 'characters', $this->domain )?>
+					<?php _e( 'characters', 'pop-wid' )?>
 				</label>
 			</p>
 			
 			<p>
-				<label for="<?php $this->field_id( 'excerptlength' )?>"><?php _e( 'Excerpt length', $this->domain )?> 
+				<label for="<?php $this->field_id( 'excerptlength' )?>"><?php _e( 'Excerpt length', 'pop-wid' )?> 
 					<input id="<?php $this->field_id( 'excerptlength' )?>" name="<?php $this->field_name('excerptlength')?>" size="5" type="text" 
-					value="<?php echo esc_attr( $excerptlength ) ?>"/> <?php _e( 'Words', $this->domain ) ?>
+					value="<?php echo esc_attr( $excerptlength ) ?>"/> <?php _e( 'Words', 'pop-wid' ) ?>
 				</label>
 			</p>
 		
 		</div>
 		
-		<h4 class="popw-collapse"><?php _e( 'Calculate:', $this->domain )?><span></span></h4>
+		<h4 class="popw-collapse"><?php _e( 'Calculate:', 'pop-wid' )?><span></span></h4>
 		<div class="popw-inner">
 			<p>
 				<label for="<?php $this->field_id( 'calculate-views' )?>">
 					<input id="<?php $this->field_id( 'calculate-views' )?>" name="<?php $this->field_name( 'calculate' )?>" value="views" type="radio" <?php checked( $calculate, 'views' ) ?> /> 
-					<abbr title="Every time the user views the page"><?php _e( 'Views', $this->domain )?></abbr>
-				</label> <br /><small><?php _e( 'Every time user views the post.', $this->domain ) ?></small><br />
+					<abbr title="Every time the user views the page"><?php _e( 'Views', 'pop-wid' )?></abbr>
+				</label> <br /><small><?php _e( 'Every time user views the post.', 'pop-wid' ) ?></small><br />
 				
 				<label for="<?php $this->field_id( 'calculate-visits' )?>">
 					<input id="<?php $this->field_id( 'calculate-visits' )?>" name="<?php $this->field_name('calculate')?>" value="visits" type="radio" <?php checked( $calculate, 'visits' ) ?> />
-					<abbr title="Every time the user visits the site"><?php _e( 'Visits', $this->domain )?></abbr>
-				</label><br /><small><?php _e( 'Calculate only once per visit.', $this->domain ) ?></small>
+					<abbr title="Every time the user visits the site"><?php _e( 'Visits', 'pop-wid' )?></abbr>
+				</label><br /><small><?php _e( 'Calculate only once per visit.', 'pop-wid' ) ?></small>
 			</p>
 		</div>
 		
-		<h4 class="popw-collapse"><?php _e( 'Post Types:',$this->domain )?><span></span></h4>
+		<h4 class="popw-collapse"><?php _e( 'Post Types:','pop-wid' )?><span></span></h4>
 		<div class="popw-inner">
 			<p>
 				<?php foreach ( $post_types  as $post_type ) { ?>
@@ -307,26 +349,49 @@ class PopularWidget extends PopularWidgetFunctions {
 			</p>
 		</div>
 		
-		<h4 class="popw-collapse"><?php _e( 'Arrange / Disable:',$this->domain )?><span></span></h4>
+		<h4 class="popw-collapse"><?php _e( 'Arrange / Disable / Rename:','pop-wid' )?><span></span></h4>
 		<div class="popw-inner popw-sortable">
-			<p>
+			<p><small><?php _e( 'Click on the header to change the tab label. Check box to disable the tab.', 'pop-wid' )?> </small></p>
+			<div>
 				<?php foreach( $this->tabs as $tab => $label ) { ?>
 				<div class="sort-tabs">
-					<label for="<?php $this->field_id( "no{$tab}" )?>"><a href="<?php echo "#$tab" ?>" class="rename" title="<?php _e( 'Rename tab', $this->domain ) ?>"><?php echo $label ?></a>
+					<label for="<?php $this->field_id( "no{$tab}" )?>"><a href="<?php echo "#$tab" ?>" class="rename" title="<?php _e( 'Rename tab', 'pop-wid' ) ?>"><?php echo $label ?></a>
 						<input id="<?php $this->field_id( "no{$tab}" )?>" name="<?php echo $this->field_name( "no{$tab}" )?>" type="checkbox"  <?php checked( ${"no{$tab}"}, 'on' ) ?> /> 
 					</label>
 					<span class="rename-<?php echo "$tab" ?>"><input name="<?php $this->field_name( 'order' ); echo "[$tab]" ?>" type="text" value="<?php echo esc_attr( $label ) ?>" class="widefat"/></span>
 				</div>
 				<?php } ?>
-			</p>
+			</div>
 		</div>
 		
 		<?php do_action( 'pop_admin_form' ) ?>
 
-		<!--<a href="http://xparkmedia.com/popular-widget/"><?php _e('New! Popular Widget Pro',$this->domain)?></a>&nbsp; | &nbsp;-->
-		<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8SJEQXK5NK4ES"><?php _e( 'Donate', $this->domain )?></a> 
+		<!--<a href="http://xparkmedia.com/popular-widget/"><?php _e('New! Popular Widget Pro','pop-wid')?></a>&nbsp; | &nbsp;-->
+		<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YM9GXCFBND89E"><?php _e( 'Donate', 'pop-wid' )?></a> </p>
 		
 		<?php
+	}
+	
+	/**
+	 * Display widget.
+	 *
+	 * @param array $instance
+	 * @return array
+	 * @since 1.5.6
+	 */
+	function update( $instance ){
+		
+		foreach( $instance as $key => $val ){
+			if( is_array( $val ) )
+				$instance[$key] = $val;
+				
+			elseif( in_array( $key, array( 'lastdays', 'limit', 'tlength', 'excerptlength' ) ) )			
+				$instance[$key] = intval( $val );
+				
+			elseif( in_array( $key,array( 'calculate', 'imgsize', 'cats', 'userids', 'title' ) ) )	
+				$instance[$key] = trim( $val,',' );	
+		}
+		return $instance;
 	}
 	
 	/**
@@ -345,7 +410,7 @@ class PopularWidget extends PopularWidgetFunctions {
 		
 		$this->args = $args;
 		$this->instance = wp_parse_args( $instance, $this->defaults );
-		$this->instance['excerptlength'] = (int)$this->instance['excerptlength'];
+		$this->instance['excerptlength'] = (int) $this->instance['excerptlength'];
 
 		extract( $this->args ); extract( $this->instance ); 
 		
@@ -413,8 +478,8 @@ class PopularWidget extends PopularWidgetFunctions {
 		
 		$output .= '</div><!--.pop-layout-v-->';
 		echo $output .=  $after_widget . "\n";
-		
 	}
 		
 }
+
 add_action( 'widgets_init' , create_function( '', 'return register_widget("PopularWidget");' ) );
