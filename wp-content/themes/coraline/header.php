@@ -1,7 +1,6 @@
 <?php
 /**
- * @package WordPress
- * @subpackage Coraline
+ * @package Coraline
  * @since Coraline 1.0
  */
 ?><!DOCTYPE html>
@@ -58,7 +57,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="container" class="hfeed">
+<div id="container" class="hfeed contain">
 <?php do_action( 'before' ); ?>
 	<div id="header">
 		<div id="masthead" role="banner">

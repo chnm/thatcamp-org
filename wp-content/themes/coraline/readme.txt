@@ -1,5 +1,20 @@
 == Changelog ==
 
+= 1.3 Nov 5 2012 =
+* Updated screenshot for HiDPI support
+* Fix @package and @subpackage information
+* Use correct action hook to load theme options CSS
+* Add color scheme value to body_class output
+* Styles: 'container' needs to contain floats; better menu selectors; fix incorrect background image reference in dark.css; fix overly general .attachment img selectors
+* Fix gettext functions that passed variables
+* Add styling for HTML5 email inputs
+* Make sure attribute escaping occurs after printing
+* PNG and JPG image compression
+* Remove loading of $locale.php
+* Add Jetpack compatibility file
+* Use a named image size to display queried image in image.php template
+* Improve gallery styles so they work better multiple column sizes
+
 = 1.2 Jan 6 2012 =
 * Move styles to wp_enqueue_scripts hook
 * Fix PHP deprecated notices

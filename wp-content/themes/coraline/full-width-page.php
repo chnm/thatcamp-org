@@ -1,8 +1,7 @@
 <?php
 /**
  * Template Name: Full-width, no sidebar
- * @package WordPress
- * @subpackage Coraline
+ * @package Coraline
  * @since Coraline 1.0
  */
 

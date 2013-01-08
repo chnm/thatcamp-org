@@ -1,7 +1,6 @@
 <?php
 /**
- * @package WordPress
- * @subpackage Coraline
+ * @package Coraline
  */
 
 /**
@@ -9,6 +8,11 @@
  */
 if ( ! isset( $content_width ) )
 	$content_width = 500;
+
+/**
+ * Load Jetpack compatibility file.
+ */
+require( get_template_directory() . '/inc/jetpack.compat.php' );
 
 /** Tell WordPress to run coraline_setup() when the 'after_setup_theme' hook is run. */
 add_action( 'after_setup_theme', 'coraline_setup' );
@@ -45,17 +49,15 @@ function coraline_setup() {
 	// This theme uses post thumbnails
 	add_theme_support( 'post-thumbnails' );
 
+	$attachment_size = apply_filters( 'theme_attachment_size',  800 );
+	add_image_size( 'coraline-image-template', $attachment_size, $attachment_size, false );
+
 	// Add default posts and comments RSS feed links to head
 	add_theme_support( 'automatic-feed-links' );
 
 	// Make theme available for translation
 	// Translations can be filed in the /languages/ directory
 	load_theme_textdomain( 'coraline', get_template_directory() . '/languages' );
-
-	$locale = get_locale();
-	$locale_file = get_template_directory() . "/languages/$locale.php";
-	if ( is_readable( $locale_file ) )
-		require_once( $locale_file );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -559,12 +561,18 @@ function coraline_current_layout() {
 }
 
 /**
- *  Adds coraline_current_layout() to the array of body classes
+ *  Adds coraline_current_layout() and $color_scheme to the array of body classes
  *
  * @since Coraline 1.0
  */
 function coraline_body_class($classes) {
 	$classes[] = coraline_current_layout();
+
+	$options = coraline_get_theme_options();
+	$color_scheme = $options['color_scheme'];
+
+	if ( ! empty( $color_scheme ) && $color_scheme != 'light' )
+		$classes[] = 'color-' . $color_scheme;
 
 	return $classes;
 }
