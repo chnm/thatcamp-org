@@ -11,6 +11,57 @@
  */
 
 /**
+ * Utility for looping through and removing bbp_participants from all blogs
+ */
+function thatcamp_remove_bbp_participant() {
+        if ( ! is_super_admin() ) {
+                return;
+        }
+
+        if ( ! empty( $_GET['remove_bbp_participant'] ) ) {
+                global $wpdb;
+
+                $start = 1;
+
+                $caps = $wpdb->get_results( "SELECT * FROM $wpdb->usermeta WHERE meta_key LIKE 'wp_%_capabilities'" );
+
+                foreach ( $caps as $cap ) {
+                        $value = unserialize( $cap->meta_value );
+                        foreach ( $value as $vk => $vv ) {
+                                if ( 0 === strpos( $vk, 'bbp_' ) ) {
+                                        unset( $value[ $vk ] );
+                                }
+                        }
+
+
+                        if ( $value == unserialize( $cap->meta_value ) ) {
+                                continue;
+                                }
+
+                        if ( empty( $value ) ) {
+                                delete_user_meta( $cap->user_id, $cap->meta_key );
+                                echo 'deleting ' . $cap->meta_key . ' for user ' . $cap->user_id;
+                        } else {
+                                update_user_meta( $cap->user_id, $cap->meta_key, $value );
+                                echo 'updating ' . $cap->meta_key . ' for user ' . $cap->user_id;
+                        }
+                        echo '<br />';
+                        //echo '<pre>';
+//                        print_r( $value );
+//                        echo '</pre>';
+                }
+        }
+}
+add_action( 'admin_init', 'thatcamp_remove_bbp_participant' );
+
+/**
+ * Don't let bbPress do its stupid add-user-to-blog crap on switch_blog
+ */
+add_action( 'init', create_function( "", "
+remove_action( 'switch_blog', 'bbp_set_current_user_default_role' );
+" ), 1 );
+
+/**
  * Ensure that bbPress forum topics are posted to activity
  *
  * bbPress checks to see whether the current site is public before posting an
