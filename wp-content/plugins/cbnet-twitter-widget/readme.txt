@@ -3,8 +3,8 @@ Contributors: chipbennett
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QP3N9HUSYJPK6
 Tags: cbnet, twitter, twitter profile, twitter list, twitter favorites, twitter search, twitter tools, widget
 Requires at least: 2.9
-Tested up to: 3.3
-Stable tag: 1.2
+Tested up to: 3.5
+Stable tag: 1.3
 
 Widget to add the Twitter Tools Profile, List, Faves, and Search Widgets, with all configurable options.
 
@@ -111,6 +111,11 @@ The following are the General Settings:
 
 == Changelog ==
 
+= 1.3 =
+* Made Plugin translation-ready
+* Removed obsolete admin notices
+= 1.2 =
+* Compatible with WordPress 3.3.2
 = 1.1 =
 * Added notifications for users of the old cbnet Twitter Profile/List/Faves/Search Display Plugins
 = 1.0 =
@@ -124,6 +129,8 @@ The following are the General Settings:
 
 == Upgrade Notice ==
 
+= 1.3 =
+Compatible with WordPress 3.5. Made Plugin translatable, removed obsolete admin notices.
 = 1.1 =
 Added notifications for users of the old cbnet Twitter Profile/List/Faves/Search Display Plugins
 = 1.0 =

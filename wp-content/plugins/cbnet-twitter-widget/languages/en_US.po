@@ -1,0 +1,237 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cbnet Twitter Widget\n"
+"POT-Creation-Date: 2012-12-06 12:16-0500\n"
+"PO-Revision-Date: 2012-12-06 12:17-0500\n"
+"Last-Translator: Chip Bennett <chip@chipbennett.net>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\Documents and Settings\\wbennett\\My Documents"
+"\\Dev\\GitHub\\cbnet-twitter-widget\\languages\n"
+"X-Poedit-SearchPath-1: C:\\Documents and Settings\\wbennett\\My Documents"
+"\\Dev\\GitHub\\cbnet-twitter-widget\n"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:58
+msgid "Widget to display Twitter widgets"
+msgstr "Widget to display Twitter widgets"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:59
+msgid "cbnet Twitter Widget"
+msgstr "cbnet Twitter Widget"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:175
+msgid "Title (Heading)"
+msgstr "Title (Heading)"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:179
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:182
+msgid "Widget Type"
+msgstr "Widget Type"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:184
+msgid "Profile"
+msgstr "Profile"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:185
+msgid "List"
+msgstr "List"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:186
+msgid "Favorites"
+msgstr "Favorites"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:187
+msgid "Search"
+msgstr "Search"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:191
+msgid "General Settings"
+msgstr "General Settings"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:194
+msgid "Twitter User ID"
+msgstr "Twitter User ID"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:196
+msgid ""
+"Note: This setting applies to Widget types \"Profile\", \"List\", and "
+"\"Favorites\""
+msgstr ""
+"Note: This setting applies to Widget types \"Profile\", \"List\", and "
+"\"Favorites\""
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:199
+msgid "Twitter List"
+msgstr "Twitter List"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:201
+msgid "Note: This setting applies to Widget type \"List\""
+msgstr "Note: This setting applies to Widget type \"List\""
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:204
+msgid "Search Query"
+msgstr "Search Query"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:206
+msgid "Note: This setting applies to Widget type \"Search\""
+msgstr "Note: This setting applies to Widget type \"Search\""
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:209
+msgid "Title"
+msgstr "Title"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:211
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:216
+msgid ""
+"Note: This setting applies to Widget types \"List\", \"Favorites\", and "
+"\"Profile\""
+msgstr ""
+"Note: This setting applies to Widget types \"List\", \"Favorites\", and "
+"\"Profile\""
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:214
+msgid "Caption"
+msgstr "Caption"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:219
+msgid "Advanced Settings - Preferences"
+msgstr "Advanced Settings - Preferences"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:223
+msgid "Poll for New Results?"
+msgstr "Poll for New Results?"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:227
+msgid "Include Scrollbar?"
+msgstr "Include Scrollbar?"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:230
+msgid "Behavior (load all/loop):"
+msgstr "Behavior (load all/loop):"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:232
+msgid "Load All Tweets"
+msgstr "Load All Tweets"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:233
+msgid "Timed Interval"
+msgstr "Timed Interval"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:237
+msgid "Note: these settings only apply if \"Timed Interval\" is selected."
+msgstr "Note: these settings only apply if \"Timed Interval\" is selected."
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:241
+msgid "Loop Results?"
+msgstr "Loop Results?"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:244
+msgid "Interval (ms)"
+msgstr "Interval (ms)"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:248
+msgid "Number of Tweets"
+msgstr "Number of Tweets"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:253
+msgid "Show Avatars?"
+msgstr "Show Avatars?"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:257
+msgid "Show Timestamps?"
+msgstr "Show Timestamps?"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:261
+msgid "Show Hashtags?"
+msgstr "Show Hashtags?"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:264
+msgid "Advanced Settings - Appearance"
+msgstr "Advanced Settings - Appearance"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:266
+msgid "Note: enter all colors as HEX values (e.g. #ffffff for white)"
+msgstr "Note: enter all colors as HEX values (e.g. #ffffff for white)"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:269
+msgid "Shell Background"
+msgstr "Shell Background"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:273
+msgid "Shell Text"
+msgstr "Shell Text"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:277
+msgid "Tweet Background"
+msgstr "Tweet Background"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:281
+msgid "Tweet Text"
+msgstr "Tweet Text"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:285
+msgid "Tweet Links"
+msgstr "Tweet Links"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:289
+msgid "Advanced Settings - Dimensions"
+msgstr "Advanced Settings - Dimensions"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:292
+msgid "Width (pixels)"
+msgstr "Width (pixels)"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:297
+msgid "Auto Width?"
+msgstr "Auto Width?"
+
+#: C:\Documents and Settings\wbennett\My
+#: Documents\Dev\GitHub\cbnet-twitter-widget/cbnet-twitter-widget.php:300
+msgid "Height (pixels)"
+msgstr "Height (pixels)"
