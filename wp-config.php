@@ -33,8 +33,6 @@ define( 'WPCACHEHOME', '/websites/thatcamp/home/www/wp-content/plugins/wp-super-
 // Enable the WordPress Object Cache:
 define(ENABLE_CACHE, true);
 
-define('WP_DEBUG', true);
-
 
 /**#@+
  * Authentication Unique Keys and Salts.
