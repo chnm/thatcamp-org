@@ -5,7 +5,7 @@
 		Tags: jquery, dropdown, menu, vertical accordion, animated, css, navigation, accordion
 		Description: Creates vertical accordion menus from any Wordpress custom menu using jQuery. Add menus using either widgets or shortcodes. Features include - handles multiple levels, saved state using cookies and option of selecting "click" or "hover" events for triggering the menu.
 		Author: Lee Chestnutt
-		Version: 3.1.1
+		Version: 3.1.2
 		Author URI: http://www.designchemical.com
 */
 
@@ -85,12 +85,13 @@ function dcwp_dc_jqaccordion_shortcode($atts){
 	$_SESSION['dc_jqaccordion_menu'] = $_SESSION['dc_jqaccordion_menu'] != '' ? $_SESSION['dc_jqaccordion_menu'] + 1 : 1 ;
 	$id = $id == '' ? 's'.$_SESSION['dc_jqaccordion_menu'] : 's'.$id ;
 	$menuId = 'dc_jqaccordion_widget-'.$id.'-item';
+	$out = '';
 	
 	if($skin != 'No Theme'){
-		echo "\n\t<link rel=\"stylesheet\" href=\"".dc_jqaccordion::get_plugin_directory()."/skin.php?widget_id=".$id."&amp;skin=".strtolower($skin)."\" type=\"text/css\" media=\"screen\"  />";
+		$out .= "\n\t<link rel=\"stylesheet\" href=\"".dc_jqaccordion::get_plugin_directory()."/skin.php?widget_id=".$id."&amp;skin=".strtolower($skin)."\" type=\"text/css\" media=\"screen\"  />";
 	}
 	
-	echo '<script type="text/javascript">
+	$out .= '<script type="text/javascript">
 				jQuery(document).ready(function($) {
 					jQuery("#'.$menuId.'").dcAccordion({
 						eventType: "'.$event.'",
@@ -108,14 +109,16 @@ function dcwp_dc_jqaccordion_shortcode($atts){
 					});
 				});
 			</script>';
-	echo '<div class="dcjq-accordion" id="'.$menuId.'">';
-	echo wp_nav_menu( 
+	$out .= '<div class="dcjq-accordion" id="'.$menuId.'">';
+	$out .= wp_nav_menu( 
 					array( 
 						'fallback_cb' => '', 
 						'menu' => $menu,
-						'menu_class' => $menu_class
+						'menu_class' => $menu_class,
+						'echo' => false
 						) 
 					);
-	echo '</div>';
+	$out .= '</div>';
+	return $out;
 }
 ?>
