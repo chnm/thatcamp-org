@@ -3085,6 +3085,7 @@ div.item-list-tabs ul li.feed a {
   float: left;
   list-style: none;
   margin-right: 2%;
+  min-height: 250px;
 }
 #item-header-avatar {
   margin: 20px;
