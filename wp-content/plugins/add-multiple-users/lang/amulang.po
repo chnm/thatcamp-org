@@ -1,0 +1,1694 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: amulang\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-31 09:09+1000\n"
+"PO-Revision-Date: 2012-08-31 09:12+1000\n"
+"Last-Translator: mjhood <mjhood@happynuclear.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: ../.\n"
+
+#: ../multiadd.php:41
+#: .././multiadd.php:41
+msgid "AMU Settings"
+msgstr ""
+
+#: ../multiadd.php:41
+#: .././multiadd.php:41
+msgid "Plugin Settings"
+msgstr ""
+
+#: ../multiadd.php:42
+#: .././multiadd.php:42
+msgid "AMU Manual Entry Form"
+msgstr ""
+
+#: ../multiadd.php:42
+#: ../functions/plugininfo.php:51
+#: .././multiadd.php:42
+msgid "Manual Entry"
+msgstr ""
+
+#: ../multiadd.php:43
+#: .././multiadd.php:43
+msgid "AMU Import CSV Data"
+msgstr ""
+
+#: ../multiadd.php:43
+#: ../functions/plugininfo.php:54
+#: .././multiadd.php:43
+msgid "Import CSV Data"
+msgstr ""
+
+#: ../multiadd.php:44
+#: .././multiadd.php:44
+msgid "AMU Import Email List"
+msgstr ""
+
+#: ../multiadd.php:44
+#: .././multiadd.php:44
+msgid "Import Email List"
+msgstr ""
+
+#: ../multiadd.php:46
+#: .././multiadd.php:46
+msgid "AMU Add from Network"
+msgstr ""
+
+#: ../multiadd.php:46
+#: ../functions/plugininfo.php:62
+#: .././multiadd.php:46
+msgid "Add from Network"
+msgstr ""
+
+#: ../multiadd.php:50
+#: .././multiadd.php:50
+msgid "Add Multiple Users Network"
+msgstr ""
+
+#: ../multiadd.php:50
+#: .././multiadd.php:50
+msgid "AMU Network"
+msgstr ""
+
+#: ../multiadd.php:79
+#: ../functions/settings.php:542
+#: .././multiadd.php:79
+msgid "Your New User Account Information on"
+msgstr ""
+
+#: ../multiadd.php:80
+#: ../functions/settings.php:543
+#: .././multiadd.php:80
+msgid "You have been registered as a user on"
+msgstr ""
+
+#: ../multiadd.php:81
+#: ../functions/settings.php:544
+#: .././multiadd.php:81
+msgid "You may now log into the site at"
+msgstr ""
+
+#: ../multiadd.php:82
+#: ../functions/settings.php:545
+#: .././multiadd.php:82
+msgid "Your username is"
+msgstr ""
+
+#: ../multiadd.php:82
+#: ../functions/settings.php:545
+#: .././multiadd.php:82
+msgid "and your password is"
+msgstr ""
+
+#: ../multiadd.php:83
+#: ../functions/settings.php:546
+#: .././multiadd.php:83
+msgid "Regards"
+msgstr ""
+
+#: ../multiadd.php:84
+#: ../functions/settings.php:547
+#: .././multiadd.php:84
+msgid "Admin"
+msgstr ""
+
+#: ../functions/addemaillist.php:23
+#: ../functions/csvimport.php:23
+#: ../functions/manualentry.php:23
+#: ../functions/networkoptions.php:21
+#: ../functions/networkoptions.php:171
+#: ../functions/plugininfo.php:23
+#: ../functions/settings.php:23
+#: .././functions/addemaillist.php:23
+#: .././functions/csvimport.php:23
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: ../functions/addemaillist.php:31
+#: ../functions/csvimport.php:31
+#: ../functions/manualentry.php:31
+#: ../functions/networkoptions.php:182
+#: ../functions/plugininfo.php:31
+#: ../functions/settings.php:34
+#: .././functions/addemaillist.php:31
+#: .././functions/csvimport.php:31
+msgid "Access to AMU functions have been disabled by the Network Administrator."
+msgstr ""
+
+#: ../functions/addemaillist.php:45
+#: .././functions/addemaillist.php:45
+msgid "Add Multiple Users - Import Email List"
+msgstr ""
+
+#: ../functions/addemaillist.php:62
+#: ../functions/addemaillist.php:69
+#: ../functions/csvimport.php:67
+#: ../functions/manualentry.php:58
+#: .././functions/addemaillist.php:62
+#: .././functions/addemaillist.php:69
+#: .././functions/csvimport.php:67
+msgid "New User Accounts Processed."
+msgstr ""
+
+#: ../functions/addemaillist.php:75
+#: .././functions/addemaillist.php:75
+msgid "Unknown request. Please choose the Import Email List option from the menu."
+msgstr ""
+
+#: ../functions/addemaillist.php:103
+#: ../functions/addemaillist.php:253
+#: .././functions/addemaillist.php:103
+#: .././functions/addemaillist.php:253
+msgid "Error: No valid email addresses were found in your input data! Please try again."
+msgstr ""
+
+#: ../functions/addemaillist.php:213
+#: ../functions/commonfn.php:208
+#: ../functions/csvimport.php:280
+#: .././functions/addemaillist.php:213
+#: .././functions/commonfn.php:208
+#: .././functions/csvimport.php:280
+msgid "New user successfully registered."
+msgstr ""
+
+#: ../functions/addemaillist.php:213
+#: ../functions/commonfn.php:208
+#: ../functions/csvimport.php:280
+#: .././functions/addemaillist.php:213
+#: .././functions/commonfn.php:208
+#: .././functions/csvimport.php:280
+msgid "Login"
+msgstr ""
+
+#: ../functions/addemaillist.php:213
+#: ../functions/commonfn.php:208
+#: ../functions/csvimport.php:280
+#: .././functions/addemaillist.php:213
+#: .././functions/commonfn.php:208
+#: .././functions/csvimport.php:280
+msgid "Password"
+msgstr ""
+
+#: ../functions/addemaillist.php:213
+#: ../functions/commonfn.php:208
+#: ../functions/csvimport.php:280
+#: .././functions/addemaillist.php:213
+#: .././functions/commonfn.php:208
+#: .././functions/csvimport.php:280
+msgid "Email"
+msgstr ""
+
+#: ../functions/addemaillist.php:228
+#: ../functions/csvimport.php:295
+#: .././functions/addemaillist.php:228
+#: .././functions/csvimport.php:295
+msgid "No user_login was found. This line was skipped."
+msgstr ""
+
+#: ../functions/addemaillist.php:235
+#: ../functions/commonfn.php:229
+#: ../functions/csvimport.php:303
+#: ../functions/networkoptions.php:244
+#: .././functions/addemaillist.php:235
+#: .././functions/commonfn.php:229
+#: .././functions/csvimport.php:303
+msgid "Results of your new user registrations"
+msgstr ""
+
+#: ../functions/addemaillist.php:247
+#: .././functions/addemaillist.php:247
+msgid "Unknown request."
+msgstr ""
+
+#: ../functions/addemaillist.php:269
+#: .././functions/addemaillist.php:269
+msgid "Enter the email addresses of the users you wish to add to your WordPress site, separated by commas."
+msgstr ""
+
+#: ../functions/addemaillist.php:270
+#: .././functions/addemaillist.php:270
+msgid "User Logins are automatically created from the first part of each email address you enter."
+msgstr ""
+
+#: ../functions/addemaillist.php:289
+#: .././functions/addemaillist.php:289
+msgid "Click the Create User Information Form button below to convert this user information into a Form, allowing you to review and customise specific information."
+msgstr ""
+
+#: ../functions/addemaillist.php:292
+#: .././functions/addemaillist.php:292
+msgid "Alternatively, choose the Skip Form and Add Users option if you want to immediately add all users. If you are adding more than 100 users in one pass, it is recommended you use this option. Please see the information at the bottom of the screen for more info."
+msgstr ""
+
+#: ../functions/commonfn.php:40
+#: .././functions/commonfn.php:40
+msgid "Your email list was successfully converted to user listings."
+msgstr ""
+
+#: ../functions/commonfn.php:41
+#: ../functions/commonfn.php:44
+#: .././functions/commonfn.php:41
+#: .././functions/commonfn.php:44
+msgid "Please review the user information below to correct any errors or to add additional information for each user and click the Add All Users button to process your new user accounts."
+msgstr ""
+
+#: ../functions/commonfn.php:43
+#: .././functions/commonfn.php:43
+msgid "Your CSV data was successfully converted to user listings."
+msgstr ""
+
+#: ../functions/commonfn.php:46
+#: .././functions/commonfn.php:46
+msgid "Enter your new user information in the form below and click the Add All Users button to process your new user registrations."
+msgstr ""
+
+#: ../functions/commonfn.php:47
+#: .././functions/commonfn.php:47
+msgid "Note that entries without user_logins will be skipped during the registration process."
+msgstr ""
+
+#: ../functions/commonfn.php:57
+#: ../functions/commonfn.php:153
+#: ../functions/networkoptions.php:437
+#: .././functions/commonfn.php:57
+#: .././functions/commonfn.php:153
+msgid "Add All Users"
+msgstr ""
+
+#: ../functions/commonfn.php:59
+#: .././functions/commonfn.php:59
+msgid "Reset All Fields"
+msgstr ""
+
+#: ../functions/commonfn.php:60
+#: .././functions/commonfn.php:60
+msgid "Make New Form"
+msgstr ""
+
+#: ../functions/commonfn.php:154
+#: .././functions/commonfn.php:154
+msgid "Add Extra Row"
+msgstr ""
+
+#: ../functions/commonfn.php:241
+#: .././functions/commonfn.php:241
+msgid "Error retrieving processes. Please try again."
+msgstr ""
+
+#: ../functions/commonfn.php:323
+#: .././functions/commonfn.php:323
+msgid "Error: a user with this user_login already exists. This user was not registered."
+msgstr ""
+
+#: ../functions/commonfn.php:325
+#: .././functions/commonfn.php:325
+msgid "Error: an email address for the user"
+msgstr ""
+
+#: ../functions/commonfn.php:325
+#: .././functions/commonfn.php:325
+msgid "was not provided. This user was not registered."
+msgstr ""
+
+#: ../functions/commonfn.php:327
+#: .././functions/commonfn.php:327
+msgid "Error: a user with the user_email address"
+msgstr ""
+
+#: ../functions/commonfn.php:327
+#: .././functions/commonfn.php:327
+msgid "already exists. This user was not registered."
+msgstr ""
+
+#: ../functions/commonfn.php:329
+#: .././functions/commonfn.php:329
+msgid "Error: The user_email provided"
+msgstr ""
+
+#: ../functions/commonfn.php:329
+#: .././functions/commonfn.php:329
+msgid "was not valid. This user was not registered."
+msgstr ""
+
+#: ../functions/commonfn.php:485
+#: .././functions/commonfn.php:485
+msgid "New User Account Information for"
+msgstr ""
+
+#: ../functions/commonfn.php:486
+#: .././functions/commonfn.php:486
+msgid "This email is to confirm new user accounts for your website generated using the Add Multiple Users plugin."
+msgstr ""
+
+#: ../functions/commonfn.php:487
+#: .././functions/commonfn.php:487
+msgid "All errors have also been included for reference when re-entering failed registrations."
+msgstr ""
+
+#: ../functions/commonfn.php:490
+#: ../functions/commonfn.php:527
+#: .././functions/commonfn.php:490
+#: .././functions/commonfn.php:527
+msgid "No user registration information was submitted."
+msgstr ""
+
+#: ../functions/commonfn.php:495
+#: .././functions/commonfn.php:495
+msgid "End of message."
+msgstr ""
+
+#: ../functions/commonfn.php:513
+#: .././functions/commonfn.php:513
+msgid "This information has been emailed to your WordPress administrator email"
+msgstr ""
+
+#: ../functions/commonfn.php:515
+#: .././functions/commonfn.php:515
+msgid "This information has not been emailed to you. If you need to keep this information for future use, please copy the data below and save it now."
+msgstr ""
+
+#: ../functions/commonfn.php:565
+#: .././functions/commonfn.php:565
+msgid "New user notifications are enabled."
+msgstr ""
+
+#: ../functions/commonfn.php:565
+#: .././functions/commonfn.php:565
+msgid "Each user will be sent a registration email."
+msgstr ""
+
+#: ../functions/commonfn.php:567
+#: .././functions/commonfn.php:567
+msgid "New user notifications are disabled."
+msgstr ""
+
+#: ../functions/commonfn.php:567
+#: .././functions/commonfn.php:567
+msgid "New users will not be sent a registration email."
+msgstr ""
+
+#: ../functions/commonfn.php:574
+#: .././functions/commonfn.php:574
+msgid "New user account confirmation email is enabled."
+msgstr ""
+
+#: ../functions/commonfn.php:574
+#: .././functions/commonfn.php:574
+msgid "You will be sent an email with all new user information."
+msgstr ""
+
+#: ../functions/commonfn.php:576
+#: .././functions/commonfn.php:576
+msgid "New user account confirmation email is disabled."
+msgstr ""
+
+#: ../functions/commonfn.php:576
+#: .././functions/commonfn.php:576
+msgid "You will not be sent an email with all new user information."
+msgstr ""
+
+#: ../functions/commonfn.php:583
+#: ../functions/commonfn.php:592
+#: .././functions/commonfn.php:583
+#: .././functions/commonfn.php:592
+msgid "You have not set a default role."
+msgstr ""
+
+#: ../functions/commonfn.php:583
+#: .././functions/commonfn.php:583
+msgid "Each user will be added with the role that appears in your data."
+msgstr ""
+
+#: ../functions/commonfn.php:585
+#: ../functions/commonfn.php:594
+#: .././functions/commonfn.php:585
+#: .././functions/commonfn.php:594
+msgid "Set All Roles is currently set to"
+msgstr ""
+
+#: ../functions/commonfn.php:585
+#: .././functions/commonfn.php:585
+msgid "which will override all user roles."
+msgstr ""
+
+#: ../functions/commonfn.php:592
+#: .././functions/commonfn.php:592
+msgid "Each user will be added with the default role set in your Site Settings."
+msgstr ""
+
+#: ../functions/commonfn.php:594
+#: .././functions/commonfn.php:594
+msgid "All users will be added with this role."
+msgstr ""
+
+#: ../functions/commonfn.php:600
+#: .././functions/commonfn.php:600
+msgid "User display names will be set as"
+msgstr ""
+
+#: ../functions/commonfn.php:600
+#: .././functions/commonfn.php:600
+msgid "where not specified in your data."
+msgstr ""
+
+#: ../functions/commonfn.php:606
+#: .././functions/commonfn.php:606
+msgid "You have chosen to use the dynamic column ordering function."
+msgstr ""
+
+#: ../functions/commonfn.php:606
+#: .././functions/commonfn.php:606
+msgid "This function will be available in the next step."
+msgstr ""
+
+#: ../functions/commonfn.php:608
+#: .././functions/commonfn.php:608
+msgid "You have predefined your CSV column order in the Settings."
+msgstr ""
+
+#: ../functions/commonfn.php:608
+#: .././functions/commonfn.php:608
+msgid "Ensure your column order is correct before continuing."
+msgstr ""
+
+#: ../functions/commonfn.php:610
+#: .././functions/commonfn.php:610
+msgid "You have chosen to define your column order on the next page."
+msgstr ""
+
+#: ../functions/commonfn.php:610
+#: .././functions/commonfn.php:610
+msgid "You will have to manually type in your column order in the next step."
+msgstr ""
+
+#: ../functions/commonfn.php:612
+#: .././functions/commonfn.php:612
+msgid "You have chosen to read the first line of your CSV data as your default column order."
+msgstr ""
+
+#: ../functions/commonfn.php:618
+#: .././functions/commonfn.php:618
+msgid "Adjust your settings before continuing"
+msgstr ""
+
+#: ../functions/commonfn.php:618
+#: .././functions/commonfn.php:618
+msgid "if you wish to change these settings."
+msgstr ""
+
+#: ../functions/commonfn.php:630
+#: .././functions/commonfn.php:630
+msgid "View the the Quick Reference"
+msgstr ""
+
+#: ../functions/commonfn.php:630
+#: .././functions/commonfn.php:630
+msgid "for a list of standard and non-standard column names."
+msgstr ""
+
+#: ../functions/commonfn.php:633
+#: .././functions/commonfn.php:633
+msgid "Column Name Quick Reference"
+msgstr ""
+
+#: ../functions/commonfn.php:635
+#: .././functions/commonfn.php:635
+msgid "The following column names are standard WordPress database values in both the wp_user and wp_usermeta tables."
+msgstr ""
+
+#: ../functions/commonfn.php:638
+#: ../functions/commonfn.php:640
+#: .././functions/commonfn.php:638
+#: .././functions/commonfn.php:640
+msgid "The column name"
+msgstr ""
+
+#: ../functions/commonfn.php:638
+#: .././functions/commonfn.php:638
+msgid "should be used where a user role is defined in your data. User levels and capabilities will be automatically created for that user."
+msgstr ""
+
+#: ../functions/commonfn.php:640
+#: .././functions/commonfn.php:640
+msgid "should be used where you want the plugin to ignore a column of data. You can use this several times if necessary."
+msgstr ""
+
+#: ../functions/commonfn.php:642
+#: .././functions/commonfn.php:642
+msgid "Any column name that does not match either standard, role or ignore column names will be added as an additional custom user meta data field for each user."
+msgstr ""
+
+#: ../functions/commonfn.php:644
+#: .././functions/commonfn.php:644
+msgid "Close the Quick Reference"
+msgstr ""
+
+#: ../functions/csvimport.php:44
+#: .././functions/csvimport.php:44
+msgid "Add Multiple Users - Import CSV Data"
+msgstr ""
+
+#: ../functions/csvimport.php:73
+#: .././functions/csvimport.php:73
+msgid "Unknown request. Please choose the CSV Import option from the menu."
+msgstr ""
+
+#: ../functions/csvimport.php:92
+#: .././functions/csvimport.php:92
+msgid "Converts a list of comma-separated values (CSV) into new user registration information."
+msgstr ""
+
+#: ../functions/csvimport.php:93
+#: .././functions/csvimport.php:93
+msgid "Your information will be extracted and available to view and sort in the next step."
+msgstr ""
+
+#: ../functions/csvimport.php:98
+#: .././functions/csvimport.php:98
+msgid "Choose a CSV/TXT file to upload"
+msgstr ""
+
+#: ../functions/csvimport.php:104
+#: .././functions/csvimport.php:104
+msgid "Information in the text box below will be ignored if a file is found in the File browser above."
+msgstr ""
+
+#: ../functions/csvimport.php:106
+#: .././functions/csvimport.php:106
+msgid "Or paste your CSV data in the box below"
+msgstr ""
+
+#: ../functions/csvimport.php:121
+#: .././functions/csvimport.php:121
+msgid "Please ensure you have read the information on CSV importing functions and updated your Settings before proceeding."
+msgstr ""
+
+#: ../functions/csvimport.php:122
+#: .././functions/csvimport.php:122
+msgid "Next Step"
+msgstr ""
+
+#: ../functions/csvimport.php:123
+#: .././functions/csvimport.php:123
+msgid "Clear All"
+msgstr ""
+
+#: ../functions/csvimport.php:144
+#: .././functions/csvimport.php:144
+msgid "No information was found. Please choose a file or enter your information in the text box."
+msgstr ""
+
+#: ../functions/csvimport.php:153
+#: .././functions/csvimport.php:153
+msgid "Error: Not a valid file type! Only .csv and .txt files may be uploaded."
+msgstr ""
+
+#: ../functions/csvimport.php:179
+#: .././functions/csvimport.php:179
+msgid "The following user information has been extracted from your data."
+msgstr ""
+
+#: ../functions/csvimport.php:179
+#: .././functions/csvimport.php:179
+msgid "Please ensure your column order matches the data order and click one of the registration buttons below to continue."
+msgstr ""
+
+#: ../functions/csvimport.php:185
+#: .././functions/csvimport.php:185
+msgid "Data Column Ordering"
+msgstr ""
+
+#: ../functions/csvimport.php:188
+#: .././functions/csvimport.php:188
+msgid "Your CSV Data"
+msgstr ""
+
+#: ../functions/csvimport.php:191
+#: .././functions/csvimport.php:191
+msgid "Total lines found in this document"
+msgstr ""
+
+#: ../functions/csvimport.php:195
+#: .././functions/csvimport.php:195
+msgid "Click the Create User Information Form button to convert this user information into a Form, allowing you to review and customise specific information."
+msgstr ""
+
+#: ../functions/csvimport.php:196
+#: .././functions/csvimport.php:196
+msgid "Create User Information Form"
+msgstr ""
+
+#: ../functions/csvimport.php:198
+#: .././functions/csvimport.php:198
+msgid "Alternatively, choose the Skip Form and Add Users option if you want to immediately add all users."
+msgstr ""
+
+#: ../functions/csvimport.php:198
+#: .././functions/csvimport.php:198
+msgid "Important"
+msgstr ""
+
+#: ../functions/csvimport.php:198
+#: .././functions/csvimport.php:198
+msgid "If you are adding more than 100 users in one pass, it is recommended you use this option. Please see the information at the bottom of the screen for more info."
+msgstr ""
+
+#: ../functions/csvimport.php:199
+#: .././functions/csvimport.php:199
+msgid "Skip Form and Add Users"
+msgstr ""
+
+#: ../functions/csvimport.php:464
+#: .././functions/csvimport.php:464
+msgid "You have predefined your CSV data column order as the following"
+msgstr ""
+
+#: ../functions/csvimport.php:475
+#: .././functions/csvimport.php:475
+msgid "No column order has been defined! Please see the Settings page to specify your column order."
+msgstr ""
+
+#: ../functions/csvimport.php:477
+#: .././functions/csvimport.php:477
+msgid "Ensure that where standard WordPress values are being used that your column names match the wp_user or wp_usermeta tables."
+msgstr ""
+
+#: ../functions/csvimport.php:483
+#: .././functions/csvimport.php:483
+msgid "Specify your CSV column order here"
+msgstr ""
+
+#: ../functions/csvimport.php:483
+#: ../functions/settings.php:251
+#: ../functions/settings.php:309
+#: .././functions/csvimport.php:483
+msgid "no spaces, separate with commas"
+msgstr ""
+
+#: ../functions/csvimport.php:491
+#: .././functions/csvimport.php:491
+msgid "Your Column Order Preference is currently set to read the first line of your CSV data as the column order. This line has been included in your CSV data to modify if necessary."
+msgstr ""
+
+#: ../functions/dynamicsorter.php:1
+msgid "Use the Dynamic Sort function to define the column order of your CSV data."
+msgstr ""
+
+#: ../functions/dynamicsorter.php:1
+msgid "Refer to the Dynamic Sorter Help at the bottom of the screen for usage instructions."
+msgstr ""
+
+#: ../functions/dynamicsorter.php:6
+#: ../functions/helpfiles.php:119
+msgid "Your Column Order"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:13
+msgid "Add Standard Column Names"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:16
+msgid "Username/Login Name"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:17
+msgid "Password for the user"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:18
+msgid "Email Address for the user"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:19
+msgid "The users role on the site"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:20
+msgid "Website field in user profile"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:21
+msgid "Stripped back version of user login"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:22
+msgid "The date the user was registered"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:23
+msgid "The users Display Name on the site"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:24
+msgid "The users first name"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:25
+msgid "The users last name"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:26
+msgid "The users nickname"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:27
+msgid "Biographical Info field in user profile"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:28
+msgid "Enable/Disable the visual editor for the user"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:29
+msgid "Enable/Disable keyboard shortcuts"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:30
+msgid "Admin theme for the user"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:31
+msgid "Show/Hide the admin bar on the website"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:32
+msgid "AIM field in user profile"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:33
+msgid "Yahoo IM field in user profile"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:34
+msgid "Jabber field in user profile"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:35
+msgid "ignore this column"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:43
+#: ../functions/helpfiles.php:125
+msgid "Add Custom Column Names"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:45
+msgid "Add a custom column name"
+msgstr ""
+
+#: ../functions/dynamicsorter.php:47
+msgid "Add Custom Column"
+msgstr ""
+
+#: ../functions/helpfiles.php:20
+msgid "Information about the Email List function"
+msgstr ""
+
+#: ../functions/helpfiles.php:21
+msgid "This function takes a comma-delimited list of email addresses and converts them into new user information."
+msgstr ""
+
+#: ../functions/helpfiles.php:22
+msgid "When adding email addresses to the field above, each address must be separated by a comma (,) character. Even if you put the next address on the next line, there should be a comma between each email address."
+msgstr ""
+
+#: ../functions/helpfiles.php:23
+msgid "Note"
+msgstr ""
+
+#: ../functions/helpfiles.php:23
+msgid "All blank spaces are stripped from the email list (meaning spaces after commas are not necessary or detrimental, however email addresses that contain spaces will be compressed)."
+msgstr ""
+
+#: ../functions/helpfiles.php:25
+msgid "Create User Information Form option"
+msgstr ""
+
+#: ../functions/helpfiles.php:26
+msgid "This function takes your email address list and processes it to a Form interface where you may validate that all data is correct before adding the users. This function also allows you modify any data for each user before registering them. In addition, any standard or custom meta options you have specified in the Settings will be available to edit on this form."
+msgstr ""
+
+#: ../functions/helpfiles.php:28
+msgid "Skip Form and Add Users option"
+msgstr ""
+
+#: ../functions/helpfiles.php:29
+msgid "This function sends your email list directly to the register function. Users will be immediately registered with only user_login, user_pass and user_email data. All other data will be automatically created by WordPress. If you wish to add all these users with a specific role, set the \"Ignore individual User Role\" option in the Settings to the role you wish to assign them."
+msgstr ""
+
+#: ../functions/helpfiles.php:37
+msgid "Information on User Form Fields"
+msgstr ""
+
+#: ../functions/helpfiles.php:39
+msgid "All new users must be given a unique user_login. Rows without a user_login are automatically skipped during the multiple registration process. User Logins cannot be changed once set. User_logins are automatically sanitized to strip out unsafe characters, but are only strictly sanitized if enabled in the Settings."
+msgstr ""
+
+#: ../functions/helpfiles.php:41
+msgid "The users login password. May be set for each user, or left blank to generate a random password for that user. For more information on password strength and security, please visit"
+msgstr ""
+
+#: ../functions/helpfiles.php:43
+msgid "A unique, valid email address for each user is required (or use Force Fill option in the Settings if emails are not available). Emails will be checked for uniqueness and, if enabled in the Settings, their validity as email addresses."
+msgstr ""
+
+#: ../functions/helpfiles.php:45
+msgid "This list is automatically populated from the roles currently enabled on your site. Selection of role is ignored if Set All Roles in the Settings is set to override all role selections with a specific role."
+msgstr ""
+
+#: ../functions/helpfiles.php:46
+msgid "all other fields"
+msgstr ""
+
+#: ../functions/helpfiles.php:47
+msgid "By default you will also see first_name and last_name for each user. These fields are optional. If you require additional standard or custom user meta options, enable them in the Settings before filling in your form."
+msgstr ""
+
+#: ../functions/helpfiles.php:48
+msgid "A note on user data"
+msgstr ""
+
+#: ../functions/helpfiles.php:49
+msgid "Several meta data options require specific values (such as \"true\" or \"false\" or a date written in the correct format) to correctly update. Only use additional fields if you know what you are doing. For more information on table column names, please see"
+msgstr ""
+
+#: ../functions/helpfiles.php:57
+msgid "Information on Uploading CSV Information"
+msgstr ""
+
+#: ../functions/helpfiles.php:58
+msgid "Choose either a .csv or .txt file to upload, or paste your CSV data in the text field. CSV information will be available on the next page for you to review and sort if necessary."
+msgstr ""
+
+#: ../functions/helpfiles.php:60
+msgid "CSV Column Names"
+msgstr ""
+
+#: ../functions/helpfiles.php:62
+msgid "The Add Multiple Users plugin uses standard wp_user and wp_usermeta table column names for importing. In addition, the plugin recognizes the \"role\" column and an \"ignore\" column."
+msgstr ""
+
+#: ../functions/helpfiles.php:64
+msgid "Standard values are"
+msgstr ""
+
+#: ../functions/helpfiles.php:67
+msgid "Use this column name to define the column that contains the user's role on the site. If you are using a custom role, create this role before adding users. Using this column name will create the necessary capabilities and user level for that user when they are registered."
+msgstr ""
+
+#: ../functions/helpfiles.php:69
+msgid "You can use this column name (several times if necessary) to tell the plugin to skip over a certain column of information in your CSV data."
+msgstr ""
+
+#: ../functions/helpfiles.php:70
+msgid "Custom values"
+msgstr ""
+
+#: ../functions/helpfiles.php:71
+msgid "Any column name you provide that does not match any of the above values will be assigned as an additional user meta data row."
+msgstr ""
+
+#: ../functions/helpfiles.php:73
+msgid "An example of a column order"
+msgstr ""
+
+#: ../functions/helpfiles.php:75
+msgid "A single line of your CSV data may look like this"
+msgstr ""
+
+#: ../functions/helpfiles.php:78
+msgid "Which in a real-world context relates to this order of data"
+msgstr ""
+
+#: ../functions/helpfiles.php:79
+msgid "Username, Password, Email Address, User Role, First Name, Last Name, Client Number, Credit Card Number, Show Admin Bar, Admin Theme"
+msgstr ""
+
+#: ../functions/helpfiles.php:81
+msgid "In this scenario, your column order (we ignore the CC number just for the sake of this example) should be"
+msgstr ""
+
+#: ../functions/helpfiles.php:84
+msgid "In this example a few things happen. First, we use standard WordPress table names for most standard values (ie. user_login). Second, where the user role is defined, we use the column name \"role\". Third, we use a non-standard value \"client_number\", which will be added as an additional user_meta field. Lastly, we use \"ignore\" in place of the credit card number column, because we do not want to import that data."
+msgstr ""
+
+#: ../functions/helpfiles.php:86
+msgid "Where to define your column order"
+msgstr ""
+
+#: ../functions/helpfiles.php:88
+msgid "You can define your column order before or after importing your CSV data. There are four options in the Settings"
+msgstr ""
+
+#: ../functions/helpfiles.php:89
+#: ../functions/settings.php:240
+msgid "Dynamic Sorting on Import"
+msgstr ""
+
+#: ../functions/helpfiles.php:89
+msgid "This provides a dynamic click and drag interface for choosing standard names and custom names after your data has been imported."
+msgstr ""
+
+#: ../functions/helpfiles.php:90
+msgid "Predefined Order"
+msgstr ""
+
+#: ../functions/helpfiles.php:90
+msgid "You can predefine your column order using the \"Predefined Below\" option under the CSV Column Ordering subheading, and add your column order for use when importing data."
+msgstr ""
+
+#: ../functions/helpfiles.php:91
+msgid "First Line of CSV"
+msgstr ""
+
+#: ../functions/helpfiles.php:91
+msgid "If your CSV data file has the column order as the first line of the CSV, choose the \"Use First Line of CSV\" option in the settings. Please make sure the column names in your CSV data adhere to the rules above."
+msgstr ""
+
+#: ../functions/helpfiles.php:92
+#: ../functions/settings.php:242
+msgid "Manual Entry on Import"
+msgstr ""
+
+#: ../functions/helpfiles.php:92
+msgid "This is the most basic option, simply providing a text box for you to type your column order into."
+msgstr ""
+
+#: ../functions/helpfiles.php:101
+msgid "Information about Adding Existing Users"
+msgstr ""
+
+#: ../functions/helpfiles.php:102
+msgid "On this page you will see a list of users taken from your Network list who are NOT already a part of this site. Firstly, set the two options as desired above the user list. You may then check the users you wish to add to this site and click the Add All Users button."
+msgstr ""
+
+#: ../functions/helpfiles.php:103
+msgid "Options for Adding Existing Users"
+msgstr ""
+
+#: ../functions/helpfiles.php:104
+#: ../functions/networkoptions.php:343
+msgid "Ignore individual roles and set all selected users to this role"
+msgstr ""
+
+#: ../functions/helpfiles.php:105
+msgid "You can assign each existing user you add to this site an individual Role within this site. Make a selection here if you want to add all existing users you choose with the Role defined here instead."
+msgstr ""
+
+#: ../functions/helpfiles.php:106
+msgid "Send each user a confimation email"
+msgstr ""
+
+#: ../functions/helpfiles.php:107
+msgid "If you leave this unchecked, users you select will be automatically added to this site. Check this option if you do not want this to happen. Instead, each user you select will be sent an email asking them to confirm their adding to this site. When they have confirmed, they will show up in the Users list for this site."
+msgstr ""
+
+#: ../functions/helpfiles.php:116
+msgid "How to use the Dynamic Sorter"
+msgstr ""
+
+#: ../functions/helpfiles.php:117
+msgid "This function allows you to define how your CSV data is structured per line so that it can be read correctly by the plugin."
+msgstr ""
+
+#: ../functions/helpfiles.php:120
+msgid "This box shows the final order of your columns. Grab and drag column names around to reorder them if necessary. Drag and drop a column name outside of the box to remove it from the list."
+msgstr ""
+
+#: ../functions/helpfiles.php:122
+msgid "Add Standard Columm Names"
+msgstr ""
+
+#: ../functions/helpfiles.php:123
+msgid "Click a column name to add it to the list. The item will disappear from the list and reappear if you remove it from the Column Order."
+msgstr ""
+
+#: ../functions/helpfiles.php:126
+msgid "Type in a custom column name (lowercase, no spaces) and click the Add Custom Column button to add it to your Column Order. This should be used for non-standard user meta data you have in your CSV data."
+msgstr ""
+
+#: ../functions/helpfiles.php:128
+msgid "Ensure that you have read the information on Uploading CSV Information below before continuing."
+msgstr ""
+
+#: ../functions/helpfiles.php:136
+msgid "Information about AMU Settings"
+msgstr ""
+
+#: ../functions/helpfiles.php:139
+#: ../functions/settings.php:96
+msgid "Validation and Notifications"
+msgstr ""
+
+#: ../functions/helpfiles.php:141
+#: ../functions/settings.php:102
+msgid "Send each new user a registration notification email?"
+msgstr ""
+
+#: ../functions/helpfiles.php:142
+msgid "If selected, automatically sends an email to each new registered user with the information provided in the Customise New User Notification Email settings. Users who have been added with a \"forced\" email address will not be emailed."
+msgstr ""
+
+#: ../functions/helpfiles.php:143
+#: ../functions/settings.php:117
+msgid "Email me a complete list of new user account details?"
+msgstr ""
+
+#: ../functions/helpfiles.php:144
+msgid "Highly recommended. When you register multiple users using any of the plugin function, the results of your registrations will display on the screen. However, this information will not remain on the screen once you navigate away from the page. This option emails all new user information to your registered WordPress user account email."
+msgstr ""
+
+#: ../functions/helpfiles.php:145
+msgid "Validate entered user_email address format"
+msgstr ""
+
+#: ../functions/helpfiles.php:146
+msgid "This setting affects both the in-page form validation and the validity of email addresses during registration. Email addresses that are found to not be valid cause the user registration to fail. If you have trouble entering email addresses that you believe are valid, disable this option."
+msgstr ""
+
+#: ../functions/helpfiles.php:147
+msgid "Sanitize user_login using Strict method"
+msgstr ""
+
+#: ../functions/helpfiles.php:148
+msgid "Determines whether user_logins are sanitized with Strict method or not. Enabling this option disallows the use of many symbols that may be used in a user_login normally. Affects both the on-screen validation and sanitization of user_login during the registration process."
+msgstr ""
+
+#: ../functions/helpfiles.php:149
+msgid "Force Fill empty user_email addresses"
+msgstr ""
+
+#: ../functions/helpfiles.php:150
+msgid "Highly NOT recommended. This setting ignores empty user_email address fields that would normally cause that new user's registration to fail by creating a fake email address such as \"temp_userlogin@temp_userlogin.fake\". It is very much recommended that all new users have a valid email address, and this function should only be used in cases where you need to register new users that do not have active email accounts."
+msgstr ""
+
+#: ../functions/helpfiles.php:152
+#: ../functions/settings.php:187
+msgid "New User Defaults and Overrides"
+msgstr ""
+
+#: ../functions/helpfiles.php:154
+#: ../functions/settings.php:198
+msgid "Ignore individual User Role settings and set all new users to this role"
+msgstr ""
+
+#: ../functions/helpfiles.php:155
+msgid "Overrides any individual Role you select for each new and sets them to the role you choose here. This applies to all registration functions, overriding selections in the Manual Entry interface, CSV data importing, and can be used to set a default role for email list imports."
+msgstr ""
+
+#: ../functions/helpfiles.php:156
+msgid "Where not provided, set new user Display Name preferance as"
+msgstr ""
+
+#: ../functions/helpfiles.php:157
+msgid "If any user registered using the plugin does not have a display name specified (on either the Manual Entry form or in any imported data), the option here will be used to set it. If the data for your preference cannot be found, the plugin will fall back to user_login."
+msgstr ""
+
+#: ../functions/helpfiles.php:159
+#: ../functions/settings.php:230
+msgid "CSV Column Ordering"
+msgstr ""
+
+#: ../functions/helpfiles.php:161
+msgid "If you are importing users from a comma-separated values (CSV) file, you need to define in what order the data appears in the file so that the plugin knows which piece of data is used for what database field. Here you can predefine your column order or choose to define the order after uploading."
+msgstr ""
+
+#: ../functions/helpfiles.php:162
+#: ../functions/settings.php:238
+msgid "Choose which method of column ordering you would like to use"
+msgstr ""
+
+#: ../functions/helpfiles.php:163
+msgid "The Dynamic Sorting on Import function and the Manual Entry on Import function allow you to define your column order after you import your CSV file. The Predefined Below option allows you to specify your column order in the Predefined Column Order box. The Use First Line of CSV function takes the first line of your CSV file to use as the column order for the CSV data."
+msgstr ""
+
+#: ../functions/helpfiles.php:164
+msgid "Important note on Column names"
+msgstr ""
+
+#: ../functions/helpfiles.php:165
+msgid "Your column names must match exactly the names of user data and user meta data in the WordPress database, with the exception of \"role\", where you just need to add the name of the custom role you have created. Column names that do not match existing WordPress values are saved as Custom user meta fields for each user."
+msgstr ""
+
+#: ../functions/helpfiles.php:167
+#: ../functions/settings.php:274
+msgid "Manual Entry User Meta Data"
+msgstr ""
+
+#: ../functions/helpfiles.php:168
+#: ../functions/settings.php:280
+msgid "Make additional WordPress Standard meta data fields available on Form interface"
+msgstr ""
+
+#: ../functions/helpfiles.php:169
+msgid "By default, the blank form shows only required fields (user_login, user_pass and user_email), the role option drop-down, and the user meta fields first_name and last_name. Enable the options here to display additional meta fields on the Manual Entry Form interface."
+msgstr ""
+
+#: ../functions/helpfiles.php:170
+#: ../functions/settings.php:309
+msgid "Make additional custom meta fields available on Form interface"
+msgstr ""
+
+#: ../functions/helpfiles.php:171
+msgid "Add any additional user meta fields here that you wish to use on the Manual Entry Form interface. Add your custom meta options here, separated by commas. Your custom names should contain no spaces."
+msgstr ""
+
+#: ../functions/helpfiles.php:173
+msgid "Customise New User Notification Email"
+msgstr ""
+
+#: ../functions/helpfiles.php:174
+#: ../functions/settings.php:349
+msgid "From/Reply Address"
+msgstr ""
+
+#: ../functions/helpfiles.php:175
+msgid "By default, new users will see the From/Reply email address in their New User Notification email as the email address of the administrator that added them. You can change this email address by adding a different address here, such as a \"no reply\" email address. You may also use this email address in the email message using the [fromreply] shortcode."
+msgstr ""
+
+#: ../functions/helpfiles.php:176
+#: ../functions/settings.php:355
+msgid "Site Login URL"
+msgstr ""
+
+#: ../functions/helpfiles.php:177
+msgid "If you want to direct new users to a specific web address to log in, add the full URL here (including the http://). You may then add this to your email message using the [siteloginurl] shortcode. By default this setting is your main site URL."
+msgstr ""
+
+#: ../functions/helpfiles.php:178
+#: ../functions/settings.php:361
+msgid "Email Subject"
+msgstr ""
+
+#: ../functions/helpfiles.php:179
+msgid "This is your email subject line and can include any of the shortcodes to add additional information to the subject line."
+msgstr ""
+
+#: ../functions/helpfiles.php:180
+msgid "Email Message"
+msgstr ""
+
+#: ../functions/helpfiles.php:181
+msgid "This is your main email content and must be written in HTML format using valid HTML tags (such as p and h1). Any HTML tag that can be understood by an email program can be used here. If you're not familiar with HTML markup, its probably best to stick to the default message, or you can play with it and use the Send Test Email button to send yourself an example notification email so you can check its formatting and content."
+msgstr ""
+
+#: ../functions/helpfiles.php:182
+msgid "Shortcodes"
+msgstr ""
+
+#: ../functions/helpfiles.php:183
+msgid "The shortcodes [sitename] [siteurl] [siteloginurl] [username] [password] [useremail] [fromreply] can be used in the Email Subject and Email Message fields to add specific data to your user notification email. For example, if you want to add that specific user's password to the email, using the [password] shortcode will add the users newly created password in there. Use these shortcodes to structure your email body text as you require."
+msgstr ""
+
+#: ../functions/helpfiles.php:184
+#: ../functions/settings.php:374
+msgid "Send Test Email"
+msgstr ""
+
+#: ../functions/helpfiles.php:185
+msgid "This sends an example New User Notification Email to your email address using the information you currently have in the settings fields. Note that this does not save your Settings - you must still click the Save Settings button to save your changes. This allows you to view the data and layout of the email that newly registered users will get when they are added to the site."
+msgstr ""
+
+#: ../functions/helpfiles.php:194
+msgid "Information about Network Options"
+msgstr ""
+
+#: ../functions/helpfiles.php:197
+msgid "Allow site administrators access to AMU plugin?"
+msgstr ""
+
+#: ../functions/helpfiles.php:197
+msgid "By default, Administrators of network sites have full access to the Add Multiple Users plugin. Disable this option to remove all access to the plugin on networked sites. Super Administrators may still access the plugin on each site."
+msgstr ""
+
+#: ../functions/helpfiles.php:199
+msgid "Allow site administrators to add users from the Network users list?"
+msgstr ""
+
+#: ../functions/helpfiles.php:199
+msgid "Administrators of network sites have access to the Add Existing function, which allows them to subscribe any user from the Network users list to their site. Disable this option if you wish to prevent site Admins from using this function."
+msgstr ""
+
+#: ../functions/helpfiles.php:201
+msgid "Email addresses to recieve copies of bulk registration details"
+msgstr ""
+
+#: ../functions/helpfiles.php:201
+msgid "Leave blank to ignore this option. If you add email addresses in this field, these recipients will receive copies of bulk registration details when users are registered on any site within your network."
+msgstr ""
+
+#: ../functions/manualentry.php:44
+msgid "Add Multiple Users - Manual Entry Form"
+msgstr ""
+
+#: ../functions/manualentry.php:64
+msgid "Unknown request. Please choose the Manual Entry option from the menu."
+msgstr ""
+
+#: ../functions/manualentry.php:81
+msgid "Please enter the number of users you wish to add and press the Create Blank Form button."
+msgstr ""
+
+#: ../functions/manualentry.php:82
+msgid "If you need additional user meta fields in this form, please modify your Settings to include additional standard and custom options."
+msgstr ""
+
+#: ../functions/manualentry.php:83
+msgid "You don't have to be too specific here. You can add more as you go."
+msgstr ""
+
+#: ../functions/manualentry.php:90
+msgid "Number of new users"
+msgstr ""
+
+#: ../functions/manualentry.php:102
+msgid "Create Blank Form"
+msgstr ""
+
+#: ../functions/manualentry.php:180
+msgid "Error: either the number you entered was zero, empty, or a non-numeric character was entered. Please try again."
+msgstr ""
+
+#: ../functions/networkoptions.php:37
+msgid "Network settings have been updated."
+msgstr ""
+
+#: ../functions/networkoptions.php:44
+msgid "Network settings have been reset."
+msgstr ""
+
+#: ../functions/networkoptions.php:49
+msgid "Add Multiple Users (Network)"
+msgstr ""
+
+#: ../functions/networkoptions.php:51
+msgid "These options allow you to control global access, functions and options on subsites of your current network."
+msgstr ""
+
+#: ../functions/networkoptions.php:54
+msgid "Network Settings"
+msgstr ""
+
+#: ../functions/networkoptions.php:55
+msgid "Please refer to the Information at the bottom of this page for more information about these settings."
+msgstr ""
+
+#: ../functions/networkoptions.php:56
+msgid "Subsite Plugin Access"
+msgstr ""
+
+#: ../functions/networkoptions.php:65
+msgid "Allow site Administrators access to AMU plugin?"
+msgstr ""
+
+#: ../functions/networkoptions.php:79
+msgid "Allow site Administrators to add users from the Network users list?"
+msgstr ""
+
+#: ../functions/networkoptions.php:93
+msgid "Notifications"
+msgstr ""
+
+#: ../functions/networkoptions.php:99
+msgid "Email addresses to receive copies of bulk registration details"
+msgstr ""
+
+#: ../functions/networkoptions.php:99
+msgid "no spaces, separated by commas"
+msgstr ""
+
+#: ../functions/networkoptions.php:111
+msgid "Save Network Options"
+msgstr ""
+
+#: ../functions/networkoptions.php:112
+msgid "Reset Default Network Options"
+msgstr ""
+
+#: ../functions/networkoptions.php:193
+msgid "Access to this function has been disabled by the Network Administrator."
+msgstr ""
+
+#: ../functions/networkoptions.php:206
+msgid "Add Multiple Users - Add from Network"
+msgstr ""
+
+#: ../functions/networkoptions.php:226
+msgid "Unknown request. Please select the Add from Network option to try again."
+msgstr ""
+
+#: ../functions/networkoptions.php:262
+#, php-format
+msgid ""
+"Hi,\n"
+"\t\n"
+"You've been invited to join '%1$s' at\n"
+"%2$s with the role of %3$s.\n"
+"\n"
+"Please click the following link to confirm the invite:\n"
+"%4$s"
+msgstr ""
+
+#: ../functions/networkoptions.php:269
+#, php-format
+msgid "[%s] Joining confirmation"
+msgstr ""
+
+#: ../functions/networkoptions.php:271
+#: ../functions/networkoptions.php:301
+msgid "User"
+msgstr ""
+
+#: ../functions/networkoptions.php:271
+msgid "has been sent a confirmation email."
+msgstr ""
+
+#: ../functions/networkoptions.php:301
+msgid "has been added to the site."
+msgstr ""
+
+#: ../functions/networkoptions.php:325
+msgid "Add Network Users Options"
+msgstr ""
+
+#: ../functions/networkoptions.php:330
+msgid "You have no available users to add."
+msgstr ""
+
+#: ../functions/networkoptions.php:345
+#: ../functions/settings.php:200
+msgid "no, set individually..."
+msgstr ""
+
+#: ../functions/networkoptions.php:356
+msgid "Send each user a confirmation email?"
+msgstr ""
+
+#: ../functions/networkoptions.php:356
+msgid "if selected, sends user standard WordPress confirmation email"
+msgstr ""
+
+#: ../functions/networkoptions.php:363
+msgid "Select network users to add to this site"
+msgstr ""
+
+#: ../functions/networkoptions.php:373
+msgid "Select All"
+msgstr ""
+
+#: ../functions/networkoptions.php:390
+#: ../functions/networkoptions.php:413
+msgid "User ID"
+msgstr ""
+
+#: ../functions/networkoptions.php:390
+#: ../functions/networkoptions.php:413
+#: ../functions/settings.php:218
+msgid "User Login"
+msgstr ""
+
+#: ../functions/networkoptions.php:390
+#: ../functions/networkoptions.php:413
+msgid "User Email"
+msgstr ""
+
+#: ../functions/networkoptions.php:430
+msgid "All users on your Network are already assigned a role on this site."
+msgstr ""
+
+#: ../functions/networkoptions.php:455
+msgid "Select the users you wish to add to this site from your Network Users list and click the Add All Users button."
+msgstr ""
+
+#: ../functions/networkoptions.php:455
+msgid "Only users from your Network that are not already added to this site will appear in the list below."
+msgstr ""
+
+#: ../functions/plugininfo.php:44
+msgid "Add Multiple Users"
+msgstr ""
+
+#: ../functions/plugininfo.php:46
+msgid "Add Multiple Users allows Administrators to bulk add user registrations to their WordPress site using a variety of tools."
+msgstr ""
+
+#: ../functions/plugininfo.php:47
+msgid "It is recommended that you modify your Settings before using one of the New User tools."
+msgstr ""
+
+#: ../functions/plugininfo.php:49
+msgid "Functions provided by the Add Multiple Users plugin"
+msgstr ""
+
+#: ../functions/plugininfo.php:52
+msgid "Create a blank form of any size to manually input your new user information."
+msgstr ""
+
+#: ../functions/plugininfo.php:55
+msgid "Import your CSV information and translate it into new user registrations."
+msgstr ""
+
+#: ../functions/plugininfo.php:57
+msgid "Import Email list"
+msgstr ""
+
+#: ../functions/plugininfo.php:58
+msgid "Convert a list of email addresses into new user registrations."
+msgstr ""
+
+#: ../functions/plugininfo.php:63
+msgid "Add existing users from a Multisite Network to this site."
+msgstr ""
+
+#: ../functions/plugininfo.php:65
+msgid "Network Options"
+msgstr ""
+
+#: ../functions/plugininfo.php:66
+msgid "Modify network-wide options under the Users menu in your network dashboard."
+msgstr ""
+
+#: ../functions/plugininfo.php:70
+msgid "Please read the plugin information provided on each page regarding the use of each function."
+msgstr ""
+
+#: ../functions/plugininfo.php:74
+msgid "Further Information"
+msgstr ""
+
+#: ../functions/plugininfo.php:76
+msgid "New Column and Field Naming Standard"
+msgstr ""
+
+#: ../functions/plugininfo.php:78
+msgid "Add Multiple Users now makes use of WordPress standard column names as field names in both the Form and Import interfaces. These column names match the \"wp-user\" and \"wp_usermeta\" tables in your site database. The only exceptions to this rule are the \"role\" column, which automatically creates User Levels and Capabilities based on the role you choose for each user, and \"ignore\", which tells the plugin to skip a column of data."
+msgstr ""
+
+#: ../functions/plugininfo.php:80
+msgid "Setting Roles and Capabilities of New Users"
+msgstr ""
+
+#: ../functions/plugininfo.php:82
+msgid "Add Multiple Users now allows you to add users with roles you have defined yourself in your site. This plugin does not, however, create roles for you. Please create your custom roles using another plugin such as User Role Editor before attempting to add users with a custom role."
+msgstr ""
+
+#: ../functions/plugininfo.php:85
+msgid "Settings and Form Interface"
+msgstr ""
+
+#: ../functions/plugininfo.php:85
+msgid "roles can be selected from a drop-down list that contains all the roles currently active in your site."
+msgstr ""
+
+#: ../functions/plugininfo.php:86
+msgid "CSV Importing"
+msgstr ""
+
+#: ../functions/plugininfo.php:86
+msgid "make sure you define which column defines the role for each user. This column should be called \"role\"."
+msgstr ""
+
+#: ../functions/plugininfo.php:89
+msgid "Plugin Help"
+msgstr ""
+
+#: ../functions/plugininfo.php:91
+msgid "While the functionality of this plugin is designed to be as intuitive as possible, there are some rules that must be followed when using various functions. More information about each function is provided at the bottom of each page."
+msgstr ""
+
+#: ../functions/plugininfo.php:93
+msgid "WordPress and Browser Memory Issues when adding a large number of users"
+msgstr ""
+
+#: ../functions/plugininfo.php:95
+msgid "Adding an exceptionally high number of users at any time is possible, however in the case of adding hundreds or even thousands of users at a time, depending on your server capacity, you may have to modify your wp-config file to turn off the time limit that can cause the adding function to time out before it is complete. Further information can be found on the plugin page at"
+msgstr ""
+
+#: ../functions/settings.php:59
+msgid "Settings have been saved."
+msgstr ""
+
+#: ../functions/settings.php:67
+msgid "Settings have been reset to default."
+msgstr ""
+
+#: ../functions/settings.php:90
+msgid "Add Multiple Users - Plugin Settings"
+msgstr ""
+
+#: ../functions/settings.php:91
+msgid "Update settings that affect various plugin functions. Please check the information section at the bottom of this page for more about each setting."
+msgstr ""
+
+#: ../functions/settings.php:132
+msgid "Validate entered user_email address format?"
+msgstr ""
+
+#: ../functions/settings.php:132
+msgid "uses WordPress \"is_email\" validation method"
+msgstr ""
+
+#: ../functions/settings.php:147
+msgid "Sanitize user_login using Strict method?"
+msgstr ""
+
+#: ../functions/settings.php:147
+msgid "allows only alphanumeric and _, space, ., -, *, and @ characters"
+msgstr ""
+
+#: ../functions/settings.php:173
+msgid "Force Fill empty user_email addresses?"
+msgstr ""
+
+#: ../functions/settings.php:173
+msgid "not recommended - see bottom of page for details"
+msgstr ""
+
+#: ../functions/settings.php:216
+msgid "Where not provided, set new user Display Name preference as"
+msgstr ""
+
+#: ../functions/settings.php:219
+msgid "First Name"
+msgstr ""
+
+#: ../functions/settings.php:220
+msgid "Last Name"
+msgstr ""
+
+#: ../functions/settings.php:221
+msgid "First then Last Name"
+msgstr ""
+
+#: ../functions/settings.php:222
+msgid "Last then First Name"
+msgstr ""
+
+#: ../functions/settings.php:223
+#: ../functions/settings.php:291
+msgid "Nickname"
+msgstr ""
+
+#: ../functions/settings.php:241
+msgid "Predefined Below"
+msgstr ""
+
+#: ../functions/settings.php:243
+msgid "Use First Line of CSV"
+msgstr ""
+
+#: ../functions/settings.php:251
+msgid "Predefined column order to use when importing CSV data"
+msgstr ""
+
+#: ../functions/settings.php:289
+msgid "User Url"
+msgstr ""
+
+#: ../functions/settings.php:290
+msgid "Nicename"
+msgstr ""
+
+#: ../functions/settings.php:292
+msgid "Display Name"
+msgstr ""
+
+#: ../functions/settings.php:293
+msgid "User Registered"
+msgstr ""
+
+#: ../functions/settings.php:294
+msgid "Description"
+msgstr ""
+
+#: ../functions/settings.php:295
+msgid "Admin Bar Front"
+msgstr ""
+
+#: ../functions/settings.php:296
+msgid "Rich Editing"
+msgstr ""
+
+#: ../functions/settings.php:297
+msgid "Comment Shortcuts"
+msgstr ""
+
+#: ../functions/settings.php:298
+msgid "Admin Color"
+msgstr ""
+
+#: ../functions/settings.php:299
+msgid "AIM"
+msgstr ""
+
+#: ../functions/settings.php:300
+msgid "Yahoo IM"
+msgstr ""
+
+#: ../functions/settings.php:301
+msgid "Jabber"
+msgstr ""
+
+#: ../functions/settings.php:326
+msgid "Standard and Custom meta options you define here will be available on the Form using the Manual Entry function or when creating a user information form from the Import Email List function."
+msgstr ""
+
+#: ../functions/settings.php:330
+msgid "Customize New User Notification Email"
+msgstr ""
+
+#: ../functions/settings.php:342
+msgid "Use the following settings to modify the notification email that new users receive when added via the plugin."
+msgstr ""
+
+#: ../functions/settings.php:343
+msgid "Please refer to the Information about Settings options at the bottom of this page for more information about these settings."
+msgstr ""
+
+#: ../functions/settings.php:344
+msgid "Valid shortcodes are"
+msgstr ""
+
+#: ../functions/settings.php:367
+msgid "Email Message (HTML format)"
+msgstr ""
+
+#: ../functions/settings.php:375
+msgid "Test emails will be sent to your administrator email."
+msgstr ""
+
+#: ../functions/settings.php:380
+msgid "Save Settings"
+msgstr ""
+
+#: ../functions/settings.php:381
+msgid "Reset to Default Settings"
+msgstr ""
+
