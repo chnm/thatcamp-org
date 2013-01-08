@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/broken-link-checker\n"
 "POT-Creation-Date: 2012-03-27 09:01:12+00:00\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Luc Capronnier <lcapronnier@yahoo.com>\n"
+"Last-Translator: toto <toto@toto.com>\n"
 "Language-Team: Whiler, Luc Capronnier <webmaster@blogs.wittwer.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,12 +37,12 @@ msgstr "R&eacute;glages du v&eacute;rificateur de liens"
 
 #: core/core.php:286
 msgid "Link Checker"
-msgstr "Link Checker"
+msgstr "V&eacute;rificateur de lien"
 
 #: core/core.php:291
 #: includes/link-query.php:26
 msgid "Broken Links"
-msgstr "Broken Links"
+msgstr "Liens cass&eacute;s"
 
 #: core/core.php:307
 msgid "View Broken Links"
@@ -77,7 +77,7 @@ msgstr "Essayer de d&eacute;sactiver puis de r&eacute;activer le plugin."
 
 #: core/core.php:521
 msgid "Settings saved."
-msgstr "R&eacute;glages enregistrer"
+msgstr "R&eacute;glages enregistr&eacute;s"
 
 #: core/core.php:527
 msgid "Thank you for your donation!"
@@ -147,7 +147,7 @@ msgstr "M'envoyer un courriel de notification avec les nouveaux liens cass&eacut
 
 #: core/core.php:683
 msgid "Send authors e-mail notifications about broken links in their posts"
-msgstr "Envoyer un courriel de notification aux autheurs des articles qui ont des liens cass&eacute;s"
+msgstr "Envoyer un courriel de notification aux auteurs des articles qui ont des liens cass&eacute;s"
 
 #: core/core.php:690
 msgid "Link tweaks"
@@ -197,7 +197,7 @@ msgstr "Type du lien"
 
 #: core/core.php:826
 msgid "Error : All link parsers missing!"
-msgstr "Erreur: Tous les analyseurs de liens sont abscents!"
+msgstr "Erreur: Tous les analyseurs de liens sont absents!"
 
 #: core/core.php:833
 msgid "Exclusion list"
@@ -224,7 +224,7 @@ msgstr "%s secondes"
 
 #: core/core.php:886
 msgid "Links that take longer than this to load will be marked as broken."
-msgstr "Les Liens qui prennent plus de temps que cela à se charger seront marqu&eacute;s comme cass&eacute;s."
+msgstr "Les liens qui prennent plus de temps que cela à se charger seront marqu&eacute;s comme cass&eacute;s."
 
 #: core/core.php:893
 msgid "Link monitor"
@@ -244,7 +244,7 @@ msgstr "Temps d'ex&eacute;cution maximal&nbsp;:"
 
 #: core/core.php:934
 msgid "The plugin works by periodically launching a background job that parses your posts for links, checks the discovered URLs, and performs other time-consuming tasks. Here you can set for how long, at most, the link monitor may run each time before stopping."
-msgstr "Cet extension fonctionne en cr&eacute;ant un processus en fond de t&acirc;che p&eacute;riodiquement qui parcourt les articles en cherchant les liens, v&eacute;rifie les URL d&eacute;couvertes, et effectue d'autres t&acirc;ches consommatrices de temps. Vous pouvez sp&eacute;cifier ici le temps maximal o&ugrave; le processus peut s'ex&eacute;cuter avant de s'arr&ecirc;ter."
+msgstr "Cette extension fonctionne en cr&eacute;ant un processus en fond de t&acirc;che p&eacute;riodiquement qui parcourt les articles en cherchant les liens, v&eacute;rifie les URL d&eacute;couvertes, et effectue d'autres t&acirc;ches consommatrices de temps. Vous pouvez sp&eacute;cifier ici le temps maximal o&ugrave; le processus peut s'ex&eacute;cuter avant de s'arr&ecirc;ter."
 
 #: core/core.php:943
 msgid "Server load limit"
@@ -314,7 +314,7 @@ msgstr "ID du flitre non sp&eacute;cifi&eacute;."
 
 #: core/core.php:1380
 msgid "Filter deleted"
-msgstr "Filtre supprimer"
+msgstr "Filtre supprim&eacute;"
 
 #: core/core.php:1427
 msgid "Replaced %d redirect with a direct link"
@@ -330,7 +330,7 @@ msgstr[1] "Impossible de r&eacute;parer les redirections %d"
 
 #: core/core.php:1449
 msgid "None of the selected links are redirects!"
-msgstr "Aucun des liens s&eacute;lectionner ne sont des redirections!"
+msgstr "Aucun des liens s&eacute;lectionn&eacute; ne sont des redirections!"
 
 #: core/core.php:1527
 msgid "%d link updated."
@@ -644,7 +644,7 @@ msgstr "Attendez..."
 #: includes/admin/links-page-js.php:99
 #: includes/admin/table-printer.php:616
 msgid "Not broken"
-msgstr "Pas casser"
+msgstr "Pas cass&eacute;"
 
 #: includes/admin/links-page-js.php:213
 msgid "%d instances of the link were successfully modified."
@@ -778,7 +778,7 @@ msgstr "Annuler"
 
 #: includes/admin/sidebar.php:40
 msgid "Donate $10, $20 or $50!"
-msgstr "Doner $10, $20 ou $50!"
+msgstr "Donner $10, $20 ou $50!"
 
 #: includes/admin/sidebar.php:43
 msgid "If you like this plugin, please donate to support development and maintenance!"
@@ -851,7 +851,7 @@ msgstr "Modifier les URL en masse"
 
 #: includes/admin/table-printer.php:320
 msgid "Find"
-msgstr "Trouv&eacute;"
+msgstr "Trouver"
 
 #: includes/admin/table-printer.php:324
 msgid "Replace with"
@@ -899,7 +899,7 @@ msgstr "Nombre de redirections"
 
 #: includes/admin/table-printer.php:504
 msgid "Instance count"
-msgstr "Nombre d'instance"
+msgstr "Nombre d'instances"
 
 #: includes/admin/table-printer.php:513
 msgid "This link has failed %d time."
@@ -922,7 +922,7 @@ msgstr "Afficher plus d'informations concernant ce lien"
 #: includes/admin/table-printer.php:571
 msgctxt "checked how long ago"
 msgid "Checked"
-msgstr "V&eacute;rifier"
+msgstr "V&eacute;rifi&eacute;"
 
 #: includes/admin/table-printer.php:587
 msgid "Broken for"
@@ -1533,7 +1533,7 @@ msgstr "Embedded GoogleVideo vid&eacute;o"
 
 #: modules/extras/megaupload.php:130
 msgid "File Temporarily Unavailable"
-msgstr "Fichier temporairement non accessible"
+msgstr "Fichier temporairement inaccessible"
 
 #: modules/extras/megaupload.php:136
 msgid "API Error"

@@ -403,5 +403,3 @@ class blcSnoopyHttp extends blcHttpCheckerBase {
 	}
 	
 }
-
-?>
