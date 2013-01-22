@@ -58,20 +58,6 @@ function thatcamp_menu_page() {
 
 			<tr>
 				<th scope="row">
-					<label for="thatcamp_has_workshops">Will your THATCamp have workshops?</label>
-				</th>
-
-				<td>
-					<select id="thatcamp_has_workshops" name="thatcamp_has_workshops" type="text">
-						<option value="yes" <?php selected( $has_workshops, 'yes' ) ?>>Yes</option>
-						<option value="maybe" <?php selected( $has_workshops, 'maybe' ) ?>>Maybe</option>
-						<option value="no" <?php selected( $has_workshops, 'no' ) ?>>No</option>
-					</select>
-				</td>
-			</tr>
-
-			<tr>
-				<th scope="row">
 					<label for="thatcamp_organizers">Organizers</label>
 				</th>
 
