@@ -277,15 +277,15 @@ function thatcamp_camp_date( $group_id = 0, $format = '' ) {
 
 		switch ( $format ) {
 			case 'text' :
-				$date = date( "F j, Y", $date );
+				$date = gmdate( "F j, Y", $date );
 				break;
 
 			case 'mmddyy' :
-				$date = date( "m/d/Y", $date );
+				$date = gmdate( "m/d/Y", $date );
 				break;
 
 			case 'unix' :
-				$date = date( "U", intval( $date ) );
+				$date = gmdate( "U", intval( $date ) );
 				break;
 		}
 
