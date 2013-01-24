@@ -16,7 +16,7 @@ Template Name: Campers No Sidebar
 						<div class="post">
 <h1 class="campers_title maintitle"><a class="free" href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 					<p>THATCampers: to add your picture to this page, sign up for <a href="http://en.gravatar.com/site/signup/">Gravatar.com</a> and upload an image there.</p>
-<?php $siteUsers = get_users('orderby=display_name&exclude=246'); 
+<?php $siteUsers = get_users('orderby=display_name&role=author&exclude=246'); 
 					foreach ($siteUsers as $usr) { ?>			
 				<div class="camper_info">	 			
 					<div class="camper_avatar"><a href="<?php echo get_author_posts_url($usr->ID); ?>"><?php echo get_avatar($usr->ID, 100); ?></a></div>

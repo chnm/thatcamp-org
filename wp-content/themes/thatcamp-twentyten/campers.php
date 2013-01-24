@@ -13,7 +13,7 @@ Template Name: Campers
 					<br />
 					<p>THATCampers: to add your picture to this page, log in and upload a picture to your profile or sign up for <a href="http://en.gravatar.com/site/signup/">Gravatar.com</a> and upload an image there.</p>
 
-<?php $siteUsers = get_users('orderby=display_name&exclude=246');
+<?php $siteUsers = get_users('orderby=display_name&exclude=246&role=author');
 					
 					foreach ($siteUsers as $usr) { ?>			
 							<div class="camper_info">	 			

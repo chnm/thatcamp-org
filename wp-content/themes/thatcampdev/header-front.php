@@ -108,7 +108,7 @@
                    */
 
                   $i = 1;
-                  $directory = '/wp-content/themes/thatcampdev/assets/';
+                  $directory = '/wp-content/themes/thatcamp-karma/assets/';
 
                   while ( $i <= 30 ) {
 
