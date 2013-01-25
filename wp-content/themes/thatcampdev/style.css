@@ -3642,3 +3642,17 @@ ie9 #user-section {
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   /* Styles */
 }
+
+/* Transposh plugin CSS (by Amanda French) */
+
+aside#transposh-2 dl dt a {
+width: 90%;
+}
+
+aside#transposh-2 li {
+list-style: none; 
+}
+
+aside#transposh-2 input {
+display: inline;
+}
