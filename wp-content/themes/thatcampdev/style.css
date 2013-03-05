@@ -1033,7 +1033,7 @@ a:hover.header-button {
   border-radius: 5px;
   padding: 5px;
   display: inline-block;
-  margin: 0 -40px -40px 0;
+  margin: 0 20px -40px 0;  // changed to fix friendship accept / reject button AF
 }
 .item-visit .button {
   margin: 0;
@@ -3094,6 +3094,7 @@ div.item-list-tabs ul li.feed a {
 #item-header-avatar {
   margin: 20px;
 }
+
 /* profile buttons */
 #object-nav li a {
   border-bottom: 1px dashed #E0D5B6;
@@ -3167,6 +3168,9 @@ li#messages-personal-li:hover {
   padding: 0;
   margin: 0;
 }
+
+
+
 /*--------------------------------------------------------------
 6.9 - Private Messaging Threads
 --------------------------------------------------------------*/
