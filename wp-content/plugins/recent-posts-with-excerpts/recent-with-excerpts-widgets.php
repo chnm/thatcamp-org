@@ -1,30 +1,11 @@
 <?php
 /*
 Plugin Name: Recent Posts with Excerpts
-Plugin URI: http://sillybean.net/code/wordpress/recent-posts-with-excerpts/
+Plugin URI: http://stephanieleary.com/code/wordpress/recent-posts-with-excerpts/
 Description: A widget that lists your most recent posts with excerpts. The number of posts and excerpts is configurable; for example, you could show five posts but include the excerpt for only the most recent. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a> and <a href="http://sparepencil.com/code/advanced-excerpt/">Advanced Excerpt</a>.
-Version: 2.2
+Version: 2.3.1
 Author: Stephanie Leary
-Author URI: http://sillybean.net/
-
-== Changelog ==
-
-= 2.2 =
-* Fixed HTML validation error. (Thanks, Cris!) (August 5, 20)
-= 2.1 =
-* Added tag limit option
-* All widget input fields are now localized (September 11, 2009)
-= 2.0 =
-* Added widget title option
-* had to jump version numbers (did the earlier ones wrong, apparently) (August 3, 2009)
-= 1.12 =
-* bugfix -- needed to reset the Loop after the widget runs (August 2, 2009)
-= 1.11 =
-* bugfix -- 'more' text did not change according to settings (July 26, 2009)
-= 1.1 =
-* Added category option (July 26, 2009)
-= 1.0 =
-* First release (July 24, 2009)
+Author URI: http://stephanieleary.com
 
 Copyright 2009  Stephanie Leary  (email : steph@sillybean.net)
 
@@ -54,10 +35,10 @@ class RecentPostsWithExcerpts extends WP_Widget {
 	function widget( $args, $instance ) {
 			extract( $args );
 			
-			$title = apply_filters('widget_title', empty( $instance['title'] ) ? __( 'Recent Posts' ) : $instance['title']);
+			$title = apply_filters('widget_title', $instance['title']);
 			
 			echo $before_widget;
-			if ( $title) {
+			if ( !empty($title) ) {
 				if (!empty($instance['postlink']))  {
 					if (get_option('show_on_front') == 'page')
 						$link = get_permalink(get_option('page_for_posts'));
@@ -67,31 +48,38 @@ class RecentPostsWithExcerpts extends WP_Widget {
 				}
 				echo $before_title.$title.$after_title;
 			}
-			?>
-			<ul>
-			<?php 
+			
+			$ul_classes = apply_filters('recent_posts_with_excerpts_list_classes', '');
+			$li_classes = apply_filters('recent_posts_with_excerpts_item_classes', '');
+			
+			echo '<ul class="'.$ul_classes.'">';
+			
 			// retrieve last n blog posts
-			$q = 'showposts='.$instance['numposts'];
+			$q = array('posts_per_page' => $instance['numposts']);
 			if (!empty($instance['cat'])) $q .= '&cat='.$instance['cat'];
 			if (!empty($instance['tag'])) $q .= '&tag='.$instance['tag'];
-			query_posts($q);
+			$rpwe = new wp_query($q);
 			$excerpts = $instance['numexcerpts'];
+			$date = apply_filters('recent_posts_with_excerpts_date_format', $instance['date']);
 				  
 			// the Loop
-			while (have_posts()) : the_post(); ?>
-                <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+			if ($rpwe->have_posts()) :
+			while ($rpwe->have_posts()) : $rpwe->the_post(); 
+				echo '<li class="'.$li_classes.'">'; ?>
+                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+				<?php if (!empty($date)) { ?> <h3 class="date"><?php echo the_time($date); ?></h3> <?php } ?>
                 <?php
                 if ($excerpts > 0) { // show the excerpt ?>
-                    <?php 
+                    <blockquote> <?php 
                     // the excerpt of the post
                     if (function_exists('the_excerpt_reloaded')) 
                         the_excerpt_reloaded($instance['words'], $instance['tags'], 'content', FALSE, '', '', '1', '');
                     else the_excerpt();  // this covers Advanced Excerpt as well as the built-in one
                     if (!empty($instance['more_text'])) { ?><p class="alignright"><small><a href="<?php the_permalink(); ?>"><?php echo $instance['more_text']; } ?></a></small></p>
-                    <?php
+                    </blockquote> <?php
                     $excerpts--;
 		        }?></li>
-			<?php endwhile; ?>
+			<?php endwhile; endif; ?>
 			</ul>
 			<?php
 			echo $after_widget;
@@ -105,6 +93,7 @@ class RecentPostsWithExcerpts extends WP_Widget {
 			$instance['numposts'] = $new_instance['numposts'];
 			$instance['numexcerpts'] = $new_instance['numexcerpts'];
 			$instance['more_text'] = strip_tags($new_instance['more_text']);
+			$instance['date'] = strip_tags($new_instance['date']);
 			$instance['words'] = strip_tags($new_instance['words']);
 			$instance['tags'] = $new_instance['tags'];
 			$instance['cat'] = $new_instance['cat'];
@@ -122,6 +111,7 @@ class RecentPostsWithExcerpts extends WP_Widget {
 						'title' => 'Recent Posts',
 						'numposts' => 5,
 						'numexcerpts' => 5,
+						'date' => get_option('date_format'),
 						'more_text' => 'more...',
 						'words' => '55',
 						'tags' => '<p><div><span><br><img><a><ul><ol><li><blockquote><cite><em><i><strong><b><h2><h3><h4><h5><h6>',
@@ -149,6 +139,12 @@ class RecentPostsWithExcerpts extends WP_Widget {
         <label for="<?php echo $this->get_field_id('more_text'); ?>"><?php _e('\'More\' link text:'); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id('more_text'); ?>" name="<?php echo $this->get_field_name('more_text'); ?>" type="text" value="<?php echo $instance['more_text']; ?>" />
         <br /><small><?php _e('Leave blank to omit \'more\' link'); ?></small>
+        </p>
+
+        <p>
+        <label for="<?php echo $this->get_field_id('date'); ?>"><?php _e('Date format:'); ?></label>
+        <input class="widefat" id="<?php echo $this->get_field_id('date'); ?>" name="<?php echo $this->get_field_name('date'); ?>" type="text" value="<?php echo $instance['date']; ?>" />
+        <br /><small><?php _e('Leave blank to omit the date'); ?></small>
         </p>
         <p><label for="<?php echo $this->get_field_id('cat'); ?>"><?php _e('Limit to category: '); ?>
         <?php wp_dropdown_categories(array('name' => $this->get_field_name('cat'), 'show_option_all' => __('None (all categories)'), 'hide_empty'=>0, 'hierarchical'=>1, 'selected'=>$instance['cat'])); ?></label></p>

@@ -13,6 +13,9 @@ get_header();
         printf(__('Tag Archive: <span>%s</span>', 'graphene'), single_tag_title('', false));
     ?>
 </h1>
+
+<?php graphene_tax_description(); ?>
+
 <?php
     /* Run the loop for the tag archive to output the posts
      * If you want to overload this in a child theme then include a file

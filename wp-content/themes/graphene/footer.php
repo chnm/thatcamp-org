@@ -26,6 +26,7 @@ global $graphene_settings;
     
     ?>
     
+    <?php do_action( 'graphene_after_content' ); ?>
 
 </div><!-- #content -->
 

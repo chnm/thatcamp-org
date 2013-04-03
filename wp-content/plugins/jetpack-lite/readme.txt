@@ -2,10 +2,10 @@
 Contributors: samuelaguilera
 Tags: WordPress.com, statistics, stats, views, shortlinks, wp.me
 Requires at least: 3.1
-Tested up to: 3.2.1
-Stable tag: 1.2.1.1
+Tested up to: 3.4.2
+Stable tag: 1.7
 
-A NOT official fork of Jetpack plugin containing only Stats and WP.me Shortlinks modules. All other modules removed (files and code).
+A NOT official "lite" fork of Jetpack plugin containing only Stats and WP.me Shortlinks modules. All other modules removed (files and code).
 
 == Description ==
 
@@ -19,18 +19,17 @@ So I made **this fork that only contains Stats and WP.me Shortlinks modules**. T
 
 All other modules have been removed, also access to site stats was moved to dashboard menu and Jetpack Lite settings moved under WordPress settings menu. And some cometic changes to make more clear that this's not the official Jetpack. **No other modifications have been done**.
 
-**NOTE: This plugin IS NOT supported by original Jetpack by WordPress.com support staff.**
-**This is ONLY a fork and NOT the official plugin** and, although is not probable, may contain bugs not present in the original plugin, **use it at your own risk!**
-
-And if you don't feel confortable using it or need a great support, it's better to install original and official from here: [Jetpack](http://jetpack.me/).
-
 Features include:
 
 * Simple, concise stats with no additional load on your server.  Previously provided by [WordPress.com Stats](http://wordpress.org/extend/plugins/stats/).
 * The [WP.me URL shortener](http://wp.me/sf2B5-shorten).
 *  and *nothing* more to come!
 
-**REMEMBER: This plugin IS NOT official Jetpack by WordPress.com - If you're looking for the official plugin go to [Jetpack](http://jetpack.me/)**
+
+**NOTE: This plugin IS NOT supported by original Jetpack by WordPress.com support staff.**
+**This is ONLY a fork and NOT the official plugin** and, although is not probable, may contain bugs not present in the original plugin, **use it at your own risk!**
+
+And if you don't feel confortable using it or need a great support, it's better to install original and official from here: [Jetpack](http://jetpack.me/).
 
 == Installation ==
 
@@ -68,6 +67,11 @@ Remember, if you don't feel confortable using this unofficial fork or need a gre
 1. Stats chart.
 
 == Changelog ==
+
+= 1.7 =
+
+* Based on Jetpack by WordPress.com 1.7
+* Fixed problem with Akismet submenu. If Akismet is present Jetpack Lite will add standard Akismet access (the same provided with Akismet when no Jetpack is present).
 
 = 1.2.1.1 =
 * Fixed main file. Uploaded a test one by error. Sorry!

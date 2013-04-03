@@ -5,20 +5,25 @@
 */
 function graphene_update_db(){
 	global $graphene_defaults;
-        
+    
 	if ( get_option( 'graphene_ga_code' ) === '' ){       
-		wp_die('updating to 1.0');
 		graphene_update_db_to_1_0();
 	}
 	
 	$current_settings = get_option( 'graphene_settings', array() );
-	if ( empty( $current_settings['db_version'] ) || $current_settings['db_version'] === '1.0') {            
-		graphene_update_db_to_1_1();
+	
+	if ( $current_settings && array_key_exists( 'db_version', $current_settings ) ) {
+		if ( $current_settings['db_version'] === '1.0' ) {
+			graphene_update_db_to_1_1();
+			$current_settings = get_option( 'graphene_settings', array() );
+		}
 	}
-        
-        $current_settings = get_option( 'graphene_settings', array() );
-	if ( empty( $current_settings['db_version'] ) || $current_settings['db_version'] === '1.1') {            
-		graphene_update_db_to_1_2();
+
+	if ( $current_settings && array_key_exists( 'db_version', $current_settings ) ) {
+		if ( $current_settings['db_version'] === '1.1' ) {
+			graphene_update_db_to_1_2();
+			$current_settings = get_option( 'graphene_settings', array() );
+		}
 	}
 }
 
@@ -301,4 +306,23 @@ function graphene_update_db_to_1_2(){
     
     update_option('graphene_settings', $graphene_settings);        
 }
-?>
+
+
+/**
+ * This DB update converts the theme's custom fields into a single database entry for each posts and pages
+ */
+function graphene_convert_meta( $post_id ){
+	
+	/* Do the conversion */
+	$custom_fields = graphene_custom_fields_defaults();
+	
+	$graphene_meta = array();
+	foreach ( $custom_fields as $custom_field => $default_val ) {
+		$current_value = get_post_meta( $post_id, '_graphene_' . $custom_field, true );
+		if ( $current_value !== false ) {
+			if ( $default_val !== $current_value && $current_value != 'global' ) $graphene_meta[$custom_field] = $current_value;
+			delete_post_meta( $post_id, '_graphene_' . $custom_field );
+		}
+	}
+	if ( $graphene_meta ) update_post_meta( $post_id, '_graphene_meta', $graphene_meta );
+}

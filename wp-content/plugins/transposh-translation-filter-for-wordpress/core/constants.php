@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.8.3
+ * Transposh v0.9.1
  * http://transposh.org/
  *
- * Copyright 2012, Team Transposh
+ * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 28 May 2012 14:38:35 +0300
+ * Date: Wed, 23 Jan 2013 02:24:14 +0200
  */
 
 //Language indicator in URL. i.e. lang=en
@@ -82,6 +82,7 @@ class transposh_consts {
         'ja' => 'Japanese,日本語,jp,',
         'kn' => 'Kannada,ಕನ್ನಡ,in,',
         'ko' => 'Korean,우리말,kr,ko_KR',
+        'lo' => 'Lao,ພາສາລາວ,la,',
         'la' => 'Latin,Latīna,va,',
         'lv' => 'Latvian,Latviešu valoda,lv,',
         'lt' => 'Lithuanian,Lietuvių kalba,lt,',
@@ -98,7 +99,7 @@ class transposh_consts {
         'sk' => 'Slovak,Slovenčina,sk,sk_SK',
         'sl' => 'Slovene,Slovenščina,si,sl_SI', //slovenian
         'es' => 'Spanish,Español,es,es_ES',
-        'sw' => 'Swahili,Kiswahili,ke,',
+        'sw' => 'Swahili,Kiswahili,tz,',
         'sv' => 'Swedish,Svenska,se,sv_SE',
         'tl' => 'Tagalog,Tagalog,ph,', // fhilipino
         'ta' => 'Tamil,தமிழ்,lk,ta_LK',
@@ -111,15 +112,15 @@ class transposh_consts {
         'cy' => 'Welsh,Cymraeg,wales,',
         'yi' => 'Yiddish,ייִדיש,europeanunion,'
     );
-    
+
     public static function get_language_name($lang) {
-       list ($langname, $langorigname, $flag) = explode(",", transposh_consts::$languages[$lang]);
-       return $langname;
+        list ($langname, $langorigname, $flag) = explode(",", transposh_consts::$languages[$lang]);
+        return $langname;
     }
 
     public static function get_language_orig_name($lang) {
-       list ($langname, $langorigname, $flag) = explode(",", transposh_consts::$languages[$lang]);
-       return $langorigname;
+        list ($langname, $langorigname, $flag) = explode(",", transposh_consts::$languages[$lang]);
+        return $langorigname;
     }
 
     // Language which are read from right to left (rtl)
@@ -129,10 +130,8 @@ class transposh_consts {
     // @updated 2010-Oct-01 (hy,az,eu,ka,la,ur)
     // @updated 2011-Nov-04
     // @updated 2012-Feb-24 (eo)
-    // $google_languages = array('en', 'af', 'sq', 'ar', 'hy', 'az', 'eu', 'be', 'bg', 'ca', 'zh', 'zh-tw', 'hr', 'cs', 'da', 'nl', 'et', 'fi', 'fr', 'gl', 'ka', 'de', 'el', 'ht', 'he', 'hi', 'hu', 'id', 'it', 'is', 'ga', 'ja', 'ko', 'lv', 'lt', 'mk', 'ms', 'mt', 'no', 'fa', 'pl', 'pt', 'ro', 'ru', 'sr', 'sk', 'sl', 'es', 'sw', 'sv', 'tl', 'th', 'tr', 'uk', 'ur', 'vi', 'cy', 'yi');
-    public static $google_languages = array('en', 'af', 'sq', 'ar', 'be', 'bg', 'ca', 'zh', 'zh-tw', 'hr', 'cs', 'da', 'nl', 'et', 'fi', 'fr', 'gl', 'de', 'el', 'ht', 'he', 'hi', 'hu', 'id', 'it', 'is', 'ga', 'ja', 'ko', 'lv', 'lt', 'mk', 'ms', 'mt', 'no', 'fa', 'pl', 'pt', 'ro', 'ru', 'sr', 'sk', 'sl', 'es', 'sw', 'sv', 'tl', 'th', 'tr', 'uk', 'vi', 'cy', 'yi', 'hy', 'az', 'eu', 'ka', 'la', 'ur', 'ta', 'te', 'kn', 'bn', 'gu', 'eo');
-//    public static $google_languages = array('en', 'af', 'sq', 'ar', 'be', 'bg', 'ca', 'zh', 'zh-tw', 'hr', 'cs', 'da', 'nl', 'et', 'fi', 'fr', 'gl', 'de', 'el', 'ht', 'he', 'hi', 'hu', 'id', 'it', 'is', 'ga', 'ja', 'ko', 'lv', 'lt', 'mk', 'ms', 'mt', 'no', 'fa', 'pl', 'pt', 'ro', 'ru', 'sr', 'sk', 'sl', 'es', 'sw', 'sv', 'tl', 'th', 'tr', 'uk', 'vi', 'cy', 'yi');
-//    public static $google_proxied_languages = array('hy', 'az', 'eu', 'ka', 'la', 'ur', 'ta', 'te', 'kn', 'bn', 'gu');
+    // @updated 2012-Sep-17 (la)
+    public static $google_languages = array('en', 'af', 'sq', 'ar', 'be', 'bg', 'ca', 'zh', 'zh-tw', 'hr', 'cs', 'da', 'nl', 'et', 'fi', 'fr', 'gl', 'de', 'el', 'ht', 'he', 'hi', 'hu', 'id', 'it', 'is', 'ga', 'ja', 'ko', 'lo', 'lv', 'lt', 'mk', 'ms', 'mt', 'no', 'fa', 'pl', 'pt', 'ro', 'ru', 'sr', 'sk', 'sl', 'es', 'sw', 'sv', 'tl', 'th', 'tr', 'uk', 'vi', 'cy', 'yi', 'hy', 'az', 'eu', 'ka', 'la', 'ur', 'ta', 'te', 'kn', 'bn', 'gu', 'eo');
     // Bing supported languages
     // (got this using Microsoft.Translator.GetLanguages() - fixed to match our codes)
     // @updated 2012-Feb-14 (mww)
@@ -140,6 +139,17 @@ class transposh_consts {
     // Apertium supported languages
     // a bit tricky, but we'll see - starting with just esperanto
     public static $apertium_languages = array('eo');
+    // todo - more languages in OHT
+    //Bosnian	bs-ba
+    //Chinese Cantonese	zh-cn-yue -- check
+    //Chinese Mandarin-Simplified	zh-cn-cmn-s
+    //Chinese Mandarin-Traditional	zh-cn-cmn-t
+    //Dari	fa-af
+    //Kazakh	kk-kz
+    //Khmer	km-kh
+    //Pashto	ps
+    //Uzbek	uz-uz
+    public static $oht_languages = array('en', 'sq', 'ar', 'bn', 'bg', 'ca', 'zh', 'zh-tw', 'hr', 'cs', 'da', 'nl', 'et', 'fa', 'fi', 'fr', 'ka', 'de', 'el', 'he', 'hi', 'hu', 'id', 'it', 'jp', 'ko', 'lo', 'lv', 'lt', 'mk', 'ms', 'no', 'pl', 'pt', 'ro', 'ru', 'sr', 'sk', 'sl', 'es', 'sv', 'tl', 'ta', 'th', 'tr', 'uk', 'ur', 'vi');
     // Array for holding po domains we have problems with
     public static $ignored_po_domains = array('MailPress');
     // Array holding list of jQueryUI themes
@@ -153,22 +163,24 @@ class transposh_consts {
 define('TRANSLATOR', 'translator');
 
 //Define for transposh plugin version
-define('TRANSPOSH_PLUGIN_VER', '0.8.3');
+define('TRANSPOSH_PLUGIN_VER', '0.9.1');
 
 //Current jQuery UI
-define('JQUERYUI_VER', '1.8.16');
+define('JQUERYUI_VER', '1.9.2');
 
 //Define segment id prefix, will be included in span tag. also used as class identifier
 define('SPAN_PREFIX', 'tr_');
-
-//The name of our admin page
-define('TRANSPOSH_ADMIN_PAGE_NAME', 'transposh');
 
 //Our text domain
 define('TRANSPOSH_TEXT_DOMAIN', 'transposh');
 
 //0.3.5 - Storing all options in this config option
 define('TRANSPOSH_OPTIONS', 'transposh_options');
+
+//0.8.4 - Storing oht project
+define('TRANSPOSH_OPTIONS_OHT', 'transposh_options_oht');
+define('TRANSPOSH_OPTIONS_OHT_PROJECTS', 'transposh_options_oht_projects');
+define('TRANSPOSH_OHT_DELAY', 600);
 
 //0.5.6 new definitions
 //Defintions for directories used in the plugin

@@ -33,7 +33,7 @@ function grapheneTwitter( target, options ) {
             return m.substr(-1) === '"' || m.substr(-1) == '<' ? m : m1 + '<strong>#<a href="http://twitter.com/#!/search/%23' + m2 + '">' + m2 + '</a></strong>';
         });
         
-        status = ('<li><span>'+status+'</span> <a style="font-size:85%" href="http://twitter.com/'+username+'/statuses/'+twitters[i].id_str+'">'+relative_time(twitters[i].created_at)+'</a></li>');
+        status = ('<li><span>'+status+'</span> <a class="tweet-rel-time" href="http://twitter.com/'+username+'/statuses/'+twitters[i].id_str+'">'+relative_time(twitters[i].created_at)+'</a></li>');
 
         if ( options.newwindow )
             status = status.replace( /<a href=/gi, '<a target="_blank" href=' );

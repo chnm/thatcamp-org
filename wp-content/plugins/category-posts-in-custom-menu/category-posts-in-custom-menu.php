@@ -2,14 +2,14 @@
 /*
     Plugin Name: Category Posts in Custom Menu
     Plugin URI: http://blog.dianakoenraadt.nl
-    Description: This plugin replaces selected Category links / Post Tag links in a Custom Menu by a list of their posts.
-    Version: 0.6
+    Description: This plugin replaces selected Category links / Post Tag links / Custom taxonomy links in a Custom Menu by a list of their posts/pages.
+    Version: 0.7.1
     Author: Diana Koenraadt
     Author URI: http://www.dianakoenraadt.nl
     License: GPL2
 */
 
-/*  Copyright 2011 Diana Koenraadt (email : diana at dianakoenraadt dot nl)
+/*  Copyright 2012 Diana Koenraadt (email : diana at dianakoenraadt dot nl)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -92,74 +92,102 @@ class CPCM_Manager {
 	        $result = array();    
 	        $inc = 0;
 	        foreach ( (array) $sorted_menu_items as $key => $menu_item ) {
-              // Replace taxonomy object by a list of its posts: Append posts to $result
-              // Remove the taxonomy object itself.
-              if ( $menu_item->type == 'taxonomy' && (get_post_meta($menu_item->db_id, "cpcm-unfold", true) == '1')) {
-                  $inc += -1;
-                  $query_arr = array();
+                // Replace taxonomy object by a list of its posts: Append posts to $result
+                // Remove the taxonomy object itself.
+                if ( $menu_item->type == 'taxonomy' && (get_post_meta($menu_item->db_id, "cpcm-unfold", true) == '1')) {
+					$inc += -1;
+					$query_arr = array();
 
-                  //$query_arr[$menu_item->object] = $menu_item->title; 
-                  $query_arr['tax_query'] = array(array('taxonomy'=>$menu_item->object,
-                    'field'=>'id',
-                    'terms'=>$menu_item->object_id
-                  ));
+					//$query_arr[$menu_item->object] = $menu_item->title; 
+					$query_arr['tax_query'] = array(array('taxonomy'=>$menu_item->object,
+					'field'=>'id',
+					'terms'=>$menu_item->object_id
+					));
 
-                  // If cpcm-unfold is true, the following custom fields exist:
-                  $query_arr['order'] = get_post_meta($menu_item->db_id, "cpcm-order", true);
-                  $query_arr['orderby'] = get_post_meta($menu_item->db_id, "cpcm-orderby", true);
-                  $query_arr['numberposts'] = get_post_meta($menu_item->db_id, "cpcm-item-count", true); // default value of -1 returns all posts
+					// If cpcm-unfold is true, the following custom fields exist:
+					$query_arr['order'] = get_post_meta($menu_item->db_id, "cpcm-order", true);
+					$query_arr['orderby'] = get_post_meta($menu_item->db_id, "cpcm-orderby", true);
+					$query_arr['numberposts'] = get_post_meta($menu_item->db_id, "cpcm-item-count", true); // default value of -1 returns all posts
 
-                  $posts = get_posts( $query_arr );
+					// Support for custom post types
+					$tag = get_taxonomy($menu_item->object);
+					$query_arr['post_type'] = $tag->object_type;
 
-                  foreach( (array) $posts as $pkey => $post ) {
-                      // Decorate the posts with the required data for a menu-item.
-                      $post = wp_setup_nav_menu_item( $post );
-                      $post->menu_item_parent = $menu_item->menu_item_parent; // Set to parent of taxonomy item.
+					$posts = get_posts( $query_arr );
 
-                      // Set the title of the new menu item
-                      $post->title = get_post_meta($menu_item->db_id, "cpcm-item-titles", true);
+					foreach( (array) $posts as $pkey => $post ) {
+						// Decorate the posts with the required data for a menu-item.
+						$post = wp_setup_nav_menu_item( $post );
+						$post->menu_item_parent = $menu_item->menu_item_parent; // Set to parent of taxonomy item.
 
-                      // Replace the placeholders in the title by the properties of the post
-                      $userdata = get_userdata($post->post_author);
-                      $post->title = str_replace( "%post_author", 	$userdata ? $userdata->display_name : '', 	$post->title);
-                      
-                      $featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-                      $post->title = str_replace( "%post_feat_image", 	$featured_image, 	$post->title);
-                      
-                      $post->title = str_replace( "%post_title", 	$post->post_title, 	$post->title);
-                      $post->title = str_replace( "%post_excerpt", 	$post->post_excerpt, 	$post->title);
-                      $post->title = str_replace( "%post_url", 	$post->url, 	$post->title);
-                      $post->title = str_replace( "%post_date_gmt", 	$post->post_date_gmt, 	$post->title);
-                      $post->title = str_replace( "%post_date", 	$post->post_date, 	$post->title);
-                      $post->title = str_replace( "%post_status", 	$post->post_status, 	$post->title);
-                      $post->title = str_replace( "%post_modified_gmt", 	$post->post_modified_gmt, 	$post->title);
-                      $post->title = str_replace( "%post_modified", 	$post->post_modified, 	$post->title);
-                      $post->title = str_replace( "%post_comment_count", 	$post->comment_count, 	$post->title);
-                        
-                      $custom_field_keys = get_post_custom_keys($post->ID);
-                      foreach ( $custom_field_keys as $key => $value ) {
-                          $valuet = trim($value);
-                          if ( '_' == $valuet{0} )
-                              continue;
-                          $meta = get_post_meta($post->ID, $valuet, true);
-                          $valuet_str = str_replace(' ', '_', $valuet);
-                          $post->title = str_replace( "%post_" . $valuet_str, $meta, $post->title);
-                      }
-                      // Remove remaining %post_ occurrences.
-                      $pattern = "/%post_\w+/";
-                      $post->title = preg_replace($pattern, '', $post->title);
+						// Transfer properties from the old menu item to the new one
+						$post->target = $menu_item->target;
+						$post->classes = $menu_item->classes;
+						$post->xfn = $menu_item->xfn;
+						$post->description = $menu_item->description;
 
-                      $inc += 1;
-                  }
-                  // Extend the items with classes.
-                  _wp_menu_item_classes_by_context( $posts );
-                  // Append the new menu_items to the menu array that we're building.
-                  $result = array_merge( $result, $posts );
-              } else {
-                // Treat other objects as usual, but note that the position 
-                // of elements in the array changes.
-                $result[$menu_item->menu_order + $inc] = $menu_item;
-              }
+						// Set the title of the new menu item
+						$post->title = get_post_meta($menu_item->db_id, "cpcm-item-titles", true);
+
+						// Replace the placeholders in the title by the properties of the post
+						$userdata = get_userdata($post->post_author);
+						$post->title = str_replace( "%post_author", 	$userdata ? $userdata->data->display_name : '', 	$post->title);
+
+						$featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+						$post->title = str_replace( "%post_feat_image", 	$featured_image, 	$post->title);
+
+						$post->title = str_replace( "%post_title", 	$post->post_title, 	$post->title);
+						$post->title = str_replace( "%post_excerpt", 	$post->post_excerpt, 	$post->title);
+						$post->title = str_replace( "%post_url", 	$post->url, 	$post->title);
+
+						$post_date_gmt = $post->post_date_gmt;
+						$post->title = preg_replace("/\%post_date_gmt\(\)/", mysql2date('F jS, Y', $post_date_gmt), $post->title);
+						$post->title = preg_replace("/\%post_date_gmt\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_date_gmt')", $post->title);
+						$post->title = str_replace( "%post_date_gmt", 	$post_date_gmt, 	$post->title);
+
+						$post_date = $post->post_date;
+						$post->title = preg_replace("/\%post_date\(\)/", mysql2date('F jS, Y', $post_date), $post->title);
+						$post->title = preg_replace("/\%post_date\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_date')", $post->title);
+						$post->title = str_replace( "%post_date", 	$post_date, 	$post->title);
+
+						$post->title = str_replace( "%post_status", 	$post->post_status, 	$post->title);
+
+						$post_modified_gmt = $post->post_modified_gmt;
+						$post->title = preg_replace("/\%post_modified_gmt\(\)/", mysql2date('F jS, Y', $post_modified_gmt), $post->title);
+						$post->title = preg_replace("/\%post_modified_gmt\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_modified_gmt')", $post->title);
+						$post->title = str_replace( "%post_modified_gmt", 	$post_modified_gmt, 	$post->title);
+
+						$post_modified = $post->post_modified;
+						$post->title = preg_replace("/\%post_modified\(\)/", mysql2date('F jS, Y', $post_modified), $post->title);
+						$post->title = preg_replace("/\%post_modified\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_modified')", $post->title);
+						$post->title = str_replace( "%post_modified", 	$post_modified, 	$post->title);
+
+						$post->title = str_replace( "%post_comment_count", 	$post->comment_count, 	$post->title);
+
+						$custom_field_keys = get_post_custom_keys($post->ID);
+						foreach ( $custom_field_keys as $key => $value ) {
+							$valuet = trim($value);
+							if ( '_' == $valuet{0} )
+							continue;
+							$meta = get_post_meta($post->ID, $valuet, true);
+							$valuet_str = str_replace(' ', '_', $valuet);
+							$post->title = str_replace( "%post_" . $valuet_str, $meta, $post->title);
+						}
+						// Remove remaining %post_ occurrences.
+						$pattern = "/%post_\w+/";
+						$post->title = preg_replace($pattern, '', $post->title);
+
+						$inc += 1;
+					}
+					// Extend the items with classes.
+					_wp_menu_item_classes_by_context( $posts );
+					// Append the new menu_items to the menu array that we're building.
+					$result = array_merge( $result, $posts );
+				} else {
+					// Treat other objects as usual, but note that the position 
+					// of elements in the array changes.
+					$result[$menu_item->menu_order + $inc] = $menu_item;
+				}
             }
 
             unset( $sorted_menu_items );
@@ -359,8 +387,8 @@ class CPCM_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit  {
                         <p class="field-cpcm-item-titles description description-wide">
                             <label for="edit-menu-item-cpcm-item-titles-<?php echo $item_id; ?>">
                                 <?php _e( 'Post Navigation Label' ); ?><br />
-                                <input type="text" id="edit-menu-item-cpcm-item-titles-<?php echo $item_id; ?>" class="widefat code edit-menu-item-cpcm-item-titles" name="menu-item-cpcm-item-titles[<?php echo $item_id; ?>]" value="<?php $item_titles = get_post_meta($item_id, "cpcm-item-titles", true); echo $item_titles != '' ? esc_attr( $item_titles ) : '%post_title' ?>" />
-                                <span class="description"><?php _e('The navigation label for generated post links may be customized using the following placeholders: %post_title, %post_author, %post_my_field (for custom field \'my field\' or \'my_field\').'); ?></span>
+                                <textarea id="edit-menu-item-cpcm-item-titles-<?php echo $item_id; ?>" class="widefat code edit-menu-item-cpcm-item-titles" name="menu-item-cpcm-item-titles[<?php echo $item_id; ?>]" rows="4"><?php $item_titles = get_post_meta($item_id, "cpcm-item-titles", true); echo $item_titles != '' ? esc_attr( $item_titles ) : '%post_title' ?></textarea>
+                                <span class="description"><?php _e('The navigation label for generated post links may be customized using wildcars such as: %post_title, %post_author, %post_my_field (for custom field \'my field\' or \'my_field\'). See documentation.'); ?></span>
                             </label>
                         </p>
                     </div>

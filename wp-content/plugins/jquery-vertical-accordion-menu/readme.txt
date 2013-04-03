@@ -3,8 +3,8 @@ Contributors: remix4
 Donate link: http://www.designchemical.com/blog/index.php/wordpress-plugins/wordpress-plugin-jquery-vertical-accordion-menu-widget/#form-donate
 Tags: jquery, dropdown, menu, vertical accordion, animated, css, navigation, widget
 Requires at least: 3.0
-Tested up to: 3.13
-Stable tag: 3.1.1
+Tested up to: 3.4.2
+Stable tag: 3.1.2
 
 Creates vertical accordion menus from any Wordpress custom menu using jQuery. Add menus using either widgets or shortcodes.
 
@@ -57,6 +57,7 @@ skin - black/blue/clean/demo/graphite/grey (default = No Theme)
 For more information please check out the plugin home page:
 
 [__Plugin Home Page__](http://www.designchemical.com/blog/index.php/wordpress-plugins/wordpress-plugin-jquery-vertical-accordion-menu-widget/)
+
 [__See Demo__](http://www.designchemical.com/lab/demo-wordpress-vertical-accordion-menu-plugin/)
 
 == Installation ==
@@ -85,6 +86,9 @@ Another likely cause is due to other non-functioning plugins, which may have err
 2. Sample vertical accordion menus
 
 == Changelog ==
+
+= 3.1.2 =
+* Updated: accordion shortcode
 
 = 3.1.1 =
 * Updated: wp_enqueue_script hook

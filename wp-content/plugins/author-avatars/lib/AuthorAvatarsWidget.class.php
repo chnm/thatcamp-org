@@ -10,7 +10,7 @@ class AuthorAvatarsWidget extends MultiWidget
 	 * Default widget options
 	 */
 	var $defaults = array();
-	
+
 	/**
 	 * Sets the defaults.
 	 */
@@ -57,8 +57,9 @@ class AuthorAvatarsWidget extends MultiWidget
 			array('width' => '600px') // control options
 		);
 
-		add_action('init', array(&$this, 'enqueue_resources'));
-		
+		add_action('wp_enqueue_scripts', array(&$this, 'enqueue_resources'));
+		add_action('admin_enqueue_scripts', array(&$this, 'enqueue_resources'));
+	
 		$this->register();
 	}
 	
@@ -67,8 +68,10 @@ class AuthorAvatarsWidget extends MultiWidget
 	 *
 	 * @return void
 	 */
+
 	function enqueue_resources() {	
 		wp_enqueue_style('author-avatars-widget');
+
 		if (is_admin() && basename($_SERVER['PHP_SELF']) == 'widgets.php') { 
 			wp_enqueue_script('author-avatars-widget-admin');
 			wp_enqueue_style('admin-form');

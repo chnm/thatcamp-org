@@ -384,7 +384,7 @@ class FeedWordPressSyndicationPage extends FeedWordPressAdminPage {
 			add_meta_box(
 				/*id=*/ 'feedwordpress_feeds_box',
 				/*title=*/ __('Syndicated sources'),
-				/*callback=*/ array(&$this, 'syndicated_sources_box'),
+				/*callback=*/ array($this, 'syndicated_sources_box'),
 				/*page=*/ $this->meta_box_context(),
 				/*context =*/ $this->meta_box_context()
 			);
@@ -734,16 +734,12 @@ regular donation</a>) using an existing PayPal account or any major credit card.
 				// ... and kill them all
 				if (count($post_ids) > 0) :
 					foreach ($post_ids as $post_id) :
-						if (FeedWordPressCompatibility::test_version(FWP_SCHEMA_29)) :
-							// Force scrubbing of deleted post
-							// rather than sending to Trashcan
-							wp_delete_post(
-								/*postid=*/ $post_id,
-								/*force_delete=*/ true
-							);
-						else :
-							wp_delete_post($post_id);
-						endif;
+						// Force scrubbing of deleted post
+						// rather than sending to Trashcan
+						wp_delete_post(
+							/*postid=*/ $post_id,
+							/*force_delete=*/ true
+						);
 					endforeach;
 				endif;
 	

@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.8.3
+ * Transposh v0.9.1
  * http://transposh.org/
  *
- * Copyright 2012, Team Transposh
+ * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 28 May 2012 14:38:35 +0300
+ * Date: Wed, 23 Jan 2013 02:24:14 +0200
  */
 
 /*
@@ -30,10 +30,17 @@ class transposh_backup {
         $this->transposh = &$transposh;
     }
 
-    function do_backup() {
+    function init_body() {
         $body = array();
         $body['home_url'] = $this->transposh->home_url;
-        $body['key'] = $this->transposh->options->get_transposh_key();
+        $body['key'] = $this->transposh->options->transposh_key;
+        $body['v'] = '2';
+        $body['tpv'] = '0.9.1';
+        return $body;
+    }
+
+    function do_backup() {
+        $body = $this->init_body();
         //Check if there are thing to backup, before even accessing the service
         $rowstosend = $this->transposh->database->get_all_human_translation_history('null', 1);
         if (empty($rowstosend)) {
@@ -41,6 +48,7 @@ class transposh_backup {
             return;
         }
 
+        // this one is for getting the key
         $result = wp_remote_post(TRANSPOSH_BACKUP_SERVICE_URL, array('body' => $body));
         if (is_wp_error($result)) {
             echo '500 - ' . $result->get_error_message();
@@ -50,27 +58,42 @@ class transposh_backup {
             echo '500 - ' . $result['headers']['fail'];
             return;
         }
-        if ($this->transposh->options->get_transposh_key() == "") {
-            $this->transposh->options->set_transposh_key($result['headers']['transposh-key']);
+        if ($this->transposh->options->transposh_key == "") {
+            $this->transposh->options->transposh_key = $result['headers']['transposh-key'];
             // TODO: deliever new gottenkey to client side?
-            //echo $this->transposh->options->get_transposh_key();
             $this->transposh->options->update_options();
         }
         if (isset($result['headers']['lastitem'])) {
-            $rowstosend = $this->transposh->database->get_all_human_translation_history($result['headers']['lastitem'], 500);
+            $rowstosend = $this->transposh->database->get_all_human_translation_history($result['headers']['lastitem'], 100);
             while ($rowstosend) {
                 $item = 0;
+                $lastorig = '';
+                $lastlang = '';
+                $lasttrans = '';
+                $lastby = '';
+                $lastts = '';
+                $body = $this->init_body();
                 foreach ($rowstosend as $row) {
-                    if ($body['or' . ($item - 1)] != $row->original)
-                            $body['or' . $item] = $row->original;
-                    if ($body['ln' . ($item - 1)] != $row->lang)
-                            $body['ln' . $item] = $row->lang;
-                    if ($body['tr' . ($item - 1)] != $row->translated)
-                            $body['tr' . $item] = $row->translated;
-                    if ($body['tb' . ($item - 1)] != $row->translated_by)
-                            $body['tb' . $item] = $row->translated_by;
-                    if ($body['ts' . ($item - 1)] != $row->timestamp)
-                            $body['ts' . $item] = $row->timestamp;
+                    if ($lastorig != $row->original) {
+                        $body['or' . $item] = $row->original;
+                        $lastorig = $row->original;
+                    }
+                    if ($lastlang != $row->lang) {
+                        $body['ln' . $item] = $row->lang;
+                        $lastlang = $row->lang;
+                    }
+                    if ($lasttrans != $row->translated) {
+                        $body['tr' . $item] = $row->translated;
+                        $lasttrans = $row->translated;
+                    }
+                    if ($lastby != $row->translated_by) {
+                        $body['tb' . $item] = $row->translated_by;
+                        $lastby = $row->translated_by;
+                    }
+                    if ($lastts != $row->timestamp) {
+                        $body['ts' . $item] = $row->timestamp;
+                        $lastts = $row->timestamp;
+                    }
                     $item++;
                 }
                 $body['items'] = $item;
@@ -85,16 +108,16 @@ class transposh_backup {
                     echo "500 - " . $result['headers']['fail'];
                     return;
                 }
-                $rowstosend = $this->transposh->database->get_all_human_translation_history($row->timestamp, 500);
+                $rowstosend = $this->transposh->database->get_all_human_translation_history($row->timestamp, 100);
             }
         }
-        Echo '200 - backup in sync';
+        echo '200 - backup in sync';
     }
 
     function do_restore() {
         $body['to'] = time(); //TODO: fix this to get from DB
         $body['home_url'] = $this->transposh->home_url;
-        $body['key'] = $this->transposh->options->get_transposh_key();
+        $body['key'] = $this->transposh->options->transposh_key;
         $result = wp_remote_get(TRANSPOSH_RESTORE_SERVICE_URL . "?to={$body['to']}&key={$body['key']}&home_url={$body['home_url']}"); // gotta be a better way...
         $lines = split("[\n|\r]", $result['body']);
         foreach ($lines as $line) {

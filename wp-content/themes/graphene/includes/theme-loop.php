@@ -5,13 +5,13 @@
 */
 $adsense_adcount = 1;
 $ad_limit = apply_filters( 'graphene_adsense_ads_limit', 3 );
-if (!function_exists( 'graphene_adsense' ) ) :
+if ( ! function_exists( 'graphene_adsense' ) ) :
 	function graphene_adsense(){
 		global $adsense_adcount, $ad_limit, $graphene_settings;
 		
 		if ( $graphene_settings['show_adsense'] && $adsense_adcount <= $ad_limit) : ?>
             <div class="post adsense_single clearfix" id="adsense-ad-<?php echo $adsense_adcount; ?>">
-                <?php echo stripslashes( $graphene_settings['adsense_code']); ?>
+                <?php echo stripslashes( $graphene_settings['adsense_code'] ); ?>
             </div>
             <?php do_action( 'graphene_show_adsense' ); ?>
 		<?php endif;
@@ -38,7 +38,7 @@ if (!function_exists( 'graphene_addthis' ) ) :
 		global $graphene_settings;
 		
 		// Get the local setting
-		$show_addthis_local = ( get_post_meta( $post_id, '_graphene_show_addthis', true) ) ? get_post_meta( $post_id, '_graphene_show_addthis', true) : 'global';
+		$show_addthis_local = graphene_get_post_meta( $post_id, 'show_addthis' );
 		$show_addthis_global = $graphene_settings['show_addthis'];
 		$show_addthis_page = $graphene_settings['show_addthis_page'];
 		
@@ -47,12 +47,13 @@ if (!function_exists( 'graphene_addthis' ) ) :
 			$show_addthis = true;
 		elseif ( $show_addthis_local == 'hide' )
 			$show_addthis = false;
-		elseif ( $show_addthis_local == 'global' ){
+		elseif ( $show_addthis_local == '' ){
 			if ( ( $show_addthis_global && get_post_type() != 'page' ) || ( $show_addthis_global && $show_addthis_page ) )
 				$show_addthis = true;
 			else
 				$show_addthis = false;
-		}
+		} else
+			$show_addthis = false;
 		
 		// Show the AddThis button
 		if ( $show_addthis) {
@@ -80,8 +81,8 @@ endif;
  */
 if (!function_exists( 'graphene_continue_reading_link' ) ) :
 	function graphene_continue_reading_link() {
-		global $in_slider;
-		if (!is_page() && !$in_slider) {
+		global $graphene_in_slider;
+		if (!is_page() && !$graphene_in_slider) {
 			$more_link_text = __( 'Continue reading &raquo;', 'graphene' );
 			return '</p><p><a class="more-link block-button" href="'.get_permalink().'">'.$more_link_text.'</a>';
 		}
@@ -99,7 +100,7 @@ endif;
  * @since Graphene 1.0.8
  * @return string An ellipsis
  */
-function graphene_auto_excerpt_more( $more) {
+function graphene_auto_excerpt_more( $more ) {
 	return apply_filters( 'graphene_auto_excerpt_more', ' &hellip; '.graphene_continue_reading_link() );
 }
 add_filter( 'excerpt_more', 'graphene_auto_excerpt_more' );
@@ -110,16 +111,16 @@ add_filter( 'excerpt_more', 'graphene_auto_excerpt_more' );
  *
  * @since Graphene 1.1.3
 */
-function graphene_manual_excerpt_more( $text){
-	global $in_slider;
-	if (has_excerpt() && !$in_slider){
+function graphene_manual_excerpt_more( $text ){
+	global $graphene_in_slider;
+	if (has_excerpt() && !$graphene_in_slider){
 		$text = explode( '</p>', $text);
 		$text[count( $text)-2] .= graphene_continue_reading_link();
 		$text = implode( '</p>', $text);
 	}
 	return $text;
 }
-if ( $graphene_settings['show_excerpt_more']) {
+if ( $graphene_settings['show_excerpt_more'] ) {
 	add_filter( 'the_excerpt', 'graphene_manual_excerpt_more' );
 }
 
@@ -137,14 +138,14 @@ if (!function_exists( 'graphene_posts_nav' ) ) :
             </div>
         <?php 
 		
-		elseif ( $query->max_num_pages > 1) : ?>
+		elseif ( $query->max_num_pages > 1 ) : ?>
             <div class="post-nav clearfix">
                 <?php if (!is_search() ) : ?>
-                    <p id="previous"><?php next_posts_link(__( 'Older posts &laquo;', 'graphene' ) ) ?></p>
-                    <p id="next-post"><?php previous_posts_link(__( '&raquo; Newer posts', 'graphene' ) ) ?></p>
+                    <p class="previous"><?php next_posts_link( __( 'Older posts &laquo;', 'graphene' ) ) ?></p>
+                    <p class="next-post"><?php previous_posts_link( __( '&raquo; Newer posts', 'graphene' ) ) ?></p>
                 <?php else : ?>
-                    <p id="next-post"><?php next_posts_link(__( 'Next page &raquo;', 'graphene' ) ) ?></p>
-                    <p id="previous"><?php previous_posts_link(__( '&laquo; Previous page', 'graphene' ) ) ?></p>
+                    <p class="next-post"><?php next_posts_link( __( 'Next page &raquo;', 'graphene' ) ) ?></p>
+                    <p class="previous"><?php previous_posts_link( __( '&laquo; Previous page', 'graphene' ) ) ?></p>
                 <?php endif; ?>
             </div>
          
@@ -161,10 +162,25 @@ if ( ! function_exists( 'graphene_post_nav' ) ) :
 
 function graphene_post_nav(){
 	if ( is_singular() ) :
+	
+	global $graphene_settings;
+	
+	$args = array(
+				'format_prev'	=> '&laquo; %link',
+				'format_next'	=> '%link &raquo;',
+				'link'			=> '%title',
+				'in_same_cat' 	=> false,
+				'excluded_cats' => '',
+			);
+	if ( $graphene_settings['slider_type'] == 'categories' )
+		if ( $graphene_settings['slider_exclude_categories'] == 'everywhere' ) 
+			$args['excluded_cats'] = $graphene_settings['slider_specific_categories'];
+			
+	$args = apply_filters( 'graphene_post_nav_args', $args );
 	?>
 	<div class="post-nav clearfix">
-		<p class="previous"><?php previous_post_link(); ?></p>
-		<p class="next-post"><?php next_post_link(); ?></p>
+		<p class="previous"><?php previous_post_link( $args['format_prev'], $args['link'], $args['in_same_cat'], $args['excluded_cats'] ); ?></p>
+		<p class="next-post"><?php next_post_link( $args['format_next'], $args['link'], $args['in_same_cat'], $args['excluded_cats'] ); ?></p>
 		<?php do_action( 'graphene_post_nav' ); ?>
 	</div>
 	<?php
@@ -242,11 +258,8 @@ function graphene_reset_excerpt_length(){
 if ( ! function_exists( 'graphene_get_post_image' ) ) :
 	function graphene_get_post_image( $post_id = NULL, $size = 'thumbnail', $context = '', $urlonly = false ){
 		
-		/* Display error message if no post ID is supplied */
-		if ( $post_id == NULL ){
-			_e( '<strong>ERROR: You must supply the post ID to get the image from as an argument when calling the graphene_get_post_image() function.</strong>', 'graphene' );
-			return;
-		}
+		/* Don't do anything if no post ID is supplied */
+		if ( $post_id == NULL )	return;
 		
 		/* Get the images */
 		$images = get_children( array( 
@@ -303,7 +316,7 @@ function graphene_improved_excerpt( $text ){
 		$text = preg_replace( '@<script[^>]*?>.*?</script>@si', '', $text);
 		
 		/* Strip HTML tags, but allow certain tags */
-		$text = strip_tags( $text, $graphene_settings['excerpt_html_tags']);
+		$text = strip_tags( $text, $graphene_settings['excerpt_html_tags'] );
 
 		$excerpt_length = apply_filters( 'excerpt_length', 55);
 		$excerpt_more = apply_filters( 'excerpt_more', ' ' . '[...]' );
@@ -323,6 +336,7 @@ function graphene_improved_excerpt( $text ){
 	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt);
 }
 
+
 /**
  * Only use the custom excerpt trimming function if user decides to retain html tags.
 */
@@ -336,7 +350,6 @@ if ( $graphene_settings['excerpt_html_tags'] ) {
  * Determine if date should be displayed. Returns true if it should, or false otherwise.
 */
 if ( ! function_exists( 'graphene_should_show_date' ) ) :
-
 function graphene_should_show_date(){
 	
 	// Check post type
@@ -346,7 +359,7 @@ function graphene_should_show_date(){
 	
 	// Check per-post settings
 	global $post;
-	$post_setting = get_post_meta( $post->ID, '_graphene_post_date_display', true );
+	$post_setting = graphene_get_post_meta( $post->ID, 'post_date_display' );
 	if ( $post_setting == 'hide' )
 		return false;
 		
@@ -357,7 +370,6 @@ function graphene_should_show_date(){
 	
 	return true;
 }
-
 endif;
 
 
@@ -386,14 +398,14 @@ add_filter( 'post_class', 'graphene_post_class' );
  *
  * Based on the Sort Query by Post In plugin by Jake Goldman (http://www.get10up.com)
 */
-add_filter( 'posts_orderby', 'graphene_sort_query_by_post_in', 10, 2 );
-
 function graphene_sort_query_by_post_in( $sortby, $thequery ) {
+	global $wpdb;
 	if ( ! empty( $thequery->query['post__in'] ) && isset( $thequery->query['orderby'] ) && $thequery->query['orderby'] == 'post__in' )
-		$sortby = "find_in_set(ID, '" . implode( ',', $thequery->query['post__in'] ) . "')";
+		$sortby = "find_in_set(" . $wpdb->prefix . "posts.ID, '" . implode( ',', $thequery->query['post__in'] ) . "')";
 	
 	return $sortby;
 }
+add_filter( 'posts_orderby', 'graphene_sort_query_by_post_in', 10, 2 );
 
 
 /**
@@ -402,6 +414,7 @@ function graphene_sort_query_by_post_in( $sortby, $thequery ) {
  * Accepts 1 argument, $style, which is the style of date to display, which is either 'icon'
  * or 'inline'.
 */
+if ( ! function_exists( 'graphene_print_button' ) ) :
 function graphene_post_date( $style = 'icon' ){
 	global $graphene_settings;
 	
@@ -431,11 +444,13 @@ function graphene_post_date( $style = 'icon' ){
     <?php
 	endif;
 }
+endif;
 
 
 /**
  * Displays the print button
 */
+if ( ! function_exists( 'graphene_print_button' ) ) :
 function graphene_print_button( $post_type ){
 	?>
     <p class="print">
@@ -445,6 +460,7 @@ function graphene_print_button( $post_type ){
     </p>
     <?php
 }
+endif;
 
 
 /**
@@ -458,8 +474,93 @@ function graphene_print_button( $post_type ){
  */
 function graphene_first_p( $text ){
 	
-	$text = preg_replace('/<p([^>]+)?>/', '<p$1 class="first-p">', $text , 1);
+	$text = preg_replace('/<p([^>]+)?>/', '<p$1 class="first-p">', $text , 1 );
 	
 	return apply_filters( 'graphene_first_p', $text );
 }
-?>
+
+
+/**
+ * Display a link to return to the parent page for child pages
+ *
+ * @param object $post The post object of the current page
+ */
+if ( ! function_exists( 'graphene_parent_return_link' ) ) :
+function graphene_parent_return_link( $post = '' ){
+	if ( function_exists( 'bcn_display' ) ) return;
+	if ( empty( $post ) ) return;
+	if ( ! $post->post_parent ) return;
+	
+	$title = get_the_title( $post->post_parent );
+	$permalink = get_permalink( $post->post_parent );
+	?>
+    <div class="parent-return parent-<?php echo $post->post_parent; ?>">
+    	<p>&uarr; <?php printf( __( 'Return to %s', 'graphene' ), '<a class="parent-return-link" href="' . $permalink . '">' . $title . '</a>' ); ?></p>
+    </div>
+    <?php
+}
+endif;
+
+
+/**
+ * Display the term description in a taxonomy archive page
+ */
+ if ( ! function_exists( 'graphene_tax_description' ) ) :
+function graphene_tax_description(){
+	global $wp_query;
+	if ( $wp_query->queried_object ){
+		$term = $wp_query->queried_object;
+	} else {
+		$tax = $wp_query->tax_query->queries[0]['taxonomy'];
+		$term = $wp_query->tax_query->queries[0]['terms'][0];
+		$term = get_term_by( 'slug', $term, $tax );
+	}
+	
+	if ( ! $term ) return;
+
+	if ( $term->description ) : 
+	?>
+        <div id="term-desc-<?php echo $term->term_id; ?>" class="<?php echo $tax; ?>-desc term-desc">
+            <?php echo $term->description; ?>
+        </div>
+	<?php endif;
+}
+endif;
+
+
+/**
+ * Get the custom fields for the post
+ *
+ * @param int $post_id The ID for the post to get the custom fields for
+ * @param string $field The key for the custom field to retrieve.
+ * @return string Custom field value | array All custom fields if $field is not defined
+ *
+ * @package Graphene
+ * @since Graphene 1.8
+ */
+function graphene_get_post_meta( $post_id, $field = '' ){
+	global $graphene_post_meta;
+	if ( ! is_array( $graphene_post_meta ) ) $graphene_post_meta = array();
+	
+	if ( ! array_key_exists( $post_id, $graphene_post_meta ) ) {
+		
+		if ( get_post_meta( $post_id, '_graphene_slider_img' ) ) 
+			graphene_convert_meta( $post_id );
+		
+		$current_post_meta = get_post_meta( $post_id, '_graphene_meta', true );
+		if ( ! $current_post_meta ) 
+			$graphene_post_meta[$post_id] = graphene_custom_fields_defaults();
+		else
+			$graphene_post_meta[$post_id] = array_merge( graphene_custom_fields_defaults(), $current_post_meta );
+	}
+	
+	if ( ! $field ) {
+		$post_meta = $graphene_post_meta[$post_id];
+	} else {
+		if ( ! in_array( $field, array( 'slider_imgurl', 'slider_url' ) ) && $graphene_post_meta[$post_id][$field] == 'global' ) 
+			$graphene_post_meta[$post_id][$field] = '';
+		$post_meta = $graphene_post_meta[$post_id][$field];
+	}
+	
+	return apply_filters( 'graphene_get_post_meta', $post_meta, $post_id, $field );
+}

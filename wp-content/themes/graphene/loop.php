@@ -57,7 +57,7 @@ if ( function_exists( 'get_post_format' ) && $post_type->name != 'page' ) {
 		<?php endif; ?>
 		
 		<?php /* Add an email post icon if the WP-Email plugin is installed and activated */
-			if( function_exists( 'wp_email' ) && is_singular() ) { echo '<p class="email">'; email_link(); echo '</p>'; }
+			if( function_exists( 'wp_email' ) && is_singular() ) { echo '<p class="email wp-email-button">'; email_link(); echo '</p>'; }
 		?>
         
 		<?php /* Post title */ ?>
@@ -167,7 +167,7 @@ if ( function_exists( 'get_post_format' ) && $post_type->name != 'page' ) {
 			<p class="comment-link">
 				<?php 
 				$comments_num = get_comments_number();
-				comments_popup_link( __( 'Leave comment', 'graphene' ), __( '1 comment', 'graphene' ), sprintf( _n( '1 comment', "%d comments", $comments_num, 'graphene' ), $comments_num ), 'comments-link', __( "Comments off", 'graphene' ) ); 
+				comments_popup_link( __( 'Leave comment', 'graphene' ), __( '1 comment', 'graphene' ), sprintf( _n( '%d comment', "%d comments", $comments_num, 'graphene' ), $comments_num ), 'comments-link', __( "Comments off", 'graphene' ) ); 
 				?>
             </p>
             <?php endif; ?>

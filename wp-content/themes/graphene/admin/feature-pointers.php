@@ -2,8 +2,9 @@
 /* 
  * Add admin feature pointers
 */
-function graphene_feature_pointers() {
-	if ( ! strpos( $_SERVER["REQUEST_URI"], 'page=graphene_options' ) ) return;
+function graphene_feature_pointers( $hook_suffix ) {
+	global $graphene_settings;
+	if ( $graphene_settings['hook_suffix'] != $hook_suffix  ) return;
 	
     $pointer_content = '<h3>' . esc_js( __( 'Where are all the options?!', 'graphene' ) ) . '</h3>';
     $pointer_content .= '<p>' . esc_js( __( "We've decided to clean things up!", 'graphene' ) ) . '</p>';

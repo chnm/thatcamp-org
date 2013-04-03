@@ -4,7 +4,7 @@ Plugin Name: Image Widget
 Plugin URI: http://wordpress.org/extend/plugins/image-widget/
 Description: Simple image widget that uses native WordPress upload thickbox to add image widgets to your site.
 Author: Modern Tribe, Inc.
-Version: 3.3.4
+Version: 3.3.7
 Author URI: http://tri.be
 */
 
@@ -24,7 +24,7 @@ add_action('widgets_init', 'tribe_load_image_widget');
 class Tribe_Image_Widget extends WP_Widget {
 
 	/**
-	 * SP Image Widget constructor
+	 * Tribe Image Widget constructor
 	 *
 	 * @author Modern Tribe, Inc. (Peter Chester)
 	 */
@@ -48,6 +48,7 @@ class Tribe_Image_Widget extends WP_Widget {
 			add_filter( 'image_send_to_editor', array( $this,'image_send_to_editor'), 1, 8 );
 			add_filter( 'gettext', array( $this, 'replace_text_in_thickbox' ), 1, 3 );
 			add_filter( 'media_upload_tabs', array( $this, 'media_upload_tabs' ) );
+			add_filter( 'image_widget_image_url', array( $this, 'https_cleanup' ) );
 		}
 		$this->fix_async_upload_image();
 	}
@@ -194,9 +195,20 @@ class Tribe_Image_Widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract( $args );
 		extract( $instance );
-		$title = apply_filters( 'widget_title', empty( $title ) ? '' : $title );
-
-		include( $this->getTemplateHierarchy( 'widget' ) );
+		if ( !empty( $imageurl ) ) {
+			$title = apply_filters( 'widget_title', empty( $title ) ? '' : $title );
+			$description = apply_filters( 'widget_text', $description, $args, $instance );
+			$imageurl = apply_filters( 'image_widget_image_url', esc_url( $imageurl ), $args, $instance );
+			if ( $link ) {
+				$link = apply_filters( 'image_widget_image_link', esc_url( $link ), $args, $instance );
+				$linktarget = apply_filters( 'image_widget_image_link_target', esc_attr( $linktarget ), $args, $instance );
+			}
+			$width = apply_filters( 'image_widget_image_width', $width, $args, $instance );
+			$height = apply_filters( 'image_widget_image_height', $height, $args, $instance );
+			$align = apply_filters( 'image_widget_image_align', esc_attr( $align ), $args, $instance );
+			$alt = apply_filters( 'image_widget_image_alt', esc_attr( $alt ), $args, $instance );
+			include( $this->getTemplateHierarchy( 'widget' ) );
+		}
 	}
 
 	/**
@@ -220,9 +232,6 @@ class Tribe_Image_Widget extends WP_Widget {
 		$instance['link'] = $new_instance['link'];
 		$instance['image'] = $new_instance['image'];
 		$instance['imageurl'] = $this->get_image_url($new_instance['image'],$new_instance['width'],$new_instance['height']);  // image resizing not working right now
-		if( isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on" ) {
-			$instance['imageurl'] = str_replace('http://', 'https://', $instance['imageurl']);
-		}
 		$instance['linktarget'] = $new_instance['linktarget'];
 		$instance['width'] = $new_instance['width'];
 		$instance['height'] = $new_instance['height'];
@@ -270,6 +279,22 @@ class Tribe_Image_Widget extends WP_Widget {
 			}
 		</style>
 		<?php
+	}
+
+	/**
+	 * Adjust the image url on output to account for SSL.
+	 *
+	 * @param string $imageurl
+	 * @return string $imageurl
+	 * @author Modern Tribe, Inc. (Peter Chester)
+	 */
+	function https_cleanup( $imageurl = '' ) {
+		if( isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on" ) {
+			$imageurl = str_replace('http://', 'https://', $imageurl);
+		} else {
+			$imageurl = str_replace('https://', 'http://', $imageurl);
+		}
+		return $imageurl;
 	}
 
 	/**

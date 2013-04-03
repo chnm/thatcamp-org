@@ -10,12 +10,12 @@ if ( !defined('ABSPATH') )
 
 echo $before_widget;
 if ( !empty( $title ) ) { echo $before_title . $title . $after_title; }
-if ( !empty( $image ) ) {
+if ( !empty( $imageurl ) ) {
 	if ( $link ) {
-		echo '<a class="'.$this->widget_options['classname'].'-image-link" href="'.esc_url($link).'" target="'.esc_attr($linktarget).'">';
+		echo '<a class="'.$this->widget_options['classname'].'-image-link" href="'.$link.'" target="'.$linktarget.'">';
 	}
 	if ( $imageurl ) {
-		echo '<img src="'.esc_url($imageurl).'" style="';
+		echo '<img src="'.$imageurl.'" style="';
 		if ( !empty( $width ) && is_numeric( $width ) ) {
 			echo "max-width: {$width}px;";
 		}
@@ -24,15 +24,12 @@ if ( !empty( $image ) ) {
 		}
 		echo "\"";
 		if ( !empty( $align ) && $align != 'none' ) {
-			$align = esc_attr($align);
 			echo " class=\"align{$align}\"";
 		}
 		if ( !empty( $alt ) ) {
-			$alt = esc_attr($alt);
 			echo " alt=\"{$alt}\"";
 		} else {
-			$title = esc_attr($title);
-			echo " alt=\"{$title}\"";					
+			echo " alt=\"{$title}\"";
 		}
 		echo " />";
 	}
@@ -40,9 +37,8 @@ if ( !empty( $image ) ) {
 	if ( $link ) { echo '</a>'; }
 }
 if ( !empty( $description ) ) {
-	$text = apply_filters( 'widget_text', $description, $args, $instance );
 	echo '<div class="'.$this->widget_options['classname'].'-description" >';
-	echo wpautop( $text );			
+	echo wpautop( $description );
 	echo "</div>";
 }
 echo $after_widget;

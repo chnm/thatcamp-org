@@ -34,6 +34,7 @@ if (!function_exists( 'graphene_comment' ) ) :
 								<?php printf( __( '%1$s at %2$s', 'graphene' ), get_comment_date(), get_comment_time() ); ?>
 								<span class="timezone"><?php echo '(UTC '.get_option( 'gmt_offset' ).')'; ?></span>
                                 <?php edit_comment_link(__( 'Edit comment','graphene' ),' (',') ' ); ?>
+				<?php if ( function_exists ('graphene_delete_and_spam_comment') ) { graphene_delete_and_spam_comment(get_comment_ID()); } ?>
                                 <span class="comment-permalink"><a href="<?php echo get_comment_link(); ?>"><?php _e( 'Link to this comment', 'graphene' ); ?></a></span>
                             	<?php do_action( 'graphene_comment_metadata' ); ?>    
                             </p>
@@ -107,9 +108,7 @@ function graphene_comment_textarea(){
 			<label class="graphene_form_label">' . __( 'Message:', 'graphene' ) . ' <span class="required">*</span></label>
 			<textarea name="comment" id="comment" cols="40" rows="10" class="graphene-form-field" aria-required="true"></textarea>
 		 </p>';
-	echo apply_filters( 'graphene_comment_textarea', $html );
-	
-	do_action( 'graphene_comment_textarea' );
+	return apply_filters( 'graphene_comment_textarea', $html );
 }
 	
 // Clear
@@ -190,8 +189,8 @@ function graphene_get_comment_count( $type = 'comments', $only_approved_comments
  * Custom jQuery script for the comments/pings tabs
 */
 function graphene_tabs_js(){ 
-	global $tabbed;
-	if ( $tabbed ) :
+	global $graphene_tabbed_comment;
+	if ( $graphene_tabbed_comment ) :
 ?>
 	<script type="text/javascript">
 		//<![CDATA[
@@ -246,4 +245,35 @@ function graphene_should_show_comments() {
 }
 
 endif;
+
+/**
+ * Delete and mark spam link for comments. Show only if current user can edit posts
+ */
+ if ( ! function_exists( 'graphene_delete_and_spam_comment' ) ) :
+function graphene_delete_and_spam_comment($id) {
+	if (current_user_can('edit_post')) {
+		echo '| <a class="comment-delete-link" title="Delete this comment" href="'.get_admin_url().'comment.php?action=cdc&c='.$id.'">Delete</a> ';
+		echo '| <a class="comment-spam-link" title="Mark this comment as Spam" href="'.get_admin_url().'comment.php?action=cdc&dt=spam&c='.$id.'">Spam</a> |';
+	}
+}
+endif;
+
+/**
+ * Add script to show/hide comment permalink
+ */
+function graphene_comment_script(){
+	?>
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			/* Comment permalink */
+			$('li.comment .comment-permalink').hide();
+			$('.comment-wrap').hover( function(){ $('.comment-permalink', this).fadeIn(200); }, function(){ $('.comment-permalink:eq(0)', this).fadeOut(200); });
+			
+			/* Jump to comment form */
+			$('.comment-form-jump a').click(function(){ $('html,body').animate({scrollTop: $("#respond").offset().top - 200},'slow'); return false;});
+		});
+	</script>
+    <?php
+}
+add_action( 'wp_footer', 'graphene_comment_script' );
 ?>

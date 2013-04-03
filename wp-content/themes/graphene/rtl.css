@@ -608,10 +608,10 @@ pre.block {
 	float: left;
 	text-align: left;
 }
-#previous {
+.previous {
 	float: right;
 }
-#next-post {
+.next-post {
 	float: left;
 	text-align: left;
 }

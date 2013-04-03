@@ -2,9 +2,9 @@
 Contributors: oferwald
 Donate link: http://transposh.org/donate/
 Tags: translation, translate, i18n, widget, filter, buddypress, bilingual, multilingual, transposh, language, crowdsourcing, google translate, bing translate, context, wiki, RTL, Hebrew, Spanish, French, Russian, English, Arabic, Portuguese
-Requires at least: 3.1
-Tested up to: 3.4
-Stable tag: 0.8.3
+Requires at least: 3.3
+Tested up to: 3.5
+Stable tag: 0.9.1
 
 Transposh adds best of breed translation support to wordpress, 66 languages are automatically translated and can be manually corrected with ease.
 
@@ -22,7 +22,8 @@ You can watch the video above, made by Fabrice Meuwissen of obviousidea.com whic
 * Multiple options for widget appearances - with pluggable widgets and multiple instances
 * Translation of external plugins without a need for .po/.mo files
 * Automatic translation mode for all content (including comments!)
-* Use either Google Translate,MS Translate or Apertium backends - 66 languages supported!
+* Professional translation bt [One Hour Translation](http://transposh.org/redir/oht)
+* Use either Google Translate,MS Translate or Apertium backends - 67 languages supported!
 * Automatic translation can be triggered on demand by the readers or on the server side
 * RSS feeds are translated too
 * Takes care of hidden elements, link tags, meta contents and titles
@@ -108,13 +109,54 @@ This version allows sorting of languages within the widget
  * Russian translation by Romans Matusevics
  * Hebrew translation by [Amir](http://colnect.com/he)
  * Frontend Spanish translation by [Ignacio](http://colnect.com/es/collectors/collector/iflvico)
- * Italian translation by Marco Rossi
+ * Italian translation by [MacItaly](http://profiles.wordpress.org/macitaly)
  * Persian translation by [Sushyant Zavarzadeh](http://zavarzadeh.org)
  * Spanish translation by [Angel Torregrosa](http://wordp.relatividad.org)
  * German translation by [Jenny Beelens](http://www.professionaltranslation.com)
  * Turkish translation by [Semih Yeşilyurt](http://kingdroid.net)
+ * Portuguese (Brazil) translation by [Amilton Junior](http://www.dicasemgeral.com)
 
 == Changelog ==
+= 2013/01/23 - 0.9.1 =
+ * Added some help inside the Admin interface for very common questions (keys)
+ * Allow jQueryUI version to be overriden, resolving many conflicts
+ * A fix when some bad plugins insert .css in an inappropriate way
+ * Added the transposh_echo function - see developer site for documentation and usage
+ * Fixes for widgets easier inclusion with shortcodes, old dropbox fixes, ids removed see the [Widget Gallery](http://transposh.org/tutorial/widget-showcase/)
+ * Adding touch punch to admin, allowing language selection on touch devices
+ * Fixes for minor issues discovered since 0.9.0
+= 2012/12/12 - 0.9.0 =
+ * Major rewrite for the administrative interface and settings, should simplify working with transposh
+ * Parsing rules can now be changed in the advanced tab, use with care
+ * Added the options to include debug and remote debug outputs
+ * A new language selection widget based on select2
+ * Added ctrl keys for quick navigation of prev/next blocks
+ * A new option that allows to reset the configuration file to the recommanded defaults
+ * Css fixes for twenty twelve theme
+ * Avoid loading the subwidgets in the admin pages
+ * Removed distinction between editable and viewable languages, now a language can only be active or disabled
+ * Updating jQueriUI to 1.9.2 (jQuery should now be 1.6+) 
+ * Fixes the z-index for the old style dropdown (patch by chemaz)
+ * Fixes the bug with the coupling of Chinese simple and traditional
+ * Fix bug preventing upgrade from very old versions
+ * Suppress notices when widgets are created directly with our function 
+ * Avoid rewriting urls in the default language, mainly effected canonicals
+ * Our script is needed when the widget allows setting of default language 
+ * Finally solved the problem with MSN translate and CR/LF 
+= 2012/09/15 - 0.8.5 =
+ * Support for Lao (Thanks to Google Translate)
+= 2012/09/03 - 0.8.4 =
+ * Integration with [One Hour Translation professional](http://transposh.org/redir/oht) translation service
+ * Fixed flag of Swahili to Tanzania as noted by Ed Jordan
+ * Live backup now includes a daily backup
+ * Fixes to backup, seems there was a big problem with data compactation
+ * Fix for a parser bug when having translate in default language following a select element
+ * Fixed XSS reported by [Infern0_](​http://www.seqrity.pl)
+ * Added global function to return the current language "transposh_get_current_language()"
+ * Seems like Lybia has a new flag
+ * Fixed widget IDs containing / so that we'll pass w3c validation
+ * Updated jQueryUI to 1.8.23 to avoid conflict with jQuery 1.8 used by some themes
+ * Portuguese (Brazil) translation by [Amilton Junior](http://www.dicasemgeral.com)
 = 2012/05/28 - 0.8.3 =
  * Fix break in feeds with params noticed by Marco Raaphorst 
  * Maintanance button now attempts to create database tables 

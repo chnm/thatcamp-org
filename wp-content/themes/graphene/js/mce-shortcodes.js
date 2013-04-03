@@ -37,6 +37,14 @@
 					 ed.selection.setContent('[important]' + ed.selection.getContent() + '[/important]');  
 				}  
 			});
+			
+			ed.addButton('pullquote', {  
+				title : ed.getLang('grapheneshortcodes.importanttitle', 'Add a pullquote'), 
+				image : url + '/buttons/pullquote.png',
+				onclick : function() {  
+					 ed.selection.setContent('[pullquote align="left|center|right" textalign="left|center|right" width="30%"]' + ed.selection.getContent() + '[/pullquote]');  
+				}  
+			});
 		},  
 		createControl : function(n, cm) {  
 			return null;  

@@ -52,6 +52,24 @@ function stats_load() {
 
 	// Map stats caps
 	add_filter( 'map_meta_cap', 'stats_map_meta_caps', 10, 4 );
+
+	add_filter( 'pre_option_db_version', 'stats_ignore_db_version' );
+}
+
+/**
+ * Prevent sparkline img requests being redirected to upgrade.php.
+ * See wp-admin/admin.php where it checks $wp_db_version.
+ */
+function stats_ignore_db_version( $version ) {
+	if (
+		is_admin() &&
+		isset( $_GET['page'] ) && $_GET['page'] == 'stats' &&
+		isset( $_GET['chart'] ) && strpos($_GET['chart'], 'admin-bar-hours') === 0
+	) {
+		global $wp_db_version;
+		return $wp_db_version;
+	}
+	return $version;
 }
 
 /**
@@ -95,10 +113,23 @@ function stats_template_redirect() {
 	$blog = Jetpack::get_option( 'id' );
 	$v = 'ext';
 	$j = sprintf( '%s:%s', JETPACK__API_VERSION, JETPACK__VERSION );
-	if ( $wp_the_query->is_single || $wp_the_query->is_page || $wp_the_query->is_posts_page )
+	if ( $wp_the_query->is_single || $wp_the_query->is_page || $wp_the_query->is_posts_page ) {
+		// Store and reset the queried_object and queried_object_id
+		// Otherwise, redirect_canonical() will redirect to home_url( '/' ) for show_on_front = page sites where home_url() is not all lowercase.
+		// Repro:
+		// 1. Set home_url = http://ExamPle.com/
+		// 2. Set show_on_front = page
+		// 3. Set page_on_front = something
+		// 4. Visit http://example.com/
+
+		$queried_object = ( isset( $wp_the_query->queried_object ) ) ? $wp_the_query->queried_object : null;
+		$queried_object_id = ( isset( $wp_the_query->queried_object_id ) ) ? $wp_the_query->queried_object_id : null;
 		$post = $wp_the_query->get_queried_object_id();
-	else
+		$wp_the_query->queried_object = $queried_object;
+		$wp_the_query->queried_object_id = $queried_object_id;
+	} else {
 		$post = '0';
+	}
 
 	$http = is_ssl() ? 'https' : 'http';
 	$week = gmdate( 'YW' );
@@ -212,12 +243,10 @@ function stats_admin_menu() {
 		}
 	}
 
-	// $hook = add_submenu_page( 'jetpack', __( 'Site Stats', 'jetpack' ), __( 'Site Stats', 'jetpack' ), 'view_stats', 'stats', 'stats_reports_page' );
-	
-  // Chaged stats page from Jetpack to Dashboard menu
+  // SAR: Chaged stats page from Jetpack to Dashboard menu
   $hook = add_dashboard_page( __( 'Site Stats', 'jetpack' ), __( 'Site Stats', 'jetpack' ), 'view_stats', 'stats', 'stats_reports_page' );
-          
-  add_action( "load-$hook", 'stats_reports_load' );
+
+	add_action( "load-$hook", 'stats_reports_load' );
 }
 
 function stats_admin_path() {
@@ -301,8 +330,13 @@ function stats_reports_page() {
 		// Loading message
 		// No JS fallback message
 ?>
+<style type="text/css">
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	img.wpcom-loading-64 { width: 32px; height: 32px; }
+}
+</style>
 <div id="stats-loading-wrap" class="wrap">
-<p class="hide-if-no-js"><img alt="<?php esc_attr_e( 'Loading&hellip;', 'jetpack' ); ?>" src="<?php echo esc_url( "$http://" . STATS_DASHBOARD_SERVER . "/i/loading/$color-64.gif" ); ?>" /></p>
+<p class="hide-if-no-js"><img class="wpcom-loading-64" alt="<?php esc_attr_e( 'Loading&hellip;', 'jetpack' ); ?>" src="<?php echo esc_url( "$http://" . STATS_DASHBOARD_SERVER . "/i/loading/$color-64.gif" ); ?>" /></p>
 <p class="hide-if-js"><?php esc_html_e( 'Your Site Stats work better with Javascript enabled.', 'jetpack' ); ?><br />
 <a href="<?php echo esc_url( $nojs_url ); ?>"><?php esc_html_e( 'View Site Stats without Javascript', 'jetpack' ); ?></a>.</p>
 </div>
@@ -338,6 +372,7 @@ function stats_reports_page() {
 		'blog_subscribers' => 'int',
 		'comment_subscribers' => null,
 		'type' => array( 'email', 'pending' ),
+		'pagenum' => 'int',
 	);
 	foreach ( $args as $var => $vals ) {
 		if ( !isset( $_REQUEST[$var] ) )
@@ -421,6 +456,7 @@ function stats_convert_post_titles( $html ) {
 	$posts = get_posts( array(
 		'include' => implode( ',', $matches[1] ),
 		'post_type' => 'any',
+		'post_status' => 'any',
 		'numberposts' => -1,
 	));
 	foreach ( $posts as $post )
@@ -473,7 +509,6 @@ function stats_configuration_head() {
 }
 
 function stats_configuration_screen() {
-	global $wp_version;
 	$options = stats_get_options();
 	$options['reg_users'] = empty( $options['reg_users'] ) ? false : true;
 	?>
@@ -483,10 +518,8 @@ function stats_configuration_screen() {
 		<input type='hidden' name='action' value='save_options' />
 		<?php wp_nonce_field( 'stats' ); ?>
 		<table id="menu" class="form-table">
-	<?php if ( version_compare( $wp_version, '3.1-RC', '>=' ) ) : ?>
 		<tr valign="top"><th scope="row"><label for="admin_bar"><?php _e( 'Admin bar' , 'jetpack' ); ?></label></th>
 		<td><label><input type='checkbox'<?php checked( $options['admin_bar'] ); ?> name='admin_bar' id='admin_bar' /> <?php _e( "Put a chart showing 48 hours of views in the admin bar.", 'jetpack' ); ?></label></td></tr>
-	<?php endif; ?>
 		<tr valign="top"><th scope="row"><label for="reg_users"><?php _e( 'Registered users', 'jetpack' ); ?></label></th>
 		<td><label><input type='checkbox'<?php checked( $options['reg_users'] ); ?> name='reg_users' id='reg_users' /> <?php _e( "Count the page views of registered users who are logged in.", 'jetpack' ); ?></label></td></tr>
 		<tr valign="top"><th scope="row"><?php _e( 'Smiley' , 'jetpack' ); ?></th>
@@ -525,9 +558,29 @@ function stats_admin_bar_head() {
 	?>
 
 <style type='text/css'>
-#wpadminbar .quicklinks li#wp-admin-bar-stats {height:28px}
-#wpadminbar .quicklinks li#wp-admin-bar-stats a {height:28px;padding:0}
-#wpadminbar .quicklinks li#wp-admin-bar-stats a img {padding:4px 11px}
+#wpadminbar .quicklinks li#wp-admin-bar-stats {
+	height: 28px;
+}
+#wpadminbar .quicklinks li#wp-admin-bar-stats a {
+	height: 28px;
+	padding: 0;
+}
+#wpadminbar .quicklinks li#wp-admin-bar-stats a div {
+	height: 28px;
+	width: 95px;
+	overflow: hidden;
+	margin: 0 10px;
+}
+#wpadminbar .quicklinks li#wp-admin-bar-stats a:hover div {
+	width: auto;
+	margin: 0 8px 0 10px;
+}
+#wpadminbar .quicklinks li#wp-admin-bar-stats a img {
+	height: 24px;
+	padding: 2px 0;
+	max-width: none;
+	border: none;
+}
 </style>
 <?php
 }
@@ -537,11 +590,14 @@ function stats_admin_bar_menu( &$wp_admin_bar ) {
 
 	$url = add_query_arg( 'page', 'stats', admin_url( 'admin.php' ) ); // no menu_page_url() blog-side.
 
-	$img_src = add_query_arg( array( 'noheader'=>'', 'proxy'=>'', 'chart'=>'admin-bar-hours', 'height'=>20, 'hours'=>48 ), $url );
+	$img_src = esc_attr( add_query_arg( array( 'noheader'=>'', 'proxy'=>'', 'chart'=>'admin-bar-hours-scale' ), $url ) );
+	$img_src_2x = esc_attr( add_query_arg( array( 'noheader'=>'', 'proxy'=>'', 'chart'=>'admin-bar-hours-scale-2x' ), $url ) );
 
-	$title = __( 'Views over 48 hours. Click for more Site Stats.', 'jetpack' );
+	$alt = esc_attr( __( 'Stats', 'jetpack' ) );
 
-	$menu = array( 'id' => 'stats', 'title' => "<img style='width:95px;height:20px' src='$img_src' alt='$title' title='$title' />", 'href' => $url );
+	$title = esc_attr( __( 'Views over 48 hours. Click for more Site Stats.', 'jetpack' ) );
+
+	$menu = array( 'id' => 'stats', 'title' => "<div><script type='text/javascript'>var src;if(typeof(window.devicePixelRatio)=='undefined'||window.devicePixelRatio<2){src='$img_src';}else{src='$img_src_2x';}document.write('<img src=\''+src+'\' alt=\'$alt\' title=\'$title\' />');</script></div>", 'href' => $url );
 
 	$wp_admin_bar->add_menu( $menu );
 }

@@ -1,0 +1,118 @@
+# Copyright (C) 2010 Stephanie Leary
+# This file is distributed under the same license as the Next Page package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Next Page 1.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/next-page\n"
+"POT-Creation-Date: 2010-02-01 04:58+0000\n"
+"PO-Revision-Date: 2012-03-26 14:49+0200\n"
+"X-Poedit-Language: Romanian\n"
+"X-Poedit-Country: Romania\n"
+"Language-Team: Web Geeks\n"
+"Last-Translator: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: next-page.php:76
+msgid "Previous:"
+msgstr "Precedentă:"
+
+#: next-page.php:80
+msgid "Up one level:"
+msgstr "Până la un nivel:"
+
+#: next-page.php:84
+msgid "Next:"
+msgstr "Următoare:"
+
+#: next-page.php:106
+msgid "Settings"
+msgstr "Setări"
+
+#: next-page.php:133
+msgid "Next Page Options"
+msgstr "Următoare opţiuni pagină"
+
+#: next-page.php:135
+msgid "Exclude pages: "
+msgstr "Exclude paginile: "
+
+#: next-page.php:138
+msgid "Enter page IDs separated by commas."
+msgstr "Introduceţi ID-uri de pagini separate prin virgule."
+
+#: next-page.php:141
+msgid "Previous Page Display:"
+msgstr "Afişare pagină anterioare:"
+
+#: next-page.php:142
+msgid "Before previous page link: "
+msgstr "Înainte de a link-ul anterior pagină: "
+
+#: next-page.php:146
+msgid "Previous page link text: <small>Use %title% for the page title</small>"
+msgstr "Anteriorul pagină link text: <small>utilizarea % title % pentru titlul paginii</small>"
+
+#: next-page.php:150
+msgid "After previous page link: "
+msgstr "După link-ul anterior pagină: "
+
+#: next-page.php:158
+msgid "Parent Page Display:"
+msgstr "Afişare pagină părinte:"
+
+#: next-page.php:159
+msgid "Before parent page link: "
+msgstr "Înainte de a link-ul paginii părinte: "
+
+#: next-page.php:163
+msgid "Parent page link text: <small>Use %title% for the page title</small>"
+msgstr "Mamă pagină link text: <small>utilizarea % title % pentru titlul paginii</small>"
+
+#: next-page.php:167
+msgid "After parent page link: "
+msgstr "După link-ul paginii părinte: "
+
+#: next-page.php:175
+msgid "Next Page Display:"
+msgstr "Afişare pagină următoare:"
+
+#: next-page.php:176
+msgid "Before next page link: "
+msgstr "Înainte de următoarea pagină link: "
+
+#: next-page.php:180
+msgid "Next page link text: <small>Use %title% for the page title</small>"
+msgstr "Pagina următoare textul link-ul: <small>utilizarea % title % pentru titlul paginii</small>"
+
+#: next-page.php:184
+msgid "After next page link: "
+msgstr "După următorul link-ul paginii: "
+
+#: next-page.php:192
+msgid "Update Options"
+msgstr "Opţiuni de actualizare"
+
+#. Plugin Name of an extension
+msgid "Next Page"
+msgstr "Pagina următoare"
+
+#. Plugin URI of an extension
+msgid "http://sillybean.net/code/wordpress/next-page/"
+msgstr "http://sillybean.net/code/WordPress/Next-page/"
+
+#. Description of an extension
+msgid "Provides shortcodes and template tags for next/previous navigation in pages."
+msgstr "Oferă Scurtăturile şi tag-uri şablon pentru navigare următoare / anterioară, în pagini."
+
+#. Author of an extension
+msgid "Stephanie Leary"
+msgstr "Stephanie Leary"
+
+#. Author URI of an extension
+msgid "http://sillybean.net/"
+msgstr "http://sillybean.net/"
+

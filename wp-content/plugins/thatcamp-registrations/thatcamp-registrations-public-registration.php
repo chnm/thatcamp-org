@@ -141,7 +141,7 @@ class Thatcamp_Registrations_Public_Registration {
 		<fieldset>
 			<legend><?php _e( 'Personal Information', 'thatcamp-registrations' ) ?></legend>
 
-			<p class="explanation" style="margin: 1em 0 1em 0;"><?php printf( __( 'Please note that the following pieces of information may be displayed publicly on this website: %s. We will not display your e-mail address or your reasons for coming to THATCamp.', 'thatcamp-registrations' ), $public_fields ) ?></p>
+			<p class="explanation" style="margin: 1em 0 1em 0; color:crimson;"><?php printf( __( 'Please note that the following pieces of information may be displayed publicly on this website: %s. We will not display your e-mail address or your reasons for coming to THATCamp.', 'thatcamp-registrations' ), $public_fields ) ?></p>
 
 			<?php foreach ( $fields as $field ) : ?>
 

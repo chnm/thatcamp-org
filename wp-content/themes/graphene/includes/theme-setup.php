@@ -7,9 +7,13 @@ if ( ! function_exists( 'graphene_db_init' ) ) :
 		global $graphene_settings, $graphene_defaults;
 		
 		/* Run DB updater if needed */
-                include( get_template_directory() . '/admin/db-updater.php' );
-                graphene_update_db();
-                $graphene_settings = array_merge( $graphene_defaults, get_option( 'graphene_settings', array() ) );        
+		include( $graphene_settings['template_dir'] . '/admin/db-updater.php' );
+		graphene_update_db();
+		$graphene_settings = get_option( 'graphene_settings', array() );
+		if ( $graphene_settings )
+			$graphene_settings = array_merge( $graphene_defaults, $graphene_settings );
+		else
+			$graphene_settings = $graphene_defaults;
 	}
 endif;
 add_action( 'init', 'graphene_db_init' );
@@ -35,8 +39,14 @@ function graphene_get_content_width(){
 
 	return graphene_grid_width( -($gutter * 2) + $diff, 16, 11, 8 );
 }
-global $content_width;
-$content_width = graphene_get_content_width();
+
+
+function graphene_set_content_width(){
+	global $content_width;
+	$content_width = graphene_get_content_width();
+}
+add_action( 'template_redirect', 'graphene_set_content_width' );
+graphene_set_content_width();
 
 
 if ( ! function_exists( 'graphene_setup' ) ):
@@ -54,19 +64,25 @@ function graphene_setup() {
 	if ( $graphene_settings['slider_display_style'] == 'bgimage-excerpt' ) {
 		$height = ( $graphene_settings['slider_height']) ? $graphene_settings['slider_height'] : 240;
 		$frontpage_id = ( get_option( 'show_on_front' ) == 'posts' ) ? NULL : get_option( 'page_on_front' );
-		$column_mode = graphene_column_mode( $frontpage_id );
 		
-		if ( strpos( $column_mode, 'two_col' ) === 0 )
-			$column_mode = 'two_col';
-		elseif ( strpos( $column_mode, 'three_col' ) === 0 )
-			$column_mode = 'three_col';
-		else 
-			$column_mode = NULL;
+		if ( $graphene_settings['slider_full_width'] ) {
+			$slider_width = graphene_grid_width( '', 16 );
+		} else {
 			
-		if ( $column_mode )
-			$slider_width = $graphene_settings['column_width'][$column_mode]['content'];
-		else 
-			$slider_width = graphene_grid_width( '', 16, 11, 8, $frontpage_id );
+			$column_mode = graphene_column_mode( $frontpage_id );
+			
+			if ( strpos( $column_mode, 'two_col' ) === 0 )
+				$column_mode = 'two_col';
+			elseif ( strpos( $column_mode, 'three_col' ) === 0 )
+				$column_mode = 'three_col';
+			else 
+				$column_mode = NULL;
+			
+			if ( $column_mode )
+				$slider_width = $graphene_settings['column_width'][$column_mode]['content'];
+			else 
+				$slider_width = graphene_grid_width( '', 16, 11, 8, $frontpage_id );
+		}
 		
 		add_image_size( 'graphene_slider', apply_filters( 'graphene_slider_image_width', $slider_width ), $height, true);
 	}
@@ -78,8 +94,7 @@ function graphene_setup() {
 	// Add support for editor syling
 	if ( ! $graphene_settings['disable_editor_style'] ){
 		global $content_width;
-		add_editor_style();
-		add_editor_style( 'admin/editor.css.php?content_width=' . $content_width );
+		add_editor_style( array( 'editor-style.css', 'admin/editor.css.php' ) );
 	}
 	
 	// Add default posts and comments RSS feed links to head
@@ -102,7 +117,10 @@ function graphene_setup() {
 	) );
 
 	// Add support for custom background
-	add_custom_background();
+	if ( graphene_is_wp_version( '3.4' ) )
+		add_theme_support( 'custom-background' );
+	else
+		add_custom_background();
 
 	/* Add support for custom header */
 	$args = array(
@@ -115,7 +133,7 @@ function graphene_setup() {
 		'admin-head-callback' => 'graphene_admin_header_style',
 	);
 
-	$args = apply_filters( 'p2_custom_header_args', $args );
+	$args = apply_filters( 'graphene_custom_header_args', $args );
 
 	if ( function_exists( 'get_custom_header' ) ) {
 		add_theme_support( 'custom-header', $args );
@@ -186,14 +204,17 @@ function graphene_admin_header_style(){
 	<style type="text/css">
 	.appearance_page_custom-header #headimg {
 		min-height: 0;
+		height: <?php echo $graphene_settings['header_img_height']; ?>px !important;
+		position: relative;
 	}
     #headimg h1 {
-		position: relative;
-		top: 110px;
+		position: absolute;
+		bottom: 30%;
 		left: <?php echo graphene_grid_width( '', 1 ) + $graphene_settings['gutter_width'] * 2; ?>px;
 		width: <?php echo (graphene_grid_width( -5, 13 ) + $graphene_settings['gutter_width'] * 13); ?>px;
 		margin: 0 <?php echo $graphene_settings['gutter_width']; ?>px;
-		font: bold 28px "Trebuchet MS";
+		font: normal 32px "Pontano Sans", arial, sans-serif;
+		letter-spacing: -1px;
 		text-decoration: none;
     }
 	#headimg h1 a {
@@ -203,11 +224,11 @@ function graphene_admin_header_style(){
         color: #000;
         border-bottom: none;
         position: relative;
-        top: 110px;
+        top: 68%;
         width: <?php echo graphene_grid_width( -5, 13 ) + $graphene_settings['gutter_width'] * 13; ?>px;
 		margin: 0 <?php echo $graphene_settings['gutter_width']; ?>px;
         left: <?php echo graphene_grid_width( '', 1 ) + $graphene_settings['gutter_width'] * 2; ?>px;
-        font: 18px arial;
+        font: normal 22px "Pontano Sans", arial, sans-serif;
     }
 	#headimg {
 		background-position: center top;
@@ -354,5 +375,3 @@ function graphene_display_dynamic_widget_hooks(){
     </div>
     <?php endif;
 }
-
-?>

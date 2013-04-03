@@ -380,6 +380,13 @@ function bbp_admin_repair_group_forum_relationship() {
 		update_option( '_bbp_group_forums_root_id', $posts[0]->ID );
 	}
 
+	// Remove bbPress 1.1 roles (BuddyPress)
+	remove_role( 'member'    );
+	remove_role( 'inactive'  );
+	remove_role( 'blocked'   );
+	remove_role( 'moderator' );
+	remove_role( 'keymaster' );
+
 	// Complete results
 	$result = sprintf( __( 'Complete! %s groups updated; %s forums updated.', 'bbpress' ), bbp_number_format( $g_count ), bbp_number_format( $f_count ) );
 	return array( 0, sprintf( $statement, $result ) );
@@ -680,9 +687,10 @@ function bbp_admin_repair_user_subscriptions() {
  */
 function bbp_admin_repair_user_roles() {
 
-	$statement = __( 'Remapping forum role for each user on this site&hellip; %s', 'bbpress' );
-	$changed   = 0;
-	$role_map  = bbp_get_user_role_map();
+	$statement    = __( 'Remapping forum role for each user on this site&hellip; %s', 'bbpress' );
+	$changed      = 0;
+	$role_map     = bbp_get_user_role_map();
+	$default_role = bbp_get_default_role();
 
 	// Bail if no role map exists
 	if ( empty( $role_map ) )
@@ -694,6 +702,9 @@ function bbp_admin_repair_user_roles() {
 		// Reset the offset
 		$offset = 0;
 
+		// If no role map exists, give the default forum role (bbp-participant)
+		$new_role = isset( $role_map[$role] ) ? $role_map[$role] : $default_role;
+			
 		// Get users of this site, limited to 1000
 		while ( $users = get_users( array(
 				'role'   => $role,
@@ -704,7 +715,7 @@ function bbp_admin_repair_user_roles() {
 
 			// Iterate through each user of $role and try to set it
 			foreach ( (array) $users as $user_id ) {
-				if ( bbp_set_user_role( $user_id, $role_map[$role] ) ) {
+				if ( bbp_set_user_role( $user_id, $new_role ) ) {
 					++$changed; // Keep a count to display at the end
 				}
 			}
@@ -1104,14 +1115,15 @@ function bbp_admin_reset_handler() {
 		/** Options ***********************************************************/
 
 		$statement  = __( 'Deleting Settings&hellip; %s', 'bbpress' );
-		$sql_delete = bbp_delete_options();
+		bbp_delete_options();
 		$messages[] = sprintf( $statement, $success );
 
 		/** Roles *************************************************************/
 
 		$statement  = __( 'Deleting Roles and Capabilities&hellip; %s', 'bbpress' );
-		$sql_delete = bbp_remove_roles();
-		$sql_delete = bbp_remove_caps();
+		remove_role( bbp_get_moderator_role() );
+		remove_role( bbp_get_participant_role() );
+		bbp_remove_caps();
 		$messages[] = sprintf( $statement, $success );
 
 		/** Output ************************************************************/

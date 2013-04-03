@@ -6,7 +6,11 @@
 global $graphene_defaults;
 $graphene_defaults = array(
 	/* Theme's DB version */
-	'db_version' 		=> '1.1',
+	'db_version' 		=> '1.2',
+	
+	/* Theme's options page hook suffix */
+	'hook_suffix'		=> '',
+	'hook_suffix_faq'	=> '',
 	
 	/* All options toggle */
 	'show_all_options' 	=> false,
@@ -35,6 +39,7 @@ $graphene_defaults = array(
 	'slider_specific_posts' 	=> '',
     'slider_specific_categories'=> '',
 	'slider_exclude_categories'	=> 'disabled',
+	'slider_random_category_posts' => false,
 	'slider_postcount' 			=> '',
 	'slider_img' 				=> 'featured_image', // disabled | featured_image | post_image | custom_url
 	'slider_display_style' 		=> 'thumbnail-excerpt', // thumbnail-excerpt | bgimage-excerpt | full-post
@@ -44,6 +49,7 @@ $graphene_defaults = array(
 	'slider_trans_speed' 		=> '400',
 	'slider_position' 			=> false,
 	'slider_disable'			=> false,
+	'slider_full_width'			=> false,
     'slider_animation'			=> 'horizontal-slide', // horizontal-slide | vertical-slide | fade | none
 	
 	/* Front page options */
@@ -70,13 +76,13 @@ $graphene_defaults = array(
 	/* Top bar options(Syndication) */
 	'hide_top_bar' 				=> false,        		
 	'social_media_new_window'   => false,	
-	'social_profiles'           => array( 
-										0 => array( 
-												'type'	=> 'rss',
-												'name'	=> 'RSS',
-												'title'	=> sprintf( __( "Subscribe to %s's RSS feed", 'graphene' ), get_bloginfo( 'name' ) ),
-												'url'	=> '',
-											)
+	'social_profiles'           => array ( 
+										array ( 
+											'type'	=> 'rss',
+											'name'	=> 'RSS',
+											'title'	=> sprintf( __( 'Subscribe to %s\'s RSS feed', 'graphene' ), get_bloginfo( 'name' ) ),
+											'url'	=> '',
+										)
 									),
 	
 	/* Adsense Options */
@@ -87,6 +93,7 @@ $graphene_defaults = array(
 	/* Social Sharing options */
 	'show_addthis' 				=> false,
 	'show_addthis_page'         => false,
+	'show_addthis_archive'		=> false,
 	'addthis_location' 			=> 'post-bottom', // post-bottom | post-top | top-bottom
 	'addthis_code' 				=> '',
 	
@@ -150,11 +157,49 @@ $graphene_defaults = array(
 	
 	/* Colour options */
 	'colour_preset'				=> 'default',
+	
+	'top_bar_top_bg' 			=> '#000',
+	'top_bar_bottom_bg' 		=> '#313130',
+	'top_bar_border' 			=> '#222',
+	'top_bar_header_border' 	=> '#000',
+	
+	'menu_primary_top_bg' 		=> '#212121',
+	'menu_primary_bottom_bg' 	=> '#101010',
+	'menu_primary_border'		=> '#000',
+	'menu_primary_item' 		=> '#fff',
+	'menu_primary_description'	=> '#aaa',
+	'menu_primary_active_top_bg' 	=> '#eee',
+	'menu_primary_active_bottom_bg' => '#ddd',
+	'menu_primary_active_item' 		=> '#000',
+	'menu_primary_active_description'	=> '#484848',
+	'menu_primary_dd_top_bg' 	=> '#efefef',
+	'menu_primary_dd_bottom_bg' => '#dfdfdf',
+	'menu_primary_dd_item' 		=> '#000',
+	'menu_primary_dd_shadow'	=> '#555',
+	'menu_primary_dd_active_top_bg' => '#333',
+	'menu_primary_dd_active_bottom_bg' => '#212121',
+	'menu_primary_dd_active_item' => '#fff',
+	
+	'menu_sec_bg' 				=> '#222',
+	'menu_sec_border' 			=> '#2c2c2c',
+	'menu_sec_item' 			=> '#fff',
+	'menu_sec_active_bg'		=> '#eee',
+	'menu_sec_active_item' 		=> '#000',
+	'menu_sec_dd_top_bg'		=> '#eee',
+	'menu_sec_dd_bottom_bg'		=> '#dedede',
+	'menu_sec_dd_item' 			=> '#000',
+	'menu_sec_dd_shadow' 		=> '#555',
+	'menu_sec_dd_active_top_bg'	=> '#333',
+	'menu_sec_dd_active_bottom_bg'	=> '#212121',
+	'menu_sec_dd_active_item' 	=> '#fff',
+	
 	'bg_content_wrapper' 		=> '#e3e3e3',
 	'bg_content' 				=> '#fff',
 	'bg_meta_border' 			=> '#e3e3e3',
 	'bg_post_top_border' 		=> '#d8d8d8',
 	'bg_post_bottom_border' 	=> '#ccc',
+	'bg_sticky_content' 			=> '#def',
+	'bg_child_page_content' 	=> '#E9ECF5',
 	'bg_widget_item' 			=> '#fff',
 	'bg_widget_list' 			=> '#e3e3e3',
 	'bg_widget_header_border'	=> '#195392',
@@ -179,6 +224,16 @@ $graphene_defaults = array(
 	'link_colour_normal' 		=> '#1772af',
 	'link_colour_visited' 		=> '#1772af',
 	'link_colour_hover' 		=> '#074d7c',
+	
+	'footer_bg' 				=> '#111',
+	'footer_heading' 			=> '#e3e3e3',
+	'footer_text'				=> '#999',
+	'footer_link' 				=> '#fff',
+	'footer_submenu_text' 		=> '#ccc',
+	'footer_submenu_border'		=> '#222',
+	
+	/* Google Webfonts */
+	'webfont_families'			=> '',
 	
 	/* Comments colour options */
 	'bg_comments' 				=> '#E9ECF5',
@@ -217,13 +272,15 @@ $graphene_defaults = array(
 	'custom_site_title_content' => '',
 	'favicon_url' 				=> '',
 	'custom_css' 				=> '',
-	'disable_editor_style' 	=> false,
+	'disable_editor_style' 		=> false,
     
 	/* Advanced options */
 	'enable_preview' 			=> false,
 	'widget_hooks' 				=> array(),
+	'head_tags'					=> '',
+	'disable_css_generate'		=> false,
 	
-	/* Miscellaneous switches */
+	/* Miscellaneous switches and vars */
 	'disable_credit' 			=> false,
+	'template_dir'				=> get_template_directory(),
 );
-?>

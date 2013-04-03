@@ -39,12 +39,12 @@ function graphene_rgb2hex( $c ){
  * Perform adding (or subtracting) operation on a hexadecimal colour code
 */
 function graphene_hex_addition( $hex, $num ){
-	$rgb = graphene_rgb2hex( $hex);
-	foreach ( $rgb as $key => $val) {
+	$rgb = graphene_rgb2hex( $hex );
+	foreach ( $rgb as $key => $val ) {
 		$rgb[$key] += $num;
 		$rgb[$key] = ( $rgb[$key] < 0) ? 0 : $rgb[$key];
 	}
-	$hex = graphene_rgb2hex(implode( ',', $rgb) );
+	$hex = graphene_rgb2hex( implode( ',', $rgb ) );
 	
 	return $hex;
 }
@@ -108,6 +108,8 @@ function graphene_get_action_hooks( $hooksonly = false ) {
 }
 
 
+if ( ! function_exists( 'graphene_column_mode' ) ) :
+
 function graphene_column_mode( $post_id = NULL ){
     global $graphene_settings;
     
@@ -154,20 +156,22 @@ function graphene_column_mode( $post_id = NULL ){
     return $graphene_settings['column_mode']; 
 }
 
+endif;
+
 
 /**
  * Prints out the content of a variable wrapped in <pre> elements.
  * For development and debugging use
 */
 if ( ! function_exists( 'disect_it' ) ) :
-function disect_it( $var = NULL, $exit = true, $comment = false){
-	if ( $var !== NULL){
-		if ( $comment) {echo '<!--';}
+function disect_it( $var = NULL, $exit = true, $comment = false ){
+	if ( $var !== NULL ){
+		if ( $comment ) {echo '<!--';}
 		echo '<pre>';
-		print_r( $var);
+		print_r( $var );
 		echo '</pre>';
-		if ( $comment) {echo '-->';}
-		if ( $exit) {exit();}
+		if ( $comment ) {echo '-->';}
+		if ( $exit ) {exit();}
 	} else {
 		echo '<strong>ERROR:</strong> You must pass a variable as argument to the <code>disect_it()</code> function.';	
 	}
@@ -234,17 +238,16 @@ endif;
 */
 if ( ! function_exists( 'graphene_is_wp_version' ) ) :
 
-function graphene_is_wp_version( $version = '' ) {
-	if ( ! $version ) return false;
+function graphene_is_wp_version( $is_ver = '' ) {
 
-	global $wp_version;
-
-	if ( version_compare( $wp_version, $version, '<' ) ) {
-		return false;
-	}
-	
-	return true;
+    $wp_ver = explode( '.', get_bloginfo( 'version' ) );
+    $is_ver = explode( '.', $is_ver );
+    for( $i=0; $i<=count( $is_ver ); $i++ )
+        if( !isset( $wp_ver[$i] ) ) array_push( $wp_ver, 0 );
+ 
+    foreach( $is_ver as $i => $is_val )
+        if( $wp_ver[$i] < $is_val ) return false;
+    return true;
 }
 
 endif;
-?>

@@ -1,10 +1,10 @@
 === Image Widget ===
-Contributors: ModernTribe, peterchester, mattwiebe, Produced by Modern Tribe, Inc.
+Contributors: ModernTribe, peterchester, mattwiebe
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4BSPTNFFY6AL6
-Tags: widget, image, ad, banner, simple, upload, sidebar, admin, thickbox, resize
+Tags: widget, image, ad, banner, simple, upload, sidebar, admin, thickbox, resize, french, german, japanese, portuguese, romanian, swedish, dutch, czech, ssl, https, widget-only
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable tag: 3.3.4
+Tested up to: 3.4.1
+Stable tag: 3.3.7
 
 == Description ==
 
@@ -17,16 +17,18 @@ Simple image widget that uses native Wordpress upload thickbox to add image widg
 * Very versatile.  All fields are optional.
 * Upload, link to external image, or select an image from your media collection using the built in thickbox browser.
 * Supports override of template so that you can override the template for your theme!
-* Supports HTTPS
+* Supports HTTPS/SSL image urls
 
 Supported Languages (feel free to contribute other languages):
 
+* Dutch
 * French
 * German
 * Japanese
 * Portuguese
 * Romanian
 * Swedish
+* Czech
 
 This plugin is actively supported and we will do our best to help you. In return we simply as 3 things:
 
@@ -70,7 +72,70 @@ function my_template_filter($template) {
 	return get_template_directory() . '/my-custom-templates/my-custom-name.php';
 }`
 
+= Filters =
+
+There are a number of filters in the code that will allow you to override data as you see fit. The best way to learn what filters are available is always by simply searching the code for 'apply_filters'. But all the same, here are a few of the more essential filters:
+
+*widget_title*
+
+This is actually a pretty typical filter in widgets and is applied to the widget title.
+
+*widget_text*
+
+Another very typical widget filter that is applied to the description body text. This filter also takes 2 additional arguments for $args and $instance so that you can learn more about the specific widget instance in the process of filtering the content.
+
+*image_widget_image_url*
+
+Filters the url of the image displayed in the widget.
+Accepts additional $args and $instance arguments.
+
+*image_widget_image_link*
+
+Filters the url that the image links to.
+Accepts additional $args and $instance arguments.
+
+*image_widget_image_link_target*
+
+Filters the link target of the image link.
+Accepts additional $args and $instance arguments.
+
+*image_widget_image_width*
+
+Filters the display width of the image. Hint: override this to use this in responsive designs :)
+Accepts additional $args and $instance arguments.
+
+*image_widget_image_height*
+
+Filters the display height of the image.
+Accepts additional $args and $instance arguments.
+
+*image_widget_image_align*
+
+Filters the display alignment of the image.
+Accepts additional $args and $instance arguments.
+
+*image_widget_image_alt*
+
+Filters the alt text of the image.
+Accepts additional $args and $instance arguments.
+
 == Changelog ==
+
+= 3.3.7 =
+
+* Add filters so that people can more easily adjust the output of the widget as per @TCBarrett's request.
+
+= 3.3.6 =
+
+* Czech translation courtesy of Vladislav Musilek at blogísek (http://blog.musilda.cz).
+
+= 3.3.5 =
+
+* Fix filtered media library inserts thanks to @miraclemaker as well as @oxyc, @BjornW and innumerable others in the support forum (http://wordpress.org/support/topic/plugin-image-widget-add-image-upload-an-image-select-insert-into-widget-no-image-is-shown)
+* Adjusted HTTPS/SSL handling so that it's only applied in the view. ( thanks @TheFluffyDoneky and @aerobrent )
+* Added a filter for the image url: 'image_widget_image_url'
+* Add Dutch language translation ( thank you Carsten Alsemgeest - presis.nl )
+* Rename all language files to lowercase image_widget to match the localization string.
 
 = 3.3.4 =
 

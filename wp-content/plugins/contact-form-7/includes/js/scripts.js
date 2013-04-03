@@ -22,6 +22,9 @@
 				data: { '_wpcf7_is_ajax_call': 1 },
 				dataType: 'json',
 				success: function(data) {
+					if (! $.isPlainObject(data) || $.isEmptyObject(data))
+						return;
+
 					var ro = $(data.into).find('div.wpcf7-response-output');
 					$(data.into).wpcf7ClearResponseOutput();
 
@@ -43,9 +46,13 @@
 						ro.addClass('wpcf7-validation-errors');
 						$(data.into).find('form.wpcf7-form').addClass('invalid');
 
+						$(data.into).trigger('invalid.wpcf7');
+
 					} else if (1 == data.spam) {
 						ro.addClass('wpcf7-spam-blocked');
 						$(data.into).find('form.wpcf7-form').addClass('spam');
+
+						$(data.into).trigger('spam.wpcf7');
 
 					} else if (1 == data.mailSent) {
 						ro.addClass('wpcf7-mail-sent-ok');
@@ -54,13 +61,19 @@
 						if (data.onSentOk)
 							$.each(data.onSentOk, function(i, n) { eval(n) });
 
+						$(data.into).trigger('mailsent.wpcf7');
+
 					} else {
 						ro.addClass('wpcf7-mail-sent-ng');
 						$(data.into).find('form.wpcf7-form').addClass('failed');
+
+						$(data.into).trigger('mailfailed.wpcf7');
 					}
 
 					if (data.onSubmit)
 						$.each(data.onSubmit, function(i, n) { eval(n) });
+
+					$(data.into).trigger('submit.wpcf7');
 
 					if (1 == data.mailSent)
 						$(data.into).find('form').resetForm().clearForm();

@@ -1,24 +1,20 @@
 <?php
 
 /*
- * Transposh v0.8.3
+ * Transposh v0.9.1
  * http://transposh.org/
  *
- * Copyright 2012, Team Transposh
+ * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 28 May 2012 14:38:35 +0300
+ * Date: Wed, 23 Jan 2013 02:24:14 +0200
  */
 
 require_once("shd/simple_html_dom.php");
 require_once("constants.php");
-
+require_once("logging.php");
 require_once("utils.php");
-
-define('PUNCT_BREAKS', TRUE); // Will punctiations such as , . ( and such will break a phrase
-define('NUM_BREAKS', TRUE); // Will a number break a phrase
-define('ENT_BREAKS', TRUE); // Will an HTML entity break a phrase
 
 /**
  * parserstats class - holds parser statistics
@@ -99,7 +95,10 @@ class parserstats {
  */
 class parser {
 
-    // funnctions that need to be defined... //
+    private $punct_breaks = true;
+    private $num_breaks = true;
+    private $ent_breaks = true;
+    // functions that need to be defined... //
     public $url_rewrite_func = null;
     public $fetch_translate_func = null;
     public $prefetch_translate_func = null;
@@ -208,8 +207,8 @@ class parser {
      * @param string $entity - html entity to check
      * @return boolean true if not a breaker (apostrophy)
      */
-    function is_entity_breaker($entity) {
-        return!(stripos('&#8217;&apos;&quot;&#039;&#39;&rsquo;&lsquo;&rdquo;&ldquo;', $entity) !== FALSE);
+    function is_entity_breaker($entity) { // &#8216;&#8217;??
+        return !(stripos('&#8216;&#8217;&apos;&quot;&#039;&#39;&rsquo;&lsquo;&rdquo;&ldquo;', $entity) !== FALSE);
     }
 
     /**
@@ -287,10 +286,10 @@ class parser {
       &Yuml;      &#376;                        latin capital letter Y with diaeresis
      */
     function is_entity_letter($entity) {
-        
+        tp_logger("checking ($entity) - " . htmlentities($entity), 4);
         $entnum = (int) substr($entity, 2);
-        if (($entnum >= 192 && $entnum <= 214) || ($entnum >= 216 && $entnum <= 246) || ($entnum >= 248 && $entnum <= 255)
-                || $entnum == 338 || $entnum == 339|| $entnum == 352|| $entnum == 353|| $entnum == 376) {
+        // skip multiply and divide (215, 247) 
+        if (($entnum >= 192 && $entnum <= 214) || ($entnum >= 216 && $entnum <= 246) || ($entnum >= 248 && $entnum <= 696)) {
             return true;
         }
         $entities = '&Agrave;&Aacute;&Acirc;&Atilde;&Auml;&Aring;&AElig;&Ccedil;&Egrave;&Eacute;&Ecirc;&Euml;&Igrave;&Iacute;&Icirc;&Iuml;&ETH;' .
@@ -336,14 +335,14 @@ class parser {
     function tag_phrase($string, $start, $end) {
         $phrase = trim(substr($string, $start, $end - $start));
 //        $logstr = str_replace(array(chr(1),chr(2),chr(3),chr(4)), array('[1]','[2]','[3]','[4]'), $string);
-//        
-//        
+//        logger ("p:$phrase, s:$logstr, st:$start, en:$end, gt:{$this->in_get_text}, gti:{$this->in_get_text_inner}");
+//        logger ('');
         if ($this->in_get_text > $this->in_get_text_inner) {
-            
+            tp_logger('not tagging ' . $phrase . ' assumed gettext translated', 4);
             return;
         }
         if ($phrase) {
-            
+            tp_logger('tagged phrase: ' . $phrase, 4);
             $node = new simple_html_dom_node($this->html);
             $node->tag = 'phrase';
             $node->parent = $this->currentnode;
@@ -377,10 +376,10 @@ class parser {
 
         while ($pos < strlen($string)) {
             // Some HTML entities make us break, almost all but apostrophies
-            if (ENT_BREAKS && $len_of_entity = $this->is_html_entity($string, $pos)) {
+            if ($this->ent_breaks && $len_of_entity = $this->is_html_entity($string, $pos)) {
                 $entity = substr($string, $pos, $len_of_entity);
                 if (($this->is_white_space(@$string[$pos + $len_of_entity]) || $this->is_entity_breaker($entity)) && !$this->is_entity_letter($entity)) {
-                    
+                    tp_logger("entity ($entity) breaks", 4);
                     $this->tag_phrase($string, $start, $pos);
                     $start = $pos + $len_of_entity;
                 }
@@ -397,7 +396,7 @@ class parser {
             } elseif ($string[$pos] == TP_GTXT_BRK || $string[$pos] == TP_GTXT_BRK_CLOSER) {
 //                $logstr = str_replace(array(chr(1),chr(2),chr(3),chr(4)), array('[1]','[2]','[3]','[4]'), $string);
 //                $closers = ($string[$pos] == TP_GTXT_BRK) ? '': 'closer';
-//                
+//                tp_logger(" $closers TEXT breaker $logstr start:$start pos:$pos gt:" . $this->in_get_text, 3);
                 $this->tag_phrase($string, $start, $pos);
                 ($string[$pos] == TP_GTXT_BRK) ? $this->in_get_text += 1 : $this->in_get_text -= 1;
                 $pos++;
@@ -408,8 +407,8 @@ class parser {
             } elseif ($string[$pos] == TP_GTXT_IBRK || $string[$pos] == TP_GTXT_IBRK_CLOSER) {
 //                $logstr = str_replace(array(chr(1),chr(2),chr(3),chr(4)), array('[1]','[2]','[3]','[4]'), $string);
 //                $closers = ($string[$pos] == TP_GTXT_IBRK) ? '': 'closer';
-//                
-                //
+//                tp_logger("   $closers INNER text breaker $logstr start:$start pos:$pos gt:" . $this->in_get_text_inner, 3);
+                //tp_logger("inner text breaker $start $pos $string " . (($this->in_get_text_inner) ? 'true' : 'false'), 5);
                 $this->tag_phrase($string, $start, $pos);
                 if ($this->in_get_text)
                         ($string[$pos] == TP_GTXT_IBRK) ? $this->in_get_text_inner += 1 : $this->in_get_text_inner -=1;
@@ -418,26 +417,26 @@ class parser {
                 //$this->in_get_text_inner = !$this->in_get_text_inner;
             }
             // will break translation unit when there's a breaker ",.[]()..."
-            elseif (PUNCT_BREAKS && $senb_len = $this->is_sentence_breaker($string[$pos], @$string[$pos + 1], @$string[$pos + 2])) {
-//                
+            elseif ($this->punct_breaks && $senb_len = $this->is_sentence_breaker($string[$pos], @$string[$pos + 1], @$string[$pos + 2])) {
+//                logger ("sentence breaker...");
                 $this->tag_phrase($string, $start, $pos);
                 $pos += $senb_len;
                 $start = $pos;
             }
             // Numbers also break, if they are followed by whitespace (or a sentence breaker) (don't break 42nd) // TODO: probably by breaking entities too...
             // also prefixed by whitespace?
-            elseif (NUM_BREAKS && $num_len = $this->is_number($string, $pos)) {
-//                
+            elseif ($this->num_breaks && $num_len = $this->is_number($string, $pos)) {
+//                logger ("numnum... $num_len");
                 // this is the case of B2 or B2,
                 if (($start == $pos) || ($this->is_white_space($string[$pos - 1])
                         || ($this->is_sentence_breaker(@$string[$pos + $num_len - 1], @$string[$pos + $num_len], @$string[$pos + $num_len + 1]))) &&
                         ($this->is_white_space(@$string[$pos + $num_len]) || $this->is_sentence_breaker(@$string[$pos + $num_len], @$string[$pos + $num_len + 1], @$string[$pos + $num_len + 2]))) {
                     // we will now compensate on the number followed by breaker case, if we need to
-//                            
+//                            logger ("compensate part1?");
                     if (!(($start == $pos) || $this->is_white_space($string[$pos - 1]))) {
-//                            
+//                            logger ("compensate part2?");
                         if ($this->is_sentence_breaker($string[$pos + $num_len - 1], $string[$pos + $num_len], $string[$pos + $num_len + 1])) {
-//                            
+//                            logger ("compensate 3?");
                             $num_len--; //this makes the added number shorter by one, and the pos will be at a sentence breaker next so we don't have to compensate
                         }
                         $pos += $num_len;
@@ -447,7 +446,7 @@ class parser {
                     $start = $pos + $num_len /* +1 */;
                 }
                 $pos += $num_len/* + 1 */;
-//                
+//                logger ("numnumpos... $pos");
             } else {
                 // smarter marking of start location
                 if ($start == $pos && $this->is_white_space($string[$pos]))
@@ -512,6 +511,8 @@ class parser {
             }
             if (isset($src_set_here) && $src_set_here)
                     $this->srclang = $prevsrclang;
+            if (isset($inselect_set_here) && $inselect_set_here)
+                    $this->inselect = false;
             return;
         }
 
@@ -546,7 +547,7 @@ class parser {
         elseif ($node->tag == 'iframe') {
             if ($this->url_rewrite_func) {
                 $node->src = call_user_func_array($this->url_rewrite_func, array($node->src));
-                
+                tp_logger('iframe: ' . $node->src, 4);
             }
         }
 
@@ -625,6 +626,18 @@ class parser {
     }
 
     /**
+     * Allow changing of parsing rules, yeah, I caved
+     * @param type $puncts
+     * @param type $numbers
+     * @param type $entities
+     */
+    function change_parsing_rules($puncts, $numbers, $entities) {
+        $this->punct_breaks = $puncts;
+        $this->num_breaks = $numbers;
+        $this->ent_breaks = $entities;
+    }
+
+    /**
      * Main function - actually translates a given HTML
      * @param string $string containing HTML
      * @return string Translated content is here
@@ -637,7 +650,7 @@ class parser {
             if ($string[0] == '{') {
                 $jsoner = json_decode($string);
                 if ($jsoner != null) {
-                    
+                    tp_logger("json detected (buddypress?)", 4);
                     // currently we only handle contents (which buddypress heavily use)
                     if ($jsoner->contents) {
                         $jsoner->contents = $this->fix_html($jsoner->contents);
@@ -673,7 +686,7 @@ class parser {
         // fix feed
         if ($this->feed_fix) {
             // fix urls on feed
-            
+            tp_logger('fixing rss feed', 3);
             foreach (array('link', 'wfw:commentrss', 'comments') as $tag) {
                 foreach ($this->html->find($tag) as $e) {
                     $e->innertext = htmlspecialchars(call_user_func_array($this->url_rewrite_func, array($e->innertext)));
@@ -708,9 +721,10 @@ class parser {
             }
             foreach (array('title', 'value') as $title) {
                 foreach ($this->html->find('[' . $title . ']') as $e) {
-                    if (isset($e->nodes)) foreach ($e->nodes as $ep) {
-                        if ($ep->phrase) $originals[$ep->phrase] = true;
-                    }
+                    if (isset($e->nodes))
+                            foreach ($e->nodes as $ep) {
+                            if ($ep->phrase) $originals[$ep->phrase] = true;
+                        }
                 }
             }
             foreach ($this->html->find('[content]') as $e) {
@@ -793,7 +807,7 @@ class parser {
             }
 
             // this adds saved spans to the first not in select element which is in the body
-            if (!$ep->inselect && $savedspan && $ep->inbody) { // (TODO: might not be...?)
+            if ($e->nodes && !$ep->inselect && $savedspan && $ep->inbody) { // (TODO: might not be...?)
                 $e->outertext = $savedspan . $e->outertext;
                 $savedspan = '';
             }
@@ -809,40 +823,41 @@ class parser {
                 if (isset($e->parent->_[HDOM_INFO_OUTER])) {
                     $saved_outertext = $e->outertext;
                 }
-                
-                if (isset($e->nodes)) foreach ($e->nodes as $ep) {
-                    if ($ep->tag == 'phrase') {
-                        list ($source, $translated_text) = call_user_func_array($this->fetch_translate_func, array($ep->phrase, $this->lang));
-                        // more stats
-                        $this->stats->total_phrases++;
-                        if ($ep->inbody) $this->stats->hidden_phrases++; else
-                                $this->stats->meta_phrases++;
-                        if ($translated_text) {
-                            $this->stats->translated_phrases++;
-                            if ($ep->inbody)
-                                    $this->stats->hidden_translated_phrases++; else
-                                    $this->stats->meta_translated_phrases++;
-                            if ($source == 0)
-                                    $this->stats->human_translated_phrases++;
-                        }
-                        if (($this->is_edit_mode || ($this->is_auto_translate && $translated_text == null)) && $ep->inbody) {
-                            // prevent duplicate translation (title = text)
-                            if (strpos($e->innertext, transposh_utils::base64_url_encode($ep->phrase)) === false) {
-                                //no need to translate span the same hidden phrase more than once
-                                if (!in_array($ep->phrase, $hidden_phrases)) {
-                                    $this->stats->hidden_translateable_phrases++;
-                                    $span .= $this->create_edit_span($ep->phrase, $translated_text, $source, true, $ep->srclang);
-                                    //    
-                                    $hidden_phrases[] = $ep->phrase;
+                tp_logger("$title-original: $e->$title}", 4);
+                if (isset($e->nodes))
+                        foreach ($e->nodes as $ep) {
+                        if ($ep->tag == 'phrase') {
+                            list ($source, $translated_text) = call_user_func_array($this->fetch_translate_func, array($ep->phrase, $this->lang));
+                            // more stats
+                            $this->stats->total_phrases++;
+                            if ($ep->inbody) $this->stats->hidden_phrases++; else
+                                    $this->stats->meta_phrases++;
+                            if ($translated_text) {
+                                $this->stats->translated_phrases++;
+                                if ($ep->inbody)
+                                        $this->stats->hidden_translated_phrases++; else
+                                        $this->stats->meta_translated_phrases++;
+                                if ($source == 0)
+                                        $this->stats->human_translated_phrases++;
+                            }
+                            if (($this->is_edit_mode || ($this->is_auto_translate && $translated_text == null)) && $ep->inbody) {
+                                // prevent duplicate translation (title = text)
+                                if (strpos($e->innertext, transposh_utils::base64_url_encode($ep->phrase)) === false) {
+                                    //no need to translate span the same hidden phrase more than once
+                                    if (!in_array($ep->phrase, $hidden_phrases)) {
+                                        $this->stats->hidden_translateable_phrases++;
+                                        $span .= $this->create_edit_span($ep->phrase, $translated_text, $source, true, $ep->srclang);
+                                        //    logger ($span);
+                                        $hidden_phrases[] = $ep->phrase;
+                                    }
                                 }
                             }
-                        }
-                        // if we need to replace, we store this
-                        if ($translated_text) {
-                            $replace[$translated_text] = $ep;
+                            // if we need to replace, we store this
+                            if ($translated_text) {
+                                $replace[$translated_text] = $ep;
+                            }
                         }
                     }
-                }
                 // and later replace
                 foreach (array_reverse($replace, true) as $replace => $epg) {
                     $e->title = substr_replace($e->title, $replace, $epg->start, $epg->len);
@@ -882,7 +897,7 @@ class parser {
                         $hiddenspans .= $this->create_edit_span($ep->phrase, $translated_text, $source, true, $ep->srclang);
                     }
                     if (!$translated_text && $this->is_auto_translate && !$this->is_edit_mode) {
-                        
+                        tp_logger('untranslated meta for ' . $ep->phrase . ' ' . $this->lang);
                         if ($this->is_edit_mode || $this->is_auto_translate) { // FIX
                         }
                     }
@@ -890,7 +905,7 @@ class parser {
             }
             if ($newtext) {
                 $e->content = $newtext . $right;
-                
+                tp_logger("content-phrase: $newtext", 4);
             }
         }
 

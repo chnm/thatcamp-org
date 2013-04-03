@@ -1,7 +1,7 @@
 <?php /* Posts navigation for single post pages, but not for Page post */ global $graphene_settings; ?>
 <?php graphene_post_nav(); ?>
 
-<div id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix post-format' ); ?>>
+<div id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix post-format post' ); ?>>
 	<div class="entry-header">
     	<?php 
 		global $post_format;
@@ -44,7 +44,7 @@
         <p class="comment-link">
 			<?php 
             $comments_num = get_comments_number();
-            comments_popup_link( __( 'Leave comment', 'graphene' ), __( '1 comment', 'graphene' ), sprintf( _n( '1 comment', "%d comments", $comments_num, 'graphene' ), $comments_num ), 'comments-link', __( "Comments off", 'graphene' ) ); 
+            comments_popup_link( __( 'Leave comment', 'graphene' ), __( '1 comment', 'graphene' ), sprintf( _n( '%d comment', "%d comments", $comments_num, 'graphene' ), $comments_num ), 'comments-link', __( "Comments off", 'graphene' ) ); 
             ?>
         </p>
         <?php endif; ?>
@@ -82,7 +82,6 @@
         <div class="entry-description"><?php the_excerpt(); ?></div>
         <?php endif; ?>
                
-		<?php /* translators: This is the PHP date formatting string for the image post format. See http://php.net/manual/en/function.date.php for more details. */ ?>
         <p class="entry-date updated"><?php printf( __( 'Posted on: %s', 'graphene' ), '<br /><span>' . get_the_time( __( 'F j, Y', 'graphene' ) ) . '</span>' ); ?></p>
         <?php endif; ?>
         

@@ -1,0 +1,285 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Author Avatars\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-02-18 14:27+0100\n"
+"PO-Revision-Date: 2012-07-06 12:37+0530\n"
+"Last-Translator: shivangi <shivangi@outshinesolutions.com>\n"
+"Language-Team: Outshine Solutions <ash.pr@outshinesolutions.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Hindi\n"
+"X-Poedit-Country: INDIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: lib/AuthorAvatars.class.php:13
+msgid "Author avatars: system check failed."
+msgstr "लेखक की बदलते रूप: सिस्टम जांच विफल."
+
+#: lib/AuthorAvatars.class.php:16
+msgid "Author avatars: install check failed."
+msgstr "लेखक की बदलते रूप: स्थापित जाँच में असफल रहा."
+
+#: lib/AuthorAvatars.class.php:19
+msgid "Author avatars: update check failed."
+msgstr "लेखक की बदलते रूप: अद्यतन जाँच में विफल रहा."
+
+#: lib/AuthorAvatars.class.php:252
+#: lib/AuthorAvatarsWidget.class.php:19
+msgid "Blog Authors"
+msgstr "ब्लॉग लेखक"
+
+#: lib/AuthorAvatarsEditorButton.class.php:83
+msgid "Author avatars shortcodes"
+msgstr "लेखक की बदलते रूप शॉर्टकोड"
+
+#: lib/AuthorAvatarsEditorButton.class.php:118
+#: lib/AuthorAvatarsWidget.class.php:179
+msgid "Basic"
+msgstr "बुनियादी"
+
+#: lib/AuthorAvatarsEditorButton.class.php:136
+#: lib/AuthorAvatarsWidget.class.php:192
+msgid "Advanced"
+msgstr "उन्नत"
+
+#: lib/AuthorAvatarsEditorButton.class.php:146
+msgid "Cancel"
+msgstr "रद्द करना"
+
+#: lib/AuthorAvatarsEditorButton.class.php:149
+msgid "Insert"
+msgstr "सम्मिलित करें"
+
+#: lib/AuthorAvatarsForm.class.php:119
+msgid "Show users from blogs"
+msgstr "ब्लॉग से उपयोगकर्ता दिखाएँ"
+
+#: lib/AuthorAvatarsForm.class.php:120
+msgid "If no blog is selected only users from the current blog are displayed."
+msgstr "यदि कोई ब्लॉग चयनित किया गया है वर्तमान ब्लॉग से ही उपयोगकर्ता को प्रदर्शित कर रहे हैं."
+
+#: lib/AuthorAvatarsForm.class.php:161
+msgid "Group by blogs"
+msgstr "ब्लॉग से समूह"
+
+#: lib/AuthorAvatarsForm.class.php:171
+msgid "User list grouping"
+msgstr "उपयोगकर्ता सूची समूहीकरण"
+
+#: lib/AuthorAvatarsForm.class.php:200
+msgid "Show roles"
+msgstr "भूमिकाएं दिखाएँ"
+
+#: lib/AuthorAvatarsForm.class.php:249
+msgid "Hidden users"
+msgstr "छिपे हुए उपयोगकर्ता"
+
+#: lib/AuthorAvatarsForm.class.php:250
+msgid "Comma separate list of user login ids"
+msgstr "अल्पविराम उपयोगकर्ता लॉगिन आईडी की अलग सूची"
+
+#: lib/AuthorAvatarsForm.class.php:290
+msgid "Show name"
+msgstr "नाम दिखाएँ"
+
+#: lib/AuthorAvatarsForm.class.php:291
+msgid "Show number of posts"
+msgstr "पदों की संख्या"
+
+#: lib/AuthorAvatarsForm.class.php:292
+msgid "Show biography"
+msgstr "जीवनी दिखाएँ"
+
+#: lib/AuthorAvatarsForm.class.php:299
+msgid "Display options"
+msgstr "विकल्प प्रदर्शित"
+
+#: lib/AuthorAvatarsForm.class.php:315
+msgid "Date of Registration"
+msgstr "पंजीकरण की तिथि"
+
+#: lib/AuthorAvatarsForm.class.php:316
+msgid "Display Name"
+msgstr "नाम प्रदर्शित करें"
+
+#: lib/AuthorAvatarsForm.class.php:317
+msgid "Login Name"
+msgstr "नाम लॉगिन"
+
+#: lib/AuthorAvatarsForm.class.php:318
+msgid "Number of Posts"
+msgstr "डाक की संख्या"
+
+#: lib/AuthorAvatarsForm.class.php:319
+msgid "Random"
+msgstr "यादृच्छिक"
+
+#: lib/AuthorAvatarsForm.class.php:320
+msgid "User Id"
+msgstr "प्रयोक्ता आईडी"
+
+#: lib/AuthorAvatarsForm.class.php:323
+msgid "Recent Activity"
+msgstr "हाल की गतिविधियां"
+
+#: lib/AuthorAvatarsForm.class.php:328
+msgid "Sorting order"
+msgstr "आदेश छंटनी"
+
+#: lib/AuthorAvatarsForm.class.php:344
+msgid "Author Page"
+msgstr "लेखक पेज"
+
+#: lib/AuthorAvatarsForm.class.php:345
+msgid "Website"
+msgstr "वेबसाइट"
+
+#: lib/AuthorAvatarsForm.class.php:348
+msgid "BP Member Page"
+msgstr "बी.पी. सदस्य पेज"
+
+#: lib/AuthorAvatarsForm.class.php:351
+msgid "Blog"
+msgstr "ब्लॉग"
+
+#: lib/AuthorAvatarsForm.class.php:356
+msgid "Link users to"
+msgstr "लिंक करने के लिए उपयोगकर्ता"
+
+#: lib/AuthorAvatarsForm.class.php:371
+msgid "Ascending"
+msgstr "आरोही"
+
+#: lib/AuthorAvatarsForm.class.php:372
+msgid "Descending"
+msgstr "अवरोही"
+
+#: lib/AuthorAvatarsForm.class.php:377
+msgid "Sorting direction"
+msgstr "दिशा छंटनी"
+
+#: lib/AuthorAvatarsForm.class.php:393
+msgid "Max. number of avatars shown"
+msgstr "मैक्स. दिखाया बदलते रूपों की संख्या"
+
+#: lib/AuthorAvatarsForm.class.php:411
+msgid "Required minimum number of posts"
+msgstr "पदों की आवश्यक न्यूनतम संख्या"
+
+#: lib/AuthorAvatarsForm.class.php:428
+msgid "Avatar Size"
+msgstr "अवतार आकार"
+
+#: lib/AuthorAvatarsForm.class.php:452
+msgid "Single Avatar"
+msgstr "सिंगल अवतार"
+
+#: lib/AuthorAvatarsForm.class.php:453
+msgid "List of Users"
+msgstr "उपयोगकर्ताओं की सूची"
+
+#: lib/AuthorAvatarsForm.class.php:458
+msgid "Shortcode Type"
+msgstr "shortcode प्रकार "
+
+#: lib/AuthorAvatarsForm.class.php:477
+msgid "Email address or user id"
+msgstr "ईमेल पते या आईडी उपयोगकर्ता"
+
+#: lib/AuthorAvatarsForm.class.php:493
+msgid "None"
+msgstr "कोई नहीं"
+
+#: lib/AuthorAvatarsForm.class.php:494
+msgid "Left"
+msgstr "वाम"
+
+#: lib/AuthorAvatarsForm.class.php:495
+msgid "Center"
+msgstr "केंद्र"
+
+#: lib/AuthorAvatarsForm.class.php:496
+msgid "Right"
+msgstr "सही"
+
+#: lib/AuthorAvatarsForm.class.php:501
+msgid "Alignment"
+msgstr "संरेखण"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:35
+msgid "Sitewide Author Avatars Configuration"
+msgstr "Sitewide लेखक अवतार विन्यास"
+
+#. #-#-#-#-#  plugin.pot (Author Avatars List 0.7.5-dev)  #-#-#-#-#
+#. Plugin Name of an extension
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:35
+msgid "Author Avatars List"
+msgstr "लेखक अवतार सूची"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:60
+msgid "Options saved."
+msgstr "विकल्प बचाया"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:66
+msgid "Sitewide Author Avatars Options"
+msgstr "Sitewide लेखक अवतार विकल्प"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:69
+msgid "Avatar list settings"
+msgstr "अवतार सूची सेटिंग्स"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:76
+msgid "Save Changes"
+msgstr "10परिवर्तन सहेजें"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:86
+msgid "Enable blog filter"
+msgstr "ब्लॉग फिल्टर सक्षम करें"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:93
+msgid "Select the blogs which you would like the blog filter to be enabled. Only blogs selected here can display users from other blogs."
+msgstr "ब्लॉग का चयन करें जो आप ब्लॉग के लिए सक्षम किया जा फिल्टर करना चाहते हैं. केवल यहाँ चयनित ब्लॉग अन्य ब्लॉगों से उपयोगकर्ता को प्रदर्शित कर सकते हैं."
+
+#: lib/AuthorAvatarsWidget.class.php:56
+msgid "Displays avatars of blog users."
+msgstr "ब्लॉग के उपयोगकर्ताओं के बदलते रूपों को प्रदर्शित करता है."
+
+#: lib/AuthorAvatarsWidget.class.php:167
+msgid "Title"
+msgstr "शीर्षक"
+
+#: lib/FormHelper.class.php:56
+msgid "Sorry, no choices available."
+msgstr "माफ करना, कोई विकल्प उपलब्ध है."
+
+#: lib/ShowAvatarShortcode.class.php:63
+msgid "[show_author shortcode: please set id/email attribute]"
+msgstr "[show_author लघुकोडः कृपया सेट / ईमेल विशेषता आईडी]"
+
+#: lib/UserList.class.php:142
+msgid "No users found."
+msgstr "कोई उपयोगकर्ता नहीं मिला."
+
+#: lib/UserList.class.php:233
+#, php-format
+msgid "%d post"
+msgstr "%d पद"
+
+#. Plugin URI of an extension
+msgid "http://authoravatars.wordpress.com/"
+msgstr "http://authoravatars.wordpress.com/"
+
+#. Description of an extension
+msgid "Display lists of user avatars using <a href=\"widgets.php\">widgets</a> or <a href=\"http://codex.wordpress.org/User:Bforchhammer/Author_Avatars_ShortCode_Documentation\">shortcodes</a>."
+msgstr "उपयोगकर्ता avatars की सूचियों का उपयोग प्रदर्शित<a href=\"widgets.php\">widgets</a> or <a href=\"http://codex.wordpress.org/User:Bforchhammer/Author_Avatars_ShortCode_Documentation\">shortcodes</a>."
+
+#. Author of an extension
+msgid "<a href=\"http://mind2.de\">Benedikt Forchhammer</a>, Idea: <a href=\"http://bearne.com\">Paul Bearne</a>"
+msgstr "<a href=\"http://mind2.de\">Benedikt Forchhammer</a>, विचार: <a href=\"http://bearne.com\">पॉल Bearne</a>"
+

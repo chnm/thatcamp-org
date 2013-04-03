@@ -1,0 +1,344 @@
+/*--------------------------------------------------------------
+4.1 - Comments
+--------------------------------------------------------------*/
+#trackbacks {
+	margin-top: 30px;
+	margin-top: 3rem;
+}
+#comments {
+	margin-top: 30px;
+	margin-top: 3rem;
+}
+#comments-title {
+	padding: 0 10px;
+	padding: 0 1rem;
+	float: left;
+	display: block;
+	.font-size-rems(12);
+}
+#comments ol.commentlist {
+	margin: 0 0 30px 0;
+	margin: 0 0 3rem 0;
+	padding: 0;
+}
+#comment-nav-below,#comment-nav-above {
+	margin: 0 0 20px 0;
+	margin: 0 0 2rem 0;
+	padding: 0 0 20px 0;
+	padding: 0 0 2rem 0;
+}
+#comments ol.commentlist ol {
+	list-style-type: decimal;
+	margin: 0 0 20px 20px;
+	margin: 0 0 2rem 2rem;
+}
+#comments ol.commentlist ol ol {
+	list-style: lower-alpha;
+	margin-bottom: 0;
+}
+#comments ol.commentlist ol ol ol {
+	list-style: lower-roman;
+}
+ol.commentlist li.comment,ol.commentlist li.comment-pingback {
+	clear: left;
+	list-style: none;
+	margin-bottom: 40px;
+	margin-bottom: 4rem;
+}
+ol.commentlist ul.children li {
+	margin-bottom: 0;
+}
+ol.commentlist div.comment-avatar-box {
+	float: left;
+	margin: 15px 15px 0 0;
+	margin: 1.5rem 1.5rem 0 0;
+}
+.commentlist ul.children div.comment-avatar-box {
+	float: left;
+	margin: 0 10px 0 0;
+	margin: 0 1rem 0 0;
+}
+#comments article {
+	zoom: 1;
+	margin: 20px 0 50px 0;
+	margin: 2rem 0 5rem 0;
+}
+#comments article:before,#comments article:after {
+	display: table;
+	content: "";
+}
+#comments article:after {
+	clear: both;
+}
+#comments article header {
+	position: relative;
+	zoom: 1;
+	margin: 0;
+	float: left;
+	width: 16%;
+}
+#comments article header:before,#comments article header:after {
+	display: table;
+	content: "";
+}
+#comments article header:after {
+	clear: both;
+}
+#comments article header img {
+	float: left;
+	padding: 0;
+	line-height: 0;
+}
+#comments article header cite,
+#comments article header time {
+	display: block;
+	margin-left: 80px;
+	margin-left: 8rem;
+}
+#comments article header cite {
+	font-style: normal;
+	.font-size-rems(14);
+	line-height: 1.6;
+}
+#comments article header time {
+	text-decoration: none;
+	.font-size-rems(12);
+}
+#comments article header a {
+	text-decoration: none;
+}
+#comments article header cite a:hover {
+	text-decoration: underline;
+}
+#comments article header h4 {
+	.font-size-rems(12);
+	font-weight: normal;
+}
+#comments article p {
+	margin: 0 0 20px 0;
+	margin: 0 0 2rem 0;
+}
+a.comment-reply-link {
+	.font-size-rems(14);
+}
+a.comment-reply-link:hover {
+}
+#respond {
+	padding: 20px 0 0 0;
+	padding: 2rem 0 0 0;
+}
+#respond h3#reply-title {
+	border-bottom: 1px dashed #ddd;
+	padding: @siteGutter 0;
+	margin: 0 0 @siteGutter 0;
+}
+#respond h3#reply-title #cancel-comment-reply-link {
+	margin-left: 10px;
+	margin-left: 1rem;
+	font-weight: normal;
+}
+#respond form {
+	margin: 20px 0;
+	margin: 2rem 0;
+	background: #fff;
+	padding: 20px;
+}
+#respond form p {
+	zoom: 1;
+	margin: 10px 0;
+	margin: 1rem 0;
+}
+#respond form p:before,#respond form p:after {
+	display: table;
+	content: "";
+}
+#respond form p:after {
+	clear: both;
+}
+#respond form p.logged-in-as {
+	margin-bottom: 0;
+}
+#respond form label {
+	display: block;
+}
+#respond form p.form-allowed-tags {
+	.font-size-rems(12);
+	line-height: 2;
+}
+#comment-nav-above {
+	clear: both;
+}
+li.byuser article:first-child {
+}
+li article {
+	padding: 0 0 0 20px;
+	padding: 0 0 0 2rem;
+}
+.comment-meta,.comment-body {
+	margin: 0 0 0 90px;
+}
+.comment-meta{
+	font-family: @baseHeadingFont;
+	color: #999;
+	text-transform: uppercase;
+}
+.comment-reply {
+	margin: 10px 0 0 0;
+	margin: 1rem 0 0 0;
+}
+.post-meta i {
+	margin: 0 10px 0 0;
+	margin: 0 1rem 0 0;
+}
+#comment-title {
+	border-bottom: 1px dashed #ddd;
+	margin: @siteGutter 0;
+	padding: @siteGutter 0;
+}
+ul.children {
+	margin: 0 0 0 1rem;
+	margin: 0 0 0 1rem;
+}
+.comment-author{
+	float: left;
+}
+/*--------------------------------------------------------------
+4.2 - Gallery
+--------------------------------------------------------------*/
+.wp-caption {
+	background-color: #f3f3f3;
+	border: 1px solid #ddd;
+	margin-bottom: 15px;
+	margin-bottom: 1.5rem;
+	padding-top: 5px;
+	padding-top: 0.5rem;
+	text-align: center;
+}
+.wp-caption img {
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+dd.wp-caption p.wp-caption-text,
+.wp-caption p.wp-caption-text {
+	.font-size-rems(12);
+	margin: 0;
+	padding: 5px 5px 5px 0;
+	padding: 0.5rem 0.5rem 0.5rem 0;
+}
+#content .gallery {
+	margin: 0 auto 15px;
+	margin: 0 auto 1.5rem;
+}
+#content .gallery .gallery-item {
+	margin-bottom: 0;
+	margin-left: 0;
+}
+.gallery-item img {
+	margin-bottom: 15px;
+	margin-bottom: 1.5rem;
+}
+.gallery-caption{
+	background: @highlightColor;	
+}
+/*--------------------------------------------------------------
+4.3 - Posts
+--------------------------------------------------------------*/
+.bypostauthor{
+	background: @highlightColor;
+	padding: @siteGutter;
+}
+.sticky {
+	background: @highlightColor;
+	padding-top: 20px;
+	padding-top: 2rem;
+}
+.post-meta {
+	.font-size-rems(14);
+	padding: 10px 0;
+	padding: 1rem 0;
+	overflow: hidden;
+	border-bottom: 1px dashed #aaa;
+	color: #aaa;
+	clear: both;
+}
+.post-categories,.post-tags,.post-edit,.post-date{
+	float: left;
+	font-family: @baseHeadingFont;
+	color: #999;
+	margin: 0 @siteGutter 0 0;
+}
+.comments-link{
+	float: right;
+	font-family: @baseHeadingFont;
+	color: #999;
+	text-transform: uppercase;
+	margin: 0 0 0 @siteGutter;
+}
+.post {
+	margin: 0 0 60px 0;
+	margin: 0 0 6rem 0;
+	overflow: hidden;
+	clear: both;
+}
+
+.pageentry .post-header {
+	float: none;
+	width: 100%;
+}
+.post-meta .edit-link {
+	margin: 0;
+}
+.author-description h3 {
+	.font-size-rems(14);
+	padding: 10px 0;
+	padding: 1rem 0;
+	clear: both;
+}
+#author-details {
+	.font-size-rems(14);
+	margin: 0 0 20px 0;
+	margin: 0 0 2rem 0;
+	padding: 0 0 20px 0;
+	padding: 0 0 2rem 0;
+}
+.post-header{
+	margin: 0 0 @siteGutter 0;
+}
+/*--------------------------------------------------------------
+4.4 - Widgets
+--------------------------------------------------------------*/
+#wp-calendar {
+	margin: 0;
+	width: 100%;
+	.font-size-rems(14);
+}
+#wp-calendar th,
+#wp-calendar td,
+#wp-calendar caption {
+	text-align: left;
+}
+.widget_search label {
+	display: block;
+	.font-size-rems(14);
+}
+.widget_search input[type="text"] {
+	padding: 6px;
+	padding: 0.6rem;
+	display: inline;
+}
+.widget {
+	padding: 20px 0;
+	padding: 2rem 0;
+	clear: both;
+}
+.widget ul {
+	padding: 0;
+	margin: 0;
+}
+.widget li {
+	list-style: none;
+}
+.widget h3{
+	border-bottom: 1px dashed #ccc;
+}

@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.8.3
+ * Transposh v0.9.1
  * http://transposh.org/
  *
- * Copyright 2012, Team Transposh
+ * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 28 May 2012 14:38:35 +0300
+ * Date: Wed, 23 Jan 2013 02:24:14 +0200
  */
 
 /*

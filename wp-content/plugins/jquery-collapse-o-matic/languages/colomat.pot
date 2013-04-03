@@ -1,0 +1,141 @@
+# Copyright (C) 2013 jQuery Collapse-O-Matic
+# This file is distributed under the same license as the jQuery Collapse-O-Matic package.
+msgid ""
+msgstr ""
+"Project-Id-Version: jQuery Collapse-O-Matic 1.5f\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/colomat\n"
+"POT-Creation-Date: 2013-01-08 10:09:59+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: colomat.php:275 colomat.php:373
+msgid "Click to toggle"
+msgstr ""
+
+#: colomat.php:276
+msgid "Default Collapse-O-Matic Settings"
+msgstr ""
+
+#: colomat.php:287
+msgid "Style"
+msgstr ""
+
+#: colomat.php:294
+msgid "Light"
+msgstr ""
+
+#: colomat.php:295
+msgid "Dark"
+msgstr ""
+
+#: colomat.php:306
+msgid ""
+"Select Light for sites with lighter backgroudns. Select Dark for sites with "
+"darker backgrounds."
+msgstr ""
+
+#: colomat.php:311
+msgid "Tag Attribute"
+msgstr ""
+
+#: colomat.php:313
+msgid ""
+"HTML tag use to wrap the trigger text. See %sTag Attribute%s in the "
+"documentation for more info."
+msgstr ""
+
+#: colomat.php:323
+msgid "Collapse/Expand Duration"
+msgstr ""
+
+#: colomat.php:325
+msgid ""
+"A string or number determining how long the animation will run. See %"
+"sDuration%s in the documentation for more info."
+msgstr ""
+
+#: colomat.php:330
+msgid "Animation Effect"
+msgstr ""
+
+#: colomat.php:337
+msgid "Slide Only"
+msgstr ""
+
+#: colomat.php:338
+msgid "Slide & Fade"
+msgstr ""
+
+#: colomat.php:349
+msgid ""
+"Animation effect to use while collapsing and expanding. See %sAnimation "
+"Effect%s in the documentation for more info."
+msgstr ""
+
+#: colomat.php:354
+msgid "Level Up!"
+msgstr ""
+
+#: colomat.php:355
+msgid ""
+"<em>Comming Soon: Collapse-Pro-Matic</em> our preimum plugin that offers "
+"additional attributes and the ability to set default attribute settings for "
+"all attributes."
+msgstr ""
+
+#: colomat.php:362
+msgid "Save Changes"
+msgstr ""
+
+#: colomat.php:374
+msgid "About"
+msgstr ""
+
+#: colomat.php:377
+msgid ""
+"Remove clutter, save space. Display and hide additional content in a SEO "
+"friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a "
+"lovely jQuery expanding and collapsing element."
+msgstr ""
+
+#: colomat.php:379
+msgid ""
+"%sDetailed documentation%s, complete with working demonstrations of all "
+"shortcode attributes, is available for your instructional enjoyment."
+msgstr ""
+
+#: colomat.php:380
+msgid "%sFree%s & %sPremimum%s Support"
+msgstr ""
+
+#: colomat.php:381
+msgid ""
+"If you like this plugin, please consider %sreviewing it at WordPress.org%s "
+"to help others."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "jQuery Collapse-O-Matic"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://plugins.twinpictures.de/plugins/collapse-o-matic/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Collapse-O-Matic adds an [expand] shortcode that wraps content into a "
+"lovely, jQuery collapsible div."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "twinpictures, baden03"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://twinpictures.de/"
+msgstr ""

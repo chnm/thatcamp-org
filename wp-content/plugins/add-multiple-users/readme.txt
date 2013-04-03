@@ -1,85 +1,98 @@
 === Add Multiple Users for WordPress ===
 Contributors: happynuclear
-Donate link: http://www.happynuclear.com/sandbox/amu/add-multiple-users-for-wordpress.php
+Donate link: http://addmultipleusers.happynuclear.com/
 Tags: users, registration, admin, multisite
-Requires at least: 3.1
-Tested up to: 3.3.1
+Requires at least: 3.4
+Tested up to: 3.4.1
 Stable tag: trunk
 
-Provides an way to bulk add user registrations to a site using manual input, CSV and email data, and add existing users
-from a Multisite Network.
+Bulk add user registrations to a WordPress site using a variety of methods.
 
 == Description ==
 
-Add Multiple Users provides the ability for WordPress administrators bulk add WordPress user registrations 
-using a range of tools available as an extra admin page under your Users tab in the administration section.
+Add Multiple Users provides the ability for WordPress administrators to bulk register users using a range of tools available under 
+the AMU tab in your WordPress administration section.
 
-Each new user can have a custom username, a customised or randomly generated password, an email address, first name, last
-name and website data added upon registration. A range of settings allow the customisation of user notifications, validation 
-checks and more.
-
-Functions include the ability to manually input new user information, convert a CSV or Text file to user information, and 
-create users from a list of email addresses.
+Functions include the ability to manually input new user information, convert CSV data to user information, and 
+create users from a list of email addresses. Each new user registration can include almost all available standard user meta fields 
+plus any additional meta fields you require.
 
 In a WordPress Multisite installation, the plugin also allows the bulk adding of existing users from the Network to the specified
-site that the plugin is accessed from.
+site that the plugin is accessed from, plus additional Network settings to restrict user functions and monitor user registrations
+across your sites.
 
-For more information please see the plugin page at http://www.happynuclear.com/sandbox/amu/add-multiple-users-for-wordpress.php
+For more information please see the plugin page at http://addmultipleusers.happynuclear.com/
 
 == Installation ==
 
-Installing and activating this plugin adds an additional menu option to your Users menu in the WordPress administration
-section named 'Add Multiple Users'.
+Installing and activating this plugin adds an additional menu option to your menu in the WordPress administration
+section named 'AMU'.
 
-1. Upload 'add_multiple_users' folder to the '/wp-content/plugins/' directory
+1. Upload 'add-multiple-users' folder to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Click the Add Multiple Users link in the Users section to access the plugin interface
+3. Click the AMU tab in the left menu of your admin menu to access plugin functions
 
 == Frequently Asked Questions ==
 
-= I've used this plugin in the last version and now I'm confused... where did the input form go? =
+= What's new in version 2.0.0? =
 
-The manual input form can now be accessed with the 'Blank Form' option in the menu. You can now specify a number of rows
-instead of being restricted to the previous 50. This blank form now compliments the other functions that were added, such
-as the CSV upload, paste, and email address list converter.
+Lots of things, mostly inspired by user feedback. More options for specifying column order on imported data, custom user role support, just about 
+every meta data option you could need, plus a pretty big rewrite of most of the standard functionality.
 
-= Can I import users from a CSV or list of email addresses? =
+= It seems like I have to wait a long time for registrations to process. What's going on? =
 
-Yes. Version 1.2.0 adds three new methods for adding users to your WordPress site - a CSV file upload, CSV manual entry text box, 
-and the ability to generate user accounts purely from email addresses.
+AMU is designed using only WordPress standard functions with no direct database insert code. This is a slower but safer option. As such, 
+each user processes separately, running checks along the way to make sure there are no conflict with current users or any bad data. If you're 
+adding lots of users, just be patient. If you get time-out errors, check out the next question.
 
 = I'm trying to add lots of users at once and its not working! =
-Adding over 500 users at a time can cause issues with memory in WordPress and in your browser - please try the method explained at 
-http://www.happynuclear.com/sandbox/amu/add-multiple-users-for-wordpress.php under the Memory Issues heading.
+
+In testing, adding over 500 users at a time can cause issues with memory in WordPress and in your browser - please try the method explained at 
+http://addmultipleusers.happynuclear.com under Usage - Known Issues for a few workarounds. The simplest 
+method is simply to split your CSV data into groups of about 300 or so, if its feasible for you to do so.
+
+= Does the plugin handle custom roles? =
+
+Yes. Version 2.0.0 introduces the ability to choose from all Roles you have defined in your site. AMU does not, however, create Roles 
+for you. You should use a plugin such as User Role Editor to first create the roles you wish to use when bulk adding users. You can then
+use a 'role' column in your CSV data to specify a role for a user, pick a default role in the Settings, or pick one from the drop-down 
+list on the Form interface.
 
 = How does the plugin work in Multisite? =
 
-Access the Add Multiple Users plugin from the networked site to use its functions. Users added in a site are added to the network 
-and assigned a role for the site they were added through. At the moment you can't add directly to the Network list without assigning 
-the user a role - but that's on the to-do list.
+Access the Add Multiple Users plugin from the any site within the network to use its functions. Users added in a subsite are added to the network 
+and assigned a role for the subsite they were added through. If you're a Super Admin, you can also change some settings for your Network 
+(look under the Users tab in Network Admin) to limit accessibility to the plugin from subsites, plus receive copies of user registration details 
+when the plugin is used on any of your network sites.
 
-= How do the CSV Upload, CSV Input and Email List functions work? =
+= How does the CSV Import function work? =
 
 These functions work by taking your data (whether you upload a file or paste data into the your CSV Input info or Email List functions) 
-and translating it, essentially creating a form like the 'Blank Form' but with the fields already filled in. You can then review 
-that information, make changes, then submit the user info for processing.
+and translating it to user accounts. You can either send them all to a Form, which lets you review each line of user information 
+piece by piece before adding the users, or simply just go ahead and register them using the Skip button.
+
+= How does the Import Email List function work? =
+
+This function automatically creates new user names from the first part of the email, generates a password, and uses this information with the 
+provided email address to create a new user account. You can even send this information to the Form interface to add additional information
+before processing your new user accounts.
+
+= How do I specify the CSV column order of the data I want to import? =
+
+In the Settings you can choose to predefine your column order, use the first line of your CSV file as the column order, or define it after 
+uploading your file either with the Manual Entry on Upload or Dynamic Sorting on Upload functions.
+
+For standard WordPress user and user_meta fields, you must use the exact name of the column in the database (eg user_login or display_name). 
+To define a role, use the column name "role" to define where the user's role appears in a line of data. For custom user_meta information, 
+just use any name that isn't standard and it will be added as a new meta field for each user.
+
+If you want the plugin to skip a column of information, just use the column name "ignore" (multiple times if necessary) and the plugin will skip this 
+column of information.
 
 = What information per user is needed to register a new user on the site? =
 
-A unique username, password and email address is needed for each user. Passwords can be generated automatically if the
-field is left blank. Usernames can be generated automatically if using the "Email List" function. Dummy email addresses 
-can also be created using the Force Fill Email Addresses option if necessary.
-
-= What other user information can I add when I register a new user? =
-
-For each user you can also specify a First Name, Last Name and Website, just like the regular WordPress Add New User form.
-These fields are optional. You can also set each new user's Role. 
-
-= Will each user I register be sent their login info? =
-
-The Settings has an option allowing you to enable or disable new user notification emails. You can also customise the content
-of notification emails, but the default is pretty solid. By default users will be emailed their info. At no point will a force-
-created email address be sent an email.
+A user_login, user_pass and user_email is the base necessity of adding a new user. Passwords can be generated in left blank, and emails addresses 
+can be created for you if you use the Force Create Email option.
 
 = How does the 'Force Fill Email Addresses' work exactly and why shouldn't I use it? =
 
@@ -91,22 +104,33 @@ address due to their lower socio-economic circumstance and it was unrealistic to
 of this as the site was targetted specifically for that demographic of user. The function is there if you
 need it, but its not a recommended solution (try getting your users free Gmail accounts or something in the first instance!).
 
-= Can I customise the text in the new user email confirmation? =
+= Can I bulk invite users rather than automatically registering them? =
 
-Yes. Version 1.2.0 adds to the Settings the ability to customise your new user notification email. The text in the email sent to 
-users to confirm their adding to a site within a Multisite environment is not yet editable (uses WordPress standard text).
-
-= Can I delete multiple user accounts using this plugin? =
-
-You can already bulk delete users in the Users section of WordPress administration, so this is not planned for development.
-I am thinking of a bulk edit of existing user data though, but its not the point of the plugin at this time and whole other 
-kettle of fish.
+Not yet. This seems trickier than I hoped, and any suggestions on how to achieve this are more than welcome. I'm working on this for 
+inclusion in version 2.1. However, this function does exist when using the Add Existing function (if you're running Multisite).
 
 == Screenshots ==
 
 1. The layout of the blank user input form.
 
 == Changelog ==
+
+= 2.0.0 =
+* Most primary functions have been rewritten from the ground up.
+* All user data and meta data values are now referenced by their column names in the WordPress data structure. The only exceptions 
+to this are "role" which automatically creates meta data for User Level and Capabilities based on the role name given, and "ignore" which 
+causes the plugin to skip the specified column of information.
+* A new Network Options section has been added for sites running a Multisite network. These options govern the use of the 
+plugin across sub-sites. Email addresses to receive copies of user registrations from any networked site can also be specified here.
+* Additional column ordering functions are now available in the Settings section.
+* The Dynamic Sorter has been given a reboot to simplify its usage.
+* Additional settings added for standard user meta information when bulk adding new users. These options can now be enabled 
+in the Settings section.
+* Custom meta data fields may now be set in the Settings section and when importing CSV data.
+* User Display Name can now be set as either the user's login, nickname, first or last name (or both). Default is userlogin.
+* Custom Roles have been enabled. Default Role may now be chosen in the Settings section and within other interfaces.
+* Locaalization, ready for translation
+* And a few functionality tweaks
 
 = 1.2.2 =
 * This update adds a feature intended to combat an issue related to attempting to add over 500 users in a single pass. 

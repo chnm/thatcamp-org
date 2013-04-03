@@ -47,6 +47,7 @@ function graphene_homepage_panes(){
           
 		$args_merge = array(	
 							'post__in' => $post_ids,
+							'orderby' => 'post__in'
 							);
 		$args = array_merge( $args, $args_merge );
 	}

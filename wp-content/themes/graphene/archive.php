@@ -28,18 +28,7 @@ if ( have_posts() )
 		'<span>' . get_the_date( __( 'F Y', 'graphene' ) ) . '</span>' ); ?>
     <?php elseif ( is_year() ) : ?>
         <?php printf(__( 'Yearly Archive: %s', 'graphene' ), '<span>' . get_the_date( 'Y' ) . '</span>' ); ?>
-    <?php elseif ( is_tax() ) : 
-		global $wp_query;
-		$term = $wp_query->get_queried_object();
-		$term_title = $term->name;
-		
-		$taxonomy = $term->taxonomy;
-		$taxonomy = get_taxonomy( $taxonomy );
-		$taxonomy = $taxonomy->labels->singular_name;
-	
-		printf( __('%1$s Archive: <span>%2$s</span>', 'graphene'), $taxonomy, $term_title ); 
-	
-	else : ?>
+    <?php else : ?>
         <?php _e( 'Blog Archive', 'graphene' ); ?>
     <?php endif; ?>
 </h1>

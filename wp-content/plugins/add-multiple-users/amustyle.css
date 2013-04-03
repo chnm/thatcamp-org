@@ -1,7 +1,7 @@
-/* Add Multiple Users CSS Styles - version 1.2.2 */
+/* Add Multiple Users CSS Styles - version 2.0.0 */
 /* surround to protect styles from other admin pages */
 #amu{}
-#amu p.amu_error{
+#amu p.amu_error, #amu p.betanotice{
 	font-style:italic;
 	color:#C30;
 }
@@ -9,170 +9,115 @@
 	font-size:11px;
 	font-style:italic;
 }
-#amu .hidegenopt{
-	display:none;
-}
-#amu .infosection, #amu .moreinfosection {
+#amu .infosection{
 	background:#fafafa;
     border:1px solid #eee;
-    float:left;
-    margin:10px 0 0;
+    margin:20px 0 0;
     padding:0 10px;
     width:748px;
 	position:relative;
+	clear:both;
 }
-#amu .pluginfoswitch{
+#amu .infowrap{
+	max-width:748px;
+	padding:0 10px;
+	margin:10px 0 0;
+	background:#fafafa;
+    border:1px solid #eee;
+}
+#amu p.informational{
+	max-width:720px;
+	padding:5px 5px 5px 50px;
+	background:#fefefe url(images/informational.png) 5px center no-repeat;
+	border:1px solid #eee;
+}
+#amu p.informational span{
 	display:block;
-	font-weight:bold;
-	color:#21759B;
-	position:absolute;
-	right:5px;
-	top:10px;
-	padding:5px;
-	cursor:pointer;
+	clear:both;
+	font-size:11px;
 }
-#amu .pluginfoswitch:hover{
-	text-decoration:underline;
-}
-/* form and styles */
 #amu form {
-	float:left;
-	width:770px;
+	max-width:770px;
+	clear:both;
 }
 #amu form .toolintro{
-	float:left;
-	margin:10px 0 0;
-}
-#amu #sortfield {
-	background:#fafafa;
-	padding:10px;
-	border:1px solid #eee;
-	float:left;
-	width:748px;
-	margin:0 0 10px;
-}
-#amu .optcol{
-	float:left;
-	padding:3px;
-	margin:5px 0;
-	width:100px;
-}
-#amu .optcol .optcolline{
-	float:left;
 	width:100%;
-}
-#amu .optcol .optcolline select{
-	width:100%;
-}
-#amu .optcol .optcolline span{
-	cursor:pointer;
-    display:block;
-    float:left;
-    font-size:12px;
-    font-weight:bold;
-    margin:1px;
-    padding:1px 0;
-    text-align:center;
-    width:20px;
-	background:#fff;
-	border:1px solid #eee;
-}
-#amu .optcol .optcolline span:hover{
-	color:#21759B;
 }
 #amu form .textfillbox {
 	width:100%;
 	font-size:12px;
 }
-#amu .button-toolbar{
-	float:left;
-	border:none;
-	background:none;
-	cursor:pointer;
-	margin:0;
-	padding:1.05em 0;
-	width:14%;
-	color:#21759B;
-}
-#amu .button-toolbar:hover{
-	text-decoration:underline;
-}
-#amu .formhead {
-	float:left;
-	width:100%;
-}
-#amu .toolbar {
-	background:#fafafa;
-	border:1px solid #eee;
-	float:left;
-	width:768px;
-}
-#amu .formhead p.headtitle{
-	float:left;
-}
-#amu .formhead p.exp-genopt{
-	display:block;
-	float:right;
-	cursor:pointer;
-}
 #amu .genoptionwrap {
 	background:#fafafa;
 	padding:0 10px;
 	border:1px solid #eee;
-	float:left;
-	width:748px;
+	max-width:748px;
 	margin:0 0 10px;
 }
 #amu .optionbox {
 	width:100%;
-	float:left;
+	clear:both;
 	font-size:12px;
 	padding:10px 0;
 	border-bottom:1px solid #eee;
+}
+#amu .optionbox span{
+	display:inline-block;
+	clear:both;
+}
+#amu .metaoptionbox span{
+	clear:none;
+	display:inline-block;
+	padding:5px 15px 5px 0;
+}
+#amu .metaoptionbox span input{
+	margin-top:-1px;
+}
+#amu .optionbox span input{
+	float:none;
 }
 #amu .lastoption {
 	border-bottom:none;
 }
 #amu .optionbox label {
-	float:left;
-	width:80%;
 	line-height:1.3em;
 }
 #amu .optionbox input, #amu .optionbox select {
 	float:right;
 }
+#amu #net_getcopies{
+	float:none;
+}
 #amu .optionbox input[type="text"]{
 	width:100%;
 	clear:both;
-	margin:10px 0 0;
+	margin:10px 0;
 }
 #amu .optionbox input.custheadfield {
-	float:left;
 	width:100%;
 	padding:3px;
 }
 #amu .optionbox label.custheadlabel {
 	width:100%;
-	float:left;
+	display:block;
 	padding:0 0 5px;
 	font-weight:bold;
 }
 #amu .optionbox select{
-	font-size:12px;
+	font-size:11px;
+	margin-top:-3px;
 }
 #amu .buttonline {
 	width:100%;
-	float:left;
 	margin:10px 0;
 }
 #amu .fieldsetwrap {
 	border:1px solid #eee;
-	float:left;
 	width:100%;
 }
 #amu .formwrap {
 	padding:0 10px 10px;
-	float:left;
+	position:relative;
 }
 #amu .wrapwhite {
 	background:#fff;
@@ -181,54 +126,56 @@
 	background:#f9f9f9;
 }
 #amu .formline {
-	margin:10px 0 0;
+	padding:10px 0 0;
 	width:100%;
-	float:left;
 	font-size:11px;
 }
 #amu .userline {
 	padding:10px 0;
 	width:100%;
-	float:left;
 	font-size:11px;
 }
+#amu .checkallex{
+	display:none;
+}
 #amu span.countline {
-	width:20px;
-	float:left;
-	padding:4px 0 0;
+	font-size:11px;
+	position:absolute;
+	left:2px;
+	top:2px;
 	font-weight:bold;
 }
 #amu input.button-right{
 	float:right;
-	margin:0 0 10px;
+	margin:0 0 10px 5px;
 }
 #amu .optioninstructions{
 	font-size:11px;
 }
 #amu .formline label {
-	float:left;
+	display:inline-block;
+	overflow:hidden;
 	padding:4px 10px;
 	width:50px;
 }
 #amu .formline input {
-	float:left;
 	font-size:11px;
 	width:110px;
 }
 /* add existing user line styles */
 #amu .userline input {
-	float:left;
 	width:5%;
+	vertical-align:text-top;
 }
 #amu .userline label {
-	float:left;
 	padding:0;
 	width:80%;
 	font-size:12px;
+	display:inline-block;
+	vertical-align:text-top;
 }
 #amu .userline label span{
-	float:left;
-	display:block;
+	display:inline-block;
 	overflow:hidden;
 }
 #amu .userline label span.eu_userid{
@@ -241,11 +188,9 @@
 	width:54%;
 }
 #amu .userline select {
-	float:left;
 	width:13%;
 }
 #amu .formline select {
-	float:left;
 	width:110px;
 	font-size:11px;
 }
@@ -258,8 +203,12 @@
 	padding:4px 0;
 	font-weight:bold;
 }
-#amu h3, #amu h4{
+#amu h3{
 	color:#21759B;
+}
+#amu h4{
+	color:#444;
+	font-style:italic;
 }
 #amu .regnotice{
 	background-color:#FFFFE0;
@@ -271,6 +220,10 @@
 #amu .regnotice p{
 	font-size:11px;
 	margin:5px 0;
+}
+#amu .stackwrap{
+    border-top:1px solid #ccc;
+	padding:10px;
 }
 input.amushort, input.amumatchuser, input.amuerror{
 	background-color:#ffc3c3;
@@ -296,4 +249,93 @@ input.amustrong, input.amuvalid{
 	width: 150px;
 	border-radius:5px;
 	height:25px;
+}
+#amu #amuQuickRef p{
+	font-size:11px;
+}
+#amu #amuQuickRef ul{
+	list-style-type:disc;
+	font-size:11px;
+}
+#amu #amuQuickRef ul li{
+	margin-left:20px;
+}
+#amu p.amuQuickRefHint{
+	margin:10px 0 0;
+}
+
+/* new dynamic sorter */
+
+#amu #dynamicsorter{
+	background:#f9f9f9 none;
+    border: 1px solid #eee;
+    padding: 0 10px 15px;
+}
+#amu #dynamicsorter h2{
+	font-size: 14px;
+    line-height: 1em;
+    margin: 0;
+    padding: 0.5em 0;
+}
+#amu #dynamicsorter h3{
+	font-size: 12px;
+    line-height: 1.3em;
+    margin: 10px 0 0;
+    padding: 0.5em 0;
+	color:#333;
+}
+#amu #dynamicsorter p{
+	font-size:11px;
+	margin:5px 0;
+	line-height:1em;
+}
+#amu #dynamicsorter #finalorder{
+	padding:10px 0;
+}
+#amu #dynamicsorter #finalorder #ordertitle{
+	font-weight:bold;
+	width:100%;
+	clear:both;
+}
+#amu #dynamicsorter #finalorder #orderfield{
+	background:#fff none;
+    border: 1px solid #eee;
+    margin: 10px 0 0;
+    min-height: 47px;
+}
+#amu #dynamicsorter #dyn_add_standard{
+	
+}
+#amu #dynamicsorter #dyn_add_standard ul{
+	margin:0;
+	list-style-type:none;
+}
+#amu #dynamicsorter #dyn_add_standard ul li{
+	display:inline-block;
+	padding:3px;
+	margin:0 10px 0 0;
+}
+
+#amu #dynamicsorter #dyn_add_custom{
+	
+}
+#amu #dynamicsorter #dyn_add_custom #customcolumn{
+	width:300px;
+}
+#amu #sorterlist{
+	margin:0;
+	list-style-type:none;
+	padding:10px;
+}
+#amu #sorterlist li{
+	display:inline-block;
+	margin:0;
+	padding:5px;
+	cursor:pointer;
+}
+#amu #sorterlist li:before{
+	content:'[';
+}
+#amu #sorterlist li:after{
+	content:']';
 }

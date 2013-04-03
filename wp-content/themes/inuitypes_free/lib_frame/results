@@ -1,2 +1,0 @@
-frame_actions.php:			    $blogo = BIZZ_THEME_IMAGES .'/credits-trans.png';
-frame_actions.php:			    $credentials = '<div class="powered"><a href="http://bizzthemes.com" title="Designed by BizzThemes"><img src="'. BIZZ_THEME_IMAGES .'/credits-trans.png" alt="BizzThemes" height="28" width="115" /></a></div>'."\n";

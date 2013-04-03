@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.8.3
+ * Transposh v0.9.1
  * http://transposh.org/
  *
- * Copyright 2012, Team Transposh
+ * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 28 May 2012 14:38:35 +0300
+ * Date: Wed, 23 Jan 2013 02:24:14 +0200
  */
 
 /*
@@ -34,11 +34,10 @@ class transposh_postpublish {
     function transposh_postpublish(&$transposh) {
         $this->transposh = &$transposh;
         // we'll only do something if so configured to do
-        if ($this->transposh->options->get_enable_auto_post_translate()) {
+        if ($this->transposh->options->enable_autoposttranslate) {
             add_action('edit_post', array(&$this, 'on_edit'));
-            // add_action('publish_post',array(&$this, 'on_publish'));
-            add_action('admin_menu', array(&$this, 'on_admin_menu'));
         }
+        add_action('admin_menu', array(&$this, 'on_admin_menu'));
     }
 
     /**
@@ -46,15 +45,21 @@ class transposh_postpublish {
      */
     function on_admin_menu() {
         //add our metaboxs to the post and publish pages
-        
-        add_meta_box('transposh_postpublish', __('Transposh', TRANSPOSH_TEXT_DOMAIN), array(&$this, "transposh_postpublish_box"), 'post', 'side', 'core');
-        add_meta_box('transposh_postpublish', __('Transposh', TRANSPOSH_TEXT_DOMAIN), array(&$this, "transposh_postpublish_box"), 'page', 'side', 'core');
-        add_meta_box('transposh_setlanguage', __('Set post language', TRANSPOSH_TEXT_DOMAIN), array(&$this, "transposh_setlanguage_box"), 'post', 'advanced', 'core');
-        add_meta_box('transposh_setlanguage', __('Set page language', TRANSPOSH_TEXT_DOMAIN), array(&$this, "transposh_setlanguage_box"), 'page', 'advanced', 'core');
+        tp_logger('adding metaboxes for admin pages/post/custom', 4);
+        $post_types = get_post_types();
+        foreach ($post_types as $post_type) {
+            if (in_array($post_type, array('attachment', 'revision', 'nav_menu_item')))
+                    continue;
+            tp_logger($post_type, 5);
+            if ($this->transposh->options->enable_autoposttranslate) {
+                add_meta_box('transposh_postpublish', __('Transposh', TRANSPOSH_TEXT_DOMAIN), array(&$this, "transposh_postpublish_box"), $post_type, 'side', 'core');
+            }
+            add_meta_box('transposh_setlanguage', __('Set post language', TRANSPOSH_TEXT_DOMAIN), array(&$this, "transposh_setlanguage_box"), $post_type, 'advanced', 'core');
+        }
         if (!isset($_GET['post'])) return;
         if (get_post_meta($_GET['post'], 'transposh_can_translate', true)) { // do isdefined stuff
             $this->just_published = true; // this is later used in the meta boxes //XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-            wp_enqueue_script("transposh_backend", $this->transposh->transposh_plugin_url . '/' . TRANSPOSH_DIR_JS . '/transposhbackend.js', array('transposh'), TRANSPOSH_PLUGIN_VER, true);
+            wp_enqueue_script("transposh_backend", $this->transposh->transposh_plugin_url . '/' . TRANSPOSH_DIR_JS . '/admin/backendtranslate.js', array('transposh'), TRANSPOSH_PLUGIN_VER, true);
             $script_params = array(
                 'post' => $_GET['post'],
                 'l10n_print_after' =>
@@ -120,10 +125,10 @@ class transposh_postpublish {
 
             // Merge the two arrays for traversing
             $phrases = array_merge($phrases, $phrases2, $phrases3, $phrases4, $phrases5);
-            
+            tp_logger($phrases, 4);
 
             // Add phrases from permalink
-            if ($this->transposh->options->get_enable_url_translate()) {
+            if ($this->transposh->options->enable_url_translate) {
                 $permalink = get_permalink($postID);
                 $permalink = substr($permalink, strlen($this->transposh->home_url) + 1);
                 $parts = explode('/', $permalink);
@@ -140,10 +145,10 @@ class transposh_postpublish {
         $json['langs'] = array();
 
         foreach ($phrases as $key) {
-            foreach (explode(',', $this->transposh->options->get_editable_langs()) as $lang) {
+            foreach (explode(',', $this->transposh->options->viewable_languages) as $lang) {
                 // if this isn't the default language or we specifically allow default language translation, we will seek this out...
                 // as we don't normally want to auto-translate the default language -FIX THIS to include only correct stuff, how?
-                if (!$this->transposh->options->is_default_language($lang) || $this->transposh->options->get_enable_default_translate()) {
+                if (!$this->transposh->options->is_default_language($lang) || $this->transposh->options->enable_default_translate) {
                     // There is no point in returning phrases, languages pairs that cannot be translated
                     if (in_array($lang, transposh_consts::$bing_languages) ||
                             in_array($lang, transposh_consts::$google_languages) ||
@@ -216,12 +221,12 @@ class transposh_postpublish {
         } else {
             update_post_meta($postID, 'tp_language', $_POST['transposh_tp_language']);
             // if a language is set for a post, default language translate must be enabled, so we enable it
-            if (!$this->transposh->options->get_enable_default_translate()) {
-                $this->transposh->options->set_enable_default_translate(true);
+            if (!$this->transposh->options->enable_default_translate) {
+                $this->transposh->options->enable_default_translate = true;
                 $this->transposh->options->update_options();
             }
         }
-         //??
+        tp_logger($postID . ' ' . $_POST['transposh_tp_language']); //??
     }
 
 }
