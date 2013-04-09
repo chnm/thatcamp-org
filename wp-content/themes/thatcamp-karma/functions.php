@@ -390,7 +390,7 @@ function thatcamp_filter_title( $full_title, $title, $sep, $sep_location ) {
 					$tag = 'Blog Comments';
 					break;
 				case 'forums' :
-					$tag = 'Forums';
+					$tag = 'Forum Posts';
 					break;
 
 				default :
@@ -470,7 +470,7 @@ function thatcamp_mod_user_nav() {
 	);
 
 	$bp->bp_nav['forums'] = array(
-		'name'                    => 'Forums',
+		'name'                    => 'Forum Posts',
 		'slug'                    => 'forums',
 		'link'                    => add_query_arg( 'a_type', 'forums', $activity_base ),
 		'css_id'                  => 'forums',
