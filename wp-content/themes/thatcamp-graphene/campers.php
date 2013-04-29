@@ -111,7 +111,7 @@
                     <?php endif; ?>
                     					<p>THATCampers: to add your picture to this page, log in and upload a picture to your profile or sign up for <a href="http://en.gravatar.com/site/signup/">Gravatar.com</a> and upload an image there.</p>
                     <?php /* Display campers */ 
-                    $siteUsers = get_users('orderby=display_name&exclude=246'); 					
+                    $siteUsers = get_users('orderby=display_name&who=authors&exclude=246'); 					
                  
 					foreach ($siteUsers as $usr) { ?>
 <div class="camper_info">
