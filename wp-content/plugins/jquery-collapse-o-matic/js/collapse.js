@@ -1,5 +1,5 @@
 /*!
- * Collapse-O-Matic v1.5.1
+ * Collapse-O-Matic v1.5.2
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2013, Twinpictures
@@ -39,16 +39,20 @@ function collapse_init() {
 	jQuery('.collapseomatic.colomat-close').each(function(index) {
 		var thisid = jQuery(this).attr('id');
 		if(jQuery("#swap-"+thisid).length > 0){
-			swapTitle(this, thisid);
+			swapTitle(this, "#swap-"+thisid );
+		}
+		if(jQuery("#swapexcerpt-"+thisid).length > 0){
+			swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
 		}
 	});
 }
 
-function swapTitle(obj, id){
-	var orightml = jQuery(obj).html();
-	var swaphtml = jQuery("#swap-"+id).html();
-	jQuery(obj).html(swaphtml);
-	jQuery("#swap-"+id).html(orightml);
+function swapTitle(origObj, swapObj){
+	var orightml = jQuery(origObj).html();
+	var swaphtml = jQuery(swapObj).html();
+	
+	jQuery(origObj).html(swaphtml);
+	jQuery(swapObj).html(orightml);
 	
 	//is cufon involved? if so, do that thing
 	if(swaphtml.indexOf("<cufon") != -1){
@@ -71,13 +75,21 @@ function closeOtherGroups(rel){
 			
 			//check if the title needs to be swapped out
 			if(jQuery("#swap-"+id).length > 0){
-				swapTitle(this, id);
+				swapTitle(this, "#swap-"+id);
+			}
+			
+			//check if the excerpt needs to be swapped out
+			if(jQuery("#swapexcerpt-"+id).length > 0){
+				swapTitle("#exerpt-"+id, "#swapexcerpt-"+id);
 			}
 	
 			//slideToggle
 			if(colomatslideEffect == 'slideToggle'){
 				jQuery('#target-'+id).slideToggle(colomatduration, function() {
-				// Animation complete.
+					// Animation complete.
+					if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+						jQuery(this).css('display', 'inline');
+					}
 				});
 			}
 			//slideFade
@@ -85,7 +97,12 @@ function closeOtherGroups(rel){
 				jQuery('#target-'+id).animate({
 					height: "toggle",
 					opacity: "toggle"
-				}, colomatduration);
+				}, colomatduration, function (){
+					//Animation complete
+					if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+						jQuery(this).css('display', 'inline');
+					}
+				});
 			}
 			
 			//check if there are nested children that need to be collapsed
@@ -115,7 +132,12 @@ function closeOtherMembers(rel, id){
 			
 			//check if the title needs to be swapped out
 			if(jQuery("#swap-"+thisid).length > 0){
-				swapTitle(this, thisid);
+				swapTitle(this, "#swap-"+thisid);
+			}
+			
+			//check if the excerpt needs to be swapped out
+			if(jQuery("#swapexcerpt-"+thisid).length > 0){
+				swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
 			}
 			
 			//check for snap-shut
@@ -126,7 +148,10 @@ function closeOtherMembers(rel, id){
 			//slideToggle
 			else if(colomatslideEffect == 'slideToggle'){
 				jQuery('#target-'+thisid).slideToggle(colomatduration, function() {
-				// Animation complete.
+					// Animation complete.
+					if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+						jQuery(this).css('display', 'inline');
+					}
 				});
 			}
 			//slideFade
@@ -134,7 +159,12 @@ function closeOtherMembers(rel, id){
 				jQuery('#target-'+thisid).animate({
 					height: "toggle",
 					opacity: "toggle"
-				}, colomatduration);
+				}, colomatduration, function(){
+					// Animation complete.
+					if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+						jQuery(this).css('display', 'inline');
+					}
+				});
 			}
 			
 			//check if there are nested children that need to be collapsed
@@ -143,12 +173,41 @@ function closeOtherMembers(rel, id){
 				if(jQuery(this).hasClass('colomat-expand-only') && jQuery(this).hasClass('colomat-close')){
 					return;
 				}
+				//deal with extra tirggers
+				var pre_id = id.split('-');
+				if (pre_id[0].indexOf('extra') != '-1') {
+					//console.log('this is an extra trigger');
+					pre = pre_id.splice(0, 1);
+					id = pre_id.join('-');
+					
+					//deal with any scroll to links from the Extra Collapse Trigger
+					if(jQuery(this).hasClass('scroll-to-trigger')){
+						var target_offset = jQuery('#'+id).offset();
+						offset_top = target_offset.top;
+					}
+					
+					//deal with any scroll to links from the Title Trigger
+					if(jQuery('#'+id).hasClass('scroll-to-trigger')){
+						offset_top = jQuery('#scrollonclose-'+id).attr('name');
+					}
+					
+					//toggle master trigger arrow
+					jQuery('#'+id).toggleClass('colomat-close');
+					
+					//toggle any other extra trigger arrows
+					jQuery('[id^=extra][id$='+id+']').toggleClass('colomat-close');
+				}
+				
 				if(jQuery(this).attr('id').indexOf('bot-') == '-1'){
 					jQuery(this).removeClass('colomat-close');
 					var thisid = jQuery(this).attr('id');
 					//check if the title needs to be swapped out
 					if(jQuery("#swap-"+thisid).length > 0){
-						swapTitle(this, thisid);
+						swapTitle(this, "#swap-"+thisid);
+					}
+					//check if the excerpt needs to be swapped out
+					if(jQuery("#swapexcerpt-"+thisid).length > 0){
+						swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
 					}
 					jQuery('#target-'+thisid).css('display', 'none');
 				}
@@ -167,35 +226,58 @@ jQuery(document).ready(function() {
 	});
 	
 	//hover	
-	jQuery('.collapseomatic').livequery(function(){
-		jQuery(this).hover(function() {
+	jQuery(document).on({
+		mouseenter: function(){
+			//stuff to do on mouseover
 			jQuery(this).addClass('colomat-hover');
-		}, function() {
+		},
+		mouseleave: function(){
+			//stuff to do on mouseleave
 			jQuery(this).removeClass('colomat-hover');
-		});
-	}, function() {
-		jQuery(this).unbind('mouseover').unbind('mouseout');
-	});
+		}
+	}, '.collapseomatic'); //pass the element as an argument to .on
     
-	
-    //jQuery('.collapseomatic').on("click", function(event){
-	//jQuery('.collapseomatic').click(function() {
-	jQuery('.collapseomatic').livequery('click', function(event) {
-		var offest_top;
+	//the main collapse/expand function
+	jQuery('.collapseomatic').on('click', function(event) {
+		var offset_top;
 		
 		//alert('phones ringin dude');
 		if(jQuery(this).hasClass('colomat-expand-only') && jQuery(this).hasClass('colomat-close')){
 			return;
 		}
 		var id = jQuery(this).attr('id');
-		var offset_top = 0;
 		
 		//deal with any scroll to links
 		if(jQuery(this).hasClass('colomat-close') && jQuery(this).hasClass('scroll-to-trigger')){
 			offset_top = jQuery('#scrollonclose-'+id).attr('name');
 		}
+		
+		//deal with extra tirggers
+		var pre_id = id.split('-');
+		if (pre_id[0].indexOf('extra') != '-1') {
+			//console.log('this is an extra trigger');
+			pre = pre_id.splice(0, 1);
+			id = pre_id.join('-');
 			
-		if(id.indexOf('bot-') != '-1'){
+			//deal with any scroll to links from the Extra Collapse Trigger
+			if(jQuery(this).hasClass('scroll-to-trigger')){
+				var target_offset = jQuery('#'+id).offset();
+				offset_top = target_offset.top;
+			}
+			
+			//deal with any scroll to links from the Title Trigger
+			if(jQuery('#'+id).hasClass('scroll-to-trigger')){
+				offset_top = jQuery('#scrollonclose-'+id).attr('name');
+			}
+			
+			//toggle master trigger arrow
+			jQuery('#'+id).toggleClass('colomat-close');
+			
+			//toggle any other extra trigger arrows
+			jQuery('[id^=extra][id$='+id+']').toggleClass('colomat-close');
+		}
+		
+		else if(id.indexOf('bot-') != '-1'){
 			id = id.substr(4);
 			jQuery('#'+id).toggleClass('colomat-close');
 			
@@ -212,11 +294,18 @@ jQuery(document).ready(function() {
 		}
 		else{
 			jQuery(this).toggleClass('colomat-close');
+			//toggle any extra triggers
+			jQuery('[id^=extra][id$='+id+']').toggleClass('colomat-close');
 		}
 		
 		//check if the title needs to be swapped out
 		if(jQuery("#swap-"+id).length > 0){
-			swapTitle(jQuery('#'+id), id);
+			swapTitle(jQuery('#'+id), "#swap-"+id);
+		}
+		
+		//check if the excerpt needs to be swapped out
+		if(jQuery("#swapexcerpt-"+id).length > 0){
+			swapTitle("#excerpt-"+id, "#swapexcerpt-"+id);
 		}
 		
 		//add visited class
@@ -233,8 +322,22 @@ jQuery(document).ready(function() {
 		
 		//slideToggle
 		else if(colomatslideEffect == 'slideToggle'){
+			jQuery('#target-'+id).removeClass('maptastic');
 			jQuery('#target-'+id).slideToggle(colomatduration, function() {
-			// Animation complete.
+				// Animation complete.
+				if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+					jQuery(this).css('display', 'inline');
+				}
+				
+				trig_id = jQuery(this).attr('id').substring(7);
+				if(jQuery('#'+trig_id).hasClass('find-me').hasClass('colomat-close')){
+					offset_top = jQuery('#find-'+trig_id).attr('name');
+					if(!offset_top){
+						target_offset = jQuery('#'+trig_id).offset();
+						offset_top = target_offset.top;
+					}
+					jQuery('html, body').animate({scrollTop:offset_top}, 500);
+				}
 			});
 		}
 		//slideFade
@@ -243,7 +346,23 @@ jQuery(document).ready(function() {
 			jQuery('#target-'+id).animate({
 				height: "toggle",
 				opacity: "toggle"
-			}, colomatduration);
+			}, colomatduration, function() {
+				// Animation complete.
+				if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+					jQuery(this).css('display', 'inline');
+				}
+				
+				//deal with any findme links
+				trig_id = jQuery(this).attr('id').substring(7);
+				if( jQuery('#'+trig_id).hasClass('find-me') && jQuery('#'+trig_id).hasClass('colomat-close') ){
+					offset_top = jQuery('#find-'+trig_id).attr('name');
+					if(!offset_top){
+						target_offset = jQuery('#'+trig_id).offset();
+						offset_top = target_offset.top;
+					}
+					jQuery('html, body').animate({scrollTop:offset_top}, 500);
+				}
+			});
 		}
         
         //deal with grouped items if needed
@@ -260,9 +379,10 @@ jQuery(document).ready(function() {
 		if(offset_top){
 			jQuery('html, body').animate({scrollTop:offset_top}, 500);
 		}
+		
     });
 	
-	jQuery('.expandall').livequery('click', function(event) {
+	jQuery('.expandall').on('click', function(event) {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
 			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic:not(.colomat-close)').each(function(index) {
@@ -271,13 +391,20 @@ jQuery(document).ready(function() {
 					jQuery('#parent-'+thisid).addClass('colomat-parent-highlight');
 					
 					if(jQuery("#swap-"+thisid).length > 0){
-						swapTitle(this, thisid);
+						swapTitle(this, "#swap-"+thisid);
+					}
+					
+					if(jQuery("#swapexcerpt-"+thisid).length > 0){
+						swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
 					}
 					
 					//slideToggle
 					if(colomatslideEffect == 'slideToggle'){
 						jQuery('#target-'+thisid).slideToggle(colomatduration, function() {
-						// Animation complete.
+							// Animation complete.
+							if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+								jQuery(this).css('display', 'inline');
+							}
 						});
 					}
 					//slideFade
@@ -285,7 +412,12 @@ jQuery(document).ready(function() {
 						jQuery('#target-'+thisid).animate({
 							height: "toggle",
 							opacity: "toggle"
-						}, colomatduration);
+						}, colomatduration, function(){
+							//Animation complete
+							if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+								jQuery(this).css('display', 'inline');
+							}
+						});
 					}
 			});
 	    }
@@ -296,13 +428,20 @@ jQuery(document).ready(function() {
 				jQuery('#parent-'+thisid).addClass('colomat-parent-highlight');
 				
 				if(jQuery("#swap-"+thisid).length > 0){
-					swapTitle(this, thisid);
+					swapTitle(this, "#swap-"+thisid);
+				}
+				
+				if(jQuery("#swapexcerpt-"+thisid).length > 0){
+					swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
 				}
 				
 				//slideToggle
 				if(colomatslideEffect == 'slideToggle'){
 					jQuery('#target-'+thisid).slideToggle(colomatduration, function() {
-					// Animation complete.
+						// Animation complete.
+						if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+							jQuery(this).css('display', 'inline');
+						}
 					});
 				}
 				//slideFade
@@ -310,13 +449,18 @@ jQuery(document).ready(function() {
 					jQuery('#target-'+thisid).animate({
 						height: "toggle",
 						opacity: "toggle"
-					}, colomatduration);
+					}, colomatduration, function(){
+						//animation complete
+						if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+							jQuery(this).css('display', 'inline');
+						}
+					});
 				}
 			});
 		}
     });
     
-	jQuery('.collapseall').livequery('click', function(event) {
+	jQuery('.collapseall').on('click', function(event) {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
 			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic.colomat-close').each(function(index) {
@@ -329,13 +473,20 @@ jQuery(document).ready(function() {
 				jQuery('#parent-'+thisid).removeClass('colomat-parent-highlight');
 				
 				if(jQuery("#swap-"+thisid).length > 0){
-					swapTitle(this, thisid);
+					swapTitle(this, "#swap-"+thisid);
+				}
+				
+				if(jQuery("#swapexcerpt-"+thisid).length > 0){
+					swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
 				}
 				
 				//slideToggle
 				if(colomatslideEffect == 'slideToggle'){
 					jQuery('#target-'+thisid).slideToggle(colomatduration, function() {
-					// Animation complete.
+						// Animation complete
+						if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+							jQuery(this).css('display', 'inline');
+						}
 					});
 				}
 				//slideFade
@@ -343,7 +494,12 @@ jQuery(document).ready(function() {
 					jQuery('#target-'+thisid).animate({
 						height: "toggle",
 						opacity: "toggle"
-					}, colomatduration);
+					}, colomatduration, function(){
+						// Animation complete
+						if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+							jQuery(this).css('display', 'inline');
+						}
+					});
 				}
 			});
 		}
@@ -357,13 +513,20 @@ jQuery(document).ready(function() {
 				jQuery('#parent-'+thisid).removeClass('colomat-parent-highlight');
 				
 				if(jQuery("#swap-"+thisid).length > 0){
-					swapTitle(this, thisid);
+					swapTitle(this, "#swap-"+thisid);
+				}
+				
+				if(jQuery("#swapexcerpt-"+thisid).length > 0){
+					swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
 				}
 				
 				//slideToggle
 				if(colomatslideEffect == 'slideToggle'){
 					jQuery('#target-'+thisid).slideToggle(colomatduration, function() {
-					// Animation complete.
+						// Animation complete.
+						if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+							jQuery(this).css('display', 'inline');
+						}
 					});
 				}
 				//slideFade
@@ -371,30 +534,16 @@ jQuery(document).ready(function() {
 					jQuery('#target-'+thisid).animate({
 						height: "toggle",
 						opacity: "toggle"
-					}, colomatduration);
+					}, colomatduration, function(){
+						// Animation complete
+						if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+							jQuery(this).css('display', 'inline');
+						}
+					});
 				}
 			});
 		}
     });
-	
-	//do we have a find me?
-	//jQuery('.find-me').on("click", function(event){
-	//jQuery('.find-me').click(function() {
-	jQuery('.find-me').livequery('click', function(event) {
-		var myFile = document.location.toString();
-		if (myFile.match('#')) {
-			return;
-		}
-		//get the top offset of the target anchor
-		var thisid = jQuery(this).attr('id');
-		var offset_top = jQuery('#find-'+thisid).attr('name');
-		if(!offset_top){
-			target_offset = jQuery(this).offset();
-			offset_top = target_offset.top;
-		}
-		jQuery('html, body').animate({scrollTop:offset_top}, 500);
-		//console.log(offset_top);
-	});
 	
 	//handle new page loads with anchor
 	var myFile = document.location.toString();
@@ -410,7 +559,7 @@ jQuery(document).ready(function() {
 		}
 		jQuery('#' + anchor).click();
 		//expand any nested parents
-		jQuery('#' + anchor).parents('.collapseomatic_content').each(function(index) {
+		jQuery('#' + anchor).parents('.collapseomatic_content, .collapseomatic_content_inline').each(function(index) {
 			parent_arr = jQuery(this).attr('id').split('-');
 			junk = parent_arr.splice(0, 1);
 			parent = parent_arr.join('-');
@@ -419,7 +568,7 @@ jQuery(document).ready(function() {
     }
 	
 	//handle anchor links within the same page
-	jQuery('a.expandanchor').livequery('click', function(event) {
+	jQuery('a.expandanchor').on('click', function(event) {
 		event.preventDefault();
 		var fullurl = jQuery(this).attr('href');
 		if (fullurl.match('#')) { // the URL contains an anchor
@@ -437,7 +586,7 @@ jQuery(document).ready(function() {
 			}
 			
 			//expand any nested parents
-			jQuery('#' + anchor).parents('.collapseomatic_content').each(function(index) {
+			jQuery('#' + anchor).parents('.collapseomatic_content, .collapseomatic_content_inline').each(function(index) {
 				parent_arr = jQuery(this).attr('id').split('-');
 				junk = parent_arr.splice(0, 1);
 				parent = parent_arr.join('-');
@@ -450,7 +599,7 @@ jQuery(document).ready(function() {
 	});
 	
 	//jQuery('a.colomat-nolink').click(function(event) {
-	jQuery('a.colomat-nolink').livequery('click', function(event) {
+	jQuery('a.colomat-nolink').on('click', function(event) {
 		event.preventDefault();
 	});	
 });
