@@ -2,7 +2,7 @@
 Theme Name: THATCamp Book
 Theme Date: 12/06/2012
 Version: 1.0
-Theme URI: http://thatcamp.org
+Theme URI: http://thatcamp.org 
 Description: THATCamp subsite theme
 Author: Tammie Lister
 Author URI: www.thelogicalbinary.com
@@ -1226,7 +1226,7 @@ dd.wp-caption p.wp-caption-text,
   /* Styles */
 }
 @media only screen and (min-width: 768px) {
-
+  
 }
 @media only screen and (min-width: 992px) {
   nav#top-nav {
