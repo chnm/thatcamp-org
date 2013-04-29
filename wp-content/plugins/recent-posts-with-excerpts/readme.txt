@@ -1,9 +1,12 @@
 === Recent Posts with Excerpts ===
 Contributors: sillybean
 Tags: widgets, excerpts
+Donate link: http://stephanieleary.com/code/wordpress/recent-posts-with-excerpts/
+Text Domain: recent_posts_with_excerpts
+Domain Path: /languages
 Requires at least: 2.8
 Tested up to: 3.5
-Stable tag: 2.3.1
+Stable tag: 2.4
 
 
 A widget that lists your most recent posts with optional excerpts.   
@@ -11,6 +14,8 @@ A widget that lists your most recent posts with optional excerpts.
 == Description ==
 
 A widget that lists your most recent posts with excerpts, optionally limited to a category. The number of posts and excerpts is configurable; for example, you could show the titles of five posts but include the excerpt for only the two most recent. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">the_excerpt Reloaded</a> and <a href="http://sparepencil.com/code/advanced-excerpt/">Advanced Excerpt</a> for excerpts with HTML formatting.
+
+New! Supports displaying post thumbnails along with excerpts. Widget options let you place the thumbnails above the title, in between the title and the excerpt, or below the excerpt.
 
 == Installation ==
 
@@ -27,6 +32,11 @@ If you would like to send me a translation, please write to me through <a href="
 
 == Changelog ==
 
+= 2.4 =
+* Added support for displaying post thumbnails with the excerpts.
+* Localized strings for translators.
+= 2.3.2 =
+* Fixed a bug in which limiting the posts to a category and/or tag would override the setting for the number of posts to display.
 = 2.3.1 =
 * Fixing bugs and restoring "more" option broken in 2.3.
 = 2.3 =
