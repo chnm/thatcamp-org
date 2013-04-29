@@ -30,3 +30,4 @@ wp-content/debug.log
 /tags
 wp-content/themes/inuitypes_free/custom/cache/*
 wp-content/backup-db/*
+wp-content/results
