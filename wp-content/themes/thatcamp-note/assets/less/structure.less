@@ -1,0 +1,98 @@
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background: #333 url('assets/images/navy_blue.png');
+}
+#site-wrapper{
+	max-width: @siteWidth;
+	background: #f7f7f0;
+	border-right: @siteGutter/2 solid #222;
+	box-shadow: 0 1px 2px rgba(64, 64, 64, 0.1);
+}
+/*--------------------------------------------------------------
+2.1 - Content
+--------------------------------------------------------------*/
+#main-wrapper{
+	.clearfix;
+	padding: @siteGutter;
+}
+#primary{
+	float: none;
+	width: 100%;
+}
+
+#primary.fullwidth{
+	width: 100%;
+	float: none;
+}
+ul.contributors li{
+	list-style: none;
+	border-bottom: 1px solid #eee;
+	overflow: hidden;
+	margin: 0 0 10px 0;
+}
+ul.contributors{
+	margin: 0;
+	padding: 0;
+	.font-size-rems(28);
+}
+#logos-wrapper{
+	padding: @siteGutter 0;
+	.clearfix;
+	clear: both;
+}
+#logos{
+	margin: 0 auto;
+	max-width: @siteWidth;
+}
+#logos img{
+	float: left;
+	margin: 10px 20px 10px 0;
+}
+#logos img.nospace{
+	margin: 10px 0 10px 0;
+}
+/*--------------------------------------------------------------
+2.2 - Header
+--------------------------------------------------------------*/
+#branding-wrapper {
+	border-bottom: 1px solid #ddd;
+	background: @white;
+	width: 100%;
+}
+#branding{
+	.clearfix;
+	box-shadow: 0 1px 2px rgba(64, 64, 64, 0.1);
+}
+#header-image{
+	max-width: @siteWidth;
+}
+#site-details{
+	padding: @siteGutter/2 @siteGutter;
+	border-bottom: 1px solid #ddd;
+	background: @white;
+	box-shadow: 0 1px 2px rgba(64, 64, 64, 0.1);
+	margin: -10px 0 0 0;
+}
+/*--------------------------------------------------------------
+2.3 - Footer
+--------------------------------------------------------------*/
+#bottom-footer {
+	clear: both;
+	padding: @siteGutter;
+	overflow: hidden;
+	border-top: 1px solid #ddd;
+	background: @white;
+	max-width: @siteWidth;
+}
+#copyright {
+	float: left;
+}
+/*--------------------------------------------------------------
+2.4 - Sidebar
+--------------------------------------------------------------*/
+#sidebar {
+	width: 100%;
+	float: none;
+}
