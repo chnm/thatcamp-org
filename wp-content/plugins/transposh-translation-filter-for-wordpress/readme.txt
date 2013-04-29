@@ -4,7 +4,7 @@ Donate link: http://transposh.org/donate/
 Tags: translation, translate, i18n, widget, filter, buddypress, bilingual, multilingual, transposh, language, crowdsourcing, google translate, bing translate, context, wiki, RTL, Hebrew, Spanish, French, Russian, English, Arabic, Portuguese
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 0.9.0
+Stable tag: 0.9.2
 
 Transposh adds best of breed translation support to wordpress, 66 languages are automatically translated and can be manually corrected with ease.
 
@@ -69,6 +69,8 @@ You can find them on our site [here](http://transposh.org/faq)
 5. Widget style selection box, with three basic appearances, flags below (in Hebrew), language selection on the top right and language list on the bottom right.
 
 == Upgrade Notice ==
+= 0.9.2 =
+Update for some bugs in parsing
 = 0.8.0 =
 The widgets can have multiple instances, you need to change the current instance
 If you want to use a google/msn API key, it is now possible
@@ -110,13 +112,29 @@ This version allows sorting of languages within the widget
  * Hebrew translation by [Amir](http://colnect.com/he)
  * Frontend Spanish translation by [Ignacio](http://colnect.com/es/collectors/collector/iflvico)
  * Italian translation by [MacItaly](http://profiles.wordpress.org/macitaly)
- * Persian translation by [Sushyant Zavarzadeh](http://zavarzadeh.org)
+ * Persian translation by [Sushyant Zavarzadeh](http://sushyant.com)
  * Spanish translation by [Angel Torregrosa](http://wordp.relatividad.org)
  * German translation by [Jenny Beelens](http://www.professionaltranslation.com)
- * Turkish translation by [Semih Yeşilyurt](http://kingdroid.net)
+ * Turkish translation by [Ömer Faruk Karabulut](http://yakalasam.com/) and [Semih Yeşilyurt](http://kingdroid.net)
  * Portuguese (Brazil) translation by [Amilton Junior](http://www.dicasemgeral.com)
 
 == Changelog ==
+= 2013/03/11 - 0.9.2 =
+ * Basic Woocommerce support 
+ * Override the case when other plugins or themes cause the process_page to be called prematurely
+ * Fix a nasty bug when the same translation appeared in a paragraph more than once
+ * Bing have added two languages 
+ * Better handling of &nbsp; (We breaked when this is a no_break), and we also eliminate the utf ones (hidden from sight anyhow)
+ * Fix the bug reported by dserber disallowing language selection on post where translate_on_publish was disabled 
+ * Update for .po files, Turkish Translation by [Ömer Faruk Karabulut](http://yakalasam.com/)
+= 2013/01/23 - 0.9.1 =
+ * Added some help inside the Admin interface for very common questions (keys)
+ * Allow jQueryUI version to be overriden, resolving many conflicts
+ * A fix when some bad plugins insert .css in an inappropriate way
+ * Added the transposh_echo function - see developer site for documentation and usage
+ * Fixes for widgets easier inclusion with shortcodes, old dropbox fixes, ids removed see the [Widget Gallery](http://transposh.org/tutorial/widget-showcase/)
+ * Adding touch punch to admin, allowing language selection on touch devices
+ * Fixes for minor issues discovered since 0.9.0
 = 2012/12/12 - 0.9.0 =
  * Major rewrite for the administrative interface and settings, should simplify working with transposh
  * Parsing rules can now be changed in the advanced tab, use with care

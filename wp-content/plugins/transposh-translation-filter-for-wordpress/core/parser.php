@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.0
+ * Transposh v0.9.2
  * http://transposh.org/
  *
- * Copyright 2012, Team Transposh
+ * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Wed, 12 Dec 2012 22:23:17 +0200
+ * Date: Mon, 11 Mar 2013 02:28:05 +0200
  */
 
 require_once("shd/simple_html_dom.php");
@@ -294,7 +294,7 @@ class parser {
         }
         $entities = '&Agrave;&Aacute;&Acirc;&Atilde;&Auml;&Aring;&AElig;&Ccedil;&Egrave;&Eacute;&Ecirc;&Euml;&Igrave;&Iacute;&Icirc;&Iuml;&ETH;' .
                 '&Ntilde;&Ograve;&Oacute;&Ocirc;&Otilde;&Ouml;&Oslash;&Ugrave;&Uacute;&Ucirc;&Uuml;&Yacute;&THORN;&szlig;' .
-                '&oslash;&ugrave;&yuml;&oelig;&scaron;';
+                '&oslash;&ugrave;&yuml;&oelig;&scaron;&nbsp;';
         return (stripos($entities, $entity) !== FALSE);
     }
 
@@ -335,8 +335,7 @@ class parser {
     function tag_phrase($string, $start, $end) {
         $phrase = trim(substr($string, $start, $end - $start));
 //        $logstr = str_replace(array(chr(1),chr(2),chr(3),chr(4)), array('[1]','[2]','[3]','[4]'), $string);
-//        logger ("p:$phrase, s:$logstr, st:$start, en:$end, gt:{$this->in_get_text}, gti:{$this->in_get_text_inner}");
-//        logger ('');
+//        tp_logger ("p:$phrase, s:$logstr, st:$start, en:$end, gt:{$this->in_get_text}, gti:{$this->in_get_text_inner}");
         if ($this->in_get_text > $this->in_get_text_inner) {
             tp_logger('not tagging ' . $phrase . ' assumed gettext translated', 4);
             return;
@@ -428,8 +427,7 @@ class parser {
             elseif ($this->num_breaks && $num_len = $this->is_number($string, $pos)) {
 //                logger ("numnum... $num_len");
                 // this is the case of B2 or B2,
-                if (($start == $pos) || ($this->is_white_space($string[$pos - 1])
-                        || ($this->is_sentence_breaker(@$string[$pos + $num_len - 1], @$string[$pos + $num_len], @$string[$pos + $num_len + 1]))) &&
+                if (($start == $pos) || ($this->is_white_space($string[$pos - 1]) || ($this->is_sentence_breaker(@$string[$pos + $num_len - 1], @$string[$pos + $num_len], @$string[$pos + $num_len + 1]))) &&
                         ($this->is_white_space(@$string[$pos + $num_len]) || $this->is_sentence_breaker(@$string[$pos + $num_len], @$string[$pos + $num_len + 1], @$string[$pos + $num_len + 2]))) {
                     // we will now compensate on the number followed by breaker case, if we need to
 //                            logger ("compensate part1?");
@@ -661,17 +659,22 @@ class parser {
         }
 
         // create our dom
+        $string = str_replace(chr(0xC2) . chr(0xA0), ' ', $string); // annoying NBSPs?
         $this->html = str_get_html($string);
         // mark translateable elements
-        $this->html->find('html', 0)->lang = ''; // Document defined lang may be preset to correct lang, but should be ignored TODO: Better?
+        if ($this->html->find('html', 0))
+                $this->html->find('html', 0)->lang = ''; // Document defined lang may be preset to correct lang, but should be ignored TODO: Better?
         $this->translate_tagging($this->html->root);
 
         // first fix the html tag itself - we might need to to the same for all such attributes with flipping
-        if ($this->dir_rtl) $this->html->find('html', 0)->dir = 'rtl';
-        else $this->html->find('html', 0)->dir = 'ltr';
+        if ($this->html->find('html', 0)) {
+            if ($this->dir_rtl) $this->html->find('html', 0)->dir = 'rtl';
+            else $this->html->find('html', 0)->dir = 'ltr';
+        }
 
         if ($this->lang) {
-            $this->html->find('html', 0)->lang = $this->lang;
+            if ($this->html->find('html', 0))
+                    $this->html->find('html', 0)->lang = $this->lang;
             // add support for <meta name="language" content="<lang>">
             if ($this->html->find('meta[name=language]')) {
                 $this->html->find('meta[name=language]')->content = $this->lang;
@@ -798,12 +801,13 @@ class parser {
                 }
                 // store replacements
                 if ($translated_text) {
-                    $replace[$translated_text] = $ep;
+                    $replace[] = array($translated_text, $ep);
                 }
             }
             // do replacements in reverse
-            foreach (array_reverse($replace, true) as $replace => $epg) {
-                $e->outertext = substr_replace($e->outertext, $replace, $epg->start, $epg->len);
+            foreach (array_reverse($replace) as $epag) {
+                list($replacetext, $epg) = $epag;
+                $e->outertext = substr_replace($e->outertext, $replacetext, $epg->start, $epg->len);
             }
 
             // this adds saved spans to the first not in select element which is in the body
@@ -830,13 +834,13 @@ class parser {
                             list ($source, $translated_text) = call_user_func_array($this->fetch_translate_func, array($ep->phrase, $this->lang));
                             // more stats
                             $this->stats->total_phrases++;
-                            if ($ep->inbody) $this->stats->hidden_phrases++; else
-                                    $this->stats->meta_phrases++;
+                            if ($ep->inbody) $this->stats->hidden_phrases++;
+                            else $this->stats->meta_phrases++;
                             if ($translated_text) {
                                 $this->stats->translated_phrases++;
                                 if ($ep->inbody)
-                                        $this->stats->hidden_translated_phrases++; else
-                                        $this->stats->meta_translated_phrases++;
+                                        $this->stats->hidden_translated_phrases++;
+                                else $this->stats->meta_translated_phrases++;
                                 if ($source == 0)
                                         $this->stats->human_translated_phrases++;
                             }

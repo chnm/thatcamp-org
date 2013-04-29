@@ -5,7 +5,7 @@
   Plugin URI: http://transposh.org/
   Description: Translation filter for WordPress, After enabling please set languages at the <a href="admin.php?page=tp_main">the options page</a> Want to help? visit our development site at <a href="http://trac.transposh.org/">trac.transposh.org</a>.
   Author: Team Transposh
-  Version: 0.9.0
+  Version: 0.9.2
   Author URI: http://transposh.org/
   License: GPL (http://www.gnu.org/licenses/gpl.txt)
   Text Domain: transposh
@@ -13,14 +13,14 @@
  */
 
 /*
- * Transposh v0.9.0
+ * Transposh v0.9.2
  * http://transposh.org/
  *
- * Copyright 2012, Team Transposh
+ * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Sun, 16 Dec 2012 07:53:29 +0200
+ * Date: Mon, 11 Mar 2013 02:28:05 +0200
  */
 
 //avoid direct calls to this file where wp core files not present
@@ -106,6 +106,9 @@ class transposh_plugin {
     /** @var boolean Is the wp_redirect being called by transposh? */
     private $transposh_redirect = false;
 
+    /** @var boolean Did we get to process but got an empty buffer with no language? (someone flushed us) */
+    private $tried_buffer = false;
+
     /**
      * class constructor
      */
@@ -146,7 +149,8 @@ class transposh_plugin {
         //Register some functions into wordpress
         if ($this->options->debug_enable)
                 tp_logger(preg_replace('|^' . preg_quote(WP_PLUGIN_DIR, '|') . '/|', '', __FILE__), 4); // includes transposh dir and php
-            
+
+
 // TODO: get_class_methods to replace said mess, other way?
         add_filter('plugin_action_links_' . preg_replace('|^' . preg_quote(WP_PLUGIN_DIR, '|') . '/|', '', __FILE__), array(&$this, 'plugin_action_links'));
         add_filter('query_vars', array(&$this, 'parameter_queryvars'));
@@ -158,7 +162,7 @@ class transposh_plugin {
         add_filter('comment_text', array(&$this, 'comment_text_wrap'), 9999); // this is a late filter...
         add_action('init', array(&$this, 'on_init'), 0); // really high priority
 //        add_action('admin_init', array(&$this, 'on_admin_init')); might use to mark where not to work?
-        add_action('parse_request', array(&$this, 'on_parse_request'));
+        add_action('parse_request', array(&$this, 'on_parse_request'), 0); // should have high enough priority
         add_action('plugins_loaded', array(&$this, 'plugin_loaded'));
         add_action('shutdown', array(&$this, 'on_shutdown'));
         add_action('wp_print_styles', array(&$this, 'add_transposh_css'));
@@ -318,6 +322,10 @@ class transposh_plugin {
      * @return string Modified page buffer
      */
     function process_page(&$buffer) {
+        /*        if (!$this->target_language) {
+          global $wp;
+          $this->on_parse_request($wp);
+          } */
         tp_logger('processing page hit with language:' . $this->target_language, 1);
         $start_time = microtime(TRUE);
 
@@ -329,6 +337,10 @@ class transposh_plugin {
         // TODO: need to further investigate (will it be needed?)
         elseif ($this->target_language == '') {
             tp_logger("Skipping translation where target language is unset", 3);
+            if (!$buffer) {
+                tp_logger("seems like we had a premature flushing");
+                $this->tried_buffer = true;
+            }
         }
         // Don't translate the default language unless specifically allowed to...
         elseif ($this->options->is_default_language($this->target_language) && !$this->options->enable_default_translate) {
@@ -506,6 +518,10 @@ class transposh_plugin {
                 $this->target_language = $this->options->default_language;
         tp_logger("requested language: {$this->target_language}", 3);
 
+        if ($this->tried_buffer) {
+            tp_logger("we will retrigger the output buffering");
+            ob_start(array(&$this, "process_page"));
+        }
 
         // make themes that support rtl - go rtl http://wordpress.tv/2010/05/01/yoav-farhi-right-to-left-themes-sf10
         if (in_array($this->target_language, transposh_consts::$rtl_languages)) {
@@ -768,6 +784,11 @@ class transposh_plugin {
         // set theme when it is needed
         if ($this->options->widget_progressbar || $this->edit_mode) {
             $script_params['theme'] = $this->options->widget_theme;
+            if ($this->options->jqueryui_override) {
+                $script_params['jQueryUI'] = 'http://ajax.googleapis.com/ajax/libs/jqueryui/' . $this->options->jqueryui_override . '/';
+            } else {
+                $script_params['jQueryUI'] = 'http://ajax.googleapis.com/ajax/libs/jqueryui/' . JQUERYUI_VER . '/';
+            }
         }
 
 //          'l10n_print_after' => 'try{convertEntities(inlineEditL10n);}catch(e){};'
@@ -1212,7 +1233,7 @@ class transposh_plugin {
 
         if (isset($atts['widget'])) {
             ob_start();
-            $this->widget->widget(array('before_widget' => '', 'before_title' => '', 'after_widget' => '', 'after_title' => ''), array('title' => '', 'widget_file' => $atts['widget']));
+            $this->widget->widget(array('before_widget' => '', 'before_title' => '', 'after_widget' => '', 'after_title' => ''), array('title' => '', 'widget_file' => $atts['widget']), true);
             $widgetcontent = ob_get_contents();
             ob_end_clean();
             return $widgetcontent;
@@ -1525,6 +1546,19 @@ function transposh_widget($args = array(), $instance = array('title' => 'Transla
 function transposh_get_current_language() {
     global $my_transposh_plugin;
     return $my_transposh_plugin->target_language;
+}
+
+/**
+ * Function for use in themes to allow different outputs
+ * @param string $default - the default text in the default language
+ * @param array $altarray - array including alternatives in the format ("es" => "hola")
+ */
+function transposh_echo($default, $altarray) {
+    if (isset($altarray[transposh_get_current_language()])) {
+        echo TP_GTXT_BRK . $altarray[transposh_get_current_language()] . TP_GTXT_BRK_CLOSER;
+    } else {
+        echo $default;
+    }
 }
 
 /**

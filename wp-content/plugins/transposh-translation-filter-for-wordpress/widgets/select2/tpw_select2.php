@@ -11,14 +11,14 @@
  */
 
 /*
- * Transposh v0.9.0
+ * Transposh v0.9.2
  * http://transposh.org/
  *
- * Copyright 2012, Team Transposh
+ * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Wed, 12 Dec 2012 22:23:17 +0200
+ * Date: Mon, 11 Mar 2013 02:28:05 +0200
  */
 
 class tpw_select2 extends transposh_base_widget {
@@ -36,7 +36,7 @@ class tpw_select2 extends transposh_base_widget {
     static function tp_widget_do($args) {
         echo '<span class="' . NO_TRANSLATE_CLASS . '">'; 
 
-        echo '<select style="width:100%" name="lang" class="tp_lang2" id="tp_lang2" onchange="document.location.href=this.options[this.selectedIndex].value;">'; 
+        echo '<select style="width:100%" name="lang" class="tp_lang2" onchange="document.location.href=this.options[this.selectedIndex].value;">'; 
         foreach ($args as $langrecord) {
             $is_selected = $langrecord['active'] ? " selected=\"selected\"" : "";
             echo "<option value=\"{$langrecord['url']}\" data-flag=\"{$langrecord['flag']}\" data-lang=\"{$langrecord['lang']}\"{$is_selected}>{$langrecord['langorig']}</option>";

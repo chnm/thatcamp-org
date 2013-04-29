@@ -1,12 +1,12 @@
 /*
- * Transposh v0.9.0
+ * Transposh v0.9.2
  * http://transposh.org/
  *
- * Copyright 2012, Team Transposh
+ * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Wed, 12 Dec 2012 22:23:17 +0200
+ * Date: Mon, 11 Mar 2013 02:28:05 +0200
  */
 t_jp.l={"Close without saving?":"\u05dc\u05e1\u05d2\u05d5\u05e8 \u05d1\u05dc\u05d9 \u05dc\u05e9\u05de\u05d5\u05e8?","You have made a change to the translation. Are you sure you want to discard it?":"\u05d1\u05d9\u05e6\u05e2\u05ea \u05e9\u05d9\u05e0\u05d5\u05d9 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd, \u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7 \u05e9\u05d0\u05ea\u05d4 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05d5\u05d5\u05ea\u05e8 \u05e2\u05dc\u05d9\u05d5?",History:"\u05d4\u05d9\u05e1\u05d8\u05d5\u05e8\u05d9\u05d4",
 "Loading...":"\u05d8\u05d5\u05e2\u05df...",Translated:"\u05ea\u05d5\u05e8\u05d2\u05dd",By:"\u05e2\u05dc \u05d9\u05d3\u05d9",At:"\u05d1",google:"\u05d2\u05d5\u05d2\u05dc",bing:"\u05d1\u05d9\u05e0\u05d2",apertium:"\u05d0\u05e4\u05e8\u05d8\u05d9\u05d5\u05dd","manual translation":"\u05ea\u05e8\u05d2\u05d5\u05dd \u05d9\u05d3\u05e0\u05d9","bing suggest":"\u05d4\u05e6\u05e2\u05d5\u05ea \u05d1\u05d9\u05e0\u05d2","google suggest":"\u05d4\u05e6\u05e2\u05d5\u05ea \u05d2\u05d5\u05d2\u05dc","apertium suggest":"\u05d4\u05e6\u05e2\u05d5\u05ea \u05d0\u05e4\u05e8\u05d8\u05d9\u05d5\u05dd",

@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.0
+ * Transposh v0.9.2
  * http://transposh.org/
  *
- * Copyright 2012, Team Transposh
+ * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Sun, 16 Dec 2012 07:53:29 +0200
+ * Date: Mon, 11 Mar 2013 02:28:05 +0200
  */
 
 //Language indicator in URL. i.e. lang=en
@@ -135,7 +135,8 @@ class transposh_consts {
     // Bing supported languages
     // (got this using Microsoft.Translator.GetLanguages() - fixed to match our codes)
     // @updated 2012-Feb-14 (mww)
-    public static $bing_languages = array('en', 'ar', 'bg', 'ca', 'zh', 'zh-tw', 'cs', 'da', 'nl', 'et', 'fi', 'fr', 'de', 'el', 'ht', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'lv', 'lt', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'es', 'sv', 'th', 'tr', 'uk', 'vi', 'mw');
+    // @updated 2013-Feb-21 (ms, ur)
+    public static $bing_languages = array('en', 'ar', 'bg', 'ca', 'zh', 'zh-tw', 'cs', 'da', 'nl', 'et', 'fi', 'fr', 'de', 'el', 'ht', 'he', 'hi', 'hu', 'id', 'it', 'ja', 'ko', 'lv', 'lt', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'es', 'sv', 'th', 'tr', 'uk', 'vi', 'mw', 'ms', 'ur');
     // Apertium supported languages
     // a bit tricky, but we'll see - starting with just esperanto
     public static $apertium_languages = array('eo');
@@ -163,7 +164,7 @@ class transposh_consts {
 define('TRANSLATOR', 'translator');
 
 //Define for transposh plugin version
-define('TRANSPOSH_PLUGIN_VER', '0.9.0');
+define('TRANSPOSH_PLUGIN_VER', '0.9.2');
 
 //Current jQuery UI
 define('JQUERYUI_VER', '1.9.2');

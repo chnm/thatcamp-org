@@ -1,12 +1,12 @@
 /*
- * Transposh v0.9.0
+ * Transposh v0.9.2
  * http://transposh.org/
  *
- * Copyright 2012, Team Transposh
+ * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Wed, 12 Dec 2012 22:23:17 +0200
+ * Date: Mon, 11 Mar 2013 02:28:05 +0200
  */
 (function(a){function e(a){var b;return typeof t_jp.l==="object"&&(b=t_jp.l[a])?b:a}function n(c,d,e){a.trim(d).length===0&&(d=a("[data-token='"+c+"']").attr("data-orig"));var f=function(){var c=a(this).attr("id").substr(a(this).attr("id").lastIndexOf("_")+1),d=a(b+"img_"+c);a(b+c).attr("data-source",e);d.removeClass("tr-icon-yellow").removeClass("tr-icon-green");e==0?d.addClass("tr-icon-green"):e&&d.addClass("tr-icon-yellow")};a("*[data-token='"+c+"'][data-hidden!='y']").html(d).each(f);a("*[data-token='"+
 c+"'][data-hidden='y']").attr("data-trans",d).each(f);a(b+"translation").data("origval",d);a(b+"translation").keyup()}function o(b,d){n(b,d,0);a.ajax({type:"POST",url:t_jp.ajaxurl,data:{action:"tp_translation",ln0:t_jp.lang,sr0:0,items:1,tk0:b,tr0:d},error:function(a){n(b,"",1);alert("Problem saving translation, contact support.\n\nServer's message: "+a.statusText)}})}function y(){t_jp.google_key?t_jp.dgt(a(b+"original").val(),function(c){a(b+"translation").val(a("<div>"+a.trim(c.data.translations[0].translatedText)+

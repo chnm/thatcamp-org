@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.0
+ * Transposh v0.9.2
  * http://transposh.org/
  *
- * Copyright 2012, Team Transposh
+ * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Wed, 12 Dec 2012 22:23:17 +0200
+ * Date: Mon, 11 Mar 2013 02:28:05 +0200
  */
 
 /*
@@ -35,7 +35,7 @@ class transposh_backup {
         $body['home_url'] = $this->transposh->home_url;
         $body['key'] = $this->transposh->options->transposh_key;
         $body['v'] = '2';
-        $body['tpv'] = '0.9.0';
+        $body['tpv'] = '0.9.2';
         return $body;
     }
 
