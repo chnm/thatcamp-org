@@ -268,7 +268,7 @@ msgid "Use HTML content type"
 msgstr ""
 
 #: contact-form-7/admin/includes/meta-boxes.php:80
-#: contact-form-7/includes/functions.php:117
+#: contact-form-7/includes/functions.php:112
 msgid "Message body:"
 msgstr ""
 
@@ -330,32 +330,40 @@ msgstr ""
 msgid "Submission was referred to as spam"
 msgstr ""
 
-#: contact-form-7/includes/functions.php:60
+#: contact-form-7/includes/functions.php:50
+msgid "There are terms that the sender must accept"
+msgstr ""
+
+#: contact-form-7/includes/functions.php:51
+msgid "Please accept the terms to proceed."
+msgstr ""
+
+#: contact-form-7/includes/functions.php:55
 msgid "There is a field that the sender must fill in"
 msgstr ""
 
-#: contact-form-7/includes/functions.php:61
+#: contact-form-7/includes/functions.php:56
 msgid "Please fill the required field."
 msgstr ""
 
-#: contact-form-7/includes/functions.php:85
+#: contact-form-7/includes/functions.php:80
 msgid "Your Name"
 msgstr ""
 
-#: contact-form-7/includes/functions.php:85
-#: contact-form-7/includes/functions.php:87
+#: contact-form-7/includes/functions.php:80
+#: contact-form-7/includes/functions.php:82
 msgid "(required)"
 msgstr ""
 
-#: contact-form-7/includes/functions.php:87
+#: contact-form-7/includes/functions.php:82
 msgid "Your Email"
 msgstr ""
 
-#: contact-form-7/includes/functions.php:89
+#: contact-form-7/includes/functions.php:84
 msgid "Subject"
 msgstr ""
 
-#: contact-form-7/includes/functions.php:91
+#: contact-form-7/includes/functions.php:86
 msgid "Your Message"
 msgstr ""
 
@@ -364,22 +372,22 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: contact-form-7/includes/functions.php:101
+#: contact-form-7/includes/functions.php:96
 #, php-format
 msgid "From: %s"
 msgstr ""
 
-#: contact-form-7/includes/functions.php:102
+#: contact-form-7/includes/functions.php:97
 #, php-format
 msgid "Subject: %s"
 msgstr ""
 
-#: contact-form-7/includes/functions.php:103
+#: contact-form-7/includes/functions.php:98
 msgid "Message Body:"
 msgstr ""
 
-#: contact-form-7/includes/functions.php:104
-#: contact-form-7/includes/functions.php:118
+#: contact-form-7/includes/functions.php:99
+#: contact-form-7/includes/functions.php:113
 #, php-format
 msgid "This mail is sent via contact form on %1$s %2$s"
 msgstr ""
