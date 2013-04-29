@@ -1,9 +1,9 @@
 === Jetpack Lite ===
 Contributors: samuelaguilera
-Tags: WordPress.com, statistics, stats, views, shortlinks, wp.me
+Tags: WordPress.com, statistics, stats, views, shortlinks, wp.me, json
 Requires at least: 3.1
-Tested up to: 3.4.2
-Stable tag: 1.7
+Tested up to: 3.5.1
+Stable tag: 2.1.2
 
 A NOT official "lite" fork of Jetpack plugin containing only Stats and WP.me Shortlinks modules. All other modules removed (files and code).
 
@@ -25,11 +25,9 @@ Features include:
 * The [WP.me URL shortener](http://wp.me/sf2B5-shorten).
 *  and *nothing* more to come!
 
-
-**NOTE: This plugin IS NOT supported by original Jetpack by WordPress.com support staff.**
-**This is ONLY a fork and NOT the official plugin** and, although is not probable, may contain bugs not present in the original plugin, **use it at your own risk!**
-
 And if you don't feel confortable using it or need a great support, it's better to install original and official from here: [Jetpack](http://jetpack.me/).
+
+Note: The stats portion of Jetpack uses Quantcast to enhance its data. If you have any question regarding this, please ask to [Jetpack Support](http://wordpress.org/support/plugin/jetpack) not to me.
 
 == Installation ==
 
@@ -68,6 +66,12 @@ Remember, if you don't feel confortable using this unofficial fork or need a gre
 
 == Changelog ==
 
+= 2.1.2 =
+
+* Based on Jetpack by WordPress.com 2.1.2
+* Upgrading to this base allows to view stats from apps (problem described here: http://wordpress.org/support/topic/iphone-wordpress-app-wants-stats-ver-182 )
+* Maintained stats widget from Jetpack per user request http://wordpress.org/support/topic/most-viewed-posts-and-pages-widget
+
 = 1.7 =
 
 * Based on Jetpack by WordPress.com 1.7
@@ -84,3 +88,8 @@ Remember, if you don't feel confortable using this unofficial fork or need a gre
 
 = 1.0 =
 * Initial release based on Jetpack by WordPress.com 1.1.3
+
+== Upgrade Notice ==
+
+= 2.1.2 =
+Recommended upgrade. Upgrading to this version allows to view stats from native mobile apps.
