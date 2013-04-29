@@ -221,25 +221,25 @@ function fergcorp_countdownTimer_fuzzyDate(targetTime, nowTime, getOptions){
 	//Catch blank statements
 	if(s==''){
 		if(parseInt( getOptions['showSecond'] )){
-			s = sprintf(fergcorp_countdown_timer_js_lang.seconds, 0);
+			s = '<span class="fergcorp_countdownTimer_second fergcorp_countdownTimer_timeUnit">' + sprintf(fergcorp_countdown_timer_js_lang.seconds, 0) + '</span> ';
 		}
 		else if(parseInt( getOptions['showMinute'] )){
-			s = sprintf(fergcorp_countdown_timer_js_lang.minutes, 0);
+			s = '<span class="fergcorp_countdownTimer_minute fergcorp_countdownTimer_timeUnit">' + sprintf(fergcorp_countdown_timer_js_lang.minutes, 0) + '</span> ';
 		}
 		else if(parseInt( getOptions['showHour'] )){
-			s = sprintf(fergcorp_countdown_timer_js_lang.hours, 0);
+			s = '<span class="fergcorp_countdownTimer_hour fergcorp_countdownTimer_timeUnit">' + sprintf(fergcorp_countdown_timer_js_lang.hours, 0) + '</span> ';
 		}	
 		else if(parseInt( getOptions['showDay'] )){
-			s = sprintf(fergcorp_countdown_timer_js_lang.days, 0);
+			s = '<span class="fergcorp_countdownTimer_day fergcorp_countdownTimer_timeUnit">' + sprintf(fergcorp_countdown_timer_js_lang.days, 0) + '</span> ';
 		}
 		else if(parseInt( getOptions['showWeek'] )){
-			s = sprintf(fergcorp_countdown_timer_js_lang.weeks, 0);
+			s = '<span class="fergcorp_countdownTimer_week fergcorp_countdownTimer_timeUnit">' + sprintf(fergcorp_countdown_timer_js_lang.weeks, 0) + '</span> ';
 		}
 		else if(parseInt( getOptions['showMonth'] )){
-			s = sprintf(fergcorp_countdown_timer_js_lang.months, 0);
+			s = '<span class="fergcorp_countdownTimer_month fergcorp_countdownTimer_timeUnit">' + sprintf(fergcorp_countdown_timer_js_lang.months, 0) + '</span> ';
 		}
 		else{
-			s = sprintf(fergcorp_countdown_timer_js_lang.years, 0);
+			s = '<span class="fergcorp_countdownTimer_year fergcorp_countdownTimer_timeUnit">' + sprintf(fergcorp_countdown_timer_js_lang.years, 0) + '</span> ';
 		}
 	}
 

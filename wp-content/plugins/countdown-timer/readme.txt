@@ -2,9 +2,9 @@
 Contributors: fergbrain
 Donate link: http://www.andrewferguson.net/2007/03/08/general-note/
 Tags: countdown, timer, count, date, event, widget, countup, age, fun, time, international, i18n, countdown timer, wedding, localization, i18n
-Requires at least: 3.4
+Requires at least: 3.5
 Tested up to: 3.5
-Stable tag: 3.0.3
+Stable tag: 3.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -174,7 +174,26 @@ I'm an engineer and have to retreat to my cave from time to time. Also, I do thi
 1. Administration Interface
 2. Example on Blog
 
+== Upgrade Notice ==
+= 3.0.5 =
+A couple of major bug fixes that deal resolve issues with using PHP < 5.3 and scope of object during activation 
+
 == Changelog ==
+
+= 3.0.5 =
+Relase date: 1/19/2013
+
+ * Bug fix: Eliminates Fatal error: Using $this when not in object context in...that prevented plugin from activating in certain circumstances
+ * Bug fix: Added getTimestamp function needed for PHP < 5.3
+ * Bug fix: Properly enclose "No dates present" in <li> tags
+
+= 3.0.4 =
+Release date: 1/12/2013
+
+ * Bug fix: Least Common Unit will now display correctly
+ * Bug fix: Solve issues with admin page not loading
+ * Removed "cal_days_in_month" as everyone should be at the PHP level that supports this now
+ * Wrote unit test suite
 
 = 3.0.3 =
 Release date: 7/3/2012
@@ -498,7 +517,3 @@ Fixed small math error in cdt_format() on line 47.
 Release date: 05/15/2005:
 
 Initial public release
-
-== Upgrade Notice ==
-= 2.4.2 =
- Fixes bug where using fergcorp_countdownTimer function with event limits argument would limit events incorrectly. Fixed issue with translations not working.
