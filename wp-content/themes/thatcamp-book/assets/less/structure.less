@@ -1,0 +1,85 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: #006677;
+}
+#site-wrapper{
+	background: @white;
+	padding: @siteGutter*2;
+}
+#site-gap{
+	background: rgba(255, 255, 255, 0.1);
+	margin: @siteGutter*2 auto;
+	padding: @siteGutter;
+	max-width: @siteWidth;
+}
+div, article, section, header, footer, nav, figure, li{
+	position: relative;
+}
+/*--------------------------------------------------------------
+2.1 - Content
+--------------------------------------------------------------*/
+#primary{
+	width: 100%;
+	float: none;
+	padding: @siteGutter 0;
+}
+
+#primary.fullwidth{
+	width: 100%;
+	float: none;
+}
+ul.contributors li{
+	list-style: none;
+	border-bottom: 1px solid #eee;
+	overflow: hidden;
+	margin: 0 0 10px 0;
+}
+ul.contributors{
+	margin: 0;
+	padding: 0;
+}
+#logos-wrapper{
+	padding: @siteGutter 0;
+	.clearfix;
+	clear: both;
+}
+#logos{
+	margin: 0 auto;
+	max-width: @siteWidth;
+}
+#logos img{
+	float: left;
+	margin: 10px 20px 10px 0;
+}
+#logos img.nospace{
+	margin: 10px 0 10px 0;
+}
+/*--------------------------------------------------------------
+2.2 - Header
+--------------------------------------------------------------*/
+#branding {
+	text-align: center;
+	padding: 10px 0 @siteGutter;
+}
+/*--------------------------------------------------------------
+2.3 - Footer
+--------------------------------------------------------------*/
+#bottom-footer {
+	clear: both;
+	padding: @siteGutter 0;
+	overflow: hidden;
+	border-top: 2px solid #eee;
+}
+#copyright {
+	float: left;
+}
+/*--------------------------------------------------------------
+2.4 - Sidebar
+--------------------------------------------------------------*/
+#sidebar {
+	width: 100%;
+	float: none;
+	text-align: right;
+	padding: @siteGutter 0 0 0;
+}

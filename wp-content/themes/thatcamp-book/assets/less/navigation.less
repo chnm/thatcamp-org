@@ -1,0 +1,140 @@
+/*--------------------------------------------------------------
+4.0 - Navigation
+--------------------------------------------------------------*/
+a {
+    color: @linkColor;
+    text-decoration: none;
+}
+a:visited {
+    color: @linkVisitedColor;
+    text-decoration: none;
+}
+a:hover {
+    color: @linkHoverColor;
+}
+.skip-link,
+.assistive-text {
+	display: none;
+}
+nav#top-nav {
+	padding: 10px;
+	font-family: @baseHeadingFont;
+	.font-size-rems(18);
+	display: none;
+}
+nav#top-nav ul {
+	margin: 0;
+	text-indent: 0;
+	padding: 0 0 10px 0;
+}
+nav#top-nav li ul li {
+}
+nav#top-nav li a,
+nav#top-nav li {
+	text-decoration: none;
+}
+nav#top-nav li a {
+}
+nav#top-nav li {
+	padding: 5px;
+	padding: 0.5rem;
+	margin: 0;
+	list-style: none;
+	border-bottom: 2px solid #eee;
+}
+nav#top-nav li:last-child {
+	border-right: none;
+}
+nav#top-nav li a {
+}
+nav#top-nav li a:hover,nav#top-nav li.current-menu-item a {
+}
+nav#top-nav li ul {
+	border-top: 2px solid #eee;
+	padding: 10px 30px 0 0;
+}
+nav#top-nav li:hover ul {
+	display: block;
+}
+nav#top-nav li ul li,
+nav#top-nav li ul li a {
+}
+nav#top-nav li ul li a {
+}
+nav#top-nav li ul li {
+	border-bottom: none;
+}
+nav[role="navigation"] li a {
+	padding: 10px 0;
+	line-height: 1.2;
+}
+nav#bottom-nav ul {
+	margin: 0;
+	padding: 0;
+}
+nav#bottom-nav ul li {
+	list-style: none;
+	float: right;
+	margin: 0 0 0 30px;
+	margin: 0 0 0 3rem;
+}
+nav#bottom-nav ul li a,nav#bottom-nav ul li a:visited {
+}
+#nav-below {
+	margin: 10px 0 20px 0;
+	margin: 1rem 0 2rem 0;
+}
+select.mobileMenu {
+	width: 100%;
+}
+.assistive-text {
+	position: absolute!important;
+	clip: rect(1px 1px 1px 1px);/* IE6,IE7 */
+	clip:rect(1px,1px,1px,1px);
+}
+.pagination{
+	.clearfix;
+	clear: both;
+	padding: @siteGutter;
+	font-family: @baseHeadingFont;
+}
+.pag-count{
+	float: left;
+	color: #aaa;
+}
+.pagination-links{
+	float: right;
+}
+
+nav#show-menu{
+	float: right;
+	right: 20px;
+	position: absolute;
+	top: 40px;
+	.font-size-rems(32);
+	cursor: pointer;
+}
+
+#responsive-menu{
+	display: none;
+	clear: both;
+}
+
+#responsive-menu ul{
+	margin: 0;
+	padding: 0;
+}
+#responsive-menu li{
+	background : @black;
+	padding: 10px;
+	margin: 0;
+	border-bottom: @whiteBorder;
+	font-family: @baseHeadingFont;
+	.font-size-rems(18);
+}
+#responsive-menu li a{
+	color: #fff;
+}
+#responsive-menu li:hover{	
+	background: #333;
+}

@@ -1,0 +1,30 @@
+/* humanstxt.org */
+
+/* TEAM */
+
+Name: 			Logical Binary
+Site:			eg: http://logicalbinary.com
+Twitter:		eg: @karmatosed
+Location:		eg: UK
+
+/* THANKS */
+
+/* SITE */
+
+Standards: 
+
+HTML5
+CSS3
+
+Components: 
+
+Bootstrap: 		http://twitter.github.com/bootstrap
+Font Awesome: 		http://fortawesome.github.com/Font-Awesome
+jQuery: 		http://jquery.com
+Modernizr: 		http://modernizr.com
+HTML5 boilerplate Normalise - from HTML5 Boilerplate h5bp.com/css
+320 and Up  - Malarchy - for mixins
+
+Inspriation:
+
+320 and Up: 		http://stuffandnonsense.co.uk/projects/320andup

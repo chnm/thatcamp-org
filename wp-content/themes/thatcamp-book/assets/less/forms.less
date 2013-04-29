@@ -1,0 +1,118 @@
+/*--------------------------------------------------------------
+6.0 - Forms
+--------------------------------------------------------------*/
+.required {
+}
+label ~ span.required {
+	display: block;
+}
+form {
+	margin-bottom: 20px;
+	margin-bottom: 2.0rem;
+}
+form .clearfix {
+	margin-bottom: 20px;
+	margin-bottom: 2.0rem;
+	zoom: 1;
+}
+form .clearfix:before,form .clearfix:after {
+	display: table;
+	content: "";
+	zoom: 1;
+}
+form .clearfix:after {
+	clear: both;
+}
+input,
+select,textarea,{
+	line-height: normal;
+	display: block;
+	background: @white;
+	border: 1px solid #ddd;
+	padding: 10px @siteGutter;
+}
+.widget_search input{
+	float: left;
+}
+input[type=checkbox],input[type=radio] {
+	cursor: pointer;
+}
+select {
+	padding: initial;
+	margin: 5px 0 0 0;
+}
+input[type=checkbox],input[type=radio] {
+	width: auto;
+	height: auto;
+	padding: 0;
+	margin: 5px 0;
+	margin: 0.5rem 0;
+	line-height: normal;
+	border: none;
+}
+input[type=file] {
+	padding: initial;
+	border: initial;
+	line-height: initial;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+input[type=button],input[type=reset],input[type=submit,button,a.button{
+	width: auto;
+	height: auto;
+}
+select,input[type=file] {
+	height: auto;
+}
+select[multiple] {
+	height: inherit;
+}
+textarea {
+	height: auto;
+}
+:-moz-placeholder {
+	color: @placeholderColor;
+}
+::-webkit-input-placeholder {
+	color: @placeholderColor;
+}
+input,textarea {
+}
+input:focus,textarea:focus {
+	outline: 0;
+}
+input[type=file]:focus,input[type=checkbox]:focus,select:focus {
+	outline: @inputFocusBorderWidth @inputFocusBorderStyle @inputFocusBorderColor;
+}
+input[type=submit]{
+	cursor: pointer;
+}
+input[type=submit], .comment-reply a{
+	background: @bluebookcampLight;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	outline: none;
+	padding: 12px @siteGutter/2;
+	text-align: center;
+	text-decoration: none;
+	font-family: @baseHeadingFont;
+	text-transform: uppercase;
+	text-shadow: -1px -1px 0px @bluebookcampDark;
+	clear: both;
+	.rounded(50%);
+}
+input[type=submit]:hover, .comment-reply a:hover{
+	background: @bluebookcampDark;
+	border: none;
+	color: #fff;
+	outline: none;
+	text-decoration: none;
+	.rounded(50%);
+}
+.widget_search input[type=submit]{
+	clear: none;
+	.rounded(0%);
+	padding: 6px 10px;
+}
