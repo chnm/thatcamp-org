@@ -4,7 +4,7 @@ Donate link: http://www.codehooligans.com
 Tags: admin, posts, pages, categories, tags, Post Type, Taxonomy, exclude, include, is_front, is_archive, is_search, is_feed, is_author
 Requires at least: 3.2
 Tested up to: 3.3.1
-Stable tag: 2.0.4Beta2
+Stable tag: 2.0.6
 
 == Description ==
 
@@ -47,6 +47,10 @@ At the time (version 1.6.1) the plugin only effects Pages included in the tradit
 3. New Help section to answer some of your questions.
 
 == Changelog == 
+
+= 2.0.6 =
+2013-03-20
+Bug fixes for Illegal string offset 'action' PHP Warnings.
 
 = 2.0.5 =
 2012-05-16
