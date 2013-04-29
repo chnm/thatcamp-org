@@ -47,7 +47,6 @@ function bbp_reply_post_type() {
  * @uses bbp_get_topic_id() To get the topic id
  * @uses bbp_get_reply_post_type() To get the reply post type
  * @uses bbp_get_topic_post_type() To get the topic post type
- * @uses bbp_is_query_name() To check if we are getting replies for a widget
  * @uses get_option() To get the replies per page option
  * @uses bbp_get_paged() To get the current page value
  * @uses current_user_can() To check if the current user is capable of editing
@@ -66,23 +65,17 @@ function bbp_reply_post_type() {
 function bbp_has_replies( $args = '' ) {
 	global $wp_rewrite;
 
-	// What are the default allowed statuses (based on user caps)
-	if ( bbp_get_view_all( 'edit_others_replies' ) ) {
-		$post_statuses = array( bbp_get_public_status_id(), bbp_get_closed_status_id(), bbp_get_spam_status_id(), bbp_get_trash_status_id() );
-	} else {
-		$post_statuses = array( bbp_get_public_status_id(), bbp_get_closed_status_id() );
-	}
+	/** Defaults **************************************************************/
 
+	// Other defaults
 	$default_reply_search = !empty( $_REQUEST['rs'] ) ? $_REQUEST['rs'] : false;
 	$default_post_parent  = ( bbp_is_single_topic() ) ? bbp_get_topic_id() : 'any';
 	$default_post_type    = ( bbp_is_single_topic() && bbp_show_lead_topic() ) ? bbp_get_reply_post_type() : array( bbp_get_topic_post_type(), bbp_get_reply_post_type() );
-	$default_post_status  = join( ',', $post_statuses );
 
 	// Default query args
 	$default = array(
 		'post_type'      => $default_post_type,         // Only replies
 		'post_parent'    => $default_post_parent,       // Of this topic
-		'post_status'    => $default_post_status,       // Of this status
 		'posts_per_page' => bbp_get_replies_per_page(), // This many
 		'paged'          => bbp_get_paged(),            // On this page
 		'orderby'        => 'date',                     // Sorted by date
@@ -90,21 +83,44 @@ function bbp_has_replies( $args = '' ) {
 		's'              => $default_reply_search,      // Maybe search
 	);
 
-	// Set up topic variables
-	$bbp_r = bbp_parse_args( $args, $default, 'has_replies' );
+	// What are the default allowed statuses (based on user caps)
+	if ( bbp_get_view_all() ) {
 
-	// Extract the query variables
-	extract( $bbp_r );
+		// Default view=all statuses
+		$post_statuses = array(
+			bbp_get_public_status_id(),
+			bbp_get_closed_status_id(),
+			bbp_get_spam_status_id(),
+			bbp_get_trash_status_id()
+		);
+
+		// Add support for private status
+		if ( current_user_can( 'read_private_replies' ) ) {
+			$post_statuses[] = bbp_get_private_status_id();
+		}
+
+		// Join post statuses together
+		$default['post_status'] = join( ',', $post_statuses );
+
+	// Lean on the 'perm' query var value of 'readable' to provide statuses
+	} else {
+		$default['perm'] = 'readable';
+	}
+
+	/** Setup *****************************************************************/
+
+	// Parse arguments against default values
+	$r = bbp_parse_args( $args, $default, 'has_replies' );
 
 	// Get bbPress
 	$bbp = bbpress();
 
 	// Call the query
-	$bbp->reply_query = new WP_Query( $bbp_r );
-	
+	$bbp->reply_query = new WP_Query( $r );
+
 	// Add pagination values to query object
-	$bbp->reply_query->posts_per_page = $posts_per_page;
-	$bbp->reply_query->paged          = $paged;
+	$bbp->reply_query->posts_per_page = $r['posts_per_page'];
+	$bbp->reply_query->paged          = $r['paged'];
 
 	// Never home, regardless of what parse_query says
 	$bbp->reply_query->is_home        = false;
@@ -120,13 +136,17 @@ function bbp_has_replies( $args = '' ) {
 		// If pretty permalinks are enabled, make our pagination pretty
 		if ( $wp_rewrite->using_permalinks() ) {
 
-			// Page or single
-			if ( is_page() || is_single() ) {
-				$base = get_permalink();
-
 			// User's replies
-			} elseif ( bbp_is_single_user_replies() ) {
+			if ( bbp_is_single_user_replies() ) {
 				$base = bbp_get_user_replies_created_url( bbp_get_displayed_user_id() );
+
+			// Root profile page
+			} elseif ( bbp_is_single_user() ) {
+				$base = bbp_get_user_profile_url( bbp_get_displayed_user_id() );
+
+			// Page or single post
+			} elseif ( is_page() || is_single() ) {
+				$base = get_permalink();
 
 			// Single topic
 			} else {
@@ -145,10 +165,10 @@ function bbp_has_replies( $args = '' ) {
 			apply_filters( 'bbp_replies_pagination', array(
 				'base'      => $base,
 				'format'    => '',
-				'total'     => ceil( (int) $bbp->reply_query->found_posts / (int) $posts_per_page ),
+				'total'     => ceil( (int) $bbp->reply_query->found_posts / (int) $r['posts_per_page'] ),
 				'current'   => (int) $bbp->reply_query->paged,
-				'prev_text' => '&larr;',
-				'next_text' => '&rarr;',
+				'prev_text' => is_rtl() ? '&rarr;' : '&larr;',
+				'next_text' => is_rtl() ? '&larr;' : '&rarr;',
 				'mid_size'  => 1,
 				'add_args'  => ( bbp_get_view_all() ) ? array( 'view' => 'all' ) : false
 			) )
@@ -217,7 +237,8 @@ function bbp_reply_id( $reply_id = 0 ) {
 	 *
 	 * @param $reply_id Optional. Used to check emptiness
 	 * @uses bbPress::reply_query::post::ID To get the reply id
-	 * @uses bbp_is_reply() To check if it's a reply page
+	 * @uses bbp_is_reply() To check if the search result is a reply
+	 * @uses bbp_is_single_reply() To check if it's a reply page
 	 * @uses bbp_is_reply_edit() To check if it's a reply edit page
 	 * @uses get_post_field() To get the post's post type
 	 * @uses WP_Query::post::ID To get the reply id
@@ -238,6 +259,10 @@ function bbp_reply_id( $reply_id = 0 ) {
 		// Currently inside a replies loop
 		} elseif ( !empty( $bbp->reply_query->in_the_loop ) && isset( $bbp->reply_query->post->ID ) ) {
 			$bbp_reply_id = $bbp->reply_query->post->ID;
+
+		// Currently inside a search loop
+		} elseif ( !empty( $bbp->search_query->in_the_loop ) && isset( $bbp->search_query->post->ID ) && bbp_is_reply( $bbp->search_query->post->ID ) ) {
+			$bbp_reply_id = $bbp->search_query->post->ID;
 
 		// Currently viewing a forum
 		} elseif ( ( bbp_is_single_reply() || bbp_is_reply_edit() ) && !empty( $bbp->current_reply_id ) ) {
@@ -487,14 +512,22 @@ function bbp_reply_excerpt( $reply_id = 0, $length = 100 ) {
 	function bbp_get_reply_excerpt( $reply_id = 0, $length = 100 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 		$length   = (int) $length;
-		$excerpt  = get_post_field( $reply_id, 'post_excerpt' );
+		$excerpt  = get_post_field( 'post_excerpt', $reply_id );
 
-		if ( empty( $excerpt ) )
+		if ( empty( $excerpt ) ) {
 			$excerpt = bbp_get_reply_content( $reply_id );
+		}
 
 		$excerpt = trim ( strip_tags( $excerpt ) );
 
-		if ( !empty( $length ) && strlen( $excerpt ) > $length ) {
+		// Multibyte support
+		if ( function_exists( 'mb_strlen' ) ) {
+			$excerpt_length = mb_strlen( $excerpt );
+		} else {
+			$excerpt_length = strlen( $excerpt );
+		}
+
+		if ( !empty( $length ) && ( $excerpt_length > $length ) ) {
 			$excerpt  = substr( $excerpt, 0, $length - 1 );
 			$excerpt .= '&hellip;';
 		}
@@ -525,7 +558,7 @@ function bbp_reply_post_date( $reply_id = 0, $humanize = false, $gmt = false ) {
 	 * @param bool $gmt Optional. Use GMT
 	 * @uses bbp_get_reply_id() To get the reply id
 	 * @uses get_post_time() to get the reply post time
-	 * @uses bbp_time_since() to maybe humanize the reply post time
+	 * @uses bbp_get_time_since() to maybe humanize the reply post time
 	 * @return string
 	 */
 	function bbp_get_reply_post_date( $reply_id = 0, $humanize = false, $gmt = false ) {
@@ -533,15 +566,15 @@ function bbp_reply_post_date( $reply_id = 0, $humanize = false, $gmt = false ) {
 
 		// 4 days, 4 hours ago
 		if ( !empty( $humanize ) ) {
-			$gmt    = !empty( $gmt ) ? 'G' : 'U';
-			$date   = get_post_time( $gmt, $reply_id );
+			$gmt_s  = !empty( $gmt ) ? 'G' : 'U';
+			$date   = get_post_time( $gmt_s, $gmt, $reply_id );
 			$time   = false; // For filter below
-			$result = bbp_time_since( $date );
+			$result = bbp_get_time_since( $date );
 
 		// August 4, 2012 at 2:37 pm
 		} else {
-			$date   = get_post_time( get_option( 'date_format' ), $gmt, $reply_id );
-			$time   = get_post_time( get_option( 'time_format' ), $gmt, $reply_id );
+			$date   = get_post_time( get_option( 'date_format' ), $gmt, $reply_id, true );
+			$time   = get_post_time( get_option( 'time_format' ), $gmt, $reply_id, true );
 			$result = sprintf( _x( '%1$s at %2$s', 'date at time', 'bbpress' ), $date, $time );
 		}
 
@@ -838,10 +871,11 @@ function bbp_reply_author( $reply_id = 0 ) {
 	function bbp_get_reply_author( $reply_id = 0 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 
-		if ( !bbp_is_reply_anonymous( $reply_id ) )
+		if ( !bbp_is_reply_anonymous( $reply_id ) ) {
 			$author = get_the_author_meta( 'display_name', bbp_get_reply_author_id( $reply_id ) );
-		else
+		} else {
 			$author = get_post_meta( $reply_id, '_bbp_anonymous_name', true );
+		}
 
 		return apply_filters( 'bbp_get_reply_author', $author, $reply_id );
 	}
@@ -929,7 +963,11 @@ function bbp_reply_author_display_name( $reply_id = 0 ) {
 		if ( empty( $author_name ) )
 			$author_name = __( 'Anonymous', 'bbpress' );
 
-		return apply_filters( 'bbp_get_reply_author_display_name', esc_attr( $author_name ), $reply_id );
+		// Encode possible UTF8 display names
+		if ( seems_utf8( $author_name ) === false )
+			$author_name = utf8_encode( $author_name );
+
+		return apply_filters( 'bbp_get_reply_author_display_name', $author_name, $reply_id );
 	}
 
 /**
@@ -1009,58 +1047,75 @@ function bbp_reply_author_link( $args = '' ) {
 	 * @return string Author link of reply
 	 */
 	function bbp_get_reply_author_link( $args = '' ) {
-		$defaults = array (
+
+		// Parse arguments against default values
+		$r = bbp_parse_args( $args, array(
 			'post_id'    => 0,
 			'link_title' => '',
 			'type'       => 'both',
 			'size'       => 80,
 			'sep'        => '&nbsp;',
 			'show_role'  => false
-		);
-		$r = bbp_parse_args( $args, $defaults, 'get_reply_author_link' );
-		extract( $r );
+		), 'get_reply_author_link' );
 
 		// Used as reply_id
-		if ( is_numeric( $args ) )
+		if ( is_numeric( $args ) ) {
 			$reply_id = bbp_get_reply_id( $args );
-		else
-			$reply_id = bbp_get_reply_id( $post_id );
+		} else {
+			$reply_id = bbp_get_reply_id( $r['post_id'] );
+		}
 
+		// Reply ID is good
 		if ( !empty( $reply_id ) ) {
-			if ( empty( $link_title ) ) {
-				$link_title = sprintf( !bbp_is_reply_anonymous( $reply_id ) ? __( 'View %s\'s profile', 'bbpress' ) : __( 'Visit %s\'s website', 'bbpress' ), bbp_get_reply_author_display_name( $reply_id ) );
-			}
 
-			$link_title = !empty( $link_title ) ? ' title="' . $link_title . '"' : '';
+			// Get some useful reply information
 			$author_url = bbp_get_reply_author_url( $reply_id );
 			$anonymous  = bbp_is_reply_anonymous( $reply_id );
 
+			// Tweak link title if empty
+			if ( empty( $$r['link_title'] ) ) {
+				$link_title = sprintf( empty( $anonymous ) ? __( 'View %s\'s profile', 'bbpress' ) : __( 'Visit %s\'s website', 'bbpress' ), bbp_get_reply_author_display_name( $reply_id ) );
+
+			// Use what was passed if not
+			} else {
+				$link_title = $r['link_title'];
+			}
+
+			// Setup title and author_links array
+			$link_title   = !empty( $link_title ) ? ' title="' . $link_title . '"' : '';
+			$author_links = array();
+
 			// Get avatar
-			if ( 'avatar' == $type || 'both' == $type ) {
-				$author_links['avatar'] = bbp_get_reply_author_avatar( $reply_id, $size );
+			if ( 'avatar' == $r['type'] || 'both' == $r['type'] ) {
+				$author_links['avatar'] = bbp_get_reply_author_avatar( $reply_id, $r['size'] );
 			}
 
 			// Get display name
-			if ( 'name' == $type   || 'both' == $type ) {
+			if ( 'name' == $r['type']   || 'both' == $r['type'] ) {
 				$author_links['name'] = bbp_get_reply_author_display_name( $reply_id );
 			}
 
+			// Link class
+			$link_class = ' class="bbp-author-' . $r['type'] . '"';
+
 			// Add links if not anonymous
 			if ( empty( $anonymous ) && bbp_user_has_profile( bbp_get_reply_author_id( $reply_id ) ) ) {
+
+				// Assemble the links
 				foreach ( $author_links as $link => $link_text ) {
 					$link_class = ' class="bbp-author-' . $link . '"';
 					$author_link[] = sprintf( '<a href="%1$s"%2$s%3$s>%4$s</a>', $author_url, $link_title, $link_class, $link_text );
 				}
 
-				if ( true === $show_role ) {
+				if ( true === $r['show_role'] ) {
 					$author_link[] = bbp_get_reply_author_role( array( 'reply_id' => $reply_id ) );
 				}
 
-				$author_link = join( $sep, $author_link );
+				$author_link = join( $r['sep'], $author_link );
 
 			// No links if anonymous
 			} else {
-				$author_link = join( $sep, $author_links );
+				$author_link = join( $r['sep'], $author_links );
 			}
 
 		// No replies so link is empty
@@ -1068,7 +1123,7 @@ function bbp_reply_author_link( $args = '' ) {
 			$author_link = '';
 		}
 
-		return apply_filters( 'bbp_get_reply_author_link', $author_link, $args );
+		return apply_filters( 'bbp_get_reply_author_link', $author_link, $r );
 	}
 
 /**
@@ -1192,20 +1247,20 @@ function bbp_reply_author_role( $args = array() ) {
 	 * @return string Reply author role
 	 */
 	function bbp_get_reply_author_role( $args = array() ) {
-		$defaults = array(
+
+		// Parse arguments against default values
+		$r = bbp_parse_args( $args, array(
 			'reply_id' => 0,
 			'class'    => 'bbp-author-role',
 			'before'   => '',
 			'after'    => ''
-		);
-		$args = bbp_parse_args( $args, $defaults, 'get_reply_author_role' );
-		extract( $args, EXTR_SKIP );
+		), 'get_reply_author_role' );
 
-		$reply_id    = bbp_get_reply_id( $reply_id );
+		$reply_id    = bbp_get_reply_id( $r['reply_id'] );
 		$role        = bbp_get_user_display_role( bbp_get_reply_author_id( $reply_id ) );
-		$author_role = sprintf( '%1$s<div class="%2$s">%3$s</div>%4$s', $before, $class, $role, $after );
+		$author_role = sprintf( '%1$s<div class="%2$s">%3$s</div>%4$s', $r['before'], $r['class'], $role, $r['after'] );
 
-		return apply_filters( 'bbp_get_reply_author_role', $author_role, $args );
+		return apply_filters( 'bbp_get_reply_author_role', $author_role, $r );
 	}
 
 /**
@@ -1408,13 +1463,14 @@ function bbp_reply_admin_links( $args = '' ) {
 	 *  - after: HTML after the links. Defaults to '</span>'
 	 *  - sep: Separator. Defaults to ' | '
 	 *  - links: Array of the links to display. By default, edit, trash,
-	 *            spam and topic split links are displayed
+	 *            spam, reply move, and topic split links are displayed
 	 * @uses bbp_is_topic() To check if it's the topic page
 	 * @uses bbp_is_reply() To check if it's the reply page
 	 * @uses bbp_get_reply_id() To get the reply id
 	 * @uses bbp_get_reply_edit_link() To get the reply edit link
 	 * @uses bbp_get_reply_trash_link() To get the reply trash link
 	 * @uses bbp_get_reply_spam_link() To get the reply spam link
+	 * @uses bbp_get_reply_move_link() To get the reply move link
 	 * @uses bbp_get_topic_split_link() To get the topic split link
 	 * @uses current_user_can() To check if the current user can edit or
 	 *                           delete the reply
@@ -1424,14 +1480,14 @@ function bbp_reply_admin_links( $args = '' ) {
 	 */
 	function bbp_get_reply_admin_links( $args = '' ) {
 
-		$defaults = array (
+		// Parse arguments against default values
+		$r = bbp_parse_args( $args, array(
 			'id'     => 0,
 			'before' => '<span class="bbp-admin-links">',
 			'after'  => '</span>',
 			'sep'    => ' | ',
 			'links'  => array()
-		);
-		$r = bbp_parse_args( $args, $defaults, 'get_reply_admin_links' );
+		), 'get_reply_admin_links' );
 
 		$r['id'] = bbp_get_reply_id( (int) $r['id'] );
 
@@ -1453,12 +1509,13 @@ function bbp_reply_admin_links( $args = '' ) {
 
 		// If no links were passed, default to the standard
 		if ( empty( $r['links'] ) ) {
-			$r['links'] = array (
+			$r['links'] = apply_filters( 'bbp_reply_admin_links', array(
 				'edit'  => bbp_get_reply_edit_link ( $r ),
+				'move'  => bbp_get_reply_move_link ( $r ),
 				'split' => bbp_get_topic_split_link( $r ),
 				'trash' => bbp_get_reply_trash_link( $r ),
 				'spam'  => bbp_get_reply_spam_link ( $r ),
-			);
+			), $r['id'] );
 		}
 
 		// Check caps for trashing the topic
@@ -1470,7 +1527,7 @@ function bbp_reply_admin_links( $args = '' ) {
 		if ( in_array( $reply_status, array( bbp_get_spam_status_id(), bbp_get_trash_status_id() ) ) ) {
 
 			// Spam link shouldn't be visible on trashed topics
-			if ( $reply_status == bbp_get_trash_status_id() ) {
+			if ( bbp_get_trash_status_id() == $reply_status ) {
 				unset( $r['links']['spam'] );
 
 			// Trash link shouldn't be visible on spam topics
@@ -1483,7 +1540,7 @@ function bbp_reply_admin_links( $args = '' ) {
 		$links  = implode( $r['sep'], array_filter( $r['links'] ) );
 		$retval = $r['before'] . $links . $r['after'];
 
-		return apply_filters( 'bbp_get_reply_admin_links', $retval, $args );
+		return apply_filters( 'bbp_get_reply_admin_links', $retval, $r );
 	}
 
 /**
@@ -1518,35 +1575,36 @@ function bbp_reply_edit_link( $args = '' ) {
 	 * @return string Reply edit link
 	 */
 	function bbp_get_reply_edit_link( $args = '' ) {
-		$defaults = array (
+
+		// Parse arguments against default values
+		$r = bbp_parse_args( $args, array(
 			'id'           => 0,
 			'link_before'  => '',
 			'link_after'   => '',
 			'edit_text'    => __( 'Edit', 'bbpress' )
-		);
-		$r = bbp_parse_args( $args, $defaults, 'get_reply_edit_link' );
-		extract( $r );
+		), 'get_reply_edit_link' );
 
-		$reply = bbp_get_reply( bbp_get_reply_id( (int) $id ) );
+		$reply = bbp_get_reply( bbp_get_reply_id( (int) $r['id'] ) );
 
 		// Bypass check if user has caps
 		if ( !current_user_can( 'edit_others_replies' ) ) {
 
 			// User cannot edit or it is past the lock time
-			if ( empty( $reply ) || !current_user_can( 'edit_reply', $reply->ID ) || bbp_past_edit_lock( $reply->post_date_gmt ) )
+			if ( empty( $reply ) || !current_user_can( 'edit_reply', $reply->ID ) || bbp_past_edit_lock( $reply->post_date_gmt ) ) {
 				return;
+			}
 		}
 
 		// Get uri
-		$uri = bbp_get_reply_edit_url( $id );
+		$uri = bbp_get_reply_edit_url( $r['id'] );
 
 		// Bail if no uri
 		if ( empty( $uri ) )
 			return;
 
-		$retval = $link_before . '<a href="' . $uri . '">' . $edit_text . '</a>' . $link_after;
+		$retval = $r['link_before'] . '<a href="' . $uri . '">' . $r['edit_text'] . '</a>' . $r['link_after'];
 
-		return apply_filters( 'bbp_get_reply_edit_link', $retval, $args );
+		return apply_filters( 'bbp_get_reply_edit_link', $retval, $r );
 	}
 
 /**
@@ -1640,7 +1698,9 @@ function bbp_reply_trash_link( $args = '' ) {
 	 * @return string Reply trash link
 	 */
 	function bbp_get_reply_trash_link( $args = '' ) {
-		$defaults = array (
+
+		// Parse arguments against default values
+		$r = bbp_parse_args( $args, array(
 			'id'           => 0,
 			'link_before'  => '',
 			'link_after'   => '',
@@ -1648,31 +1708,29 @@ function bbp_reply_trash_link( $args = '' ) {
 			'trash_text'   => __( 'Trash',   'bbpress' ),
 			'restore_text' => __( 'Restore', 'bbpress' ),
 			'delete_text'  => __( 'Delete',  'bbpress' )
-		);
-		$r = bbp_parse_args( $args, $defaults, 'get_reply_trash_link' );
-		extract( $r );
+		), 'get_reply_trash_link' );
 
 		$actions = array();
-		$reply   = bbp_get_reply( bbp_get_reply_id( (int) $id ) );
+		$reply   = bbp_get_reply( bbp_get_reply_id( (int) $r['id'] ) );
 
 		if ( empty( $reply ) || !current_user_can( 'delete_reply', $reply->ID ) ) {
 			return;
 		}
 
 		if ( bbp_is_reply_trash( $reply->ID ) ) {
-			$actions['untrash'] = '<a title="' . esc_attr__( 'Restore this item from the Trash', 'bbpress' ) . '" href="' . esc_url( wp_nonce_url( add_query_arg( array( 'action' => 'bbp_toggle_reply_trash', 'sub_action' => 'untrash', 'reply_id' => $reply->ID ) ), 'untrash-' . $reply->post_type . '_' . $reply->ID ) ) . '">' . esc_html( $restore_text ) . '</a>';
+			$actions['untrash'] = '<a title="' . esc_attr__( 'Restore this item from the Trash', 'bbpress' ) . '" href="' . esc_url( wp_nonce_url( add_query_arg( array( 'action' => 'bbp_toggle_reply_trash', 'sub_action' => 'untrash', 'reply_id' => $reply->ID ) ), 'untrash-' . $reply->post_type . '_' . $reply->ID ) ) . '">' . esc_html( $r['restore_text'] ) . '</a>';
 		} elseif ( EMPTY_TRASH_DAYS ) {
-			$actions['trash']   = '<a title="' . esc_attr__( 'Move this item to the Trash', 'bbpress' ) . '" href="' . esc_url( wp_nonce_url( add_query_arg( array( 'action' => 'bbp_toggle_reply_trash', 'sub_action' => 'trash', 'reply_id' => $reply->ID ) ), 'trash-' . $reply->post_type . '_' . $reply->ID ) ) . '">' . esc_html( $trash_text ) . '</a>';
+			$actions['trash']   = '<a title="' . esc_attr__( 'Move this item to the Trash', 'bbpress' ) . '" href="' . esc_url( wp_nonce_url( add_query_arg( array( 'action' => 'bbp_toggle_reply_trash', 'sub_action' => 'trash', 'reply_id' => $reply->ID ) ), 'trash-' . $reply->post_type . '_' . $reply->ID ) ) . '">' . esc_html( $r['trash_text'] ) . '</a>';
 		}
 
 		if ( bbp_is_reply_trash( $reply->ID ) || !EMPTY_TRASH_DAYS ) {
-			$actions['delete']  = '<a title="' . esc_attr__( 'Delete this item permanently', 'bbpress' ) . '" href="' . esc_url( wp_nonce_url( add_query_arg( array( 'action' => 'bbp_toggle_reply_trash', 'sub_action' => 'delete', 'reply_id' => $reply->ID ) ), 'delete-' . $reply->post_type . '_' . $reply->ID ) ) . '" onclick="return confirm(\'' . esc_js( __( 'Are you sure you want to delete that permanently?', 'bbpress' ) ) . '\' );">' . esc_html( $delete_text ) . '</a>';
+			$actions['delete']  = '<a title="' . esc_attr__( 'Delete this item permanently', 'bbpress' ) . '" href="' . esc_url( wp_nonce_url( add_query_arg( array( 'action' => 'bbp_toggle_reply_trash', 'sub_action' => 'delete', 'reply_id' => $reply->ID ) ), 'delete-' . $reply->post_type . '_' . $reply->ID ) ) . '" onclick="return confirm(\'' . esc_js( __( 'Are you sure you want to delete that permanently?', 'bbpress' ) ) . '\' );">' . esc_html( $r['delete_text'] ) . '</a>';
 		}
 
 		// Process the admin links
-		$retval = $link_before . implode( $sep, $actions ) . $link_after;
+		$retval = $r['link_before'] . implode( $r['sep'], $actions ) . $r['link_after'];
 
-		return apply_filters( 'bbp_get_reply_trash_link', $retval, $args );
+		return apply_filters( 'bbp_get_reply_trash_link', $retval, $r );
 	}
 
 /**
@@ -1712,33 +1770,100 @@ function bbp_reply_spam_link( $args = '' ) {
 	 * @return string Reply spam link
 	 */
 	function bbp_get_reply_spam_link( $args = '' ) {
-		$defaults = array (
+
+		// Parse arguments against default values
+		$r = bbp_parse_args( $args, array(
 			'id'           => 0,
 			'link_before'  => '',
 			'link_after'   => '',
 			'spam_text'    => __( 'Spam',   'bbpress' ),
 			'unspam_text'  => __( 'Unspam', 'bbpress' )
-		);
-		$r = bbp_parse_args( $args, $defaults, 'get_reply_spam_link' );
-		extract( $r );
+		), 'get_reply_spam_link' );
 
-		$reply = bbp_get_reply( bbp_get_reply_id( (int) $id ) );
+		$reply = bbp_get_reply( bbp_get_reply_id( (int) $r['id'] ) );
 
 		if ( empty( $reply ) || !current_user_can( 'moderate', $reply->ID ) )
 			return;
 
-		$display  = bbp_is_reply_spam( $reply->ID ) ? $unspam_text : $spam_text;
+		$display  = bbp_is_reply_spam( $reply->ID ) ? $r['unspam_text'] : $r['spam_text'];
 		$uri      = add_query_arg( array( 'action' => 'bbp_toggle_reply_spam', 'reply_id' => $reply->ID ) );
 		$uri      = esc_url( wp_nonce_url( $uri, 'spam-reply_' . $reply->ID ) );
-		$retval   = $link_before . '<a href="' . $uri . '">' . $display . '</a>' . $link_after;
+		$retval   = $r['link_before'] . '<a href="' . $uri . '">' . $display . '</a>' . $r['link_after'];
 
-		return apply_filters( 'bbp_get_reply_spam_link', $retval, $args );
+		return apply_filters( 'bbp_get_reply_spam_link', $retval, $r );
+	}
+
+/**
+ * Move reply link
+ *
+ * Output the move link of the reply
+ *
+ * @since bbPress (r4521)
+ *
+ * @param mixed $args See {@link bbp_get_reply_move_link()}
+ * @uses bbp_get_reply_move_link() To get the reply move link
+ */
+function bbp_reply_move_link( $args = '' ) {
+	echo bbp_get_reply_move_link( $args );
+}
+
+	/**
+	 * Get move reply link
+	 *
+	 * Return the move link of the reply
+	 *
+	 * @since bbPress (r4521)
+	 *
+	 * @param mixed $args This function supports these arguments:
+	 *  - id: Reply id
+	 *  - link_before: HTML before the link
+	 *  - link_after: HTML after the link
+	 *  - move_text: Move text
+	 *  - move_title: Move title attribute
+	 * @uses bbp_get_reply_id() To get the reply id
+	 * @uses bbp_get_reply() To get the reply
+	 * @uses current_user_can() To check if the current user can edit the
+	 *                           topic
+	 * @uses bbp_get_reply_topic_id() To get the reply topic id
+	 * @uses bbp_get_reply_edit_url() To get the reply edit url
+	 * @uses add_query_arg() To add custom args to the url
+	 * @uses wp_nonce_url() To nonce the url
+	 * @uses esc_url() To escape the url
+	 * @uses apply_filters() Calls 'bbp_get_reply_move_link' with the reply
+	 *                        move link and args
+	 * @return string Reply move link
+	 */
+	function bbp_get_reply_move_link( $args = '' ) {
+
+		// Parse arguments against default values
+		$r = bbp_parse_args( $args, array(
+			'id'          => 0,
+			'link_before' => '',
+			'link_after'  => '',
+			'split_text'  => __( 'Move',            'bbpress' ),
+			'split_title' => __( 'Move this reply', 'bbpress' )
+		), 'get_reply_move_link' );
+
+		$reply_id = bbp_get_reply_id( $r['id'] );
+		$topic_id = bbp_get_reply_topic_id( $reply_id );
+
+		if ( empty( $reply_id ) || !current_user_can( 'moderate', $topic_id ) )
+			return;
+
+		$uri = esc_url( add_query_arg( array(
+			'action'   => 'move',
+			'reply_id' => $reply_id
+		), bbp_get_reply_edit_url( $reply_id ) ) );
+
+		$retval = $r['link_before'] . '<a href="' . $uri . '" title="' . esc_attr( $r['split_title'] ) . '">' . esc_html( $r['split_text'] ) . '</a>' . $r['link_after'];
+
+		return apply_filters( 'bbp_get_reply_move_link', $retval, $r );
 	}
 
 /**
  * Split topic link
  *
- * Output the split link of the topic (but is bundled with each topic)
+ * Output the split link of the topic (but is bundled with each reply)
  *
  * @since bbPress (r2756)
  *
@@ -1773,20 +1898,20 @@ function bbp_topic_split_link( $args = '' ) {
 	 * @uses esc_url() To escape the url
 	 * @uses apply_filters() Calls 'bbp_get_topic_split_link' with the topic
 	 *                        split link and args
-	 * @return string Reply spam link
+	 * @return string Topic split link
 	 */
 	function bbp_get_topic_split_link( $args = '' ) {
-		$defaults = array (
+
+		// Parse arguments against default values
+		$r = bbp_parse_args( $args, array(
 			'id'          => 0,
 			'link_before' => '',
 			'link_after'  => '',
 			'split_text'  => __( 'Split',                           'bbpress' ),
 			'split_title' => __( 'Split the topic from this reply', 'bbpress' )
-		);
-		$r = bbp_parse_args( $args, $defaults, 'get_topic_split_link' );
-		extract( $r );
+		), 'get_topic_split_link' );
 
-		$reply_id = bbp_get_reply_id( $id );
+		$reply_id = bbp_get_reply_id( $r['id'] );
 		$topic_id = bbp_get_reply_topic_id( $reply_id );
 
 		if ( empty( $reply_id ) || !current_user_can( 'moderate', $topic_id ) )
@@ -1801,9 +1926,9 @@ function bbp_topic_split_link( $args = '' ) {
 			bbp_get_topic_edit_url( $topic_id )
 		) );
 
-		$retval = $link_before . '<a href="' . $uri . '" title="' . esc_attr( $split_title ) . '">' . $split_text . '</a>' . $link_after;
+		$retval = $r['link_before'] . '<a href="' . $uri . '" title="' . esc_attr( $r['split_title'] ) . '">' . esc_html( $r['split_text'] ) . '</a>' . $r['link_after'];
 
-		return apply_filters( 'bbp_get_topic_split_link', $retval, $args );
+		return apply_filters( 'bbp_get_topic_split_link', $retval, $r );
 	}
 
 /**
@@ -1812,10 +1937,11 @@ function bbp_topic_split_link( $args = '' ) {
  * @since bbPress (r2678)
  *
  * @param int $reply_id Optional. Reply ID
+ * @param array Extra classes you can pass when calling this function
  * @uses bbp_get_reply_class() To get the reply class
  */
-function bbp_reply_class( $reply_id = 0 ) {
-	echo bbp_get_reply_class( $reply_id );
+function bbp_reply_class( $reply_id = 0, $classes = array() ) {
+	echo bbp_get_reply_class( $reply_id, $classes );
 }
 	/**
 	 * Return the row class of a reply
@@ -1823,6 +1949,7 @@ function bbp_reply_class( $reply_id = 0 ) {
 	 * @since bbPress (r2678)
 	 *
 	 * @param int $reply_id Optional. Reply ID
+	 * @param array Extra classes you can pass when calling this function
 	 * @uses bbp_get_reply_id() To validate the reply id
 	 * @uses bbp_get_reply_forum_id() To get the reply's forum id
 	 * @uses bbp_get_reply_topic_id() To get the reply's topic id
@@ -1830,11 +1957,11 @@ function bbp_reply_class( $reply_id = 0 ) {
 	 * @uses apply_filters() Calls 'bbp_get_reply_class' with the classes
 	 * @return string Row class of the reply
 	 */
-	function bbp_get_reply_class( $reply_id = 0 ) {
+	function bbp_get_reply_class( $reply_id = 0, $classes = array() ) {
 		$bbp       = bbpress();
 		$reply_id  = bbp_get_reply_id( $reply_id );
 		$count     = isset( $bbp->reply_query->current_post ) ? $bbp->reply_query->current_post : 1;
-		$classes   = array();
+		$classes   = (array) $classes;
 		$classes[] = ( (int) $count % 2 ) ? 'even' : 'odd';
 		$classes[] = 'bbp-parent-forum-'   . bbp_get_reply_forum_id( $reply_id );
 		$classes[] = 'bbp-parent-topic-'   . bbp_get_reply_topic_id( $reply_id );
@@ -1964,16 +2091,17 @@ function bbp_form_reply_content() {
 	function bbp_get_form_reply_content() {
 
 		// Get _POST data
-		if ( 'POST' == strtoupper( $_SERVER['REQUEST_METHOD'] ) && isset( $_POST['bbp_reply_content'] ) )
-			$reply_content = $_POST['bbp_reply_content'];
+		if ( bbp_is_post_request() && isset( $_POST['bbp_reply_content'] ) ) {
+			$reply_content = stripslashes( $_POST['bbp_reply_content'] );
 
 		// Get edit data
-		elseif ( bbp_is_reply_edit() )
+		} elseif ( bbp_is_reply_edit() ) {
 			$reply_content = bbp_get_global_post_field( 'post_content', 'raw' );
 
 		// No data
-		else
+		} else {
 			$reply_content = '';
+		}
 
 		return apply_filters( 'bbp_get_form_reply_content', esc_textarea( $reply_content ) );
 	}
@@ -2000,12 +2128,13 @@ function bbp_form_reply_log_edit() {
 	function bbp_get_form_reply_log_edit() {
 
 		// Get _POST data
-		if ( 'post' == strtolower( $_SERVER['REQUEST_METHOD'] ) && isset( $_POST['bbp_log_reply_edit'] ) )
+		if ( bbp_is_post_request() && isset( $_POST['bbp_log_reply_edit'] ) ) {
 			$reply_revision = $_POST['bbp_log_reply_edit'];
 
 		// No data
-		else
+		} else {
 			$reply_revision = 1;
+		}
 
 		return apply_filters( 'bbp_get_form_reply_log_edit', checked( $reply_revision, true, false ) );
 	}
@@ -2032,12 +2161,13 @@ function bbp_form_reply_edit_reason() {
 	function bbp_get_form_reply_edit_reason() {
 
 		// Get _POST data
-		if ( 'post' == strtolower( $_SERVER['REQUEST_METHOD'] ) && isset( $_POST['bbp_reply_edit_reason'] ) )
+		if ( bbp_is_post_request() && isset( $_POST['bbp_reply_edit_reason'] ) ) {
 			$reply_edit_reason = $_POST['bbp_reply_edit_reason'];
 
 		// No data
-		else
+		} else {
 			$reply_edit_reason = '';
+		}
 
 		return apply_filters( 'bbp_get_form_reply_edit_reason', esc_attr( $reply_edit_reason ) );
 	}

@@ -9,7 +9,7 @@
 
 ?>
 
-<div class="bbp-reply-header">
+<div id="post-<?php bbp_reply_id(); ?>" class="bbp-reply-header">
 
 	<div class="bbp-meta">
 
@@ -34,9 +34,9 @@
 
 	</div><!-- .bbp-meta -->
 
-</div><!-- .bbp-reply-header -->
+</div><!-- #post-<?php bbp_reply_id(); ?> -->
 
-<div id="post-<?php bbp_reply_id(); ?>" <?php bbp_reply_class(); ?>>
+<div <?php bbp_reply_class(); ?>>
 
 	<div class="bbp-reply-author">
 
@@ -44,7 +44,7 @@
 
 		<?php bbp_reply_author_link( array( 'sep' => '<br />', 'show_role' => true ) ); ?>
 
-		<?php if ( is_super_admin() ) : ?>
+		<?php if ( bbp_is_user_keymaster() ) : ?>
 
 			<?php do_action( 'bbp_theme_before_reply_author_admin_details' ); ?>
 
@@ -68,4 +68,4 @@
 
 	</div><!-- .bbp-reply-content -->
 
-</div><!-- #post-<?php bbp_reply_id(); ?> -->
+</div><!-- .reply -->

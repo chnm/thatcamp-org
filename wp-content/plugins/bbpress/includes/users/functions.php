@@ -416,6 +416,7 @@ function bbp_remove_user_favorite( $user_id, $topic_id ) {
 /**
  * Handles the front end adding and removing of favorite topics
  *
+ * @param string $action The requested action to compare this function to
  * @uses bbp_get_user_id() To get the user id
  * @uses bbp_verify_nonce_request() To verify the nonce and check the request
  * @uses current_user_can() To check if the current user can edit the user
@@ -430,17 +431,13 @@ function bbp_remove_user_favorite( $user_id, $topic_id ) {
  * @uses bbp_get_topic_permalink() To get the topic permalink
  * @uses wp_safe_redirect() To redirect to the url
  */
-function bbp_favorites_handler() {
+function bbp_favorites_handler( $action = '' ) {
 
 	if ( !bbp_is_favorites_active() )
 		return false;
 
-	// Bail if not a GET action
-	if ( 'GET' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
-		return;
-
-	// Bail if required GET actions aren't passed
-	if ( empty( $_GET['topic_id'] ) || empty( $_GET['action'] ) )
+	// Bail if no topic ID is passed
+	if ( empty( $_GET['topic_id'] ) )
 		return;
 
 	// Setup possible get actions
@@ -450,11 +447,10 @@ function bbp_favorites_handler() {
 	);
 
 	// Bail if actions aren't meant for this function
-	if ( !in_array( $_GET['action'], $possible_actions ) )
+	if ( !in_array( $action, $possible_actions ) )
 		return;
 
 	// What action is taking place?
-	$action      = $_GET['action'];
 	$topic_id    = intval( $_GET['topic_id'] );
 	$user_id     = bbp_get_user_id( 0, true, true );
 
@@ -500,6 +496,8 @@ function bbp_favorites_handler() {
 			$redirect = bbp_get_topic_permalink( $topic_id );
 		} elseif ( is_single() || is_page() ) {
 			$redirect = get_permalink();
+		} else {
+			$redirect = get_permalink( $topic_id );
 		}
 
 		wp_safe_redirect( $redirect );
@@ -533,10 +531,10 @@ function bbp_get_topic_subscribers( $topic_id = 0 ) {
 	global $wpdb;
 
 	$key   = $wpdb->prefix . '_bbp_subscriptions';
-	$users = wp_cache_get( 'bbp_get_topic_subscribers_' . $topic_id, 'bbpress' );
+	$users = wp_cache_get( 'bbp_get_topic_subscribers_' . $topic_id, 'bbpress_users' );
 	if ( empty( $users ) ) {
 		$users = $wpdb->get_col( "SELECT user_id FROM {$wpdb->usermeta} WHERE meta_key = '{$key}' and FIND_IN_SET('{$topic_id}', meta_value) > 0" );
-		wp_cache_set( 'bbp_get_topic_subscribers_' . $topic_id, $users, 'bbpress' );
+		wp_cache_set( 'bbp_get_topic_subscribers_' . $topic_id, $users, 'bbpress_users' );
 	}
 
 	if ( !empty( $users ) ) {
@@ -734,6 +732,7 @@ function bbp_remove_user_subscription( $user_id, $topic_id ) {
 /**
  * Handles the front end subscribing and unsubscribing topics
  *
+ * @param string $action The requested action to compare this function to
  * @uses bbp_is_subscriptions_active() To check if the subscriptions are active
  * @uses bbp_get_user_id() To get the user id
  * @uses bbp_verify_nonce_request() To verify the nonce and check the request
@@ -750,17 +749,13 @@ function bbp_remove_user_subscription( $user_id, $topic_id ) {
  * @uses bbp_get_topic_permalink() To get the topic permalink
  * @uses wp_safe_redirect() To redirect to the url
  */
-function bbp_subscriptions_handler() {
+function bbp_subscriptions_handler( $action = '' ) {
 
 	if ( !bbp_is_subscriptions_active() )
 		return false;
 
-	// Bail if not a GET action
-	if ( 'GET' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
-		return;
-
-	// Bail if required GET actions aren't passed
-	if ( empty( $_GET['topic_id'] ) || empty( $_GET['action'] ) )
+	// Bail if no topic ID is passed
+	if ( empty( $_GET['topic_id'] ) )
 		return;
 
 	// Setup possible get actions
@@ -770,11 +765,10 @@ function bbp_subscriptions_handler() {
 	);
 
 	// Bail if actions aren't meant for this function
-	if ( !in_array( $_GET['action'], $possible_actions ) )
+	if ( !in_array( $action, $possible_actions ) )
 		return;
 
 	// Get required data
-	$action   = $_GET['action'];
 	$user_id  = bbp_get_user_id( 0, true, true );
 	$topic_id = intval( $_GET['topic_id'] );
 
@@ -820,6 +814,8 @@ function bbp_subscriptions_handler() {
 			$redirect = bbp_get_topic_permalink( $topic_id );
 		} elseif ( is_single() || is_page() ) {
 			$redirect = get_permalink();
+		} else {
+			$redirect = get_permalink( $topic_id );
 		}
 
 		wp_safe_redirect( $redirect );
@@ -840,6 +836,7 @@ function bbp_subscriptions_handler() {
 /**
  * Handles the front end user editing
  *
+ * @param string $action The requested action to compare this function to
  * @uses is_multisite() To check if it's a multisite
  * @uses bbp_is_user_home() To check if the user is at home (the display page
  *                           is the one of the logged in user)
@@ -861,19 +858,14 @@ function bbp_subscriptions_handler() {
  * @uses is_email() To check if the string is an email id or not
  * @uses wpdb::get_blog_prefix() To get the blog prefix
  * @uses is_network_admin() To check if the user is the network admin
- * @uses is_super_admin() To check if the user is super admin
  * @uses revoke_super_admin() To revoke super admin priviledges
  * @uses grant_super_admin() To grant super admin priviledges
  * @uses is_wp_error() To check if the value retrieved is a {@link WP_Error}
  */
-function bbp_edit_user_handler() {
-
-	// Bail if not a POST action
-	if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
-		return;
+function bbp_edit_user_handler( $action = '' ) {
 
 	// Bail if action is not 'bbp-update-user'
-	if ( empty( $_POST['action'] ) || ( 'bbp-update-user' !== $_POST['action'] ) )
+	if ( 'bbp-update-user' !== $action )
 		return;
 
 	// Get the displayed user ID
@@ -1020,7 +1012,7 @@ function bbp_get_user_replies_created( $user_id = 0 ) {
 
 	// Try to get the topics
 	$query = bbp_has_replies( array(
-		'post_type'      => array( bbp_get_topic_post_type(), bbp_get_reply_post_type() ),
+		'post_type'      => bbp_get_reply_post_type(),
 		'post_parent'    => 'any',
 		'posts_per_page' => bbp_get_replies_per_page(),
 		'paged'          => bbp_get_paged(),
@@ -1037,9 +1029,7 @@ function bbp_get_user_replies_created( $user_id = 0 ) {
  * Get the total number of users on the forums
  *
  * @since bbPress (r2769)
- * @uses wp_cache_get() Check if query is in cache
- * @uses get_users() To execute our query and get the var back
- * @uses wp_cache_set() Set the query in the cache
+ * @uses count_users() To execute our query and get the var back
  * @uses apply_filters() Calls 'bbp_get_total_users' with number of users
  * @return int Total number of users
  */
@@ -1101,15 +1091,15 @@ function bbp_check_user_edit() {
  * @since bbPress (r2996)
  *
  * @uses is_user_logged_in() To check if user is logged in
- * @uses is_super_admin() To check if user is a super admin
+ * @uses bbp_is_user_keymaster() To check if user is a keymaster
  * @uses current_user_can() To check if the current user can spectate
  * @uses is_bbpress() To check if in a bbPress section of the site
  * @uses bbp_set_404() To set a 404 status
  */
 function bbp_forum_enforce_blocked() {
 
-	// Bail if not logged in or super admin
-	if ( ! is_user_logged_in() || is_super_admin() ) {
+	// Bail if not logged in or keymaster
+	if ( ! is_user_logged_in() || bbp_is_user_keymaster() ) {
 		return;
 	}
 
@@ -1137,7 +1127,7 @@ function bbp_user_maybe_convert_pass() {
 	global $wpdb;
 
 	// Bail if no user password to convert
-	$row = $wpdb->get_row( "SELECT * FROM {$wpdb->users} INNER JOIN {$wpdb->usermeta} ON user_id = ID WHERE meta_key = '_bbp_class' AND user_login = '{$username}' LIMIT 1" );
+	$row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->users} INNER JOIN {$wpdb->usermeta} ON user_id = ID WHERE meta_key = '_bbp_class' AND user_login = '%s' LIMIT 1", $username ) );
 	if ( empty( $row ) || is_wp_error( $row ) )
 		return;
 

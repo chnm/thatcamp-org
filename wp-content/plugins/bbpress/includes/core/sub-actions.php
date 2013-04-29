@@ -136,9 +136,17 @@ function bbp_widgets_init() {
  * Setup the currently logged-in user
  *
  * @since bbPress (r2695)
+ * @uses did_action() To make sure the user isn't loaded out of order
  * @uses do_action() Calls 'bbp_setup_current_user'
  */
 function bbp_setup_current_user() {
+
+	// If the current user is being setup before the "init" action has fired,
+	// strange (and difficult to debug) role/capability issues will occur.
+	if ( ! did_action( 'after_setup_theme' ) ) {
+		_doing_it_wrong( __FUNCTION__, __( 'The current user is being initialized without using $wp->init().', 'bbpress' ), '2.3' );
+	}
+
 	do_action( 'bbp_setup_current_user' );
 }
 
@@ -318,6 +326,46 @@ function bbp_after_setup_theme() {
 }
 
 /**
+ * The main action used for handling theme-side POST requests
+ *
+ * @since bbPress (r4550)
+ * @uses do_action()
+ */
+function bbp_post_request() {
+
+	// Bail if not a POST action
+	if ( ! bbp_is_post_request() )
+		return;
+
+	// Bail if no action
+	if ( empty( $_POST['action'] ) )
+		return;
+
+	do_action( 'bbp_post_request', $_POST['action'] );
+}
+
+/**
+ * The main action used for handling theme-side GET requests
+ *
+ * @since bbPress (r4550)
+ * @uses do_action()
+ */
+function bbp_get_request() {
+
+	// Bail if not a POST action
+	if ( ! bbp_is_get_request() )
+		return;
+
+	// Bail if no action
+	if ( empty( $_GET['action'] ) )
+		return;
+
+	do_action( 'bbp_get_request', $_GET['action'] );
+}
+
+/** Filters *******************************************************************/
+
+/**
  * Filter the plugin locale and domain.
  *
  * @since bbPress (r4213)
@@ -328,8 +376,6 @@ function bbp_after_setup_theme() {
 function bbp_plugin_locale( $locale = '', $domain = '' ) {
 	return apply_filters( 'bbp_plugin_locale', $locale, $domain );
 }
-
-/** Filters *******************************************************************/
 
 /**
  * Piggy back filter for WordPress's 'request' filter

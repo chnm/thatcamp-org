@@ -31,49 +31,49 @@ class BBP_BuddyPress_Activity {
 	private $component = '';
 
 	/**
-	 * Forum Create Activty Action
+	 * Forum Create Activity Action
 	 *
 	 * @var string
 	 */
 	private $forum_create = '';
 
 	/**
-	 * Topic Create Activty Action
+	 * Topic Create Activity Action
 	 *
 	 * @var string
 	 */
 	private $topic_create = '';
 
 	/**
-	 * Topic Close Activty Action
+	 * Topic Close Activity Action
 	 *
 	 * @var string
 	 */
 	private $topic_close = '';
 
 	/**
-	 * Topic Edit Activty Action
+	 * Topic Edit Activity Action
 	 *
 	 * @var string
 	 */
 	private $topic_edit = '';
 
 	/**
-	 * Topic Open Activty Action
+	 * Topic Open Activity Action
 	 *
 	 * @var string
 	 */
 	private $topic_open = '';
 
 	/**
-	 * Reply Create Activty Action
+	 * Reply Create Activity Action
 	 *
 	 * @var string
 	 */
 	private $reply_create = '';
 
 	/**
-	 * Reply Edit Activty Action
+	 * Reply Edit Activity Action
 	 *
 	 * @var string
 	 */
@@ -171,20 +171,6 @@ class BBP_BuddyPress_Activity {
 
 		// Link directly to the topic or reply
 		add_filter( 'bp_activity_get_permalink', array( $this, 'activity_get_permalink' ), 10, 2 );
-
-		/** Mentions **********************************************************/
-
-		// Convert mentions into links on create
-		add_filter( 'bbp_new_topic_pre_content',  'bp_activity_at_name_filter' );
-		add_filter( 'bbp_new_reply_pre_content',  'bp_activity_at_name_filter' );
-
-		// Convert mentions into links on edit
-		add_filter( 'bbp_edit_topic_pre_content', 'bp_activity_at_name_filter' );
-		add_filter( 'bbp_edit_reply_pre_content', 'bp_activity_at_name_filter' );
-
-		// Revert links into text on edit
-		add_filter( 'bbp_get_form_topic_content', array( $this, 'strip_mentions_on_edit' ) );
-		add_filter( 'bbp_get_form_reply_content', array( $this, 'strip_mentions_on_edit' ) );
 	}
 
 	/**
@@ -200,43 +186,16 @@ class BBP_BuddyPress_Activity {
 	/** Methods ***************************************************************/
 
 	/**
-	 * Strip out BuddyPress activity at-name HTML on topic/reply edit
-	 *
-	 * Copied from bp_forums_strip_mentions_on_post_edit() in case forums
-	 * component is not active or is not loaded in yet.
-	 *
-	 * @since bbPress (r3475)
-	 * @param type $content Optional
-	 * @uses bp_get_root_domain()
-	 * @uses bp_get_members_root_slug()
-	 * @return string
-	 */
-	public function strip_mentions_on_edit( $content = '' ) {
-
-		// Backwards compat for members root slug
-		if ( function_exists( 'bp_get_members_root_slug' ) ) {
-			$members_root = bp_get_members_root_slug();
-		} elseif ( defined( 'BP_MEMBERS_SLUG' ) ) {
-			$members_root = BP_MEMBERS_SLUG;
-		} else {
-			$members_root = 'members';
-		}
-
-		$pattern = "|<a href=&#039;" . bp_get_root_domain() . "/" . $members_root . "/[A-Za-z0-9-_\.]+/&#039; rel=&#039;nofollow&#039;>(@[A-Za-z0-9-_\.@]+)</a>|";
-		$content = preg_replace( $pattern, "$1", htmlspecialchars_decode( $content ) );
-
-		return $content;
-	}
-
-	/**
 	 * Register our activity actions with BuddyPress
 	 *
 	 * @since bbPress (r3395)
 	 * @uses bp_activity_set_action()
 	 */
 	public function register_activity_actions() {
-		bp_activity_set_action( $this->component, $this->topic_create, __( 'New topic created', 'bbpress' ) );
-		bp_activity_set_action( $this->component, $this->reply_create, __( 'New reply created', 'bbpress' ) );
+
+		// Sitewide activity stream items
+		bp_activity_set_action( $this->component, $this->topic_create, __( 'New forum topic', 'bbpress' ) );
+		bp_activity_set_action( $this->component, $this->reply_create, __( 'New forum reply', 'bbpress' ) );
 	}
 
 	/**
@@ -461,9 +420,9 @@ class BBP_BuddyPress_Activity {
 		$forum_link      = '<a href="' . $forum_permalink . '" title="' . $forum_title . '">' . $forum_title . '</a>';
 
 		// Activity action & text
-		$activity_text    = sprintf( __( '%1$s started the topic %2$s in the forum %3$s', 'bbpress' ), $user_link, $topic_link, $forum_link    );
-		$activity_action  = apply_filters( 'bbp_activity_topic_create',                $activity_text, $user_id,   $topic_id,   $forum_id      );
-		$activity_content = apply_filters( 'bbp_activity_topic_create_excerpt',        bp_create_excerpt( $topic_content ),     $topic_content );
+		$activity_text    = sprintf( __( '%1$s started the topic %2$s in the forum %3$s', 'bbpress' ), $user_link, $topic_link, $forum_link );
+		$activity_action  = apply_filters( 'bbp_activity_topic_create',         $activity_text, $user_id,   $topic_id,   $forum_id );
+		$activity_content = apply_filters( 'bbp_activity_topic_create_excerpt', $topic_content                                     );
 
 		// Compile the activity stream results
 		$activity = array(
@@ -500,7 +459,7 @@ class BBP_BuddyPress_Activity {
 		if ( $activity_id = $this->get_activity_id( $topic_id ) )
 			return bp_activity_delete( array( 'id' => $activity_id ) );
 
-		return false;		
+		return false;
 	}
 
 	/**
@@ -611,9 +570,9 @@ class BBP_BuddyPress_Activity {
 		$forum_link      = '<a href="' . $forum_permalink . '" title="' . $forum_title . '">' . $forum_title . '</a>';
 
 		// Activity action & text
-		$activity_text    = sprintf( __( '%1$s replied to the topic %2$s in the forum %3$s', 'bbpress' ), $user_link, $topic_link, $forum_link    );
-		$activity_action  = apply_filters( 'bbp_activity_reply_create',         $activity_text, $user_id,   $reply_id,   $topic_id      );
-		$activity_content = apply_filters( 'bbp_activity_reply_create_excerpt', bp_create_excerpt( $reply_content ),     $reply_content );
+		$activity_text    = sprintf( __( '%1$s replied to the topic %2$s in the forum %3$s', 'bbpress' ), $user_link, $topic_link, $forum_link );
+		$activity_action  = apply_filters( 'bbp_activity_reply_create',         $activity_text, $user_id, $reply_id,  $topic_id );
+		$activity_content = apply_filters( 'bbp_activity_reply_create_excerpt', $reply_content                                  );
 
 		// Compile the activity stream results
 		$activity = array(
@@ -651,7 +610,7 @@ class BBP_BuddyPress_Activity {
 		if ( $activity_id = $this->get_activity_id( $reply_id ) )
 			return bp_activity_delete( array( 'id' => $activity_id ) );
 
-		return false;		
+		return false;
 	}
 
 	/**
@@ -699,4 +658,3 @@ class BBP_BuddyPress_Activity {
 	}
 }
 endif;
-

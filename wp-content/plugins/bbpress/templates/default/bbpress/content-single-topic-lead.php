@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Single Topic Part
+ * Single Topic Lead Content Part
  *
  * @package bbPress
  * @subpackage Theme
@@ -57,7 +57,7 @@
 
 				<?php bbp_topic_author_link( array( 'sep' => '<br />', 'show_role' => true ) ); ?>
 
-				<?php if ( is_super_admin() ) : ?>
+				<?php if ( bbp_is_user_keymaster() ) : ?>
 
 					<?php do_action( 'bbp_theme_before_topic_author_admin_details' ); ?>
 
@@ -92,11 +92,11 @@
 		<div class="bbp-topic-content">
 
 			<?php _e( 'Topic', 'bbpress' ); ?>
-			
+
 		</div><!-- .bbp-topic-content -->
 
 	</li>
 
-</ul><!-- #topic-<?php bbp_topic_id(); ?>-replies -->
+</ul><!-- #bbp-topic-<?php bbp_topic_id(); ?>-lead -->
 
 <?php do_action( 'bbp_template_after_lead_topic' ); ?>

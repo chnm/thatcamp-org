@@ -49,7 +49,14 @@ class BBP_Admin {
 	/**
 	 * @var bool Minimum capability to access Tools and Settings
 	 */
-	public $minimum_capability = 'manage_options';
+	public $minimum_capability = 'keep_gate';
+
+	/** Separator *************************************************************/
+
+	/**
+	 * @var bool Whether or not to add an extra top level menu separator
+	 */
+	public $show_separator = false;
 
 	/** Functions *************************************************************/
 
@@ -141,6 +148,9 @@ class BBP_Admin {
 
 		// Hide the theme compat package selection
 		add_filter( 'bbp_admin_get_settings_sections', array( $this, 'hide_theme_compat_packages' ) );
+
+		// Allow keymasters to save forums settings
+		add_filter( 'option_page_capability_bbpress',  array( $this, 'option_page_capability_bbpress' ) );
 
 		/** Network Admin *****************************************************/
 
@@ -361,7 +371,7 @@ class BBP_Admin {
 
 			// BuddyPress
 			case 'bbp_settings_buddypress' :
-				if ( ( is_plugin_active( 'buddypress/bp-loader.php' ) && defined( 'BP_VERSION' ) ) && is_super_admin() ) {
+				if ( ( is_plugin_active( 'buddypress/bp-loader.php' ) && defined( 'BP_VERSION' ) && bp_is_root_blog() ) && is_super_admin() ) {
 					$caps = array( bbpress()->admin->minimum_capability );
 				} else {
 					$caps = array( 'do_not_allow' );
@@ -390,8 +400,8 @@ class BBP_Admin {
 			case 'bbp_settings_theme_compat' : // Settings - Theme compat
 			case 'bbp_settings_root_slugs'   : // Settings - Root slugs
 			case 'bbp_settings_single_slugs' : // Settings - Single slugs
-			case 'bbp_settings_per_page'     : // Settings - Single slugs
-			case 'bbp_settings_per_page_rss' : // Settings - Single slugs
+			case 'bbp_settings_per_page'     : // Settings - Per page
+			case 'bbp_settings_per_rss_page' : // Settings - Per RSS page
 				$caps = array( bbpress()->admin->minimum_capability );
 				break;
 		}
@@ -1260,6 +1270,19 @@ class BBP_Admin {
 		return $sections;
 	}
 
+	/**
+	 * Allow keymaster role to save Forums settings
+	 *
+	 * @since bbPress (r4678)
+	 *
+	 * @param string $capability
+	 * @return string Return 'keep_gate' capability
+	 */
+	public function option_page_capability_bbpress( $capability = 'manage_options' ) {
+		$capability = 'keep_gate';
+		return $capability;
+	}
+
 	/** Ajax ******************************************************************/
 
 	/**
@@ -1301,92 +1324,89 @@ class BBP_Admin {
 		list( $display_version ) = explode( '-', bbp_get_version() ); ?>
 
 		<div class="wrap about-wrap">
-			<h1><?php printf( __( 'Welcome to bbPress %s' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! bbPress %s is ready to make your community a safer, faster, and better looking place to hang out!' ), $display_version ); ?></div>
-			<div class="bbp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
+			<h1><?php printf( __( 'Welcome to bbPress %s', 'bbpress' ), $display_version ); ?></h1>
+			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! bbPress %s goes great with pizza and popcorn, and will nicely complement your community too!', 'bbpress' ), $display_version ); ?></div>
+			<div class="bbp-badge"><?php printf( __( 'Version %s', 'bbpress' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
 				<a class="nav-tab nav-tab-active" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbp-about' ), 'index.php' ) ) ); ?>">
-					<?php _e( 'What&#8217;s New' ); ?>
+					<?php _e( 'What&#8217;s New', 'bbpress' ); ?>
 				</a><a class="nav-tab" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbp-credits' ), 'index.php' ) ) ); ?>">
-					<?php _e( 'Credits' ); ?>
+					<?php _e( 'Credits', 'bbpress' ); ?>
 				</a>
 			</h2>
 
 			<div class="changelog">
-				<h3><?php _e( 'In-depth User Profiles', 'bbpress' ); ?></h3>
+				<h3><?php _e( 'Forum Search', 'bbpress' ); ?></h3>
 
 				<div class="feature-section">
-					<h4><?php _e( 'User Details', 'bbpress' ); ?></h4>
-					<p><?php _e( 'Forum profiles include the details of your forum activity, including your topics and replies, subscriptions, and favorites.', 'bbpress' ); ?></p>
+					<h4><?php _e( 'Only Forum Content', 'bbpress' ); ?></h4>
+					<p><?php _e( 'Allow your forums to be searched without mixing in your posts or pages.', 'bbpress' ); ?></p>
 
-					<h4><?php _e( 'Easy Updating', 'bbpress' ); ?></h4>
-					<p><?php _e( 'You can easily update your profile without leaving bbPress.', 'bbpress' ); ?></p>
+					<h4><?php _e( 'Choose Your Own Slug', 'bbpress' ); ?></h4>
+					<p><?php _e( 'Setup your forum search to live anywhere relative to the forum index.', 'bbpress' ); ?></p>
 				</div>
 			</div>
 
 			<div class="changelog">
-				<h3><?php _e( 'Theme Compatability', 'bbpress' ); ?></h3>
+				<h3><?php _e( 'New & Improved Forum Importers', 'bbpress' ); ?></h3>
 
 				<div class="feature-section">
-					<h4><?php _e( 'Twenty Twelve', 'bbpress' ); ?></h4>
-					<p><?php _e( 'Updated default templates are now Twenty Twelve compatible, and we refreshed our CSS to better integrate with other popular themes, too.', 'bbpress' ); ?></p>
+					<h4><?php _e( 'BBCodes & Smilies', 'bbpress' ); ?></h4>
+					<p><?php _e( 'Happy faces all-around now that the importers properly convert BBCodes & smilies. :)', 'bbpress' ); ?></p>
+
+					<h4><?php _e( 'Vanilla', 'bbpress' ); ?></h4>
+					<p><?php _e( 'Tired of plain old Vanilla? Now you can easily switch to <del>Mint Chocolate Chip</del> bbPress!', 'bbpress' ); ?></p>
+
+					<h4><?php _e( 'SimplePress', 'bbpress' ); ?></h4>
+					<p><?php _e( 'Converting an existing SimplePress powered forum to bbPress has never been "simpler!"', 'bbpress' ); ?></p>
+
+					<h4><?php _e( 'Mingle', 'bbpress' ); ?></h4>
+					<p><?php _e( 'No time to... chit-chat; convert your Mingle forums to bbPress today!', 'bbpress' ); ?></p>
 				</div>
 			</div>
 
 			<div class="changelog">
-				<h3><?php _e( 'Improved User Management', 'bbpress' ); ?></h3>
+				<h3><?php _e( 'Even Better BuddyPress Integration', 'bbpress' ); ?></h3>
 
 				<div class="feature-section">
-					<h4><?php _e( 'Dynamic User Roles and Capabilities', 'bbpress' ); ?></h4>
-					<p><?php _e( 'bbPress now includes some fancy user-roles with smart default capabilities to help you manage your forums. New roles include Key Master (for complete administrative access), Moderator, and Participant for regular forum users.', 'bbpress' ); ?></p>
-
-					<h4><?php _e( 'Manage Forum Users from WordPress', 'bbpress' ); ?></h4>
-					<p><?php _e( 'You can assign Forums roles to users individually, or bulk update them from the WordPress Users page. Users automatically start out as forum participants.', 'bbpress' ); ?></p>
-				</div>
-			</div>
-
-			<div class="changelog">
-				<h3><?php _e( 'Better BuddyPress Integration', 'bbpress' ); ?></h3>
-
-				<div class="feature-section">
-					<h4><?php _e( 'Use bbPress for Your BuddyPress Group Forums', 'bbpress' ); ?></h4>
-					<p><?php _e( 'You can now use bbPress to manage your BuddyPress Group Forums, allowing for seamless integration and improved plugin performance. Plugins developed for bbPress can now be extended to improve the BuddyPress Group Forums experience.', 'bbpress' ); ?></p>
-
-					<h4><?php _e( 'Activity Stream Syncing', 'bbpress' ); ?></h4>
-					<p><?php _e( 'bbPress now keeps track of changes to topics and replies and keeps their corresponding BuddyPress Activity Stream updates synced.', 'bbpress' ); ?></p>
+					<h4><?php _e( 'bbPress powered BuddyPress Group Forums', 'bbpress' ); ?></h4>
+					<p><?php _e( 'Use bbPress to manage your BuddyPress Group Forums, allowing for seamless integration and improved plugin performance.', 'bbpress' ); ?></p>
 				</div>
 			</div>
 
 			<div class="changelog">
 				<h3><?php _e( 'Under the Hood', 'bbpress' ); ?></h3>
 
-				<div class="feature-section three-col">
+				<div class="feature-section col three-col">
 					<div>
-						<h4><?php _e( 'Template Logic', 'bbpress' ); ?></h4>
-						<p><?php _e( 'New functions and template stacks are in place to help plugin developers extend bbPress further.', 'bbpress' ); ?></p> 
+						<h4><?php _e( 'Smarter Fancy Editor', 'bbpress' ); ?></h4>
+						<p><?php _e( 'We simplified the Fancy Editor, and the allowed HTML tags that work with it.', 'bbpress' ); ?></p>
 
-						<h4><?php _e( 'Plugin Directory Structure', 'bbpress' ); ?></h4>
-						<p><?php _e( 'We simplified the bbPress plugin directory structure, making it easier for plugin developers to find the relevant code.', 'bbpress' ); ?></p>
+						<h4><?php _e( 'Better Code Posting', 'bbpress' ); ?></h4>
+						<p><?php _e( 'Your users can now post code snippets without too much hassle.', 'bbpress' ); ?></p>
 					</div>
 
 					<div>
-						<h4><?php _e( 'Autocomplete', 'bbpress' ); ?></h4>
-						<p><?php _e( 'In WordPress Admin, you now select a parent forum or topic via autocomplete rather than a dropdown.', 'bbpress' ); ?></p>
+						<h4><?php _e( 'Template Stacking', 'bbpress' ); ?></h4>
+						<p><?php _e( 'Now you can replace specific template parts on the fly without modifying the existing theme.', 'bbpress' ); ?></p>
 
-						<h4><?php _e( 'Fancy Editor Support', 'bbpress' ); ?></h4>
-						<p><?php _e( 'We improved our support of the Fancy Editor, giving forum users a better experience.', 'bbpress' ); ?></p>
+						<h4><?php _e( 'TwentyThirteen Tested', 'bbpress' ); ?></h4>
+						<p><?php _e( 'bbPress 2.3 already works with the in-development TwentyThirteen theme, coming in a future version of WordPress.', 'bbpress' ); ?></p>
 					</div>
 
 					<div class="last-feature">
-						<h4><?php _e( 'WordPress 3.5-ready', 'bbpress' ); ?></h4>
-						<p><?php _e( 'bbPress 2.2 has been thoroughly tested against the ongoing development of WordPress 3.5.', 'bbpress' ); ?></p>
+						<h4><?php _e( 'Statistics Shortcode', 'bbpress' ); ?></h4>
+						<p><?php _e( 'The old statistics easter-egg page was turned into an easy to use shortcode.', 'bbpress' ); ?></p>
+
+						<h4><?php _e( 'Green Theme Updated', 'bbpress' ); ?></h4>
+						<p><?php _e( 'The green admin theme easter-egg was updated to work with WordPress 3.5 changes.', 'bbpress' ); ?></p>
 					</div>
 				</div>
 			</div>
 
 			<div class="return-to-dashboard">
-				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbpress' ), 'options-general.php' ) ) ); ?>"><?php _e( 'Go to Forum Settings' ); ?></a>
+				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbpress' ), 'options-general.php' ) ) ); ?>"><?php _e( 'Go to Forum Settings', 'bbpress' ); ?></a>
 			</div>
 
 		</div>
@@ -1407,15 +1427,15 @@ class BBP_Admin {
 		list( $display_version ) = explode( '-', bbp_get_version() ); ?>
 
 		<div class="wrap about-wrap">
-			<h1><?php printf( __( 'Welcome to bbPress %s' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! bbPress %s is ready to make your community a safer, faster, and better looking place to hang out!' ), $display_version ); ?></div>
+			<h1><?php printf( __( 'Welcome to bbPress %s', 'bbpress' ), $display_version ); ?></h1>
+			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! bbPress %s goes great with pizza and popcorn, and will nicely complement your community too!', 'bbpress' ), $display_version ); ?></div>
 			<div class="bbp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
 				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbp-about' ), 'index.php' ) ) ); ?>" class="nav-tab">
-					<?php _e( 'What&#8217;s New' ); ?>
+					<?php _e( 'What&#8217;s New', 'bbpress' ); ?>
 				</a><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbp-credits' ), 'index.php' ) ) ); ?>" class="nav-tab nav-tab-active">
-					<?php _e( 'Credits' ); ?>
+					<?php _e( 'Credits', 'bbpress' ); ?>
 				</a>
 			</h2>
 
@@ -1473,7 +1493,7 @@ class BBP_Admin {
 				</li>
 			</ul>
 
-			<h4 class="wp-people-group"><?php _e( 'Core Contributors to bbPress 2.2', 'bbpress' ); ?></h4>
+			<h4 class="wp-people-group"><?php _e( 'Core Contributors to bbPress 2.3', 'bbpress' ); ?></h4>
 			<p class="wp-credits-list">
 				<a href="http://profiles.wordpress.org/alexvorn2">alexvorn2</a>,
 				<a href="http://profiles.wordpress.org/anointed">anointed</a>,
@@ -1514,7 +1534,7 @@ class BBP_Admin {
 			</p>
 
 			<div class="return-to-dashboard">
-				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbpress' ), 'options-general.php' ) ) ); ?>"><?php _e( 'Go to Forum Settings' ); ?></a>
+				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbpress' ), 'options-general.php' ) ) ); ?>"><?php _e( 'Go to Forum Settings', 'bbpress' ); ?></a>
 			</div>
 
 		</div>

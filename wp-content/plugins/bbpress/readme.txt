@@ -1,9 +1,9 @@
 === bbPress ===
-Contributors: matt, johnjamesjacoby
+Contributors: matt, johnjamesjacoby, jmdodd
 Tags: forums, discussion, support, theme, akismet, multisite
-Requires at least: 3.4
-Tested up to: 3.5
-Stable tag: 2.2.3
+Requires at least: 3.5
+Tested up to: 3.6
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,17 @@ We're keeping things as small and light as possible while still allowing for gre
 6. Adjust the CSS of your theme as needed, to make everything pretty.
 
 == Changelog ==
+
+= 2.3 =
+* Added forum search functionality
+* Improved BuddyPress Group Forums integration
+* Improved allowed tags in topics and replies
+* Added template stack support to theme compatability
+* Added more forum migration options
+
+= 2.2.4 =
+* Prepare converter queries
+* Improve validation and sanitization of form values
 
 = 2.2.3 =
 * Improve compatibility with some themes
