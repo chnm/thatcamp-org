@@ -1,0 +1,406 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Audio Player\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2010-04-14 13:41-0000\n"
+"Last-Translator: Martin Laine <martin@1pixelout.net>\n"
+"Language-Team: http://chernobog.ru <admin@chernobog.ru>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Country: RUSSIA\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../audio-player.php:193
+msgid "Settings"
+msgstr "Настройки"
+
+#: ../audio-player.php:234
+#: ../audio-player.php:235
+msgid "[Audio clip: view full post to listen]"
+msgstr "[Аудиозапись: посмотреть полное сообщение для прослушивания]"
+
+#: ../audio-player.php:526
+msgid "Download audio file"
+msgstr "Скачать аудио файл"
+
+#: ../audio-player.php:545
+#, php-format
+msgid "Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href=\"%s\" title=\"Download Adobe Flash Player\">here</a>. You also need to have JavaScript enabled in your browser."
+msgstr "Аудиозапись: Adobe Flash Player (версия 9 или выше) требуется для воспроизведения этой аудиозаписи. Скачать последнюю версию <a href=\"%s\" title=\"Download Adobe Flash Player\">здесь</a>. К тому же, в Вашем браузере должен быть включен JavaScript."
+
+#: ../php/options-panel.php:10
+#, php-format
+msgid "Settings for the Audio Player plugin. Visit <a href=\"%s\">WPAudioPlayer.com</a> for usage information and project news."
+msgstr "Настройки плагина Audio Player. Посетите <a href=\"%s\">WPAudioPlayer.com</a> чтобы следить за новостями проекта."
+
+#: ../php/options-panel.php:12
+msgid "Current version"
+msgstr "Текущая версия"
+
+#: ../php/options-panel.php:20
+msgid "General"
+msgstr "Общие"
+
+#: ../php/options-panel.php:21
+msgid "Display"
+msgstr "Отображение"
+
+#: ../php/options-panel.php:22
+#: ../php/options-panel.php:201
+msgid "Feed options"
+msgstr "Параметры канала"
+
+#: ../php/options-panel.php:23
+msgid "Podcasting"
+msgstr "Подкастинг"
+
+#: ../php/options-panel.php:24
+msgid "Advanced"
+msgstr "Дополнительно"
+
+#: ../php/options-panel.php:28
+msgid "How do you want to use the audio player?"
+msgstr "Как Вы хотите использовать аудиоплеер?"
+
+#: ../php/options-panel.php:29
+msgid "This set of options allows you to customize when your audio players appear."
+msgstr "Этот набор опций позволяет Вам настроить, когда появится Ваш аудиоплеер."
+
+#: ../php/options-panel.php:35
+msgid "Replace [audio] syntax"
+msgstr "Заменить [audio] синтаксис"
+
+#: ../php/options-panel.php:36
+msgid "This is the default behaviour and is the only way to apply options to a player instance. Use this option if you want to have more than one audio player per posting."
+msgstr "Параметр устанавливается по умолчанию. Используйте этот параметр, если хотите размещать более одного аудиоплеера в сообщении."
+
+#: ../php/options-panel.php:41
+msgid "Replace all links to mp3 files"
+msgstr "Заменять все ссылки mp3-файлов"
+
+#: ../php/options-panel.php:42
+msgid "When selected, this option will replace all your links to mp3 files with a player instance. Be aware that this could produce odd results when links are in the middle of paragraphs."
+msgstr "Если включить этот параметр, все ссылки на mp3-файлы будут использоваться как плеер."
+
+#: ../php/options-panel.php:47
+msgid "Enable in comments"
+msgstr "Включить в комментарии"
+
+#: ../php/options-panel.php:48
+msgid "When selected, Audio Player will be enabled for all comments on your blog."
+msgstr "Если включить этот параметр, плеер будет включен во все комментарии Вашего блога."
+
+#: ../php/options-panel.php:53
+msgid "Enclosure integration"
+msgstr "Интеграция вложений"
+
+#: ../php/options-panel.php:54
+msgid "Ideal for podcasting. If you set your enclosures manually, this option will automatically insert a player at the end of posts with an mp3 enclosure. The player will appear at the bottom of your posting."
+msgstr "Идеально для подкастинга. Если Вы установите свои вложения вручную, то этот параметр автоматически вставит плеер в конце сообщения с mp3 вложением. Плеер появится в нижней части сообщения."
+
+#: ../php/options-panel.php:59
+msgid "Move enclosures to the beginning of posts"
+msgstr "Переместить вложение в начало сообщения"
+
+#: ../php/options-panel.php:60
+msgid "When selected, players will be inserted at the beginning of the post when the enclosure integration option is selected."
+msgstr "Если включить этот параметр, плеер будут вставлен в начале сообщения, должен быть включен параметр интеграции вложений."
+
+#: ../php/options-panel.php:64
+msgid "Default audio folder location"
+msgstr "Папка аудио по умолчанию"
+
+#: ../php/options-panel.php:68
+#: ../php/options-panel.php:208
+#: ../php/options-panel.php:215
+msgid "Custom"
+msgstr "Пользовательский"
+
+#: ../php/options-panel.php:74
+msgid "Verify"
+msgstr "Проверить"
+
+#: ../php/options-panel.php:75
+msgid "Click this button to verify that the audio folder is correctly configured"
+msgstr "Нажмите на эту кнопку, чтобы убедиться, что аудио папка настроена правильно"
+
+#: ../php/options-panel.php:76
+msgid "Custom audio folder locations cannot be verified"
+msgstr "Пользовательская аудио папка не может быть проверена"
+
+#: ../php/options-panel.php:77
+msgid "Checking..."
+msgstr "Проверка..."
+
+#: ../php/options-panel.php:78
+msgid "Audio folder location verified"
+msgstr "Аудио папка проверена"
+
+#: ../php/options-panel.php:79
+msgid "Audio folder location not found. Please check that the following folder exists on your server:"
+msgstr "Аудио папка не найдена. Пожалуйста убедитесь в том, что следующая папка существует на Вашем сервере:"
+
+#: ../php/options-panel.php:83
+msgid "This is the default location for your audio files. When you use the [audio] syntax and don't provide an absolute URL for the mp3 file (the full URL including \"http://\") Audio Player will automatically look for the file in this location. You can set this to a folder located inside your blog folder structure or, alternatively, if you wish to store your audio files outside your blog (maybe even on a different server), choose \"Custom\" from the drop down and enter the absolute URL to that location."
+msgstr "Это местоположение ваших аудио файлов по умолчанию. Когда Вы используете синтаксис [audio] и не предоставляете полную ссылку на mp3-файл (полная ссылка включает в себя \"http://\") плагин Audio Player будет автоматически искать файл в этой папке. Вы можете установить эту папку в Вашем блоге или же, если Вы желаете хранить свои аудио файлы вне блога (возможно даже на другом сервере), выберите параметр \"Пользовательский \" в выпадающем меню и введите полный URL местоположения."
+
+#: ../php/options-panel.php:88
+#: ../php/options-panel.php:90
+msgid "Player width"
+msgstr "Ширина плеера"
+
+#: ../php/options-panel.php:92
+msgid "You can enter a value in pixels (e.g. 200) or as a percentage (e.g. 100%)"
+msgstr "Вы можете ввести значение в пикселях (например, 200) или в процентах (например, 100%)"
+
+#: ../php/options-panel.php:94
+msgid "Colour scheme"
+msgstr "Цветовая схема"
+
+#: ../php/options-panel.php:113
+msgid "Background"
+msgstr "Фон"
+
+#: ../php/options-panel.php:114
+msgid "Left background"
+msgstr "Фон слева"
+
+#: ../php/options-panel.php:115
+msgid "Left icon"
+msgstr "Левый значок"
+
+#: ../php/options-panel.php:116
+msgid "Volume control track"
+msgstr "След регулировки громкости"
+
+#: ../php/options-panel.php:117
+msgid "Volume control slider"
+msgstr "Ползунок регулировки громкости"
+
+#: ../php/options-panel.php:118
+msgid "Right background"
+msgstr "Фон справа"
+
+#: ../php/options-panel.php:119
+msgid "Right background (hover)"
+msgstr "Фон справа (при наведении)"
+
+#: ../php/options-panel.php:120
+msgid "Right icon"
+msgstr "Правый значок"
+
+#: ../php/options-panel.php:121
+msgid "Right icon (hover)"
+msgstr "Правый значок (при наведении)"
+
+#: ../php/options-panel.php:122
+msgid "Text"
+msgstr "Текст"
+
+#: ../php/options-panel.php:123
+msgid "Progress bar"
+msgstr "Прогресс бар"
+
+#: ../php/options-panel.php:124
+msgid "Progress bar track"
+msgstr "След прогресс бара"
+
+#: ../php/options-panel.php:125
+msgid "Progress bar border"
+msgstr "Граница прогресс бара"
+
+#: ../php/options-panel.php:126
+msgid "Loading bar"
+msgstr "Полоса загрузки"
+
+#: ../php/options-panel.php:127
+msgid "Next/Previous buttons"
+msgstr "Кнопки След./Пред."
+
+#: ../php/options-panel.php:131
+msgid "Pick"
+msgstr "Выбор"
+
+#: ../php/options-panel.php:133
+msgid "From your theme"
+msgstr "Из вашей темы"
+
+#: ../php/options-panel.php:135
+msgid "Theme colors"
+msgstr "Цвета темы"
+
+#: ../php/options-panel.php:155
+msgid "Here, you can set the page background of the player. In most cases, simply select \"transparent\" and it will match the background of your page. In some rare cases, the player will stop working in Firefox if you use the transparent option. If this happens, untick the transparent box and enter the color of your page background in the box below (in the vast majority of cases, it will be white: #FFFFFF)."
+msgstr "Здесь Вы можете установить фон страницы плеера. В большинстве случаев, просто выберите \"прозрачный \", и это будет соответствовать фону Вашей страницы. В редких случаях, плеер не будет работать в Firefox, если Вы используете прозрачный вариант. Если это произойдет, отключите прозрачный фон и введите цвет фона в окне, расположенном ниже (в подавляющем большинстве случаев, цвет фона будет белым: # FFFFFF)."
+
+#: ../php/options-panel.php:158
+msgid "Page background color"
+msgstr "Цвет фона страницы"
+
+#: ../php/options-panel.php:162
+msgid "Transparent"
+msgstr "Прозрачный"
+
+#: ../php/options-panel.php:168
+msgid "Reset colour scheme"
+msgstr "Сброс цветовой схемы"
+
+#: ../php/options-panel.php:171
+msgid "Options"
+msgstr "Параметры"
+
+#: ../php/options-panel.php:176
+msgid "Disable animation"
+msgstr "Выключить анимацию"
+
+#: ../php/options-panel.php:177
+msgid "If you don't like the open/close animation, you can disable it here."
+msgstr "Если Вам не нравится открывать/закрывать анимацию, Вы можете отключить ее здесь."
+
+#: ../php/options-panel.php:182
+msgid "Show remaining time"
+msgstr "Показать оставшееся время"
+
+#: ../php/options-panel.php:183
+msgid "This will make the time display count down rather than up."
+msgstr "Этот параметр позволит сделать отсчет оставшегося времени."
+
+#: ../php/options-panel.php:188
+msgid "Disable track information"
+msgstr "Отключить информацию о треке"
+
+#: ../php/options-panel.php:189
+msgid "Select this if you wish to disable track information display (the player won't show titles or artist names even if they are available.)"
+msgstr "Выберите этот параметр, если хотите отключить отображение информации о треке (плеер не покажет названия или имена исполнителей, даже если таковые имеются.)"
+
+#: ../php/options-panel.php:194
+msgid "Switch to RTL layout"
+msgstr "Переключиться к RTL режиму"
+
+#: ../php/options-panel.php:195
+msgid "Select this to switch the player layout to RTL mode (right to left) for Arabic and Hebrew language blogs."
+msgstr "Используется для переключения плеера в RTL режим (справа налево) для блогов на арабском языке и иврите."
+
+#: ../php/options-panel.php:203
+msgid "The following options determine what is included in your feeds. The plugin doesn't place a player instance in the feed. Instead, you can choose what the plugin inserts. You have three choices:"
+msgstr "Следующие параметры определяют, что входит в Ваши каналы RSS. Плагин не помещает плеер в канал. Вместо этого Вы можете выбрать то, что вставляет плагин. У Вас есть три варианта:"
+
+#: ../php/options-panel.php:206
+#: ../php/options-panel.php:213
+msgid "Download link"
+msgstr "Ссылка для скачивания"
+
+#: ../php/options-panel.php:206
+msgid "Choose this if you are OK with subscribers downloading the file."
+msgstr "Выберите этот параметр, если Ваши подписчики могут загружать файл."
+
+#: ../php/options-panel.php:207
+#: ../php/options-panel.php:214
+msgid "Nothing"
+msgstr "Ничего"
+
+#: ../php/options-panel.php:207
+msgid "Choose this if you feel that your feed shouldn't contain any reference to the audio file."
+msgstr "Выберите этот параметр, если не хотите чтобы ваш канал содержал ссылку на аудио файл."
+
+#: ../php/options-panel.php:208
+msgid "Choose this to use your own alternative content for all player instances. You can use this option to tell subscribers that they can listen to the audio file if they read the post on your blog."
+msgstr "Выберите это, чтобы использовать альтернативный контент для плеера во всех случаях. Вы можете использовать этот параметр, для того чтобы сказать подписчикам, что они могут прослушать аудиозапись, если читают сообщения в Вашем блоге."
+
+#: ../php/options-panel.php:211
+msgid "Alternate content for feeds"
+msgstr "Альтернативный контент для RSS каналов"
+
+#: ../php/options-panel.php:219
+msgid "Custom alternate content"
+msgstr "Пользовательский альтернативный контент"
+
+#: ../php/options-panel.php:225
+msgid "Pre and Post appended audio clips"
+msgstr "До и После прикладывать аудиозаписи"
+
+#: ../php/options-panel.php:227
+msgid "You may wish to pre-append or post-append audio clips into your players. The pre-appended audio will be played before the main audio, and the post-appended will come after. A typical podcasting use-case for this feature is adding a sponsorship message or simple instructions that help casual listeners become subscribers. <strong>This will apply to all audio players on your site</strong>. Your chosen audio clips should be substantially shorter than your main feature."
+msgstr "Вы можете добавить аудиозаписи в плеерах до или после контента. Аудиозапись приложенная до контента, будет проигрываться прежде, чем главная и последующая. Типичный случай использования подкастинга, поскольку эта особенность добавляет простые инструкции, которые помогают случайным слушателям стать Вашими подписчиками. <strong>Это будет относиться ко всем аудиоплеерам на Вашем сайте</strong>. Выбранные Вами аудиозаписи должны быть существенно короче чем основная."
+
+#: ../php/options-panel.php:230
+msgid "Pre-appended audio clip URL"
+msgstr "URL предварительно приложенной аудиозаписи"
+
+#: ../php/options-panel.php:232
+msgid "Leave this value blank for no pre-appended audio"
+msgstr "Оставьте это поле пустым, если нет предварительно приложенной аудиозаписи"
+
+#: ../php/options-panel.php:235
+msgid "Post-appended audio clip URL"
+msgstr "URL последующей приложенной аудиозаписи"
+
+#: ../php/options-panel.php:237
+msgid "Leave this value blank for no post-appended audio"
+msgstr "Оставьте это поле пустым, если нет последующей приложенной аудиозаписи"
+
+#: ../php/options-panel.php:242
+#: ../php/options-panel.php:247
+msgid "Alternate content for excerpts"
+msgstr "Альтернативный контент для выдержки"
+
+#: ../php/options-panel.php:244
+msgid "WordPress automatically creates excerpts (summaries) for your posts. These are used by some themes to show on archive pages instead of the full post. By default, WordPress strips all HTML from these excerpts. Here you can choose what Audio Player inserts in excerpts in place of the player."
+msgstr " WordPress автоматически создает выдержки (резюме) для Вашего сообщения. Они используются в некоторых темах, чтобы показывать на страницах архива не полные сообщения. По умолчанию, WordPress удаляет все HTML из этих выдержек. Здесь Вы можете выбрать то, что аудиоплеер вставляет в выдержки вместо плеера."
+
+#: ../php/options-panel.php:251
+#: ../php/options-panel.php:256
+msgid "Initial volume"
+msgstr "Изначальная громкость"
+
+#: ../php/options-panel.php:253
+msgid "This is the volume at which the player defaults to (0 is off, 100 is full volume)"
+msgstr "Это громкость плеера которая установлена по умолчанию (0 - выключен, 100 - полная громкость)"
+
+#: ../php/options-panel.php:260
+msgid "Buffer time"
+msgstr "Время буфера"
+
+#: ../php/options-panel.php:262
+msgid "If you think your target audience is likely to have a slow internet connection, you can increase the player's buffering time (for standard broadband connections, 5 seconds is enough)"
+msgstr "Если Вы считаете, что ваша целевая аудитория имеет медленный канал связи с интернет, то Вы можете увеличить время буферезации плеера (для стандартного широкополосного соединения, 5 секунд вполне достаточно)"
+
+#: ../php/options-panel.php:265
+msgid "Buffer time (in seconds)"
+msgstr "Время буфера (в секундах)"
+
+#: ../php/options-panel.php:269
+#: ../php/options-panel.php:277
+msgid "Check for policy file"
+msgstr "Проверить файл политики"
+
+#: ../php/options-panel.php:271
+msgid "Enable this to tell Audio Player to check for a policy file on the server. This allows Flash to read ID3 tags on remote servers. Only enable this if all your mp3 files are located on a server with a policy file."
+msgstr "Включите этот параметр, чтобы аудиоплеер проверял файл политики на сервере. Это позволяет Flash читать ID3 теги на удаленных серверах. Включите это, только в том случае, если все Ваши mp3-файлы находятся на сервере с файлом политики."
+
+#: ../php/options-panel.php:281
+msgid "Encoding"
+msgstr "Шифрование"
+
+#: ../php/options-panel.php:283
+msgid "Enable this to encode the URLs to your mp3 files. This is the only protection possible against people downloading the mp3 file to their computers."
+msgstr "Включите шифрование URL к Вашем mp3-файлам. Это единственная возможность защиты от людей, которые загружают mp3-файлы на свои компьютеры."
+
+#: ../php/options-panel.php:289
+msgid "Encode mp3 URLs"
+msgstr "Шифровать URL mp3-файлов"
+
+#: ../php/options-panel.php:302
+#: ../php/options-panel.php:310
+msgid "Remove all enclosures from feeds"
+msgstr "Удалить все вложения из каналов RSS"
+
+#: ../php/options-panel.php:304
+msgid "This will remove all enclosures from your blog feeds. Only do this if you do not want your visitors to download the mp3 files. Do not do this if you do any kind of podcasting via your blog."
+msgstr "Это позволит удалить все вложения из каналов RSS Вашего блога. Делайте это только в том случае, когда не хотите чтобы Ваши посетители скачивали mp3-файлы. Не включайте этот параметр, если у Вас в блоге настроен подкастинг."
+

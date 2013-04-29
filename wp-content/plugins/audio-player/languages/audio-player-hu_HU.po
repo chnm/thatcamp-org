@@ -1,0 +1,394 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Audio player 2.0.3.1\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Gergely Nagy <gnagy@mailbox.hu>\n"
+"Language-Team: Gergely Nagy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Poedit-Language: Hungarian\n"
+"X-Poedit-Country: HUNGARY\n"
+
+#: ../audio-player.php:178
+msgid "Settings"
+msgstr "Beállítások"
+
+#: ../audio-player.php:219
+#: ../audio-player.php:220
+msgid "[Audio clip: view full post to listen]"
+msgstr "[Hanganyag: meghallgatható a teljes bejegyzésben]"
+
+#: ../audio-player.php:510
+msgid "Download audio file"
+msgstr "Hanganyag letöltése"
+
+#: ../audio-player.php:529
+#, php-format
+msgid "Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href=\"%s\" title=\"Download Adobe Flash Player\">here</a>. You also need to have JavaScript enabled in your browser."
+msgstr "Hanganyag: a lejátszáshoz Adobe Flash Player (9-es vagy újabb verzió) szükséges, amelynek a legfrissebb változata letölthető <a href=\"%s\" title=\"Adobe Flash Player letöltése\">innen</a>, valamint a böngészőben engedélyezni kell a JavaScriptet is."
+
+#: ../php/options-panel.php:10
+#, php-format
+msgid "Settings for the Audio Player plugin. Visit <a href=\"%s\">WPAudioPlayer.com</a> for usage information and project news."
+msgstr "Ezek az Audio Player bővítmény beállításai. A használati utasítás és a projekt hírei a <a href=\"%s\">WPAudioPlayer.com</a> oldalon találhatók."
+
+#: ../php/options-panel.php:12
+msgid "Current version"
+msgstr "Jelenlegi verzió"
+
+#: ../php/options-panel.php:20
+msgid "General"
+msgstr "Általános"
+
+#: ../php/options-panel.php:21
+msgid "Display"
+msgstr "Megjelenés"
+
+#: ../php/options-panel.php:22
+#: ../php/options-panel.php:201
+msgid "Feed options"
+msgstr "Hírcsatorna beállítások"
+
+#: ../php/options-panel.php:23
+msgid "Podcasting"
+msgstr "Podcasting"
+
+#: ../php/options-panel.php:24
+msgid "Advanced"
+msgstr "Haladó"
+
+#: ../php/options-panel.php:28
+msgid "How do you want to use the audio player?"
+msgstr "Hogyan működjön a lejátszó?"
+
+#: ../php/options-panel.php:29
+msgid "This set of options allows you to customize when your audio players appear."
+msgstr "Ezekkel az opciókkal testreszabható, hogy mikor jelenjen meg a lejátszó."
+
+#: ../php/options-panel.php:35
+msgid "Replace [audio] syntax"
+msgstr "Az [audio] kulcsszó helyettesítése"
+
+#: ../php/options-panel.php:36
+msgid "This is the default behaviour and is the only way to apply options to a player instance. Use this option if you want to have more than one audio player per posting."
+msgstr "Ez az alapértelmezett viselkedés és az egyetlen módja, hogy beállításokat alkalmazzunk a lejátszóra. Ezt az opciót kell használni, ha egy bejegyzésbe egynél több lejátszót szeretnénk tenni."
+
+#: ../php/options-panel.php:41
+msgid "Replace all links to mp3 files"
+msgstr "Minden mp3-ra mutató hivatkozás helyettesítése"
+
+#: ../php/options-panel.php:42
+msgid "When selected, this option will replace all your links to mp3 files with a player instance. Be aware that this could produce odd results when links are in the middle of paragraphs."
+msgstr "Ha be van jelölve, minden mp3-ra mutatató hivatkozás lecserélődik egy lejátszóra. Figyelem, ez fura dolgokat eredményezhet, ha a hivatkozás egy bekezdésen belül van."
+
+#: ../php/options-panel.php:47
+msgid "Enable in comments"
+msgstr "Engedélyezés a hozzászólásokban"
+
+#: ../php/options-panel.php:48
+msgid "When selected, Audio Player will be enabled for all comments on your blog."
+msgstr "Ha be van jelölve, az Audio Player a blog minden hozzászólásához engedélyezve lesz."
+
+#: ../php/options-panel.php:53
+msgid "Enclosure integration"
+msgstr "Csatolmányokhoz rendelés"
+
+#: ../php/options-panel.php:54
+msgid "Ideal for podcasting. If you set your enclosures manually, this option will automatically insert a player at the end of posts with an mp3 enclosure. The player will appear at the bottom of your posting."
+msgstr "Ez podcastinghoz ideális. Ha sajátkezűleg állítjuk be a csatolmányokat, az mp3-akat tartalmazókhoz minden bejegyzés végére illeszt egy lejátszót. A lejátszó az írás alján fog megjelenni."
+
+#: ../php/options-panel.php:59
+msgid "Move enclosures to the beginning of posts"
+msgstr "A csatolmányok áthelyezése a bejegyzés elejére"
+
+#: ../php/options-panel.php:60
+msgid "When selected, players will be inserted at the beginning of the post when the enclosure integration option is selected."
+msgstr "Ha be van jelölve, csatolmányokhoz rendelés esetén a lejátszót a bejegyzés elejébe illeszti."
+
+#: ../php/options-panel.php:64
+msgid "Default audio folder location"
+msgstr "Az audió könyvtár alapértelmezett helye"
+
+#: ../php/options-panel.php:68
+#: ../php/options-panel.php:208
+#: ../php/options-panel.php:215
+msgid "Custom"
+msgstr "Egyéni"
+
+#: ../php/options-panel.php:74
+msgid "Verify"
+msgstr "Ellenőrzés"
+
+#: ../php/options-panel.php:75
+msgid "Click this button to verify that the audio folder is correctly configured"
+msgstr "Erre a gombra kattintva ellenőrizhető az audió könyvtár helyes beállítása"
+
+#: ../php/options-panel.php:76
+msgid "Custom audio folder locations cannot be verified"
+msgstr "Az egyéni audió könyvtár beállítások nem ellenőrizhetők"
+
+#: ../php/options-panel.php:77
+msgid "Checking..."
+msgstr "Ellenőrzés..."
+
+#: ../php/options-panel.php:78
+msgid "Audio folder location verified"
+msgstr "Az audió könyvtár ellenőrzése sikerült"
+
+#: ../php/options-panel.php:79
+msgid "Audio folder location not found. Please check that the following folder exists on your server:"
+msgstr "Az audió könyvtár nem található. Létezik a kiszolgálón az alábbi könyvtár?"
+
+#: ../php/options-panel.php:83
+msgid "This is the default location for your audio files. When you use the [audio] syntax and don't provide an absolute URL for the mp3 file (the full URL including \"http://\") Audio Player will automatically look for the file in this location. You can set this to a folder located inside your blog folder structure or, alternatively, if you wish to store your audio files outside your blog (maybe even on a different server), choose \"Custom\" from the drop down and enter the absolute URL to that location."
+msgstr "Ez az audió fájlok alapértelmezett helye. Amikor az [audio] kulcsszót használjuk és nem abszolút URL-lel biztosítjuk az mp3 fájlt (a teljes URL-lel, beleértve a \"http://\" részt), az Audio Player automatikusan ezen a helyen fogja azt keresni. Beállíthatunk a blog könyvtárszerkezetén belüli könyvtárat, vagy amennyiben a blogon kívül szeretnénk tárolni az audió fájljainkat (akár egy másik kiszolgálón), a legördülő listában  \"Egyéni\"-t választva beírhatjuk a hely abszolút URL-jét."
+
+#: ../php/options-panel.php:88
+#: ../php/options-panel.php:90
+msgid "Player width"
+msgstr "A lejátszó szélessége"
+
+#: ../php/options-panel.php:92
+msgid "You can enter a value in pixels (e.g. 200) or as a percentage (e.g. 100%)"
+msgstr "Megadható képpontban (pl. 200) vagy százalékban (pl. 100%)"
+
+#: ../php/options-panel.php:94
+msgid "Colour scheme"
+msgstr "Színösszeállítás"
+
+#: ../php/options-panel.php:113
+msgid "Background"
+msgstr "Háttér"
+
+#: ../php/options-panel.php:114
+msgid "Left background"
+msgstr "Bal háttér"
+
+#: ../php/options-panel.php:115
+msgid "Left icon"
+msgstr "Bal ikon"
+
+#: ../php/options-panel.php:116
+msgid "Volume control track"
+msgstr "Hangerő szabályzó sáv"
+
+#: ../php/options-panel.php:117
+msgid "Volume control slider"
+msgstr "Hangerő szabályzó csúszka"
+
+#: ../php/options-panel.php:118
+msgid "Right background"
+msgstr "Jobb háttér"
+
+#: ../php/options-panel.php:119
+msgid "Right background (hover)"
+msgstr "Jobb háttér (kijelölt)"
+
+#: ../php/options-panel.php:120
+msgid "Right icon"
+msgstr "Jobb ikon"
+
+#: ../php/options-panel.php:121
+msgid "Right icon (hover)"
+msgstr "Jobb ikon (kijelölt)"
+
+#: ../php/options-panel.php:122
+msgid "Text"
+msgstr "Szöveg"
+
+#: ../php/options-panel.php:123
+msgid "Progress bar"
+msgstr "Folyamatjelző"
+
+#: ../php/options-panel.php:124
+msgid "Progress bar track"
+msgstr "Folyamatjelző sáv"
+
+#: ../php/options-panel.php:125
+msgid "Progress bar border"
+msgstr "Folyamatjelző sáv keret"
+
+#: ../php/options-panel.php:126
+msgid "Loading bar"
+msgstr "Betöltés sáv"
+
+#: ../php/options-panel.php:127
+msgid "Next/Previous buttons"
+msgstr "Következő/Előző gombok"
+
+#: ../php/options-panel.php:131
+msgid "Pick"
+msgstr "Kiválaszt"
+
+#: ../php/options-panel.php:133
+msgid "From your theme"
+msgstr "A témából"
+
+#: ../php/options-panel.php:135
+msgid "Theme colors"
+msgstr "A téma színei"
+
+#: ../php/options-panel.php:155
+msgid "Here, you can set the page background of the player. In most cases, simply select \"transparent\" and it will match the background of your page. In some rare cases, the player will stop working in Firefox if you use the transparent option. If this happens, untick the transparent box and enter the color of your page background in the box below (in the vast majority of cases, it will be white: #FFFFFF)."
+msgstr "Itt lehet beállítani a lejátszó hátterét. Általában válasszuk egyszerűen az \"átlátszó\"-t és meg fog egyezni az oldal hátterével. Ritka esetben, átlátszó háttér használatakor, Firefox alatt nem működik a lejátszó. Ebben az esetben vegyük ki a pipát az átlátszó dobozból, majd írjuk be az oldal hátterének színét az alábbi mezőbe (többnyire ez fehér lesz: #FFFFFF)."
+
+#: ../php/options-panel.php:158
+msgid "Page background color"
+msgstr "Oldalháttér"
+
+#: ../php/options-panel.php:162
+msgid "Transparent"
+msgstr "Átlátszó"
+
+#: ../php/options-panel.php:168
+msgid "Reset colour scheme"
+msgstr "Színösszeállítás alaphelyzetbe állítása"
+
+#: ../php/options-panel.php:171
+msgid "Options"
+msgstr "Opciók"
+
+#: ../php/options-panel.php:176
+msgid "Disable animation"
+msgstr "Animációk letiltása"
+
+#: ../php/options-panel.php:177
+msgid "If you don't like the open/close animation, you can disable it here."
+msgstr "Ha nem tetszik a nyitó/záró animáció, itt letiltható."
+
+#: ../php/options-panel.php:182
+msgid "Show remaining time"
+msgstr "Mutassa a hátralévő időt"
+
+#: ../php/options-panel.php:183
+msgid "This will make the time display count down rather than up."
+msgstr "Ez visszafelé számláltatja az időt, nem előre."
+
+#: ../php/options-panel.php:188
+msgid "Disable track information"
+msgstr "Szám információk letiltása"
+
+#: ../php/options-panel.php:189
+msgid "Select this if you wish to disable track information display (the player won't show titles or artist names even if they are available.)"
+msgstr "Ezt bejelölve letiltható a szám információk megjelenítése (a lejátszó nem fogja megjeleníteni a címeket vagy előadókat, még ha elérhető sem)."
+
+#: ../php/options-panel.php:194
+msgid "Switch to RTL layout"
+msgstr "Jobbról balra írás bekapcsolása"
+
+#: ../php/options-panel.php:195
+msgid "Select this to switch the player layout to RTL mode (right to left) for Arabic and Hebrew language blogs."
+msgstr "Ezt bejelölve a lejátszó jobbról balra író módba kapcsol az arab és héber nyelvű blogokhoz."
+
+#: ../php/options-panel.php:203
+msgid "The following options determine what is included in your feeds. The plugin doesn't place a player instance in the feed. Instead, you can choose what the plugin inserts. You have three choices:"
+msgstr "A következő beállítások a hírcsatornák tartalmát határozzák meg. A bővítmény nem helyez lejátszót a hírcsatornába; kiválasztható mit illesszen a helyére. Három lehetőség van:"
+
+#: ../php/options-panel.php:206
+#: ../php/options-panel.php:213
+msgid "Download link"
+msgstr "Letöltő hivatkozás"
+
+#: ../php/options-panel.php:206
+msgid "Choose this if you are OK with subscribers downloading the file."
+msgstr "Akkor választható, ha nem baj, hogy a feliratkozók letöltik a fájlt."
+
+#: ../php/options-panel.php:207
+#: ../php/options-panel.php:214
+msgid "Nothing"
+msgstr "Nincs"
+
+#: ../php/options-panel.php:207
+msgid "Choose this if you feel that your feed shouldn't contain any reference to the audio file."
+msgstr "Akkor választható, ha a hírcsatornának semmilyen utalást nem kéne tartalmaznia az audió fájlra."
+
+#: ../php/options-panel.php:208
+msgid "Choose this to use your own alternative content for all player instances. You can use this option to tell subscribers that they can listen to the audio file if they read the post on your blog."
+msgstr "Akkor választható, ha saját tartalommal szeretnénk helyettesíteni minden lejátszót. Ezzel az opcióval tájékoztathatók a feliratkozók, hogy meghallgathatják az audió fájlt, ha a blogon olvassák a bejegyzést."
+
+#: ../php/options-panel.php:211
+msgid "Alternate content for feeds"
+msgstr "Helyettesítő tartalom a hírcsatornákban"
+
+#: ../php/options-panel.php:219
+msgid "Custom alternate content"
+msgstr "Egyéni helyettesítő tartalom"
+
+#: ../php/options-panel.php:225
+msgid "Pre and Post appended audio clips"
+msgstr "Hozzáfűzött audió bejátszások"
+
+#: ../php/options-panel.php:227
+msgid "You may wish to pre-append or post-append audio clips into your players. The pre-appended audio will be played before the main audio, and the post-appended will come after. A typical podcasting use-case for this feature is adding a sponsorship message or simple instructions that help casual listeners become subscribers. <strong>This will apply to all audio players on your site</strong>. Your chosen audio clips should be substantially shorter than your main feature."
+msgstr "Előfordulhat, hogy szeretnénk audió bejátszásokat fűzni a lejátszás elejére vagy végére. Ennek egy tipikus podcasting felhasználási módja a szponzor üzenet, vagy egyszerű utasítások, hogyan iratkozhat fel az alkalmi hallgatóság. <strong>Ez az oldal összes lejátszójára érvényes lesz</strong>. A választott bejátszásoknak lényegesen rövidebbnek kell lennie a fő résznél."
+
+#: ../php/options-panel.php:230
+msgid "Pre-appended audio clip URL"
+msgstr "Az elejéhez fűzött bejátszás URL-je"
+
+#: ../php/options-panel.php:232
+msgid "Leave this value blank for no pre-appended audio"
+msgstr "Üresen hagyva nem lesz bejátszás az elején"
+
+#: ../php/options-panel.php:235
+msgid "Post-appended audio clip URL"
+msgstr "A végéhez fűzött bejátszás URL-je"
+
+#: ../php/options-panel.php:237
+msgid "Leave this value blank for no post-appended audio"
+msgstr "Üresen hagyva nem lesz bejátszás a végén"
+
+#: ../php/options-panel.php:242
+#: ../php/options-panel.php:247
+msgid "Alternate content for excerpts"
+msgstr "Helyettesítő tartalom a kivonatokhoz"
+
+#: ../php/options-panel.php:244
+msgid "WordPress automatically creates excerpts (summaries) for your posts. These are used by some themes to show on archive pages instead of the full post. By default, WordPress strips all HTML from these excerpts. Here you can choose what Audio Player inserts in excerpts in place of the player."
+msgstr "A WordPress automatikusan létrehoz kivonatokat (összegzést) a bejegyzésekhez, amelyekről alapértelmezetten minden HTML elemet lefejt. Ezeket néhány téma a teljes tartalom helyett jeleníti meg az archív oldalakon. Itt meghatározható, hogy mit szúrjon be az Audio Player a lejátszó helyébe."
+
+#: ../php/options-panel.php:251
+#: ../php/options-panel.php:256
+msgid "Initial volume"
+msgstr "Kezdeti hangerő"
+
+#: ../php/options-panel.php:253
+msgid "This is the volume at which the player defaults to (0 is off, 100 is full volume)"
+msgstr "Ez a lejátszó alapértelmezett hangereje (a 0 kikapcsolt, a 100 teljes hangerőt jelent)"
+
+#: ../php/options-panel.php:260
+msgid "Buffer time"
+msgstr "Pufferméret"
+
+#: ../php/options-panel.php:262
+msgid "If you think your target audience is likely to have a slow internet connection, you can increase the player's buffering time (for standard broadband connections, 5 seconds is enough)"
+msgstr "Ha úgy gondoljuk, hogy a célközönségnek lassú internet kapcsolata lehet, megnövelhetjük a lejátszó pufferméretét (szélessávú kapcsolatokhoz elég az 5 másodperc)"
+
+#: ../php/options-panel.php:265
+msgid "Buffer time (in seconds)"
+msgstr "Pufferméret (másodpercben)"
+
+#: ../php/options-panel.php:269
+#: ../php/options-panel.php:277
+msgid "Check for policy file"
+msgstr "Keressen házirend fájlt"
+
+#: ../php/options-panel.php:271
+msgid "Enable this to tell Audio Player to check for a policy file on the server. This allows Flash to read ID3 tags on remote servers. Only enable this if all your mp3 files are located on a server with a policy file."
+msgstr "Ezzel engedélyezhetjük, hogy az Audio Player házirend fájlt keressen a kiszolgálón, amely lehetővé teszi ID3 címkék beolvasását távoli kiszolgálókon. Akkor engedélyezzük csak, ha az összes mp3 fájl olyan kiszolgálón található, ahol van házirend fájl."
+
+#: ../php/options-panel.php:281
+msgid "Encoding"
+msgstr "Kódolás"
+
+#: ../php/options-panel.php:283
+msgid "Enable this to encode the URLs to your mp3 files. This is the only protection possible against people downloading the mp3 file to their computers."
+msgstr "Ezzel engedélyezhetjük az mp3 fájlokra mutató URL-ek kódolását. Ez az egyetlen lehetséges védelem az mp3 fájlok letöltésének megakadályozására."
+
+#: ../php/options-panel.php:289
+msgid "Encode mp3 URLs"
+msgstr "Az mp3 URL-ek kódolása"
+

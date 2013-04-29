@@ -3,7 +3,7 @@
 Plugin Name: Audio player
 Plugin URI: http://wpaudioplayer.com
 Description: Audio Player is a highly configurable but simple mp3 player for all your audio needs. You can customise the player's colour scheme to match your blog theme, have it automatically show track information from the encoded ID3 tags and more. Go to your Settings page to start configuring it.
-Version: 2.0.4.1
+Version: 2.0.4.6
 Author: Martin Laine
 Author URI: http://www.1pixelout.net
 
@@ -44,11 +44,11 @@ if (!class_exists('AudioPlayer')) {
     class AudioPlayer {
 		// Name for serialized options saved in database
 		var $optionsName = "AudioPlayer_options";
-		
-		var $version = "2.0.4.1";
-		
+
+		var $version = "2.0.4.6";
+
 		var $docURL = "http://wpaudioplayer.com/";
-		
+
 		// Internationalisation
 		var $textDomain = "audio-player";
 		var $languageFileLoaded = false;
@@ -60,10 +60,10 @@ if (!class_exists('AudioPlayer')) {
 		var $audioRoot = "";
 		var $audioAbsPath = "";
 		var $isCustomAudioRoot = false;
-		
+
 		// Options page name
 		var $optionsPageName = "audio-player-options";
-		
+
 		// Colour scheme keys
 		var $colorKeys = array(
 			"bg",
@@ -82,7 +82,7 @@ if (!class_exists('AudioPlayer')) {
 			"tracker",
 			"skip"
 		);
-		
+
 		// Default colour scheme
 		var $defaultColorScheme = array(
 			"bg" => "E5E5E5",
@@ -103,19 +103,19 @@ if (!class_exists('AudioPlayer')) {
 			"pagebg" => "FFFFFF",
 			"transparentpagebg" => true
 		);
-		
+
 		// Declare instances global variable
 		var $instances = array();
-		
+
 		// Used to track what needs to be inserted in the footer
 		var $footerCode = "";
-		
+
 		// Initialise playerID (each instance gets unique ID)
 		var $playerID = 0;
-		
+
 		// Flag for dealing with excerpts
 		var $inExcerpt = false;
-		
+
 		/**
 		 * Constructor
 		 */
@@ -123,25 +123,29 @@ if (!class_exists('AudioPlayer')) {
 			// Get plugin URL and absolute path
 			$this->pluginPath = WP_PLUGIN_DIR . "/" . plugin_basename(dirname(__FILE__));
 			$this->pluginURL = WP_PLUGIN_URL . "/" . plugin_basename(dirname(__FILE__));
-			
+
+			if ($_SERVER["HTTPS"] == "on" || $_SERVER["SERVER_PORT_SECURE"] == "1") {
+				$this->pluginURL = str_replace("http", "https", $this->pluginURL);
+			}
+
 			$this->playerURL = $this->pluginURL . "/assets/player.swf";
-			
+
 			// Load options
 			$this->options = $this->getOptions();
-			
+
 			// Set audio root from options
 			$this->setAudioRoot();
-			
+
 			// Add action and filter hooks to WordPress
-			
+
 			add_action("init", array(&$this, "optionsPanelAction"));
-			
+
 			add_action("admin_menu", array(&$this, "addAdminPages"));
 			add_filter("plugin_action_links", array(&$this, "addConfigureLink"), 10, 2);
-			
+
 			add_action("wp_head", array(&$this, "addHeaderCode"));
 			add_action("wp_footer", array(&$this, "addFooterCode"));
-			
+
 			add_filter("the_content", array(&$this, "processContent"), 2);
 			if (in_array("comments", $this->options["behaviour"])) {
 				add_filter("comment_text", array(&$this, "processContent"));
@@ -150,16 +154,18 @@ if (!class_exists('AudioPlayer')) {
 			add_filter("get_the_excerpt", array(&$this, "outOfExcerpt"), 12);
 			add_filter("the_excerpt", array(&$this, "processContent"));
 			add_filter("the_excerpt_rss", array(&$this, "processContent"));
-			
+
 			add_filter("attachment_fields_to_edit", array(&$this, "insertAudioPlayerButton"), 10, 2);
 			add_filter("media_send_to_editor", array(&$this, "sendToEditor"));
-			
+
 			if ($this->options["disableEnclosures"]) {
 				add_filter("rss_enclosure", array(&$this, "removeEnclosures"));
 				add_filter("atom_enclosure", array(&$this, "removeEnclosures"));
 			}
+
+			add_shortcode("audio", array(&$this, "insertPlayer"));
 		}
-		
+
 		/**
 		 * Removes all enclosures from feeds
 		 * @return empty string
@@ -167,7 +173,7 @@ if (!class_exists('AudioPlayer')) {
 		function removeEnclosures() {
 			return "";
 		}
-		
+
 		/**
 		 * Adds Audio Player options tab to admin menu
 		 */
@@ -180,7 +186,7 @@ if (!class_exists('AudioPlayer')) {
 				wp_enqueue_script("jquery", false, false, "1.2.3");
 			}
 		}
-		
+
 		/**
 		 * Adds a settings link next to Audio Player on the plugins page
 		 */
@@ -195,7 +201,7 @@ if (!class_exists('AudioPlayer')) {
 			}
 			return $links;
 		}
-		
+
 		/**
 		 * Adds subtle plugin credits to WP footer
 		 */
@@ -213,7 +219,7 @@ if (!class_exists('AudioPlayer')) {
 				$this->languageFileLoaded = true;
 			}
 		}
-		
+
 		/**
 		 * Retrieves options from DB. Also sets defaults if options not set
 		 * @return array of options
@@ -244,14 +250,14 @@ if (!class_exists('AudioPlayer')) {
 
 				"colorScheme" => $this->defaultColorScheme
 			);
-			
+
 			$savedOptions = get_option($this->optionsName);
 			if (!empty($savedOptions)) {
 				foreach ($savedOptions as $key => $option) {
 					$options[$key] = $option;
 				}
 			}
-			
+
 			// 1.x version upgrade
 			if (!array_key_exists("version", $options)) {
 				if (get_option("audio_player_web_path")) $options["audioFolder"] = get_option("audio_player_web_path");
@@ -282,23 +288,23 @@ if (!class_exists('AudioPlayer')) {
 				// Upgrade code
 				$options["colorScheme"]["transparentpagebg"] = (bool) $options["colorScheme"]["transparentpagebg"];
 			}
-			
+
 			// Record current version in DB
 			$options["version"] = $this->version;
 
 			// Update DB if necessary
 			update_option($this->optionsName, $options);
-			
+
 			return $options;
 		}
-		
+
 		/**
 		 * Writes options to DB
 		 */
 		function saveOptions() {
 			update_option($this->optionsName, $this->options);
 		}
-		
+
 		/**
 		 * Sets the real audio root from the audio folder option
 		 */
@@ -307,17 +313,17 @@ if (!class_exists('AudioPlayer')) {
 
 			$this->audioAbsPath = "";
 			$this->isCustomAudioRoot = true;
-			
+
 			if (!$this->isAbsoluteURL($this->audioRoot)) {
 				$sysDelimiter = '/';
 				if (strpos(ABSPATH, '\\') !== false) $sysDelimiter = '\\';
 				$this->audioAbsPath = preg_replace('/[\\\\\/]+/', $sysDelimiter, ABSPATH . $this->audioRoot);
-		
+
 				$this->isCustomAudioRoot = false;
 				$this->audioRoot = get_option('siteurl') . $this->audioRoot;
 			}
 		}
-		
+
 		/**
 		 * Builds and returns array of options to pass to Flash player
 		 * @return array
@@ -326,7 +332,7 @@ if (!class_exists('AudioPlayer')) {
 			$playerOptions = array();
 
 			$playerOptions["width"] = $this->options["playerWidth"];
-			
+
 			$playerOptions["animation"] = $this->options["enableAnimation"];
 			$playerOptions["encode"] = $this->options["encodeSource"];
 			$playerOptions["initialvolume"] = $this->options["initialVolume"];
@@ -335,7 +341,7 @@ if (!class_exists('AudioPlayer')) {
 			$playerOptions["buffer"] = $this->options["bufferTime"];
 			$playerOptions["checkpolicy"] = $this->options["checkPolicy"];
 			$playerOptions["rtl"] = $this->options["rtl"];
-			
+
 			return array_merge($playerOptions, $this->options["colorScheme"]);
 		}
 
@@ -343,7 +349,7 @@ if (!class_exists('AudioPlayer')) {
 		// Excerpt helper functions
 		// Sets a flag so we know we are in an automatically created excerpt
 		// ------------------------------------------------------------------------------
-		
+
 		/**
 		 * Sets a flag when getting an excerpt
 		 * @return excerpt text
@@ -352,10 +358,10 @@ if (!class_exists('AudioPlayer')) {
 		function inExcerpt($text = '') {
 			// Only set the flag when the excerpt is empty and WP creates one automatically)
 			if('' == $text) $this->inExcerpt = true;
-		
+
 			return $text;
 		}
-		
+
 		/**
 		 * Resets a flag after getting an excerpt
 		 * @return excerpt text
@@ -363,7 +369,7 @@ if (!class_exists('AudioPlayer')) {
 		 */
 		function outOfExcerpt($text = '') {
 			$this->inExcerpt = false;
-		
+
 			return $text;
 		}
 
@@ -374,34 +380,34 @@ if (!class_exists('AudioPlayer')) {
 		 */
 		function processContent($content = '') {
 			global $comment;
-			
+
 			$this->loadLanguageFile();
-			
+
 			// Reset instance array (this is so we don't insert duplicate players)
 			$this->instances = array();
-		
+
 			// Replace mp3 links (don't do this in feeds and excerpts)
 			if ( !is_feed() && !$this->inExcerpt && in_array( "links", $this->options["behaviour"] ) ) {
 				$pattern = "/<a ([^=]+=['\"][^\"']+['\"] )*href=['\"](([^\"']+\.mp3))['\"]( [^=]+=['\"][^\"']+['\"])*>([^<]+)<\/a>/i";
-				$content = preg_replace_callback( $pattern, array(&$this, "insertPlayer"), $content );
+				$content = preg_replace_callback( $pattern, array(&$this, "parseCallback"), $content );
 			}
-			
+
 			// Replace [audio syntax]
 			if( in_array( "default", $this->options["behaviour"] ) ) {
 				$pattern = "/(<p>)?\[audio:(([^]]+))\](<\/p>)?/i";
-				$content = preg_replace_callback( $pattern, array(&$this, "insertPlayer"), $content );
+				$content = preg_replace_callback( $pattern, array(&$this, "parseCallback"), $content );
 			}
-		
+
 			// Enclosure integration (don't do this for feeds, excerpts and comments)
 			if( !is_feed() && !$this->inExcerpt && !$comment && in_array( "enclosure", $this->options["behaviour"] ) ) {
 				$enclosure = get_enclosed($post_id);
-		
+
 				// Insert intro and outro clips if set
 				$introClip = $this->options["introClip"];
 				if( $introClip != "" ) $introClip .= ",";
 				$outroClip = $this->options["outroClip"];
 				if( $outroClip != "" ) $outroClip = "," . $outroClip;
-		
+
 				if( count($enclosure) > 0 ) {
 					for($i = 0;$i < count($enclosure);$i++) {
 						// Make sure the enclosure is an mp3 file and it hasn't been inserted into the post yet
@@ -415,26 +421,38 @@ if (!class_exists('AudioPlayer')) {
 					}
 				}
 			}
-			
+
 			return $content;
 		}
-		
+
 		/**
 		 * Callback function for preg_replace_callback
 		 * @return string to replace matches with
 		 * @param $matches Array
 		 */
-		function insertPlayer($matches) {
-			// Split options
-			$data = preg_split("/[\|]/", $matches[3]);
-			
+		function parseCallback($matches) {
+			$atts = explode("|", $matches[3]);
+			$data[0] = $atts[0];
+			for ($i = 1; $i < count($atts); $i++) {
+				$pair = explode("=", $atts[$i]);
+				$data[trim($pair[0])] = trim($pair[1]);
+			}
+			return $this->insertPlayer($data);
+		}
+
+		/**
+		 * Inserts player
+		 * @return string to replace matches with
+		 * @param $data Array
+		 */
+		function insertPlayer($data) {
 			$files = array();
-			
+
 			// Alternate content for excerpts (don't do this for feeds)
 			if($this->inExcerpt && !is_feed()) {
 				return $this->options["excerptAlternate"];
 			}
-			
+
 			if (!is_feed()) {
 				// Insert intro clip if set
 				if ( $this->options["introClip"] != "" ) {
@@ -445,31 +463,31 @@ if (!class_exists('AudioPlayer')) {
 					array_push( $files, $afile );
 				}
 			}
-			
+
 			$actualFiles = array();
 			$actualFile = "";
-			
+
 			// Create an array of files to load in player
 			foreach ( explode( ",", trim($data[0]) ) as $afile ) {
 				$afile = trim($afile);
-				
+
 				// Get absolute URLs for relative ones
 				if (!$this->isAbsoluteURL($afile)) {
 					$afile = $this->audioRoot . "/" . $afile;
 				}
-				
+
 				array_push( $actualFiles, $afile );
-				
+
 				array_push( $files, $afile );
-		
+
 				// Add source file to instances already added to the post
 				array_push( $this->instances, $afile );
 			}
-			
+
 			if (count($actualFiles) == 1) {
 				$actualFile = $actualFiles[0];
 			}
-		
+
 			if (!is_feed()) {
 				// Insert outro clip if set
 				if ( $this->options["outroClip"] != "" ) {
@@ -480,18 +498,14 @@ if (!class_exists('AudioPlayer')) {
 					array_push( $files, $afile );
 				}
 			}
-		
+
 			// Build runtime options array
-			$playerOptions = array();
-			for ($i = 1; $i < count($data); $i++) {
-				$pair = explode("=", $data[$i]);
-				$playerOptions[trim($pair[0])] = trim($pair[1]);
-			}
-			
+			array_splice($data, 0, 1);
+
 			// Return player instance code
-			return $this->getPlayer( implode( ",", $files ), $playerOptions, $actualFile );
+			return $this->getPlayer( implode( ",", $files ), $data, $actualFile );
 		}
-		
+
 		/**
 		 * Generic player instance function (returns player widget code to insert)
 		 * @return String the html code to insert
@@ -506,13 +520,13 @@ if (!class_exists('AudioPlayer')) {
 			}
 
 			// Add source to options and encode if necessary
-			
+
 			if ($this->options["encodeSource"]) {
 				$playerOptions["soundFile"] = $this->encodeSource($source);
 			} else {
 				$playerOptions["soundFile"] = $source;
 			}
-			
+
 			if (is_feed()) {
 				// We are in a feed so use RSS alternate content option
 				switch ( $this->options["rssAlternate"] ) {
@@ -527,11 +541,11 @@ if (!class_exists('AudioPlayer')) {
 						}
 						return $links;
 						break;
-			
+
 					case "nothing":
 						return "";
 						break;
-			
+
 					case "custom":
 						return $this->options["rssCustomAlternate"];
 						break;
@@ -544,9 +558,12 @@ if (!class_exists('AudioPlayer')) {
 				} else {
 					$playerCode = '<p class="audioplayer_container"><span style="display:block;padding:5px;border:1px solid #dddddd;background:#f8f8f8" id="' . $playerElementID . '">' . sprintf(__('Audio clip: Adobe Flash Player (version 9 or above) is required to play this audio clip. Download the latest version <a href="%s" title="Download Adobe Flash Player">here</a>. You also need to have JavaScript enabled in your browser.', $this->textDomain), 'http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&amp;promoid=BIOW') . '</span></p>';
 				}
-				
-				$this->footerCode .= 'AudioPlayer.embed("' . $playerElementID . '", ' . $this->php2js($playerOptions) . ');';
-				$this->footerCode .= "\n";
+
+				$playerCode .= '<script type="text/javascript">';
+				//$this->footerCode .= 'AudioPlayer.embed("' . $playerElementID . '", ' . $this->php2js($playerOptions) . ');';
+				//$this->footerCode .= "\n";
+				$playerCode .= 'AudioPlayer.embed("' . $playerElementID . '", ' . $this->php2js($playerOptions) . ');';
+				$playerCode .= '</script>';
 
 				return $playerCode;
 			}
@@ -557,13 +574,13 @@ if (!class_exists('AudioPlayer')) {
 		 */
 		function outputOptionsSubpanel() {
 			$this->loadLanguageFile();
-			
+
 			add_action("in_admin_footer", array(&$this, "addFooterCredits"));
-			
+
 			// Include options panel
 			include($this->pluginPath . "/php/options-panel.php");
 		}
-		
+
 		/**
 		 * Handles submitted options (validates and saves modified options)
 		 */
@@ -572,11 +589,11 @@ if (!class_exists('AudioPlayer')) {
 				if( function_exists('current_user_can') && !current_user_can('manage_options') ) {
 					wp_die(__('You do not have sufficient permissions to access this page.'));
 				}
-				
+
 				// Reset colour scheme back to default values
 				$this->options["colorScheme"] = $this->defaultColorScheme;
 				$this->saveOptions();
-				
+
 				$goback = add_query_arg("updated", "true", "options-general.php?page=" . $this->optionsPageName);
 				wp_redirect($goback);
 				exit();
@@ -584,11 +601,11 @@ if (!class_exists('AudioPlayer')) {
 				if( function_exists('current_user_can') && !current_user_can('manage_options') ) {
 					wp_die(__('You do not have sufficient permissions to access this page.'));
 				}
-				
+
 				if ( function_exists('check_admin_referer') ) {
 					check_admin_referer('audio-player-action');
 				}
-			
+
 				// Set audio web path
 				$_POST['ap_audiowebpath'] = trim($_POST['ap_audiowebpath']);
 				if ($_POST["ap_audiowebpath_iscustom"] != "true") {
@@ -602,7 +619,7 @@ if (!class_exists('AudioPlayer')) {
 				} else if ($this->isAbsoluteURL($_POST['ap_audiowebpath'])) {
 					$this->options["audioFolder"] = $_POST['ap_audiowebpath'];
 				}
-		
+
 				// Update behaviour and rss alternate content options
 				$this->options["encodeSource"] = isset( $_POST["ap_encodeSource"] );
 				$this->options["enableAnimation"] = !isset( $_POST["ap_disableAnimation"] );
@@ -612,25 +629,25 @@ if (!class_exists('AudioPlayer')) {
 				$this->options["rtl"] = isset( $_POST["ap_rtlMode"] );
 				$this->options["enclosuresAtTop"] = isset( $_POST["ap_enclosuresAtTop"] );
 				$this->options["disableEnclosures"] = isset( $_POST["ap_disableEnclosures"] );
-				
+
 				if (isset($_POST['ap_behaviour'])) {
 					$this->options["behaviour"] = $_POST['ap_behaviour'];
 				} else {
 					$this->options["behaviour"] = array();
 				}
-				
+
 				//$this->options["flashAlternate"] = trim(stripslashes($_POST['ap_flashalternate']));
 				$this->options["excerptAlternate"] = trim(stripslashes($_POST['ap_excerptalternate']));
 				$this->options["rssAlternate"] = $_POST['ap_rssalternate'];
 				$this->options["rssCustomAlternate"] = trim(stripslashes($_POST['ap_rsscustomalternate']));
 				$this->options["introClip"] = trim($_POST['ap_audioprefixwebpath']);
 				$this->options["outroClip"] = trim($_POST['ap_audiopostfixwebpath']);
-		
+
 				$_POST['ap_player_width'] = trim($_POST['ap_player_width']);
 				if ( preg_match("/^[0-9]+%?$/", $_POST['ap_player_width']) == 1 ) {
 					$this->options["playerWidth"] = $_POST['ap_player_width'];
 				}
-		
+
 				$_POST['ap_initial_volume'] = trim($_POST['ap_initial_volume']);
 				if ( preg_match("/^[0-9]+$/", $_POST['ap_initial_volume']) == 1 ) {
 					$_POST['ap_initial_volume'] = intval($_POST['ap_initial_volume']);
@@ -638,7 +655,7 @@ if (!class_exists('AudioPlayer')) {
 						$this->options["initialVolume"] = $_POST['ap_initial_volume'];
 					}
 				}
-				
+
 				$_POST['ap_buffertime'] = trim($_POST['ap_buffertime']);
 				if ( preg_match("/^[0-9]+$/", $_POST['ap_buffertime']) == 1 ) {
 					$_POST['ap_buffertime'] = intval($_POST['ap_buffertime']);
@@ -654,12 +671,12 @@ if (!class_exists('AudioPlayer')) {
 						$this->options["colorScheme"][$colorKey] = str_replace( "#", "", $_POST["ap_" . $colorKey . "color"] );
 					}
 				}
-		
+
 				if ( isset( $_POST["ap_pagebgcolor"] ) && preg_match( "/^#[0-9A-Fa-f]{6}$/", $_POST["ap_pagebgcolor"] ) == 1 ) {
 					$this->options["colorScheme"]["pagebg"] = str_replace( "#", "", $_POST['ap_pagebgcolor']);
 				}
 				$this->options["colorScheme"]["transparentpagebg"] = isset( $_POST["ap_transparentpagebg"] );
-				
+
 				$this->saveOptions();
 
 				$goback = add_query_arg("updated", "true", "options-general.php?page=" . $this->optionsPageName);
@@ -667,7 +684,7 @@ if (!class_exists('AudioPlayer')) {
 				exit();
 			}
 		}
-		
+
 		/**
 		 * Inserts Audio Player button into media library popup
 		 * @return the amended form_fields structure
@@ -676,27 +693,27 @@ if (!class_exists('AudioPlayer')) {
 		 */
 		function insertAudioPlayerButton($form_fields, $post) {
 			global $wp_version;
-			
+
 			$file = wp_get_attachment_url($post->ID);
-			
+
 			// Only add the extra button if the attachment is an mp3 file
 			if ($post->post_mime_type == 'audio/mpeg') {
 				$form_fields["url"]["html"] .= "<button type='button' class='button urlaudioplayer audio-player-" . $post->ID . "' value='[audio:" . attribute_escape($file) . "]' title='[audio:" . attribute_escape($file) . "]'>Audio Player</button>";
-				
+
 				if (version_compare($wp_version, "2.7", "<")) {
 					$form_fields["url"]["html"] .= "<script type='text/javascript'>
 					jQuery('button.audio-player-" . $post->ID . "').bind('click', function(){jQuery(this).siblings('input').val(this.value);});
 					</script>\n";
 				}
 			}
-			
+
 			return $form_fields;
 		}
-		
+
 		/**
 		 * Format the html inserted when the Audio Player button is used
 		 * @param $html String
-		 * @return String 
+		 * @return String
 		 */
 		function sendToEditor($html) {
 			if (preg_match("/<a ([^=]+=['\"][^\"']+['\"] )*href=['\"](\[audio:([^\"']+\.mp3)])['\"]( [^=]+=['\"][^\"']+['\"])*>([^<]*)<\/a>/i", $html, $matches)) {
@@ -720,7 +737,7 @@ if (!class_exists('AudioPlayer')) {
 			echo '</script>';
 			echo "\n";
 		}
-		
+
 		/**
 		 * Output necessary stuff to WP footer section (JS calls to embed players)
 		 */
@@ -731,12 +748,12 @@ if (!class_exists('AudioPlayer')) {
 				echo $this->footerCode;
 				echo '</script>';
 				echo "\n";
-				
+
 				// Reset it now
 				$this->footerCode = "";
 			}
 		}
-		
+
 		/**
 		 * Override media-upload script to handle Audio Player inserts from media library
 		 */
@@ -744,7 +761,7 @@ if (!class_exists('AudioPlayer')) {
 			echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/media-upload.js?ver=' . $this->version . '"></script>';
 			echo "\n";
 		}
-		
+
 		/**
 		 * Output necessary stuff to WP admin head section
 		 */
@@ -754,7 +771,7 @@ if (!class_exists('AudioPlayer')) {
 			echo "\n";
 			echo '<link href="' . $this->pluginURL . '/assets/cpicker/colorpicker.css?ver=' . $this->version . '" rel="stylesheet" type="text/css" />';
 			echo "\n";
-			
+
 			// Include jquery library if we are not running WP 2.5 or above
 			if (version_compare($wp_version, "2.5", "<")) {
 				echo '<script type="text/javascript" src="' . $this->pluginURL . '/assets/lib/jquery.js?ver=' . $this->version . '"></script>';
@@ -776,7 +793,7 @@ if (!class_exists('AudioPlayer')) {
 			echo '</script>';
 			echo "\n";
 		}
-		
+
 		/**
 		 * Verifies that the given audio folder exists on the server (Ajax call)
 		 */
@@ -800,11 +817,11 @@ if (!class_exists('AudioPlayer')) {
 		 */
 		function getThemeColors() {
 			$current_theme_data = get_theme(get_current_theme());
-		
+
 			$theme_css = implode('', file( get_theme_root() . "/" . $current_theme_data["Stylesheet"] . "/style.css"));
-		
+
 			preg_match_all('/:[^:,;\{\}].*?#([abcdef1234567890]{3,6})/i', $theme_css, $matches);
-		
+
 			return array_unique($matches[1]);
 		}
 
@@ -834,7 +851,7 @@ if (!class_exists('AudioPlayer')) {
 				$separator = $real_separator;
 			}
 			$js_options .= "}";
-			
+
 			return $js_options;
 		}
 
@@ -854,7 +871,7 @@ if (!class_exists('AudioPlayer')) {
 			}
 			return false;
 		}
-		
+
 		/**
 		 * Encodes the given string
 		 * @return the encoded string
@@ -872,7 +889,7 @@ if (!class_exists('AudioPlayer')) {
 			for ($i = 0; $i < strlen($ntexto)-1; $i = $i + 6) {
 				$string .= $codekey{intval(substr($ntexto, $i, 6), 2)};
 			}
-			
+
 			return $string;
 		}
 	}
@@ -892,7 +909,7 @@ if (class_exists('AudioPlayer')) {
 
 /**
  * Experimental "tag" function for inserting players anywhere (yuk)
- * @return 
+ * @return
  * @param $source Object
  */
 function insert_audio_player($source) {

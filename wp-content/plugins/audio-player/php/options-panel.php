@@ -23,7 +23,7 @@
 		<li id="ap_tab-podcasting"><a href="#ap_panel-podcasting"><?php _e('Podcasting', $this->textDomain) ?></a></li>
 		<li id="ap_tab-advanced" class="last"><a href="#ap_panel-advanced"><?php _e('Advanced', $this->textDomain) ?></a></li>
 	</ul>
-	
+
 	<div class="ap_panel form-table" id="ap_panel-general">
 		<h3><?php _e('How do you want to use the audio player?', $this->textDomain) ?></h3>
 		<p><?php _e('This set of options allows you to customize when your audio players appear.', $this->textDomain) ?></p>
@@ -60,7 +60,7 @@
 				<?php _e('When selected, players will be inserted at the beginning of the post when the enclosure integration option is selected.', $this->textDomain) ?>
 			</li>
 		</ul>
-		
+
 		<h3><?php _e('Default audio folder location', $this->textDomain) ?></h3>
 		<p>
 			<select name="ap_audiowebpath_iscustom" id="ap_audiowebpath_iscustom">
@@ -71,7 +71,7 @@
 		</p>
 
 		<div id="ap_audiofolder-check" class="submit">
-			<input type="button" id="ap_check-button" class="submit" value="<?php _e('Verify', $this->textDomain) ?>" />
+			<input type="button" id="ap_check-button" class="button" value="<?php _e('Verify', $this->textDomain) ?>" />
 			<span id="ap_info-message"><?php _e('Click this button to verify that the audio folder is correctly configured', $this->textDomain) ?></span>
 			<span id="ap_disabled-message"><?php _e('Custom audio folder locations cannot be verified', $this->textDomain) ?></span>
 			<span id="ap_checking-message"><?php _e('Checking...', $this->textDomain) ?></span>
@@ -83,7 +83,7 @@
 			<?php _e('This is the default location for your audio files. When you use the [audio] syntax and don\'t provide an absolute URL for the mp3 file (the full URL including "http://") Audio Player will automatically look for the file in this location. You can set this to a folder located inside your blog folder structure or, alternatively, if you wish to store your audio files outside your blog (maybe even on a different server), choose "Custom" from the drop down and enter the absolute URL to that location.', $this->textDomain); ?>
 		</p>
 	</div>
-	
+
 	<div class="ap_panel form-table" id="ap_panel-colour">
 		<h3><?php _e('Player width', $this->textDomain) ?></h3>
 		<p>
@@ -150,7 +150,7 @@
 			AudioPlayer.embed("ap_demoplayer", {demomode:"yes"});
 			</script>
 		</div>
-		
+
 		<p style="clear:both">
 			<?php _e('Here, you can set the page background of the player. In most cases, simply select "transparent" and it will match the background of your page. In some rare cases, the player will stop working in Firefox if you use the transparent option. If this happens, untick the transparent box and enter the color of your page background in the box below (in the vast majority of cases, it will be white: #FFFFFF).', $this->textDomain) ?>
 		</p>
@@ -162,12 +162,12 @@
 				<?php _e('Transparent', $this->textDomain) ?>
 			</label>
 		</p>
-		
+
 		<p class="submit" id="ap_reset-color">
 			<input type="hidden" name="AudioPlayerReset" id="ap_reset" value="0" />
-			<input type="button" class="submit" id="ap_resetcolor" value="<?php _e('Reset colour scheme', $this->textDomain) ?>" />
+			<input type="button" class="button" id="ap_resetcolor" value="<?php _e('Reset colour scheme', $this->textDomain) ?>" />
 		</p>
-		
+
 		<h3><?php _e('Options', $this->textDomain) ?></h3>
 		<ul class="ap_optionlist">
 			<li>
@@ -196,7 +196,7 @@
 			</li>
 		</ul>
 	</div>
-	
+
 	<div class="ap_panel form-table" id="ap_panel-feed">
 		<h3><?php _e('Feed options', $this->textDomain) ?></h3>
 		<p>
@@ -220,7 +220,7 @@
 			<input type="text" id="ap_rsscustomalternate" name="ap_rsscustomalternate" size="60" value="<?php echo( $this->options["rssCustomAlternate"] ) ?>" />
 		</p>
 	</div>
-	
+
 	<div class="ap_panel form-table" id="ap_panel-podcasting">
 		<h3><?php _e('Pre and Post appended audio clips', $this->textDomain) ?></h3>
 		<p>
@@ -237,7 +237,7 @@
 			<em><?php _e('Leave this value blank for no post-appended audio', $this->textDomain) ?></em>
 		</p>
 	</div>
-	
+
 	<div class="ap_panel form-table" id="ap_panel-advanced">
 		<h3><?php _e('Alternate content for excerpts', $this->textDomain) ?></h3>
 		<p>
@@ -277,7 +277,7 @@
 				<strong><?php _e('Check for policy file', $this->textDomain) ?></strong></label>
 			</li>
 		</ul>
-		
+
 		<h3><?php _e('Encoding', $this->textDomain) ?></h3>
 		<p>
 			<?php _e('Enable this to encode the URLs to your mp3 files. This is the only protection possible against people downloading the mp3 file to their computers.', $this->textDomain) ?>
@@ -289,15 +289,15 @@
 				<strong><?php _e('Encode mp3 URLs', $this->textDomain) ?></strong></label>
 			</li>
 		</ul>
-		
+
 	 	<?php /*
 		<h3><?php _e('Alternate content if Flash is not supported (experimental)', $this->textDomain) ?></h3>
-		
+
 		<p>
 			<textarea name="ap_flashalternate" cols="60" rows="4" style="width: 80%"><?php echo htmlspecialchars($this->options["flashAlternate"]); ?></textarea>
 		</p>
 		*/ ?>
-		
+
 
 		<h3><?php _e('Remove all enclosures from feeds', $this->textDomain) ?></h3>
 		<p>
