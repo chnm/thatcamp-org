@@ -1,16 +1,10 @@
 <?php
 
 /**
- * ADDS A VISIBLE FLAG TO YOUR STAGING/DEV ENVIRONMENTS
- *
- * Drop me in mu-plugins
- */
-
-/**
  * Adds 'local environment' tab
  */
 function bbg_env_type_flag() {
-	if ( defined( 'ENV_TYPE' ) && in_array( ENV_TYPE, array( 'local', 'staging' ) ) ) {
+	if ( defined( 'ENV_TYPE' ) && 'production' != ENV_TYPE ) {
 
 		?>
 
@@ -32,7 +26,7 @@ function bbg_env_type_flag() {
 		</style>
 
 		<div id="env-type-flag">
-			<?php echo 'staging' == ENV_TYPE ? 'STAGING' : 'LOCAL' ?> ENVIRONMENT
+			<?php echo strtoupper( ENV_TYPE ) ?> ENVIRONMENT
 		</div>
 
 		<?php
