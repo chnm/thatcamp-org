@@ -189,8 +189,14 @@ function thatcamp_registrations_add_registration($status = 'pending') {
     $applicant_info = maybe_serialize($applicant_info);
     $applicant_email = isset($_POST['user_email']) ? $_POST['user_email'] : null;
 
-    if (   $registration = thatcamp_registrations_get_registration_by_user_id($user_id)
-        || $registration = thatcamp_registrations_get_registration_by_applicant_email($applicant_email) ) {
+    // Check for an existing registration
+    $user_exists = false;
+    if ( ( ! is_null( $user_id ) && thatcamp_registrations_get_registration_by_user_id( $user_id ) ) ||
+	   thatcamp_registrations_get_registration_by_applicant_email( $applicant_email ) ) {
+	    $user_exists = true;
+    }
+
+    if ( $user_exists ) {
             return 'You have already submitted your registration.';
     } else {
         $reg_id = $wpdb->insert(
@@ -330,8 +336,13 @@ function thatcamp_registrations_process_user($registrationId = null, $role = 'au
 	    // Don't allow Administrators to be demoted. See #24
 	    $wp_user = new WP_User( $userId );
 	    if ( ! is_a( $wp_user, 'WP_User' ) || ! in_array( 'administrator', $wp_user->roles ) ) {
-		    add_existing_user_to_blog(array('user_id' => $userId, 'role' => $role));
-		    thatcamp_registrations_existing_user_welcome_email( $userId );
+		if ( is_multisite() ) {
+			add_existing_user_to_blog(array('user_id' => $userId, 'role' => $role));
+		} else {
+			$wp_user->set_role( $role );
+		}
+
+		thatcamp_registrations_existing_user_welcome_email( $userId );
 	    }
 
         }
@@ -355,7 +366,14 @@ function thatcamp_registrations_process_user($registrationId = null, $role = 'au
             $userInfo['user_email'] = $userEmail;
             $userInfo['user_pass']  = $randomPassword;
             $userId = wp_insert_user( $userInfo );
-            add_user_to_blog($wpdb->blogid, $userId, $role);
+
+	    if ( is_multisite() ) {
+		    add_user_to_blog($wpdb->blogid, $userId, $role);
+	    } else {
+		    $wp_user = new WP_User( $userId );
+		    $wp_user->set_role( $role );
+	    }
+
             thatcamp_registrations_update_user_data($userId, $userInfo);
             wp_new_user_notification($userId, $randomPassword);
         }
@@ -374,7 +392,12 @@ function thatcamp_registrations_maybe_remove_wp_user( $registration_id ) {
 	if ( $registration ) {
 		$userId = $registration->user_id ? $registration->user_id : email_exists($registration->applicant_email);
 		if ( $userId ) {
-			remove_user_from_blog( $userId, get_current_blog_id() );
+			if ( is_multisite() ) {
+				remove_user_from_blog( $userId, get_current_blog_id() );
+			} else {
+				$user = new WP_User( $userId );
+				$user->set_role( 'subscriber' );
+			}
 		}
 	}
 }
@@ -400,7 +423,7 @@ function thatcamp_registrations_get_registration_by_id($id)
 {
     global $wpdb;
     $registrations_table = $wpdb->prefix . "thatcamp_registrations";
-    $sql = "SELECT * from " . $registrations_table . " WHERE id = " .$id;
+    $sql = $wpdb->prepare( "SELECT * from " . $registrations_table . " WHERE id = %d", $id );
     return $wpdb->get_row($sql, OBJECT);
 }
 
@@ -412,7 +435,7 @@ function thatcamp_registrations_get_registration_by_applicant_email($applicant_e
 {
     global $wpdb;
     $registrations_table = $wpdb->prefix . "thatcamp_registrations";
-    $sql = "SELECT * from " . $registrations_table . " WHERE applicant_email = '" .$applicant_email ."'";
+    $sql = $wpdb->prepare( "SELECT * from " . $registrations_table . " WHERE applicant_email = %s", $applicant_email );
     return $wpdb->get_row($sql, OBJECT);
 }
 
@@ -426,7 +449,7 @@ function thatcamp_registrations_get_registration_by_user_id($user_id)
 {
     global $wpdb;
     $registrations_table = $wpdb->prefix . "thatcamp_registrations";
-    $sql = "SELECT * from " . $registrations_table . " WHERE user_id = " .$user_id;
+    $sql = $wpdb->prepare( "SELECT * from " . $registrations_table . " WHERE user_id = %d", $user_id );
     return $wpdb->get_row($sql, OBJECT);
 }
 
@@ -439,7 +462,7 @@ function thatcamp_registrations_delete_registration($id)
     global $wpdb;
     $registrations_table = $wpdb->prefix . "thatcamp_registrations";
     if($id) {
-        $wpdb->query("DELETE FROM " . $registrations_table . " WHERE id = '" . $id . "'");
+        $wpdb->query( $wpdb->prepare( "DELETE FROM " . $registrations_table . " WHERE id = %d", $id ) );
     }
 }
 
@@ -495,7 +518,7 @@ function thatcamp_registrations_options()
 	}
 
 	if ( empty( $options['approved_application_email'] ) ) {
-		$options['approved_application_email'] = sprintf( __( 'Your registration for %1$s has been approved! We\'ll see you at %1$s. You should receive a separate e-mail with your login and password information. Please log in at %2$s and update your profile. It\'s never too early to begin proposing ideas for sessions, either -- see %3$s or %4$s for more information on that. Contact %5$s with any questions.', 'thatcamp-registrations' ),
+		$options['approved_application_email'] = sprintf( __( 'Your registration for %1$s has been approved! We will see you at %1$s. You should receive a separate e-mail with your login and password information. Please log in at %2$s and update your profile. You can begin proposing ideas for sessions at any time -- see %3$s or %4$s for more information on that. Contact %5$s with any questions.', 'thatcamp-registrations' ),
 			get_option( 'blogname' ),
 			wp_login_url(),
 			home_url( 'propose' ),
@@ -504,12 +527,14 @@ function thatcamp_registrations_options()
 		);
 	}
 
-	if ( empty( $options['rejected_application_email'] ) ) {
+/** Removing default rejection text, because rejection by default should not send an email. 
+
+if ( empty( $options['rejected_application_email'] ) ) {
 		$options['rejected_application_email'] = sprintf( __( 'Sorry, but your registration for %1$s has been rejected. Please contact us at thatcamp.org if you think you have received this message in error.', 'thatcamp-registrations' ),
 			get_option( 'blogname' )
 		);
 	}
-
+**/
 	return $options;
 }
 

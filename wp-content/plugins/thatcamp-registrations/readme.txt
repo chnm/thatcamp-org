@@ -1,17 +1,18 @@
 === THATCamp Registrations ===
-Contributors: chnm, jeremyboggs
+Contributors: chnm, jeremyboggs, amandafrench, boonebgorges
 Donate link: http://chnm.gmu.edu/
 Tags: conferences, registration, users, THATCamp
+Version: 2.0
 Requires at least: 3.0
-Tested up to: 3.1
+Tested up to: 3.5
 
 THATCamp Registrations lets you manage event registrations using user accounts in WordPress.
 
 == Description ==
 
-THATCamp Registrations lets you manage event registrations using user accounts in WordPress. The plugin is optimized for WordPress multisite, so each event can have its own blog, while users can register across events without create a new user account.
+THATCamp Registrations lets you manage event registrations for The Humanities and Technology Camp using user accounts in WordPress. The plugin is optimized for WordPress multisite, so each event can have its own blog, while users can register across events without create a new user account. 
 
-Visit [THATCamp Plugins](http://thatcamp.org/plugins "THATCamp Plugins") to learn more about THATCamp Registrations and other plugins by THATCamp.
+Visit [THATCamp.org](http://thatcamp.org "THATCamp.org") to learn more about THATCamp, The Humanities and Technology Camp.
 
 == Installation ==
 
@@ -24,15 +25,15 @@ To install THATCamp Registrations manually, follow these steps.
 
 == Documentation ==
 
-Once THATCamp Registrations has been activated, you can begin using it on your site by followign these steps:
+Once THATCamp Registrations has been activated, you can begin using it on your site by following these steps:
 
 1. Add the [thatcamp-registration] shortcode to your registration page.
-2. Visit Dashboard > TC Registrations to change your settings and start managing registrations for your event.
-
-More documentation can be found at [THATCamp Plugins](http://thatcamp.org/plugins "THATCamp Plugins").
+2. Visit Dashboard > THATCamp Registrations to change your settings and start managing registrations for your event.
 
 == Changelog ==
 
+= 2.0 = 
+* Merges with THATCamp Profile Fields. Adds batch approval for registration. Resolves issues with email notifications to registrants. 
 = 1.0-alpha =
 * Initial public release
 

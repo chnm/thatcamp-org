@@ -255,7 +255,7 @@ class Thatcamp_Registrations_Admin {
 					<option value="mark_approved"><?php _e( 'Mark Approved', 'thatcamp-registrations' ) ?></option>
 					<option value="mark_pending"><?php _e( 'Mark Pending', 'thatcamp-registrations' ) ?></option>
 					<option value="mark_rejected"><?php _e( 'Mark Rejected', 'thatcamp-registrations' ) ?></option>
-					<option value="mark_spam"><?php _e( 'Spam', 'thatcamp-registrations' ) ?></option>
+					<option value="mark_spam"><?php _e( 'Mark Spam', 'thatcamp-registrations' ) ?></option>
 				</select>
 
 				<input type="submit" value="Apply" class="button-secondary action" id="doaction" name="">
@@ -285,7 +285,7 @@ class Thatcamp_Registrations_Admin {
                     <th>Applicant Email</th>
                     <th>Status</th>
                     <th>View</th>
-                    <th>Spam</th>
+                    <th>Mark Spam</th>
                 </tr>
                 </tfoot>
 
@@ -298,7 +298,7 @@ class Thatcamp_Registrations_Admin {
                         <td><?php echo $applicant->user_email; ?></td>
                         <td><?php echo ucwords($registration->status); ?></td>
                         <td><a href="admin.php?page=thatcamp-registrations&amp;id=<?php echo $registration->id; ?>">View Full Registration</a></td>
-                        <td><a href="<?php echo wp_nonce_url( add_query_arg( array( 'id' => $registration->id, 'page' => 'thatcamp-registrations', 'action' => 'spam' ), 'admin.php' ), 'tcspam' ) ?>" class="spam" onclick="return confirm('Are you sure you want to delete this registration as spam? There is no undo.');">Spam</a></td>
+                        <td><a href="<?php echo wp_nonce_url( add_query_arg( array( 'id' => $registration->id, 'page' => 'thatcamp-registrations', 'action' => 'spam' ), 'admin.php' ), 'tcspam' ) ?>" class="button-secondary action" onclick="return confirm('Are you sure you want to delete this registration as spam? There is no undo.');">Mark Spam</a></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -342,6 +342,7 @@ class Thatcamp_Registrations_Admin {
         <div class="wrap">
 
             <h2><?php echo _e('Settings for THATCamp Registrations', 'thatcamp-registrations'); ?></h2>
+            <h3><?php echo _e('To enable registration, create a registration page and type the shortcode [thatcamp-registration] on the page.') ?></h3>
 
             <form action="" method="post">
                 <table class="form-table">
@@ -352,7 +353,7 @@ class Thatcamp_Registrations_Admin {
                                 <option value="0"><?php _e('No'); ?> </option>
                                 <option value="1"<?php if($options['open_registration'] == 1) { echo ' selected="selected"';} ?>><?php _e('Yes'); ?> </option>
                             </select>
-                            <p class="description"><?php _e('Before you open registration, create a page called (for instance) &#8220;Register&#8221; and type &#x5b;thatcamp-registration&#x5d; on that page. When this setting is set to  &#8220;Yes&#8221;, the registration form will be generated on that page. ', 'thatcamp-registrations'); ?></p>
+                            <p class="description"><?php _e('Before you open registration, create a page called (for instance) &#8220;Register&#8221; and type the shortcode &#x5b;thatcamp-registration&#x5d; on the page. When you open registrations, the registration form will be generated on that page. ', 'thatcamp-registrations'); ?></p>
                         </td>
                     </tr>
                     <tr valign="top">
