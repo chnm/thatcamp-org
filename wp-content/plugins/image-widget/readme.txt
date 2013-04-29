@@ -29,7 +29,6 @@ Supported Languages:
 * Japanese
 * Spanish
 * Swedish
-* Czech
 
 If you would like your own language to be supported, please contribute translations here:
 
