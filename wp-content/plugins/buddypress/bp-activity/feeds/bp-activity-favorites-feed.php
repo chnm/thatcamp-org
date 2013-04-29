@@ -12,8 +12,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 header('Content-Type: text/xml; charset=' . get_option( 'blog_charset' ), true );
 header('Status: 200 OK');
-?>
-<?php echo '<?xml version="1.0" encoding="' . get_option( 'blog_charset' ) . '"?'.'>'; ?>
+echo '<?xml version="1.0" encoding="' . get_option( 'blog_charset' ) . '"?'.'>'; ?>
 
 <rss version="2.0"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -31,7 +30,7 @@ header('Status: 200 OK');
 	<description><?php printf( __( '%s - Favorite Activity', 'buddypress' ), bp_get_displayed_user_fullname() ) ?></description>
 	<pubDate><?php echo mysql2date('D, d M Y H:i:s O', bp_activity_get_last_updated(), false); ?></pubDate>
 	<generator>http://buddypress.org/?v=<?php echo BP_VERSION ?></generator>
-	<language><?php echo get_option('rss_language'); ?></language>
+	<language><?php bloginfo_rss( 'language' ); ?></language>
 
 	<?php do_action('bp_activity_favorites_feed_head'); ?>
 

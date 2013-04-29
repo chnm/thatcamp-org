@@ -104,6 +104,10 @@ class BP_Groups_Component extends BP_Component {
 			'functions',
 			'notifications'
 		);
+
+		if ( is_admin() )
+			$includes[] = 'admin';
+
 		parent::includes( $includes );
 	}
 
@@ -130,7 +134,7 @@ class BP_Groups_Component extends BP_Component {
 			'table_name_groupmeta' => $bp->table_prefix . 'bp_groups_groupmeta'
 		);
 
-		// All globals for messaging component.
+		// All globals for groups component.
 		// Note that global_tables is included in this array.
 		$globals = array(
 			'slug'                  => BP_GROUPS_SLUG,
@@ -267,7 +271,7 @@ class BP_Groups_Component extends BP_Component {
 					if ( is_user_logged_in() ) {
 						bp_core_no_access( array(
 							'message'  => __( 'You do not have access to this group.', 'buddypress' ),
-							'root'     => bp_get_group_permalink( $bp->groups->current_group ),
+							'root'     => bp_get_group_permalink( $bp->groups->current_group ) . 'home/',
 							'redirect' => false
 						) );
 
@@ -339,7 +343,7 @@ class BP_Groups_Component extends BP_Component {
 
 		// Add 'Groups' to the main navigation
 		$main_nav = array(
-			'name'                => sprintf( __( 'Groups <span>%d</span>', 'buddypress' ), groups_total_groups_for_user() ),
+			'name'                => sprintf( __( 'Groups <span>%d</span>', 'buddypress' ), bp_get_total_group_count_for_user() ),
 			'slug'                => $this->slug,
 			'position'            => 70,
 			'screen_function'     => 'groups_screen_my_groups',
@@ -347,31 +351,42 @@ class BP_Groups_Component extends BP_Component {
 			'item_css_id'         => $this->id
 		);
 
-		$groups_link = trailingslashit( bp_loggedin_user_domain() . $this->slug );
+		// Determine user to use
+		if ( bp_displayed_user_domain() ) {
+			$user_domain = bp_displayed_user_domain();
+		} elseif ( bp_loggedin_user_domain() ) {
+			$user_domain = bp_loggedin_user_domain();
+		} else {
+			$user_domain = false;
+		}
 
-		// Add the My Groups nav item
-		$sub_nav[] = array(
-			'name'            => __( 'Memberships', 'buddypress' ),
-			'slug'            => 'my-groups',
-			'parent_url'      => $groups_link,
-			'parent_slug'     => $this->slug,
-			'screen_function' => 'groups_screen_my_groups',
-			'position'        => 10,
-			'item_css_id'     => 'groups-my-groups'
-		);
+		if ( !empty( $user_domain ) ) {
+			$groups_link = trailingslashit( $user_domain . $this->slug );
 
-		// Add the Group Invites nav item
-		$sub_nav[] = array(
-			'name'            => __( 'Invitations', 'buddypress' ),
-			'slug'            => 'invites',
-			'parent_url'      => $groups_link,
-			'parent_slug'     => $this->slug,
-			'screen_function' => 'groups_screen_group_invites',
-			'user_has_access' =>  bp_is_my_profile(),
-			'position'        => 30
-		);
+			// Add the My Groups nav item
+			$sub_nav[] = array(
+				'name'            => __( 'Memberships', 'buddypress' ),
+				'slug'            => 'my-groups',
+				'parent_url'      => $groups_link,
+				'parent_slug'     => $this->slug,
+				'screen_function' => 'groups_screen_my_groups',
+				'position'        => 10,
+				'item_css_id'     => 'groups-my-groups'
+			);
 
-		parent::setup_nav( $main_nav, $sub_nav );
+			// Add the Group Invites nav item
+			$sub_nav[] = array(
+				'name'            => __( 'Invitations', 'buddypress' ),
+				'slug'            => 'invites',
+				'parent_url'      => $groups_link,
+				'parent_slug'     => $this->slug,
+				'screen_function' => 'groups_screen_group_invites',
+				'user_has_access' => bp_core_can_edit_settings(),
+				'position'        => 30
+			);
+
+			parent::setup_nav( $main_nav, $sub_nav );
+		}
 
 		if ( bp_is_groups_component() && bp_is_single_item() ) {
 
@@ -456,8 +471,8 @@ class BP_Groups_Component extends BP_Component {
 				);
 			}
 
-			// If the user is a group mod or more, then show the group admin nav item
-			if ( bp_is_item_admin() || bp_is_item_mod() ) {
+			// If the user is a group admin, then show the group admin nav item
+			if ( bp_is_item_admin() ) {
 				$sub_nav[] = array(
 					'name'            => __( 'Admin', 'buddypress' ),
 					'slug'            => 'admin',
@@ -586,5 +601,3 @@ function bp_setup_groups() {
 	$bp->groups = new BP_Groups_Component();
 }
 add_action( 'bp_setup_components', 'bp_setup_groups', 6 );
-
-?>

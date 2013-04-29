@@ -203,6 +203,9 @@ class BP_Core extends BP_Component {
 			$sub_nav = array();
 
 			// Fallback values if xprofile is disabled
+			if ( ! isset( $bp->core->profile ) ) {
+				$bp->core->profile = new stdClass;
+			}
 			$bp->core->profile->slug = 'profile';
 			$bp->active_components[$bp->core->profile->slug] = $bp->core->profile->slug;
 
@@ -219,7 +222,7 @@ class BP_Core extends BP_Component {
 
 			// Add the subnav items to the profile
 			$sub_nav[] = array(
-				'name'            => __( 'Public', 'buddypress' ),
+				'name'            => __( 'View', 'buddypress' ),
 				'slug'            => 'public',
 				'parent_url'      => $profile_link,
 				'parent_slug'     => $bp->core->profile->slug,
@@ -243,5 +246,3 @@ function bp_setup_core() {
 	$bp->core = new BP_Core();
 }
 add_action( 'bp_setup_components', 'bp_setup_core', 2 );
-
-?>

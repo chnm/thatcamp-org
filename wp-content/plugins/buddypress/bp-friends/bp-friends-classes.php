@@ -84,11 +84,11 @@ class BP_Friends_Friendship {
 		global $wpdb, $bp;
 
 		if ( !empty( $friend_requests_only ) ) {
-			$oc_sql = "AND is_confirmed = 0";
-			$friend_sql = $wpdb->prepare ( " WHERE friend_user_id = %d", $user_id );
+			$oc_sql = 'AND is_confirmed = 0';
+			$friend_sql = $wpdb->prepare( " WHERE friend_user_id = %d", $user_id );
 		} else {
-			$oc_sql = "AND is_confirmed = 1";
-			$friend_sql = $wpdb->prepare ( " WHERE (initiator_user_id = %d OR friend_user_id = %d)", $user_id, $user_id );
+			$oc_sql = 'AND is_confirmed = 1';
+			$friend_sql = $wpdb->prepare( " WHERE (initiator_user_id = %d OR friend_user_id = %d)", $user_id, $user_id );
 		}
 
 		$friends = $wpdb->get_results( "SELECT friend_user_id, initiator_user_id FROM {$bp->friends->table_name} {$friend_sql} {$oc_sql} ORDER BY date_created DESC" );
@@ -160,10 +160,10 @@ class BP_Friends_Friendship {
 
 		// filter the user_ids based on the search criteria.
 		if ( bp_is_active( 'xprofile' ) ) {
-			$sql = "SELECT DISTINCT user_id FROM {$bp->profile->table_name_data} WHERE user_id IN ({$fids}) AND value LIKE '{$filter}%%' {$pag_sql}";
+			$sql       = "SELECT DISTINCT user_id FROM {$bp->profile->table_name_data} WHERE user_id IN ({$fids}) AND value LIKE '{$filter}%%' {$pag_sql}";
 			$total_sql = "SELECT COUNT(DISTINCT user_id) FROM {$bp->profile->table_name_data} WHERE user_id IN ({$fids}) AND value LIKE '{$filter}%%'";
 		} else {
-			$sql = "SELECT DISTINCT user_id FROM {$wpdb->usermeta} WHERE user_id IN ({$fids}) AND meta_key = 'nickname' AND meta_value LIKE '{$filter}%%' {$pag_sql}";
+			$sql       = "SELECT DISTINCT user_id FROM {$wpdb->usermeta} WHERE user_id IN ({$fids}) AND meta_key = 'nickname' AND meta_value LIKE '{$filter}%%' {$pag_sql}";
 			$total_sql = "SELECT COUNT(DISTINCT user_id) FROM {$wpdb->usermeta} WHERE user_id IN ({$fids}) AND meta_key = 'nickname' AND meta_value LIKE '{$filter}%%'";
 		}
 
@@ -346,5 +346,3 @@ class BP_Friends_Friendship {
 		}
 	}
 }
-
-?>

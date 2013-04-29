@@ -25,12 +25,10 @@ function bp_version() {
 	 * Return the BuddyPress version
 	 *
 	 * @since BuddyPress (1.6)
-	 * @global BuddyPress $bp
 	 * @return string The BuddyPress version
 	 */
 	function bp_get_version() {
-		global $bp;
-		return $bp->version;
+		return buddypress()->version;
 	}
 
 /**
@@ -46,12 +44,10 @@ function bp_db_version() {
 	 * Return the BuddyPress database version
 	 *
 	 * @since BuddyPress (1.6)
-	 * @global BuddyPress $bp
 	 * @return string The BuddyPress version
 	 */
 	function bp_get_db_version() {
-		global $bp;
-		return $bp->db_version;
+		return buddypress()->db_version;
 	}
 
 /**
@@ -67,38 +63,11 @@ function bp_db_version_raw() {
 	 * Return the BuddyPress database version
 	 *
 	 * @since BuddyPress (1.6)
-	 * @global BuddyPress $bp
 	 * @return string The BuddyPress version direct from the database
 	 */
 	function bp_get_db_version_raw() {
-		global $bp;
-
-		$retval = 0;
-		if ( !empty( $bp->db_version_raw ) )
-			$retval = $bp->db_version_raw;
-
-		return $retval;
-	}
-
-/**
- * Output the BuddyPress maintenance mode
- *
- * @since BuddyPress (1.6)
- * @uses bp_get_maintenance_mode() To get the BuddyPress maintenance mode
- */
-function bp_maintenance_mode() {
-	echo bp_get_maintenance_mode();
-}
-	/**
-	 * Return the BuddyPress maintenance mode
-	 *
-	 * @since BuddyPress (1.6)
-	 * @global BuddyPress $bp
-	 * @return string The BuddyPress maintenance mode
-	 */
-	function bp_get_maintenance_mode() {
-		global $bp;
-		return $bp->maintenance_mode;
+		$bp     = buddypress();
+		return !empty( $bp->db_version_raw ) ? $bp->db_version_raw : 0;
 	}
 
 /** Functions *****************************************************************/
@@ -206,6 +175,87 @@ function bp_core_get_directory_pages() {
 }
 
 /**
+ * Add the pages for the component mapping. These are most often used by components with directories (e.g. groups, members).
+ *
+ * @param array $default_components Optional components to create pages for
+ * @param string $existing 'delete' if you want to delete existing page
+ *   mappings and replace with new ones. Otherwise existing page mappings
+ *   are kept, and the gaps filled in with new pages
+ * @since BuddyPress (1.7)
+ */
+function bp_core_add_page_mappings( $components, $existing = 'keep' ) {
+
+	// Make sure that the pages are created on the root blog no matter which Dashboard the setup is being run on
+	if ( ! bp_is_root_blog() )
+		switch_to_blog( bp_get_root_blog_id() );
+
+	$pages = bp_core_get_directory_page_ids();
+
+	// Delete any existing pages
+	if ( 'delete' == $existing ) {
+		foreach ( (array) $pages as $page_id ) {
+			wp_delete_post( $page_id, true );
+		}
+
+		$pages = array();
+	}
+
+	$page_titles = array(
+		'activity' => _x( 'Activity', 'Page title for the Activity directory.', 'buddypress' ),
+		'groups'   => _x( 'Groups', 'Page title for the Groups directory.', 'buddypress' ),
+		'sites'    => _x( 'Sites', 'Page title for the Sites directory.', 'buddypress' ),
+		'activate' => _x( 'Activate', 'Page title for the user account activation screen.', 'buddypress' ),
+		'members'  => _x( 'Members', 'Page title for the Members directory.', 'buddypress' ),
+		'register' => _x( 'Register', 'Page title for the user registration screen.', 'buddypress' ),
+	);
+
+	$pages_to_create = array();
+	foreach ( array_keys( $components ) as $component_name ) {
+		if ( ! isset( $pages[ $component_name ] ) && isset( $page_titles[ $component_name ] ) ) {
+			$pages_to_create[ $component_name ] = $page_titles[ $component_name ];
+		}
+	}
+
+	// Register and Activate are not components, but need pages when
+	// registration is enabled
+	if ( bp_get_signup_allowed() ) {
+		foreach ( array( 'register', 'activate' ) as $slug ) {
+			if ( ! isset( $pages[ $slug ] ) ) {
+				$pages_to_create[ $slug ] = $page_titles[ $slug ];
+			}
+		}
+	}
+
+	// No need for a Sites directory unless we're on multisite
+	if ( ! is_multisite() && isset( $pages_to_create['sites'] ) ) {
+		unset( $pages_to_create['sites'] );
+	}
+
+	// Members must always have a page, no matter what
+	if ( ! isset( $pages['members'] ) && ! isset( $pages_to_create['members'] ) ) {
+		$pages_to_create['members'] = $page_titles['members'];
+	}
+
+	// Create the pages
+	foreach ( $pages_to_create as $component_name => $page_name ) {
+		$pages[ $component_name ] = wp_insert_post( array(
+			'comment_status' => 'closed',
+			'ping_status'    => 'closed',
+			'post_status'    => 'publish',
+			'post_title'     => $page_name,
+			'post_type'      => 'page',
+		) );
+	}
+
+	// Save the page mapping
+	bp_update_option( 'bp-pages', $pages );
+
+	// If we had to switch_to_blog, go back to the original site.
+	if ( ! bp_is_root_blog() )
+		restore_current_blog();
+}
+
+/**
  * Creates a default component slug from a WP page root_slug
  *
  * Since 1.5, BP components get their root_slug (the slug used immediately
@@ -254,7 +304,7 @@ function bp_core_get_root_domain() {
  * Get the current GMT time to save into the DB
  *
  * @package BuddyPress Core
- * @since 1.2.6
+ * @since BuddyPress (1.2.6)
  */
 function bp_core_current_time( $gmt = true ) {
 	// Get current time in MYSQL format
@@ -335,7 +385,7 @@ function bp_core_render_message() {
 		$type    = ( 'success' == $bp->template_message_type ) ? 'updated' : 'error';
 		$content = apply_filters( 'bp_core_render_message_content', $bp->template_message, $type ); ?>
 
-		<div id="message" class="<?php echo $type; ?>">
+		<div id="message" class="bp-template-notice <?php echo $type; ?>">
 
 			<?php echo $content; ?>
 
@@ -374,11 +424,18 @@ function bp_core_number_format( $number, $decimals = false ) {
  * eg: 4 weeks and 6 days
  *
  * @package BuddyPress Core
+ * @uses apply_filters() Filter 'bp_core_time_since_pre' to bypass BP's calculations
+ * @uses apply_filters() Filter 'bp_core_time_since' to modify BP's calculations
  * @param $older_date int Unix timestamp of date you want to calculate the time since for
  * @param $newer_date int Unix timestamp of date to compare older date to. Default false (current time).
  * @return str The time since.
  */
 function bp_core_time_since( $older_date, $newer_date = false ) {
+
+	// Use this filter to bypass BuddyPress's time_since calculations
+	if ( $pre_value = apply_filters( 'bp_core_time_since_pre', false, $older_date, $newer_date ) ) {
+		return $pre_value;
+	}
 
 	// Setup the strings
 	$unknown_text   = apply_filters( 'bp_core_time_since_unknown_text',   __( 'sometime',  'buddypress' ) );
@@ -468,7 +525,7 @@ function bp_core_time_since( $older_date, $newer_date = false ) {
 		$output = sprintf( $ago_text, $output );
 	}
 
-	return $output;
+	return apply_filters( 'bp_core_time_since', $output, $older_date, $newer_date );
 }
 
 /**
@@ -565,24 +622,21 @@ function bp_core_get_site_path() {
  * Performs a status safe wp_redirect() that is compatible with bp_catch_uri()
  *
  * @package BuddyPress Core
- * @global BuddyPress $bp Makes sure that there are no conflicts with
- *                         status_header() called in bp_core_do_catch_uri()
- * @uses wp_redirect()
+ * @uses wp_safe_redirect()
  */
 function bp_core_redirect( $location, $status = 302 ) {
-	global $bp;
 
-	// On some setups, passing the value of wp_get_referer() may result in an empty value for
-	// $location, which results in an error. Ensure that we have a valid URL.
-	if ( empty( $location ) ) {
+	// On some setups, passing the value of wp_get_referer() may result in an
+	// empty value for $location, which results in an error. Ensure that we
+	// have a valid URL.
+	if ( empty( $location ) )
 		$location = bp_get_root_domain();
-	}
 
-	// Make sure we don't call status_header() in bp_core_do_catch_uri()
-	// as this conflicts with wp_redirect()
-	$bp->no_status_set = true;
+	// Make sure we don't call status_header() in bp_core_do_catch_uri() as this
+	// conflicts with wp_redirect() and wp_safe_redirect().
+	buddypress()->no_status_set = true;
 
-	wp_redirect( $location, $status );
+	wp_safe_redirect( $location, $status );
 	die;
 }
 
@@ -910,16 +964,25 @@ function bp_is_username_compatibility_mode() {
 /**
  * Are we running multiblog mode?
  *
- * Note that BP_ENABLE_MULTIBLOG is different from (but dependent on) WP Multisite. "Multiblog" is
- * a BP setup that allows BP content to be viewed in the theme, and with the URL, of every blog
- * on the network. Thus, instead of having all 'boonebgorges' links go to
+ * Note that BP_ENABLE_MULTIBLOG is different from (but dependent on) WordPress
+ * Multisite. "Multiblog" is BuddyPress setup that allows BuddyPress components
+ * to be viewed on every blog on the network, each with their own settings.
+ *
+ * Thus, instead of having all 'boonebgorges' links go to
  *   http://example.com/members/boonebgorges
- * on the root blog, each blog will have its own version of the same profile content, eg
+ * on the root blog, each blog will have its own version of the same content, eg
  *   http://site2.example.com/members/boonebgorges (for subdomains)
  *   http://example.com/site2/members/boonebgorges (for subdirectories)
  *
- * Multiblog mode is disabled by default, meaning that all BP content must be viewed on the root
- * blog.
+ * Multiblog mode is disabled by default, meaning that all BuddyPress content
+ * must be viewed on the root blog. It's also recommended not to use the
+ * BP_ENABLE_MULTIBLOG constant beyond 1.7, as BuddyPress can now be activated
+ * on individual sites.
+ *
+ * Why would you want to use this? Originally it was intended to allow
+ * BuddyPress to live in mu-plugins and be visible on mapped domains. This is
+ * a very small use-case with large architectural shortcomings, so do not go
+ * down this road unless you specifically need to.
  *
  * @package BuddyPress
  * @since BuddyPress (1.5)
@@ -928,7 +991,23 @@ function bp_is_username_compatibility_mode() {
  * @return bool False when multiblog mode is disabled (default); true when enabled
  */
 function bp_is_multiblog_mode() {
-	return apply_filters( 'bp_is_multiblog_mode', is_multisite() && defined( 'BP_ENABLE_MULTIBLOG' ) && BP_ENABLE_MULTIBLOG );
+
+	// Setup some default values
+	$retval         = false;
+	$is_multisite   = is_multisite();
+	$network_active = bp_is_network_activated();
+	$is_multiblog   = defined( 'BP_ENABLE_MULTIBLOG' ) && BP_ENABLE_MULTIBLOG;
+
+	// Multisite, Network Activated, and Specifically Multiblog
+	if ( $is_multisite && $network_active && $is_multiblog ) {
+		$retval = true;
+
+	// Multisite, but not network activated
+	} elseif ( $is_multisite && ! $network_active ) {
+		$retval = true;
+	}
+
+	return apply_filters( 'bp_is_multiblog_mode', $retval );
 }
 
 /**
@@ -1076,29 +1155,72 @@ function bp_admin_url( $path = '', $scheme = 'admin' ) {
 	function bp_get_admin_url( $path = '', $scheme = 'admin' ) {
 
 		// Links belong in network admin
-		if ( bp_core_do_network_admin() )
+		if ( bp_core_do_network_admin() ) {
 			$url = network_admin_url( $path, $scheme );
 
 		// Links belong in site admin
-		else
+		} else {
 			$url = admin_url( $path, $scheme );
+		}
 
 		return $url;
 	}
 
+/**
+ * Should BuddyPress appear in network admin, or site admin?
+ *
+ * Because BuddyPress can be installed in multiple ways and with multiple
+ * configurations, we need to check a few things to be confident about where
+ * to hook into certain areas of WordPress's admin.
+ *
+ * This function defaults to BuddyPress being network activated.
+ * @since BuddyPress (1.5)
+ *
+ * @uses bp_is_network_activated()
+ * @uses bp_is_multiblog_mode()
+ * @return boolean
+ */
 function bp_core_do_network_admin() {
-	$do_network_admin = false;
 
-	if ( is_multisite() && !bp_is_multiblog_mode() )
-		$do_network_admin = true;
+	// Default
+	$retval = bp_is_network_activated();
 
-	return apply_filters( 'bp_core_do_network_admin', $do_network_admin );
+	if ( bp_is_multiblog_mode() )
+		$retval = false;
+
+	return (bool) apply_filters( 'bp_core_do_network_admin', $retval );
 }
 
 function bp_core_admin_hook() {
 	$hook = bp_core_do_network_admin() ? 'network_admin_menu' : 'admin_menu';
 
 	return apply_filters( 'bp_core_admin_hook', $hook );
+}
+
+/**
+ * Is BuddyPress active at the network level for this network?
+ *
+ * Used to determine admin menu placement, and where settings and options are
+ * stored. If you're being *really* clever and manually pulling BuddyPress in
+ * with an mu-plugin or some other method, you'll want to
+ *
+ * @since BuddyPress (1.7)
+ * @return boolean
+ */
+function bp_is_network_activated() {
+
+	// Default to is_multisite()
+	$retval  = is_multisite();
+
+	// Check the sitewide plugins array
+	$base    = buddypress()->basename;
+	$plugins = get_site_option( 'active_sitewide_plugins' );
+
+	// Override is_multisite() if not network activated
+	if ( ! is_array( $plugins ) || ! isset( $plugins[$base] ) )
+		$retval = false;
+
+	return (bool) apply_filters( 'bp_is_network_activated', $retval );
 }
 
 /** Global Manipulators *******************************************************/
@@ -1190,9 +1312,7 @@ function bp_verify_nonce_request( $action = '', $query_arg = '_wpnonce' ) {
 	// Get the home URL
 	$home_url = strtolower( home_url() );
 
-	// Build the currently requested URL
-	$scheme        = is_ssl() ? 'https://' : 'http://';
-	$requested_url = strtolower( $scheme . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
+	$requested_url = bp_get_requested_url();
 
 	// Check the nonce
 	$result = isset( $_REQUEST[$query_arg] ) ? wp_verify_nonce( $_REQUEST[$query_arg], $action ) : false;
@@ -1206,5 +1326,3 @@ function bp_verify_nonce_request( $action = '', $query_arg = '_wpnonce' ) {
 
 	return $result;
 }
-
-?>

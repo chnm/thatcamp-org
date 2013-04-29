@@ -147,7 +147,7 @@ function bp_activity_action_delete_activity( $activity_id = 0 ) {
 	$activity = new BP_Activity_Activity( $activity_id );
 
 	// Check access
-	if ( empty( $activity->user_id ) || !bp_activity_user_can_delete( $activity ) )
+	if ( ! bp_activity_user_can_delete( $activity ) )
 		return false;
 
 	// Call the action before the delete so plugins can still fetch information about it
@@ -175,7 +175,7 @@ add_action( 'bp_actions', 'bp_activity_action_delete_activity' );
  * @global object $bp BuddyPress global settings
  * @param int $activity_id Activity id to be deleted. Defaults to 0.
  * @return bool False on failure
- * @since 1.6
+ * @since BuddyPress (1.6)
  */
 function bp_activity_action_spam_activity( $activity_id = 0 ) {
 	global $bp;
@@ -325,9 +325,9 @@ function bp_activity_action_post_comment() {
 	}
 
 	$comment_id = bp_activity_new_comment( array(
-		'content' => $content,
+		'content'     => $content,
 		'activity_id' => $activity_id,
-		'parent_id' => $parent_id
+		'parent_id'   => false
 	));
 
 	if ( !empty( $comment_id ) )
@@ -577,7 +577,7 @@ add_action( 'bp_actions', 'bp_activity_action_favorites_feed' );
  * Loads Akismet
  *
  * @global object $bp BuddyPress global settings
- * @since 1.6
+ * @since BuddyPress (1.6)
  */
 function bp_activity_setup_akismet() {
 	global $bp;
@@ -591,11 +591,9 @@ function bp_activity_setup_akismet() {
 		return;
 
 	// Bail if BuddyPress Activity Akismet support has been disabled by another plugin
-	if ( ! apply_filters( 'bp_activity_use_akismet', true ) )
+	if ( ! apply_filters( 'bp_activity_use_akismet', bp_is_akismet_active() ) )
 		return;
 
 	// Instantiate Akismet for BuddyPress
 	$bp->activity->akismet = new BP_Akismet();
 }
-
-?>

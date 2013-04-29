@@ -303,4 +303,112 @@ function bp_activity_screen_notification_settings() {
 }
 add_action( 'bp_notification_settings', 'bp_activity_screen_notification_settings', 1 );
 
-?>
+/** Theme Compatability *******************************************************/
+
+/**
+ * The main theme compat class for BuddyPress Activity
+ *
+ * This class sets up the necessary theme compatability actions to safely output
+ * group template parts to the_title and the_content areas of a theme.
+ *
+ * @since BuddyPress (1.7)
+ */
+class BP_Activity_Theme_Compat {
+
+	/**
+	 * Setup the activity component theme compatibility
+	 *
+	 * @since BuddyPress (1.7)
+	 */
+	public function __construct() {
+		add_action( 'bp_setup_theme_compat', array( $this, 'is_activity' ) );
+	}
+
+	/**
+	 * Are we looking at something that needs activity theme compatability?
+	 *
+	 * @since BuddyPress (1.7)
+	 */
+	public function is_activity() {
+
+		// Bail if not looking at a group
+		if ( ! bp_is_activity_component() )
+			return;
+
+		// Activity Directory
+		if ( ! bp_displayed_user_id() && ! bp_current_action() ) {
+			bp_update_is_directory( true, 'activity' );
+
+			do_action( 'bp_activity_screen_index' );
+
+			add_action( 'bp_template_include_reset_dummy_post_data', array( $this, 'directory_dummy_post' ) );
+			add_filter( 'bp_replace_the_content',                    array( $this, 'directory_content'    ) );
+
+		// Single activity
+		} elseif ( bp_is_single_activity() ) {
+			add_action( 'bp_template_include_reset_dummy_post_data', array( $this, 'single_dummy_post' ) );
+			add_filter( 'bp_replace_the_content',                    array( $this, 'single_dummy_content'    ) );
+		}
+	}
+
+	/** Directory *************************************************************/
+
+	/**
+	 * Update the global $post with directory data
+	 *
+	 * @since BuddyPress (1.7)
+	 */
+	public function directory_dummy_post() {
+		bp_theme_compat_reset_post( array(
+			'ID'             => 0,
+			'post_title'     => __( 'Sitewide Activity', 'buddypress' ),
+			'post_author'    => 0,
+			'post_date'      => 0,
+			'post_content'   => '',
+			'post_type'      => 'bp_activity',
+			'post_status'    => 'publish',
+			'is_archive'     => true,
+			'comment_status' => 'closed'
+		) );
+	}
+
+	/**
+	 * Filter the_content with the groups index template part
+	 *
+	 * @since BuddyPress (1.7)
+	 */
+	public function directory_content() {
+		bp_buffer_template_part( 'activity/index' );
+	}
+
+	/** Single ****************************************************************/
+
+	/**
+	 * Update the global $post with the displayed user's data
+	 *
+	 * @since BuddyPress (1.7)
+	 */
+	public function single_dummy_post() {
+		bp_theme_compat_reset_post( array(
+			'ID'             => 0,
+			'post_title'     => __( 'Activity', 'buddypress' ),
+			'post_author'    => 0,
+			'post_date'      => 0,
+			'post_content'   => '',
+			'post_type'      => 'bp_activity',
+			'post_status'    => 'publish',
+			'is_archive'     => true,
+			'comment_status' => 'closed'
+		) );
+	}
+
+	/**
+	 * Filter the_content with the members' activity permalink template part
+	 *
+	 * @since BuddyPress (1.7)
+	 */
+	public function single_dummy_content() {
+		bp_buffer_template_part( 'activity/single/home' );
+	}
+}
+new BP_Activity_Theme_Compat();

@@ -147,10 +147,6 @@ class BP_XProfile_Data_Template {
 	}
 }
 
-function xprofile_get_profile() {
-	locate_template( array( 'profile/profile-loop.php'), true );
-}
-
 function bp_has_profile( $args = '' ) {
 	global $profile_template;
 
@@ -398,7 +394,7 @@ function bp_the_profile_field_input_name() {
  * 'radio', 'checkbox', and 'datebox'.
  *
  * @package BuddyPress Xprofile
- * @since 1.1
+ * @since BuddyPress (1.1)
  *
  * @uses bp_get_the_profile_field_options()
  *
@@ -414,7 +410,7 @@ function bp_the_profile_field_options( $args = '' ) {
 	 * 'radio', 'checkbox', and 'datebox'.
 	 *
 	 * @package BuddyPress Xprofile
-	 * @since 1.1
+	 * @since BuddyPress (1.1)
 	 *
 	 * @uses BP_XProfile_Field::get_children()
 	 * @uses BP_XProfile_ProfileData::get_value_byid()
@@ -923,4 +919,3 @@ function bp_profile_visibility_radio_buttons() {
 
 		return apply_filters( 'bp_profile_get_visibility_radio_buttons', $html );
 	}
-?>

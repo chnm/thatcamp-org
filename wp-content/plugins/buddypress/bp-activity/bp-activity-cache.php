@@ -3,7 +3,7 @@
 /**
  * Functions related to the BuddyPress Activity component and the WP Cache
  *
- * @since 1.6
+ * @since BuddyPress (1.6)
  */
 
 // Exit if accessed directly
@@ -35,5 +35,3 @@ function bp_activity_update_meta_cache( $activity_ids = false ) {
 	
 	bp_update_meta_cache( $cache_args );
 }
-
-?>

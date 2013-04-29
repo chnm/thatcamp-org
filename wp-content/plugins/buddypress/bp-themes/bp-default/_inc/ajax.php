@@ -9,7 +9,7 @@
  * http://codex.wordpress.org/AJAX_in_Plugins.
  *
  * @package BuddyPress
- * @since 1.2
+ * @since BuddyPress (1.2)
  * @subpackage BP-Default
  */
 
@@ -326,7 +326,7 @@ function bp_dtheme_new_activity_comment() {
 	bp_has_activities( 'display_comments=stream&hide_spam=false&include=' . $comment_id );
 
 	// Swap the current comment with the activity item we just loaded
-	$activities_template->activity = new stdClass();
+	$activities_template->activity                  = new stdClass;
 	$activities_template->activity->id              = $activities_template->activities[0]->item_id;
 	$activities_template->activity->current_comment = $activities_template->activities[0];
 
@@ -370,7 +370,7 @@ function bp_dtheme_delete_activity() {
 	$activity = new BP_Activity_Activity( (int) $_POST['id'] );
 
 	// Check access
-	if ( empty( $activity->user_id ) || ! bp_activity_user_can_delete( $activity ) )
+	if ( ! bp_activity_user_can_delete( $activity ) )
 		exit( '-1' );
 
 	// Call the action before the delete so plugins can still fetch information about it
@@ -881,11 +881,10 @@ function bp_dtheme_ajax_messages_delete() {
  * @since BuddyPress (1.2)
  */
 function bp_dtheme_ajax_messages_autocomplete_results() {
-	global $bp;
 
 	// Include everyone in the autocomplete, or just friends?
 	if ( bp_is_current_component( bp_get_messages_slug() ) )
-		$autocomplete_all = $bp->messages->autocomplete_all;
+		$autocomplete_all = buddypress()->messages->autocomplete_all;
 
 	$pag_page = 1;
 	$limit    = (int) $_GET['limit'] ? $_GET['limit'] : apply_filters( 'bp_autocomplete_max_results', 10 );

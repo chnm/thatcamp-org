@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @package BuddyPress Core
  */
 function bp_core_clear_cache() {
-	global $cache_path, $cache_filename;
+	global $cache_path;
 
 	if ( function_exists( 'prune_super_cache' ) ) {
 		do_action( 'bp_core_clear_cache' );
@@ -30,8 +30,9 @@ function bp_core_clear_cache() {
  * @package BuddyPress Core
  */
 function bp_core_add_global_group() {
-	wp_cache_init();
-	wp_cache_add_global_groups( array( 'bp' ) );
+	if ( function_exists( 'wp_cache_add_global_groups' ) ) {
+		wp_cache_add_global_groups( array( 'bp' ) );
+	}
 }
 add_action( 'bp_loaded', 'bp_core_add_global_group' );
 
@@ -60,7 +61,7 @@ add_action( 'deleted_user',                   'bp_core_clear_member_count_caches
 /**
  * Update the metadata cache for the specified objects.
  *
- * @since 1.6
+ * @since BuddyPress (1.6)
  * @global $wpdb WordPress database object for queries.
  * @param array $args See $defaults definition for more details
  * @return mixed Metadata cache for the specified objects, or false on failure.
@@ -102,7 +103,7 @@ function bp_update_meta_cache( $args = array() ) {
 
 	// Get meta info
 	$id_list   = join( ',', $object_ids );
-	$meta_list = $wpdb->get_results( "SELECT $object_column, meta_key, meta_value FROM $meta_table WHERE $object_column IN ($id_list)", ARRAY_A );
+	$meta_list = $wpdb->get_results( $wpdb->prepare( "SELECT {$object_column}, meta_key, meta_value FROM {$meta_table} WHERE {$object_column} IN ($id_list)", $object_type ), ARRAY_A );
 
 	if ( !empty( $meta_list ) ) {
 		foreach ( $meta_list as $metarow ) {
@@ -132,5 +133,3 @@ function bp_update_meta_cache( $args = array() ) {
 
 	return $cache;
 }
-
-?>

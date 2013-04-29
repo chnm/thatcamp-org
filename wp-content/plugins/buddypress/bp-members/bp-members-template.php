@@ -107,7 +107,7 @@ function bp_signup_slug() {
 	 * @since BuddyPress (1.5)
 	 */
 	function bp_get_signup_slug() {
-		global $bp;
+		$bp = buddypress();
 
 		if ( !empty( $bp->pages->register->slug ) )
 			$slug = $bp->pages->register->slug;
@@ -388,6 +388,47 @@ function bp_member_user_id() {
 	}
 
 /**
+ * Output the row class of a member
+ *
+ * @since BuddyPress (1.7)
+ */
+function bp_member_class() {
+	echo bp_get_member_class();
+}
+	/**
+	 * Return the row class of a member
+	 *
+	 * @global BP_Core_Members_Template $members_template
+	 * @return string Row class of the member
+	 * @since BuddyPress (1.7)
+	 */
+	function bp_get_member_class() {
+		global $members_template;
+
+		$classes      = array();
+		$current_time = bp_core_current_time();
+		$pos_in_loop  = (int) $members_template->current_member;
+
+		// If we've only one group in the loop, don't both with odd and even.
+		if ( $members_template->member_count > 1 )
+			$classes[] = ( $pos_in_loop % 2 ) ? 'even' : 'odd';
+		else
+			$classes[] = 'bp-single-member';
+
+		// Has the user been active recently?
+		if ( ! empty( $members_template->member->last_activity ) ) {
+			if ( strtotime( $current_time ) <= strtotime( '+5 minutes', strtotime( $members_template->member->last_activity ) ) )
+				$classes[] = 'is-online';
+		}
+
+		$classes = apply_filters( 'bp_get_member_class', $classes );
+		$classes = array_merge( $classes, array() );
+		$retval  = 'class="' . join( ' ', $classes ) . '"';
+
+		return $retval;
+	}
+
+/**
  * bp_member_user_nicename()
  *
  * Echo nicename from bp_get_member_user_nicename()
@@ -632,7 +673,7 @@ function bp_member_registered() {
 	function bp_get_member_registered() {
 		global $members_template;
 
-		$registered = esc_attr( bp_core_get_last_activity( $members_template->member->user_registered, __( 'registered %s', 'buddypress' ) ) );
+		$registered = esc_attr( bp_core_get_last_activity( $members_template->member->user_registered, _x( 'registered %s', 'Records the timestamp that the user registered into the activy stream', 'buddypress' ) ) );
 
 		return apply_filters( 'bp_member_last_active', $registered );
 	}
@@ -926,11 +967,22 @@ function bp_loggedin_user_username() {
 
 /** Signup Form ***************************************************************/
 
+/**
+ * Do we have a working custom sign up page?
+ *
+ * @since BuddyPress (1.5)
+ *
+ * @uses bp_get_signup_slug() To make sure there is a slug assigned to the page
+ * @uses bp_locate_template() To make sure a template exists to provide output
+ * @return boolean True if page and template exist, false if not
+ */
 function bp_has_custom_signup_page() {
-	if ( locate_template( array( 'register.php' ), false ) || locate_template( array( '/registration/register.php' ), false ) )
-		return true;
+	static $has_page = false;
 
-	return false;
+	if ( empty( $has_page ) )
+		$has_page = bp_get_signup_slug() && bp_locate_template( array( 'registration/register.php', 'members/register.php', 'register.php' ), false );
+
+	return (bool) $has_page;
 }
 
 /**
@@ -954,17 +1006,33 @@ function bp_signup_page() {
 		return apply_filters( 'bp_get_signup_page', $page );
 	}
 
+/**
+ * Do we have a working custom activation page?
+ *
+ * @since BuddyPress (1.5)
+ *
+ * @uses bp_get_activate_slug() To make sure there is a slug assigned to the page
+ * @uses bp_locate_template() To make sure a template exists to provide output
+ * @return boolean True if page and template exist, false if not
+ */
+function bp_has_custom_activation_page() {
+	static $has_page = false;
+
+	if ( empty( $has_page ) )
+		$has_page = bp_get_activate_slug() && bp_locate_template( array( 'registration/activate.php', 'members/activate.php', 'activate.php' ), false );
+
+	return (bool) $has_page;
+}
+
 function bp_activation_page() {
 	echo bp_get_activation_page();
 }
 	function bp_get_activation_page() {
-		global $bp;
-
-		// Check the global directly to make sure the WP page exists in $bp->pages
-		if ( !empty( $bp->pages->activate->slug ) )
-			$page = trailingslashit( bp_get_root_domain() . '/' . $bp->pages->activate->slug );
-		else
+		if ( bp_has_custom_activation_page() ) {
+			$page = trailingslashit( bp_get_root_domain() . '/' . bp_get_activate_slug() );
+		} else {
 			$page = trailingslashit( bp_get_root_domain() ) . 'wp-activate.php';
+		}
 
 		return apply_filters( 'bp_get_activation_page', $page );
 	}
@@ -1184,5 +1252,3 @@ function bp_members_component_link( $component, $action = '', $query_args = '', 
 		if ( !empty( $url ) )
 			return $url;
 	}
-
-?>

@@ -425,7 +425,8 @@ function xprofile_avatar_upload_dir( $directory = false, $user_id = 0 ) {
  * @package BuddyPress Core
  */
 function xprofile_sync_wp_profile( $user_id = 0 ) {
-	global $bp, $wpdb;
+
+	$bp = buddypress();
 
 	if ( !empty( $bp->site_options['bp-disable-profile-sync'] ) && (int) $bp->site_options['bp-disable-profile-sync'] )
 		return true;
@@ -451,16 +452,19 @@ function xprofile_sync_wp_profile( $user_id = 0 ) {
 	bp_update_user_meta( $user_id, 'first_name', $firstname );
 	bp_update_user_meta( $user_id, 'last_name',  $lastname  );
 
+	global $wpdb;
+
 	$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->users} SET display_name = %s WHERE ID = %d", $fullname, $user_id ) );
 }
 add_action( 'xprofile_updated_profile', 'xprofile_sync_wp_profile' );
-add_action( 'bp_core_signup_user', 'xprofile_sync_wp_profile' );
+add_action( 'bp_core_signup_user',      'xprofile_sync_wp_profile' );
+add_action( 'bp_core_activated_user',   'xprofile_sync_wp_profile' );
 
 
 /**
  * Syncs the standard built in WordPress profile data to XProfile.
  *
- * @since 1.2.4
+ * @since BuddyPress (1.2.4)
  * @package BuddyPress Core
  */
 function xprofile_sync_bp_profile( &$errors, $update, &$user ) {
@@ -507,17 +511,19 @@ function bp_xprofile_delete_meta( $object_id, $object_type, $meta_key = false, $
 
 	$meta_key = preg_replace( '|[^a-z0-9_]|i', '', $meta_key );
 
-	if ( is_array( $meta_value ) || is_object( $meta_value ) )
+	if ( is_array( $meta_value ) || is_object( $meta_value ) ) {
 		$meta_value = serialize( $meta_value );
+	}
 
 	$meta_value = trim( $meta_value );
 
-	if ( !$meta_key )
+	if ( empty( $meta_key ) ) {
 		$wpdb->query( $wpdb->prepare( "DELETE FROM {$bp->profile->table_name_meta} WHERE object_id = %d AND object_type = %s", $object_id, $object_type ) );
-	else if ( $meta_value )
+	} elseif ( !empty( $meta_value ) ) {
 		$wpdb->query( $wpdb->prepare( "DELETE FROM {$bp->profile->table_name_meta} WHERE object_id = %d AND object_type = %s AND meta_key = %s AND meta_value = %s", $object_id, $object_type, $meta_key, $meta_value ) );
-	else
+	} else {
 		$wpdb->query( $wpdb->prepare( "DELETE FROM {$bp->profile->table_name_meta} WHERE object_id = %d AND object_type = %s AND meta_key = %s", $object_id, $object_type, $meta_key ) );
+	}
 
 	// Delete the cached object
 	wp_cache_delete( 'bp_xprofile_meta_' . $object_type . '_' . $object_id . '_' . $meta_key, 'bp' );
@@ -648,7 +654,7 @@ function bp_xprofile_get_visibility_levels() {
  * profile viewer). Then, based on that relationship, we query for the set of fields that should
  * be excluded from the profile loop.
  *
- * @since 1.6
+ * @since BuddyPress (1.6)
  * @see BP_XProfile_Group::get()
  * @uses apply_filters() Filter bp_xprofile_get_hidden_fields_for_user to modify visibility levels,
  *   or if you have added your own custom levels
@@ -671,26 +677,34 @@ function bp_xprofile_get_hidden_fields_for_user( $displayed_user_id = 0, $curren
 	}
 
 	// @todo - This is where you'd swap out for current_user_can() checks
+	$hidden_levels = $hidden_fields = array();
 
+	// Current user is logged in
 	if ( $current_user_id ) {
-		// Current user is logged in
+
+		// If you're viewing your own profile, nothing's private
 		if ( $displayed_user_id == $current_user_id ) {
-			// If you're viewing your own profile, nothing's private
-			$hidden_fields = array();
 
-		} else if ( bp_is_active( 'friends' ) && friends_check_friendship( $displayed_user_id, $current_user_id ) ) {
-			// If the current user and displayed user are friends, show all
-			$hidden_fields = array();
+		// If the current user and displayed user are friends, show all
+		} elseif ( bp_is_active( 'friends' ) && friends_check_friendship( $displayed_user_id, $current_user_id ) ) {
+			if ( ! bp_current_user_can( 'bp_moderate' ) )
+				$hidden_levels[] = 'adminsonly';
 
+			$hidden_fields = bp_xprofile_get_fields_by_visibility_levels( $displayed_user_id, $hidden_levels );
+
+		// current user is logged-in but not friends, so exclude friends-only
 		} else {
-			// current user is logged-in but not friends, so exclude friends-only
 			$hidden_levels = array( 'friends' );
+
+			if ( ! bp_current_user_can( 'bp_moderate' ) )
+				$hidden_levels[] = 'adminsonly';
+
 			$hidden_fields = bp_xprofile_get_fields_by_visibility_levels( $displayed_user_id, $hidden_levels );
 		}
 
+	// Current user is not logged in, so exclude friends-only, loggedin, and adminsonly.
 	} else {
-		// Current user is not logged in, so exclude friends-only and loggedin
-		$hidden_levels = array( 'friends', 'loggedin' );
+		$hidden_levels = array( 'friends', 'loggedin', 'adminsonly', );
 		$hidden_fields = bp_xprofile_get_fields_by_visibility_levels( $displayed_user_id, $hidden_levels );
 	}
 
@@ -700,11 +714,11 @@ function bp_xprofile_get_hidden_fields_for_user( $displayed_user_id = 0, $curren
 /**
  * Fetch an array of the xprofile fields that a given user has marked with certain visibility levels
  *
- * @since 1.6
+ * @since BuddyPress (1.6)
  * @see bp_xprofile_get_hidden_fields_for_user()
  *
  * @param int $user_id The id of the profile owner
- * @param array $levels An array of visibility levels ('public', 'friends', 'loggedin', etc) to be
+ * @param array $levels An array of visibility levels ('public', 'friends', 'loggedin', 'adminsonly' etc) to be
  *    checked against
  * @return array $field_ids The fields that match the requested visibility levels for the given user
  */
@@ -742,6 +756,3 @@ function bp_xprofile_get_fields_by_visibility_levels( $user_id, $levels = array(
 
 	return $field_ids;
 }
-
-
-?>

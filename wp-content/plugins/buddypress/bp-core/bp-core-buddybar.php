@@ -373,8 +373,8 @@ function bp_nav_item_has_subnav( $nav_item = '' ) {
  * Removes a navigation item from the sub navigation array used in BuddyPress themes.
  *
  * @package BuddyPress Core
- * @param $parent_id The id of the parent navigation item.
- * @param $slug The slug of the sub navigation item.
+ * @param int $parent_id The id of the parent navigation item.
+ * @param bool|string false if the parent item doesn't exist or $slug the slug of the sub navigation item.
  */
 function bp_core_remove_nav_item( $parent_id ) {
 	global $bp;
@@ -385,6 +385,9 @@ function bp_core_remove_nav_item( $parent_id ) {
 			bp_core_remove_subnav_item( $parent_id, $subnav_item['slug'] );
 		}
 	}
+
+	if ( empty( $bp->bp_nav[ $parent_id ] ) )
+		return false;
 
 	if ( $function = $bp->bp_nav[$parent_id]['screen_function'] ) {
 		if ( is_object( $function[0] ) ) {
@@ -480,7 +483,7 @@ function bp_adminbar_login_menu() {
 
 	// Show "Sign Up" link if user registrations are allowed
 	if ( bp_get_signup_allowed() )
-		echo '<li class="bp-signup no-arrow"><a href="' . bp_get_signup_page(false) . '">' . __( 'Sign Up', 'buddypress' ) . '</a></li>';
+		echo '<li class="bp-signup no-arrow"><a href="' . bp_get_signup_page() . '">' . __( 'Sign Up', 'buddypress' ) . '</a></li>';
 }
 
 
@@ -610,83 +613,24 @@ function bp_get_admin_bar_pref( $context, $user = 0 ) {
 }
 
 /**
- * Handle the Toolbar/BuddyBar business
- *
- * @since BuddyPress (1.2)
- *
- * @global string $wp_version
- * @uses bp_get_option()
- * @uses is_user_logged_in()
- * @uses bp_use_wp_admin_bar()
- * @uses show_admin_bar()
- * @uses add_action() To hook 'bp_adminbar_logo' to 'bp_adminbar_logo'
- * @uses add_action() To hook 'bp_adminbar_login_menu' to 'bp_adminbar_menus'
- * @uses add_action() To hook 'bp_adminbar_account_menu' to 'bp_adminbar_menus'
- * @uses add_action() To hook 'bp_adminbar_thisblog_menu' to 'bp_adminbar_menus'
- * @uses add_action() To hook 'bp_adminbar_random_menu' to 'bp_adminbar_menus'
- * @uses add_action() To hook 'bp_core_admin_bar' to 'wp_footer'
- * @uses add_action() To hook 'bp_core_admin_bar' to 'admin_footer'
- */
-function bp_core_load_admin_bar() {
-	global $wp_version;
-
-	// Don't show if Toolbar is disabled for non-logged in users
-	if ( (int) bp_get_option( 'hide-loggedout-adminbar' ) && ! is_user_logged_in() )
-		return;
-
-	// Show the WordPress Toolbar
-	if ( bp_use_wp_admin_bar() && $wp_version >= 3.1 ) {
-
-		// Respect user's Toolbar display preferences
-		if ( is_user_logged_in() && ( bp_get_admin_bar_pref( 'front', bp_loggedin_user_id() ) || bp_get_admin_bar_pref( 'admin', bp_loggedin_user_id() ) ) )
-			return;
-
-		show_admin_bar( true );
-
-	// Hide the WordPress Toolbar
-	} elseif ( !bp_use_wp_admin_bar() ) {
-		// Keep the WP Toolbar from loading
-		show_admin_bar( false );
-
-		// Actions used to build the BP Toolbar
-		add_action( 'bp_adminbar_logo',  'bp_adminbar_logo' );
-		add_action( 'bp_adminbar_menus', 'bp_adminbar_login_menu',         2   );
-		add_action( 'bp_adminbar_menus', 'bp_adminbar_account_menu',       4   );
-		add_action( 'bp_adminbar_menus', 'bp_adminbar_thisblog_menu',      6   );
-		add_action( 'bp_adminbar_menus', 'bp_adminbar_random_menu',        100 );
-
-		// Actions used to append BP Toolbar to footer
-		add_action( 'wp_footer',    'bp_core_admin_bar', 8 );
-		add_action( 'admin_footer', 'bp_core_admin_bar'    );
-	}
-}
-
-/**
  * Handle the BuddyBar CSS
  */
 function bp_core_load_buddybar_css() {
+	global $wp_styles;
+
 	if ( bp_use_wp_admin_bar() || ( (int) bp_get_option( 'hide-loggedout-adminbar' ) && !is_user_logged_in() ) || ( defined( 'BP_DISABLE_ADMIN_BAR' ) && BP_DISABLE_ADMIN_BAR ) )
 		return;
 
+	$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
 	if ( file_exists( get_stylesheet_directory() . '/_inc/css/adminbar.css' ) ) // Backwards compatibility
 		$stylesheet = get_stylesheet_directory_uri() . '/_inc/css/adminbar.css';
-	elseif ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG )
-		$stylesheet = BP_PLUGIN_URL . 'bp-core/css/buddybar.dev.css';
 	else
-		$stylesheet = BP_PLUGIN_URL . 'bp-core/css/buddybar.css';
+		$stylesheet = BP_PLUGIN_URL . "bp-core/css/buddybar{$min}.css";
 
-	wp_enqueue_style( 'bp-admin-bar', apply_filters( 'bp_core_admin_bar_css', $stylesheet ), array(), bp_get_version() );
-
-	if ( !is_rtl() )
-		return;
-
-	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG )
-		$stylesheet = BP_PLUGIN_URL . 'bp-core/css/buddybar-rtl.dev.css';
-	else
-		$stylesheet = BP_PLUGIN_URL . 'bp-core/css/buddybar-rtl.css';
-
-	wp_enqueue_style( 'bp-admin-bar-rtl', apply_filters( 'bp_core_buddybar_rtl_css', $stylesheet ), array( 'bp-admin-bar' ), bp_get_version() );
+	wp_enqueue_style( 'bp-admin-bar', apply_filters( 'bp_core_buddybar_rtl_css', $stylesheet ), array(), bp_get_version() );
+	$wp_styles->add_data( 'bp-admin-bar', 'rtl', true );
+	if ( $min )
+		$wp_styles->add_data( 'bp-admin-bar', 'suffix', $min );
 }
 add_action( 'bp_init', 'bp_core_load_buddybar_css' );
-
-?>

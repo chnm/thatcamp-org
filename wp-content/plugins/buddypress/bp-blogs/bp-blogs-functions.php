@@ -48,25 +48,85 @@ function bp_blogs_record_existing_blogs() {
 	// Truncate user blogs table and re-record.
 	$wpdb->query( "TRUNCATE TABLE {$bp->blogs->table_name}" );
 
-	if ( is_multisite() )
-		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM {$wpdb->base_prefix}blogs WHERE mature = 0 AND spam = 0 AND deleted = 0" );
-	else
+	if ( is_multisite() ) {
+		$blog_ids = $wpdb->get_col( $wpdb->prepare( "SELECT blog_id FROM {$wpdb->base_prefix}blogs WHERE mature = 0 AND spam = 0 AND deleted = 0 AND site_id = %d" ), $wpdb->siteid );
+	} else {
 		$blog_ids = 1;
+	}
 
-	if ( $blog_ids ) {
+	if ( !empty( $blog_ids ) ) {
 		foreach( (array) $blog_ids as $blog_id ) {
-			$users 		= get_users( array( 'blog_id' => $blog_id ) );
-			$subscribers 	= get_users( array( 'blog_id' => $blog_id, 'role' => 'subscriber' ) );
+			$users       = get_users( array( 'blog_id' => $blog_id ) );
+			$subscribers = get_users( array( 'blog_id' => $blog_id, 'role' => 'subscriber' ) );
 
 			if ( !empty( $users ) ) {
 				foreach ( (array) $users as $user ) {
 					// Don't record blogs for subscribers
-					if ( !in_array( $user, $subscribers ) )
+					if ( !in_array( $user, $subscribers ) ) {
 						bp_blogs_record_blog( $blog_id, $user->ID, true );
+					}
 				}
 			}
 		}
 	}
+}
+
+/**
+ * Makes BuddyPress aware of sites that shouldn't be recorded to activity streams.
+ *
+ * If $user_id is provided, you can restrict site from being recordable
+ * only to particular users.
+ * 
+ * @since BuddyPress (1.7)
+ * @param int $blog_id
+ * @param int|null $user_id
+ * @uses apply_filters()
+ * @return bool True if blog is recordable, false elsewhere
+ */
+function bp_blogs_is_blog_recordable( $blog_id, $user_id = 0 ) {
+
+	$recordable_globally = apply_filters( 'bp_blogs_is_blog_recordable', true, $blog_id );
+
+	if ( !empty( $user_id ) ) {
+		$recordable_for_user = apply_filters( 'bp_blogs_is_blog_recordable_for_user', $recordable_globally, $blog_id, $user_id );
+	} else {
+		$recordable_for_user = $recordable_globally;
+	}
+
+	if ( !empty( $recordable_for_user ) ) {
+		return true;
+	}
+
+	return $recordable_globally;
+}
+
+/**
+ * Makes BuddyPress aware of sites that activities shouldn't be trackable.
+ * If $user_id is provided, the developer can restrict site from
+ * being trackable only to particular users.
+ * 
+ * @since BuddyPress (1.7)
+ * @param int $blog_id
+ * @param int|null $user_id
+ * @uses bp_blogs_is_blog_recordable
+ * @uses apply_filters()
+ * @return bool True if blog is trackable, false elsewhere
+ */
+function bp_blogs_is_blog_trackable( $blog_id, $user_id = 0 ) {
+
+	$trackable_globally = apply_filters( 'bp_blogs_is_blog_trackable', bp_blogs_is_blog_recordable( $blog_id, $user_id ), $blog_id );
+
+	if ( !empty( $user_id ) ) {
+		$trackable_for_user = apply_filters( 'bp_blogs_is_blog_trackable_for_user', $trackable_globally, $blog_id, $user_id );
+	} else {
+		$trackable_for_user = $trackable_globally;
+	}
+
+	if ( !empty( $trackable_for_user ) ) {
+		return $trackable_for_user;
+	}
+
+	return $trackable_globally;
 }
 
 /**
@@ -83,7 +143,11 @@ function bp_blogs_record_blog( $blog_id, $user_id, $no_activity = false ) {
 	if ( empty( $user_id ) )
 		$user_id = bp_loggedin_user_id();
 
-	$name = get_blog_option( $blog_id, 'blogname' );
+	// If blog is not recordable, do not record the activity.
+	if ( !bp_blogs_is_blog_recordable( $blog_id, $user_id ) )
+		return false;
+
+	$name        = get_blog_option( $blog_id, 'blogname' );
 	$description = get_blog_option( $blog_id, 'blogdescription' );
 
 	if ( empty( $name ) )
@@ -103,7 +167,8 @@ function bp_blogs_record_blog( $blog_id, $user_id, $no_activity = false ) {
 	$is_private = !apply_filters( 'bp_is_new_blog_public', !$is_private );
 
 	// Only record this activity if the blog is public
-	if ( !$is_private && !$no_activity ) {
+	if ( !$is_private && !$no_activity && bp_blogs_is_blog_trackable( $blog_id, $user_id ) ) {
+
 		// Record this in activity streams
 		bp_blogs_record_activity( array(
 			'user_id'      => $recorded_blog->user_id,
@@ -152,6 +217,10 @@ function bp_blogs_record_post( $post_id, $post, $user_id = 0 ) {
 	$post_id = (int) $post_id;
 	$blog_id = (int) $wpdb->blogid;
 
+	// If blog is not trackable, do not record the activity.
+	if ( ! bp_blogs_is_blog_trackable( $blog_id, $user_id ) )
+		return false;
+
 	if ( !$user_id )
 		$user_id = (int) $post->post_author;
 
@@ -175,7 +244,7 @@ function bp_blogs_record_post( $post_id, $post, $user_id = 0 ) {
 
 	if ( 'publish' == $post->post_status && empty( $post->post_password ) ) {
 		if ( $is_blog_public || !is_multisite() ) {
-			
+
 			// Record this in activity streams
 			$post_permalink   = get_permalink( $post_id );
 
@@ -194,7 +263,7 @@ function bp_blogs_record_post( $post_id, $post, $user_id = 0 ) {
 						'secondary_id' => $post_id,
 					)
 				) );
-				
+
 				if ( !empty( $existing['activities'] ) ) {
 					return;
 				}
@@ -259,7 +328,12 @@ function bp_blogs_record_comment( $comment_id, $is_approved = true ) {
 	$user_id = (int) $user->ID;
 
 	// Get blog and post data
-	$blog_id                = get_current_blog_id();
+	$blog_id = get_current_blog_id();
+
+	// If blog is not trackable, do not record the activity.
+	if ( ! bp_blogs_is_blog_trackable( $blog_id, $user_id ) )
+		return false;
+
 	$recorded_comment->post = get_post( $recorded_comment->comment_post_ID );
 
 	if ( empty( $recorded_comment->post ) || is_wp_error( $recorded_comment->post ) )
@@ -313,7 +387,7 @@ add_action( 'edit_comment', 'bp_blogs_record_comment', 10    );
 
 function bp_blogs_add_user_to_blog( $user_id, $role = false, $blog_id = 0 ) {
 	global $wpdb;
-	
+
 	if ( empty( $blog_id ) ) {
 		$blog_id = isset( $wpdb->blogid ) ? $wpdb->blogid : bp_get_root_blog_id();
 	}
@@ -353,7 +427,7 @@ add_action( 'remove_user_from_blog', 'bp_blogs_remove_user_from_blog', 10, 2 );
  * Blogs component. This function bumps the priority of the core function, so that we can be sure
  * that the Blogs component is loaded first. See http://buddypress.trac.wordpress.org/ticket/3916
  *
- * @since 1.6
+ * @since BuddyPress (1.6)
  */
 function bp_blogs_maybe_add_user_to_blog() {
 	if ( ! is_multisite() )
@@ -440,7 +514,7 @@ add_action( 'delete_comment', 'bp_blogs_remove_comment' );
  * @param string $new_status New comment status.
  * @param string $old_status Previous comment status.
  * @param object $comment Comment data.
- * @since 1.6
+ * @since BuddyPress (1.6)
  */
 function bp_blogs_transition_activity_status( $new_status, $old_status, $comment ) {
 	global $bp;
@@ -608,7 +682,7 @@ function bp_blogs_get_blogmeta( $blog_id, $meta_key = '') {
 			wp_cache_set( 'bp_blogs_blogmeta_' . $blog_id . '_' . $meta_key, $metas, 'bp' );
 		}
 	} else {
-		$metas = $wpdb->get_col( $wpdb->prepare("SELECT meta_value FROM {$bp->blogs->table_name_blogmeta} WHERE blog_id = %d", $blog_id) );
+		$metas = $wpdb->get_col( $wpdb->prepare("SELECT meta_value FROM {$bp->blogs->table_name_blogmeta} WHERE blog_id = %d", $blog_id ) );
 	}
 
 	if ( empty($metas) ) {
@@ -670,5 +744,3 @@ function bp_blogs_remove_data( $user_id ) {
 add_action( 'wpmu_delete_user',  'bp_blogs_remove_data' );
 add_action( 'delete_user',       'bp_blogs_remove_data' );
 add_action( 'bp_make_spam_user', 'bp_blogs_remove_data' );
-
-?>

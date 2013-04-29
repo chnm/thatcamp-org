@@ -203,7 +203,7 @@ class BP_Messages_Thread {
 		else if ( $type == 'read' )
 			$type_sql = " AND unread_count = 0 ";
 
-		return (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(thread_id) FROM {$bp->messages->table_name_recipients} WHERE user_id = %d AND is_deleted = 0$exclude_sender $type_sql", $user_id ) );
+		return (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(thread_id) FROM {$bp->messages->table_name_recipients} WHERE user_id = %d AND is_deleted = 0{$exclude_sender} {$type_sql}", $user_id ) );
 	}
 
 	function user_is_sender( $thread_id ) {
@@ -365,6 +365,8 @@ class BP_Messages_Message {
 		if ( !$wpdb->query( $wpdb->prepare( "INSERT INTO {$bp->messages->table_name_messages} ( thread_id, sender_id, subject, message, date_sent ) VALUES ( %d, %d, %s, %s, %s )", $this->thread_id, $this->sender_id, $this->subject, $this->message, $this->date_sent ) ) )
 			return false;
 
+		$this->id = $wpdb->insert_id;
+
 		$recipient_ids = array();
 
 		if ( $new_thread ) {
@@ -382,7 +384,6 @@ class BP_Messages_Message {
 			$wpdb->query( $wpdb->prepare( "UPDATE {$bp->messages->table_name_recipients} SET unread_count = unread_count + 1, sender_only = 0, is_deleted = 0 WHERE thread_id = %d AND user_id != %d", $this->thread_id, $this->sender_id ) );
 		}
 
-		$this->id = $wpdb->insert_id;
 		messages_remove_callback_values();
 
 		do_action_ref_array( 'messages_message_after_save', array( &$this ) );
@@ -555,8 +556,7 @@ class BP_Messages_Notice {
 		global $wpdb, $bp;
 
 		$notice_id = $wpdb->get_var( "SELECT id FROM {$bp->messages->table_name_notices} WHERE is_active = 1" );
+
 		return new BP_Messages_Notice( $notice_id );
 	}
 }
-
-?>

@@ -201,10 +201,11 @@ class BP_Blogs_Blog {
 			$user_id = bp_displayed_user_id();
 
 		// If the user is logged in return the blog count including their hidden blogs.
-		if ( ( is_user_logged_in() && $user_id == bp_loggedin_user_id() ) || bp_current_user_can( 'bp_moderate' ) )
-			return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(DISTINCT b.blog_id) FROM {$bp->blogs->table_name} b LEFT JOIN {$wpdb->base_prefix}blogs wb ON b.blog_id = wb.blog_id WHERE wb.deleted = 0 AND wb.spam = 0 AND wb.mature = 0 AND wb.archived = '0' AND user_id = %d", $user_id) );
-		else
-			return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(DISTINCT b.blog_id) FROM {$bp->blogs->table_name} b LEFT JOIN {$wpdb->base_prefix}blogs wb ON b.blog_id = wb.blog_id WHERE wb.public = 1 AND wb.deleted = 0 AND wb.spam = 0 AND wb.mature = 0 AND wb.archived = '0' AND user_id = %d", $user_id) );
+		if ( ( is_user_logged_in() && $user_id == bp_loggedin_user_id() ) || bp_current_user_can( 'bp_moderate' ) ) {
+			return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(DISTINCT b.blog_id) FROM {$bp->blogs->table_name} b LEFT JOIN {$wpdb->base_prefix}blogs wb ON b.blog_id = wb.blog_id WHERE wb.deleted = 0 AND wb.spam = 0 AND wb.mature = 0 AND wb.archived = '0' AND user_id = %d", $user_id ) );
+		} else {
+			return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(DISTINCT b.blog_id) FROM {$bp->blogs->table_name} b LEFT JOIN {$wpdb->base_prefix}blogs wb ON b.blog_id = wb.blog_id WHERE wb.public = 1 AND wb.deleted = 0 AND wb.spam = 0 AND wb.mature = 0 AND wb.archived = '0' AND user_id = %d", $user_id ) );
+		}
 	}
 
 	function search_blogs( $filter, $limit = null, $page = null ) {
@@ -215,8 +216,9 @@ class BP_Blogs_Blog {
 		if ( !bp_current_user_can( 'bp_moderate' ) )
 			$hidden_sql = "AND wb.public = 1";
 
-		if ( $limit && $page )
+		if ( $limit && $page ) {
 			$pag_sql = $wpdb->prepare( " LIMIT %d, %d", intval( ( $page - 1 ) * $limit), intval( $limit ) );
+		}
 
 		$paged_blogs = $wpdb->get_results( "SELECT DISTINCT bm.blog_id FROM {$bp->blogs->table_name_blogmeta} bm LEFT JOIN {$wpdb->base_prefix}blogs wb ON bm.blog_id = wb.blog_id WHERE ( ( bm.meta_key = 'name' OR bm.meta_key = 'description' ) AND bm.meta_value LIKE '%%$filter%%' ) {$hidden_sql} AND wb.mature = 0 AND wb.spam = 0 AND wb.archived = '0' AND wb.deleted = 0 ORDER BY meta_value ASC{$pag_sql}" );
 		$total_blogs = $wpdb->get_var( "SELECT COUNT(DISTINCT bm.blog_id) FROM {$bp->blogs->table_name_blogmeta} bm LEFT JOIN {$wpdb->base_prefix}blogs wb ON bm.blog_id = wb.blog_id WHERE ( ( bm.meta_key = 'name' OR bm.meta_key = 'description' ) AND bm.meta_value LIKE '%%$filter%%' ) {$hidden_sql} AND wb.mature = 0 AND wb.spam = 0 AND wb.archived = '0' AND wb.deleted = 0 ORDER BY meta_value ASC" );
@@ -261,7 +263,35 @@ class BP_Blogs_Blog {
 
 		for ( $i = 0, $count = count( $paged_blogs ); $i < $count; ++$i ) {
 			$blog_prefix = $wpdb->get_blog_prefix( $paged_blogs[$i]->blog_id );
-			$paged_blogs[$i]->latest_post = $wpdb->get_row( "SELECT post_title, guid FROM {$blog_prefix}posts WHERE post_status = 'publish' AND post_type = 'post' AND id != 1 ORDER BY id DESC LIMIT 1" );
+			$paged_blogs[$i]->latest_post = $wpdb->get_row( "SELECT ID, post_content, post_title, post_excerpt, guid FROM {$blog_prefix}posts WHERE post_status = 'publish' AND post_type = 'post' AND id != 1 ORDER BY id DESC LIMIT 1" );
+			$images = array();
+
+			// Add URLs to any Featured Image this post might have
+			if ( ! empty( $paged_blogs[$i]->latest_post ) && has_post_thumbnail( $paged_blogs[$i]->latest_post->ID ) ) {
+
+				// Grab 4 sizes of the image. Thumbnail.
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $paged_blogs[$i]->latest_post->ID ), 'thumbnail', false );
+				if ( ! empty( $image ) )
+					$images['thumbnail'] = $image[0];
+
+				// Medium
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $paged_blogs[$i]->latest_post->ID ), 'medium', false );
+				if ( ! empty( $image ) )
+					$images['medium'] = $image[0];
+
+				// Large
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $paged_blogs[$i]->latest_post->ID ), 'large', false );
+				if ( ! empty( $image ) )
+					$images['large'] = $image[0];
+
+				// Post thumbnail
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $paged_blogs[$i]->latest_post->ID ), 'post-thumbnail', false );
+				if ( ! empty( $image ) )
+					$images['post-thumbnail'] = $image[0];
+
+				// Add the images to the latest_post object
+				$paged_blogs[$i]->latest_post->images = $images;
+			}
 		}
 
 		/* Fetch the blog description for each blog (as it may be empty we can't fetch it in the main query). */
@@ -286,5 +316,3 @@ class BP_Blogs_Blog {
 		return false;
 	}
 }
-
-?>

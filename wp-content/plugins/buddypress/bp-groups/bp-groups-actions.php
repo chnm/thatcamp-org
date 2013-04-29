@@ -173,6 +173,10 @@ function groups_action_create_group() {
 
 	// Group avatar is handled separately
 	if ( 'group-avatar' == bp_get_groups_current_create_step() && isset( $_POST['upload'] ) ) {
+		if ( ! isset( $bp->avatar_admin ) ) {
+			$bp->avatar_admin = new stdClass();
+		}
+
 		if ( !empty( $_FILES ) && isset( $_POST['upload'] ) ) {
 			// Normally we would check a nonce here, but the group save nonce is used instead
 
@@ -196,7 +200,7 @@ function groups_action_create_group() {
 		}
 	}
 
- 	bp_core_load_template( apply_filters( 'groups_template_create_group', 'groups/create' ) );
+	bp_core_load_template( apply_filters( 'groups_template_create_group', 'groups/create' ) );
 }
 add_action( 'bp_actions', 'groups_action_create_group' );
 
@@ -321,5 +325,3 @@ function groups_action_group_feed() {
 	die;
 }
 add_action( 'bp_actions', 'groups_action_group_feed' );
-
-?>

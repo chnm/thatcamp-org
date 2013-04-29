@@ -52,7 +52,7 @@ class BP_Activity_Component extends BP_Component {
 
 		// Load Akismet support if Akismet is configured
 		$akismet_key = bp_get_option( 'wordpress_api_key' );
-		if ( defined( 'AKISMET_VERSION' ) && ( !empty( $akismet_key ) || defined( 'WPCOM_API_KEY' ) ) && apply_filters( 'bp_activity_use_akismet', true ) )
+		if ( defined( 'AKISMET_VERSION' ) && ( !empty( $akismet_key ) || defined( 'WPCOM_API_KEY' ) ) && apply_filters( 'bp_activity_use_akismet', bp_is_akismet_active() ) )
 			$includes[] = 'akismet';
 
 		if ( is_admin() )
@@ -128,12 +128,13 @@ class BP_Activity_Component extends BP_Component {
 			return;
 
 		// Determine user to use
-		if ( bp_displayed_user_domain() )
+		if ( bp_displayed_user_domain() ) {
 			$user_domain = bp_displayed_user_domain();
-		elseif ( bp_loggedin_user_domain() )
+		} elseif ( bp_loggedin_user_domain() ) {
 			$user_domain = bp_loggedin_user_domain();
-		else
+		} else {
 			return;
+		}
 
 		// User link
 		$activity_link = trailingslashit( $user_domain . $this->slug );
@@ -323,7 +324,7 @@ class BP_Activity_Component extends BP_Component {
 	/**
 	 * Setup the actions
 	 *
-	 * @since 1.6
+	 * @since BuddyPress (1.6)
 	 */
 	 function setup_actions() {
 		// Spam prevention
@@ -339,5 +340,3 @@ function bp_setup_activity() {
 	$bp->activity = new BP_Activity_Component();
 }
 add_action( 'bp_setup_components', 'bp_setup_activity', 6 );
-
-?>

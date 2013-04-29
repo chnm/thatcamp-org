@@ -71,28 +71,48 @@ add_action( 'bp_setup_globals', 'bp_core_define_slugs', 11 );
 /**
  * Return an array of users IDs based on the parameters passed.
  *
+ * Since BuddyPress 1.7, bp_core_get_users() uses BP_User_Query. If you
+ * need backward compatibility with BP_Core_User::get_users(), filter the
+ * bp_use_legacy_user_query value, returning true.
+ *
  * @package BuddyPress Core
  */
 function bp_core_get_users( $args = '' ) {
 
-	$defaults = array(
-		'type'            => 'active', // active, newest, alphabetical, random or popular
-		'user_id'         => false,    // Pass a user_id to limit to only friend connections for this user
-		'exclude'         => false,    // Users to exclude from results
-		'search_terms'    => false,    // Limit to users that match these search terms
-		'meta_key'        => false,    // Limit to users who have this piece of usermeta
-		'meta_value'      => false,    // With meta_key, limit to users where usermeta matches this value
+	// Parse the user query arguments
+	$params = wp_parse_args( $args, array(
+		'type'            => 'active',     // active, newest, alphabetical, random or popular
+		'user_id'         => false,        // Pass a user_id to limit to only friend connections for this user
+		'exclude'         => false,        // Users to exclude from results
+		'search_terms'    => false,        // Limit to users that match these search terms
+		'meta_key'        => false,        // Limit to users who have this piece of usermeta
+		'meta_value'      => false,        // With meta_key, limit to users where usermeta matches this value
+		'include'         => false,        // Pass comma separated list of user_ids to limit to only these users
+		'per_page'        => 20,           // The number of results to return per page
+		'page'            => 1,            // The page to return if limiting per page
+		'populate_extras' => true,         // Fetch the last active, where the user is a friend, total friend count, latest update
+		'count_total'     => 'count_query' // What kind of total user count to do, if any. 'count_query', 'sql_calc_found_rows', or false
+	) );
 
-		'include'         => false,    // Pass comma separated list of user_ids to limit to only these users
-		'per_page'        => 20,       // The number of results to return per page
-		'page'            => 1,        // The page to return if limiting per page
-		'populate_extras' => true,     // Fetch the last active, where the user is a friend, total friend count, latest update
-	);
+	// For legacy users. Use of BP_Core_User::get_users() is deprecated.
+	if ( apply_filters( 'bp_use_legacy_user_query', false, __FUNCTION__, $params ) ) {
+		extract( $params, EXTR_SKIP );
+		$retval = BP_Core_User::get_users( $type, $per_page, $page, $user_id, $include, $search_terms, $populate_extras, $exclude, $meta_key, $meta_value );
 
-	$params = wp_parse_args( $args, $defaults );
-	extract( $params, EXTR_SKIP );
+	// Default behavior as of BuddyPress 1.7
+	} else {
 
-	return apply_filters( 'bp_core_get_users', BP_Core_User::get_users( $type, $per_page, $page, $user_id, $include, $search_terms, $populate_extras, $exclude, $meta_key, $meta_value ), $params );
+		// Get users like we were asked to do...
+		$users = new BP_User_Query( $params );
+
+		// ...but reformat the results to match bp_core_get_users() behavior.
+		$retval = array(
+			'users' => array_values( $users->results ),
+			'total' => $users->total_users
+		);
+	}
+
+	return apply_filters( 'bp_core_get_users', $retval, $params );
 }
 
 /**
@@ -171,7 +191,7 @@ function bp_core_get_userid( $username ) {
 	if ( empty( $username ) )
 		return false;
 
-	return apply_filters( 'bp_core_get_userid', $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->users WHERE user_login = %s", $username ) ) );
+	return apply_filters( 'bp_core_get_userid', $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM {$wpdb->users} WHERE user_login = %s", $username ) ), $username );
 }
 
 /**
@@ -189,7 +209,7 @@ function bp_core_get_userid_from_nicename( $user_nicename ) {
 	if ( empty( $user_nicename ) )
 		return false;
 
-	return apply_filters( 'bp_core_get_userid_from_nicename', $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->users WHERE user_nicename = %s", $user_nicename ) ) );
+	return apply_filters( 'bp_core_get_userid_from_nicename', $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM {$wpdb->users} WHERE user_nicename = %s", $user_nicename ) ) );
 }
 
 /**
@@ -478,7 +498,7 @@ function bp_core_get_total_member_count() {
 
 	if ( !$count = wp_cache_get( 'bp_total_member_count', 'bp' ) ) {
 		$status_sql = bp_core_get_status_sql();
-		$count = $wpdb->get_var( "SELECT COUNT(ID) FROM $wpdb->users WHERE {$status_sql}" );
+		$count = $wpdb->get_var( "SELECT COUNT(ID) FROM {$wpdb->users} WHERE {$status_sql}" );
 		wp_cache_set( 'bp_total_member_count', $count, 'bp' );
 	}
 
@@ -496,15 +516,15 @@ function bp_core_get_active_member_count() {
 	if ( !$count = get_transient( 'bp_active_member_count' ) ) {
 		// Avoid a costly join by splitting the lookup
 		if ( is_multisite() ) {
-			$sql = "SELECT ID FROM $wpdb->users WHERE (user_status != 0 OR deleted != 0 OR user_status != 0)";
+			$sql = "SELECT ID FROM {$wpdb->users} WHERE (user_status != 0 OR deleted != 0 OR user_status != 0)";
 		} else {
-			$sql = "SELECT ID FROM $wpdb->users WHERE user_status != 0";
+			$sql = "SELECT ID FROM {$wpdb->users} WHERE user_status != 0";
 		}
 
-		$exclude_users = $wpdb->get_col( $sql );
+		$exclude_users     = $wpdb->get_col( $sql );
 		$exclude_users_sql = !empty( $exclude_users ) ? "AND user_id NOT IN (" . implode( ',', wp_parse_id_list( $exclude_users ) ) . ")" : '';
+		$count             = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(user_id) FROM {$wpdb->usermeta} WHERE meta_key = %s {$exclude_users_sql}", bp_get_user_meta_key( 'last_activity' ) ) );
 
-		$count = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(user_id) FROM {$wpdb->usermeta} WHERE meta_key = %s {$exclude_users_sql}", bp_get_user_meta_key( 'last_activity' ) ) );
 		set_transient( 'bp_active_member_count', $count );
 	}
 
@@ -782,29 +802,44 @@ function bp_core_get_all_posts_for_user( $user_id = 0 ) {
  */
 function bp_core_delete_account( $user_id = 0 ) {
 
+	// Use logged in user ID if none is passed
 	if ( empty( $user_id ) )
 		$user_id = bp_loggedin_user_id();
 
-	// Make sure account deletion is not disabled
-	if ( !bp_current_user_can( 'delete_users' ) && bp_disable_account_deletion() )
+	// Bail if account deletion is disabled
+	if ( bp_disable_account_deletion() )
 		return false;
 
 	// Site admins cannot be deleted
 	if ( is_super_admin( $user_id ) )
 		return false;
 
+	// Extra checks if user is not deleting themselves
+	if ( bp_loggedin_user_id() !== absint( $user_id ) ) {
+
+		// Bail if current user cannot delete any users
+		if ( ! bp_current_user_can( 'delete_users' ) ) {
+			return false;
+		}
+
+		// Bail if current user cannot delete this user
+		if ( ! current_user_can_for_blog( bp_get_root_blog_id(), 'delete_user', $user_id ) ) {
+			return false;
+		}
+	}
+
 	do_action( 'bp_core_pre_delete_account', $user_id );
 
 	// Specifically handle multi-site environment
 	if ( is_multisite() ) {
-		require( ABSPATH . '/wp-admin/includes/ms.php'   );
-		require( ABSPATH . '/wp-admin/includes/user.php' );
+		require_once( ABSPATH . '/wp-admin/includes/ms.php'   );
+		require_once( ABSPATH . '/wp-admin/includes/user.php' );
 
 		$retval = wpmu_delete_user( $user_id );
 
 	// Single site user deletion
 	} else {
-		require( ABSPATH . '/wp-admin/includes/user.php' );
+		require_once( ABSPATH . '/wp-admin/includes/user.php' );
 		$retval = wp_delete_user( $user_id );
 	}
 
@@ -849,7 +884,7 @@ add_action( 'pre_user_login', 'bp_core_strip_username_spaces' );
  * @param obj $user Either the WP_User object or the WP_Error object
  * @return obj If the user is not a spammer, return the WP_User object. Otherwise a new WP_Error object.
  *
- * @since 1.1.2
+ * @since BuddyPress (1.1.2)
  */
 function bp_core_boot_spammer( $user ) {
 	// check to see if the $user has already failed logging in, if so return $user as-is
@@ -978,7 +1013,7 @@ add_filter( 'pre_update_site_option_illegal_names', 'bp_core_get_illegal_names',
  *   - If there's an email domain blacklist, is the current domain on it?
  *   - If there's an email domain whitelest, is the current domain on it?
  *
- * @since 1.6.2
+ * @since BuddyPress (1.6.2)
  *
  * @param string $user_email The email being checked
  * @return bool|array True if the address passes all checks; otherwise an array
@@ -1014,13 +1049,39 @@ function bp_core_validate_email_address( $user_email ) {
 
 	$retval = ! empty( $errors ) ? $errors : true;
 
-	return apply_filters( 'bp_core_validate_email_address', $retval, $user_email );
+	return $retval;
+}
+
+/**
+ * Add the appropriate errors to a WP_Error object, given results of a validation test
+ *
+ * Functions like bp_core_validate_email_address() return a structured array
+ * of error codes. bp_core_add_validation_error_messages() takes this array and
+ * parses, adding the appropriate error messages to the WP_Error object.
+ *
+ * @since BuddyPress (1.7)
+ * @see bp_core_validate_email_address()
+ *
+ * @param obj $errors WP_Error object
+ * @param array $validation_results The return value of a validation function
+ *   like bp_core_validate_email_address()
+ */
+function bp_core_add_validation_error_messages( WP_Error $errors, $validation_results ) {
+	if ( ! empty( $validation_results['invalid'] ) )
+		$errors->add( 'user_email', __( 'Please check your email address.', 'buddypress' ) );
+
+	if ( ! empty( $validation_results['domain_banned'] ) )
+		$errors->add( 'user_email',  __( 'Sorry, that email address is not allowed!', 'buddypress' ) );
+
+	if ( ! empty( $validation_results['domain_not_allowed'] ) )
+		$errors->add( 'user_email', __( 'Sorry, that email address is not allowed!', 'buddypress' ) );
+
+	if ( ! empty( $validation_results['in_use'] ) )
+		$errors->add( 'user_email', __( 'Sorry, that email address is already used!', 'buddypress' ) );
 }
 
 /**
  * Validate a user name and email address when creating a new user.
- *
- * @todo Refactor to use bp_core_validate_email_address()
  *
  * @param string $user_name Username to validate
  * @param string $user_email Email address to validate
@@ -1029,7 +1090,6 @@ function bp_core_validate_email_address( $user_email ) {
 function bp_core_validate_user_signup( $user_name, $user_email ) {
 
 	$errors = new WP_Error();
-	$user_email = sanitize_email( $user_email );
 
 	// Apply any user_login filters added by BP or other plugins before validating
 	$user_name = apply_filters( 'pre_user_login', $user_name );
@@ -1058,29 +1118,16 @@ function bp_core_validate_user_signup( $user_name, $user_email ) {
 	if ( $match[0] == $user_name )
 		$errors->add( 'user_name', __( 'Sorry, usernames must have letters too!', 'buddypress' ) );
 
-	if ( !is_email( $user_email ) )
-		$errors->add( 'user_email', __( 'Please check your email address.', 'buddypress' ) );
-
-	if ( function_exists( 'is_email_address_unsafe' ) && is_email_address_unsafe( $user_email ) )
-		$errors->add( 'user_email',  __( 'Sorry, that email address is not allowed!', 'buddypress' ) );
-
-	$limited_email_domains = get_site_option( 'limited_email_domains', 'buddypress' );
-
-	if ( is_array( $limited_email_domains ) && empty( $limited_email_domains ) == false ) {
-		$emaildomain = substr( $user_email, 1 + strpos( $user_email, '@' ) );
-
-		if ( in_array( $emaildomain, (array) $limited_email_domains ) == false )
-			$errors->add( 'user_email', __( 'Sorry, that email address is not allowed!', 'buddypress' ) );
-	}
-
 	// Check if the username has been used already.
 	if ( username_exists( $user_name ) )
 		$errors->add( 'user_name', __( 'Sorry, that username already exists!', 'buddypress' ) );
 
-	// Check if the email address has been used already.
-	if ( email_exists( $user_email ) )
-		$errors->add( 'user_email', __( 'Sorry, that email address is already used!', 'buddypress' ) );
+	// Validate the email address and process the validation results into
+	// error messages
+	$validate_email = bp_core_validate_email_address( $user_email );
+	bp_core_add_validation_error_messages( $errors, $validate_email );
 
+	// Assemble the return array
 	$result = array( 'user_name' => $user_name, 'user_email' => $user_email, 'errors' => $errors );
 
 	// Apply WPMU legacy filter
@@ -1307,10 +1354,8 @@ function bp_core_signup_send_validation_email( $user_id, $user_email, $key ) {
 	$activate_url = bp_get_activation_page() ."?key=$key";
 	$activate_url = esc_url( $activate_url );
 
-	$from_name = ( '' == bp_get_option( 'blogname' ) ) ? __( 'BuddyPress', 'buddypress' ) : esc_html( bp_get_option( 'blogname' ) );
-
 	$message = sprintf( __( "Thanks for registering! To complete the activation of your account please click the following link:\n\n%1\$s\n\n", 'buddypress' ), $activate_url );
-	$subject = '[' . $from_name . '] ' . __( 'Activate Your Account', 'buddypress' );
+	$subject = bp_get_email_subject( array( 'text' => __( 'Activate Your Account', 'buddypress' ) ) );
 
 	// Send the message
 	$to      = apply_filters( 'bp_core_signup_send_validation_email_to',     $user_email, $user_id                );
@@ -1332,7 +1377,7 @@ function bp_core_signup_send_validation_email( $user_id, $user_email, $key ) {
  * @param obj $user Either the WP_User object or the WP_Error object
  * @return obj If the user is not a spammer, return the WP_User object. Otherwise a new WP_Error object.
  *
- * @since 1.2.2
+ * @since BuddyPress (1.2.2)
  */
 function bp_core_signup_disable_inactive( $user ) {
 	// check to see if the $user has already failed logging in, if so return $user as-is
@@ -1354,19 +1399,17 @@ add_filter( 'authenticate', 'bp_core_signup_disable_inactive', 30 );
  * Kill the wp-signup.php if custom registration signup templates are present
  */
 function bp_core_wpsignup_redirect() {
-	$action = !empty( $_GET['action'] ) ? $_GET['action'] : '';
 
-	if ( is_admin() || is_network_admin() )
+	// Bail in admin or if custom signup page is broken
+	if ( is_admin() || ! bp_has_custom_signup_page() )
 		return;
+
+	$action = !empty( $_GET['action'] ) ? $_GET['action'] : '';
 
 	// Not at the WP core signup page and action is not register
 	if ( ! empty( $_SERVER['SCRIPT_NAME'] ) && false === strpos( $_SERVER['SCRIPT_NAME'], 'wp-signup.php' ) && ( 'register' != $action ) )
 		return;
 
-	// Redirect to sign-up page
-	if ( locate_template( array( 'registration/register.php' ), false ) || locate_template( array( 'register.php' ), false ) )
-		bp_core_redirect( bp_get_signup_page() );
+	bp_core_redirect( bp_get_signup_page() );
 }
 add_action( 'bp_init', 'bp_core_wpsignup_redirect' );
-
-?>
