@@ -4,10 +4,10 @@ Plugin Name: Popular Widget
 Plugin URI: http://xparkmedia.com/plugins/popular-widget/
 Description: Display most viewed, most commented and tags in one widget (with tabs)
 Author: Hafid R. Trujillo Huizar
-Version: 1.5.7
+Version: 1.5.9
 Author URI: http://www.xparkmedia.com
 Requires at least: 3.0.0
-Tested up to: 3.5.0
+Tested up to: 3.5.1
 
 Copyright 2011-2012 by Hafid Trujillo http://www.xparkmedia.com
 
@@ -43,7 +43,7 @@ class PopularWidget extends PopularWidgetFunctions {
 	function PopularWidget( ){
 		
 		$this->tabs = array();
-		$this->version = "1.5.7";
+		$this->version = "1.5.9";
 		$this->load_text_domain();
 		
 		parent::PopularWidgetFunctions( ); 
@@ -60,10 +60,10 @@ class PopularWidget extends PopularWidgetFunctions {
 		) );
 		
 		$this->tabs = apply_filters( 'pop_defaults_tabs', array(
-			 'recent' =>  __( '<span>Recent </span> Posts', 'pop-wid' ) , 
-			 'comments' => __( '<span>Recent </span>Comments', 'pop-wid' ) , 
-			 'commented' => __( '<span>Most </span>Commented', 'pop-wid' ), 
-			 'viewed' => __( '<span>Most </span>Viewed', 'pop-wid' ), 
+			 'recent' =>  __( 'Recent Posts', 'pop-wid' ) , 
+			 'comments' => __( 'Recent Comments', 'pop-wid' ) , 
+			 'commented' => __( 'Most Commented', 'pop-wid' ), 
+			 'viewed' => __( 'Most Viewed', 'pop-wid' ), 
 			 'tags' => __( 'Tags', 'pop-wid' ) 
 		 ) );
 		 
@@ -88,11 +88,11 @@ class PopularWidget extends PopularWidgetFunctions {
 			return;
 
 		$filedir = WP_CONTENT_DIR . '/languages/' . 'pop-wid' . '-' . $this->locale . '.mo';
-		if (!file_exists($filedir) && is_admin() && current_user_can('activate_plugins')) {
+		/*if (!file_exists($filedir) && is_admin() && current_user_can('activate_plugins')) {
 			$time = get_option('_pop_wid_no_lan_file');
 			if ($time + (86400 * 2) <= current_time('timestamp'))
 				$this->download_language_file($filedir);
-		}
+		}*/
 
 		if (function_exists('load_plugin_textdomain'))
 			load_plugin_textdomain('pop-wid', false, apply_filters('pop_load_textdomain', '../languages/', 'pop-wid', $this->locale));
@@ -167,7 +167,7 @@ class PopularWidget extends PopularWidgetFunctions {
 	 * @since 1.5.0
 	 */
 	function field_id( $field ){
-		echo  $this->get_field_id( $field );
+		echo $this->get_field_id( $field );
 	}
 	
 	/**
@@ -177,7 +177,7 @@ class PopularWidget extends PopularWidgetFunctions {
 	 * @since 1.5.0
 	 */
 	function field_name( $field ){
-		echo  $this->get_field_name( $field );
+		echo $this->get_field_name( $field );
 	}
 	
 	/**
@@ -187,8 +187,7 @@ class PopularWidget extends PopularWidgetFunctions {
 	 * @since 0.5.0
 	 */
 	function set_post_view( ) {
-		
-		if( !is_single() && !is_page() && !is_singular() ) 
+		if( !is_singular() && !is_page() ) 
 			return;
 		
 		$widgets = get_option($this->option_name);
@@ -201,8 +200,10 @@ class PopularWidget extends PopularWidgetFunctions {
 			
 			if( !isset( $_COOKIE['popular_views_'.COOKIEHASH] ) ){
 				setcookie( 'popular_views_' . COOKIEHASH, "$post->ID|", 0, COOKIEPATH );
-				update_post_meta( $post->ID, '_popular_views', get_post_meta( $post->ID, '_popular_views', true)+1 );
+				update_post_meta( $post->ID, '_popular_views', get_post_meta( $post->ID, '_popular_views', true ) +1 );
+			
 			}else{
+				
 				$views = explode( "|", $_COOKIE['popular_views_' . COOKIEHASH] );
 				foreach( $views as $post_id ){ 
 					if( $post->ID == $post_id ) {
@@ -213,10 +214,11 @@ class PopularWidget extends PopularWidgetFunctions {
 			
 			if( empty( $exist ) ){
 				$views[] = $post->ID;
-				setcookie( 'popular_views_' . COOKIEHASH, implode( "|", $views ),0 , COOKIEPATH );
+				setcookie( 'popular_views_' . COOKIEHASH, implode( "|", $views ), 0 , COOKIEPATH );
+				update_post_meta( $post->ID, '_popular_views', get_post_meta( $post->ID, '_popular_views', true ) +1 );
 			}
 			
-		} else update_post_meta( $post->ID, '_popular_views', get_post_meta( $post->ID, '_popular_views', true )+1 );
+		} else update_post_meta( $post->ID, '_popular_views', get_post_meta( $post->ID, '_popular_views', true ) +1 );
 	}
 	
 	/**

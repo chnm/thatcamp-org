@@ -318,6 +318,4 @@ class PopularWidgetFunctions extends WP_Widget {
 		 }
 		return $output ;
 	 }
-	
  }
-?>
