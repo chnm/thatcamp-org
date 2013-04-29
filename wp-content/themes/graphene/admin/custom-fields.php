@@ -54,7 +54,7 @@ function graphene_save_custom_meta( $post_id ){
 	
 	/* Post-specific options */
 	if ( 'post' == $_POST['post_type'] ) {
-		if ( in_array( $_POST['graphene_post_date_display'], array( 'show', 'hide' ) ) )
+		if ( in_array( $_POST['graphene_post_date_display'], array( 'hidden', 'icon_no_year', 'icon_plus_year', 'text' ) ) )
 			$graphene_meta['post_date_display'] = $_POST['graphene_post_date_display'];
 	}
 	
@@ -148,7 +148,10 @@ function graphene_custom_meta( $post ){
             <td>
                 <select id="graphene_post_date_display" name="graphene_post_date_display">
                 	<option value="" <?php selected( $graphene_meta['post_date_display'], '' ); ?>><?php _e( 'Use global setting', 'graphene' ); ?></option>
-                    <option value="hide" <?php selected( $graphene_meta['post_date_display'], 'hide' ); ?>><?php _e( 'Hide date', 'graphene' ); ?></option>
+                    <option value="hidden" <?php selected( $graphene_meta['post_date_display'], 'hidden' ); ?>><?php _e( 'Hidden', 'graphene' ); ?></option>
+                    <option value="icon_no_year" <?php selected( $graphene_meta['post_date_display'], 'icon_no_year' ); ?>><?php _e( 'As an icon (without the year)', 'graphene' ); ?></option>
+                    <option value="icon_plus_year" <?php selected( $graphene_meta['post_date_display'], 'icon_plus_year' ); ?>><?php _e( 'As an icon (including the year)', 'graphene' ); ?></option>
+                    <option value="text" <?php selected( $graphene_meta['post_date_display'], 'text' ); ?>><?php _e( 'As inline text', 'graphene' ); ?></option>
                 </select>
             </td>
         </tr>

@@ -10,7 +10,7 @@ if ( $graphene_settings['child_page_listing'] == 'show_always' ||
 
 	/* 	Don't list the child pages if the global $post variable is empty, which usually
 		indicates it's not the standard WordPress pages */
-    if ( ! $post )
+    if ( ! $post || function_exists('is_bbpress') && is_bbpress() )
 		return;
     
     /* Get the child pages */

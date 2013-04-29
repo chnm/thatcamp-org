@@ -3,10 +3,10 @@
  * This function retrieves the header image for the theme
 */
 if ( ! function_exists( 'graphene_get_header_image' ) ) :
-	function graphene_get_header_image( $post_id = NULL){
+	function graphene_get_header_image( $post_id = NULL ){
 		global $graphene_settings;
 		
-		if ( is_singular() && has_post_thumbnail( $post_id ) && ( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'post-thumbnail' ) ) &&  $image[1] >= HEADER_IMAGE_WIDTH && !$graphene_settings['featured_img_header'] ) {
+		if ( is_singular() && has_post_thumbnail( $post_id ) && ( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'post-thumbnail' ) ) &&  $image[1] >= HEADER_IMAGE_WIDTH && ! $graphene_settings['featured_img_header'] ) {
 			// Houston, we have a new header image!
 			$header_img = $image[0]; // only the url
 		} else if ( $graphene_settings['use_random_header_img'] ){
@@ -79,7 +79,10 @@ function graphene_top_bar_social(){
             $title = graphene_determine_social_medium_title( $social_profile );
             $class = 'mysocial social-' . $social_profile['type'];
 			$id = 'social-id-' . $count;
-            $extra = $graphene_settings['social_media_new_window'] ?  ' target="_blank"' : '';
+            
+			$extra = $graphene_settings['social_media_new_window'] ?  ' target="_blank"' : '';
+			$extra = apply_filters( 'graphene_social_media_attr', $extra, $title, $class, $id );
+			
             $url = ( $social_profile['type'] == 'rss' && empty( $social_profile['url'] ) ) ? get_bloginfo('rss2_url') : $social_profile['url'];
             if ( $social_profile['type'] == 'custom' ) {
 				$icon_url = $social_profile['icon_url'];
@@ -97,6 +100,7 @@ function graphene_top_bar_social(){
 add_action( 'graphene_social_profiles', 'graphene_top_bar_social' );
 
 /**
+
  * Determine the title for the social medium.
  * @param array $social_medium
  * @return string 
@@ -273,4 +277,3 @@ function graphene_sidebar_notice( $sidebar_name = '' ){
 	$html .= '[/warning]';
 	echo do_shortcode( apply_filters( 'graphene_sidebar_notice', $html, $sidebar_name ) );
 }
-?>

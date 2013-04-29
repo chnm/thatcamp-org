@@ -119,11 +119,11 @@ function graphene_get_custom_style(){
 		$style .= '.header_title, .header_title a, .header_title a:visited, .header_title a:hover, .header_desc {color:#' . $header_textcolour . ';}';
 		
 	/* Set the width of the bottom widget items if number of columns is specified */
-	if ( $widgetcolumn != $graphene_defaults['footerwidget_column'] && $widgetcolumn) {
+	if ( ( $widgetcolumn != $graphene_defaults['footerwidget_column'] || $container_width != $graphene_defaults['container_width'] ) && $widgetcolumn ) {
 		$widget_width = floor( ( ( ( $container_width - $gutter * 2 ) - 20 * ( $widgetcolumn - 1 ) ) / $widgetcolumn ) - 20 );
 		$style .= '#sidebar_bottom .sidebar-wrap{width:' . $widget_width . 'px}';
 	}
-	if ( $graphene_settings['alt_home_footerwidget'] && $widgetcolumn_alt != $graphene_defaults['alt_footerwidget_column'] && $widgetcolumn_alt ) {
+	if ( $graphene_settings['alt_home_footerwidget'] && ( $widgetcolumn_alt != $graphene_defaults['alt_footerwidget_column'] || $container_width != $graphene_defaults['container_width'] ) && $widgetcolumn_alt ) {
 		$widget_width = floor( ( ( ( $container_width - $gutter * 2 ) - 20 * ( $widgetcolumn_alt - 1 ) ) / $widgetcolumn_alt ) - 20 );
 		$style .= '.home #sidebar_bottom .sidebar-wrap{width:' . $widget_width . 'px}';
 	}

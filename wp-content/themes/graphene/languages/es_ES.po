@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tema Graphene para WordPress en español (versión 1.0.8a)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-30 11:24+0100\n"
-"PO-Revision-Date: 2012-09-30 12:35+0100\n"
+"POT-Creation-Date: 2013-02-17 19:33+0100\n"
+"PO-Revision-Date: 2013-02-17 19:33+0100\n"
 "Last-Translator: Eduardo Larequi <elarequi@gmail.com>\n"
 "Language-Team: Eduardo Larequi <elarequi@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr "Entrada protegida por contraseña. Escribe la contraseña para ver los c
 #: comments.php:50
 #: loop-author.php:85
 #: loop-post-formats.php:47
-#: loop.php:170
+#: loop.php:164
 #, php-format
 msgid "%d comment"
 msgid_plural "%d comments"
@@ -175,8 +175,8 @@ msgstr "Entradas más recientes"
 #: loop-children.php:45
 #: loop-children.php:54
 #: loop-post-formats.php:31
-#: loop.php:65
-#: loop.php:134
+#: loop.php:63
+#: loop.php:128
 #, php-format
 msgid "Permalink to %s"
 msgstr "Enlace permanente a %s"
@@ -187,9 +187,9 @@ msgstr "Enlace permanente a %s"
 #: loop-page.php:11
 #: loop-page.php:34
 #: loop-post-formats.php:31
-#: loop-single.php:63
+#: loop-single.php:61
 #: loop.php:31
-#: loop.php:66
+#: loop.php:64
 msgid "(No title)"
 msgstr "(Sin título)"
 
@@ -214,22 +214,22 @@ msgid "Sorry, but no results were found for that keyword. Wanna try an alternati
 msgstr "Lo sentimos, pero no se ha encontrado ningún resultado. Te aconsejamos que lo intentes con un patrón de búsqueda diferente."
 
 #: loop-page.php:44
-#: loop-single.php:79
-#: loop.php:85
+#: loop-single.php:77
+#: loop.php:83
 #, php-format
 msgid "Edit %s"
 msgstr "Editar %s"
 
 #: loop-page.php:65
-#: loop-single.php:118
-#: loop.php:152
+#: loop-single.php:114
+#: loop.php:146
 msgid "Pages:"
 msgstr "Páginas:"
 
 #: loop-page.php:89
 #: loop-post-formats.php:97
-#: loop-single.php:166
-#: loop.php:188
+#: loop-single.php:162
+#: loop.php:182
 msgid "Permanent link to this article:"
 msgstr "Enlace permanente a este artículo:"
 
@@ -270,17 +270,17 @@ msgid "Edit post"
 msgstr "Editar entrada"
 
 #: loop-post-formats.php:47
-#: loop.php:170
+#: loop.php:164
 msgid "Leave comment"
 msgstr "Sin comentarios"
 
 #: loop-post-formats.php:47
-#: loop.php:170
+#: loop.php:164
 msgid "1 comment"
 msgstr "Un comentario"
 
 #: loop-post-formats.php:47
-#: loop.php:170
+#: loop.php:164
 msgid "Comments off"
 msgstr "Los comentarios están desactivados"
 
@@ -293,32 +293,32 @@ msgstr "Publicado el: %s"
 msgid "F j, Y"
 msgstr "j \\d\\e F \\d\\e Y"
 
-#: loop-single.php:72
-#: loop.php:78
+#: loop-single.php:70
+#: loop.php:76
 msgid "Categories:"
 msgstr "Categorías:"
 
-#: loop-single.php:94
-#: loop.php:102
+#: loop-single.php:90
+#: loop.php:96
 #, php-format
 msgid "by %s"
 msgstr "por %s"
 
-#: loop-single.php:128
-#: loop.php:162
+#: loop-single.php:124
+#: loop.php:156
 msgid "Tags:"
 msgstr "Etiquetas:"
 
-#: loop-single.php:128
-#: loop.php:162
+#: loop-single.php:124
+#: loop.php:156
 msgid "This post has no tag"
 msgstr "Esta entrada no tiene ninguna etiqueta"
 
-#: loop-single.php:147
+#: loop-single.php:143
 msgid "About the author"
 msgstr "Acerca del autor"
 
-#: loop.php:127
+#: loop.php:121
 msgid "Read the rest of this entry &raquo;"
 msgstr "Continuar leyendo &raquo;"
 
@@ -471,18 +471,34 @@ msgid "Post date display"
 msgstr "Mostrar fecha de la entrada"
 
 #: admin/custom-fields.php:151
-msgid "Hide date"
-msgstr "Ocultar fecha"
+#: admin/options-display.php:283
+msgid "Hidden"
+msgstr "Oculto"
 
-#: admin/custom-fields.php:159
+#: admin/custom-fields.php:152
+#: admin/options-display.php:284
+msgid "As an icon (without the year)"
+msgstr "Como un icono (sin el año)"
+
+#: admin/custom-fields.php:153
+#: admin/options-display.php:285
+msgid "As an icon (including the year)"
+msgstr "Como un icono (con el año)"
+
+#: admin/custom-fields.php:154
+#: admin/options-display.php:286
+msgid "As inline text"
+msgstr "Como texto"
+
+#: admin/custom-fields.php:162
 msgid "Navigation options"
 msgstr "Opciones de navegación"
 
-#: admin/custom-fields.php:163
+#: admin/custom-fields.php:166
 msgid "Description"
 msgstr "Descripción"
 
-#: admin/custom-fields.php:167
+#: admin/custom-fields.php:170
 #: admin/options-display.php:598
 msgid "Only required if you need a description in the navigation menu and you are not using a custom menu."
 msgstr "Solo hace falta si necesitas una descripción en el menú de navegación y no tienes intención de utilizar un menú personalizado."
@@ -1273,22 +1289,6 @@ msgstr "Opciones de las entradas"
 #: admin/options-display.php:273
 msgid "Hide post author"
 msgstr "Ocultar el autor"
-
-#: admin/options-display.php:283
-msgid "Hidden"
-msgstr "Oculto"
-
-#: admin/options-display.php:284
-msgid "As an icon (without the year)"
-msgstr "Como un icono (sin el año)"
-
-#: admin/options-display.php:285
-msgid "As an icon (including the year)"
-msgstr "Como un icono (con el año)"
-
-#: admin/options-display.php:286
-msgid "As inline text"
-msgstr "Como texto"
 
 #: admin/options-display.php:292
 msgid "Hide post categories"
@@ -2512,7 +2512,7 @@ msgstr "<strong>Aviso importante: </strong>la imagen debe ser menor o igual a <s
 msgid "%1$s at %2$s"
 msgstr "%1$s, a las %2$s"
 
-#: includes/theme-comments.php:36
+#: includes/theme-comments.php:37
 msgid "Edit comment"
 msgstr "Editar comentario"
 
@@ -2544,21 +2544,33 @@ msgstr "Sitio web:"
 msgid "Message:"
 msgstr "Mensaje:"
 
-#: includes/theme-functions.php:109
+#: includes/theme-comments.php:254
+msgid "Delete this comment"
+msgstr "Borrar este comentario"
+
+#: includes/theme-comments.php:256
+msgid "Mark this comment as spam"
+msgstr "Marcar este comentario como spam"
+
+#: includes/theme-comments.php:256
+msgid "Spam"
+msgstr "Sapm"
+
+#: includes/theme-functions.php:113
 #, php-format
 msgid "Visit %1$s's %2$s page"
 msgstr "Visita la página %2$s de %1$s"
 
-#: includes/theme-functions.php:271
+#: includes/theme-functions.php:275
 #, php-format
 msgid "You haven't placed any widget into this widget area. Go to %1$s and place some widgets in the widget area called %2$s."
 msgstr "No has colocado ningún widget en esta área de widgets. Ve a %1$s y sitúa algunos widgets en el área de widget denominada %2$s."
 
-#: includes/theme-functions.php:271
+#: includes/theme-functions.php:275
 msgid "WP Admin > Appearance > Widgets"
 msgstr "Administración de WP > Apariencia > Widgets"
 
-#: includes/theme-functions.php:272
+#: includes/theme-functions.php:276
 msgid "This notice will not be displayed to your site's visitors."
 msgstr "Este aviso no se mostrará a los visitantes de tu sitio."
 
@@ -2582,13 +2594,13 @@ msgstr "Página siguiente &raquo;"
 msgid "&laquo; Previous page"
 msgstr "&laquo; Página anterior"
 
-#: includes/theme-loop.php:457
-#: includes/theme-loop.php:458
+#: includes/theme-loop.php:465
+#: includes/theme-loop.php:466
 #, php-format
 msgid "Print this %s"
 msgstr "Imprimir esta %s"
 
-#: includes/theme-loop.php:498
+#: includes/theme-loop.php:506
 #, php-format
 msgid "Return to %s"
 msgstr "Volver a %s"
@@ -2613,69 +2625,69 @@ msgstr "Menú secundario"
 msgid "Footer Menu"
 msgstr "Menú de pie de página"
 
-#: includes/theme-setup.php:165
+#: includes/theme-setup.php:167
 msgid "Header image by Syahir Hakim"
 msgstr "Imagen de cabecera por Syahir Hakim"
 
-#: includes/theme-setup.php:169
+#: includes/theme-setup.php:171
 msgid "This is the default Graphene theme header image, cropped from image by Quantin Houyoux at sxc.hu"
 msgstr "Esta es la imagen de cabecera por defecto del tema Graphene, recortada a partir de una imagen de Quantin Houyoux en sxc.hu"
 
-#: includes/theme-setup.php:173
-#: includes/theme-setup.php:177
-#: includes/theme-setup.php:181
-#: includes/theme-setup.php:185
-#: includes/theme-setup.php:189
+#: includes/theme-setup.php:175
+#: includes/theme-setup.php:179
+#: includes/theme-setup.php:183
+#: includes/theme-setup.php:187
+#: includes/theme-setup.php:191
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "Imagen de cabecera recortada a partir de una imagen de Ilco en sxc.hu"
 
-#: includes/theme-setup.php:260
+#: includes/theme-setup.php:262
 msgid "The first sidebar widget area (will always be displayed on the right hand side)."
 msgstr "La primera área de widgets de la barra lateral (siempre se mostrará en el lado derecho)."
 
-#: includes/theme-setup.php:269
+#: includes/theme-setup.php:271
 msgid "The second sidebar widget area (will always be displayed on the left hand side)."
 msgstr "La segunda área de widgets de la barra lateral (siempre se mostrará en el lado izquierdo)."
 
-#: includes/theme-setup.php:276
+#: includes/theme-setup.php:278
 msgid "Footer Widget Area"
 msgstr "Pie de página"
 
-#: includes/theme-setup.php:278
+#: includes/theme-setup.php:280
 msgid "The footer widget area. Leave empty to disable. Set the number of columns to display at the theme's Display Options page."
 msgstr "Área de widgets del pie de página. Si deseas desactivarla, déjala vacía. Puedes establecer el número de columnas que deseas mostrar en la página de opciones de visualización."
 
-#: includes/theme-setup.php:295
+#: includes/theme-setup.php:297
 msgid "The first sidebar widget area that will only be displayed on the front page."
 msgstr "La primera área de widgets de la barra lateral, que solo se mostrará en la página principal."
 
-#: includes/theme-setup.php:304
+#: includes/theme-setup.php:306
 msgid "The second sidebar widget area that will only be displayed on the front page."
 msgstr "La segunda área de widgets de la barra lateral, que solo se mostrará en la página principal."
 
-#: includes/theme-setup.php:313
+#: includes/theme-setup.php:315
 msgid "Front Page Footer Widget Area"
 msgstr "Pie de la página de inicio"
 
-#: includes/theme-setup.php:315
+#: includes/theme-setup.php:317
 msgid "The footer widget area that will only be displayed on the front page. Leave empty to disable. Set the number of columns to display at the theme's Display Options page."
 msgstr "El área de widgets del pie de página, que solo se mostrará en la página de inicio. Si deseas desactivarla, déjala vacía. Desde la página de opciones del tema puedes establecer el número de columnas que deseas mostrar en esta área."
 
-#: includes/theme-setup.php:325
+#: includes/theme-setup.php:327
 msgid "Header Widget Area"
 msgstr "Cabecera"
 
-#: includes/theme-setup.php:327
+#: includes/theme-setup.php:329
 msgid "The header widget area."
 msgstr "El área de widgets de la cabecera"
 
-#: includes/theme-setup.php:344
+#: includes/theme-setup.php:346
 #, php-format
 msgid "Dynamically added widget area. This widget area is attached to the %s action hook."
 msgstr "Área de widgets añadida de forma dinámica. Esta área de widgets se adjuntará al \"action hook\" %s"
 
-#: includes/theme-slider.php:136
-#: includes/theme-slider.php:165
+#: includes/theme-slider.php:147
+#: includes/theme-slider.php:176
 msgid "View full post"
 msgstr "Ver entrada completa"
 
@@ -2724,6 +2736,9 @@ msgstr "Aviso: seleccionar esta opción puede dar como resultado menos de %s tui
 #: includes/theme-widgets.php:125
 msgid "Open links in new window"
 msgstr "Abrir enlaces en una nueva ventana"
+
+#~ msgid "Hide date"
+#~ msgstr "Ocultar fecha"
 
 #~ msgid "Dropdown menu (active and hover state)"
 #~ msgstr ""

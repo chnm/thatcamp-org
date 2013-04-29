@@ -54,6 +54,7 @@ jQuery(document).ready(function($){
 			else
 				$(this).parent().append(ajaxload);
 		});
+		$('<img/>')[0].src = graphene_uri + '/images/ajax-loader.gif';
 		
 		// Save options via AJAX
 		$('#graphene-options-form').submit(function(){

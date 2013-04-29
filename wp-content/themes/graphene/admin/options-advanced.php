@@ -26,7 +26,7 @@ function graphene_options_advanced() {
     </div>
     
     
-    <?php /* <head> tags */ ?>
+    <?php /* Custom <head> tags */ ?>
     <div class="postbox">
         <div class="head-wrap">
             <div title="Click to toggle" class="handlediv"><br /></div>
@@ -39,6 +39,16 @@ function graphene_options_advanced() {
                     <td><textarea name="graphene_settings[head_tags]" id="head_tags" cols="60" rows="7" class="widefat code"><?php echo htmlentities( stripslashes( $graphene_settings['head_tags'] ) ); ?></textarea></td>
                 </tr>
             </table>
+            <script type="text/javascript">
+				var customHeadTags = CodeMirror.fromTextArea(document.getElementById("head_tags"), {
+										mode: 'text/html',
+										htmlMode: true,
+										lineNumbers: true,
+										lineWrapping: true,
+										indentUnit: 4,
+										styleActiveLine: true
+									});
+			</script>
             
             <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
         </div>

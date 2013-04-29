@@ -33,8 +33,8 @@ if (!function_exists( 'graphene_comment' ) ) :
                             	<?php /* translators: %1$s is the comment date, %2$s is the comment time */ ?>
 								<?php printf( __( '%1$s at %2$s', 'graphene' ), get_comment_date(), get_comment_time() ); ?>
 								<span class="timezone"><?php echo '(UTC '.get_option( 'gmt_offset' ).')'; ?></span>
+                                <?php graphene_moderate_comment( get_comment_ID() ); ?>
                                 <?php edit_comment_link(__( 'Edit comment','graphene' ),' (',') ' ); ?>
-				<?php if ( function_exists ('graphene_delete_and_spam_comment') ) { graphene_delete_and_spam_comment(get_comment_ID()); } ?>
                                 <span class="comment-permalink"><a href="<?php echo get_comment_link(); ?>"><?php _e( 'Link to this comment', 'graphene' ); ?></a></span>
                             	<?php do_action( 'graphene_comment_metadata' ); ?>    
                             </p>
@@ -232,13 +232,13 @@ function graphene_should_show_comments() {
 	if ( $graphene_settings['comments_setting'] == 'disabled_completely' )
         return false;
     
-	if ( $graphene_settings['comments_setting'] == 'disabled_pages' && get_post_type( $post->ID) == 'page' )
+	if ( $graphene_settings['comments_setting'] == 'disabled_pages' && get_post_type( $post->ID ) == 'page' )
         return false;
 	
 	if ( ! is_singular() && $graphene_settings['hide_post_commentcount'] )
 		return false;
 	
-	if ( ! comments_open() && have_comments() && ! is_singular() )
+	if ( ! comments_open() && ! is_singular() )
 		return false;
 	
     return true;
@@ -247,14 +247,15 @@ function graphene_should_show_comments() {
 endif;
 
 /**
- * Delete and mark spam link for comments. Show only if current user can edit posts
+ * Delete and mark spam link for comments. Show only if current user can moderate comments
  */
- if ( ! function_exists( 'graphene_delete_and_spam_comment' ) ) :
-function graphene_delete_and_spam_comment($id) {
-	if (current_user_can('edit_post')) {
-		echo '| <a class="comment-delete-link" title="Delete this comment" href="'.get_admin_url().'comment.php?action=cdc&c='.$id.'">Delete</a> ';
-		echo '| <a class="comment-spam-link" title="Mark this comment as Spam" href="'.get_admin_url().'comment.php?action=cdc&dt=spam&c='.$id.'">Spam</a> |';
-	}
+ if ( ! function_exists( 'graphene_moderate_comment' ) ) :
+function graphene_moderate_comment( $id ) {
+	$html = '| <a class="comment-delete-link" title="' . esc_attr__( 'Delete this comment', 'graphene' ) . '" href="' . get_admin_url() . 'comment.php?action=cdc&c=' . $id . '">' . __( 'Delete', 'graphene' ) . '</a>';
+	$html .= '&nbsp;';
+	$html .= '| <a class="comment-spam-link" title="' . esc_attr__( 'Mark this comment as spam', 'graphene' ) . '" href="' . get_admin_url() . 'comment.php?action=cdc&dt=spam&c=' . $id . '">' . __( 'Spam', 'graphene' ) . '</a> |';
+
+	if ( current_user_can( 'moderate_comments' ) ) echo $html;
 }
 endif;
 

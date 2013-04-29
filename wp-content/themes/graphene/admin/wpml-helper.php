@@ -37,7 +37,7 @@ function graphene_add_t_string( $strings, $name = '', $context = 'Graphene theme
 	if ( is_array( $strings ) ) {
 		foreach ( $strings as $string ) {
 			if ( ! ( $string['value'] && $string['name'] ) ) continue;
-			if ( ! $string['context'] ) $string['context'] = 'Graphene theme';
+			if ( ! $string['context'] ) $string['context'] = $context;
 			$graphene_t_strings[] =  $string;
 		}
 	} else {
@@ -102,3 +102,22 @@ function graphene_translate_settings(){
 	}
 }
 add_action( 'template_redirect', 'graphene_translate_settings' );
+
+
+/**
+ * Adjusts object IDs for multilingual functionality
+ *
+ * @package Graphene
+ * @since Graphene 1.8.4
+ */
+function graphene_object_id( $ids, $type = '', $return_original_if_missing = false, $language_code = NULL ){
+	if ( function_exists( 'icl_object_id' ) ) {
+		$ids = (array) $ids;
+		foreach ( $ids as $key => $id ) {
+			$current_type = ( ! $type ) ? get_post_type( $id ) : $type;
+			$ids[$key] = icl_object_id( $id, $current_type, $return_original_if_missing, $language_code );
+		}
+	}
+	
+	return $ids;
+}

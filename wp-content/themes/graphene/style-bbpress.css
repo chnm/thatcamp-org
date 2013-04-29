@@ -104,7 +104,7 @@ table.bbp-replies th {
 	border: none;
 }
 .bbp-user-home #author-description h1,
-.bbp-user-home h2 {
+.bbp-user-home h2.entry-title {
 	font-weight: bold;
 	font-size: 14px;
 	margin-top: 15px;

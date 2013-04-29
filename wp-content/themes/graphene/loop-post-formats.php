@@ -40,7 +40,7 @@
         <?php endif; ?>
             
         <?php /* The comment link */ ?>
-        <?php if ( ! is_singular() ) : ?>
+        <?php if ( ! is_singular() && graphene_should_show_comments() ) : ?>
         <p class="comment-link">
 			<?php 
             $comments_num = get_comments_number();

@@ -4,6 +4,30 @@ http://www.khairul-syahir.com
 
 CHANGELOG
 
+Version 1.8.4
+	* Implemented multilingual-aware object ID retrieval for better WPML compatibility
+	* Added CodeMirror code editor for the theme's Custom CSS and Custom <head> tags options
+	* Added graphene_author_url filter
+	* Added Austrian German (de_AT) informal "Du" translation by Webagentur Lederstatter
+	* Fixed comments link being displayed on posts that have comments disabled
+	* Fixed news feed in options page not displaying excerpts less than 20 words
+	* Fixed comment form going behind sidebar when replying to comments
+	
+Version 1.8.3
+	* Added option to fine tune date display setting for individual posts
+	* Added Filipino (fil) translation by Mikael Rieck
+	* Added Slovak (sk_SK) translation by Martin Kucharik
+	* Added Albanian (sq_AL) translation by Gent Ukehajdaraj
+	* Added Latvian (lv_LV) translation by Arvid Linde
+	* Added graphene_social_media_attr filter hook
+	* Changed comment moderation links capability check to moderate_comments
+	* Preloads slider background images for smoother transition
+	* bbPress stylesheet - Updated h2 element with correct class for author profile. It was affecting other h2 elements like site description on bbpress author page
+	* Removed use of deprecated _get_post_ancestors() function
+	* Fixed the footer widget area not being sized properly when the container width is modified
+	* Fixed child page listings issue on bbPress forums page
+	* Fixed custom header constants not defined for WP >= 3.4
+
 Version 1.8.2
 	* Fixed incorrect gradient direction in IE for several colour options
 	* Fixed a filter for default menu being added regardless of whether or not the default menu is being used

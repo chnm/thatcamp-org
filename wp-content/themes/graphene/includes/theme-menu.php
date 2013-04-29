@@ -104,9 +104,8 @@ class Graphene_Walker_Page extends Walker_Page {
 		extract($args, EXTR_SKIP);
 		$css_class = array('page_item', 'page-item-'.$page->ID);
 		if ( !empty($current_page) ) {
-			$_current_page = get_page( $current_page );
-			_get_post_ancestors($_current_page);
-			if ( isset($_current_page->ancestors) && in_array($page->ID, (array) $_current_page->ancestors) )
+			$_current_page = get_post( $current_page );
+			if ( in_array( $page->ID, $_current_page->ancestors ) )
 				$css_class[] = 'current_page_ancestor';
 			if ( $page->ID == $current_page )
 				$css_class[] = 'current_page_item';
@@ -192,6 +191,7 @@ function graphene_page_ancestor_class( $css_class, $page, $depth, $args ) {
 	
     return $css_class;
 }
+add_filter( 'page_css_class', 'graphene_page_ancestor_class', 10, 4 );
 
 
 /**

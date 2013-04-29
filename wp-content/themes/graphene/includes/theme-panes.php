@@ -34,7 +34,7 @@ function graphene_homepage_panes(){
 	// args specific to latest posts by category
 	if ($graphene_settings['show_post_type'] == 'cat-latest-posts' ){
 		$args_merge = array(
-							'category__in' => $graphene_settings['homepage_panes_cat'],
+							'category__in' => graphene_object_id( $graphene_settings['homepage_panes_cat'], 'category' ),
 							);
 		$args = array_merge( $args, $args_merge );
 	}
@@ -43,7 +43,8 @@ function graphene_homepage_panes(){
 	if ( $graphene_settings['show_post_type'] == 'posts' ){
 		
          $post_ids = $graphene_settings['homepage_panes_posts'];
-         $post_ids = preg_split("/[\s]*[,][\s]*/", $post_ids, -1, PREG_SPLIT_NO_EMPTY); // post_ids are comma seperated, the query needs a array                        
+         $post_ids = preg_split("/[\s]*[,][\s]*/", $post_ids, -1, PREG_SPLIT_NO_EMPTY); // post_ids are comma seperated, the query needs a array     
+		 $post_ids = graphene_object_id( $post_ids );                   
           
 		$args_merge = array(	
 							'post__in' => $post_ids,

@@ -109,6 +109,10 @@ if ( ! function_exists( 'graphene_admin_options_style' ) ) :
 		wp_enqueue_style( 'thickbox' );
 		// wp_enqueue_style( 'wp-pointer' );
 		
+		if ( isset( $_GET['tab'] ) && ( $_GET['tab'] == 'display' || $_GET['tab'] == 'advanced' ) ){
+			wp_enqueue_style( 'codemirror', get_template_directory_uri() . '/js/codemirror/codemirror.css', array(), '', false );
+		}
+		
 		if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'display' )
 			wp_enqueue_style( 'jquery-ui-slider' );
 		else if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'colours' )
@@ -127,6 +131,10 @@ function graphene_admin_scripts() {
     wp_enqueue_script( 'thickbox' );
 	wp_enqueue_script( 'graphene-admin-js' );
     // wp_enqueue_script( 'wp-pointer' );
+	
+	if ( isset( $_GET['tab'] ) && ( $_GET['tab'] == 'display' || $_GET['tab'] == 'advanced' ) ){
+		wp_enqueue_script( 'codemirror', get_template_directory_uri() . '/js/codemirror/codemirror.js', array(), '', false );
+	}
 	
 	if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'display' )
 		wp_enqueue_script( 'jquery-ui-slider' );

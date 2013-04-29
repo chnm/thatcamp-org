@@ -676,6 +676,15 @@ function graphene_options_display() {
                         <td>
                         	<span class="description"><?php _e("You can enter your own CSS codes below to modify any other aspects of the theme's appearance that is not included in the options.", 'graphene' ); ?></span>
                         	<textarea name="graphene_settings[custom_css]" id="custom_css" cols="60" rows="20" class="widefat code"><?php echo stripslashes( $graphene_settings['custom_css'] ); ?></textarea>
+                            <script type="text/javascript">
+								var customCSS = CodeMirror.fromTextArea(document.getElementById("custom_css"), {
+													mode: 'css',
+													lineNumbers: true,
+													lineWrapping: true,
+													indentUnit: 4,
+													styleActiveLine: true
+												});
+							</script>
                         </td>
                     </tr>
                 </table>

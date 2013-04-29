@@ -123,12 +123,19 @@ function graphene_setup() {
 		add_custom_background();
 
 	/* Add support for custom header */
+	/* First define the constants for backward compat */
+	define( 'HEADER_TEXTCOLOR',    apply_filters( 'graphene_header_textcolor', '000000' ) );
+	define( 'HEADER_IMAGE',        apply_filters( 'graphene_header_image', '%s/images/headers/flow.jpg' ) );
+	define( 'HEADER_IMAGE_WIDTH',  apply_filters( 'graphene_header_image_width', graphene_grid_width( $graphene_settings['gutter_width'] * 2, 16 ) ) );
+	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'graphene_header_image_height', $graphene_settings['header_img_height'] ) );
+	define( 'NO_HEADER_TEXT', ! apply_filters( 'graphene_header_text', true ) );
+
 	$args = array(
-		'width'               => apply_filters( 'graphene_header_image_width', graphene_grid_width( $graphene_settings['gutter_width'] * 2, 16 ) ),
-		'height'              => apply_filters( 'graphene_header_image_height', $graphene_settings['header_img_height'] ),
-		'default-image'       => apply_filters( 'graphene_header_image', '%s/images/headers/flow.jpg' ),
-		'header-text'		  => apply_filters( 'graphene_header_text', true ),
-		'default-text-color'  => apply_filters( 'graphene_header_textcolor', '000000' ),
+		'width'               => HEADER_IMAGE_WIDTH,
+		'height'              => HEADER_IMAGE_HEIGHT,
+		'default-image'       => HEADER_IMAGE,
+		'header-text'		  => ! NO_HEADER_TEXT,
+		'default-text-color'  => HEADER_TEXTCOLOR,
 		'wp-head-callback'    => '',
 		'admin-head-callback' => 'graphene_admin_header_style',
 	);
@@ -139,11 +146,6 @@ function graphene_setup() {
 		add_theme_support( 'custom-header', $args );
 	} else {
 		// Compat: Versions of WordPress prior to 3.4.
-		define( 'HEADER_TEXTCOLOR',    $args['default-text-color'] );
-		define( 'HEADER_IMAGE',        $args['default-image'] );
-		define( 'HEADER_IMAGE_WIDTH',  $args['width'] );
-		define( 'HEADER_IMAGE_HEIGHT', $args['height'] );
-		define( 'NO_HEADER_TEXT', ! $args['header-text'] );
 		add_custom_image_header( $args['wp-head-callback'], $args['admin-head-callback'] );
 	}
 	set_post_thumbnail_size( $args['width'], $args['height'], true );

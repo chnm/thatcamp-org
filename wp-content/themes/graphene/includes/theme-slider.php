@@ -10,7 +10,7 @@ if ( ! function_exists( 'graphene_scrollable' ) ) :
 		$interval = ( $graphene_settings['slider_speed'] ) ? $graphene_settings['slider_speed'] : 7000;
         $speed = $graphene_settings['slider_trans_speed'];
 		?>
-            <!-- Scrollable -->
+            <!-- Slider script -->
             <script type="text/javascript">
 				//<![CDATA[
                 jQuery(document).ready(function($){
@@ -63,11 +63,22 @@ if ( ! function_exists( 'graphene_scrollable' ) ) :
 					$.graphene_slider = $(".slider_nav").data("tabs");
 				<?php endif; ?>
 				
+				<?php if ( $graphene_settings['slider_display_style'] == 'bgimage-excerpt' ) : ?>
+					/* Preload slider background images */
+					$('.slider_items .slider_post').each(function(){
+						var src = $(this).css('background-image').replace('url(', '').replace(')','');
+						if ( src.indexOf('http') == 0 ){
+							(new Image()).src = this;
+						}
+						src = null;
+					});
+				<?php endif; ?>
+				
 				<?php do_action( 'graphene_scrollable_script' ); ?>
                 });
 				//]]>
             </script>
-            <!-- #Scrollable -->
+            <!-- #Slider script -->
 		<?php 
 	}
 endif;
@@ -322,7 +333,7 @@ function graphene_get_slider_posts(){
 				'order' 			=> 'DESC',
 				'suppress_filters' 	=> 0,
 				'post_type' 		=> $slider_post_type,
-				'ignore_sticky_posts' => 1, // otherwise the sticky posts show up undesired*/
+				'ignore_sticky_posts' => 1, // otherwise the sticky posts show up undesired
 				 );		
 	
 	if ( $slidertype && $slidertype == 'random' ) {
@@ -330,11 +341,14 @@ function graphene_get_slider_posts(){
 	}		
 	if ( $slidertype && $slidertype == 'posts_pages' ) {                    
 		$post_ids = $graphene_settings['slider_specific_posts'];
-		$post_ids = preg_split("/[\s]*[,][\s]*/", $post_ids, -1, PREG_SPLIT_NO_EMPTY); // post_ids are comma seperated, the query needs a array                        
+		$post_ids = preg_split("/[\s]*[,][\s]*/", $post_ids, -1, PREG_SPLIT_NO_EMPTY); // post_ids are comma separated, the query needs a array
+		$post_ids = graphene_object_id( $post_ids );
 		$args = array_merge( $args, array( 'post__in' => $post_ids, 'posts_per_page' => -1, 'orderby' => 'post__in' ) );
 	}
-	if ( $slidertype && $slidertype == 'categories' && is_array( $graphene_settings['slider_specific_categories'] ) ) {                        
-		$args = array_merge( $args, array( 'category__in' => $graphene_settings['slider_specific_categories'] ) );
+	if ( $slidertype && $slidertype == 'categories' && is_array( $graphene_settings['slider_specific_categories'] ) ) {        
+		$cats = $graphene_settings['slider_specific_categories'];
+		$cats = graphene_object_id( $cats, 'category' );
+		$args = array_merge( $args, array( 'category__in' => $cats ) );
 		
 		if ( $graphene_settings['slider_random_category_posts'] )
 			$args = array_merge( $args, array( 'orderby' => 'rand' ) );
@@ -365,10 +379,9 @@ function graphene_exclude_slider_categories( $request ){
 		
 		if ( ( $graphene_settings['slider_exclude_categories'] == 'everywhere' ) || 
 				$graphene_settings['slider_exclude_categories'] == 'homepage' && $dummy_query->is_home() )
-			$request['category__not_in'] = $graphene_settings['slider_specific_categories'];
+			$request['category__not_in'] =  graphene_object_id( $graphene_settings['slider_specific_categories'], 'category' );
 	}
 	
 	return $request;
 }
 add_filter( 'request', 'graphene_exclude_slider_categories' );
-?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Graphene WordPress Theme, Copyright 2010-2012 Syahir Hakim
+ * Graphene WordPress Theme, Copyright 2010-2013 Syahir Hakim
  * Graphene is distributed under the terms of the GNU GPL version 3
  *
  * Graphene functions and definitions
