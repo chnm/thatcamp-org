@@ -1,0 +1,87 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: #eee url('assets/images/gray_jean.png');
+}
+#site-wrapper{
+	max-width: @siteWidth;
+	margin: @siteGutter auto;
+	background: @white;
+	border-right: 2px solid #ddd;
+	border-bottom: 2px solid #ddd;
+	border-top: 2px solid #fff;
+	border-left: 2px solid #fff;
+}
+/*--------------------------------------------------------------
+2.1 - Content
+--------------------------------------------------------------*/
+#main-wrapper{
+	padding: @siteGutter;
+}
+#primary{
+	width: 100%;
+	float: none;
+}
+#primary.fullwidth{
+	width: 100%;
+	float: none;
+}
+ul.contributors li{
+	list-style: none;
+	border-bottom: 1px solid #eee;
+	overflow: hidden;
+	margin: 0 0 10px 0;
+}
+ul.contributors{
+	margin: 0;
+	padding: 0;
+}
+#logos-wrapper{
+	padding: @siteGutter 0;
+	.clearfix;
+	clear: both;
+}
+#logos{
+	margin: 0 auto;
+	max-width: @siteWidth;
+}
+#logos img{
+	float: left;
+	margin: 10px 20px 10px 0;
+}
+#logos img.nospace{
+	margin: 10px 0 10px 0;
+}
+/*--------------------------------------------------------------
+2.2 - Header
+--------------------------------------------------------------*/
+#branding hgroup{
+	padding: @siteGutter;
+	position: relative;
+	top: 0;
+	background: #333;
+}
+img.header-image{
+	border:none;
+	outline:none;
+	margin: -8px 0 0 0;
+}
+/*--------------------------------------------------------------
+2.3 - Footer
+--------------------------------------------------------------*/
+#bottom-footer {
+	clear: both;
+	padding: @siteGutter 0;
+	overflow: hidden;
+	border-top: 2px solid #eee;
+}
+#copyright {
+	float: left;
+}
+/*--------------------------------------------------------------
+2.4 - Sidebar
+--------------------------------------------------------------*/
+#sidebar {
+	float: none;
+	width: 100%;
+}
