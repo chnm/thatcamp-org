@@ -28,7 +28,18 @@
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
-<?php wp_head(); ?>
+<?php wp_head(); ?> 
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/crossslide.js" type="text/javascript"></script>
+<script>
+	jQuery(document).ready(function() {
+	    jQuery('#sliding-header').
+	    crossSlide({sleep: 2,fade: 1},
+	    [
+	        { src: 'http://thatcamp.org/wp-content/themes/thatcamp-chnm-2013/images/bannerA-960x250.jpg' },
+	        { src: 'http://thatcamp.org/wp-content/themes/thatcamp-chnm-2013/images/bannerB-960x250.jpg' } 
+	    ]);
+	});
+</script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -45,10 +56,11 @@
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
 
-		<?php $header_image = get_header_image();
+		<!-- <?php $header_image = get_header_image();
 		if ( ! empty( $header_image ) ) : ?>
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $header_image ); ?>" class="header-image" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" /></a>
-		<?php endif; ?>
+		<?php endif; ?> -->
+		<div id="sliding-header"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo( 'stylesheet_directory' ); ?>/images/bannerA-960x250.jpgg" alt="THATCamp CHNM 2013 logo" class="my-header-image"/></a></div>
 	</header><!-- #masthead -->
 
 	<div id="main" class="wrapper">
