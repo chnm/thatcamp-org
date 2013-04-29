@@ -1,3 +1,0 @@
-footer.php:<?php bizz_foot_grid(); ?>
-footer.php:<?php bizz_foot_before(); ?>
-footer.php:<?php bizz_foot_after(); ?>
