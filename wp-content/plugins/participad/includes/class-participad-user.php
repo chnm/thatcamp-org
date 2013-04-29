@@ -66,7 +66,7 @@ class Participad_User {
 		if ( ! empty( $this->ep_session_id ) ) {
 			// @todo This does not work across domains!
 			// @todo Better expiration?
-			setcookie( "sessionID", $this->ep_session_id, time() + ( 60*60*24*365*100 ), "/" );
+			setcookie( "sessionID", $this->ep_session_id, time() + ( 60*60*24*365*100 ), "/", 'thatcamp.org' );
 		}
 	}
 
