@@ -910,10 +910,13 @@ if (function_exists('childtheme_override_postheader_posttitle'))  {
 	 * Filter: thematic_postheader_posttitle
 	 */
 	function thematic_postheader_posttitle() {
-		
 		$posttitle = "\n\n\t\t\t\t\t";
+		
+		if ( !$title_content = get_the_title() )  
+			$title_content = '<a href="' . get_permalink() . '">' . _x('(Untitled)', 'Default title for untitled posts', 'thematic') . '</a>';
+	    
 	    if (is_single() || is_page()) {
-	        $posttitle .= '<h1 class="entry-title">' . get_the_title() . "</h1>\n";
+	        $posttitle .= '<h1 class="entry-title">' . $title_content . "</h1>\n";
 	    } elseif (is_404()) {    
 	        $posttitle .= '<h1 class="entry-title">' . __('Not Found', 'thematic') . "</h1>\n";
 	    } else {
@@ -921,7 +924,8 @@ if (function_exists('childtheme_override_postheader_posttitle'))  {
 	        $posttitle .= sprintf('<a href="%s" title="%s" rel="bookmark">%s</a>',
 	        						apply_filters('the_permalink', get_permalink()),
 									sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
-	        						get_the_title());   
+	        						$title_content
+	        						);   
 	        $posttitle .= "</h2>\n";
 	    }
 	    
@@ -1147,6 +1151,7 @@ if (function_exists('childtheme_override_content'))  {
 					}
 			}
 		} elseif ( strtolower($thematic_content_length) == 'none') {
+			$post= '';		
 		} else {
 			$post = get_the_content( thematic_more_text() );
 			$post = apply_filters('the_content', $post);
@@ -1198,10 +1203,10 @@ if (function_exists('childtheme_override_category_archives'))  {
 				<li id="category-archives" class="content-column">
 					<h2><?php _e('Archives by Category', 'thematic') ?></h2>
 					<ul>
-						<?php wp_list_categories(array('optioncount' => true, 
-														'feed' => 'RSS',
-														'title_li' => '',
-														'show_count' => true)); ?> 
+						<?php wp_list_categories( array ( 'feed' => 'RSS',
+														  'title_li' => '',
+														  'show_count' => true ) );
+						?> 
 					</ul>
 				</li>
 <?php }
@@ -1660,7 +1665,7 @@ if (function_exists('childtheme_override_postfooter_postconnect'))  {
 								__('Trackback URL', 'thematic'))
 							);
 	    } elseif ((comments_open()) && !(pings_open())) { /* Only comments open */
-	        $postconnect = sprintf( __('Trackbacks are closed, but you can %1$spost a comment%2$s.', '1s and 2s are the a href link wrappers, do not reverse them', 'thematic'), sprintf('<a class="comment-link" title="%s" href="#respond">', esc_attr__('Post a comment', 'thematic')), '</a>');
+	        $postconnect = sprintf( _x('Trackbacks are closed, but you can %1$spost a comment%2$s.', '1s and 2s are the a href link wrappers, do not reverse them', 'thematic'), sprintf('<a class="comment-link" title="%s" href="#respond">', esc_attr__('Post a comment', 'thematic')), '</a>');
 	    } elseif (!(comments_open()) && !(pings_open())) { /* Comments and trackbacks closed */
 	        $postconnect = __('Both comments and trackbacks are currently closed.', 'thematic');
 	    }

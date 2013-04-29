@@ -6,53 +6,22 @@
  * @subpackage DynamicClasses
  */
  
-if ( function_exists( 'childtheme_override_body' ) )  {
-	/**
-	 * @ignore
-	 */function thematic_body() {
-		childtheme_override_body();
-	}
-} else {
-	/**
-	 * @ignore
-	 */function thematic_body() {
-		thematic_bodyopen();
-	}
-}
-
-/**
- * thematic_bodyopen function
- */
-function thematic_bodyopen() {
-    if ( apply_filters( 'thematic_show_bodyclass',TRUE ) ) { 
-        // Creating the body class
-    	echo '<body ';
-    	body_class();
-    	echo '>' . "\n\n";
-    } else {
-    	echo '<body>' . "\n\n";
-    }
-}
-
 
 if ( function_exists( 'childtheme_override_body_class' ) )  {
-	_deprecated_function( 'childtheme_override_body_class', '1.0.1.3','filter body_class()' );
 	/**
 	 * @ignore
-	 */function thematic_body_class() {
+	 */
+	 function thematic_body_class() {
 		childtheme_override_body_class();
 	}
 } else {
 	/**
 	 * Generates semantic classes for BODY element
 	 *
-	 * @param bool $print (default: true)
+	 * @param array $c body classes
 	 */
 	function thematic_body_class( $c ) {
-		_deprecated_function( 'thematic_body_class', '1.0.1.3', 'filter body_class()' );
 		global $wp_query, $current_user, $blog_id, $post, $taxonomy;
-	    
-	    $c = array();
 	
 		if ( apply_filters('thematic_show_bc_wordpress', TRUE ) ) {
 	        // It's surely a WordPress blog, right?
@@ -293,7 +262,7 @@ if ( function_exists( 'childtheme_override_body_class' ) )  {
 				        $c[] = 'search-paged-' . $page;
  				} 
  			// Paged classes; for page x = 1	For all post types
- 			} elseif ( strpos( $post->post_content, '<!--nextpage-->') )  { 
+ 			} elseif ( preg_match( '/<!--nextpage(.*?)-->/', $post->post_content ) )  { 
  				if ( thematic_is_custom_post_type() ) {
 				    	$c[] = str_replace( '_','-',$post->post_type ) . '-paged-1';
  				    } elseif (is_page()) {
@@ -309,15 +278,22 @@ if ( function_exists( 'childtheme_override_body_class' ) )  {
 	}
 }
 
-// Add Legacy Body Classes to body_class()
-if ( current_theme_supports ( 'thematic_legacy_body_class' ) ) {
-	add_filter( 'body_class', 'thematic_body_class', 20 );
+/**
+ * Add thematic body classes if child theme activates it
+ */
+function thematic_activate_body_classes() {
+	if ( current_theme_supports ( 'thematic_legacy_body_class' ) ) {
+		add_filter( 'body_class', 'thematic_body_class', 20 );
+	}
+	
+	// Add browser CSS class to the end (queuing through priority) of the body classes 
+	if ( apply_filters( 'thematic_show_bc_browser', TRUE ) ) {
+		add_filter( 'body_class', 'thematic_browser_class_names', 30 ); 
+	}
 }
+add_action( 'init', 'thematic_activate_body_classes' );
 
-// Add browser CSS class to the end (queuing through priority) of the body classes 
-if ( apply_filters( 'thematic_show_bc_browser', TRUE ) ) {
-	add_filter( 'body_class', 'thematic_browser_class_names', 30 ); 
-}
+
 
 /**
  * thematic_browser_class_names function.
@@ -413,10 +389,10 @@ function thematic_browser_class_names($classes) {
 
 
 if (function_exists('childtheme_override_post_class'))  {
-	_deprecated_function( 'childtheme_override_post_class', '1.0.1.3', 'filter post_class()' );
 	/**
 	 * @ignore
-	 */function thematic_post_class() {
+	 */
+	 function thematic_post_class() {
 		childtheme_override_post_class();
 	}
 } else {
@@ -424,12 +400,14 @@ if (function_exists('childtheme_override_post_class'))  {
 	 * Generates semantic classes for each post DIV element
 	 */
 	function thematic_post_class( $c ) {
-		_deprecated_function( 'thematic_post_class', '1.0.1.3', 'filter post_class()' );
 
 		global $post, $thematic_post_alt, $thematic_content_length, $taxonomy;
 	
 		// hentry for hAtom compliace, gets 'alt' for every other post DIV, describes the post type and p[n]
-		$c = array( 'hentry', "p$thematic_post_alt", str_replace( '_', '-', $post->post_type) , $post->post_status );
+		$c[] = 'hentry';
+		$c[] = "p$thematic_post_alt";
+		$c[] =  str_replace( '_', '-', $post->post_type );
+		$c[] =  $post->post_status ;
 	
 		// Author for the post queried
 		$c[] = 'author-' . sanitize_title_with_dashes( strtolower( get_the_author_meta( 'user_login' ) ) );
@@ -463,34 +441,26 @@ if (function_exists('childtheme_override_post_class'))  {
 			}
 		}
 
-		// For posts displayed as full content
-		if ($thematic_content_length == 'full')
-			$c[] = 'is-full';
+		$thematic_excerpt_more = preg_match( '/<!--more(.*?)-->/', $post->post_content );
 
 		// For posts displayed as excerpts
-		if ($thematic_content_length == 'excerpt') {
+		if ( $thematic_content_length == 'excerpt' || ( !is_single() && $thematic_excerpt_more ) ) {
 			$c[] = 'is-excerpt';
-			if ( has_excerpt() && !preg_match( '/<!--more(.*?)?-->/', $post->post_content ) ) {
+			if ( has_excerpt() ) {
 				// For wp-admin Write Page generated excerpts
 				$c[] = 'custom-excerpt';
+			} elseif ( $thematic_excerpt_more ) {
+				// For  more tag
+				$c[] = 'moretag-excerpt';
 			} else {
-				// For automatically generated excerpts
+				// For auto generated excerpts
 				$c[] = 'auto-excerpt';
 			}
+		// For posts displayed as full content
+		} elseif (  $thematic_content_length == 'full'  )  {
+				$c[] = 'is-full';
 		}
-		
-		// For single posts that had a wp-admin Write Page generated excerpt  
-		if ( has_excerpt() && is_single() )
-			$c[] = 'has-excerpt';
-			
-		//	For posts using more tag
-		if ( preg_match( '/<!--more(.*?)?-->/', $post->post_content ) ) {	
-			if ( !is_single() ) {
-				$c[] = 'wp-teaser';
-			} elseif ( is_single() ) {
-				$c[] = 'has-teaser';
-			}
-		}
+
 						
 		// For posts with comments open or closed
 		if ( comments_open() ) {
@@ -528,9 +498,16 @@ if (function_exists('childtheme_override_post_class'))  {
 		return array_unique(apply_filters( 'thematic_post_class', $c )); // Available filter: thematic_post_class
 	}
 }
-if ( current_theme_supports ( 'thematic_legacy_post_class' ) ) {
-	add_filter( 'post_class', 'thematic_post_class', 20 );
+
+/**
+ * Add thematic post classes if child theme activates it
+ */
+function thematic_activate_post_classes() {
+	if ( current_theme_supports ( 'thematic_legacy_post_class' ) ) {
+		add_filter( 'post_class', 'thematic_post_class', 20 );
+	}
 }
+add_action( 'init', 'thematic_activate_post_classes' );
 
 /**
  * Define the num val for 'alt' classes (in post DIV and comment LI)

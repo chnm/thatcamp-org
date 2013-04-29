@@ -408,4 +408,37 @@ function thematic_legacy_comment_form(){
 <?php
 }
 
+
+/**
+ * Redundant function for opening body tag
+ *
+ * the contents of this function were moved to thematic_body()
+ *
+ * @deprecated 1.0.3.3
+ */
+
+function thematic_bodyopen() {
+	_deprecated_function( __FUNCTION__, '1.0.3.3', 'thematic_body()' ); 
+}
+
+/**
+ * Added a settings section to display legacy help text and theme links WP 3.2 compatible
+ *
+ * @removed in favor of adding contextual help via get_current_screen()
+ */
+function thematic_legacy_help() {
+		_deprecated_function( __FUNCTION__, '1.0.4', 'thematic_opt_page_help' );
+}
+
+
+/**
+ * Rendered the legacy help text and theme links WP 3.2 compatible
+ * 
+ * @removed in favor of adding contextual help via get_current_screen()
+ */
+function thematic_do_legacy_help_section() { 
+	_deprecated_function( __FUNCTION__, '1.0.4', 'thematic_opt_page_help' );
+}
+
+
 ?>
