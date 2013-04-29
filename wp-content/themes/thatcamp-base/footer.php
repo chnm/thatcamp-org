@@ -18,7 +18,7 @@
 					<a href="http://mellon.org/" title="Mellon">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/mellonlogo.png" alt="Mellon"/>
 					</a>
-
+					
 				</div>
 			</div>
 			<footer id="bottom-footer" role="contentinfo">
@@ -26,7 +26,7 @@
 				<!-- add in themename call -->
 					<div id="copyright">&copy; <?php the_time('Y')?>  </div>
 					<?php wp_nav_menu( array(
-						'theme_location' => 'bottom',
+						'theme_location' => 'bottom', 
 						'menu_class' => 'bottom_menu',
 						'container' => ''
 					)); ?>
