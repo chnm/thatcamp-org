@@ -1,0 +1,111 @@
+/*--------------------------------------------------------------
+5.0 - Images
+--------------------------------------------------------------*/
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+.post-avatar img.avatar, .activity-avatar img.avatar{
+	float: right;
+	.rounded(50%);
+}
+.twitter-item img, .post-meta-author img, .comment-author img {
+	float: left;
+	.rounded(50%);
+}
+.img-wrapper{
+	box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+	-webkit-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+	-moz-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+	-o-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+	background: #FAFAFA;
+	overflow: hidden;
+	display: block;
+	padding: 3px;
+	.rounded(100%);
+}
+
+.activity-avatar img.avatar{
+	float: right;
+	.rounded(50%);
+	box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+	-webkit-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+	-moz-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+	-o-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+}
+
+.img-wrapper.floatright{
+	float:right;
+}
+
+img.wp-smiley {
+	border: none !important;
+	clear: none !important;
+	float: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+img.centered,
+img.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+img.alignright {
+	display: inline;
+	margin: 0 0 2px 7px;
+	margin: 0 0 0.2rem 0.7rem;
+	padding: 4px;
+	padding: 0.4rem;
+}
+img.alignleft {
+	display: inline;
+	margin: 0 7px 2px 0;
+	margin: 0 0.7rem 0.2rem 0;
+	padding: 4px;
+	padding: 0.4rem;
+}
+#profile-right img.avatar, #members-list img.avatar{
+	.rounded(0);
+	margin: 10px 0;
+	margin: 1rem 0;
+}
+
+#profile-right .item-avatar, #profile-right #item-header-avatar{
+	background: url('assets/images/polaroid.png');
+	padding: 10px 10px 0 15px;
+	border: 1px solid #ddd;
+	overflow:hidden;
+	-webkit-box-shadow: 0 8px 6px -6px #ccc;
+	-moz-box-shadow: 0 8px 6px -6px #ccc;
+	box-shadow: 0 8px 6px -6px #ccc;
+	max-width: 160px;
+	margin: 0 auto 30px auto;
+}
+
+#members-list .item-avatar, #members-list #item-header-avatar{
+	background: url('assets/images/polaroid.png');
+	padding: 10px 20px 0 20px;
+	border: 1px solid #ddd;
+	overflow:hidden;
+	-webkit-box-shadow: 0 8px 6px -6px #ccc;
+	-moz-box-shadow: 0 8px 6px -6px #ccc;
+	box-shadow: 0 8px 6px -6px #ccc;
+	width: 140px;
+}
+
+#groups-list .item-avatar, #blogs-list .item-avatar{
+	padding: 10px 8px 15px 10px;
+	width: 50px;	
+	background: url('assets/images/polaroid.png');
+	border: 1px solid #ddd;
+	overflow:hidden;
+	-webkit-box-shadow: 0 8px 6px -6px #ccc;
+	-moz-box-shadow: 0 8px 6px -6px #ccc;
+	box-shadow: 0 8px 6px -6px #ccc;
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+.jcrop-holder img { max-width: none; }

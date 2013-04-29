@@ -1,0 +1,209 @@
+/*--------------------------------------------------------------
+6.0 - Forms
+--------------------------------------------------------------*/
+.required {
+}
+label ~ span.required {
+	display: block;
+}
+form {
+	margin-bottom: 20px;
+	margin-bottom: 2.0rem;
+}
+form .clearfix {
+	margin-bottom: 20px;
+	margin-bottom: 2.0rem;
+	zoom: 1;
+}
+form .clearfix:before,form .clearfix:after {
+	display: table;
+	content: "";
+	zoom: 1;
+}
+form .clearfix:after {
+	clear: both;
+}
+input,
+select,textarea {
+	line-height: normal;
+	display: block;
+	.rounded(5px);
+	padding: 4px 10px;
+}
+textarea {
+}
+input:invalid,textarea:invalid {
+}
+label {
+}
+input[type=checkbox],input[type=radio] {
+	cursor: pointer;
+}
+select {
+	padding: initial;
+}
+input[type=checkbox],input[type=radio] {
+	width: auto;
+	height: auto;
+	padding: 0;
+	margin: 5px 0;
+	margin: 0.5rem 0;
+	line-height: normal;
+	border: none;
+}
+input[type=file] {
+	padding: initial;
+	border: initial;
+	line-height: initial;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+#message-threads a.button{
+	color: @greenThatcampDark;
+	display: block;
+	margin: 0;
+}
+input[type=button],input[type=reset],input[type=submit]{
+	width: auto;
+	height: auto;
+	background: #444433;
+	color: @white;
+	text-shadow: -1px -1px 0px #333;
+	padding: 4px 10px;
+	.rounded(5px);
+	border: 1px solid #333;
+}
+select,input[type=file] {
+	height: auto;
+}
+select[multiple] {
+	height: inherit;
+}
+textarea {
+	height: auto;
+}
+:-moz-placeholder {
+	color: @placeholderColor;
+}
+::-webkit-input-placeholder {
+	color: @placeholderColor;
+}
+input,textarea {
+}
+input:focus,textarea:focus {
+	outline: 0;
+}
+input[type=file]:focus,input[type=checkbox]:focus,select:focus {
+	outline: @inputFocusBorderWidth @inputFocusBorderStyle @inputFocusBorderColor;
+}
+input[type=submit]{
+	cursor: pointer;
+}
+div.dir-search input[type="text"]{
+	float: left;
+}
+
+.header-button, #search-bar #search-submit, #sidebar-wp-submit{
+	background-color: #2EC0FE;
+	background-image: -o-linear-gradient(-90deg , rgb(65,65,65) 0%, rgb(43,43,43) 100%);
+	background-image: -moz-linear-gradient(-90deg , rgb(65,65,65) 0%, rgb(43,43,43) 100%);
+	background-image: -webkit-linear-gradient(-90deg , rgb(65,65,65) 0%, rgb(43,43,43) 100%);
+	background-image: -ms-linear-gradient(-90deg , rgb(65,65,65) 0%, rgb(43,43,43) 100%);
+	background-image: linear-gradient(-90deg , rgb(65,65,65) 0%, rgb(43,43,43) 100%);
+	.rounded(5px);
+	padding: 2px 8px;
+	display: inline-block;
+	border: 2px solid #111;
+	.font-size-rems(14);
+}
+
+a.header-button, a:visited.header-button, a:link.header-button, a:hover.header-button{
+	color:#fff;
+}
+
+.button{
+	.rounded(5px);
+	padding: 5px;
+	display: inline-block;
+	margin: 0 -40px -40px 0;
+}
+.item-visit .button{
+	margin: 0;
+}
+.button-inner{
+	display: inline-block;
+	border: 1px dashed #fff;
+	padding: 5px 10px;
+}
+a.button, a:visited.button, a:link.button, a:hover.button{
+	color:#fff;
+}
+
+.activity-list a.button, .activity-list a:visited.button, .activity-list a:link.button, .activity-list a:hover.button{
+	color:#333;
+}
+.campbutton{
+	background: @greenThatcampDark url('assets/images/thatcamp-greenbutton.jpg');
+	border: 3px solid @greenThatcampDark;
+	opacity: 1;
+}
+a.button.campbutton, a:visited.button.campbutton, a:link.button.campbutton, a:hover.button.campbutton{
+	text-shadow: -1px -1px 0px @greenThatcampDark;
+}
+
+.button:hover{
+	opacity: 0.9;
+}
+
+.postbutton{
+	background: url('assets/images/thatcamp-redbutton.jpg');
+	border: 3px solid @redThatcampDark;
+}
+a.button.postbutton, a:visited.button.postbutton, a:link.button.postbutton, a:hover.button.postbutton{
+	text-shadow: -1px -1px 0px @redThatcampDark;
+}
+
+.socialbutton{
+	background: url('assets/images/thatcamp-bluebutton.jpg');
+	border: 3px solid @blueThatcampDark;
+	margin: 0;
+	float: right;
+}
+a.button.socialbutton, a:visited.button.socialbutton, a:link.button.socialbutton, a:hover.button.socialbutton{
+	text-shadow: -1px -1px 0px @blueThatcampDark;
+}
+
+.offset{
+	float: none;
+}
+
+#sidebar-login-form label{
+	display: none;
+}
+
+#sidebar-login-form input{
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#sidebar-login-form{
+	float: left;
+	.clearfix;
+}
+
+#user-section .input {
+    color: #aaa;
+    display: block;
+    position: relative;
+    text-indent: 5px;
+}
+
+#sitebar #search-submit, #sitebar #sidebar-wp-submit{
+	padding: 7px 10px;
+}
+
+#search-which{
+	float: left;
+	margin: 0 10px 0 0;
+}

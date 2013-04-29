@@ -1,0 +1,62 @@
+/*--------------------------------------------------------------
+2.3 - Tables
+--------------------------------------------------------------*/
+table {
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 10px;
+	margin-bottom: 1rem;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+table th,
+table td {
+	padding: 20px;
+	padding: 2rem;
+	vertical-align: top;
+	border-top: @tableBorder;
+	.font-size-rems(14);
+	text-align: left;
+}
+table th {
+	font-weight: bold;
+}
+table thead th {
+	vertical-align: bottom;
+}
+table colgroup + thead tr:first-child th,
+table colgroup + thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0;
+}
+table tbody + tbody {
+	border-top: @tableBorder;
+}
+table tbody tr:hover td,
+table tbody tr:hover th {
+	background-color: @focusColor;
+}
+.table-condensed th,
+.table-condensed td {
+	padding: 5px;
+	padding: 0.5rem;
+}
+.table-bordered {
+	border: @tableBorder;
+	border-left: 0;
+	border-collapse: separate;*border-collapse:collapsed;
+}
+.table-bordered th,
+.table-bordered td {
+	border-left: @tableBorder;
+}
+.table-bordered thead:first-child tr:first-child th,
+.table-bordered tbody:first-child tr:first-child th,
+.table-bordered tbody:first-child tr:first-child td {
+	border-top: 0;
+}
+.table-striped tbody tr:nth-child(odd) td,
+.table-striped tbody tr:nth-child(odd) th {
+	background-color: @focusColor;
+}
