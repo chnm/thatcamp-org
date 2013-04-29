@@ -1,14 +1,14 @@
 <?php
 
 /*
-=======
+ * Transposh v0.9.2
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
-=======
+ * Date: Mon, 11 Mar 2013 02:28:05 +0200
  */
 
 /*
@@ -189,7 +189,7 @@ class transposh_3rdparty {
         // we reduce the priorty by 0.2, but not below zero
         $sm_page->SetProprity(max($sm_page->GetPriority() - 0.2, 0));
 
-        /* <xhtml:link
+        /* <xhtml:link 
           rel="alternate"
           hreflang="de"
           href="http://www.example.com/de" /> */

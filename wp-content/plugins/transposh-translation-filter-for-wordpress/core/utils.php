@@ -351,7 +351,7 @@ class transposh_utils {
      * Checks that we may perform a rewrite on said url
      * @param url to be checked $url
      * @param the base url of the site $home_url
-     * @return boolean if this is rewritable
+     * @return boolean if this is rewritable 
      */
     public static function is_rewriteable_url($url, $home_url) {
         return (stripos($url, $home_url) !== FALSE);

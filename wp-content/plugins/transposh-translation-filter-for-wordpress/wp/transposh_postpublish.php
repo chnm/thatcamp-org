@@ -1,14 +1,14 @@
 <?php
 
 /*
-=======
+ * Transposh v0.9.2
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
-=======
+ * Date: Mon, 11 Mar 2013 02:28:05 +0200
  */
 
 /*
@@ -33,7 +33,8 @@ class transposh_postpublish {
      */
     function transposh_postpublish(&$transposh) {
         $this->transposh = &$transposh;
-=======
+        // we need this anyway because of the change language selection
+        add_action('edit_post', array(&$this, 'on_edit'));
         add_action('admin_menu', array(&$this, 'on_admin_menu'));
     }
 

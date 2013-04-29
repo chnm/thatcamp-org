@@ -1,14 +1,14 @@
 <?php
 
 /*
-=======
+ * Transposh v0.9.2
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
-=======
+ * Date: Mon, 11 Mar 2013 02:28:05 +0200
  */
 
 /*
@@ -35,7 +35,7 @@ class transposh_base_widget {
      * Attempts inclusion of css needed for the subwidget
      * @param string $file
      * @param string $plugin_dir
-     * @param string $plugin_url
+     * @param string $plugin_url 
      */
     static function tp_widget_css($file, $plugin_dir, $plugin_url) {
         tp_logger('looking for css:' . $file, 4);
@@ -50,7 +50,7 @@ class transposh_base_widget {
      * Attempts inclusion of javascript needed for the subwidget
      * @param string $file
      * @param string $plugin_dir
-     * @param string $plugin_url
+     * @param string $plugin_url 
      */
     static function tp_widget_js($file, $plugin_dir, $plugin_url) {
         tp_logger('looking for js:' . $file, 4);

@@ -5,7 +5,7 @@
   Plugin URI: http://transposh.org/
   Description: Translation filter for WordPress, After enabling please set languages at the <a href="admin.php?page=tp_main">the options page</a> Want to help? visit our development site at <a href="http://trac.transposh.org/">trac.transposh.org</a>.
   Author: Team Transposh
-=======
+  Version: 0.9.2
   Author URI: http://transposh.org/
   License: GPL (http://www.gnu.org/licenses/gpl.txt)
   Text Domain: transposh
@@ -13,14 +13,14 @@
  */
 
 /*
-=======
+ * Transposh v0.9.2
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
-=======
+ * Date: Mon, 11 Mar 2013 02:28:05 +0200
  */
 
 //avoid direct calls to this file where wp core files not present
@@ -150,7 +150,7 @@ class transposh_plugin {
         if ($this->options->debug_enable)
                 tp_logger(preg_replace('|^' . preg_quote(WP_PLUGIN_DIR, '|') . '/|', '', __FILE__), 4); // includes transposh dir and php
 
-=======
+
 // TODO: get_class_methods to replace said mess, other way?
         add_filter('plugin_action_links_' . preg_replace('|^' . preg_quote(WP_PLUGIN_DIR, '|') . '/|', '', __FILE__), array(&$this, 'plugin_action_links'));
         add_filter('query_vars', array(&$this, 'parameter_queryvars'));
@@ -322,7 +322,10 @@ class transposh_plugin {
      * @return string Modified page buffer
      */
     function process_page(&$buffer) {
-=======
+        /*        if (!$this->target_language) {
+          global $wp;
+          $this->on_parse_request($wp);
+          } */
         tp_logger('processing page hit with language:' . $this->target_language, 1);
         $start_time = microtime(TRUE);
 
@@ -334,7 +337,10 @@ class transposh_plugin {
         // TODO: need to further investigate (will it be needed?)
         elseif ($this->target_language == '') {
             tp_logger("Skipping translation where target language is unset", 3);
-=======
+            if (!$buffer) {
+                tp_logger("seems like we had a premature flushing");
+                $this->tried_buffer = true;
+            }
         }
         // Don't translate the default language unless specifically allowed to...
         elseif ($this->options->is_default_language($this->target_language) && !$this->options->enable_default_translate) {
@@ -474,7 +480,7 @@ class transposh_plugin {
 
     //function flush_transposh_rewrite_rules() {
     //add_filter('rewrite_rules_array', array(&$this, 'update_rewrite_rules'));
-//        $GLOBALS['wp_rewrite']->flush_rules();
+//        $GLOBALS['wp_rewrite']->flush_rules();        
     //}
 
     /**
@@ -910,7 +916,7 @@ class transposh_plugin {
         $use_params = !$this->enable_permalinks_rewrite;
 
         // we don't really know, but we sometime rewrite urls when we are in the default language (canonicals?), so just clean them up
-        //       if ($this->target_language == $this->options->default_language)
+        //       if ($this->target_language == $this->options->default_language) 
         if ($this->options->is_default_language($this->target_language)) {
             $href = transposh_utils::cleanup_url($href, $this->home_url);
             tp_logger("cleaned up: $href", 4);
@@ -1170,7 +1176,7 @@ class transposh_plugin {
     /**
      * This function makes sure wordpress sees the appropriate locale on translated pages for .po/.mo and mu integration
      * @param string $locale
-     * @return string
+     * @return string 
      */
     function transposh_locale_filter($locale) {
         $lang = transposh_utils::get_language_from_url($_SERVER['REQUEST_URI'], $this->home_url);
@@ -1193,7 +1199,7 @@ class transposh_plugin {
      * @see http://trac.transposh.org/wiki/ShortCodes
      * @param array $atts
      * @param string $content
-     * @return string
+     * @return string 
      */
     function tp_shortcode($atts, $content = null) {
         $only_class = '';
