@@ -2,12 +2,12 @@
 /**
  * Custom Child Theme Functions
  *
- * This file's parent directory can be moved to the wp-content/themes directory
+ * This file's parent directory can be moved to the wp-content/themes directory 
  * to allow this Child theme to be activated in the Appearance - Themes section of the WP-Admin.
  *
- * Included is a basic theme setup that will add support for custom header images and custom
+ * Included is a basic theme setup that will add support for custom header images and custom 
  * backgrounds. There are also a set of commented theme supports that can be uncommented if you need
- * them for backwards compatibility. If you are starting a new theme, these legacy functionality can be deleted.
+ * them for backwards compatibility. If you are starting a new theme, these legacy functionality can be deleted.  
  *
  * More ideas can be found in the community documentation for Thematic
  * @link http://docs.thematictheme.com
@@ -17,22 +17,80 @@
  */
 
 
-=======
+/* The Following add_theme_support functions 
+ * will enable legacy Thematic Features
+ * if uncommented.
+ */
+ 
+// add_theme_support( 'thematic_legacy_feedlinks' );
+// add_theme_support( 'thematic_legacy_body_class' );
+// add_theme_support( 'thematic_legacy_post_class' );
+// add_theme_support( 'thematic_legacy_comment_form' );
+// add_theme_support( 'thematic_legacy_comment_handling' );
+
+/**
+ * Define theme setup
+ */
+function childtheme_setup() {
+	
+	/*
+	 * Add support for custom background
+	 * 
+	 * Allow users to specify a custom background image or color.
+	 * Requires at least WordPress 3.4
+	 * 
+	 * @link http://codex.wordpress.org/Custom_Backgrounds Custom Backgrounds
+	 */
+	add_theme_support( 'custom-background' );
+	
+	
+	/**
+	 * Add support for custom headers
+	 * 
+	 * Customize to match your child theme layout and style.
+	 * Requires at least WordPress 3.4
+	 * 
+	 * @link http://codex.wordpress.org/Custom_Headers Custom Headers
+	 */
+	add_theme_support( 'custom-header', array(
+		// Header image default
+		'default-image' => '',
+		// Header text display default
+		'header-text' => true,
+		// Header text color default
+		'default-text-color' => '000',
+		// Header image width (in pixels)
+		'width'	=> '940',
+		// Header image height (in pixels)
+		'height' => '235',
+		// Header image random rotation default
+		'random-default' => false,
+		// Template header style callback
+		'wp-head-callback' => 'childtheme_header_style',
+		// Admin header style callback
+		'admin-head-callback' => 'childtheme_admin_header_style'
+		) 
+	);
+	
+}
+add_action('thematic_child_init', 'childtheme_setup');
+
+
 /**
  * Custom Image Header Front-End Callback
  *
- * Defines the front-end style definitions for
+ * Defines the front-end style definitions for 
  * the custom image header.
  * This style declaration will be output in the <head> of the
  * document just before the closing </head> tag.
- * Inline Syles and !important declarations
+ * Inline Syles and !important declarations 
  * can be used to override these styles.
  *
  * @link http://codex.wordpress.org/Function_Reference/get_header_image get_header_image()
  * @link http://codex.wordpress.org/Function_Reference/get_header_textcolor get_header_textcolor()
  */
 function childtheme_header_style() {
-	?>
+	?>	
 	<style type="text/css">
 	<?php
 	/* Declares the header image from the settings
@@ -52,18 +110,18 @@ function childtheme_header_style() {
 		#blog-title, #blog-title a {
 			color:#000;
 		}
-		#blog-description {
+		#blog-description {	
 			padding-bottom: 22px;
 		}
 		<?php
 		}
-
+		
 	}
 	?>
 	<?php
 	/* This delcares text color for the Blog title and Description
 	 * from the settings saved in WP-Admin > Appearance > Header\
-	 * If not set the deafault color is set to #000
+	 * If not set the deafault color is set to #000 
 	 */
 	if ( get_header_textcolor() ) {
 		?>
@@ -86,10 +144,10 @@ function childtheme_header_style() {
 		#blog-title, #blog-title a, #blog-description {
 			display:none;
 		}
-		#branding {
-			height:<?php echo HEADER_IMAGE_HEIGHT; ?>px;
+		#branding { 
+			height:<?php echo HEADER_IMAGE_HEIGHT; ?>px; 
 			width:940px;
-			padding:0;
+			padding:0; 
 		}
 		<?php
 	}
@@ -113,14 +171,14 @@ function childtheme_admin_header_style() {
 	?>
 	<style type="text/css">
 	#headimg {
-		background-position: left bottom;
+		background-position: left bottom; 
 		background-repeat:no-repeat;
-		border:0 !important;
+		border:0 !important;   
 		height:auto !important;
 		padding:0 0 <?php echo HEADER_IMAGE_HEIGHT + 22; /* change the added integer (22) to match your desired top padding */?>px 0;
 		margin:0 0 28px 0;
 	}
-
+	
 	#headimg h1 {
 	    font-family:Arial,sans-serif;
 	    font-size:34px;

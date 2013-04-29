@@ -1,6 +1,0 @@
-=======
-msgid "<strong>Name:</strong> %1$s %2$s"
-msgstr "<strong>Meno:</strong> %1$s %2$s"
-
-#: loop-author.php:26
-=======
