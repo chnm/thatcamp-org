@@ -3,7 +3,7 @@
 Plugin Name: Links Shortcode
 Plugin URI: http://blog.bigcircle.nl/about/wordpress-plugins
 Description: Displays all links of a certain category in a post using a shortcode, according to a definable template. Includes optional Facebook Like button.
-Version: 1.3
+Version: 1.4.1
 Author: Maarten Swemmer
 Author URI: http://blog.bigcircle.nl
 */
@@ -13,7 +13,6 @@ $linkssc_default_template = "<div class=\"links_sc_fb\">\n[optional [date]: ||]<
 require_once(ABSPATH . WPINC . '/formatting.php');
 
 add_action( 'wp_enqueue_scripts', 'linkssc_css' );
-
 function linkssc_css() 
 {
 	// added for SSL friendlyness:
@@ -21,7 +20,6 @@ function linkssc_css()
 	wp_enqueue_style( 'linkssc-style' );
 	//previously: echo '<link rel="stylesheet" type="text/css" media="screen" href="'. WP_PLUGIN_URL . '/links-shortcode/links-shortcode.css"/>';	
 }
-add_shortcode('links', 'linkssc_shortcode');
 
 function linkssc_update_info() {
 	if ( $info = wp_remote_fopen("http://blog.bigcircle.nl/links-shortcode-latest.txt") )
@@ -32,11 +30,13 @@ add_action('in_plugin_update_message-'.plugin_basename(__FILE__), 'linkssc_updat
 
 function linkssc_getdate($text)
 {
+	$result = new StdClass; 
+	
 	if(preg_match("/\d\d\d\d-\d\d-\d\d:/",$text))
 	{
 		$result->date = substr($text,0,10);
 		$result->title = substr($text,11);
-	}
+	} 
 	else
 	{
 		$result->date = '';
@@ -45,6 +45,7 @@ function linkssc_getdate($text)
 	return $result;
 }
 
+add_shortcode('links', 'linkssc_shortcode');
 function linkssc_shortcode($atts, $content = null) 
 {
 	global $linkssc_default_template;
@@ -53,6 +54,7 @@ function linkssc_shortcode($atts, $content = null)
 	$facebook = get_option('linkssc_facebook', 'like');
 	$fbcolors = get_option('linkssc_fbcolors', 'light');
 	$template = get_option('linkssc_template', $linkssc_default_template);
+		if ($template=='') { $template = $linkssc_default_template; update_option('linkssc_template', $linkssc_default_template); }
 	$template_before = get_option('linkssc_template_b', '');
 	$template_after = get_option('linkssc_template_a', '');
 	if ($facebook == 'like') { $fblike = '1'; }
@@ -119,7 +121,7 @@ function linkssc_shortcode($atts, $content = null)
 		$linkinfo['link_rel'] = $bm->link_rel;
 		$linkinfo['link_image'] = $bm->link_image;
 		$linkinfo['link_target'] = $bm->link_target;
-		$linkinfo['link_category'] = $bm->link_category;
+		if (isset($bm->link_category)) {$linkinfo['link_category'] = $bm->link_category;} // because $bm->link_category is in most cases not set. TODO: find better solution
 		$linkinfo['link_description'] = $bm->link_description;
 		$linkinfo['link_visible'] = $bm->link_visible;
 		$linkinfo['link_owner'] = get_the_author_meta('display_name', $bm->link_owner); // display the display name of a user instead of the user id.
@@ -137,7 +139,7 @@ function linkssc_shortcode($atts, $content = null)
 		$linkinfo['link_rss'] = $bm->link_rss;
 		if ($fblike == '1'|| $fbrecommend == '1')
 		{
-			$linkinfo['fb_button'] = '<iframe src="http://www.facebook.com/plugins/like.php?href='.urlencode($bm->link_url).'&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action='.$fbaction.'&amp;font&amp;colorscheme='.$fbcolors.'" scrolling="no" frameborder="0" ></iframe>';
+			$linkinfo['fb_button'] = '<iframe src="//www.facebook.com/plugins/like.php?href='.urlencode($bm->link_url).'&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action='.$fbaction.'&amp;font&amp;colorscheme='.$fbcolors.'" scrolling="no" frameborder="0" ></iframe>';
 		}
 		else { $linkinfo['fb_button'] = ''; }
 		$reallinkinfo = array_diff($linkinfo, array('')); // remove all elements with empty value;
@@ -153,7 +155,6 @@ function linkssc_shortcode($atts, $content = null)
 			if ((preg_match('/\[(.*)\]/U',$optionals[1][$c-1],$tag)) && (isset($linkinfo[$tag[1]]))) 
 			{
 				$newlinktext = str_replace ($optionals[0][$c-1],$optionals[2][$c-1],$newlinktext); 
-				//$newlinktext = str_replace ($optionals[0][$c-1],$optionals[2][$c-1],$newlinktext); 
 			}
 			else
 			{
@@ -164,7 +165,6 @@ function linkssc_shortcode($atts, $content = null)
 		{
 			$newlinktext = str_replace('['.$k.']','',$newlinktext);
 		}
-
 		
 		$text .= $newlinktext; 
 		// for testing only:
@@ -245,6 +245,7 @@ function linkssc_options_page()
 	$facebook = get_option('linkssc_facebook', 'like');
 	$fbcolors = get_option('linkssc_fbcolors', 'light');
 	$template = get_option('linkssc_template', $linkssc_default_template);
+		if ($template=='') { $template = $linkssc_default_template; update_option('linkssc_template', $linkssc_default_template); }
 	$template_b = get_option('linkssc_template_b', '');
 	$template_a = get_option('linkssc_template_a', '');
 	

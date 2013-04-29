@@ -3,10 +3,10 @@ Contributors: maartenjs, Maarten Swemmer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=79AKXNVRT8YSQ&lc=HK&item_name=Links%20Shortcode%20plugin%20by%20Maarten&item_number=Links%20Shortcode%20plugin&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 Tags: links, link, shortcode, category, Facebook, Like, Recommend, list of links, template, customizable
 Requires at least: 3.0
-Tested up to: 3.3.2
-Stable tag: 1.3
+Tested up to: 3.4.1
+Stable tag: 1.4.1
 
-The plugin provides the shortcode 'links'. This shortcode lists all links having specified characteristics, following a specified template.
+The plugin provides the shortcode 'links'. This shortcode shows all links having specified characteristics, following a specified template.
 
 == Description ==
 
@@ -60,7 +60,15 @@ No special actions required before upgrading.
 
 == Changelog ==
 
-= 1.3 =
+= 1.4.1 (01-03-2013) = 
+* Fixed issue where newly installed plugin does not contain a default template, resulting in no links being shown by default.
+
+= 1.4 (27-02-2013) = 
+* Made Facebook button SSL friendly as well, to prevent https security warnings
+* Compatible with latest version of Wordpress
+* Small bug fixes (making code neater)
+
+= 1.3 (21-07-2012) =
 * Corrected code to be SSL friendly.
 * Added option to choose Facebook like button color (light or dark).
 * Added functionality to save the date on which links are added or updated. This date is also available for sorting (use [links orderby="link_updated"]). The date is also availabel for display, where it can be overruled by adding the date in front of the link title as yyyy-mm-dd followed by ':'.
