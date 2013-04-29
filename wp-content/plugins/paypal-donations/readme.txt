@@ -1,9 +1,11 @@
-﻿=== PayPal Donations ===
+=== PayPal Donations ===
 Contributors: artstorm
 Tags: paypal, donation, shortcode, widget, donate, button, sidebar
-Requires at least: 2.7
-Tested up to: 3.3.1
-Stable tag: 1.6
+Requires at least: 2.8
+Tested up to: 3.5.1
+Stable tag: 1.8
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Easy, simple setup to add a PayPal Donation button as a Widget or with a shortcode.
 
@@ -13,7 +15,7 @@ Adds a PayPal donation shortcode and sidebar Widget to WordPress. The options me
 
 = Widget =
 
-In the Appearance -> Widgets in WordPress 2.8 or newer you'll find the PayPal Donations widget. After adding it to your sidebar you can enter a title for the Widget, some descriptive text that will appear above the button and specify an optional purpose and reference for the donation button to override the default settings.
+In the Appearance -> Widgets you'll find the PayPal Donations widget. After adding it to your sidebar you can enter a title for the Widget, some descriptive text that will appear above the button and specify an optional purpose and reference for the donation button to override the default settings.
 
 = Shortcode =
 
@@ -33,6 +35,14 @@ For complete usage instructions see: [PayPal Donations](http://wpstorm.net/wordp
 
 See the [Changelog](http://wordpress.org/extend/plugins/paypal-donations/changelog/) for what's new. Available [Translations](http://wpstorm.net/wordpress-plugins/paypal-donations/#translations).
 
+= Related Links =
+
+* [Documentation](http://wpstorm.net/wordpress-plugins/paypal-donations/ 
+  "Complete usage instructions")
+* [Support Forum](http://wordpress.org/tags/paypal-donations?forum_id=10 
+  "Use this for support and feature requests")
+* [GitHub](https://github.com/artstorm/paypal-donations 
+  "Develop and contribute your code or report bugs")
 
 == Installation ==
 
@@ -50,7 +60,23 @@ See the [Changelog](http://wordpress.org/extend/plugins/paypal-donations/changel
 
 == Frequently Asked Questions ==
 
-Please visit [PayPal Donations' Comments](http://wpstorm.net/wordpress-plugins/paypal-donations/#comments) for questions and answers.
+= Where can I send bug reports? =
+
+Please visit the GitHub repository for [PayPal Donations](https://github.com/artstorm/paypal-donations)
+and open an [issue](https://github.com/artstorm/paypal-donations/issues).
+Please create an issue that conforms with [necolas's guidelines](https://github.com/necolas/issue-guidelines).
+
+= Where can I get support? =
+
+Please visit the [Support Forum](http://wordpress.org/tags/paypal-donations?forum_id=10 "Use this for support and feature requests") 
+for questions, answers, support and feature requests.
+
+= How can I contribute to the plugin? =
+
+If you want to contribute improved code or new features for the plugin. Please
+open a pull request at the [PayPal Donations GitHub repository](https://github.com/artstorm/paypal-donations).
+Please open a pull request that conforms with [necolas's guidelines](https://github.com/necolas/issue-guidelines).
+Contributions are appreciated and encouraged.
 
 == Screenshots ==
 
@@ -59,10 +85,25 @@ Please visit [PayPal Donations' Comments](http://wpstorm.net/wordpress-plugins/p
 
 == Changelog ==
 
+= Version 1.8 - 9 Mar 2013 =
+ * Added tabbed navigation in the plugin admin settings, and moved Extras into
+   the advanced tab.
+ * Updated the admin input fields in size to follow WordPress standard layout.
+ * Implemented return method, as an advanced option.
+ * Updated administration to use WordPress Settings API.
+ * Updated Swedish translation.
+
+= Version 1.7 - 19 Feb 2013 =
+ * Moved the development to 
+   [GitHub](https://github.com/artstorm/paypal-donations). 
+ * Refactored code to comply with the PSR-2 standard.
+ * Bumped minimum PHP version to 5.2.4.
+ * Bumped minimum required WordPress version to WordPress 2.8.
+
 = Version 1.6 - 13 Mar 2012 =
  * Added an option under extras to set a PayPal checkout language.
- * Added filter `paypal_donations_purpose_html`, to allow replacing the default
-   hidden form element for purpose with some other form input type.
+ * Added filter `paypal_donations_purpose_html`, to allow tweaking the default
+   hidden form input element for purpose.
  * Included Romanian translation by Marko Pozner.
 
 = Version 1.5 - 9 Jan 2012 =
