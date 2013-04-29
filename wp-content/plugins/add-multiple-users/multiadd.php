@@ -37,7 +37,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 function amu_menu() {
-	add_menu_page('Add Multiple Users', 'AMU', 'manage_options', 'addmultiple', 'add_multiple_users');
+	add_menu_page('Add Multiple Users', 'Add Multiple Users', 'manage_options', 'addmultiple', 'add_multiple_users');
 	add_submenu_page('addmultiple',__('AMU Settings','amulang'),__('Plugin Settings','amulang'),'manage_options','amusettings','amu_settings');
 	add_submenu_page('addmultiple',__('AMU Manual Entry Form','amulang'),__('Manual Entry','amulang'),'manage_options','amumanual','amu_manual');
 	add_submenu_page('addmultiple',__('AMU Import CSV Data','amulang'),__('Import CSV Data','amulang'),'manage_options','amucsvimport','amu_csvimport');
