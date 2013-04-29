@@ -1,0 +1,2839 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Graphene 1.0 theme for WordPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-01-21 21:34+1200\n"
+"PO-Revision-Date: 2013-01-01 20:11+0100\n"
+"Last-Translator: Gent Ukehajdaraj <info@gentukehajdaraj.com>\n"
+"Language-Team: Syahir Hakim <syahir@khairul-syahir.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;esc_attr_e;esc_attr__\n"
+"X-Poedit-Basepath: D:\\MyVault\\MyProjects\\Websites\\theme-graphene\\site"
+"\\wp-content\\themes\\graphene\\\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Language: en\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:25
+#, php-format
+msgid "Searching for: <span>%s</span>"
+msgstr "Duke kërkuar për: <span>%s</span>"
+
+#: 404.php:31
+msgid "Error 404 - Page Not Found"
+msgstr "Error 404 - Faqja Nuk Gjindet"
+
+#: 404.php:33
+msgid ""
+"Sorry, I've looked everywhere but I can't find the page you're looking for."
+msgstr "Kërkojmë falje, por nuk gjetëm faqën që ju po e kërkonit"
+
+#: 404.php:34
+msgid ""
+"If you follow the link from another website, I may have removed or renamed "
+"the page some time ago. You may want to try searching for the page:"
+msgstr ""
+"Nëse keni ardhur nga një webfaqe tjetër, faqja që po kërkoni është fshirë "
+"apo i është ndryshuar titulli. Mund të provoni ta kërkoni:"
+
+#: 404.php:42
+msgid "Automated search"
+msgstr "Kërkim automatik"
+
+#: 404.php:45
+#, php-format
+msgid "Searching for the terms <strong>%s</strong> ..."
+msgstr "Duke kërkuar për fjalët <strong>%s</strong> ..."
+
+#: archive.php:24
+#, php-format
+msgid "Daily Archive: %s"
+msgstr "Arkiva Ditore: %s"
+
+#: archive.php:26
+#, php-format
+msgid "Monthly Archive: %s"
+msgstr "Arkiva Mujore: %s"
+
+#. translators: F will be replaced with month, and Y will be replaced with year, so "F Y" in English would be replaced with something like "June 2008".
+#: archive.php:28
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:30
+#, php-format
+msgid "Yearly Archive: %s"
+msgstr "Arkiva Vjetore: %s"
+
+#: archive.php:40
+#, php-format
+msgid "%1$s Archive: <span>%2$s</span>"
+msgstr "%1$s Arkiva: <span>%2$s</span>"
+
+#: archive.php:43
+msgid "Blog Archive"
+msgstr "Blog Arkiva"
+
+#: author.php:32
+msgid "Author's posts listings"
+msgstr "Postimet e Autorit"
+
+#: category.php:13
+#, php-format
+msgid "Category Archive: <span>%s</span>"
+msgstr "Arkiva e Kategorive: <span>%s</span>"
+
+#: comments.php:25
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"Ky potim është i mbrojtur me fjalëkalim. Shkruani fjalëkalimin për të "
+"shikuar komentet."
+
+#: comments.php:49 loop-author.php:85 loop.php:166
+#, php-format
+msgid "1 comment"
+msgid_plural "%d comments"
+msgstr[0] "1 koment"
+msgstr[1] "%d komente"
+
+#: comments.php:51
+#, php-format
+msgid "1 ping"
+msgid_plural "%d pings"
+msgstr[0] "1 ping"
+msgstr[1] "%d pings"
+
+#: comments.php:109
+msgid "Comments have been disabled."
+msgstr "Komentet janë mbyllur."
+
+#: comments.php:126
+#, php-format
+msgid ""
+"You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags "
+"and attributes: %s"
+msgstr ""
+"Mund të përdorni këto <abbr title=\"HyperText Markup Language\">HTML</abbr> "
+"tags and attributes: %s"
+
+#: comments.php:131
+msgid "Your email address will not be published."
+msgstr "Email adresa e juaj nuk do të publikohet."
+
+#: comments.php:134
+msgid "Submit Comment"
+msgstr "Dërgo Koment"
+
+#: footer.php:41
+msgid "Copyright"
+msgstr "Të drejtat e autorit"
+
+#. translators: %s will replaced by a link to the Creative Commons licence page, with "Creative Commons Licence" as the link text.
+#: footer.php:56
+#, php-format
+msgid ""
+"Except where otherwise noted, content on this site is licensed under a %s."
+msgstr ""
+"Vetëm në rastet ku citohet ndryshe, përmbajtja e kësaj faqe është e "
+"licensuar sipas %s."
+
+#: footer.php:56
+msgid "Creative Commons Licence"
+msgstr "Creative Commons Licence"
+
+#: footer.php:58
+msgid "Creative Commons Licence BY-NC-ND"
+msgstr "Creative Commons Licence BY-NC-ND"
+
+#: footer.php:79
+msgid "Return to top"
+msgstr "Kthehu lart"
+
+#. translators: %1$s is the link to WordPress.org, %2$s is the theme's name
+#: footer.php:89
+#, php-format
+msgid "Powered by %1$s and the %2$s."
+msgstr "Mundësuar nga %1$s dhe %2$s."
+
+#: footer.php:89
+msgid "Graphene Theme"
+msgstr "Graphene Theme"
+
+#: header.php:36
+#, php-format
+msgid "Subscribe to %s's RSS feed"
+msgstr "Abonohuni te %s's RSS feed"
+
+#: header.php:36
+msgid "Subscribe to RSS feed"
+msgstr "Abonohuni te RSS feed"
+
+#: header.php:82 header.php:102
+msgid "Go back to the front page"
+msgstr "Kthehuni në faqën fillestare"
+
+#: loop-author.php:23
+msgid "Author's details"
+msgstr "Detajet e Autorit"
+
+#. translators: %1$s is the first name, %2$s is the last name
+#: loop-author.php:25
+#, php-format
+msgid "<strong>Name:</strong> %1$s %2$s"
+msgstr "<strong>Emri:</strong> %1$s %2$s"
+
+#: loop-author.php:26
+#, php-format
+msgid "<strong>Date registered:</strong> %1$s"
+msgstr "<strong>Data e regjistrimit:</strong> %1$s"
+
+#: loop-author.php:35
+msgid "Biography"
+msgstr "Biografia"
+
+#: loop-author.php:52
+msgid "Latest posts"
+msgstr "Postimet e fundit"
+
+#: loop-author.php:55 loop-author.php:85
+#, php-format
+msgid "Permalink Link to %s"
+msgstr "Permalink Link to %s"
+
+#: loop-author.php:55 loop-author.php:85 loop-children.php:45 loop-page.php:8
+#: loop-page.php:35 loop-post-formats.php:36 loop-single.php:67 loop.php:31
+#: loop.php:66
+msgid "(No title)"
+msgstr "(Pa Titul)"
+
+#: loop-author.php:92
+msgid "Most commented posts"
+msgstr "Postimet më të komentuara"
+
+#: loop-children.php:45 loop-children.php:53 loop-post-formats.php:36
+#: loop.php:65 loop.php:134
+#, php-format
+msgid "Permalink to %s"
+msgstr "Permalink to %s"
+
+#: loop-children.php:53
+msgid "View page &raquo;"
+msgstr "Shikoje faqen &raquo;"
+
+#: loop-not-found.php:3
+msgid "Not found"
+msgstr "Nuk u gjet"
+
+#: loop-not-found.php:8
+msgid ""
+"Sorry, but you are looking for something that isn't here. Wanna try a search?"
+msgstr "Kërkojmë falje, por ajo që po kërkonit nuk ekziston. Doni ta kërkoni?"
+
+#: loop-not-found.php:10
+msgid ""
+"Sorry, but no results were found for that keyword. Wanna try an alternative "
+"keyword search?"
+msgstr ""
+"Kërkojmë falje, por nuk gjetëm asgjë për atë fjalë. Doni të provoni një "
+"tjetër?"
+
+#: loop-page.php:23 loop-page.php:24
+#, php-format
+msgid "Print this %s"
+msgstr "Printoje këtë %s"
+
+#: loop-page.php:45 loop-single.php:83 loop.php:85
+#, php-format
+msgid "Edit %s"
+msgstr "Ndryshoje %s"
+
+#: loop-page.php:66 loop-single.php:122 loop.php:148
+msgid "Pages:"
+msgstr "Faqet:"
+
+#: loop-page.php:90 loop-post-formats.php:89 loop-single.php:172 loop.php:179
+msgid "Permanent link to this article:"
+msgstr "Permalinku për këtë artikull:"
+
+#: loop-post-formats.php:15
+msgid "Status update"
+msgstr "Status i ri"
+
+#: loop-post-formats.php:16
+msgid "Audio"
+msgstr "Audio"
+
+#: loop-post-formats.php:17
+msgid "Image"
+msgstr "Fotografi"
+
+#: loop-post-formats.php:18
+msgid "Video"
+msgstr "Video"
+
+#: loop-post-formats.php:19
+msgid "Post format"
+msgstr "Formati i postit"
+
+#. translators: This is the PHP date formatting string for the status post format. See http://php.net/manual/en/function.date.php for more details.
+#: loop-post-formats.php:32
+msgid "l F j, Y"
+msgstr "l F j, Y"
+
+#: loop-post-formats.php:32
+msgid "g:i A"
+msgstr "g:i A"
+
+#: loop-post-formats.php:42
+msgid "Edit post"
+msgstr "Ndryshoje postin"
+
+#. translators: This is the PHP date formatting string for the image post format. See http://php.net/manual/en/function.date.php for more details.
+#: loop-post-formats.php:77
+#, php-format
+msgid "Posted on: %s"
+msgstr "U postua më: %s"
+
+#: loop-post-formats.php:77
+msgid "F j, Y"
+msgstr "F j, Y"
+
+#: loop-single.php:76 loop.php:78
+msgid "Categories:"
+msgstr "Kategoritë:"
+
+#: loop-single.php:98 loop.php:102
+#, php-format
+msgid "by %s"
+msgstr "nga %s"
+
+#: loop-single.php:132 loop.php:158
+msgid "Tags:"
+msgstr "Etiketat:"
+
+#: loop-single.php:132 loop.php:158
+msgid "This post has no tag"
+msgstr "Ky postim nuk është i etiketuar"
+
+#: loop-single.php:153
+msgid "About the author"
+msgstr "Për autorin"
+
+#: loop.php:127
+msgid "Read the rest of this entry &raquo;"
+msgstr "Lexoje vazhdimin e kësaj pjese &raquo;"
+
+#: loop.php:166
+msgid "Leave comment"
+msgstr "Komento"
+
+#: loop.php:166
+msgid "Comments off"
+msgstr "Komentet janë mbyllur"
+
+#: search-404.php:14
+msgid "Suggested results"
+msgstr "Rezultatet e sygjeruara"
+
+#. translators: %s is the search term
+#: search-404.php:18
+#, php-format
+msgid ""
+"I've done a courtesy search for the term %s for you. See if you can find "
+"what you're looking for in the list below:"
+msgstr ""
+"Është bërë një kërkim për fjalën %s për ju. Ndoshta kemi gjetur atë që po "
+"kërkonit në listën e mëposhtme:"
+
+#: search-404.php:35
+msgid ""
+"<strong>Sorry, couldn't find anything.</strong> Try searching for "
+"alternative terms using the search form above."
+msgstr ""
+"<strong>Na vjen keq, nuk gjetëm asgjë.</strong> Provoni të kërkoni fjalë të "
+"tjera duke përdorur hapësirën lartë për kërkim."
+
+#: search.php:10
+#, php-format
+msgid "Search results for: %s"
+msgstr "Rezultatet e kërkimit për: %s"
+
+#: searchform.php:3 searchform.php:4
+msgid "Search"
+msgstr "Kërko"
+
+#: sidebar-two.php:35 sidebar.php:41
+msgid "Meta"
+msgstr "Meta"
+
+#: sidebar-two.php:40 sidebar.php:46
+msgid "Posts RSS"
+msgstr "Postimet RSS"
+
+#: sidebar-two.php:41 sidebar.php:47
+msgid "Comments RSS"
+msgstr "Komentet RSS"
+
+#. translators: %s is the link to wordpress.org
+#: sidebar-two.php:43 sidebar.php:49
+#, php-format
+msgid "Powered by %s"
+msgstr "Mundësuar nga %s"
+
+#: sidebar-two.php:43 sidebar.php:49
+msgid ""
+"Powered by WordPress, state-of-the-art semantic personal publishing platform."
+msgstr ""
+"Mundësuar nga WordPress, state-of-the-art semantic personal publishing "
+"platform."
+
+#: sidebar-two.php:48 sidebar.php:34
+msgid "Archives"
+msgstr "Arkiva"
+
+#: tag.php:13
+#, php-format
+msgid "Tag Archive: <span>%s</span>"
+msgstr "Etiketa e Arkivës <span>%s</span>"
+
+#: admin/custom-fields.php:14
+msgid "Graphene post-specific options"
+msgstr "Opcionet specifike për postim të Graphene"
+
+#: admin/custom-fields.php:15
+msgid "Graphene page-specific options"
+msgstr "Opcionet specifike për faqe të Graphene"
+
+#: admin/custom-fields.php:97
+msgid ""
+"These settings will only be applied to this particular post or page you're "
+"editing. They will override the global settings set in the Graphene Options "
+"or Graphene Display options page."
+msgstr ""
+"Këto ndryshime do të aplikohen vetëm në këtë postim apo faqe që ju po e "
+"përpunoni. Ato do të ndryshojnë rregullat globale të vendosura në faqet "
+"Graphene Opcionet apo Graphene Display."
+
+#: admin/custom-fields.php:98
+msgid "Slider options"
+msgstr "Opcionet e sllajdit"
+
+#: admin/custom-fields.php:102
+msgid "Slider image"
+msgstr "Fotoja e sllajdit"
+
+#: admin/custom-fields.php:106 admin/custom-fields.php:132
+#: admin/custom-fields.php:146
+msgid "Use global setting"
+msgstr "Përdor rregullat standarde"
+
+#: admin/custom-fields.php:107
+msgid "Don't show image"
+msgstr "Mos e shfaq fotografinë"
+
+#: admin/custom-fields.php:108
+msgid "Featured Image"
+msgstr "Fotografia kryesore"
+
+#: admin/custom-fields.php:109
+msgid "First image in post"
+msgstr "Fotografia e parë në postim"
+
+#: admin/custom-fields.php:110
+msgid "Custom URL"
+msgstr "URL e Veqantë"
+
+#: admin/custom-fields.php:116
+msgid "Custom slider image URL"
+msgstr "URL e veqantë e fotos së sllajdit"
+
+#: admin/custom-fields.php:120
+msgid ""
+"Make sure you select Custom URL in the slider image option above to use this "
+"custom url."
+msgstr ""
+"Sigurohuni që keni zgjedhur URL e Veqantë në opcionet për foton e sllajdit "
+"lartë për të përdorur një URL të veqantë."
+
+#: admin/custom-fields.php:124
+msgid "Display options"
+msgstr "Display Opcionet"
+
+#: admin/custom-fields.php:128
+msgid "AddThis Social Sharing button"
+msgstr "AddThis butoni për shpërndarje sociale"
+
+#: admin/custom-fields.php:133
+msgid "Show button"
+msgstr "Shfaq butonin"
+
+#: admin/custom-fields.php:134
+msgid "Hide button"
+msgstr "Fshehe butonin"
+
+#: admin/custom-fields.php:142
+msgid "Post date display"
+msgstr "Dukja e datës së postimit"
+
+#: admin/custom-fields.php:147
+msgid "Hide date"
+msgstr "Fshehe datën"
+
+#: admin/custom-fields.php:155
+msgid "Navigation options"
+msgstr "Opcionet për navigim"
+
+#: admin/custom-fields.php:159
+msgid "Description"
+msgstr "Përshkrimi"
+
+#: admin/custom-fields.php:163
+msgid ""
+"Only required if you need a description in the navigation menu and you are "
+"not using a custom menu."
+msgstr ""
+"Kërkohet vetëm nëse ju duhet një përshkrim në menynë e navigimit dhe kur nuk "
+"jeni duke e përdorur meny të veqantë."
+
+#: admin/faq.php:11
+msgid "Graphene's Frequently Asked Questions"
+msgstr "Pyetjet më të shpeshta të Graphene"
+
+#: admin/faq.php:14
+msgid "Where should I go for the theme's support?"
+msgstr "Ku duhet të shkoj për mbështetje të mëtutjeshme të themes?"
+
+#: admin/faq.php:15
+msgid ""
+"Please direct all support requests for the theme at the theme's <a href="
+"\"http://forum.khairul-syahir.com/graphene-wordpress-theme/\">Support Forum</"
+"a>."
+msgstr ""
+"Ju lutem dërgoni të gjitha kërkesat e juaja për mbështetje në <a href="
+"\"http://forum.khairul-syahir.com/graphene-wordpress-theme/\">Forumin për "
+"mbështetje</a>."
+
+#: admin/faq.php:18
+msgid "The post's featured image is replacing my header image. Help!"
+msgstr ""
+"Fotografia kryesore e postimit po e zëvendëson foton e header-it. Më duhet "
+"ndihmë!"
+
+#: admin/faq.php:19
+msgid ""
+"This is actually one of the theme's features, based on the feature in the "
+"default TwentyTen theme. Any featured image that has a size of greater than "
+"or equal to the theme's header image size (960 x 198 pixels) will replace "
+"the header image when the post/page that featured image is assigned to is "
+"being displayed. It enables you to have different header image for different "
+"posts and/or pages."
+msgstr ""
+"Kjo në fakt është një nga opcionet e theme-s, bazuar në idenë normale të "
+"theme-s TwentyTen. Çdo fotografi kryesore e cila është më e madhe apo e "
+"barabartë me fotografinë e header-it (960 x 198 pixels) do të zëvendoësojë "
+"këtë fotografi kur të postohet një postim/faqe e re me fotografi kryesore. "
+"Kjo ju mundëson që të keni fotografi të ndryshme të header-it për postim/"
+"faqe të ndryshme."
+
+#: admin/faq.php:20
+msgid ""
+"If you want to disable this feature, simply tick the <em>Disable Featured "
+"Image replacing header image</em> option in the <a href=\"themes.php?"
+"page=graphene_options&tab=display\">Graphene Options</a> page, under Display "
+"&gt; Header Display Options."
+msgstr ""
+"Nëse doni ta ndalni këtë opcion, vetëm klikoni në <em>Ndalni zëvendësimin e "
+"fotografisë së header-it me fotografi kryesore të postimit/faqës</em> "
+"opcionin në <a href=\"themes.php?page=graphene_options&tab=display"
+"\">Graphene Opcionet</a>"
+
+#: admin/faq.php:23
+msgid "Can I modify Graphene to my heart's content without paying anything?"
+msgstr ""
+"A mund ta ndryshoj Graphene por jo përmbajtjen e faqes pa paguar asgjë?"
+
+#: admin/faq.php:24
+msgid ""
+"The Graphene WordPress theme, along with all the other themes in the "
+"WordPress.org Official Free Themes Directory, is released under the GNU "
+"General Public License (GPL) Version 2. The full text of that licence is "
+"included with the theme in the <code>licence.txt</code> file in the theme's "
+"folder. Releasing the theme under that licence means, among others, that you "
+"are <em>free to modify the theme in any way for any purpose (including "
+"commercial)</em> without any obligation to the theme's author. However, if "
+"you decide to redistribute the theme, the licence dictates that you must "
+"release the theme under the same licence, GPLv2."
+msgstr ""
+"Graphene Theme për Wordpress, së bashku me të gjitha theme-t tjera falas "
+"brenda direktorisë zyrtare të Wordpress.org, janë të publikuara sipas GNU "
+"General Public License (GPL) Version 2. Teksti komplet i licensës është i "
+"përfshirë në theme në fajllin <code>licence.txt</code> në folderin e theme-"
+"s. Duke e publikuar theme-n në sipas kësaj license do të thotë, mes të "
+"tjerash, që ju jeni <em> i lirë që ta ndryshoni atë në çfardo mënyre dhe për "
+"çfardo qëllimesh (përfshirë ato komerciale) </em> pa ndonjë obligim ndaj "
+"autorit të theme-s. Megjithatë, nëse vendosni ta ridistributoni  theme-n, "
+"licensa ju obligon që ta publikoni këtë theme sipas të njejtës licensë, "
+"GPLv2."
+
+#: admin/faq.php:25
+msgid ""
+"But of course, the author would always appreciate <a href=\"themes.php?"
+"page=graphene_options\">donations</a> to support ongoing and future "
+"developments of the theme."
+msgstr ""
+"But normalisht, autori do të jetë mirënjohës për <a href=\"themes.php?"
+"page=graphene_options\">donacione</a> që do të qojnë në zhvillimin e "
+"mëtutjeshëm të theme-s."
+
+#: admin/faq.php:28
+msgid ""
+"If the theme is released under GPLv2, what is this Creative Commons licence "
+"in the theme's footer?"
+msgstr ""
+"Nëse kjo theme është e publikuar sipas GPLv2, atëherë qfarë është Creative "
+"Commons license në fund të faqës?"
+
+#: admin/faq.php:29
+msgid ""
+"The Creative Commons licence is a popular licence nowadays that are used by "
+"a lot of web-based content authors to licence their work such that it "
+"protects their intellectual property but in the same time allows its free "
+"distribution. It is included with the theme simply to make it easy for the "
+"theme's users to make use of the licence for the content they publish. Theme "
+"users can remove it altogether via the theme's Options page should they wish "
+"not to use it."
+msgstr ""
+"Licensa Creative Commons është një licensë shumë e famshme e cila përdoret "
+"nga shumë autorë që prodhojnë përmbajtje për internet për t'a licensuar "
+"punën e tyre duke mbrojtur pronën e tyre intelektuale dhe në të njejtën kohë "
+"duke bërë distributimin falas. Është e përfshirë me këtë theme thjeshtë për "
+"të bërë më të lehtë që përdoruesit të jenë më të lirë në përmbajtjen që ata "
+"e publikojnë. Përdoruesit mund ta heqin atë në faqën e opcioneve nëse nuk "
+"dëshirojnë ta përdorin."
+
+#: admin/faq.php:30
+msgid ""
+"Put simply, <em>it is not the licence that is applied for the theme itself</"
+"em>, but just for the website's content should the theme user wants to use "
+"it."
+msgstr ""
+"Thënë më thjeshtë, <em>nuk është licensë e cila i aplikohet theme-s</em>, "
+"por i aplikohet vetëm përmbajtjes së webfaqës nëse përdoruesi dëshiron ta "
+"përdor."
+
+#: admin/faq.php:33
+msgid "Is the theme compatible with this plugin or that plugin?"
+msgstr "A është kjo theme e aftë të punojë me këtë apo atë plugin?"
+
+#: admin/faq.php:34
+msgid ""
+"I don't know. With so many plugins available for WordPress, there's no way "
+"that I (or anybody else for that matter) can test for compatibility for all "
+"of them. Having said that, the theme is built with all the necessary "
+"WordPress components included with it, so chances are most plugins will be "
+"compatible with the theme."
+msgstr ""
+"Nuk e di. Me gjithë ata plugin-a të shumtë që ka WordPress, nuk ka ndonjë "
+"mënyrë që unë (apo dikush tjetër) mund ta testoj nëse të gjithë ata "
+"funksionojnë në rregull. Duke thënë këtë, kjo theme është e ndërtuar me të "
+"gjitha komponentet e nevojshme të WordPress-it, kështu që shancat janë që "
+"shumica e plugin-ave të funksionojnë edhe me këtë theme."
+
+#: admin/faq.php:35
+msgid ""
+"My suggestion is to just install the plugin and try it. If you stumble into "
+"problem, ask for support from the plugin author first. If the plugin author "
+"says that it's a problems with the theme, you know where to find support."
+msgstr ""
+"Sygjerimi im është që t'a instaloni dhe t'a provoni vetë atë. Nëse hasni në "
+"ndonjë problem, kërkoni për ndihmë tek autori i plugin-it së pari. Nëse ai "
+"konstaton se problemi qëndron tek webfaqja atëhere lirisht na kontaktoni ne."
+
+#: admin/feature-pointers.php:8
+msgid "Where are all the options?!"
+msgstr "Ku janë të gjitha opcionet?!"
+
+#: admin/feature-pointers.php:9
+msgid "We've decided to clean things up!"
+msgstr "Kemi vendosur që ti pastrojmë gjërat!"
+
+#: admin/feature-pointers.php:10
+msgid ""
+"We know how too many options can really be daunting to new users, so we've "
+"hidden them."
+msgstr ""
+"Ne e dimë që shumë opcione mund të sjellin huti tek përdoruesit e rinjë, "
+"kshtu që i kemi fshehur ato."
+
+#: admin/feature-pointers.php:11
+msgid ""
+"But no worries! If you're a seasoned user of the Graphene theme, or whenever "
+"you feel ready to further customise your site, just click on the \"Show all "
+"options\" link, and they will magically appear to you."
+msgstr ""
+"Por mos u brengosni! Nëse jeni një përdorues i vjetër i Graphene theme, apo "
+"ndiheni të gatshëm të ndryshoni më tepër webfaqën tuaj, vetëm klikoni në "
+"linkun  \"Shfaq të gjitha opcionet\", dhe ato do të paraqiten."
+
+#: admin/options-advanced.php:12 admin/options.php:350
+msgid "Preview"
+msgstr "Provoje si duket"
+
+#: admin/options-advanced.php:19
+msgid "Enable preview of your site on the Graphene Theme Options page"
+msgstr ""
+"Lejoni para-shikimin e webfaqës suaj në faqën e Graphene Theme Opcionet"
+
+#: admin/options-advanced.php:31
+msgid "Action Hooks Widget Areas"
+msgstr "Hapësira për Widget Action Hooks"
+
+#: admin/options-advanced.php:34
+msgid ""
+"This option enables you to place virtually any content to every nook and "
+"cranny in the theme, by attaching widget areas to the theme's action hooks."
+msgstr ""
+"Ky opcion ua mundëson që të futni përmbajtje në çdo pjesë të theme-s, duke "
+"vendosur hapësirën e widgets në action hooks të themes."
+
+#: admin/options-advanced.php:35
+msgid ""
+"All action hooks available in the Graphene Theme are listed below. Click on "
+"the filename to display all the action hooks available in that file. Then, "
+"tick the checkbox next to an action hook to make a widget area available for "
+"that action hook."
+msgstr ""
+"Të gjitha action hooks të Graphene Theme janë të listuara poshtë. Klikoni në "
+"emrin e fajllit për të shikuar të gjitha action hooks për atë fajll. Pastaj, "
+"klikoni në katrorin afër action hooks-it për ta bërë një hapësirë të widget-"
+"it për atë action hook."
+
+#: admin/options-advanced.php:44
+msgid "Click to show/hide the action hooks for this file"
+msgstr "Klikoni për ta shfaqur/fshehur action hooks për këtë fajll."
+
+#: admin/options-advanced.php:56
+msgid "Rescan action hooks"
+msgstr "Riskeno action hooks"
+
+#: admin/options-display.php:13
+msgid "Header Display Options"
+msgstr "Opcionet e shfaqjës së Header-it"
+
+#: admin/options-display.php:19
+msgid "Use light-coloured header bars"
+msgstr "Përdor header bars me ngjyrë të lehtë"
+
+#: admin/options-display.php:25
+msgid "Link header image to front page"
+msgstr "Linkoni fotografinë e header-it me faqën kryesore"
+
+#: admin/options-display.php:28
+msgid ""
+"Check this if you disable the header texts and want the header image to be "
+"linked to the front page."
+msgstr ""
+"Klikoni këtë nëse doni që ta ndalni tekstin e header-it dhe dëshironi që "
+"fotografia e header-it të linkohet me faqën kryesore."
+
+#: admin/options-display.php:33
+msgid "Disable Featured Image replacing header image"
+msgstr "Ndaloni zëvendësimin e Fotografisë Kryesore me atë të header-it"
+
+#: admin/options-display.php:36
+msgid ""
+"Check this to prevent the posts Featured Image replacing the header image "
+"regardless of the featured image dimension."
+msgstr ""
+"Klikoni këtë për ta ndaluar zëvendësimin e Fotografisë Kryesore të postimeve "
+"me atë të header-it pa marrë parasysh dimenzionet e fotografisë kryesore."
+
+#: admin/options-display.php:41
+msgid "Use random header image"
+msgstr "Përdor një fotografi të rastësishme të header-it"
+
+#: admin/options-display.php:45
+msgid ""
+"Check this to show a random header image (random image taken from the "
+"available default header images)."
+msgstr ""
+"Klikoni këtë për të shfaqur një fotografi të rastësishme të header-it "
+"(fotografia merret rastësisht nga fotografitë e definiuara për header). "
+
+#: admin/options-display.php:46
+msgid ""
+"<strong>Note:</strong> only works on pages where a specific header image is "
+"not defined."
+msgstr ""
+"<strong>Vëmendje:</strong> punon vetëm në faqet ku nuk është definuar "
+"fotografia e header-it."
+
+#: admin/options-display.php:52
+msgid "Search box location"
+msgstr "Lokacioni i hapësirës së kërkimit"
+
+#: admin/options-display.php:56
+msgid "Top bar"
+msgstr "Shiriti i epërm"
+
+#: admin/options-display.php:57
+msgid "Navigation bar"
+msgstr "Shiriti navigues"
+
+#: admin/options-display.php:58
+msgid "Disable search box"
+msgstr "Hiqeni hapësiren e kërkimit"
+
+#: admin/options-display.php:71
+msgid "Column Options"
+msgstr "Opcionet e Kolumneve"
+
+#: admin/options-display.php:77
+msgid "Column mode"
+msgstr "Mënyra e Kolumneve"
+
+#: admin/options-display.php:86 admin/options-display.php:131
+msgid "One column"
+msgstr "Një Kolumnë"
+
+#: admin/options-display.php:93 admin/options-display.php:138
+msgid "Two columns (with sidebar right)"
+msgstr "Dy Kolumne (me sidebar të djathtë)"
+
+#: admin/options-display.php:97 admin/options-display.php:142
+msgid "Two columns (with sidebar left)"
+msgstr "Dy Kolumne (me sidebar të majtë)"
+
+#: admin/options-display.php:104 admin/options-display.php:149
+msgid "Three columns (with two sidebars right)"
+msgstr "Tri Kolumne (me dy sidebar të djathtë)"
+
+#: admin/options-display.php:108 admin/options-display.php:153
+msgid "Three columns (with two sidebars left)"
+msgstr "Tri Kolumne (me dy sidebar të majtë)"
+
+#: admin/options-display.php:112 admin/options-display.php:157
+msgid "Three columns (with sidebars left and right)"
+msgstr "Tri Kolumne (me sidebar të majtë dhe djathtë)"
+
+#: admin/options-display.php:122
+msgid "bbPress column mode"
+msgstr "bbPress mënyra e kolumneve"
+
+#: admin/options-display.php:173
+msgid "Column Width Options"
+msgstr "Opcionet e Gjatësisë së Kolumneve"
+
+#: admin/options-display.php:176
+msgid "Note: Leave values empty to reset to the default values."
+msgstr "Shënim: Leni hapësirat e zbrazta nëse doni të resetoni vlerat."
+
+#: admin/options-display.php:180
+msgid "Container width"
+msgstr "Gjatësia e Container-it"
+
+#: admin/options-display.php:197 admin/options-display.php:220
+msgid "Column width"
+msgstr "Gjatësia e Kolumnit"
+
+#: admin/options-display.php:197
+msgid "two-column mode"
+msgstr "Mënyra me dy-kolumne"
+
+#: admin/options-display.php:201 admin/options-display.php:228
+msgid "Content"
+msgstr "Përmbajtja"
+
+#: admin/options-display.php:205
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: admin/options-display.php:220
+msgid "three-column mode"
+msgstr "Mënyra me tri-kolumne"
+
+#: admin/options-display.php:224
+msgid "Left sidebar"
+msgstr "Sidebar-i majtas"
+
+#: admin/options-display.php:232
+msgid "Right sidebar"
+msgstr "Sidebari-i djathtas"
+
+#: admin/options-display.php:253
+msgid "Posts Display Options"
+msgstr "Opcionet e Shfaqjës së Postimeve"
+
+#: admin/options-display.php:259
+msgid "Hide post author"
+msgstr "Fshihe autorin e postimit"
+
+#: admin/options-display.php:269
+msgid "Hidden"
+msgstr "Fshehur"
+
+#: admin/options-display.php:270
+msgid "As an icon (without the year)"
+msgstr "Si një ikonë (pa vitin)"
+
+#: admin/options-display.php:271
+msgid "As an icon (including the year)"
+msgstr "Si një ikonë (me vitin)"
+
+#: admin/options-display.php:272
+msgid "As inline text"
+msgstr "Si një tekst brenda rreshtit"
+
+#: admin/options-display.php:274
+msgid ""
+"Note: displaying date as inline text allows more space for the content area, "
+"especially useful for a three-column layout configuration."
+msgstr ""
+"Shënim: Nëse e shfaqni datën si tekst brenda rreshtit, kjo ju lë me më shumë "
+"hapësirë në pjesën e përmbajtës, shumë e dobishme për konfigurimin me tri-"
+"kolumne."
+
+#: admin/options-display.php:279
+msgid "Hide post categories"
+msgstr "Fshih kategoritë e postimit"
+
+#: admin/options-display.php:285
+msgid "Hide post tags"
+msgstr "Fshih etiketat e postimit"
+
+#: admin/options-display.php:291
+msgid "Hide post comment count"
+msgstr "Fshih numrin e komenteve të postimit"
+
+#: admin/options-display.php:292
+msgid ""
+"Only affects posts listing (such as the front page) and not single post view."
+msgstr ""
+"Ndikon vetëm në listimin e rregullt të postimeve (siç është faqja kryesore) "
+"dhe jo postimin e vetëm."
+
+#: admin/options-display.php:297
+msgid "Show post author's <a href=\"http://en.gravatar.com/\">gravatar</a>"
+msgstr ""
+"Shfaq <a href=\"http://en.gravatar.com/\">Gravatar-in</a> e autorit të "
+"postimit"
+
+#: admin/options-display.php:301
+msgid "Show post author's info"
+msgstr "Shfaq detajet e autorit të postimit"
+
+#: admin/options-display.php:313
+msgid "Excerpts Display Options"
+msgstr "Opcionet e Shfaqjës së Fragmenteve"
+
+#: admin/options-display.php:319
+msgid "Show excerpts in front page"
+msgstr "Shfaq fragmentet e postimeve në faqën kryesore"
+
+#: admin/options-display.php:325
+msgid "Show full content in archive pages"
+msgstr "Shfaq përmbajtjën e plotë në faqën e arkivës"
+
+#: admin/options-display.php:329
+msgid ""
+"Note: Archive pages include the archive for category, tags, time, and search "
+"results pages. Enabling this option will cause the full content of posts and "
+"pages listed in those archives to displayed instead of the excerpt, and "
+"truncated by the Read More tag if used."
+msgstr ""
+"Shënim: Faqja e arkivës përfshin arkivat për kategoritë, etiketat, kohën dhe "
+"faqën e rezultateve të kërkimeve. Duke e lejuar këtë opcion, e gjithë "
+"përmbajtja e plotë e postimeve dhe faqeve të arkivuara do të shfaqën e jo "
+"vetëm fragmenti, vetëm nëse përdorët opcioni Lexo Më Shumë."
+
+#: admin/options-display.php:333
+msgid "Show More link for manual excerpts"
+msgstr "Shfaq linkun Më Shumë për fragmentet manuale"
+
+#: admin/options-display.php:337
+msgid "Retain these HTML tags in excerpts"
+msgstr "Mbaj këto HTML atribute në fragmente"
+
+#: admin/options-display.php:340
+msgid ""
+"Enter the HTML tags you'd like to retain in excerpts. For example, enter "
+"<code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> to retain <code>&lt;p&gt;</code>, "
+"<code>&lt;ul&gt;</code>, and <code>&lt;li&gt;</code> HTML tags."
+msgstr ""
+"Shkruani atributet HTML të cilat dëshironi ti mbani në fragmente. Për "
+"shembull, shkruani <code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> për të mbajtur "
+"<code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, dhe <code>&lt;li&gt;</code>."
+
+#: admin/options-display.php:353
+msgid "Comments Display Options"
+msgstr "Opcionet e Shfaqjës së Komenteve"
+
+#: admin/options-display.php:359
+msgid "Hide allowed tags in comment form"
+msgstr "Fshih etiketat e lejuara në formën e komenteve"
+
+#: admin/options-display.php:372
+msgid "Colours Options"
+msgstr "Opcionet e ngjyrave"
+
+#: admin/options-display.php:375
+msgid ""
+"Changing colours for your website involves a lot more than just trial and "
+"error. Simply mixing and matching colours without regard to their "
+"compatibility may do more damage than good to your site's aesthetics."
+msgstr ""
+"Ndryshimi i ngjyrave të webfaqës përfshin një punë më të ndërlikuar. Duke i "
+"përzier ngjyrat mes veti pa ndonjë përshtatje në dizajn do të ndikojë më "
+"shumë për të keq sesa për të mirë në estetikën e webfaqës suaj."
+
+#: admin/options-display.php:376
+#, php-format
+msgid ""
+"It's generally a good idea to stick to colours from colour pallettes that "
+"are aesthetically pleasing. Try the %s website for a kickstart on some "
+"colour palettes you can use."
+msgstr ""
+"Në përgjishsi është një ide e mirë që të përdorni ngjyrat nga paleta e "
+"ngjyrave që dukën mirë estetikisht. Përdorni %s webfaqën për më shumë ndihmë "
+"në paletën e ngjyrave që mund të përdorni."
+
+#: admin/options-display.php:377
+msgid ""
+"When you've got the perfect combination, you can even share it with fellow "
+"Graphene theme users through the <a href=\"http://forum.khairul-syahir.com/"
+"\">Support Forum</a>."
+msgstr ""
+"Kur të gjeni kombinimin perfekt, ju mund ta ndani atë me përdoruesit e tjerë "
+"të Graphene theme në <a href=\"http://forum.khairul-syahir.com/\">Forumin "
+"për mbështetje</a>."
+
+#: admin/options-display.php:378
+msgid ""
+"<strong>Note:</strong> The previews work best on modern Gecko- and Webkit-"
+"based browsers, such as Mozilla Firefox and Google Chrome."
+msgstr ""
+"<strong>Shënim:</strong> Testimi si do të duket webfaqja më së miri "
+"funksionojnë në shfletuesit modern siç janë Mozilla Firefox dhe Google "
+"Chrome."
+
+#: admin/options-display.php:379
+msgid ""
+"<strong>Note:</strong> To reset any of the colours to their default value, "
+"just click on \"Clear\" beside the colour field and save the settings. The "
+"theme will automatically revert the value to the default colour."
+msgstr ""
+"<strong>Shënim:</strong> Për të reset-uar cilendo nga ngjyrat në gjendjen e "
+"mëparshme, vetëm klikoni në \"Pastro\" afër fushës së ngjyrave dhe ruani "
+"ndryshimet. The webfaqja në mënyrë automatike do të kthehet si ka qenë në "
+"fillim."
+
+#: admin/options-display.php:380
+msgid "Content area"
+msgstr "Hapësira e përmbajtes"
+
+#: admin/options-display.php:384
+msgid "Main content wrapper background"
+msgstr "Prapavija e mbështjellësit krysor të përmbajtës"
+
+#: admin/options-display.php:385
+msgid "Post and pages content background"
+msgstr "Prapavija e përmbajtës së postimeve dhe faqeve"
+
+#: admin/options-display.php:386
+msgid "Post meta and footer border"
+msgstr "Kufizimi i meta dhe footer-it të postimit"
+
+#: admin/options-display.php:387
+msgid "Post and pages top border"
+msgstr "Kufizimi i sipërm i postimeve dhe faqeve"
+
+#: admin/options-display.php:388
+msgid "Post and pages bottom border"
+msgstr "Kufizimi i poshtëm i postimeve dhe faqeve"
+
+#: admin/options-display.php:398 admin/options-display.php:428
+#: admin/options-display.php:454 admin/options-display.php:481
+#: admin/options-display.php:510 admin/options-display.php:646
+#: admin/options-display.php:667
+msgid "Clear"
+msgstr "Pastro"
+
+#: admin/options-display.php:405
+msgid "Widgets"
+msgstr "Widgets"
+
+#: admin/options-display.php:408
+msgid "Widget preview"
+msgstr "Si do të duket Widget"
+
+#: admin/options-display.php:409
+msgid "Widget title"
+msgstr "Titulli i Widget-it"
+
+#: admin/options-display.php:409
+msgid "List item"
+msgstr "Listoje"
+
+#: admin/options-display.php:413
+msgid "Widget item background"
+msgstr "Prapavija e Widget-it"
+
+#: admin/options-display.php:414
+msgid "Widget item list border"
+msgstr "Kufizimi i listës së Widget-it"
+
+#: admin/options-display.php:415
+msgid "Widget header border"
+msgstr "Kufizimi i header-it të Widget-it"
+
+#: admin/options-display.php:416
+msgid "Widget title colour"
+msgstr "Ngjyra e titullit të Widget-it"
+
+#: admin/options-display.php:417
+msgid "Widget title text shadow colour"
+msgstr "Ngjyra e hijës së titullit të Widget-it"
+
+#: admin/options-display.php:418
+msgid "Widget header gradient bottom colour"
+msgstr "Ngjyra gradiente e poshtme e header-it të Widget-it"
+
+#: admin/options-display.php:419
+msgid "Widget header gradient top colour"
+msgstr "Ngjyra gradiente e sipërme e header-it të Widget-it"
+
+#: admin/options-display.php:436
+msgid "Slider"
+msgstr "Sllajderi"
+
+#: admin/options-display.php:439
+msgid "Slider background preview"
+msgstr "Si duket prapavija e Sllajder-it"
+
+#: admin/options-display.php:444
+msgid "Slider top left colour"
+msgstr "Ngjyra e Sllajder-it majtas lart"
+
+#: admin/options-display.php:445
+msgid "Slider bottom right colour"
+msgstr "Ngjyra e Sllajderit poshtë djathtas"
+
+#: admin/options-display.php:462
+msgid "Block buttons"
+msgstr "Butonat blok"
+
+#: admin/options-display.php:465
+msgid "Block button preview"
+msgstr "Si duket blok butoni"
+
+#: admin/options-display.php:466
+msgid "Button label"
+msgstr "Titulli i butonit"
+
+#: admin/options-display.php:470
+msgid "Button background colour"
+msgstr "Ngjyra e prapavijës së butonit"
+
+#: admin/options-display.php:471
+msgid "Button label colour"
+msgstr "Ngjyra e titullit të butonit"
+
+#: admin/options-display.php:472
+msgid "Button label text shadow"
+msgstr "Hijëzimi i titullit të butonit"
+
+#: admin/options-display.php:489
+msgid "Archive title"
+msgstr "Titulli i arkivës"
+
+#: admin/options-display.php:492
+msgid "Archive title preview"
+msgstr "Si duket titulli i arkivës"
+
+#: admin/options-display.php:493
+msgid "Archive title:"
+msgstr "Titulli i arkivës:"
+
+#: admin/options-display.php:493
+msgid "Sample title"
+msgstr "Titull i rëndomtë"
+
+#: admin/options-display.php:497
+msgid "Archive background gradient left colour"
+msgstr "Ngjyra gradiente e majtë  e prapavijës së arkivës"
+
+#: admin/options-display.php:498
+msgid "Archive background gradient right colour"
+msgstr "Ngjyra gradiente e djathtë e prapavijës së arkivës"
+
+#: admin/options-display.php:499
+msgid "Archive label colour"
+msgstr "Ngjyra e emrit të arkivës"
+
+#: admin/options-display.php:500
+msgid "Archive text colour"
+msgstr "Ngjyra e tekstit të arkivës"
+
+#: admin/options-display.php:501
+msgid "Archive label and text shadow colour"
+msgstr "Ngjyra e hijëzimit të titullit dhe emrit të arkivës"
+
+#: admin/options-display.php:525
+msgid "Text Style Options"
+msgstr "Opcionet e Stilit të Tekstit"
+
+#: admin/options-display.php:528
+msgid ""
+"Note that these are CSS properties, so any valid CSS values for each "
+"particular property can be used."
+msgstr ""
+"Keni parasysh se keto jane pjesë të CSS, kështu që çdo vlerë valide e VSS "
+"mund të përdoret për cilendo pjesë."
+
+#: admin/options-display.php:529
+msgid "Some example CSS properties values:"
+msgstr "Disa shembuj të vlerave të pjesëve të CSS"
+
+#: admin/options-display.php:532
+msgid "Text font:"
+msgstr "Tekst fonti:"
+
+#: admin/options-display.php:536
+msgid "Text size and line height:"
+msgstr "Madhësia e tekstit dhe lartësia e vijës:"
+
+#: admin/options-display.php:540
+msgid "Text weight:"
+msgstr "Pesha e tekstit:"
+
+#: admin/options-display.php:544
+msgid "Text style:"
+msgstr "Stili i tekstit:"
+
+#: admin/options-display.php:548
+msgid "Text colour:"
+msgstr "Ngjyra e tekstit:"
+
+#: admin/options-display.php:553
+msgid "Header Text"
+msgstr "Teksti i Header-it"
+
+#: admin/options-display.php:557
+msgid "Title text font"
+msgstr "Fonti i tekstit të titullit"
+
+#: admin/options-display.php:563
+msgid "Title text size"
+msgstr "Madhësia e tekstit të titullit"
+
+#: admin/options-display.php:569
+msgid "Title text weight"
+msgstr "Pesha e titullit të tekstit"
+
+#: admin/options-display.php:575
+msgid "Title text line height"
+msgstr "Lartësia e vijës së tekstit të titullit"
+
+#: admin/options-display.php:581
+msgid "Title text style"
+msgstr "Stili i tekstit të titullit"
+
+#: admin/options-display.php:590
+msgid "Description text font"
+msgstr "Fonti i tekstit të përshkrimit"
+
+#: admin/options-display.php:596
+msgid "Description text size"
+msgstr "Madhësia e tekstit të përshkrimit"
+
+#: admin/options-display.php:602
+msgid "Description text weight"
+msgstr "Pesha e tekstit të përshkrimit"
+
+#: admin/options-display.php:608
+msgid "Description text line height"
+msgstr "Lartësia e vijës së tekstit të përshkrimit"
+
+#: admin/options-display.php:614
+msgid "Description text style"
+msgstr "Stili i tekstit të përshkrimit"
+
+#: admin/options-display.php:620
+msgid "Content Text"
+msgstr "Teksti i përmbajtjes"
+
+#: admin/options-display.php:624
+msgid "Text font"
+msgstr "Fonti i tekstit"
+
+#: admin/options-display.php:630
+msgid "Text size"
+msgstr "Madhësia e tekstit"
+
+#: admin/options-display.php:636
+msgid "Text line height"
+msgstr "Lartësia e vijës së tekstit"
+
+#: admin/options-display.php:642
+msgid "Text colour"
+msgstr "Ngjyra e tekstit"
+
+#: admin/options-display.php:652
+msgid "Link Text"
+msgstr "Teksti i linkut"
+
+#: admin/options-display.php:656
+msgid "Link colour (normal state )"
+msgstr "Ngjyra e linkut (gjendja normale)"
+
+#: admin/options-display.php:657
+msgid "Link colour (visited state )"
+msgstr "Ngjyra e linkut (gjendja kur është vizituar)"
+
+#: admin/options-display.php:658
+msgid "Link colour (hover state )"
+msgstr "Ngjyra e linkut (kur kalohet mbi të)"
+
+#: admin/options-display.php:675
+msgid "Text decoration (normal state )"
+msgstr "Dekorimi i tekstit (gjendja normale)"
+
+#: admin/options-display.php:681
+msgid "Text decoration (hover state )"
+msgstr "Dekorimi i tekstit (kur kalohet mbi të)"
+
+#: admin/options-display.php:694
+msgid "Footer Widget Display Options"
+msgstr "Opcionet e Shfaqjës së Widget-eve të Footer-it"
+
+#: admin/options-display.php:700
+msgid "Number of columns to display"
+msgstr "Numri i kolumneve që shfaqën"
+
+#: admin/options-display.php:707
+msgid "Number of columns to display for front page footer widget"
+msgstr ""
+"Numri i kolumneve që shfaqën për widget-in e footer-it në faqën kryesore"
+
+#: admin/options-display.php:721
+msgid "Navigation Menu Display Options"
+msgstr "Opcionet e Shfaqjës së Menysë së Navigimit"
+
+#: admin/options-display.php:727
+msgid "Dropdown menu item width"
+msgstr "Gjatësia e menysë Dropdown"
+
+#: admin/options-display.php:733
+msgid "Disable description in Header Menu"
+msgstr "Shfaq përshkrimin në Menynë e Header-it"
+
+#: admin/options-display.php:741
+msgid "Description for default menu \"Home\" item"
+msgstr "Përshkrimi për pjesën e zakonshme  \"Fillimi\" të menysë"
+
+#: admin/options-display.php:757
+msgid "Miscellaneous Display Options"
+msgstr "Opcionet Tjera të Shfaqjës"
+
+#: admin/options-display.php:760
+msgid "Site title options"
+msgstr "Opcionet e titullit të Webfaqës"
+
+#: admin/options-display.php:761
+msgid ""
+"Use these tags to customise your own site title structure: <code>#site-name</"
+"code>, <code>#site-desc</code>, <code>#post-title</code>"
+msgstr ""
+"Përdor këto etiketa për ta ndryshuar strukturën e titullit të webfaqës :"
+"<code>#site-name</code>, <code>#site-desc</code>, <code>#post-title</code>"
+
+#: admin/options-display.php:765
+msgid "Custom front page site title"
+msgstr "Titull i veqantë i faqës kryesore"
+
+#: admin/options-display.php:769
+msgid ""
+"Defaults to <code>#site-name &raquo; #site-desc</code>. The <code>#post-"
+"title</code> tag cannot be used here."
+msgstr ""
+"Rikthehet në <code>#site-name &raquo; #site-desc</code>. Etiketa <code>#post-"
+"title</code> nuk mund të përdoret këtu."
+
+#: admin/options-display.php:774
+msgid "Custom content pages site title"
+msgstr "Titull i veqantë i faqës së përmbajtjës"
+
+#: admin/options-display.php:778
+msgid "Defaults to <code>#post-title &raquo; #site-name</code>."
+msgstr "Kthehet në  <code>#post-title &raquo; #site-name</code>."
+
+#: admin/options-display.php:783
+msgid "Favicon options"
+msgstr "Opcionet e Fav Ikonës"
+
+#: admin/options-display.php:787
+msgid "Favicon URL"
+msgstr "URL e Fav Ikonës"
+
+#: admin/options-display.php:791 admin/options-general.php:98
+msgid "Upload or select image from gallery"
+msgstr "Ngarkoje apo zgjidh fotografinë nga galeria"
+
+#: admin/options-display.php:791
+msgid ""
+"Simply enter the full URL to your favicon file here to enable favicon. Make "
+"sure you include the <code>http://</code> in front of the URL as well. Or "
+"use the WordPress media uploader to upload an image, or select one from the "
+"media library."
+msgstr ""
+"Vetëm shkruani URL-në e plotë të fajllit të Fav Ikonës për ta aktivizuar "
+"atë. Sigurohuni që të përfshini <code>http://</code> në fillim të URL-së. "
+"Apo përdorni ngarkuesin e medias në WordPress për ta ngarkuar fotografinë, "
+"apo zgjidh një nga ato që gjenden në libraria e medias."
+
+#: admin/options-display.php:796
+msgid "WordPress Editor options"
+msgstr "Opcionet e Përpunuesit të Wordpress-it"
+
+#: admin/options-display.php:800
+msgid "Disable custom editor styles"
+msgstr "Ndalo stilet e veqanta të përpunuesit"
+
+#: admin/options-display.php:813
+msgid "Custom CSS"
+msgstr "CSS i veqantë"
+
+#: admin/options-display.php:818
+msgid "Custom CSS styles"
+msgstr "Stile të veqanta të CSS"
+
+#: admin/options-display.php:820
+msgid ""
+"You can enter your own CSS codes below to modify any other aspects of the "
+"theme's appearance that is not included in the options."
+msgstr ""
+"Këtu mund të shkruani kodet tuaja të CSS-it për të ndryshuar ndonjë aspekt "
+"tjetër të webfaqës që nuk gjindet në opcione kryesore."
+
+#: admin/options-general.php:12
+msgid "Slider Options"
+msgstr "Opcionet e Sllajder-it"
+
+#: admin/options-general.php:18
+msgid "Disable slider"
+msgstr "Ndaloje Sllajder-in"
+
+#: admin/options-general.php:26
+msgid "What do you want to show in the slider"
+msgstr "Çfarë dëshironi të shfaqni në Sllajder"
+
+#: admin/options-general.php:30
+msgid "Show latest posts"
+msgstr "Shfaq postimet e fundit"
+
+#: admin/options-general.php:33
+msgid "Show random posts"
+msgstr "Shfaq një postim në mënyrë të rastësishme"
+
+#: admin/options-general.php:36
+msgid "Show specific posts/pages"
+msgstr "Shfaq një postim/faqe specifike"
+
+#: admin/options-general.php:39
+msgid "Show posts from categories"
+msgstr "Shfaq postimet nga kategoritë"
+
+#: admin/options-general.php:44 admin/options-general.php:258
+msgid "Posts and/or pages to display"
+msgstr "Postimet dhe/apo faqet që shfaqën"
+
+#: admin/options-general.php:49 admin/options-general.php:263
+msgid ""
+"Enter ID of posts and/or pages to be displayed, separated by comma. Example: "
+"<code>1,13,45,33</code>"
+msgstr ""
+"Shkruani ID-në e postimeve dhe/apo faqeve të cilat doni ti shfaqni, duke i "
+"ndarë me presje. Shembull: <code>1,13,45,33</code>"
+
+#: admin/options-general.php:50
+msgid ""
+"Applicable only if <strong>Show specific posts/pages</strong> is selected "
+"above."
+msgstr ""
+"Aplikohet vetëm nëse <strong>Shfaq një postim/faqe specifike</strong> është "
+"e zgjedhur lartë."
+
+#: admin/options-general.php:56
+msgid "Categories to display"
+msgstr "Kategoritë që shfaqën"
+
+#: admin/options-general.php:57
+msgid ""
+"All posts within the categories selected here will be displayed on the "
+"slider. Usage example: create a new category \"Featured\" and assign all "
+"posts to be displayed on the slider to that category, and then select that "
+"category here."
+msgstr ""
+"Të gjitha postimet brenda kategorive të selektuara këtu do të shfaqën në "
+"sllajder. Shembuj të përdorimit: krijoni një kategori \"Featured\"  dhe "
+"caktoni që të gjitha postimet që shfaqën në sllajder t'i përkasin kësaj "
+"kategorie, dhe selektoni atë kategori këtu."
+
+#: admin/options-general.php:73
+msgid "Number of posts to display"
+msgstr "Numri i postimeve që paraqiten"
+
+#: admin/options-general.php:104
+msgid "Slider display style"
+msgstr "Stili i shfaqjës së Sllajder-it"
+
+#: admin/options-general.php:108
+msgid "Thumbnail and excerpt"
+msgstr "Thumbnail fotogradia dhe fragmenti"
+
+#: admin/options-general.php:109
+msgid "Background image and excerpt"
+msgstr "Fotografia e prapavijës dhe fragmenti"
+
+#: admin/options-general.php:110
+msgid "Full post content"
+msgstr "Përmbajtja e postimit të plotë"
+
+#: admin/options-general.php:116
+msgid "Slider animation"
+msgstr "Animacioni i Sllajder-it"
+
+#: admin/options-general.php:121
+msgid "Horizontal slide"
+msgstr "Sllajdi horizontal"
+
+#: admin/options-general.php:122
+msgid "Vertical slide"
+msgstr "Sllajdi vertikal"
+
+#: admin/options-general.php:123
+msgid "Fade"
+msgstr "Duke u zbehur"
+
+#: admin/options-general.php:124
+msgid "No effect"
+msgstr "Pa efekt"
+
+#: admin/options-general.php:130
+msgid "Slider height"
+msgstr "Lartësia e Sllajder-it"
+
+#: admin/options-general.php:138
+msgid "Slider speed"
+msgstr "Shpejtësia e Sllajder-it"
+
+#: admin/options-general.php:141 admin/options-general.php:150
+msgid "milliseconds"
+msgstr "milisekonda"
+
+#: admin/options-general.php:142
+msgid "This is the duration that each slider item will be shown"
+msgstr "Kjo është koha që duhet për tu shfaqur secili Sllajd"
+
+#: admin/options-general.php:147
+msgid "Slider transition speed"
+msgstr "Shpejtësia e tranzicionit të Sllajder-it"
+
+#: admin/options-general.php:151
+msgid ""
+"This is the speed of the slider transition. Lower values = higher speed."
+msgstr ""
+"Kjo është shpejtësia e tranzicionit të sllajder-it. Vlera më të vogla = "
+"shpejtësi më e madhe."
+
+#: admin/options-general.php:156
+msgid "Move slider to bottom of page"
+msgstr "Zhvendose sllajder-in në fund të faqës"
+
+#: admin/options-general.php:169
+msgid "Front Page Options"
+msgstr "Opcionet e Faqës Kryesore"
+
+#: admin/options-general.php:175
+msgid "Front page posts categories"
+msgstr "Kategoritë e postimeve të faqës kryesore"
+
+#: admin/options-general.php:177
+msgid ""
+"Only posts that belong to the categories selected here will be displayed on "
+"the front page. Does not affect Static Front Page."
+msgstr ""
+"Vetëm postimet që janë pjesë e kategorive të caktuara këtu do të shfaqën në "
+"faqën kryesore. Kjo nuk ndikon në Faqën Kryesore Statike."
+
+#: admin/options-general.php:182
+msgid "--Disabled--"
+msgstr "--Mbyllur--"
+
+#: admin/options-general.php:190
+msgid "You may select multiple categories by holding down the CTRL key."
+msgstr ""
+"Ju mund të selektoni më shumë kategori duke e mbajtur shtypur tastin CTRL."
+
+#: admin/options-general.php:202
+msgid "Homepage Panes"
+msgstr "Panot e Faqës Kryesore"
+
+#: admin/options-general.php:209
+msgid "Disable homepage panes"
+msgstr "Mbyll panot e faqës kryesore"
+
+#: admin/options-general.php:219
+msgid "Type of content to show"
+msgstr "Tipi i përmbajtjës që shfaqet"
+
+#: admin/options-general.php:226
+msgid "Latest posts by category"
+msgstr "Postimet e fundit sipas kategorive"
+
+#: admin/options-general.php:229
+msgid "Posts and/or pages"
+msgstr "Postimet dhe/apo faqet"
+
+#: admin/options-general.php:234
+msgid "Number of latest posts to display"
+msgstr "Numri i postimeve të fundit që shfaqën"
+
+#: admin/options-general.php:238
+msgid ""
+"Applicable only if <strong>Latest posts</strong> or <strong>Latest posts by "
+"category</strong> is selected above."
+msgstr ""
+"Aplikohet vetëm nëse <strong>Postimet e fundit</strong> apo <strong>Postimet "
+"e fundit sipas kategorive</strong> janë të zgjedhura lartë."
+
+#: admin/options-general.php:243
+msgid "Category to show latest posts from"
+msgstr "Kategoritë nga të cilat do të shfaqën postimet e fundit"
+
+#: admin/options-general.php:253
+msgid ""
+"Applicable only if <strong>Latest posts by category</strong> is selected "
+"above."
+msgstr ""
+"Aplikohet vetëm nëse <strong>Postimet e fundit sipas kategorive</strong> "
+"është e zgjedhur lartë."
+
+#: admin/options-general.php:264
+msgid ""
+"Applicable only if <strong>Posts and/or pages</strong> is selected above."
+msgstr ""
+"Aplikohet vetëm nëse <strong>Postimet dhe/apo faqet</strong> është e "
+"zgjedhur lartë."
+
+#: admin/options-general.php:270
+msgid ""
+"<strong>Note:</strong> homepage panes are only displayed when using a <a "
+"href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">static "
+"front page</a>."
+msgstr ""
+"<strong>Shënim:</strong> panot e faqës kryesore shfaqën vetëm nëse përdoret "
+"<a href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">Faqja "
+"Kryesore Statike</a>."
+
+#: admin/options-general.php:280
+msgid "Comments Options"
+msgstr "Opcionet e komenteve"
+
+#: admin/options-general.php:286
+msgid "Commenting"
+msgstr "Komentet"
+
+#: admin/options-general.php:290
+msgid "Use WordPress settings"
+msgstr "Përdor rregullat e WordPress"
+
+#: admin/options-general.php:291
+msgid "Disabled for pages"
+msgstr "E mbyllur për faqet"
+
+#: admin/options-general.php:292
+msgid "Disabled completely"
+msgstr "E mbyllur komplet"
+
+#: admin/options-general.php:294
+msgid ""
+"Note: this setting overrides the global WordPress Discussion Setting called "
+"\"Allow people to post comments on new articles\" and also the \"Allow "
+"comments\" option for individual posts/pages."
+msgstr ""
+"Shënim: ky opcion i ndryshon opcionet e WordPress-it për Diskutim të quajtura"
+"\"Lejo vizitorët të komentojnë në artikujt e ri\" gjithashtu dhe \"Lejo "
+"komentet\" opcioni për postimet/faqet individuale."
+
+#: admin/options-general.php:306
+msgid "Child Page Options"
+msgstr "Opcionet e nënfaqeve"
+
+#: admin/options-general.php:312
+msgid "Hide parent box if content is empty"
+msgstr "Fshehe kutinë e bashkangjitur nëse përmbajtja është e zbrazët."
+
+#: admin/options-general.php:318
+msgid "Child page listings"
+msgstr "Listimet e nënfaqeve"
+
+#: admin/options-general.php:322
+msgid "Show listing"
+msgstr "Shfaq listimet"
+
+#: admin/options-general.php:323
+msgid "Hide listing"
+msgstr "Fshih listimet"
+
+#: admin/options-general.php:324
+msgid "Only show listing if parent content is empty"
+msgstr "Shfaq listimin vetëm nëse përmbajtja e bashkangjitur është e zbrazët"
+
+#: admin/options-general.php:337
+msgid "Widget Area Options"
+msgstr "Opcionet e hapësirës së Widget-it"
+
+#: admin/options-general.php:340
+msgid "Header widget area"
+msgstr "Hapësira e Widget-it në Header"
+
+#: admin/options-general.php:341
+msgid ""
+"<strong>Important:</strong> This widget area is unstyled, as it is often "
+"used for advertisement banners, etc. If you enable it, make sure you style "
+"it to your needs using the Custom CSS option."
+msgstr ""
+"<strong>E Rëndësishme:</strong> Kjo hapësirë e widget-it është e pa "
+"stilizuar, sepse zakonisht përdorët për banera të reklamave, etj. Nëse e "
+"aktivizoni, sigurohuni që ta stilizoni ashtu si doni duke përdorur opcionin "
+"CSS i veqantë."
+
+#: admin/options-general.php:345
+msgid "Enable header widget area"
+msgstr "Aktivizo hapësirën e widget-it të header-it"
+
+#: admin/options-general.php:354
+msgid "Alternate Widgets"
+msgstr "Widget-et alternative"
+
+#: admin/options-general.php:355
+msgid ""
+"You can enable the theme to show different widget areas in the front page "
+"than the rest of the website. If you enable this option, additional widget "
+"areas that will only be displayed on the front page will be added to the "
+"Widget settings page."
+msgstr ""
+"Ju mund ta aktivizoni këtë theme që të shfaq widgete të ndryshme në faqën "
+"kryesore dhe të ndryshme në faqet e tjera. Nëse e aktivizoni këtë opcion, "
+"hapësira të tjera të widget-eve që shfaqën vetëm në faqën kryesore do të "
+"duken në faqën e opcioneve të Widget-eve."
+
+#: admin/options-general.php:358
+msgid "Enable alternate front page sidebar widget area"
+msgstr "Aktivizo hapësira alternative të sidebar-it në faqën kryesore"
+
+#: admin/options-general.php:362
+msgid "Enable alternate front page footer widget area"
+msgstr "Aktivizo hapësira alternative të footer-it në faqën kryesore"
+
+#: admin/options-general.php:363
+msgid ""
+"You can also specify different column counts for the front page footer "
+"widget and the rest-of-site footer widget if you enable this option."
+msgstr ""
+"Ju mund të specifikoni numra të ndryshëm të kolumneve për widgetin e footer-"
+"it në faqën kryesore, si dhe për pjesët e tjera të webfaqës nëse e "
+"aktivizoni këtë opcion."
+
+#: admin/options-general.php:376
+msgid "Top Bar Options"
+msgstr "Opcionet e shiritit të epërm"
+
+#: admin/options-general.php:382
+msgid "Hide the top bar"
+msgstr "Fshih shiritin e epërm"
+
+#: admin/options-general.php:390
+msgid "Hide feed icon"
+msgstr "Fshih ikonën e feed-it"
+
+#: admin/options-general.php:394
+msgid "Use custom feed URL"
+msgstr "Përdor URL të veqantë të feed-it"
+
+#: admin/options-general.php:397
+msgid "This custom feed URL will replace the default WordPress RSS feed URL."
+msgstr ""
+"Kjo URL e veqantë e feed-it do të zëvendësojë atë të WordPress-it RSS feed "
+"URL."
+
+#: admin/options-general.php:401
+msgid "Open social media links in new window"
+msgstr "Hap linqet e rrjeteve sociale në dritare të re"
+
+#: admin/options-general.php:405
+msgid "Twitter URL"
+msgstr "URL e Twitter-it"
+
+#: admin/options-general.php:408
+msgid "Enter the URL to your Twitter page."
+msgstr "Shkruani URL-në e faqës së Twitter-it."
+
+#: admin/options-general.php:412
+msgid "Facebook URL"
+msgstr "URL e Facebook-ut"
+
+#: admin/options-general.php:415
+msgid "Enter the URL to your Facebook profile page."
+msgstr "Shkruani URL-në e faqës së Facebook-ut"
+
+#. translators: %s will be replaced by the social media service name. Example: LinkedIn Title
+#: admin/options-general.php:426
+#, php-format
+msgid "%s Title"
+msgstr "%s Titulli"
+
+#: admin/options-general.php:431
+#, php-format
+msgid ""
+"The title is empty and the following title will be shown: <strong>%s</strong>"
+msgstr ""
+"Titulli është i zbrazët dhe ky është titulli që do të shfaqët: <strong>%s</"
+"strong>"
+
+#. translators: %s will be replaced by the social media service name. Example: LinkedIn URL
+#: admin/options-general.php:437
+#, php-format
+msgid "%s URL"
+msgstr "%s URL"
+
+#. translators: %s will be replaced by the social media service name. Example: LinkedIn icon URL
+#: admin/options-general.php:442
+#, php-format
+msgid "%s icon URL"
+msgstr "%s URL e ikonës"
+
+#: admin/options-general.php:445
+msgid "Delete"
+msgstr "Fshije"
+
+#: admin/options-general.php:453
+msgid "Add new social media icon"
+msgstr "Shto një ikonë të re të rrjetit social"
+
+#: admin/options-general.php:465
+msgid "Social Sharing Buttons"
+msgstr "Butonat për shpërndarje sociale"
+
+#: admin/options-general.php:470
+msgid "Show social sharing button"
+msgstr "Shfaq butonin për shpërndarje sociale"
+
+#: admin/options-general.php:476
+msgid "Show in Pages as well?"
+msgstr "Shfaqe në faqe gjithashtu?"
+
+#: admin/options-general.php:480
+msgid "Social sharing buttons location"
+msgstr "Lokacioni i butonave për shpërndarje sociale"
+
+#: admin/options-general.php:483
+msgid "Bottom of posts"
+msgstr "Fundi i postimeve"
+
+#: admin/options-general.php:484
+msgid "Top of posts"
+msgstr "Fillimi i postimeve"
+
+#: admin/options-general.php:485
+msgid "Both top and bottom"
+msgstr "Edhe fundi edhe fillimi i postimeve"
+
+#: admin/options-general.php:491
+msgid "Your social sharing button code"
+msgstr "Kodi i butonit për shpërndarje sociale"
+
+#: admin/options-general.php:492
+msgid ""
+"You can use codes from any popular social sharing sites, like Facebook, "
+"Digg, AddThis, etc."
+msgstr ""
+"Ju mund të përdorni çfardo kodi nga rrjetet sociale më të famshme, siç janë "
+"Facebook, Digg, AddThis, etj"
+
+#: admin/options-general.php:495
+msgid "You may use these tags to get the post's URL, title, and excerpt:"
+msgstr ""
+"Ju mund të përdorni këto etiketa për të nxjerrur URL-në, titullin, dhe "
+"fragmentin e postimit:"
+
+#: admin/options-general.php:507
+msgid "Adsense Options"
+msgstr "Opcionet për Adsense"
+
+#: admin/options-general.php:513
+msgid "Show Adsense advertising"
+msgstr "Shfaq reklamat e Adsense"
+
+#: admin/options-general.php:521
+msgid "Show ads on front page as well"
+msgstr "Shfaq reklama edhe në faqën kryesore"
+
+#: admin/options-general.php:527
+msgid "Your Adsense code"
+msgstr "Kodi juaj i Adsense"
+
+#: admin/options-general.php:540
+msgid "Google Analytics Options"
+msgstr "Opcionet e Google Analytics"
+
+#: admin/options-general.php:545
+msgid "Enable Google Analytics tracking"
+msgstr "Lejo Google Analytics tracking"
+
+#: admin/options-general.php:552
+msgid ""
+"<strong>Note:</strong> the theme now places the Google Analytics script in "
+"the <code>&lt;head&gt;</code> element to better support the new asynchronous "
+"Google Analytics script. Please make sure you update your script to use the "
+"new asynchronous script from Google Analytics."
+msgstr ""
+"<strong>Shënim:</strong> kjo theme vendos skriptin e Google Analytics në "
+"elementin <code>&lt;head&gt;</code> në mënyrë që të jetë më i sinkronizuar "
+"me skriptin e ri të Google Analytics. Sigurohuni që e keni verzionin më të "
+"ri në mënyrë që të përdorni këtë skript."
+
+#: admin/options-general.php:556
+msgid "Google Analytics tracking code"
+msgstr "Kodi i Google Analytics"
+
+#: admin/options-general.php:557
+msgid ""
+"Make sure you include the full tracking code (including the <code>&lt;"
+"script&gt;</code> and <code>&lt;/script&gt;</code> tags) and not just the "
+"<code>UA-#######-#</code> code."
+msgstr ""
+"Sigurohuni që të përfshini kodin e plotë të Google Analytics (përfshirë edhe "
+"<code>&lt;script&gt;</code> dhe <code>&lt;/script&gt;</code> etiketat) dhe "
+"jo vetëm kodin <code>UA-#######-#</code>."
+
+#: admin/options-general.php:570
+msgid "Footer Options"
+msgstr "Opcionet e Footer-it"
+
+#: admin/options-general.php:575
+msgid "Use Creative Commons licence for content"
+msgstr "Përdor licensën Creative Commons për përmbajtje"
+
+#: admin/options-general.php:580
+msgid "Copyright text (html allowed)"
+msgstr "Teksti për të drejtat e autorit (lejohet html)"
+
+#: admin/options-general.php:581
+msgid ""
+"If this field is empty, the following default copyright text will be "
+"displayed:"
+msgstr ""
+"Nëse kjo fushë është e zbrazët, ky tekst i zakonshëm për të drejta të "
+"autorit do të shfaqet:"
+
+#: admin/options-general.php:587
+msgid "Do not show copyright info"
+msgstr "Mos shfaq detajet e të drejtave të autorit"
+
+#: admin/options-general.php:591
+msgid "Do not show the \"Return to top\" link"
+msgstr "Mos e shfaq linkun \"Kthehu në maje\""
+
+#: admin/options-general.php:603
+msgid "Print Options"
+msgstr "Opcionet për printim"
+
+#: admin/options-general.php:608
+msgid "Enable print CSS for single posts and pages?"
+msgstr "Lejo printimin e CSS për postime dhe faqe të vetme?"
+
+#: admin/options-general.php:614
+msgid "Show print button"
+msgstr "Shfaq butonin për printim"
+
+#: admin/options-import.php:38 admin/options-import.php:169
+#: admin/options-presets.php:48 admin/uninstall.php:32
+msgid "ERROR: You are not authorised to perform that operation"
+msgstr "GABIM: Ju nuk jeni të autorizuar që të bëni këtë veprim"
+
+#: admin/options-import.php:59
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr "Para se të ngarkoni fajllin tuaj, ju duhet të rregulloni këtë gabim:"
+
+#: admin/options-import.php:65 admin/options-import.php:98
+msgid "Import Graphene Theme Options"
+msgstr "Importo Opcionet e Graphene Theme"
+
+#: admin/options-import.php:67
+msgid ""
+"<strong>Note:</strong> This is an experimental feature. Please report any "
+"problem at the <a href=\"http://forum.khairul-syahir.com/forum/bug-report"
+"\">Support Forum</a>."
+msgstr ""
+"<strong>Shënim:</strong> Kjo është një opcion eksperimental. Raportoni "
+"ndonjë problem tek <a href=\"http://forum.khairul-syahir.com/forum/bug-report"
+"\">Forumi për mbështetje</a>."
+
+#: admin/options-import.php:69
+msgid "Choose a file from your computer:"
+msgstr "Zgjedh fajllin nga kompjuteri:"
+
+#: admin/options-import.php:69
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Madhësia maksimale: %s"
+
+#: admin/options-import.php:76
+msgid "Upload file and import"
+msgstr "Ngarko fajlli dhe importoje"
+
+#: admin/options-import.php:141
+msgid "Options import completed"
+msgstr "Importimi i Opcioneve përfundoi"
+
+#: admin/options-import.php:142
+msgid "Go to the Graphene options page"
+msgstr "Shko tek faqja e opcioneve të Graphene"
+
+#: admin/options-import.php:145 admin/options-import.php:150
+#: admin/options-import.php:155
+msgid "Sorry, there has been an error."
+msgstr "Kërkojmë ndjesë, ndodhi një gabim."
+
+#: admin/options-import.php:146
+msgid "The uploaded file does not contain valid Graphene options."
+msgstr "Fajlli i ngarkuar nuk përfshin opcione valide të Graphene."
+
+#: admin/options-import.php:151
+msgid "The uploaded file could not be read."
+msgstr "Fajlli i ngarkuar nuk mund të lexohet."
+
+#: admin/options-import.php:156
+msgid "The uploaded file is not supported."
+msgstr "Fajlli i ngarkuar nuk ka mbështetje nga ne."
+
+#: admin/options-import.php:164
+msgid ""
+"File is empty. Please upload something more substantial. This error could "
+"also be caused by uploads being disabled in your php.ini or by post_max_size "
+"being defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+"Fajlli është i zbrazët. Ju lutem ngarkoni diçka më substanciale. Ky gabim "
+"gjithashtu mund të shfaqet për shkak të moslejimit të ngarkimeve në php.ini "
+"apo by post_max_size ku definohet vlerë më e vogël se upload_max_filesize në "
+"php.ini "
+
+#: admin/options-init.php:34
+msgid "Graphene Options"
+msgstr "Opcionet e Graphene"
+
+#: admin/options-init.php:35
+msgid "Graphene FAQs"
+msgstr "Pyetjet më të shpeshta të Graphene"
+
+#: admin/options-init.php:85
+msgid "Toggle all options boxes"
+msgstr "Aktivizo të gjitha kutitë e opcioneve"
+
+#: admin/options-init.php:127
+msgid "Template preview not found."
+msgstr "Parashikimi i shabllonit nuk u gjet."
+
+#: admin/options-init.php:130
+msgid "default"
+msgstr "e zakonshme"
+
+#: admin/options-init.php:186 admin/options-init.php:190
+msgid "Theme default"
+msgstr "Theme e zakonshme"
+
+#: admin/options-presets.php:36
+msgid "The \"Normal website\" settings preset has been applied."
+msgstr "Shablloni i opcioneve  \"Webfaqe normale\" është aplikuar."
+
+#: admin/options-presets.php:41
+msgid "Settings have been reset."
+msgstr "Opcionet janë resetuar."
+
+#: admin/options-validator.php:24
+msgid "ERROR: Invalid category to show in slider."
+msgstr "GABIM: Kategoria nuk bën të shfaqët në sllajder."
+
+#: admin/options-validator.php:27
+msgid ""
+"ERROR: You must specify the posts/pages to be displayed when you have \"Show "
+"specific posts/pages\" selected for the slider."
+msgstr ""
+"GABIM: ju duhet të specifikoni postimet/faqet të cilat duhet të shfaqën kur "
+"të zgjedhni \"Shfaq postimet/faqet specifike\" në sllajder."
+
+#: admin/options-validator.php:30
+msgid ""
+"ERROR: You must have selected at least one category when you have \"Show "
+"posts from categories\" selected for the slider."
+msgstr ""
+"GABIM: Ju duhet të zgjedhni të paktën një kategori kur të zgjidhni opcionin  "
+"\"Shfaq postimet nga kategoritë\" në sllajder."
+
+#: admin/options-validator.php:40
+msgid "ERROR: Invalid category selected for the slider categories."
+msgstr "GABIM: Kategori nuk bën të shfaqët si kategori e sllajderit."
+
+#: admin/options-validator.php:46
+msgid ""
+"ERROR: The number of posts to displayed in the slider must be a an integer "
+"value."
+msgstr ""
+"GABIM: Numri i postimeve që shfaqën në sllajder duhet të jetë numër i plotë."
+
+#: admin/options-validator.php:49
+msgid "ERROR: Invalid option for the slider image is specified."
+msgstr ""
+"GABIM: Nuk është specifikuar opcion valid për fotografinë e sllajder-it."
+
+#: admin/options-validator.php:51
+msgid "ERROR: Bad URL entered for the custom slider image URL."
+msgstr ""
+"GABIM: URL e parregullt është futur në URL-në e fotografisë së veqantë të "
+"sllajder-it."
+
+#: admin/options-validator.php:53
+msgid "ERROR: Invalid option for the slider display style is specified."
+msgstr ""
+"GABIM: Opcion jo valid është spcifikuar për stilin e shfaqjës së sllajder-it."
+
+#: admin/options-validator.php:55
+msgid "ERROR: The value for slider height must be an integer."
+msgstr "GABIM: Vlera e lartësisë së sllajder-it duhet të jetë numër i plotë."
+
+#: admin/options-validator.php:57
+msgid "ERROR: The value for slider speed must be an integer."
+msgstr "GABIM: Vlera e shpejtësisë së sllajder-it duhet të jetë numër i plotë."
+
+#: admin/options-validator.php:59
+msgid "ERROR: The value for slider transition speed must be an integer."
+msgstr ""
+"GABIM: Vlera e shpejtësisë së tranzicionit duhet të jetë numër i plotë."
+
+#: admin/options-validator.php:61
+msgid "ERROR: Invalid slider animation."
+msgstr "GABIM: Animacion jo valid i sllajder-it."
+
+#: admin/options-validator.php:75
+msgid "ERROR: Invalid category selected for the front page posts categories."
+msgstr ""
+"GABIM: Është zgjedhur kategori jo valide për kategoritë e postimeve të faqës "
+"kryesore."
+
+#: admin/options-validator.php:86
+msgid ""
+"ERROR: Invalid option for the type of content to show in homepage panes."
+msgstr ""
+"GABIM: Opcioni është jo valid për llojin e përmbajtjës që shfaqët në panot e "
+"faqës kryesore."
+
+#: admin/options-validator.php:88
+msgid ""
+"ERROR: The value for the number of latest posts to display in homepage panes "
+"must be an integer."
+msgstr ""
+"GABIM: Vlera e numrit të postimeve të fundit që shfaqën në panot e faqës "
+"kryesore duhet të jetë numër i plotë."
+
+#: admin/options-validator.php:93
+msgid ""
+"ERROR: Invalid category selected for the latest posts to show from in the "
+"homepage panes."
+msgstr ""
+"GABIM: Kategori jo valid është zgjedhur për postimet e fundit që shfaqën në "
+"panot e faqës kryesore."
+
+#: admin/options-validator.php:107
+msgid "ERROR: Invalid option for the comments option."
+msgstr "GABIM: Opcioni është jo valid për opcionet e komenteve."
+
+#: admin/options-validator.php:116
+msgid "ERROR: Invalid option for the child page listings."
+msgstr "GABIM: Opcioni është jo valid për listimet e nënfaqeve."
+
+#: admin/options-validator.php:134
+msgid "ERROR: Bad URL entered for the custom feed URL."
+msgstr "GABIM: URL jo valide është shkruar në feed URL e veqantë. "
+
+#: admin/options-validator.php:138
+msgid "ERROR: Bad URL entered for the Twitter URL."
+msgstr "GABIM: URL jo valide është shkruar në Twitter URL."
+
+#: admin/options-validator.php:140
+msgid "ERROR: Bad URL entered for the Facebook URL."
+msgstr "GABIM: URL jo valide është shkruar në Facebook URL."
+
+#: admin/options-validator.php:152
+msgid "ERROR: Bad URL entered for the social media icon URL."
+msgstr ""
+"GABIM: URL jo valide është shkruar për URL-në e ikonës së rrjeteve sociale."
+
+#: admin/options-validator.php:153
+msgid "ERROR: Bad URL entered for the social media URL."
+msgstr "GABIM: URL jo valide është shkruar për URL-në e rrjeteve sociale."
+
+#: admin/options-validator.php:169
+msgid "ERROR: Invalid option for the social sharing buttons location."
+msgstr ""
+"GABIM: Opcioni është jo valid për lokacionin e butonave të mediave sociale."
+
+#: admin/options-validator.php:229
+msgid "ERROR: Invalid option for the Search box location."
+msgstr "GABIM: Opcion jo valid për lokacionin e hapësirës së kërkimit."
+
+#: admin/options-validator.php:234
+msgid "ERROR: Invalid option for the column mode."
+msgstr "GABIM: Opcion jo valid për mënyrën e kolumneve."
+
+#: admin/options-validator.php:235
+msgid "ERROR: Invalid option for the bbPress column mode."
+msgstr "GABIM: Opcion jo valid për bbPress mënyrën e kolumneve."
+
+#: admin/options-validator.php:242
+#, php-format
+msgid ""
+"ERROR: Invalid width for %s. Width value must be positive number without "
+"units."
+msgstr ""
+"GABIM: Gjatësi jo valide për %s. vlera e gjatësisë duhet të jetë një numër "
+"pozitiv pa shtesa të tjera."
+
+#: admin/options-validator.php:250
+msgid "ERROR: Invalid option for the post date display."
+msgstr "GABIM: Opcion jo valid i shfaqjës së datës së postimit."
+
+#: admin/options-validator.php:316
+msgid ""
+"ERROR: The number of columns to be displayed in the footer widget must be a "
+"an integer value."
+msgstr ""
+"GABIM: Numri i kolumneve që shfaqën në widget-in e footer-it duhet të jetë "
+"numër i plotë."
+
+#: admin/options-validator.php:321
+msgid "ERROR: The width of the submenu must be a an integer value."
+msgstr "GABIM: Gjerësia e nënmenysë duhet të jetë numër i plotë."
+
+#: admin/options-validator.php:329
+msgid "ERROR: Bad URL entered for the favicon URL."
+msgstr "GABIM: URL jo valide është shkruar në URL-në e fav ikonës."
+
+#: admin/options-validator.php:344
+msgid "ERROR: Invalid action hook selected widget action hooks."
+msgstr "GABIM: Action hook jo valid është zgjedhur për këtë widget."
+
+#: admin/options.php:81 admin/uninstall.php:23
+msgid "Uninstall Graphene"
+msgstr "Uninstaloje Graphene"
+
+#: admin/options.php:82
+msgid ""
+"Please confirm that you would like to uninstall the Graphene theme. All of "
+"the theme's options in the database will be deleted."
+msgstr ""
+"Ju lutem konfirmo se dëshironi ta uninstaloni Graphene theme. Të gjitha "
+"opcionet e theme-së në databazë do të fshihen."
+
+#: admin/options.php:83
+msgid "This action is not reversible."
+msgstr "Ky veprim është i pakthyeshëm."
+
+#: admin/options.php:87 admin/options.php:339
+msgid "Uninstall Theme"
+msgstr "Uninstaloje Theme-në."
+
+#: admin/options.php:101
+msgid "Graphene Theme Options"
+msgstr "Opcionet e Graphene Theme"
+
+#: admin/options.php:103
+msgid ""
+"These are the global settings for the theme. You may override some of the "
+"settings in individual posts and pages."
+msgstr ""
+"Këto janë opcionet e përgjithshme për theme. Ju mund të bëni ndryshime të "
+"veqanta në postimet dhe faqet individuale."
+
+#: admin/options.php:111
+msgid "General"
+msgstr "Gjenerale"
+
+#: admin/options.php:112
+msgid "Display"
+msgstr "Shfaqja"
+
+#: admin/options.php:113
+msgid "Advanced"
+msgstr "Të Avancuara"
+
+#: admin/options.php:152
+msgid "Save Options"
+msgstr "Ruaj Opcionet"
+
+#: admin/options.php:164
+msgid "Need help?"
+msgstr "Ju duhet ndihmë?"
+
+#: admin/options.php:168
+msgid "Documentation Wiki"
+msgstr "Documentation Wiki"
+
+#: admin/options.php:169
+msgid "Support Forum"
+msgstr "Forumi për Mbështetje"
+
+#: admin/options.php:171
+#, php-format
+msgid "Also, find out how you can %s."
+msgstr "Gjithashtu, shiko se si mundeni të %s."
+
+#: admin/options.php:171
+msgid "support the Graphene theme"
+msgstr "mbështetni Graphene Theme"
+
+#: admin/options.php:178
+msgid "Support the developer"
+msgstr "Mbështetni krijuesin e themes"
+
+#: admin/options.php:181
+msgid ""
+"Developing this awesome theme took a lot of effort and time, months and "
+"months of continuous voluntary unpaid work. If you like this theme or if you "
+"are using it for commercial websites, please consider a donation to the "
+"developer to help support future updates and development."
+msgstr ""
+"Në krijimin e kësaj theme fantastike është shpenzuar shumë kohë dhe mund, "
+"muaj e muaj të një pune të vazhdueshme vullnetare pa pagesë. Nëse ju pëlqen "
+"apo nëse e përdorni për webfaqe komerciale, ju lutem konsideroni të dërgoni "
+"donacione tek krijuesi i theme-së në mënyrë që të ketë më shumë zhvillime të "
+"reja në të ardhmën."
+
+#: admin/options.php:195
+msgid "Graphene Theme news"
+msgstr "Të rejat e Graphene Theme"
+
+#: admin/options.php:206
+msgid "No news items."
+msgstr "Nuk ka të reja."
+
+#: admin/options.php:223
+msgid "Graphene Usage Survey"
+msgstr "Pyetsor për përdorimin e Graphene"
+
+#: admin/options.php:226
+msgid ""
+"Help us to get to know you better. Take the Graphene theme usage survey now! "
+"Every opinion counts towards making the theme better. The survey is very "
+"short, and is completely anonymous."
+msgstr ""
+"Na ndihmoni që të ju njohim më mirë juve. Plotësoni këtë pyetsor të "
+"përdorimit tani! Çdo opinion i juaj na ndihmon që ta bëjmë këtë theme sa më "
+"të mirë. Pyetsori është i shkurtër, dhe totalisht anonim."
+
+#: admin/options.php:227
+msgid "Take the survey"
+msgstr "Plotësoni pyetsorin"
+
+#: admin/options.php:237
+msgid "Add-ons and plugins"
+msgstr "Add-ons dhe pluginat"
+
+#: admin/options.php:240
+msgid "Add-ons"
+msgstr "Add-ons"
+
+#: admin/options.php:241
+msgid ""
+"Add-ons are not shipped with the theme, but can be installed separately to "
+"extend the theme's capability."
+msgstr ""
+"Add-ons nuk vijnë me theme, por mund të instalohen ndaras për të rritur "
+"aftësitë e theme-së."
+
+#: admin/options.php:245
+msgid "Installed"
+msgstr "E Instaluar"
+
+#: admin/options.php:246 admin/options.php:265
+msgid "Not installed"
+msgstr "Jo e Instaluar"
+
+#: admin/options.php:246
+msgid "Learn more"
+msgstr "Lexo më shumë"
+
+#: admin/options.php:247
+msgid ""
+"Mobile extension developed specifically for optimised display of your site "
+"on mobile devices, such as iPhone and Android devices."
+msgstr ""
+"Shtesa për mobil e zhvilluar veqanërisht për shfaqje të optimizuar të "
+"webfaqës suaj në telefona si Iphone dhe Android."
+
+#: admin/options.php:250
+msgid "Plugins"
+msgstr "Pluginat"
+
+#: admin/options.php:251
+msgid ""
+"The plugins listed here are natively supported by the theme. All you need to "
+"do is install the plugins and activate them."
+msgstr ""
+"Pluginat e listuar këtu vijnë me theme. Vetëm duhet t'i instaloni ata dhe "
+"pastaj t'i aktivizoni."
+
+#: admin/options.php:264
+msgid "Activated"
+msgstr "Aktiv"
+
+#: admin/options.php:277
+msgid "Options Presets"
+msgstr "Shabllona të Opcioneve"
+
+#: admin/options.php:280
+msgid ""
+"The default settings for the theme is preconfigured for use in blogs. If "
+"you're using this theme primarily for a normal website, or if you want to "
+"reset the settings to their default values, you can apply one of the "
+"available options presets below."
+msgstr ""
+"Opcionet normale për këtë theme janë të konfiguruara paraprakisht që të "
+"përdoren nëpër blogje. Nëse e përdorni këtë theme së pari për një webfaqe "
+"normale, apo nëse dëshironi t'i riktheni këto opcione tek vlerat fillestare, "
+"mund ta bëni këtë duket përdorur shabllonet e opcioneve më poshtë."
+
+#: admin/options.php:281
+msgid ""
+"Note that you can still configure the individual settings after you apply "
+"any preset."
+msgstr ""
+"Megjithatë duhet ta dini se ende mund t'i konfiguroni opcionet individuale "
+"pasi të aplikoni ndonjë shabllon."
+
+#: admin/options.php:286
+msgid "Select Options Preset"
+msgstr "Zgjidhni Shabllonin e Opcioneve"
+
+#: admin/options.php:289
+msgid "Normal website"
+msgstr "Webfaqe Normale"
+
+#: admin/options.php:292
+msgid "Reset to default settings"
+msgstr "Riktheni opcionet fillestare"
+
+#: admin/options.php:297
+msgid "Apply Options Preset"
+msgstr "Aplikoni Shabllonin e Opcioneve"
+
+#: admin/options.php:307
+msgid "Import/export theme options"
+msgstr "Importo/eksporto opcionet e theme-së"
+
+#: admin/options.php:310
+msgid "Import"
+msgstr "Importo"
+
+#: admin/options.php:313
+msgid "Import Theme options"
+msgstr "Importo opcionet e theme-së"
+
+#: admin/options.php:315
+msgid "Export"
+msgstr "Eksporto"
+
+#: admin/options.php:319
+msgid "Export Theme options"
+msgstr "Eksporto opcionet e theme-së"
+
+#: admin/options.php:329
+msgid "Uninstall theme"
+msgstr "Uninstaloje theme-në"
+
+#: admin/options.php:332
+msgid ""
+"<strong>Be careful!</strong> Uninstalling the theme will remove all of the "
+"theme's options from the database. Do this only if you decide not to use the "
+"theme anymore."
+msgstr ""
+"<strong>Kini kujdes!</strong> Duke uninstaluar theme-në ju do të fshini të "
+"gjitha opcionet e theme-së në databazë. Bëne këtë vetëm nëse vendsni që mos "
+"ta përdorni më këtë theme."
+
+#: admin/options.php:333
+msgid ""
+"If you just want to try another theme, there is no need to uninstall this "
+"theme. Simply activate the other theme in the Appearance &gt; Themes admin "
+"page."
+msgstr ""
+"Nëse dëshironi të provoni një theme tjeter, nuk ka nevojë ta uninstaloni "
+"këtë theme. Vetem aktivizone theme-në tjetër në Appearance &gt; Themes admin "
+"page."
+
+#: admin/options.php:334
+msgid ""
+"Note that uninstalling this theme <strong>does not remove</strong> the "
+"theme's files. To delete the files after you have uninstalled this theme, go "
+"to Appearances &gt; Themes and delete the theme from there."
+msgstr ""
+"Kini vëmendjen se duke uninstaluar këtë theme <strong>nuk fshihen</strong> "
+"fajllat e theme-së. Për t'i fshirë fajllat pasi ta uninstaloni, atëherë "
+"shkoni në Appearances &gt; Themes dhe bëni fshirjen e theme-së nga aty."
+
+#: admin/options.php:351
+msgid ""
+"The preview will be updated when the \"Save Options\" button above is "
+"clicked."
+msgstr ""
+"Opcioni se si duket do të përtrihet kur butoni  \"Ruaj Opcionet\" lartë "
+"klikohet."
+
+#: admin/uninstall.php:24
+#, php-format
+msgid "Theme uninstalled. Redirecting to %s"
+msgstr "Theme është uninstaluar. Duke u ridrejtuar në %s"
+
+#: admin/user.php:7
+msgid "Graphene-specific User Profile Information"
+msgstr "Graphene-specifike informata për profilin e përdoruesit"
+
+#: admin/user.php:8
+msgid "The settings defined here are used only with the Graphene theme."
+msgstr "Opcionet e definuara këtu do të përdoren vetëm për Graphene theme."
+
+#: admin/user.php:12
+msgid "Author profile image URL"
+msgstr "URL e fotografisë së profilit të autorit"
+
+#: admin/user.php:13
+msgid ""
+"You can specify the image to be displayed as the author's profile image in "
+"the Author's page. If no URL is defined here, the author's <a href=\"http://"
+"www.gravatar.com\">Gravatar</a> will be used."
+msgstr ""
+"Ju mund të specifikoni fotografinë që shfaqet në profilin e autorit në faqën "
+"e Autorit. Nëse nuk ka URL të definuar këtu, do të përdoret <a href=\"http://"
+"www.gravatar.com\">Gravatar-i</a> i autorit."
+
+#: admin/user.php:17
+msgid ""
+"Please enter the full URL (including <code>http://</code>) to your profile "
+"image."
+msgstr ""
+"Ju lutem shkruani URL-në e plotë (duke përfshirë <code>http://</code>) në "
+"fotografinë e profilit tuaj."
+
+#: admin/user.php:17
+msgid ""
+"<strong>Important: </strong>Image width must be less than or equal to "
+"<strong>150px</strong>."
+msgstr ""
+"<strong>E Rëndësishme: </strong>Gjerësia e fotografisë duhet të jetë më e "
+"vogë apo e barabartë me <strong>150px</strong>."
+
+#: admin/js/admin.js.php:47
+msgid "Social Media name"
+msgstr "Emri i Rrjetit Social"
+
+#: admin/js/admin.js.php:50
+msgid "Name of the social media, e.g. LinkedIn, etc."
+msgstr "Emri i këtij rrjeti social, p.sh. LinkedIn, etj."
+
+#: admin/js/admin.js.php:54
+msgid "Social Media title"
+msgstr "Titulli i Rrjetit Social"
+
+#: admin/js/admin.js.php:57
+msgid "Title for the social media, leave empty for generated title."
+msgstr "Titulli i rrjetit social, lëreni të zbrazët për një titull automatik."
+
+#: admin/js/admin.js.php:61
+msgid "Social Media profile URL"
+msgstr "URL-ja e profilit në Rrjet Social"
+
+#: admin/js/admin.js.php:64
+msgid "URL to your page for the social media."
+msgstr "URL-ja e faqës suaj për rrjete sociale."
+
+#: admin/js/admin.js.php:68
+msgid "Social Media icon URL"
+msgstr "URL-ja e ikonës së Rrjetit Social"
+
+#: admin/js/admin.js.php:71
+#, php-format
+msgid ""
+"URL to the social media icon. Note: the theme uses the %s icon set for the "
+"social media icons. Please do not hotlink the icons on the site. Download "
+"the icons you need and upload them to your server instead."
+msgstr ""
+"URL-ja e ikonës së rrjetit social. Shënim: theme përdor setin e ikonave %s "
+"për rrjete sociale. Ju lutem mos të linkoni direkt tek ikonat në webfaqe. "
+"Shkarkoni këto ikona dhe ngarkoni ato në serverin tuaj."
+
+#. translators: %1$s is the comment date, %2$s is the comment time
+#: includes/theme-comments.php:34
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s, ora %2$s"
+
+#: includes/theme-comments.php:36
+msgid "Edit comment"
+msgstr "Ndrysho komentin"
+
+#: includes/theme-comments.php:40
+msgid "Reply"
+msgstr "Kthe përgjigje"
+
+#: includes/theme-comments.php:51
+msgid "Your comment is awaiting moderation."
+msgstr "Komenti yt duhet të moderohet nga administratori"
+
+#: includes/theme-comments.php:76
+msgid "Name:"
+msgstr "Emri:"
+
+#: includes/theme-comments.php:81
+msgid "Email:"
+msgstr "Email:"
+
+#: includes/theme-comments.php:86
+msgid "Website:"
+msgstr "Webfaqja juaj:"
+
+#: includes/theme-comments.php:100
+msgid "Message:"
+msgstr "Mesazhi:"
+
+#: includes/theme-functions.php:72
+#, php-format
+msgid "Follow %s on Twitter"
+msgstr "Ndiq %s në Twitter"
+
+#: includes/theme-functions.php:75
+#, php-format
+msgid "Visit %s's Facebook page"
+msgstr "Vizito faqën e Facebook-ut të %s"
+
+#: includes/theme-functions.php:97
+#, php-format
+msgid "Visit %1$s's %2$s page"
+msgstr "Vizito %2$s faqën e %1$s"
+
+#: includes/theme-loop.php:85
+msgid "Continue reading &raquo;"
+msgstr "Vazhdo leximin &raquo;"
+
+#: includes/theme-loop.php:137
+msgid "Older posts &laquo;"
+msgstr "Postimet e vjetra &laquo;"
+
+#: includes/theme-loop.php:138
+msgid "&raquo; Newer posts"
+msgstr "&raquo; Postimet e reja"
+
+#: includes/theme-loop.php:140
+msgid "Next page &raquo;"
+msgstr "Faqja tjetër &raquo;"
+
+#: includes/theme-loop.php:141
+msgid "&laquo; Previous page"
+msgstr "&laquo; Faqja e mëhershme"
+
+#: includes/theme-loop.php:221
+msgid ""
+"<strong>ERROR: You must supply the post ID to get the image from as an "
+"argument when calling the graphene_get_post_image() function.</strong>"
+msgstr ""
+"<strong>GABIM: Ju duhet të shkruani ID-në e postimit për të nxjerrur "
+"fotografinë si argument kur të thërrisni graphene_get_post_image() function."
+"</strong>"
+
+#: includes/theme-menu.php:65
+msgid "Home"
+msgstr "Fillimi"
+
+#: includes/theme-panes.php:93
+msgid "Read more"
+msgstr "Lexo më shumë"
+
+#: includes/theme-setup.php:90
+msgid "Header Menu"
+msgstr "Header menyja"
+
+#: includes/theme-setup.php:91
+msgid "Secondary Menu"
+msgstr "Menyja sekondare"
+
+#: includes/theme-setup.php:92
+msgid "Footer Menu"
+msgstr "Menyja e footer-it"
+
+#: includes/theme-setup.php:125
+msgid "Header image by Syahir Hakim"
+msgstr "Fotografia e Header-it nga Syahir Hakim"
+
+#: includes/theme-setup.php:129
+msgid ""
+"This is the default Graphene theme header image, cropped from image by "
+"Quantin Houyoux at sxc.hu"
+msgstr ""
+"Kjo është fotografia e zakonshme e header-it të Graphene Theme, e përpunuar "
+"nga fotografia e Quantin Houyoux tek sxc.hu"
+
+#: includes/theme-setup.php:133 includes/theme-setup.php:137
+#: includes/theme-setup.php:141 includes/theme-setup.php:145
+#: includes/theme-setup.php:149
+msgid "Header image cropped from image by Ilco at sxc.hu"
+msgstr "Fotografia e header-it e përpunuar nga fotografia e Ilco tek sxc.hu"
+
+#: includes/theme-setup.php:204
+msgid "Sidebar Widget Area"
+msgstr "Sidebar Widget Hapësira"
+
+#: includes/theme-setup.php:206
+msgid ""
+"The first sidebar widget area (will always be displayed on the right hand "
+"side)."
+msgstr ""
+"Hapësira e parë e widget-it të sidebar-it (do të shfaqet gjithmonë në anën e "
+"djathtë)."
+
+#: includes/theme-setup.php:213
+msgid "Sidebar Two Widget Area"
+msgstr "Hapësira e Dytë e Widget-it të Sidebar-it"
+
+#: includes/theme-setup.php:215
+msgid ""
+"The second sidebar widget area (will always be displayed on the left hand "
+"side)."
+msgstr ""
+"Hapësira e dytë e widget-it të sidebar-it (gjithmonë do të shfaqët në anën e "
+"majtë)."
+
+#: includes/theme-setup.php:222
+msgid "Footer Widget Area"
+msgstr "Footer Widget Hapësira"
+
+#: includes/theme-setup.php:224
+msgid ""
+"The footer widget area. Leave empty to disable. Set the number of columns to "
+"display at the theme's Display Options page."
+msgstr ""
+"Hapësira e widget-it në footer. Lëreni të zbrazët për ta deaktivizuar. "
+"Caktoni numrin e kolumneve që shfaqën në faqën e Opcioneve të Shfaqjës."
+
+#: includes/theme-setup.php:239
+msgid "Front Page Sidebar Widget Area"
+msgstr "Front Page Sidebar Widget hapësira"
+
+#: includes/theme-setup.php:241
+msgid ""
+"The first sidebar widget area that will only be displayed on the front page."
+msgstr "Sidebar Widget hapësira e parë e cila shfaqet vetëm në faqën kryesore."
+
+#: includes/theme-setup.php:248
+msgid "Front Page Sidebar Two Widget Area"
+msgstr "Front Page Sidebar Two Widget Hapësira"
+
+#: includes/theme-setup.php:250
+msgid ""
+"The second sidebar widget area that will only be displayed on the front page."
+msgstr "Sidebar Widget hapësira e dytë e cila shfaqet vetëm në faqën kryesore."
+
+#: includes/theme-setup.php:259
+msgid "Front Page Footer Widget Area"
+msgstr "Front Page Footer Widget Hapësira"
+
+#: includes/theme-setup.php:261
+msgid ""
+"The footer widget area that will only be displayed on the front page. Leave "
+"empty to disable. Set the number of columns to display at the theme's "
+"Display Options page."
+msgstr ""
+"Footer widget hapësira do të shfaqet vetëm në faqën kryesore. Lene të "
+"zbrazët për ta ndalur këtë opcion. Vendosni numrin e kolumneve për shfaqje "
+"në faqën Display Opcionet."
+
+#: includes/theme-setup.php:271
+msgid "Header Widget Area"
+msgstr "Header Widget Hapësira"
+
+#: includes/theme-setup.php:273
+msgid "The header widget area."
+msgstr "Hapësira e widget-it të header-it."
+
+#: includes/theme-setup.php:290
+#, php-format
+msgid ""
+"Dynamically added widget area. This widget area is attached to the %s action "
+"hook."
+msgstr ""
+"Widget hapësira e vendosur në mënyrë dinamike. Kjo hapësirë e widget-it "
+"është e ngjitur tek %s action hook."
+
+#: includes/theme-slider.php:115 includes/theme-slider.php:143
+msgid "View full post"
+msgstr "Shiko postimin e plotë"
+
+#: includes/theme-widgets.php:14
+msgid "Display the latest Twitter status updates."
+msgstr "Shfaq statuset më të reja në Twitter"
+
+#: includes/theme-widgets.php:46
+msgid "Loading tweets..."
+msgstr "Duke nxjerrur tweet-at"
+
+#: includes/theme-widgets.php:50
+msgid "Follow me on Twitter"
+msgstr "Më ndiq në Twitter"
+
+#: includes/theme-widgets.php:60
+msgid "follower"
+msgstr "përcjellës"
+
+#: includes/theme-widgets.php:61
+msgid "followers"
+msgstr "përcjellësit"
+
+#: includes/theme-widgets.php:93
+msgid "Latest tweets"
+msgstr "Tweetat e fundit"
+
+#: includes/theme-widgets.php:100
+msgid "Title:"
+msgstr "Titulli:"
+
+#: includes/theme-widgets.php:104
+msgid "Twitter Username:"
+msgstr "Username-i në Twitter"
+
+#: includes/theme-widgets.php:108
+msgid "Number of tweets to display:"
+msgstr "Numrin e tweet-ave që shfaqen:"
+
+#: includes/theme-widgets.php:112
+msgid "Show followers count"
+msgstr "Shfaq numrin e përcjellësve"
+
+#: includes/theme-widgets.php:116
+msgid "Open links in new window"
+msgstr "Hap linqet në një dritare tjetër"

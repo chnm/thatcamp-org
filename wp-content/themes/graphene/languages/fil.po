@@ -1,0 +1,2939 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Graphene 1.0 theme for WordPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-03 08:27+1200\n"
+"PO-Revision-Date: 2012-10-14 21:36+0800\n"
+"Last-Translator: Mikael <mikael@husplushave.dk>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;esc_attr_e;esc_attr__\n"
+"X-Poedit-Basepath: D:\\MyVault\\MyProjects\\Websites\\theme-graphene\\site"
+"\\wp-content\\themes\\graphene\\\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.3\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:23
+#, php-format
+msgid "Searching for: <span>%s</span>"
+msgstr "Naghahanap ng: <span>%s</span>"
+
+#: 404.php:29
+msgid "Error 404 - Page Not Found"
+msgstr "Pagkakamali 404 - Pahina ay Hindi Natagpuan"
+
+#: 404.php:31
+msgid ""
+"Sorry, I've looked everywhere but I can't find the page you're looking for."
+msgstr ""
+"Paumanhin, tumingin na ko sa lahat ng dako nguni't hindi ko mahanap ang "
+"pahina na iyong hinahanap."
+
+#: 404.php:32
+msgid ""
+"If you follow the link from another website, I may have removed or renamed "
+"the page some time ago. You may want to try searching for the page:"
+msgstr ""
+"Kung sinusundan mo ang link mula sa ibang website, maaaring naialis ko na o "
+"kaya'y pinalitan ng pangalan ang pahinang eto ng ilang oras na ang "
+"nakalipas. Maaaring gusto mong subukan na maghanap para sa pahina:"
+
+#: 404.php:40
+msgid "Automated search"
+msgstr "Automated na paghahanap"
+
+#: 404.php:43
+#, php-format
+msgid "Searching for the terms <strong>%s</strong> ..."
+msgstr "Naghahanap para sa mga katawagang <strong>%s</strong> ..."
+
+#: archive.php:24
+#, php-format
+msgid "Daily Archive: %s"
+msgstr "Araw-araw na Archive: %s"
+
+#: archive.php:26
+#, php-format
+msgid "Monthly Archive: %s"
+msgstr "Buwanang Archive: %s"
+
+#: archive.php:28
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:30
+#, php-format
+msgid "Yearly Archive: %s"
+msgstr "Taunang Archive: %s"
+
+#: archive.php:40
+#, php-format
+msgid "%1$s Archive: <span>%2$s</span>"
+msgstr "%1$s Archive: <span>%2$s</span>"
+
+#: archive.php:43
+msgid "Blog Archive"
+msgstr "Blog Archive"
+
+#: author.php:32
+msgid "Author's posts listings"
+msgstr "Listahan ng mga pahayag ng may-akda"
+
+#: category.php:13
+#, php-format
+msgid "Category Archive: <span>%s</span>"
+msgstr "Archive ng mga Kategorya: <span>%s</span>"
+
+#: comments.php:25
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"Ang pahayag na ito protektado ng password. Itala ang password upang tingnan "
+"ang anumang mga puna."
+
+#: comments.php:58 loop-author.php:85 loop-post-formats.php:47 loop.php:170
+#, php-format
+msgid "1 comment"
+msgid_plural "%d comments"
+msgstr[0] "1 komento"
+msgstr[1] "%d mga komento"
+
+#: comments.php:60
+#, php-format
+msgid "1 ping"
+msgid_plural "%d pings"
+msgstr[0] "1 ping"
+msgstr[1] "%d ping"
+
+#: comments.php:118
+msgid "Comments have been disabled."
+msgstr "Mga puna ay hindi na gumagana."
+
+#: comments.php:135
+#, php-format
+msgid ""
+"You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags "
+"and attributes: %s"
+msgstr ""
+"Maaari mong gamitin ang <abbr title=\"HyperText Markup Language\">HTML</"
+"abbr> na mga tag at katangian: %s"
+
+#: comments.php:142
+msgid "Submit Comment"
+msgstr "Isumite ang Komento"
+
+#: footer.php:41
+msgid "Copyright"
+msgstr "Karapatang Magpalathala"
+
+#: footer.php:56
+#, php-format
+msgid ""
+"Except where otherwise noted, content on this site is licensed under a %s."
+msgstr ""
+"Maliban kung saan man nabanggit, ang nilalaman ng site na ito ay "
+"pumapailalim sa lisensiya ng %s."
+
+#: footer.php:56
+msgid "Creative Commons Licence"
+msgstr "Lisensiya ng Creative Commons"
+
+#: footer.php:58
+msgid "Creative Commons Licence BY-NC-ND"
+msgstr "Lisensiya na BY-NC-ND ng Creative Commons"
+
+#: footer.php:79
+msgid "Return to top"
+msgstr "Bumalik sa pinakauna"
+
+#: footer.php:89
+#, php-format
+msgid "Powered by %1$s and the %2$s."
+msgstr "Pinapagana ng %1$s and the %2$s."
+
+#: footer.php:89
+msgid "Graphene Theme"
+msgstr "Tema ng Graphene"
+
+#: header.php:77 header.php:98
+msgid "Go back to the front page"
+msgstr "Bumalik sa unang pahina"
+
+#: loop-author.php:23
+msgid "Author's details"
+msgstr "Mga detalye ng may-akda"
+
+#: loop-author.php:25
+#, php-format
+msgid "<strong>Name:</strong> %1$s %2$s"
+msgstr "<strong>Pangalan:</strong> %1$s %2$s"
+
+#: loop-author.php:26
+#, php-format
+msgid "<strong>Date registered:</strong> %1$s"
+msgstr "<strong>Petsa ng pag-rehistro:</strong> %1$s"
+
+#: loop-author.php:35
+msgid "Biography"
+msgstr "Talambuhay"
+
+#: loop-author.php:52
+msgid "Latest posts"
+msgstr "Mga huling pahayag"
+
+#: loop-author.php:55 loop-author.php:85
+#, php-format
+msgid "Permalink Link to %s"
+msgstr "Permalink na link para sa %s"
+
+#: loop-author.php:55 loop-author.php:85 loop-children.php:45 loop-page.php:8
+#: loop-page.php:31 loop-post-formats.php:31 loop-single.php:63 loop.php:31
+#: loop.php:66
+msgid "(No title)"
+msgstr "(Walang titulo)"
+
+#: loop-author.php:92
+msgid "Most commented posts"
+msgstr "Mga pahayag na may pinakamaraming komento"
+
+#: loop-children.php:45 loop-children.php:53 loop-post-formats.php:31
+#: loop.php:65 loop.php:134
+#, php-format
+msgid "Permalink to %s"
+msgstr "Permalink para sa %s"
+
+#: loop-children.php:53
+msgid "View page &raquo;"
+msgstr "Tingnan ang pahinang &raquo;"
+
+#: loop-not-found.php:3
+msgid "Not found"
+msgstr "Hindi natagpuan"
+
+#: loop-not-found.php:8
+msgid ""
+"Sorry, but you are looking for something that isn't here. Wanna try a search?"
+msgstr ""
+"Paumanhin, nguni't ikaw ay tumitingin ng mga bagay na wala dito. Nais mo "
+"bang magsubok na maghanap?"
+
+#: loop-not-found.php:10
+msgid ""
+"Sorry, but no results were found for that keyword. Wanna try an alternative "
+"keyword search?"
+msgstr ""
+"Paumanhin, nguni't walang nakitang resulta para sa keyword na yan. Nais mo "
+"bang maghanap ng iba pang keyword?"
+
+#: loop-page.php:41 loop-single.php:79 loop.php:85
+#, php-format
+msgid "Edit %s"
+msgstr "Isa-ayos ang %s"
+
+#: loop-page.php:62 loop-single.php:118 loop.php:152
+msgid "Pages:"
+msgstr "Mga Pahina:"
+
+#: loop-page.php:86 loop-post-formats.php:98 loop-single.php:166 loop.php:188
+msgid "Permanent link to this article:"
+msgstr "Permanenteng koneksyon para sa artikulo na ito:"
+
+#: loop-post-formats.php:9
+msgid "Status update"
+msgstr "Bagong katayuan"
+
+#: loop-post-formats.php:10
+msgid "Link"
+msgstr "Pag-ugnay"
+
+#: loop-post-formats.php:11
+msgid "Audio"
+msgstr "Tunog"
+
+#: loop-post-formats.php:12
+msgid "Image"
+msgstr "Larawan"
+
+#: loop-post-formats.php:13
+msgid "Video"
+msgstr "Bideo"
+
+#: loop-post-formats.php:14
+msgid "Post format"
+msgstr "Ayos ng pahayag"
+
+#: loop-post-formats.php:27
+msgid "l F j, Y"
+msgstr "l F j, Y"
+
+#: loop-post-formats.php:27
+msgid "g:i A"
+msgstr "g:i A"
+
+#: loop-post-formats.php:38
+msgid "Edit post"
+msgstr "Pag-tama ng pahayag"
+
+#: loop-post-formats.php:47 loop.php:170
+msgid "Leave comment"
+msgstr "Mag-iwan ng komento"
+
+#: loop-post-formats.php:47 loop.php:170
+msgid "Comments off"
+msgstr "Pag-komento ay nakasara"
+
+#: loop-post-formats.php:86
+#, php-format
+msgid "Posted on: %s"
+msgstr "Naghayag sa: %s"
+
+#: loop-post-formats.php:86
+msgid "F j, Y"
+msgstr "F j, Y"
+
+#: loop-single.php:72 loop.php:78
+msgid "Categories:"
+msgstr "Mga Kategorya:"
+
+#: loop-single.php:94 loop.php:102
+#, php-format
+msgid "by %s"
+msgstr "Sa %s"
+
+#: loop-single.php:128 loop.php:162
+msgid "Tags:"
+msgstr "Mga Pananda:"
+
+#: loop-single.php:128 loop.php:162
+msgid "This post has no tag"
+msgstr "Ang pahayag na ito ay walang pananda"
+
+#: loop-single.php:147
+msgid "About the author"
+msgstr "Tungkol sa may-akda"
+
+#: loop.php:127
+msgid "Read the rest of this entry &raquo;"
+msgstr "Basahin ang kabuuan ng entry na ito &raquo;"
+
+#: search-404.php:14
+msgid "Suggested results"
+msgstr "Iminungkahing mga resulta"
+
+#: search-404.php:18
+#, php-format
+msgid ""
+"I've done a courtesy search for the term %s for you. See if you can find "
+"what you're looking for in the list below."
+msgstr ""
+"Nagsagawa ako ng paghahanap para sa katawagang %s para sa iyo. Tingnan mo "
+"kung matatagpuan mo ang iyong hinahanap sa listahang sumusunod:"
+
+#: search-404.php:35
+msgid ""
+"<strong>Sorry, couldn't find anything.</strong> Try searching for "
+"alternative terms using the search form above."
+msgstr ""
+"<strong>Paumanhin, wala akong natagpuan na kahit ano</strong> Subukang "
+"maghanap ng ibang katawagan gamit ang search form sa itaas."
+
+#: search.php:10
+#, php-format
+msgid "Search results for: %s"
+msgstr "Resulta ng paghahanap para sa: %s"
+
+#: searchform.php:3 searchform.php:4
+msgid "Search"
+msgstr "Paghahanap"
+
+#: sidebar-two.php:29
+msgid "Front Page Sidebar Two Widget Area"
+msgstr "Area ng Sidebar na may Dalawang Widget sa Harap na Pahina"
+
+#: sidebar-two.php:31
+msgid "Sidebar Two Widget Area"
+msgstr "Area ng Sidebar na may Dalawang Widget"
+
+#: sidebar.php:28
+msgid "Front Page Sidebar Widget Area"
+msgstr "Area ng Sidebar na may Widget sa Harap na Pahina"
+
+#: sidebar.php:30
+msgid "Sidebar Widget Area"
+msgstr "Area ng Sidebar na may Widget"
+
+#: tag.php:13
+#, php-format
+msgid "Tag Archive: <span>%s</span>"
+msgstr "Lagyan ng Tanda sa Archive: <span>%s</span>"
+
+#: admin/custom-fields.php:14
+msgid "Graphene post-specific options"
+msgstr "Mga pagpipilian para sa mga pahayag na gawa sa istilo ng Graphene"
+
+#: admin/custom-fields.php:15
+msgid "Graphene page-specific options"
+msgstr "Mga pagpipilian para sa mga pahina na gawa sa istilo ng Graphene"
+
+#: admin/custom-fields.php:99
+msgid ""
+"These settings will only be applied to this particular post or page you're "
+"editing. They will override the global settings set in the Graphene Options "
+"or Graphene Display options page."
+msgstr ""
+"Ang mga settings na ito ay ilapat lamang sa partikular na pahayag o pahina "
+"na iyong isinasa-ayos. Kanilang maipawawalang-bisa ang mga global settings "
+"na nakatakda na pagpipilian sa pahina ng Graphene Options o Graphene Display."
+
+#: admin/custom-fields.php:100
+msgid "Slider options"
+msgstr "Pagpipilian para sa Slider"
+
+#: admin/custom-fields.php:104
+msgid "Slider image"
+msgstr "Larawan ng Slider"
+
+#: admin/custom-fields.php:108 admin/custom-fields.php:143
+#: admin/custom-fields.php:157
+msgid "Use global setting"
+msgstr "Gamitin ang global setting"
+
+#: admin/custom-fields.php:109
+msgid "Don't show image"
+msgstr "Huwag ipakita ang larawan"
+
+#: admin/custom-fields.php:110
+msgid "Featured Image"
+msgstr "Itinatampok na larawan"
+
+#: admin/custom-fields.php:111
+msgid "First image in post"
+msgstr "Unang larawan sa pahayag"
+
+#: admin/custom-fields.php:112
+msgid "Custom URL"
+msgstr "Custom URL"
+
+#: admin/custom-fields.php:118
+msgid "Custom slider image URL"
+msgstr "URL ng larawan ng custom slider"
+
+#: admin/custom-fields.php:122
+msgid ""
+"Make sure you select Custom URL in the slider image option above to use this "
+"custom url."
+msgstr ""
+"Tiyakin na piliin ang Custom URL na nasa pagpipilian sa larawan ng slider sa "
+"itaas para magamit ang custom URL na ito."
+
+#: admin/custom-fields.php:127
+msgid "Custom slider URL"
+msgstr "URL ng custom slider"
+
+#: admin/custom-fields.php:131
+msgid "Use this to override the link that is used in the slider."
+msgstr "Gamitin ito upang i-pawalang bisa ang pag-ugnay na ginamit sa slider."
+
+#: admin/custom-fields.php:135
+msgid "Display options"
+msgstr "Mga pagpipilian para sa Display"
+
+#: admin/custom-fields.php:139
+msgid "AddThis Social Sharing button"
+msgstr "Buton para sa AddThis Social Sharing"
+
+#: admin/custom-fields.php:144
+msgid "Show button"
+msgstr "Buton ng Show "
+
+#: admin/custom-fields.php:145
+msgid "Hide button"
+msgstr "Buton ng Hide"
+
+#: admin/custom-fields.php:153
+msgid "Post date display"
+msgstr "Pagpakita ng petsa ng pahayag"
+
+#: admin/custom-fields.php:158
+msgid "Hide date"
+msgstr "Itago ang petsa"
+
+#: admin/custom-fields.php:166
+msgid "Navigation options"
+msgstr "Mga pagpipilian sa Nabigasyon"
+
+#: admin/custom-fields.php:170
+msgid "Description"
+msgstr "Paglalarawan"
+
+#: admin/custom-fields.php:174
+msgid ""
+"Only required if you need a description in the navigation menu and you are "
+"not using a custom menu."
+msgstr ""
+"Kinakailangan lamang kung kailangan mo ng isang paglalarawan sa menu ng "
+"nabigasyon at hindi ka gumagamit ng isang pasadyang menu."
+
+#: admin/db-updater.php:227
+#, php-format
+msgid "Follow %s on Twitter"
+msgstr "Sundan %s sa Twitter"
+
+#: admin/db-updater.php:238
+#, php-format
+msgid "Visit %s's Facebook page"
+msgstr "Bisitahin ang pahina sa Facebook ng %s"
+
+#: admin/faq.php:11
+msgid "Graphene's Frequently Asked Questions"
+msgstr "Mga Madalas na Katanungan sa Graphene"
+
+#: admin/faq.php:14
+msgid "Where should I go for the theme's support?"
+msgstr "Saan ako dapat pumunta para sa suporta sa tema?"
+
+#: admin/faq.php:15
+msgid ""
+"Please direct all support requests for the theme at the theme's <a href="
+"\"http://forum.khairul-syahir.com/graphene-wordpress-theme/\">Support Forum</"
+"a>."
+msgstr ""
+"Mangyaring idirekta ang lahat ng mga kahilingan ng suporta para sa tema sa "
+"<a ang Forum href=\"http://forum.khairul-syahir.com/graphene-wordpress-theme/"
+"\"> Support Forum</ a>."
+
+#: admin/faq.php:18
+msgid "The post's featured image is replacing my header image. Help!"
+msgstr ""
+"Ang itinatampok na larawan ng pahayag ay pinapalitan ang larawan para sa "
+"aking header. Tulong!"
+
+#: admin/faq.php:19
+msgid ""
+"This is actually one of the theme's features, based on the feature in the "
+"default TwentyTen theme. Any featured image that has a size of greater than "
+"or equal to the theme's header image size (960 x 198 pixels) will replace "
+"the header image when the post/page that featured image is assigned to is "
+"being displayed. It enables you to have different header image for different "
+"posts and/or pages."
+msgstr ""
+"Ito ay talagang isa sa mga tampok ng tema, batay sa mga tampok ng default ng "
+"tema ng TwentyTen. Anumang itinatampok na larawan na may sukat na mas malaki "
+"kaysa sa o katumbas ng laki ng larawan ng header ng tema (960 x 198 pixels) "
+"ay papalitan ang larawan ng header kapag ipinakita ang mga pahayag/pahina "
+"kung saan itinalaga ang itinatampok na larawan. Ito ay nagbibigay-daan sa "
+"iyo na magkaroon ng iba't ibang mga larawan ng header para sa iba't ibang "
+"mga pahayag at/o mga pahina."
+
+#: admin/faq.php:20
+msgid ""
+"If you want to disable this feature, simply tick the <em>Disable Featured "
+"Image replacing header image</em> option in the <a href=\"themes.php?"
+"page=graphene_options&tab=display\">Graphene Options</a> page, under Display "
+"&gt; Header Display Options."
+msgstr ""
+"Kung nais mong huwag paganahin ang tampok na ito, kailangan lang lagyan ng "
+"tsek ang <em>Disable Featured Image replacing header image</em> na opsyon sa "
+"pahina ng <a href=\"themes.php?page=graphene_options&tab=display\">Graphene "
+"Options</a>, na nasa ilalim ng Display &gt; Header Display Options."
+
+#: admin/faq.php:23
+msgid "Can I modify Graphene to my heart's content without paying anything?"
+msgstr ""
+"Maaari ko bang baguhin ang Graphene sa aking kagustuhan nang walang "
+"kabayaran?"
+
+#: admin/faq.php:24
+msgid ""
+"The Graphene WordPress theme, along with all the other themes in the "
+"WordPress.org Official Free Themes Directory, is released under the GNU "
+"General Public License (GPL) Version 3. The full text of that licence is "
+"included with the theme in the <code>licence.txt</code> file in the theme's "
+"folder. Releasing the theme under that licence means, among others, that you "
+"are <em>free to modify the theme in any way for any purpose (including "
+"commercial)</em>. However, if you decide to redistribute the theme, the "
+"licence dictates that you must release the theme under the same licence, "
+"GPLv3, and attributes the copyright of the original theme to the original "
+"author."
+msgstr ""
+"Ang tema ng Graphene sa WordPress, kasama ng lahat ng ibang mga tema sa "
+"WordPress.org Official Free Themes Directory, ay inilabas sa ilalim ng GNU "
+"General Public Bersyon License (GPL) 3. Ang buong teksto ng lisensya ay "
+"kasama ng tema sa <code> licence.txt </ code> file na nasa folder ng tema. "
+"Ang pagpapalabas ng tema sa ilalim ng lisensyang ito, bukod sa iba pa,ay "
+"nagpapahiwatig na ikaw ay <em> may layang baguhin ang mga tema sa anumang "
+"paraan para sa anumang layunin (kabilang na ang komersyal)</ em>. "
+"Gayunpaman, kung magpasya kang muling ipamahagi ang tema, ang lisensya ay "
+"nagsasaad na dapat mong bitawan ang tema sa ilalim ng parehong lisensya, "
+"GPLv3, at idulot ang copyright ng orihinal na tema sa orihinal na may-akda."
+
+#: admin/faq.php:25
+msgid ""
+"But of course, the author would always appreciate <a href=\"themes.php?"
+"page=graphene_options\">donations</a> to support ongoing and future "
+"developments of the theme."
+msgstr ""
+"Nguni't siyempre, ang may-akda ay laging pahahalagahan ang anumang mga <a "
+"href=\"themes.php?page=graphene_options\">donasyon</a> para sa suporta ng "
+"kasalukuyan at patuloy na pagpapa-unlad ng tema."
+
+#: admin/faq.php:28
+msgid ""
+"If the theme is released under GPLv3, what is this Creative Commons licence "
+"in the theme's footer?"
+msgstr ""
+"Kung ang tema ay inilabas sa ilalim ng GPLv3, ano itong lisensyang Creative "
+"Commons sa footer ng tema?"
+
+#: admin/faq.php:29
+msgid ""
+"The Creative Commons licence is a popular licence nowadays that are used by "
+"a lot of web-based content authors to licence their work such that it "
+"protects their intellectual property but in the same time allows its free "
+"distribution. It is included with the theme simply to make it easy for the "
+"theme's users to make use of the licence for the content they publish. Theme "
+"users can remove it altogether via the theme's Options page should they wish "
+"not to use it."
+msgstr ""
+"Ang lisensyang Creative Commons ay isang popular na lisensya sa panahong ito "
+"na ginagamit ng maraming mga may-akda ng web-based na nilalaman para sa "
+"lisensya ng kanilang gawa, tulad na ito'y pinoprotektahan ang kanilang "
+"intelektuwal na pag-aari ngunit sa parehong oras ay nagbibigay-daan sa "
+"libreng pamamahagi nito. Ito ay kasama sa mga tema sa simpleng kadahilanang "
+"upang gawing madali para sa mga gumagamit ng tema sa paggamit ng lisensya "
+"para sa mga nilalaman na kanilang inilalathala. Ang mga gumagamit ng tema ay "
+"maaaring alisin ito sa pamamagitan ng pahina ng Options sa tema kung hindi "
+"nila nais na gamitin ito."
+
+#: admin/faq.php:30
+msgid ""
+"Put simply, <em>it is not the licence that is applied for the theme itself</"
+"em>, but just for the website's content should the theme user wants to use "
+"it."
+msgstr ""
+"Sa simpleng pananalita,<em> ito ay hindi ang lisensya na inilapat para sa "
+"mismong tema </ em>, ngunit para lamang sa mga nilalaman ng website kung "
+"nais ng may-akda na gamitin ito."
+
+#: admin/faq.php:33
+msgid "Is the theme compatible with this plugin or that plugin?"
+msgstr "Nagtutugma ba ang tema na ito sa mga iba't ibang plugin?"
+
+#: admin/faq.php:34
+msgid ""
+"I don't know. With so many plugins available for WordPress, there's no way "
+"that I (or anybody else for that matter) can test for compatibility for all "
+"of them. Having said that, the theme is built with all the necessary "
+"WordPress components included with it, so chances are most plugins will be "
+"compatible with the theme."
+msgstr ""
+"Hindi ko alam. Sa dinami-rami ng plugins na maaring gamitin, walang paraan "
+"na maari kong gawin (o kahit na sino pang ibang tao) para subukan ang "
+"pagkakatugma ng bawat isa sa tema. Ngunit ang tema ay ginawa na may kalakip "
+"na ng lahat ng kinakailangang bahagi nito, at malamang ang mga plugin ay "
+"tutugma dito."
+
+#: admin/faq.php:35
+msgid ""
+"My suggestion is to just install the plugin and try it. If you stumble into "
+"problem, ask for support from the plugin author first. If the plugin author "
+"says that it's a problems with the theme, you know where to find support."
+msgstr ""
+"Ang aking mungkahi lamang ay i-instal ang plugin at subukan ito. Kung "
+"makaranas ng problema, magtanong ng suporta mula sa may-akda ng plug. Kung "
+"sabihin ng may-akda ng plugin na ito ay problema sa tema, alam mo kung saan "
+"hahanap ng suporta."
+
+#: admin/feature-pointers.php:8
+msgid "Where are all the options?!"
+msgstr "Nasaan ang lahat ng puedeng pagpilian?!"
+
+#: admin/feature-pointers.php:9
+msgid "We've decided to clean things up!"
+msgstr "Nagpasya kaming maglinis ng mga bagay-bagay!"
+
+#: admin/feature-pointers.php:10
+msgid ""
+"We know how too many options can really be daunting to new users, so we've "
+"hidden them."
+msgstr ""
+"Alam namin kung paano maaaring maging parang mahirap intindihin ang "
+"napakaraming pagpipilian lalo na sa mga baguhan, kaya't itinago namin ang "
+"mga ito."
+
+#: admin/feature-pointers.php:11
+msgid ""
+"But no worries! If you're a seasoned user of the Graphene theme, or whenever "
+"you feel ready to further customise your site, just click on the \"Show all "
+"options\" link, and they will magically appear to you."
+msgstr ""
+"Nguni't huwag mag-alala, kung ikaw ay isa ng batikan na gumagamit ng tema ng "
+"Graphene, o di kaya'y handa ng mag-customize ng iyong site, i-click lang ang "
+"link na \"Show all options\", at makikita mo nang lahat ng maaring pagpilian."
+
+#: admin/options-advanced.php:12 admin/options.php:353
+msgid "Preview"
+msgstr "Prebista"
+
+#: admin/options-advanced.php:19
+msgid "Enable preview of your site on the Graphene Theme Options page"
+msgstr ""
+"Paganahin ang Prebista sa iyong site sa pahina ng Graphene Theme Opsyons"
+
+#: admin/options-advanced.php:31
+msgid "Action Hooks Widget Areas"
+msgstr "Mga Area ng Action Hooks Widget"
+
+#: admin/options-advanced.php:34
+msgid ""
+"This option enables you to place virtually any content to every nook and "
+"cranny in the theme, by attaching widget areas to the theme's action hooks."
+msgstr ""
+"Ang pagpipiliang ito ay nagbibigay-daan sa iyo upang ilagay ang kahit anong "
+"nilalaman sa bawat sulok sa tema, sa pamamagitan ng paglakip ng mga lugar "
+"para sa widget sa Action Hooks ng tema."
+
+#: admin/options-advanced.php:35
+msgid ""
+"All action hooks available in the Graphene Theme are listed below. Click on "
+"the filename to display all the action hooks available in that file. Then, "
+"tick the checkbox next to an action hook to make a widget area available for "
+"that action hook."
+msgstr ""
+"Ang lahat na magagamit na Action Hooks sa Graphene Tema ay nakalista sa "
+"ibaba. Mag-click sa filename upang ipakita ang lahat ng Action Hooks na "
+"maaring magamit sa file na iyon. Pagkatapos, lagyan ng tsek ang checkbox na "
+"katabi sa isang Action Hook upang gumawa ng isang widget area na maaring "
+"magamit sa Action Hook na iyon."
+
+#: admin/options-advanced.php:44
+msgid "Click to show/hide the action hooks for this file"
+msgstr "I-click upang ipakita/itago ang mga Action Hooks ng file na ito"
+
+#: admin/options-advanced.php:56
+msgid "Rescan action hooks"
+msgstr "Suriing mabuti uli ang mga action hooks"
+
+#: admin/options-defaults.php:77
+#, php-format
+msgid "Subscribe to %s's RSS feed"
+msgstr "Mag-subscribe sa RSS feed ng %s"
+
+#: admin/options-display.php:13
+msgid "Header Display Options"
+msgstr "Mga Pagpipilian sa Header Display"
+
+#: admin/options-display.php:19
+msgid "Use light-coloured header bars"
+msgstr "Gumamit ng light-coloured header bars"
+
+#: admin/options-display.php:25
+msgid "Link header image to front page"
+msgstr "Iugnay ang larawan ng header sa harap na pahina"
+
+#: admin/options-display.php:28
+msgid ""
+"Check this if you disable the header texts and want the header image to be "
+"linked to the front page."
+msgstr ""
+"Lagyan ito ng tsek kung hindi mo pinagana ang mga teksto ng header at nais "
+"mo na ang larawan ng header ay maiugnay sa harap na pahina."
+
+#: admin/options-display.php:33
+msgid "Disable Featured Image replacing header image"
+msgstr ""
+"Huwag paganahin ang Itinatampok na Larawan na pinapalitan ang larawan ng "
+"header"
+
+#: admin/options-display.php:36
+msgid ""
+"Check this to prevent the posts Featured Image replacing the header image "
+"regardless of the featured image dimension."
+msgstr ""
+"Lagyan ito ng tsek upang maiwasan ang paggamit ng tinatampok na larawan sa "
+"mga pahayag na pinapalitan ang larawan ng header, alintana kung ano man ang "
+"sukat ng tinatampok na larawan."
+
+#: admin/options-display.php:41
+msgid "Use random header image"
+msgstr "Gamitin ang pasumalang larawan ng header"
+
+#: admin/options-display.php:45
+msgid ""
+"Check this to show a random header image (random image taken from the "
+"available default header images)."
+msgstr ""
+"Lagyan ito ng tsek upang magpakita ng pasumalang larawan ng header "
+"(pasumalang larawan na kinuha mula sa mga maaring magamit na default na "
+"larawan ng header)."
+
+#: admin/options-display.php:46
+msgid ""
+"<strong>Note:</strong> only works on pages where a specific header image is "
+"not defined."
+msgstr ""
+"<strong> Tandaan:</ strong> gumagana lamang sa mga pahina na kung saan ay "
+"hindi tinukoy ang larawan ng header."
+
+#: admin/options-display.php:51
+msgid "Header image height"
+msgstr "Taas ng larawan ng header"
+
+#: admin/options-display.php:60
+msgid "Search box location"
+msgstr "Kinalalagyan ng kahon ng paghahanap"
+
+#: admin/options-display.php:64
+msgid "Top bar"
+msgstr "Tuktok na bar"
+
+#: admin/options-display.php:65
+msgid "Navigation bar"
+msgstr "Bar ng Nabigasyon"
+
+#: admin/options-display.php:66
+msgid "Disable search box"
+msgstr "Huwag paganahin ang kahon ng paghahanap"
+
+#: admin/options-display.php:79
+msgid "Column Options"
+msgstr "Pagpipilian para sa mga Hanay"
+
+#: admin/options-display.php:85
+msgid "Column mode"
+msgstr "Paraan ng Pag-hanay"
+
+#: admin/options-display.php:94 admin/options-display.php:139
+msgid "One column"
+msgstr "Isang hanay"
+
+#: admin/options-display.php:101 admin/options-display.php:146
+msgid "Two columns (with sidebar right)"
+msgstr "Dalawang hanay (na may sidebar sa kanan)"
+
+#: admin/options-display.php:105 admin/options-display.php:150
+msgid "Two columns (with sidebar left)"
+msgstr "Dalawang hanay (na may sidebar sa kaliwa)"
+
+#: admin/options-display.php:112 admin/options-display.php:157
+msgid "Three columns (with two sidebars right)"
+msgstr "Tatlong hanay (na may dalawang sidebar sa kanan)"
+
+#: admin/options-display.php:116 admin/options-display.php:161
+msgid "Three columns (with two sidebars left)"
+msgstr "Tatlong hanay (na may dalawang sidebar sa kaliwa)"
+
+#: admin/options-display.php:120 admin/options-display.php:165
+msgid "Three columns (with sidebars left and right)"
+msgstr "Tatlong hanay (na may sidebar sa kaliwa at kanan)"
+
+#: admin/options-display.php:130
+msgid "bbPress column mode"
+msgstr "Paraan ng bbPress na hanay"
+
+#: admin/options-display.php:181
+msgid "Column Width Options"
+msgstr "Pagpipilian sa Lapad ng Hanay"
+
+#: admin/options-display.php:184
+msgid "Note: Leave values empty to reset to the default values."
+msgstr ""
+"Tandaan: Iwanang walang halaga upang i-reset sa mga default na halaga. "
+
+#: admin/options-display.php:188
+msgid "Container width"
+msgstr "Lapad ng Lalagyan"
+
+#: admin/options-display.php:205 admin/options-display.php:228
+msgid "Column width"
+msgstr "Lapad ng Hanay"
+
+#: admin/options-display.php:205
+msgid "two-column mode"
+msgstr "Pamamaraan ng dalawahang hanay"
+
+#: admin/options-display.php:209 admin/options-display.php:236
+msgid "Content"
+msgstr "Nilalaman"
+
+#: admin/options-display.php:213
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: admin/options-display.php:228
+msgid "three-column mode"
+msgstr "Pamamaraan ng pang-tatluhang hanay"
+
+#: admin/options-display.php:232
+msgid "Left sidebar"
+msgstr "Sidebar sa kaliwa"
+
+#: admin/options-display.php:240
+msgid "Right sidebar"
+msgstr "Sidebar sa kanan"
+
+#: admin/options-display.php:261
+msgid "Posts Display Options"
+msgstr "Pagpipilian para sa Display ng mga Pahayag"
+
+#: admin/options-display.php:267
+msgid "Hide post author"
+msgstr "Itago ang may-akda ng pahayag"
+
+#: admin/options-display.php:277
+msgid "Hidden"
+msgstr "Nakatago"
+
+#: admin/options-display.php:278
+msgid "As an icon (without the year)"
+msgstr "Bilang isang icon (ng walang taon)"
+
+#: admin/options-display.php:279
+msgid "As an icon (including the year)"
+msgstr "Bilang isang icon (kasama ang taon)"
+
+#: admin/options-display.php:280
+msgid "As inline text"
+msgstr "Bilang teksto sa loob ng linya"
+
+#: admin/options-display.php:286
+msgid "Hide post categories"
+msgstr "Itago ang mga kategorya ng pahayag"
+
+#: admin/options-display.php:292
+msgid "Hide post tags"
+msgstr "Itago ang mga pananda ng pahayag"
+
+#: admin/options-display.php:298
+msgid "Hide post comment count"
+msgstr "Itago ang mga bilang ng koimento ng pahayag"
+
+#: admin/options-display.php:299
+msgid ""
+"Only affects posts listing (such as the front page) and not single post view."
+msgstr ""
+"Naapektuhan lamang ang listahan ng mga pahayag (tulad ng harap na pahina) at "
+"hindi ang pagtingin sa isang pahayag lamang."
+
+#: admin/options-display.php:304
+msgid "Show post author's <a href=\"http://en.gravatar.com/\">gravatar</a>"
+msgstr ""
+"Ipakita ang <a href=\"http://en.gravatar.com/\">gravatar</a> ng may-akda ng "
+"pahayag"
+
+#: admin/options-display.php:308
+msgid "Show post author's info"
+msgstr "Ipakita ang impormasyon ng may-akda ng pahayag "
+
+#: admin/options-display.php:320
+msgid "Excerpts Display Options"
+msgstr "Pagpipilian ng mga Excerpts Display"
+
+#: admin/options-display.php:326
+msgid "Show excerpts in front page"
+msgstr "Ipakita ang mga excerpts sa harap na pahina"
+
+#: admin/options-display.php:332
+msgid "Show full content in archive pages"
+msgstr "Ipakita ang buong nilalaman sa mga pahina ng archive"
+
+#: admin/options-display.php:336
+msgid ""
+"Note: Archive pages include the archive for category, tags, time, and search "
+"results pages. Enabling this option will cause the full content of posts and "
+"pages listed in those archives to displayed instead of the excerpt, and "
+"truncated by the Read More tag if used."
+msgstr ""
+"Tandaan: Kasama sa mga pahina ng Archive ang archive para sa kategorya, "
+"pananda, oras, at mga pahina ng mga resulta ng paghahanap. Pagpapagana sa "
+"pagpipiliang ito ay maaring maging sanhi ng pagpapakita ng buong nilalaman "
+"ng mga pahayag at mga pahina na nakalista sa archive sa halip na mga "
+"excerpts, at pinutol ng pananda na Higit pang Basahin, kung gagamitin pa."
+
+#: admin/options-display.php:340
+msgid "Show More link for manual excerpts"
+msgstr "Magpakita pa ng marami pang pag-uugnay sa manwal na excerpts"
+
+#: admin/options-display.php:344
+msgid "Retain these HTML tags in excerpts"
+msgstr "Panatilihin ang mga pananda  na HTML sa mga excerpts"
+
+#: admin/options-display.php:347
+msgid ""
+"Enter the HTML tags you'd like to retain in excerpts. For example, enter "
+"<code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> to retain <code>&lt;p&gt;</code>, "
+"<code>&lt;ul&gt;</code>, and <code>&lt;li&gt;</code> HTML tags."
+msgstr ""
+"Ipasok ang mga pananda na HTML na nais mong panatilihin sa mga excerpts. "
+"Halimbawa, ipasok ang <code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> upang "
+"manatili ang mga pananda na <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, "
+"at <code>&lt;li&gt;</code> na pananda ng HTML."
+
+#: admin/options-display.php:360
+msgid "Comments Display Options"
+msgstr "Mga pagpipilian sa Display ng mga Komento"
+
+#: admin/options-display.php:366
+msgid "Hide allowed tags in comment form"
+msgstr "Itago ang pinapayagang mga pananda sa form ng Komento."
+
+#: admin/options-display.php:379
+msgid "Colours Options"
+msgstr "Pagpipilian para sa mga Kulay"
+
+#: admin/options-display.php:382
+msgid ""
+"Changing colours for your website involves a lot more than just trial and "
+"error. Simply mixing and matching colours without regard to their "
+"compatibility may do more damage than good to your site's aesthetics."
+msgstr ""
+"Ang pagbabago ng mga kulay para sa iyong website ay nagsasangkot ng higit pa "
+"kaysa na pagsubok at pagkakamali lamang. Paghahalo nang simple at pagtutugma "
+"ng kulay nang walang pagsasaalang-alang sa kanilang compatibility ay "
+"maaaring makagawa ng karagdagang pinsala kaysa sa magandang aesthetics ng "
+"iyong site."
+
+#: admin/options-display.php:383
+#, php-format
+msgid ""
+"It's generally a good idea to stick to colours from colour pallettes that "
+"are aesthetically pleasing. Try the %s website for a kickstart on some "
+"colour palettes you can use."
+msgstr ""
+"Sa pangkalahatan, isang magandang ideya ang manatili sa mga kulay mula sa "
+"pallettes na kasiya-siya ang aesthetics nito. Subukan ang website ng % s "
+"para sa isang pag-umpisa sa ilang mga palettes ng kulay na maaari mong "
+"gamitin."
+
+#: admin/options-display.php:384
+msgid ""
+"When you've got the perfect combination, you can even share it with fellow "
+"Graphene theme users through the <a href=\"http://forum.khairul-syahir.com/"
+"\">Support Forum</a>."
+msgstr ""
+"Kapag nakuha mo na ang perpektong kombinasyon, maari mo ring ibahagi ito sa "
+"iyong mga kapwang gumagamit din ng tema ng Graphene sa pamamagitan ng <a "
+"href=\"http://forum.khairul-syahir.com/\">Support Forum</a>."
+
+#: admin/options-display.php:385
+msgid ""
+"<strong>Note:</strong> The previews work best on modern Gecko- and Webkit-"
+"based browsers, such as Mozilla Firefox and Google Chrome."
+msgstr ""
+"<strong>Tandaan:</ strong> Ang mga preview ay gumagana ng mabuti sa mga "
+"modernong Gecko- at Webkit-based na mga browser, tulad ng Mozilla Firefox at "
+"Google Chrome."
+
+#: admin/options-display.php:386
+msgid ""
+"<strong>Note:</strong> To reset any of the colours to their default value, "
+"just click on \"Clear\" beside the colour field and save the settings. The "
+"theme will automatically revert the value to the default colour."
+msgstr ""
+"<strong>Tandaan:</ strong> Upang i-reset ang anumang ng mga kulay sa "
+"kanilang mga default na halaga, i-click lamang ang  \"Clear\" sa tabi ng "
+"patlang ng kulay at i-save ang mga setting. Ang tema ay awtomatikong babalik "
+"ang halaga sa default na kulay."
+
+#: admin/options-display.php:388
+msgid "Colour presets"
+msgstr "Mga Preset ng Kulay"
+
+#: admin/options-display.php:390
+msgid ""
+"These are some colour presets that you may use, either as is or tweak them "
+"further to your liking."
+msgstr ""
+"Ito ang ilang mga kulay na preset na maaari mong gamitin, alinman sa dalawa, "
+"puedeng ganito lang o i-tweak mo pa ng karagdagan ayon sa gusto mo."
+
+#: admin/options-display.php:394
+msgid "Default"
+msgstr "Default"
+
+#: admin/options-display.php:395
+msgid "Dream Magnet"
+msgstr "Hangad na Balani"
+
+#: admin/options-display.php:396
+msgid "Curiosity Killed"
+msgstr "Pinatay na Pagka-usyoso"
+
+#: admin/options-display.php:399
+msgid "Content area"
+msgstr "Lugar ng nilalaman"
+
+#: admin/options-display.php:403
+msgid "Main content wrapper background"
+msgstr "Pambalot na likuran ng pangunahing nilalaman "
+
+#: admin/options-display.php:404
+msgid "Post and pages content background"
+msgstr "Likuran ng nilalaman ng mga pahayag at pahina"
+
+#: admin/options-display.php:405
+msgid "Post meta and footer border"
+msgstr "Paligid ng meta at footer ng pahayag"
+
+#: admin/options-display.php:406
+msgid "Post and pages top border"
+msgstr "Itaas na gilid ng pahayag at mga pahina"
+
+#: admin/options-display.php:407
+msgid "Post and pages bottom border"
+msgstr "Ibabang gilid ng pahayag at mga pahina"
+
+#: admin/options-display.php:417 admin/options-display.php:448
+#: admin/options-display.php:474 admin/options-display.php:502
+#: admin/options-display.php:531 admin/options-display.php:558
+#: admin/options-display.php:573 admin/options-display.php:583
+#: admin/options-display.php:600
+msgid "Clear"
+msgstr "Alisin ang sagabal"
+
+#: admin/options-display.php:424
+msgid "Widgets"
+msgstr "Mga Widgets"
+
+#: admin/options-display.php:427
+msgid "Widget preview"
+msgstr "Prebiyu ng mga Widget"
+
+#: admin/options-display.php:428
+msgid "Widget title"
+msgstr "Pamagat ng Widget"
+
+#: admin/options-display.php:428
+msgid "List item"
+msgstr "Item sa listahan"
+
+#: admin/options-display.php:432
+msgid "Widget item background"
+msgstr "Likuran ng Widget item"
+
+#: admin/options-display.php:433
+msgid "Widget item list border"
+msgstr "Paligid ng Listahan ng Widget item"
+
+#: admin/options-display.php:434
+msgid "Widget header border"
+msgstr "Gilid ng widget header"
+
+#: admin/options-display.php:435
+msgid "Widget title colour"
+msgstr "Kulay ng pamagat ng widget"
+
+#: admin/options-display.php:436
+msgid "Widget title text shadow colour"
+msgstr "Kulay ng anino ng teksto sa pamagat ng widget"
+
+#: admin/options-display.php:437
+msgid "Widget header gradient bottom colour"
+msgstr "Kulay sa ibaba ng gradient sa header ng widget "
+
+#: admin/options-display.php:438
+msgid "Widget header gradient top colour"
+msgstr "Kulay sa itaas ng gradient sa header ng widget"
+
+#: admin/options-display.php:439
+msgid "Widget box shadow"
+msgstr "Anino ng kaha ng widget"
+
+#: admin/options-display.php:456
+msgid "Slider"
+msgstr "Slider"
+
+#: admin/options-display.php:459
+msgid "Slider background preview"
+msgstr "Prebiyu ng likuran ng slider"
+
+#: admin/options-display.php:464
+msgid "Slider top left colour"
+msgstr "Kulay ng slider sa gawing kaliwa sa taas"
+
+#: admin/options-display.php:465
+msgid "Slider bottom right colour"
+msgstr "Kulay ng slider sa gawing kanan sa ibaba"
+
+#: admin/options-display.php:482
+msgid "Block buttons"
+msgstr "Buton ng pag-block"
+
+#: admin/options-display.php:485
+msgid "Block button preview"
+msgstr "Prebiyu ng buton ng pag-block"
+
+#: admin/options-display.php:486
+msgid "Button label"
+msgstr "Tatak ng buton"
+
+#: admin/options-display.php:490
+msgid "Button background colour"
+msgstr "Kulay ng likuran sa buton"
+
+#: admin/options-display.php:491
+msgid "Button label colour"
+msgstr "Kulay ng tatak sa buton"
+
+#: admin/options-display.php:492
+msgid "Button label text shadow"
+msgstr "Anino ng teksto ng tatak sa buton"
+
+#: admin/options-display.php:493
+msgid "Button box shadow"
+msgstr "Anino ng kaha ng buton"
+
+#: admin/options-display.php:510
+msgid "Archive title"
+msgstr "Pamagat ng Archive"
+
+#: admin/options-display.php:513
+msgid "Archive title preview"
+msgstr "Prebiyu ng pamagat ng Archive"
+
+#: admin/options-display.php:514
+msgid "Archive title:"
+msgstr "Pamagat ng Archive:"
+
+#: admin/options-display.php:514
+msgid "Sample title"
+msgstr "Sample ng pamagat"
+
+#: admin/options-display.php:518
+msgid "Archive background gradient left colour"
+msgstr "Kulay ng gradient sa kaliwa ng likuran ng Archive"
+
+#: admin/options-display.php:519
+msgid "Archive background gradient right colour"
+msgstr "Kulay ng gradient sa kanan ng likuran ng Archive"
+
+#: admin/options-display.php:520
+msgid "Archive label colour"
+msgstr "Kulay ng tatak ng Archive"
+
+#: admin/options-display.php:521
+msgid "Archive text colour"
+msgstr "Kulay ng teksto ng Archive"
+
+#: admin/options-display.php:522
+msgid "Archive label and text shadow colour"
+msgstr "Kulay ng anino ng tatak at teksto ng Archive"
+
+#: admin/options-display.php:539
+msgid "Comments area"
+msgstr "Lugar ng mga komento"
+
+#: admin/options-display.php:543
+msgid "Comments background"
+msgstr "Likuran ng mga komento"
+
+#: admin/options-display.php:544
+msgid "Comments text"
+msgstr "Teksto ng mga komento"
+
+#: admin/options-display.php:545
+msgid "Threaded comments border"
+msgstr "Paligid ng pinagtahi-tahing mga komento"
+
+#: admin/options-display.php:546
+msgid "Author comments background"
+msgstr "Likuran ng mga komento ng May-Akda"
+
+#: admin/options-display.php:547
+msgid "Author comments top border"
+msgstr "Itaas na gilid ng mga komento ng May-Akda"
+
+#: admin/options-display.php:548
+msgid "Author comments text"
+msgstr "Teksto ng mga komento ng May-Akda"
+
+#: admin/options-display.php:549
+msgid "Comment form background"
+msgstr "Likuran ng form ng komento"
+
+#: admin/options-display.php:550
+msgid "Comment form text"
+msgstr "Teksto ng form ng komento"
+
+#: admin/options-display.php:565 admin/options-display.php:569
+msgid "Content text"
+msgstr "Teksto ng mga Nilalaman"
+
+#: admin/options-display.php:579
+msgid "Title text"
+msgstr "Teksto ng pamagat"
+
+#: admin/options-display.php:589
+msgid "Link colour (normal state )"
+msgstr "Kulay ng link (normal na estado)"
+
+#: admin/options-display.php:590
+msgid "Link colour (visited state )"
+msgstr "Kulay ng link (binisita na estado)"
+
+#: admin/options-display.php:591
+msgid "Link colour (hover state )"
+msgstr "Kulay ng link (pag-aaligid na estado)"
+
+#: admin/options-display.php:614
+msgid "Text Style Options"
+msgstr "Pagpipilian ng mga istilo ng teksto"
+
+#: admin/options-display.php:617
+msgid ""
+"Note that these are CSS properties, so any valid CSS values for each "
+"particular property can be used."
+msgstr ""
+"Tandaan na ang mga ito ay ang mga katangian ng CSS, kaya't kahit anong "
+"halaga ng CSS para sa bawat isang katangian ay maaaring gamitin."
+
+#: admin/options-display.php:618
+msgid "Some example CSS properties values:"
+msgstr "Mga ilang halimbawa ng mga katangian ng CSS:"
+
+#: admin/options-display.php:621
+msgid "Text font:"
+msgstr "Font ng teksto:"
+
+#: admin/options-display.php:625
+msgid "Text size and line height:"
+msgstr "Laki ng teksto at taas ng linya:"
+
+#: admin/options-display.php:629
+msgid "Text weight:"
+msgstr "Bigat ng teksto:"
+
+#: admin/options-display.php:633
+msgid "Text style:"
+msgstr "Istilo ng teksto:"
+
+#: admin/options-display.php:637
+msgid "Text colour:"
+msgstr "Kulay ng Teksto:"
+
+#: admin/options-display.php:642
+msgid "Header Text"
+msgstr "Teksto ng header"
+
+#: admin/options-display.php:646
+msgid "Title text font"
+msgstr "Font ng teksto ng pamagat"
+
+#: admin/options-display.php:652
+msgid "Title text size"
+msgstr "Laki ng teksto ng pamagat"
+
+#: admin/options-display.php:658
+msgid "Title text weight"
+msgstr "Bigat ng teksto ng pamagat"
+
+#: admin/options-display.php:664
+msgid "Title text line height"
+msgstr "Taas ng linya ng teksto ng pamagat"
+
+#: admin/options-display.php:670
+msgid "Title text style"
+msgstr "Istilo ng teksto ng pamagat"
+
+#: admin/options-display.php:679
+msgid "Description text font"
+msgstr "Font ng teksto ng paglalarawan"
+
+#: admin/options-display.php:685
+msgid "Description text size"
+msgstr "Laki ng teksto ng paglalarawan"
+
+#: admin/options-display.php:691
+msgid "Description text weight"
+msgstr "Bigat ng teksto ng paglalarawan"
+
+#: admin/options-display.php:697
+msgid "Description text line height"
+msgstr "Taas ng linya ng teksto ng paglalarawan"
+
+#: admin/options-display.php:703
+msgid "Description text style"
+msgstr "Istilo ng teksto ng paglalarawan"
+
+#: admin/options-display.php:709
+msgid "Content Text"
+msgstr "Teksto ng Nilalalaman"
+
+#: admin/options-display.php:713
+msgid "Text font"
+msgstr "Font ng teksto"
+
+#: admin/options-display.php:719
+msgid "Text size"
+msgstr "Laki ng Teksto"
+
+#: admin/options-display.php:725
+msgid "Text line height"
+msgstr "Taas ng linya ng teksto"
+
+#: admin/options-display.php:731
+msgid "Link Text"
+msgstr "Teksto ng Link"
+
+#: admin/options-display.php:735
+msgid "Text decoration (normal state )"
+msgstr "Palamuti ng Teksto (normal na estado)"
+
+#: admin/options-display.php:741
+msgid "Text decoration (hover state )"
+msgstr "Palamuti ng Teksto (pag-aaligid na estado)"
+
+#: admin/options-display.php:754
+msgid "Footer Widget Display Options"
+msgstr "Pagpipilian sa Display ng Footer ng Widget"
+
+#: admin/options-display.php:760
+msgid "Number of columns to display"
+msgstr "Bilang ng mga hanay na ipakikita"
+
+#: admin/options-display.php:767
+msgid "Number of columns to display for front page footer widget"
+msgstr "Bilang ng mga hanay na ipakikita para sa footer widget ng unang pahina"
+
+#: admin/options-display.php:781
+msgid "Navigation Menu Display Options"
+msgstr "Mga Pagpipilian para sa Menu Display ng Nabigasyon"
+
+#: admin/options-display.php:787
+msgid "Dropdown menu item width"
+msgstr "Lapad ng Bagay sa Dropdown Menu"
+
+#: admin/options-display.php:793
+msgid "Disable description in Header Menu"
+msgstr "Huwag paganahin ang paglalarawan sa menu ng header"
+
+#: admin/options-display.php:801
+msgid "Description for default menu \"Home\" item"
+msgstr "Paglalarawan para sa mga bagay ng Default Menu \"Home\""
+
+#: admin/options-display.php:817
+msgid "Miscellaneous Display Options"
+msgstr "Sari-saring Pagpipilian ng Display"
+
+#: admin/options-display.php:820
+msgid "Site title options"
+msgstr "Mga Pagpipilian para sa Pamagat ng Site"
+
+#: admin/options-display.php:821
+msgid ""
+"Use these tags to customise your own site title structure: <code>#site-name</"
+"code>, <code>#site-desc</code>, <code>#post-title</code>"
+msgstr ""
+"Gamitin itong mga pananda upang i-customize ang kaayusan ng iyong site: "
+"<code>#site-name</code>, <code>#site-desc</code>, <code>#post-title</code>"
+
+#: admin/options-display.php:825
+msgid "Custom front page site title"
+msgstr "Pamagat ng customized na Unang Pahina ng Site"
+
+#: admin/options-display.php:829
+msgid ""
+"Defaults to <code>#site-name &raquo; #site-desc</code>. The <code>#post-"
+"title</code> tag cannot be used here."
+msgstr ""
+"Mga default ng <code>#site-name &raquo; #site-desc</code>. Ang <code>#post-"
+"title</code> na pananda ay hindi maaring gamitin dito."
+
+#: admin/options-display.php:834
+msgid "Custom content pages site title"
+msgstr "Pamagat ng Pasadyang mga Pahina ng Nilalaman ng Site "
+
+#: admin/options-display.php:838
+msgid "Defaults to <code>#post-title &raquo; #site-name</code>."
+msgstr "Mga default ng <code>#post-title &raquo; #site-name</code>."
+
+#: admin/options-display.php:843
+msgid "Favicon options"
+msgstr "Mga Pagpipilian para sa Favicon"
+
+#: admin/options-display.php:847
+msgid "Favicon URL"
+msgstr "URL ng Favicon"
+
+#: admin/options-display.php:851 admin/options-general.php:118
+msgid "Upload or select image from gallery"
+msgstr "Mag-upload o pumili ng larawan mula sa gallery"
+
+#: admin/options-display.php:851
+msgid ""
+"Simply enter the full URL to your favicon file here to enable favicon. Make "
+"sure you include the <code>http://</code> in front of the URL as well. Or "
+"use the WordPress media uploader to upload an image, or select one from the "
+"media library."
+msgstr ""
+"Ipasok lamang ang buong URL sa iyong favicon file dito upang paganahin ang "
+"favicon. Tiyaking isama mo ang <code>http://</ code> pati na rin sa harap ng "
+"URL. O gamitin ang uploader ng WordPress media upang mag-upload ng isang "
+"larawan, o pumili ng isa mula sa media library."
+
+#: admin/options-display.php:856
+msgid "WordPress Editor options"
+msgstr "Pagpipilian para sa WordPress Editor"
+
+#: admin/options-display.php:860
+msgid "Disable custom editor styles"
+msgstr "Huwag paganahin ang mga istilo ng Custom Editor"
+
+#: admin/options-display.php:873
+msgid "Custom CSS"
+msgstr "Pasadyang CSS"
+
+#: admin/options-display.php:878
+msgid "Custom CSS styles"
+msgstr "Pasadyang mga Istilo ng CSS"
+
+#: admin/options-display.php:880
+msgid ""
+"You can enter your own CSS codes below to modify any other aspects of the "
+"theme's appearance that is not included in the options."
+msgstr ""
+"Maaari mong ipasok ang iyong sariling CSS code sa ibaba upang baguhin ang "
+"anumang iba pang mga aspeto ng hitsura ng tema na hindi kasama sa mga "
+"pagpipilian."
+
+#: admin/options-general.php:12
+msgid "Slider Options"
+msgstr "Pagpipilian para sa Slider"
+
+#: admin/options-general.php:18
+msgid "Disable slider"
+msgstr "Huwag paganahin ang Slider"
+
+#: admin/options-general.php:26
+msgid "What do you want to show in the slider"
+msgstr "Ano ang nais mong ipakita sa Slider"
+
+#: admin/options-general.php:30
+msgid "Show latest posts"
+msgstr "Ipakita ang mga bagong pahayag"
+
+#: admin/options-general.php:33
+msgid "Show random posts"
+msgstr "Ipakita ang mga pasumalang pahayag"
+
+#: admin/options-general.php:36
+msgid "Show specific posts/pages"
+msgstr "Ipakita ang mga tiyak na mga pahayag/pahina"
+
+#: admin/options-general.php:39
+msgid "Show posts from categories"
+msgstr "Ipakita ang mga pahayag mula sa mga kategorya"
+
+#: admin/options-general.php:44 admin/options-general.php:278
+msgid "Posts and/or pages to display"
+msgstr "Mga pahayag at/o pahina na ipakikita"
+
+#: admin/options-general.php:49 admin/options-general.php:283
+msgid ""
+"Enter ID of posts and/or pages to be displayed, separated by comma. Example: "
+"<code>1,13,45,33</code>"
+msgstr ""
+"Ipasok ang ID ng mga pahayag at/o mga pahina na ipakikita, na pinaghihiwalay "
+"ng mga kuwit. Halimbawa: <code>1,13,45,33</code>"
+
+#: admin/options-general.php:50
+msgid ""
+"Applicable only if <strong>Show specific posts/pages</strong> is selected "
+"above."
+msgstr ""
+"Naaangkop lamang kung <strong>Ipakita ang mga tiyak na mga pahayag/pahina</"
+"strong> ay napili sa itaas."
+
+#: admin/options-general.php:56
+msgid "Categories to display"
+msgstr "Mga kategorya na ipakikita"
+
+#: admin/options-general.php:57
+msgid ""
+"All posts within the categories selected here will be displayed on the "
+"slider. Usage example: create a new category \"Featured\" and assign all "
+"posts to be displayed on the slider to that category, and then select that "
+"category here."
+msgstr ""
+"Ang lahat ng mga pahayag sa loob ng mga kategorya na napili dito ay "
+"ipakikita sa slider. Halimbawa ng Paggamit: lumikha ng isang bagong "
+"kategorya na \"Mga Tampok na\" at italaga ang lahat ng mga pahayag na "
+"ipinakikita sa slider sa kategoryang iyon, at pagkatapos ay piliin ang "
+"kategoryang iyon dito."
+
+#: admin/options-general.php:73
+msgid "Exclude the categories from posts listing"
+msgstr "Ibukod ang mga kategorya mula sa listahan ng mga pahayag"
+
+#: admin/options-general.php:77
+msgid "Disabled"
+msgstr "Huwag paganahin"
+
+#: admin/options-general.php:78
+msgid "Home Page"
+msgstr "Home Page"
+
+#: admin/options-general.php:79
+msgid "Everywhere"
+msgstr "Sa lahat ng dako"
+
+#: admin/options-general.php:85
+msgid "Show posts from categories in random order"
+msgstr ""
+"Ipakita ang mga pahayag mula sa mga kategorya sa pasumalang pagkakasunod-"
+"sunod"
+
+#: admin/options-general.php:93
+msgid "Number of posts to display"
+msgstr "Bilang ng mga pahayag na ipakikita"
+
+#: admin/options-general.php:124
+msgid "Slider display style"
+msgstr "Istilo ng slider na ipakikita"
+
+#: admin/options-general.php:128
+msgid "Thumbnail and excerpt"
+msgstr "Thumbnail at sipi"
+
+#: admin/options-general.php:129
+msgid "Background image and excerpt"
+msgstr "Imahe at Sipi ng likuran "
+
+#: admin/options-general.php:130
+msgid "Full post content"
+msgstr "Nilalaman ng buong pahayag"
+
+#: admin/options-general.php:136
+msgid "Slider animation"
+msgstr "Animasyon ng slider"
+
+#: admin/options-general.php:141
+msgid "Horizontal slide"
+msgstr "Pahalang na slide"
+
+#: admin/options-general.php:142
+msgid "Vertical slide"
+msgstr "Patayong slide"
+
+#: admin/options-general.php:143
+msgid "Fade"
+msgstr "Kumupas"
+
+#: admin/options-general.php:144
+msgid "No effect"
+msgstr "Walang epekto"
+
+#: admin/options-general.php:150
+msgid "Slider height"
+msgstr "Taas ng Slider"
+
+#: admin/options-general.php:158
+msgid "Slider speed"
+msgstr "Bilis ng slider"
+
+#: admin/options-general.php:161 admin/options-general.php:170
+msgid "milliseconds"
+msgstr "millisecond"
+
+#: admin/options-general.php:162
+msgid "This is the duration that each slider item will be shown"
+msgstr "Ito ang tagal ng panahon ng pagpapakita sa bawat slider"
+
+#: admin/options-general.php:167
+msgid "Slider transition speed"
+msgstr "Bilis ng pagpapalit ng slider"
+
+#: admin/options-general.php:171
+msgid ""
+"This is the speed of the slider transition. Lower values = higher speed."
+msgstr ""
+"Ito ang bilis ng pagpapalit ng slider. Mas mababang halaga = mas mabilis."
+
+#: admin/options-general.php:176
+msgid "Move slider to bottom of page"
+msgstr "Ilipat ang slider sa ibaba ng pahina"
+
+#: admin/options-general.php:189
+msgid "Front Page Options"
+msgstr "Pagpipilian sa Harap na Pahina"
+
+#: admin/options-general.php:195
+msgid "Front page posts categories"
+msgstr "Mga kategorya ng mga pahayag sa harap na pahina"
+
+#: admin/options-general.php:197
+msgid ""
+"Only posts that belong to the categories selected here will be displayed on "
+"the front page. Does not affect Static Front Page."
+msgstr ""
+"Tanging ang mga pahayag na nabibilang sa mga kategorya na napili dito ang "
+"ipakikita sa harap na pahina. Hindi nakakaapekto sa Static Front Page."
+
+#: admin/options-general.php:202
+msgid "--Disabled--"
+msgstr "--Hindi pinagana--"
+
+#: admin/options-general.php:210
+msgid "You may select multiple categories by holding down the CTRL key."
+msgstr ""
+"Maaari kang pumili ng maramihang mga kategorya sa pamamagitan ng pagpindot "
+"sa CTRL key."
+
+#: admin/options-general.php:222
+msgid "Homepage Panes"
+msgstr "Homepage Panes"
+
+#: admin/options-general.php:229
+msgid "Disable homepage panes"
+msgstr "Huwag paganahin ang Homepage Panes"
+
+#: admin/options-general.php:239
+msgid "Type of content to show"
+msgstr "Uri ng nilalaman na dapat ipakita"
+
+#: admin/options-general.php:246
+msgid "Latest posts by category"
+msgstr "Pinakabagong pahayag sa ayon sa kategorya"
+
+#: admin/options-general.php:249
+msgid "Posts and/or pages"
+msgstr "Mga Pahayag at/o Pahina"
+
+#: admin/options-general.php:254
+msgid "Number of latest posts to display"
+msgstr "Bilang ng mga pinakabagong pahayag na dapat ipakita"
+
+#: admin/options-general.php:258
+msgid ""
+"Applicable only if <strong>Latest posts</strong> or <strong>Latest posts by "
+"category</strong> is selected above."
+msgstr ""
+"Naaangkop lamang kung ang <strong> Pinakabagong mga Pahayag</ strong> o "
+"<strong> Pinakabagong pahayag ayon sa kategorya</ strong> ay napili sa itaas."
+
+#: admin/options-general.php:263
+msgid "Category to show latest posts from"
+msgstr "Ang kategorya kung saan dapat ipakita ang mga pinakabagong pahayag"
+
+#: admin/options-general.php:273
+msgid ""
+"Applicable only if <strong>Latest posts by category</strong> is selected "
+"above."
+msgstr ""
+"Naaangkop lamang kung ang mga <strong>Pinakabagong mga pahayag ayon sa "
+"kategorya</strong> ay pinili sa itaas."
+
+#: admin/options-general.php:284
+msgid ""
+"Applicable only if <strong>Posts and/or pages</strong> is selected above."
+msgstr ""
+"Naaangkop lamang kung ang <strong>mga Pahayag at/o mga pahina</strong> ay "
+"napili sa itaas."
+
+#: admin/options-general.php:290
+msgid ""
+"<strong>Note:</strong> homepage panes are only displayed when using a <a "
+"href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">static "
+"front page</a>."
+msgstr ""
+"<strong>Tandaan:</strong>Ang mga Homepage Pane ay ipinapakita lamang kapag "
+"gumagamit ng <a href=\"http://codex.wordpress.org/"
+"Creating_a_Static_Front_Page\"> static front page</ a>."
+
+#: admin/options-general.php:300
+msgid "Comments Options"
+msgstr "Mga Pagpipilian sa Pag-Komento"
+
+#: admin/options-general.php:306
+msgid "Commenting"
+msgstr "Pag-komento"
+
+#: admin/options-general.php:310
+msgid "Use WordPress settings"
+msgstr "Gamitin ang mga settings ng WordPress"
+
+#: admin/options-general.php:311
+msgid "Disabled for pages"
+msgstr "Hindi pinagana para sa mga pahina"
+
+#: admin/options-general.php:312
+msgid "Disabled completely"
+msgstr "Ganap na hindi pinagana"
+
+#: admin/options-general.php:314
+msgid ""
+"Note: this setting overrides the global WordPress Discussion Setting called "
+"\"Allow people to post comments on new articles\" and also the \"Allow "
+"comments\" option for individual posts/pages."
+msgstr ""
+"Tandaan: Ang setting na ito ay pinapawalang bisa ang pandaigdigang WordPress "
+"Discussion Setting na tinatawag na \"Payagan ang mga tao na mag-pahayag ng "
+"mga komento sa mga bagong artikulo\" at ang \ang \"Payagan ang mga komento\" "
+"na maari din pagpilian para sa mga indibidwal na mga pahayag/pahina."
+
+#: admin/options-general.php:326
+msgid "Child Page Options"
+msgstr "Mga Pagpipilian para sa Pahinang Pambata"
+
+#: admin/options-general.php:332
+msgid "Hide parent box if content is empty"
+msgstr "Itago ang kahon ng pang-magulang kung ito ay walang nilalaman"
+
+#: admin/options-general.php:338
+msgid "Child page listings"
+msgstr "Mga listahan para sa pahinang pambata"
+
+#: admin/options-general.php:342
+msgid "Show listing"
+msgstr "Ipakita ang listahan"
+
+#: admin/options-general.php:343
+msgid "Hide listing"
+msgstr "Itago ang listahan"
+
+#: admin/options-general.php:344
+msgid "Only show listing if parent content is empty"
+msgstr "Ipakita lamang ang listahan kung walang nilalaman na para sa magulang"
+
+#: admin/options-general.php:357
+msgid "Widget Area Options"
+msgstr "Pagpipilian para sa Widget Area"
+
+#: admin/options-general.php:360
+msgid "Header widget area"
+msgstr "Area ng widget sa header"
+
+#: admin/options-general.php:361
+msgid ""
+"<strong>Important:</strong> This widget area is unstyled, as it is often "
+"used for advertisement banners, etc. If you enable it, make sure you style "
+"it to your needs using the Custom CSS option."
+msgstr ""
+"<strong>Ang Mahalaga:</strong> Ang area ng widget na ito ay walang istilo, "
+"tulad nang mas madalas na ginagamit para sa mga baner na pang-anunsyo, atbp. "
+"Kung pinagana mo ito, tiyakin mo na bigyan ito ng istilo na angkop sa iyong "
+"mga pangangailangan gamit ang opsyon na Custom CSS."
+
+#: admin/options-general.php:365
+msgid "Enable header widget area"
+msgstr "Paganahin ang lugar ng header widget"
+
+#: admin/options-general.php:374
+msgid "Alternate Widgets"
+msgstr "Mga Widget na Salit-salit"
+
+#: admin/options-general.php:375
+msgid ""
+"You can enable the theme to show different widget areas in the front page "
+"than the rest of the website. If you enable this option, additional widget "
+"areas that will only be displayed on the front page will be added to the "
+"Widget settings page."
+msgstr ""
+"Maaari mong paganahin ang tema upang ipakita ang iba't ibang mga area ng "
+"widget sa front page kaysa sa iba pang mga bahagi ng website. Kung pinagana "
+"mo ang opsyong ito, ang mga karagdagang mga area ng widget na ipapakita "
+"lamang sa front page ay idadagdag sa pahina ng mga setting ng Widget."
+
+#: admin/options-general.php:378
+msgid "Enable alternate front page sidebar widget area"
+msgstr "Paganahin ang kahaliling area ng front page sidebar widget"
+
+#: admin/options-general.php:382
+msgid "Enable alternate front page footer widget area"
+msgstr "Paganahin ang kahaliling area ng front page footer widget"
+
+#: admin/options-general.php:383
+msgid ""
+"You can also specify different column counts for the front page footer "
+"widget and the rest-of-site footer widget if you enable this option."
+msgstr ""
+"Maaari mo ring tukuyin ang iba't ibang mga bilang ng haligi para sa front "
+"page footer widget at ang iba pang-site footer widget kung pinagana mo ang "
+"opsyong ito."
+
+#: admin/options-general.php:396
+msgid "Top Bar Options"
+msgstr "Mga Pagpipilian sa Top Bar"
+
+#: admin/options-general.php:402
+msgid "Hide the top bar"
+msgstr "Itago ang top bar"
+
+#: admin/options-general.php:408
+msgid "Social Media"
+msgstr "Social Media"
+
+#: admin/options-general.php:411
+msgid "Open social media links in new window"
+msgstr "Buksan ang mga link ng social media sa bagong window"
+
+#: admin/options-general.php:415
+msgid ""
+"<strong>Hint:</strong> drag and drop to rearrange the placement of the "
+"social media icons."
+msgstr ""
+"<strong>Pahiwatig:</strong> i-drag at drop upang muling ayusin ang "
+"pagkakalagay ng mga icon ng social media."
+
+#: admin/options-general.php:422 admin/options-general.php:437
+#: admin/js/admin.js.php:90
+msgid "Custom"
+msgstr "Pasadya"
+
+#: admin/options-general.php:449 admin/options-general.php:499
+#: admin/js/admin.js.php:110
+msgid "Title attribute"
+msgstr "Katangian ng Pamagat"
+
+#: admin/options-general.php:453 admin/options-general.php:503
+#: admin/js/admin.js.php:114
+msgid "URL"
+msgstr "URL"
+
+#: admin/options-general.php:457 admin/options-general.php:505
+msgid "Leave the URL empty to use the default RSS URL."
+msgstr "Iwanang walang laman ang URL upang gamitin ang default na URL ng RSS."
+
+#: admin/options-general.php:463 admin/options-general.php:509
+#: admin/js/admin.js.php:97
+msgid "Icon URL"
+msgstr "Icon URL"
+
+#: admin/options-general.php:467 admin/js/admin.js.php:118
+msgid "Delete"
+msgstr "Alisin"
+
+#: admin/options-general.php:479
+msgid "Add Social Media Profile"
+msgstr "Magdagdag ng Profile ng Social Media"
+
+#: admin/options-general.php:484
+msgid "Type"
+msgstr "Uri"
+
+#: admin/options-general.php:487
+msgid "Choose type"
+msgstr "Piliin ang Uri"
+
+#: admin/options-general.php:513
+msgid "Add new Social Media Profile"
+msgstr "Magdagdag ng bagong Profile ng Social Media"
+
+#: admin/options-general.php:527
+msgid "Social Sharing Buttons"
+msgstr "Mga Buton para sa Social Sharing"
+
+#: admin/options-general.php:532
+msgid "Show social sharing button"
+msgstr "Ipakita ang Buton ng Social Sharing"
+
+#: admin/options-general.php:538
+msgid "Show in Pages as well?"
+msgstr "Ipakita rin sa mga Pahina?"
+
+#: admin/options-general.php:542
+msgid "Show in home and archive pages?"
+msgstr "Ipakita sa mga pahina ng home at archive?"
+
+#: admin/options-general.php:545
+#, php-format
+msgid ""
+"Enabling this will cause the social sharing buttons to appear on posts "
+"listing pages, like the home page and archive pages. Use the available tags "
+"in the code below to get the post's URL, title, and excerpt. Otherwise, all "
+"your buttons will share the same URL and title. If you're using AddThis, see "
+"the %s."
+msgstr ""
+"Ang pagpapagana na ito ay magiging sanhi upang lumitaw ang mga buton ng "
+"social sharing sa mga pahina ng listahan ng mga pahayag, tulad ng home page "
+"at mga pahina ng archive. Gamitin ang mga magagamit na pananda sa code sa "
+"ibaba upang makakuha ng URL ng pahayag, pamagat, at sipi. Kung hindi man, "
+"ang lahat ng iyong mga buton ay maaring ibahagi ang parehong URL at pamagat. "
+"Kung gumagamit ka ng AddThis, tingnan ang %s."
+
+#: admin/options-general.php:545
+msgid "AddThis Client API"
+msgstr "AddThis Client API"
+
+#: admin/options-general.php:549
+msgid "Social sharing buttons location"
+msgstr "Kinalalagyan ng mga buton ng social sharing"
+
+#: admin/options-general.php:552
+msgid "Bottom of posts"
+msgstr "Ibaba ng mga pahayag"
+
+#: admin/options-general.php:553
+msgid "Top of posts"
+msgstr "Pinakatuktok ng mga pahayag"
+
+#: admin/options-general.php:554
+msgid "Both top and bottom"
+msgstr "Parehong tuktok at ibaba"
+
+#: admin/options-general.php:560
+msgid "Your social sharing button code"
+msgstr "Ang code ng iyong buton ng social sharing"
+
+#: admin/options-general.php:561
+msgid ""
+"You can use codes from any popular social sharing sites, like Facebook, "
+"Digg, AddThis, etc."
+msgstr ""
+"Maaari mong gamitin ang mga code mula sa anumang sikat na site ng social "
+"sharing, tulad ng Facebook, Digg, AddThis, atbp."
+
+#: admin/options-general.php:564
+msgid "You may use these tags to get the post's URL, title, and excerpt:"
+msgstr ""
+"Maaari mong gamitin ang mga panandang ito upang makakuha ng URL ng pahayag, "
+"pamagat, at sipi:"
+
+#: admin/options-general.php:576
+msgid "Adsense Options"
+msgstr "Mga Pagpipilian para sa Adsense"
+
+#: admin/options-general.php:582
+msgid "Show Adsense advertising"
+msgstr "Ipakita ang pag-aanunsiyo ng Adsense"
+
+#: admin/options-general.php:590
+msgid "Show ads on front page as well"
+msgstr "Ipakita rin ang mga anunsyo sa harap na pahina"
+
+#: admin/options-general.php:596
+msgid "Your Adsense code"
+msgstr "Ang iyong code para sa Adsense"
+
+#: admin/options-general.php:609
+msgid "Google Analytics Options"
+msgstr "Mga Pagpipilian para sa Google Analytics"
+
+#: admin/options-general.php:614
+msgid "Enable Google Analytics tracking"
+msgstr "Paganahin ang pagsubaybay ng Google Analytics"
+
+#: admin/options-general.php:621
+msgid ""
+"<strong>Note:</strong> the theme now places the Google Analytics script in "
+"the <code>&lt;head&gt;</code> element to better support the new asynchronous "
+"Google Analytics script. Please make sure you update your script to use the "
+"new asynchronous script from Google Analytics."
+msgstr ""
+"<strong>Tandaan:</strong> ang tema ngayon ay nilalagay ang script ng Google "
+"Analytics sa <code>&lt;head&gt;</code> na elemento upang mas mahusay na "
+"pagsuporta sa bagong asynchronous script ng Google Analytics. Mangyaring "
+"tiyakin na i-update ang iyong script upang gamitin ang bagong asynchronous "
+"na script mula sa Google Analytics."
+
+#: admin/options-general.php:625
+msgid "Google Analytics tracking code"
+msgstr "Code ng pagsubaybay ng Google Analytics"
+
+#: admin/options-general.php:626
+msgid ""
+"Make sure you include the full tracking code (including the <code>&lt;"
+"script&gt;</code> and <code>&lt;/script&gt;</code> tags) and not just the "
+"<code>UA-#######-#</code> code."
+msgstr ""
+"Tiyakin na isama ang buong code ng pagsubaybay (kasama ang <code>&lt;"
+"script&gt;</code> at <code>&lt;/script&gt;</code> na pananda) at hindi "
+"lamang ang code na <code>UA-#######-#</code>."
+
+#: admin/options-general.php:639
+msgid "Footer Options"
+msgstr "Mga Pagpipilian para sa Footer"
+
+#: admin/options-general.php:644
+msgid "Use Creative Commons licence for content"
+msgstr "Gamitin para sa nilalaman ang lisensya ng Creative Commons"
+
+#: admin/options-general.php:649
+msgid "Copyright text (html allowed)"
+msgstr "Teksto ng Karapatang Magpalathala (html pinapayagan)"
+
+#: admin/options-general.php:650
+msgid ""
+"If this field is empty, the following default copyright text will be "
+"displayed:"
+msgstr ""
+"Kung ang patlang na ito ay walang laman, ang mga sumusunod na default na "
+"teksto ng karapatang magpalathala ay ipinakikita:"
+
+#: admin/options-general.php:656
+msgid "Do not show copyright info"
+msgstr "Huwag ipakita ang impormasyon ng karapatang magpalathala"
+
+#: admin/options-general.php:660
+msgid "Do not show the \"Return to top\" link"
+msgstr "Huwag ipakita ang link ng  \"Bumalik sa taas\""
+
+#: admin/options-general.php:672
+msgid "Print Options"
+msgstr "Mga Pagpipilian para sa Pag-Print"
+
+#: admin/options-general.php:677
+msgid "Enable print CSS for single posts and pages?"
+msgstr "Paganahin ang print CSS para sa mga isahang pahayag at mga pahina?"
+
+#: admin/options-general.php:683
+msgid "Show print button"
+msgstr "Ipakita ang buton ng pag-print"
+
+#: admin/options-import.php:47 admin/options-import.php:178
+#: admin/options-presets.php:47 admin/uninstall.php:32
+msgid "ERROR: You are not authorised to perform that operation"
+msgstr "PAGKAKAMALI: Hindi ka awtorisado upang isagawa ang operasyon na iyan"
+
+#: admin/options-import.php:68
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+"Bago mo i-upload ang iyong mga file sa pag-import, kakailanganin mong ayusin "
+"ang mga sumusunod na pagkakamali:"
+
+#: admin/options-import.php:74 admin/options-import.php:107
+msgid "Import Graphene Theme Options"
+msgstr "Mga Pagpipilian sa Pag-Import ng Graphene Theme"
+
+#: admin/options-import.php:76
+msgid ""
+"<strong>Note:</strong> This is an experimental feature. Please report any "
+"problem at the <a href=\"http://forum.khairul-syahir.com/forum/bug-report"
+"\">Support Forum</a>."
+msgstr ""
+"<strong>Tandaan:</strong> Ito ay isang tampok na pang-eksperimento. "
+"Mangyaring iulat ang anumang problema sa <a href=\"http://forum.khairul-"
+"syahir.com/forum/bug-report\">Support Forum</ a>."
+
+#: admin/options-import.php:78
+msgid "Choose a file from your computer:"
+msgstr "Pumili ng isang file mula sa iyong computer:"
+
+#: admin/options-import.php:78
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Pinakamalaking sukat: %s"
+
+#: admin/options-import.php:85
+msgid "Upload file and import"
+msgstr "Mag-upload ng file at i-import"
+
+#: admin/options-import.php:150
+msgid "Options import completed"
+msgstr "Ang opsyong import ay nakumpleto"
+
+#: admin/options-import.php:151
+msgid "Go to the Graphene options page"
+msgstr "Pumunta sa pahina ng pagpipilian para sa Graphene"
+
+#: admin/options-import.php:154 admin/options-import.php:159
+#: admin/options-import.php:164
+msgid "Sorry, there has been an error."
+msgstr "Paumanhin, nagkaroon ng pagkakamali."
+
+#: admin/options-import.php:155
+msgid "The uploaded file does not contain valid Graphene options."
+msgstr ""
+"Ang na-upload na file ay hindi naglalaman ng wastong mga pagpipilian para sa "
+"Graphene ."
+
+#: admin/options-import.php:160
+msgid "The uploaded file could not be read."
+msgstr "Ang na-upload na file ay hindi mabasa."
+
+#: admin/options-import.php:165
+msgid "The uploaded file is not supported."
+msgstr "Ang na-upload na file ay hindi suportado."
+
+#: admin/options-import.php:173
+msgid ""
+"File is empty. Please upload something more substantial. This error could "
+"also be caused by uploads being disabled in your php.ini or by post_max_size "
+"being defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+"Ang file ay walang laman. Mangyaring mag-upload ng isang bagay na mas "
+"mahalaga. Ang pagkakamali na ito ay maaaring sanhi ng mga upload na hindi "
+"pinagana sa iyong php.ini o sa pamamagitan ng post_max_size na tinukoy "
+"bilang mas maliit kaysa upload_max_filesize sa php.ini."
+
+#: admin/options-init.php:35
+msgid "Graphene Options"
+msgstr "Mga Pagpipilian para sa Graphene"
+
+#: admin/options-init.php:36
+msgid "Graphene FAQs"
+msgstr "Mga Madalas itanong tungkol sa Graphene"
+
+#: admin/options-init.php:86
+msgid "Toggle all options boxes"
+msgstr "I-toggle ang lahat ng kahon ng mga pagpipilian"
+
+#: admin/options-init.php:128
+msgid "Template preview not found."
+msgstr "Hindi natagpuan ang template preview."
+
+#: admin/options-init.php:131
+msgid "default"
+msgstr "default"
+
+#: admin/options-init.php:187 admin/options-init.php:191
+msgid "Theme default"
+msgstr "Default na Tema"
+
+#: admin/options-presets.php:35
+msgid "The \"Normal website\" settings preset has been applied."
+msgstr " Ang mga setting na preset ng \"Normal website \" ay inilapat."
+
+#: admin/options-presets.php:40
+msgid "Settings have been reset."
+msgstr "Mga setting ay nai-reset."
+
+#: admin/options-validator.php:24
+msgid "ERROR: Invalid category to show in slider."
+msgstr "PAGKAKAMALI: Di-wastong kategorya na ipakikita sa slider."
+
+#: admin/options-validator.php:27
+msgid ""
+"ERROR: You must specify the posts/pages to be displayed when you have \"Show "
+"specific posts/pages\" selected for the slider."
+msgstr ""
+"PAGKAKAMALI: Dapat mong tukuyin ang mga pahayag/pahina na ipakikita kapag "
+"mayroon kang \"Ipakita ang mga tiyak na mga pahayag/pahina\" na pinili para "
+"sa slider."
+
+#: admin/options-validator.php:30
+msgid ""
+"ERROR: You must have selected at least one category when you have \"Show "
+"posts from categories\" selected for the slider."
+msgstr ""
+"PAGKAKAMALI: Kailangan mong pumili ng hindi bababa sa isang kategorya kapag "
+"mayroon kang \"Ipakita ang mga pahayag mula sa mga kategorya\" na pinili "
+"para sa slider."
+
+#: admin/options-validator.php:40
+msgid "ERROR: Invalid category selected for the slider categories."
+msgstr ""
+"PAGKAKAMALI: Di-wastong kategorya ang napili para sa mga kategorya ng slider."
+
+#: admin/options-validator.php:44
+msgid ""
+"ERROR: Invalid option for the slider categories exclusion from posts listing "
+"is specified."
+msgstr ""
+"PAGKAKAMALI: Di-wastong pagpipilian para sa pagbubukod ng mga kategorya ng "
+"slider mula sa listahan ng mga pahayag ay tinukoy."
+
+#: admin/options-validator.php:50
+msgid ""
+"ERROR: The number of posts to displayed in the slider must be a an integer "
+"value."
+msgstr ""
+"PAGKAKAMALI: Ang bilang ng mga pahayag na ipinakikita sa slider ay dapat "
+"isang integer value."
+
+#: admin/options-validator.php:53
+msgid "ERROR: Invalid option for the slider image is specified."
+msgstr ""
+"PAGKAKAMALI: Di-wastong pagpipilian para sa larawan ng slider ay tinukoy."
+
+#: admin/options-validator.php:55
+msgid "ERROR: Bad URL entered for the custom slider image URL."
+msgstr ""
+"PAGKAKAMALI: Di-wastong URL ang ipinasok para sa pasadyang URL ng larawan ng "
+"slider."
+
+#: admin/options-validator.php:57
+msgid "ERROR: Invalid option for the slider display style is specified."
+msgstr ""
+"PAGKAKAMALI: Di-wastong pagpipilian para sa estilo ng paglalarawan ng slider "
+"ay tinukoy."
+
+#: admin/options-validator.php:59
+msgid "ERROR: The value for slider height must be an integer."
+msgstr ""
+"PAGKAKAMALI: Ang halaga para sa taas ng slider ay dapat maging isang integer."
+
+#: admin/options-validator.php:61
+msgid "ERROR: The value for slider speed must be an integer."
+msgstr "PAGKAKAMALI: Ang halaga ng bilis ng slider ay dapat isang integer."
+
+#: admin/options-validator.php:63
+msgid "ERROR: The value for slider transition speed must be an integer."
+msgstr ""
+"PAGKAKAMALI: Ang halaga ng bilis ng transition ng slider ay dapat isang "
+"integer."
+
+#: admin/options-validator.php:65
+msgid "ERROR: Invalid slider animation."
+msgstr "PAGKAKAMALI: Di-wastong animasyon ng slider"
+
+#: admin/options-validator.php:79
+msgid "ERROR: Invalid category selected for the front page posts categories."
+msgstr ""
+"PAGKAKAMALI: Di-wastong kategorya ang napili para sa harap na pahina ng mga "
+"kategorya ng mga pahayag."
+
+#: admin/options-validator.php:90
+msgid ""
+"ERROR: Invalid option for the type of content to show in homepage panes."
+msgstr ""
+"PAGKAKAMALI: Di-wastong pagpipilian para sa uri ng nilalaman na ipakikita sa "
+"homepage panes."
+
+#: admin/options-validator.php:92
+msgid ""
+"ERROR: The value for the number of latest posts to display in homepage panes "
+"must be an integer."
+msgstr ""
+"PAGKAKAMALI: Ang halaga ng bilang ng mga bagong pahayag na ipakikita sa "
+"homepage pane ay dapat isang integer."
+
+#: admin/options-validator.php:97
+msgid ""
+"ERROR: Invalid category selected for the latest posts to show from in the "
+"homepage panes."
+msgstr ""
+"PAGKAKAMALI: Di-wastong kategorya ang napili para sa pinakabagon pahayag na "
+"ipakikita mula sa homepage panes."
+
+#: admin/options-validator.php:111
+msgid "ERROR: Invalid option for the comments option."
+msgstr "PAGKAKAMALI: Di-wastong pagpipilian para sa pagkomento."
+
+#: admin/options-validator.php:120
+msgid "ERROR: Invalid option for the child page listings."
+msgstr ""
+"PAGKAKAMALI: Di-wastong pagpipilian para sa listahan ng pahinang pambata."
+
+#: admin/options-validator.php:131
+msgid "ERROR: You must supply an URL for the custom RSS Feed."
+msgstr "PAGKAKAMALI: Kailangan mong magbigay ng URL para sa custom RSS Feed."
+
+#: admin/options-validator.php:133
+msgid "ERROR: Bad URL entered for the custom RSS Feed URL."
+msgstr ""
+"PAGKAKAMALI: Di-wastong URL ang ipinasok para sa URL ng custom RSS Feed."
+
+#: admin/options-validator.php:164
+#, php-format
+msgid "ERROR: Bad URL entered for the %s URL."
+msgstr "PAGKAKAMALI: Di-wastong URL ang ipinasok para sa URL na %s."
+
+#: admin/options-validator.php:190
+msgid "ERROR: Invalid option for the social sharing buttons location."
+msgstr ""
+"PAGKAKAMALI: Di-wastong pagpipilian para sa kinalalagyan ng buton ng social "
+"sharing."
+
+#: admin/options-validator.php:250
+msgid "ERROR: The value for the header image height must be an integer."
+msgstr ""
+"PAGKAKAMALI: Ang halaga ng taas ng larawan ng header ay dapat isang integer."
+
+#: admin/options-validator.php:251
+msgid "ERROR: Invalid option for the Search box location."
+msgstr "PAGKAKAMALI: Di-wastong pagpipilian ng kinalalagyan ng Search box."
+
+#: admin/options-validator.php:256
+msgid "ERROR: Invalid option for the column mode."
+msgstr "PAGKAKAMALI: Di-wastong pagpipilian para sa paraan ng mga hanay."
+
+#: admin/options-validator.php:257
+msgid "ERROR: Invalid option for the bbPress column mode."
+msgstr ""
+"PAGKAKAMALI: Di-wastong pagpipilian para sa paraan ng mga hanay ng bbPress."
+
+#: admin/options-validator.php:264
+#, php-format
+msgid ""
+"ERROR: Invalid width for %s. Width value must be positive number without "
+"units."
+msgstr ""
+"PAGKAKAMALI: Di-wastong lapad para sa %s. Halaga ng lapad ay dapat na "
+"positibong numero nang walang mga yunit."
+
+#: admin/options-validator.php:272
+msgid "ERROR: Invalid option for the post date display."
+msgstr ""
+"PAGKAKAMALI: Di-wastong pagpipilian ng pagpapakita ng petsa ng pahayag."
+
+#: admin/options-validator.php:353
+msgid ""
+"ERROR: The number of columns to be displayed in the footer widget must be a "
+"an integer value."
+msgstr ""
+"PAGKAKAMALI: Ang bilang ng hanay na ipakikita sa footer widget ay dapat may "
+"halagang integer."
+
+#: admin/options-validator.php:358
+msgid "ERROR: The width of the submenu must be a an integer value."
+msgstr "PAGKAKAMALI: Ang lapad ng submenu ay dapat may halagang integer."
+
+#: admin/options-validator.php:366
+msgid "ERROR: Bad URL entered for the favicon URL."
+msgstr "PAGKAKAMALI: Di-wastong URL ang ipinasok para sa URL ng favicon."
+
+#: admin/options-validator.php:381
+msgid "ERROR: Invalid action hook selected widget action hooks."
+msgstr ""
+"PAGKAKAMALI: Di-wastong action hook ang napili para sa widget action hooks."
+
+#: admin/options.php:84 admin/uninstall.php:23
+msgid "Uninstall Graphene"
+msgstr "I-uninstall ang Graphene"
+
+#: admin/options.php:85
+msgid ""
+"Please confirm that you would like to uninstall the Graphene theme. All of "
+"the theme's options in the database will be deleted."
+msgstr ""
+"Mangyaring kumpirmahin na nais mong i-uninstall ang temang Graphene. Ang "
+"lahat ng mga pagpipilian sa tema sa database ay tatanggalin."
+
+#: admin/options.php:86
+msgid "This action is not reversible."
+msgstr "Ang aksyon na ito ay hindi naibabalik."
+
+#: admin/options.php:90 admin/options.php:342
+msgid "Uninstall Theme"
+msgstr "I-uninstall ang tema."
+
+#: admin/options.php:104
+msgid "Graphene Theme Options"
+msgstr "Pagpipilian para sa Tema ng Graphene"
+
+#: admin/options.php:106
+msgid ""
+"These are the global settings for the theme. You may override some of the "
+"settings in individual posts and pages."
+msgstr ""
+"Ito ay ang mga settings na global para sa tema. Maaari mong ipawalang bisa "
+"ang iba sa mga settings sa mga indibidwal na mga pahayag at mga pahina."
+
+#: admin/options.php:114
+msgid "General"
+msgstr "Pangkalahatan"
+
+#: admin/options.php:115
+msgid "Display"
+msgstr "Pagpapakita"
+
+#: admin/options.php:116
+msgid "Advanced"
+msgstr "Masulong"
+
+#: admin/options.php:155
+msgid "Save Options"
+msgstr "Pagpipilian para sa pag-Save"
+
+#: admin/options.php:167
+msgid "Need help?"
+msgstr "Kailangan mo ng tulong?"
+
+#: admin/options.php:171
+msgid "Documentation Wiki"
+msgstr "Wiki ng mga Kasulatan"
+
+#: admin/options.php:172
+msgid "Support Forum"
+msgstr "Pagtitipon ng Pag-Suporta"
+
+#: admin/options.php:174
+#, php-format
+msgid "Also, find out how you can %s."
+msgstr "Gayundin, alamin kung paano maaari mong %s."
+
+#: admin/options.php:174
+msgid "support the Graphene theme"
+msgstr "suportahan ang tema ng Graphene"
+
+#: admin/options.php:181
+msgid "Support the developer"
+msgstr "Suportahan ang gumawa"
+
+#: admin/options.php:184
+msgid ""
+"Developing this awesome theme took a lot of effort and time, months and "
+"months of continuous voluntary unpaid work. If you like this theme or if you "
+"are using it for commercial websites, please consider a donation to the "
+"developer to help support future updates and development."
+msgstr ""
+"Ang pagbuo ng kahanga-hangang tema na ito ay gumamit ng maraming pagsisikap "
+"at oras, buwan at mga buwan ng tuloy-tuloy na kusang-loob at walang "
+"kabayarang trabaho. Kung nais mo ang temang ito o kung ikaw ay gumagamit "
+"nito para sa komersyal na mga website, mangyaring isaalang-alang ang isang "
+"donasyon sa mga gumawa upang makatulong sa pag-suporta ng mga update at pag-"
+"unlad sa hinaharap."
+
+#: admin/options.php:198
+msgid "Graphene Theme news"
+msgstr "Mga Balita tungkol sa Tema ng Graphene"
+
+#: admin/options.php:209
+msgid "No news items."
+msgstr "Walang mga balita."
+
+#: admin/options.php:226
+msgid "Graphene Usage Survey"
+msgstr "Pagsuri ng Paggamit ng Graphene"
+
+#: admin/options.php:229
+msgid ""
+"Help us to get to know you better. Take the Graphene theme usage survey now! "
+"Every opinion counts towards making the theme better. The survey is very "
+"short, and is completely anonymous."
+msgstr ""
+"Tulungan mo kami na kilalanin ka ng mas mabuti. Kunin ang pagsusuri para sa "
+"tema ng Graphene ngayon! Bawat opinyon ay mahalaga para sa pagpapaunlad ng "
+"temang ito. Ang pagsusuri ay maikli lamang at iiwanan kang hindi kilalang "
+"ganap."
+
+#: admin/options.php:230
+msgid "Take the survey"
+msgstr "Kunin ang pagsusuri"
+
+#: admin/options.php:240
+msgid "Add-ons and plugins"
+msgstr "Mga add-ons at mga plugins"
+
+#: admin/options.php:243
+msgid "Add-ons"
+msgstr "Mga add-ons"
+
+#: admin/options.php:244
+msgid ""
+"Add-ons are not shipped with the theme, but can be installed separately to "
+"extend the theme's capability."
+msgstr ""
+"Ang mga add-on ay hindi kasamang naka-bundle sa tema, pero ito ay maaaring i-"
+"install ng hiwalay upang pahabain ang kakayanan ng tema."
+
+#: admin/options.php:248
+msgid "Installed"
+msgstr "Naka-install"
+
+#: admin/options.php:249 admin/options.php:268
+msgid "Not installed"
+msgstr "Hindi naka-install"
+
+#: admin/options.php:249
+msgid "Learn more"
+msgstr "Higit pang matutunan"
+
+#: admin/options.php:250
+msgid ""
+"Mobile extension developed specifically for optimised display of your site "
+"on mobile devices, such as iPhone and Android devices."
+msgstr ""
+"Ang mga mobile extension na binuo ng tiyakan para sa optimized display ng "
+"iyong site para sa mga mobile device, tulad ng mga iPhone at Android."
+
+#: admin/options.php:253
+msgid "Plugins"
+msgstr "Plugins"
+
+#: admin/options.php:254
+msgid ""
+"The plugins listed here are natively supported by the theme. All you need to "
+"do is install the plugins and activate them."
+msgstr ""
+"Ang mga plugin na nakalista dito ay suportado ng tema. Ang kailangan mo lang "
+"gawin ay i-install ang mga plugin at isaaktibo ang mga ito."
+
+#: admin/options.php:267
+msgid "Activated"
+msgstr "Inaktiba"
+
+#: admin/options.php:280
+msgid "Options Presets"
+msgstr "Mga Preset ng mga Pagpipilian"
+
+#: admin/options.php:283
+msgid ""
+"The default settings for the theme is preconfigured for use in blogs. If "
+"you're using this theme primarily for a normal website, or if you want to "
+"reset the settings to their default values, you can apply one of the "
+"available options presets below."
+msgstr ""
+"Ang default na mga setting para sa temaing ito ay preconfigured para sa "
+"paggamit sa mga blog. Kung ginagamit mo ang temang ito para sa isang normal "
+"na website, o kung gusto mong i-reset ang mga setting sa kanilang mga "
+"default na halaga, maaari kang mag-aplay ng isa ng mga magagamit na mga "
+"preset na pagpipilian sa ibaba."
+
+#: admin/options.php:284
+msgid ""
+"Note that you can still configure the individual settings after you apply "
+"any preset."
+msgstr ""
+"Tandaan na maaari ka pang mag-configure ng indibidwal na setting matapos "
+"mong i-aplay ang kahit anong preset."
+
+#: admin/options.php:289
+msgid "Select Options Preset"
+msgstr "Piliin ang mga preset na pagpipilian"
+
+#: admin/options.php:292
+msgid "Normal website"
+msgstr "Normal na website"
+
+#: admin/options.php:295
+msgid "Reset to default settings"
+msgstr "I-reset sa settings na default"
+
+#: admin/options.php:300
+msgid "Apply Options Preset"
+msgstr "I-apply ang mga Preset na pagpipilian"
+
+#: admin/options.php:310
+msgid "Import/export theme options"
+msgstr "Pagpipilian para sa pag-angkat or pagluwas ng tema"
+
+#: admin/options.php:313
+msgid "Import"
+msgstr "Pag-Angkat"
+
+#: admin/options.php:316
+msgid "Import Theme options"
+msgstr "Pagpipilian para sa Pag-Angkat ng Tema"
+
+#: admin/options.php:318
+msgid "Export"
+msgstr "Pag-Luwas"
+
+#: admin/options.php:322
+msgid "Export Theme options"
+msgstr "Pagpipilian para sa Pag-Luwas ng Tema"
+
+#: admin/options.php:332
+msgid "Uninstall theme"
+msgstr "I-uninstall ang Tema"
+
+#: admin/options.php:335
+msgid ""
+"<strong>Be careful!</strong> Uninstalling the theme will remove all of the "
+"theme's options from the database. Do this only if you decide not to use the "
+"theme anymore."
+msgstr ""
+"<strong>Mag-ingat!</strong> Ang pag-uninstall ng tema ay mag-aalis ng lahat "
+"ng mga pagpipilian sa tema mula sa database. Gawin lamang ito kung nagpasya "
+"kang hindi na gamitin ang tema na ito."
+
+#: admin/options.php:336
+msgid ""
+"If you just want to try another theme, there is no need to uninstall this "
+"theme. Simply activate the other theme in the Appearance &gt; Themes admin "
+"page."
+msgstr ""
+"Kung gusto mo lang subukan ang isa pang tema, hindi na kailangang i-"
+"uninstall ang temang ito. Isaaktibo lamang ang iba pang mga tema sa "
+"Appearance &gt; Themes sa pahina ng admin."
+
+#: admin/options.php:337
+msgid ""
+"Note that uninstalling this theme <strong>does not remove</strong> the "
+"theme's files. To delete the files after you have uninstalled this theme, go "
+"to Appearances &gt; Themes and delete the theme from there."
+msgstr ""
+"Tandaan na pagi-uninstall mo ang temang ito <strong> ay hindi maaalis</"
+"strong> ang mga file ng tema. Upang tanggalin ang mga file pagkatapos mong i-"
+"uninstall ang tema na na ito, pumunta sa Appearances&gt; Themes at tanggalin "
+"ang tema mula doon."
+
+#: admin/options.php:354
+msgid ""
+"The preview will be updated when the \"Save Options\" button above is "
+"clicked."
+msgstr ""
+"Ang preview ay mag-a-update kapag ang buton ng \"Save Options\" ay pinili."
+
+#: admin/uninstall.php:24
+#, php-format
+msgid "Theme uninstalled. Redirecting to %s"
+msgstr "Ang tema ay na-uninstall na. Ikaw ngayon ay ibabaling sa %s"
+
+#: admin/user.php:7
+msgid "Graphene-specific User Profile Information"
+msgstr "Impormasyon ng Gumagamit ng Graphene"
+
+#: admin/user.php:8
+msgid "The settings defined here are used only with the Graphene theme."
+msgstr ""
+"Ang mga settings na tinutukoy dito ay ginagamit lamang sa tema ng Graphene."
+
+#: admin/user.php:12
+msgid "Author profile image URL"
+msgstr "URL ng larawan ng may-akda sa kanyang profile"
+
+#: admin/user.php:13
+msgid ""
+"You can specify the image to be displayed as the author's profile image in "
+"the Author's page. If no URL is defined here, the author's <a href=\"http://"
+"www.gravatar.com\">Gravatar</a> will be used."
+msgstr ""
+"Maaari mong tukuyin ang imahe na ipakikita bilang larawan ng profile ng may-"
+"akda sa pahina ng May-akda. Kung hindi tinukoy dito ang URL, ang <a href="
+"\"http://www.gravatar.com\">Gravatar</ a> ng may-akda ang gagamitin."
+
+#: admin/user.php:17
+msgid ""
+"Please enter the full URL (including <code>http://</code>) to your profile "
+"image."
+msgstr ""
+"Maaari lamang na ipasok ang buong URL (kasama ang <code>http://</code>) para "
+"sa imahe ng iyong profile."
+
+#: admin/user.php:17
+msgid ""
+"<strong>Important: </strong>Image width must be less than or equal to "
+"<strong>150px</strong>."
+msgstr ""
+"<strong>Mahalaga:</strong> Ang lapad ng larawan ay dapat na mas mababa sa o "
+"patas sa <strong>150px</ strong>."
+
+#: includes/theme-comments.php:34
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s sa %2$s"
+
+#: includes/theme-comments.php:36
+msgid "Edit comment"
+msgstr "Baguhin ang komento"
+
+#: includes/theme-comments.php:37
+msgid "Link to this comment"
+msgstr "Mag-link sa komentong ito"
+
+#: includes/theme-comments.php:41
+msgid "Reply"
+msgstr "Tumugon"
+
+#: includes/theme-comments.php:52
+msgid "Your comment is awaiting moderation."
+msgstr "Ang iyong komento ay naghihintay ng pagmo-moderate."
+
+#: includes/theme-comments.php:83
+msgid "Name:"
+msgstr "Pangalan:"
+
+#: includes/theme-comments.php:88
+msgid "Email:"
+msgstr "Email:"
+
+#: includes/theme-comments.php:93
+msgid "Website:"
+msgstr "Website:"
+
+#: includes/theme-comments.php:107
+msgid "Message:"
+msgstr "Mensahe:"
+
+#: includes/theme-functions.php:102
+#, php-format
+msgid "Visit %1$s's %2$s page"
+msgstr "Bisitahin ang pahina ng %1$s's %2$s"
+
+#: includes/theme-functions.php:264
+#, php-format
+msgid ""
+"You haven't placed any widget into this widget area. Go to %1$s and place "
+"some widgets in the widget area called %2$s."
+msgstr ""
+"Hindi mo inilagay ang anumang widget sa area na ito ng widget. Pumunta sa "
+"%1$s at ilagay ang ilang mga widget sa area ng widget na tinatawag na %2$s."
+
+#: includes/theme-functions.php:264
+msgid "WP Admin > Appearance > Widgets"
+msgstr "WP Admin > Anyo > Mga Widget"
+
+#: includes/theme-functions.php:265
+msgid "This notice will not be displayed to your site's visitors."
+msgstr "Ang paunawa ay hindi ipakikita sa mga bisita ng iyong site."
+
+#: includes/theme-loop.php:85
+msgid "Continue reading &raquo;"
+msgstr "Pagpatuloy ang pagbabasa &raquo;"
+
+#: includes/theme-loop.php:143
+msgid "Older posts &laquo;"
+msgstr "Mga mas lumang pahayag &laquo;"
+
+#: includes/theme-loop.php:144
+msgid "&raquo; Newer posts"
+msgstr "&raquo; Mga bagong pahayag"
+
+#: includes/theme-loop.php:146
+msgid "Next page &raquo;"
+msgstr "Sumunod na pahina &raquo;"
+
+#: includes/theme-loop.php:147
+msgid "&laquo; Previous page"
+msgstr "&laquo; Ang naunang pahina"
+
+#: includes/theme-loop.php:247
+msgid ""
+"<strong>ERROR: You must supply the post ID to get the image from as an "
+"argument when calling the graphene_get_post_image() function.</strong>"
+msgstr ""
+"PAGKAKAMALI <strong>: Kailangan mong ibigay ang post ID upang makuha ang mga "
+"imahe kung saan kukunin bilang isang argument kapag gagamitin ang "
+"graphene_get_post_image () na function</ strong>"
+
+#: includes/theme-loop.php:442 includes/theme-loop.php:443
+#, php-format
+msgid "Print this %s"
+msgstr "I-print ito %s"
+
+#: includes/theme-menu.php:65
+msgid "Home"
+msgstr "Home"
+
+#: includes/theme-panes.php:100
+msgid "Read more"
+msgstr "Magbasa nang higit pa"
+
+#: includes/theme-setup.php:99
+msgid "Header Menu"
+msgstr "Talaan para sa Header"
+
+#: includes/theme-setup.php:100
+msgid "Secondary Menu"
+msgstr "Pumapangalawa na Talaan"
+
+#: includes/theme-setup.php:101
+msgid "Footer Menu"
+msgstr "Talaan ng Footer"
+
+#: includes/theme-setup.php:134
+msgid "Header image by Syahir Hakim"
+msgstr "Imahe ng header ni Syahir Hakim"
+
+#: includes/theme-setup.php:138
+msgid ""
+"This is the default Graphene theme header image, cropped from image by "
+"Quantin Houyoux at sxc.hu"
+msgstr ""
+"Ito ang default na imahe ng header ng tema ng Graphene, It ay hango sa imahe "
+"ni Quantin Houyoux at sxc.hu."
+
+#: includes/theme-setup.php:142 includes/theme-setup.php:146
+#: includes/theme-setup.php:150 includes/theme-setup.php:154
+#: includes/theme-setup.php:158
+msgid "Header image cropped from image by Ilco at sxc.hu"
+msgstr "Imahe ng header hango sa imahe ni Ilco sa sxc.hu"
+
+#: includes/theme-setup.php:226
+msgid ""
+"The first sidebar widget area (will always be displayed on the right hand "
+"side)."
+msgstr "Ang unang sidebar widget area (ang laging ipakikita sa kanang bahagi)."
+
+#: includes/theme-setup.php:235
+msgid ""
+"The second sidebar widget area (will always be displayed on the left hand "
+"side)."
+msgstr ""
+"Ang pangalawang sidebar widget area (ang ipakikita lagi sa kaliwang gilid)."
+
+#: includes/theme-setup.php:242
+msgid "Footer Widget Area"
+msgstr "Widget area ng Footer"
+
+#: includes/theme-setup.php:244
+msgid ""
+"The footer widget area. Leave empty to disable. Set the number of columns to "
+"display at the theme's Display Options page."
+msgstr ""
+"Ang area ng footer widget. Iwanang walang laman para huwag paganahin. I-set "
+"ang bilang ng hanay na ipakikita sa pahina ng Display Options."
+
+#: includes/theme-setup.php:261
+msgid ""
+"The first sidebar widget area that will only be displayed on the front page."
+msgstr ""
+"Ang area ng unang sidebar widget lamang ang siyang ipakikita sa unang pahina."
+
+#: includes/theme-setup.php:270
+msgid ""
+"The second sidebar widget area that will only be displayed on the front page."
+msgstr ""
+"Ang pangalawang sidebar widget area ang siya lamang ipakikita sa unang "
+"pahina."
+
+#: includes/theme-setup.php:279
+msgid "Front Page Footer Widget Area"
+msgstr "Front Page Footer Widget Area"
+
+#: includes/theme-setup.php:281
+msgid ""
+"The footer widget area that will only be displayed on the front page. Leave "
+"empty to disable. Set the number of columns to display at the theme's "
+"Display Options page."
+msgstr ""
+"Ang footer widget area ang siya lamang ipakikita sa unang pahina. Iwanang "
+"walang laman para ipawalang gana. I-set ang bilang ng column na ipakikita sa "
+"pahina ng pagpipilian ng Display ng temang ito."
+
+#: includes/theme-setup.php:291
+msgid "Header Widget Area"
+msgstr "Area ng Header Widget "
+
+#: includes/theme-setup.php:293
+msgid "The header widget area."
+msgstr "Ang area ng header widget."
+
+#: includes/theme-setup.php:310
+#, php-format
+msgid ""
+"Dynamically added widget area. This widget area is attached to the %s action "
+"hook."
+msgstr ""
+"Dynamic na naidagdag area ng widget. Ang area ng widget na ito ay naka-kabit "
+"sa action hook ng %s."
+
+#: includes/theme-slider.php:128 includes/theme-slider.php:156
+msgid "View full post"
+msgstr "Ipakita ang buong pahayag"
+
+#: includes/theme-widgets.php:14
+msgid "Display the latest Twitter status updates."
+msgstr "Ipakita ang mga pinakabagong status update ng Twitter."
+
+#: includes/theme-widgets.php:48
+msgid "Loading tweets..."
+msgstr "Naglo-load ng mga tweet ..."
+
+#: includes/theme-widgets.php:51
+#, php-format
+msgid "Follow %s"
+msgstr "Sundan %s"
+
+#: includes/theme-widgets.php:90
+msgid "Latest tweets"
+msgstr "Pinakabagong tweets"
+
+#: includes/theme-widgets.php:97
+msgid "Title:"
+msgstr "Pamagat:"
+
+#: includes/theme-widgets.php:101
+msgid "Twitter Username:"
+msgstr "Username sa Twitter:"
+
+#: includes/theme-widgets.php:105
+msgid "Number of tweets to display:"
+msgstr "Bilang ng tweets na ipakikita:"
+
+#: includes/theme-widgets.php:109
+msgid "Show followers count"
+msgstr "Ipakita ang bilang ng mga followers"
+
+#: includes/theme-widgets.php:113
+msgid "Open links in new window"
+msgstr "Buksan ang mga links sa isang bagong window"
