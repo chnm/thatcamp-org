@@ -1,102 +1,109 @@
-=== WP-GeSHi-Highlight -- syntax highlighting via clean, small, and valid (X)HTML ===
+=== WP-GeSHi-Highlight -- simple syntax highlighting based on the award-winning GeSHi ===
 Contributors: jgehrcke
 Donate link: http://gehrcke.de/donate/
-Tags: highlight, syntax, geshi, valid, highlighting, wp-geshi-highlight, clean, fast
-Tested up to: 3.3
-Stable tag: 1.0.7
+Tags: syntax, highlight, geshi, highlighting, valid, clean, fast, wp-geshi-highlight
+Tested up to: 3.5
+Stable tag: 1.0.8.1
+License: GPLv2
 
-Fast syntax highlighting for many languages. Clean, small, and valid (X)HTML. Highly&easily configurable.
-
+Fast syntax highlighting for many languages based on GeSHi, the well-established and award-winning PHP highlighter. Simple usage. Valid HTML output.
 
 == Description ==
 **I) Features:**
 
-* Syntax highlighting for [**many languages**](http://gehrcke.de/files/perm/wp-geshi-highlight/wp-geshi-highlight_languages_1_0_5.txt) (based on [GeSHi](http://qbnz.com/highlighter/)).
-* **Line numbers**.
-* Extremely **simple to use**. If desired, **styles are highly&easily configurable**.
-* Multiple code blocks on a single web page? Each one **can** get its own style.
-
-**II) Possible advantages over other highlighters:**
-
-* Use of numbered lists to create line numbers -> Code-number-displacements **never** occur!
-* Copy/paste keeps formatting. Line numbers are not copied.
-* Uses CSS classes: **clean and small HTML output**.
-* **Valid** (X)HTML output.
-* Only minimal waste of CPU cycles if there is nothing to highlight.
-* High **performance**.
+* Syntax highlighting for [**many** languages](http://gehrcke.de/files/perm/wp-geshi-highlight/wp-geshi-highlight_languages_1_0_8.txt).
+* Stability, performance and security inherited from [GeSHi](http://qbnz.com/highlighter/).
+* Line numbering (optional). Code-number displacements never occur. Numbers are not copied in most browsers.
+* Simple usage.
+* Per-block styles: each code block on a single web page can be designed on its own.
+* Clean, small and valid HTML output.
+* Minimal waste of CPU cycles when there is nothing to highlight.
 * Clean and well-documented source code.
 
-**III) Usage:**
+WP-GeSHi-Highlight is a largely rewritten version of [WP-Syntax](http://wordpress.org/extend/plugins/wp-syntax/). Compared to WP-Syntax, WP-GeSHi-Highlight
 
-Bear in mind: don't use the visual post editor! Then, it's very simple:
+* creates valid HTML when line numbering is activated (via GeSHi's [GESHI_HEADER_PRE_VALID](http://qbnz.com/highlighter/geshi-doc.html#the-code-container) setting).
+* creates less HTML source code.
+* delivers an improved default style sheet.
+* has more styling flexibility.
+* has the cleaner source code.
+* makes usage of up-to-date WordPress API calls.
+
+**II) Usage:**
+Bear in mind: don't use the visual post editor. Then, it is very simple. Insert code blocks like this:
 
 `<pre lang="languagestring">
     CODE
 </pre>`
 
-This is a short example:
+A short example:
 
 `<pre lang="bash">
     $ dd if=/dev/zero of=image.ext3 bs=1M count=10000 oflag=append conv=notrunc
 </pre>`
 
-All available options are listed and explained on the [plugin's homepage](http://gehrcke.de/wp-geshi-highlight).
+All available options are listed and explained on the [plugin's website](http://gehrcke.de/wp-geshi-highlight).
 
-**IV) How does it look in action?**
+**III) How does it look in action?**
 
 Examples can be found on the [plugin's homepage](http://gehrcke.de/wp-geshi-highlight/#examples).
 
-**V) Issues:**
+**IV) Issues:**
 
-**Please** let me know about them!
-Write a mail to [me](mailto:jgehrcke@googlemail.com).
-
+Let me know if you find one: write a [mail](mailto:jgehrcke@googlemail.com) or leave a [comment](http://gehrcke.de/wp-geshi-highlight).
 
 
 == Installation ==
 1. Upload the `wp-geshi-highlight` directory to the `/wp-content/plugins` directory.
 1. Activate the plugin through the plugins menu in WordPress.
-1. Use it :-)
-
-
+1. Use it.
 
 
 == Frequently Asked Questions ==
+Please have a look at the [plugin's website](http://gehrcke.de/wp-geshi-highlight/#faq).
+
+
 = Can I change the starting line number? =
 
 Yes, try e.g. line="13". But this [breaks](http://qbnz.com/highlighter/geshi-doc.html#starting-line-numbers) XHTML strict compliance.
 
 
-
 == Screenshots ==
-1. This screenshot shows WP-GeSHi-Highlight in action. Furthermore, it visualizes how code blocks on the same page can have different styles (which is very easy to accomplish using WP-GeSHi-Highlight).
-
-
+1. This screenshot shows WP-GeSHi-Highlight in action. Furthermore, it visualizes how code blocks on the same page can have different styles (very easy to accomplish using WP-GeSHi-Highlight).
 
 
 == Changelog ==
+= 1.0.8 (2013-01-17) =
+* Improve default stylesheet: make use of CSS3 box shadows, several tweaks.
+* If the code block style file is found in the [theme style directory](http://codex.wordpress.org/Function_Reference/get_stylesheet_directory), it now has priority over the one in the plugin directory.
+* Update GeSHi to 1.0.8.11 (numerous language file updates).
+* Include GeSHi language file for nginx configuration files (taken from GeSHi SVN revision r2572, to be released with 1.0.8.12).
+* Use [wp_enqueue_style](http://codex.wordpress.org/Function_Reference/wp_enqueue_style) method for style sheet inclusion.
+* Deactivate GeSHi economic mode when printing style sheet.
+* Do not print credits to HTML source anymore.
+
 = 1.0.7 (2012-05-12) =
-* Fixed collision with other plugins including their own version of GeSHi. Thanks to Bas for reporting.
+* Fix collision with other plugins including their own version of GeSHi (thanks to Bas for reporting).
 
 = 1.0.6 (2012-05-12) =
-* fix line-spacing bug when displaying code blocks with different line numbering settings on the same page. Thanks to Bas ten Berge for reporting.
+* Fix line-spacing bug when displaying code blocks with different line numbering settings on the same page (thanks to Bas ten Berge for reporting).
 
 = 1.0.5 (2011-02-27) =
-* updated GeSHi from 1.0.8.9 to 1.0.8.10 ("Some minor parser tweaks and fixes to existing language files. It adds 15 more languages.")
+* Update GeSHi to 1.0.8.10 ("Some minor parser tweaks and fixes to existing language files. It adds 15 more languages.").
 
 = 1.0.4 (2011-01-12) =
-* optimized: now, CSS code is only printed once if you use the same language for multiple code blocks on the same page
-* minor code changes
+* Optimize: now, CSS code is only printed once if the same language is used for multiple code blocks on the same page.
+* Minor code changes.
 
 = 1.0.3 (2011-01-06) =
-* fixed: comments were not showing up (bug introduced in 1.0.2, thanks to Uli for reporting)
+* Fix: comments are not always showing up (thanks to Uli for reporting).
 
 = 1.0.2 (2011-01-04) =
-* minor source code changes
-* removed beta tag
+* Minor code changes.
+* Remove beta tag.
 
 = 1.0.1-beta (2010-12-18) =
-* fixed: highlight in comments now should work properly
+* Fix: highlight in comments not always showing up.
 
 = 1.0.0-beta (2010-11-22) =
-* initial release, please report any issues
+* Initial release.
