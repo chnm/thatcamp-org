@@ -2,9 +2,9 @@
 /*
 Plugin Name: Image Widget
 Plugin URI: http://wordpress.org/extend/plugins/image-widget/
-Description: Simple image widget that uses native WordPress upload thickbox to add image widgets to your site.
+Description: A simple image widget that uses the native WordPress media manager to add image widgets to your site.
 Author: Modern Tribe, Inc.
-Version: 3.3.7
+Version: 4.0.7
 Author URI: http://tri.be
 */
 
@@ -23,190 +23,89 @@ add_action('widgets_init', 'tribe_load_image_widget');
  **/
 class Tribe_Image_Widget extends WP_Widget {
 
+	const VERSION = '4.0.6';
+
+	const CUSTOM_IMAGE_SIZE_SLUG = 'tribe_image_widget_custom';
+
 	/**
 	 * Tribe Image Widget constructor
 	 *
-	 * @author Modern Tribe, Inc. (Peter Chester)
+	 * @author Modern Tribe, Inc.
 	 */
 	function Tribe_Image_Widget() {
-		$this->loadPluginTextDomain();
+		load_plugin_textdomain( 'image_widget', false, trailingslashit(basename(dirname(__FILE__))) . 'lang/');
 		$widget_ops = array( 'classname' => 'widget_sp_image', 'description' => __( 'Showcase a single image with a Title, URL, and a Description', 'image_widget' ) );
 		$control_ops = array( 'id_base' => 'widget_sp_image' );
 		$this->WP_Widget('widget_sp_image', __('Image Widget', 'image_widget'), $widget_ops, $control_ops);
-		add_action( 'admin_init', array( $this, 'admin_setup' ) );
+		if ( $this->use_old_uploader() ) {
+			require_once( 'lib/ImageWidgetDeprecated.php' );
+			new ImageWidgetDeprecated( $this );
+		} else {
+			add_action( 'sidebar_admin_setup', array( $this, 'admin_setup' ) );
+		}
+		add_action( 'admin_head-widgets.php', array( $this, 'admin_head' ) );
+
+		add_action( 'plugin_row_meta', array( $this, 'plugin_row_meta' ),10 ,2 );
+
+		if ( !defined('I_HAVE_SUPPORTED_THE_IMAGE_WIDGET') )
+			add_action( 'admin_notices', array( $this, 'post_upgrade_nag') );
+
+		add_action( 'network_admin_notices', array( $this, 'post_upgrade_nag') );
 	}
 
+	/**
+	 * Test to see if this version of WordPress supports the new image manager.
+	 * @return bool true if the current version of WordPress does NOT support the current image management tech.
+	 */
+	private function use_old_uploader() {
+		if ( defined( 'IMAGE_WIDGET_COMPATIBILITY_TEST' ) ) return true;
+		return !function_exists('wp_enqueue_media');
+	}
+
+	/**
+	 * Enqueue all the javascript.
+	 */
 	function admin_setup() {
-		global $pagenow;
-		if ( 'widgets.php' == $pagenow ) {
-			wp_enqueue_style( 'thickbox' );
-			wp_enqueue_script( 'tribe-image-widget', plugins_url('resources/js/image-widget.js', __FILE__), array('thickbox'), FALSE, TRUE );
-			add_action( 'admin_head-widgets.php', array( $this, 'admin_head' ) );
-		}
-		elseif ( 'media-upload.php' == $pagenow || 'async-upload.php' == $pagenow ) {
-			wp_enqueue_script( 'tribe-image-widget-fix-uploader', plugins_url('resources/js/image-widget-upload-fixer.js', __FILE__), array('jquery'), FALSE, TRUE );
-			add_filter( 'image_send_to_editor', array( $this,'image_send_to_editor'), 1, 8 );
-			add_filter( 'gettext', array( $this, 'replace_text_in_thickbox' ), 1, 3 );
-			add_filter( 'media_upload_tabs', array( $this, 'media_upload_tabs' ) );
-			add_filter( 'image_widget_image_url', array( $this, 'https_cleanup' ) );
-		}
-		$this->fix_async_upload_image();
+		wp_enqueue_media();
+		wp_enqueue_script( 'tribe-image-widget', plugins_url('resources/js/image-widget.js', __FILE__), array( 'jquery', 'media-upload', 'media-views' ), self::VERSION );
+
+		wp_localize_script( 'tribe-image-widget', 'TribeImageWidget', array(
+			'frame_title' => __( 'Select an Image', 'image_widget' ),
+			'button_title' => __( 'Insert Into Widget', 'image_widget' ),
+		) );
 	}
-
-	function fix_async_upload_image() {
-		if(isset($_REQUEST['attachment_id'])) {
-			$id = (int) $_REQUEST['attachment_id'];
-			$GLOBALS['post'] = get_post( $id );
-		}
-	}
-
-	function loadPluginTextDomain() {
-		load_plugin_textdomain( 'image_widget', false, trailingslashit(basename(dirname(__FILE__))) . 'lang/');
-	}
-
-	/**
-	 * Retrieve resized image URL
-	 *
-	 * @param int $id Post ID or Attachment ID
-	 * @param int $width desired width of image (optional)
-	 * @param int $height desired height of image (optional)
-	 * @return string URL
-	 * @author Modern Tribe, Inc. (Peter Chester)
-	 */
-	function get_image_url( $id, $width=false, $height=false ) {
-
-		/**/
-		// Get attachment and resize but return attachment path (needs to return url)
-		$attachment = wp_get_attachment_metadata( $id );
-		$attachment_url = wp_get_attachment_url( $id );
-		if (isset($attachment_url)) {
-			if ($width && $height) {
-				$uploads = wp_upload_dir();
-				$imgpath = $uploads['basedir'].'/'.$attachment['file'];
-				if (WP_DEBUG) {
-					error_log(__CLASS__.'->'.__FUNCTION__.'() $imgpath = '.$imgpath);
-				}
-				$image = image_resize( $imgpath, $width, $height );
-				if ( $image && !is_wp_error( $image ) ) {
-					$image = path_join( dirname($attachment_url), basename($image) );
-				} else {
-					$image = $attachment_url;
-				}
-			} else {
-				$image = $attachment_url;
-			}
-			if (isset($image)) {
-				return $image;
-			}
-		}
-	}
-
-	/**
-	 * Test context to see if the uploader is being used for the image widget or for other regular uploads
-	 *
-	 * @author Modern Tribe, Inc. (Peter Chester)
-	 */
-	function is_sp_widget_context() {
-		if ( isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'],$this->id_base) !== false ) {
-			return true;
-		} elseif ( isset($_REQUEST['_wp_http_referer']) && strpos($_REQUEST['_wp_http_referer'],$this->id_base) !== false ) {
-			return true;
-		} elseif ( isset($_REQUEST['widget_id']) && strpos($_REQUEST['widget_id'],$this->id_base) !== false ) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Somewhat hacky way of replacing "Insert into Post" with "Insert into Widget"
-	 *
-	 * @param string $translated_text text that has already been translated (normally passed straight through)
-	 * @param string $source_text text as it is in the code
-	 * @param string $domain domain of the text
-	 * @author Modern Tribe, Inc. (Peter Chester)
-	 */
-	function replace_text_in_thickbox($translated_text, $source_text, $domain) {
-		if ( $this->is_sp_widget_context() ) {
-			if ('Insert into Post' == $source_text) {
-				return __('Insert Into Widget', 'image_widget' );
-			}
-		}
-		return $translated_text;
-	}
-
-	/**
-	 * Filter image_end_to_editor results
-	 *
-	 * @param string $html
-	 * @param int $id
-	 * @param string $alt
-	 * @param string $title
-	 * @param string $align
-	 * @param string $url
-	 * @param array $size
-	 * @return string javascript array of attachment url and id or just the url
-	 * @author Modern Tribe, Inc. (Peter Chester)
-	 */
-	function image_send_to_editor( $html, $id, $caption, $title, $align, $url, $size, $alt = '' ) {
-		// Normally, media uploader return an HTML string (in this case, typically a complete image tag surrounded by a caption).
-		// Don't change that; instead, send custom javascript variables back to opener.
-		// Check that this is for the widget. Shouldn't hurt anything if it runs, but let's do it needlessly.
-		if ( $this->is_sp_widget_context() ) {
-			if ($alt=='') $alt = $title;
-			?>
-			<script type="text/javascript">
-				// send image variables back to opener
-				var win = window.dialogArguments || opener || parent || top;
-				win.IW_html = '<?php echo addslashes($html); ?>';
-				win.IW_img_id = '<?php echo $id; ?>';
-				win.IW_alt = '<?php echo addslashes($alt); ?>';
-				win.IW_caption = '<?php echo addslashes($caption); ?>';
-				win.IW_title = '<?php echo addslashes($title); ?>';
-				win.IW_align = '<?php echo esc_attr($align); ?>';
-				win.IW_url = '<?php echo esc_url($url); ?>';
-				win.IW_size = '<?php echo esc_attr($size); ?>';
-			</script>
-			<?php
-		}
-		return $html;
-	}
-
-	/**
-	 * Remove from url tab until that functionality is added to widgets.
-	 *
-	 * @param array $tabs
-	 * @author Modern Tribe, Inc. (Peter Chester)
-	 */
-	function media_upload_tabs($tabs) {
-		if ( $this->is_sp_widget_context() ) {
-			unset($tabs['type_url']);
-		}
-		return $tabs;
-	}
-
 
 	/**
 	 * Widget frontend output
 	 *
 	 * @param array $args
 	 * @param array $instance
-	 * @author Modern Tribe, Inc. (Peter Chester)
+	 * @author Modern Tribe, Inc.
 	 */
 	function widget( $args, $instance ) {
 		extract( $args );
-		extract( $instance );
-		if ( !empty( $imageurl ) ) {
-			$title = apply_filters( 'widget_title', empty( $title ) ? '' : $title );
-			$description = apply_filters( 'widget_text', $description, $args, $instance );
-			$imageurl = apply_filters( 'image_widget_image_url', esc_url( $imageurl ), $args, $instance );
-			if ( $link ) {
-				$link = apply_filters( 'image_widget_image_link', esc_url( $link ), $args, $instance );
-				$linktarget = apply_filters( 'image_widget_image_link_target', esc_attr( $linktarget ), $args, $instance );
+		$instance = wp_parse_args( (array) $instance, self::get_defaults() );
+		if ( !empty( $instance['imageurl'] ) || !empty( $instance['attachment_id'] ) ) {
+
+			$instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'] );
+			$instance['description'] = apply_filters( 'widget_text', $instance['description'], $args, $instance );
+			$instance['link'] = apply_filters( 'image_widget_image_link', esc_url( $instance['link'] ), $args, $instance );
+			$instance['linktarget'] = apply_filters( 'image_widget_image_link_target', esc_attr( $instance['linktarget'] ), $args, $instance );
+			$instance['width'] = apply_filters( 'image_widget_image_width', abs( $instance['width'] ), $args, $instance );
+			$instance['height'] = apply_filters( 'image_widget_image_height', abs( $instance['height'] ), $args, $instance );
+			$instance['align'] = apply_filters( 'image_widget_image_align', esc_attr( $instance['align'] ), $args, $instance );
+			$instance['alt'] = apply_filters( 'image_widget_image_alt', esc_attr( $instance['alt'] ), $args, $instance );
+
+			if ( !defined( 'IMAGE_WIDGET_COMPATIBILITY_TEST' ) ) {
+				$instance['attachment_id'] = ( $instance['attachment_id'] > 0 ) ? $instance['attachment_id'] : $instance['image'];
+				$instance['attachment_id'] = apply_filters( 'image_widget_image_attachment_id', abs( $instance['attachment_id'] ), $args, $instance );
+				$instance['size'] = apply_filters( 'image_widget_image_size', esc_attr( $instance['size'] ), $args, $instance );
 			}
-			$width = apply_filters( 'image_widget_image_width', $width, $args, $instance );
-			$height = apply_filters( 'image_widget_image_height', $height, $args, $instance );
-			$align = apply_filters( 'image_widget_image_align', esc_attr( $align ), $args, $instance );
-			$alt = apply_filters( 'image_widget_image_alt', esc_attr( $alt ), $args, $instance );
+			$instance['imageurl'] = apply_filters( 'image_widget_image_url', esc_url( $instance['imageurl'] ), $args, $instance );
+
+			// No longer using extracted vars. This is here for backwards compatibility.
+			extract( $instance );
+
 			include( $this->getTemplateHierarchy( 'widget' ) );
 		}
 	}
@@ -217,26 +116,39 @@ class Tribe_Image_Widget extends WP_Widget {
 	 * @param object $new_instance Widget Instance
 	 * @param object $old_instance Widget Instance
 	 * @return object
-	 * @author Modern Tribe, Inc. (Peter Chester)
+	 * @author Modern Tribe, Inc.
 	 */
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
+		$new_instance = wp_parse_args( (array) $new_instance, self::get_defaults() );
 		$instance['title'] = strip_tags($new_instance['title']);
-		if ( isset($new_instance['description']) ) {
-			if ( current_user_can('unfiltered_html') ) {
-				$instance['description'] = $new_instance['description'];
-			} else {
-				$instance['description'] = wp_filter_post_kses($new_instance['description']);
-			}
+		if ( current_user_can('unfiltered_html') ) {
+			$instance['description'] = $new_instance['description'];
+		} else {
+			$instance['description'] = wp_filter_post_kses($new_instance['description']);
 		}
 		$instance['link'] = $new_instance['link'];
-		$instance['image'] = $new_instance['image'];
-		$instance['imageurl'] = $this->get_image_url($new_instance['image'],$new_instance['width'],$new_instance['height']);  // image resizing not working right now
 		$instance['linktarget'] = $new_instance['linktarget'];
-		$instance['width'] = $new_instance['width'];
-		$instance['height'] = $new_instance['height'];
+		$instance['width'] = abs( $new_instance['width'] );
+		$instance['height'] =abs( $new_instance['height'] );
+		if ( !defined( 'IMAGE_WIDGET_COMPATIBILITY_TEST' ) ) {
+			$instance['size'] = $new_instance['size'];
+		}
 		$instance['align'] = $new_instance['align'];
 		$instance['alt'] = $new_instance['alt'];
+
+		// Reverse compatibility with $image, now called $attachement_id
+		if ( !defined( 'IMAGE_WIDGET_COMPATIBILITY_TEST' ) && $new_instance['attachment_id'] > 0 ) {
+			$instance['attachment_id'] = abs( $new_instance['attachment_id'] );
+		} elseif ( $new_instance['image'] > 0 ) {
+			$instance['attachment_id'] = $instance['image'] = abs( $new_instance['image'] );
+			if ( class_exists('ImageWidgetDeprecated') ) {
+				$instance['imageurl'] = ImageWidgetDeprecated::get_image_url( $instance['image'], $instance['width'], $instance['height'] );  // image resizing not working right now
+			}
+		}
+		$instance['imageurl'] = $new_instance['imageurl']; // deprecated
+
+		$instance['aspect_ratio'] = $this->get_image_aspect_ratio( $instance );
 
 		return $instance;
 	}
@@ -245,56 +157,198 @@ class Tribe_Image_Widget extends WP_Widget {
 	 * Form UI
 	 *
 	 * @param object $instance Widget Instance
-	 * @author Modern Tribe, Inc. (Peter Chester)
+	 * @author Modern Tribe, Inc.
 	 */
 	function form( $instance ) {
-
-		$instance = wp_parse_args( (array) $instance, array(
-			'title' => '',
-			'description' => '',
-			'link' => '',
-			'linktarget' => '',
-			'width' => '',
-			'height' => '',
-			'image' => '',
-			'imageurl' => '',
-			'align' => '',
-			'alt' => ''
-		) );
-		include( $this->getTemplateHierarchy( 'widget-admin' ) );
+		$instance = wp_parse_args( (array) $instance, self::get_defaults() );
+		if ( $this->use_old_uploader() ) {
+			include( $this->getTemplateHierarchy( 'widget-admin.deprecated' ) );
+		} else {
+			include( $this->getTemplateHierarchy( 'widget-admin' ) );
+		}
 	}
 
 	/**
 	 * Admin header css
 	 *
-	 * @author Modern Tribe, Inc. (Peter Chester)
+	 * @author Modern Tribe, Inc.
 	 */
 	function admin_head() {
 		?>
-		<style type="text/css">
-			.aligncenter {
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-			}
-		</style>
-		<?php
+	<style type="text/css">
+		.uploader input.button {
+			width: 100%;
+			height: 34px;
+			line-height: 33px;
+		}
+		.tribe_preview .aligncenter {
+			display: block;
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+		.tribe_preview {
+			overflow: hidden;
+			max-height: 300px;
+		}
+		.tribe_preview img {
+			margin: 10px 0;
+		}
+	</style>
+	<?php
 	}
 
 	/**
-	 * Adjust the image url on output to account for SSL.
+	 * Render an array of default values.
 	 *
-	 * @param string $imageurl
-	 * @return string $imageurl
-	 * @author Modern Tribe, Inc. (Peter Chester)
+	 * @return array default values
 	 */
-	function https_cleanup( $imageurl = '' ) {
-		if( isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on" ) {
-			$imageurl = str_replace('http://', 'https://', $imageurl);
-		} else {
-			$imageurl = str_replace('https://', 'http://', $imageurl);
+	private static function get_defaults() {
+
+		$defaults = array(
+			'title' => '',
+			'description' => '',
+			'link' => '',
+			'linktarget' => '',
+			'width' => 0,
+			'height' => 0,
+			'image' => 0, // reverse compatible - now attachement_id
+			'imageurl' => '', // reverse compatible.
+			'align' => 'none',
+			'alt' => '',
+		);
+
+		if ( !defined( 'IMAGE_WIDGET_COMPATIBILITY_TEST' ) ) {
+			$defaults['size'] = self::CUSTOM_IMAGE_SIZE_SLUG;
+			$defaults['attachment_id'] = 0;
 		}
-		return $imageurl;
+
+		return $defaults;
+	}
+
+	/**
+	 * Render the image html output.
+	 *
+	 * @param array $instance
+	 * @param bool $include_link will only render the link if this is set to true. Otherwise link is ignored.
+	 * @return string image html
+	 */
+	private function get_image_html( $instance, $include_link = true ) {
+
+		// Backwards compatible image display.
+		if ( $instance['attachment_id'] == 0 && $instance['image'] > 0 ) {
+			$instance['attachment_id'] = $instance['image'];
+		}
+
+		$output = '';
+
+		if ( $include_link && !empty( $instance['link'] ) ) {
+			$attr = array(
+				'href' => $instance['link'],
+				'target' => $instance['linktarget'],
+				'class' => 	$this->widget_options['classname'].'-image-link',
+				'title' => ( !empty( $instance['alt'] ) ) ? $instance['alt'] : $instance['title'],
+			);
+			$attr = apply_filters('image_widget_link_attributes', $attr, $instance );
+			$attr = array_map( 'esc_attr', $attr );
+			$output = '<a';
+			foreach ( $attr as $name => $value ) {
+				$output .= sprintf( ' %s="%s"', $name, $value );
+			}
+			$output .= '>';
+		}
+
+		$size = $this->get_image_size( $instance );
+		if ( is_array( $size ) ) {
+			$instance['width'] = $size[0];
+			$instance['height'] = $size[1];
+		} elseif ( !empty( $instance['attachment_id'] ) ) {
+			//$instance['width'] = $instance['height'] = 0;
+			$image_details = wp_get_attachment_image_src( $instance['attachment_id'], $size );
+			if ($image_details) {
+				$instance['imageurl'] = $image_details[0];
+				$instance['width'] = $image_details[1];
+				$instance['height'] = $image_details[2];
+			}
+		}
+		$instance['width'] = abs( $instance['width'] );
+		$instance['height'] = abs( $instance['height'] );
+
+		$attr = array();
+		$attr['alt'] = $instance['title'];
+		if (is_array($size)) {
+			$attr['class'] = 'attachment-'.join('x',$size);
+		} else {
+			$attr['class'] = 'attachment-'.$size;
+		}
+		$attr['style'] = '';
+		if (!empty($instance['width'])) {
+			$attr['style'] .= "max-width: {$instance['width']}px;";
+		}
+		if (!empty($instance['height'])) {
+			$attr['style'] .= "max-height: {$instance['height']}px;";
+		}
+		if (!empty($instance['align']) && $instance['align'] != 'none') {
+			$attr['class'] .= " align{$instance['align']}";
+		}
+		$attr = apply_filters( 'image_widget_image_attributes', $attr, $instance );
+
+		// If there is an imageurl, use it to render the image. Eventually we should kill this and simply rely on attachment_ids.
+		if ( !empty( $instance['imageurl'] ) ) {
+			// If all we have is an image src url we can still render an image.
+			$attr['src'] = $instance['imageurl'];
+			$attr = array_map( 'esc_attr', $attr );
+			$hwstring = image_hwstring( $instance['width'], $instance['height'] );
+			$output .= rtrim("<img $hwstring");
+			foreach ( $attr as $name => $value ) {
+				$output .= sprintf( ' %s="%s"', $name, $value );
+			}
+			$output .= ' />';
+		} elseif( abs( $instance['attachment_id'] ) > 0 ) {
+			$output .= wp_get_attachment_image($instance['attachment_id'], $size, false, $attr);
+		}
+
+		if ( $include_link && !empty( $instance['link'] ) ) {
+			$output .= '</a>';
+		}
+
+		return $output;
+	}
+
+	/**
+	 * Assesses the image size in case it has not been set or in case there is a mismatch.
+	 *
+	 * @param $instance
+	 * @return array|string
+	 */
+	private function get_image_size( $instance ) {
+		if ( !empty( $instance['size'] ) && $instance['size'] != self::CUSTOM_IMAGE_SIZE_SLUG ) {
+			$size = $instance['size'];
+		} elseif ( isset( $instance['width'] ) && is_numeric($instance['width']) && isset( $instance['height'] ) && is_numeric($instance['height']) ) {
+			$size = array(abs($instance['width']),abs($instance['height']));
+		} else {
+			$size = 'full';
+		}
+		return $size;
+	}
+
+	/**
+	 * Establish the aspect ratio of the image.
+	 *
+	 * @param $instance
+	 * @return float|number
+	 */
+	private function get_image_aspect_ratio( $instance ) {
+		if ( !empty( $instance['aspect_ratio'] ) ) {
+			return abs( $instance['aspect_ratio'] );
+		} else {
+			$attachment_id = ( !empty($instance['attachment_id']) ) ? $instance['attachment_id'] : $instance['image'];
+			if ( !empty($attachment_id) ) {
+				$image_details = wp_get_attachment_image_src( $attachment_id, 'full' );
+				if ($image_details) {
+					return ( $image_details[1]/$image_details[2] );
+				}
+			}
+		}
 	}
 
 	/**
@@ -318,5 +372,35 @@ class Tribe_Image_Widget extends WP_Widget {
 			$file = 'views/' . $template;
 		}
 		return apply_filters( 'sp_template_image-widget_'.$template, $file);
+	}
+
+
+	/**
+	 * Display a thank you nag when the plugin has been upgraded.
+	 */
+	public function post_upgrade_nag() {
+		if ( !current_user_can('install_plugins') ) return;
+
+		$version_key = '_image_widget_version';
+		if ( get_site_option( $version_key ) == self::VERSION ) return;
+
+		$msg = sprintf(__('Thanks for upgrading the Image Widget! If you like this plugin, please consider <a href="%s" target="_blank">rating it</a> and maybe even check out our premium plugins including our <a href="%s" target="_blank">Events Calendar Pro</a>!', 'image-widget'),'http://wordpress.org/extend/plugins/image-widget/?source=image-widget&pos=nag','http://tri.be/wordpress-events-calendar-pro/?source=image-widget&pos=nag');
+		echo "<div class='update-nag'>$msg</div>";
+
+		update_site_option( $version_key, self::VERSION );
+	}
+
+	/**
+	 * Display an informational section in the plugin admin ui.
+	 * @param $meta
+	 * @param $file
+	 *
+	 * @return array
+	 */
+	public function plugin_row_meta( $meta, $file ) {
+		if ( $file == plugin_basename( dirname(__FILE__).'/image-widget.php' ) ) {
+			$meta[] = '<span class="tribe-test">'.sprintf(__('Check out our other <a href="%s" target="_blank">plugins</a> including our <a href="%s" target="_blank">Events Calendar Pro</a>!', 'image-widget'),'http://tri.be/products/?source=image-widget&pos=pluginlist','http://tri.be/wordpress-events-calendar-pro/?source=image-widget&pos=pluginlist').'</span>';
+		}
+		return $meta;
 	}
 }
