@@ -1,0 +1,55 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Improved User Search in Backend\n"
+"POT-Creation-Date: 2013-04-18 08:47+0100\n"
+"PO-Revision-Date: 2013-04-18 08:51+0100\n"
+"Last-Translator: Mikael Grön <mikael.gron@duva.se>\n"
+"Language-Team: Mikael Grön <jag@mikaelgron.se>\n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../improved-user-search-in-backend.php:16
+msgid ""
+"Improved User Search in Backend requires WordPress version 3.0 or higher. <a "
+"href=\"http://codex.wordpress.org/Upgrading_Wordpress\">Please update!</a>"
+msgstr ""
+"Improved User Search in Backend kräver WordPress version 3.0 eller högre. <a "
+"href=\"http://wpsv.se/dokumentation/Installation:Uppgradera\">Vänligen "
+"uppdatera!</a>"
+
+#: ../improved-user-search-in-backend.php:82
+msgid "User Search"
+msgstr "Användarsök"
+
+#: ../improved-user-search-in-backend.php:90
+msgid "Settings: Improved user search in backend"
+msgstr "Inställningar: Improved user search in backend"
+
+#: ../improved-user-search-in-backend.php:99
+msgid "Settings saved successfully."
+msgstr "Ändringarna har sparats."
+
+#: ../improved-user-search-in-backend.php:106
+msgid "Custom Meta Fields (comma seperated)"
+msgstr "Egna meta-fält (kommaseparerade)"
+
+#: ../improved-user-search-in-backend.php:108
+msgid ""
+"Add custom user meta fields from your usermeta table for integration in the "
+"user search (e.g. \"url\", \"description\", \"aim\", or custom like "
+"\"birthday\")"
+msgstr ""
+"Lägg till egna användarmetafält från din användarmetatabell för att kunna "
+"använda dem i användarsökning (t.ex. \"url\", \"description\", \"aim\", "
+"eller egna som \"birthday\")"
+
+#: ../improved-user-search-in-backend.php:113
+msgid "Save Settings"
+msgstr "Spara inställningar"

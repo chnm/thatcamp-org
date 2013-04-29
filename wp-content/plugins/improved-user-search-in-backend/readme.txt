@@ -1,10 +1,10 @@
-=== Improved user search in backend ===
+﻿=== Improved user search in backend ===
 Contributors: blackbam
 Tags: user, search, backend, user search
 Requires at least: 3.0
 Tested up to: 3.3.2
 License: GPLv2
-Stable tag: 1.2.3
+Stable tag: 1.2.4
  
 Improves the search for users in the backend significantly: Search for first name, last, email and more of users instead of only nicename.
 
@@ -13,6 +13,8 @@ Improves the search for users in the backend significantly: Search for first nam
 This Plugin improves the search for users in the WordPress backend significantly. It empowers admins to search for the first name, last name and email address of users instead of only their nicknames/nicenames. 
 
 It is also possible to search for custom user meta fields now.
+
+Translations: English, German, Swedish
 
 Plugin Homepage: http://www.blackbam.at/blackbams-blog/2011/06/27/wordpress-improved-user-search-first-name-last-name-email-in-backend/
 
@@ -31,6 +33,14 @@ Plugin Homepage: http://www.blackbam.at/blackbams-blog/2011/06/27/wordpress-impr
 Special characters like quotes are escaped, problems with the query may apper when trying to search for other non-alphanumeric characters.
 
 == Changelog ==
+
+
+== 1.2.4 ==
+
+
+- Added translations and il8n (Mikael Grön <jag@mikaelgron.se>)
+ (en_US, en_UK,sv_SE)
+- Added german translation (de_DE)
 
 == 1.2.3 ==
 

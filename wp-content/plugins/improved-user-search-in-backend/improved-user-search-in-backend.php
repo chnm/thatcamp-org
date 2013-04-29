@@ -3,7 +3,7 @@
 Plugin Name: Improved User Search in Backend
 Plugin URI: http://www.blackbam.at/blackbams-blog/2011/06/27/wordpress-improved-user-search-first-name-last-name-email-in-backend/
 Description:  Improves the search for users in the backend significantly: Search for first name, last, email and more of users instead of only nicename.
-Version: 1.2.3
+Version: 1.2.4
 Author: David Stöckl
 Author URI: http://www.blackbam.at/
 */
@@ -13,11 +13,19 @@ Author URI: http://www.blackbam.at/
 global $wp_version;
 
 if(version_compare($wp_version,"3.0","<")) {
-	exit('Improved User Search in Backend requires WordPress version 3.0 or higher. <a href="http://codex.wordpress.org/Upgrading_Wordpress">Please update!</a>');
+	exit(__('Improved User Search in Backend requires WordPress version 3.0 or higher. <a href="http://codex.wordpress.org/Upgrading_Wordpress">Please update!</a>', 'improved-user-search-in-backend'));
 }
 
 // all of this is only for admins
 if(is_admin()) {
+
+	// add the textdomain
+	add_action('plugins_loaded', 'improved_user_search_in_backend_init');
+
+	function improved_user_search_in_backend_init()
+	{
+		load_plugin_textdomain( 'improved-user-search-in-backend', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	}
 
 	// add the overwrite actions for the search
     add_action('pre_user_query', 'user_search_by_multiple_parameters');
@@ -61,15 +69,17 @@ if(is_admin()) {
             }
 			
             $id_string = implode(",",$uids);
-
-            $wp_user_query->query_where = str_replace("user_nicename LIKE '%".$qstr."%'", "ID IN(".$id_string.")", $wp_user_query->query_where);
+			if (!empty($id_string))
+			{
+	            $wp_user_query->query_where = str_replace("user_nicename LIKE '%".$qstr."%'", "ID IN(".$id_string.")", $wp_user_query->query_where);
+			}
         }
         return $wp_user_query;
     }
 
     // add the options page
     function improved_user_search_in_backend_options() {
-    	add_options_page('User Search','User Search',
+    	add_options_page(__('User Search', 'improved-user-search-in-backend'), __('User Search', 'improved-user-search-in-backend'),
     	'manage_options',__FILE__,'improved_user_search_in_backend_page');
     }
 
@@ -77,7 +87,7 @@ if(is_admin()) {
 	function improved_user_search_in_backend_page() { ?>
 		<div class="wrap">
 			<div><?php screen_icon('options-general'); ?></div>
-			<h2>Settings: Improved user search in backend</h2>
+			<h2><?php _e('Settings: Improved user search in backend', 'improved-user-search-in-backend'); ?></h2>
 			<?php
 			if(isset($_POST['improved_user_search_in_backend_update']) && $_POST['improved_user_search_in_backend_update']!="") {
 				
@@ -93,14 +103,14 @@ if(is_admin()) {
 				<div>
 					<table class="form-table">
 						<tr valign="top">
-							<th scope="row">Custom Meta Fields (comma seperated)</th>
+							<th scope="row"><?php _e('Custom Meta Fields (comma seperated)', 'improved-user-search-in-backend'); ?></th>
 							<td><textarea name="iusib_meta_fields" rows="6" cols="50"><?php echo get_option('iusib_meta_fields'); ?></textarea></td>
-							<td class="description">Add custom user meta fields from your usermeta table for integration in the user search (e.g. "url", "description", "aim", or custom like "birthday")</td>
+							<td class="description"><?php _e('Add custom user meta fields from your usermeta table for integration in the user search (e.g. "url", "description", "aim", or custom like "birthday")', 'improved-user-search-in-backend'); ?></td>
 						</tr>
 					</table>
 					<p></p>
 					<p><input type="hidden" name="improved_user_search_in_backend_update" value="true" />
-					<input type="submit" name="Save" value="Save Settings" class="button-primary" /></p>
+					<input type="submit" name="Save" value="<?php _e('Save Settings', 'improved-user-search-in-backend'); ?>" class="button-primary" /></p>
 				</div>
 			</form>
 		</div>
