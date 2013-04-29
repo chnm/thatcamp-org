@@ -4,7 +4,7 @@
 Plugin Name: Twitter Archival Shortcode
 Plugin URI: http://aramzs.me/twitterarchival
 Description: This plugin allows you to place a shortcode in your post that will archive a Twitter search term, including hashtags. 
-Version: 0.67
+Version: 0.85
 Author: Aram Zucker-Scharff
 Author URI: http://aramzs.me
 License: GPL2
@@ -61,6 +61,8 @@ $page=1;
 
 //You may want to limit it by a day, month, or year. In which case we will need this:
 $keepGoing = true;
+
+$threefour = $ta_option_array['threefour'];
 
 function twitter_search_archive( $atts ) {
 
@@ -265,44 +267,71 @@ function output_data($xml,$datelimit,$ordered,$keepGoing,$blackbird)
 				$unixtime = strtotime($timestamp);
 				$datetime = date('h:i:s A, n-j-y', $unixtime);
 				
+						//Ok, so here's where it gets complex... If you are running WP3.4, there is now an awesome oEmbed function that rendders tweets for us. 
+						//See http://codex.wordpress.org/Embeds and http://core.trac.wordpress.org/browser/tags/3.4/wp-includes/media.php#L0 for more info.
+						//But if you are running a WP version before that, no-go. 
+						//So let's use this new function, but create a fallback. 
+						//Remember we got the WordPress version before?
+						//Well, to provide forward compatability, we need to convert it to a number.
+						//Using this PHP function allows us to turn the string into a decimal number PHP understands. 
+						//Let's get the current WordPress version. 
+						$wpver = get_bloginfo('version');
+						//Should get a string like '3.4' - for more info see http://core.trac.wordpress.org/browser/tags/3.4/wp-includes/version.php#L0						
+						$floatWPVer = floatval($wpver);
 				
+					//If you've designated a date to retrieve from, either a year, month or day, you can restrict Tweets that appear only to that period. 
+					if (!empty($datelimit)) {
+						//The given date string must be in the 2012-4-24 format
+						//If it matches the published time of the tweet, save it to the object. 
+						//Otherwise, don't.
+						if(strstr($entry->published,$datelimit))
+						{
+						
+							//Now, we check if the version of WordPress we are running is equal to or greater than 3.4.
+							if (($floatWPVer >= 3.4) && ($threefour == "yes")){
+
+								
+								$outputlink = (string) $entry->link[0]['href'];
+								$output_archive .= wp_oembed_get($outputlink);
+
+							} else {							
+								$output_archive .= "<div class=\"ta-twitter_user ta\">
+								
+								<ul class=\"ta-ul\">
+								<li class=\"ta-image ta\"><img class=\"ta-avatar ta\" src=\"$image\"></li>
+								<li class=\"ta-published ta\"><a href=\"$link\">$datetime</a></li>
+								<li class=\"ta-user ta\"><a href=\"$uri\" target=\"_blank\">$name</a></li>
+								<li class=\"ta-description ta\">$entry->title</li>
+								
+								</ul>
+								</div>";
+								$keepGoing = true;
+							}
+						}
+						else { $keepGoing = false; }
+					} //End of datecheck. 
+					else {
+						//Now, we check if the version of WordPress we are running is equal to or greater than 3.4.
+						if (($floatWPVer >= 3.4) && ($threefour == "yes")){
+
+							
+							$outputlink = (string) $entry->link[0]['href'];
+							$output_archive .= wp_oembed_get($outputlink);
+
+						} else {					
+							$output_archive .= "<div class=\"ta-twitter_user ta\">
+							
+							<ul class=\"ta-ul\">
+							<li class=\"ta-image ta\"><img class=\"ta-avatar ta\" src=\"$image\"></li>
+							<li class=\"ta-published ta\"><a href=\"$link\">$datetime</a></li>
+							<li class=\"ta-user ta\"><a href=\"$uri\" target=\"_blank\">$name</a></li>
+							<li class=\"ta-description ta\">$entry->title</li>
+							
+							</ul>
+							</div>";
+						}
+					} 
 				
-				//If you've designated a date to retrieve from, either a year, month or day, you can restrict Tweets that appear only to that period. 
-				if (!empty($datelimit)) {
-					//The given date string must be in the 2012-4-24 format
-					//If it matches the published time of the tweet, save it to the object. 
-					//Otherwise, don't.
-					if(strstr($entry->published,$datelimit))
-					{
-						$output_archive .= "<div class=\"ta-twitter_user ta\">
-						
-						<ul class=\"ta-ul\">
-						<li class=\"ta-image ta\"><img class=\"ta-avatar ta\" src=\"$image\"></li>
-						<li class=\"ta-published ta\"><a href=\"$link\">$datetime</a></li>
-						<li class=\"ta-user ta\"><a href=\"$uri\" target=\"_blank\">$name</a></li>
-						<li class=\"ta-description ta\">$entry->title</li>
-						
-						</ul>
-						</div>";
-						$keepGoing = true;
-					}
-					else { $keepGoing = false; }
-				} //End of datecheck. 
-				else {
-				
-						$output_archive .= "<div class=\"ta-twitter_user ta\">
-						
-						<ul class=\"ta-ul\">
-						<li class=\"ta-image ta\"><img class=\"ta-avatar ta\" src=\"$image\"></li>
-						<li class=\"ta-published ta\"><a href=\"$link\">$datetime</a></li>
-						<li class=\"ta-user ta\"><a href=\"$uri\" target=\"_blank\">$name</a></li>
-						<li class=\"ta-description ta\">$entry->title</li>
-						
-						</ul>
-						</div>";
-				
-				} 
-			
 			} //end foreach.
 			
 		} // end blackbirdpie no.
@@ -354,9 +383,7 @@ add_action( 'wp_enqueue_scripts', 'style_twitter_search_archive', 1 );
 // Since anything that auto-styles Twitter hashtags and at signs will mess up the workings of the shortcode, here's a built in alternative. No need to run another plugin. 
 // Adapted from code at http://stackoverflow.com/questions/4913555/find-twitter-hashtags-using-jquery-and-apply-a-link
 function zs_twitter_linked() {
-    # below line requested a file that doesn't exist, resulting in tons of error lines in the apache logs.
-	#wp_enqueue_script('jquery-cycle', get_bloginfo('stylesheet_directory') . '/library/extensions/jquery.cycle.all.js">', array('jquery'));
-	wp_enqueue_script('jquery');
+	wp_enqueue_script( 'jquery' );
 	?>
 		<script type="text/javascript">
 		<!--Note here the \s at the begining of the regular expression here. This is to enforce that it will only select from hashtags with a space in front of them. Otherwise it may alter links to anchors.-->
