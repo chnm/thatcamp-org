@@ -1,5 +1,3 @@
-php_flag apc.cache_by_default On
-
 #Options +FollowSymlinks
 #RewriteEngine on
 #RewriteCond %{REQUEST_URI} !/maintenance.html$
@@ -7,6 +5,7 @@ php_flag apc.cache_by_default On
 #RewriteCond %{REQUEST_URI} !/wp-cron.php$
 #RewriteCond %{REMOTE_HOST} !^72\.229\.209\.82
 #RewriteCond %{REMOTE_HOST} !^76\.111\.65\.22
+#RewriteCond %{REMOTE_HOST} !^65\.25\.218\.145
 #RewriteCond %{REMOTE_HOST} !^127\.0\.0\.1
 #RewriteRule $ /maintenance.html [R=302,L]
 
@@ -23,12 +22,12 @@ RewriteRule ^files/(.+) wp-includes/ms-files.php?file=$1 [L]
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
-RewriteRule  ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
-RewriteRule  ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]
-RewriteRule . index.php [L]
+RewriteRule  ^[_0-9a-zA-Z-]+/(wp-(content|admin|includes).*) $1 [L]
+RewriteRule  ^[_0-9a-zA-Z-]+/(.*\.php)$ $1 [L]
+#RewriteRule . index.php [L]
+RewriteRule ^(.+)$ /index.php/$1 [NC,L,QSA]
 
 Redirect 301 /gratitude http://thatcamp.org/people/sponsors
-Redirect 301 /bootcamp http://thatcamp.org/plan/first/workshops
 Redirect 301 /applications http://thatcamp.org/plan/before/registrations
 Redirect 301 /plan/before/applications http://thatcamp.org/plan/before/registrations
 Redirect 301 /go/fellowships http://thatcamp.org/about
@@ -36,3 +35,6 @@ Redirect 301 /plan/first http://thatcamp.org/plan/
 Redirect 301 /plan/before http://thatcamp.org/plan/
 Redirect 301 /plan/during http://thatcamp.org/plan/
 Redirect 301 /plan/after http://thatcamp.org/plan/
+Redirect 301 /logos http://thatcamp.org/docs/logos/
+Redirect 301 /plugins http://thatcamp.org/docs/plugins/
+Redirect 301 /themes http://thatcamp.org/docs/themes/
