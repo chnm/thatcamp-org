@@ -27,7 +27,7 @@ Template Name: Campers
          <?php if (!get_post_meta($post->ID, 'hide_title', true)): ?><h2 class="post-title"><?php the_title(); ?></h2><?php endif; ?>
         <div class="post-content clearfix">
 					<p>THATCampers: to add your picture to this page, log in and upload a picture to your profile or sign up for <a href="http://en.gravatar.com/site/signup/">Gravatar.com</a> and upload an image there.</p>	
-					<?php  $siteUsers = get_users('orderby=display_name&exclude=246'); 
+					<?php  $siteUsers = get_users('orderby=display_name&who=authors&exclude=246'); 
 					foreach ($siteUsers as $usr) { ?>			
 				<div class="camper_info">	 			
 					<div class="camper_avatar"><a href="<?php echo get_author_posts_url($usr->ID); ?>"><?php echo get_avatar($usr->ID, 100); ?></a></div>
