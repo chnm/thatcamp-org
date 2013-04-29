@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Show authors without posts
-Plugin URI: http://wordpress.org/support/topic/221525
+Plugin URI: http://wordpress.org/support/plugin/show-authors-without-posts
 Description: Shows the authors page even if the author has no post.
-Version: 1.0.1
+Version: 1.0.2
 Author: Simon Br&uuml;chner
 Author URI: http://www.bruechner.de
 */

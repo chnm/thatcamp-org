@@ -2,7 +2,7 @@
 Contributors: powtac, mzeecedric, kikuyumoja
 Tags: authors, author, post, posts, 404, missing, error
 Requires at least: 2.6
-Tested up to: 2.6
+Tested up to: 3.5
 Stable tag: trunk
 
 Shows the authors page even if the author has no post.
