@@ -118,6 +118,7 @@ header nav {
 
 header nav ul {
     clear: both;
+    display: inline;
     font-size: 14px;
     list-style-type: none;
     overflow: auto;
@@ -974,4 +975,6 @@ footer {
 .widget_thatcamp_network_search {
 	margin-bottom: 3em;
 }
+
+
 
