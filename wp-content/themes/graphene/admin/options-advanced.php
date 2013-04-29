@@ -1,10 +1,10 @@
 <?php
-function graphene_options_advanced() { 
+function graphene_options_advanced() {
     global $graphene_settings;
     ?>
-        
-    <input type="hidden" name="graphene_advanced" value="true" />    
-    
+
+    <input type="hidden" name="graphene_advanced" value="true" />
+
     <?php /* Site Preview */ ?>
     <div class="postbox">
         <div class="head-wrap">
@@ -20,12 +20,12 @@ function graphene_options_advanced() {
                     </td>
                 </tr>
             </table>
-            
+
             <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
         </div>
     </div>
-    
-    
+
+
     <?php /* Custom <head> tags */ ?>
     <div class="postbox">
         <div class="head-wrap">
@@ -49,12 +49,12 @@ function graphene_options_advanced() {
 										styleActiveLine: true
 									});
 			</script>
-            
+
             <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
         </div>
-    </div>  
-    
-    
+    </div>
+
+
     <?php /* Action hooks widgets areas */ ?>
     <div class="postbox">
         <div class="head-wrap">
@@ -64,12 +64,12 @@ function graphene_options_advanced() {
         <div class="panel-wrap inside">
         	<p><?php _e("This option enables you to place virtually any content to every nook and cranny in the theme, by attaching widget areas to the theme's action hooks.", 'graphene' ); ?></p>
             <p><?php _e("All action hooks available in the Graphene Theme are listed below. Click on the filename to display all the action hooks available in that file. Then, tick the checkbox next to an action hook to make a widget area available for that action hook.", 'graphene' ); ?></p>
-            
-            <ul class="graphene-action-hooks">    
-                <?php                
+
+            <ul class="graphene-action-hooks">
+                <?php
                 $actionhooks = graphene_get_action_hooks();
-                foreach ( $actionhooks as $actionhook) : 
-                    $file = $actionhook['file']; 
+                foreach ( $actionhooks as $actionhook) :
+                    $file = $actionhook['file'];
                 ?>
                     <li>
                         <p class="hooks-file"><a href="#" class="toggle-widget-hooks" title="<?php _e( 'Click to show/hide the action hooks for this file', 'graphene' ); ?>"><?php echo $file; ?></a></p>
@@ -83,14 +83,14 @@ function graphene_options_advanced() {
                     </li>
                 <?php endforeach; ?>
             </ul>
-            
+
             <p class="submit clearfix">
             	<a href="themes.php?page=graphene_options&tab=advanced&rescan_hooks=true" class="button"><?php _e( 'Rescan action hooks', 'graphene' ); ?></a>
             	<input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" />
             </p>
         </div>
     </div>
-    
+
     <?php /* Move generated CSS */ ?>
     <div class="postbox">
         <div class="head-wrap">
@@ -124,9 +124,9 @@ function graphene_options_advanced() {
                     </td>
                 </tr>
             </table>
-            
+
             <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
         </div>
     </div>
-    
+
 <?php } // Closes the graphene_options_advanced() function definition

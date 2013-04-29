@@ -30,6 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
  * @package All-in-One-SEO-Pack
+<<<<<<< HEAD
  * @version 2.0
  */
 
@@ -122,7 +123,7 @@ if ( class_exists( 'All_in_One_SEO_Pack' ) ) {
 	add_action( 'admin_notices', create_function( '', 'echo "<div class=\'error\'>The All In One SEO Pack class is already defined";'
 	. "if ( class_exists( 'ReflectionClass' ) ) { \$r = new ReflectionClass( 'All_in_One_SEO_Pack' ); echo ' in ' . \$r->getFileName(); } "
 	. ' echo ", preventing All In One SEO Pack from loading.</div>";' ) );
-	return;	
+	return;
 }
 
 require_once( AIOSEOP_PLUGIN_DIR . 'aioseop_functions.php' );

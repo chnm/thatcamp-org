@@ -658,3 +658,4 @@ class BBP_BuddyPress_Activity {
 	}
 }
 endif;
+

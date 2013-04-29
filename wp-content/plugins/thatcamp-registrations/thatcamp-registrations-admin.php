@@ -231,7 +231,7 @@ class Thatcamp_Registrations_Admin {
 					break;
 
 				case 'spammed' :
-					$message = __( 'Successfully spammed!', 'thatcamp-registrations' );
+					$message = __( 'Successfully marked as spam!', 'thatcamp-registrations' );
 					break;
 			}
 		?>

@@ -161,7 +161,7 @@ $GLOBALS['tp_logger'] = tp_logger::getInstance(true);
 
 /*
  *  sample of how to modify logging parameters from anywhere
- * 
+ *
   $GLOBALS['tp_logger'] = tp_logger::getInstance(true);
   $GLOBALS['tp_logger']->show_caller = true;
  */

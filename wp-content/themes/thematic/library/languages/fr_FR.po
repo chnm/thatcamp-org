@@ -1,29 +1,10 @@
-# Translation of Thematic 1.0.3.x in French (France)
-# This file is distributed under the same license as the Thematic 1.0.3.x package.
-msgid ""
-msgstr ""
-"PO-Revision-Date: 2013-03-05 17:46:40+0000\n"
+=======
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: GlotPress/0.1\n"
-"Project-Id-Version: Thematic 1.0.3.x\n"
-
-#: library/extensions/content-extensions.php:916
-msgctxt "Default title for untitled posts"
-msgid "(Untitled)"
-msgstr "(Sans titre)"
-
-#: library/extensions/content-extensions.php:1667
-msgctxt "1s and 2s are the a href link wrappers, do not reverse them"
-msgid "Trackbacks are closed, but you can %1$spost a comment%2$s."
-msgstr "Les trackbacks sont fermés, mais vous pouvez %1$slaisser un commentaire%2$s."
-
-#: archives.php:20 template-page-blog.php:22
-msgid "The template %s"
-msgstr "Le modèle %s"
-
+=======
 #: attachment.php:54 library/extensions/content-extensions.php:630
 #: library/extensions/content-extensions.php:689
 msgid "Pages:"
@@ -85,7 +66,7 @@ msgid "Post Comment"
 msgstr "Valider le commentaire"
 
 #: library/extensions/comments-extensions.php:228
-#: library/legacy/deprecated.php:365
+=======
 msgid "Name"
 msgstr "Nom"
 
@@ -96,17 +77,17 @@ msgid "*"
 msgstr "*"
 
 #: library/extensions/comments-extensions.php:229
-#: library/legacy/deprecated.php:370
+=======
 msgid "Email"
 msgstr "E-mail"
 
 #: library/extensions/comments-extensions.php:230
-#: library/legacy/deprecated.php:375
+=======
 msgid "Website"
 msgstr "Site web"
 
 #: library/extensions/comments-extensions.php:238
-#: library/legacy/deprecated.php:362
+=======
 msgctxt "%$1s and %$2s are <em> tags for emphasis on never"
 msgid "Your email is %1$snever%2$s published nor shared."
 msgstr "Votre e-mail ne sera %1$sjamais%2$s publié ni communiqué."
@@ -117,32 +98,32 @@ msgid "Required fields are marked %1$s*%2$s"
 msgstr "Les champs obligatoires sont indiqués par %1$s*%2$s"
 
 #: library/extensions/comments-extensions.php:240
-#: library/legacy/deprecated.php:344
+=======
 msgid "You must be %1$slogged in%2$s to post a comment."
 msgstr "Vous devez être %1$sconnecté%2$s pour laisser un commentaire."
 
 #: library/extensions/comments-extensions.php:240
-#: library/legacy/deprecated.php:344
+=======
 msgid "Log in"
 msgstr "Connexion"
 
 #: library/extensions/comments-extensions.php:242
-#: library/legacy/deprecated.php:357
+=======
 msgid "Logged in as %s"
 msgstr "Connecté en tant que %s"
 
 #: library/extensions/comments-extensions.php:242
-#: library/legacy/deprecated.php:357
+=======
 msgid "Log out of this account"
 msgstr "Se déconnecter de ce compte"
 
 #: library/extensions/comments-extensions.php:242
-#: library/legacy/deprecated.php:357
+=======
 msgid "Log out?"
 msgstr "Se déconnecter&nbsp;?"
 
 #: library/extensions/comments-extensions.php:244
-#: library/legacy/deprecated.php:387
+=======
 msgctxt "%$1s and %$2s are <abbr> tags"
 msgid "You may use these %1$sHTML%2$s tags and attributes"
 msgstr "Vous pouvez utiliser ces balises et attributs %1$sHTML%2$s"
@@ -184,174 +165,43 @@ msgid "Yearly Archives: %s"
 msgstr "Archives annuelles&nbsp;: %s"
 
 #: library/extensions/content-extensions.php:424
-#: library/extensions/content-extensions.php:1710
+=======
 msgid "Older posts"
 msgstr "Articles plus anciens"
 
 #: library/extensions/content-extensions.php:426
-#: library/extensions/content-extensions.php:1712
+=======
 msgid "Newer posts"
 msgstr "Articles plus récents"
 
 #: library/extensions/content-extensions.php:888
-#: library/extensions/content-extensions.php:1422
+=======
 msgid "Edit post"
 msgstr "Modifier cet article"
 
 #: library/extensions/content-extensions.php:890
-#: library/extensions/content-extensions.php:1424
-#: library/extensions/discussion-extensions.php:37
-#: library/extensions/discussion.php:84 links.php:52 page.php:52
+=======
 #: template-page-archives.php:55 template-page-fullwidth.php:53
 msgid "Edit"
 msgstr "Modifier"
 
-#: library/extensions/content-extensions.php:921
+=======
 #: library/extensions/header-extensions.php:111
 msgid "Not Found"
 msgstr "Introuvable"
 
-#: library/extensions/content-extensions.php:926
-#: library/extensions/content-extensions.php:1145
-#: library/extensions/content-extensions.php:1149
-#: library/extensions/content-extensions.php:1380
-msgid "Permalink to %s"
-msgstr "Permalien vers %s"
-
-#: library/extensions/content-extensions.php:987
-msgid "By"
-msgstr "Par"
-
-#: library/extensions/content-extensions.php:998
-msgid "View all posts by %s"
-msgstr "Voir tous les articles par %s"
-
-#: library/extensions/content-extensions.php:1027
-msgid "Published:"
-msgstr "Publié&nbsp;:"
-
-#: library/extensions/content-extensions.php:1203
-msgid "Archives by Category"
-msgstr "Archives par catégorie"
-
-#: library/extensions/content-extensions.php:1234
-msgid "Archives by Month"
-msgstr "Archives par mois"
-
-#: library/extensions/content-extensions.php:1295
-msgid "Apologies, but we were unable to find what you were looking for. Perhaps searching will help."
-msgstr "Désolé, nous n'avons pas pu trouver ce que vous cherchiez. Le moteur de recherche pourra peut-être vous aider."
-
-#: library/extensions/content-extensions.php:1301 search.php:70
-msgid "Find"
-msgstr "Trouver"
-
-#: library/extensions/content-extensions.php:1320
-msgid "Read More %s"
-msgstr "Lire la suite %s"
-
-#: library/extensions/content-extensions.php:1372
-msgid "Browse the %s archive."
-msgstr "Parcourir l'archive %s."
-
-#: library/extensions/content-extensions.php:1374
-msgid "Permalink to %s Archive"
-msgstr "Permalien vers l'archive %s"
-
-#: library/extensions/content-extensions.php:1380
-msgctxt "1s and 2s are the a href link wrappers, do not reverse them"
-msgid "Bookmark the %1$spermalink%2$s."
-msgstr "Bookmarker le %1$spermalien%2$s."
-
-#: library/extensions/content-extensions.php:1538
-msgid "This entry was posted in %s"
-msgstr "Cet article a été publié dans %s"
-
-#: library/extensions/content-extensions.php:1549
-msgid "Also posted in %s"
-msgstr "Également publié dans %s"
-
-#: library/extensions/content-extensions.php:1553
-msgid "Posted in %s"
-msgstr "Publié dans %s"
-
-#: library/extensions/content-extensions.php:1579
-msgid "This entry is tagged"
-msgstr "Cet article est marqué avec les mots-clefs"
-
-#: library/extensions/content-extensions.php:1582
-msgid "and tagged"
-msgstr "avec les mots-clefs"
-
-#: library/extensions/content-extensions.php:1585
-msgid "Also tagged"
-msgstr "Autres mots-clefs&nbsp;:"
-
-#: library/extensions/content-extensions.php:1587
-msgid "Tagged"
-msgstr "Mots-clefs&nbsp;:"
-
-#: library/extensions/content-extensions.php:1617
-#: library/extensions/content-extensions.php:1623
-msgid "Comment on %s"
-msgstr "Commentaire sur %s"
-
-#: library/extensions/content-extensions.php:1619
+=======
 msgid "%s Response"
 msgid_plural "%s Responses"
 msgstr[0] "%s réponse"
 msgstr[1] "%s réponses"
 
-#: library/extensions/content-extensions.php:1624
-msgid "Leave a comment"
-msgstr "Laisser un commentaire"
-
-#: library/extensions/content-extensions.php:1627
-msgid "Comments closed"
-msgstr "Commentaires fermés"
-
-#: library/extensions/content-extensions.php:1651
+=======
 msgctxt "1s and 2s are the a href link wrappers, do not reverse them. 3s is trackback url."
 msgid "%1$sPost a comment%2$s or leave a trackback: %3$s"
 msgstr "%1$sLaisser un commentaire%2$s ou faire un trackback&nbsp;: %3$s"
 
-#: library/extensions/content-extensions.php:1652
-#: library/extensions/content-extensions.php:1667
-msgid "Post a comment"
-msgstr "Laisser un commentaire"
-
-#: library/extensions/content-extensions.php:1656
-#: library/extensions/content-extensions.php:1663
-msgid "Trackback URL for your post"
-msgstr "URL de trackback pour votre article"
-
-#: library/extensions/content-extensions.php:1657
-#: library/extensions/content-extensions.php:1664
-msgid "Trackback URL"
-msgstr "URL de trackback"
-
-#: library/extensions/content-extensions.php:1660
-msgctxt "%s is trackback url, wrapped in link tags"
-msgid "Comments are closed, but you can leave a trackback: %s"
-msgstr "Les commentaires sont fermés, mais vous pouvez faire un trackback&nbsp;: %s"
-
-#: library/extensions/content-extensions.php:1669
-msgid "Both comments and trackbacks are currently closed."
-msgstr "Les commentaires et les trackbacks sont fermés."
-
-#: library/extensions/discussion-extensions.php:27
-msgctxt "Posted {$date} at {$time}"
-msgid "Posted %s at %s"
-msgstr "Publié le %s à %s"
-
-#: library/extensions/discussion-extensions.php:31
-msgid "Permalink to this comment"
-msgstr "Permalien de ce commentaire"
-
-#: library/extensions/discussion-extensions.php:31
-msgid "Permalink"
-msgstr "Permalien"
-
+=======
 #: library/extensions/discussion-extensions.php:36
 msgid "Edit comment"
 msgstr "Modifier commentaire"
@@ -387,11 +237,7 @@ msgstr "Flux RSS des articles"
 msgid "Comments RSS feed"
 msgstr "Flux RSS des commentaires"
 
-#: library/extensions/header-extensions.php:667
-msgid "Skip navigation to the content"
-msgstr "Passer la navigation"
-
-#: library/extensions/header-extensions.php:667
+=======
 msgid "Skip to content"
 msgstr "Aller au contenu"
 
@@ -453,31 +299,27 @@ msgctxt "%1$s and %2$s are <a> tags"
 msgid "Please visit the %1$sThematicTheme.com Forums%2$s if you have any questions about Thematic."
 msgstr "Connectez-vous aux %1$sforums de ThematicTheme.com%2$s si vous avez des questions à propos de Thematic."
 
-#: library/extensions/theme-options.php:267
+=======
 msgctxt "{$current theme} Theme Options"
 msgid "%s Theme Options"
 msgstr "Options du thème %s"
 
-#: library/extensions/theme-options.php:305
-msgid "The Index Insert widget area will appear after this post number. Entering nothing or 0 will disable this feature."
-msgstr "Le bloc widget inséré en page d'accueil apparaîtra après ce numéro d'article. Laisser le champ vide ou saisir 0 pour désactiver cette fonctionnalité."
-
-#: library/extensions/theme-options.php:318
+=======
 msgctxt "%1$s and %2$s are <a> tags"
 msgid "Display a %1$smicroformatted vCard%2$s with the author's avatar, bio and email on the author page."
 msgstr "Afficher une %1$svCard microformatée%2$s comportant l'avatar, la biographie et l'e-mail de l'auteur sur la page \"auteur\"."
 
-#: library/extensions/theme-options.php:331
+=======
 msgctxt "%s are shortcode tags"
 msgid "You can use HTML and shortcodes in your footer text. Shortcode examples: %s"
 msgstr "Vous pouvez utiliser du HTML et des \"shortcodes\" dans votre texte de pied de page. Exemples de \"shortcodes\": %s"
 
-#: library/extensions/theme-options.php:355
+=======
 msgctxt "{$current theme} Theme Options"
 msgid "%s Theme Options have been upgraded to an improved format. Remove the legacy options from the database."
 msgstr "Les options du thème %s ont été mises à niveau vers un format amélioré. Supprimer les anciennes options de la base de données."
 
-#: library/extensions/theme-options.php:382
+=======
 msgid "The index insert position value must be a number equal to or greater than zero. This setting has been reverted to the previous value."
 msgstr "La valeur de position du bloc inséré en page d'accueil doit être un nombre supérieur ou égal à zéro. Ce paramètre a été rétabli à la valeur précédente."
 
@@ -627,44 +469,7 @@ msgstr "Tous les articles"
 msgid "All comments"
 msgstr "Tous les commentaires"
 
-#: library/legacy/deprecated.php:357
-msgid "Logged in as"
-msgstr "Connecté en tant que"
-
-#: library/legacy/deprecated.php:365 library/legacy/deprecated.php:370
-msgid "<span class=\"required\">*</span>"
-msgstr "<span class=\"required\">*</span>"
-
-#: page.php:50 template-page-fullwidth.php:51
-msgid "Pages: "
-msgstr "Pages&nbsp;:"
-
-#: search.php:56
-msgid "Nothing Found"
-msgstr "Aucun résultat"
-
-#: search.php:60
-msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
-msgstr "Désolé, mais rien ne correspond à vos critères de recherche. Veuillez réessayer avec d'autres mots-clefs."
-
-#: template-page-blog.php:22
-msgid "You can include a %s in a childtheme"
-msgstr "Vous pouvez inclure un %s dans un thème enfant"
-
-msgid "Thematic"
-msgstr "Thematic"
-
-msgid "http://thematictheme.com"
-msgstr "http://thematictheme.com"
-
-msgid "The ultimate in SEO-ready themes, Thematic is a highly extensible, WordPress Theme Framework featuring 13 widget-ready areas, drop-down menus, grid-based layout samples, plugin integration, shortcodes for your footer, &amp; a whole lot more. Perfect for any blog and <strong><em>the</em></strong> starting point for theme development."
-msgstr "Le nec plus ultra des thèmes optimisés pour les moteurs de recherche, Thematic est un thème Wordpress de type \"framework\", hautement extensible, comprenant 13 zones de widgets, des menus déroulants, une grille typographique de base, une ouverture aux plugins, des \"shortcodes\" pour le pied de page, et bien d'autres. Idéal pour un blog et <strong><em>le</em></strong> point de départ du développement de thèmes."
-
-msgid "<a href=\"http://themeshaper.com/\">Ian Stewart</a> &amp; <a href=\"http://thematic4you.com/\">Chris Go&szlig;mann</a>"
-msgstr "<a href=\"http://themeshaper.com/\">Ian Stewart</a> &amp; <a href=\"http://thematic4you.com/\">Chris Go&szlig;mann</a>"
-
-msgid "http://themeshaper.com/"
-msgstr "http://themeshaper.com/"
+=======
 
 msgid "Deprecated Archives Template"
 msgstr "Modèle déprécié de page \"Archives\""

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Retrieve the theme's user settings and default settings. Individual files can access
  * these setting via a global variable call, so database query is only
@@ -33,22 +33,22 @@ include( $graphene_settings['template_dir'] . '/admin/ajax-handler.php');
 /* Disabled for now until a proper API has been implemented in WordPress core */
 // include( $graphene_settings['template_dir'] . '/admin/feature-pointers.php');
 
-/** 
+/**
  * Adds the theme options page
 */
 function graphene_options_init() {
 	global $graphene_settings;
-	
+
 	$graphene_settings['hook_suffix'] = add_theme_page( __( 'Graphene Options', 'graphene' ), __( 'Graphene Options', 'graphene' ), 'edit_theme_options', 'graphene_options', 'graphene_options' );
 	$graphene_settings['hook_suffix_faq'] = add_theme_page( __( 'Graphene FAQs', 'graphene' ), __( 'Graphene FAQs', 'graphene' ), 'edit_theme_options', 'graphene_faq', 'graphene_faq' );
-	
+
 	add_action( 'admin_print_styles-' . $graphene_settings['hook_suffix'], 'graphene_admin_options_style' );
 	add_action( 'admin_print_styles-' . $graphene_settings['hook_suffix_faq'], 'graphene_admin_options_style' );
 	add_action( 'admin_print_scripts-' . $graphene_settings['hook_suffix'], 'graphene_admin_scripts' );
 	add_action( 'admin_head-' . $graphene_settings['hook_suffix'], 'graphene_custom_style' );
 	add_action( 'admin_head-' . $graphene_settings['hook_suffix'], 'graphene_register_t_options' );
 	add_action( 'admin_head-' . $graphene_settings['hook_suffix'], 'graphene_wpml_register_strings', 20 );
-	
+
 	do_action( 'graphene_options_init' );
 }
 add_action( 'admin_menu', 'graphene_options_init', 8 );
@@ -66,9 +66,9 @@ add_filter( 'option_page_capability_graphene_options', 'graphene_options_page_ca
 /**
  * Add JavaScript for the theme's options page
 */
-function graphene_options_js(){ 
+function graphene_options_js(){
     global $graphene_settings;
-	
+
 	$tab = 'general'; // default set the current tab to general
 	// detect any other allowed tabs
 	if ( isset( $_GET['tab'] ) && in_array( $_GET['tab'], array('general', 'display', 'colours', 'advanced' ) ) ){ $tab = $_GET['tab']; }
@@ -99,20 +99,20 @@ add_action( 'admin_menu', 'graphene_admin_footer' );
 */
 if ( ! function_exists( 'graphene_admin_options_style' ) ) :
 	function graphene_admin_options_style() {
-	
+
 		wp_register_style( 'graphene-admin-style', get_template_directory_uri() . '/admin/admin.css' );
 		if ( is_rtl() ) { wp_register_style( 'graphene-admin-style-rtl', get_template_directory_uri() . '/admin/admin-rtl.css' );}
-	
+
 		wp_enqueue_style( 'graphene-admin-style' );
 		if ( is_rtl() ) { wp_enqueue_style( 'graphene-admin-style-rtl' ); }
-		
+
 		wp_enqueue_style( 'thickbox' );
 		// wp_enqueue_style( 'wp-pointer' );
-		
+
 		if ( isset( $_GET['tab'] ) && ( $_GET['tab'] == 'display' || $_GET['tab'] == 'advanced' ) ){
 			wp_enqueue_style( 'codemirror', get_template_directory_uri() . '/js/codemirror/codemirror.css', array(), '', false );
 		}
-		
+
 		if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'display' )
 			wp_enqueue_style( 'jquery-ui-slider' );
 		else if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'colours' )
@@ -125,23 +125,23 @@ endif;
  * Script required for the theme options page
  */
 function graphene_admin_scripts() {
-		
+
 	/* Enqueue scripts */
     wp_enqueue_script( 'media-upload' );
     wp_enqueue_script( 'thickbox' );
 	wp_enqueue_script( 'graphene-admin-js' );
     // wp_enqueue_script( 'wp-pointer' );
-	
+
 	if ( isset( $_GET['tab'] ) && ( $_GET['tab'] == 'display' || $_GET['tab'] == 'advanced' ) ){
 		wp_enqueue_script( 'codemirror', get_template_directory_uri() . '/js/codemirror/codemirror.js', array(), '', false );
 	}
-	
+
 	if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'display' )
 		wp_enqueue_script( 'jquery-ui-slider' );
 	else if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'colours' )
 		wp_enqueue_script( 'farbtastic' );
-	else 
-		wp_enqueue_script( 'jquery-ui-sortable' );     
+	else
+		wp_enqueue_script( 'jquery-ui-sortable' );
 }
 
 
@@ -158,7 +158,7 @@ if ( ! function_exists( 'graphene_options_tabs' ) ) :
 				$links[] = "<a class='nav-tab nav-tab-$tab' href='?page=graphene_options&amp;tab=$tab'>$name</a>";
 			endif;
 		endforeach;
-		
+
 		echo '<h3 class="options-tab">';
 		foreach ( $links as $link )
 			echo $link;
@@ -206,7 +206,7 @@ include( $graphene_settings['template_dir'] . '/admin/custom-fields.php' );
 */
 function graphene_wp_admin_bar_theme_options(){
 	global $wp_admin_bar;
-	$wp_admin_bar->add_menu( array( 
+	$wp_admin_bar->add_menu( array(
 								'parent' 	=> 'appearance',
 								'id' 		=> 'graphene-options',
 								'title' 	=> 'Graphene Options',
@@ -218,10 +218,10 @@ add_action( 'admin_bar_menu', 'graphene_wp_admin_bar_theme_options', 61 );
 /**
  * Displays a graphic visualizer for template selection in the Edit Page screen
 */
-function graphene_page_template_visualizer() {  
+function graphene_page_template_visualizer() {
     global $graphene_settings, $post_id;
-    $template_not_found = __( 'Template preview not found.', 'graphene' );    
-    
+    $template_not_found = __( 'Template preview not found.', 'graphene' );
+
 	if ( ! get_post_meta( $post_id, '_wp_page_template', true ) ){
 		$default_template = __( 'default', 'graphene' );
 	} else {
@@ -246,36 +246,36 @@ function graphene_page_template_visualizer() {
 				break;
 		}
 	}
-    
-    
+
+
     $preview_img_path = get_template_directory_uri() . '/admin/images/';
     ?>
     <script type="text/javascript">
     //<![CDATA[
     jQuery(document).ready(function($){
         $( '#page_template' ).change(function(){
-           update_page_template();           
+           update_page_template();
         });
         // $( '#page_template' ).after( '<p><span><?php echo $template_not_found;?></span><img id="page_template_img" alt="none" /></p>' );
 		$( '#page_template' ).after( '<p><img id="page_template_img" alt="none" /></p>' );
-        
+
         function update_page_template() {
             var preview_img = $( '#page_template' ).val().replace(/.php$/, '.png' );
-            //if (preview_img == 'default' ){ preview_img = '<?php echo $default_template;?>'; }            
+            //if (preview_img == 'default' ){ preview_img = '<?php echo $default_template;?>'; }
             $( '#page_template_img' ).attr( 'src', '<?php echo $preview_img_path ?>'+preview_img);
         }
-        
+
         // if the template preview image is not found, hide the image not found and show text
         $( '#page_template_img' ).error(function(){
-           $(this).hide();  
+           $(this).hide();
            $( 'span', $(this).parent() ).show();
         });
         // if the template preview image is found, show the image
         $( '#page_template_img' ).load(function(){
-           $(this).show();     
+           $(this).show();
            $( 'span', $(this).parent() ).hide();
         });
-        
+
         // remove the default option (because the theme overrides the template
         $( '#page_template option[value="default"]' ).remove();
         // add the theme default item
@@ -285,14 +285,14 @@ function graphene_page_template_visualizer() {
             // $( '#page_template option[text="<?php echo $default_template; ?>"]' ).attr( 'selected', 'selected' );
             $( '#page_template option:contains("<?php _e( 'Theme default', 'graphene' ); ?>")' ).attr( 'selected', 'selected' );
         }
-        
+
         update_page_template();
     });
     //]]>
     </script>
     <?php
 }
-add_action( 'edit_page_form', 'graphene_page_template_visualizer' ); // only works on pages 
+add_action( 'edit_page_form', 'graphene_page_template_visualizer' ); // only works on pages
 
 
 /**
@@ -300,10 +300,10 @@ add_action( 'edit_page_form', 'graphene_page_template_visualizer' ); // only wor
  */
 function graphene_editor_width( $mce_css ){
 	global $content_width, $graphene_settings;
-	
+
 	if ( ! $graphene_settings['disable_editor_style'] )
 		$mce_css = str_replace( 'admin/editor.css.php', add_query_arg( 'content_width', $content_width, 'admin/editor.css.php' ), $mce_css );
-	
+
 	return $mce_css;
 }
 add_filter( 'mce_css', 'graphene_editor_width' );

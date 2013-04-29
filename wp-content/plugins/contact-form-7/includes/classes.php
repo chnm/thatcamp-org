@@ -411,6 +411,13 @@ class WPCF7_ContactForm {
 				$result['scripts_on_submit'] = array_map( 'wpcf7_strip_quote', $on_submit );
 		}
 
+		if ( $ajax ) {
+			$on_submit = $this->additional_setting( 'on_submit', false );
+
+			if ( ! empty( $on_submit ) )
+				$result['scripts_on_submit'] = array_map( 'wpcf7_strip_quote', $on_submit );
+		}
+
 		// remove upload files
 		foreach ( (array) $this->uploaded_files as $name => $path ) {
 			@unlink( $path );

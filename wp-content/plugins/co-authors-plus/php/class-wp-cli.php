@@ -74,7 +74,7 @@ class CoAuthorsPlus_Command extends WP_CLI_Command {
 			foreach( $posts->posts as $single_post ) {
 
 				$count++;
-				
+
 				$terms = wp_get_post_terms( $single_post->ID, $coauthors_plus->coauthor_taxonomy );
 				if ( is_wp_error( $terms ) )
 					WP_CLI::error( $terms->get_error_message() );
@@ -98,7 +98,7 @@ class CoAuthorsPlus_Command extends WP_CLI_Command {
 			}
 
 			$this->stop_the_insanity();
-			
+
 			$this->args['paged']++;
 			$posts = new WP_Query( $this->args );
 		}
@@ -177,7 +177,7 @@ class CoAuthorsPlus_Command extends WP_CLI_Command {
 				$posts_associated++;
 				clean_post_cache( $single_post->ID );
 			}
-			
+
 			$this->args['paged']++;
 			$this->stop_the_insanity();
 			$posts = new WP_Query( $this->args );
@@ -415,7 +415,7 @@ class CoAuthorsPlus_Command extends WP_CLI_Command {
 		while( $posts->post_count ) {
 
 			foreach( $posts->posts as $single_post ) {
-				
+
 				$terms = wp_get_post_terms( $single_post->ID, $coauthors_plus->coauthor_taxonomy );
 				if ( empty( $terms ) ) {
 					$saved = array(
@@ -429,7 +429,7 @@ class CoAuthorsPlus_Command extends WP_CLI_Command {
 			}
 
 			$this->stop_the_insanity();
-			
+
 			$this->args['paged']++;
 			$posts = new WP_Query( $this->args );
 		}
@@ -442,7 +442,7 @@ class CoAuthorsPlus_Command extends WP_CLI_Command {
 	 * they can easily collide with terms in other taxonomies
 	 *
 	 * @since 3.0
-	 * 
+	 *
 	 * @subcommand migrate-author-terms
 	 */
 	public function migrate_author_terms( $args, $assoc_args ) {
@@ -554,5 +554,5 @@ class CoAuthorsPlus_Command extends WP_CLI_Command {
 		if( is_callable( $wp_object_cache, '__remoteset' ) )
 			$wp_object_cache->__remoteset(); // important
 	}
-	
+
 }

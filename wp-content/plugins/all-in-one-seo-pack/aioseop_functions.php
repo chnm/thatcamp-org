@@ -143,7 +143,7 @@ if ( !function_exists( 'aioseop_option_page_icon' ) ) {
 	                -webkit-background-size: 16px 48px !important;
 	                -moz-background-size: 16px 48px !important;
 	                background-size: 16px 48px !important;
-	            } 
+	            }
 
 	            #icon-aioseop.icon32 {
 	                background-image: url('<?php echo AIOSEOP_PLUGIN_IMAGES_URL; ?>shield64.png') !important;
@@ -151,7 +151,7 @@ if ( !function_exists( 'aioseop_option_page_icon' ) ) {
 	                -moz-background-size: 32px 32px !important;
 	                background-size: 32px 32px !important;
 	            }
-	
+
 				#aioseop_settings_header #message {
 					background-image: url(<?php echo AIOSEOP_PLUGIN_IMAGES_URL; ?>update64.png) !important;
 				    -webkit-background-size: 32px 32px !important;
@@ -174,7 +174,7 @@ if ( !function_exists( 'aioseop_addmycolumns' ) ) {
 		else
 			$post_type = $_GET['post_type'];
 		add_action( 'admin_head', 'aioseop_admin_head' );
-		
+
 		if( is_array( $aiosp_posttypecolumns ) && in_array( $post_type, $aiosp_posttypecolumns ) ) {
 			if ( $post_type == 'page' )
 				add_filter( 'manage_pages_columns', 'aioseop_mrt_pcolumns' );
@@ -195,7 +195,7 @@ if ( !function_exists( 'aioseop_mrt_pcolumns' ) ) {
 	    if ($aioseop_options['aiosp_togglekeywords'] == 0) $aioseopc['seokeywords'] = __( 'SEO Keywords', 'all_in_one_seo_pack' );
 	    $aioseopc['seodesc'] = __( 'SEO Description', 'all_in_one_seo_pack' );
 	    return $aioseopc;
-	}	
+	}
 }
 
 if ( !function_exists( 'aioseop_admin_head' ) ) {
@@ -220,19 +220,19 @@ if ( !function_exists( 'aioseop_admin_head' ) ) {
 			float:left;
 			width: 100%;
 			margin: 0 0 10px 0;
-		}	
+		}
 		</style>
 		<?php wp_print_scripts( Array( 'sack' ) );
 		?><script type="text/javascript">
 		//<![CDATA[
 		var aioseopadmin = {
-			blogUrl: "<?php print get_bloginfo( 'url'); ?>", 
-			pluginPath: "<?php print AIOSEOP_PLUGIN_DIR; ?>", 
-			pluginUrl: "<?php print AIOSEOP_PLUGIN_URL; ?>", 
-			requestUrl: "<?php print WP_ADMIN_URL . '/admin-ajax.php' ?>", 
+			blogUrl: "<?php print get_bloginfo( 'url'); ?>",
+			pluginPath: "<?php print AIOSEOP_PLUGIN_DIR; ?>",
+			pluginUrl: "<?php print AIOSEOP_PLUGIN_URL; ?>",
+			requestUrl: "<?php print WP_ADMIN_URL . '/admin-ajax.php' ?>",
 			imgUrl: "<?php print AIOSEOP_PLUGIN_IMAGES_URL; ?>",
-			Edit: "<?php _e( 'Edit', 'all_in_one_seo_pack'); ?>", Post: "<?php _e( 'Post', 'all_in_one_seo_pack'); ?>", Save: "<?php _e( 'Save', 'all_in_one_seo_pack'); ?>", Cancel: "<?php _e( 'Cancel', 'all_in_one_seo_pack'); ?>", postType: "post", 
-			pleaseWait: "<?php _e( 'Please wait...', 'all_in_one_seo_pack'); ?>", slugEmpty: "<?php _e( 'Slug may not be empty!', 'all_in_one_seo_pack'); ?>", 
+			Edit: "<?php _e( 'Edit', 'all_in_one_seo_pack'); ?>", Post: "<?php _e( 'Post', 'all_in_one_seo_pack'); ?>", Save: "<?php _e( 'Save', 'all_in_one_seo_pack'); ?>", Cancel: "<?php _e( 'Cancel', 'all_in_one_seo_pack'); ?>", postType: "post",
+			pleaseWait: "<?php _e( 'Please wait...', 'all_in_one_seo_pack'); ?>", slugEmpty: "<?php _e( 'Slug may not be empty!', 'all_in_one_seo_pack'); ?>",
 			Revisions: "<?php _e( 'Revisions', 'all_in_one_seo_pack'); ?>", Time: "<?php _e( 'Insert time', 'all_in_one_seo_pack'); ?>"
 		}
 		//]]>
@@ -249,9 +249,9 @@ if ( !function_exists( 'aioseop_ajax_save_meta' ) ) {
 		$target = $_POST['target_meta'];
 		update_post_meta( $post_id, '_aioseop_' . $target, esc_attr( $new_meta ) );
 		$result = get_post_meta( $post_id, '_aioseop_' . $target, true );
-		if( $result != '' ): $label = $result;  
+		if( $result != '' ): $label = $result;
 		else: $label = ''; $result = '<strong><i>' . __( 'No', 'all_in_one_seo_pack' ) . ' ' . $target . '</i></strong>' ; endif;
-		$output = $result . '<a id="' . $target . 'editlink' . $post_id . '" href="javascript:void(0);"'; 
+		$output = $result . '<a id="' . $target . 'editlink' . $post_id . '" href="javascript:void(0);"';
 		$output .= 'onclick="aioseop_ajax_edit_meta_form(' . $post_id . ', \'' . $label . '\', \'' . $target . '\');return false;" title="' . __('Edit') . '">';
 		$output .= '<img class="aioseop_edit_button" id="aioseop_edit_id" src="' . AIOSEOP_PLUGIN_IMAGES_URL . '/cog_edit.png" /></a>';
 		die( "jQuery('div#aioseop_" . $target . "_" . $post_id . "').fadeOut('fast', function() {
@@ -284,22 +284,22 @@ if ( !function_exists( 'aioseop_mrt_pccolumn' ) ) {
 		if ( !$target ) return;
 		if( current_user_can( 'edit_post', $id ) ) { ?>
 			<div class="aioseop_mpc_admin_meta_container">
-				<div 	class="aioseop_mpc_admin_meta_options" 
-						id="aioseop_<?php print $target; ?>_<?php echo $id; ?>" 
+				<div 	class="aioseop_mpc_admin_meta_options"
+						id="aioseop_<?php print $target; ?>_<?php echo $id; ?>"
 						style="float:left;">
-					<?php $content = htmlspecialchars( stripcslashes( get_post_meta( $id, "_aioseop_" . $target,	TRUE ) ) ); 
-					if( !empty($content) ): $label = str_replace( "'", "\'", $content );  
+					<?php $content = htmlspecialchars( stripcslashes( get_post_meta( $id, "_aioseop_" . $target,	TRUE ) ) );
+					if( !empty($content) ): $label = str_replace( "'", "\'", $content );
 					else: $label = ''; $content = '<strong><i>No ' . $target . '</i></strong>' ; endif;
 						print $content . '<a id="' . $target . 'editlink' . $id . '" href="javascript:void(0);" onclick="aioseop_ajax_edit_meta_form(' .
 						$id . ', \'' . $label . '\', \'' . $target . '\');return false;" title="' . __('Edit') . '">';
-						print "<img class='aioseop_edit_button' 
-											id='aioseop_edit_id' 
+						print "<img class='aioseop_edit_button'
+											id='aioseop_edit_id'
 											src='" . AIOSEOP_PLUGIN_IMAGES_URL . "cog_edit.png' /></a>";
 					 ?>
 				</div>
 			</div>
 		<?php }
-	}	
+	}
 }
 
 if ( !function_exists( 'aioseop_unprotect_meta' ) ) {

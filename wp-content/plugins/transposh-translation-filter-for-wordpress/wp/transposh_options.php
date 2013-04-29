@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.2
+=======
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+=======
  */
 
 // This magic value will cause the option to be set from post
@@ -66,17 +66,17 @@ class transposh_option {
 
 /**
  * Used properties for code completion - we'll try to keep them in same order as admin screens
- * 
+ *
  * Language tab
  * @property string           $default_language      Option defining the default language
- * @property transposh_option $default_language_o 
+ * @property transposh_option $default_language_o
  * @property string           $viewable_languages    Option defining the list of currently viewable languages
- * @property transposh_option $viewable_languages_o 
+ * @property transposh_option $viewable_languages_o
  * @property string           $sorted_languages      Option defining the ordered list of languages @since 0.3.9
- * @property transposh_option $sorted_languages_o 
- * 
+ * @property transposh_option $sorted_languages_o
+ *
  * Settings
- * 
+ *
  * @property boolean          $allow_anonymous_translation   Option defining whether anonymous translation is allowed
  * @property transposh_option $allow_anonymous_translation_o
  * @property boolean          $enable_default_translate      Option to enable/disable default language translation
@@ -87,7 +87,7 @@ class transposh_option {
  * @property transposh_option $transposh_gettext_integration_o
  * @property boolean          $transposh_locale_override     Allow override for default locale (@since 0.7.5)
  * @property transposh_option $transposh_locale_override_o
- * 
+ *
  * @property boolean          $enable_permalinks             Option to enable/disable rewrite of permalinks
  * @property transposh_option $enable_permalinks_o
  * @property boolean          $enable_footer_scripts         Option to enable/disable footer scripts (2.8 and up)
@@ -96,14 +96,14 @@ class transposh_option {
  * @property transposh_option $enable_detect_redirect_o
  * @property boolean          $transposh_collect_stats       Should I allow collecting of anonymous stats (@since 0.7.6)
  * @property transposh_option $transposh_collect_stats_o
- * 
+ *
  * @property int              $transposh_backup_schedule     Stores the schedule for the backup service, 0-none, 1-daily, 2-live (backup @since 0.5.0)
- * @property transposh_option $transposh_backup_schedule_o  
+ * @property transposh_option $transposh_backup_schedule_o
  * @property string           $transposh_key                 Stores the site key to transposh services (backup @since 0.5.0)
  * @property transposh_option $transposh_key_o
- * 
+ *
  * Engines
- * 
+ *
  * @property boolean          $enable_autotranslate          Option to enable/disable auto translation
  * @property transposh_option $enable_autotranslate_o
  * @property boolean          $enable_autoposttranslate      Option to enable/disable auto translation of posts
@@ -118,9 +118,9 @@ class transposh_option {
  * @property transposh_option $oht_id_o
  * @property string           $oht_key                       Option to store the oht key;
  * @property transposh_option $oht_key_o
- * 
+ *
  * Widget
- * 
+ *
  * @property boolean          $widget_progressbar            Option allowing progress bar display
  * @property transposh_option $widget_progressbar_o
  * @property boolean          $widget_allow_set_deflang      Allows user to set his default language per #63 @since 0.3.8
@@ -129,9 +129,9 @@ class transposh_option {
  * @property transposh_option $widget_remove_logo_o
  * @property string           $widget_theme                  Allows theming of the progressbar and edit window @since 0.7.0
  * @property transposh_option $widget_theme_o
- * 
+ *
  * Advanced
- * 
+ *
  * @property boolean          $enable_url_translate          Option to enable/disable url translation @since 0.5.3
  * @property transposh_option $enable_url_translate_o
  * @property string           $jqueryui_override             Option to override the jQueryUI version @since 0.9.1
@@ -150,11 +150,11 @@ class transposh_option {
  * @property transposh_option $debug_logfile_o
  * @property ip               $debug_remoteip Option that limits remote firePhp debug to a certain IP
  * @property transposh_option $debug_remoteip_o
- * 
+ *
  * Hidden
- * 
+ *
  * @property transposh_option $transposh_admin_hide_warnings Stores hidden warnings (@since 0.7.6)
- * 
+ *
  */
 class transposh_plugin_options {
 

@@ -12,6 +12,7 @@
  * Domain Path: /languages/
  */
 
+
 defined( 'JETPACK__API_BASE' ) or define( 'JETPACK__API_BASE', 'https://jetpack.wordpress.com/jetpack.' );
 define( 'JETPACK__API_VERSION', 1 );
 define( 'JETPACK__MINIMUM_WP_VERSION', '3.3' );
@@ -696,6 +697,8 @@ class Jetpack {
 		$return = array();
 
 		// SAR: Removed foreach checks for inexistant modules. Leave this function to avoid removing call to this in many other parts.
+
+    // SAR: Removed check for inexistant modules
 
 		return $return;
 	}
@@ -1416,8 +1419,8 @@ p {
 	 */
 	function jetpack_help() {
 		return
-			'<p><strong>' . __( 'Jetpack by WordPress.com', 'jetpack' ) . '</strong></p>' .
-			'<p>' . __( 'Jetpack supercharges your self-hosted WordPress site with the awesome cloud power of WordPress.com.', 'jetpack' ) . '</p>' .
+			'<p><strong>' . __( 'Jetpack Lite', 'jetpack' ) . '</strong></p>' .
+			'<p>' . __( 'Jetpack supercharges your self-hosted WordPress with a lot of stuff, but Jetpack Lite only adds stats and short links :)', 'jetpack' ) . '</p>' .
 			'<p>' . __( 'On this page, you are able to view the modules available within Jetpack, learn more about them, and activate or deactivate them as needed.', 'jetpack' ) . '</p>' .
 			'<p><strong>' . __( 'Jetpack Module Options', 'jetpack' ) . '</strong></p>' .
 			'<p>' . __( '<strong>To Activate/Deactivate a Module</strong> - Click on Learn More. An Activate or Deactivate button will now appear next to the Learn More button. Click the Activate/Deactivate button.', 'jetpack' ) . '</p>' .
@@ -2261,7 +2264,7 @@ p {
 			<div id="jp-footer">
        <p class="automattic">NOTE: This's only a <a href="http://en.wikipedia.org/wiki/Fork_(software_development)" title="Fork definition on WikiPedia">fork</a>. If you have any problem, try first the <a href="http://jetpack.me/" target="_blank">official Jetpack</a>.</p>
 				<p class="small">
-					<a href="http://wordpress.org/extend/plugins/jetpack-lite/" target="_blank">Jetpack Lite <?php echo esc_html( JETPACK__VERSION ); ?></a> |
+					<a href="http://jetpack.me/" target="_blank">Jetpack <?php echo esc_html( JETPACK__VERSION ); ?></a> |
 					<a href="http://automattic.com/privacy/" target="_blank"><?php _e( 'Privacy Policy', 'jetpack' ); ?></a> |
 					<a href="http://wordpress.com/tos/" target="_blank"><?php _e( 'Terms of Service', 'jetpack' ); ?></a> |
 <?php if ( current_user_can( 'manage_options' ) ) : ?>
@@ -3814,6 +3817,29 @@ class Jetpack_Sync {
 		}
 
 		return $sync_data;
+	}
+
+	function taxonomy( $slug, $fields = true, $type ) {
+		if ( !get_term_by( 'slug', $slug, $type ) ) {
+			return false;
+		}
+
+		if ( 'post_tag' == $type )
+			return $this->register( 'tag', $slug, $fields );
+		else
+			return $this->register( 'category', $slug, $fields );
+	}
+
+	/**
+	 * Request that a post be deleted remotely
+	 *
+	 * @param int $id The post_ID
+	 */
+	function delete_taxonomy( $slugs, $type ) {
+		if ( 'post_tag' == $type )
+			return $this->register( 'delete_tag', 1, $slugs );
+		else
+			return $this->register( 'delete_category', 1, $slugs );
 	}
 
 	/**

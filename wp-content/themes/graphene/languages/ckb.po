@@ -495,12 +495,12 @@ msgstr ""
 "داواکراوە تەنها لەکاتێکدا کە وەسفێکی مینوی ڕێدۆزینەوە Navigation barت "
 "پێویستە و مینوی خۆچێکراو بەکارناهێنیت."
 
-#: admin/db-updater.php:237
+#: admin/db-updater.php:227
 #, php-format
 msgid "Follow %s on Twitter"
 msgstr "شوێنمان کەوە لە %s تویتەر"
 
-#: admin/db-updater.php:248
+#: admin/db-updater.php:238
 #, php-format
 msgid "Visit %s's Facebook page"
 msgstr "سەردانی پەرەی فەسبووک %s's بکە"
@@ -1248,6 +1248,11 @@ msgid "Submenu border"
 msgstr "سنووری بنەمینو"
 
 #: admin/options-defaults.php:83
+#, php-format
+msgid "Subscribe to %s's RSS feed"
+msgstr "بەشداری بکە لە %s's RSS دا  "
+
+#: admin/options-defaults.php:77
 #, php-format
 msgid "Subscribe to %s's RSS feed"
 msgstr "بەشداری بکە لە %s's RSS دا  "
@@ -3110,54 +3115,7 @@ msgstr "بارکردنی جریوەکان..."
 msgid "Follow %s"
 msgstr "شوێنكه‌وتنی %s"
 
-#: includes/theme-widgets.php:96
-msgid "Latest tweets"
-msgstr "دواترین جریوەکان"
-
-#: includes/theme-widgets.php:104
-msgid "Title:"
-msgstr "ناونیشان:"
-
-#: includes/theme-widgets.php:108
-msgid "Twitter Username:"
-msgstr "ناوی تویتەرەکەت:"
-
-#: includes/theme-widgets.php:112
-msgid "Number of tweets to display:"
-msgstr "ژمارەی جریوەی نیشاندراو"
-
-#: includes/theme-widgets.php:116
-msgid "Show followers count"
-msgstr "کۆی شوێنکەوتوان نیشان بدە"
-
-#: includes/theme-widgets.php:120
-msgid "Hide @replies"
-msgstr "شاردنەوەی @وەڵامەکان"
-
-#: includes/theme-widgets.php:122
-#, php-format
-msgid "Note: Selecting this sometimes result in showing less than %s tweets"
-msgstr ""
-"تێبینی: هەڵبژاردنی ئەمە هەندێک جار دەبێتە هۆی ئەوەی کە %s جریوە کەمتر "
-"نیشانبدات"
-
-#: includes/theme-widgets.php:125
-msgid "Open links in new window"
-msgstr "بەستەر لە پەنجەریەکی نوێدا بکەرەوە"
-
-#~ msgid "1 ping"
-#~ msgid_plural "%d pings"
-#~ msgstr[0] "١ پینگ"
-#~ msgstr[1] "%d پینگ"
-
-#~ msgid "Colours Options"
-#~ msgstr "ڕێکخستنەکانی ڕەنگ"
-
-#~ msgid "Archive title:"
-#~ msgstr "ناونیشانی ئەرشیف"
-
-#~ msgid "Add new Social Media Profile"
-#~ msgstr "زیادکردنی پڕۆفایلێكی نوێ ی تۆڕی کۆمەڵایەتی"
+=======
 
 #~ msgid ""
 #~ "<strong>ERROR: You must supply the post ID to get the image from as an "

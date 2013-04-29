@@ -1,7 +1,7 @@
 <?php
 /**
  * Convert a hex decimal color code to its RGB equivalent and vice versa
- */                                                                                                
+ */
 function graphene_rgb2hex( $c ){
    if ( ! $c ) return false;
    $c = trim( $c );
@@ -16,7 +16,7 @@ function graphene_rgb2hex( $c ){
          $out['green'] = hexdec(substr( $c, 1*$l,1*$l) );
          $out['blue'] = hexdec(substr( $c, 2*$l,1*$l) );
       }else $out = false;
-             
+
    }elseif (preg_match("/^[0-9]+(,| |.)+[0-9]+(,| |.)+[0-9]+$/i", $c) ){
       $spr = str_replace(array( ',',' ','.' ), ':', $c);
       $e = explode(":", $spr);
@@ -24,13 +24,13 @@ function graphene_rgb2hex( $c ){
          $out = '#';
          for( $i = 0; $i<3; $i++)
             $e[$i] = dechex( ( $e[$i] <= 0)?0:( ( $e[$i] >= 255)?255:$e[$i]) );
-             
+
          for( $i = 0; $i<3; $i++)
             $out .= ( (strlen( $e[$i]) < 2)?'0':'' ).$e[$i];
-                 
+
          $out = strtoupper( $out);
    }else $out = false;
-         
+
    return $out;
 }
 
@@ -45,7 +45,7 @@ function graphene_hex_addition( $hex, $num ){
 		$rgb[$key] = ( $rgb[$key] < 0) ? 0 : $rgb[$key];
 	}
 	$hex = graphene_rgb2hex( implode( ',', $rgb ) );
-	
+
 	return $hex;
 }
 
@@ -53,26 +53,26 @@ function graphene_hex_addition( $hex, $num ){
 /**
  * Gets all action hooks available in the Graphene theme.
  * @param boolean $hooksonly
- * @return array 
+ * @return array
  */
-function graphene_get_action_hooks( $hooksonly = false ) {    
+function graphene_get_action_hooks( $hooksonly = false ) {
 
 	if ( isset( $_GET['rescan_hooks'] ) && $_GET['rescan_hooks'] == 'true' ){
 		delete_transient( 'graphene-action-hooks-list' );
 		delete_transient( 'graphene-action-hooks' );
 	}
-	
+
 	// Get the cached action hooks list, if available
 	if ( $hooksonly )
 		$hooks = get_transient( 'graphene-action-hooks-list' );
 	else
 		$hooks = get_transient( 'graphene-action-hooks' );
-		
-	if ( $hooks ) 
+
+	if ( $hooks )
 		return $hooks;
 	else
 		$hooks = array();
-	
+
     // as all the hooks are defined in php files get a list of the themes php files
     $files = @glob( get_template_directory() . "/*.php" );
 	$files = array_merge( $files, @glob( get_template_directory() . "/includes/*.php" ) );
@@ -83,7 +83,7 @@ function graphene_get_action_hooks( $hooksonly = false ) {
             // read the file and scan it's contents for do_action();
             $content = file( $file );
 			$content = implode( '', $content );
-			
+
             if ($content !== false) {
                 if (preg_match_all("/do_action\([ ]*'(graphene_[^']*)'[ ]*\)/", $content, $matches) > 0) {
 					$matches = array_unique( $matches[1] );
@@ -93,17 +93,17 @@ function graphene_get_action_hooks( $hooksonly = false ) {
 						if ( stripos( $filename, 'theme-' ) === 0 ) { $filename = 'includes/' . $filename; }
 						$hooks[] = array( 'file' => $filename, 'hooks' => $matches );
 					}
-                }                                
+                }
             }
         }
     }
-	
+
 	// Cache the found action hooks as WordPress transients
 	if ( $hooksonly )
 		set_transient( 'graphene-action-hooks-list', $hooks, 60*60*24 );
 	else
 		set_transient( 'graphene-action-hooks', $hooks, 60*60*24 );
-		
+
     return $hooks;
 }
 
@@ -112,7 +112,7 @@ if ( ! function_exists( 'graphene_column_mode' ) ) :
 
 function graphene_column_mode( $post_id = NULL ){
     global $graphene_settings;
-    
+
     // Check the front-end template
 	if ( ! is_admin() && ! $post_id){
 		if ( is_page_template( 'template-onecolumn.php' ) )
@@ -128,16 +128,16 @@ function graphene_column_mode( $post_id = NULL ){
 		elseif ( is_page_template( 'template-threecolumnscenter.php' ) )
 			return 'three_col_center';
 	}
-		
+
 	/* Check the template in Edit Page screen in admin */
 	if ( is_admin() || $post_id ){
-		
+
 		if ( ! $post_id ){
 			$post_id = ( isset( $_GET['post'] ) ) ? $_GET['post'] : NULL;
 		}
-		
+
 		$page_template = get_post_meta( $post_id, '_wp_page_template', true );
-		
+
 		if ( $page_template != 'default' ){
 			if ( strpos( $page_template, 'template-onecolumn' ) === 0 )
 				return 'one_column';
@@ -147,13 +147,13 @@ function graphene_column_mode( $post_id = NULL ){
 				return 'three_col';
 		}
 	}
-    
+
 	// Return the settings for BBPress column mode if viewing a BBPress page
 	if ( class_exists( 'bbPress' ) && is_bbpress() )
 		return $graphene_settings['bbp_column_mode'];
-	
-	// Return the settings as defined in the theme options 
-    return $graphene_settings['column_mode']; 
+
+	// Return the settings as defined in the theme options
+    return $graphene_settings['column_mode'];
 }
 
 endif;
@@ -173,7 +173,7 @@ function disect_it( $var = NULL, $exit = true, $comment = false ){
 		if ( $comment ) {echo '-->';}
 		if ( $exit ) {exit();}
 	} else {
-		echo '<strong>ERROR:</strong> You must pass a variable as argument to the <code>disect_it()</code> function.';	
+		echo '<strong>ERROR:</strong> You must pass a variable as argument to the <code>disect_it()</code> function.';
 	}
 }
 endif;
@@ -190,13 +190,13 @@ function graphene_print_only_text( $text ){
 if ( ! function_exists( 'graphene_substr' ) ) :
 
 function graphene_substr( $string, $start = 0, $length = '', $suffix = '' ){
-	
+
 	if ( $length == '' ) return $string;
-	
+
 	if ( strlen( $string ) > $length ) {
 		$trunc_string = substr( $string, $start, $length ) . $suffix;
 	} else {
-		$trunc_string = $string;	
+		$trunc_string = $string;
 	}
 	return apply_filters( 'graphene_substr', $trunc_string, $string, $start, $length, $suffix );
 }
@@ -221,7 +221,7 @@ function graphene_truncate_words( $string, $word_count, $suffix = '...' ){
    $trunc_string = $string;
    if ( count ( $string_array ) > $word_count && $word_count > 0 )
       $trunc_string = implode( ' ', array_slice( $string_array, 0, $word_count ) ) . $suffix;
-	  
+
    return apply_filters( 'graphene_truncate_words', $trunc_string, $string, $word_count, $suffix );
 }
 
@@ -245,7 +245,7 @@ function graphene_is_wp_version( $is_ver = '' ) {
     $is_ver = explode( '.', $is_ver );
     for( $i=0; $i<=count( $is_ver ); $i++ )
         if( !isset( $wp_ver[$i] ) ) array_push( $wp_ver, 0 );
- 
+
     foreach( $is_ver as $i => $is_val )
         if( $wp_ver[$i] < $is_val ) return false;
     return true;

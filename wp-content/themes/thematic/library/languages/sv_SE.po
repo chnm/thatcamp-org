@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Thematic 1.0.3.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-03-05 17:46:41+0000\n"
+=======
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,16 +10,7 @@ msgstr ""
 "X-Generator: GlotPress/0.1\n"
 "Project-Id-Version: Thematic 1.0.3.x\n"
 
-#: library/extensions/content-extensions.php:916
-msgctxt "Default title for untitled posts"
-msgid "(Untitled)"
-msgstr "(Namnlös)"
-
-#: library/extensions/content-extensions.php:1667
-msgctxt "1s and 2s are the a href link wrappers, do not reverse them"
-msgid "Trackbacks are closed, but you can %1$spost a comment%2$s."
-msgstr "Trackbackar &auml;r avst&auml;ngda men du kan %1$sl&auml;mna en kommentar%2$s."
-
+=======
 #: archives.php:20 template-page-blog.php:22
 msgid "The template %s"
 msgstr "Temafilen %s"
@@ -44,48 +35,12 @@ msgstr "Detta inl&auml;gg &auml;r l&ouml;senordsskyddat. Skriv in l&ouml;senorde
 #: comments.php:111
 msgid "Trackbacks"
 msgstr "Trackbackar"
-
-#: comments.php:111
-msgctxt "%1$ and %2$s are <span> tags"
-msgid "%1$sOne%2$s Trackback"
-msgstr "%1$sEn%2$s Trackback"
-
-#: functions.php:194
-msgid "Primary Menu"
-msgstr "Prim&auml;r meny"
-
+=======
 #: library/extensions/comments-extensions.php:120
 msgctxt "One Comment, where %$1s and %$2s are <span> tags"
 msgid "%1$sOne%2$s Comment"
 msgstr "%1$sEn%2$s Kommentar"
-
-#: library/extensions/comments-extensions.php:131
-msgid "Comments"
-msgstr "Kommentarer"
-
-#: library/extensions/comments-extensions.php:155
-msgid "Post a Comment"
-msgstr "Skriv en kommentar"
-
-#: library/extensions/comments-extensions.php:167
-msgid "Post a Reply to %s"
-msgstr "Skriv ett svar till %s"
-
-#: library/extensions/comments-extensions.php:179
-msgctxt "noun"
-msgid "Comment"
-msgstr "Kommentar"
-
-#: library/extensions/comments-extensions.php:190
-msgid "Cancel reply"
-msgstr "Avbryt svar"
-
-#: library/extensions/comments-extensions.php:202
-msgid "Post Comment"
-msgstr "L&auml;mna kommentar"
-
-#: library/extensions/comments-extensions.php:228
-#: library/legacy/deprecated.php:365
+=======
 msgid "Name"
 msgstr "Namn"
 
@@ -96,17 +51,17 @@ msgid "*"
 msgstr "*"
 
 #: library/extensions/comments-extensions.php:229
-#: library/legacy/deprecated.php:370
+=======
 msgid "Email"
 msgstr "Epost"
 
 #: library/extensions/comments-extensions.php:230
-#: library/legacy/deprecated.php:375
+=======
 msgid "Website"
 msgstr "Website"
 
 #: library/extensions/comments-extensions.php:238
-#: library/legacy/deprecated.php:362
+=======
 msgctxt "%$1s and %$2s are <em> tags for emphasis on never"
 msgid "Your email is %1$snever%2$s published nor shared."
 msgstr "Din epostadress publiceras eller delas %1$saldrig%2$s."
@@ -117,36 +72,12 @@ msgid "Required fields are marked %1$s*%2$s"
 msgstr "Obligatoriska fält är markerade med %1$s*%2$s"
 
 #: library/extensions/comments-extensions.php:240
-#: library/legacy/deprecated.php:344
+=======
 msgid "You must be %1$slogged in%2$s to post a comment."
 msgstr "Du måste vara %1$sinloggad%2$s för att kommentera."
 
 #: library/extensions/comments-extensions.php:240
-#: library/legacy/deprecated.php:344
-msgid "Log in"
-msgstr "Logga in"
-
-#: library/extensions/comments-extensions.php:242
-#: library/legacy/deprecated.php:357
-msgid "Logged in as %s"
-msgstr "Inloggad som %s"
-
-#: library/extensions/comments-extensions.php:242
-#: library/legacy/deprecated.php:357
-msgid "Log out of this account"
-msgstr "Logga ut från det här användarkontot"
-
-#: library/extensions/comments-extensions.php:242
-#: library/legacy/deprecated.php:357
-msgid "Log out?"
-msgstr "Logga ut?"
-
-#: library/extensions/comments-extensions.php:244
-#: library/legacy/deprecated.php:387
-msgctxt "%$1s and %$2s are <abbr> tags"
-msgid "You may use these %1$sHTML%2$s tags and attributes"
-msgstr "Du kan använda dessa %1$sHTML%2$s taggar och attribut"
-
+=======
 #: library/extensions/content-extensions.php:334
 msgid "Author Archives:"
 msgstr "Författararkiv:"
@@ -184,174 +115,42 @@ msgid "Yearly Archives: %s"
 msgstr "Arkiv (&aring;rligen): %s"
 
 #: library/extensions/content-extensions.php:424
-#: library/extensions/content-extensions.php:1710
+=======
 msgid "Older posts"
 msgstr "Äldre inlägg"
 
 #: library/extensions/content-extensions.php:426
-#: library/extensions/content-extensions.php:1712
+=======
 msgid "Newer posts"
 msgstr "Nyare inlägg"
 
 #: library/extensions/content-extensions.php:888
-#: library/extensions/content-extensions.php:1422
+=======
 msgid "Edit post"
 msgstr "Redigera inl&auml;gg"
 
 #: library/extensions/content-extensions.php:890
-#: library/extensions/content-extensions.php:1424
-#: library/extensions/discussion-extensions.php:37
-#: library/extensions/discussion.php:84 links.php:52 page.php:52
+=======
 #: template-page-archives.php:55 template-page-fullwidth.php:53
 msgid "Edit"
 msgstr "Redigera"
 
-#: library/extensions/content-extensions.php:921
+=======
 #: library/extensions/header-extensions.php:111
 msgid "Not Found"
 msgstr "Inte hittat"
 
-#: library/extensions/content-extensions.php:926
-#: library/extensions/content-extensions.php:1145
-#: library/extensions/content-extensions.php:1149
-#: library/extensions/content-extensions.php:1380
-msgid "Permalink to %s"
-msgstr "Permalänk till %s"
-
-#: library/extensions/content-extensions.php:987
-msgid "By"
-msgstr "Av"
-
-#: library/extensions/content-extensions.php:998
-msgid "View all posts by %s"
-msgstr "Se alla inl&auml;gg av %s"
-
-#: library/extensions/content-extensions.php:1027
-msgid "Published:"
-msgstr "Publicerad:"
-
-#: library/extensions/content-extensions.php:1203
-msgid "Archives by Category"
-msgstr "Arkiv per kategori"
-
-#: library/extensions/content-extensions.php:1234
-msgid "Archives by Month"
-msgstr "Arkiv per m&aring;nad"
-
-#: library/extensions/content-extensions.php:1295
-msgid "Apologies, but we were unable to find what you were looking for. Perhaps searching will help."
-msgstr "Beklagar, men vi kunde inte hitta det du letar efter. Det kanske hjälper att söka."
-
-#: library/extensions/content-extensions.php:1301 search.php:70
-msgid "Find"
-msgstr "S&ouml;k"
-
-#: library/extensions/content-extensions.php:1320
-msgid "Read More %s"
-msgstr "L&auml;s mer %s"
-
-#: library/extensions/content-extensions.php:1372
-msgid "Browse the %s archive."
-msgstr "Bl&auml;ddra i %s-arkivet."
-
-#: library/extensions/content-extensions.php:1374
-msgid "Permalink to %s Archive"
-msgstr "Permal&auml;nk till %s-arkivet."
-
-#: library/extensions/content-extensions.php:1380
-msgctxt "1s and 2s are the a href link wrappers, do not reverse them"
-msgid "Bookmark the %1$spermalink%2$s."
-msgstr "Bokm&auml;rk  %1$spermal&auml;nken%2$s."
-
-#: library/extensions/content-extensions.php:1538
-msgid "This entry was posted in %s"
-msgstr "Detta inl&auml;gg &auml;r publicerat i %s"
-
-#: library/extensions/content-extensions.php:1549
-msgid "Also posted in %s"
-msgstr "Ocks&aring; publicerat i %s"
-
-#: library/extensions/content-extensions.php:1553
-msgid "Posted in %s"
-msgstr "Publicerat i %s"
-
-#: library/extensions/content-extensions.php:1579
-msgid "This entry is tagged"
-msgstr "Det här inlägget är taggat"
-
-#: library/extensions/content-extensions.php:1582
-msgid "and tagged"
-msgstr "och taggat"
-
-#: library/extensions/content-extensions.php:1585
-msgid "Also tagged"
-msgstr "Ocks&aring; taggat"
-
-#: library/extensions/content-extensions.php:1587
-msgid "Tagged"
-msgstr "Taggat"
-
-#: library/extensions/content-extensions.php:1617
-#: library/extensions/content-extensions.php:1623
-msgid "Comment on %s"
-msgstr "Kommentera %s"
-
-#: library/extensions/content-extensions.php:1619
-msgid "%s Response"
-msgid_plural "%s Responses"
-msgstr[0] "%s Respons"
-msgstr[1] "%s Responser"
-
-#: library/extensions/content-extensions.php:1624
-msgid "Leave a comment"
-msgstr "L&auml;mna en kommentar"
-
-#: library/extensions/content-extensions.php:1627
-msgid "Comments closed"
-msgstr "St&auml;ngt f&ouml;r kommentarer"
-
-#: library/extensions/content-extensions.php:1651
+=======
 msgctxt "1s and 2s are the a href link wrappers, do not reverse them. 3s is trackback url."
 msgid "%1$sPost a comment%2$s or leave a trackback: %3$s"
 msgstr "%1$sL&auml;mna en kommentar%2$s eller en trackback: %3$s"
 
-#: library/extensions/content-extensions.php:1652
-#: library/extensions/content-extensions.php:1667
-msgid "Post a comment"
-msgstr "Skriv en kommentar"
-
-#: library/extensions/content-extensions.php:1656
-#: library/extensions/content-extensions.php:1663
-msgid "Trackback URL for your post"
-msgstr "Trackback URL f&ouml;r ditt inl&auml;gg"
-
-#: library/extensions/content-extensions.php:1657
-#: library/extensions/content-extensions.php:1664
-msgid "Trackback URL"
-msgstr "Trackback URL"
-
-#: library/extensions/content-extensions.php:1660
+=======
 msgctxt "%s is trackback url, wrapped in link tags"
 msgid "Comments are closed, but you can leave a trackback: %s"
 msgstr "Kommentarer är avst&auml;ngda, men du kan l&auml;mna en trackback: %s"
 
-#: library/extensions/content-extensions.php:1669
-msgid "Both comments and trackbacks are currently closed."
-msgstr "B&aring;de kommentarer och trackbackar &auml;r avst&auml;ngda."
-
-#: library/extensions/discussion-extensions.php:27
-msgctxt "Posted {$date} at {$time}"
-msgid "Posted %s at %s"
-msgstr "Publicerad %s kl %s"
-
-#: library/extensions/discussion-extensions.php:31
-msgid "Permalink to this comment"
-msgstr "Permalänk till den här kommentaren"
-
-#: library/extensions/discussion-extensions.php:31
-msgid "Permalink"
-msgstr "Permal&auml;nk"
-
+=======
 #: library/extensions/discussion-extensions.php:36
 msgid "Edit comment"
 msgstr "Redigera kommentar"
@@ -387,11 +186,7 @@ msgstr "RSS-fl&ouml;de (inl&auml;gg)"
 msgid "Comments RSS feed"
 msgstr "RSS-fl&ouml;de (kommentarer)"
 
-#: library/extensions/header-extensions.php:667
-msgid "Skip navigation to the content"
-msgstr "Skippa navigation, vidare till inneh&aring;ll"
-
-#: library/extensions/header-extensions.php:667
+=======
 msgid "Skip to content"
 msgstr "Vidare till inneh&aring;ll"
 
@@ -453,31 +248,27 @@ msgctxt "%1$s and %2$s are <a> tags"
 msgid "Please visit the %1$sThematicTheme.com Forums%2$s if you have any questions about Thematic."
 msgstr "Om du har n&aring;gra fr&aring;gor om Thematic, bes&ouml;k %1$sforumen på ThematicTheme.com%2$s."
 
-#: library/extensions/theme-options.php:267
+=======
 msgctxt "{$current theme} Theme Options"
 msgid "%s Theme Options"
 msgstr "%s temainställningar"
 
-#: library/extensions/theme-options.php:305
-msgid "The Index Insert widget area will appear after this post number. Entering nothing or 0 will disable this feature."
-msgstr "Widgetf&auml;ltet f&ouml;r Index Insert kommer att s&auml;ttas in efter s&aring; h&auml;r m&aring;nga inl&auml;gg. Om du l&auml;mnar f&auml;ltet tomt eller skriver 0 avaktiveras widgetf&auml;ltet."
-
-#: library/extensions/theme-options.php:318
+=======
 msgctxt "%1$s and %2$s are <a> tags"
 msgid "Display a %1$smicroformatted vCard%2$s with the author's avatar, bio and email on the author page."
 msgstr "Visa ett %1$smicroformatterat vCard%2$s med författarens avatar, biografi och epost på författararkivet."
 
-#: library/extensions/theme-options.php:331
+=======
 msgctxt "%s are shortcode tags"
 msgid "You can use HTML and shortcodes in your footer text. Shortcode examples: %s"
 msgstr "Du kan använda HTML och kortkoder i din sidfotstext. Exempel på kortkoder: %s"
 
-#: library/extensions/theme-options.php:355
+=======
 msgctxt "{$current theme} Theme Options"
 msgid "%s Theme Options have been upgraded to an improved format. Remove the legacy options from the database."
 msgstr "%s temainst&auml;llningar har uppgraderats till ett f&ouml;rb&auml;ttrat format. Ta bort de f&ouml;r&aring;ldrade inst&auml;llningarna från databasen."
 
-#: library/extensions/theme-options.php:382
+=======
 msgid "The index insert position value must be a number equal to or greater than zero. This setting has been reverted to the previous value."
 msgstr "V&auml;rdet p&aring; index insert-inst&auml;llningen m&aring;ste vara en siffra som &auml;r st&ouml;rre &auml;n eller lika med noll. Denna inst&auml;llning har &aring;terst&auml;llts till det f&ouml;reg&aring;ende v&auml;rdet."
 
@@ -627,44 +418,7 @@ msgstr "Alla inl&auml;gg"
 msgid "All comments"
 msgstr "Alla kommentarer"
 
-#: library/legacy/deprecated.php:357
-msgid "Logged in as"
-msgstr "Inloggad som"
-
-#: library/legacy/deprecated.php:365 library/legacy/deprecated.php:370
-msgid "<span class=\"required\">*</span>"
-msgstr "<span class=\"required\">*</span>"
-
-#: page.php:50 template-page-fullwidth.php:51
-msgid "Pages: "
-msgstr "Sidor:"
-
-#: search.php:56
-msgid "Nothing Found"
-msgstr "Inga tr&auml;ffar"
-
-#: search.php:60
-msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
-msgstr "Tyv&auml;rr, men ingenting matchar ditt s&ouml;kkriterie. F&ouml;rs&ouml;k med en annan s&ouml;kstr&auml;ng."
-
-#: template-page-blog.php:22
-msgid "You can include a %s in a childtheme"
-msgstr "Du kan inkludera en %s-fil i ett barntema."
-
-msgid "Thematic"
-msgstr "Thematic"
-
-msgid "http://thematictheme.com"
-msgstr "http://thematictheme.com"
-
-msgid "The ultimate in SEO-ready themes, Thematic is a highly extensible, WordPress Theme Framework featuring 13 widget-ready areas, drop-down menus, grid-based layout samples, plugin integration, shortcodes for your footer, &amp; a whole lot more. Perfect for any blog and <strong><em>the</em></strong> starting point for theme development."
-msgstr "Thematic, det ultimata SEO-färdiga temat, är ett mycket flexibelt ramverkstema för WordPress med 13 widgetfält, rullgardinsmenyer, grid-baserade exempellayouter, inbyggd stöd för flera populära tillägg, kortkoder för sidfoten &amp; mer. Perfekt för vilken blogg som helst och <strong><em>särskilt</em></strong> som utgångspunkt för temautveckling."
-
-msgid "<a href=\"http://themeshaper.com/\">Ian Stewart</a> &amp; <a href=\"http://thematic4you.com/\">Chris Go&szlig;mann</a>"
-msgstr "<a href=\"http://themeshaper.com/\">Ian Stewart</a> &amp; <a href=\"http://thematic4you.com/\">Chris Go&szlig;mann</a>"
-
-msgid "http://themeshaper.com/"
-msgstr "http://themeshaper.com/"
+=======
 
 msgid "Deprecated Archives Template"
 msgstr "Avrådd sidmall för Arkiv (Deprecated)"

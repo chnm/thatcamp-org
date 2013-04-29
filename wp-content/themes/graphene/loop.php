@@ -161,7 +161,7 @@ if ( function_exists( 'get_post_format' ) && $post_type->name != 'page' ) {
 			<p class="comment-link">
 				<?php 
 				$comments_num = get_comments_number();
-				comments_popup_link( __( 'Leave comment', 'graphene' ), __( '1 comment', 'graphene' ), sprintf( _n( '%d comment', "%d comments", $comments_num, 'graphene' ), $comments_num ), 'comments-link' ); 
+=======
 				?>
             </p>
             <?php endif; ?>

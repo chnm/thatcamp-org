@@ -779,6 +779,13 @@ p.jp-help {
 		    }
 		}
 
+		@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+		    .placeholder h3  {
+		    	background: transparent url(images/icon-comingsoon-2x.png) top center no-repeat;
+		    	background-size:32px 32px;
+		    }
+		}
+
 #jp-settings-screen {
 	margin: 0 25px;
 }

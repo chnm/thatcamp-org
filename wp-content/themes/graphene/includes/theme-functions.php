@@ -5,7 +5,7 @@
 if ( ! function_exists( 'graphene_get_header_image' ) ) :
 	function graphene_get_header_image( $post_id = NULL ){
 		global $graphene_settings;
-		
+
 		if ( is_singular() && has_post_thumbnail( $post_id ) && ( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'post-thumbnail' ) ) &&  $image[1] >= HEADER_IMAGE_WIDTH && ! $graphene_settings['featured_img_header'] ) {
 			// Houston, we have a new header image!
 			$header_img = $image[0]; // only the url
@@ -27,12 +27,12 @@ endif;
  * are added by filtering the WordPress body_class() function.
 */
 function graphene_body_class( $classes ){
-    
+
 	global $graphene_settings;
-	
+
 	if ( $graphene_settings['slider_full_width'] ) $classes[] = 'full-width-slider';
 	if ( $graphene_settings['slider_position'] ) $classes[] = 'bottom-slider';
-	
+
     $column_mode = graphene_column_mode();
     $classes[] = $column_mode;
     // for easier CSS
@@ -41,9 +41,9 @@ function graphene_body_class( $classes ){
     } else if ( strpos( $column_mode, 'three_col' ) === 0 ){
         $classes[] = 'three-columns';
     }
-	
+
 	if ( has_nav_menu( 'secondary-menu' ) ) $classes[] = 'have-secondary-menu';
-    
+
     // Prints the body class
     return $classes;
 }
@@ -51,12 +51,12 @@ add_filter( 'body_class', 'graphene_body_class' );
 
 
 /**
- * Add the .sticky post class to sticky posts in the home page if the "Front page posts 
+ * Add the .sticky post class to sticky posts in the home page if the "Front page posts
  * categories" option is being used
 */
 function graphene_sticky_post_class( $classes ){
 	if ( is_sticky() && ! in_array( 'sticky', $classes ) && is_home() ){
-		$classes[] = 'sticky';	
+		$classes[] = 'sticky';
 	}
 	return $classes;
 }
@@ -72,17 +72,17 @@ function graphene_top_bar_social(){
     /* Loop through the registered custom social modia */
     $social_profiles = $graphene_settings['social_profiles'];
 	if ( in_array( false, $social_profiles) ) return;
-	
+
 	$count = 1;
-    foreach ( $social_profiles as $social_key => $social_profile ) : 
-        if ( ! empty( $social_profile['url'] ) || $social_profile['type'] == 'rss' ) : 
+    foreach ( $social_profiles as $social_key => $social_profile ) :
+        if ( ! empty( $social_profile['url'] ) || $social_profile['type'] == 'rss' ) :
             $title = graphene_determine_social_medium_title( $social_profile );
             $class = 'mysocial social-' . $social_profile['type'];
 			$id = 'social-id-' . $count;
-            
+
 			$extra = $graphene_settings['social_media_new_window'] ?  ' target="_blank"' : '';
 			$extra = apply_filters( 'graphene_social_media_attr', $extra, $title, $class, $id );
-			
+
             $url = ( $social_profile['type'] == 'rss' && empty( $social_profile['url'] ) ) ? get_bloginfo('rss2_url') : $social_profile['url'];
             if ( $social_profile['type'] == 'custom' ) {
 				$icon_url = $social_profile['icon_url'];
@@ -103,7 +103,7 @@ add_action( 'graphene_social_profiles', 'graphene_top_bar_social' );
 
  * Determine the title for the social medium.
  * @param array $social_medium
- * @return string 
+ * @return string
  */
 function graphene_determine_social_medium_title( $social_medium ) {
     if ( isset( $social_medium['title'] ) && ! empty( $social_medium['title']) ) {
@@ -130,27 +130,27 @@ function graphene_determine_social_medium_title( $social_medium ) {
 function graphene_grid_width( $mod = '', $grid_one = 1, $grid_two = '', $grid_three = '', $post_id = NULL ){
 	$grid_two = ( ! $grid_two ) ? $grid_one : $grid_two ;
 	$grid_three = ( ! $grid_three ) ? $grid_one : $grid_three ;
-	
+
 	global $graphene_settings;
 	$grid_width = $graphene_settings['grid_width'];
 	$gutter_width = $graphene_settings['gutter_width'] * 2;
 	$column_mode = graphene_column_mode( $post_id );
-	
+
 	$width = $grid_width;
-	
+
 	if ( strpos( $column_mode, 'one_col' ) === 0 )
 		$width = $grid_width * $grid_one + $gutter_width * ($grid_one - 1);
 	if ( strpos( $column_mode, 'two_col' ) === 0 )
 		$width = $grid_width * $grid_two + $gutter_width * ($grid_two - 1);
 	if ( strpos( $column_mode, 'three_col' ) === 0 )
 		$width = $grid_width * $grid_three + $gutter_width * ($grid_three - 1);
-		
+
 	if ( $mod )
 		$width += $mod;
-		
+
 	if ( $width < 0 )
 		$width = 0;
-		
+
 	return apply_filters( 'graphene_grid_width', $width, $mod, $grid_one, $grid_two, $grid_three );
 }
 
@@ -170,24 +170,24 @@ function graphene_grid_width( $mod = '', $grid_one = 1, $grid_two = '', $grid_th
  * @since 1.6
 */
 function graphene_get_grid( $classes = '', $grid_one = 1, $grid_two = '', $grid_three = '', $alpha = false, $omega = false ){
-	
+
 	$grid_two = ( ! $grid_two ) ? $grid_one : $grid_two ;
 	$grid_three = ( ! $grid_three ) ? $grid_one : $grid_three ;
-	
+
 	$column_mode = graphene_column_mode();
-	
+
 	$grid = array();
-	
+
 	if ( $classes )
 		$grid = array_merge( $grid, explode( ' ', trim( $classes ) ) );
-	
+
 	if ( strpos( $column_mode, 'one_col' ) === 0 )
 		$grid[] = 'grid_' . $grid_one;
 	if ( strpos( $column_mode, 'two_col' ) === 0 )
 		$grid[] = 'grid_' . $grid_two;
 	if ( strpos( $column_mode, 'three_col' ) === 0 )
 		$grid[] = 'grid_' . $grid_three;
-	
+
 	if ( $alpha ){
 		if ( is_rtl() )
 			$grid[] = 'alpha-rtl';
@@ -195,12 +195,12 @@ function graphene_get_grid( $classes = '', $grid_one = 1, $grid_two = '', $grid_
 			$grid[] = 'alpha';
 	}
 	if ( $omega ){
-		if ( is_rtl() )		
+		if ( is_rtl() )
 			$grid[] = 'omega-rtl';
 		else
 			$grid[] = 'omega';
 	}
-		
+
 	return apply_filters( 'graphene_grid', $grid, $classes, $grid_one, $grid_two, $grid_three, $alpha, $omega );
 }
 
@@ -218,7 +218,7 @@ function graphene_get_grid( $classes = '', $grid_one = 1, $grid_two = '', $grid_
  * @since 1.6
 */
 function graphene_grid( $classes = '', $grid_one = 1, $grid_two = '', $grid_three = '', $alpha = false, $omega = false ){
-	// Separates classes with a single space	
+	// Separates classes with a single space
 	echo 'class="' . implode( ' ', graphene_get_grid( $classes, $grid_one, $grid_two, $grid_three, $alpha, $omega ) ) . '"';
 }
 
@@ -239,13 +239,13 @@ if ( ! function_exists( 'graphene_get_avatar_uri' ) ) :
  * @since 1.6
 */
 function graphene_get_avatar_uri( $id_or_email, $size = '96', $default = '', $alt = false ) {
-	
+
 	// Silently fails if < PHP 5
 	if ( ! function_exists( 'simplexml_load_string' ) ) return;
-	
+
 	$avatar = get_avatar( $id_or_email, $size, $default, $alt );
 	if ( ! $avatar ) return false;
-	
+
 	$avatar_xml = simplexml_load_string( $avatar );
 	$attr = $avatar_xml->attributes();
 	$src = $attr['src'];
@@ -257,10 +257,10 @@ endif;
 
 function graphene_feed_link($output, $feed) {
     global $graphene_settings;
-    
-    if ( ( $feed == 'rss2' || $feed == 'rss' ) 
+
+    if ( ( $feed == 'rss2' || $feed == 'rss' )
             && $graphene_settings['use_custom_rss_feed'] && ! empty( $graphene_settings['custom_rss_feed_url'] ) ) {
-        $output = $graphene_settings['custom_rss_feed_url'];    
+        $output = $graphene_settings['custom_rss_feed_url'];
     }
     return $output;
 }

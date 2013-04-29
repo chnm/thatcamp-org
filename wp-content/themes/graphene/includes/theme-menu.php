@@ -5,45 +5,45 @@
 class Graphene_Description_Walker extends Walker_Nav_Menu {
 	function start_el( &$output, $item, $depth, $args ) {
 		global $wp_query;
-		
+
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-		
+
 		$class_names = $value = '';
-		
+
 		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-		
+
 		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
 		$class_names = ' class="'. esc_attr( $class_names ) . '"';
-		
+
 		$output .= $indent . '<li id="menu-item-'. $item->ID . '"' . $value . $class_names .'>';
-		
+
 		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
 		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-		
+
 		$prepend = '<strong>';
 		$append = '</strong>';
-		
+
 		// Don't show description if it's longer than the length
 		$desc_length = apply_filters( 'graphene_menu_desc_length', 50 );
-		
+
 		if ( strlen( $item->description ) > $desc_length)
 			$description = '';
 		else
 			$description  = ! empty( $item->description ) ? '<span>'.esc_attr( $item->description ).'</span>' : '';
-		
+
 		if ( $depth != 0 )	{
 				 $description = $append = $prepend = "";
 		}
-		
+
 		$item_output = $args->before;
 		$item_output .= '<a'. $attributes .'>';
 		$item_output .= $args->link_before .$prepend.apply_filters( 'the_title', $item->title, $item->ID ).$append;
 		$item_output .= $description.$args->link_after;
 		$item_output .= '</a>';
 		$item_output .= $args->after;
-		
+
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
 }
@@ -57,7 +57,7 @@ class Graphene_Description_Walker extends Walker_Nav_Menu {
 if ( ! function_exists( 'graphene_default_menu' ) ) :
 
 	function graphene_default_menu(){ global $graphene_settings; ?>
-    
+
 		<ul id="header-menu" class="<?php echo graphene_get_menu_class('menu clearfix default-menu'); ?>">
             <?php if (get_option( 'show_on_front' ) == 'posts' ) : ?>
             <li <?php if ( is_single() || is_front_page() ) { echo 'class="current_page_item current-menu-item"'; } ?>>
@@ -69,12 +69,12 @@ if ( ! function_exists( 'graphene_default_menu' ) ) :
                 </a>
             </li>
             <?php endif; ?>
-            <?php 
-			$args = array( 
+            <?php
+			$args = array(
 						'echo' 			=> 1,
 						'depth' 		=> 5,
 						'title_li' 		=> '',
-						'walker' 		=> new Graphene_Walker_Page() 
+						'walker' 		=> new Graphene_Walker_Page()
 					);
 			add_filter( 'page_css_class', 'graphene_page_ancestor_class', 10, 4 );
 			wp_list_pages( apply_filters( 'graphene_default_menu_args', $args ) );
@@ -83,19 +83,19 @@ if ( ! function_exists( 'graphene_default_menu' ) ) :
         </ul>
 <?php
 	do_action( 'graphene_default_menu' );
-	} 
-	
+	}
+
 endif;
 
 class Graphene_Walker_Page extends Walker_Page {
-    
+
     /**
-     * Code exact copied from: wp-includes\post-template.php >> Walker_Page::start_el() 
+     * Code exact copied from: wp-includes\post-template.php >> Walker_Page::start_el()
      * @since 2.1.0
      */
 	function start_el( &$output, $page, $depth, $args, $current_page = 0 ) {
 		global $graphene_settings;
-		
+
 		if ( $depth )
 			$indent = str_repeat("\t", $depth);
 		else
@@ -116,9 +116,9 @@ class Graphene_Walker_Page extends Walker_Page {
 		}
 
 		$css_class = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
-		
+
 		$title = apply_filters( 'the_title', $page->post_title, $page->ID );
-		
+
 		if ( ! $depth && ! $graphene_settings['disable_menu_desc'] ){
 			$title = '<strong>' . $title . '</strong>';
 			$nav_desc = graphene_get_post_meta( $page->ID, 'nav_description' );
@@ -135,7 +135,7 @@ class Graphene_Walker_Page extends Walker_Page {
 
 			$output .= " " . mysql2date($date_format, $time);
 		}
-		
+
 		$output = apply_filters( 'graphene_page_description_walker_output', $output, $page, $depth, $args, $current_page );
 	}
 }
@@ -154,7 +154,7 @@ function graphene_menu_item_ancestor( $items ) {
             $item->classes[] = 'menu-item-ancestor';
         }
     }
-    return $items;    
+    return $items;
 }
 add_filter( 'wp_nav_menu_objects', 'graphene_menu_item_ancestor' );
 
@@ -184,11 +184,11 @@ function graphene_menu_has_sub( $menu_item_id, &$items ) {
 function graphene_page_ancestor_class( $css_class, $page, $depth, $args ) {
     if ( ! empty( $args['has_children'] ) )
         $css_class[] = 'menu-item-ancestor';
-	
+
 	if ( array_search( 'current_page_ancestor', $css_class ) ) $css_class[] = 'current-menu-ancestor';
 	if ( array_search( 'current_page_parent', $css_class ) ) $css_class[] = 'current-menu-ancestor';
 	if ( array_search( 'current_page_item', $css_class ) ) $css_class[] = 'current-menu-item';
-	
+
     return $css_class;
 }
 add_filter( 'page_css_class', 'graphene_page_ancestor_class', 10, 4 );
@@ -199,11 +199,11 @@ add_filter( 'page_css_class', 'graphene_page_ancestor_class', 10, 4 );
  */
 function graphene_get_menu_class( $menu_class ){
     global $graphene_settings;
-    
+
     // if the search box is located in the navigation bar restrict the width of the menu to 12 grid columns
     if ( ( $search_box_location = $graphene_settings['search_box_location']) && $search_box_location == 'nav_bar' ){
         $menu_class .= ' grid_12';
     }
-    
+
     return apply_filters( 'graphene_menu_class', $menu_class );
 }
