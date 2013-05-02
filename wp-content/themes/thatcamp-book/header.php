@@ -22,10 +22,6 @@
 <body <?php body_class() ?> id="bookcamp">
 	<div id="site-gap">
 	<div id="site-wrapper">
-		<header id="branding">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-		</header>
 		
 				<nav id="show-menu"><i class="icon-reorder"></i></nav>
 				<div id="responsive-menu">
