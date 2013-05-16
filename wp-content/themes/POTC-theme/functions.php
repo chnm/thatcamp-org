@@ -61,7 +61,7 @@ wp_enqueue_script('jquery.cookie', get_template_directory_uri() . '/javascripts/
 wp_enqueue_script('jquery.hoverIntent.minified', get_template_directory_uri('jquery') . '/javascripts/jquery.hoverIntent.minified.js',array(),'1.0',true);
 wp_enqueue_script('jquery.dcjqaccordion.2.7.min', get_template_directory_uri('jquery') . '/javascripts/jquery.dcjqaccordion.2.7.min.js',array(),'1.0',true);
 
-function thatcamp_next_posts_link( $link_text, $max_pages ) {
+function thatcamp_older_posts_link( $link_text, $max_pages ) {
         $paged = thatcamp_get_paged();
 
         if ( $paged >= $max_pages ) {
@@ -78,14 +78,41 @@ function thatcamp_next_posts_link( $link_text, $max_pages ) {
         echo '<a href="' . $url . '">' . $link_text . '</a>';
 }
 
+function thatcamp_newer_posts_link( $link_text, $max_pages ) {
+        $paged = thatcamp_get_paged();
+
+        if ( 1 === $paged ) {
+                return;
+        }
+
+        $p = $paged - 1;
+        if ( false !== strpos( wp_guess_url(), '/page/' ) ) {
+                $url = preg_replace( '|/page/[0-9]+/|', '/page/' . $p . '/', wp_guess_url() );
+        } else {
+                $url = add_query_arg( 'paged', $p, wp_guess_url() );
+        }
+
+        echo '<a href="' . $url . '">' . $link_text . '</a>';
+}
+
 function thatcamp_get_paged() {
         global $paged;
 
-        if ( ! $paged ) {
-                $paged = 1;
-        }
+	$the_paged = null;
 
-        return $paged;
+	if ( isset( $_GET['paged'] ) ) {
+		$the_paged = intval( $_GET['paged'] );
+	}
+
+	if ( ! $the_paged ) {
+		if ( ! $paged ) {
+			$the_paged = 1;
+		} else {
+			$the_paged = $paged;
+		}
+	}
+
+        return $the_paged;
 }
 
 

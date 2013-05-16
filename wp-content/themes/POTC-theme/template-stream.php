@@ -85,11 +85,10 @@
 
 		<?php restore_current_blog() ?>
 
-		<div class="nav-previous"><?php thatcamp_next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'thatcamp' ), $stream_query->max_num_pages ); ?></div>
-
-		<?php if ( get_previous_posts_link() ) : ?>
-		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'thatcamp' ) ); ?></div>
-		<?php endif; ?>
+		<div class="nav-on">
+			<div class="nav-older"><?php thatcamp_older_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'thatcamp' ), $stream_query->max_num_pages ); ?></div>
+			<div class="nav-newer"><?php thatcamp_newer_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'thatcamp' ), $stream_query->max_num_pages ); ?></div>
+		</div>
 
 
 	</div>

@@ -485,6 +485,16 @@ footer {
     text-align: center;
     }
 
+.nav-on > div {
+	width: 50%;
+	float: left;
+	padding-bottom: 2em;
+}
+
+.nav-newer {
+	text-align: right;
+}
+
 
 /* Comment form
 ===========================*/
