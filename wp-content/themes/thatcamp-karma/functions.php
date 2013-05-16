@@ -290,7 +290,7 @@ function thatcamp_search_querystring( $qs ) {
 	global $bp, $wpdb;
 
 	if ( bp_is_members_component() && ! empty( $_GET['msearch'] ) ) {
-		$search_terms = like_escape( urldecode( $_GET['msearch'] ) );
+		$search_terms = esc_sql( like_escape( urldecode( $_GET['msearch'] ) ) );
 
 		// Find a list of matching members to pass to the 'includes' param
 		// Search against: user_nicename as well as the thatcamp profile fields
@@ -303,7 +303,7 @@ function thatcamp_search_querystring( $qs ) {
 		}
 
 		// Two separate searches, because, hey, why not
-		$user_nicename_matches = $wpdb->get_col( "SELECT ID FROM $wpdb->users WHERE user_nicename LIKE '%" . $search_terms . "%'" );
+		$user_nicename_matches = $wpdb->get_col( "SELECT ID FROM $wpdb->users WHERE user_nicename LIKE '%" . $search_terms . "%' OR display_name LIKE '%" . $search_terms . "%'" );
 		$user_meta_matches     = $wpdb->get_col( "SELECT DISTINCT user_id FROM $wpdb->usermeta WHERE meta_key IN (" . implode( ',', $tc_fields_keys ) . ") AND meta_value LIKE '%" . $search_terms . "%'" );
 
 		// Merge and sanitize
