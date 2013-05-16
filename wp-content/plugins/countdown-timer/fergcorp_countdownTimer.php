@@ -77,7 +77,7 @@ class Fergcorp_Countdown_Timer{
 	 * @author Andrew Ferguson
 	 */
 	public function loadSettings(){
-
+return;
 		$this->version = get_option("fergcorp_countdownTimer_version");
 		$this->deleteOneTimeEvents = get_option("fergcorp_countdownTimer_deleteOneTimeEvents");
 		$this->timeFormat = get_option("fergcorp_countdownTimer_timeFormat");
@@ -143,7 +143,7 @@ class Fergcorp_Countdown_Timer{
 
 		$plugin = plugin_basename(__FILE__);
 		add_filter("plugin_action_links_$plugin", array( &$this, 'settings_link' ) );
-		
+
 		$tz = get_option('timezone_string');
 		if ( $tz ){ //Get and check if we have a valid time zone...
 			date_default_timezone_set($tz); //...if so, use it
@@ -1003,7 +1003,7 @@ class Fergcorp_Countdown_Timer{
 					    }else{
 					        return 1;
 					    }
-					} 
+					}
 
 	/**
 	 * Sanitize the callback
