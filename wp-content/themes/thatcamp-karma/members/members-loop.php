@@ -15,7 +15,7 @@
 
 <?php if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
 
-	<div id="pag-top" class="pagination">
+	<div id="pag-top" class="pagination no-ajax">
 
 		<h3><?php _e( 'People', 'thatcamp' ); ?></h3>
 
