@@ -516,7 +516,9 @@ add_action( 'bp_actions', 'thatcamp_mod_user_nav', 1 );
  * Get the a_type out of the $_GET
  */
 function thatcamp_activity_type() {
-	return isset( $_GET['a_type'] ) ? $_GET['a_type'] : '';
+	$a_type = isset( $_GET['a_type'] ) ? $_GET['a_type'] : '';
+
+	return untrailingslashit( $a_type );
 }
 
 /**
