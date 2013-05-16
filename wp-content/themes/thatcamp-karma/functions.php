@@ -408,6 +408,15 @@ function thatcamp_filter_title( $full_title, $title, $sep, $sep_location ) {
 }
 add_filter( 'bp_modify_page_title', 'thatcamp_filter_title', 10, 4 );
 
+function thatcamp_ensure_thatcamp_is_in_page_title( $title ) {
+	$title_a = explode( ' | ', $title );
+	if ( ! in_array( 'THATCamp', $title_a ) ) {
+		$title_a[] = 'THATCamp';
+	}
+	return implode( ' | ', $title_a );
+}
+add_filter( 'bp_modify_page_title', 'thatcamp_ensure_thatcamp_is_in_page_title', 999999 );
+
 /**
  * Don't let bbPress filter user profile titles
  */
