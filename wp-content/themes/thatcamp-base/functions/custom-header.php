@@ -61,6 +61,9 @@ if ( ! function_exists( 'thatcampbase_header_setup' ) ) :
 		)		
 	) );
 }
+endif;
+
+define( 'NO_HEADER_TEXT', true );
 /**
  * Styles the header text displayed on the blog.
  *
