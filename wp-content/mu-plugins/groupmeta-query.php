@@ -69,7 +69,7 @@ class BP_Groups_Meta_Filter {
 			$table_shortname = 'gmf' . $counter;
 
 			$join_sql = $counter > 1 ? " LEFT JOIN {$bp->groups->table_name_groupmeta} {$table_shortname} ON gmf1.group_id = {$table_shortname}.group_id " : "{$bp->groups->table_name_groupmeta} {$table_shortname}";
-			$join_clauses[]  = $wpdb->prepare( $join_sql );
+			$join_clauses[]  = $join_sql;
 
 			$clause = $wpdb->prepare( "{$table_shortname}.meta_key = %s", $key );
 			if ( false !== $value ) {
@@ -87,7 +87,7 @@ class BP_Groups_Meta_Filter {
 		}
 
 		if ( !empty( $where_clauses ) ) {
-			$sql = $wpdb->prepare( "SELECT gmf1.group_id FROM " . implode( ' ', $join_clauses ) . " WHERE " . implode( ' AND ', $where_clauses ) );
+			$sql = "SELECT gmf1.group_id FROM " . implode( ' ', $join_clauses ) . " WHERE " . implode( ' AND ', $where_clauses );
 		} else {
 			$sql = $wpdb->get_results( "SELECT id FROM {$bp->groups->table_name} WHERE 1 = 0" );
 		}
