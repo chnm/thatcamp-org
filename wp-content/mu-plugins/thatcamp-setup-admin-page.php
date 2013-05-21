@@ -121,9 +121,9 @@ function thatcamp_admin_catch_submit() {
 
 		// Date
 		$start_date = isset( $_POST['thatcamp_start_date'] ) ? strtotime( $_POST['thatcamp_start_date'] ) : '';
-		groups_update_groupmeta( $group_id, 'thatcamp_start_date', $date );
+		groups_update_groupmeta( $group_id, 'thatcamp_start_date', $start_date );
 		$end_date = isset( $_POST['thatcamp_end_date'] ) ? strtotime( $_POST['thatcamp_end_date'] ) : '';
-		groups_update_groupmeta( $group_id, 'thatcamp_end_date', $date );
+		groups_update_groupmeta( $group_id, 'thatcamp_end_date', $end_date );
 
 		// Location
 		$country  = isset( $_POST['Country'] ) ? $_POST['Country'] : '';
@@ -133,7 +133,6 @@ function thatcamp_admin_catch_submit() {
 
 		foreach ( array( 'country', 'state', 'province', 'city' ) as $ltype ) {
 			$lkey = 'thatcamp_' . $ltype;
-			var_dump( $lkey, $$ltype );
 			groups_update_groupmeta( $group_id, $lkey, $$ltype );
 		}
 

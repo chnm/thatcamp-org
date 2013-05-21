@@ -258,13 +258,19 @@ function thatcamp_camp_permalink() {
  *
  * Used within the groups loop
  */
-function thatcamp_camp_date( $group_id = 0, $format = '' ) {
-	echo thatcamp_get_camp_date( $group_id, $format );
+function thatcamp_camp_date( $group_id = 0, $format = '', $type = 'start' ) {
+	echo thatcamp_get_camp_date( $group_id, $format, $type );
 }
-	function thatcamp_get_camp_date( $group_id = 0, $format = '' ) {
+	function thatcamp_get_camp_date( $group_id = 0, $format = '', $type = 'start' ) {
 		$group_id = thatcamp_fallback_group( $group_id );
 
-		$date = groups_get_groupmeta( $group_id, 'thatcamp_date' );
+		$key = 'end' === $type ? 'thatcamp_end_date' : 'thatcamp_start_date';
+		$date = groups_get_groupmeta( $group_id, $key );
+
+		// backward compatibility
+		if ( 'start' === $type && ! $date ) {
+			$date = groups_get_groupmeta( $group_id, 'thatcamp_date' );
+		}
 
 		if ( ! $date ) {
 			return '';
@@ -332,7 +338,7 @@ function thatcamp_groups_without_dates() {
 	global $bp, $wpdb;
 
 	$all_groups  = array_map( 'intval', $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name}" ) );
-	$date_groups = array_map( 'intval', $wpdb->get_col( "SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date'" ) );
+	$date_groups = array_map( 'intval', $wpdb->get_col( "SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_start_date'" ) );
 
 	// Misc exceptions. Add more here if you want
 	$except = array( bp_get_root_blog_id() );
