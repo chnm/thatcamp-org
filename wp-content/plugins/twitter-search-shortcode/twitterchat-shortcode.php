@@ -390,6 +390,9 @@ function zs_twitter_linked() {
 			hashtag_regexp = /\s#([a-zA-Z0-9]+)/g;
 
 			function linkHashtags(text) {
+				if ( typeof text === 'undefined' ) {
+					return text;
+				}
 				return text.replace(
 					hashtag_regexp,
 					' <a class="hashtag" target="_blank" href="http://twitter.com/#search?q=$1">#$1</a>'
@@ -411,6 +414,10 @@ function zs_twitter_linked() {
 			at_regexp = /\s\u0040([a-zA-Z0-9]+)/g;
 
 			function linkAt(text) {
+				if ( typeof text === 'undefined' ) {
+					return text;
+				}
+
 				return text.replace(
 					at_regexp,
 					' <a class="twitter-user" target="_blank" href="http://twitter.com/$1">@$1</a>'
