@@ -248,6 +248,10 @@ function thatcamp_country_picker( $args = array() ) {
 	.ui-helper-hidden-accessible {
 		display: none;
 	}
+	.ui-state-focus {
+		border: 1px solid #fbcb09;
+		background: #fdf5ce;
+	}
 	.thatcamp-location-label {
 		display: block;
 		float: left;
