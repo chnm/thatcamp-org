@@ -111,8 +111,8 @@ return;
 		$this->loadSettings();
 
 		if(version_compare($this->version, "3.0.5", "<")){
-			add_action('admin_init', array( &$this, 'install' ) );
-			add_action('admin_init', array( &$this, 'loadSettings' ) );
+//			add_action('admin_init', array( &$this, 'install' ) );
+//			add_action('admin_init', array( &$this, 'loadSettings' ) );
 
 		}
 

@@ -38,8 +38,14 @@
 			<?php /* Hack alert: Instead of querying intelligently, just skip old camps */ ?>
 			<?php if ( thatcamp_is_in_the_future()) : ?>
 				<article class="camp-listitem">
-					<div class="camp-listdate"><?php thatcamp_camp_date() ?></div>
-					<h3><a href="<?php thatcamp_camp_permalink() ?>" class="camplink"><?php bp_group_name() ?></a></h3>
+					<div class="camp-listdate"><?php echo thatcamp_get_camp_date_pretty() ?></div>
+
+					<div class="camp-listinfo">
+						<h3><a href="<?php thatcamp_camp_permalink() ?>" class="camplink"><?php bp_group_name() ?></a></h3>
+						<div class="item-desc">
+							<?php echo thatcamp_get_location( bp_get_group_id(), 'pretty' ) ?>
+						</div>
+					</div>
 				</article>
 			<?php endif ?>
 

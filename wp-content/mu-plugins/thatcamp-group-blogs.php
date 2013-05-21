@@ -254,17 +254,78 @@ function thatcamp_camp_permalink() {
 	}
 
 /**
+ * Returns a pretty-formatted date + location for group directories
+ */
+function thatcamp_camp_description() {
+	$date_array = array();
+
+	if ( $start_date = thatcamp_get_camp_date( bp_get_group_id(), 'text' ) ) {
+		$date_array[] = $start_date;
+	}
+
+	if ( $end_date = thatcamp_get_camp_date( bp_get_group_id(), 'text', 'end' ) ) {
+		$date_array[] = $end_date;
+	}
+
+	if ( empty( $date_array ) ) {
+		$pretty_date = 'TBA';
+	} else {
+		$pretty_date = implode( ' - ', $date_array );
+	}
+
+	$pretty_location = thatcamp_get_location( bp_get_group_id(), 'pretty' );
+
+	echo "<span class='thatcamp-meta-date'>$pretty_date</span> <span class='thatcamp-meta-location'>$pretty_location</span>";
+}
+
+/**
+ * Returns the THATCamp's date range in a pretty format
+ */
+function thatcamp_get_camp_date_pretty( $group_id = 0 ) {
+	$group_id = thatcamp_fallback_group( $group_id );
+
+	$date_array = array();
+
+	if ( $start_date = thatcamp_get_camp_date( bp_get_group_id(), 'text' ) ) {
+		$date_array[] = $start_date;
+	}
+
+	if ( $end_date = thatcamp_get_camp_date( bp_get_group_id(), 'text', 'end' ) ) {
+		$date_array[] = $end_date;
+	}
+
+	if ( empty( $date_array ) ) {
+		$pretty_date = 'TBA';
+	} else {
+		$pretty_date = implode( ' - ', $date_array );
+	}
+
+	// uber hack. To make things look OK on the front page, break right before the hyphen
+	if ( is_front_page() ) {
+		$pretty_date = str_replace( '-', '<br />-', $pretty_date );
+	}
+
+	return $pretty_date;
+}
+
+/**
  * Echoes the THATCamp's date
  *
  * Used within the groups loop
  */
-function thatcamp_camp_date( $group_id = 0, $format = '' ) {
-	echo thatcamp_get_camp_date( $group_id, $format );
+function thatcamp_camp_date( $group_id = 0, $format = '', $type = 'start' ) {
+	echo thatcamp_get_camp_date( $group_id, $format, $type );
 }
-	function thatcamp_get_camp_date( $group_id = 0, $format = '' ) {
+	function thatcamp_get_camp_date( $group_id = 0, $format = '', $type = 'start' ) {
 		$group_id = thatcamp_fallback_group( $group_id );
 
-		$date = groups_get_groupmeta( $group_id, 'thatcamp_date' );
+		$key = 'end' === $type ? 'thatcamp_end_date' : 'thatcamp_start_date';
+		$date = groups_get_groupmeta( $group_id, $key );
+
+		// backward compatibility
+		if ( 'start' === $type && ! $date ) {
+			$date = groups_get_groupmeta( $group_id, 'thatcamp_date' );
+		}
 
 		if ( ! $date ) {
 			return '';
@@ -292,6 +353,36 @@ function thatcamp_camp_date( $group_id = 0, $format = '' ) {
 		return $date;
 	}
 
+function thatcamp_get_location( $group_id = 0, $type = 'pretty' ) {
+	$group_id = thatcamp_fallback_group( $group_id );
+
+	switch ( $type ) {
+		case 'country' :
+		case 'state' :
+		case 'province' :
+		case 'city' :
+			$key = 'thatcamp_' . $type;
+			$location = groups_get_groupmeta( $group_id, $key );
+			break;
+
+		case 'pretty' :
+		default :
+			$location_array = array();
+			foreach ( array( 'country', 'state', 'province', 'city' ) as $ltype ) {
+				$maybe_l = thatcamp_get_location( $group_id, $ltype );
+				if ( $maybe_l ) {
+					$location_array[ $ltype ] = $maybe_l;
+				}
+
+				$location = implode( ', ', array_reverse( $location_array ) );
+			}
+			break;
+
+	}
+
+	return $location;
+}
+
 /**
  * Is a camp in the future?
  *
@@ -310,7 +401,7 @@ function thatcamp_groups_without_dates() {
 	global $bp, $wpdb;
 
 	$all_groups  = array_map( 'intval', $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name}" ) );
-	$date_groups = array_map( 'intval', $wpdb->get_col( "SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date'" ) );
+	$date_groups = array_map( 'intval', $wpdb->get_col( "SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_start_date'" ) );
 
 	// Misc exceptions. Add more here if you want
 	$except = array( bp_get_root_blog_id() );
