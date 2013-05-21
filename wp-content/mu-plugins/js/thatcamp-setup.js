@@ -11,6 +11,18 @@ jQuery(document).ready(function($){
 
 	$country_selector.on( 'change', function() { refresh_state_province_selectors(); } );
 
+	$('.remove-selector-value').on('click', function(e){
+		var sibling_input = $(this).siblings('input');
+
+		if ( ! sibling_input ) {
+			sibling_input = $(this).siblings('select');
+		}
+
+		$(sibling_input).val('');
+
+		return false;
+	});
+
 	function refresh_state_province_selectors() {
 		$('#thatcamp-state').hide();
 		$('#thatcamp-province').hide();
