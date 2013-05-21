@@ -141,6 +141,7 @@ function thatcamp_admin_catch_submit() {
 		// Date
 		$start_date = isset( $_POST['thatcamp_start_date'] ) ? strtotime( $_POST['thatcamp_start_date'] ) : '';
 		groups_update_groupmeta( $group_id, 'thatcamp_start_date', $start_date );
+		groups_update_groupmeta( $group_id, 'thatcamp_date', $start_date ); // backpat
 		$end_date = isset( $_POST['thatcamp_end_date'] ) ? strtotime( $_POST['thatcamp_end_date'] ) : '';
 		groups_update_groupmeta( $group_id, 'thatcamp_end_date', $end_date );
 
