@@ -45,8 +45,6 @@ function thatcamp_menu_page() {
 		'city'     => thatcamp_get_location( $group_id, 'city' ),
 	);
 
-	$has_workshops = thatcamp_get_camp_has_workshops( $group_id );
-
 	?>
 	<form method="post">
 
@@ -135,12 +133,6 @@ function thatcamp_admin_catch_submit() {
 			$lkey = 'thatcamp_' . $ltype;
 			groups_update_groupmeta( $group_id, $lkey, $$ltype );
 		}
-
-		// Has workshops
-		$has_workshops = isset( $_POST['thatcamp_has_workshops'] ) ? $_POST['thatcamp_has_workshops'] : '';
-		if ( ! in_array( $has_workshops, array( 'yes', 'maybe', 'no' ) ) )
-			$has_workshops = 'no';
-		groups_update_groupmeta( $group_id, 'thatcamp_has_workshops', $has_workshops );
 
 		// Organizers
 		$organizers = isset( $_POST['thatcamp_organizers'] ) ? $_POST['thatcamp_organizers'] : '';
