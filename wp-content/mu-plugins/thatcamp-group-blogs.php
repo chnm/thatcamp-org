@@ -292,6 +292,28 @@ function thatcamp_camp_date( $group_id = 0, $format = '' ) {
 		return $date;
 	}
 
+function thatcamp_get_location( $group_id = 0, $type = 'plaintext' ) {
+	$group_id = thatcamp_fallback_group( $group_id );
+
+	switch ( $type ) {
+		case 'country' :
+		case 'state' :
+		case 'province' :
+		case 'city' :
+			$key = 'thatcamp_' . $type;
+			$location = groups_get_groupmeta( $group_id, $key );
+			break;
+
+		case 'plaintext' :
+		default :
+			// concatenate
+			break;
+
+	}
+
+	return $location;
+}
+
 /**
  * Is a camp in the future?
  *
