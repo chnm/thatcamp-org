@@ -254,6 +254,61 @@ function thatcamp_camp_permalink() {
 	}
 
 /**
+ * Returns a pretty-formatted date + location for group directories
+ */
+function thatcamp_camp_description() {
+	$date_array = array();
+
+	if ( $start_date = thatcamp_get_camp_date( bp_get_group_id(), 'text' ) ) {
+		$date_array[] = $start_date;
+	}
+
+	if ( $end_date = thatcamp_get_camp_date( bp_get_group_id(), 'text', 'end' ) ) {
+		$date_array[] = $end_date;
+	}
+
+	if ( empty( $date_array ) ) {
+		$pretty_date = 'TBA';
+	} else {
+		$pretty_date = implode( ' - ', $date_array );
+	}
+
+	$pretty_location = thatcamp_get_location( bp_get_group_id(), 'pretty' );
+
+	echo "<span class='thatcamp-meta-date'>$pretty_date</span> <span class='thatcamp-meta-location'>$pretty_location</span>";
+}
+
+/**
+ * Returns the THATCamp's date range in a pretty format
+ */
+function thatcamp_get_camp_date_pretty( $group_id = 0 ) {
+	$group_id = thatcamp_fallback_group( $group_id );
+
+	$date_array = array();
+
+	if ( $start_date = thatcamp_get_camp_date( bp_get_group_id(), 'text' ) ) {
+		$date_array[] = $start_date;
+	}
+
+	if ( $end_date = thatcamp_get_camp_date( bp_get_group_id(), 'text', 'end' ) ) {
+		$date_array[] = $end_date;
+	}
+
+	if ( empty( $date_array ) ) {
+		$pretty_date = 'TBA';
+	} else {
+		$pretty_date = implode( ' - ', $date_array );
+	}
+
+	// uber hack. To make things look OK on the front page, break right before the hyphen
+	if ( is_front_page() ) {
+		$pretty_date = str_replace( '-', '<br />-', $pretty_date );
+	}
+
+	return $pretty_date;
+}
+
+/**
  * Echoes the THATCamp's date
  *
  * Used within the groups loop
@@ -298,7 +353,7 @@ function thatcamp_camp_date( $group_id = 0, $format = '', $type = 'start' ) {
 		return $date;
 	}
 
-function thatcamp_get_location( $group_id = 0, $type = 'plaintext' ) {
+function thatcamp_get_location( $group_id = 0, $type = 'pretty' ) {
 	$group_id = thatcamp_fallback_group( $group_id );
 
 	switch ( $type ) {
@@ -310,9 +365,17 @@ function thatcamp_get_location( $group_id = 0, $type = 'plaintext' ) {
 			$location = groups_get_groupmeta( $group_id, $key );
 			break;
 
-		case 'plaintext' :
+		case 'pretty' :
 		default :
-			// concatenate
+			$location_array = array();
+			foreach ( array( 'country', 'state', 'province', 'city' ) as $ltype ) {
+				$maybe_l = thatcamp_get_location( $group_id, $ltype );
+				if ( $maybe_l ) {
+					$location_array[ $ltype ] = $maybe_l;
+				}
+
+				$location = implode( ', ', array_reverse( $location_array ) );
+			}
 			break;
 
 	}
