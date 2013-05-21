@@ -248,7 +248,7 @@ body {
   margin-right: 3%;
   color: #888;
   text-align: right;
-  padding: 0 20px 10px 0;
+  padding: 0 2% 10px 0;
 }
 .camp-listitem {
   clear: both;
@@ -257,7 +257,7 @@ body {
   overflow: hidden;
 }
 .camp-listinfo {
-	padding-left: 20%;
+	padding-left: 25%;
 }
 .camp-listmeta {
   margin: 0 0 0 26%;
