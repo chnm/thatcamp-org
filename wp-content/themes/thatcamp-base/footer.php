@@ -24,7 +24,10 @@
 			<footer id="bottom-footer" role="contentinfo">
 				<nav id="bottom-nav" role="navigation">
 				<!-- add in themename call -->
-					<div id="copyright">&copy; <?php the_time('Y')?>  </div>
+					<div id="copyright"> 
+					<a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cc.png" alt="Creative Commons"/>
+					</a></div>
 					<?php wp_nav_menu( array(
 						'theme_location' => 'bottom', 
 						'menu_class' => 'bottom_menu',

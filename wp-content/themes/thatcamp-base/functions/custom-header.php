@@ -28,7 +28,7 @@ function thatcampbase_custom_header_setup() {
 
 		// Set height and width, with a maximum value for the width.
 		'height'                 => 200,
-		'width'                  => 1120,
+		'width'                  => 1140,
 		'max-width'              => 2000,
 
 		// Support flexible height and width.
@@ -49,8 +49,14 @@ function thatcampbase_custom_header_setup() {
 add_action( 'after_setup_theme', 'thatcampbase_custom_header_setup' );
 endif;
 
-if ( ! function_exists( 'thatcampbase_header_setup' ) ) :
-	function thatcamp_header_setup() {
+/**
+ * THATCamp default header functions. Loads before the functions.php file. 
+ */
+
+define('thatcamp_style_dir', get_bloginfo('stylesheet_directory'));
+define( 'HEADER_IMAGE', thatcamp_style_dir . '/assets/images/default-header.png' );
+
+function thatcamp_header_setup() {
 
            register_default_headers( array(
 		'thatcamp-default' => array(
@@ -61,6 +67,9 @@ if ( ! function_exists( 'thatcampbase_header_setup' ) ) :
 		)		
 	) );
 }
+
+add_action( 'after_setup_theme', 'thatcamp_header_setup' );
+
 /**
  * Styles the header text displayed on the blog.
  *

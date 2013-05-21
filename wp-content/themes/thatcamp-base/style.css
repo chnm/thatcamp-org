@@ -219,12 +219,17 @@ ul.contributors {
 /*--------------------------------------------------------------
 2.2 - Header
 --------------------------------------------------------------*/
-#branding hgroup {
+/*#branding hgroup {
   padding: 20px;
   position: relative;
   top: 0;
   background: #333;
+}*/
+
+#branding hgroup {
+display:none;
 }
+
 img.header-image {
   border: none;
   outline: none;
@@ -1362,3 +1367,4 @@ dd.wp-caption p.wp-caption-text,
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   /* Styles */
 }
+

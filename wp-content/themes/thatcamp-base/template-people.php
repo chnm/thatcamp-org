@@ -13,11 +13,11 @@
 	<div id="content">
 		<div id="people-view" role="main">
                 <header class="post-header">
-                    <h1 class="post-title"><?php the_title(); ?></h1>
+                    <h1 class="post-title"><?php _e( 'Attendees', 'thatcampbase' ); ?></h1>
                 </header>
-
+            
 		<?php
-$display_admins = true;
+$display_admins = false;
 $order_by = 'display_name'; // 'nicename', 'email', 'url', 'registered', 'display_name', or 'post_count'
 $role = ''; // 'subscriber', 'contributor', 'editor', 'author' - leave blank for 'all'
 $avatar_size = 64;

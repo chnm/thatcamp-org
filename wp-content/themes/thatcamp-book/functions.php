@@ -25,8 +25,9 @@ function bookcamp_load_fonts() {
 }
 add_action('wp_enqueue_scripts', 'bookcamp_load_fonts');
 
+
 if ( ! function_exists( 'thatcampbase_header_setup' ) ) :
-	function thatcamp_header_setup() {
+	function thatcampbase_header_setup() {
 
            register_default_headers( array(
 		'thatcamp-default' => array(
@@ -37,7 +38,5 @@ if ( ! function_exists( 'thatcampbase_header_setup' ) ) :
 		)		
 	) );
 }
-
-add_action( 'after_setup_theme', 'thatcamp_header_setup' );
 endif;
 ?>
