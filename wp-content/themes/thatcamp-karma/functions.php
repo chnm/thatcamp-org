@@ -732,3 +732,110 @@ function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 	return $has_groups;
 }
 add_filter( 'bp_has_groups', 'thatcamp_add_tbd_to_upcoming' );
+
+/**
+ * Catch Registry requests and process
+ */
+function thatcamp_catch_registry_form() {
+	if ( ! is_user_logged_in() ) {
+		return;
+	}
+
+	if ( empty( $_POST['thatcamp-register-submit'] ) ) {
+		return;
+	}
+
+	// honeypot check
+	if ( ! empty( $_POST['thatcamp-zip-code'] ) ) {
+		return;
+	}
+
+	// check required fields and fall through if necessary
+	$required_fields = array(
+		'thatcamp-name',
+		'site-url',
+		'chief-organizers-name',
+		'email-address',
+		'mailing-address',
+		'i-agree',
+	);
+
+	$errors = array();
+	foreach ( $required_fields as $required_field ) {
+		if ( empty( $_POST[ $required_field ] ) ) {
+			$errors[ $required_field ] = 'This field is required.';
+		}
+
+		// special case for i-agree checkboxes
+		if ( ! is_array( $_POST['i-agree'] ) || count( $_POST['i-agree'] ) < 5 ) {
+			$errors['i-agree'] = 'You must agree to all conditions to create a THATCamp.';
+		}
+	}
+
+	// Validate URL
+	$validate_blog = wpmu_validate_blog_signup( $_POST['site-url'], $_POST['thatcamp-name'] );
+	if ( ! empty( $validate_blog['errors']->errors ) ) {
+		// grab the first one
+		$errors['site-url'] = $validate_blog['errors']->get_error_message();
+	}
+
+	if ( ! empty( $errors ) ) {
+		// Hackville
+		$_POST['errors'] = $errors;
+		return;
+	}
+
+	// If we've gotten here, go ahead with the registration
+	// @todo We'll use the current user ID for now
+	$meta = array( 'public' => '1' );
+	$blog_id = wpmu_create_blog( $validate_blog['domain'], $validate_blog['path'], $validate_blog['blog_title'], get_current_user_id(), $meta );
+	$group_id = thatcamp_get_blog_group( $blog_id );
+
+	// We're not using the organizer's name or email address, but we'll stash it for later
+	groups_update_groupmeta( $group_id, 'chief_organizers_name', $_POST['chief-organizers-name'] );
+	groups_update_groupmeta( $group_id, 'email_address', $_POST['email-address'] );
+
+	// Other data gets put directly in the groupmeta
+	groups_update_groupmeta( $group_id, 'mailing_address', $_POST['mailing-address'] );
+
+	if ( ! empty( $_POST['Country'] ) ) {
+		groups_update_groupmeta( $group_id, 'thatcamp_country', $_POST['Country'] );
+	}
+
+	if ( ! empty( $_POST['State'] ) ) {
+		groups_update_groupmeta( $group_id, 'thatcamp_state', $_POST['State'] );
+	}
+
+	if ( ! empty( $_POST['Province'] ) ) {
+		groups_update_groupmeta( $group_id, 'thatcamp_province', $_POST['Province'] );
+	}
+
+	if ( ! empty( $_POST['City'] ) ) {
+		groups_update_groupmeta( $group_id, 'thatcamp_city', $_POST['City'] );
+	}
+
+	groups_update_groupmeta( $group_id, 'twitter_account', $_POST['twitter-account'] );
+	groups_update_groupmeta( $group_id, 'thatcamp_start_date', strtotime( $_POST['thatcamp-start-date'] ) );
+	groups_update_groupmeta( $group_id, 'thatcamp_end_date', strtotime( $_POST['thatcamp-end-date'] ) );
+	groups_update_groupmeta( $group_id, 'additional_notes', $_POST['additional-notes'] );
+
+	// Redirect back to the register page, with a success message
+	remove_action( 'template_redirect', 'redirect_to_mapped_domain' );
+	$redirect_to = add_query_arg( 'success', urlencode( $validate_blog['blogname'] ), home_url( 'register-a-new-thatcamp/' ) );
+	wp_redirect( $redirect_to );
+}
+add_action( 'template_redirect', 'thatcamp_catch_registry_form', 5 );
+
+/**
+ * Don't let non-logged-in users access registry page
+ */
+function thatcamp_block_registry_page() {
+	if ( is_user_logged_in() ) {
+		return;
+	}
+
+	if ( is_page( 'register-a-new-thatcamp' ) ) {
+		wp_redirect( wp_login_url( wp_guess_url() ) );
+	}
+}
+add_action( 'template_redirect', 'thatcamp_block_registry_page' );

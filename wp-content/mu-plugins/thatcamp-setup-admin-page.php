@@ -92,6 +92,27 @@ function thatcamp_menu_page() {
 					<p class="description">Select all users who should be labeled as 'organizers' of your THATCamp.</p>
 				</td>
 			</tr>
+
+			<?php if ( is_super_admin() ) : ?>
+			<tr>
+				<th scope="row">
+					Additional signup info (visible to Network Admin only)
+				</th>
+
+				<td>
+					<p>The following information was provided by the user when the THATCamp was registered</p>
+
+					<ul>
+						<li><strong>Chief Organizer's Name</strong> - <?php echo groups_get_groupmeta( $group_id, 'chief_organizers_name' ) ?></li>
+						<li><strong>Email Address</strong> - <?php echo groups_get_groupmeta( $group_id, 'email_address' ) ?></li>
+						<li><strong>Mailing Address</strong> - <?php echo wpautop( groups_get_groupmeta( $group_id, 'mailing_address' ) ) ?></li>
+						<li><strong>Twitter Account</strong> - <?php echo groups_get_groupmeta( $group_id, 'twitter_account' ) ?></li>
+						<li><strong>Additional Notes</strong> - <?php echo wpautop( groups_get_groupmeta( $group_id, 'additional_notes' ) ) ?></li>
+					</ul>
+				</td>
+			</tr>
+			<?php endif ?>
+
 		</table>
 
 		<br /><br />

@@ -48,6 +48,7 @@ Welcome to the stylesheet for THATCamp Karma
 -6.10 - Extended Profiles
 7.0 - Browser specific
 8.0 - Media queries
+9.0 - THATCamp Registry
 ----------------------------------------------------------*/
 .clearfix {
   *zoom: 1;
@@ -3684,4 +3685,53 @@ display: inline;
 
 aside ul li {
 list-style-type: none !important;
+}
+
+/*--------------------------------------------------------------
+9.0 - THATCamp Registry
+--------------------------------------------------------------*/
+
+.registry-section {
+	margin: 2rem 0 3rem;
+}
+
+.registry-section p {
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+
+.registry-section input[type="text"],
+.registry-section textarea {
+	width: 70%;
+}
+
+.registry-section span.required {
+	color: #f00;
+}
+
+p.required-error {
+	padding: 5px 20px;
+	border: 2px solid #f00;
+	border-radius: 2px;
+	width: 50%;
+	margin-top: 5px;
+}
+
+#section-i-agree ul {
+	list-style-type: none;
+	padding-left: 10px;
+}
+
+#section-i-agree input[type="checkbox"] {
+	float: left;
+}
+
+#section-i-agree li {
+	text-indent: 10px;
+	margin-bottom: 1rem;
+}
+
+#thatcamp-zip-code {
+	display: none;
+	visibility: hidden;
 }
