@@ -36,10 +36,10 @@ class Thatcamp_User_Profile_Sites {
 
 		add_action( 'init', array ( $this, 'init' ) );
 		add_action( 'plugins_loaded', array ( $this, 'loaded' ) );
-		add_action( 'wpmu_new_blog', array ( $this, 'new_blog' ) ); 		
+//		add_action( 'wpmu_new_blog', array ( $this, 'new_blog' ) );
 		add_action( 'thatcamp_user_profile_sites_loaded', array ( $this, 'includes' ) );
 		add_action( 'thatcamp_user_profile_sites_init', array ( $this, 'textdomain' ) );
-		
+
 		register_activation_hook( __FILE__, array( $this, 'activation' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 	}
@@ -48,7 +48,7 @@ class Thatcamp_User_Profile_Sites {
 	function init() {
 		do_action( 'thatcamp_user_profile_sites_init' );
 	}
-	
+
 	// Let plugins know that we're done loading
 	function loaded() {
 		do_action( 'thatcamp_user_profile_sites_loaded' );
@@ -61,16 +61,16 @@ class Thatcamp_User_Profile_Sites {
         //  require( dirname( __FILE__ ) . '/thatcamp-registrations-admin.php' );
         //         }
 	}
-	
+
 	// Allow this plugin to be translated by specifying text domain
 	// Todo: Make the logic a bit more complex to allow for custom text within a given language
 	function textdomain() {
         // $locale = get_locale();
-        // 
+        //
         // // First look in wp-content/thatcamp-registration-files/languages, where custom language files will not be overwritten by THATCamp Registrations upgrades. Then check the packaged language file directory.
         // $mofile_custom = WP_CONTENT_DIR . "/thatcamp-registrations-files/languages/thatcamp-registration-$locale.mo";
         // $mofile_packaged = WP_PLUGIN_DIR . "/thatcamp-registrations/languages/thatcamp-registration-$locale.mo";
-        // 
+        //
         //      if ( file_exists( $mofile_custom ) ) {
         //              load_textdomain( 'thatcamp-registrations', $mofile_custom );
         //              return;
@@ -83,7 +83,7 @@ class Thatcamp_User_Profile_Sites {
     function activation() {
 
     }
-    
+
     function deactivation() {}
 }
 
