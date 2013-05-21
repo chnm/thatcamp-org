@@ -248,6 +248,10 @@ function thatcamp_country_picker( $args = array() ) {
 	.ui-helper-hidden-accessible {
 		display: none;
 	}
+	.ui-state-focus {
+		border: 1px solid #fbcb09;
+		background: #fdf5ce;
+	}
 	.thatcamp-location-label {
 		display: block;
 		float: left;
@@ -258,7 +262,7 @@ function thatcamp_country_picker( $args = array() ) {
   <div id="thatcamp-country">
     <span class="thatcamp-location-label">Country:</span>
     <select name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off">
-      <option value="" selected="selected">Select Country</option>
+      <option value="" selected="selected"></option>
       <option <?php selected( $r['country'], 'Afghanistan' ) ?> value="Afghanistan" data-alternative-spellings="AF افغانستان">Afghanistan</option>
       <option <?php selected( $r['country'], 'Åland Islands' ) ?> value="Åland Islands" data-alternative-spellings="AX Aaland Aland" data-relevancy-booster="0.5">Åland Islands</option>
       <option <?php selected( $r['country'], 'Albania' ) ?> value="Albania" data-alternative-spellings="AL">Albania</option>
@@ -514,7 +518,7 @@ function thatcamp_country_picker( $args = array() ) {
   <div id="thatcamp-state">
     <span class="thatcamp-location-label">State:</span>
     <select name="State" id="state-selector" autofocus="autofocus" autocorrect="off" autocomplete="off">
-      <option value="" selected="selected">Select State</option>
+      <option value="" selected="selected"></option>
       <option <?php selected( $r['state'], 'Alabama' ) ?> value="Alabama" data-alternative-spellings="AL">Alabama</option>
       <option <?php selected( $r['state'], 'Alaska' ) ?> value="Alaska" data-alternative-spellings="AK">Alaska</option>
       <option <?php selected( $r['state'], 'Arizona' ) ?> value="Arizona" data-alternative-spellings="AZ">Arizona</option>
@@ -573,7 +577,7 @@ function thatcamp_country_picker( $args = array() ) {
   <div id="thatcamp-province">
     <span class="thatcamp-location-label">Province:</span>
     <select name="Province" id="province-selector" autofocus="autofocus" autocorrect="off" autocomplete="off">
-      <option value="" selected="selected">Select Province</option>
+      <option value="" selected="selected"></option>
       <option <?php selected( $r['province'], 'Alberta' ) ?> value="Alberta" data-alternative-spellings="AB">Alberta</option>
       <option <?php selected( $r['province'], 'British Columbia' ) ?> value="British Columbia" data-alternative-spellings="BC">British Columbia</option>
       <option <?php selected( $r['province'], 'Manitoba' ) ?> value="Manitoba" data-alternative-spellings="MB">Manitoba</option>
