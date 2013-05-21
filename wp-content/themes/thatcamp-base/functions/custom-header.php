@@ -49,22 +49,15 @@ function thatcampbase_custom_header_setup() {
 add_action( 'after_setup_theme', 'thatcampbase_custom_header_setup' );
 endif;
 
-/**
- * THATCamp default header functions. Loads before the functions.php file. 
- */
-
-define('thatcamp_style_dir', get_bloginfo('stylesheet_directory'));
-define( 'HEADER_IMAGE', thatcamp_style_dir . '/assets/images/default-header.png' );
-
-function thatcamp_header_setup() {
-
+if ( ! function_exists( 'thatcampbase_header_setup' ) ) :
+	function thatcampbase_header_setup() {
            register_default_headers( array(
 		'thatcamp-default' => array(
 			'url' => style_dir . '/assets/images/deafult-header.png',
 			'thumbnail_url' => thatcamp_style_dir . '/assets/images/default-header-thumbnail.png',
 			/* translators: header image description */
 			'description' => __( 'THATCamp Header', 'thatcamp-base' )
-		)		
+		)
 	) );
 }
 

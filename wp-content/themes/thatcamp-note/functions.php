@@ -13,7 +13,7 @@ if ( ! isset( $content_width ) ) {
 add_filter( 'show_admin_bar', '__return_false' );
 
 if ( ! function_exists( 'thatcampbase_header_setup' ) ) :
-	function thatcamp_header_setup() {
+	function thatcampbase_header_setup() {
 
            register_default_headers( array(
 		'thatcamp-default' => array(
