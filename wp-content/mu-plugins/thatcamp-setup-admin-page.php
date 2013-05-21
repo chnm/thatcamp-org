@@ -141,6 +141,7 @@ function thatcamp_admin_catch_submit() {
 		// Date
 		$start_date = isset( $_POST['thatcamp_start_date'] ) ? strtotime( $_POST['thatcamp_start_date'] ) : '';
 		groups_update_groupmeta( $group_id, 'thatcamp_start_date', $start_date );
+		groups_update_groupmeta( $group_id, 'thatcamp_date', $start_date ); // backpat
 		$end_date = isset( $_POST['thatcamp_end_date'] ) ? strtotime( $_POST['thatcamp_end_date'] ) : '';
 		groups_update_groupmeta( $group_id, 'thatcamp_end_date', $end_date );
 
@@ -513,6 +514,7 @@ function thatcamp_country_picker( $args = array() ) {
       <option <?php selected( $r['country'], 'Zambia' ) ?> value="Zambia" data-alternative-spellings="ZM">Zambia</option>
       <option <?php selected( $r['country'], 'Zimbabwe' ) ?> value="Zimbabwe" data-alternative-spellings="ZW">Zimbabwe</option>
     </select>
+    <a class="remove-selector-value">x</a>
   </div>
 
   <div id="thatcamp-state">
@@ -572,6 +574,7 @@ function thatcamp_country_picker( $args = array() ) {
       <option <?php selected( $r['state'], 'Wisconsin' ) ?> value="Wisconsin" data-alternative-spellings="WI">Wisconsin</option>
       <option <?php selected( $r['state'], 'Wyoming' ) ?> value="Wyoming" data-alternative-spellings="WY">Wyoming</option>
     </select>
+    <a class="remove-selector-value">x</a>
   </div>
 
   <div id="thatcamp-province">
@@ -592,11 +595,13 @@ function thatcamp_country_picker( $args = array() ) {
       <option <?php selected( $r['province'], 'Saskatchewan' ) ?> value="Saskatchewan" data-alternative-spellings="SK">Saskatchewan</option>
       <option <?php selected( $r['province'], 'Yukon' ) ?> value="Yukon" data-alternative-spellings="YT">Yukon</option>
     </select>
+    <a class="remove-selector-value">x</a>
   </div>
 
   <div id="thatcamp-city">
     <span class="thatcamp-location-label">City:</span>
     <input name="City" id="city-input" value="<?php echo esc_attr( $r['city'] ) ?>" />
+    <a class="remove-selector-value">x</a>
   </div>
 
 	<?php
