@@ -50,7 +50,7 @@ add_action( 'after_setup_theme', 'thatcampbase_custom_header_setup' );
 endif;
 
 if ( ! function_exists( 'thatcampbase_header_setup' ) ) :
-	function thatcamp_header_setup() {
+	function thatcampbase_header_setup() {
 
            register_default_headers( array(
 		'thatcamp-default' => array(
