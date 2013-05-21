@@ -256,6 +256,9 @@ body {
   border-bottom: 1px dashed #ccc;
   overflow: hidden;
 }
+.camp-listinfo {
+	padding-left: 20%;
+}
 .camp-listmeta {
   margin: 0 0 0 26%;
 }
