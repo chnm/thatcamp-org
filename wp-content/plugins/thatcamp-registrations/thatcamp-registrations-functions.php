@@ -64,27 +64,23 @@ function thatcamp_registrations_fields( $type = 'limited' ) {
 			'public'      => true,
 		),
 		array(
-			'id'          => 'previous_thatcamps',
-			'name'        => __( 'Number of previous THATCamps attended', 'thatcamp-registrations' ),
-			'explanation' => __( 'How many THATCamps have you been to before?', 'thatcamp-registrations' ),
+			'id'          => 'days_attending',
+			'name'        => __( 'Days Attending', 'thatcamp-registrations' ),
+			'explanation' => __( 'Which days do you plan to attend this THATCamp?', 'thatcamp-registrations' ),
 			'public'      => false,
 			'type'        => 'select',
 			'options'     => array(
 				array(
-					'value' => '',
-					'text'  => __( 'Select an answer', 'thatcamp-registrations' ),
+					'value' => 'all',
+					'text'  => __( 'All days', 'thatcamp-registrations' ),
 				),
 				array(
-					'value' => '0',
-					'text'  => __( '0', 'thatcamp-registrations' ),
+					'value' => 'first-day',
+					'text'  => __( 'First day only', 'thatcamp-registrations' ),
 				),
 				array(
-					'value' => '1',
-					'text'  => __( '1', 'thatcamp-registrations' ),
-				),
-				array(
-					'value' => 'More than one',
-					'text'  => __( 'More than one', 'thatcamp-registrations' ),
+					'value' => 'second-day',
+					'text'  => __( 'Second day only', 'thatcamp-registrations' ),
 				),
 			),
 		),
@@ -113,6 +109,71 @@ function thatcamp_registrations_fields( $type = 'limited' ) {
 				),
 			),
 		),
+		array(
+			'id'          => 'tshirt_size',
+			'name'        => __( 'T-shirt Size', 'thatcamp-registrations' ),
+			'public'      => false,
+			'type'        => 'select',
+			'options'     => array(
+				array(
+					'value' => '',
+					'text'  => __( 'Select a t-shirt size', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'mens_xs',
+					'text'  => __( 'Men\'s XS - Chest 30-32', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'mens_s',
+					'text'  => __( 'Men\'s S - Chest 34-36', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'mens_m',
+					'text'  => __( 'Men\'s M - Chest 38-40', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'mens_l',
+					'text'  => __( 'Men\'s L - Chest 42-44', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'mens_xl',
+					'text'  => __( 'Men\'s XL - Chest 46-48', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'mens_xxl',
+					'text'  => __( 'Men\'s XXL - Chest 50-52', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'mens_xxxl',
+					'text'  => __( 'Men\'s XXXL - Chest 54-55', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'womens_xs',
+					'text'  => __( 'Women\'s XS - Chest 32-33', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'womens_s',
+					'text'  => __( 'Women\'s S - Chest 34-35', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'womens_m',
+					'text'  => __( 'Women\'s M - Chest 36-37', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'womens_l',
+					'text'  => __( 'Women\'s L - Chest 38-40', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'womens_xl',
+					'text'  => __( 'Women\'s XL - Chest 41-44', 'thatcamp-registrations' ),
+				),
+				array(
+					'value' => 'womens_xxl',
+					'text'  => __( 'Women\'s XXL - Chest 45-47', 'thatcamp-registrations' ),
+				),
+			),
+		),
+
 	);
 
 	if ( 'limited' == $type ) {
@@ -163,20 +224,7 @@ function thatcamp_registrations_add_registration($status = 'pending') {
 
     $applicant_info = array();
 
-    // Array of applicant info fields. May set up an option in plugin so admins can modify this list.
-    $applicant_fields = array(
-        'first_name',
-        'last_name',
-        'user_email',
-        'user_url',
-        'description',
-        'previous_thatcamps',
-        'user_title',
-        'user_organization',
-        'user_twitter',
-        'discipline',
-        'technology_skill_level',
-    );
+	$applicant_fields = wp_list_pluck( thatcamp_registrations_fields(), 'id' );
 
     foreach ( $applicant_fields as $field) {
         $applicant_info[$field] = isset($_POST[$field]) ? $_POST[$field] : null;
@@ -267,15 +315,13 @@ function thatcamp_registrations_process_registrations($ids = array(), $status) {
             );
 
 	// Maybe create/associate WP accounts with the registration
-	if ( thatcamp_registrations_create_user_accounts() ) {
-		if ( $status == 'approved' ) {
-			foreach ($ids as $id) {
-				thatcamp_registrations_process_user($id);
-			}
-		} else if ( $status == 'rejected' ) {
-			foreach ( $ids as $id ) {
-				thatcamp_registrations_maybe_remove_wp_user( $id );
-			}
+	if ( $status == 'approved' ) {
+		foreach ($ids as $id) {
+			thatcamp_registrations_process_user($id);
+		}
+	} else if ( $status == 'rejected' ) {
+		foreach ( $ids as $id ) {
+			thatcamp_registrations_maybe_remove_wp_user( $id );
 		}
 	}
 
@@ -501,10 +547,6 @@ function thatcamp_registrations_options()
 		$options['open_registration'] = 0;
 	}
 
-	if ( empty( $options['create_user_accounts'] ) ) {
-		$options['create_user_accounts'] = 1;
-	}
-
 	// We do an isset check here, because we want to allow for null values
 	if ( ! isset( $options['admin_notify_emails'] ) ) {
 		$options['admin_notify_emails'] = array( get_option( 'admin_email' ) );
@@ -518,7 +560,7 @@ function thatcamp_registrations_options()
 	}
 
 	if ( empty( $options['approved_application_email'] ) ) {
-		$options['approved_application_email'] = sprintf( __( 'Your registration for %1$s has been approved! We will see you at %1$s. You should receive a separate e-mail with your login and password information. Please log in at %2$s and update your profile. You can begin proposing ideas for sessions at any time -- see %3$s or %4$s for more information on that. Contact %5$s with any questions.', 'thatcamp-registrations' ),
+		$options['approved_application_email'] = sprintf( __( 'Your registration for %1$s has been approved! We\'ll see you at %1$s. You should receive a separate e-mail with your login and password information. Please log in at %2$s and update your profile. It\'s never too early to begin proposing ideas for sessions, either -- see %3$s or %4$s for more information on that. Contact %5$s with any questions.', 'thatcamp-registrations' ),
 			get_option( 'blogname' ),
 			wp_login_url(),
 			home_url( 'propose' ),
@@ -527,14 +569,10 @@ function thatcamp_registrations_options()
 		);
 	}
 
-/** Removing default rejection text, because rejection by default should not send an email. 
-
-if ( empty( $options['rejected_application_email'] ) ) {
-		$options['rejected_application_email'] = sprintf( __( 'Sorry, but your registration for %1$s has been rejected. Please contact us at thatcamp.org if you think you have received this message in error.', 'thatcamp-registrations' ),
-			get_option( 'blogname' )
-		);
+	if ( empty( $options['rejected_application_email'] ) ) {
+		$options['rejected_application_email'] = '';
 	}
-**/
+
 	return $options;
 }
 
@@ -597,8 +635,8 @@ function thatcamp_registrations_send_applicant_email($to, $status = "pending")
             break;
         }
 
-        $subject = $subject . ': '.get_bloginfo('name');
-        wp_mail($to, $subject, $message);
+	$subject = $subject . ': ' . get_bloginfo( 'name' );
+	wp_mail( $to, $subject, stripslashes( $message ) );
 
         return __('Email successfully sent!');
     }
@@ -627,20 +665,10 @@ function thatcamp_registrations_existing_user_welcome_email( $user_id ) {
 		$content .= "\n\r";
 		$content .= sprintf( __( 'Log in: %s', 'thatcamp-registrations' ), wp_login_url() );
 
-		return wp_mail( $user->user_email, $subject, $content );
+		return wp_mail( $user->user_email, $subject, stripslashes( $content ) );
 	}
 
 	return false;
-}
-
-/**
- * Checks the option to create user accounts upon registration approval.
- *
- * @return boolean
- **/
-function thatcamp_registrations_create_user_accounts()
-{
-    return (bool) thatcamp_registrations_option('create_user_accounts');
 }
 
 /**
@@ -696,7 +724,7 @@ function thatcamp_registrations_send_admin_notification( $reg_id ) {
 			);
 
 			foreach ( $emails as $email ) {
-				wp_mail( $email, $subject, $content );
+				wp_mail( $email, $subject, stripslashes( $content ) );
 			}
 		}
 	}

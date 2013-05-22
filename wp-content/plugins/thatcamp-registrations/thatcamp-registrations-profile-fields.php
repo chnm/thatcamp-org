@@ -18,31 +18,6 @@ Note that these profile fields have the same data as that collected in the regis
 
 <table class="form-table">
 
-<!-- Previous THATCamps -->
-
-  <tr>
-    <th><label for="previous_thatcamps"><?php _e("Previous THATCamps"); ?></label></th>
-    <td>
-    <select name="previous_thatcamps" id="previous_thatcamps" value="<?php echo esc_attr( get_the_author_meta( 'previous_thatcamps', $user->ID ) ); ?>" /><br />
-<option>Select an answer</option>
-        <?php
-        $previous_thatcamps = array('0', '1', 'More than one');
-
-        foreach ($previous_thatcamps as $previous_thatcamp) {
-                $value = $previous_thatcamp;
-                if (get_the_author_meta( 'previous_thatcamps', $user->ID ) == $value) {
-                    $selected = ' selected="selected"';
-                } else {
-                    $selected = '';
-                }
-                echo '<option value="'.$value.'"'.$selected.'>'. ucfirst($previous_thatcamp).'</option>';
-        }
-        ?>
-    </select><br />
-    <span class="description"><?php _e("How many THATCamps have you been to?"); ?></span>
-    </td>
-  </tr>
-
 <!-- Title -->
   <tr>
     <th><label for="user_title"><?php _e("Position / Job title"); ?></label></th>

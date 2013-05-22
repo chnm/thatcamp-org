@@ -36,16 +36,17 @@ class Thatcamp_Registrations_Loader {
 
 		add_action( 'init', array ( $this, 'init' ) );
 		add_action( 'plugins_loaded', array ( $this, 'loaded' ) );
-		add_action( 'wpmu_new_blog', array ( $this, 'new_blog' ) ); 		
+		add_action( 'wpmu_new_blog', array ( $this, 'new_blog' ) );
 		add_action( 'thatcamp_registrations_loaded', array ( $this, 'includes' ) );
 		add_action( 'thatcamp_registrations_init', array ( $this, 'textdomain' ) );
-		
+
 		register_activation_hook( __FILE__, array( $this, 'activation' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 	}
 
 	// Let plugins know that we're initializing
 	function init() {
+		$this->activation();
 		do_action( 'thatcamp_registrations_init' );
 	}
 
@@ -95,13 +96,13 @@ class Thatcamp_Registrations_Loader {
     			}
     			switch_to_blog($old_blog);
     			return;
-    		}	
-    	} 
+    		}
+    	}
     	$this->_create_table();
         // First-Run-Only parameters: Check if schedule table exists:
 
     }
-    
+
     function _create_table() {
     	global $wpdb;
         $table_name = $wpdb->prefix . 'thatcamp_registrations';
@@ -122,10 +123,10 @@ class Thatcamp_Registrations_Loader {
         		) {$charset_collate};";
 
         	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        	dbDelta($sql);        
+        	dbDelta($sql);
         }
     }
-    
+
     function new_blog($newBlogId) {
     	global $wpdb;
     	if (is_plugin_active_for_network('thatcamp-registrations/thatcamp-registrations.php')) {
@@ -135,7 +136,7 @@ class Thatcamp_Registrations_Loader {
     		switch_to_blog($oldBlogId);
     	}
     }
-    
+
     function deactivation() {}
 }
 

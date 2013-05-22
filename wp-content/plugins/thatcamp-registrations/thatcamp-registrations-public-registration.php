@@ -10,9 +10,12 @@ class Thatcamp_Registrations_Public_Registration {
     function thatcamp_registrations_public_registration() {
         add_shortcode('thatcamp-registration', array($this, 'shortcode'));
         $this->options = get_option('thatcamp_registrations_options');
-        $this->current_user = wp_get_current_user();
+	add_action( 'init', array( $this, 'set_up_current_user' ) );
     }
 
+    function set_up_current_user() {
+        $this->current_user = wp_get_current_user();
+    }
 
     function shortcode($attr) {
         if (thatcamp_registrations_option('open_registration') == 1) {
@@ -59,8 +62,11 @@ class Thatcamp_Registrations_Public_Registration {
                     $alerts['user_email'] = __('You must add an email address.', 'thatcamp-registrations');
                 }
 
-	        if ( $_POST['user_email'] == get_option( 'admin_email' ) ) {
-		    $alerts['user_email'] = __( 'You cannot register using this site\'s admin email address.', 'thatcamp-registrations' );
+		$email = $_POST['user_email'];
+		$the_user = get_user_by( 'email', $email );
+		$is_an_admin = is_a( $the_user, 'WP_User' ) && user_can( $the_user, 'manage_options' );
+	        if ( $is_an_admin ) {
+		    $alerts['user_email'] = __( 'You cannot register the email address of a site administrator.', 'thatcamp-registrations' );
 		}
 
 		if ( empty( $_POST['description'] ) ) {
@@ -141,7 +147,7 @@ class Thatcamp_Registrations_Public_Registration {
 		<fieldset>
 			<legend><?php _e( 'Personal Information', 'thatcamp-registrations' ) ?></legend>
 
-			<p class="explanation" style="margin: 1em 0 1em 0; color:crimson;"><?php printf( __( 'Please note that the following pieces of information may be displayed publicly on this website: %s. We will not display your e-mail address or your reasons for coming to THATCamp.', 'thatcamp-registrations' ), $public_fields ) ?></p>
+			<p class="explanation" style="margin: 1em 0 1em 0;"><?php printf( __( 'Please note that the following pieces of information may be displayed publicly on this website: %s. We will not display your e-mail address or your reasons for coming to THATCamp.', 'thatcamp-registrations' ), $public_fields ) ?></p>
 
 			<?php foreach ( $fields as $field ) : ?>
 
