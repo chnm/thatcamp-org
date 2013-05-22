@@ -401,7 +401,7 @@ function thatcamp_groups_without_dates() {
 	global $bp, $wpdb;
 
 	$all_groups  = array_map( 'intval', $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name}" ) );
-	$date_groups = array_map( 'intval', $wpdb->get_col( "SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_start_date'" ) );
+	$date_groups = array_map( 'intval', $wpdb->get_col( "SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' AND meta_value != ''" ) );
 
 	// Misc exceptions. Add more here if you want
 	$except = array( bp_get_root_blog_id() );
