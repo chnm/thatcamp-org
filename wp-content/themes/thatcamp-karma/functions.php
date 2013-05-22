@@ -410,12 +410,22 @@ add_filter( 'bp_modify_page_title', 'thatcamp_filter_title', 10, 4 );
 
 function thatcamp_ensure_thatcamp_is_in_page_title( $title ) {
 	$title_a = explode( ' | ', $title );
+
+	// remove empties
+	foreach ( $title_a as $key => $tpart ) {
+		if ( ! trim( $tpart ) ) {
+			unset( $title_a[ $key ] );
+		}
+	}
+
+	$title_a = array_values( $title_a );
+
 	if ( ! in_array( 'THATCamp', $title_a ) ) {
 		$title_a[] = 'THATCamp';
 	}
 	return implode( ' | ', $title_a );
 }
-add_filter( 'bp_modify_page_title', 'thatcamp_ensure_thatcamp_is_in_page_title', 999999 );
+add_filter( 'wp_title', 'thatcamp_ensure_thatcamp_is_in_page_title', 999999 );
 
 /**
  * Don't let bbPress filter user profile titles
