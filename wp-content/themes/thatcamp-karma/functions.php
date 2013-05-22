@@ -809,7 +809,7 @@ function thatcamp_catch_registry_form() {
 
 	// Redirect back to the register page, with a success message
 	remove_action( 'template_redirect', 'redirect_to_mapped_domain' );
-	$redirect_to = add_query_arg( 'success', urlencode( $validate_blog['blogname'] ), home_url( 'register-a-new-thatcamp/' ) );
+	$redirect_to = add_query_arg( 'success', urlencode( $validate_blog['blogname'] ), wp_guess_url() );
 	wp_redirect( $redirect_to );
 }
 add_action( 'template_redirect', 'thatcamp_catch_registry_form', 5 );
@@ -822,7 +822,7 @@ function thatcamp_block_registry_page() {
 		return;
 	}
 
-	if ( is_page( 'register-a-new-thatcamp' ) ) {
+	if ( is_page( 'registry' ) ) {
 		wp_redirect( wp_login_url( wp_guess_url() ) );
 	}
 }
