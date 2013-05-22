@@ -754,9 +754,6 @@ function thatcamp_catch_registry_form() {
 	$required_fields = array(
 		'thatcamp-name',
 		'site-url',
-		'chief-organizers-name',
-		'email-address',
-		'mailing-address',
 		'i-agree',
 	);
 
@@ -791,13 +788,6 @@ function thatcamp_catch_registry_form() {
 	$blog_id = wpmu_create_blog( $validate_blog['domain'], $validate_blog['path'], $validate_blog['blog_title'], get_current_user_id(), $meta );
 	$group_id = thatcamp_get_blog_group( $blog_id );
 
-	// We're not using the organizer's name or email address, but we'll stash it for later
-	groups_update_groupmeta( $group_id, 'chief_organizers_name', $_POST['chief-organizers-name'] );
-	groups_update_groupmeta( $group_id, 'email_address', $_POST['email-address'] );
-
-	// Other data gets put directly in the groupmeta
-	groups_update_groupmeta( $group_id, 'mailing_address', $_POST['mailing-address'] );
-
 	if ( ! empty( $_POST['Country'] ) ) {
 		groups_update_groupmeta( $group_id, 'thatcamp_country', $_POST['Country'] );
 	}
@@ -814,10 +804,8 @@ function thatcamp_catch_registry_form() {
 		groups_update_groupmeta( $group_id, 'thatcamp_city', $_POST['City'] );
 	}
 
-	groups_update_groupmeta( $group_id, 'twitter_account', $_POST['twitter-account'] );
 	groups_update_groupmeta( $group_id, 'thatcamp_start_date', strtotime( $_POST['thatcamp-start-date'] ) );
 	groups_update_groupmeta( $group_id, 'thatcamp_end_date', strtotime( $_POST['thatcamp-end-date'] ) );
-	groups_update_groupmeta( $group_id, 'additional_notes', $_POST['additional-notes'] );
 
 	// Redirect back to the register page, with a success message
 	remove_action( 'template_redirect', 'redirect_to_mapped_domain' );

@@ -49,37 +49,6 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 					http://<input name="site-url" style="display:inline; width: 200px" type="text" id="site-url" value="<?php echo esc_attr( $site_url ) ?>" />.thatcamp.org
 				</div>
 
-
-				<div class="registry-section" id="section-chief-organizers-name">
-					<h3>Chief organizer's name <span class="required">*</span></h3>
-					<?php if ( isset( $_POST['errors']['chief-organizers-name'] ) ) : ?>
-						<p class="required-error"><?php echo esc_html( $_POST['errors']['chief-organizers-name'] ) ?></p>
-					<?php endif ?>
-					<p>Usually there is more than one person helping to organize a THATCamp (sharing the work among 2-5 people is ideal), but do please let us know the name of the single best person for us to correspond with. Additional organizers' names and email addresses may be listed in the additional notes field on this for.</p>
-					<?php $chief_organizers_name = isset( $_POST['chief-organizers-name'] ) ? stripslashes( $_POST['chief-organizers-name'] ) : '' ?>
-					<input name="chief-organizers-name" type="text" id="chief-organizers-name" value="<?php echo esc_attr( $chief_organizers_name ) ?>" />
-				</div>
-
-				<div class="registry-section" id="section-email-address">
-					<h3>E-mail address <span class="required">*</span></h3>
-					<?php if ( isset( $_POST['errors']['email-address'] ) ) : ?>
-						<p class="required-error"><?php echo esc_html( $_POST['errors']['email-address'] ) ?></p>
-					<?php endif ?>
-					<p>E-mail address of the chief organizer or dedicated e-mail address such as thatcamppnw@gmail.com. Note that the e-mail address you enter here will be published to the web. We encourage you to set up a dedicated e-mail address for your THATCamp (and, of course, to make sure that one person checks it regularly) so that the address can safely be made public and so that the account can be passed on to future organizers.</p>
-					<?php $email_address = isset( $_POST['email-address'] ) ? stripslashes( $_POST['email-address'] ) : '' ?>
-					<input name="email-address" type="text" id="email-address" value="<?php echo esc_attr( $email_address ) ?>" />
-				</div>
-
-				<div class="registry-section" id="section-mailing-address">
-					<h3>Mailing address <span class="required">*</span></h3>
-					<?php if ( isset( $_POST['errors']['mailing-address'] ) ) : ?>
-						<p class="required-error"><?php echo esc_html( $_POST['errors']['mailing-address'] ) ?></p>
-					<?php endif ?>
-					<p>Please enter a mailing address for the chief organizer so that we can send you THATCamp stickers, brochures, posters, and other physical media if necessary. We won't ever send you junk mail.</p>
-					<?php $mailing_address = isset( $_POST['mailing-address'] ) ? stripslashes( $_POST['mailing-address'] ) : '' ?>
-					<textarea name="mailing-address" id="mailing-address"><?php echo esc_attr( $mailing_address ) ?></textarea>
-				</div>
-
 				<div class="registry-section" id="section-location">
 
 					<h3>Location</h3>
@@ -95,13 +64,6 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 
 				</div>
 
-				<div class="registry-section" id="section-twitter-account">
-					<h3>Twitter account</h3>
-					<p>A dedicated Twitter account for your THATCamp such as THATCamp Southern California's @thatcampsocal is not essential, but most organizers have found it both useful and fun to have one. Ify ou have a dedicated Twitter account, please enter it in the format http://twitter.com/thatcampsocal.</p>
-					<?php $twitter_account = isset( $_POST['twitter-account'] ) ? stripslashes( $_POST['twitter-account'] ) : '' ?>
-					<input name="twitter-account" type="text" id="twitter-account" value="<?php echo esc_attr( $twitter_account ) ?>" />
-				</div>
-
 				<div class="registry-section" id="section-start-date">
 					<h3>Start date</h3>
 					<p>If known, the proposed start date for your THATCamp.</p>
@@ -114,12 +76,6 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 					<p>If known, the proposed end date for your THATCamp.</p>
 					<?php $thatcamp_end_date = isset( $_POST['thatcamp-end-date'] ) ? $_POST['thatcamp-end-date'] : '' ?>
 					<input id="thatcamp_end_date" name="thatcamp-end-date" type="text" value="<?php echo esc_attr( $thatcamp_end_date ) ?>" />
-				</div>
-
-				<div class="registry-section" id="section-additional-notes">
-					<h3>Additional notes or questions</h3>
-					<?php $additional_notes = isset( $_POST['additional-notes'] ) ? stripslashes( $_POST['additional-notes'] ) : '' ?>
-					<textarea name="additional-notes" id="additional-notes"><?php echo esc_attr( $additional_notes ) ?></textarea>
 				</div>
 
 				<div class="registry-section" id="section-i-agree">
