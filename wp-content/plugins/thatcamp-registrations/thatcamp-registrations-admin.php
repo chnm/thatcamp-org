@@ -512,6 +512,7 @@ class Thatcamp_Registrations_Admin {
 			array( 'ukey' => 'discipline', 'title' => __( 'Discipline', 'thatcamp-registrations' ) ),
 			array( 'ukey' => 'technology_skill_level', 'title' => __( 'Technology Skill Level', 'thatcamp-registrations' ) ),
 			array( 'ukey' => 'tshirt_size', 'title' => __( 'T-shirt Size', 'thatcamp-registrations' ) ),
+			array( 'ukey' => 'days_attending', 'title' => __( 'Days Attending', 'thatcamp-registrations' ) ),
 			array( 'ukey' => 'application_text', 'title' => 'Application Text' ),
 			array( 'ukey' => 'status', 'title' => 'Status' ),
 		);
