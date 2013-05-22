@@ -630,7 +630,7 @@ function thatcamp_filter_group_directory( $query ) {
 		}
 
 		// date filter
-		if ( isset( $_GET['year'] ) ) {
+		if ( ! empty( $_GET['year'] ) ) {
 			if ( empty( $_GET['month'] ) ) {
 				$text_date = urldecode( $_GET['year'] ) . '-01-01 00:00:00';
 				$date_format = 'Y-m-d G:i:s';
@@ -652,6 +652,28 @@ function thatcamp_filter_group_directory( $query ) {
 			$qarray[1] = $wpdb->prepare( " gmdate.group_id = g.id AND gmdate.meta_key = 'thatcamp_date' AND CONVERT(gmdate.meta_value, SIGNED) >= %d AND CONVERT(gmdate.meta_value, SIGNED) < %d AND ", $start_time, $end_time ) . $qarray[1];
 
 			$query = implode( ' WHERE ', $qarray );
+		}
+
+		// location, oy
+		foreach ( array( 'country', 'province', 'state' ) as $ltype ) {
+			// So stupid. have to manually unset state/province
+			// when they shouldn't be checked
+			switch ( urldecode( $_GET['Country'] ) ) {
+				case 'United States' :
+					unset( $_GET['Province'] );
+					break;
+				case 'Canada' :
+					unset( $_GET['State'] );
+					break;
+			}
+
+			if ( ! empty( $_GET[ ucwords( $ltype ) ] ) ) {
+				$qarray = explode( ' WHERE ', $query );
+				$qarray[0] .= ", {$bp->groups->table_name_groupmeta} gm{$ltype}";
+				$qarray[1] = $wpdb->prepare( " gm{$ltype}.group_id = g.id AND gm{$ltype}.meta_key = 'thatcamp_{$ltype}' AND gm{$ltype}.meta_value = %s AND ", stripslashes( urldecode( $_GET[ ucwords( $ltype ) ] ) ) ) . $qarray[1];
+
+				$query = implode( ' WHERE ', $qarray );
+			}
 		}
 	}
 

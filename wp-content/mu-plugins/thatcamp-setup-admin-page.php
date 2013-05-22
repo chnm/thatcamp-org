@@ -199,6 +199,7 @@ function thatcamp_country_picker( $args = array() ) {
 		'state' => '',
 		'province' => '',
 		'city' => '',
+		'context' => 'edit', // 'search' removes City
 	) );
 
 	?>
@@ -578,11 +579,13 @@ function thatcamp_country_picker( $args = array() ) {
     <a class="remove-selector-value">x</a>
   </div>
 
-  <div id="thatcamp-city">
-    <span class="thatcamp-location-label">City:</span>
-    <input name="City" id="city-input" value="<?php echo esc_attr( $r['city'] ) ?>" />
-    <a class="remove-selector-value">x</a>
-  </div>
+  <?php if ( 'edit' === $r['context'] ) : ?>
+	  <div id="thatcamp-city">
+	    <span class="thatcamp-location-label">City:</span>
+	    <input name="City" id="city-input" value="<?php echo esc_attr( $r['city'] ) ?>" />
+	    <a class="remove-selector-value">x</a>
+	  </div>
+  <?php endif ?>
 
 	<?php
 }

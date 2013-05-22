@@ -2327,19 +2327,29 @@ div.dir-search input[type=text] {
 	font-style: italic;
 	float: left;
 }
-.tc-filter-type {
+.tc-filters > div {
 	clear: both;
 	overflow: hidden;
+	padding-bottom: 1rem;
 }
-.tc-selector {
-	list-style-type: none;
-	padding: 0;
-}
-.tc-selector li {
+.tc-filter-date > div {
 	width: 200px;
 	float: left;
 }
-.tc-selector li select {
+.tc-filter-date > div.tc-filter-label {
+	width: 100px;
+}
+.tc-filter-date > div select {
+	display: inline;
+}
+.tc-location-selector {
+	padding-left: 100px;
+}
+.remove-selector-value {
+	cursor: pointer;
+}
+.tc-location-selector > div > input,
+.tc-location-selector > div > select {
 	display: inline;
 }
 /*--------------------------------------------------------------

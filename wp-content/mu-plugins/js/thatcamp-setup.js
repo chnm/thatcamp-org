@@ -24,15 +24,26 @@ jQuery(document).ready(function($){
 	});
 
 	function refresh_state_province_selectors() {
-		$('#thatcamp-state').hide();
-		$('#thatcamp-province').hide();
+		$tcstate = $('#thatcamp-state');
+		$tcprovince = $('#thatcamp-province');
+		$tcstate.hide();
+		$tcprovince.hide();
 
 		var current_country = $country_selector.val();
 
+		// Remove the province and state, and reset if necessary
+		// Don't know why I have to do this
+		var current_state = $tcstate.val();
+		var current_province = $tcprovince.val();
+		$tcstate.find(':selected').each( function(i){ $(this).removeAttr('selected'); } );
+		$tcprovince.find(':selected').each( function(i){ $(this).removeAttr('selected'); } );
+
 		if ( 'United States' === current_country ) {
-			$('#thatcamp-state').show();
+			$tcstate.val(current_state);
+			$tcstate.show();
 		} else if ( 'Canada' === current_country ) {
-			$('#thatcamp-province').show();
+			$tcstate.val(current_province);
+			$tcprovince.show();
 		}
 	}
 },(jQuery));
