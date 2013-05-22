@@ -124,6 +124,40 @@ function thatcamp_create_group_for_new_blog( $blog_id  ) {
 add_action( 'wpmu_new_blog', 'thatcamp_create_group_for_new_blog' );
 
 /**
+ * When a blog is spammed, archived, or deleted, delete the corresponding group
+ *
+ * @param int
+ */
+function thatcamp_delete_group_for_blog( $blog_id ) {
+	global $bp;
+
+	$group_id = thatcamp_get_blog_group( $blog_id );
+
+	// do it manually, to avoid groups_delete_group() cap check
+	do_action( 'groups_before_delete_group', $group_id );
+
+	// Get the group object
+	$group = groups_get_group( array( 'group_id' => $group_id ) );
+	if ( !$group->delete() )
+		return false;
+
+	// Delete all group activity from activity streams
+	if ( bp_is_active( 'activity' ) )
+		bp_activity_delete_by_item_id( array( 'item_id' => $group_id, 'component' => $bp->groups->id ) );
+
+	// Remove all outstanding invites for this group
+	groups_delete_all_group_invites( $group_id );
+
+	// Remove all notifications for any user belonging to this group
+	bp_core_delete_all_notifications_by_type( $group_id, $bp->groups->id );
+
+	do_action( 'groups_delete_group', $group_id);
+}
+add_action( 'make_spam_blog', 'thatcamp_delete_group_for_blog' );
+add_action( 'archive_blog', 'thatcamp_delete_group_for_blog' );
+add_action( 'make_delete_blog', 'thatcamp_delete_group_for_blog' );
+
+/**
  * When a user is added to a blog, add him to the corresponding group
  *
  * @param int
