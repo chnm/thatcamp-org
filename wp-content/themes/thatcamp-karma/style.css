@@ -2318,6 +2318,30 @@ div.dir-search input[type=text] {
   #groups-list .item-desc > span:first-child {
     padding-right: 14px;
   }
+.tc-filters {
+	overflow: hidden;
+	margin-bottom: 4rem;
+}
+.tc-filter-label {
+	width: 100px;
+	font-style: italic;
+	float: left;
+}
+.tc-filter-type {
+	clear: both;
+	overflow: hidden;
+}
+.tc-selector {
+	list-style-type: none;
+	padding: 0;
+}
+.tc-selector li {
+	width: 200px;
+	float: left;
+}
+.tc-selector li select {
+	display: inline;
+}
 /*--------------------------------------------------------------
 6.4 - Errors / Success Messages
 --------------------------------------------------------------*/

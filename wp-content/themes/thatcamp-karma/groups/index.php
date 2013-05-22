@@ -19,15 +19,26 @@ get_header( 'thatcamp' ); ?>
 
 		<?php do_action( 'bp_before_directory_groups' ); ?>
 
-		<form action="" method="post" id="groups-directory-form" class="dir-form">
+		<form action="" method="get" id="groups-directory-form" class="dir-form">
 
 			<h3><?php _e( 'THATCamps', 'thatcamp' ); ?></h3>
 
-			<ul class="tc-selector">
-				<?php thatcamp_directory_selector( 'new' ) ?>
-				<?php thatcamp_directory_selector( 'past' ) ?>
-				<?php thatcamp_directory_selector( 'upcoming' ) ?>
-			</ul>
+			<div class="tc-filters">
+				<div class="tc-filter-type">
+					<div class="tc-filter-label">Type:</div>
+					<?php thatcamp_directory_selector() ?>
+				</div>
+
+				<div class="tc-filter-date">
+					<div class="tc-filter-label">Date:</div>
+					<ul class="tc-selector">
+						<li>Year <?php thatcamp_year_dropdown() ?></li>
+						<li>Month <?php thatcamp_month_dropdown() ?></li>
+					</ul>
+				</div>
+				<input type="submit" value="Filter" />
+			</div>
+
 
 			<?php do_action( 'bp_before_directory_groups_content' ); ?>
 
@@ -40,8 +51,6 @@ get_header( 'thatcamp' ); ?>
 			</div>
 
 			<?php do_action( 'bp_directory_groups_content' ); ?>
-
-			<?php wp_nonce_field( 'directory_groups', '_wpnonce-groups-filter' ); ?>
 
 			<?php do_action( 'bp_after_directory_groups_content' ); ?>
 

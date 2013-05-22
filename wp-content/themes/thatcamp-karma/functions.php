@@ -574,7 +574,7 @@ function thatcamp_validate_url( $string ) {
  * Get the current 'tctype' view out of $_GET and sanitize
  */
 function thatcamp_directory_current_view() {
-	$current_view = isset( $_GET['tctype'] ) && in_array( $_GET['tctype'], array( 'new', 'past', 'upcoming' ) ) ? $_GET['tctype'] : 'new';
+	$current_view = isset( $_GET['type'] ) && in_array( $_GET['type'], array( 'new', 'past', 'upcoming' ) ) ? $_GET['type'] : 'new';
 	return $current_view;
 }
 
@@ -582,27 +582,13 @@ function thatcamp_directory_selector( $view ) {
 	$base_url     = bp_get_root_domain() . '/' .  bp_get_groups_root_slug();
 	$current_view = thatcamp_directory_current_view();
 
-	$html  = '<li';
-
-	if ( $view == $current_view ) {
-		$html .= ' class="current"';
-	}
-
-	$html .= '>';
-
-	if ( $view != $current_view ) {
-		$html .= '<a href="' . add_query_arg( 'tctype', $view, $base_url ) . '">';
-	}
-
-	$html .= ucwords( $view );
-
-	if ( $view != $current_view ) {
-		$html .= '</a>';
-	}
-
-	$html .= '</li>';
-
-	echo $html;
+	?>
+	<select name="type" id="tc-type">
+	<?php foreach ( array( 'new', 'past', 'upcoming' ) as $type ) : ?>
+		<option <?php selected( $type, $current_view ) ?> value="<?php echo $type ?>"><?php echo ucwords( $type ) ?></option>
+	<?php endforeach ?>
+	</select>
+	<?php
 }
 
 /**
@@ -642,6 +628,31 @@ function thatcamp_filter_group_directory( $query ) {
 			$query = preg_replace( '/ORDER BY .*? /', 'ORDER BY g.id ', $query );
 			$query = preg_replace( '/(ASC|DESC)/', 'DESC', $query );
 		}
+
+		// date filter
+		if ( isset( $_GET['year'] ) ) {
+			if ( empty( $_GET['month'] ) ) {
+				$text_date = urldecode( $_GET['year'] ) . '-01-01 00:00:00';
+				$date_format = 'Y-m-d G:i:s';
+				$end_interval = '+1 year';
+			} else {
+				$text_date = urldecode( $_GET['month'] ) . ' 01, ' . urldecode( $_GET['year'] ) . '00:00:00';
+				$date_format = 'F d, Y G:i:s';
+				$end_interval = '+1 month';
+			}
+
+			$dt = DateTime::createFromFormat( $date_format, $text_date );
+			$start_time = $dt->getTimestamp();
+
+			$dt->modify( $end_interval );
+			$end_time = $dt->getTimestamp();
+
+			$qarray = explode( ' WHERE ', $query );
+			$qarray[0] .= ", {$bp->groups->table_name_groupmeta} gmdate ";
+			$qarray[1] = $wpdb->prepare( " gmdate.group_id = g.id AND gmdate.meta_key = 'thatcamp_date' AND CONVERT(gmdate.meta_value, SIGNED) >= %d AND CONVERT(gmdate.meta_value, SIGNED) < %d AND ", $start_time, $end_time ) . $qarray[1];
+
+			$query = implode( ' WHERE ', $qarray );
+		}
 	}
 
 	return $query;
@@ -664,7 +675,10 @@ function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 
 	$current_view = thatcamp_directory_current_view();
 
-	if ( bp_is_groups_component() && bp_is_directory() && 'upcoming' == $current_view ) {
+	// todo - add others
+	$has_other_filters = isset( $_GET['year'] );
+
+	if ( bp_is_groups_component() && bp_is_directory() && 'upcoming' == $current_view && ! $has_other_filters ) {
 		$tbds = $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name} WHERE id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' AND meta_value != '' ) ORDER BY name ASC" );
 
 		$dated_count = $groups_template->total_group_count;
@@ -827,3 +841,44 @@ function thatcamp_block_registry_page() {
 	}
 }
 add_action( 'template_redirect', 'thatcamp_block_registry_page' );
+
+/**
+ * Generate a dropdown of years for the Camps filter
+ *
+ * Starts with the oldest camp year (2008) and goes through next calendar year
+ */
+function thatcamp_year_dropdown() {
+	$current_year = isset( $_GET['year'] ) ? urldecode( $_GET['year'] ) : '';
+	$this_year = (int) date( 'Y' );
+
+	?>
+	<select name="year" id="tc-year">
+		<option <?php selected( '', $current_year ) ?> value=""> - </option>
+		<?php for ( $i = 2008; $i <= $this_year + 1; $i++ ) : ?>
+			<option <?php selected( $i, $current_year ) ?> value="<?php echo esc_attr( $i ) ?>"><?php echo esc_attr( $i ) ?></option>
+		<?php endfor ?>
+	</select>
+	<?php
+}
+
+function thatcamp_month_dropdown() {
+	$current_month = isset( $_GET['month'] ) ? urldecode( $_GET['month'] ) : '';
+
+	?>
+	<select name="month" id="tc-month">
+		<option <?php selected( '', $current_month ) ?> value=""> - </option>
+		<option <?php selected( 'January', $current_month ) ?> value="January">January</option>
+		<option <?php selected( 'February', $current_month ) ?> value="February">February</option>
+		<option <?php selected( 'March', $current_month ) ?> value="March">March</option>
+		<option <?php selected( 'April', $current_month ) ?> value="April">April</option>
+		<option <?php selected( 'May', $current_month ) ?> value="May">May</option>
+		<option <?php selected( 'June', $current_month ) ?> value="June">June</option>
+		<option <?php selected( 'July', $current_month ) ?> value="July">July</option>
+		<option <?php selected( 'August', $current_month ) ?> value="August">August</option>
+		<option <?php selected( 'September', $current_month ) ?> value="September">September</option>
+		<option <?php selected( 'October', $current_month ) ?> value="October">October</option>
+		<option <?php selected( 'November', $current_month ) ?> value="November">November</option>
+		<option <?php selected( 'December', $current_month ) ?> value="December">December</option>
+	</select>
+	<?php
+}
