@@ -250,14 +250,14 @@ function thatcamp_action_search_site() {
 	$var  = '/?s=';
 
 	// If posts aren't displayed on the front page, find the post page's slug.
-	if ( 'page' == get_option( 'show_on_front' ) ) {
+	/*if ( 'page' == get_option( 'show_on_front' ) ) {
 		$page = get_post( get_option( 'page_for_posts' ) );
 
 		if ( !is_wp_error( $page ) && !empty( $page->post_name ) ) {
 			$slug = $page->post_name;
 			$var  = '?s=';
 		}
-	}
+	}*/
 
 	$redirect = home_url( $slug . $query_string . urlencode( $search_terms ) );
 
