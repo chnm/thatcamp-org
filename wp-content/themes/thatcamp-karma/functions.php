@@ -574,7 +574,7 @@ function thatcamp_validate_url( $string ) {
  * Get the current 'tctype' view out of $_GET and sanitize
  */
 function thatcamp_directory_current_view() {
-	$current_view = isset( $_GET['tctype'] ) && in_array( $_GET['tctype'], array( 'alphabetical', 'past', 'upcoming' ) ) ? $_GET['tctype'] : 'alphabetical';
+	$current_view = isset( $_GET['tctype'] ) && in_array( $_GET['tctype'], array( 'new', 'past', 'upcoming' ) ) ? $_GET['tctype'] : 'new';
 	return $current_view;
 }
 
@@ -619,7 +619,7 @@ function thatcamp_filter_group_directory( $query ) {
 	if ( bp_is_groups_component() && bp_is_directory() ) {
 		$current_view = thatcamp_directory_current_view();
 
-		if ( 'alphabetical' != $current_view ) {
+		if ( 'new' != $current_view ) {
 			// Filter by date
 			$qarray = explode( ' WHERE ', $query );
 
@@ -639,8 +639,8 @@ function thatcamp_filter_group_directory( $query ) {
 
 			$query = implode( ' WHERE ', $qarray );
 		} else {
-			$query = preg_replace( '/ORDER BY .*? /', 'ORDER BY g.name ', $query );
-			$query = preg_replace( '/(ASC|DESC)/', 'ASC', $query );
+			$query = preg_replace( '/ORDER BY .*? /', 'ORDER BY g.id ', $query );
+			$query = preg_replace( '/(ASC|DESC)/', 'DESC', $query );
 		}
 	}
 
@@ -665,7 +665,7 @@ function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 	$current_view = thatcamp_directory_current_view();
 
 	if ( bp_is_groups_component() && bp_is_directory() && 'upcoming' == $current_view ) {
-		$tbds = $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name} WHERE id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' ) ORDER BY name ASC" );
+		$tbds = $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name} WHERE id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' AND meta_value != '' ) ORDER BY name ASC" );
 
 		$dated_count = $groups_template->total_group_count;
 		$tbds_count  = count( $tbds );

@@ -7,13 +7,12 @@
  * @since thatcamp 1.0
  */
 
-$current_view = isset( $_GET['tctype'] ) && in_array( $_GET['tctype'], array( 'alphabetical', 'past', 'upcoming' ) ) ? $_GET['tctype'] : 'alphabetical';
+$current_view = isset( $_GET['tctype'] ) && in_array( $_GET['tctype'], array( 'new', 'past', 'upcoming' ) ) ? $_GET['tctype'] : 'new';
 $base_url = bp_get_root_domain() . '/' .  bp_get_groups_root_slug();
 
 get_header( 'thatcamp' ); ?>
 
 	<?php do_action( 'bp_before_directory_groups_page' ); ?>
-
 
 	<div id="primary" class="main-content">
 	<div id="content" role="main">
@@ -25,7 +24,7 @@ get_header( 'thatcamp' ); ?>
 			<h3><?php _e( 'THATCamps', 'thatcamp' ); ?></h3>
 
 			<ul class="tc-selector">
-				<?php thatcamp_directory_selector( 'alphabetical' ) ?>
+				<?php thatcamp_directory_selector( 'new' ) ?>
 				<?php thatcamp_directory_selector( 'past' ) ?>
 				<?php thatcamp_directory_selector( 'upcoming' ) ?>
 			</ul>
