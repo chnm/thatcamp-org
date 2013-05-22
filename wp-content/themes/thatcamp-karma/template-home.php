@@ -65,12 +65,16 @@
 			?>
 
 			<?php if ( bp_has_groups( $all_group_args ) ) : while ( bp_groups() ) : bp_the_group() ?>
-
 				<article class="camp-listitem">
-					<div class="camp-listdate"><?php _e( 'TBA', 'thatcamp' ); ?></div>
-					<h3><a href="<?php thatcamp_camp_permalink() ?>" class="camplink"><?php bp_group_name() ?></a></h3>
-				</article>
+					<div class="camp-listdate">TBA</div>
 
+					<div class="camp-listinfo">
+						<h3><a href="<?php thatcamp_camp_permalink() ?>" class="camplink"><?php bp_group_name() ?></a></h3>
+						<div class="item-desc">
+							<?php echo thatcamp_get_location( bp_get_group_id(), 'pretty' ) ?>
+						</div>
+					</div>
+				</article>
 			<?php endwhile; endif ?>
 
 
