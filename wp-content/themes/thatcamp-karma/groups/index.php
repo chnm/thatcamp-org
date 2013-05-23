@@ -25,15 +25,9 @@ get_header( 'thatcamp' ); ?>
 			<h3><?php _e( 'THATCamps', 'thatcamp' ); ?></h3>
 
 			<div class="tc-filters">
-				<div class="tc-filter-type">
-					<div class="tc-filter-label">Type:</div>
-					<?php thatcamp_directory_selector() ?>
-				</div>
-
 				<div class="tc-filter-date">
 					<div class="tc-filter-label">Date:</div>
-					<div class="tc-filter-year">Year <?php thatcamp_year_dropdown() ?></div>
-					<div class="tc-filter-month">Month <?php thatcamp_month_dropdown() ?></div>
+					<div class="tc-filter-year"><?php thatcamp_date_dropdown() ?></div>
 				</div>
 
 				<div class="tc-filter-location">
