@@ -14,23 +14,24 @@ Template Name: Campers
 					<p>THATCampers: to add your picture to this page, log in and upload a picture to your profile or sign up for <a href="http://en.gravatar.com/site/signup/">Gravatar.com</a> and upload an image there.</p>
 
 <?php $siteUsers = get_users('orderby=display_name&exclude=246&who=authors');
-					
-					foreach ($siteUsers as $usr) { ?>			
-							<div class="camper_info">	 			
+
+					foreach ($siteUsers as $usr) { ?>
+							<div class="camper_info">
 								<div class="camper_avatar"><a href="<?php echo get_author_posts_url($usr->ID); ?>"><?php echo get_avatar($usr->ID, 100); ?></a></div>
 								<div class="camper_name"><a href="<?php echo get_author_posts_url($usr->ID); ?>">
 		<?php echo get_the_author_meta('first_name', $usr->ID); ?> <?php echo get_the_author_meta('last_name', $usr->ID); ?>
-</a></div> 
+</a></div>
 
 
 								<div class="camper_posts"><a href="<?php echo get_author_posts_url($usr->ID); ?>">Posts (<?php echo get_usernumposts($usr->ID); ?>)</a></div>
-							</div>	 
+								<?php thatcamp_add_friend_button( $usr->ID ) ?>
+							</div>
 					<?php } ?>
 			</div>
 
 			</div><!-- #content -->
 </div><!-- #container -->
-		
+
 	<?php get_sidebar(); ?>
 <span class="contentbottom"></span>
 <div class="clear"></div>
