@@ -716,7 +716,7 @@ function thatcamp_region_map() {
 			),
 		),
 		'australia-and-oceania' => array(
-			'name' => 'Australia and Oceania',
+			'name' => 'Australia and New Zealand',
 			'locations' => array(
 				'Australia',
 				'New Zealand',
