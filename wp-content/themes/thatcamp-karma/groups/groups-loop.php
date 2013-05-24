@@ -25,29 +25,19 @@
 
 	<?php do_action( 'bp_before_directory_groups_list' ); ?>
 
-	<ul id="groups-list" class="item-list" role="main">
+	<?php while ( bp_groups() ) : bp_the_group() ?>
+		<article class="camp-listitem">
+			<div class="camp-listdate">TBA</div>
 
-	<?php while ( bp_groups() ) : bp_the_group(); ?>
-
-		<li>
-
-			<div class="item">
-				<div class="item-title"><a href="<?php thatcamp_camp_permalink(); ?>"><?php bp_group_name(); ?></a></div>
-
+			<div class="camp-listinfo">
+				<h3><a href="<?php thatcamp_camp_permalink() ?>" class="camplink"><?php bp_group_name() ?></a></h3>
 				<div class="item-desc">
+					<?php echo thatcamp_get_location( bp_get_group_id(), 'pretty' ) ?>
 					<?php thatcamp_camp_description() ?>
 				</div>
-
-				<?php do_action( 'bp_directory_groups_item' ); ?>
-
 			</div>
-
-			<div class="clear"></div>
-		</li>
-
-	<?php endwhile; ?>
-
-	</ul>
+		</article>
+	<?php endwhile ?>
 
 	<?php do_action( 'bp_after_directory_groups_list' ); ?>
 

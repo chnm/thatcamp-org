@@ -2312,14 +2312,15 @@ div.dir-search {
 div.dir-search input[type=text] {
   padding: 1px 3px;
 }
-#groups-list .item-desc > span {
+.item-desc > span {
   font-size: 14px;
   white-space: nowrap;
+	padding-right: 30px;
 }
-  #groups-list .item-desc .thatcamp-meta-left {
-		float: left;
-		width: 250px;
+  .item-desc > span:last-child {
+		padding-right: none;
   }
+
 .tc-filters {
 	overflow: hidden;
 	margin-bottom: 4rem;
