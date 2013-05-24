@@ -3388,6 +3388,21 @@ body.register div.page ul {
 .widget #blog-post-list.activity-list li {
 	padding: 10px 0;
 }
+.widget #members-list li {
+	float: none;
+	min-height: 0px;
+}
+.widget #members-list .item-avatar {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+	width: 70px;
+	float: left;
+}
+.widget #members-list img.avatar {
+	margin-top: 0;
+}
 
 /*--------------------------------------------------------------
 7.0 - Browser specific
