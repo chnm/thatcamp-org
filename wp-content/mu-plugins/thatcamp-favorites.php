@@ -44,6 +44,13 @@ class THATCamp_Favorites {
 		) );
 
 		$activity_id = $this->get_activity_id_for_post( $r['post_id'], $r['blog_id'] );
+
+                // If there's no activity for this blog post, don't create a
+                // button. should only happen for Private blogs
+                if ( ! $activity_id ) {
+                        return '';
+                }
+
 		$afav_count = intval( bp_activity_get_meta( $activity_id, 'thatcamp_favoriters_count' ) );
 
 		if ( 0 === $afav_count ) {
