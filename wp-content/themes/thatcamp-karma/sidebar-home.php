@@ -15,7 +15,7 @@
 		<span class="button-inner"><?php _e( 'Organize a THATCamp', 'thatcamp' ); ?></span>
 	</a>
 
-	<a href="<?php echo site_url(); ?>/contact" class="email-thatcamplink"><?php _e( 'Contact Us', 'thatcamp' ); ?></a>
+	<a href="<?php echo site_url(); ?>/contact" class="email-thatcamplink"><?php _e( 'New THATCamps by Email', 'thatcamp' ); ?></a>
 
 	<a href="<?php echo site_url(); ?>/camps/feed" class="rss-thatcamplink"><?php _e( 'New THATCamps by RSS', 'thatcamp' ); ?></a>
 
