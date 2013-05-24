@@ -693,11 +693,33 @@ function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 
 	$current_view = thatcamp_directory_current_view();
 
-	// todo - add others
-	$has_other_filters = isset( $_GET['year'] );
+	if ( bp_is_groups_component() && bp_is_directory() && 'upcoming' == $current_view ) {
 
-	if ( bp_is_groups_component() && bp_is_directory() && 'upcoming' == $current_view && ! $has_other_filters ) {
-		$tbds = $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name} WHERE id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' AND meta_value != '' ) ORDER BY name ASC" );
+		// If there's a 'region' filter, apply it
+		$region_filter = '';
+		if ( isset( $_GET['region'] ) ) {
+			$current_region = $_GET['region'];
+			$regions = thatcamp_region_map();
+			if ( isset( $regions[ $current_region ] ) ) {
+				$meta_key = false !== strpos( $current_region, '-us-' ) ? 'thatcamp_state' : 'thatcamp_country';
+				$meta_values = $regions[ $current_region ]['locations'];
+				foreach ( $meta_values as &$mv ) {
+					$mv = $wpdb->prepare( "%s", $mv );
+				}
+				$meta_values_sql = implode( ',', $meta_values );
+				$region_ids = $wpdb->get_col( $wpdb->prepare( "SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = %s AND meta_value IN ({$meta_values_sql})", $meta_key ) );
+
+				if ( empty( $region_ids ) ) {
+					$region_ids = array( 0 );
+				}
+
+				$region_ids_sql = implode( ',', $region_ids );
+
+				$region_filter = " AND id IN ({$region_ids_sql}) ";
+			}
+		}
+
+		$tbds = $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name} WHERE id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' AND meta_value != '' ) {$region_filter} ORDER BY name ASC" );
 
 		$dated_count = $groups_template->total_group_count;
 		$tbds_count  = count( $tbds );
@@ -717,7 +739,7 @@ function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 			// Find the TBD offset
 			$tbd_start_num   = $page_start_num - $dated_count;
 			$tbd_fetch_count = $groups_template->pag_num;
-			$tbd_fetch_ids   = array_slice( $tbds, $tbd_start_num, $tbd_fetch_count );
+			$tbd_fetch_ids   = array_slice( $tbds, $tbd_start_num - 1, $tbd_fetch_count );
 
 		// 3. This page has some TBDs
 		} else {
@@ -743,7 +765,7 @@ function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 		if ( $tbds_count + $dated_count >= $page_end_num ) {
 			$groups_template->group_count = $groups_template->pag_num;
 		} else {
-			$groups_template->group_count = ( $dated_count + $tbds_count ) - $page_start_num;
+			$groups_template->group_count = ( $dated_count + $tbds_count ) - ( $page_start_num - 1 );
 		}
 
 		$groups_template->pag_links = paginate_links( array(
