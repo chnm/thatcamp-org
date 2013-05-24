@@ -51,13 +51,21 @@ class THATCamp_Favorites {
 			$afav_gloss = sprintf( '%s users have favorited this post.', number_format_i18n( $afav_count ) );
 		}
 
+                // Can't use the regular functions for building URL because it
+                // breaks parse_url() for some reason
 		if ( ! $this->user_has_favorited_activity( $r['user_id'], $activity_id ) ) {
-			$url = add_query_arg( 'redirect_to', wp_guess_url(), wp_nonce_url( bp_get_root_domain() . '/' . bp_get_activity_root_slug() . '/favorite/' . $activity_id . '/', 'mark_favorite' ) );
+                        $url_base = bp_get_root_domain() . '/' . bp_get_activity_root_slug() . '/favorite/' . $activity_id . '/';
+                        $url_base = add_query_arg( 'redirect_to', urlencode( wp_guess_url() ), $url_base );
+                        $nonce = wp_create_nonce( 'mark_favorite' );
+                        $url = add_query_arg( '_wpnonce', $nonce, $url_base );
 			$class = 'button fav bp-secondary-action';
 			$title = 'Mark as Favorite';
 			$text = sprintf( 'Favorite (%s)', number_format_i18n( $afav_count ) );
 		} else {
-			$url = add_query_arg( 'redirect_to', wp_guess_url(), wp_nonce_url( bp_get_root_domain() . '/' . bp_get_activity_root_slug() . '/unfavorite/' . $activity_id . '/', 'unmark_favorite' ) );
+                        $url_base = bp_get_root_domain() . '/' . bp_get_activity_root_slug() . '/unfavorite/' . $activity_id . '/';
+                        $url_base = add_query_arg( 'redirect_to', urlencode( wp_guess_url() ), $url_base );
+                        $nonce = wp_create_nonce( 'unmark_favorite' );
+                        $url = add_query_arg( '_wpnonce', $nonce, $url_base );
 			$class = 'button unfav bp-secondary-action';
 			$title = 'Remove Favorite';
 			$text = sprintf( 'Remove Favorite (%s)', number_format_i18n( $afav_count ) );
