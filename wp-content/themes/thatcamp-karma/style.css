@@ -46,6 +46,7 @@ Welcome to the stylesheet for THATCamp Karma
 -6.8 - Headers, Lists and Tabs - Activity, Groups, Blogs, Forums
 -6.9 - Private Messaging Threads
 -6.10 - Extended Profiles
+-6.11 - Widgets
 7.0 - Browser specific
 8.0 - Media queries
 9.0 - THATCamp Registry
@@ -3367,6 +3368,14 @@ body.register div.page ul {
 #member-fields {
   margin: 0 0 20px 0;
 }
+
+/*--------------------------------------------------------------
+6.11 - BP Widgets
+--------------------------------------------------------------*/
+.widget.buddypress a.selected {
+	color: #333;
+}
+
 /*--------------------------------------------------------------
 7.0 - Browser specific
 --------------------------------------------------------------*/
