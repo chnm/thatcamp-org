@@ -3382,6 +3382,12 @@ body.register div.page ul {
 .widget.buddypress #groups-list .item-title {
 	margin-bottom: 0;
 }
+.widget #blog-post-list.activity-list .activity-content .activity-header {
+	line-height: inherit;
+}
+.widget #blog-post-list.activity-list li {
+	padding: 10px 0;
+}
 
 /*--------------------------------------------------------------
 7.0 - Browser specific
