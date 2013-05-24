@@ -3375,6 +3375,13 @@ body.register div.page ul {
 .widget.buddypress a.selected {
 	color: #333;
 }
+.widget.buddypress #groups-list div.item-avatar {
+	display: none;
+	visibility: hidden;
+}
+.widget.buddypress #groups-list .item-title {
+	margin-bottom: 0;
+}
 
 /*--------------------------------------------------------------
 7.0 - Browser specific
