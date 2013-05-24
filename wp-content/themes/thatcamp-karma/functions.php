@@ -653,26 +653,23 @@ function thatcamp_filter_group_directory( $query ) {
 			$query = implode( ' WHERE ', $qarray );
 		}
 
-		// location, oy
-		foreach ( array( 'country', 'province', 'state' ) as $ltype ) {
-			// So stupid. have to manually unset state/province
-			// when they shouldn't be checked
-			switch ( urldecode( $_GET['Country'] ) ) {
-				case 'United States' :
-					unset( $_GET['Province'] );
-					break;
-				case 'Canada' :
-					unset( $_GET['State'] );
-					break;
+		// region, oy
+		$regions = thatcamp_region_map();
+		$current_region = isset( $_GET['region'] ) && in_array( $_GET['region'], array_keys( $regions ) ) ? $_GET['region'] : 'all';
+		if ( 'all' !== $current_region ) {
+			// Hack - check against countries unless '-us-'
+			$meta_key = false !== strpos( $current_region, '-us-' ) ? 'thatcamp_state' : 'thatcamp_country';
+			$meta_values = $regions[ $current_region ]['locations'];
+			foreach ( $meta_values as &$mv ) {
+				$mv = $wpdb->prepare( "%s", $mv );
 			}
+			$meta_values_sql = implode( ',', $meta_values );
 
-			if ( ! empty( $_GET[ ucwords( $ltype ) ] ) ) {
-				$qarray = explode( ' WHERE ', $query );
-				$qarray[0] .= ", {$bp->groups->table_name_groupmeta} gm{$ltype}";
-				$qarray[1] = $wpdb->prepare( " gm{$ltype}.group_id = g.id AND gm{$ltype}.meta_key = 'thatcamp_{$ltype}' AND gm{$ltype}.meta_value = %s AND ", stripslashes( urldecode( $_GET[ ucwords( $ltype ) ] ) ) ) . $qarray[1];
+			$qarray = explode( ' WHERE ', $query );
+			$qarray[0] .= ", {$bp->groups->table_name_groupmeta} gmregion";
+			$qarray[1] = $wpdb->prepare( " gmregion.group_id = g.id AND gmregion.meta_key = %s AND gmregion.meta_value IN ({$meta_values_sql}) AND ", $meta_key ) . $qarray[1];
 
-				$query = implode( ' WHERE ', $qarray );
-			}
+			$query = implode( ' WHERE ', $qarray );
 		}
 	}
 
@@ -880,6 +877,20 @@ function thatcamp_date_dropdown() {
 		<option <?php selected( 'upcoming', $current_date ) ?> value="upcoming">Upcoming</option>
 		<?php foreach( $years as $y ) : ?>
 			<option <?php selected( $y, $current_date ) ?> value="<?php echo esc_attr( $y ) ?>"><?php echo esc_attr( $y ) ?></option>
+		<?php endforeach ?>
+	</select>
+	<?php
+}
+
+function thatcamp_region_dropdown() {
+	$regions = thatcamp_region_map();
+	$current_region = isset( $_GET['region'] ) && in_array( $_GET['region'], array_keys( $regions ) ) ? urldecode( $_GET['region'] ) : 'all';
+
+	?>
+	<select name="region" id="tc-region">
+		<option <?php selected( 'all', $current_region ) ?> value="all">All</option>
+		<?php foreach ( $regions as $rkey => $rvalue ) : ?>
+			<option <?php selected( $rkey, $current_region ) ?> value="<?php echo esc_attr( $rkey ) ?>"><?php echo esc_attr( $rvalue['name'] ) ?></option>
 		<?php endforeach ?>
 	</select>
 	<?php

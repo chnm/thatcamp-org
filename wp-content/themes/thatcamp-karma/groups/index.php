@@ -30,19 +30,9 @@ get_header( 'thatcamp' ); ?>
 					<div class="tc-filter-year"><?php thatcamp_date_dropdown() ?></div>
 				</div>
 
-				<div class="tc-filter-location">
-					<div class="tc-filter-label">Location:</div>
-					<div class="tc-location-selector">
-						<?php
-						$location_args = array( 'context' => 'search' );
-						foreach ( array( 'Country', 'State', 'Province' ) as $ltype ) {
-							if ( ! empty( $_GET[ $ltype ] ) ) {
-								$location_args[ strtolower( $ltype ) ] = stripslashes( urldecode( $_GET[ $ltype ] ) );
-							}
-						}
-						?>
-						<?php thatcamp_country_picker( $location_args ) ?>
-					</div>
+				<div class="tc-filter-region">
+					<div class="tc-filter-label">Region:</div>
+					<div class="tc-region-selector"><?php thatcamp_region_dropdown() ?></div>
 				</div>
 
 				<input type="submit" value="Filter" />
