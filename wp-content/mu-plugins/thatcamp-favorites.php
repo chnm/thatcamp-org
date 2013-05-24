@@ -18,6 +18,9 @@ class THATCamp_Favorites {
 		// admin panels
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'network_admin_menu', array( $this, 'admin_menu' ) );
+
+		// css
+		add_action( 'wp_print_scripts', array( $this, 'print_styles' ) );
 	}
 
 	/**
@@ -60,7 +63,7 @@ class THATCamp_Favorites {
                         $url = add_query_arg( '_wpnonce', $nonce, $url_base );
 			$class = 'button fav bp-secondary-action';
 			$title = 'Mark as Favorite';
-			$text = sprintf( 'Favorite (%s)', number_format_i18n( $afav_count ) );
+			$text = sprintf( 'Favorite <span class="fav-count">%s</span>', number_format_i18n( $afav_count ) );
 		} else {
                         $url_base = bp_get_root_domain() . '/' . bp_get_activity_root_slug() . '/unfavorite/' . $activity_id . '/';
                         $url_base = add_query_arg( 'redirect_to', urlencode( wp_guess_url() ), $url_base );
@@ -68,11 +71,11 @@ class THATCamp_Favorites {
                         $url = add_query_arg( '_wpnonce', $nonce, $url_base );
 			$class = 'button unfav bp-secondary-action';
 			$title = 'Remove Favorite';
-			$text = sprintf( 'Remove Favorite (%s)', number_format_i18n( $afav_count ) );
+			$text = sprintf( 'Remove Favorite <span class="fav-count">%s</span>', number_format_i18n( $afav_count ) );
 		}
 
 		return sprintf(
-			'<a href="%s" class="%s" title="%s">%s</a> %s',
+			'<div class="thatcamp-favorite"><a href="%s" class="%s" title="%s">%s</a> %s</div>',
 			$url,
 			$class,
 			$title,
@@ -317,6 +320,52 @@ class THATCamp_Favorites {
 		}
 
 		return $favs;
+	}
+
+	/**
+	 * Printing styles directly in the head because I'm a rebel
+	 */
+	public function print_styles() {
+		?>
+<style type="text/css">
+.thatcamp-favorite {
+  padding: 3px 0;
+  font-size: .8em;
+  margin-bottom: .5em;
+  font-style: italic;
+  color: #999;
+}
+.thatcamp-favorite .button {
+  background: #668800 url('http://epicplay2013.thatcamp.org/wp-content/themes/thatcamp-karma/assets/images/thatcamp-greenbutton.jpg');
+  font-style: normal;
+  border: 1px solid #668800;
+  opacity: 1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: .7rem;
+  margin-right: 10px;
+  outline: none;
+  padding: 4px 10px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 14px;
+  text-decoration: -1px -1px 0px #668800;
+}
+.thatcamp-favorite .button:hover {
+  opacity: 0.9;
+}
+.thatcamp-favorite span.fav-count {
+  background: #666;
+  width: 10px;
+  height: 1.2em;
+  padding: 2px;
+  border-radius: 6px;
+}
+</style>
+		<?php
 	}
 
 }
