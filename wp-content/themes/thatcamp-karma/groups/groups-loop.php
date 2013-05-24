@@ -32,7 +32,10 @@
 			<div class="camp-listinfo">
 				<h3><a href="<?php thatcamp_camp_permalink() ?>" class="camplink"><?php bp_group_name() ?></a></h3>
 				<div class="item-desc">
-					<?php echo thatcamp_get_location( bp_get_group_id(), 'pretty' ) ?>
+                                        <?php if ( $location = thatcamp_get_location( bp_get_group_id(), 'pretty' ) ) : ?>
+                                                <?php echo $location . '<br />'; ?>
+                                        <?php endif ?>
+
 					<?php thatcamp_camp_description() ?>
 				</div>
 			</div>
