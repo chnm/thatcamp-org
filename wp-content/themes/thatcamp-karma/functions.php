@@ -865,7 +865,7 @@ function thatcamp_date_dropdown() {
 
 	$this_year = (int) date( 'Y' );
 	$years = array();
-	for ( $i = 2008; $i <= $this_year + 3; $i++ ) {
+	for ( $i = 2008; $i <= $this_year + 2; $i++ ) {
 		$years[] = $i;
 	}
 	$years = array_reverse( $years );
