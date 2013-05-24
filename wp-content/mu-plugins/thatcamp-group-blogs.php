@@ -309,7 +309,19 @@ function thatcamp_camp_description() {
 
 	$pretty_location = thatcamp_get_location( bp_get_group_id(), 'pretty' );
 
-	echo "<span class='thatcamp-meta-date'>$pretty_date</span> <span class='thatcamp-meta-location'>$pretty_location</span>";
+	$html = "<span class='thatcamp-meta-date thatcamp-meta-left'>$pretty_date</span> <span class='thatcamp-meta-location'>$pretty_location</span>";
+	$html .= '<br />';
+
+	global $groups_template;
+
+	$date_created = date( 'M d, Y', strtotime( $groups_template->group->date_created ) );
+	$last_active = bp_core_time_since( strtotime( $groups_template->group->last_activity ) );
+	$html .= "<span class='thatcamp-date-created thatcamp-meta-left'>Created on $date_created</span> <span class='thatcamp-last-active'>Active $last_active</span><br />";
+
+	$members = 1 == $groups_template->group->total_member_count ? '1 camper' : sprintf( '%s campers', bp_core_number_format( $groups_template->group->total_member_count ) );
+	$html .= "<span class='thatcamp-member-count thatcamp-meta-left'>$members</span>";
+
+	echo $html;
 }
 
 /**

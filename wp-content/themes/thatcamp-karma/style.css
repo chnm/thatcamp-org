@@ -2316,8 +2316,9 @@ div.dir-search input[type=text] {
   font-size: 14px;
   white-space: nowrap;
 }
-  #groups-list .item-desc > span:first-child {
-    padding-right: 14px;
+  #groups-list .item-desc .thatcamp-meta-left {
+		float: left;
+		width: 250px;
   }
 .tc-filters {
 	overflow: hidden;
@@ -3036,7 +3037,7 @@ ul.item-list li div.item-title span {
 ul.item-list li div.item-desc {
   color: #999999;
   margin: 10px 0 0 0;
-  width: 50%;
+  width: 80%;
 }
 ul.item-list li div.action {
   position: absolute;
