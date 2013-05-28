@@ -619,10 +619,14 @@ function thatcamp_filter_group_directory( $query ) {
 
 			$qarray[1] = " gmd.group_id = g.id AND gmd.meta_key = 'thatcamp_date' AND " . $qarray[1];
 
+			// 'past' is before the beginning of today; 'upcoming' is after that
+			// Additional fudging done for time zones, because I can't find the bug
+			$beginning_of_today = thatcamp_beginning_of_today() - 60*60*6;
+
 			if ( 'past' == $current_view ) {
-				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) < UNIX_TIMESTAMP(NOW()) AND " . $qarray[1];
+				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) < " . $beginning_of_today . " AND " . $qarray[1];
 			} else if ( 'upcoming' == $current_view ) {
-				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) > UNIX_TIMESTAMP(NOW()) AND " . $qarray[1];
+				$qarray[1] = " CONVERT(gmd.meta_value, SIGNED) >= " . $beginning_of_today . " AND " . $qarray[1];
 			}
 
 			$qarray[1] = preg_replace( '/ORDER BY .*? /', 'ORDER BY CONVERT(gmd.meta_value, SIGNED) ', $qarray[1] );
@@ -916,4 +920,8 @@ function thatcamp_region_dropdown() {
 		<?php endforeach ?>
 	</select>
 	<?php
+}
+
+function thatcamp_beginning_of_today() {
+	return strtotime( date( 'Y-m-d' ) );
 }

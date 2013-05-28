@@ -27,7 +27,7 @@
 
 	<?php while ( bp_groups() ) : bp_the_group() ?>
 		<article class="camp-listitem">
-			<div class="camp-listdate">TBA</div>
+			<div class="camp-listdate"><?php echo thatcamp_get_camp_date_pretty() ?></div>
 
 			<div class="camp-listinfo">
 				<h3><a href="<?php thatcamp_camp_permalink() ?>" class="camplink"><?php bp_group_name() ?></a></h3>
@@ -36,6 +36,7 @@
                                                 <?php echo $location . '<br />'; ?>
                                         <?php endif ?>
 
+					<?php thatcamp_get_camp_date( bp_get_group_id, 'unix' ) ?>
 					<?php thatcamp_camp_description() ?>
 				</div>
 			</div>
