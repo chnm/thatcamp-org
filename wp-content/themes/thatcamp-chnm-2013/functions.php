@@ -1,22 +1,5 @@
-<?php  
+<?php
 
-add_filter( 'twentyeleven_color_schemes', 'twentyeleven_color_schemes_green' );
-add_action( 'twentyeleven_enqueue_color_scheme', 'twentyeleven_enqueue_color_scheme_green' );
-
-function twentyeleven_color_schemes_green( $color_schemes ) {
-	$color_schemes['green'] = array(
-		'value' => 'green',
-		'label' => __( 'green', 'twentyeleven' ),
-		'thumbnail' => get_stylesheet_directory_uri() . 'images/green.png',
-		'default_link_color' => '#a1a82e',
-	);
-	return $color_schemes;
-}
-
-function twentyeleven_enqueue_color_scheme_green( $color_scheme ) {
-	if ( 'green' == $color_scheme )
-		wp_enqueue_style( 'green', get_stylesheet_directory_uri() . '/green.css', array(), null );
-}
 
 
 
@@ -36,15 +19,16 @@ div.generic-button {
   margin: 1rem 0;
 }
 div.generic-button a {
-  background: #A1A82E;
-  border: 1px solid #A1A82E;
+  background: #40313a;
+  border: 1px solid #d38a41;
   opacity: 1;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   color: #fff;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  font-weight: bold;
   outline: none;
   padding: 4px 10px;
   text-align: center;
@@ -81,5 +65,7 @@ div.generic-button.disabled-button:hover span {
 
 remove_action( 'wp_head', 'thatcamp_add_styles' );
 add_action( 'wp_head', 'thatcamp_add_styles_note' );
+
+
 
 ?>
