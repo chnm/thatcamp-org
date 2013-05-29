@@ -27,8 +27,17 @@ function thatcamp_add_friend_button( $user_id = 0, $type = 'echo' ) {
 			'link_class'        => 'friendship-button not_friends add',
 		) );
 
+
 		// Insert the tooltip
-		$button = str_replace( '</div>', '<span>Log in to add friend</span></div>', $button );
+		$button = str_replace( '</div>', '<span>Log in to befriend author</span></div>', $button );
+	}
+	
+	// Replace Title
+	
+	if ( is_home() || is_single() ) {
+		$button = str_replace( 'Add Friend', 'Befriend Author', $button );
+	} else {
+		$button = str_replace( 'Add Friend', 'Befriend', $button );  			
 	}
 
 	if ( 'echo' === $type ) {
@@ -44,9 +53,9 @@ function thatcamp_add_friend_button( $user_id = 0, $type = 'echo' ) {
  * Done inline to reduce overhead
  */
 function thatcamp_add_styles() {
-	if ( bp_is_root_blog() ) {
-		return;
-	}
+	//if ( bp_is_root_blog() ) {
+	//	return;
+	//}
 
 	?>
 <style type="text/css">
