@@ -925,3 +925,74 @@ function thatcamp_region_dropdown() {
 function thatcamp_beginning_of_today() {
 	return strtotime( date( 'Y-m-d' ) );
 }
+
+
+
+/**
+ * Always add our styles when using the proper theme
+ *
+ * Done inline to reduce overhead
+ */
+function thatcamp_add_styles_note() {
+	//if ( bp_is_root_blog() ) {
+	//	return;
+	//}
+
+	?>
+<style type="text/css">
+div.generic-button {
+  margin: 1rem 0;
+}
+.friend-button {
+
+}
+div.generic-button a {
+    background: #bb1122;
+    border: 1px solid #fff;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 5px #555555;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    font-size: 15px;
+    width: 100px;
+    font: bold 12px arial;
+    margin: 0 5px 5px;
+    padding: 5px 15px 6px;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 0;
+}
+#content div.generic-button a {
+	color: #fff;
+}
+div.generic-button a:hover {
+  opacity: 0.9;
+}
+div.generic-button.disabled-button {
+  position: relative;
+}
+div.generic-button.disabled-button a {
+  opacity: 1.0;
+}
+div.generic-button.disabled-button span {
+  margin-left: -999em;
+  position: absolute;
+}
+div.generic-button.disabled-button:hover span {
+  border-radius: 5px 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1); -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+  position: absolute; left: 1em; top: 2em; z-index: 99;
+  margin-left: 0;
+  background: #fcf9f3; border: 1px solid #ccc;
+  padding: 4px 8px;
+  color: #000;
+  white-space: nowrap;
+}
+</style>
+	<?php
+}
+
+remove_action( 'wp_head', 'thatcamp_add_styles' );
+add_action( 'wp_head', 'thatcamp_add_styles_note' );
