@@ -1185,6 +1185,7 @@ dd.wp-caption p.wp-caption-text,
   border-bottom: 1px solid #ddd;
   clear: both;
 }
+.post-author,
 .post-categories,
 .post-tags,
 .post-edit,
@@ -1194,6 +1195,17 @@ dd.wp-caption p.wp-caption-text,
   text-transform: uppercase;
   color: #999;
   margin: 0 30px 0 0;
+}
+.post-author {
+	float: none;
+	overflow: hidden;
+}
+.post-author div.friendship-button {
+	display: inline-block;
+	margin-left: 1rem;
+}
+.post-author div.generic-button.friendship-button a {
+	font-size: 1rem;
 }
 .comments-link {
   float: right;

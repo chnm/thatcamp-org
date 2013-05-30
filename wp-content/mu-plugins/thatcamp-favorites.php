@@ -352,7 +352,6 @@ class THATCamp_Favorites {
   border-radius: 3px;
   color: #ffffff;
   cursor: pointer;
-  font-size: .7rem;
   margin-right: 10px;
   outline: none;
   padding: 4px 10px;

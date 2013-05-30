@@ -33,15 +33,16 @@
 			<div class="comments-link">
 				<?php comments_popup_link( __( 'Comment', 'notecamp'), __( '1 Comment', 'notecamp'), __( '% Comments', 'notecamp') ); ?>
 			</div>
-		<?php endif; ?>			
+		<?php endif; ?>
+		<div class="post-author">By <?php the_author_posts_link() ?> <?php thatcamp_add_friend_button( get_the_author_ID() ) ?></div>
 		<div class="post-date"><?php echo get_the_date(); ?></div>
 		<div class="post-categories">
 			<?php _e( 'Categories: ', 'notecamp'); ?><?php the_category( ' ' ); ?>
 		</div>
 		<div class="post-tags">
-			<?php $tags_list = get_the_tag_list( '', ', ' ); 
+			<?php $tags_list = get_the_tag_list( '', ', ' );
 			if ( $tags_list ): ?>
-			<?php printf( __( 'Tags: %2$s', 'notecamp'), 'tag-links', $tags_list ); ?> | 
+			<?php printf( __( 'Tags: %2$s', 'notecamp'), 'tag-links', $tags_list ); ?> |
 			<?php endif; ?>
 		</div>
 		<div class="post-edit">
