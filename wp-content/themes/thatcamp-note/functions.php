@@ -35,9 +35,9 @@ endif;
  * Done inline to reduce overhead
  */
 function thatcamp_add_styles_note() {
-	if ( bp_is_root_blog() ) {
-		return;
-	}
+	//if ( bp_is_root_blog() ) {
+	//	return;
+	//}
 
 	?>
 <style type="text/css">
@@ -77,10 +77,11 @@ div.generic-button.disabled-button span {
 div.generic-button.disabled-button:hover span {
   border-radius: 5px 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1); -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
-  position: absolute; left: 1em; top: 2em; z-index: 99;
+  position: absolute; left: 4.5em; top: 4.5em; z-index: 99;
   margin-left: 0;
   background: #2f2f2f; border: 1px solid #ccc;
   padding: 4px 8px;
+  font-size: 1rem;
   color: #fff;
   white-space: nowrap;
 }

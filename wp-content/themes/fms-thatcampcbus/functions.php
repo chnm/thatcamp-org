@@ -9,9 +9,9 @@
  * Done inline to reduce overhead
  */
 function thatcamp_add_styles_note() {
-	if ( bp_is_root_blog() ) {
-		return;
-	}
+	//if ( bp_is_root_blog() ) {
+	//	return;
+	//}
 
 	?>
 <style type="text/css">

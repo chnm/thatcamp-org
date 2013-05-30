@@ -91,7 +91,7 @@
                     
                 </div>
                 <?php endif; ?>
-                
+                                
                 <?php /* Post content */ ?>
                 <div class="entry-content clearfix">                
                     <?php do_action('graphene_before_post_content'); ?>					
@@ -119,6 +119,9 @@
 		<a href="<?php echo get_author_posts_url($usr->ID); ?>">
 <?php echo get_avatar($usr->ID, 100); ?></a>
 	</div>
+	<div class="camper_befriend">
+        <?php thatcamp_add_friend_button( $usr->ID ) ?>	
+	</div>
 	<div class="camper_name">
 		<a href="<?php echo get_author_posts_url($usr->ID); ?>">
 <?php the_author_meta('first_name', $usr->ID); ?>&nbsp;<?php the_author_meta('last_name', $usr->ID); ?></a>
@@ -127,8 +130,11 @@
 		<a href="<?php echo get_author_posts_url($usr->ID); ?>">
 			Posts (<?php echo get_usernumposts($usr->ID); ?>)</a>
 	</div>
+	<div style="clear:both;"></div>	
 </div>
 <?php } ?>
+
+
 
                     <?php /* Page links */ wp_link_pages(array('before' => __('<div class="link-pages"><p><strong>Pages:</strong> ','graphene'), 'after' => '</p></div>', 'next_or_number' => 'number')); ?>
                     
