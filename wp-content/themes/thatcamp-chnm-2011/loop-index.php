@@ -81,7 +81,7 @@
                         <li><?php the_category(",</li>\n<li>") ?></li>
                     </ul>
                     <?php endif; ?>
-                    
+                                        
                     <?php 
 						/* Add a print button only for single pages/posts 
 						 * and if the theme option is enabled.
@@ -89,7 +89,7 @@
 						if (is_singular() && $graphene_settings['print_css'] && $graphene_settings['print_button']) : ?>
 						<p class="print"><a href="javascript:print();" title="<?php esc_attr_e('Print this page', 'graphene'); ?>"><span><?php _e('Print this page', 'graphene'); ?></span></a></p>
 					<?php endif; ?>
-                    
+                                        
                     <?php /* Add an email post icon if the WP-Email plugin is installed and activated */
 					if(function_exists('wp_email') && is_singular()) {echo '<p class="email">'; email_link(); echo '</p>';}
 					?>
@@ -118,6 +118,7 @@
                             }
                         ?>
                     </p>
+                                        
                     <?php endif; ?>
                                         
                     <?php /* For printing: the date of the post */
@@ -129,6 +130,8 @@
                     <?php do_action('graphene_post_meta'); ?>
                 </div>
                 <?php endif; ?>
+                
+                <?php thatcamp_add_friend_button( get_the_author_ID() ) ?>                
                 
                 <?php /* Post content */ ?>
                 <div class="entry-content clearfix">
@@ -209,6 +212,8 @@
             
         </div>
         <?php endif; ?>
+        
+         <?php thatcamp_add_friend_button( get_the_author_ID() ) ?>                
         
          <?php /* For printing: the permalink */
 			if ($graphene_settings['print_css']) {

@@ -7,6 +7,7 @@
 		<div class="post" id="post-<?php the_ID(); ?>">
 			<h2><?php the_title(); ?></h2>
 				<p><strong><?php the_time('l, F jS, Y') ?></strong> | <?php the_author_posts_link(); ?></p>
+				<?php thatcamp_add_friend_button( get_the_author_ID() ) ?>
 			<div class="entry">
 				<?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
 
