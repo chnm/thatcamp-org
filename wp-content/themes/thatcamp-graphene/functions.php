@@ -75,9 +75,9 @@ add_action( 'after_setup_theme', 'thatcamp_graphene_setup' );
  * Done inline to reduce overhead
  */
 function thatcamp_add_styles_note() {
-	if ( bp_is_root_blog() ) {
-		return;
-	}
+	//if ( bp_is_root_blog() ) {
+	//	return;
+	//}
 
 	?>
 <style type="text/css">
@@ -85,14 +85,15 @@ div.generic-button {
   margin: 1rem 0;
 }
 div.generic-button a {
-    background: #bb1122;
+    background: linear-gradient(#3C9CD2, #1F6EB6) repeat scroll 0 0 transparent;
     border: 1px solid #eee;
     border-radius: 3px 3px 3px 3px;
     box-shadow: 0 0 5px #555555;
     color: #fcf9f3;
     cursor: pointer;
     display: block;
-    float: right;
+    width: auto;
+    display: table;
     font: bold 12px arial;
     margin: 0 5px 5px;
     padding: 5px 15px 6px;
@@ -122,6 +123,9 @@ div.generic-button.disabled-button:hover span {
   padding: 4px 8px;
   color: #fff;
   white-space: nowrap;
+}
+.camper_info {
+	height: auto;
 }
 </style>
 	<?php

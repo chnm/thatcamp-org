@@ -33,6 +33,9 @@ $lastname = strtolower($current_camper->last_name);
 
     <?php echo get_avatar( $current_camper->user_email, $size = '150'); ?>&nbsp;&nbsp;	
 		<ul id="author-info">
+		
+			<li><?php thatcamp_add_friend_button( get_the_author_ID() ) ?></li>
+		
 		    <?php if ( $title = $current_camper->user_title ): ?>
 			<li class="title">Title / Position: <?php echo $current_camper->user_title; ?></li>
 			<?php endif; ?>
@@ -48,6 +51,8 @@ $lastname = strtolower($current_camper->last_name);
 			<?php if(!empty($current_camper->user_twitter)): ?>
 			<li>Twitter: <a href="http://twitter.com/<?php echo $current_camper->user_twitter; ?>/"><?php echo $current_camper->user_twitter; ?></a></li>
 			<?php endif; ?>
+			
+
 		</ul>
 		
 		<?php echo wpautop($current_camper->user_description, 0); ?>
