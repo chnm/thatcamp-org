@@ -608,7 +608,7 @@ function thatcamp_directory_current_view() {
 function thatcamp_filter_group_directory( $query ) {
 	global $bp, $wpdb;
 
-	if ( bp_is_groups_component() && bp_is_directory() ) {
+	if ( bp_is_groups_component() && bp_is_directory() && ! empty( $bp->groups->main_group_loop ) ) {
 		$current_view = thatcamp_directory_current_view();
 
 		if ( 'new' != $current_view ) {

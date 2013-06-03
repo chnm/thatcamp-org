@@ -11,6 +11,7 @@
 
 <?php do_action( 'bp_before_groups_loop' ); ?>
 
+<?php buddypress()->groups->main_group_loop = true; ?>
 <?php if ( bp_has_groups( bp_ajax_querystring( 'groups' ) ) ) : ?>
 
 	<div id="pag-top" class="pagination">
@@ -69,4 +70,5 @@
 
 <?php endif; ?>
 
+<?php buddypress()->groups->main_group_loop = false; ?>
 <?php do_action( 'bp_after_groups_loop' ); ?>
