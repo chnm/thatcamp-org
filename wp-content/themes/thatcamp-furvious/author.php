@@ -14,7 +14,10 @@ endif;
 		    <h1><?php echo $current_camper->first_name; ?>&nbsp; <?php echo $current_camper->last_name; ?></h1>
 		    <div class="vcard" id="hcard-<?php echo $lastname; ?>">
 
-            <?php echo get_avatar( $current_camper->user_email, $size = '96'); ?>&nbsp;&nbsp;	
+            <?php echo get_avatar( $current_camper->user_email, $size = '96'); ?>&nbsp;&nbsp;
+
+	        <?php thatcamp_add_friend_button( $current_camper->ID ) ?>
+
         		<ul>
         		    <?php if ( $title = $current_camper->user_title ): ?>
         			<li class="title">Title / Position: <?php echo $current_camper->user_title; ?></li>

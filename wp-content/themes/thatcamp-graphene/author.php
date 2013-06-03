@@ -31,7 +31,10 @@ $lastname = strtolower($current_camper->last_name);
 
 	<div class="entry author-entry clearfix" id="author-<?php echo $lastname; ?>">
 
-    <?php echo get_avatar( $current_camper->user_email, $size = '150'); ?>&nbsp;&nbsp;	
+    <?php echo get_avatar( $current_camper->user_email, $size = '150'); ?>&nbsp;&nbsp;
+
+	        <?php thatcamp_add_friend_button( $current_camper->ID ) ?>
+
 		<ul id="author-info">
 		
 			<li><?php thatcamp_add_friend_button( get_the_author_ID() ) ?></li>
