@@ -715,7 +715,7 @@ function thatcamp_region_map() {
 				'Wallis and Futuna',
 			),
 		),
-		'australia-and-oceania' => array(
+		'australia-and-new-zealand' => array(
 			'name' => 'Australia and New Zealand',
 			'locations' => array(
 				'Australia',
