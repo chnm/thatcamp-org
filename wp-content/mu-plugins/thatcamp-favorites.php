@@ -6,7 +6,8 @@
 
 class THATCamp_Favorites {
 	public function __construct() {
-		add_filter( 'the_content', array( $this, 'add_button_to_the_content' ) );
+		add_filter( 'the_content', array( $this, 'add_button_to_the_content' ), 9999999 );
+		add_filter( 'the_excerpt', array( $this, 'add_button_to_the_content' ), 9999999 );
 
 		// Add per-activity "favoriter" data
 		add_action( 'bp_activity_add_user_favorite', array( $this, 'add_activity_favoriter' ), 10, 2 );
