@@ -671,7 +671,16 @@ function thatcamp_filter_group_directory( $query ) {
 
 			$qarray = explode( ' WHERE ', $query );
 			$qarray[0] .= ", {$bp->groups->table_name_groupmeta} gmregion";
-			$qarray[1] = $wpdb->prepare( " gmregion.group_id = g.id AND gmregion.meta_key = %s AND gmregion.meta_value IN ({$meta_values_sql}) AND ", $meta_key ) . $qarray[1];
+			$region_query = " gmregion.group_id = g.id AND ";
+			$region_query_sub = $wpdb->prepare( " gmregion.meta_key = %s AND gmregion.meta_value IN ({$meta_values_sql}) ", $meta_key );
+			// Special hacks for Guam and Puerto Rico
+			if ( 'central-america-caribbean-and-mexico' === $current_region ) {
+				$region_query_sub = "( (gmregion.meta_key = 'thatcamp_state' AND gmregion.meta_value = 'Puerto Rico') OR ({$region_query_sub}) )";
+			} else if ( 'asia-and-pacific-islands' === $current_region ) {
+				$region_query_sub = "( (gmregion.meta_key = 'thatcamp_state' AND gmregion.meta_value = 'Guam') OR ({$region_query_sub}) )";
+			}
+
+			$qarray[1] = $region_query . $region_query_sub . ' AND ' . $qarray[1];
 
 			$query = implode( ' WHERE ', $qarray );
 		}
