@@ -333,11 +333,11 @@ function thatcamp_get_camp_date_pretty( $group_id = 0 ) {
 	$date_array = array();
 
 	if ( $start_date = thatcamp_get_camp_date( bp_get_group_id(), 'text' ) ) {
-		$date_array[] = $start_date;
+		$date_array[] = '<span class="tc-date-chunk tc-date-start">' . $start_date . '</span>';
 	}
 
 	if ( $end_date = thatcamp_get_camp_date( bp_get_group_id(), 'text', 'end' ) ) {
-		$date_array[] = $end_date;
+		$date_array[] = '<span class="tc-date-chunk tc-date-end">' . $end_date . '</span>';
 	}
 
 	if ( empty( $date_array ) ) {

@@ -251,6 +251,9 @@ body {
   text-align: right;
   padding: 0 2% 10px 0;
 }
+.camp-listdate > span.tc-date-chunk {
+	white-space: nowrap;
+}
 .camp-listitem {
   clear: both;
   padding: 20px 0 0 0;
