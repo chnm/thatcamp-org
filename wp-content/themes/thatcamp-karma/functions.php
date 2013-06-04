@@ -630,7 +630,7 @@ function thatcamp_filter_group_directory( $query ) {
 			}
 
 			$qarray[1] = preg_replace( '/ORDER BY .*? /', 'ORDER BY CONVERT(gmd.meta_value, SIGNED) ', $qarray[1] );
-			$qarray[1] = preg_replace( '/(ASC|DESC)/', 'DESC', $qarray[1] );
+			$qarray[1] = preg_replace( '/(ASC|DESC)/', 'ASC', $qarray[1] );
 
 			$query = implode( ' WHERE ', $qarray );
 		} else {
