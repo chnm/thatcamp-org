@@ -6,6 +6,7 @@
 
 class THATCamp_Favorites {
 	public function __construct() {
+		add_filter( 'get_the_excerpt', array( $this, 'unhook_duplicate_excerpt_button' ), 1 );
 		add_filter( 'the_content', array( $this, 'add_button_to_the_content' ), 9999999 );
 		add_filter( 'the_excerpt', array( $this, 'add_button_to_the_content' ), 9999999 );
 
@@ -25,12 +26,26 @@ class THATCamp_Favorites {
 	}
 
 	/**
+	 * When content is displayed via excerpt, don't let the button show twice
+	 *
+	 * the_excerpt() evenually runs its stuff through the 'the_content'
+	 * filters (see wp_trim_excerpt()). We don't want double buttons, so
+	 * we take this opportunity - at get_the_excerpt, when we know an
+	 * excerpt is in process - to unhook the the_content button adder.
+	 */
+	public function unhook_duplicate_excerpt_button( $excerpt ) {
+		remove_filter( 'the_content', array( $this, 'add_button_to_the_content' ), 9999999 );
+		return $excerpt;
+	}
+
+	/**
 	 * Wrapper that grabs the_content and throws a button on the end
 	 */
 	public function add_button_to_the_content( $content ) {
 		if ( is_user_logged_in() && ! is_admin() ) {
 			$content .= $this->get_favorite_button();
 		}
+		add_filter( 'the_content', array( $this, 'add_button_to_the_content' ), 9999999 );
 		return $content;
 	}
 
