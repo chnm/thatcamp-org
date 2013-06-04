@@ -19,7 +19,7 @@ function thatcamp_add_friend_button( $user_id = 0, $type = 'echo' ) {
 			'block_self' => true,
 			'wrapper_class'     => 'disabled-button friendship-button not_friends',
 			'wrapper_id'        => 'friendship-button-' . $user_id,
-			'link_href'         => wp_login_url( wp_nonce_url( bp_loggedin_user_domain() . bp_get_friends_slug() . '/add-friend/' . $user_id . '/', 'friends_add_friend' ) ),
+			'link_href'         => wp_login_url( '/?add-friend=' . $user_id ),
 			'link_text'         => __( 'Add Friend', 'buddypress' ),
 			'link_title'        => __( 'Add Friend', 'buddypress' ),
 			'link_id'           => 'friend-' . $user_id,
@@ -31,13 +31,13 @@ function thatcamp_add_friend_button( $user_id = 0, $type = 'echo' ) {
 		// Insert the tooltip
 		$button = str_replace( '</div>', '<span>Log in to befriend author</span></div>', $button );
 	}
-	
+
 	// Replace Title
-	
+
 	if ( is_home() || is_single() ) {
 		$button = str_replace( 'Add Friend', 'Befriend Author', $button );
 	} else {
-		$button = str_replace( 'Add Friend', 'Befriend', $button );  			
+		$button = str_replace( 'Add Friend', 'Befriend', $button );
 	}
 
 	if ( 'echo' === $type ) {
@@ -46,6 +46,24 @@ function thatcamp_add_friend_button( $user_id = 0, $type = 'echo' ) {
 		return $button;
 	}
 }
+
+function thatcamp_catch_login_redirect_friend_requests() {
+	if ( is_user_logged_in() && ! empty( $_GET['add-friend'] ) ) {
+		$redirect_to = wp_nonce_url( bp_loggedin_user_domain() . bp_get_friends_slug() . '/add-friend/' . intval( $_GET['add-friend'] ) . '/', 'friends_add_friend' );
+
+		wp_redirect( $redirect_to );
+	}
+}
+add_action( 'bp_actions', 'thatcamp_catch_login_redirect_friend_requests', 1 );
+
+function thatcamp_whitelist_subdomain_redirects( $hosts ) {
+	$p = parse_url( wp_get_referer() );
+	if ( ! empty( $p['host'] ) && 'thatcamp.org' === substr( $p['host'], -12 ) ) {
+		$hosts[] = $p['host'];
+	}
+	return $hosts;
+}
+add_filter( 'allowed_redirect_hosts', 'thatcamp_whitelist_subdomain_redirects' );
 
 /**
  * Always add our styles when using the proper theme
