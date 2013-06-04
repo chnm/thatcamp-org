@@ -15,12 +15,12 @@
 			<header class="post-header">
 					<h1 class="post-title"><?php printf( __( 'Search Results for: %s', 'thatcamp'), '<span>' . get_search_query() . '</span>' ); ?></h1>
 			</header>
-		<?php while ( have_posts() ) : the_post(); 
+		<?php while ( have_posts() ) : the_post();
 			get_template_part( 'parts/content', get_post_format() );
 		endwhile;
 			thatcamp_content_nav( 'nav-below' );
-		else : 
-			get_template_part( 'content', 'notfound' );
+		else :
+			include( 'parts/content-notfound.php' );
 		endif; ?>
 		</div>
 		<?php do_action( 'bp_after_blog_search' ); ?>
