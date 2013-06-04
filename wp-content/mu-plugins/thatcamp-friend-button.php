@@ -19,7 +19,7 @@ function thatcamp_add_friend_button( $user_id = 0, $type = 'echo' ) {
 			'block_self' => true,
 			'wrapper_class'     => 'disabled-button friendship-button not_friends',
 			'wrapper_id'        => 'friendship-button-' . $user_id,
-			'link_href'         => wp_login_url( '/?add-friend=' . $user_id ),
+			'link_href'         => wp_login_url( '/?add-friend=' . $user_id . '&aredirect=' . urlencode( wp_guess_url() ) ),
 			'link_text'         => __( 'Add Friend', 'buddypress' ),
 			'link_title'        => __( 'Add Friend', 'buddypress' ),
 			'link_id'           => 'friend-' . $user_id,
@@ -48,13 +48,25 @@ function thatcamp_add_friend_button( $user_id = 0, $type = 'echo' ) {
 }
 
 function thatcamp_catch_login_redirect_friend_requests() {
-	if ( is_user_logged_in() && ! empty( $_GET['add-friend'] ) ) {
+	if ( is_user_logged_in() && ! empty( $_GET['add-friend'] ) && ! empty( $_GET['aredirect'] ) ) {
 		$redirect_to = wp_nonce_url( bp_loggedin_user_domain() . bp_get_friends_slug() . '/add-friend/' . intval( $_GET['add-friend'] ) . '/', 'friends_add_friend' );
+		$redirect_to = add_query_arg( 'bredirect', $_GET['aredirect'], $redirect_to );
 
 		wp_redirect( $redirect_to );
 	}
 }
 add_action( 'bp_actions', 'thatcamp_catch_login_redirect_friend_requests', 1 );
+
+/**
+ * Special case for the redirect chain after logging in
+ */
+function thatcamp_hijack_post_add_friend_redirect( $redirect ) {
+	if ( ! empty( $_GET['bredirect'] ) ) {
+		$redirect = urldecode( $_GET['bredirect'] );
+	}
+	return $redirect;
+}
+add_action( 'wp_redirect', 'thatcamp_hijack_post_add_friend_redirect' );
 
 function thatcamp_whitelist_subdomain_redirects( $hosts ) {
 	$p = parse_url( wp_get_referer() );
