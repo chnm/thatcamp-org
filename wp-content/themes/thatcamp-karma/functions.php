@@ -617,7 +617,7 @@ function thatcamp_filter_group_directory( $query ) {
 
 			$qarray[0] .= ", {$bp->groups->table_name_groupmeta} gmd ";
 
-			$qarray[1] = " gmd.group_id = g.id AND gmd.meta_key = 'thatcamp_date' AND " . $qarray[1];
+			$qarray[1] = " gmd.group_id = g.id AND gmd.meta_key = 'thatcamp_date' AND gmd.meta_value != '' AND " . $qarray[1];
 
 			// 'past' is before the beginning of today; 'upcoming' is after that
 			// Additional fudging done for time zones, because I can't find the bug
@@ -732,7 +732,7 @@ function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 			}
 		}
 
-		$tbds = $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name} WHERE id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' AND meta_value != '' ) {$region_filter} ORDER BY name ASC" );
+		$tbds = $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name} WHERE id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' AND meta_value != '' ) AND id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_start_date' AND meta_value != '' ) {$region_filter} ORDER BY name ASC" );
 
 		$dated_count = $groups_template->total_group_count;
 		$tbds_count  = count( $tbds );
