@@ -635,7 +635,7 @@ function thatcamp_filter_group_directory( $query ) {
 			$query = implode( ' WHERE ', $qarray );
 		} else {
 			$query = preg_replace( '/ORDER BY .*? /', 'ORDER BY g.id ', $query );
-			$query = preg_replace( '/(ASC|DESC)/', 'DESC', $query );
+			$query = preg_replace( '/(ASC|DESC)/', 'ASC', $query );
 		}
 
 		// date filter
