@@ -20,9 +20,15 @@ get_header( 'thatcamp' ); ?>
 
 		<?php do_action( 'bp_before_directory_groups' ); ?>
 
-		<form action="" method="get" id="groups-directory-form" class="dir-form">
+		<h3><?php _e( 'THATCamps', 'thatcamp' ); ?></h3>
 
-			<h3><?php _e( 'THATCamps', 'thatcamp' ); ?></h3>
+		<div id="group-dir-search" class="dir-search" role="search">
+
+			<?php bp_directory_groups_search_form(); ?>
+
+		</div><!-- #group-dir-search -->
+
+		<form action="" method="get" id="groups-directory-form" class="dir-form">
 
 			<div class="tc-filters">
 				<div class="tc-filter-region">
@@ -37,7 +43,6 @@ get_header( 'thatcamp' ); ?>
 
 				<input type="submit" value="Filter" />
 			</div>
-
 
 			<?php do_action( 'bp_before_directory_groups_content' ); ?>
 
