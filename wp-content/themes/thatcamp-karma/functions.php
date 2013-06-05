@@ -584,10 +584,10 @@ function thatcamp_validate_url( $string ) {
  * Get the current 'tctype' view out of $_GET and sanitize
  */
 function thatcamp_directory_current_view() {
-	$current_view = 'new';
+	$current_view = 'all';
 
 	if ( isset( $_GET['date'] ) ) {
-		if ( in_array( $_GET['date'], array( 'new', 'past', 'upcoming' ) ) ) {
+		if ( in_array( $_GET['date'], array( 'all', 'past', 'upcoming' ) ) ) {
 			$current_view = $_GET['date'];
 		} else if ( is_numeric( $_GET['date'] ) ) {
 			$current_view = intval( $_GET['date'] );
@@ -611,7 +611,16 @@ function thatcamp_filter_group_directory( $query ) {
 	if ( bp_is_groups_component() && bp_is_directory() && ! empty( $bp->groups->main_group_loop ) ) {
 		$current_view = thatcamp_directory_current_view();
 
-		if ( 'new' != $current_view ) {
+		$regions = thatcamp_region_map();
+		$current_region = isset( $_GET['region'] ) && in_array( $_GET['region'], array_keys( $regions ) ) ? $_GET['region'] : 'all';
+
+		// When Date = All and Region = All, sort DESC by id (date created)
+		if ( 'all' === $current_view && 'all' === $current_region ) {
+			$query = preg_replace( '/ORDER BY .*? /', 'ORDER BY g.id ', $query );
+			$query = preg_replace( '/(ASC|DESC)/', 'DESC', $query );
+
+		// Otherwise, sort ASC by start date
+		} else {
 			// Filter by date
 			$qarray = explode( ' WHERE ', $query );
 
@@ -633,9 +642,6 @@ function thatcamp_filter_group_directory( $query ) {
 			$qarray[1] = preg_replace( '/(ASC|DESC)/', 'ASC', $qarray[1] );
 
 			$query = implode( ' WHERE ', $qarray );
-		} else {
-			$query = preg_replace( '/ORDER BY .*? /', 'ORDER BY g.id ', $query );
-			$query = preg_replace( '/(ASC|DESC)/', 'DESC', $query );
 		}
 
 		// date filter
@@ -658,8 +664,6 @@ function thatcamp_filter_group_directory( $query ) {
 		}
 
 		// region, oy
-		$regions = thatcamp_region_map();
-		$current_region = isset( $_GET['region'] ) && in_array( $_GET['region'], array_keys( $regions ) ) ? $_GET['region'] : 'all';
 		if ( 'all' !== $current_region ) {
 			// Hack - check against countries unless '-us-'
 			$meta_key = false !== strpos( $current_region, '-us-' ) ? 'thatcamp_state' : 'thatcamp_country';
