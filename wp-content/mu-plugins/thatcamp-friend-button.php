@@ -49,13 +49,31 @@ function thatcamp_add_friend_button( $user_id = 0, $type = 'echo' ) {
 
 function thatcamp_catch_login_redirect_friend_requests() {
 	if ( is_user_logged_in() && ! empty( $_GET['add-friend'] ) && ! empty( $_GET['aredirect'] ) ) {
-		$redirect_to = wp_nonce_url( bp_loggedin_user_domain() . bp_get_friends_slug() . '/add-friend/' . intval( $_GET['add-friend'] ) . '/', 'friends_add_friend' );
+                global $my_transposh_plugin;
+                $redirect_to = bp_loggedin_user_domain() . bp_get_friends_slug() . '/add-friend/' . intval( $_GET['add-friend'] ) . '/';
+                $redirect_to = add_query_arg( '_wpnonce', wp_create_nonce( 'friends_add_friend' ), $redirect_to );
+//		$redirect_to = wp_nonce_url( bp_loggedin_user_domain() . bp_get_friends_slug() . '/add-friend/' . intval( $_GET['add-friend'] ) . '/', 'friends_add_friend' );
 		$redirect_to = add_query_arg( 'bredirect', $_GET['aredirect'], $redirect_to );
 
 		wp_redirect( $redirect_to );
 	}
 }
 add_action( 'bp_actions', 'thatcamp_catch_login_redirect_friend_requests', 1 );
+
+function thatcamp_kill_transposh_hackery( $uri ) {
+        global $wp_filter;
+
+        if ( ! empty( $_GET['bredirect'] ) ) {
+                foreach ( (array) array_keys( $wp_filter['bp_uri'][10] ) as $filter ) {
+                        if ( false !== strpos( $filter, 'bp_uri_filter' ) ) {
+                                unset( $wp_filter['bp_uri'][10][ $filter ] );
+                        }
+                }
+        }
+
+        return $uri;
+}
+add_filter( 'bp_uri', 'thatcamp_kill_transposh_hackery', 1 );
 
 /**
  * Special case for the redirect chain after logging in
