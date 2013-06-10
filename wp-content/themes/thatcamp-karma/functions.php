@@ -710,7 +710,7 @@ function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 
 	$current_view = thatcamp_directory_current_view();
 
-	if ( bp_is_groups_component() && bp_is_directory() && 'upcoming' == $current_view ) {
+	if ( bp_is_groups_component() && bp_is_directory() && 'all' == $current_view ) {
 
 		// If there's a 'region' filter, apply it
 		$region_filter = '';
