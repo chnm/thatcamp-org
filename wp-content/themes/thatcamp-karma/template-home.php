@@ -79,7 +79,7 @@
 
 
 			<a href="<?php echo site_url(); ?>/camps" class="button campbutton offset">
-				<span class="button-inner"><?php _e( 'View All THATCamps', 'thatcamp' ); ?></span>
+				<span class="button-inner"><?php _e( 'View all THATCamps', 'thatcamp' ); ?></span>
 			</a>
 
 
