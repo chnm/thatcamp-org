@@ -11,11 +11,11 @@
 	<?php do_action( 'bp_inside_before_sidebar' ); ?>
 	<!-- demo sidebar content -->
 
-	<a href="<?php echo site_url(); ?>/registry" class="button campbutton">
+	<a href="<?php echo site_url(); ?>/help/plan/registry" class="button campbutton">
 		<span class="button-inner"><?php _e( 'Organize a THATCamp', 'thatcamp' ); ?></span>
 	</a>
 
-	<a href="<?php echo site_url(); ?>/contact" class="email-thatcamplink"><?php _e( 'New THATCamps by Email', 'thatcamp' ); ?></a>
+	<a href="http://feedburner.google.com/fb/a/mailverify?uri=NewestTHATCamps&amp;loc=en_US" class="email-thatcamplink"><?php _e( 'New THATCamps by email', 'thatcamp' ); ?></a>
 
 	<a href="<?php echo site_url(); ?>/camps/feed" class="rss-thatcamplink"><?php _e( 'New THATCamps by RSS', 'thatcamp' ); ?></a>
 
