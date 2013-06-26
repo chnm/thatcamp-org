@@ -34,7 +34,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 					<?php if ( isset( $_POST['errors']['thatcamp-name'] ) ) : ?>
 						<p class="required-error"><?php echo esc_html( $_POST['errors']['thatcamp-name'] ) ?></p>
 					<?php endif ?>
-					<p>City names such as THATCamp Austin, regional names such as THATCamp New England, or thematic names such as THATCamp Pedagogy are all fine. If you choose a name that another organizer has used, you must obtain the agreement of that organizer.</p>
+					<p>Example: THATCamp New England 2012, THATCamp AHA 2013. THATCamp names generally include a city, state, region, theme, or organization followed by the year in which the THATCamp will be held. If you choose a THATCamp name that another organizer has already used, you must obtain the agreement of that organizer to use the same name.</p>
 					<?php $thatcamp_name = isset( $_POST['thatcamp-name'] ) ? stripslashes( $_POST['thatcamp-name'] ) : '' ?>
 					<input name="thatcamp-name" type="text" id="thatcamp-name" value="<?php echo esc_attr( $thatcamp_name ) ?>" />
 				</div>
@@ -44,7 +44,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 					<?php if ( isset( $_POST['errors']['site-url'] ) ) : ?>
 						<p class="required-error"><?php echo esc_html( $_POST['errors']['site-url'] ) ?></p>
 					<?php endif ?>
-					<p>THATCamp site URLs are generally constructed thusly: [nameyear].thatcamp.org, e.g., a THATCamp NCPH held in 2012 becomes http://ncph2012.thatcamp.org. Please try to follow this convention when choosing a URL for your THATCamp site.</p>
+					<p>Example: http://newengland2012.thatcamp.org. THATCamp site URLs are generally constructed thusly: http://[nameyear].thatcamp.org. Please try to follow this convention when choosing a URL for your THATCamp site.</p>
 					<?php $site_url = isset( $_POST['site-url'] ) ? $_POST['site-url'] : '' ?>
 					http://<input name="site-url" style="display:inline; width: 200px" type="text" id="site-url" value="<?php echo esc_attr( $site_url ) ?>" />.thatcamp.org
 				</div>
@@ -66,14 +66,14 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 
 				<div class="registry-section" id="section-start-date">
 					<h3>Start date</h3>
-					<p>If known, the proposed start date for your THATCamp.</p>
+					<p>If known, the proposed start date for your THATCamp. One-day THATCamps should include only a start date.</p>
 					<?php $thatcamp_start_date = isset( $_POST['thatcamp-start-date'] ) ? $_POST['thatcamp-start-date'] : '' ?>
 					<input id="thatcamp_start_date" name="thatcamp-start-date" type="text" value="<?php echo esc_attr( $thatcamp_start_date ) ?>" />
 				</div>
 
 				<div class="registry-section" id="section-end-date">
 					<h3>End date</h3>
-					<p>If known, the proposed end date for your THATCamp.</p>
+					<p>If known, the proposed end date for your THATCamp. One-day THATCamps should include only a start date.</p>
 					<?php $thatcamp_end_date = isset( $_POST['thatcamp-end-date'] ) ? $_POST['thatcamp-end-date'] : '' ?>
 					<input id="thatcamp_end_date" name="thatcamp-end-date" type="text" value="<?php echo esc_attr( $thatcamp_end_date ) ?>" />
 				</div>
