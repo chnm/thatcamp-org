@@ -22,7 +22,8 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 
 			<h2>Success!</h2>
 
-			<p>Your THATCamp has been successfully registered. Visit <a href="<?php echo esc_attr( $url ) ?>"><?php echo esc_html( $url ) ?></a> to get started.</p>
+			<p>Your THATCamp has been successfully registered, and a THATCamp website has been created at <a href="<?php echo esc_attr( $url ) ?>"><?php echo esc_html( $url ) ?></a>. Log in to manage your THATCamp website at <a href="<?php echo esc_attr( $url ) ?>wp-login.php"><?php echo esc_html( $url ) ?>wp-login.php</a>.</p>
+			<p>Be sure to read the help documents on <a href="help/plan">how to plan a THATCamp</a>.</p>
 		<?php else : ?>
 			<form method="post">
 				<p style="color: #f00">* Required</p>
