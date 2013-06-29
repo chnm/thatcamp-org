@@ -2344,6 +2344,11 @@ div.dir-search input[type=text] {
 	display: inline;
 }
 
+#camps-subscribe {
+float:right;
+display:inline;
+}
+
 /*--------------------------------------------------------------
 6.4 - Errors / Success Messages
 --------------------------------------------------------------*/

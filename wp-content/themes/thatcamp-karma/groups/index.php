@@ -21,6 +21,11 @@ get_header( 'thatcamp' ); ?>
 		<?php do_action( 'bp_before_directory_groups' ); ?>
 
 		<h1 class="post-title red-text"><?php _e( 'THATCamps', 'thatcamp' ); ?></h1>
+		
+		<div id="camps-subscribe">
+		<a href="http://feedburner.google.com/fb/a/mailverify?uri=NewTHATCamps&amp;loc=en_US" class="email-thatcamplink"><?php _e( 'New THATCamps by Email', 'thatcamp' ); ?></a>
+		<a href="<?php echo site_url(); ?>/camps/feed" class="rss-thatcamplink"><?php _e( 'New THATCamps by RSS', 'thatcamp' ); ?></a>
+		</div>
 
 		<div id="group-dir-search" class="dir-search" role="search">
 
