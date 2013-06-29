@@ -3843,6 +3843,17 @@ p.required-error {
 	margin-top: 5px;
 }
 
+#section-location .remove-selector-value {
+	cursor: pointer;
+	float:right;
+	margin-top: -4%;
+	margin-right: 52%;
+}
+
+#thatcamp_start_date, #thatcamp_end_date {
+width: 300px;
+}
+
 #section-i-agree ul {
 	list-style-type: none;
 	padding-left: 10px;
