@@ -1021,7 +1021,7 @@ input[type=submit] {
 }
 div.dir-search input[type="text"] {
   float: left;
-  width:300px;
+  width:30%;
 }
 .header-button,
 #search-bar #search-submit,
@@ -2311,7 +2311,7 @@ div.dir-search input[type=text] {
 
 .tc-filters {
 	overflow: hidden;
-	margin-bottom: 4rem;
+	padding: 1rem;
 }
 .tc-filter-label {
 	width: 100px;
@@ -2322,6 +2322,7 @@ div.dir-search input[type=text] {
 	clear: both;
 	overflow: hidden;
 	padding-bottom: 1rem;
+	padding-left: .25rem;
 }
 .tc-filter-date > div {
 	width: 200px;
@@ -2334,7 +2335,7 @@ div.dir-search input[type=text] {
 	display: inline;
 }
 .tc-location-selector {
-	padding-left: 100px;
+	padding-left: 75px;
 }
 .remove-selector-value {
 	cursor: pointer;
@@ -2348,6 +2349,7 @@ div.dir-search input[type=text] {
 float:right;
 display:inline;
 }
+
 
 /*--------------------------------------------------------------
 6.4 - Errors / Success Messages
@@ -3561,6 +3563,15 @@ ie9 #user-section {
   }
 }
 @media only screen and (min-width: 1024px) {
+  nav#top-nav {
+    display: block;
+  }
+  nav#show-menu {
+    display: none;
+  }
+  #responsive-menu {
+    display: none;
+  }
   .widget {
     display: block;
   }
@@ -3597,8 +3608,8 @@ ie9 #user-section {
   }
   .wrapper {
     margin: 0 auto;
-    max-width: 1140px;
-    padding: 0 20px;
+    max-width: 1024px;
+    padding: 0 40px;
     overflow: visible;
   }
   #search-bar {
