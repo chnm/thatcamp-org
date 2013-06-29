@@ -27,15 +27,6 @@ get_header( 'thatcamp' ); ?>
 		<a href="<?php echo site_url(); ?>/camps/feed" class="rss-thatcamplink"><?php _e( 'New THATCamps by RSS', 'thatcamp' ); ?></a>
 		</div>
 
-		<div id="group-dir-search" class="dir-search" role="search">
-
-	<form action="" method="get" id="search-groups-form">
-		<label><input type="text" name="s" id="groups_search" placeholder="Find THATCamps" /></label>
-		<input type="submit" id="groups_search_submit" name="groups_search_submit" value="<?php _e( 'Search', 'buddypress' ) ?>" />
-	</form>
-	
-		</div><!-- #group-dir-search -->
-
 		<form action="" method="get" id="groups-directory-form" class="dir-form">
 
 			<div class="tc-filters">
@@ -49,8 +40,16 @@ get_header( 'thatcamp' ); ?>
 					<div class="tc-filter-year"><?php thatcamp_date_dropdown() ?></div>
 				</div>
 
-				<input type="submit" value="Filter" />
+				<input type="submit" value="Filter" id="camps-filter-button"/>
 			</div>
+		<div id="group-dir-search" class="dir-search" role="search">
+
+	<form action="" method="get" id="search-groups-form">
+		<label><input type="text" name="s" id="groups_search" placeholder="Find THATCamps by name" /></label>
+		<input type="submit" id="groups_search_submit" name="groups_search_submit" value="<?php _e( 'Search', 'buddypress' ) ?>" />
+	</form>
+	
+		</div><!-- #group-dir-search -->			
 
 			<?php do_action( 'bp_before_directory_groups_content' ); ?>
 
