@@ -20,12 +20,15 @@ get_header( 'thatcamp' ); ?>
 
 		<?php do_action( 'bp_before_directory_groups' ); ?>
 
-		<h3><?php _e( 'THATCamps', 'thatcamp' ); ?></h3>
+		<h1 class="post-title red-text"><?php _e( 'THATCamps', 'thatcamp' ); ?></h1>
 
 		<div id="group-dir-search" class="dir-search" role="search">
 
-			<?php bp_directory_groups_search_form(); ?>
-
+	<form action="" method="get" id="search-groups-form">
+		<label><input type="text" name="s" id="groups_search" placeholder="Find THATCamps" /></label>
+		<input type="submit" id="groups_search_submit" name="groups_search_submit" value="<?php _e( 'Search', 'buddypress' ) ?>" />
+	</form>
+	
 		</div><!-- #group-dir-search -->
 
 		<form action="" method="get" id="groups-directory-form" class="dir-form">

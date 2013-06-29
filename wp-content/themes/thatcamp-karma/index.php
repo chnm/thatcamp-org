@@ -11,6 +11,7 @@
 	<div id="content">
 		<?php do_action( 'bp_before_archive' ); ?>
 		<div id="blog-archives" class="feature-box" role="main">
+		<h1 class="post-title red-text">News</h1><br />
 		<?php if ( have_posts() ) : ?>
 		<?php
 		while ( have_posts() ) : the_post();

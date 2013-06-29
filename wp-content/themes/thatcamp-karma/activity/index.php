@@ -12,7 +12,7 @@ get_header( 'thatcamp' ); ?>
 	<?php do_action( 'bp_before_directory_activity_page' ); ?>
 	<div id="primary" class="main-content">
 	<div id="content" role="main">
-
+	<h1 class="post-title red-text">Activity</h1>
 			<?php do_action( 'bp_before_directory_activity' ); ?>
 
 			<?php do_action( 'bp_before_directory_activity_content' ); ?>

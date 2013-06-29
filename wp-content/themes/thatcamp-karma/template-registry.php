@@ -16,7 +16,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 
 <div id="primary" class="main-content">
 	<div id="content" class="clearfix feature-box thatcamp-registry" role="main">
-		<h1>THATCamp Registry</h1>
+		<h1 class="post-title red-text">THATCamp Registry</h1>
 		<?php if ( isset( $_GET['success'] ) ) : ?>
 			<?php $url = 'http://' . urldecode( $_GET['success'] ) . '.thatcamp.org/'; ?>
 

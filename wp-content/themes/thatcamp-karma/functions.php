@@ -370,7 +370,7 @@ function thatcamp_proceedings_blog_id() {
  */
 function thatcamp_filter_title( $full_title, $title, $sep, $sep_location ) {
 	if ( bp_is_groups_component() && bp_is_directory() ) {
-		return 'THATCamps Directory | THATCamp';
+		return 'THATCamp Directory | THATCamp';
 	} else if ( bp_is_members_component() && bp_is_directory() ) {
 		return 'People Directory | THATCamp';
 	} else if ( bp_is_activity_component() && bp_is_directory() ) {

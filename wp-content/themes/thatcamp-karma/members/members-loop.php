@@ -17,7 +17,23 @@
 
 	<div id="pag-top" class="pagination no-ajax">
 
-		<h3><?php _e( 'People', 'thatcamp' ); ?></h3>
+		<h1 class="post-title red-text"><?php _e( 'People', 'thatcamp' ); ?></h1>
+			
+			<form action="" method="post" id="members-directory-form" class="dir-form">
+
+			<div id="members-dir-search" class="dir-search" role="search">
+
+				<?php
+				$default_search_value = bp_get_search_default_text( 'members' );
+				$search_value         = !empty( $_REQUEST['msearch'] ) ? stripslashes( $_REQUEST['msearch'] ) : $default_search_value;
+				?>
+
+				<form action="" method="get" id="search-members-form">
+					<label><input type="text" name="msearch" id="members_search" placeholder="Find people" /></label>
+					<input type="submit" id="members_search_submit" name="members_search_submit" value="<?php _e( 'Search', 'buddypress' ) ?>" />
+				</form>
+			</div>
+		</form>
 
 		<div class="pagination-links" id="member-dir-pag-top">
 

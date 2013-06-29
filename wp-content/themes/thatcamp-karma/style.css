@@ -1020,6 +1020,7 @@ input[type=submit] {
 }
 div.dir-search input[type="text"] {
   float: left;
+  width:300px;
 }
 .header-button,
 #search-bar #search-submit,
@@ -2358,6 +2359,7 @@ div.dir-search input[type=text] {
 .tc-location-selector > div > select {
 	display: inline;
 }
+
 /*--------------------------------------------------------------
 6.4 - Errors / Success Messages
 --------------------------------------------------------------*/

@@ -13,7 +13,7 @@
 		<div id="search-page" class="feature-box" role="main">
 		<?php if ( have_posts() ) : ?>
 			<header class="post-header">
-					<h1 class="post-title"><?php printf( __( 'Search Results for: %s', 'thatcamp'), '<span>' . get_search_query() . '</span>' ); ?></h1>
+					<h1 class="post-title"><?php printf( __( 'Help pages and blog posts with "%s"', 'thatcamp'), '<span>' . get_search_query() . '</span>' ); ?></h1><br />
 			</header>
 		<?php while ( have_posts() ) : the_post();
 			get_template_part( 'parts/content', get_post_format() );

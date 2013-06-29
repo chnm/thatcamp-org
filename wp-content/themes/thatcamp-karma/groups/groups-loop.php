@@ -65,7 +65,7 @@
 <?php else: ?>
 
 	<div id="message" class="info">
-		<p><?php _e( 'There were no groups found.', 'thatcamp' ); ?></p>
+		<p><?php _e( 'There were no THATCamps found.', 'thatcamp' ); ?></p>
 	</div>
 
 <?php endif; ?>
