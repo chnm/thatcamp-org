@@ -1469,6 +1469,13 @@ nav#show-menu {
 #responsive-menu li:hover {
   background: #111;
 }
+
+/* Don't display Blogs Directory and Site Not Found in mobile menu */
+
+.page-item-3948, .page-item-4223 {
+display:none;
+}
+
 /*--------------------------------------------------------------
 5.0 - WordPress specific
 --------------------------------------------------------------*/
