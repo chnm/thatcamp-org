@@ -25,8 +25,6 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 			<p>Your THATCamp has been successfully registered. Visit <a href="<?php echo esc_attr( $url ) ?>"><?php echo esc_html( $url ) ?></a> to get started.</p>
 		<?php else : ?>
 			<form method="post">
-
-				<p>If you do not have non-required information (such as the dates your THATCamp will be held), you can return and enter it later. Doing so will ensure that all information on <a href="http://thatcamp.org">http://thatcamp.org</a> and related THATCamp resources is correct. Please register each separate event (i.e., both THATCamp Games 2012 and THATCamp Games 2013).</p>
 				<p style="color: #f00">* Required</p>
 
 				<div class="registry-section" id="section-thatcamp-name">
@@ -46,7 +44,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 					<?php endif ?>
 					<p>Example: http://newengland2012.thatcamp.org. THATCamp site URLs are generally constructed thusly: http://[nameyear].thatcamp.org. Please try to follow this convention when choosing a URL for your THATCamp site.</p>
 					<?php $site_url = isset( $_POST['site-url'] ) ? $_POST['site-url'] : '' ?>
-					http://<input name="site-url" style="display:inline; width: 200px" type="text" id="site-url" value="<?php echo esc_attr( $site_url ) ?>" />.thatcamp.org
+					http://<input name="site-url" type="text" id="site-url" value="<?php echo esc_attr( $site_url ) ?>" />.thatcamp.org
 				</div>
 
 				<div class="registry-section" id="section-location">
