@@ -1829,41 +1829,24 @@ dd.wp-caption p.wp-caption-text,
   margin: 0 0 0 15px;
   color: #999;
 }
-.twitter .twitter-item {
-  position: relative;
-  padding: 10px 0 10px 70px;
-  border-bottom: 1px dashed #333;
-  margin: 10px 0;
-  font-size: 90%;
-  list-style: none;
+
+h3.widgettitle,.widget_twitter h3.widgettitle {
+font-family: 'Francois One', sans-serif;
+font-weight:bold;
+border-bottom:1px dashed #333;
+font-size:1.8rem;
+padding:0 0 10px;
 }
-.twitter .twitter-imagelink {
-  position: absolute;
-  left: 0;
+
+#tr_credit {
+float:right;
+margin-right:5px;
 }
-.twitter a,
-.twitter a:link,
-.twitter a:hover,
-.twitter a:visited {
-  color: #118899;
+
+#twitter_hashtag_feed_widget-2 ul li {
+margin-bottom:2em;
 }
-.twitter .twitter-timestamp {
-  display: block;
-  color: #999;
-}
-h3.widgettitle {
-  font-family: Lucinda Grande, sans-serif;
-  border-bottom: 1px dashed #333;
-  padding: 0 0 10px 0;
-  font-size: 18px;
-  font-size: 1.8rem;
-}
-.widget_twitter h3.widgettitle {
-  font-family: 'Francois One', sans-serif;
-}
-#twitterwidget-wrapper {
-  display: none;
-}
+
 /*--------------------------------------------------------------
 6.0 - BuddyPress specific
 --------------------------------------------------------------*/
