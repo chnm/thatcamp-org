@@ -37,7 +37,7 @@ get_header( 'thatcamp' ); ?>
 
 				<div class="tc-filter-date">
 					<div class="tc-filter-label">Date:</div>
-					<div class="tc-filter-year"><?php thatcamp_date_dropdown() ?></div>
+					<div class="tc-date-selector"><?php thatcamp_date_dropdown() ?></div>
 				</div>
 
 				<input type="submit" value="Filter" id="camps-filter-button"/>
@@ -45,7 +45,7 @@ get_header( 'thatcamp' ); ?>
 		<div id="group-dir-search" class="dir-search" role="search">
 
 	<form action="" method="get" id="search-groups-form">
-		<label><input type="text" name="s" id="groups_search" placeholder="Find THATCamps by name" /></label>
+		<label><input type="text" name="s" id="groups_search" placeholder="Find THATCamps" /></label>
 		<input type="submit" id="groups_search_submit" name="groups_search_submit" value="<?php _e( 'Search', 'buddypress' ) ?>" />
 	</form>
 	
