@@ -102,7 +102,8 @@ Useful tags - you can override any of these you want
   position: absolute;
   width: 1px;
 }
-#about h2 {
+#about p {
+  font-size: large; 
   text-shadow: -1px -1px 0 #111111;
 }
 .visuallyhidden.focusable:active,
@@ -346,7 +347,7 @@ body {
   border-top: 2px solid #111;
   border-bottom: 2px solid #111;
   color: #ffffff;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 #site-logo a {
   background: url('assets/images/thatcamp-logoiphone.png') no-repeat;
@@ -360,7 +361,8 @@ body {
 }
 #user-section {
   float: none;
-  width: 100%;
+  width: 40%;
+  display:inline;
 }
 #user-section img {
   float: left;
@@ -372,12 +374,26 @@ body {
 #user-section .button {
   float: left;
 }
+#account {
+width: 20%;
+display:inline;
+font-size:10pt;
+}
+
+#sitebar-wrapper #search-bar {
+  float: none;
+  display:inline;
+  width: 40%;
+}
+
 #branding {
   position: relative;
 }
 #avatarwall {
   display: none;
 }
+
+
 /*--------------------------------------------------------------
 2.3 - Footer
 --------------------------------------------------------------*/
@@ -452,7 +468,7 @@ body {
 }
 #sidebar .campbutton {
   margin-bottom: 40px;
-  margin-left: 60px;
+  margin-left: 50px;
 }
 /*--------------------------------------------------------------
 3.0 - Non-structural
@@ -714,9 +730,7 @@ div#item-header .activity {
   text-shadow: -1px -1px 0px #ffffff;
   font-weight: 200;
 }
-#about h2 {
-  font-weight: 200;
-}
+
 /*--------------------------------------------------------------
 3.3 - Tables
 --------------------------------------------------------------*/
@@ -1038,8 +1052,8 @@ div.dir-search input[type="text"] {
   padding: 2px 8px;
   display: inline-block;
   border: 2px solid #111;
-  font-size: 14px;
-  font-size: 1.4rem;
+  font-size: 12px;
+  font-size: 1.2rem;
 }
 a.header-button,
 a:visited.header-button,
@@ -1256,8 +1270,7 @@ nav#top-nav li a {
   background-clip: padding-box;
   color: #333;
 }
-nav#top-nav li a:hover,
-nav#top-nav li.current_page_item a {
+nav#top-nav li a:hover {
   background: url('assets/images/nav-on.jpg');
   color: #fff;
   border-right: 3px solid #111;
@@ -1846,13 +1859,35 @@ font-size:1.8rem;
 padding:0 0 10px;
 }
 
+#twitter_hashtag_feed_widget-2 ul li {
+margin-bottom:2em;
+}
+
+.widget h2 {
+font-size:1em;
+}
+
+/* Transposh plugin CSS (by Amanda French) */
+
+aside#transposh-2 dl dt a {
+width: 90%;
+}
+
+aside#transposh-2 li {
+list-style: none;
+}
+
+aside#transposh-2 input {
+display: inline;
+}
+
+aside ul li {
+list-style-type: none !important;
+}
+
 #tr_credit {
 float:right;
 margin-right:5px;
-}
-
-#twitter_hashtag_feed_widget-2 ul li {
-margin-bottom:2em;
 }
 
 /*--------------------------------------------------------------
@@ -2494,6 +2529,12 @@ ul.button-nav {
   border: 1px solid #111;
   color: #ffffff;
 }
+
+#search-terms {
+opacity: .4;
+font-size:10pt;
+}
+
 .standard-form #basic-details-section input[type=password],
 .standard-form #blog-details-section input#signup_blog_url {
   width: 35%;
@@ -3563,11 +3604,40 @@ ie9 #user-section {
 }
 @media only screen and (min-width: 768px) {
 
+  #avatarwall {
+    display: none;
+  }
+   nav#top-nav {
+    display: block;
+  }
+  nav#show-menu {
+    display: none;
+  }
+  #responsive-menu {
+    display: none;
+  }
+ #account {
+    display:none;
+ }
+
 }
 @media only screen and (min-width: 992px) {
   #avatarwall {
     display: block;
   }
+   nav#top-nav {
+    display: block;
+  }
+  nav#show-menu {
+    display: none;
+  }
+  #responsive-menu {
+    display: none;
+  }
+   #account {
+    display:inline;
+ }
+  
 }
 @media only screen and (min-width: 1024px) {
   nav#top-nav {
@@ -3627,6 +3697,9 @@ ie9 #user-section {
     float: left;
     width: 30%;
   }
+    #account {
+    display:inline;
+  }
   #twitterwidget-wrapper {
     display: block;
   }
@@ -3653,6 +3726,9 @@ ie9 #user-section {
   }
   #responsive-menu {
     display: none;
+  }
+  #account {
+    display:inline;
   }
   .widget {
     display: block;
@@ -3729,6 +3805,9 @@ ie9 #user-section {
   #responsive-menu {
     display: none;
   }
+   #account {
+    display:inline;
+  }
   .widget {
     display: block;
   }
@@ -3797,25 +3876,6 @@ ie9 #user-section {
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   /* Styles */
 }
-
-/* Transposh plugin CSS (by Amanda French) */
-
-aside#transposh-2 dl dt a {
-width: 90%;
-}
-
-aside#transposh-2 li {
-list-style: none;
-}
-
-aside#transposh-2 input {
-display: inline;
-}
-
-aside ul li {
-list-style-type: none !important;
-}
-
 
 /*--------------------------------------------------------------
 9.0 - THATCamp Registry

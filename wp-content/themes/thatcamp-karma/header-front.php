@@ -15,7 +15,7 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width">
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<title><?php bloginfo('name'); ?> | <?php is_front_page() ? bloginfo('description') : wp_title(''); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<link href='http://fonts.googleapis.com/css?family=Francois+One' rel='stylesheet' type='text/css'>
@@ -55,7 +55,7 @@
 				<?php endif; ?>
 			</div>
 
-			<div class="signup"><a href="<?php echo site_url(); ?>/accounts"><?php _e( 'How do I get an account?', 'thatcamp' ); ?></a></div>
+			<div id="account"><a href="<?php echo site_url(); ?>/accounts"><?php _e( 'How do I get an account?', 'thatcamp' ); ?></a></div>
 
 			<div id="search-bar">
 					<form action="<?php echo bp_search_form_action(); ?>" method="post" id="search-form">
@@ -123,9 +123,8 @@
 	</div>
 	<div id="about-wrapper">
 		<div id="about" class="wrapper">
-			<h2><?php _e( 'What is THATCamp?', 'thatcamp' ); ?></h3>
 			<p>
-				<?php _e('THATCamp, The Humanities and Technology Camp, is an open, inexpensive meeting where humanists and technologists of all skill levels learn and build together in sessions proposed on the spot.', 'thatcamp'); ?> <a href="<?php echo site_url(); ?>/about"><?php _e( 'Learn more', 'thatcamp' ); ?></a>
+				<?php _e('THATCamp, The Humanities and Technology Camp, is an open, inexpensive meeting where humanists and technologists of all skill levels learn and build together in sessions proposed on the spot.', 'thatcamp'); ?> <a href="<?php echo site_url(); ?>/about"><?php _e( 'Learn more&hellip;', 'thatcamp' ); ?></a>
 			</p>
 		</div>
 	</div>
