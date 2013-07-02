@@ -1,0 +1,435 @@
+<?php
+
+  /**
+   * Popular Widget - functions
+   *
+   * @file functions.php
+   * @package Popular Widget
+   * @author Hafid Trujillo
+   * @copyright 20010-2013
+   * @filesource  wp-content/plugins/popular-widget/functions.php
+   * @since 1.6.0
+   */
+
+	class PopularWidgetFunctions extends WP_Widget { 
+		
+		/**
+		 * Constructor
+		 *
+		 * @return void
+		 * @since 0.5.0
+		 */
+		function PopularWidgetFunctions( ){ 
+			add_action( 'template_redirect',array( &$this,'set_post_view') );
+			add_action( 'admin_print_styles',array( &$this,'load_admin_styles' ) );
+			add_action( 'wp_enqueue_scripts',array( &$this,'load_scripts_styles' ) );
+		 }
+		 
+		 /**
+		 * Load backend js/css
+		 *
+		 * @return void
+		 * @since 1.2.0
+		 */
+		function load_admin_styles(){
+			global $pagenow;
+			if( $pagenow != 'widgets.php' ) return;
+			wp_enqueue_style( 'popular-admin', POPWIDGET_URL . '_css/admin.css', NULL, $this->version );
+			wp_enqueue_script( 'popular-admin', POPWIDGET_URL . '_js/admin.js', array( 'jquery', 'jquery-ui-sortable' ), $this->version, true ); 
+		}
+		
+		/**
+		 * Load frontend js/css
+		 *
+		 * @return void
+		 * @since 0.5.0 
+		 */
+		function load_scripts_styles(){
+			if( is_admin() || !is_active_widget( false, false, $this->id_base, true ) ) return;
+			wp_enqueue_style( 'popular-widget', POPWIDGET_URL.'_css/pop-widget.css', NULL, $this->version );
+			wp_enqueue_script( 'popular-widget', POPWIDGET_URL . '_js/pop-widget.js', array('jquery'), $this->version, true ); 	
+		}
+		
+		/**
+		 * Display widget field id
+		 *
+		 * @return void
+		 * @since 1.5.0
+		 */
+		function field_id( $field ){
+			echo $this->get_field_id( $field );
+		}
+		
+		/**
+		 * Display widget field name
+		 *
+		 * @return void
+		 * @since 1.5.0
+		 */
+		function field_name( $field ){
+			echo $this->get_field_name( $field );
+		}
+		
+		/**
+		 * Download language file
+		 *
+		 * @return void
+		 * @since 1.5.6
+		 */
+		function download_language_file( $filedir = false ) {
+			 _deprecated_function( __FUNCTION__, '1.6.0' );
+			return;
+		}
+			 
+		/**
+		* Register localization/language file
+		*
+		* @return void
+		* @since 0.5.0 
+		*/
+		function load_text_domain(){
+			
+			$locale = get_locale();
+			if ( $locale  == 'en_US' || is_textdomain_loaded( 'pop-wid' ) )
+				return;
+	
+			$filedir = WP_CONTENT_DIR . '/languages/' . 'pop-wid' . '-' . $locale  . '.mo';
+		
+			if ( function_exists( 'load_plugin_textdomain' ) )
+				load_plugin_textdomain( 'pop-wid', false, apply_filters('pop_load_textdomain', '../languages/', 'pop-wid', $locale ) );
+				
+			elseif ( function_exists( 'load_textdomain' ) )
+				load_textdomain( 'pop-wid', apply_filters('pop_load_textdomain', $filedir, 'pop-wid', $locale ) );
+		}
+		
+		/**
+		 * Limit the words in a string
+		 *
+		 * @param string $string
+		 * @param unit $word_limit
+		 * @return string
+		 * @since 0.5.0
+		 */
+		function limit_words( $string, $word_limit ){ 
+		
+			$words = explode( " ", wp_strip_all_tags( strip_shortcodes( $string ) ));
+			
+			if( $word_limit && ( str_word_count( $string ) > $word_limit ) ) 
+				return $output =  implode( " ",array_splice( $words, 0, $word_limit ) ) ."...";
+				
+			else if( $word_limit ) 
+				return $output = implode( " ", array_splice( $words, 0, $word_limit ) );
+				
+			else return $string;
+		 } 
+		 
+		 /**
+		 * Get the first 
+		 * image attach to the post
+		 *
+		 * @param unit $post_id
+		 * @return string|void
+		 * @since 1.0.0
+		 */
+		function get_post_image( $post_id, $size ){ 
+			
+			if ( has_post_thumbnail( $post_id ) 
+			&& function_exists( 'has_post_thumbnail' ) )
+				return get_the_post_thumbnail( $post_id, $size ); 
+						
+			$images = get_children (
+			 apply_filters( 'pop_get_children_args', array( 
+				'order' => 'ASC',
+				'numberposts' => 1,
+				'orderby' => 'menu_order',
+				'post_parent' => $post_id,
+				'post_type' => 'attachment',
+				'post_mime_type' => 'image',
+			 ), $post_id, $size ) );
+			
+			if( empty( $images ) ) 
+				return false;
+				
+			foreach( $images as $image )
+				return wp_get_attachment_image( $image->ID, $size );
+		 }
+		
+		/**
+		 * Add postview count.
+		 *
+		 * @return void
+		 * @since 0.5.0
+		 */
+		function set_post_view( ) {
+			
+			if( !is_singular() && !is_page() ) 
+				return;
+			
+			//short circuit views count
+			if( !apply_filters( 'pop_set_post_view', true ) )
+				return;
+			
+			$widgets = get_option( $this->option_name );
+			
+			//if widget not active return;
+			if( empty( $widgets[$this->number]) ) 
+				return;	
+			
+			global $post;
+			$instance = $widgets[$this->number];
+					
+			do_action( 'pop_before_set_pos_view', $instance, $this->number );
+			
+			if( $instance['calculate'] == 'visits' ){
+				
+				if( !isset( $_COOKIE['popular_views_'.COOKIEHASH] ) ){
+					setcookie( 'popular_views_' . COOKIEHASH, "$post->ID|", 0, COOKIEPATH );
+					update_post_meta( $post->ID, '_popular_views', get_post_meta( $post->ID, '_popular_views', true ) +1 );
+				
+				}else{
+					
+					$views = explode( "|", $_COOKIE['popular_views_' . COOKIEHASH] );
+					foreach( $views as $post_id ){ 
+						if( $post->ID == $post_id ) {
+							$exist = true; break;
+						}
+					}
+				}
+				
+				if( empty( $exist ) ){
+					$views[] = $post->ID;
+					setcookie( 'popular_views_' . COOKIEHASH, implode( "|", $views ), 0 , COOKIEPATH );
+					update_post_meta( $post->ID, '_popular_views', get_post_meta( $post->ID, '_popular_views', true ) +1 );
+				}
+				
+			} else update_post_meta( $post->ID, '_popular_views', get_post_meta( $post->ID, '_popular_views', true ) +1 );
+			
+			do_action( 'pop_after_set_pos_view', $instance, $this->number );
+		}
+		
+		/**
+		 *get recent results
+		 *
+		 *@return void
+		 *@since 1.0.1
+		*/
+		function get_recent_posts( ){ 
+		
+			extract( $this->instance );
+			$posts = wp_cache_get( "pop_recent_{$number}", 'pop_cache' );
+			
+			if( $posts == false ) { 
+				foreach( $posttypes as $post => $v )
+					if( $v == 'on' ) $post_types[] = $post;
+				
+				$args = array( 'suppress_fun' => true, 'post_type' => $post_types, 'posts_per_page' => $limit );
+				
+				if( $cats && $exclude_cats == 'on' ) $args['category__not_in'] = explode( ',', $cats );
+				else if ( $cats ) $args['category__in'] = explode( ',', $cats );
+				
+				if( $userids && $exclude_users == 'on' ) $args['author'] = trim( "-". $userids, ',' );
+				else if( $userids ) $args['author'] = trim( $userids, ',' );
+							 
+				$posts = get_posts( apply_filters( 'pop_get_recent_posts_args', $args) );
+				wp_cache_set( "pop_recent_{$number}", $posts, 'pop_cache' );
+			 }
+			 return $this->display_post_tab_content( $posts );
+		}
+		
+		/**
+		 *get the latest comments
+		 *
+		 *@return void
+		 *@since 1.0.0
+		*/
+		function get_comments( ){ 
+		
+			extract( $this->instance ); 
+			$comments = wp_cache_get( "pop_comments_{$number}", 'pop_cache' );
+			
+			if( $comments == false ) { 
+				global $wpdb;  $join = $where = '';
+				
+				//taxonomy filter
+				if( !empty( $cats ) )
+				$where = " AND ( c.comment_post_ID " . ( ( $exclude_cats == 'on' ) ? ' NOT IN ' : ' IN ' ) . 
+				"( SELECT object_id FROM $wpdb->term_relationships tr " .
+				"JOIN $wpdb->comments c ON c.comment_post_ID = tr.object_id " .
+				"WHERE term_taxonomy_id IN ( " . $wpdb ->escape( trim( $cats, ',' ) ) . " ) ) ) ";
+				
+				//user filter
+				if( !empty( $userids ) )
+				$where .=  " AND c.user_id ". ( ( $exclude_cats == 'on' ) ? ' NOT IN ' : ' IN ' ) . " ( ". $wpdb ->escape( trim( $userids, ',' ) ) ." )"; 
+				
+				$join = apply_filters( 'pop_comments_join', $join, $this->instance );
+				$where = apply_filters( 'pop_comments_where', $where, $this->instance );
+		
+				$comments = $wpdb->get_results( 
+					"SELECT SQL_CALC_FOUND_ROWS c.* " .
+					"FROM $wpdb->comments c $join WHERE comment_date >= '{$this->time}' AND comment_approved = 1 AND comment_type = '' " . 
+					"$where GROUP BY comment_ID ORDER BY comment_date DESC LIMIT $limit"
+				 );
+				wp_cache_set( "pop_comments_{$number}", $comments, 'pop_cache' );
+			}
+			return $this->display_comment_tab_content( $comments );
+		}
+		
+		/**
+		 *Get commented results
+		 *
+		 *@return string
+		 *@since 1.0.0
+		*/
+		function get_most_commented( ){ 
+			
+			extract( $this->instance );
+			$commented = wp_cache_get( "pop_commented_{$number}", 'pop_cache' );
+			
+			if( $commented == false ){ 
+				global $wpdb;  $join = $where = '';
+				
+				//taxonomy filter
+				if( !empty( $cats ) )
+				$where = " AND ( p.ID " . ( ( $exclude_cats == 'on' ) ? ' NOT IN ' : ' IN ' ) . 
+				"( SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id IN ( " . $wpdb ->escape( trim( $cats, ',' ) ) . " ) ) ) ";
+				
+				//user filter
+				if( !empty( $userids ) )
+				$where .=  " AND c.user_id ". ( ( $exclude_cats == 'on' ) ? ' NOT IN ' : ' IN ' ) . " ( ". $wpdb ->escape( trim( $userids, ',' ) ) ." )"; 
+				
+				$join = apply_filters( 'pop_commented_join', $join, $this->instance );
+				$where = apply_filters( 'pop_commented_where', $where, $this->instance );
+				
+				$commented = $wpdb->get_results( 
+					"SELECT SQL_CALC_FOUND_ROWS p.*, p.comment_count views " . 
+					"FROM $wpdb->posts p $join WHERE post_date >= '{$this->time}' AND post_status = 'publish' AND comment_count != 0 " . 
+					"AND post_type IN ( $types ) $where GROUP BY ID ORDER BY comment_count DESC LIMIT $limit"
+				);
+			}
+			return $this->display_post_tab_content( $commented );
+		}
+		
+		/**
+		 *Get viewed results
+		 *
+		 *@return string
+		 *@since 1.0.0
+		*/
+		function get_most_viewed( ){ 
+			
+			extract( $this->instance );
+			$viewed = wp_cache_get( "pop_viewed_{$number}", 'pop_cache' );
+			
+			if( $viewed == false ) { 
+				global $wpdb;  $join = $where = '';
+				
+				//taxonomy filter
+				if( !empty( $cats ) )
+				$where = " AND ( p.ID " . ( ( $exclude_cats == 'on' ) ? ' NOT IN ' : ' IN ' ) . 
+				"( SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id IN ( " . $wpdb ->escape( trim( $cats, ',' ) ) . " ) ) ) ";
+				
+				//user filter
+				if( !empty( $userids ) )
+				$where .=  " AND post_author ". ( ( $exclude_cats == 'on' ) ? ' NOT IN ' : ' IN ' ) . " ( ". $wpdb ->escape( trim( $userids, ',' ) ) ." )"; 
+				
+				$join = apply_filters( 'pop_viewed_join', $join, $this->instance );
+				$where = apply_filters( 'pop_viewed_where', $where, $this->instance );
+				
+				$viewed = $wpdb->get_results( "SELECT SQL_CALC_FOUND_ROWS p.*, meta_value as views FROM $wpdb->posts p " . 
+				"JOIN $wpdb->postmeta pm ON p.ID = pm.post_id AND meta_key = '_popular_views' AND meta_value != '' " .
+				"WHERE 1=1 AND p.post_status = 'publish' AND post_date >= '{$this->time}' AND p.post_type IN ( $types ) $where " . 
+				"GROUP BY p.ID ORDER BY ( meta_value+0 ) DESC LIMIT $limit");
+				
+				wp_cache_set( "pop_viewed_{$number}", $viewed, 'pop_cache' );
+			}
+			return $this->display_post_tab_content( $viewed );
+		}
+		
+		/**
+		 *Display tags content
+		 *
+		 *@return string
+		 *@since 1.6.0
+		*/
+		function get_tags( ){
+			extract( $this->instance );
+			return wp_tag_cloud( apply_filters( 'pop_tag_cloud', array( 
+				'smallest'=>'8', 'largest'=>'22', 'format'=>"list", 'echo'=>false, 'taxonomy' => $taxonomy 
+			), $this->instance ) );
+		}
+		
+		/**
+		 *Display tab post content
+		 *
+		 *@return string
+		 *@since 1.6.0
+		*/
+		function display_post_tab_content( $posts ){
+			
+			$output = '';
+			extract( $this->instance );
+			
+			foreach( $posts as $key => $post ){ 
+				$output .= '<li><a href="'. esc_url( get_permalink( $post->ID ) ) . '" title="' . esc_attr( $post->post_title ) . '" rel="bookmark">';
+				
+				//image
+				if( !empty( $thumb ) )  $image = $this->get_post_image( $post->ID, $imgsize );
+				$output .= isset( $image ) ? $image . '<div class="pop-overlay">' : '<div class="pop-text">';
+				
+				// title
+				$output .= apply_filters( "pop_{$this->current_tab}_title", 
+					'<span class="pop-title">'. $this->limit_words( $post->post_title, $tlength ) . '</span> ', $post 
+				);
+				
+				// counter
+				if( !empty( $counter ) && $post->views )
+				$output .= '<span class="pop-count">( ' . preg_replace( "/(?<=\d)(?=(\d{3})+(?!\d))/", ",", $post->views ) . ' )</span>';
+				
+				// excerpt
+				if( !empty( $excerpt ) ){ 
+					if( $post->post_excerpt )  
+						$output .= '<span class="pop-summary">' . $this->limit_words( ( $post->post_excerpt ), $excerptlength ) . '</span>';
+					else $output .= '<span class="pop-summary">' . $this->limit_words( ( $post->post_content ), $excerptlength ) . '</span>';
+				 }
+			 
+				$output .= '</a><div class="pop-cl"></div></li>';
+			}
+			return $output;
+		}
+		
+		
+		/**
+		 *Display comment tab content
+		 *
+		 *@return string
+		 *@since 1.6.0
+		*/
+		function display_comment_tab_content( $comments ){
+			
+			$output = '';
+			extract( $this->instance );
+			
+			foreach( $comments as $key => $comment ){ 
+			
+				$comment_author = ( $comment->comment_author ) ? $comment->comment_author : "Anonymous";
+				
+				$output .= '<li><a href="'. esc_url( get_comment_link( $comment->comment_ID ) ) . '" title="' . esc_attr( $comment_author ) . '" rel="bookmark">';
+				
+				//image
+				if( !empty( $thumb ) )  $image = get_avatar( $comment->comment_author_email, 100 ); 
+				$output .= isset( $image ) ? $image . '<div class="pop-overlay">' : '<div class="pop-text">';
+				
+				// title
+				$output .= apply_filters( "pop_{$this->current_tab}_title", 
+					'<span class="pop-title">'. $this->limit_words( $comment_author, $tlength ) . '</span> ', $comment 
+				);
+				
+				// excerpt
+				if( !empty( $excerpt ) )
+				$output .= '<span class="pop-summary">' . $this->limit_words( ( $comment->comment_content ), $excerptlength ) . '</span>';
+			 
+				$output .= '</a><div class="pop-cl"></div></li>';
+			}
+			return $output;
+		}
+	}

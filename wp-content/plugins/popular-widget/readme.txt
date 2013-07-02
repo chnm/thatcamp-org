@@ -3,8 +3,8 @@ Contributors: Hax
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YM9GXCFBND89E
 Tags: box,widget,popular,most commented,most viewed,tags,tabs,dynamic,cloud,post by category,by date,popular posts,range,comments,recent comments,avatar,images,current posts,recent
 Requires at least: 3.0.0
-Tested up to: 3.5.1
-Stable tag: 1.5.9
+Tested up to: 3.6.0
+Stable tag: 1.6.0
 
 Display the most commented or most viewed posts in a tabbed widget, filter the post by date range or by category. It also includes a tags tab. 
 
@@ -50,6 +50,15 @@ This is a simple popular posts WordPress widget for your blog. Add and day inter
 * http://xparkmedia.com/support/plugin/popular-widget/
 
 == Changelog ==
+
+= 1.6.0 =
+* Security update.
+* Code Clean up.
+* Added: WP 3.6 support.
+* Added: Taxonomy exclusion.
+* Added: User exclusion.
+* Added: Additional filters.
+* Improved: Admin UI.
 
 = 1.5.9 =
 *  Fixed: performance issue
