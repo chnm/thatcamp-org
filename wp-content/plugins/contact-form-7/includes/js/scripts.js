@@ -7,6 +7,9 @@
 
 			_wpcf7 = $.extend({ cached: 0 }, _wpcf7);
 
+			_wpcf7.supportHtml5Placeholder
+				= 'placeholder' in document.createElement('input');
+
 			$('div.wpcf7 > form').ajaxForm({
 				beforeSubmit: function(formData, jqForm, options) {
 					jqForm.wpcf7ClearResponseOutput();
@@ -107,7 +110,7 @@
 				$(n).find('[placeholder]').each(function(i, n) {
 					var input = $(n);
 
-					if ('placeholder' in input.get(0))
+					if (_wpcf7.supportHtml5Placeholder)
 						return;
 
 					input.val(input.attr('placeholder'));
@@ -192,7 +195,7 @@
 			var unitTag = $(this).find('input[name="_wpcf7_unit_tag"]').val();
 
 			$.getJSON(url,
-				{ _wpcf7_is_ajax_call: 1, _wpcf7: id },
+				{ _wpcf7_is_ajax_call: 1, _wpcf7: id, _wpcf7_request_ver: $.now() },
 				function(data) {
 					if (data && data.captcha)
 						$('#' + unitTag).wpcf7RefillCaptcha(data.captcha);
