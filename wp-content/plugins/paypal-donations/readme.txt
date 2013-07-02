@@ -1,9 +1,10 @@
 === PayPal Donations ===
 Contributors: artstorm
+Donate link: http://johansteen.se/donate/
 Tags: paypal, donation, shortcode, widget, donate, button, sidebar
-Requires at least: 2.8
+Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.8
+Stable tag: 1.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,26 +24,21 @@ Insert the button in your pages or posts with this shortcode
 
 `[paypal-donation]`
 
-Which is the simplest option, and uses all default and optional settings. If you want to make a specific button for a specific purpose you can add these options:
+Which is the simplest option, and uses all default and optional settings. If you want to make a specific button for a specific purpose you can add additional options. Example:
 
 `[paypal-donation purpose="Spline Importer" reference="3D Plugins"]`
 
-as an example.
-
 This donation plugin generates valid XHTML Transitional and Strict code.
-
-For complete usage instructions see: [PayPal Donations](http://wpstorm.net/wordpress-plugins/paypal-donations/ "Complete Usage Instructions for PayPal Donations")
-
-See the [Changelog](http://wordpress.org/extend/plugins/paypal-donations/changelog/) for what's new. Available [Translations](http://wpstorm.net/wordpress-plugins/paypal-donations/#translations).
 
 = Related Links =
 
-* [Documentation](http://wpstorm.net/wordpress-plugins/paypal-donations/ 
-  "Complete usage instructions")
-* [Support Forum](http://wordpress.org/tags/paypal-donations?forum_id=10 
+* [Documentation](http://johansteen.se/code/paypal-donations/ 
+  "Usage instructions")
+* [Support Forum](http://wordpress.org/support/plugin/paypal-donations 
   "Use this for support and feature requests")
 * [GitHub](https://github.com/artstorm/paypal-donations 
   "Develop and contribute your code or report bugs")
+
 
 == Installation ==
 
@@ -58,32 +54,38 @@ See the [Changelog](http://wordpress.org/extend/plugins/paypal-donations/changel
 2. After Deactivation a 'Delete' link appears below the plugin name, follow the link and confim with 'Yes, Delete these files'.
 3. This will delete all the plugin files from the server as well as erasing all options the plugin has stored in the database.
 
+
 == Frequently Asked Questions ==
+
+= Where can I get support? =
+
+Please visit the [Support Forum](http://wordpress.org/support/plugin/paypal-donations "Use this for support and feature requests") 
+for questions, answers, support and feature requests.
 
 = Where can I send bug reports? =
 
 Please visit the GitHub repository for [PayPal Donations](https://github.com/artstorm/paypal-donations)
 and open an [issue](https://github.com/artstorm/paypal-donations/issues).
-Please create an issue that conforms with [necolas's guidelines](https://github.com/necolas/issue-guidelines).
-
-= Where can I get support? =
-
-Please visit the [Support Forum](http://wordpress.org/tags/paypal-donations?forum_id=10 "Use this for support and feature requests") 
-for questions, answers, support and feature requests.
 
 = How can I contribute to the plugin? =
 
 If you want to contribute improved code or new features for the plugin. Please
 open a pull request at the [PayPal Donations GitHub repository](https://github.com/artstorm/paypal-donations).
-Please open a pull request that conforms with [necolas's guidelines](https://github.com/necolas/issue-guidelines).
 Contributions are appreciated and encouraged.
+
 
 == Screenshots ==
 
 1. Admin page where you setup the plugin
 1. Sidebar Widget Admin Options
 
+
 == Changelog ==
+
+= Version 1.8.1 - 27 Apr 2013 =
+ * Various minor code improvements.
+ * Bumps required WordPress version to v3.0.
+ * Updated Romanian Translation by Denis Ciumbargi.
 
 = Version 1.8 - 9 Mar 2013 =
  * Added tabbed navigation in the plugin admin settings, and moved Extras into

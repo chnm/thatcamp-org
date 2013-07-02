@@ -1,60 +1,84 @@
-# Copyright (C) 2012 PayPal Donations
-# This file is distributed under the same license as the PayPal Donations package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PayPal Donations 1.8\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/paypal-donations\n"
-"POT-Creation-Date: 2013-03-09 16:48+0700\n"
-"PO-Revision-Date: 2013-03-09 16:49+0700\n"
-"Last-Translator: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-27 13:45+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: D:\\Dropbox\\Code\\WordPress\\paypal-donations\n"
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:106
+#: views/admin.php:8
+msgid "General"
+msgstr ""
+
+#: views/admin.php:9
+msgid "Advanced"
+msgstr ""
+
+#: views/widget-form.php:2
+msgid "Title:"
+msgstr ""
+
+#: views/widget-form.php:8
+msgid "Text:"
+msgstr ""
+
+#: views/widget-form.php:14
+msgid "Purpose:"
+msgstr ""
+
+#: views/widget-form.php:20
+msgid "Reference:"
+msgstr ""
+
+#: lib/PayPalDonations/Admin.php:105
 msgid "Account Setup"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:112
+#: lib/PayPalDonations/Admin.php:111
 msgid "PayPal Account"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:119
+#: lib/PayPalDonations/Admin.php:118
 msgid "Your PayPal Email or Secure Merchant Account ID."
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:126
+#: lib/PayPalDonations/Admin.php:125
 msgid "Currency"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:133
+#: lib/PayPalDonations/Admin.php:132
 msgid "The currency to use for the donations."
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:141
+#: lib/PayPalDonations/Admin.php:140
 msgid "Optional Settings"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:147
+#: lib/PayPalDonations/Admin.php:146
 msgid "Page Style"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:154
+#: lib/PayPalDonations/Admin.php:153
 msgid ""
 "The name of a custom payment page style that exist in your\n"
 "                     PayPal account profile."
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:162
+#: lib/PayPalDonations/Admin.php:161
 msgid "Return Page"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:169
+#: lib/PayPalDonations/Admin.php:168
 msgid ""
 "URL to which the donator comes to after completing the\n"
 "                     donation; for example, a URL on your site that displays "
@@ -62,137 +86,110 @@ msgid ""
 "                     \"Thank you for your donation\"."
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:179
+#: lib/PayPalDonations/Admin.php:178
 msgid "Defaults"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:185
+#: lib/PayPalDonations/Admin.php:184
 msgid "Amount"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:192
+#: lib/PayPalDonations/Admin.php:191
 msgid "The default amount for a donation (Optional)."
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:199
+#: lib/PayPalDonations/Admin.php:198
 msgid "Purpose"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:206
+#: lib/PayPalDonations/Admin.php:205
 msgid "The default purpose of a donation (Optional)."
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:213
+#: lib/PayPalDonations/Admin.php:212
 msgid "Reference"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:220
+#: lib/PayPalDonations/Admin.php:219
 msgid "Default reference for the donation (Optional)."
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:228
+#: lib/PayPalDonations/Admin.php:227
 msgid "Donation Button"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:234
+#: lib/PayPalDonations/Admin.php:233
 msgid "Select Button"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:245
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:494
+#: lib/PayPalDonations/Admin.php:244 lib/PayPalDonations/Admin.php:499
 msgid "Custom Button"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:252
+#: lib/PayPalDonations/Admin.php:251
 msgid "Enter a URL to a custom donation button."
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:259
+#: lib/PayPalDonations/Admin.php:258
 msgid "Country and Language"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:266
+#: lib/PayPalDonations/Admin.php:265
 msgid "Localize the language and the country for the button."
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:281
+#: lib/PayPalDonations/Admin.php:280
 msgid "Extras"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:287
+#: lib/PayPalDonations/Admin.php:286
 msgid "Disable PayPal Statistics"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:298
+#: lib/PayPalDonations/Admin.php:298
 msgid "Theme CSS Override: Center Button"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:309
+#: lib/PayPalDonations/Admin.php:311
 msgid "Enable Checkout Language"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:320
+#: lib/PayPalDonations/Admin.php:322
 msgid "Checkout Language"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:331
+#: lib/PayPalDonations/Admin.php:333
 msgid "Return Method"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:338
+#: lib/PayPalDonations/Admin.php:340
 msgid "Takes effect only if the return page is set."
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:356
+#: lib/PayPalDonations/Admin.php:360
 msgid "Required fields."
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:368
-msgid ""
-"Optional extra settings to fine tune the setup in certain\n"
-"                scenarios."
+#: lib/PayPalDonations/Admin.php:374
+msgid "Optional extra settings to fine tune the setup in certain scenarios."
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:611
+#: lib/PayPalDonations/Admin.php:616
 msgid "GET method (default)"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:612
+#: lib/PayPalDonations/Admin.php:617
 msgid "GET method, no variables"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Admin.php:613
+#: lib/PayPalDonations/Admin.php:618
 msgid "POST method"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Widget.php:17
+#: lib/PayPalDonations/Widget.php:18
 msgid "PayPal Donation Button"
 msgstr ""
 
-#: D:\Dropbox\Code\WordPress\paypal-donations/lib/PayPalDonations/Widget.php:86
+#: lib/PayPalDonations/Widget.php:89
 msgid "Donate"
-msgstr ""
-
-#: D:\Dropbox\Code\WordPress\paypal-donations/views/admin.php:8
-msgid "General"
-msgstr ""
-
-#: D:\Dropbox\Code\WordPress\paypal-donations/views/admin.php:9
-msgid "Advanced"
-msgstr ""
-
-#: D:\Dropbox\Code\WordPress\paypal-donations/views/widget-form.php:2
-msgid "Title:"
-msgstr ""
-
-#: D:\Dropbox\Code\WordPress\paypal-donations/views/widget-form.php:8
-msgid "Text:"
-msgstr ""
-
-#: D:\Dropbox\Code\WordPress\paypal-donations/views/widget-form.php:14
-msgid "Purpose:"
-msgstr ""
-
-#: D:\Dropbox\Code\WordPress\paypal-donations/views/widget-form.php:20
-msgid "Reference:"
 msgstr ""

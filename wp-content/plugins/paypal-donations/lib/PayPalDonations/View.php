@@ -10,20 +10,20 @@ class PayPalDonations_View
     /**
      * Render a View.
      * 
-     * @param  string  $filePath  Include path to the template.
-     * @param  array   $data      Data to be used within the template.
-     * @return string  Returns the completed view.
+     * @param  string  $view      View to render.
+     * @param  array   $data      Data to be used within the view.
+     * @return string             The processed view.
      */
-    public static function render($filePath, $data = null)
+    public static function render($view, $data = null)
     {
-        // Check for data
+        // Handle data
         ($data) ? extract($data) : null;
  
         ob_start();
-        include ($filePath);
-        $template = ob_get_contents();
+        include(plugin_dir_path(__FILE__).'../../views/'.$view.'.php');
+        $view = ob_get_contents();
         ob_end_clean();
 
-        return $template;
+        return $view;
     }
 }

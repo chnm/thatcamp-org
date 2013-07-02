@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: PayPal Donations
-Plugin URI: http://wpstorm.net/wordpress-plugins/paypal-donations/
+Plugin URI: http://johansteen.se/code/paypal-donations/
 Description: Easy and simple setup and insertion of PayPal donate buttons with a shortcode or through a sidebar Widget. Donation purpose can be set for each button. A few other customization options are available as well.
 Author: Johan Steen
 Author URI: http://johansteen.se/
-Version: 1.8
+Version: 1.8.1
 License: GPLv2 or later
 Text Domain: paypal-donations 
 
@@ -38,8 +38,9 @@ spl_autoload_register('PayPalDonations::autoload');
 class PayPalDonations
 {
     const MIN_PHP_VERSION  = '5.2.4';
-    const MIN_WP_VERSION   = '2.8';
+    const MIN_WP_VERSION   = '3.0';
     const OPTION_DB_KEY    = 'paypal_donations_options';
+    const TEXT_DOMAIN      = 'paypal-donations';
     const FILE             = __FILE__;
 
     private static $instance = false;
@@ -148,8 +149,10 @@ class PayPalDonations
         add_shortcode('paypal-donation', array(&$this,'paypalShortcode'));
         add_action('wp_head', array($this, 'addCss'), 999);
 
-        add_action('widgets_init', 
-            create_function('', 'register_widget("PayPalDonations_Widget");'));
+        add_action(
+            'widgets_init',
+            create_function('', 'register_widget("PayPalDonations_Widget");')
+        );
     }
 
     /**
@@ -163,7 +166,7 @@ class PayPalDonations
      */
     public static function autoload($className)
     {
-        if ('PayPalDonations' !== mb_substr($className, 0, 15)) {
+        if (__CLASS__ !== mb_substr($className, 0, strlen(__CLASS__))) {
             return;
         }
         $className = ltrim($className, '\\');
@@ -186,7 +189,7 @@ class PayPalDonations
      */
     public function textDomain()
     {
-        $domain = 'paypal-donations';
+        $domain = self::TEXT_DOMAIN;
         $locale = apply_filters('plugin_locale', get_locale(), $domain);
         load_textdomain(
             $domain,
@@ -227,13 +230,18 @@ class PayPalDonations
      */
     public function paypalShortcode($atts)
     {
-        extract(shortcode_atts(array(
-            'purpose' => '',
-            'reference' => '',
-            'amount' => '',
-            'return_page' => '',
-            'button_url' => '',
-        ), $atts));
+        extract(
+            shortcode_atts(
+                array(
+                    'purpose' => '',
+                    'reference' => '',
+                    'amount' => '',
+                    'return_page' => '',
+                    'button_url' => '',
+                ),
+                $atts
+            )
+        );
 
         return $this->generateHtml(
             $purpose,
@@ -273,10 +281,7 @@ class PayPalDonations
             'donate_buttons' => $this->donate_buttons,
         );
 
-        return PayPalDonations_View::render(
-            plugin_dir_path(__FILE__).'views/paypal-button.php',
-            $data
-        );
+        return PayPalDonations_View::render('paypal-button', $data);
     }
 
     // -------------------------------------------------------------------------
@@ -291,14 +296,14 @@ class PayPalDonations
         // Check if PHP is too old
         if (version_compare(PHP_VERSION, self::MIN_PHP_VERSION, '<')) {
             // Display notice
-            add_action( 'admin_notices', array(&$this, 'phpVersionError') );
+            add_action('admin_notices', array(&$this, 'phpVersionError'));
             return false;
         }
 
         // Check if WordPress is too old
         global $wp_version;
         if (version_compare($wp_version, self::MIN_WP_VERSION, '<')) {
-            add_action( 'admin_notices', array(&$this, 'wpVersionError') );
+            add_action('admin_notices', array(&$this, 'wpVersionError'));
             return false;
         }
         return true;
@@ -311,9 +316,12 @@ class PayPalDonations
     {
         echo '<div class="error"><p><strong>';
         printf(
-            'Error: PayPal Donations requires PHP version %1$s or greater.<br/>'.
+            'Error: %3$s requires PHP version %1$s or greater.<br/>'.
             'Your installed PHP version: %2$s',
-            self::MIN_PHP_VERSION, PHP_VERSION);
+            self::MIN_PHP_VERSION,
+            PHP_VERSION,
+            $this->getPluginName()
+        );
         echo '</strong></p></div>';
     }
 
@@ -324,9 +332,22 @@ class PayPalDonations
     {
         echo '<div class="error"><p><strong>';
         printf(
-            'Error: PayPal Donations requires WordPress version %s or greater.',
-            self::MIN_WP_VERSION );
+            'Error: %2$s requires WordPress version %1$s or greater.',
+            self::MIN_WP_VERSION,
+            $this->getPluginName()
+        );
         echo '</strong></p></div>';
+    }
+
+    /**
+     * Get the name of this plugin.
+     *
+     * @return string The plugin name.
+     */
+    private function getPluginName()
+    {
+        $data = get_plugin_data(self::FILE);
+        return $data['Name'];
     }
 }
 
