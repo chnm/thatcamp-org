@@ -709,7 +709,7 @@ div#item-header .activity {
 }
 .item-avatar h4,
 #item-header-avatar h4 {
-  font-family: 'Courgette', cursive;
+  font-family: 'Francois One', sans-serif;
   padding: 10px 0 20px 0;
   font-size: 15px;
   font-size: 1.5rem;
@@ -904,7 +904,7 @@ img.alignleft {
   -webkit-box-shadow: 0 8px 6px -6px #cccccc;
   -moz-box-shadow: 0 8px 6px -6px #cccccc;
   box-shadow: 0 8px 6px -6px #cccccc;
-  width: 140px;
+  width: 120px;
 }
 #groups-list .item-avatar,
 #blogs-list .item-avatar {
@@ -3230,7 +3230,7 @@ div.item-list-tabs ul li.feed a {
   float: left;
   list-style: none;
   margin-right: 2%;
-  min-height: 250px;
+  min-height: 220px;
 }
 #item-header-avatar {
   margin: 20px;
@@ -3623,6 +3623,9 @@ ie9 #user-section {
     background: white;
     border: 2px solid rgb(238, 238, 238);
   }
+  div.item-desc div, div.item-desc span {
+  display:block;
+  }
 }
 
 @media only screen and (min-width: 480px) {
@@ -3672,7 +3675,6 @@ ie9 #user-section {
     background: white;
     border: 2px solid rgb(238, 238, 238);
   }
-
 }
 @media only screen and (min-width: 992px) {
   nav#top-nav {
@@ -3753,7 +3755,7 @@ ie9 #user-section {
     margin: 10px 0 0 0;
     display: block;
     overflow: hidden;
-  }
+  }   
 }
 @media only screen and (min-width: 1024px) {
 
@@ -3837,7 +3839,9 @@ ie9 #user-section {
   .offset {
     float: right;
   }
-
+  div.item-desc div, div.item-desc span {
+  display:inline;
+  }   
 }
 
 @media only screen and (min-width: 1344px) {
