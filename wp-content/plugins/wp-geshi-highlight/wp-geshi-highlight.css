@@ -1,25 +1,29 @@
 .wp-geshi-highlight {
     width: 100%;
-    font-size: 90%;
-    line-height: 1.2;
+    font-size: 100%;
+    font-family: monospace;
+    line-height: 140%;
     background-color: #fafaf7;
     padding-left: 8px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-bottom: 8px;
     overflow-x: auto;
     overflow-y: hidden;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    -moz-box-shadow: 4px 4px 4px #888;
-    -webkit-box-shadow: 4px 4px 4px #888;
-    box-shadow: 4px 4px 4px #888;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border: none;
+    border-radius: 1px;
+    -moz-box-shadow: 1px 1px 34px #888;
+    -webkit-box-shadow: 1px 1px 3px #888;
+    box-shadow: 1px 1px 3px #888;
     }
 
 .wp-geshi-highlight pre {
     overflow: visible;
     margin: 0;
     padding: 0;
+    background-color: #fafaf7 !important;
     }
 
 .wp-geshi-highlight ol {

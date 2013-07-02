@@ -1,19 +1,19 @@
-=== WP-GeSHi-Highlight -- simple syntax highlighting based on the award-winning GeSHi ===
+=== WP-GeSHi-Highlight -- simple syntax highlighting based on GeSHi ===
 Contributors: jgehrcke
 Donate link: http://gehrcke.de/donate/
 Tags: syntax, highlight, geshi, highlighting, valid, clean, fast, wp-geshi-highlight
-Tested up to: 3.5
-Stable tag: 1.0.8.1
+Tested up to: 3.6
+Stable tag: 1.1.0.2
 License: GPLv2
 
-Fast syntax highlighting for many languages based on GeSHi, the well-established and award-winning PHP highlighter. Simple usage. Valid HTML output.
+Fast syntax highlighting for many languages. Simple usage. Based on GeSHi (well-established & award-winning PHP highlighter). Valid HTML output.
 
 == Description ==
 **I) Features:**
 
 * Syntax highlighting for [**many** languages](http://gehrcke.de/files/perm/wp-geshi-highlight/wp-geshi-highlight_languages_1_0_8.txt).
 * Stability, performance and security inherited from [GeSHi](http://qbnz.com/highlighter/).
-* Line numbering (optional). Code-number displacements never occur. Numbers are not copied in most browsers.
+* Line numbering (optional). Code-number displacements do not occur. Numbers are not copied in most browsers.
 * Simple usage.
 * Per-block styles: each code block on a single web page can be designed on its own.
 * Clean, small and valid HTML output.
@@ -24,7 +24,7 @@ WP-GeSHi-Highlight is a largely rewritten version of [WP-Syntax](http://wordpres
 
 * creates valid HTML when line numbering is activated (via GeSHi's [GESHI_HEADER_PRE_VALID](http://qbnz.com/highlighter/geshi-doc.html#the-code-container) setting).
 * creates less HTML source code.
-* delivers an improved default style sheet.
+* delivers a default style sheet making use of modern CSS properties.
 * has more styling flexibility.
 * has the cleaner source code.
 * makes usage of up-to-date WordPress API calls.
@@ -63,16 +63,17 @@ Let me know if you find one: write a [mail](mailto:jgehrcke@googlemail.com) or l
 Please have a look at the [plugin's website](http://gehrcke.de/wp-geshi-highlight/#faq).
 
 
-= Can I change the starting line number? =
-
-Yes, try e.g. line="13". But this [breaks](http://qbnz.com/highlighter/geshi-doc.html#starting-line-numbers) XHTML strict compliance.
-
-
 == Screenshots ==
-1. This screenshot shows WP-GeSHi-Highlight in action. Furthermore, it visualizes how code blocks on the same page can have different styles (very easy to accomplish using WP-GeSHi-Highlight).
+1. This screenshot shows WP-GeSHi-Highlight in action. Furthermore, it visualizes how code blocks on the same page can have different styles (very easy to accomplish using WP-GeSHi-Highlight). Possibly this screenshot is out of date regarding the styling details.
 
 
 == Changelog ==
+= 1.1.0 (2013-06-22) =
+* Adjust default style for compatibility with Twentythirteen theme.
+* Remove GeSHi's hard-coded font-size and line-height code styles.
+* Reduce box shadow and border radius in default style.
+* Slightly increase top and bottom padding in default style.
+
 = 1.0.8 (2013-01-17) =
 * Improve default stylesheet: make use of CSS3 box shadows, several tweaks.
 * If the code block style file is found in the [theme style directory](http://codex.wordpress.org/Function_Reference/get_stylesheet_directory), it now has priority over the one in the plugin directory.

@@ -2,9 +2,9 @@
 /*
 Plugin Name: WP-GeSHi-Highlight
 Plugin URI: http://gehrcke.de/wp-geshi-highlight/
-Description: Fast syntax highlighting for many languages based on GeSHi, the well-established and award-winning highlighter for PHP. Produces clean, small, and valid (X)HTML output. WP-GeSHi-Highlight is easily configurable.
+Description: Fast syntax highlighting for many languages based on GeSHi, the well-established and award-winning highlighter for PHP. Produces clean, small, and valid (X)HTML output. WP-GeSHi-Highlight is simple to use and easily configurable.
 Author: Jan-Philip Gehrcke
-Version: 1.0.8
+Version: 1.1.0
 Author URI: http://gehrcke.de
 
 WP-GeSHi-Highlight is a largely changed and improved version of WP-Syntax by
@@ -46,7 +46,7 @@ Usage of GeSHi setting "GESHI_HEADER_PRE_VALID"
 
 Usage of GeSHi's get_stylesheet()
 ---------------------------------
-- Creates hort highlighting html code: styling is not based on long 
+- Creates hort highlighting html code: styling is not based on long
     <span style"........."> ocurrences.
 
 Possible issues
@@ -76,10 +76,10 @@ I) template_redirect hook:
     <pre args>CODE</pre> are searched.
 4)  If one such pattern is found, the information (args and CODE basically)
     is stored safely in a global variable, together with a match index.
-    
+
 This was the fixed part at the beginning of each page request. The next steps
-only happen if there was actually a code snippet to highlight.    
-    
+only happen if there was actually a code snippet to highlight.
+
 5)  Furthermore, the occurrence of the pattern in the original content
     (post/comment text) is deleted and replaced by a unique identifier
     containing the corresponding match index. Therefore, the content cannot be
@@ -115,7 +115,7 @@ III) content filters:
 */
 
 
-// Entry point of the plugin (right after WordPress finished processing the 
+// Entry point of the plugin (right after WordPress finished processing the
 // user request, set up `$wp_query`, and right before the template renders
 // the HTML output).
 add_action('template_redirect', 'wp_geshi_main');
@@ -269,9 +269,9 @@ function wp_geshi_highlight_and_generate_css() {
 
     // When we're here, code was found.
     // Time to initialize the highlighting machine...
-    
+
     // Check for `class_exists('GeSHi')` for preventing
-    // `Cannot redeclare class GeSHi` errors. Another plugin may already have 
+    // `Cannot redeclare class GeSHi` errors. Another plugin may already have
     // included its own version of GeSHi.
     // TODO: in this case, include GeSHi of WP-GeSHi-Highlight anyway via using
     // namespaces or class renaming.
@@ -303,6 +303,12 @@ function wp_geshi_highlight_and_generate_css() {
 
             // Set the output code type.
             $geshi->set_header_type(GESHI_HEADER_PRE_VALID);
+
+            // By default, geshi sets font size to 1em and line height to 1.2em.
+            // That does not fit to many modern layouts, make this relative, and
+            // most important, make it customizable from outside.
+            $geshi->set_code_style('');
+
 
             // Append the CSS code to the CSS code string if this is the first
             // occurrence of the language. $geshi->get_stylesheet(false)
@@ -377,10 +383,10 @@ function wp_geshi_add_css_to_head() {
     $csssfx = ".css";
     // Retrieve directory for the current theme/child theme.
     $theme_cssdir = get_stylesheet_directory();
-    
+
     // Delete duplicates from CSS array.
     $wp_geshi_requested_css_files = array_unique($wp_geshi_requested_css_files);
-    
+
     foreach($wp_geshi_requested_css_files as $cssfile) {
         $cssfilenamewslash = "/".$cssfile.$csssfx;
         // If the CSS file is found in the `get_stylesheet_directory()`,
@@ -399,9 +405,9 @@ function wp_geshi_add_css_to_head() {
         if ($cssuri) {
             wp_register_style("wp_geshi_".$cssfile, $cssuri);
             wp_enqueue_style("wp_geshi_".$cssfile);
-            }   
+            }
         }
- 
+
     // Echo GeSHi highlighting CSS code inline.
     if (strlen($wp_geshi_css_code) > 0)
         echo '<style type="text/css">'.$wp_geshi_css_code.'</style>';
