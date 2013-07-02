@@ -36,7 +36,7 @@ class AuthorAvatarsSitewideAdminPanel {
 	 */
 	function add_submenu() {
 		get_currentuserinfo();
-		if (!is_super_admin()) return false; // only for site admins
+		if (!AA_is_super_admin()) return false; // only for site admins
 		if (function_exists('is_network_admin')) { // Wordpress 3.1
 			add_submenu_page('settings.php', __('Sitewide Author Avatars Configuration', 'author-avatars'), __('Author Avatars List', 'author-avatars'), 'manage_options', 'wpmu_author_avatars', array(&$this,'config_page'));
 		}

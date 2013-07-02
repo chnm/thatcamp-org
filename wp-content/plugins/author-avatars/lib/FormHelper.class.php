@@ -227,7 +227,7 @@ class FormHelper {
 	 * Example:
 	 * Array('title' => 'My title'); will be transformed into this string: [ title="My title"]
 	 *
-	 * All attribute values are cleaned up using the function wp_specialchars().
+	 * All attribute values are cleaned up using the function esc_html().
 	 *
 	 * @static
 	 * @access public
@@ -239,7 +239,7 @@ class FormHelper {
 
 		$string = '';
 		foreach ($attributes as $key => $value) {
-			$string .= ' '. $key . '="'. wp_specialchars($value) .'"';
+			$string .= ' '. $key . '="'. esc_html($value) .'"';
 		}
 		return $string;
 	}

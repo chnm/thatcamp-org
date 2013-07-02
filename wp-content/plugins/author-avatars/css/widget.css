@@ -18,6 +18,7 @@
 .multiwidget_author_avatars .author-list .with-biography {
 	text-align: left;
 	margin-bottom: 0.5em;
+	clear: left;
 }
 .multiwidget_author_avatars .author-list .with-biography .name {
 	font-size: 1.1em;

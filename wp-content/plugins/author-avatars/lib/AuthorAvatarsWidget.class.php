@@ -18,6 +18,7 @@ class AuthorAvatarsWidget extends MultiWidget
 		$this->defaults = Array(
 			'title' => __('Blog Authors', 'author-avatars'),
 			'hiddenusers' => '',
+			'blogs'=>"",
 			'roles' => array('administrator', 'editor'),
 			'group_by' => '',
 			'display' => array(
@@ -105,6 +106,7 @@ class AuthorAvatarsWidget extends MultiWidget
 		if (is_array($instance['display'])) {
 			$userlist->show_name = in_array('show_name', $instance['display']);
 			$userlist->show_postcount = in_array('show_postcount', $instance['display']);
+			$userlist->show_bbpress_post_count = in_array('show_bbpress_post_count', $instance['display']);
 			$userlist->show_biography = in_array('show_biography', $instance['display']);
 			$userlist->user_link = $instance['display']['user_link'];
 			$userlist->avatar_size = $instance['display']['avatar_size'];
@@ -138,11 +140,11 @@ class AuthorAvatarsWidget extends MultiWidget
 	function control_update($new_instance, $old_instance)
 	{
 		$instance = $old_instance;		
-		$instance['title'] = wp_specialchars( $new_instance['title'] );
-		$instance['hiddenusers'] = wp_specialchars ( $new_instance['hiddenusers'] );
+		$instance['title'] = esc_html( $new_instance['title'] );
+		$instance['hiddenusers'] = esc_html ( $new_instance['hiddenusers'] );
 		$instance['roles'] = (array) $new_instance['roles'];
 		$instance['blogs'] = (array) $new_instance['blogs'];
-		$instance['group_by'] = wp_specialchars ($new_instance['group_by']);
+		$instance['group_by'] = esc_html ($new_instance['group_by']);
 		$instance['display'] = (array) $new_instance['display'];
 		
 		if (empty($instance['blogs'])) $instance['blogs'] = $this->defaults['blogs'];
@@ -178,6 +180,7 @@ class AuthorAvatarsWidget extends MultiWidget
 		$basic_left .= $form->renderFieldUserLink($instance['display']['user_link'], 'display][user_link');
 		
 		$basic_right = $form->renderFieldAvatarSize($instance['display']['avatar_size'], 'display][avatar_size');
+		$basic_right .= '<div class="avatar_donate">'.AA_donateButton('link').'</div>';
 		
 		$basic  = '<h5>'. __('Basic', 'author-avatars') .'</h5>';
 		$basic .= $form->renderColumns($basic_left, $basic_right);
@@ -189,7 +192,12 @@ class AuthorAvatarsWidget extends MultiWidget
 		$adv_left .= $form->renderFieldMinPostCount($instance['display']['min_post_count'], 'display][min_post_count');
 		$adv_left .= $form->renderFieldHiddenUsers($instance['hiddenusers']);
 		
-		$adv_right  = $form->renderFieldBlogs($instance['blogs']);
+		$adv_right  = "";
+		// incase we don't have any blogs
+		if (AA_is_wpmu() && !empty($instance['blogs'])) 
+			$adv_right  .= $form->renderFieldBlogs($instance['blogs']);
+		
+		
 		$adv_right .= $form->renderFieldGroupBy($instance['group_by']);
 		
 		$advanced  = '<h5>'. __('Advanced', 'author-avatars') .'</h5>';

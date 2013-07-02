@@ -7,19 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Author Avatars List in italiano\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/author-avatars\n"
-"POT-Creation-Date: 2009-06-02 11:39+0000\n"
-"PO-Revision-Date: 2009-06-24 18:24+0100\n"
-"Last-Translator: Gianni Diurno (aka gidibao) <gidibao@gmail.com>\n"
-"Language-Team: Gianni Diurno | http://gidibao.net/ <gidibao@gmail.com>\n"
+"POT-Creation-Date: 2012-07-17 22:01:50+00:00\n"
+"PO-Revision-Date: 2013-01-26 09:27+0100\n"
+"Last-Translator: Gianni Diurno (aka gidibao) <gidibao[at]gmail[dot]com>\n"
+"Language-Team: Gianni Diurno | gidibao.net & charmingpress.com\n"
+"Language: it_IT\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Italian\n"
-"X-Poedit-Country: ITALY\n"
+"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: lib/AuthorAvatars.class.php:13
 msgid "Author avatars: system check failed."
-msgstr "Author avatars: verifica del sistema fallita!"
+msgstr "Author avatars: verifica del sistema fallita."
 
 #: lib/AuthorAvatars.class.php:16
 msgid "Author avatars: install check failed."
@@ -27,162 +29,195 @@ msgstr "Author avatars: verifica installazione fallita!"
 
 #: lib/AuthorAvatars.class.php:19
 msgid "Author avatars: update check failed."
-msgstr "Author avatars: verifica aggiornamento fallita!"
+msgstr "Author avatars: verifica aggiornamento fallita."
 
-#: lib/AuthorAvatars.class.php:240
-#: lib/AuthorAvatarsWidget.class.php:19
+#: lib/AuthorAvatars.class.php:243 lib/AuthorAvatarsWidget.class.php:37
 msgid "Blog Authors"
 msgstr "Autori del blog"
 
-#: lib/AuthorAvatarsEditorButton.class.php:83
+#: lib/AuthorAvatarsEditorButton.class.php:93
 msgid "Author avatars shortcodes"
 msgstr "Shortcode avatar autore"
 
-#: lib/AuthorAvatarsEditorButton.class.php:118
-#: lib/AuthorAvatarsWidget.class.php:175
+#: lib/AuthorAvatarsEditorButton.class.php:122
+#: lib/AuthorAvatarsWidget.class.php:349
 msgid "Basic"
 msgstr "Configurazione di base"
 
-#: lib/AuthorAvatarsEditorButton.class.php:135
-#: lib/AuthorAvatarsWidget.class.php:187
+#: lib/AuthorAvatarsEditorButton.class.php:141
+#: lib/AuthorAvatarsWidget.class.php:375
 msgid "Advanced"
 msgstr "Configurazione avanzata"
 
-#: lib/AuthorAvatarsEditorButton.class.php:145
+#: lib/AuthorAvatarsEditorButton.class.php:149
 msgid "Cancel"
 msgstr "Annulla"
 
-#: lib/AuthorAvatarsEditorButton.class.php:148
+#: lib/AuthorAvatarsEditorButton.class.php:152
 msgid "Insert"
 msgstr "Inserisci"
 
-#: lib/AuthorAvatarsForm.class.php:119
+#: lib/AuthorAvatarsForm.class.php:107
 msgid "Show users from blogs"
 msgstr "Mostra gli utenti dai blog"
 
-#: lib/AuthorAvatarsForm.class.php:120
+#: lib/AuthorAvatarsForm.class.php:108
 msgid "If no blog is selected only users from the current blog are displayed."
-msgstr "Qualora nessun blog fosse stato selezionato, verranno mostrati i soli utenti del blog in uso."
+msgstr ""
+"Qualora nessun blog fosse stato selezionato, verranno mostrati i soli utenti "
+"del blog in uso."
 
-#: lib/AuthorAvatarsForm.class.php:161
+#: lib/AuthorAvatarsForm.class.php:143
 msgid "Group by blogs"
-msgstr "Gruppo per blog"
+msgstr "Raggruppa per blog"
 
-#: lib/AuthorAvatarsForm.class.php:171
+#: lib/AuthorAvatarsForm.class.php:151
 msgid "User list grouping"
-msgstr "Gruppo lista utenti"
+msgstr "Raggruppamento elenco utenti"
 
-#: lib/AuthorAvatarsForm.class.php:200
+#: lib/AuthorAvatarsForm.class.php:170
+msgid "Commentators"
+msgstr "Commentatori"
+
+#: lib/AuthorAvatarsForm.class.php:178
 msgid "Show roles"
 msgstr "Mostra i ruoli"
 
-#: lib/AuthorAvatarsForm.class.php:249
+#: lib/AuthorAvatarsForm.class.php:226
 msgid "Hidden users"
 msgstr "Utenti nascosti"
 
-#: lib/AuthorAvatarsForm.class.php:250
+#: lib/AuthorAvatarsForm.class.php:227
 msgid "Comma separate list of user login ids"
 msgstr "Separa con una virgola le ID-login degli utenti"
 
-#: lib/AuthorAvatarsForm.class.php:288
-msgid "Show Name"
-msgstr "Visualizza il nome"
+#: lib/AuthorAvatarsForm.class.php:265
+msgid "Show name"
+msgstr "Mostra nome"
 
-#: lib/AuthorAvatarsForm.class.php:295
+#: lib/AuthorAvatarsForm.class.php:266
+msgid "Show number of posts"
+msgstr "Mostra numero articoli"
+
+#: lib/AuthorAvatarsForm.class.php:267
+msgid "Show biography"
+msgstr "Mostra biografia"
+
+#: lib/AuthorAvatarsForm.class.php:273
 msgid "Display options"
 msgstr "Mostra le opzioni"
 
-#: lib/AuthorAvatarsForm.class.php:311
+#: lib/AuthorAvatarsForm.class.php:288
 msgid "Date of Registration"
 msgstr "Data di registrazione"
 
-#: lib/AuthorAvatarsForm.class.php:312
+#: lib/AuthorAvatarsForm.class.php:289
 msgid "Display Name"
 msgstr "Mostra il nome"
 
-#: lib/AuthorAvatarsForm.class.php:313
+#: lib/AuthorAvatarsForm.class.php:290
+msgid "First Name"
+msgstr "Nome"
+
+#: lib/AuthorAvatarsForm.class.php:291
+msgid "Last Name"
+msgstr "Cognome"
+
+#: lib/AuthorAvatarsForm.class.php:292
 msgid "Login Name"
 msgstr "Nome login"
 
-#: lib/AuthorAvatarsForm.class.php:314
+#: lib/AuthorAvatarsForm.class.php:293
 msgid "Number of Posts"
 msgstr "Numero di articoli"
 
-#: lib/AuthorAvatarsForm.class.php:315
+#: lib/AuthorAvatarsForm.class.php:294
 msgid "Random"
-msgstr "Random"
+msgstr "Casuale"
 
-#: lib/AuthorAvatarsForm.class.php:316
+#: lib/AuthorAvatarsForm.class.php:295
 msgid "User Id"
 msgstr "ID utente"
 
-#: lib/AuthorAvatarsForm.class.php:319
+#: lib/AuthorAvatarsForm.class.php:296
 msgid "Recent Activity"
-msgstr "Attività recente"
+msgstr "Attivit&agrave; recente"
 
-#: lib/AuthorAvatarsForm.class.php:324
+#: lib/AuthorAvatarsForm.class.php:300
 msgid "Sorting order"
 msgstr "Ordina per"
 
-#: lib/AuthorAvatarsForm.class.php:340
+#: lib/AuthorAvatarsForm.class.php:315
 msgid "Author Page"
 msgstr "Pagina autore"
 
-#: lib/AuthorAvatarsForm.class.php:341
+#: lib/AuthorAvatarsForm.class.php:316
 msgid "Website"
 msgstr "Sito web"
 
-#: lib/AuthorAvatarsForm.class.php:344
+#: lib/AuthorAvatarsForm.class.php:319
 msgid "BP Member Page"
 msgstr "Pagina membro BP"
 
-#: lib/AuthorAvatarsForm.class.php:347
+#: lib/AuthorAvatarsForm.class.php:322
 msgid "Blog"
 msgstr "Blog"
 
-#: lib/AuthorAvatarsForm.class.php:352
-msgid "Link users to"
-msgstr "Collegamento utenti a"
+#: lib/AuthorAvatarsForm.class.php:325
+msgid "BBpress Member Page"
+msgstr "Pagina membro BBpress"
 
-#: lib/AuthorAvatarsForm.class.php:367
+#: lib/AuthorAvatarsForm.class.php:329
+msgid "Link users to"
+msgstr "Collega utenti a"
+
+#: lib/AuthorAvatarsForm.class.php:343
 msgid "Ascending"
 msgstr "Ascendente"
 
-#: lib/AuthorAvatarsForm.class.php:368
+#: lib/AuthorAvatarsForm.class.php:344
 msgid "Descending"
 msgstr "Discendente"
 
-#: lib/AuthorAvatarsForm.class.php:373
+#: lib/AuthorAvatarsForm.class.php:348
 msgid "Sorting direction"
 msgstr "Direzione"
 
-#: lib/AuthorAvatarsForm.class.php:389
+#: lib/AuthorAvatarsForm.class.php:363
 msgid "Max. number of avatars shown"
 msgstr "Numero massimo di avatar visibili"
 
-#: lib/AuthorAvatarsForm.class.php:406
+#: lib/AuthorAvatarsForm.class.php:379
+msgid "Max. number of avatars per page"
+msgstr "Numero massimo di avatar per pagina"
+
+#: lib/AuthorAvatarsForm.class.php:395
+msgid "Required minimum number of posts"
+msgstr "Numero minimo di post richiesti"
+
+#: lib/AuthorAvatarsForm.class.php:411
 msgid "Avatar Size"
 msgstr "Dimensione avatar"
 
-#: lib/AuthorAvatarsForm.class.php:430
+#: lib/AuthorAvatarsForm.class.php:434
 msgid "Single Avatar"
 msgstr "Avatar singolo"
 
-#: lib/AuthorAvatarsForm.class.php:431
+#: lib/AuthorAvatarsForm.class.php:435
 msgid "List of Users"
-msgstr "Lista utenti"
+msgstr "Elenco utenti"
 
-#: lib/AuthorAvatarsForm.class.php:436
+#: lib/AuthorAvatarsForm.class.php:439
 msgid "Shortcode Type"
 msgstr "Tipo di shortcode"
 
-#: lib/AuthorAvatarsForm.class.php:455
+#: lib/AuthorAvatarsForm.class.php:456
 msgid "Email address or user id"
 msgstr "Indirizzo email o ID utente"
 
 #: lib/AuthorAvatarsForm.class.php:471
 msgid "None"
-msgstr "No"
+msgstr "Nessuno"
 
 #: lib/AuthorAvatarsForm.class.php:472
 msgid "Left"
@@ -196,49 +231,56 @@ msgstr "Centro"
 msgid "Right"
 msgstr "Destra"
 
-#: lib/AuthorAvatarsForm.class.php:479
+#: lib/AuthorAvatarsForm.class.php:478
 msgid "Alignment"
 msgstr "Allineamento"
 
-#: lib/AuthorAvatarsSitewideAdminPanel.class.php:35
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:41
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:44
 msgid "Sitewide Author Avatars Configuration"
 msgstr "Configurazione Sitewide Author Avatars"
 
-#. #-#-#-#-#  plugin.pot (PACKAGE VERSION)  #-#-#-#-#
-#. Plugin Name of an extension
-#: lib/AuthorAvatarsSitewideAdminPanel.class.php:35
+#. #-#-#-#-#  plugin.pot (Author Avatars List 1.6.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:41
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:44
 msgid "Author Avatars List"
 msgstr "Author Avatars List"
 
-#: lib/AuthorAvatarsSitewideAdminPanel.class.php:60
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:70
 msgid "Options saved."
-msgstr "Le opzioni sono state salvate"
+msgstr "Le opzioni sono state salvate."
 
-#: lib/AuthorAvatarsSitewideAdminPanel.class.php:66
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:76
 msgid "Sitewide Author Avatars Options"
 msgstr "Opzioni Sitewide Author Avatars"
 
-#: lib/AuthorAvatarsSitewideAdminPanel.class.php:69
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:79
 msgid "Avatar list settings"
-msgstr "Impostazioni lista avatar"
+msgstr "Impostazioni elenco avatar"
 
-#: lib/AuthorAvatarsSitewideAdminPanel.class.php:76
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:86
 msgid "Save Changes"
 msgstr "Salva le modifiche"
 
-#: lib/AuthorAvatarsSitewideAdminPanel.class.php:86
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:96
 msgid "Enable blog filter"
 msgstr "Attiva filtro blog"
 
-#: lib/AuthorAvatarsSitewideAdminPanel.class.php:93
-msgid "Select the blogs which you would like the blog filter to be enabled. Only blogs selected here can display users from other blogs."
-msgstr "Seleziona i blog per i quali desideri sia attivato il filtro. Solamente i blog che saranno stati selezionati qui potranno mostrare gli utenti da altri blog."
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:103
+msgid ""
+"Select the blogs which you would like the blog filter to be enabled. Only "
+"blogs selected here can display users from other blogs."
+msgstr ""
+"Seleziona i blog per i quali desideri sia attivato il filtro. Solamente i "
+"blog che saranno stati selezionati qui potranno mostrare gli utenti da altri "
+"blog."
 
-#: lib/AuthorAvatarsWidget.class.php:55
+#: lib/AuthorAvatarsWidget.class.php:111
 msgid "Displays avatars of blog users."
 msgstr "Mostra gli avatar degli utenti del blog."
 
-#: lib/AuthorAvatarsWidget.class.php:163
+#: lib/AuthorAvatarsWidget.class.php:325
 msgid "Title"
 msgstr "Titolo"
 
@@ -250,19 +292,57 @@ msgstr "Nessuna scelta disponibile."
 msgid "[show_author shortcode: please set id/email attribute]"
 msgstr "[show_author shortcode: please set id/email attribute]"
 
-#: lib/UserList.class.php:127
+#: lib/UserList.class.php:323
 msgid "No users found."
-msgstr "Nessun utente é stato trovato."
+msgstr "Nessun utente &egrave; stato trovato."
 
-#. Plugin URI of an extension
-msgid "http://wordpress.org/extend/plugins/author-avatars/"
-msgstr "http://wordpress.org/extend/plugins/author-avatars/"
+#: lib/UserList.class.php:471
+msgid "<<"
+msgstr "<<"
 
-#. Description of an extension
-msgid "Display lists of user avatars using <a href=\"widgets.php\">widgets</a> or <a href=\"http://codex.wordpress.org/User:Bforchhammer/Author_Avatars_ShortCode_Documentation\">shortcodes</a>."
-msgstr "Mostra la lista degli utenti <a href=\"widgets.php\">widgets</a> or <a href=\"http://codex.wordpress.org/User:Bforchhammer/Author_Avatars_ShortCode_Documentation\">shortcodes</a>."
+#: lib/UserList.class.php:487
+msgid ">>"
+msgstr ">>"
 
-#. Author of an extension
-msgid "<a href=\"http://mind2.de\">Benedikt Forchhammer</a>, Idea: <a href=\"http://bearne.com\">Paul Bearne</a>"
-msgstr "<a href=\"http://mind2.de\">Benedikt Forchhammer</a>, Idea: <a href=\"http://bearne.com\">Paul Bearne</a>"
+#: lib/UserList.class.php:680
+msgid "%d comment"
+msgid_plural "%d comments"
+msgstr[0] "%d comment"
+msgstr[1] "%d commenti"
 
+#: lib/UserList.class.php:688
+msgid "%d post"
+msgid_plural "%d posts"
+msgstr[0] "%d articolo"
+msgstr[1] "%d articoli"
+
+#. Plugin URI of the plugin/theme
+msgid "http://authoravatars.wordpress.com/"
+msgstr "http://authoravatars.wordpress.com/"
+
+#. Description of the plugin/theme
+msgid ""
+"Display lists of user avatars using <a href=\"widgets.php\">widgets</a> or "
+"<a href=\"https://authoravatars.wordpress.com/documentation/\">shortcodes</"
+"a>."
+msgstr ""
+"Mostra elenco avatar utenti via <a href=\"widgets.php\">widget</a> oppure <a "
+"href=\"https://authoravatars.wordpress.com/documentation/\">shortcode</a>."
+
+#. Author of the plugin/theme
+msgid ""
+"<a href=\"http://bearne.ca\">Paul Bearne</a>, <a href=\"http://mind2.de"
+"\">Benedikt Forchhammer</a>"
+msgstr ""
+"<a href=\"http://bearne.ca\">Paul Bearne</a>, <a href=\"http://mind2.de"
+"\">Benedikt Forchhammer</a>"
+
+#~ msgid "http://wordpress.org/extend/plugins/author-avatars/"
+#~ msgstr "http://wordpress.org/extend/plugins/author-avatars/"
+
+#~ msgid ""
+#~ "<a href=\"http://mind2.de\">Benedikt Forchhammer</a>, Idea: <a href="
+#~ "\"http://bearne.com\">Paul Bearne</a>"
+#~ msgstr ""
+#~ "<a href=\"http://mind2.de\">Benedikt Forchhammer</a>, Idea: <a href="
+#~ "\"http://bearne.com\">Paul Bearne</a>"

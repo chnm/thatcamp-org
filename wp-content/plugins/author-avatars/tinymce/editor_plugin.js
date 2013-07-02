@@ -19,7 +19,7 @@
 		ed.windowManager.open({
 		file: 'admin-ajax.php?action=author-avatars-editor-popup',
 		width : 600 + ed.getLang('authoravatars.delta_width', 0),
-		height : 400 + ed.getLang('authoravatars.delta_height', 0),
+		height : 500 + ed.getLang('authoravatars.delta_height', 0),
 		inline : 1
 		}, {
 		plugin_url : url // Plugin absolute URL

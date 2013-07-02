@@ -2,9 +2,9 @@
 Contributors: pbearne, bforchhammer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=MZTZ5S8MGF75C&lc=CA&item_name=Wordpress%20Development%20%2f%20Paul%20Bearne&item_number=AuthorAvatarsList%20Plugin&currency_code=CAD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: Avatar, Author, BuddyPress, Comment, Editor, Image, Multisite, Photo, Picture, Profile, Shortcode, Random, Sidebar, Thumbnail, User, Widget, Wpmu
-Requires at least: 2.8
-Tested up to: 3.4.1
-Stable tag: 1.6.1
+Requires at least: 3.0
+Tested up to: 3.5.1
+Stable tag: 1.7.1
 
 Display lists of user avatars using widgets or shortcodes.
 
@@ -57,7 +57,28 @@ You can find information for developers [on this page](http://authoravatars.word
 5. List of users with name and biography
 
 == Changelog ==
+= 1.7.1 =
+* bubfix removed an extra ' in a SQL select in get_user_last_activity() function. Thanks to "basaja" for the bug report.
 
+= 1.7.0 =
+* Added Local User select to Single Avatar Shortcode creator
+* Replaced wp_specialchars() with esc_html()
+* Added BBPRESS_post_count as shortcode dispaly and sort options
+* Added show_email to shortcode display option
+* Added some translation updates
+* Fixed issue with TniyMCE breaking when using HTTPS
+* And a few other tidy ups
+* Added SQL fliter to only fetch the users for the rolls being requested rather than all users
+* Added caching to the main get_users function which will use an object cache if turned on
+
+= 1.6.3 =
+* Wraped ordering code in "remove_accents" functions to to replace Uni-code accents with non unicode versions so sort works as expected.
+* Increased height of TinyMCE popup so content shows with scroll bars.
+* Replaced text donate links with image link.
+
+= 1.6.2 =
+* Added display options for single Avatar options
+* Added donation link 
 
 = 1.6.1 =
 * Fixed a bug that stoped the loading of default CSS sheet for the plugin that I added a bug in in 1.6 

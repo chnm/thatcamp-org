@@ -50,3 +50,8 @@ border-color: black;
 .shortcode-author-avatars div.aa_pageList a.current{
 	font-weight: bold;
 }
+.shortcode-show-avatar{
+	display: block;
+
+}
+	

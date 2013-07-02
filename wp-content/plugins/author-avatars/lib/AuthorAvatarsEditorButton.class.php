@@ -43,8 +43,9 @@ class AuthorAvatarsEditorButton {
 				// set the POST parameter for the popup calls.
 				if (defined('DOING_AJAX') && DOING_AJAX == true) {
 					$p = 'author-avatars-editor-popup';
-					if ($_GET['action'] == $p && !isset($_POST['action'])) {
-						$_POST['action'] = $_GET['action'];
+					$action = isset($_GET['action']) ? $_GET['action'] : null;
+					if ($action == $p && !isset($_POST['action'])) {
+						$_POST['action'] = $action;
 					}
 				}
 			}
@@ -110,8 +111,11 @@ class AuthorAvatarsEditorButton {
 		// BASIC TAB
 		$basic_left  = $form->renderFieldShortcodeType();
 		$basic_left .= '<div class="fields_type_show_avatar">';
+		$basic_left .= $form->renderFieldUsers();
 		$basic_left .= $form->renderFieldEmail();
 		$basic_left .= $form->renderFieldAlignment();
+		$basic_left .= $form->renderFieldDisplayOptions();
+		$basic_left .= $form->renderFieldUserLink('');
 		$basic_left .= '</div>';
 		$basic_left .= '<div class="fields_type_authoravatars">';
 		$basic_left .= $form->renderFieldRoles(array('administrator', 'editor'));
@@ -144,7 +148,7 @@ class AuthorAvatarsEditorButton {
 
 		$tabs = $basic_tab . $advanced_tab;
 		$html = '<div class="aa-tabs">'. $form->renderTabList() . $tabs .'</div>';
-        $html .= "\n\t".'<div class="mceActionPanel">';
+        $html .= "\n\t".'<div class="mceActionPanel"> '.AA_donateButton();
 	    $html .= "\n\t".'<div style="float: left">';
 	    $html .= "\n\t".'<input type="button" id="cancel" name="cancel" value="'. __("Cancel") .'" onclick="tinyMCEPopup.close();" />';
 	    $html .= "\n\t".'</div>';
