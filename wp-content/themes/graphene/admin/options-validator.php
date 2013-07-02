@@ -10,78 +10,81 @@ function graphene_settings_validator( $input ){
 	global $graphene_options_validated;
 	if ( $graphene_options_validated == true ) return $input;
 	
-	if (!isset($_POST['graphene_uninstall']) ) {
+	if ( !isset( $_POST['graphene_uninstall'] ) ) {
 		global $graphene_defaults, $allowedposttags;
 		
 		// Add <script> tag to the allowed tags in code
 		$allowedposttags = array_merge( $allowedposttags, array( 'script' => array( 'type' => array(), 'src' => array() ) ) );
 		
-		if (isset($_POST['graphene_general']) ) {
+		if (isset( $_POST['graphene_general'] ) ) {
 		
 			/* =Slider Options 
 			--------------------------------------------------------------------------------------*/
                      
 			// Slider category
-			if ( isset($input['slider_type']) && !in_array($input['slider_type'], array('latest_posts', 'random', 'posts_pages', 'categories' ) ) ){
-				unset($input['slider_type']);
-				add_settings_error('graphene_options', 2, __('ERROR: Invalid category to show in slider.', 'graphene') );
+			if ( isset( $input['slider_type'] ) && !in_array( $input['slider_type'], array( 'latest_posts', 'random', 'posts_pages', 'categories' ) ) ){
+				unset( $input['slider_type'] );
+				add_settings_error( 'graphene_options', 2, __( 'ERROR: Invalid category to show in slider.', 'graphene' ) );
 			} elseif ( $input['slider_type'] == 'posts_pages' && empty ( $input['slider_specific_posts'] ) ) {
-				unset($input['slider_type']);
-				add_settings_error('graphene_options', 2, __('ERROR: You must specify the posts/pages to be displayed when you have "Show specific posts/pages" selected for the slider.', 'graphene') );
+				unset( $input['slider_type'] );
+				add_settings_error( 'graphene_options', 2, __( 'ERROR: You must specify the posts/pages to be displayed when you have "Show specific posts/pages" selected for the slider.', 'graphene' ) );
                         } elseif ( $input['slider_type'] == 'categories' && empty ( $input['slider_specific_categories'] ) ) {
-				unset($input['slider_type']);
-				add_settings_error('graphene_options', 2, __('ERROR: You must have selected at least one category when you have "Show posts from categories" selected for the slider.', 'graphene') );
+				unset( $input['slider_type'] );
+				add_settings_error( 'graphene_options', 2, __( 'ERROR: You must have selected at least one category when you have "Show posts from categories" selected for the slider.', 'graphene' ) );
 			}                        
 			// Posts and/or pages to display
-			if (isset($input['slider_type']) && $input['slider_type'] == 'posts_pages' && isset($input['slider_specific_posts']) ) {
-				$input['slider_specific_posts'] = str_replace(' ', '', $input['slider_specific_posts']);
+			if (isset( $input['slider_type'] ) && $input['slider_type'] == 'posts_pages' && isset( $input['slider_specific_posts'] ) ) {
+				$input['slider_specific_posts'] = str_replace( ' ', '', $input['slider_specific_posts'] );
 			}
 			// Categories to display posts from
-			if (isset($input['slider_type']) && $input['slider_type'] == 'categories' && isset($input['slider_specific_categories']) && is_array($input['slider_specific_categories']) ){
+			if (isset( $input['slider_type'] ) && $input['slider_type'] == 'categories' && isset( $input['slider_specific_categories'] ) && is_array( $input['slider_specific_categories'] ) ){
 				if ( in_array ( false, array_map( 'ctype_digit', (array) $input['slider_specific_categories'] ) ) ) {
-					unset($input['slider_specific_categories']);
-					add_settings_error('graphene_options', 2, __('ERROR: Invalid category selected for the slider categories.', 'graphene') );
+					unset( $input['slider_specific_categories'] );
+					add_settings_error( 'graphene_options', 2, __( 'ERROR: Invalid category selected for the slider categories.', 'graphene' ) );
 				}
 			}
 			// Exclude categories from posts listing
-			$input = graphene_validate_dropdown( $input, 'slider_exclude_categories', array('disabled', 'homepage', 'everywhere'), __('ERROR: Invalid option for the slider categories exclusion from posts listing is specified.', 'graphene') );
+			$input = graphene_validate_dropdown( $input, 'slider_exclude_categories', array( 'disabled', 'homepage', 'everywhere' ), __( 'ERROR: Invalid option for the slider categories exclusion from posts listing is specified.', 'graphene' ) );
 			// Display posts from categories in random order
-			$input['slider_random_category_posts'] = (isset($input['slider_random_category_posts']) ) ? true : false;
+			$input['slider_random_category_posts'] = (isset( $input['slider_random_category_posts'] ) ) ? true : false;
 			// Number of posts to display
-			if (!empty($input['slider_postcount']) && !ctype_digit($input['slider_postcount']) ){
-				unset($input['slider_postcount']);
-				add_settings_error('graphene_options', 2, __('ERROR: The number of posts to displayed in the slider must be a an integer value.', 'graphene') );
+			if ( !empty( $input['slider_postcount'] ) && !ctype_digit( $input['slider_postcount'] ) ){
+				unset( $input['slider_postcount'] );
+				add_settings_error( 'graphene_options', 2, __( 'ERROR: The number of posts to displayed in the slider must be a an integer value.', 'graphene' ) );
 			}
 			// Slider image
-			$input = graphene_validate_dropdown( $input, 'slider_img', array('disabled', 'featured_image', 'post_image', 'custom_url'), __('ERROR: Invalid option for the slider image is specified.', 'graphene') );
+			$input = graphene_validate_dropdown( $input, 'slider_img', array( 'disabled', 'featured_image', 'post_image', 'custom_url' ), __( 'ERROR: Invalid option for the slider image is specified.', 'graphene' ) );
 			// Custom slider image URL
-			$input = graphene_validate_url( $input, 'slider_imgurl', __('ERROR: Bad URL entered for the custom slider image URL.', 'graphene') );
+			$input = graphene_validate_url( $input, 'slider_imgurl', __( 'ERROR: Bad URL entered for the custom slider image URL.', 'graphene' ) );
 			// Slider display style
-			$input = graphene_validate_dropdown( $input, 'slider_display_style', array('thumbnail-excerpt', 'bgimage-excerpt', 'full-post'), __('ERROR: Invalid option for the slider display style is specified.', 'graphene') );
+			$input = graphene_validate_dropdown( $input, 'slider_display_style', array( 'thumbnail-excerpt', 'bgimage-excerpt', 'full-post' ), __( 'ERROR: Invalid option for the slider display style is specified.', 'graphene' ) );
 			// Slider height
-			$input = graphene_validate_digits( $input, 'slider_height', __('ERROR: The value for slider height must be an integer.', 'graphene') );
+			$input = graphene_validate_digits( $input, 'slider_height', __( 'ERROR: The value for slider height must be an integer.', 'graphene' ) );
 			// Slider speed
-			$input = graphene_validate_digits( $input, 'slider_speed', __('ERROR: The value for slider speed must be an integer.', 'graphene') );
+			$input = graphene_validate_digits( $input, 'slider_speed', __( 'ERROR: The value for slider speed must be an integer.', 'graphene' ) );
 			// Slider transition speed
-			$input = graphene_validate_digits( $input, 'slider_trans_speed', __('ERROR: The value for slider transition speed must be an integer.', 'graphene') );
+			$input = graphene_validate_digits( $input, 'slider_trans_speed', __( 'ERROR: The value for slider transition speed must be an integer.', 'graphene' ) );
 			// Slider animation
 			$input = graphene_validate_dropdown( $input, 'slider_animation', array( 'horizontal-slide', 'vertical-slide', 'fade', 'none' ), __( 'ERROR: Invalid slider animation.', 'graphene' ) );
             // Slider position
-			$input['slider_position'] = (isset($input['slider_position']) ) ? true : false;
+			$input['slider_position'] = (isset( $input['slider_position'] ) ) ? true : false;
 			// Slider disable switch
-			$input['slider_disable'] = (isset($input['slider_disable']) ) ? true : false;
+			$input['slider_disable'] = (isset( $input['slider_disable'] ) ) ? true : false;
 			// Slider full width
-			$input['slider_full_width'] = (isset($input['slider_full_width']) ) ? true : false;
+			$input['slider_full_width'] = (isset( $input['slider_full_width'] ) ) ? true : false;
 			
+			/* =Infinite Scroll Options 
+			--------------------------------------------------------------------------------------*/
+			$input['inf_scroll_enable'] = ( isset( $input['inf_scroll_enable'] ) ) ? true : false;
+			$input['inf_scroll_click'] = ( isset( $input['inf_scroll_click'] ) ) ? true : false;
+			$input['inf_scroll_comments'] = ( isset( $input['inf_scroll_comments'] ) ) ? true : false;
 			
 			/* =Front Page Options 
 			--------------------------------------------------------------------------------------*/
-			
-			// Front page posts categories
-			if ( ! in_array ( '', (array) $input['frontpage_posts_cats'] ) ) {
+			if ( ! empty( $input['frontpage_posts_cats'] ) ) {
 				if ( in_array ( false, array_map( 'ctype_digit', (array) $input['frontpage_posts_cats'] ) ) ) {
-					unset($input['frontpage_posts_cats']);
-					add_settings_error('graphene_options', 2, __('ERROR: Invalid category selected for the front page posts categories.', 'graphene') );
+					unset( $input['frontpage_posts_cats'] );
+					add_settings_error( 'graphene_options', 2, __( 'ERROR: Invalid category selected for the front page posts categories.', 'graphene' ) );
 				}
 			} else {
 				$input['frontpage_posts_cats'] = $graphene_defaults['frontpage_posts_cats'];
@@ -92,67 +95,70 @@ function graphene_settings_validator( $input ){
 			--------------------------------------------------------------------------------------*/
 			
 			// Type of content to show
-			$input = graphene_validate_dropdown( $input, 'show_post_type', array('latest-posts', 'cat-latest-posts', 'posts'), __('ERROR: Invalid option for the type of content to show in homepage panes.', 'graphene') );
+			$input = graphene_validate_dropdown( $input, 'show_post_type', array( 'latest-posts', 'cat-latest-posts', 'posts' ), __( 'ERROR: Invalid option for the type of content to show in homepage panes.', 'graphene' ) );
 			// Number of latest posts to display
-			$input = graphene_validate_digits( $input, 'homepage_panes_count', __('ERROR: The value for the number of latest posts to display in homepage panes must be an integer.', 'graphene') );
-			// Categories to show latest posts from
-                        if ($input['show_post_type'] == 'cat-latest-posts' && isset($input['homepage_panes_cat']) && is_array($input['homepage_panes_cat']) ) {
-                            if ( in_array ( false, array_map( 'ctype_digit', (array) $input['homepage_panes_cat'] ) ) ) {
-                                unset($input['slider_specific_categories']);
-                                add_settings_error('graphene_options', 2, __('ERROR: Invalid category selected for the latest posts to show from in the homepage panes.', 'graphene') );
-                            }
-                        }			
-			// Posts and/or pages to display
-			if ($input['show_post_type'] == 'posts' && isset($input['homepage_panes_posts']) ) {
-				$input['homepage_panes_posts'] = str_replace(' ', '', $input['homepage_panes_posts']);
+			$input = graphene_validate_digits( $input, 'homepage_panes_count', __( 'ERROR: The value for the number of latest posts to display in homepage panes must be an integer.', 'graphene' ) );
+			
+			if ( isset( $input['show_post_type'] ) ) {
+				// Categories to show latest posts from
+				if ( $input['show_post_type'] == 'cat-latest-posts' && isset( $input['homepage_panes_cat'] ) && is_array( $input['homepage_panes_cat'] ) ) {
+					if ( in_array ( false, array_map( 'ctype_digit', (array) $input['homepage_panes_cat'] ) ) ) {
+						unset( $input['slider_specific_categories'] );
+						add_settings_error( 'graphene_options', 2, __( 'ERROR: Invalid category selected for the latest posts to show from in the homepage panes.', 'graphene' ) );
+					}
+				}
+				// Posts and/or pages to display
+				if ( $input['show_post_type'] == 'posts' && isset( $input['homepage_panes_posts'] ) ) {
+					$input['homepage_panes_posts'] = str_replace( ' ', '', $input['homepage_panes_posts'] );
+				}
 			}
 			// Disable switch
-			$input['disable_homepage_panes'] = (isset($input['disable_homepage_panes']) ) ? true : false;
+			$input['disable_homepage_panes'] = (isset( $input['disable_homepage_panes'] ) ) ? true : false;
 			
             
 			/* =Comments Options
 			--------------------------------------------------------------------------------------*/
 			
-			$input = graphene_validate_dropdown( $input, 'comments_setting', array('wordpress', 'disabled_pages', 'disabled_completely'), __('ERROR: Invalid option for the comments option.', 'graphene') );
+			$input = graphene_validate_dropdown( $input, 'comments_setting', array( 'wordpress', 'disabled_pages', 'disabled_completely' ), __( 'ERROR: Invalid option for the comments option.', 'graphene' ) );
 			
 			            
 			/* =Child Page Options
 			--------------------------------------------------------------------------------------*/
 			
 			// Hide parent box if content is empty
-			$input['hide_parent_content_if_empty'] = (isset($input['hide_parent_content_if_empty']) ) ? true : false;                        
+			$input['hide_parent_content_if_empty'] = (isset( $input['hide_parent_content_if_empty'] ) ) ? true : false;                        
 			// Child page listing
-			$input = graphene_validate_dropdown( $input, 'child_page_listing', array('hide', 'show_always', 'show_if_parent_empty'), __('ERROR: Invalid option for the child page listings.', 'graphene') );
+			$input = graphene_validate_dropdown( $input, 'child_page_listing', array( 'hide', 'show_always', 'show_if_parent_empty' ), __( 'ERROR: Invalid option for the child page listings.', 'graphene' ) );
 			
                         
 			/* = RSS Feed Options
 			--------------------------------------------------------------------------------------*/
 			
 			// Use a custom RSS feed
-			$input['use_custom_rss_feed'] = (isset($input['use_custom_rss_feed']) ) ? true : false;                        
+			$input['use_custom_rss_feed'] = (isset( $input['use_custom_rss_feed'] ) ) ? true : false;                        
 			// Child page listing
 			if ( $input['use_custom_rss_feed'] && empty ( $input['custom_rss_feed_url'] ) ) {
-				unset($input['slider_type']);
-				add_settings_error('graphene_options', 2, __('ERROR: You must supply an URL for the custom RSS Feed.', 'graphene') );
+				unset( $input['slider_type'] );
+				add_settings_error( 'graphene_options', 2, __( 'ERROR: You must supply an URL for the custom RSS Feed.', 'graphene' ) );
 			} else {     
-				$input = graphene_validate_url( $input, 'custom_rss_feed_url', __('ERROR: Bad URL entered for the custom RSS Feed URL.', 'graphene') );			
+				$input = graphene_validate_url( $input, 'custom_rss_feed_url', __( 'ERROR: Bad URL entered for the custom RSS Feed URL.', 'graphene' ) );			
 			}
 			                                                
                         
 			/* =Widget Area Options
 			--------------------------------------------------------------------------------------*/
 			
-			$input['enable_header_widget'] = (isset($input['enable_header_widget']) ) ? true : false;
-			$input['alt_home_sidebar'] = (isset($input['alt_home_sidebar']) ) ? true : false;
-			$input['alt_home_footerwidget'] = (isset($input['alt_home_footerwidget']) ) ? true : false;
+			$input['enable_header_widget'] = (isset( $input['enable_header_widget'] ) ) ? true : false;
+			$input['alt_home_sidebar'] = (isset( $input['alt_home_sidebar'] ) ) ? true : false;
+			$input['alt_home_footerwidget'] = (isset( $input['alt_home_footerwidget'] ) ) ? true : false;
                         
                         
 			/* =Top Bar Options
 			--------------------------------------------------------------------------------------*/
 			// Hide top bar
-            $input['hide_top_bar'] = (isset($input['hide_top_bar']) ) ? true : false;
+            $input['hide_top_bar'] = (isset( $input['hide_top_bar'] ) ) ? true : false;
 			// Open in new window
-			$input['social_media_new_window'] = (isset($input['social_media_new_window']) ) ? true : false;			
+			$input['social_media_new_window'] = (isset( $input['social_media_new_window'] ) ) ? true : false;			
 			/* Social profiles */
 			$social_profiles = ( ! empty( $input['social_profiles'] ) ) ? $input['social_profiles'] : array();
 		
@@ -186,13 +192,13 @@ function graphene_settings_validator( $input ){
 			--------------------------------------------------------------------------------------*/
 			
 			// Show social sharing button switch
-			$input['show_addthis'] = (isset($input['show_addthis']) ) ? true : false;
+			$input['show_addthis'] = (isset( $input['show_addthis'] ) ) ? true : false;
 			// Show buttons in pages switch
-			$input['show_addthis_page'] = (isset($input['show_addthis_page']) ) ? true : false;
+			$input['show_addthis_page'] = (isset( $input['show_addthis_page'] ) ) ? true : false;
 			// Show buttons in home and archive pages
-			$input['show_addthis_archive'] = (isset($input['show_addthis_archive']) ) ? true : false;
+			$input['show_addthis_archive'] = (isset( $input['show_addthis_archive'] ) ) ? true : false;
 			// Social sharing buttons location
-			$input = graphene_validate_dropdown( $input, 'addthis_location', array('post-bottom', 'post-top', 'top-bottom'), __('ERROR: Invalid option for the social sharing buttons location.', 'graphene') );
+			$input = graphene_validate_dropdown( $input, 'addthis_location', array( 'post-bottom', 'post-top', 'top-bottom' ), __( 'ERROR: Invalid option for the social sharing buttons location.', 'graphene' ) );
 			// Social sharing buttons code
 			$input['addthis_code'] = trim( stripslashes( $input['addthis_code'] ) );
 			
@@ -201,9 +207,9 @@ function graphene_settings_validator( $input ){
 			--------------------------------------------------------------------------------------*/
 			
 			// Show Adsense ads switch
-			$input['show_adsense'] = (isset($input['show_adsense']) ) ? true : false;
+			$input['show_adsense'] = (isset( $input['show_adsense'] ) ) ? true : false;
 			// Show ads on front page switch
-			$input['adsense_show_frontpage'] = (isset($input['adsense_show_frontpage']) ) ? true : false;
+			$input['adsense_show_frontpage'] = (isset( $input['adsense_show_frontpage'] ) ) ? true : false;
 			// Adsense code
 			$input['adsense_code'] = wp_kses_post( $input['adsense_code'] );
 			
@@ -221,44 +227,43 @@ function graphene_settings_validator( $input ){
 			--------------------------------------------------------------------------------------*/
 			
 			// Show creative common logo switch
-			$input['show_cc'] = (isset($input['show_cc']) ) ? true : false;
+			$input['show_cc'] = (isset( $input['show_cc'] ) ) ? true : false;
 			// Copyright HTML
-			$input['copy_text'] = wp_kses_post($input['copy_text']);
+			$input['copy_text'] = wp_kses_post( $input['copy_text'] );
 			// Hide copyright switch
-			$input['hide_copyright'] = (isset($input['hide_copyright']) ) ? true : false;
+			$input['hide_copyright'] = (isset( $input['hide_copyright'] ) ) ? true : false;
 			// Hide "Return to top" link switch
-			$input['hide_return_top'] = (isset($input['hide_return_top']) ) ? true : false;
+			$input['hide_return_top'] = (isset( $input['hide_return_top'] ) ) ? true : false;
                         
                         
 			/* =Print Options
 			--------------------------------------------------------------------------------------*/  
 			
 			// Enable print CSS switch
-			$input['print_css'] = (isset($input['print_css']) ) ? true : false;
+			$input['print_css'] = (isset( $input['print_css'] ) ) ? true : false;
 			// Show print button switch
-			$input['print_button'] = (isset($input['print_button']) ) ? true : false;
+			$input['print_button'] = (isset( $input['print_button'] ) ) ? true : false;
 	
 			
 			
 		} // Ends the General options
 		
 		
-		if (isset($_POST['graphene_display']) ) {
+		if (isset( $_POST['graphene_display'] ) ) {
 			
 			/* =Header Display Options
 			--------------------------------------------------------------------------------------*/  
 			
-			$input['light_header'] = (isset($input['light_header']) ) ? true : false;
-			$input['link_header_img'] = (isset($input['link_header_img']) ) ? true : false;
-			$input['featured_img_header'] = (isset($input['featured_img_header']) ) ? true : false;
-			$input['use_random_header_img'] = (isset($input['use_random_header_img']) ) ? true : false;
-			$input = graphene_validate_digits( $input, 'header_img_height', __('ERROR: The value for the header image height must be an integer.', 'graphene') );
-			$input = graphene_validate_dropdown( $input, 'search_box_location', array('top_bar', 'nav_bar', 'disabled'), __('ERROR: Invalid option for the Search box location.', 'graphene') );
+			$input['light_header'] = (isset( $input['light_header'] ) ) ? true : false;
+			$input['link_header_img'] = (isset( $input['link_header_img'] ) ) ? true : false;
+			$input['featured_img_header'] = (isset( $input['featured_img_header'] ) ) ? true : false;
+			$input = graphene_validate_digits( $input, 'header_img_height', __( 'ERROR: The value for the header image height must be an integer.', 'graphene' ) );
+			$input = graphene_validate_dropdown( $input, 'search_box_location', array( 'top_bar', 'nav_bar', 'disabled' ), __( 'ERROR: Invalid option for the Search box location.', 'graphene' ) );
 			
 			/* =Column Options
 			--------------------------------------------------------------------------------------*/
-			$input = graphene_validate_dropdown( $input, 'column_mode', array('one_column', 'two_col_left', 'two_col_right', 'three_col_left', 'three_col_right', 'three_col_center'), __('ERROR: Invalid option for the column mode.', 'graphene') );
-			$input = graphene_validate_dropdown( $input, 'bbp_column_mode', array('one_column', 'two_col_left', 'two_col_right', 'three_col_left', 'three_col_right', 'three_col_center'), __('ERROR: Invalid option for the bbPress column mode.', 'graphene') );
+			$input = graphene_validate_dropdown( $input, 'column_mode', array( 'one_column', 'two_col_left', 'two_col_right', 'three_col_left', 'three_col_right', 'three_col_center' ), __( 'ERROR: Invalid option for the column mode.', 'graphene' ) );
+			$input = graphene_validate_dropdown( $input, 'bbp_column_mode', array( 'one_column', 'two_col_left', 'two_col_right', 'three_col_left', 'three_col_right', 'three_col_center' ), __( 'ERROR: Invalid option for the bbPress column mode.', 'graphene' ) );
 			
 			/* =Column Width Options
 			--------------------------------------------------------------------------------------*/
@@ -270,23 +275,23 @@ function graphene_settings_validator( $input ){
                         
 			/* =Post Display Options
 			--------------------------------------------------------------------------------------*/                        
-			$input['hide_post_author'] = (isset($input['hide_post_author']) ) ? true : false;
-			$input = graphene_validate_dropdown( $input, 'post_date_display', array('hidden', 'icon_no_year', 'icon_plus_year', 'text'), __('ERROR: Invalid option for the post date display.', 'graphene') ); 
-			$input['hide_post_cat'] = (isset($input['hide_post_cat']) ) ? true : false;
-			$input['hide_post_tags'] = (isset($input['hide_post_tags']) ) ? true : false;
-			$input['hide_post_commentcount'] = (isset($input['hide_post_commentcount']) ) ? true : false;
-			$input['show_post_avatar'] = (isset($input['show_post_avatar']) ) ? true : false;
-			$input['show_post_author'] = (isset($input['show_post_author']) ) ? true : false;
+			$input['hide_post_author'] = (isset( $input['hide_post_author'] ) ) ? true : false;
+			$input = graphene_validate_dropdown( $input, 'post_date_display', array( 'hidden', 'icon_no_year', 'icon_plus_year', 'text' ), __( 'ERROR: Invalid option for the post date display.', 'graphene' ) ); 
+			$input['hide_post_cat'] = (isset( $input['hide_post_cat'] ) ) ? true : false;
+			$input['hide_post_tags'] = (isset( $input['hide_post_tags'] ) ) ? true : false;
+			$input['hide_post_commentcount'] = (isset( $input['hide_post_commentcount'] ) ) ? true : false;
+			$input['show_post_avatar'] = (isset( $input['show_post_avatar'] ) ) ? true : false;
+			$input['show_post_author'] = (isset( $input['show_post_author'] ) ) ? true : false;
                         
 			/* =Excerpts Display Options
 			--------------------------------------------------------------------------------------*/     
-			$input['posts_show_excerpt'] = (isset($input['posts_show_excerpt']) ) ? true : false;                        
-			$input['archive_full_content'] = (isset($input['archive_full_content']) ) ? true : false;					
-			$input['show_excerpt_more'] = (isset($input['show_excerpt_more']) ) ? true : false;       
+			$input['posts_show_excerpt'] = (isset( $input['posts_show_excerpt'] ) ) ? true : false;                        
+			$input['archive_full_content'] = (isset( $input['archive_full_content'] ) ) ? true : false;					
+			$input['show_excerpt_more'] = (isset( $input['show_excerpt_more'] ) ) ? true : false;       
                         
 			/* =Comments Display Options
 			--------------------------------------------------------------------------------------*/
-			$input['hide_allowedtags'] = (isset($input['hide_allowedtags']) ) ? true : false;
+			$input['hide_allowedtags'] = (isset( $input['hide_allowedtags'] ) ) ? true : false;
 			
             /* =Text style options
 			--------------------------------------------------------------------------------------*/ 
@@ -295,21 +300,21 @@ function graphene_settings_validator( $input ){
 			/* =Footer Widget Display Options
 			--------------------------------------------------------------------------------------*/
 			// Number of columns to display
-			$input = graphene_validate_digits( $input, 'footerwidget_column', __('ERROR: The number of columns to be displayed in the footer widget must be a an integer value.', 'graphene' ) );
+			$input = graphene_validate_digits( $input, 'footerwidget_column', __( 'ERROR: The number of columns to be displayed in the footer widget must be a an integer value.', 'graphene' ) );
 			
 			
 			/* =Navigation Menu Display Options
 			--------------------------------------------------------------------------------------*/
-			$input = graphene_validate_digits( $input, 'navmenu_child_width', __('ERROR: The width of the submenu must be a an integer value.', 'graphene' ) );
+			$input = graphene_validate_digits( $input, 'navmenu_child_width', __( 'ERROR: The width of the submenu must be a an integer value.', 'graphene' ) );
 			$input['navmenu_home_desc'] = wp_kses_post( $input['navmenu_home_desc'] );
-			$input['disable_menu_desc'] = (isset($input['disable_menu_desc']) ) ? true : false;
+			$input['disable_menu_desc'] = (isset( $input['disable_menu_desc'] ) ) ? true : false;
 			
 			/* =Miscellaneous Display Options
 			--------------------------------------------------------------------------------------*/
 			$input['custom_site_title_frontpage'] = strip_tags( $input['custom_site_title_frontpage'] );
 			$input['custom_site_title_content'] = strip_tags( $input['custom_site_title_content'] );
 			$input = graphene_validate_url( $input, 'favicon_url', __( 'ERROR: Bad URL entered for the favicon URL.', 'graphene' ) );
-			$input['disable_editor_style'] = (isset($input['disable_editor_style']) ) ? true : false;
+			$input['disable_editor_style'] = (isset( $input['disable_editor_style'] ) ) ? true : false;
 			
 			/* =Custom CSS Options 
 			--------------------------------------------------------------------------------------*/
@@ -327,7 +332,7 @@ function graphene_settings_validator( $input ){
 		} // Ends the Colours options
 			
                 
-		if ( isset($_POST['graphene_advanced'] ) ) {
+		if ( isset( $_POST['graphene_advanced'] ) ) {
 			$input['enable_preview'] = ( isset( $input['enable_preview'] ) ) ? true : false; 
 			$input['head_tags'] = trim( $input['head_tags'] );
 			
@@ -347,7 +352,7 @@ function graphene_settings_validator( $input ){
 		$graphene_options_validated = true;
 		
 		// Merge the new settings with the previous one (if exists) before saving
-		$input = array_merge( get_option('graphene_settings', array() ), (array) $input );
+		$input = array_merge( get_option( 'graphene_settings', array() ), (array) $input );
 		
 		/* Only save options that have different values than the default values */
 		foreach ( $input as $key => $value ){
@@ -373,10 +378,11 @@ function graphene_settings_validator( $input ){
 */
 function graphene_validate_digits( $input, $option_name, $error_message ){
 	global $graphene_defaults;
-	if ( '0' === $input[$option_name] || ! empty($input[$option_name] ) ){
-		if (!ctype_digit($input[$option_name]) ) {
+	if ( ! isset( $input[$option_name] ) ) return $input;
+	if ( ! empty( $input[$option_name] ) || '0' === $input[$option_name] ){
+		if ( !ctype_digit( $input[$option_name] ) ) {
 			$input[$option_name] = $graphene_defaults[$option_name];
-			add_settings_error('graphene_options', 2, $error_message);
+			add_settings_error( 'graphene_options', 2, $error_message);
 		}
 	} else {
 		$input[$option_name] = $graphene_defaults[$option_name];
@@ -386,13 +392,13 @@ function graphene_validate_digits( $input, $option_name, $error_message ){
 
 function graphene_validate_column_width( $input, $column_mode, $option_name, $error_message ){
 	global $graphene_defaults;
-	if ( '0' === $input['column_width'][$column_mode][$option_name] || ! empty($input['column_width'][$column_mode][$option_name] ) ){
+	if ( '0' === $input['column_width'][$column_mode][$option_name] || ! empty( $input['column_width'][$column_mode][$option_name] ) ){
 		$width = $input['column_width'][$column_mode][$option_name];
 		if ( ! ( is_numeric( $width ) && $width >= 0 ) ) {
 			$input['column_width'] = $graphene_defaults['column_width'];
 			$input['container_width'] = $graphene_defaults['container_width'];
 			$input['grid_width'] = $graphene_defaults['grid_width'];
-			add_settings_error('graphene_options', 2, $error_message);
+			add_settings_error( 'graphene_options', 2, $error_message);
 		}
 	} else {
 		$input['column_width'] = $graphene_defaults['column_width'];
@@ -403,21 +409,21 @@ function graphene_validate_column_width( $input, $column_mode, $option_name, $er
 }
 
 function graphene_validate_dropdown( $input, $option_name, $possible_values, $error_message ){
-	
-	if (isset($input[$option_name]) && !in_array($input[$option_name], $possible_values) ){
-		unset($input[$option_name]);
-		add_settings_error('graphene_options', 2, $error_message);
+	if ( ! isset( $input[$option_name] ) ) return $input;
+	if ( ! in_array( $input[$option_name], $possible_values ) ){
+		unset( $input[$option_name] );
+		add_settings_error( 'graphene_options', 2, $error_message );
 	}
 	return $input;
 }
 
 function graphene_validate_url( $input, $option_name, $error_message ) {
 	global $graphene_defaults;
-	if (!empty($input[$option_name]) ){
-		$input[$option_name] = esc_url_raw($input[$option_name]);
-		if ($input[$option_name] == '') {
+	if ( ! empty( $input[$option_name] ) ){
+		$input[$option_name] = esc_url_raw( $input[$option_name] );
+		if ( $input[$option_name] == '' ) {
 			$input[$option_name] = $graphene_defaults[$option_name];
-			add_settings_error('graphene_options', 2, $error_message);
+			add_settings_error( 'graphene_options', 2, $error_message);
 		}	
 	}	
 	return $input;
@@ -426,15 +432,23 @@ function graphene_validate_url( $input, $option_name, $error_message ) {
 function graphene_validate_colours( $options ) {
 	global $graphene_defaults;
 	foreach ( $options as $key => $option ){
-		if ( $key == 'colour_preset' ) continue;
+		if ( in_array( $key, array( 'colour_preset', 'colour_presets' ) ) ) continue;
 		if ( ! empty( $option ) ){
 			if ( stripos( $option, '#' ) !== 0 ) {
 				$options[$key] = '#' . $option;
-			}	
+			}
+			$options[$key] = graphene_convert_shortform_colour( $options[$key] );
 		} else {
 			$option = $graphene_defaults[$key];
 		}
 	}
 	return $options;
 }
-?>
+
+function graphene_convert_shortform_colour( $colour ){
+	if ( strlen( $colour ) == 4 ) {
+		$colour = preg_replace( '/\#([0-9a-fA-F] )([0-9a-fA-F] )([0-9a-fA-F] )/', '#$1$1$2$2$3$3$4', $colour );
+	}
+	
+	return $colour;
+}

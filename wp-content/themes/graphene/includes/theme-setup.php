@@ -37,7 +37,7 @@ function graphene_get_content_width(){
 	if ( strpos( $column_mode, 'three_col' ) === 0 )
 		$diff = $graphene_settings['column_width']['three_col']['content'] - graphene_grid_width( '', 8 );
 
-	return graphene_grid_width( -($gutter * 2) + $diff, 16, 11, 8 );
+	return apply_filters( 'graphene_content_width', graphene_grid_width( -($gutter * 2) + $diff, 16, 11, 8 ) );
 }
 
 
@@ -46,7 +46,6 @@ function graphene_set_content_width(){
 	$content_width = graphene_get_content_width();
 }
 add_action( 'template_redirect', 'graphene_set_content_width' );
-graphene_set_content_width();
 
 
 if ( ! function_exists( 'graphene_setup' ) ):

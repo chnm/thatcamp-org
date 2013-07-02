@@ -72,6 +72,7 @@ if (!function_exists( 'graphene_addthis' ) ) :
 endif;
 
 
+if ( ! function_exists( 'graphene_continue_reading_link' ) ) :
 /**
  * Returns a "Continue Reading" link for excerpts
  * Based on the function from the Twenty Ten theme
@@ -79,14 +80,13 @@ endif;
  * @since Graphene 1.0.8
  * @return string "Continue Reading" link
  */
-if (!function_exists( 'graphene_continue_reading_link' ) ) :
-	function graphene_continue_reading_link() {
-		global $graphene_in_slider;
-		if (!is_page() && !$graphene_in_slider) {
-			$more_link_text = __( 'Continue reading &raquo;', 'graphene' );
-			return '</p><p><a class="more-link block-button" href="'.get_permalink().'">'.$more_link_text.'</a>';
-		}
+function graphene_continue_reading_link() {
+	global $graphene_in_slider;
+	if ( ! is_page() && ! $graphene_in_slider ) {
+		$more_link_text = __( 'Continue reading &raquo;', 'graphene' );
+		return '</p><p><a class="more-link block-button" href="' . get_permalink() . '">' . $more_link_text . '</a>';
 	}
+}
 endif;
 
 
@@ -101,57 +101,68 @@ endif;
  * @return string An ellipsis
  */
 function graphene_auto_excerpt_more( $more ) {
-	return apply_filters( 'graphene_auto_excerpt_more', ' &hellip; '.graphene_continue_reading_link() );
+	return apply_filters( 'graphene_auto_excerpt_more', ' &hellip; ' . graphene_continue_reading_link() );
 }
 add_filter( 'excerpt_more', 'graphene_auto_excerpt_more' );
 
 
 /**
- * Add the Read More link to manual excerpts
+ * Add the Read More link to manual excerpts.
  *
  * @since Graphene 1.1.3
 */
 function graphene_manual_excerpt_more( $text ){
-	global $graphene_in_slider;
-	if (has_excerpt() && !$graphene_in_slider){
-		$text = explode( '</p>', $text);
-		$text[count( $text)-2] .= graphene_continue_reading_link();
-		$text = implode( '</p>', $text);
+	global $post, $graphene_settings, $graphene_in_slider;
+	
+	if ( $graphene_in_slider ) return $text;
+	
+	$has_excerpt = has_excerpt();
+	if ( $has_excerpt && ! $graphene_settings['show_excerpt_more'] ) return $text;
+	
+	$has_more = preg_match( '/<!--more(.*?)?-->/', $post->post_content, $matches );
+	if ( ! $has_excerpt && ! $has_more ) return $text;
+	
+	if ( $has_more ) {
+		if ( $text != graphene_truncate_words( $text, $graphene_settings['excerpt_length'], '' ) ) return $text;
 	}
+		
+	$text = explode( '</p>', $text );
+	$text[count( $text )-2] .= graphene_continue_reading_link();
+	$text = implode( '</p>', $text );
+	
 	return $text;
 }
-if ( $graphene_settings['show_excerpt_more'] ) {
-	add_filter( 'the_excerpt', 'graphene_manual_excerpt_more' );
-}
+add_action( 'the_excerpt', 'graphene_manual_excerpt_more' );
 
 
+if ( ! function_exists( 'graphene_posts_nav' ) ) :
 /**
  * Generates the posts navigation links
 */
-if (!function_exists( 'graphene_posts_nav' ) ) :
-	function graphene_posts_nav(){ 
-		$query = $GLOBALS['wp_query'];
-		
-		if (function_exists( 'wp_pagenavi' ) ) :  ?>
-			<div class="post-nav clearfix">
-				<?php wp_pagenavi(); ?>
-            </div>
-        <?php 
-		
-		elseif ( $query->max_num_pages > 1 ) : ?>
-            <div class="post-nav clearfix">
-                <?php if (!is_search() ) : ?>
-                    <p class="previous"><?php next_posts_link( __( 'Older posts &laquo;', 'graphene' ) ) ?></p>
-                    <p class="next-post"><?php previous_posts_link( __( '&raquo; Newer posts', 'graphene' ) ) ?></p>
-                <?php else : ?>
-                    <p class="next-post"><?php next_posts_link( __( 'Next page &raquo;', 'graphene' ) ) ?></p>
-                    <p class="previous"><?php previous_posts_link( __( '&laquo; Previous page', 'graphene' ) ) ?></p>
-                <?php endif; ?>
-            </div>
-         
-	<?php
-		endif;
-	}
+function graphene_posts_nav(){ 
+	global $graphene_settings;
+	$query = $GLOBALS['wp_query'];
+	
+	if ( function_exists( 'wp_pagenavi' ) ) :  ?>
+		<div class="post-nav clearfix">
+			<?php wp_pagenavi(); ?>
+		</div>
+	<?php elseif ( $query->max_num_pages > 1 ) : ?>
+		<div class="post-nav clearfix">
+			<?php if (!is_search() ) : ?>
+				<p class="previous"><?php next_posts_link( __( 'Older posts &laquo;', 'graphene' ) ) ?></p>
+				<p class="next-post"><?php previous_posts_link( __( '&raquo; Newer posts', 'graphene' ) ) ?></p>
+			<?php else : ?>
+				<p class="next-post"><?php next_posts_link( __( 'Next page &raquo;', 'graphene' ) ) ?></p>
+				<p class="previous"><?php previous_posts_link( __( '&laquo; Previous page', 'graphene' ) ) ?></p>
+			<?php endif; ?>
+		</div>
+	<?php endif; ?>
+	
+	<?php if ( ( $query->max_num_pages > 1 ) && $graphene_settings['inf_scroll_enable'] && $graphene_settings['inf_scroll_click'] ) : ?>
+        <p class="fetch-more-wrapper"><a href="#" class="fetch-more"><?php _e( 'Fetch more items', 'graphene' ); ?></a></p>
+	<?php endif; 
+}
 endif;
 
 

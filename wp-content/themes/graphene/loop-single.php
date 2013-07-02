@@ -101,8 +101,6 @@ if ( function_exists( 'get_post_format' ) ) {
 			<?php do_action( 'graphene_post_meta' ); ?>
 		</div>
 		
-                <?php thatcamp_add_friend_button( get_the_author_ID() ) ?>                
-		
 		<?php /* Post content */ ?>
 		<div class="entry-content clearfix">
 			<?php do_action( 'graphene_before_post_content' ); ?>

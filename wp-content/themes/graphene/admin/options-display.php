@@ -38,16 +38,6 @@ function graphene_options_display() {
                     </tr>
                     <tr class="non-essential-option">
                         <th scope="row">
-                            <label for="use_random_header_img"><?php _e( 'Use random header image', 'graphene' ); ?></label>
-                        </th>
-                        <td><input type="checkbox" name="graphene_settings[use_random_header_img]" id="use_random_header_img" <?php checked( $graphene_settings['use_random_header_img'] ); ?> value="true" /><br />
-                            <span class="description">
-								<?php _e( 'Check this to show a random header image (random image taken from the available default header images).', 'graphene' ); ?><br />
-                                <?php _e( '<strong>Note:</strong> only works on pages where a specific header image is not defined.', 'graphene' ); ?></span>
-                        </td>
-                    </tr>
-                    <tr class="non-essential-option">
-                        <th scope="row">
                             <label for="header_img_height"><?php _e( 'Header image height', 'graphene' ); ?></label>
                         </th>
                         <td>
@@ -60,7 +50,7 @@ function graphene_options_display() {
                             <label for="search_box_location"><?php _e( 'Search box location', 'graphene' ); ?></label>
                         </th>
                         <td>
-                            <select name="graphene_settings[search_box_location]" id="search_box_location">
+                            <select name="graphene_settings[search_box_location]" id="search_box_location" class="chzn-select">
                                 <option value="top_bar" <?php selected( $graphene_settings['search_box_location'], 'top_bar' ); ?>><?php _e("Top bar", 'graphene' ); ?></option>
                                 <option value="nav_bar" <?php selected( $graphene_settings['search_box_location'], 'nav_bar' ); ?>><?php _e("Navigation bar", 'graphene' ); ?></option>
                                 <option value="disabled" <?php selected( $graphene_settings['search_box_location'], 'disabled' ); ?>><?php _e("Disable search box", 'graphene' ); ?></option>             
@@ -279,7 +269,7 @@ function graphene_options_display() {
                             <label for="post_date_display"><?php _e( 'Post date display', 'graphene' ); ?></label>
                         </th>
                         <td>
-                            <select name="graphene_settings[post_date_display]" id="post_date_display">
+                            <select name="graphene_settings[post_date_display]" id="post_date_display" class="chzn-select">
                                 <option value="hidden" <?php selected( $graphene_settings['post_date_display'], 'hidden' ); ?>><?php _e( 'Hidden', 'graphene' ); ?></option>
                                 <option value="icon_no_year" <?php selected( $graphene_settings['post_date_display'], 'icon_no_year' ); ?>><?php _e( 'As an icon (without the year)', 'graphene' ); ?></option>
                                 <option value="icon_plus_year" <?php selected( $graphene_settings['post_date_display'], 'icon_plus_year' ); ?>><?php _e( 'As an icon (including the year)', 'graphene' ); ?></option>

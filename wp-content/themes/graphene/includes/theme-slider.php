@@ -1,89 +1,6 @@
 <?php 
 global $graphene_settings;
 /**
- * Prints out the scripts required for the featured posts slider
-*/
-if ( ! function_exists( 'graphene_scrollable' ) ) :
-	function graphene_scrollable() { 
-		global $graphene_settings;
-		
-		$interval = ( $graphene_settings['slider_speed'] ) ? $graphene_settings['slider_speed'] : 7000;
-        $speed = $graphene_settings['slider_trans_speed'];
-		?>
-            <!-- Slider script -->
-            <script type="text/javascript">
-				//<![CDATA[
-                jQuery(document).ready(function($){
-					
-				<?php if ( $graphene_settings['slider_animation'] == 'horizontal-slide' ) : ?>
-					$("#slider_root")
-						.scrollable({
-							circular: true,
-							clickable: false,
-							speed: <?php echo $speed; ?>
-						})
-						.navigator({	  
-							navi: '.slider_nav',
-							naviItem: 'a',
-							activeClass: 'active'                                                               
-						})
-						.autoscroll({
-							interval: <?php echo $interval; ?>,
-							steps: 1, 
-							api: 'true'
-						});
-					$.graphene_slider = $("#slider_root").data("scrollable");
-					
-				<?php else : 
-						if ( $graphene_settings['slider_animation'] == 'vertical-slide' ){
-							$effect = 'slide';
-						}
-						if ( $graphene_settings['slider_animation'] == 'fade' ){
-							$effect = 'fade';
-						}
-						if ( $graphene_settings['slider_animation'] == 'none' ){
-							$effect = 'default';
-						}
-				?>
-				
-					$( ".slider_nav" )
-							.tabs( ".slider_items > .slider_post", {
-								effect: '<?php echo $effect; ?>',
-								fadeOutSpeed: <?php echo $speed; ?>,
-								fadeInSpeed: <?php echo $speed; ?>,
-								rotate: true,
-								current: 'active'
-							})
-							.slideshow({
-								autoplay: true,
-								clickable: false,
-								interval: <?php echo $interval; ?>,
-								api: true
-							});
-					$.graphene_slider = $(".slider_nav").data("tabs");
-				<?php endif; ?>
-				
-				<?php if ( $graphene_settings['slider_display_style'] == 'bgimage-excerpt' ) : ?>
-					/* Preload slider background images */
-					$('.slider_items .slider_post').each(function(){
-						var src = $(this).css('background-image').replace('url(', '').replace(')','');
-						if ( src.indexOf('http') == 0 ){
-							(new Image()).src = this;
-						}
-						src = null;
-					});
-				<?php endif; ?>
-				
-				<?php do_action( 'graphene_scrollable_script' ); ?>
-                });
-				//]]>
-            </script>
-            <!-- #Slider script -->
-		<?php 
-	}
-endif;
-
-/**
  * Creates the functions that output the slider
 */
 function graphene_slider(){
@@ -208,10 +125,7 @@ function graphene_slider(){
 if ( ! function_exists( 'graphene_display_slider' ) ) :
 	function graphene_display_slider(){
 		if ( is_front_page() ){
-			
-			// jQuery Tools slider
 			graphene_slider();
-			add_action( 'wp_footer', 'graphene_scrollable' );
 		}
 	}
 endif;

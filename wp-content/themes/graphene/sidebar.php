@@ -23,7 +23,7 @@ global $graphene_settings;
 	} else {
 		
 		/* Display notice to logged in users if there is no active widget in the sidebar */
-		if ( is_user_logged_in() && current_user_can( 'edit_theme_options' ) ){
+		if ( current_user_can( 'edit_theme_options' ) ){
 			if ( is_front_page() && $graphene_settings['alt_home_sidebar'] ){
 				$sidebar_name = __( 'Front Page Sidebar Widget Area', 'graphene' );
 			} else {

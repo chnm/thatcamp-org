@@ -1,80 +1,116 @@
 GRAPHENE WORDPRESS THEME README
-by Syahir Hakim
-http://www.khairul-syahir.com
-
-Graphene WordPress Theme, Copyright 2010-2012 Syahir Hakim
-Graphene is distributed under the terms of the GNU GPL version 3
-
-The Graphene theme is a stylish, neat, and tight WordPress theme built for WordPress 3.0. It supports many (if not all) of the new features introduced in WordPress 3.0 as well as a host of other features introduced in earlier versions of WordPress.
-
-Graphene theme is confirmed compatible with IE7, IE8, Mozilla Firefox, Safari, and Google Chrome.
+This readme.txt is last updated on: 10 June 2013
 
 
-FEATURES
+== BRIEF INFORMATION ==
 
-    * Two-column layout, with widgetised sidebar on the right and bottom.
-    * You can also use an alternative sidebar for the front page than the rest of the website.
-    * You can specify the number of columns to be displayed in the bottom sidebar.
-    * Includes a jQuery slider on the front page to display your featured posts. Native implementation, no plugin required.
-    * Includes action hooks for much greater customisability through child theme. See the full list of action hooks at the Graphene Action Hooks page.
-    * Includes a one-column, full-width page template (since 1.0.5). See demo.
-    * Includes an author page, which displays the author?s details, latest posts, most commented posts, and then displays a paginated list of all of the author?s posts.
-    * Built-in Twitter widget to place in the sidebar. You can determine the title to display as well as how many latest tweets you would like to be displayed, all from the WordPress? Widgets admin page.
-    * (WordPress 3.0) Supports custom header images. A total of 7 default header images are included with the theme (see the theme?s readme.txt for image credits). You can also upload and set your own header image through the WordPress admin page.
-    * (WordPress 3.0) Supports custom header text. You can choose the color of the header texts, or if they should be displayed at all!
-    * (WordPress 3.0) Supports custom background. You can upload your own background and set your own colour, all through the WordPress admin page.
-    * (WordPress 3.0) Supports post thumbnails. You can now upload and set a featured image for any posts or pages, and the featured image will replace the header image when that post/page is viewed.
-    * (WordPress 3.0) Supports custom menu. You can now set your own menu through the WordPress custom menu feature. If no custom menu is defined, the theme will display all of your pages as the menu.
-    * Ability to hide post parameters, i.e. post date, post author, comment count, etc.
-    * Dropdown menu of up to 5 levels deep (since 1.0.5).
-    * Theme?s options page. I have created an option page for this theme in WordPress admin under Appearance, so that you can modify certain parts of the theme without delving into the codes.
-    * You can modify the font styling for the header title and description text, as well as the content text through the options page.
-    * Includes an option to switch to a lighter-coloured header bars.
-    * Includes an option to display post author?s gravatar in posts.
-    * Built-in AdSense placement. All you have to do is enter your AdSense code and activate the feature through the theme?s options page.
-    * Built-in AddThis social sharing button placement. Choose your AddThis button and enter the button code and activate the feature through the theme?s options page.
-    * Supports threaded comments up to 10 levels deep.
-    * Pluggable function definitions, so that you can easily override or add functionalities to the theme easily by using child theme, leaving the theme?s codes unchanged so that your modifications won?t disappear next time there?s an update to the theme.
-    * Helpful 404 Error page. Instead of just displaying an error page with arcane message, the theme displays a friendly message telling the visitor what happened and provides a search box. It even does a courtesy search for the user automatically based on the url! See demo.
-    * Supports translation. All texts in the theme are wrapped in gettext function call so that you can translate all the strings from the theme?s graphene.pot file.
-    * Properly formatted HTML elements. I spent a lot of time formatting every single html element that you might use, including all the headings from h1 down to h6, blockquotes, code, table, and even dt! I know the default browser styling is ugly, so I leave nothing to it. Having said that, if I miss any element do let me know!
-    * Lean and mean codes. I take pride in writing validated XHTML and CSS codes. This theme?s coding follows the standards set by the World Wide Web Consortium (W3C). Note that due to the usage of a few bits of CSS3 in a CSS2.1 stylesheet, validating the CSS will yield a few errors.
-    * Wide browser compatibility. Did you see the list of compatible browsers above? The freaking IE6 is there too!
-    * Uninstall option. When you decide not to use the theme anymore, you can use the uninstall button in the theme?s option page to delete all the theme?s options from the database. I?ve been using WordPress for a few years now, and I know orphaned database entries are not desirable, so I make sure the theme I coded do not leave any orphans!
+Theme URI: 	http://www.graphene-theme.com/
+Author: 	Syahir Hakim
+Author URI: http://www.khairul-syahir.com/
+Tags: 		black, blue, white, one-column, two-columns, three-columns, right-sidebar, left-sidebar, fixed-width, custom-colors, custom-header, custom-background, custom-menu, editor-style, theme-options, threaded-comments, sticky-post, translation-ready, rtl-language-support, post-formats, featured-image-header, featured-images, full-width-template, microformats
+License: 	GNU General Public License, Version 3 (or newer)
 
 
-LANGUAGES
+== DESCRIPTION ==
 
-Graphene WordPress theme is currently available in the following languages:
+We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the theme's inception, we have received countless suggestions and requests on features that really matter. We listened, and we delivered. 
 
-    * English (en_GB), the default language.
-    * Malay (ms_MY), by Syahir Hakim
-    * Brazilian Portuguese (pt_BR), by Leonardo Antonioli (http://www.tobeguarany.com)
-    * Spanish (es_ES), by Eduardo Larequi (http://www.labitacoradeltigre.com/)
-    * Italian (it_IT), by Ermes Gelosa (http://www.gardaservice.net/)
-    * German (de_DE), by Sebastian Brandner
-    * Norwegian (nb_NO), by Tommy Stephansen
-    * French (fr_FR), by Wolforg
-    * Polish (pl_PL), by Dariusz Francuz
-    * Dutch (nl_NL), by Jeffrey Tummers
+Here's a theme that's packed full of features that you need, yet far from being overwhelming. Here's a theme that's easy to use for beginners, yet well documented and powerful enough to be endlessly customisable to users with even only moderate technical skills. Here's a theme that's available in more than  30 languages and is backed with active community support, where questions, ideas and suggestions are always welcomed. 
 
-To use the other languages for your WordPress installation, see how you can install WordPress in your language page from the WordPress Codex.
+And best of all, here's a theme that's completely free. Here's a theme that's yours to make it special.
 
-If you have translated the theme to other languages than those listed above, or if you think you have a better translation, please contact me so that I can include your translation with the theme.
 
-SOCIAL MEDIA ICON CREDITS
+== INSTALLATION ==
 
-Credits go to Nicholas Roach (eleganthemes.com) for the ElegantThemes Social Media Icon Set, which is bundled together with the theme.
-The icons  are dual-licensed under MIT and GPLv3 licence, and can be downloaded from http://www.elegantthemes.com/blog/resources/free-social-media-icon-set
+Manual installation:
+1. Upload the `graphene` folder to the `/wp-content/themes/` directory
 
-HEADER IMAGE CREDITS
+Installation using "Add New Theme"
+1. From your Admin UI (Dashboard), use the menu to select Themes -> Add New
+2. Search for 'graphene'
+3. Click the 'Install' button to open the theme's repository listing
+4. Click the 'Install' button
 
-My gratitude to these image authors who have allowed me to include their royalty-free images with the theme:
+Activation and Use
+1. Activate the Theme through the 'Themes' menu in WordPress
+2. See Appearance -> Graphene Options for Theme Options
+
+
+== DOCUMENTATION ==
+
+Comprehensive documentation for the theme is provided at the theme's Documentation Wiki: http://docs.graphene-theme.com/Main_Page
+
+
+== ADD-ONS ==
+
+The Graphene theme is not a responsive theme, that is, the layout does not automatically adapt to the width of the devices being used to display a website using the Graphene theme. While there are significant merits to being responsive, there are also significant drawbacks like sub-optimal performance, constrained layout for dekstop view, and a lot of unnecessary resources being loaded for both desktop and mobile view, to list a few.
+
+For this reason, we have developed two premium mobile themes that would work in concert with the Graphene theme to optimise the display of your site on mobile devices. You can obtain them from these locations:
+Graphene Mobile: 		http://www.graphene-theme.com/graphene-mobile/features-and-functionalities/
+Graphene Mobile Neo:	http://www.graphene-theme.com/graphene-mobile-neo/features-and-functionalities/
+
+
+== FREQUENTLY ASKED QUESTIONS ==
+
+## 1. Where should I go for the theme’s support? ##
+
+Please direct all support requests for the theme at the theme’s Support Forum.
+
+
+## 2. The post’s featured image is replacing my header image. Help! ##
+
+This is actually one of the theme’s features, based on the feature in the default TwentyTen theme. Any featured image that has a size greater than or equal to the theme’s header image size (960 x 198 pixels by default) will replace the header image when the post/page that featured image is assigned to is being displayed. It enables you to have different header image for different posts and/or pages.If you want to disable this feature, simply tick the Disable Featured Image replacing header image option in the Graphene Options page, under Display > Header Display Options.
+
+
+## 3. Can I modify Graphene? ##
+
+The Graphene WordPress theme, along with all the other themes in the WordPress.org Official Free Themes Directory, is released under the GNU General Public License (GPL) Version 3. The full text of that licence is included with the theme’s licence.txt file.
+
+Releasing the theme under that licence means, among others, that you are free to modify the theme in any way for any purpose (including commercial) without any obligation to the theme’s author. However, if you decide to redistribute the theme, the licence dictates that you must release the theme under the same licence, GPLv3.
+
+But of course, the author would always appreciate donations to support ongoing and future developments of the theme.
+
+
+## 4. What is this Creative Commons licence option? ##
+
+The Creative Commons licence is a popular licence nowadays that are used by a lot of web-based content authors to license their work such that it protects their intellectual property but in the same time allows its free distribution. It is included with the theme simply to make it easy for the theme’s users to make use of the licence for the content they publish. Theme users can enable it via the theme’s Options page should they wish to use it.
+
+However, it is not the licence that is applied for the theme itself, but just for the website’s content should the theme user wants to use it.
+
+
+## 5. Is the theme compatible with this plugin or that plugin? ##
+
+We don’t know. With so many plugins available for WordPress, there’s no way that we (or anybody else for that matter) can test for compatibility for all of them. Having said that, the theme is built with all the necessary WordPress components included with it, so chances are most plugins will be compatible with the theme.
+
+Our suggestion is to just install the plugin and try it. If you stumble into problem, ask for support from the plugin author first. If the plugin author says that it’s a problems with the theme, you know where to find support.
+	
+
+## 6. Some posts don’t have thumbnail image in their excerpts. Why? ##
+
+Automatic thumbnail images in post excerpts are taken from the following, in that order:
+(1) Featured image for the post
+(2) First image uploaded for that post
+
+Note that for (2), it’s not necessarily the first image that you inserted into the post. We would recommend setting a featured image for the posts that do not have any images uploaded for it.
+
+
+== HEADER IMAGE CREDITS ==
+
+Our gratitude to these image authors who have allowed us to include their royalty-free images with the theme:
 
     * "Flow" header image by Quantin Houyoux (http://www.sxc.hu/profile/quentinh)
     * "Fluid", "Techno", "Fireworks", and "Sparkle" header images by Ilco (http://www.sxc.hu/profile/ilco)
 
 
-OTHER NOTES
+== OTHER NOTES ==
 
-To display the codes within the <code> element with the preformatted styling, include the class attribute class="block". Example: <code class="block">some code here</code>.
+To display codes within the <code> element with the preformatted styling, include the class attribute class="block". Example: <code class="block">some code here</code>.
+
+
+== SHORTCODES ==
+
+To make it easy to style your content for visitors, a number of shortcodes have been included in the Graphene theme.
+
+Since these shortcodes and corresponding style declarations as well as the icons used for them are all defined and located in the Graphene theme, switching to another theme will retain the shortcodes inside your content, but they will no longer be applied any styling on the front-end. That is, they will appear in the front-end exactly as they do in the Editor, which is text wrapped inside the opening and closing shortcode tags.
+
+If you would like to retain the formatting on the front end as well after you have switched themes, follow through this guide on the theme's documentation wiki: http://docs.graphene-theme.com/Message_blocks_shortcodes 

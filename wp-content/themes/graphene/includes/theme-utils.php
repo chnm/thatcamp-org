@@ -109,7 +109,9 @@ function graphene_get_action_hooks( $hooksonly = false ) {
 
 
 if ( ! function_exists( 'graphene_column_mode' ) ) :
-
+/**
+ * Get the theme's final column mode setting for display
+ */
 function graphene_column_mode( $post_id = NULL ){
     global $graphene_settings;
     
@@ -150,12 +152,11 @@ function graphene_column_mode( $post_id = NULL ){
     
 	// Return the settings for BBPress column mode if viewing a BBPress page
 	if ( class_exists( 'bbPress' ) && is_bbpress() )
-		return $graphene_settings['bbp_column_mode'];
+		return str_replace( '-', '_', $graphene_settings['bbp_column_mode'] );
 	
 	// Return the settings as defined in the theme options 
-    return $graphene_settings['column_mode']; 
+    return str_replace( '-', '_', $graphene_settings['column_mode'] );
 }
-
 endif;
 
 
@@ -165,16 +166,19 @@ endif;
 */
 if ( ! function_exists( 'disect_it' ) ) :
 function disect_it( $var = NULL, $exit = true, $comment = false ){
+	
+	if ( $comment ) {echo '<!--';}
+	
 	if ( $var !== NULL ){
-		if ( $comment ) {echo '<!--';}
 		echo '<pre>';
 		var_dump( $var );
 		echo '</pre>';
-		if ( $comment ) {echo '-->';}
-		if ( $exit ) {exit();}
 	} else {
-		echo '<strong>ERROR:</strong> You must pass a variable as argument to the <code>disect_it()</code> function.';	
+		echo '<strong>ERROR:</strong> You must pass a variable as argument to the <code>disect_it()</code> function.';
 	}
+	
+	if ( $comment ) {echo '-->';}
+	if ( $exit ) {exit();}
 }
 endif;
 
@@ -184,11 +188,10 @@ function graphene_print_only_text( $text ){
 }
 
 
+if ( ! function_exists( 'graphene_substr' ) ) :
 /**
  * Truncate a string by specified length
 */
-if ( ! function_exists( 'graphene_substr' ) ) :
-
 function graphene_substr( $string, $start = 0, $length = '', $suffix = '' ){
 	
 	if ( $length == '' ) return $string;
@@ -200,9 +203,10 @@ function graphene_substr( $string, $start = 0, $length = '', $suffix = '' ){
 	}
 	return apply_filters( 'graphene_substr', $trunc_string, $string, $start, $length, $suffix );
 }
-
 endif;
 
+
+if ( ! function_exists( 'graphene_truncate_words' ) ) :
 /**
  * Truncate a string by specified word count
  *
@@ -214,8 +218,6 @@ endif;
  * @package Graphene
  * @since 1.6
 */
-if ( ! function_exists( 'graphene_truncate_word' ) ) :
-
 function graphene_truncate_words( $string, $word_count, $suffix = '...' ){
    $string_array = explode( ' ', $string );
    $trunc_string = $string;
@@ -224,10 +226,10 @@ function graphene_truncate_words( $string, $word_count, $suffix = '...' ){
 	  
    return apply_filters( 'graphene_truncate_words', $trunc_string, $string, $word_count, $suffix );
 }
-
 endif;
 
 
+if ( ! function_exists( 'graphene_is_wp_version' ) ) :
 /**
  * Check the currently installed version of WordPress
  *
@@ -237,8 +239,6 @@ endif;
  * @package Graphene
  * @since 1.6
 */
-if ( ! function_exists( 'graphene_is_wp_version' ) ) :
-
 function graphene_is_wp_version( $is_ver = '' ) {
 
     $wp_ver = explode( '.', get_bloginfo( 'version' ) );
@@ -250,5 +250,4 @@ function graphene_is_wp_version( $is_ver = '' ) {
         if( $wp_ver[$i] < $is_val ) return false;
     return true;
 }
-
 endif;

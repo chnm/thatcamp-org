@@ -14,6 +14,7 @@
 global $graphene_settings;
 get_header(); ?>
 
+	<div class="entries-wrapper">
 	<?php	
 	do_action('graphene_index_pre_loop');
 	
@@ -25,9 +26,9 @@ get_header(); ?>
 		the_post(); 
 		get_template_part( 'loop', 'index' );
 	}
-	
-	/* Posts navigation. */ 
-    graphene_posts_nav();
-    ?>
+	?>
+    </div>
+    
+    <?php graphene_posts_nav(); ?>
             
 <?php get_footer(); ?>

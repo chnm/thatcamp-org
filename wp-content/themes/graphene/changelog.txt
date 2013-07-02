@@ -4,6 +4,45 @@ http://www.khairul-syahir.com
 
 CHANGELOG
 
+Version 1.9
+	* Added option to save and delete colour presets
+	* Added option to export and import colour presets
+	* Added Infinite Scroll feature for posts and comments
+	* Added Google Plus social media icon
+	* Added CodeMirror code editor for all options that accepts code
+	* Added alternate text in custom header image if it is set
+	* Added width and height attribute for header image
+	* Added Catalan (ca) translation by Miquel Àngel Guerrero
+	* Added validator function that ensures all custom colours use full 6-digit hexadecimal value to avoid blue gradients in IE9 and older
+	* Added internationalization for the theme's editor buttons and page templates names
+	* Comment counts will now use locale-aware numerals and number formatting
+	* Comments will use comment author's display name if the author is registered
+	* Static posts page will now apply the correct column mode as per the page template chosen for the placeholder page
+	* Changed "on uninstall" theme to Twenty Eleven since Twenty Ten is removed from WordPress 3.6
+	* Changed the heading tag for site title and description to only use h1 and h2 on the front page and homepage
+	* Improved <select> elements in the theme's options pages
+	* Updated jQuery Tools to version 1.2.7, and included only the Scrollable and Tabs component
+	* Updated licence information to include bundled sources and image assets
+	* Moved several blocks of inline javascript into a separate graphene.js file for cacheability
+	* Removed the Graphene Options link on Admin Bar if logged-in user can't edit theme options
+	* Removed the theme's random header image function as this is identical to WordPress' feature since WordPress 3.2
+	* Removed Twitter widget from the theme as unauthenticated requests no longer work. Recommend Rotating Tweets plugin as a substitute.
+	* Renamed jQuery Tools .tabs() function to .jtTabs() to prevent conflict with jQuery UI Tabs
+	* Fixed large featured image not being used as the header image if using Jetpack's Photon module
+	* Fixed error notice when saving the theme's options page without Static Front Page being used
+	* Fixed comment link on posts not displaying if post already has comments before commenting is closed
+	* Fixed code editor bug for RTL sites
+	* Fixed social icons not appearing in the theme's options page
+	* Fixed comments form overlapping page's content
+	* Fixed non-clickable child-pages permalink when comments are enabled for parent page
+	* Fixed compatibility issue with plugins that modify the comment textarea field, like Crayon
+	* Fixed comments count reverting to 1 if there is 1000 or more comments
+	* Fixed missing "Continue reading" button in excerpt of posts that have the <!--more--> tag
+	* Fixed sticky post being styled as sticky twice
+	* Fixed horizontal scrollbar for RTL sites
+	* Fixed various RTL styling issues
+	* Fixed editor width not reflecting the content width of the post
+
 Version 1.8.4
 	* Implemented multilingual-aware object ID retrieval for better WPML compatibility
 	* Added CodeMirror code editor for the theme's Custom CSS and Custom <head> tags options

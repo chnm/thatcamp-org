@@ -16,7 +16,7 @@ if ( $authorised ) {
 	delete_option( 'graphene_settings' );
 	delete_transient( 'graphene-action-hooks-list' );
 	delete_transient( 'graphene-action-hooks' );
-	switch_theme( 'twentyten', 'twentyten' );
+	switch_theme( 'twentyeleven', 'twentyeleven' );
 	wp_cache_flush(); ?>
 	
     <div class="wrap">
@@ -31,4 +31,3 @@ if ( $authorised ) {
 } else {
 	wp_die( __( 'ERROR: You are not authorised to perform that operation', 'graphene' ));
 }
-?>

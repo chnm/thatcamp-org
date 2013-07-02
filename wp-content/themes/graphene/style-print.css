@@ -1,7 +1,7 @@
 body {
     background: white;
     color: black;
-    font: 10pt/13pt arial;
+    font: 13pt/18pt arial;
     margin: 0;
 }
 a,
@@ -45,26 +45,22 @@ ol,
 dl { 
     page-break-before:avoid;
 }
-img.aligncenter { 
+aligncenter { 
     display: block; 
     margin-left: auto; 
     margin-right: auto; 
 }
-img.alignright { 
+.alignright { 
     padding: 4px; 
     margin: 0 0 2px 7px; 
-    display: inline; 
-}
-img.alignleft { 
-    padding: 4px; 
-    margin: 0 7px 2px 0; 
-    display: inline; 
-}
-.alignright { 
-    float: right; 
+    display: inline;
+	float: right;
 }
 .alignleft { 
-    float: left; 
+    padding: 4px; 
+    margin: 0 7px 2px 0; 
+    display: inline;
+	float: left;
 }
 
 /* hide the following IDs*/
@@ -160,4 +156,17 @@ img.alignleft {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
+}
+.pullquote {
+	border-top: 1px solid #bbb;
+	border-bottom: 3px solid #222;
+	font: normal 20pt arial, sans-serif;
+	padding-bottom: 0;
+	margin-top: 15px !important;
+	margin-bottom: 5px !important;
+	width: 30%;
+	color: #000;
+}
+.pullquote p {
+	margin-top: 5px;
 }

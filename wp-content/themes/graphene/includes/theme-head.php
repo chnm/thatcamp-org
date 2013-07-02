@@ -424,30 +424,33 @@ function graphene_get_custom_colours( $hook_suffix = '', $force_all = false ){
 		
 		// Block button
 		$colours = array(
-						'bg_button|bg_button_label|bg_button_label_textshadow|bg_button_box_shadow' 
-							=> '.block-button, .block-button:visited, .Button, .button, #commentform #submit, .wpsc_buy_button{
-									background: %5$s;
+						'bg_button|bg_button_label|bg_button_label_textshadow' 
+							=> '.block-button, .block-button:visited, .Button, .button, #commentform #submit, .wpsc_buy_button {
+									background: %4$s;
+									background: -moz-linear-gradient(%1$s,%4$s);
+									background: -webkit-linear-gradient(%1$s,%4$s);
+									background: -o-linear-gradient(%1$s, %4$s);
+									-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=\'%1$s\', EndColorStr=\'%4$s\')";
+									background: linear-gradient(%1$s,%4$s);
+									border-color: %4$s;
+									text-shadow: 0 -1px 1px %3$s;
+									color: %2$s;
+								}
+								.block-button:hover, .button:hover, #commentform #submit:hover,.wpsc_buy_button:hover {
+									background: %4$s;
 									background: -moz-linear-gradient(%1$s,%5$s);
 									background: -webkit-linear-gradient(%1$s,%5$s);
 									background: -o-linear-gradient(%1$s, %5$s);
 									-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=\'%1$s\', EndColorStr=\'%5$s\')";
 									background: linear-gradient(%1$s,%5$s);
-									border-color: %5$s;
-									text-shadow: 0 -1px 1px %3$s;
 									color: %2$s;
-									-moz-box-shadow: 0 0 5px %4$s;
-									-webkit-box-shadow: 0 0 5px %4$s;
-									box-shadow: 0 0 5px %4$s
-								}
-								.block-button:hover, .button:hover, #commentform #submit:hover,.wpsc_buy_button:hover {
-									background: %5$s;
-									background: -moz-linear-gradient(%1$s,%6$s);
-									background: -webkit-linear-gradient(%1$s,%6$s);
-									background: -o-linear-gradient(%1$s, %6$s);
-									-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=\'%1$s\', EndColorStr=\'%6$s\')";
-									background: linear-gradient(%1$s,%6$s);
-									color: %2$s;
-								}'
+								}',
+						'bg_button_box_shadow' 
+							=> '.block-button, .block-button:visited, .Button, .button, #commentform #submit, .wpsc_buy_button {
+									-moz-box-shadow: 0 1px 2px %1$s;
+									-webkit-box-shadow: 0 1px 2px %1$s;
+									box-shadow: 0 1px 2px %1$s;
+								}',
 					);
 		$extra_args = array( graphene_hex_addition( $graphene_settings['bg_button'], -26), graphene_hex_addition( $graphene_settings['bg_button'], -52) );
 		$style .= graphene_build_style( $colours, $extra_args );
@@ -703,7 +706,7 @@ add_action( 'wp_head', 'graphene_ie_css3' );
 function graphene_ie8_img(){ ?>
 	<!--[if IE 8]>
     <script type="text/javascript">
-        (function( $) {
+        (function($) {
             var imgs, i, w;
             var imgs = document.getElementsByTagName( 'img' );
             maxwidth = 0.98 * $( '.entry-content' ).width();

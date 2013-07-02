@@ -1,16 +1,21 @@
-<?php /* Posts navigation for single post pages, but not for Page post */ global $graphene_settings; ?>
+<?php /* Posts navigation for single post pages, but not for Page post */ 
+global $graphene_settings;
+global $wp_version; 
+?>
 <?php graphene_post_nav(); ?>
 
 <div id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix post-format post' ); ?>>
 	<div class="entry-header">
     	<?php 
+		$has_uploaded_audio = false;
+		$has_uploaded_video = false;
 		global $post_format;
 		switch ( $post_format){
 			case 'status': $format_title = __( 'Status update', 'graphene' );	break;
 			case 'link': $format_title = __( 'Link', 'graphene' );	break;
-			case 'audio': $format_title = __( 'Audio', 'graphene' ); break;
+			case 'audio': $format_title = __( 'Audio', 'graphene' ); if ( get_post_meta( get_the_ID(), '_wp_format_audio', true ) ) $has_uploaded_audio = true; break;
 			case 'image': $format_title = __( 'Image', 'graphene' ); break;
-			case 'video': $format_title = __( 'Video', 'graphene' ); break;
+			case 'video': $format_title = __( 'Video', 'graphene' ); if ( get_post_meta( get_the_ID(), '_wp_format_video', true ) ) $has_uploaded_video = true; break;
 			default: $format_title = __( 'Post format', 'graphene' );
 		}
 		?>
@@ -44,7 +49,7 @@
         <p class="comment-link">
 			<?php 
             $comments_num = get_comments_number();
-            comments_popup_link( __( 'Leave comment', 'graphene' ), __( '1 comment', 'graphene' ), sprintf( _n( '%d comment', "%d comments", $comments_num, 'graphene' ), $comments_num ), 'comments-link', __( "Comments off", 'graphene' ) ); 
+            comments_popup_link( __( 'Leave comment', 'graphene' ), sprintf( __( '%s comment', 'graphene' ), number_format_i18n( $comments_num ) ), sprintf( _n( '%s comment', "%s comments", $comments_num, 'graphene' ), number_format_i18n( $comments_num ) ), 'comments-link', __( "Comments off", 'graphene' ) ); 
             ?>
         </p>
         <?php endif; ?>
@@ -69,7 +74,28 @@
 		?>
         
         <?php /* Output the post content */ ?>
-        <?php the_content(); ?>
+        <?php if ( $wp_version >= 3.6 && $post_format == 'audio' && $has_uploaded_audio ) :  ?>
+		<div class="entry-media">
+			<div class="audio-content">
+				<?php the_post_format_audio(); ?>
+			</div><!-- .audio-content -->
+		</div><!-- .entry-media -->
+        <?php endif; ?>
+	
+	<?php if ( $wp_version >= 3.6 && $post_format == 'video' && $has_uploaded_video ) :  ?>
+        	<div class="entry-media">
+        		<div class="video-content">
+				<?php the_post_format_video(); ?>
+			</div><!-- .video-content -->
+		</div><!-- .entry-media -->
+        <?php endif; ?>
+        
+        <?php 
+			if ( $has_uploaded_video || $has_uploaded_audio )
+				the_remaining_content(); 
+			else
+				the_content();
+		?>
         
         <?php /* Revert the content_width var for video post format */ 
 			if ( $post_format == 'video' ){

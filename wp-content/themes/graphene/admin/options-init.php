@@ -109,9 +109,8 @@ if ( ! function_exists( 'graphene_admin_options_style' ) ) :
 		wp_enqueue_style( 'thickbox' );
 		// wp_enqueue_style( 'wp-pointer' );
 		
-		if ( isset( $_GET['tab'] ) && ( $_GET['tab'] == 'display' || $_GET['tab'] == 'advanced' ) ){
-			wp_enqueue_style( 'codemirror', get_template_directory_uri() . '/js/codemirror/codemirror.css', array(), '', false );
-		}
+		wp_enqueue_style( 'graphene-codemirror', get_template_directory_uri() . '/js/codemirror/codemirror.css', array(), '', 'all' );
+		wp_enqueue_style( 'chosen', get_template_directory_uri() . '/js/chosen/chosen.css', array(), '', 'all' );
 		
 		if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'display' )
 			wp_enqueue_style( 'jquery-ui-slider' );
@@ -130,11 +129,17 @@ function graphene_admin_scripts() {
     wp_enqueue_script( 'media-upload' );
     wp_enqueue_script( 'thickbox' );
 	wp_enqueue_script( 'graphene-admin-js' );
+	wp_localize_script( 'graphene-admin-js', 'grapheneAdminScript', array(
+		'preset_name'			=> __( 'What should we call this preset?', 'graphene' ),
+		'preset_name_req'		=> __( 'Preset name is required to save a preset.', 'graphene' ),
+		'preset_delete_confirm'	=> __( 'You are deleting this preset:', 'graphene' ),
+		'chosen_no_search_result'	=> __( 'Oops, nothing found.', 'graphene' ),
+		'is_rtl'				=> is_rtl(),
+	));
     // wp_enqueue_script( 'wp-pointer' );
 	
-	if ( isset( $_GET['tab'] ) && ( $_GET['tab'] == 'display' || $_GET['tab'] == 'advanced' ) ){
-		wp_enqueue_script( 'codemirror', get_template_directory_uri() . '/js/codemirror/codemirror.js', array(), '', false );
-	}
+	wp_enqueue_script( 'graphene-codemirror', get_template_directory_uri() . '/js/codemirror/codemirror.js', array(), '', false );
+	wp_enqueue_script( 'chosen', get_template_directory_uri() . '/js/chosen/chosen.jquery.min.js', array( 'jquery' ), '', false );
 	
 	if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'display' )
 		wp_enqueue_script( 'jquery-ui-slider' );
@@ -205,6 +210,7 @@ include( $graphene_settings['template_dir'] . '/admin/custom-fields.php' );
  * Add a link to the theme's options page in the admin bar
 */
 function graphene_wp_admin_bar_theme_options(){
+	if ( ! current_user_can( 'edit_theme_options' ) ) return;
 	global $wp_admin_bar;
 	$wp_admin_bar->add_menu( array( 
 								'parent' 	=> 'appearance',
@@ -300,6 +306,7 @@ add_action( 'edit_page_form', 'graphene_page_template_visualizer' ); // only wor
  */
 function graphene_editor_width( $mce_css ){
 	global $content_width, $graphene_settings;
+	$content_width = graphene_get_content_width();
 	
 	if ( ! $graphene_settings['disable_editor_style'] )
 		$mce_css = str_replace( 'admin/editor.css.php', add_query_arg( 'content_width', $content_width, 'admin/editor.css.php' ), $mce_css );
@@ -307,4 +314,3 @@ function graphene_editor_width( $mce_css ){
 	return $mce_css;
 }
 add_filter( 'mce_css', 'graphene_editor_width' );
-?>

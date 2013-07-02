@@ -34,6 +34,13 @@ function graphene_options(){
 		return;
 	}
 	
+	/* Import/export the colour presets */
+	if ( isset( $_GET['colour_preset'] ) ) { 
+		if ( $_GET['colour_preset'] == 'import' ) graphene_import_colour_presets();
+		if ( $_GET['colour_preset'] == 'export' ) graphene_export_colour_presets();
+		return;
+	}
+	
 	if ( isset( $_POST['graphene_import_confirmed'] ) ) {            
 		graphene_import_file();
 		return;                           
@@ -114,7 +121,7 @@ function graphene_options(){
         <div class="side-wrap">
         
         <?php /* Help notice */ ?>
-        <div class="postbox donation">
+        <div class="postbox no-toggle">
             <div>
         		<h3 class="hndle"><?php _e( 'Need help?', 'graphene' ); ?></h3>
             </div>
@@ -128,13 +135,13 @@ function graphene_options(){
         </div>
         
         <?php /* PayPal's donation button */ ?>
-        <div class="postbox donation">
+        <div class="postbox no-toggle">
             <div>
         		<h3 class="hndle"><?php _e( 'Support the developer', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
                 <p><?php _e( 'Developing this awesome theme took a lot of effort and time, months and months of continuous voluntary unpaid work. If you like this theme or if you are using it for commercial websites, please consider a donation to the developer to help support future updates and development.', 'graphene' ); ?></p>
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="text-align:center;">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                     <input type="hidden" name="cmd" value="_s-xclick">
                     <input type="hidden" name="hosted_button_id" value="CBWQL2T6B797J">
                     <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -145,13 +152,13 @@ function graphene_options(){
         
         
         <?php /* Graphene theme news RSS feed */ ?>
-        <div class="postbox graphene-news">
+        <div class="postbox graphene-news no-toggle">
             <div>
         		<h3 class="hndle"><?php _e( 'Graphene Theme news', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
                 <?php
-				$graphene_news = fetch_feed( array( 'http://www.khairul-syahir.com/topics/tag/graphene-theme/feed/', 'http://www.graphene-theme.com/feed/' ) );
+				$graphene_news = fetch_feed( array( 'http://www.khairul-syahir.com/topics/tag/graphene-theme/feed', 'http://www.graphene-theme.com/feed/' ) );
 				if ( ! is_wp_error( $graphene_news ) ) {
 					$maxitems = $graphene_news->get_item_quantity( 3 );
 					$news_items = $graphene_news->get_items( 0, $maxitems );
@@ -186,9 +193,8 @@ function graphene_options(){
         
         
         <?php /* Natively supported plugins */ ?>
-        <div class="postbox">
-        	<div class="head-wrap">
-                <div title="Click to toggle" class="handlediv"><br /></div>
+        <div class="postbox no-toggle">
+        	<div>
                 <h3 class="hndle"><?php _e( 'Add-ons and plugins', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
@@ -196,10 +202,17 @@ function graphene_options(){
             	<p><?php _e( 'Add-ons are not shipped with the theme, but can be installed separately to extend the theme\'s capability.', 'graphene' ); ?></p>
                 <ul class="add-ons">
                 	<li>
+                    	<span class="title">Graphene Mobile Neo: </span>
+                        <?php if ( function_exists( 'gmneo_setup' ) ) : ?><span class="activated"><?php _e( 'Installed', 'graphene' ); ?></span>
+                        <?php else : ?><span class="not-active"><?php _e( 'Not installed', 'graphene' ); ?>. <a href="http://www.graphene-theme.com/graphene-mobile-neo/features-and-functionalities/"><?php _e( 'Learn more', 'graphene' ); ?> &raquo;</a></span><?php endif; ?><br />
+                        <span class="description"><?php _e( 'The new premium mobile theme that fuses elegant design with premium features. It\'s a match of pixel-perfection and code-devilry.', 'graphene' ); ?></span>
+                    </li>
+                	<li>
                     	<span class="title">Graphene Mobile: </span>
                         <?php if (function_exists( 'mgraphene_options_init' ) ) : ?><span class="activated"><?php _e( 'Installed', 'graphene' ); ?></span>
-                        <?php else : ?><span class="not-active"><?php _e( 'Not installed', 'graphene' ); ?>. <a href="http://www.khairul-syahir.com/wordpress-dev/graphene-mobile"><?php _e( 'Learn more', 'graphene' ); ?> &raquo;</a></span><?php endif; ?><br />
+                        <?php else : ?><span class="not-active"><?php _e( 'Not installed', 'graphene' ); ?>. <a href="http://www.graphene-theme.com/graphene-mobile/features-and-functionalities/"><?php _e( 'Learn more', 'graphene' ); ?> &raquo;</a></span><?php endif; ?><br />
                         <span class="description"><?php _e( 'Mobile extension developed specifically for optimised display of your site on mobile devices, such as iPhone and Android devices.', 'graphene' ); ?></span>
+                    </li>
                 </ul>
                 
                 <h4><?php _e( 'Plugins', 'graphene' ); ?></h4>

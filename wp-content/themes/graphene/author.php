@@ -30,6 +30,8 @@ get_header(); ?>
     <?php do_action( 'graphene_before_authorpostlist' ); ?>
     
     <h3 class="author-post-list"><?php _e("Author's posts listings", 'graphene'); ?></h3>
+    
+    <div class="entries-wrapper">
     <?php 
 	/* Start the loop again to list all of the author's posts with excerpt */
 	rewind_posts();
@@ -38,10 +40,10 @@ get_header(); ?>
 		the_post();
 		get_template_part( 'loop', 'archive' );
 	}
-	
-	/* Posts navigation. */ 
-    graphene_posts_nav();
 	?>
+    </div>
+    
+    <?php graphene_posts_nav();	?>
     
     <?php do_action('graphene_after_authorpostlist'); ?>
             

@@ -1,13 +1,14 @@
 /*
-Theme Name: Graphene
-Theme URI: http://www.khairul-syahir.com/wordpress-dev/graphene-theme
-Description: We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the theme's inception, we have received countless suggestions and requests on features that really matter. We listened, and we delivered. Here's a theme that's packed full of features that you need, yet far from being overwhelming. Here's a theme that's easy to use for beginners, yet well documented and powerful enough to be endlessly customisable to users with even only moderate technical skills. Here's a theme that's available in more than  30 languages and is backed with active community support, where questions, ideas and suggestions are always welcomed. And best of all, here's a theme that's completely free. Here's a theme that's yours to make it special.
-Version: 1.8.4
-Author: Syahir Hakim
-Author URI: http://www.khairul-syahir.com
-Tags: black, blue, white, one-column, two-columns, three-columns, right-sidebar, left-sidebar, fixed-width, custom-colors, custom-header, custom-background, custom-menu, editor-style, theme-options, threaded-comments, sticky-post, translation-ready, rtl-language-support, post-formats, featured-image-header, featured-images, full-width-template, microformats
-License: GNU General Public License, Version 3 (or newer)
-License URI: http://www.gnu.org/licenses/gpl.html
+Theme Name: 	Graphene
+Theme URI: 		http://www.graphene-theme.com/
+Description: 	We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the theme's inception, we have received countless suggestions and requests on features that really matter. We listened, and we delivered. Here's a theme that's packed full of features that you need, yet far from being overwhelming. Here's a theme that's easy to use for beginners, yet well documented and powerful enough to be endlessly customisable to users with even only moderate technical skills. Here's a theme that's available in more than  30 languages and is backed with active community support, where questions, ideas and suggestions are always welcomed. And best of all, here's a theme that's completely free. Here's a theme that's yours to make it special.
+Version: 		1.9
+Author: 		Syahir Hakim
+Author URI: 	http://www.khairul-syahir.com/
+Tags: 			black, blue, white, one-column, two-columns, three-columns, right-sidebar, left-sidebar, fixed-width, custom-colors, custom-header, custom-background, custom-menu, editor-style, theme-options, threaded-comments, sticky-post, translation-ready, rtl-language-support, post-formats, featured-image-header, featured-images, full-width-template, microformats
+Text Domain: 	Graphene
+License: 		GNU General Public License, Version 3 (or newer)
+License URI: 	http://www.gnu.org/licenses/gpl.html
 */
 
 
@@ -965,9 +966,12 @@ a:hover {
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	
-	-moz-box-shadow: 0 0 5px #555;
-	-webkit-box-shadow: 0 0 5px #555;
-	box-shadow: 0 0 5px #555;
+	-moz-box-shadow: 0 1px 2px #aaa;
+	-webkit-box-shadow: 0 1px 2px #aaa;
+	box-shadow: 0 1px 2px #aaa;
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.4);
 	
 	border: 1px solid #1C5FA5;
 	color: #fff;
@@ -1036,6 +1040,7 @@ a:hover {
 	background: #E9ECF5;
 	padding-bottom: 10px;
 	padding-top: 10px;
+	z-index: 6;
 }
 .child-page .entry-content {
 	margin-top: 0;
@@ -1534,11 +1539,10 @@ pre.block {
 .entry-content .search-404-results {
 	margin: 20px 0 0;
 }
-.search-404-results li {
-	list-style: none !important;
-	border-top: 1px solid #ddd;
+.search-results-header {
+	margin: 30px 0 10px;
 }
-.search-404-results li h3 {
+.search-results-header p {
 	margin-top: 10px;
 }
 
@@ -1792,6 +1796,9 @@ h3.author-post-list {
 	float: right;
 	margin-top: 28px;
 }
+#comment-form-wrap {
+    clear: both;
+}
 #respond h3#reply-title {
 	background-position: -880px -17px;
 	margin-left: 10px;
@@ -1908,6 +1915,9 @@ h3.author-post-list {
 	background: #eee;
 	padding: 18px 10px 15px;
 }
+#commentform .logged-in-as {
+	margin-bottom: 10px;
+}
 #commentform input,
 #commentform textarea {
 	border: 1px solid #e3e3e3;
@@ -1955,8 +1965,8 @@ h3.author-post-list {
 }
 #commentform .form-allowed-tags {
 	font-size: 11px;
-	margin-top: 0 !important;
 	margin-bottom: 10px;
+	margin-top: 10px;
 }
 #commentform .form-allowed-tags code {
 	display: block;
@@ -2054,9 +2064,12 @@ h3.author-post-list {
 }
 .sidebar div.sidebar-wrap {
 	background: #fff;
-	-moz-box-shadow: 0 0 5px #BBB;
-	-webkit-box-shadow: 0 0 5px #BBB;
-	box-shadow: 0 0 5px #BBB;
+	-moz-box-shadow: 0 0 5px #bbb;
+	-webkit-box-shadow: 0 0 5px #bbb;
+	box-shadow: 0 0 5px #bbb;
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.15);
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.15);
+	box-shadow: 0 0 5px rgba(0,0,0,0.15);
 	margin-bottom: 16px;
 	padding: 10px 12px;
 	position: relative;
@@ -2356,8 +2369,84 @@ h3.author-post-list {
 }
 
 
+/* =Infinite scrolling
+-------------------------------------------------------------- */
+
+#infscr-loading {
+	text-align: center;
+	margin: 20px 0;
+	padding: 10px 10px 5px;
+	background: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	
+	-webkit-box-shadow: 0 0 3px #bbb;
+	-moz-box-shadow: 0 0 3px #bbb;
+	box-shadow: 0 0 3px #bbb;
+	
+	-webkit-box-shadow: 0 0 3px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0 0 3px rgba(0,0,0,0.15);
+	box-shadow: 0 0 3px rgba(0,0,0,0.15);
+}
+#infscr-loading img {
+	width: 220px;
+	height: 19px;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+#infscr-loading-finished {
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #aaa;
+	text-shadow: 0 1px 1px #fff;
+}
+.fetch-more,
+.fetch-more:hover,
+.fetch-more-disabled {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	padding: 5px 0;
+	
+	background: #E9E9E9;
+	background: -moz-linear-gradient(#F9F9F9,#E9E9E9);
+	background: -webkit-linear-gradient(#F9F9F9,#E9E9E9);
+	background: -o-linear-gradient(#F9F9F9,#E9E9E9);
+	background: -ms-linear-gradient(#F9F9F9,#E9E9E9);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F9F9F9', endColorstr='#E9E9E9',GradientType=0 );
+	background: linear-gradient(#F9F9F9,#E9E9E9);
+	
+	border: 1px solid #ccc;
+	color: #555;
+	font-size: 14px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-shadow: 0 1px 1px #fff;
+	
+	-webkit-box-shadow: 0 1px 2px #d5d5d5;
+	-moz-box-shadow: 0 1px 2px #d5d5d5;
+	box-shadow: 0 1px 2px #d5d5d5;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.fetch-more-disabled,
+.fetch-more-disabled:hover {
+	color: #bbb;
+}
+
+
 /* =Plugins
 -------------------------------------------------------------- */
+
+/* WPML */
+.icl_post_in_other_langs {
+	border: 1px solid #ddd;
+	background: #eee;
+	padding: 5px;
+}
 
 /* WP-Email */
 #wp-email-popup{
@@ -2432,6 +2521,39 @@ h3.author-post-list {
 	width: 32px;
 	height: 32px; 
 }
+
+/* Crayon */
+#commentform #wp-comment-wrap {
+	clear: both;
+}
+#commentform .quicktags-toolbar input {
+	height: auto;
+}
+#wp-comment-editor-container textarea {
+	height: 400px;
+}
+#insert-media-button {
+	float: none;
+	box-shadow: none;
+}
+#wp-comment-editor-container input {
+	border-color: #c3c3c3;
+	color: #464646;
+	padding: 2px 4px;
+}
+#wp-comment-editor-container .quicktags-toolbar input[value="b"] {
+	font-weight: bold;
+}
+#wp-comment-editor-container .quicktags-toolbar input[value="i"] {
+	font-style: italic;
+}
+#wp-comment-editor-container table tr {
+	background: none;
+}
+#wp-comment-editor-container .mceIframeContainer {
+	background: #fff;
+}
+
 
 /* WP e-Commerce */
 .entry-content .product_average_vote img {
@@ -2630,4 +2752,16 @@ form.product_form fieldset,
 #checkout_page_container .checkout-total {
 	margin-left: 10px;
 	font-weight: bold;
+}
+
+/* WP UI */
+.entry-content .ui-tabs-nav > li {
+	margin-bottom: 0;
+}
+
+
+/* Rotating Tweets */
+#content .rotatingtweets,
+#content .norotatingtweets {
+	border: none;
 }

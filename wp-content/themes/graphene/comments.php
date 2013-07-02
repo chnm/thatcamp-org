@@ -47,15 +47,16 @@ global $graphene_settings;
 	$allcomments_num = graphene_get_comment_count( 'comments', false );
 	$pings_num = graphene_get_comment_count( 'pings' );
 	if ( $comments_num )
-		$comment_count = sprintf( _n( '%d comment', '%d comments', $comments_num, 'graphene' ), number_format_i18n( $comments_num ) );
+		$comment_count = sprintf( _n( '%s comment', '%s comments', $comments_num, 'graphene' ), number_format_i18n( $comments_num ) );
 	if ( $pings_num ) 
-		$ping_count = sprintf( _n( '%d ping', '%d pings', $pings_num, 'graphene' ), number_format_i18n( $pings_num ) );
+		$ping_count = sprintf( _n( '%s ping', '%s pings', $pings_num, 'graphene' ), number_format_i18n( $pings_num ) );
 	$graphene_tabbed_comment = ( $comments_num && $pings_num ) ? true : false;
 	
 	$class = 'clearfix';
 	if ( ! $comments_num ) $class .= ' no-comment';
 	if ( ! $pings_num ) $class .= ' no-ping';
 	
+	global $is_paginated;
 	$is_paginated = get_option( 'page_comments' );
 ?>
 
@@ -74,6 +75,7 @@ global $graphene_settings;
 	<?php do_action( 'graphene_before_comments' ); ?>
 
 	<?php if ( $comments_num || $allcomments_num ) : ?>
+    <div class="comments-list-wrapper">
         <ol class="clearfix" id="comments_list">
             <?php
             /* Loop through and list the comments. Tell wp_list_comments()
@@ -84,20 +86,10 @@ global $graphene_settings;
              */
              $args = array( 'callback' => 'graphene_comment', 'style' => 'ol', 'type' => 'comment' );
              wp_list_comments( apply_filters( 'graphene_comments_list_args', $args ) ); ?>
-             
-            <?php // Are there comments to navigate through? ?>
-            <?php if ( get_comment_pages_count() > 1 && $is_paginated ) : ?>
-            <div class="comment-nav clearfix">
-                <?php if ( function_exists( 'wp_commentnavi' ) ) : ?>
-                    <?php wp_commentnavi(); ?>
-                    <p class="commentnavi-view-all"><?php wp_commentnavi_all_comments_link(); ?></p>
-                <?php else : ?> 
-                    <p><?php paginate_comments_links(); ?>&nbsp;</p>
-                <?php endif; ?>
-                <?php do_action( 'graphene_comments_pagination' ); ?>
-            </div>
-            <?php endif; // Ends the comment navigation ?>
         </ol>
+       	
+        <?php graphene_comments_nav(); ?>
+    </div>
     <?php endif; ?>
     
     <?php if ( $pings_num ) : ?>
@@ -141,9 +133,9 @@ global $graphene_settings;
 		}
         
         $args = array(
-                    'comment_notes_after'  => apply_filters( 'graphene_comment_allowedtags', $allowedtags ),
-                    'id_form'              => 'commentform',
-                    'label_submit'         => __( 'Submit Comment', 'graphene' ),
+                    'comment_notes_after'  	=> apply_filters( 'graphene_comment_allowedtags', $allowedtags ),
+                    'id_form'              	=> 'commentform',
+                    'label_submit'         	=> __( 'Submit Comment', 'graphene' ),
                      );
         comment_form( apply_filters( 'graphene_comment_form_args', $args ) ); 
     

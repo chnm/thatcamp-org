@@ -23,6 +23,12 @@ olor.clearfix:before,
 	background: url(images/admin-icon.png) center center no-repeat;
 	width: 48px;
 }
+.js .postbox .hndle {
+	cursor: pointer;
+}
+.js .no-toggle .hndle {
+	cursor: auto;
+}
 .form-table th {
 	width: 260px;
 }
@@ -141,9 +147,9 @@ a.button {
 .panel-wrap .submit {
 	overflow: auto;
 }
-.panel-wrap .ajaxload {
+.ajaxload {
 	vertical-align: middle;
-	margin: 0 5px;
+	margin: 0 10px;
 }
 
 
@@ -260,9 +266,9 @@ a.button {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
-	-moz-box-shadow: 0 0 5px #555;
-	-webkit-box-shadow: 0 0 5px #555;
-	box-shadow: 0 0 5px #555;
+	-moz-box-shadow: 0 1px 2px #aaa;
+	-webkit-box-shadow: 0 1px 2px #aaa;
+	box-shadow: 0 1px 2px #aaa;
 	color: #fff;
 	cursor: pointer;
 	display: block;
@@ -701,9 +707,6 @@ tr.new-social-media-name, tr.social-media-custom-name{
 }
 .toggle-options-wrapper .toggle-all-options {
 	display: none;
-}
-.postbox.donation .hndle {
-	cursor: auto;
 }
 .inner-toggle-link {
 	float: right;

@@ -62,7 +62,7 @@ add_shortcode( 'pullquote', 'graphene_pullquote_handler' );
 
 
 /**
- * Hook the shortcode buttons to the TinyMCE editor
+ * Extend TinyMCE plugin class
 */
 class Graphene_Shortcodes_Buttons{
 	
@@ -84,10 +84,26 @@ class Graphene_Shortcodes_Buttons{
 		return $plugin_array; 
 	}
 }
-add_action( 'init', 'Graphene_Shortcodes_Buttons' );
 
+
+/**
+ * Hook the shortcode buttons to the TinyMCE editor
+*/
 function Graphene_Shortcodes_Buttons(){
 	global $Graphene_Shortcodes_Buttons;
 	$Graphene_Shortcodes_Buttons = new Graphene_Shortcodes_Buttons();
 }
-?>
+add_action( 'init', 'Graphene_Shortcodes_Buttons' );
+
+
+/**
+ * Tell WordPress to load external language file for the shortcodes buttons
+ *
+ * @package Graphene
+ * @since 1.9
+ */
+function graphene_mce_external_languages( $files ){
+	$files['grapheneshortcodes'] = get_template_directory() . '/js/mce-l10n.php';
+	return $files;
+}
+add_filter( 'mce_external_languages', 'graphene_mce_external_languages' );

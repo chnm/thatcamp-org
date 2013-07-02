@@ -111,13 +111,17 @@ add_action( 'template_redirect', 'graphene_translate_settings' );
  * @since Graphene 1.8.4
  */
 function graphene_object_id( $ids, $type = '', $return_original_if_missing = false, $language_code = NULL ){
+	$is_array = true;
 	if ( function_exists( 'icl_object_id' ) ) {
-		$ids = (array) $ids;
+		if ( ! is_array( $ids ) ) {
+			$ids = (array) $ids; $is_array = false;
+		}
 		foreach ( $ids as $key => $id ) {
 			$current_type = ( ! $type ) ? get_post_type( $id ) : $type;
 			$ids[$key] = icl_object_id( $id, $current_type, $return_original_if_missing, $language_code );
 		}
 	}
 	
+	if ( ! $is_array ) $ids = array_pop( $ids );
 	return $ids;
 }

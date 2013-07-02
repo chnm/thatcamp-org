@@ -51,8 +51,10 @@ global $graphene_settings;
     <?php endif; ?>
 
     <?php
+		global $post;
 		$post_id = ( $post ) ? $post->ID : false;
-        $header_img = apply_filters( 'graphene_header_image', graphene_get_header_image( $post_id ) );
+        $header_img = graphene_get_header_image( $post_id );
+		$alt = graphene_get_header_image_alt( $header_img );
 
         /* Check if the page uses SSL and change HTTP to HTTPS if true */
         if ( is_ssl() && stripos( $header_img, 'https' ) === false ) {
@@ -62,7 +64,7 @@ global $graphene_settings;
     <div id="header">
     	
         <?php 
-			$header_img = '<img src="' . $header_img . '" alt="" class="header-img" />';
+			$header_img = '<img src="' . $header_img . '" alt="' . $alt . '" width="' . HEADER_IMAGE_WIDTH . '" height="' . HEADER_IMAGE_HEIGHT . '" class="header-img" />';
 			if ( ! is_front_page() && $graphene_settings['link_header_img'] ) {
 				$header_img_tag = '<a href="' . apply_filters( 'graphene_header_link' , home_url() ) . '" id="header_img_link" title="' . esc_attr__( 'Go back to the front page', 'graphene' ) . '">';
 				$header_img_tag .= $header_img;
@@ -83,12 +85,12 @@ global $graphene_settings;
 		
         <?php /* The site title and description */ 
 		if ( ! in_array( get_theme_mod( 'header_textcolor', HEADER_TEXTCOLOR ), array( 'blank', '' ) ) ) :
-			if ( is_singular() && ! is_front_page() ) { 
-				$title_tag = 'h2';
-				$desc_tag = 'h3';
-			} else {
+			if ( is_front_page() || is_home() ) { 
 				$title_tag = 'h1';
 				$desc_tag = 'h2';
+			} else {
+				$title_tag = 'h2';
+				$desc_tag = 'h3';
 			}
 			?>
 			<?php echo "<$title_tag class=\"header_title push_1 grid_15\">"; ?>

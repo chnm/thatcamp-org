@@ -7,7 +7,13 @@ get_header(); ?>
 
 <h1 class="page-title archive-title">
     <?php
-        printf( __( 'Search results for: %s', 'graphene'), '<span>' . get_search_query() . '</span>' );
+		global $wp_query;
+		/* translators: %1$s is the number of results found, %2$s is the search term */
+        printf( _n( 'Found %1$s search result for keyword: %2$s', 
+					'Found %1$s search results for keyword: %2$s', $wp_query->found_posts, 'graphene'), 
+				number_format_i18n( $wp_query->found_posts ), 
+				'<span>' . get_search_query() . '</span>' 
+		);
     ?>
 </h1>
 
@@ -16,17 +22,20 @@ get_header(); ?>
 		get_template_part('search', '404'); 
 	} else {
 		
-		if ( have_posts() ){
-			while ( have_posts() ) {
-				the_post(); 
-				get_template_part( 'loop', 'search' );
-			}
-			
-			/* Posts navigation. */ 
-			graphene_posts_nav();
-		} else {
-			get_template_part( 'loop', 'not-found' );
-		}
+		if ( have_posts() ) : ?>
+        	<div class="entries-wrapper">
+            <?php
+				while ( have_posts() ) {
+					the_post(); 
+					get_template_part( 'loop', 'search' );
+				}
+			?>
+            </div>
+            <?php graphene_posts_nav(); ?>
+            
+		<?php else : ?>
+			<?php get_template_part( 'loop', 'not-found' ); ?>
+		<?php endif;
 	}
 ?>
 

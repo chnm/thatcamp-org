@@ -73,6 +73,20 @@ jQuery(document).ready(function($){
 			
 			return false;
 		});
+				
+		/* Improve <select> elements */
+		if (grapheneAdminScript.is_rtl == false ){
+			$('.chzn-select').each(function(){
+				var chosenOptions = new Object();
+				chosenOptions.disable_search_threshold = 10;
+				chosenOptions.allow_single_deselect = true;
+				chosenOptions.no_results_text = grapheneAdminScript.chosen_no_search_result;
+				if ($(this).attr('multiple')) chosenOptions.width = '100%';
+				else chosenOptions.width = '250px';
+				
+				$(this).chosen(chosenOptions);
+			});
+		}
 
         
         // Non-essential options display settings
@@ -322,6 +336,57 @@ jQuery(document).ready(function($){
 		/* Colour options */
 		if ( graphene_tab == 'colours' ) {
 			
+			// Save/delete colour presets
+			$('.save-colour-preset, .delete-colour-preset').click(function(){
+				
+				var colourPreset = new Object();
+				
+				if( $(this).attr('data-colourPresetAction') == 'save' ){
+					var presetName = ''
+					while ( presetName == '' ) {
+						presetName = prompt( grapheneAdminScript.preset_name );
+						if ( presetName == null ) return false;
+						if ( presetName == '' ) alert( grapheneAdminScript.preset_name_req );
+					}
+					colourPreset.action = 'save';
+					colourPreset.preset = presetName;
+				}
+				
+				if( $(this).attr('data-colourPresetAction') == 'delete' ){
+					var currentPreset = $('.colour-presets').val();
+					if ( confirm( grapheneAdminScript.preset_delete_confirm + ' ' + $('.colour-presets option:selected').text() ) == false ) return false;
+					
+					colourPreset.action = 'delete';
+					colourPreset.preset = currentPreset;
+				}
+				
+				/* Save/delete the preset via AJAX */
+				var data = $('#graphene-options-form').clone()
+								.prepend('<input name="colour_preset_action" value="' + colourPreset.action + '" />')
+								.prepend('<input name="colour_preset_name" value="' + colourPreset.preset + '" />')
+								.serialize();
+				
+				data = data.replace('action=update', 'action=graphene_ajax_update_preset');
+				
+				$.post(ajaxurl, data, function(response) {
+					$('.ajaxload').remove();
+					graphene_show_message(response);
+					
+					if ( response.search('error') == -1 ) {
+						t = 1000;
+						if ( colourPreset.action == 'delete' ) {
+							$('.colour-presets option[value="' + currentPreset + '"]').remove();
+							$('.colour-preset-' + currentPreset).remove();
+							delete graphene_colour_presets.currentPreset;
+						}
+						if ( colourPreset.action == 'save' ) location.reload(true);
+					} else t = 4000;
+					t = setTimeout('graphene_fade_message()', t);
+				});
+				
+				return false;
+			});
+			
 			/* Farbtastic colour picker */
 			$('div.colorpicker').each(function(){
 				var $this = $(this);
@@ -532,9 +597,9 @@ jQuery(document).ready(function($){
 									border-color: ' + color_bottom + ';\
 									text-shadow: 0 -1px 0 ' + textshadowColor + ';\
 									color: ' + textColor + ';\
-									-moz-box-shadow: 0 0 5px ' + boxshadowColor + ';\
-									-webkit-box-shadow: 0 0 5px ' + boxshadowColor + ';\
-									box-shadow: 0 0 5px ' + boxshadowColor + ';\
+									-moz-box-shadow: 0 1px 2px ' + boxshadowColor + ';\
+									-webkit-box-shadow: 0 1px 2px ' + boxshadowColor + ';\
+									box-shadow: 0 1px 2px ' + boxshadowColor + ';\
 					');
 			});
 
@@ -581,19 +646,11 @@ jQuery(document).ready(function($){
 			});
 			
 
-
-			// Colour presets
-			var colour_presets = new Object();
-			colour_presets.default_preset = '{"bg_content_wrapper":"#e3e3e3","bg_content":"#fff","bg_meta_border":"#e3e3e3","bg_post_top_border":"#d8d8d8","bg_post_bottom_border":"#ccc","bg_widget_item":"#fff","bg_widget_list":"#e3e3e3","bg_widget_header_border":"#195392","bg_widget_title":"#fff","bg_widget_title_textshadow":"#555","bg_widget_header_bottom":"#1f6eb6","bg_widget_header_top":"#3c9cd2","bg_widget_box_shadow":"#BBBBBB","bg_slider_top":"#0F2D4D","bg_slider_bottom":"#2880C3","bg_button":"#2982C5","bg_button_label":"#fff","bg_button_label_textshadow":"#16497E","bg_button_box_shadow":"#555555","bg_archive_left":"#0F2D4D","bg_archive_right":"#2880C3","bg_archive_label":"#E3E3E3","bg_archive_text":"#fff","bg_archive_textshadow":"#333","content_font_colour":"#2c2b2b","title_font_colour":"#1772af","link_colour_normal":"#1772af","link_colour_visited":"#1772af","link_colour_hover":"#074d7c","bg_comments":"#E9ECF5","comments_text_colour":"#2C2B2B","threaded_comments_border":"#DDDDDD","bg_author_comments":"#FFFFFF","bg_author_comments_border":"#CCCCCC","author_comments_text_colour":"#2C2B2B","bg_comment_form":"#EEEEEE","comment_form_text":"#2C2B2B"}';
-			colour_presets.dream_magnet = '{"bg_content_wrapper":"#e3e3e3","bg_content":"#fff","bg_meta_border":"#e3e3e3","bg_post_top_border":"#d8d8d8","bg_post_bottom_border":"#ccc","bg_widget_item":"#fff","bg_widget_list":"#e3e3e3","bg_widget_header_border":"#022328","bg_widget_title":"#fff","bg_widget_title_textshadow":"#04343a","bg_widget_header_bottom":"#06454c","bg_widget_header_top":"#005F6B","bg_widget_box_shadow":"#BBBBBB","bg_slider_top":"#06454c","bg_slider_bottom":"#005F6B","bg_button":"#005F6B","bg_button_label":"#fff","bg_button_label_textshadow":"#053a41","bg_button_box_shadow":"#555555","bg_archive_left":"#06454c","bg_archive_right":"#005F6B","bg_archive_label":"#b6d2d5","bg_archive_text":"#eae9e9","bg_archive_textshadow":"#033c42","content_font_colour":"#2c2b2b","title_font_colour":"#008C9E","link_colour_normal":"#008C9E","link_colour_visited":"#008C9E","link_colour_hover":"#005F6B","bg_comments":"#E9ECF5","comments_text_colour":"#2C2B2B","threaded_comments_border":"#DDDDDD","bg_author_comments":"#FFFFFF","bg_author_comments_border":"#005F6B","author_comments_text_colour":"#2C2B2B","bg_comment_form":"#EEEEEE","comment_form_text":"#2C2B2B"}';
-			colour_presets.curiosity_killed = '{"bg_content_wrapper":"#DCE9BE","bg_content":"#fff","bg_meta_border":"#ffffff","bg_post_top_border":"#ffffff","bg_post_bottom_border":"#ffffff","bg_widget_item":"#fff","bg_widget_list":"#e3e3e3","bg_widget_header_border":"#640822","bg_widget_title":"#fff","bg_widget_title_textshadow":"#402222","bg_widget_header_bottom":"#74122e","bg_widget_header_top":"#99173C","bg_widget_box_shadow":"#BBBBBB","bg_slider_top":"#74122e","bg_slider_bottom":"#99173C","bg_button":"#99173C","bg_button_label":"#fff","bg_button_label_textshadow":"#59071e","bg_button_box_shadow":"#555555","bg_archive_left":"#74122e","bg_archive_right":"#99173C","bg_archive_label":"#fdd2de","bg_archive_text":"#fff","bg_archive_textshadow":"#6d0d0d","content_font_colour":"#2c2b2b","title_font_colour":"#99173C","link_colour_normal":"#99173C","link_colour_visited":"#99173C","link_colour_hover":"#5b0820","bg_comments":"#f3fedd","comments_text_colour":"#2C2B2B","threaded_comments_border":"#DCE9BE","bg_author_comments":"#fee6ed","bg_author_comments_border":"#99173C","author_comments_text_colour":"#2C2B2B","bg_comment_form":"#fff","comment_form_text":"#696969"}';
-			colour_presets.zesty_orange = '{"bg_content_wrapper":"#FBE1BB","bg_content":"#fff","bg_meta_border":"#FBE1BB","bg_post_top_border":"#f8bd68","bg_post_bottom_border":"#f8bd68","bg_widget_item":"#fff","bg_widget_list":"#fec777","bg_widget_header_border":"#FF5000","bg_widget_title":"#fff","bg_widget_title_textshadow":"#FF5000","bg_widget_header_bottom":"#FF9600","bg_widget_header_top":"#FFB400","bg_widget_box_shadow":"#BBBBBB","bg_slider_top":"#FF9600","bg_slider_bottom":"#FFB400","bg_button":"#FF9600","bg_button_label":"#fff","bg_button_label_textshadow":"#a6660b","bg_button_box_shadow":"#888","bg_archive_left":"#FF9600","bg_archive_right":"#FFB400","bg_archive_label":"#cc3a06","bg_archive_text":"#000000","bg_archive_textshadow":"#FF9600","content_font_colour":"#2c2b2b","title_font_colour":"#FF5000","link_colour_normal":"#FF5000","link_colour_visited":"#FF5000","link_colour_hover":"#ff7a00","bg_comments":"#fef0dd","comments_text_colour":"#2C2B2B","threaded_comments_border":"#FEC777","bg_author_comments":"#FFFFFF","bg_author_comments_border":"#FF9600","author_comments_text_colour":"#2C2B2B","bg_comment_form":"#fff3e1","comment_form_text":"#2C2B2B"}';
-
 			// Apply colour preset                
 			$('select.colour-presets').bind('mouseup keyup change', function(){                        
 					var presetName = $('.colour-presets').val().replace( '-', '_' );
-					if ( presetName == 'default' ) presetName = 'default_preset';
-					colour_preset = $.parseJSON( colour_presets[presetName] );
+					if ( presetName == 'default' ) presetName = 'default';
+					colour_preset = $.parseJSON( graphene_colour_presets[presetName] );
 					for ( var option_name in colour_preset ){
 							$elm = $('#' + option_name).siblings('.colorpicker');
 							$.farbtastic($elm).setColor(colour_preset[option_name]);                                

@@ -5,7 +5,8 @@
  * for the page used as the static front page.
 */
 function graphene_homepage_panes(){
-	global $graphene_settings, $graphene_defaults;
+	global $graphene_settings, $graphene_defaults, $in_homepage_panes;
+	$in_homepage_panes = true;
 	
 	// Get the number of panes to display
 	if ( $graphene_settings['show_post_type'] == 'latest-posts' || $graphene_settings['show_post_type'] == 'cat-latest-posts' ){
@@ -86,7 +87,10 @@ function graphene_homepage_panes(){
             </a>
             
             <?php /* The post title */ ?>
-            <h3 class="post-title"><a href="<?php the_permalink(); ?>" title="<?php printf( __( 'Permalink to %s', 'graphene' ), esc_attr( get_the_title() ) ); ?>"><?php the_title(); ?></a></h3>
+            <h3 class="post-title">
+            	<a href="<?php the_permalink(); ?>" title="<?php printf( __( 'Permalink to %s', 'graphene' ), esc_attr( get_the_title() ) ); ?>"><?php the_title(); ?></a>
+                <?php do_action( 'homepage_pane_title' ); ?>
+            </h3>
             
             <?php /* The post excerpt */ ?>
             <div class="post-excerpt">
@@ -110,6 +114,7 @@ function graphene_homepage_panes(){
 	
 	<?php
 	do_action( 'graphene_after_homepage_panes' );
+	unset( $in_homepage_panes );
 }
 
 /* Helper function to control when the homepage panes should be displayed. */

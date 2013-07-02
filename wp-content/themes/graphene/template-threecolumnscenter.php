@@ -8,6 +8,7 @@
  * @package Graphene
  * @since Graphene 1.1.5
  */
+ __( 'Three columns, sidebar left and right', 'graphene' );
  get_header(); ?>
  
     <?php

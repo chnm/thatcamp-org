@@ -7,6 +7,7 @@
  * @package Graphene
  * @since Graphene 1.0.5
  */ 
+ __( 'One column, no sidebar', 'graphene' );
  get_header(); ?>
  
     <?php

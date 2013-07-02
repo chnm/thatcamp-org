@@ -17,11 +17,29 @@ function graphene_options_colours() {
         </p>
         <?php /* These colour presets are handled using javascript. See graphene/admin/js/admin.js */ ?>
         <select class="colour-presets" name="graphene_settings[colour_preset]">
-            <option value="default" <?php selected( $graphene_settings['colour_preset'], 'default' ); ?>><?php _e( 'Default', 'graphene' ); ?></option>
-            <option value="dream-magnet" <?php selected( $graphene_settings['colour_preset'], 'dream-magnet' ); ?>><?php _e( 'Dream Magnet', 'graphene' ); ?></option>
-            <option value="curiosity-killed" <?php selected( $graphene_settings['colour_preset'], 'curiosity-killed' ); ?>><?php _e( 'Curiosity Killed', 'graphene' ); ?></option>
-            <option value="zesty-orange" <?php selected( $graphene_settings['colour_preset'], 'zesty-orange' ); ?>><?php _e( 'Zesty Orange', 'graphene' ); ?></option>
+        	<?php foreach ( $graphene_settings['colour_presets'] as $key => $preset ) : ?>
+            <option value="<?php echo $key; ?>" <?php selected( $graphene_settings['colour_preset'], $key ); ?>><?php echo $preset['name']; ?></option>
+            <?php endforeach; ?>
         </select>
+        
+        <a href="#" class="button delete-colour-preset" data-colourPresetAction="delete"><?php _e( 'Delete preset', 'graphene' ); ?></a>
+        <a href="#" class="button-primary save-colour-preset" data-colourPresetAction="save"><?php _e( 'Save current settings as preset', 'graphene' ); ?></a>
+        <a href="<?php echo add_query_arg( 'colour_preset', 'import' ); ?>" class="button"><?php _e( 'Import presets', 'graphene' ); ?></a>
+        <a href="<?php echo add_query_arg( 'colour_preset', 'export' ); ?>" class="button"><?php _e( 'Export presets', 'graphene' ); ?></a>
+        
+        <?php foreach ( $graphene_settings['colour_presets'] as $key => $preset ) : ?>
+        	<input type="hidden" class="colour-preset-<?php echo $key; ?>" name="graphene_settings[colour_presets][<?php echo $key; ?>][name]" value="<?php echo esc_attr( $preset['name'] ); ?>" />
+            <input type="hidden" class="colour-preset-<?php echo $key; ?>" name="graphene_settings[colour_presets][<?php echo $key; ?>][code]" value="<?php echo esc_attr( $preset['code'] ); ?>" />
+        <?php endforeach; ?>
+        
+        <script type="text/javascript">
+			//<![CDATA[
+				var graphene_colour_presets = new Object();
+				<?php foreach ( $graphene_settings['colour_presets'] as $key => $preset ) : ?>
+				graphene_colour_presets.<?php echo str_replace( '-', '_', $key ); ?> = '<?php echo $preset['code']; ?>';
+				<?php endforeach; ?>
+			//]]>
+		</script>
         
         <div class="postbox non-essential-option" style="margin-top: 20px;">
             <div class="head-wrap">

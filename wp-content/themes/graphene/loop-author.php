@@ -82,7 +82,7 @@
                              * and the post is not password-protected */
                             if (comments_open() && empty( $post->post_password) && $nr_comments != 0){
                                 $have_comments = TRUE;
-                                $comments_ol_html .= '<li><a href="'. get_permalink() .'" rel="bookmark" title="'. sprintf(esc_attr__( 'Permalink to %s', 'graphene' ), the_title_attribute( 'echo=0' ) ) .'">'. ( get_the_title() == '' ? __( '(No title)','graphene' ) : get_the_title() ) . '</a> &mdash; '. ( sprintf( _n( '%d comment', '%d comments', $nr_comments, 'graphene' ), number_format_i18n( $nr_comments ) ) ). '</li>';
+                                $comments_ol_html .= '<li><a href="'. get_permalink() .'" rel="bookmark" title="'. sprintf(esc_attr__( 'Permalink to %s', 'graphene' ), the_title_attribute( 'echo=0' ) ) .'">'. ( get_the_title() == '' ? __( '(No title)','graphene' ) : get_the_title() ) . '</a> &mdash; '. ( sprintf( _n( '%s comment', '%s comments', $nr_comments, 'graphene' ), number_format_i18n( $nr_comments ) ) ). '</li>';
                             }
                         }
 			

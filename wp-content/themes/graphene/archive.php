@@ -19,37 +19,39 @@ if ( have_posts() )
     the_post();
 ?>
 
-<h1 class="page-title archive-title">
-    <?php if ( is_day() ) : ?>
-        <?php printf( __( 'Daily Archive: %s', 'graphene' ), '<span>' . get_the_date() . '</span>' ); ?>
-    <?php elseif ( is_month() ) : ?>
-        <?php printf( __( 'Monthly Archive: %s', 'graphene' ), 
-		/* translators: F will be replaced with month, and Y will be replaced with year, so "F Y" in English would be replaced with something like "June 2008". */
-		'<span>' . get_the_date( __( 'F Y', 'graphene' ) ) . '</span>' ); ?>
-    <?php elseif ( is_year() ) : ?>
-        <?php printf(__( 'Yearly Archive: %s', 'graphene' ), '<span>' . get_the_date( 'Y' ) . '</span>' ); ?>
-    <?php else : ?>
-        <?php _e( 'Blog Archive', 'graphene' ); ?>
-    <?php endif; ?>
-</h1>
-<?php
-    /* Since we called the_post() above, we need to
-     * rewind the loop back to the beginning that way
-     * we can run the loop properly, in full.
-     */
-    rewind_posts();
-
-    /* Run the loop for the archives page to output the posts.
-     * If you want to overload this in a child theme then include a file
-     * called loop-archives.php and that will be used instead.
-     */
-    while ( have_posts() ) {
-		the_post(); 
-		get_template_part( 'loop', 'archive' );
-	}
-	
-	/* Posts navigation. */ 
-    graphene_posts_nav();
-?>
+    <h1 class="page-title archive-title">
+        <?php if ( is_day() ) : ?>
+            <?php printf( __( 'Daily Archive: %s', 'graphene' ), '<span>' . get_the_date() . '</span>' ); ?>
+        <?php elseif ( is_month() ) : ?>
+            <?php printf( __( 'Monthly Archive: %s', 'graphene' ), 
+            /* translators: F will be replaced with month, and Y will be replaced with year, so "F Y" in English would be replaced with something like "June 2008". */
+            '<span>' . get_the_date( __( 'F Y', 'graphene' ) ) . '</span>' ); ?>
+        <?php elseif ( is_year() ) : ?>
+            <?php printf(__( 'Yearly Archive: %s', 'graphene' ), '<span>' . get_the_date( 'Y' ) . '</span>' ); ?>
+        <?php else : ?>
+            <?php _e( 'Blog Archive', 'graphene' ); ?>
+        <?php endif; ?>
+    </h1>
+    
+    <div class="entries-wrapper">	
+        <?php
+            /* Since we called the_post() above, we need to
+             * rewind the loop back to the beginning that way
+             * we can run the loop properly, in full.
+             */
+            rewind_posts();
+            
+            /* Run the loop for the archives page to output the posts.
+             * If you want to overload this in a child theme then include a file
+             * called loop-archives.php and that will be used instead.
+             */
+            while ( have_posts() ) {
+                the_post(); 
+                get_template_part( 'loop', 'archive' );
+            }
+        ?>
+    </div>
+    
+    <?php graphene_posts_nav(); ?>
 
 <?php get_footer(); ?>

@@ -9,31 +9,33 @@
         </div>
     </div>
 </div>
-<div class="post clearfix post_404_search">
-	<div class="entry clearfix"> 
-	<h2><?php _e( 'Suggested results', 'graphene' ); ?></h2>   
-        <div class="entry-content clearfix">
-        <p>
-        <?php /* translators: %s is the search term */ ?>
-        <?php printf( __( "I've done a courtesy search for the term %s for you. See if you can find what you're looking for in the list below.", 'graphene' ), '<code>' . get_search_query() . '</code>' ); ?>
-        </p>
-        <?php if ( have_posts() ) : ?>    
-            <ul class="search-404-results">
-            <?php while ( have_posts() ) : the_post(); ?>
-                <li class="clearfix">
-                    <h3><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php printf( esc_attr__( 'Permalink Link to %s', 'graphene' ), the_title_attribute( 'echo=0' ) ); ?>"><?php the_title(); ?></a></h3>
-                     <?php the_excerpt(); ?>
-                </li>
-            <?php endwhile; ?>
-            </ul>
-        </div>
-    </div>
+
+<div class="search-results-header">
+    <h2><?php _e( 'Suggested results', 'graphene' ); ?></h2>   
+    <p>
+        <?php 
+		global $wp_query; 
+		/* translators: %1$s is the search term, %2$s is the number of results found */
+		printf( _n( 'I\'ve done a courtesy search for the term %1$s for you and found a total of %2$s result. See if you can find what you\'re looking for below.', 
+					'I\'ve done a courtesy search for the term %1$s for you and found a total of %2$s results. See if you can find what you\'re looking for below.', 
+					$wp_query->found_posts, 'graphene' ), 
+				'<code>' . get_search_query() . '</code>', 
+				number_format_i18n( $wp_query->found_posts ) 
+		); 
+		?>
+    </p>
 </div>
-	<?php /* Posts navigation. See functions.php for the function definition */ ?>
+
+<?php if ( have_posts() ) : ?>    
+    <div class="search-404-results entries-wrapper">
+    <?php 
+        while ( have_posts() ) {
+            the_post(); 
+            get_template_part( 'loop', 'search' );
+        }
+    ?>
+    </div>
     <?php graphene_posts_nav(); ?>
 <?php else : ?>
-			<p><?php _e("<strong>Sorry, couldn't find anything.</strong> Try searching for alternative terms using the search form above.", 'graphene' ); ?></p>
-    	</div>
-    </div>
-</div>
+  <p><?php _e("<strong>Sorry, couldn't find anything.</strong> Try searching for alternative terms using the search form above.", 'graphene' ); ?></p>
 <?php endif; ?>

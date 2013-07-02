@@ -1,25 +1,62 @@
 <?php
+if ( ! function_exists( 'graphene_get_header_image' ) ) :
 /**
  * This function retrieves the header image for the theme
 */
-if ( ! function_exists( 'graphene_get_header_image' ) ) :
-	function graphene_get_header_image( $post_id = NULL ){
-		global $graphene_settings;
+function graphene_get_header_image( $post_id = NULL ){
+	global $graphene_settings, $post;
+	$header_img = '';
+	
+	if ( ! $post_id ) $post_id = $post->ID;
+	if ( ! $post_id ) $header_img = get_header_image();
+	
+	if ( ! $header_img && is_singular() && has_post_thumbnail( $post_id ) ) {
+		$image_id = get_post_thumbnail_id( $post_id );
+		$image_meta = wp_get_attachment_metadata( $image_id );
 		
-		if ( is_singular() && has_post_thumbnail( $post_id ) && ( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'post-thumbnail' ) ) &&  $image[1] >= HEADER_IMAGE_WIDTH && ! $graphene_settings['featured_img_header'] ) {
-			// Houston, we have a new header image!
-			$header_img = $image[0]; // only the url
-		} else if ( $graphene_settings['use_random_header_img'] ){
-			$default_header_images = graphene_get_default_headers();
-			$randomkey = array_rand( $default_header_images);
-			$header_img = str_replace( '%s', get_template_directory_uri(), $default_header_images[$randomkey]['url']);
-		} else {
-			$header_img = get_header_image();
+		if ( $image_meta && $image_meta['width'] >= HEADER_IMAGE_WIDTH && ! $graphene_settings['featured_img_header'] ) {
+			$image = wp_get_attachment_image_src( $image_id, 'post-thumbnail' );
+			$header_img = $image[0];
 		}
-	return $header_img;
+	}
+	
+	if ( ! $header_img ) $header_img = get_header_image();
+	
+	return apply_filters( 'graphene_header_image', $header_img, $post_id );
 }
-add_action( 'graphene_get_header_image', 'graphene_get_header_image' );
 endif;
+
+
+/**
+ * Get the attachment ID from the source URL
+ *
+ * @package Graphene
+ * @since 1.9
+ */
+function graphene_get_attachment_id_from_src( $image_src ) {
+
+	global $wpdb;
+	$query = $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE guid='%s'", $image_src );
+	$id = $wpdb->get_var($query);
+	return $id;
+	
+}
+
+
+/**
+ * Get the alt text for the header image
+ *
+ * @package Graphene
+ * @since 1.9
+ */
+function graphene_get_header_image_alt( $image_src ){
+	
+	$image_id = graphene_get_attachment_id_from_src( $image_src );
+	if ( ! $image_id ) return;
+	
+	$alt = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
+	return $alt;
+}
 
 
 /**
@@ -47,20 +84,8 @@ function graphene_body_class( $classes ){
     // Prints the body class
     return $classes;
 }
+
 add_filter( 'body_class', 'graphene_body_class' );
-
-
-/**
- * Add the .sticky post class to sticky posts in the home page if the "Front page posts 
- * categories" option is being used
-*/
-function graphene_sticky_post_class( $classes ){
-	if ( is_sticky() && ! in_array( 'sticky', $classes ) && is_home() ){
-		$classes[] = 'sticky';	
-	}
-	return $classes;
-}
-add_filter( 'post_class', 'graphene_sticky_post_class' );
 
 
 /**
@@ -120,8 +145,8 @@ function graphene_determine_social_medium_title( $social_medium ) {
  *
  * @param int $mod Optional Width in pixels to add/subtract from the calculated grid width
  * @param int $grid_one Grid number for 1 column layout
- * @param int $grid_two Grid number for 1 column layout
- * @param int $grid_three Grid number for 1 column layout
+ * @param int $grid_two Grid number for 2 column layout
+ * @param int $grid_three Grid number for 3 column layout
  * @return int Grid width in pixels
  *
  * @package Graphene
@@ -160,8 +185,8 @@ function graphene_grid_width( $mod = '', $grid_one = 1, $grid_two = '', $grid_th
  *
  * @param string $classes Optional additional classes
  * @param int $grid_one Grid number for 1 column layout
- * @param int $grid_two Grid number for 1 column layout
- * @param int $grid_three Grid number for 1 column layout
+ * @param int $grid_two Grid number for 2 column layout
+ * @param int $grid_three Grid number for 3 column layout
  * @param bool $alpha Switch for the alpha class
  * @param bool $omega Switch for the omega class
  * @return array Grid system classes
@@ -209,8 +234,8 @@ function graphene_get_grid( $classes = '', $grid_one = 1, $grid_two = '', $grid_
  *
  * @param string $classes Optional additional classes
  * @param int $grid_one grid number for 1 column layout
- * @param int $grid_two grid number for 1 column layout
- * @param int $grid_three grid number for 1 column layout
+ * @param int $grid_two grid number for 2 column layout
+ * @param int $grid_three grid number for 3 column layout
  * @param bool $alpha switch for the alpha class
  * @param bool $omega switch for the omega class
  *
@@ -277,3 +302,31 @@ function graphene_sidebar_notice( $sidebar_name = '' ){
 	$html .= '[/warning]';
 	echo do_shortcode( apply_filters( 'graphene_sidebar_notice', $html, $sidebar_name ) );
 }
+
+
+/**
+ * Apply the correct column mode for static posts page as per its page template
+ *
+ * @package Graphene
+ * @since 1.9
+ */
+function graphene_posts_page_column(){
+	if ( ! is_home() ) return;
+	
+	$home_page = get_option( 'page_for_posts' );
+	if ( ! $home_page ) return;
+	
+	$template = get_post_meta( $home_page, '_wp_page_template', true );
+	if ( ! $template || $template == 'default' ) return;
+	
+	global $graphene_settings;
+	switch ( $template ) {
+		case 'template-onecolumn.php': $graphene_settings['column_mode'] = 'one_column'; break;
+		case 'template-twocolumnsleft.php': $graphene_settings['column_mode'] = 'two_col_left'; break;
+		case 'template-twocolumnsright.php': $graphene_settings['column_mode'] = 'two_col_right'; break;
+		case 'template-threecolumnsleft.php': $graphene_settings['column_mode'] = 'three_col_left'; break;
+		case 'template-threecolumnscenter.php': $graphene_settings['column_mode'] = 'three_col_center'; break;
+		case 'template-threecolumnsright.php': $graphene_settings['column_mode'] = 'three_col_right'; break;
+	}
+}
+add_action( 'template_redirect', 'graphene_posts_page_column' );

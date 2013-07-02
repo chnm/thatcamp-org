@@ -358,35 +358,35 @@ Theme Name: Graphene
 /* =Navigation
 -------------------------------------------------------------- */
 
+/* Son of Suckerfish - what makes it tick */
 #nav li {
 	float: right;
-	position: relative !important;
+}
+#nav li ul {
+	right: -999em;
+	left: auto;
+}
+#nav li:hover ul {
+	right: auto;
 }
 #header-menu li ul ul {
 	margin: -34px 200px 0 0;
 }
-#header-menu li ul {
-	left: auto;
-	right: -999em;
-}
-#header-menu li:hover ul {
-	right: 0;
+#secondary-menu li ul ul {
+	margin: -29px 200px 0 0;
 }
 #nav li:hover ul ul,
 #nav li:hover ul ul ul,
 #nav li:hover ul ul ul ul,
 #nav li:hover ul ul ul ul ul {
 	right: -999em;
-	left: 0;
+	left: auto;
 }
 #nav li:hover ul, 
 #nav li li:hover ul,
 #nav li li li:hover ul,
 #nav li li li li:hover ul {
-	right: 0;
-}
-#secondary-menu li ul ul {
-	margin: -29px 200px 0 0;
+	right: auto;
 }
 #header-menu > li {
 	margin: 0 5px 0 0;
@@ -427,12 +427,22 @@ Theme Name: Graphene
 #secondary-menu > li.menu-item-ancestor > a {
 	padding-right: 20px;
 	padding-left: 10px;
+	background: url(images/sprite_master-rtl.png) right -183px no-repeat transparent;
+}
+#secondary-menu > li.menu-item-ancestor:hover > a,
+#secondary-menu > li.current-menu-item > a,
+#secondary-menu > li.current-menu-ancestor > a {
+	background-position: right -150px;
 }
 
 /* Sub level, default state */
 #secondary-menu ul li.menu-item-ancestor > a {
-	padding-left: 20px;
-	padding-right: 10px;
+	background: url(images/sprite_master-rtl.png) 6px -152px;
+}
+#secondary-menu ul li.menu-item-ancestor:hover > a,
+#secondary-menu ul li.current-menu-item.menu-item-ancestor > a,
+#secondary-menu ul li.current-menu-ancestor > a {
+	background: url(images/sprite_master-rtl.png) 6px -185px;
 }
 
 
@@ -471,15 +481,6 @@ Theme Name: Graphene
 .button,
 #commentform #submit {
 	float: left;
-}
-.slider_nav {
-	left: 10px;
-	right: auto;
-	text-align: left;
-}
-.full-sized .slider_nav {
-	right: auto;
-	left: 0;
 }
 .slider_nav a,
 .slider_nav a:visited {
@@ -607,6 +608,8 @@ pre.block {
 .comment-link {
 	float: left;
 	text-align: left;
+	margin-right: 20px;
+	margin-left: 0;
 }
 .previous {
 	float: right;
@@ -710,6 +713,7 @@ h3.author-post-list {
 	background-position: right -162px;
 	margin-right: 10px;
 	margin-left: 0;
+	width: 469px;
 }
 h3.author-post-list {
 	padding-left: 0;
@@ -745,6 +749,9 @@ h3.author-post-list {
 }
 #commentform .block-button {
 	float: right;
+}
+.comment-form-jump {
+    float: left;
 }
 
 

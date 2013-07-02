@@ -60,10 +60,9 @@ function graphene_options_general() {
                     <tr class="row_slider_type_categories<?php if ( $graphene_settings['slider_type'] != 'categories' ) echo ' hide'; ?>">
                         <th scope="row">
                             <label for="slider_specific_categories"><?php _e( 'Categories to display', 'graphene' ); ?></label>
-                            <small><?php _e( 'All posts within the categories selected here will be displayed on the slider. Usage example: create a new category "Featured" and assign all posts to be displayed on the slider to that category, and then select that category here.', 'graphene' ); ?></small>
                         </th>
                         <td>
-                            <select name="graphene_settings[slider_specific_categories][]" id="slider_specific_categories" multiple="multiple" class="select-multiple">
+                            <select name="graphene_settings[slider_specific_categories][]" id="slider_specific_categories" multiple="multiple" class="select-multiple chzn-select" data-placeholder="<?php _e( 'Click to select categories or type to search', 'graphene' ); ?>">
                                <?php /* Get the list of categories */ 
                                     $selected_cats = $graphene_settings['slider_specific_categories'];
                                     $categories = get_categories();
@@ -71,7 +70,8 @@ function graphene_options_general() {
                                 ?>
                                 <option value="<?php echo $category->cat_ID; ?>" <?php if ( $selected_cats && in_array( $category->cat_ID, $selected_cats ) ) { echo 'selected="selected"'; }?>><?php echo $category->cat_name; ?></option>
                                 <?php endforeach; ?> 
-                            </select>                       
+                            </select><br />
+                            <span class="description"><?php _e( 'All posts within the categories selected here will be displayed on the slider. Usage example: create a new category "Featured" and assign all posts to be displayed on the slider to that category, and then select that category here.', 'graphene' ); ?></span>
                         </td>
                     </tr>
                     <tr class="row_slider_type_categories<?php if ( $graphene_settings['slider_type'] != 'categories' ) echo ' hide'; ?>">
@@ -79,7 +79,7 @@ function graphene_options_general() {
                             <label for="slider_specific_categories"><?php _e( 'Exclude the categories from posts listing', 'graphene' ); ?></label>
                         </th>
                         <td>
-                        	<select name="graphene_settings[slider_exclude_categories]">
+                        	<select name="graphene_settings[slider_exclude_categories]" class="chzn-select">
                         		<option type="radio" name="graphene_settings[slider_exclude_categories]" id="slider_exclude_categories_disabled" <?php selected( $graphene_settings['slider_exclude_categories'], 'disabled' ); ?> value="disabled" data-toggleOptions="true"><?php _e( 'Disabled', 'graphene' ); ?></option>
                                 <option type="radio" name="graphene_settings[slider_exclude_categories]" id="slider_exclude_categories_frontpage" <?php selected( $graphene_settings['slider_exclude_categories'], 'frontpage' ); ?> value="homepage" data-toggleOptions="true"><?php _e( 'Home Page', 'graphene' ); ?></option>
                                 <option type="radio" name="graphene_settings[slider_exclude_categories]" id="slider_exclude_categories_everywhere" <?php selected( $graphene_settings['slider_exclude_categories'], 'everywhere' ); ?> value="everywhere" data-toggleOptions="true"><?php _e( 'Everywhere', 'graphene' ); ?></option>
@@ -107,7 +107,7 @@ function graphene_options_general() {
                             <label for="slider_img"><?php _e( 'Slider image', 'graphene' ); ?></label>
                         </th>
                         <td>
-                            <select name="graphene_settings[slider_img]" id="slider_img">
+                            <select name="graphene_settings[slider_img]" id="slider_img" class="chzn-select">
                                 <option value="disabled" <?php selected( $graphene_settings['slider_img'], 'disabled' ); ?>><?php _e("Don't show image", 'graphene' ); ?></option>
                                 <option value="featured_image" <?php selected( $graphene_settings['slider_img'], 'featured_image' ); ?>><?php _e("Featured Image", 'graphene' ); ?></option>
                                 <option value="post_image" <?php selected( $graphene_settings['slider_img'], 'post_image' ); ?>><?php _e("First image in post", 'graphene' ); ?></option>
@@ -130,7 +130,7 @@ function graphene_options_general() {
                             <label for="slider_display_style"><?php _e( 'Slider display style', 'graphene' ); ?></label><br />
                         </th>
                         <td>
-                            <select name="graphene_settings[slider_display_style]" id="slider_display_style">
+                            <select name="graphene_settings[slider_display_style]" id="slider_display_style" class="chzn-select">
                                 <option value="thumbnail-excerpt" <?php selected( $graphene_settings['slider_display_style'], 'thumbnail-excerpt' ); ?>><?php _e( 'Thumbnail and excerpt', 'graphene' ); ?></option>
                                 <option value="bgimage-excerpt" <?php selected( $graphene_settings['slider_display_style'], 'bgimage-excerpt' ); ?>><?php _e( 'Background image and excerpt', 'graphene' ); ?></option>
                                 <option value="full-post" <?php selected( $graphene_settings['slider_display_style'], 'full-post' ); ?>><?php _e( 'Full post content', 'graphene' ); ?></option>
@@ -142,8 +142,7 @@ function graphene_options_general() {
                             <label for="slider_animation"><?php _e( 'Slider animation', 'graphene' ); ?></label>
                         </th>
                         <td>
-                            
-                            <select name="graphene_settings[slider_animation]" id="slider_animation">
+                            <select name="graphene_settings[slider_animation]" id="slider_animation" class="chzn-select">
                                 <option value="horizontal-slide" <?php selected( $graphene_settings['slider_animation'], 'slide' ); ?>><?php _e( 'Horizontal slide', 'graphene' ); ?></option>
                                 <option value="vertical-slide" <?php selected( $graphene_settings['slider_animation'], 'vertical-slide' ); ?>><?php _e( 'Vertical slide', 'graphene' ); ?></option>
                                 <option value="fade" <?php selected( $graphene_settings['slider_animation'], 'fade' ); ?>><?php _e( 'Fade', 'graphene' ); ?></option>
@@ -190,6 +189,48 @@ function graphene_options_general() {
         </div>
         
         
+        <?php /* Infinite Scroll */ ?>
+        <div class="postbox">
+            <div class="head-wrap">
+                <div title="Click to toggle" class="handlediv"><br /></div>
+        		<h3 class="hndle"><?php _e( 'Infinite Scroll', 'graphene' ); ?></h3>
+            </div>
+            <div class="panel-wrap inside">
+            	<p><?php _e( 'Let the theme pull the next set of posts or comments into view when visitor approaches the bottom of the page.', 'graphene' ); ?></p>
+                <table class="form-table">
+                	<tr>
+                        <th scope="row">
+                        	<label for="inf_scroll_enable"><?php _e( 'Enable Infinite Scroll', 'graphene' ); ?></label>
+                        </th>
+                        <td><input type="checkbox" id="inf_scroll_enable" name="graphene_settings[inf_scroll_enable]" <?php checked( $graphene_settings['inf_scroll_enable'] ); ?> value="true" data-toggleOptions="true" /></td>
+                    </tr>
+                </table>
+                
+                <table class="form-table<?php if ( $graphene_settings['inf_scroll_enable'] != true ) echo ' hide'; ?>">
+                	<tr>
+                        <th scope="row">
+                        	<label for="inf_scroll_click"><?php _e( 'Click to fetch more items', 'graphene' ); ?></label>
+                        </th>
+                        <td><input type="checkbox" id="inf_scroll_click" name="graphene_settings[inf_scroll_click]" <?php checked( $graphene_settings['inf_scroll_click'] ); ?> value="true" /></td>
+                    </tr>
+                </table>
+                
+                <h4><?php _e( 'For comments', 'graphene' ); ?>
+                
+                <table class="form-table">
+                	<tr>
+                        <th scope="row">
+                        	<label for="inf_scroll_comments"><?php _e( 'Enable Infinite Scroll for comments', 'graphene' ); ?></label>
+                        </th>
+                        <td><input type="checkbox" id="inf_scroll_comments" name="graphene_settings[inf_scroll_comments]" <?php checked( $graphene_settings['inf_scroll_comments'] ); ?> value="true" /></td>
+                    </tr>
+                </table>
+                                
+                <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
+            </div>
+        </div>
+        
+        
         <?php /* Front Page Options */ ?>
         <div class="postbox non-essential-option">
             <div class="head-wrap">
@@ -201,21 +242,17 @@ function graphene_options_general() {
                     <tr>
                         <th scope="row">
                             <label for="frontpage_posts_cats"><?php _e( 'Front page posts categories', 'graphene' ); ?></label>
-                            <p>
-                            	<small><?php _e( 'Only posts that belong to the categories selected here will be displayed on the front page. Does not affect Static Front Page.', 'graphene' ); ?></small>
-                            </p>
                         </th>
                         <td>
-                            <select name="graphene_settings[frontpage_posts_cats][]" id="frontpage_posts_cats" multiple="multiple" class="select-multiple">
-                                <option value="" <?php if ( empty( $graphene_settings['frontpage_posts_cats'] ) ) { echo 'selected="selected"'; } ?>><?php _e( '--Disabled--', 'graphene' ); ?></option>
+                            <select name="graphene_settings[frontpage_posts_cats][]" id="frontpage_posts_cats" multiple="multiple" class="select-multiple chzn-select" data-placeholder="<?php _e( 'Click to select categories or type to search', 'graphene' ); ?>">
                                 <?php /* Get the list of categories */ 
                                     $categories = get_categories();
                                     foreach ( $categories as $category) :
                                 ?>
                                 <option value="<?php echo $category->cat_ID; ?>" <?php if ( in_array( $category->cat_ID, $graphene_settings['frontpage_posts_cats'] ) ) {echo 'selected="selected"';}?>><?php echo $category->cat_name; ?></option>
                                 <?php endforeach; ?>
-                            </select><br />
-                            <span class="description"><?php _e( 'You may select multiple categories by holding down the CTRL key.', 'graphene' ); ?></span>
+                            </select>
+                            <span class="description"><?php _e( 'Only posts that belong to the categories selected here will be displayed on the front page. Does not affect Static Front Page. Leave empty to disable.', 'graphene' ); ?></span>
                         </td>
                     </tr>
                 </table>
@@ -223,6 +260,8 @@ function graphene_options_general() {
                 <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
+        
+        <?php // disect_it($graphene_settings['frontpage_posts_cats']); ?>
         
         
         <?php /* Homepage panes options */ ?>
@@ -318,7 +357,7 @@ function graphene_options_general() {
                             <label for="comments_setting"><?php _e( 'Commenting', 'graphene' ); ?></label>                            
                         </th>
                         <td>
-                            <select name="graphene_settings[comments_setting]" id="comments_setting">
+                            <select name="graphene_settings[comments_setting]" id="comments_setting" class="chzn-select">
                                 <option value="wordpress" <?php selected( $graphene_settings['comments_setting'], 'wordpress' ); ?>><?php _e( 'Use WordPress settings', 'graphene' ); ?></option>
                                 <option value="disabled_pages" <?php selected( $graphene_settings['comments_setting'], 'disabled_pages' ); ?>><?php _e( 'Disabled for pages', 'graphene' ); ?></option>
                                 <option value="disabled_completely" <?php selected( $graphene_settings['comments_setting'], 'disabled_completely' ); ?>><?php _e( 'Disabled completely', 'graphene' ); ?></option>                               
@@ -352,7 +391,7 @@ function graphene_options_general() {
                             <label for="child_page_listing"><?php _e( 'Child page listings', 'graphene' ); ?></label>                            
                         </th>
                         <td>
-                            <select name="graphene_settings[child_page_listing]" id="child_page_listing">
+                            <select name="graphene_settings[child_page_listing]" id="child_page_listing" class="chzn-select">
                                 <option value="show_always" <?php selected( $graphene_settings['child_page_listing'], 'show_always' ); ?>><?php _e( 'Show listing', 'graphene' ); ?></option>
                                 <option value="hide" <?php selected( $graphene_settings['child_page_listing'], 'hide' ); ?>><?php _e( 'Hide listing', 'graphene' ); ?></option>
                                 <option value="show_if_parent_empty" <?php selected( $graphene_settings['child_page_listing'], 'show_if_parent_empty' ); ?>><?php _e( 'Only show listing if parent content is empty', 'graphene' ); ?></option>
@@ -438,9 +477,9 @@ function graphene_options_general() {
                                 /*
 								 * Available profiles according to the icons available in ElegantThemes Social Media Icon Set
 								 */
-                                $available_profiles = array (   'Twitter', 'Facebook', 'LinkedIn', 'YouTube', 'RSS', '-', 'Custom', '-',
+                                $available_profiles = array (  '-', 'Custom', '-', 'Twitter', 'Facebook', 'LinkedIn', 'YouTube', 'RSS', 
                                                     'AIM', 'Ask', 'Bebo', 'BetVibes', 'BlinkList', 'Blogger', 'Buzz', 'Delicious', 'DeviantArt',
-													'Digg', 'Diigo', 'Evernote', 'Flickr', 'FriendFeed', 'Friendster', 'Furl', 'Google', 
+													'Digg', 'Diigo', 'Evernote', 'Flickr', 'FriendFeed', 'Friendster', 'Furl', 'Google', 'Google Plus', 
 													'LastFM', 'LiveJournal', 'Mixx', 'MySpace', 'Newsvine', 'Orkut', 'Plaxo', 'Plurk', 'Posterous',
 													'Reddit', 'ShoutWire', 'Spurl', 'Squidoo', 'StumbleUpon', 'Technorati', 'Tumblr', 'Vimeo', 'WordPress',
 													'Xanga', 'Yahoo!' );
@@ -458,12 +497,12 @@ function graphene_options_general() {
                                     <tr>
                                         <th scope="row" rowspan="<?php echo $profile_data['type'] == 'custom' ? '3' : '2'; ?>" class="small-row">                            
                                             <?php if ( $profile_data['type'] == 'custom' ) _e( 'Custom', 'graphene' ); else echo $profile_data['name']; ?><br />
-                                            <input type="hidden" name="graphene_settings[social_profiles][<?php echo $profile_key; ?>][type]" value="<?php echo esc_attr( $profile_data['type'] ); ?>" />
-                                            <input type="hidden" name="graphene_settings[social_profiles][<?php echo $profile_key; ?>][name]" value="<?php echo esc_attr( $profile_data['name'] ); ?>" />
+                                                <input type="hidden" name="graphene_settings[social_profiles][<?php echo $profile_key; ?>][type]" value="<?php echo esc_attr( $profile_data['type'] ); ?>" />
+                                                <input type="hidden" name="graphene_settings[social_profiles][<?php echo $profile_key; ?>][name]" value="<?php echo esc_attr( $profile_data['name'] ); ?>" />
                                             <?php if ( $profile_data['type'] == 'custom' ) : ?>
-                                            <img class="mysocial-icon" src="<?php echo $profile_data['icon_url']; ?>" alt="" />
+	                                            <img class="mysocial-icon" src="<?php echo $profile_data['icon_url']; ?>" alt="" />
                                             <?php else : ?>
-                                            <div class="mysocial social-<?php echo esc_attr( $profile_data['type'] ); ?>">&nbsp;</div>
+    	                                        <img class="mysocial-icon" src="<?php echo get_template_directory_uri() . '/images/social/' . $profile_data['type'] . '.png'; ?>" alt="" />
                                             <?php endif; ?>
                                         </th>
                                         <th class="small-row"><?php _e( 'Title attribute', 'graphene' ); ?></th>
@@ -510,7 +549,7 @@ function graphene_options_general() {
                                 <tr>
                                     <th><?php _e( 'Type', 'graphene' ); ?></th>
                                     <td>
-                                        <select id="new-socialprofile-type">
+                                        <select id="new-socialprofile-type" class="chzn-select">
                                             <option disabled="disabled" value="-">- <?php _e( 'Choose type', 'graphene' ); ?> -</option>
                                             <?php foreach ( $available_profiles as $profile_type) : ?>                                
                                                 <?php if ($profile_type == '-') : ?>
@@ -579,7 +618,7 @@ function graphene_options_general() {
                     <tr>
                         <th scope="row"><label for="addthis_location"><?php _e( 'Social sharing buttons location', 'graphene' ); ?></label></th>
                         <td>
-                        	<select name="graphene_settings[addthis_location]" id="addthis_location">
+                        	<select name="graphene_settings[addthis_location]" id="addthis_location" class="chzn-select">
                         		<option value="post-bottom" <?php selected( $graphene_settings['addthis_location'], 'post-bottom' ); ?>><?php _e( 'Bottom of posts', 'graphene' ); ?></option>
                                 <option value="post-top" <?php selected( $graphene_settings['addthis_location'], 'post-top' ); ?>><?php _e( 'Top of posts', 'graphene' ); ?></option>
                                 <option value="top-bottom" <?php selected( $graphene_settings['addthis_location'], 'top-bottom' ); ?>><?php _e( 'Both top and bottom', 'graphene' ); ?></option>
@@ -726,6 +765,21 @@ function graphene_options_general() {
                 
                 <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
-        </div>  
+        </div>
+        
+        <script type="text/javascript">
+			var codeMirrorOptions = new Object({
+								mode: 'text/html',
+								htmlMode: true,
+								lineNumbers: true,
+								lineWrapping: true,
+								indentUnit: 4,
+								styleActiveLine: true
+							});
+			var addthis = CodeMirror.fromTextArea(document.getElementById("addthis_code"), codeMirrorOptions);
+			var adsense = CodeMirror.fromTextArea(document.getElementById("adsense_code"), codeMirrorOptions);
+			var analytics = CodeMirror.fromTextArea(document.getElementById("ga_code"), codeMirrorOptions);
+			var copy_text = CodeMirror.fromTextArea(document.getElementById("copy_text"), codeMirrorOptions);
+		</script>
 
 <?php } // Closes the graphene_options_general() function definition

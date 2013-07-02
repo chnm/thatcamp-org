@@ -87,7 +87,7 @@ global $graphene_settings;
     <div id="developer" class="grid_7">
         <p>
         <?php /* translators: %1$s is the link to WordPress.org, %2$s is the theme's name */ ?>
-<?php printf( __('Powered by %1$s and the %2$s.', 'graphene'), '<a href="http://wordpress.org/">WordPress</a>', '<a href="http://www.khairul-syahir.com/wordpress-dev/graphene-theme">' . __('Graphene Theme', 'graphene') . '</a>'); ?>
+<?php printf( __('Powered by %1$s and the %2$s.', 'graphene'), '<a href="http://wordpress.org/">WordPress</a>', '<a href="http://www.graphene-theme.com/">' . __('Graphene Theme', 'graphene') . '</a>'); ?>
         </p>
 
 	<?php do_action('graphene_developer'); ?>
