@@ -4,9 +4,9 @@ class add_from_server {
 	var $version = '3.2.0.1';
 	var $basename = '';
 	var $folder = '';
-
+	
 	var $meets_guidelines = array(); // Internal use only.
-
+	
 	function __construct($plugin) {
 		$this->basename = $plugin;
 		$this->folder = dirname($plugin);
@@ -15,16 +15,16 @@ class add_from_server {
 		add_action('admin_init', array(&$this, 'admin_init'));
 		add_action('admin_menu', array(&$this, 'admin_menu'));
 	}
-
+	
 	function requires_32() {
 		echo '<div class="error"><p>' . __('<strong>Add From Server:</strong> Sorry, This plugin requires WordPress 3.2+. Please upgrade your WordPress installation or deactivate this plugin.', 'add-from-server') . '</p></div>';
 	}
-
+	
 	function load_translations() {
 		//Load any translation files needed:
 		load_plugin_textdomain('add-from-server', '', $this->folder . '/langs/');
 	}
-
+	
 	function admin_init() {
 
 		//Register our JS & CSS
@@ -46,16 +46,16 @@ class add_from_server {
 			add_filter('media_upload_tabs', array(&$this, 'tabs'));
 			add_action('media_upload_server', array(&$this, 'tab_handler'));
 		}
-
+		
 		//Register our settings:
 		register_setting('add_from_server', 'frmsvr_root', array(&$this, 'sanitize_option_root') );
 		//register_setting('add-from-server', 'frmsvr_last_folder');
 		register_setting('add_from_server', 'frmsvr_uac');
 		register_setting('add_from_server', 'frmsvr_uac_users');
 		register_setting('add_from_server', 'frmsvr_uac_role');
-
+		
 	}
-
+	
 	function admin_menu() {
 		if ( ! function_exists('submit_button') )
 			return;
@@ -80,7 +80,7 @@ class add_from_server {
 			$tabs['server'] = __('Add From Server', 'add-from-server');
 		return $tabs;
 	}
-
+	
 	function add_styles() {
 		//Enqueue support files.
 		if ( 'media_upload_server' == current_filter() )
@@ -99,7 +99,7 @@ class add_from_server {
 		//Do an IFrame header
 		iframe_header( __('Add From Server', 'add-from-server') );
 
-		//Add the Media buttons
+		//Add the Media buttons	
 		media_upload_header();
 
 		//Handle any imports:
@@ -111,7 +111,7 @@ class add_from_server {
 		//Do a footer
 		iframe_footer();
 	}
-
+	
 	function menu_page() {
 		if ( ! $this->user_allowed() )
 			return;
@@ -125,7 +125,7 @@ class add_from_server {
 
 		//Do the content
 		$this->main_content();
-
+		
 		echo '</div>';
 	}
 
@@ -189,14 +189,14 @@ class add_from_server {
 		}
 		return false;
 	}
-
+	
 	function sanitize_option_root($input) {
 		$_input = $input;
 		if ( 'specific' == $input )
 			$input = stripslashes($_POST['frmsvr_root-specified']);
 		if ( !$this->validate_option_root( $input ) )
 			$input = get_option('frmsvr_root');
-
+		
 		$input = strtolower($input);
 		$input = str_replace('\\', '/', $input);
 
@@ -248,12 +248,12 @@ class add_from_server {
 				$filename = $cwd . $file;
 				$id = $this->handle_import_file($filename, $post_id, $import_date);
 				if ( is_wp_error($id) ) {
-					echo '<div class="updated error"><p>' . sprintf(__('<em>%s</em> was <strong>not</strong> imported due to an error: %s', 'add-from-server'), $file, $id->get_error_message() ) . '</p></div>';
+					echo '<div class="updated error"><p>' . sprintf(__('<em>%s</em> was <strong>not</strong> imported due to an error: %s', 'add-from-server'), esc_html($file), $id->get_error_message() ) . '</p></div>';
 				} else {
 					//increment the gallery count
 					if ( $import_to_gallery )
 						echo "<script type='text/javascript'>jQuery('#attachments-count').text(1 * jQuery('#attachments-count').text() + 1);</script>";
-					echo '<div class="updated"><p>' . sprintf(__('<em>%s</em> has been added to Media library', 'add-from-server'), $file) . '</p></div>';
+					echo '<div class="updated"><p>' . sprintf(__('<em>%s</em> has been added to Media library', 'add-from-server'), esc_html($file)) . '</p></div>';
 				}
 				flush();
 				wp_ob_end_flush_all();
@@ -264,7 +264,7 @@ class add_from_server {
 	//Handle an individual file import.
 	function handle_import_file($file, $post_id = 0, $import_date = 'file') {
 		set_time_limit(120);
-
+		
 		// Initially, Base it on the -current- time.
 		$time = current_time('mysql', 1);
 		// Next, If it's post to base the upload off:
@@ -283,7 +283,7 @@ class add_from_server {
 		$wp_filetype = wp_check_filetype( $file, null );
 
 		extract( $wp_filetype );
-
+		
 		if ( ( !$type || !$ext ) && !current_user_can( 'unfiltered_upload' ) )
 			return new WP_Error('wrong_file_type', __( 'Sorry, this file type is not permitted for security reasons.' ) ); //A WP-core string..
 
@@ -297,7 +297,7 @@ class add_from_server {
 
 			$attachment = get_posts(array( 'post_type' => 'attachment', 'meta_key' => '_wp_attached_file', 'meta_value' => ltrim($mat[1], '/') ));
 			if ( !empty($attachment) )
-				return new WP_Error('file_exists', __( 'Sorry, That file already exists in the WordPress media library.' ) );
+				return new WP_Error('file_exists', __( 'Sorry, That file already exists in the WordPress media library.', 'add-from-server' ) );
 
 			//Ok, Its in the uploads folder, But NOT in WordPress's media library.
 			if ( 'file' == $import_date ) {
@@ -307,15 +307,15 @@ class add_from_server {
 					$day = 1;
 					$year = $datemat[1];
 					$month = $datemat[2];
-
+	
 					// If the files datetime is set, and it's in the same region of upload directory, set the minute details to that too, else, override it.
 					if ( $time && date('Y-m', $time) == "$year-$month" )
 						list($hour, $min, $sec, $day) = explode(';', date('H;i;s;j', $time) );
-
+	
 					$time = mktime($hour, $min, $sec, $month, $day, $year);
 				}
 				$time = gmdate( 'Y-m-d H:i:s', $time);
-
+				
 				// A new time has been found! Get the new uploads folder:
 				// A writable uploads dir will pass this test. Again, there's no point overriding this one.
 				if ( ! ( ( $uploads = wp_upload_dir($time) ) && false === $uploads['error'] ) )
@@ -336,7 +336,7 @@ class add_from_server {
 			@ chmod( $new_file, $perms );
 			// Compute the URL
 			$url = $uploads['url'] . '/' . $filename;
-
+			
 			if ( 'file' == $import_date )
 				$time = gmdate( 'Y-m-d H:i:s', @filemtime($file));
 		}
@@ -413,7 +413,7 @@ class add_from_server {
 
 		$cwd = trailingslashit(get_option('frmsvr_last_folder', WP_CONTENT_DIR));
 
-		if ( isset($_REQUEST['directory']) )
+		if ( isset($_REQUEST['directory']) ) 
 			$cwd .= stripslashes(urldecode($_REQUEST['directory']));
 
 		if ( isset($_REQUEST['adirectory']) && empty($_REQUEST['adirectory']) )
@@ -464,7 +464,7 @@ class add_from_server {
 			if ( strlen($adir) > 1 )
 				$adir = ltrim($adir, '/');
 			$durl = esc_url(add_query_arg(array('adirectory' => $adir ), $url));
-			$dirparts = '<a href="' . $durl . '">' . $piece . DIRECTORY_SEPARATOR . '</a>' . $dirparts;
+			$dirparts = '<a href="' . $durl . '">' . $piece . DIRECTORY_SEPARATOR . '</a>' . $dirparts; 
 			$dir = dirname($dir);
 		}
 		unset($dir, $piece, $adir, $durl);
@@ -472,7 +472,7 @@ class add_from_server {
 		?>
 		<div class="frmsvr_wrap">
 		<p><?php printf(__('<strong>Current Directory:</strong> <span id="cwd">%s</span>', 'add-from-server'), $dirparts) ?></p>
-		<?php
+		<?php 
 			$quickjumps = array();
 			$quickjumps[] = array( __('WordPress Root', 'add-from-server'), ABSPATH );
 			if ( ( $uploads = wp_upload_dir() ) && false === $uploads['error'] )
@@ -491,7 +491,7 @@ class add_from_server {
 					$adir = preg_replace('!^' . preg_quote($this->get_root(), '!') . '!i', '', $adir);
 					if ( strlen($adir) > 1 )
 						$adir = ltrim($adir, '/');
-					$durl = add_query_arg(array('adirectory' => addslashes($adir)), $url);
+					$durl = add_query_arg(array('adirectory' => rawurlencode($adir)), $url);
 					$pieces[] = "<a href='$durl'>$text</a>";
 				}
 				if ( ! empty($pieces) ) {
@@ -521,7 +521,7 @@ class add_from_server {
 			<tr>
 				<td>&nbsp;</td>
 				<?php /*  <td class='check-column'><input type='checkbox' id='file-<?php echo $sanname; ?>' name='files[]' value='<?php echo esc_attr($file) ?>' /></td> */ ?>
-				<td><a href="<?php echo add_query_arg(array('adirectory' => $parent), $url) ?>" title="<?php echo esc_attr(dirname($cwd)) ?>"><?php _e('Parent Folder', 'add-from-server') ?></a></td>
+				<td><a href="<?php echo add_query_arg(array('adirectory' => rawurlencode($parent)), $url) ?>" title="<?php echo esc_attr(dirname($cwd)) ?>"><?php _e('Parent Folder', 'add-from-server') ?></a></td>
 			</tr>
 		<?php endif; ?>
 		<?php
@@ -535,16 +535,16 @@ class add_from_server {
 
 			sort($directories);
 			sort($files);
-
+			
 			foreach( (array)$directories as $file  ) :
 				$filename = preg_replace('!^' . preg_quote($cwd) . '!i', '', $file);
 				$filename = ltrim($filename, '/');
-				$folder_url = add_query_arg(array('directory' => $filename, 'import-date' => $import_date, 'gallery' => $import_to_gallery ), $url);
+				$folder_url = add_query_arg(array('directory' => rawurlencode($filename), 'import-date' => $import_date, 'gallery' => $import_to_gallery ), $url);
 		?>
 			<tr>
 				<td>&nbsp;</td>
 				<?php /* <td class='check-column'><input type='checkbox' id='file-<?php echo $sanname; ?>' name='files[]' value='<?php echo esc_attr($file) ?>' /></td> */ ?>
-				<td><a href="<?php echo $folder_url ?>"><?php echo rtrim($filename, '/') . DIRECTORY_SEPARATOR ?></a></td>
+				<td><a href="<?php echo $folder_url ?>"><?php echo esc_html( rtrim($filename, '/') . DIRECTORY_SEPARATOR ); ?></a></td>
 			</tr>
 		<?php
 			endforeach;
@@ -565,7 +565,7 @@ class add_from_server {
 					continue;
 				}
 			}
-
+			
 			foreach ( array( 'meets_guidelines' => $files, 'unreadable' => $unreadable_files, 'doesnt_meets_guidelines' => $rejected_files) as $key => $_files ) :
 			$file_meets_guidelines = $unfiltered_upload || ('meets_guidelines' == $key);
 			$unreadable = 'unreadable' == $key;
@@ -577,7 +577,7 @@ class add_from_server {
 				if ( $unreadable )
 					$classes[] = 'unreadable';
 
-				if ( preg_match('/\.(.+)$/i', $file, $ext_match) )
+				if ( preg_match('/\.(.+)$/i', $file, $ext_match) ) 
 					$classes[] = 'filetype-' . $ext_match[1];
 
 				$filename = preg_replace('!^' . preg_quote($cwd) . '!', '', $file);
@@ -591,7 +591,7 @@ class add_from_server {
 		?>
 			<tr class="<?php echo esc_attr(implode(' ', $classes)); ?>" title="<?php if ( ! $file_meets_guidelines ) { _e('Sorry, this file type is not permitted for security reasons. Please see the FAQ.', 'add-from-server'); } elseif ($unreadable) { _e('Sorry, but this file is unreadable by your Webserver. Perhaps check your File Permissions?', 'add-from-server'); } ?>">
 				<th class='check-column'><input type='checkbox' id='file-<?php echo $sanname; ?>' name='files[]' value='<?php echo esc_attr($filename) ?>' <?php disabled(!$file_meets_guidelines || $unreadable); ?> /></th>
-				<td><label for='file-<?php echo $sanname; ?>'><?php echo $filename ?></label></td>
+				<td><label for='file-<?php echo $sanname; ?>'><?php echo esc_html($filename) ?></label></td>
 			</tr>
 			<?php endforeach; endforeach;?>
 		</tbody>
@@ -605,7 +605,7 @@ class add_from_server {
 
 		<fieldset>
 			<legend><?php _e('Import Options', 'add-from-server'); ?></legend>
-
+	
 		<?php if ( $post_id != 0 ) : ?>
 			<input type="checkbox" name="gallery" id="gallery-import" <?php checked( $import_to_gallery ); ?> /> <label for="gallery-import"><?php _e('Attach imported files to this post', 'add-from-server')?></label>
 			<br class="clear" />
@@ -625,27 +625,27 @@ class add_from_server {
 	<?php
 	}
 
-	//HELPERS
+	//HELPERS	
 	function find_files( $folder, $args = array() ) {
 
 		if ( strlen($folder) > 1 )
 			$folder = untrailingslashit($folder);
-
+	
 		$defaults = array( 'pattern' => '', 'levels' => 100, 'relative' => '' );
 		$r = wp_parse_args($args, $defaults);
-
+	
 		extract($r, EXTR_SKIP);
-
+		
 		//Now for recursive calls, clear relative, we'll handle it, and decrease the levels.
 		unset($r['relative']);
 		--$r['levels'];
-
+	
 		if ( ! $levels )
 			return array();
-
+		
 		if ( ! is_readable($folder) )
 			return array();
-
+	
 		$files = array();
 		if ( $dir = @opendir( $folder ) ) {
 			while ( ( $file = readdir($dir) ) !== false ) {
@@ -664,13 +664,13 @@ class add_from_server {
 			}
 		}
 		@closedir( $dir );
-
+	
 		if ( ! empty($relative) ) {
 			$relative = trailingslashit($relative);
 			foreach ( $files as $key => $file )
 				$files[$key] = preg_replace('!^' . preg_quote($relative) . '!', '', $file);
 		}
-
+	
 		return $files;
 	}
 }//end class
