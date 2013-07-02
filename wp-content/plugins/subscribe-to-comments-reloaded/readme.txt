@@ -1,10 +1,10 @@
 === Subscribe To Comments Reloaded ===
-Contributors: coolmann
+Contributors: coolmann, reedyseth
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Z732JS7KQ6RRL&lc=US&item_name=Subscribe%20To%20Comments%20Reloaded&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Tags: subscribe, comments, notification, subscription, manage, double check-in, follow, commenting
 Requires at least: 2.9.2
-Tested up to: 3.2
-Stable tag: 2.0.2
+Tested up to: 3.5
+Stable tag: 2.0.3
 
 Subscribe to Comments Reloaded allows commenters to sign up for e-mail notifications of subsequent replies.
 
@@ -63,6 +63,9 @@ Yes! Just disable the corresponding option under Settings > Comment Form and the
 
 == Changelog ==
 
+= 2.0.3 =
+* I would like to thank Andreas for contributing to the project and fixing some issues with the plugin
+
 = 2.0.2 =
 * Added: option to automatically subscribe authors to their posts (improves Wordpress' default alert system, thank you [Julius](http://wordpress.org/support/topic/plugin-subscribe-to-comments-reloaded-does-the-post-author-automatically-get-subscribed-to-comments))
 * Added: number of subscriptions per post in the Posts page
@@ -119,12 +122,3 @@ localization is ready. Currently, we support the following languages:
 * Serbian - [Anna Swedziol](http://www.sneg.iz.rs/)
 * Spanish - [TodoWordPress team](http://www.todowp.org/), [Juan Luis Perez](http://www.juanluperez.com/)
 * Turkish - [MaD, Kali](http://www.dusunsel.com/)
-
-== List of donors ==
-
-Please send a donation of at least $5 in order to be included in this list. Thank you.
-
-[R. Eberle](http://www.gopusa.com), [T. Cerulli](http://www.tovarcerulli.com/), F. Fratellini, [T. Jordan](http://www.teresajordan.com), [T. de Haan](http://www.tomdehaan.nl),
-[Life as a Human, Inc](http://lifeasahuman.com/), H. Lisle, [Olivier](http://www.stocker-partager.fr), [Passione Maglie](http://www.passionemaglie.it/),
-L. Passuello, [Pausaxn](http://pausaxn.it), J. Pelletier, [R. Schilt](http://www.trupela.com), M. Temporale, [Vendiva](http://www.vendiva.com),
-[S. Watson](http://www.swearingdad.com/), Welcome Changes
