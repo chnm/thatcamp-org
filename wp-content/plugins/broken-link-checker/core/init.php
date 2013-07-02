@@ -81,6 +81,7 @@ $blc_config_manager = new blcConfigurationManager(
 		
 		'send_email_notifications' => true, //Whether to send the admin email notifications about broken links
 		'send_authors_email_notifications' => false, //Whether to send post authors notifications about broken links in their posts.
+		'notification_email_address' => '', //If set, send email notifications to this address instead of the admin.
 		'notification_schedule' => 'daily', //How often (at most) notifications will be sent. Possible values : 'daily', 'weekly'
 		'last_notification_sent' => 0,		//When the last email notification was sent (Unix timestamp)
 		
@@ -92,6 +93,7 @@ $blc_config_manager = new blcConfigurationManager(
         'enabled_post_statuses' => array('publish'), //Only check posts that match one of these statuses
         
         'autoexpand_widget' => true, 	//Autoexpand the Dashboard widget if broken links are detected
+		'dashboard_widget_capability' => 'edit_others_posts', //Only display the widget to users who have this capability
 		'show_link_count_bubble' => true, //Display a notification bubble in the menu when broken links are found
 		
 		'table_layout' => 'flexible',   //The layout of the link table. Possible values : 'classic', 'flexible'
@@ -110,6 +112,9 @@ $blc_config_manager = new blcConfigurationManager(
 												//recovered after this many days.
 												
 		'installation_complete' => false,
+		'installation_flag_cleared_on' => 0,
+		'installation_flag_set_on'   => 0,
+
 		'user_has_donated' => false,   //Whether the user has donated to the plugin.
 		'donation_flag_fixed' => false,
    )
@@ -308,19 +313,56 @@ if ( $blc_config_manager->options['installation_complete'] ){
 } else {
 	//Display installation errors (if any) on the Dashboard.
 	function blc_print_installation_errors(){
-		global $blc_config_manager;
+		global $blc_config_manager, $wpdb; /** @var wpdb $wpdb */
         if ( $blc_config_manager->options['installation_complete'] ) {
             return;
         }
-		$logger = new blcCachedOptionLogger('blc_installation_log');
-		$messages = array_merge(
-			array('<strong>' . __('Broken Link Checker installation failed. Try deactivating and then reactivating the plugin.', 'broken-link-checker') . '</strong>', '', '<em>Installation log follows :</em>'),
-			$logger->get_messages()
+
+		$messages = array(
+			'<strong>' . __('Broken Link Checker installation failed. Try deactivating and then reactivating the plugin.', 'broken-link-checker') . '</strong>',
 		);
+
+		if ( ! $blc_config_manager->db_option_loaded ) {
+			$messages[] = sprintf(
+				'<strong>Failed to load plugin settings from the "%s" option.</strong>',
+				$blc_config_manager->option_name
+			);
+			$messages[] = '';
+
+			$serialized_config = $wpdb->get_var(
+				sprintf(
+					'SELECT option_value FROM `%s` WHERE option_name = "%s"',
+					$wpdb->options,
+					$blc_config_manager->option_name
+				)
+			);
+
+			if ( $serialized_config === null ) {
+				$messages[] = "Option doesn't exist in the {$wpdb->options} table.";
+			} else {
+				$messages[] = "Option exists in the {$wpdb->options} table and has the following value:";
+				$messages[] = '';
+				$messages[] = '<textarea cols="120" rows="20">' . htmlentities($serialized_config) . '</textarea>';
+			}
+
+		} else {
+			$logger = new blcCachedOptionLogger('blc_installation_log');
+			$messages = array_merge(
+				$messages,
+				array(
+					'installation_complete = ' . (isset($blc_config_manager->options['installation_complete']) ? intval($blc_config_manager->options['installation_complete']) : 'no value'),
+					'installation_flag_cleared_on = ' . $blc_config_manager->options['installation_flag_cleared_on'],
+					'installation_flag_set_on = ' . $blc_config_manager->options['installation_flag_set_on'],
+					'',
+					'<em>Installation log follows :</em>'
+				),
+				$logger->get_messages()
+			);
+		}
+
 		echo "<div class='error'><p>", implode("<br>\n", $messages), "</p></div>";
 	}
 	add_action('admin_notices', 'blc_print_installation_errors');
 }
 
 }
-?>

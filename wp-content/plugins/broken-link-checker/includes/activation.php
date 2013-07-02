@@ -17,6 +17,7 @@ $blclog->info( sprintf('Plugin activated at %s.', date_i18n('Y-m-d H:i:s')) );
 
 //Reset the "installation_complete" flag
 $blc_config_manager->options['installation_complete'] = false;
+$blc_config_manager->options['installation_flag_cleared_on'] = date('c') . ' (' . microtime(true) . ')';
 //Note the time of the first installation (not very accurate, but still useful)
 if ( empty($blc_config_manager->options['first_installation_timestamp']) ){
 	$blc_config_manager->options['first_installation_timestamp'] = time();
@@ -73,6 +74,7 @@ blcUtility::optimize_database();
 
 $blclog->info('Completing installation...');
 $blc_config_manager->options['installation_complete'] = true;
+$blc_config_manager->options['installation_flag_set_on'] = date('c') . ' (' . microtime(true) . ')';
 if ( $blc_config_manager->save_options() ){
     $blclog->info('Configuration saved.');
 } else {

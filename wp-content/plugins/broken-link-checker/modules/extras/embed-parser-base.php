@@ -38,7 +38,7 @@ class blcEmbedParserBase extends blcParser {
 		//Find likely-looking <embed> elements
 		$embeds = $this->extract_embeds($content);
 		foreach($embeds as $embed){
-			//Do we know how to handle this embed? (first-pass verification) 
+			//Do we know how to handle this embed? (first-pass verification)
 			if ( strpos($embed['attributes']['src'], $this->url_search_string) === false ){
 				continue;
 			}
@@ -92,7 +92,7 @@ class blcEmbedParserBase extends blcParser {
 		$objects = blcUtility::extract_tags($html, 'object', false, true);
 		foreach($objects as $candidate){
 			//Find the <embed> tag
-			$embed = blcUtility::extract_tags($candidate['full_tag'], 'embed', false);
+			$embed = blcUtility::extract_tags($candidate['full_tag'], 'embed', true);
 			if ( empty($embed)) continue;
 			$embed = reset($embed); //Take the first (and only) found <embed> element
 			
@@ -169,15 +169,16 @@ class blcEmbedParserBase extends blcParser {
 
 	/**
 	 * Determine the original URL of an embedded object by analysing its SRC attribute.
-	 * 
-	 * For example, if the object in question is an embedded YouTube video, this 
-	 * method should return the URL of the original video; e.g. 'http://www.youtube.com/watch?v=example1234' 
-	 *  
+	 *
+	 * For example, if the object in question is an embedded YouTube video, this
+	 * method should return the URL of the original video; e.g. 'http://www.youtube.com/watch?v=example1234'
+	 *
 	 * Should be overridden in a sub-class.
-	 * 
-	 * @return string The URL of the embedded object, or an empty string if the URL can't be determined. 
+	 *
+	 * @param string $src
+	 * @return string The URL of the embedded object, or an empty string if the URL can't be determined.
 	 */
-	function link_url_from_src(){
+	function link_url_from_src($src){
 		return '';
 	}
 	

@@ -3,7 +3,7 @@
 /**
  * A base class for parsers.
  *
- * In the context of this plugin, a "parser" is a class that knows how to extract or modfify 
+ * In the context of this plugin, a "parser" is a class that knows how to extract or modify
  * a specific type of links from a given piece of text. For example, there could be a "HTML Link"
  * parser that knows how to find and modify standard HTML links such as this one : 
  * <a href="http://example.com/">Example</a>
@@ -162,6 +162,12 @@ class blcParser extends blcModule {
 		}
 	
 	    $parts=(parse_url($base_url));
+
+        //Protocol-relative URLs start with "//". We just need to prepend the right protocol.
+        if ( substr($url, 0, 2) === '//' ) {
+            $scheme = isset($parts['scheme']) ? $parts['scheme'] : 'http';
+            return $scheme . ':'. $url;
+        }
 	    
 	    if(substr($url,0,1)=='/') {
 	    	//Relative URL starts with a slash => ignore the base path and jump straight to the root. 

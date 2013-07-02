@@ -3,8 +3,8 @@ Contributors: whiteshadow
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6P9S6CE3SRSW
 Tags: links, broken, maintenance, blogroll, custom fields, admin, comments, posts
 Requires at least: 3.2
-Tested up to: 3.5
-Stable tag: 1.7.1
+Tested up to: 3.5.1
+Stable tag: 1.8
 
 This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found. 
 
@@ -62,6 +62,7 @@ You can also click on the contents of the "Status" or "Link Text" columns to get
 * Persian - [Omid Sheerkavand](http://qanal.ir/)
 * Polish - [http://positionmaker.pl](http://positionmaker.pl/)
 * Portuguese - [mowster](http://wordpress.mowster.net/)
+* Brazilian Portuguese - [Paulino Michelazzo](http://www.michelazzo.com.br/)
 * Romanian - [Ovidiu](http://www.jibo.ro)
 * Russian - [Anna Ozeritskaya](http://hweia.ru/)
 * Spanish - [Neoshinji](http://blog.tuayudainformatica.com/traducciones-de-plugins-wordpress/)
@@ -92,6 +93,19 @@ To upgrade your installation
 1. Reactivate the plugin. Your settings will be retained from the previous version.
 
 == Changelog ==
+
+= 1.8 =
+* Added an option to only show the dashboard widget for users with the Administrator role, or to disable it completely.
+* Added a way to change the notification email address.
+* Added support for Smart YouTube "httpv://" links.
+* Added support for protocol-relative URLs (for example, "//example.com/").
+* Added support for checking YouTube playlists.
+* Added a Brazilian Portuguese (pt-BR) translation.
+* Updated Chinese (Traditional) translation.
+* Switched over to storing plugin settings as JSON instead of serialized PHP arrays.
+* Improved error reporting in situations where the plugin can not load settings from the database.
+* Fixed: Display a more specific error message than just "update failed" when the plugin fails to modify a post. This only applies to WP 3.5+.
+* Fixed: Display the right URL for embedded YouTube playlists. Previously the plugin would show the same (incorrect) URL for all playlists.
 
 = 1.7.1 =
 * Added an Arabic translation.

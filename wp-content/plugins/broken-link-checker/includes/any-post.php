@@ -519,15 +519,17 @@ class blcAnyPostContainer extends blcContainer {
 				__('Nothing to update', 'broken-link-checker')
 			);
 		}
-		
-		$id = wp_update_post($this->wrapped_object);
-		if ( $id != 0 ){
-			return true;
-		} else {
+
+		$post_id = wp_update_post($this->wrapped_object, true);
+		if ( is_wp_error($post_id) ) {
+			return $post_id;
+		} else if ( $post_id == 0 ){
 			return new WP_Error(
 				'update_failed',
 				sprintf(__('Updating post %d failed', 'broken-link-checker'), $this->container_id)
 			);
+		} else {
+			return true;
 		}
 	}
 	

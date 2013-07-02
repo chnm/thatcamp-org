@@ -48,7 +48,7 @@ class blcYouTubeIframe extends blcEmbedParserBase {
 		//remove all <code></code> blocks first
 		$html = preg_replace('/<code[^>]*>.+?<\/code>/si', ' ', $html);
 		
-		//Find likely-looking <object> elements
+		//Find likely-looking <iframe> elements
 		$iframes = blcUtility::extract_tags($html, 'iframe', false, true);
 		foreach($iframes as $embed){
 			if ( empty($embed['attributes']['src']) ){
@@ -64,12 +64,39 @@ class blcYouTubeIframe extends blcEmbedParserBase {
 	}
 	
 	function link_url_from_src($src){
-		//Extract video ID from the SRC. The ID is always 11 characters.
-		$video_id = substr(	end(explode('/', $src)), 0, 11 );
-		
-		//Reconstruct the video permalink based on the ID
-		$url = 'http://www.youtube.com/watch?v='.$video_id;
-		
+		$parts = @parse_url($src);
+		if ( empty($parts) || !isset($parts['path']) ) {
+			return null;
+		}
+
+		//Is this a playlist?
+		if ( strpos($parts['path'], 'videoseries') !== false ) {
+
+			//Extract the playlist ID from the query string.
+			if ( !isset($parts['query']) || empty($parts['query']) ) {
+				return null;
+			}
+			parse_str($parts['query'], $query);
+			if ( !isset($query['list']) || empty($query['list']) ) {
+				return null;
+			}
+
+			$playlist_id = $query['list'];
+			if ( substr($playlist_id, 0, 2) === 'PL' ) {
+				$playlist_id = substr($playlist_id, 2);
+			}
+
+			//Reconstruct the playlist URL.
+			$url = 'http://www.youtube.com/playlist?list=' . $playlist_id;
+
+		} else {
+			//Extract video ID from the SRC. The ID is always 11 characters.
+			$video_id = substr(	end(explode('/', $parts['path'])), 0, 11 );
+
+			//Reconstruct the video permalink based on the ID
+			$url = 'http://www.youtube.com/watch?v='.$video_id;
+		}
+
 		return $url;
 	}
 }
