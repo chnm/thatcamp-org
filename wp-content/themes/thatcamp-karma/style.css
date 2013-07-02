@@ -103,7 +103,7 @@ Useful tags - you can override any of these you want
   width: 1px;
 }
 #about p {
-  font-size: large; 
+  font-size: large;
   text-shadow: -1px -1px 0 #111111;
 }
 .visuallyhidden.focusable:active,
@@ -347,7 +347,7 @@ body {
   border-top: 2px solid #111;
   border-bottom: 2px solid #111;
   color: #ffffff;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 #site-logo a {
   background: url('assets/images/thatcamp-logoiphone.png') no-repeat;
@@ -379,13 +379,11 @@ width: 20%;
 display:inline;
 font-size:10pt;
 }
-
 #sitebar-wrapper #search-bar {
   float: none;
   display:inline;
   width: 40%;
 }
-
 #branding {
   position: relative;
 }
@@ -468,7 +466,7 @@ font-size:10pt;
 }
 #sidebar .campbutton {
   margin-bottom: 40px;
-  margin-left: 50px;
+  margin-left:10px;
 }
 /*--------------------------------------------------------------
 3.0 - Non-structural
@@ -1067,7 +1065,7 @@ a:hover.header-button {
   border-radius: 5px;
   padding: 5px;
   display: inline-block;
-  margin: 0 20px -40px 0; 
+  margin: 0 20px -40px 0;
 }
 .item-visit .button {
   margin: 0;
@@ -2666,7 +2664,7 @@ div#item-meta #post-mention a {
 }
 
 ul.button-nav li a,
-div.generic-button a, 
+div.generic-button a,
 .comment-reply-link {
   background: #668800 url('assets/images/thatcamp-greenbutton.jpg');
   border: 1px solid #668800;
@@ -3596,6 +3594,37 @@ ie9 #user-section {
 /*--------------------------------------------------------------
 8.0 - Media queries
 --------------------------------------------------------------*/
+@media only screen and (min-width: 320px) {
+  /* Styles */
+  nav#top-nav {
+    display: none;
+  }
+  nav#show-menu {
+    float:left;
+  }
+  #responsive-menu {
+    float:left;
+  }
+  #user-section, #search-bar {
+  float:left;
+  width: 100%;
+  }
+  #account {
+  display:none;
+  }
+   .widget {
+    display: block;
+  }
+  #sidebar {
+    width: 85%;
+    display:block;
+    float: left;
+    padding: 20px;
+    background: white;
+    border: 2px solid rgb(238, 238, 238);
+  }
+}
+
 @media only screen and (min-width: 480px) {
   /* Styles */
 }
@@ -3603,11 +3632,7 @@ ie9 #user-section {
   /* Styles */
 }
 @media only screen and (min-width: 768px) {
-
-  #avatarwall {
-    display: none;
-  }
-   nav#top-nav {
+  nav#top-nav {
     display: block;
   }
   nav#show-menu {
@@ -3616,30 +3641,40 @@ ie9 #user-section {
   #responsive-menu {
     display: none;
   }
- #account {
+  #avatarwall {
+    display: block;
+  }
+  .wrapper {
+    margin: 0 auto;
+    max-width: 768px;
+    padding: 0 40px;
+    overflow: visible;
+  }
+  #search-bar {
+    float: right;
+    width: 50%;
+  }
+  #user-section {
+    float: left;
+    width: 50%;
+  }
+   #account {
     display:none;
- }
+  }
+   .widget {
+    display: block;
+  }
+  #sidebar {
+    width: 60%;
+    display:block;
+    float: left;
+    padding: 20px;
+    background: white;
+    border: 2px solid rgb(238, 238, 238);
+  }
 
 }
 @media only screen and (min-width: 992px) {
-  #avatarwall {
-    display: block;
-  }
-   nav#top-nav {
-    display: block;
-  }
-  nav#show-menu {
-    display: none;
-  }
-  #responsive-menu {
-    display: none;
-  }
-   #account {
-    display:inline;
- }
-  
-}
-@media only screen and (min-width: 1024px) {
   nav#top-nav {
     display: block;
   }
@@ -3653,11 +3688,13 @@ ie9 #user-section {
     display: block;
   }
   #sidebar {
-    width: 320px;
+    width: 300px;
     float: left;
     padding: 20px 0;
     margin: 0;
     clear: none;
+    background: none;
+    border: 0;
   }
   #sidebar-documents {
     width: 35%;
@@ -3685,20 +3722,21 @@ ie9 #user-section {
   }
   .wrapper {
     margin: 0 auto;
-    max-width: 1024px;
+    max-width: 992px;
     padding: 0 40px;
     overflow: visible;
   }
   #search-bar {
     float: right;
-    width: 60%;
+    width: 40%;
   }
   #user-section {
     float: left;
-    width: 30%;
+    width: 40%;
   }
-    #account {
+   #account {
     display:inline;
+    width:20%;
   }
   #twitterwidget-wrapper {
     display: block;
@@ -3717,9 +3755,42 @@ ie9 #user-section {
     overflow: hidden;
   }
 }
+@media only screen and (min-width: 1024px) {
+
+}
 @media only screen and (min-width: 1140px) {
-  nav#top-nav {
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1140px;
+    padding: 10px;
+    overflow: visible;
+  }
+   #user-section {
+    float: left;
+    width: 40%;
+  }
+  #account {
+    display:inline;
+    width:20%;
+  }
+   #search-bar {
+    float: right;
+    width: 40%;
+  }
+  #site-logo a {
+    background: url('assets/images/thatcamp-logo.png') no-repeat;
+    text-indent: 100%;
+    height: 80px;
+    width: 320px;
+    float: left;
+    margin: 10px 0 0 0;
     display: block;
+    overflow: hidden;
+  }
+   nav#top-nav {
+    display: block;
+    margin-top: -0.9rem;
+    margin-right: 3rem;
   }
   nav#show-menu {
     display: none;
@@ -3727,17 +3798,13 @@ ie9 #user-section {
   #responsive-menu {
     display: none;
   }
-  #account {
-    display:inline;
-  }
-  .widget {
+  #avatarwall {
     display: block;
   }
   #sidebar {
-    width: 320px;
+    width: 300px;
     float: left;
-    padding: 20px 0;
-    margin: 0;
+    padding: 20px 0px;
     clear: none;
   }
   #sidebar-documents {
@@ -3751,6 +3818,12 @@ ie9 #user-section {
   #sidebar-innerright {
     float: right;
     width: 40%;
+  }
+   .widget {
+    display: block;
+  }
+  #twitterwidget-wrapper {
+    display: block;
   }
   #primary {
     float: right;
@@ -3761,40 +3834,16 @@ ie9 #user-section {
     float: right;
     width: 60%;
   }
-  #avatarwall {
-    display: block;
-  }
-  .wrapper {
-    margin: 0 auto;
-    max-width: 1140px;
-    padding: 0;
-    overflow: visible;
-  }
-  #search-bar {
-    float: right;
-    width: 60%;
-  }
-  #user-section {
-    float: left;
-    width: 30%;
-  }
-  #twitterwidget-wrapper {
-    display: block;
-  }
   .offset {
     float: right;
   }
-  #site-logo a {
-    background: url('assets/images/thatcamp-logo.png') no-repeat;
-    text-indent: 100%;
-    height: 80px;
-    width: 320px;
-    float: left;
-    margin: 10px 0 0 0;
-    display: block;
-    overflow: hidden;
-  }
+
 }
+
+@media only screen and (min-width: 1344px) {
+  /* Styles */
+}
+
 @media only screen and (min-width: 1382px) {
   nav#top-nav {
     display: block;
@@ -3872,6 +3921,9 @@ ie9 #user-section {
     display: block;
     overflow: hidden;
   }
+@media only screen and (min-width: 1440px) {
+  /* Styles */
+}
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   /* Styles */
@@ -3896,7 +3948,7 @@ ie9 #user-section {
 }
 
 input#site-url {
-display:inline; 
+display:inline;
 width: 200px
 }
 

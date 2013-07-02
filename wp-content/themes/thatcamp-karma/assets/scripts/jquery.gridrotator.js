@@ -83,16 +83,32 @@
 
 	$.GridRotator.defaults	= {
 		// number of rows
-		rows			: 4,
+		rows			: 2,
 		// number of columns 
-		columns			: 10,
+		columns			: 12,
+		w1440			: {
+			rows	: 1,
+			columns	: 19
+		},
+		w1382			: {
+			rows	: 1,
+			columns	: 19
+		},
+		w1344			: {
+			rows	: 1,
+			columns	: 19
+		},
+		w1140			: {
+			rows	: 1,
+			columns	: 19
+		},
 		w1024			: {
-			rows	: 3,
-			columns	: 8
+			rows	: 2,
+			columns	: 12
 		},
 		w768			: {
-			rows	: 3,
-			columns	: 7
+			rows	: 2,
+			columns	: 12
 		},
 		w480			: {
 			rows	: 3,
@@ -300,7 +316,12 @@
 				case ( c_w < 320 )	: this.rows = this.options.w320.rows; this.columns = this.options.w320.columns; break;
 				case ( c_w < 480 )	: this.rows = this.options.w480.rows; this.columns = this.options.w480.columns; break;
 				case ( c_w < 768 )	: this.rows = this.options.w768.rows; this.columns = this.options.w768.columns; break;
-				case ( c_w < 1024 )	: this.rows = this.options.w1024.rows; this.columns = this.options.w1024.columns; break;
+				case ( c_w < 1024 ) : this.rows = this.options.w1024.rows; this.columns = this.options.w1024.columns; break;
+				case ( c_w < 1140 ) : this.rows = this.options.w1140.rows; this.columns = this.options.w1140.columns; break;
+				case ( c_w < 1344 ) : this.rows = this.options.w1344.rows; this.columns = this.options.w1344.columns; break;
+				case ( c_w < 1382 ) : this.rows = this.options.w1382.rows; this.columns = this.options.w1382.columns; break;				
+				case ( c_w < 1440 ) : this.rows = this.options.w1440.rows; this.columns = this.options.w1440.columns; break;
+
 				default				: this.rows = this.options.rows; this.columns = this.options.columns; break;
 
 			}
