@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Term Management Tools
-Version: 1.1.1
+Version: 1.1.2
 Description: Allows you to merge terms and set term parents in bulk
 Author: scribu
 Author URI: http://scribu.net/
@@ -118,14 +118,20 @@ class Term_Management_Tools {
 
 		$to_term = $term['term_id'];
 
+		$to_term_obj = get_term( $to_term, $taxonomy );
+
 		foreach ( $term_ids as $term_id ) {
 			if ( $term_id == $to_term )
 				continue;
 
-			$ret = wp_delete_term( $term_id, $taxonomy, array( 'default' => $to_term, 'force_default' => true ) );
+			$old_term = get_term( $term_id, $taxonomy );
 
-			if ( is_wp_error( $ret ) )
-				return false;
+			$ret = wp_delete_term( $term_id, $taxonomy, array( 'default' => $to_term, 'force_default' => true ) );
+			if ( is_wp_error( $ret ) ) {
+				continue;
+			}
+
+			do_action( 'term_management_tools_term_merged', $to_term_obj, $old_term );
 		}
 
 		return true;
