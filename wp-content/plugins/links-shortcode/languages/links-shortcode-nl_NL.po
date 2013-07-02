@@ -2,194 +2,253 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Links Shortcode\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-22 00:47+0800\n"
-"PO-Revision-Date: 2012-07-22 00:48+0800\n"
-"Last-Translator: Maarten Swemmer <translations@bigcircle.eu>\n"
+"POT-Creation-Date: 2013-06-14 00:33+0800\n"
+"PO-Revision-Date: 2013-06-14 00:35+0800\n"
+"Last-Translator: Maarten Swemmer\n"
 "Language-Team: \n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Language: Dutch\n"
-"X-Poedit-Country: NETHERLANDS\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: E:\\Websites\\bigcircle.nl\\blog\\wp-content\\plugins\\links-shortcode\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SearchPath-0: E:\\Websites\\bigcircle.nl\\blog\\wp-content\\plugins"
+"\\links-shortcode\n"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:235
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:236
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:168
+msgid "Previous page"
+msgstr "Vorige pagina"
+
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:173
+msgid "Next page"
+msgstr "Volgende pagina"
+
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:308
 msgid "Links Shortcode"
 msgstr "Links Shortcode"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:243
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:315
 msgid "You do not have sufficient permissions to access this page"
 msgstr "Je hebt niet genoeg rechten om deze pagina te gebruiken"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:256
-msgid "Like this plugin? Saves you work? Or using it in a professional context? A small contribution is highly appreciated."
-msgstr "Is Links Shortcode een goede plugin? Of gebruik je de plugin in een professionele context? Een kleine donatie wordt erg op prijs gesteld!"
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:329
+msgid ""
+"Like this plugin? Saves you work? Or using it in a professional context? A "
+"small contribution is highly appreciated."
+msgstr ""
+"Is Links Shortcode een goede plugin? Of gebruik je de plugin in een "
+"professionele context? Een kleine donatie wordt erg op prijs gesteld!"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:266
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:339
 msgid "Links Shortcode plugin settings"
 msgstr "Links Shortcode plugin settings"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:274
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:347
 msgid "Default settings for the Links shortcode"
 msgstr "Standaard settings voor de Links shortcode"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:275
-msgid "Here you can specify the default options used when you used the [links] shortcode. You can overrule this on the shortcode itself, if you want."
-msgstr "Hier jun je de standaard opties specificeren voor de [links] shortcode. Je kunt deze opties over-rullen in de shortcode zelf, als je wilt."
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:348
+msgid ""
+"Here you can specify the default options used when you used the [links] "
+"shortcode. You can overrule this on the shortcode itself, if you want."
+msgstr ""
+"Hier jun je de standaard opties specificeren voor de [links] shortcode. Je "
+"kunt deze opties over-rullen in de shortcode zelf, als je wilt."
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:276
-msgid "For help on using the shortcode (and for voting), please visit the plugin page on <a href=\"https://wordpress.org/extend/plugins/links-shortcode/\" target=\"_blank\">wordpress.org</a> or on <a href=\"http://blog.bigcircle.nl/about/wordpress-plugins\" target=\"_blank\">my blog</a>."
-msgstr "Voor hulp bij het gebruik van de shortcode (en om te stemmen), bezoek de plugin pagina op <a href=\"https://wordpress.org/extend/plugins/links-shortcode/\" target=\"_blank\">wordpress.org</a> of op <a href=\"http://blog.bigcircle.nl/about/wordpress-plugins\" target=\"_blank\">mijn blog</a>."
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:349
+msgid ""
+"For help on using the shortcode (and for voting), please visit the plugin "
+"page on <a href=\"https://wordpress.org/extend/plugins/links-shortcode/\" "
+"target=\"_blank\">wordpress.org</a> or on <a href=\"http://blog.bigcircle.nl/"
+"about/wordpress-plugins\" target=\"_blank\">my blog</a>."
+msgstr ""
+"Voor hulp bij het gebruik van de shortcode (en om te stemmen), bezoek de "
+"plugin pagina op <a href=\"https://wordpress.org/extend/plugins/links-"
+"shortcode/\" target=\"_blank\">wordpress.org</a> of op <a href=\"http://blog."
+"bigcircle.nl/about/wordpress-plugins\" target=\"_blank\">mijn blog</a>."
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:279
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:352
 msgid "Show a facebook Like or Recommend button?"
 msgstr "Toon een Facebook Like of Recommend knop?"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:280
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:353
 msgid "Yes, a Like button"
 msgstr "Ja, een Like knop"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:281
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:354
 msgid "Yes, a Recommend button"
 msgstr "Ja, een Recommend knop"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:282
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:355
 msgid "No"
 msgstr "Nee"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:287
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:360
 msgid "What facebook color scheme?"
 msgstr "Welk Facebook kleurenschema?"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:288
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:361
 msgid "Light"
 msgstr "Light"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:289
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:362
 msgid "Dark"
 msgstr "Dark"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:294
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:367
 msgid "What to order your links by?"
 msgstr "Hoe moeten de links worden gesorteerd?"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:295
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:368
 msgid "Link name"
 msgstr "Link naam"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:296
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:369
 msgid "Link description"
 msgstr "Link beschrijving"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:297
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:370
 msgid "Link url"
 msgstr "Link url"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:298
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:371
 msgid "Link owner, the user who added the link in the Links Manager"
-msgstr "Link eigenaar, de gebruiker die de link heeft toegevoegd in de Links Manager"
+msgstr ""
+"Link eigenaar, de gebruiker die de link heeft toegevoegd in de Links Manager"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:299
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:372
 msgid "Link rating"
 msgstr "Link score"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:300
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:373
 msgid "Random"
 msgstr "Willekeurig"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:302
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:375
 msgid "As indicated using the My Link Order plugin"
 msgstr "Zoals aangegeven via de My Link Order plugin"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:307
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:380
 msgid "How to order?"
 msgstr "Hoe moeten de links worden gesorteerd?"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:308
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:381
 msgid "Ascending"
 msgstr "Oplopend"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:309
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:382
 msgid "Descending"
 msgstr "Aflopend"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:314
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:387
 msgid "How many links to show? (-1 for all)"
 msgstr "Hoeveel links moeten worden getoond? (-1 voor alle)"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:320
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:393
 msgid "How to display the links?"
 msgstr "Hoe moeten de links worden weergegeven?"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:322
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:395
 msgid ""
-"The following codes can be used in the template: [link_url], [link_name], [link_image], [link_target], [link_description], [link_visible], [link_owner], [link_rating] (display as a number), [link_rating_stars] (display 0-5 stars), [link_updated] (only if not zero, otherwise empty), [link_rel], [link_notes], [link_rss], [fb_button]. You can provide alternative html to display in case a description, image or other property is not available for a link. See examples below.<br />\n"
-"\t\tThe syntax is <b>[optional a||b]</b>, where b can be left empty, resulting in <b>[optional a||]</b>, (as in the examples below)."
+"The following codes can be used in the template: [link_url], [link_name], "
+"[link_image], [link_target], [link_description], [link_visible], "
+"[link_owner], [link_rating] (display as a number), [link_rating_stars] "
+"(display 0-5 stars), [link_updated] (only if not zero, otherwise empty), "
+"[link_rel], [link_notes], [link_rss], [fb_button]. You can provide "
+"alternative html to display in case a description, image or other property "
+"is not available for a link. See examples below.<br />\n"
+"\t\tThe syntax is <b>[optional a||b]</b>, where b can be left empty, "
+"resulting in <b>[optional a||]</b>, (as in the examples below)."
 msgstr ""
-"De volgende codes kunnen worden gebruikt in een template: [link_url], [link_name], [link_image], [link_target], [link_description], [link_visible], [link_owner], [link_rating] (toon een nummer), [link_rating_stars] (toon 0-5 sterren), [link_updated] (alleen als niet nul, anders leeg), [link_rel], [link_notes], [link_rss], [fb_button]. Je kunt alternatieve html specificeren die getoond wordt als een  beschrijving, afbeelding of andere eigenschap niet bekend is voor een link. Zie de voorbeelden hieronder.<br />\n"
-"\t\tDe syntax is <b>[optional a||b]</b>, waar b leeg kan worden gelaten, resulterend in <b>[optional a||]</b>, (zoals in de voorbeelden hieronder)."
+"De volgende codes kunnen worden gebruikt in een template: [link_url], "
+"[link_name], [link_image], [link_target], [link_description], "
+"[link_visible], [link_owner], [link_rating] (toon een nummer), "
+"[link_rating_stars] (toon 0-5 sterren), [link_updated] (alleen als niet nul, "
+"anders leeg), [link_rel], [link_notes], [link_rss], [fb_button]. Je kunt "
+"alternatieve html specificeren die getoond wordt als een  beschrijving, "
+"afbeelding of andere eigenschap niet bekend is voor een link. Zie de "
+"voorbeelden hieronder.<br />\n"
+"\t\tDe syntax is <b>[optional a||b]</b>, waar b leeg kan worden gelaten, "
+"resulterend in <b>[optional a||]</b>, (zoals in de voorbeelden hieronder)."
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:328
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:401
 msgid "Provide an optional text or html to display before the links:"
 msgstr "Geef optionele tekst of html om boven de lijst met links in te voegen:"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:330
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:403
 msgid "You can use this for example to display links in a table. Example:"
-msgstr "Je kunt bijvoorbeeld het volgende gebruiken om links in een tabel te tonen:"
+msgstr ""
+"Je kunt bijvoorbeeld het volgende gebruiken om links in een tabel te tonen:"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:334
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:407
 msgid "Provide an optional text or html to display after the links:"
 msgstr "Geef optionele tekst of html om onder de lijst met links in te voegen:"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:336
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:409
 msgid "Example:"
 msgstr "Voorbeeld:"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:341
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:414
 msgid "Save Changes"
 msgstr "Wijzigingen opslaan"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:345
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:418
 msgid "Examples"
 msgstr "Voorbeelden"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:347
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:420
 msgid "A list of links"
 msgstr "Een lijst van links"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:347
-msgid "To show all links in a list with a Facebook like button, use the following main template:"
-msgstr "Gebruik om alle links in een lijst te tonen met een facebook knop de volgende template:"
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:420
+msgid ""
+"To show all links in a list with a Facebook like button and an optional link "
+"rating and using schema.org search engine optimization, use the following "
+"main template:"
+msgstr ""
+"Gebruik om alle links in een lijst te tonen met een facebook knop, link "
+"rating en gebruik makend van schema.org zoekmachine optimalisatie, de "
+"volgende template:"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:349
-msgid "<b>NB</b>: For compatibility reasons, in the example above in case you choose not to include a Facebook button, the plugin will automatically correct the DIV class from <b>'links_sc_fb'</b> to <b>'links_sc'</b> for optimal spacing."
-msgstr "<b>NB</b>: Om compatibiliteitsredenen geldt voor het voorbeeld hierboven dat als je ervoor kiest geen facebook knop toe te voegen, de plugin automatisch de 'DIV class' van <b>'links_sc_fb'</b> naar <b>'links_sc'</b> veranderd voor optimale spatiering."
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:422
+msgid ""
+"<b>NB</b>: For compatibility reasons, in the example above in case you "
+"choose not to include a Facebook button, the plugin will automatically "
+"correct the DIV class from <b>'links_sc_fb'</b> to <b>'links_sc'</b> for "
+"optimal spacing."
+msgstr ""
+"<b>NB</b>: Om compatibiliteitsredenen geldt voor het voorbeeld hierboven dat "
+"als je ervoor kiest geen facebook knop toe te voegen, de plugin automatisch "
+"de 'DIV class' van <b>'links_sc_fb'</b> naar <b>'links_sc'</b> veranderd "
+"voor optimale spatiering."
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:350
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:423
 msgid "Leave the 'before' and 'after' template fields empty."
 msgstr "Laat de \"boven\" en \"onder\" template velden leeg."
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:351
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:424
 msgid "Links in a table"
 msgstr "Links in een tabel"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:351
-msgid "To show all links in a table with images in a separate column at the left if available, use the following main template:"
-msgstr "Gebruik de volgende template om alle links in een tabel te af te beelden met indien aanwezig links daarvan de link afbeelding in een aparte kollom:"
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:424
+msgid ""
+"To show all links in a table with images in a separate column at the left if "
+"available, use the following main template:"
+msgstr ""
+"Gebruik de volgende template om alle links in een tabel te af te beelden met "
+"indien aanwezig links daarvan de link afbeelding in een aparte kollom:"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:363
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:436
 msgid "Enter the following in the 'before' field:"
 msgstr "Vul het volgende in in het \"boven\" veld:"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:365
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:438
 msgid "And the following in the 'after field':"
 msgstr "Vul het volgende in in het \"onder\" veld:"
 
-#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:381
+#: E:\Websites\bigcircle.nl\blog\wp-content\plugins\links-shortcode/links-shortcode.php:454
 msgid "Donate"
 msgstr "Doneren"
 

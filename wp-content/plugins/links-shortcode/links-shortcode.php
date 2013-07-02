@@ -3,12 +3,17 @@
 Plugin Name: Links Shortcode
 Plugin URI: http://blog.bigcircle.nl/about/wordpress-plugins
 Description: Displays all links of a certain category in a post using a shortcode, according to a definable template. Includes optional Facebook Like button.
-Version: 1.4.1
+Version: 1.5
 Author: Maarten Swemmer
 Author URI: http://blog.bigcircle.nl
 */
 
-$linkssc_default_template = "<div class=\"links_sc_fb\">\n[optional [date]: ||]<a href=\"[link_url]\" target=\"_blank\">[link_name]</a>\n[optional <br />[link_description]||]\n[optional <br />[fb_button]||]</div>\n";
+$linkssc_default_template = "<div itemscope itemtype=\"http://schema.org/Rating\" class=\"links_sc_fb\">
+[optional [date]: ||]<a itemprop=\"url\" href=\"[link_url]\" target=\"_blank\" ><span itemprop=\"name\">[link_name]</span></a>
+<meta itemprop=\"worstRating\" content=\"1\"><meta itemprop=\"bestRating\" content=\"5\"><meta itemprop=\"ratingValue\" content=\"[link_rating]\">[link_rating_stars]
+[optional <br /><span itemprop=\"description\">[link_description]</span>||]
+[optional <br />[fb_button]||]
+</div>\n";
 
 require_once(ABSPATH . WPINC . '/formatting.php');
 
@@ -57,6 +62,7 @@ function linkssc_shortcode($atts, $content = null)
 		if ($template=='') { $template = $linkssc_default_template; update_option('linkssc_template', $linkssc_default_template); }
 	$template_before = get_option('linkssc_template_b', '');
 	$template_after = get_option('linkssc_template_a', '');
+	
 	if ($facebook == 'like') { $fblike = '1'; }
 	elseif ($facebook == 'recommend') {$fbrecommend = '1'; } 
 
@@ -73,7 +79,10 @@ function linkssc_shortcode($atts, $content = null)
 			'show_updated'   => 0, 
 			'include'        => null,
 			'exclude'        => null,
-			'search'         => ''
+			'search'         => '',
+			'get_categories' => 0, // TODO if 1, a separate query will be ran below to retrieve category names and the field [category_name] will become available for use in a template
+			'links_per_page' => 0, // if > 0 links will be split in pages and 
+			'links_list_id'  => '' 
 			), $atts)
 	);
 	
@@ -89,9 +98,9 @@ function linkssc_shortcode($atts, $content = null)
             'exclude'        => $exclude,
             'search'         => $search);
 			
+	// for compatibility with 'My link Order' plugin
 	if ($orderby == 'order' && function_exists('mylinkorder_get_bookmarks'))
 	{
-		// for compatibility with 'My link Order' plugin
 		$bms = mylinkorder_get_bookmarks( $args );
 	}
 	else 
@@ -99,10 +108,26 @@ function linkssc_shortcode($atts, $content = null)
 		$bms = get_bookmarks( $args );
     }
 	
+	// if category names need to be retrieved
+	if ($get_categories)
+	{
+		
+	//TODO	
+		
+	//	$query = "Select object_id, wp_terms.name , wp_terms.slug from wp_terms
+    //      inner join wp_term_taxonomy on wp_terms.term_id =
+    //      wp_term_taxonomy.term_id
+    //      inner join wp_term_relationships wpr on wpr.term_taxonomy_id =
+    //      wp_term_taxonomy.term_taxonomy_id
+    //      where taxonomy= 'category'
+    //      order by object_id;";
+		
+	}
+	
+	// compatibility of default template in case FB button should not be shown
 	if ($fblike == '1'|| $fbrecommend == '1')
 	{
-		if ($fblike == '1') { $fbaction = 'like'; }
-		else { $fbaction = 'recommend'; } 
+		if ($fblike == '1') { $fbaction = 'like'; } else { $fbaction = 'recommend'; } 
 	}
 	else
 	{
@@ -110,68 +135,115 @@ function linkssc_shortcode($atts, $content = null)
 		$template = str_replace('"links_sc_fb"', '"links_sc"',$template);
 	}
 	
-	$text = $template_before;
-	foreach ($bms as $bm)
-	{ 
-        $newlinktext = $template.'';
-		$title = linkssc_getdate($bm->link_name);
-		$linkinfo = array();
-		$linkinfo['link_name'] = $title->title;
-		$linkinfo['link_url'] = $bm->link_url;
-		$linkinfo['link_rel'] = $bm->link_rel;
-		$linkinfo['link_image'] = $bm->link_image;
-		$linkinfo['link_target'] = $bm->link_target;
-		if (isset($bm->link_category)) {$linkinfo['link_category'] = $bm->link_category;} // because $bm->link_category is in most cases not set. TODO: find better solution
-		$linkinfo['link_description'] = $bm->link_description;
-		$linkinfo['link_visible'] = $bm->link_visible;
-		$linkinfo['link_owner'] = get_the_author_meta('display_name', $bm->link_owner); // display the display name of a user instead of the user id.
-		$linkinfo['link_rating'] = $bm->link_rating;
-		$linkinfo['link_rating_stars'] = '<div class="links_sc_rating "><img class="links_sc_rating_full" src="'. WP_PLUGIN_URL . '/links-shortcode/fullstars.png" style="width:'.round(78*$linkinfo['link_rating']/10).'px;"/><img class="links_sc_rating_empty" src="'. WP_PLUGIN_URL . '/links-shortcode/emptystars.png" /></div>';
-		if (preg_match('#^[\-0 :]*$#', $bm->link_updated)) { $linkinfo['link_updated'] = ''; $linkinfo['date'] = ''; } 
-		else {
-			$linkinfo['link_updated'] = $bm->link_updated;
-			$a = split(' ', $bm->link_updated); $linkinfo['date'] = $a[0];
-		}
-		if ($title->date != '') { $linkinfo['date'] = $title->date; }
-		list($linkinfo['date_year'],$linkinfo['date_month'],$linkinfo['date_day']) = split('-', $linkinfo['date']);
-		$linkinfo['link_rel'] = $bm->link_rel;
-		$linkinfo['link_notes'] = $bm->link_notes;
-		$linkinfo['link_rss'] = $bm->link_rss;
-		if ($fblike == '1'|| $fbrecommend == '1')
+	// calculate pagination details if applicable
+	$countlinks = count($bms);	
+	if (($links_per_page > 0) && ($countlinks > 0)) // if $links_per_page == 0, the logic below is irrelevant and all links will be shown
+	{
+		if (isset($_GET['links_list_id']) && isset($_GET['links_page']) && ($links_list_id == $_GET['links_list_id']) && is_numeric($_GET['links_page']))
 		{
-			$linkinfo['fb_button'] = '<iframe src="//www.facebook.com/plugins/like.php?href='.urlencode($bm->link_url).'&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action='.$fbaction.'&amp;font&amp;colorscheme='.$fbcolors.'" scrolling="no" frameborder="0" ></iframe>';
-		}
-		else { $linkinfo['fb_button'] = ''; }
-		$reallinkinfo = array_diff($linkinfo, array('')); // remove all elements with empty value;
-		// insert al known values
-		foreach ($reallinkinfo as $k=>$v)
-		{
-			$newlinktext = str_replace('['.$k.']',$v,$newlinktext);
-		}
-		// resolve optional elements
-		$c = preg_match_all ('/\[optional (.*)\|\|(.*)\]/U',$newlinktext,$optionals, PREG_PATTERN_ORDER);
-		for (;$c > 0;$c--)
-		{
-			if ((preg_match('/\[(.*)\]/U',$optionals[1][$c-1],$tag)) && (isset($linkinfo[$tag[1]]))) 
+			$links_page = max(abs(intval($_GET['links_page'])),1); // page number is minimal 1;
+
+			$start = ($links_page - 1) * $links_per_page; // the first link is number 0;
+			$end = min($countlinks - 1, $start + $links_per_page - 1); // '-1' because start is also included and the lowest start is 0
+			if ($end < $start) // then someone tried to enter a page number that does not exists -> go to first page
 			{
-				$newlinktext = str_replace ($optionals[0][$c-1],$optionals[2][$c-1],$newlinktext); 
+				$start = 0;
+				$end = $links_per_page - 1;
+				$links_page = 1;
 			}
-			else
-			{
-				$newlinktext = str_replace ($optionals[0][$c-1],$optionals[1][$c-1],$newlinktext); 
-			}
+			
 		}
-		foreach ($linkinfo as $k=>$v)
+		else
 		{
-			$newlinktext = str_replace('['.$k.']','',$newlinktext);
+			$start = 0;
+			$end = $links_per_page - 1;
+			$links_page = 1;
 		}
+		$next_page = 0;
+		$previous_page = 0;
+		$page_links = array();
+		if ($start - $links_per_page >= 0)
+		{
+			$previous_page = $links_page - 1;
+			$page_links[] = '<a href="./?links_page='.$previous_page.'&links_list_id='.$links_list_id.'">'.__('Previous page','links-shortcode').'</a>';
+		}
+		if ($countlinks > $start + $links_per_page)
+		{	
+			$next_page = $links_page + 1;
+			$page_links[] = '<a href="./?links_page='.$next_page.'&links_list_id='.$links_list_id.'">'.__('Next page','links-shortcode').'</a>';
+		}
+		$pagenav = '<div class="links-page-nav">'.join(' - ', $page_links).'</div>'; // do this better, in UL/LI format
 		
-		$text .= $newlinktext; 
-		// for testing only:
-		//$text .= print_r($bm,true).'<br>';
+	}
+	
+	
+	$text = $template_before;
+	$link_no = 0;
+	foreach ($bms as $bm)
+	{
+		if ($links_per_page == 0 || ($link_no >= $start && $link_no <= $end) )
+		{
+			$newlinktext = $template.'';
+			$title = linkssc_getdate($bm->link_name);
+			$linkinfo = array();
+			$linkinfo['link_name'] = $title->title;
+			$linkinfo['link_url'] = $bm->link_url;
+			$linkinfo['link_rel'] = $bm->link_rel;
+			$linkinfo['link_image'] = $bm->link_image;
+			$linkinfo['link_target'] = $bm->link_target;
+			if (isset($bm->link_category)) {$linkinfo['link_category'] = $bm->link_category;} // because $bm->link_category is in most cases not set. TODO: find better solution
+			$linkinfo['link_description'] = $bm->link_description;
+			$linkinfo['link_visible'] = $bm->link_visible;
+			$linkinfo['link_owner'] = get_the_author_meta('display_name', $bm->link_owner); // display the display name of a user instead of the user id.
+			$linkinfo['link_rating'] = $bm->link_rating;
+			$linkinfo['link_rating_stars'] = '<div class="links_sc_rating "><img class="links_sc_rating_full" src="'. WP_PLUGIN_URL . '/links-shortcode/fullstars.png" style="width:'.round(78*$linkinfo['link_rating']/10).'px;"/><img class="links_sc_rating_empty" src="'. WP_PLUGIN_URL . '/links-shortcode/emptystars.png" /></div>';
+			if (preg_match('#^[\-0 :]*$#', $bm->link_updated)) { $linkinfo['link_updated'] = ''; $linkinfo['date'] = ''; } 
+			else {
+				$linkinfo['link_updated'] = $bm->link_updated;
+				$a = split(' ', $bm->link_updated); $linkinfo['date'] = $a[0];
+			}
+			if ($title->date != '') { $linkinfo['date'] = $title->date; }
+			list($linkinfo['date_year'],$linkinfo['date_month'],$linkinfo['date_day']) = split('-', $linkinfo['date']);
+			$linkinfo['link_rel'] = $bm->link_rel;
+			$linkinfo['link_notes'] = $bm->link_notes;
+			$linkinfo['link_rss'] = $bm->link_rss;
+			if ($fblike == '1'|| $fbrecommend == '1')
+			{
+				$linkinfo['fb_button'] = '<iframe src="//www.facebook.com/plugins/like.php?href='.urlencode($bm->link_url).'&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action='.$fbaction.'&amp;font&amp;colorscheme='.$fbcolors.'" scrolling="no" frameborder="0" ></iframe>';
+			}
+			else { $linkinfo['fb_button'] = ''; }
+			$reallinkinfo = array_diff($linkinfo, array('')); // remove all elements with empty value;
+			// insert al known values
+			foreach ($reallinkinfo as $k=>$v)
+			{
+				$newlinktext = str_replace('['.$k.']',$v,$newlinktext);
+			}
+			// resolve optional elements
+			$c = preg_match_all ('/\[optional (.*)\|\|(.*)\]/U',$newlinktext,$optionals, PREG_PATTERN_ORDER);
+			for (;$c > 0;$c--)
+			{
+				if ((preg_match('/\[(.*)\]/U',$optionals[1][$c-1],$tag)) && (isset($linkinfo[$tag[1]]))) 
+				{
+					$newlinktext = str_replace ($optionals[0][$c-1],$optionals[2][$c-1],$newlinktext); 
+				}
+				else
+				{
+					$newlinktext = str_replace ($optionals[0][$c-1],$optionals[1][$c-1],$newlinktext); 
+				}
+			}
+			foreach ($linkinfo as $k=>$v)
+			{
+				$newlinktext = str_replace('['.$k.']','',$newlinktext);
+			}
+			
+			$text .= $newlinktext; 
+			// for testing only:
+			//$text .= print_r($bm,true).'<br>';
+		}
+		$link_no++;
     }
 	$text .= $template_after;
-	return '<!-- Links -->'.$text.'<!-- /Links -->'; // add html comment for easier debugging
+	return '<!-- Links -->'.do_shortcode($text)."\n".$pagenav.'<!-- /Links -->'; // add html comment for easier debugging
 }
 
 // taking care of translations
@@ -232,7 +304,7 @@ function linkssc_register_mysettings() { // whitelist options
 function linkssc_add_options_page() 
 {
     // Add a new submenu under Settings:
-    add_options_page(__('Links Shortcode','links-shortcode'), __('Links Shortcode','links-shortcode'), 'manage_options', 'links-shortcode-settings', 'linkssc_options_page');
+    //add_options_page(__('Links Shortcode','links-shortcode'), __('Links Shortcode','links-shortcode'), 'manage_options', 'links-shortcode-settings', 'linkssc_options_page');
 	add_submenu_page( 'link-manager.php', __('Links Shortcode','links-shortcode'), __('Links Shortcode','links-shortcode'), 'manage_options', 'links-shortcode-settings', 'linkssc_options_page');
 }
 
@@ -345,7 +417,7 @@ function linkssc_options_page()
 		<tr valign="top">
 			<th scope="row"><?php _e('Examples','links-shortcode'); ?></th>
 			<td>
-				<b><?php _e('A list of links','links-shortcode'); ?></b><br /><?php _e('To show all links in a list with a Facebook like button, use the following main template:','links-shortcode'); ?><br />
+				<b><?php _e('A list of links','links-shortcode'); ?></b><br /><?php _e('To show all links in a list with a Facebook like button and an optional link rating and using schema.org search engine optimization, use the following main template:','links-shortcode'); ?><br />
 				<pre style="margin-left:50px;"><?php echo htmlspecialchars($linkssc_default_template); ?></pre>
 				<?php _e('<b>NB</b>: For compatibility reasons, in the example above in case you choose not to include a Facebook button, the plugin will automatically correct the DIV class from <b>\'links_sc_fb\'</b> to <b>\'links_sc\'</b> for optimal spacing.','links-shortcode'); ?>
 				<?php _e('Leave the \'before\' and \'after\' template fields empty.','links-shortcode'); ?><br /><br />

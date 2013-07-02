@@ -1,10 +1,10 @@
 === Links shortcode ===
-Contributors: maartenjs, Maarten Swemmer
+Contributors: maartenjs, Apprique
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=79AKXNVRT8YSQ&lc=HK&item_name=Links%20Shortcode%20plugin%20by%20Maarten&item_number=Links%20Shortcode%20plugin&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 Tags: links, link, shortcode, category, Facebook, Like, Recommend, list of links, template, customizable
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 1.4.1
+Tested up to: 3.5.1
+Stable tag: 1.5
 
 The plugin provides the shortcode 'links'. This shortcode shows all links having specified characteristics, following a specified template.
 
@@ -19,28 +19,32 @@ The typical format for the short code is
 
 The following options are available:
 
-*   **fblike**: Show the facebook Like button (default '1', to disable set to any value other than '1')
-*   **fbrecommend**: Show the Facebook Recommend botton (default '', to enable set to '1')
+*   **fblike**: Show the facebook Like button (default '1', to disable set to any value other than '1').
+*   **fbrecommend**: Show the Facebook Recommend botton (default '', to enable set to '1').
 *   **orderby**: Order the links by (default 'name'). Use 'order' to order links by order specified with 'My Link Order' plugin.
-*   **order**: How to order, ASC or DESC (default 'DESC')
-*   **limit**: Limit the number of links shown (default '-1', which means no limit) 
-*   **category**: Comma separated list of link category ID's
+*   **order**: How to order, ASC or DESC (default 'DESC').
+*   **limit**: Limit the number of links shown (default '-1', which means no limit). 
+*   **category**: Comma separated list of link category ID's.
 *   **category_name**: Category name of a catgeory of links to show. Overrides category parameter.
-*   **hide_invisible**: Hide links marked as not visible (default '1', yes)
+*   **hide_invisible**: Hide links marked as not visible (default '1', yes).
 *   **include**: Comma separated list of numeric link IDs to include. If 'include' is used, the category, category_name, and exclude parameters are ignored. 
-*   **exclude**: Comma separated list of numeric link IDs to exclude.,
+*   **exclude**: Comma separated list of numeric link IDs to exclude.
 *   **search**: Shows all links matching this search string. It searches url, link name and link description.
+*   **links_per_page**: To paginate lists of links. How many links to show per page. Below the links a pagination will be shown.
+*   **links_list_id**: A unique identifyer on a page for the shortcode at hand. Mandatory in case 'links_per_page' is used to paginate. Optional to define custom styles for this id using css. 
 
 Dafault options can be changed on a 'Links Shortcode' page in the Settings menu.
 
 Example: 
 > [links category_name="Blogroll"]
 
-Using the customizable template, all properties of a link can be displayed. An example template is included. This  template uses the Name, Web Address and Description of your links. The Name will link to the Web Address.
+Using the customizable template, all properties of a link can be displayed. An example template is included. This  template uses the Name, Web Address, Description and Rating of your links. The Name will link to the Web Address.
 
 If the Name starts with a date, formatted as: yyyy-mm-dd followed by ':', a separate property  for the date is available.
 
-Please note that the Description of a link has a limited length, but the Wordpress UI does not show this. After saving changes to a Link in the Links Wordpress only saves the first 255 characters. This has nothing to do with this Plugin.
+Templates are fully customizable. For more information see http://blog.bigcircle.nl/about/wordpress-plugins.
+
+Please note that the Description of a link has a limited length, but the Wordpress UI does not show this. After saving changes to a Link in the Links section, Wordpress only saves the first 255 characters. This has nothing to do with this Plugin.
 
 == Installation ==
 
@@ -59,6 +63,12 @@ No special actions required before upgrading.
 2. Resulting list of links
 
 == Changelog ==
+
+= 1.5 (13-06-2013) = 
+* Added long desired option to paginate links. Let me know your opinion so I can improve where necessary.
+* Removed "Links Shortcode" link to settings from Settings menu. Plugin settings can now only be found in the Links menu, where it should be.
+* The default template now includes schema.org code for link ratings (http://schema.org/Rating)
+* The plugin now supports nested shortcodes as described in http://www.sitepoint.com/wordpress-nested-shortcodes/
 
 = 1.4.1 (01-03-2013) = 
 * Fixed issue where newly installed plugin does not contain a default template, resulting in no links being shown by default.
