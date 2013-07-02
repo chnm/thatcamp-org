@@ -11,7 +11,7 @@
 	<?php do_action( 'bp_inside_before_sidebar' ); ?>
 	<!-- demo sidebar content -->
 
-	<a href="<?php echo site_url(); ?>/help/plan" class="button campbutton">
+	<a href="<?php echo site_url(); ?>/help/organize" class="button campbutton">
 		<span class="button-inner"><?php _e( 'Organize a THATCamp', 'thatcamp' ); ?></span>
 	</a>
 

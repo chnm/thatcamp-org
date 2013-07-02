@@ -1033,7 +1033,10 @@ input[type=submit] {
 }
 div.dir-search input[type="text"] {
   float: left;
-  width:30%;
+  width:35%;
+}
+#groups_search, #members_search {
+background-color:#EEEEEE;
 }
 .header-button,
 #search-bar #search-submit,
@@ -1861,8 +1864,16 @@ padding:0 0 10px;
 margin-bottom:2em;
 }
 
-.recent_with_excerpt h2, .recent_with_excerpt h3{
-font-size:1.5em;
+.recent_with_excerpt > h3 {
+font-size:1.8rem;
+}
+
+.recent_with_excerpt ul li h2 {
+font-size:1.2em;
+}
+
+.recent_with_excerpt ul li h3 {
+font-size:1em;
 }
 
 /* Transposh plugin CSS (by Amanda French) */
@@ -2529,7 +2540,7 @@ ul.button-nav {
 }
 
 #search-terms {
-opacity: .4;
+opacity: .6;
 font-size:10pt;
 }
 
