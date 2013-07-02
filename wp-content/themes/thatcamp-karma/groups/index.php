@@ -16,12 +16,12 @@ get_header( 'thatcamp' ); ?>
 	<?php do_action( 'bp_before_directory_groups_page' ); ?>
 
 	<div id="primary" class="main-content">
-	<div id="content" role="main">
-
+	<div id="content">
+    <div id="page" class="feature-box" role="main">
 		<?php do_action( 'bp_before_directory_groups' ); ?>
 
 		<h1 class="post-title red-text"><?php _e( 'THATCamps', 'thatcamp' ); ?></h1>
-		
+
 		<div id="camps-subscribe">
 		<a href="http://feedburner.google.com/fb/a/mailverify?uri=NewTHATCamps&amp;loc=en_US" class="email-thatcamplink"><?php _e( 'New THATCamps by Email', 'thatcamp' ); ?></a>
 		<a href="<?php echo site_url(); ?>/camps/feed" class="rss-thatcamplink"><?php _e( 'New THATCamps by RSS', 'thatcamp' ); ?></a>
@@ -48,8 +48,8 @@ get_header( 'thatcamp' ); ?>
 		<label><input type="text" name="s" id="groups_search" placeholder="Find THATCamps" /></label>
 		<input type="submit" id="groups_search_submit" name="groups_search_submit" value="<?php _e( 'Search', 'buddypress' ) ?>" />
 	</form>
-	
-		</div><!-- #group-dir-search -->			
+
+		</div><!-- #group-dir-search -->
 
 			<?php do_action( 'bp_before_directory_groups_content' ); ?>
 
@@ -68,7 +68,7 @@ get_header( 'thatcamp' ); ?>
 		</form>
 
 		<?php do_action( 'bp_after_directory_groups' ); ?>
-
+		   </div>
 		</div>
 	</div>
 

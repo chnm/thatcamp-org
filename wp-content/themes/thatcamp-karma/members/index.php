@@ -11,13 +11,15 @@ get_header( 'thatcamp' ); ?>
 
 	<?php do_action( 'bp_before_directory_members_page' ); ?>
 
-	
+
 	<div id="primary" class="main-content">
-	<div id="content" role="main">
+	<div id="content">
+	 <div id="page" class="feature-box" role="main">
+
 
 		<?php do_action( 'bp_before_directory_members' ); ?>
 
-			
+
 		<div id="members-dir-list" class="members dir-list">
 
 				<?php get_template_part( 'members/members', 'loop'); ?>
@@ -25,7 +27,7 @@ get_header( 'thatcamp' ); ?>
 			</div>
 
 		<?php do_action( 'bp_after_directory_members' ); ?>
-
+         </div>
 		</div>
 	</div>
 

@@ -1861,8 +1861,8 @@ padding:0 0 10px;
 margin-bottom:2em;
 }
 
-.widget h2 {
-font-size:1em;
+.recent_with_excerpt h2, .recent_with_excerpt h3{
+font-size:1.5em;
 }
 
 /* Transposh plugin CSS (by Amanda French) */
