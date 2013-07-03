@@ -1465,7 +1465,13 @@ select.mobileMenu {
   float: left;
 }
 #pag-bottom {
+  margin-bottom: 2em;
   border-top: 1px dashed #333;
+}
+#group-dir-count-bottom {
+width: 50%;
+display:inline;
+border:0;
 }
 nav#show-menu {
   clear: both;
