@@ -29,8 +29,11 @@
 
 			<?php if ( is_active_sidebar( 'sidebar-documents' ) ) : ?>
 			<?php dynamic_sidebar( 'sidebar-documents' ); ?>
-			<?php endif; ?>
-			
-			
+			<?php endif; ?>					
 		</nav>
+	<div id="transposh-wrapper">
+		<?php if ( is_active_sidebar( 'sidebar-transposh' ) ) : ?>
+			<?php dynamic_sidebar( 'sidebar-transposh' ); ?>
+		<?php endif; ?>
+	</div>
 </div>

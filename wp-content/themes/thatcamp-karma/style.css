@@ -3608,7 +3608,9 @@ ie9 #user-section {
   clear: none;
 }
 .ie8 #twitterwidget-wrapper,
-.ie9 #twitterwidget-wrapper {
+.ie9 #twitterwidget-wrapper, 
+.ie8 #transposh-wrapper, 
+.ie9 #transposh-wrapper {
   display: block;
 }
 .ie8 #site-logo a,

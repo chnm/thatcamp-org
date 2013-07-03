@@ -208,9 +208,9 @@ function thatcamp_widgets_init() {
 
 	register_sidebar(
 		array(
-			'name'          => __( 'Twitter Button', 'thatcamp'),
-			'id'            => 'sidebar-twitter',
-			'description'   => 'Sidebar twitter',
+			'name'          => __( 'Transposh Sidebar', 'thatcamp'),
+			'id'            => 'sidebar-transposh',
+			'description'   => 'Sidebar for Transposh',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
        		'before_title' => '<h3 class="widgettitle">',
@@ -218,6 +218,17 @@ function thatcamp_widgets_init() {
 			)
 	);
 
+	register_sidebar(
+		array(
+			'name'          => __( 'Twitter Sidebar', 'thatcamp'),
+			'id'            => 'sidebar-twitter',
+			'description'   => 'Sidebar with custom follow button',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget' => '</aside>',
+       		'before_title' => '<h3 class="widgettitle">',
+       		'after_title' => '</h3>'
+			)
+	);
 
 	require( get_stylesheet_directory() . '/functions/widgets.php' );
 }

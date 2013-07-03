@@ -18,7 +18,7 @@
 			<?php dynamic_sidebar( 'sidebar-twitter' ); ?>
 		<?php endif; ?>
 		<a href="https://twitter.com/thatcamp" class="button socialbutton">
-			<span class="button-inner"><?php _e( 'Follow Us', 'thatcamp' ); ?></span>
+			<span class="button-inner"><?php _e( 'Follow @thatcamp', 'thatcamp' ); ?></span>
 		</a>
 	</div>
 	<?php do_action( 'bp_inside_after_sidebar' ); ?>
