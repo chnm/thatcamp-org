@@ -3,9 +3,9 @@
 function bp_group_management_group_action_buttons( $id, $group ) {
 ?>
   <p>
-	    	<a class="button" href="admin.php?page=bp-group-management&amp;action=edit&amp;id=<?php echo $id; ?>"><?php _e( 'Members', 'bp-group-management' ) ?></a> 
+	    	<a class="button" href="admin.php?page=bp-group-management&amp;action=edit&amp;id=<?php echo $id; ?>"><?php _e( 'Members', 'bp-group-management' ) ?></a>
 	    	<a class="button-secondary action" href="admin.php?page=bp-group-management&amp;action=delete&amp;id=<?php echo $id; ?>"><?php _e( 'Delete', 'bp-group-management' ) ?></a>
-	    	<a class="button-secondary action" href="<?php echo bp_get_group_permalink( $group ); ?>admin"><?php _e( 'Admin', 'bp-group-management' ) ?></a> 
+	    	<a class="button-secondary action" href="<?php echo bp_get_group_permalink( $group ); ?>admin"><?php _e( 'Admin', 'bp-group-management' ) ?></a>
 	    	<a class="button-secondary action" href="<?php echo bp_get_group_permalink( $group ); ?>"><?php _e('Visit', 'bp-group-management'); ?></a>
 	    </p>
 <?php
@@ -15,7 +15,7 @@ function bp_group_management_group_action_buttons( $id, $group ) {
 /* The next few functions recreate core BP functionality, minus the check for $bp->is_item_admin and with some tweaks to the returned values */
 function bp_group_management_ban_member( $user_id, $group_id ) {
 	global $bp;
-		
+
 	$member = new BP_Groups_Member( $user_id, $group_id );
 
 	do_action( 'groups_ban_member', $group_id, $user_id );
@@ -24,7 +24,7 @@ function bp_group_management_ban_member( $user_id, $group_id ) {
 		return false;
 
 	update_usermeta( $user_id, 'total_group_count', (int)$total_count - 1 );
-	
+
 	return true;
 }
 
@@ -50,7 +50,7 @@ function bp_group_management_promote_member( $user_id, $group_id, $status ) {
 
 function bp_group_management_delete_group( $group_id ) {
 	global $bp;
-	
+
 	$group = new BP_Groups_Group( $group_id );
 
 	if ( !$group->delete() )
@@ -127,9 +127,9 @@ function bp_group_management_pagination_links() {
 	$add_args = array();
 	if ( isset( $_GET['order'] ) )
 		$add_args['order'] = $_GET['order'];
-	
+
 	$search_terms = isset( $_REQUEST['s'] ) ? $_REQUEST['s'] : '';
-	
+
 	$links = paginate_links( array(
 			'base' => add_query_arg( array( 'grpage' => '%#%', 'num' => $groups_template->pag_num, 's' => $search_terms, 'sortby' => $groups_template->sort_by ) ),
 			'format' => '',

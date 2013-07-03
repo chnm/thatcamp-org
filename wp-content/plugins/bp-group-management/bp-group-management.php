@@ -2,8 +2,8 @@
 /*
 Plugin Name: BP Group Management
 Plugin URI: http://teleogistic.net/code/buddypress/bp-group-management
-Description: Allows site administrators to manage BuddyPress group membership
-Version: 0.5.4
+Description: Allows site administrators to manage BuddyPress group membership. For use with BP < 1.7
+Version: 0.6
 Author: Boone Gorges
 Author URI: http://teleogistic.net
 */
@@ -23,7 +23,7 @@ function bp_group_management_locale_init () {
 	$plugin_dir = basename(dirname(__FILE__));
 	$locale = get_locale();
 	$mofile = WP_PLUGIN_DIR . "/bp-group-management/languages/bp-group-management-$locale.mo";
-      
+
       if ( file_exists( $mofile ) )
       		load_textdomain( 'bp-group-management', $mofile );
 }

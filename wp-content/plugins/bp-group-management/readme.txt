@@ -2,13 +2,15 @@
 Contributors: boonebgorges, cuny-academic-commons
 Tags: buddypress, groups, members, manage
 Requires at least: WP 2.8, BuddyPress 1.2
-Tested up to: WP 3.4, BuddyPress 1.5.6
+Tested up to: WP 3.4, BuddyPress 1.7.1
 Donate link: http://teleogistic.net/donate/
-Stable tag: 0.5.4
+Stable tag: 0.6
 
-Allows site administrators to manage BuddyPress group membership
+Allows site administrators to manage group membership on versions of BuddyPress earlier than 1.7.
 
 == Description ==
+
+NOTE: This plugin is not recommended for users of BuddyPress 1.7+. Instead, use BP's Groups panel in the Dashboard.
 
 This plugin creates an admin panel at Dashboard > BuddyPress > Group Management. On this panel, site admins can manage BP group membership by banning, unbanning, promoting and demoting current members of any group, adding members to any group, and deleting groups.
 
@@ -26,6 +28,10 @@ This plugin creates an admin panel at Dashboard > BuddyPress > Group Management.
 * B. Radenovich, Slovak (<a href="http://webhostingw.com/">Web Hosting Watch</a>)
 
 == Changelog ==
+
+= 0.6.0 =
+* Adds missing hooks
+* Displays Deprecated notice for BP 1.7+
 
 = 0.5.4 =
 * Adds Slovak translation
