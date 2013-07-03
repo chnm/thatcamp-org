@@ -94,7 +94,7 @@ function bbp_is_activation( $basename = '' ) {
 function bbp_is_deactivation( $basename = '' ) {
 	$bbp    = bbpress();
 	$action = false;
-
+	
 	if ( ! empty( $_REQUEST['action'] ) && ( '-1' != $_REQUEST['action'] ) ) {
 		$action = $_REQUEST['action'];
 	} elseif ( ! empty( $_REQUEST['action2'] ) && ( '-1' != $_REQUEST['action2'] ) ) {

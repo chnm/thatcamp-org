@@ -1216,8 +1216,13 @@ a:link.postlink,
 .single a:visited,
 .single a:link,
 .single a:hover {
-  color: #bb1122;
+  color: #88aa11;
 }
+
+.forum .button-inner {
+color: #fff;
+}
+
 a.rss-thatcamplink {
   background: url('assets/images/rss-thatcampicon.png') no-repeat;
   padding: 10px 0 10px 70px;

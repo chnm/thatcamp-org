@@ -198,7 +198,7 @@ function bbp_profile_update_role( $user_id = 0 ) {
 	// Bail if trying to set their own role
 	if ( bbp_is_user_home_edit() )
 		return;
-
+	
 	// Bail if current user cannot promote the passing user
 	if ( ! current_user_can( 'promote_user', $user_id ) )
 		return;
@@ -288,7 +288,7 @@ function bbp_set_current_user_default_role() {
 		$bbp->current_user->add_role( $new_role );
 
 	// Don't add the user, but still give them the correct caps dynamically
-	} else {
+	} else {		
 		$bbp->current_user->caps[$new_role] = true;
 		$bbp->current_user->get_role_caps();
 	}
@@ -353,7 +353,7 @@ function bbp_is_user_spammer( $user_id = 0 ) {
 		$is_spammer = true;
 	}
 
-	return (bool) apply_filters( 'bp_core_is_user_spammer', $is_spammer );
+	return (bool) apply_filters( 'bbp_core_is_user_spammer', $is_spammer );
 }
 
 /**
@@ -566,7 +566,7 @@ function bbp_is_user_deleted( $user_id = 0 ) {
 		$is_deleted = true;
 	}
 
-	return (bool) apply_filters( 'bp_core_is_user_deleted', $is_deleted );
+	return (bool) apply_filters( 'bbp_core_is_user_deleted', $is_deleted );
 }
 
 /**
@@ -635,7 +635,7 @@ function bbp_is_user_inactive( $user_id = 0 ) {
  *
  * @since bbPress (r4783)
  *
- * @param int $user_id
+ * @param int $user_id 
  * @return bool True if keymaster, false if not
  */
 function bbp_is_user_keymaster( $user_id = 0 ) {
