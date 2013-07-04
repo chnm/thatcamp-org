@@ -597,7 +597,9 @@ function thatcamp_validate_url( $string ) {
 function thatcamp_directory_current_view() {
 	$current_view = 'all';
 
-	if ( isset( $_GET['date'] ) ) {
+	if ( ! empty( $_GET['s'] ) ) {
+		$current_view = 'search';
+	} else if ( isset( $_GET['date'] ) ) {
 		if ( in_array( $_GET['date'], array( 'all', 'past', 'upcoming' ) ) ) {
 			$current_view = $_GET['date'];
 		} else if ( is_numeric( $_GET['date'] ) ) {
@@ -721,7 +723,7 @@ function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 
 	$current_view = thatcamp_directory_current_view();
 
-	if ( bp_is_groups_component() && bp_is_directory() && 'all' == $current_view ) {
+	if ( bp_is_groups_component() && bp_is_directory() && in_array( $current_view, array( 'all', 'search' ) ) ) {
 
 		// If there's a 'region' filter, apply it
 		$region_filter = '';
@@ -747,7 +749,12 @@ function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 			}
 		}
 
-		$tbds = $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name} WHERE id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' AND meta_value != '' ) AND id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_start_date' AND meta_value != '' ) {$region_filter} ORDER BY name ASC" );
+		$search_filter = '';
+		if ( ! empty( $_GET['s'] ) ) {
+			$search_filter = " AND name LIKE '%" . $wpdb->escape( urldecode( $_GET['s'] ) ) . "%' ";
+		}
+
+		$tbds = $wpdb->get_col( "SELECT id FROM {$bp->groups->table_name} WHERE id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_date' AND meta_value != '' ) AND id NOT IN ( SELECT group_id FROM {$bp->groups->table_name_groupmeta} WHERE meta_key = 'thatcamp_start_date' AND meta_value != '' ) {$region_filter} {$search_filter} ORDER BY name ASC" );
 
 		$dated_count = $groups_template->total_group_count;
 		$tbds_count  = count( $tbds );
