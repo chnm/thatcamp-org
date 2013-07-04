@@ -629,7 +629,7 @@ function thatcamp_filter_group_directory( $query ) {
 
 		// When Date = All and Region = All, sort DESC by id (date created)
 		if ( 'all' === $current_view && 'all' === $current_region ) {
-			$query = preg_replace( '/ORDER BY .*? /', 'ORDER BY g.id ', $query );
+			$query = preg_replace( '/ORDER BY .*? /', 'ORDER BY g.date_created ', $query );
 			$query = preg_replace( '/(ASC|DESC)/', 'DESC', $query );
 
 		// Otherwise, sort ASC by start date
