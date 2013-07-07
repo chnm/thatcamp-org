@@ -1,0 +1,150 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom Meta Widget v1.4.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/custom-meta-widget\n"
+"POT-Creation-Date: 2012-08-28 14:39:17+00:00\n"
+"PO-Revision-Date: 2013-01-21 03:37:08+0000\n"
+"Last-Translator: Вадим <vadim.artdev@gmail.com>\n"
+"Language-Team: VadDevArt <vadim.artdev@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%100/10==1 ? 2 : n%10==1 ? 0 : (n+9)%10>3 ? 2 : 1;\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: customMeta.php:20
+#@ customMetaWidget
+msgid "Hide the individual log in/out, admin, feed and WordPress links"
+msgstr "Скрывает/выводит ссылки \"Вход\" и \"Выход\", админпанель, RSS ссылки и ссылку на главную страницу Wordpress."
+
+#: customMeta.php:32
+#: customMeta.php:179
+#@ customMetaWidget
+msgid "Meta"
+msgstr "Мета"
+
+#: customMeta.php:33
+#@ customMetaWidget
+msgid "Title"
+msgstr "Название"
+
+#: customMeta.php:40
+#@ customMetaWidget
+msgid "Show \"Register/Admin\" link?"
+msgstr "Показывать ссылку \"Регистрация/Админпанель\"?"
+
+#: customMeta.php:47
+#@ customMetaWidget
+msgid "Show \"Log in/out\" link?"
+msgstr "Показывать ссылку \"Вход\"/\"Выход\"?"
+
+#: customMeta.php:54
+#@ customMetaWidget
+msgid "Show \"Entries RSS\" link?"
+msgstr "Показывать ссылку \"RSS записи\"?"
+
+#: customMeta.php:61
+#@ customMetaWidget
+msgid "Show \"Comments RSS\" link?"
+msgstr "Показывать ссылку \"RSS комментарии\"?"
+
+#: customMeta.php:68
+#@ customMetaWidget
+msgid "Show \"WordPress.org\" link?"
+msgstr "Показывать ссылку \"WordPress.org\"?"
+
+#: customMeta.php:75
+#@ customMetaWidget
+msgid "Show the custom link?"
+msgstr "Показывать пользовательскую ссылку?"
+
+#: customMeta.php:82
+#@ customMetaWidget
+msgid "URL"
+msgstr "Ссылка"
+
+#: customMeta.php:89
+#@ customMetaWidget
+msgid "Text"
+msgstr "Текст"
+
+#: customMeta.php:96
+#@ customMetaWidget
+msgid "Show Plugin link?"
+msgstr "Показыть ссылку на страницу плагина?"
+
+#: customMeta.php:147
+#@ customMetaWidget
+msgid "An awesome way to support this free plugin!"
+msgstr "Это способ поддержки плагина!"
+
+#: customMeta.php:154
+#@ customMetaWidget
+msgid "You have a custom link with no URL or text!"
+msgstr "Ваша ссылка без адреса или текста!"
+
+#: customMeta.php:157
+#@ customMetaWidget
+msgid "You have a custom link with no text!"
+msgstr "Ваша ссылка без текста!"
+
+#: customMeta.php:161
+#@ customMetaWidget
+msgid "You have a custom link with no URL!"
+msgstr "Ваша ссылка без адреса!"
+
+#: customMeta.php:184
+#@ customMetaWidget
+msgid "Plugin: Custom Meta Widget"
+msgstr "Плагин: Custom Meta Widget"
+
+#: customMeta.php:185
+#@ customMetaWidget
+msgid "Plugin URL"
+msgstr "Адрес плагина"
+
+#: customMeta.php:199
+#, php-format
+#@ customMetaWidget
+msgid "%1$sSyndicate this site using RSS 2.0%2$sEntries %3$sRSS%4$s"
+msgstr "%1$sИсользуется RSS 2.0%2$sЗаписи %3$sRSS%4$s"
+
+#: customMeta.php:201
+#: customMeta.php:207
+#@ customMetaWidget
+msgid "Really Simple Syndication"
+msgstr "RSS"
+
+#: customMeta.php:205
+#, php-format
+#@ customMetaWidget
+msgid "%1$sSyndicate this site using RSS 2.0%2$sComments %3$sRSS%4$s"
+msgstr "%1$sИсользуется RSS 2.0%2$sКомментарии %3$sRSS%4$s"
+
+#: customMeta.php:210
+#@ customMetaWidget
+msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform."
+msgstr "Работает на WordPress. Современной платформе для блогов"
+
+#: customMeta.php:219
+#@ customMetaWidget
+msgid "Error: \"Show Custom Link\" is checked, but either the text or URL for that link are not specified. The link was not displayed because it would be broken. Check the settings for your Custom Meta widget."
+msgstr "Ошибка: \"Показывать пользовательскию ссылку\" проверена, но текст или адрес для этой ссылки не найдены. Ссылка не будет показана, потому что она некорректна. Проверьте настройки виджета  Custom Meta."
+
+#: customMeta.php:224
+#@ customMetaWidget
+msgid "WordPress Plugin Homepage"
+msgstr "Страница плагина в WordPress"
+
+#: customMeta.php:224
+#@ customMetaWidget
+msgid "Custom Meta"
+msgstr "Custom Meta"
+
