@@ -47,6 +47,16 @@ input[type=submit] { font-family: "Lucida Grande", Arial, Helvetica, sans-serif;
 pre { font-family: "Courier 10 Pitch", Courier, monospace; }
 code { font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace; }
 
+
+/* Header */
+
+#site-title {
+width: 100%;
+font-size: large;
+line-height: 1rem;
+text-align: center;
+}
+
 /* Comments */
 
 .commentlist li.comment
@@ -119,19 +129,3 @@ margin: 25px;
 width: 90%; 
 }
 
-/* Twitter items */
-
-li .twitter-item {
-display: block;
-float: left; 
-list-style: none;
-margin-top: 1em;
-margin-left: -.25em;
-margin-bottom: .5em;
-}
-
-li .twitter-item img {
-float: left;
-margin-right: .5em;
-margin-top: .5em; 
-}
