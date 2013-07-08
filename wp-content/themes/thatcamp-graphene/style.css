@@ -10,56 +10,31 @@ Version: 1.3
 
 @import url("../graphene/style.css");
 
+/* Content and Navigation */
+#nav a { font-size: 13pt !important; }
+.post .date { margin-left: 10px; }
+p.default_date { color: white; }
+.entry-title { margin-left: 2.2em; }
+.entry-content { margin: 15px; }
 
-/* Custom styles */
-
-#nav a { 
-font-size: 13pt !important; 
-} 
-
-.post .date {
-margin-left: 10px;
+.entry-content p
+{
+	font-size: 13pt;
+	line-height: 20pt;
 }
 
-p.default_date {
-color: white;
+.entry-content ul li
+{
+	font-size: 12pt;
+	line-height: 16pt;
 }
 
-.entry-title {
-margin-left: 2.2em;
-}
-
-.entry-content {
-margin: 15px;
-}
-
-.entry-content p {
-font-size: 13pt;
-line-height: 20pt;
-}
-
-.entry-content ul li { 
-font-size: 12pt;
-line-height: 16pt;
-}
-
-br {
-margin-top: 3pt; 
-}
-.post-title a {
-font-size: 16pt; 
-}
-
-.sidebar-wrap ul li, .sidebar-wrap ul li a {
-font-size: 10pt; 
-}
-
-#previous a, #next-post a {
-font-size: 16pt;
-}
+br { margin-top: 3pt; }
+.post-title a { font-size: 16pt; }
+.sidebar-wrap ul li, .sidebar-wrap ul li a { font-size: 10pt; }
+#previous a, #next-post a { font-size: 16pt; }
 
 /* Footer */
-
 #footer
 {
 	background: url(images/sprite_h.png) left -100px repeat-x #000;
@@ -99,84 +74,98 @@ font-size: 16pt;
 }
 
 /* Campers Template */
+.camper_info
+{
+	float: left;
+	position: relative;
+	width: 132px;
+	height: 170px;
+	padding: 0px 15px 10px 0;
+}
 
-	.camper_info {
-		float: left;
-		position: relative;
-		width: 132px;
-		height:170px;
-		padding: 0px 15px 10px 0;
-	}
-	
-	.camper_avatar {
-		position: relative;
-		bottom: 0;
-		top: 5;
-	}
-	
-	.camper_name 
-		position: relative; 
-		top: 5;
-		left: 10;
-		font-size: 13px;
-		line-height: 16px;
-	
-	
-	.camper_posts {
-		bottom: 5;
-		font-size: 13px;
-		line-height: 16px;
-	}
+.camper_avatar
+{
+	position: relative;
+	bottom: 0;
+	top: 5;
+}
+
+.camper_name 
+{
+	margin-left: 5px;
+	font-size: 13px;
+	line-height: 16px;
+}		
+.camper_posts
+{
+	margin-left: 5px;
+	font-size: 13px;
+	line-height: 16px;
+}
+
+div.generic-button a
+{
+	margin: 0!important;
+	padding: 8pxÏ!important;
+	display:inline;
+	float:left;
+}
 
 /* Authors Template */
-
-#author-info {
-margin-right: .5em; 
-margin-bottom: .3em;
-list-style: none;
-font-weight: bold;
-font-size: 1.2em;
+#author-0 {
+padding: 20px -10px 20px 20px;
 }
 
-h3.author-post-list {
-margin-left: -30px;
-margin-top: 0px;
+.post {
+padding: 20px;
 }
 
-.camper-posts {
-list-style: none;
+.entry img.avatar {
+display:block;
+padding: .5rem;
+margin: 1rem;
 }
 
-.camper-posts a {
-font-size: 1.4em;
+#author-info
+{
+	display: block;
+	margin: 0 .5rem;
+	padding: .5rem;
+	font-weight: normal;
+	font-size: 1.2em;
 }
 
-.camper-post-meta {
-margin-bottom: 1em;
+#author-info ul li {
+	list-style: none;
+	line-height: 1.5em;
 }
+
+h3.author-post-list
+{
+	margin-left: -30px;
+	margin-top: 0px;
+}
+
+.camper-posts { list-style: none; }
+.camper-posts a { font-size: 1.4em; }
+.camper-post-meta { margin-bottom: 1em; }
 
 /* THATCamp Registration Plugin */
+.formitem { margin-bottom: 1.5em; }
+legend { display: none; }
 
-.formitem {
-margin-bottom: 1.5em;
+label
+{
+	font-style: bold;
+	font-size: 11pt;
 }
 
-legend {
-display:none; 
+p.explanation
+{
+	display: block;
+	margin-top: 0;
+	font-size: 10pt;
+	font-style: italic;
 }
 
-label {
-font-style: bold;
-font-size: 11pt;
-}
-
-p.explanation {
-display:block;
-margin-top: 0;
-font-size: 10pt;
-font-style:italic;
-}
-
-div.entry-content form fieldset div {
-margin-top: 1.5em;
-}
+div.entry-content form fieldset div { margin-top: 1.5em; }

@@ -35,9 +35,8 @@ $lastname = strtolower($current_camper->last_name);
 
 	        <?php thatcamp_add_friend_button( $current_camper->ID ) ?>
 
-		<ul id="author-info">
-		
-			<li><?php thatcamp_add_friend_button( get_the_author_ID() ) ?></li>
+<div id="author-info">
+		<ul>	
 		
 		    <?php if ( $title = $current_camper->user_title ): ?>
 			<li class="title">Title / Position: <?php echo $current_camper->user_title; ?></li>
@@ -55,10 +54,10 @@ $lastname = strtolower($current_camper->last_name);
 			<li>Twitter: <a href="http://twitter.com/<?php echo $current_camper->user_twitter; ?>/"><?php echo $current_camper->user_twitter; ?></a></li>
 			<?php endif; ?>
 			
-
 		</ul>
 		
 		<?php echo wpautop($current_camper->user_description, 0); ?>
+	</div>	
 	</div>
 </div>	
 
