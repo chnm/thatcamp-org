@@ -171,9 +171,9 @@ class blcComment extends blcContainer{
 	function ui_get_source($container_field = '', $context = 'display'){
 		//Display a comment icon. 
 		if ( $container_field == 'comment_author_url' ){
-			$image = 'user_comment.png';
+			$image = 'font-awesome/font-awesome-user.png';
 		} else {
-			$image = 'comment.png';
+			$image = 'font-awesome/font-awesome-comment-alt.png';
 		}
 		
 		$image = sprintf(

@@ -3,8 +3,8 @@ Contributors: whiteshadow
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6P9S6CE3SRSW
 Tags: links, broken, maintenance, blogroll, custom fields, admin, comments, posts
 Requires at least: 3.2
-Tested up to: 3.5.1
-Stable tag: 1.8
+Tested up to: 3.5.2
+Stable tag: 1.8.1
 
 This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found. 
 
@@ -73,7 +73,7 @@ You can also click on the contents of the "Status" or "Link Text" columns to get
 
 **Other Credits**
 
-This plugin uses one or more icons from the beautiful ["Silk" icon set](http://www.famfamfam.com/lab/icons/silk/).
+This plugin uses some icons from the [Font Awesome icon font](http://fortawesome.github.io/Font-Awesome/). Font Awesome is licensed under SIL OFL 1.1.
 
 == Installation ==
 
@@ -93,6 +93,13 @@ To upgrade your installation
 1. Reactivate the plugin. Your settings will be retained from the previous version.
 
 == Changelog ==
+
+= 1.8.1 =
+* Updated the Polish and Simplified Chinese translations.
+* Updated the German translation.
+* Added translation strings for two modules that were missing them.
+* Replaced a number of icons with GPL-compatible alternatives from Font Awesome.
+* Removed some unused images.
 
 = 1.8 =
 * Added an option to only show the dashboard widget for users with the Administrator role, or to disable it completely.

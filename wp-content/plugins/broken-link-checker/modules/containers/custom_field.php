@@ -155,7 +155,7 @@ class blcPostMeta extends blcContainer {
 		}
 		
 		//Update the field with the new value returned by the parser.
-		//Notice how $old_raw_url is usead instead of $old_value. $old_raw_url contains the entire old
+		//Notice how $old_raw_url is used instead of $old_value. $old_raw_url contains the entire old
 		//value of the metadata field (see blcMetadataParser::parse()) and thus can be used to
 		//differentiate between multiple meta fields with identical names. 
 		$update_result = $this->update_field( $field_name, $edit_result['content'], $old_raw_url );

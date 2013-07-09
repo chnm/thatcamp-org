@@ -17,7 +17,7 @@ class blcBookmark extends blcContainer{
 		
 		$image = sprintf(
 			'<img src="%1$s" class="blc-small-image" title="%2$s" alt="%2$s">',
-			esc_attr( plugins_url('/images/link.png', BLC_PLUGIN_FILE) ),
+			esc_attr( plugins_url('/images/font-awesome/font-awesome-link.png', BLC_PLUGIN_FILE) ),
 			__('Bookmark', 'broken-link-checker')						
 		);
 		

@@ -7,6 +7,7 @@ _x("Embedded DailyMotion videos", "module name", "broken-link-checker");
 _x("Embedded GoogleVideo videos", "module name", "broken-link-checker");
 _x("Embedded Megavideo videos", "module name", "broken-link-checker");
 _x("Embedded Vimeo videos", "module name", "broken-link-checker");
+_x("Embedded YouTube playlists (old embed code)", "module name", "broken-link-checker");
 _x("Embedded YouTube videos", "module name", "broken-link-checker");
 _x("Embedded YouTube videos (old embed code)", "module name", "broken-link-checker");
 _x("FileServe API", "module name", "broken-link-checker");
@@ -16,7 +17,7 @@ _x("MediaFire API", "module name", "broken-link-checker");
 _x("MegaUpload API", "module name", "broken-link-checker");
 _x("Plaintext URLs", "module name", "broken-link-checker");
 _x("RapidShare API", "module name", "broken-link-checker");
+_x("Smart YouTube httpv:// URLs", "module name", "broken-link-checker");
 _x("YouTube API", "module name", "broken-link-checker");
 _x("Posts", "module name", "broken-link-checker");
 _x("Pages", "module name", "broken-link-checker");
-?>

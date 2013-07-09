@@ -87,15 +87,15 @@ td.column-new-url .mini-status {
 /* Styles for broken links, redirects and other link states or types */
 
 .blc-redirect .blc-link-url {
-	background-image: url("../images/bullet_blue.png");
+	background-image: url("../images/blue_dot.png");
 }
 
 .link-status-error .blc-link-url {
-	background-image: url("../images/bullet_error.png");
+	background-image: url("../images/font-awesome/font-awesome-exclamation-sign.png");
 }
 
 .link-status-warning .blc-link-url {
-	background-image: url("../images/bullet_warning.png");
+	background-image: url("../images/font-awesome/font-awesome-warning-sign.png");
 }
 
 .blc-excluded-link {

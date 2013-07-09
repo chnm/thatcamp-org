@@ -114,7 +114,7 @@ class blcMetadataParser extends blcParser {
 	function ui_get_link_text($instance, $context = 'display'){
 		$image_html = sprintf(
 			'<img src="%s" class="blc-small-image" title="%2$s" alt="%2$s"> ',
-			esc_attr( plugins_url('/images/script_code.png', BLC_PLUGIN_FILE) ),
+			esc_attr( plugins_url('/images/font-awesome/font-awesome-code.png', BLC_PLUGIN_FILE) ),
 			__('Custom field', 'broken-link-checker')
 		);
 		

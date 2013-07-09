@@ -848,8 +848,6 @@ class blcModuleManager {
 			}
 		}
 		
-		return "<?php\n" . implode("\n", $strings) . "\n?>";
+		return "<?php\n" . implode("\n", $strings) . "\n";
 	}
 }
-
-?>
