@@ -2,8 +2,8 @@
 Contributors: eoigal, alternatekev, mdawaffe, donncha, johnny5
 Tags: polls, poll, polldaddy,  wppolls, vote, polling, surveys, rate, rating, ratings
 Requires at least: 3.2
-Tested up to: 3.5.1
-Stable tag: 2.0.19
+Tested up to: 3.5.2
+Stable tag: 2.0.20
 
 Create and manage Polldaddy polls and ratings from within WordPress.
 
@@ -53,13 +53,16 @@ Polldaddy Polls is localizable and currently available in:
 * Swedish
 * Uighur
 
-Want to help translate the plugin or keep an existing translation up-to-date? Head on over to http://translate.wordpress.com/projects/polldaddy/plugin
+Want to help translate the plugin or keep an existing translation up-to-date? Head on over to the [translation site](http://translate.wordpress.com/projects/polldaddy/plugin).
+
+Some strings are not translated when polls and surveys are embedded. You will have to translate them using a language pack on [http://polldaddy.com/](Polldaddy.com).
 
 == Installation ==
 
-Upload the plugin to your blog (or search for it and install it on your plugins page), activate it, then go to the Polls page. Enter your [Polldaddy.com](http://polldaddy.com/) email address and password to sync your account and pull in your existing polls and ratings.
+Upload the plugin to your blog (or search for it and install it on your plugins page), activate it, then go to Settings->Polls while logged into your site. Enter your [Polldaddy.com](http://polldaddy.com/) email address and password to sync your account and pull in your existing polls and ratings.
+Polldaddy.com is now linked to WordPress.com using [WordPress.com Connect](http://en.support.wordpress.com/wpcc-faq/) which means you can use your WordPress.com username and password to login to Polldaddy.com. If you have a WordPress.com account and have never used Polldaddy.com you can login [here](https://polldaddy.com/login/) to access Polldaddy.com. You can then use those login details to sign in to the plugin.
 
-You can find further help on our [support page](http://support.polldaddy.com/). If you have any problems please use the [support forum](http://wordpress.org/tags/polldaddy?forum_id=10). The plugin also logs activity to a file using the [WP Debug Logger](http://wordpress.org/extend/plugins/wp-debug-logger/) plugin which can be useful in determining the cause of a problem.
+You can find further help on our [support page](http://support.polldaddy.com/). If you have any problems please use the [support forum](http://wordpress.org/support/plugin/polldaddy). The plugin also logs activity to a file using the [WP Debug Logger](http://wordpress.org/extend/plugins/wp-debug-logger/) plugin which can be useful in determining the cause of a problem.
 
 == Screenshots ==
 
@@ -71,6 +74,10 @@ You can find further help on our [support page](http://support.polldaddy.com/). 
 6. Ratings on comments
 
 == Frequently Asked Questions ==
+
+= Where do I find my Polls & Ratings menus? =
+
+The Polls & Ratings menus can now be found under the Feedbacks top level menu.
 
 = I have multiple authors on my blog?  What happens? =
 
@@ -104,10 +111,17 @@ Your theme is getting the post content, without necessarily showing it. If the p
 
 
 == Upgrade Notice ==
-= 2.0.19 =
-Bug Fixes and added filter by catergory to Top Rated Widget
+= 2.0.20 =
+Updated poll settings page, bugfixes
 
 == Changelog ==
+= 2.0.20 =
+* Updated settings page: text, layout, Import -> Link.
+* On MU sites use blog_public blog option.
+* Removed deprecated warnings, props @Till
+* 
+
+
 = 2.0.19 =
 * Added filter by category to Top Rated Widget
 * Added more retina images for ratings

@@ -91,7 +91,7 @@ class api_client {
 
 		$parser = new Polldaddy_XML_Parser( $this->response_xml );
 		
-		$this->response =& $parser->objects[0];
+		$this->response = $parser->objects[0];
 		if ( isset( $this->response->errors->error ) ) {
 			if ( !is_array( $this->response->errors->error ) )
 				$this->response->errors->error = array( $this->response->errors->error );
@@ -130,7 +130,7 @@ class api_client {
 		if ( is_a( $object, 'Ghetto_XML_Object' ) )
 			$args = array( $object->___name => &$object );
 		elseif ( is_array( $object ) )
-			$args =& $object;
+			$args = $object;
 		else
 			$args = null;
 
@@ -1169,12 +1169,8 @@ function &polldaddy_poll( $args = null, $id = null, $_require_data = true ) {
 				$args[$bool] = $defaults[$bool];
 		}
 		
-		global $wpdb;		
-		if ( isset( $wpdb->blogs ) ) { // single hosted WordPress sites don't have a blogs table.
-			$public = (int) $wpdb->get_var( $wpdb->prepare( "SELECT public FROM {$wpdb->blogs} WHERE blog_id = %d", $wpdb->blogid ) );
-			if( $public == -1 )
-				$args['makePublic'] = 'no';
-		}
+		if ( '0' == get_option( 'blog_public' ) )
+			$args['makePublic'] = 'no';
 
 		foreach ( array( 'styleID', 'packID', 'folderID', 'languageID', 'choices', 'blockExpiration' ) as $int )
 			if ( !is_numeric( $args[$int] ) )
@@ -1317,7 +1313,7 @@ function wp_parse_args( $args, $defaults = '' ) {
 	if ( is_object( $args ) )
 		$r = get_object_vars( $args );
 	elseif ( is_array( $args ) )
-		$r =& $args;
+		$r = $args;
 	else
 		wp_parse_str( $args, $r );
 
