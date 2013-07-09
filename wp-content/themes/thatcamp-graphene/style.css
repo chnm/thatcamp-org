@@ -90,25 +90,33 @@ br { margin-top: 3pt; }
 	top: 5;
 }
 
+.camper_text {
+position: relative; 
+left: 25px;
+width: 132px;
+height: 42px;
+margin:auto;
+}
+
 .camper_name 
 {
-	margin-left: 5px;
 	font-size: 13px;
 	line-height: 16px;
 }		
 .camper_posts
 {
-	margin-left: 5px;
 	font-size: 13px;
 	line-height: 16px;
 }
 
 div.generic-button a
 {
-	margin: 0!important;
+/*	margin: 0!important;
 	padding: 8pxÏ!important;
-	display:inline;
-	float:left;
+*/
+	position: relative;
+	bottom: 0;
+	left: 20px;
 }
 
 /* Authors Template */
@@ -117,7 +125,7 @@ padding: 20px -10px 20px 20px;
 }
 
 .post {
-padding: 20px;
+padding: 20px 0px 20px 10px;
 }
 
 .entry img.avatar {
@@ -138,6 +146,10 @@ margin: 1rem;
 #author-info ul li {
 	list-style: none;
 	line-height: 1.5em;
+}
+#author-info p {
+	position: relative; 
+	top: 10px;
 }
 
 h3.author-post-list
