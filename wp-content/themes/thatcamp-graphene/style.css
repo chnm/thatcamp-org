@@ -78,9 +78,8 @@ br { margin-top: 3pt; }
 {
 	float: left;
 	position: relative;
-	width: 132px;
-	height: 170px;
-	padding: 0px 15px 10px 0;
+	width: 136px;
+	padding: 0 5px;
 }
 
 .camper_avatar
@@ -92,9 +91,8 @@ br { margin-top: 3pt; }
 
 .camper_text {
 position: relative; 
-left: 25px;
-width: 132px;
-height: 42px;
+left: 20px;
+width: 136px;
 margin:auto;
 }
 
@@ -111,12 +109,10 @@ margin:auto;
 
 div.generic-button a
 {
-/*	margin: 0!important;
-	padding: 8pxÏ!important;
-*/
 	position: relative;
-	bottom: 0;
-	left: 20px;
+	bottom: 5px;
+	left: 15px;
+	text-align: center;
 }
 
 /* Authors Template */
