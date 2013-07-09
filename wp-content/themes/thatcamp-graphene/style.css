@@ -78,7 +78,8 @@ br { margin-top: 3pt; }
 {
 	float: left;
 	position: relative;
-	width: 136px;
+	width: 180px;
+	height: 250px;
 	padding: 0 5px;
 }
 
@@ -91,8 +92,8 @@ br { margin-top: 3pt; }
 
 .camper_text {
 position: relative; 
-left: 20px;
-width: 136px;
+left: 15px;
+width: 150px;
 margin:auto;
 }
 

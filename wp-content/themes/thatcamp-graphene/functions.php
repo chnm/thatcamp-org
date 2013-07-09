@@ -94,9 +94,7 @@ div.generic-button.disabled-button:hover span {
   color: #fff;
   white-space: nowrap;
 }
-.camper_info {
-	height: auto;
-}
+
 </style>
 	<?php
 }
