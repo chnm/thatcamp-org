@@ -47,6 +47,13 @@
 					<label for="signup_password_confirm"><?php _e( 'Confirm password', 'thatcamp' ); ?></label>
 					<?php do_action( 'bp_signup_password_confirm_errors' ); ?>
 					<input type="password" name="signup_password_confirm" id="signup_password_confirm" value="" />
+					
+					<?php /* honeypot */ ?>
+					<div id="thatcamp-zip-code">
+					<label for="zip-code">Don't fill this field in - it's a trick for robots.
+						<input type="text" name="zip-code" />
+					</label>
+					</div>
 
 				</div>
 
