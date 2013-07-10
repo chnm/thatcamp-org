@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Broken Link Checker v1.8\n"
+"Project-Id-Version: Broken Link Checker v1.8.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-12-11 10:00-0000\n"
-"PO-Revision-Date: 2013-06-07 07:59:12+0000\n"
+"PO-Revision-Date: 2013-07-09 11:44:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: wordpress.mowster.net <wordpress@mowster.net>\n"
 "MIME-Version: 1.0\n"
@@ -1799,67 +1799,67 @@ msgctxt "module name"
 msgid "Embedded Vimeo videos"
 msgstr "Vídeo Vimeo embutido"
 
-#: includes/extra-strings.php:10
+#: includes/extra-strings.php:11
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Embedded YouTube videos"
 msgstr "Vídeos YouTube embutido"
 
-#: includes/extra-strings.php:11
+#: includes/extra-strings.php:12
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Embedded YouTube videos (old embed code)"
 msgstr "Vídeos YouTube embutido (código antigo)"
 
-#: includes/extra-strings.php:13
+#: includes/extra-strings.php:14
 #@ broken-link-checker
 msgctxt "module name"
 msgid "HTML images"
 msgstr "Imagens HTML"
 
-#: includes/extra-strings.php:14
+#: includes/extra-strings.php:15
 #@ broken-link-checker
 msgctxt "module name"
 msgid "HTML links"
 msgstr "HTML links"
 
-#: includes/extra-strings.php:15
+#: includes/extra-strings.php:16
 #@ broken-link-checker
 msgctxt "module name"
 msgid "MediaFire API"
 msgstr "MediaFire API"
 
-#: includes/extra-strings.php:16
+#: includes/extra-strings.php:17
 #@ broken-link-checker
 msgctxt "module name"
 msgid "MegaUpload API"
 msgstr "MegaUpload API"
 
-#: includes/extra-strings.php:17
+#: includes/extra-strings.php:18
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Plaintext URLs"
 msgstr "Texto URLs"
 
-#: includes/extra-strings.php:18
+#: includes/extra-strings.php:19
 #@ broken-link-checker
 msgctxt "module name"
 msgid "RapidShare API"
 msgstr "RapidShare API"
 
-#: includes/extra-strings.php:19
+#: includes/extra-strings.php:21
 #@ broken-link-checker
 msgctxt "module name"
 msgid "YouTube API"
 msgstr "YouTube API"
 
-#: includes/extra-strings.php:20
+#: includes/extra-strings.php:22
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Posts"
 msgstr "Artigos"
 
-#: includes/extra-strings.php:21
+#: includes/extra-strings.php:23
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Pages"
@@ -2016,7 +2016,7 @@ msgctxt "module name"
 msgid "Embedded Megavideo videos"
 msgstr "Vídeos Megavideo embutido"
 
-#: includes/extra-strings.php:12
+#: includes/extra-strings.php:13
 #@ broken-link-checker
 msgctxt "module name"
 msgid "FileServe API"
@@ -2201,4 +2201,16 @@ msgstr "Esta playlist não tem registos ou foram todos excluídos."
 #@ link status
 msgid "Empty Playlist"
 msgstr "Playlist Vazia"
+
+#: includes/extra-strings.php:10
+#@ broken-link-checker
+msgctxt "module name"
+msgid "Embedded YouTube playlists (old embed code)"
+msgstr "Playlists YouTube embutidas (código de embutimento antigo)"
+
+#: includes/extra-strings.php:20
+#@ broken-link-checker
+msgctxt "module name"
+msgid "Smart YouTube httpv:// URLs"
+msgstr "Smart YouTube httpv:// URLs"
 
