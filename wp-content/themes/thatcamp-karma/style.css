@@ -320,11 +320,6 @@ margin-left: 15%;
 font-size: x-large;
 }
 
-/* Signup page */
-#signup_form {
-border: none;
-}
-
 /*--------------------------------------------------------------
 2.2 - Header
 --------------------------------------------------------------*/
@@ -2452,9 +2447,7 @@ div#message.updated {
 }
 .standard-form#signup_form div div.error {
   background: #e41717;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+  border:none;
   color: #ffffff;
   margin: 0 0 10px 0;
   padding: 6px;
