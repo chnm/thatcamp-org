@@ -10,19 +10,19 @@
 
 			<?php if ( bp_account_was_activated() ) : ?>
 
-				<h2 class="widgettitle"><?php _e( 'Account Activated', 'thatcamp' ); ?></h2>
+				<h2 class="widgettitle"><?php _e( 'Account activated', 'thatcamp' ); ?></h2>
 
 				<?php do_action( 'bp_before_activate_content' ); ?>
 
 				<?php if ( isset( $_GET['e'] ) ) : ?>
-					<p><?php _e( 'Your account was activated successfully! Your account details have been sent to you in a separate email.', 'thatcamp' ); ?></p>
+					<p><?php _e( 'Your THATCamp account was activated successfully! Your account details have been sent to you in a separate email.', 'thatcamp' ); ?></p>
 				<?php else : ?>
-					<p><?php _e( 'Your account was activated successfully! You can now log in with the username and password you provided when you signed up.', 'thatcamp' ); ?></p>
+					<p><?php _e( 'Your THATCamp account was activated successfully! You can now <a href="/wp-login.php">log in</a> with the username and password you provided when you signed up. Once you are logged in, you can edit your profile or register a new THATCamp.', 'thatcamp' ); ?></p>
 				<?php endif; ?>
 
 			<?php else : ?>
 
-				<h3><?php _e( 'Activate your Account', 'thatcamp' ); ?></h3>
+				<h3><?php _e( 'Activate your account', 'thatcamp' ); ?></h3>
 
 				<?php do_action( 'bp_before_activate_content' ); ?>
 
@@ -30,7 +30,7 @@
 
 				<form action="" method="get" class="standard-form" id="activation-form">
 
-					<label for="key"><?php _e( 'Activation Key:', 'thatcamp' ); ?></label>
+					<label for="key"><?php _e( 'Activation key:', 'thatcamp' ); ?></label>
 					<input type="text" name="key" id="key" value="" />
 
 					<p class="submit">

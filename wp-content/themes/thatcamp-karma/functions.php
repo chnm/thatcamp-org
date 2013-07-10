@@ -386,6 +386,8 @@ function thatcamp_filter_title( $full_title, $title, $sep, $sep_location ) {
 		return 'People Directory | THATCamp';
 	} else if ( bp_is_activity_component() && bp_is_directory() ) {
 		return 'THATCamp Activity | THATCamp';
+	} else if ( bp_is_register_page() ) {
+		return 'Sign up for an account | THATCamp';	
 	} else if ( bp_displayed_user_id() ) {
 
 		if ( bp_is_user_profile() ) {
@@ -912,7 +914,7 @@ function thatcamp_block_registry_page() {
 	}
 
 	if ( is_page( 'registry' ) ) {
-		wp_redirect( wp_login_url( wp_guess_url() ) );
+		wp_redirect( bp_get_signup_page() );
 	}
 }
 add_action( 'template_redirect', 'thatcamp_block_registry_page' );

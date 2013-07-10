@@ -54,7 +54,7 @@
 
 				<?php endif; ?>
 			</div>
-			<div id="account"><a href="<?php echo site_url(); ?>/accounts"><?php _e( 'How do I get an account?', 'thatcamp' ); ?></a></div>
+			<div id="account"><a href="<?php echo site_url(); ?>/signup"><?php _e( 'Sign up for an account', 'thatcamp' ); ?></a></div>
 		
 			<div id="search-bar">
 					<form action="<?php echo bp_search_form_action(); ?>" method="post" id="search-form">

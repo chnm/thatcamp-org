@@ -320,6 +320,11 @@ margin-left: 15%;
 font-size: x-large;
 }
 
+/* Signup page */
+#signup_form {
+border: none;
+}
+
 /*--------------------------------------------------------------
 2.2 - Header
 --------------------------------------------------------------*/
@@ -2617,11 +2622,11 @@ div#signup-avatar img {
 .standard-form #basic-details-section,
 .standard-form #blog-details-section,
 .standard-form #profile-details-section {
-  float: left;
-  width: 48%;
+  float: none;
+  width: 96%;
 }
 .standard-form #profile-details-section {
-  float: right;
+  float: none;
 }
 .standard-form #blog-details-section {
   clear: left;
@@ -3439,7 +3444,8 @@ body.no-js .field-visibility-settings {
 .field-visibility-settings,
 .field-visibility-settings-toggle,
 .field-visibility-settings-notoggle {
-  color: #999999;
+/*  color: #999999; */
+display:none;
 }
 .field-visibility-settings-toggle a,
 .field-visibility-settings a {
