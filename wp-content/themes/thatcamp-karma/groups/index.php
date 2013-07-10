@@ -45,7 +45,7 @@ get_header( 'thatcamp' ); ?>
 		<div id="group-dir-search" class="dir-search" role="search">
 
 	<form action="" method="get" id="search-groups-form">
-		<label><input type="text" name="s" id="groups_search" placeholder="Find THATCamps" /></label>
+		<label><input type="text" name="s" id="groups_search" placeholder="Find THATCamps" value="<?php echo isset( $_REQUEST['s'] ) ? esc_attr( $_REQUEST['s'] ) : ''; ?>" /></label>
 		<input type="submit" id="groups_search_submit" name="groups_search_submit" value="<?php _e( 'Search', 'buddypress' ) ?>" />
 	</form>
 
