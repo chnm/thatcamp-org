@@ -398,8 +398,8 @@ border:0;
 .account {
 display: inline;
 font-size:10pt;
-float: right;
-padding-right: 10%;
+float: left;
+padding-left: 10px;
 }
 #sitebar-wrapper #search-bar {
   float: none;
@@ -3738,7 +3738,8 @@ ie9 #user-section {
   .account {
   display: inline; 
   width: 28%;
-  float: right;
+  float: left;
+  padding-top: 5px;
   }  
   .widget {
     display: block;

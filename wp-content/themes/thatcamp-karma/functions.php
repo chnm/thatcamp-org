@@ -905,20 +905,6 @@ function thatcamp_catch_registry_form() {
 }
 add_action( 'template_redirect', 'thatcamp_catch_registry_form', 5 );
 
-/**
- * Don't let non-logged-in users access registry page
- */
-function thatcamp_block_registry_page() {
-	if ( is_user_logged_in() ) {
-		return;
-	}
-
-	if ( is_page( 'registry' ) ) {
-		wp_redirect( bp_get_signup_page() );
-	}
-}
-add_action( 'template_redirect', 'thatcamp_block_registry_page' );
-
 function thatcamp_date_dropdown() {
 	$current_date = isset( $_GET['date'] ) ? urldecode( $_GET['date'] ) : 'all';
 

@@ -24,7 +24,7 @@
 
 				<?php do_action( 'template_notices' ); ?>
 
-				<p><?php _e( 'Signing up for a THATCamp account will give you a profile on the main site at thatcamp.org only. You must log in with a THATCamp account before you can register a new THATCamp</a>. To gain access to a particular THATCamp website such as <a href="http://chnm2013.thatcamp.org">http://chnm2013.thatcamp.org</a>, you will need to register to attend that THATCamp through its own website. All information below is <strong>required</strong>.', 'thatcamp' ); ?></p>
+				<p><?php _e( 'Signing up for a THATCamp account here will give you a profile on the main site at thatcamp.org only. To gain access to a particular THATCamp website such as <a href="http://chnm2013.thatcamp.org">http://chnm2013.thatcamp.org</a>, you will need to register to attend that THATCamp through its own website. All information below is <strong>required</strong>.', 'thatcamp' ); ?></p>
 
 				<?php do_action( 'bp_before_account_details_fields' ); ?>
 

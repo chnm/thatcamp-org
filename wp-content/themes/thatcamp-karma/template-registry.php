@@ -17,6 +17,8 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 <div id="primary" class="main-content">
 	<div id="content" class="clearfix feature-box thatcamp-registry" role="main">
 		<h1 class="post-title red-text">THATCamp Registry</h1>
+		 <?php if ( is_user_logged_in() ) : ?>
+		
 		<?php if ( isset( $_GET['success'] ) ) : ?>
 			<?php $url = 'http://' . urldecode( $_GET['success'] ) . '.thatcamp.org/'; ?>
 
@@ -102,6 +104,9 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 
 				<input name="thatcamp-register-submit" type="submit" value="Submit">
 			</form>
+		<?php endif ?>
+		<?php else : ?>
+		<?php echo ('You must <a href="/wp-login.php" title="Log in" name="Log in">log in</a> with your THATCamp account before you can register a new THATCamp. If you have ever been to a THATCamp, you probably already have a THATCamp account; if you have forgotten how to log in, you can <a href="/wp-login.php/?action=lostpassword" title="Reset your password" name="Reset your password">reset your password</a>. If you do not have a THATCamp account, you can <a href="/signup" title="Sign up for an account" name="Sign up for an account">sign up for an account</a>.'); ?>	
 		<?php endif ?>
 	</div>
 </div>
