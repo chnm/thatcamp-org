@@ -45,7 +45,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 					<?php if ( isset( $_POST['errors']['site-url'] ) ) : ?>
 						<p class="required-error"><?php echo esc_html( $_POST['errors']['site-url'] ) ?></p>
 					<?php endif ?>
-					<p>Example: http://newengland2012.thatcamp.org. THATCamp site URLs are generally constructed thusly: http://[nameyear].thatcamp.org. Please try to follow this convention when choosing a URL. If you plan to host your own THATCamp site, let us know and we will point this URL to your site.</p>
+					<p>Example: http://newengland2012.thatcamp.org. THATCamp site URLs are generally constructed thusly: http://[nameyear].thatcamp.org. Please try to follow this convention when choosing a URL. If you plan to host your own THATCamp site, first complete this form, then go to Tools --> Domain Mapping in the thatcamp.org site Dashboard to redirect its URL to yours.</p>
 					<?php $site_url = isset( $_POST['site-url'] ) ? $_POST['site-url'] : '' ?>
 					http://<input name="site-url" type="text" id="site-url" value="<?php echo esc_attr( $site_url ) ?>" />.thatcamp.org
 				</div>

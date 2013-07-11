@@ -1492,11 +1492,6 @@ select.mobileMenu {
   margin-bottom: 2em;
   border-top: 1px dashed #333;
 }
-#group-dir-count-bottom {
-width: 50%;
-display:inline;
-border:0;
-}
 nav#show-menu {
   clear: both;
   font-size: 32px;
@@ -2377,7 +2372,6 @@ div.activity-comments form div.ac-reply-content {
 #wp-admin-bar .padder {
   width: 95% !important;
   /* Line up the Toolbar with the content body in this theme */
-
 }
 /*--------------------------------------------------------------
 6.3 - Directories - Members, Groups, Blogs, Forums
@@ -2386,8 +2380,18 @@ div.dir-search {
   padding: 20px 0;
 }
 div.dir-search input[type=text] {
-  padding: 1px 3px;
+  padding: 5px; 
 }
+
+#group-dir-count-top, 
+#group-dir-count-bottom,
+#member-dir-count-top,
+#member-dir-count-bottom {
+width: 50%;
+display:inline;
+border:0;
+}
+
 .item-desc > span {
   font-size: 14px;
   white-space: nowrap;
