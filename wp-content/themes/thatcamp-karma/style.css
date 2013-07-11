@@ -2380,7 +2380,7 @@ div.dir-search {
   padding: 20px 0;
 }
 div.dir-search input[type=text] {
-  padding: 5px; 
+  padding: 0px 3px; 
 }
 
 #group-dir-count-top, 
