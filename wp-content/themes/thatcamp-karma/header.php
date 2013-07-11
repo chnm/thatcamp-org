@@ -33,7 +33,7 @@
 						<?php bp_loggedin_user_avatar( 'type=thumb&width=40&height=40' ); ?>
 					</a>
 					<h4><?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?></h4>
-					<a class="header-button logout" href="<?php echo wp_logout_url( wp_guess_url() ); ?>"><?php _e( 'Log Out', 'thatcamp' ); ?></a>
+					<a class="header-button logout" href="<?php echo wp_logout_url( wp_guess_url() ); ?>"><?php _e( 'Log out', 'thatcamp' ); ?></a>
 				<?php else : ?>
 
 					<?php do_action( 'bp_before_sidebar_login_form' ); ?>
@@ -51,10 +51,12 @@
 					</form>
 
 					<?php do_action( 'bp_after_sidebar_login_form' ); ?>
+					
+					<a href="<?php echo bp_signup_page(); ?>" class="account">
+					<?php _e('Sign up for an account'); ?></a>		
 
 				<?php endif; ?>
 			</div>
-			<div id="account"><a href="<?php echo site_url(); ?>/signup"><?php _e( 'Sign up for an account', 'thatcamp' ); ?></a></div>
 		
 			<div id="search-bar">
 					<form action="<?php echo bp_search_form_action(); ?>" method="post" id="search-form">

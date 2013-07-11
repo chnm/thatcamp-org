@@ -382,7 +382,7 @@ border:0;
 }
 #user-section {
   float: none;
-  width: 40%;
+  width: 60%;
   display:inline;
 }
 #user-section img {
@@ -395,10 +395,11 @@ border:0;
 #user-section .button {
   float: left;
 }
-#account {
-width: 20%;
-display:inline;
+.account {
+display: inline;
 font-size:10pt;
+float: right;
+padding-right: 10%;
 }
 #sitebar-wrapper #search-bar {
   float: none;
@@ -1137,9 +1138,14 @@ a:visited.button.socialbutton,
 a:link.button.socialbutton,
 a:hover.button.socialbutton {
   text-shadow: -1px -1px 0px #006677;
+  color: #fff;
 }
 .offset {
   float: none;
+}
+#sidebar-login-form {
+  width: 360px;
+  float:left;
 }
 #sidebar-login-form label {
   display: none;
@@ -1159,7 +1165,7 @@ a:hover.button.socialbutton {
   content: "";
 }
 #sidebar-login-form:after {
-  clear: both;
+  clear: left;
 }
 #user-section .input {
   color: #aaa;
@@ -1216,7 +1222,7 @@ a:link.postlink,
 .single a,
 .single a:visited,
 .single a:link,
-.single a:hover {
+.single a:hover  {
   color: #88aa11;
 }
 
@@ -1239,12 +1245,24 @@ a.email-thatcamplink {
   color: #bb1122;
   display: block;
 }
+
 #user-section a,
 #user-section a:link,
 #user-section a:visited,
 #user-section a:hover {
   color: #ccc;
 }
+
+#user-section a.account,
+#user-section a:visited.account {
+  color: #88aa11;
+}
+
+#user-section a:hover.account,
+#user-section a:link.account {
+color: #668800;
+}
+
 .skip-link,
 .assistive-text {
   display: none;
@@ -2525,6 +2543,7 @@ ul.button-nav {
   font-weight: normal;
   margin: 5px 0 0 0;
 }
+
 .standard-form#sidebar-login-form label {
   margin-top: 5px;
 }
@@ -2539,10 +2558,6 @@ ul.button-nav {
   background: #222;
   border: 1px solid #111;
 }
-#search-bar {
-  float: none;
-  width: 100%;
-}
 #search-bar form {
   float: right;
 }
@@ -2555,7 +2570,6 @@ ul.button-nav {
   border: 1px solid #111;
   color: #ffffff;
 }
-
 #search-terms {
 opacity: .6;
 font-size:10pt;
@@ -3636,12 +3650,11 @@ ie9 #user-section {
   #responsive-menu {
     float:left;
   }
-  #user-section, #search-bar {
-  float:left;
-  width: 100%;
-  }
-  #account {
-  display:none;
+  #sidebar-login-form, .account, #user-section, #search-bar form {
+  width: 320px;
+  float: left;
+  display: block;
+  margin-bottom: 10px;
   }
    .widget {
     display: block;
@@ -3675,6 +3688,14 @@ ie9 #user-section {
   #responsive-menu {
     display: none;
   }
+  #user-section {
+  float:left;
+  width: 62%;
+  } 
+  #search-bar form {
+  float: right;
+  width: 38%;
+  }
   #avatarwall {
     display: block;
   }
@@ -3683,17 +3704,6 @@ ie9 #user-section {
     max-width: 768px;
     padding: 0 40px;
     overflow: visible;
-  }
-  #search-bar {
-    float: right;
-    width: 50%;
-  }
-  #user-section {
-    float: left;
-    width: 50%;
-  }
-   #account {
-    display:none;
   }
    .widget {
     display: block;
@@ -3717,6 +3727,19 @@ ie9 #user-section {
   #responsive-menu {
     display: none;
   }
+  #user-section {
+  float:left;
+  width: 72%;
+  } 
+  #search-bar form {
+  float: right;
+  width: 28%;
+  }
+  .account {
+  display: inline; 
+  width: 28%;
+  float: right;
+  }  
   .widget {
     display: block;
   }
@@ -3759,18 +3782,6 @@ ie9 #user-section {
     padding: 0 40px;
     overflow: visible;
   }
-  #search-bar {
-    float: right;
-    width: 40%;
-  }
-  #user-section {
-    float: left;
-    width: 40%;
-  }
-   #account {
-    display:inline;
-    width:20%;
-  }
   #twitterwidget-wrapper {
     display: block;
   }
@@ -3800,11 +3811,10 @@ ie9 #user-section {
   }
    #user-section {
     float: left;
-    width: 40%;
+    width: 60%;
   }
-  #account {
+  .account {
     display:inline;
-    width:20%;
   }
    #search-bar {
     float: right;
@@ -3889,9 +3899,9 @@ ie9 #user-section {
   #responsive-menu {
     display: none;
   }
-   #account {
+   .account {
     display:inline;
-  }
+  } 
   .widget {
     display: block;
   }
