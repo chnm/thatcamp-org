@@ -725,7 +725,18 @@ function thatcamp_add_tbd_to_upcoming( $has_groups ) {
 
 	$current_view = thatcamp_directory_current_view();
 
-	if ( bp_is_groups_component() && bp_is_directory() && in_array( $current_view, array( 'search', 'upcoming' ) ) ) {
+        $current_region = 'all';
+        if ( isset( $_GET['region'] ) ) {
+                $current_region = $_GET['region'];
+        }
+
+        // Only filter the groups directory
+        if ( ! bp_is_groups_component() || ! bp_is_directory() ) {
+                return $has_groups;
+        }
+
+        // Only append to search results, the Upcoming list, and All/All
+        if ( in_array( $current_view, array( 'search', 'upcoming' ) ) || ( 'all' === $current_view && 'all' !== $current_region ) ) {
 
 		// If there's a 'region' filter, apply it
 		$region_filter = '';
