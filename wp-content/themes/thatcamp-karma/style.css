@@ -1050,6 +1050,8 @@ div.dir-search input[type="text"] {
 }
 #groups_search, #members_search {
 background-color:#EEEEEE;
+height: 16px;
+padding: 5px;
 }
 .header-button,
 #search-bar #search-submit,
@@ -2380,10 +2382,10 @@ div.dir-search {
   padding: 20px 0;
 }
 div.dir-search input[type=text] {
-  padding: 5px; 
+  padding: 5px;
 }
 
-#group-dir-count-top, 
+#group-dir-count-top,
 #group-dir-count-bottom,
 #member-dir-count-top,
 #member-dir-count-bottom {
@@ -3624,8 +3626,8 @@ ie9 #user-section {
   clear: none;
 }
 .ie8 #twitterwidget-wrapper,
-.ie9 #twitterwidget-wrapper, 
-.ie8 #transposh-wrapper, 
+.ie9 #twitterwidget-wrapper,
+.ie8 #transposh-wrapper,
 .ie9 #transposh-wrapper {
   display: block;
 }
@@ -3695,7 +3697,7 @@ ie9 #user-section {
   #user-section {
   float:left;
   width: 62%;
-  } 
+  }
   #search-bar form {
   float: right;
   width: 38%;
@@ -3734,17 +3736,17 @@ ie9 #user-section {
   #user-section {
   float:left;
   width: 72%;
-  } 
+  }
   #search-bar form {
   float: right;
   width: 28%;
   }
   .account {
-  display: inline; 
+  display: inline;
   width: 28%;
   float: left;
   padding-top: 5px;
-  }  
+  }
   .widget {
     display: block;
   }
@@ -3802,7 +3804,7 @@ ie9 #user-section {
     margin: 10px 0 0 0;
     display: block;
     overflow: hidden;
-  }   
+  }
 }
 @media only screen and (min-width: 1024px) {
 
@@ -3886,12 +3888,12 @@ ie9 #user-section {
   }
   div.item-desc div, div.item-desc span {
   display:inline;
-  }   
+  }
 }
 
 @media only screen and (min-width: 1344px) {
   /* Styles */
-  
+
 }
 
 @media only screen and (min-width: 1382px) {
@@ -3906,7 +3908,7 @@ ie9 #user-section {
   }
    .account {
     display:inline;
-  } 
+  }
   .widget {
     display: block;
   }

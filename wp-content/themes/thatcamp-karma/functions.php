@@ -387,7 +387,7 @@ function thatcamp_filter_title( $full_title, $title, $sep, $sep_location ) {
 	} else if ( bp_is_activity_component() && bp_is_directory() ) {
 		return 'THATCamp Activity | THATCamp';
 	} else if ( bp_is_register_page() ) {
-		return 'Sign up for an account | THATCamp';	
+		return 'Sign up for an account | THATCamp';
 	} else if ( bp_displayed_user_id() ) {
 
 		if ( bp_is_user_profile() ) {

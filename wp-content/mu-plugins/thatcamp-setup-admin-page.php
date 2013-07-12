@@ -59,7 +59,7 @@ function thatcamp_menu_page() {
 
 				<td>
 					<input id="thatcamp_start_date" name="thatcamp_start_date" type="text" value="<?php echo esc_attr( $start_date ) ?>" />
-					<p class="description">Start Date</p>
+					<p class="description">Start Date (<small>one-day THATCamps need only a Start Date</small>)</p><br />
 					<input id="thatcamp_end_date" name="thatcamp_end_date" type="text" value="<?php echo esc_attr( $end_date ) ?>" />
 					<p class="description">End Date</p>
 				</td>

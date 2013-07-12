@@ -27,6 +27,14 @@ RewriteRule  ^[_0-9a-zA-Z-]+/(.*\.php)$ $1 [L]
 #RewriteRule . index.php [L]
 RewriteRule ^(.+)$ /index.php/$1 [NC,L,QSA]
 
+# BEGIN ANTISPAMBLOG REGISTRATION
+RewriteCond %{REQUEST_METHOD} POST
+RewriteCond %{REQUEST_URI} .signup*
+RewriteCond %{HTTP_REFERER} !.*thatcamp.org.* [OR]
+RewriteCond %{HTTP_USER_AGENT} ^$
+RewriteRule (.*) http://die-spammers.com/ [R=301,L]
+# END ANTISPAMBLOG REGISTRATION
+
 Redirect 301 /gratitude http://thatcamp.org/people/sponsors
 Redirect 301 /applications http://thatcamp.org/help/plan/registrations
 Redirect 301 /plan/before/applications http://thatcamp.org/help/plan/registrations

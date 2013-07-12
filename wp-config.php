@@ -80,6 +80,7 @@ define( 'NOBLOGREDIRECT', 'http://' . DOMAIN_CURRENT_SITE . '/site-not-found/?re
 // BuddyPress constants
 define( 'BP_GROUPS_SLUG', 'camps' );
 define( 'BP_MEMBERS_SLUG', 'people' );
+define( 'BP_REGISTER_SLUG', 'signup' );
 define( 'BP_DEFAULT_COMPONENT', 'profile' );
 
 /* That's all, stop editing! Happy blogging. */
