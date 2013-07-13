@@ -3646,7 +3646,7 @@ ie9 #user-section {
 8.0 - Media queries
 --------------------------------------------------------------*/
 @media only screen and (min-width: 320px) and (max-width: 767px) {
-  /* Styles */ 
+  /* Styles */
   nav#top-nav {
     display: none;
   }
@@ -3664,6 +3664,7 @@ ie9 #user-section {
   }
    .widget {
     display: block;
+    padding-bottom: 30px;
   }
   #sidebar {
     width: 75%;
@@ -3672,7 +3673,10 @@ ie9 #user-section {
     top: 40px;
     margin:auto;
     padding: 20px;
-    border: 2px solid rgb(238, 238, 238);
+  }
+  .campbutton {
+  position: relative;
+  left: 40px;
   }
   div.item-desc div, div.item-desc span {
   display:block;
@@ -3696,8 +3700,27 @@ ie9 #user-section {
   font-size: 10pt;
   }
   .camp-listdate {
-  width: 28%;
-  }  
+  width: 100%;
+  display: block;
+  float: left;
+  text-align: left;
+  border: none;
+  overflow: visible;
+  }
+  .camp-listinfo {
+  width: 100%;
+  display:block;
+  float: left;
+  overflow: visible;
+  padding-left: 0;
+  }
+div.dir-search input[type="text"], #tc-region {
+  width: 80%;
+}
+.router {
+margin-left: 5%;
+}
+
 }
 @media only screen and (min-width: 480px) {
   /* Styles */
@@ -3708,6 +3731,7 @@ ie9 #user-section {
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
    nav#top-nav {
     display: block;
+    margin-right: 1.5em;
   }
   nav#show-menu {
     display:none;
@@ -3733,7 +3757,7 @@ ie9 #user-section {
   }
   div#primary {
   width: 100%;
-  }  
+  }
   #sidebar {
     width: 75%;
     display:block;
@@ -3741,11 +3765,10 @@ ie9 #user-section {
     top: 40px;
     margin:auto;
     padding: 20px;
-    border: 2px solid rgb(238, 238, 238);
   }
     .widget {
     display: block;
-  }  
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -3773,7 +3796,7 @@ ie9 #user-section {
     margin: 10px 0 0 0;
     display: block;
     overflow: hidden;
-  }  
+  }
   #avatarwall {
     display: block;
   }
@@ -3787,7 +3810,7 @@ ie9 #user-section {
     float: right;
     width: 68%;
     clear: none;
-  }  
+  }
   #sidebar {
     width: 26%;
     float: left;
@@ -3800,11 +3823,14 @@ ie9 #user-section {
     float: left;
     clear:none;
   }
+  .children {
+  display:none;
+  }
   #primary-documents {
     float: right;
     width: 60%;
     clear:none;
-  }  
+  }
   #sidebar-innerleft {
     float: left;
     width: 55%;
@@ -3838,7 +3864,7 @@ ie9 #user-section {
 @media only screen and (min-width: 1382px) {
   /* Styles */
 
- */ 
+ */
 @media only screen and (min-width: 1440px) {
   /* Styles */
 }
