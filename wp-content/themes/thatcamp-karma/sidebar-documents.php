@@ -5,8 +5,8 @@
  * @package thatcamp
  * @since thatcamp 1.0
  */
-?>
-<div id="sidebar" role="complementary">
+?>	
+<div id="sidebar" role="complementary">	
 		<nav id="side-nav" role="navigation">
 			<?php
 			  if($post->post_parent) {
@@ -29,13 +29,11 @@
 
 			<?php if ( is_active_sidebar( 'sidebar-documents' ) ) : ?>
 			<?php dynamic_sidebar( 'sidebar-documents' ); ?>
-			<?php endif; ?>
+			<?php endif; ?>					
 		</nav>
-
 	<div id="transposh-wrapper">
 		<?php if ( is_active_sidebar( 'sidebar-transposh' ) ) : ?>
 			<?php dynamic_sidebar( 'sidebar-transposh' ); ?>
 		<?php endif; ?>
 	</div>
-
 </div>
