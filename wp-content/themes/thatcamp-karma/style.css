@@ -3645,8 +3645,8 @@ ie9 #user-section {
 /*--------------------------------------------------------------
 8.0 - Media queries
 --------------------------------------------------------------*/
-@media only screen and (min-width: 320px) {
-  /* Styles */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  /* Styles */ 
   nav#top-nav {
     display: none;
   }
@@ -3666,33 +3666,57 @@ ie9 #user-section {
     display: block;
   }
   #sidebar {
-    width: 85%;
+    width: 75%;
     display:block;
-    float: left;
+    position: relative;
+    top: 40px;
+    margin:auto;
     padding: 20px;
-    background: white;
     border: 2px solid rgb(238, 238, 238);
   }
   div.item-desc div, div.item-desc span {
   display:block;
   }
+  div#primary {
+  width: 100%;
+  }
+  .post, .page {
+  overflow: visible;
+  }
+  h1, h1 a {
+  font-size: 16pt;
+  }
+  h2, h2 a {
+  font-size: 14pt;
+  }
+  h3, h3 a {
+  font-size: 12pt;
+  }
+  span, p, a {
+  font-size: 10pt;
+  }
+  .camp-listdate {
+  width: 28%;
+  }  
 }
-
 @media only screen and (min-width: 480px) {
   /* Styles */
 }
 @media only screen and (min-width: 600px) {
   /* Styles */
 }
-@media only screen and (min-width: 768px) {
-  nav#top-nav {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+   nav#top-nav {
     display: block;
   }
   nav#show-menu {
-    display: none;
+    display:none;
   }
   #responsive-menu {
     display: none;
+  }
+  #avatarwall {
+  display:block;
   }
   #user-section {
   float:left;
@@ -3702,98 +3726,43 @@ ie9 #user-section {
   float: right;
   width: 38%;
   }
-  #avatarwall {
-    display: block;
+  .account {
+  position: relative;
+  bottom: 20px;
+  left: -7px;
   }
-  .wrapper {
-    margin: 0 auto;
-    max-width: 768px;
-    padding: 0 40px;
-    overflow: visible;
-  }
-   .widget {
-    display: block;
-  }
+  div#primary {
+  width: 100%;
+  }  
   #sidebar {
-    width: 60%;
+    width: 75%;
     display:block;
-    float: left;
+    position: relative;
+    top: 40px;
+    margin:auto;
     padding: 20px;
-    background: white;
     border: 2px solid rgb(238, 238, 238);
   }
-}
-@media only screen and (min-width: 992px) {
-  nav#top-nav {
+    .widget {
     display: block;
+  }  
+}
+
+@media only screen and (min-width: 992px) {
+  /* Styles */
+}
+
+@media only screen and (min-width: 1024px) {
+   nav#top-nav {
+    display: block;
+    margin-top: -0.9rem;
+    margin-right: 0.6em;
   }
   nav#show-menu {
     display: none;
   }
   #responsive-menu {
     display: none;
-  }
-  #user-section {
-  float:left;
-  width: 72%;
-  }
-  #search-bar form {
-  float: right;
-  width: 28%;
-  }
-  .account {
-  display: inline;
-  width: 28%;
-  float: left;
-  padding-top: 5px;
-  }
-  .widget {
-    display: block;
-  }
-  #sidebar {
-    width: 300px;
-    float: left;
-    padding: 20px 0;
-    margin: 0;
-    clear: none;
-    background: none;
-    border: 0;
-  }
-  #sidebar-documents {
-    width: 35%;
-    float: left;
-  }
-  #sidebar-innerleft {
-    float: left;
-    width: 55%;
-  }
-  #sidebar-innerright {
-    float: right;
-    width: 40%;
-  }
-  #primary {
-    float: right;
-    width: 60%;
-    clear: none;
-  }
-  #primary-documents {
-    float: right;
-    width: 60%;
-  }
-  #avatarwall {
-    display: block;
-  }
-  .wrapper {
-    margin: 0 auto;
-    max-width: 992px;
-    padding: 0 40px;
-    overflow: visible;
-  }
-  #twitterwidget-wrapper {
-    display: block;
-  }
-  .offset {
-    float: right;
   }
   #site-logo a {
     background: url('assets/images/thatcamp-logo.png') no-repeat;
@@ -3804,62 +3773,38 @@ ie9 #user-section {
     margin: 10px 0 0 0;
     display: block;
     overflow: hidden;
+  }  
+  #avatarwall {
+    display: block;
   }
-}
-@media only screen and (min-width: 1024px) {
-
-}
-@media only screen and (min-width: 1140px) {
   .wrapper {
     margin: 0 auto;
     max-width: 1140px;
     padding: 10px 40px;
     overflow: visible;
   }
-   #user-section {
-    float: left;
-    width: 60%;
-  }
-  .account {
-    display:inline;
-  }
-   #search-bar {
+  #primary {
     float: right;
-    width: 40%;
-  }
-  #site-logo a {
-    background: url('assets/images/thatcamp-logo.png') no-repeat;
-    text-indent: 100%;
-    height: 80px;
-    width: 320px;
-    float: left;
-    margin: 10px 0 0 0;
-    display: block;
-    overflow: hidden;
-  }
-   nav#top-nav {
-    display: block;
-    margin-top: -0.9rem;
-  }
-  nav#show-menu {
-    display: none;
-  }
-  #responsive-menu {
-    display: none;
-  }
-  #avatarwall {
-    display: block;
-  }
-  #sidebar {
-    width: 300px;
-    float: left;
-    padding: 20px 0px;
+    width: 68%;
     clear: none;
+  }  
+  #sidebar {
+    width: 26%;
+    float: left;
+    clear: none;
+    padding: 0px 15px;
+    margin-top: 20px;
   }
   #sidebar-documents {
     width: 35%;
     float: left;
+    clear:none;
   }
+  #primary-documents {
+    float: right;
+    width: 60%;
+    clear:none;
+  }  
   #sidebar-innerleft {
     float: left;
     width: 55%;
@@ -3873,15 +3818,6 @@ ie9 #user-section {
   }
   #twitterwidget-wrapper {
     display: block;
-  }
-  #primary {
-    float: right;
-    width: 70%;
-    clear: none;
-  }
-  #primary-documents {
-    float: right;
-    width: 60%;
   }
   .offset {
     float: right;
@@ -3891,88 +3827,18 @@ ie9 #user-section {
   }
 }
 
+@media only screen and (min-width: 1140px) {
+  /* Styles */
+}
+
 @media only screen and (min-width: 1344px) {
   /* Styles */
-
 }
 
 @media only screen and (min-width: 1382px) {
-  nav#top-nav {
-    display: block;
-  }
-  nav#show-menu {
-    display: none;
-  }
-  #responsive-menu {
-    display: none;
-  }
-   .account {
-    display:inline;
-  }
-  .widget {
-    display: block;
-  }
-  #sidebar {
-    width: 320px;
-    float: left;
-    padding: 20px 0;
-    margin: 0;
-    clear: none;
-  }
-  #sidebar-documents {
-    width: 35%;
-    float: left;
-  }
-  #sidebar-innerleft {
-    float: left;
-    width: 55%;
-  }
-  #sidebar-innerright {
-    float: right;
-    width: 40%;
-  }
-  #primary {
-    float: right;
-    width: 70%;
-    clear: none;
-  }
-  #primary-documents {
-    float: right;
-    width: 60%;
-  }
-  #avatarwall {
-    display: block;
-  }
-  .wrapper {
-    margin: 0 auto;
-    max-width: 1140px;
-    padding: 0;
-    overflow: visible;
-  }
-  #search-bar {
-    float: right;
-    width: 60%;
-  }
-  #user-section {
-    float: left;
-    width: 30%;
-  }
-  #twitterwidget-wrapper {
-    display: block;
-  }
-  .offset {
-    float: right;
-  }
-  #site-logo a {
-    background: url('assets/images/thatcamp-logo.png') no-repeat;
-    text-indent: 100%;
-    height: 80px;
-    width: 320px;
-    float: left;
-    margin: 10px 0 0 0;
-    display: block;
-    overflow: hidden;
-  }
+  /* Styles */
+
+ */ 
 @media only screen and (min-width: 1440px) {
   /* Styles */
 }

@@ -83,9 +83,13 @@
 
 	$.GridRotator.defaults	= {
 		// number of rows
-		rows			: 2,
+		rows			: 1,
 		// number of columns 
 		columns			: 12,
+		w1520			: {
+			rows	: 1,
+			columns	: 19
+		},
 		w1440			: {
 			rows	: 1,
 			columns	: 19
@@ -103,24 +107,24 @@
 			columns	: 19
 		},
 		w1024			: {
-			rows	: 2,
-			columns	: 12
+			rows	: 1,
+			columns	: 19
 		},
 		w768			: {
-			rows	: 2,
+			rows	: 1,
 			columns	: 12
 		},
 		w480			: {
-			rows	: 3,
+			rows	: 2,
 			columns	: 5
 		},
 		w320			: {
 			rows	: 2,
-			columns	: 4
+			columns	: 5
 		},
 		w240			: {
 			rows	: 2,
-			columns	: 3
+			columns	: 5
 		},
 		// step: number of items that are replaced at the same time
 		// random || [some number]
