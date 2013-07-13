@@ -84,17 +84,6 @@
 
 
 		</div>
-
-	<!--	<div id="latest-posts" class="feature-box">
-			<h2><?php _e( 'Blog Posts', 'thatcamp' ); ?></h2>
-			<?php rewind_posts();
-			while ( have_posts() ) : the_post();
-				get_template_part( 'parts/content', 'latestposts' );
-			endwhile;?>
-			<a href="<?php echo site_url(); ?>/posts/" class="button postbutton offset">
-				<span class="button-inner"><?php _e( 'View All Posts', 'thatcamp' ); ?></span>
-			</a>
-		</div>-->
 	</div>
 </div>
 <?php get_sidebar('home'); ?>

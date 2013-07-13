@@ -12,12 +12,14 @@
 <?php
 
 if ( bp_is_current_action( 'requests' ) ) :
-	get_template_part( 'members/single/friends/requests'); 
+	get_template_part( 'members/single/friends/requests');
 
 else :
 	do_action( 'bp_before_member_friends_content' ); ?>
 
-	<div class="members friends">
+<div class="members friends">
+
+	<?php get_template_part( 'members/single/content-header' ) ?>
 
 		<?php get_template_part( 'members/members', 'loop'); ?>
 

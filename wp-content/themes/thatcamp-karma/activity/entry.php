@@ -21,15 +21,15 @@
 			</a>
 	</div>
 	<?php if ( is_user_logged_in() ) : ?>
-		
+
 		<div class="activity-meta">
 
-			<?php if ( bp_activity_can_comment() ) : ?>
+<!--			<?php if ( bp_activity_can_comment() ) : ?>
 
 				<a href="<?php bp_get_activity_comment_link(); ?>" class="button acomment-reply bp-primary-action" id="acomment-comment-<?php bp_activity_id(); ?>"><?php printf( __( 'Comment <span>%s</span>', 'thatcamp' ), bp_activity_get_comment_count() ); ?></a>
 
 			<?php endif; ?>
-
+-->
 			<?php if ( bp_activity_can_favorite() ) : ?>
 
 				<?php if ( !bp_get_activity_is_favorite() ) : ?>
@@ -49,7 +49,7 @@
 			<?php do_action( 'bp_activity_entry_meta' ); ?>
 
 		</div>
-		
+
 	<?php endif; ?>
 
 	<div class="activity-content">

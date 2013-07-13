@@ -337,6 +337,7 @@ add_filter( 'bp_ajax_querystring', 'thatcamp_search_querystring', 999 );
  *
  * This allows the custom nav items to work
  */
+
 function thatcamp_activity_querystring( $qs ) {
 	if ( bp_is_user() && bp_is_activity_component() ) {
 

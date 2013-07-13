@@ -15,11 +15,9 @@
 
 <?php if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
 
-	<div id="pag-top" class="pagination no-ajax">
+			<form action="" method="post" id="members-directory-form" class="dir-form">
 
 		<h1 class="post-title red-text"><?php _e( 'People', 'thatcamp' ); ?></h1>
-			
-			<form action="" method="post" id="members-directory-form" class="dir-form">
 
 			<div id="members-dir-search" class="dir-search" role="search">
 
@@ -34,11 +32,12 @@
 				</form>
 			</div>
 		</form>
+	<div id="pag-top" class="pagination no-ajax">
 
 		<div class="pag-count" id="member-dir-count-top">
- 
+
            		<?php bp_members_pagination_count(); ?>
- 
+
        		 </div>
 
 		<div class="pagination-links" id="member-dir-pag-top">
@@ -46,7 +45,6 @@
 			<?php bp_members_pagination_links(); ?>
 
 		</div>
-
 	</div>
 
 	<?php do_action( 'bp_before_directory_members_list' ); ?>
@@ -71,14 +69,14 @@
 	<?php do_action( 'bp_after_directory_members_list' ); ?>
 
 	<?php bp_member_hidden_fields(); ?>
-	
+
 
 	<div id="pag-bottom" class="pagination">
 
 		<div class="pag-count" id="member-dir-count-bottom">
- 
+
            		<?php bp_members_pagination_count(); ?>
- 
+
        		</div>
 
 		<div class="pagination-links" id="member-dir-pag-bottom">
