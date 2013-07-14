@@ -3306,7 +3306,7 @@ body.my-profile #profile-right #subnav #public-personal-li,
 display:none;
 }
 
-#profile-right #item-buttons, .mygroups #item-header {
+#profile-right #item-buttons, .mygroups #item-header, .friends #item-header {
 border:none;
 }
 
