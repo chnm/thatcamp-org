@@ -317,9 +317,13 @@ function thatcamp_camp_description() {
 	global $groups_template;
 
 	$date_created = date( 'M d, Y', strtotime( $groups_template->group->date_created ) );
-	$last_active = bp_core_time_since( strtotime( $groups_template->group->last_activity ) );
+	$html = "<span class='thatcamp-date-created thatcamp-meta-left'>Created $date_created</span>";
+
+/**	Removes Last Active and number of Campers info for clarity, accuracy
+
+$last_active = bp_core_time_since( strtotime( $groups_template->group->last_activity ) );
 	$members = 1 == $groups_template->group->total_member_count ? '1 camper' : sprintf( '%s campers', bp_core_number_format( $groups_template->group->total_member_count ) );
-	$html = "<span class='thatcamp-date-created thatcamp-meta-left'>Created $date_created</span> <span class='thatcamp-last-active'>Active $last_active</span> <span class='thatcamp-member-count thatcamp-meta-left'>$members</span>";
+	$html = "<span class='thatcamp-date-created thatcamp-meta-left'>Created $date_created</span> <span class='thatcamp-last-active'>Active $last_active</span> <span class='thatcamp-member-count thatcamp-meta-left'>$members</span>"; **/
 
 	echo $html;
 }
