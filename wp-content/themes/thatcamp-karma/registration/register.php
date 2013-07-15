@@ -36,9 +36,10 @@
 					<input type="text" name="signup_username" id="signup_username" value="<?php bp_signup_username_value(); ?>" />
 
 					<label for="signup_email"><?php _e( 'Email address', 'thatcamp' ); ?></label>
-					<small><?php _e('harriet-tubman@gmail.com', 'thatcamp' ); ?></small>
+					<small><?php _e('harriet-tubman@gmail.com', 'thatcamp' ); ?></small><br />
 					<?php do_action( 'bp_signup_email_errors' ); ?>
 					<input type="text" name="signup_email" id="signup_email" value="<?php bp_signup_email_value(); ?>" />
+					<small>Due to spam user registrations, we have disabled user account creation for hotmail.com, outlook.com, and live.com email addresses.</small>
 
 					<label for="signup_password"><?php _e( 'Choose a password', 'thatcamp' ); ?></label>
 					<?php do_action( 'bp_signup_password_errors' ); ?>
