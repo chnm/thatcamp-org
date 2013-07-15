@@ -19,7 +19,7 @@
 		<?php
 $display_admins = false;
 $order_by = 'display_name'; // 'nicename', 'email', 'url', 'registered', 'display_name', or 'post_count'
-$role = ''; // 'subscriber', 'contributor', 'editor', 'author' - leave blank for 'all'
+$role = ''; // 'subscriber', 'contributor', 'editor', 'author,' 'administrator' - leave blank for 'all'
 $avatar_size = 64;
 $hide_empty = false; // hides authors with zero posts
 
