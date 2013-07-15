@@ -183,8 +183,13 @@ body {
 }
 ul.contributors li {
   list-style: none;
+  float: left;  
+  display: inline;
+  width: 275px;
+  height: 100px;
   border-bottom: 1px solid #eee;
   overflow: hidden;
+  padding: 0 30px 0 0px;
   margin: 0 0 10px 0;
 }
 ul.contributors {
