@@ -3299,9 +3299,9 @@ div.item-list-tabs ul li.feed a {
   font-size: 1.8rem;
 }
 
-body.activity #profile-right #subnav,
-body.camps #profile-right #subnav,
-body.my-profile #profile-right #subnav #public-personal-li,
+#public-personal-li,
+#just-me-personal-li,
+#groups-my-groups-personal-li,
 #whats-new-form {
 display:none;
 }
