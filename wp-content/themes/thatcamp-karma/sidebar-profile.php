@@ -36,7 +36,7 @@
 
 	<div id="subnav" class="item-list-tabs no-ajax" role="navigation">
 			<ul>
-		<?php if ( bp_is_user_activity() && ! thatcamp_activity_type() ): ?>
+<!--		<?php if ( bp_is_user_activity() && ! thatcamp_activity_type() ): ?>
 		<li id="activity-filter-select" class="last">
 			<label for="activity-filter-by"><?php _e( 'Show:', 'thatcamp' ); ?></label>
 			<select id="activity-filter-by">
@@ -72,7 +72,7 @@
 			</select>
 		</li>
 	<?php endif; ?>
-
+-->
 	<?php if ( bp_is_my_profile() ) : ?>
 		<?php bp_get_options_nav(); ?>
 	<?php endif; ?>

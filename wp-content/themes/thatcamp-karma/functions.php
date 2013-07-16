@@ -459,11 +459,22 @@ function thatcamp_mod_user_nav() {
 
 	if ( bp_is_active( 'xprofile' ) ) {
 		$bp->bp_nav['profile']['name'] = 'About';
-		$bp->bp_nav['profile']['position'] = 5;
+		$bp->bp_nav['profile']['position'] = 5;	
+	}
+
+	if ( bp_is_active( 'activity' ) ) {
+		bp_core_remove_subnav_item( 'activity', 'mentions' );
+		bp_core_remove_subnav_item( 'activity', 'favorites' );
+		bp_core_remove_subnav_item( 'activity', 'friends' );
+		bp_core_remove_subnav_item( 'activity', 'camps' );		
 	}
 
 	if ( bp_is_active( 'blogs' ) ) {
 		bp_core_remove_nav_item( 'blogs' );
+	}
+
+	if ( bp_is_active( 'groups' ) ) {
+		bp_core_remove_subnav_item( 'camps', 'invites' );
 	}
 
 	if ( bp_is_active( 'messages' ) ) {
