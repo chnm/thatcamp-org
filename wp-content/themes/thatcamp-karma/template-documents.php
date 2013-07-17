@@ -41,6 +41,9 @@
 		 title="<?php echo get_the_title($nextID); ?>"><?php echo get_the_title($nextID); ?>&nbsp;&rarr;</a>
 		</div>
 		<?php } ?>
+		<div id="forums-link">
+		<p>Doesn't help? Ask your question on <a href="/forums">the forums</a>.</p>
+		</div>
 		</div><!-- .nav-below -->
 		</div>
 	</div>

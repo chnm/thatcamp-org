@@ -1504,7 +1504,10 @@ display: inline-block;
 .nav-next {
 display: inline-block;
 }
-
+.router {
+margin-left: 15%;
+font-size: x-large;
+}
 select.mobileMenu {
   width: 100%;
 }
@@ -3775,10 +3778,6 @@ ie9 #user-section {
 div.dir-search input[type="text"], #tc-region {
   width: 80%;
 }
-.router {
-margin-left: 5%;
-}
-
 }
 @media only screen and (min-width: 480px) {
   /* Styles */
