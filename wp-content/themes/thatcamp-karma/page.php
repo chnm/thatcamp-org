@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name : Links
+ * Template Name : Page
  *
  * @package thatcamp
  * @since thatcamp 1.0
