@@ -1408,7 +1408,7 @@ nav#top-nav li ul li a:hover {
   background-clip: padding-box;
 }
 
-/* Side / Documents Navigation */
+/* Documents Navigation */
 
 nav#side-nav {
   margin: 0;
@@ -1470,8 +1470,11 @@ float: left;
 display:inline-block;
 float: right;
 }
+#forums-link {
+text-align: center;
+}
  
- /* End Side / Documents navigation */
+ /* End Documents navigation */
  
 nav[role="navigation"].main-small-navigation {
   text-align: left;
