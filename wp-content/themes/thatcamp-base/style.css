@@ -221,6 +221,10 @@ ul.contributors {
 #logos img.nospace {
   margin: 10px 0 10px 0;
 }
+.post-summary,.post-header,.post-meta {
+padding:15px;
+}
+
 /*--------------------------------------------------------------
 2.2 - Header
 --------------------------------------------------------------*/
@@ -1255,7 +1259,10 @@ dd.wp-caption p.wp-caption-text,
 }
 .widget li {
   list-style: none;
+  margin-bottom:1em;
 }
+
+
 /*--------------------------------------------------------------
 6.0 - Browser specific
 --------------------------------------------------------------*/
