@@ -132,7 +132,7 @@ Useful tags - you can override any of these you want
 }
 .clearleft {
   clear: left;
-}
+}	
 .clearright {
   clear: right;
 }
@@ -312,12 +312,6 @@ display:none;
 #search-page .post-meta {
 margin-left: 10%;
 border: 0;
-}
-
-/* For router pages that are nothing but lists of links */
-.router {
-margin-left: 15%;
-font-size: x-large;
 }
 
 /* Signup form */
@@ -1183,6 +1177,19 @@ a:hover.button.socialbutton {
   float: left;
   margin: 0 10px 0 0;
 }
+
+#bbp-search-form {
+width: 280px;
+}
+
+#bbp-search-form .screen-reader-text {
+display:none;
+}
+
+#bbp_search, #bbp_search_submit {
+display: inline;
+}
+
 /*--------------------------------------------------------------
 4.0 - Navigation
 --------------------------------------------------------------*/
@@ -1400,6 +1407,9 @@ nav#top-nav li ul li a:hover {
   -moz-background-clip: padding;
   background-clip: padding-box;
 }
+
+/* Side / Documents Navigation */
+
 nav#side-nav {
   margin: 0;
 }
@@ -1414,25 +1424,30 @@ nav#side-nav li a {
   text-decoration: none;
   float: none;
   color: #333;
+  font-weight:bold;
 }
 nav#side-nav li {
   list-style: none;
   border-bottom: 1px dashed #aaa;
-  padding: 5px 5px 5px 20px;
+  padding: 5px 10px 5px 20px;
   background: #f3efe6;
 }
 nav#side-nav li:hover {
-  background: #ece9db;
+  background: #d7d0b2;
+}
+nav#side-nav ul li ul li.current_page_item a {
+  color:#bb1122;
 }
 nav#side-nav li:last-child {
   border-right: none;
+  border-bottom: none;
 }
 nav#side-nav li ul {
-  display: none;
-  position: absolute;
-  top: 100%;
+/*  display: none; */
+/*  position: absolute;
+  top: 100%; */
   margin: 0;
-  z-index: 1;
+/*  z-index: 1; */
   background: #eee;
 }
 nav#side-nav li:hover ul {
@@ -1444,8 +1459,20 @@ nav#side-nav li ul li a {
 }
 nav#side-nav li ul li a {
   display: block;
-  width: 100px;
+  width: 250px;
+  font-weight:normal;    
+ }
+.nav-prev {
+display:inline-block;
+float: left;
 }
+.nav-next {
+display:inline-block;
+float: right;
+}
+ 
+ /* End Side / Documents navigation */
+ 
 nav[role="navigation"].main-small-navigation {
   text-align: left;
 }
@@ -1466,6 +1493,7 @@ nav#bottom-nav ul li {
 #nav-below {
   margin: 10px 0 20px 0;
   margin: 1rem 0 2rem 0;
+  min-height: 56px;
 }
 select.mobileMenu {
   width: 100%;
@@ -2180,10 +2208,10 @@ display:none;
 .activity-meta a.acomment-reply:hover {
   background: url('assets/images/icon-commentreplyhover.png') no-repeat;
 }
-.activity-meta a.fav {
+.activity-meta a.fav, .activity-meta a.unfav:hover {
   background: url('assets/images/icon-favoriteshover.png') no-repeat;
 }
-.activity-meta a.unfav {
+.activity-meta a.unfav, .activity-meta a.fav:hover {
   background: url('assets/images/icon-favorited.png') no-repeat;
 }
 .activity-meta .button {
