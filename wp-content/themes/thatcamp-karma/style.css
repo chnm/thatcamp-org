@@ -1495,6 +1495,13 @@ nav#bottom-nav ul li {
   margin: 1rem 0 2rem 0;
   min-height: 56px;
 }
+.nav-previous {
+display: inline-block;
+}
+.nav-next {
+display: inline-block;
+}
+
 select.mobileMenu {
   width: 100%;
 }
