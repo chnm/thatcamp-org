@@ -111,5 +111,5 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 	</div>
 </div>
 
-<?php get_sidebar( 'stream' ); ?>
+<?php get_sidebar( 'documents' ); ?>
 <?php get_footer() ?>
