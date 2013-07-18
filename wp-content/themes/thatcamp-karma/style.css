@@ -1433,9 +1433,22 @@ nav#side-nav li {
   background: #f3efe6;
 }
 nav#side-nav li:hover {
-  background: #d7d0b2;
+  background: #d7d0b2;  
 }
-nav#side-nav ul li ul li.current_page_item a {
+nav#side-nav ul li:hover ul.children {
+  display:none;
+}
+nav#side-nav ul li.current_page_item ul.children, 
+nav#side-nav ul li.current_page_parent ul.children {
+  display:block;
+}  
+nav#side-nav ul li.current_page_item a {
+  color:#bb1122;
+}
+nav#side-nav ul li.current_page_item ul li a {
+  color:#333;
+}
+nav#side-nav ul li.current_page_parent ul.children li.current_page_item a {
   color:#bb1122;
 }
 nav#side-nav li:last-child {
