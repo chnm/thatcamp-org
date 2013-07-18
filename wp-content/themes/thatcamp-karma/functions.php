@@ -75,7 +75,7 @@ function thatcamp_build() {
 	register_nav_menu('top', __('Top', 'thatcamp'));
 	register_nav_menu('bottom', __('Bottom', 'thatcamp'));
 	register_nav_menu('middle', __('Middle', 'thatcamp'));
-	register_nav_menu('documents', __('Documents', 'thatcamp'));
+	register_nav_menu('forums', __('Forums', 'thatcamp'));
 
 	// Add post format support
 	add_theme_support( 'post-formats', array( 'aside', 'image', 'link', 'quote' ) );

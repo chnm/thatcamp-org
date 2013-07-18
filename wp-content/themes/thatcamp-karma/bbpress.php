@@ -1,6 +1,6 @@
 <?php
 /**
- * BBPress Forums Template, copy of Documents Template
+ * BBPress Forums Template
  *
  * @package thatcamp
  * @since thatcamp 1.0
@@ -18,5 +18,5 @@
 		</div>
 	</div>
 </div>
-<?php get_sidebar('documents'); ?>
+<?php get_sidebar('forums'); ?>
 <?php get_footer() ?>
