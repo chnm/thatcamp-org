@@ -3,7 +3,7 @@ Theme Name: THATCamp Book
 Theme Date: 12/06/2012
 Version: 1.0
 Theme URI: http://thatcamp.org
-Description: THATCamp subsite theme
+Description: THATCamp Book is a mobile-optimized theme for THATCamp subsites.
 Author: Tammie Lister
 Author URI: www.thelogicalbinary.com
 Tags:
@@ -157,15 +157,15 @@ textarea {
 body {
   margin: 0;
   padding: 0;
-  background: #006677;
+  background: #446688;
 }
 #site-wrapper {
   background: #ffffff;
-  padding: 60px;
+  padding: 40px;
 }
 #site-gap {
-  background: rgba(255, 255, 255, 0.1);
-  margin: 60px auto;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 40px auto;
   padding: 30px;
   max-width: 1100px;
 }
@@ -304,7 +304,7 @@ blockquote {
   margin: 0 0 2rem 2rem;
   padding-left: 24px;
   padding-left: 2.4rem;
-  font-family: 'Courgette', cursive;
+  font-family: 'Francois One';
   font-style: italic;
 }
 q {
@@ -397,7 +397,7 @@ h6 {
   font-weight: 400;
   color: inherit;
   text-rendering: optimizelegibility;
-  font-family: 'Courgette', cursive;
+  font-family: 'Francois One';
 }
 h1,
 .h1 {
@@ -686,7 +686,7 @@ input[type=submit],
   padding: 12px 15px;
   text-align: center;
   text-decoration: none;
-  font-family: 'Courgette', cursive;
+  font-family: 'Francois One';
   text-transform: uppercase;
   text-shadow: -1px -1px 0px #006677;
   clear: both;
@@ -719,15 +719,12 @@ input[type=submit]:hover,
 4.0 - Navigation
 --------------------------------------------------------------*/
 a {
-  color: #118899;
+  color: #004080;
   text-decoration: none;
 }
-a:visited {
-  color: #118899;
+a:visited, a:hover {
+  color: #330066;
   text-decoration: none;
-}
-a:hover {
-  color: #006677;
 }
 .skip-link,
 .assistive-text {
@@ -735,7 +732,7 @@ a:hover {
 }
 nav#top-nav {
   padding: 10px;
-  font-family: 'Courgette', cursive;
+  font-family: 'Francois One';
   font-size: 18px;
   font-size: 1.8rem;
   display: none;
@@ -802,7 +799,7 @@ select.mobileMenu {
   zoom: 1;
   clear: both;
   padding: 30px;
-  font-family: 'Courgette', cursive;
+  font-family: 'Francois One';
 }
 .pagination:before,
 .pagination:after {
@@ -841,7 +838,7 @@ nav#show-menu {
   padding: 10px;
   margin: 0;
   border-bottom: #eeeeee;
-  font-family: 'Courgette', cursive;
+  font-family: 'Francois One';
   font-size: 18px;
   font-size: 1.8rem;
 }
@@ -1042,7 +1039,7 @@ li article {
   margin: 0 0 0 90px;
 }
 .comment-meta {
-  font-family: 'Courgette', cursive;
+  font-family: 'Francois One';
   color: #999;
   text-transform: uppercase;
 }
@@ -1133,7 +1130,7 @@ dd.wp-caption p.wp-caption-text,
 .post-edit,
 .post-date {
   float: left;
-  font-family: 'Courgette', cursive;
+  font-family: 'Francois One';
   color: #999;
   margin: 0 30px 0 0;
 }
@@ -1150,7 +1147,7 @@ dd.wp-caption p.wp-caption-text,
 }
 .comments-link {
   float: right;
-  font-family: 'Courgette', cursive;
+  font-family: 'Francois One';
   color: #999;
   text-transform: uppercase;
   margin: 0 0 0 30px;
