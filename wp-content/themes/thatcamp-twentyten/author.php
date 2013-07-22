@@ -1,8 +1,8 @@
 <?php
 /**
- * Template Name: Author
+ * Template Name: Profile
  *
- * A custom page template for making a Camper / Author page on a THATCamp website
+ * A custom page template for making a Profile / Camper / Author page on a THATCamp website
  */
  ?>
 
