@@ -1,11 +1,11 @@
 <?php
 /**
- * People
+ * Campers
  *
  * @package thatcampbase
  * @since thatcampbase 1.0
  *
- * Template Name: People
+ * Template Name: Campers
  */
 ?>
 <?php get_header(); ?>
@@ -13,7 +13,7 @@
 	<div id="content">
 		<div id="people-view" role="main">
                 <header class="post-header">
-                    <h1 class="post-title"><?php _e( 'Attendees', 'thatcampbase' ); ?></h1>
+                    <h1 class="post-title"><?php the_title(); ?></h1>
                 </header>
             
 		<?php

@@ -1,6 +1,6 @@
 <?php
 /**
- * Author page
+ * Profile page
  *
  * @package thatcampbase
  * @since thatcampbase 1.0

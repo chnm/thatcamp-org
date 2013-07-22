@@ -5,7 +5,28 @@
  * @package thatcampbase
  * @since thatcampbase 1.0
  */
+ 
+ /* thatcampbase default header */
+ 
+define('thatcamp_base_dir', get_bloginfo('stylesheet_directory'));
+define( 'HEADER_IMAGE', thatcamp_base_dir . '/assets/images/default-header.png' );
+
+function thatcamp_base_default_header() {
+
+           register_default_headers( array(
+		'thatcamp-default' => array(
+			'url' => thatcamp_base_dir . '/assets/images/default-header.png',
+			'thumbnail_url' => thatcamp_base_dir . '/assets/images/default-header-thumbnail.png',
+			/* translators: header image description */
+			'description' => __( 'THATCamp Default Header', 'thatcamp' )
+		)		
+	) );
+}
+
+add_action( 'after_setup_theme', 'thatcamp_base_default_header' );
+ 
 /* thatcampbase setup functions */
+
 if ( ! isset( $content_width ) ) {
 	$content_width = 640;
 }

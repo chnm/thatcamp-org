@@ -57,7 +57,7 @@
 						'container' => ''
 					)); ?>
 				</nav>
-				<nav id="show-menu"><i class="icon-reorder"></i></nav>
+				<nav id="show-menu"><i class="icon-reorder"></i><?php _e( 'Menu', 'thatcampbase' ); ?></nav>
 				<div id="responsive-menu">
 					<nav id="responsive-nav" role="navigation">
 						<h3 class="assistive-text"><?php _e( 'Menu', 'blogilates' ); ?></h3>

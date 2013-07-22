@@ -19,6 +19,7 @@
  * @since thatcampbase (1.0)
  */
 
+
 if ( ! function_exists( 'thatcampbase_custom_header_setup' ) ) :
 function thatcampbase_custom_header_setup() {
 	$args = array(
