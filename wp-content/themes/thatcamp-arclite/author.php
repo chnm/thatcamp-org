@@ -1,5 +1,9 @@
 <?php
- /* Arclite/digitalnature */
+/**
+ * Profile page
+ *
+ * Arclite/digitalnature 
+ **/
  get_header();
 ?>
 
