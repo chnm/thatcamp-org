@@ -45,7 +45,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 					<?php if ( isset( $_POST['errors']['site-url'] ) ) : ?>
 						<p class="required-error"><?php echo esc_html( $_POST['errors']['site-url'] ) ?></p>
 					<?php endif ?>
-					<p>Example: http://newengland2012.thatcamp.org. THATCamp site URLs are generally constructed thusly: http://[nameyear].thatcamp.org. Please try to follow this convention when choosing a URL. If you plan to host your own THATCamp site, first complete this form, then go to Tools --> Domain Mapping in the thatcamp.org site Dashboard to redirect its URL to yours.</p>
+					<p>Example: http://newengland2012.thatcamp.org. THATCamp site URLs are generally constructed thusly: http://[nameyear].thatcamp.org. Please try to follow this convention when choosing a URL. If you plan to host your own THATCamp site, first complete and submit this form, then see the instructions for redirecting a thatcamp.org site to a stand-alone THATCamp website on our <a href="/help/organize/website">website Help page</a>.</p>
 					<?php $site_url = isset( $_POST['site-url'] ) ? $_POST['site-url'] : '' ?>
 					http://<input name="site-url" type="text" id="site-url" value="<?php echo esc_attr( $site_url ) ?>" />.thatcamp.org
 				</div>
@@ -74,7 +74,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 
 				<div class="registry-section" id="section-end-date">
 					<h3>End date</h3>
-					<p>If known, the end date for your THATCamp. One-day THATCamps need only a start date.</p>
+					<p>If known, the end date for your THATCamp. </p>
 					<?php $thatcamp_end_date = isset( $_POST['thatcamp-end-date'] ) ? $_POST['thatcamp-end-date'] : '' ?>
 					<input id="thatcamp_end_date" name="thatcamp-end-date" type="text" value="<?php echo esc_attr( $thatcamp_end_date ) ?>" />
 				</div>
