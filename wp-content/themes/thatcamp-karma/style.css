@@ -1268,8 +1268,7 @@ a.email-thatcamplink {
   color: #88aa11;
 }
 
-#user-section a:hover.account,
-#user-section a:link.account {
+#user-section .account a:hover {
 color: #668800;
 }
 
