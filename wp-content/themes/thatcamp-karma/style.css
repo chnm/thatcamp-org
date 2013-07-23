@@ -391,9 +391,10 @@ border:0;
 }
 .account {
 display: inline;
-font-size:10pt;
+font-size:9pt;
 float: left;
-padding-left: 10px;
+padding: 5px 0px 10px 0px;
+color: #c2c2c2;
 }
 #sitebar-wrapper #search-bar {
   float: none;
@@ -1262,8 +1263,8 @@ a.email-thatcamplink {
   color: #ccc;
 }
 
-#user-section a.account,
-#user-section a:visited.account {
+#user-section .account a,
+#user-section .account a:visited {
   color: #88aa11;
 }
 

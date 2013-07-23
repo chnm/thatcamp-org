@@ -48,13 +48,15 @@
 						<?php do_action( 'bp_sidebar_login_form' ); ?>
 						<input type="submit" name="wp-submit" id="sidebar-wp-submit" value="<?php _e( 'Log in', 'thatcamp' ); ?>" tabindex="100" />						
 						<input type="hidden" name="testcookie" value="1" />
+						
 												
 					</form>
 						
 					<?php do_action( 'bp_after_sidebar_login_form' ); ?>
-					
-					<a href="<?php echo bp_signup_page(); ?>" class="account">
-					<?php _e('Sign up for an account'); ?></a>					
+					<span class="account">
+					<a href="<?php echo bp_signup_page(); ?>" title="Sign up for an account">
+					<?php _e('Sign up for an account'); ?></a>&nbsp; | &nbsp;<a href="<?php echo site_url( 'wp-login.php?action=lostpassword'); ?>" title="Reset your password">Reset your password</a>				
+					</span>
 				<?php endif; ?>
 			</div>
 
