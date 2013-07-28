@@ -1265,11 +1265,11 @@ a.email-thatcamplink {
 
 #user-section .account a,
 #user-section .account a:visited {
-  color: #88aa11;
+  color: #bfbfbf;;
 }
 
 #user-section .account a:hover {
-color: #668800;
+color: #fff;
 }
 
 .skip-link,
