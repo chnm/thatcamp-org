@@ -35,7 +35,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 					<?php if ( isset( $_POST['errors']['thatcamp-name'] ) ) : ?>
 						<p class="required-error"><?php echo esc_html( $_POST['errors']['thatcamp-name'] ) ?></p>
 					<?php endif ?>
-					<p>Example: THATCamp New England 2011, THATCamp AHA 2012, THATCamp Games 2013. THATCamp names generally include a city, state, region, theme, or organization followed by the year in which the THATCamp will be held. If you want to use a THATCamp name that another organizer has already used, you must obtain the agreement of that organizer.</p>
+					<p>Examples: THATCamp New England 2011, THATCamp AHA 2012, THATCamp Games 2013. THATCamp names generally include a city, state, region, theme, or organization followed by the year in which the THATCamp will be held. If you want to use a THATCamp name that another organizer has already used, you must obtain the agreement of that organizer.</p>
 					<?php $thatcamp_name = isset( $_POST['thatcamp-name'] ) ? stripslashes( $_POST['thatcamp-name'] ) : '' ?>
 					<input name="thatcamp-name" type="text" id="thatcamp-name" value="<?php echo esc_attr( $thatcamp_name ) ?>" />
 				</div>
@@ -45,7 +45,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 					<?php if ( isset( $_POST['errors']['site-url'] ) ) : ?>
 						<p class="required-error"><?php echo esc_html( $_POST['errors']['site-url'] ) ?></p>
 					<?php endif ?>
-					<p>Example: http://newengland2012.thatcamp.org. THATCamp site URLs are generally constructed thusly: http://[nameyear].thatcamp.org. Please try to follow this convention when choosing a URL. If you plan to host your own THATCamp site, first complete and submit this form, then see the instructions for redirecting a thatcamp.org site to a stand-alone THATCamp website on our <a href="/help/organize/website">website Help page</a>.</p>
+					<p>Example: http://newengland2011.thatcamp.org. THATCamp site URLs are generally constructed thusly: http://[nameyear].thatcamp.org. Please try to follow this convention when choosing a URL. If you plan to host your own THATCamp site, first complete and submit this form, then see the instructions for redirecting a thatcamp.org site to a stand-alone THATCamp website on our <a href="/help/organize/website">website Help page</a>.</p>
 					<?php $site_url = isset( $_POST['site-url'] ) ? $_POST['site-url'] : '' ?>
 					http://<input name="site-url" type="text" id="site-url" value="<?php echo esc_attr( $site_url ) ?>" />.thatcamp.org
 				</div>
@@ -74,7 +74,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 
 				<div class="registry-section" id="section-end-date">
 					<h3>End date</h3>
-					<p>If known, the end date for your THATCamp. </p>
+					<p>If known, the end date for your multi-day THATCamp. One-day THATCamps do not need an end date.</p>
 					<?php $thatcamp_end_date = isset( $_POST['thatcamp-end-date'] ) ? $_POST['thatcamp-end-date'] : '' ?>
 					<input id="thatcamp_end_date" name="thatcamp-end-date" type="text" value="<?php echo esc_attr( $thatcamp_end_date ) ?>" />
 				</div>
@@ -88,8 +88,8 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 
 					<ul>
 						<li><input type="checkbox" name="i-agree[free]" id="i-agree-free" checked="checked" value="1" /> FREE or CHEAP to attend (registration fees of up to $30 USD are fine)</li>
-						<li><input type="checkbox" name="i-agree[open]" id="i-agree-open" checked="checked" value="1" /> OPEN to anyone who wishes to apply or register</li>
-						<li><input type="checkbox" name="i-agree[informal]" id="i-agree-informal" checked="checked" value="1" /> INFORMAL and participatory (no presentations, papers, or demos longer than 5 minutes with the possible exception of skills training workshops, though these too should be hands-on if possible)</li>
+						<li><input type="checkbox" name="i-agree[open]" id="i-agree-open" checked="checked" value="1" /> OPEN to anyone who wishes to apply or register (no restricting registration to members of a particular institution, association, organization, discipline, or rank)</li>
+						<li><input type="checkbox" name="i-agree[informal]" id="i-agree-informal" checked="checked" value="1" /> INFORMAL and participatory (no presentations, papers, or demos longer than 5 minutes with the possible exception of skills training workshops, which should also allow hands-on practice)</li>
 						<li><input type="checkbox" name="i-agree[public]" id="i-agree-public" checked="checked" value="1" /> PUBLIC on the open web (sessions can be blogged, twittered, photographed, recorded, and posted)</li>
 						<li><input type="checkbox" name="i-agree[self-organizing]" id="i-agree-self-organizing" checked="checked" value="1" /> SELF-ORGANIZING (no program committee: all participants are given a chance to help set the agenda, either before or during the unconference)</li>
 					</ul>
