@@ -33,7 +33,7 @@ Template Name: Blog
 			<div class="post hentry" id="post-<?php the_ID(); ?>">
 				<h3 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h3>
 				<p class="entry-meta">
-			<p><strong><?php the_time('l, F jS, Y') ?> | <a href="http://thatcampdev.info/camper/<?php the_author_login(); ?>"><?php the_author(); ?></a></strong></p>
+			<p><strong><?php the_time('l, F jS, Y') ?> | <a href="http://thatcamp.org/camper/<?php the_author_login(); ?>"><?php the_author(); ?></a></strong></p>
 				</p>
 				<div class="entry-content">
 					

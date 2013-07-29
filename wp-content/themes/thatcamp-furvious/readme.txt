@@ -1,7 +1,7 @@
 === THATCamp Furvious ===
 Contributors: chnm, amandafrench
 Donate link: http://chnm.gmu.edu/
-Related website: http://thatcampdev.info
+Related website: http://thatcamp.org
 Tags: conferences, unconferences, THATCamp, WordPress, themes, child themes
 Version: 
 

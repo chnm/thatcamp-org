@@ -48,7 +48,7 @@ $lastname = strtolower($current_camper->last_name);
 	<?php while (have_posts()) : the_post(); ?>
 	<div class="post">
 			<h4 id="post-<?php the_ID(); ?>"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h4>
-			<p><strong><?php the_time('l, F jS, Y') ?> | <a href="http://thatcampdev.info/camper/<?php the_author_login(); ?>"><?php the_author(); ?></a></strong></p>
+			<p><strong><?php the_time('l, F jS, Y') ?> | <a href="http://thatcamp.org/camper/<?php the_author_login(); ?>"><?php the_author(); ?></a></strong></p>
 
 			<div class="entry">
 				<?php the_content(); ?>

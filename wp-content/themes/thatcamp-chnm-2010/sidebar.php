@@ -25,7 +25,7 @@
     <div id="recent-comments" class="sticky">
     <?php if (function_exists('get_recent_comments')) { ?>
    <li><h2><?php _e('Recent Comments'); ?></h2>
-   <p>THATCampers can use the blog and comments to talk about session ideas. Follow along by subscribing to the <strong><a href="http://chnm2010.thatcampdev.info/comments/feed/">comments feed</a></strong> and to the <strong><a href="http://chnm2010.thatcampdev.info/feed/">blog feed</a></strong>!</p>
+   <p>THATCampers can use the blog and comments to talk about session ideas. Follow along by subscribing to the <strong><a href="http://chnm2010.thatcamp.org/comments/feed/">comments feed</a></strong> and to the <strong><a href="http://chnm2010.thatcamp.org/feed/">blog feed</a></strong>!</p>
 
         <ul>
         <?php get_recent_comments(); ?>

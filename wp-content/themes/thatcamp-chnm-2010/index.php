@@ -3,7 +3,7 @@
 
     <div id="primary">
         <?php if(is_home()): ?>
-        <p id="explanation">THATCamp is a user-generated &#8220;unconference&#8221; on digital humanities. This particular THATCamp was organized and hosted by the <a href="http://chnm.gmu.edu">Center for History and New Media</a> at <a href="http://www.gmu.edu">George Mason University</a> on May 22&ndash;23, 2010. For the main THATCamp site, see <a href="http://thatcampdev.info">http://thatcampdev.info</a></p>
+        <p id="explanation">THATCamp is a user-generated &#8220;unconference&#8221; on digital humanities. This particular THATCamp was organized and hosted by the <a href="http://chnm.gmu.edu">Center for History and New Media</a> at <a href="http://www.gmu.edu">George Mason University</a> on May 22&ndash;23, 2010. For the main THATCamp site, see <a href="http://thatcamp.org">http://thatcamp.org</a></p>
     
     <?php endif; ?>
 	<?php if(have_posts()): ?>

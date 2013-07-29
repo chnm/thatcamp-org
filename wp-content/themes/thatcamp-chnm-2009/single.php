@@ -7,7 +7,7 @@
 			<h1><a href="<?php echo get_permalink() ?>" rel="bookmark" title="Permanent Link: <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 			<ul class="entry-info two" style="float:left;">
 				<li><strong><?php the_time('F jS, Y') ?></strong></li>
-				<li><a href="http://thatcampdev.info/camper/<?php the_author_login(); ?>"><?php the_author(); ?></a></li>
+				<li><a href="http://thatcamp.org/camper/<?php the_author_login(); ?>"><?php the_author(); ?></a></li>
 				<li>				<?php thatcamp_add_friend_button( get_the_author_ID() ) ?></li>
 				<li><?php the_tags( 'Tags: ', ', ', ''); ?></li>
 			</ul>

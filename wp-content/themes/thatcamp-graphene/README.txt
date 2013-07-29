@@ -1,6 +1,6 @@
 === THATCamp Graphene ===
 Contributors: chnm, amandafrench
-Website: http://thatcampdev.info
+Website: http://thatcamp.org
 Donate link: http://chnm.gmu.edu/
 Tags: conferences, unconferences, THATCamp, WordPress, themes, child themes
 

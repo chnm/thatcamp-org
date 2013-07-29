@@ -27,7 +27,7 @@
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-28931418-1']);
-  _gaq.push(['_setDomainName', 'thatcampdev.info']);
+  _gaq.push(['_setDomainName', 'thatcamp.org']);
   _gaq.push(['_trackPageview']);
 
   (function() {
