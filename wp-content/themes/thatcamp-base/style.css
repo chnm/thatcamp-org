@@ -183,7 +183,7 @@ body {
 }
 ul.contributors li {
   list-style: none;
-  float: left;  
+  float: left;
   display: inline;
   width: 275px;
   height: 100px;
@@ -221,7 +221,7 @@ ul.contributors {
 #logos img.nospace {
   margin: 10px 0 10px 0;
 }
-.post-summary,.post-header,.post-meta {
+.post-summary,.post-header,.post-meta, .post-body {
 padding:15px;
 }
 
