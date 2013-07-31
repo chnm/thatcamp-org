@@ -27,8 +27,13 @@
 			</div>
 	<?php } }?>
 
-	<div class="post-summary">
+<!--	<div class="post-summary">
 		<?php the_excerpt( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'thatcampbase') ); ?>
+	</div>
+-->
+
+	<div class="post-body">
+		<?php the_content(); ?>
 	</div>
 
 	<footer class="post-meta">
