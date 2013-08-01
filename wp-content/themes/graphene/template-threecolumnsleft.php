@@ -8,7 +8,10 @@
  * @package Graphene
  * @since Graphene 1.1.5
  */
+ 
+ /* translators: For RTL languages, translate "right" as "left" */
  __( 'Three columns, sidebars on the right', 'graphene' );
+ 
  get_header(); ?>
  
     <?php

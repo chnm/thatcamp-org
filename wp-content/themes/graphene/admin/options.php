@@ -141,7 +141,7 @@ function graphene_options(){
             </div>
             <div class="panel-wrap inside">
                 <p><?php _e( 'Developing this awesome theme took a lot of effort and time, months and months of continuous voluntary unpaid work. If you like this theme or if you are using it for commercial websites, please consider a donation to the developer to help support future updates and development.', 'graphene' ); ?></p>
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="text-align:center;">
                     <input type="hidden" name="cmd" value="_s-xclick">
                     <input type="hidden" name="hosted_button_id" value="CBWQL2T6B797J">
                     <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -178,20 +178,6 @@ function graphene_options(){
         </div>
         
         
-        <?php /* Survey notification */ ?>
-        <!--
-        <div class="postbox donation">
-            <div>
-        		<h3 class="hndle"><?php _e( 'Graphene Usage Survey', 'graphene' ); ?></h3>
-            </div>
-            <div class="panel-wrap inside">
-                <p><?php _e( 'Help us to get to know you better. Take the Graphene theme usage survey now! Every opinion counts towards making the theme better. The survey is very short, and is completely anonymous.', 'graphene' ); ?></p>
-                <p><a href="http://www.surveymonkey.com/s/WKJ7SQD" class="button"><?php _e( 'Take the survey', 'graphene' ); ?> &raquo;</a></p>
-            </div>
-        </div>
-        -->
-        
-        
         <?php /* Natively supported plugins */ ?>
         <div class="postbox no-toggle">
         	<div>
@@ -202,13 +188,13 @@ function graphene_options(){
             	<p><?php _e( 'Add-ons are not shipped with the theme, but can be installed separately to extend the theme\'s capability.', 'graphene' ); ?></p>
                 <ul class="add-ons">
                 	<li>
-                    	<span class="title">Graphene Mobile Neo: </span>
+                    	<span class="title"><a href="http://www.graphene-theme.com/graphene-mobile-neo/features-and-functionalities/" target="_blank">Graphene Mobile Neo</a>: </span>
                         <?php if ( function_exists( 'gmneo_setup' ) ) : ?><span class="activated"><?php _e( 'Installed', 'graphene' ); ?></span>
-                        <?php else : ?><span class="not-active"><?php _e( 'Not installed', 'graphene' ); ?>. <a href="http://www.graphene-theme.com/graphene-mobile-neo/features-and-functionalities/"><?php _e( 'Learn more', 'graphene' ); ?> &raquo;</a></span><?php endif; ?><br />
+                        <?php else : ?><span class="not-active"><?php _e( 'Not installed', 'graphene' ); ?>.</span><?php endif; ?><br />
                         <span class="description"><?php _e( 'The new premium mobile theme that fuses elegant design with premium features. It\'s a match of pixel-perfection and code-devilry.', 'graphene' ); ?></span>
                     </li>
                 	<li>
-                    	<span class="title">Graphene Mobile: </span>
+                    	<span class="title"><a href="http://www.graphene-theme.com/graphene-mobile/features-and-functionalities/" target="_blank">Graphene Mobile</a>: </span>
                         <?php if (function_exists( 'mgraphene_options_init' ) ) : ?><span class="activated"><?php _e( 'Installed', 'graphene' ); ?></span>
                         <?php else : ?><span class="not-active"><?php _e( 'Not installed', 'graphene' ); ?>. <a href="http://www.graphene-theme.com/graphene-mobile/features-and-functionalities/"><?php _e( 'Learn more', 'graphene' ); ?> &raquo;</a></span><?php endif; ?><br />
                         <span class="description"><?php _e( 'Mobile extension developed specifically for optimised display of your site on mobile devices, such as iPhone and Android devices.', 'graphene' ); ?></span>
@@ -220,16 +206,41 @@ function graphene_options(){
                 <ul class="add-ons native-plugins">
                 	<?php 
 						$plugins = array(
-										array( 'name' => 'Ultimate TinyMCE', 'function' => '', 'class' => 'jwl_metabox_admin' ),
-										array( 'name' => 'WP-PageNavi', 'function' => 'wp_pagenavi', 'class' => '' ),
-										array( 'name' => 'WP-CommentNavi', 'function' => 'wp_commentnavi', 'class' => '' ),
-										array( 'name' => 'WP-Email', 'function' => 'wp_email', 'class' => '' ),
-										array( 'name' => 'Breadcrumb NavXT', 'function' => 'bcn_display', 'class' => '' ),
+										array( 
+											'name' 		=> 'Ultimate TinyMCE', 
+											'function' 	=> '', 
+											'class' 	=> 'jwl_metabox_admin',
+											'url'		=> 'http://wordpress.org/plugins/ultimate-tinymce/',
+										),
+										array( 
+											'name' 		=> 'WP-PageNavi', 
+											'function' 	=> 'wp_pagenavi', 
+											'class' 	=> '',
+											'url'		=> 'http://wordpress.org/plugins/wp-pagenavi/',
+										),
+										array( 
+											'name' 		=> 'WP-CommentNavi', 
+											'function' 	=> 'wp_commentnavi', 
+											'class' 	=> '',
+											'url'		=> 'http://wordpress.org/plugins/wp-commentnavi/',
+										),
+										array( 
+											'name' 		=> 'WP-Email', 
+											'function' 	=> 'wp_email', 
+											'class' 	=> '',
+											'url'		=> 'http://wordpress.org/plugins/wp-email/',
+										),
+										array( 
+											'name' 		=> 'Breadcrumb NavXT', 
+											'function' 	=> 'bcn_display', 
+											'class' 	=> '',
+											'url'		=> 'http://wordpress.org/plugins/breadcrumb-navxt/',
+										),
 									);
 						foreach ( $plugins as $plugin) :
 					?>
                 	<li>
-                    	<span class="title"><?php echo $plugin['name']; ?>: </span>
+                    	<span class="title"><a href="<?php echo $plugin['url']; ?>" target="_blank"><?php echo $plugin['name']; ?></a>: </span>
                         <?php if (function_exists( $plugin['function'] ) || class_exists( $plugin['class'] ) ) : ?><span class="activated"><?php _e( 'Activated', 'graphene' ); ?></span>
                         <?php else : ?><span class="not-active"><?php _e( 'Not installed', 'graphene' ); ?></span><?php endif; ?>
                     </li>
@@ -243,27 +254,16 @@ function graphene_options(){
         <div class="postbox preset non-essential-option">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
-                <h3 class="hndle"><?php _e( 'Options Presets', 'graphene' ); ?></h3>
+                <h3 class="hndle"><?php _e( 'Reset settings', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
-                <p><?php _e("The default settings for the theme is preconfigured for use in blogs. If you're using this theme primarily for a normal website, or if you want to reset the settings to their default values, you can apply one of the available options presets below.", 'graphene' ); ?></p>
-                <p><?php _e("Note that you can still configure the individual settings after you apply any preset.", 'graphene' ); ?></p>
+                <p><?php _e( 'Reset all of the theme\'s settings to their default values. Only settings accessible via Graphene Theme Options are affected, including any custom colour presets you might have. Custom Header, Custom Menus, and other WordPress settings won\'t be affected.', 'graphene' ); ?></p>
+                <p><?php _e( '<strong>WARNING:</strong> This action is not reversible.', 'graphene' ); ?></p>
                 <form action="" method="post">
                     <?php wp_nonce_field( 'graphene-preset', 'graphene-preset' ); ?>
-                	<table class="form-table">
-                        <tr>
-                            <th scope="row" style="width: 140px;"><?php _e( 'Select Options Preset', 'graphene' ); ?></th>
-                            <td class="options-cat-list">
-                                <input type="radio" name="graphene_options_preset" value="website" id="graphene_options_preset-website" />
-                                <label for="graphene_options_preset-website"><?php _e( 'Normal website', 'graphene' ); ?></label>
-                                <br />                                
-                                <input type="radio" name="graphene_options_preset" value="reset" id="graphene_options_preset-reset" />
-                                <label for="graphene_options_preset-reset"><?php _e( 'Reset to default settings', 'graphene' ); ?></label>
-                            </td>
-                        </tr>
-                    </table>
+                    <input type="hidden" name="graphene_options_preset" value="reset" id="graphene_options_preset-reset" />
                     <input type="hidden" name="graphene_preset" value="true" />
-                    <input type="submit" class="button graphene_preset" value="<?php _e( 'Apply Options Preset', 'graphene' ); ?>" />
+                    <input type="submit" class="button-primary graphene_preset" value="<?php _e( 'Reset settings', 'graphene' ); ?>" />
                 </form>
             </div>
         </div>
@@ -300,12 +300,12 @@ function graphene_options(){
             <div class="panel-wrap inside">
                 <p><?php _e("<strong>Be careful!</strong> Uninstalling the theme will remove all of the theme's options from the database. Do this only if you decide not to use the theme anymore.",'graphene' ); ?></p>
                 <p><?php _e( 'If you just want to try another theme, there is no need to uninstall this theme. Simply activate the other theme in the Appearance &gt; Themes admin page.','graphene' ); ?></p>
-                <p><?php _e("Note that uninstalling this theme <strong>does not remove</strong> the theme's files. To delete the files after you have uninstalled this theme, go to Appearances &gt; Themes and delete the theme from there.",'graphene' ); ?></p>
+                <p><?php _e("Note that uninstalling this theme <strong>does not remove</strong> the theme's files. To delete the files after you have uninstalled this theme, go to Appearance &gt; Themes and delete the theme from there.",'graphene' ); ?></p>
                 <form action="" method="post">
                     <?php wp_nonce_field( 'graphene-options', 'graphene-options' ); ?>
                 
                     <input type="hidden" name="graphene_uninstall" value="true" />
-                    <input type="submit" class="button graphene_uninstall" value="<?php _e( 'Uninstall Theme', 'graphene' ); ?>" />
+                    <input type="submit" class="button-primary graphene_uninstall" value="<?php _e( 'Uninstall Theme', 'graphene' ); ?>" />
                 </form>
             </div>
         </div>

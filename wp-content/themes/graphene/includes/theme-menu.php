@@ -31,7 +31,7 @@ class Graphene_Description_Walker extends Walker_Nav_Menu {
 		if ( strlen( $item->description ) > $desc_length)
 			$description = '';
 		else
-			$description  = ! empty( $item->description ) ? '<span>'.esc_attr( $item->description ).'</span>' : '';
+			$description  = ! empty( $item->description ) ? '<span class="desc">'.esc_attr( $item->description ).'</span>' : '';
 		
 		if ( $depth != 0 )	{
 				 $description = $append = $prepend = "";
@@ -65,7 +65,7 @@ if ( ! function_exists( 'graphene_default_menu' ) ) :
                 	<?php if ( ! $graphene_settings['disable_menu_desc'] ) echo '<strong>'; ?>
                 	<?php _e( 'Home','graphene' ); ?>
                     <?php if ( ! $graphene_settings['disable_menu_desc'] ) echo '</strong>'; ?>
-                    <?php if ( $graphene_settings['navmenu_home_desc']) {echo '<span>'.$graphene_settings['navmenu_home_desc'].'</span>';} ?>
+                    <?php if ( $graphene_settings['navmenu_home_desc']) {echo '<span class="desc">'.$graphene_settings['navmenu_home_desc'].'</span>';} ?>
                 </a>
             </li>
             <?php endif; ?>
@@ -122,7 +122,7 @@ class Graphene_Walker_Page extends Walker_Page {
 		if ( ! $depth && ! $graphene_settings['disable_menu_desc'] ){
 			$title = '<strong>' . $title . '</strong>';
 			$nav_desc = graphene_get_post_meta( $page->ID, 'nav_description' );
-			$title .= ( $nav_desc ) ? '<span>' . $nav_desc . '</span>' : '';
+			$title .= ( $nav_desc ) ? '<span class="desc">' . $nav_desc . '</span>' : '';
 		}
 
 		$output .= $indent . '<li class="' . $css_class . '"><a href="' . get_permalink($page->ID) . '">' . $link_before . $title . $link_after . '</a>';

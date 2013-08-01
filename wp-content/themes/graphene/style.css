@@ -2,7 +2,7 @@
 Theme Name: 	Graphene
 Theme URI: 		http://www.graphene-theme.com/
 Description: 	We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the theme's inception, we have received countless suggestions and requests on features that really matter. We listened, and we delivered. Here's a theme that's packed full of features that you need, yet far from being overwhelming. Here's a theme that's easy to use for beginners, yet well documented and powerful enough to be endlessly customisable to users with even only moderate technical skills. Here's a theme that's available in more than  30 languages and is backed with active community support, where questions, ideas and suggestions are always welcomed. And best of all, here's a theme that's completely free. Here's a theme that's yours to make it special.
-Version: 		1.9
+Version: 		1.9.1
 Author: 		Syahir Hakim
 Author URI: 	http://www.khairul-syahir.com/
 Tags: 			black, blue, white, one-column, two-columns, three-columns, right-sidebar, left-sidebar, fixed-width, custom-colors, custom-header, custom-background, custom-menu, editor-style, theme-options, threaded-comments, sticky-post, translation-ready, rtl-language-support, post-formats, featured-image-header, featured-images, full-width-template, microformats
@@ -628,7 +628,7 @@ a:hover {
 	line-height: 16px;
 	padding: 9px 10px 10px;
 }
-#header-menu > li > a > span {
+#header-menu > li > a > .desc {
 	display: block;
 	font-size: 11px;
 	color: #aaa;
@@ -1454,6 +1454,9 @@ pre.block {
 	color: #929292;
 	font: normal 18px arial;
 	margin: 15px 0 5px 10px;
+}
+.single .author_bio p {
+	margin-top: 10px;
 }
 .author-avatar-wrap {
 	width: auto !important;

@@ -161,6 +161,7 @@ if ( ! function_exists( 'graphene_get_comment_count' ) ) :
  * @since Graphene 1.3
 */
 function graphene_get_comment_count( $type = 'comments', $only_approved_comments = true, $top_level = false ){
+	if ( ! get_the_ID() ) return;
 	if 		( $type == 'comments' ) 	$type_sql = 'comment_type = ""';
 	elseif 	( $type == 'pings' )		$type_sql = 'comment_type != ""';
 	elseif 	( $type == 'trackbacks' ) 	$type_sql = 'comment_type = "trackback"';
@@ -239,7 +240,7 @@ function graphene_comments_nav(){
             <?php if ( function_exists( 'wp_commentnavi' ) && ! $graphene_settings['inf_scroll_comments'] ) : wp_commentnavi(); ?>
                 <p class="commentnavi-view-all"><?php wp_commentnavi_all_comments_link(); ?></p>
             <?php else : ?> 
-                <p><?php paginate_comments_links(); ?>&nbsp;</p>
+                <p><?php paginate_comments_links(); ?></p>
             <?php endif; do_action( 'graphene_comments_pagination' ); ?>
         </div>
         

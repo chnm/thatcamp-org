@@ -152,7 +152,7 @@ if ( $graphene_settings['show_post_author'] ) :
 	?>
     </div>
 	<p class="author_name"><strong><?php the_author_meta( 'display_name' ); ?></strong></p>
-	<p class="author_bio"><?php the_author_meta( 'description' ); ?></p>
+	<div class="author_bio"><?php echo wpautop( get_the_author_meta( 'description' ) ); ?></div>
 	
 </div>
 <?php endif; ?>

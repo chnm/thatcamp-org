@@ -1,8 +1,8 @@
 jQuery(document).ready(function($){
-        $('.meta-box-sortables .head-wrap').click(function(){
-                $(this).next().toggle();
+        $('.meta-box-sortables .head-wrap .hndle').click(function(){
+                $(this).parent().next().toggle();
                 return false;
-        }).next().hide();
+        }).parent().next().hide();
 
         // Toggle all
         $('.toggle-all').click(function(){
@@ -115,11 +115,11 @@ jQuery(document).ready(function($){
         */
        
         // Remember the opened options panes
-        $('.meta-box-sortables .head-wrap, .toggle-all').click(function(){
+        $('.meta-box-sortables .head-wrap .hndle, .toggle-all').click(function(){
                 var postboxes = $('.left-wrap .postbox');
                 var openboxes = new Array();
                 $('.left-wrap .panel-wrap:visible').each(function(index){   
-                        var openbox = $(this).parent();
+                        var openbox = $(this).parents('.postbox');
                         openboxes.push(postboxes.index(openbox));                        
                 });                    
                 grapheneSetCookie('graphene-tab-'+graphene_tab+'-boxes', openboxes.join(','), 100);                    
@@ -647,9 +647,8 @@ jQuery(document).ready(function($){
 			
 
 			// Apply colour preset                
-			$('select.colour-presets').bind('mouseup keyup change', function(){                        
-					var presetName = $('.colour-presets').val().replace( '-', '_' );
-					if ( presetName == 'default' ) presetName = 'default';
+			$('select.colour-presets').bind('keyup change', function(){                        
+					var presetName = $('.colour-presets').val().replace( /-/g, '_' );
 					colour_preset = $.parseJSON( graphene_colour_presets[presetName] );
 					for ( var option_name in colour_preset ){
 							$elm = $('#' + option_name).siblings('.colorpicker');

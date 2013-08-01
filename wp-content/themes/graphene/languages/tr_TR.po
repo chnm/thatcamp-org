@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene 1.0 theme for WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-04 11:28+0800\n"
+"POT-Creation-Date: 2013-07-23 22:53+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Arvanitis <gbarin35@gmail.com>\n"
 "Language-Team: \n"
@@ -154,7 +154,7 @@ msgstr "%1$s ve %2$s tarafından desteklenmektedir"
 msgid "Graphene Theme"
 msgstr "Graphene Teması"
 
-#: header.php:68 header.php:96
+#: header.php:69 header.php:97
 msgid "Go back to the front page"
 msgstr "Ön sayfaya geri dön"
 
@@ -177,7 +177,7 @@ msgstr "<strong>Kayıt tarihi:</strong> %1$s"
 msgid "Biography"
 msgstr "Biyografisi"
 
-#: loop-author.php:52 admin/options-general.php:291
+#: loop-author.php:52 admin/options-general.php:300
 msgid "Latest posts"
 msgstr "En son yazıları"
 
@@ -276,10 +276,6 @@ msgstr "Yazıyı düzenle"
 msgid "Leave comment"
 msgstr "Yorum bırak"
 
-#: loop-post-formats.php:52 loop.php:164
-msgid "1 comment"
-msgstr "1 yorum"
-
 #: loop-post-formats.php:52
 msgid "Comments off"
 msgstr "Yorumlar kapalı"
@@ -327,12 +323,18 @@ msgstr "Önerilen sonuçlar"
 #, php-format
 msgid ""
 "I've done a courtesy search for the term %1$s for you and found a total of "
+"%2$s result. See if you can find what you're looking for below."
+msgid_plural ""
+"I've done a courtesy search for the term %1$s for you and found a total of "
 "%2$s results. See if you can find what you're looking for below."
-msgstr ""
-"Sizin için %1$s terimine uyan arama yaptım ve toplam %2$s sonuç buldum. "
-"Bakarsanız, aşağıdaki listede aradığınızı bulabilirsiniz."
+msgstr[0] ""
+"İzninizle, sizin için %1$s terimine uyan arama yaptım ve toplam %2$s sonuç "
+"buldum. Bakarsanız, aşağıdaki listede aradığınızı bulabilirsiniz."
+msgstr[1] ""
+"İzninizle, sizin için %1$s terimine uyan arama yaptım ve toplam %2$s sonuç "
+"buldum. Bakarsanız, aşağıdaki listede aradığınızı bulabilirsiniz."
 
-#: search-404.php:34
+#: search-404.php:40
 msgid ""
 "<strong>Sorry, couldn't find anything.</strong> Try searching for "
 "alternative terms using the search form above."
@@ -343,26 +345,28 @@ msgstr ""
 #. translators: %1$s is the number of results found, %2$s is the search term
 #: search.php:12
 #, php-format
-msgid "Found %1$s search results for keyword: %2$s"
-msgstr "Anahtar kelime için %1$s arama sonucu bulundu: %2$s"
+msgid "Found %1$s search result for keyword: %2$s"
+msgid_plural "Found %1$s search results for keyword: %2$s"
+msgstr[0] "Anahtar kelime için %1$s arama sonucu bulundu: %2$s"
+msgstr[1] "Anahtar kelime için %1$s arama sonucu bulundu: %2$s"
 
 #: searchform.php:3 searchform.php:4
 msgid "Search"
 msgstr "Arama"
 
-#: sidebar-two.php:28 includes/theme-setup.php:303
+#: sidebar-two.php:28 includes/theme-setup.php:301
 msgid "Front Page Sidebar Two Widget Area"
 msgstr "Ön Sayfa Yan menü İkinci Bileşen Alanı"
 
-#: sidebar-two.php:30 includes/theme-setup.php:268
+#: sidebar-two.php:30 includes/theme-setup.php:266
 msgid "Sidebar Two Widget Area"
 msgstr "Yan menü İkinci Bileşen Alanı"
 
-#: sidebar.php:28 includes/theme-setup.php:294
+#: sidebar.php:28 includes/theme-setup.php:292
 msgid "Front Page Sidebar Widget Area"
 msgstr "Ön Sayfa Yan Menü Bileşen Alanı"
 
-#: sidebar.php:30 includes/theme-setup.php:259
+#: sidebar.php:30 includes/theme-setup.php:257
 msgid "Sidebar Widget Area"
 msgstr "Yan Menü Bileşen Alanı"
 
@@ -377,6 +381,34 @@ msgstr "Etiket Arşivi: <span>%s</span>"
 msgid "%1$s Archive: %2$s"
 msgstr "%1$s Arşivi: %2$s"
 
+#: template-onecolumn.php:10
+msgid "One column, no sidebar"
+msgstr "Tek sütun, kenar çubuksuz"
+
+#: template-threecolumnscenter.php:11
+msgid "Three columns, sidebar left and right"
+msgstr "Üç sütun (Her iki yanda birer kenar çubuğu)"
+
+#. translators: For RTL languages, translate "right" as "left"
+#: template-threecolumnsleft.php:13
+msgid "Three columns, sidebars on the right"
+msgstr "Üç sütun (Kenar çubukları sağda)"
+
+#. translators: For RTL languages, translate "left" as "right"
+#: template-threecolumnsright.php:13
+msgid "Three columns, sidebars on the left"
+msgstr "Üç sütun (Kenar çubukları solda)"
+
+#. translators: For RTL languages, translate "right" as "left"
+#: template-twocolumnsleft.php:13
+msgid "Two columns, sidebar on the right"
+msgstr "İki sütun (Kenar çubuğu sağda)"
+
+#. translators: For RTL languages, translate "left" as "right"
+#: template-twocolumnsright.php:13
+msgid "Two columns, sidebar on the left"
+msgstr "İki sütun (Kenar çubukları solda)"
+
 #: admin/ajax-handler.php:9 admin/ajax-handler.php:36
 msgid ""
 "Sorry, but you don't have the necessary permission to modify theme options."
@@ -387,11 +419,11 @@ msgstr ""
 msgid "Options saved."
 msgstr "Ayarlar kaydedildi."
 
-#: admin/ajax-handler.php:61
+#: admin/ajax-handler.php:69
 msgid "Colour preset deleted."
 msgstr "Ön tanımlı renk silindi."
 
-#: admin/ajax-handler.php:61
+#: admin/ajax-handler.php:69
 msgid "Colour preset saved."
 msgstr "Ön tanımlı renk kaydedildi."
 
@@ -417,7 +449,7 @@ msgstr ""
 msgid "Slider options"
 msgstr "Gösterici Seçenekleri"
 
-#: admin/custom-fields.php:97 admin/options-general.php:107
+#: admin/custom-fields.php:97 admin/options-general.php:108
 msgid "Slider image"
 msgstr "Gösterici Resmi"
 
@@ -426,27 +458,27 @@ msgstr "Gösterici Resmi"
 msgid "Use global setting"
 msgstr "Genel ayarları kullan"
 
-#: admin/custom-fields.php:102 admin/options-general.php:111
+#: admin/custom-fields.php:102 admin/options-general.php:112
 msgid "Don't show image"
 msgstr "Resim gösterme"
 
-#: admin/custom-fields.php:103 admin/options-general.php:112
+#: admin/custom-fields.php:103 admin/options-general.php:113
 msgid "Featured Image"
 msgstr "Özellikli Resim"
 
-#: admin/custom-fields.php:104 admin/options-general.php:113
+#: admin/custom-fields.php:104 admin/options-general.php:114
 msgid "First image in post"
 msgstr "Yazının ilk resmi"
 
-#: admin/custom-fields.php:105 admin/options-general.php:114
+#: admin/custom-fields.php:105 admin/options-general.php:115
 msgid "Custom URL"
 msgstr "Özel URL"
 
-#: admin/custom-fields.php:111 admin/options-general.php:120
+#: admin/custom-fields.php:111 admin/options-general.php:121
 msgid "Custom slider image URL"
 msgstr "Özel resim gösterici URL"
 
-#: admin/custom-fields.php:115 admin/options-general.php:124
+#: admin/custom-fields.php:115 admin/options-general.php:125
 msgid ""
 "Make sure you select Custom URL in the slider image option above to use this "
 "custom url."
@@ -479,23 +511,23 @@ msgstr "Düğme göster"
 msgid "Hide button"
 msgstr "Düğme gizle"
 
-#: admin/custom-fields.php:146 admin/options-display.php:279
+#: admin/custom-fields.php:146 admin/options-display.php:305
 msgid "Post date display"
 msgstr "Yazı tarihini göster"
 
-#: admin/custom-fields.php:151 admin/options-display.php:283
+#: admin/custom-fields.php:151 admin/options-display.php:309
 msgid "Hidden"
 msgstr "Gizli"
 
-#: admin/custom-fields.php:152 admin/options-display.php:284
+#: admin/custom-fields.php:152 admin/options-display.php:310
 msgid "As an icon (without the year)"
 msgstr "Simge olarak (yıl içermeyen)"
 
-#: admin/custom-fields.php:153 admin/options-display.php:285
+#: admin/custom-fields.php:153 admin/options-display.php:311
 msgid "As an icon (including the year)"
 msgstr "Simge olarak (yıl içeren)"
 
-#: admin/custom-fields.php:154 admin/options-display.php:286
+#: admin/custom-fields.php:154 admin/options-display.php:312
 msgid "As inline text"
 msgstr "Satır arası metin olarak"
 
@@ -507,7 +539,7 @@ msgstr "Gezinme Seçenekleri"
 msgid "Description"
 msgstr "Tanım"
 
-#: admin/custom-fields.php:170 admin/options-display.php:598
+#: admin/custom-fields.php:170 admin/options-display.php:629
 msgid ""
 "Only required if you need a description in the navigation menu and you are "
 "not using a custom menu."
@@ -703,50 +735,50 @@ msgstr ""
 "sadece \"Tüm seçenekleri göster\" bağlantısına tıklayınız ve onlar size "
 "sihirli görünecektir."
 
-#: admin/options-advanced.php:12 admin/options.php:319
+#: admin/options-advanced.php:13 admin/options.php:319
 msgid "Preview"
 msgstr "Ön İzleme"
 
-#: admin/options-advanced.php:19
+#: admin/options-advanced.php:20
 msgid "Enable preview of your site on the Graphene Theme Options page"
 msgstr "Graphene Seçenekler sayfasında sitenizin ön zilemesini etkinleştir"
 
-#: admin/options-advanced.php:24 admin/options-advanced.php:53
-#: admin/options-advanced.php:89 admin/options-advanced.php:128
+#: admin/options-advanced.php:25 admin/options-advanced.php:55
+#: admin/options-advanced.php:92 admin/options-advanced.php:131
 #: admin/options-colours.php:78 admin/options-colours.php:195
 #: admin/options-colours.php:311 admin/options-colours.php:347
 #: admin/options-colours.php:388 admin/options-colours.php:424
 #: admin/options-colours.php:462 admin/options-colours.php:501
 #: admin/options-colours.php:537 admin/options-colours.php:589
-#: admin/options-colours.php:645 admin/options-display.php:72
-#: admin/options-display.php:176 admin/options-display.php:259
-#: admin/options-display.php:319 admin/options-display.php:360
-#: admin/options-display.php:382 admin/options-display.php:536
-#: admin/options-display.php:565 admin/options-display.php:603
-#: admin/options-display.php:661 admin/options-display.php:692
-#: admin/options-general.php:187 admin/options-general.php:228
-#: admin/options-general.php:259 admin/options-general.php:341
-#: admin/options-general.php:369 admin/options-general.php:402
-#: admin/options-general.php:443 admin/options-general.php:587
-#: admin/options-general.php:638 admin/options-general.php:673
-#: admin/options-general.php:705 admin/options-general.php:740
-#: admin/options-general.php:765
+#: admin/options-colours.php:645 admin/options-display.php:63
+#: admin/options-display.php:200 admin/options-display.php:284
+#: admin/options-display.php:345 admin/options-display.php:387
+#: admin/options-display.php:410 admin/options-display.php:565
+#: admin/options-display.php:595 admin/options-display.php:634
+#: admin/options-display.php:693 admin/options-display.php:725
+#: admin/options-general.php:188 admin/options-general.php:231
+#: admin/options-general.php:267 admin/options-general.php:343
+#: admin/options-general.php:372 admin/options-general.php:406
+#: admin/options-general.php:448 admin/options-general.php:592
+#: admin/options-general.php:644 admin/options-general.php:680
+#: admin/options-general.php:713 admin/options-general.php:749
+#: admin/options-general.php:775
 msgid "Save All Options"
 msgstr "Seçeneklerin Tümünü Kaydet"
 
-#: admin/options-advanced.php:33
+#: admin/options-advanced.php:35
 msgid "Custom <head> Tags"
 msgstr "Özel <head> Etiketleri"
 
-#: admin/options-advanced.php:38
+#: admin/options-advanced.php:40
 msgid "Code to insert into the <head> element"
 msgstr "<head> elemanı içine yerleştirmek için kod"
 
-#: admin/options-advanced.php:62
+#: admin/options-advanced.php:65
 msgid "Action Hooks Widget Areas"
 msgstr "Eylem Kancaları Bileşen Alanı"
 
-#: admin/options-advanced.php:65
+#: admin/options-advanced.php:68
 msgid ""
 "This option enables you to place virtually any content to every nook and "
 "cranny in the theme, by attaching widget areas to the theme's action hooks."
@@ -755,7 +787,7 @@ msgstr ""
 "temanın hemen hemen her köşesine ve noktasına herhangi bir içerik  "
 "yerleştirmenize olanak sağlar"
 
-#: admin/options-advanced.php:66
+#: admin/options-advanced.php:69
 msgid ""
 "All action hooks available in the Graphene Theme are listed below. Click on "
 "the filename to display all the action hooks available in that file. Then, "
@@ -767,19 +799,19 @@ msgstr ""
 "tıklayın. Sonra, bu eylem kancasını mevcut bir bileşen alanı yapmak için bir "
 "eylem kancası yanındaki onay kutusunu işaretleyin."
 
-#: admin/options-advanced.php:75
+#: admin/options-advanced.php:78
 msgid "Click to show/hide the action hooks for this file"
 msgstr "Bu dosya için eylem kancasını göster/gizle'ye tıkla"
 
-#: admin/options-advanced.php:88
+#: admin/options-advanced.php:91
 msgid "Rescan action hooks"
 msgstr "Eylem kancalarını tekrar tara"
 
-#: admin/options-advanced.php:98
+#: admin/options-advanced.php:101
 msgid "Move generated CSS"
 msgstr "Oluşturulan CSS'e taşı"
 
-#: admin/options-advanced.php:103
+#: admin/options-advanced.php:106
 #, php-format
 msgid ""
 "If you're using a child theme, you can move the CSS codes generated by the "
@@ -788,7 +820,7 @@ msgstr ""
 "Eğer ikincil bir tema kullanıyorsanız, tema tarafından oluşturulan CSS "
 "kodlarını %s ikincil temanızın içerisine taşımalısınız."
 
-#: admin/options-advanced.php:104
+#: admin/options-advanced.php:107
 msgid ""
 "The CSS codes are generated from the various customisation options in the "
 "theme's options pages, including any codes you have entered in the Custom "
@@ -797,12 +829,12 @@ msgstr ""
 "CSS kodları Özel CSS seçeneği girmiş olduğunuz kodlar dahil, temanın "
 "seçenekler sayfalarında, çeşitli özelleştirme seçeneklerinden oluşturulur."
 
-#: admin/options-advanced.php:107
+#: admin/options-advanced.php:110
 #, php-format
 msgid "This will reduce up to %.1f KB on every page load for your site."
 msgstr "Bu sitenizin her sayfası için yükü %.1f KB azaltacaktır."
 
-#: admin/options-advanced.php:110
+#: admin/options-advanced.php:113
 #, php-format
 msgid ""
 "You will need to update your child theme's %s file everytime you change any "
@@ -813,15 +845,15 @@ msgstr ""
 "seçeneklerin değiştirildiği her seferde, ikincil temanın % s dosyasını "
 "güncellemeniz gerekir."
 
-#: admin/options-advanced.php:115
+#: admin/options-advanced.php:118
 msgid "I have moved the generated CSS"
 msgstr "Oluşturulan CSS'i taşıdım."
 
-#: admin/options-advanced.php:120
+#: admin/options-advanced.php:123
 msgid "CSS codes generated by the theme"
 msgstr "Tema tarafından oluşturulan CSS kodları"
 
-#: admin/options-advanced.php:122
+#: admin/options-advanced.php:125
 msgid "Select all"
 msgstr "Tümünü seç"
 
@@ -905,7 +937,7 @@ msgstr "Ön tanımlıları al"
 msgid "Export presets"
 msgstr "Ön tanımlıları dışa aktar"
 
-#: admin/options-colours.php:47 admin/options-display.php:64
+#: admin/options-colours.php:47 admin/options-display.php:55
 msgid "Top bar"
 msgstr "Üst menü çubuğu"
 
@@ -1278,19 +1310,19 @@ msgstr "Merak Öldürür"
 msgid "Zesty Orange"
 msgstr "Portakal Rendesi"
 
-#: admin/options-display.php:13
+#: admin/options-display.php:14
 msgid "Header Display Options"
 msgstr "Başlık Görünüm Seçenekleri"
 
-#: admin/options-display.php:19
+#: admin/options-display.php:20
 msgid "Use light-coloured header bars"
 msgstr "Açık renkli başlık çubuğu kullan"
 
-#: admin/options-display.php:25
+#: admin/options-display.php:26
 msgid "Link header image to front page"
 msgstr "Ön sayfaya başlık resmi bağlantısı"
 
-#: admin/options-display.php:28
+#: admin/options-display.php:29
 msgid ""
 "Check this if you disable the header texts and want the header image to be "
 "linked to the front page."
@@ -1298,11 +1330,11 @@ msgstr ""
 "Başlık metinlerini  ve ön sayfaya bağlantılı  başlık resmini devre dışı "
 "bırakırmak istiyorsanız bunu işaretleyin."
 
-#: admin/options-display.php:33
+#: admin/options-display.php:34
 msgid "Disable Featured Image replacing header image"
 msgstr "Başlık resmi yerine Özellikli Resim yerleştirmeyi devre dışı bırak"
 
-#: admin/options-display.php:36
+#: admin/options-display.php:37
 msgid ""
 "Check this to prevent the posts Featured Image replacing the header image "
 "regardless of the featured image dimension."
@@ -1310,165 +1342,149 @@ msgstr ""
 "Özellikli görüntü boyutuna bakılmaksızın başlık resmi yerine Özellikli Resim "
 "yerleştirmeyi engellemek için  bunu işaretleyin."
 
-#: admin/options-display.php:41
-msgid "Use random header image"
-msgstr "Rasgele başlık resmi kullan"
-
-#: admin/options-display.php:45
-msgid ""
-"Check this to show a random header image (random image taken from the "
-"available default header images)."
-msgstr ""
-"Rasgele başlık resmi göstermek için bunu işaretle (rasgele resim uygun "
-"durumdaki varsayılan başlık resimlerinden alınır)"
-
-#: admin/options-display.php:46
-msgid ""
-"<strong>Note:</strong> only works on pages where a specific header image is "
-"not defined."
-msgstr ""
-"<strong>Not:</strong> yalnızca belirli bir başlık resminin tanımlanmadığı "
-"sayfalarda çalışır."
-
-#: admin/options-display.php:51
+#: admin/options-display.php:42
 msgid "Header image height"
 msgstr "Başlık resim yüksekliği"
 
-#: admin/options-display.php:60
+#: admin/options-display.php:51
 msgid "Search box location"
 msgstr "Arama kutusu konumu"
 
-#: admin/options-display.php:65
+#: admin/options-display.php:56
 msgid "Navigation bar"
 msgstr "Dolaşım çubuğu"
 
-#: admin/options-display.php:66
+#: admin/options-display.php:57
 msgid "Disable search box"
 msgstr "Arama kutusunu kapat"
 
-#: admin/options-display.php:81
+#: admin/options-display.php:73
 msgid "Column Options"
 msgstr "Sütun Seçenekleri"
 
-#: admin/options-display.php:87
+#: admin/options-display.php:79
 msgid "Column mode"
 msgstr "Sütun Kipi"
 
-#: admin/options-display.php:96 admin/options-display.php:141
+#: admin/options-display.php:88 admin/options-display.php:149
 msgid "One column"
 msgstr "Tek Sütun"
 
-#: admin/options-display.php:103 admin/options-display.php:148
+#: admin/options-display.php:96 admin/options-display.php:106
+#: admin/options-display.php:157 admin/options-display.php:167
 msgid "Two columns (with sidebar right)"
 msgstr "İki Sütun (Sağ yan menü ile)"
 
-#: admin/options-display.php:107 admin/options-display.php:152
+#: admin/options-display.php:98 admin/options-display.php:104
+#: admin/options-display.php:159 admin/options-display.php:165
 msgid "Two columns (with sidebar left)"
 msgstr "İki Sütun (Sol yan menü ile)"
 
-#: admin/options-display.php:114 admin/options-display.php:159
+#: admin/options-display.php:115 admin/options-display.php:125
+#: admin/options-display.php:176 admin/options-display.php:186
 msgid "Three columns (with two sidebars right)"
 msgstr "Üç Sütun (Sağda iki yan menü ile)"
 
-#: admin/options-display.php:118 admin/options-display.php:163
+#: admin/options-display.php:117 admin/options-display.php:123
+#: admin/options-display.php:178 admin/options-display.php:184
 msgid "Three columns (with two sidebars left)"
 msgstr "Üç Sütun (Solda iki yan menü ile)"
 
-#: admin/options-display.php:122 admin/options-display.php:167
+#: admin/options-display.php:130 admin/options-display.php:191
 msgid "Three columns (with sidebars left and right)"
 msgstr "Üç Sütun (Her iki yanda birer menü ile)"
 
-#: admin/options-display.php:132
+#: admin/options-display.php:140
 msgid "bbPress column mode"
 msgstr "bbPress sütun kipi"
 
-#: admin/options-display.php:185
+#: admin/options-display.php:210
 msgid "Column Width Options"
 msgstr "Sütun Genişlik Seçenekleri"
 
-#: admin/options-display.php:188
+#: admin/options-display.php:213
 msgid "Note: Leave values empty to reset to the default values."
 msgstr "Not: Varsayılan değere çevirmek için değeri boş bırak."
 
-#: admin/options-display.php:192
+#: admin/options-display.php:217
 msgid "Container width"
 msgstr "Taşıyıcı genişliği"
 
-#: admin/options-display.php:209 admin/options-display.php:232
+#: admin/options-display.php:234 admin/options-display.php:257
 msgid "Column width"
 msgstr "Sütun genişliği"
 
-#: admin/options-display.php:209
+#: admin/options-display.php:234
 msgid "two-column mode"
 msgstr "iki-sütun kipi"
 
-#: admin/options-display.php:213 admin/options-display.php:240
+#: admin/options-display.php:238 admin/options-display.php:265
 msgid "Content"
 msgstr "İçerik"
 
-#: admin/options-display.php:217
+#: admin/options-display.php:242
 msgid "Sidebar"
 msgstr "Yan Menü"
 
-#: admin/options-display.php:232
+#: admin/options-display.php:257
 msgid "three-column mode"
 msgstr "üç-sütun kipi"
 
-#: admin/options-display.php:236
+#: admin/options-display.php:261
 msgid "Left sidebar"
 msgstr "Sol yan menü"
 
-#: admin/options-display.php:244
+#: admin/options-display.php:269
 msgid "Right sidebar"
 msgstr "Sağ yan menü"
 
-#: admin/options-display.php:267
+#: admin/options-display.php:293
 msgid "Posts Display Options"
 msgstr "Yazı Görünüm Seçenekleri"
 
-#: admin/options-display.php:273
+#: admin/options-display.php:299
 msgid "Hide post author"
 msgstr "Yazarı gizle"
 
-#: admin/options-display.php:292
+#: admin/options-display.php:318
 msgid "Hide post categories"
 msgstr "Kategorileri gizle"
 
-#: admin/options-display.php:298
+#: admin/options-display.php:324
 msgid "Hide post tags"
 msgstr "Etiketleri gizle"
 
-#: admin/options-display.php:304
+#: admin/options-display.php:330
 msgid "Hide post comment count"
 msgstr "Yorum sayısını gizle"
 
-#: admin/options-display.php:305
+#: admin/options-display.php:331
 msgid ""
 "Only affects posts listing (such as the front page) and not single post view."
 msgstr "Sadece yazılar listesini (ön sayfa gibi) etkiler ve tek yazı görünmez."
 
-#: admin/options-display.php:310
+#: admin/options-display.php:336
 msgid "Show post author's <a href=\"http://en.gravatar.com/\">gravatar</a>"
 msgstr ""
 "Yazı yazarının <a href=\"http://en.gravatar.com/\">gravatar</a>'ını göster"
 
-#: admin/options-display.php:314
+#: admin/options-display.php:340
 msgid "Show post author's info"
 msgstr "Yazarın bilgisini göster"
 
-#: admin/options-display.php:328
+#: admin/options-display.php:355
 msgid "Excerpts Display Options"
 msgstr "Alıntı Görünüm Seçenekleri"
 
-#: admin/options-display.php:334
+#: admin/options-display.php:361
 msgid "Show excerpts in front page"
 msgstr "Ön sayfada alıntıları göster"
 
-#: admin/options-display.php:340
+#: admin/options-display.php:367
 msgid "Show full content in archive pages"
 msgstr "Arşiv sayfalarında içeriğin tümünü göster"
 
-#: admin/options-display.php:344
+#: admin/options-display.php:371
 msgid ""
 "Note: Archive pages include the archive for category, tags, time, and search "
 "results pages. Enabling this option will cause the full content of posts and "
@@ -1480,15 +1496,15 @@ msgstr ""
 "arşiv listelenen sayfaların tam içeriğinin alıntı yerine görüntülenmesine "
 "neden olur ve eğer Devamı etiketi kullanılırsa kesilir."
 
-#: admin/options-display.php:348
+#: admin/options-display.php:375
 msgid "Show More link for manual excerpts"
 msgstr "Elle alıntılar için Ayrıntılar bağlantısını göster"
 
-#: admin/options-display.php:352
+#: admin/options-display.php:379
 msgid "Retain these HTML tags in excerpts"
 msgstr "Alıntılarda bu HTML etiketleri kalsın"
 
-#: admin/options-display.php:355
+#: admin/options-display.php:382
 msgid ""
 "Enter the HTML tags you'd like to retain in excerpts. For example, enter "
 "<code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> to retain <code>&lt;p&gt;</code>, "
@@ -1499,27 +1515,27 @@ msgstr ""
 "<code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code> ve <code>&lt;li&gt;</code> "
 "HTML etiketlerini girin."
 
-#: admin/options-display.php:370
+#: admin/options-display.php:398
 msgid "Comments Display Options"
 msgstr "Yorum Görünüm Seçenekleri"
 
-#: admin/options-display.php:376
+#: admin/options-display.php:404
 msgid "Hide allowed tags in comment form"
 msgstr "Yorum formunda izin verilen etiketleri gizle"
 
-#: admin/options-display.php:391
+#: admin/options-display.php:420
 msgid "Text Style Options"
 msgstr "Metin Stil Seçenekleri"
 
-#: admin/options-display.php:394
+#: admin/options-display.php:423
 msgid "Google Webfonts"
 msgstr "Google Web Yazı Tipleri"
 
-#: admin/options-display.php:397
+#: admin/options-display.php:426
 msgid "Font families"
 msgstr "Yazı tipi aileleri"
 
-#: admin/options-display.php:400
+#: admin/options-display.php:429
 msgid ""
 "Enter the Google Webfont font family string in the format that is used in "
 "the Webfont Loader, one font family per line."
@@ -1527,11 +1543,11 @@ msgstr ""
 "Web Yazı Tipi Yükleyicinin, her satırda bir yazı tipi ailesi olarak "
 "kullanacağı Google Web Yazı Tipi ailesini karakter dizisi formatında girin."
 
-#: admin/options-display.php:401
+#: admin/options-display.php:430
 msgid "Example:"
 msgstr "Örnek:"
 
-#: admin/options-display.php:406
+#: admin/options-display.php:435
 msgid ""
 "The following options are CSS properties, so any valid CSS values for each "
 "particular property can be used."
@@ -1539,139 +1555,139 @@ msgstr ""
 "Bu CSS özellikleri kullanılabilir, her bir özellik için çok geçerli bir CSS "
 "değerleri olduğunu unutmayın."
 
-#: admin/options-display.php:407
+#: admin/options-display.php:436
 msgid "Some example CSS properties values:"
 msgstr "Bazı örnek CSS özellikleri değerleri:"
 
-#: admin/options-display.php:410
+#: admin/options-display.php:439
 msgid "Text font:"
 msgstr "Metin yazı tipi:"
 
-#: admin/options-display.php:414
+#: admin/options-display.php:443
 msgid "Text size and line height:"
 msgstr "Metin boyutu ve satır yüksekliği:"
 
-#: admin/options-display.php:418
+#: admin/options-display.php:447
 msgid "Text weight:"
 msgstr "Metin ağırlığı:"
 
-#: admin/options-display.php:422
+#: admin/options-display.php:451
 msgid "Text style:"
 msgstr "Metin stili:"
 
-#: admin/options-display.php:426
+#: admin/options-display.php:455
 msgid "Text colour:"
 msgstr "Metin rengi:"
 
-#: admin/options-display.php:431
+#: admin/options-display.php:460
 msgid "Header Text"
 msgstr "Başlık Metni"
 
-#: admin/options-display.php:435
+#: admin/options-display.php:464
 msgid "Title text font"
 msgstr "Başlık metni yazı tipi"
 
-#: admin/options-display.php:441
+#: admin/options-display.php:470
 msgid "Title text size"
 msgstr "Başlık metni boyutu"
 
-#: admin/options-display.php:447
+#: admin/options-display.php:476
 msgid "Title text weight"
 msgstr "Başlık metni ağırlığı"
 
-#: admin/options-display.php:453
+#: admin/options-display.php:482
 msgid "Title text line height"
 msgstr "Başlık metni satır yüksekliği"
 
-#: admin/options-display.php:459
+#: admin/options-display.php:488
 msgid "Title text style"
 msgstr "Başlık metni stili"
 
-#: admin/options-display.php:468
+#: admin/options-display.php:497
 msgid "Description text font"
 msgstr "Metin yazı tipi tanımı"
 
-#: admin/options-display.php:474
+#: admin/options-display.php:503
 msgid "Description text size"
 msgstr "Metin boyutu tanımı"
 
-#: admin/options-display.php:480
+#: admin/options-display.php:509
 msgid "Description text weight"
 msgstr "Metin ağırlığı tanımı"
 
-#: admin/options-display.php:486
+#: admin/options-display.php:515
 msgid "Description text line height"
 msgstr "Metin satır yüksekliği tanımı"
 
-#: admin/options-display.php:492
+#: admin/options-display.php:521
 msgid "Description text style"
 msgstr "Metin stili tanımı"
 
-#: admin/options-display.php:498
+#: admin/options-display.php:527
 msgid "Content Text"
 msgstr "İçerik metni"
 
-#: admin/options-display.php:502
+#: admin/options-display.php:531
 msgid "Text font"
 msgstr "Metin yazı tipi"
 
-#: admin/options-display.php:508
+#: admin/options-display.php:537
 msgid "Text size"
 msgstr "Metin boyutu"
 
-#: admin/options-display.php:514
+#: admin/options-display.php:543
 msgid "Text line height"
 msgstr "Metin satır yüksekliği"
 
-#: admin/options-display.php:520
+#: admin/options-display.php:549
 msgid "Link Text"
 msgstr "Metin Bağlantısı"
 
-#: admin/options-display.php:524
+#: admin/options-display.php:553
 msgid "Text decoration (normal state )"
 msgstr "Metin süslemesi (normal)"
 
-#: admin/options-display.php:530
+#: admin/options-display.php:559
 msgid "Text decoration (hover state )"
 msgstr "Metin süslemesi (vurgulu)"
 
-#: admin/options-display.php:545
+#: admin/options-display.php:575
 msgid "Footer Widget Display Options"
 msgstr "Taban Bileşen Alanı Görünüm Seçenekleri"
 
-#: admin/options-display.php:551
+#: admin/options-display.php:581
 msgid "Number of columns to display"
 msgstr "Gösterilecek sütun sayısı"
 
-#: admin/options-display.php:558
+#: admin/options-display.php:588
 msgid "Number of columns to display for front page footer widget"
 msgstr "Ön sayfa taban bileşen alanı için görüntülenecek sütun sayısı"
 
-#: admin/options-display.php:574
+#: admin/options-display.php:605
 msgid "Navigation Menu Display Options"
 msgstr "Dolaşım Menüsü Görünüm Seçenekleri"
 
-#: admin/options-display.php:580
+#: admin/options-display.php:611
 msgid "Dropdown menu item width"
 msgstr "Açılır menü madde genişliği"
 
-#: admin/options-display.php:586
+#: admin/options-display.php:617
 msgid "Disable description in Header Menu"
 msgstr "Başlım Menü tanımını etkisizleştir"
 
-#: admin/options-display.php:594
+#: admin/options-display.php:625
 msgid "Description for default menu \"Home\" item"
 msgstr "Varsayılan menü için \"Anasayfa\" maddesi tanımı"
 
-#: admin/options-display.php:612
+#: admin/options-display.php:644
 msgid "Miscellaneous Display Options"
 msgstr "Çeşitli Görünüm Seçenekleri"
 
-#: admin/options-display.php:615
+#: admin/options-display.php:647
 msgid "Site title options"
 msgstr "Site başlık seçenekleri"
 
-#: admin/options-display.php:616
+#: admin/options-display.php:648
 msgid ""
 "Use these tags to customise your own site title structure: <code>#site-name</"
 "code>, <code>#site-desc</code>, <code>#post-title</code>"
@@ -1680,11 +1696,11 @@ msgstr ""
 "kullanın: <code>#site-name</code>, <code>#site-desc</code>, <code>#post-"
 "title</code>"
 
-#: admin/options-display.php:620
+#: admin/options-display.php:652
 msgid "Custom front page site title"
 msgstr "Özel ön sayfa site başlığı"
 
-#: admin/options-display.php:624
+#: admin/options-display.php:656
 msgid ""
 "Defaults to <code>#site-name &raquo; #site-desc</code>. The <code>#post-"
 "title</code> tag cannot be used here."
@@ -1692,27 +1708,27 @@ msgstr ""
 "<code>#site-name &raquo; #site-desc</code> için varsayılanlar. <code>#post-"
 "title</code> etiketi burada kullanılamaz."
 
-#: admin/options-display.php:629
+#: admin/options-display.php:661
 msgid "Custom content pages site title"
 msgstr "Özel içerik sayfaları site başlığı"
 
-#: admin/options-display.php:633
+#: admin/options-display.php:665
 msgid "Defaults to <code>#post-title &raquo; #site-name</code>."
 msgstr "<code>#post-title &raquo; #site-name</code> için varsayılanlar."
 
-#: admin/options-display.php:638
+#: admin/options-display.php:670
 msgid "Favicon options"
 msgstr "Favicon seçenekleri"
 
-#: admin/options-display.php:642
+#: admin/options-display.php:674
 msgid "Favicon URL"
 msgstr "Favicon URL"
 
-#: admin/options-display.php:646 admin/options-general.php:124
+#: admin/options-display.php:678 admin/options-general.php:125
 msgid "Upload or select image from gallery"
 msgstr "Galeriden resim yükle veya seç"
 
-#: admin/options-display.php:646
+#: admin/options-display.php:678
 msgid ""
 "Simply enter the full URL to your favicon file here to enable favicon. Make "
 "sure you include the <code>http://</code> in front of the URL as well. Or "
@@ -1724,23 +1740,23 @@ msgstr ""
 "resim yüklemek için Wordpress ortam yükleyici kullanın veya ortam "
 "kütüphanesinden bir resim seçin."
 
-#: admin/options-display.php:651
+#: admin/options-display.php:683
 msgid "WordPress Editor options"
 msgstr "Wordpress Düzenleyici seçenekleri"
 
-#: admin/options-display.php:655
+#: admin/options-display.php:687
 msgid "Disable custom editor styles"
 msgstr "Özel düzenleyici biçimleri devre dışı"
 
-#: admin/options-display.php:670
+#: admin/options-display.php:703
 msgid "Custom CSS"
 msgstr "Özel CSS"
 
-#: admin/options-display.php:675
+#: admin/options-display.php:708
 msgid "Custom CSS styles"
 msgstr "Özel CSS stilleri"
 
-#: admin/options-display.php:677
+#: admin/options-display.php:710
 msgid ""
 "You can enter your own CSS codes below to modify any other aspects of the "
 "theme's appearance that is not included in the options."
@@ -1748,43 +1764,43 @@ msgstr ""
 "Temanın, seçeneklere dahil olmayan, görünümünü başka yönlerini değiştirmek "
 "için aşağıya kendi CSS kodlarınızı girebilirsiniz."
 
-#: admin/options-general.php:12
+#: admin/options-general.php:13
 msgid "Slider Options"
 msgstr "Gösterici Seçenekleri"
 
-#: admin/options-general.php:18
+#: admin/options-general.php:19
 msgid "Disable slider"
 msgstr "Göstericiyi kapat"
 
-#: admin/options-general.php:26
+#: admin/options-general.php:27
 msgid "Extend slider to full width of the theme"
 msgstr "Tam genişlik tema için genişletilmiş gösterici"
 
-#: admin/options-general.php:32
+#: admin/options-general.php:33
 msgid "What do you want to show in the slider"
 msgstr "Göstericide ne göstermek istiyorsunuz"
 
-#: admin/options-general.php:36
+#: admin/options-general.php:37
 msgid "Show latest posts"
 msgstr "En son yazıları göster"
 
-#: admin/options-general.php:39
+#: admin/options-general.php:40
 msgid "Show random posts"
 msgstr "Rasgele yazıları göster"
 
-#: admin/options-general.php:42
+#: admin/options-general.php:43
 msgid "Show specific posts/pages"
 msgstr "Özel yazıları/sayfaları göster"
 
-#: admin/options-general.php:45
+#: admin/options-general.php:46
 msgid "Show posts from categories"
 msgstr "Kategorilerden yazılar göster"
 
-#: admin/options-general.php:50 admin/options-general.php:326
+#: admin/options-general.php:51 admin/options-general.php:331
 msgid "Posts and/or pages to display"
 msgstr "Gösterilecek yazı ve/veya sayfalar"
 
-#: admin/options-general.php:55 admin/options-general.php:331
+#: admin/options-general.php:56 admin/options-general.php:335
 msgid ""
 "Enter ID of posts and/or pages to be displayed, separated by comma. Example: "
 "<code>1,13,45,33</code>"
@@ -1792,7 +1808,7 @@ msgstr ""
 "Gösterilecek sayfalar ve/veya yazılar için virgülle ayrılmış numara girin. "
 "Örneğin: <code>1, 13, 45, 33</code>  "
 
-#: admin/options-general.php:56
+#: admin/options-general.php:57
 msgid ""
 "Applicable only if <strong>Show specific posts/pages</strong> is selected "
 "above."
@@ -1800,15 +1816,16 @@ msgstr ""
 "Sadece yukarıda <strong>Özel yazıları/sayfaları göster</strong> seçiliyse "
 "uygulanır."
 
-#: admin/options-general.php:62
+#: admin/options-general.php:63
 msgid "Categories to display"
 msgstr "Gösterilecek kategoriler"
 
-#: admin/options-general.php:65 admin/options-general.php:246
+#: admin/options-general.php:66 admin/options-general.php:251
+#: admin/options-general.php:322
 msgid "Click to select categories or type to search"
 msgstr "Kategoriyi seçmek  veya arama girmek için tıkla"
 
-#: admin/options-general.php:74
+#: admin/options-general.php:75
 msgid ""
 "All posts within the categories selected here will be displayed on the "
 "slider. Usage example: create a new category \"Featured\" and assign all "
@@ -1820,212 +1837,207 @@ msgstr ""
 "görüntülenmesini istediğiniz bütün yazılarda o kategoriyi işaretleyin ve "
 "sonra burada o kategoriyi seçin."
 
-#: admin/options-general.php:79
+#: admin/options-general.php:80
 msgid "Exclude the categories from posts listing"
 msgstr "Yazılar listesi dışında tutulacak kategoriler"
 
-#: admin/options-general.php:83
+#: admin/options-general.php:84
 msgid "Disabled"
 msgstr "Devre dışı"
 
-#: admin/options-general.php:84
+#: admin/options-general.php:85
 msgid "Home Page"
 msgstr "Anasayfa"
 
-#: admin/options-general.php:85
+#: admin/options-general.php:86
 msgid "Everywhere"
 msgstr "Heryer"
 
-#: admin/options-general.php:91
+#: admin/options-general.php:92
 msgid "Show posts from categories in random order"
 msgstr "Kategorilerden rastgele yazılar göster"
 
-#: admin/options-general.php:99
+#: admin/options-general.php:100
 msgid "Number of posts to display"
 msgstr "Gösterilecek yazıların sayısı"
 
-#: admin/options-general.php:130
+#: admin/options-general.php:131
 msgid "Slider display style"
 msgstr "Gösterici görünüm stili"
 
-#: admin/options-general.php:134
+#: admin/options-general.php:135
 msgid "Thumbnail and excerpt"
 msgstr "Küçükresim ve alıntı"
 
-#: admin/options-general.php:135
+#: admin/options-general.php:136
 msgid "Background image and excerpt"
 msgstr "Arkaplan resmi ve alıntı"
 
-#: admin/options-general.php:136
+#: admin/options-general.php:137
 msgid "Full post content"
 msgstr "Tam yazı içeriği"
 
-#: admin/options-general.php:142
+#: admin/options-general.php:143
 msgid "Slider animation"
 msgstr "Gösterici animasyonu"
 
-#: admin/options-general.php:146
+#: admin/options-general.php:147
 msgid "Horizontal slide"
 msgstr "Yatay gösterici"
 
-#: admin/options-general.php:147
+#: admin/options-general.php:148
 msgid "Vertical slide"
 msgstr "Dikey gösterici"
 
-#: admin/options-general.php:148
+#: admin/options-general.php:149
 msgid "Fade"
 msgstr "Soldurma"
 
-#: admin/options-general.php:149
+#: admin/options-general.php:150
 msgid "No effect"
 msgstr "Efekt yok"
 
-#: admin/options-general.php:155
+#: admin/options-general.php:156
 msgid "Slider height"
 msgstr "Gösterici yüksekliği"
 
-#: admin/options-general.php:163
+#: admin/options-general.php:164
 msgid "Slider speed"
 msgstr "Gösterici hızı"
 
-#: admin/options-general.php:166 admin/options-general.php:175
+#: admin/options-general.php:167 admin/options-general.php:176
 msgid "milliseconds"
 msgstr "milisaniye"
 
-#: admin/options-general.php:167
+#: admin/options-general.php:168
 msgid "This is the duration that each slider item will be shown"
 msgstr "Bu  kaydırıcıdaki her maddenin görüneceği süredir"
 
-#: admin/options-general.php:172
+#: admin/options-general.php:173
 msgid "Slider transition speed"
 msgstr "Gösterici geçiş hızı"
 
-#: admin/options-general.php:176
+#: admin/options-general.php:177
 msgid ""
 "This is the speed of the slider transition. Lower values = higher speed."
 msgstr "Bu göstericinin geçiş hızıdır. Alt değerler = en yüksek hız."
 
-#: admin/options-general.php:181
+#: admin/options-general.php:182
 msgid "Move slider to bottom of page"
 msgstr "Göstericiyi sayfanın altına taşı"
 
-#: admin/options-general.php:196
+#: admin/options-general.php:198
 msgid "Infinite Scroll"
 msgstr "Sürekli kaydırma"
 
-#: admin/options-general.php:202
+#: admin/options-general.php:201
+msgid ""
+"Let the theme pull the next set of posts or comments into view when visitor "
+"approaches the bottom of the page."
+msgstr ""
+"Ziyaretçiler sayfa altına yaklaştığında, temanın görünüme bir sonraki "
+"mesajlar veya yorumlar seti çekmesine izin ver."
+
+#: admin/options-general.php:205
 msgid "Enable Infinite Scroll"
 msgstr "Sürekli Kaydırmayı Etkinleştir"
 
-#: admin/options-general.php:211
+#: admin/options-general.php:214
 msgid "Click to fetch more items"
 msgstr "Daha fazla madde getirmek için tıkla"
 
-#: admin/options-general.php:217
+#: admin/options-general.php:220
 msgid "For comments"
 msgstr "Yorumlar için"
 
-#: admin/options-general.php:222
+#: admin/options-general.php:225
 msgid "Enable Infinite Scroll for comments"
 msgstr "Yorumlar için Sürekli Kaydırmayı Etkinleştir"
 
-#: admin/options-general.php:237
+#: admin/options-general.php:241
 msgid "Front Page Options"
 msgstr "Ön Sayfa Seçenekleri"
 
-#: admin/options-general.php:243
+#: admin/options-general.php:248
 msgid "Front page posts categories"
 msgstr "Ön sayfa yazı kategorileri "
 
-#: admin/options-general.php:254
+#: admin/options-general.php:259
 msgid ""
 "Only posts that belong to the categories selected here will be displayed on "
-"the front page. Does not affect Static Front Page. Leave empty to disable."
+"the front page."
 msgstr ""
-"Sadece yazılar burada seçilen kategoriye ait  ön sayfada görünecektir. Sabit "
-"Ön Sayfayı etkilemez. Etkisizleştirmek için boş bırakın."
+"Sadece yazılar burada seçilen kategoriye ait  ön sayfada görünecektir. "
 
-#: admin/options-general.php:270
+#: admin/options-general.php:264
+msgid ""
+"<strong>Note:</strong> this feature is not available when using a <a href="
+"\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">static front "
+"page</a>."
+msgstr ""
+"<strong>Not:</strong> Bu özellik <a href=\"http://codex.wordpress.org/"
+"Creating_a_Static_Front_Page\">sabit ön sayfa </a> kullanıldığında geçerli "
+"değildir."
+
+#: admin/options-general.php:279
 msgid "Homepage Panes"
 msgstr "Anasayfa Panelleri"
 
-#: admin/options-general.php:277
+#: admin/options-general.php:286
 msgid "Disable homepage panes"
 msgstr "Anasayfa panellerini etkisizleştir"
 
-#: admin/options-general.php:287
+#: admin/options-general.php:296
 msgid "Type of content to show"
 msgstr "Gösterilecek içeriğin biçimi"
 
-#: admin/options-general.php:294
+#: admin/options-general.php:303
 msgid "Latest posts by category"
 msgstr "Kategoriye göre en son yazılar"
 
-#: admin/options-general.php:297
+#: admin/options-general.php:306
 msgid "Posts and/or pages"
 msgstr "Yazılar ve/veya sayfalar"
 
-#: admin/options-general.php:302
+#: admin/options-general.php:311
 msgid "Number of latest posts to display"
 msgstr "Gösterilecek enson yazıların sayısı"
 
-#: admin/options-general.php:306
+#: admin/options-general.php:319
+msgid "Categories to show latest posts from"
+msgstr "Enson yazılardan gösterilecek kategoriler"
+
+#: admin/options-general.php:340
 msgid ""
-"Applicable only if <strong>Latest posts</strong> or <strong>Latest posts by "
-"category</strong> is selected above."
+"<strong>Note:</strong> this feature is only available when using a <a href="
+"\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">static front "
+"page</a>."
 msgstr ""
-"Sadece <strong>Enson yazılar</strong> veya <strong>Kategoriye göre enson "
-"yazılar</strong> aşağıda seçiliyse uygulanır."
+"<strong>Not:</strong> Bu özellik sadece <a href=\"http://codex.wordpress.org/"
+"Creating_a_Static_Front_Page\">sabit ön sayfa </a> kullanıldığında "
+"geçerlidir."
 
-#: admin/options-general.php:311
-msgid "Category to show latest posts from"
-msgstr "Enson yazılardan gösterilecek kategori"
-
-#: admin/options-general.php:321
-msgid ""
-"Applicable only if <strong>Latest posts by category</strong> is selected "
-"above."
-msgstr ""
-"Sadece <strong>Kategoriye göre enson yazılar</strong> aşağıda seçiliyse "
-"uygulanır."
-
-#: admin/options-general.php:332
-msgid ""
-"Applicable only if <strong>Posts and/or pages</strong> is selected above."
-msgstr ""
-"Sadece <strong>Yazılar ve/veya sayfalar</strong> aşağıda seçiliyse uygulanır."
-
-#: admin/options-general.php:338
-msgid ""
-"<strong>Note:</strong> homepage panes are only displayed when using a <a "
-"href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">static "
-"front page</a>."
-msgstr ""
-"<strong>Not:</strong> anasayfa panelleri sadece <a href=\"http://codex."
-"wordpress.org/Creating_a_Static_Front_Page\">sabit ön sayfa </a> "
-"kullanıldığında görüntülenir."
-
-#: admin/options-general.php:350
+#: admin/options-general.php:353
 msgid "Comments Options"
 msgstr "Yorum Seçenekleri"
 
-#: admin/options-general.php:356
+#: admin/options-general.php:359
 msgid "Commenting"
 msgstr "Yorum"
 
-#: admin/options-general.php:360
+#: admin/options-general.php:363
 msgid "Use WordPress settings"
 msgstr "Wordpress ayarlarını kullan"
 
-#: admin/options-general.php:361
+#: admin/options-general.php:364
 msgid "Disabled for pages"
 msgstr "Sayfalar için etkisizleştir"
 
-#: admin/options-general.php:362
+#: admin/options-general.php:365
 msgid "Disabled completely"
 msgstr "Tamamen kapat"
 
-#: admin/options-general.php:364
+#: admin/options-general.php:367
 msgid ""
 "Note: this setting overrides the global WordPress Discussion Setting called "
 "\"Allow people to post comments on new articles\" and also the \"Allow "
@@ -2035,39 +2047,39 @@ msgstr ""
 "\"İnsanların yeni bir yazı üzerine yorum göndermesine izin ver\" denilen "
 "genel  Wordpress Tartışma Ayar seçeneğini geçersiz kılar."
 
-#: admin/options-general.php:378
+#: admin/options-general.php:382
 msgid "Child Page Options"
 msgstr "Alt Sayfa Seçenekleri"
 
-#: admin/options-general.php:384
+#: admin/options-general.php:388
 msgid "Hide parent box if content is empty"
 msgstr "Eğer içerik boşsa ana kutuyu gizle"
 
-#: admin/options-general.php:390
+#: admin/options-general.php:394
 msgid "Child page listings"
 msgstr "Alt sayfa listeleme"
 
-#: admin/options-general.php:394
+#: admin/options-general.php:398
 msgid "Show listing"
 msgstr "Listelemeyi göster"
 
-#: admin/options-general.php:395
+#: admin/options-general.php:399
 msgid "Hide listing"
 msgstr "Listelemeyi gizle"
 
-#: admin/options-general.php:396
+#: admin/options-general.php:400
 msgid "Only show listing if parent content is empty"
 msgstr "Eğer ana içerik boşsa sadece listelemeyi göster"
 
-#: admin/options-general.php:411
+#: admin/options-general.php:416
 msgid "Widget Area Options"
 msgstr "Bileşen Alanı Seçenekleri"
 
-#: admin/options-general.php:414
+#: admin/options-general.php:419
 msgid "Header widget area"
 msgstr "Başlık Bileşen Alanı"
 
-#: admin/options-general.php:415
+#: admin/options-general.php:420
 msgid ""
 "<strong>Important:</strong> This widget area is unstyled, as it is often "
 "used for advertisement banners, etc. If you enable it, make sure you style "
@@ -2077,15 +2089,15 @@ msgstr ""
 "sıkça kullanıladığı gibi stil içermemektedir. Etkinleştirirseniz stilinizin "
 "Özel CSS seçeneği kullanmayı gerektirdiğinden emin olun."
 
-#: admin/options-general.php:419
+#: admin/options-general.php:424
 msgid "Enable header widget area"
 msgstr "Başlık bileşen alanını etkinleştir"
 
-#: admin/options-general.php:428
+#: admin/options-general.php:433
 msgid "Alternate Widgets"
 msgstr "Değişimli Bileşenler"
 
-#: admin/options-general.php:429
+#: admin/options-general.php:434
 msgid ""
 "You can enable the theme to show different widget areas in the front page "
 "than the rest of the website. If you enable this option, additional widget "
@@ -2097,15 +2109,15 @@ msgstr ""
 "etkinleştirirseniz Bileşen ayarları sayfasında eklenecek olan ek bileşen "
 "alanları sadece ön sayfada görünecektir."
 
-#: admin/options-general.php:432
+#: admin/options-general.php:437
 msgid "Enable alternate front page sidebar widget area"
 msgstr "Farklı ön sayfa yan menü bileşen alanını etkinleştir"
 
-#: admin/options-general.php:436
+#: admin/options-general.php:441
 msgid "Enable alternate front page footer widget area"
 msgstr "Farklı ön sayfa taban bileşen alanını etkinleştir"
 
-#: admin/options-general.php:437
+#: admin/options-general.php:442
 msgid ""
 "You can also specify different column counts for the front page footer "
 "widget and the rest-of-site footer widget if you enable this option."
@@ -2113,23 +2125,23 @@ msgstr ""
 "Bu seçeneği etkinleştirirseniz  ön sayfa taban bileşeni ile sitenin geri "
 "kalanındaki taban bileşeni için de farklı sütun sayısı belirtebilirsiniz."
 
-#: admin/options-general.php:452
+#: admin/options-general.php:458
 msgid "Top Bar Options"
 msgstr "Üst Menü Çubuğu Seçenekleri"
 
-#: admin/options-general.php:458
+#: admin/options-general.php:464
 msgid "Hide the top bar"
 msgstr "Üst çubuğu gizle"
 
-#: admin/options-general.php:464
+#: admin/options-general.php:470
 msgid "Social Media"
 msgstr "Sosyal Ağ"
 
-#: admin/options-general.php:467
+#: admin/options-general.php:473
 msgid "Open social media links in new window"
 msgstr "Sosyal ağ bağlantılarını yeni pencerede aç"
 
-#: admin/options-general.php:471
+#: admin/options-general.php:477
 msgid ""
 "<strong>Hint:</strong> drag and drop to rearrange the placement of the "
 "social media icons."
@@ -2137,67 +2149,67 @@ msgstr ""
 "<strong>İpucu:</strong> sosyal ağ simgelerinin yerlerini yeniden düzenlemek "
 "için sürükle ve bırak."
 
-#: admin/options-general.php:498 admin/options-general.php:557
+#: admin/options-general.php:503 admin/options-general.php:562
 msgid "Custom"
 msgstr "Özel"
 
-#: admin/options-general.php:507 admin/options-general.php:543
-#: admin/options-general.php:566
+#: admin/options-general.php:512 admin/options-general.php:548
+#: admin/options-general.php:571
 msgid "Title attribute"
 msgstr "Başlık Niteliği"
 
-#: admin/options-general.php:511 admin/options-general.php:544
-#: admin/options-general.php:570
+#: admin/options-general.php:516 admin/options-general.php:549
+#: admin/options-general.php:575
 msgid "URL"
 msgstr "URL"
 
-#: admin/options-general.php:515 admin/options-general.php:572
+#: admin/options-general.php:520 admin/options-general.php:577
 msgid "Leave the URL empty to use the default RSS URL."
 msgstr "Varsayılan RSS URL'yi kullanmak için URL alanını boş bırak."
 
-#: admin/options-general.php:521 admin/options-general.php:542
-#: admin/options-general.php:576
+#: admin/options-general.php:526 admin/options-general.php:547
+#: admin/options-general.php:581
 msgid "Icon URL"
 msgstr "Simge URL"
 
-#: admin/options-general.php:525 admin/options-general.php:545
-#: includes/theme-comments.php:218
+#: admin/options-general.php:530 admin/options-general.php:550
+#: includes/theme-comments.php:219
 msgid "Delete"
 msgstr "Sil"
 
-#: admin/options-general.php:537
+#: admin/options-general.php:542
 msgid "Add Social Media Profile"
 msgstr "Sosya Ağ Profili Ekle"
 
-#: admin/options-general.php:549
+#: admin/options-general.php:554
 msgid "Type"
 msgstr "Biçim"
 
-#: admin/options-general.php:552
+#: admin/options-general.php:556
 msgid "Choose type"
 msgstr "Biçim seç"
 
-#: admin/options-general.php:580
+#: admin/options-general.php:585
 msgid "Add this social media profile"
 msgstr "Bu sosyal medya profilini ekle"
 
-#: admin/options-general.php:596
+#: admin/options-general.php:602
 msgid "Social Sharing Buttons"
 msgstr "Sosyal Paylaşım Düğmeleri"
 
-#: admin/options-general.php:601
+#: admin/options-general.php:607
 msgid "Show social sharing button"
 msgstr "Sosyal paylaşım düğmesini göster"
 
-#: admin/options-general.php:607
+#: admin/options-general.php:613
 msgid "Show in Pages as well?"
 msgstr "Sayfaların içinde de göster?"
 
-#: admin/options-general.php:611
+#: admin/options-general.php:617
 msgid "Show in home and archive pages?"
 msgstr "Ana sayfa ve arşiv sayfalarında göstereyim mi?"
 
-#: admin/options-general.php:614
+#: admin/options-general.php:620
 #, php-format
 msgid ""
 "Enabling this will cause the social sharing buttons to appear on posts "
@@ -2212,31 +2224,31 @@ msgstr ""
 "kullanın. Aksi takdirde, tüm düğmeleri aynı URL ve başlık paylaşacaktır. "
 "Eğer AddThis kullanıyorsanız, %s bakın."
 
-#: admin/options-general.php:614
+#: admin/options-general.php:620
 msgid "AddThis Client API"
 msgstr "AddThis İstemci API"
 
-#: admin/options-general.php:618
+#: admin/options-general.php:624
 msgid "Social sharing buttons location"
 msgstr "Sosyal Paylaşım düğmeleri konumu"
 
-#: admin/options-general.php:621
+#: admin/options-general.php:627
 msgid "Bottom of posts"
 msgstr "Yazıların altında"
 
-#: admin/options-general.php:622
+#: admin/options-general.php:628
 msgid "Top of posts"
 msgstr "Yazıların üstünde"
 
-#: admin/options-general.php:623
+#: admin/options-general.php:629
 msgid "Both top and bottom"
 msgstr "Alt, üst  olarak herikisinde"
 
-#: admin/options-general.php:629
+#: admin/options-general.php:635
 msgid "Your social sharing button code"
 msgstr "Sosyal paylaşım düğmesi kodu"
 
-#: admin/options-general.php:630
+#: admin/options-general.php:636
 msgid ""
 "You can use codes from any popular social sharing sites, like Facebook, "
 "Digg, AddThis, etc."
@@ -2244,35 +2256,35 @@ msgstr ""
 "Facebook, Digg, AddThis, vb. gibi herhangi bir sosyal paylaşım sitesinden "
 "gelen kodları kullanabilirsiniz"
 
-#: admin/options-general.php:633
+#: admin/options-general.php:639
 msgid "You may use these tags to get the post's URL, title, and excerpt:"
 msgstr "Yazının URL, başlık ve alıntılar için bu etiketleri kullanabilirsiniz:"
 
-#: admin/options-general.php:647
+#: admin/options-general.php:654
 msgid "Adsense Options"
 msgstr "Adsense Seçenekleri"
 
-#: admin/options-general.php:653
+#: admin/options-general.php:660
 msgid "Show Adsense advertising"
 msgstr "Adsense reklamlarını göster"
 
-#: admin/options-general.php:661
+#: admin/options-general.php:668
 msgid "Show ads on front page as well"
 msgstr "Reklamları ön sayfada da göster"
 
-#: admin/options-general.php:667
+#: admin/options-general.php:674
 msgid "Your Adsense code"
 msgstr "Adsense kodunuz"
 
-#: admin/options-general.php:682
+#: admin/options-general.php:690
 msgid "Google Analytics Options"
 msgstr "Google Analytics Seçenekleri"
 
-#: admin/options-general.php:687
+#: admin/options-general.php:695
 msgid "Enable Google Analytics tracking"
 msgstr "Google Analytics izlemeyi etkinleştir"
 
-#: admin/options-general.php:694
+#: admin/options-general.php:702
 msgid ""
 "<strong>Note:</strong> the theme now places the Google Analytics script in "
 "the <code>&lt;head&gt;</code> element to better support the new asynchronous "
@@ -2285,11 +2297,11 @@ msgstr ""
 "asenkron komut dosyasını kullanmak için komut dosyasının güncellediğinden "
 "emin olun."
 
-#: admin/options-general.php:698
+#: admin/options-general.php:706
 msgid "Google Analytics tracking code"
 msgstr "Google Analytics izleme kodu"
 
-#: admin/options-general.php:699
+#: admin/options-general.php:707
 msgid ""
 "Make sure you include the full tracking code (including the <code>&lt;"
 "script&gt;</code> and <code>&lt;/script&gt;</code> tags) and not just the "
@@ -2299,42 +2311,42 @@ msgstr ""
 "code> etiketlerini içeren) ve sadece <code>UA-#######-#</code> kodu "
 "içerdiğine emin olun."
 
-#: admin/options-general.php:714
+#: admin/options-general.php:723
 msgid "Footer Options"
 msgstr "Taban Seçenekleri"
 
-#: admin/options-general.php:719
+#: admin/options-general.php:728
 msgid "Use Creative Commons licence for content"
 msgstr "İçerik için Creative Commons Lisansı kullan"
 
-#: admin/options-general.php:724
+#: admin/options-general.php:733
 msgid "Copyright text (html allowed)"
 msgstr "Telif hakkı metni (html'ye izin verilir)"
 
-#: admin/options-general.php:725
+#: admin/options-general.php:734
 msgid ""
 "If this field is empty, the following default copyright text will be "
 "displayed:"
 msgstr ""
 "Bu alan boşsa, aşağıdaki varsayılan telif hakkı metni görüntülenecektir:"
 
-#: admin/options-general.php:731
+#: admin/options-general.php:740
 msgid "Do not show copyright info"
 msgstr "Telif hakkı açıklamasını gösterme"
 
-#: admin/options-general.php:735
+#: admin/options-general.php:744
 msgid "Do not show the \"Return to top\" link"
 msgstr "\"Başa Dön\" bağlantısını gösterme"
 
-#: admin/options-general.php:749
+#: admin/options-general.php:759
 msgid "Print Options"
 msgstr "Seçenekleri Bas"
 
-#: admin/options-general.php:754
+#: admin/options-general.php:764
 msgid "Enable print CSS for single posts and pages?"
 msgstr "Tek yazı veya sayfalar için CSS baskıyı etkinleştir?"
 
-#: admin/options-general.php:760
+#: admin/options-general.php:770
 msgid "Show print button"
 msgstr "Baskı düğmesini göster"
 
@@ -2342,92 +2354,92 @@ msgstr "Baskı düğmesini göster"
 msgid "ERROR: You have not selected any colour presets to be exported."
 msgstr "HATA: Dışa aktarmak için herhangi bir ön tanımlı renk seçmediniz."
 
-#: admin/options-import.php:62 admin/options-import.php:279
-#: admin/options-presets.php:47 admin/uninstall.php:32
+#: admin/options-import.php:65 admin/options-import.php:282
+#: admin/options-presets.php:25 admin/uninstall.php:32
 msgid "ERROR: You are not authorised to perform that operation"
 msgstr "HATA: Bu işlemi gerçekleştirmek için yetkiniz yok"
 
-#: admin/options-import.php:83 admin/options-import.php:119
+#: admin/options-import.php:86 admin/options-import.php:122
 msgid ""
 "Before you can upload your import file, you will need to fix the following "
 "error:"
 msgstr ""
 "Alınan dosyayı yüklemeden önce, aşağıdaki hatayı gidermeniz gerekmektedir:"
 
-#: admin/options-import.php:89 admin/options-import.php:193
+#: admin/options-import.php:92 admin/options-import.php:196
 msgid "Import Graphene Theme Options"
 msgstr "Graphene Tema Seçeneklerini Al"
 
-#: admin/options-import.php:92
+#: admin/options-import.php:95
 msgid "Choose a file from your computer:"
 msgstr "Bilgisayarınızdan dosya seçin:"
 
-#: admin/options-import.php:92 admin/options-import.php:129
+#: admin/options-import.php:95 admin/options-import.php:132
 #, php-format
 msgid "Maximum size: %s"
 msgstr "Azami boyut: %s"
 
-#: admin/options-import.php:99 admin/options-import.php:136
+#: admin/options-import.php:102 admin/options-import.php:139
 msgid "Upload file and import"
 msgstr "Dosyayı yükle ve al"
 
-#: admin/options-import.php:125 admin/options-import.php:193
+#: admin/options-import.php:128 admin/options-import.php:196
 msgid "Import Graphene Theme Colour Presets"
 msgstr "Graphene Tema Renk Ön tanımlarını Al"
 
-#: admin/options-import.php:128
+#: admin/options-import.php:131
 msgid ""
 "Choose a Graphene theme's colour presets export file from your computer:"
 msgstr ""
 "Bilgisayarınızdan Graphene temanın ön tanımlı renk aktarım dosyasını seçin:"
 
-#: admin/options-import.php:155
+#: admin/options-import.php:158
 msgid "Export Graphene Theme Colour Presets"
 msgstr "Graphene Tema Renk Ön tanımlarını Dışa Aktar"
 
-#: admin/options-import.php:158
+#: admin/options-import.php:161
 msgid "Please select the colour presets to be exported."
 msgstr "Dışa aktarmak için lütfen ön tanımlı renkleri seçin."
 
-#: admin/options-import.php:168
+#: admin/options-import.php:171
 msgid "Export colour presets"
 msgstr "Ön tanımlı renkleri dışa aktar"
 
-#: admin/options-import.php:169 admin/options-import.php:242
-#: admin/options-import.php:252
+#: admin/options-import.php:172 admin/options-import.php:245
+#: admin/options-import.php:255
 msgid "&laquo; Return to Graphene Options"
 msgstr "&laquo; Graphene Seçeneklere Dön"
 
-#: admin/options-import.php:241
+#: admin/options-import.php:244
 msgid "Options import completed."
 msgstr "Seçeneklerin alımı tamamlandı."
 
-#: admin/options-import.php:244 admin/options-import.php:254
-#: admin/options-import.php:260 admin/options-import.php:265
+#: admin/options-import.php:247 admin/options-import.php:257
+#: admin/options-import.php:263 admin/options-import.php:268
 msgid "Sorry, there has been an error."
 msgstr "Üzgünüm, burada bir hata oluştu."
 
-#: admin/options-import.php:245
+#: admin/options-import.php:248
 msgid "The uploaded file does not contain valid Graphene options."
 msgstr "Yüklenen dosya geçerli Graphene seçenekleri içermiyor."
 
-#: admin/options-import.php:251
+#: admin/options-import.php:254
 msgid "Colour presets import completed."
 msgstr "Renk seçeneklerinin alımı tamamlandı."
 
-#: admin/options-import.php:255
+#: admin/options-import.php:258
 msgid "The uploaded file does not contain valid Graphene colour presets."
 msgstr "Yüklenen dosya geçerli Graphene ön tanımlı renkleri içermiyor."
 
-#: admin/options-import.php:261
+#: admin/options-import.php:264
 msgid "The uploaded file could not be read."
 msgstr "Yüklenen dosya okunamadı."
 
-#: admin/options-import.php:266
+#: admin/options-import.php:269
 msgid "The uploaded file is not supported."
 msgstr "Yüklenen dosya desteklenmiyor."
 
-#: admin/options-import.php:274
+#: admin/options-import.php:277
 msgid ""
 "File is empty. Please upload something more substantial. This error could "
 "also be caused by uploads being disabled in your php.ini or by post_max_size "
@@ -2445,43 +2457,47 @@ msgstr "Graphene Seçenekler"
 msgid "Graphene FAQs"
 msgstr "Graphene SSS"
 
-#: admin/options-init.php:133
+#: admin/options-init.php:134
 msgid "What should we call this preset?"
 msgstr "Bu öntanımlı dediğimiz ne olmalı?"
 
-#: admin/options-init.php:134
+#: admin/options-init.php:135
 msgid "Preset name is required to save a preset."
 msgstr "Ön tanımlı kaydetmek için ön tanımlı adı gerekmektedir."
 
-#: admin/options-init.php:135
+#: admin/options-init.php:136
 msgid "You are deleting this preset:"
 msgstr "Bu ön tanımlıyı silmek üzeresiniz:"
 
-#: admin/options-init.php:136
+#: admin/options-init.php:137
 msgid "Oops, nothing found."
 msgstr "Üzgünüz, hiçbir şey bulunamadı."
 
-#: admin/options-init.php:170
+#: admin/options-init.php:172
 msgid "Toggle all options boxes"
 msgstr "Tüm seçenek kutularına geçiş"
 
-#: admin/options-init.php:229
+#: admin/options-init.php:231
 msgid "Template preview not found."
 msgstr "Şablon ön izleme bulunamadı."
 
-#: admin/options-init.php:232
+#: admin/options-init.php:234
 msgid "default"
 msgstr "varsayılan"
 
-#: admin/options-init.php:288 admin/options-init.php:292
+#: admin/options-init.php:293 admin/options-init.php:297
 msgid "Theme default"
 msgstr "Tema varsayılanı"
 
-#: admin/options-presets.php:35
-msgid "The \"Normal website\" settings preset has been applied."
-msgstr "\"Nomal websitesi\" ön tanımlı ayarları uygulanmıştır."
+#: admin/options-init.php:334
+msgid "Learn more about this feature set"
+msgstr "Bu özellik seti hakkında daha fazlasını öğren"
 
-#: admin/options-presets.php:40
+#: admin/options-init.php:335
+msgid "Documentation"
+msgstr "Belgelendirme"
+
+#: admin/options-presets.php:18
 msgid "Settings have been reset."
 msgstr "Ayarlar sıfırlandı."
 
@@ -2603,23 +2619,23 @@ msgstr "HATA: %s URL için kötü URL girildi."
 msgid "ERROR: Invalid option for the social sharing buttons location."
 msgstr "HATA: Sosyal ağ paylaşım düğmeleri konumu için geçersiz seçenek."
 
-#: admin/options-validator.php:261
+#: admin/options-validator.php:260
 msgid "ERROR: The value for the header image height must be an integer."
 msgstr "HATA: Başlık resmi yüksekliği için değer tamsayı olmalıdır."
 
-#: admin/options-validator.php:262
+#: admin/options-validator.php:261
 msgid "ERROR: Invalid option for the Search box location."
 msgstr "HATA: Arama kutusu konumu için geçersiz seçenek."
 
-#: admin/options-validator.php:266
+#: admin/options-validator.php:265
 msgid "ERROR: Invalid option for the column mode."
 msgstr "HATA: Sütun kipi için geçersiz seçenek."
 
-#: admin/options-validator.php:267
+#: admin/options-validator.php:266
 msgid "ERROR: Invalid option for the bbPress column mode."
 msgstr "HATA: bbPress sütun kipi için geçersiz seçenek."
 
-#: admin/options-validator.php:273
+#: admin/options-validator.php:272
 #, php-format
 msgid ""
 "ERROR: Invalid width for %s. Width value must be positive number without "
@@ -2628,11 +2644,11 @@ msgstr ""
 "HATA: %s için geçersiz genişlik. Genişlik değeri birim kullanılmadan pozitif "
 "bir sayı olmalıdır."
 
-#: admin/options-validator.php:280
+#: admin/options-validator.php:279
 msgid "ERROR: Invalid option for the post date display."
 msgstr "HATA: Yazı tarihi görüntüleme için geçersiz seçenek."
 
-#: admin/options-validator.php:304
+#: admin/options-validator.php:303
 msgid ""
 "ERROR: The number of columns to be displayed in the footer widget must be a "
 "an integer value."
@@ -2640,15 +2656,15 @@ msgstr ""
 "HATA: Taban bileşen alanı için görüntülenecek sütun sayısı, tamsayı "
 "olmalıdır."
 
-#: admin/options-validator.php:309
+#: admin/options-validator.php:308
 msgid "ERROR: The width of the submenu must be a an integer value."
 msgstr "HATA: Alt menünün genişliği tamsayı olmalıdır."
 
-#: admin/options-validator.php:317
+#: admin/options-validator.php:316
 msgid "ERROR: Bad URL entered for the favicon URL."
 msgstr "HATA: Favicon URL için kötü URL girildi."
 
-#: admin/options-validator.php:343
+#: admin/options-validator.php:342
 msgid "ERROR: Invalid action hook selected widget action hooks."
 msgstr "HATA: Eylem kancaları bileşeni için geçersiz eylem kancası."
 
@@ -2745,33 +2761,15 @@ msgstr "Graphene Tema Haberleri"
 msgid "No news items."
 msgstr "Haber maddeleri yok."
 
-#: admin/options.php:185
-msgid "Graphene Usage Survey"
-msgstr "Graphene Kullanım Anketi"
-
-#: admin/options.php:188
-msgid ""
-"Help us to get to know you better. Take the Graphene theme usage survey now! "
-"Every opinion counts towards making the theme better. The survey is very "
-"short, and is completely anonymous."
-msgstr ""
-"Daha iyi tanımak için bize yardımcı olun. Şimdi Graphene tema kullanım "
-"anketimize katılın! Her görüş tema daha iyi hale getirmeye yönelik "
-"değerlidir. Anket çok kısa ve tamamen anonimdir."
-
-#: admin/options.php:189
-msgid "Take the survey"
-msgstr "Anket oluştur"
-
-#: admin/options.php:198
+#: admin/options.php:184
 msgid "Add-ons and plugins"
 msgstr "Eklemeler ve eklentiler "
 
-#: admin/options.php:201
+#: admin/options.php:187
 msgid "Add-ons"
 msgstr "Eklemeler"
 
-#: admin/options.php:202
+#: admin/options.php:188
 msgid ""
 "Add-ons are not shipped with the theme, but can be installed separately to "
 "extend the theme's capability."
@@ -2779,19 +2777,15 @@ msgstr ""
 "Eklemeler tema ile birlikte yollanmaz, fakat temanın kapasitesini "
 "genişletmek için ayrı ayrı kurulabilir."
 
-#: admin/options.php:206 admin/options.php:212
+#: admin/options.php:192 admin/options.php:198
 msgid "Installed"
 msgstr "Kuruldu"
 
-#: admin/options.php:207 admin/options.php:213 admin/options.php:234
+#: admin/options.php:193 admin/options.php:199 admin/options.php:245
 msgid "Not installed"
 msgstr "Kurulamadı"
 
-#: admin/options.php:207 admin/options.php:213
-msgid "Learn more"
-msgstr "Daha fazla bilgi"
-
-#: admin/options.php:208
+#: admin/options.php:194
 msgid ""
 "The new premium mobile theme that fuses elegant design with premium "
 "features. It's a match of pixel-perfection and code-devilry."
@@ -2799,7 +2793,11 @@ msgstr ""
 "Yeni premium cep tema premium özellikleri ile şık tasarımı birleştirir. "
 "Piksel mükemmelliğinin ve kod sihirbazlığının uyumudur."
 
-#: admin/options.php:214
+#: admin/options.php:199
+msgid "Learn more"
+msgstr "Daha fazla bilgi"
+
+#: admin/options.php:200
 msgid ""
 "Mobile extension developed specifically for optimised display of your site "
 "on mobile devices, such as iPhone and Android devices."
@@ -2807,11 +2805,11 @@ msgstr ""
 "Mobil uzantısı, iPhone ve Android cihazları gibi mobil cihazlar için, "
 "sitenizin en iyi görüntüsünü verecek şekilde özel olarak geliştirilmiştir."
 
-#: admin/options.php:218
+#: admin/options.php:204
 msgid "Plugins"
 msgstr "Eklentiler"
 
-#: admin/options.php:219
+#: admin/options.php:205
 msgid ""
 "The plugins listed here are natively supported by the theme. All you need to "
 "do is install the plugins and activate them."
@@ -2819,50 +2817,29 @@ msgstr ""
 "Burada listelenen eklentiler özgün tema tarafından desteklenmektedir. "
 "Yapmanız gereken tek şey eklentileri yüklemek ve etkinleştirmek."
 
-#: admin/options.php:233
+#: admin/options.php:244
 msgid "Activated"
 msgstr "Etkin"
 
-#: admin/options.php:246
-msgid "Options Presets"
-msgstr "Öntanımlı Seçenekler"
+#: admin/options.php:257 admin/options.php:266
+msgid "Reset settings"
+msgstr "Ayarları sıfırla"
 
-#: admin/options.php:249
+#: admin/options.php:260
 msgid ""
-"The default settings for the theme is preconfigured for use in blogs. If "
-"you're using this theme primarily for a normal website, or if you want to "
-"reset the settings to their default values, you can apply one of the "
-"available options presets below."
+"Reset all of the theme's settings to their default values. Only settings "
+"accessible via Graphene Theme Options are affected, including any custom "
+"colour presets you might have. Custom Header, Custom Menus, and other "
+"WordPress settings won't be affected."
 msgstr ""
-"Tema için varsayılan ayarlar, blogların kullanımı için önceden "
-"yapılandırılmıştır. Eğer ayarları varsayılan değerlerine sıfırlamak "
-"istiyorsanız, ya da normal bir web sitesi için öncelikle bu temayı "
-"kullanıyorsanız, aşağıdaki kullanılabilir ön tanımlı seçeneklerden birini "
-"uygulayabilirsiniz."
-
-#: admin/options.php:250
-msgid ""
-"Note that you can still configure the individual settings after you apply "
-"any preset."
-msgstr ""
-"Herhangi bir ayar uyguladıktan sonra hala bireysel ayarları düzenlemeyi "
-"unutmayın."
-
-#: admin/options.php:255
-msgid "Select Options Preset"
-msgstr "Öntanımlı Seçenekleri Seç"
-
-#: admin/options.php:258
-msgid "Normal website"
-msgstr "Nomal websitesi"
+"Tema tüm ayarlarını varsayılan değerlerine sıfırlayın. Aklınıza gelebilecek "
+"herhangi bir  ön tanımlı özel renk ayarları da dahil olmak üzere, sadece "
+"Graphene Tema Seçenekler üzerinden erişilebilir ayarlar etkilenir. Özel "
+"Başlık, Özel Menüler ve diğer WordPress ayarları etkilenmeyecektir."
 
 #: admin/options.php:261
-msgid "Reset to default settings"
-msgstr "Varsayılan ayarlara sıfırla"
-
-#: admin/options.php:266
-msgid "Apply Options Preset"
-msgstr "Öntanımlı Seçenekleri Uygula"
+msgid "<strong>WARNING:</strong> This action is not reversible."
+msgstr "<strong>UYARI:</strong> Bu eylem geri dödürülemez."
 
 #: admin/options.php:276
 msgid "Import/export theme options"
@@ -2912,11 +2889,11 @@ msgstr ""
 msgid ""
 "Note that uninstalling this theme <strong>does not remove</strong> the "
 "theme's files. To delete the files after you have uninstalled this theme, go "
-"to Appearances &gt; Themes and delete the theme from there."
+"to Appearance &gt; Themes and delete the theme from there."
 msgstr ""
-"Unutmayın, bu tema kaldırmak temanın dosyalarını <strong>kaldırmaz</strong>. "
-"Bu temayı kaldırdıktan sonra dosyaları silmek için, Görünüm > Temalar gidin "
-"ve oradan temayı silin."
+"Unutmayın, bu temayı kaldırmakla temanın dosyaları <strong>silinmez</"
+"strong>. Bu temayı kaldırdıktan sonra dosyaları silmek için, Görünüm > "
+"Temalar gidin ve oradan temayı silin."
 
 #: admin/options.php:320
 msgid ""
@@ -3005,29 +2982,29 @@ msgstr "Web siteniz:"
 msgid "Message:"
 msgstr "İletiniz:"
 
-#: includes/theme-comments.php:218
+#: includes/theme-comments.php:219
 msgid "Delete this comment"
 msgstr "Bu yorumu sil"
 
-#: includes/theme-comments.php:220
+#: includes/theme-comments.php:221
 msgid "Mark this comment as spam"
 msgstr "Bu yorumu spam olarak işaretle"
 
-#: includes/theme-comments.php:220
+#: includes/theme-comments.php:221
 msgid "Spam"
 msgstr "Spam"
 
-#: includes/theme-comments.php:247
+#: includes/theme-comments.php:248
 msgid "Fetch more comments"
 msgstr "Daha fazla yorum getir"
 
 #. translators: %1$s is the website's name, %2$s is the social media name
-#: includes/theme-functions.php:146
+#: includes/theme-functions.php:138
 #, php-format
 msgid "Visit %1$s's %2$s page"
 msgstr "%1$s'e ait %2$s sayfasını ziyaret et"
 
-#: includes/theme-functions.php:308
+#: includes/theme-functions.php:300
 #, php-format
 msgid ""
 "You haven't placed any widget into this widget area. Go to %1$s and place "
@@ -3036,11 +3013,11 @@ msgstr ""
 "Bileşen alanına herhangi bir bileşen yerleştirmediniz. %1$s gidin ve %2$s "
 "olarak bilinen bileşen alanına bazı bileşenleri yerleştirin."
 
-#: includes/theme-functions.php:308
+#: includes/theme-functions.php:300
 msgid "WP Admin > Appearance > Widgets"
 msgstr "WP Yönetici > Görünüm > Bileşenler"
 
-#: includes/theme-functions.php:309
+#: includes/theme-functions.php:301
 msgid "This notice will not be displayed to your site's visitors."
 msgstr "Bu not site ziyaretçilerince görüntülenmeyecektir."
 
@@ -3048,32 +3025,32 @@ msgstr "Bu not site ziyaretçilerince görüntülenmeyecektir."
 msgid "Continue reading &raquo;"
 msgstr "Devamını oku &raquo;"
 
-#: includes/theme-loop.php:143
+#: includes/theme-loop.php:153
 msgid "Older posts &laquo;"
 msgstr "Eski yazılar &laquo;"
 
-#: includes/theme-loop.php:144
+#: includes/theme-loop.php:154
 msgid "&raquo; Newer posts"
 msgstr "&raquo; Yeni yazılar"
 
-#: includes/theme-loop.php:146
+#: includes/theme-loop.php:156
 msgid "Next page &raquo;"
 msgstr "Sonraki sayfaya &raquo;"
 
-#: includes/theme-loop.php:147
+#: includes/theme-loop.php:157
 msgid "&laquo; Previous page"
 msgstr "&laquo; Önceki sayfa"
 
-#: includes/theme-loop.php:153
+#: includes/theme-loop.php:163
 msgid "Fetch more items"
 msgstr "Daha fazla madde getir"
 
-#: includes/theme-loop.php:466 includes/theme-loop.php:467
+#: includes/theme-loop.php:476 includes/theme-loop.php:477
 #, php-format
 msgid "Print this %s"
 msgstr "Bu %s bas"
 
-#: includes/theme-loop.php:507
+#: includes/theme-loop.php:517
 #, php-format
 msgid "Return to %s"
 msgstr "%s'e dön"
@@ -3086,45 +3063,45 @@ msgstr "Ana sayfa"
 msgid "Read more"
 msgstr "Devamını oku"
 
-#: includes/theme-scripts.php:117
+#: includes/theme-scripts.php:118 includes/theme-scripts.php:122
 #, php-format
 msgid "Fetching %1$s more item from %2$s left ..."
 msgid_plural "Fetching %1$s more items from %2$s left ..."
 msgstr[0] "Kalan %2$s den %1$s daha fazla madde getiriliyor ..."
 msgstr[1] "Kalan %2$s den %1$s daha fazla madde getiriliyor ..."
 
-#: includes/theme-scripts.php:122
+#: includes/theme-scripts.php:127
 msgid "No more items to fetch"
 msgstr "Getirilecek daha fazla madde yok"
 
-#: includes/theme-scripts.php:126
+#: includes/theme-scripts.php:131 includes/theme-scripts.php:135
 #, php-format
 msgid "Fetching %1$s more top level comment from %2$s left ..."
 msgid_plural "Fetching %1$s more top level comments from %2$s left ..."
 msgstr[0] "Kalan %2$s den %1$s daha üst seviye yorum getiriliyor ..."
 msgstr[1] "Kalan %2$s den %1$s daha üst seviye yorum getiriliyor ..."
 
-#: includes/theme-scripts.php:131
+#: includes/theme-scripts.php:140
 msgid "No more comments to fetch"
 msgstr "Getirilecek daha fazla yorum yok"
 
-#: includes/theme-setup.php:113
+#: includes/theme-setup.php:111
 msgid "Header Menu"
 msgstr "Başlık Menüsü"
 
-#: includes/theme-setup.php:114
+#: includes/theme-setup.php:112
 msgid "Secondary Menu"
 msgstr "İkinci Menü"
 
-#: includes/theme-setup.php:115
+#: includes/theme-setup.php:113
 msgid "Footer Menu"
 msgstr "Taban Menüsü"
 
-#: includes/theme-setup.php:166
+#: includes/theme-setup.php:164
 msgid "Header image by Syahir Hakim"
 msgstr "Syahir Hakim'in başlık resmi"
 
-#: includes/theme-setup.php:170
+#: includes/theme-setup.php:168
 msgid ""
 "This is the default Graphene theme header image, cropped from image by "
 "Quantin Houyoux at sxc.hu"
@@ -3132,30 +3109,30 @@ msgstr ""
 "Bu sxc.hu de Quantin Houyoux tarafından kırpılmış resim, varsayılan Graphene "
 "tema başlık resmidir"
 
-#: includes/theme-setup.php:174 includes/theme-setup.php:178
-#: includes/theme-setup.php:182 includes/theme-setup.php:186
-#: includes/theme-setup.php:190
+#: includes/theme-setup.php:172 includes/theme-setup.php:176
+#: includes/theme-setup.php:180 includes/theme-setup.php:184
+#: includes/theme-setup.php:188
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "Başlık resmi sxc.hu da Ilco tarafından kırpılmıştır"
 
-#: includes/theme-setup.php:261
+#: includes/theme-setup.php:259
 msgid ""
 "The first sidebar widget area (will always be displayed on the right hand "
 "side)."
 msgstr "İlk yan menü bileşen alanı (daima saağ yan kenarda görüntülenecektir)."
 
-#: includes/theme-setup.php:270
+#: includes/theme-setup.php:268
 msgid ""
 "The second sidebar widget area (will always be displayed on the left hand "
 "side)."
 msgstr ""
 "İkinci yan menü bileşen alanı (daima sol yan kenarda görüntülenecektir)."
 
-#: includes/theme-setup.php:277
+#: includes/theme-setup.php:275
 msgid "Footer Widget Area"
 msgstr "Taban Bileşen Alanı"
 
-#: includes/theme-setup.php:279
+#: includes/theme-setup.php:277
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to "
 "display at the theme's Display Options page."
@@ -3163,21 +3140,21 @@ msgstr ""
 "Taban bileşen alanı. Devre dışı için boş bırak. Görünüm Seçenekleri "
 "sayfasında görüntülenecek sütunların sayısını ayarla."
 
-#: includes/theme-setup.php:296
+#: includes/theme-setup.php:294
 msgid ""
 "The first sidebar widget area that will only be displayed on the front page."
 msgstr "İlk yan menü bileşen alanı sadece ön sayfada görüntülenecektir."
 
-#: includes/theme-setup.php:305
+#: includes/theme-setup.php:303
 msgid ""
 "The second sidebar widget area that will only be displayed on the front page."
 msgstr "İkinci yan menü bileşen alanı sadece ön sayfada görüntülenecektir."
 
-#: includes/theme-setup.php:314
+#: includes/theme-setup.php:312
 msgid "Front Page Footer Widget Area"
 msgstr "Ön Sayfa Taban Bileşen Alanı"
 
-#: includes/theme-setup.php:316
+#: includes/theme-setup.php:314
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave "
 "empty to disable. Set the number of columns to display at the theme's "
@@ -3187,15 +3164,15 @@ msgstr ""
 "için boş bırakın. Temanın Görünüm Seçenekleri sayfasında görüntülenecek "
 "sütun sayısını ayarlayın."
 
-#: includes/theme-setup.php:326
+#: includes/theme-setup.php:324
 msgid "Header Widget Area"
 msgstr "Başlık Bileşen Alanı"
 
-#: includes/theme-setup.php:328
+#: includes/theme-setup.php:326
 msgid "The header widget area."
 msgstr "Başlık bileşen alanı."
 
-#: includes/theme-setup.php:345
+#: includes/theme-setup.php:343
 #, php-format
 msgid ""
 "Dynamically added widget area. This widget area is attached to the %s action "
@@ -3208,51 +3185,147 @@ msgstr ""
 msgid "View full post"
 msgstr "Tam yazıyı gör"
 
-#: includes/theme-widgets.php:14
-msgid "Display the latest Twitter status updates."
-msgstr "En son Twitter durum güncellemelerini göster."
+#: js/mce-l10n.php:11
+msgid "Add a warning message block"
+msgstr "Uyarı iletisi bloku ekle"
 
-#: includes/theme-widgets.php:51
-msgid "Loading tweets..."
-msgstr "Tweetler yükleniyor..."
+#: js/mce-l10n.php:12
+msgid "Add an error message block"
+msgstr "Hata iletisi bloku ekle"
 
-#: includes/theme-widgets.php:54
-#, php-format
-msgid "Follow %s"
-msgstr "%s takipçi"
+#: js/mce-l10n.php:13
+msgid "Add a notice message block"
+msgstr "Duyuru iletisi bloku ekle"
 
-#: includes/theme-widgets.php:96
-msgid "Latest tweets"
-msgstr "Son tweetler"
+#: js/mce-l10n.php:14
+msgid "Add an important message block"
+msgstr "Önemli ileti bloku ekle"
 
-#: includes/theme-widgets.php:104
-msgid "Title:"
-msgstr "Başlık:"
+#: js/mce-l10n.php:15
+msgid "Add a pullquote"
+msgstr "Tanıtım ekle"
 
-#: includes/theme-widgets.php:108
-msgid "Twitter Username:"
-msgstr "Twitter Kullanıcı adı:"
+#~ msgid "1 comment"
+#~ msgstr "1 yorum"
 
-#: includes/theme-widgets.php:112
-msgid "Number of tweets to display:"
-msgstr "Gösterilecek tweet sayısı:"
+#~ msgid ""
+#~ "Applicable only if <strong>Latest posts</strong> or <strong>Latest posts "
+#~ "by category</strong> is selected above."
+#~ msgstr ""
+#~ "Sadece <strong>Enson yazılar</strong> veya <strong>Kategoriye göre enson "
+#~ "yazılar</strong> aşağıda seçiliyse uygulanır."
 
-#: includes/theme-widgets.php:116
-msgid "Show followers count"
-msgstr "Takipçi sayacını göster"
+#~ msgid ""
+#~ "Applicable only if <strong>Latest posts by category</strong> is selected "
+#~ "above."
+#~ msgstr ""
+#~ "Sadece <strong>Kategoriye göre enson yazılar</strong> aşağıda seçiliyse "
+#~ "uygulanır."
 
-#: includes/theme-widgets.php:120
-msgid "Hide @replies"
-msgstr "@yanıtlayı gizle"
+#~ msgid ""
+#~ "Applicable only if <strong>Posts and/or pages</strong> is selected above."
+#~ msgstr ""
+#~ "Sadece <strong>Yazılar ve/veya sayfalar</strong> aşağıda seçiliyse "
+#~ "uygulanır."
 
-#: includes/theme-widgets.php:122
-#, php-format
-msgid "Note: Selecting this sometimes result in showing less than %s tweets"
-msgstr "Not: Bunun seçilmesi bazen %s'den az tweet gösterilmesine yol açar"
+#~ msgid "The \"Normal website\" settings preset has been applied."
+#~ msgstr "\"Nomal websitesi\" ön tanımlı ayarları uygulanmıştır."
 
-#: includes/theme-widgets.php:125
-msgid "Open links in new window"
-msgstr "Bağlantıları yeni pencerede aç"
+#~ msgid "Graphene Usage Survey"
+#~ msgstr "Graphene Kullanım Anketi"
+
+#~ msgid ""
+#~ "Help us to get to know you better. Take the Graphene theme usage survey "
+#~ "now! Every opinion counts towards making the theme better. The survey is "
+#~ "very short, and is completely anonymous."
+#~ msgstr ""
+#~ "Daha iyi tanımak için bize yardımcı olun. Şimdi Graphene tema kullanım "
+#~ "anketimize katılın! Her görüş tema daha iyi hale getirmeye yönelik "
+#~ "değerlidir. Anket çok kısa ve tamamen anonimdir."
+
+#~ msgid "Take the survey"
+#~ msgstr "Anket oluştur"
+
+#~ msgid "Options Presets"
+#~ msgstr "Öntanımlı Seçenekler"
+
+#~ msgid ""
+#~ "The default settings for the theme is preconfigured for use in blogs. If "
+#~ "you're using this theme primarily for a normal website, or if you want to "
+#~ "reset the settings to their default values, you can apply one of the "
+#~ "available options presets below."
+#~ msgstr ""
+#~ "Tema için varsayılan ayarlar, blogların kullanımı için önceden "
+#~ "yapılandırılmıştır. Eğer ayarları varsayılan değerlerine sıfırlamak "
+#~ "istiyorsanız, ya da normal bir web sitesi için öncelikle bu temayı "
+#~ "kullanıyorsanız, aşağıdaki kullanılabilir ön tanımlı seçeneklerden birini "
+#~ "uygulayabilirsiniz."
+
+#~ msgid ""
+#~ "Note that you can still configure the individual settings after you apply "
+#~ "any preset."
+#~ msgstr ""
+#~ "Herhangi bir ayar uyguladıktan sonra hala bireysel ayarları düzenlemeyi "
+#~ "unutmayın."
+
+#~ msgid "Select Options Preset"
+#~ msgstr "Öntanımlı Seçenekleri Seç"
+
+#~ msgid "Normal website"
+#~ msgstr "Nomal websitesi"
+
+#~ msgid "Apply Options Preset"
+#~ msgstr "Öntanımlı Seçenekleri Uygula"
+
+#~ msgid "Use random header image"
+#~ msgstr "Rasgele başlık resmi kullan"
+
+#~ msgid ""
+#~ "Check this to show a random header image (random image taken from the "
+#~ "available default header images)."
+#~ msgstr ""
+#~ "Rasgele başlık resmi göstermek için bunu işaretle (rasgele resim uygun "
+#~ "durumdaki varsayılan başlık resimlerinden alınır)"
+
+#~ msgid ""
+#~ "<strong>Note:</strong> only works on pages where a specific header image "
+#~ "is not defined."
+#~ msgstr ""
+#~ "<strong>Not:</strong> yalnızca belirli bir başlık resminin tanımlanmadığı "
+#~ "sayfalarda çalışır."
+
+#~ msgid "Display the latest Twitter status updates."
+#~ msgstr "En son Twitter durum güncellemelerini göster."
+
+#~ msgid "Loading tweets..."
+#~ msgstr "Tweetler yükleniyor..."
+
+#~ msgid "Follow %s"
+#~ msgstr "%s takipçi"
+
+#~ msgid "Latest tweets"
+#~ msgstr "Son tweetler"
+
+#~ msgid "Title:"
+#~ msgstr "Başlık:"
+
+#~ msgid "Twitter Username:"
+#~ msgstr "Twitter Kullanıcı adı:"
+
+#~ msgid "Number of tweets to display:"
+#~ msgstr "Gösterilecek tweet sayısı:"
+
+#~ msgid "Show followers count"
+#~ msgstr "Takipçi sayacını göster"
+
+#~ msgid "Hide @replies"
+#~ msgstr "@yanıtlayı gizle"
+
+#~ msgid "Note: Selecting this sometimes result in showing less than %s tweets"
+#~ msgstr "Not: Bunun seçilmesi bazen %s'den az tweet gösterilmesine yol açar"
+
+#~ msgid "Open links in new window"
+#~ msgstr "Bağlantıları yeni pencerede aç"
 
 #~ msgid "Permalink Link to %s"
 #~ msgstr "%s kalıcı bağlantısı"

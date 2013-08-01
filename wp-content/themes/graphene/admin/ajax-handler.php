@@ -44,6 +44,14 @@ function graphene_ajax_update_preset_handler() {
 	if ( $action == 'delete' ) unset( $data['colour_presets'][$preset] );
 	
 	if ( $action == 'save' ) {
+		
+		$count = $dash = '';
+		while ( array_key_exists( $preset . $dash . $count, $data['colour_presets'] ) ) {
+			if ( ! $count ) { $count = 0; $dash = '-'; } 
+			$count++;
+		}
+		if ( $count ) $preset .= '-' . $count;
+		
 		$colour_settings = $data;
 		unset( $colour_settings['colour_preset'] ); unset( $colour_settings['colour_presets'] );
 		$colour_settings = json_encode( $colour_settings );

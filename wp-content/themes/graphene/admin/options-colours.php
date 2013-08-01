@@ -42,7 +42,7 @@ function graphene_options_colours() {
 		</script>
         
         <div class="postbox non-essential-option" style="margin-top: 20px;">
-            <div class="head-wrap">
+            <div class="head-wrap nodocs">
                 <div title="Click to toggle" class="handlediv"><br /></div>
                 <h3 class="hndle"><?php _e( 'Top bar', 'graphene' ); ?></h3>
             </div>
@@ -80,7 +80,7 @@ function graphene_options_colours() {
         </div>
         
         <div class="postbox non-essential-option">
-            <div class="head-wrap">
+            <div class="head-wrap nodocs">
                 <div title="Click to toggle" class="handlediv"><br /></div>
                 <h3 class="hndle"><?php _e( 'Primary menu', 'graphene' ); ?></h3>
             </div>
@@ -198,7 +198,7 @@ function graphene_options_colours() {
         
         
         <div class="postbox non-essential-option" style="margin-top: 20px;">
-            <div class="head-wrap">
+            <div class="head-wrap nodocs">
                 <div title="Click to toggle" class="handlediv"><br /></div>
                 <h3 class="hndle"><?php _e( 'Secondary menu', 'graphene' ); ?></h3>
             </div>
@@ -314,7 +314,7 @@ function graphene_options_colours() {
         
         
         <div class="postbox non-essential-option">
-            <div class="head-wrap">
+            <div class="head-wrap nodocs">
                 <div title="Click to toggle" class="handlediv"><br /></div>
                 <h3 class="hndle"><?php _e( 'Content area', 'graphene' ); ?></h3>
             </div>
@@ -349,7 +349,7 @@ function graphene_options_colours() {
         </div>
         
         <div class="postbox non-essential-option">
-            <div class="head-wrap">
+            <div class="head-wrap nodocs">
                 <div title="Click to toggle" class="handlediv"><br /></div>
                 <h3 class="hndle"><?php _e( 'Widgets', 'graphene' ); ?></h3>
             </div>
@@ -391,7 +391,7 @@ function graphene_options_colours() {
         
         
         <div class="postbox non-essential-option">
-            <div class="head-wrap">
+            <div class="head-wrap nodocs">
                 <div title="Click to toggle" class="handlediv"><br /></div>
                 <h3 class="hndle"><?php _e( 'Slider', 'graphene' ); ?></h3>
             </div>
@@ -427,7 +427,7 @@ function graphene_options_colours() {
                 
         
         <div class="postbox non-essential-option">
-            <div class="head-wrap">
+            <div class="head-wrap nodocs">
                 <div title="Click to toggle" class="handlediv"><br /></div>
                 <h3 class="hndle"><?php _e( 'Block buttons', 'graphene' ); ?></h3>
             </div>
@@ -465,7 +465,7 @@ function graphene_options_colours() {
                 
         
         <div class="postbox non-essential-option">
-            <div class="head-wrap">
+            <div class="head-wrap nodocs">
                 <div title="Click to toggle" class="handlediv"><br /></div>
                 <h3 class="hndle"><?php _e( 'Archive title', 'graphene' ); ?></h3>
             </div>
@@ -504,7 +504,7 @@ function graphene_options_colours() {
         
         
         <div class="postbox non-essential-option">
-            <div class="head-wrap">
+            <div class="head-wrap nodocs">
                 <div title="Click to toggle" class="handlediv"><br /></div>
                 <h3 class="hndle"><?php _e( 'Comments area', 'graphene' ); ?></h3>
             </div>
@@ -540,7 +540,7 @@ function graphene_options_colours() {
         
         
         <div class="postbox non-essential-option">
-            <div class="head-wrap">
+            <div class="head-wrap nodocs">
                 <div title="Click to toggle" class="handlediv"><br /></div>
                 <h3 class="hndle"><?php _e( 'Content text', 'graphene' ); ?></h3>
             </div>
@@ -591,7 +591,7 @@ function graphene_options_colours() {
         </div> 
         
         <div class="postbox non-essential-option" style="margin-top: 20px;">
-            <div class="head-wrap">
+            <div class="head-wrap nodocs">
                 <div title="Click to toggle" class="handlediv"><br /></div>
                 <h3 class="hndle"><?php _e( 'Footer', 'graphene' ); ?></h3>
             </div>

@@ -9,6 +9,7 @@ function graphene_options_general() {
         <div class="postbox">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Slider_options' ); ?>
         		<h3 class="hndle"><?php _e( 'Slider Options', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
@@ -65,7 +66,7 @@ function graphene_options_general() {
                             <select name="graphene_settings[slider_specific_categories][]" id="slider_specific_categories" multiple="multiple" class="select-multiple chzn-select" data-placeholder="<?php _e( 'Click to select categories or type to search', 'graphene' ); ?>">
                                <?php /* Get the list of categories */ 
                                     $selected_cats = $graphene_settings['slider_specific_categories'];
-                                    $categories = get_categories();
+                                    $categories = get_categories( array( 'hide_empty' => false ) );
                                     foreach ( $categories as $category) :
                                 ?>
                                 <option value="<?php echo $category->cat_ID; ?>" <?php if ( $selected_cats && in_array( $category->cat_ID, $selected_cats ) ) { echo 'selected="selected"'; }?>><?php echo $category->cat_name; ?></option>
@@ -193,6 +194,7 @@ function graphene_options_general() {
         <div class="postbox">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Infinite_Scroll' ); ?>
         		<h3 class="hndle"><?php _e( 'Infinite Scroll', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
@@ -215,7 +217,7 @@ function graphene_options_general() {
                     </tr>
                 </table>
                 
-                <h4><?php _e( 'For comments', 'graphene' ); ?>
+                <h4><?php _e( 'For comments', 'graphene' ); ?></h4>
                 
                 <table class="form-table">
                 	<tr>
@@ -235,9 +237,11 @@ function graphene_options_general() {
         <div class="postbox non-essential-option">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Front_page_options' ); ?>
         		<h3 class="hndle"><?php _e( 'Front Page Options', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
+            	<?php if ( 'page' != get_option( 'show_on_front' ) ) : ?>
                 <table class="form-table">       	
                     <tr>
                         <th scope="row">
@@ -246,16 +250,19 @@ function graphene_options_general() {
                         <td>
                             <select name="graphene_settings[frontpage_posts_cats][]" id="frontpage_posts_cats" multiple="multiple" class="select-multiple chzn-select" data-placeholder="<?php _e( 'Click to select categories or type to search', 'graphene' ); ?>">
                                 <?php /* Get the list of categories */ 
-                                    $categories = get_categories();
+                                    $categories = get_categories( array( 'hide_empty' => false ) );
                                     foreach ( $categories as $category) :
                                 ?>
                                 <option value="<?php echo $category->cat_ID; ?>" <?php if ( in_array( $category->cat_ID, $graphene_settings['frontpage_posts_cats'] ) ) {echo 'selected="selected"';}?>><?php echo $category->cat_name; ?></option>
                                 <?php endforeach; ?>
                             </select>
-                            <span class="description"><?php _e( 'Only posts that belong to the categories selected here will be displayed on the front page. Does not affect Static Front Page. Leave empty to disable.', 'graphene' ); ?></span>
+                            <span class="description"><?php _e( 'Only posts that belong to the categories selected here will be displayed on the front page.', 'graphene' ); ?></span>
                         </td>
                     </tr>
                 </table>
+                <?php else : ?>
+	                <p><?php _e( '<strong>Note:</strong> this feature is not available when using a <a href="http://codex.wordpress.org/Creating_a_Static_Front_Page">static front page</a>.', 'graphene' ); ?></p>
+                <?php endif; ?>
                 
                 <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
@@ -268,9 +275,10 @@ function graphene_options_general() {
         <div class="postbox non-essential-option">
             <div class="head-wrap">
             	<div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Homepage_panes' ); ?>
             	<h3 class="hndle"><?php _e( 'Homepage Panes', 'graphene' ); ?></h3>
             </div>
-            <div class="panel-wrap inside">            	
+            <div class="panel-wrap inside">
                 <?php if ( 'page' == get_option( 'show_on_front' ) ) : ?>
                 <table class="form-table">
                     <tr>
@@ -303,23 +311,19 @@ function graphene_options_general() {
                             <label for="homepage_panes_count"><?php _e( 'Number of latest posts to display', 'graphene' ); ?></label>
                         </th>
                         <td>
-                            <input type="text" name="graphene_settings[homepage_panes_count]" id="homepage_panes_count" value="<?php echo $graphene_settings['homepage_panes_count']; ?>" size="1" /><br />
-                            <span class="description"><?php _e( 'Applicable only if <strong>Latest posts</strong> or <strong>Latest posts by category</strong> is selected above.', 'graphene' ); ?></span>                        
+                            <input type="text" name="graphene_settings[homepage_panes_count]" id="homepage_panes_count" value="<?php echo $graphene_settings['homepage_panes_count']; ?>" size="1" />
                         </td>
                     </tr>
                     <tr id="row_show_post_type_cat-latest-posts"<?php if ( 'cat-latest-posts' != $graphene_settings['show_post_type'] ) echo ' class="hide"'; ?>>
                         <th scope="row">
-                            <label for="homepage_panes_cat"><?php _e( 'Category to show latest posts from', 'graphene' ); ?></label>
+                            <label for="homepage_panes_cat"><?php _e( 'Categories to show latest posts from', 'graphene' ); ?></label>
                         </th>
                         <td>                            
-                            <select name="graphene_settings[homepage_panes_cat][]" id="homepage_panes_cat" multiple="multiple" class="select-multiple">
-                                <?php /* Get the list of categories */ 
-                                    foreach ( $categories as $category) :
-                                ?>
+                            <select name="graphene_settings[homepage_panes_cat][]" id="homepage_panes_cat" multiple="multiple" class="chzn-select select-multiple" data-placeholder="<?php _e( 'Click to select categories or type to search', 'graphene' ); ?>">
+                                <?php foreach ( $categories as $category ) : ?>
                                 <option value="<?php echo $category->cat_ID; ?>" <?php if ( in_array( $category->cat_ID, (array) $graphene_settings['homepage_panes_cat'] ) ) echo 'selected="selected"'; ?>><?php echo $category->cat_name; ?></option>
                                 <?php endforeach; ?>
-                            </select><br />
-                            <span class="description"><?php _e( 'Applicable only if <strong>Latest posts by category</strong> is selected above.', 'graphene' ); ?></span>
+                            </select>
                         </td>
                     </tr>
                     <tr id="row_show_post_type_posts"<?php if ( 'posts' != $graphene_settings['show_post_type'] ) echo ' class="hide"'; ?>>
@@ -328,15 +332,12 @@ function graphene_options_general() {
                         </th>
                         <td>
                             <input type="text" name="graphene_settings[homepage_panes_posts]" id="homepage_panes_posts" value="<?php echo $graphene_settings['homepage_panes_posts']; ?>" size="10" class="code" /><br />
-                            <span class="description">
-							<?php _e( 'Enter ID of posts and/or pages to be displayed, separated by comma. Example: <code>1,13,45,33</code>', 'graphene' ); ?><br />
-							<?php _e( 'Applicable only if <strong>Posts and/or pages</strong> is selected above.', 'graphene' ); ?>
-                            </span>                        
+                            <span class="description"><?php _e( 'Enter ID of posts and/or pages to be displayed, separated by comma. Example: <code>1,13,45,33</code>', 'graphene' ); ?></span>
                         </td>
                     </tr>                    
                 </table>
                 <?php else : ?>
-                <p><?php _e( '<strong>Note:</strong> homepage panes are only displayed when using a <a href="http://codex.wordpress.org/Creating_a_Static_Front_Page">static front page</a>.', 'graphene' ); ?></p>
+                	<p><?php _e( '<strong>Note:</strong> this feature is only available when using a <a href="http://codex.wordpress.org/Creating_a_Static_Front_Page">static front page</a>.', 'graphene' ); ?></p>
                 <?php endif; ?>
                 
                 <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
@@ -348,6 +349,7 @@ function graphene_options_general() {
         <div class="postbox">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Comments_Options' ); ?>
         		<h3 class="hndle"><?php _e( 'Comments Options', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
@@ -376,6 +378,7 @@ function graphene_options_general() {
         <div class="postbox non-essential-option">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Child_Page_Options' ); ?>
         		<h3 class="hndle"><?php _e( 'Child Page Options', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
@@ -409,6 +412,7 @@ function graphene_options_general() {
         <div class="postbox non-essential-option">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Widget_Area_Options' ); ?>
         		<h3 class="hndle"><?php _e( 'Widget Area Options', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
@@ -450,6 +454,7 @@ function graphene_options_general() {
         <div class="postbox">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Top_Bar_Options' ); ?>
         		<h3 class="hndle"><?php _e( 'Top Bar Options', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
@@ -480,10 +485,9 @@ function graphene_options_general() {
                                 $available_profiles = array (  '-', 'Custom', '-', 'Twitter', 'Facebook', 'LinkedIn', 'YouTube', 'RSS', 
                                                     'AIM', 'Ask', 'Bebo', 'BetVibes', 'BlinkList', 'Blogger', 'Buzz', 'Delicious', 'DeviantArt',
 													'Digg', 'Diigo', 'Evernote', 'Flickr', 'FriendFeed', 'Friendster', 'Furl', 'Google', 'Google Plus', 
-													'LastFM', 'LiveJournal', 'Mixx', 'MySpace', 'Newsvine', 'Orkut', 'Plaxo', 'Plurk', 'Posterous',
-													'Reddit', 'ShoutWire', 'Spurl', 'Squidoo', 'StumbleUpon', 'Technorati', 'Tumblr', 'Vimeo', 'WordPress',
-													'Xanga', 'Yahoo!' );
-
+													'LastFM', 'LiveJournal', 'Mixx', 'MySpace', 'Newsvine', 'Orkut', 'Pinterest', 'Plaxo', 'Plurk', 
+													'Posterous', 'Reddit', 'ShoutWire', 'Spurl', 'Squidoo', 'StumbleUpon', 'Technorati', 'Tumblr', 
+													'Vimeo', 'WordPress', 'Xanga', 'Yahoo!' );
                                 $social_profiles = ( ! empty( $graphene_settings['social_profiles'] ) ) ? $graphene_settings['social_profiles'] : array();
                             ?>
                             <?php 
@@ -549,8 +553,8 @@ function graphene_options_general() {
                                 <tr>
                                     <th><?php _e( 'Type', 'graphene' ); ?></th>
                                     <td>
-                                        <select id="new-socialprofile-type" class="chzn-select">
-                                            <option disabled="disabled" value="-">- <?php _e( 'Choose type', 'graphene' ); ?> -</option>
+                                        <select id="new-socialprofile-type" data-placeholder="<?php _e( 'Choose type', 'graphene' ); ?>" class="chzn-select">
+                                            <option value=""></option>
                                             <?php foreach ( $available_profiles as $profile_type) : ?>                                
                                                 <?php if ($profile_type == '-') : ?>
                                                 <option disabled="disabled" value="-">-----------------------</option>
@@ -578,7 +582,7 @@ function graphene_options_general() {
                                     <td><input type="text" id="new-socialprofile-iconurl" class="widefat code" /></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><a href="#" id="new-socialprofile-add"><?php _e( 'Add this social media profile', 'graphene' ); ?></a></td>
+                                    <td colspan="2"><a href="#" id="new-socialprofile-add" class="button"><?php _e( 'Add this social media profile', 'graphene' ); ?></a></td>
                                 </tr>
                             </table>
                         </td>
@@ -594,6 +598,7 @@ function graphene_options_general() {
         <div class="postbox">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Social_Sharing_Buttons' ); ?>
         		<h3 class="hndle"><?php _e( 'Social Sharing Buttons', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
@@ -630,7 +635,7 @@ function graphene_options_general() {
                             <label for="addthis_code"><?php _e("Your social sharing button code", 'graphene' ); ?></label><br />
                             <small><?php _e( 'You can use codes from any popular social sharing sites, like Facebook, Digg, AddThis, etc.', 'graphene' ); ?></small>
                         </th>
-                        <td><textarea name="graphene_settings[addthis_code]" id="addthis_code" cols="60" rows="10" class="widefat code"><?php echo htmlentities(stripslashes( $graphene_settings['addthis_code'] ) ); ?></textarea><br />
+                        <td><textarea name="graphene_settings[addthis_code]" id="addthis_code" cols="60" rows="10" class="widefat code"><?php echo htmlentities(stripslashes( $graphene_settings['addthis_code'] ) ); ?></textarea>
                         	<span class="description"><?php _e("You may use these tags to get the post's URL, title, and excerpt:", 'graphene' ); ?> <code>[#post-url]</code>, <code>[#post-title]</code>, <code>[#post-excerpt]</code></span>
                         </td>
                     </tr>
@@ -645,6 +650,7 @@ function graphene_options_general() {
         <div class="postbox non-essential-option">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Adsense_Options' ); ?>
         		<h3 class="hndle"><?php _e( 'Adsense Options', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
@@ -680,6 +686,7 @@ function graphene_options_general() {
         <div class="postbox non-essential-option">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Google_Analytics_Options' ); ?>
         		<h3 class="hndle"><?php _e( 'Google Analytics Options', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
@@ -712,6 +719,7 @@ function graphene_options_general() {
         <div class="postbox non-essential-option">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Footer_Options' ); ?>
         		<h3 class="hndle"><?php _e( 'Footer Options', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">
@@ -747,6 +755,7 @@ function graphene_options_general() {
         <div class="postbox">
             <div class="head-wrap">
                 <div title="Click to toggle" class="handlediv"><br /></div>
+                <?php graphene_docs_link( 'Print_Options' ); ?>
         		<h3 class="hndle"><?php _e( 'Print Options', 'graphene' ); ?></h3>
             </div>
             <div class="panel-wrap inside">

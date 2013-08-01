@@ -42,6 +42,9 @@ function graphene_export_options(){
 			}
 		}
 		*/
+		
+		unset( $data['db_version'] );
+		
 		$data = json_encode( $data );
 		$size = strlen( $data );
 	

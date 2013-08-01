@@ -4,6 +4,19 @@ http://www.khairul-syahir.com
 
 CHANGELOG
 
+Version 1.9.1
+	* Minor fix for the theme's options interface behaviour
+	* Added links to the theme's natively-supported plugins and add-ons
+	* Added links to the theme's documentation page for individual feature set in the theme's options page
+	* Included empty categories for the theme's slider and front page post options
+	* Reworked settings preset option to just reset the theme's settings
+	* Fixed duplicate and conflicting filter hook name "graphene_header_image"
+	* Fixed database error notice when querying total number of comments
+	* Fixed infinite scroll for comments not working if comments are displayed in reverse chronological order
+	* Fixed issues with colour presets management
+	* Fixed conflict with Shortcodes Ultimate plugin for the theme's options page
+	* Fixed slider transition speed not being applied
+
 Version 1.9
 	* Added option to save and delete colour presets
 	* Added option to export and import colour presets
@@ -236,7 +249,7 @@ Version 1.6.1
 	* Fixed slider not displaying pages when configured to show posts by categories
 	* Increased the maximum width of the header title and description text
 	* Reduced the z-index values of the nav menu to minimise the chances of it appearing above lightboxes
-	* Removed the_content filter from the shortcodes and replaced is with do_shortcode() call instead
+	* Removed the_content filter from the shortcodes and replaced it with do_shortcode() call instead
 	* Added markup to indicate required fields in the comments form
 	* The theme will now attempt to balance the HTML tags in excerpt with retained HTML tags
 

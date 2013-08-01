@@ -121,7 +121,11 @@ function graphene_slider(){
 	graphene_reset_excerpt_length();
 	$graphene_in_slider = false;
 }
-/* Create an intermediate function that controls where the slider should be displayed */
+
+
+/**
+ * Create an intermediate function that controls where the slider should be displayed
+ */
 if ( ! function_exists( 'graphene_display_slider' ) ) :
 	function graphene_display_slider(){
 		if ( is_front_page() ){
@@ -129,7 +133,11 @@ if ( ! function_exists( 'graphene_display_slider' ) ) :
 		}
 	}
 endif;
-/* Hook the slider to the appropriate action hook */
+
+
+/**
+ * Hook the slider to the appropriate action hook 
+ */
 if ( ! $graphene_settings['slider_disable'] ){
 	if ( ! $graphene_settings['slider_position'] ) {
 		if ( $graphene_settings['slider_full_width'] )
@@ -145,6 +153,7 @@ if ( ! $graphene_settings['slider_disable'] ){
 }
 
 
+if ( ! function_exists( 'graphene_get_slider_image' ) ) :
 /**
  * This function determines which image to be used as the slider image based on user
  * settings, and returns the <img> tag of the the slider image.
@@ -152,69 +161,68 @@ if ( ! $graphene_settings['slider_disable'] ){
  * It requires the post's ID to be passed in as argument so that the user settings in
  * individual post / page can be retrieved.
 */
-if ( ! function_exists( 'graphene_get_slider_image' ) ) :
-	function graphene_get_slider_image( $post_id = NULL, $size = 'thumbnail', $urlonly = false, $default = '' ){
-		global $graphene_settings;
+function graphene_get_slider_image( $post_id = NULL, $size = 'thumbnail', $urlonly = false, $default = '' ){
+	global $graphene_settings;
+	
+	// Throw an error message if no post ID supplied
+	if ( $post_id == NULL){
+		echo '<strong>ERROR:</strong> Post ID must be passed as an input argument to call the function <code>graphene_get_slider_image()</code>.';
+		return;
+	}
+	
+	// First get the settings
+	$global_setting = ( $graphene_settings['slider_img'] ) ? $graphene_settings['slider_img'] : 'featured_image';
+	$local_setting = graphene_get_post_meta( $post_id, 'slider_img' );
+	$local_setting = ( $local_setting ) ? $local_setting : '';
+	
+	// Determine which image should be displayed
+	$final_setting = ( $local_setting == '' ) ? $global_setting : $local_setting;
+	
+	// Build the html based on the final setting
+	$html = '';
+	if ( $final_setting == 'disabled' ){					// image disabled
+	
+		return false;
 		
-		// Throw an error message if no post ID supplied
-		if ( $post_id == NULL){
-			echo '<strong>ERROR:</strong> Post ID must be passed as an input argument to call the function <code>graphene_get_slider_image()</code>.';
-			return;
-		}
+	} elseif ( $final_setting == 'featured_image' ){		// Featured Image
+	
+		if ( has_post_thumbnail( $post_id ) ) :
+			if ( $urlonly )
+				$html = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), $size );
+			else
+				$html .= get_the_post_thumbnail( $post_id, $size );
+		endif;
 		
-		// First get the settings
-		$global_setting = ( $graphene_settings['slider_img'] ) ? $graphene_settings['slider_img'] : 'featured_image';
-		$local_setting = graphene_get_post_meta( $post_id, 'slider_img' );
-		$local_setting = ( $local_setting ) ? $local_setting : '';
+	} elseif ( $final_setting == 'post_image' ){			// First image in post
 		
-		// Determine which image should be displayed
-		$final_setting = ( $local_setting == '' ) ? $global_setting : $local_setting;
+			$html = graphene_get_post_image( $post_id, $size, '', $urlonly);
 		
-		// Build the html based on the final setting
-		$html = '';
-		if ( $final_setting == 'disabled' ){					// image disabled
+	} elseif ( $final_setting == 'custom_url' ){			// Custom URL
 		
-			return false;
-			
-		} elseif ( $final_setting == 'featured_image' ){		// Featured Image
-		
-			if ( has_post_thumbnail( $post_id ) ) :
-				if ( $urlonly )
-					$html = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), $size );
-				else
-					$html .= get_the_post_thumbnail( $post_id, $size );
+		if ( ! $urlonly ){
+			$html .= '';
+			if ( $local_setting != '' ) :
+				$html .= '<img src="' . esc_url( graphene_get_post_meta( $post_id, 'slider_imgurl' ) ) . '" alt="" />';
+			else :
+				$html .= '<img src="' . esc_url( $graphene_settings['slider_imgurl'] ) . '" alt="" />';
 			endif;
-			
-		} elseif ( $final_setting == 'post_image' ){			// First image in post
-			
-				$html = graphene_get_post_image( $post_id, $size, '', $urlonly);
-			
-		} elseif ( $final_setting == 'custom_url' ){			// Custom URL
-			
-			if ( ! $urlonly ){
-				$html .= '';
-				if ( $local_setting != '' ) :
-					$html .= '<img src="' . esc_url( graphene_get_post_meta( $post_id, 'slider_imgurl' ) ) . '" alt="" />';
-				else :
-					$html .= '<img src="' . esc_url( $graphene_settings['slider_imgurl'] ) . '" alt="" />';
-				endif;
-			} else {
-				if ( $local_setting != '' ) :
-					$html .= esc_url( graphene_get_post_meta( $post_id, 'slider_imgurl' ) );
-				else :
-					$html .= esc_url(  $graphene_settings['slider_imgurl'] );
-				endif;
-			}
-			
+		} else {
+			if ( $local_setting != '' ) :
+				$html .= esc_url( graphene_get_post_meta( $post_id, 'slider_imgurl' ) );
+			else :
+				$html .= esc_url(  $graphene_settings['slider_imgurl'] );
+			endif;
 		}
-		
-		if ( ! $html )
-			$html = $default;
-		
-		// Returns the html
-		return $html;
 		
 	}
+	
+	if ( ! $html )
+		$html = $default;
+	
+	// Returns the html
+	return $html;
+	
+}
 endif;
 
 

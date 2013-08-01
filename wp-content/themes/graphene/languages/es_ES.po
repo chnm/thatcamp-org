@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tema Graphene para WordPress en español\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-13 10:32+0800\n"
-"PO-Revision-Date: 2013-06-14 19:34+0100\n"
+"POT-Creation-Date: 2013-07-23 22:53+0800\n"
+"PO-Revision-Date: 2013-07-25 10:32+0100\n"
 "Last-Translator: Eduardo Larequi <elarequi@gmail.com>\n"
 "Language-Team: Eduardo Larequi <elarequi@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -174,7 +174,7 @@ msgid "Biography"
 msgstr "Biografía"
 
 #: loop-author.php:52
-#: admin/options-general.php:292
+#: admin/options-general.php:300
 msgid "Latest posts"
 msgstr "Entradas más recientes"
 
@@ -287,11 +287,6 @@ msgid "Leave comment"
 msgstr "Sin comentarios"
 
 #: loop-post-formats.php:52
-#: loop.php:164
-msgid "1 comment"
-msgstr "Un comentario"
-
-#: loop-post-formats.php:52
 msgid "Comments off"
 msgstr "Los comentarios están desactivados"
 
@@ -363,22 +358,22 @@ msgid "Search"
 msgstr "Buscar"
 
 #: sidebar-two.php:28
-#: includes/theme-setup.php:303
+#: includes/theme-setup.php:301
 msgid "Front Page Sidebar Two Widget Area"
 msgstr "Segunda barra lateral de la página de inicio"
 
 #: sidebar-two.php:30
-#: includes/theme-setup.php:268
+#: includes/theme-setup.php:266
 msgid "Sidebar Two Widget Area"
 msgstr "Segunda barra lateral"
 
 #: sidebar.php:28
-#: includes/theme-setup.php:294
+#: includes/theme-setup.php:292
 msgid "Front Page Sidebar Widget Area"
 msgstr "Barra lateral de la página de inicio"
 
 #: sidebar.php:30
-#: includes/theme-setup.php:259
+#: includes/theme-setup.php:257
 msgid "Sidebar Widget Area"
 msgstr "Barra lateral principal"
 
@@ -401,19 +396,23 @@ msgstr "Una columna, sin barra lateral"
 msgid "Three columns, sidebar left and right"
 msgstr "Tres columnas, con sendas barras laterales a derecha e izquierda"
 
-#: template-threecolumnsleft.php:11
+#. translators: For RTL languages, translate "right" as "left"
+#: template-threecolumnsleft.php:13
 msgid "Three columns, sidebars on the right"
 msgstr "Tres columnas, con dos barras laterales a la derecha"
 
-#: template-threecolumnsright.php:11
+#. translators: For RTL languages, translate "left" as "right"
+#: template-threecolumnsright.php:13
 msgid "Three columns, sidebars on the left"
 msgstr "Tres columnas, con dos barras laterales a la izquierda"
 
-#: template-twocolumnsleft.php:11
+#. translators: For RTL languages, translate "right" as "left"
+#: template-twocolumnsleft.php:13
 msgid "Two columns, sidebar on the right"
 msgstr "Dos columnas, con una barra lateral a la derecha"
 
-#: template-twocolumnsright.php:11
+#. translators: For RTL languages, translate "left" as "right"
+#: template-twocolumnsright.php:13
 msgid "Two columns, sidebar on the left"
 msgstr "Dos columnas, con una barra lateral a la izquierda"
 
@@ -426,11 +425,11 @@ msgstr "Lo sentimos, pero no tienes los permisos necesarios para modificar las o
 msgid "Options saved."
 msgstr "Las opciones han sido guardadas"
 
-#: admin/ajax-handler.php:61
+#: admin/ajax-handler.php:69
 msgid "Colour preset deleted."
 msgstr "La configuración predefinida de colores ha sido borrada."
 
-#: admin/ajax-handler.php:61
+#: admin/ajax-handler.php:69
 msgid "Colour preset saved."
 msgstr "La configuración predefinida de colores ha sido guardada."
 
@@ -451,7 +450,7 @@ msgid "Slider options"
 msgstr "Opciones del pase de diapositivas"
 
 #: admin/custom-fields.php:97
-#: admin/options-general.php:107
+#: admin/options-general.php:108
 msgid "Slider image"
 msgstr "Imagen del pase de diapositivas"
 
@@ -462,32 +461,32 @@ msgid "Use global setting"
 msgstr "Utilizar configuración global"
 
 #: admin/custom-fields.php:102
-#: admin/options-general.php:111
+#: admin/options-general.php:112
 msgid "Don't show image"
 msgstr "No mostrar ninguna imagen"
 
 #: admin/custom-fields.php:103
-#: admin/options-general.php:112
+#: admin/options-general.php:113
 msgid "Featured Image"
 msgstr "Imagen destacada"
 
 #: admin/custom-fields.php:104
-#: admin/options-general.php:113
+#: admin/options-general.php:114
 msgid "First image in post"
 msgstr "Primera imagen de la entrada"
 
 #: admin/custom-fields.php:105
-#: admin/options-general.php:114
+#: admin/options-general.php:115
 msgid "Custom URL"
 msgstr "URL personalizada"
 
 #: admin/custom-fields.php:111
-#: admin/options-general.php:120
+#: admin/options-general.php:121
 msgid "Custom slider image URL"
 msgstr "URL personalizada para la imagen del pase de diapositivas"
 
 #: admin/custom-fields.php:115
-#: admin/options-general.php:124
+#: admin/options-general.php:125
 msgid "Make sure you select Custom URL in the slider image option above to use this custom url."
 msgstr "Asegúrate de que has seleccionado el valor de \"URL personalizada\" en la opción de \"Imagen del pase de diapositivas\"."
 
@@ -516,27 +515,27 @@ msgid "Hide button"
 msgstr "Ocultar botón"
 
 #: admin/custom-fields.php:146
-#: admin/options-display.php:269
+#: admin/options-display.php:305
 msgid "Post date display"
 msgstr "Mostrar fecha de la entrada"
 
 #: admin/custom-fields.php:151
-#: admin/options-display.php:273
+#: admin/options-display.php:309
 msgid "Hidden"
 msgstr "Oculto"
 
 #: admin/custom-fields.php:152
-#: admin/options-display.php:274
+#: admin/options-display.php:310
 msgid "As an icon (without the year)"
 msgstr "Como un icono (sin el año)"
 
 #: admin/custom-fields.php:153
-#: admin/options-display.php:275
+#: admin/options-display.php:311
 msgid "As an icon (including the year)"
 msgstr "Como un icono (con el año)"
 
 #: admin/custom-fields.php:154
-#: admin/options-display.php:276
+#: admin/options-display.php:312
 msgid "As inline text"
 msgstr "Como texto"
 
@@ -549,7 +548,7 @@ msgid "Description"
 msgstr "Descripción"
 
 #: admin/custom-fields.php:170
-#: admin/options-display.php:588
+#: admin/options-display.php:629
 msgid "Only required if you need a description in the navigation menu and you are not using a custom menu."
 msgstr "Solo hace falta si necesitas una descripción en el menú de navegación y no tienes intención de utilizar un menú personalizado."
 
@@ -639,19 +638,19 @@ msgstr "Sabemos que un número excesivo de opciones puede ser descorazonador par
 msgid "But no worries! If you're a seasoned user of the Graphene theme, or whenever you feel ready to further customise your site, just click on the \"Show all options\" link, and they will magically appear to you."
 msgstr "Pero no te debes preocuparte. Si eres un usuario con experiencia en el tema Graphene, o cuando te sientas listo para personalizar tu sitio, basta con que hagas clic en el enlace \"Mostrar todas las opciones\", y estas aparecerán como por arte de magia."
 
-#: admin/options-advanced.php:12
+#: admin/options-advanced.php:13
 #: admin/options.php:319
 msgid "Preview"
 msgstr "Vista previa"
 
-#: admin/options-advanced.php:19
+#: admin/options-advanced.php:20
 msgid "Enable preview of your site on the Graphene Theme Options page"
 msgstr "Activar la vista previa del sitio en la página de opciones del tema Graphene"
 
-#: admin/options-advanced.php:24
-#: admin/options-advanced.php:53
-#: admin/options-advanced.php:89
-#: admin/options-advanced.php:128
+#: admin/options-advanced.php:25
+#: admin/options-advanced.php:55
+#: admin/options-advanced.php:92
+#: admin/options-advanced.php:131
 #: admin/options-colours.php:78
 #: admin/options-colours.php:195
 #: admin/options-colours.php:311
@@ -663,93 +662,93 @@ msgstr "Activar la vista previa del sitio en la página de opciones del tema Gra
 #: admin/options-colours.php:537
 #: admin/options-colours.php:589
 #: admin/options-colours.php:645
-#: admin/options-display.php:62
-#: admin/options-display.php:166
-#: admin/options-display.php:249
-#: admin/options-display.php:309
-#: admin/options-display.php:350
-#: admin/options-display.php:372
-#: admin/options-display.php:526
-#: admin/options-display.php:555
-#: admin/options-display.php:593
-#: admin/options-display.php:651
-#: admin/options-display.php:682
-#: admin/options-general.php:187
-#: admin/options-general.php:229
-#: admin/options-general.php:260
-#: admin/options-general.php:342
-#: admin/options-general.php:370
-#: admin/options-general.php:403
-#: admin/options-general.php:444
-#: admin/options-general.php:588
-#: admin/options-general.php:639
-#: admin/options-general.php:674
-#: admin/options-general.php:706
-#: admin/options-general.php:741
-#: admin/options-general.php:766
+#: admin/options-display.php:63
+#: admin/options-display.php:200
+#: admin/options-display.php:284
+#: admin/options-display.php:345
+#: admin/options-display.php:387
+#: admin/options-display.php:410
+#: admin/options-display.php:565
+#: admin/options-display.php:595
+#: admin/options-display.php:634
+#: admin/options-display.php:693
+#: admin/options-display.php:725
+#: admin/options-general.php:188
+#: admin/options-general.php:231
+#: admin/options-general.php:267
+#: admin/options-general.php:343
+#: admin/options-general.php:372
+#: admin/options-general.php:406
+#: admin/options-general.php:448
+#: admin/options-general.php:592
+#: admin/options-general.php:644
+#: admin/options-general.php:680
+#: admin/options-general.php:713
+#: admin/options-general.php:749
+#: admin/options-general.php:775
 msgid "Save All Options"
 msgstr "Guardar todas las opciones"
 
-#: admin/options-advanced.php:33
+#: admin/options-advanced.php:35
 msgid "Custom <head> Tags"
 msgstr "Etiquetas <head> personalizadas"
 
-#: admin/options-advanced.php:38
+#: admin/options-advanced.php:40
 msgid "Code to insert into the <head> element"
 msgstr "Código para insertar en el elemento <head>"
 
-#: admin/options-advanced.php:62
+#: admin/options-advanced.php:65
 msgid "Action Hooks Widget Areas"
 msgstr "Áreas de widgets asociadas a \"action hooks\""
 
-#: admin/options-advanced.php:65
+#: admin/options-advanced.php:68
 msgid "This option enables you to place virtually any content to every nook and cranny in the theme, by attaching widget areas to the theme's action hooks."
 msgstr "Esta opción te permite colocar prácticamente cualquier clase de contenido hasta en el último rincón del tema. Para ello, hay que asociar las áreas de widgets a los \"action hooks\" del tema."
 
-#: admin/options-advanced.php:66
+#: admin/options-advanced.php:69
 msgid "All action hooks available in the Graphene Theme are listed below. Click on the filename to display all the action hooks available in that file. Then, tick the checkbox next to an action hook to make a widget area available for that action hook."
 msgstr "Todos los \"action hooks\" del tema Graphene figuran a continuación. Haz clic sobre el nombre del fichero para mostrar todos los \"action hooks\" disponibles para él. A continuación, marca la casilla situada al lado del \"action hook\", para hacer que un área de widgets esté disponible para dicho elemento."
 
-#: admin/options-advanced.php:75
+#: admin/options-advanced.php:78
 msgid "Click to show/hide the action hooks for this file"
 msgstr "Pulsa para mostrar u ocultar los action hooks correspondientes a este fichero"
 
-#: admin/options-advanced.php:88
+#: admin/options-advanced.php:91
 msgid "Rescan action hooks"
 msgstr "Volver a escanear los \"action hooks\""
 
-#: admin/options-advanced.php:98
+#: admin/options-advanced.php:101
 msgid "Move generated CSS"
 msgstr "Mover el CSS generado"
 
-#: admin/options-advanced.php:103
+#: admin/options-advanced.php:106
 #, php-format
 msgid "If you're using a child theme, you can move the CSS codes generated by the theme into the child theme's %s file."
 msgstr "Si vas a utilizar un tema hijo, puedes mover el código generado por el tema al fichero %s del tema hijo."
 
-#: admin/options-advanced.php:104
+#: admin/options-advanced.php:107
 msgid "The CSS codes are generated from the various customisation options in the theme's options pages, including any codes you have entered in the Custom CSS option."
 msgstr "El código CSS se genera a partir de las diversas opciones de personalización que forman parte de las páginas de opciones del tema, e incluye cualquier código que hayas añadido desde la opción de CSS personalizado."
 
-#: admin/options-advanced.php:107
+#: admin/options-advanced.php:110
 #, php-format
 msgid "This will reduce up to %.1f KB on every page load for your site."
 msgstr "Esta opción reducirá hasta %.1f KB en la carga de cada página de tu sitio."
 
-#: admin/options-advanced.php:110
+#: admin/options-advanced.php:113
 #, php-format
 msgid "You will need to update your child theme's %s file everytime you change any options that rely on CSS to be implemented, such as column widths and colours."
 msgstr "Necesitarás actualizar el fichero %s de tu tema cada vez que cambies cualquier opción que esté basada en CSS, como por ejemplo la anchura y los colores de las columnas."
 
-#: admin/options-advanced.php:115
+#: admin/options-advanced.php:118
 msgid "I have moved the generated CSS"
 msgstr "He movido el CSS generado"
 
-#: admin/options-advanced.php:120
+#: admin/options-advanced.php:123
 msgid "CSS codes generated by the theme"
 msgstr "Código CSS generado por el tema"
 
-#: admin/options-advanced.php:122
+#: admin/options-advanced.php:125
 msgid "Select all"
 msgstr "Seleccionar todo"
 
@@ -794,7 +793,7 @@ msgstr "Borrar la configuración predefinida"
 
 #: admin/options-colours.php:26
 msgid "Save current settings as preset"
-msgstr "Guardar la configuración actual como configuración predefinida"
+msgstr "Guardar las opciones actuales como configuración predefinida"
 
 #: admin/options-colours.php:27
 msgid "Import presets"
@@ -805,7 +804,7 @@ msgid "Export presets"
 msgstr "Exportar una configuración predefinida"
 
 #: admin/options-colours.php:47
-#: admin/options-display.php:54
+#: admin/options-display.php:55
 msgid "Top bar"
 msgstr "Barra superior"
 
@@ -1213,915 +1212,916 @@ msgstr "Curiosity Killed"
 msgid "Zesty Orange"
 msgstr "Zesty Orange"
 
-#: admin/options-display.php:13
+#: admin/options-display.php:14
 msgid "Header Display Options"
 msgstr "Opciones de la cabecera"
 
-#: admin/options-display.php:19
+#: admin/options-display.php:20
 msgid "Use light-coloured header bars"
 msgstr "Utilizar barras de navegación de cabecera con colores claros"
 
-#: admin/options-display.php:25
+#: admin/options-display.php:26
 msgid "Link header image to front page"
 msgstr "Enlazar la imagen de cabecera a la página de inicio"
 
-#: admin/options-display.php:28
+#: admin/options-display.php:29
 msgid "Check this if you disable the header texts and want the header image to be linked to the front page."
 msgstr "Marca esta casilla si quieres desactivar los textos de cabecera y hacer que la imagen de cabecera enlace a la página de inicio."
 
-#: admin/options-display.php:33
+#: admin/options-display.php:34
 msgid "Disable Featured Image replacing header image"
 msgstr "Desactivar la posibilidad de que la imagen destacada sustituya a la imagen de cabecera"
 
-#: admin/options-display.php:36
+#: admin/options-display.php:37
 msgid "Check this to prevent the posts Featured Image replacing the header image regardless of the featured image dimension."
 msgstr "Marca esta casilla para impedir que la imagen destacada de una entrada sustituya a la imagen de cabecera, con independencia de las dimensiones de la imagen destacada."
 
-#: admin/options-display.php:41
+#: admin/options-display.php:42
 msgid "Header image height"
 msgstr "Altura de la imagen de cabecera"
 
-#: admin/options-display.php:50
+#: admin/options-display.php:51
 msgid "Search box location"
 msgstr "Ubicación del formulario de búsqueda"
 
-#: admin/options-display.php:55
+#: admin/options-display.php:56
 msgid "Navigation bar"
 msgstr "Barra de navegación"
 
-#: admin/options-display.php:56
+#: admin/options-display.php:57
 msgid "Disable search box"
 msgstr "Desactivar el formulario de búsqueda"
 
-#: admin/options-display.php:71
+#: admin/options-display.php:73
 msgid "Column Options"
 msgstr "Opciones de las columnas"
 
-#: admin/options-display.php:77
+#: admin/options-display.php:79
 msgid "Column mode"
 msgstr "Disposición de las columnas"
 
-#: admin/options-display.php:86
-#: admin/options-display.php:131
+#: admin/options-display.php:88
+#: admin/options-display.php:149
 msgid "One column"
 msgstr "Una columna"
 
-#: admin/options-display.php:93
-#: admin/options-display.php:138
+#: admin/options-display.php:96
+#: admin/options-display.php:106
+#: admin/options-display.php:157
+#: admin/options-display.php:167
 msgid "Two columns (with sidebar right)"
 msgstr "Dos columnas (barra lateral a la derecha)"
 
-#: admin/options-display.php:97
-#: admin/options-display.php:142
+#: admin/options-display.php:98
+#: admin/options-display.php:104
+#: admin/options-display.php:159
+#: admin/options-display.php:165
 msgid "Two columns (with sidebar left)"
 msgstr "Dos columnas (barra lateral a la izquierda)"
 
-#: admin/options-display.php:104
-#: admin/options-display.php:149
+#: admin/options-display.php:115
+#: admin/options-display.php:125
+#: admin/options-display.php:176
+#: admin/options-display.php:186
 msgid "Three columns (with two sidebars right)"
 msgstr "Tres columnas (dos barras laterales a la derecha)"
 
-#: admin/options-display.php:108
-#: admin/options-display.php:153
+#: admin/options-display.php:117
+#: admin/options-display.php:123
+#: admin/options-display.php:178
+#: admin/options-display.php:184
 msgid "Three columns (with two sidebars left)"
 msgstr "Tres columnas (dos barras laterales a la izquierda)"
 
-#: admin/options-display.php:112
-#: admin/options-display.php:157
+#: admin/options-display.php:130
+#: admin/options-display.php:191
 msgid "Three columns (with sidebars left and right)"
 msgstr "Tres columnas (barras laterales a derecha e izquierda)"
 
-#: admin/options-display.php:122
+#: admin/options-display.php:140
 msgid "bbPress column mode"
 msgstr "modo de columnas de bbPress"
 
-#: admin/options-display.php:175
+#: admin/options-display.php:210
 msgid "Column Width Options"
 msgstr "Opciones de anchura de las columnas"
 
-#: admin/options-display.php:178
+#: admin/options-display.php:213
 msgid "Note: Leave values empty to reset to the default values."
 msgstr "Aviso: deja los campos vacíos para volver a los valores por defecto."
 
-#: admin/options-display.php:182
+#: admin/options-display.php:217
 msgid "Container width"
 msgstr "Anchura del contenedor"
 
-#: admin/options-display.php:199
-#: admin/options-display.php:222
+#: admin/options-display.php:234
+#: admin/options-display.php:257
 msgid "Column width"
 msgstr "Anchura de columna"
 
-#: admin/options-display.php:199
+#: admin/options-display.php:234
 msgid "two-column mode"
 msgstr "modo de dos columnas"
 
-#: admin/options-display.php:203
-#: admin/options-display.php:230
+#: admin/options-display.php:238
+#: admin/options-display.php:265
 msgid "Content"
 msgstr "Contenido"
 
-#: admin/options-display.php:207
+#: admin/options-display.php:242
 msgid "Sidebar"
 msgstr "Barra lateral"
 
-#: admin/options-display.php:222
+#: admin/options-display.php:257
 msgid "three-column mode"
 msgstr "modo de tres columnas"
 
-#: admin/options-display.php:226
+#: admin/options-display.php:261
 msgid "Left sidebar"
 msgstr "Barra lateral izquierda"
 
-#: admin/options-display.php:234
+#: admin/options-display.php:269
 msgid "Right sidebar"
 msgstr "Barra lateral derecha"
 
-#: admin/options-display.php:257
+#: admin/options-display.php:293
 msgid "Posts Display Options"
 msgstr "Opciones de las entradas"
 
-#: admin/options-display.php:263
+#: admin/options-display.php:299
 msgid "Hide post author"
 msgstr "Ocultar el autor"
 
-#: admin/options-display.php:282
+#: admin/options-display.php:318
 msgid "Hide post categories"
 msgstr "Ocultar la categoría"
 
-#: admin/options-display.php:288
+#: admin/options-display.php:324
 msgid "Hide post tags"
 msgstr "Ocultar las etiquetas"
 
-#: admin/options-display.php:294
+#: admin/options-display.php:330
 msgid "Hide post comment count"
 msgstr "Ocultar el número de comentarios"
 
-#: admin/options-display.php:295
+#: admin/options-display.php:331
 msgid "Only affects posts listing (such as the front page) and not single post view."
 msgstr "Solo afecta a los listados de entradas (como el de la página de inicio) y no a las páginas de entradas individuales."
 
-#: admin/options-display.php:300
+#: admin/options-display.php:336
 msgid "Show post author's <a href=\"http://en.gravatar.com/\">gravatar</a>"
 msgstr "Mostrar <a href=\"http://en.gravatar.com/\">gravatar</a> del autor de la entrada"
 
-#: admin/options-display.php:304
+#: admin/options-display.php:340
 msgid "Show post author's info"
 msgstr "Mostrar la información sobre el autor"
 
-#: admin/options-display.php:318
+#: admin/options-display.php:355
 msgid "Excerpts Display Options"
 msgstr "Opciones para mostrar los resúmenes"
 
-#: admin/options-display.php:324
+#: admin/options-display.php:361
 msgid "Show excerpts in front page"
 msgstr "Mostrar resúmenes en la página de inicio"
 
-#: admin/options-display.php:330
+#: admin/options-display.php:367
 msgid "Show full content in archive pages"
 msgstr "Mostrar contenido completo en las páginas de archivo"
 
-#: admin/options-display.php:334
+#: admin/options-display.php:371
 msgid "Note: Archive pages include the archive for category, tags, time, and search results pages. Enabling this option will cause the full content of posts and pages listed in those archives to displayed instead of the excerpt, and truncated by the Read More tag if used."
 msgstr "Aviso: las páginas de archivo incluyen los listados de entradas por categorías, por etiquetas y por fechas, así como las páginas de resultados de búsqueda. Activar esta opción hará que se muestre el contenido completo de las entradas y páginas que forman parte de dichos listados, en lugar de los resúmenes. En caso de que se utilice la etiqueta \"Continuar leyendo\", el contenido de la entrada quedará interrumpido en el lugar donde se haya insertado dicha etiqueta."
 
-#: admin/options-display.php:338
+#: admin/options-display.php:375
 msgid "Show More link for manual excerpts"
 msgstr "Mostrar el enlace \"Continuar leyendo\" para los resúmenes manuales"
 
-#: admin/options-display.php:342
+#: admin/options-display.php:379
 msgid "Retain these HTML tags in excerpts"
 msgstr "Mantener en los resúmenes las siguientes etiquetas HTML"
 
-#: admin/options-display.php:345
+#: admin/options-display.php:382
 msgid "Enter the HTML tags you'd like to retain in excerpts. For example, enter <code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> to retain <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, and <code>&lt;li&gt;</code> HTML tags."
 msgstr "Escribe las etiquetas HTML que deseas mantener en los resúmenes. Por ejemplo, escribe <code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> para mantener las etiquetas HTML <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, y <code>&lt;li&gt;</code>."
 
-#: admin/options-display.php:360
+#: admin/options-display.php:398
 msgid "Comments Display Options"
 msgstr "Opciones de visualización de los comentarios"
 
-#: admin/options-display.php:366
+#: admin/options-display.php:404
 msgid "Hide allowed tags in comment form"
 msgstr "Ocultar las etiquetas HTML permitidas en el formulario de comentarios"
 
-#: admin/options-display.php:381
+#: admin/options-display.php:420
 msgid "Text Style Options"
 msgstr "Opciones de los estilos del texto"
 
-#: admin/options-display.php:384
+#: admin/options-display.php:423
 msgid "Google Webfonts"
 msgstr "Google Webfonts"
 
-#: admin/options-display.php:387
+#: admin/options-display.php:426
 msgid "Font families"
 msgstr "Familias de fuentes"
 
-#: admin/options-display.php:390
+#: admin/options-display.php:429
 msgid "Enter the Google Webfont font family string in the format that is used in the Webfont Loader, one font family per line."
 msgstr "Escribe la cadena de la familia de fuentes de Google Webfont en el formato que se utiliza en el cargador de Webfonts: una familia de fuentes por línea."
 
-#: admin/options-display.php:391
+#: admin/options-display.php:430
 msgid "Example:"
 msgstr "Ejemplo:"
 
-#: admin/options-display.php:396
+#: admin/options-display.php:435
 msgid "The following options are CSS properties, so any valid CSS values for each particular property can be used."
 msgstr "Las siguientes opciones son propiedades CSS; por tanto, puede utilizarse cualquier valor CSS válido para una propiedad determinada."
 
-#: admin/options-display.php:397
+#: admin/options-display.php:436
 msgid "Some example CSS properties values:"
 msgstr "Algunos ejemplos de valores para las propiedades CSS:"
 
-#: admin/options-display.php:400
+#: admin/options-display.php:439
 msgid "Text font:"
 msgstr "Fuente tipográfica del texto:"
 
-#: admin/options-display.php:404
+#: admin/options-display.php:443
 msgid "Text size and line height:"
 msgstr "Tamaño del texto y altura de línea:"
 
-#: admin/options-display.php:408
+#: admin/options-display.php:447
 msgid "Text weight:"
 msgstr "Grosor del texto:"
 
-#: admin/options-display.php:412
+#: admin/options-display.php:451
 msgid "Text style:"
 msgstr "Estilo del texto:"
 
-#: admin/options-display.php:416
+#: admin/options-display.php:455
 msgid "Text colour:"
 msgstr "Color del texto:"
 
-#: admin/options-display.php:421
+#: admin/options-display.php:460
 msgid "Header Text"
 msgstr "Texto de cabecera"
 
-#: admin/options-display.php:425
+#: admin/options-display.php:464
 msgid "Title text font"
 msgstr "Fuente tipográfica del texto del título"
 
-#: admin/options-display.php:431
+#: admin/options-display.php:470
 msgid "Title text size"
 msgstr "Tamaño del texto del título"
 
-#: admin/options-display.php:437
+#: admin/options-display.php:476
 msgid "Title text weight"
 msgstr "Grosor del texto del título"
 
-#: admin/options-display.php:443
+#: admin/options-display.php:482
 msgid "Title text line height"
 msgstr "Altura de línea del texto del título"
 
-#: admin/options-display.php:449
+#: admin/options-display.php:488
 msgid "Title text style"
 msgstr "Estilo del texto del título"
 
-#: admin/options-display.php:458
+#: admin/options-display.php:497
 msgid "Description text font"
 msgstr "Fuente tipográfica del texto de la descripción"
 
-#: admin/options-display.php:464
+#: admin/options-display.php:503
 msgid "Description text size"
 msgstr "Tamaño del texto para la descripción"
 
-#: admin/options-display.php:470
+#: admin/options-display.php:509
 msgid "Description text weight"
 msgstr "Grosor del texto de la descripción"
 
-#: admin/options-display.php:476
+#: admin/options-display.php:515
 msgid "Description text line height"
 msgstr "Altura de línea del texto de la descripción"
 
-#: admin/options-display.php:482
+#: admin/options-display.php:521
 msgid "Description text style"
 msgstr "Estilo del texto de la descripción"
 
-#: admin/options-display.php:488
+#: admin/options-display.php:527
 msgid "Content Text"
 msgstr "Texto del contenido"
 
-#: admin/options-display.php:492
+#: admin/options-display.php:531
 msgid "Text font"
 msgstr "Fuente tipográfica del texto"
 
-#: admin/options-display.php:498
+#: admin/options-display.php:537
 msgid "Text size"
 msgstr "Tamaño del texto"
 
-#: admin/options-display.php:504
+#: admin/options-display.php:543
 msgid "Text line height"
 msgstr "Altura de línea del texto"
 
-#: admin/options-display.php:510
+#: admin/options-display.php:549
 msgid "Link Text"
 msgstr "Texto del enlace"
 
-#: admin/options-display.php:514
+#: admin/options-display.php:553
 msgid "Text decoration (normal state )"
 msgstr "Subrayado del texto (estado normal)"
 
-#: admin/options-display.php:520
+#: admin/options-display.php:559
 msgid "Text decoration (hover state )"
 msgstr "Subrayado del texto (estado al pasar el ratón por encima)"
 
-#: admin/options-display.php:535
+#: admin/options-display.php:575
 msgid "Footer Widget Display Options"
 msgstr "Opciones de los widgets del pie de página"
 
-#: admin/options-display.php:541
+#: admin/options-display.php:581
 msgid "Number of columns to display"
 msgstr "Número de columnas que mostrar"
 
-#: admin/options-display.php:548
+#: admin/options-display.php:588
 msgid "Number of columns to display for front page footer widget"
 msgstr "Número de columnas para el pie de página de la página de inicio"
 
-#: admin/options-display.php:564
+#: admin/options-display.php:605
 msgid "Navigation Menu Display Options"
 msgstr "Opciones del menú de navegación"
 
-#: admin/options-display.php:570
+#: admin/options-display.php:611
 msgid "Dropdown menu item width"
 msgstr "Anchura de los elementos del menú desplegable"
 
-#: admin/options-display.php:576
+#: admin/options-display.php:617
 msgid "Disable description in Header Menu"
 msgstr "Desactivar descripción en el menú de cabecera"
 
-#: admin/options-display.php:584
+#: admin/options-display.php:625
 msgid "Description for default menu \"Home\" item"
 msgstr "Descripción para el elemento \"Inicio\" del menú por defecto"
 
-#: admin/options-display.php:602
+#: admin/options-display.php:644
 msgid "Miscellaneous Display Options"
 msgstr "Opciones de visualización misceláneas"
 
-#: admin/options-display.php:605
+#: admin/options-display.php:647
 msgid "Site title options"
 msgstr "Opciones del título del sitio"
 
-#: admin/options-display.php:606
+#: admin/options-display.php:648
 msgid "Use these tags to customise your own site title structure: <code>#site-name</code>, <code>#site-desc</code>, <code>#post-title</code>"
 msgstr "Utiliza estas etiquetas para personalizar tu propia estructura de títulos para el sitio: <code>#site-name</code>, <code>#site-desc</code>, <code>#post-title</code>"
 
-#: admin/options-display.php:610
+#: admin/options-display.php:652
 msgid "Custom front page site title"
 msgstr "Título personalizado del sitio para la página de inicio"
 
-#: admin/options-display.php:614
+#: admin/options-display.php:656
 msgid "Defaults to <code>#site-name &raquo; #site-desc</code>. The <code>#post-title</code> tag cannot be used here."
 msgstr "Por defecto, <code>#site-name &raquo; #site-desc</code>. La etiqueta <code>#post-title</code> no se puede utilizar aquí."
 
-#: admin/options-display.php:619
+#: admin/options-display.php:661
 msgid "Custom content pages site title"
 msgstr "Título personalizado del sitio para las páginas de contenido"
 
-#: admin/options-display.php:623
+#: admin/options-display.php:665
 msgid "Defaults to <code>#post-title &raquo; #site-name</code>."
 msgstr "Por defecto, <code>#post-title &raquo; #site-name</code>."
 
-#: admin/options-display.php:628
+#: admin/options-display.php:670
 msgid "Favicon options"
 msgstr "Opciones del favicono"
 
-#: admin/options-display.php:632
+#: admin/options-display.php:674
 msgid "Favicon URL"
 msgstr "URL del favicono"
 
-#: admin/options-display.php:636
-#: admin/options-general.php:124
+#: admin/options-display.php:678
+#: admin/options-general.php:125
 msgid "Upload or select image from gallery"
 msgstr "Subir o seleccionar una imagen de la galería"
 
-#: admin/options-display.php:636
+#: admin/options-display.php:678
 msgid "Simply enter the full URL to your favicon file here to enable favicon. Make sure you include the <code>http://</code> in front of the URL as well. Or use the WordPress media uploader to upload an image, or select one from the media library."
 msgstr "Para activar el favicono, basta con que escribas aquí la URL completa a dicho fichero. Asegúrate de que incluyes <code>http://</code> al comienzo de la URL. También puedes utilizar el cargador de elementos multimedia de WordPress para subir una imagen o seleccionar un fichero de la librería multimedia."
 
-#: admin/options-display.php:641
+#: admin/options-display.php:683
 msgid "WordPress Editor options"
 msgstr "Opciones del editor de WordPress"
 
-#: admin/options-display.php:645
+#: admin/options-display.php:687
 msgid "Disable custom editor styles"
 msgstr "Desactivar el estilo personalizado del editor"
 
-#: admin/options-display.php:660
+#: admin/options-display.php:703
 msgid "Custom CSS"
 msgstr "CSS personalizado"
 
-#: admin/options-display.php:665
+#: admin/options-display.php:708
 msgid "Custom CSS styles"
 msgstr "Estilos CSS personalizados"
 
-#: admin/options-display.php:667
+#: admin/options-display.php:710
 msgid "You can enter your own CSS codes below to modify any other aspects of the theme's appearance that is not included in the options."
 msgstr "Puedes introducir a continuación tus propios estilos CSS, para modificar cualquier aspecto del tema que no esté incluido en las opciones."
 
-#: admin/options-general.php:12
+#: admin/options-general.php:13
 msgid "Slider Options"
 msgstr "Opciones del pase de diapositivas"
 
-#: admin/options-general.php:18
+#: admin/options-general.php:19
 msgid "Disable slider"
 msgstr "Desactivar el pase de diapositivas"
 
-#: admin/options-general.php:26
+#: admin/options-general.php:27
 msgid "Extend slider to full width of the theme"
 msgstr "Ampliar el pase de diapositivas para que ocupe toda la anchura del tema"
 
-#: admin/options-general.php:32
+#: admin/options-general.php:33
 msgid "What do you want to show in the slider"
 msgstr "¿Qué quieres mostrar en el pase de diapositivas?"
 
-#: admin/options-general.php:36
+#: admin/options-general.php:37
 msgid "Show latest posts"
 msgstr "Mostrar las últimas entradas"
 
-#: admin/options-general.php:39
+#: admin/options-general.php:40
 msgid "Show random posts"
 msgstr "Mostrar entradas al azar"
 
-#: admin/options-general.php:42
+#: admin/options-general.php:43
 msgid "Show specific posts/pages"
 msgstr "Mostrar las entradas o páginas seleccionadas"
 
-#: admin/options-general.php:45
+#: admin/options-general.php:46
 msgid "Show posts from categories"
 msgstr "Mostrar entradas de las categorías"
 
-#: admin/options-general.php:50
-#: admin/options-general.php:327
+#: admin/options-general.php:51
+#: admin/options-general.php:331
 msgid "Posts and/or pages to display"
 msgstr "Entradas y/o páginas que deseas mostrar"
 
-#: admin/options-general.php:55
-#: admin/options-general.php:332
+#: admin/options-general.php:56
+#: admin/options-general.php:335
 msgid "Enter ID of posts and/or pages to be displayed, separated by comma. Example: <code>1,13,45,33</code>"
 msgstr "IDs de las entradas y/o las páginas que se mostrarán, separados por comas. Ejemplo: <code>1,13,45,33</code>"
 
-#: admin/options-general.php:56
+#: admin/options-general.php:57
 msgid "Applicable only if <strong>Show specific posts/pages</strong> is selected above."
 msgstr "Solo se aplicará si has seleccionado la opción <strong>Mostrar las entradas o páginas seleccionadas</strong>."
 
-#: admin/options-general.php:62
+#: admin/options-general.php:63
 msgid "Categories to display"
 msgstr "Categorías que mostrar"
 
-#: admin/options-general.php:65
-#: admin/options-general.php:247
+#: admin/options-general.php:66
+#: admin/options-general.php:251
+#: admin/options-general.php:322
 msgid "Click to select categories or type to search"
 msgstr "Pulsa para seleccionar las categorías, o bien escribe para buscarlas"
 
-#: admin/options-general.php:74
+#: admin/options-general.php:75
 msgid "All posts within the categories selected here will be displayed on the slider. Usage example: create a new category \"Featured\" and assign all posts to be displayed on the slider to that category, and then select that category here."
 msgstr "Todas las entradas que pertenezcan a la categoría seleccionada se mostrarán en el pase de diapositivas. Ejemplo: crea una nueva categoría, llamada \"Destacados\", asigna a dicha categoría todas las entradas que quieras mostrar en el pase de diapositivas, y a continuación selecciona la categoría aquí."
 
-#: admin/options-general.php:79
+#: admin/options-general.php:80
 msgid "Exclude the categories from posts listing"
 msgstr "Excluir las categorías de los listados de entradas"
 
-#: admin/options-general.php:83
+#: admin/options-general.php:84
 msgid "Disabled"
 msgstr "Desactivado"
 
-#: admin/options-general.php:84
+#: admin/options-general.php:85
 msgid "Home Page"
 msgstr "En la página de inicio"
 
-#: admin/options-general.php:85
+#: admin/options-general.php:86
 msgid "Everywhere"
 msgstr "En todas partes"
 
-#: admin/options-general.php:91
+#: admin/options-general.php:92
 msgid "Show posts from categories in random order"
 msgstr "Mostrar las entradas de las categorías al azar"
 
-#: admin/options-general.php:99
+#: admin/options-general.php:100
 msgid "Number of posts to display"
 msgstr "Número de entradas que deseas mostrar"
 
-#: admin/options-general.php:130
+#: admin/options-general.php:131
 msgid "Slider display style"
 msgstr "Estilo del pase de diapositivas"
 
-#: admin/options-general.php:134
+#: admin/options-general.php:135
 msgid "Thumbnail and excerpt"
 msgstr "Miniatura y resumen"
 
-#: admin/options-general.php:135
+#: admin/options-general.php:136
 msgid "Background image and excerpt"
 msgstr "Imagen de fondo y resumen"
 
-#: admin/options-general.php:136
+#: admin/options-general.php:137
 msgid "Full post content"
 msgstr "Todo el contenido de la entrada"
 
-#: admin/options-general.php:142
+#: admin/options-general.php:143
 msgid "Slider animation"
 msgstr "Animación del pase de diapositivas"
 
-#: admin/options-general.php:146
+#: admin/options-general.php:147
 msgid "Horizontal slide"
 msgstr "Pase de diapositivas horizontal"
 
-#: admin/options-general.php:147
+#: admin/options-general.php:148
 msgid "Vertical slide"
 msgstr "Pase de diapositivas vertical"
 
-#: admin/options-general.php:148
+#: admin/options-general.php:149
 msgid "Fade"
 msgstr "Fundido"
 
-#: admin/options-general.php:149
+#: admin/options-general.php:150
 msgid "No effect"
 msgstr "Sin efecto"
 
-#: admin/options-general.php:155
+#: admin/options-general.php:156
 msgid "Slider height"
 msgstr "Altura del pase de diapositivas"
 
-#: admin/options-general.php:163
+#: admin/options-general.php:164
 msgid "Slider speed"
 msgstr "Velocidad del pase de diapositivas"
 
-#: admin/options-general.php:166
-#: admin/options-general.php:175
+#: admin/options-general.php:167
+#: admin/options-general.php:176
 msgid "milliseconds"
 msgstr "milisegundos"
 
-#: admin/options-general.php:167
+#: admin/options-general.php:168
 msgid "This is the duration that each slider item will be shown"
 msgstr "Este valor corresponde a la duración en milisegundos de cada uno de los elementos del pase de diapositivas"
 
-#: admin/options-general.php:172
+#: admin/options-general.php:173
 msgid "Slider transition speed"
 msgstr "Velocidad de transición del pase de diapositivas"
 
-#: admin/options-general.php:176
+#: admin/options-general.php:177
 msgid "This is the speed of the slider transition. Lower values = higher speed."
 msgstr "Esta es la velocidad de transición del pase de diapositivas. Valores más altos equivalen a una velocidad superior."
 
-#: admin/options-general.php:181
+#: admin/options-general.php:182
 msgid "Move slider to bottom of page"
 msgstr "Desplazar el pase de diapositivas al final de la página"
 
-#: admin/options-general.php:196
+#: admin/options-general.php:198
 msgid "Infinite Scroll"
 msgstr "Desplazamiento infinito"
 
-#: admin/options-general.php:199
+#: admin/options-general.php:201
 msgid "Let the theme pull the next set of posts or comments into view when visitor approaches the bottom of the page."
 msgstr "Cuando el visitante se aproxima al final de la página, permite que el tema cargue un nuevo grupo de entradas y comentarios."
 
-#: admin/options-general.php:203
+#: admin/options-general.php:205
 msgid "Enable Infinite Scroll"
 msgstr "Activar desplazamiento infinito"
 
-#: admin/options-general.php:212
+#: admin/options-general.php:214
 msgid "Click to fetch more items"
 msgstr "Hacer clic para obtener más elementos"
 
-#: admin/options-general.php:218
+#: admin/options-general.php:220
 msgid "For comments"
 msgstr "Para comentarios"
 
-#: admin/options-general.php:223
+#: admin/options-general.php:225
 msgid "Enable Infinite Scroll for comments"
 msgstr "Activar el desplazamiento infinito en los comentarios"
 
-#: admin/options-general.php:238
+#: admin/options-general.php:241
 msgid "Front Page Options"
 msgstr "Opciones de la página principal"
 
-#: admin/options-general.php:244
+#: admin/options-general.php:248
 msgid "Front page posts categories"
 msgstr "Categorías de entradas de la página principal"
 
-#: admin/options-general.php:255
-msgid "Only posts that belong to the categories selected here will be displayed on the front page. Does not affect Static Front Page. Leave empty to disable."
-msgstr "Solo las entradas que pertenezcan a las categorías seleccionadas se mostrarán en la página principal. No afecta a las páginas de inicio estáticas. Deja el campo vacío para desactivar esta opción."
+#: admin/options-general.php:259
+msgid "Only posts that belong to the categories selected here will be displayed on the front page."
+msgstr "Solo las entradas que pertenezcan a las categorías seleccionadas se mostrarán en la página principal."
 
-#: admin/options-general.php:271
+#: admin/options-general.php:264
+msgid "<strong>Note:</strong> this feature is not available when using a <a href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">static front page</a>."
+msgstr "<strong>Aviso:</strong> esta funcionalidad no está disponible cuando se utiliza una <a href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">página de inicio estática</a>."
+
+#: admin/options-general.php:279
 msgid "Homepage Panes"
 msgstr "Paneles de la página de inicio"
 
-#: admin/options-general.php:278
+#: admin/options-general.php:286
 msgid "Disable homepage panes"
 msgstr "Desactivar paneles de página de inicio"
 
-#: admin/options-general.php:288
+#: admin/options-general.php:296
 msgid "Type of content to show"
 msgstr "Tipo de contenido que se mostrará"
 
-#: admin/options-general.php:295
+#: admin/options-general.php:303
 msgid "Latest posts by category"
 msgstr "Entradas más recientes por categorías"
 
-#: admin/options-general.php:298
+#: admin/options-general.php:306
 msgid "Posts and/or pages"
 msgstr "Entradas y/o páginas"
 
-#: admin/options-general.php:303
+#: admin/options-general.php:311
 msgid "Number of latest posts to display"
 msgstr "Número de entradas que deseas mostrar"
 
-#: admin/options-general.php:307
-msgid "Applicable only if <strong>Latest posts</strong> or <strong>Latest posts by category</strong> is selected above."
-msgstr "Solo es aplicable si has seleccionado las opciones <strong>Entradas más recientes</strong> o <strong>Entradas más recientes por categorías</strong>"
+#: admin/options-general.php:319
+msgid "Categories to show latest posts from"
+msgstr "Categorías cuyas últimas entradas deseas mostrar"
 
-#: admin/options-general.php:312
-msgid "Category to show latest posts from"
-msgstr "Categoría de entradas que deseas mostrar en el pase de diapositivas"
+#: admin/options-general.php:340
+msgid "<strong>Note:</strong> this feature is only available when using a <a href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">static front page</a>."
+msgstr "<strong>Aviso:</strong> esta funcionalidad solo esta disponible cuando se utiliza una <a href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">página de inicio estática</a>."
 
-#: admin/options-general.php:322
-msgid "Applicable only if <strong>Latest posts by category</strong> is selected above."
-msgstr "Solo es aplicable si has seleccionado la opción de <strong>Últimas entradas por categorías</strong>"
-
-#: admin/options-general.php:333
-msgid "Applicable only if <strong>Posts and/or pages</strong> is selected above."
-msgstr "Solo es aplicable si has seleccionado la opción <strong>Entradas y/o páginas</strong>"
-
-#: admin/options-general.php:339
-msgid "<strong>Note:</strong> homepage panes are only displayed when using a <a href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">static front page</a>."
-msgstr "<strong>Aviso:</strong> los paneles de la página de inicio solo se muestran cuando se utiliza una <a href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">página de inicio estática</a>."
-
-#: admin/options-general.php:351
+#: admin/options-general.php:353
 msgid "Comments Options"
 msgstr "Opciones de comentarios"
 
-#: admin/options-general.php:357
+#: admin/options-general.php:359
 msgid "Commenting"
 msgstr "Comentarios"
 
-#: admin/options-general.php:361
+#: admin/options-general.php:363
 msgid "Use WordPress settings"
 msgstr "Utilizar la configuración de WordPress"
 
-#: admin/options-general.php:362
+#: admin/options-general.php:364
 msgid "Disabled for pages"
 msgstr "Desactivados para páginas"
 
-#: admin/options-general.php:363
+#: admin/options-general.php:365
 msgid "Disabled completely"
 msgstr "Completamente desactivados"
 
-#: admin/options-general.php:365
+#: admin/options-general.php:367
 msgid "Note: this setting overrides the global WordPress Discussion Setting called \"Allow people to post comments on new articles\" and also the \"Allow comments\" option for individual posts/pages."
 msgstr "Aviso: esta opción anula la configuración global de WordPress denominada \"Permite que se publiquen comentarios en los artículos nuevos\" y también la opción \"Permitir comentarios\" en las entradas o páginas individuales."
 
-#: admin/options-general.php:379
+#: admin/options-general.php:382
 msgid "Child Page Options"
 msgstr "Opciones de páginas hijas"
 
-#: admin/options-general.php:385
+#: admin/options-general.php:388
 msgid "Hide parent box if content is empty"
 msgstr "Ocultar la caja de la página superior si el contenido está vacío"
 
-#: admin/options-general.php:391
+#: admin/options-general.php:394
 msgid "Child page listings"
 msgstr "Listados de páginas hijas"
 
-#: admin/options-general.php:395
+#: admin/options-general.php:398
 msgid "Show listing"
 msgstr "Mostrar listados"
 
-#: admin/options-general.php:396
+#: admin/options-general.php:399
 msgid "Hide listing"
 msgstr "Ocultar listados"
 
-#: admin/options-general.php:397
+#: admin/options-general.php:400
 msgid "Only show listing if parent content is empty"
 msgstr "Solo mostrar el listado si el contenido-padre está vacío"
 
-#: admin/options-general.php:412
+#: admin/options-general.php:416
 msgid "Widget Area Options"
 msgstr "Opciones de las áreas de widgets"
 
-#: admin/options-general.php:415
+#: admin/options-general.php:419
 msgid "Header widget area"
 msgstr "Cabecera"
 
-#: admin/options-general.php:416
+#: admin/options-general.php:420
 msgid "<strong>Important:</strong> This widget area is unstyled, as it is often used for advertisement banners, etc. If you enable it, make sure you style it to your needs using the Custom CSS option."
 msgstr "<strong>Importante:</strong> esta área de widgets no tiene estilos, y normalmente se utiliza para anuncios y elementos similares. Si la activas, asegúrate de que le asignas los estilos adecuados, mediante la opción \"CSS personalizado\"."
 
-#: admin/options-general.php:420
+#: admin/options-general.php:424
 msgid "Enable header widget area"
 msgstr "Activar el área de widgets de la cabecera"
 
-#: admin/options-general.php:429
+#: admin/options-general.php:433
 msgid "Alternate Widgets"
 msgstr "Widgets alternativos"
 
-#: admin/options-general.php:430
+#: admin/options-general.php:434
 msgid "You can enable the theme to show different widget areas in the front page than the rest of the website. If you enable this option, additional widget areas that will only be displayed on the front page will be added to the Widget settings page."
 msgstr "Puedes hacer que el tema muestre en la página de inicio otros widgets que los que aparecen en el resto del sitio web. Si activas esta opción, la página de configuración de los widgets mostrará varias áreas de widgets adicionales, que solo estarán disponibles para la página de inicio."
 
-#: admin/options-general.php:433
+#: admin/options-general.php:437
 msgid "Enable alternate front page sidebar widget area"
 msgstr "Activar el área de widgets alternativa para la barra lateral de la página de inicio"
 
-#: admin/options-general.php:437
+#: admin/options-general.php:441
 msgid "Enable alternate front page footer widget area"
 msgstr "Activar el área de widgets alternativa para el pie de página de la página de inicio"
 
-#: admin/options-general.php:438
+#: admin/options-general.php:442
 msgid "You can also specify different column counts for the front page footer widget and the rest-of-site footer widget if you enable this option."
 msgstr "Si activas esta opción, también puedes especificar diferentes columnas para el pie de página de la página de inicio y el pie de página del resto del sitio web."
 
-#: admin/options-general.php:453
+#: admin/options-general.php:458
 msgid "Top Bar Options"
 msgstr "Opciones de la barra de navegación superior"
 
-#: admin/options-general.php:459
+#: admin/options-general.php:464
 msgid "Hide the top bar"
 msgstr "Ocultar la barra superior"
 
-#: admin/options-general.php:465
+#: admin/options-general.php:470
 msgid "Social Media"
 msgstr "Medios sociales"
 
-#: admin/options-general.php:468
+#: admin/options-general.php:473
 msgid "Open social media links in new window"
 msgstr "Abrir enlaces de medios sociales en una nueva ventana"
 
-#: admin/options-general.php:472
+#: admin/options-general.php:477
 msgid "<strong>Hint:</strong> drag and drop to rearrange the placement of the social media icons."
 msgstr "<strong>Pista:</strong> arrastra y suelta para reordenar la ubicación de los iconos de medios sociales."
 
-#: admin/options-general.php:499
-#: admin/options-general.php:558
+#: admin/options-general.php:503
+#: admin/options-general.php:562
 msgid "Custom"
 msgstr "Personalizado"
 
-#: admin/options-general.php:508
-#: admin/options-general.php:544
-#: admin/options-general.php:567
+#: admin/options-general.php:512
+#: admin/options-general.php:548
+#: admin/options-general.php:571
 msgid "Title attribute"
 msgstr "Atributo de título"
 
-#: admin/options-general.php:512
-#: admin/options-general.php:545
-#: admin/options-general.php:571
+#: admin/options-general.php:516
+#: admin/options-general.php:549
+#: admin/options-general.php:575
 msgid "URL"
 msgstr "URL"
 
-#: admin/options-general.php:516
-#: admin/options-general.php:573
+#: admin/options-general.php:520
+#: admin/options-general.php:577
 msgid "Leave the URL empty to use the default RSS URL."
 msgstr "Deja vacío el campo de URL para utilizar la URL por defecto de la fuente RSS."
 
-#: admin/options-general.php:522
-#: admin/options-general.php:543
-#: admin/options-general.php:577
+#: admin/options-general.php:526
+#: admin/options-general.php:547
+#: admin/options-general.php:581
 msgid "Icon URL"
 msgstr "URL del icono"
 
-#: admin/options-general.php:526
-#: admin/options-general.php:546
-#: includes/theme-comments.php:218
+#: admin/options-general.php:530
+#: admin/options-general.php:550
+#: includes/theme-comments.php:219
 msgid "Delete"
 msgstr "Borrar"
 
-#: admin/options-general.php:538
+#: admin/options-general.php:542
 msgid "Add Social Media Profile"
 msgstr "Añadir perfil de medios sociales"
 
-#: admin/options-general.php:550
+#: admin/options-general.php:554
 msgid "Type"
 msgstr "Tipo"
 
-#: admin/options-general.php:553
+#: admin/options-general.php:556
 msgid "Choose type"
 msgstr "Selecciona el tipo"
 
-#: admin/options-general.php:581
+#: admin/options-general.php:585
 msgid "Add this social media profile"
 msgstr "Añadir este perfil de medios sociales"
 
-#: admin/options-general.php:597
+#: admin/options-general.php:602
 msgid "Social Sharing Buttons"
 msgstr "Botones de servicios de marcadores sociales"
 
-#: admin/options-general.php:602
+#: admin/options-general.php:607
 msgid "Show social sharing button"
 msgstr "Mostrar botón de marcadores sociales"
 
-#: admin/options-general.php:608
+#: admin/options-general.php:613
 msgid "Show in Pages as well?"
 msgstr "¿Mostrar también en las páginas?"
 
-#: admin/options-general.php:612
+#: admin/options-general.php:617
 msgid "Show in home and archive pages?"
 msgstr "¿Mostrar en la página de inicio y las páginas de archivo o índice?"
 
-#: admin/options-general.php:615
+#: admin/options-general.php:620
 #, php-format
 msgid "Enabling this will cause the social sharing buttons to appear on posts listing pages, like the home page and archive pages. Use the available tags in the code below to get the post's URL, title, and excerpt. Otherwise, all your buttons will share the same URL and title. If you're using AddThis, see the %s."
 msgstr "Si activas esta opción, los iconos de los medios sociales aparecerán en las páginas de listados de entradas, como la página de inicio y las páginas de archivo o índice. Utiliza las etiquetas disponibles en el código que aparece a continuación para obtener la URL, el título y el resumen de la entrada. De otro modo, todos tus botones compartirán la misma URL y el mismo título. Si vas a utilizar AddThis, consulta la %s."
 
-#: admin/options-general.php:615
+#: admin/options-general.php:620
 msgid "AddThis Client API"
 msgstr "API de cliente de AddThis"
 
-#: admin/options-general.php:619
+#: admin/options-general.php:624
 msgid "Social sharing buttons location"
 msgstr "Ubicación de los botones de servicios de marcadores sociales"
 
-#: admin/options-general.php:622
+#: admin/options-general.php:627
 msgid "Bottom of posts"
 msgstr "En la zona inferior de las entradas"
 
-#: admin/options-general.php:623
+#: admin/options-general.php:628
 msgid "Top of posts"
 msgstr "En la zona superior de las entradas"
 
-#: admin/options-general.php:624
+#: admin/options-general.php:629
 msgid "Both top and bottom"
 msgstr "Tanto en la zona superior como en la inferior"
 
-#: admin/options-general.php:630
+#: admin/options-general.php:635
 msgid "Your social sharing button code"
 msgstr "Código para el botón de marcadores sociales"
 
-#: admin/options-general.php:631
+#: admin/options-general.php:636
 msgid "You can use codes from any popular social sharing sites, like Facebook, Digg, AddThis, etc."
 msgstr "Puedes utilizar códigos de cualquier servicio de marcadores sociales, como Facebook, Digg, AddThis, etc."
 
-#: admin/options-general.php:634
+#: admin/options-general.php:639
 msgid "You may use these tags to get the post's URL, title, and excerpt:"
 msgstr "Puedes utilizar estas etiquetas para obtener la URL de la entrada, el título y el resumen:"
 
-#: admin/options-general.php:648
+#: admin/options-general.php:654
 msgid "Adsense Options"
 msgstr "Opciones de AdSense"
 
-#: admin/options-general.php:654
+#: admin/options-general.php:660
 msgid "Show Adsense advertising"
 msgstr "Mostrar anuncios de AdSense"
 
-#: admin/options-general.php:662
+#: admin/options-general.php:668
 msgid "Show ads on front page as well"
 msgstr "Mostrar anuncios también en la página de inicio"
 
-#: admin/options-general.php:668
+#: admin/options-general.php:674
 msgid "Your Adsense code"
 msgstr "Tu código de AdSense"
 
-#: admin/options-general.php:683
+#: admin/options-general.php:690
 msgid "Google Analytics Options"
 msgstr "Opciones de Google Analytics"
 
-#: admin/options-general.php:688
+#: admin/options-general.php:695
 msgid "Enable Google Analytics tracking"
 msgstr "Activar el seguimiento de Google Analytics"
 
-#: admin/options-general.php:695
+#: admin/options-general.php:702
 msgid "<strong>Note:</strong> the theme now places the Google Analytics script in the <code>&lt;head&gt;</code> element to better support the new asynchronous Google Analytics script. Please make sure you update your script to use the new asynchronous script from Google Analytics."
 msgstr "<strong>Aviso:</strong> el tema ubicará el script de Google Analytics en el elemento <code>&lt;head&gt;</code> del código HTML, para obtener un mejor resultado del nuevo script asíncrono de Google Analytics. Por favor, asegúrate de actualizar el script para poder hacer uso de la nueva funcionalidad de Google Analytics."
 
-#: admin/options-general.php:699
+#: admin/options-general.php:706
 msgid "Google Analytics tracking code"
 msgstr "Código de seguimiento de Google Analytics"
 
-#: admin/options-general.php:700
+#: admin/options-general.php:707
 msgid "Make sure you include the full tracking code (including the <code>&lt;script&gt;</code> and <code>&lt;/script&gt;</code> tags) and not just the <code>UA-#######-#</code> code."
 msgstr "Debes asegurarte de que incluyes el código de seguimiento completo (incluyendo las etiquetas <code>&lt;script&gt;</code> y <code>&lt;/script&gt;</code>) y no solo el código <code>UA-#######-#</code>."
 
-#: admin/options-general.php:715
+#: admin/options-general.php:723
 msgid "Footer Options"
 msgstr "Opciones de pie de página"
 
-#: admin/options-general.php:720
+#: admin/options-general.php:728
 msgid "Use Creative Commons licence for content"
 msgstr "Utilizar una licencia Creative Commons para el contenido"
 
-#: admin/options-general.php:725
+#: admin/options-general.php:733
 msgid "Copyright text (html allowed)"
 msgstr "Texto de copyright (se permiten etiquetas HTML)"
 
-#: admin/options-general.php:726
+#: admin/options-general.php:734
 msgid "If this field is empty, the following default copyright text will be displayed:"
 msgstr "Si este campo está vacío, se mostrará por defecto el siguiente texto de copyright:"
 
-#: admin/options-general.php:732
+#: admin/options-general.php:740
 msgid "Do not show copyright info"
 msgstr "No mostrar información de copyright"
 
-#: admin/options-general.php:736
+#: admin/options-general.php:744
 msgid "Do not show the \"Return to top\" link"
 msgstr "No mostrar el enlace \"Volver al inicio\""
 
-#: admin/options-general.php:750
+#: admin/options-general.php:759
 msgid "Print Options"
 msgstr "Opciones de impresión"
 
-#: admin/options-general.php:755
+#: admin/options-general.php:764
 msgid "Enable print CSS for single posts and pages?"
 msgstr "¿Quieres activar una hoja de estilos CSS para la impresión de las entradas y páginas individuales?"
 
-#: admin/options-general.php:761
+#: admin/options-general.php:770
 msgid "Show print button"
 msgstr "Mostrar botón para imprimir"
 
@@ -2129,97 +2129,97 @@ msgstr "Mostrar botón para imprimir"
 msgid "ERROR: You have not selected any colour presets to be exported."
 msgstr "Se ha producido un error: no has seleccionado ninguna configuración predefinida para que sea exportada."
 
-#: admin/options-import.php:62
-#: admin/options-import.php:279
-#: admin/options-presets.php:47
+#: admin/options-import.php:65
+#: admin/options-import.php:282
+#: admin/options-presets.php:25
 #: admin/uninstall.php:32
 msgid "ERROR: You are not authorised to perform that operation"
 msgstr "Se ha producido un error: no tienes permiso para llevar a cabo esta operación"
 
-#: admin/options-import.php:83
-#: admin/options-import.php:119
+#: admin/options-import.php:86
+#: admin/options-import.php:122
 msgid "Before you can upload your import file, you will need to fix the following error:"
 msgstr "Antes de que puedas subir un fichero de importación, tendrás que subsanar el siguiente error:"
 
-#: admin/options-import.php:89
-#: admin/options-import.php:193
+#: admin/options-import.php:92
+#: admin/options-import.php:196
 msgid "Import Graphene Theme Options"
 msgstr "Importar opciones del tema Graphene"
 
-#: admin/options-import.php:92
+#: admin/options-import.php:95
 msgid "Choose a file from your computer:"
 msgstr "Selecciona un fichero de tu ordenador"
 
-#: admin/options-import.php:92
-#: admin/options-import.php:129
+#: admin/options-import.php:95
+#: admin/options-import.php:132
 #, php-format
 msgid "Maximum size: %s"
 msgstr "tamaño máximo: %s"
 
-#: admin/options-import.php:99
-#: admin/options-import.php:136
+#: admin/options-import.php:102
+#: admin/options-import.php:139
 msgid "Upload file and import"
 msgstr "Subir fichero e importar"
 
-#: admin/options-import.php:125
-#: admin/options-import.php:193
+#: admin/options-import.php:128
+#: admin/options-import.php:196
 msgid "Import Graphene Theme Colour Presets"
 msgstr "Importar una configuración predefinida de colores del tema Graphene"
 
-#: admin/options-import.php:128
+#: admin/options-import.php:131
 msgid "Choose a Graphene theme's colour presets export file from your computer:"
 msgstr "Selecciona en tu ordenador un fichero de configuración predefinida de colores del tema Graphene:"
 
-#: admin/options-import.php:155
+#: admin/options-import.php:158
 msgid "Export Graphene Theme Colour Presets"
 msgstr "Exportar una configuración predefinida de colores del tema Graphene"
 
-#: admin/options-import.php:158
+#: admin/options-import.php:161
 msgid "Please select the colour presets to be exported."
 msgstr "Por favor, selecciona la configuración de colores predefinida que quieras exportar."
 
-#: admin/options-import.php:168
+#: admin/options-import.php:171
 msgid "Export colour presets"
 msgstr "Exportar una configuración predefinida de colores"
 
-#: admin/options-import.php:169
-#: admin/options-import.php:242
-#: admin/options-import.php:252
+#: admin/options-import.php:172
+#: admin/options-import.php:245
+#: admin/options-import.php:255
 msgid "&laquo; Return to Graphene Options"
 msgstr "&laquo; Volver a las opciones del tema Graphene"
 
-#: admin/options-import.php:241
+#: admin/options-import.php:244
 msgid "Options import completed."
 msgstr "La importación de las opciones ha sido completada."
 
-#: admin/options-import.php:244
-#: admin/options-import.php:254
-#: admin/options-import.php:260
-#: admin/options-import.php:265
+#: admin/options-import.php:247
+#: admin/options-import.php:257
+#: admin/options-import.php:263
+#: admin/options-import.php:268
 msgid "Sorry, there has been an error."
 msgstr "Lo siento, pero se ha producido un error."
 
-#: admin/options-import.php:245
+#: admin/options-import.php:248
 msgid "The uploaded file does not contain valid Graphene options."
 msgstr "El fichero que has subido no contiene opciones válidas del tema Graphene."
 
-#: admin/options-import.php:251
+#: admin/options-import.php:254
 msgid "Colour presets import completed."
 msgstr "La importación de la configuración predefinida de colores ha sido completada."
 
-#: admin/options-import.php:255
+#: admin/options-import.php:258
 msgid "The uploaded file does not contain valid Graphene colour presets."
 msgstr "El fichero que has subido no contiene una configuración predefinida de colores del tema Graphene válida."
 
-#: admin/options-import.php:261
+#: admin/options-import.php:264
 msgid "The uploaded file could not be read."
 msgstr "El fichero que has subido no ha podido ser leído."
 
-#: admin/options-import.php:266
+#: admin/options-import.php:269
 msgid "The uploaded file is not supported."
 msgstr "El fichero que has subido no está soportado."
 
-#: admin/options-import.php:274
+#: admin/options-import.php:277
 msgid "File is empty. Please upload something more substantial. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini."
 msgstr "El fichero está vacío. Por favor, sube un fichero que contenga las opciones del tema. Este error también puede deberse a que la subida de archivos haya sido desactivada en el fichero de configuración de PHP (php.ini), o porque el parámetro post_max_size haya sido definido con un valor más bajo que el parámetro upload_max_filesize en php.ini."
 
@@ -2231,44 +2231,48 @@ msgstr "Opciones del tema Graphene"
 msgid "Graphene FAQs"
 msgstr "Preguntas más frecuentes (FAQ) del tema Graphene"
 
-#: admin/options-init.php:133
+#: admin/options-init.php:134
 msgid "What should we call this preset?"
 msgstr "¿Qué nombre quieres dar a esta configuración predefinida?"
 
-#: admin/options-init.php:134
+#: admin/options-init.php:135
 msgid "Preset name is required to save a preset."
 msgstr "Para guardar una configuración predefinida, es necesario darle un nombre."
 
-#: admin/options-init.php:135
+#: admin/options-init.php:136
 msgid "You are deleting this preset:"
 msgstr "Vas a borrar esta configuración predefinida:"
 
-#: admin/options-init.php:136
+#: admin/options-init.php:137
 msgid "Oops, nothing found."
 msgstr "Lo sentimos, pero no se ha encontrado ninguna configuración predefinida."
 
-#: admin/options-init.php:170
+#: admin/options-init.php:172
 msgid "Toggle all options boxes"
-msgstr "Desplegar o plegar todas las cajas de opciones"
+msgstr "Plegar o desplegar todas las cajas de opciones"
 
-#: admin/options-init.php:229
+#: admin/options-init.php:231
 msgid "Template preview not found."
 msgstr "Vista previa de la plantilla no encontrada"
 
-#: admin/options-init.php:232
+#: admin/options-init.php:234
 msgid "default"
 msgstr "por defecto"
 
-#: admin/options-init.php:288
-#: admin/options-init.php:292
+#: admin/options-init.php:293
+#: admin/options-init.php:297
 msgid "Theme default"
 msgstr "Plantilla del tema por defecto"
 
-#: admin/options-presets.php:35
-msgid "The \"Normal website\" settings preset has been applied."
-msgstr "Los valores por defecto de la configuración \"Sitio web normal\" han sido aplicados."
+#: admin/options-init.php:334
+msgid "Learn more about this feature set"
+msgstr "Aprender más sobre este conjunto de funcionalidades"
 
-#: admin/options-presets.php:40
+#: admin/options-init.php:335
+msgid "Documentation"
+msgstr "Documentación"
+
+#: admin/options-presets.php:18
 msgid "Settings have been reset."
 msgstr "La configuración ha sido devuelta a sus valores por defecto."
 
@@ -2485,93 +2489,65 @@ msgstr "Noticias del tema Graphene"
 msgid "No news items."
 msgstr "No hay ninguna noticia."
 
-#: admin/options.php:185
-msgid "Graphene Usage Survey"
-msgstr "Encuesta de uso del tema Graphene"
-
-#: admin/options.php:188
-msgid "Help us to get to know you better. Take the Graphene theme usage survey now! Every opinion counts towards making the theme better. The survey is very short, and is completely anonymous."
-msgstr "Ayúdanos a conocerte mejor. Dedica un rato a la encuesta sobre el tema Graphene. Todas las opiniones contribuyen a mejorar el tema. La encuesta es muy breve, y completamente anónima."
-
-#: admin/options.php:189
-msgid "Take the survey"
-msgstr "Realiza la encuesta."
-
-#: admin/options.php:198
+#: admin/options.php:184
 msgid "Add-ons and plugins"
 msgstr "Complementos y plugins"
 
-#: admin/options.php:201
+#: admin/options.php:187
 msgid "Add-ons"
 msgstr "Complementos"
 
-#: admin/options.php:202
+#: admin/options.php:188
 msgid "Add-ons are not shipped with the theme, but can be installed separately to extend the theme's capability."
 msgstr "Los complementos no se distribuyen con el tema, pero pueden instalarse de forma independiente para ampliar sus funcionalidades."
 
-#: admin/options.php:206
-#: admin/options.php:212
+#: admin/options.php:192
+#: admin/options.php:198
 msgid "Installed"
 msgstr "Instalado"
 
-#: admin/options.php:207
-#: admin/options.php:213
-#: admin/options.php:234
+#: admin/options.php:193
+#: admin/options.php:199
+#: admin/options.php:245
 msgid "Not installed"
 msgstr "No instalado"
 
-#: admin/options.php:207
-#: admin/options.php:213
-msgid "Learn more"
-msgstr "Más información"
-
-#: admin/options.php:208
+#: admin/options.php:194
 msgid "The new premium mobile theme that fuses elegant design with premium features. It's a match of pixel-perfection and code-devilry."
 msgstr "El nuevo tema para dispositivos móviles, que combina un diseño elegante con funcionalidades premium. Es una combinación de un diseño perfecto y diabluras en el código."
 
-#: admin/options.php:214
+#: admin/options.php:199
+msgid "Learn more"
+msgstr "Más información"
+
+#: admin/options.php:200
 msgid "Mobile extension developed specifically for optimised display of your site on mobile devices, such as iPhone and Android devices."
 msgstr "Extensión para dispositivos móviles, especialmente desarrollada para una versión optimizada del tema en dispositivos móviles, como el iPhone y otros aparatos con sistema operativo Android."
 
-#: admin/options.php:218
+#: admin/options.php:204
 msgid "Plugins"
 msgstr "Plugins"
 
-#: admin/options.php:219
+#: admin/options.php:205
 msgid "The plugins listed here are natively supported by the theme. All you need to do is install the plugins and activate them."
 msgstr "Los plugins que figuran a continuación disponen de soporte nativo en el tema Graphene. Todo lo que tienes que hacer es instalar los plugins y activarlos."
 
-#: admin/options.php:233
+#: admin/options.php:244
 msgid "Activated"
 msgstr "Activado"
 
-#: admin/options.php:246
-msgid "Options Presets"
-msgstr "Conjuntos de opciones predefinidas"
+#: admin/options.php:257
+#: admin/options.php:266
+msgid "Reset settings"
+msgstr "Reiniciar la configuración"
 
-#: admin/options.php:249
-msgid "The default settings for the theme is preconfigured for use in blogs. If you're using this theme primarily for a normal website, or if you want to reset the settings to their default values, you can apply one of the available options presets below."
-msgstr "La configuración por defecto del tema ha sido predefinida para su uso en blogs. Si vas a utilizar este tema en un sitio web que no tenga la estructura de un blog, o si quieres devolver la configuración a sus valores por defecto, puedes seleccionar una de los conjuntos de opciones predefinidas que tienes a continuación."
-
-#: admin/options.php:250
-msgid "Note that you can still configure the individual settings after you apply any preset."
-msgstr "Debes tener en cuenta que incluso después de seleccionar un conjunto de opciones predefinidas, siempre podrás modificar los parámetros individuales de configuración."
-
-#: admin/options.php:255
-msgid "Select Options Preset"
-msgstr "Seleccionar un conjunto de opciones predefinidas"
-
-#: admin/options.php:258
-msgid "Normal website"
-msgstr "Sitio web normal"
+#: admin/options.php:260
+msgid "Reset all of the theme's settings to their default values. Only settings accessible via Graphene Theme Options are affected, including any custom colour presets you might have. Custom Header, Custom Menus, and other WordPress settings won't be affected."
+msgstr "Restablece todas las opciones del tema a sus valores por defecto. Solo se verán afectadas las opciones accesibles a través del menú \"Opciones del tema Graphene\", incluyendo cualquier conjunto de valores predefinidos que puedas tener. La cabecera personalizada, los menús personalizados y otras configuraciones de WordPress no se verán afectadas."
 
 #: admin/options.php:261
-msgid "Reset to default settings"
-msgstr "Volver a la configuración por defecto"
-
-#: admin/options.php:266
-msgid "Apply Options Preset"
-msgstr "Aplicar un conjunto de opciones predefinidas"
+msgid "<strong>WARNING:</strong> This action is not reversible."
+msgstr "<strong>¡ATENCIÓN!:</strong> Esta acción no es reversible."
 
 #: admin/options.php:276
 msgid "Import/export theme options"
@@ -2606,8 +2582,8 @@ msgid "If you just want to try another theme, there is no need to uninstall this
 msgstr "Si solo quieres probar otro tema, no hay ninguna necesidad de desinstalar este. Simplemente activa otro tema desde el menú Apariencia &gt; Temas."
 
 #: admin/options.php:303
-msgid "Note that uninstalling this theme <strong>does not remove</strong> the theme's files. To delete the files after you have uninstalled this theme, go to Appearances &gt; Themes and delete the theme from there."
-msgstr "Debes tener en cuenta que al desinstalar el tema <strong>no se eliminarán</strong> sus ficheros. Para eliminarlos, debes ir al menú Apariencia &gt; Temas, y desde allí podrás borrar el tema"
+msgid "Note that uninstalling this theme <strong>does not remove</strong> the theme's files. To delete the files after you have uninstalled this theme, go to Appearance &gt; Themes and delete the theme from there."
+msgstr "Debes tener en cuenta que al desinstalar el tema <strong>no se eliminarán</strong> sus ficheros. Para borrar los ficheros después de desinstalar el tema, debes ir al menú Apariencia &gt; Temas, y desde allí podrás borrarlo."
 
 #: admin/options.php:320
 msgid "The preview will be updated when the \"Save Options\" button above is clicked."
@@ -2684,19 +2660,19 @@ msgstr "Sitio web:"
 msgid "Message:"
 msgstr "Mensaje:"
 
-#: includes/theme-comments.php:218
+#: includes/theme-comments.php:219
 msgid "Delete this comment"
 msgstr "Borrar este comentario"
 
-#: includes/theme-comments.php:220
+#: includes/theme-comments.php:221
 msgid "Mark this comment as spam"
 msgstr "Marcar este comentario como spam"
 
-#: includes/theme-comments.php:220
+#: includes/theme-comments.php:221
 msgid "Spam"
 msgstr "Spam"
 
-#: includes/theme-comments.php:247
+#: includes/theme-comments.php:248
 msgid "Fetch more comments"
 msgstr "Obtener más comentarios"
 
@@ -2762,99 +2738,99 @@ msgstr "Inicio"
 msgid "Read more"
 msgstr "Continuar leyendo"
 
-#: includes/theme-scripts.php:117
-#: includes/theme-scripts.php:121
+#: includes/theme-scripts.php:118
+#: includes/theme-scripts.php:122
 #, php-format
 msgid "Fetching %1$s more item from %2$s left ..."
 msgid_plural "Fetching %1$s more items from %2$s left ..."
 msgstr[0] "Obteniendo otro %1$s elemento de los %2$s que quedan..."
 msgstr[1] "Obteniendo otros %1$s elementos de los %2$s que quedan..."
 
-#: includes/theme-scripts.php:126
+#: includes/theme-scripts.php:127
 msgid "No more items to fetch"
 msgstr "No hay más elementos"
 
-#: includes/theme-scripts.php:130
-#: includes/theme-scripts.php:134
+#: includes/theme-scripts.php:131
+#: includes/theme-scripts.php:135
 #, php-format
 msgid "Fetching %1$s more top level comment from %2$s left ..."
 msgid_plural "Fetching %1$s more top level comments from %2$s left ..."
 msgstr[0] "Obteniendo otro %1$s comentario de nivel superior de los %2$s que quedan..."
 msgstr[1] "Obteniendo otros %1$s comentarios de nivel superior más de los %2$s que quedan..."
 
-#: includes/theme-scripts.php:139
+#: includes/theme-scripts.php:140
 msgid "No more comments to fetch"
 msgstr "No hay más comentarios"
 
-#: includes/theme-setup.php:113
+#: includes/theme-setup.php:111
 msgid "Header Menu"
 msgstr "Menú de cabecera"
 
-#: includes/theme-setup.php:114
+#: includes/theme-setup.php:112
 msgid "Secondary Menu"
 msgstr "Menú secundario"
 
-#: includes/theme-setup.php:115
+#: includes/theme-setup.php:113
 msgid "Footer Menu"
 msgstr "Menú de pie de página"
 
-#: includes/theme-setup.php:166
+#: includes/theme-setup.php:164
 msgid "Header image by Syahir Hakim"
 msgstr "Imagen de cabecera por Syahir Hakim"
 
-#: includes/theme-setup.php:170
+#: includes/theme-setup.php:168
 msgid "This is the default Graphene theme header image, cropped from image by Quantin Houyoux at sxc.hu"
 msgstr "Esta es la imagen de cabecera por defecto del tema Graphene, recortada a partir de una imagen de Quantin Houyoux en sxc.hu"
 
-#: includes/theme-setup.php:174
-#: includes/theme-setup.php:178
-#: includes/theme-setup.php:182
-#: includes/theme-setup.php:186
-#: includes/theme-setup.php:190
+#: includes/theme-setup.php:172
+#: includes/theme-setup.php:176
+#: includes/theme-setup.php:180
+#: includes/theme-setup.php:184
+#: includes/theme-setup.php:188
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "Imagen de cabecera recortada a partir de una imagen de Ilco en sxc.hu"
 
-#: includes/theme-setup.php:261
+#: includes/theme-setup.php:259
 msgid "The first sidebar widget area (will always be displayed on the right hand side)."
 msgstr "La primera área de widgets de la barra lateral (siempre se mostrará en el lado derecho)."
 
-#: includes/theme-setup.php:270
+#: includes/theme-setup.php:268
 msgid "The second sidebar widget area (will always be displayed on the left hand side)."
 msgstr "La segunda área de widgets de la barra lateral (siempre se mostrará en el lado izquierdo)."
 
-#: includes/theme-setup.php:277
+#: includes/theme-setup.php:275
 msgid "Footer Widget Area"
 msgstr "Pie de página"
 
-#: includes/theme-setup.php:279
+#: includes/theme-setup.php:277
 msgid "The footer widget area. Leave empty to disable. Set the number of columns to display at the theme's Display Options page."
 msgstr "Área de widgets del pie de página. Si deseas desactivarla, déjala vacía. Puedes establecer el número de columnas que deseas mostrar en la página de opciones de visualización."
 
-#: includes/theme-setup.php:296
+#: includes/theme-setup.php:294
 msgid "The first sidebar widget area that will only be displayed on the front page."
 msgstr "La primera área de widgets de la barra lateral, que solo se mostrará en la página principal."
 
-#: includes/theme-setup.php:305
+#: includes/theme-setup.php:303
 msgid "The second sidebar widget area that will only be displayed on the front page."
 msgstr "La segunda área de widgets de la barra lateral, que solo se mostrará en la página principal."
 
-#: includes/theme-setup.php:314
+#: includes/theme-setup.php:312
 msgid "Front Page Footer Widget Area"
 msgstr "Pie de la página de inicio"
 
-#: includes/theme-setup.php:316
+#: includes/theme-setup.php:314
 msgid "The footer widget area that will only be displayed on the front page. Leave empty to disable. Set the number of columns to display at the theme's Display Options page."
 msgstr "El área de widgets del pie de página, que solo se mostrará en la página de inicio. Si deseas desactivarla, déjala vacía. Desde la página de opciones del tema puedes establecer el número de columnas que deseas mostrar en esta área."
 
-#: includes/theme-setup.php:326
+#: includes/theme-setup.php:324
 msgid "Header Widget Area"
 msgstr "Cabecera"
 
-#: includes/theme-setup.php:328
+#: includes/theme-setup.php:326
 msgid "The header widget area."
 msgstr "El área de widgets de la cabecera"
 
-#: includes/theme-setup.php:345
+#: includes/theme-setup.php:343
 #, php-format
 msgid "Dynamically added widget area. This widget area is attached to the %s action hook."
 msgstr "Área de widgets añadida de forma dinámica. Esta área de widgets se adjuntará al \"action hook\" %s"
@@ -2883,6 +2859,82 @@ msgstr "Añadir un bloque con un mensaje importante"
 #: js/mce-l10n.php:15
 msgid "Add a pullquote"
 msgstr "Añadir una cita"
+
+#~ msgid "1 comment"
+#~ msgstr "Un comentario"
+
+#~ msgid ""
+#~ "Applicable only if <strong>Latest posts</strong> or <strong>Latest posts "
+#~ "by category</strong> is selected above."
+#~ msgstr ""
+#~ "Solo es aplicable si has seleccionado las opciones <strong>Entradas más "
+#~ "recientes</strong> o <strong>Entradas más recientes por categorías</"
+#~ "strong>"
+
+#~ msgid ""
+#~ "Applicable only if <strong>Latest posts by category</strong> is selected "
+#~ "above."
+#~ msgstr ""
+#~ "Solo es aplicable si has seleccionado la opción de <strong>Últimas "
+#~ "entradas por categorías</strong>"
+
+#~ msgid ""
+#~ "Applicable only if <strong>Posts and/or pages</strong> is selected above."
+#~ msgstr ""
+#~ "Solo es aplicable si has seleccionado la opción <strong>Entradas y/o "
+#~ "páginas</strong>"
+
+#~ msgid "The \"Normal website\" settings preset has been applied."
+#~ msgstr ""
+#~ "Los valores por defecto de la configuración \"Sitio web normal\" han sido "
+#~ "aplicados."
+
+#~ msgid "Graphene Usage Survey"
+#~ msgstr "Encuesta de uso del tema Graphene"
+
+#~ msgid ""
+#~ "Help us to get to know you better. Take the Graphene theme usage survey "
+#~ "now! Every opinion counts towards making the theme better. The survey is "
+#~ "very short, and is completely anonymous."
+#~ msgstr ""
+#~ "Ayúdanos a conocerte mejor. Dedica un rato a la encuesta sobre el tema "
+#~ "Graphene. Todas las opiniones contribuyen a mejorar el tema. La encuesta "
+#~ "es muy breve, y completamente anónima."
+
+#~ msgid "Take the survey"
+#~ msgstr "Realiza la encuesta."
+
+#~ msgid "Options Presets"
+#~ msgstr "Conjuntos de opciones predefinidas"
+
+#~ msgid ""
+#~ "The default settings for the theme is preconfigured for use in blogs. If "
+#~ "you're using this theme primarily for a normal website, or if you want to "
+#~ "reset the settings to their default values, you can apply one of the "
+#~ "available options presets below."
+#~ msgstr ""
+#~ "La configuración por defecto del tema ha sido predefinida para su uso en "
+#~ "blogs. Si vas a utilizar este tema en un sitio web que no tenga la "
+#~ "estructura de un blog, o si quieres devolver la configuración a sus "
+#~ "valores por defecto, puedes seleccionar una de los conjuntos de opciones "
+#~ "predefinidas que tienes a continuación."
+
+#~ msgid ""
+#~ "Note that you can still configure the individual settings after you apply "
+#~ "any preset."
+#~ msgstr ""
+#~ "Debes tener en cuenta que incluso después de seleccionar un conjunto de "
+#~ "opciones predefinidas, siempre podrás modificar los parámetros "
+#~ "individuales de configuración."
+
+#~ msgid "Select Options Preset"
+#~ msgstr "Seleccionar un conjunto de opciones predefinidas"
+
+#~ msgid "Normal website"
+#~ msgstr "Sitio web normal"
+
+#~ msgid "Apply Options Preset"
+#~ msgstr "Aplicar un conjunto de opciones predefinidas"
 
 #~ msgid "Use random header image"
 #~ msgstr "Utilizar una imagen de cabecera al azar"

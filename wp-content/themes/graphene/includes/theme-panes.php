@@ -33,7 +33,7 @@ function graphene_homepage_panes(){
 	}
 	
 	// args specific to latest posts by category
-	if ($graphene_settings['show_post_type'] == 'cat-latest-posts' ){
+	if ( $graphene_settings['show_post_type'] == 'cat-latest-posts' ){
 		$args_merge = array(
 							'category__in' => graphene_object_id( $graphene_settings['homepage_panes_cat'], 'category' ),
 							);

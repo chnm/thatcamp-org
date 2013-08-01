@@ -2,20 +2,18 @@
 /**
  * Run the database updater if necessary
 */
-if ( ! function_exists( 'graphene_db_init' ) ) :
-	function graphene_db_init(){
-		global $graphene_settings, $graphene_defaults;
-		
-		/* Run DB updater if needed */
-		include( $graphene_settings['template_dir'] . '/admin/db-updater.php' );
-		graphene_update_db();
-		$graphene_settings = get_option( 'graphene_settings', array() );
-		if ( $graphene_settings )
-			$graphene_settings = array_merge( $graphene_defaults, $graphene_settings );
-		else
-			$graphene_settings = $graphene_defaults;
-	}
-endif;
+function graphene_db_init(){
+	global $graphene_settings, $graphene_defaults;
+	
+	/* Run DB updater if needed */
+	include( $graphene_settings['template_dir'] . '/admin/db-updater.php' );
+	graphene_update_db();
+	$graphene_settings = get_option( 'graphene_settings', array() );
+	if ( $graphene_settings )
+		$graphene_settings = array_merge( $graphene_defaults, $graphene_settings );
+	else
+		$graphene_settings = $graphene_defaults;
+}
 add_action( 'init', 'graphene_db_init' );
 
 
@@ -124,7 +122,7 @@ function graphene_setup() {
 	/* Add support for custom header */
 	/* First define the constants for backward compat */
 	define( 'HEADER_TEXTCOLOR',    apply_filters( 'graphene_header_textcolor', '000000' ) );
-	define( 'HEADER_IMAGE',        apply_filters( 'graphene_header_image', '%s/images/headers/flow.jpg' ) );
+	define( 'HEADER_IMAGE',        apply_filters( 'graphene_default_header_image', '%s/images/headers/flow.jpg' ) );
 	define( 'HEADER_IMAGE_WIDTH',  apply_filters( 'graphene_header_image_width', graphene_grid_width( $graphene_settings['gutter_width'] * 2, 16 ) ) );
 	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'graphene_header_image_height', $graphene_settings['header_img_height'] ) );
 	define( 'NO_HEADER_TEXT', ! apply_filters( 'graphene_header_text', true ) );

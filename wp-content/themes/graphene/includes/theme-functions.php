@@ -296,11 +296,10 @@ add_filter( 'feed_link', 'graphene_feed_link', 1, 2 );
  * Displays a notice to logged in users if there is no widgets placed in the displayed sidebars
  */
 function graphene_sidebar_notice( $sidebar_name = '' ){
-	$html = '[warning]<p>';
+	$html = '<p>';
 	$html .= sprintf( __( 'You haven\'t placed any widget into this widget area. Go to %1$s and place some widgets in the widget area called %2$s.', 'graphene' ), '<em>' . __( 'WP Admin > Appearance > Widgets', 'graphene' ) . '</em>', '<strong>' . $sidebar_name . '</strong>' ) . '</p>';
 	$html .= '<p>' . __( "This notice will not be displayed to your site's visitors.", 'graphene' ) . '</p>';
-	$html .= '[/warning]';
-	echo do_shortcode( apply_filters( 'graphene_sidebar_notice', $html, $sidebar_name ) );
+	echo warning_block_shortcode_handler( array(), apply_filters( 'graphene_sidebar_notice', $html, $sidebar_name ) );
 }
 
 

@@ -43,7 +43,7 @@ add_action( 'wp_enqueue_scripts', 'graphene_enqueue_styles' );
 function graphene_register_scripts(){
 	global $graphene_settings;
 	
-	wp_register_script( 'graphene-jquery-tools', get_template_directory_uri() . '/js/jquery.tools.min.js', array( 'jquery' ), '', true);
+	wp_register_script( 'graphene-jquery-tools', get_template_directory_uri() . '/js/jquery.tools.min.js', array( 'jquery' ), '', false );
 	wp_register_script( 'graphene-admin-js', get_template_directory_uri() . '/admin/js/admin.js', array( 'jquery' ), '', false );
 	
 	// Register scripts for older versions of WordPress
@@ -98,6 +98,7 @@ function graphene_localize_scripts(){
 						
 						/* Comments */
 						'shouldShowComments'	=> graphene_should_show_comments(),
+						'commentsOrder'			=> get_option( 'default_comments_page' ),
 						
 						/* Slider */
 						'sliderDisable'			=> $graphene_settings['slider_disable'],

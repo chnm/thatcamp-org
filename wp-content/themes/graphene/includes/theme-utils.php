@@ -40,9 +40,11 @@ function graphene_rgb2hex( $c ){
 */
 function graphene_hex_addition( $hex, $num ){
 	$rgb = graphene_rgb2hex( $hex );
+	if ( ! $rgb ) return $hex;
+	
 	foreach ( $rgb as $key => $val ) {
 		$rgb[$key] += $num;
-		$rgb[$key] = ( $rgb[$key] < 0) ? 0 : $rgb[$key];
+		$rgb[$key] = ( $rgb[$key] < 0 ) ? 0 : $rgb[$key];
 	}
 	$hex = graphene_rgb2hex( implode( ',', $rgb ) );
 	

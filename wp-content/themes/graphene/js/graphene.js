@@ -25,6 +25,8 @@ jQuery(document).ready(function($) {
 	
 	/* Graphene Slider */
 	if ( ! grapheneJS.sliderDisable ) {
+		grapheneJS.sliderTransSpeed = parseInt(grapheneJS.sliderTransSpeed);
+		grapheneJS.sliderInterval = parseInt(grapheneJS.sliderInterval);
 		if ( grapheneJS.sliderAnimation == 'horizontal-slide' ) {
 			$("#slider_root")
 				.scrollable({
@@ -48,7 +50,7 @@ jQuery(document).ready(function($) {
 			if ( grapheneJS.sliderAnimation == 'vertical-slide' ) 	grapheneSliderEffect = 'slide';
 			else if ( grapheneJS.sliderAnimation == 'fade' )		grapheneSliderEffect = 'fade';
 			else if ( grapheneJS.sliderAnimation == 'none' )		grapheneSliderEffect = 'default';
-		
+			
 			$( ".slider_nav" )
 					.jtTabs( ".slider_items > .slider_post", {
 						effect: grapheneSliderEffect,
@@ -129,31 +131,51 @@ jQuery(document).ready(function($) {
 	/* Infinite scroll for comments */
 	if ( grapheneJS.infScrollComments && grapheneJS.isSingular ) {
 		window.grapheneInfScrollCommentsLeft = grapheneJS.totalComments - grapheneJS.commentsPerPage;
-		$('#comments_list').infinitescroll({
-			navSelector : ".comment-nav",
-			nextSelector: ".comment-nav .next",
-			itemSelector: "#comments_list > .comment",
-			loading		: {
-							msgText		: grapheneGetInfScrollMessage('comment',grapheneJS.commentsPerPage,window.grapheneInfScrollCommentsLeft),
-							finishedMsg	: grapheneJS.infScrollCommentsFinishedMsg,
-							img			: grapheneJS.templateUrl + '/images/inf-scroll-loader.gif',
-							speed		: 400
-						},
-			animate		: true
+		var infScrollCommentsOptions = {
+				navSelector : ".comment-nav",
+				nextSelector: ".comment-nav .next",
+				itemSelector: "#comments_list > .comment",
+				debug:true,
+				loading		: {
+								msgText		: grapheneGetInfScrollMessage('comment',grapheneJS.commentsPerPage,window.grapheneInfScrollCommentsLeft),
+								finishedMsg	: grapheneJS.infScrollCommentsFinishedMsg,
+								img			: grapheneJS.templateUrl + '/images/inf-scroll-loader.gif',
+								speed		: 400
+							},
+				animate		: true,
+			};
+		if ( grapheneJS.commentsOrder == 'newest' ) {
+			infScrollCommentsOptions.direction = 'reverse';
+			infScrollCommentsOptions.nextSelector = ".comment-nav .prev";
 			
-		}, function(newElems){
-			window.grapheneInfScrollCommentsLeft -= parseInt(newElems.length);
-			if ( window.grapheneInfScrollCommentsLeft <= 0 ) {
-				$('.fetch-more').html(grapheneJS.infScrollCommentsFinishedMsg).addClass('fetch-more-disabled').removeAttr('href');
-					setTimeout(function(){
-						$('#infscr-loading').remove();
-						$('.entries-wrapper').append('<p id="infscr-loading-finished">' + grapheneJS.infScrollCommentsFinishedMsg + '</p>');
-					},400);
-				$('#comments_list').infinitescroll('destroy');
-			} else {
-				setTimeout(function(){$('#infscr-loading div').html(grapheneGetInfScrollMessage('comment',grapheneJS.commentsPerPage,window.grapheneInfScrollCommentsLeft))},400);
+			var currentPage = parseInt( $(infScrollCommentsOptions.navSelector+' .current').html() );
+			infScrollCommentsOptions.state = { currPage: currentPage };
+			var nextURI = $(infScrollCommentsOptions.nextSelector).attr('href');
+			var nextIndex = (currentPage-1).toString();
+			
+			var suffix = nextURI.slice(-(nextURI.length - nextURI.indexOf(nextIndex)-nextIndex.length));
+			var pathURI = nextURI.replace(nextIndex,'').replace(suffix,'');
+
+			infScrollCommentsOptions.pathParse = function(path,nextPage){
+													path = [pathURI,suffix];
+													return path;
+												};
+		}
+		$('#comments_list').infinitescroll(infScrollCommentsOptions,
+			function(newElems){
+				window.grapheneInfScrollCommentsLeft -= parseInt(newElems.length);
+				if ( window.grapheneInfScrollCommentsLeft <= 0 ) {
+					$('.fetch-more').html(grapheneJS.infScrollCommentsFinishedMsg).addClass('fetch-more-disabled').removeAttr('href');
+						setTimeout(function(){
+							$('#infscr-loading').remove();
+							$('.entries-wrapper').append('<p id="infscr-loading-finished">' + grapheneJS.infScrollCommentsFinishedMsg + '</p>');
+						},400);
+					$('#comments_list').infinitescroll('destroy');
+				} else {
+					setTimeout(function(){$('#infscr-loading div').html(grapheneGetInfScrollMessage('comment',grapheneJS.commentsPerPage,window.grapheneInfScrollCommentsLeft))},400);
+				}
 			}
-		});
+		);
 		$('.comment-nav').css('display','none');
 		
 		$('#comments_list').infinitescroll('pause');

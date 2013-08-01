@@ -9,6 +9,7 @@ function graphene_options_advanced() {
     <div class="postbox">
         <div class="head-wrap">
             <div title="Click to toggle" class="handlediv"><br /></div>
+            <?php graphene_docs_link( 'Preview_option' ); ?>
             <h3 class="hndle"><?php _e( 'Preview', 'graphene' ); ?></h3>
         </div>
         <div class="panel-wrap inside">
@@ -30,6 +31,7 @@ function graphene_options_advanced() {
     <div class="postbox">
         <div class="head-wrap">
             <div title="Click to toggle" class="handlediv"><br /></div>
+            <?php graphene_docs_link( 'Custom_Head_Tags' ); ?>
             <h3 class="hndle"><?php esc_html_e( 'Custom <head> Tags', 'graphene' ); ?></h3>
         </div>
         <div class="panel-wrap inside">
@@ -59,6 +61,7 @@ function graphene_options_advanced() {
     <div class="postbox">
         <div class="head-wrap">
             <div title="Click to toggle" class="handlediv"><br /></div>
+            <?php graphene_docs_link( 'Action_Hooks_Widget_Areas' ); ?>
             <h3 class="hndle"><?php _e( 'Action Hooks Widget Areas', 'graphene' ); ?></h3>
         </div>
         <div class="panel-wrap inside">
@@ -93,7 +96,7 @@ function graphene_options_advanced() {
     
     <?php /* Move generated CSS */ ?>
     <div class="postbox">
-        <div class="head-wrap">
+        <div class="head-wrap nodocs">
             <div title="Click to toggle" class="handlediv"><br /></div>
             <h3 class="hndle"><?php _e( 'Move generated CSS', 'graphene' ); ?></h3>
         </div>

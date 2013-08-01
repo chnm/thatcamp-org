@@ -110,6 +110,7 @@ if ( ! function_exists( 'graphene_admin_options_style' ) ) :
 		// wp_enqueue_style( 'wp-pointer' );
 		
 		wp_enqueue_style( 'graphene-codemirror', get_template_directory_uri() . '/js/codemirror/codemirror.css', array(), '', 'all' );
+		wp_deregister_style( 'chosen' );
 		wp_enqueue_style( 'chosen', get_template_directory_uri() . '/js/chosen/chosen.css', array(), '', 'all' );
 		
 		if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'display' )
@@ -139,6 +140,7 @@ function graphene_admin_scripts() {
     // wp_enqueue_script( 'wp-pointer' );
 	
 	wp_enqueue_script( 'graphene-codemirror', get_template_directory_uri() . '/js/codemirror/codemirror.js', array(), '', false );
+	wp_deregister_script( 'chosen' );
 	wp_enqueue_script( 'chosen', get_template_directory_uri() . '/js/chosen/chosen.jquery.min.js', array( 'jquery' ), '', false );
 	
 	if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'display' )
@@ -262,12 +264,15 @@ function graphene_page_template_visualizer() {
         $( '#page_template' ).change(function(){
            update_page_template();           
         });
-        // $( '#page_template' ).after( '<p><span><?php echo $template_not_found;?></span><img id="page_template_img" alt="none" /></p>' );
-		$( '#page_template' ).after( '<p><img id="page_template_img" alt="none" /></p>' );
+		$( '#page_template' ).after( '<p><img id="page_template_img" alt="" /></p>' );
         
         function update_page_template() {
             var preview_img = $( '#page_template' ).val().replace(/.php$/, '.png' );
-            //if (preview_img == 'default' ){ preview_img = '<?php echo $default_template;?>'; }            
+			<?php if ( is_rtl() ) : ?>
+				if ( preview_img.indexOf('left') > -1 ) preview_img = preview_img.replace('left','right');
+				else if ( preview_img.indexOf('right') > -1 ) preview_img = preview_img.replace('right','left');
+			<?php endif; ?>
+            if (preview_img == 'default' ) $( '#page_template_img' ).removeAttr('src');
             $( '#page_template_img' ).attr( 'src', '<?php echo $preview_img_path ?>'+preview_img);
         }
         
@@ -314,3 +319,21 @@ function graphene_editor_width( $mce_css ){
 	return $mce_css;
 }
 add_filter( 'mce_css', 'graphene_editor_width' );
+
+
+if ( ! function_exists( 'graphene_docs_link' ) ) :
+/**
+ * Display a link to the documentation page
+ *
+ * @package Graphene
+ * @since 1.9.1
+ */
+function graphene_docs_link( $suffix = '' ){
+	$docs_uri = 'http://docs.graphene-theme.com/' . $suffix;
+	?>
+    	<a href="<?php echo $docs_uri; ?>" class="graphene-docs-link" title="<?php esc_attr_e( 'Learn more about this feature set', 'graphene' ); ?>" target="_blank">
+        	<img src="<?php echo get_template_directory_uri(); ?>/admin/images/ico-info.png" alt="<?php esc_attr_e( 'Documentation', 'graphene' ); ?>" width="16" height="16" />
+        </a>
+    <?php
+}
+endif;
