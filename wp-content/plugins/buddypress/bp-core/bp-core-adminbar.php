@@ -17,7 +17,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @since BuddyPress 1.6
  * @global WP_Admin_Bar $wp_admin_bar
- * @return If doing ajax
  */
 function bp_admin_bar_my_account_root() {
 	global $wp_admin_bar;
@@ -62,6 +61,7 @@ add_action( 'admin_bar_menu', 'bp_admin_bar_my_account_root', 100 );
  * @uses add_action() To hook 'bp_core_admin_bar' to 'admin_footer'
  */
 function bp_core_load_admin_bar() {
+
 	// Show the Toolbar for logged out users
 	if ( ! is_user_logged_in() && (int) bp_get_option( 'hide-loggedout-adminbar' ) != 1 ) {
 		show_admin_bar( true );

@@ -150,6 +150,7 @@ class BP_Activity_Template {
 			'in'               => false,
 			'filter'           => false,
 			'search_terms'     => false,
+			'meta_query'       => false,
 			'display_comments' => 'threaded',
 			'show_hidden'      => false,
 			'spam'             => 'ham_only',
@@ -172,7 +173,7 @@ class BP_Activity_Template {
 
 		// Fetch all activity items
 		else
-			$this->activities = bp_activity_get( array( 'display_comments' => $display_comments, 'max' => $max, 'per_page' => $this->pag_num, 'page' => $this->pag_page, 'sort' => $sort, 'search_terms' => $search_terms, 'filter' => $filter, 'show_hidden' => $show_hidden, 'exclude' => $exclude, 'in' => $in, 'spam' => $spam ) );
+			$this->activities = bp_activity_get( array( 'display_comments' => $display_comments, 'max' => $max, 'per_page' => $this->pag_num, 'page' => $this->pag_page, 'sort' => $sort, 'search_terms' => $search_terms, 'meta_query' => $meta_query, 'filter' => $filter, 'show_hidden' => $show_hidden, 'exclude' => $exclude, 'in' => $in, 'spam' => $spam ) );
 
 		if ( !$max || $max >= (int) $this->activities['total'] )
 			$this->total_activity_count = (int) $this->activities['total'];
@@ -361,6 +362,8 @@ function bp_has_activities( $args = '' ) {
 		'primary_id'       => $primary_id,  // object ID to filter on e.g. a group_id or forum_id or blog_id etc.
 		'secondary_id'     => false,        // secondary object ID to filter on e.g. a post_id
 
+		'meta_query'       => false,        // filter on activity meta. See WP_Meta_Query for format
+
 		// Searching
 		'search_terms'     => false         // specify terms to search on
 	);
@@ -410,10 +413,16 @@ function bp_has_activities( $args = '' ) {
 					if ( empty( $favs ) )
 						return false;
 
-					$include          = implode( ',', (array) $favs );
+					$in = implode( ',', (array) $favs );
 					$display_comments = true;
+					$user_id = 0;
 					break;
 				case 'mentions':
+
+					// Are mentions disabled?
+					if ( ! bp_activity_do_mentions() ) {
+						return false;
+					}
 
 					// Start search at @ symbol and stop search at closing tag delimiter.
 					$search_terms     = '@' . bp_core_get_username( $user_id ) . '<';
@@ -453,6 +462,7 @@ function bp_has_activities( $args = '' ) {
 		'in'               => $in,
 		'filter'           => $filter,
 		'search_terms'     => $search_terms,
+		'meta_query'       => $meta_query,
 		'display_comments' => $display_comments,
 		'show_hidden'      => $show_hidden,
 		'spam'             => $spam
@@ -672,7 +682,7 @@ function bp_activities_no_activity() {
 	 * @global string $bp_activity_no_activity
 	 * @uses apply_filters() To call the 'bp_get_activities_no_activity' hook
 	 *
-	 * @return unknown_type
+	 * @return string
 	 */
 	function bp_get_activities_no_activity() {
 		global $bp_activity_no_activity;
@@ -1073,14 +1083,14 @@ function bp_activity_secondary_avatar( $args = '' ) {
 			case 'groups' :
 				$object  = 'group';
 				$item_id = $activities_template->activity->item_id;
+				$link    = '';
+				$name    = '';
 
 				// Only if groups is active
 				if ( bp_is_active( 'groups' ) ) {
 					$group = groups_get_group( array( 'group_id' => $item_id ) );
 					$link  = bp_get_group_permalink( $group );
 					$name  = $group->name;
-				} else {
-					$name = '';
 				}
 
 				if ( empty( $alt ) ) {
@@ -2020,6 +2030,34 @@ function bp_activity_thread_permalink() {
 	}
 
 /**
+ * Echoes the activity comment permalink
+ *
+ * @since BuddyPress (1.8)
+ *
+ * @uses bp_get_activity_permalink_id()
+ */
+function bp_activity_comment_permalink() {
+	echo bp_get_activity_comment_permalink();
+}
+	/**
+	 * Gets the activity comment permalink
+	 *
+	 * @since BuddyPress (1.8)
+	 *
+	 * @uses bp_activity_get_permalink()
+	 * @uses apply_filters() To call the 'bp_get_activity_comment_permalink' hook
+	 *
+	 * @return string $link The activity comment permalink
+	 */
+	function bp_get_activity_comment_permalink() {
+		global $activities_template;
+
+		$link = bp_activity_get_permalink( $activities_template->activity->id, $activities_template->activity ) . '#acomment-' . $activities_template->activity->current_comment->id;
+
+		return apply_filters( 'bp_get_activity_comment_permalink', $link );
+	}
+
+/**
  * Echoes the activity favorite link
  *
  * @since BuddyPress (1.2)
@@ -2395,6 +2433,10 @@ function bp_total_favorite_count_for_user( $user_id = 0 ) {
 	 * @return int The total favorite count for a specified user
 	 */
 	function bp_get_total_favorite_count_for_user( $user_id = 0 ) {
+		if ( ! $user_id ) {
+			$user_id = bp_displayed_user_id();
+		}
+
 		return apply_filters( 'bp_get_total_favorite_count_for_user', bp_activity_total_favorites_for_user( $user_id ) );
 	}
 
@@ -2408,7 +2450,7 @@ function bp_total_favorite_count_for_user( $user_id = 0 ) {
  * @uses bp_get_total_favorite_count_for_user()
  */
 function bp_total_mention_count_for_user( $user_id = 0 ) {
-	echo bp_get_total_favorite_count_for_user( $user_id );
+	echo bp_get_total_mention_count_for_user( $user_id );
 }
 
 	/**
@@ -2422,6 +2464,10 @@ function bp_total_mention_count_for_user( $user_id = 0 ) {
 	 * @return int The total mention count for a specified user
 	 */
 	function bp_get_total_mention_count_for_user( $user_id = 0 ) {
+		if ( ! $user_id ) {
+			$user_id = bp_displayed_user_id();
+		}
+
 		return apply_filters( 'bp_get_total_mention_count_for_user', bp_get_user_meta( $user_id, 'bp_new_mention_count', true ) );
 	}
 
@@ -2458,7 +2504,7 @@ function bp_send_public_message_link() {
 		if ( bp_is_my_profile() || !is_user_logged_in() )
 			return false;
 
-		return apply_filters( 'bp_get_send_public_message_link', wp_nonce_url( bp_loggedin_user_domain() . bp_get_activity_slug() . '/?r=' . bp_core_get_username( bp_displayed_user_id(), bp_get_displayed_user_username(), $bp->displayed_user->userdata->user_login ) ) );
+		return apply_filters( 'bp_get_send_public_message_link', wp_nonce_url( bp_get_activity_directory_permalink() . '?r=' . bp_core_get_username( bp_displayed_user_id(), bp_get_displayed_user_username(), $bp->displayed_user->userdata->user_login ) ) );
 	}
 
 /**
@@ -2757,7 +2803,7 @@ function bp_activities_member_rss_link() { echo bp_get_member_activity_feed_link
 			$link = bp_displayed_user_domain() . bp_get_activity_slug() . '/' . bp_get_groups_slug() . '/feed/';
 		elseif ( 'favorites' == bp_current_action() )
 			$link = bp_displayed_user_domain() . bp_get_activity_slug() . '/favorites/feed/';
-		elseif ( 'mentions' == bp_current_action() )
+		elseif ( 'mentions' == bp_current_action() && bp_activity_do_mentions() )
 			$link = bp_displayed_user_domain() . bp_get_activity_slug() . '/mentions/feed/';
 		else
 			$link = '';

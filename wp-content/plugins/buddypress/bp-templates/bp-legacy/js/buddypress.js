@@ -21,24 +21,26 @@ jq(document).ready( function() {
 	bp_init_objects( objects );
 
 	/* @mention Compose Scrolling */
-	if ( jq.query.get('r') && jq('#whats-new').length ) {
+	var $whats_new = jq('#whats-new');
+	if ( jq.query.get('r') && $whats_new.length ) {
 		jq('#whats-new-options').animate({
 			height:'40px'
 		});
 		jq("#whats-new-form textarea").animate({
 			height:'50px'
 		});
-		jq.scrollTo( jq('#whats-new'), 500, {
+		jq.scrollTo( $whats_new, 500, {
 			offset:-125,
 			easing:'easeOutQuad'
 		} );
-		jq('#whats-new').focus();
+		var whats_new_content = $whats_new.val();
+		$whats_new.val('').focus().val(whats_new_content);
 	}
 
 	/**** Activity Posting ********************************************************/
 
 	/* Textarea focus */
-	jq('#whats-new').focus( function(){
+	$whats_new.focus( function(){
 		jq("#whats-new-options").animate({
 			height:'40px'
 		});
@@ -46,12 +48,31 @@ jq(document).ready( function() {
 			height:'50px'
 		});
 		jq("#aw-whats-new-submit").prop("disabled", false);
+		
+		var $whats_new_form = jq("form#whats-new-form");
+		if ( $whats_new_form.hasClass("submitted") ) {
+			$whats_new_form.removeClass("submitted");	
+		}
+	});
+
+	/* On blur, shrink if it's empty */
+	$whats_new.blur( function(){
+		if (!this.value.match(/\S+/)) {
+			this.value = "";
+			jq("#whats-new-options").animate({
+				height:'40px'
+			});
+			jq("form#whats-new-form textarea").animate({
+				height:'20px'
+			});
+			jq("#aw-whats-new-submit").prop("disabled", true);
+		}
 	});
 
 	/* New posts */
 	jq("#aw-whats-new-submit").on( 'click', function() {
 		var button = jq(this);
-		var form = button.parent().parent().parent().parent();
+		var form = button.closest("form#whats-new-form");
 
 		form.children().each( function() {
 			if ( jq.nodeName(this, "textarea") || jq.nodeName(this, "input") )
@@ -62,6 +83,7 @@ jq(document).ready( function() {
 		jq('div.error').remove();
 		button.addClass('loading');
 		button.prop('disabled', true);
+		form.addClass("submitted");
 
 		/* Default POST values */
 		var object = '';
@@ -75,7 +97,7 @@ jq(document).ready( function() {
 
 		jq.post( ajaxurl, {
 			action: 'post_update',
-			'cookie': encodeURIComponent(document.cookie),
+			'cookie': bp_get_cookies(),
 			'_wpnonce_post_update': jq("#_wpnonce_post_update").val(),
 			'content': content,
 			'object': object,
@@ -102,7 +124,7 @@ jq(document).ready( function() {
 				}
 
 				jq("#activity-stream").prepend(response);
-				jq("#activity-stream li:first").addClass('new-update');
+				jq("#activity-stream li:first").addClass('new-update just-posted');
 
 				if ( 0 != jq("#latest-update").length ) {
 					var l = jq("#activity-stream li.new-update .activity-content .activity-inner p").html();
@@ -195,7 +217,7 @@ jq(document).ready( function() {
 
 			jq.post( ajaxurl, {
 				action: 'activity_mark_' + type,
-				'cookie': encodeURIComponent(document.cookie),
+				'cookie': bp_get_cookies(),
 				'id': parent_id
 			},
 			function(response) {
@@ -252,7 +274,7 @@ jq(document).ready( function() {
 
 			jq.post( ajaxurl, {
 				action: 'delete_activity',
-				'cookie': encodeURIComponent(document.cookie),
+				'cookie': bp_get_cookies(),
 				'id': id,
 				'_wpnonce': nonce
 			},
@@ -304,10 +326,17 @@ jq(document).ready( function() {
 
 			var oldest_page = ( jq.cookie('bp-activity-oldestpage') * 1 ) + 1;
 
+			var just_posted = [];
+			
+			jq('.activity-list li.just-posted').each( function(){
+				just_posted.push( jq(this).attr('id').replace( 'activity-','' ) );
+			});
+
 			jq.post( ajaxurl, {
 				action: 'activity_get_older_updates',
-				'cookie': encodeURIComponent(document.cookie),
-				'page': oldest_page
+				'cookie': bp_get_cookies(),
+				'page': oldest_page,
+				'exclude_just_posted': just_posted.join(',')
 			},
 			function(response)
 			{
@@ -422,7 +451,7 @@ jq(document).ready( function() {
 
 			var ajaxdata = {
 				action: 'new_activity_comment',
-				'cookie': encodeURIComponent(document.cookie),
+				'cookie': bp_get_cookies(),
 				'_wpnonce_new_activity_comment': jq("#_wpnonce_new_activity_comment").val(),
 				'comment_id': comment_id,
 				'form_id': form_id[2],
@@ -443,26 +472,34 @@ jq(document).ready( function() {
 				if ( response[0] + response[1] == '-1' ) {
 					form.append( jq( response.substr( 2, response.length ) ).hide().fadeIn( 200 ) );
 				} else {
+					var activity_comments = form.parent();
 					form.fadeOut( 200, function() {
-						if ( 0 == form.parent().children('ul').length ) {
-							if ( form.parent().hasClass('activity-comments') ) {
-								form.parent().prepend('<ul></ul>');
+						if ( 0 == activity_comments.children('ul').length ) {
+							if ( activity_comments.hasClass('activity-comments') ) {
+								activity_comments.prepend('<ul></ul>');
 							} else {
-								form.parent().append('<ul></ul>');
+								activity_comments.append('<ul></ul>');
 							}
 						}
 
 						/* Preceeding whitespace breaks output with jQuery 1.9.0 */
 						var the_comment = jq.trim( response );
 
-						form.parent().children('ul').append( jq( the_comment ).hide().fadeIn( 200 ) );
+						activity_comments.children('ul').append( jq( the_comment ).hide().fadeIn( 200 ) );
 						form.children('textarea').val('');
-						form.parent().parent().addClass('has-comments');
+						activity_comments.parent().addClass('has-comments');
 					} );
 					jq( '#' + form.attr('id') + ' textarea').val('');
 
 					/* Increase the "Reply (X)" button count */
 					jq('#activity-' + form_id[2] + ' a.acomment-reply span').html( Number( jq('#activity-' + form_id[2] + ' a.acomment-reply span').html() ) + 1 );
+
+					// Increment the 'Show all x comments' string, if present
+					var show_all_a = activity_comments.find('.show-all').find('a');
+					if ( show_all_a ) {
+						var new_count = jq('li#activity-' + form_id[2] + ' a.acomment-reply span').html();
+						show_all_a.html( BP_DTheme.show_x_comments.replace( '%d', new_count ) );
+					}
 				}
 
 				jq(target).prop("disabled", false);
@@ -495,7 +532,7 @@ jq(document).ready( function() {
 
 			jq.post( ajaxurl, {
 				action: 'delete_activity_comment',
-				'cookie': encodeURIComponent(document.cookie),
+				'cookie': bp_get_cookies(),
 				'_wpnonce': nonce,
 				'id': comment_id
 			},
@@ -510,12 +547,20 @@ jq(document).ready( function() {
 						if ( !jq(this).is(':hidden') )
 							child_count++;
 					});
-					comment_li.fadeOut(200);
+					comment_li.fadeOut(200, function() {
+						comment_li.remove();
+					});
 
 					/* Decrease the "Reply (X)" button count */
 					var count_span = jq('#' + comment_li.parents('#activity-stream > li').attr('id') + ' a.acomment-reply span');
 					var new_count = count_span.html() - ( 1 + child_count );
 					count_span.html(new_count);
+					
+					// Change the 'Show all x comments' text
+					var show_all_a = comment_li.siblings('.show-all').find('a');
+					if ( show_all_a ) {
+						show_all_a.html( BP_DTheme.show_x_comments.replace( '%d', new_count ) );
+					}
 
 					/* If that was the last comment for the item, remove the has-comments class to clean up the styling */
 					if ( 0 == new_count ) {
@@ -772,7 +817,7 @@ jq(document).ready( function() {
 		jq.post( ajaxurl, {
 			action: 'groups_invite_user',
 			'friend_action': friend_action,
-			'cookie': encodeURIComponent(document.cookie),
+			'cookie': bp_get_cookies(),
 			'_wpnonce': jq("#_wpnonce_invite_uninvite_user").val(),
 			'friend_id': friend_id,
 			'group_id': jq("#group_id").val()
@@ -805,7 +850,7 @@ jq(document).ready( function() {
 		jq.post( ajaxurl, {
 			action: 'groups_invite_user',
 			'friend_action': 'uninvite',
-			'cookie': encodeURIComponent(document.cookie),
+			'cookie': bp_get_cookies(),
 			'_wpnonce': jq("#_wpnonce_invite_uninvite_user").val(),
 			'friend_id': friend_id,
 			'group_id': jq("#group_id").val()
@@ -834,14 +879,29 @@ jq(document).ready( function() {
 
 	jq('.field-visibility-settings-close').on( 'click', function() {
 		var settings_div = jq(this).parent();
+		var vis_setting_text = settings_div.find('input:checked').parent().text();
 
-		jq(settings_div).slideUp( 400, function(){
-			jq(settings_div).siblings('.field-visibility-settings-toggle').fadeIn(800);
-		});
+		settings_div.slideUp( 400, function() {
+			settings_div.siblings('.field-visibility-settings-toggle').fadeIn(800);
+			settings_div.siblings('.field-visibility-settings-toggle').children('.current-visibility-level').html(vis_setting_text);
+		} );
 
 		return false;
 	} );
 
+	jq("#profile-edit-form input:not(:submit), #profile-edit-form textarea, #profile-edit-form select, #signup_form input:not(:submit), #signup_form textarea, #signup_form select").change( function() {
+		var shouldconfirm = true;
+
+		jq('#profile-edit-form input:submit, #signup_form input:submit').on( 'click', function() {
+			shouldconfirm = false;
+		});
+		
+		window.onbeforeunload = function(e) {
+			if ( shouldconfirm ) {
+				return BP_DTheme.unsaved_changes;
+			}
+		};
+	});
 
 	/** Friendship Requests **************************************/
 
@@ -872,7 +932,7 @@ jq(document).ready( function() {
 
 		jq.post( ajaxurl, {
 			action: action,
-			'cookie': encodeURIComponent(document.cookie),
+			'cookie': bp_get_cookies(),
 			'id': id,
 			'_wpnonce': nonce
 		},
@@ -914,7 +974,7 @@ jq(document).ready( function() {
 
 		jq.post( ajaxurl, {
 			action: 'addremove_friend',
-			'cookie': encodeURIComponent(document.cookie),
+			'cookie': bp_get_cookies(),
 			'fid': fid,
 			'_wpnonce': nonce
 		},
@@ -963,7 +1023,7 @@ jq(document).ready( function() {
 
 		jq.post( ajaxurl, {
 			action: 'joinleave_group',
-			'cookie': encodeURIComponent(document.cookie),
+			'cookie': bp_get_cookies(),
 			'gid': gid,
 			'_wpnonce': nonce
 		},
@@ -986,7 +1046,7 @@ jq(document).ready( function() {
 
 	/** Button disabling ************************************************/
 
-	jq('.pending').click(function() {
+	jq('#buddypress').on( 'click', '.pending', function() {
 		return false;
 	});
 
@@ -1020,7 +1080,7 @@ jq(document).ready( function() {
 
 			jq.post( ajaxurl, {
 				action: 'messages_send_reply',
-				'cookie': encodeURIComponent(document.cookie),
+				'cookie': bp_get_cookies(),
 				'_wpnonce': jq("#send_message_nonce").val(),
 
 				'content': jq("#message_content").val(),
@@ -1306,7 +1366,7 @@ function bp_filter_request( object, filter, scope, target, search_terms, page, e
 
 	bp_ajax_request = jq.post( ajaxurl, {
 		action: object + '_filter',
-		'cookie': encodeURIComponent(document.cookie),
+		'cookie': bp_get_cookies(),
 		'object': object,
 		'filter': filter,
 		'search_terms': search_terms,
@@ -1354,7 +1414,7 @@ function bp_activity_request(scope, filter) {
 
 	bp_ajax_request = jq.post( ajaxurl, {
 		action: 'activity_widget_filter',
-		'cookie': encodeURIComponent(document.cookie),
+		'cookie': bp_get_cookies(),
 		'_wpnonce_activity_filter': jq("#_wpnonce_activity_filter").val(),
 		'scope': scope,
 		'filter': filter
@@ -1404,8 +1464,8 @@ function bp_legacy_theme_hide_comments() {
 				jq(this).addClass('hidden');
 				jq(this).toggle();
 
-				if ( !i )
-					jq(this).before( '<li class="show-all"><a href="#' + parent_li.attr('id') + '/show-all/" title="' + BP_DTheme.show_all_comments + '">' + BP_DTheme.show_all + ' ' + comment_count + ' ' + BP_DTheme.comments + '</a></li>' );
+				if ( !i ) 
+					jq(this).before( '<li class="show-all"><a href="#' + parent_li.attr('id') + '/show-all/" title="' + BP_DTheme.show_all_comments + '">' + BP_DTheme.show_x_comments.replace( '%d', comment_count ) + '</a></li>' );
 			}
 		});
 
@@ -1446,6 +1506,31 @@ function clear(container) {
 	}
 
 	return;
+}
+
+/* Returns a querystring of BP cookies (cookies beginning with 'bp-') */
+function bp_get_cookies() {
+	// get all cookies and split into an array
+	var allCookies   = document.cookie.split(";");
+
+	var bpCookies    = {};
+	var cookiePrefix = 'bp-';
+
+	// loop through cookies
+	for (var i = 0; i < allCookies.length; i++) {
+		var cookie    = allCookies[i];
+		var delimiter = cookie.indexOf("=");
+		var name      = unescape( cookie.slice(0, delimiter) ).trim();
+		var value     = unescape( cookie.slice(delimiter + 1) );
+
+		// if BP cookie, store it
+		if ( name.indexOf(cookiePrefix) == 0 ) {
+			bpCookies[name] = value;
+		}
+	}
+
+	// returns BP cookies as querystring
+	return encodeURIComponent( jq.param(bpCookies) );
 }
 
 /* ScrollTo plugin - just inline and minified */

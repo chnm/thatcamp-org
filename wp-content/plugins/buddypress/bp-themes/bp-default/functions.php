@@ -119,7 +119,7 @@ function bp_dtheme_setup() {
 			add_action( 'bp_member_header_actions',    'bp_add_friend_button',           5 );
 
 		// Activity button
-		if ( bp_is_active( 'activity' ) )
+		if ( bp_is_active( 'activity' ) && bp_activity_do_mentions() )
 			add_action( 'bp_member_header_actions',    'bp_send_public_message_button',  20 );
 
 		// Messages button
@@ -159,12 +159,14 @@ function bp_dtheme_enqueue_scripts() {
 		'accepted'          => __( 'Accepted', 'buddypress' ),
 		'rejected'          => __( 'Rejected', 'buddypress' ),
 		'show_all_comments' => __( 'Show all comments for this thread', 'buddypress' ),
+		'show_x_comments'   => __( 'Show all %d comments', 'buddypress' ),
 		'show_all'          => __( 'Show all', 'buddypress' ),
 		'comments'          => __( 'comments', 'buddypress' ),
 		'close'             => __( 'Close', 'buddypress' ),
 		'view'              => __( 'View', 'buddypress' ),
 		'mark_as_fav'	    => __( 'Favorite', 'buddypress' ),
-		'remove_fav'	    => __( 'Remove Favorite', 'buddypress' )
+		'remove_fav'	    => __( 'Remove Favorite', 'buddypress' ),
+		'unsaved_changes'   => __( 'Your profile has unsaved changes. If you leave the page, the changes will be lost.', 'buddypress' ),
 	);
 	wp_localize_script( 'dtheme-ajax-js', 'BP_DTheme', $params );
 
@@ -519,7 +521,7 @@ if ( !function_exists( 'bp_dtheme_page_on_front' ) ) :
 /**
  * Return the ID of a page set as the home page.
  *
- * @return false|int ID of page set as the home page
+ * @return int|bool ID of page set as the home page
  * @since BuddyPress (1.2)
  */
 function bp_dtheme_page_on_front() {
@@ -717,7 +719,7 @@ function bp_dtheme_sidebar_login_redirect_to() {
 	$redirect_to = !empty( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : '';
 	$redirect_to = apply_filters( 'bp_no_access_redirect', $redirect_to ); ?>
 
-	<input type="hidden" name="redirect_to" value="<?php echo esc_attr( $redirect_to ); ?>" />
+	<input type="hidden" name="redirect_to" value="<?php echo esc_url( $redirect_to ); ?>" />
 
 <?php
 }

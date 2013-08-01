@@ -17,7 +17,7 @@ class BP_Core_Members_Widget extends WP_Widget {
 	function __construct() {
 		$widget_ops = array(
 			'description' => __( 'A dynamic list of recently active, popular, and newest members', 'buddypress' ),
-			'classname' => 'widget_bp_core_members_widget buddypress',
+			'classname' => 'widget_bp_core_members_widget buddypress widget',
 		);
 		parent::__construct( false, $name = _x( '(BuddyPress) Members', 'widget name', 'buddypress' ), $widget_ops );
 
@@ -34,9 +34,11 @@ class BP_Core_Members_Widget extends WP_Widget {
 		if ( !$instance['member_default'] )
 			$instance['member_default'] = 'active';
 
+		$title = apply_filters( 'widget_title', $instance['title'] );
+
 		echo $before_widget;
 
-		$title = $instance['link_title'] ? '<a href="' . trailingslashit( bp_get_root_domain() . '/' . bp_get_members_root_slug() ) . '">' . $instance['title'] . '</a>' : $instance['title'];
+		$title = $instance['link_title'] ? '<a href="' . trailingslashit( bp_get_root_domain() . '/' . bp_get_members_root_slug() ) . '">' . $title . '</a>' : $title;
 
 		echo $before_title
 		   . $title
@@ -44,12 +46,12 @@ class BP_Core_Members_Widget extends WP_Widget {
 
 		<?php if ( bp_has_members( 'user_id=0&type=' . $instance['member_default'] . '&max=' . $instance['max_members'] . '&populate_extras=1' ) ) : ?>
 			<div class="item-options" id="members-list-options">
-				<a href="<?php echo site_url( bp_get_members_root_slug() ); ?>" id="newest-members" <?php if ( $instance['member_default'] == 'newest' ) : ?>class="selected"<?php endif; ?>><?php _e( 'Newest', 'buddypress' ) ?></a>
-				|  <a href="<?php echo site_url( bp_get_members_root_slug() ); ?>" id="recently-active-members" <?php if ( $instance['member_default'] == 'active' ) : ?>class="selected"<?php endif; ?>><?php _e( 'Active', 'buddypress' ) ?></a>
+				<a href="<?php bp_members_directory_permalink(); ?>" id="newest-members" <?php if ( $instance['member_default'] == 'newest' ) : ?>class="selected"<?php endif; ?>><?php _e( 'Newest', 'buddypress' ) ?></a>
+				|  <a href="<?php bp_members_directory_permalink(); ?>" id="recently-active-members" <?php if ( $instance['member_default'] == 'active' ) : ?>class="selected"<?php endif; ?>><?php _e( 'Active', 'buddypress' ) ?></a>
 
 				<?php if ( bp_is_active( 'friends' ) ) : ?>
 
-					| <a href="<?php echo site_url( bp_get_members_root_slug() ); ?>" id="popular-members" <?php if ( $instance['member_default'] == 'popular' ) : ?>class="selected"<?php endif; ?>><?php _e( 'Popular', 'buddypress' ) ?></a>
+					| <a href="<?php bp_members_directory_permalink(); ?>" id="popular-members" <?php if ( $instance['member_default'] == 'popular' ) : ?>class="selected"<?php endif; ?>><?php _e( 'Popular', 'buddypress' ) ?></a>
 
 				<?php endif; ?>
 			</div>
@@ -148,18 +150,20 @@ class BP_Core_Whos_Online_Widget extends WP_Widget {
 	function __construct() {
 		$widget_ops = array(
 			'description' => __( 'Avatars of users who are currently online', 'buddypress' ),
-			'classname' => 'widget_bp_core_whos_online_widget buddypress',
+			'classname' => 'widget_bp_core_whos_online_widget buddypress widget',
 		);
 		parent::__construct( false, $name = _x( "(BuddyPress) Who's Online", 'widget name', 'buddypress' ), $widget_ops );
 	}
 
 	function widget($args, $instance) {
 
-	    extract( $args );
+		extract( $args );
+
+		$title = apply_filters( 'widget_title', $instance['title'] );
 
 		echo $before_widget;
 		echo $before_title
-		   . $instance['title']
+		   . $title
 		   . $after_title; ?>
 
 		<?php if ( bp_has_members( 'user_id=0&type=online&per_page=' . $instance['max_members'] . '&max=' . $instance['max_members'] . '&populate_extras=1' ) ) : ?>
@@ -215,7 +219,7 @@ class BP_Core_Recently_Active_Widget extends WP_Widget {
 	function __construct() {
 		$widget_ops = array(
 			'description' => __( 'Avatars of recently active members', 'buddypress' ),
-			'classname' => 'widget_bp_core_recently_active_widget buddypress',
+			'classname' => 'widget_bp_core_recently_active_widget buddypress widget',
 		);
 		parent::__construct( false, $name = _x( '(BuddyPress) Recently Active Members', 'widget name', 'buddypress' ), $widget_ops );
 	}
@@ -224,9 +228,11 @@ class BP_Core_Recently_Active_Widget extends WP_Widget {
 
 		extract( $args );
 
+		$title = apply_filters( 'widget_title', $instance['title'] );
+
 		echo $before_widget;
 		echo $before_title
-		   . $instance['title']
+		   . $title
 		   . $after_title; ?>
 
 		<?php if ( bp_has_members( 'user_id=0&type=active&per_page=' . $instance['max_members'] . '&max=' . $instance['max_members'] . '&populate_extras=1' ) ) : ?>

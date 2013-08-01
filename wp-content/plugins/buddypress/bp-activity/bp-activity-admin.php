@@ -588,7 +588,7 @@ function bp_activity_admin_edit() {
 
 					<div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
 						<div id="post-body-content">
-							<div id="postdiv" class="postarea">
+							<div id="postdiv">
 								<div id="bp_activity_action" class="postbox">
 									<h3><?php _e( 'Action', 'buddypress' ); ?></h3>
 									<div class="inside">
@@ -1127,13 +1127,13 @@ class BP_Activity_List_Table extends WP_List_Table {
 	 * @since BuddyPress (1.6)
 	 */
 	function get_views() {
-		$redirect_to = remove_query_arg( array( 'activity_status', 'aid', 'deleted', 'error', 'spammed', 'unspammed', 'updated', ), $_SERVER['REQUEST_URI'] );
-	?>
-		<ul class="subsubsub">
-			<li class="all"><a href="<?php echo esc_attr( esc_url( $redirect_to ) ); ?>" class="<?php if ( 'spam' != $this->view ) echo 'current'; ?>"><?php _e( 'All', 'buddypress' ); ?></a> |</li>
-			<li class="spam"><a href="<?php echo esc_attr( esc_url( add_query_arg( 'activity_status', 'spam', $redirect_to ) ) ); ?>" class="<?php if ( 'spam' == $this->view ) echo 'current'; ?>"><?php printf( __( 'Spam <span class="count">(%s)</span>', 'buddypress' ), number_format_i18n( $this->spam_count ) ); ?></a></li>
+		$url_base = bp_get_admin_url( 'admin.php?page=bp-activity' ); ?>
 
-			<?php do_action( 'bp_activity_list_table_get_views', $redirect_to, $this->view ); ?>
+		<ul class="subsubsub">
+			<li class="all"><a href="<?php echo esc_attr( esc_url( $url_base ) ); ?>" class="<?php if ( 'spam' != $this->view ) echo 'current'; ?>"><?php _e( 'All', 'buddypress' ); ?></a> |</li>
+			<li class="spam"><a href="<?php echo esc_attr( esc_url( add_query_arg( 'activity_status', 'spam', $url_base ) ) ); ?>" class="<?php if ( 'spam' == $this->view ) echo 'current'; ?>"><?php printf( __( 'Spam <span class="count">(%s)</span>', 'buddypress' ), number_format_i18n( $this->spam_count ) ); ?></a></li>
+
+			<?php do_action( 'bp_activity_list_table_get_views', $url_base, $this->view ); ?>
 		</ul>
 	<?php
 	}
@@ -1224,7 +1224,7 @@ class BP_Activity_List_Table extends WP_List_Table {
 	 * @since BuddyPress (1.6)
 	 */
 	function column_cb( $item ) {
-		printf( '<input type="checkbox" name="aid[]" value="%d" />', (int) $item['id'] );
+		printf( '<label class="screen-reader-text" for="aid-%1$d">' . __( 'Select activity item %1$d', 'buddypress' ) . '</label><input type="checkbox" name="aid[]" value="%1$d" id="aid-%1$d" />', $item['id'] );
 	}
 
 	/**
@@ -1297,7 +1297,7 @@ class BP_Activity_List_Table extends WP_List_Table {
 		$actions = apply_filters( 'bp_activity_admin_comment_row_actions', array_filter( $actions ), $item );
 
 		/* translators: 2: activity admin ui date/time */
-		printf( __( 'Submitted on <a href="%1$s">%2$s at %3$s</a>', 'buddypress' ), bp_get_root_domain() . '/' . bp_get_activity_root_slug() . '/p/' . $item['id'] . '/', date_i18n( get_option( 'date_format' ), strtotime( $item['date_recorded'] ) ), date_i18n( get_option( 'time_format' ), strtotime( $item['date_recorded'] ) ) );
+		printf( __( 'Submitted on <a href="%1$s">%2$s at %3$s</a>', 'buddypress' ), bp_get_root_domain() . '/' . bp_get_activity_root_slug() . '/p/' . $item['id'] . '/', get_date_from_gmt( $item['date_recorded'], get_option( 'date_format' ) ), get_date_from_gmt( $item['date_recorded'], get_option( 'time_format' ) ) );
 
 		// End timestamp
 		echo '</div>';

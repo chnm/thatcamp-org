@@ -125,7 +125,6 @@ function bp_activity_get_moderated_activity_types() {
  *
  * @since BuddyPress (1.6)
  * @param BP_Activity_Activity $activity
- * @return If activity type is not an update or comment
  */
 function bp_activity_check_moderation_keys( $activity ) {
 
@@ -144,7 +143,6 @@ function bp_activity_check_moderation_keys( $activity ) {
  *
  * @since BuddyPress (1.6)
  * @param BP_Activity_Activity $activity
- * @return If activity type is not an update or comment
  */
 function bp_activity_check_blacklist_keys( $activity ) {
 
@@ -208,6 +206,11 @@ function bp_activity_filter_kses( $content ) {
  */
 function bp_activity_at_name_filter( $content, $activity_id = 0 ) {
 
+	// Are mentions disabled?
+	if ( ! bp_activity_do_mentions() ) {
+		return $content;
+	}
+
 	// Try to find mentions
 	$usernames = bp_activity_find_mentions( $content );
 
@@ -232,11 +235,16 @@ function bp_activity_at_name_filter( $content, $activity_id = 0 ) {
  *
  * @since BuddyPress (1.5)
  *
- * @param obj $activity
+ * @param BP_Activity_Activity $activity
  *
  * @uses bp_activity_find_mentions()
  */
 function bp_activity_at_name_filter_updates( $activity ) {
+	// Are mentions disabled?
+	if ( ! bp_activity_do_mentions() ) {
+		return;
+	}
+
 	// If activity was marked as spam, stop the rest of this function.
 	if ( ! empty( $activity->is_spam ) )
 		return;
@@ -265,12 +273,17 @@ function bp_activity_at_name_filter_updates( $activity ) {
  *
  * @since BuddyPress (1.7)
  *
- * @param obj $activity The BP_Activity_Activity object
+ * @param BP_Activity_Activity $activity The BP_Activity_Activity object
  *
  * @uses bp_activity_at_message_notification()
  * @uses bp_activity_update_mention_count_for_user()
  */
 function bp_activity_at_name_send_emails( $activity ) {
+	// Are mentions disabled?
+	if ( ! bp_activity_do_mentions() ) {
+		return;
+	}
+
 	// If our temporary variable doesn't exist, stop now.
 	if ( empty( buddypress()->activity->mentioned_users ) )
 		return;
@@ -326,7 +339,7 @@ function bp_activity_make_nofollow_filter( $text ) {
  *
  * @since BuddyPress (1.5)
  *
- * @param $text The original activity entry text
+ * @param string $text The original activity entry text
  *
  * @uses bp_is_single_activity()
  * @uses apply_filters() To call the 'bp_activity_excerpt_append_text' hook

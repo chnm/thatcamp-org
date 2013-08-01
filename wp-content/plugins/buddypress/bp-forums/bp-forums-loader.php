@@ -35,7 +35,7 @@ class BP_Forums_Component extends BP_Component {
 	 *
 	 * @since BuddyPress (1.5)
 	 */
-	function setup_globals() {
+	public function setup_globals( $args = array() ) {
 		$bp = buddypress();
 
 		// Define the parent forum ID
@@ -66,7 +66,7 @@ class BP_Forums_Component extends BP_Component {
 	/**
 	 * Include files
 	 */
-	function includes() {
+	public function includes( $includes = array() ) {
 
 		// Files to include
 		$includes = array(
@@ -82,13 +82,19 @@ class BP_Forums_Component extends BP_Component {
 		if ( !defined( 'BB_PATH' ) )
 			$includes[] = 'bbpress-sa';
 
+		// Admin-specific code
+		if ( is_admin() ) {
+			$includes[] = 'deprecated/1.6';
+			$includes[] = 'deprecated/1.7';
+		}
+
 		parent::includes( $includes );
 	}
 
 	/**
 	 * Setup BuddyBar navigation
 	 */
-	function setup_nav() {
+	public function setup_nav( $main_nav = array(), $sub_nav = array() ) {
 
 		// Stop if forums haven't been set up yet
 		if ( !bp_forums_is_installed_correctly() )
@@ -148,7 +154,7 @@ class BP_Forums_Component extends BP_Component {
 	/**
 	 * Set up the Toolbar
 	 */
-	function setup_admin_bar() {
+	public function setup_admin_bar( $wp_admin_nav = array() ) {
 
 		// Prevent debug notices
 		$wp_admin_nav = array();

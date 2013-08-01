@@ -265,11 +265,17 @@ add_action( 'bp_screens', 'bp_activity_screen_single_activity_permalink' );
  */
 function bp_activity_screen_notification_settings() {
 
-	if ( !$mention = bp_get_user_meta( bp_displayed_user_id(), 'notification_activity_new_mention', true ) )
-		$mention = 'yes';
+	if ( bp_activity_do_mentions() ) {
+		if ( ! $mention = bp_get_user_meta( bp_displayed_user_id(), 'notification_activity_new_mention', true ) ) {
+			$mention = 'yes';
+		}
+	}
 
-	if ( !$reply = bp_get_user_meta( bp_displayed_user_id(), 'notification_activity_new_reply', true ) )
-		$reply = 'yes'; ?>
+	if ( ! $reply = bp_get_user_meta( bp_displayed_user_id(), 'notification_activity_new_reply', true ) ) {
+		$reply = 'yes';
+	}
+
+	?>
 
 	<table class="notification-settings" id="activity-notification-settings">
 		<thead>
@@ -282,12 +288,15 @@ function bp_activity_screen_notification_settings() {
 		</thead>
 
 		<tbody>
-			<tr id="activity-notification-settings-mentions">
-				<td>&nbsp;</td>
-				<td><?php printf( __( 'A member mentions you in an update using "@%s"', 'buddypress' ), bp_core_get_username( bp_displayed_user_id() ) ) ?></td>
-				<td class="yes"><input type="radio" name="notifications[notification_activity_new_mention]" value="yes" <?php checked( $mention, 'yes', true ) ?>/></td>
-				<td class="no"><input type="radio" name="notifications[notification_activity_new_mention]" value="no" <?php checked( $mention, 'no', true ) ?>/></td>
-			</tr>
+			<?php if ( bp_activity_do_mentions() ) : ?>
+				<tr id="activity-notification-settings-mentions">
+					<td>&nbsp;</td>
+					<td><?php printf( __( 'A member mentions you in an update using "@%s"', 'buddypress' ), bp_core_get_username( bp_displayed_user_id() ) ) ?></td>
+					<td class="yes"><input type="radio" name="notifications[notification_activity_new_mention]" value="yes" <?php checked( $mention, 'yes', true ) ?>/></td>
+					<td class="no"><input type="radio" name="notifications[notification_activity_new_mention]" value="no" <?php checked( $mention, 'no', true ) ?>/></td>
+				</tr>
+			<?php endif; ?>
+
 			<tr id="activity-notification-settings-replies">
 				<td>&nbsp;</td>
 				<td><?php _e( "A member replies to an update or comment you've posted", 'buddypress' ) ?></td>
@@ -309,7 +318,7 @@ add_action( 'bp_notification_settings', 'bp_activity_screen_notification_setting
  * The main theme compat class for BuddyPress Activity
  *
  * This class sets up the necessary theme compatability actions to safely output
- * group template parts to the_title and the_content areas of a theme.
+ * activity template parts to the_title and the_content areas of a theme.
  *
  * @since BuddyPress (1.7)
  */
@@ -341,17 +350,42 @@ class BP_Activity_Theme_Compat {
 
 			do_action( 'bp_activity_screen_index' );
 
+			add_filter( 'bp_get_buddypress_template',                array( $this, 'directory_template_hierarchy' ) );
 			add_action( 'bp_template_include_reset_dummy_post_data', array( $this, 'directory_dummy_post' ) );
 			add_filter( 'bp_replace_the_content',                    array( $this, 'directory_content'    ) );
 
 		// Single activity
 		} elseif ( bp_is_single_activity() ) {
+			add_filter( 'bp_get_buddypress_template',                array( $this, 'single_template_hierarchy' ) );
 			add_action( 'bp_template_include_reset_dummy_post_data', array( $this, 'single_dummy_post' ) );
 			add_filter( 'bp_replace_the_content',                    array( $this, 'single_dummy_content'    ) );
 		}
 	}
 
 	/** Directory *************************************************************/
+
+	/**
+	 * Add template hierarchy to theme compat for the activity directory page.
+	 *
+	 * This is to mirror how WordPress has {@link https://codex.wordpress.org/Template_Hierarchy template hierarchy}.
+	 *
+	 * @since BuddyPress (1.8)
+	 *
+	 * @param string $templates The templates from bp_get_theme_compat_templates()
+	 * @return array $templates Array of custom templates to look for.
+	 */
+	public function directory_template_hierarchy( $templates ) {
+		// Setup our templates based on priority
+		$new_templates = apply_filters( 'bp_template_hierarchy_activity_directory', array(
+			'activity/index-directory.php'
+		) );
+
+		// Merge new templates with existing stack
+		// @see bp_get_theme_compat_templates()
+		$templates = array_merge( (array) $new_templates, $templates );
+
+		return $templates;
+	}
 
 	/**
 	 * Update the global $post with directory data
@@ -382,6 +416,29 @@ class BP_Activity_Theme_Compat {
 	}
 
 	/** Single ****************************************************************/
+
+	/**
+	 * Add custom template hierarchy to theme compat for activity permalink pages.
+	 *
+	 * This is to mirror how WordPress has {@link https://codex.wordpress.org/Template_Hierarchy template hierarchy}.
+	 *
+	 * @since BuddyPress (1.8)
+	 *
+	 * @param string $templates The templates from bp_get_theme_compat_templates()
+	 * @return array $templates Array of custom templates to look for.
+	 */
+	public function single_template_hierarchy( $templates ) {
+		// Setup our templates based on priority
+		$new_templates = apply_filters( 'bp_template_hierarchy_activity_single_item', array(
+			'activity/single/index.php'
+		) );
+
+		// Merge new templates with existing stack
+		// @see bp_get_theme_compat_templates()
+		$templates = array_merge( (array) $new_templates, $templates );
+
+		return $templates;
+	}
 
 	/**
 	 * Update the global $post with the displayed user's data

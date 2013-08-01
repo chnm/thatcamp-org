@@ -275,8 +275,9 @@ function bp_has_members( $args = '' ) {
 	$search_terms = null;
 
 	// User filtering
-	if ( bp_displayed_user_id() )
+	if ( bp_is_user_friends() && ! bp_is_user_friend_requests() ) {
 		$user_id = bp_displayed_user_id();
+	}
 
 	// type: active ( default ) | random | newest | popular | online | alphabetical
 	$defaults = array(
@@ -383,8 +384,8 @@ function bp_member_user_id() {
 	 */
 	function bp_get_member_user_id() {
 		global $members_template;
-
-		return apply_filters( 'bp_get_member_user_id', $members_template->member->id );
+		$member_id = isset( $members_template->member->id ) ? (int) $members_template->member->id : false;
+		return apply_filters( 'bp_get_member_user_id', $member_id );
 	}
 
 /**
@@ -554,7 +555,7 @@ function bp_member_name() {
 	 * @package BuddyPress
 	 *
 	 * @uses apply_filters() Filter bp_get_the_member_name() to alter the function's output
-	 * @return str The user's fullname for display
+	 * @return string The user's fullname for display
 	 */
 	function bp_get_member_name() {
 		global $members_template;

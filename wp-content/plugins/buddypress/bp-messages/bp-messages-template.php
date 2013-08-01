@@ -383,7 +383,7 @@ function bp_messages_form_action() {
 	 *
 	 * @package BuddyPress
 	 *
-	 * @return str The form action
+	 * @return string The form action
 	 */
 	function bp_get_messages_form_action() {
 		return apply_filters( 'bp_get_messages_form_action', trailingslashit( bp_loggedin_user_domain() . bp_get_messages_slug() . '/' . bp_current_action() . '/' . bp_action_variable( 0 ) ) );
@@ -639,8 +639,10 @@ function bp_send_message_button() {
 	echo bp_get_send_message_button();
 }
 	function bp_get_send_message_button() {
+		// Note: 'bp_get_send_message_button' is a legacy filter. Use
+		// 'bp_get_send_message_button_args' instead. See #4536
 		return apply_filters( 'bp_get_send_message_button',
-			bp_get_button( array(
+			bp_get_button( apply_filters( 'bp_get_send_message_button_args', array(
 				'id'                => 'private_message',
 				'component'         => 'messages',
 				'must_be_logged_in' => true,
@@ -650,7 +652,7 @@ function bp_send_message_button() {
 				'link_title'        => __( 'Send a private message to this user.', 'buddypress' ),
 				'link_text'         => __( 'Private Message', 'buddypress' ),
 				'link_class'        => 'send-message',
-			) )
+			) ) )
 		);
 	}
 

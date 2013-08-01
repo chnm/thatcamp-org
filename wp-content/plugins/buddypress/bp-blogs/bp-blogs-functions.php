@@ -49,21 +49,21 @@ function bp_blogs_record_existing_blogs() {
 	$wpdb->query( "TRUNCATE TABLE {$bp->blogs->table_name}" );
 
 	if ( is_multisite() ) {
-		$blog_ids = $wpdb->get_col( $wpdb->prepare( "SELECT blog_id FROM {$wpdb->base_prefix}blogs WHERE mature = 0 AND spam = 0 AND deleted = 0 AND site_id = %d" ), $wpdb->siteid );
+		$blog_ids = $wpdb->get_col( $wpdb->prepare( "SELECT blog_id FROM {$wpdb->base_prefix}blogs WHERE mature = 0 AND spam = 0 AND deleted = 0 AND site_id = %d", $wpdb->siteid ) );
 	} else {
 		$blog_ids = 1;
 	}
 
 	if ( !empty( $blog_ids ) ) {
 		foreach( (array) $blog_ids as $blog_id ) {
-			$users       = get_users( array( 'blog_id' => $blog_id ) );
-			$subscribers = get_users( array( 'blog_id' => $blog_id, 'role' => 'subscriber' ) );
+			$users       = get_users( array( 'blog_id' => $blog_id, 'fields' => 'ID' ) );
+			$subscribers = get_users( array( 'blog_id' => $blog_id, 'fields' => 'ID', 'role' => 'subscriber' ) );
 
 			if ( !empty( $users ) ) {
 				foreach ( (array) $users as $user ) {
 					// Don't record blogs for subscribers
 					if ( !in_array( $user, $subscribers ) ) {
-						bp_blogs_record_blog( $blog_id, $user->ID, true );
+						bp_blogs_record_blog( $blog_id, $user, true );
 					}
 				}
 			}
@@ -76,7 +76,7 @@ function bp_blogs_record_existing_blogs() {
  *
  * If $user_id is provided, you can restrict site from being recordable
  * only to particular users.
- * 
+ *
  * @since BuddyPress (1.7)
  * @param int $blog_id
  * @param int|null $user_id
@@ -104,7 +104,7 @@ function bp_blogs_is_blog_recordable( $blog_id, $user_id = 0 ) {
  * Makes BuddyPress aware of sites that activities shouldn't be trackable.
  * If $user_id is provided, the developer can restrict site from
  * being trackable only to particular users.
- * 
+ *
  * @since BuddyPress (1.7)
  * @param int $blog_id
  * @param int|null $user_id
@@ -135,7 +135,7 @@ function bp_blogs_is_blog_trackable( $blog_id, $user_id = 0 ) {
  * @since BuddyPress (1.0)
  * @param int $blog_id
  * @param int $user_id
- * @param $bool $no_activity ; optional.
+ * @param bool $no_activity Optional; defaults to false
  * @uses BP_Blogs_Blog
  */
 function bp_blogs_record_blog( $blog_id, $user_id, $no_activity = false ) {
@@ -172,8 +172,8 @@ function bp_blogs_record_blog( $blog_id, $user_id, $no_activity = false ) {
 		// Record this in activity streams
 		bp_blogs_record_activity( array(
 			'user_id'      => $recorded_blog->user_id,
-			'action'       => apply_filters( 'bp_blogs_activity_created_blog_action', sprintf( __( '%s created the site %s', 'buddypress'), bp_core_get_userlink( $recorded_blog->user_id ), '<a href="' . get_site_url( $recorded_blog->blog_id ) . '">' . esc_attr( $name ) . '</a>' ), $recorded_blog, $name, $description ),
-			'primary_link' => apply_filters( 'bp_blogs_activity_created_blog_primary_link', get_site_url( $recorded_blog->blog_id ), $recorded_blog->blog_id ),
+			'action'       => apply_filters( 'bp_blogs_activity_created_blog_action', sprintf( __( '%s created the site %s', 'buddypress'), bp_core_get_userlink( $recorded_blog->user_id ), '<a href="' . get_home_url( $recorded_blog->blog_id ) . '">' . esc_attr( $name ) . '</a>' ), $recorded_blog, $name, $description ),
+			'primary_link' => apply_filters( 'bp_blogs_activity_created_blog_primary_link', get_home_url( $recorded_blog->blog_id ), $recorded_blog->blog_id ),
 			'type'         => 'new_blog',
 			'item_id'      => $recorded_blog->blog_id
 		) );
@@ -257,7 +257,6 @@ function bp_blogs_record_post( $post_id, $post, $user_id = 0 ) {
 			if ( bp_is_active( 'activity' ) ) {
 				$existing = bp_activity_get( array(
 					'filter' => array(
-						'user_id'      => (int) $post->post_author,
 						'action'       => 'new_blog_post',
 						'primary_id'   => $blog_id,
 						'secondary_id' => $post_id,

@@ -167,7 +167,7 @@ function bp_setup_updater() {
  * This is most-often used when the data schema changes, but should also be used
  * to correct issues with BuddyPress metadata silently on software update.
  *
- * @since BuddyPress (r4104)
+ * @since BuddyPress (1.7)
  */
 function bp_version_updater() {
 
@@ -253,8 +253,6 @@ function bp_update_to_1_6() {
  * @internal Used internally to redirect BuddyPress to the about page on activation
  *
  * @uses set_transient() To drop the activation transient for 30 seconds
- *
- * @return If bulk activation
  */
 function bp_add_activation_redirect() {
 

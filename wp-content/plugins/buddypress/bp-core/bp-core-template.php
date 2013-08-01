@@ -622,7 +622,7 @@ function bp_action_variables() {
  * @since BuddyPress (1.5)
  *
  * @param int $position The key of the action_variables array that you want
- * @return str $action_variable The value of that position in the array
+ * @return string $action_variable The value of that position in the array
  */
 function bp_action_variable( $position = 0 ) {
 	$action_variables = bp_action_variables();
@@ -709,9 +709,9 @@ function bp_root_slug( $component = '' ) {
 /**
  * Return the component name based on the current root slug
  *
- * @since BuddyPress {r3923}
+ * @since BuddyPress (1.5)
  * @global BuddyPress $bp The one true BuddyPress instance
- * @param str $root_slug Needle to our active component haystack
+ * @param string $root_slug Needle to our active component haystack
  * @return mixed False if none found, component name if found
  */
 function bp_get_name_from_root_slug( $root_slug = '' ) {
@@ -883,7 +883,7 @@ function bp_is_current_component( $component ) {
  * @package BuddyPress
  * @since BuddyPress (1.5)
  *
- * @param str $action The action being tested against
+ * @param string $action The action being tested against
  * @return bool True if the current action matches $action
  */
 function bp_is_current_action( $action = '' ) {
@@ -907,7 +907,7 @@ function bp_is_current_action( $action = '' ) {
  * @package BuddyPress
  * @since BuddyPress (1.5)
  *
- * @param str $action_variable The action_variable being tested against
+ * @param string $action_variable The action_variable being tested against
  * @param int $position The array key you're testing against. If you don't provide a $position,
  *   the function will return true if the $action_variable is found *anywhere* in the action
  *   variables array.
@@ -984,7 +984,7 @@ function bp_is_directory() {
  *   No:  http://domain.com/members/andy/groups/the-group
  *
  * @package BuddyPress Core
- * @return true if root component, else false.
+ * @return bool True if root component, else false.
  */
 function bp_is_root_component( $component_name ) {
 	global $bp;
@@ -1597,7 +1597,7 @@ function bp_is_register_page() {
 function bp_the_body_class() {
 	echo bp_get_the_body_class();
 }
-	function bp_get_the_body_class( $wp_classes, $custom_classes = false ) {
+	function bp_get_the_body_class( $wp_classes = array(), $custom_classes = false ) {
 
 		$bp_classes = array();
 
@@ -1891,19 +1891,30 @@ function bp_get_nav_menu_items() {
  * Displays a navigation menu.
  *
  * @param string|array $args Optional arguments:
- *  before - Text before the link text.
- *  container - Whether to wrap the ul, and what to wrap it with. Defaults to div.
- *  container_class - The class that is applied to the container. Defaults to 'menu-bp-container'.
- *  container_id - The ID that is applied to the container. Defaults to blank.
- *  depth - How many levels of the hierarchy are to be included. 0 means all. Defaults to 0.
- *  echo - Whether to echo the menu or return it. Defaults to echo.
- *  fallback_cb - If the menu doesn't exists, a callback function will fire. Defaults to false (no fallback).
- *  items_wrap - How the list items should be wrapped. Defaults to a ul with an id and class. Uses printf() format with numbered placeholders.
- *  link_after - Text after the link.
- *  link_before - Text before the link.
- *  menu_class - CSS class to use for the ul element which forms the menu. Defaults to 'menu'.
- *  menu_id - The ID that is applied to the ul element which forms the menu. Defaults to 'menu-bp', incremented.
- *  walker - Allows a custom walker to be specified. Defaults to 'BP_Walker_Nav_Menu'.
+ *  - before           Text before the link text.
+ *  - container        Whether to wrap the ul, and what to wrap it with.
+ *                     Defaults to div.
+ *  - container_class  The class that is applied to the container. Defaults to
+ *                     'menu-bp-container'.
+ *  - container_id     The ID that is applied to the container. Defaults to
+ *                     blank.
+ *  - depth            How many levels of the hierarchy are to be included. 0
+ *                     means all. Defaults to 0.
+ *  - echo             Whether to echo the menu or return it. Defaults to echo.
+ *  - fallback_cb      If the menu doesn't exists, a callback function will
+ *                     fire. Defaults to false (no fallback).
+ *  - items_wrap       How the list items should be wrapped. Defaults to a ul
+ *                     with an id and class. Uses printf() format with numbered
+ *                     placeholders.
+ *  - link_after       Text after the link.
+ *  - link_before      Text before the link.
+ *  - menu_class       CSS class to use for the ul element which forms the menu.
+ *                     Defaults to 'menu'.
+ *  - menu_id          The ID that is applied to the ul element which forms the
+ *                     menu. Defaults to 'menu-bp', incremented.
+ *  - walker           Allows a custom walker to be specified. Defaults to
+ *                     'BP_Walker_Nav_Menu'.
+ *
  * @since BuddyPress (1.7)
  */
 function bp_nav_menu( $args = array() ) {

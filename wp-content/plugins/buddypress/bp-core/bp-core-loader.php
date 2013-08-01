@@ -70,14 +70,15 @@ class BP_Core extends BP_Component {
 		} elseif ( $deactivated_components = bp_get_option( 'bp-deactivated-components' ) ) {
 
 			// Trim off namespace and filename
-			foreach ( (array) $deactivated_components as $component => $value )
+			foreach ( array_keys( (array) $deactivated_components ) as $component ) {
 				$trimmed[] = str_replace( '.php', '', str_replace( 'bp-', '', $component ) );
+			}
 
 			// Set globals
 			$bp->deactivated_components = apply_filters( 'bp_deactivated_components', $trimmed );
 
 			// Setup the active components
-			$active_components     = array_fill_keys( array_diff( array_values( array_merge( $optional_components, $required_components ) ), array_values( $deactivated_components ) ), '1' );
+			$active_components     = array_fill_keys( array_diff( array_values( array_merge( $bp->optional_components, $bp->required_components ) ), array_values( $bp->deactivated_components ) ), '1' );
 
 			// Set the active component global
 			$bp->active_components = apply_filters( 'bp_active_components', $bp->active_components );
@@ -109,7 +110,7 @@ class BP_Core extends BP_Component {
 		$bp->required_components[] = 'core';
 	}
 
-	function includes() {
+	public function includes( $includes = array() ) {
 
 		if ( !is_admin() )
 			return;
@@ -129,7 +130,7 @@ class BP_Core extends BP_Component {
 	 *
 	 * @global BuddyPress $bp
 	 */
-	function setup_globals() {
+	public function setup_globals( $args = array() ) {
 		global $bp;
 
 		/** Database **********************************************************/
@@ -193,7 +194,7 @@ class BP_Core extends BP_Component {
 	 *
 	 * @global BuddyPress $bp
 	 */
-	function setup_nav() {
+	public function setup_nav( $main_nav = array(), $sub_nav = array() ) {
 		global $bp;
 
 		 // If xprofile component is disabled, revert to WordPress profile

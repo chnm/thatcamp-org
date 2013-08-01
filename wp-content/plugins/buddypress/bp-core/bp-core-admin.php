@@ -380,15 +380,15 @@ class BP_Admin {
 		list( $display_version ) = explode( '-', bp_get_version() ); ?>
 
 		<div class="wrap about-wrap">
-			<h1><?php printf( __( 'Welcome to BuddyPress %s' ), $display_version ); ?></h1>
+			<h1><?php printf( __( 'Welcome to BuddyPress %s', 'buddypress' ), $display_version ); ?></h1>
 			<div class="about-text">
 				<?php if ( $is_new_install ) : ?>
-					<?php printf( __( 'BuddyPress %s is our safest, fastest, most flexible version ever.' ), $display_version ); ?>
+					<?php printf( __( 'BuddyPress %s is our safest, fastest, most flexible version ever.', 'buddypress' ), $display_version ); ?>
 				<?php else : ?>
-					<?php printf( __( 'Thank you for updating! BuddyPress %s is our safest, fastest, most flexible version ever.' ), $display_version ); ?>
+					<?php printf( __( 'Thank you for updating! BuddyPress %s is our safest, fastest, most flexible version ever.', 'buddypress' ), $display_version ); ?>
 				<?php endif; ?>
 			</div>
-			<div class="bp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
+			<div class="bp-badge"><?php printf( __( 'Version %s', 'buddypress' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
 				<a class="nav-tab nav-tab-active" href="<?php echo esc_url( bp_get_admin_url( add_query_arg( array( 'page' => 'bp-about' ), 'index.php' ) ) ); ?>">
@@ -418,19 +418,19 @@ class BP_Admin {
 			<?php endif; ?>
 
 			<div class="changelog">
-				<h3><?php _e( 'A Declaration of (Theme) Independence', 'buddypress' ); ?></h3>
+				<h3><?php _e( 'Improved Theme Integration', 'buddypress' ); ?></h3>
 
 				<div class="feature-section">
-					<h4><?php _e( 'It Just Works', 'buddypress' ); ?></h4>
-					<p><?php _e( 'BuddyPress is now compatible with <strong>any WordPress theme</strong>. If your theme has BuddyPress-specific templates and styling, we&#8217;ll use them. If not, we provide what you need to make your BuddyPress content look great. Still want to customize? No problem - you can override our templates just like you would in a WordPress child theme. <a href="http://codex.buddypress.org/theme-compatibility/">Learn more about theme compatibility</a>.', 'buddypress' ); ?></p>
+					<h4><?php _e( 'Hey, Good Lookin&#8217;', 'buddypress' ); ?></h4>
+					<p><?php _e( 'We&#8217;ve streamlined our stylesheets, so that BuddyPress content looks more at home in your theme. And theme developers will love BP&#8217;s new hierarchies that make it easy to override specific top-level templates, stylesheets, and JavaScript files.', 'buddypress' ) ?></p>
 				</div>
 			</div>
 
 			<div class="changelog">
-				<h3><?php _e( 'Group Management', 'buddypress' ); ?></h3>
+				<h3><?php _e( 'Better Group Member Management', 'buddypress' ); ?></h3>
 
 				<div class="feature-section">
-					<h4><?php _e( 'Get More Done Quickly', 'buddypress' ); ?></h4>
+					<h4><?php _e( '<em>Add</em>, <em>Remove</em>, and More, in a Snap', 'buddypress' ); ?></h4>
 
 					<?php
 					$group_admin_text = __( 'Groups administration panel', 'buddypress' );
@@ -440,7 +440,7 @@ class BP_Admin {
 					?>
 
 					<p><?php printf(
-						__( 'The new %s makes it easy to handle large numbers of groups on your BuddyPress installation. Delete groups, edit group details, modify memberships, and more, with just a few clicks.', 'buddypress' ),
+						__( 'The Manage Members section of the %s has been rewritten, to make it easier to handle groups with many members. We&#8217;ve also made the interface nicer to use, to ensure that you don&#8217;t make changes and then forget to save them.', 'buddypress' ),
 						$group_admin_text
 					); ?></p>
 				</div>
@@ -451,19 +451,19 @@ class BP_Admin {
 
 				<div class="feature-section three-col">
 					<div>
-						<h4><?php _e( 'Faster Member Queries', 'buddypress' ); ?></h4>
-						<p><?php _e( 'The new <code>BP_User_Query</code> makes member queries (like in the Members directory) up to 4x faster than before.', 'buddypress' ); ?></p>
+						<h4><?php _e( 'Superpowered Group Extensions', 'buddypress' ); ?></h4>
+						<p><?php _e( '<code>BP_Group_Extension</code> has been overhauled, making it easier than ever before to add custom functionality to groups.', 'buddypress' ); ?></p>
 
-						<h4><?php _e( 'Sortable Profile Options', 'buddypress' ); ?></h4>
-						<p><?php _e( 'Profile field types with multiple options - like radio buttons and checkboxes - now support drag-and-drop reordering.', 'buddypress' ); ?></p>
+						<h4><?php _e( 'Filter Groups or Activity by Metadata', 'buddypress' ); ?></h4>
+						<p><?php _e( '<code>bp_has_groups()</code> and <code>bp_has_activities()</code> now accept a <code>meta_query</code> paramater, for more powerful directory queries.', 'buddypress' ); ?></p>
 					</div>
 
 					<div>
-						<h4><?php _e( 'New Visibility Level', 'buddypress' ); ?></h4>
-						<p><?php _e( 'By popular demand, the "Admins Only" visibility setting is now available for profile fields.', 'buddypress' ); ?></p>
+						<h4><?php _e( 'Feed Me, Seymour', 'buddypress' ); ?></h4>
+						<p><?php _e( 'The new <code>BP_Activity_Feed</code> class centralizes BP&#8217;s RSS logic, making our feeds more standards-compliant, and giving developers more tools for building custom feeds.', 'buddypress' ); ?></p>
 
-						<h4><?php _e( 'Better bbPress Integration', 'buddypress' ); ?></h4>
-						<p><?php _e( 'Support for group and sitewide forums, using the latest version of the bbPress plugin, is better than ever. Still using bbPress 1.x? Our new migration tools are field-tested.', 'buddypress' ); ?></p>
+						<h4><?php _e( 'Disable @-Mentions', 'buddypress' ); ?></h4>
+						<p><?php _e( "Not using @-mentions? Disable them with <code>add_filter( 'bp_activity_do_mentions', '__return_false' );</code>", 'buddypress' ); ?></p>
 					</div>
 			</div>
 
@@ -489,9 +489,9 @@ class BP_Admin {
 		list( $display_version ) = explode( '-', bp_get_version() ); ?>
 
 		<div class="wrap about-wrap">
-			<h1><?php printf( __( 'Welcome to BuddyPress %s' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! BuddyPress %s is ready to make your community a safer, faster, and better looking place to hang out!' ), $display_version ); ?></div>
-			<div class="bp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
+			<h1><?php printf( __( 'Welcome to BuddyPress %s', 'buddypress' ), $display_version ); ?></h1>
+			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! BuddyPress %s is ready to make your community a safer, faster, and better looking place to hang out!', 'buddypress' ), $display_version ); ?></div>
+			<div class="bp-badge"><?php printf( __( 'Version %s', 'buddypress' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
 				<a href="<?php echo esc_url( bp_get_admin_url( add_query_arg( array( 'page' => 'bp-about' ), 'index.php' ) ) ); ?>" class="nav-tab">
@@ -549,49 +549,52 @@ class BP_Admin {
 				</li>
 			</ul>
 
-			<h4 class="wp-people-group"><?php _e( 'Core Contributors to BuddyPress 1.7', 'buddypress' ); ?></h4>
+			<h4 class="wp-people-group"><?php _e( 'Core Contributors to BuddyPress 1.8', 'buddypress' ); ?></h4>
 			<p class="wp-credits-list">
-				<a href="http://profiles.wordpress.org/aesqe">aesqe</a>,
-				<a href="http://profiles.wordpress.org/apeatling">apeatling</a>,
+				<a href="http://profiles.wordpress.org/boonebgorges">boonebgorges</a>,
 				<a href="http://profiles.wordpress.org/borkweb">borkweb</a>,
-				<a href="http://profiles.wordpress.org/calin">calin</a>,
 				<a href="http://profiles.wordpress.org/chouf1">chouf1</a>,
-				<a href="http://profiles.wordpress.org/chrisclayton">chrisclayton</a>,
-				<a href="http://profiles.wordpress.org/cnorris23">cnorris23</a>,
+				<a href="http://profiles.wordpress.org/chriskeeble">chriskeeble</a>,
+				<a href="http://profiles.wordpress.org/chroniko">chroniko</a>,
+				<a href="http://profiles.wordpress.org/czarate">czarate</a>,
+				<a href="http://profiles.wordpress.org/danbp">danbp</a>,
+				<a href="http://profiles.wordpress.org/dcavins">dcavins</a>,
+				<a href="http://profiles.wordpress.org/dcowgill">dcowgill</a>,
 				<a href="http://profiles.wordpress.org/ddean">ddean</a>,
-				<a href="http://profiles.wordpress.org/DennisSmolek">DennisSmolek</a>,
-				<a href="http://profiles.wordpress.org/Dianakc">Dianakc</a>,
+				<a href="http://profiles.wordpress.org/djpaul">djpaul</a>,
 				<a href="http://profiles.wordpress.org/dontdream">dontdream</a>,
-				<a href="http://profiles.wordpress.org/empireoflight">empireoflight</a>,
-				<a href="http://profiles.wordpress.org/enej">enej</a>,
-				<a href="http://profiles.wordpress.org/ethitter">ethitter</a>,
-				<a href="http://profiles.wordpress.org/fanquake">fanquake</a>,
-				<a href="http://profiles.wordpress.org/gmax21">gmax21</a>,
+				<a href="http://profiles.wordpress.org/eggproject">eggproject</a>,
+				<a href="http://profiles.wordpress.org/ericlewis">ericlewis</a>,
+				grahamwashbroo,
 				<a href="http://profiles.wordpress.org/hnla">hnla</a>,
-				<a href="http://profiles.wordpress.org/humanshell">humanshell</a>,
 				<a href="http://profiles.wordpress.org/imath">imath</a>,
-				<a href="http://profiles.wordpress.org/Jacek">Jacek</a>,
-				<a href="http://profiles.wordpress.org/jag1989">jag1989</a>,
-				<a href="http://profiles.wordpress.org/jbobich">jbobich</a>,
-				<a href="http://profiles.wordpress.org/jkudish">jkudish</a>,
-				<a href="http://profiles.wordpress.org/jpsb">jpsb</a>,
-				<a href="http://profiles.wordpress.org/MacPresss">MacPresss</a>,
+				<a href="http://profiles.wordpress.org/johnjamesjacoby">johnjamesjacoby</a>,
+				<a href="http://profiles.wordpress.org/karmatosed">karmatosed</a>,
+				<a href="http://profiles.wordpress.org/lenasterg">lenasterg</a>,
 				<a href="http://profiles.wordpress.org/magnus78">magnus78</a>,
-				<a href="http://profiles.wordpress.org/markjaquith">markjaquith</a>,
-				<a href="http://profiles.wordpress.org/Maty">Maty</a>,
-				<a href="http://profiles.wordpress.org/michael.ecklund">michael.ecklund</a>,
-				<a href="http://profiles.wordpress.org/modemlooper">modemlooper</a>,
-				<a href="http://profiles.wordpress.org/nacin">nacin</a>,
-				<a href="http://profiles.wordpress.org/netweb">netweb</a>,
+				<a href="http://profiles.wordpress.org/megainfo">megainfo</a>,
 				<a href="http://profiles.wordpress.org/rogercoathup">rogercoathup</a>,
-				<a href="http://profiles.wordpress.org/sboisvert">sboisvert</a>,
+				<a href="http://profiles.wordpress.org/mercime">mercime</a>,
+				<a href="http://profiles.wordpress.org/merty">merty</a>,
+				<a href="http://profiles.wordpress.org/mjustice">mjustice</a>,
+				<a href="http://profiles.wordpress.org/modemlooper">modemlooper</a>,
+				<a href="http://profiles.wordpress.org/mort3n">mort3n</a>,
+				<a href="http://profiles.wordpress.org/mukkundthanki">mukkundthanki</a>,
+				<a href="http://profiles.wordpress.org/nacin">nacin</a>,
+				<a href="http://profiles.wordpress.org/needle">needle</a>,
+				<a href="http://profiles.wordpress.org/r-a-y">r-a-y</a>,
+				<a href="http://profiles.wordpress.org/saurabhshukla">saurabhshukla</a>,
 				<a href="http://profiles.wordpress.org/sbrajesh">sbrajesh</a>,
-				<a href="http://profiles.wordpress.org/slaFFik">slaFFik</a>,
-				<a href="http://profiles.wordpress.org/steve7777">steve7777</a>,
-				<a href="http://profiles.wordpress.org/tiraeth">tiraeth</a>,
-				<a href="http://profiles.wordpress.org/will_c">will_c</a>,
-				<a href="http://profiles.wordpress.org/wpdennis">wpdennis</a>,
-				<a href="http://profiles.wordpress.org/xt4v">xt4v</a>.
+				<a href="http://profiles.wordpress.org/SergeyBiryukov">SergeyBiryukov</a>,
+				<a href="http://profiles.wordpress.org/SGr33n">SGr33n</a>,
+				<a href="http://profiles.wordpress.org/shanebp">shanebp</a>,
+				<a href="http://profiles.wordpress.org/splatte">splatte</a>,
+				<a href="http://profiles.wordpress.org/thebrandonallen">thebrandonallen</a>,
+				<a href="http://profiles.wordpress.org/themightymo">themightymo</a>,
+				<a href="http://profiles.wordpress.org/tivnet">tivnet</a>,
+				<a href="http://profiles.wordpress.org/trishasalas">trishasalas</a>,
+				<a href="http://profiles.wordpress.org/vegasgeek">vegasgeek</a>,
+				<a href="http://profiles.wordpress.org/wpdennis">wpdennis</a>
 			</p>
 
 			<div class="return-to-dashboard">

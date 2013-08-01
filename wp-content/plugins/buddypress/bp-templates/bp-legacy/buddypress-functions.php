@@ -99,7 +99,7 @@ class BP_Legacy extends BP_Theme_Compat {
 				add_action( 'bp_member_header_actions',    'bp_add_friend_button',           5 );
 
 			// Activity button
-			if ( bp_is_active( 'activity' ) )
+			if ( bp_is_active( 'activity' ) && bp_activity_do_mentions() )
 				add_action( 'bp_member_header_actions',    'bp_send_public_message_button',  20 );
 
 			// Messages button
@@ -195,26 +195,15 @@ class BP_Legacy extends BP_Theme_Compat {
 	public function enqueue_styles() {
 
 		// LTR or RTL
-		$file = is_rtl() ? 'css/buddypress-rtl.css' : 'css/buddypress.css';
+		$file = is_rtl() ? 'buddypress-rtl.css' : 'buddypress.css';
 
-		// Check child theme
-		if ( file_exists( trailingslashit( get_stylesheet_directory() ) . $file ) ) {
-			$location = trailingslashit( get_stylesheet_directory_uri() );
-			$handle   = 'bp-child-css';
+		// Locate the BP stylesheet
+		$asset = $this->locate_asset_in_stack( $file, 'css' );
 
-		// Check parent theme
-		} elseif ( file_exists( trailingslashit( get_template_directory() ) . $file ) ) {
-			$location = trailingslashit( get_template_directory_uri() );
-			$handle   = 'bp-parent-css';
-
-		// BuddyPress Theme Compatibility
-		} else {
-			$location = trailingslashit( $this->url );
-			$handle   = 'bp-legacy-css';
+		// Enqueue BuddyPress-specific styling, if found
+		if ( isset( $asset['location'], $asset['handle'] ) ) {
+			wp_enqueue_style( $asset['handle'], $asset['location'], array(), $this->version, 'screen' );
 		}
-
-		// Enqueue the BuddyPress styling
-		wp_enqueue_style( $handle, $location . $file, array(), $this->version, 'screen' );
 	}
 
 	/**
@@ -224,27 +213,16 @@ class BP_Legacy extends BP_Theme_Compat {
 	 */
 	public function enqueue_scripts() {
 
-		// LTR or RTL
-		$file = 'js/buddypress.js';
+		$file = 'buddypress.js';
 
-		// Check child theme
-		if ( file_exists( trailingslashit( get_stylesheet_directory() ) . $file ) ) {
-			$location = trailingslashit( get_stylesheet_directory_uri() );
-			$handle   = 'bp-child-js';
+		// Locate the BP JS file
+		$asset = $this->locate_asset_in_stack( $file, 'js' );
 
-		// Check parent theme
-		} elseif ( file_exists( trailingslashit( get_template_directory() ) . $file ) ) {
-			$location = trailingslashit( get_template_directory_uri() );
-			$handle   = 'bp-parent-js';
-
-		// BuddyPress Theme Compatibility
-		} else {
-			$location = trailingslashit( $this->url );
-			$handle   = 'bp-legacy-js';
+		// Enqueue the global JS, if found - AJAX will not work
+		// without it
+		if ( isset( $asset['location'], $asset['handle'] ) ) {
+			wp_enqueue_script( $asset['handle'], $asset['location'], array( 'jquery' ), $this->version );
 		}
-
-		// Enqueue the global JS - Ajax will not work without it
-		wp_enqueue_script( $handle, $location . $file, array( 'jquery' ), $this->version );
 
 		// Add words that we need to use in JS to the end of the page so they can be translated and still used.
 		$params = array(
@@ -252,19 +230,95 @@ class BP_Legacy extends BP_Theme_Compat {
 			'accepted'          => __( 'Accepted', 'buddypress' ),
 			'rejected'          => __( 'Rejected', 'buddypress' ),
 			'show_all_comments' => __( 'Show all comments for this thread', 'buddypress' ),
+			'show_x_comments'   => __( 'Show all %d comments', 'buddypress' ),
 			'show_all'          => __( 'Show all', 'buddypress' ),
 			'comments'          => __( 'comments', 'buddypress' ),
 			'close'             => __( 'Close', 'buddypress' ),
 			'view'              => __( 'View', 'buddypress' ),
 			'mark_as_fav'	    => __( 'Favorite', 'buddypress' ),
-			'remove_fav'	    => __( 'Remove Favorite', 'buddypress' )
+			'remove_fav'	    => __( 'Remove Favorite', 'buddypress' ),
+			'unsaved_changes'   => __( 'Your profile has unsaved changes. If you leave the page, the changes will be lost.', 'buddypress' ),
 		);
-		wp_localize_script( $handle, 'BP_DTheme', $params );
+		wp_localize_script( $asset['handle'], 'BP_DTheme', $params );
 
 		// Maybe enqueue comment reply JS
 		if ( is_singular() && bp_is_blog_page() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
+	}
+
+	/**
+	 * Get the URL and handle of a web-accessible CSS or JS asset
+	 *
+	 * We provide two levels of customizability with respect to where CSS
+	 * and JS files can be stored: (1) the child theme/parent theme/theme
+	 * compat hierarchy, and (2) the "template stack" of /buddypress/css/,
+	 * /community/css/, and /css/. In this way, CSS and JS assets can be
+	 * overloaded, and default versions provided, in exactly the same way
+	 * as corresponding PHP templates.
+	 *
+	 * We are duplicating some of the logic that is currently found in
+	 * bp_locate_template() and the _template_stack() functions. Those
+	 * functions were built with PHP templates in mind, and will require
+	 * refactoring in order to provide "stack" functionality for assets
+	 * that must be accessible both using file_exists() (the file path)
+	 * and at a public URI.
+	 *
+	 * This method is marked private, with the understanding that the
+	 * implementation is subject to change or removal in an upcoming
+	 * release, in favor of a unified _template_stack() system. Plugin
+	 * and theme authors should not attempt to use what follows.
+	 *
+	 * @since BuddyPress (1.8)
+	 * @access private
+	 * @param string $file A filename like buddypress.cs
+	 * @param string $type css|js
+	 * @return array An array of data for the wp_enqueue_* function:
+	 *   'handle' (eg 'bp-child-css') and a 'location' (the URI of the
+	 *   asset)
+	 */
+	private function locate_asset_in_stack( $file, $type = 'css' ) {
+		// Child, parent, theme compat
+		$locations = array();
+
+		// No need to check child if template == stylesheet
+		if ( is_child_theme() ) {
+			$locations['bp-child'] = array(
+				'dir' => get_stylesheet_directory(),
+				'uri' => get_stylesheet_directory_uri(),
+			);
+		}
+
+		$locations['bp-parent'] = array(
+			'dir' => get_template_directory(),
+			'uri' => get_template_directory_uri(),
+		);
+
+		$locations['bp-legacy'] = array(
+			'dir' => bp_get_theme_compat_dir(),
+			'uri' => bp_get_theme_compat_url(),
+		);
+
+		// Subdirectories within the top-level $locations directories
+		$subdirs = array(
+			'buddypress/' . $type,
+			'community/' . $type,
+			$type,
+		);
+
+		$retval = array();
+
+		foreach ( $locations as $location_type => $location ) {
+			foreach ( $subdirs as $subdir ) {
+				if ( file_exists( trailingslashit( $location['dir'] ) . trailingslashit( $subdir ) . $file ) ) {
+					$retval['location'] = trailingslashit( $location['uri'] ) . trailingslashit( $subdir ) . $file;
+					$retval['handle']   = $location_type . '-' . $type;
+					break 2;
+				}
+			}
+		}
+
+		return $retval;
 	}
 
 	/**
@@ -416,6 +470,12 @@ function bp_legacy_theme_ajax_querystring( $query_string, $object ) {
 	if ( ! empty( $_POST['page'] ) && '-1' != $_POST['page'] )
 		$qs[] = 'page=' . absint( $_POST['page'] );
 
+	// exludes activity just posted and avoids duplicate ids
+	if ( ! empty( $_POST['exclude_just_posted'] ) ) {
+		$just_posted = wp_parse_id_list( $_POST['exclude_just_posted'] );
+		$qs[] = 'exclude=' . implode( ',', $just_posted );
+	}
+
 	$object_search_text = bp_get_search_default_text( $object );
  	if ( ! empty( $_POST['search_terms'] ) && $object_search_text != $_POST['search_terms'] && 'false' != $_POST['search_terms'] && 'undefined' != $_POST['search_terms'] )
 		$qs[] = 'search_terms=' . $_POST['search_terms'];
@@ -457,18 +517,25 @@ function bp_legacy_theme_object_template_loader() {
 	if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
 		return;
 
+	// Bail if no object passed
+	if ( empty( $_POST['object'] ) )
+		return;
+
+	// Sanitize the object
+	$object = sanitize_title( $_POST['object'] );
+
+	// Bail if object is not an active component to prevent arbitrary file inclusion
+	if ( ! bp_is_active( $object ) )
+		return;
+
  	/**
 	 * AJAX requests happen too early to be seen by bp_update_is_directory()
 	 * so we do it manually here to ensure templates load with the correct
 	 * context. Without this check, templates will load the 'single' version
 	 * of themselves rather than the directory version.
 	 */
-
 	if ( ! bp_current_action() )
 		bp_update_is_directory( true, bp_current_component() );
-
-	// Sanitize the post object
-	$object = esc_attr( $_POST['object'] );
 
 	// Locate the object template
 	bp_get_template_part( "$object/$object-loop" );
@@ -819,7 +886,6 @@ function bp_legacy_theme_get_single_activity_content() {
 /**
  * Invites a friend to join a group via a POST request.
  *
- * @return unknown
  * @since BuddyPress (1.2)
  * @todo Audit return types
  */

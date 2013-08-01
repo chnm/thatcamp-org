@@ -81,8 +81,11 @@ function bp_core_new_nav_item( $args = '' ) {
 		if ( !empty( $default_subnav_slug ) && bp_is_current_action( $default_subnav_slug ) && !bp_action_variable( 0 ) ) {
 			unset( $bp->canonical_stack['action'] );
 		} elseif ( ! bp_current_action() ) {
-			$func = is_object( $screen_function[0] ) ? array( &$screen_function[0], $screen_function[1] ) : $screen_function;
-			add_action( 'bp_screens', $func, 3 );
+
+			// Add our screen hook if screen function is callable
+			if ( is_callable( $screen_function ) ) {
+				add_action( 'bp_screens', $screen_function, 3 );
+			}
 
 			if ( !empty( $default_subnav_slug ) ) {
 				$bp->current_action = apply_filters( 'bp_default_component_subnav', $default_subnav_slug, $r );
@@ -112,9 +115,8 @@ function bp_core_new_nav_default( $args = '' ) {
 	extract( $r, EXTR_SKIP );
 
 	if ( $function = $bp->bp_nav[$parent_slug]['screen_function'] ) {
-		if ( is_object( $function[0] ) ) {
-			remove_action( 'bp_screens', array( &$function[0], $function[1] ), 3 );
-		} else {
+		// Remove our screen hook if screen function is callable
+		if ( is_callable( $function ) ) {
 			remove_action( 'bp_screens', $function, 3 );
 		}
 	}
@@ -136,9 +138,7 @@ function bp_core_new_nav_default( $args = '' ) {
 		// No subnav item has been requested in the URL, so set a new nav default
 		if ( empty( $unfiltered_action ) ) {
 			if ( !bp_is_current_action( $subnav_slug ) ) {
-				if ( is_object( $screen_function[0] ) ) {
-					add_action( 'bp_screens', array( &$screen_function[0], $screen_function[1] ), 3 );
-				} else {
+				if ( is_callable( $screen_function ) ) {
 					add_action( 'bp_screens', $screen_function, 3 );
 				}
 
@@ -278,9 +278,8 @@ function bp_core_new_subnav_item( $args = '' ) {
 
 		// Before hooking the screen function, check user access
 		if ( !empty( $user_has_access ) ) {
-			if ( is_object( $screen_function[0] ) ) {
-				add_action( 'bp_screens', array( &$screen_function[0], $screen_function[1] ), 3 );
-			} else {
+			// Add our screen hook if screen function is callable
+			if ( is_callable( $screen_function ) ) {
 				add_action( 'bp_screens', $screen_function, 3 );
 			}
 		} else {
@@ -355,7 +354,7 @@ add_action( 'admin_head', 'bp_core_sort_subnav_items' );
  * @package BuddyPress
  * @since BuddyPress (1.5)
  *
- * @param str $nav_item The id of the top-level nav item whose nav items you're checking
+ * @param string $nav_item The id of the top-level nav item whose nav items you're checking
  * @return bool $has_subnav True if the nav item is found and has subnav items; false otherwise
  */
 function bp_nav_item_has_subnav( $nav_item = '' ) {
@@ -390,9 +389,8 @@ function bp_core_remove_nav_item( $parent_id ) {
 		return false;
 
 	if ( $function = $bp->bp_nav[$parent_id]['screen_function'] ) {
-		if ( is_object( $function[0] ) ) {
-			remove_action( 'bp_screens', array( &$function[0], $function[1] ), 3 );
-		} else {
+		// Remove our screen hook if screen function is callable
+		if ( is_callable( $function ) ) {
 			remove_action( 'bp_screens', $function, 3 );
 		}
 	}
@@ -404,18 +402,17 @@ function bp_core_remove_nav_item( $parent_id ) {
  * Removes a navigation item from the sub navigation array used in BuddyPress themes.
  *
  * @package BuddyPress Core
- * @param $parent_id The id of the parent navigation item.
- * @param $slug The slug of the sub navigation item.
+ * @param string $parent_id The id of the parent navigation item.
+ * @param string $slug The slug of the sub navigation item.
  */
 function bp_core_remove_subnav_item( $parent_id, $slug ) {
 	global $bp;
 
 	$screen_function = isset( $bp->bp_options_nav[$parent_id][$slug]['screen_function'] ) ? $bp->bp_options_nav[$parent_id][$slug]['screen_function'] : false;
 
-	if ( !empty( $screen_function ) ) {
-		if ( is_object( $screen_function[0] ) ) {
-			remove_action( 'bp_screens', array( &$screen_function[0], $screen_function[1] ), 3 );
-		} else {
+	if ( ! empty( $screen_function ) ) {
+		// Remove our screen hook if screen function is callable
+		if ( is_callable( $screen_function ) ) {
 			remove_action( 'bp_screens', $screen_function, 3 );
 		}
 	}
@@ -430,7 +427,7 @@ function bp_core_remove_subnav_item( $parent_id, $slug ) {
  * Clear the subnav items for a specific nav item.
  *
  * @package BuddyPress Core
- * @param $parent_id The id of the parent navigation item.
+ * @param string $parent_id The id of the parent navigation item.
  * @global BuddyPress $bp The one true BuddyPress instance
  */
 function bp_core_reset_subnav_items( $parent_slug ) {

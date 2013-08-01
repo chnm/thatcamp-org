@@ -85,6 +85,124 @@ function bp_core_get_table_prefix() {
 }
 
 /**
+ * Format numbers the BuddyPress way
+ *
+ * @param int $number
+ * @param bool $decimals
+ * @return string
+ */
+function bp_core_number_format( $number, $decimals = false ) {
+
+	// Force number to 0 if needed
+	if ( empty( $number ) )
+		$number = 0;
+
+	return apply_filters( 'bp_core_number_format', number_format_i18n( $number, $decimals ), $number, $decimals );
+}
+
+/**
+ * A utility for parsing individual function arguments into an array.
+ *
+ * The purpose of this function is to help with backward compatibility in cases where
+ *
+ *   function foo( $bar = 1, $baz = false, $barry = array(), $blip = false ) { // ...
+ *
+ * is deprecated in favor of
+ *
+ *   function foo( $args = array() ) {
+ *       $defaults = array(
+ *           'bar'  => 1,
+ *           'arg2' => false,
+ *           'arg3' => array(),
+ *           'arg4' => false,
+ *       );
+ *       $r = wp_parse_args( $args, $defaults ); // ...
+ *
+ * The first argument, $old_args_keys, is an array that matches the parameter positions (keys) to
+ * the new $args keys (values):
+ *
+ *   $old_args_keys = array(
+ *       0 => 'bar', // because $bar was the 0th parameter for foo()
+ *       1 => 'baz', // because $baz was the 1st parameter for foo()
+ *       2 => 'barry', // etc
+ *       3 => 'blip'
+ *   );
+ *
+ * For the second argument, $func_args, you should just pass the value of func_get_args().
+ *
+ * @since BuddyPress (1.6)
+ * @param array $old_args_keys
+ * @param array $func_args
+ * @return array $new_args
+ */
+function bp_core_parse_args_array( $old_args_keys, $func_args ) {
+	$new_args = array();
+
+	foreach( $old_args_keys as $arg_num => $arg_key ) {
+		if ( isset( $func_args[$arg_num] ) ) {
+			$new_args[$arg_key] = $func_args[$arg_num];
+		}
+	}
+
+	return $new_args;
+}
+
+/**
+ * Sanitize an 'order' parameter for use in building SQL queries
+ *
+ * Strings like 'DESC', 'desc', ' desc' will be interpreted into 'DESC'.
+ * Everything else becomes 'ASC'.
+ *
+ * @since BuddyPress (1.8)
+ * @param string $order The 'order' string, as passed to the SQL constructor
+ * @return string The sanitized value 'DESC' or 'ASC'
+ */
+function bp_esc_sql_order( $order = '' ) {
+	$order = strtoupper( trim( $order ) );
+	return 'DESC' === $order ? 'DESC' : 'ASC';
+}
+
+/**
+ * Are we running username compatibility mode?
+ *
+ * @package BuddyPress
+ * @since BuddyPress (1.5)
+ *
+ * @uses apply_filters() Filter 'bp_is_username_compatibility_mode' to alter
+ * @return bool False when compatibility mode is disabled (default); true when enabled
+ * @todo Move to members component?
+ */
+function bp_is_username_compatibility_mode() {
+	return apply_filters( 'bp_is_username_compatibility_mode', defined( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE' ) && BP_ENABLE_USERNAME_COMPATIBILITY_MODE );
+}
+
+/**
+ * Should we use the WP Toolbar?
+ *
+ * The WP Toolbar, introduced in WP 3.1, is fully supported in BuddyPress as of BP 1.5.
+ * For BP 1.6, the WP Toolbar is the default.
+ *
+ * @return bool False when WP Toolbar support is disabled; true when enabled (default)
+ * @since BuddyPress (1.5)
+ * @uses apply_filters() Filter 'bp_use_wp_admin_bar' to alter
+ */
+function bp_use_wp_admin_bar() {
+	$use_admin_bar = true;
+
+	// Has the WP Toolbar constant been explicity set?
+	if ( defined( 'BP_USE_WP_ADMIN_BAR' ) && ! BP_USE_WP_ADMIN_BAR )
+		$use_admin_bar = false;
+
+	// Has the admin chosen to use the BuddyBar during an upgrade?
+	elseif ( (bool) bp_get_option( '_bp_force_buddybar', false ) )
+		$use_admin_bar = false;
+
+	return apply_filters( 'bp_use_wp_admin_bar', $use_admin_bar );
+}
+
+/** Directory *****************************************************************/
+
+/**
  * Fetches BP pages from the meta table, depending on setup
  *
  * @package BuddyPress Core
@@ -126,7 +244,7 @@ function bp_core_update_directory_page_ids( $blog_page_ids ) {
  * @package BuddyPress Core
  * @since BuddyPress (1.5)
  *
- * @return obj $pages Page names, IDs, and slugs
+ * @return object Page names, IDs, and slugs
  */
 function bp_core_get_directory_pages() {
 	global $wpdb;
@@ -275,8 +393,8 @@ function bp_core_add_page_mappings( $components, $existing = 'keep' ) {
  * @package BuddyPress Core
  * @since BuddyPress (1.5)
  *
- * @param str $root_slug The root slug, which comes from $bp->pages->[component]->slug
- * @return str $slug The short slug for use in the middle of URLs
+ * @param string $root_slug The root slug, which comes from $bp->pages->[component]->slug
+ * @return string The short slug for use in the middle of URLs
  */
 function bp_core_component_slug_from_root_slug( $root_slug ) {
 	$slug_chunks = explode( '/', $root_slug );
@@ -286,12 +404,72 @@ function bp_core_component_slug_from_root_slug( $root_slug ) {
 }
 
 /**
+ * This function originally let plugins add support for pages in the root of the install.
+ * These root level pages are now handled by actual WordPress pages and this function is now
+ * a convenience for compatibility with the new method.
+ *
+ * @global $bp BuddyPress global settings
+ * @param string $slug The slug of the component
+ */
+function bp_core_add_root_component( $slug ) {
+	global $bp;
+
+	if ( empty( $bp->pages ) )
+		$bp->pages = bp_core_get_directory_pages();
+
+	$match = false;
+
+	// Check if the slug is registered in the $bp->pages global
+	foreach ( (array) $bp->pages as $key => $page ) {
+		if ( $key == $slug || $page->slug == $slug )
+			$match = true;
+	}
+
+	// If there was no match, add a page for this root component
+	if ( empty( $match ) ) {
+		$bp->add_root[] = $slug;
+	}
+
+	// Make sure that this component is registered as requiring a top-level directory
+	if ( isset( $bp->{$slug} ) ) {
+		$bp->loaded_components[$bp->{$slug}->slug] = $bp->{$slug}->id;
+		$bp->{$slug}->has_directory = true;
+	}
+}
+
+function bp_core_create_root_component_page() {
+	global $bp;
+
+	$new_page_ids = array();
+
+	foreach ( (array) $bp->add_root as $slug )
+		$new_page_ids[$slug] = wp_insert_post( array( 'comment_status' => 'closed', 'ping_status' => 'closed', 'post_title' => ucwords( $slug ), 'post_status' => 'publish', 'post_type' => 'page' ) );
+
+	$page_ids = array_merge( (array) $new_page_ids, (array) bp_core_get_directory_page_ids() );
+	bp_core_update_directory_page_ids( $page_ids );
+}
+
+/**
+ * Adds illegal names to WP so that root components will not conflict with
+ * blog names on a subdirectory installation.
+ *
+ * For example, it would stop someone creating a blog with the slug "groups".
+ *
+ * @todo Deprecate?
+ */
+function bp_core_add_illegal_names() {
+	update_site_option( 'illegal_names', get_site_option( 'illegal_names' ), array() );
+}
+
+/** URI ***********************************************************************/
+
+/**
  * Returns the domain for the root blog.
  * eg: http://domain.com/ OR https://domain.com
  *
  * @package BuddyPress Core
  * @uses get_blog_option() WordPress function to fetch blog meta.
- * @return $domain The domain URL for the blog.
+ * @return string The domain URL for the blog.
  */
 function bp_core_get_root_domain() {
 
@@ -299,6 +477,76 @@ function bp_core_get_root_domain() {
 
 	return apply_filters( 'bp_core_get_root_domain', $domain );
 }
+
+/**
+ * Performs a status safe wp_redirect() that is compatible with bp_catch_uri()
+ *
+ * @package BuddyPress Core
+ * @uses wp_safe_redirect()
+ */
+function bp_core_redirect( $location, $status = 302 ) {
+
+	// On some setups, passing the value of wp_get_referer() may result in an
+	// empty value for $location, which results in an error. Ensure that we
+	// have a valid URL.
+	if ( empty( $location ) )
+		$location = bp_get_root_domain();
+
+	// Make sure we don't call status_header() in bp_core_do_catch_uri() as this
+	// conflicts with wp_redirect() and wp_safe_redirect().
+	buddypress()->no_status_set = true;
+
+	wp_safe_redirect( $location, $status );
+	die;
+}
+
+/**
+ * Returns the referrer URL without the http(s)://
+ *
+ * @package BuddyPress Core
+ * @return string The referrer URL
+ */
+function bp_core_referrer() {
+	$referer = explode( '/', wp_get_referer() );
+	unset( $referer[0], $referer[1], $referer[2] );
+	return implode( '/', $referer );
+}
+
+/**
+ * Get the path of of the current site.
+ *
+ * @package BuddyPress Core
+ *
+ * @global object $current_site
+ * @return string
+ */
+function bp_core_get_site_path() {
+	global $current_site;
+
+	if ( is_multisite() )
+		$site_path = $current_site->path;
+	else {
+		$site_path = (array) explode( '/', home_url() );
+
+		if ( count( $site_path ) < 2 )
+			$site_path = '/';
+		else {
+			// Unset the first three segments (http(s)://domain.com part)
+			unset( $site_path[0] );
+			unset( $site_path[1] );
+			unset( $site_path[2] );
+
+			if ( !count( $site_path ) )
+				$site_path = '/';
+			else
+				$site_path = '/' . implode( '/', $site_path ) . '/';
+		}
+	}
+
+	return apply_filters( 'bp_core_get_site_path', $site_path );
+}
+
+/** Time **********************************************************************/
 
 /**
  * Get the current GMT time to save into the DB
@@ -314,14 +562,179 @@ function bp_core_current_time( $gmt = true ) {
 }
 
 /**
+ * Based on function created by Dunstan Orchard - http://1976design.com
+ *
+ * This function will return an English representation of the time elapsed
+ * since a given date.
+ * eg: 2 hours and 50 minutes
+ * eg: 4 days
+ * eg: 4 weeks and 6 days
+ *
+ * Note that fractions of minutes are not represented in the return string. So
+ * an interval of 3 minutes will be represented by "3 minutes ago", as will an
+ * interval of 3 minutes 59 seconds.
+ *
+ * @package BuddyPress Core
+ * @uses apply_filters() Filter 'bp_core_time_since_pre' to bypass BP's calculations
+ * @uses apply_filters() Filter 'bp_core_time_since' to modify BP's calculations
+ * @param int $older_date Unix timestamp of date you want to calculate the time since for
+ * @param int $newer_date Unix timestamp of date to compare older date to. Default false (current time).
+ * @return string The time since.
+ */
+function bp_core_time_since( $older_date, $newer_date = false ) {
+
+	// Use this filter to bypass BuddyPress's time_since calculations
+	if ( $pre_value = apply_filters( 'bp_core_time_since_pre', false, $older_date, $newer_date ) ) {
+		return $pre_value;
+	}
+
+	// Setup the strings
+	$unknown_text   = apply_filters( 'bp_core_time_since_unknown_text',   __( 'sometime',  'buddypress' ) );
+	$right_now_text = apply_filters( 'bp_core_time_since_right_now_text', __( 'right now', 'buddypress' ) );
+	$ago_text       = apply_filters( 'bp_core_time_since_ago_text',       __( '%s ago',    'buddypress' ) );
+
+	// array of time period chunks
+	$chunks = array(
+		YEAR_IN_SECONDS,
+		30 * DAY_IN_SECONDS,
+		WEEK_IN_SECONDS,
+		DAY_IN_SECONDS,
+		HOUR_IN_SECONDS,
+		MINUTE_IN_SECONDS,
+		1
+	);
+
+	if ( !empty( $older_date ) && !is_numeric( $older_date ) ) {
+		$time_chunks = explode( ':', str_replace( ' ', ':', $older_date ) );
+		$date_chunks = explode( '-', str_replace( ' ', '-', $older_date ) );
+		$older_date  = gmmktime( (int) $time_chunks[1], (int) $time_chunks[2], (int) $time_chunks[3], (int) $date_chunks[1], (int) $date_chunks[2], (int) $date_chunks[0] );
+	}
+
+	/**
+	 * $newer_date will equal false if we want to know the time elapsed between
+	 * a date and the current time. $newer_date will have a value if we want to
+	 * work out time elapsed between two known dates.
+	 */
+	$newer_date = ( !$newer_date ) ? strtotime( bp_core_current_time() ) : $newer_date;
+
+	// Difference in seconds
+	$since = $newer_date - $older_date;
+
+	// Something went wrong with date calculation and we ended up with a negative date.
+	if ( 0 > $since ) {
+		$output = $unknown_text;
+
+	/**
+	 * We only want to output two chunks of time here, eg:
+	 * x years, xx months
+	 * x days, xx hours
+	 * so there's only two bits of calculation below:
+	 */
+	} else {
+
+		// Step one: the first chunk
+		for ( $i = 0, $j = count( $chunks ); $i < $j; ++$i ) {
+			$seconds = $chunks[$i];
+
+			// Finding the biggest chunk (if the chunk fits, break)
+			$count = floor( $since / $seconds );
+			if ( 0 != $count ) {
+				break;
+			}
+		}
+
+		// If $i iterates all the way to $j, then the event happened 0 seconds ago
+		if ( !isset( $chunks[$i] ) ) {
+			$output = $right_now_text;
+
+		} else {
+
+			// Set output var
+			switch ( $seconds ) {
+				case YEAR_IN_SECONDS :
+					$output = sprintf( _n( '%s year',   '%s years',   $count, 'buddypress' ), $count );
+					break;
+				case 30 * DAY_IN_SECONDS :
+					$output = sprintf( _n( '%s month',  '%s months',  $count, 'buddypress' ), $count );
+					break;
+				case WEEK_IN_SECONDS :
+					$output = sprintf( _n( '%s week',   '%s weeks',   $count, 'buddypress' ), $count );
+					break;
+				case DAY_IN_SECONDS :
+					$output = sprintf( _n( '%s day',    '%s days',    $count, 'buddypress' ), $count );
+					break;
+				case HOUR_IN_SECONDS :
+					$output = sprintf( _n( '%s hour',   '%s hours',   $count, 'buddypress' ), $count );
+					break;
+				case MINUTE_IN_SECONDS :
+					$output = sprintf( _n( '%s minute', '%s minutes', $count, 'buddypress' ), $count );
+					break;
+				default:
+					$output = sprintf( _n( '%s second', '%s seconds', $count, 'buddypress' ), $count );
+			}
+
+			// Step two: the second chunk
+			// A quirk in the implementation means that this
+			// condition fails in the case of minutes and seconds.
+			// We've left the quirk in place, since fractions of a
+			// minute are not a useful piece of information for our
+			// purposes
+			if ( $i + 2 < $j ) {
+				$seconds2 = $chunks[$i + 1];
+				$count2   = floor( ( $since - ( $seconds * $count ) ) / $seconds2 );
+
+				// Add to output var
+				if ( 0 != $count2 ) {
+					$output .= _x( ',', 'Separator in time since', 'buddypress' ) . ' ';
+
+					switch ( $seconds2 ) {
+						case 30 * DAY_IN_SECONDS :
+							$output .= sprintf( _n( '%s month',  '%s months',  $count2, 'buddypress' ), $count2 );
+							break;
+						case WEEK_IN_SECONDS :
+							$output .= sprintf( _n( '%s week',   '%s weeks',   $count2, 'buddypress' ), $count2 );
+							break;
+						case DAY_IN_SECONDS :
+							$output .= sprintf( _n( '%s day',    '%s days',    $count2, 'buddypress' ), $count2 );
+							break;
+						case HOUR_IN_SECONDS :
+							$output .= sprintf( _n( '%s hour',   '%s hours',   $count2, 'buddypress' ), $count2 );
+							break;
+						case MINUTE_IN_SECONDS :
+							$output .= sprintf( _n( '%s minute', '%s minutes', $count2, 'buddypress' ), $count2 );
+							break;
+						default:
+							$output .= sprintf( _n( '%s second', '%s seconds', $count2, 'buddypress' ), $count2 );
+					}
+				}
+			}
+
+			// No output, so happened right now
+			if ( ! (int) trim( $output ) ) {
+				$output = $right_now_text;
+			}
+		}
+	}
+
+	// Append 'ago' to the end of time-since if not 'right now'
+	if ( $output != $right_now_text ) {
+		$output = sprintf( $ago_text, $output );
+	}
+
+	return apply_filters( 'bp_core_time_since', $output, $older_date, $newer_date );
+}
+
+/** Messages ******************************************************************/
+
+/**
  * Adds a feedback (error/success) message to the WP cookie so it can be
  * displayed after the page reloads.
  *
  * @package BuddyPress Core
  *
  * @global BuddyPress $bp The one true BuddyPress instance
- * @param str $message Feedback to give to user
- * @param str $type updated|success|error|warning
+ * @param string $message Feedback to give to user
+ * @param string $type updated|success|error|warning
  */
 function bp_core_add_message( $message, $type = '' ) {
 	global $bp;
@@ -400,135 +813,7 @@ function bp_core_render_message() {
 	endif;
 }
 
-/**
- * Format numbers the BuddyPress way
- *
- * @param str $number
- * @param bool $decimals
- * @return str
- */
-function bp_core_number_format( $number, $decimals = false ) {
-
-	// Force number to 0 if needed
-	if ( empty( $number ) )
-		$number = 0;
-
-	return apply_filters( 'bp_core_number_format', number_format_i18n( $number, $decimals ), $number, $decimals );
-}
-
-/**
- * Based on function created by Dunstan Orchard - http://1976design.com
- *
- * This function will return an English representation of the time elapsed
- * since a given date.
- * eg: 2 hours and 50 minutes
- * eg: 4 days
- * eg: 4 weeks and 6 days
- *
- * @package BuddyPress Core
- * @uses apply_filters() Filter 'bp_core_time_since_pre' to bypass BP's calculations
- * @uses apply_filters() Filter 'bp_core_time_since' to modify BP's calculations
- * @param $older_date int Unix timestamp of date you want to calculate the time since for
- * @param $newer_date int Unix timestamp of date to compare older date to. Default false (current time).
- * @return str The time since.
- */
-function bp_core_time_since( $older_date, $newer_date = false ) {
-
-	// Use this filter to bypass BuddyPress's time_since calculations
-	if ( $pre_value = apply_filters( 'bp_core_time_since_pre', false, $older_date, $newer_date ) ) {
-		return $pre_value;
-	}
-
-	// Setup the strings
-	$unknown_text   = apply_filters( 'bp_core_time_since_unknown_text',   __( 'sometime',  'buddypress' ) );
-	$right_now_text = apply_filters( 'bp_core_time_since_right_now_text', __( 'right now', 'buddypress' ) );
-	$ago_text       = apply_filters( 'bp_core_time_since_ago_text',       __( '%s ago',    'buddypress' ) );
-
-	// array of time period chunks
-	$chunks = array(
-		array( 60 * 60 * 24 * 365 , __( 'year',   'buddypress' ), __( 'years',   'buddypress' ) ),
-		array( 60 * 60 * 24 * 30 ,  __( 'month',  'buddypress' ), __( 'months',  'buddypress' ) ),
-		array( 60 * 60 * 24 * 7,    __( 'week',   'buddypress' ), __( 'weeks',   'buddypress' ) ),
-		array( 60 * 60 * 24 ,       __( 'day',    'buddypress' ), __( 'days',    'buddypress' ) ),
-		array( 60 * 60 ,            __( 'hour',   'buddypress' ), __( 'hours',   'buddypress' ) ),
-		array( 60 ,                 __( 'minute', 'buddypress' ), __( 'minutes', 'buddypress' ) ),
-		array( 1,                   __( 'second', 'buddypress' ), __( 'seconds', 'buddypress' ) )
-	);
-
-	if ( !empty( $older_date ) && !is_numeric( $older_date ) ) {
-		$time_chunks = explode( ':', str_replace( ' ', ':', $older_date ) );
-		$date_chunks = explode( '-', str_replace( ' ', '-', $older_date ) );
-		$older_date  = gmmktime( (int) $time_chunks[1], (int) $time_chunks[2], (int) $time_chunks[3], (int) $date_chunks[1], (int) $date_chunks[2], (int) $date_chunks[0] );
-	}
-
-	/**
-	 * $newer_date will equal false if we want to know the time elapsed between
-	 * a date and the current time. $newer_date will have a value if we want to
-	 * work out time elapsed between two known dates.
-	 */
-	$newer_date = ( !$newer_date ) ? strtotime( bp_core_current_time() ) : $newer_date;
-
-	// Difference in seconds
-	$since = $newer_date - $older_date;
-
-	// Something went wrong with date calculation and we ended up with a negative date.
-	if ( 0 > $since ) {
-		$output = $unknown_text;
-
-	/**
-	 * We only want to output two chunks of time here, eg:
-	 * x years, xx months
-	 * x days, xx hours
-	 * so there's only two bits of calculation below:
-	 */
-	} else {
-
-		// Step one: the first chunk
-		for ( $i = 0, $j = count( $chunks ); $i < $j; ++$i ) {
-			$seconds = $chunks[$i][0];
-
-			// Finding the biggest chunk (if the chunk fits, break)
-			$count = floor( $since / $seconds );
-			if ( 0 != $count ) {
-				break;
-			}
-		}
-
-		// If $i iterates all the way to $j, then the event happened 0 seconds ago
-		if ( !isset( $chunks[$i] ) ) {
-			$output = $right_now_text;
-
-		} else {
-
-			// Set output var
-			$output = ( 1 == $count ) ? '1 '. $chunks[$i][1] : $count . ' ' . $chunks[$i][2];
-
-			// Step two: the second chunk
-			if ( $i + 2 < $j ) {
-				$seconds2 = $chunks[$i + 1][0];
-				$name2    = $chunks[$i + 1][1];
-				$count2   = floor( ( $since - ( $seconds * $count ) ) / $seconds2 );
-
-				// Add to output var
-				if ( 0 != $count2 ) {
-					$output .= ( 1 == $count2 ) ? _x( ',', 'Separator in time since', 'buddypress' ) . ' 1 '. $name2 : _x( ',', 'Separator in time since', 'buddypress' ) . ' ' . $count2 . ' ' . $chunks[$i + 1][2];
-				}
-			}
-
-			// No output, so happened right now
-			if ( ! (int) trim( $output ) ) {
-				$output = $right_now_text;
-			}
-		}
-	}
-
-	// Append 'ago' to the end of time-since if not 'right now'
-	if ( $output != $right_now_text ) {
-		$output = sprintf( $ago_text, $output );
-	}
-
-	return apply_filters( 'bp_core_time_since', $output, $older_date, $newer_date );
-}
+/** Last active ***************************************************************/
 
 /**
  * Record user activity to the database. Many functions use a "last active" feature to
@@ -571,9 +856,8 @@ add_action( 'wp_head', 'bp_core_record_activity' );
  * Formats last activity based on time since date given.
  *
  * @package BuddyPress Core
- * @param last_activity_date The date of last activity.
- * @param $before The text to prepend to the activity time since figure.
- * @param $after The text to append to the activity time since figure.
+ * @param string $last_activity_date The date of last activity.
+ * @param string $string
  * @uses bp_core_time_since() This function will return an English representation of the time elapsed.
  */
 function bp_core_get_last_activity( $last_activity_date, $string ) {
@@ -586,283 +870,7 @@ function bp_core_get_last_activity( $last_activity_date, $string ) {
 	return apply_filters( 'bp_core_get_last_activity', $last_active, $last_activity_date, $string );
 }
 
-/**
- * Get the path of of the current site.
- *
- * @package BuddyPress Core
- *
- * @global object $current_site
- * @return string
- */
-function bp_core_get_site_path() {
-	global $current_site;
-
-	if ( is_multisite() )
-		$site_path = $current_site->path;
-	else {
-		$site_path = (array) explode( '/', home_url() );
-
-		if ( count( $site_path ) < 2 )
-			$site_path = '/';
-		else {
-			// Unset the first three segments (http(s)://domain.com part)
-			unset( $site_path[0] );
-			unset( $site_path[1] );
-			unset( $site_path[2] );
-
-			if ( !count( $site_path ) )
-				$site_path = '/';
-			else
-				$site_path = '/' . implode( '/', $site_path ) . '/';
-		}
-	}
-
-	return apply_filters( 'bp_core_get_site_path', $site_path );
-}
-
-/**
- * Performs a status safe wp_redirect() that is compatible with bp_catch_uri()
- *
- * @package BuddyPress Core
- * @uses wp_safe_redirect()
- */
-function bp_core_redirect( $location, $status = 302 ) {
-
-	// On some setups, passing the value of wp_get_referer() may result in an
-	// empty value for $location, which results in an error. Ensure that we
-	// have a valid URL.
-	if ( empty( $location ) )
-		$location = bp_get_root_domain();
-
-	// Make sure we don't call status_header() in bp_core_do_catch_uri() as this
-	// conflicts with wp_redirect() and wp_safe_redirect().
-	buddypress()->no_status_set = true;
-
-	wp_safe_redirect( $location, $status );
-	die;
-}
-
-/**
- * Returns the referrer URL without the http(s)://
- *
- * @package BuddyPress Core
- * @return The referrer URL
- */
-function bp_core_referrer() {
-	$referer = explode( '/', wp_get_referer() );
-	unset( $referer[0], $referer[1], $referer[2] );
-	return implode( '/', $referer );
-}
-
-/**
- * Adds illegal names to WP so that root components will not conflict with
- * blog names on a subdirectory installation.
- *
- * For example, it would stop someone creating a blog with the slug "groups".
- */
-function bp_core_add_illegal_names() {
-	update_site_option( 'illegal_names', get_site_option( 'illegal_names' ), array() );
-}
-
-/**
- * A javascript free implementation of the search functions in BuddyPress
- *
- * @package BuddyPress Core
- * @param string $slug The slug to redirect to for searching.
- */
-function bp_core_action_search_site( $slug = '' ) {
-
-	if ( !bp_is_current_component( bp_get_search_slug() ) )
-		return;
-
-	if ( empty( $_POST['search-terms'] ) ) {
-		bp_core_redirect( bp_get_root_domain() );
-		return;
-	}
-
-	$search_terms = stripslashes( $_POST['search-terms'] );
-	$search_which = !empty( $_POST['search-which'] ) ? $_POST['search-which'] : '';
-	$query_string = '/?s=';
-
-	if ( empty( $slug ) ) {
-		switch ( $search_which ) {
-			case 'posts':
-				$slug = '';
-				$var  = '/?s=';
-
-				// If posts aren't displayed on the front page, find the post page's slug.
-				if ( 'page' == get_option( 'show_on_front' ) ) {
-					$page = get_post( get_option( 'page_for_posts' ) );
-
-					if ( !is_wp_error( $page ) && !empty( $page->post_name ) ) {
-						$slug = $page->post_name;
-						$var  = '?s=';
-					}
-				}
-				break;
-
-			case 'blogs':
-				$slug = bp_is_active( 'blogs' )  ? bp_get_blogs_root_slug()  : '';
-				break;
-
-			case 'forums':
-				$slug = bp_is_active( 'forums' ) ? bp_get_forums_root_slug() : '';
-				$query_string = '/?fs=';
-				break;
-
-			case 'groups':
-				$slug = bp_is_active( 'groups' ) ? bp_get_groups_root_slug() : '';
-				break;
-
-			case 'members':
-			default:
-				$slug = bp_get_members_root_slug();
-				break;
-		}
-
-		if ( empty( $slug ) && 'posts' != $search_which ) {
-			bp_core_redirect( bp_get_root_domain() );
-			return;
-		}
-	}
-
-	bp_core_redirect( apply_filters( 'bp_core_search_site', home_url( $slug . $query_string . urlencode( $search_terms ) ), $search_terms ) );
-}
-add_action( 'bp_init', 'bp_core_action_search_site', 7 );
-
-/**
- * Prints the generation time in the footer of the site.
- *
- * @package BuddyPress Core
- */
-function bp_core_print_generation_time() {
-?>
-
-<!-- Generated in <?php timer_stop(1); ?> seconds. (<?php echo get_num_queries(); ?> q) -->
-
-	<?php
-}
-add_action( 'wp_footer', 'bp_core_print_generation_time' );
-
-/**
- * Load the buddypress translation file for current language
- *
- * @package BuddyPress Core
- */
-function bp_core_load_buddypress_textdomain() {
-	$locale        = apply_filters( 'buddypress_locale', get_locale() );
-	$mofile        = sprintf( 'buddypress-%s.mo', $locale );
-	$mofile_global = WP_LANG_DIR . '/' . $mofile;
-	$mofile_local  = BP_PLUGIN_DIR . 'bp-languages/' . $mofile;
-
-	if ( file_exists( $mofile_global ) )
-		return load_textdomain( 'buddypress', $mofile_global );
-	elseif ( file_exists( $mofile_local ) )
-		return load_textdomain( 'buddypress', $mofile_local );
-	else
-		return false;
-}
-add_action ( 'bp_core_loaded', 'bp_core_load_buddypress_textdomain' );
-
-/**
- * Initializes {@link BP_Embed} after everything is loaded.
- *
- * @global object $bp BuddyPress global settings
- * @package BuddyPress Core
- * @since BuddyPress (1.5)
- */
-function bp_embed_init() {
-	global $bp;
-
-	if ( empty( $bp->embed ) )
-		$bp->embed = new BP_Embed();
-}
-add_action( 'bp_init', 'bp_embed_init', 9 );
-
-/**
- * This function originally let plugins add support for pages in the root of the install.
- * These root level pages are now handled by actual WordPress pages and this function is now
- * a convenience for compatibility with the new method.
- *
- * @global $bp BuddyPress global settings
- * @param $slug str The slug of the component
- */
-function bp_core_add_root_component( $slug ) {
-	global $bp;
-
-	if ( empty( $bp->pages ) )
-		$bp->pages = bp_core_get_directory_pages();
-
-	$match = false;
-
-	// Check if the slug is registered in the $bp->pages global
-	foreach ( (array) $bp->pages as $key => $page ) {
-		if ( $key == $slug || $page->slug == $slug )
-			$match = true;
-	}
-
-	// If there was no match, add a page for this root component
-	if ( empty( $match ) ) {
-		$bp->add_root[] = $slug;
-	}
-
-	// Make sure that this component is registered as requiring a top-level directory
-	if ( isset( $bp->{$slug} ) ) {
-		$bp->loaded_components[$bp->{$slug}->slug] = $bp->{$slug}->id;
-		$bp->{$slug}->has_directory = true;
-	}
-}
-
-function bp_core_create_root_component_page() {
-	global $bp;
-
-	$new_page_ids = array();
-
-	foreach ( (array) $bp->add_root as $slug )
-		$new_page_ids[$slug] = wp_insert_post( array( 'comment_status' => 'closed', 'ping_status' => 'closed', 'post_title' => ucwords( $slug ), 'post_status' => 'publish', 'post_type' => 'page' ) );
-
-	$page_ids = array_merge( (array) $new_page_ids, (array) bp_core_get_directory_page_ids() );
-	bp_core_update_directory_page_ids( $page_ids );
-}
-
-/**
- * Is this the root blog ID?
- *
- * @package BuddyPress
- * @since BuddyPress (1.5)
- *
- * @param int $blog_id Optional. Defaults to the current blog id.
- * @return bool $is_root_blog Returns true if this is bp_get_root_blog_id().
- */
-function bp_is_root_blog( $blog_id = 0 ) {
-
-	// Assume false
-	$is_root_blog = false;
-
-	// Use current blog if no ID is passed
-	if ( empty( $blog_id ) )
-		$blog_id = get_current_blog_id();
-
-	// Compare to root blog ID
-	if ( $blog_id == bp_get_root_blog_id() )
-		$is_root_blog = true;
-
-	return (bool) apply_filters( 'bp_is_root_blog', (bool) $is_root_blog );
-}
-
-/**
- * Is this bp_get_root_blog_id()?
- *
- * @package BuddyPress
- * @since BuddyPress (1.5)
- *
- * @return int Return the root site ID
- */
-function bp_get_root_blog_id() {
-	global $bp;
-
-	return (int) apply_filters( 'bp_get_root_blog_id', (int) $bp->root_blog_id );
-}
+/** Meta **********************************************************************/
 
 /**
  * Get the meta_key for a given piece of user metadata
@@ -881,8 +889,8 @@ function bp_get_root_blog_id() {
  * @since BuddyPress (1.5)
  *
  * @uses apply_filters() Filter bp_get_user_meta_key to modify keys individually
- * @param str $key
- * @return str $key
+ * @param string $key
+ * @return string $key
  */
 function bp_get_user_meta_key( $key = false ) {
 	return apply_filters( 'bp_get_user_meta_key', $key );
@@ -950,140 +958,22 @@ function bp_delete_user_meta( $user_id, $key, $value = '' ) {
 	return delete_user_meta( $user_id, bp_get_user_meta_key( $key ), $value );
 }
 
-/**
- * Are we running username compatibility mode?
- *
- * @package BuddyPress
- * @since BuddyPress (1.5)
- *
- * @uses apply_filters() Filter 'bp_is_username_compatibility_mode' to alter
- * @return bool False when compatibility mode is disabled (default); true when enabled
- */
-function bp_is_username_compatibility_mode() {
-	return apply_filters( 'bp_is_username_compatibility_mode', defined( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE' ) && BP_ENABLE_USERNAME_COMPATIBILITY_MODE );
-}
-
-/**
- * Are we running multiblog mode?
- *
- * Note that BP_ENABLE_MULTIBLOG is different from (but dependent on) WordPress
- * Multisite. "Multiblog" is BuddyPress setup that allows BuddyPress components
- * to be viewed on every blog on the network, each with their own settings.
- *
- * Thus, instead of having all 'boonebgorges' links go to
- *   http://example.com/members/boonebgorges
- * on the root blog, each blog will have its own version of the same content, eg
- *   http://site2.example.com/members/boonebgorges (for subdomains)
- *   http://example.com/site2/members/boonebgorges (for subdirectories)
- *
- * Multiblog mode is disabled by default, meaning that all BuddyPress content
- * must be viewed on the root blog. It's also recommended not to use the
- * BP_ENABLE_MULTIBLOG constant beyond 1.7, as BuddyPress can now be activated
- * on individual sites.
- *
- * Why would you want to use this? Originally it was intended to allow
- * BuddyPress to live in mu-plugins and be visible on mapped domains. This is
- * a very small use-case with large architectural shortcomings, so do not go
- * down this road unless you specifically need to.
- *
- * @package BuddyPress
- * @since BuddyPress (1.5)
- *
- * @uses apply_filters() Filter 'bp_is_multiblog_mode' to alter
- * @return bool False when multiblog mode is disabled (default); true when enabled
- */
-function bp_is_multiblog_mode() {
-
-	// Setup some default values
-	$retval         = false;
-	$is_multisite   = is_multisite();
-	$network_active = bp_is_network_activated();
-	$is_multiblog   = defined( 'BP_ENABLE_MULTIBLOG' ) && BP_ENABLE_MULTIBLOG;
-
-	// Multisite, Network Activated, and Specifically Multiblog
-	if ( $is_multisite && $network_active && $is_multiblog ) {
-		$retval = true;
-
-	// Multisite, but not network activated
-	} elseif ( $is_multisite && ! $network_active ) {
-		$retval = true;
-	}
-
-	return apply_filters( 'bp_is_multiblog_mode', $retval );
-}
-
-/**
- * Should we use the WP Toolbar?
- *
- * The WP Toolbar, introduced in WP 3.1, is fully supported in BuddyPress as of BP 1.5.
- * For BP 1.6, the WP Toolbar is the default.
- *
- * @return bool False when WP Toolbar support is disabled; true when enabled (default)
- * @since BuddyPress (1.5)
- * @uses apply_filters() Filter 'bp_use_wp_admin_bar' to alter
- */
-function bp_use_wp_admin_bar() {
-	$use_admin_bar = true;
-
-	// Has the WP Toolbar constant been explicity set?
-	if ( defined( 'BP_USE_WP_ADMIN_BAR' ) && ! BP_USE_WP_ADMIN_BAR )
-		$use_admin_bar = false;
-
-	// Has the admin chosen to use the BuddyBar during an upgrade?
-	elseif ( (bool) bp_get_option( '_bp_force_buddybar', false ) )
-		$use_admin_bar = false;
-
-	return apply_filters( 'bp_use_wp_admin_bar', $use_admin_bar );
-}
-
-/**
- * A utility for parsing individual function arguments into an array.
- *
- * The purpose of this function is to help with backward compatibility in cases where
- *
- *   function foo( $bar = 1, $baz = false, $barry = array(), $blip = false ) { // ...
- *
- * is deprecated in favor of
- *
- *   function foo( $args = array() ) {
- *       $defaults = array(
- *           'bar'  => 1,
- *           'arg2' => false,
- *           'arg3' => array(),
- *           'arg4' => false,
- *       );
- *       $r = wp_parse_args( $args, $defaults ); // ...
- *
- * The first argument, $old_args_keys, is an array that matches the parameter positions (keys) to
- * the new $args keys (values):
- *
- *   $old_args_keys = array(
- *       0 => 'bar', // because $bar was the 0th parameter for foo()
- *       1 => 'baz', // because $baz was the 1st parameter for foo()
- *       2 => 'barry', // etc
- *       3 => 'blip'
- *   );
- *
- * For the second argument, $func_args, you should just pass the value of func_get_args().
- *
- * @since BuddyPress (1.6)
- * @param array $old_args_keys
- * @param array $func_args
- * @return array $new_args
- */
-function bp_core_parse_args_array( $old_args_keys, $func_args ) {
-	$new_args = array();
-
-	foreach( $old_args_keys as $arg_num => $arg_key ) {
-		if ( isset( $func_args[$arg_num] ) ) {
-			$new_args[$arg_key] = $func_args[$arg_num];
-		}
-	}
-
-	return $new_args;
-}
-
 /** Embeds ********************************************************************/
+
+/**
+ * Initializes {@link BP_Embed} after everything is loaded.
+ *
+ * @global object $bp BuddyPress global settings
+ * @package BuddyPress Core
+ * @since BuddyPress (1.5)
+ */
+function bp_embed_init() {
+	global $bp;
+
+	if ( empty( $bp->embed ) )
+		$bp->embed = new BP_Embed();
+}
+add_action( 'bp_init', 'bp_embed_init', 9 );
 
 /**
  * Are oembeds allowed in activity items?
@@ -1199,6 +1089,96 @@ function bp_core_admin_hook() {
 	return apply_filters( 'bp_core_admin_hook', $hook );
 }
 
+/** Multisite *****************************************************************/
+
+/**
+ * Is this the root blog ID?
+ *
+ * @package BuddyPress
+ * @since BuddyPress (1.5)
+ *
+ * @param int $blog_id Optional. Defaults to the current blog id.
+ * @return bool $is_root_blog Returns true if this is bp_get_root_blog_id().
+ */
+function bp_is_root_blog( $blog_id = 0 ) {
+
+	// Assume false
+	$is_root_blog = false;
+
+	// Use current blog if no ID is passed
+	if ( empty( $blog_id ) )
+		$blog_id = get_current_blog_id();
+
+	// Compare to root blog ID
+	if ( $blog_id == bp_get_root_blog_id() )
+		$is_root_blog = true;
+
+	return (bool) apply_filters( 'bp_is_root_blog', (bool) $is_root_blog );
+}
+
+/**
+ * Is this bp_get_root_blog_id()?
+ *
+ * @package BuddyPress
+ * @since BuddyPress (1.5)
+ *
+ * @return int Return the root site ID
+ */
+function bp_get_root_blog_id() {
+	global $bp;
+
+	return (int) apply_filters( 'bp_get_root_blog_id', (int) $bp->root_blog_id );
+}
+
+/**
+ * Are we running multiblog mode?
+ *
+ * Note that BP_ENABLE_MULTIBLOG is different from (but dependent on) WordPress
+ * Multisite. "Multiblog" is BuddyPress setup that allows BuddyPress components
+ * to be viewed on every blog on the network, each with their own settings.
+ *
+ * Thus, instead of having all 'boonebgorges' links go to
+ *   http://example.com/members/boonebgorges
+ * on the root blog, each blog will have its own version of the same content, eg
+ *   http://site2.example.com/members/boonebgorges (for subdomains)
+ *   http://example.com/site2/members/boonebgorges (for subdirectories)
+ *
+ * Multiblog mode is disabled by default, meaning that all BuddyPress content
+ * must be viewed on the root blog. It's also recommended not to use the
+ * BP_ENABLE_MULTIBLOG constant beyond 1.7, as BuddyPress can now be activated
+ * on individual sites.
+ *
+ * Why would you want to use this? Originally it was intended to allow
+ * BuddyPress to live in mu-plugins and be visible on mapped domains. This is
+ * a very small use-case with large architectural shortcomings, so do not go
+ * down this road unless you specifically need to.
+ *
+ * @package BuddyPress
+ * @since BuddyPress (1.5)
+ *
+ * @uses apply_filters() Filter 'bp_is_multiblog_mode' to alter
+ * @return bool False when multiblog mode is disabled (default); true when enabled
+ */
+function bp_is_multiblog_mode() {
+
+	// Setup some default values
+	$retval         = false;
+	$is_multisite   = is_multisite();
+	$network_active = bp_is_network_activated();
+	$is_multiblog   = defined( 'BP_ENABLE_MULTIBLOG' ) && BP_ENABLE_MULTIBLOG;
+
+	// Multisite, Network Activated, and Specifically Multiblog
+	if ( $is_multisite && $network_active && $is_multiblog ) {
+		$retval = true;
+
+	// Multisite, but not network activated
+	} elseif ( $is_multisite && ! $network_active ) {
+		$retval = true;
+	}
+
+	return apply_filters( 'bp_is_multiblog_mode', $retval );
+}
+
 /**
  * Is BuddyPress active at the network level for this network?
  *
@@ -1232,7 +1212,7 @@ function bp_is_network_activated() {
  *
  * @global BuddyPress $bp The one true BuddyPress instance
  * @param bool $is_directory
- * @param str $component
+ * @param string $component
  */
 function bp_update_is_directory( $is_directory = false, $component = '' ) {
 	global $bp;
@@ -1248,7 +1228,7 @@ function bp_update_is_directory( $is_directory = false, $component = '' ) {
  *
  * @global BuddyPress $bp The one true BuddyPress instance
  * @param bool $is_item_admin
- * @param str $component
+ * @param string $component
  */
 function bp_update_is_item_admin( $is_item_admin = false, $component = '' ) {
 	global $bp;
@@ -1264,7 +1244,7 @@ function bp_update_is_item_admin( $is_item_admin = false, $component = '' ) {
  *
  * @global BuddyPress $bp The one true BuddyPress instance
  * @param bool $is_item_mod
- * @param str $component
+ * @param string $component
  */
 function bp_update_is_item_mod( $is_item_mod = false, $component = '' ) {
 	global $bp;
@@ -1328,3 +1308,105 @@ function bp_verify_nonce_request( $action = '', $query_arg = '_wpnonce' ) {
 
 	return $result;
 }
+
+/** Miscellaneous hooks *******************************************************/
+
+/**
+ * Load the buddypress translation file for current language
+ *
+ * @package BuddyPress Core
+ */
+function bp_core_load_buddypress_textdomain() {
+	// Try to load via load_plugin_textdomain() first, for future
+	// wordpress.org translation downloads
+	if ( load_plugin_textdomain( 'buddypress', false, 'buddypress/bp-languages' ) ) {
+		return true;
+	}
+
+	// Nothing found in bp-languages, so try to load from WP_LANG_DIR
+	$locale = apply_filters( 'buddypress_locale', get_locale() );
+	$mofile = WP_LANG_DIR . '/buddypress-' . $locale . '.mo';
+
+	return load_textdomain( 'buddypress', $mofile );
+}
+add_action ( 'bp_core_loaded', 'bp_core_load_buddypress_textdomain' );
+
+/**
+ * A javascript free implementation of the search functions in BuddyPress
+ *
+ * @package BuddyPress Core
+ * @param string $slug The slug to redirect to for searching.
+ */
+function bp_core_action_search_site( $slug = '' ) {
+
+	if ( !bp_is_current_component( bp_get_search_slug() ) )
+		return;
+
+	if ( empty( $_POST['search-terms'] ) ) {
+		bp_core_redirect( bp_get_root_domain() );
+		return;
+	}
+
+	$search_terms = stripslashes( $_POST['search-terms'] );
+	$search_which = !empty( $_POST['search-which'] ) ? $_POST['search-which'] : '';
+	$query_string = '/?s=';
+
+	if ( empty( $slug ) ) {
+		switch ( $search_which ) {
+			case 'posts':
+				$slug = '';
+				$var  = '/?s=';
+
+				// If posts aren't displayed on the front page, find the post page's slug.
+				if ( 'page' == get_option( 'show_on_front' ) ) {
+					$page = get_post( get_option( 'page_for_posts' ) );
+
+					if ( !is_wp_error( $page ) && !empty( $page->post_name ) ) {
+						$slug = $page->post_name;
+						$var  = '?s=';
+					}
+				}
+				break;
+
+			case 'blogs':
+				$slug = bp_is_active( 'blogs' )  ? bp_get_blogs_root_slug()  : '';
+				break;
+
+			case 'forums':
+				$slug = bp_is_active( 'forums' ) ? bp_get_forums_root_slug() : '';
+				$query_string = '/?fs=';
+				break;
+
+			case 'groups':
+				$slug = bp_is_active( 'groups' ) ? bp_get_groups_root_slug() : '';
+				break;
+
+			case 'members':
+			default:
+				$slug = bp_get_members_root_slug();
+				break;
+		}
+
+		if ( empty( $slug ) && 'posts' != $search_which ) {
+			bp_core_redirect( bp_get_root_domain() );
+			return;
+		}
+	}
+
+	bp_core_redirect( apply_filters( 'bp_core_search_site', home_url( $slug . $query_string . urlencode( $search_terms ) ), $search_terms ) );
+}
+add_action( 'bp_init', 'bp_core_action_search_site', 7 );
+
+/**
+ * Prints the generation time in the footer of the site.
+ *
+ * @package BuddyPress Core
+ */
+function bp_core_print_generation_time() {
+?>
+
+<!-- Generated in <?php timer_stop(1); ?> seconds. (<?php echo get_num_queries(); ?> q) -->
+
+	<?php
+}
+add_action( 'wp_footer', 'bp_core_print_generation_time' );

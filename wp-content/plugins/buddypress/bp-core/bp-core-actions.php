@@ -41,6 +41,7 @@ add_action( 'wp_enqueue_scripts',      'bp_enqueue_scripts',        10    );
 add_action( 'admin_bar_menu',          'bp_setup_admin_bar',        20    ); // After WP core
 add_action( 'template_redirect',       'bp_template_redirect',      10    );
 add_action( 'widgets_init',            'bp_widgets_init',           10    );
+add_action( 'generate_rewrite_rules',  'bp_generate_rewrite_rules', 10    );
 
 /**
  * bp_loaded - Attached to 'plugins_loaded' above
@@ -67,6 +68,7 @@ add_action( 'bp_init', 'bp_setup_globals',           4  );
 add_action( 'bp_init', 'bp_setup_nav',               6  );
 add_action( 'bp_init', 'bp_setup_title',             8  );
 add_action( 'bp_init', 'bp_core_load_admin_bar_css', 12 );
+add_action( 'bp_init', 'bp_add_rewrite_tags',        20 );
 
 /**
  * bp_template_redirect - Attached to 'template_redirect' above

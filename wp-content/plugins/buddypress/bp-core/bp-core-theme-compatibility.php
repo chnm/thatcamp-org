@@ -315,27 +315,44 @@ function bp_is_theme_compat_original_template( $template = '' ) {
 /**
  * Register a new BuddyPress theme package to the active theme packages array
  *
+ * The $theme parameter is an array, which takes the following values:
+ *
+ *  'id'      - ID for your theme package; should be alphanumeric only
+ *  'name'    - Name of your theme package
+ *  'version' - Version of your theme package
+ *  'dir'     - Directory where your theme package resides
+ *  'url'     - URL where your theme package resides
+ *
+ * For an example of how this function is used, see:
+ * {@link BuddyPress::register_theme_packages()}.
+ *
  * @since BuddyPress (1.7)
- * @param array $theme
+ *
+ * @param array $theme The theme package arguments. See phpDoc for more details.
+ * @param bool $override If true, overrides whatever package is currently set.
  */
 function bp_register_theme_package( $theme = array(), $override = true ) {
 
 	// Create new BP_Theme_Compat object from the $theme array
-	if ( is_array( $theme ) )
+	if ( is_array( $theme ) ) {
 		$theme = new BP_Theme_Compat( $theme );
+	}
 
 	// Bail if $theme isn't a proper object
-	if ( ! is_a( $theme, 'BP_Theme_Compat' ) )
+	if ( ! is_a( $theme, 'BP_Theme_Compat' ) ) {
 		return;
+	}
 
 	// Load up BuddyPress
 	$bp = buddypress();
 
-	// Only override if the flag is set and not previously registered
+	// Only set if the theme package was not previously registered or if the
+	// override flag is set
 	if ( empty( $bp->theme_compat->packages[$theme->id] ) || ( true === $override ) ) {
 		$bp->theme_compat->packages[$theme->id] = $theme;
 	}
 }
+
 /**
  * This fun little function fills up some WordPress globals with dummy data to
  * stop your average page template from complaining about it missing.
@@ -348,43 +365,9 @@ function bp_register_theme_package( $theme = array(), $override = true ) {
 function bp_theme_compat_reset_post( $args = array() ) {
 	global $wp_query, $post;
 
-	// Default arguments
-	$defaults = array(
-		'ID'                    => -9999,
-		'post_status'           => 'publish',
-		'post_author'           => 0,
-		'post_parent'           => 0,
-		'post_type'             => 'page',
-		'post_date'             => 0,
-		'post_date_gmt'         => 0,
-		'post_modified'         => 0,
-		'post_modified_gmt'     => 0,
-		'post_content'          => '',
-		'post_title'            => '',
-		'post_category'         => 0,
-		'post_excerpt'          => '',
-		'post_content_filtered' => '',
-		'post_mime_type'        => '',
-		'post_password'         => '',
-		'post_name'             => '',
-		'guid'                  => '',
-		'menu_order'            => 0,
-		'pinged'                => '',
-		'to_ping'               => '',
-		'ping_status'           => '',
-		'comment_status'        => 'closed',
-		'comment_count'         => 0,
-
-		'is_404'          => false,
-		'is_page'         => false,
-		'is_single'       => false,
-		'is_archive'      => false,
-		'is_tax'          => false,
-	);
-
 	// Switch defaults if post is set
 	if ( isset( $wp_query->post ) ) {
-		$defaults = array(
+		$dummy = wp_parse_args( $args, array(
 			'ID'                    => $wp_query->post->ID,
 			'post_status'           => $wp_query->post->post_status,
 			'post_author'           => $wp_query->post->post_author,
@@ -408,52 +391,60 @@ function bp_theme_compat_reset_post( $args = array() ) {
 			'ping_status'           => $wp_query->post->ping_status,
 			'comment_status'        => $wp_query->post->comment_status,
 			'comment_count'         => $wp_query->post->comment_count,
+			'filter'                => $wp_query->post->filter,
 
-			'is_404'          => false,
-			'is_page'         => false,
-			'is_single'       => false,
-			'is_archive'      => false,
-			'is_tax'          => false,
-		);
+			'is_404'                => false,
+			'is_page'               => false,
+			'is_single'             => false,
+			'is_archive'            => false,
+			'is_tax'                => false,
+		) );
+	} else {
+		$dummy = wp_parse_args( $args, array(
+			'ID'                    => -9999,
+			'post_status'           => 'public',
+			'post_author'           => 0,
+			'post_parent'           => 0,
+			'post_type'             => 'page',
+			'post_date'             => 0,
+			'post_date_gmt'         => 0,
+			'post_modified'         => 0,
+			'post_modified_gmt'     => 0,
+			'post_content'          => '',
+			'post_title'            => '',
+			'post_excerpt'          => '',
+			'post_content_filtered' => '',
+			'post_mime_type'        => '',
+			'post_password'         => '',
+			'post_name'             => '',
+			'guid'                  => '',
+			'menu_order'            => 0,
+			'pinged'                => '',
+			'to_ping'               => '',
+			'ping_status'           => '',
+			'comment_status'        => 'closed',
+			'comment_count'         => 0,
+			'filter'                => 'raw',
+
+			'is_404'                => false,
+			'is_page'               => false,
+			'is_single'             => false,
+			'is_archive'            => false,
+			'is_tax'                => false,
+		) );
 	}
-	$dummy = wp_parse_args( $args, $defaults ); //, 'theme_compat_reset_post' );
 
-	// Clear out the post related globals
-	unset( $wp_query->posts );
-	unset( $wp_query->post  );
-	unset( $post            );
-
-	// Setup the dummy post object
-	$wp_query->post                        = new stdClass;
-	$wp_query->post->ID                    = $dummy['ID'];
-	$wp_query->post->post_status           = $dummy['post_status'];
-	$wp_query->post->post_author           = $dummy['post_author'];
-	$wp_query->post->post_parent           = $dummy['post_parent'];
-	$wp_query->post->post_type             = $dummy['post_type'];
-	$wp_query->post->post_date             = $dummy['post_date'];
-	$wp_query->post->post_date_gmt         = $dummy['post_date_gmt'];
-	$wp_query->post->post_modified         = $dummy['post_modified'];
-	$wp_query->post->post_modified_gmt     = $dummy['post_modified_gmt'];
-	$wp_query->post->post_content          = $dummy['post_content'];
-	$wp_query->post->post_title            = $dummy['post_title'];
-	$wp_query->post->post_excerpt          = $dummy['post_excerpt'];
-	$wp_query->post->post_content_filtered = $dummy['post_content_filtered'];
-	$wp_query->post->post_mime_type        = $dummy['post_mime_type'];
-	$wp_query->post->post_password         = $dummy['post_password'];
-	$wp_query->post->post_name             = $dummy['post_name'];
-	$wp_query->post->guid                  = $dummy['guid'];
-	$wp_query->post->menu_order            = $dummy['menu_order'];
-	$wp_query->post->pinged                = $dummy['pinged'];
-	$wp_query->post->to_ping               = $dummy['to_ping'];
-	$wp_query->post->ping_status           = $dummy['ping_status'];
-	$wp_query->post->comment_status        = $dummy['comment_status'];
-	$wp_query->post->comment_count         = $dummy['comment_count'];
+	// Bail if dummy post is empty
+	if ( empty( $dummy ) ) {
+		return;
+	}
 
 	// Set the $post global
-	$post = $wp_query->post;
+	$post = new WP_Post( (object) $dummy );
 
-	// Setup the dummy post loop
-	$wp_query->posts[0] = $wp_query->post;
+	// Copy the new post global into the main $wp_query
+	$wp_query->post       = $post;
+	$wp_query->posts      = array( $post );
 
 	// Prevent comments form from appearing
 	$wp_query->post_count = 1;
@@ -463,8 +454,20 @@ function bp_theme_compat_reset_post( $args = array() ) {
 	$wp_query->is_archive = $dummy['is_archive'];
 	$wp_query->is_tax     = $dummy['is_tax'];
 
+	// Clean up the dummy post
+	unset( $dummy );
+
+	/**
+	 * Force the header back to 200 status if not a deliberate 404
+	 *
+	 * @see http://bbpress.trac.wordpress.org/ticket/1973
+	 */
+	if ( ! $wp_query->is_404() ) {
+		status_header( 200 );
+	}
+
 	// If we are resetting a post, we are in theme compat
-	bp_set_theme_compat_active();
+	bp_set_theme_compat_active( true );
 }
 
 /**
@@ -518,24 +521,19 @@ function bp_template_include_theme_compat( $template = '' ) {
 	 * Uses bp_get_theme_compat_templates() to provide fall-backs that
 	 * should be coded without superfluous mark-up and logic (prev/next
 	 * navigation, comments, date/time, etc...)
+	 *
+	 * Hook into 'bp_get_buddypress_template' to override the array of
+	 * possible templates, or 'bp_buddypress_template' to override the result.
 	 */
 	if ( bp_is_theme_compat_active() ) {
+		$template = bp_get_theme_compat_templates();
 
-		// Remove all filters from the_content
-		bp_remove_all_filters( 'the_content' );
-
-		// Add a filter on the_content late, which we will later remove
-		if ( ! has_filter( 'the_content', 'bp_replace_the_content' ) ) {
-			add_filter( 'the_content', 'bp_replace_the_content' );
-		}
+		add_filter( 'the_content', 'bp_replace_the_content' );
 
 		// Add BuddyPress's head action to wp_head
 		if ( ! has_action( 'wp_head', 'bp_head' ) ) {
 			add_action( 'wp_head', 'bp_head' );
 		}
-
-		// Find the appropriate template file
-		$template = bp_get_theme_compat_templates();
 	}
 
 	return apply_filters( 'bp_template_include_theme_compat', $template );
@@ -548,17 +546,23 @@ function bp_template_include_theme_compat( $template = '' ) {
  *
  * @since BuddyPress (1.7)
  * @param string $content
- * @return type
+ * @return string
  */
 function bp_replace_the_content( $content = '' ) {
 
-	if ( ! in_the_loop() )
+	// Bail if not the main loop where theme compat is happening
+	if ( ! bp_do_theme_compat() )
 		return $content;
 
+	// Set theme compat to false early, to avoid recursion from nested calls to
+	// the_content() that execute before theme compat has unhooked itself.
+	bp_set_theme_compat_active( false );
+
+	// Do we have new content to replace the old content?
 	$new_content = apply_filters( 'bp_replace_the_content', $content );
 
 	// Juggle the content around and try to prevent unsightly comments
-	if ( !empty( $new_content ) && ( $new_content != $content ) ) {
+	if ( !empty( $new_content ) && ( $new_content !== $content ) ) {
 
 		// Set the content to be the new content
 		$content = $new_content;
@@ -572,6 +576,16 @@ function bp_replace_the_content( $content = '' ) {
 
 	// Return possibly hi-jacked content
 	return $content;
+}
+
+/**
+ * Are we replacing the_content
+ *
+ * @since BuddyPress (1.8)
+ * @return bool
+ */
+function bp_do_theme_compat() {
+	return (bool) ( ! bp_is_template_included() && in_the_loop() && bp_is_theme_compat_active() );
 }
 
 /** Filters *******************************************************************/

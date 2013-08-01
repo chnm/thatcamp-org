@@ -126,6 +126,12 @@ function bp_dtheme_ajax_querystring( $query_string, $object ) {
 	if ( ! empty( $_POST['page'] ) && '-1' != $_POST['page'] )
 		$qs[] = 'page=' . absint( $_POST['page'] );
 
+	// exludes activity just posted and avoids duplicate ids
+	if ( ! empty( $_POST['exclude_just_posted'] ) ) {
+		$just_posted = wp_parse_id_list( $_POST['exclude_just_posted'] );
+		$qs[] = 'exclude=' . implode( ',', $just_posted );
+	}
+
 	$object_search_text = bp_get_search_default_text( $object );
  	if ( ! empty( $_POST['search_terms'] ) && $object_search_text != $_POST['search_terms'] && 'false' != $_POST['search_terms'] && 'undefined' != $_POST['search_terms'] )
 		$qs[] = 'search_terms=' . $_POST['search_terms'];
@@ -168,18 +174,25 @@ function bp_dtheme_object_template_loader() {
 	if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
 		return;
 
+	// Bail if no object passed
+	if ( empty( $_POST['object'] ) )
+		return;
+
+	// Sanitize the object
+	$object = sanitize_title( $_POST['object'] );
+
+	// Bail if object is not an active component
+	if ( ! bp_is_active( $object ) )
+		return;
+
  	/**
 	 * AJAX requests happen too early to be seen by bp_update_is_directory()
 	 * so we do it manually here to ensure templates load with the correct
 	 * context. Without this check, templates will load the 'single' version
 	 * of themselves rather than the directory version.
 	 */
-
 	if ( ! bp_current_action() )
 		bp_update_is_directory( true, bp_current_component() );
-
-	// Sanitize the post object
-	$object = esc_attr( $_POST['object'] );
 
 	// Locate the object template
 	locate_template( array( "$object/$object-loop.php" ), true );
@@ -536,7 +549,6 @@ function bp_dtheme_get_single_activity_content() {
 /**
  * Invites a friend to join a group via a POST request.
  *
- * @return unknown
  * @since BuddyPress (1.2)
  * @todo Audit return types
  */

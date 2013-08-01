@@ -37,7 +37,7 @@
 				 */
 
 				// Group is visible
-				if ( bp_group_is_visible() ) : 
+				if ( bp_group_is_visible() ) :
 
 					// Looking at home location
 					if ( bp_is_group_home() ) :
@@ -45,7 +45,7 @@
 						// Use custom front if one exists
 						$custom_front = locate_template( array( 'groups/single/front.php' ) );
 						if     ( ! empty( $custom_front   ) ) : load_template( $custom_front, true );
-						
+
 						// Default to activity
 						elseif ( bp_is_active( 'activity' ) ) : locate_template( array( 'groups/single/activity.php' ), true );
 
@@ -80,10 +80,9 @@
 
 				// Group is not visible
 				elseif ( ! bp_group_is_visible() ) :
-
 					// Membership request
 					if ( bp_is_group_membership_request() ) :
-						locate_template( array( 'groups/single/request-membership' ), true );
+						locate_template( array( 'groups/single/request-membership.php' ), true );
 
 					// The group is not visible, show the status message
 					else :
@@ -97,7 +96,7 @@
 						<?php do_action( 'bp_after_group_status_message' );
 
 					endif;
-				endif;			
+				endif;
 
 				do_action( 'bp_after_group_body' ); ?>
 

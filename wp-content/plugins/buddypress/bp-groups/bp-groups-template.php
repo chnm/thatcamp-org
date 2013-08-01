@@ -144,6 +144,7 @@ class BP_Groups_Template {
 			'include'         => false,
 			'exclude'         => false,
 			'search_terms'    => '',
+			'meta_query'      => false,
 			'populate_extras' => true
 		);
 
@@ -165,10 +166,13 @@ class BP_Groups_Template {
 		} else {
 			$this->groups = groups_get_groups( array(
 				'type'            => $type,
+				'order'           => $order,
+				'orderby'         => $orderby,
 				'per_page'        => $this->pag_num,
 				'page'            => $this->pag_page,
 				'user_id'         => $user_id,
 				'search_terms'    => $search_terms,
+				'meta_query'      => $meta_query,
 				'include'         => $include,
 				'exclude'         => $exclude,
 				'populate_extras' => $populate_extras,
@@ -264,6 +268,17 @@ class BP_Groups_Template {
 	}
 }
 
+/**
+ * Start the Groups Template Loop
+ *
+ * See the $defaults definition below for a description of parameters.
+ *
+ * Note that the 'type' parameter overrides 'order' and 'orderby'. See
+ * BP_Groups_Group::get() for more details.
+ *
+ * @param array $args
+ * @return bool True if there are groups to display that match the params
+ */
 function bp_has_groups( $args = '' ) {
 	global $groups_template, $bp;
 
@@ -273,7 +288,7 @@ function bp_has_groups( $args = '' ) {
 	 * pass their parameters directly to the loop.
 	 */
 	$slug    = false;
-	$type    = 'active';
+	$type    = '';
 	$user_id = 0;
 	$order   = '';
 
@@ -282,6 +297,7 @@ function bp_has_groups( $args = '' ) {
 		$user_id = bp_displayed_user_id();
 
 	// Type
+	// @todo What is $order? At some point it was removed incompletely?
 	if ( bp_is_current_action( 'my-groups' ) ) {
 		if ( 'most-popular' == $order ) {
 			$type = 'popular';
@@ -296,7 +312,9 @@ function bp_has_groups( $args = '' ) {
 	}
 
 	$defaults = array(
-		'type'            => $type,
+		'type'            => $type, // 'type' is an override for 'order' and 'orderby'. See docblock.
+		'order'           => 'DESC',
+		'orderby'         => 'last_activity',
 		'page'            => 1,
 		'per_page'        => 20,
 		'max'             => false,
@@ -307,10 +325,11 @@ function bp_has_groups( $args = '' ) {
 		'user_id'         => $user_id, // Pass a user ID to limit to groups this user has joined
 		'slug'            => $slug,    // Pass a group slug to only return that group
 		'search_terms'    => '',       // Pass search terms to return only matching groups
+		'meta_query'      => false,    // Filter by groupmeta. See WP_Meta_Query for format
 		'include'         => false,    // Pass comma separated list or array of group ID's to return only these groups
 		'exclude'         => false,    // Pass comma separated list or array of group ID's to exclude these groups
 
-		'populate_extras' => true      // Get extra meta - is_member, is_banned
+		'populate_extras' => true,     // Get extra meta - is_member, is_banned
 	);
 
 	$r = wp_parse_args( $args, $defaults );
@@ -326,6 +345,8 @@ function bp_has_groups( $args = '' ) {
 
 	$groups_template = new BP_Groups_Template( array(
 		'type'            => $r['type'],
+		'order'           => $r['order'],
+		'orderby'         => $r['orderby'],
 		'page'            => (int) $r['page'],
 		'per_page'        => (int) $r['per_page'],
 		'max'             => (int) $r['max'],
@@ -334,6 +355,7 @@ function bp_has_groups( $args = '' ) {
 		'user_id'         => (int) $r['user_id'],
 		'slug'            => $r['slug'],
 		'search_terms'    => $r['search_terms'],
+		'meta_query'      => $r['meta_query'],
 		'include'         => $r['include'],
 		'exclude'         => $r['exclude'],
 		'populate_extras' => (bool) $r['populate_extras']
@@ -651,30 +673,30 @@ function bp_group_date_created( $group = false ) {
 
 		return apply_filters( 'bp_get_group_date_created', bp_core_time_since( strtotime( $group->date_created ) ) );
 	}
-	
+
 function bp_group_creator_username( $group = false ) {
 	echo bp_get_group_creator_username( $group );
 }
 	function bp_get_group_creator_username( $group = false ) {
 		global $groups_template;
-		
+
 		if ( empty( $group ) )
 			$group =& $groups_template->group;
-		
+
 		return apply_filters( 'bp_get_group_creator_username', bp_core_get_user_displayname( $group->creator_id ) );
-	}	
+	}
 
 function bp_group_creator_id( $group = false ) {
 	echo bp_get_group_creator_id( $group );
 }
 	function bp_get_group_creator_id( $group = false ) {
 		global $groups_template;
-		
+
 		if ( empty( $group ) )
 			$group =& $groups_template->group;
-		
+
 		return apply_filters( 'bp_get_group_creator_id', $group->creator_id );
-	}	
+	}
 
 function bp_group_creator_permalink( $group = false ) {
 	echo bp_get_group_creator_permalink( $group );
@@ -686,14 +708,14 @@ function bp_group_creator_permalink( $group = false ) {
 			$group =& $groups_template->group;
 
 		return apply_filters( 'bp_get_group_creator_permalink', bp_core_get_user_domain( $group->creator_id ) );
-	}	
+	}
 
 function bp_is_group_creator( $group = false, $user_id = 0 ) {
 	global $groups_template;
-	
+
 	if ( empty( $group ) )
 		$group =& $groups_template->group;
-	
+
 	if ( empty( $user_id ) )
 		$user_id = bp_loggedin_user_id();
 
@@ -726,7 +748,7 @@ function bp_group_creator_avatar( $group = false, $args = array() ) {
 		return apply_filters( 'bp_get_group_creator_avatar', $avatar );
 	}
 
-		
+
 function bp_group_is_admin() {
 	return bp_is_item_admin();
 }
@@ -789,8 +811,8 @@ function bp_group_list_mods( $group = false ) {
  * @package BuddyPress
  * @since BuddyPress (1.5)
  *
- * @param obj $group (optional) The group being queried. Defaults to the current group in the loop
- * @param str $format 'string' to get a comma-separated string, 'array' to get an array
+ * @param BP_Groups_Group $group (optional) The group being queried. Defaults to the current group in the loop
+ * @param string $format 'string' to get a comma-separated string, 'array' to get an array
  * @return mixed $admin_ids A string or array of user_ids
  */
 function bp_group_admin_ids( $group = false, $format = 'string' ) {
@@ -819,8 +841,8 @@ function bp_group_admin_ids( $group = false, $format = 'string' ) {
  * @package BuddyPress
  * @since BuddyPress (1.5)
  *
- * @param obj $group (optional) The group being queried. Defaults to the current group in the loop
- * @param str $format 'string' to get a comma-separated string, 'array' to get an array
+ * @param BP_Groups_Group $group (optional) The group being queried. Defaults to the current group in the loop
+ * @param string $format 'string' to get a comma-separated string, 'array' to get an array
  * @return mixed $mod_ids A string or array of user_ids
  */
 function bp_group_mod_ids( $group = false, $format = 'string' ) {
@@ -1059,8 +1081,8 @@ function bp_group_show_status_setting( $setting, $group = false ) {
  * @subpackage Groups Template
  * @since BuddyPress (1.5)
  *
- * @param str $setting The setting you want to check against ('members', 'mods', or 'admins')
- * @param obj $group (optional) The group whose status you want to check
+ * @param string $setting The setting you want to check against ('members', 'mods', or 'admins')
+ * @param BP_Groups_Group $group (optional) The group whose status you want to check
  */
 function bp_group_show_invite_status_setting( $setting, $group = false ) {
 	$group_id = isset( $group->id ) ? $group->id : false;
@@ -1650,7 +1672,7 @@ function bp_has_friends_to_invite( $group = false ) {
  *
  * @since BuddyPress (1.2.7)
  *
- * @param obj|bool $group The BP Groups_Group object if passed, boolean false if not passed.
+ * @param BP_Groups_Group|bool $group The BP Groups_Group object if passed, boolean false if not passed.
  * @uses bp_get_group_new_topic_button() Returns the 'New Topic' button
  */
 function bp_group_new_topic_button( $group = false ) {
@@ -1661,13 +1683,13 @@ function bp_group_new_topic_button( $group = false ) {
 	 *
 	 * @since BuddyPress (1.2.7)
 	 *
-	 * @param obj|bool $group The BP Groups_Group object if passed, boolean false if not passed.
+	 * @param BP_Groups_Group|bool $group The BP Groups_Group object if passed, boolean false if not passed.
 	 * @uses is_user_logged_in() Is there a user logged in?
 	 * @uses bp_group_is_user_banned() Is the current user banned from the current group?
 	 * @uses bp_is_group_forum() Are we on a group forum page?
 	 * @uses bp_is_group_forum_topic() Are we on a group topic page?
 	 * @uses bp_get_button() Renders a button
-	 * @return HTML code for the button
+	 * @return string HTML code for the button
 	 */
 	function bp_get_group_new_topic_button( $group = false ) {
 		global $groups_template;
@@ -1875,11 +1897,11 @@ class BP_Groups_Group_Members_Template {
 	var $pag_links;
 	var $total_group_count;
 
-	function __construct( $group_id, $per_page, $max, $exclude_admins_mods, $exclude_banned, $exclude ) {
+	function __construct( $group_id, $per_page, $max, $exclude_admins_mods, $exclude_banned, $exclude, $group_role = false ) {
 
 		$this->pag_page = isset( $_REQUEST['mlpage'] ) ? intval( $_REQUEST['mlpage'] ) : 1;
 		$this->pag_num  = isset( $_REQUEST['num'] ) ? intval( $_REQUEST['num'] ) : $per_page;
-		$this->members  = BP_Groups_Member::get_all_for_group( $group_id, $this->pag_num, $this->pag_page, $exclude_admins_mods, $exclude_banned, $exclude );
+		$this->members  = groups_get_group_members( $group_id, $this->pag_num, $this->pag_page, $exclude_admins_mods, $exclude_banned, $exclude, $group_role );
 
 		if ( !$max || $max >= (int) $this->members['count'] )
 			$this->total_member_count = (int) $this->members['count'];
@@ -1955,19 +1977,17 @@ class BP_Groups_Group_Members_Template {
 function bp_group_has_members( $args = '' ) {
 	global $members_template;
 
-	$defaults = array(
+	$r = wp_parse_args( $args, array(
 		'group_id' => bp_get_current_group_id(),
 		'per_page' => 20,
 		'max' => false,
 		'exclude' => false,
 		'exclude_admins_mods' => 1,
-		'exclude_banned' => 1
-	);
+		'exclude_banned' => 1,
+		'group_role' => false,
+	) );
 
-	$r = wp_parse_args( $args, $defaults );
-	extract( $r, EXTR_SKIP );
-
-	$members_template = new BP_Groups_Group_Members_Template( $group_id, $per_page, $max, (int) $exclude_admins_mods, (int) $exclude_banned, $exclude );
+	$members_template = new BP_Groups_Group_Members_Template( $r['group_id'], $r['per_page'], $r['max'], (int) $r['exclude_admins_mods'], (int) $r['exclude_banned'], $r['exclude'], $r['group_role'] );
 	return apply_filters( 'bp_group_has_members', $members_template->has_members(), $members_template );
 }
 
@@ -2396,7 +2416,7 @@ function bp_groups_current_create_step() {
 	 * @since BuddyPress (1.6)
 	 *
 	 * @uses apply_filters() Filter bp_get_groups_current_create_step to modify
-	 * @return str $current_create_step
+	 * @return string $current_create_step
 	 */
 	function bp_get_groups_current_create_step() {
 		global $bp;
@@ -2562,7 +2582,7 @@ function bp_group_current_admin_tab() {
 	 * @since BuddyPress (1.6)
 	 *
 	 * @uses apply_filters() Filter bp_get_current_group_admin_tab to modify return value
-	 * @return str $tab The current tab's slug
+	 * @return string $tab The current tab's slug
 	 */
 	function bp_get_group_current_admin_tab() {
 		if ( bp_is_groups_component() && bp_is_current_action( 'admin' ) ) {
@@ -3020,7 +3040,7 @@ function bp_current_group_slug() {
 	 * @since BuddyPress (1.5)
 	 * @uses apply_filters() Filter bp_get_current_group_slug to modify this output
 	 *
-	 * @return str $current_group_slug The slug of the current group, if there is one
+	 * @return string $current_group_slug The slug of the current group, if there is one
 	 */
 	function bp_get_current_group_slug() {
 		$current_group = groups_get_current_group();
@@ -3045,7 +3065,7 @@ function bp_current_group_name() {
 	 * @since BuddyPress (1.5)
 	 * @uses apply_filters() Filter bp_get_current_group_name to modify this output
 	 *
-	 * @return str The name of the current group, if there is one
+	 * @return string The name of the current group, if there is one
 	 */
 	function bp_get_current_group_name() {
 		global $bp;
