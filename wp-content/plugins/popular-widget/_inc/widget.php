@@ -24,8 +24,8 @@
 	foreach( $posttypes as $type => $val ) 
 		$types_array[] = "'$type'";
 	
-	$this->instance['number'] = $this->number;
-	$this->instance['types'] = implode( ',', $types_array );
+	$this->instance['number'] 	= $this->number;
+	$this->instance['types'] 	= implode( ',', $types_array );
 	
 	$disabled_tabs = 0;
 	$this->time = date( 'Y-m-d H:i:s', strtotime( "-{$lastdays} days", current_time( 'timestamp' ) ) );
@@ -40,7 +40,7 @@
 	$output .= '<div class="pop-layout-v">';
 	
 	//tabs
-	$output .= '<ul id="pop-widget-tabs-' . $this->number . '" class="pop-widget-tabs pop-widget-tabs-'. $disabled_tabs .'" >';
+	$output .= '<ul id="pop-widget-tabs-' . esc_attr( $this->number ) . '" class="pop-widget-tabs pop-widget-tabs-'. $disabled_tabs .'" >';
 	foreach( $this->tabs as $tab => $label ) 
 		if( ${"no{$tab}"} != 'on' ) $output .= '<li><a href="' . esc_attr( "#{$tab}" ) . '" rel="nofollow">' . $label . '</a></li>';
 	$output .= '</ul>';
@@ -49,7 +49,7 @@
 	$output .= '<div class="pop-inside-' .  $this->number . ' pop-inside">';
 	foreach( $this->tabs as $tab => $label ) { 
 	
-		$this->current_tab = $tab;
+		$this->current_tab = $tab = sanitize_title( $tab );
 		
 		if( ${"no{$tab}"} != 'on' ){
 			if(  $tab != 'tags' ) $output .= '<ul id="pop-widget-' . $tab . '-' . $this->number . '">';
@@ -70,6 +70,8 @@
 				case 'tags':
 					$output .= $this->get_tags(  );
 					break;
+				default:
+					$output .= apply_filters( "pop_{$tab}_tab_content" );
 			}
 			
 			if(  $tab != 'tags' )  $output .= '</ul>';
