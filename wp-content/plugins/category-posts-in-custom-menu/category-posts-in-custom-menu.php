@@ -3,7 +3,7 @@
     Plugin Name: Category Posts in Custom Menu
     Plugin URI: http://blog.dianakoenraadt.nl
     Description: This plugin replaces selected Category links / Post Tag links / Custom taxonomy links in a Custom Menu by a list of their posts/pages.
-    Version: 0.7.1
+    Version: 0.8
     Author: Diana Koenraadt
     Author URI: http://www.dianakoenraadt.nl
     License: GPL2
@@ -55,6 +55,7 @@ class CPCM_Manager {
                 delete_post_meta($nav_menu_item->ID, 'cpcm-order');
                 delete_post_meta($nav_menu_item->ID, 'cpcm-item-count');
                 delete_post_meta($nav_menu_item->ID, 'cpcm-item-titles');
+				delete_post_meta($nave_menu_item->ID, 'cpcm-remove-original-item');
             }
         } // function
 
@@ -85,20 +86,84 @@ class CPCM_Manager {
             return 'Walker_Nav_Menu_Edit';
         } // function
 
+		function replace_placeholders( $post, $string )
+		{
+			$custom_field_keys = get_post_custom_keys($post->ID);
+			foreach ( (array)$custom_field_keys as $key => $value ) {
+				$valuet = trim($value);
+				if ( '_' == $valuet{0} )
+				continue;
+				$meta = get_post_meta($post->ID, $valuet, true);
+				$valuet_str = str_replace(' ', '_', $valuet);
+				// Check if post_myfield occurs
+				if (substr_count($string, "%post_" . $valuet_str) > 0)
+				{
+					if (is_string($meta))
+					{
+						$string = str_replace( "%post_" . $valuet_str, $meta, $string);
+					}
+				}
+			}
+			
+			$userdata = get_userdata($post->post_author);
+			$string = str_replace( "%post_author", 	$userdata ? $userdata->data->display_name : '', $string);
+
+			$featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+			$string = str_replace( "%post_feat_image", 	$featured_image, $string);
+
+			$string = str_replace( "%post_title", 	$post->post_title, 	$string);
+			$string = str_replace( "%post_excerpt", 	$post->post_excerpt, 	$string);
+			$string = str_replace( "%post_url", 	get_permalink($post->ID), 	$string);
+
+			$post_date_gmt = $post->post_date_gmt;
+			$string = preg_replace("/\%post_date_gmt\(\)/", mysql2date('F jS, Y', $post_date_gmt), $string);
+			$string = preg_replace("/\%post_date_gmt\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_date_gmt')", $string);
+			$string = str_replace( "%post_date_gmt", 	$post_date_gmt, 	$string);
+
+			$post_date = $post->post_date;
+			$string = preg_replace("/\%post_date\(\)/", mysql2date('F jS, Y', $post_date), $string);
+			$string = preg_replace("/\%post_date\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_date')", $string);
+			$string = str_replace( "%post_date", 	$post_date, 	$string);
+
+			$string = str_replace( "%post_status", 	$post->post_status, 	$string);
+
+			$post_modified_gmt = $post->post_modified_gmt;
+			$string = preg_replace("/\%post_modified_gmt\(\)/", mysql2date('F jS, Y', $post_modified_gmt), $string);
+			$string = preg_replace("/\%post_modified_gmt\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_modified_gmt')", $string);
+			$string = str_replace( "%post_modified_gmt", 	$post_modified_gmt, 	$string);
+
+			$post_modified = $post->post_modified;
+			$string = preg_replace("/\%post_modified\(\)/", mysql2date('F jS, Y', $post_modified), $string);
+			$string = preg_replace("/\%post_modified\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_modified')", $string);
+			$string = str_replace( "%post_modified", 	$post_modified, 	$string);
+
+			$string = str_replace( "%post_comment_count", 	$post->comment_count, 	$string);
+			
+			// Remove remaining %post_ occurrences.
+			$pattern = "/" . "((\((?P<lbrack>(\S*))))?" . "\%post_\w+(?P<brackets>(\(((?P<inner>[^\(\)]*)|(?P>brackets))\)))" . "(((?P<rbrack>(\S*))\)))?" . "/";
+			$string = preg_replace($pattern, '', $string);
+			
+			$pattern = "/%post_\w+(?P<brackets>(\(((?P<inner>[^\(\)]*)|(?P>brackets))\)))?/";
+			$string = preg_replace($pattern, '', $string);			
+			
+			$pattern = "/%post_\w+(\(\w*\))?/"; 
+			$string = preg_replace($pattern, '', $string);
+			
+			return $string;
+		}
+		
         /* 
-        * Build the menu structure for display: Replace taxonomies (category, tags or custom taxonomies) that have been marked as such, by their posts.
+        * Build the menu structure for display: Augment taxonomies (category, tags or custom taxonomies) that have been marked as such, by their posts. Optionally: remove original menu item.
         */
         function cpcm_replace_taxonomy_by_posts( $sorted_menu_items, $args ) {
 	        $result = array();    
 	        $inc = 0;
 	        foreach ( (array) $sorted_menu_items as $key => $menu_item ) {
-                // Replace taxonomy object by a list of its posts: Append posts to $result
-                // Remove the taxonomy object itself.
-                if ( $menu_item->type == 'taxonomy' && (get_post_meta($menu_item->db_id, "cpcm-unfold", true) == '1')) {
-					$inc += -1;
+                // Augment taxonomy object with a list of its posts: Append posts to $result
+                // Optional: Remove the taxonomy object/original menu item itself.
+                if ( $menu_item->type == 'taxonomy' && (get_post_meta($menu_item->db_id, "cpcm-unfold", true) == '1')) {					
 					$query_arr = array();
 
-					//$query_arr[$menu_item->object] = $menu_item->title; 
 					$query_arr['tax_query'] = array(array('taxonomy'=>$menu_item->object,
 					'field'=>'id',
 					'terms'=>$menu_item->object_id
@@ -114,11 +179,35 @@ class CPCM_Manager {
 					$query_arr['post_type'] = $tag->object_type;
 
 					$posts = get_posts( $query_arr );
+					
+					// Decide whether the original item needs to be preserved.
+					$remove_original_item = get_post_meta($menu_item->db_id, "cpcm-remove-original-item", true);
+					$menu_item_parent = $menu_item->menu_item_parent;
+					switch ($remove_original_item) {
+						case "always":
+							$inc += -1;
+							break;
+						case "only if empty":
+							if (empty($posts))
+							{
+								$inc += -1;
+							}
+							else 
+							{
+								array_push($result,$menu_item);
+								$menu_item_parent = $menu_item->db_id;
+							}
+							break;
+						case "never":
+							array_push($result,$menu_item);
+							$menu_item_parent = $menu_item->db_id;
+							break;
+					}
 
 					foreach( (array) $posts as $pkey => $post ) {
 						// Decorate the posts with the required data for a menu-item.
 						$post = wp_setup_nav_menu_item( $post );
-						$post->menu_item_parent = $menu_item->menu_item_parent; // Set to parent of taxonomy item.
+						$post->menu_item_parent = $menu_item_parent; // Set to parent of taxonomy item.
 
 						// Transfer properties from the old menu item to the new one
 						$post->target = $menu_item->target;
@@ -130,52 +219,7 @@ class CPCM_Manager {
 						$post->title = get_post_meta($menu_item->db_id, "cpcm-item-titles", true);
 
 						// Replace the placeholders in the title by the properties of the post
-						$userdata = get_userdata($post->post_author);
-						$post->title = str_replace( "%post_author", 	$userdata ? $userdata->data->display_name : '', 	$post->title);
-
-						$featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-						$post->title = str_replace( "%post_feat_image", 	$featured_image, 	$post->title);
-
-						$post->title = str_replace( "%post_title", 	$post->post_title, 	$post->title);
-						$post->title = str_replace( "%post_excerpt", 	$post->post_excerpt, 	$post->title);
-						$post->title = str_replace( "%post_url", 	$post->url, 	$post->title);
-
-						$post_date_gmt = $post->post_date_gmt;
-						$post->title = preg_replace("/\%post_date_gmt\(\)/", mysql2date('F jS, Y', $post_date_gmt), $post->title);
-						$post->title = preg_replace("/\%post_date_gmt\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_date_gmt')", $post->title);
-						$post->title = str_replace( "%post_date_gmt", 	$post_date_gmt, 	$post->title);
-
-						$post_date = $post->post_date;
-						$post->title = preg_replace("/\%post_date\(\)/", mysql2date('F jS, Y', $post_date), $post->title);
-						$post->title = preg_replace("/\%post_date\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_date')", $post->title);
-						$post->title = str_replace( "%post_date", 	$post_date, 	$post->title);
-
-						$post->title = str_replace( "%post_status", 	$post->post_status, 	$post->title);
-
-						$post_modified_gmt = $post->post_modified_gmt;
-						$post->title = preg_replace("/\%post_modified_gmt\(\)/", mysql2date('F jS, Y', $post_modified_gmt), $post->title);
-						$post->title = preg_replace("/\%post_modified_gmt\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_modified_gmt')", $post->title);
-						$post->title = str_replace( "%post_modified_gmt", 	$post_modified_gmt, 	$post->title);
-
-						$post_modified = $post->post_modified;
-						$post->title = preg_replace("/\%post_modified\(\)/", mysql2date('F jS, Y', $post_modified), $post->title);
-						$post->title = preg_replace("/\%post_modified\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_modified')", $post->title);
-						$post->title = str_replace( "%post_modified", 	$post_modified, 	$post->title);
-
-						$post->title = str_replace( "%post_comment_count", 	$post->comment_count, 	$post->title);
-
-						$custom_field_keys = get_post_custom_keys($post->ID);
-						foreach ( $custom_field_keys as $key => $value ) {
-							$valuet = trim($value);
-							if ( '_' == $valuet{0} )
-							continue;
-							$meta = get_post_meta($post->ID, $valuet, true);
-							$valuet_str = str_replace(' ', '_', $valuet);
-							$post->title = str_replace( "%post_" . $valuet_str, $meta, $post->title);
-						}
-						// Remove remaining %post_ occurrences.
-						$pattern = "/%post_\w+/";
-						$post->title = preg_replace($pattern, '', $post->title);
+						$post->title = $this->replace_placeholders($post, $post->title);
 
 						$inc += 1;
 					}
@@ -205,6 +249,7 @@ class CPCM_Manager {
                 update_post_meta( $menu_item_db_id, 'cpcm-order', (empty( $_POST['menu-item-cpcm-order'][$menu_item_db_id]) ? "DESC" : $_POST['menu-item-cpcm-order'][$menu_item_db_id]) );
                 update_post_meta( $menu_item_db_id, 'cpcm-item-count', (int) (empty( $_POST['menu-item-cpcm-item-count'][$menu_item_db_id]) ? "-1" : $_POST['menu-item-cpcm-item-count'][$menu_item_db_id]) );
                 update_post_meta( $menu_item_db_id, 'cpcm-item-titles', (empty( $_POST['menu-item-cpcm-item-titles'][$menu_item_db_id]) ? "%post_title" : $_POST['menu-item-cpcm-item-titles'][$menu_item_db_id]) );
+                update_post_meta( $menu_item_db_id, 'cpcm-remove-original-item', (empty( $_POST['menu-item-cpcm-remove-original-item'][$menu_item_db_id]) ? "always" : $_POST['menu-item-cpcm-remove-original-item'][$menu_item_db_id]) );
             } // if 
         } // function
 
@@ -350,16 +395,16 @@ class CPCM_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit  {
                     <div class="cpmp-description">
                         <p class="field-cpcm-unfold description description-wide">
                             <label for="edit-menu-item-cpcm-unfold-<?php echo $item_id; ?>">
-                                <input type="checkbox" id="edit-menu-item-cpcm-unfold-<?php echo $item_id; ?>" class="edit-menu-item-cpcm-unfold" name="menu-item-cpcm-unfold[<?php echo $item_id; ?>]" <?php checked( get_post_meta($item_id, "cpcm-unfold", true), true )  ?> /> Replace with links to posts<?php if ('Category' == $item->type_label) echo ' in this category'; else if (('Tag' == $item->type_label) || ('Post Tag' == $item->type_label)) echo ' with this tag'; else echo ' in this taxonomy'; ?>.
+                                <input type="checkbox" id="edit-menu-item-cpcm-unfold-<?php echo $item_id; ?>" class="edit-menu-item-cpcm-unfold" name="menu-item-cpcm-unfold[<?php echo $item_id; ?>]" <?php checked( get_post_meta($item_id, "cpcm-unfold", true), true )  ?> /> Create submenu containing links to posts<?php if ('Category' == $item->type_label) echo ' in this category'; else if (('Tag' == $item->type_label) || ('Post Tag' == $item->type_label)) echo ' with this tag'; else echo ' in this taxonomy'; ?>.
                             </label>
                         </p>
-                        <p class="field-cpcm-item-count description description-thirds">
+                        <p class="field-cpcm-item-count description description-thin">
                             <label for="edit-menu-item-cpcm-item-count-<?php echo $item_id; ?>">
                                 <?php _e( 'Number of Posts' ); ?><br />
                                 <input type="text" id="edit-menu-item-cpcm-item-count-<?php echo $item_id; ?>" class="widefat code edit-menu-item-cpcm-item-count" name="menu-item-cpcm-item-count[<?php echo $item_id; ?>]" value="<?php $item_count = get_post_meta($item_id, "cpcm-item-count", true); echo $item_count != '' ? $item_count : '-1'; ?>" />
                             </label>
                         </p>
-                        <p class="field-cpcm-orderby description description-thirds">
+                        <p class="field-cpcm-orderby description description-thin">
                             <label for="edit-menu-item-cpcm-orderby-<?php echo $item_id; ?>">
                                 <?php _e( 'Order By' ); ?><br />
                                 <select id="edit-menu-item-cpcm-orderby-<?php echo $item_id; ?>" class="widefat edit-menu-item-cpcm-orderby" name="menu-item-cpcm-orderby[<?php echo $item_id; ?>]">
@@ -375,7 +420,7 @@ class CPCM_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit  {
                                 </select>
                             </label>
                         </p>
-                        <p class="field-cpcm-order description description-thirds">
+                        <p class="field-cpcm-order description description-thin">
                             <label for="edit-menu-item-cpcm-order-<?php echo $item_id; ?>">
                                 <?php _e( 'Order' ); ?><br />
                                 <select id="edit-menu-item-cpcm-order-<?php echo $item_id; ?>" class="widefat edit-menu-item-cpcm-order" name="menu-item-cpcm-order[<?php echo $item_id; ?>]">
@@ -384,6 +429,16 @@ class CPCM_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit  {
                                 </select>
                             </label>
                         </p>
+                        <p class="field-cpcm-remove-original-item description description-thin">
+                            <label for="edit-menu-item-cpcm-remove-original-item-<?php echo $item_id; ?>">
+                                <?php _e( 'Remove original menu item' ); ?><br />
+                                <select id="edit-menu-item-cpcm-remove-original-item-<?php echo $item_id; ?>" class="widefat edit-menu-item-cpcm-remove-original-item" name="menu-item-cpcm-remove-original-item[<?php echo $item_id; ?>]">
+                                    <option value="always" <?php selected( get_post_meta($item_id, "cpcm-remove-original-item", true), "always" )  ?>><?php _e('Always'); ?></option>
+                                    <option value="only if empty" <?php selected( get_post_meta($item_id, "cpcm-remove-original-item", true), "only if empty" )  ?>><?php _e('Only if there are no posts'); ?></option>
+                                    <option value="never" <?php selected( get_post_meta($item_id, "cpcm-remove-original-item", true), "never" )  ?>><?php _e('Never'); ?></option>
+                                </select>
+                            </label>
+						</p>
                         <p class="field-cpcm-item-titles description description-wide">
                             <label for="edit-menu-item-cpcm-item-titles-<?php echo $item_id; ?>">
                                 <?php _e( 'Post Navigation Label' ); ?><br />
