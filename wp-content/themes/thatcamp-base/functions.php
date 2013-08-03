@@ -155,6 +155,7 @@ div.generic-button a {
   border-radius: 3px;
   color: #ffffff;
   cursor: pointer;
+  font-family: Francois One;
   font-size: 1.1rem;
   outline: none;
   padding: 4px 10px;
@@ -191,8 +192,10 @@ div.generic-button.disabled-button:hover span {
 remove_action( 'wp_head', 'thatcamp_add_styles' );
 add_action( 'wp_head', 'thatcamp_add_styles_alt' );
 
-
-
-
+function excerpt_read_more_link($output) {
+ global $post;
+ return $output . '<a href="'. get_permalink($post->ID) . '"><em>Continue reading <span class="meta-nav">&rarr;</span></em></a>';
+}
+add_filter('the_excerpt', 'excerpt_read_more_link');
 
 ?>
