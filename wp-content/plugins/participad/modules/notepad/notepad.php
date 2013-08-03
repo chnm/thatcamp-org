@@ -320,29 +320,29 @@ function participad_notepad_create_render( $args = array() ) {
 		$form .= '<style type="text/css">
 			form.notepad-create { font-size: .8em; }
 			form.notepad-create ul { list-style-type: none; }
-			form.notepad-create li { margin-bottom: .5em; }
-			form.notepad-create label { display: block; float: left; width: 120px; }
-			form.notepad-create input[type="text"] { width: 50%; }
-			form.notepad-create select { width: 50%; }
-			form.notepad-create input[type="submit"] { margin-top: .5em; }
+			form.notepad-create ul li { margin-top: 1em; margin-bottom: 1.5em; border: none; list-style-type: none; }
+			form.notepad-create ul li label { width: 120px; margin-right: 10px; }
+			form.notepad-create ul li input[type="text"] { width: 50%; float: right; }
+			form.notepad-create ul li select { width: 50%; float: right; }
+			form.notepad-create input[type="submit"] { margin-top: 1em; }
 		</style>';
 	}
 
 	// @todo
 	if ( ! is_user_logged_in() ) {
-		return sprintf( __( 'You <a href="%s">log in</a> to create Notepads.', 'participad' ), add_query_arg( 'redirect_to', wp_guess_url(), wp_login_url() ) );
+		return sprintf( __( 'Please <a href="%s">log in</a> to create a Notepad.', 'participad' ), add_query_arg( 'redirect_to', wp_guess_url(), wp_login_url() ) );
 	}
 
 	$form .= '<form class="notepad-create" method="post" action="">';
 	$form .=   '<ul class="participad-form-list">';
 
 	$form .=     '<li>';
-	$form .=       '<label for="notepad-name">' . __( 'Notepad Title:', 'participad' ) . '</label>';
+	$form .=       '<label for="notepad-name">' . __( 'Notepad Title', 'participad' ) . '</label>';
 	$form .=       '<input type="text" name="notepad-name" id="notepad-name" value="' . esc_attr( $r['default_title'] ) . '" />';
 	$form .=     '</li>';
 
 	$form .=     '<li>';
-	$form .=       '<label for="notepad-associated-post">' . __( 'Link Notepad To:', 'participad' ) . '</label>';
+	$form .=       '<label for="notepad-associated-post">' . __( 'Link Notepad to', 'participad' ) . '</label>';
 	$form .=       '<select name="notepad-associated-post" id="notepad-associated-post">';
 	$form .=         '<option>' . __( '- None -', 'participad' ) . '</option>';
 	$form .=         $associated_posts_options;
