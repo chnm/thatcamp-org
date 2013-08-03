@@ -11,7 +11,7 @@ function participad_admin_menu() {
 	add_options_page(
 		__( 'Participad', 'participad' ),
 		__( 'Participad', 'participad' ),
-		'manage_options',
+		'manage_network_options',
 		'participad',
 		'participad_admin_page'
 	);
