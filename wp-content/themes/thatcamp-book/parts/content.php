@@ -20,11 +20,11 @@
 					</div>
 		<?php } } ?>
 		<div class="post-summary">
-			<?php the_excerpt( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'bookcamp') ); ?>
+			<?php the_excerpt(); ?>
 		</div>
 	<?php else : ?>
 		<div class="post-body">
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'bookcamp') ); ?>
+			<?php the_content(); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( '<span>Pages:</span>', 'bookcamp'), 'after' => '</div>' ) ); ?>
 		</div>
 	<?php endif; ?>

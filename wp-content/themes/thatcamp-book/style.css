@@ -3,7 +3,7 @@ Theme Name: THATCamp Book
 Theme Date: 12/06/2012
 Version: 1.0
 Theme URI: http://thatcamp.org
-Description: THATCamp Book is a mobile-optimized theme for THATCamp subsites. Colors, background, and header can all be customized.
+Description: THATCamp Book is a mobile-optimized theme for THATCamp subsites. Colors, background, and header can all be customized. Displays the excerpt instead of the full post content on the blog posts page.
 Author: Tammie Lister
 Author URI: www.thelogicalbinary.com
 Tags:
@@ -1183,6 +1183,17 @@ dd.wp-caption p.wp-caption-text,
 .post-header {
   margin: 0 0 30px 0;
 }
+
+.avatar {
+margin-right: 1em;
+margin-bottom: .5em;
+}
+
+#author-info {
+list-style-type: none;
+}
+
+
 /*--------------------------------------------------------------
 4.4 - Widgets
 --------------------------------------------------------------*/
