@@ -101,7 +101,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 						<input type="text" name="zip-code" />
 					</label>
 				</div>
-
+				<p class="warning">After you click "Submit," a new THATCamp site will be created for you. This process takes awhile; please do not close the page or back out of it while it is happening.</p>
 				<input name="thatcamp-register-submit" type="submit" value="Submit">
 			</form>
 		<?php endif ?>

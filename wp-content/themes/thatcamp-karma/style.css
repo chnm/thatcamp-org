@@ -319,6 +319,14 @@ border: 0;
 border:0;
 }
 
+.warning {
+padding: 1em; 
+background-color: #88aa11;
+color: #fff;
+font-size: small;
+margin-bottom: 2em;
+}
+
 /*--------------------------------------------------------------
 2.2 - Header
 --------------------------------------------------------------*/
