@@ -189,6 +189,8 @@ class Thatcamp_Registrations_Admin {
 		<h3><?php _e( 'T-shirt Size', 'thatcamp-registrations' ) ?></h3>
 		<?php echo $applicant->tshirt_size ?>
 
+    <h3><?php _e( 'Children', 'thatcamp-registrations' ) ?></h3>
+    <?php if($children = $applicant->children) { echo $children; } else { echo '0'; } ?>
 </div>
             <?php
             // Otherwise, we need to view the list of registrations.
@@ -258,7 +260,7 @@ class Thatcamp_Registrations_Admin {
 					<option value="mark_approved"><?php _e( 'Mark Approved', 'thatcamp-registrations' ) ?></option>
 					<option value="mark_pending"><?php _e( 'Mark Pending', 'thatcamp-registrations' ) ?></option>
 					<option value="mark_rejected"><?php _e( 'Mark Rejected', 'thatcamp-registrations' ) ?></option>
-					<option value="mark_spam"><?php _e( 'Spam', 'thatcamp-registrations' ) ?></option>
+					<option value="mark_spam"><?php _e( 'Mark Spam', 'thatcamp-registrations' ) ?></option>
 				</select>
 
 				<input type="submit" value="Apply" class="button-secondary action" id="doaction" name="">
@@ -288,7 +290,7 @@ class Thatcamp_Registrations_Admin {
                     <th>Applicant Email</th>
                     <th>Status</th>
                     <th>View</th>
-                    <th>Spam</th>
+                    <th>Mark Spam</th>
                 </tr>
                 </tfoot>
 
@@ -301,7 +303,7 @@ class Thatcamp_Registrations_Admin {
                         <td><?php echo $applicant->user_email; ?></td>
                         <td><?php echo ucwords($registration->status); ?></td>
                         <td><a href="admin.php?page=thatcamp-registrations&amp;id=<?php echo $registration->id; ?>">View Full Registration</a></td>
-                        <td><a href="<?php echo wp_nonce_url( add_query_arg( array( 'id' => $registration->id, 'page' => 'thatcamp-registrations', 'action' => 'spam' ), 'admin.php' ), 'tcspam' ) ?>" class="spam" onclick="return confirm('Are you sure you want to delete this registration as spam? There is no undo.');">Spam</a></td>
+                        <td><a href="<?php echo wp_nonce_url( add_query_arg( array( 'id' => $registration->id, 'page' => 'thatcamp-registrations', 'action' => 'spam' ), 'admin.php' ), 'tcspam' ) ?>" class="button-secondary action" onclick="return confirm('Are you sure you want to delete this registration as spam? There is no undo.');">Mark Spam</a></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -515,6 +517,7 @@ class Thatcamp_Registrations_Admin {
 			array( 'ukey' => 'days_attending', 'title' => __( 'Days Attending', 'thatcamp-registrations' ) ),
 			array( 'ukey' => 'application_text', 'title' => 'Application Text' ),
 			array( 'ukey' => 'status', 'title' => 'Status' ),
+      array( 'ukey' => 'children', 'title' => 'Children' ),
 		);
 
 		// Column headers

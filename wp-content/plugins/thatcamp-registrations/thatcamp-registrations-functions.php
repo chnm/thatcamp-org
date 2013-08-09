@@ -173,7 +173,12 @@ function thatcamp_registrations_fields( $type = 'limited' ) {
 				),
 			),
 		),
-
+		array(
+			'id'          => 'children',
+			'name'        => __( 'Children', 'thatcamp-registrations' ),
+			'explanation' => __( 'Kids are welcome! Let us know how many you plan to bring.', 'thatcamp-registrations' ),
+			'public'      => false,
+		),
 	);
 
 	if ( 'limited' == $type ) {
