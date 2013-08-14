@@ -107,7 +107,8 @@ function thatcamp_registrations_fields( $type = 'limited' ) {
 					'value' => 'advanced',
 					'text'  => __( 'Advanced (can code)', 'thatcamp-registrations' ),
 				),
-			),
+      ),
+      'checked'    => false
 		),
 		array(
 			'id'          => 'tshirt_size',
@@ -171,13 +172,15 @@ function thatcamp_registrations_fields( $type = 'limited' ) {
 					'value' => 'womens_xxl',
 					'text'  => __( 'Women\'s XXL - Chest 45-47', 'thatcamp-registrations' ),
 				),
-			),
+      ),
+      'checked'   => false
 		),
 		array(
 			'id'          => 'children',
 			'name'        => __( 'Children', 'thatcamp-registrations' ),
 			'explanation' => __( 'Kids are welcome! Let us know how many you plan to bring.', 'thatcamp-registrations' ),
-			'public'      => false,
+      'public'      => false,
+      'checked'     => false
 		),
 	);
 
@@ -205,7 +208,12 @@ function thatcamp_registrations_selected_fields() {
 	$selected = get_option( 'thatcamp_registrations_selected_fields' );
 
 	if ( '' == $selected ) {
-		$fields = thatcamp_registrations_fields( 'all' );
+    $fields = thatcamp_registrations_fields( 'all' );
+    foreach ($fields as $key => $field) {
+      if($field['checked'] === false) {
+          unset($fields[$key]);
+      }
+    }
 		$selected = wp_list_pluck( $fields, 'id' );
 	}
 
@@ -605,11 +613,30 @@ function thatcamp_registrations_get_applicant_info($registration)
         $registrations_table = $wpdb->prefix . "thatcamp_registrations";
         $sql = "SELECT * from " . $registrations_table . " WHERE id = " .$registration->id;
         $record = $wpdb->get_row($sql, OBJECT);
-        if (($record->user_id == 0 || $record->user_id == null) && !empty($record->applicant_info)) {
-            return (object) maybe_unserialize($record->applicant_info);
-        } else {
-            return get_userdata($record->user_id);
+
+        $applicantInfo = array();
+        if (!empty($record->applicant_info)) {
+            $applicantInfo = (array) maybe_unserialize($record->applicant_info);
         }
+
+        if ($userData = get_userdata($record->user_id)) {
+            // Set an array of custom user fields, since they're acquired by magic methods on WP_User.
+            $profileFields = array(
+                'first_name' => $userData->first_name,
+                'last_name' => $userData->last_name,
+                'user_url' => $userData->user_url,
+                'user_twitter' => $userData->user_twitter,
+                'user_title' => $userData->user_title,
+                'user_organization' => $userData->user_organization,
+                'description' => $userData->description,
+                'discipline' => $userData->discipline
+            );
+
+            // Merge applicant info from registration with user data. User data overrides.
+            $applicantInfo = array_merge($applicantInfo, $profileFields);
+        }
+
+        return (object) $applicantInfo;
     }
 }
 

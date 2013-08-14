@@ -41,35 +41,35 @@ class Thatcamp_Registrations_Public_Registration {
                 $alerts['application_text'] = __('Please tell us why you want to come to THATCamp. What you write here will NOT be publicly displayed.', 'thatcamp-registrations');
             }
 
-	    if ( ! empty( $_POST['tcppl-field'] ) ) {
-	        $alerts['spammer'] = __( "It looks like you filled in the spammer field. No account for you!", 'thatcamp-registrations' );
-	    }
+        if ( ! empty( $_POST['tcppl-field'] ) ) {
+            $alerts['spammer'] = __( "It looks like you filled in the spammer field. No account for you!", 'thatcamp-registrations' );
+        }
 
-            // User email is required.
-            if (!is_user_logged_in()) {
-                if ( empty( $_POST['first_name']) ) {
-                    $alerts['application_text'] = __('You must add a first name.', 'thatcamp-registrations');
-                }
-
-                if ( empty( $_POST['last_name']) ) {
-                    $alerts['application_text'] = __('You must add a last name.', 'thatcamp-registrations');
-                }
-
-                if ( empty( $_POST['user_email'] ) ) {
-                    $alerts['user_email'] = __('You must add an email address.', 'thatcamp-registrations');
-                }
-
-		$email = $_POST['user_email'];
-		$the_user = get_user_by( 'email', $email );
-		$is_an_admin = is_a( $the_user, 'WP_User' ) && user_can( $the_user, 'manage_options' );
-	        if ( $is_an_admin ) {
-		    $alerts['user_email'] = __( 'You cannot register the email address of a site administrator.', 'thatcamp-registrations' );
-		}
-
-		if ( empty( $_POST['description'] ) ) {
-			$alerts['description'] = __( 'You must provide a biography', 'thatcamp-registrations' );
-		}
+        // User email is required.
+        if (!is_user_logged_in()) {
+            if ( empty( $_POST['first_name']) ) {
+                $alerts['application_text'] = __('You must add a first name.', 'thatcamp-registrations');
             }
+
+            if ( empty( $_POST['last_name']) ) {
+                $alerts['application_text'] = __('You must add a last name.', 'thatcamp-registrations');
+            }
+
+            if ( empty( $_POST['user_email'] ) ) {
+                $alerts['user_email'] = __('You must add an email address.', 'thatcamp-registrations');
+            }
+
+		        $email = $_POST['user_email'];
+		        $the_user = get_user_by( 'email', $email );
+		        $is_an_admin = is_a( $the_user, 'WP_User' ) && user_can( $the_user, 'manage_options' );
+	          if ( $is_an_admin ) {
+		            $alerts['user_email'] = __( 'You cannot register the email address of a site administrator.', 'thatcamp-registrations' );
+		        }
+
+            if ( empty( $_POST['description'] ) ) {
+              $alerts['description'] = __( 'You must provide a biography', 'thatcamp-registrations' );
+            }
+        }
 
             $userEmail = is_user_logged_in() ? $this->current_user->user_email : @$_POST['user_email'];
 
@@ -86,7 +86,6 @@ class Thatcamp_Registrations_Public_Registration {
         // If the currently authenticated user has submitted a registration.
         elseif (is_user_logged_in() && $existingApp = thatcamp_registrations_get_registration_by_user_id($this->current_user->ID)) {
             echo '<div>'.__('You have already submitted the form.','thatcamp-registrations').'</div>';
-
         }
         elseif ((!empty($_POST)) && empty($alerts)) {
             thatcamp_registrations_add_registration();
@@ -100,25 +99,23 @@ class Thatcamp_Registrations_Public_Registration {
                 }
             }
 
-	    $login_link = add_query_arg( 'redirect_to', wp_guess_url(), wp_login_url() );
+	          $login_link = add_query_arg( 'redirect_to', wp_guess_url(), wp_login_url() );
 
-	    // Nudge the user to log in
-	    if ( ! is_user_logged_in() ) {
-		    echo "<h3>" . __( "Already have a THATCamp account?", 'thatcamp-registrations' ) . "</h3>";
-		    echo "<p>" . sprintf( __( "If you've attended a THATCamp in the past, you probably already have an account on thatcamp.org. <a href='%s'>Log in</a> and we'll pre-fill some of your information for you.", 'thatcamp-registrations' ), $login_link ) . "</p>";
-	    } else {
-		    echo "<h3>" . __( "Welcome back!", 'thatcamp-registrations' ) . "</h3>";
-		    echo "<p>" . sprintf( __( 'You are logged in as <strong>%1$s</strong>, using the the email address <strong>%2$s</strong>', 'thatcamp-registrations' ), $this->current_user->display_name, $this->current_user->user_email ) . "</p>";
-	    }
+            // Nudge the user to log in
+            if ( ! is_user_logged_in() ) {
+              echo "<h3>" . __( "Already have a THATCamp account?", 'thatcamp-registrations' ) . "</h3>";
+              echo "<p>" . sprintf( __( "If you've attended a THATCamp in the past, you probably already have an account on thatcamp.org. <a href='%s'>Log in</a> and we'll pre-fill some of your information for you.", 'thatcamp-registrations' ), $login_link ) . "</p>";
+            } else {
+              echo "<h3>" . __( "Welcome back!", 'thatcamp-registrations' ) . "</h3>";
+              echo "<p>" . sprintf( __( 'You are logged in as <strong>%1$s</strong>, using the the email address <strong>%2$s</strong>', 'thatcamp-registrations' ), $this->current_user->display_name, $this->current_user->user_email ) . "</p>";
+            }
 
             echo '<form method="post" action="">';
 
-	    $this->_application_form();
+            $this->_application_form();
+            $this->_user_info_form();
 
-	    // If user login is not required, display the user info form.
-	    if ( !thatcamp_registrations_user_required() && !is_user_logged_in()) {
-		    $this->_user_info_form();
-            } elseif (is_user_logged_in()) {
+            if (is_user_logged_in()) {
                 echo '<input type="hidden" name="user_id" value="'. $this->current_user->ID .'" />';
                 echo '<input type="hidden" name="user_email" value="'. $this->current_user->user_email .'" />';
             }
@@ -139,12 +136,25 @@ class Thatcamp_Registrations_Public_Registration {
 		}
 		$public_fields = implode( ', ', $public_fields );
 
+    // Could be greatly improved if we more deliberately differentiate between cross-camp and per-camp registration fields.
+    if ( is_user_logged_in() ) {
+        // An array of fields whose values would be camp-specific.
+        $campSpecificFields = array( 'days_attending', 'technology_skill_level', 'tshirt_size', 'children' );
+
+        foreach ( $fields as $field_key => $field ) {
+            if ( ! in_array( $field['id'], $campSpecificFields ) ) {
+                unset( $fields[$field_key] );
+            }
+        }
+    }
+
+    if (!empty($fields)):
 		?>
 
 		<fieldset>
 			<legend><?php _e( 'Personal Information', 'thatcamp-registrations' ) ?></legend>
 
-			<p class="explanation" style="margin: 1em 0 1em 0; color:crimson;"><?php printf( __( 'Please note that the following pieces of information may be displayed publicly on this website: %s. We will not display your e-mail address or your reasons for coming to THATCamp.', 'thatcamp-registrations' ), $public_fields ) ?></p>
+			<p class="explanation" style="margin: 1em 0 1em 0; color:crimson;"><?php printf( __( 'Please note that the following information from your profile may be publicly displayed on this website: your name, biography, field of study, title, institutional affiliation, website, and Twitter handle. No other information will be publicly displayed.', 'thatcamp-registrations' ), $public_fields ) ?></p>
 
 			<?php foreach ( $fields as $field ) : ?>
 
@@ -196,6 +206,7 @@ class Thatcamp_Registrations_Public_Registration {
         <!-- Removed t-shirt size and dietary preferences fields. 10/17/2012 AF -->
     </fieldset>
     <?php
+    endif;
     }
 
     function _application_form() {
