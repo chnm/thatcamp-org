@@ -796,7 +796,7 @@ nav#top-nav li:last-child {
 }
 nav#top-nav li a {
   background: #ffffff;
-  color: #999;
+  color: #000;
   padding: 7.5px 30px;
 }
 nav#top-nav li a:hover,
