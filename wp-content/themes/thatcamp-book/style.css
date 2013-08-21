@@ -611,9 +611,6 @@ textarea {
   border: 1px solid #ddd;
   padding: 10px 30px;
 }
-.widget_search input {
-  float: left;
-}
 input[type=checkbox],
 input[type=radio] {
   cursor: pointer;
@@ -705,14 +702,6 @@ input[type=submit]:hover,
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
-.widget_search input[type=submit] {
-  clear: none;
-  -webkit-border-radius: 0%;
-  -moz-border-radius: 0%;
-  border-radius: 0%;
-  padding: 6px 10px;
-}
-
 form div {
 margin-bottom: 2em;
 }
@@ -1212,16 +1201,6 @@ list-style-type: none;
 #wp-calendar caption {
   text-align: left;
 }
-.widget_search label {
-  display: block;
-  font-size: 14px;
-  font-size: 1.4rem;
-}
-.widget_search input[type="text"] {
-  padding: 6px;
-  padding: 0.6rem;
-  display: inline;
-}
 .widget {
   padding: 20px 0;
   padding: 2rem 0;
@@ -1237,6 +1216,24 @@ list-style-type: none;
 .widget h3 {
   border-bottom: 1px dashed #ccc;
 }
+.widget_search label {
+  display: block;
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+.widget_search input[type="text"] {
+  padding: 6px;
+  padding: 0.6rem;
+  width: 60%;
+  display: inline;
+}
+.widget_search input[type=submit] {
+  clear: none;
+  padding: 6px 10px;
+  width: 30%;
+  display: inline;
+}
+
 /*--------------------------------------------------------------
 6.0 - Browser specific
 --------------------------------------------------------------*/

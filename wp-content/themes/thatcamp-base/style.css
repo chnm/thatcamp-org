@@ -616,9 +616,6 @@ textarea {
   border: 1px solid #ddd;
   padding: 10px 20px;
 }
-.widget_search input {
-  float: left;
-}
 input[type=checkbox],
 input[type=radio] {
   cursor: pointer;
@@ -704,11 +701,6 @@ input[type=submit]:hover,
   outline: none;
   text-decoration: none;
 }
-.widget_search input[type=submit] {
-  clear: none;
-  padding: 6px 10px;
-}
-
 form div {
 margin-bottom: 2em;
 }
@@ -1239,16 +1231,6 @@ dd.wp-caption p.wp-caption-text,
 #wp-calendar caption {
   text-align: left;
 }
-.widget_search label {
-  display: block;
-  font-size: 14px;
-  font-size: 1.4rem;
-}
-.widget_search input[type="text"] {
-  padding: 6px;
-  padding: 0.6rem;
-  display: inline;
-}
 .widget {
   padding: 20px;
   text-align: left;
@@ -1267,7 +1249,23 @@ dd.wp-caption p.wp-caption-text,
   list-style: none;
   margin-bottom:1em;
 }
-
+.widget_search label {
+  display: block;
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+.widget_search input[type="text"] {
+  padding: 6px;
+  padding: 0.6rem;
+  width: 60%;
+  display: inline;
+}
+.widget_search input[type=submit] {
+  clear: none;
+  padding: 6px 10px;
+  width: 30%;
+  display: inline;
+}
 
 /*--------------------------------------------------------------
 6.0 - Browser specific
