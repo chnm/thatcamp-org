@@ -3813,11 +3813,26 @@ div.dir-search input[type="text"], #tc-region {
     margin-right: 1.5em;
   }
   nav#show-menu {
-    display:none;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
   }
   #responsive-menu {
-    display: none;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
   }
+  
   #avatarwall {
   display:block;
   }
@@ -3861,11 +3876,27 @@ div.dir-search input[type="text"], #tc-region {
     margin-right: 0.6em;
   }
   nav#show-menu {
-    display: none;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;  
   }
+  
   #responsive-menu {
-    display: none;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
   }
+  
   #site-logo a {
     background: url('assets/images/thatcamp-logo.png') no-repeat;
     text-indent: 100%;
