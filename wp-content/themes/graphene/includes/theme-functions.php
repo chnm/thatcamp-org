@@ -113,7 +113,7 @@ function graphene_top_bar_social(){
 				$icon_url = $social_profile['icon_url'];
                 $class = 'mysocial social-custom';
             } else {
-				$icon_url = get_template_directory_uri() . '/images/social/' . $social_profile['type'] . '.png';
+				$icon_url = GRAPHENE_ROOTURI . '/images/social/' . $social_profile['type'] . '.png';
 			}
 		?>
             <a href="<?php echo esc_url( $url ); ?>" title="<?php echo esc_attr( $title ); ?>" id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>"<?php echo $extra; ?>>

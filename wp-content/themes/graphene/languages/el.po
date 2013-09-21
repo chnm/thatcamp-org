@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene 1.0 theme for WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-23 22:53+0800\n"
-"PO-Revision-Date: 2013-07-31 02:53+0200\n"
+"POT-Creation-Date: 2013-08-24 12:12+0800\n"
+"PO-Revision-Date: 2013-09-04 18:07+0200\n"
 "Last-Translator: Nikos <domnista@hotmail.com>\n"
 "Language-Team: Nikos <domnista@hotmail.com>\n"
 "Language: el_GR\n"
@@ -15,7 +15,7 @@ msgstr ""
 "\\wp-content\\themes\\graphene\\\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: 404.php:23
@@ -189,8 +189,8 @@ msgstr "Νεότερα άρθρα"
 
 #: loop-author.php:55 loop-author.php:85 loop-children.php:45
 #: loop-children.php:54 loop-post-formats.php:36 loop.php:63 loop.php:128
-#: includes/theme-panes.php:79 includes/theme-panes.php:91
-#: includes/theme-panes.php:106
+#: includes/theme-panes.php:79 includes/theme-panes.php:92
+#: includes/theme-panes.php:107
 #, php-format
 msgid "Permalink to %s"
 msgstr "Μόνιμος σύνδεσμος στο %s"
@@ -320,12 +320,20 @@ msgstr "Σχετικά με τον συγγραφέα"
 msgid "Read the rest of this entry &raquo;"
 msgstr "Διάβασε περισσότερα &raquo;"
 
-#: search-404.php:14
+#. translators: %1$s is the number of results found, %2$s is the search term
+#: search-404.php:17 search.php:18
+#, php-format
+msgid "Found %1$s search result for keyword: %2$s"
+msgid_plural "Found %1$s search results for keyword: %2$s"
+msgstr[0] "Βρέθηκαν %1$s αποτελέσματα για τη λέξη: %2$s"
+msgstr[1] "Βρέθηκαν %1$s αποτελέσματα για τη λέξη: %2$s"
+
+#: search-404.php:26
 msgid "Suggested results"
 msgstr "Προτεινόμενα αποτελέσματα"
 
 #. translators: %1$s is the search term, %2$s is the number of results found
-#: search-404.php:19
+#: search-404.php:31
 #, php-format
 msgid ""
 "I've done a courtesy search for the term %1$s for you and found a total of "
@@ -342,7 +350,7 @@ msgstr[1] ""
 "%2$s αποτελέσματα. Δείτε αν μπορείτε να βρείτε αυτό που ψάχνετε στην "
 "παρακάτω λίστα."
 
-#: search-404.php:40
+#: search-404.php:52
 msgid ""
 "<strong>Sorry, couldn't find anything.</strong> Try searching for "
 "alternative terms using the search form above."
@@ -350,31 +358,23 @@ msgstr ""
 "<strong>Συγνώμη, δεν μπόρεσα να βρω κάτι.</strong> Δοκιμάστε αναζήτηση με "
 "άλλους όρους χρησιμοποιώντας την παραπάνω φόρμα αναζήτησης."
 
-#. translators: %1$s is the number of results found, %2$s is the search term
-#: search.php:12
-#, php-format
-msgid "Found %1$s search result for keyword: %2$s"
-msgid_plural "Found %1$s search results for keyword: %2$s"
-msgstr[0] "Βρέθηκαν %1$s αποτελέσματα για τη λέξη: %2$s"
-msgstr[1] "Βρέθηκαν %1$s αποτελέσματα για τη λέξη: %2$s"
-
 #: searchform.php:3 searchform.php:4
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: sidebar-two.php:28 includes/theme-setup.php:301
+#: sidebar-two.php:28 includes/theme-setup.php:305
 msgid "Front Page Sidebar Two Widget Area"
 msgstr "Πλευρικό πάνελ με δύο περιοχές μονάδων πρώτης σελίδας"
 
-#: sidebar-two.php:30 includes/theme-setup.php:266
+#: sidebar-two.php:30 includes/theme-setup.php:270
 msgid "Sidebar Two Widget Area"
 msgstr "Πλευρικό πάνελ με δύο περιοχές μονάδων"
 
-#: sidebar.php:28 includes/theme-setup.php:292
+#: sidebar.php:28 includes/theme-setup.php:296
 msgid "Front Page Sidebar Widget Area"
 msgstr "Περιοχή μονάδων πλευρικού πάνελ της πρώτης σελίδας"
 
-#: sidebar.php:30 includes/theme-setup.php:257
+#: sidebar.php:30 includes/theme-setup.php:261
 msgid "Sidebar Widget Area"
 msgstr "Περιοχή μονάδων πλευρικού πάνελ"
 
@@ -1610,8 +1610,8 @@ msgid "Text style:"
 msgstr "Στύλ γραμματοσειράς:"
 
 #: admin/options-display.php:455
-msgid "Text colour:"
-msgstr "Χρώμα γραμματοσειράς:"
+msgid "Text decoration:"
+msgstr "Διακόσμηση κειμένου:"
 
 #: admin/options-display.php:460
 msgid "Header Text"
@@ -1678,14 +1678,14 @@ msgid "Link Text"
 msgstr "Σύνδεσμος γραμματοσειράς"
 
 #: admin/options-display.php:553
-msgid "Text decoration (normal state )"
+msgid "Text decoration (normal state)"
 msgstr "Διακόσμηση κειμένου (κανονική κατάσταση)"
 
 #: admin/options-display.php:559
-msgid "Text decoration (hover state )"
+msgid "Text decoration (hover state)"
 msgstr ""
-"Διακόσμηση κειμένου - Hover (=όταν ο κέρσορας βρίσκεται πάνω από το "
-"στοιχείο) κατάσταση"
+"Διακόσμηση κειμένου - θέση Hover (=όταν ο κέρσορας βρίσκεται πάνω από το "
+"στοιχείο)"
 
 #: admin/options-display.php:575
 msgid "Footer Widget Display Options"
@@ -2529,30 +2529,38 @@ msgid "You are deleting this preset:"
 msgstr "Διαγράφετε το πρότυπο:"
 
 #: admin/options-init.php:137
+msgid "Please select the exported Graphene colour presets file to import."
+msgstr "Παρακαλώ επιλέξτε αρχείο με πρότυπα χρωμάτων Graphene για εισαγωγή."
+
+#: admin/options-init.php:138
 msgid "Oops, nothing found."
 msgstr "Συγνώμη, δεν βρέθηκε τίποτε."
 
-#: admin/options-init.php:172
+#: admin/options-init.php:140
+msgid "Please select the exported Graphene options file to import."
+msgstr "Παρακαλώ επιλέξτε αρχείο επιλογών Graphene για εισαγωγή."
+
+#: admin/options-init.php:174
 msgid "Toggle all options boxes"
 msgstr "Ανάπτυξη όλων των κουτιών επιλογών"
 
-#: admin/options-init.php:231
+#: admin/options-init.php:233
 msgid "Template preview not found."
 msgstr "Δεν βρέθηκε παράδειγμα προεπισκόπησης."
 
-#: admin/options-init.php:234
+#: admin/options-init.php:236
 msgid "default"
 msgstr "Προεπιλεγμένο"
 
-#: admin/options-init.php:293 admin/options-init.php:297
+#: admin/options-init.php:295 admin/options-init.php:299
 msgid "Theme default"
 msgstr "Προεπιλογή θέματος"
 
-#: admin/options-init.php:334
+#: admin/options-init.php:336
 msgid "Learn more about this feature set"
 msgstr "Μάθετε περισσότερα γι' αυτό το σετ χαρακτηριστικών"
 
-#: admin/options-init.php:335
+#: admin/options-init.php:337
 msgid "Documentation"
 msgstr "Τεκμηρίωση"
 
@@ -3100,36 +3108,36 @@ msgid "This notice will not be displayed to your site's visitors."
 msgstr ""
 "Αυτή η σημείωση δεν θα εμφανίζεται στους επισκέπτες της ιστοσελίδας σας."
 
-#: includes/theme-loop.php:86
+#: includes/theme-loop.php:85
 msgid "Continue reading &raquo;"
 msgstr "Συνέχεια ανάγνωσης &raquo;"
 
-#: includes/theme-loop.php:153
+#: includes/theme-loop.php:152
 msgid "Older posts &laquo;"
 msgstr "Παλαιότερα άρθρα &laquo;"
 
-#: includes/theme-loop.php:154
+#: includes/theme-loop.php:153
 msgid "&raquo; Newer posts"
 msgstr "&raquo; Νεότερα άρθρα"
 
-#: includes/theme-loop.php:156
+#: includes/theme-loop.php:155
 msgid "Next page &raquo;"
 msgstr "Επόμενη σελίδα &raquo;"
 
-#: includes/theme-loop.php:157
+#: includes/theme-loop.php:156
 msgid "&laquo; Previous page"
 msgstr "&laquo; Προηγούμενη σελίδα"
 
-#: includes/theme-loop.php:163
+#: includes/theme-loop.php:162
 msgid "Fetch more items"
 msgstr "Φέρε περισσότερα στοιχεία"
 
-#: includes/theme-loop.php:476 includes/theme-loop.php:477
+#: includes/theme-loop.php:474 includes/theme-loop.php:475
 #, php-format
 msgid "Print this %s"
 msgstr "Εκτύπωσέ το %s"
 
-#: includes/theme-loop.php:517
+#: includes/theme-loop.php:515
 #, php-format
 msgid "Return to %s"
 msgstr "Επιστροφή σε %s"
@@ -3138,7 +3146,7 @@ msgstr "Επιστροφή σε %s"
 msgid "Home"
 msgstr "Αρχική"
 
-#: includes/theme-panes.php:106
+#: includes/theme-panes.php:107
 msgid "Read more"
 msgstr "Διάβασε περισσότερα"
 
@@ -3164,23 +3172,23 @@ msgstr[1] "Ανάκτηση %1$s περισσότερων κορυφαία σχ�
 msgid "No more comments to fetch"
 msgstr "Δεν υπάρχουν περισσότερα σχόλια προς ανάκτηση"
 
-#: includes/theme-setup.php:111
+#: includes/theme-setup.php:115
 msgid "Header Menu"
 msgstr "Μενού κεφαλίδας"
 
-#: includes/theme-setup.php:112
+#: includes/theme-setup.php:116
 msgid "Secondary Menu"
 msgstr "Υπομενού"
 
-#: includes/theme-setup.php:113
+#: includes/theme-setup.php:117
 msgid "Footer Menu"
 msgstr "Μενού υποσέλιδου"
 
-#: includes/theme-setup.php:164
+#: includes/theme-setup.php:168
 msgid "Header image by Syahir Hakim"
 msgstr "Φωτογραφία κεφαλίδας από τον Syahir Hakim"
 
-#: includes/theme-setup.php:168
+#: includes/theme-setup.php:172
 msgid ""
 "This is the default Graphene theme header image, cropped from image by "
 "Quantin Houyoux at sxc.hu"
@@ -3188,13 +3196,13 @@ msgstr ""
 "Αυτή είναι η προεπιλεγμένη φωτογραφία κεφαλίδας του Graphene, από τη "
 "φωτογραφία του Quantin Houyoux στο sxc.hu"
 
-#: includes/theme-setup.php:172 includes/theme-setup.php:176
-#: includes/theme-setup.php:180 includes/theme-setup.php:184
-#: includes/theme-setup.php:188
+#: includes/theme-setup.php:176 includes/theme-setup.php:180
+#: includes/theme-setup.php:184 includes/theme-setup.php:188
+#: includes/theme-setup.php:192
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "Φωτογραφία κεφαλίδας από την φωτογραφία του Ilco στο sxc.hu"
 
-#: includes/theme-setup.php:259
+#: includes/theme-setup.php:263
 msgid ""
 "The first sidebar widget area (will always be displayed on the right hand "
 "side)."
@@ -3202,7 +3210,7 @@ msgstr ""
 "Το πρώτο πλευρικό πάνελ περιοχής μονάδων (θα εμφανίζεται πάντα στην δεξιά "
 "πλευρά)."
 
-#: includes/theme-setup.php:268
+#: includes/theme-setup.php:272
 msgid ""
 "The second sidebar widget area (will always be displayed on the left hand "
 "side)."
@@ -3210,11 +3218,11 @@ msgstr ""
 "Το δεύτερο πλευρικό πάνελ περιοχής μονάδων (θα εμφανίζεται πάντα στην "
 "αριστερή πλευρά)."
 
-#: includes/theme-setup.php:275
+#: includes/theme-setup.php:279
 msgid "Footer Widget Area"
 msgstr "Περιοχή μονάδων υποσέλιδου"
 
-#: includes/theme-setup.php:277
+#: includes/theme-setup.php:281
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to "
 "display at the theme's Display Options page."
@@ -3223,25 +3231,25 @@ msgstr ""
 "Καθορίστε τον αριθμό στηλών που θα εμφανίζονται στη σελίδα Επιλογές "
 "Εμφάνισης του θέματος."
 
-#: includes/theme-setup.php:294
+#: includes/theme-setup.php:298
 msgid ""
 "The first sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Η πρώτη περιοχή μονάδων πλευρικού πάνελ που θα εμφανίζεται μόνο στην πρώτη "
 "σελίδα."
 
-#: includes/theme-setup.php:303
+#: includes/theme-setup.php:307
 msgid ""
 "The second sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Η δεύτερη περιοχή μονάδων πλευρικού πάνελ που θα εμφανίζεται μόνο στην πρώτη "
 "σελίδα."
 
-#: includes/theme-setup.php:312
+#: includes/theme-setup.php:316
 msgid "Front Page Footer Widget Area"
 msgstr "Περιοχή μονάδων υποσέλιδου πρώτης σελίδας"
 
-#: includes/theme-setup.php:314
+#: includes/theme-setup.php:318
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave "
 "empty to disable. Set the number of columns to display at the theme's "
@@ -3251,15 +3259,15 @@ msgstr ""
 "Αφήστε το κενό για απενεργοποίηση. Καθορίστε τον αριθμό στηλών που θα "
 "εμφανίζονται στη σελίδα Επιλογές Εμφάνισης Θέματος."
 
-#: includes/theme-setup.php:324
+#: includes/theme-setup.php:328
 msgid "Header Widget Area"
 msgstr "Περιοχή μονάδων κεφαλίδας"
 
-#: includes/theme-setup.php:326
+#: includes/theme-setup.php:330
 msgid "The header widget area."
 msgstr "Η περιοχή μονάδων στη κεφαλίδα."
 
-#: includes/theme-setup.php:343
+#: includes/theme-setup.php:347
 #, php-format
 msgid ""
 "Dynamically added widget area. This widget area is attached to the %s action "
@@ -3291,6 +3299,9 @@ msgstr "Πρόσθεσε ένα μπλοκ για σημαντικό μήνυμ�
 #: js/mce-l10n.php:15
 msgid "Add a pullquote"
 msgstr "Προσθήκη εύρεσης στοιχείων αποσπάσματος"
+
+#~ msgid "Text colour:"
+#~ msgstr "Χρώμα γραμματοσειράς:"
 
 #~ msgid "1 comment"
 #~ msgstr "1 σχόλιο"

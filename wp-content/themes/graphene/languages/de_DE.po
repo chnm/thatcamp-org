@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Graphene 1.9.1 theme for WordPress\n"
+"Project-Id-Version: Graphene 1.9.2 theme for WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-23 22:53+0800\n"
-"PO-Revision-Date: 2013-07-29 09:44+0800\n"
-"Last-Translator: Syahir Hakim <syahir@khairul-syahir.com>\n"
+"POT-Creation-Date: 2013-08-24 12:12+0800\n"
+"PO-Revision-Date: 2013-09-04 17:01+0100\n"
+"Last-Translator: KS <k.siedentop@gmx.de>\n"
 "Language-Team: Krissie <kris.sie@38.de>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -189,8 +189,8 @@ msgstr "Letzte Beiträge"
 
 #: loop-author.php:55 loop-author.php:85 loop-children.php:45
 #: loop-children.php:54 loop-post-formats.php:36 loop.php:63 loop.php:128
-#: includes/theme-panes.php:79 includes/theme-panes.php:91
-#: includes/theme-panes.php:106
+#: includes/theme-panes.php:79 includes/theme-panes.php:92
+#: includes/theme-panes.php:107
 #, php-format
 msgid "Permalink to %s"
 msgstr "Permanentlink zu %s"
@@ -320,12 +320,20 @@ msgstr "Über den Autor"
 msgid "Read the rest of this entry &raquo;"
 msgstr "Weiterlesen &raquo;"
 
-#: search-404.php:14
+#. translators: %1$s is the number of results found, %2$s is the search term
+#: search-404.php:17 search.php:18
+#, php-format
+msgid "Found %1$s search result for keyword: %2$s"
+msgid_plural "Found %1$s search results for keyword: %2$s"
+msgstr[0] "%1$s Suchergebnis gefunden für das Schlüsselwort: %2$s"
+msgstr[1] "%1$s Suchergebnisse gefunden für das Schlüsselwort: %2$s"
+
+#: search-404.php:26
 msgid "Suggested results"
 msgstr "Suchergebnisse"
 
 #. translators: %1$s is the search term, %2$s is the number of results found
-#: search-404.php:19
+#: search-404.php:31
 #, php-format
 msgid ""
 "I've done a courtesy search for the term %1$s for you and found a total of "
@@ -342,7 +350,7 @@ msgstr[1] ""
 "insgesamt %2$s Ergebnisse gefunden. Schauen Sie, ob Sie in der Liste unten "
 "das passende Ergebnis finden."
 
-#: search-404.php:40
+#: search-404.php:52
 msgid ""
 "<strong>Sorry, couldn't find anything.</strong> Try searching for "
 "alternative terms using the search form above."
@@ -350,31 +358,23 @@ msgstr ""
 "<strong>Entschuldigung, ich konnte nichts finden.</strong> Versuchen Sie "
 "alternative Suchbegriffe."
 
-#. translators: %1$s is the number of results found, %2$s is the search term
-#: search.php:12
-#, php-format
-msgid "Found %1$s search result for keyword: %2$s"
-msgid_plural "Found %1$s search results for keyword: %2$s"
-msgstr[0] "%1$s Suchergebnis gefunden für das Schlüsselwort: %2$s"
-msgstr[1] "%1$s Suchergebnisse gefunden für das Schlüsselwort: %2$s"
-
 #: searchform.php:3 searchform.php:4
 msgid "Search"
 msgstr "Suche"
 
-#: sidebar-two.php:28 includes/theme-setup.php:301
+#: sidebar-two.php:28 includes/theme-setup.php:305
 msgid "Front Page Sidebar Two Widget Area"
 msgstr "Widget-Bereich der zweiten Sidebar für die Startseite."
 
-#: sidebar-two.php:30 includes/theme-setup.php:266
+#: sidebar-two.php:30 includes/theme-setup.php:270
 msgid "Sidebar Two Widget Area"
 msgstr "Widget-Bereich der zweiten Sidebar"
 
-#: sidebar.php:28 includes/theme-setup.php:292
+#: sidebar.php:28 includes/theme-setup.php:296
 msgid "Front Page Sidebar Widget Area"
 msgstr "Sidebar Widget-Bereich für die Startseite."
 
-#: sidebar.php:30 includes/theme-setup.php:257
+#: sidebar.php:30 includes/theme-setup.php:261
 msgid "Sidebar Widget Area"
 msgstr "Sidebar-Widget-Bereich"
 
@@ -1592,8 +1592,8 @@ msgid "Text style:"
 msgstr "Textstil:"
 
 #: admin/options-display.php:455
-msgid "Text colour:"
-msgstr "Textfarbe"
+msgid "Text decoration:"
+msgstr "Textauszeichnung:"
 
 #: admin/options-display.php:460
 msgid "Header Text"
@@ -1660,12 +1660,12 @@ msgid "Link Text"
 msgstr "Link: Text"
 
 #: admin/options-display.php:553
-msgid "Text decoration (normal state )"
-msgstr "Textauszeichnung (normaler Stil)"
+msgid "Text decoration (normal state)"
+msgstr "Textauszeichnung (normaler Status)"
 
 #: admin/options-display.php:559
-msgid "Text decoration (hover state )"
-msgstr "Textauszeichnung (hover-Stil)"
+msgid "Text decoration (hover state)"
+msgstr "Textauszeichnung (hover-Status)"
 
 #: admin/options-display.php:575
 msgid "Footer Widget Display Options"
@@ -2498,30 +2498,42 @@ msgid "You are deleting this preset:"
 msgstr "Sie löschen diese Vorlage:"
 
 #: admin/options-init.php:137
+msgid "Please select the exported Graphene colour presets file to import."
+msgstr ""
+"Bitte wählen Sie die exportierte Graphene-Farbvorlage, die importiert werden "
+"soll."
+
+#: admin/options-init.php:138
 msgid "Oops, nothing found."
 msgstr "Ups, nichts gefunden."
 
-#: admin/options-init.php:172
+#: admin/options-init.php:140
+msgid "Please select the exported Graphene options file to import."
+msgstr ""
+"Bitte wählen Sie die exportierte Graphene-Einstellungsdatei, die importiert "
+"werden soll."
+
+#: admin/options-init.php:174
 msgid "Toggle all options boxes"
 msgstr "Alle Options-Boxen ein- oder ausblenden"
 
-#: admin/options-init.php:231
+#: admin/options-init.php:233
 msgid "Template preview not found."
 msgstr "Template-Vorschau nicht gefunden."
 
-#: admin/options-init.php:234
+#: admin/options-init.php:236
 msgid "default"
 msgstr "Standard"
 
-#: admin/options-init.php:293 admin/options-init.php:297
+#: admin/options-init.php:295 admin/options-init.php:299
 msgid "Theme default"
 msgstr "Theme-Standard"
 
-#: admin/options-init.php:334
+#: admin/options-init.php:336
 msgid "Learn more about this feature set"
 msgstr "Lernen Sie mehr über diese Feature-Gruppe"
 
-#: admin/options-init.php:335
+#: admin/options-init.php:337
 msgid "Documentation"
 msgstr "Dokumentation"
 
@@ -3068,36 +3080,36 @@ msgstr "WP Admin > Design > Widgets"
 msgid "This notice will not be displayed to your site's visitors."
 msgstr "Dieser Hinweis ist für Besucher Ihrer Seite nicht sichtbar."
 
-#: includes/theme-loop.php:86
+#: includes/theme-loop.php:85
 msgid "Continue reading &raquo;"
 msgstr "Weiterlesen &raquo;"
 
-#: includes/theme-loop.php:153
+#: includes/theme-loop.php:152
 msgid "Older posts &laquo;"
 msgstr "Ältere Beiträge &laquo;"
 
-#: includes/theme-loop.php:154
+#: includes/theme-loop.php:153
 msgid "&raquo; Newer posts"
 msgstr "&raquo; Neuere Beiträge"
 
-#: includes/theme-loop.php:156
+#: includes/theme-loop.php:155
 msgid "Next page &raquo;"
 msgstr "Nächste Seite &raquo;"
 
-#: includes/theme-loop.php:157
+#: includes/theme-loop.php:156
 msgid "&laquo; Previous page"
 msgstr "&laquo; Vorherige Seite"
 
-#: includes/theme-loop.php:163
+#: includes/theme-loop.php:162
 msgid "Fetch more items"
 msgstr "Mehr Einträge abrufen"
 
-#: includes/theme-loop.php:476 includes/theme-loop.php:477
+#: includes/theme-loop.php:474 includes/theme-loop.php:475
 #, php-format
 msgid "Print this %s"
 msgstr "%s drucken"
 
-#: includes/theme-loop.php:517
+#: includes/theme-loop.php:515
 #, php-format
 msgid "Return to %s"
 msgstr "Zurück zu %s"
@@ -3106,7 +3118,7 @@ msgstr "Zurück zu %s"
 msgid "Home"
 msgstr "Startseite"
 
-#: includes/theme-panes.php:106
+#: includes/theme-panes.php:107
 msgid "Read more"
 msgstr "Mehr lesen"
 
@@ -3132,23 +3144,23 @@ msgstr[1] "Rufe %1$s weiteren Top-Kommentar von %2$s ab ..."
 msgid "No more comments to fetch"
 msgstr "Keine weiteren Kommentare vorhanden"
 
-#: includes/theme-setup.php:111
+#: includes/theme-setup.php:115
 msgid "Header Menu"
 msgstr "Hauptmenü"
 
-#: includes/theme-setup.php:112
+#: includes/theme-setup.php:116
 msgid "Secondary Menu"
 msgstr "Untermenü"
 
-#: includes/theme-setup.php:113
+#: includes/theme-setup.php:117
 msgid "Footer Menu"
 msgstr "Footer-Menü"
 
-#: includes/theme-setup.php:164
+#: includes/theme-setup.php:168
 msgid "Header image by Syahir Hakim"
 msgstr "Kopfbild von by Syahir Hakim"
 
-#: includes/theme-setup.php:168
+#: includes/theme-setup.php:172
 msgid ""
 "This is the default Graphene theme header image, cropped from image by "
 "Quantin Houyoux at sxc.hu"
@@ -3156,13 +3168,13 @@ msgstr ""
 "Dies ist das Standard-Kopfbild für Graphene, zugeschnitten von einem Bild "
 "von Quantin Houyoux auf sxc.hu"
 
-#: includes/theme-setup.php:172 includes/theme-setup.php:176
-#: includes/theme-setup.php:180 includes/theme-setup.php:184
-#: includes/theme-setup.php:188
+#: includes/theme-setup.php:176 includes/theme-setup.php:180
+#: includes/theme-setup.php:184 includes/theme-setup.php:188
+#: includes/theme-setup.php:192
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "Das Kopfbild ist ein zugeschnittenes Bild von Ilco auf sxc.hu"
 
-#: includes/theme-setup.php:259
+#: includes/theme-setup.php:263
 msgid ""
 "The first sidebar widget area (will always be displayed on the right hand "
 "side)."
@@ -3170,7 +3182,7 @@ msgstr ""
 "Der erste Sidebar-Widget-Bereich (wird immer auf der rechten Seite "
 "angezeigt)."
 
-#: includes/theme-setup.php:268
+#: includes/theme-setup.php:272
 msgid ""
 "The second sidebar widget area (will always be displayed on the left hand "
 "side)."
@@ -3178,11 +3190,11 @@ msgstr ""
 "Der Widget-Bereich der zweiten Sidebar (wird immer auf der linken Seite "
 "angezeigt)."
 
-#: includes/theme-setup.php:275
+#: includes/theme-setup.php:279
 msgid "Footer Widget Area"
 msgstr "Widget-Bereich im Footer"
 
-#: includes/theme-setup.php:277
+#: includes/theme-setup.php:281
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to "
 "display at the theme's Display Options page."
@@ -3191,23 +3203,23 @@ msgstr ""
 "deaktivieren. Die Anzahl der Spalten legen Sie in den Graphene-Anzeige-"
 "Optionen fest."
 
-#: includes/theme-setup.php:294
+#: includes/theme-setup.php:298
 msgid ""
 "The first sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Der erste Sidebar-Widget-Bereich wird nur auf der Startseite angezeigt."
 
-#: includes/theme-setup.php:303
+#: includes/theme-setup.php:307
 msgid ""
 "The second sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Der Widget-Bereich der zweiten Sidebar wird nur auf der Startseite angezeigt."
 
-#: includes/theme-setup.php:312
+#: includes/theme-setup.php:316
 msgid "Front Page Footer Widget Area"
 msgstr "Footer Widget-Bereich für die Startseite."
 
-#: includes/theme-setup.php:314
+#: includes/theme-setup.php:318
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave "
 "empty to disable. Set the number of columns to display at the theme's "
@@ -3217,15 +3229,15 @@ msgstr ""
 "auswählen, um den Bereich zu deaktivieren. Die Anzahl der Spalten legen Sie "
 "in den Graphene-Anzeige-Optionen fest."
 
-#: includes/theme-setup.php:324
+#: includes/theme-setup.php:328
 msgid "Header Widget Area"
 msgstr "Header-Widget-Bereich"
 
-#: includes/theme-setup.php:326
+#: includes/theme-setup.php:330
 msgid "The header widget area."
 msgstr "Widget-Bereich des Headers."
 
-#: includes/theme-setup.php:343
+#: includes/theme-setup.php:347
 #, php-format
 msgid ""
 "Dynamically added widget area. This widget area is attached to the %s action "
@@ -3257,6 +3269,9 @@ msgstr "Einen wichtigen Hinweis-Block hinzufügen"
 #: js/mce-l10n.php:15
 msgid "Add a pullquote"
 msgstr "Einen Zitatkasten hinzufügen"
+
+#~ msgid "Text colour:"
+#~ msgstr "Textfarbe"
 
 #~ msgid "1 comment"
 #~ msgstr "1 Kommentar"

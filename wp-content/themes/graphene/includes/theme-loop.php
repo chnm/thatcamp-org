@@ -23,52 +23,51 @@ if ( ! function_exists( 'graphene_adsense' ) ) :
 endif;
 
 
+if ( ! function_exists( 'graphene_addthis' ) ) :
 /**
  * Function to display the AddThis social sharing button
 */
-
-if (!function_exists( 'graphene_addthis' ) ) :
-	function graphene_addthis( $post_id = '' ){
-		if ( ! $post_id ){
-			global $post;
-			$post_id = $post->ID;
-			if ( ! $post_id ) return;
-		}
-		
-		global $graphene_settings;
-		
-		// Get the local setting
-		$show_addthis_local = graphene_get_post_meta( $post_id, 'show_addthis' );
-		$show_addthis_global = $graphene_settings['show_addthis'];
-		$show_addthis_page = $graphene_settings['show_addthis_page'];
-		
-		// Determine whether we should show AddThis or not
-		if ( $show_addthis_local == 'show' )
-			$show_addthis = true;
-		elseif ( $show_addthis_local == 'hide' )
-			$show_addthis = false;
-		elseif ( $show_addthis_local == '' ){
-			if ( ( $show_addthis_global && get_post_type() != 'page' ) || ( $show_addthis_global && $show_addthis_page ) )
-				$show_addthis = true;
-			else
-				$show_addthis = false;
-		} else
-			$show_addthis = false;
-		
-		// Show the AddThis button
-		if ( $show_addthis) {
-			echo '<div class="add-this-right">';
-			$html = stripslashes( $graphene_settings['addthis_code'] );
-			$html = str_replace( '[#post-url]', esc_attr( get_permalink( $post_id ) ), $html );
-			$html = str_replace( '[#post-title]', esc_attr( get_the_title( $post_id ) ), $html );
-			$html = str_replace( '[#post-excerpt]', esc_attr( get_the_excerpt() ), $html );
-			echo $html;
-			echo '</div>';
-			
-			do_action( 'graphene_show_addthis' );
-		}
-		do_action( 'graphene_addthis' );
+function graphene_addthis( $post_id = '' ){
+	if ( ! $post_id ){
+		global $post;
+		$post_id = $post->ID;
+		if ( ! $post_id ) return;
 	}
+	
+	global $graphene_settings;
+	
+	// Get the local setting
+	$show_addthis_local = graphene_get_post_meta( $post_id, 'show_addthis' );
+	$show_addthis_global = $graphene_settings['show_addthis'];
+	$show_addthis_page = $graphene_settings['show_addthis_page'];
+	
+	// Determine whether we should show AddThis or not
+	if ( $show_addthis_local == 'show' )
+		$show_addthis = true;
+	elseif ( $show_addthis_local == 'hide' )
+		$show_addthis = false;
+	elseif ( $show_addthis_local == '' ){
+		if ( ( $show_addthis_global && get_post_type() != 'page' ) || ( $show_addthis_global && $show_addthis_page ) )
+			$show_addthis = true;
+		else
+			$show_addthis = false;
+	} else
+		$show_addthis = false;
+	
+	// Show the AddThis button
+	if ( $show_addthis) {
+		echo '<div class="add-this-right">';
+		$html = stripslashes( $graphene_settings['addthis_code'] );
+		$html = str_replace( '[#post-url]', esc_attr( get_permalink( $post_id ) ), $html );
+		$html = str_replace( '[#post-title]', esc_attr( get_the_title( $post_id ) ), $html );
+		$html = str_replace( '[#post-excerpt]', esc_attr( get_the_excerpt() ), $html );
+		echo $html;
+		echo '</div>';
+		
+		do_action( 'graphene_show_addthis' );
+	}
+	do_action( 'graphene_addthis' );
+}
 endif;
 
 
@@ -166,11 +165,10 @@ function graphene_posts_nav(){
 endif;
 
 
+if ( ! function_exists( 'graphene_post_nav' ) ) :
 /**
  * Generates the post navigation links
 */
-if ( ! function_exists( 'graphene_post_nav' ) ) :
-
 function graphene_post_nav(){
 	if ( is_singular() ) :
 	
@@ -250,6 +248,7 @@ function graphene_reset_excerpt_length(){
 }
 
 
+if ( ! function_exists( 'graphene_get_post_image' ) ) :
 /**
  * This function gets the first image (as ordered in the post's media gallery) attached to
  * the current post. It outputs the complete <img> tag, with height and width attributes.
@@ -266,45 +265,44 @@ function graphene_reset_excerpt_length(){
  * @package Graphene
  * @since Graphene 1.1
 */
-if ( ! function_exists( 'graphene_get_post_image' ) ) :
-	function graphene_get_post_image( $post_id = NULL, $size = 'thumbnail', $context = '', $urlonly = false ){
-		
-		/* Don't do anything if no post ID is supplied */
-		if ( $post_id == NULL )	return;
-		
-		/* Get the images */
-		$images = get_children( array( 
-								'post_type' 		=> 'attachment',
-								'post_mime_type' 	=> 'image',
-								'post_parent' 	 	=> $post_id,
-								'orderby'			=> 'menu_order',
-								'order'				=> 'ASC',
-								'numberposts'		=> 1,
-									 ), ARRAY_A );
-		
-		$html = '';
-		
-		/* Returns generic image if there is no image to show */
-		if ( empty( $images ) && $context != 'excerpt' && ! $urlonly ) {
-			$html .= apply_filters( 'graphene_generic_slider_img', '' ); // For backward compatibility
-			$html .= apply_filters( 'graphene_generic_post_img', '' );
+function graphene_get_post_image( $post_id = NULL, $size = 'thumbnail', $context = '', $urlonly = false ){
+	
+	/* Don't do anything if no post ID is supplied */
+	if ( $post_id == NULL )	return;
+	
+	/* Get the images */
+	$images = get_children( array( 
+							'post_type' 		=> 'attachment',
+							'post_mime_type' 	=> 'image',
+							'post_parent' 	 	=> $post_id,
+							'orderby'			=> 'menu_order',
+							'order'				=> 'ASC',
+							'numberposts'		=> 1,
+								 ), ARRAY_A );
+	
+	$html = '';
+	
+	/* Returns generic image if there is no image to show */
+	if ( empty( $images ) && $context != 'excerpt' && ! $urlonly ) {
+		$html .= apply_filters( 'graphene_generic_slider_img', '' ); // For backward compatibility
+		$html .= apply_filters( 'graphene_generic_post_img', '' );
+	}
+	
+	/* Build the <img> tag if there is an image */
+	foreach ( $images as $image ){
+		if (!$urlonly) {
+			if ( $context == 'excerpt' ) {$html .= '<div class="excerpt-thumb">';};
+			$html .= '<a href="'.get_permalink( $post_id).'">';
+			$html .= wp_get_attachment_image( $image['ID'], $size);
+			$html .= '</a>';
+			if ( $context == 'excerpt' ) {$html .= '</div>';};
+		} else {
+			$html = wp_get_attachment_image_src( $image['ID'], $size);
 		}
-		
-		/* Build the <img> tag if there is an image */
-		foreach ( $images as $image ){
-			if (!$urlonly) {
-				if ( $context == 'excerpt' ) {$html .= '<div class="excerpt-thumb">';};
-				$html .= '<a href="'.get_permalink( $post_id).'">';
-				$html .= wp_get_attachment_image( $image['ID'], $size);
-				$html .= '</a>';
-				if ( $context == 'excerpt' ) {$html .= '</div>';};
-			} else {
-				$html = wp_get_attachment_image_src( $image['ID'], $size);
-			}
-		}
-		
-		/* Returns the image HTMl */
-		return $html;
+	}
+	
+	/* Returns the image HTMl */
+	return $html;
 }
 endif;
 
@@ -418,13 +416,13 @@ function graphene_sort_query_by_post_in( $sortby, $thequery ) {
 	
 	return $sortby;
 }
-add_filter( 'posts_orderby', 'graphene_sort_query_by_post_in', 10, 2 );
+add_filter( 'posts_orderby', 'graphene_sort_query_by_post_in', 9999, 2 );
 
 
+if ( ! function_exists( 'graphene_post_date' ) ) :
 /**
  * Displays the date. Must be used inside the loop.
 */
-if ( ! function_exists( 'graphene_print_button' ) ) :
 function graphene_post_date( $id = '' ){
 	
 	if ( ! $id ) {

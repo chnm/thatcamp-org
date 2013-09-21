@@ -134,38 +134,12 @@ function graphene_get_custom_style(){
 		$style .= '#nav li ul{width:'.$nav_width.'px;}';
 		
 		if ( ! is_rtl() ){
-			$background_left = -652-(200-$nav_width);
-			$tmp_width = $nav_width-35;
-            
-			$style .= '	#nav li ul ul{margin-left:'.$nav_width.'px}
-                       	#header-menu ul li.menu-item-ancestor > a {
-						background-position:'.$background_left.'px -194px;
-						width:'.$tmp_width.'px;
-                        }
-                        #header-menu ul li.menu-item-ancestor:hover > a,
-                        #header-menu ul li.current-menu-item > a,
-                        #header-menu ul li.current-menu-ancestor > a {
-						background-position:'.$background_left.'px -238px;
-                        }
-						#secondary-menu ul li.menu-item-ancestor > a {
-						background-position:'.$background_left.'px -286px;
-						width:'.$tmp_width.'px;
-						}
-						#secondary-menu ul li.menu-item-ancestor:hover > a,
-						#secondary-menu ul li.current-menu-item > a,
-						#secondary-menu ul li.current-menu-ancestor > a {
-						background-position:'.$background_left.'px -319px;
-						}';
+			$style .= '	#nav li ul ul{margin-left:'.$nav_width.'px}';
 		} else {
-            $style .= '	#nav li ul ul{margin-right:'.$nav_width.'px; margin-left: 0;}
-						#header-menu ul li.menu-item-ancestor > a,
-						#secondary-menu ul li.menu-item-ancestor > a {
-						width:'.($nav_width-35).'px;
-						}';
+            $style .= '	#nav li ul ul{margin-right:'.$nav_width.'px; margin-left: 0;}';
         }
 		
-		$style .= '#header-menu ul li a{width:'.($nav_width-20).'px;}';
-		$style .= '#secondary-menu ul li a{width:'.($nav_width-30).'px;}';
+		$style .= '#header-menu ul li a, #secondary-menu ul li a{width:'.($nav_width-20).'px;}';
 	}
 	
 	/* Header title text style */ 
@@ -690,7 +664,7 @@ add_action( 'wp_head', 'graphene_favicon' );
 function graphene_ie_css3(){ ?>
 	<!--[if lte IE 7]>
       <style type="text/css" media="screen">
-      	#footer, div.sidebar-wrap, .block-button, .featured_slider, #slider_root, #nav li ul, .pie{behavior: url(<?php echo get_template_directory_uri(); ?>/js/PIE.php);}
+      	#footer, div.sidebar-wrap, .block-button, .featured_slider, #slider_root, #nav li ul, .pie{behavior: url(<?php echo GRAPHENE_ROOTURI; ?>/js/PIE.php);}
         .featured_slider{margin-top:0 !important;}
         #header-menu-wrap {z-index:5}
       </style>

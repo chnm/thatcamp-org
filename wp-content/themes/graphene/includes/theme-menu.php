@@ -3,7 +3,7 @@
  * Defines the custom walker that adds description to the display of our Header Menu
 */
 class Graphene_Description_Walker extends Walker_Nav_Menu {
-	function start_el( &$output, $item, $depth, $args ) {
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		global $wp_query;
 		
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
@@ -49,41 +49,41 @@ class Graphene_Description_Walker extends Walker_Nav_Menu {
 }
 
 
+if ( ! function_exists( 'graphene_default_menu' ) ) :
 /**
  * Define the callback menu, if there is no custom menu.
  * This menu automatically lists all Pages as menu items, including their direct
  * direct descendant, which will only be displayed for the current parent.
 */
-if ( ! function_exists( 'graphene_default_menu' ) ) :
-
-	function graphene_default_menu(){ global $graphene_settings; ?>
-    
-		<ul id="header-menu" class="<?php echo graphene_get_menu_class('menu clearfix default-menu'); ?>">
-            <?php if (get_option( 'show_on_front' ) == 'posts' ) : ?>
-            <li <?php if ( is_single() || is_front_page() ) { echo 'class="current_page_item current-menu-item"'; } ?>>
-            	<a href="<?php echo get_home_url(); ?>">
-                	<?php if ( ! $graphene_settings['disable_menu_desc'] ) echo '<strong>'; ?>
-                	<?php _e( 'Home','graphene' ); ?>
-                    <?php if ( ! $graphene_settings['disable_menu_desc'] ) echo '</strong>'; ?>
-                    <?php if ( $graphene_settings['navmenu_home_desc']) {echo '<span class="desc">'.$graphene_settings['navmenu_home_desc'].'</span>';} ?>
-                </a>
-            </li>
-            <?php endif; ?>
-            <?php 
-			$args = array( 
-						'echo' 			=> 1,
-						'depth' 		=> 5,
-						'title_li' 		=> '',
-						'walker' 		=> new Graphene_Walker_Page() 
-					);
-			add_filter( 'page_css_class', 'graphene_page_ancestor_class', 10, 4 );
-			wp_list_pages( apply_filters( 'graphene_default_menu_args', $args ) );
-			remove_filter( 'page_css_class', 'graphene_page_ancestor_class', 10, 4 );
-			?>
-        </ul>
-<?php
+function graphene_default_menu(){ 
+	global $graphene_settings; 
+	?>
+	<ul id="header-menu" class="<?php echo graphene_get_menu_class('menu clearfix default-menu'); ?>">
+		<?php if (get_option( 'show_on_front' ) == 'posts' ) : ?>
+		<li <?php if ( is_single() || is_front_page() ) { echo 'class="current_page_item current-menu-item"'; } ?>>
+			<a href="<?php echo get_home_url(); ?>">
+				<?php if ( ! $graphene_settings['disable_menu_desc'] ) echo '<strong>'; ?>
+				<?php _e( 'Home','graphene' ); ?>
+				<?php if ( ! $graphene_settings['disable_menu_desc'] ) echo '</strong>'; ?>
+				<?php if ( $graphene_settings['navmenu_home_desc']) {echo '<span class="desc">'.$graphene_settings['navmenu_home_desc'].'</span>';} ?>
+			</a>
+		</li>
+		<?php endif; ?>
+		<?php 
+		$args = array( 
+					'echo' 			=> 1,
+					'depth' 		=> 5,
+					'title_li' 		=> '',
+					'walker' 		=> new Graphene_Walker_Page() 
+				);
+		add_filter( 'page_css_class', 'graphene_page_ancestor_class', 10, 4 );
+		wp_list_pages( apply_filters( 'graphene_default_menu_args', $args ) );
+		remove_filter( 'page_css_class', 'graphene_page_ancestor_class', 10, 4 );
+		?>
+	</ul>
+	<?php
 	do_action( 'graphene_default_menu' );
-	} 
+}
 	
 endif;
 
@@ -93,7 +93,7 @@ class Graphene_Walker_Page extends Walker_Page {
      * Code exact copied from: wp-includes\post-template.php >> Walker_Page::start_el() 
      * @since 2.1.0
      */
-	function start_el( &$output, $page, $depth, $args, $current_page = 0 ) {
+	function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
 		global $graphene_settings;
 		
 		if ( $depth )

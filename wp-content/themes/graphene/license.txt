@@ -27,11 +27,13 @@ Copyright (c) 2011-2013 by Harvest
 Licence: MIT License
 Licence URI: http://opensource.org/licenses/MIT
 
+
 CodeMirror
 
 Copyright (C) 2013 Marijn Haverbeke <marijnh@gmail.com>
 Licence: MIT License
 Licence URI: http://opensource.org/licenses/MIT
+
 
 CSS3 PIE
 
@@ -39,9 +41,11 @@ Copyright 2010 Jason Johnston
 Licences: Apache License Version 2.0 OR General Public License (GPL) Version 2
 Licence URIs: http://www.apache.org/licenses/LICENSE-2.0 OR http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
+
 jQuery Tools
 
 This library has no copyright or licence. Please see http://jquerytools.org/ for more information.
+
 
 jQuery UI
 
@@ -49,14 +53,23 @@ Copyright 2013 jQuery Foundation and other contributors, http://jqueryui.com/
 Licence: MIT License
 Licence URI: http://opensource.org/licenses/MIT
 
+
 twitterjs
 
 Copyright (c) 2008 Remy Sharp, http://remysharp.com/
 Licence: MIT License
 Licence URI: http://opensource.org/licenses/MIT
 
+
 ElegantThemes Social Media Icon Set
 
 Copyright (c) 2010 Nicholas Roach
 Licence: Dual licensed under the MIT License and GPLv3
 Licence URIs: http://opensource.org/licenses/MIT and http://www.gnu.org/licenses/old-licenses/gpl-2.0.html 
+
+
+Genericons Icon Font
+
+Copyright Automattic
+Licences: General Public License (GPL) Version 2
+Licence URIs: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html

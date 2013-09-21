@@ -681,6 +681,17 @@ function hexToB(h) {
 }
 function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
 
+function grapheneCheckFile(f,type){
+	type = (typeof type === "undefined") ? 'options' : type;
+	f = f.elements;
+	if (/.*\.(txt)$/.test(f['upload'].value.toLowerCase()))
+	return true;
+	if ( type == 'options' ) alert(grapheneAdminScript.import_select_file);
+	else if ( type == 'colours' ) alert(grapheneAdminScript.preset_select_file);
+	f['upload'].focus();
+	return false;
+};
+
 function grapheneSetCookie(name,value,days) {
     if (days) {
         var date = new Date();

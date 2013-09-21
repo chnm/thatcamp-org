@@ -25,7 +25,7 @@ function graphene_options(){
         
 	/* Apply options preset if submitted */ 
 	if ( isset( $_POST['graphene_preset'] ) ) {
-		include( $graphene_settings['template_dir'] . '/admin/options-presets.php' );
+		include( GRAPHENE_ROOTDIR . '/admin/options-presets.php' );
 	}
 	
 	/* Import the graphene theme options */
@@ -48,7 +48,7 @@ function graphene_options(){
         
         /* Uninstall the theme if confirmed */
 	if ( isset( $_POST['graphene_uninstall_confirmed'] ) ) { 
-		include( $graphene_settings['template_dir'] . '/admin/uninstall.php' );
+		include( GRAPHENE_ROOTDIR . '/admin/uninstall.php' );
 	}       
 	
 	/* Display a confirmation page to uninstall the theme */
@@ -326,4 +326,4 @@ function graphene_options(){
 <?php    
 } // Closes the graphene_options() function definition 
 
-include( $graphene_settings['template_dir'] . '/admin/options-import.php' );
+include( GRAPHENE_ROOTDIR . '/admin/options-import.php' );

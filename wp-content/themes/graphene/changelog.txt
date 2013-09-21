@@ -4,6 +4,16 @@ http://www.khairul-syahir.com
 
 CHANGELOG
 
+Version 1.9.2
+	* Added simple validation to make sure a settings file is selected for theme options import
+	* Added graphene_homepage_pane_image filter hook
+	* Added Foursquare and Instagram social media icons
+	* Added Genericons icon font for icons used as design elements so their colours can be changed
+	* Various styling tweaks
+	* Fixed theme options import/export bug
+	* Fixed script error when comments are set to display the last page first and infinite scroll for comments is enabled
+	* Fixed styling conflict with ReCaptcha
+
 Version 1.9.1
 	* Minor fix for the theme's options interface behaviour
 	* Added links to the theme's natively-supported plugins and add-ons
@@ -545,7 +555,7 @@ Version 1.1.2
 Version 1.1.1.1
 
 	* Removed the SSL check for the header image
-	* Replaced all variants of get_bloginfo('template_directory') with get_template_directory_uri()
+	* Replaced all variants of get_bloginfo('template_directory') with GRAPHENE_ROOTURI
 	* Added .gallery-caption class in style.css
 	* Added graphene_display_slider() function that handles the conditional statements for better control of which pages should display the slider
 	* Ditched get_theme_data() for author credit links and use hardcoded links instead

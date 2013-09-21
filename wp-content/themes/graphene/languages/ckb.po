@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene theme for WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-23 22:53+0800\n"
+"POT-Creation-Date: 2013-08-24 12:12+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Zadizanst <zadizanst@gmail.com>\n"
 "Language-Team: \n"
@@ -186,8 +186,8 @@ msgstr "دوا هەواڵەکان"
 
 #: loop-author.php:55 loop-author.php:85 loop-children.php:45
 #: loop-children.php:54 loop-post-formats.php:36 loop.php:63 loop.php:128
-#: includes/theme-panes.php:79 includes/theme-panes.php:91
-#: includes/theme-panes.php:106
+#: includes/theme-panes.php:79 includes/theme-panes.php:92
+#: includes/theme-panes.php:107
 #, php-format
 msgid "Permalink to %s"
 msgstr "بەستەری سەرەکی بۆ %s"
@@ -317,12 +317,20 @@ msgstr "دەربارەی نوسەر"
 msgid "Read the rest of this entry &raquo;"
 msgstr "خوێندنەوەدرێژە &raquo;"
 
-#: search-404.php:14
+#. translators: %1$s is the number of results found, %2$s is the search term
+#: search-404.php:17 search.php:18
+#, php-format
+msgid "Found %1$s search result for keyword: %2$s"
+msgid_plural "Found %1$s search results for keyword: %2$s"
+msgstr[0] "%1$s ئەنجامی گەڕان بۆ وشەکانی %2$ دۆزرایەوە"
+msgstr[1] "%1$ ئەنجامی گەڕان بۆ وشەکانی %2$ دۆزرایەوە"
+
+#: search-404.php:26
 msgid "Suggested results"
 msgstr "ئەنجامی پێشنیارکراو"
 
 #. translators: %1$s is the search term, %2$s is the number of results found
-#: search-404.php:19
+#: search-404.php:31
 #, php-format
 msgid ""
 "I've done a courtesy search for the term %1$s for you and found a total of "
@@ -337,7 +345,7 @@ msgstr[1] ""
 "لەبەرخاتری بەڕێزتان بەووردی لە دەستەواژەی %1$s  گەڕام و %2$s  ئەنجامم "
 "دۆزیەوە. سەیرکە بزانە به‌ڵكه‌ ئەوەی دەتەوێت لەم لیستەی خوارەوەدا بیدۆزیتەوە"
 
-#: search-404.php:40
+#: search-404.php:52
 msgid ""
 "<strong>Sorry, couldn't find anything.</strong> Try searching for "
 "alternative terms using the search form above."
@@ -345,31 +353,23 @@ msgstr ""
 "<strong>بەداخەوە هیچ ئەنجامێك نەدۆزرایەوە کە لەگەڵ داواکاری یەکەتدا بگونجێت.."
 "</strong> تکایە وشەی گەڕان بگۆڕە!"
 
-#. translators: %1$s is the number of results found, %2$s is the search term
-#: search.php:12
-#, php-format
-msgid "Found %1$s search result for keyword: %2$s"
-msgid_plural "Found %1$s search results for keyword: %2$s"
-msgstr[0] "%1$s ئەنجامی گەڕان بۆ وشەکانی %2$ دۆزرایەوە"
-msgstr[1] "%1$ ئەنجامی گەڕان بۆ وشەکانی %2$ دۆزرایەوە"
-
 #: searchform.php:3 searchform.php:4
 msgid "Search"
 msgstr "گەڕان"
 
-#: sidebar-two.php:28 includes/theme-setup.php:301
+#: sidebar-two.php:28 includes/theme-setup.php:305
 msgid "Front Page Sidebar Two Widget Area"
 msgstr "ناوچەی ویجیتی لاتەنیشتی دووەمی پەڕەی سەرەکی "
 
-#: sidebar-two.php:30 includes/theme-setup.php:266
+#: sidebar-two.php:30 includes/theme-setup.php:270
 msgid "Sidebar Two Widget Area"
 msgstr "ناوچەی ویجیتی لاتەنیشتی دووەم"
 
-#: sidebar.php:28 includes/theme-setup.php:292
+#: sidebar.php:28 includes/theme-setup.php:296
 msgid "Front Page Sidebar Widget Area"
 msgstr "ناوچەی ویجیتی لاتەنیشتی پەڕەی سەرەکی"
 
-#: sidebar.php:30 includes/theme-setup.php:257
+#: sidebar.php:30 includes/theme-setup.php:261
 msgid "Sidebar Widget Area"
 msgstr "ناوچەی ویجیتی لاتەنیشت"
 
@@ -1591,8 +1591,8 @@ msgid "Text style:"
 msgstr "ستایلی دەق:"
 
 #: admin/options-display.php:455
-msgid "Text colour:"
-msgstr "ڕەنگی دەق:"
+msgid "Text decoration:"
+msgstr "دیکۆری تێکست:"
 
 #: admin/options-display.php:460
 msgid "Header Text"
@@ -1659,11 +1659,11 @@ msgid "Link Text"
 msgstr "تێکستی بەستەر"
 
 #: admin/options-display.php:553
-msgid "Text decoration (normal state )"
+msgid "Text decoration (normal state)"
 msgstr "دیکۆری تێکست (دۆخی ئاسایی)"
 
 #: admin/options-display.php:559
-msgid "Text decoration (hover state )"
+msgid "Text decoration (hover state)"
 msgstr "دیکۆری تێکست (دۆخی دەست لەسەر ڕاگیراو)"
 
 #: admin/options-display.php:575
@@ -2493,30 +2493,39 @@ msgid "You are deleting this preset:"
 msgstr "تۆ ئەم بنەڕەتی یە دەسڕیتەوە:"
 
 #: admin/options-init.php:137
+msgid "Please select the exported Graphene colour presets file to import."
+msgstr ""
+"تکایە پەڕگەی ڕەنگە بنەڕەتی یە هاوردەکراوەکانی گرافین هەڵبژێرە بۆ هەناردەکردن"
+
+#: admin/options-init.php:138
 msgid "Oops, nothing found."
 msgstr "ئۆۆۆ، هیچ نەدۆزرایەوە."
 
-#: admin/options-init.php:172
+#: admin/options-init.php:140
+msgid "Please select the exported Graphene options file to import."
+msgstr "تکایە پەڕگەی بژارەکانی گرافینی هاوردەکراو هەڵبژێرە بۆ هەناردەکردن"
+
+#: admin/options-init.php:174
 msgid "Toggle all options boxes"
 msgstr "هەموو بۆکسی ڕێکخستنەکان دابخە/بکەرەوە"
 
-#: admin/options-init.php:231
+#: admin/options-init.php:233
 msgid "Template preview not found."
 msgstr "پێشبینینی تێمپلەیت نەدۆزرایەوە"
 
-#: admin/options-init.php:234
+#: admin/options-init.php:236
 msgid "default"
 msgstr "بنەڕەت"
 
-#: admin/options-init.php:293 admin/options-init.php:297
+#: admin/options-init.php:295 admin/options-init.php:299
 msgid "Theme default"
 msgstr "بنەڕەتەکانی ڕووکار"
 
-#: admin/options-init.php:334
+#: admin/options-init.php:336
 msgid "Learn more about this feature set"
 msgstr "زانیاری زیاتر دەربارەی ئەم کۆمەڵە تایبەتمەندی یە  "
 
-#: admin/options-init.php:335
+#: admin/options-init.php:337
 msgid "Documentation"
 msgstr "ویکی دۆکۆمێنتەکان"
 
@@ -3049,36 +3058,36 @@ msgstr "په‌ڕێوه‌به‌رایه‌تی > ده‌ركه‌وتن > وی
 msgid "This notice will not be displayed to your site's visitors."
 msgstr "ئه‌م تێبنی یه‌ له‌ ماڵپه‌ڕه‌كه‌تدا نیشان نادرێت."
 
-#: includes/theme-loop.php:86
+#: includes/theme-loop.php:85
 msgid "Continue reading &raquo;"
 msgstr "زیاتر بخوێنەرەوە &raquo;"
 
-#: includes/theme-loop.php:153
+#: includes/theme-loop.php:152
 msgid "Older posts &laquo;"
 msgstr "هەواڵی کۆن &laquo;"
 
-#: includes/theme-loop.php:154
+#: includes/theme-loop.php:153
 msgid "&raquo; Newer posts"
 msgstr "&raquo; دوا هەواڵ "
 
-#: includes/theme-loop.php:156
+#: includes/theme-loop.php:155
 msgid "Next page &raquo;"
 msgstr "پەرەی دواتر &raquo;"
 
-#: includes/theme-loop.php:157
+#: includes/theme-loop.php:156
 msgid "&laquo; Previous page"
 msgstr "&laquo; پەڕەی پێشتر"
 
-#: includes/theme-loop.php:163
+#: includes/theme-loop.php:162
 msgid "Fetch more items"
 msgstr "بابەتی زیاتر "
 
-#: includes/theme-loop.php:476 includes/theme-loop.php:477
+#: includes/theme-loop.php:474 includes/theme-loop.php:475
 #, php-format
 msgid "Print this %s"
 msgstr "چاپی بکە %s"
 
-#: includes/theme-loop.php:517
+#: includes/theme-loop.php:515
 #, php-format
 msgid "Return to %s"
 msgstr "گەڕانەوە بۆ %s"
@@ -3087,7 +3096,7 @@ msgstr "گەڕانەوە بۆ %s"
 msgid "Home"
 msgstr "سەرەکی"
 
-#: includes/theme-panes.php:106
+#: includes/theme-panes.php:107
 msgid "Read more"
 msgstr "زیاتر بخوێنەرەوە"
 
@@ -3113,23 +3122,23 @@ msgstr[1] "%1$s  بۆچوونی باڵا لە %2$s  ی بۆچوونی زیاتر
 msgid "No more comments to fetch"
 msgstr "بۆچوونی زیاتر نی یە"
 
-#: includes/theme-setup.php:111
+#: includes/theme-setup.php:115
 msgid "Header Menu"
 msgstr "مینوی سەرپەڕە"
 
-#: includes/theme-setup.php:112
+#: includes/theme-setup.php:116
 msgid "Secondary Menu"
 msgstr "مینوی دووەمی"
 
-#: includes/theme-setup.php:113
+#: includes/theme-setup.php:117
 msgid "Footer Menu"
 msgstr "مینوی پێپەڕە"
 
-#: includes/theme-setup.php:164
+#: includes/theme-setup.php:168
 msgid "Header image by Syahir Hakim"
 msgstr "وێنەی سەرپەڕە لەلایەن سەیاهیر حەکیمەوە"
 
-#: includes/theme-setup.php:168
+#: includes/theme-setup.php:172
 msgid ""
 "This is the default Graphene theme header image, cropped from image by "
 "Quantin Houyoux at sxc.hu"
@@ -3137,29 +3146,29 @@ msgstr ""
 "ئەمە وێنەی سەرپەڕەی بنەڕەتی ڕووکاری گرافینە، کە لە وێنەیەکی دروستکراو لە "
 "لایەن کوانتین لە sxc.hu ەوە بڕڕاوە."
 
-#: includes/theme-setup.php:172 includes/theme-setup.php:176
-#: includes/theme-setup.php:180 includes/theme-setup.php:184
-#: includes/theme-setup.php:188
+#: includes/theme-setup.php:176 includes/theme-setup.php:180
+#: includes/theme-setup.php:184 includes/theme-setup.php:188
+#: includes/theme-setup.php:192
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "وێنەی سەرپەڕە کە لە وێنەیەکی دروستکراو لەلایەن ئیلکۆ لە sxc.hu بڕڕاوە"
 
-#: includes/theme-setup.php:259
+#: includes/theme-setup.php:263
 msgid ""
 "The first sidebar widget area (will always be displayed on the right hand "
 "side)."
 msgstr "ناوچەی ویجیتی لاتەنیشتی یەکەم ( هەمیشە لە لای ڕاستدا دەردەکەوێت)."
 
-#: includes/theme-setup.php:268
+#: includes/theme-setup.php:272
 msgid ""
 "The second sidebar widget area (will always be displayed on the left hand "
 "side)."
 msgstr "ناوچەی ویجیتی لا تەنیشتی دووەم ( هەمیشە لە لای چەپدا دەردەکەوێت)."
 
-#: includes/theme-setup.php:275
+#: includes/theme-setup.php:279
 msgid "Footer Widget Area"
 msgstr "ناوچەی ویجیتی ژێرپەڕە"
 
-#: includes/theme-setup.php:277
+#: includes/theme-setup.php:281
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to "
 "display at the theme's Display Options page."
@@ -3168,21 +3177,21 @@ msgstr ""
 "ستوونانە دیاری بکە کە دەتەوێت لە پەڕەی ڕێکخستنەکانی نیشاندانی ڕووکارەکەدا "
 "دەربکەوێت."
 
-#: includes/theme-setup.php:294
+#: includes/theme-setup.php:298
 msgid ""
 "The first sidebar widget area that will only be displayed on the front page."
 msgstr "ناوچەی ویجیتی لا تەنیشتی یەکەم کە تەنها لە پەڕەی سەرەکیدا دەردەکەوێت"
 
-#: includes/theme-setup.php:303
+#: includes/theme-setup.php:307
 msgid ""
 "The second sidebar widget area that will only be displayed on the front page."
 msgstr "ناوچەی ویجیتی لا تەنیشتی دووەم کە تەنها لە پەڕەی سەرەکیدا دەردەکەوێت"
 
-#: includes/theme-setup.php:312
+#: includes/theme-setup.php:316
 msgid "Front Page Footer Widget Area"
 msgstr "ناوچەی ویجیتی پێپەڕەی پەڕەی سەرەکی"
 
-#: includes/theme-setup.php:314
+#: includes/theme-setup.php:318
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave "
 "empty to disable. Set the number of columns to display at the theme's "
@@ -3192,15 +3201,15 @@ msgstr ""
 "بەبەتاڵی جێی بهێڵە. ژمارەی ئەو ستوونانە دیاری بکە کە دەتەوێت لە پەڕەی "
 "ڕێکخستنەکانی نیشاندانی ڕووکارەکەدا دەربکەوێت."
 
-#: includes/theme-setup.php:324
+#: includes/theme-setup.php:328
 msgid "Header Widget Area"
 msgstr "ناوچەی ویجیتی سەرپەڕە"
 
-#: includes/theme-setup.php:326
+#: includes/theme-setup.php:330
 msgid "The header widget area."
 msgstr "ناوچەی ویجیتی سەرپەڕە."
 
-#: includes/theme-setup.php:343
+#: includes/theme-setup.php:347
 #, php-format
 msgid ""
 "Dynamically added widget area. This widget area is attached to the %s action "
@@ -3232,6 +3241,9 @@ msgstr "زیادکردنی بۆکسی پەیامێکی گرنگ "
 #: js/mce-l10n.php:15
 msgid "Add a pullquote"
 msgstr "زیادکردنی پرسیارێکی ڕاپرسی"
+
+#~ msgid "Text colour:"
+#~ msgstr "ڕەنگی دەق:"
 
 #~ msgid ""
 #~ "Applicable only if <strong>Latest posts</strong> or <strong>Latest posts "

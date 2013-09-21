@@ -80,7 +80,7 @@ class Graphene_Shortcodes_Buttons{
 	}
 	
 	function graphene_add_plugin( $plugin_array ){
-		$plugin_array['grapheneshortcodes'] = get_template_directory_uri() . '/js/mce-shortcodes.js';
+		$plugin_array['grapheneshortcodes'] = GRAPHENE_ROOTURI . '/js/mce-shortcodes.js';
 		return $plugin_array; 
 	}
 }

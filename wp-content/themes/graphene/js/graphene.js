@@ -135,7 +135,6 @@ jQuery(document).ready(function($) {
 				navSelector : ".comment-nav",
 				nextSelector: ".comment-nav .next",
 				itemSelector: "#comments_list > .comment",
-				debug:true,
 				loading		: {
 								msgText		: grapheneGetInfScrollMessage('comment',grapheneJS.commentsPerPage,window.grapheneInfScrollCommentsLeft),
 								finishedMsg	: grapheneJS.infScrollCommentsFinishedMsg,
@@ -150,16 +149,19 @@ jQuery(document).ready(function($) {
 			
 			var currentPage = parseInt( $(infScrollCommentsOptions.navSelector+' .current').html() );
 			infScrollCommentsOptions.state = { currPage: currentPage };
-			var nextURI = $(infScrollCommentsOptions.nextSelector).attr('href');
-			var nextIndex = (currentPage-1).toString();
 			
-			var suffix = nextURI.slice(-(nextURI.length - nextURI.indexOf(nextIndex)-nextIndex.length));
-			var pathURI = nextURI.replace(nextIndex,'').replace(suffix,'');
-
-			infScrollCommentsOptions.pathParse = function(path,nextPage){
-													path = [pathURI,suffix];
-													return path;
-												};
+			if ($(infScrollCommentsOptions.nextSelector).length > 0) {
+				var nextURI = $(infScrollCommentsOptions.nextSelector).attr('href');
+				var nextIndex = (currentPage-1).toString();
+				
+				var suffix = nextURI.slice(-(nextURI.length - nextURI.indexOf(nextIndex)-nextIndex.length));
+				var pathURI = nextURI.replace(nextIndex,'').replace(suffix,'');
+	
+				infScrollCommentsOptions.pathParse = function(path,nextPage){
+														path = [pathURI,suffix];
+														return path;
+													};
+			}
 		}
 		$('#comments_list').infinitescroll(infScrollCommentsOptions,
 			function(newElems){

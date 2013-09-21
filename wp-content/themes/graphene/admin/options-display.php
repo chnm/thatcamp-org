@@ -85,7 +85,7 @@ function graphene_options_display() {
                             	<p>                           
                                 <label>
                                     <input type="radio" name="graphene_settings[column_mode]" value="one_column" <?php checked( $graphene_settings['column_mode'], 'one_column' ); ?>/>
-                                    <img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-onecolumn.png" alt="<?php _e( 'One column', 'graphene' ); ?>" title="<?php _e( 'One column', 'graphene' ); ?>" />                                
+                                    <img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-onecolumn.png" alt="<?php _e( 'One column', 'graphene' ); ?>" title="<?php _e( 'One column', 'graphene' ); ?>" />                                
                                 </label>
                                 </p>
                                 
@@ -93,17 +93,17 @@ function graphene_options_display() {
                                 <label>
                                     <input type="radio" name="graphene_settings[column_mode]" value="two_col_left" <?php checked( $graphene_settings['column_mode'], 'two_col_left' ); ?>/>
                                     <?php if ( ! is_rtl() ) : ?>
-                                    	<img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-twocolumnsleft.png" alt="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" />
+                                    	<img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-twocolumnsleft.png" alt="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" />
                                     <?php else : ?>
-                                    	<img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-twocolumnsright.png" alt="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" />
+                                    	<img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-twocolumnsright.png" alt="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" />
                                     <?php endif; ?>
                                 </label>
                                 <label>
                                     <input type="radio" name="graphene_settings[column_mode]" value="two_col_right" <?php checked( $graphene_settings['column_mode'], 'two_col_right' ); ?>/>
                                     <?php if ( ! is_rtl() ) : ?>
-	                                    <img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-twocolumnsright.png" alt="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" />
+	                                    <img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-twocolumnsright.png" alt="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" />
                                     <?php else : ?>
-                                    	<img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-twocolumnsleft.png" alt="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" />
+                                    	<img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-twocolumnsleft.png" alt="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" />
                                     <?php endif; ?>
                                 </label>
                                 </p>
@@ -112,22 +112,22 @@ function graphene_options_display() {
                                 <label>
                                     <input type="radio" name="graphene_settings[column_mode]" value="three_col_left" <?php checked( $graphene_settings['column_mode'], 'three_col_left' ); ?>/>
                                     <?php if ( ! is_rtl() ) : ?>
-	                                    <img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-threecolumnsleft.png" alt="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" />
+	                                    <img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-threecolumnsleft.png" alt="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" />
                                     <?php else : ?>
-                                    	<img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-threecolumnsright.png" alt="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" />
+                                    	<img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-threecolumnsright.png" alt="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" />
                                     <?php endif; ?>
                                 </label>
                                 <label>
                                     <input type="radio" name="graphene_settings[column_mode]" value="three_col_right" <?php checked( $graphene_settings['column_mode'], 'three_col_right' ); ?>/>
                                     <?php if ( ! is_rtl() ) : ?>
-	                                    <img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-threecolumnsright.png" alt="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" />
+	                                    <img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-threecolumnsright.png" alt="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" />
                                     <?php else : ?>
-                                        <img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-threecolumnsleft.png" alt="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" />
+                                        <img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-threecolumnsleft.png" alt="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" />
                                     <?php endif; ?>
                                 </label>
                                 <label>
                                     <input type="radio" name="graphene_settings[column_mode]" value="three_col_center" <?php checked( $graphene_settings['column_mode'], 'three_col_center' ); ?>/>
-                                    <img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-threecolumnscenter.png" alt="<?php _e( 'Three columns (with sidebars left and right)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with sidebars left and right)', 'graphene' ); ?>" />
+                                    <img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-threecolumnscenter.png" alt="<?php _e( 'Three columns (with sidebars left and right)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with sidebars left and right)', 'graphene' ); ?>" />
                                 </label>      
                                 </p>                            
                             </div>                                                                                                              
@@ -146,7 +146,7 @@ function graphene_options_display() {
                             	<p>                           
                                 <label>
                                     <input type="radio" name="graphene_settings[bbp_column_mode]" value="one_column" <?php checked( $graphene_settings['bbp_column_mode'], 'one_column' ); ?>/>
-                                    <img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-onecolumn.png" alt="<?php _e( 'One column', 'graphene' ); ?>" title="<?php _e( 'One column', 'graphene' ); ?>" />                                
+                                    <img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-onecolumn.png" alt="<?php _e( 'One column', 'graphene' ); ?>" title="<?php _e( 'One column', 'graphene' ); ?>" />                                
                                 </label>
                                 </p>
                                 
@@ -154,17 +154,17 @@ function graphene_options_display() {
                                 <label>
                                     <input type="radio" name="graphene_settings[bbp_column_mode]" value="two_col_left" <?php checked( $graphene_settings['bbp_column_mode'], 'two_col_left' ); ?>/>
                                     <?php if ( ! is_rtl() ) : ?>
-                                    	<img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-twocolumnsleft.png" alt="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" />
+                                    	<img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-twocolumnsleft.png" alt="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" />
                                     <?php else : ?>
-                                    	<img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-twocolumnsright.png" alt="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" />
+                                    	<img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-twocolumnsright.png" alt="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" />
                                     <?php endif; ?>
                                 </label>
                                 <label>
                                     <input type="radio" name="graphene_settings[bbp_column_mode]" value="two_col_right" <?php checked( $graphene_settings['bbp_column_mode'], 'two_col_right' ); ?>/>
                                     <?php if ( ! is_rtl() ) : ?>
-                                        <img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-twocolumnsright.png" alt="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" />
+                                        <img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-twocolumnsright.png" alt="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar left)', 'graphene' ); ?>" />
                                     <?php else : ?>
-                                    	<img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-twocolumnsleft.png" alt="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" />
+                                    	<img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-twocolumnsleft.png" alt="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" title="<?php _e( 'Two columns (with sidebar right)', 'graphene' ); ?>" />
                                     <?php endif; ?>
                                 </label>
                                 </p>
@@ -173,22 +173,22 @@ function graphene_options_display() {
                                 <label>
                                     <input type="radio" name="graphene_settings[bbp_column_mode]" value="three_col_left" <?php checked( $graphene_settings['bbp_column_mode'], 'three_col_left' ); ?>/>
                                     <?php if ( ! is_rtl() ) : ?>
-	                                    <img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-threecolumnsleft.png" alt="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" />
+	                                    <img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-threecolumnsleft.png" alt="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" />
                                     <?php else : ?>
-                                    	<img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-threecolumnsright.png" alt="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" />
+                                    	<img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-threecolumnsright.png" alt="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" />
                                     <?php endif; ?>
                                 </label>
                                 <label>
                                     <input type="radio" name="graphene_settings[bbp_column_mode]" value="three_col_right" <?php checked( $graphene_settings['bbp_column_mode'], 'three_col_right' ); ?>/>
                                     <?php if ( ! is_rtl() ) : ?>
-                                    	<img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-threecolumnsright.png" alt="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" />
+                                    	<img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-threecolumnsright.png" alt="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars left)', 'graphene' ); ?>" />
                                     <?php else : ?>
-                                    	<img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-threecolumnsleft.png" alt="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" />
+                                    	<img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-threecolumnsleft.png" alt="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with two sidebars right)', 'graphene' ); ?>" />
                                     <?php endif; ?>
                                 </label>
                                 <label>
                                     <input type="radio" name="graphene_settings[bbp_column_mode]" value="three_col_center" <?php checked( $graphene_settings['bbp_column_mode'], 'three_col_center' ); ?>/>
-                                    <img src="<?php echo get_template_directory_uri(); ?>/admin/images/template-threecolumnscenter.png" alt="<?php _e( 'Three columns (with sidebars left and right)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with sidebars left and right)', 'graphene' ); ?>" />
+                                    <img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/template-threecolumnscenter.png" alt="<?php _e( 'Three columns (with sidebars left and right)', 'graphene' ); ?>" title="<?php _e( 'Three columns (with sidebars left and right)', 'graphene' ); ?>" />
                                 </label>      
                                 </p>                            
                             </div>                                                                                                              
@@ -550,13 +550,13 @@ function graphene_options_display() {
                 <table class="form-table">
                     <tr>
                         <th scope="row">
-                            <label for="link_decoration_normal"><?php _e( 'Text decoration (normal state )', 'graphene' ); ?></label>
+                            <label for="link_decoration_normal"><?php _e( 'Text decoration (normal state)', 'graphene' ); ?></label>
                         </th>
                         <td><input type="text" class="code" name="graphene_settings[link_decoration_normal]" id="link_decoration_normal" value="<?php echo $graphene_settings['link_decoration_normal']; ?>" /></td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <label for="link_decoration_hover"><?php _e( 'Text decoration (hover state )', 'graphene' ); ?></label>
+                            <label for="link_decoration_hover"><?php _e( 'Text decoration (hover state)', 'graphene' ); ?></label>
                         </th>
                         <td><input type="text" class="code" name="graphene_settings[link_decoration_hover]" id="link_decoration_hover" value="<?php echo $graphene_settings['link_decoration_hover']; ?>" /></td>
                     </tr>

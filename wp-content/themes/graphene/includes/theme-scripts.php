@@ -7,13 +7,13 @@ function graphene_register_styles(){
 
 	if ( ! is_admin() ){
 		wp_register_style( 'graphene-stylesheet', get_stylesheet_uri(), array(), false, 'screen' );
-		wp_register_style( 'graphene-stylesheet-rtl', get_template_directory_uri() . '/rtl.css', array(), false, 'screen' );
-		wp_register_style( 'graphene-light-header', get_template_directory_uri() . '/style-light.css', array( 'graphene-stylesheet' ), false, 'screen' );
-		wp_register_style( 'graphene-print', get_template_directory_uri() . '/style-print.css', array( 'graphene-stylesheet' ), false, 'print' );
-		wp_register_style( 'graphene-bbpress', get_template_directory_uri() . '/style-bbpress.css', array( 'graphene-stylesheet' ), false, 'screen' );
+		wp_register_style( 'graphene-stylesheet-rtl', GRAPHENE_ROOTURI . '/rtl.css', array(), false, 'screen' );
+		wp_register_style( 'graphene-light-header', GRAPHENE_ROOTURI . '/style-light.css', array( 'graphene-stylesheet' ), false, 'screen' );
+		wp_register_style( 'graphene-print', GRAPHENE_ROOTURI . '/style-print.css', array( 'graphene-stylesheet' ), false, 'print' );
+		wp_register_style( 'graphene-bbpress', GRAPHENE_ROOTURI . '/style-bbpress.css', array( 'graphene-stylesheet' ), false, 'screen' );
 	}
 	
-	wp_register_style( 'jquery-ui-slider', get_template_directory_uri() . '/js/jquery-ui/jquery.ui.custom.css', array(), false, 'screen' );
+	wp_register_style( 'jquery-ui-slider', GRAPHENE_ROOTURI . '/js/jquery-ui/jquery.ui.custom.css', array(), false, 'screen' );
 	
 }
 add_action( 'init', 'graphene_register_styles' );
@@ -43,14 +43,14 @@ add_action( 'wp_enqueue_scripts', 'graphene_enqueue_styles' );
 function graphene_register_scripts(){
 	global $graphene_settings;
 	
-	wp_register_script( 'graphene-jquery-tools', get_template_directory_uri() . '/js/jquery.tools.min.js', array( 'jquery' ), '', false );
-	wp_register_script( 'graphene-admin-js', get_template_directory_uri() . '/admin/js/admin.js', array( 'jquery' ), '', false );
+	wp_register_script( 'graphene-jquery-tools', GRAPHENE_ROOTURI . '/js/jquery.tools.min.js', array( 'jquery' ), '', false );
+	wp_register_script( 'graphene-admin-js', GRAPHENE_ROOTURI . '/admin/js/admin.js', array( 'jquery' ), '', false );
 	
 	// Register scripts for older versions of WordPress
 	if ( ! graphene_is_wp_version( '3.3' ) ){
-		wp_register_script( 'jquery-ui-widget', get_template_directory_uri() . '/js/jquery-ui/jquery.ui.widget.min.js', array( 'jquery-ui-core' ), '', true );
-		wp_register_script( 'jquery-ui-mouse', get_template_directory_uri() . '/js/jquery-ui/jquery.ui.mouse.min.js', array( 'jquery-ui-core' ), '', true );
-		wp_register_script( 'jquery-ui-slider', get_template_directory_uri() . '/js/jquery-ui/jquery.ui.slider.min.js', array( 'jquery-ui-widget', 'jquery-ui-mouse' ), '', true );
+		wp_register_script( 'jquery-ui-widget', GRAPHENE_ROOTURI . '/js/jquery-ui/jquery.ui.widget.min.js', array( 'jquery-ui-core' ), '', true );
+		wp_register_script( 'jquery-ui-mouse', GRAPHENE_ROOTURI . '/js/jquery-ui/jquery.ui.mouse.min.js', array( 'jquery-ui-core' ), '', true );
+		wp_register_script( 'jquery-ui-slider', GRAPHENE_ROOTURI . '/js/jquery-ui/jquery.ui.slider.min.js', array( 'jquery-ui-widget', 'jquery-ui-mouse' ), '', true );
 	}
 }
 add_action( 'init', 'graphene_register_scripts' );
@@ -72,9 +72,9 @@ function graphene_enqueue_scripts(){
         	wp_enqueue_script( 'comment-reply' );
 			
 		if ( $graphene_settings['inf_scroll_enable'] || $graphene_settings['inf_scroll_comments'] )
-			wp_enqueue_script( 'infinite-scroll', get_template_directory_uri() . '/js/jquery.infinitescroll.min.js', array( 'jquery' ), '', false );
+			wp_enqueue_script( 'infinite-scroll', GRAPHENE_ROOTURI . '/js/jquery.infinitescroll.min.js', array( 'jquery' ), '', false );
 			
-		wp_enqueue_script( 'graphene-js', get_template_directory_uri() . '/js/graphene.js', array( 'jquery' ), '', false );
+		wp_enqueue_script( 'graphene-js', GRAPHENE_ROOTURI . '/js/graphene.js', array( 'jquery' ), '', false );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'graphene_enqueue_scripts' );
@@ -93,7 +93,7 @@ function graphene_localize_scripts(){
 	
 	$js_object = array(
 						/* General */
-						'templateUrl'			=> get_template_directory_uri(),
+						'templateUrl'			=> GRAPHENE_ROOTURI,
 						'isSingular'			=> is_singular(),
 						
 						/* Comments */

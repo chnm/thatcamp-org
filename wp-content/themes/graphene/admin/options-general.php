@@ -482,7 +482,7 @@ function graphene_options_general() {
                                 /*
 								 * Available profiles according to the icons available in ElegantThemes Social Media Icon Set
 								 */
-                                $available_profiles = array (  '-', 'Custom', '-', 'Twitter', 'Facebook', 'LinkedIn', 'YouTube', 'RSS', 
+                                $available_profiles = array (  '-', 'Custom', '-', 'Twitter', 'Facebook', 'LinkedIn', 'YouTube', 'RSS', 'Instagram', 'Foursquare', 
                                                     'AIM', 'Ask', 'Bebo', 'BetVibes', 'BlinkList', 'Blogger', 'Buzz', 'Delicious', 'DeviantArt',
 													'Digg', 'Diigo', 'Evernote', 'Flickr', 'FriendFeed', 'Friendster', 'Furl', 'Google', 'Google Plus', 
 													'LastFM', 'LiveJournal', 'Mixx', 'MySpace', 'Newsvine', 'Orkut', 'Pinterest', 'Plaxo', 'Plurk', 
@@ -506,7 +506,7 @@ function graphene_options_general() {
                                             <?php if ( $profile_data['type'] == 'custom' ) : ?>
 	                                            <img class="mysocial-icon" src="<?php echo $profile_data['icon_url']; ?>" alt="" />
                                             <?php else : ?>
-    	                                        <img class="mysocial-icon" src="<?php echo get_template_directory_uri() . '/images/social/' . $profile_data['type'] . '.png'; ?>" alt="" />
+    	                                        <img class="mysocial-icon" src="<?php echo GRAPHENE_ROOTURI . '/images/social/' . $profile_data['type'] . '.png'; ?>" alt="" />
                                             <?php endif; ?>
                                         </th>
                                         <th class="small-row"><?php _e( 'Title attribute', 'graphene' ); ?></th>
@@ -542,7 +542,7 @@ function graphene_options_general() {
                                         <strong><?php _e( 'Add Social Media Profile', 'graphene' ); ?></strong>
                                         <input type="hidden" id="socialprofile-next-index" value="<?php echo count($social_profiles)+1; ?>" />                                                                                
                                         <input type="hidden" id="new-socialprofile-data" 
-                                                data-icon-url="<?php echo esc_attr( get_template_directory_uri() . '/images/social/' ); ?>"
+                                                data-icon-url="<?php echo esc_attr( GRAPHENE_ROOTURI . '/images/social/' ); ?>"
                                                 data-custom-title="custom"
                                                 data-text-icon-url="<?php _e('Icon URL', 'graphene'); ?>"
                                                 data-text-title-attr="<?php _e('Title attribute', 'graphene'); ?>"

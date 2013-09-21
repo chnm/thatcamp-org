@@ -394,29 +394,21 @@ Theme Name: Graphene
 #header-menu > li:first-child {
 	margin-right: 0;
 }
-#header-menu > li.menu-item-ancestor > a {
-	background: url(images/sprite_master-rtl.png) right -103px no-repeat transparent;
-	padding-left: 10px;
-	padding-right: 26px;
+#header-menu > li.menu-item-ancestor > a:before {
+	margin: 0 -2px 0 2px;
 }
-#header-menu > li.menu-item-ancestor:hover > a,
-#header-menu > li.current-menu-item > a,
-#header-menu > li.current-menu-ancestor > a {
-	background-position: right -59px;
+#header-menu > .menu-item-ancestor > a > .desc {
+	margin-left: 0;
+	margin-right: 16px;
 }
 
 /* Sub level header menu, default state */
-#header-menu ul li.menu-item-ancestor > a {
-	background: url(images/sprite_master-rtl.png) 6px -61px no-repeat transparent;
-	padding-left: 25px;
-	padding-right: 10px;
-	width: 165px;
+#header-menu ul li.menu-item-ancestor > a:after {
+	content: '\f503';
+	float: left;
+	margin: 2px 0 0 -5px;
 }
-#header-menu ul li.menu-item-ancestor:hover > a,
-#header-menu ul li.current-menu-item > a,
-#header-menu ul li.current-menu-ancestor > a {
-	background-position: 6px -105px;
-}
+
 
 /* Secondary menu */
 /* Top level, default state */
@@ -424,26 +416,19 @@ Theme Name: Graphene
 	margin-right: 0;
 	margin-left: 5px;
 }
-#secondary-menu > li.menu-item-ancestor > a {
-	padding-right: 20px;
-	padding-left: 10px;
-	background: url(images/sprite_master-rtl.png) right -183px no-repeat transparent;
+#secondary-menu > li.menu-item-ancestor > a:before {
+	margin-right: -2px;
+	margin-left: 0;
 }
-#secondary-menu > li.menu-item-ancestor:hover > a,
-#secondary-menu > li.current-menu-item > a,
-#secondary-menu > li.current-menu-ancestor > a {
-	background-position: right -150px;
+#secondary-menu ul li.menu-item-ancestor > a:after {
+	content: '\f503';
+	float: left;
+	margin: 3px 0 0 -5px;
 }
 
+
 /* Sub level, default state */
-#secondary-menu ul li.menu-item-ancestor > a {
-	background: url(images/sprite_master-rtl.png) 6px -152px;
-}
-#secondary-menu ul li.menu-item-ancestor:hover > a,
-#secondary-menu ul li.current-menu-item.menu-item-ancestor > a,
-#secondary-menu ul li.current-menu-ancestor > a {
-	background: url(images/sprite_master-rtl.png) 6px -185px;
-}
+
 
 
 /* =Content Area
@@ -490,6 +475,11 @@ Theme Name: Graphene
 .post-meta p,
 .post-meta ul,
 .post-meta li {
+	float: right;
+}
+.post .date {
+	margin-right: 0;
+	margin-left: 10px;
 	float: right;
 }
 .post-meta .meta_categories {
@@ -693,32 +683,23 @@ pre.block {
 #comments .nopassword {
 	float: right;
 }
-#comments > h4,
-#respond > h3,
-h3.author-post-list {
-	background-position: right 5px;
-	padding-left: 0;
-	padding-right: 25px;
+#comments h4,
+#respond h3 {
+	margin-right: 0;
 }
 #comments h4.comments {
-	background: url(images/sprite_master-rtl.png) right -519px no-repeat;
+	background: url(images/sprite_master-rtl.png) right -516px no-repeat;
+	padding-right: 25px;
+	margin-left: 10px;
+	margin-right: 0;
+	padding-left: 0;
 }
-#comments h4.pings {
-    background-position: right -110px;
+#respond #reply-title:before {
+	margin-right: 0;
+	margin-left: 5px;
 }
 #comments > h4 {
 	float: right;
-}
-#respond h3#reply-title {
-	background-position: right -162px;
-	margin-right: 10px;
-	margin-left: 0;
-	width: 469px;
-}
-h3.author-post-list {
-	padding-left: 0;
-	padding-right: 30px;
-	background-position: right -75px;
 }
 #comments ol.children .avatar {
 	left: auto;

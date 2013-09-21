@@ -8,7 +8,9 @@
  * @package Graphene
  * @since Graphene 1.0
  */
- 
+define( 'GRAPHENE_ROOTDIR', dirname( __FILE__ ) );
+define( 'GRAPHENE_ROOTURI', get_template_directory_uri() ); 
+
  
 /**
  * Before we do anything, let's get the mobile extension's init file if it exists
@@ -21,18 +23,18 @@ if ( file_exists( $mobile_path ) ) { include( $mobile_path ); }
  * Load the various theme files
 */
 global $graphene_settings;
-require( get_template_directory() . '/admin/options-init.php' );					// Theme options and admin interface setup
-require( $graphene_settings['template_dir'] . '/includes/theme-scripts.php' );		// Theme stylesheets and scripts
-require( $graphene_settings['template_dir'] . '/includes/theme-utils.php' );		// Theme utilities
-require( $graphene_settings['template_dir'] . '/includes/theme-head.php' );			// Functions for output into the HTML <head> element
-require( $graphene_settings['template_dir'] . '/includes/theme-menu.php' );			// Functions for navigation menus
-require( $graphene_settings['template_dir'] . '/includes/theme-loop.php' );			// Functions for posts/pages loops
-require( $graphene_settings['template_dir'] . '/includes/theme-comments.php' );		// Functions for comments
-require( $graphene_settings['template_dir'] . '/includes/theme-slider.php' );		// Functions for the slider
-require( $graphene_settings['template_dir'] . '/includes/theme-panes.php' );		// Functions for the homepage panes
-require( $graphene_settings['template_dir'] . '/includes/theme-plugins.php' );		// Native plugins support
-require( $graphene_settings['template_dir'] . '/includes/theme-shortcodes.php' );	// Theme shortcodes
-require( $graphene_settings['template_dir'] . '/includes/theme-webfonts.php' );		// Theme webfonts
-require( $graphene_settings['template_dir'] . '/includes/theme-compat.php' );		// For backward compatibility
-require( $graphene_settings['template_dir'] . '/includes/theme-functions.php' );	// Other functions that are not categorised above
-require( $graphene_settings['template_dir'] . '/includes/theme-setup.php' );		// Theme setup
+require( GRAPHENE_ROOTDIR . '/admin/options-init.php' );					// Theme options and admin interface setup
+require( GRAPHENE_ROOTDIR . '/includes/theme-scripts.php' );		// Theme stylesheets and scripts
+require( GRAPHENE_ROOTDIR . '/includes/theme-utils.php' );		// Theme utilities
+require( GRAPHENE_ROOTDIR . '/includes/theme-head.php' );			// Functions for output into the HTML <head> element
+require( GRAPHENE_ROOTDIR . '/includes/theme-menu.php' );			// Functions for navigation menus
+require( GRAPHENE_ROOTDIR . '/includes/theme-loop.php' );			// Functions for posts/pages loops
+require( GRAPHENE_ROOTDIR . '/includes/theme-comments.php' );		// Functions for comments
+require( GRAPHENE_ROOTDIR . '/includes/theme-slider.php' );		// Functions for the slider
+require( GRAPHENE_ROOTDIR . '/includes/theme-panes.php' );		// Functions for the homepage panes
+require( GRAPHENE_ROOTDIR . '/includes/theme-plugins.php' );		// Native plugins support
+require( GRAPHENE_ROOTDIR . '/includes/theme-shortcodes.php' );	// Theme shortcodes
+require( GRAPHENE_ROOTDIR . '/includes/theme-webfonts.php' );		// Theme webfonts
+require( GRAPHENE_ROOTDIR . '/includes/theme-compat.php' );		// For backward compatibility
+require( GRAPHENE_ROOTDIR . '/includes/theme-functions.php' );	// Other functions that are not categorised above
+require( GRAPHENE_ROOTDIR . '/includes/theme-setup.php' );		// Theme setup

@@ -2,7 +2,7 @@
 Theme Name: 	Graphene
 Theme URI: 		http://www.graphene-theme.com/
 Description: 	We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the theme's inception, we have received countless suggestions and requests on features that really matter. We listened, and we delivered. Here's a theme that's packed full of features that you need, yet far from being overwhelming. Here's a theme that's easy to use for beginners, yet well documented and powerful enough to be endlessly customisable to users with even only moderate technical skills. Here's a theme that's available in more than  30 languages and is backed with active community support, where questions, ideas and suggestions are always welcomed. And best of all, here's a theme that's completely free. Here's a theme that's yours to make it special.
-Version: 		1.9.1
+Version: 		1.9.2
 Author: 		Syahir Hakim
 Author URI: 	http://www.khairul-syahir.com/
 Tags: 			black, blue, white, one-column, two-columns, three-columns, right-sidebar, left-sidebar, fixed-width, custom-colors, custom-header, custom-background, custom-menu, editor-style, theme-options, threaded-comments, sticky-post, translation-ready, rtl-language-support, post-formats, featured-image-header, featured-images, full-width-template, microformats
@@ -10,6 +10,21 @@ Text Domain: 	Graphene
 License: 		GNU General Public License, Version 3 (or newer)
 License URI: 	http://www.gnu.org/licenses/gpl.html
 */
+
+
+/* =Icon font
+-------------------------------------------------------------- */
+
+@font-face {
+	font-family: 'Genericons';
+	src: url('fonts/genericons/genericons-regular-webfont.eot');
+	src: url('fonts/genericons/genericons-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('fonts/genericons/genericons-regular-webfont.woff') format('woff'),
+	     url('fonts/genericons/genericons-regular-webfont.ttf') format('truetype'),
+	     url('fonts/genericons/genericons-regular-webfont.svg#genericonsregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
 
 /* =Resets and Clearfix
@@ -416,6 +431,23 @@ a:hover {
 	color: #074d7c;
 	text-decoration: none;
 }
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+textarea {
+	border: 1px solid #e3e3e3;
+	color: #555;
+	font: normal 12px arial;
+	padding: 6px 3px;
+	height: 16px;
+}
 
 
 
@@ -633,9 +665,16 @@ a:hover {
 	font-size: 11px;
 	color: #aaa;
 }
-#header-menu > li.menu-item-ancestor > a {
-	background: url(images/sprite_master.png) -877px -236px no-repeat transparent;
-	padding-left: 26px;
+#header-menu > .menu-item-ancestor > a > .desc {
+	margin-left: 14px;
+}
+#header-menu > li.menu-item-ancestor > a:before {
+	content: '\f431';
+	display: inline-block;
+	margin-left: -2px;
+	-webkit-font-smoothing: antialiased;
+	font: normal 16px/1 'Genericons';
+	vertical-align: top;
 }
 
 /* Top level header menu, hover and current state */
@@ -654,11 +693,6 @@ a:hover {
 #header-menu > li.current-menu-ancestor > a > span {
 	color: #484848;
 }
-#header-menu > li.menu-item-ancestor:hover > a,
-#header-menu > li.current-menu-item > a,
-#header-menu > li.current-menu-ancestor > a {
-	background-position: -877px -192px;
-}
 
 /* Sub level header menu, default state */
 #header-menu ul li a {
@@ -669,10 +703,14 @@ a:hover {
 #header-menu ul li {
 	background: url(images/sprite_h.png) left -777px repeat-x #dfdfdf;
 }
-#header-menu ul li.menu-item-ancestor > a {
-	background: url(images/sprite_master.png) -652px -194px no-repeat transparent;
-	padding-right: 25px;
-	width: 165px;
+#header-menu ul li.menu-item-ancestor > a:after {
+	content: '\f501';
+	display: inline-block;
+	float: right;
+	margin: 2px -5px 0 0;
+	-webkit-font-smoothing: antialiased;
+	font: normal 10px/1 'Genericons';
+	vertical-align: middle;
 }
 
 /* Sub level header menu, hover and current state */
@@ -686,11 +724,6 @@ a:hover {
 #header-menu ul li.current-menu-item > a,
 #header-menu ul li.current-menu-ancestor > a {
 	color: #fff;
-}
-#header-menu ul li.menu-item-ancestor:hover > a,
-#header-menu ul li.current-menu-item > a,
-#header-menu ul li.current-menu-ancestor > a {
-	background-position: -652px -238px;
 }
 
 
@@ -714,9 +747,14 @@ a:hover {
 	line-height: 16px;
 	padding: 7px 10px 6px;
 }
-#secondary-menu > li.menu-item-ancestor > a {
-	background: url(images/sprite_master.png) -877px -316px no-repeat transparent;
-	padding-left: 20px;
+
+#secondary-menu > li.menu-item-ancestor > a:before {
+	content: '\f431';
+	display: inline-block;
+	margin-left: -2px;
+	-webkit-font-smoothing: antialiased;
+	font: normal 12px/1 'Genericons';
+	vertical-align: text-top;
 }
 
 /* Top level, hover and current state */
@@ -730,26 +768,25 @@ a:hover {
 #secondary-menu > li.current-menu-ancestor > a {
 	color: #000;
 }
-#secondary-menu > li.menu-item-ancestor:hover > a,
-#secondary-menu > li.current-menu-item > a,
-#secondary-menu > li.current-menu-ancestor > a {
-	background-position: -877px -283px;
-}
 
 /* Sub level, default state */
 #secondary-menu ul li a {
 	color: #000;
-	padding: 7px 15px 6px;
-	width: 170px;
+	padding: 7px 10px 6px;
+	width: 180px;
 	line-height: 16px;
 }
 #secondary-menu ul li {
 	background: url(images/sprite_h.png) left -1014px repeat-x #dfdfdf;
 }
-#secondary-menu ul li.menu-item-ancestor > a {
-	background: url(images/sprite_master.png) -652px -286px no-repeat transparent;
-	padding-right: 20px;
-	width: 165px;
+#secondary-menu ul li.menu-item-ancestor > a:after {
+	content: '\f501';
+	display: inline-block;
+	float: right;
+	margin: 3px -5px 0 0;
+	-webkit-font-smoothing: antialiased;
+	font: normal 8px/1 'Genericons';
+	vertical-align: middle;
 }
 /* Sub level header menu, hover and current state */
 #secondary-menu ul li:hover,
@@ -762,11 +799,6 @@ a:hover {
 #secondary-menu ul li.current-menu-item > a,
 #secondary-menu ul li.current-menu-ancestor > a {
 	color: #fff;
-}
-#secondary-menu ul li.menu-item-ancestor:hover > a,
-#secondary-menu ul li.current-menu-item > a,
-#secondary-menu ul li.current-menu-ancestor > a {
-	background-position: -652px -319px;
 }
 
 
@@ -953,6 +985,8 @@ a:hover {
 .block-button:visited,
 .Button,
 .button,
+input[type="submit"],
+button,
 #commentform #submit,
 .wpsc_buy_button {
 	background: url(images/bg-block-button.png) left bottom repeat-x #1C5FA5;
@@ -962,31 +996,35 @@ a:hover {
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#2982C5', EndColorStr='#1C5FA5')";
 	background: linear-gradient(#2982C5, #1C5FA5);
 	
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
 	
 	-moz-box-shadow: 0 1px 2px #aaa;
 	-webkit-box-shadow: 0 1px 2px #aaa;
 	box-shadow: 0 1px 2px #aaa;
-	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4);
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4);
-	box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.3);
 	
 	border: 1px solid #1C5FA5;
 	color: #fff;
 	cursor: pointer;
-	display: block;
-	float: right;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
 	font: bold 12px arial;
-	margin: 0 5px 5px;
 	padding: 5px 15px 6px;
 	position: relative;
 	text-decoration: none;
 	text-shadow: 0 -1px 0 #16497E;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+	vertical-align: top;
 }
 .block-button:hover,
 .button:hover,
+input[type="submit"]:hover,
+button:hover,
 #commentform #submit:hover,
 .wpsc_buy_button:hover {
 	background: url(images/bg-block-button-hover.png) left bottom repeat-x #1C5FA5;
@@ -1053,6 +1091,9 @@ a:hover {
 	border-bottom: none;
 	margin: 0;
 	padding: 0;
+}
+.child-page .block-button {
+	float: right;
 }
 .adsense_single {
 	text-align: center;
@@ -1188,9 +1229,10 @@ a:hover {
 	height: auto;
 }
 .wp-caption {
+	max-width: 100%;
 	background: #eee;
 	border: 1px solid #ddd;
-	margin: 0 auto;
+	margin: 10px auto 0;
 }
 .entry-content .wp-caption img {
 	border: 1px solid #ccc;
@@ -1280,11 +1322,6 @@ dt {
 .entry-content .wp-caption-text {
 	margin-top: 0;
 }
-a.more-link,
-a.more-link span {
-	display: block;
-	margin: 10px 0 5px;
-}
 .entry-content dt {
 	margin-top: 10px;
 }
@@ -1319,7 +1356,7 @@ a.more-link span {
 .entry-content img,
 .child-page img {
 	border: 4px solid #e3e3e3;
-	margin: 5px;
+	margin: 5px 0;
 }
 .entry-content table img,
 .child-page table img {
@@ -1376,17 +1413,21 @@ table#wp-calendar tr {
 	border: none;
 }
 blockquote {
-	background: url(images/sprite_master.png) left -475px no-repeat #f3f3f3;
+	background: #f9f9f9;
 	border: 1px dotted #e3e3e3;
 	clear: both;
 	margin: 10px 0 10px 10px;
-	padding: 8px 18px 5px 10px;
+	padding: 0 18px 5px 10px;
 }
-blockquote p {
-	color: #474747 !important;
-	margin-bottom: 5px;
-	margin-top: 0 !important;
-	text-indent: 30px;
+blockquote:before {
+	content: '\f106';
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font: normal 32px/0 'Genericons';
+	vertical-align: top;
+}
+blockquote p:first-child {
+	margin-top: -5px;
 }
 blockquote cite {
 	display: block;
@@ -1401,8 +1442,22 @@ p cite {
 	display: block;
 	text-align: right;
 }
-p code {
-	background-color: #EDEDFF;
+code {
+    font: 12px 'Courier New', monospace;
+	background: #f8f8f8;
+    padding: 0 2px 2px;
+	margin: 0 2px;
+	border: 1px solid #d5d5d5;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-ms-border-radius: 3px;
+	border-radius: 3px;
+	overflow: auto;
+	white-space: pre-wrap;
+}
+pre {
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
 }
 p.form-allowed-tags code {
 	background: none;
@@ -1418,7 +1473,7 @@ pre.block {
 	padding: 15px 2px 2px 20px;
 }
 .entry-footer {
-	border-top: 1px solid #e3e3e3;
+	border-top: 1px solid #f5f5f5;
 	clear: both;
 	margin-top: 20px;
 }
@@ -1632,7 +1687,6 @@ pre.block {
 	left: 0;
 	top: 0;
 	overflow: hidden;
-	box-shadow: 0 0 3px #333;
 	width: 110px;
 	height: 110px;
 	padding: 0;
@@ -1763,13 +1817,6 @@ pre.block {
 #comments {
 	clear: both;
 }
-#comments .nopassword {
-	background: none repeat scroll 0 0 #FFFFE0;
-	border: 1px solid #E6DB55;
-	float:left;
-	margin-top:15px;
-	padding: 10px;
-}
 #comments > h4,
 #respond > h3,
 h3.author-post-list {
@@ -1785,12 +1832,23 @@ h3.author-post-list {
 #comments > h4 a:visited {
 	color: #929292;
 }
-#comments h4.pings {
-	background-position: -880px -109px;
+#comments .pings {
+	background: none;
 	clear: none;
+	padding: 0;
+	margin-left: 0;
+}
+#comments .pings:before {
+	content: '\f100';
+	display: inline-block;
+	margin-top: -3px;
+	-webkit-font-smoothing: antialiased;
+	font: normal 32px/1 'Genericons';
+	vertical-align: top;
 }
 #comments > h4 {
 	float: left;
+	margin-right: 10px;
 }
 #comments > h4.current a {
 	color: #1772AF;
@@ -1803,15 +1861,31 @@ h3.author-post-list {
     clear: both;
 }
 #respond h3#reply-title {
-	background-position: -880px -17px;
-	margin-left: 10px;
+	background: none;
+	padding: 0;
 	margin-top: 20px;
 }
+#respond #reply-title:before {
+	content: '\f411';
+	display: inline-block;
+	margin-right: 5px;
+	-webkit-font-smoothing: antialiased;
+	font: normal 26px/1 'Genericons';
+	vertical-align: top;
+}
 h3.author-post-list {
-	background-position: -880px -76px;
+	background: none;
 	margin-bottom: 10px;
 	margin-top: 50px;
-	padding-left: 30px;
+	padding-left: 0;
+}
+h3.author-post-list:before {
+	content: '\f425';
+	display: inline-block;
+	margin-top: -2px;
+	-webkit-font-smoothing: antialiased;
+	font: normal 32px/1 'Genericons';
+	vertical-align: top;
 }
 #respond h3#reply-title small {
 	background: none;
@@ -1921,16 +1995,7 @@ h3.author-post-list {
 #commentform .logged-in-as {
 	margin-bottom: 10px;
 }
-#commentform input,
 #commentform textarea {
-	border: 1px solid #e3e3e3;
-	color: #2c2b2b;
-	font: normal 12px arial;
-	padding: 4px 3px;
-	height: 16px;
-}
-#commentform textarea {
-	border: 1px solid #e3e3e3;
 	height: 175px;
 	width: 612px;
 }
@@ -1973,6 +2038,9 @@ h3.author-post-list {
 }
 #commentform .form-allowed-tags code {
 	display: block;
+	font: 12px "Courier New";
+	color: #888;
+	border: none;
 }
 #commentform .comment-notes {
 	padding-bottom: 10px;
@@ -2165,7 +2233,7 @@ h3.author-post-list {
 	list-style-type: none;
 }
 .sidebar ul li {
-	border-bottom: 1px solid #e3e3e3;
+	border-bottom: 1px solid #f5f5f5;
 	line-height: 15px;
 	padding: 6px 0;
 }
@@ -2767,4 +2835,13 @@ form.product_form fieldset,
 #content .rotatingtweets,
 #content .norotatingtweets {
 	border: none;
+}
+
+
+/* WP-ReCaptcha */
+.recaptchatable {
+	line-height: normal;
+}
+#recaptcha-submit-btn-area {
+	margin-top: 10px;
 }

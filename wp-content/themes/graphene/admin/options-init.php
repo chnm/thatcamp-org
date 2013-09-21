@@ -20,18 +20,18 @@ include( get_template_directory() . '/admin/wpml-helper.php' );
 /**
  * Includes the files where our theme options are defined
 */
-include( $graphene_settings['template_dir'] . '/admin/options.php' );
-include( $graphene_settings['template_dir'] . '/admin/faq.php' );
+include( GRAPHENE_ROOTDIR . '/admin/options.php' );
+include( GRAPHENE_ROOTDIR . '/admin/faq.php' );
 
 /* Include the settings validator */
-include( $graphene_settings['template_dir'] . '/admin/options-validator.php');
+include( GRAPHENE_ROOTDIR . '/admin/options-validator.php');
 
 /* Indlude AJAX handler */
-include( $graphene_settings['template_dir'] . '/admin/ajax-handler.php');
+include( GRAPHENE_ROOTDIR . '/admin/ajax-handler.php');
 
 /* Include the feature pointer */
 /* Disabled for now until a proper API has been implemented in WordPress core */
-// include( $graphene_settings['template_dir'] . '/admin/feature-pointers.php');
+// include( GRAPHENE_ROOTDIR . '/admin/feature-pointers.php');
 
 /** 
  * Adds the theme options page
@@ -77,7 +77,7 @@ function graphene_options_js(){
 	//<![CDATA[
 		var graphene_tab = '<?php echo $tab; ?>';
 		var graphene_settings = <?php echo json_encode( $graphene_settings ); ?>;
-		var graphene_uri = '<?php echo get_template_directory_uri(); ?>';
+		var graphene_uri = '<?php echo GRAPHENE_ROOTURI; ?>';
 	//]]>
 	</script>
 	<?php
@@ -100,8 +100,8 @@ add_action( 'admin_menu', 'graphene_admin_footer' );
 if ( ! function_exists( 'graphene_admin_options_style' ) ) :
 	function graphene_admin_options_style() {
 	
-		wp_register_style( 'graphene-admin-style', get_template_directory_uri() . '/admin/admin.css' );
-		if ( is_rtl() ) { wp_register_style( 'graphene-admin-style-rtl', get_template_directory_uri() . '/admin/admin-rtl.css' );}
+		wp_register_style( 'graphene-admin-style', GRAPHENE_ROOTURI . '/admin/admin.css' );
+		if ( is_rtl() ) { wp_register_style( 'graphene-admin-style-rtl', GRAPHENE_ROOTURI . '/admin/admin-rtl.css' );}
 	
 		wp_enqueue_style( 'graphene-admin-style' );
 		if ( is_rtl() ) { wp_enqueue_style( 'graphene-admin-style-rtl' ); }
@@ -109,9 +109,9 @@ if ( ! function_exists( 'graphene_admin_options_style' ) ) :
 		wp_enqueue_style( 'thickbox' );
 		// wp_enqueue_style( 'wp-pointer' );
 		
-		wp_enqueue_style( 'graphene-codemirror', get_template_directory_uri() . '/js/codemirror/codemirror.css', array(), '', 'all' );
+		wp_enqueue_style( 'graphene-codemirror', GRAPHENE_ROOTURI . '/js/codemirror/codemirror.css', array(), '', 'all' );
 		wp_deregister_style( 'chosen' );
-		wp_enqueue_style( 'chosen', get_template_directory_uri() . '/js/chosen/chosen.css', array(), '', 'all' );
+		wp_enqueue_style( 'chosen', GRAPHENE_ROOTURI . '/js/chosen/chosen.css', array(), '', 'all' );
 		
 		if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'display' )
 			wp_enqueue_style( 'jquery-ui-slider' );
@@ -134,14 +134,16 @@ function graphene_admin_scripts() {
 		'preset_name'			=> __( 'What should we call this preset?', 'graphene' ),
 		'preset_name_req'		=> __( 'Preset name is required to save a preset.', 'graphene' ),
 		'preset_delete_confirm'	=> __( 'You are deleting this preset:', 'graphene' ),
+		'preset_select_file'	=> __( 'Please select the exported Graphene colour presets file to import.', 'graphene' ),
 		'chosen_no_search_result'	=> __( 'Oops, nothing found.', 'graphene' ),
 		'is_rtl'				=> is_rtl(),
+		'import_select_file'	=> __( 'Please select the exported Graphene options file to import.', 'graphene' ),
 	));
     // wp_enqueue_script( 'wp-pointer' );
 	
-	wp_enqueue_script( 'graphene-codemirror', get_template_directory_uri() . '/js/codemirror/codemirror.js', array(), '', false );
+	wp_enqueue_script( 'graphene-codemirror', GRAPHENE_ROOTURI . '/js/codemirror/codemirror.js', array(), '', false );
 	wp_deregister_script( 'chosen' );
-	wp_enqueue_script( 'chosen', get_template_directory_uri() . '/js/chosen/chosen.jquery.min.js', array( 'jquery' ), '', false );
+	wp_enqueue_script( 'chosen', GRAPHENE_ROOTURI . '/js/chosen/chosen.jquery.min.js', array( 'jquery' ), '', false );
 	
 	if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'display' )
 		wp_enqueue_script( 'jquery-ui-slider' );
@@ -200,12 +202,12 @@ endif;
 /**
  * Include the file for additional user fields
 */
-include( $graphene_settings['template_dir'] . '/admin/user.php' );
+include( GRAPHENE_ROOTDIR . '/admin/user.php' );
 
 /**
  * Include the file for additional custom fields in posts and pages editing screens
 */
-include( $graphene_settings['template_dir'] . '/admin/custom-fields.php' );
+include( GRAPHENE_ROOTDIR . '/admin/custom-fields.php' );
 
 
 /**
@@ -256,7 +258,7 @@ function graphene_page_template_visualizer() {
 	}
     
     
-    $preview_img_path = get_template_directory_uri() . '/admin/images/';
+    $preview_img_path = GRAPHENE_ROOTURI . '/admin/images/';
     ?>
     <script type="text/javascript">
     //<![CDATA[
@@ -332,7 +334,7 @@ function graphene_docs_link( $suffix = '' ){
 	$docs_uri = 'http://docs.graphene-theme.com/' . $suffix;
 	?>
     	<a href="<?php echo $docs_uri; ?>" class="graphene-docs-link" title="<?php esc_attr_e( 'Learn more about this feature set', 'graphene' ); ?>" target="_blank">
-        	<img src="<?php echo get_template_directory_uri(); ?>/admin/images/ico-info.png" alt="<?php esc_attr_e( 'Documentation', 'graphene' ); ?>" width="16" height="16" />
+        	<img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/ico-info.png" alt="<?php esc_attr_e( 'Documentation', 'graphene' ); ?>" width="16" height="16" />
         </a>
     <?php
 }

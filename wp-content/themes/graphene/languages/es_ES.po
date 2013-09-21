@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tema Graphene para WordPress en español\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-23 22:53+0800\n"
-"PO-Revision-Date: 2013-07-25 10:32+0100\n"
+"POT-Creation-Date: 2013-08-24 12:12+0800\n"
+"PO-Revision-Date: 2013-09-03 22:03+0100\n"
 "Last-Translator: Eduardo Larequi <elarequi@gmail.com>\n"
 "Language-Team: Eduardo Larequi <elarequi@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -186,8 +186,8 @@ msgstr "Entradas más recientes"
 #: loop.php:63
 #: loop.php:128
 #: includes/theme-panes.php:79
-#: includes/theme-panes.php:91
-#: includes/theme-panes.php:106
+#: includes/theme-panes.php:92
+#: includes/theme-panes.php:107
 #, php-format
 msgid "Permalink to %s"
 msgstr "Enlace permanente a %s"
@@ -328,29 +328,30 @@ msgstr "Acerca del autor"
 msgid "Read the rest of this entry &raquo;"
 msgstr "Continuar leyendo &raquo;"
 
-#: search-404.php:14
+#. translators: %1$s is the number of results found, %2$s is the search term
+#: search-404.php:17
+#: search.php:18
+#, php-format
+msgid "Found %1$s search result for keyword: %2$s"
+msgid_plural "Found %1$s search results for keyword: %2$s"
+msgstr[0] "Se ha encontrado %1$s resultado correspondiente a la cadena de búsqueda: '%2$s'"
+msgstr[1] "Se han encontrado %1$s resultados correspondientes a la cadena de búsqueda: '%2$s'"
+
+#: search-404.php:26
 msgid "Suggested results"
 msgstr "Sugerencias"
 
 #. translators: %1$s is the search term, %2$s is the number of results found
-#: search-404.php:19
+#: search-404.php:31
 #, php-format
 msgid "I've done a courtesy search for the term %1$s for you and found a total of %2$s result. See if you can find what you're looking for below."
 msgid_plural "I've done a courtesy search for the term %1$s for you and found a total of %2$s results. See if you can find what you're looking for below."
 msgstr[0] "Hemos llevado a cabo una búsqueda de cortesía correspondiente al término que has utilizado, '%1$s', y hemos encontrado %2$s resultado. Comprueba si puedes encontrar lo que estabas buscando en la lista que aparece a continuación."
 msgstr[1] "Hemos llevado a cabo una búsqueda de cortesía correspondiente al término que has utilizado, '%1$s', y hemos encontrado %2$s resultados. Comprueba si puedes encontrar lo que estabas buscando en la lista que aparece a continuación."
 
-#: search-404.php:40
+#: search-404.php:52
 msgid "<strong>Sorry, couldn't find anything.</strong> Try searching for alternative terms using the search form above."
 msgstr "<strong>Lo sentimos, pero no hemos podido encontrar nada</strong>. Inténtalo con un patrón de búsqueda alternativo, mediante el formulario que tienes sobre estas líneas."
-
-#. translators: %1$s is the number of results found, %2$s is the search term
-#: search.php:12
-#, php-format
-msgid "Found %1$s search result for keyword: %2$s"
-msgid_plural "Found %1$s search results for keyword: %2$s"
-msgstr[0] "Se ha encontrado %1$s resultado correspondiente a la cadena de búsqueda: '%2$s'"
-msgstr[1] "Se han encontrado %1$s resultados correspondientes a la cadena de búsqueda: '%2$s'"
 
 #: searchform.php:3
 #: searchform.php:4
@@ -358,22 +359,22 @@ msgid "Search"
 msgstr "Buscar"
 
 #: sidebar-two.php:28
-#: includes/theme-setup.php:301
+#: includes/theme-setup.php:305
 msgid "Front Page Sidebar Two Widget Area"
 msgstr "Segunda barra lateral de la página de inicio"
 
 #: sidebar-two.php:30
-#: includes/theme-setup.php:266
+#: includes/theme-setup.php:270
 msgid "Sidebar Two Widget Area"
 msgstr "Segunda barra lateral"
 
 #: sidebar.php:28
-#: includes/theme-setup.php:292
+#: includes/theme-setup.php:296
 msgid "Front Page Sidebar Widget Area"
 msgstr "Barra lateral de la página de inicio"
 
 #: sidebar.php:30
-#: includes/theme-setup.php:257
+#: includes/theme-setup.php:261
 msgid "Sidebar Widget Area"
 msgstr "Barra lateral principal"
 
@@ -781,11 +782,11 @@ msgstr "<strong>Aviso:</strong> para devolver cualquiera de los colores a su val
 
 #: admin/options-colours.php:14
 msgid "Colour presets"
-msgstr "Opciones predefinidas de color"
+msgstr "Combinaciones predefinidas de colores"
 
 #: admin/options-colours.php:16
 msgid "These are some colour presets that you may use, either as is or tweak them further to your liking."
-msgstr "Aquí tienes algunas combinaciones de color predefinidas que puedes utilizar, o que puedes modificar a tu gusto."
+msgstr "Aquí tienes algunas combinaciones predefinidas de colores que puedes utilizar, o que puedes modificar a tu gusto."
 
 #: admin/options-colours.php:25
 msgid "Delete preset"
@@ -1457,8 +1458,8 @@ msgid "Text style:"
 msgstr "Estilo del texto:"
 
 #: admin/options-display.php:455
-msgid "Text colour:"
-msgstr "Color del texto:"
+msgid "Text decoration:"
+msgstr "Decoración del texto:"
 
 #: admin/options-display.php:460
 msgid "Header Text"
@@ -1525,12 +1526,12 @@ msgid "Link Text"
 msgstr "Texto del enlace"
 
 #: admin/options-display.php:553
-msgid "Text decoration (normal state )"
-msgstr "Subrayado del texto (estado normal)"
+msgid "Text decoration (normal state)"
+msgstr "Decoración del texto (estado normal)"
 
 #: admin/options-display.php:559
-msgid "Text decoration (hover state )"
-msgstr "Subrayado del texto (estado al pasar el ratón por encima)"
+msgid "Text decoration (hover state)"
+msgstr "Decoración del texto (estado al pasar el ratón por encima)"
 
 #: admin/options-display.php:575
 msgid "Footer Widget Display Options"
@@ -2168,7 +2169,7 @@ msgstr "Importar una configuración predefinida de colores del tema Graphene"
 
 #: admin/options-import.php:131
 msgid "Choose a Graphene theme's colour presets export file from your computer:"
-msgstr "Selecciona en tu ordenador un fichero de configuración predefinida de colores del tema Graphene:"
+msgstr "Selecciona en tu ordenador un fichero de exportación de una configuración predefinida de colores del tema Graphene:"
 
 #: admin/options-import.php:158
 msgid "Export Graphene Theme Colour Presets"
@@ -2176,7 +2177,7 @@ msgstr "Exportar una configuración predefinida de colores del tema Graphene"
 
 #: admin/options-import.php:161
 msgid "Please select the colour presets to be exported."
-msgstr "Por favor, selecciona la configuración de colores predefinida que quieras exportar."
+msgstr "Por favor, selecciona la configuración predefinida de colores que quieras exportar."
 
 #: admin/options-import.php:171
 msgid "Export colour presets"
@@ -2209,7 +2210,7 @@ msgstr "La importación de la configuración predefinida de colores ha sido comp
 
 #: admin/options-import.php:258
 msgid "The uploaded file does not contain valid Graphene colour presets."
-msgstr "El fichero que has subido no contiene una configuración predefinida de colores del tema Graphene válida."
+msgstr "El fichero que has subido no contiene una configuración predefinida válida de colores del tema Graphene."
 
 #: admin/options-import.php:264
 msgid "The uploaded file could not be read."
@@ -2244,31 +2245,39 @@ msgid "You are deleting this preset:"
 msgstr "Vas a borrar esta configuración predefinida:"
 
 #: admin/options-init.php:137
+msgid "Please select the exported Graphene colour presets file to import."
+msgstr "Por favor, selecciona el fichero de exportación de la configuración predefinida de colores que quieres importar."
+
+#: admin/options-init.php:138
 msgid "Oops, nothing found."
 msgstr "Lo sentimos, pero no se ha encontrado ninguna configuración predefinida."
 
-#: admin/options-init.php:172
+#: admin/options-init.php:140
+msgid "Please select the exported Graphene options file to import."
+msgstr "Por favor, selecciona el fichero de exportación de la configuración del tema Graphene que quieres importar."
+
+#: admin/options-init.php:174
 msgid "Toggle all options boxes"
 msgstr "Plegar o desplegar todas las cajas de opciones"
 
-#: admin/options-init.php:231
+#: admin/options-init.php:233
 msgid "Template preview not found."
 msgstr "Vista previa de la plantilla no encontrada"
 
-#: admin/options-init.php:234
+#: admin/options-init.php:236
 msgid "default"
 msgstr "por defecto"
 
-#: admin/options-init.php:293
-#: admin/options-init.php:297
+#: admin/options-init.php:295
+#: admin/options-init.php:299
 msgid "Theme default"
 msgstr "Plantilla del tema por defecto"
 
-#: admin/options-init.php:334
+#: admin/options-init.php:336
 msgid "Learn more about this feature set"
 msgstr "Aprender más sobre este conjunto de funcionalidades"
 
-#: admin/options-init.php:335
+#: admin/options-init.php:337
 msgid "Documentation"
 msgstr "Documentación"
 
@@ -2695,37 +2704,37 @@ msgstr "Administración de WP > Apariencia > Widgets"
 msgid "This notice will not be displayed to your site's visitors."
 msgstr "Este aviso no se mostrará a los visitantes de tu sitio."
 
-#: includes/theme-loop.php:86
+#: includes/theme-loop.php:85
 msgid "Continue reading &raquo;"
 msgstr "Continuar leyendo &raquo;"
 
-#: includes/theme-loop.php:153
+#: includes/theme-loop.php:152
 msgid "Older posts &laquo;"
 msgstr "Entradas más antiguas &laquo;"
 
-#: includes/theme-loop.php:154
+#: includes/theme-loop.php:153
 msgid "&raquo; Newer posts"
 msgstr "&raquo; Entradas más recientes"
 
-#: includes/theme-loop.php:156
+#: includes/theme-loop.php:155
 msgid "Next page &raquo;"
 msgstr "Página siguiente &raquo;"
 
-#: includes/theme-loop.php:157
+#: includes/theme-loop.php:156
 msgid "&laquo; Previous page"
 msgstr "&laquo; Página anterior"
 
-#: includes/theme-loop.php:163
+#: includes/theme-loop.php:162
 msgid "Fetch more items"
 msgstr "Obtener más elementos"
 
-#: includes/theme-loop.php:476
-#: includes/theme-loop.php:477
+#: includes/theme-loop.php:474
+#: includes/theme-loop.php:475
 #, php-format
 msgid "Print this %s"
 msgstr "Imprimir esta %s"
 
-#: includes/theme-loop.php:517
+#: includes/theme-loop.php:515
 #, php-format
 msgid "Return to %s"
 msgstr "Volver a %s"
@@ -2734,7 +2743,7 @@ msgstr "Volver a %s"
 msgid "Home"
 msgstr "Inicio"
 
-#: includes/theme-panes.php:106
+#: includes/theme-panes.php:107
 msgid "Read more"
 msgstr "Continuar leyendo"
 
@@ -2762,75 +2771,75 @@ msgstr[1] "Obteniendo otros %1$s comentarios de nivel superior más de los %2$s 
 msgid "No more comments to fetch"
 msgstr "No hay más comentarios"
 
-#: includes/theme-setup.php:111
+#: includes/theme-setup.php:115
 msgid "Header Menu"
 msgstr "Menú de cabecera"
 
-#: includes/theme-setup.php:112
+#: includes/theme-setup.php:116
 msgid "Secondary Menu"
 msgstr "Menú secundario"
 
-#: includes/theme-setup.php:113
+#: includes/theme-setup.php:117
 msgid "Footer Menu"
 msgstr "Menú de pie de página"
 
-#: includes/theme-setup.php:164
+#: includes/theme-setup.php:168
 msgid "Header image by Syahir Hakim"
 msgstr "Imagen de cabecera por Syahir Hakim"
 
-#: includes/theme-setup.php:168
+#: includes/theme-setup.php:172
 msgid "This is the default Graphene theme header image, cropped from image by Quantin Houyoux at sxc.hu"
 msgstr "Esta es la imagen de cabecera por defecto del tema Graphene, recortada a partir de una imagen de Quantin Houyoux en sxc.hu"
 
-#: includes/theme-setup.php:172
 #: includes/theme-setup.php:176
 #: includes/theme-setup.php:180
 #: includes/theme-setup.php:184
 #: includes/theme-setup.php:188
+#: includes/theme-setup.php:192
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "Imagen de cabecera recortada a partir de una imagen de Ilco en sxc.hu"
 
-#: includes/theme-setup.php:259
+#: includes/theme-setup.php:263
 msgid "The first sidebar widget area (will always be displayed on the right hand side)."
 msgstr "La primera área de widgets de la barra lateral (siempre se mostrará en el lado derecho)."
 
-#: includes/theme-setup.php:268
+#: includes/theme-setup.php:272
 msgid "The second sidebar widget area (will always be displayed on the left hand side)."
 msgstr "La segunda área de widgets de la barra lateral (siempre se mostrará en el lado izquierdo)."
 
-#: includes/theme-setup.php:275
+#: includes/theme-setup.php:279
 msgid "Footer Widget Area"
 msgstr "Pie de página"
 
-#: includes/theme-setup.php:277
+#: includes/theme-setup.php:281
 msgid "The footer widget area. Leave empty to disable. Set the number of columns to display at the theme's Display Options page."
 msgstr "Área de widgets del pie de página. Si deseas desactivarla, déjala vacía. Puedes establecer el número de columnas que deseas mostrar en la página de opciones de visualización."
 
-#: includes/theme-setup.php:294
+#: includes/theme-setup.php:298
 msgid "The first sidebar widget area that will only be displayed on the front page."
 msgstr "La primera área de widgets de la barra lateral, que solo se mostrará en la página principal."
 
-#: includes/theme-setup.php:303
+#: includes/theme-setup.php:307
 msgid "The second sidebar widget area that will only be displayed on the front page."
 msgstr "La segunda área de widgets de la barra lateral, que solo se mostrará en la página principal."
 
-#: includes/theme-setup.php:312
+#: includes/theme-setup.php:316
 msgid "Front Page Footer Widget Area"
 msgstr "Pie de la página de inicio"
 
-#: includes/theme-setup.php:314
+#: includes/theme-setup.php:318
 msgid "The footer widget area that will only be displayed on the front page. Leave empty to disable. Set the number of columns to display at the theme's Display Options page."
 msgstr "El área de widgets del pie de página, que solo se mostrará en la página de inicio. Si deseas desactivarla, déjala vacía. Desde la página de opciones del tema puedes establecer el número de columnas que deseas mostrar en esta área."
 
-#: includes/theme-setup.php:324
+#: includes/theme-setup.php:328
 msgid "Header Widget Area"
 msgstr "Cabecera"
 
-#: includes/theme-setup.php:326
+#: includes/theme-setup.php:330
 msgid "The header widget area."
 msgstr "El área de widgets de la cabecera"
 
-#: includes/theme-setup.php:343
+#: includes/theme-setup.php:347
 #, php-format
 msgid "Dynamically added widget area. This widget area is attached to the %s action hook."
 msgstr "Área de widgets añadida de forma dinámica. Esta área de widgets se adjuntará al \"action hook\" %s"
@@ -2859,6 +2868,9 @@ msgstr "Añadir un bloque con un mensaje importante"
 #: js/mce-l10n.php:15
 msgid "Add a pullquote"
 msgstr "Añadir una cita"
+
+#~ msgid "Text colour:"
+#~ msgstr "Color del texto:"
 
 #~ msgid "1 comment"
 #~ msgstr "Un comentario"

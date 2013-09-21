@@ -27,3 +27,22 @@
 .Button {
 	float: right;
 }
+.panel-wrap .submit {
+	text-align: left;
+}
+
+#header-menu-wrap > ul > li.menu-item-ancestor > a:before,
+#secondary-menu > li.menu-item-ancestor > a:before {
+	margin-right: -2px;
+	margin-left: 0;
+}
+.primary-menu-preview.dropdown ul li.menu-item-ancestor > a:after {
+	content: "\f503";
+	float: left;
+	margin: 2px 0 0 -5px;
+}
+.secondary-menu-preview .sub-menu li.menu-item-ancestor > a:after {
+	content: "\f503";
+	float: left;
+	margin: 3px 0 0 -5px;
+}

@@ -34,6 +34,8 @@ function graphene_export_options(){
 			foreach ( $presets as $preset ) {
 				$data['colour_presets'][$preset] = $graphene_settings['colour_presets'][$preset];
 			}
+			
+			unset( $data['db_version'] );
 		}
 		/* Only export options that have different values than the default values - disabled for now
 		foreach ( $data as $key => $value ){
@@ -42,8 +44,6 @@ function graphene_export_options(){
 			}
 		}
 		*/
-		
-		unset( $data['db_version'] );
 		
 		$data = json_encode( $data );
 		$size = strlen( $data );
@@ -90,7 +90,7 @@ function graphene_import_form(){
     <div class="wrap">
         <div id="icon-tools" class="icon32"><br></div>
         <h2><?php echo __( 'Import Graphene Theme Options', 'graphene' );?></h2>    
-        <form enctype="multipart/form-data" id="import-upload-form" method="post" action="">
+        <form enctype="multipart/form-data" id="import-upload-form" method="post" action="" onsubmit="return grapheneCheckFile(this);">
             <p>
                 <label for="upload"><?php _e( 'Choose a file from your computer:', 'graphene' ); ?></label> (<?php printf( __( 'Maximum size: %s', 'graphene' ), $size ); ?>)
                 <input type="file" id="upload" name="import" size="25" />
@@ -125,8 +125,8 @@ function graphene_import_colour_presets(){
     ?>
     <div class="wrap">
         <div id="icon-tools" class="icon32"><br></div>
-        <h2><?php echo __( 'Import Graphene Theme Colour Presets', 'graphene' );?></h2>    
-        <form enctype="multipart/form-data" id="import-upload-form" method="post" action="<?php echo admin_url( 'themes.php?page=graphene_options&tab=colours' ); ?>">
+        <h2><?php echo __( 'Import Graphene Theme Colour Presets', 'graphene' );?></h2>
+        <form enctype="multipart/form-data" id="import-upload-form" method="post" action="<?php echo admin_url( 'themes.php?page=graphene_options&tab=colours' ); ?>" onsubmit="return grapheneCheckFile(this,'colours');">
             <p>
                 <label for="upload"><?php _e( 'Choose a Graphene theme\'s colour presets export file from your computer:', 'graphene' ); ?></label><br />
                 <input type="file" id="upload" name="import" size="25" /> <span class="description">(<?php printf( __( 'Maximum size: %s', 'graphene' ), $size ); ?>)</span>

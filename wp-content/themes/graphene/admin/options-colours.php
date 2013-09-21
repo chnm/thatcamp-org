@@ -52,7 +52,7 @@ function graphene_options_colours() {
                         <th scope="row"><?php _e( 'Top bar preview', 'graphene' ); ?></th>
                         <td><div class="top-bar-preview"><div class="top-bar">
                 				<div class="profiles">
-                                <a class="mysocial social-rss" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/social/rss.png"></a></div></div><div class="header"></div></div>
+                                <a class="mysocial social-rss" href="#"><img src="<?php echo GRAPHENE_ROOTURI; ?>/images/social/rss.png"></a></div></div><div class="header"></div></div>
                         </td>
                     </tr>
                     <?php                                                 

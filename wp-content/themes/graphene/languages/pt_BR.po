@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene Theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-23 22:53+0800\n"
-"PO-Revision-Date: 2013-07-23 18:15-0300\n"
+"POT-Creation-Date: 2013-08-24 12:12+0800\n"
+"PO-Revision-Date: 2013-09-03 16:16-0300\n"
 "Last-Translator: Leonardo Antonioli <leo@tobeguarany.com>\n"
 "Language-Team: Leonardo Antonioli <leo@tobeguarany.com>\n"
 "Language: pt_BR\n"
@@ -188,8 +188,8 @@ msgstr "Últimos posts"
 
 #: loop-author.php:55 loop-author.php:85 loop-children.php:45
 #: loop-children.php:54 loop-post-formats.php:36 loop.php:63 loop.php:128
-#: includes/theme-panes.php:79 includes/theme-panes.php:91
-#: includes/theme-panes.php:106
+#: includes/theme-panes.php:79 includes/theme-panes.php:92
+#: includes/theme-panes.php:107
 #, php-format
 msgid "Permalink to %s"
 msgstr "Link permanente para %s"
@@ -318,12 +318,20 @@ msgstr "Sobre o autor"
 msgid "Read the rest of this entry &raquo;"
 msgstr "Leia mais &raquo;"
 
-#: search-404.php:14
+#. translators: %1$s is the number of results found, %2$s is the search term
+#: search-404.php:17 search.php:18
+#, php-format
+msgid "Found %1$s search result for keyword: %2$s"
+msgid_plural "Found %1$s search results for keyword: %2$s"
+msgstr[0] "Encontrado %1$s resultado para o termo: %2$s"
+msgstr[1] "Encontrados %1$s resultados para o termo: %2$s"
+
+#: search-404.php:26
 msgid "Suggested results"
 msgstr "Resultados sugeridos"
 
 #. translators: %1$s is the search term, %2$s is the number of results found
-#: search-404.php:19
+#: search-404.php:31
 #, php-format
 msgid ""
 "I've done a courtesy search for the term %1$s for you and found a total of "
@@ -338,7 +346,7 @@ msgstr[1] ""
 "Fiz uma busca pelo termo %1$s e encontrei %2$s resultados. Veja se pode "
 "encontrar o que procurava na lista abaixo."
 
-#: search-404.php:40
+#: search-404.php:52
 msgid ""
 "<strong>Sorry, couldn't find anything.</strong> Try searching for "
 "alternative terms using the search form above."
@@ -346,31 +354,23 @@ msgstr ""
 "<strong>Desculpe, não encontramos nada.</strong> Tente buscar por termos "
 "alternativos usando o formulário de pesquisa."
 
-#. translators: %1$s is the number of results found, %2$s is the search term
-#: search.php:12
-#, php-format
-msgid "Found %1$s search result for keyword: %2$s"
-msgid_plural "Found %1$s search results for keyword: %2$s"
-msgstr[0] "Encontrado %1$s resultado para o termo: %2$s"
-msgstr[1] "Encontrados %1$s resultados para o termo: %2$s"
-
 #: searchform.php:3 searchform.php:4
 msgid "Search"
 msgstr "Busca"
 
-#: sidebar-two.php:28 includes/theme-setup.php:301
+#: sidebar-two.php:28 includes/theme-setup.php:305
 msgid "Front Page Sidebar Two Widget Area"
 msgstr "Widgets II da Barra Lateral na Página Inicial"
 
-#: sidebar-two.php:30 includes/theme-setup.php:266
+#: sidebar-two.php:30 includes/theme-setup.php:270
 msgid "Sidebar Two Widget Area"
 msgstr "Widgets da Barra Lateral"
 
-#: sidebar.php:28 includes/theme-setup.php:292
+#: sidebar.php:28 includes/theme-setup.php:296
 msgid "Front Page Sidebar Widget Area"
 msgstr "Barra Lateral da Página Inicial"
 
-#: sidebar.php:30 includes/theme-setup.php:257
+#: sidebar.php:30 includes/theme-setup.php:261
 msgid "Sidebar Widget Area"
 msgstr "Widgets da Barra Lateral"
 
@@ -1576,8 +1576,8 @@ msgid "Text style:"
 msgstr "Estilo do texto:"
 
 #: admin/options-display.php:455
-msgid "Text colour:"
-msgstr "Cor do texto:"
+msgid "Text decoration:"
+msgstr "text-decoration:"
 
 #: admin/options-display.php:460
 msgid "Header Text"
@@ -1644,11 +1644,11 @@ msgid "Link Text"
 msgstr "Link de texto"
 
 #: admin/options-display.php:553
-msgid "Text decoration (normal state )"
+msgid "Text decoration (normal state)"
 msgstr "text-decoration (normal)"
 
 #: admin/options-display.php:559
-msgid "Text decoration (hover state )"
+msgid "Text decoration (hover state)"
 msgstr "text-decoration (hover)"
 
 #: admin/options-display.php:575
@@ -2471,30 +2471,38 @@ msgid "You are deleting this preset:"
 msgstr "Você está apagando este esquema:"
 
 #: admin/options-init.php:137
+msgid "Please select the exported Graphene colour presets file to import."
+msgstr "Por favor, selecione o esquema de cores a ser importado."
+
+#: admin/options-init.php:138
 msgid "Oops, nothing found."
 msgstr "Oops, nada encontrado."
 
-#: admin/options-init.php:172
+#: admin/options-init.php:140
+msgid "Please select the exported Graphene options file to import."
+msgstr "Por favor, selecione o arquivo de configurações a ser importado."
+
+#: admin/options-init.php:174
 msgid "Toggle all options boxes"
 msgstr "Exibir/esconder todas as opções"
 
-#: admin/options-init.php:231
+#: admin/options-init.php:233
 msgid "Template preview not found."
 msgstr "Pré-visualização de modelo não encontrada."
 
-#: admin/options-init.php:234
+#: admin/options-init.php:236
 msgid "default"
 msgstr "padrão"
 
-#: admin/options-init.php:293 admin/options-init.php:297
+#: admin/options-init.php:295 admin/options-init.php:299
 msgid "Theme default"
 msgstr "Padrão do tema"
 
-#: admin/options-init.php:334
+#: admin/options-init.php:336
 msgid "Learn more about this feature set"
 msgstr "Saiba mais sobre esse conjunto de funcionalidades"
 
-#: admin/options-init.php:335
+#: admin/options-init.php:337
 msgid "Documentation"
 msgstr "Documentação"
 
@@ -3025,36 +3033,36 @@ msgstr "Aparência > Widgets"
 msgid "This notice will not be displayed to your site's visitors."
 msgstr "Esse aviso será exibido para seus visitantes."
 
-#: includes/theme-loop.php:86
+#: includes/theme-loop.php:85
 msgid "Continue reading &raquo;"
 msgstr "Continue lendo &raquo;"
 
-#: includes/theme-loop.php:153
+#: includes/theme-loop.php:152
 msgid "Older posts &laquo;"
 msgstr "Posts mais antigos &laquo;"
 
-#: includes/theme-loop.php:154
+#: includes/theme-loop.php:153
 msgid "&raquo; Newer posts"
 msgstr "&raquo; Posts mais novos"
 
-#: includes/theme-loop.php:156
+#: includes/theme-loop.php:155
 msgid "Next page &raquo;"
 msgstr "Próxima página &raquo;"
 
-#: includes/theme-loop.php:157
+#: includes/theme-loop.php:156
 msgid "&laquo; Previous page"
 msgstr "&laquo; Página anterior"
 
-#: includes/theme-loop.php:163
+#: includes/theme-loop.php:162
 msgid "Fetch more items"
 msgstr "Carregar mais itens"
 
-#: includes/theme-loop.php:476 includes/theme-loop.php:477
+#: includes/theme-loop.php:474 includes/theme-loop.php:475
 #, php-format
 msgid "Print this %s"
 msgstr "Imprimir %s"
 
-#: includes/theme-loop.php:517
+#: includes/theme-loop.php:515
 #, php-format
 msgid "Return to %s"
 msgstr "Voltar para %s"
@@ -3063,7 +3071,7 @@ msgstr "Voltar para %s"
 msgid "Home"
 msgstr "Início"
 
-#: includes/theme-panes.php:106
+#: includes/theme-panes.php:107
 msgid "Read more"
 msgstr "Leia mais"
 
@@ -3089,23 +3097,23 @@ msgstr[1] "Carregando %1$s comentários de %2$s restantes ..."
 msgid "No more comments to fetch"
 msgstr "Não há mais comentários a carregar"
 
-#: includes/theme-setup.php:111
+#: includes/theme-setup.php:115
 msgid "Header Menu"
 msgstr "Menu superior"
 
-#: includes/theme-setup.php:112
+#: includes/theme-setup.php:116
 msgid "Secondary Menu"
 msgstr "Menu secundário"
 
-#: includes/theme-setup.php:113
+#: includes/theme-setup.php:117
 msgid "Footer Menu"
 msgstr "Menu do rodapé"
 
-#: includes/theme-setup.php:164
+#: includes/theme-setup.php:168
 msgid "Header image by Syahir Hakim"
 msgstr "Imagem do cabeçalho por Syahir Hakim"
 
-#: includes/theme-setup.php:168
+#: includes/theme-setup.php:172
 msgid ""
 "This is the default Graphene theme header image, cropped from image by "
 "Quantin Houyoux at sxc.hu"
@@ -3113,31 +3121,31 @@ msgstr ""
 "Esta é a imagem padrão do tema Graphene, recorte de uma imagem de Quantin "
 "Houyoux em sxc.hu"
 
-#: includes/theme-setup.php:172 includes/theme-setup.php:176
-#: includes/theme-setup.php:180 includes/theme-setup.php:184
-#: includes/theme-setup.php:188
+#: includes/theme-setup.php:176 includes/theme-setup.php:180
+#: includes/theme-setup.php:184 includes/theme-setup.php:188
+#: includes/theme-setup.php:192
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "Imagem de cabeçalho recortada de uma imagem de Ilco em sxc.hu"
 
-#: includes/theme-setup.php:259
+#: includes/theme-setup.php:263
 msgid ""
 "The first sidebar widget area (will always be displayed on the right hand "
 "side)."
 msgstr ""
 "A primeira área de widgets da barra lateral (sempre exibida à direita)."
 
-#: includes/theme-setup.php:268
+#: includes/theme-setup.php:272
 msgid ""
 "The second sidebar widget area (will always be displayed on the left hand "
 "side)."
 msgstr ""
 "A segunda área de widgets da barra lateral (sempre exibida à esquerda)."
 
-#: includes/theme-setup.php:275
+#: includes/theme-setup.php:279
 msgid "Footer Widget Area"
 msgstr "Widgets do Rodapé"
 
-#: includes/theme-setup.php:277
+#: includes/theme-setup.php:281
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to "
 "display at the theme's Display Options page."
@@ -3145,24 +3153,24 @@ msgstr ""
 "A área de widgets do rodapé. Deixe vazia para desabilitar. Defina o número "
 "de colunas a exibir nas Opções de Exibição do tema."
 
-#: includes/theme-setup.php:294
+#: includes/theme-setup.php:298
 msgid ""
 "The first sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "A primeira área de widgets da barra lateral, exibida apenas na página "
 "inicial."
 
-#: includes/theme-setup.php:303
+#: includes/theme-setup.php:307
 msgid ""
 "The second sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "A segunda área de widgets da barra lateral, exibida apenas na página inicial."
 
-#: includes/theme-setup.php:312
+#: includes/theme-setup.php:316
 msgid "Front Page Footer Widget Area"
 msgstr "Rodapé da Página Inicial"
 
-#: includes/theme-setup.php:314
+#: includes/theme-setup.php:318
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave "
 "empty to disable. Set the number of columns to display at the theme's "
@@ -3172,15 +3180,15 @@ msgstr ""
 "para desabilitar. Defina o número de colunas a exibir nas Opções de Exibição "
 "do tema."
 
-#: includes/theme-setup.php:324
+#: includes/theme-setup.php:328
 msgid "Header Widget Area"
 msgstr "Widgets do Cabeçalho"
 
-#: includes/theme-setup.php:326
+#: includes/theme-setup.php:330
 msgid "The header widget area."
 msgstr "A área de widgets do cabeçalho."
 
-#: includes/theme-setup.php:343
+#: includes/theme-setup.php:347
 #, php-format
 msgid ""
 "Dynamically added widget area. This widget area is attached to the %s action "
@@ -3212,6 +3220,9 @@ msgstr "Adicionar mensagem importante"
 #: js/mce-l10n.php:15
 msgid "Add a pullquote"
 msgstr "Adicionar citação destacada"
+
+#~ msgid "Text colour:"
+#~ msgstr "Cor do texto:"
 
 #~ msgid "1 comment"
 #~ msgstr "1 comentário"

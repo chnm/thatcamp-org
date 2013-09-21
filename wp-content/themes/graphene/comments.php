@@ -22,7 +22,7 @@ global $graphene_settings;
 
 <?php if ( post_password_required() && ( comments_open() || have_comments() ) ) : ?>
 			<div id="comments">
-				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'graphene' ); ?></p>
+				<p class="nopassword message-block notice_block"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'graphene' ); ?></p>
                 
                 <?php do_action( 'graphene_protected_comment' ); ?>
 			</div><!-- #comments -->
@@ -62,10 +62,10 @@ global $graphene_settings;
 
 <div id="comments" class="<?php echo $class; ?>">
     <?php if ( $comments_num ) : ?>
-    	<h4 class="comments gutter-left current"><?php if ($graphene_tabbed_comment) {echo '<a href="#">'.$comment_count.'</a>';} else {echo $comment_count;}?></h4>
+    	<h4 class="comments current"><?php if ($graphene_tabbed_comment) {echo '<a href="#">'.$comment_count.'</a>';} else {echo $comment_count;}?></h4>
 	<?php endif; ?>
     <?php if ( $pings_num ) : ?>
-	    <h4 class="pings gutter-left"><?php if ($graphene_tabbed_comment) {echo '<a href="#">'.$ping_count.'</a>';} else {echo $ping_count;}?></h4>
+	    <h4 class="pings"><?php if ($graphene_tabbed_comment) {echo '<a href="#">'.$ping_count.'</a>';} else {echo $ping_count;}?></h4>
     <?php endif; ?>
     
     <?php if ( ( ( $is_paginated && get_option( 'comments_per_page' ) > 3 ) || ! $is_paginated ) && ( $comments_num > 3 || $pings_num > 6 ) ) : ?>

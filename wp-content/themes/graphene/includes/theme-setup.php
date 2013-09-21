@@ -6,7 +6,7 @@ function graphene_db_init(){
 	global $graphene_settings, $graphene_defaults;
 	
 	/* Run DB updater if needed */
-	include( $graphene_settings['template_dir'] . '/admin/db-updater.php' );
+	include( GRAPHENE_ROOTDIR . '/admin/db-updater.php' );
 	graphene_update_db();
 	$graphene_settings = get_option( 'graphene_settings', array() );
 	if ( $graphene_settings )
@@ -91,7 +91,11 @@ function graphene_setup() {
 	// Add support for editor syling
 	if ( ! $graphene_settings['disable_editor_style'] ){
 		global $content_width;
-		add_editor_style( array( 'editor-style.css', 'admin/editor.css.php' ) );
+		add_editor_style( array( 
+			'editor-style.css', 
+			'admin/editor.css.php', 
+			'http://fonts.googleapis.com/css?family=Pontano+Sans' 
+		) );
 	}
 	
 	// Add default posts and comments RSS feed links to head

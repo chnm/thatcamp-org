@@ -8,7 +8,7 @@
 function graphene_webfont_script(){
 	global $graphene_settings;
 	
-	$families = array( 'Pontano+Sans::latin,latin-ext' );
+	$families = array( 'Pontano+Sans::latin' );
 	foreach ( explode( "\n", $graphene_settings['webfont_families'] ) as $family ){
 		if ( $family ) $families[] = trim( $family );
 	}

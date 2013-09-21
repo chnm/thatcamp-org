@@ -79,10 +79,11 @@ function graphene_homepage_panes(){
         	<a href="<?php the_permalink(); ?>" title="<?php printf( __( 'Permalink to %s', 'graphene' ), esc_attr( get_the_title() ) ); ?>">
         	<?php /* Get the post's image */ 
 			if ( has_post_thumbnail( get_the_ID() ) ) {
-				the_post_thumbnail( 'graphene-homepage-pane' );
+				$image = get_the_post_thumbnail( get_the_ID(), 'graphene-homepage-pane' );
 			} else {
-				echo graphene_get_post_image( get_the_ID(), 'graphene-homepage-pane', 'excerpt' );
+				$image = graphene_get_post_image( get_the_ID(), 'graphene-homepage-pane', 'excerpt' );
 			}
+			if ( $image ) echo apply_filters( 'graphene_homepage_pane_image', $image, get_the_ID() );
 			?>
             </a>
             

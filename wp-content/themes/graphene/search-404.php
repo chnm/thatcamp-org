@@ -10,6 +10,18 @@
     </div>
 </div>
 
+<h1 class="page-title archive-title">
+	<?php
+        global $wp_query;
+        /* translators: %1$s is the number of results found, %2$s is the search term */
+        printf( _n( 'Found %1$s search result for keyword: %2$s', 
+                    'Found %1$s search results for keyword: %2$s', $wp_query->found_posts, 'graphene'), 
+                number_format_i18n( $wp_query->found_posts ), 
+                '<span>' . get_search_query() . '</span>' 
+        );
+    ?>
+</h1>
+
 <div class="search-results-header">
     <h2><?php _e( 'Suggested results', 'graphene' ); ?></h2>   
     <p>
