@@ -32,3 +32,5 @@ wp-content/debug.log
 wp-content/themes/inuitypes_free/custom/cache/*
 wp-content/backup-db/*
 wp-content/results
+wp-content/plugins/si-captcha-for-wordpress/captcha/temp
+wp-content/plugins/si-captcha-for-wordpress/captcha/cache
