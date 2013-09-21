@@ -5,8 +5,8 @@ Donate link: http://stephanieleary.com/code/wordpress/recent-posts-with-excerpts
 Text Domain: recent_posts_with_excerpts
 Domain Path: /languages
 Requires at least: 2.8
-Tested up to: 3.5
-Stable tag: 2.4
+Tested up to: 3.6
+Stable tag: 2.5.1
 
 
 A widget that lists your most recent posts with optional excerpts.   
@@ -24,7 +24,20 @@ New! Supports displaying post thumbnails along with excerpts. Widget options let
 
 Go to Appearance &rarr; Widgets to add widgets to your sidebar in widget-ready themes.
 
-Tip: to style your excerpts, add a declaration for `.recent_with_excerpt li blockquote` to your theme's stylesheet.
+== FAQ ==
+
+To style your excerpts, add a declaration for `.recent_with_excerpt li blockquote` to your theme's stylesheet.
+
+To add a link to the bottom of the widget's output, below the list, use the `recent_posts_with_excerpts_end` action. Example:
+
+`
+add_action( 'recent_posts_with_excerpts_end', 'tti_recent_posts_more' );
+function tti_recent_posts_more() {
+	echo '<a class="readmore" href="/news/archive">More</a>';
+}
+`
+
+To add something above the list, use the `recent_posts_with_excerpts_begin` action instead.
 
 == Translations ==
 
@@ -32,6 +45,12 @@ If you would like to send me a translation, please write to me through <a href="
 
 == Changelog ==
 
+= 2.5.1 =
+* Changed the_time() to get_the_time(), which prevents the date from appearing outside its intended heading tag.
+= 2.5 =
+* Cleaned up empty classes.
+* Added actions to the top (`recent_posts_with_excerpts_begin`) and bottom (`recent_posts_with_excerpts_end`) of the widget output, for developers to customize. See the FAQ tab for an example.
+* Improved the thumbnail size dropdown.
 = 2.4 =
 * Added support for displaying post thumbnails with the excerpts.
 * Localized strings for translators.

@@ -4,12 +4,12 @@
 	Plugin URI: http://xparkmedia.com/plugins/popular-widget/
 	Description: Display most viewed, most commented and tags in one widget (with tabs)
 	Author: Hafid R. Trujillo Huizar
-	Version: 1.6.1
+	Version: 1.6.5
 	Author URI: http://www.xparkmedia.com
 	Requires at least: 3.0.0
-	Tested up to: 3.6.0
+	Tested up to: 3.6.1
 	
-	Copyright 2011-2012 by Hafid Trujillo http://www.xparkmedia.com
+	Copyright 2011-2013 by Hafid Trujillo http://www.xparkmedia.com
 	
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -24,8 +24,6 @@
 	You should have received a copy of the GNU General Public License
 	along with this program; if not,write to the Free Software
 	Foundation,Inc.,51 Franklin St,Fifth Floor,Boston,MA 02110-1301 USA
-	
-	@todo: javascript view count.
 	*/
 
 	// Stop direct access of the file
@@ -42,7 +40,7 @@
 		
 		public $tabs = array();
 		public $defaults = array();
-		public $version = "1.5.9";
+		public $version = "1.6.5";
 		public $current_tab = false;
 		
 		/**
@@ -65,10 +63,11 @@
 			define( 'POPWIDGET_URL', WP_PLUGIN_URL . "/" . plugin_basename(dirname(__FILE__)) . "/" );
 			
 			$this->defaults = apply_filters( 'pop_defaults_settings', array(
-				'nocomments' => false, 'nocommented' => false, 'noviewed' => false, 'norecent' => false,
-				'imgsize' => 'thumbnail', 'counter' => false, 'excerptlength' => 15, 'tlength' => 20, 'userids' => false,
-				'calculate' => 'visits', 'title' => '', 'limit'=> 5, 'cats'=>'', 'lastdays' => 90, 'taxonomy' => 'post_tag', 'exclude_users' => false,
-				'posttypes' => array( 'post' => 'on' ), 'thumb' => false, 'excerpt' => false, 'notags'=> false, 'exclude_cats' => false
+				'nocomments' => false, 'nocommented' => false, 'noviewed' => false, 'norecent' => false, 
+				'userids' => false, 'imgsize' => 'thumbnail', 'counter' => false, 'excerptlength' => 15, 'tlength' => 20,
+				'meta_key' => '_popular_views', 'calculate' => 'visits', 'title' => '', 'limit'=> 5, 'cats'=>'', 'lastdays' => 90,
+				'taxonomy' => 'post_tag', 'exclude_users' => false, 'posttypes' => array( 'post' => 'on' ), 'thumb' => false,
+				'excerpt' => false, 'notags'=> false, 'exclude_cats' => false
 			) );
 			
 			$this->tabs = apply_filters( 'pop_defaults_tabs', array(
@@ -121,9 +120,13 @@
 				elseif( in_array( $key, array( 'lastdays', 'limit', 'tlength', 'excerptlength' ) ) )			
 					$new_instance[$key] = intval( $val );
 					
-				elseif( in_array( $key,array( 'calculate', 'imgsize', 'cats', 'userids', 'title' ) ) )	
+				elseif( in_array( $key,array( 'calculate', 'imgsize', 'cats', 'userids', 'title', 'meta_key' ) ) )	
 					$new_instance[$key] = trim( $val,',' );	
 			}
+			
+			if( empty($new_instance['meta_key'] ) )
+				$new_instance['meta_key'] = $this->defaults['meta_key'];
+				
 			return $new_instance;
 		}
 	}

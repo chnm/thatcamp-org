@@ -44,7 +44,7 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 			add_action( 'wp_print_styles', array( $this, 'enqueue_style' ) );
 		}
 	}
-	
+
 	function enqueue_style() {
 		wp_register_style( 'widget-grid-and-list', plugins_url( 'widget-grid-and-list.css', __FILE__ ) );
 		wp_enqueue_style( 'widget-grid-and-list' );
@@ -55,9 +55,9 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 		if ( false === $title ) {
 			$title = $this->default_title;
 		}
-		
+
 		$count = isset( $instance['count'] ) ? (int) $instance['count'] : 10;
-		if ( $count < 1 || 20 < $count ) {
+		if ( $count < 1 || 10 < $count ) {
 			$count = 10;
 		}
 
@@ -75,8 +75,8 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php esc_html_e( 'Number of posts to show:', 'jetpack' ); ?></label>
-			<input id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" type="number" value="<?php echo (int) $count; ?>" min="1" max="20" />
+			<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php esc_html_e( 'Maximum number of posts to show (no more than 10):', 'jetpack' ); ?></label>
+			<input id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" type="number" value="<?php echo (int) $count; ?>" min="1" max="10" />
 		</p>
 
 		<p>
@@ -99,9 +99,9 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 		if ( $instance['title'] === $this->default_title ) {
 			$instance['title'] = false; // Store as false in case of language change
 		}
-		
+
 		$instance['count'] = (int) $new_instance['count'];
-		if ( $instance['count'] < 1 || 20 < $instance['count'] ) {
+		if ( $instance['count'] < 1 || 10 < $instance['count'] ) {
 			$instance['count'] = 10;
 		}
 
@@ -121,7 +121,7 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 		$title = apply_filters( 'widget_title', $title );
 
 		$count = isset( $instance['count'] ) ? (int) $instance['count'] : false;
-		if ( $count < 1 || 20 < $count ) {
+		if ( $count < 1 || 10 < $count ) {
 			$count = 10;
 		}
 
@@ -175,12 +175,14 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 		case 'grid' :
 			wp_enqueue_style( 'widget-grid-and-list' );
 			foreach ( $posts as &$post ) {
-				$image = Jetpack_PostImages::get_image( $post['post_id'], $get_image_options );
+				$image = Jetpack_PostImages::get_image( $post['post_id'], array( 'fallback_to_avatars' => true ) );
 				$post['image'] = $image['src'];
+				/* SAR: Removed this because we removed photon. TODO: Add an alternative to the use of photon here
 				if ( 'blavatar' != $image['from'] && 'gravatar' != $image['from'] ) {
 					$size = (int) $get_image_options['avatar_size'];
 					$post['image'] = jetpack_photon_url( $post['image'], array( 'resize' => "$size,$size" ) );
 				}
+				*/
 			}
 
 			unset( $post );
@@ -267,7 +269,11 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 
 			if ( !$post )
 				continue;
-		
+
+			// Only posts and pages, no attachments
+			if ( 'attachment' == $post->post_type )
+				continue;
+
 			// hide private and password protected posts
 			if ( 'publish' != $post->post_status || !empty( $post->post_password ) || empty( $post->ID ) )
 				continue;
@@ -280,12 +286,12 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 			} else {
 				$title = $post->post_title;
 			}
-	
+
 			$permalink = get_permalink( $post->ID );
-	
+
 			$posts[] = compact( 'title', 'permalink', 'post_id' );
 			$counter++;
-		
+
 			if ( $counter == $count )
 				break; // only need to load and show x number of likes
 		}

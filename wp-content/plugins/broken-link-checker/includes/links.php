@@ -930,4 +930,3 @@ function blc_cleanup_links( $link_id = null ){
 	return $rez !== false;	
 }
 
-?>

@@ -693,7 +693,7 @@ class blcContainerHelper {
 				
 			$pieces = array();
 			foreach($by_type as $container_type => $container_ids){
-				$pieces[] = '( container_type = "'. $wpdb->escape($container_type) .'" AND container_id IN ('. implode(', ', $container_ids) .') )'; 
+				$pieces[] = '( container_type = "'. esc_sql($container_type) .'" AND container_id IN ('. implode(', ', $container_ids) .') )';
 			}
 			
 			$q .= implode("\n\t OR ", $pieces);

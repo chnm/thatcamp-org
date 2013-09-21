@@ -1,9 +1,10 @@
 === Jetpack Lite ===
 Contributors: samuelaguilera
-Tags: WordPress.com, statistics, stats, views, shortlinks, wp.me, json
+Tags: WordPress.com, statistics, stats, views, shortlinks, wp.me
 Requires at least: 3.1
-Tested up to: 3.5.1
-Stable tag: 2.1.2
+Tested up to: 3.6
+Stable tag: 2.3.4
+License: GPL2
 
 A NOT official "lite" fork of Jetpack plugin containing only Stats and WP.me Shortlinks modules. All other modules removed (files and code).
 
@@ -12,12 +13,12 @@ A NOT official "lite" fork of Jetpack plugin containing only Stats and WP.me Sho
 **IMPORTANT: This plugin IS NOT official Jetpack by WordPress.com - If you're looking for the official plugin go to [Jetpack](http://jetpack.me/)**
 
 
-**Jetpack Lite is a NOT official fork** of [Jetpack](http://jetpack.me/). Original Jetpack seems to me like a "bloated" plugin, because all modules are activated by default (in previous versions) and even with the choice of deactivating modules (one by one), installing
+**Jetpack Lite is a NOT official fork** of [Jetpack](http://wordpress.org/plugins/jetpack/). Original Jetpack seems to me like a "bloated" plugin, because all modules are activated by default (in previous versions) and even with the choice of deactivating modules (one by one), installing
 this plugin in dozens of WordPress installations and deactivate modules per each of them can be a nightmare.
 
 So I made **this fork that only contains Stats and WP.me Shortlinks modules**. The same features of [WordPress.com Stats](http://wordpress.org/extend/plugins/stats/) plugin that sadly have been discontinued replaced by Jetpack by WordPress.com
 
-All other modules have been removed, also access to site stats was moved to dashboard menu and Jetpack Lite settings moved under WordPress settings menu. And some cometic changes to make more clear that this's not the official Jetpack. **No other modifications have been done**.
+All other modules have been removed, also access to site stats and debugger was moved to dashboard menu and Jetpack Lite settings moved under WordPress settings menu. And some cometic changes to make more clear that this's not the official Jetpack. **No other modifications have been done**.
 
 Features include:
 
@@ -25,7 +26,9 @@ Features include:
 * The [WP.me URL shortener](http://wp.me/sf2B5-shorten).
 *  and *nothing* more to come!
 
-And if you don't feel confortable using it or need a great support, it's better to install original and official from here: [Jetpack](http://jetpack.me/).
+All credits of these great features goes to original Jetpack authors. My only job here is to trim down code and files of removed features to leave Jetpack Lite as a stats+shorlink standalone plugin.
+
+If you don't feel confortable using it or need a great support, it's better to install original and official from here: [Jetpack](http://wordpress.org/plugins/jetpack/).
 
 Note: The stats portion of Jetpack uses Quantcast to enhance its data. If you have any question regarding this, please ask to [Jetpack Support](http://wordpress.org/support/plugin/jetpack) not to me.
 
@@ -66,6 +69,11 @@ Remember, if you don't feel confortable using this unofficial fork or need a gre
 
 == Changelog ==
 
+= 2.3.4 =
+
+* Based on Jetpack by WordPress.com 2.3.4. BIG (recommended) update! This adds several improvements to stats and connection, including a debugger to debug connection issues.
+* Moved new Debugger to Tools menu (because as you know in Jetpack Lite there's not Jetpack menu).
+
 = 2.1.2 =
 
 * Based on Jetpack by WordPress.com 2.1.2
@@ -90,6 +98,9 @@ Remember, if you don't feel confortable using this unofficial fork or need a gre
 * Initial release based on Jetpack by WordPress.com 1.1.3
 
 == Upgrade Notice ==
+
+= 2.3.4 =
+Recommended upgrade. It's a major upgrade from previous one, including improvements of stats module, connection, and other fixes.
 
 = 2.1.2 =
 Recommended upgrade. Upgrading to this version allows to view stats from native mobile apps.

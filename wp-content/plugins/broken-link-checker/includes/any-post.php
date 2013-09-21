@@ -185,8 +185,8 @@ class blcPostTypeOverlord {
 			return;
 		}
 		
-		$escaped_post_types = array_map(array(&$wpdb, 'escape'), $this->enabled_post_types);
-		$escaped_post_statuses = array_map(array(&$wpdb, 'escape'), $this->enabled_post_statuses);
+		$escaped_post_types = array_map('esc_sql', $this->enabled_post_types);
+		$escaped_post_statuses = array_map('esc_sql', $this->enabled_post_statuses);
 		
 		if ( $forced ){
 			//Create new synchronization records for all posts. 

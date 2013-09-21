@@ -7,13 +7,6 @@
  * 		is connected to show them links to admin panels, usage info etc.
  */
 
-// VaultPress (stub)
-
-// Gravatar Hovercards
-
-// Shortcodes
-
-
 // Shortlinks
 function wpme_more_info() { ?>
 	<div class="jp-info-img">
@@ -81,72 +74,3 @@ function stats_load_more_link( $description ) {
 	echo '<a class="button-secondary more-info-link" href="http://en.support.wordpress.com/stats/">' . esc_html__( 'Learn More', 'jetpack' ) . '</a>';
 }
 add_filter( 'jetpack_learn_more_button_stats', 'stats_load_more_link' );
-
-// Publicize
-
-// Notifications
-
-// LaTeX
-
-
-// Sharedaddy
-
-// After The Deadline
-
-
-// RSS Links Widget, Image Widget, Twitter Widget
-
-// Subscriptions
-
-// Enhanced Distribution
-
-// JSON API
-
-// Contact Form: START
-
-// Contact Form: STOP
-
-// Jetpack Comments: START
-
-// Jetpack Comments: STOP
-
-// Gallery Carousel: START
-
-// Gallery Carousel: STOP
-
-// Custom CSS: START
-
-// Custom CSS: STOP
-
-// Minileven: START
-
-// Minileven: STOP
-
-
-// Mobile Push Notifications: START
-
-// Mobile Push Notifications: STOP
-
-// Infinite Scroll: START
-/**
- *
- */
-
-// Infinite Scroll: STOP
-
-
-// Post by Email: START
-
-// Post by Email: STOP
-
-
-// Photon: START
-/**
- *
- */
-
-// Photon: STOP
-
-// Tiled Galleries: START
-
-// Tiled Galleries: STOP

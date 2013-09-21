@@ -191,7 +191,7 @@ class blcModuleManager {
 			$modules = $this->get_active_by_category($category);
 		}
 		
-		$modules = array_map(array(&$wpdb, 'escape'), array_keys($modules));
+		$modules = array_map('esc_sql', array_keys($modules));
 		$modules = "'" . implode("', '", $modules) . "'";
 		
 		return $modules;

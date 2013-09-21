@@ -1525,14 +1525,14 @@ class wsBrokenLinkChecker {
 		
 		$delimiter = '`'; //Pick a char that's uncommon in URLs so that escaping won't usually be a problem
 		if ( $use_regex ){
-			$search = $delimiter . str_replace($delimiter, '\\' . $delimiter, $search) . $delimiter;
+			$search = $delimiter . $this->escape_regex_delimiter($search, $delimiter) . $delimiter;
 			if ( !$case_sensitive ){
 				$search .= 'i';
 			}
 		} elseif ( !$case_sensitive ) {
 			//str_ireplace() would be more appropriate for case-insensitive, non-regexp replacement,
 			//but that's only available in PHP5.
-			$search = $delimiter . str_replace($delimiter, '\\' . $delimiter, preg_quote($search)) . $delimiter . 'i';
+			$search = $delimiter . preg_quote($search, $delimiter) . $delimiter . 'i';
 			$use_regex = true;
 		}
 		
@@ -1597,6 +1597,41 @@ class wsBrokenLinkChecker {
 		}
 		
 		return array($message, $msg_class);
+	}
+
+	/**
+	 * Escape all instances of the $delimiter character with a backslash (unless already escaped).
+	 *
+	 * @param string $pattern
+	 * @param string $delimiter
+	 * @return string
+	 */
+	private function escape_regex_delimiter($pattern, $delimiter) {
+		if ( empty($pattern) ) {
+			return '';
+		}
+
+		$output = '';
+		$length = strlen($pattern);
+		$escaped = false;
+
+		for ($i = 0; $i < $length; $i++) {
+			$char = $pattern[$i];
+
+			if ( $escaped ) {
+				$escaped = false;
+			} else {
+				if ( $char == '\\' ) {
+					$escaped = true;
+				} else if ( $char == $delimiter ) {
+					$char = '\\' . $char;
+				}
+			}
+
+			$output .= $char;
+		}
+
+		return $output;
 	}
 	
   /**

@@ -572,5 +572,3 @@ class blcTableDelta {
 	
 }
 
-
-?>

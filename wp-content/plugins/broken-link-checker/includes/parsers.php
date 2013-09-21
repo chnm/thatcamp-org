@@ -332,4 +332,3 @@ class blcParserHelper {
 	}
 }
 
-?>

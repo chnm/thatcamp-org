@@ -24,9 +24,16 @@
 			<input class="widefat" id="<?php $this->field_id( 'title') ?>" name="<?php $this->field_name( 'title' ) ?>" type="text" value="<?php echo esc_attr( $title ) ?>" />
 		</label>
 	</p>
+	
 	<p>
-		<label for="<?php $this->field_id( 'lastdays') ?>"><?php _e('In the last','pop-wid')?> 
-			<input id="<?php $this->field_id( 'lastdays' )?>" name="<?php $this->field_name( 'lastdays' )?>" size="4" type="text" value="<?php echo esc_attr( $lastdays ) ?>"/> 
+		<label for="<?php $this->field_id( 'meta_key') ?>"><a href="http://codex.wordpress.org/Using_Custom_Fields#Advanced_Techniques_for_Custom_Fields"><?php _e( 'Custom Field','pop-wid' )?> </a>
+			<input class="widefat" id="<?php $this->field_id( 'meta_key' )?>" name="<?php $this->field_name( 'meta_key' )?>"  type="text" value="<?php echo esc_attr( $meta_key ) ?>"/> <br /><small><?php _e( 'Custom field used to calculate views count.', 'pop-wid' )?> </small>
+		</label>
+	</p>
+	
+	<p>
+		<label for="<?php $this->field_id( 'lastdays') ?>"><?php _e( 'In the last','pop-wid' )?> 
+			<input  id="<?php $this->field_id( 'lastdays' )?>" name="<?php $this->field_name( 'lastdays' )?>" size="4" type="text" value="<?php echo esc_attr( $lastdays ) ?>"/> 
 			<?php _e( 'days','pop-wid' )?>
 		</label>
 	</p>
@@ -42,7 +49,7 @@
 			<label for="<?php $this->field_id( 'exclude_users' )?>">
 				<input id="<?php $this->field_id( 'exclude_users' )?>" name="<?php $this->field_name( 'exclude_users' ); ?>" type="checkbox" <?php checked( $exclude_users, 'on' ) ?> />
 				<?php _e( 'Exclude',  'pop-wid' ) ?>
-			</label><br /><small><?php _e( 'Exclude a single user from avobe', 'pop-wid' )?> </small>
+			</label><br /><small><?php _e( 'Exclude user using the list above.', 'pop-wid' )?> </small>
 		</p>
 	</div>     
 	
@@ -121,7 +128,7 @@
 			<label for="<?php $this->field_id( 'exclude_cats' )?>">
 				<input id="<?php $this->field_id( 'exclude_cats' )?>" name="<?php $this->field_name( 'exclude_cats' ); ?>" type="checkbox" <?php checked( $exclude_cats, 'on' ) ?> />
 				<?php _e( 'Exclude',  'pop-wid' ) ?>
-			</label><br /><small><?php _e( 'Exclude categories avobe (Not in)', 'pop-wid' )?> </small>
+			</label><br /><small><?php _e( 'Exclude categories from above.', 'pop-wid' )?> </small>
 		</p>
 		
 		<p><label for="<?php  $this->field_id( 'taxonomy' )?>"><?php _e( 'Tags taxonomy', 'pop-wid' )?>
@@ -157,7 +164,7 @@
 					<input id="<?php $this->field_id( "no{$tab}" )?>" name="<?php echo $this->field_name( "no{$tab}" )?>" type="checkbox"  <?php checked( ${"no{$tab}"}, 'on' ) ?> /> 
 				</label>
 				<span class="rename-<?php echo "$tab" ?>">
-					<input name="<?php $this->field_name( 'order' ); echo "[$tab]" ?>" type="text" value="<?php echo esc_attr( $label ) ?>" class="widefat"/>
+					<input name="<?php $this->field_name( 'order' ); echo "[$tab]" ?>" type="text" value="<?php echo esc_attr( $label ) ?>" class="widefat" />
 				</span>
 			</div>
 			<?php } ?>

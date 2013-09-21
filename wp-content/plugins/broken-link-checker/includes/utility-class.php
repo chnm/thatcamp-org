@@ -415,4 +415,3 @@ class blcUtility {
 
 }//class_exists
 
-?>

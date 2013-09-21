@@ -33,6 +33,22 @@ table.simplyexclude-active-panel td.inc-excl {
 	margin-bottom: 5px;
 }
 
+td.column-se-actions ul.se-actions-list,
+td.inc-excl ul.se-actions-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	width: 100%;
+}
+
+td.column-se-actions ul.se-actions-list li,
+td.inc-excl ul.se-actions-list li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	width: 100%;
+}
+
 .ui-accordion-header {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;

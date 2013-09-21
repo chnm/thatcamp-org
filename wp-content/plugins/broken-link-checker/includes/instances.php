@@ -605,4 +605,3 @@ function blc_cleanup_instances(){
 
 }//class_exists
 
-?>

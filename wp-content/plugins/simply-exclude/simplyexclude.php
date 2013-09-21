@@ -4,27 +4,8 @@ Plugin Name: Simply Exclude
 Plugin URI: http://www.codehooligans.com/projects/wordpress/simply-exclude/
 Description: Provides an interface to selectively exclude/include all Taxonomies, Post Types and Users from the 4 actions used by WordPress. is_front, is_archive, is_search, is_feed. Also provides access to some of the common widgets user like tag cloud and categories listings. 
 Author: Paul Menard
-Version: 2.0.6
+Version: 2.0.6.1
 Author URI: http://www.codehooligans.com
-
-Revision history
-1.0 - 2007-11-20: Initial release
-1.1 - 2008-12-15: Added logic to work with WP version greater than 2.2
-1.5 - 20008-04-27 Fixed display issues. Changes 'List' to 'Archive'. Added tags inclusion/exclusion login. Works only with WP 2.3 and greater.
-1.6 - 2008-05-22 Fixed various items. Added format display for Categories and Pages to reveal heirarchy, Disable plugin functions when searching in admin. This also corrected a display exclusion bug when showing categories and pages. 
-1.7 - 2008-05-29 Added Author to the Include/Exclude logic. Now you can exclude Author's Posts from Search, Home, RSS, Archive.
-1.7.1 - 2008-07-16 Fixed an issue with WP 2.6 where it automatically decided to unserialize the option data structure. 
-1.7.2 - 2009-02-05 Fixed some PHP warning by checking variable is set. Also added style to 2.7 interface. 
-1.7.2.1 - 2009-07-01 Fixed some PHP warning by checking variable is set. Also added style for 2.8 interface. Very minor changes. 
-1.7.5 - 2009-07015 Fixed some PHP warning by checking variable is set. Also added style for 2.8 interface. Very minor changes. 
-1.7.6 - 2009-11-14 Fixes: Issue with the Pages exclusion. Many users reporting a permissions issue. Additions: Added handler logic to interface with two other plugins. One of the often used Google XML Sitemaps. When setting Page or Category exclusions you now have the option to update the Google XML Sitemaps exclude pages and categories automatically. The other plugin is Search Unleashed. 
-2.0 - 2012-03-03 Full rewrite of the plugin to support custom Taxonomies and Custom Post Types. Added support for managing items within the Taxonomy/Post Type panels. Added support for exclude/include on Post instead of just Categories and Tags. Dropped support for third-party plugins like Google XML Sitemaps and Seach Unleashed (Sorry!). Now correctly supporting Pages seach excludes. Yah!.
-2.0.1 - 2012-03-04 Small bug. On the new Simply Exclude Help panel I user the jQuery UI Accordion package. Seems I failed to check this when setting the minimum WordPress version I was supporting (3.2). Seems jQuery UI Accordion is not available in core WordPress until version 3.3. So have added my own libraries to cover the older versions of WordPress. Sorry about that. And thanks to @biswajeet for bringing this up in the WordPress forums.
-2.0.2 - 2012-03-05 Fixed some issues when converting from the previous version of the Simply Exclude configurations. 
-2.0.3 - 2012-03-18 Fixes to core filtering logic. 
-2.0.4 - 2012-05-16 Added new Settings option to allow control of filtering the main page WPQuery only or all WPQuery requests. Added exclusion for common post_types. General bug fixed for reported issues where filter was either not occurring or that filter was causing a blank page or missing navigation. 
-2.0.5 - 2012-05-17 More tweaks to the widget exclude logic and cleanup logic on main query vs extra query.
-2.0.6 - 2013-03-20 Bug fixes for Illegal string offset 'action' PHP Warnings. 
 */
 
 define('SIMPLY_EXCLUDE_I18N_DOMAIN', 'simplyexclude');
@@ -46,9 +27,12 @@ class SimplyExclude
 	
 	private $page_hooks;
 	
+	private $tabs = array();
+	private $current_tab;
+	
 	public function __construct() {
 		
-		$this->se_version	= "2.0.3";
+		$this->se_version	= "2.0.6.1";
 		
 		$this->admin_menu_label	= __("Simply Exclude", SIMPLY_EXCLUDE_I18N_DOMAIN);
 		$this->options_key		= "simplyexclude_v2";
@@ -75,6 +59,14 @@ class SimplyExclude
 
 	function admin_init_proc()
 	{
+		
+		$this->tabs = array( 	
+		 	'taxonomies'  	=> __('Taxonomies', SIMPLY_EXCLUDE_I18N_DOMAIN),
+    		'post_types'	=> __('Post Types', SIMPLY_EXCLUDE_I18N_DOMAIN),
+    		'users'			=> __('Users', SIMPLY_EXCLUDE_I18N_DOMAIN),
+		);
+		$this->current_tab = '';
+	    
 		$this->se_load_config();
 						
 		if ( ($this->check_url('wp-admin/edit-tags.php'))		
@@ -229,30 +221,20 @@ class SimplyExclude
 		wp_enqueue_script('wp-lists');
 		wp_enqueue_script('postbox');
 
-		//add several metaboxes now, all metaboxes registered during load page can be switched off/on at "Screen Options" automatically, nothing special to do therefore
+		if ( isset( $_GET['tab'] )) {
+			$this->current_tab = esc_attr($_GET['tab']);
+			if (!isset($this->tabs[$this->current_tab])) {
+				$this->current_tab = 'taxonomies';
+			}
+			
+		} else {
+			$this->current_tab = 'taxonomies'; 
+		}
+
 		add_meta_box('se_settings_about_sidebar', 'About this Plugin', array(&$this, 'se_settings_about_sidebar'),
 			$this->pagehooks['se_manage_settings'], 'side', 'core');
 		add_meta_box('se_settings_donate_sidebar', 'Make a Donation', array(&$this, 'se_settings_donate_sidebar'),
 			$this->pagehooks['se_manage_settings'], 'side', 'core');
-
-		add_meta_box('se_display_options_taxonomy_actions_panel', 'Taxonomies Actions', array(&$this, 'se_display_options_taxonomy_actions_panel'), 
-			$this->pagehooks['se_manage_settings'], 'normal', 'core');
-
-		add_meta_box('se_display_options_post_type_actions_panel', 'Post Types Actions', array(&$this, 'se_display_options_post_type_actions_panel'), 
-			$this->pagehooks['se_manage_settings'], 'normal', 'core');
-
-		add_meta_box('se_display_options_user_actions_panel', 'Users Actions', array(&$this, 'se_display_options_user_actions_panel'),
-		 	$this->pagehooks['se_manage_settings'], 'normal', 'core');
-
-//		add_meta_box('se_options_thirdparty_panel', 'Other Plugins', array(&$this, 'se_options_thirdparty_panel'), 
-//			$this->pagehooks['se_manage_settings'], 'normal', 'core');
-
-		// Check if there is an older version of the SE configuration. 
-		$tmp_se_cfg = get_option('simplyexclude');
-		if ($tmp_se_cfg) {
-			add_meta_box('se_display_configuration_reload_actions_panel', 'Reload Previous Configuration', array(&$this, 'se_display_configuration_reload_actions_panel'),
- 				$this->pagehooks['se_manage_settings'], 'normal', 'core');
-		}
 
 	}
 
@@ -320,10 +302,9 @@ class SimplyExclude
 				<td class="action"><?php echo $this->get_taxonomy_action_label($taxonomy, $action_key, 'name'); //$action_val['name'] ?></td>
 				<td class="description"><?php echo $this->get_taxonomy_action_label($taxonomy, $action_key, 'description');//$action_val['description'] ?></td>
 				<td class="inc-excl">
-					<input type="radio" name="se_cfg[<?php echo $taxonomy; ?>][actions][<?php echo $action_key ?>]" value="i" 
-						<?php if ($action_val == 'i') echo "checked='checked'"; ?> /> <?php _e('Include only', SIMPLY_EXCLUDE_I18N_DOMAIN); ?><br />
-					<input type="radio" name="se_cfg[<?php echo $taxonomy; ?>][actions][<?php echo $action_key ?>]" value="e" 
-						<?php if ($action_val == 'e') echo "checked='checked'"; ?> /> <?php _e('Exclude', SIMPLY_EXCLUDE_I18N_DOMAIN); ?>
+					<ul class="se-actions-list">
+					<li><input type="radio" id="se_cfg_<?php echo $taxonomy; ?>_actions_<?php echo $action_key ?>_i" name="se_cfg[<?php echo $taxonomy; ?>][actions][<?php echo $action_key ?>]" value="i" <?php if ($action_val == 'i') echo "checked='checked'"; ?> /> <label for="se_cfg_<?php echo $taxonomy; ?>_actions_<?php echo $action_key ?>_i"><?php _e('Include only', SIMPLY_EXCLUDE_I18N_DOMAIN); ?></label></li>
+					<li><input type="radio" id="se_cfg_<?php echo $taxonomy; ?>_actions_<?php echo $action_key ?>_e" name="se_cfg[<?php echo $taxonomy; ?>][actions][<?php echo $action_key ?>]" value="e" <?php if ($action_val == 'e') echo "checked='checked'"; ?> /> <label for="se_cfg_<?php echo $taxonomy; ?>_actions_<?php echo $action_key ?>_e"><?php _e('Exclude', SIMPLY_EXCLUDE_I18N_DOMAIN); ?></label></li>
 				</td>
 			<tr>
 			<?php
@@ -363,29 +344,21 @@ class SimplyExclude
 				<td class="action"><?php echo $this->get_post_type_action_label($post_type, $action_key, 'name'); ?></td>
 				<td class="description"><?php echo $this->get_post_type_action_label($post_type, $action_key, 'description');  ?></td>
 				<td class="inc-excl">
-					<input type="radio" name="se_cfg[<?php echo $post_type; ?>][actions][<?php echo $action_key ?>]" value="i" 
-						<?php if ($action_val == 'i') echo "checked='checked'"; ?> /> <?php _e('Include only', SIMPLY_EXCLUDE_I18N_DOMAIN); ?><br />
-					<input type="radio" name="se_cfg[<?php echo $post_type; ?>][actions][<?php echo $action_key ?>]" value="e" 
-						<?php if ($action_val == 'e') echo "checked='checked'"; ?> /> <?php _e('Exclude', SIMPLY_EXCLUDE_I18N_DOMAIN); ?>
-					<?php
-						if (($action_key == "is_home") 
-						 && ((isset($this->current_post_type['options']['capability_type'])) && ($this->current_post_type['options']['capability_type'] == "post")))
-						{
-							?><br />
-							<input type="radio" name="se_cfg[<?php echo $post_type; ?>][actions][<?php echo $action_key ?>]" value="a" 
-								<?php if ($action_val == 'a') echo "checked='checked'"; ?> /> <?php _e('Include All', SIMPLY_EXCLUDE_I18N_DOMAIN); ?>
-							<?php
-						}
-
-						else if (($action_key == "is_feed") 
-						 && ((isset($this->current_post_type['options']['capability_type'])) && ($this->current_post_type['options']['capability_type'] == "post")))
-						{
-							?><br />
-							<input type="radio" name="se_cfg[<?php echo $post_type; ?>][actions][<?php echo $action_key ?>]" value="a" 
-								<?php if ($action_val == 'a') echo "checked='checked'"; ?> /> <?php _e('Include All', SIMPLY_EXCLUDE_I18N_DOMAIN); ?>
-							<?php
-						}
-					?>
+					<ul class="se-actions-list">
+					
+						<li><input type="radio" id="se_cfg_<?php echo $post_type ?>_actions_<?php echo $action_key ?>_i" name="se_cfg[<?php echo $post_type; ?>][actions][<?php echo $action_key ?>]" value="i" <?php if ($action_val == 'i') echo "checked='checked'"; ?> /> <label for="se_cfg_<?php echo $post_type ?>_actions_<?php echo $action_key ?>_i"><?php _e('Include only', SIMPLY_EXCLUDE_I18N_DOMAIN); ?></label></li>
+						<li><input type="radio" id="se_cfg_<?php echo $post_type ?>_actions_<?php echo $action_key ?>_e" name="se_cfg[<?php echo $post_type; ?>][actions][<?php echo $action_key ?>]" value="e" <?php if ($action_val == 'e') echo "checked='checked'"; ?> /> <label for="se_cfg_<?php echo $post_type ?>_actions_<?php echo $action_key ?>_e"><?php _e('Exclude', SIMPLY_EXCLUDE_I18N_DOMAIN); ?></label></li>
+						<?php
+							if (($action_key == "is_home") 
+						 		&& ((isset($this->current_post_type['options']['capability_type'])) 
+								&& ($this->current_post_type['options']['capability_type'] == "post"))) {
+								?><li><input type="radio" id="se_cfg_<?php echo $post_type ?>_actions_<?php echo $action_key ?>_a" name="se_cfg[<?php echo $post_type; ?>][actions][<?php echo $action_key ?>]" value="a" <?php if ($action_val == 'a') echo "checked='checked'"; ?> /> <label for="se_cfg_<?php echo $post_type ?>_actions_<?php echo $action_key ?>_a"><?php _e('Include All', SIMPLY_EXCLUDE_I18N_DOMAIN); ?></label></li><?php
+							} else if (($action_key == "is_feed") 
+						 		&& ((isset($this->current_post_type['options']['capability_type'])) 
+								&& ($this->current_post_type['options']['capability_type'] == "post"))) {
+								?><li><input type="radio" id="se_cfg_<?php echo $post_type ?>_actions_<?php echo $action_key ?>_a" name="se_cfg[<?php echo $post_type; ?>][actions][<?php echo $action_key ?>]" value="a" <?php if ($action_val == 'a') echo "checked='checked'"; ?> /> <label for="se_cfg_<?php echo $post_type ?>_actions_<?php echo $action_key ?>_a"><?php _e('Include All', SIMPLY_EXCLUDE_I18N_DOMAIN); ?></label></li><?php
+							}
+						?>
 				</td>
 			<tr>
 			<?php
@@ -425,10 +398,9 @@ class SimplyExclude
 				<td class="action"><?php echo $this->get_se_type_action_label($se_type, $action_key, 'name'); ?></td>
 				<td class="description"><?php echo $this->get_se_type_action_label($se_type, $action_key, 'description');  ?></td>
 				<td class="inc-excl">
-					<input type="radio" name="se_cfg[<?php echo $se_type; ?>][actions][<?php echo $action_key ?>]" value="i" 
-						<?php if ($action_val == 'i') echo "checked='checked'"; ?> /> <?php _e('Include only', SIMPLY_EXCLUDE_I18N_DOMAIN); ?><br />
-					<input type="radio" name="se_cfg[<?php echo $se_type; ?>][actions][<?php echo $action_key ?>]" value="e" 
-						<?php if ($action_val == 'e') echo "checked='checked'"; ?> /> <?php _e('Exclude', SIMPLY_EXCLUDE_I18N_DOMAIN); ?>
+					<ul class="se-actions-list">
+						<li><input type="radio" id="se_cfg_<?php echo $se_type; ?>_actions_<?php echo $action_key ?>_i" name="se_cfg[<?php echo $se_type; ?>][actions][<?php echo $action_key ?>]" value="i" <?php if ($action_val == 'i') echo "checked='checked'"; ?> /> <label for="se_cfg_<?php echo $se_type; ?>_actions_<?php echo $action_key ?>_i"><?php _e('Include only', SIMPLY_EXCLUDE_I18N_DOMAIN); ?></label></li>
+						<li><input type="radio" id="se_cfg_<?php echo $se_type; ?>_actions_<?php echo $action_key ?>_e" name="se_cfg[<?php echo $se_type; ?>][actions][<?php echo $action_key ?>]" value="e" <?php if ($action_val == 'e') echo "checked='checked'"; ?> /> <label for="se_cfg_<?php echo $se_type; ?>_actions_<?php echo $action_key ?>_e"><?php _e('Exclude', SIMPLY_EXCLUDE_I18N_DOMAIN); ?></label></li>
 				</td>
 			<tr>
 			<?php
@@ -898,10 +870,11 @@ class SimplyExclude
 		
 			if ((isset($this->current_taxonomy['actions'])) && (count($this->current_taxonomy['actions'])))
 			{
+				?><ul class="se-actions-list"><?php
 				foreach ($this->current_taxonomy['actions'] as $action_key => $action_val)
 				{
 					?>
-					<input type="checkbox" 
+					<li><input type="checkbox" 
 						name="se_cfg[<?php echo $taxonomy; ?>][terms][<?php echo $action_key ?>][<?php echo $term->term_id ?>]"
 						id="<?php echo $taxonomy; ?>-<?php echo $action_key ?>-<?php echo $term->term_id ?>" class="se-term-input"
 						<?php
@@ -909,10 +882,11 @@ class SimplyExclude
 						 	 && ($this->current_taxonomy['terms'][$action_key][$term->term_id] == "on"))
 								echo "checked='checked' ";
 						?> />&nbsp;<label for="<?php echo $taxonomy; ?>-<?php echo $action_key ?>-<?php echo $term->term_id ?>" 
-							class="se-term-label"><?php echo $this->get_taxonomy_action_label($taxonomy, $action_key, 'name'); ?></label><br />
+							class="se-term-label"><?php echo $this->get_taxonomy_action_label($taxonomy, $action_key, 'name'); ?></label></li>
 										
 					<?php
 				}
+				?></ul><?php
 			}
 		}
 	}
@@ -926,10 +900,10 @@ class SimplyExclude
 
 			if ((isset($this->current_post_type['actions'])) && (count($this->current_post_type['actions'])))
 			{
+				?><ul class="se-actions-list"><?php
 				foreach ($this->current_post_type['actions'] as $action_key => $action_val)
 				{
-					?>
-					<input type="checkbox" 
+					?><li><input type="checkbox" 
 						name="se_cfg[<?php echo $post_type; ?>][terms][<?php echo $action_key ?>][<?php echo $p_item->ID ?>]"
 						id="<?php echo $post_type; ?>-<?php echo $action_key ?>-<?php echo $p_item->ID ?>" class="se-term-input"
 						<?php
@@ -938,10 +912,11 @@ class SimplyExclude
 						 && ($this->current_post_type['terms'][$action_key][$p_item->ID] == "on"))
 							echo "checked='checked' ";
 						?> />&nbsp;<label for="<?php echo $post_type; ?>-<?php echo $action_key ?>-<?php echo $p_item->ID ?>">
-								<?php echo $this->get_post_type_action_label($post_type, $action_key, 'name') ?></label><br />
+								<?php echo $this->get_post_type_action_label($post_type, $action_key, 'name') ?></label></li>
 
 					<?php
 				}
+				?></ul><?php
 			}
 		}
 	}
@@ -955,10 +930,10 @@ class SimplyExclude
 
 			if ((isset($this->current_se_type['actions'])) && (count($this->current_se_type['actions'])))
 			{
+				?><ul class="se-actions-list"><?php
 				foreach ($this->current_se_type['actions'] as $action_key => $action_val)
 				{
-					?>
-					<input type="checkbox" 
+					?><li><input type="checkbox" 
 						name="se_cfg[<?php echo $se_type; ?>][terms][<?php echo $action_key ?>][<?php echo $user->ID ?>]"
 						id="<?php echo $se_type; ?>-<?php echo $action_key ?>-<?php echo $user->ID ?>" class="se-term-input"
 						<?php
@@ -967,10 +942,11 @@ class SimplyExclude
 						 && ($this->current_se_type['terms'][$action_key][$user->ID] == "on"))
 							echo "checked='checked' ";
 						?> />&nbsp;<label for="<?php echo $se_type; ?>-<?php echo $action_key ?>-<?php echo $user->ID ?>">
-								<?php echo $this->get_se_type_action_label($se_type, $action_key, 'name') ?></label><br />
+								<?php echo $this->get_se_type_action_label($se_type, $action_key, 'name') ?></label></li>
 
 					<?php
 				}
+				?></ul><?php
 			}
 		}
 	}
@@ -2689,8 +2665,7 @@ class SimplyExclude
 				{
 					$arg_parts[$idx] = str_replace(']', '', $val);
 				}
-				//echo "arg_parts<pre>"; print_r($arg_parts); echo "</pre>";
-				
+
 				if ($arg_parts[1] == "users")
 				{
 					$se_type 	= $arg_parts[1];
@@ -2702,10 +2677,7 @@ class SimplyExclude
 						if (!isset($this->se_cfg['data']['se_types'][$se_type][$option]))
 							$this->se_cfg['data']['se_types'][$se_type][$option] = array();
 
-						if (!isset($this->se_cfg['data']['se_types'][$se_type][$option][$action]))
-							$this->se_cfg['data']['se_types'][$se_type][$option][$action] = array();
-					
-						$this->se_cfg['data']['se_types'][$se_type][$option][$action]['action'] = $is_checked;
+						$this->se_cfg['data']['se_types'][$se_type][$option][$action] = $is_checked;
 					}
 					else if ($option == "options")
 					{
@@ -2727,10 +2699,7 @@ class SimplyExclude
 						if (!isset($this->se_cfg['data']['post_types'][$post_type][$option]))
 							$this->se_cfg['data']['post_types'][$post_type][$option] = array();
 
-						if (!isset($this->se_cfg['data']['post_types'][$post_type][$option][$action]))
-							$this->se_cfg['data']['post_types'][$post_type][$option][$action] = array();
-					
-						$this->se_cfg['data']['post_types'][$post_type][$option][$action]['action'] = $is_checked;
+						$this->se_cfg['data']['post_types'][$post_type][$option][$action] = $is_checked;
 					}
 					else if ($option == "options")
 					{
@@ -2751,10 +2720,7 @@ class SimplyExclude
 						if (!isset($this->se_cfg['data']['taxonomies'][$taxonomy][$option]))
 							$this->se_cfg['data']['taxonomies'][$taxonomy][$option] = array();
 
-						if (!isset($this->se_cfg['data']['taxonomies'][$taxonomy][$option][$action]))
-							$this->se_cfg['data']['taxonomies'][$taxonomy][$option][$action] = array();
-					
-						$this->se_cfg['data']['taxonomies'][$taxonomy][$option][$action]['action'] = $is_checked;
+						$this->se_cfg['data']['taxonomies'][$taxonomy][$option][$action] = $is_checked;
 					}
 					else if ($option == "options")
 					{
@@ -2768,12 +2734,6 @@ class SimplyExclude
 		}
 		die(); // this is required to return a proper result
 	}
-
-
-
-
-
-		
 
 	function display_instructions($item)
 	{
@@ -2816,16 +2776,48 @@ class SimplyExclude
 	{
 		?>
 		<div id="howto-se-manage-settings-metaboxes-general" class="wrap">
-		<?php screen_icon('options-general'); ?>
-		<h2><?php _ex("Simply Exclude Manage Settings", "Options Page Title", SIMPLY_EXCLUDE_I18N_DOMAIN); ?></h2>
+			<?php screen_icon('options-general'); ?>
+			<h2><?php //_ex("Simply Exclude Manage Settings", "Options Page Title", SIMPLY_EXCLUDE_I18N_DOMAIN); 
+				foreach( $this->tabs as $tab => $name ){
+
+			        $class = ( $tab == $this->current_tab ) ? ' nav-tab-active' : '';
+			        echo "<a class='nav-tab$class' href='?page=se_manage_settings&tab=$tab'>$name</a>";
+			    } 
+			?></h2>
 		
-			<div id="poststuff" class="metabox-holder has-right-sidebar simnplyexclude-metabox-holder-right-sidebar">
+			<div id="poststuff" class="metabox-holder has-right-sidebar simplyexclude-metabox-holder-right-sidebar">
 				<div id="side-info-column" class="inner-sidebar">
 					<?php do_meta_boxes($this->pagehooks['se_manage_settings'], 'side', ''); ?>
 				</div>
 				<div id="post-body" class="has-sidebar ">
-					<div id="post-body-content" class="has-sidebar-content simnplyexclude-metabox-holder-main">
-						<?php do_meta_boxes($this->pagehooks['se_manage_settings'], 'normal', ''); ?>
+					<div id="post-body-content" class="has-sidebar-content simplyexclude-metabox-holder-main">
+						<?php //do_meta_boxes($this->pagehooks['se_manage_settings'], 'normal', ''); ?>
+						<?php
+							switch ( $this->current_tab ) {
+
+								case 'post_types':
+									//add_meta_box('se_display_options_post_type_actions_panel', 'Post Types Actions', 
+									//	array(&$this, 'se_display_options_post_type_actions_panel'), 
+									//	$this->pagehooks['se_manage_settings'], 'normal', 'core');
+									$this->se_display_options_post_type_actions_panel();									
+									break;
+
+								case 'users':
+									//add_meta_box('se_display_options_user_actions_panel', 'Users Actions', array(&$this, 'se_display_options_user_actions_panel'),
+									// 	$this->pagehooks['se_manage_settings'], 'normal', 'core');
+									$this->se_display_options_user_actions_panel();
+									break;
+
+					    		case 'taxonomies':
+								default:
+									//add_meta_box('se_display_options_taxonomy_actions_panel', 'Taxonomies Actions', 
+									//	array(&$this, 'se_display_options_taxonomy_actions_panel'), 
+									//	$this->pagehooks['se_manage_settings'], 'normal', 'core');
+									$this->se_display_options_taxonomy_actions_panel();
+									break;
+							}
+						?>
+						
 					</div>
 				</div>
 			</div>	
@@ -2851,11 +2843,19 @@ class SimplyExclude
 		{
 			foreach($se_taxonomies as $key => $taxonomy)
 			{
-				?><h4 class="simplyexclude-section-title"><?php echo $taxonomy->labels->name; ?> (<?php echo $key; ?>)</h4><?php
-				$this->se_show_taxonomy_active_panel($taxonomy->name);
-				$this->se_show_taxonomy_actions_panel($taxonomy->name);
-				$this->se_show_taxonomy_showhide_panel($taxonomy->name);				
-				$this->se_show_taxonomy_query_override_panel($taxonomy->name);				
+				?>
+				<div class="postbox">
+					<h3 class="simplyexclude-section-title"><?php echo $taxonomy->labels->name; ?> (<?php echo $key; ?>)</h3>
+					<div class="inside">
+						<?php
+						$this->se_show_taxonomy_active_panel($taxonomy->name);
+						$this->se_show_taxonomy_actions_panel($taxonomy->name);
+						$this->se_show_taxonomy_showhide_panel($taxonomy->name);				
+						$this->se_show_taxonomy_query_override_panel($taxonomy->name);
+						?>
+					</div>
+				</div>
+				<?php
 			}
 		}
 	}
@@ -2868,12 +2868,19 @@ class SimplyExclude
 		{
 			foreach($se_post_types as $key => $post_type)
 			{
-				?><h4 class="simplyexclude-section-title"><?php echo $post_type->labels->name; ?> (<?php echo $key; ?>)</h4><?php
-				$this->se_show_post_type_active_panel($post_type->name);
-				$this->se_show_post_type_actions_panel($post_type->name);
-				$this->se_show_post_type_showhide_panel($post_type->name);
-				$this->se_show_post_type_query_override_panel($post_type->name);
-				
+				?>
+				<div class="postbox">
+					<h3 class="simplyexclude-section-title"><?php echo $post_type->labels->name; ?> (<?php echo $key; ?>)</h3>
+					<div class="inside">
+					<?php
+						$this->se_show_post_type_active_panel($post_type->name);
+						$this->se_show_post_type_actions_panel($post_type->name);
+						$this->se_show_post_type_showhide_panel($post_type->name);
+						$this->se_show_post_type_query_override_panel($post_type->name);
+					?>
+					</div>
+				</div>
+				<?php
 			}
 		}				
 	}
@@ -2881,11 +2888,19 @@ class SimplyExclude
 	function se_display_options_user_actions_panel()
 	{
 		$this->display_instructions('users');
-		?><h4 class="simplyexclude-section-title">Users</h4><?php
-		$this->se_show_se_type_active_panel('users');
-		$this->se_show_se_type_actions_panel('users');
-		$this->se_show_se_type_showhide_panel('users');
-		$this->se_show_se_type_query_override_panel('users');
+		?>
+		<div class="postbox">
+			<h3 class="simplyexclude-section-title"><?php _e('Users', SIMPLY_EXCLUDE_I18N_DOMAIN); ?></h3>
+			<div class="inside">
+			<?php
+				$this->se_show_se_type_active_panel('users');
+				$this->se_show_se_type_actions_panel('users');
+				$this->se_show_se_type_showhide_panel('users');
+				$this->se_show_se_type_query_override_panel('users');
+			?>
+			</div>
+		</div>
+		<?php
 	}
 	
 	function se_display_configuration_reload_actions_panel() {
@@ -3001,12 +3016,12 @@ class SimplyExclude
 		<?php screen_icon('options-general'); ?>
 		<h2><?php _ex("Simply Exclude Help", "Options Page Title", SIMPLY_EXCLUDE_I18N_DOMAIN); ?></h2>
 		
-			<div id="poststuff" class="metabox-holder has-right-sidebar simnplyexclude-metabox-holder-right-sidebar">
+			<div id="poststuff" class="metabox-holder has-right-sidebar simplyexclude-metabox-holder-right-sidebar">
 				<div id="side-info-column" class="inner-sidebar">
 					<?php do_meta_boxes($this->pagehooks['se_manage_help'], 'side', ''); ?>
 				</div>
 				<div id="post-body" class="has-sidebar ">
-					<div id="post-body-content" class="has-sidebar-content simnplyexclude-metabox-holder-main">
+					<div id="post-body-content" class="has-sidebar-content simplyexclude-metabox-holder-main">
 						<?php //do_meta_boxes($this->pagehooks['se_manage_help'], 'normal', ''); ?>
 						<?php $this->se_settings_help_faq_topics(); ?>
 					</div>

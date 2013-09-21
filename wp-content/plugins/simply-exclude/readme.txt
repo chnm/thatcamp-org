@@ -2,9 +2,9 @@
 Contributors: Paul Menard
 Donate link: http://www.codehooligans.com
 Tags: admin, posts, pages, categories, tags, Post Type, Taxonomy, exclude, include, is_front, is_archive, is_search, is_feed, is_author
-Requires at least: 3.2
-Tested up to: 3.3.1
-Stable tag: 2.0.6
+Requires at least: 3.5
+Tested up to: 3.6
+Stable tag: 2.0.6.1
 
 == Description ==
 
@@ -47,6 +47,11 @@ At the time (version 1.6.1) the plugin only effects Pages included in the tradit
 3. New Help section to answer some of your questions.
 
 == Changelog == 
+
+= 2.0.6.1 =
+Corrected issue with reported PHP 5.4 related code.
+Changes settings screen to split Taxonomies, Post Types and Users into tabbed screen. Better than one long screen.
+Fixed issue with excluding categories on Home and Archive where it effects the pager. Note this is only for the default WordPress paging. Custom pagers may still have issue. 
 
 = 2.0.6 =
 2013-03-20

@@ -1,13 +1,14 @@
 <?php
 /*
 Plugin Name: Links Shortcode
-Plugin URI: http://blog.bigcircle.nl/about/wordpress-plugins
+Plugin URI: http://www.apprique.com/wordpress-plugins
 Description: Displays all links of a certain category in a post using a shortcode, according to a definable template. Includes optional Facebook Like button.
-Version: 1.5
+Version: 1.6
 Author: Maarten Swemmer
 Author URI: http://blog.bigcircle.nl
 */
 
+require_once(ABSPATH . WPINC . '/formatting.php');
 $linkssc_default_template = "<div itemscope itemtype=\"http://schema.org/Rating\" class=\"links_sc_fb\">
 [optional [date]: ||]<a itemprop=\"url\" href=\"[link_url]\" target=\"_blank\" ><span itemprop=\"name\">[link_name]</span></a>
 <meta itemprop=\"worstRating\" content=\"1\"><meta itemprop=\"bestRating\" content=\"5\"><meta itemprop=\"ratingValue\" content=\"[link_rating]\">[link_rating_stars]
@@ -15,9 +16,54 @@ $linkssc_default_template = "<div itemscope itemtype=\"http://schema.org/Rating\
 [optional <br />[fb_button]||]
 </div>\n";
 
-require_once(ABSPATH . WPINC . '/formatting.php');
+// taking care of translations
+$plugin_dir = plugin_basename( dirname( __FILE__ ) .'/languages' );
+load_plugin_textdomain( 'links-shortcode', null, $plugin_dir );
 
-add_action( 'wp_enqueue_scripts', 'linkssc_css' );
+// enable Links
+$linkssc_enable_links_manager = get_option('linkssc_enable_links_manager', 'no');
+
+// start showing the Links manager, even if there are no links
+add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+
+// Hook for adding admin menus
+if ( is_admin() ){ // admin actions
+	// enable Links menu
+	//if ($linkssc_enable_links_manager == "yes") 
+	//{
+		add_action('admin_menu', 'linkssc_add_options_page'); // add option page for plugin to Links menu
+	//}
+	//else
+	//{
+		//add_action('admin_menu', 'linkssc_add_settings_page'); // add option page for plugin to Settings menu
+	//}	
+	add_action('admin_init', 'linkssc_register_mysettings');
+	add_action('admin_head', 'linkssc_add_LastMod_box'); // add last updated meta box on link editing page
+	add_action('edit_link', 'linkssc_update_link_editied'); // update link edited field on editing a link
+	add_action('add_link', 'linkssc_update_link_editied'); // update link edited field on adding a link
+} 
+else {
+  // non-admin enqueues, actions, and filters
+}
+
+// action function for above hook
+function linkssc_add_options_page() 
+{
+    // Add a new submenu under Links:
+    add_submenu_page( 'link-manager.php', __('Links Shortcode','links-shortcode'), __('Links Shortcode','links-shortcode'), 'manage_options', 'links-shortcode-settings', 'linkssc_options_page');
+}
+function linkssc_add_settings_page() 
+{
+    // Add a new submenu under Settings:
+    add_options_page(__('Links Shortcode','links-shortcode'), __('Links Shortcode','links-shortcode'), 'manage_options', 'links-shortcode-settings', 'linkssc_options_page');
+}
+
+
+$linkssc_css = get_option('linkssc_default_css', 'yes');
+if ($linkssc_css == '') { $linkssc_css = 'yes'; update_option('linkssc_default_css', 'yes'); } // because WordPress sometimes does not handle this correct 
+if ($linkssc_css == "yes") {
+	add_action( 'wp_enqueue_scripts', 'linkssc_css' );
+}
 function linkssc_css() 
 {
 	// added for SSL friendlyness:
@@ -27,7 +73,7 @@ function linkssc_css()
 }
 
 function linkssc_update_info() {
-	if ( $info = wp_remote_fopen("http://blog.bigcircle.nl/links-shortcode-latest.txt") )
+	if ( $info = wp_remote_fopen("http://www.apprique.com/links-shortcode-latest.txt") )
 		echo '<br />' . strip_tags( $info, "<br><a><b><i><span>" );
 }
 add_action('in_plugin_update_message-'.plugin_basename(__FILE__), 'linkssc_update_info');
@@ -82,7 +128,8 @@ function linkssc_shortcode($atts, $content = null)
 			'search'         => '',
 			'get_categories' => 0, // TODO if 1, a separate query will be ran below to retrieve category names and the field [category_name] will become available for use in a template
 			'links_per_page' => 0, // if > 0 links will be split in pages and 
-			'links_list_id'  => '' 
+			'links_list_id'  => '',
+			'class' => ''
 			), $atts)
 	);
 	
@@ -136,7 +183,8 @@ function linkssc_shortcode($atts, $content = null)
 	}
 	
 	// calculate pagination details if applicable
-	$countlinks = count($bms);	
+	$countlinks = count($bms);
+	$pagenav = ''; // will be assigned if pagination is necessary
 	if (($links_per_page > 0) && ($countlinks > 0)) // if $links_per_page == 0, the logic below is irrelevant and all links will be shown
 	{
 		if (isset($_GET['links_list_id']) && isset($_GET['links_page']) && ($links_list_id == $_GET['links_list_id']) && is_numeric($_GET['links_page']))
@@ -172,7 +220,7 @@ function linkssc_shortcode($atts, $content = null)
 			$next_page = $links_page + 1;
 			$page_links[] = '<a href="./?links_page='.$next_page.'&links_list_id='.$links_list_id.'">'.__('Next page','links-shortcode').'</a>';
 		}
-		$pagenav = '<div class="links-page-nav">'.join(' - ', $page_links).'</div>'; // do this better, in UL/LI format
+		$pagenav = '<div class="links-page-nav">'.join(' - ', $page_links).'</div>'; // TODO: do this better, in UL/LI format
 		
 	}
 	
@@ -186,6 +234,7 @@ function linkssc_shortcode($atts, $content = null)
 			$newlinktext = $template.'';
 			$title = linkssc_getdate($bm->link_name);
 			$linkinfo = array();
+			$linkinfo['class'] = $class; // this is a setting on the shortcode, but it can be added into the template for custom styling
 			$linkinfo['link_name'] = $title->title;
 			$linkinfo['link_url'] = $bm->link_url;
 			$linkinfo['link_rel'] = $bm->link_rel;
@@ -246,21 +295,7 @@ function linkssc_shortcode($atts, $content = null)
 	return '<!-- Links -->'.do_shortcode($text)."\n".$pagenav.'<!-- /Links -->'; // add html comment for easier debugging
 }
 
-// taking care of translations
-$plugin_dir = plugin_basename( dirname( __FILE__ ) .'/languages' );
-load_plugin_textdomain( 'links-shortcode', null, $plugin_dir );
 
-// Hook for adding admin menus
-if ( is_admin() ){ // admin actions
-	add_action('admin_menu', 'linkssc_add_options_page'); // add option page for plugin
-	add_action('admin_init', 'linkssc_register_mysettings');
-	add_action('admin_head', 'linkssc_add_LastMod_box'); // add last updated meta box on link editing page
-	add_action('edit_link', 'linkssc_update_link_editied'); // update link edited field on editing a link
-	add_action('add_link', 'linkssc_update_link_editied'); // update link edited field on adding a link
-} 
-else {
-  // non-admin enqueues, actions, and filters
-}
 
 // Activation action
 function linkssc_activation(){
@@ -273,6 +308,7 @@ function linkssc_activation(){
 	add_option('linkssc_template', $linkssc_default_template); 
 	add_option('linkssc_template_b', ''); 
 	add_option('linkssc_template_a', ''); 
+	add_option('linkssc_default_css', 'yes'); 
 }
 register_activation_hook( __FILE__, 'linkssc_activation' );
 
@@ -285,7 +321,8 @@ function linkssc_uninstall(){
 	delete_option('linkssc_howmany');
 	delete_option('linkssc_template');
 	delete_option('linkssc_template_b'); 
-	delete_option('linkssc_template_a'); 	
+	delete_option('linkssc_template_a'); 
+	delete_option('linkssc_default_css'); 
 }
 register_uninstall_hook( __FILE__, 'linkssc_uninstall' );
 
@@ -298,14 +335,7 @@ function linkssc_register_mysettings() { // whitelist options
 	register_setting( 'links-shortcode-settings', 'linkssc_template' );
 	register_setting( 'links-shortcode-settings', 'linkssc_template_b' );
 	register_setting( 'links-shortcode-settings', 'linkssc_template_a' );	
-}
-
-// action function for above hook
-function linkssc_add_options_page() 
-{
-    // Add a new submenu under Settings:
-    //add_options_page(__('Links Shortcode','links-shortcode'), __('Links Shortcode','links-shortcode'), 'manage_options', 'links-shortcode-settings', 'linkssc_options_page');
-	add_submenu_page( 'link-manager.php', __('Links Shortcode','links-shortcode'), __('Links Shortcode','links-shortcode'), 'manage_options', 'links-shortcode-settings', 'linkssc_options_page');
+	register_setting( 'links-shortcode-settings', 'linkssc_default_css' ); 
 }
 
 function linkssc_options_page() 
@@ -314,6 +344,8 @@ function linkssc_options_page()
 	if (!current_user_can( 'manage_options' ) ) {
 		wp_die ( __( 'You do not have sufficient permissions to access this page' ) );
 	}
+	$css = get_option('linkssc_default_css', 'yes');
+		if ($css=='') { $css = 'yes'; update_option('linkssc_default_css', 'yes'); }
 	$facebook = get_option('linkssc_facebook', 'like');
 	$fbcolors = get_option('linkssc_fbcolors', 'light');
 	$template = get_option('linkssc_template', $linkssc_default_template);
@@ -326,14 +358,15 @@ function linkssc_options_page()
 	$howmany = get_option('linkssc_howmany', '-1');
 	?>
 	<div class="wrap">
-	<div class="postbox" style="float:right;width:100px;margin:20px"><div class="inside" style="margin:10px"><?php _e('Like this plugin? Saves you work? Or using it in a professional context? A small contribution is highly appreciated.', 'all-related-posts'); ?><p>
-	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+	<div class="postbox" style="float:right;width:100px;margin:20px"><div class="inside" style="margin:10px"><?php _e('Like this plugin? Saves you work? Or using it in a professional context? A small contribution is highly appreciated. <strong>I will donate 50% of your contributions to charity.</strong>', 'links-shortcode'); ?><p>
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="width:100%;">
 		<input type="hidden" name="cmd" value="_s-xclick">
-		<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHZwYJKoZIhvcNAQcEoIIHWDCCB1QCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYBXRcWYRYkChwvpJTNasBu3rk/QW/y3vGLMg39am6FoB7unJ2NxWyEf6AwKt0Ospw6srU2HadAVW3NeUDIsd+eKc6okRHx/Wd6Ui4V22yX++0Pzdj19uWIZ7YoXuBYGm2+OIUKlNwPBJ5j9jT9U/+tN9jwQUJJNAhHoDG4eSDOjBjELMAkGBSsOAwIaBQAwgeQGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQI6VXrk0qZSkyAgcA1WaZreJsYzwhDhul8NQpj6EZOKaXs6GjSMY9mDEfMBZprlPUD1tE2ppe3hKBBtmIFiYog6XBxe64uvpqmOL7DTXtF7EJmdiPF2NHFSmTTKgK/U/AViDGqC7H2tvP1QA5aGNItJARhcvPOXZlXljBSff8RsWMgoDu/Qktbsk17ZRKAZLIsXM+M6Jzd+s9lY95+gJh4Hu7fzCfQOWnRQeEgouw9AOv/RFnIEqRGlI33VNspsYjKvD7YMzC9gNTUFAagggOHMIIDgzCCAuygAwIBAgIBADANBgkqhkiG9w0BAQUFADCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20wHhcNMDQwMjEzMTAxMzE1WhcNMzUwMjEzMTAxMzE1WjCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMFHTt38RMxLXJyO2SmS+Ndl72T7oKJ4u4uw+6awntALWh03PewmIJuzbALScsTS4sZoS1fKciBGoh11gIfHzylvkdNe/hJl66/RGqrj5rFb08sAABNTzDTiqqNpJeBsYs/c2aiGozptX2RlnBktH+SUNpAajW724Nv2Wvhif6sFAgMBAAGjge4wgeswHQYDVR0OBBYEFJaffLvGbxe9WT9S1wob7BDWZJRrMIG7BgNVHSMEgbMwgbCAFJaffLvGbxe9WT9S1wob7BDWZJRroYGUpIGRMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbYIBADAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBAIFfOlaagFrl71+jq6OKidbWFSE+Q4FqROvdgIONth+8kSK//Y/4ihuE4Ymvzn5ceE3S/iBSQQMjyvb+s2TWbQYDwcp129OPIbD9epdr4tJOUNiSojw7BHwYRiPh58S1xGlFgHFXwrEBb3dgNbMUa+u4qectsMAXpVHnD9wIyfmHMYIBmjCCAZYCAQEwgZQwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tAgEAMAkGBSsOAwIaBQCgXTAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0xMTA4MTYxNTU5MTVaMCMGCSqGSIb3DQEJBDEWBBRmzIxg+2qvpzkSZKpslEc4N+2q4TANBgkqhkiG9w0BAQEFAASBgEwdHc8TKNHa0HVti/rFH1y2vAfa5yJzlpUR9HeKY9LEzlDDUjaEN3LgoTknq5cM1UsaOfsotpoq+iHglCjDaO/DzYjHKonOnux50H/Neh444sNqvOJG4X1IC/Izkz4vaNW3g/8BnLaQMGbVAbRrmsP4UNRLs/lPw0Juw8dQUmZC-----END PKCS7-----
+		<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
 		">
-		<center><input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
-		<img alt="" border="0" src="https://www.paypalobjects.com/nl_NL/i/scr/pixel.gif" width="1" height="1"></center>
+		<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online." style="margin-left:auto;margin-right:auto">
+		<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 	</form>
+
 	</div></div>
 		
 	<h2> <?php _e('Links Shortcode plugin settings','links-shortcode'); ?> </h2>
@@ -346,7 +379,7 @@ function linkssc_options_page()
 
 	<h3> <?php _e('Default settings for the Links shortcode','links-shortcode'); ?></h3>
 	<?php _e('Here you can specify the default options used when you used the [links] shortcode. You can overrule this on the shortcode itself, if you want.','links-shortcode'); ?><br />
-	<?php _e('For help on using the shortcode (and for voting), please visit the plugin page on <a href="https://wordpress.org/extend/plugins/links-shortcode/" target="_blank">wordpress.org</a> or on <a href="http://blog.bigcircle.nl/about/wordpress-plugins" target="_blank">my blog</a>.','links-shortcode'); ?>
+	<?php _e('For help on using the shortcode (and for voting), please visit the plugin page on <a href="https://wordpress.org/extend/plugins/links-shortcode/" target="_blank">wordpress.org</a> or <a href="http://www.apprique.com/community/wordpress-plugins" target="_blank">our website</a>.','links-shortcode'); ?>
 	<table class="form-table">
 		<tr valign="top">
 		<th scope="row"><?php _e('Show a facebook Like or Recommend button?','links-shortcode'); ?></th>
@@ -407,6 +440,13 @@ function linkssc_options_page()
         <th scope="row"><?php _e('Provide an optional text or html to display after the links:','links-shortcode'); ?></th>
         <td><textarea name="linkssc_template_a" class="large-text code" rows="2"><?php echo $template_a; ?></textarea><br />
 		<?php _e('Example:','links-shortcode'); ?><pre>&lt;/table></pre></td>
+		</tr>
+		
+		<tr valign="top">
+		<th scope="row"><?php _e('Include a default stylesheet (css) for formatting the template?','links-shortcode'); ?></th>
+		<td><input type="radio" name="linkssc_default_css" value="yes" <?php if ($css == 'yes') echo 'CHECKED'; ?> /><?php _e('Yes','links-shortcode'); ?><br />
+			<input type="radio" name="linkssc_default_css" value="no" <?php if ($css == 'no') echo 'CHECKED'; ?> /><?php _e('No','links-shortcode'); ?><br />
+		</td>
 		</tr>
 		
 		<tr valign="top">

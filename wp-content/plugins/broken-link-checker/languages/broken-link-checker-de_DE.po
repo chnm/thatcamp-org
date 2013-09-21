@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Broken Link Checker | V1.8\n"
+"Project-Id-Version: Broken Link Checker | V1.8.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/broken-link-checker\n"
-"POT-Creation-Date: 2013-06-03 13:55:03+00:00\n"
-"PO-Revision-Date: 2013-06-23 09:00+0100\n"
+"POT-Creation-Date: 2013-06-23 07:51:56+00:00\n"
+"PO-Revision-Date: 2013-07-25 18:09+0100\n"
 "Last-Translator: Ivan Graf <contact@bildergallery.com>\n"
 "Language-Team: \n"
 "Language: de_CH\n"
@@ -16,7 +16,7 @@ msgstr ""
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Textdomain-Support: yes\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
 # @ broken-link-checker
@@ -669,7 +669,7 @@ msgid "Failed to load link details (%s)"
 msgstr "Laden der Link Details (%s) schlug fehl"
 
 # @ broken-link-checker
-#. #-#-#-#-#  plugin.pot (Broken Link Checker 1.7.1)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (Broken Link Checker 1.8)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: core/core.php:2712
 msgid "Broken Link Checker"
@@ -1431,71 +1431,82 @@ msgstr "Eingebettete Vimeo Videos"
 # @ broken-link-checker
 #: includes/extra-strings.php:10
 msgctxt "module name"
-msgid "Embedded YouTube videos"
-msgstr "Eingebettete YouTube Videos"
+msgid "Embedded YouTube playlists (old embed code)"
+msgstr "Eingebettete YouTube Wiedergabelisten (alter Code)"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:11
 msgctxt "module name"
-msgid "Embedded YouTube videos (old embed code)"
-msgstr "Eingebettete YouTube Videos (Alter Code)"
+msgid "Embedded YouTube videos"
+msgstr "Eingebettete YouTube Videos"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:12
+msgctxt "module name"
+msgid "Embedded YouTube videos (old embed code)"
+msgstr "Eingebettete YouTube Videos (alter Code)"
+
+# @ broken-link-checker
+#: includes/extra-strings.php:13
 msgctxt "module name"
 msgid "FileServe API"
 msgstr "FileServe API"
 
 # @ broken-link-checker
-#: includes/extra-strings.php:13
+#: includes/extra-strings.php:14
 msgctxt "module name"
 msgid "HTML images"
 msgstr "HTML Bilder"
 
 # @ broken-link-checker
-#: includes/extra-strings.php:14
+#: includes/extra-strings.php:15
 msgctxt "module name"
 msgid "HTML links"
 msgstr "HTML Links"
 
 # @ broken-link-checker
-#: includes/extra-strings.php:15
+#: includes/extra-strings.php:16
 msgctxt "module name"
 msgid "MediaFire API"
 msgstr "MediaFire API"
 
 # @ broken-link-checker
-#: includes/extra-strings.php:16
+#: includes/extra-strings.php:17
 msgctxt "module name"
 msgid "MegaUpload API"
 msgstr "MegaUpload API"
 
 # @ broken-link-checker
-#: includes/extra-strings.php:17
+#: includes/extra-strings.php:18
 msgctxt "module name"
 msgid "Plaintext URLs"
 msgstr "Klartext URLs"
 
 # @ broken-link-checker
-#: includes/extra-strings.php:18
+#: includes/extra-strings.php:19
 msgctxt "module name"
 msgid "RapidShare API"
 msgstr "RapidShare API"
 
+#: includes/extra-strings.php:20
+msgctxt "module name"
+msgid "Smart YouTube httpv:// URLs"
+msgstr "Smart YouTube httpv:// URLs"
+
 # @ broken-link-checker
-#: includes/extra-strings.php:19
+#: includes/extra-strings.php:21
 msgctxt "module name"
 msgid "YouTube API"
 msgstr "YouTube API"
 
 # @ broken-link-checker
-#: includes/extra-strings.php:20
+#: includes/extra-strings.php:22
 msgctxt "module name"
 msgid "Posts"
 msgstr "Beiträge"
 
 # @ broken-link-checker
-#: includes/extra-strings.php:21
+#: includes/extra-strings.php:23
 msgctxt "module name"
 msgid "Pages"
 msgstr "Seiten"

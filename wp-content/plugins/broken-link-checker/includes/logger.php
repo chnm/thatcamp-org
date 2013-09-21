@@ -120,6 +120,3 @@ class blcDummyLogger extends blcLogger { }
 
 endif;
 
-
-
-?>

@@ -88,4 +88,3 @@ $blclog->info(sprintf(
 ));
 $blclog->save();
 
-?>

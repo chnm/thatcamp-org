@@ -1,17 +1,14 @@
 jQuery(document).ready(function() {
 		
 	jQuery('td.column-se-actions input.se-term-input').click(function(){
-		//alert('click');
 		var input_name = jQuery(this).attr('name');
 		var is_checked = jQuery(this).attr('checked');
-		var label = jQuery(this).parent('td.column-se-actions');
+		//var label = jQuery(this).parents('td.column-se-actions');
+		var label = jQuery(this).next('label');
 
 
 		if (is_checked == 'checked') is_checked = "yes";
 		else is_checked = "no";
-		
-		//alert('input_name=['+input_name+'] checked=['+is_checked+']');
-		//se_send_update(input_name, is_checked);
 		
 		var data = {
 			action: 'se_update',
@@ -21,22 +18,26 @@ jQuery(document).ready(function() {
 		};
 
 		jQuery.post(ajaxurl, data, function(response) {
-			if (response == "SUCCESS")	 // SUCCESS is yellow fade to white
-				jQuery(label).stop().css("background-color", "#FFFF9C").animate({ backgroundColor: "#FFFFFF"}, 1500);
-			else // On !SUCCESS is red fade to white
-				jQuery(label).stop().css("background-color", "#FF0000").animate({ backgroundColor: "#FFFFFF"}, 1500);				
+			var label_background_color = jQuery(label).css('background-color');
+			if (response == "SUCCESS") {	 // SUCCESS is yellow fade to white
+				jQuery(label).stop().css("background-color", "#FFFF9C").animate({ backgroundColor: label_background_color}, 1500, 'swing', function(){
+					jQuery(label).css('background-color', label_background_color);
+				});
+			} else { // On !SUCCESS is red fade to white
+				jQuery(label).stop().css("background-color", "#FF0000").animate({ backgroundColor: label_background_color}, 1500, 'swing', function(){
+					jQuery(label).css('background-color', label_background_color);
+				});
+			}
 		});					
 	});
 
 	//jQuery('table.simplyexclude-actions-panel input[type="radio"]').click(function(){
 	jQuery('table.simply-exclude-settings-postbox input[type="radio"]').click(function(){
 		
-		//alert('click');
 		var input_name = jQuery(this).attr('name');
 		var value = jQuery(this).attr('value');
-		var label = jQuery(this).parent('td.inc-excl');
-		
-		//alert("input_name=["+input_name+"] value=["+value+"]");
+		var label = jQuery(this).parents('td.inc-excl');
+		//var label = jQuery(this).next('label');
 		
 		var data = {
 			action: 'se_update',
@@ -46,10 +47,12 @@ jQuery(document).ready(function() {
 		};
 
 		jQuery.post(ajaxurl, data, function(response) {			
+			var label_background_color = jQuery(label).css('background-color');
+
 			if (response == "SUCCESS") // SUCCESS is yellow fade to white
-				jQuery(label).stop().css("background-color", "#FFFF9C").animate({ backgroundColor: "#FFFFFF"}, 1500);
+				jQuery(label).stop().css("background-color", "#FFFF9C").animate({ backgroundColor: label_background_color}, 1500);
 			else	// On !SUCCESS is red fade to white
-				jQuery(label).stop().css("background-color", "#FF0000").animate({ backgroundColor: "#FFFFFF"}, 1500);			
+				jQuery(label).stop().css("background-color", "#FF0000").animate({ backgroundColor: label_background_color}, 1500);			
 		});					
 	});
 				

@@ -292,7 +292,7 @@ class blcLinkQuery {
 		//Parser type should match the parser_type column in the instance table.
 		if ( !empty($s_parser_type) ){
 			$s_parser_type = array_map('trim', array_unique($s_parser_type));
-			$s_parser_type = array_map(array(&$wpdb, 'escape'), $s_parser_type);
+			$s_parser_type = array_map('esc_sql', $s_parser_type);
 			
 			if ( count($s_parser_type) == 1 ){
 				$pieces[] = sprintf("instances.parser_type = '%s'", reset($s_parser_type));
@@ -307,7 +307,7 @@ class blcLinkQuery {
 		if ( !empty($s_container_type) ){
 			//Sanitize for use in SQL
 			$s_container_type = array_map('trim', array_unique($s_container_type));
-			$s_container_type = array_map(array(&$wpdb, 'escape'), $s_container_type);
+			$s_container_type = array_map('esc_sql', $s_container_type);
 			
 			if ( count($s_container_type) == 1 ){
 				$pieces[] = sprintf("instances.container_type = '%s'", reset($s_container_type));
@@ -346,7 +346,7 @@ class blcLinkQuery {
 		
 		//Anchor text - use LIKE search
 		if ( !empty($params['s_link_text']) ){
-			$s_link_text = like_escape($wpdb->escape($params['s_link_text']));
+			$s_link_text = like_escape(esc_sql($params['s_link_text']));
 			$s_link_text  = str_replace('*', '%', $s_link_text);
 			
 			$pieces[] = '(instances.link_text LIKE "%' . $s_link_text . '%")';
@@ -357,7 +357,7 @@ class blcLinkQuery {
 		//There is limited wildcard support, e.g. "google.*/search" will match both 
 		//"google.com/search" and "google.lv/search" 
 		if ( !empty($params['s_link_url']) ){
-			$s_link_url = like_escape($wpdb->escape($params['s_link_url']));
+			$s_link_url = like_escape(esc_sql($params['s_link_url']));
 			$s_link_url = str_replace('*', '%', $s_link_url);
 			
 			$pieces[] = '(links.url LIKE "%'. $s_link_url .'%") OR '.
@@ -375,7 +375,7 @@ class blcLinkQuery {
 			
 		//Link type can match either the the parser_type or the container_type.
 		if ( !empty($params['s_link_type']) ){
-			$s_link_type = $wpdb->escape($params['s_link_type']);
+			$s_link_type = esc_sql($params['s_link_type']);
 			$pieces[] = "instances.parser_type = '$s_link_type' OR instances.container_type='$s_link_type'";
 			$join_instances = true;
 		}
@@ -818,4 +818,3 @@ function blc_get_links($params = null){
 	return $instance->get_links($params);
 }
 
-?>

@@ -27,6 +27,9 @@
 	$this->instance['number'] 	= $this->number;
 	$this->instance['types'] 	= implode( ',', $types_array );
 	
+	if( empty( $this->instance['meta_key'] ) )
+		$this->instance['meta_key'] = '_popular_views';
+	
 	$disabled_tabs = 0;
 	$this->time = date( 'Y-m-d H:i:s', strtotime( "-{$lastdays} days", current_time( 'timestamp' ) ) );
 	
