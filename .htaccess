@@ -1,3 +1,11 @@
+<Files wp-login.php>
+    Order allow,deny
+    allow from all
+    deny from 37.128.132.10
+#    Order deny,allow
+#    deny from all
+#    allow from 127.0.0.1
+</Files>
 #Options +FollowSymlinks
 #RewriteEngine on
 #RewriteCond %{REQUEST_URI} !/maintenance.html$
