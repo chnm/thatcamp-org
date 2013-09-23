@@ -17,6 +17,8 @@
 require( dirname(__FILE__) . '/env.php' );
 
 /** Database Charset to use in creating database tables. */
+define('WP_CACHE', true); //Added by WP-Cache Manager
+define( 'WPCACHEHOME', '/websites/thatcampdev/home/www/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
 define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
