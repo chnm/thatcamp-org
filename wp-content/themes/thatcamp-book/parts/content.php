@@ -12,7 +12,7 @@
 				<h1 class="post-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'bookcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 			</hgroup>
 	</header>
-	<?php if (( is_search() ) || (is_home()) || (is_category()) || (is_archive() ) || (is_page_template('template-blog.php') )) :?>
+	<?php if (( is_search() ) || /* I hate the excerpt on the home page (is_home()) || */ (is_category()) || (is_archive() ) || (is_page_template('template-blog.php') )) :?> 
 		<?php if(function_exists('the_post_thumbnail')) { ?>
 			<?php if(get_the_post_thumbnail() != "") { ?>
 					<div class="post-featured-thumb">
@@ -22,7 +22,7 @@
 		<div class="post-summary">
 			<?php the_excerpt(); ?>
 		</div>
-	<?php else : ?>
+	<?php else : ?>	
 		<div class="post-body">
 			<?php the_content(); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( '<span>Pages:</span>', 'bookcamp'), 'after' => '</div>' ) ); ?>
