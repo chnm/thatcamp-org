@@ -27,12 +27,15 @@ RewriteRule ^index\.php$ - [L]
 # uploaded files
 RewriteRule ^files/(.+) wp-includes/ms-files.php?file=$1 [L]
 
+#BEGIN WordPress
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
+#RewriteRule . index.php [L]
+#END WordPress
+
 RewriteRule ^ - [L]
 RewriteRule  ^[_0-9a-zA-Z-]+/(wp-(content|admin|includes).*) $1 [L]
 RewriteRule  ^[_0-9a-zA-Z-]+/(.*\.php)$ $1 [L]
-#RewriteRule . index.php [L]
 RewriteRule ^(.+)$ /index.php/$1 [NC,L,QSA]
 
 Redirect 301 /gratitude http://thatcamp.org/people/sponsors
