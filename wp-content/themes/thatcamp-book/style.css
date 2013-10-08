@@ -850,7 +850,7 @@ text-align: left;
 font-size:large;
 font-family:sans-serif;
 font-weight:bold;
-border:dotted 2px darkgray;
+border:solid 2px darkgray;
 }
 
 .top_menu .page_item {
