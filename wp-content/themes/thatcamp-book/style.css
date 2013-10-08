@@ -376,6 +376,7 @@ sup {
 sub {
   bottom: -2.5px;
 }
+/*
 ::-moz-selection {
   background: #fcfcfc;
   text-shadow: none;
@@ -384,6 +385,7 @@ sub {
   background: #fcfcfc;
   text-shadow: none;
 }
+*/
 /*--------------------------------------------------------------
 2.1.2 - Headers
 --------------------------------------------------------------*/
@@ -853,6 +855,10 @@ border:dotted 2px darkgray;
 
 .top_menu .page_item {
 border: dotted 1px darkgray;
+}
+
+.current_page_item {
+background-color:darkgray;
 }
 
 nav#top-nav ul {
