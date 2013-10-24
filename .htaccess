@@ -27,16 +27,6 @@ RewriteRule ^index\.php$ - [L]
 # uploaded files
 RewriteRule ^files/(.+) wp-includes/ms-files.php?file=$1 [L]
 
-Options +FollowSymlinks
-RewriteEngine On
-RewriteCond %{http_host} ^thatcamp.com [nc]
-RewriteRule ^(.*)$ http://thatcamp.org/$1 [r=301,nc]
-
-Options +FollowSymlinks
-RewriteEngine On
-RewriteCond %{http_host} ^thatcamp.net [nc]
-RewriteRule ^(.*)$ http://thatcamp.org/$1 [r=301,nc]
-
 #BEGIN WordPress
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
