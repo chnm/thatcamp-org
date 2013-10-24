@@ -19,6 +19,7 @@ wp-admin/error_log
 wp-content/debug.log
 
 # Misc exclusions
+;
 *.bak
 *.sql
 .svn
@@ -29,6 +30,8 @@ wp-content/debug.log
 *.swp
 *.log
 /tags
+/docs
+wp-content/cache/*
 wp-content/themes/inuitypes_free/custom/cache/*
 wp-content/backup-db/*
 wp-content/results
