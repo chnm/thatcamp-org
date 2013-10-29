@@ -27,7 +27,7 @@ class blcDummyContainer extends blcContainer{
 		$this->mark_as_synched();
 	}
 	
-	function edit_link($field_name, $parser, $new_url, $old_url = '', $old_raw_url = ''){
+	function edit_link($field_name, $parser, $new_url, $old_url = '', $old_raw_url = '', $new_text = null){
 		return new WP_Error(
 			'container_not_found',
 			sprintf(

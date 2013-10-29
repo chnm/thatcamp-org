@@ -80,7 +80,7 @@ function blc_get_db_schema(){
 	CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}blc_synch` (
 		`container_id` int(20) unsigned NOT NULL,
 		`container_type` varchar(40) NOT NULL,
-		`synched` tinyint(3) unsigned NOT NULL,
+		`synched` tinyint(2) unsigned NOT NULL,
 		`last_synch` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
 		
 		PRIMARY KEY (`container_type`,`container_id`),

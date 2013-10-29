@@ -168,6 +168,11 @@ class AuthorAvatarsForm {
 	function renderFieldRoles($values=array(), $name='roles') {
 		$roles = $this->_getAllRoles();
 		$roles =  array_merge($roles, array('Commentator' => __('Commentators', 'author-avatars')));
+		global $coauthors_plus;
+		if( $coauthors_plus ){
+			$roles =  array_merge($roles, array('coauthors_plus' => __('Co-Author Plus Guest Authors', 'author-avatars')));		
+		}
+
 		$html = '';
 		if (!empty($roles)) {		
 			$attributes = array(
@@ -298,12 +303,15 @@ class AuthorAvatarsForm {
 			'post_count' => __('Number of Posts', 'author-avatars'),
 			'random' => __('Random', 'author-avatars'),
 			'user_id' => __('User Id', 'author-avatars'),
-			'recent_activity' => __('Recent Activity', 'author-avatars'),
+			'recent_post_activity' => __('Recent Posts Activity', 'author-avatars'),
+			'recent_site_activity' => __('Recent Sitewide Activity', 'author-avatars'),
 		);
 		if (AA_is_bbpress()) {
 			$order_options['bbpress_post_count'] = __('BBPress Post Count', 'author-avatars');
 		}
-
+		if (AA_is_bp()) {
+			$order_options['budy_press_recent_activity'] = __('BudyPress last activity', 'author-avatars');
+		}
 		$attributes = array(
 			'id' => $this->_getFieldId($name),
 			'label' => __('Sorting order', 'author-avatars') . ': ',

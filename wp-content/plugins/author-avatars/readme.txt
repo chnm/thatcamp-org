@@ -1,10 +1,12 @@
 ﻿=== Author Avatars List ===
 Contributors: pbearne, bforchhammer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=MZTZ5S8MGF75C&lc=CA&item_name=Wordpress%20Development%20%2f%20Paul%20Bearne&item_number=AuthorAvatarsList%20Plugin&currency_code=CAD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
-Tags: Avatar, Author, BuddyPress, Comment, Editor, Image, Multisite, Photo, Picture, Profile, Shortcode, Random, Sidebar, Thumbnail, User, Widget, Wpmu
+Tags: Avatar, Author, BuddyPress, Comment, Editor, Image, Multisite, Photo, Picture, Profile, Shortcode, Random, Sidebar, Thumbnail, User, Widget, Wpmu, BBPress, co-authors
 Requires at least: 3.0
-Tested up to: 3.5.1
-Stable tag: 1.7.1
+Tested up to: 3.6.1
+Stable tag: 1.8.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Display lists of user avatars using widgets or shortcodes.
 
@@ -24,10 +26,13 @@ Both shortcode and widget can be configured to...
 *   Optionally show a user's name or biography
 *   Show users from the current blog, all blogs or a selection of blogs (on WPMU/Multisite)
 *   Group users by their blog (when showing from multiple blogs), and show the blog name above each grouping (experimental feature).
+*	Supports users from co-authors,BBpress and BudyPress
 
 * the shortcode can page the avatars for large sets add a page_size to the shortcode e.g. "page_size=30"
 
 The plugin makes use of built in wordpress (core) functions to retrieve user information and get avatars.
+
+The Plug-in can show users from bb-press, Budy-press and Co-Author Plus Plug-in 
 
 Single user avatars can be inserted using the [show_avatar shortcode](http://authoravatars.wordpress.com/documentation/show_avatar-shortcode/) and configured to...
 
@@ -48,6 +53,11 @@ Please report bugs and provide feedback in the [wordpress support forum](http://
 
 You can find information for developers [on this page](http://authoravatars.wordpress.com/documentation/developers-guide/).
 
+== Upgrade Notice ==
+
+<strong>Breaking change</strong> in CSS *.multiwidget_author_avatars* is now *.widget_author_avatars*. This is caused by a library change  inorder to support the jetpack visibility option.<br />
+If you have added CSS to your theme you may have to update it for this upgrade (do a find and replace).
+
 == Screenshots ==
 
 1. Very simple set up of the widget on an empty blog.
@@ -57,6 +67,14 @@ You can find information for developers [on this page](http://authoravatars.word
 5. List of users with name and biography
 
 == Changelog ==
+= 1.8.0 =
+* Replaced the pre 2.6 wordpres widget code with the current widget API calls to enable visablity setting
+* CSS changed .multiwidget_author_avatars changed to .widget_author_avatars. This was caused by the widget API update
+* Added expemently support for Co-Author Pluss Plugin - the post count does not work for linked account - will take a patch that fixs it :-)
+* Moved the display option to the right column to make more room for roles
+* Split 'Recent Activity' and 'BudyPress last activity' (only shows buddypress running) to septerate options in the advance ordering option
+* Split / removed 'Recent Activity' into sitewide (pages / custom page types / posts) and just posts (any old shortcode will call just posts)
+
 = 1.7.1 =
 * bubfix removed an extra ' in a SQL select in get_user_last_activity() function. Thanks to "basaja" for the bug report.
 
@@ -252,6 +270,6 @@ The styling of the widget is controlled by the styles defined in [css/widgets.cs
 
 You can override the styles in that file by copying a style block to your theme's `style.css` and adjusting respectively. For example add the following to remove the padding from avatars displayed in a widget:
 
-`html .multiwidget_author_avatars .author-list .user {
+`html .widget_author_avatars .author-list .user {
   padding: 0;
 }`

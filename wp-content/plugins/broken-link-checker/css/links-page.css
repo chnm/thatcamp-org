@@ -246,6 +246,95 @@ td.column-link-text, td.column-new-link-text {
 	vertical-align: middle;
 }
 
+
+/* Inline editor */
+
+.blc-inline-editor label {
+    display: block;
+    margin: 0.2em 0;
+}
+
+.blc-inline-editor .blc-input-text-wrap {
+    display: block;
+    margin-left: 5em;
+}
+
+.blc-inline-editor .blc-input-text-wrap input[type="text"] {
+    width: 100%;
+}
+
+.blc-inline-editor .blc-input-text-wrap textarea {
+    width: 100%;
+}
+
+
+.blc-inline-editor label span.title {
+    display: block;
+    float: left;
+    width: 5em;
+}
+
+.blc-inline-editor span.title {
+    line-height: 1.8em;
+}
+
+.blc-inline-editor-content > h4:first-child {
+    margin-top: 0.4em;
+}
+
+/* Inline editor: suggestion list */
+ul.blc-suggestion-list {
+    list-style: disc outside;
+}
+
+ul.blc-suggestion-list li {
+    margin-left: 1.5em;
+}
+
+.blc-suggestion-details {
+    display: inline-block;
+    width: 465px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+
+    vertical-align: top;
+}
+
+.blc-suggestion-list input.blc-use-url-button {
+    float: right;
+    max-width: 110px;
+    margin-top: 10px;
+}
+
+.blc-suggestion-list code.blc-suggestion-url {
+    display: block;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.blc-suggestion-list .blc-suggestion-name {
+    display: block;
+}
+
+
+.blc-inline-editor-buttons {
+    clear: both;
+    margin: 0.5em 0 0;
+    padding: 0.5em;
+}
+
+.blc-inline-editor-content {
+    max-width: 600px;
+}
+
+
 /* Bulk edit form */
 #bulk-edit {
 	display: none;
@@ -366,14 +455,6 @@ div.search-box{
 }
 
 /* Filter-related styles */
-.blc-undismiss-button {
-    display: none;
-}
-
-.base-filter-dismissed .blc-undismiss-button {
-    display: inline;
-}
-
 .base-filter-all .blc-dismiss-button {
     display: none;
 }

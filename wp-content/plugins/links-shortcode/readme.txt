@@ -4,8 +4,8 @@ Contributors: maartenjs, Apprique
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donateviapaypal%40bigcircle%2enl&lc=HK&item_name=Wordpress%20plugin&item_number=linksshortcode%2dapp&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 Tags: links, link, shortcode, category, Facebook, Like, Recommend, list of links, template, customizable, link manager
 Requires at least: 3.0
-Tested up to: 3.5.2
-Stable tag: 1.6
+Tested up to: 3.6.1
+Stable tag: 1.6.1
 
 The plugin provides the shortcode 'links'. This shortcode shows all links having specified characteristics, following a specified template.
 
@@ -65,6 +65,10 @@ No special actions required before upgrading.
 2. Resulting list of links
 
 == Changelog ==
+
+= 1.6.1 (29-09-2013) =
+* Fixed issue with initializing Links shortcode template on first activation.
+* Fixed issue with table names not starting with the default 'wp_'.
 
 = 1.6 (02-09-2013) = 
 * In Wordpress 3.5 the Link manager is disabled by default if you don't have any Links. This plugin now enables it anyway (which would be a logical thing to do if you want to use Links Shortcodes) in exactly the same way that the Links Manager plugin does this.

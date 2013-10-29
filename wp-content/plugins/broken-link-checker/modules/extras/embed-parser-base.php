@@ -197,6 +197,11 @@ class blcEmbedParserBase extends blcParser {
 			sprintf(__("Embedded videos can't be edited using Broken Link Checker. Please edit or replace the video in question manually.", 'broken-link-checker'), $this->parser_type)
 		);
 	}
+
+	public function is_url_editable() {
+		return false;
+	}
+
 }
 
 endif;

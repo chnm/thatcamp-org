@@ -77,7 +77,7 @@ class blcHTMLLink extends blcParser {
 		};
 		
 		if ( !isset($parts['scheme']) ){
-			//No sheme - likely a relative URL. Turn it into an absolute one.
+			//No scheme - likely a relative URL. Turn it into an absolute one.
 			$url = $this->relative2absolute($url, $base_url); //$base_url comes from $params
 		}
 		
@@ -86,7 +86,7 @@ class blcHTMLLink extends blcParser {
 			return null;
 		}
 		
-		$text = strip_tags( $link['#link_text'] ); 
+		$text = $link['#link_text'];
 	    
 	    //The URL is okay, create and populate a new link instance.
 	    $instance = new blcLinkInstance();
@@ -107,43 +107,61 @@ class blcHTMLLink extends blcParser {
    * @param string $content Look for links in this string.
    * @param string $new_url Change the links to this URL.
    * @param string $old_url The URL to look for.
-   * @param string $old_raw_url The raw, not-normalized URL of the links to look for. Optional. 
+   * @param string $old_raw_url The raw, not-normalized URL of the links to look for. Optional.
+   * @param string $new_text New link text. Optional.
    *
    * @return array|WP_Error If successful, the return value will be an associative array with two
    * keys : 'content' - the modified content, and 'raw_url' - the new raw, non-normalized URL used
    * for the modified links. In most cases, the returned raw_url will be equal to the new_url.
    */
-	function edit($content, $new_url, $old_url, $old_raw_url){
+	function edit($content, $new_url, $old_url, $old_raw_url, $new_text = null){
 		if ( empty($old_raw_url) ){
 			$old_raw_url = $old_url;
 		}
-		
+
 		//Save the old & new URLs for use in the edit callback.
 		$args = array(
 			'old_url' => $old_raw_url,
 			'new_url' => $new_url,
+			'new_text' => $new_text,
 		);
 		
 		//Find all links and replace those that match $old_url.
 		$content = $this->multi_edit($content, array(&$this, 'edit_callback'), $args);
 		
-		return array(
+		$result = array(
 			'content' => $content,
 			'raw_url' => $new_url, 
 		);
+		if ( isset($new_text) ) {
+			$result['link_text'] = $new_text;
+		}
+		return $result;
 	}
 	
 	function edit_callback($link, $params){
 		if ($link['href'] == $params['old_url']){
-			return array(
+			$modified = array(
 				'href' => $params['new_url'],
 			);
+			if ( isset($params['new_text']) ) {
+				$modified['#link_text'] = $params['new_text'];
+			}
+			return $modified;
 		} else {
 			return $link['#raw'];
 		}
 	}
-	
-  /**
+
+	public function is_link_text_editable() {
+		return true;
+	}
+
+	public function is_url_editable() {
+		return true;
+	}
+
+	/**
    * Remove all links that have a certain URL, leaving anchor text intact.
    *
    * @param string $content	Look for links in this string.
@@ -194,16 +212,17 @@ class blcHTMLLink extends blcParser {
 			return $link['#link_text']; 
 		}
 	}
-	
-  /**
-   * Get the link text for printing in the "Broken Links" table.
-   * Sub-classes should override this method and display the link text in a way appropriate for the link type.
-   *
-   * @param blcLinkInstance $instance
-   * @return string HTML 
-   */
+
+	/**
+	 * Get the link text for printing in the "Broken Links" table.
+	 * Sub-classes should override this method and display the link text in a way appropriate for the link type.
+	 *
+	 * @param blcLinkInstance $instance
+	 * @param string $context
+	 * @return string HTML
+	 */
 	function ui_get_link_text($instance, $context = 'display'){
-		return $instance->link_text;
+		return strip_tags($instance->link_text);
 	}
 	
  /**

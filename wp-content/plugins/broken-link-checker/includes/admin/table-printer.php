@@ -145,6 +145,9 @@ class blcTablePrinter {
 		//Bottom navigation				
 		$this->navigation($compact, '2');
 		echo '</form>';
+
+		//Inline editor (hidden by default, JS will move it to the right place).
+		$this->inline_editor($visible_columns);
 	}
 	
 	/**
@@ -322,7 +325,7 @@ class blcTablePrinter {
 		<tr id="bulk-edit" class="inline-edit-rows"><td colspan="<?php echo count($visible_columns)+1; ?>">
 		<div id="bulk-edit-wrap">
 		<fieldset>
-			<h4><?php _e('Bulk Edit URLs'); ?></h4>
+			<h4><?php _e('Bulk Edit URLs', 'broken-link-checker'); ?></h4>
 			<label>
 				<span class="title"><?php _e('Find', 'broken-link-checker'); ?></span>
 				<input type="text" name="search" class="text">
@@ -404,15 +407,43 @@ class blcTablePrinter {
 			}
 			$instances = $this->sort_instances_for_display($instances, $s_link_type);
 		}
-		
+
+		//For inline editing, we'll need to know if any instances have editable link text, and what it is.
+		$can_edit_text = false;
+		$can_edit_url = false;
+		$editable_link_texts = $non_editable_link_texts = array();
+		foreach($instances as $instance) {
+			if ( $instance->is_link_text_editable() ) {
+				$can_edit_text = true;
+				$editable_link_texts[$instance->link_text] = true;
+			} else {
+				$non_editable_link_texts[$instance->link_text] = true;
+			}
+
+			if ( $instance->is_url_editable() ) {
+				$can_edit_url = true;
+			}
+		}
+
+		$link_texts = $can_edit_text ? $editable_link_texts : $non_editable_link_texts;
+		$data_link_text = '';
+		if ( count($link_texts) === 1 ) {
+			//All instances have the same text - use it.
+			$link_text = key($link_texts);
+			$data_link_text = ' data-link-text="' . esc_attr($link_text) . '"';
+		}
+
 		printf(
-			'<tr id="blc-row-%s" class="blc-row %s" data-days-broken="%d">',
+			'<tr id="blc-row-%s" class="blc-row %s" data-days-broken="%d" data-can-edit-url="%d" data-can-edit-text="%d"%s>',
 			 $link->link_id,
 			 $rowclass,
-			 $days_broken
+			 $days_broken,
+			 $can_edit_url ? 1 : 0,
+			 $can_edit_text ? 1 : 0,
+			 $data_link_text
 		);
-		
-		//The checkbox used to select links is automatically printed in all layouts 
+
+		//The checkbox used to select links is automatically printed in all layouts
 		//and can't be disabled. Without it, bulk actions wouldn't work.
 		$this->column_checkbox($link);
 		
@@ -437,7 +468,7 @@ class blcTablePrinter {
 			
 			echo '</td>';
 		}
-		
+
 		echo '</tr>';
 	} 
 	
@@ -611,14 +642,11 @@ class blcTablePrinter {
 		?>
         <a href="<?php print esc_attr($link->url); ?>" target='_blank' class='blc-link-url' title="<?php echo esc_attr($link->url); ?>">
         	<?php print $link->url; ?></a>
-        <input type='text' id='link-editor-<?php print $link->link_id; ?>' 
-        	value="<?php print esc_attr($link->url); ?>" 
-            class='blc-link-editor' style='display:none' />
         <?php
     	//Output inline action links for the link/URL                  	
       	$actions = array();
       	
-      	$actions['edit'] = "<span class='edit'><a href='javascript:void(0)' class='blc-edit-button' title='" . esc_attr( __('Edit link URL' , 'broken-link-checker') ) . "'>". __('Edit URL' , 'broken-link-checker') ."</a>";
+      	$actions['edit'] = "<span class='edit'><a href='javascript:void(0)' class='blc-edit-button' title='" . esc_attr( __('Edit this link' , 'broken-link-checker') ) . "'>". __('Edit URL' , 'broken-link-checker') ."</a>";
       	
       	$actions['delete'] = "<span class='delete'><a class='submitdelete blc-unlink-button' title='" . esc_attr( __('Remove this link from all posts', 'broken-link-checker') ). "' ".
 			"href='javascript:void(0);'>" . __('Unlink', 'broken-link-checker') . "</a>";
@@ -647,10 +675,6 @@ class blcTablePrinter {
 
 		echo '<div class="row-actions">';
 		echo implode(' | </span>', $actions) .'</span>';
-		
-		echo "<span style='display:none' class='blc-cancel-button-container'> " .
-			 "| <a href='javascript:void(0)' class='blc-cancel-button' title='". esc_attr(__('Cancel URL editing' , 'broken-link-checker')) ."'>". __('Cancel' , 'broken-link-checker') ."</a></span>";
-
 		echo '</div>';
 		
 		?>
@@ -753,9 +777,59 @@ class blcTablePrinter {
 		
 		return strcmp($a->container_type, $b->container_type);
 	}
+
+	protected function inline_editor($visible_columns) {
+		?>
+		<table style="display: none;"><tbody>
+			<tr id="blc-inline-edit-row" class="blc-inline-editor">
+				<td class="blc-colspan-change" colspan="<?php echo count($visible_columns); ?>">
+					<div class="blc-inline-editor-content">
+						<h4><?php echo _x('Edit Link', 'inline editor title', 'broken-link-checker'); ?></h4>
+
+						<label>
+							<span class="title"><?php echo _x('Text', 'inline link editor', 'broken-link-checker'); ?></span>
+							<span class="blc-input-text-wrap"><input type="text" name="link_text" value="" class="blc-link-text-field" /></span>
+						</label>
+
+						<label>
+							<span class="title"><?php echo _x('URL', 'inline link editor', 'broken-link-checker'); ?></span>
+							<span class="blc-input-text-wrap"><input type="text" name="link_url" value="" class="blc-link-url-field" /></span>
+						</label>
+
+						<div class="blc-url-replacement-suggestions" style="display: none;">
+							<h4><?php echo _x('Suggestions', 'inline link editor', 'broken-link-checker'); ?></h4>
+							<ul class="blc-suggestion-list">
+								<li>...</li>
+							</ul>
+						</div>
+
+						<div class="submit blc-inline-editor-buttons">
+							<input type="button" class="button-secondary cancel alignleft blc-cancel-button" value="<?php echo esc_attr(__('Cancel', 'broken-link-checker')); ?>" />
+							<input type="button" class="button-primary save alignright blc-update-link-button" value="<?php echo esc_attr(__('Update', 'broken-link-checker')); ?>" />
+
+							<img class="waiting" style="display:none;" src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>" alt="" />
+							<div class="clear"></div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody></table>
+
+		<ul id="blc-suggestion-template" style="display: none;">
+			<li>
+				<input type="button" class="button-secondary blc-use-url-button" value="<?php echo esc_attr(__('Use this URL', 'broken-link-checker')); ?>" />
+
+				<div class="blc-suggestion-details">
+					<span class="blc-suggestion-name">
+						<a href="http://example.com/" target="_blank">Suggestion name</a>
+					</span>
+					<code class="blc-suggestion-url">suggestion URL</code>
+				</div>
+			</li>
+		</ul>
+		<?php
+	}
 	
 }
 
 }//class_exists
-
-?>

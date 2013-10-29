@@ -84,6 +84,8 @@ $blc_config_manager = new blcConfigurationManager(
 		'notification_email_address' => '', //If set, send email notifications to this address instead of the admin.
 		'notification_schedule' => 'daily', //How often (at most) notifications will be sent. Possible values : 'daily', 'weekly'
 		'last_notification_sent' => 0,		//When the last email notification was sent (Unix timestamp)
+
+		'suggestions_enabled' => true,  //Whether to suggest alternative URLs for broken links.
 		
 		'server_load_limit' => 4,		//Stop parsing stuff & checking links if the 1-minute load average
 										//goes over this value. Only works on Linux servers. 0 = no limit.

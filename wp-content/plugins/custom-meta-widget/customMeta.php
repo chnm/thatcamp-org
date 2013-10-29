@@ -1,8 +1,8 @@
 <?php /*
 Plugin Name: Custom Meta Widget
-Plugin URI: http://shinraholdings.com/plugins/custom-meta-widget
+Plugin URI: http://shinraholdings.com/plugins/custom-meta-widget/
 Description: Clone of the standard Meta widget with options to hide thlogin, admin, entry and comment feed, WordPress.org and /custom links.
-Version: 1.4.5
+Version: 1.4.6
 Author: bitacre
 Author URI: http://shinraholdings.com/
 License: GPLv2

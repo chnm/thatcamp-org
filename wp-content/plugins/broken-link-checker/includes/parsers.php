@@ -130,10 +130,29 @@ class blcParser extends blcModule {
    * Sub-classes should override this method and display the link text in a way appropriate for the link type.
    *
    * @param blcLinkInstance $instance
+   * @param string $context
    * @return string HTML 
    */
 	function ui_get_link_text($instance, $context = 'display'){
 		return $instance->link_text;
+	}
+
+	/**
+	 * Check if the parser supports editing the link text.
+	 *
+	 * @return bool
+	 */
+	public function is_link_text_editable() {
+		return false;
+	}
+
+	/**
+	 * Check if the parser supports editing the link URL.
+	 *
+	 * @return bool
+	 */
+	public function is_url_editable() {
+		return true;
 	}
 	
   /**
@@ -307,7 +326,7 @@ class blcParserHelper {
    *
    * @param string $format
    * @param string $container_type
-   * @return array of blcParser
+   * @return blcParser[]
    */
 	static function get_parsers( $format, $container_type ){
 		$found = array();

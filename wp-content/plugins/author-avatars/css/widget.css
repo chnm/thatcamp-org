@@ -1,7 +1,7 @@
-.multiwidget_author_avatars .author-list {
+.widget_author_avatars .author-list {
 	text-align: center;
 }
-.multiwidget_author_avatars .author-list .user {
+.widget_author_avatars .author-list .user {
 	padding: 0.2em;
 	display: inline-block;
 	vertical-align: top;
@@ -9,24 +9,24 @@
 	zoom: 1;
 	*display: inline;
 }
-.multiwidget_author_avatars .author-list .with-name {
+.widget_author_avatars .author-list .with-name {
 	display: block;
 }
-.multiwidget_author_avatars .author-list .user .name {
+.widget_author_avatars .author-list .user .name {
 	display: block;
 }
-.multiwidget_author_avatars .author-list .with-biography {
+.widget_author_avatars .author-list .with-biography {
 	text-align: left;
 	margin-bottom: 0.5em;
 	clear: left;
 }
-.multiwidget_author_avatars .author-list .with-biography .name {
+.widget_author_avatars .author-list .with-biography .name {
 	font-size: 1.1em;
 }
-.multiwidget_author_avatars .author-list .with-biography .avatar {
+.widget_author_avatars .author-list .with-biography .avatar {
 	float: left;
 	margin: 0.2em 0.3em 0.2em 0;
 }
-.multiwidget_author_avatars .author-list .avatar img {
+.widget_author_avatars .author-list .avatar img {
 	float: none !important; /* is set to left on some themes */
 }

@@ -204,7 +204,7 @@ class blcLink {
 		$this->last_check_attempt = time();
 		
 		/*
-		If the link is stil marked as in the process of being checked, that probably means
+		If the link is still marked as in the process of being checked, that probably means
 		that the last time the plugin tried to check it the script got terminated by PHP for 
 		running over the execution time limit or causing a fatal error.
 		
@@ -557,6 +557,7 @@ class blcLink {
    * if all instances were edited successfully.   
    *
    * @param string $new_url
+   * @param string $new_text Optional.
    * @return array An associative array with these keys : 
    *   new_link_id - the database ID of the new link.
    *   new_link - the new link (an instance of blcLink).
@@ -564,7 +565,7 @@ class blcLink {
    *   cnt_error - the number of instances that caused problems.
    *   errors - an array of WP_Error objects corresponding to the failed edits.  
    */
-	function edit($new_url){
+	function edit($new_url, $new_text = null){
 		if ( !$this->valid() ){
 			return new WP_Error(
 				'link_invalid',
@@ -623,7 +624,7 @@ class blcLink {
 		//Edit each instance.
 		//FB::info('Editing ' . count($instances) . ' instances');
 		foreach ( $instances as $instance ){
-			$rez = $instance->edit( $new_url, $this->url ); 			
+			$rez = $instance->edit( $new_url, $this->url, $new_text );
 			if ( is_wp_error($rez) ){
 				$cnt_error++;
 				array_push($errors, $rez);
@@ -812,7 +813,7 @@ class blcLink {
    *
    * @param bool $ignore_cache Don't use the internally cached instance list.
    * @param string $purpose 
-   * @return array An array of instance objects or FALSE on failure.
+   * @return blcLinkInstance[] An array of instance objects or FALSE on failure.
    */
 	function get_instances( $ignore_cache = false, $purpose = '' ){
 		global $wpdb;

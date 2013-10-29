@@ -7,7 +7,7 @@ if (!function_exists('AA_is_wpmu')):
 	*/
 	function AA_is_wpmu() {
 		// Wordpress 3.0+
-		if (function_exists('is_multisite')) {
+		if (function_exists( 'is_multisite' )) {
 			return is_multisite();
 		}
 		// Old WordpressMU versions
@@ -34,26 +34,29 @@ if ( ! function_exists( 'AA_is_version' ) ) :
     }
 endif;
 
-if (!function_exists('AA_is_bp')):
+if ( !function_exists( 'AA_is_bp' ) ):
 	/**
 	* Helper function which checks whether we are running buddypress
 	*
 	* @return bool true if we are on a system running buddypress, false otherwise.
 	*/
 	function AA_is_bp() {
-		return defined('BP_VERSION')
-		|| defined('BP_CORE_VERSION'); // buddypress versions < 1.0 (?)
+		return defined( 'BP_VERSION' )
+		|| defined( 'BP_CORE_VERSION' ); // buddypress versions < 1.0 (?)
 	}
 endif;
 
-if (!function_exists('AA_is_bbpress')):
+if ( !function_exists( 'AA_is_bbpress' ) ):
 	/**
 	* Helper function which checks whether we are running buddypress
 	*
 	* @return bool true if we are on a system running buddypress, false otherwise.
 	*/
 	function AA_is_bbpress() {
-		if (is_plugin_active('bbpress/bbpress.php')) {
+		if( function_exists( 'is_bbpress' ) ){
+			return is_bbpress();
+		}
+		if ( is_admin() && is_plugin_active( 'bbpress/bbpress.php' ) ) {
 	    	return true;
 		}
 		return false;
@@ -62,7 +65,7 @@ endif;
 
 
 
-if (!function_exists('AA_in_arrayi')):
+if ( !function_exists( 'AA_in_arrayi' ) ):
 	/**
 	* Case insensitive version of in_array().
 	*
@@ -76,7 +79,7 @@ if (!function_exists('AA_in_arrayi')):
 		return false;
 	}
 endif;
-if (!function_exists('AA_array_in_array')):
+if ( !function_exists( 'AA_array_in_array' ) ):
 	/**
 	* A simple function to type less when wanting to check if any one of many
 	* values is in a single array.
@@ -85,19 +88,19 @@ if (!function_exists('AA_array_in_array')):
 	* @uses in_arrayi()
 	* @return bool true if at least one value is in both arrays, false otherwise.
 	*/
-	function AA_array_in_array($needle, $haystack) {
+	function AA_array_in_array( $needle, $haystack ) {
 	//Make sure $needle is an array for foreach
-	if(!is_array($needle)) $needle = array($needle);
+	if( !is_array( $needle ) ) $needle = array( $needle );
 	//For each value in $needle, return TRUE if in $haystack
-		foreach($needle as $pin)
-			if(AA_in_arrayi($pin, $haystack)) 
+		foreach( $needle as $pin )
+			if( AA_in_arrayi( $pin, $haystack ) ) 
 				return TRUE;
 			//Return FALSE if none of the values from $needle are found in $haystack
 	return FALSE;
 	}
 endif;
 
-if (!function_exists('AA_atrim')):
+if ( !function_exists( 'AA_atrim' ) ):
 	/**
 	* A simple implementation of "array_slice()" which preserves array keys.
 	*
@@ -112,7 +115,7 @@ if (!function_exists('AA_atrim')):
 	}
 endif;
 
-if (!function_exists('AA_is_super_admin')):
+if ( !function_exists( 'AA_is_super_admin' ) ):
 	/**
 	* Implementation of the function "AA_is_super_admin" if it doesn't not exists.
 	* Needed for support of wordpress versions < 3.0.
@@ -124,16 +127,16 @@ if (!function_exists('AA_is_super_admin')):
 	function AA_is_super_admin( $user_id = '' ) {
 		$user_login = '';
 		if ( !empty( $user_id ) ) {
-			$user_info = get_userdata($user_id);
+			$user_info = get_userdata( $user_id );
 			if ( empty( $user_info->user_login ) )
 				return false;
 			$user_login = $user_info->user_login;
 		}
-		return is_site_admin($user_login);
+		return is_site_admin( $user_login );
 	}
 endif;
 
-if (!function_exists('AA_donateButton')):
+if ( !function_exists( 'AA_donateButton' ) ):
 	/**
 	* Donation button code
 	*
@@ -141,13 +144,13 @@ if (!function_exists('AA_donateButton')):
 	* @param boolean $print Optional. To return a string or echo/print the output, default is false 
 	*
 	*/
-	function AA_donateButton($type = 'small', $print = false) {
+	function AA_donateButton( $type = 'small', $print = false ) {
 
-		if(	!$print){
+		if(	!$print ){
 			ob_start();
 		}
 
-		switch ($type){
+		switch ( $type ){
 			case 'small': 
 			?>
 				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -176,7 +179,7 @@ if (!function_exists('AA_donateButton')):
 			<?php 
 		}
 
-		if(	!$print){
+		if(	!$print ){
 			return ob_get_clean();
 		}
 	}

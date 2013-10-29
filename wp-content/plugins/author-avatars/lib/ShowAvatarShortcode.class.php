@@ -69,7 +69,7 @@ class ShowAvatarShortcode {
 		else {
 			$avatar = __("[show_author shortcode: please set id/email attribute]");
 		}
-		// is there an suer link request
+		// is there an user link request
 	
 		if (!empty($atts['user_link'])
 				||!empty($atts['show_biography'])

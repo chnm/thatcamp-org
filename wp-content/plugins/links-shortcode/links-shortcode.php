@@ -3,12 +3,13 @@
 Plugin Name: Links Shortcode
 Plugin URI: http://www.apprique.com/wordpress-plugins
 Description: Displays all links of a certain category in a post using a shortcode, according to a definable template. Includes optional Facebook Like button.
-Version: 1.6
+Version: 1.6.1
 Author: Maarten Swemmer
 Author URI: http://blog.bigcircle.nl
 */
 
 require_once(ABSPATH . WPINC . '/formatting.php');
+global $linkssc_default_template;
 $linkssc_default_template = "<div itemscope itemtype=\"http://schema.org/Rating\" class=\"links_sc_fb\">
 [optional [date]: ||]<a itemprop=\"url\" href=\"[link_url]\" target=\"_blank\" ><span itemprop=\"name\">[link_name]</span></a>
 <meta itemprop=\"worstRating\" content=\"1\"><meta itemprop=\"bestRating\" content=\"5\"><meta itemprop=\"ratingValue\" content=\"[link_rating]\">[link_rating_stars]
@@ -512,7 +513,7 @@ It is based on "Andys Link Last Edited Meta Box" as described on http://fleacirc
 // function to update the link_edited field
 function linkssc_update_link_editied($link_ID) {
     global $wpdb;
-    $sql = "update wp_links set link_updated = NOW() where link_id = " . $link_ID . ";";
+    $sql = "update ".$wpdb->links." set link_updated = NOW() where link_id = " . $link_ID . ";";
     $wpdb->query($sql);
 }
 

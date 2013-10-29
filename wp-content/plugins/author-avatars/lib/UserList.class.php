@@ -323,34 +323,45 @@ class UserList {
 		$link_type = $this->user_link;
 		
 		// always use 'website' for commentators
-		if ( $user->user_id == -1) {
+		$type = ( isset( $user->type ) )?$user->type:null;
+
+		if ( $user->user_id == -1 && "guest-author" != $type ){
 			$link_type = 'website';
 		}
 
-	switch ($link_type) {
-			case 'authorpage':
-				$link = get_author_posts_url($user->user_id);
-				break;
-			case 'website':
-				$link = $user->user_url;
-			if (empty($link) || $link == 'http://') $link = false;
+	switch ( $link_type ) {
+		case 'authorpage':
+			if( "guest-author" == $type ){
+				$link = get_author_posts_url( $user->user_id, $user->user_nicename );
+			}else{
+				$link = get_author_posts_url( $user->user_id );	
+			}
 			break;
-			case 'blog':
-				if (AA_is_wpmu()) {
-				$blog = get_active_blog_for_user($user->user_id);
-				if (!empty($blog->siteurl)) $link = $blog->siteurl;
+		case 'website':
+			if( "guest-author" == $type ){
+				$link = get_the_author_meta('url',$user->ID);
+			}else{
+				$link = $user->user_url;
+				if ( empty( $link ) || $link == 'http://' ) $link = false;				
+			}
+
+			break;
+		case 'blog':
+				if ( AA_is_wpmu() ) {
+				$blog = get_active_blog_for_user( $user->user_id );
+				if (  !empty( $blog->siteurl ) ) $link = $blog->siteurl;
 			}
 				break;
-			case 'bp_memberpage':
-			if (function_exists('bp_core_get_user_domain')) {
-				$link = bp_core_get_user_domain($user->user_id);
+		case 'bp_memberpage':
+			if (function_exists( 'bp_core_get_user_domain' ) ) {
+				$link = bp_core_get_user_domain( $user->user_id );
 			}
-			elseif (function_exists('bp_core_get_userurl')) { // BP versions < 1.1
-				$link = bp_core_get_userurl($user->user_id);
+			elseif ( function_exists( 'bp_core_get_userurl' ) ) { // BP versions < 1.1
+				$link = bp_core_get_userurl( $user->user_id );
 			}
 			break;
 		case 'bbpress_memberpage':
-			if (function_exists('bbp_get_user_profile_url')) {
+			if ( function_exists( 'bbp_get_user_profile_url' ) ) {
 				$link = bbp_get_user_profile_url( $user->user_id );
 			}
 				if (empty($link) || $link == 'http://') $link = false;
@@ -359,18 +370,28 @@ class UserList {
 
 		if ($this->show_postcount) {
 			$postcount = 0;
-			if ($user->user_id == -1) {
+
+			if ($user->user_id == -1 && "guest-author" != $type) {
 				$postcount = $this->get_comment_count($user->user_email);
 				$title .= ' ('. sprintf(_n("%d comment", "%d comments", $postcount, 'author-avatars'), $postcount) .')';
 			}
 			else {
-				$postcount = $this->get_user_postcount($user->user_id);
+				// this is passing 1 for coauthors
+				
+				if( "guest-author" == $type && $user->linked_account ){
+					$linked_user =  get_user_by( 'login', $user->linked_account );
+					// fetch the linked account and show thats count
+					$postcount = $this->get_user_postcount( $linked_user->ID );
+				}else{
+					$postcount = $this->get_user_postcount( $user->user_id );
+				}
+				
 				$title .= ' ('. sprintf(_n("%d post", "%d posts", $postcount, 'author-avatars'), $postcount) .')';
 			}
 			$name .= sprintf(' (%d)', $postcount);
 		}
 
-		if($this->show_bbpress_post_count){
+		if($this->show_bbpress_post_count && AA_is_bbpress()){
 			$BBPRESS_postcount = 0;
 			if(function_exists('bbp_get_user_topic_count_raw')){
 				$BBPRESS_postcount = bbp_get_user_topic_count_raw(  $user->user_id ) + bbp_get_user_reply_count_raw(  $user->user_id );
@@ -380,19 +401,24 @@ class UserList {
 		}
 
 		$biography = false;
-		if ($this->show_biography && $user->user_id > 0) {
-			$biography = get_the_author_meta('description', $user->user_id);
+
+		if ( $this->show_biography ) {
+			if( "guest-author" != $type && $user->user_id > 0 ){
+				$biography = get_the_author_meta('description', $user->user_id);
+			}else{
+				$biography = ( isset( $user->description ) )?$user->description:'';
+			}
 			$divcss[] = 'with-biography';
 			$name = '<strong>'. $name .'</strong>';
-			if (empty($biography)) $divcss[] = 'biography-missing';
+			if ( empty( $biography ) ) $divcss[] = 'biography-missing';
 		}
 
 		$email = false;
-		if ($this->show_email && $user->user_id > 0) {
-			$userEmail = get_the_author_meta('user_email', $user->user_id);
+		if ($this->show_email && $user->user_email) {
+			$userEmail = $user->user_email;
 			$email = "<a href='mailto:".$userEmail."''>".$userEmail."</a>";
 			$divcss[] = 'with-email';
-			if (empty($email)) $divcss[] = 'email-missing';
+			if ( empty( $email ) ) $divcss[] = 'email-missing';
 		}
 
 		if ($user->user_id == -1) {
@@ -400,17 +426,17 @@ class UserList {
 			$avatar = get_avatar($user->user_email, $avatar_size);
 		}
 		else {
-			if (function_exists('bp_core_fetch_avatar')) {
-				$avatar = bp_core_fetch_avatar(array(
+			if ( function_exists( 'bp_core_fetch_avatar' ) ) {
+				$avatar = bp_core_fetch_avatar( array(
 					'item_id' => $user->user_id,
 					'width' => $avatar_size,
 					'height' => $avatar_size,
 					'type' => 'full',
 					'alt' => $alt,
-					'title' => $title));
+					'title' => $title ) );
 			}
 			else {
-				$avatar = get_avatar($user->user_id, $avatar_size);
+				$avatar = get_avatar( $user->user_id, $avatar_size );
 			}
 		}
 
@@ -454,28 +480,67 @@ class UserList {
 		$users = $this->get_blog_users($this->roles);
 
 		// add commentators if requested
-		if(in_array('Commentator', $this->roles)) {
+		if( in_array( 'Commentator', $this->roles ) ) {
 			$commentators = $this->get_commentators();
-			if (is_array($users) && is_array($commentators)) {
-				$users = array_merge($users, $commentators);
+			if ( is_array( $users ) && is_array( $commentators ) ) {
+				$users = array_merge( $users, $commentators );
 			}
-			else if (is_array($commentators)) {
+			else if ( is_array( $commentators ) ) {
 				$users = $commentators;
 			}
 		}
+		// lets get all the co-author not maped to WP users
+
+		if( in_array( 'coauthors_plus', $this->roles ) ){
+			global $coauthors_plus;
+			$args = array( 'orderby'=>'term_order', 'order'=>'ASC', );
+		//	$args = array( 
+		// 		'optioncount'      => false,
+		// 		'show_fullname'    => true,
+		// 		'hide_empty'       => false,
+		// 		'feed'             => '',
+		// 		'feed_image'       => '',
+		// 		'feed_type'        => '',
+		// 		'echo'             => false,
+		// 		'html'             => false,
+		// 		'number'           => 99,  
+		// );
+			$coauthors = array();
+			
+		//	$coauthor_terms = coauthors_wp_list_authors( $args );
+
+			$coauthor_terms = get_terms( $coauthors_plus->coauthor_taxonomy, $args );
+
+			if ( is_array( $coauthor_terms ) && !empty( $coauthor_terms ) ) {
+				foreach( $coauthor_terms as $coauthor ) {
+					$coauthor_slug = preg_replace( '#^cap\-#', '', $coauthor->slug );
+					$post_author =  $coauthors_plus->get_coauthor_by( 'user_nicename', $coauthor_slug );
+
+					// In case the user has been deleted while plugin was deactivated
+					if ( !empty( $post_author ) ){
+						$post_author->user_id = -1 ;// to stop the fliter from breaking
+						$post_author->user_url = $post_author->website;
+						$coauthors[] = $post_author;
+					}
+						
+				}
+			$users = array_merge($users, $coauthors);
+			}
+		}
+
 
 		// filter them
-		$this->_filter($users);
+		$this->_filter( $users );
 		
 		// sort them
-		$this->_sort($users);
+		$this->_sort( $users );
 		
 		// group them
-		$this->_group($users);
+		$this->_group( $users );
 		
 		// and limit the number
-		if (intval($this->limit) > 0) {
-			$users = AA_atrim($users, intval($this->limit));
+		if( intval( $this->limit ) > 0 ) {
+			$users = AA_atrim( $users, intval( $this->limit ) );
 		}
 		
 		return $users;
@@ -580,17 +645,26 @@ class UserList {
 			foreach($users as $id => $usr) {
 				$user = &$users[$id];
 				$add = true;
-				
+
 				// Check user role
 				// if we have set some roles to restrict by
-				if ( is_array($this->roles) && !empty($this->roles)) {
-					if (!isset($user->user_roles)) {
-						$user->user_roles = array_keys(unserialize($user->meta_value));
-					}
-					// if the current user does not have one of those roles
-					if (!AA_array_in_array($user->user_roles, $this->roles)) {
-						// do not add this user
-						$add = false;
+				$type = ( isset( $user->type ) )?$user->type:null;
+				// don't fileter gust authors
+				if("guest-author" != $type){
+					if ( is_array($this->roles) && !empty($this->roles)) {
+						if (!isset($user->user_roles)) {
+							if(isset($user->meta_value)){
+								$user->user_roles = array_keys(unserialize($user->meta_value));
+							}else{
+								$user->user_roles = $user->roles;
+							}
+
+						}
+						// if the current user does not have one of those roles
+						if (!AA_array_in_array($user->user_roles, $this->roles)) {
+							// do not add this user
+							$add = false;
+						}
 					}
 				}
 				
@@ -703,8 +777,15 @@ class UserList {
 			case 'date_registered':
 				@usort($users, array($this, '_user_cmp_regdate'));
 				break;
-			case 'recent_activity':
-				@usort($users, array($this, '_user_cmp_activity'));
+			case 'recent_site_activity':
+				@usort($users, array($this, '_user_cmp_site_activity'));
+				break;
+			case 'recent_activity': // load posts as the default for old settings
+			case 'recent_post_activity':
+				@usort($users, array($this, '_user_cmp_post_activity'));
+				break;				
+			case 'budy_press_recent_activity':
+				@usort($users, array($this, '_user_cmp_budypress_activity'));
 				break;
 		}
 	}
@@ -892,25 +973,24 @@ class UserList {
 	}
 	
 	/**
-	 * Given two users, this function compares the time of last user activity on the page.
+	 * Given two users, this function compares the time of last user activity sitewide.
 	 *
 	 * @access private
 	 * @param WP_User $a
 	 * @param WP_User $b
 	 * @return int result of a string compare of the user's recent activity.
 	 */
-	function _user_cmp_activity($a, $b) {
-		$a_activity = $this->get_user_last_activity($a->user_id);
-		$b_activity = $this->get_user_last_activity($b->user_id);
+	function _user_cmp_site_activity($a, $b) {
+		$a_activity = $this->get_user_last_site_activity($a->user_id);
+		$b_activity = $this->get_user_last_site_activity($b->user_id);
 		
 		return $this->_sort_direction() * strcasecmp($a_activity, $b_activity);
 	}
 	
 	/**
-	 * Returns the time of last activity for a given user. 
+	 * Returns the time of last activity for a given user all post and pages. 
 	 *
-	 * If BuddyPress is available this function uses the `last_activity` meta
-	 * data value maintained by BuddyPress. Otherwise it returns the date of
+	 * Returns the date of
 	 * the latest post or page published by the given user.
 	 *
 	 * @param int $user_id
@@ -918,24 +998,96 @@ class UserList {
 	*
 	* look at using bbp_get_user_last_posted to get the buddypress value 
 	 */
-	function get_user_last_activity($user_id) {
-		if (AA_is_bp()) {
+	function get_user_last_site_activity( $user_id ) {
+
+		global $wpdb;
+		$query = $wpdb->prepare(
+			"SELECT p.post_date
+			FROM $wpdb->posts p
+			WHERE
+				p.post_status = 'publish'
+				AND
+				p.post_author = %d
+			ORDER BY p.post_date
+			DESC LIMIT 1",
+			$user_id
+		);
+		return $wpdb->get_var( $query );
+	}
+
+	/**
+	 * Given two users, this function compares the time of last user activity for posts.
+	 *
+	 * @access private
+	 * @param WP_User $a
+	 * @param WP_User $b
+	 * @return int result of a string compare of the user's recent activity.
+	 */
+	function _user_cmp_post_activity($a, $b) {
+		$a_activity = $this->get_user_last_post_activity($a->user_id);
+		$b_activity = $this->get_user_last_post_activity($b->user_id);
+		
+		return $this->_sort_direction() * strcasecmp($a_activity, $b_activity);
+	}
+	
+	/**
+	 * Returns the time of last activity for a given user. 
+	 *
+	 * Returns the date of
+	 * the latest post published by the given user.
+	 *
+	 * @param int $user_id
+	 * @return string last activity date
+	*
+	* look at using bbp_get_user_last_posted to get the buddypress value 
+	 */
+	function get_user_last_post_activity( $user_id ) {
+
+		global $wpdb;
+		$query = $wpdb->prepare(
+			"SELECT p.post_date
+			FROM $wpdb->posts p
+			WHERE
+				p.post_status = 'publish'
+				AND
+				p.post_type = 'post'
+				AND
+				p.post_author = %d
+			ORDER BY p.post_date
+			DESC LIMIT 1",
+			$user_id
+		);
+		return $wpdb->get_var( $query );
+	}
+
+	/**
+	 * Given two users, this function compares the time of last user activity in buddypress.
+	 *
+	 * @access private
+	 * @param WP_User $a
+	 * @param WP_User $b
+	 * @return int result of a string compare of the user's recent activity.
+	 */
+	function _user_cmp_budypress_activity( $a, $b ) {
+		$a_activity = $this->get_user_last_buddypress_activity( $a->user_id );
+		$b_activity = $this->get_user_last_buddypress_activity( $b->user_id );
+		
+		return $this->_sort_direction() * strcasecmp( $a_activity, $b_activity );
+	}
+	
+	/**
+	 * Returns the time of last activity for a given user. 
+	 *
+	 * For BuddyPress this function uses the `last_activity` meta
+	 * data value maintained by BuddyPress. return a very old date in none found
+	 *
+	 * @param int $user_id
+	 * @return string last activity date
+	*
+	* look at using bbp_get_user_last_posted to get the buddypress value 
+	 */
+	function get_user_last_buddypress_activity( $user_id ) {
 			return gmdate( 'Y-m-d H:i:s', (int)get_user_meta( $user_id, 'last_activity' ) );
-		}else{
-			global $wpdb;
-			$query = $wpdb->prepare(
-				"SELECT p.post_date
-				FROM $wpdb->posts p
-				WHERE
-					p.post_status = 'publish'
-					AND
-					p.post_author = %d
-				ORDER BY p.post_date
-				DESC LIMIT 1",
-				$user_id
-			);
-			return $wpdb->get_var( $query);
-		}
 	}
 	
 	/**
@@ -944,7 +1096,7 @@ class UserList {
 	 * @param int $user_id
 	 * @return Array of blog ids
 	 */
-	function get_user_blogs($user_id) {
+	function get_user_blogs( $user_id ) {
 		global $wpdb;
 		
 		$user = get_userdata( (int) $user_id );
@@ -953,7 +1105,7 @@ class UserList {
  
 		$blogs = $match = array();
 		foreach ( (array) $user as $key => $value ) {
-			if ( 	false !== strpos( $key, '_capabilities') &&
+			if ( 	false !== strpos( $key, '_capabilities' ) &&
 					0 === strpos( $key, $wpdb->base_prefix ) &&
 					preg_match( '/' . $wpdb->base_prefix . '(\d+)_capabilities/', $key, $match )
 			) $blogs[] = $match[1];
@@ -969,12 +1121,12 @@ class UserList {
 	 * @access private
 	 * @return void
 	 */
-	function _group(&$users) {
-		if (empty($this->group_by)) return;
+	function _group( &$users ) {
+		if ( empty( $this->group_by ) ) return;
 		
-		switch($this->group_by) {
+		switch( $this->group_by ) {
 			case 'blog':
-				if (AA_is_wpmu()) {
+				if ( AA_is_wpmu() ) {
 					$users_new = array();
 					
 					global $wpdb;
@@ -989,12 +1141,12 @@ class UserList {
 							$users_new[1][] = $user;
 						}
 						// other blogs
-						else if (preg_match($pattern, $key, $matches) > 0) {
+						else if ( preg_match( $pattern, $key, $matches ) >0 ) {
 							$users_new[$matches[1]][] = $user;
 						}
 					}
 					
-					if (!empty($users_new)) $users = $users_new;
+					if ( !empty( $users_new ) ) $users = $users_new;
 				}
 				
 				break;

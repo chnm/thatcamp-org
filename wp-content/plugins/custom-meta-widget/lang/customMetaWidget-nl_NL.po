@@ -1,0 +1,154 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom Meta Widget v1.4.1\n"
+"Report-Msgid-Bugs-To: http://bitacre.com/plugins/custom-meta-widget\n"
+"POT-Creation-Date: 2012-04-19 22:57:47+00:00\n"
+"PO-Revision-Date: 2013-06-23 21:59+0100\n"
+"Last-Translator: Niko Strijbol <strijbol.niko@gmail.com>\n"
+"Language-Team: Niko Strijbol <strijbol.niko@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.5\n"
+"Language: nl_BE\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ customMetaWidget
+#: customMeta.php:32 customMeta.php:177
+msgid "Meta"
+msgstr "Meta"
+
+# @ customMetaWidget
+#: customMeta.php:33
+msgid "Title"
+msgstr "Titel"
+
+# @ customMetaWidget
+#: customMeta.php:40
+msgid "Show \"Register/Admin\" link?"
+msgstr "Toon \"Registreer/Admin\" link?"
+
+# @ customMetaWidget
+#: customMeta.php:47
+msgid "Show \"Log in/out\" link?"
+msgstr "Toon \"Log in/uit\" link?"
+
+# @ customMetaWidget
+#: customMeta.php:54
+msgid "Show \"Entries RSS\" link?"
+msgstr "Toon \"Berichten RSS\" link?"
+
+# @ customMetaWidget
+#: customMeta.php:61
+msgid "Show \"Comments RSS\" link?"
+msgstr "Toon \"Reacties RSS\" link?"
+
+# @ customMetaWidget
+#: customMeta.php:80
+msgid "URL"
+msgstr "URL"
+
+# @ customMetaWidget
+#: customMeta.php:87
+msgid "Text"
+msgstr "Tekst"
+
+# @ customMetaWidget
+#: customMeta.php:94
+msgid "Show Plugin link?"
+msgstr "Toon Plugin-link?"
+
+# @ customMetaWidget
+#: customMeta.php:145
+msgid "An awesome way to support this free plugin!"
+msgstr "Een fantastische manier om deze gratis plugin te ondersteunen!"
+
+# @ customMetaWidget
+#: customMeta.php:152
+msgid "You have a custom link with no URL or text!"
+msgstr "U hebt een aangepaste link zonder URL of tekst!"
+
+# @ customMetaWidget
+#: customMeta.php:155
+msgid "You have a custom link with no text!"
+msgstr "U heeft een aangepaste link zonder tekst!"
+
+# @ customMetaWidget
+#: customMeta.php:159
+msgid "You have a custom link with no URL!"
+msgstr "U heeft een aangepaste link zonder URL!"
+
+# @ customMetaWidget
+#: customMeta.php:182
+msgid "Plugin: Custom Meta Widget"
+msgstr "Plugin: Custom Meta Widget"
+
+# @ customMetaWidget
+#: customMeta.php:183
+msgid "Plugin URL"
+msgstr "Plugin URL"
+
+# @ customMetaWidget
+#: customMeta.php:197
+#, php-format
+msgid "%1$sSyndicate this site using RSS 2.0%2$sEntries %3$sRSS%4$s"
+msgstr "%1$sSyndiceer deze site met RSS 2.0%2$sBerichten %3$sRSS%4$s"
+
+# @ customMetaWidget
+#: customMeta.php:203
+#, php-format
+msgid "%1$sSyndicate this site using RSS 2.0%2$sComments %3$sRSS%4$s"
+msgstr "%1$sSyndiceer deze site met RSS 2.0%2$sReacties %3$sRSS%4$s"
+
+# @ customMetaWidget
+#: customMeta.php:208
+msgid ""
+"Powered by WordPress, state-of-the-art semantic personal publishing platform."
+msgstr "Mogelijk door WordPress, hét platform voor blogs."
+
+# @ customMetaWidget
+#: customMeta.php:217
+msgid ""
+"Error: \"Show Custom Link\" is checked, but either the text or URL for that "
+"link are not specified. The link was not displayed because it would be "
+"broken. Check the settings for your Custom Meta widget."
+msgstr ""
+"Fout: \"Toon Aangepaste link\" is aangevinkt, maar ofwel de tekst ofwel de "
+"URL voor die link zijn niet gedefinieerd. De link wordt niet getoond omdat "
+"hij niet zou werken. Controleer uw instellingen voor uw Widget."
+
+# @ customMetaWidget
+#: customMeta.php:222
+msgid "WordPress Plugin Homepage"
+msgstr "WordPress Plugin Startpagina"
+
+# @ customMetaWidget
+#: customMeta.php:222
+msgid "Custom Meta"
+msgstr "Custom Meta"
+
+# @ customMetaWidget
+#: customMeta.php:68
+msgid "Show \"WordPress.org\" link?"
+msgstr "Toon \"WordPress.org\" link?"
+
+# @ customMetaWidget
+#: customMeta.php:74
+msgid "Show the custom link?"
+msgstr "Toon aangepaste link?"
+
+# @ customMetaWidget
+#: customMeta.php:199 customMeta.php:205
+msgid "Really Simple Syndication"
+msgstr "Really Simple Syndication"
+
+# @ customMetaWidget
+#: customMeta.php:20
+msgid "Hide the individual log in/out, admin, feed and WordPress links"
+msgstr "Verberg de individuele login/uit, feed en WordPress links"

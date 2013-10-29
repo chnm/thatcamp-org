@@ -1,0 +1,157 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom Meta Widget v1.4.1\n"
+"Report-Msgid-Bugs-To: http://bitacre.com/plugins/custom-meta-widget\n"
+"POT-Creation-Date: 2012-04-19 22:57:47+00:00\n"
+"PO-Revision-Date: 2013-03-27 12:51+0100\n"
+"Last-Translator: Diana <diana@wpdiscounts.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Textdomain-Support: yes\n"
+"Language: sr_RS\n"
+"X-Generator: Poedit 1.5.3\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ customMetaWidget
+#: customMeta.php:32 customMeta.php:177
+msgid "Meta"
+msgstr "Meta"
+
+# @ customMetaWidget
+#: customMeta.php:33
+msgid "Title"
+msgstr "Naslov"
+
+# @ customMetaWidget
+#: customMeta.php:40
+msgid "Show \"Register/Admin\" link?"
+msgstr "Prikazi \"Register/Admin\" link?"
+
+# @ customMetaWidget
+#: customMeta.php:47
+msgid "Show \"Log in/out\" link?"
+msgstr "Prikazi \"Log in/out\" link?"
+
+# @ customMetaWidget
+#: customMeta.php:54
+msgid "Show \"Entries RSS\" link?"
+msgstr "Prikazi \"Entries RSS\" link?"
+
+# @ customMetaWidget
+#: customMeta.php:61
+msgid "Show \"Comments RSS\" link?"
+msgstr "Prikazi  \"Comments RSS\" link?"
+
+# @ customMetaWidget
+#: customMeta.php:80
+msgid "URL"
+msgstr "URL"
+
+# @ customMetaWidget
+#: customMeta.php:87
+msgid "Text"
+msgstr "Tekst"
+
+# @ customMetaWidget
+#: customMeta.php:94
+msgid "Show Plugin link?"
+msgstr "Prikazi Plagin link?"
+
+# @ customMetaWidget
+#: customMeta.php:145
+msgid "An awesome way to support this free plugin!"
+msgstr "Odlican nacin za podrzavanje ovog besplatnog plagina!"
+
+# @ customMetaWidget
+#: customMeta.php:152
+msgid "You have a custom link with no URL or text!"
+msgstr "Imate prilagodjen link bez ikakvih URL ili teksta!"
+
+# @ customMetaWidget
+#: customMeta.php:155
+msgid "You have a custom link with no text!"
+msgstr "Imate prilagodjen link bez teksta!"
+
+# @ customMetaWidget
+#: customMeta.php:159
+msgid "You have a custom link with no URL!"
+msgstr "Imate prilagodjen link bez URL-a!"
+
+# @ customMetaWidget
+#: customMeta.php:182
+msgid "Plugin: Custom Meta Widget"
+msgstr "Plagin: Custom Meta Widget"
+
+# @ customMetaWidget
+#: customMeta.php:183
+msgid "Plugin URL"
+msgstr "Plagin URL"
+
+# @ customMetaWidget
+#: customMeta.php:197
+#, php-format
+msgid "%1$sSyndicate this site using RSS 2.0%2$sEntries %3$sRSS%4$s"
+msgstr "%1$sSinhronizuj ovaj sajt koristeci RSS 2.0%2$sEntries %3$sRSS%4$s"
+
+# @ customMetaWidget
+#: customMeta.php:203
+#, php-format
+msgid "%1$sSyndicate this site using RSS 2.0%2$sComments %3$sRSS%4$s"
+msgstr "%1$sSinhronizuj ovaj sajt koristeci RSS 2.0%2$sComments %3$sRSS%4$s"
+
+# @ customMetaWidget
+#: customMeta.php:208
+msgid ""
+"Powered by WordPress, state-of-the-art semantic personal publishing platform."
+msgstr ""
+"Ojacano od strane WordPress-a, state-of-the-art semanticka licna forma za "
+"objavljivanje"
+
+# @ customMetaWidget
+#: customMeta.php:217
+msgid ""
+"Error: \"Show Custom Link\" is checked, but either the text or URL for that "
+"link are not specified. The link was not displayed because it would be "
+"broken. Check the settings for your Custom Meta widget."
+msgstr ""
+"Greska:  \"Prikazi prilagodjen link\" je provereno, ali ili tekst ili URL za "
+"taj link nisu specificizirani. Link nije prikazan zato sto bi bio nevazeci. "
+"Proverite podesavanja za vas Custom Meta widget."
+
+# @ customMetaWidget
+#: customMeta.php:222
+msgid "WordPress Plugin Homepage"
+msgstr "WordPress Plagin Pocetna strana"
+
+# @ customMetaWidget
+#: customMeta.php:222
+msgid "Custom Meta"
+msgstr "Custom Meta"
+
+# @ customMetaWidget
+#: customMeta.php:68
+msgid "Show \"WordPress.org\" link?"
+msgstr "Prikazi \"WordPress.org\" link?"
+
+# @ customMetaWidget
+#: customMeta.php:74
+msgid "Show the custom link?"
+msgstr "Prikazi prilagodjen link?"
+
+# @ customMetaWidget
+#: customMeta.php:199 customMeta.php:205
+msgid "Really Simple Syndication"
+msgstr "Zaista Jednostavna Sindikacija"
+
+# @ customMetaWidget
+#: customMeta.php:20
+msgid "Hide the individual log in/out, admin, feed and WordPress links"
+msgstr "Sakrij individualni log in/out, admin, feed i WordPress linkove"

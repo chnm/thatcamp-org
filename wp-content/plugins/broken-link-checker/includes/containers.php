@@ -453,9 +453,11 @@ class blcContainer {
    * @param string $new_url
    * @param string $old_url
    * @param string $old_raw_url
+   * @param string $new_text Optional.
+   *
    * @return array|WP_Error The new value of raw_url on success, or an error object if something went wrong.
    */
-	function edit_link($field_name, $parser, $new_url, $old_url = '', $old_raw_url = ''){
+	function edit_link($field_name, $parser, $new_url, $old_url = '', $old_raw_url = '', $new_text = null){
 		//Ensure we're operating on a consistent copy of the wrapped object.
 		/* 
 		Explanation 
@@ -463,7 +465,7 @@ class blcContainer {
 		Consider this scenario where the container object wraps a blog post : 
 			1) The container object gets created and loads the post data. 
 			2) Someone modifies the DB data corresponding to the post.
-			3) The container tries to edit a link present in the post. However, the pots
+			3) The container tries to edit a link present in the post. However, the post
 			has changed since the time it was first cached, so when the container updates
 			the post with it's changes, it will overwrite whatever modifications were made
 			in step 2.
@@ -480,8 +482,12 @@ class blcContainer {
 		
 		//Have the parser modify the specified link. If successful, the parser will 
 		//return an associative array with two keys - 'content' and 'raw_url'.
-		//Otherwise we'll get an instance of WP_Error.   
-		$edit_result = $parser->edit($old_value, $new_url, $old_url, $old_raw_url);
+		//Otherwise we'll get an instance of WP_Error.
+		if ( $parser->is_link_text_editable() ) {
+			$edit_result = $parser->edit($old_value, $new_url, $old_url, $old_raw_url, $new_text);
+		} else {
+			$edit_result = $parser->edit($old_value, $new_url, $old_url, $old_raw_url);
+		}
 		if ( is_wp_error($edit_result) ){
 			return $edit_result;
 		}
@@ -829,9 +835,10 @@ class blcContainerHelper {
 		
 		$q .= implode(' OR ', $pieces);
 		$blclog->log('...... Executing query: ' . $q);
-		
+
+		$start_time = microtime(true);
 		$rez = ($wpdb->query($q) !== false);
-		$blclog->log(sprintf('...... %d rows affected', $wpdb->rows_affected));
+		$blclog->log(sprintf('...... %d rows affected, %.3f seconds', $wpdb->rows_affected, microtime(true) - $start_time));
 		
 		blc_got_unsynched_items();
 		

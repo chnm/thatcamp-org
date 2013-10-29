@@ -17,8 +17,8 @@ class AuthorAvatarsEditorButton {
       */
 
     function register() {
-        add_action('init', array(&$this, 'init'));
-       add_action('wp_ajax_author-avatars-editor-popup', array(&$this, 'render_tinymce_popup'));
+		add_action('admin_init', array( &$this, 'init' ), 30);
+		add_action('wp_ajax_author-avatars-editor-popup', array(&$this, 'render_tinymce_popup'));
     }
     /**
       * Register button filters and actions

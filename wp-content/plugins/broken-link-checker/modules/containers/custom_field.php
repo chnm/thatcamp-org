@@ -60,7 +60,8 @@ class blcPostMeta extends blcContainer {
    * @return array
    */
 	function get_field($field = ''){
-		return get_metadata($this->meta_type, $this->container_id, $field);
+		$get_only_first_field = ($this->fields[$field] !== 'metadata');
+		return get_metadata($this->meta_type, $this->container_id, $field, $get_only_first_field);
 	}
 	
   /**
@@ -100,6 +101,10 @@ class blcPostMeta extends blcContainer {
 	 * @return bool|WP_Error True on success, or an error object if something went wrong.
 	 */
 	function unlink($field_name, $parser, $url, $raw_url =''){
+		if ( $this->fields[$field_name] !== 'metadata' ) {
+			return parent::unlink($field_name, $parser, $url, $raw_url);
+		}
+
 		$rez = delete_metadata($this->meta_type, $this->container_id, $field_name, $raw_url);
 		if ( $rez ){
 			return true;
@@ -115,18 +120,19 @@ class blcPostMeta extends blcContainer {
 			);
 		}
 	}
-	
-  /**
-   * Change a meta field containing the specified URL to a new URL.
-   *
-   * @param string $field_name Meta name
-   * @param blcParser $parser
-   * @param string $new_url New URL.
-   * @param string $old_url
-   * @param string $old_raw_url Old meta value.
-   * @return string|WP_Error The new value of raw_url on success, or an error object if something went wrong.
-   */
-	function edit_link($field_name, $parser, $new_url, $old_url = '', $old_raw_url = ''){
+
+	/**
+	 * Change a meta field containing the specified URL to a new URL.
+	 *
+	 * @param string $field_name Meta name
+	 * @param blcParser $parser
+	 * @param string $new_url New URL.
+	 * @param string $old_url
+	 * @param string $old_raw_url Old meta value.
+	 * @param null $new_text
+	 * @return string|WP_Error The new value of raw_url on success, or an error object if something went wrong.
+	 */
+	function edit_link($field_name, $parser, $new_url, $old_url = '', $old_raw_url = '', $new_text = null){
 		/*
 		FB::log(sprintf(
 			'Editing %s[%d]:%s - %s to %s',
@@ -137,6 +143,10 @@ class blcPostMeta extends blcContainer {
 			$new_url
 		));
 		*/
+
+		if ( $this->fields[$field_name] !== 'metadata' ) {
+			return parent::edit_link($field_name, $parser, $new_url, $old_url, $old_raw_url, $new_text);
+		}
 		
 		if ( empty($old_raw_url) ){
 			$old_raw_url = $old_url;
@@ -235,7 +245,7 @@ class blcPostMeta extends blcContainer {
 		executed by Cron.
 		*/ 
 		
-		if ( !($post = &get_post( $this->container_id )) ){
+		if ( !($post = get_post( $this->container_id )) ){
 			return '';
 		}
 		
@@ -328,7 +338,7 @@ class blcPostMeta extends blcContainer {
 	}
 	
 	function current_user_can_delete(){
-		$post = &get_post($this->container_id);
+		$post = get_post($this->container_id);
 		$post_type_object = get_post_type_object($post->post_type);
 		return current_user_can( $post_type_object->cap->delete_post, $this->container_id );
 	}
@@ -341,9 +351,27 @@ class blcPostMeta extends blcContainer {
 class blcPostMetaManager extends blcContainerManager {
 	var $container_class_name = 'blcPostMeta';
 	var $meta_type = 'post';
+	protected $selected_fields = array();
 	
 	function init(){
 		parent::init();
+
+		//Figure out which custom fields we're interested in.
+		if ( is_array($this->plugin_conf->options['custom_fields']) ){
+			$prefix_formats = array(
+				'html' => 'html',
+				'url'  => 'metadata',
+			);
+			foreach($this->plugin_conf->options['custom_fields'] as $meta_name){
+				//The user can add an optional "format:" prefix to specify the format of the custom field.
+				$parts = explode(':', $meta_name, 2);
+				if ( (count($parts) == 2) && in_array($parts[0], $prefix_formats) ) {
+					$this->selected_fields[$parts[1]] = $prefix_formats[$parts[0]];
+				} else {
+					$this->selected_fields[$meta_name] = 'metadata';
+				}
+			}
+		}
 		
 		//Intercept 2.9+ style metadata modification actions
 		add_action( "added_{$this->meta_type}_meta", array($this, 'meta_modified'), 10, 4 );
@@ -365,16 +393,7 @@ class blcPostMetaManager extends blcContainerManager {
 	 * @return array
 	 */
 	function get_parseable_fields(){
-		//Fields = custom field names as entered by the user.
-		$fields = array();
-		
-		if ( is_array($this->plugin_conf->options['custom_fields']) ){
-			foreach($this->plugin_conf->options['custom_fields'] as $meta_name){
-				$fields[$meta_name] = 'metadata';
-			}
-		}
-		
-		return $fields;
+		return $this->selected_fields;
 	}
 	
   /**
@@ -509,14 +528,13 @@ class blcPostMetaManager extends blcContainerManager {
 		
 		//Metadata changes only matter to us if the modified key 
 		//is one that the user wants checked. 
-		$conf = blc_get_configuration();
-		if ( !is_array($conf->options['custom_fields']) ){
+		if ( empty($this->selected_fields) ){
 			return;
 		}
-		if ( !in_array($meta_key, $conf->options['custom_fields']) ){
+		if ( !array_key_exists($meta_key, $this->selected_fields) ){
 			return;
 		}
-		
+
 		$container = blcContainerHelper::get_container( array($this->container_type, intval($object_id)) );
 		$container->mark_as_unsynched();
 	}

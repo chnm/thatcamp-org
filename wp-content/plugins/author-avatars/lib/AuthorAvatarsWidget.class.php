@@ -1,10 +1,9 @@
 <?php
-require_once('MultiWidget.class.php');
 
 /**
  * Author Avatars Widget: displays avatars of blog users.
  */
-class AuthorAvatarsWidget extends MultiWidget
+class AuthorAvatarsWidget extends WP_Widget
 {
 	/**
 	 * Default widget options
@@ -37,46 +36,20 @@ class AuthorAvatarsWidget extends MultiWidget
 		}
 	}
 	
-	/**
-	 * Constructor: set up multiwidget (id_base, name and description)
-	 */	
-	function AuthorAvatarsWidget()
-	{
-        add_action( 'widgets_init', array($this, 'init') );
-	}
-	
+
     /**
      * Widget initialisation
      */
-    function init() {
+    function AuthorAvatarsWidget() {
+
 		$this->_setDefaults();
 		
-		$this->MultiWidget(
+		parent::WP_Widget(
 			'author_avatars', // id_base
-			'AuthorAvatars', // name
+			'Author Avatars', // name
 			array('description'=>__('Displays avatars of blog users.', 'author-avatars')), // widget options
 			array('width' => '600px') // control options
 		);
-
-		add_action('wp_enqueue_scripts', array(&$this, 'enqueue_resources'));
-		add_action('admin_enqueue_scripts', array(&$this, 'enqueue_resources'));
-	
-		$this->register();
-	}
-	
-	/**
-	 * Enqueues scripts and stylesheets
-	 *
-	 * @return void
-	 */
-
-	function enqueue_resources() {	
-		wp_enqueue_style('author-avatars-widget');
-
-		if (is_admin() && basename($_SERVER['PHP_SELF']) == 'widgets.php') { 
-			wp_enqueue_script('author-avatars-widget-admin');
-			wp_enqueue_style('admin-form');
-		}
 	}
 	
 	/**
@@ -137,7 +110,7 @@ class AuthorAvatarsWidget extends MultiWidget
 	 * @param $old_instance The options of the old instance in case we're updating a widget. This is empty if we're creating a new widget.
 	 * @param The instance of widget options which is saved to the database.
 	 */
-	function control_update($new_instance, $old_instance)
+	function update($new_instance, $old_instance)
 	{
 		$instance = $old_instance;		
 		$instance['title'] = esc_html( $new_instance['title'] );
@@ -158,7 +131,7 @@ class AuthorAvatarsWidget extends MultiWidget
 	 * @param $instance Array of widget options. If empty then we're creating a new widget.
 	 * @return void
 	 */
-	function control_form($instance)
+	function form($instance)
 	{
 		$instance = array_merge($this->defaults, $instance);
 		
@@ -176,10 +149,10 @@ class AuthorAvatarsWidget extends MultiWidget
 		$basic_left  = $widget_title;
 				
 		$basic_left .= $form->renderFieldRoles($instance['roles']);
-		$basic_left .= $form->renderFieldDisplayOptions($instance['display']);
 		$basic_left .= $form->renderFieldUserLink($instance['display']['user_link'], 'display][user_link');
 		
-		$basic_right = $form->renderFieldAvatarSize($instance['display']['avatar_size'], 'display][avatar_size');
+		$basic_right = $form->renderFieldDisplayOptions($instance['display']);
+		$basic_right .= $form->renderFieldAvatarSize($instance['display']['avatar_size'], 'display][avatar_size');
 		$basic_right .= '<div class="avatar_donate">'.AA_donateButton('link').'</div>';
 		
 		$basic  = '<h5>'. __('Basic', 'author-avatars') .'</h5>';
