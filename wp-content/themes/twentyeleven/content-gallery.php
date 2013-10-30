@@ -1,10 +1,8 @@
 <?php
 /**
- * Template for displaying posts in the Gallery Post Format
+ * The template for displaying posts in the Gallery Post Format on index and archive pages
  *
- * Used on index and archive pages.
- *
- * @link http://codex.wordpress.org/Post_Formats
+ * Learn more: http://codex.wordpress.org/Post_Formats
  *
  * @package WordPress
  * @subpackage Twenty_Eleven

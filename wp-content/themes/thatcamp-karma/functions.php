@@ -477,6 +477,10 @@ function thatcamp_mod_user_nav() {
 		bp_core_remove_subnav_item( 'camps', 'invites' );
 	}
 
+	if ( bp_is_active( 'messages' ) ) {
+		bp_core_remove_nav_item( 'messages' );
+	}
+
 	if ( bp_is_active( 'settings' ) && is_user_logged_in() ) {
 		bp_core_remove_nav_item( 'settings' );
 	}
@@ -527,7 +531,7 @@ function thatcamp_mod_user_nav() {
 		'show_for_displayed_user' => false,
 		'position'                => 100,
 		'screen_function'         => 'bp_activity_screen_my_activity',
-	);	
+	);
 
 	// Cheating: Put Camps before Friends
 	if ( isset( $bp->bp_nav[ bp_get_groups_slug() ] ) ) {

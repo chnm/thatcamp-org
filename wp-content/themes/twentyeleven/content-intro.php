@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for displaying page content in the showcase.php page template
+ * The template for displaying page content in the showcase.php page template
  *
  * @package WordPress
  * @subpackage Twenty_Eleven

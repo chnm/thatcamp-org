@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for displaying search forms in Twenty Eleven
+ * The template for displaying search forms in Twenty Eleven
  *
  * @package WordPress
  * @subpackage Twenty_Eleven
