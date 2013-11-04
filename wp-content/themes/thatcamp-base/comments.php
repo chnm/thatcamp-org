@@ -15,7 +15,7 @@ if ( post_password_required() )
 	number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
 	?></h3>
 	<ol class="commentlist">
-		<?php wp_list_comments( array( 'callback' => 'thatcampbase_comment', 'type' => 'comment') );?>
+		<?php wp_list_comments( array( 'callback' => 'thatcampbase_comment') );?>
 	</ol>
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :  ?>
 		<nav id="comment-nav-below">
