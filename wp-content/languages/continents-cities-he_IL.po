@@ -1,0 +1,1959 @@
+# Translation of Continents & Cities in Hebrew
+# This file is distributed under the same license as the Continents & Cities package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2012-04-09 08:06:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Continents & Cities\n"
+
+#: wp-admin/includes/continents-cities.php:135
+msgid "Vincennes"
+msgstr "וינסנס"
+
+#: wp-admin/includes/continents-cities.php:136
+msgid "Winamac"
+msgstr "ווינמק"
+
+#: wp-admin/includes/continents-cities.php:137
+msgid "Inuvik"
+msgstr "אינוביק"
+
+#: wp-admin/includes/continents-cities.php:138
+msgid "Iqaluit"
+msgstr "איקלויט"
+
+#: wp-admin/includes/continents-cities.php:139
+msgid "Jamaica"
+msgstr "ג'מייקה"
+
+#: wp-admin/includes/continents-cities.php:140
+msgid "Juneau"
+msgstr "ג'ונו"
+
+#: wp-admin/includes/continents-cities.php:141
+msgid "Kentucky"
+msgstr "קנטקי"
+
+#: wp-admin/includes/continents-cities.php:142
+msgid "Louisville"
+msgstr "לואיסוויל"
+
+#: wp-admin/includes/continents-cities.php:143
+msgid "Monticello"
+msgstr "מונטיסלו"
+
+#: wp-admin/includes/continents-cities.php:144
+msgid "Knox IN"
+msgstr "נוקס"
+
+#: wp-admin/includes/continents-cities.php:145
+msgid "La Paz"
+msgstr "לה פאס"
+
+#: wp-admin/includes/continents-cities.php:146
+msgid "Lima"
+msgstr "לימה"
+
+#: wp-admin/includes/continents-cities.php:147
+msgid "Los Angeles"
+msgstr "לוס אנג'לס"
+
+#: wp-admin/includes/continents-cities.php:148
+msgid "Maceio"
+msgstr "מסיו"
+
+#: wp-admin/includes/continents-cities.php:149
+msgid "Managua"
+msgstr "מנאגואה"
+
+#: wp-admin/includes/continents-cities.php:150
+msgid "Manaus"
+msgstr "מנאוס"
+
+#: wp-admin/includes/continents-cities.php:151
+msgid "Marigot"
+msgstr "מריגוט"
+
+#: wp-admin/includes/continents-cities.php:152
+msgid "Martinique"
+msgstr "מרטיניק"
+
+#: wp-admin/includes/continents-cities.php:153
+msgid "Mazatlan"
+msgstr "מזטלן"
+
+#: wp-admin/includes/continents-cities.php:154
+msgid "Menominee"
+msgstr "מנומיני"
+
+#: wp-admin/includes/continents-cities.php:155
+msgid "Merida"
+msgstr "מרידה"
+
+#: wp-admin/includes/continents-cities.php:156
+msgid "Mexico City"
+msgstr "מקסיקו סיטי"
+
+#: wp-admin/includes/continents-cities.php:157
+msgid "Miquelon"
+msgstr "מיקלון"
+
+#: wp-admin/includes/continents-cities.php:158
+msgid "Moncton"
+msgstr "מונקטון"
+
+#: wp-admin/includes/continents-cities.php:159
+msgid "Monterrey"
+msgstr "מונטריי"
+
+#: wp-admin/includes/continents-cities.php:160
+msgid "Montevideo"
+msgstr "מונטבידאו"
+
+#: wp-admin/includes/continents-cities.php:161
+msgid "Montreal"
+msgstr "מונטריאול"
+
+#: wp-admin/includes/continents-cities.php:162
+msgid "Montserrat"
+msgstr "מונסראט"
+
+#: wp-admin/includes/continents-cities.php:163
+msgid "Nassau"
+msgstr "נסאו"
+
+#: wp-admin/includes/continents-cities.php:164
+msgid "New York"
+msgstr "ניו יורק"
+
+#: wp-admin/includes/continents-cities.php:165
+msgid "Nipigon"
+msgstr "נפיו"
+
+#: wp-admin/includes/continents-cities.php:166
+msgid "Nome"
+msgstr "נומה"
+
+#: wp-admin/includes/continents-cities.php:167
+msgid "Noronha"
+msgstr "נורוניה"
+
+#: wp-admin/includes/continents-cities.php:168
+msgid "North Dakota"
+msgstr "דקוטה הצפונית"
+
+#: wp-admin/includes/continents-cities.php:169
+msgid "Center"
+msgstr "מרכז"
+
+#: wp-admin/includes/continents-cities.php:170
+msgid "New Salem"
+msgstr "ניו-סיילם"
+
+#: wp-admin/includes/continents-cities.php:171
+msgid "Panama"
+msgstr "פנמה"
+
+#: wp-admin/includes/continents-cities.php:172
+msgid "Pangnirtung"
+msgstr "פנגנירטונג"
+
+#: wp-admin/includes/continents-cities.php:173
+msgid "Paramaribo"
+msgstr "פרמריבו"
+
+#: wp-admin/includes/continents-cities.php:174
+msgid "Phoenix"
+msgstr "פיניקס"
+
+#: wp-admin/includes/continents-cities.php:175
+msgid "Port-au-Prince"
+msgstr "פורט-או-פרינס"
+
+#: wp-admin/includes/continents-cities.php:176
+msgid "Port of Spain"
+msgstr "פורט אוף ספיין"
+
+#: wp-admin/includes/continents-cities.php:177
+msgid "Porto Acre"
+msgstr "פורט אקרי"
+
+#: wp-admin/includes/continents-cities.php:178
+msgid "Porto Velho"
+msgstr "פורט וליו"
+
+#: wp-admin/includes/continents-cities.php:179
+msgid "Puerto Rico"
+msgstr "פורטו ריקו"
+
+#: wp-admin/includes/continents-cities.php:180
+msgid "Rainy River"
+msgstr "רייני ריבר"
+
+#: wp-admin/includes/continents-cities.php:181
+msgid "Rankin Inlet"
+msgstr "רנקין אינלט"
+
+#: wp-admin/includes/continents-cities.php:182
+msgid "Recife"
+msgstr "רציפה"
+
+#: wp-admin/includes/continents-cities.php:183
+msgid "Regina"
+msgstr "רג'ינה"
+
+#: wp-admin/includes/continents-cities.php:184
+msgid "Resolute"
+msgstr "רזולוט"
+
+#: wp-admin/includes/continents-cities.php:185
+msgid "Rio Branco"
+msgstr "ריו ברנקו"
+
+#: wp-admin/includes/continents-cities.php:186
+msgid "Rosario"
+msgstr "רוסאריו"
+
+#: wp-admin/includes/continents-cities.php:187
+msgid "Santiago"
+msgstr "סנטיאגו"
+
+#: wp-admin/includes/continents-cities.php:188
+msgid "Santo Domingo"
+msgstr "סנטו דומינגו"
+
+#: wp-admin/includes/continents-cities.php:189
+msgid "Sao Paulo"
+msgstr "סאו פאולו"
+
+#: wp-admin/includes/continents-cities.php:190
+msgid "Scoresbysund"
+msgstr "סקורס סונד"
+
+#: wp-admin/includes/continents-cities.php:191
+msgid "Shiprock"
+msgstr "שיפרוק"
+
+#: wp-admin/includes/continents-cities.php:192
+msgid "St Barthelemy"
+msgstr "סן ברתלמי"
+
+#: wp-admin/includes/continents-cities.php:193
+msgid "St Johns"
+msgstr "סנט ג'ונס"
+
+#: wp-admin/includes/continents-cities.php:194
+msgid "St Kitts"
+msgstr "סנט קיטס"
+
+#: wp-admin/includes/continents-cities.php:195
+msgid "St Lucia"
+msgstr "סנט לוסיה"
+
+#: wp-admin/includes/continents-cities.php:196
+msgid "St Thomas"
+msgstr "סנט תומס"
+
+#: wp-admin/includes/continents-cities.php:197
+msgid "St Vincent"
+msgstr "סנט וינסנט"
+
+#: wp-admin/includes/continents-cities.php:198
+msgid "Swift Current"
+msgstr "סוויפט קרנט"
+
+#: wp-admin/includes/continents-cities.php:199
+msgid "Tegucigalpa"
+msgstr "טגוצ'יגלפה"
+
+#: wp-admin/includes/continents-cities.php:200
+msgid "Thule"
+msgstr "טולה"
+
+#: wp-admin/includes/continents-cities.php:201
+msgid "Thunder Bay"
+msgstr "ת'אנדר בי"
+
+#: wp-admin/includes/continents-cities.php:202
+msgid "Tijuana"
+msgstr "טיחואנה"
+
+#: wp-admin/includes/continents-cities.php:203
+msgid "Toronto"
+msgstr "טורונטו"
+
+#: wp-admin/includes/continents-cities.php:204
+msgid "Tortola"
+msgstr "טורטולה"
+
+#: wp-admin/includes/continents-cities.php:205
+msgid "Vancouver"
+msgstr "ונקובר"
+
+#: wp-admin/includes/continents-cities.php:206
+msgid "Virgin"
+msgstr "וירגין"
+
+#: wp-admin/includes/continents-cities.php:207
+msgid "Whitehorse"
+msgstr "וויטהורס"
+
+#: wp-admin/includes/continents-cities.php:208
+msgid "Winnipeg"
+msgstr "וויניפג"
+
+#: wp-admin/includes/continents-cities.php:209
+msgid "Yakutat"
+msgstr "יאקוטת"
+
+#: wp-admin/includes/continents-cities.php:210
+msgid "Yellowknife"
+msgstr "ילונייף"
+
+#: wp-admin/includes/continents-cities.php:211
+msgid "Antarctica"
+msgstr "אנטרטיקה"
+
+#: wp-admin/includes/continents-cities.php:212
+msgid "Casey"
+msgstr "קייסי"
+
+#: wp-admin/includes/continents-cities.php:213
+msgid "Davis"
+msgstr "דיוויס"
+
+#: wp-admin/includes/continents-cities.php:214
+msgid "DumontDUrville"
+msgstr "דומונט ארוויל"
+
+#: wp-admin/includes/continents-cities.php:215
+msgid "Mawson"
+msgstr "מוסון"
+
+#: wp-admin/includes/continents-cities.php:216
+msgid "McMurdo"
+msgstr "מקמורדו"
+
+#: wp-admin/includes/continents-cities.php:217
+msgid "Palmer"
+msgstr "פלמר"
+
+#: wp-admin/includes/continents-cities.php:218
+msgid "Rothera"
+msgstr "רות'רה"
+
+#: wp-admin/includes/continents-cities.php:219
+msgid "South Pole"
+msgstr "הקוטב הדרומי"
+
+#: wp-admin/includes/continents-cities.php:220
+msgid "Syowa"
+msgstr "סייווה"
+
+#: wp-admin/includes/continents-cities.php:221
+msgid "Vostok"
+msgstr "ווסטוק"
+
+#: wp-admin/includes/continents-cities.php:222
+msgid "Arctic"
+msgstr "ארקטיק"
+
+#: wp-admin/includes/continents-cities.php:223
+msgid "Longyearbyen"
+msgstr "לונגיירניין"
+
+#: wp-admin/includes/continents-cities.php:224
+msgid "Asia"
+msgstr "אסיה"
+
+#: wp-admin/includes/continents-cities.php:225
+msgid "Aden"
+msgstr "עדן"
+
+#: wp-admin/includes/continents-cities.php:226
+msgid "Almaty"
+msgstr "אלמטי"
+
+#: wp-admin/includes/continents-cities.php:227
+msgid "Amman"
+msgstr "עמאן"
+
+#: wp-admin/includes/continents-cities.php:228
+msgid "Anadyr"
+msgstr "אנדיר"
+
+#: wp-admin/includes/continents-cities.php:229
+msgid "Aqtau"
+msgstr "אקטאו"
+
+#: wp-admin/includes/continents-cities.php:230
+msgid "Aqtobe"
+msgstr "אקטובי"
+
+#: wp-admin/includes/continents-cities.php:231
+msgid "Ashgabat"
+msgstr "אשגבט"
+
+#: wp-admin/includes/continents-cities.php:232
+msgid "Ashkhabad"
+msgstr "אשגאבט"
+
+#: wp-admin/includes/continents-cities.php:233
+msgid "Baghdad"
+msgstr "בגדד"
+
+#: wp-admin/includes/continents-cities.php:234
+msgid "Bahrain"
+msgstr "בחריין"
+
+#: wp-admin/includes/continents-cities.php:235
+msgid "Baku"
+msgstr "בקו"
+
+#: wp-admin/includes/continents-cities.php:236
+msgid "Bangkok"
+msgstr "בנקוק"
+
+#: wp-admin/includes/continents-cities.php:237
+msgid "Beirut"
+msgstr "ביירות"
+
+#: wp-admin/includes/continents-cities.php:238
+msgid "Bishkek"
+msgstr "בישקק"
+
+#: wp-admin/includes/continents-cities.php:239
+msgid "Brunei"
+msgstr "ברוניי"
+
+#: wp-admin/includes/continents-cities.php:240
+msgid "Calcutta"
+msgstr "קלקוטה"
+
+#: wp-admin/includes/continents-cities.php:241
+msgid "Choibalsan"
+msgstr "צ'ויבלסן"
+
+#: wp-admin/includes/continents-cities.php:242
+msgid "Chongqing"
+msgstr "צ'נקינג"
+
+#: wp-admin/includes/continents-cities.php:243
+msgid "Chungking"
+msgstr "צ'ונגצ'ינג"
+
+#: wp-admin/includes/continents-cities.php:244
+msgid "Colombo"
+msgstr "קולומבו"
+
+#: wp-admin/includes/continents-cities.php:245
+msgid "Dacca"
+msgstr "דאקה"
+
+#: wp-admin/includes/continents-cities.php:246
+msgid "Damascus"
+msgstr "דמשק"
+
+#: wp-admin/includes/continents-cities.php:247
+msgid "Dhaka"
+msgstr "דאקה"
+
+#: wp-admin/includes/continents-cities.php:248
+msgid "Dili"
+msgstr "דילי"
+
+#: wp-admin/includes/continents-cities.php:249
+msgid "Dubai"
+msgstr "דובאיי"
+
+#: wp-admin/includes/continents-cities.php:250
+msgid "Dushanbe"
+msgstr "דושנבה"
+
+#: wp-admin/includes/continents-cities.php:251
+msgid "Gaza"
+msgstr "עזה"
+
+#: wp-admin/includes/continents-cities.php:252
+msgid "Harbin"
+msgstr "חרבין"
+
+#: wp-admin/includes/continents-cities.php:253
+msgid "Ho Chi Minh"
+msgstr "הו-צ'י-מין"
+
+#: wp-admin/includes/continents-cities.php:254
+msgid "Hong Kong"
+msgstr "הונג קונג"
+
+#: wp-admin/includes/continents-cities.php:255
+msgid "Hovd"
+msgstr "הובד"
+
+#: wp-admin/includes/continents-cities.php:256
+msgid "Irkutsk"
+msgstr "אירקוטסק"
+
+#: wp-admin/includes/continents-cities.php:257
+msgid "Istanbul"
+msgstr "איסטנבול"
+
+#: wp-admin/includes/continents-cities.php:258
+msgid "Jakarta"
+msgstr "ג'קרטה"
+
+#: wp-admin/includes/continents-cities.php:259
+msgid "Jayapura"
+msgstr "ג'ייפורה"
+
+#: wp-admin/includes/continents-cities.php:260
+msgid "Jerusalem"
+msgstr "ירושלים"
+
+#: wp-admin/includes/continents-cities.php:261
+msgid "Kabul"
+msgstr "קאבול"
+
+#: wp-admin/includes/continents-cities.php:262
+msgid "Kamchatka"
+msgstr "קמצ'טקה"
+
+#: wp-admin/includes/continents-cities.php:263
+msgid "Karachi"
+msgstr "קראצ'י"
+
+#: wp-admin/includes/continents-cities.php:264
+msgid "Kashgar"
+msgstr "קשגר"
+
+#: wp-admin/includes/continents-cities.php:265
+msgid "Katmandu"
+msgstr "קטמנדו"
+
+#: wp-admin/includes/continents-cities.php:266
+msgid "Kolkata"
+msgstr "קולקטה"
+
+#: wp-admin/includes/continents-cities.php:267
+msgid "Krasnoyarsk"
+msgstr "קרסנויארסק"
+
+#: wp-admin/includes/continents-cities.php:268
+msgid "Kuala Lumpur"
+msgstr "קואלה לומפור"
+
+#: wp-admin/includes/continents-cities.php:269
+msgid "Kuching"
+msgstr "קושינג"
+
+#: wp-admin/includes/continents-cities.php:270
+msgid "Kuwait"
+msgstr "כווית"
+
+#: wp-admin/includes/continents-cities.php:271
+msgid "Macao"
+msgstr "מקאו"
+
+#: wp-admin/includes/continents-cities.php:272
+msgid "Macau"
+msgstr "מקאו"
+
+#: wp-admin/includes/continents-cities.php:273
+msgid "Magadan"
+msgstr "מגדן"
+
+#: wp-admin/includes/continents-cities.php:274
+msgid "Makassar"
+msgstr "מקסאר"
+
+#: wp-admin/includes/continents-cities.php:275
+msgid "Manila"
+msgstr "מנילה"
+
+#: wp-admin/includes/continents-cities.php:276
+msgid "Muscat"
+msgstr "מוסקט"
+
+#: wp-admin/includes/continents-cities.php:277
+msgid "Nicosia"
+msgstr "ניקוסיה"
+
+#: wp-admin/includes/continents-cities.php:278
+msgid "Novosibirsk"
+msgstr "נובוסיבירסק"
+
+#: wp-admin/includes/continents-cities.php:279
+msgid "Omsk"
+msgstr "אומסק"
+
+#: wp-admin/includes/continents-cities.php:280
+msgid "Oral"
+msgstr "אורל"
+
+#: wp-admin/includes/continents-cities.php:281
+msgid "Phnom Penh"
+msgstr "פנום פן"
+
+#: wp-admin/includes/continents-cities.php:282
+msgid "Pontianak"
+msgstr "פונטיאנק"
+
+#: wp-admin/includes/continents-cities.php:283
+msgid "Pyongyang"
+msgstr "פיונגיאנג"
+
+#: wp-admin/includes/continents-cities.php:284
+msgid "Qatar"
+msgstr "קטאר"
+
+#: wp-admin/includes/continents-cities.php:285
+msgid "Qyzylorda"
+msgstr "קיזילורדה"
+
+#: wp-admin/includes/continents-cities.php:286
+msgid "Rangoon"
+msgstr "רנגון"
+
+#: wp-admin/includes/continents-cities.php:287
+msgid "Riyadh"
+msgstr "ריאד"
+
+#: wp-admin/includes/continents-cities.php:288
+msgid "Saigon"
+msgstr "סייגון"
+
+#: wp-admin/includes/continents-cities.php:289
+msgid "Sakhalin"
+msgstr "סחאלין"
+
+#: wp-admin/includes/continents-cities.php:290
+msgid "Samarkand"
+msgstr "סמרקנד"
+
+#: wp-admin/includes/continents-cities.php:291
+msgid "Seoul"
+msgstr "סיאול"
+
+#: wp-admin/includes/continents-cities.php:292
+msgid "Shanghai"
+msgstr "שנחאי"
+
+#: wp-admin/includes/continents-cities.php:293
+msgid "Singapore"
+msgstr "סינגפור"
+
+#: wp-admin/includes/continents-cities.php:294
+msgid "Taipei"
+msgstr "טאיפה"
+
+#: wp-admin/includes/continents-cities.php:295
+msgid "Tashkent"
+msgstr "טשקנט"
+
+#: wp-admin/includes/continents-cities.php:296
+msgid "Tbilisi"
+msgstr "טביליסי"
+
+#: wp-admin/includes/continents-cities.php:297
+msgid "Tehran"
+msgstr "טהרן"
+
+#: wp-admin/includes/continents-cities.php:298
+msgid "Tel Aviv"
+msgstr "תל אביב"
+
+#: wp-admin/includes/continents-cities.php:299
+msgid "Thimbu"
+msgstr "טהימפהו"
+
+#: wp-admin/includes/continents-cities.php:300
+msgid "Thimphu"
+msgstr "טהימפהו"
+
+#: wp-admin/includes/continents-cities.php:301
+msgid "Tokyo"
+msgstr "טוקיו"
+
+#: wp-admin/includes/continents-cities.php:302
+msgid "Ujung Pandang"
+msgstr "אוז'ונג פנגנג"
+
+#: wp-admin/includes/continents-cities.php:303
+msgid "Ulaanbaatar"
+msgstr "אולן בטור"
+
+#: wp-admin/includes/continents-cities.php:304
+msgid "Ulan Bator"
+msgstr "אולן בטור"
+
+#: wp-admin/includes/continents-cities.php:305
+msgid "Urumqi"
+msgstr "אורומקי"
+
+#: wp-admin/includes/continents-cities.php:306
+msgid "Vientiane"
+msgstr "ויינטיאנה"
+
+#: wp-admin/includes/continents-cities.php:307
+msgid "Vladivostok"
+msgstr "ולדיבוסטוק"
+
+#: wp-admin/includes/continents-cities.php:308
+msgid "Yakutsk"
+msgstr "יאקוטסק"
+
+#: wp-admin/includes/continents-cities.php:309
+msgid "Yekaterinburg"
+msgstr "יקטרינבורג"
+
+#: wp-admin/includes/continents-cities.php:310
+msgid "Yerevan"
+msgstr "ירבאן"
+
+#: wp-admin/includes/continents-cities.php:311
+msgid "Atlantic"
+msgstr "אטלנטי"
+
+#: wp-admin/includes/continents-cities.php:312
+msgid "Azores"
+msgstr "אזוריים"
+
+#: wp-admin/includes/continents-cities.php:313
+msgid "Bermuda"
+msgstr "ברמודה"
+
+#: wp-admin/includes/continents-cities.php:314
+msgid "Canary"
+msgstr "קנרי"
+
+#: wp-admin/includes/continents-cities.php:315
+msgid "Cape Verde"
+msgstr "כף ורדה"
+
+#: wp-admin/includes/continents-cities.php:316
+msgid "Faeroe"
+msgstr "פארו"
+
+#: wp-admin/includes/continents-cities.php:317
+msgid "Faroe"
+msgstr "פארו"
+
+#: wp-admin/includes/continents-cities.php:318
+msgid "Jan Mayen"
+msgstr "יאן מאיין"
+
+#: wp-admin/includes/continents-cities.php:319
+msgid "Madeira"
+msgstr "מדיירה"
+
+#: wp-admin/includes/continents-cities.php:320
+msgid "Reykjavik"
+msgstr "רייקיאוויק"
+
+#: wp-admin/includes/continents-cities.php:321
+msgid "South Georgia"
+msgstr "דרום ג'ורג'יה"
+
+#: wp-admin/includes/continents-cities.php:322
+msgid "St Helena"
+msgstr "סנט הלנה"
+
+#: wp-admin/includes/continents-cities.php:323
+msgid "Stanley"
+msgstr "סטנלי"
+
+#: wp-admin/includes/continents-cities.php:324
+msgid "Australia"
+msgstr "אוסטרליה"
+
+#: wp-admin/includes/continents-cities.php:325
+msgid "ACT"
+msgstr "ACT"
+
+#: wp-admin/includes/continents-cities.php:326
+msgid "Adelaide"
+msgstr "אדלייד"
+
+#: wp-admin/includes/continents-cities.php:327
+msgid "Brisbane"
+msgstr "בריסביין"
+
+#: wp-admin/includes/continents-cities.php:328
+msgid "Broken Hill"
+msgstr "ברוקן היל"
+
+#: wp-admin/includes/continents-cities.php:329
+msgid "Canberra"
+msgstr "קנברה"
+
+#: wp-admin/includes/continents-cities.php:330
+msgid "Currie"
+msgstr "קורי"
+
+#: wp-admin/includes/continents-cities.php:331
+msgid "Darwin"
+msgstr "דארווין"
+
+#: wp-admin/includes/continents-cities.php:332
+msgid "Eucla"
+msgstr "אאוקלה"
+
+#: wp-admin/includes/continents-cities.php:333
+msgid "Hobart"
+msgstr "הוברט"
+
+#: wp-admin/includes/continents-cities.php:334
+msgid "LHI"
+msgstr "LHI"
+
+#: wp-admin/includes/continents-cities.php:335
+msgid "Lindeman"
+msgstr "לינדמן"
+
+#: wp-admin/includes/continents-cities.php:336
+msgid "Lord Howe"
+msgstr "לורד הואו"
+
+#: wp-admin/includes/continents-cities.php:337
+msgid "Melbourne"
+msgstr "מלבורן"
+
+#: wp-admin/includes/continents-cities.php:338
+msgid "North"
+msgstr "צפון"
+
+#: wp-admin/includes/continents-cities.php:339
+msgid "NSW"
+msgstr "ניו סאות' ויילס"
+
+#: wp-admin/includes/continents-cities.php:340
+msgid "Perth"
+msgstr "פרת'"
+
+#: wp-admin/includes/continents-cities.php:341
+msgid "Queensland"
+msgstr "קווינסלנד"
+
+#: wp-admin/includes/continents-cities.php:342
+msgid "South"
+msgstr "דרום"
+
+#: wp-admin/includes/continents-cities.php:343
+msgid "Sydney"
+msgstr "סידני"
+
+#: wp-admin/includes/continents-cities.php:344
+msgid "Tasmania"
+msgstr "טסמניה"
+
+#: wp-admin/includes/continents-cities.php:345
+msgid "Victoria"
+msgstr "ויקטוריה"
+
+#: wp-admin/includes/continents-cities.php:346
+msgid "West"
+msgstr "מערב"
+
+#: wp-admin/includes/continents-cities.php:347
+msgid "Yancowinna"
+msgstr "ינקובינה"
+
+#: wp-admin/includes/continents-cities.php:348
+msgid "Etc"
+msgstr "אזורי זמן GMT"
+
+#: wp-admin/includes/continents-cities.php:349
+msgid "GMT"
+msgstr "GMT"
+
+#: wp-admin/includes/continents-cities.php:350
+msgid "GMT+0"
+msgstr "GMT+0"
+
+#: wp-admin/includes/continents-cities.php:351
+msgid "GMT+1"
+msgstr "GMT+1"
+
+#: wp-admin/includes/continents-cities.php:352
+msgid "GMT+10"
+msgstr "GMT+10"
+
+#: wp-admin/includes/continents-cities.php:353
+msgid "GMT+11"
+msgstr "GMT+11"
+
+#: wp-admin/includes/continents-cities.php:354
+msgid "GMT+12"
+msgstr "GMT+12"
+
+#: wp-admin/includes/continents-cities.php:355
+msgid "GMT+2"
+msgstr "GMT+2"
+
+#: wp-admin/includes/continents-cities.php:356
+msgid "GMT+3"
+msgstr "GMT+3"
+
+#: wp-admin/includes/continents-cities.php:357
+msgid "GMT+4"
+msgstr "GMT+4"
+
+#: wp-admin/includes/continents-cities.php:358
+msgid "GMT+5"
+msgstr "GMT+5"
+
+#: wp-admin/includes/continents-cities.php:359
+msgid "GMT+6"
+msgstr "GMT+6"
+
+#: wp-admin/includes/continents-cities.php:360
+msgid "GMT+7"
+msgstr "GMT+7"
+
+#: wp-admin/includes/continents-cities.php:361
+msgid "GMT+8"
+msgstr "GMT+8"
+
+#: wp-admin/includes/continents-cities.php:362
+msgid "GMT+9"
+msgstr "GMT+9"
+
+#: wp-admin/includes/continents-cities.php:363
+msgid "GMT-0"
+msgstr "GMT-0"
+
+#: wp-admin/includes/continents-cities.php:364
+msgid "GMT-1"
+msgstr "GMT-1"
+
+#: wp-admin/includes/continents-cities.php:365
+msgid "GMT-10"
+msgstr "GMT-10"
+
+#: wp-admin/includes/continents-cities.php:366
+msgid "GMT-11"
+msgstr "GMT-11"
+
+#: wp-admin/includes/continents-cities.php:367
+msgid "GMT-12"
+msgstr "GMT-12"
+
+#: wp-admin/includes/continents-cities.php:368
+msgid "GMT-13"
+msgstr "GMT-13"
+
+#: wp-admin/includes/continents-cities.php:369
+msgid "GMT-14"
+msgstr "GMT-14"
+
+#: wp-admin/includes/continents-cities.php:370
+msgid "GMT-2"
+msgstr "GMT-2"
+
+#: wp-admin/includes/continents-cities.php:371
+msgid "GMT-3"
+msgstr "GMT-3"
+
+#: wp-admin/includes/continents-cities.php:372
+msgid "GMT-4"
+msgstr "GMT-4"
+
+#: wp-admin/includes/continents-cities.php:373
+msgid "GMT-5"
+msgstr "GMT-5"
+
+#: wp-admin/includes/continents-cities.php:374
+msgid "GMT-6"
+msgstr "GMT-6"
+
+#: wp-admin/includes/continents-cities.php:375
+msgid "GMT-7"
+msgstr "GMT-7"
+
+#: wp-admin/includes/continents-cities.php:376
+msgid "GMT-8"
+msgstr "GMT-8"
+
+#: wp-admin/includes/continents-cities.php:377
+msgid "GMT-9"
+msgstr "GMT-9"
+
+#: wp-admin/includes/continents-cities.php:378
+msgid "GMT0"
+msgstr "GMT0"
+
+#: wp-admin/includes/continents-cities.php:379
+msgid "Greenwich"
+msgstr "גריניץ'"
+
+#: wp-admin/includes/continents-cities.php:380
+msgid "UCT"
+msgstr "UCT"
+
+#: wp-admin/includes/continents-cities.php:381
+msgid "Universal"
+msgstr "אוניברסלי"
+
+#: wp-admin/includes/continents-cities.php:382
+msgid "UTC"
+msgstr "UTC"
+
+#: wp-admin/includes/continents-cities.php:383
+msgid "Zulu"
+msgstr "זולו"
+
+#: wp-admin/includes/continents-cities.php:384
+msgid "Europe"
+msgstr "אירופה"
+
+#: wp-admin/includes/continents-cities.php:385
+msgid "Amsterdam"
+msgstr "אמסטרדם"
+
+#: wp-admin/includes/continents-cities.php:386
+msgid "Andorra"
+msgstr "אנדורה"
+
+#: wp-admin/includes/continents-cities.php:387
+msgid "Athens"
+msgstr "אתונה"
+
+#: wp-admin/includes/continents-cities.php:388
+msgid "Belfast"
+msgstr "בלפאסט"
+
+#: wp-admin/includes/continents-cities.php:389
+msgid "Belgrade"
+msgstr "בלגרד"
+
+#: wp-admin/includes/continents-cities.php:390
+msgid "Berlin"
+msgstr "ברלין"
+
+#: wp-admin/includes/continents-cities.php:391
+msgid "Bratislava"
+msgstr "ברטיסלבה"
+
+#: wp-admin/includes/continents-cities.php:392
+msgid "Brussels"
+msgstr "בריסל"
+
+#: wp-admin/includes/continents-cities.php:393
+msgid "Bucharest"
+msgstr "בוקרשט"
+
+#: wp-admin/includes/continents-cities.php:394
+msgid "Budapest"
+msgstr "בודפסט"
+
+#: wp-admin/includes/continents-cities.php:395
+msgid "Chisinau"
+msgstr "קישינב"
+
+#: wp-admin/includes/continents-cities.php:396
+msgid "Copenhagen"
+msgstr "קופנהגן"
+
+#: wp-admin/includes/continents-cities.php:397
+msgid "Dublin"
+msgstr "דאבלין"
+
+#: wp-admin/includes/continents-cities.php:398
+msgid "Gibraltar"
+msgstr "גיברלטר"
+
+#: wp-admin/includes/continents-cities.php:399
+msgid "Guernsey"
+msgstr "גוארנסיי"
+
+#: wp-admin/includes/continents-cities.php:400
+msgid "Helsinki"
+msgstr "הלסינקי"
+
+#: wp-admin/includes/continents-cities.php:401
+msgid "Isle of Man"
+msgstr "האי מאן"
+
+#: wp-admin/includes/continents-cities.php:402
+msgid "Jersey"
+msgstr "ג'רסי"
+
+#: wp-admin/includes/continents-cities.php:403
+msgid "Kaliningrad"
+msgstr "קלינינגרד"
+
+#: wp-admin/includes/continents-cities.php:404
+msgid "Kiev"
+msgstr "קייב"
+
+#: wp-admin/includes/continents-cities.php:405
+msgid "Lisbon"
+msgstr "ליסבון"
+
+#: wp-admin/includes/continents-cities.php:406
+msgid "Ljubljana"
+msgstr "לובליאנה"
+
+#: wp-admin/includes/continents-cities.php:407
+msgid "London"
+msgstr "לונדון"
+
+#: wp-admin/includes/continents-cities.php:408
+msgid "Luxembourg"
+msgstr "לוקסמבורג"
+
+#: wp-admin/includes/continents-cities.php:409
+msgid "Madrid"
+msgstr "מדריד"
+
+#: wp-admin/includes/continents-cities.php:410
+msgid "Malta"
+msgstr "מלטה"
+
+#: wp-admin/includes/continents-cities.php:411
+msgid "Mariehamn"
+msgstr "מריהם"
+
+#: wp-admin/includes/continents-cities.php:412
+msgid "Minsk"
+msgstr "מינסק"
+
+#: wp-admin/includes/continents-cities.php:413
+msgid "Monaco"
+msgstr "מונקו"
+
+#: wp-admin/includes/continents-cities.php:414
+msgid "Moscow"
+msgstr "מוסקבה"
+
+#: wp-admin/includes/continents-cities.php:415
+msgid "Oslo"
+msgstr "אוסלו"
+
+#: wp-admin/includes/continents-cities.php:416
+msgid "Paris"
+msgstr "פריס"
+
+#: wp-admin/includes/continents-cities.php:417
+msgid "Podgorica"
+msgstr "פודגוריקה"
+
+#: wp-admin/includes/continents-cities.php:418
+msgid "Prague"
+msgstr "פראג"
+
+#: wp-admin/includes/continents-cities.php:419
+msgid "Riga"
+msgstr "ריגה"
+
+#: wp-admin/includes/continents-cities.php:420
+msgid "Rome"
+msgstr "רומא"
+
+#: wp-admin/includes/continents-cities.php:421
+msgid "Samara"
+msgstr "סמרה"
+
+#: wp-admin/includes/continents-cities.php:422
+msgid "San Marino"
+msgstr "סן מרינו"
+
+#: wp-admin/includes/continents-cities.php:423
+msgid "Sarajevo"
+msgstr "סרייבו"
+
+#: wp-admin/includes/continents-cities.php:424
+msgid "Simferopol"
+msgstr "סימפרופול"
+
+#: wp-admin/includes/continents-cities.php:425
+msgid "Skopje"
+msgstr "סקופיה"
+
+#: wp-admin/includes/continents-cities.php:426
+msgid "Sofia"
+msgstr "סופיה"
+
+#: wp-admin/includes/continents-cities.php:427
+msgid "Stockholm"
+msgstr "שטוקהולם"
+
+#: wp-admin/includes/continents-cities.php:428
+msgid "Tallinn"
+msgstr "טאלין"
+
+#: wp-admin/includes/continents-cities.php:429
+msgid "Tirane"
+msgstr "טירנה"
+
+#: wp-admin/includes/continents-cities.php:430
+msgid "Tiraspol"
+msgstr "טירספול"
+
+#: wp-admin/includes/continents-cities.php:431
+msgid "Uzhgorod"
+msgstr "אוזגורוד"
+
+#: wp-admin/includes/continents-cities.php:432
+msgid "Vaduz"
+msgstr "ואדוז"
+
+#: wp-admin/includes/continents-cities.php:433
+msgid "Vatican"
+msgstr "ותיקן"
+
+#: wp-admin/includes/continents-cities.php:434
+msgid "Vienna"
+msgstr "וינה"
+
+#: wp-admin/includes/continents-cities.php:435
+msgid "Vilnius"
+msgstr "וילנה"
+
+#: wp-admin/includes/continents-cities.php:436
+msgid "Volgograd"
+msgstr "וולגוגרד"
+
+#: wp-admin/includes/continents-cities.php:437
+msgid "Warsaw"
+msgstr "ורשה"
+
+#: wp-admin/includes/continents-cities.php:438
+msgid "Zagreb"
+msgstr "זאגרב"
+
+#: wp-admin/includes/continents-cities.php:439
+msgid "Zaporozhye"
+msgstr "זאפורוז'יה"
+
+#: wp-admin/includes/continents-cities.php:440
+msgid "Zurich"
+msgstr "ציריך"
+
+#: wp-admin/includes/continents-cities.php:441
+msgid "Indian"
+msgstr "הודו"
+
+#: wp-admin/includes/continents-cities.php:442
+msgid "Antananarivo"
+msgstr "אנטננריבו"
+
+#: wp-admin/includes/continents-cities.php:443
+msgid "Chagos"
+msgstr "שאגוס"
+
+#: wp-admin/includes/continents-cities.php:444
+msgid "Christmas"
+msgstr "קריסמס"
+
+#: wp-admin/includes/continents-cities.php:445
+msgid "Cocos"
+msgstr "קוקוס"
+
+#: wp-admin/includes/continents-cities.php:446
+msgid "Comoro"
+msgstr "קומורו"
+
+#: wp-admin/includes/continents-cities.php:447
+msgid "Kerguelen"
+msgstr "קרגואלן"
+
+#: wp-admin/includes/continents-cities.php:448
+msgid "Mahe"
+msgstr "מאהה"
+
+#: wp-admin/includes/continents-cities.php:449
+msgid "Maldives"
+msgstr "מלדיביים"
+
+#: wp-admin/includes/continents-cities.php:450
+msgid "Mauritius"
+msgstr "מאוריציוס"
+
+#: wp-admin/includes/continents-cities.php:451
+msgid "Mayotte"
+msgstr "מייבוטה"
+
+#: wp-admin/includes/continents-cities.php:452
+msgid "Reunion"
+msgstr "ראוניון"
+
+#: wp-admin/includes/continents-cities.php:453
+msgid "Pacific"
+msgstr "פאסיפי"
+
+#: wp-admin/includes/continents-cities.php:454
+msgid "Apia"
+msgstr "אפיה"
+
+#: wp-admin/includes/continents-cities.php:455
+msgid "Auckland"
+msgstr "אוקלנד"
+
+#: wp-admin/includes/continents-cities.php:456
+msgid "Chatham"
+msgstr "צ'טהם"
+
+#: wp-admin/includes/continents-cities.php:457
+msgid "Easter"
+msgstr "פסחא"
+
+#: wp-admin/includes/continents-cities.php:458
+msgid "Efate"
+msgstr "אפט"
+
+#: wp-admin/includes/continents-cities.php:459
+msgid "Enderbury"
+msgstr "אנדרברי"
+
+#: wp-admin/includes/continents-cities.php:460
+msgid "Fakaofo"
+msgstr "פקאופו"
+
+#: wp-admin/includes/continents-cities.php:461
+msgid "Fiji"
+msgstr "פיג'י"
+
+#: wp-admin/includes/continents-cities.php:462
+msgid "Funafuti"
+msgstr "פונפוטי"
+
+#: wp-admin/includes/continents-cities.php:463
+msgid "Galapagos"
+msgstr "גלפגוס"
+
+#: wp-admin/includes/continents-cities.php:464
+msgid "Gambier"
+msgstr "גמבייר"
+
+#: wp-admin/includes/continents-cities.php:465
+msgid "Guadalcanal"
+msgstr "גואדלקנל"
+
+#: wp-admin/includes/continents-cities.php:466
+msgid "Guam"
+msgstr "גואם"
+
+#: wp-admin/includes/continents-cities.php:467
+msgid "Honolulu"
+msgstr "הונולולו"
+
+#: wp-admin/includes/continents-cities.php:468
+msgid "Johnston"
+msgstr "ג'ונסטון"
+
+#: wp-admin/includes/continents-cities.php:469
+msgid "Kiritimati"
+msgstr "קיריטימטי"
+
+#: wp-admin/includes/continents-cities.php:470
+msgid "Kosrae"
+msgstr "קוסראה"
+
+#: wp-admin/includes/continents-cities.php:471
+msgid "Kwajalein"
+msgstr "קוואג'אלין"
+
+#: wp-admin/includes/continents-cities.php:472
+msgid "Majuro"
+msgstr "מג'ורו"
+
+#: wp-admin/includes/continents-cities.php:473
+msgid "Marquesas"
+msgstr "מרקסס"
+
+#: wp-admin/includes/continents-cities.php:474
+msgid "Midway"
+msgstr "מידווי"
+
+#: wp-admin/includes/continents-cities.php:475
+msgid "Nauru"
+msgstr "נאורו"
+
+#: wp-admin/includes/continents-cities.php:476
+msgid "Niue"
+msgstr "ניואה"
+
+#: wp-admin/includes/continents-cities.php:477
+msgid "Norfolk"
+msgstr "נורפולק"
+
+#: wp-admin/includes/continents-cities.php:478
+msgid "Noumea"
+msgstr "נואמאה"
+
+#: wp-admin/includes/continents-cities.php:479
+msgid "Pago Pago"
+msgstr "פאגו פאגו"
+
+#: wp-admin/includes/continents-cities.php:480
+msgid "Palau"
+msgstr "פלאו"
+
+#: wp-admin/includes/continents-cities.php:481
+msgid "Pitcairn"
+msgstr "פיטקאירן"
+
+#: wp-admin/includes/continents-cities.php:482
+msgid "Ponape"
+msgstr "פונפה"
+
+#: wp-admin/includes/continents-cities.php:483
+msgid "Port Moresby"
+msgstr "פורט מורסביי"
+
+#: wp-admin/includes/continents-cities.php:484
+msgid "Rarotonga"
+msgstr "רארוטונגה"
+
+#: wp-admin/includes/continents-cities.php:485
+msgid "Saipan"
+msgstr "סייפן"
+
+#: wp-admin/includes/continents-cities.php:486
+msgid "Samoa"
+msgstr "סמואה"
+
+#: wp-admin/includes/continents-cities.php:487
+msgid "Tahiti"
+msgstr "טהיטי"
+
+#: wp-admin/includes/continents-cities.php:488
+msgid "Tarawa"
+msgstr "טראווה"
+
+#: wp-admin/includes/continents-cities.php:489
+msgid "Tongatapu"
+msgstr "טונגטפו"
+
+#: wp-admin/includes/continents-cities.php:490
+msgid "Truk"
+msgstr "טרוק"
+
+#: wp-admin/includes/continents-cities.php:491
+msgid "Wake"
+msgstr "ווייק"
+
+#: wp-admin/includes/continents-cities.php:492
+msgid "Wallis"
+msgstr "ווליס"
+
+#: wp-admin/includes/continents-cities.php:493
+msgid "Yap"
+msgstr "יאפ"
+
+#: wp-admin/includes/continents-cities.php:36
+msgid "Kigali"
+msgstr "קיגלי"
+
+#: wp-admin/includes/continents-cities.php:37
+msgid "Kinshasa"
+msgstr "קינשסה"
+
+#: wp-admin/includes/continents-cities.php:33
+msgid "Johannesburg"
+msgstr "יוהנסבורג"
+
+#: wp-admin/includes/continents-cities.php:34
+msgid "Kampala"
+msgstr "קמפלה"
+
+#: wp-admin/includes/continents-cities.php:42
+msgid "Lubumbashi"
+msgstr "לובומבשי"
+
+#: wp-admin/includes/continents-cities.php:41
+msgid "Luanda"
+msgstr "לואנדה"
+
+#: wp-admin/includes/continents-cities.php:40
+msgid "Lome"
+msgstr "לומה"
+
+#: wp-admin/includes/continents-cities.php:39
+msgid "Libreville"
+msgstr "ליברוויל"
+
+#: wp-admin/includes/continents-cities.php:38
+msgid "Lagos"
+msgstr "לאגוס"
+
+#: wp-admin/includes/continents-cities.php:45
+msgid "Maputo"
+msgstr "מפוטו"
+
+#: wp-admin/includes/continents-cities.php:44
+msgid "Malabo"
+msgstr "מאלבו"
+
+#: wp-admin/includes/continents-cities.php:43
+msgid "Lusaka"
+msgstr "לוסקה"
+
+#: wp-admin/includes/continents-cities.php:51
+msgid "Ndjamena"
+msgstr "נדג'מנה"
+
+#: wp-admin/includes/continents-cities.php:50
+msgid "Nairobi"
+msgstr "נאירובי"
+
+#: wp-admin/includes/continents-cities.php:46
+msgid "Maseru"
+msgstr "מזרו"
+
+#: wp-admin/includes/continents-cities.php:47
+msgid "Mbabane"
+msgstr "מבבנה"
+
+#: wp-admin/includes/continents-cities.php:48
+msgid "Mogadishu"
+msgstr "מוגדישו"
+
+#: wp-admin/includes/continents-cities.php:49
+msgid "Monrovia"
+msgstr "מונרוביה"
+
+#: wp-admin/includes/continents-cities.php:73
+msgid "La Rioja"
+msgstr "לה ריוחה"
+
+#: wp-admin/includes/continents-cities.php:72
+msgid "Jujuy"
+msgstr "חוחוי"
+
+#: wp-admin/includes/continents-cities.php:71
+msgid "Cordoba"
+msgstr "קורדובה"
+
+#: wp-admin/includes/continents-cities.php:70
+msgid "ComodRivadavia"
+msgstr "קומודורו ריבדביה"
+
+#: wp-admin/includes/continents-cities.php:69
+msgid "Catamarca"
+msgstr "קטמארקה"
+
+#: wp-admin/includes/continents-cities.php:68
+msgid "Buenos Aires"
+msgstr "בואנוס איירס"
+
+#: wp-admin/includes/continents-cities.php:67
+msgid "Argentina"
+msgstr "ארגנטינה"
+
+#: wp-admin/includes/continents-cities.php:66
+msgid "Araguaina"
+msgstr "ארגואיינה"
+
+#: wp-admin/includes/continents-cities.php:65
+msgid "Antigua"
+msgstr "אנטיגואה"
+
+#: wp-admin/includes/continents-cities.php:64
+msgid "Anguilla"
+msgstr "אנגווילה"
+
+#: wp-admin/includes/continents-cities.php:63
+msgid "Anchorage"
+msgstr "אנקורג'"
+
+#: wp-admin/includes/continents-cities.php:62
+msgid "Adak"
+msgstr "אדק"
+
+#: wp-admin/includes/continents-cities.php:61
+msgid "America"
+msgstr "אמריקה"
+
+#: wp-admin/includes/continents-cities.php:60
+msgid "Windhoek"
+msgstr "וינדהוק"
+
+#: wp-admin/includes/continents-cities.php:59
+msgid "Tunis"
+msgstr "תוניס"
+
+#: wp-admin/includes/continents-cities.php:58
+msgid "Tripoli"
+msgstr "טריפולי"
+
+#: wp-admin/includes/continents-cities.php:57
+msgid "Timbuktu"
+msgstr "טימבוקטו"
+
+#: wp-admin/includes/continents-cities.php:56
+msgid "Sao Tome"
+msgstr "סאו טום"
+
+#: wp-admin/includes/continents-cities.php:55
+msgid "Porto-Novo"
+msgstr "פורטו-נובו"
+
+#: wp-admin/includes/continents-cities.php:54
+msgid "Ouagadougou"
+msgstr "אוגדוגו"
+
+#: wp-admin/includes/continents-cities.php:53
+msgid "Nouakchott"
+msgstr "נואקשוט"
+
+#: wp-admin/includes/continents-cities.php:52
+msgid "Niamey"
+msgstr "ניאמיי"
+
+#: wp-admin/includes/continents-cities.php:29
+msgid "El Aaiun"
+msgstr "אל עווין"
+
+#: wp-admin/includes/continents-cities.php:28
+msgid "Douala"
+msgstr "דואלה"
+
+#: wp-admin/includes/continents-cities.php:32
+msgid "Harare"
+msgstr "הררה"
+
+#: wp-admin/includes/continents-cities.php:30
+msgid "Freetown"
+msgstr "פריטאון"
+
+#: wp-admin/includes/continents-cities.php:31
+msgid "Gaborone"
+msgstr "גבורון"
+
+#: wp-admin/includes/continents-cities.php:35
+msgid "Khartoum"
+msgstr "חרטום"
+
+#: wp-admin/includes/continents-cities.php:27
+msgid "Djibouti"
+msgstr "דג'יבוטי"
+
+#: wp-admin/includes/continents-cities.php:26
+msgid "Dar es Salaam"
+msgstr "דאר אל סאלם"
+
+#: wp-admin/includes/continents-cities.php:25
+msgid "Dakar"
+msgstr "דקר"
+
+#: wp-admin/includes/continents-cities.php:24
+msgid "Conakry"
+msgstr "סונקרי"
+
+#: wp-admin/includes/continents-cities.php:23
+msgid "Ceuta"
+msgstr "קאוטה"
+
+#: wp-admin/includes/continents-cities.php:22
+msgid "Casablanca"
+msgstr "קזבלנקה"
+
+#: wp-admin/includes/continents-cities.php:21
+msgid "Cairo"
+msgstr "קהיר"
+
+#: wp-admin/includes/continents-cities.php:20
+msgid "Bujumbura"
+msgstr "בוג'ומבורה"
+
+#: wp-admin/includes/continents-cities.php:19
+msgid "Brazzaville"
+msgstr "ברזוויל"
+
+#: wp-admin/includes/continents-cities.php:18
+msgid "Blantyre"
+msgstr "בלנטיר"
+
+#: wp-admin/includes/continents-cities.php:17
+msgid "Bissau"
+msgstr "ביסאו"
+
+#: wp-admin/includes/continents-cities.php:16
+msgid "Banjul"
+msgstr "בנג'ול"
+
+#: wp-admin/includes/continents-cities.php:15
+msgid "Bangui"
+msgstr "בנגוי"
+
+#: wp-admin/includes/continents-cities.php:14
+msgid "Bamako"
+msgstr "באמאקו"
+
+#: wp-admin/includes/continents-cities.php:13
+msgid "Asmera"
+msgstr "אסמרה"
+
+#: wp-admin/includes/continents-cities.php:11
+msgid "Algiers"
+msgstr "אלג'יר"
+
+#: wp-admin/includes/continents-cities.php:12
+msgid "Asmara"
+msgstr "אסמרה"
+
+#: wp-admin/includes/continents-cities.php:10
+msgid "Addis Ababa"
+msgstr "אדיס אבבה"
+
+#: wp-admin/includes/continents-cities.php:8
+msgid "Abidjan"
+msgstr "אביג'ן"
+
+#: wp-admin/includes/continents-cities.php:7
+msgid "Africa"
+msgstr "אפריקה"
+
+#: wp-admin/includes/continents-cities.php:9
+msgid "Accra"
+msgstr "אקרה"
+
+#: wp-admin/includes/continents-cities.php:74
+msgid "Mendoza"
+msgstr "מנדוסה"
+
+#: wp-admin/includes/continents-cities.php:75
+msgid "Rio Gallegos"
+msgstr "ריו גז'גוס"
+
+#: wp-admin/includes/continents-cities.php:76
+msgid "San Juan"
+msgstr "סן חואן"
+
+#: wp-admin/includes/continents-cities.php:77
+msgid "San Luis"
+msgstr "סן לואיס"
+
+#: wp-admin/includes/continents-cities.php:78
+msgid "Tucuman"
+msgstr "טוקומאן"
+
+#: wp-admin/includes/continents-cities.php:79
+msgid "Ushuaia"
+msgstr "אוסוואיה"
+
+#: wp-admin/includes/continents-cities.php:80
+msgid "Aruba"
+msgstr "ארובה"
+
+#: wp-admin/includes/continents-cities.php:81
+msgid "Asuncion"
+msgstr "אסונסיון"
+
+#: wp-admin/includes/continents-cities.php:82
+msgid "Atikokan"
+msgstr "אטיקוקאן"
+
+#: wp-admin/includes/continents-cities.php:83
+msgid "Atka"
+msgstr "אטקה"
+
+#: wp-admin/includes/continents-cities.php:84
+msgid "Bahia"
+msgstr "באהיה"
+
+#: wp-admin/includes/continents-cities.php:85
+msgid "Barbados"
+msgstr "ברבדוס"
+
+#: wp-admin/includes/continents-cities.php:86
+msgid "Belem"
+msgstr "בלם"
+
+#: wp-admin/includes/continents-cities.php:87
+msgid "Belize"
+msgstr "בליז"
+
+#: wp-admin/includes/continents-cities.php:88
+msgid "Blanc-Sablon"
+msgstr "בלנק-סבלון"
+
+#: wp-admin/includes/continents-cities.php:89
+msgid "Boa Vista"
+msgstr "בואה ויסטה"
+
+#: wp-admin/includes/continents-cities.php:90
+msgid "Bogota"
+msgstr "בוגוטה"
+
+#: wp-admin/includes/continents-cities.php:91
+msgid "Boise"
+msgstr "בוייזי"
+
+#: wp-admin/includes/continents-cities.php:92
+msgid "Cambridge Bay"
+msgstr "קיימברידג' ביי"
+
+#: wp-admin/includes/continents-cities.php:93
+msgid "Campo Grande"
+msgstr "קמפו-גרנדה"
+
+#: wp-admin/includes/continents-cities.php:94
+msgid "Cancun"
+msgstr "קנקון"
+
+#: wp-admin/includes/continents-cities.php:95
+msgid "Caracas"
+msgstr "קרקס"
+
+#: wp-admin/includes/continents-cities.php:96
+msgid "Cayenne"
+msgstr "קיינה"
+
+#: wp-admin/includes/continents-cities.php:97
+msgid "Cayman"
+msgstr "קיימן"
+
+#: wp-admin/includes/continents-cities.php:98
+msgid "Chicago"
+msgstr "שיקאגו"
+
+#: wp-admin/includes/continents-cities.php:99
+msgid "Chihuahua"
+msgstr "צ'יוואווה"
+
+#: wp-admin/includes/continents-cities.php:100
+msgid "Coral Harbour"
+msgstr "קורל הרבור"
+
+#: wp-admin/includes/continents-cities.php:101
+msgid "Costa Rica"
+msgstr "קוסטה ריקה"
+
+#: wp-admin/includes/continents-cities.php:102
+msgid "Cuiaba"
+msgstr "קויאבה"
+
+#: wp-admin/includes/continents-cities.php:103
+msgid "Curacao"
+msgstr "קורסאו"
+
+#: wp-admin/includes/continents-cities.php:104
+msgid "Danmarkshavn"
+msgstr "דנמרקשבן"
+
+#: wp-admin/includes/continents-cities.php:105
+msgid "Dawson"
+msgstr "דוסון"
+
+#: wp-admin/includes/continents-cities.php:106
+msgid "Dawson Creek"
+msgstr "דוסון קריק"
+
+#: wp-admin/includes/continents-cities.php:107
+msgid "Denver"
+msgstr "דנבר"
+
+#: wp-admin/includes/continents-cities.php:108
+msgid "Detroit"
+msgstr "דטרויט"
+
+#: wp-admin/includes/continents-cities.php:109
+msgid "Dominica"
+msgstr "דומיניקיה"
+
+#: wp-admin/includes/continents-cities.php:110
+msgid "Edmonton"
+msgstr "אדמונטון"
+
+#: wp-admin/includes/continents-cities.php:111
+msgid "Eirunepe"
+msgstr "אירונפה"
+
+#: wp-admin/includes/continents-cities.php:112
+msgid "El Salvador"
+msgstr "אל סלבדור"
+
+#: wp-admin/includes/continents-cities.php:113
+msgid "Ensenada"
+msgstr "אנסנדה"
+
+#: wp-admin/includes/continents-cities.php:114
+msgid "Fort Wayne"
+msgstr "פורט וין"
+
+#: wp-admin/includes/continents-cities.php:115
+msgid "Fortaleza"
+msgstr "פורטלזה"
+
+#: wp-admin/includes/continents-cities.php:116
+msgid "Glace Bay"
+msgstr "גלייס ביי"
+
+#: wp-admin/includes/continents-cities.php:117
+msgid "Godthab"
+msgstr "גודטאב"
+
+#: wp-admin/includes/continents-cities.php:118
+msgid "Goose Bay"
+msgstr "גוס ביי"
+
+#: wp-admin/includes/continents-cities.php:119
+msgid "Grand Turk"
+msgstr "גרנד טורק"
+
+#: wp-admin/includes/continents-cities.php:120
+msgid "Grenada"
+msgstr "גרנדה"
+
+#: wp-admin/includes/continents-cities.php:121
+msgid "Guadeloupe"
+msgstr "גוואדלופ"
+
+#: wp-admin/includes/continents-cities.php:122
+msgid "Guatemala"
+msgstr "גואטמלה"
+
+#: wp-admin/includes/continents-cities.php:123
+msgid "Guayaquil"
+msgstr "גויאקוויל"
+
+#: wp-admin/includes/continents-cities.php:124
+msgid "Guyana"
+msgstr "גיאנה"
+
+#: wp-admin/includes/continents-cities.php:125
+msgid "Halifax"
+msgstr "הליפקס"
+
+#: wp-admin/includes/continents-cities.php:126
+msgid "Havana"
+msgstr "האוונה"
+
+#: wp-admin/includes/continents-cities.php:127
+msgid "Hermosillo"
+msgstr "הרמוסילו"
+
+#: wp-admin/includes/continents-cities.php:128
+msgid "Indiana"
+msgstr "אנדיאנה"
+
+#: wp-admin/includes/continents-cities.php:129
+msgid "Indianapolis"
+msgstr "אינדיאנפוליס"
+
+#: wp-admin/includes/continents-cities.php:130
+msgid "Knox"
+msgstr "נוקס"
+
+#: wp-admin/includes/continents-cities.php:131
+msgid "Marengo"
+msgstr "מרנגו"
+
+#: wp-admin/includes/continents-cities.php:132
+msgid "Petersburg"
+msgstr "פטרסבורג"
+
+#: wp-admin/includes/continents-cities.php:133
+msgid "Tell City"
+msgstr "טל-סיטי"
+
+#: wp-admin/includes/continents-cities.php:134
+msgid "Vevay"
+msgstr "וואיי"
