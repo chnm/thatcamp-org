@@ -1,0 +1,161 @@
+# Translation of Collapse-O-Matic in German
+# This file is distributed under the same license as the Collapse-O-Matic package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2013-11-19 08:15+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.5.7\n"
+"Project-Id-Version: Collapse-O-Matic\n"
+"POT-Creation-Date: \n"
+"Last-Translator: astroBro <baden@twinpictures.de>\n"
+"Language-Team: Twinpictures <info@twinpictures.de>\n"
+"Language: German\n"
+
+#: colomat.php:287
+msgid "Style"
+msgstr "Erscheinungsbild"
+
+#: colomat.php:294
+msgid "Light"
+msgstr "Hell"
+
+#: colomat.php:295
+msgid "Dark"
+msgstr "Dunkel"
+
+#: colomat.php:306
+msgid ""
+"Select Light for sites with lighter backgroudns. Select Dark for sites with "
+"darker backgrounds."
+msgstr ""
+"Wählen Sie \"Hell\" für Websiten mit hellem Hintergrund und \"Dunkel\" für "
+"Seiten mit dunklem Hintergrund"
+
+#: colomat.php:275 colomat.php:373
+msgid "Click to toggle"
+msgstr "Klicken Sie zum Ein-/Ausklappen."
+
+#: colomat.php:276
+msgid "Default Collapse-O-Matic Settings"
+msgstr "Standardeinstellungen von Collapse-O-Matic"
+
+#: colomat.php:311
+msgid "Tag Attribute"
+msgstr "Tag Attribut"
+
+#: colomat.php:313
+msgid ""
+"HTML tag use to wrap the trigger text. See %sTag Attribute%s in the "
+"documentation for more info."
+msgstr ""
+"HTML Tag, welcher um den Aktivierungstext gelegt wird. Suchen Sie nach %sTag "
+"Attribute%s in der Dokumentation für weitere Informationen (Englisch)."
+
+#: colomat.php:323
+msgid "Collapse/Expand Duration"
+msgstr "Zeit des Öffnens/Schließens"
+
+#: colomat.php:325
+msgid ""
+"A string or number determining how long the animation will run. See "
+"%sDuration%s in the documentation for more info."
+msgstr ""
+"Ein Wert oder eine Zahl welche definiert wie lange die Animation andauern "
+"wird. Suchen Sie nach %sAnimation%s in der englischsprachigen Dokumentation "
+"für mehr Informationen."
+
+#: colomat.php:330
+msgid "Animation Effect"
+msgstr "Animationseffekt"
+
+#: colomat.php:337
+msgid "Slide Only"
+msgstr "Nur gleiten"
+
+#: colomat.php:338
+msgid "Slide & Fade"
+msgstr "Gleiten & Ausblenden"
+
+#: colomat.php:349
+msgid ""
+"Animation effect to use while collapsing and expanding. See %sAnimation "
+"Effect%s in the documentation for more info."
+msgstr ""
+"Animationseffekte werden nur verwendet während dem Ein- bzw. Aufklappen. "
+"Weitere Informationen finden Sie unter %sAnimation Effect%s in der "
+"englischen Dokumentation."
+
+#: colomat.php:354
+msgid "Level Up!"
+msgstr "Verbessern Sie Ihre Programmversion!"
+
+#: colomat.php:355
+msgid ""
+"<em>Comming Soon: Collapse-Pro-Matic</em> our preimum plugin that offers "
+"additional attributes and the ability to set default attribute settings for "
+"all attributes."
+msgstr ""
+"<em>Bald erhältlich: Collapse-Pro-Matic</em>, unser Premium-Plug-In welches "
+"Ihnen mehr Einstellungsmöglichkeiten bieten wird sowie die Option, "
+"Standardattribute für alle Attribute festzulegen."
+
+#: colomat.php:362
+msgid "Save Changes"
+msgstr "Speichere die vorgenommenen Änderungen"
+
+#: colomat.php:374
+msgid "About"
+msgstr "Über"
+
+#: colomat.php:377
+msgid ""
+"Remove clutter, save space. Display and hide additional content in a SEO "
+"friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a "
+"lovely jQuery expanding and collapsing element."
+msgstr ""
+"Entferne unnützen Code, spare Platz. Lasse ergänzenden Text ausgeblendet und "
+"mit einem Klick erscheinen. Trotz alldem ist der Text "
+"suchmaschinenfreundlich! Verpacke jedmöglichen Inhalt sowie andere "
+"Shortcodes in ein tolles jQuery Element."
+
+#: colomat.php:379
+msgid ""
+"%sDetailed documentation%s, complete with working demonstrations of all "
+"shortcode attributes, is available for your instructional enjoyment."
+msgstr ""
+"Zum besseren Verständnis sind %sDetailed documentation%s verfügbar mit "
+"Demonstration aller Shortcodes und Attributen."
+
+#: colomat.php:380
+msgid "%sFree%s & %sPremimum%s Support"
+msgstr "%sFree%s & %sPremium%s Hilfe (Support)"
+
+#: colomat.php:381
+msgid ""
+"If you like this plugin, please consider %sreviewing it at WordPress.org%s "
+"to help others."
+msgstr ""
+"Wenn Sie dieses Plug-In mögen bitten wir sie es auf  %sreviewing it at "
+"WordPress.org%s zu bewerten."
+
+msgid "jQuery Collapse-O-Matic"
+msgstr "jQuery Collapse-O-Matic"
+
+msgid "http://plugins.twinpictures.de/plugins/collapse-o-matic/"
+msgstr "http://plugins.twinpictures.de/plugins/collapse-o-matic/"
+
+msgid ""
+"Collapse-O-Matic adds an [expand] shortcode that wraps content into a "
+"lovely, jQuery collapsible div."
+msgstr ""
+"Collapse-O-Matic fügt einen [expand] Shortcode hinzu welcher Inhalt in einen "
+"klasse einklappbaren jQuery div packt."
+
+msgid "twinpictures, baden03"
+msgstr "twinpictures, baden03"
+
+msgid "http://twinpictures.de/"
+msgstr "http://twinpictures.de/"

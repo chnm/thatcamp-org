@@ -2,8 +2,8 @@
 Contributors: eoigal, alternatekev, mdawaffe, donncha, johnny5
 Tags: polls, poll, polldaddy,  wppolls, vote, polling, surveys, rate, rating, ratings
 Requires at least: 3.2
-Tested up to: 3.5.2
-Stable tag: 2.0.20
+Tested up to: 3.7.1
+Stable tag: 2.0.21
 
 Create and manage Polldaddy polls and ratings from within WordPress.
 
@@ -111,10 +111,18 @@ Your theme is getting the post content, without necessarily showing it. If the p
 
 
 == Upgrade Notice ==
-= 2.0.20 =
-Updated poll settings page, bugfixes
+= 2.0.21 =
+Fixed CSRF in ratings settings page, rich snippet support, login via API key.
 
 == Changelog ==
+= 2.0.21 =
+* Fixed CSRF problem in ratings settings page.
+* Fixed PHP 5.5.0 warning in class constructor.
+* Add rich snippet support for ratings.
+* Login to Polldaddy via API Key instead of username and password now.
+* Removed "month" and "never" options from poll block expiration dropdown as they're not supported any more.
+* Misc bug fixes.
+
 = 2.0.20 =
 * Updated settings page: text, layout, Import -> Link.
 * On MU sites use blog_public blog option.

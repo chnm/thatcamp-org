@@ -3,9 +3,9 @@
 Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more
-Requires at least: 3.3
-Tested up to: 3.6-beta
-Stable tag: 1.5.3
+Requires at least: 3.5
+Tested up to: 3.7.1
+Stable tag: 1.5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,8 +50,14 @@ No. Not even close.
 
 == Changelog ==
 
+= 1.5.4 =
+* updated .on method
+* removed php4 constructor
+* added DE and RU languages
+
 = 1.5.3 =
 * shortcode works in sidebar widgets (again)
+* fixed hasClass error in Slide Only animation option
 
 = 1.5.2 =
 * find-me now is called only after collapse/expand animations
@@ -211,8 +217,14 @@ Fixed auto-expand of urls with id-anchors
 
 == Upgrade Notice ==
 
+= 1.5.4 =
+* updated jQuery .on() method
+* removed php4 constructor
+* added DE and RU languages
+
 = 1.5.3 =
 * shortcode works in sidebar widgets (again)
+* fixed hasClass error in Slide Only animation option
 
 = 1.5.2 =
 * find-me is now called after all collapse/expand animations finish

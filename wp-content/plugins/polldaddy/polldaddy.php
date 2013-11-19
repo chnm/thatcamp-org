@@ -5,8 +5,8 @@ Plugin Name: Polldaddy Polls & Ratings
 Plugin URI: http://wordpress.org/extend/plugins/polldaddy/
 Description: Create and manage Polldaddy polls and ratings in WordPress
 Author: Automattic, Inc.
-Author URL: http://automattic.com/
-Version: 2.0.20
+Author URL: http://polldaddy.com/
+Version: 2.0.21
 */
 
 // You can hardcode your Polldaddy PartnerGUID (API Key) here
@@ -27,10 +27,6 @@ class WP_Polldaddy {
 	var $rating_user_code;
 	var $has_feedback_menu;
 	
-	function WP_Polldaddy() {
-		$this->__construct();
-	}
-
 	function __construct() {
 		global $current_user;
 		$this->log( 'Created WP_Polldaddy Object: constructor' );
@@ -1040,7 +1036,7 @@ class WP_Polldaddy {
 
 		switch ( $_POST['account'] ) {
 		case 'import' :
-			return $this->import_account();
+			return array( $this->import_account() );
 			break;
 		default :
 			return;
@@ -1048,27 +1044,19 @@ class WP_Polldaddy {
 	}
 
 	function import_account() {
-
-
-		$polldaddy = $this->get_client( WP_POLLDADDY__PARTNERGUID );
-		$polldaddy->reset();
-		$email = trim( stripslashes( $_POST['polldaddy_email'] ) );
-		$password = trim( stripslashes( $_POST['polldaddy_password'] ) );
-
-		if ( !is_email( $email ) )
-			$this->errors->add( 'polldaddy_email', __( 'Email address required', 'polldaddy' ) );
-
-		if ( !$password )
-			$this->errors->add( 'polldaddy_password', __( 'Password required', 'polldaddy' ) );
-
-		if ( $this->errors->get_error_codes() )
-			return false;
-
-		if ( $usercode = $polldaddy->initiate( $email, $password, $this->id ) ) {
-			$this->user_code = $usercode;
+		if ( isset( $_POST[ 'polldaddy_key' ] ) ) {
+			$polldaddy_api_key = trim( stripslashes( $_POST[ 'polldaddy_key' ] ) );
+			$polldaddy = $this->get_client( $polldaddy_api_key );
+			$polldaddy->reset();
+			if ( !$polldaddy->get_usercode( $this->id ) ) {
+				$this->parse_errors( $polldaddy );
+				$this->errors->add( 'GetUserCode', __( 'Account could not be accessed.  Is your API code correct?', 'polldaddy' ) );
+				return false;
+			}
+			update_option( 'polldaddy_api_key', $polldaddy_api_key );
 		} else {
-			$this->parse_errors( $polldaddy );
-			$this->errors->add( 'import-account', __( 'Account could not be imported.  Are your email address and password correct?', 'polldaddy' ) );
+			$this->user_code = false;
+			$this->errors->add( 'import-account', __( 'Account could not be imported. Did you enter the correct API key?', 'polldaddy' ) );
 			return false;
 		}
 	}
@@ -1812,16 +1800,18 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 
 			</ul>
 
+<?php 
+		if ( $poll->blockExpiration == 0 || $poll->blockExpiration > 604800 )
+			$poll->blockExpiration = 604800;
+?>
 			<span style="margin:6px 6px 8px;<?php echo $poll->blockRepeatVotersType == 'off' ? 'display:none;' : ''; ?>" id="cookieip_expiration_label"><label><?php _e( 'Expires: ', 'polldaddy' ); ?></label></span>
 			<select id="cookieip_expiration" name="cookieip_expiration" style="width: auto;<?php echo $poll->blockRepeatVotersType == 'off' ? 'display:none;' : ''; ?>">
-				<option value="0" <?php echo (int) $poll->blockExpiration == 0 ? 'selected' : ''; ?>><?php _e( 'Never', 'polldaddy' ); ?></option>
 				<option value="3600" <?php echo (int) $poll->blockExpiration == 3600 ? 'selected' : ''; ?>><?php printf( __( '%d hour', 'polldaddy' ), 1 ); ?></option>
 				<option value="10800" <?php echo (int) $poll->blockExpiration == 10800 ? 'selected' : ''; ?>><?php printf( __( '%d hours', 'polldaddy' ), 3 ); ?></option>
 				<option value="21600" <?php echo (int) $poll->blockExpiration == 21600 ? 'selected' : ''; ?>><?php printf( __( '%d hours', 'polldaddy' ), 6 ); ?></option>
 				<option value="43200" <?php echo (int) $poll->blockExpiration == 43200 ? 'selected' : ''; ?>><?php printf( __( '%d hours', 'polldaddy' ), 12 ); ?></option>
 				<option value="86400" <?php echo (int) $poll->blockExpiration == 86400 ? 'selected' : ''; ?>><?php printf( __( '%d day', 'polldaddy' ), 1 ); ?></option>
 				<option value="604800" <?php echo (int) $poll->blockExpiration == 604800 ? 'selected' : ''; ?>><?php printf( __( '%d week', 'polldaddy' ), 1 ); ?></option>
-				<option value="2419200" <?php echo (int) $poll->blockExpiration == 2419200 ? 'selected' : ''; ?>><?php printf( __( '%d month', 'polldaddy' ), 1 ); ?></option>
 			</select>
 			<p><?php _e( 'Note: Blocking by cookie and IP address can be problematic for some voters.', 'polldaddy' ); ?></p>
 		</div>
@@ -3684,6 +3674,7 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 		}
 
 		if ( isset( $_POST[ 'pd_rating_action_type' ] ) ) {
+			check_admin_referer( 'action-rating_settings_' . $_POST[ 'pd_rating_action_type' ] );
 
 			switch ( $_POST[ 'pd_rating_action_type' ]  ) {
 			case 'posts' :
@@ -3795,6 +3786,7 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
           <div class="tabs-panel" id="categories-all" style="background: #FFFFFF;height: auto; overflow: visible;max-height:400px;">
             <form action="" method="post">
             <input type="hidden" name="pd_rating_action_type" value="<?php echo $report_type; ?>" />
+<?php wp_nonce_field( 'action-rating_settings_' . $report_type ); ?>
             <table class="form-table" style="width: normal;">
               <tbody><?php
 			if ( $report_type == 'posts' ) { ?>
@@ -4638,7 +4630,9 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 						<td colspan="4"><?php printf( __( 'No ratings have been collected for your %s yet.', 'polldaddy' ), $report_type ); ?></td>
 					</tr>
 				</tbody><?php
-		} else {  ?>
+		} else {  
+			polldaddy_update_ratings_cache( $ratings );
+			?>
 				<thead>
 					<tr>
 						<?php if ( $this->is_editor ) { ?>
@@ -4831,9 +4825,9 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 	<h3>
 		<?php _e( 'Polldaddy Account Info', 'polldaddy' ); ?>
 	</h3>
-	<p><?php _e( '<em>Polldaddy</em> and <em>WordPress.com</em> are now connected using <a href="http://en.support.wordpress.com/wpcc-faq/">WordPress.com Connect</a>. If you have a WordPress.com account you can use it to login to <a href="http://polldaddy.com/">Polldaddy.com</a>. Click on the Polldaddy "sign in" button, authorize the connection and create your new Polldaddy account. Use the same email and password to login on this page.', 'polldaddy' ); ?></p>
-	<p><strong><?php _e( 'You must login at least once on <a href="http://polldaddy.com/">Polldaddy.com</a> before using this plugin.' ); ?></strong></p>
-	<p><?php printf( __( 'Your account is currently link to this WordPress.com account: <strong>%s</strong>', 'polldaddy' ), $account_email ); ?></p>
+	<p><?php _e( '<em>Polldaddy</em> and <em>WordPress.com</em> are now connected using <a href="http://en.support.wordpress.com/wpcc-faq/">WordPress.com Connect</a>. If you have a WordPress.com account you can use it to login to <a href="http://polldaddy.com/">Polldaddy.com</a>. Click on the Polldaddy "sign in" button, authorize the connection and create your new Polldaddy account.', 'polldaddy' ); ?></p>
+	<p><?php _e( 'Login to the Polldaddy website and scroll to the end of your <a href="http://polldaddy.com/account/#apikey">account page</a> to create or retrieve an API key.', 'polldaddy' ); ?></p>
+	<p><?php printf( __( 'Your account is currently linked to this API key: <strong>%s</strong>', 'polldaddy' ), WP_POLLDADDY__PARTNERGUID ); ?></p>
 	<br />
 	<h3><?php _e( 'Link to a different Polldaddy account', 'polldaddy' ); ?></h3>
 		<?php } else { ?>
@@ -4846,24 +4840,11 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
         <tr class="form-field form-required">
           <th valign="top" scope="row">
             <label for="polldaddy-email">
-              <?php _e( 'WordPress.com Email Address', 'polldaddy' ); ?>
+              <?php _e( 'Polldaddy.com API Key', 'polldaddy' ); ?>
             </label>
           </th>
           <td>
-		  <input type="text" name="polldaddy_email" id="polldaddy-email" aria-required="true" size="40" value="<?php if ( isset( $_POST[ 'polldaddy_email' ] ) ) echo esc_attr( $_POST[ 'polldaddy_email' ] ); ?>" />
-          </td>
-        </tr>
-        <tr class="form-field form-required">
-          <th valign="top" scope="row">
-            <label for="polldaddy-password">
-              <?php _e( 'WordPress.com Password', 'polldaddy' ); ?>
-            </label>
-          </th>
-          <td>
-            <input type="password" name="polldaddy_password" id="polldaddy-password" aria-required="true" size="40" />
-			<?php if ( $account_email ) { ?>
-			<p><?php printf( __( 'Any polls or ratings created in your current account will still be available on Polldaddy.com when you login as %s.', 'polldaddy' ), $account_email ); ?></p>
-			<?php } ?>
+		  <input type="text" name="polldaddy_key" id="polldaddy-key" aria-required="true" size="20" value="<?php if ( isset( $_POST[ 'polldaddy_key' ] ) ) echo esc_attr( $_POST[ 'polldaddy_key' ] ); ?>" />
           </td>
         </tr>
       </tbody>
@@ -4938,14 +4919,12 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 
 
                 <select id="blockExpiration" name="blockExpiration">
-                  <option value="0" <?php echo $poll->blockExpiration == 0 ? 'selected="selected"':''; ?>><?php _e( 'Never', 'polldaddy' ); ?></option>
                   <option value="3600" <?php echo $poll->blockExpiration == 3600 ? 'selected="selected"':''; ?>><?php printf( __( '%d hour', 'polldaddy' ), 1 ); ?></option>
                   <option value="10800" <?php echo (int) $poll->blockExpiration == 10800 ? 'selected="selected"' : ''; ?>><?php printf( __( '%d hours', 'polldaddy' ), 3 ); ?></option>
 	  				<option value="21600" <?php echo (int) $poll->blockExpiration == 21600 ? 'selected="selected"' : ''; ?>><?php printf( __( '%d hours', 'polldaddy' ), 6 ); ?></option>
 	  				<option value="43200" <?php echo (int) $poll->blockExpiration == 43200 ? 'selected="selected"' : ''; ?>><?php printf( __( '%d hours', 'polldaddy' ), 12 ); ?></option>
 	  				<option value="86400" <?php echo (int) $poll->blockExpiration == 86400 ? 'selected="selected"' : ''; ?>><?php printf( __( '%d day', 'polldaddy' ), 1 ); ?></option>
 	  				<option value="604800" <?php echo (int) $poll->blockExpiration == 604800 ? 'selected="selected"' : ''; ?>><?php printf( __( '%d week', 'polldaddy' ), 1 ); ?></option>
-	  				<option value="2419200" <?php echo (int) $poll->blockExpiration == 2419200 ? 'selected="selected"' : ''; ?>><?php printf( __( '%d month', 'polldaddy' ), 1 ); ?></option>
 	        	</select>
              </div>
              </div>

@@ -5,9 +5,12 @@ if (!function_exists('add_action')){
 	exit;
 }
 
+include (WP_PLUGIN_DIR.'/subscribe-to-comments-reloaded/classes/helper.class.php');
+$helper = new Helper();
 ob_start();
 if (!empty($email)){
 	global $wp_subscribe_reloaded;
+
 
 	// Send management link
 	$from_name = stripslashes(get_option('subscribe_reloaded_from_name', 'admin'));
@@ -60,7 +63,7 @@ if (!empty($email)){
 		$message = qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage($message);
 ?>
 <p><?php echo $message ?></p>
-<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" onsubmit="if(this.subscribe_reloaded_email.value=='' || this.subscribe_reloaded_email.value.indexOf('@')==0) return false">
+<form action="<?php if($helper->verifyXSS($_SERVER['REQUEST_URI'])) { echo "#"; } else {echo $_SERVER['REQUEST_URI'];} ?>" method="post" onsubmit="if(this.subscribe_reloaded_email.value=='' || this.subscribe_reloaded_email.value.indexOf('@')==0) return false">
 <fieldset style="border:0">
 	<p><label for="subscribe_reloaded_email"><?php _e('Email','subscribe-reloaded') ?></label>
 	<input type="text" class="subscribe-form-field" name="sre" value="<?php echo isset($_COOKIE['comment_author_email_'.COOKIEHASH])?$_COOKIE['comment_author_email_'.COOKIEHASH]:'email'; ?>" size="22" onfocus="if(this.value==this.defaultValue)this.value=''" onblur="if(this.value=='')this.value=this.defaultValue" />
