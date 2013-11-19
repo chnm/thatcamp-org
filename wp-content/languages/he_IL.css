@@ -1,0 +1,75 @@
+/*
+
+Stylesheet customizations for WordPress.org in Hebrew - Note that
+this is not for RTL, which is built in. This is only for modifications
+unique to Hebrew, that aren't shared by other RTL scripts.
+
+*/
+
+/* Arial - the only omnipresent readable font for Hebrew script */
+
+/* dashboard-rtl */
+#dashboard_right_now p.sub, #dashboard-widgets h4, #dashboard_quick_press h4, a.rsswidget, #dashboard_plugins h4, #dashboard_plugins h5, #dashboard_recent_comments .comment-meta .approve,
+#dashboard_right_now td.b,
+#dashboard_right_now td.b,
+.rss-widget span.rss-date,
+#dashboard_recent_drafts h4 abbr,
+/* global-rtl */
+body, td, textarea, input, select,
+.wrap h2, .subtitle,
+.wrap .add-new-h2,
+/* login-rtl */
+#login form .submit input,
+/* media-rtl */
+.media-upload-form label.form-help, td.help, #media-upload p.help, #media-upload label.help,
+#gallery-settings .title, h3.media-title,
+/* nav-menu-rtl */
+#menu-management .nav-tabs-arrow-right,
+#menu-management .nav-tab,
+/* press-this-rtl */
+#category-add input, #category-add select,
+.submit input, .button, .button-primary, .button-secondary, 
+.button-highlighted, #postcustomstuff .submit input,
+/* wp-admin-rtl */
+.howto, .quicktags, .search, .code, code,
+#wphead h1,
+#screen-options-link-wrap,
+#contextual-help-link-wrap,
+#adminmenu #awaiting-mod,
+#adminmenu span.update-plugins,
+#sidemenu li a span.update-plugins,
+.post-com-count-wrapper,
+.widefat th,
+.tablenav .displaying-num,
+.inline-edit-row fieldset span.title,
+.inline-edit-row fieldset span.checkbox-title,
+.inline-edit-row fieldset ul.cat-checklist label,
+.inline-edit-row .catshow,
+.inline-edit-row .cathide,
+.inline-edit-row #bulk-titles div,
+p.help,
+p.description,
+span.description,
+.form-wrap p,
+h2 .nav-tab,
+#your-profile legend,
+#utc-time, #local-time,
+.tool-box .title,
+#poststuff h3,
+.metabox-holder h3 { 
+	font-family: Arial, sans-serif; }
+
+/* Code is still code */
+.code, code { font-family: monospace; }
+
+/* No italics in Hebrew script - use Bold instead */
+em { font-style: normal; font-weight: bold; }
+
+/* General stuff - probably should be sent upstream */
+
+/* LTR text fields */
+/*#custom-menu-item-url { direction: ltr; }*/
+/* Minor issue in comment moderation */
+/*.response-links { float: right; }*/
+/* Fix for Akismet "find spam" button */
+/*.tablenav a.button-secondary { margin: 4px 8px 0 0 !important; }*/
