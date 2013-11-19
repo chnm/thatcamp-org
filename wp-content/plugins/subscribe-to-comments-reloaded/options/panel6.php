@@ -13,6 +13,16 @@ if (!function_exists('is_admin') || !is_admin()){
 	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
 
+<h3><?php _e('Support the developer','subscribe-reloaded') ?></h3>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+	<input type="hidden" name="cmd" value="_s-xclick">
+	<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+	">
+	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal, The safer, easier way to pay online!">
+	<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
 <p><?php _e('How valuable is the feature offered by this plugin to your visitors? Subscribe to Comments Reloaded is and will always be free, but consider supporting the author if this plugin made your web site better, especially if you are making money out of it. Any donation received will be reinvested in the development of Subscribe to Comments Reloaded, and to buy some food for my hungry family.','subscribe-reloaded') ?></p>
 
 <h3><?php _e("Don't want to donate? You can still help",'subscribe-reloaded') ?></h3>
@@ -22,7 +32,7 @@ if (!function_exists('is_admin') || !is_admin()){
 <p><?php _e('Tell other people if Subscribe to Comments Reloaded works for you and how good it is. <a href="http://wordpress.org/extend/plugins/subscribe-to-comments-reloaded/">Rate it</a> on its Plugin Directory page.','subscribe-reloaded') ?></p>
 
 <h3><?php _e("Sponsor's Corner",'subscribe-reloaded') ?></h3>
-<p style="display:block"><?php _e("If you want to sponsor this plugin, don't hesitate to <a href='http://www.duechiacchiere.it/contatto'>contact me</a>.",'subscribe-reloaded') ?></p>
+<p style="display:block"><?php _e("If you want to sponsor this plugin, don't hesitate to <a href='http://behstant.com/negocio/contact.php' target='_blank'>contact me</a>.",'subscribe-reloaded') ?></p>
 <p>
 	<a href="https://www.e-junkie.com/ecom/gb.php?cl=136641&c=ib&aff=152344" target="ejejcsingle" title="ThemeFuse"><img src="http://themefuse.com/banners/125x125.jpg" alt="ThemeFuse" width="85" height="85"/></a>
 	<a href="https://www.e-junkie.com/ecom/gb.php?cl=136641&c=ib&aff=152344" target="ejejcsingle" title="ThemeFuse"><img src="http://themefuse.com/wp-content/themes/themefuse/images/campaigns/themefuse.jpg" alt="ThemeFuse" width="375" height="85"/></a>

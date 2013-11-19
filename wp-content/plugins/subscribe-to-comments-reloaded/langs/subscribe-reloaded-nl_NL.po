@@ -46,12 +46,12 @@ msgstr "Laat beheerder abonneren"
 
 #: subscribe-to-comments-reloaded.php:68
 msgid "All"
-msgstr ""
+msgstr "Alles"
 
 #: subscribe-to-comments-reloaded.php:69
 #: templates/user.php:65
 msgid "Replies to my comments"
-msgstr ""
+msgstr "Reacties op mijn reacties"
 
 #: subscribe-to-comments-reloaded.php:70
 msgid "Daily digest"
@@ -103,7 +103,7 @@ msgid ""
 "[comment_content]\n"
 "Permalink: [post_permalink]\n"
 "Manage your subscriptions: [manager_link]"
-msgstr ""
+msgstr "Beheer je abonnementen op reacties: [manager_link]"
 "Er is een nieuwe reactie op [post_title].\n"
 "Link naar de reactie: [comment_permalink]\n"
 "Auteur: [comment_author]\n"
@@ -156,7 +156,7 @@ msgstr "Ja"
 
 #: subscribe-to-comments-reloaded.php:1002
 msgid "Replies"
-msgstr ""
+msgstr "Reacties op je reacties"
 
 #: subscribe-to-comments-reloaded.php:1004
 msgid "Digest"
@@ -164,7 +164,7 @@ msgstr ""
 
 #: subscribe-to-comments-reloaded.php:1006
 msgid "Pending"
-msgstr ""
+msgstr "Wordt gecontroleerd"
 
 #: subscribe-to-comments-reloaded.php:1007
 #: options/panel2.php:42
@@ -224,7 +224,7 @@ msgstr "Opties"
 
 #: options/index.php:46
 msgid "You can help"
-msgstr ""
+msgstr "Je kunt helpen"
 
 #: options/panel1-business-logic.php:18
 #, fuzzy
@@ -376,11 +376,11 @@ msgstr "E-mail"
 
 #: options/panel1.php:49
 msgid "Ask user to confirm"
-msgstr ""
+msgstr "Vraag gebruiker te bevestigen"
 
 #: options/panel1.php:50
 msgid "Add"
-msgstr ""
+msgstr "Voeg toe"
 
 #: options/panel1.php:59
 #, fuzzy
@@ -425,11 +425,11 @@ msgstr ""
 
 #: options/panel1.php:73
 msgid "ends with"
-msgstr ""
+msgstr "Eindigt met"
 
 #: options/panel1.php:76
 msgid "results per page:"
-msgstr ""
+msgstr "Resultaten per pagina"
 
 #: options/panel1.php:77
 msgid "Search"
@@ -465,7 +465,7 @@ msgstr "van"
 #: templates/author.php:56
 #: templates/user.php:52
 msgid "Legend: Y = all comments, R = replies only, C = inactive"
-msgstr ""
+msgstr "Legenda: Y = alle reacties, R = alleen reacties op je reacties, C = inactief"
 
 #: options/panel1.php:102
 msgid "Date and Time"
@@ -473,7 +473,7 @@ msgstr "Datum en Tijd"
 
 #: options/panel1.php:112
 msgid "Edit"
-msgstr ""
+msgstr "Bewerk"
 
 #: options/panel1.php:113
 #: templates/author.php:69
@@ -499,17 +499,17 @@ msgstr "Pauzeren"
 
 #: options/panel1.php:124
 msgid "Activate and set to Y"
-msgstr ""
+msgstr "Activeer en verander naar Y"
 
 #: options/panel1.php:125
 msgid "Activate and set to R"
-msgstr ""
+msgstr "Activeer en verander naar R"
 
 #: options/panel1.php:126
 #: templates/author.php:72
 #: templates/user.php:66
 msgid "Activate"
-msgstr ""
+msgstr "Activeer"
 
 #: options/panel1.php:127
 #: templates/author.php:73
@@ -572,7 +572,7 @@ msgstr "Auteur label"
 #: options/panel4.php:23
 #: options/panel5.php:22
 msgid "Your settings have been successfully updated."
-msgstr "De instellingen zijn succesvol bijgwerkt."
+msgstr "De instellingen zijn succesvol bijgewerkt."
 
 #: options/panel2.php:28
 #: options/panel3.php:29
@@ -583,7 +583,7 @@ msgstr "Er deed zich een probleem voor tijdens het bijwerken van de volgende vel
 
 #: options/panel2.php:43
 msgid "Disable this option if you want to move the subscription checkbox to a different place on your page."
-msgstr ""
+msgstr "Zet deze optie uit als je de checkbox op een andere plek in de pagina wilt zetten"
 
 #: options/panel2.php:50
 msgid "Decide if the checkbox should be checked by default or not."
@@ -591,7 +591,7 @@ msgstr "Denk erover na of het vinkje standaard aangevinkt moet staan of niet."
 
 #: options/panel2.php:57
 msgid "Allow users to choose from different subscription types (all, replies only)."
-msgstr ""
+msgstr " Sta gebruikers te kiezen tussen verschillende abonnementstypen."
 
 #: options/panel2.php:62
 msgid "Custom inline CSS to add to the checkbox."
@@ -603,7 +603,7 @@ msgstr "Aangepaste HTML code die gebruikt wordt tijdens het aanroepen van de che
 
 #: options/panel2.php:72
 msgid "Messages for your visitors"
-msgstr ""
+msgstr "Berichten voor bezoekers"
 
 #: options/panel2.php:76
 #, fuzzy
@@ -658,7 +658,7 @@ msgstr "Beheerpagina"
 #: options/panel3.php:13
 #: options/panel3.php:63
 msgid "Custom HEAD meta"
-msgstr ""
+msgstr "Custom HEAD meta"
 
 #: options/panel3.php:15
 #: options/panel3.php:74
@@ -697,15 +697,15 @@ msgstr "Gebruikers"
 
 #: options/panel3.php:45
 msgid "Enabled"
-msgstr ""
+msgstr "Geactiveerd"
 
 #: options/panel3.php:46
 msgid "Disabled"
-msgstr ""
+msgstr "Dedeactiveerd"
 
 #: options/panel3.php:47
 msgid "Disable the virtual management page if you need to create a <a href=\"http://lab.duechiacchiere.it/index.php?topic=71.0\">real page</a> to make your theme happy."
-msgstr ""
+msgstr "Zet de virtuele management pagina uit als je een <a href=\"http://lab.duechiacchiere.it/index.php?topic=71.0\">echte pagina</a> moet creëren."
 
 #: options/panel3.php:53
 msgid "Title of the page your visitors will use to manage their subscriptions."
@@ -788,7 +788,7 @@ msgstr "Tekst dat op het scherm verschijnt bij gebruikers die hun abonnementen w
 
 #: options/panel3.php:91
 msgid "Thank you note shown after the request here above has been processed. Allowed tags: [post_title], [post_permalink]"
-msgstr "Het bedanktberichtje dat wordt getoond als bovenstaande aanvragen zijn doorgevoerd. Beschikbare tags: [post_title], [post_permalink]"
+msgstr "Het bedankberichtje dat wordt getoond als bovenstaande aanvragen zijn doorgevoerd. Beschikbare tags: [post_title], [post_permalink]"
 
 #: options/panel3.php:101
 msgid "Text shown to those who want to subscribe without commenting. Allowed tags: [post_title], [post_permalink]"
@@ -1004,12 +1004,12 @@ msgstr "Selectie omkeren"
 
 #: templates/author.php:71
 msgid "Set to Y"
-msgstr ""
+msgstr "Verander naar Y"
 
 #: templates/author.php:77
 #: templates/user.php:71
 msgid "No subscriptions match your search criteria."
-msgstr ""
+msgstr "Geen abonnementen voldoen aan je zoekcriteria."
 
 #: templates/request-management-link.php:68
 #: templates/subscribe.php:89

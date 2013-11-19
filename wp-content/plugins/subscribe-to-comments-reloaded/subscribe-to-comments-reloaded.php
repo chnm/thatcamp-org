@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Subscribe to Comments Reloaded
-Version: 2.0.3
+Version: 2.0.5
 Plugin URI: http://wordpress.org/extend/plugins/subscribe-to-comments-reloaded/
 Description: Subscribe to Comments Reloaded is a robust plugin that enables commenters to sign up for e-mail notifications. It includes a full-featured subscription manager that your commenters can use to unsubscribe to certain posts or suspend all notifications.
-Author: camu, andreasbo
+Author: camu, Reedyseth and andreasbo
 */
 
 // Avoid direct access to this piece of code
@@ -174,7 +174,7 @@ class wp_subscribe_reloaded{
 		}
 	}
 	// end activate
-	 
+
 	/**
 	 * Support for WP MU network activations (experimental)
 	 */
@@ -297,7 +297,7 @@ class wp_subscribe_reloaded{
 
 		if (empty($info) || $info->comment_approved == 'spam')
 			return $_comment_ID;
-		
+
 		// Are subscriptions allowed for this post?
 		$is_disabled = get_post_meta($info->comment_post_ID, 'stcr_disable_subscriptions', true);
 		if (!empty($is_disabled))
@@ -330,7 +330,7 @@ class wp_subscribe_reloaded{
 					$status = "{$status}C";
 				}
 				$this->add_subscription($info->comment_post_ID, $info->comment_author_email, $status);
-				
+
 				// If comment is in the moderation queue
 				if ($info->comment_approved == 0){
 					//don't send notification-emails to all subscribed users
@@ -359,7 +359,7 @@ class wp_subscribe_reloaded{
 		return $_comment_ID;
 	}
 	// end new_comment_posted
-	
+
 	public function isDoubleCheckinEnabled($info) {
 		$approved_subscriptions = $this->get_subscriptions(array('status', 'email'), array('equals', 'equals'), array('Y', $info->comment_author_email));
 		if ((get_option('subscribe_reloaded_enable_double_check', 'no') == 'yes') && !is_user_logged_in() && empty($approved_subscriptions)){
@@ -369,12 +369,12 @@ class wp_subscribe_reloaded{
 			return false;
 		}
 	}
-	
+
 	public function sendConfirmationEMail($info) {
 		// Retrieve the information about the new comment
 		$this->confirmation_email($info->comment_post_ID, $info->comment_author_email);
 	}
-	
+
 	/**
 	 * Performs the appropriate action when the status of a given comment changes
 	 */
@@ -896,7 +896,7 @@ class wp_subscribe_reloaded{
 
 		$clean_email = $this->clean_email($_email);
 		$subscriber_salt = $this->generate_key($clean_email);
-		
+
 		$manager_link .= ((strpos($manager_link, '?') !== false)?'&':'?')."sre=".urlencode($clean_email)."&srk=$subscriber_salt";
 
 		$headers = "MIME-Version: 1.0\n";
@@ -1030,7 +1030,7 @@ class wp_subscribe_reloaded{
 			echo '<a href="options-general.php?page=subscribe-to-comments-reloaded/options/index.php&subscribepanel=1&amp;srf=email&amp;srt=equals&amp;srv='.urlencode($comment->comment_author_email).'">'.$subscription[0]->status.'</a>';
 	}
 	// end add_column
-	
+
 	/**
 	 * Adds a new column to the Posts management panel
 	 */

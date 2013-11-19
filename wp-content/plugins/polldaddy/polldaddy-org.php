@@ -8,10 +8,6 @@ class WPORG_Polldaddy extends WP_Polldaddy {
 	var $use_ssl;
 	var $inline;
 
-	function WPORG_Polldaddy() {
-		$this->__construct();
-	}
-
 	function __construct() {
 		parent::__construct();
 		$this->log( 'Created WPORG_Polldaddy Object: constructor' );
@@ -136,8 +132,7 @@ class WPORG_Polldaddy extends WP_Polldaddy {
 		if ( in_array( $action, array( 'options', 'update-rating' ) ) ) {
 			$parent_file  = 'options-general.php';
 			$submenu_file = $page.'&action=options';
-		}
-		else {					
+		} else {					
 			add_filter( 'admin_title', array( &$this, 'admin_title' ) );	
 			$submenu_file = $page;
 		}
@@ -236,8 +231,7 @@ class WPORG_Polldaddy extends WP_Polldaddy {
 
 		if ( isset( $polldaddy_api_key ) && strlen( $polldaddy_api_key ) > 0 ) {
 			update_option( 'polldaddy_api_key', $polldaddy_api_key );
-		}
-		else {
+		} else {
 			$this->log( 'management_page_load: login to Polldaddy failed' );
 			$this->errors->add( 'polldaddy_api_key', __( 'Login to Polldaddy failed.  Double check your email address and password.', 'polldaddy' ) );
 			if ( 1 !== $this->use_ssl ) {
@@ -590,8 +584,7 @@ PDRTJS_settings_{$rating}{$item_id}={$settings};
 //--><!]]></script>
 <script type="text/javascript" charset="UTF-8" src="http://i0.poll.fm/js/rating/rating.js"></script>
 SCRIPT;
-			}
-			else {				
+			} else {				
 				if ( self::$scripts === false )
 					self::$scripts = array();
 					
@@ -612,17 +605,16 @@ CONTAINER;
 <div class="pd-rating" id="pd_rating_holder_{$rating}{$item_id}"></div>
 CONTAINER;
 			}
-		} 
-		elseif ( intval( $poll ) > 0 ) { //poll embed
+		} elseif ( intval( $poll ) > 0 ) { //poll embed
 		
 			$poll      = intval( $poll );
 			$poll_url  = sprintf( 'http://polldaddy.com/poll/%d', $poll );
 			$poll_js   = sprintf( '%s.polldaddy.com/p/%d.js', ( is_ssl() ? 'https://secure' : 'http://static' ), $poll );
 			$poll_link = sprintf( '<a href="%s">Take Our Poll</a>', $poll_url );
 	
-			if ( $no_script )
+			if ( $no_script ) {
 				return $poll_link;
-			else {
+			} else {
 				if ( $type == 'slider' && !$inline ) {
 				
 					if( !in_array( $visit, array( 'single', 'multiple' ) ) )
@@ -643,8 +635,7 @@ polldaddy.add( {$settings} );
 //--><!]]></script>
 <noscript>{$poll_link}</noscript>
 SCRIPT;
-				}
-				else {
+				} else {
 					$cb      = ( $cb == 1 ? '?cb='.mktime() : false );
 					$margins = '';
 					$float   = '';
@@ -676,8 +667,7 @@ SCRIPT;
 <div id="PD_superContainer"></div>
 <noscript>{$poll_link}</noscript>
 CONTAINER;
-					}
-					else {
+					} else {
 						if ( $inline )
 							$cb = '';
 							
@@ -691,8 +681,7 @@ CONTAINER;
 					}				
 				}		
 			}
-		}
-		elseif ( !empty( $survey ) ) { //survey embed
+		} elseif ( !empty( $survey ) ) { //survey embed
 	
 			if ( in_array( $type, array( 'iframe', 'button', 'banner', 'slider' ) ) ) {
 				
@@ -727,8 +716,7 @@ CONTAINER;
 						return <<<CONTAINER
 <iframe src="{$survey_url}?iframe=1" frameborder="0" width="{$width}" height="{$height}" scrolling="auto" allowtransparency="true" marginheight="0" marginwidth="0">{$survey_link}</iframe> 
 CONTAINER;
-					}	
-					elseif ( !empty( $domain ) && !empty( $id ) ) {
+					} elseif ( !empty( $domain ) && !empty( $id ) ) {
 					
 						$auto_src = esc_url( "http://{$domain}.polldaddy.com/s/{$id}" );					
 						$auto_src = parse_url( $auto_src );
@@ -749,8 +737,7 @@ CONTAINER;
 							'id'         => $id
 						) );
 					}
-				}			
-				else {				
+				} else {				
 					$text_color = preg_replace( '/[^a-f0-9]/i', '', $text_color );
 					$back_color = preg_replace( '/[^a-f0-9]/i', '', $back_color );
 					
@@ -784,9 +771,9 @@ polldaddy.add( {$settings} );
 <noscript>{$survey_link}</noscript>
 CONTAINER;
 			} 
-		}
-		else
+		} else {
 			return '<!-- no polldaddy output -->';
+		}
 	}
 	
 	function generate_scripts() {
@@ -1018,4 +1005,72 @@ function polldaddy_login_warning() {
 		echo '<div class="updated"><p><strong>' . sprintf( __( 'Warning! The Polldaddy plugin must be linked to your Polldaddy.com account. Please visit the <a href="%s">plugin settings page</a> to login.', 'polldaddy' ), admin_url( 'options-general.php?page=polls&action=options' ) ) . '</strong></p></div>';
 }
 add_action( 'admin_notices', 'polldaddy_login_warning' );
+
+/**
+ * check if the hook is scheduled - if not, schedule it.
+ */
+function polldaddy_setup_schedule() {
+	if ( false == wp_next_scheduled( 'polldaddy_rating_update_job' ) ) {
+		wp_schedule_event( time(), 'daily', 'polldaddy_rating_update_job');
+	}
+}
+add_action( 'init', 'polldaddy_setup_schedule' );
+
+/**
+ * On deactivation, remove all functions from the scheduled action hook.
+ */
+function polldaddy_deactivation() {
+	wp_clear_scheduled_hook( 'polldaddy_rating_update_job' );
+}
+register_deactivation_hook( __FILE__, 'polldaddy_deactivation' );
+
+/**
+ * On the scheduled action hook, run a function.
+ */
+function polldaddy_rating_update() {
+	global $polldaddy_object;
+	$polldaddy = $polldaddy_object->get_client( WP_POLLDADDY__PARTNERGUID, get_option( 'pd-rating-usercode' ) );
+	$response = $polldaddy->get_rating_results( $rating[ 'id' ], 2, 0, 15 );
+	$ratings = $response->ratings;
+	if ( empty( $ratings ) )
+		return false;
+
+	polldaddy_update_ratings_cache( $ratings );
+}
+
+add_action( 'polldaddy_rating_update_job', 'polldaddy_rating_update' );
+
+function polldaddy_update_ratings_cache( $ratings ) {
+	foreach( $ratings as $rating ) {
+		$post_id = str_replace( 'wp-post-', '', $rating->uid );
+		update_post_meta( $post_id, 'pd_rating', array( 'type' => $rating->_type, 'votes' => $rating->_votes, 
+			'total1' => $rating->total1,
+			'total2' => $rating->total2,
+			'total3' => $rating->total3,
+			'total4' => $rating->total4,
+			'total5' => $rating->total5, 
+			'average' => $rating->average_rating ) );
+	}
+}
+
+function polldaddy_post_rating( $content ) {
+	if ( false == is_singular() )
+		return $content;
+	if ( false == get_option( 'pd-rating-usercode' ) )
+		return $content;
+	$rating = get_post_meta( $GLOBALS[ 'post' ]->ID, 'pd_rating' );
+	if ( false == $rating )
+		return $content;
+	// convert to 5 star rating
+	if ( $rating[0][ 'type' ] == 1 )
+		$average = ceil( ( $rating[0][ 'average' ] / $rating[0][ 'votes' ] ) * 5 );
+	else
+		$average = $rating[ 'average' ];
+	return $content . '
+		<div itemtype="http://schema.org/AggregateRating" itemscope itemprop="aggregateRating">
+		<meta itemprop="ratingValue" content=' . $average . '>
+		<meta itemprop="ratingCount" content=' . $rating[0][ 'votes' ] . '>
+		</div>';
+}
+add_filter( 'the_content', 'polldaddy_post_rating' );
 ?>

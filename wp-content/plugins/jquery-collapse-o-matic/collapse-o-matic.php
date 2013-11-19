@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.5.3
+Version: 1.5.4
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -16,21 +16,21 @@ License: GPL2
  * @package WP_Collapse_O_Matic
  * @category WordPress Plugins
  */
-
+		
 class WP_Collapse_O_Matic {
 
 	/**
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.5.3';
+	var $version = '1.5.4';
 
 	/**
 	 * Used as prefix for options entry
 	 * @var string
 	 */
 	var $domain = 'colomat';
-
+	
 	/**
 	 * Name of the options
 	 * @var string
@@ -49,47 +49,34 @@ class WP_Collapse_O_Matic {
 	);
 
 	/**
-	 * PHP4 constructor
-	 */
-	function WP_Collapse_O_Matic() {
-		$this->__construct();
-	}
-
-	/**
 	 * PHP5 constructor
 	 */
 	function __construct() {
 		// set option values
 		$this->_set_options();
-
+		
 		// load text domain for translations
 		load_plugin_textdomain( 'colomat', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
-		// set uninstall hook
-		/* removed in version 1.5.2
-		if ( function_exists( 'register_deactivation_hook' ) )
-			register_deactivation_hook( __FILE__, array( $this, 'deactivation' ));
-		*/
 
 		//load the script and style if not viwing the dashboard
 		if (!is_admin()){
 			add_action('init', array( $this, 'collapsTronicInit' ) );
 		}
-
+		
 		// add actions
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'plugin_actions' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action('wp_head', array( $this, 'colomat_js_vars' ) );
-
+		
 		add_shortcode('expand', array($this, 'shortcode'));
-
+		
 		//add expandsub shortcodes
 		for ($i=1; $i<30; $i++) {
 			add_shortcode('expandsub'.$i, array($this, 'shortcode'));
 		}
-
-		// Add shortcode support for widgets
+		
+		// Add shortcode support for widgets  
 		add_filter('widget_text', 'do_shortcode');
 	}
 
@@ -105,21 +92,21 @@ class WP_Collapse_O_Matic {
 			echo "\n</style>\n";
 		}
 	}
-
+	
 	/**
 	 * Callback init
 	 */
 	function collapsTronicInit() {
 		//load up jQuery the Jedi way
 		wp_enqueue_script('jquery');
-
+		
 		//collapse script
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.min.js', __FILE__), array('jquery'), '1.5.2');
-		//wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.2');
+		//wp_register_script('collapseomatic-js', plugins_url('js/collapse.min.js', __FILE__), array('jquery'), '1.5.4');
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.4');
 		wp_enqueue_script('collapseomatic-js');
-
+				
 		//css
-		wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.5.2' );
+		wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.5.4' );
 		wp_enqueue_style( 'collapseomatic-css' );
 	}
 
@@ -140,7 +127,7 @@ class WP_Collapse_O_Matic {
 		// register settings
 		register_setting( $this->domain, $this->options_name );
 	}
-
+	
 	/**
 	 * Callback shortcode
 	 */
@@ -174,7 +161,7 @@ class WP_Collapse_O_Matic {
 			'elwraptag' => '',
 			'elwrapclass' => ''
 		), $atts));
-
+		
 		$ewo = '';
 		$ewc = '';
 		if($elwraptag){
@@ -185,7 +172,7 @@ class WP_Collapse_O_Matic {
 			$ewo = '<'.$elwraptag.' '.$ewclass.'>';
 			$ewc = '</'.$elwraptag.'>';
 		}
-
+		
 		$eDiv = '';
 		if($content){
 			$inline_class = '';
@@ -196,7 +183,7 @@ class WP_Collapse_O_Matic {
 			}
 			$eDiv = '<'.$targtag.' id="target-'.$id.'" class="'.$collapse_class.$inline_class.$targclass.'">'.do_shortcode($content).'</'.$targtag.'>';
 		}
-
+		
 		if($excerpt){
 			if($targpos == 'inline'){
 				$excerpt .= $eDiv;
@@ -212,7 +199,6 @@ class WP_Collapse_O_Matic {
 			if($swapexcerpt !== false){
 				$nibble .= '<'.$excerpttag.' id="swapexcerpt-'.$id.'" style="display:none;">'.$swapexcerpt.'</'.$excerpttag.'>';
 			}
-
 		}
 		$altatt = '';
 		if($alt){
@@ -246,7 +232,7 @@ class WP_Collapse_O_Matic {
 		if($swaptitle){
 			$link .= "<".$tag." id='swap-".$id."' style='display:none;'>".$startwrap.$swaptitle.$endwrap."</".$tag.">";
 		}
-
+		
 		if($excerpt){
 			if($excerptpos == 'above-trigger'){
 				if($trigpos == 'below'){
@@ -283,7 +269,7 @@ class WP_Collapse_O_Matic {
 		}
 		return $retStr;
 	}
-
+	
 	// Add link to options page from plugin list
 	function plugin_actions($links) {
 		$new_links = array();
@@ -303,7 +289,7 @@ class WP_Collapse_O_Matic {
 			<div class="icon32" id="icon-options-custom" style="background:url( <?php echo plugins_url( 'images/collapse-o-matic-icon.png', __FILE__ ) ?> ) no-repeat 50% 50%"><br></div>
 			<h2>Collapse-O-Matic</h2>
 		</div>
-
+		
 		<div class="postbox-container metabox-holder meta-box-sortables" style="width: 69%">
 			<div style="margin:0 5px;">
 				<div class="postbox">
@@ -341,14 +327,14 @@ class WP_Collapse_O_Matic {
 										<br /><span class="description"><?php _e('Select Light for sites with lighter backgrounds. Select Dark for sites with darker backgrounds.', 'colomat'); ?></span></label>
 									</td>
 								</tr>
-
+								
 								<tr>
 									<th><?php _e( 'Tag Attribute', 'colomat' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[tag]" name="<?php echo $this->options_name ?>[tag]" value="<?php echo $options['tag']; ?>" />
 										<br /><span class="description"><?php printf(__('HTML tag use to wrap the trigger text. See %sTag Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#tag" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
-
+								
 								<tr>
 									<?php
 										if(empty($options['duration'])){
@@ -360,7 +346,7 @@ class WP_Collapse_O_Matic {
 										<br /><span class="description"><?php printf(__('A string or number determining how long the animation will run. See %sDuration%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#duration" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
-
+								
 								<tr>
 									<th><?php _e( 'Animation Effect', 'colomat' ) ?>:</th>
 									<td><label><select id="<?php echo $this->options_name ?>[slideEffect]" name="<?php echo $this->options_name ?>[slideEffect]">
@@ -384,14 +370,14 @@ class WP_Collapse_O_Matic {
 										<br /><span class="description"><?php printf(__('Animation effect to use while collapsing and expanding. See %sAnimation Effect%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#animation-effect" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
-
+								
 								<tr>
 									<th><?php _e( 'Custom Style', 'colomat' ) ?>:</th>
 									<td><label><textarea id="<?php echo $this->options_name ?>[custom_css]" name="<?php echo $this->options_name ?>[custom_css]" style="width: 100%; height: 150px;"><?php echo $options['custom_css']; ?></textarea>
 										<br /><span class="description"><?php _e( 'Custom CSS style for <em>ultimate flexibility</em>', 'colomat' ) ?></span></label>
 									</td>
 								</tr>
-
+								
 								<tr>
 									<th><strong><?php _e( 'Level Up!', 'colomat' ) ?></strong></th>
 									<td><?php printf(__( '%sCollapse-Pro-Matic%s is our preimum plugin that offers additional attributes and features for <i>ultimate</i> flexibility.', 'colomat' ), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-pro-matic/">', '</a>'); ?>
@@ -399,7 +385,7 @@ class WP_Collapse_O_Matic {
 								</tr>
 								</table>
 							</fieldset>
-
+							
 							<p class="submit">
 								<input class="button-primary" type="submit" value="<?php _e( 'Save Changes' ) ?>" />
 							</p>
@@ -408,7 +394,7 @@ class WP_Collapse_O_Matic {
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="postbox-container side metabox-holder meta-box-sortables" style="width:29%;">
 			<div style="margin:0 5px;">
 				<div class="postbox">
@@ -430,16 +416,7 @@ class WP_Collapse_O_Matic {
 		</div>
 	<?php
 	}
-
-	/**
-	 * Deactivation plugin method
-	 * Removed in version 1.5.2
-	function deactivation() {
-		delete_option( $this->options_name );
-		unregister_setting( $this->domain, $this->options_name );
-	}
-	*/
-
+	
 	/**
 	 * Set options from save values or defaults
 	 */
@@ -451,7 +428,7 @@ class WP_Collapse_O_Matic {
 		if ( empty( $saved_options ) ) {
 			$saved_options = get_option( $this->domain . 'options' );
 		}
-
+		
 		// set all options
 		if ( ! empty( $saved_options ) ) {
 			foreach ( $this->options AS $key => $option ) {

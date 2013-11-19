@@ -1,10 +1,11 @@
 === Subscribe To Comments Reloaded ===
-Contributors: coolmann, reedyseth
+Contributors: coolmann, Reedyseth
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Z732JS7KQ6RRL&lc=US&item_name=Subscribe%20To%20Comments%20Reloaded&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XF86X93FDCGYA&lc=US&item_name=STCR%20Support&currency_code=MXN&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: subscribe, comments, notification, subscription, manage, double check-in, follow, commenting
 Requires at least: 2.9.2
 Tested up to: 3.5
-Stable tag: 2.0.3
+Stable tag: 2.0.5
 
 Subscribe to Comments Reloaded allows commenters to sign up for e-mail notifications of subsequent replies.
 
@@ -48,7 +49,7 @@ Yes, each HTML tag has a CSS class or ID that you can use to change its position
 Add a custom field called `stcr_disable_subscriptions` to it, with value 'yes'
 
 = How do I add the management page URL to my posts? =
-Use the shortcode `[subscribe-url]`, or use the following code in your theme: 
+Use the shortcode `[subscribe-url]`, or use the following code in your theme:
 `if(function_exists('subscribe_reloaded_show')) echo '<a href="'.do_shortcode('[subscribe-url]').'">Subscribe</a>";`
 
 = Can I move the subscription checkbox to another position? =
@@ -62,6 +63,13 @@ Yes! Just disable the corresponding option under Settings > Comment Form and the
 3. Customize the plugin's behavior
 
 == Changelog ==
+
+= 2.0.5 =
+* Added: Since the authorship of the plugin has changed I added the correct information of the contact in order to have a faster response to the issues.
+
+= 2.0.4 =
+* Added: Dutch translation fixes provided by [Martijn Chel](http://www.martijnchel.com)
+* Fixed: There was vulnerability in the form where the URI was added.
 
 = 2.0.3 =
 * I would like to thank Andreas for contributing to the project and fixing some issues with the plugin
@@ -105,7 +113,7 @@ Yes! Just disable the corresponding option under Settings > Comment Form and the
 
 Subscribe to Comments Reloaded can speak your language! If you want to provide a localized file in your
 language, use the template files (.pot) you'll find inside the `langs` folder,
-and [contact me](http://www.duechiacchiere.it/contatto) once your
+and [contact me](http://behstant.com/negocio/contact.php) once your
 localization is ready. Currently, we support the following languages:
 
 * Danish - [Torben Bendixen](http://www.freelancekonsulenten.dk/)
