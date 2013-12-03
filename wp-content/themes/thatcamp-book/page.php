@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name : Links
+ * Template Name : Page
  *
  * @package bookcamp
  * @since bookcamp 1.0
@@ -10,9 +10,10 @@
 <div id="primary" class="main-content">
 	<div id="content">
 		<div id="page" role="main">
-		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'parts/content', 'page' );?>
-		<?php endwhile; ?>
+		<?php if ( have_posts() ) while ( have_posts() ) : the_post(); 
+			get_template_part( 'parts/content', 'page' ); 
+			comments_template( '', true ); 			
+		endwhile; ?>		
 		</div>
 	</div>
 </div>
