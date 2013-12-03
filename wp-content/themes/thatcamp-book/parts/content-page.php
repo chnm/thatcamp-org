@@ -7,6 +7,11 @@
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<?php if ( comments_open() && ! post_password_required() ) : ?>
+			<div class="comments-link">
+				<?php comments_popup_link( __( 'Comment', 'bookcamp'), __( '1 Comment', 'bookcamp'), __( '% Comments', 'bookcamp') ); ?>
+			</div>
+		<?php endif; ?>
 	<header class="post-header">
 		<h1 class="post-title"><?php the_title(); ?></h1>
 	</header>
