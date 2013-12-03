@@ -7,19 +7,19 @@
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<?php if ( comments_open() && ! post_password_required() ) : ?>
-			<div class="comments-link">
-				<?php comments_popup_link( __( 'Comment', 'bookcamp'), __( '1 Comment', 'bookcamp'), __( '% Comments', 'bookcamp') ); ?>
-			</div>
-		<?php endif; ?>
 	<header class="post-header">
 		<h1 class="post-title"><?php the_title(); ?></h1>
 	</header>
-	<div class="post-body">
+	<div class="post-body">	
 		<?php the_content(); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'bookcamp' ), 'after' => '</div>' ) ); ?>
 	</div>
 	<footer class="post-meta">
+			<?php if ( comments_open() && ! post_password_required() ) : ?>
+			<div class="comments-link">
+				<?php comments_popup_link( __( 'Comment', 'bookcamp'), __( '1 Comment', 'bookcamp'), __( '% Comments', 'bookcamp') ); ?>
+			</div>	
+			<?php endif; ?>
 		<div class="post-edit">
 				<?php edit_post_link( __( 'Edit &rarr;', 'bookcamp'), ' <span class="edit-link">', '</span> | ' ); ?>
 				<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'bookcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php _e( 'Permalink', 'bookcamp'); ?></a>
