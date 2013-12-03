@@ -38,6 +38,8 @@ wp-app.php
 robots.txt
 /tags
 /docs
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
 wp-content/cache/*
 wp-content/themes/inuitypes_free/custom/cache/*
 wp-content/backup-db/*
