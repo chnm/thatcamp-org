@@ -86,10 +86,10 @@ function thatcamp_build() {
 		if ( bp_is_active( 'friends' ) )
 			add_action( 'bp_member_header_actions',    'bp_add_friend_button',           5 );
 
-		// Activity button
+/*		// Activity button
 		if ( bp_is_active( 'activity' ) )
 			add_action( 'bp_member_header_actions',    'bp_send_public_message_button',  20 );
-
+*/
 		// Messages button
 		if ( bp_is_active( 'messages' ) )
 			add_action( 'bp_member_header_actions',    'bp_send_private_message_button', 20 );
@@ -476,11 +476,11 @@ function thatcamp_mod_user_nav() {
 	if ( bp_is_active( 'groups' ) ) {
 		bp_core_remove_subnav_item( 'camps', 'invites' );
 	}
-
+/**
 	if ( bp_is_active( 'messages' ) ) {
 		bp_core_remove_nav_item( 'messages' );
 	}
-
+**/
 	if ( bp_is_active( 'settings' ) && is_user_logged_in() ) {
 		bp_core_remove_nav_item( 'settings' );
 	}
