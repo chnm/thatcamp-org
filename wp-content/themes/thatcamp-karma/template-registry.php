@@ -88,10 +88,10 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 
 					<ul>
 						<li><input type="checkbox" name="i-agree[free]" id="i-agree-free" checked="checked" value="1" /> FREE or CHEAP to attend (registration fees of up to $30 USD are fine)</li>
-						<li><input type="checkbox" name="i-agree[open]" id="i-agree-open" checked="checked" value="1" /> OPEN to anyone who wishes to apply or register (no restricting registration to members of a particular institution, association, organization, discipline, or rank)</li>
-						<li><input type="checkbox" name="i-agree[informal]" id="i-agree-informal" checked="checked" value="1" /> INFORMAL and participatory (no presentations, papers, or demos longer than 5 minutes with the possible exception of skills training workshops, which should also allow hands-on practice)</li>
+						<li><input type="checkbox" name="i-agree[open]" id="i-agree-open" checked="checked" value="1" /> OPEN to anyone who wishes to apply or register (no restricting registration to members of a particular institution, association, organization, discipline, or rank)</li>						
 						<li><input type="checkbox" name="i-agree[public]" id="i-agree-public" checked="checked" value="1" /> PUBLIC on the open web (sessions can be blogged, twittered, photographed, recorded, and posted)</li>
-						<li><input type="checkbox" name="i-agree[self-organizing]" id="i-agree-self-organizing" checked="checked" value="1" /> SELF-ORGANIZING (no program committee: all participants are given a chance to help set the agenda, either before or during the unconference)</li>
+						<li><input type="checkbox" name="i-agree[self-organizing]" id="i-agree-self-organizing" checked="checked" value="1" /> SELF-ORGANIZING (no program committee: all participants together will set the agenda, either before or during the unconference)</li>
+						<li><input type="checkbox" name="i-agree[informal]" id="i-agree-informal" checked="checked" value="1" /> PARTICIPATORY and spontaneous (most sessions are group discussions, productive co-working sessions, or joyous collaborations of any kind; there should be few if any prepared, monologuing presentations, papers, or demonstrations with the exception of skills training workshops, and even workshops should generally allow for hands-on exercises by the group)</li>
 					</ul>
 				</div>
 
