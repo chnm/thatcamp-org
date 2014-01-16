@@ -18,7 +18,7 @@ require( dirname(__FILE__) . '/env.php' );
 
 /** Database Charset to use in creating database tables. */
 define('WP_CACHE', true); //Added by WP-Cache Manager
-define( 'WPCACHEHOME', '/websites/thatcampdev/home/www/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
+define( 'WPCACHEHOME', '/websites/thatcamp/home/www/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
 define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
@@ -46,6 +46,10 @@ define( 'SUNRISE', 'on' );
  * prefix. Only numbers, letters, and underscores please!
  */
 $table_prefix  = 'wp_';
+
+# dec 9, 2013, added to help in DDoS attack... aes.
+define('DISABLE_WP_CRON', 'true');
+
 
 /**
  * WordPress Localized Language, defaults to English.
