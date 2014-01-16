@@ -929,9 +929,9 @@ msgid "Sponsor's Corner"
 msgstr "Kącik sponsora"
 
 #: options/panel6.php:25
-msgid "If you want to sponsor this plugin, don't hesitate to <a href='http://www.duechiacchiere.it/contatto'>contact me</a>."
+msgid "If you want to sponsor this plugin, don't hesitate to <a href='http://behstant.com/negocio/contact.php' target='_blank'>contact me</a>."
 msgstr ""
-"Jeśli chcesz zostać sponsorem tego pluginu, nie obawiaj się i <a href='http://www.duechiacchiere.it/contatto'>skontaktuj się ze mną</a>.<br />\n"
+"Jeśli chcesz zostać sponsorem tego pluginu, nie obawiaj się i <a href='http://behstant.com/negocio/contact.php' target='_blank'>skontaktuj się ze mną</a>.<br />\n"
 "Autorem polskiego tłumaczenia jest : Filip \"inzaghi89\" Cierpich - <a href=\"http://keepmind.eu\">keepmind.eu</a>"
 
 #: templates/author.php:55

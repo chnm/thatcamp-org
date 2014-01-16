@@ -4,10 +4,10 @@ Plugin Name: Edit Flow
 Plugin URI: http://editflow.org/
 Description: Remixing the WordPress admin for better editorial workflow options.
 Author: Daniel Bachhuber, Scott Bressler, Mohammad Jangda, Automattic, and others
-Version: 0.7.6
+Version: 0.8
 Author URI: http://editflow.org/
 
-Copyright 2009-2012 Mohammad Jangda, Daniel Bachhuber, et al.
+Copyright 2009-2013 Mohammad Jangda, Daniel Bachhuber, et al.
 
 GNU General Public License, Free Software Foundation <http://creativecommons.org/licenses/GPL/2.0/>
 
@@ -28,7 +28,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 // Define contants
-define( 'EDIT_FLOW_VERSION' , '0.7.6' );
+define( 'EDIT_FLOW_VERSION' , '0.8' );
 define( 'EDIT_FLOW_ROOT' , dirname(__FILE__) );
 define( 'EDIT_FLOW_FILE_PATH' , EDIT_FLOW_ROOT . '/' . basename(__FILE__) );
 define( 'EDIT_FLOW_URL' , plugins_url( '/', __FILE__ ) );
@@ -266,9 +266,6 @@ class edit_flow {
 					$this->modules->$mod_name->options->$default_key = $default_value;
 			}
 
-			if ( isset( $this->modules->$mod_name->options->post_types ) )
-				$this->modules->$mod_name->options->post_types = $this->helpers->clean_post_type_options( $this->modules->$mod_name->options->post_types, $mod_data->post_type_support );	
-			
 			$this->$mod_name->module = $this->modules->$mod_name;
 		}
 		do_action( 'ef_module_options_loaded' );
@@ -329,6 +326,8 @@ class edit_flow {
 	 * Registers commonly used scripts + styles for easy enqueueing
 	 */	
 	function register_scripts_and_styles() {
+		wp_enqueue_style( 'ef-admin-css', EDIT_FLOW_URL . 'common/css/edit-flow-admin.css', false, EDIT_FLOW_VERSION, 'all' );
+
 		wp_register_script( 'jquery-listfilterizer', EDIT_FLOW_URL . 'common/js/jquery.listfilterizer.js', array( 'jquery' ), EDIT_FLOW_VERSION, true );
 		wp_register_style( 'jquery-listfilterizer', EDIT_FLOW_URL . 'common/css/jquery.listfilterizer.css', false, EDIT_FLOW_VERSION, 'all' );
 

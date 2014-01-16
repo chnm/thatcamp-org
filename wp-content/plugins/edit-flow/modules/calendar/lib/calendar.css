@@ -109,6 +109,31 @@ table#ef-calendar-view .day-unit.today {
 	border-top: 1px solid #000;
 }
 
+table#ef-calendar-view .day-item {
+	position: relative;
+}
+
+table#ef-calendar-view .day-unit{
+	position: relative;
+}
+
+table#ef-calendar-view .day-unit .schedule-new-post-button{
+	
+	background: none;
+	border: 1px solid rgb(180,180,180);
+	border-top: none;
+	border-left: none;
+	display: none;
+	float:left;
+	font-size: 10px;
+}
+
+table#ef-calendar-view .day-unit .schedule-new-post-button:hover{
+
+	background-color: rgb(220,220,220);
+
+}
+
 table#ef-calendar-view .day-unit .ui-state-highlight {
 	min-height: 20px;
 }
@@ -134,8 +159,42 @@ table#ef-calendar-view .day-unit.weekend-day.ui-wrapper-highlight ul li.sortable
 	
 }
 
+table#ef-calendar-view .day-unit .post-insert-dialog{
+	background-color: #FFF;
+	border: 1px solid #CCC;
+	-moz-box-shadow:5px 5px 5px #888;
+	-webkit-box-shadow:5px 5px 5px #888;
+	box-shadow:5px 5px 5px #888;
+	left: -5px;
+	padding: 5px;
+	position: absolute;
+	top: -5px;
+	width: 225px;
+	z-index: 999;
+	display: none;
+}
+
+table#ef-calendar-view .day-unit .post-insert-dialog.item-overlay{
+	display: block;
+}
+
+table#ef-calendar-view .day-unit .post-insert-dialog h1{
+	font-size: 13px;
+	font-weight: normal;
+	font-style: italic;
+	margin-bottom: 2px;
+}
+
+table#ef-calendar-view .day-unit .post-insert-dialog .post-insert-dialog-post-title{
+	margin-bottom: 10px;
+}
+
+table#ef-calendar-view .day-unit .post-insert-dialog .post-type-dropdown {
+	margin-bottom: 10px;
+}
+
 table#ef-calendar-view .day-unit ul {
-	margin-top: 17px;
+	margin-top: 22px;
 	margin-bottom: 0;
 	padding: 0;
 	min-height: 70px;
@@ -208,7 +267,7 @@ table#ef-calendar-view .day-unit ul li.sortable.ui-sortable-helper {
 	background-color: #F7F7F7;
 }
 
-table#ef-calendar-view .day-unit ul li .item-inner {
+table#ef-calendar-view .day-unit ul li .item-static .item-inner {
 	display: none;
 }
 
@@ -235,6 +294,19 @@ table#ef-calendar-view .day-unit ul li .item-information .item-field .label {
 }
 
 table#ef-calendar-view .day-unit ul li .item-information .item-field .value {
+}
+
+table#ef-calendar-view .day-unit ul li .item-information .item-field .editable-value {
+	cursor: pointer;
+}
+
+table#ef-calendar-view .day-unit ul li .item-information .item-field .editable-value:hover {
+	text-decoration: underline;
+}
+
+table#ef-calendar-view .day-unit ul li .item-information .item-field .spinner-calendar {
+	margin: 0px;
+	float: none;
 }
 
 table#ef-calendar-view .day-unit ul li .item-information .item-field em.none {
@@ -405,4 +477,12 @@ table#ef-calendar-view .day-unit ul li .item-overlay .item-actions span.trash a 
 .edit-flow-error-message {
 	background-color: #FFEBE8;
 	border: 1px solid #CC0000;
+}
+
+.ef_calendar_hidden_list {
+	display: none;
+}
+
+.save-metadata-hide {
+	display: none;
 }

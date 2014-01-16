@@ -100,13 +100,14 @@ class EF_Custom_Status extends EF_Module {
 		
 		// These seven-ish methods are hacks for fixing bugs in WordPress core
 		add_action( 'admin_init', array( $this, 'check_timestamp_on_publish' ) );
-		add_filter( 'wp_insert_post_data', array( $this, 'fix_custom_status_timestamp' ) );
+		add_filter( 'wp_insert_post_data', array( $this, 'fix_custom_status_timestamp' ), 10, 2 );
 		add_action( 'wp_insert_post', array( $this, 'fix_post_name' ), 10, 2 );
+		add_action( 'edit_form_after_title', array( $this, 'action_edit_form_after_title' ) );
 		add_filter( 'editable_slug', array( $this, 'fix_editable_slug' ) );
 		add_filter( 'preview_post_link', array( $this, 'fix_preview_link_part_one' ) );
-		add_filter( 'post_link', array( $this, 'fix_preview_link_part_two' ), 10, 3 );
-		add_filter( 'page_link', array( $this, 'fix_preview_link_part_two' ), 10, 3 );
-		add_filter( 'post_type_link', array( $this, 'fix_preview_link_part_two' ), 10, 3 );
+		add_filter( 'post_link', array( $this, 'fix_preview_link_part_two' ), 10, 2 );
+		add_filter( 'page_link', array( $this, 'fix_preview_link_part_two' ), 10, 2 );
+		add_filter( 'post_type_link', array( $this, 'fix_preview_link_part_two' ), 10, 2 );
 		add_filter( 'post_row_actions', array( $this, 'fix_post_row_actions' ), 10, 2 );
 		add_filter( 'page_row_actions', array( $this, 'fix_post_row_actions' ), 10, 2 );
 		
@@ -544,27 +545,35 @@ class EF_Custom_Status extends EF_Module {
 	function get_custom_statuses( $args = array() ) {
 		global $wp_post_statuses;
 
-		// If this post type doesn't support custom statuses, we should return WP
-		// default in our format.
-		if ( $this->disable_custom_statuses_for_post_type() ) {
-			$draft = $wp_post_statuses['draft'];
+		$disable_custom_statuses = $this->disable_custom_statuses_for_post_type();
+		if ( ! $disable_custom_statuses ) {
+
+			// Handle if the requested taxonomy doesn't exist
+			$args     = array_merge( array( 'hide_empty' => false ), $args );
+			$statuses = get_terms( self::taxonomy_key, $args );
+
+			if ( is_wp_error( $statuses ) || empty( $statuses ) )
+				$disable_custom_statuses = true;
+		}
+
+		// If this post type doesn't support custom statuses, we should return WP default in our format.
+		if ( $disable_custom_statuses ) {
+			$draft = isset( $wp_post_statuses['draft'] ) ? $wp_post_statuses['draft'] : new stdClass();
 			$draft->slug = 'draft';
 			$draft->position = 1;
+			$draft->name = 'Draft';
 
-			$pending = $wp_post_statuses['pending'];
+			$pending = isset( $wp_post_statuses['pending'] ) ? $wp_post_statuses['pending'] : new stdClass();
 			$pending->slug = 'pending';
 			$pending->position = 2;
+			$pending->name = 'Pending Review';
+
 			return array(
 					$draft,
 					$pending
 				);
 		}
-		
-		$default = array(
-			'hide_empty' => false,
-		);
-		$args = array_merge( $default, $args );
-		$statuses = get_terms( self::taxonomy_key, $args );
+
 		// Expand and order the statuses		
 		$ordered_statuses = array();
 		$hold_to_end = array();
@@ -732,9 +741,9 @@ class EF_Custom_Status extends EF_Module {
 			wp_die( $this->module->messages['nonce-failed'] );
 		
 		// Validate and sanitize the form data
-		$status_name = strip_tags( trim( $_POST['status_name'] ) );
+		$status_name = sanitize_text_field( trim( $_POST['status_name'] ) );
 		$status_slug = sanitize_title( $status_name );
-		$status_description = strip_tags( trim( $_POST['status_description'] ) );
+		$status_description = stripslashes( wp_filter_nohtml_kses( trim( $_POST['status_description'] ) ) );
 			
 		/**
 		 * Form validation
@@ -798,8 +807,8 @@ class EF_Custom_Status extends EF_Module {
 		if ( !$existing_status = $this->get_custom_status_by( 'id', (int)$_GET['term-id'] ) )
 			wp_die( $this->module->messsage['term-error'] );			
 		
-		$name = strip_tags( trim( $_POST['name'] ) );
-		$description = strip_tags( trim( $_POST['description'] ) );
+		$name = sanitize_text_field( trim( $_POST['name'] ) );
+		$description = stripslashes( wp_filter_nohtml_kses( trim( $_POST['description'] ) ) );
 			
 		/**
 		 * Form validation for editing custom status
@@ -995,9 +1004,9 @@ class EF_Custom_Status extends EF_Module {
 			die( $this->module->messages['invalid-permissions'] );		
 		
 		$term_id = (int) $_POST['status_id'];
-		$status_name = strip_tags( trim( $_POST['name'] ) );
+		$status_name = sanitize_text_field( trim( $_POST['name'] ) );
 		$status_slug = sanitize_title( $_POST['name'] );		
-		$status_description = strip_tags( trim( $_POST['description'] ) );		
+		$status_description = stripslashes( wp_filter_nohtml_kses( trim( $_POST['description'] ) ) );
 		
 		// Check if name field was filled in
 		if ( empty( $status_name ) ) {
@@ -1139,7 +1148,7 @@ class EF_Custom_Status extends EF_Module {
 			$edit_status_link = $this->get_link( array( 'action' => 'edit-status', 'term-id' => $term_id ) );
 			
 			$name = ( isset( $_POST['name'] ) ) ? stripslashes( $_POST['name'] ) : $status->name;
-			$description = ( isset( $_POST['description'] ) ) ? stripslashes( strip_tags( $_POST['description'] ) ) : $status->description;
+			$description = ( isset( $_POST['description'] ) ) ? strip_tags( stripslashes( $_POST['description'] ) ) : $status->description;
 		?>
 		
 		<div id="ajax-response"></div>
@@ -1279,6 +1288,16 @@ class EF_Custom_Status extends EF_Module {
 		}
 		
 	}
+
+	/**
+	 * Remove the editable_slug filter after it has run for the sample permalink box (slug editor)
+	 *
+	 * @since 0.7.7
+	 */
+	function action_edit_form_after_title() {
+		remove_filter( 'editable_slug', array( $this, 'fix_editable_slug' ) );
+	}
+
 	/**
 	 * PHP < 5.3.x doesn't support anonymous functions
 	 * This helper is only used for the check_timestamp_on_publish method above
@@ -1288,6 +1307,7 @@ class EF_Custom_Status extends EF_Module {
 	function helper_timestamp_hack() {
 		return ( 'pre_post_date' == current_filter() ) ? current_time('mysql') : '';
 	}
+
 	/**
 	 * This is a hack! hack! hack! until core is fixed/better supports custom statuses
 	 *
@@ -1298,7 +1318,7 @@ class EF_Custom_Status extends EF_Module {
 	 * @see Original thread: http://wordpress.org/support/topic/plugin-edit-flow-custom-statuses-create-timestamp-problem
 	 * @see Core ticket: http://core.trac.wordpress.org/ticket/18362	
 	 */
-	function fix_custom_status_timestamp( $data ) {
+	function fix_custom_status_timestamp( $data, $postarr ) {
 		global $edit_flow;
 		// Don't run this if Edit Flow isn't active, or we're on some other page
 		if ( $this->disable_custom_statuses_for_post_type()
@@ -1307,17 +1327,28 @@ class EF_Custom_Status extends EF_Module {
 			return $data;
 		$status_slugs = wp_list_pluck( $this->get_custom_statuses(), 'slug' );
 		$ef_normalize_post_date_gmt = true;
-		// We're only going to normalize the post_date_gmt if the user hasn't set a custom date in the metabox
-		// and the current post_date_gmt isn't already future or past-ized
-		foreach ( array('aa', 'mm', 'jj', 'hh', 'mn') as $timeunit ) {
-			if ( !empty( $_POST['hidden_' . $timeunit] ) && (($_POST['hidden_' . $timeunit] != $_POST[$timeunit] ) || ( $_POST['hidden_' . $timeunit] != $_POST['cur_' . $timeunit] )) ) {
-				$ef_normalize_post_date_gmt = false;
-				break;
-			}
+
+		//If the time isn't set, don't set it.
+		if( empty( $_POST['aa'] ) ) {
+			$data['post_date_gmt'] = '0000-00-00 00:00:00';
+			return $data;
 		}
+
+		//If it's been set, stay set.
+		if( !empty( $postarr['post_date_gmt'] ) && $postarr['post_date_gmt'] != '0000-00-00 00:00:00' ) {
+			return $data;
+		}
+
+		foreach ( array('aa', 'mm', 'jj', 'hh', 'mn') as $timeunit ) {
+			if( $_POST['hidden_' . $timeunit] != $_POST[$timeunit] )
+				$ef_normalize_post_date_gmt = false;
+		}
+
 		if ( $ef_normalize_post_date_gmt )
-			if ( in_array( $data['post_status'], $status_slugs ) )
+			if ( in_array( $data['post_status'], $status_slugs ) ) {
 				$data['post_date_gmt'] = '0000-00-00 00:00:00';
+			}
+
 		return $data;
 	}
 
@@ -1367,14 +1398,11 @@ class EF_Custom_Status extends EF_Module {
 		if ( ! did_action( 'all_admin_notices' ) )
 			return $slug;
 
-		// The AJAX-y edit your slug UI happens right below the title,
-		// so we can remove the filter after it's done.
-		if ( did_action( 'edit_form_after_title' ) ) {
-			remove_filter( current_filter(), array( $this, __FUNCTION__ ) );
-			return $slug;
-		}
-
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
+			return $slug;
+
+		// Only do this on post.php
+		if ( 'post.php' != $pagenow )
 			return $slug;
 
 		$post = get_post( get_the_ID() );
@@ -1382,7 +1410,6 @@ class EF_Custom_Status extends EF_Module {
 		// Only modify if we're using a pre-publish status on a supported custom post type
 		$status_slugs = wp_list_pluck( $this->get_custom_statuses(), 'slug' );
 		if ( ! $post
-			|| 'post.php' != $pagenow
 			|| ! in_array( $post->post_status, $status_slugs ) 
 			|| ! in_array( $post->post_type, $this->get_post_types_for_module( $this->module ) )
 			|| ! empty( $post->post_name ) )
@@ -1423,26 +1450,11 @@ class EF_Custom_Status extends EF_Module {
 			|| ! is_admin()
 			|| 'post.php' != $pagenow
 			|| ! in_array( $post->post_status, $status_slugs ) 
-			|| ! in_array( $post->post_type, $this->get_post_types_for_module( $this->module ) ) )
+			|| ! in_array( $post->post_type, $this->get_post_types_for_module( $this->module ) ) 
+			|| strpos( $preview_link, 'preview_id' ) !== false )
 			return $preview_link;
 
-		if ( 'page' == $post->post_type ) {
-			$args = array(
-					'page_id'    => $post->ID,
-				);
-		} else if ( 'post' == $post->post_type ) {
-			$args = array(
-					'p'          => $post->ID,
-				);
-		} else {
-			$args = array(
-					'p'          => $post->ID,
-					'post_type'  => $post->post_type,
-				);
-		}
-		$args['preview'] = 'true';
-		$preview_link = add_query_arg( $args, home_url() );
-		return $preview_link;
+		return $this->get_preview_link( $post );
 	}
 
 	/**
@@ -1455,22 +1467,38 @@ class EF_Custom_Status extends EF_Module {
 	 * So we can't do a targeted filter. Instead, we can even more hackily filter get_permalink
 	 * @see http://core.trac.wordpress.org/ticket/19378
 	 */
-	public function fix_preview_link_part_two( $permalink, $post, $leavename ) {
+	public function fix_preview_link_part_two( $permalink, $post ) {
 		global $pagenow;
 
-		// Core has apply_filters( 'page_link', $link, $post->ID, $sample ); too :(
 		if ( is_int( $post ) )
 			$post = get_post( $post );
 
-		// Only modify if we're using a pre-publish status on a supported custom post type
-		// while doing the preview POST action
-		$status_slugs = wp_list_pluck( $this->get_custom_statuses(), 'slug' );
-		if ( ! is_admin()
-			|| 'post.php' != $pagenow
-			|| ( empty( $_POST['wp-preview'] ) || 'dopreview' != $_POST['wp-preview'] )
-			|| ! in_array( $post->post_status, $status_slugs ) 
-			|| ! in_array( $post->post_type, $this->get_post_types_for_module( $this->module ) ) )
+		//Should we be doing anything at all?
+		if( !in_array( $post->post_type, $this->get_post_types_for_module( $this->module ) ) )
 			return $permalink;
+
+		//Is this published?
+		if( in_array( $post->post_status, $this->published_statuses ) )
+			return $permalink;
+
+		//Are we overriding the permalink? Don't do anything
+		if( isset( $_POST['action'] ) && $_POST['action'] == 'sample-permalink' )
+			return $permalink;
+
+		//Are we previewing the post from the normal post screen?
+		if( ( $pagenow == 'post.php' || $pagenow == 'post-new.php' ) 
+			&& !isset( $_POST['wp-preview'] ) )
+			return $permalink;
+
+		return $this->get_preview_link( $post );
+	}
+
+	/**
+	 * Get the proper preview link for a post
+	 * 
+	 * @since 0.8
+	 */
+	private function get_preview_link( $post ) {
 
 		if ( 'page' == $post->post_type ) {
 			$args = array(
@@ -1486,8 +1514,9 @@ class EF_Custom_Status extends EF_Module {
 					'post_type'  => $post->post_type,
 				);
 		}
-		$permalink = add_query_arg( $args, home_url() );
-		return $permalink;
+
+		$args['preview_id'] = $post->ID;
+		return add_query_arg( $args, home_url() );
 	}
 
 	/**

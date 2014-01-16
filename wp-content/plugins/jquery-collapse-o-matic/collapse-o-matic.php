@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.5.4
+Version: 1.5.7
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -23,7 +23,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.5.4';
+	var $version = '1.5.7';
 
 	/**
 	 * Used as prefix for options entry
@@ -45,7 +45,8 @@ class WP_Collapse_O_Matic {
 		'tag' => 'span',
 		'duration' => 'fast',
 		'slideEffect' => 'slideFade',
-		'custom_css' => ''
+		'custom_css' => '',
+		'script_check' => 1
 	);
 
 	/**
@@ -57,17 +58,15 @@ class WP_Collapse_O_Matic {
 		
 		// load text domain for translations
 		load_plugin_textdomain( 'colomat', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
-		//load the script and style if not viwing the dashboard
-		if (!is_admin()){
-			add_action('init', array( $this, 'collapsTronicInit' ) );
-		}
+		
+		//load the script and style if viewing the front-end
+		add_action('wp_enqueue_scripts', array( $this, 'collapsTronicInit' ) );
 		
 		// add actions
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'plugin_actions' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action('wp_head', array( $this, 'colomat_js_vars' ) );
+		add_action( 'wp_footer', array( $this, 'colomat_js_vars' ) );
 		
 		add_shortcode('expand', array($this, 'shortcode'));
 		
@@ -96,17 +95,15 @@ class WP_Collapse_O_Matic {
 	/**
 	 * Callback init
 	 */
-	function collapsTronicInit() {
-		//load up jQuery the Jedi way
-		wp_enqueue_script('jquery');
-		
+	function collapsTronicInit() {		
 		//collapse script
-		//wp_register_script('collapseomatic-js', plugins_url('js/collapse.min.js', __FILE__), array('jquery'), '1.5.4');
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.4');
-		wp_enqueue_script('collapseomatic-js');
-				
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.7', true);
+		if( empty($this->options['script_check']) ){
+			wp_enqueue_script('collapseomatic-js');
+		}
+		
 		//css
-		wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.5.4' );
+		wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.5.7' );
 		wp_enqueue_style( 'collapseomatic-css' );
 	}
 
@@ -132,13 +129,17 @@ class WP_Collapse_O_Matic {
 	 * Callback shortcode
 	 */
 	function shortcode($atts, $content = null){
-		//find a random number, if no id is assigned
 		$options = $this->options;
+		if( !empty($this->options['script_check']) ){
+			wp_enqueue_script('collapseomatic-js');
+		}
+		//find a random number, if no id is assigned
 		$ran = rand(1, 10000);
 		extract(shortcode_atts(array(
 			'title' => '',
 			'swaptitle' => '',
 			'alt' => '',
+			'swapalt' => '',
 			'notitle' => '',
 			'id' => 'id'.$ran,
 			'tag' => $options['tag'],
@@ -230,7 +231,7 @@ class WP_Collapse_O_Matic {
 		}
 		$link = $closeanchor.$anchor.'<'.$tag.' class="collapseomatic '.$trigclass.'" id="'.$id.'" '.$relatt.' '.$altatt.'>'.$startwrap.$title.$endwrap.'</'.$tag.'>';
 		if($swaptitle){
-			$link .= "<".$tag." id='swap-".$id."' style='display:none;'>".$startwrap.$swaptitle.$endwrap."</".$tag.">";
+			$link .= "<".$tag." id='swap-".$id."' alt='".$swapalt."' style='display:none;'>".$startwrap.$swaptitle.$endwrap."</".$tag.">";
 		}
 		
 		if($excerpt){
@@ -379,6 +380,13 @@ class WP_Collapse_O_Matic {
 								</tr>
 								
 								<tr>
+									<th><?php _e( 'Shortcode Loads Scripts', 'colomat' ) ?></th>
+									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[script_check]" name="<?php echo $this->options_name ?>[script_check]" value="1"  <?php echo checked( $options['script_check'], 1 ); ?> /> <?php _e('Only load scripts with shortcode.', 'colomat'); ?>
+										<br /><span class="description"><?php _e('Only load Collapse-O-Matic scripts if [expand] shortcode is used.', 'colomat'); ?></span></label>
+									</td>
+								</tr>
+								
+								<tr>
 									<th><strong><?php _e( 'Level Up!', 'colomat' ) ?></strong></th>
 									<td><?php printf(__( '%sCollapse-Pro-Matic%s is our preimum plugin that offers additional attributes and features for <i>ultimate</i> flexibility.', 'colomat' ), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-pro-matic/">', '</a>'); ?>
 									</td>
@@ -405,7 +413,7 @@ class WP_Collapse_O_Matic {
 						<p><?php _e( 'Remove clutter, save space. Display and hide additional content in a SEO friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a lovely jQuery expanding and collapsing element.', 'colomat') ?></p>
 						<ul>
 							<li><?php printf( __( '%sDetailed documentation%s, complete with working demonstrations of all shortcode attributes, is available for your instructional enjoyment.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/" target="_blank">', '</a>'); ?></li>
-							<li><?php printf( __( '%sFree%s & %sPremimum%s Support', 'colomat'), '<a href="http://wordpress.org/support/plugin/jquery-collapse-o-matic" target="_blank">', '</a>', '<a href="http://plugins.twinpictures.de/products-page/support/collapse-o-matic-premium-support/" target="_blank">', '</a>'); ?></li>
+							<li><?php printf( __( '%sFree%s Opensource Support', 'colomat'), '<a href="http://wordpress.org/support/plugin/jquery-collapse-o-matic" target="_blank">', '</a>'); ?></li>
 							<li><?php printf( __('If this plugin %s, please consider %sreviewing it at WordPress.org%s to help others.', 'colomat'), $like_it, '<a href="http://wordpress.org/support/view/plugin-reviews/jquery-collapse-o-matic" target="_blank">', '</a>' ) ?></li>
 							<li><a href="http://wordpress.org/extend/plugins/jquery-collapse-o-matic/" target="_blank">WordPress.org</a> | <a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/" target="_blank">Twinpictues Plugin Oven</a></li>
 						</ul>

@@ -3,7 +3,7 @@
 Plugin Name: Links Shortcode
 Plugin URI: http://www.apprique.com/wordpress-plugins
 Description: Displays all links of a certain category in a post using a shortcode, according to a definable template. Includes optional Facebook Like button.
-Version: 1.6.1
+Version: 1.6.2
 Author: Maarten Swemmer
 Author URI: http://blog.bigcircle.nl
 */
@@ -359,7 +359,7 @@ function linkssc_options_page()
 	$howmany = get_option('linkssc_howmany', '-1');
 	?>
 	<div class="wrap">
-	<div class="postbox" style="float:right;width:100px;margin:20px"><div class="inside" style="margin:10px"><?php _e('Like this plugin? Saves you work? Or using it in a professional context? A small contribution is highly appreciated. <strong>I will donate 50% of your contributions to charity.</strong>', 'links-shortcode'); ?><p>
+	<div class="postbox" style="float:right;width:100px;margin:20px"><div class="inside" style="margin:10px"><?php _e('Like this plugin? Saves you work? Or using it in a professional context? A small contribution is highly appreciated.', 'links-shortcode'); ?><p>
 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="width:100%;">
 		<input type="hidden" name="cmd" value="_s-xclick">
 		<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
@@ -367,7 +367,7 @@ function linkssc_options_page()
 		<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online." style="margin-left:auto;margin-right:auto">
 		<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 	</form>
-
+	<?php _e('Or donate Bitcoins to this address: <a style="font-size:11px" href="bitcoin:12nxdhSBXNBdp2yG3oXzRkiArRgztSRG9f" target="_blank" title="Click here to send this address to your wallet (if your wallet is not compatible you will get an empty page, close the white screen and copy the address by hand). Thank you very much for any contribution!">12nxdhSBXNBdp2yG3oXzRkiArRgztSRG9f</a> ', 'links-shortcode'); ?>
 	</div></div>
 		
 	<h2> <?php _e('Links Shortcode plugin settings','links-shortcode'); ?> </h2>
@@ -390,12 +390,12 @@ function linkssc_options_page()
 		</td>
 		</tr>
 		<!-- Change fb color sceme -->
-		<tr valign="top">
+		<!--<tr valign="top">
 		<th scope="row"><?php _e('What facebook color scheme?','links-shortcode'); ?></th>
 		<td><input type="radio" name="linkssc_fbcolors" value="light" <?php if ($fbcolors == 'light') echo 'CHECKED'; ?> /><?php _e('Light','links-shortcode'); ?><br />
 			<input type="radio" name="linkssc_fbcolors" value="dark" <?php if ($fbcolors == 'dark') echo 'CHECKED'; ?> /><?php _e('Dark','links-shortcode'); ?><br />
 		</td>
-		</tr>
+		</tr>-->
 		<!-- End change fb color sceme -->
         <tr valign="top">
         <th scope="row"><?php _e('What to order your links by?','links-shortcode'); ?></th>

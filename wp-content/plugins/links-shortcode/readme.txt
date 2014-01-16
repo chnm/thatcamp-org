@@ -4,8 +4,8 @@ Contributors: maartenjs, Apprique
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donateviapaypal%40bigcircle%2enl&lc=HK&item_name=Wordpress%20plugin&item_number=linksshortcode%2dapp&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 Tags: links, link, shortcode, category, Facebook, Like, Recommend, list of links, template, customizable, link manager
 Requires at least: 3.0
-Tested up to: 3.6.1
-Stable tag: 1.6.1
+Tested up to: 3.8
+Stable tag: 1.6.2
 
 The plugin provides the shortcode 'links'. This shortcode shows all links having specified characteristics, following a specified template.
 
@@ -65,6 +65,8 @@ No special actions required before upgrading.
 2. Resulting list of links
 
 == Changelog ==
+= 1.6.2 (28-12-2013) =
+* Compatible with WordPress 3.8
 
 = 1.6.1 (29-09-2013) =
 * Fixed issue with initializing Links shortcode template on first activation.

@@ -38,7 +38,7 @@ class EF_Story_Budget extends EF_Module {
 		// Register the module with Edit Flow
 		$args = array(
 			'title' => __( 'Story Budget', 'edit-flow' ),
-			'short_description' => __( 'View the status of all your content at a glance.', 'edit-flow' ),
+			'short_description' => sprintf( __( 'View the status of all your content <a href="%s">at a glance</a>.', 'edit-flow' ), admin_url( 'index.php?page=story-budget' ) ),
 			'extended_description' => __( 'Use the story budget to see how content on your site is progressing. Filter by specific categories or date ranges to see details about each post in progress.', 'edit-flow' ),
 			'module_url' => $this->module_url,
 			'img_url' => $this->module_url . 'lib/story_budget_s128.png',
@@ -291,13 +291,13 @@ class EF_Story_Budget extends EF_Module {
 				$terms_per_container = ceil( count( $terms ) / $this->num_columns );
 				$term_index = 0;
 				// Show just one column if we've filtered to one term
-				if ( count( $terms ) == 1 )
+				if ( count( $this->terms ) == 1 )
 					$this->num_columns = 1;
 				for( $i = 1; $i <= $this->num_columns; $i++ ) {
 					echo '<div class="postbox-container" style="width:' . ( 100 / $this->num_columns ) . '%;">';
 					for( $j = 0; $j < $terms_per_container; $j++ ) {
-						if ( isset( $terms[$term_index] ) )
-							$this->print_term( $terms[$term_index] );
+						if ( isset( $this->terms[$term_index] ) )
+							$this->print_term( $this->terms[$term_index] );
 						$term_index++;
 					}
 					echo '</div>';
@@ -332,7 +332,7 @@ class EF_Story_Budget extends EF_Module {
 			. esc_attr( $this->user_filters['number_days'] ) . '" /><span class="form-value">' . esc_html( $this->user_filters['number_days'] )
 			. '</span>';		
 		
-		$output .= sprintf( __( 'starting %1$s showing %2$s %3$s', 'edit-flow' ), $start_date_value, $number_days_value, _n( 'day', 'days', $this->user_filters['number_days'], 'edit-flow' ) );
+		$output .= sprintf( _x( 'starting %1$s showing %2$s %3$s', '%1$s = start date, %2$s = number of days, %3$s = translation of \'Days\'', 'edit-flow' ), $start_date_value, $number_days_value, _n( 'day', 'days', $this->user_filters['number_days'], 'edit-flow' ) );
 		$output .= '&nbsp;&nbsp;<span class="change-date-buttons">';
 		$output .= '<input id="ef-story-budget-range-submit" name="ef-story-budget-range-submit" type="submit"';
 		$output .= ' class="button-primary" value="' . __( 'Change', 'edit-flow' ) . '" />';
@@ -390,6 +390,9 @@ class EF_Story_Budget extends EF_Module {
 		// Filter by post_author if it's set
 		if ( $args['author'] === '0' ) unset( $args['author'] );
 		
+		// Filter for an end user to implement any of their own query args
+     	$args = apply_filters( 'ef_story_budget_posts_query_args', $args );
+
 		add_filter( 'posts_where', array( $this, 'posts_where_range' ) );
 		$term_posts_query_results = new WP_Query( $args );
 		remove_filter( 'posts_where', array( $this, 'posts_where_range' ) );
@@ -546,17 +549,28 @@ class EF_Story_Budget extends EF_Module {
 		
 		// Edit or Trash or View
 		$output .= '<div class="row-actions">';
+		$item_actions = array();
 		if ( $can_edit_post )
-			$output .= '<span class="edit"><a title="' . __( 'Edit this post', 'edit-flow' ) . '" href="' . get_edit_post_link( $post->ID ) . '">' . __( 'Edit' ) . '</a> | </span>';
+			$item_actions['edit'] = '<a title="' . __( 'Edit this post', 'edit-flow' ) . '" href="' . get_edit_post_link( $post->ID ) . '">' . __( 'Edit', 'edit-flow' ) . '</a>';
 		if ( EMPTY_TRASH_DAYS > 0 && current_user_can( $post_type_object->cap->delete_post, $post->ID ) )
-			$output .= '<span class="trash"><a class="submitdelete" title="' . __( 'Move this item to the Trash', 'edit-flow' ) . '" href="' . get_delete_post_link( $post->ID ) . '">' . __( 'Trash' ) . '</a></span>';
+			$item_actions['trash'] = '<a class="submitdelete" title="' . __( 'Move this item to the Trash', 'edit-flow' ) . '" href="' . get_delete_post_link( $post->ID ) . '">' . __( 'Trash', 'edit-flow' ) . '</a>';
 
 		// Display a View or a Preview link depending on whether the post has been published or not
 		if ( in_array( $post->post_status, array( 'publish' ) ) )
-			$output .= '<span class="view"> | <a href="' . get_permalink( $post->ID ) . '" title="' . esc_attr( sprintf( __( 'View &#8220;%s&#8221;' ), $post_title ) ) . '" rel="permalink">' . __( 'View' ) . '</a></span>';
+			$item_actions['view'] = '<a href="' . get_permalink( $post->ID ) . '" title="' . esc_attr( sprintf( __( 'View &#8220;%s&#8221;', 'edit-flow' ), $post_title ) ) . '" rel="permalink">' . __( 'View', 'edit-flow' ) . '</a>';
 		else if ( $can_edit_post )
-			$output .= '<span class="previewpost"> | <a href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post->ID ) ) ) . '" title="' . esc_attr( sprintf( __( 'Preview &#8220;%s&#8221;' ), $post_title ) ) . '" rel="permalink">' . __( 'Preview' ) . '</a></span>';
-		$output .= '</div>';
+			$item_actions['previewpost'] = '<a href="' . esc_url( apply_filters( 'preview_post_link', add_query_arg( 'preview', 'true', get_permalink( $post->ID ) ) ) ) . '" title="' . esc_attr( sprintf( __( 'Preview &#8220;%s&#8221;', 'edit-flow' ), $post_title ) ) . '" rel="permalink">' . __( 'Preview', 'edit-flow' ) . '</a>';
+
+		$item_actions = apply_filters( 'ef_story_budget_item_actions', $item_actions, $post->ID );
+		if ( count( $item_actions ) ) {
+			$output .= '<div class="row-actions">';
+			$html = '';
+			foreach ( $item_actions as $class => $item_action ) {
+				$html .= '<span class="' . esc_attr( $class ) . '">' . $item_action . '</span> | ';
+			}
+			$output .= rtrim( $html, '| ' );
+			$output .= '</div>';
+		}
 
 		return $output;
 	}
@@ -575,14 +589,14 @@ class EF_Story_Budget extends EF_Module {
 			// Following mostly stolen from edit.php
 			
 			if ( isset( $_GET['trashed'] ) && (int) $_GET['trashed'] ) {
-				printf( _n( 'Item moved to the trash.', '%s items moved to the trash.', $_GET['trashed'] ), number_format_i18n( $_GET['trashed'] ) );
+				printf( _n( 'Item moved to the trash.', '%d items moved to the trash.', $_GET['trashed'] ), number_format_i18n( $_GET['trashed'] ) );
 				$ids = isset($_GET['ids']) ? $_GET['ids'] : 0;
 				echo ' <a href="' . esc_url( wp_nonce_url( "edit.php?post_type=post&doaction=undo&action=untrash&ids=$ids", "bulk-posts" ) ) . '">' . __( 'Undo', 'edit-flow' ) . '</a><br />';
 				unset($_GET['trashed']);
 			}
 
 			if ( isset($_GET['untrashed'] ) && (int) $_GET['untrashed'] ) {
-				printf( _n( 'Item restored from the Trash.', '%s items restored from the Trash.', $_GET['untrashed'] ), number_format_i18n( $_GET['untrashed'] ) );
+				printf( _n( 'Item restored from the Trash.', '%d items restored from the Trash.', $_GET['untrashed'] ), number_format_i18n( $_GET['untrashed'] ) );
 				unset($_GET['undeleted']);
 			}
 			
@@ -594,47 +608,15 @@ class EF_Story_Budget extends EF_Module {
 	 * Print the table navigation and filter controls, using the current user's filters if any are set.
 	 */
 	function table_navigation() {
-
-		$post_statuses = $this->get_post_statuses();
 	?>
 	<div class="tablenav" id="ef-story-budget-tablenav">
 		<div class="alignleft actions">
 			<form method="GET" style="float: left;">
 				<input type="hidden" name="page" value="story-budget"/>
-				<select id="post_status" name="post_status"><!-- Status selectors -->
-					<option value=""><?php _e( 'View all statuses', 'edit-flow' ); ?></option>
-					<?php
-						foreach ( $post_statuses as $post_status ) {
-							echo "<option value='" . esc_attr( $post_status->slug ) . "' " . selected( $post_status->slug, $this->user_filters['post_status'] ) . ">" . esc_html( $post_status->name ) . "</option>";
-						}
-						echo "<option value='future'" . selected('future', $this->user_filters['post_status']) . ">" . __( 'Scheduled', 'edit-flow' ) . "</option>";
-						echo "<option value='unpublish'" . selected('unpublish', $this->user_filters['post_status']) . ">" . __( 'Unpublished', 'edit-flow' ) . "</option>";
-						echo "<option value='publish'" . selected('publish', $this->user_filters['post_status']) . ">" . __( 'Published', 'edit-flow' ) . "</option>";
-					?>
-				</select>
-
-				<?php
-					// Borrowed from wp-admin/edit.php
-					if ( taxonomy_exists('category') ) {
-						$category_dropdown_args = array(
-							'show_option_all' => __( 'View all categories', 'edit-flow' ),
-							'hide_empty' => 0,
-							'hierarchical' => 1,
-							'show_count' => 0,
-							'orderby' => 'name',
-							'selected' => $this->user_filters['cat']
-							);
-						wp_dropdown_categories( $category_dropdown_args );
+				<?php 
+					foreach($this->story_budget_filters() as $select_id => $select_name ) {
+						echo $this->story_budget_filter_options( $select_id, $select_name, $this->user_filters ); 
 					}
-
-					$users_dropdown_args = array(
-						'show_option_all' => __( 'View all users', 'edit-flow' ),
-						'name'     => 'author',
-						'selected' => $this->user_filters['author'],
-						'who' => 'authors',
-						);
-					$users_dropdown_args = apply_filters( 'ef_story_budget_users_dropdown_args', $users_dropdown_args );
-					wp_dropdown_users( $users_dropdown_args );
 				?>
 				<input type="submit" id="post-query-submit" value="<?php _e( 'Filter', 'edit-flow' ); ?>" class="button-primary button" />
 			</form>
@@ -643,6 +625,11 @@ class EF_Story_Budget extends EF_Module {
 				<input type="hidden" name="post_status" value=""/>
 				<input type="hidden" name="cat" value=""/>
 				<input type="hidden" name="author" value=""/>
+				<?php 
+				foreach( $this->story_budget_filters() as $select_id => $select_name ) {
+					echo '<input type="hidden" name="'.$select_name.'" value="" />';
+				}
+				?>
 				<input type="submit" id="post-query-clear" value="<?php _e( 'Reset', 'edit-flow' ); ?>" class="button-secondary button" />
 			</form>
 		</div><!-- /alignleft actions -->
@@ -688,6 +675,8 @@ class EF_Story_Budget extends EF_Module {
 		if ( !$user_filters['number_days'] )
 			$user_filters['number_days'] = 10;
 		
+		$user_filters = apply_filters('ef_story_budget_filter_values', $user_filters, $current_user_filters);
+
 		$this->update_user_meta( $current_user->ID, self::usermeta_key_prefix . 'filters', $user_filters );
 		return $user_filters;
 	}
@@ -725,6 +714,64 @@ class EF_Story_Budget extends EF_Module {
 		}
 		
 		return sanitize_key( $_GET[$param] );
+	}
+
+	function story_budget_filters() {
+		$select_filter_names = array();
+
+		$select_filter_names['post_status'] = 'post_status';
+		$select_filter_names['cat'] = 'cat';
+		$select_filter_names['author'] = 'author';
+
+		return apply_filters('ef_story_budget_filter_names', $select_filter_names);
+	}
+
+	function story_budget_filter_options( $select_id, $select_name, $filters ) {
+		switch( $select_id ) {
+			case 'post_status': 
+			$post_statuses = $this->get_post_statuses();
+			?>
+				<select id="post_status" name="post_status"><!-- Status selectors -->
+						<option value=""><?php _e( 'View all statuses', 'edit-flow' ); ?></option>
+						<?php
+							foreach ( $post_statuses as $post_status ) {
+								echo "<option value='" . esc_attr( $post_status->slug ) . "' " . selected( $post_status->slug, $filters['post_status'] ) . ">" . esc_html( $post_status->name ) . "</option>";
+							}
+							echo "<option value='future'" . selected('future', $filters['post_status']) . ">" . __( 'Scheduled', 'edit-flow' ) . "</option>";
+							echo "<option value='unpublish'" . selected('unpublish', $filters['post_status']) . ">" . __( 'Unpublished', 'edit-flow' ) . "</option>";
+							echo "<option value='publish'" . selected('publish', $filters['post_status']) . ">" . __( 'Published', 'edit-flow' ) . "</option>";
+						?>
+					</select>
+			<?php
+			break;
+			case 'cat':
+				// Borrowed from wp-admin/edit.php
+				if ( taxonomy_exists('category') ) {
+					$category_dropdown_args = array(
+						'show_option_all' => __( 'View all categories', 'edit-flow' ),
+						'hide_empty' => 0,
+						'hierarchical' => 1,
+						'show_count' => 0,
+						'orderby' => 'name',
+						'selected' => $this->user_filters['cat']
+						);
+					wp_dropdown_categories( $category_dropdown_args );
+				}
+			break;
+			case 'author':
+				$users_dropdown_args = array(
+						'show_option_all' => __( 'View all users', 'edit-flow' ),
+						'name'     => 'author',
+						'selected' => $this->user_filters['author'],
+						'who' => 'authors',
+						);
+				$users_dropdown_args = apply_filters( 'ef_story_budget_users_dropdown_args', $users_dropdown_args );
+				wp_dropdown_users( $users_dropdown_args );
+			break;
+			default:
+				do_action( 'ef_story_budget_filter_display', $select_id, $select_name, $filters);
+			break;
+		}
 	}
 	
 }

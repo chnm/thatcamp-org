@@ -217,6 +217,10 @@ ul.ui-tabs-nav li.ui-tabs-active a {
 	-webkit-border-bottom-left-radius: 6px;
 }
 
+.blc-section table.form-table th {
+    padding-left: 10px;
+}
+
 /* Right sidebar */
 
 #blc-settings-wrap .hndle {

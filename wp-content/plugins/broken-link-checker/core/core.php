@@ -977,7 +977,7 @@ class wsBrokenLinkChecker {
 
 		        foreach($widget_caps as $title => $capability) {
 			        printf(
-				        '<label><input type="radio" name="dashboard_widget_capability" value="%s"%s> %s</label><br>',
+				        '<p><label><input type="radio" name="dashboard_widget_capability" value="%s"%s> %s</label></p>',
 				        esc_attr($capability),
 				        checked($capability, $this->conf->get('dashboard_widget_capability'), false),
 				        $title
@@ -1223,7 +1223,7 @@ class wsBrokenLinkChecker {
      * @return void
      */
     function options_page_css(){
-    	wp_enqueue_style('blc-options-page', plugins_url('css/options-page.css', BLC_PLUGIN_FILE), array(), '20121206' );
+    	wp_enqueue_style('blc-options-page', plugins_url('css/options-page.css', BLC_PLUGIN_FILE), array(), '20131216');
     	wp_enqueue_style('dashboard');
 	}
 	

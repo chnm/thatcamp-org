@@ -159,16 +159,17 @@ class blcPostTypeOverlord {
 
         $post_container->mark_as_unsynched();
 	}
-	
-	
-  /**
-   * Create or update synchronization records for all posts.
-   *
-   * @param bool $forced If true, assume that all synch. records are gone and will need to be recreated from scratch. 
-   * @return void
-   */
+
+
+	/**
+	 * Create or update synchronization records for all posts.
+	 *
+	 * @param string $container_type
+	 * @param bool $forced If true, assume that all synch. records are gone and will need to be recreated from scratch.
+	 * @return void
+	 */
 	function resynch($container_type = '', $forced = false){
-		global $wpdb;
+		global $wpdb; /** @var wpdb $wpdb */
 		global $blclog;
 		
 		//Resynch is expensive in terms of DB performance. Thus we only do it once, processing

@@ -3,8 +3,8 @@ Contributors: whiteshadow
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6P9S6CE3SRSW
 Tags: links, broken, maintenance, blogroll, custom fields, admin, comments, posts
 Requires at least: 3.2
-Tested up to: 3.7
-Stable tag: 1.9.1
+Tested up to: 3.8
+Stable tag: 1.9.2
 
 This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found. 
 
@@ -95,6 +95,15 @@ To upgrade your installation
 1. Reactivate the plugin. Your settings will be retained from the previous version.
 
 == Changelog ==
+
+= 1.9.2 =
+* Fixed several UI/layout issues related to the new WP 3.8 admin style.
+* Fixed HTML entity codes showing up in confirmation messages in when running a localized version of WP (only affects some languages).
+* Fixed the "dismiss this notice" link URL not being HTML-escaped.
+* Fixed a couple of cross-site scripting vulnerabilities related to the sort direction query argument not being properly validated and the bulk action form not escaping the current URL.
+* Updated Hebrew translation.
+* Updated French translation.
+* When you dismiss a link, the dismissed link counter is now updated right away instead of on page reload.
 
 = 1.9.1 =
 * Updated Dutch, German, Chinese and Portuguese translations.
@@ -679,6 +688,9 @@ To upgrade your installation
 * *There are no release notes for this version*
 
 == Upgrade Notice ==
+
+= 1.9.2 =
+Fixes UI issues related to the new WP 3.8 admin style and a few security vulnerabilities.
 
 = 1.6.2 =
 Attempts to fix the "database not up to date" bug that some users are still experiencing with 1.6.1. If you have not encountered this bug, you can skip this update.

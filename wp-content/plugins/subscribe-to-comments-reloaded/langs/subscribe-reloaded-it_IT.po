@@ -929,8 +929,8 @@ msgid "Sponsor's Corner"
 msgstr "Angolo dello sponsor"
 
 #: options/panel6.php:25
-msgid "If you want to sponsor this plugin, don't hesitate to <a href='http://www.duechiacchiere.it/contatto'>contact me</a>."
-msgstr "Se vuoi sponsorizzare questo plugin, non esitare a <a href='http://www.duechiacchiere.it/contatto'>contattarmi</a>."
+msgid "If you want to sponsor this plugin, don't hesitate to <a href='http://behstant.com/negocio/contact.php' target='_blank'>contact me</a>."
+msgstr "Se vuoi sponsorizzare questo plugin, non esitare a <a href='http://behstant.com/negocio/contact.php' target='_blank'>contattarmi</a>."
 
 #: templates/author.php:55
 msgid "Title"

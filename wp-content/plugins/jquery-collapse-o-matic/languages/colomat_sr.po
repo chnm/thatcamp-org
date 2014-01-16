@@ -1,0 +1,158 @@
+# Translation of Collapse-O-Matic in German
+# This file is distributed under the same license as the Collapse-O-Matic package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2013-12-13 13:57+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.5.7\n"
+"Project-Id-Version: Collapse-O-Matic\n"
+"POT-Creation-Date: \n"
+"Last-Translator: Baden Coleman <baden@twinpictures.de>\n"
+"Language-Team: Twinpictures <info@twinpictures.de>\n"
+"Language: Serbian\n"
+
+#: colomat.php:287
+msgid "Style"
+msgstr "Stil"
+
+#: colomat.php:294
+msgid "Light"
+msgstr "Svetlo"
+
+#: colomat.php:295
+msgid "Dark"
+msgstr "Tamno"
+
+#: colomat.php:306
+msgid ""
+"Select Light for sites with lighter backgroudns. Select Dark for sites with "
+"darker backgrounds."
+msgstr ""
+"Selektujte svetlo za sajt sa svetlosnom pozadinom.Selektujte tamno za sajt "
+"sa tamnom pozadinom."
+
+#: colomat.php:275 colomat.php:373
+msgid "Click to toggle"
+msgstr "Klik za toggle"
+
+#: colomat.php:276
+msgid "Default Collapse-O-Matic Settings"
+msgstr "Default Collapse-O-Matic Settings"
+
+#: colomat.php:311
+msgid "Tag Attribute"
+msgstr "Tag atributa"
+
+#: colomat.php:313
+msgid ""
+"HTML tag use to wrap the trigger text. See %sTag Attribute%s in the "
+"documentation for more info."
+msgstr ""
+"HTML tagove upotrebiti za zamotavanje tekst okidača . Pogledajte % Stag "
+"Atribut % s  dokumentaciju za više informacija ."
+
+#: colomat.php:323
+msgid "Collapse/Expand Duration"
+msgstr "Collapse/Expand Duration"
+
+#: colomat.php:325
+msgid ""
+"A string or number determining how long the animation will run. See "
+"%sDuration%s in the documentation for more info."
+msgstr ""
+"String ili broj određivanja koliko će dugo  trajati animacija . Pogledajte % "
+"sDuration % s  dokumentaciju  za više informacija ."
+
+#: colomat.php:330
+msgid "Animation Effect"
+msgstr "Animation Effect"
+
+#: colomat.php:337
+msgid "Slide Only"
+msgstr "Samo slajduj"
+
+#: colomat.php:338
+msgid "Slide & Fade"
+msgstr "Slajduj & Ukloni"
+
+#: colomat.php:349
+msgid ""
+"Animation effect to use while collapsing and expanding. See %sAnimation "
+"Effect%s in the documentation for more info."
+msgstr ""
+"Efekat Animacija koristiti kod kolapsa i proširenje . Pogledajte % "
+"sAnimation Effect % s  dokumentaciju  za više informacija ."
+
+#: colomat.php:354
+msgid "Level Up!"
+msgstr "Podigni na veći nivo!"
+
+#: colomat.php:355
+msgid ""
+"<em>Comming Soon: Collapse-Pro-Matic</em> our preimum plugin that offers "
+"additional attributes and the ability to set default attribute settings for "
+"all attributes."
+msgstr ""
+"<em>Dolazi uskoro: Collapse-Pro-Matic</em> naša preimum plugin koja nudi "
+"dodatne atribute i mogućnosti za nameštanje default atributa postavki za sve "
+"atribute."
+
+#: colomat.php:362
+msgid "Save Changes"
+msgstr "Sačuvaj promene"
+
+#: colomat.php:374
+msgid "About"
+msgstr "o"
+
+#: colomat.php:377
+msgid ""
+"Remove clutter, save space. Display and hide additional content in a SEO "
+"friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a "
+"lovely jQuery expanding and collapsing element."
+msgstr ""
+"Uklonite gužvu , uštede prostora . Prikazati i sakriti dodatnih sadržaja na "
+"SEO prijateljski način . Umotajte svaki sadržashortcodes&mdash; kratke "
+"brojeve - u divnom jQuery širenja i rušenja elemenata ."
+
+#: colomat.php:379
+msgid ""
+"%sDetailed documentation%s, complete with working demonstrations of all "
+"shortcode attributes, is available for your instructional enjoyment."
+msgstr ""
+" %sDetaljna dokumentacija , zajedno sa radnim demonstracijama svih shortcode "
+"atributa , je dostupna za vaše nastavno uživanje ."
+
+#: colomat.php:380
+msgid "%sFree%s & %sPremimum%s Support"
+msgstr "%sBesplatna%s & %sPremimum%s podrška"
+
+#: colomat.php:381
+msgid ""
+"If you like this plugin, please consider %sreviewing it at WordPress.org%s "
+"to help others."
+msgstr ""
+"Ako volite ovaj plugin , molimo vas da razmislite %sreviewing na WordPress."
+"org % s da pomognu drugima ."
+
+msgid "jQuery Collapse-O-Matic"
+msgstr "jQuery Collapse-O-Matic"
+
+msgid "http://plugins.twinpictures.de/plugins/collapse-o-matic/"
+msgstr "http://plugins.twinpictures.de/plugins/collapse-o-matic/"
+
+msgid ""
+"Collapse-O-Matic adds an [expand] shortcode that wraps content into a "
+"lovely, jQuery collapsible div."
+msgstr ""
+"Collapse-O-Matic adodaci na [prošireno] shortcode koji obavija sadržaj u "
+"jQuery kolaps div."
+
+msgid "twinpictures, baden03"
+msgstr "twinpictures, baden03"
+
+msgid "http://twinpictures.de/"
+msgstr "http://twinpictures.de/"

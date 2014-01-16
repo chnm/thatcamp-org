@@ -661,11 +661,12 @@ class blcLinkQuery {
 		foreach ($filters as $filter => $data){
 			if ( !empty($data['hidden']) ) continue; //skip hidden filters
 															
-			$class = $number_class = '';
+			$class = '';
+			$number_class = 'filter-' . $filter . '-link-count';
 			
 			if ( $current == $filter ) {
 				$class = 'class="current"';
-				$number_class = 'current-link-count';	
+				$number_class .= ' current-link-count';
 			}
 			
 			$items[] = "<li><a href='tools.php?page=view-broken-links&filter_id=$filter' {$class}>
@@ -715,6 +716,10 @@ class blcLinkQuery {
 	 * @return array Associative array of filter data and the results of its execution.
 	 */
 	function exec_filter($filter_id, $page = 1, $per_page = 30, $fallback = 'broken', $orderby = '', $order = 'asc'){
+		//The only valid sort directions are 'asc' and 'desc'.
+		if ( !in_array($order, array('asc', 'desc')) ) {
+			$order = 'asc';
+		}
 		
 		//Get the selected filter (defaults to displaying broken links)
 		$current_filter = $this->get_filter($filter_id);

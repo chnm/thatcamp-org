@@ -940,8 +940,8 @@ msgid "Sponsor's Corner"
 msgstr "Куток фундатара"
 
 #: options/panel6.php:25
-msgid "If you want to sponsor this plugin, don't hesitate to <a href='http://www.duechiacchiere.it/contatto'>contact me</a>."
-msgstr "Калі вы жадаеце праспансаваць гэту ўбудову, не саромейцеся, <a href='http://www.duechiacchiere.it/contatto'>звернецеся да мяне</a>."
+msgid "If you want to sponsor this plugin, don't hesitate to <a href='http://behstant.com/negocio/contact.php' target='_blank'>contact me</a>."
+msgstr "Калі вы жадаеце праспансаваць гэту ўбудову, не саромейцеся, <a href='http://behstant.com/negocio/contact.php' target='_blank'>звернецеся да мяне</a>."
 
 #: templates/author.php:55
 msgid "Title"

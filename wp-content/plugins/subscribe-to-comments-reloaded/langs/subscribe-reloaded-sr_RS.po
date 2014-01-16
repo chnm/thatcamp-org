@@ -939,9 +939,9 @@ msgid "Sponsor's Corner"
 msgstr "Спонзорско ћоше"
 
 #: options/panel6.php:25
-msgid "If you want to sponsor this plugin, don't hesitate to <a href='http://www.duechiacchiere.it/contatto'>contact me</a>."
+msgid "If you want to sponsor this plugin, don't hesitate to <a href='http://behstant.com/negocio/contact.php' target='_blank'>contact me</a>."
 msgstr ""
-"Ако желите да будете спонзор овог додатка, слободно ме <a href='http://www.duechiacchiere.it/contatto'>контактирајте</a>.<br />\n"
+"Ако желите да будете спонзор овог додатка, слободно ме <a href='http://behstant.com/negocio/contact.php' target='_blank'>контактирајте</a>.<br />\n"
 "Аутор српског превода: Александар  Снегић - <a href=\"http://sneg.iz.rs\">СнегФотографија</a>"
 
 #: templates/author.php:55

@@ -1087,8 +1087,8 @@ msgid "Sponsor's Corner"
 msgstr "Cantinho dos Patrocinadores"
 
 #: options/panel6.php:25
-msgid "If you want to sponsor this plugin, don't hesitate to <a href='http://www.duechiacchiere.it/contatto'>contact me</a>."
-msgstr "Se você quiser patrocinar esse plugin, não hesite em <a href='http://www.duechiacchiere.it/contatto'>entrar em contato</a>."
+msgid "If you want to sponsor this plugin, don't hesitate to <a href='http://behstant.com/negocio/contact.php' target='_blank'>contact me</a>."
+msgstr "Se você quiser patrocinar esse plugin, não hesite em <a href='http://behstant.com/negocio/contact.php' target='_blank'>entrar em contato</a>."
 
 # @ subscribe-reloaded
 #: templates/author.php:55

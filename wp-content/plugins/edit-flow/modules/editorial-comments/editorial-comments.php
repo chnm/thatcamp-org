@@ -161,6 +161,7 @@ class EF_Editorial_Comments extends EF_Module
 							array(
 								'type' => self::comment_type,
 								'callback' => array($this, 'the_comment'),
+								'end-callback' => '__return_false'
 							), 
 							$editorial_comments
 						);
@@ -189,7 +190,7 @@ class EF_Editorial_Comments extends EF_Module
 		global $post;
 		
 		?>
-		<a href="#" id="ef-comment_respond" onclick="editorialCommentReply.open();return false;" class="button-primary alignright hide-if-no-js" title=" <?php _e( 'Respond to this post', 'edit-flow' ); ?>"><span><?php _e( 'Respond to this Post', 'edit-flow' ); ?></span></a>
+		<a href="#" id="ef-comment_respond" onclick="editorialCommentReply.open();return false;" class="button-primary alignright hide-if-no-js" title=" <?php _e( 'Respond to this post', 'edit-flow' ); ?>"><span><?php _e( 'Respond to this post', 'edit-flow' ); ?></span></a>
 		
 		<!-- Reply form, hidden until reply clicked by user -->
 		<div id="ef-replyrow" style="display: none;">

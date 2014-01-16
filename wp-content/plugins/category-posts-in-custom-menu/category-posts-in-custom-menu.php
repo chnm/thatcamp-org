@@ -3,7 +3,7 @@
     Plugin Name: Category Posts in Custom Menu
     Plugin URI: http://blog.dianakoenraadt.nl
     Description: This plugin replaces selected Category links / Post Tag links / Custom taxonomy links in a Custom Menu by a list of their posts/pages.
-    Version: 0.9
+    Version: 0.9.1
     Author: Diana Koenraadt
     Author URI: http://www.dianakoenraadt.nl
     License: GPL2
@@ -31,12 +31,6 @@ new CPCM_Manager;
 
 class CPCM_Manager {
 
-	function CPCM_Manager()
-	{
-		$this->__construct();
-
-	} // function
-
 	function __construct()
 	{
 		add_action( 'admin_enqueue_scripts', array( &$this, 'cpmp_wp_admin_nav_menus_css' ) );
@@ -45,218 +39,248 @@ class CPCM_Manager {
         add_action( 'wp_update_nav_menu_item', array( &$this, 'cpcm_update_nav_menu_item' ), 1, 3 );  
 	} // function
 
-        static function cpmp_uninstall() {
-            // We're uninstalling, so delete all custom fields on nav_menu_items that the CPCM plugin added
-            $all_nav_menu_items = get_posts('numberposts=-1&post_type=nav_menu_item&post_status=any');
+	function CPCM_Manager()
+	{
+		$this->__construct();
 
-            foreach( $all_nav_menu_items as $nav_menu_item) {
-                delete_post_meta($nav_menu_item->ID, 'cpcm-unfold');
-                delete_post_meta($nav_menu_item->ID, 'cpcm-orderby');
-                delete_post_meta($nav_menu_item->ID, 'cpcm-order');
-                delete_post_meta($nav_menu_item->ID, 'cpcm-item-count');
-                delete_post_meta($nav_menu_item->ID, 'cpcm-item-titles');
-				delete_post_meta($nave_menu_item->ID, 'cpcm-remove-original-item');
-            }
-        } // function
+	} // function
+	
+	static function cpmp_uninstall() {
+		// We're uninstalling, so delete all custom fields on nav_menu_items that the CPCM plugin added
+		$all_nav_menu_items = get_posts('numberposts=-1&post_type=nav_menu_item&post_status=any');
 
-        /* 
-        * Add CSS for div.cpmp-description to nav-menus.php
-        */
-        function cpmp_wp_admin_nav_menus_css($hook){
-            // Check the hook so that the .css is only added to the .php file where we need it
-            if( 'nav-menus.php' != $hook )
-                    return;
-            wp_register_style( 'cpmp_wp_admin_nav_menus_css', plugins_url( 'cpmp_wp_admin_nav_menus.css' , __FILE__ ) );
-            wp_enqueue_style( 'cpmp_wp_admin_nav_menus_css' );
-        } // function
+		foreach( $all_nav_menu_items as $nav_menu_item) {
+			delete_post_meta($nav_menu_item->ID, 'cpcm-unfold');
+			delete_post_meta($nav_menu_item->ID, 'cpcm-orderby');
+			delete_post_meta($nav_menu_item->ID, 'cpcm-order');
+			delete_post_meta($nav_menu_item->ID, 'cpcm-item-count');
+			delete_post_meta($nav_menu_item->ID, 'cpcm-item-titles');
+			delete_post_meta($nave_menu_item->ID, 'cpcm-remove-original-item');
+		}
+	} // function
 
-        /*
-        * Extend Walker_Nav_Menu_Edit and use the extended class (CPCM_Walker_Nav_Menu_Edit) to add controls to nav-menus.php, 
-        * specifically a div is added with class="cpmp-description". Everything else in this extended class is unchanged with 
-        * respect to the parent class.
-        *
-        * Note that this extension of Walker_Nav_Menu_Edit is required because there are no hooks in its start_el method.
-        * If hooks are provided in later versions of wordpress, the plugin needs to be updated to use these hooks, that would be 
-        * much better.
-        */
-        function cpcm_edit_nav_menu_walker( $walker_name, $menu_id ) {
-            if ( class_exists ( 'CPCM_Walker_Nav_Menu_Edit' ) ) {
-                    return 'CPCM_Walker_Nav_Menu_Edit';
-            }
-            return 'Walker_Nav_Menu_Edit';
-        } // function
+	/* 
+	* Add CSS for div.cpmp-description to nav-menus.php
+	*/
+	function cpmp_wp_admin_nav_menus_css($hook){
+		// Check the hook so that the .css is only added to the .php file where we need it
+		if( 'nav-menus.php' != $hook )
+				return;
+		wp_register_style( 'cpmp_wp_admin_nav_menus_css', plugins_url( 'cpmp_wp_admin_nav_menus.css' , __FILE__ ) );
+		wp_enqueue_style( 'cpmp_wp_admin_nav_menus_css' );
+	} // function
 
-		function replace_placeholders( $post, $string )
-		{
-			$custom_field_keys = get_post_custom_keys($post->ID);
-			foreach ( (array)$custom_field_keys as $key => $value ) {
-				$valuet = trim($value);
-				if ( '_' == $valuet{0} )
-				continue;
-				$meta = get_post_meta($post->ID, $valuet, true);
-				$valuet_str = str_replace(' ', '_', $valuet);
-				// Check if post_myfield occurs
-				if (substr_count($string, "%post_" . $valuet_str) > 0)
+	/*
+	* Extend Walker_Nav_Menu_Edit and use the extended class (CPCM_Walker_Nav_Menu_Edit) to add controls to nav-menus.php, 
+	* specifically a div is added with class="cpmp-description". Everything else in this extended class is unchanged with 
+	* respect to the parent class.
+	*
+	* Note that this extension of Walker_Nav_Menu_Edit is required because there are no hooks in its start_el method.
+	* If hooks are provided in later versions of wordpress, the plugin needs to be updated to use these hooks, that would be 
+	* much better.
+	*/
+	function cpcm_edit_nav_menu_walker( $walker_name, $menu_id ) {
+		if ( class_exists ( 'CPCM_Walker_Nav_Menu_Edit' ) ) {
+				return 'CPCM_Walker_Nav_Menu_Edit';
+		}
+		return 'Walker_Nav_Menu_Edit';
+	} // function
+
+	function replace_placeholders( $post, $string )
+	{
+		$custom_field_keys = get_post_custom_keys($post->ID);
+		foreach ( (array)$custom_field_keys as $key => $value ) {
+			$valuet = trim($value);
+			if ( '_' == $valuet{0} )
+			continue;
+			$meta = get_post_meta($post->ID, $valuet, true);
+			$valuet_str = str_replace(' ', '_', $valuet);
+			// Check if post_myfield occurs
+			if (substr_count($string, "%post_" . $valuet_str) > 0)
+			{
+				if (is_string($meta))
 				{
-					if (is_string($meta))
-					{
-						$string = str_replace( "%post_" . $valuet_str, $meta, $string);
-					}
+					$string = str_replace( "%post_" . $valuet_str, $meta, $string);
 				}
 			}
-			
-			$userdata = get_userdata($post->post_author);
-			$string = str_replace( "%post_author", 	$userdata ? $userdata->data->display_name : '', $string);
-
-			$featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-			$string = str_replace( "%post_feat_image", 	$featured_image, $string);
-
-			$string = str_replace( "%post_title", 	$post->post_title, 	$string);
-			$string = str_replace( "%post_excerpt", 	$post->post_excerpt, 	$string);
-			$string = str_replace( "%post_url", 	get_permalink($post->ID), 	$string);
-
-			$post_date_gmt = $post->post_date_gmt;
-			$string = preg_replace("/\%post_date_gmt\(\)/", mysql2date('F jS, Y', $post_date_gmt), $string);
-			$string = preg_replace("/\%post_date_gmt\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_date_gmt')", $string);
-			$string = str_replace( "%post_date_gmt", 	$post_date_gmt, 	$string);
-
-			$post_date = $post->post_date;
-			$string = preg_replace("/\%post_date\(\)/", mysql2date('F jS, Y', $post_date), $string);
-			$string = preg_replace("/\%post_date\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_date')", $string);
-			$string = str_replace( "%post_date", 	$post_date, 	$string);
-
-			$string = str_replace( "%post_status", 	$post->post_status, 	$string);
-
-			$post_modified_gmt = $post->post_modified_gmt;
-			$string = preg_replace("/\%post_modified_gmt\(\)/", mysql2date('F jS, Y', $post_modified_gmt), $string);
-			$string = preg_replace("/\%post_modified_gmt\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_modified_gmt')", $string);
-			$string = str_replace( "%post_modified_gmt", 	$post_modified_gmt, 	$string);
-
-			$post_modified = $post->post_modified;
-			$string = preg_replace("/\%post_modified\(\)/", mysql2date('F jS, Y', $post_modified), $string);
-			$string = preg_replace("/\%post_modified\(([a-zA-Z\s\\\\:,]*)\)/e", "mysql2date('$1', '$post_modified')", $string);
-			$string = str_replace( "%post_modified", 	$post_modified, 	$string);
-
-			$string = str_replace( "%post_comment_count", 	$post->comment_count, 	$string);
-			
-			// Remove remaining %post_ occurrences.
-			$pattern = "/" . "((\((?P<lbrack>(\S*))))?" . "\%post_\w+(?P<brackets>(\(((?P<inner>[^\(\)]*)|(?P>brackets))\)))" . "(((?P<rbrack>(\S*))\)))?" . "/";
-			$string = preg_replace($pattern, '', $string);
-			
-			$pattern = "/%post_\w+(?P<brackets>(\(((?P<inner>[^\(\)]*)|(?P>brackets))\)))?/";
-			$string = preg_replace($pattern, '', $string);			
-			
-			$pattern = "/%post_\w+(\(\w*\))?/"; 
-			$string = preg_replace($pattern, '', $string);
-			
-			return $string;
 		}
 		
-        /* 
-        * Build the menu structure for display: Augment taxonomies (category, tags or custom taxonomies) that have been marked as such, by their posts. Optionally: remove original menu item.
-        */
-        function cpcm_replace_taxonomy_by_posts( $sorted_menu_items, $args ) {
-	        $result = array();    
-	        $inc = 0;
-	        foreach ( (array) $sorted_menu_items as $key => $menu_item ) {
-                // Augment taxonomy object with a list of its posts: Append posts to $result
-                // Optional: Remove the taxonomy object/original menu item itself.
-                if ( $menu_item->type == 'taxonomy' && (get_post_meta($menu_item->db_id, "cpcm-unfold", true) == '1')) {					
-					$query_arr = array();
+		$userdata = get_userdata($post->post_author);
+		$string = str_replace( "%post_author", 	$userdata ? $userdata->data->display_name : '', $string);
 
-					$query_arr['tax_query'] = array(array('taxonomy'=>$menu_item->object,
-					'field'=>'id',
-					'terms'=>$menu_item->object_id
-					));
+		$thumb_image = wp_get_attachment_thumb_url( get_post_thumbnail_id($post->ID) );
+		$string = str_replace( "%post_feat_image_thumb", 	$thumb_image, $string);
+		$featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+		$string = str_replace( "%post_feat_image", 	$featured_image, $string);
 
-					// If cpcm-unfold is true, the following custom fields exist:
-					$query_arr['order'] = get_post_meta($menu_item->db_id, "cpcm-order", true);
-					$query_arr['orderby'] = get_post_meta($menu_item->db_id, "cpcm-orderby", true);
-					$query_arr['numberposts'] = get_post_meta($menu_item->db_id, "cpcm-item-count", true); // default value of -1 returns all posts
+		$string = str_replace( "%post_title", 	$post->post_title, 	$string);
+		$string = str_replace( "%post_excerpt", 	$post->post_excerpt, 	$string);
+		$string = str_replace( "%post_url", 	get_permalink($post->ID), 	$string);
 
-					// Support for custom post types
-					$tag = get_taxonomy($menu_item->object);
-					$query_arr['post_type'] = $tag->object_type;
+		$post_date_gmt = $post->post_date_gmt;
+		$string = preg_replace("/\%post_date_gmt\(\)/", mysql2date('F jS, Y', $post_date_gmt), $string);		
+		// PHP 5.5 compatible, use preg_replace_callback instead of preg_replace
+		// http://wordpress.org/support/topic/php-55-preg_replace-e-modifier-depricated?replies=1
+		$callback = 
+			function ($matches) use ($post_date_gmt)
+			{
+				return mysql2date($matches[1], $post_date_gmt);
+			};	
+		$string = preg_replace_callback("/\%post_date_gmt\(([a-zA-Z\s\\\\:,]*)\)/", $callback, $string);
+		$string = str_replace( "%post_date_gmt", 	$post_date_gmt, 	$string);
 
-					$posts = get_posts( $query_arr );
-					
-					// Decide whether the original item needs to be preserved.
-					$remove_original_item = get_post_meta($menu_item->db_id, "cpcm-remove-original-item", true);
-					$menu_item_parent = $menu_item->menu_item_parent;
-					switch ($remove_original_item) {
-						case "always":
+		$post_date = $post->post_date;
+		$string = preg_replace("/\%post_date\(\)/", mysql2date('F jS, Y', $post_date), $string);	
+		$callback = 
+			function ($matches) use ($post_date)
+			{
+				return mysql2date($matches[1], $post_date);
+			};
+		$string = preg_replace_callback("/\%post_date\(([a-zA-Z\s\\\\:,]*)\)/", $callback, $string);
+		$string = str_replace( "%post_date", 	$post_date, 	$string);
+
+		$string = str_replace( "%post_status", 	$post->post_status, 	$string);
+
+		$post_modified_gmt = $post->post_modified_gmt;
+		$string = preg_replace("/\%post_modified_gmt\(\)/", mysql2date('F jS, Y', $post_modified_gmt), $string);	
+		$callback = 
+			function ($matches) use ($post_modified_gmt)
+			{
+				return mysql2date($matches[1], $post_modified_gmt);
+			};
+		$string = preg_replace_callback("/\%post_modified_gmt\(([a-zA-Z\s\\\\:,]*)\)/", $callback, $string);
+		$string = str_replace( "%post_modified_gmt", 	$post_modified_gmt, 	$string);
+
+		$post_modified = $post->post_modified;
+		$string = preg_replace("/\%post_modified\(\)/", mysql2date('F jS, Y', $post_modified), $string);
+		$callback = 
+			function ($matches) use ($post_modified)
+			{
+				return mysql2date($matches[1], $post_modified);
+			};
+		$string = preg_replace_callback("/\%post_modified\(([a-zA-Z\s\\\\:,]*)\)/", $callback, $string);
+		$string = str_replace( "%post_modified", 	$post_modified, 	$string);
+
+		$string = str_replace( "%post_comment_count", 	$post->comment_count, 	$string);
+		
+		// Remove remaining %post_ occurrences.
+		$pattern = "/" . "((\((?P<lbrack>(\S*))))?" . "\%post_\w+(?P<brackets>(\(((?P<inner>[^\(\)]*)|(?P>brackets))\)))" . "(((?P<rbrack>(\S*))\)))?" . "/";
+		$string = preg_replace($pattern, '', $string);
+		
+		$pattern = "/%post_\w+(?P<brackets>(\(((?P<inner>[^\(\)]*)|(?P>brackets))\)))?/";
+		$string = preg_replace($pattern, '', $string);			
+		
+		$pattern = "/%post_\w+(\(\w*\))?/"; 
+		$string = preg_replace($pattern, '', $string);
+		
+		return $string;
+	}
+	
+	/* 
+	* Build the menu structure for display: Augment taxonomies (category, tags or custom taxonomies) that have been marked as such, by their posts. Optionally: remove original menu item.
+	*/
+	function cpcm_replace_taxonomy_by_posts( $sorted_menu_items, $args ) {
+		$result = array();    
+		$inc = 0;
+		foreach ( (array) $sorted_menu_items as $key => $menu_item ) {
+			// Augment taxonomy object with a list of its posts: Append posts to $result
+			// Optional: Remove the taxonomy object/original menu item itself.
+			if ( $menu_item->type == 'taxonomy' && (get_post_meta($menu_item->db_id, "cpcm-unfold", true) == '1')) {					
+				$query_arr = array();
+
+				$query_arr['tax_query'] = array(array('taxonomy'=>$menu_item->object,
+				'field'=>'id',
+				'terms'=>$menu_item->object_id
+				));
+
+				// If cpcm-unfold is true, the following custom fields exist:
+				$query_arr['order'] = get_post_meta($menu_item->db_id, "cpcm-order", true);
+				$query_arr['orderby'] = get_post_meta($menu_item->db_id, "cpcm-orderby", true);
+				$query_arr['numberposts'] = get_post_meta($menu_item->db_id, "cpcm-item-count", true); // default value of -1 returns all posts
+
+				// Support for custom post types
+				$tag = get_taxonomy($menu_item->object);
+				$query_arr['post_type'] = $tag->object_type;
+
+				$posts = get_posts( $query_arr );
+				
+				// Decide whether the original item needs to be preserved.
+				$remove_original_item = get_post_meta($menu_item->db_id, "cpcm-remove-original-item", true);
+				$menu_item_parent = $menu_item->menu_item_parent;
+				switch ($remove_original_item) {
+					case "always":
+						$inc += -1;
+						break;
+					case "only if empty":
+						if (empty($posts))
+						{
 							$inc += -1;
-							break;
-						case "only if empty":
-							if (empty($posts))
-							{
-								$inc += -1;
-							}
-							else 
-							{
-								array_push($result,$menu_item);
-								$menu_item_parent = $menu_item->db_id;
-							}
-							break;
-						case "never":
+						}
+						else 
+						{
 							array_push($result,$menu_item);
 							$menu_item_parent = $menu_item->db_id;
-							break;
-					}
-
-					foreach( (array) $posts as $pkey => $post ) {
-						// Decorate the posts with the required data for a menu-item.
-						$post = wp_setup_nav_menu_item( $post );
-						$post->menu_item_parent = $menu_item_parent; // Set to parent of taxonomy item.
-
-						// Transfer properties from the old menu item to the new one
-						$post->target = $menu_item->target;
-						//$post->classes = $menu_item->classes; // Don't copy the classes, because this will also copy the 'active' CSS class too all siblings of the selected menu item.
-						$post->xfn = $menu_item->xfn;
-						$post->description = $menu_item->description;
-
-						// Set the title of the new menu item
-						$post->title = get_post_meta($menu_item->db_id, "cpcm-item-titles", true);
-
-						// Replace the placeholders in the title by the properties of the post
-						$post->title = $this->replace_placeholders($post, $post->title);
-
-						$inc += 1;
-					}
-					// Extend the items with classes.
-					_wp_menu_item_classes_by_context( $posts );
-					// Append the new menu_items to the menu array that we're building.
-					$result = array_merge( $result, $posts );
-				} else {
-					// Treat other objects as usual, but note that the position 
-					// of elements in the array changes.
-					$result[$menu_item->menu_order + $inc] = $menu_item;
+						}
+						break;
+					case "never":
+						array_push($result,$menu_item);
+						$menu_item_parent = $menu_item->db_id;
+						break;
 				}
-            }
 
-            unset( $sorted_menu_items );
-            return $result;
-        } // function
+				foreach( (array) $posts as $pkey => $post ) {
+					// Decorate the posts with the required data for a menu-item.
+					$post = wp_setup_nav_menu_item( $post );
+					$post->menu_item_parent = $menu_item_parent; // Set to parent of taxonomy item.
 
-        /*
-        * Store the entered data in nav-menus.php by inspecting the $_POST variable again.
-        */
-        function cpcm_update_nav_menu_item( $menu_id = 0, $menu_item_db_id = 0, $menu_item_data = array() ) {
-            // Only inspect the values if the $_POST variable contains data (the wp_update_nav_menu_item filter is applied in three other places, without a $_POST action)
-            if ( ! empty( $_POST['menu-item-db-id'] ) ) {
-                update_post_meta( $menu_item_db_id, 'cpcm-unfold', (!empty( $_POST['menu-item-cpcm-unfold'][$menu_item_db_id]) ) );
-                update_post_meta( $menu_item_db_id, 'cpcm-orderby', (empty( $_POST['menu-item-cpcm-orderby'][$menu_item_db_id]) ? "none" : $_POST['menu-item-cpcm-orderby'][$menu_item_db_id]) );
-                update_post_meta( $menu_item_db_id, 'cpcm-order', (empty( $_POST['menu-item-cpcm-order'][$menu_item_db_id]) ? "DESC" : $_POST['menu-item-cpcm-order'][$menu_item_db_id]) );
-                update_post_meta( $menu_item_db_id, 'cpcm-item-count', (int) (empty( $_POST['menu-item-cpcm-item-count'][$menu_item_db_id]) ? "-1" : $_POST['menu-item-cpcm-item-count'][$menu_item_db_id]) );
-                update_post_meta( $menu_item_db_id, 'cpcm-item-titles', (empty( $_POST['menu-item-cpcm-item-titles'][$menu_item_db_id]) ? "%post_title" : $_POST['menu-item-cpcm-item-titles'][$menu_item_db_id]) );
-                update_post_meta( $menu_item_db_id, 'cpcm-remove-original-item', (empty( $_POST['menu-item-cpcm-remove-original-item'][$menu_item_db_id]) ? "always" : $_POST['menu-item-cpcm-remove-original-item'][$menu_item_db_id]) );
-            } // if 
-        } // function
+					// Transfer properties from the old menu item to the new one
+					$post->target = $menu_item->target;
+					//$post->classes = $menu_item->classes; // Don't copy the classes, because this will also copy the 'active' CSS class too all siblings of the selected menu item.
+					$post->xfn = $menu_item->xfn;
+					$post->description = $menu_item->description;
+
+					// Set the title of the new menu item
+					$post->title = get_post_meta($menu_item->db_id, "cpcm-item-titles", true);
+
+					// Replace the placeholders in the title by the properties of the post
+					$post->title = $this->replace_placeholders($post, $post->title);
+
+					$inc += 1;
+				}
+				// Extend the items with classes.
+				_wp_menu_item_classes_by_context( $posts );
+				// Append the new menu_items to the menu array that we're building.
+				$result = array_merge( $result, $posts );
+			} else {
+				// Treat other objects as usual, but note that the position 
+				// of elements in the array changes.
+				$result[$menu_item->menu_order + $inc] = $menu_item;
+			}
+		}
+
+		unset( $sorted_menu_items );
+		return $result;
+	} // function
+
+	/*
+	* Store the entered data in nav-menus.php by inspecting the $_POST variable again.
+	*/
+	function cpcm_update_nav_menu_item( $menu_id = 0, $menu_item_db_id = 0, $menu_item_data = array() ) {
+		// Only inspect the values if the $_POST variable contains data (the wp_update_nav_menu_item filter is applied in three other places, without a $_POST action)
+		if ( ! empty( $_POST['menu-item-db-id'] ) ) {
+			update_post_meta( $menu_item_db_id, 'cpcm-unfold', (!empty( $_POST['menu-item-cpcm-unfold'][$menu_item_db_id]) ) );
+			update_post_meta( $menu_item_db_id, 'cpcm-orderby', (empty( $_POST['menu-item-cpcm-orderby'][$menu_item_db_id]) ? "none" : $_POST['menu-item-cpcm-orderby'][$menu_item_db_id]) );
+			update_post_meta( $menu_item_db_id, 'cpcm-order', (empty( $_POST['menu-item-cpcm-order'][$menu_item_db_id]) ? "DESC" : $_POST['menu-item-cpcm-order'][$menu_item_db_id]) );
+			update_post_meta( $menu_item_db_id, 'cpcm-item-count', (int) (empty( $_POST['menu-item-cpcm-item-count'][$menu_item_db_id]) ? "-1" : $_POST['menu-item-cpcm-item-count'][$menu_item_db_id]) );
+			update_post_meta( $menu_item_db_id, 'cpcm-item-titles', (empty( $_POST['menu-item-cpcm-item-titles'][$menu_item_db_id]) ? "%post_title" : $_POST['menu-item-cpcm-item-titles'][$menu_item_db_id]) );
+			update_post_meta( $menu_item_db_id, 'cpcm-remove-original-item', (empty( $_POST['menu-item-cpcm-remove-original-item'][$menu_item_db_id]) ? "always" : $_POST['menu-item-cpcm-remove-original-item'][$menu_item_db_id]) );
+		} // if 
+	} // function
 
 } // class
 
 class CPCM_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit  {
-	function start_el(&$output, $item, $depth, $args) {
+	function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
         global $_wp_nav_menu_max_depth;
 		$_wp_nav_menu_max_depth = $depth > $_wp_nav_menu_max_depth ? $depth : $_wp_nav_menu_max_depth;
 

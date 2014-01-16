@@ -53,7 +53,14 @@ class EF_Settings extends EF_Module {
 	function action_admin_menu() {
 		global $edit_flow;
 		
-		add_menu_page( $this->module->title, $this->module->title, 'manage_options', $this->module->settings_slug, array( $this, 'settings_page_controller' ), $this->module->module_url . 'lib/eflogo_s16.png' ) ;
+		// Select Edit Flow icon
+		if ( defined( 'MP6' ) ) :
+			$ef_logo = 'lib/eflogo_s32b.png';
+		else :
+			$ef_logo = 'lib/eflogo_s32.png';
+		endif;
+		
+		add_menu_page( $this->module->title, $this->module->title, 'manage_options', $this->module->settings_slug, array( $this, 'settings_page_controller' ), $this->module->module_url . $ef_logo ) ;
 		
 		foreach ( $edit_flow->modules as $mod_name => $mod_data ) {
 			if ( isset( $mod_data->options->enabled ) && $mod_data->options->enabled == 'on'
@@ -250,7 +257,10 @@ class EF_Settings extends EF_Module {
 					echo '<img src="' . esc_url( $mod_data->img_url ) . '" height="24px" width="24px" class="float-right module-icon" />';
 				echo '<form method="get" action="' . get_admin_url( null, 'options.php' ) . '">';
 				echo '<h4>' . esc_html( $mod_data->title ) . '</h4>';
-				echo '<p>' . esc_html( $mod_data->short_description ) . '</p>';
+				if ( 'on' == $mod_data->options->enabled )
+					echo '<p>' . wp_kses($mod_data->short_description, 'a') . '</p>';
+				else
+					echo '<p>' . strip_tags( $mod_data->short_description ) . '</p>';
 				echo '<p class="edit-flow-module-actions">';
 				if ( $mod_data->configure_page_cb ) {
 					$configure_url = add_query_arg( 'page', $mod_data->settings_slug, get_admin_url( null, 'admin.php' ) );
@@ -312,7 +322,7 @@ class EF_Settings extends EF_Module {
 				$all_post_types[$custom_post_type] = $args->label;
 			}
 		}
-		
+
 		foreach( $all_post_types as $post_type => $title ) {
 			echo '<label for="' . esc_attr( $post_type ) . '">';
 			echo '<input id="' . esc_attr( $post_type ) . '" name="'
@@ -363,7 +373,7 @@ class EF_Settings extends EF_Module {
 		
 		// Redirect back to the settings page that was submitted without any previous messages
 		$goback = add_query_arg( 'message', 'settings-updated',  remove_query_arg( array( 'message'), wp_get_referer() ) );
-		wp_redirect( $goback );
+		wp_safe_redirect( $goback );
 		exit;	
 
 	}

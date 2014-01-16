@@ -1,9 +1,16 @@
 <script type='text/javascript'>
 
-function alterLinkCounter(factor){
-    var cnt = parseInt(jQuery('.current-link-count').eq(0).html());
+function alterLinkCounter(factor, filterId){
+	var counter;
+	if (filterId) {
+		counter = jQuery('.filter-' + filterId + '-link-count');
+	} else {
+		counter = jQuery('.current-link-count');
+	}
+
+    var cnt = parseInt(counter.eq(0).html(), 10);
     cnt = cnt + factor;
-    jQuery('.current-link-count').html(cnt);
+    counter.html(cnt);
     
 	if ( blc_is_broken_filter ){
 		//Update the broken link count displayed beside the "Broken Links" menu
@@ -141,6 +148,7 @@ jQuery(function($){
 					//Update the elements displaying the number of results for the current filter.
 					if( should_hide_link ){
 						alterLinkCounter(-1);
+						alterLinkCounter(1, 'dismissed');
 					}
 				} else {
 					me.html(oldButtonHtml);
@@ -629,7 +637,11 @@ jQuery(function($){
 	$('#blc-delete-filter').click(function(){
 		var message = '<?php
 		echo esc_js(
-			__("You are about to delete the current filter.\n'Cancel' to stop, 'OK' to delete", 'broken-link-checker')
+			html_entity_decode(
+				__("You are about to delete the current filter.\n'Cancel' to stop, 'OK' to delete", 'broken-link-checker'),
+				ENT_QUOTES | ENT_HTML401,
+				get_bloginfo('charset')
+			)
 		);
 		?>';
 		return confirm(message);
@@ -649,7 +661,11 @@ jQuery(function($){
     		//Convey the gravitas of deleting link sources.
     		message = '<?php
 				echo esc_js(  
-					__("Are you sure you want to delete all posts, bookmarks or other items that contain any of the selected links? This action can't be undone.\n'Cancel' to stop, 'OK' to delete", 'broken-link-checker')
+					html_entity_decode(
+						__("Are you sure you want to delete all posts, bookmarks or other items that contain any of the selected links? This action can't be undone.\n'Cancel' to stop, 'OK' to delete", 'broken-link-checker'),
+						ENT_QUOTES | ENT_HTML401,
+						get_bloginfo('charset')
+					)
 				); 
 			?>'; 
 			if ( !confirm(message) ){
@@ -659,7 +675,11 @@ jQuery(function($){
 			//Likewise for unlinking.
 			message = '<?php
 				echo esc_js(  
-					__("Are you sure you want to remove the selected links? This action can't be undone.\n'Cancel' to stop, 'OK' to remove", 'broken-link-checker')
+					html_entity_decode(
+						__("Are you sure you want to remove the selected links? This action can't be undone.\n'Cancel' to stop, 'OK' to remove", 'broken-link-checker'),
+						ENT_QUOTES | ENT_HTML401,
+						get_bloginfo('charset')
+					)
 				); 
 			?>'; 
 			if ( !confirm(message) ){

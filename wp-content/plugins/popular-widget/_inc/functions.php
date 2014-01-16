@@ -24,6 +24,7 @@
 			add_action( 'admin_print_styles',array( &$this,'load_admin_styles' ) );
 			add_action( 'wp_enqueue_scripts',array( &$this,'load_scripts_styles' ) );
 			add_action( 'wp_ajax_popwid_page_view_count', array( &$this,'set_post_view'));
+			add_action( 'wp_ajax_nopriv_popwid_page_view_count', array( &$this,'set_post_view'));
 		 }
 		 
 		 /**

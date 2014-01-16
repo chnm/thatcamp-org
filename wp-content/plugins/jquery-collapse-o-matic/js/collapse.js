@@ -1,5 +1,5 @@
 /*!
- * Collapse-O-Matic v1.5.4
+ * Collapse-O-Matic v1.5.7
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2013, Twinpictures
@@ -315,7 +315,7 @@ jQuery(document).ready(function() {
 		//toggle parent highlight class
 		var parentID = 'parent-'+id;
 		jQuery('#' + parentID).toggleClass('colomat-parent-highlight');
-			
+		
 		//check for snap-shut
 		if(!jQuery(this).hasClass('colomat-close') && jQuery(this).hasClass('snap-shut')){
 			jQuery('#target-'+id).hide();
