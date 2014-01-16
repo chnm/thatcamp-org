@@ -9,7 +9,7 @@ class THATCamp_Network_Posts extends WP_Widget {
 			'thatcamp_network_posts',
 			'THATCamp Post Browser',
 			array(
-				'description' => 'A category browser for posts from across the THATCamp network.',
+				'description' => 'A browser for posts with default categories from across the THATCamp network.',
 			)
 		);
 	}
@@ -31,7 +31,7 @@ class THATCamp_Network_Posts extends WP_Widget {
 
 		switch_to_blog( $tags_blog_id );
 
-		$title = 'Browse THATCamp Posts';
+		$title = 'THATCamp Default Categories';
 		$c = ! empty( $instance['count'] ) ? '1' : '0';
 		$h = ! empty( $instance['hierarchical'] ) ? '1' : '0';
 		$d = ! empty( $instance['dropdown'] ) ? '1' : '0';
