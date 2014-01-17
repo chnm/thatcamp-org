@@ -29,7 +29,7 @@ function thatcamp_registrations_fields( $type = 'limited' ) {
 			'id'          => 'description',
 			'name'        => __( 'Biography', 'thatcamp-registrations' ),
 			'required'    => true,
-			'explanation' => __( 'Tell us a little about yourself: your background with the humanities and/or technology, your research or professional interests, your opinion of Nicholas Carr or Slavoj Žižek, your best score at Galaga, and so forth.', 'thatcamp-registrations' ),
+			'explanation' => __( 'Tell us a little about yourself.', 'thatcamp-registrations' ),
 			'type'        => 'textarea',
 			'public'      => true,
 		),
