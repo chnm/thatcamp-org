@@ -1,0 +1,43 @@
+# Exclude user generated content, but leave placeholders so that the directories remain
+wp-content/blogs.dir/*
+wp-content/uploads/*
+!wp-content/blogs.dir/README
+!wp-content/uploads/README
+
+# Exclude environment files, config files, and htaccess in root
+.htaccess
+apc.php
+env-sample.php 
+env.php
+wp-app.php
+wp-config-sample.php
+wp-config.php
+
+# Exclude cache and other files in /wp-content 
+wp-content/cache/*
+wp-content/advanced-cache.php
+wp-content/sunrise.php
+wp-content/wp-cache-config.php
+
+# Exclude debug logs (which shouldn't be saved in web-accessible directories anyway)
+error_log
+php_error.log
+PHP_errors.log
+wp-admin/error_log
+wp-content/debug.log
+
+# Misc exclusions
+;
+*.bak
+*.sql
+.svn
+.DS_store
+.DS_Store
+*.php.orig
+.svn
+*.swp
+*.log
+robots.txt
+/docs
+
+
