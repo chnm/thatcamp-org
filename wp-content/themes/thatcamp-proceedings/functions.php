@@ -2,25 +2,27 @@
 
 if ( function_exists('register_sidebar') ) :
 
-    register_sidebar(array(
-        'name' => 'Footer',
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '<div class="title">',
-        'after_title' => '</div>',
-    ));
-
 	register_sidebar(
 		array(
-			'name'          => __( 'Sidebar Stream', 'thatcamp'),
-			'id'            => 'sidebar-stream',
-			'description'   => 'Sidebar Stream',
+			'name'          => __( 'Sidebar', 'thatcamp'),
+			'id'            => 'sidebar',
+			'description'   => 'Sidebar',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widgettitle">',
 			'after_title' => '</h3>'
 		)
 	);
+		
+	register_sidebar(array(
+        		'name' => 'Footer',
+	        	'before_widget' => '',
+        		'after_widget' => '',
+	          'before_title' => '<div class="title">',
+	          'after_title' => '</div>',
+    		)
+	 );
+	
 endif;
 
 // Require our widget file

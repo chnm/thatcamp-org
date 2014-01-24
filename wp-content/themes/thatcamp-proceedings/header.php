@@ -49,11 +49,6 @@ jQuery(document).ready(function($) {
         <?php get_search_form(); ?>
 
         <nav>
-            <ul class="social">
-                <li><a href="http://feeds.feedburner.com/thatcamp/proceedings" class="RSS">Subscribe to the RSS</a></li>
-                <li><a href="http://feedburner.google.com/fb/a/mailverify?uri=thatcamp/proceedings" class="email">Subscribe by email</a></li>
-            </ul>
-
             <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container_class' => 'tabs' ) ); ?>
         </nav>
 
