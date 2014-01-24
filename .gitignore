@@ -39,5 +39,6 @@ wp-content/debug.log
 *.log
 robots.txt
 /docs
+/wp-content/plugins/si-captcha-for-wordpress/captcha/cache/*
 
 
