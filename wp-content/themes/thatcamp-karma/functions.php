@@ -923,6 +923,9 @@ function thatcamp_catch_registry_form() {
 	groups_update_groupmeta( $group_id, 'thatcamp_start_date', strtotime( $_POST['thatcamp-start-date'] ) );
 	groups_update_groupmeta( $group_id, 'thatcamp_end_date', strtotime( $_POST['thatcamp-end-date'] ) );
 
+        // This is the value used for filtering in directories
+	groups_update_groupmeta( $group_id, 'thatcamp_date', strtotime( $_POST['thatcamp-start-date'] ) );
+
 	// Redirect back to the register page, with a success message
 	remove_action( 'template_redirect', 'redirect_to_mapped_domain' );
 	$redirect_to = add_query_arg( 'success', urlencode( $validate_blog['blogname'] ), wp_guess_url() );
