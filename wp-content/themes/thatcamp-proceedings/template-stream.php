@@ -38,7 +38,7 @@
 			}
 		?>
 
-                <h1>All THATCamp Posts<?php if ( $category_name ) : ?>: <?php echo esc_html( $category_name ) ?><?php endif ?></h1>
+                <h1>Recent THATCamp Posts<?php if ( $category_name ) : ?>: <?php echo esc_html( $category_name ) ?><?php endif ?></h1>
 		<?php $stream_query = new WP_Query( $stream_args ) ?>
 		<?php if ( $stream_query->have_posts() ) :
 			while ( $stream_query->have_posts() ) : $stream_query->the_post(); ?>
