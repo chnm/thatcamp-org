@@ -1,0 +1,334 @@
+label { clear: both; display: block; margin: 0.5em 0; }
+#photonic-options { border: none; background: none; }
+#photonic-options h1 { font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; font-style: italic; font-weight: normal; font-size: 1.55em; }
+
+.photonic-tabbed-options {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin-top: 15px;
+	min-width: 800px;
+	max-width: 1000px;
+	width: 100%;
+}
+
+.photonic-tabbed-options .updated {
+    padding: 0.5em;
+}
+
+.photonic-header-nav { background-color: #444; }
+h2.photonic-header-1 {
+	padding: 0 10px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: #eee;
+	text-align: left;
+	text-shadow: #666 1px 1px;
+	display: inline;
+	float: left;
+}
+div.donate { float: right; }
+form#paypal-submit { padding: 0; float: right;}
+div.donate ul { float: left; }
+div.donate ul li { float: left; margin: 0.5em 0; background: #444; border-radius: 5px; padding: 8px 5px 8px 35px; font-size: 12px; }
+div.donate ul li a { color: #eee; text-decoration: none; font-weight: bold; }
+div.donate ul li input[type="submit"] { color: #eee; background: transparent; text-decoration: none; font-weight: bold; border: none; padding: 0; cursor: pointer; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+div.donate ul li a:hover, div.donate ul li input[type="submit"]:hover { color: #6cf; }
+div.donate ul li.showcase { background: #444 url("../images/nav-bar.png") no-repeat 5px 1px; }
+div.donate ul li.support { background: #444 url("../images/nav-bar.png") no-repeat 5px -31px; }
+div.donate ul li.announcements { background: #444 url("../images/nav-bar.png") no-repeat 5px -63px; }
+div.donate ul li.coffee { background: #444 url("../images/nav-bar.png") no-repeat 5px -96px; }
+
+div.photonic-options-header-bar { text-align: center; width: 100%; display: block; border-top: 1px dotted #666; }
+ul.photonic-options-header-bar { margin: 5px auto; }
+ul.photonic-options-header-bar li { display: inline; margin: 2px 5px; padding: 5px 0; }
+ul.photonic-options-header-bar li a { text-decoration: none; font-weight: bold; line-height: 16px; }
+.photonic-options-header-bar a, .photonic-options-header-bar a:visited { color: #6cf; padding-left: 5px; }
+.photonic-options-header-bar a:hover, .photonic-options-header-bar a:active, .photonic-options-header-bar a.current-tab { color: #ff6600; }
+.photonic-options-header-bar .icon { background: transparent url("../images/nav-menu.png") no-repeat; width: 16px; height: 16px; display: inline-block; }
+#photonic-options-generic .icon { background-position: 0 0; }
+#photonic-options-flickr .icon { background-position: 0 -16px; }
+#photonic-options-picasa .icon { background-position: 0 -32px; }
+#photonic-options-500px .icon { background-position: 0 -48px; }
+#photonic-options-smugmug .icon { background-position: 0 -64px; }
+#photonic-options-instagram .icon { background-position: 0 -80px; }
+#photonic-options-zenfolio .icon { background-position: 0 -96px; }
+
+.fix:after { content:"."; display:block; height:0; clear:both; visibility:hidden; }
+.fix { display:block; }
+* html .fix { height:1%; }
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 0; }
+.ui-tabs .ui-tabs-nav li { margin-bottom: 5px; border-bottom-width: 1px !important; width: 100%; text-align: right; }
+.ui-tabs .ui-tabs-nav li a { float: right; }
+#photonic-options-form, .photonic-options-form { width: 100%; position: relative; float: right; margin-bottom: 15px; }
+.photonic-options-panel { width: 78%; float: right; margin: 0; }
+ul.ui-widget-header { background: none; border: none; }
+.ui-tabs .ui-tabs-panel { padding: 0; }
+.ui-tabs-panel h3 {
+	font-size: 1.17em;
+	background: #444;
+	color: #eee;
+	margin: 0;
+	padding: 0.5em;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-style: italic;
+}
+.ui-corner-top {
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+.ui-helper-reset { font-size: 85%; }
+.ui-tabs .ui-tabs-nav { width: 20%; float: left; position: relative; }
+
+.opt-sub-table { width: 95%; margin: 20px 10px; border-collapse: collapse; }
+.opt-sub-table-col { width: 48%; margin: 10px; }
+.opt-sub-table-5 { border-collapse: collapse; width: 98%; }
+.opt-sub-table-col-5 { width: 22%; }
+.opt-sub-table-col-51 { width: 12%; }
+
+.opt-sub-table-5 select, .opt-sub-table-5 input[type='text'] { width: 120px;}
+.form-table .opt-sub-table-5 td { padding: 5px; border-width: 1px 0 1px 0; border-style: dotted; border-color:  #555; }
+.opt-sub-table th, .opt-sub-table-5 th { border-width: 1px 0 1px 0; border-style: dotted; border-color:  #555; background: #fafafa; font-weight: bold; }
+
+td { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+.form-table { margin-top: 0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; border-bottom: 1px solid #c0c0c0; }
+.form-table th { width: 0; padding: 0; line-height: 20px; }
+.form-table td { padding: 0; line-height: 25px; }
+
+
+.photonic-button-toggler {
+	position: fixed;
+	top: 200px;
+	right: 0;
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ccc;
+	border-right: none;
+	background: #eee;
+	z-index: 10;
+}
+.photonic-button-toggler a { text-decoration: none; }
+.photonic-button-toggler span {
+	display: inline-block;
+	text-align: center;
+	width: 60px;
+	background: #444;
+	color: #eee;
+	font-weight: bold;
+	margin: 5px 0 5px 5px;
+	padding: 10px;
+	border-width: 1px;
+	border-style: solid;
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+	border-color: #222;
+	border-right: none;
+}
+.photonic-button-bar h2 a { float: right; display: inline; }
+.photonic-button-bar .photonic-button-section, .photonic-button-bar .photonic-button-section:hover { color: #00b; }
+.photonic-button-bar .photonic-button-sub-menu, .photonic-button-bar .photonic-button-sub-menu:hover { color: #090; }
+.photonic-button-bar .photonic-button-all, .photonic-button-bar .photonic-button-all:hover { color: #900; }
+.photonic-button-bar {
+	display:  none;
+	text-align: center;
+	padding: 0 0 10px 0;
+	width: 300px;
+	position: fixed;
+	top: 270px;
+	right: 5px;
+	border: 1px solid #ccc;
+	background: #fafafa;
+	border-radius: 5px;
+	z-index: 10;
+}
+
+.photonic-button-bar h2 {
+	background-color: #eee;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-style: normal;
+	font-size: 12px;
+	text-shadow: none;
+	margin-bottom: 10px;
+	color: #444;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	cursor: move;
+	margin: 0 0 10px;
+	padding: 5px;
+	display: block;
+	text-align: left;
+}
+
+.photonic-section-tabs { float: left; }
+.photonic-section {
+	display: block;
+	padding: 10px;
+	overflow: hidden;
+	clear: both;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+	background-color: #fff;
+	border-width: 0 1px;
+	border-style: solid;
+	border-color: #c0c0c0;
+}
+
+.photonic-section .photonic-section { padding-top: 0; border: none; }
+.photonic-section h3 { border-width: 1px 0; border-style: solid; border-color: #c0c0c0; }
+.photonic-section h3 { font-size: 1.4em; background: #d8d8d8; color: #333; font-style: normal; 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; padding: 0.5em; margin: -10px -10px 10px; }
+
+input[type='checkbox'], input[type='radio'] { margin-right: 1em; }
+input[type="text"].color { padding: 5px; background-image: url(../images/color_wheel.png); background-repeat: no-repeat; background-position: 95% center; }
+
+.auth-button {
+	padding: 10px 20px;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	width: 200px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	margin: 10px auto;
+	background: #eee;
+	color: #aaa;
+	border-radius: 3px;
+}
+
+.auth-done {
+	background: #def;
+}
+
+.auth-active {
+	background: #6af;
+	color: #eee;
+}
+
+.photonic-section textarea {
+	width: 90%;
+	height: 200px;
+}
+
+h3.photonic-helper-header {
+	border-width: 1px 0;
+	border-style: solid;
+	border-color: #c0c0c0;
+	font-size: 1.4em;
+	background: #d8d8d8;
+	color: #333;
+	font-style: normal;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 0.5em;
+	display: inline-block;
+	width: 100%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin-bottom: 5px;
+}
+
+.photonic-helper-box {
+	width: 48%;
+	margin: 10px 4% 10px 0;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+	float: left;
+	background: #eee;
+	background: -moz-linear-gradient(center top, #eee 20%, #fff 100%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(center top, #eee 20%, #fff 100%) repeat scroll 0 0 transparent;
+}
+
+.photonic-helper-box.right {
+	margin-right: 0;
+}
+
+.photonic-helper-box input[type="text"] {
+	width: 300px;
+	height: 2.5em;
+}
+.photonic-helper-box .photonic-helper-button {
+	display: block;
+	width: 100px;
+	padding: 8px 12px;
+	text-align: center;
+	text-decoration: none;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	background: #6af;
+	background: -moz-linear-gradient(center top, #336699 20%, #224477 100%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(center top, #336699 20%, #224477 100%) repeat scroll 0 0 transparent;
+	color: #fff;
+	border-radius: 3px;
+}
+.photonic-helper-box .photonic-helper-button:hover {
+	color: #fff;
+	cursor: pointer;
+}
+.photonic-helper-box .result {
+	/*height: 2.5em;*/
+	width: 100%;
+	display: inline-block;
+	margin: 10px 0;
+}
+.photonic-helper-box .found-id-text {
+	font-weight: bold;
+}
+.photonic-helper-box .location-fields {
+	min-width: 300px;
+	width: 90%;
+	text-align: justify;
+	-ms-text-justify: distribute;
+	text-justify: distribute;
+}
+.photonic-helper-box .location {
+	display: inline-block;
+	vertical-align: top;
+	float: none;
+	width: 30%;
+}
+.photonic-helper-box .fs-separator {
+	border-left: 1px dotted #444;
+	display: inline-block;
+	height: 2.5em;
+	width: 0;
+	margin: 2em 1em 0 0;
+}
+.photonic-helper-box .fs-separator span {
+	bottom: 1.5em;
+	right: 1em;
+	position: relative;
+	font-style: italic;
+}
+.photonic-helper-box .location-fields input {
+	width: 90%;
+}
+.photonic-waiting {
+	background: #fff;
+	opacity: 0.8;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	text-align: center;
+	display: none;
+}
+.photonic-waiting img {
+	vertical-align: middle;
+	margin-top: 300px;
+}
+.photonic-wrap {
+	width: 80%;
+	max-width: 1000px;
+	min-width: 800px;
+}
+.photonic-scroll-panel {
+	height: 200px;
+	overflow: auto;
+}
