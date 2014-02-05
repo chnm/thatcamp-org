@@ -1,11 +1,11 @@
 <?php
 /**
- * THATCamp All Posts template
+ * THATCamp Dates template
  *
  * @package thatcamp
  * @since thatcamp 1.0
  *
- * Template Name: THATCamp All Posts Template
+ * Template Name: THATCamp Dates Template
  */
 ?>
 <?php get_header(); ?>

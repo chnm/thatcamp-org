@@ -1,11 +1,11 @@
 <?php
 /**
- * THATCamp All Posts template
+ * THATCamp Authors template
  *
  * @package thatcamp
  * @since thatcamp 1.0
  *
- * Template Name: THATCamp All Posts Template
+ * Template Name: THATCamp Authors Template
  */
 ?>
 <?php get_header(); ?>
@@ -38,7 +38,7 @@
 			}
 		?>
 
-                <h1>All THATCamp Posts<?php if ( $category_name ) : ?>: <?php echo esc_html( $category_name ) ?><?php endif ?></h1>
+                <h1>THATCamp Authors by Number of Posts<?php if ( $category_name ) : ?>: <?php echo esc_html( $category_name ) ?><?php endif ?></h1>
 		<?php $stream_query = new WP_Query( $stream_args ) ?>
 		<?php if ( $stream_query->have_posts() ) :
 			while ( $stream_query->have_posts() ) : $stream_query->the_post(); ?>

@@ -31,7 +31,7 @@ class THATCamp_Network_Posts extends WP_Widget {
 
 		switch_to_blog( $tags_blog_id );
 
-		$title = 'THATCamp Default Categories';
+		$title = 'Default Categories';
 		$c = ! empty( $instance['count'] ) ? '1' : '0';
 		$h = ! empty( $instance['hierarchical'] ) ? '1' : '0';
 		$d = ! empty( $instance['dropdown'] ) ? '1' : '0';
@@ -66,7 +66,7 @@ class THATCamp_Network_Posts extends WP_Widget {
                 global $wpdb;
                 $proceedings_blog_id = $wpdb->get_var( "SELECT blog_id FROM $wpdb->blogs WHERE domain LIKE 'proceedings%'" );
 		$term_link  = trailingslashit( get_blog_option( $proceedings_blog_id, 'home' ) );
-		$term_link .= 'stream/';
+		$term_link .= 'all/';
 		$term_link  = add_query_arg( 'category', $term->slug, $term_link );
 		return $term_link;
 	}
@@ -76,6 +76,7 @@ class THATCamp_Network_Posts extends WP_Widget {
 	 */
 	function filter_get_terms( $terms, $taxonomies, $args ) {
 		$cat_whitelist = array(
+			'Administrative',
 			'Archives',
 			'Blogging',
 			'Coding',
@@ -84,6 +85,7 @@ class THATCamp_Network_Posts extends WP_Widget {
 			'Crowdsourcing',
 			'Data Mining',
 			'Digital Literacy',
+			'Diversity',
 			'Funding',
 			'Games',
 			'General',
@@ -94,20 +96,29 @@ class THATCamp_Network_Posts extends WP_Widget {
 			'Mapping',
 			'Metadata',
 			'Mobile',
+			'MOOCs',
 			'Museums',
+			'Notepads',
 			'Open Access',
 			'Project Management',
 			'Publishing',
 			'Research Methods',
 			'Scholarly Editions',
 			'Search',
+			'Session Notes',
 			'Session Proposals',
+			'Session: Make',
+			'Session: Play',
+			'Session: Talk',
+			'Session: Teach',
 			'Social Media',
 			'Teaching',
 			'Tenure and Promotion',
 			'Text Mining',
+			'Uncategorized',
 			'Visualization',
 			'Workshops',
+			'Your Categories Are Inadequate',
 		);
 
 		foreach ( $terms as $tkey => $t ) {
@@ -157,7 +168,7 @@ class THATCamp_Network_Search extends WP_Widget {
 
 		?>
 
-		<form method="get" action="<?php echo $potc_url . 'stream/' ?>">
+		<form method="get" action="<?php echo $potc_url . 'all/' ?>">
 			<input id="thatcamp_network_search" name="tcs" value="<?php echo esc_attr( $value ) ?>" />
 		</form>
 

@@ -1,10 +1,6 @@
 <?php get_header(); ?>
-
-<div class="sidebar four columns alpha">
-    <?php get_sidebar(); ?>
-</div>
-    
-<div id="article" class="ten columns offset-by-two omega">
+   
+<div class="main">
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -16,5 +12,10 @@
 <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 
 <?php endif; ?>
+</div>
+
+<div class="sidebar">
+    <?php get_sidebar(); ?>
+</div>
 
 <?php get_footer(); ?>
