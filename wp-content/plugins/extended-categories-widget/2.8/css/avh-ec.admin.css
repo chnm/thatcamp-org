@@ -1,0 +1,150 @@
+.footer_avhec {
+	font-size: 0.8em;
+	text-align: center;
+}
+
+div.clearer {
+	clear: both;
+	line-height: 1px;
+	font-size: 1px;
+	height: 1px;
+}
+
+/* Metabox in General */
+table.avhec-options {
+
+}
+
+.avhec-metabox-wrap {
+
+}
+
+.avhec-metabox-wrap .p {
+
+	line-height: 140%;
+	margin: 1em 0;
+}
+
+#avhecBoxOptions option {
+	padding: .5em;
+}
+
+.avhec-metabox-wrap span.description {
+
+}
+
+.avhec-metabox-wrap .b {
+	font-weight: bold;
+}
+
+.avhec-metabox-wrap ul {
+	margin-bottom: 1em;
+}
+
+.avhec-metabox-wrap ul li {
+	line-height: 120%;
+	list-style: disc inside none;
+	margin-bottom: 0;
+}
+
+#avhec-options input {
+
+}
+
+#avhec-generaloptions input {
+
+}
+
+/* Metabox FAQ */
+#avhecBoxFAQ .inside ul {
+
+	margin-bottom: 6px;
+}
+#avhecBoxFAQ .inside ul li{
+	line-height: 120%;
+    list-style: disc inside none;
+    margin-bottom: 0;
+}
+
+/* Metabox Donations*/
+#avhecBoxDonations .inside {
+
+}
+
+#avhecBoxDonations .versions {
+	padding: 6px 10px 12px;
+}
+
+/* Metabox Donations*/
+#avhecBoxTranslation .inside {
+
+}
+
+/* Metabox in post and page */
+#post_avhec_category_group {
+	width: 100%;
+}
+
+#avhec-catlist {
+	-moz-border-radius: 4px 4px 4px 4px;
+	background-color: #FFFFFF;
+	border: 1px solid #DFDFDF;
+	height: 20em;
+	margin-bottom: -1.8em;
+	overflow: auto;
+	width: 95%;
+}
+
+#avhec-catlist ul {
+	padding: 3px;
+}
+
+#avhec-catlist li ul {
+	padding: 0px;
+}
+
+#avhec-catlist li {
+	margin-bottom: 0px;
+}
+
+#avhecManualOrder {
+	width: 25%;
+/*	border: 1px solid #B2B2B2;*/
+/*	margin: 10px 10px 10px 0px;*/
+/*	padding: 5px 10px 5px 10px;*/
+/*	list-style: none;*/
+/*	background-color: #fff;*/
+/*	border-radius: 3px;*/
+/*	-webkit-border-radius: 3px;*/
+}
+
+#avhecManualOrder li.lineitem {
+	border: 1px solid #DFDFDF;
+	background-image: none;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	background-color: #FFFFFF;
+	color: #555555;
+	cursor: move;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 2px 5px 2px 5px;
+	list-style: none outside none;
+}
+
+#avhecManualOrder .sortable-placeholder {
+	border: 1px dashed #B2B2B2;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 2px 5px 2px 5px;
+	height: 1.5em;
+	line-height: 1.5em;
+	list-style: none outside none;
+	background-color: transparent;
+	background-image: -ms-linear-gradient(top, #f9f9f9, #f5f5f5); /* IE10 */
+	background-image: -moz-linear-gradient(top, #f9f9f9, #f5f5f5); /* Firefox */
+	background-image: -o-linear-gradient(top, #f9f9f9, #f5f5f5); /* Opera */
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#f5f5f5)); /* old Webkit */
+	background-image: -webkit-linear-gradient(top, #f9f9f9, #f5f5f5); /* new Webkit */
+	background-image: linear-gradient(top, #f9f9f9, #f5f5f5); /* proposed W3C Markup */
+}
