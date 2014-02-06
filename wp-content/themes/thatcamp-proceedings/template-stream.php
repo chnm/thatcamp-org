@@ -76,7 +76,7 @@
 				</article>
 			<?php endwhile; ?>
 		<?php else : ?>
-			<p>No posts were found.</p>
+			<p><?php _e('Sorry, no posts were found.'); ?></p>
 		<?php endif; ?>
 
 		<?php restore_current_blog() ?>

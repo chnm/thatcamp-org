@@ -393,7 +393,7 @@ footer {
      }
 
 .main {
-    width: 65%;
+    width: 95%;
     float: left; 
     padding: 70px 35px 70px 35px; 
     position: relative;
@@ -527,11 +527,13 @@ padding-top: 20px;
 #defaultcats {
 float:left;
 width: 48%;
+margin-top: 2em;
 }
 
 #allcats {
 float: right;
 width: 48%;
+margin-top: 2em;
 }
 
 div.avhec-widget-line {
@@ -556,7 +558,7 @@ div.avhec-widget-line {
 */
 
 .sidebar {
-width: 25%;
+display: none; 
 float:right;
     padding: 70px 20px 70px 0px;
 }
@@ -1008,7 +1010,9 @@ float:right;
     text-transform: uppercase;
     }
 
-
+#twitter-widget-0 {
+width:800px;
+}
     
 
 
