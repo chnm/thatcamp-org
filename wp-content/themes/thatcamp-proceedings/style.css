@@ -89,7 +89,7 @@ hr {
 ===========================*/
 
 header {
-    background-image: url('images/top-bg.jpg');
+/*    background-image: url('images/top-bg.jpg'); */
     display: block;
     margin: 0;
     padding: 20px 0;
@@ -343,7 +343,7 @@ footer {
     }
 
 .single .row {
-    background:url('images/content-bg.jpg') #fbfbfb repeat-y;
+/*    background:url('images/content-bg.jpg') #fbfbfb repeat-y; */
     background-position: 25% 0;
         -webkit-background-position: 25% 0;
         -moz-background-position: 25% 0;
@@ -351,7 +351,7 @@ footer {
     }
 
 .wrap {
-    background-image:url('images/bg.jpg');
+/*    background-image:url('images/bg.jpg'); */
     overflow: auto;
     padding: 0 0 40px 0;
     position: relative;
@@ -393,7 +393,7 @@ footer {
      }
 
 .main {
-    width: 95%;
+    width: 90%;
     float: left; 
     padding: 70px 35px 70px 35px; 
     position: relative;
@@ -490,29 +490,29 @@ font-size: large;
 	margin-bottom: 3em;
 }
 
-.readmore, .meta-date {
+.readmore {
+display: block;
+margin-top: 1.5em;
+margin-bottom: .5em;
+}
+
+.meta-date, .meta-cat, .meta-tags {
 display:block;
-margin-top: 10px;
+margin-top: .25em;
+margin-bottom: .25em;
 }
 
 article {
-padding-top: 20px;
+padding-top: 1em;
 }
 
-/* Authors Template
-    ============================*/
+.excerpt {
+display: block;
+margin-top: 1.5em;
+}
 
-.single-post .author-bio {
-    margin-top: 60px;
-    }
 
-.author-name {
-    font-family: "CollatorRegular", serif;
-    text-transform: uppercase;
-    margin-bottom: 50px;
-    }
-
-/* Topics Template
+/* Topics 
     ============================*/
 
 .tags {
@@ -539,9 +539,6 @@ margin-top: 2em;
 div.avhec-widget-line {
   display: inline; 
   }
-
-/* Dates Template
-    ============================*/
 
 
 /* Sidebar
@@ -956,6 +953,18 @@ float:right;
 /* Author
 ===========================*/
 
+
+/* .single-post .author-bio {
+    margin-top: 60px;
+    }
+*/
+
+.author-name {
+    font-family: "CollatorRegular", serif;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    }
+
 .author-bio {
     font-size: 14px;
     margin-bottom: 40px;
@@ -966,9 +975,8 @@ float:right;
     content: "\a0 ";
     background-color: rgba(0,0,0,.08);
     display: block;
-    width: 100%;
     padding-left: 10%;
-    margin-left: -10%;
+    padding-right: 10%;
     }
 
     .author-bio h2:before, .author-posts h2:before {

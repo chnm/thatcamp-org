@@ -2,7 +2,7 @@
    
 <div class="main thatcamp-stream">
 
-<h1>You are viewing entries tagged '<?php single_tag_title(); ?>'.</h1>
+<h1>You are viewing posts tagged '<?php single_tag_title(); ?>'.</h1>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -34,9 +34,9 @@
 						<?php if ( $source_blog_link ) : ?>
 							<span class="meta-source"><?php printf( _x( 'at %s', 'From the blog...', 'thatcamp' ), $source_blog_link ) ?></span>												
 						<?php endif ?>
-						<span class="meta-date"><?php echo get_the_date(); ?></span>
-						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="readmore postlink">Read more...</a>
-					</div>
+						<span class="meta-date"><?php echo get_the_date(); ?></span>	
+						<span class="meta-cat"><?php echo "Categorized: " ?><?php the_category(', '); ?></span>
+						<span class="meta-tags"><?php the_tags('Tagged: ', ', ', '<br />'); ?></span>									
 				</article>
 
 <!--
