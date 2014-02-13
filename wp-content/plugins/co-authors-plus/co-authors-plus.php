@@ -3,9 +3,9 @@
 Plugin Name: Co-Authors Plus
 Plugin URI: http://wordpress.org/extend/plugins/co-authors-plus/
 Description: Allows multiple authors to be assigned to a post. This plugin is an extended version of the Co-Authors plugin developed by Weston Ruter.
-Version: 3.0.6
+Version: 3.0.7
 Author: Mohammad Jangda, Daniel Bachhuber, Automattic
-Copyright: 2008-2013 Shared and distributed between Mohammad Jangda, Daniel Bachhuber, Weston Ruter
+Copyright: 2008-2014 Shared and distributed between Mohammad Jangda, Daniel Bachhuber, Weston Ruter
 
 GNU General Public License, Free Software Foundation <http://creativecommons.org/licenses/GPL/2.0/>
 This program is free software; you can redistribute it and/or modify
@@ -24,12 +24,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 */
 
-define( 'COAUTHORS_PLUS_VERSION', '3.0.6' );
-
-define( 'COAUTHORS_PLUS_PATH', dirname( __FILE__ ) );
-define( 'COAUTHORS_PLUS_URL', plugin_dir_url( __FILE__ ) );
+define( 'COAUTHORS_PLUS_VERSION', '3.0.7' );
 
 require_once( dirname( __FILE__ ) . '/template-tags.php' );
+require_once( dirname( __FILE__ ) . '/deprecated.php' );
 
 require_once( dirname( __FILE__ ) . '/php/class-coauthors-template-filters.php' );
 
@@ -99,8 +97,8 @@ class coauthors_plus {
 		// Restricts WordPress from blowing away term order on bulk edit
 		add_filter( 'wp_get_object_terms', array( $this, 'filter_wp_get_object_terms' ), 10, 4 );
 
-		// Fix for author info not properly displaying on author pages
-		add_action( 'template_redirect', array( $this, 'fix_author_page' ) );
+		// Make sure we've correctly set author data on author pages
+		add_filter( 'posts_selection', array( $this, 'fix_author_page' ) ); // use posts_selection since it's after WP_Query has built the request and before it's queried any posts
 		add_action( 'the_post', array( $this, 'fix_author_page' ) );
 
 		// Support for Edit Flow's calendar and story budget
@@ -858,9 +856,12 @@ class coauthors_plus {
 	}
 
 	/**
-	 * Fix for author info not properly displaying on author pages
+	 * Fix for author pages 404ing or not properly displaying on author pages
 	 *
-	 * On an author archive, if the first story has coauthors and
+	 * If an author has no posts, we need to still force the queried object to be
+	 * set in case a site wants to still display the author's profile.
+	 *
+	 * Alternatively, on an author archive, if the first story has coauthors and
 	 * the first author is NOT the same as the author for the archive,
 	 * the query_var is changed.
 	 *
@@ -1002,8 +1003,8 @@ class coauthors_plus {
 
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
-		wp_enqueue_style( 'co-authors-plus-css', COAUTHORS_PLUS_URL . 'css/co-authors-plus.css', false, COAUTHORS_PLUS_VERSION, 'all' );
-		wp_enqueue_script( 'co-authors-plus-js', COAUTHORS_PLUS_URL . 'js/co-authors-plus.js', array('jquery', 'suggest'), COAUTHORS_PLUS_VERSION, true);
+		wp_enqueue_style( 'co-authors-plus-css', plugins_url( 'css/co-authors-plus.css', __FILE__ ), false, COAUTHORS_PLUS_VERSION, 'all' );
+		wp_enqueue_script( 'co-authors-plus-js', plugins_url( 'js/co-authors-plus.js', __FILE__ ), array('jquery', 'suggest'), COAUTHORS_PLUS_VERSION, true);
 
 		$js_strings = array(
 			'edit_label' => __( 'Edit', 'co-authors-plus' ),
