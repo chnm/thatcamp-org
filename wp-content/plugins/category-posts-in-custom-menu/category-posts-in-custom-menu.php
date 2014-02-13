@@ -3,7 +3,7 @@
     Plugin Name: Category Posts in Custom Menu
     Plugin URI: http://blog.dianakoenraadt.nl
     Description: This plugin replaces selected Category links / Post Tag links / Custom taxonomy links in a Custom Menu by a list of their posts/pages.
-    Version: 0.9.1
+    Version: 0.9.3
     Author: Diana Koenraadt
     Author URI: http://www.dianakoenraadt.nl
     License: GPL2
@@ -26,6 +26,20 @@
 */
 
 require_once( ABSPATH . 'wp-admin/includes/nav-menu.php' ); // Load all the nav menu interface functions
+
+$CurrentVer = phpversion();
+
+// Use version_compare because closures are not supported in PHP 5.2 or below
+// http://wordpress.org/support/topic/unexpected-t_function-1
+if (version_compare($CurrentVer, '5.3.0') == -1)
+{
+	require('cpcm-functions52.php');	
+}
+else
+{
+	require('cpcm-functions.php');		
+}
+
 
 new CPCM_Manager;
 
@@ -109,57 +123,26 @@ class CPCM_Manager {
 		$string = str_replace( "%post_author", 	$userdata ? $userdata->data->display_name : '', $string);
 
 		$thumb_image = wp_get_attachment_thumb_url( get_post_thumbnail_id($post->ID) );
-		$string = str_replace( "%post_feat_image_thumb", 	$thumb_image, $string);
+		$string = str_replace( "%post_feat_image_thumb", 	$thumb_image, $string); // deprecated
+		$string = str_replace( "%post_featured_image_thumb_url", 	$thumb_image, $string);
+		if (trim($thumb_image) == true)
+		{
+			$string = str_replace( "%post_featured_image_thumb", 	"<img src=\"" . $thumb_image . "\" />", $string);
+		}
+		
 		$featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-		$string = str_replace( "%post_feat_image", 	$featured_image, $string);
+		$string = str_replace( "%post_feat_image", 	$featured_image, $string); // deprecated
+		$string = str_replace( "%post_featured_image_url", 	$featured_image, $string);
+		if (trim($featured_image) == true)
+		{
+			$string = str_replace( "%post_featured_image", 	"<img src=\"" . $featured_image . "\" />", $string);
+		}
 
 		$string = str_replace( "%post_title", 	$post->post_title, 	$string);
 		$string = str_replace( "%post_excerpt", 	$post->post_excerpt, 	$string);
 		$string = str_replace( "%post_url", 	get_permalink($post->ID), 	$string);
 
-		$post_date_gmt = $post->post_date_gmt;
-		$string = preg_replace("/\%post_date_gmt\(\)/", mysql2date('F jS, Y', $post_date_gmt), $string);		
-		// PHP 5.5 compatible, use preg_replace_callback instead of preg_replace
-		// http://wordpress.org/support/topic/php-55-preg_replace-e-modifier-depricated?replies=1
-		$callback = 
-			function ($matches) use ($post_date_gmt)
-			{
-				return mysql2date($matches[1], $post_date_gmt);
-			};	
-		$string = preg_replace_callback("/\%post_date_gmt\(([a-zA-Z\s\\\\:,]*)\)/", $callback, $string);
-		$string = str_replace( "%post_date_gmt", 	$post_date_gmt, 	$string);
-
-		$post_date = $post->post_date;
-		$string = preg_replace("/\%post_date\(\)/", mysql2date('F jS, Y', $post_date), $string);	
-		$callback = 
-			function ($matches) use ($post_date)
-			{
-				return mysql2date($matches[1], $post_date);
-			};
-		$string = preg_replace_callback("/\%post_date\(([a-zA-Z\s\\\\:,]*)\)/", $callback, $string);
-		$string = str_replace( "%post_date", 	$post_date, 	$string);
-
-		$string = str_replace( "%post_status", 	$post->post_status, 	$string);
-
-		$post_modified_gmt = $post->post_modified_gmt;
-		$string = preg_replace("/\%post_modified_gmt\(\)/", mysql2date('F jS, Y', $post_modified_gmt), $string);	
-		$callback = 
-			function ($matches) use ($post_modified_gmt)
-			{
-				return mysql2date($matches[1], $post_modified_gmt);
-			};
-		$string = preg_replace_callback("/\%post_modified_gmt\(([a-zA-Z\s\\\\:,]*)\)/", $callback, $string);
-		$string = str_replace( "%post_modified_gmt", 	$post_modified_gmt, 	$string);
-
-		$post_modified = $post->post_modified;
-		$string = preg_replace("/\%post_modified\(\)/", mysql2date('F jS, Y', $post_modified), $string);
-		$callback = 
-			function ($matches) use ($post_modified)
-			{
-				return mysql2date($matches[1], $post_modified);
-			};
-		$string = preg_replace_callback("/\%post_modified\(([a-zA-Z\s\\\\:,]*)\)/", $callback, $string);
-		$string = str_replace( "%post_modified", 	$post_modified, 	$string);
+		replace_dates($post, $string);
 
 		$string = str_replace( "%post_comment_count", 	$post->comment_count, 	$string);
 		
@@ -235,7 +218,8 @@ class CPCM_Manager {
 
 					// Transfer properties from the old menu item to the new one
 					$post->target = $menu_item->target;
-					//$post->classes = $menu_item->classes; // Don't copy the classes, because this will also copy the 'active' CSS class too all siblings of the selected menu item.
+					//$post->classes = $menu_item->classes; // Don't copy the classes, because this will also copy the 'active' CSS class too all siblings of the selected menu item. http://wordpress.org/support/topic/active-css-class
+					
 					$post->xfn = $menu_item->xfn;
 					$post->description = $menu_item->description;
 
@@ -247,10 +231,12 @@ class CPCM_Manager {
 
 					$inc += 1;
 				}
-				// Extend the items with classes.
-				_wp_menu_item_classes_by_context( $posts );
 				// Append the new menu_items to the menu array that we're building.
 				$result = array_merge( $result, $posts );
+				
+				// Apply _wp_menu_item_classes_by_context not only to the $posts array, but to the whole result array so that the classes for the original menu items are regenerated as well. Solves: http://wordpress.org/support/topic/issue-with-default-wordpress-sidebar-menu and http://wordpress.org/support/topic/menu-do-not-include-the-current-menu-parent-class
+				// Extend the items with classes.
+				_wp_menu_item_classes_by_context( $result );
 			} else {
 				// Treat other objects as usual, but note that the position 
 				// of elements in the array changes.
@@ -441,6 +427,7 @@ class CPCM_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit  {
                                     <option value="parent" <?php selected( get_post_meta($item_id, "cpcm-orderby", true), "parent" )  ?>><?php _e('Post/Page Parent ID'); ?></option>
                                     <option value="rand" <?php selected( get_post_meta($item_id, "cpcm-orderby", true), "rand" )  ?>><?php _e('Random Order'); ?></option>
                                     <option value="comment_count" <?php selected( get_post_meta($item_id, "cpcm-orderby", true), "comment_count" )  ?>><?php _e('Number of Comments'); ?></option>
+									<option value="menu_order" <?php selected( get_post_meta($item_id, "cpcm-orderby", true), "menu_order" ) ?>><?php _e('Menu Order'); ?></option>
                                 </select>
                             </label>
                         </p>
