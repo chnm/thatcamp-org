@@ -1,8 +1,8 @@
 === amr shortcode any widget ===
 Contributors: anmari
 Tags: shortcode, widget, page, templates, page template
-Tested up to: 3.8
-Version: 1.6
+Tested up to: 3.8.1
+Version: 1.8
 Stable tag: trunk
 
 == Description ==
@@ -17,8 +17,9 @@ This simple 'utility' plugin allows one to have any widget used in a page shortc
  [do_widget widgetname]   eg: [do_widget calendar]
  [do_widget "widget name"].   eg: [do_widget "tag cloud"]
  [do_widget id=widgetid] in a page or post
-7. If the plugin cannot work out what you want, it will show a debug prompt.   Click on the link 'Try debug'.
-It will produce a bunch of info. Look for the id of your widget in the shortcodes sidebar (you may have to scroll through a lot of debug nfo). Try with the id.   Sometimes the widget name that wordpress calls it internally is not the same as what you see on the screen and you will need the 'debug' to find the id.
+7. If the plugin cannot work out what you want and you are logged in as an adminsitrator, it will show a debug prompt to you only.   
+Click on the link 'Try debug'.
+It will produce a bunch of info. Look for the id of your widget in the shortcodes sidebar (you may have to scroll through a lot of debug info). Try wusing the widget id.   Sometimes the widget name that wordpress calls it internally is not the same as what you see on the screen and you will need the 'debug' to find the id.
 
 Plugin has been tested with most standard widgets (rss feeds, tag cloud, pages, meta, search, and of course my own plugins widgets - upcoming events list, calendar and user lists.
 
@@ -30,6 +31,12 @@ If you liked this plugin, you might also like my other plugins:
 
 
 == Changelog ==
+= Version 1.8 =
+*  Whoops - had renamed the main file and forgot to delete it from the svn. Forcing a version number change to ensure files get cleaned up for everyone
+
+= Version 1.7 =
+*  Change: Changed so that debugs and debug prompt will only show to a logged in administrator.
+
 = Version 1.6 =
 *  Add: added a settings page to help people out (not really settings)
 *  Fix: changed a clashing function name
