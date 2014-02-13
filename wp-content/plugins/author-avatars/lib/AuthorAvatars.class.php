@@ -292,7 +292,7 @@ class AuthorAvatars {
 			if ($version == $this->get_installed_version() && ($i+1) < count($version_history)) {
 				$new_version = $version_history[$i+1];
 
-				$fn = 'update__'. ereg_replace("[^0-9]","",$version) .'_'. ereg_replace("[^0-9]","",$new_version);
+				$fn = 'update__'. preg_replace("[^0-9]","",$version) .'_'. preg_replace("[^0-9]","",$new_version);
 
 				if (method_exists($this, $fn) && !$this->{$fn}()) {
 					die('Author Avatars: error trying to update version '. $version .' to '. $new_version .'. '); // FIXME: change error handling!?

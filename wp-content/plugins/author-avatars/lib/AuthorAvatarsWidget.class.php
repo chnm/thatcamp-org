@@ -90,11 +90,12 @@ class AuthorAvatarsWidget extends WP_Widget
 		}
 		
 		// extract widget arguments
-		extract($args, EXTR_SKIP);
-		
+		extract( $args, EXTR_SKIP );
+		// add the standard title filter
+		$title = empty( $instance['title'] ) ? '' : apply_filters( 'widget_title', $instance['title'] );
 		// build the widget html
 		echo $before_widget;
-		echo $before_title . $instance['title'] . $after_title;
+		echo $before_title . $title . $after_title;
 
 		$userlist->output();
 		

@@ -35,27 +35,31 @@ class AuthorAvatarsShortcode {
 		$this->userlist = new UserList();
 		$settings = AA_settings();
 
+
 		// roles
 		$roles = array(); // default value: no restriction -> all users
 		if (!empty($atts['roles'])) {
 			if (!is_array( $atts['roles'])){
 				$roles = explode(',', $atts['roles']);
+			}else{
+				$roles = $atts['roles'];
 			}
 			$roles = array_map('trim', $roles);
 		}
 		$this->userlist->roles = $roles;
-		
+
 		// blogs
 		$blogs = array(); // default value: empty -> only current blog
 		if ($settings->blog_selection_allowed() && !empty($atts['blogs'])) {
 			if (strtolower($atts['blogs']) == 'all') {
 				$blogs = array(-1);
-			}
-			else {
-				if (!is_array( $atts['blogs'])){
-					$blogs = explode(',', $atts['blogs']);
+			} else {
+				if ( !is_array( $atts['blogs'] ) ){
+					$blogs = explode( ',', $atts['blogs'] );
+				}else{
+					$blogs = array_map('trim', $blogs);
 				}
-				$blogs = array_map('intval', $blogs);
+				$blogs = array_map( 'intval', $blogs );
 			}
 		}
 		$this->userlist->blogs = $blogs;
@@ -72,6 +76,8 @@ class AuthorAvatarsShortcode {
 		if (!empty($atts['hiddenusers'])) {
 			if (!is_array( $atts['hiddenusers'])){
 				$hiddenusers = explode(',', $atts['hiddenusers']);
+			}else{
+				$hiddenusers = array_map('trim', $hiddenusers);
 			}
 			$hiddenusers = array_map('trim', $hiddenusers);
 		}
