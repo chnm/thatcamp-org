@@ -1,8 +1,13 @@
+<?php 
+global $wp_query;
+$total_results = $wp_query->found_posts;
+?>
+
 <?php get_header(); ?>
    
 <div class="main thatcamp-stream">
 
-<h1>You are viewing posts tagged '<?php single_tag_title(); ?>'.</h1>
+<h1>Posts tagged '<?php single_tag_title(); ?>'&nbsp;&nbsp;(<?php echo $total_results; ?> found)</h1>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 

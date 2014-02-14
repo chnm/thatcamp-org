@@ -1,13 +1,13 @@
-<?php get_header(); ?>
- 
 <?php 
 global $wp_query;
 $total_results = $wp_query->found_posts;
 ?>
+
+<?php get_header(); ?>
  
 <div class="main thatcamp-stream">
 
-<h1>Results for "<?php the_search_query() ?>". (<?php echo $total_results; ?> found)</h1>
+<h1>Results of search "<?php the_search_query() ?>"&nbsp;&nbsp;(<?php echo $total_results; ?> found)</h1>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 

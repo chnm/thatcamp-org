@@ -33,7 +33,7 @@
 							<span class="meta-source"><?php printf( _x( 'at %s', 'From the blog...', 'thatcamp' ), $source_blog_link ) ?></span>												
 						<?php endif ?>
 						<span class="meta-date"><?php echo get_the_date(); ?></span>
-						<?php the_content(); ?>
+						<span class="post-body"><?php the_content(); ?></span>
 						<span class="meta-cat"><?php echo "Categories: " ?><?php the_category(', '); ?></span>
 						<span class="meta-tags"><?php the_tags('Tags: ', ', ', '<br />'); ?></span>
 					</div>

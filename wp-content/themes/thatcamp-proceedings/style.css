@@ -227,7 +227,7 @@ header .current_page_item {
             -o-transition-timing-function: ease-in-out;
         }
 
-    #searchform input[type=text]:focus, #searchform input[type=submit]:focus {
+    #searchform input[type=text]:focus, #searchform input[type=submit]:focus, #sidebar-login-form input[type=text]:focus, #sidebar-login-form input[type=password]:focus {
         outline: none;
         background-color: #006666;
         border: 1px solid #008282;
@@ -265,7 +265,6 @@ header .current_page_item {
         display: none;
         }
 
-
 /* Footer
 ===========================*/
 
@@ -273,7 +272,7 @@ footer {
     color: rgba(255,255,255,.3);
     font-size: 12px;
     line-height: 16px;
-    padding: 40px 0 20px 0;
+    padding: 10px 10px 40px 0;
     }
 
     footer .container { text-align: center; }
@@ -353,7 +352,7 @@ footer {
 .wrap {
 /*    background-image:url('images/bg.jpg'); */
     overflow: auto;
-    padding: 0 0 40px 0;
+    padding: 0 0 10px 0;
     position: relative;
     z-index: 1;
     }
@@ -403,6 +402,7 @@ footer {
 .main img {
         max-width: 100%;
         height: auto;
+        margin-top: 5px;
         }
 
 .main a img { border: 0; }
@@ -540,6 +540,13 @@ div.avhec-widget-line {
   display: inline; 
   }
 
+/* Topics 
+    ============================*/
+
+.pagecontent-dates ul li {
+list-style-type:none;
+font-size: large;
+}
 
 /* Sidebar
     ============================*/

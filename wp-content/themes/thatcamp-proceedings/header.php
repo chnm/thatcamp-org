@@ -39,9 +39,7 @@ jQuery(document).ready(function($) {
 <div class="wrap">
 
 <header>
-
     <div class="container">
-
         <a class="site-title" href="<?php echo home_url(); ?>">
             <img src="<?php bloginfo( 'template_directory' ); ?>/images/logo.png" alt="Proceedings of THATCamp">
         </a>

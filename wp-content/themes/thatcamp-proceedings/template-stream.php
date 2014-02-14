@@ -1,11 +1,11 @@
 <?php
 /**
- * THATCamp All Posts template
+ * THATCamp Stream - All Posts
  *
  * @package thatcamp
  * @since thatcamp 1.0
  *
- * Template Name: THATCamp All Posts Template
+ * Template Name: THATCamp Stream - All Posts
  */
 ?>
 <?php get_header(); ?>
