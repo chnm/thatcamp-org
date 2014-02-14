@@ -369,6 +369,44 @@ footer {
     z-index: 1;
     }
 
+ul.subscribe {
+list-style-type: none;
+float: right;
+width: auto;
+display: inline-block;
+margin: -35px -55px 0 0;
+padding-bottom: 0;
+}
+
+ul.subscribe li {
+display: inline-block;
+padding-right: 25px;
+margin: 0;
+padding-bottom: 0;
+}
+
+a.subscribe-rss {
+  background: url('images/rss-thatcampicon.png') no-repeat;
+  color: #ff7800;
+  display: inline-block;
+  margin: 0;
+  padding: 0 0 0 30px;  
+}
+a.subscribe-email {
+  background: url('images/email-thatcampicon.png') no-repeat;
+  color: #bb1122;
+  display: inline-block;
+  margin: 0;
+  padding: 0 0 0 30px;  
+}
+
+.hr-subscribe {
+    height: 1px;
+    border: 0;
+    background-color: #e8e8e8;
+    margin: 20px 0;
+    }
+
 #article {
     padding-top: 70px;
     padding-bottom: 70px;

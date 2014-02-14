@@ -2,6 +2,13 @@
    
 <div class="main thatcamp-stream">
 
+<ul class="subscribe">
+	<li><a href="<?php echo site_url(); ?>/feed" class="subscribe-rss" title="Subscribe with RSS" alt="Subscribe with RSS"><?php _e( 'Subscribe with RSS', 'thatcamp' ); ?></a></li>
+	<li><a href="" class="subscribe-email" title="Subscribe by Email" alt="Subscribe by Email"><?php _e( 'Subscribe by Email', 'thatcamp' ); ?></a></li>
+</ul>
+
+<h1 class="post-title">THATCamp Posts by Favorite</h1>
+
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

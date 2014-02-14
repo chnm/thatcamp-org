@@ -7,6 +7,15 @@ $total_results = $wp_query->found_posts;
    
 <div class="main thatcamp-stream">
 
+<?php if ( is_category() ) {
+
+    $category = get_category( get_query_var('cat') );
+
+    if ( ! empty( $category ) )
+        echo '<ul class="subscribe"><li><a href="' . get_category_feed_link( $category->cat_ID ) . '" title="' . sprintf( __( 'Subscribe to this category with RSS', 'thatcamp-proceedings'), $category->name ) . '" rel="nofollow" class="subscribe-rss">' . __( 'Subscribe to this category with RSS', 'thatcamp-proceedings' ) . '</a></li></ul>';
+}
+?> 
+
 <h1>Posts in the category '<?php single_cat_title(); ?>'&nbsp;&nbsp;(<?php echo $total_results; ?> found)</h1>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
