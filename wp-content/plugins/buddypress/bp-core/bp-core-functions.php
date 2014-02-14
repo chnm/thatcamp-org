@@ -546,6 +546,12 @@ function bp_core_add_illegal_names() {
  */
 function bp_do_register_theme_directory() {
 	$register = 'bp-default' === get_stylesheet() || 'bp-default' === get_template();
+
+	// Legacy sites continue to have the theme registered
+	if ( empty( $register ) && ( 1 == get_site_option( '_bp_retain_bp_default' ) ) ) {
+		$register = true;
+	}
+
 	return apply_filters( 'bp_do_register_theme_directory', $register );
 }
 
@@ -1728,7 +1734,7 @@ function bp_nav_menu_get_loggedout_pages() {
 		$register_page = get_post( $bp_directory_page_ids['register'] );
 		$bp_menu_items[] = array(
 			'name' => $register_page->post_title,
-			'slug' => $register_page->post_name,
+			'slug' => 'register',
 			'link' => get_permalink( $register_page->ID ),
 		);
 	}
