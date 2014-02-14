@@ -1,12 +1,12 @@
 /*
- * Transposh v0.9.2
+ * Transposh v0.9.3
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+ * Date: Mon, 06 May 2013 02:15:55 +0300
  */
 (function(a){a(function(){a.ajaxSetup({cache:false});a("#transposh-reset-options").click(function(){if(!confirm("Are you sure you want to do this?"))return false;if(!confirm("Are you REALLY sure you want to do this, your configuration will be reset?"))return false;a.post(ajaxurl,{action:"tp_reset"})});backupclick=function(){a("#transposh-backup").unbind("click").click(function(){return false}).text("Backup In Progress");a.post(ajaxurl,{action:"tp_backup"},function(b){var c="red";b[0]=="2"&&(c="green");
 a("#backup_result").html(b).css("color",c);a("#transposh-backup").unbind("click").click(backupclick).text("Do Backup Now")});return false};a("#transposh-backup").click(backupclick);cleanautoclick=function(b,c){if(!confirm("Are you sure you want to do this?"))return false;if(b==0&&!confirm("Are you REALLY sure you want to do this?"))return false;var d=c.text();c.unbind("click").click(function(){return false}).text("Cleanup in progress");a.post(ajaxurl,{action:"tp_cleanup",days:b},function(){c.unbind("click").click(function(){cleanautoclick(b,

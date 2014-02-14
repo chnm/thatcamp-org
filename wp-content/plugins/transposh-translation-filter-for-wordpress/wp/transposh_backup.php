@@ -1,24 +1,20 @@
 <?php
 
 /*
- * Transposh v0.9.2
+ * Transposh v0.9.3
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+ * Date: Mon, 06 May 2013 02:15:55 +0300
  */
 
 /*
  * Provide the backup service class
  */
 
-define('TRANSPOSH_BACKUP_SERVICE_URL', 'http://svc.transposh.org/backup');
-define('TRANSPOSH_RESTORE_SERVICE_URL', 'http://svc.transposh.org/restore');
-
-//define ("TRANSPOSH_BACKUP_SERVICE_URL" , "http://ofergen:8888/backup");
 //class that reperesent the admin page
 class transposh_backup {
 
@@ -35,7 +31,7 @@ class transposh_backup {
         $body['home_url'] = $this->transposh->home_url;
         $body['key'] = $this->transposh->options->transposh_key;
         $body['v'] = '2';
-        $body['tpv'] = '0.9.2';
+        $body['tpv'] = '0.9.3';
         return $body;
     }
 

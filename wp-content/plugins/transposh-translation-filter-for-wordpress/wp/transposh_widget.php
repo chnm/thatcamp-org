@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.2
+ * Transposh v0.9.3
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+ * Date: Mon, 06 May 2013 02:15:55 +0300
  */
 
 /*
@@ -320,37 +320,7 @@ class transposh_plugin_widget extends WP_Widget {
         // last - you can now remove the logo in exchange to a few percentage of ad and affiliate revenues on your pages, isn't that better?
         $plugpath = parse_url($this->transposh->transposh_plugin_url, PHP_URL_PATH);
 
-        if (!$this->transposh->options->widget_remove_logo) {
-            $tagline = esc_attr__('Transposh', TRANSPOSH_TEXT_DOMAIN) . ' - ';
-            switch (ord(md5($_SERVER['REQUEST_URI'])) % 5) {
-                case 0:
-                    $tagline .= esc_attr__('translation plugin for wordpress', TRANSPOSH_TEXT_DOMAIN);
-                    break;
-                case 1:
-                    $tagline .= esc_attr__('wordpress translation plugin', TRANSPOSH_TEXT_DOMAIN);
-                    break;
-                case 2:
-                    $tagline .= esc_attr__('translate your blog to 60+ languages', TRANSPOSH_TEXT_DOMAIN);
-                    break;
-                case 3:
-                    $tagline .= esc_attr__('website crowdsourcing translation plugin', TRANSPOSH_TEXT_DOMAIN);
-                    break;
-                case 4:
-                    $tagline .= esc_attr__('google translate and bing translate plugin for wordpress', TRANSPOSH_TEXT_DOMAIN);
-                    break;
-            }
-
-            $extralang = '';
-            if ($this->transposh->target_language != 'en') {
-                $extralang = $this->transposh->target_language . '/';
-            }
-        }
-
         echo '<div id="' . SPAN_PREFIX . 'credit' . self::$draw_calls . '">';
-        if (!$this->transposh->options->widget_remove_logo) {
-            echo 'by <a href="http://tran' . 'sposh.org/' . $extralang . '"><img height="16" width="16" src="' .
-            $plugpath . '/img/tplog' . 'o.png" style="padding:1px;border:0;box-shadow:0 0;border-radius:0" title="' . $tagline . '" alt="' . $tagline . '"/></a>';
-        }
         echo '</div>';
         if (isset($after_widget)) echo $after_widget;
         // increase the number of calls for unique IDs

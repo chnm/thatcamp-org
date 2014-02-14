@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.2
+ * Transposh v0.9.3
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+ * Date: Mon, 06 May 2013 02:15:55 +0300
  */
 
 /*
@@ -91,6 +91,7 @@ class transposh_plugin_admin {
                     }
                 }
 
+                $viewable_langs = array_slice($viewable_langs, 0, 5);
                 $this->transposh->options->viewable_languages = implode(',', $viewable_langs);
                 $this->transposh->options->sorted_languages = implode(',', $sorted_langs);
                 break;
@@ -102,6 +103,8 @@ class transposh_plugin_admin {
                             $role->add_cap(TRANSLATOR);
                     else $role->remove_cap(TRANSLATOR);
                 }
+
+                $this->transposh->options->allow_full_version_upgrade = TP_FROM_POST;
 
                 // anonymous needs to be handled differently as it does not have a role
                 tp_logger($_POST['anonymous']);
@@ -144,11 +147,11 @@ class transposh_plugin_admin {
             case "tp_widget":
                 $this->transposh->options->widget_progressbar = TP_FROM_POST;
                 $this->transposh->options->widget_allow_set_deflang = TP_FROM_POST;
-                $this->transposh->options->widget_remove_logo = TP_FROM_POST;
                 $this->transposh->options->widget_theme = TP_FROM_POST;
                 break;
             case "tp_advanced":
                 $this->transposh->options->enable_url_translate = TP_FROM_POST;
+                $this->transposh->options->dont_add_rel_alternate = TP_FROM_POST;
                 $this->transposh->options->jqueryui_override = TP_FROM_POST;
                 $this->transposh->options->parser_dont_break_puncts = TP_FROM_POST;
                 $this->transposh->options->parser_dont_break_numbers = TP_FROM_POST;
@@ -374,7 +377,7 @@ class transposh_plugin_admin {
         // this is the default language location
         list ($langname, $langorigname, $flag) = explode(",", transposh_consts::$languages[$this->transposh->options->default_language]);
         echo '<div id="default_lang" style="overflow:auto;padding-bottom:10px;">';
-        $this->header(__('Default Language (drag another language here to make it default)', TRANSPOSH_TEXT_DOMAIN),'languages');
+        $this->header(__('Default Language (drag another language here to make it default)', TRANSPOSH_TEXT_DOMAIN), 'languages');
         echo '<ul id="default_list"><li id="' . $this->transposh->options->default_language . '" class="languages">'
         . transposh_utils::display_flag("{$this->transposh->transposh_plugin_url}/img/flags", $flag, $langorigname, false/* $this->transposh->options->get_widget_css_flags() */)
         . '<input type="hidden" name="languages[]" value="' . $this->transposh->options->default_language . '" />'
@@ -383,6 +386,7 @@ class transposh_plugin_admin {
         // list of languages
         echo '<div style="overflow:auto; clear: both;">';
         $this->header(__('Available Languages (Click to toggle language state - Drag to sort in the widget)', TRANSPOSH_TEXT_DOMAIN));
+        $this->header(__('Only first five will be saved! Upgrade to full free version by choosing the option at the settings', TRANSPOSH_TEXT_DOMAIN));
         echo '<ul id="sortable">';
         foreach ($this->transposh->options->get_sorted_langs() as $langcode => $langrecord) {
             tp_logger($langcode, 5);
@@ -417,6 +421,11 @@ class transposh_plugin_admin {
 
     // Show normal settings
     function tp_settings() {
+        $this->section(__('Upgrade to full version', TRANSPOSH_TEXT_DOMAIN));
+        $this->checkbox($this->transposh->options->allow_full_version_upgrade_o, __('Allow upgrading to full version', TRANSPOSH_TEXT_DOMAIN)
+                , __('Allow upgrading to full version from http://transposh.org, which has no limit on languages used and includes a full set of widgets', TRANSPOSH_TEXT_DOMAIN));
+        $this->sectionstop();
+        
         $this->section(__('Translation related settings', TRANSPOSH_TEXT_DOMAIN));
 
         /*
@@ -498,7 +507,7 @@ class transposh_plugin_admin {
 
         $this->textinput($this->transposh->options->oht_key_o
                 , array('ohticon.png', __('One Hour Translation secret key', TRANSPOSH_TEXT_DOMAIN))
-                , __('Account ID', TRANSPOSH_TEXT_DOMAIN), 35, 'keys');
+                , __('Secret Key', TRANSPOSH_TEXT_DOMAIN), 35, 'keys');
 
         $oht = get_option(TRANSPOSH_OPTIONS_OHT, array());
         if (!empty($oht) && wp_next_scheduled('transposh_oht_event')) {
@@ -521,15 +530,13 @@ class transposh_plugin_admin {
         $this->checkbox($this->transposh->options->widget_allow_set_deflang_o, __('Allow user to set current language as default', TRANSPOSH_TEXT_DOMAIN)
                 , __('Widget will allow setting this language as user default', TRANSPOSH_TEXT_DOMAIN));
 
-        $this->checkbox($this->transposh->options->widget_remove_logo_o, __('Remove transposh logo (see <a href="http://transposh.org/logoterms">terms</a>)', TRANSPOSH_TEXT_DOMAIN)
-                , __('Transposh logo will not appear on widget', TRANSPOSH_TEXT_DOMAIN));
-
         $this->select($this->transposh->options->widget_theme_o, __('Edit interface (and progress bar) theme:', TRANSPOSH_TEXT_DOMAIN), __('Edit interface (and progress bar) theme:', TRANSPOSH_TEXT_DOMAIN), transposh_consts::$jqueryui_themes, false);
     }
 
     function tp_advanced() {
         $this->checkbox($this->transposh->options->enable_url_translate_o, __('Enable url translation', TRANSPOSH_TEXT_DOMAIN) . ' (' . __('experimental', TRANSPOSH_TEXT_DOMAIN) . ')', __('Allow translation of permalinks and urls', TRANSPOSH_TEXT_DOMAIN));
         $this->textinput($this->transposh->options->jqueryui_override_o, __('Override jQueryUI version', TRANSPOSH_TEXT_DOMAIN), __('Version', TRANSPOSH_TEXT_DOMAIN));
+        $this->checkbox($this->transposh->options->dont_add_rel_alternate_o, __('Disable adding rel=alternate to the html', TRANSPOSH_TEXT_DOMAIN), __('Disable the feature that adds the alternate language list to your page html header', TRANSPOSH_TEXT_DOMAIN));
         $this->section(__('Parser related settings', TRANSPOSH_TEXT_DOMAIN)
                 , __('This is extremely dangerous, will break your current translations, and might cause severe hickups, only proceed if you really know what you are doing.', TRANSPOSH_TEXT_DOMAIN));
         $this->checkbox($this->transposh->options->parser_dont_break_puncts_o, __('Disable punctuations break', TRANSPOSH_TEXT_DOMAIN)

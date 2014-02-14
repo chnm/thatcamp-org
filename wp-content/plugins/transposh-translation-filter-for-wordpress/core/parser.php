@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.2
+ * Transposh v0.9.3
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+ * Date: Mon, 06 May 2013 02:15:55 +0300
  */
 
 require_once("shd/simple_html_dom.php");
@@ -133,7 +133,6 @@ class parser {
 
     /** @var boolean should we attempt to handle page as json */
     public $might_json = false;
-    public $allow_ad = false;
     //first three are html, later 3 come from feeds xml (link is problematic...)
     protected $ignore_tags = array('script' => 1, 'style' => 1, 'code' => 1, 'wfw:commentrss' => 1, 'comments' => 1, 'guid' => 1);
 
@@ -606,24 +605,6 @@ class parser {
     }
 
     /**
-     * This function does some ad replacement for transposh benefit
-     */
-    function do_ad_switch() {
-        if (isset($this->html->noise) && is_array($this->html->noise)) {
-            foreach ($this->html->noise as $key => $value) {
-                if (strpos($value, 'google_ad_client') !== false) {
-                    $publoc = strpos($value, 'pub-');
-                    $sufloc = strpos($value, '"', $publoc);
-                    if (!$sufloc) $sufloc = strpos($value, "'", $publoc);
-                    echo $publoc . ' ' . $sufloc;
-                    if ($publoc && $sufloc)
-                            $this->html->noise[$key] = substr($value, 0, $publoc) . 'pub-7523823497771676' . substr($value, $sufloc);
-                }
-            }
-        }
-    }
-
-    /**
      * Allow changing of parsing rules, yeah, I caved
      * @param type $puncts
      * @param type $numbers
@@ -917,12 +898,7 @@ class parser {
             $body = $this->html->find('body', 0);
             if ($body != null) $body->lastChild()->outertext .= $hiddenspans;
         }
-        // we might show an ad for transposh in some cases
-        if (($this->allow_ad && !$this->default_lang && mt_rand(1, 100) > 95) || // 5 of 100 for translated non default language pages
-                ($this->allow_ad && $this->default_lang && mt_rand(1, 100) > 99) || // 1 of 100 for translated default languages pages
-                (!$this->allow_ad && mt_rand(1, 1000) > 999)) { // 1 of 1000 otherwise
-            $this->do_ad_switch();
-        }
+        
         // This adds a meta tag with our statistics json-encoded inside...
         $this->stats->stop_timing();
         $head = $this->html->find('head', 0);

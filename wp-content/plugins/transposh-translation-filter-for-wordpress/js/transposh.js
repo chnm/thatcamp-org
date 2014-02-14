@@ -1,12 +1,12 @@
 /*
- * Transposh v0.9.2
+ * Transposh v0.9.3
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+ * Date: Mon, 06 May 2013 02:15:55 +0300
  */
 (function(c){function A(b,a){if(c.trim(a).length!==0){var d=function(){var b=c(this).attr("id").substr(c(this).attr("id").lastIndexOf("_")+1),a=c("#"+e+"img_"+b);c("#"+e+b).attr("data-source",1);a.removeClass("tr-icon-yellow").removeClass("tr-icon-green").addClass("tr-icon-yellow")};c("*[data-token='"+b+"'][data-hidden!='y']").html(a).each(d);c("*[data-token='"+b+"'][data-hidden='y']").attr("data-trans",a).each(d)}}function B(b,a){clearTimeout(q);h.push(b);o.push(a);A(b,a);q=setTimeout(function(){var b=
 {ln0:t_jp.lang,sr0:p,action:"tp_translation",items:h.length},a;for(a=0;a<h.length;a+=1)b["tk"+a]=h[a],b["tr"+a]=o[a],r+=c("*[data-token='"+h[a]+"']").size();c.ajax({type:"POST",url:t_jp.ajaxurl,data:b,success:function(){var b=r/i*100;t_jp.progress&&c("#"+k).progressbar("value",b)}});o=[];h=[]},200)}function j(b,a){B(b,c("<div>"+c.trim(a)+"</div>").text());var d=(i-c("."+e+'[data-source=""]').size())/i*100;t_jp.progress&&c("#"+l).progressbar("value",d)}function s(b,a,d){c.ajax({url:t_jp.ajaxurl,dataType:"json",

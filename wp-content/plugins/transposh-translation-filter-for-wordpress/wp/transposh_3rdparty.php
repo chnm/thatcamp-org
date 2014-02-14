@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.2
+ * Transposh v0.9.3
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+ * Date: Mon, 06 May 2013 02:15:55 +0300
  */
 
 /*
@@ -128,7 +128,7 @@ class transposh_3rdparty {
      * @param BP_Activity_Activity $activity
      * @return string modified content
      */
-    function bp_get_activity_content_body($content, $activity) {
+    function bp_get_activity_content_body($content, $activity = "") { //XXX
         $activity_lang = bp_activity_get_meta($activity->id, 'tp_language');
         if ($activity_lang) {
             $content = "<span lang =\"$activity_lang\">" . $content . "</span>";

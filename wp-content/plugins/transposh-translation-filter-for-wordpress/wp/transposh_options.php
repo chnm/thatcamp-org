@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.2
+ * Transposh v0.9.3
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+ * Date: Mon, 06 May 2013 02:15:55 +0300
  */
 
 // This magic value will cause the option to be set from post
@@ -77,6 +77,8 @@ class transposh_option {
  * 
  * Settings
  * 
+ * @property boolean          $allow_full_version_upgrade    Option to allow to upgrade to full version
+ * @property transposh_option $allow_full_version_upgrade_o 
  * @property boolean          $allow_anonymous_translation   Option defining whether anonymous translation is allowed
  * @property transposh_option $allow_anonymous_translation_o
  * @property boolean          $enable_default_translate      Option to enable/disable default language translation
@@ -125,8 +127,6 @@ class transposh_option {
  * @property transposh_option $widget_progressbar_o
  * @property boolean          $widget_allow_set_deflang      Allows user to set his default language per #63 @since 0.3.8
  * @property transposh_option $widget_allow_set_deflang_o
- * @property boolean          $widget_remove_logo            Allows removing of transposh logo in exchange for an ad @since 0.6.0
- * @property transposh_option $widget_remove_logo_o
  * @property string           $widget_theme                  Allows theming of the progressbar and edit window @since 0.7.0
  * @property transposh_option $widget_theme_o
  * 
@@ -136,6 +136,8 @@ class transposh_option {
  * @property transposh_option $enable_url_translate_o
  * @property string           $jqueryui_override             Option to override the jQueryUI version @since 0.9.1
  * @property transposh_option $jqueryui_override_o
+ * @property boolean          $dont_add_rel_alternate        Option to disable the rel=alternate adding to the page @since 0.9.2
+ * @property transposh_option $dont_add_rel_alternate_o
  * @property boolean          $parser_dont_break_puncts      Option to allow punctuations such as , . ( not to break @since 0.9.0
  * @property transposh_option $parser_dont_break_puncts_o
  * @property boolean          $parser_dont_break_numbers     Option to allow numbers not to break @since 0.9.0
@@ -216,6 +218,7 @@ class transposh_plugin_options {
         $this->register_option('viewable_languages', TP_OPT_STRING);
         $this->register_option('sorted_languages', TP_OPT_STRING);
 
+        $this->register_option('allow_full_version_upgrade', TP_OPT_BOOLEAN, 0);
         $this->register_option('allow_anonymous_translation', TP_OPT_BOOLEAN, 1);
         $this->register_option('enable_default_translate', TP_OPT_BOOLEAN, 0);
         $this->register_option('enable_search_translate', TP_OPT_BOOLEAN, 1);
@@ -241,11 +244,11 @@ class transposh_plugin_options {
 
         $this->register_option('widget_progressbar', TP_OPT_BOOLEAN, 0);
         $this->register_option('widget_allow_set_deflang', TP_OPT_BOOLEAN, 0);
-        $this->register_option('widget_remove_logo', TP_OPT_BOOLEAN, 0);
         $this->register_option('widget_theme', TP_OPT_STRING, 'ui-lightness');
 
         $this->register_option('enable_url_translate', TP_OPT_BOOLEAN, 0);
         $this->register_option('jqueryui_override', TP_OPT_STRING);
+        $this->register_option('dont_add_rel_alternate', TP_OPT_BOOLEAN, 0);
         $this->register_option('parser_dont_break_puncts', TP_OPT_BOOLEAN, 0);
         $this->register_option('parser_dont_break_numbers', TP_OPT_BOOLEAN, 0);
         $this->register_option('parser_dont_break_entities', TP_OPT_BOOLEAN, 0);

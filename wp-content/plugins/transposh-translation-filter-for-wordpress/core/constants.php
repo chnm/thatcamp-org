@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.2
+ * Transposh v0.9.3
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+ * Date: Mon, 06 May 2013 02:15:55 +0300
  */
 
 //Language indicator in URL. i.e. lang=en
@@ -36,6 +36,11 @@ define('TP_GTXT_IBRK', chr(2)); // Gettext inner breaker (around %s)
 define('TP_GTXT_BRK_CLOSER', chr(3)); // Gettext breaker closer
 define('TP_GTXT_IBRK_CLOSER', chr(4)); // Gettext inner breaker closer
 
+//External services
+define('TRANSPOSH_BACKUP_SERVICE_URL', 'http://svc.transposh.org/backup');
+define('TRANSPOSH_RESTORE_SERVICE_URL', 'http://svc.transposh.org/restore');
+define('TRANSPOSH_UPDATE_SERVICE_URL', 'http://svc.transposh.org/update-check');
+
 /**
  * Holds our arrays staticly to reduce chance of namespace collision
  */
@@ -43,7 +48,7 @@ class transposh_consts {
 
 //Supported languages, new languages can be added here
 //the array directs from language code to - English Name, Native name, flag
-    public static $languages = array(
+ public static $languages = array(
         'en' => 'English,English,us,en_US',
         'af' => 'Afrikaans,Afrikaans,za,',
         'sq' => 'Albanian,Shqip,al,',
@@ -53,8 +58,10 @@ class transposh_consts {
         'eu' => 'Basque,Euskara,basque,',
         'be' => 'Belarusian,Беларуская,by,',
         'bn' => 'Bengali,বাংলা,bd,bn_BD',
+        'bs' => 'Bosnian,bosanski jezik,ba,bs_BA',
         'bg' => 'Bulgarian,Български,bg,bg_BG',
         'ca' => 'Catalan,Català,catalonia,',
+        'ceb' => 'Cebuano,Binisaya,ph,',
         'zh' => 'Chinese (Simplified),中文(简体),cn,zh_CN',
         'zh-tw' => 'Chinese (Traditional),中文(漢字),tw,zh_TW',
         'hr' => 'Croatian,Hrvatski,hr,',
@@ -71,17 +78,22 @@ class transposh_consts {
         'el' => 'Greek,Ελληνικά,gr,',
         'gu' => 'Gujarati,ગુજરાતી,in,',
         'ht' => 'Haitian,Kreyòl ayisyen,ht,',
+        'ha' => 'Hausa,Harshen Hausa,ng,',
+        'hmn' => 'Hmong,Hmoob,la,',
         'mw' => 'Hmong Daw,Hmoob Daw,la,',
         'he' => 'Hebrew,עברית,il,he_IL',
         'hi' => 'Hindi,हिन्दी; हिंदी,in,hi_IN',
         'hu' => 'Hungarian,Magyar,hu,hu_HU',
         'is' => 'Icelandic,Íslenska,is,',
+        'ig' => 'Igbo,Asụsụ Igbo,ng,',
         'id' => 'Indonesian,Bahasa Indonesia,id,id_ID',
         'ga' => 'Irish,Gaeilge,ie,',
         'it' => 'Italian,Italiano,it,it_IT',
         'ja' => 'Japanese,日本語,jp,',
+        'jw' => 'Javanese,basa Jawa,id,jv_ID',
         'kn' => 'Kannada,ಕನ್ನಡ,in,',
-        'ko' => 'Korean,우리말,kr,ko_KR',
+        'km' => 'Khmer,ភាសាខ្មែរ,kh,',
+        'ko' => 'Korean,한국어,kr,ko_KR',
         'lo' => 'Lao,ພາສາລາວ,la,',
         'la' => 'Latin,Latīna,va,',
         'lv' => 'Latvian,Latviešu valoda,lv,',
@@ -89,20 +101,26 @@ class transposh_consts {
         'mk' => 'Macedonian,македонски јазик,mk,mk_MK',
         'ms' => 'Malay,Bahasa Melayu,my,ms_MY',
         'mt' => 'Maltese,Malti,mt,',
+        'mi' => 'Maori,Te Reo Māori,nz,',
+        'mr' => 'Marathi,मराठी,in,',
+        'mn' => 'Mongolian,Монгол,mn,',
+        'ne' => 'Nepali,नेपाली,np,ne_NP',
         'no' => 'Norwegian,Norsk,no,nb_NO',
         'fa' => 'Persian,پارسی,ir,fa_IR',
         'pl' => 'Polish,Polski,pl,pl_PL',
         'pt' => 'Portuguese,Português,pt,pt_PT',
+        'pa' => 'Punjabi,ਪੰਜਾਬੀ,pk,pa_IN',
         'ro' => 'Romanian,Română,ro,ro_RO',
         'ru' => 'Russian,Русский,ru,ru_RU',
         'sr' => 'Serbian,Cрпски језик,rs,sr_RS',
         'sk' => 'Slovak,Slovenčina,sk,sk_SK',
         'sl' => 'Slovene,Slovenščina,si,sl_SI', //slovenian
+        'so' => 'Somali,Af-Soomaali,so,',
         'es' => 'Spanish,Español,es,es_ES',
         'sw' => 'Swahili,Kiswahili,tz,',
         'sv' => 'Swedish,Svenska,se,sv_SE',
         'tl' => 'Tagalog,Tagalog,ph,', // fhilipino
-        'ta' => 'Tamil,தமிழ்,lk,ta_LK',
+        'ta' => 'Tamil,தமிழ்,in,ta_LK', // apparently more in India
         'te' => 'Telugu,తెలుగు,in,',
         'th' => 'Thai,ภาษาไทย,th,',
         'tr' => 'Turkish,Türkçe,tr,tr_TR',
@@ -110,9 +128,11 @@ class transposh_consts {
         'ur' => 'Urdu,اردو,pk,',
         'vi' => 'Vietnamese,Tiếng Việt,vn,',
         'cy' => 'Welsh,Cymraeg,wales,',
-        'yi' => 'Yiddish,ייִדיש,europeanunion,'
+        'yi' => 'Yiddish,ייִדיש,europeanunion,',
+        'yo' => 'Yoruba,èdè Yorùbá,ng,',
+        'zu' => 'Zulu,isiZulu,za,'
     );
-
+ 
     public static function get_language_name($lang) {
         list ($langname, $langorigname, $flag) = explode(",", transposh_consts::$languages[$lang]);
         return $langname;
@@ -131,7 +151,8 @@ class transposh_consts {
     // @updated 2011-Nov-04
     // @updated 2012-Feb-24 (eo)
     // @updated 2012-Sep-17 (la)
-    public static $google_languages = array('en', 'af', 'sq', 'ar', 'be', 'bg', 'ca', 'zh', 'zh-tw', 'hr', 'cs', 'da', 'nl', 'et', 'fi', 'fr', 'gl', 'de', 'el', 'ht', 'he', 'hi', 'hu', 'id', 'it', 'is', 'ga', 'ja', 'ko', 'lo', 'lv', 'lt', 'mk', 'ms', 'mt', 'no', 'fa', 'pl', 'pt', 'ro', 'ru', 'sr', 'sk', 'sl', 'es', 'sw', 'sv', 'tl', 'th', 'tr', 'uk', 'vi', 'cy', 'yi', 'hy', 'az', 'eu', 'ka', 'la', 'ur', 'ta', 'te', 'kn', 'bn', 'gu', 'eo');
+    // @updated 2013-Apr-19 (km)
+    public static $google_languages = array('en', 'af', 'sq', 'ar', 'be', 'bg', 'ca', 'zh', 'zh-tw', 'hr', 'cs', 'da', 'nl', 'et', 'fi', 'fr', 'gl', 'de', 'el', 'ht', 'he', 'hi', 'hu', 'id', 'it', 'is', 'ga', 'ja', 'ko', 'lo', 'lv', 'lt', 'mk', 'ms', 'mt', 'no', 'fa', 'pl', 'pt', 'ro', 'ru', 'sr', 'sk', 'sl', 'es', 'sw', 'sv', 'tl', 'th', 'tr', 'uk', 'vi', 'cy', 'yi', 'hy', 'az', 'eu', 'ka', 'la', 'ur', 'ta', 'te', 'kn', 'bn', 'gu', 'eo', 'km');
     // Bing supported languages
     // (got this using Microsoft.Translator.GetLanguages() - fixed to match our codes)
     // @updated 2012-Feb-14 (mww)
@@ -147,10 +168,9 @@ class transposh_consts {
     //Chinese Mandarin-Traditional	zh-cn-cmn-t
     //Dari	fa-af
     //Kazakh	kk-kz
-    //Khmer	km-kh
     //Pashto	ps
     //Uzbek	uz-uz
-    public static $oht_languages = array('en', 'sq', 'ar', 'bn', 'bg', 'ca', 'zh', 'zh-tw', 'hr', 'cs', 'da', 'nl', 'et', 'fa', 'fi', 'fr', 'ka', 'de', 'el', 'he', 'hi', 'hu', 'id', 'it', 'jp', 'ko', 'lo', 'lv', 'lt', 'mk', 'ms', 'no', 'pl', 'pt', 'ro', 'ru', 'sr', 'sk', 'sl', 'es', 'sv', 'tl', 'ta', 'th', 'tr', 'uk', 'ur', 'vi');
+    public static $oht_languages = array('en', 'sq', 'ar', 'bn', 'bg', 'ca', 'zh', 'zh-tw', 'hr', 'cs', 'da', 'nl', 'et', 'fa', 'fi', 'fr', 'ka', 'de', 'el', 'he', 'hi', 'hu', 'id', 'it', 'jp', 'ko', 'lo', 'lv', 'lt', 'mk', 'ms', 'no', 'pl', 'pt', 'ro', 'ru', 'sr', 'sk', 'sl', 'es', 'sv', 'tl', 'ta', 'th', 'tr', 'uk', 'ur', 'vi', 'km');
     // Array for holding po domains we have problems with
     public static $ignored_po_domains = array('MailPress');
     // Array holding list of jQueryUI themes
@@ -164,7 +184,7 @@ class transposh_consts {
 define('TRANSLATOR', 'translator');
 
 //Define for transposh plugin version
-define('TRANSPOSH_PLUGIN_VER', '0.9.2');
+define('TRANSPOSH_PLUGIN_VER', '0.9.3');
 
 //Current jQuery UI
 define('JQUERYUI_VER', '1.9.2');

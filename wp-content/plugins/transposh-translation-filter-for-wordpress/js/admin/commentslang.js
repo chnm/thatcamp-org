@@ -1,12 +1,12 @@
 /*
- * Transposh v0.9.2
+ * Transposh v0.9.3
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+ * Date: Mon, 06 May 2013 02:15:55 +0300
  */
 (function(a){var c={en:"English - English",af:"Afrikaans - Afrikaans",sq:"Albanian - Shqip",ar:"Arabic - \u0627\u0644\u0639\u0631\u0628\u064a\u0629",hy:"Armenian - \u0540\u0561\u0575\u0565\u0580\u0565\u0576",az:"Azerbaijani - az\u0259rbaycan dili",eu:"Basque - Euskara",be:"Belarusian - \u0411\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f",bn:"Bengali - \u09ac\u09be\u0982\u09b2\u09be",bg:"Bulgarian - \u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438",ca:"Catalan - Catal\u00e0",zh:"Chinese (Simplified) - \u4e2d\u6587(\u7b80\u4f53)",
 "zh-tw":"Chinese (Traditional) - \u4e2d\u6587(\u6f22\u5b57)",hr:"Croatian - Hrvatski",cs:"Czech - \u010ce\u0161tina",da:"Danish - Dansk",nl:"Dutch - Nederlands",eo:"Esperanto - Esperanto",et:"Estonian - Eesti keel",fi:"Finnish - Suomi",fr:"French - Fran\u00e7ais",gl:"Galician - Galego",ka:"Georgian - \u10e5\u10d0\u10e0\u10d7\u10e3\u10da\u10d8",de:"German - Deutsch",el:"Greek - \u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac",gu:"Gujarati - \u0a97\u0ac1\u0a9c\u0ab0\u0abe\u0aa4\u0ac0",ht:"Haitian - Krey\u00f2l ayisyen",

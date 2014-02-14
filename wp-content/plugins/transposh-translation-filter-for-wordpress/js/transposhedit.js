@@ -1,12 +1,12 @@
 /*
- * Transposh v0.9.2
+ * Transposh v0.9.3
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+ * Date: Mon, 06 May 2013 02:15:55 +0300
  */
 (function(a){function e(a){var b;return typeof t_jp.l==="object"&&(b=t_jp.l[a])?b:a}function n(c,d,e){a.trim(d).length===0&&(d=a("[data-token='"+c+"']").attr("data-orig"));var f=function(){var c=a(this).attr("id").substr(a(this).attr("id").lastIndexOf("_")+1),d=a(b+"img_"+c);a(b+c).attr("data-source",e);d.removeClass("tr-icon-yellow").removeClass("tr-icon-green");e==0?d.addClass("tr-icon-green"):e&&d.addClass("tr-icon-yellow")};a("*[data-token='"+c+"'][data-hidden!='y']").html(d).each(f);a("*[data-token='"+
 c+"'][data-hidden='y']").attr("data-trans",d).each(f);a(b+"translation").data("origval",d);a(b+"translation").keyup()}function o(b,d){n(b,d,0);a.ajax({type:"POST",url:t_jp.ajaxurl,data:{action:"tp_translation",ln0:t_jp.lang,sr0:0,items:1,tk0:b,tr0:d},error:function(a){n(b,"",1);alert("Problem saving translation, contact support.\n\nServer's message: "+a.statusText)}})}function y(){t_jp.google_key?t_jp.dgt(a(b+"original").val(),function(c){a(b+"translation").val(a("<div>"+a.trim(c.data.translations[0].translatedText)+
@@ -36,5 +36,5 @@ da:"Danish - Dansk",nl:"Dutch - Nederlands",eo:"Esperanto - Esperanto",et:"Eston
 hu:"Hungarian - Magyar",is:"Icelandic - \u00cdslenska",id:"Indonesian - Bahasa Indonesia",ga:"Irish - Gaeilge",it:"Italian - Italiano",ja:"Japanese - \u65e5\u672c\u8a9e",kn:"Kannada - \u0c95\u0ca8\u0ccd\u0ca8\u0ca1",ko:"Korean - \uc6b0\ub9ac\ub9d0",lo:"Lao - \u0e9e\u0eb2\u0eaa\u0eb2\u0ea5\u0eb2\u0ea7",la:"Latin - Lat\u012bna",lv:"Latvian - Latvie\u0161u valoda",lt:"Lithuanian - Lietuvi\u0173 kalba",mk:"Macedonian - \u043c\u0430\u043a\u0435\u0434\u043e\u043d\u0441\u043a\u0438 \u0458\u0430\u0437\u0438\u043a",
 ms:"Malay - Bahasa Melayu",mt:"Maltese - Malti",no:"Norwegian - Norsk",fa:"Persian - \u067e\u0627\u0631\u0633\u06cc",pl:"Polish - Polski",pt:"Portuguese - Portugu\u00eas",ro:"Romanian - Rom\u00e2n\u0103",ru:"Russian - \u0420\u0443\u0441\u0441\u043a\u0438\u0439",sr:"Serbian - C\u0440\u043f\u0441\u043a\u0438 \u0458\u0435\u0437\u0438\u043a",sk:"Slovak - Sloven\u010dina",sl:"Slovene - Sloven\u0161\u010dina",es:"Spanish - Espa\u00f1ol",sw:"Swahili - Kiswahili",sv:"Swedish - Svenska",tl:"Tagalog - Tagalog",
 ta:"Tamil - \u0ba4\u0bae\u0bbf\u0bb4\u0bcd",te:"Telugu - \u0c24\u0c46\u0c32\u0c41\u0c17\u0c41",th:"Thai - \u0e20\u0e32\u0e29\u0e32\u0e44\u0e17\u0e22",tr:"Turkish - T\u00fcrk\u00e7e",uk:"Ukrainian - \u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430",ur:"Urdu - \u0627\u0631\u062f\u0648",vi:"Vietnamese - Ti\u1ebfng Vi\u1ec7t",cy:"Welsh - Cymraeg",yi:"Yiddish - \u05d9\u05d9\u05b4\u05d3\u05d9\u05e9"},d=t_jp.prefix,b="#"+d,x=false,t="prev",u="next",k="right",i="left",w=39,v=37;a("html").attr("dir")===
-"rtl"&&(k="left",i="right",v=39,w=37,t="next",u="prev");a("."+d).each(function(){var c=a(this).attr("id").substr(a(this).attr("id").lastIndexOf("_")+1),e;a(this).after('<span id="'+d+"img_"+c+'" class="tr-icon" title="'+a(this).attr("data-orig")+'"></span>');e=a(b+"img_"+c);var i=function(){t_jp.locale&&!x?a.getScript(t_jp.plugin_url+"/js/l/"+t_jp.lang+".js",function(){x=true;s(c)}):s(c)};e.click(function(){t_jp.tfju(function(){i()});return false}).css({border:"0px",margin:"1px",padding:"0px"});a(this).attr("data-source")===
-"0"?e.addClass("tr-icon-green"):a(this).attr("data-source")&&e.addClass("tr-icon-yellow");a(this).attr("data-hidden")==="y"&&e.css({opacity:"0.6"})})})(jQuery);
+"rtl"&&(k="left",i="right",v=39,w=37,t="next",u="prev");a("."+d).each(function(){if(typeof a(this).attr("id")!=="undefined"){var c=a(this).attr("id").substr(a(this).attr("id").lastIndexOf("_")+1),e;a(this).after('<span id="'+d+"img_"+c+'" class="tr-icon" title="'+a(this).attr("data-orig")+'"></span>');e=a(b+"img_"+c);var i=function(){t_jp.locale&&!x?a.getScript(t_jp.plugin_url+"/js/l/"+t_jp.lang+".js",function(){x=true;s(c)}):s(c)};e.click(function(){t_jp.tfju(function(){i()});return false}).css({border:"0px",
+margin:"1px",padding:"0px"});a(this).attr("data-source")==="0"?e.addClass("tr-icon-green"):a(this).attr("data-source")&&e.addClass("tr-icon-yellow");a(this).attr("data-hidden")==="y"&&e.css({opacity:"0.6"})}})})(jQuery);

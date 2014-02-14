@@ -3,10 +3,10 @@ Contributors: oferwald
 Donate link: http://transposh.org/donate/
 Tags: translation, translate, i18n, widget, filter, buddypress, bilingual, multilingual, transposh, language, crowdsourcing, google translate, bing translate, context, wiki, RTL, Hebrew, Spanish, French, Russian, English, Arabic, Portuguese
 Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 0.9.2
+Tested up to: 3.8
+Stable tag: 0.9.5
 
-Transposh adds best of breed translation support to wordpress, 66 languages are automatically translated and can be manually corrected with ease.
+Transposh adds best of breed translation support to wordpress, 82 languages are automatically translated and can be manually corrected with ease.
 
 == Description ==
 Transposh translation filter for WordPress offers a unique approach to blog translation. It allows your blog to combine automatic translation with human translation aided by your users with an easy to use in-context interface.
@@ -23,7 +23,7 @@ You can watch the video above, made by Fabrice Meuwissen of obviousidea.com whic
 * Translation of external plugins without a need for .po/.mo files
 * Automatic translation mode for all content (including comments!)
 * Professional translation bt [One Hour Translation](http://transposh.org/redir/oht)
-* Use either Google Translate,MS Translate or Apertium backends - 67 languages supported!
+* Use either Google Translate,MS Translate or Apertium backends - 82 languages supported!
 * Automatic translation can be triggered on demand by the readers or on the server side
 * RSS feeds are translated too
 * Takes care of hidden elements, link tags, meta contents and titles
@@ -69,6 +69,12 @@ You can find them on our site [here](http://transposh.org/faq)
 5. Widget style selection box, with three basic appearances, flags below (in Hebrew), language selection on the top right and language list on the bottom right.
 
 == Upgrade Notice ==
+= 0.9.5 =
+Fix hiding of upgrades
+= 0.9.4 =
+Fix broken update, Fix Google proxy
+= 0.9.3 =
+Really, no need to upgrade here, please read how to keep your widgets on our site
 = 0.9.2 =
 Update for some bugs in parsing
 = 0.8.0 =
@@ -119,6 +125,19 @@ This version allows sorting of languages within the widget
  * Portuguese (Brazil) translation by [Amilton Junior](http://www.dicasemgeral.com)
 
 == Changelog ==
+= 2014/02/05 - 0.9.5 =
+ * Added 9 new google languages
+= 2013/10/31 - 0.9.4 =
+ * Fix broken Google translate internal Proxy
+ * Fix update mechanism to support 3.7+
+= 2013/05/06 - 0.9.3 =
+ * Removed any linking to Transposh and ad sharing mechnism
+ * Added Khmer
+ * Removed all widgets except the default version
+ * Allow to remove the rel=alternate language marking
+ * Allow to update to complete version from transposh.org
+ * All widgets except the default are no longer included, you may choose to upgrade or get them from our site
+ * This version, while fully functional, has a limit of 5 languages selection
 = 2013/03/11 - 0.9.2 =
  * Basic Woocommerce support 
  * Override the case when other plugins or themes cause the process_page to be called prematurely

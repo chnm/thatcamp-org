@@ -1,12 +1,12 @@
 /*
- * Transposh v0.9.2
+ * Transposh v0.9.3
  * http://transposh.org/
  *
  * Copyright 2013, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 11 Mar 2013 02:28:05 +0200
+ * Date: Mon, 06 May 2013 02:15:55 +0300
  */
 (function(e){function t(b,a){n+=1;e("#progress_bar").progressbar("value",n/o*100);e("#p").text("("+a+") "+b);n===o&&e("#tr_loading").data("done",true)}function j(b,a,c,f){a=e("<div>"+e.trim(a)+"</div>").text();t(a,c);clearTimeout(p);l+=1;k.push(b);g.push(a);h.push(c);i.push(f);p=setTimeout(function(){var a={action:"tp_translation",items:l},d;for(d=0;d<l;d+=1)k[d]!==k[d-1]&&(a["tk"+d]=k[d]),h[d]!==h[d-1]&&(a["ln"+d]=h[d]),g[d]!==g[d-1]&&(a["tr"+d]=g[d]),i[d]!==i[d-1]&&(a["sr"+d]=i[d]);e.ajax({type:"POST",
 url:t_jp.ajaxurl,data:a,success:function(){},error:function(){}});l=0;g=[];k=[];h=[];i=[]},200)}function u(b,a,c){var f=c;f==="zh"?f="zh-chs":f==="zh-tw"&&(f="zh-cht");t_jp.dmt(a,function(a){e(a).each(function(a){j(b[a],this.TranslatedText,c,2)})},f)}function v(b,a,c){t_jp.dat(a,function(a){a.responseStatus>=200&&a.responseStatus<300&&(a.responseData.translatedText!==void 0?j(b[0],a.responseData.translatedText):e(a.responseData).each(function(a){this.responseStatus===200&&j(b[a],this.responseData.translatedText,
