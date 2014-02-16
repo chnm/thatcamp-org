@@ -28,7 +28,7 @@ div.generic-button a {
   cursor: pointer;
   font-size: 0.6rem;
   outline: none;
-  padding: 4px 10px;
+  padding: 4px;
   text-align: center;
   text-decoration: none;
   line-height: 14px;

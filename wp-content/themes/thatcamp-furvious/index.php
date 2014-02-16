@@ -18,7 +18,7 @@
 					<p class="authorp">Posted by<br /><?php the_author_posts_link(); ?>
 					</p>
 					<br /> 
-					<p>Category</p>
+					<p>Categories</p>
 					<ul>
 						<li class="sidecategory"><?php the_category('</li><li class="sidecategory">') ?></li> 
 					</ul>
@@ -34,6 +34,8 @@
 						<div class="post">
 							<?php the_content('Read more') ?> 
 						</div>
+							<?php if (get_the_tags());?>
+							<p class="tagg"><?php the_tags(); ?></p>						
 					</div>
 				</div>
 			</li>
