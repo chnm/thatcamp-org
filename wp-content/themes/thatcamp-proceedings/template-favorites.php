@@ -1,8 +1,24 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Favorite THATCamp Posts
+ *
+ * @package thatcamp
+ * @since thatcamp 1.0
+ *
+ * Template Name: Favorite THATCamp Posts
+ */
+?>
 
+<?php get_header(); ?>
+   
 <div class="main thatcamp-stream">
 
-<h1 class="post-title"><?php wp_title(' '); ?></h1>
+<ul class="subscribe">
+	<li><a href="<?php echo site_url(); ?>/feed" class="subscribe-rss" title="Subscribe with RSS" alt="Subscribe with RSS"><?php _e( 'Subscribe with RSS', 'thatcamp' ); ?></a></li>
+	<li><a href="" class="subscribe-email" title="Subscribe by Email" alt="Subscribe by Email"><?php _e( 'Subscribe by Email', 'thatcamp' ); ?></a></li>
+</ul>
+
+<h1 class="post-title">Favorite THATCamp Posts</h1>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -36,7 +52,9 @@
 						<?php endif ?>
 						<span class="meta-date"><?php echo get_the_date(); ?></span>	
 						<span class="meta-cat"><?php echo "Categorized: " ?><?php the_category(', '); ?></span>
-						<span class="meta-tags"><?php the_tags('Tagged: ', ', ', '<br />'); ?></span>														
+						<span class="meta-tags"><?php the_tags('Tagged: ', ', ', '<br />'); ?></span>									
+						<span class="excerpt"><?php the_excerpt(); ?></span>
+						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="readmore postlink">Read more on the original site...</a>							
 					</div>
 				</article>
 

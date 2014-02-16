@@ -480,7 +480,7 @@ a.subscribe-email {
 }
 
 
-/* All Posts Template (Stream)
+/* Stream Template 
     ============================*/
 
 .pagecontent {
@@ -963,7 +963,7 @@ float:right;
 /* Search, Archive, and Category
 ===========================*/
 
-.post {
+.post, article.type-page {
     border-bottom: 1px solid #e8e8e8;
     margin-left: 40px;
     margin-bottom: 10px;
@@ -993,6 +993,10 @@ float:right;
     font-size: 20px;
     margin: 0 20px -6px 20px;
     }
+
+.type-page .post-avatar, .type-page .meta-author, .type-page .meta-date, .type-page .meta-cat, .type-page .meta-tags {
+    display:none;
+}
 
 
 /* Author
@@ -1068,7 +1072,49 @@ width:800px;
 }
     
 
+/* Mobile tweaks
+===========================*/
 
 
+/* Mobile/Browser styles */
 
+@media only screen and (max-width: 767px) {	
+         .main {
+         background-color: #fbfbfb;
+         padding: 10px;
+         margin-top: 2em;
+         }
+         
+         ul.subscribe {
+         margin-top:0px;
+         margin-left: 50px;
+         }
+         
+}
 
+  /* Below 800 styles */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  
+	iframe {
+	width: 250px;
+	height: 250px;
+	}
+}
+
+  /* Below 800 styles */
+@media only screen and (min-width: 768px) and (max-width: 800px) {
+  
+	iframe {
+	width: 650px;
+	height: 650px;
+	}
+}
+
+  /* 1024 and above styles */
+@media only screen and (min-width: 1024px) {
+
+	nav.tabs {
+	width: 627px;
+	float: none;
+	display: inline;
+	}

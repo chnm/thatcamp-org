@@ -1,11 +1,11 @@
 <?php
 /**
- * THATCamp Dates
+ * THATCamp Posts by Date
  *
  * @package thatcamp
  * @since thatcamp 1.0
  *
- * Template Name: THATCamp Dates 
+ * Template Name: THATCamp Posts by Date
  */
 ?> 
 

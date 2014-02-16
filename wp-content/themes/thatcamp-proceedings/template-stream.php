@@ -87,7 +87,6 @@
 			<div class="nav-newer"><?php thatcamp_newer_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'thatcamp' ), $stream_query->max_num_pages ); ?></div>
 		</div>
 
-
 	</div>
 </div>
 

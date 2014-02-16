@@ -65,7 +65,7 @@ echo wp_title(' ');
 <p><?php _e('Sorry, no posts were found.'); ?></p>
 <?php endif; ?>
 
-<div class="navigation"><?php posts_nav_link('<span class="break"> </span>', "Previous", "More"); ?></div>
+<div class="navigation"><?php posts_nav_link('<span class="break"> </span>', "Previous page", "Next page"); ?></div>
 
 </div>
 

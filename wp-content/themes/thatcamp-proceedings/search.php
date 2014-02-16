@@ -40,17 +40,10 @@ $total_results = $wp_query->found_posts;
 							<span class="meta-source"><?php printf( _x( 'at %s', 'From the blog...', 'thatcamp' ), $source_blog_link ) ?></span>												
 						<?php endif ?>
 						<span class="meta-date"><?php echo get_the_date(); ?></span>
-						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="readmore postlink">Read more...</a>
+						<span class="meta-cat"><?php echo "Categorized: " ?><?php the_category(', '); ?></span>
+						<span class="meta-tags"><?php the_tags('Tagged: ', ', ', '<br />'); ?></span>														
 					</div>
 				</article>
-
-<!--
-<h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-
-<?php the_excerpt(); ?>
-
-<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="readmore postlink">Read more...</a> 
--->
 <?php endwhile; else: ?>
 <p><?php _e('Sorry, no posts were found.'); ?></p>
 
