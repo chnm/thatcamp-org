@@ -27,5 +27,14 @@
 	<footer class="post-meta">
 		<div class="post-date">
 			<?php echo get_the_date(); ?></div>
+		<div class="post-categories">
+			<?php _e( 'Categories: ', 'thatcampbase'); ?><?php the_category( ' ' ); ?>
+		</div>
+		<div class="post-tags">
+			<?php $tags_list = get_the_tag_list( '', ', ' );
+			if ( $tags_list ): ?>
+			<?php printf( __( 'Tags: %2$s', 'thatcampbase'), 'tag-links', $tags_list ); ?>
+			<?php endif; ?>
+		</div>			
 	</footer>
 </article>
