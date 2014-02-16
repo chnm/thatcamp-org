@@ -89,7 +89,7 @@ hr {
 ===========================*/
 
 header {
-/*    background-image: url('images/top-bg.jpg'); */
+    background-image: url('images/top-bg.jpg'); 
     display: block;
     margin: 0;
     padding: 20px 0;
@@ -269,13 +269,16 @@ header .current_page_item {
 ===========================*/
 
 footer {
+    background-image: url('images/footer-bg.png'); 
     color: rgba(255,255,255,.3);
     font-size: 12px;
     line-height: 16px;
     padding: 10px 10px 40px 0;
     }
 
-    footer .container { text-align: center; }
+   footer .container { 
+     text-align: center; 
+    }
 
     footer nav a:link { color: #B6BDCC; }
     footer nav a:visited { color: #A2A8B5; }
@@ -292,7 +295,7 @@ footer {
         }
 
     footer img {
-        max-height: 70px;
+        max-height: 70px; 
         margin: 0 40px 20px 0;;
         }
 
@@ -440,8 +443,7 @@ a.subscribe-email {
 .main img {
         max-width: 100%;
         height: auto;
-        margin-top: 5px;
-        }
+       }
 
 .main a img { border: 0; }
 
@@ -452,6 +454,30 @@ a.subscribe-email {
 .main h4 {
      text-transform: uppercase;
      }
+     
+.img-wrapper {
+  background: #FBFBFB;
+   box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -moz-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  -o-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.09);
+  background: #FAFAFA;
+  overflow: hidden;
+  float: left;
+  padding: 3px;
+  margin-left: -5px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+}
+
+.post-avatar img.avatar,
+.activity-avatar img.avatar {
+  float: left;
+  -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+  border-radius: 50%;
+}
 
 .wp-caption {
     margin: 40px auto;
@@ -510,10 +536,6 @@ font-size: large;
 	    position:relative;
 	    margin:0;
 	    padding:0;
-    }
-
-    .thatcamp-stream .post-avatar {
-	    float:left;
     }
 
     .thatcamp-stream h3 {
@@ -793,6 +815,7 @@ float:right;
         font-style: italic;
         }
 
+/*
 .gravatar {
     background-color: #fbfbfb;
     border: 1px solid #e8e8e8;
@@ -809,7 +832,7 @@ float:right;
         margin: 0 !important;
         padding: 0;
         }
-
+*/
 
 /* Front Page
 ===========================*/
@@ -822,7 +845,7 @@ float:right;
     text-align: center;
     }
 
-    .downloads a img {
+    .downloads a 	 {
         vertical-align: bottom;
         transition-property: opacity;
             -webkit-transition-property: opacity;

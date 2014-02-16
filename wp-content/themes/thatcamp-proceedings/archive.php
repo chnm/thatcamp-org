@@ -22,7 +22,7 @@ echo wp_title(' ');
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<div class="post-avatar">
-							<span class="img-wrapper floatright"><?php echo get_avatar( get_the_author_meta( 'user_email' ), '50' ); ?></span>
+							<span class="img-wrapper"><?php echo get_avatar( get_the_author_meta( 'user_email' ), '50' ); ?></span>
 					</div>
 					<div class="post-meta">
 						<header class="post-header">
