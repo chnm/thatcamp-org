@@ -42,7 +42,7 @@
 		<div class="post-tags">
 			<?php $tags_list = get_the_tag_list( '', ', ' );
 			if ( $tags_list ): ?>
-			<?php printf( __( 'Tags: %2$s', 'notecamp'), 'tag-links', $tags_list ); ?> |
+			<?php printf( __( 'Tags: %2$s', 'notecamp'), 'tag-links', $tags_list ); ?>
 			<?php endif; ?>
 		</div>
 		<div class="post-edit">
