@@ -35,6 +35,25 @@
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
 					</div><!-- .entry-content -->
 
+				<div class="entry-utility">
+				<?php if ( count( get_the_category() ) ) : ?>
+					<span class="cat-links">
+						<?php printf( __( '<span class="%1$s">Categories:</span> %2$s', 'twentyten' ), 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list( ', ' ) ); ?>
+					</span>
+					<span class="meta-sep">|</span>
+				<?php endif; ?>
+				<?php
+					$tags_list = get_the_tag_list( '', ', ' );
+					if ( $tags_list ):
+				?>
+					<span class="tag-links">
+						<?php printf( __( '<span class="%1$s">Tags:</span> %2$s', 'twentyten' ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
+					</span>
+					<span class="meta-sep">|</span>
+				<?php endif; ?>						
+				<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link">', '</span>' ); ?>
+				</div><!-- .entry-utility -->
+					
 <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 					<div id="entry-author-info">
 						<div id="author-avatar">
@@ -52,10 +71,6 @@
 					</div><!-- #entry-author-info -->
 <?php endif; ?>
 
-					<div class="entry-utility">
-						<?php twentyten_posted_in(); ?>
-						<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link">', '</span>' ); ?>
-					</div><!-- .entry-utility -->
 				</div><!-- #post-## -->
 
 				<div id="nav-below" class="navigation">
