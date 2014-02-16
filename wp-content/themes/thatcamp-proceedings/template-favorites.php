@@ -54,7 +54,7 @@
 						<span class="meta-cat"><?php echo "Categorized: " ?><?php the_category(', '); ?></span>
 						<span class="meta-tags"><?php the_tags('Tagged: ', ', ', '<br />'); ?></span>									
 						<span class="excerpt"><?php the_excerpt(); ?></span>
-						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="readmore postlink">Read more on the original site...</a>							
+						<span class="readmore"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="postlink">Read more on the original site...</a></span>							
 					</div>
 				</article>
 

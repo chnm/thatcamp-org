@@ -269,7 +269,8 @@ header .current_page_item {
 ===========================*/
 
 footer {
-    background-image: url('images/footer-bg.png'); 
+/*    background-image: url('images/footer-bg.png'); */
+    background-color: #333333;
     color: rgba(255,255,255,.3);
     font-size: 12px;
     line-height: 16px;
@@ -505,6 +506,20 @@ a.subscribe-email {
 	text-align: right;
 }
 
+/* Different color scheme for external links
+.post-title a:link, .meta-author a:link, .meta-source a:link, .readmore a:link {
+	color: #062772;
+}
+
+.post-title a:visited, .meta-author a:visited, .meta-source a:visited, .readmore a:visited {
+	color: #1C2550;
+}
+
+.post-title a:hover, .meta-author a:hover, .meta-source a:hover, .readmore a:hover {
+	color: #4773D7;
+}
+*/
+
 
 /* Stream Template 
     ============================*/
@@ -550,12 +565,6 @@ font-size: large;
 	margin-bottom: 3em;
 }
 
-.readmore {
-display: block;
-margin-top: 1.5em;
-margin-bottom: .5em;
-}
-
 .meta-date, .meta-cat, .meta-tags {
 display:block;
 margin-top: .25em;
@@ -569,6 +578,12 @@ padding-top: 1em;
 .excerpt {
 display: block;
 margin-top: 1.5em;
+}
+
+.readmore {
+display: block;
+margin-top: 1.5em;
+margin-bottom: .5em;
 }
 
 
@@ -1109,10 +1124,11 @@ width:800px;
          }
          
          ul.subscribe {
-         margin-top:0px;
-         margin-left: 50px;
-         }
-         
+          display:block;
+          margin-top:0px;
+          margin-left: 0px;
+          padding-left: 0px;
+         }         
 }
 
   /* Below 800 styles */
@@ -1130,7 +1146,7 @@ width:800px;
 	iframe {
 	width: 650px;
 	height: 650px;
-	}
+	}	 
 }
 
   /* 1024 and above styles */
