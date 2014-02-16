@@ -1,0 +1,854 @@
+/**************************************************************************************************
+  Tags
+**************************************************************************************************/
+*
+{
+  margin:0px;
+  padding:0px;
+  outline:none;
+}
+
+html
+{
+  font:normal 12px Arial, Helvetica;
+  background:url(../img/bg/background.png) repeat !important;
+}
+
+h1
+{
+  font-size:20px;
+}
+
+h2
+{
+  font-size:18px;
+}
+
+h3
+{
+  font-size:17px;
+}
+
+h4
+{
+  font-size:16px;
+}
+
+h5
+{
+  font-size:15px;
+}
+
+h6
+{
+  font-size:14px;
+}
+
+input, textarea, select, button, fieldset
+{
+  padding:2px;
+  border:1px solid;
+  font:normal 12px Arial, Helvetica;
+}
+
+a
+{
+}
+
+img
+{
+  border:0px;
+}
+
+ul, ol
+{
+}
+
+hr
+{
+  
+}
+
+/**************************************************************************************************
+  Container
+**************************************************************************************************/
+#container
+{
+  width:980px;
+  margin:20px auto 10px auto;
+  border:1px solid;
+}
+
+/**************************************************************************************************
+  Dater
+**************************************************************************************************/
+#dater
+{
+  clear:both;
+  width:980px;
+  height:31px;
+  line-height:31px;
+}
+
+#dater p
+{
+  margin:0px 10px 0px 10px;
+}
+
+#dater .rss
+{
+  float:right;
+}
+
+#dater .rss a
+{
+  width:27px;
+  height:27px;
+  margin:2px 10px 0px 10px;
+  display:block;
+  text-indent:-5000px;
+  background:url(../img/icon/rss-top.gif) no-repeat;
+}
+
+#dater .translation
+{
+  float:right;
+  list-style:none;
+}
+
+.translation li
+{
+  display:inline;
+  padding:0 3px 0 3px;
+  font-weight:bold;
+  text-transform:uppercase;
+}
+
+.translation li a
+{
+  text-decoration:none;
+}
+
+/**************************************************************************************************
+  Header
+**************************************************************************************************/
+#header
+{
+  clear:both;
+  width:980px;
+  height:120px;
+}
+
+#header .blog-title
+{
+  padding:30px 20px 0px 20px;
+  font-size:30px;
+}
+
+#header .blog-title a
+{
+  text-decoration:none;
+}
+
+#header .blog-description
+{
+  padding:0px 20px 0px 20px;
+}
+
+/**************************************************************************************************
+  Menu
+**************************************************************************************************/
+#menu
+{
+  clear:both;
+  width:980px;
+  height:36px;
+}
+
+#menu ul
+{
+  list-style:none;
+}
+
+#menu li
+{
+  float:left;
+  display:block;
+  position:relative;
+  z-index:1 !important;
+}
+
+#menu li a
+{
+ float:left;
+ height:36px;
+ line-height:36px;
+ display:block;
+ padding:0px 10px;
+ text-decoration:none;
+ font-size:13px !important;
+ font-weight:bold;
+}
+
+#menu li li a
+{
+ float:left;
+ height:36px;
+ line-height:36px;
+ display:block;
+ padding:0px 10px;
+ text-decoration:none;
+ font-size:12px !important;
+ font-weight:normal !important;
+}
+
+#menu li ul
+{
+  top:36px;
+  left:0px;
+  z-index:10;
+  position:absolute;
+  display:none;
+}
+
+#menu li li
+{
+  clear:left;
+  float:left;
+}
+
+#menu li li a
+{
+  width:180px;
+  height:30px;
+  line-height:30px;
+  display:block;
+  padding:0px 10px;
+  border-top:1px solid;
+}
+
+#menu .parent{
+  background:url(../img/bg/arrow-down.gif) no-repeat center right;
+}
+
+/**************************************************************************************************
+  BreadCrumb
+**************************************************************************************************/
+#breadcrumb
+{
+  clear:both;
+  width:980px;
+  height:30px;
+  line-height:30px;
+}
+
+#breadcrumb p
+{
+  padding:0px 10px 0px 10px;
+}
+
+#breadcrumb a
+{
+  text-decoration:none;
+}
+
+/**************************************************************************************************
+  Content
+**************************************************************************************************/
+#content
+{
+  float:left;
+  width:700px;
+  padding:14px 0px 10px 10px;
+}
+
+#content .content-title
+{
+  height:25px;
+  line-height:25px;
+  padding:5px 10px 5px 12px !important;
+}
+
+#content .content-title a
+{
+  text-decoration:none;
+}
+
+/**************************************************************************************************
+  Highlight
+**************************************************************************************************/
+#highlight
+{
+  width:700px;
+  height:170px;
+  margin:0px 0px 15px 0px;
+  border-bottom:2px solid;
+  z-index:0 !important;
+}
+
+#highlight img
+{
+  float:left;
+  margin:10px;
+}
+
+#highlight .post-title
+{
+  margin:10px 10px 0px 10px;
+}
+
+#highlight .info
+{
+  margin:0px 0px 0px 10px;
+}
+
+#highlight .entry
+{
+  margin:10px 10px 10px 10px;
+}
+
+#highlight-pager
+{
+  float:right;
+}
+
+#highlight-pager a
+{
+  float:left;
+  width:15px;
+  height:15px;
+  display:block;
+  overflow:hidden;
+  margin:5px 0px 0px 10px;
+  text-indent:-5000px;
+}
+
+/**************************************************************************************************
+  Posts
+**************************************************************************************************/
+.post
+{
+  clear:both;
+  margin:0px 0px 10px 0px;
+  padding:10px 10px 14px 10px;
+}
+
+.post .entry
+{
+  margin:0px 0px 10px 0px;
+}
+
+.post-date
+{
+  background:url(../img/icon/clock.gif) no-repeat;
+  padding:0 0 3px 20px !important;
+  margin:0 0 3px 0;
+}
+
+.post-author
+{
+  background:url(../img/icon/user.gif) no-repeat;
+  padding:3px 0 0 20px !important;
+  margin:0 0 3px 0;
+}
+
+.post-category
+{
+  background:url(../img/icon/folder.gif) no-repeat;
+  padding:3px 0 0 20px !important;
+  margin:0 0 3px 0;
+}
+
+.post-tags
+{
+  background:url(../img/icon/tag.gif) no-repeat;
+  padding:3px 0 0 20px !important;
+  margin:0 0 3px 0;
+}
+
+.post-comments
+{
+  background:url(../img/icon/comment.gif) 2px 2px no-repeat;
+  padding:3px 0 0 20px !important;
+  margin:0 0 3px 0;
+}
+
+/**************************************************************************************************
+  Comment Form
+**************************************************************************************************/
+.comment-form
+{
+  margin:0px 0px 10px 0px;
+  padding:10px;
+}
+
+.comment-form li
+{
+  padding:5px;
+  list-style:none;
+}
+
+.comment-form label
+{
+  float:left;
+  width:100px;
+}
+
+.comment-form textarea
+{
+  width:400px;
+  height:100px;
+  padding:5px;
+}
+
+/**************************************************************************************************
+  Comment
+**************************************************************************************************/
+.comment
+{
+  margin:0px 0px 10px 0px;
+  padding:10px;
+}
+
+.comment p
+{
+  margin:10px 0px;
+}
+
+.comment .comment-author a
+{
+  text-decoration:none;
+}
+
+.comment-rss, .trackback-link
+{
+  float:right;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:normal;
+  margin:0px 0px 0px 10px;
+}
+
+/**************************************************************************************************
+  Navigation
+**************************************************************************************************/
+.navigation a
+{
+  font-weight:bold;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/**************************************************************************************************
+  Sidebar
+**************************************************************************************************/
+#sidebar
+{
+  float:right;
+  width:250px;
+  padding:14px 10px 10px 10px;
+}
+
+#sidebar .widget
+{
+  margin-bottom:15px;
+}
+
+#sidebar .widget p
+{
+  padding:5px;
+}
+
+#sidebar .widget a
+{
+  text-decoration:none;
+}
+
+#sidebar .widget li
+{
+  list-style:none;
+}
+
+#sidebar .widget form
+{
+  padding:5px;
+}
+
+#sidebar .widget-title
+{
+  height:25px;
+  line-height:25px;
+  margin:0px 0px 5px 0px;
+  padding:5px 10px 5px 10px;
+  text-align:left;
+}
+
+#sidebar .widget-title a
+{
+  text-decoration:none;
+}
+
+/**************************************************************************************************
+  Widget: Posts, Páginas, Categorias, Arquivos, Links e Meta
+**************************************************************************************************/
+#widget_pages li, #widget_categories li, #widget_archive li, #widget_recent_entries li, .links li, #widget_meta li
+{
+  list-style:none;
+}
+
+#widget_pages li a, #widget_categories li a, #widget_archive li a, #widget_recent_entries li a, .links li a, #widget_meta li a
+{
+  height:30px;
+  line-height:30px;
+  padding:0px 5px 0px 28px;
+  display:block;
+  overflow:hidden;
+  border-top:1px solid; 
+}
+
+#widget_pages li li a, #widget_categories li li a
+{
+  padding:0px 5px 0px 30px;
+}
+
+#widget_categories li a
+{
+  background:url(../img/icon/folder.gif) 8px 7px no-repeat;
+}
+
+#widget_categories li li a
+{
+  background:url(../img/icon/page-children.gif) 8px 7px no-repeat;
+}
+
+
+#widget_archive li a
+{
+  background:url(../img/icon/database.gif) 8px 7px no-repeat;
+}
+
+#widget_pages li a
+{
+  background:url(../img/icon/page.gif) 8px 7px no-repeat;
+}
+
+#widget_pages li li a
+{
+  background:url(../img/icon/page-children.gif) 8px 7px no-repeat;
+}
+
+#widget_recent_entries li a
+{
+  background:url(../img/icon/page_white_text.gif) 8px 7px no-repeat;
+}
+
+#widget_text p
+{
+  padding:5px;
+}
+
+.links li a
+{
+  background:url(../img/icon/link.gif) 8px 7px no-repeat;
+}
+
+/**************************************************************************************************
+  Widget: Search
+**************************************************************************************************/
+#widget_search
+{
+}
+
+#widget_search input
+{
+  margin:6px 0 0 0;
+}
+
+/**************************************************************************************************
+  Widget: Nuvem de Tags
+**************************************************************************************************/
+#widget_tag_cloud
+{
+  text-align:center;
+}
+
+#widget_tag_cloud a:hover
+{
+  text-decoration:underline;
+}
+
+/**************************************************************************************************
+  Widget: Comentários Recentes, RSS
+**************************************************************************************************/
+#widget_recent_comments li, #widget_rss li
+{
+  padding:10px 24px;
+  border-top:1px solid;
+}
+
+#widget_rss .rsswidget
+{
+  font-weight:bold;
+}
+
+#widget_rss .rss-date
+{
+  font-size:11px;
+}
+
+#widget_rss .rssSummary
+{
+}
+
+#widget_recent_comments li
+{
+  background:url(../img/icon/comments.gif) 5px 11px no-repeat !important;
+}
+
+
+/**************************************************************************************************
+  Widget: Calendar
+**************************************************************************************************/
+#widget_calendar table
+{
+  width:230px;
+  text-align:center;
+}
+
+/**************************************************************************************************
+  Footer
+**************************************************************************************************/
+#footer
+{
+  clear:both;
+  width:980px;
+  padding:8px 0px;
+  border-bottom:1px solid;
+}
+
+#footer a
+{
+  text-decoration:none;
+}
+
+#footer p
+{
+  padding:3px 10px 3px 10px;
+}
+
+#footer .backtoTop
+{
+  float:right;
+  margin:0px 10px 0px 0px;
+}
+
+#footer .backtoTop a
+{
+  width:20px;
+  height:20px;
+  display:block;
+  text-indent:-5000px;
+  background:url(../img/icon/backtotop.gif) center no-repeat;
+}
+
+/**************************************************************************************************
+  Classes
+**************************************************************************************************/
+.clear
+{
+  width:100%;
+  height:1px;
+  clear:both;
+  visibility:hidden;
+}
+
+.noborder
+{
+  border:none !important;
+}
+
+.post-title a
+{
+  text-decoration:none;
+}
+
+.info
+{
+  font-size:11px;
+}
+
+.info a
+{
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.options
+{
+  float:right;
+  margin:5px 0px 0px 0px;
+}
+
+.options a
+{
+  text-decoration:none;
+  font-weight:bold;
+  margin:0px 0px 0px 10px;
+}
+
+.alignleft
+{
+  float:left;
+  margin:0px 10px 0px 0px;
+}
+
+.alignright
+{
+  float:right;
+  margin:0px 0px 0px 10px;
+}
+
+.aligncenter
+{
+  margin:auto;
+  display:block;
+}
+
+.more-link
+{
+  font-weight:bold;
+}
+
+.comment-wait
+{
+}
+
+.wp-caption
+{
+}
+
+.wp-caption-text
+{
+  padding:0px 5px 0px 5px;
+}
+
+.avatar
+{
+  float:left;
+  margin:0px 10px 0px 0px;
+}
+
+.url
+{
+  font-weight:bold;
+}
+
+
+
+/**************************************************************************************************
+  Entradas do Usuário
+**************************************************************************************************/
+.entry
+{
+}
+
+.entry h1
+{
+}
+
+.entry h2
+{
+}
+
+.entry h3
+{
+}
+
+.entry h4
+{
+}
+
+.entry h5
+{
+}
+
+.entry h6
+{
+}
+
+.entry hr
+{
+  border:1px solid;
+  margin:2px 0px 2px 0px;
+}
+
+.entry a
+{
+  text-decoration:underline;
+}
+
+.entry img
+{
+  margin:5px;
+}
+
+.entry blockquote
+{
+  margin:10px;
+  padding:3px 10px 10px 10px;
+  display:block;
+  font-style:italic;
+  border:1px solid;
+}
+
+.entry code, .entry pre
+{
+  margin:10px;
+  padding:10px;
+  display:block;
+  font-family:monospace;
+  border:1px solid;
+  overflow:auto;
+}
+
+.entry address
+{ 
+}
+
+.entry pre
+{
+}
+
+.entry p
+{ 
+  margin:10px 0px 0px 0px;
+  text-align:justify;
+}
+
+.entry ul
+{
+  list-style-type:square;
+  margin:5px 5px 5px 45px;
+}
+
+.entry ol
+{ 
+  list-style-type:decimal;
+  padding:5px 5px 5px 45px;
+}
+
+.entry em
+{
+}
+
+.entry strong
+{
+}
+
+.entry strike
+{
+}
+
+.entry span
+{
+}

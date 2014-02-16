@@ -1,0 +1,443 @@
+/**************************************************************************************************
+  Tags
+**************************************************************************************************/
+*
+{
+  margin:0px;
+  padding:0px;
+  outline:none;
+}
+
+html
+{
+  font:normal 12px Arial, Helvetica;
+}
+
+h1
+{
+  font-size:20px;
+}
+
+h2
+{
+  font-size:18px;
+}
+
+h3
+{
+  font-size:17px;
+}
+
+h4
+{
+  font-size:16px;
+}
+
+h5
+{
+  font-size:15px;
+}
+
+h6
+{
+  font-size:14px;
+}
+
+input, textarea, select, button
+{
+  padding:2px;
+  border:1px solid;
+  font:normal 12px Arial, Helvetica;
+}
+
+a
+{
+}
+
+img
+{
+  border:0px;
+}
+
+ul, ol
+{
+}
+
+/**************************************************************************************************
+  Dater
+**************************************************************************************************/
+#dater
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Header
+**************************************************************************************************/
+#header
+{
+  clear:both;
+}
+
+#header .blog-title
+{
+  padding:30px 20px 0px 20px;
+  font-size:30px;
+}
+
+#header .blog-title a
+{
+  text-decoration:none;
+}
+
+#header .blog-description
+{
+  padding:0px 20px 0px 20px;
+}
+
+/**************************************************************************************************
+  Menu
+**************************************************************************************************/
+#menu
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  BreadCrumb
+**************************************************************************************************/
+#breadcrumb
+{
+  clear:both;
+}
+
+#breadcrumb p
+{
+  padding:0px 10px 0px 10px !important;
+}
+
+#breadcrumb a
+{
+  text-decoration:none;
+}
+
+/**************************************************************************************************
+  Content
+**************************************************************************************************/
+#content
+{
+  padding:14px 0px 10px 10px;
+}
+
+#content .content-title
+{
+  height:25px;
+  line-height:25px;
+  padding:5px 10px 5px 12px !important;
+}
+
+#content .content-title a
+{
+  text-decoration:none;
+}
+
+/**************************************************************************************************
+  Highlight
+**************************************************************************************************/
+#highlight
+{
+  margin:0px 0px 15px 0px;
+  border-bottom:2px solid;
+}
+
+#highlight img
+{
+  float:left;
+  margin:10px;
+}
+
+#highlight .post-title
+{
+  margin:10px 10px 0px 10px;
+}
+
+#highlight .info
+{
+  margin:0px 0px 0px 10px;
+}
+
+#highlight .entry
+{
+  margin:10px 10px 10px 10px;
+}
+
+#highlight-pager
+{
+  display:none;
+}
+/**************************************************************************************************
+  Posts
+**************************************************************************************************/
+.post
+{
+  clear:both;
+  margin:0px 0px 10px 0px;
+  padding:10px 10px 14px 10px;
+}
+
+.post .entry
+{
+  margin:0px 0px 10px 0px;
+}
+
+/**************************************************************************************************
+  Comment Form
+**************************************************************************************************/
+.comment-form
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Comment
+**************************************************************************************************/
+.comment
+{
+  margin:0px 0px 10px 0px;
+  padding:10px;
+}
+
+.comment p
+{
+  margin:10px 0px;
+}
+
+.comment .comment-author a
+{
+  text-decoration:none;
+}
+
+.comment-rss, .trackback-link
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Navigation
+**************************************************************************************************/
+.navigation a
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Sidebar
+**************************************************************************************************/
+#sidebar
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Footer
+**************************************************************************************************/
+#footer
+{
+  clear:both;
+  padding:8px 0px;
+  border-bottom:1px solid;
+}
+
+#footer a
+{
+  text-decoration:none;
+}
+
+#footer p
+{
+  padding:3px 10px 3px 10px;
+}
+
+#footer .backtoTop
+{
+  display:none;
+}
+
+/**************************************************************************************************
+  Classes
+**************************************************************************************************/
+.clear
+{
+  width:100%;
+  height:1px;
+  clear:both;
+  visibility:hidden;
+}
+
+.noborder
+{
+  border:none !important;
+}
+
+.post-title a
+{
+  text-decoration:none;
+}
+
+.info
+{
+  font-size:11px;
+}
+
+.info a
+{
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.options
+{
+  display:none;
+}
+
+.alignleft
+{
+  float:left;
+  margin:0px 10px 0px 0px;
+}
+
+.alignright
+{
+  float:right;
+  margin:0px 0px 0px 10px;
+}
+
+.aligncenter
+{
+  margin:auto;
+  display:block;
+}
+
+.more-link
+{
+  font-weight:bold;
+}
+
+.comment-wait
+{
+}
+
+.wp-caption
+{
+}
+
+.wp-caption-text
+{
+  padding:0px 5px 0px 5px;
+}
+
+.gravatar
+{
+  float:left;
+}
+
+/**************************************************************************************************
+  Entradas do Usuário
+**************************************************************************************************/
+.entry
+{
+}
+
+.entry h1
+{
+}
+
+.entry h2
+{
+}
+
+.entry h3
+{
+}
+
+.entry h4
+{
+}
+
+.entry h5
+{
+}
+
+.entry h6
+{
+}
+
+.entry a
+{
+  text-decoration:underline;
+}
+
+.entry img
+{
+  margin:5px;
+}
+
+.entry blockquote
+{
+  margin:10px;
+  padding:10px;
+  display:block;
+  font-style:italic;
+  border:1px solid;
+}
+
+.entry code
+{
+  margin:10px;
+  padding:10px;
+  display:block;
+  font-family:monospace;
+  border:1px solid;
+}
+
+.entry address
+{ 
+}
+
+.entry pre
+{
+}
+
+.entry p
+{ 
+  margin:10px 0px 0px 0px;
+  text-align:justify;
+}
+
+.entry ul
+{
+  list-style-type:square;
+  margin:5px 5px 5px 45px;
+}
+
+.entry ol
+{ 
+  list-style-type:decimal;
+  padding:5px 5px 5px 45px;
+}
+
+.entry em
+{
+}
+
+.entry strong
+{
+}
+
+.entry strike
+{
+}
+
+.entry span
+{
+}

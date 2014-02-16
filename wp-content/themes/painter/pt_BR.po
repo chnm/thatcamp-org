@@ -1,0 +1,373 @@
+# Copyright (C) 2009 WordPress
+# Equipe Web MinC <minc.web@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.6\n"
+"POT-Creation-Date: 2009-01-01 00:00+0200\n"
+"PO-Revision-Date: 2009-02-15 18:50-0300\n"
+"Last-Translator: \n"
+"Language-Team: Equipe Web MinC <minc.web@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: BRAZIL\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: *.php:0
+msgid "Highlights"
+msgstr "Destaques"
+
+msgid "News"
+msgstr "Últimas"
+
+msgid "F jS, Y @ H:i"
+msgstr "j \\d\\e F \\d\\e Y"
+
+msgid "Published"
+msgstr "Publicado"
+
+msgid "on"
+msgstr "em"
+
+msgid "of"
+msgstr "de"
+
+msgid "by"
+msgstr "por"
+
+msgid "in"
+msgstr "em"
+
+msgid "Read more &raquo;"
+msgstr "Leia mais &raquo;"
+
+msgid "&laquo; Older"
+msgstr "&laquo; Anteriores"
+
+msgid "Newer &raquo;"
+msgstr "Recentes &raquo;"
+
+msgid "Map"
+msgstr "Mapa"
+
+msgid "Results for"
+msgstr "Resultados para"
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Category"
+msgstr "Categoria"
+
+msgid "Categories"
+msgstr "Categorias"
+
+msgid "Tag"
+msgstr "Tag"
+
+msgid "Tags"
+msgstr "Tags"
+
+msgid "Archive"
+msgstr "Arquivo"
+
+msgid "Archives"
+msgstr "Arquivos"
+
+msgid "Archives from day"
+msgstr "Arquivos do dia"
+
+msgid "Archives from month"
+msgstr "Arquivos do mês"
+
+msgid "Archives from year"
+msgstr "Arquivos do ano"
+
+msgid "Archives from author"
+msgstr "Arquivos do autor"
+
+msgid "Sorry! Page not found."
+msgstr "Desculpe! Página não encontrada."
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Print"
+msgstr "Imprimir"
+
+msgid "Leave a comment"
+msgstr "Deixe um comentário"
+
+msgid "You need to be loged to make a comment"
+msgstr "Você precisa estar logado para fazer um comentário"
+
+msgid "Name"
+msgstr "Nome"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Site"
+msgstr "Site"
+
+msgid "Message"
+msgstr "Mensagem"
+
+msgid "Validator"
+msgstr "Validador"
+
+msgid "Comment"
+msgstr "Comentário"
+
+msgid "Comments RSS"
+msgstr "RSS dos comentários"
+
+msgid "TrackBack"
+msgstr "TrackBack"
+
+msgid "Your comment is waiting moderation"
+msgstr "Seu comentáro está aguardando moderação"
+
+msgid "Do your comment"
+msgstr "Faça seu comentário"
+
+msgid "1 comment"
+msgstr "1 comentário"
+
+msgid "% comments"
+msgstr "% comentários"
+
+msgid "Tag Cloud"
+msgstr "Nuvem de Tags"
+
+msgid "Links"
+msgstr "Links"
+
+msgid "Back to Top"
+msgstr "Voltar ao Topo"
+
+msgid "uses <em><a href='http://wordpress.org' title='WordPress' target='_blank'>WordPress</a></em> as content manager."
+msgstr "utiliza <em><a href='http://br.wordpress.org' title='WordPress' target='_blank''>WordPress</a></em> como gerenciador de conteúdos."
+
+# custom-colors.php
+msgid "Custom colors"
+msgstr "Cores personalizadas"
+
+msgid "General"
+msgstr "Geral"
+
+msgid "Container border"
+msgstr "Borda do container"
+
+msgid "Container background"
+msgstr "Fundo do container"
+
+msgid "Navigator link"
+msgstr "Link da navegação"
+
+msgid "Links that control the pagination"
+msgstr "Link que controlam a paginação"
+
+msgid "Dater"
+msgstr "Data e Hora"
+
+msgid "Dater background"
+msgstr "Fundo da barra de data"
+
+msgid "Dater text"
+msgstr "Texto da barra de data"
+
+msgid "Dater link"
+msgstr "Link da barra de data"
+
+msgid "Header"
+msgstr "Cabeçalho"
+
+msgid "Header background"
+msgstr "Fundo do cabeçalho"
+
+msgid "only if any image is used"
+msgstr "Apenas quando nenhuma imagem de fundo é definida"
+
+msgid "Site title"
+msgstr "Titulo do site"
+
+msgid "Site description"
+msgstr "Descrição do site"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Menu border"
+msgstr "Borda do menu"
+
+msgid "Menu background"
+msgstr "Fundo do menu"
+
+msgid "Active menu background"
+msgstr "Fundo ativo do menu"
+
+msgid "Only when the mouse is over"
+msgstr "Apenas quando o mouse estiver em cima dele"
+
+msgid "Menu link"
+msgstr "Link do menu"
+
+msgid "Active menu link"
+msgstr "Link ativo do menu"
+
+msgid "Submenu border"
+msgstr "Borda do submenu"
+
+msgid "Submenu background"
+msgstr "Fundo do submenu"
+
+msgid "Active submenu background"
+msgstr "Fundo ativo do submenu"
+
+msgid "Submenu link"
+msgstr "Link do submenu"
+
+msgid "Active submenu link"
+msgstr "Link ativo do submenu"
+
+msgid "BreadCrumb"
+msgstr "BreadCrumb"
+
+msgid "BreadCrumb text"
+msgstr "Texto do breadcrumb"
+
+msgid "BreadCrumb link"
+msgstr "Link do breadcrumb"
+
+msgid "Content"
+msgstr "Conteúdo"
+
+msgid "Post background"
+msgstr "Fundo do post"
+
+msgid "Alternate post background"
+msgstr "Fundo alternado dos posts"
+
+msgid "Session title background"
+msgstr "Fundo do título de sessão"
+
+msgid "Session title"
+msgstr "Título de sessão"
+
+msgid "Slide background"
+msgstr "Fundo do slide"
+
+msgid "Active slide background"
+msgstr "Fundo do slide ativo"
+
+msgid "Post title"
+msgstr "Título do post"
+
+msgid "Post text"
+msgstr "Textos do post"
+
+msgid "Post links"
+msgstr "Links do post"
+
+msgid "Post informations"
+msgstr "Informações dos posts"
+
+msgid "Information like published date, author and post categories"
+msgstr "Informações como data de publicação, autor e categorias do post"
+
+msgid "Box border"
+msgstr "Borda das caixas"
+
+msgid "Boxes like image descriptions, cites and codes"
+msgstr "Caixas como descrições de imagens, citações e códigos"
+
+msgid "Box background"
+msgstr "Fundo das caixas"
+
+msgid "Box text"
+msgstr "Texto das caixas"
+
+msgid "Box links"
+msgstr "Link das caixas"
+
+msgid "Input border"
+msgstr "Borda dos inputs"
+
+msgid "Input as text fields"
+msgstr "Inputs como campos de entrada de texto"
+
+msgid "Input background"
+msgstr "Fundo dos inputs"
+
+msgid "Input text"
+msgstr "Texto dos inputs"
+
+msgid "Button border"
+msgstr "Borda dos botões"
+
+msgid "Button background"
+msgstr "Fundo dos botões"
+
+msgid "Button text"
+msgstr "Texto dos botões"
+
+msgid "Sidebar"
+msgstr "Sidebar"
+
+msgid "Sidebar border"
+msgstr "Borda do sidebar"
+
+msgid "Sidebar background"
+msgstr "Fundo do sidebar"
+
+msgid "Alternate sidebar background"
+msgstr "Fundo alternado do sidebar"
+
+msgid "Sidebar text"
+msgstr "Textos do sidebar"
+
+msgid "Sidebar links"
+msgstr "Links do sidebar"
+
+msgid "Footer background"
+msgstr "Fundo do Rodapé"
+
+msgid "Footer text"
+msgstr "Textos do rodapé"
+
+msgid "Footer links"
+msgstr "Links do rodapé"
+
+msgid "Colors updated"
+msgstr "Cores atualizadas"
+
+msgid "Load a pre-defined color scheme"
+msgstr "Carregar um esquema pré-definido"
+
+msgid "Custom theme"
+msgstr "Tema personalizado"
+
+msgid "Options updated"
+msgstr "Opções atualizadas"
+
+msgid "Post itens"
+msgstr "Itens do post"
+
+msgid "Show post date"
+msgstr "Mostrar data dos posts"
+
+msgid "Show post author"
+msgstr "Mostrar autor dos posts"
+
+msgid "Show post category"
+msgstr "Mostrar categoria dos posts"
+
+msgid "Show post tags"
+msgstr "Mostrar tags dos posts"
+
+msgid "Show post comments"
+msgstr "Mostrar comentários dos posts"
+
