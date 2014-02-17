@@ -42,9 +42,10 @@ jQuery(document).ready(function($) {
     <div class="container">
         <a class="site-title" href="<?php echo home_url(); ?>">
             <img src="<?php bloginfo( 'template_directory' ); ?>/images/logo.png" alt="Proceedings of THATCamp">
-        </a>
+       </a>
 
         <?php get_search_form(); ?>
+            <img src="<?php bloginfo( 'template_directory' ); ?>/images/tagline.png" alt="Session proposals, notes, and more from The Humanities and Technology Camp" id="tagline">
 
         <nav>
             <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container_class' => 'tabs' ) ); ?>
