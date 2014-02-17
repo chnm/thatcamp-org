@@ -615,12 +615,16 @@ div.avhec-widget-line {
   display: inline; 
   }
 
-/* Topics 
+/* Dates
     ============================*/
 
 .pagecontent-dates ul li {
 list-style-type:none;
 font-size: large;
+}
+
+.emptymonth {
+color:lightgray;
 }
 
 /* Sidebar

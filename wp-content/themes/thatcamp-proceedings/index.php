@@ -2,7 +2,13 @@
 
 <div class="main thatcamp-stream">
 
-<h1 class="post-title"><?php wp_title(' '); ?></h1>
+<?php
+if ( is_home() ) {
+    echo "<h1 class='post-title'>Recent THATCamp Posts</h1>";
+} else {
+    echo "<h1 class='post-title'><?php wp_title(' '); ?></h1>";
+}
+?>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
