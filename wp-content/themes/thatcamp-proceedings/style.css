@@ -303,8 +303,8 @@ footer {
         }
 
     footer img {
-        max-height: 70px; 
-        margin: 0 40px 20px 0;;
+        max-height: 65px; 
+        margin: 0 40px 15px 0;
         }
 
         footer a img {
@@ -326,6 +326,10 @@ footer {
         footer a:link img { opacity: .3; }
         footer a:hover img { opacity: 1; }
 
+#logos {
+margin-top: 2em;
+}
+
 .creative-commons {
     overflow: auto;
     max-width: 300px;
@@ -335,7 +339,7 @@ footer {
     }
 
     .creative-commons img {
-        margin-right: 20px;
+        margin-right: 10px;
         float: left;
         }
 
@@ -1139,7 +1143,12 @@ width:800px;
           margin-top:0px;
           margin-left: 0px;
           padding-left: 0px;
-         }       
+         }    
+         
+         #tagline {
+         float: none;
+         }
+            
 }
 
   /* Below 800 styles */
