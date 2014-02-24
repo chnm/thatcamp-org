@@ -9,7 +9,7 @@ if (!class_exists('amr_saw_plugin_admin')) {
 	class amr_saw_plugin_admin {
 		var $hook 		= 'amr_saw';
 		var $filename	= 'amr_shortcode_any_widget/amr_shortcode_any_widget.php';
-		var $longname	= 'Shortcode any widget';
+		var $longname	= 'Shortcode any widget - insert widgets or widget areas into a page.';
 		var $shortname	= 'Shortcode any widget';
 		var $optionname = '';
 		var $homepage	= '';
@@ -66,7 +66,7 @@ if (!class_exists('amr_saw_plugin_admin')) {
 			_e('Set the widgets parameters if there are any.');
 			echo '</li>';
 			echo '<li>';
-			_e('You could test them out in a displayable sidebar, then drag them to the shortcodes sidebar.');
+			_e('You could test the widgets out in a displayable widget area (sidebar/footer), then drag them to the widgets_for_shortcodes sidebar.');
 
 			echo '</li>';
 			echo '<li>';
@@ -74,124 +74,85 @@ if (!class_exists('amr_saw_plugin_admin')) {
 			_e('Go to widgets');
 			echo '</a>';
 			echo '</li>';
+			echo '</ul>';
+			
+			echo '<h2>';
+			_e('To add a widget area - all widgets in the widget area:');
+
+			echo '</h2>';
+			echo '<ul>';
 			echo '<li>';
-			_e('Then add the shortcode [do_widget widgetname] to a page.');
+			echo '<a title="Create a page" href="'
+			.add_query_arg('content','[do_widget_area]', get_admin_url('','post-new.php?post_type=page'))
+			.'"> ';
+			_e('Create a page with do_widget_area shortcode'); 
+			echo '</a>';
 			echo '</li>';
 			echo '<li>';
-			_e('Examples:[do_widget "tag cloud"] or [do_widget id=widgetid]');
+			_e('Examples:');
+			echo '</li>';
+			echo '<li>';
+			_e('[do_widget_area] or [do_widget_area widget_area=sidebar-1]');
+			echo '</li>';
+			echo '<li>';
+			_e('NB: Using something like the twenty-fourteen theme? you might end up with white text on a white background.  Be prepared to adjust your css!');
+			echo '</li>';
+			echo '</ul>';
+			echo '<br />';
+
+			echo '<h2>';
+			_e('To add a single widget to a page');
+
+			echo '</h2>';
+			echo '<ul>';
+			echo '<li>';
+			_e('Add the shortcode [do_widget widgetname] to a page.');
+			_e('Examples:');
+			echo '</li>';
+			echo '<li>';
+			_e('[do_widget "tag cloud"] or [do_widget id=widgetid]');
 			echo '</li>';
 			echo '<li>';
 			echo '<a title="Create a page" href="'
 			.add_query_arg('content','[do_widget Archives]', get_admin_url('','post-new.php?post_type=page'))
 			.'"> ';
-			_e('Create the page'); 
+			_e('Create a page with do_widget shortcode'); 
 			echo '</a>';
 			echo '</li>';
 			echo '<li>';
-			echo 'You can add as many of these on one page as you like.  Use title=false to switch off the title.';
+			echo 'Use title=false to hide a widget title. ';
+			echo 'Use title=somehtmltag and wrap=somehtmltag  to change the html used.';
+			echo ' Use class=yourclassname to add a class - maybe to override your themes widget styling?';
 			echo '</li>';
 			echo '<li>';
-			echo '[do_widget pages title=false]';
+			echo '[do_widget pages title=false]  will hide the widget title';
 			echo '</li>';
 			echo '<li>';
-			echo '[do_widget categories]';
+			echo '[do_widget pages title=h3]  give the title a heading 3 html tag.';
 			echo '</li>';
 			echo '<li>';
-			echo '[do_widget "tag cloud"]';
+			echo '[do_widget categories] or [do_widget name=categories] will do the same thing: display the categories widget.';
+			echo '</li>';
+			echo '<li>';
+			echo '[do_widget "tag cloud" wrap=aside]   will wrap the widget in an "aside" html tag.';
 			echo '</li>';
 			echo '<li>';
 			echo '[do_widget "recent posts"]';
 			echo '</li>';
-			echo '<li>';
-			echo '<li>';
+			echo '</ul>';
+
+			echo '<p>';
 			echo 'If the plugin cannot work out what you want, it will show a debug prompt
 , click on the debug prompt and look for the name or id of your widget in the shortcodes sidebar (you may have to scroll through a lot of debug info). If the name does not work, try with the id.   Sometimes the widget name that wordpress calls it internally is not the same as what you see on the screen and you will need the debug to find the id.';
-			echo '</li>';
-			echo '<li>';
-			echo '</ul>';
+			echo '</p><p><b>';
+			echo "Valid title html tags are : h1, h2, h3, h4, h5, header, strong, em ";
+			echo '</b></p><p><b>';
+			echo "Valid html wrap tags are : div, p, aside , section";
+			echo '</b></p>';
+
 		}		
 
-		
-		
-		/**
-		 * Create a Checkbox input field
-		 */
-		function radiobutton($id, $label, $value, $selected) {
-			$sel = checked($value,$selected, false); 
-			return "<input type='radio' id='".$id."' name='".$id."' value='".$value."'"
-			. $sel."/>&nbsp;".$label."<br />";
-		}	
-		/**
-		 * Create a Checkbox input field
-		 */
-		function checkbox($id, $label, $value) {
-			return '<input type="checkbox" id="'.$id.'" name="'.$id.'"'. checked($value,true,false).'/>&nbsp;<label for="'.$id.'">'.$label.'</label><br/>';
-		}
-		/**
-		 * Create a Dropdown input field
-		 */
-		function dropdown($id, $label, $options, $selected) {
-//			
-			$html = '<label for="'.$id.'">'.$label.':</label><br/>'
-			.'<select id=\''.$id.'\' name=\''.$id.'\'>';
-			foreach ($options as $i => $option) {
-//				
-				$sel = selected($i, $selected, false); //wordpress function returns with single quotes, not double 
-				$html .= '<OPTION '.$sel.' label=\''.$option.'\' value=\''.$i.'\'>'.$option.'</OPTION>';
-			}
-			$html .= '</select>';
-			return ($html);
-		}			
-		/**
-		 * Create a Text input field
-		 */
-		function textinput($id, $label, $value, $length='45') {
-			return '<label for="'.$id.'">'.$label.':</label><br/><input size="'
-			.$length.'" type="text" id="'.$id.'" name="'.$id.'" value="'.$value.'"/><br/><br/>';
-		}
-				/**
-		 * Create a Text area field
-		 */
-		function textarea($id, $label, $value, $cols='45', $rows='10') {
-			return '<label for="'.$id.'">'.$label.':</label><br/>'
-			.'<textarea rows="'.$rows.'" cols="'.$cols
-			.'" id="'.$id.'" name="'.$id.'"/>'.$value.'</TEXTAREA><br/><br/>';
-		}
-		/**
-		 * Create a postbox widget
-		 */
-		function postbox($id, $title, $content) {
-		?>
-			<div id="<?php echo $id; ?>" class="postbox">
-				<div class="handlediv" title="Click to toggle"><br /></div>
-				<h3 class="hndle"><span><?php echo $title; ?></span></h3>
-				<div class="inside">
-					<?php echo $content; ?>
-				</div>
-			</div>
-		<?php
-		}	
-		/**
-		 * Create a form table from an array of rows
-		 */
-		function form_table($rows) { //  array of rows () id, label, desc, content 
-			$content = '<table class="form-table">';
-			foreach ($rows as $row) {
-				$content .= '<tr><th valign="top" scrope="row">';
-				if (isset($row['id']) && $row['id'] != '')
-					$content .= '<label for="'.$row['id'].'">'.$row['label'].':</label>';
-				else
-					$content .= $row['label'];
-				if (isset($row['desc']) && $row['desc'] != '')
-					$content .= '<br/><small>'.$row['desc'].'</small>';
-				$content .= '</th><td valign="top">';
-				$content .= $row['content'];
-				$content .= '</td></tr>'; 
-			}
-			$content .= '</table>';
-			return $content;
-		}
-	
+
 		/**
 		 * Info box with link to the support forums.
 		 */

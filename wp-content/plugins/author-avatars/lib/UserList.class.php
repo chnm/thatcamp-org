@@ -462,7 +462,7 @@ class UserList {
 
 		$html = '';
 		if ($link) $html .= '<a href="'. $link .'" title="'. $title .'">';
-		$html .= '<span class="avatar">'. $avatar .'</span>';
+		$html .= '<span class="avatar" title="'. $title .'">'. $avatar .'</span>';
 		if ($this->show_name || $this->show_bbpress_post_count || $this->show_postcount)
 			$html .= '<span class="name">'. $name . '</span>';
 		if ($link) $html .= '</a>';
@@ -481,73 +481,91 @@ class UserList {
 	 * @return Array of users (WP_User objects), filtered, sorted and limited to the maximum number.
 	 */
 	function get_users() {
-		// get all users
-		$users = $this->get_blog_users($this->roles);
 
-		// add commentators if requested
-		if( in_array( 'Commentator', $this->roles ) ) {
-			$commentators = $this->get_commentators();
-			if ( is_array( $users ) && is_array( $commentators ) ) {
-				$users = array_merge( $users, $commentators );
-			}
-			else if ( is_array( $commentators ) ) {
-				$users = $commentators;
-			}
+		global $blog_id;
+
+		$cache_id = join( "_", $this->roles )."_".$blog_id;
+		if( !empty( $this->blogs ) )
+			$cache_id .= "_".join( "_", $this->blogs );
+
+		// if the use is loged in wipe any cache
+		if ( is_user_logged_in() ) {
+			delete_transient( $cache_id );
 		}
-		// lets get all the co-author not maped to WP users
 
-		if( in_array( 'coauthors_plus', $this->roles ) ){
-			global $coauthors_plus;
-			$args = array( 'orderby'=>'term_order', 'order'=>'ASC', );
-		//	$args = array( 
-		// 		'optioncount'      => false,
-		// 		'show_fullname'    => true,
-		// 		'hide_empty'       => false,
-		// 		'feed'             => '',
-		// 		'feed_image'       => '',
-		// 		'feed_type'        => '',
-		// 		'echo'             => false,
-		// 		'html'             => false,
-		// 		'number'           => 99,  
-		// );
-			$coauthors = array();
-			
-		//	$coauthor_terms = coauthors_wp_list_authors( $args );
+		$users = get_transient( $cache_id );
 
-			$coauthor_terms = get_terms( $coauthors_plus->coauthor_taxonomy, $args );
+		if ( false === $users ) {
 
-			if ( is_array( $coauthor_terms ) && !empty( $coauthor_terms ) ) {
-				foreach( $coauthor_terms as $coauthor ) {
-					$coauthor_slug = preg_replace( '#^cap\-#', '', $coauthor->slug );
-					$post_author =  $coauthors_plus->get_coauthor_by( 'user_nicename', $coauthor_slug );
+			// get all users
+			$users = $this->get_blog_users($this->roles);
 
-					// In case the user has been deleted while plugin was deactivated
-					if ( !empty( $post_author ) ){
-						$post_author->user_id = -1 ;// to stop the fliter from breaking
-						$post_author->user_url = $post_author->website;
-						$coauthors[] = $post_author;
-					}
-						
+			// add commentators if requested
+			if( in_array( 'Commentator', $this->roles ) ) {
+				$commentators = $this->get_commentators();
+				if ( is_array( $users ) && is_array( $commentators ) ) {
+					$users = array_merge( $users, $commentators );
 				}
-			$users = array_merge($users, $coauthors);
+				else if ( is_array( $commentators ) ) {
+					$users = $commentators;
+				}
 			}
-		}
+			// lets get all the co-author not maped to WP users
+
+			if( in_array( 'coauthors_plus', $this->roles ) ){
+				global $coauthors_plus;
+				$args = array( 'orderby'=>'term_order', 'order'=>'ASC', );
+			//	$args = array( 
+			// 		'optioncount'      => false,
+			// 		'show_fullname'    => true,
+			// 		'hide_empty'       => false,
+			// 		'feed'             => '',
+			// 		'feed_image'       => '',
+			// 		'feed_type'        => '',
+			// 		'echo'             => false,
+			// 		'html'             => false,
+			// 		'number'           => 99,  
+			// );
+				$coauthors = array();
+				
+			//	$coauthor_terms = coauthors_wp_list_authors( $args );
+
+				$coauthor_terms = get_terms( $coauthors_plus->coauthor_taxonomy, $args );
+
+				if ( is_array( $coauthor_terms ) && !empty( $coauthor_terms ) ) {
+					foreach( $coauthor_terms as $coauthor ) {
+						$coauthor_slug = preg_replace( '#^cap\-#', '', $coauthor->slug );
+						$post_author =  $coauthors_plus->get_coauthor_by( 'user_nicename', $coauthor_slug );
+
+						// In case the user has been deleted while plugin was deactivated
+						if ( !empty( $post_author ) ){
+							$post_author->user_id = -1 ;// to stop the fliter from breaking
+							$post_author->user_url = $post_author->website;
+							$coauthors[] = $post_author;
+						}
+							
+					}
+				$users = array_merge($users, $coauthors);
+				}
+			}
 
 
-		// filter them
-		$this->_filter( $users );
-		
-		// sort them
-		$this->_sort( $users );
-		
-		// group them
-		$this->_group( $users );
-		
-		// and limit the number
-		if( intval( $this->limit ) > 0 ) {
-			$users = AA_atrim( $users, intval( $this->limit ) );
+			// filter them
+			$this->_filter( $users );
+			
+			// sort them
+			$this->_sort( $users );
+			
+			// group them
+			$this->_group( $users );
+			
+			// and limit the number
+			if( intval( $this->limit ) > 0 ) {
+				$users = AA_atrim( $users, intval( $this->limit ) );
+			}
+
+			set_transient( $cache_id, $users, 1 * HOUR_IN_SECONDS );
 		}
-		
 		return $users;
 	}
 	
@@ -558,55 +576,43 @@ class UserList {
 	 * @return Array of users (WP_User objects).
 	 */
 	function get_blog_users( $roles ) {
-		global $wpdb, $blog_id;
-
-		$cache_id = join( "_", $roles )."_".$blog_id;
-		if( !empty( $this->blogs ) )
-			$cache_id .= "_".join( "_", $this->blogs );
-
-	//	$users = wp_cache_get( $cache_id,"author-avatars-UserList");
-		$users = get_transient( $cache_id );
-
-		if ( false === $users ) {
+		global $wpdb;
 		
-			if ( AA_is_wpmu() && !empty( $this->blogs ) ) {
+		if ( AA_is_wpmu() && !empty( $this->blogs ) ) {
 
-				// make sure all values are integers
-				$this->blogs = array_map ('intval', $this->blogs);
-				
-				// if -1 is in the array display all users (no filtering)
-				if ( in_array( '-1', $this->blogs ) ) {
-					$blogs_condition = "meta_key LIKE '". $wpdb->base_prefix ."%capabilities'";
-				}
-				// else filter by set blog ids
-				else {
-					$blogs = array_map( create_function( '$v', 'global $wpdb; return "\'" . $wpdb->get_blog_prefix($v) . "capabilities\'";' ), $this->blogs );
-					$blogs_condition = 'meta_key IN ('.  implode( ', ', $blogs ) .')';
-				}
+			// make sure all values are integers
+			$this->blogs = array_map ('intval', $this->blogs);
+			
+			// if -1 is in the array display all users (no filtering)
+			if ( in_array( '-1', $this->blogs ) ) {
+				$blogs_condition = "meta_key LIKE '". $wpdb->base_prefix ."%capabilities'";
 			}
+			// else filter by set blog ids
 			else {
-				$blogs_condition = "meta_key = '". $wpdb->prefix ."capabilities'";
+				$blogs = array_map( create_function( '$v', 'global $wpdb; return "\'" . $wpdb->get_blog_prefix($v) . "capabilities\'";' ), $this->blogs );
+				$blogs_condition = 'meta_key IN ('.  implode( ', ', $blogs ) .')';
 			}
-
-			$roleQuery = "";
-			foreach ( $roles as $role ) {
-				$role = "%".$role."%";
-				$or = "";
-				if ( $roleQuery )
-					$or = " or ";
-				$roleQuery .= $wpdb->prepare($or."meta_value like %s",$role);
-			}
-			if ( $roleQuery )
-				$roleQuery = " AND(" .$roleQuery. ")";
-
-			$query = "SELECT user_id, user_login, display_name, user_email, user_url, user_registered, meta_key, meta_value FROM $wpdb->users, $wpdb->usermeta".
-				" WHERE " . $wpdb->users . ".ID = " . $wpdb->usermeta . ".user_id AND ". $blogs_condition . " AND user_status = 0".$roleQuery;
-
-			$users = $wpdb->get_results( $query);
-
-		//	wp_cache_set($cache_id, $users,"author-avatars-UserList");
-			set_transient( $cache_id, $users, 1 * HOUR_IN_SECONDS );
 		}
+		else {
+			$blogs_condition = "meta_key = '". $wpdb->prefix ."capabilities'";
+		}
+
+		$roleQuery = "";
+		foreach ( $roles as $role ) {
+			$role = "%".$role."%";
+			$or = "";
+			if ( $roleQuery )
+				$or = " or ";
+			$roleQuery .= $wpdb->prepare($or."meta_value like %s",$role);
+		}
+		if ( $roleQuery )
+			$roleQuery = " AND(" .$roleQuery. ")";
+
+		$query = "SELECT user_id, user_login, display_name, user_email, user_url, user_registered, meta_key, meta_value FROM $wpdb->users, $wpdb->usermeta".
+			" WHERE " . $wpdb->users . ".ID = " . $wpdb->usermeta . ".user_id AND ". $blogs_condition . " AND user_status = 0".$roleQuery;
+
+		$users = $wpdb->get_results( $query);
+
 		return $users;
 	}
 

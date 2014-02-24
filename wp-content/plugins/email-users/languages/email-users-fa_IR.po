@@ -4,16 +4,18 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-02 17:56+0330\n"
 "PO-Revision-Date: \n"
-"Last-Translator: mostafa <mostafa.s1990@gmail.com>\n"
+"Last-Translator: Mike Walsh <mpwalsh8@gmail.com>\n"
 "Language-Team: Persian Wordpress <Mostafa.s1990@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Persian\n"
-"X-Poedit-Country: IRAN, ISLAMIC REPUBLIC OF\n"
 "X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: F:\\Program Files\\apserv\\AppServ\\www\\wordpress\\wp-content\\plugins\\email-users\n"
-"X-Poedit-SearchPath-0: F:\\Program Files\\apserv\\AppServ\\www\\wordpress\\wp-content\\plugins\\email-users\n"
+"X-Poedit-Basepath: F:\\Program Files\\apserv\\AppServ\\www\\wordpress\\wp-"
+"content\\plugins\\email-users\n"
+"Language: fa_IR\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-SearchPath-0: F:\\Program Files\\apserv\\AppServ\\www\\wordpress"
+"\\wp-content\\plugins\\email-users\n"
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:77
@@ -23,13 +25,37 @@ msgstr "[%BLOG_NAME%] یک نوشته با نام: \"%POST_TITLE%\""
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:81
-msgid "<p>Hello, </p><p>I would like to bring your attention on a new post published on the blog. Details of the post follow; I hope you will find it interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr><p><strong>%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: <a href=\"%POST_URL%\">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href=\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
-msgstr "<p>Hello, </p><p>I would like to bring your attention on a new post published on the blog. Details of the post follow; I hope you will find it interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr><p><strong>%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>پیوند به نوشته: <a href=\"%POST_URL%\">%POST_URL%</a></li><li>پیوند به %BLOG_NAME%: <a href=\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
+msgid ""
+"<p>Hello, </p><p>I would like to bring your attention on a new post "
+"published on the blog. Details of the post follow; I hope you will find it "
+"interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr><p><strong>"
+"%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: <a "
+"href=\"%POST_URL%\">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href="
+"\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
+msgstr ""
+"<p>Hello, </p><p>I would like to bring your attention on a new post "
+"published on the blog. Details of the post follow; I hope you will find it "
+"interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr><p><strong>"
+"%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>پیوند به نوشته: <a "
+"href=\"%POST_URL%\">%POST_URL%</a></li><li>پیوند به %BLOG_NAME%: <a href="
+"\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:102
-msgid "<p>Hello, </p><p>I would like to bring your attention on a new post published on the blog. Details of the post follow; I hope you will find it interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr/><p><strong>%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: <a href=\"%POST_URL%\">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href=\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
-msgstr "<p>Hello, </p><p>I would like to bring your attention on a new post published on the blog. Details of the post follow; I hope you will find it interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr/><p><strong>%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>پیوند به نوشته: <a href=\"%POST_URL%\">%POST_URL%</a></li><li>پیوند به %BLOG_NAME%: <a href=\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
+msgid ""
+"<p>Hello, </p><p>I would like to bring your attention on a new post "
+"published on the blog. Details of the post follow; I hope you will find it "
+"interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr/><p><strong>"
+"%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: <a "
+"href=\"%POST_URL%\">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href="
+"\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
+msgstr ""
+"<p>Hello, </p><p>I would like to bring your attention on a new post "
+"published on the blog. Details of the post follow; I hope you will find it "
+"interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr/><p><strong>"
+"%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>پیوند به نوشته: <a "
+"href=\"%POST_URL%\">%POST_URL%</a></li><li>پیوند به %BLOG_NAME%: <a href="
+"\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:196
@@ -78,7 +104,9 @@ msgstr "نوشته یا برگه جدید را به اطلاع گیرنده بر
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email-users.php:280
-msgid "Accept to recieve emails sent to multiple recipients (but still accept emails sent only to me)"
+msgid ""
+"Accept to recieve emails sent to multiple recipients (but still accept "
+"emails sent only to me)"
 msgstr "پذیرفتن چندگانه ایمیل های ارسالی به گیرنده ها"
 
 #: F:\Program
@@ -144,7 +172,9 @@ msgstr "شما میتوانید با استفاده از کلید Ctrl چند گ
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_group_mail_form.php:76
-msgid "Only the groups having at least one user that accepts group mails appear here."
+msgid ""
+"Only the groups having at least one user that accepts group mails appear "
+"here."
 msgstr "با انتخاب یک گروه, ایمیل به همه کاربران آن ارسال میشود."
 
 #: F:\Program
@@ -204,7 +234,8 @@ msgstr "شما میتوانید با استفاده از کلید Ctrl چند گ
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_notify_form.php:102
-msgid "The users that did not agree to recieve notifications do not appear here."
+msgid ""
+"The users that did not agree to recieve notifications do not appear here."
 msgstr "آگاهی گیرنده برای کاربران در اینجا ظاهر شد."
 
 #: F:\Program
@@ -222,8 +253,14 @@ msgstr "شما اجازه تغییر در تنظیمات این افزونه ر�
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:29
-msgid "It looks like you have an old version of the plugin activated. Please deactivate the plugin and activate it again to complete the installation of the new version."
-msgstr "It looks like you have an old version of the plugin activated. Please deactivate the plugin and activate it again to complete the installation of the new version."
+msgid ""
+"It looks like you have an old version of the plugin activated. Please "
+"deactivate the plugin and activate it again to complete the installation of "
+"the new version."
+msgstr ""
+"It looks like you have an old version of the plugin activated. Please "
+"deactivate the plugin and activate it again to complete the installation of "
+"the new version."
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:32
@@ -262,8 +299,12 @@ msgstr "هیچ کدام"
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:92
-msgid "Try 30 if you have problems sending emails to many users (some providers forbid too many recipients in BCC field)."
-msgstr "اگر در ارسال ایمیل به تعداد زیادی از کاربران مشکل دارید, سعی کنید 30 را انتخاب کنید."
+msgid ""
+"Try 30 if you have problems sending emails to many users (some providers "
+"forbid too many recipients in BCC field)."
+msgstr ""
+"اگر در ارسال ایمیل به تعداد زیادی از کاربران مشکل دارید, سعی کنید 30 را "
+"انتخاب کنید."
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:97
@@ -332,12 +373,20 @@ msgstr "آدرس پیوند نوشته شما"
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:215
-msgid "Email Users uses capabilities to define what users are allowed to do. Below is a list of the capabilities used by the plugin and the default user role allowed to make these actions."
-msgstr "Email Users uses capabilities to define what users are allowed to do. Below is a list of the capabilities used by the plugin and the default user role allowed to make these actions."
+msgid ""
+"Email Users uses capabilities to define what users are allowed to do. Below "
+"is a list of the capabilities used by the plugin and the default user role "
+"allowed to make these actions."
+msgstr ""
+"Email Users uses capabilities to define what users are allowed to do. Below "
+"is a list of the capabilities used by the plugin and the default user role "
+"allowed to make these actions."
 
 #: F:\Program
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_options_form.php:215
-msgid "If you want to change the roles having those capabilities, you should use the plugin:"
+msgid ""
+"If you want to change the roles having those capabilities, you should use "
+"the plugin:"
 msgstr "در این افزونه شما میتوانید وظیفه و استعدادشان را تغییر دهید."
 
 #: F:\Program
@@ -509,4 +558,3 @@ msgstr "شما فعلا یک کاربر را میتوانید انتخاب کن�
 #: Files\apserv\AppServ\www\wordpress\wp-content\plugins\email-users/email_users_user_mail_form.php:79
 msgid "You can select multiple users by pressing the CTRL key."
 msgstr "شما میتوانید با استفاده از کلید Ctrl چند گروه انتخاب کنید."
-

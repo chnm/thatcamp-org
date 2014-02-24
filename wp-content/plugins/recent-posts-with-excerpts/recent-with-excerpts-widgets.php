@@ -4,7 +4,7 @@ Plugin Name: Recent Posts with Excerpts
 Plugin URI: http://stephanieleary.com/code/wordpress/recent-posts-with-excerpts/
 Donate link: http://stephanieleary.com/code/wordpress/recent-posts-with-excerpts/
 Description: A widget that lists your most recent posts with excerpts. The number of posts and excerpts is configurable; for example, you could show five posts but include the excerpt for only the most recent. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a> and <a href="http://sparepencil.com/code/advanced-excerpt/">Advanced Excerpt</a>.
-Version: 2.5
+Version: 2.5.2
 Author: Stephanie Leary
 Author URI: http://stephanieleary.com
 
@@ -75,6 +75,7 @@ class RecentPostsWithExcerpts extends WP_Widget {
 				$q['cat'] = $instance['cat'];
 			if (!empty($instance['tag'])) 
 				$q['tag'] = $instance['tag'];
+			$q = apply_filters('recent_posts_with_excerpts_query', $q);
 			$rpwe = new wp_query($q);
 			$excerpts = $instance['numexcerpts'];
 			$date = apply_filters('recent_posts_with_excerpts_date_format', $instance['date']);

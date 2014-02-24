@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XF86X
 Tags: subscribe, comments, notification, subscription, manage, double check-in, follow, commenting
 Requires at least: 2.9.2
 Tested up to: 3.8.1
-Stable tag: 140204
+Stable tag: 140220
 
 Subscribe to Comments Reloaded allows commenters to sign up for e-mail notifications of subsequent replies.
 
@@ -64,7 +64,24 @@ Yes! Just disable the corresponding option under Settings > Comment Form and the
 4. Customize the notification messages
 5. Customize the plugin's behavior
 
+== Upgrade Notice ==
+
+= v140220 =
+
+**Security Fix; PLEASE UPGRADE IMMEDIATELY**. v140219 fixes an XSS/CSRF vulnerability that was discovered by Tom Adams and reported by a WordPress Plugin Repository moderator.
+
 == Changelog ==
+
+= v140220 =
+
+**Bug Fix**. Fixes an encoding bug that broke HTML output after patching XSS vulnerability. If you started seeing raw HTML output at the bottom of your comment forms after upgrading to v140219, this update should fix that.
+
+= v140219 =
+
+* **Security Fix; PLEASE UPGRADE IMMEDIATELY**. Fixes XSS/CSRF vulnerability that was discovered by Tom Adams and reported by a WordPress Plugin Repository moderator.
+* **Translations**. Updated French translation (thanks to Jean-Michel MEYER).
+* Improvements to translation support (thanks to Carlos Alberto Lopez Perez).
+* Add trailing slash to comment-subscriptions page to avoid unnecessary redirections (thanks to Carlos Alberto Lopez Perez).
 
 = v140204 =
 
@@ -151,7 +168,7 @@ and [contact me](http://behstant.com/negocio/contact.php) once your
 localization is ready. Currently, we support the following languages:
 
 * Danish - [Torben Bendixen](http://www.freelancekonsulenten.dk/)
-* Dutch - [Martijn Chel],[Muratje](http://www.muromedia.nl/)
+* Dutch - [Martijn Chel](http://mcpnetwork.nl/),[Muratje](http://www.muromedia.nl/)
 * French - [Anthony](http://imnotgeek.com/), Goormand, Maxime
 * German - [derhenry](http://www.derhenry.net/2010/subscribe-to-comments-reloaded/), [Stefan](http://www.beedy.de/)
 * Indonesian - [The Masked Cat](http://themaskedcat.tk)

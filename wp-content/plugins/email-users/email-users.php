@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 /*
 Plugin Name: Email Users
-Version: 4.6.2
+Version: 4.6.3
 Plugin URI: http://wordpress.org/extend/plugins/email-users/
 Description: Allows the site editors to send an e-mail to the blog users. Credits to <a href="http://www.catalinionescu.com">Catalin Ionescu</a> who gave me (Vincent Pratt) some ideas for the plugin and has made a similar plugin. Bug reports and corrections by Cyril Crua, Pokey and Mike Walsh.  Development for enhancements and bug fixes since version 4.1 primarily by <a href="http://michaelwalsh.org">Mike Walsh</a>.
 Author: Mike Walsh & MarvinLabs
@@ -27,7 +27,7 @@ Author URI: http://www.michaelwalsh.org
 */
 
 // Version of the plugin
-define( 'MAILUSERS_CURRENT_VERSION', '4.6.2');
+define( 'MAILUSERS_CURRENT_VERSION', '4.6.3');
 
 // i18n plugin domain
 define( 'MAILUSERS_I18N_DOMAIN', 'email-users' );
@@ -61,6 +61,13 @@ define( 'MAILUSERS_USER_ACCESS_MANAGER_CLASS', 'UserAccessManager' );
 
 define( 'MAILUSERS_ITTHINX_GROUPS_CLASS', 'Groups_WordPress' );
 
+//  Enable integration with PMPro plugin?
+
+//  @see http://wordpress.org/plugins/paid-memberships-pro/
+define( 'MAILUSERS_PMPRO_CLASS', 'MemberOrder' );
+
+
+
 $mailusers_user_custom_meta_filters = array() ;
 $mailusers_group_custom_meta_filters = array() ;
 
@@ -86,7 +93,7 @@ function mailusers_get_default_plugin_settings($option = null)
 		// Version of the email users plugin
 		'mailusers_version' => mailusers_get_current_version(),
 		// The default title to use when using the post notification functionality
-		'mailusers_default_subject' => __('[%BLOG_NAME%] A post of interest: "%POST_TITLE%"', MAILUSERS_I18N_DOMAIN),
+		'mailusers_default_subject' => '[%BLOG_NAME%] ' . __('A post of interest:', MAILUSERS_I18N_DOMAIN) . ' "%POST_TITLE%"',
 		// Mail User - The default body to use when using the post notification functionality
 		'mailusers_default_body' => __('<p>Hello, </p><p>I would like to bring your attention on a new post published on the blog. Details of the post follow; I hope you will find it interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr><p><strong>%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: <a href="%POST_URL%">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href="%BLOG_URL%">%BLOG_URL%</a></li></ul>', MAILUSERS_I18N_DOMAIN),
 		// Mail User - Default mail format (html or plain text)
@@ -120,7 +127,7 @@ function mailusers_get_default_plugin_settings($option = null)
 		// Mail User - Default setting Omit Display Names in Email Addresses
 		'mailusers_omit_display_names' => 'false',
 		// Mail User - The footer to use when using the post notification functionality
-		'mailusers_footer' => __('<h5 style="border-top: 1px solid #eee;">Powered by <a href="http://wordpress.org/plugins/email-users/">Email Users</a>.</h5>', MAILUSERS_I18N_DOMAIN),
+		'mailusers_footer' => '<h5 style="border-top: 1px solid #eee;">' . __('Powered by', MAILUSERS_I18N_DOMAIN) . ' <a href="http://wordpress.org/plugins/email-users/">Email Users</a>.</h5>',
 		// Mail User - Default setting for Debug
 		'mailusers_debug' => 'false',
 	) ;
@@ -1007,19 +1014,25 @@ function mailusers_update_debug( $debug ) {
  * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
  */
 function mailusers_get_users( $exclude_id='', $meta_filter = '', $args = array(), $sortby = null, $meta_value = 'true', $meta_compare = '=') {
+    if (MAILUSERS_DEBUG) printf('<!-- %s::%s -->%s', basename(__FILE__), __LINE__, PHP_EOL);
+    
 	if ($sortby == null) $sortby = mailusers_get_default_sort_users_by();
 
     //  Set up the arguments for get_users()
 
-    $args['exclude'] = $exclude_id;
-    $args['fields'] = 'all_with_meta';
+    $args = array_merge($args, array(
+        'exclude' => $exclude_id,
+        'fields' => array('ID', 'display_name', 'user_email'),
+        'offset' => '0',
+        'number' => '500',
+    )) ;
 
     //  Apply the meta filter
 
     if ($meta_filter != '')
     {
         $args = array_merge($args, array(
-            'fields' => 'all_with_meta',
+            //'fields' => 'all_with_meta',
             'meta_key' => $meta_filter,
             'meta_value' => $meta_value,
             'meta_like_escape' => false,
@@ -1049,9 +1062,36 @@ function mailusers_get_users( $exclude_id='', $meta_filter = '', $args = array()
 
     }
 
+    if (MAILUSERS_DEBUG) printf('<!-- %s::%s -->%s', basename(__FILE__), __LINE__, PHP_EOL) ;
+    if (MAILUSERS_DEBUG) printf('<!-- %s::%s -->%s', basename(__FILE__), __LINE__, PHP_EOL) ;
+    if (MAILUSERS_DEBUG) printf('<!-- %s%s -->%s', PHP_EOL, print_r(count_users(), true), PHP_EOL) ;
+    if (MAILUSERS_DEBUG) printf('<!-- %s::%s -->%s', basename(__FILE__), __LINE__, PHP_EOL) ;
+    if (MAILUSERS_DEBUG) printf('<!-- %s%s -->%s', PHP_EOL, print_r($args, true), PHP_EOL) ;
+    if (MAILUSERS_DEBUG) printf('<!-- %s::%s -->%s', basename(__FILE__), __LINE__, PHP_EOL) ;
+
+    //  On some sites with a large number of users, it is possible to run out of memory
+    //  when calling get_users() with the arguments 'fields' => 'all_with_meta' (which is
+    //  no longer being used as it become unnecessary in WordPress 3.x).  To limit the
+    //  potential of memory exhaustion, the query is done in chunks and a result is assembled.
+
     //  Retrieve the list of users
 
-	$users = get_users($args) ;
+    $users = count_users() ;
+    $total = $users['total_users'] ;
+
+    $users = array() ;
+
+    $q = 1 ;
+
+    while ($args['offset'] < $total)
+    {
+        if (MAILUSERS_DEBUG) printf('<!-- %s::%s  Query #%s  Memory Usage:  %s -->%s',
+            basename(__FILE__), __LINE__, $q++, mailusers_memory_usage(true), PHP_EOL) ;
+        $users = array_merge($users, get_users($args)) ;
+        $args['offset'] += $args['number'] ;
+    }
+
+    if (MAILUSERS_DEBUG) printf('<!-- %s%s -->%s', PHP_EOL, print_r(count($users), true), PHP_EOL);
 
     //  Sort the users based on the plugin settings
 
@@ -1079,6 +1119,8 @@ function mailusers_get_users( $exclude_id='', $meta_filter = '', $args = array()
 		}
 
     }
+
+    if (MAILUSERS_DEBUG) printf('<!-- %s::%s -->%s', basename(__FILE__), __LINE__, PHP_EOL) ;
 
     return $users ;
 }
@@ -1576,6 +1618,13 @@ function mailusers_plugin_integration()
     if (class_exists(MAILUSERS_ITTHINX_GROUPS_CLASS)) :
         require_once(plugin_dir_path(__FILE__) . 'integration/itthinx-groups.php') ;
     endif;
+    
+    //  Enable integration with PMPro plugin?
+    //  @see http://wordpress.org/plugins/paid-memberships-pro/
+    if (class_exists(MAILUSERS_PMPRO_CLASS)) :
+        require_once(plugin_dir_path(__FILE__) . 'integration/pmpro.php') ;
+    endif;
+
 }
 
 if (MAILUSERS_DEBUG) :
@@ -1722,4 +1771,15 @@ function mailusers_whereami($x, $y)
 }
 endif;
 
+function mailusers_memory_usage($real_usage = false)
+{ 
+    $mem_usage = memory_get_usage($real_usage); 
+
+    if ($mem_usage < 1024) 
+        return $mem_usage." bytes"; 
+    elseif ($mem_usage < 1048576) 
+        return round($mem_usage/1024,2)."K"; 
+    else 
+        return round($mem_usage/1048576,2)."M"; 
+}
 ?>
