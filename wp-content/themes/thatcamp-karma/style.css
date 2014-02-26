@@ -1245,6 +1245,20 @@ a:link.postlink,
   color: #88aa11;
 }
 
+.thatcamp-favorite a,
+.thatcamp-favorite a:visited,
+.thatcamp-favorite a:link,
+.thatcamp-favorite a:hover  {
+  color: #fff;
+}
+
+.comment-reply a,
+.comment-reply a:visited,
+.comment-reply a:link,
+.comment-reply a:hover  {
+  color: #fff;
+}
+
 .forum .button-inner {
 color: #fff;
 }
@@ -1724,6 +1738,7 @@ display:none;
 a.comment-reply-link {
   font-size: 14px;
   font-size: 1.4rem;
+  color: white;
 }
 #respond {
   padding: 20px 0 0 0;
@@ -2254,6 +2269,7 @@ display:none;
   padding: 0;
   margin: 0;
 }
+
 /*--------------------------------------------------------------
 6.1.2 - Activity Comments
 --------------------------------------------------------------*/
