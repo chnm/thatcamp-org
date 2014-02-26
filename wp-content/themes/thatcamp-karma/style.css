@@ -3950,7 +3950,7 @@ div.dir-search input[type="text"], #tc-region {
     float: left;
     clear:none;
   }
-  .children {
+nav#side-nav li ul {
   display:none;
   }
   #primary-documents {
