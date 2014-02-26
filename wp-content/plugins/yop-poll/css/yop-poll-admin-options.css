@@ -1,0 +1,9 @@
+.yop-poll-options-fieldset {
+	border:solid;
+	border-width: 1px;
+}
+.yop-poll-options-fieldset legend{
+	border:solid;
+	border-width: 1px;
+	font-weight: bold;
+}

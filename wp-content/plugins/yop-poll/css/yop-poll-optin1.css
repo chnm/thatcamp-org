@@ -1,0 +1,116 @@
+@font-face{
+	font-family: Lato-Reg;
+	src: url(../fonts/Lato-Reg.ttf);
+}
+
+@font-face{
+	font-family: Lato-Lig;
+	src: url(../fonts/Lato-Lig.ttf);
+}
+
+@font-face{
+	font-family: Lato-Bla;
+	src: url(../fonts/Lato-Lato-Bla.ttf);
+}
+
+@font-face {
+	font-family: 'FontomasCustomRegular';
+	src: url('../fonts/fontomas-webfont.eot');
+	src: url('../fonts/fontomas-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/fontomas-webfont.woff') format('woff'),
+		 url('../fonts/fontomas-webfont.ttf') format('truetype'),
+		 url('../fonts/fontomas-webfont.svg#FontomasCustomRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.optin {
+	text-align: center;
+	width: 18.75em;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+.optin #circle {
+	border-radius: 50%;
+	background: #00a8ff;
+	position: relative;
+	margin: 0 auto;
+	margin-top: 0.75em;
+	width: 7.75em;
+	height: 7.75em;
+}
+
+.optin h1 {
+	font-size: 8em;
+	color: #fff;
+	font-family: Lato-Bla, Arial, Helvetica, sans-serif;
+	line-height: 1em;
+}
+
+.optin h2 {
+	font-size: 1.5em;
+	margin-top: 0.5em;
+	font-variant: small-caps;
+	color: #95ABB7;
+}
+
+.optin label {
+	position: relative;
+	padding-right: 5px;
+}
+
+#optin1 {
+	background: #f7f7f7; /* Old browsers */
+	background: -moz-linear-gradient(45deg,  #f7f7f7 0%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#f7f7f7), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(45deg,  #f7f7f7 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(45deg,  #f7f7f7 0%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(45deg,  #f7f7f7 0%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(45deg,  #f7f7f7 0%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	border: 1px solid #fff;
+	-moz-box-shadow: 0px 0px 9px #dadada;
+	-webkit-box-shadow: 0px 0px 9px #dadada;
+	box-shadow: 0px 0px 9px #dadada;
+	color: #95abb7;
+}
+
+#optin1 #circle {
+	background: #00a8ff;
+	position: relative;
+	margin: 0 auto;
+	margin-top: 0.75em;
+	width: 125px;
+	height: 125px;
+}
+
+#optin1 #email {
+	width: 95%;
+	height: 3em;
+}
+
+#optin1 #email:focus {
+	background: #f9f9f9;
+}
+
+#optin1 #send {
+	margin-top: 10px;
+	font-size: 1.5em;
+	height: 2.5;
+}
+
+#optin1 [data-icon]:after {
+	left: 2px;
+	content: attr(data-icon);
+	font-family: 'FontomasCustomRegular';
+	color: #00a8ff;
+	position: absolute;
+	left: 5px;
+	top: 4px;
+	width: 20px;
+}

@@ -1,0 +1,62 @@
+#donate {
+	width: 100%;
+}
+
+#donate #toggle {
+	background: #00a8ff !important;
+	height: 1.5em;
+	font-variant: small-caps;
+	font-size: 1.25em;
+	padding: 5px 15px 0px 15px;
+	color:#FFFFFF;
+}
+
+#donate #toggle #toggle_title{
+	width: 12em;
+	display: inline-block;
+}
+
+#donate .handlediv {
+	color: #FFFFFF !important;
+}
+
+#donate .inside {
+	background: #f7f7f7; /* Old browsers */
+	background: -moz-linear-gradient(45deg,  #f7f7f7 0%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#f7f7f7), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(45deg,  #f7f7f7 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(45deg,  #f7f7f7 0%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(45deg,  #f7f7f7 0%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(45deg,  #f7f7f7 0%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	border: 1px solid #cfcccc;
+	color: #95abb7;
+	padding: 5px 5px 20px 10px;
+	margin: 0 !important;
+}
+
+#donate .inside #donateButton {
+	position: relative;
+	padding-top: 3px;
+	width: 9em;
+	font-size: 1.25em;
+	border: none;
+	background: #00a8ff;
+	height: 1.5em;
+	color: #FFFFFF !important;
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#donateButton span {
+	width: 100%;
+	margin-left: 30%;
+	margin-right: auto;
+}
+
+#donate .inside a {
+	text-decoration: none;
+	color: #00a8ff;
+	width: auto;
+}

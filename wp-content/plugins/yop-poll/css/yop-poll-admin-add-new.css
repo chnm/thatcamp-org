@@ -1,0 +1,32 @@
+input#yop-poll-question, input#yop-poll-name {
+    width: 98%;
+}
+
+p#yop-poll-add-answer-holder {
+    display: none;
+    padding-right: 10px;
+    text-align: right;
+}
+
+p#yop-poll-add-customfield-holder {
+    display: none;
+    padding-right: 10px;
+    text-align: right;
+}
+
+.yop_poll_tr_customize_answer td table {
+	margin-left: 50px;
+}
+
+.yop_poll_tr_customize_answer input[type="text"] {
+	width:auto !important;
+}
+.yop-poll-answers-fieldset {
+	border:solid;
+	border-width: 1px;
+}
+.yop-poll-answers-fieldset legend{
+	border:solid;
+	border-width: 1px;
+	font-weight: bold;
+}

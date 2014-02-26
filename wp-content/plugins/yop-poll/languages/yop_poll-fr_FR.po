@@ -1,0 +1,2522 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2013-04-04 18:44+0200\n"
+"PO-Revision-Date: 2013-04-04 18:45+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e;_n;esc_attr__;esc_attr_e\n"
+"X-Poedit-Basepath: D:\\xampp\\htdocs\\wordpress_work\\wp-content\\plugins\\\n"
+"X-Poedit-SearchPath-0: yop-poll\n"
+
+#: yop-poll/inc/admin.php:284
+#, php-format
+msgid "You need at least Wordpress version %s to use this plugin"
+msgstr ""
+"Vous devez avoir au moins la version %s de Wordpress pour utiliser ce plugin"
+
+#: yop-poll/inc/admin.php:284
+msgid "Error: Wordpress Version Problem"
+msgstr "Erreur:Probléme à la version du Wordpress"
+
+#: yop-poll/inc/admin.php:292
+msgid "You need the  json php extension for this plugin"
+msgstr "Vous avez besoin de l'extension json php pour ce plugin"
+
+#: yop-poll/inc/admin.php:292
+msgid "Error: Wordpress Extension Problem"
+msgstr "Erreur:Probléme d'extension du Wordpress"
+
+#: yop-poll/inc/admin.php:320 yop-poll/inc/admin.php:1164
+#: yop-poll/inc/admin.php:5293
+msgid "Yop Poll"
+msgstr "Yop Poll"
+
+#: yop-poll/inc/admin.php:327 yop-poll/inc/admin.php:2550
+msgid "All Polls"
+msgstr "Tous les sondages"
+
+#: yop-poll/inc/admin.php:331 yop-poll/inc/admin.php:1164
+#: yop-poll/inc/admin.php:1883 yop-poll/inc/admin.php:2458
+#: yop-poll/inc/admin.php:4071 yop-poll/inc/admin.php:4797
+msgid "Add New"
+msgstr "Ajouter de nouveaux"
+
+#: yop-poll/inc/admin.php:335
+msgid "Options"
+msgstr ""
+
+#: yop-poll/inc/admin.php:339
+msgid "Templates"
+msgstr ""
+
+#: yop-poll/inc/admin.php:343 yop-poll/inc/admin.php:1328
+msgid "Logs"
+msgstr "Logs"
+
+#: yop-poll/inc/admin.php:347 yop-poll/inc/admin.php:2575
+#: yop-poll/inc/admin.php:2676
+msgid "Bans"
+msgstr "Interdictions"
+
+#: yop-poll/inc/admin.php:450 yop-poll/inc/admin.php:523
+msgid "Please wait a moment while we process your request..."
+msgstr ""
+"S'il vous plaît attendez un moment pendant que nous traitons votre demande "
+
+#: yop-poll/inc/admin.php:451 yop-poll/inc/admin.php:524
+msgid "An error has occured..."
+msgstr "Une erreur a survenu"
+
+#: yop-poll/inc/admin.php:453 yop-poll/inc/admin.php:651
+#: yop-poll/inc/admin.php:1526 yop-poll/inc/admin.php:2246
+#: yop-poll/inc/admin.php:2295
+msgid "Answer"
+msgstr "Réponse"
+
+#: yop-poll/inc/admin.php:454
+msgid "Custom Text Field"
+msgstr "Champ du texte personnalisé"
+
+#: yop-poll/inc/admin.php:455
+msgid "Required"
+msgstr "Nécessaire"
+
+#: yop-poll/inc/admin.php:456 yop-poll/inc/admin.php:457
+#: yop-poll/inc/admin.php:2658
+msgid "Remove"
+msgstr "Éliminer"
+
+#: yop-poll/inc/admin.php:458
+msgid "Customize Toggle"
+msgstr "Toggle personnalisé"
+
+#: yop-poll/inc/admin.php:463 yop-poll/inc/admin.php:3600
+#: yop-poll/inc/admin.php:4287
+msgid "Use Template Result Bar"
+msgstr "Utiliser le modèle de la barre du résultat "
+
+#: yop-poll/inc/admin.php:464 yop-poll/inc/admin.php:3494
+#: yop-poll/inc/admin.php:3512 yop-poll/inc/admin.php:3521
+#: yop-poll/inc/admin.php:3549 yop-poll/inc/admin.php:3604
+#: yop-poll/inc/admin.php:3800 yop-poll/inc/admin.php:3817
+#: yop-poll/inc/admin.php:3834 yop-poll/inc/admin.php:3851
+#: yop-poll/inc/admin.php:3930 yop-poll/inc/admin.php:3957
+#: yop-poll/inc/admin.php:3982 yop-poll/inc/admin.php:4122
+#: yop-poll/inc/admin.php:4210 yop-poll/inc/admin.php:4228
+#: yop-poll/inc/admin.php:4237 yop-poll/inc/admin.php:4291
+#: yop-poll/inc/admin.php:4509 yop-poll/inc/admin.php:4526
+#: yop-poll/inc/admin.php:4543 yop-poll/inc/admin.php:4560
+#: yop-poll/inc/admin.php:4578 yop-poll/inc/admin.php:4607
+#: yop-poll/inc/admin.php:4679 yop-poll/inc/admin.php:4706
+#: yop-poll/inc/admin.php:4731
+msgid "Yes"
+msgstr "Oui"
+
+#: yop-poll/inc/admin.php:465 yop-poll/inc/admin.php:3493
+#: yop-poll/inc/admin.php:3511 yop-poll/inc/admin.php:3520
+#: yop-poll/inc/admin.php:3548 yop-poll/inc/admin.php:3603
+#: yop-poll/inc/admin.php:3801 yop-poll/inc/admin.php:3818
+#: yop-poll/inc/admin.php:3835 yop-poll/inc/admin.php:3852
+#: yop-poll/inc/admin.php:3931 yop-poll/inc/admin.php:3958
+#: yop-poll/inc/admin.php:3983 yop-poll/inc/admin.php:4121
+#: yop-poll/inc/admin.php:4209 yop-poll/inc/admin.php:4227
+#: yop-poll/inc/admin.php:4236 yop-poll/inc/admin.php:4290
+#: yop-poll/inc/admin.php:4510 yop-poll/inc/admin.php:4527
+#: yop-poll/inc/admin.php:4544 yop-poll/inc/admin.php:4561
+#: yop-poll/inc/admin.php:4579 yop-poll/inc/admin.php:4606
+#: yop-poll/inc/admin.php:4680 yop-poll/inc/admin.php:4707
+#: yop-poll/inc/admin.php:4732
+msgid "No"
+msgstr "Non"
+
+#: yop-poll/inc/admin.php:466
+msgid "Yop Poll Bar Style"
+msgstr "Style de la barre du Yop Poll"
+
+#: yop-poll/inc/admin.php:467
+msgid "Yop Poll Bar Preview"
+msgstr "Prévisualiser la barre du Yop Poll"
+
+#: yop-poll/inc/admin.php:468
+msgid "Background Color"
+msgstr "Couleur du fond"
+
+#: yop-poll/inc/admin.php:469
+msgid "Height"
+msgstr "Hauteur"
+
+#: yop-poll/inc/admin.php:470
+msgid "Border Color"
+msgstr "Couleur de la bordure"
+
+#: yop-poll/inc/admin.php:471
+msgid "Border Width"
+msgstr "Largeur de la bordure"
+
+#: yop-poll/inc/admin.php:472
+msgid "Border Style"
+msgstr "Style de la bordure"
+
+#: yop-poll/inc/admin.php:588 yop-poll/inc/admin.php:601
+#: yop-poll/inc/admin.php:949 yop-poll/inc/admin.php:1049
+msgid "You are not allowed to delete this item."
+msgstr ""
+
+#: yop-poll/inc/admin.php:608 yop-poll/inc/admin.php:785
+#: yop-poll/inc/admin.php:1622 yop-poll/inc/admin.php:1777
+#: yop-poll/inc/admin.php:2215
+msgid "Export"
+msgstr "Exporter"
+
+#: yop-poll/inc/admin.php:622 yop-poll/inc/admin.php:625
+#: yop-poll/inc/admin.php:2108 yop-poll/inc/admin.php:2111
+msgid "You are not allowed to access this section."
+msgstr ""
+
+#: yop-poll/inc/admin.php:648 yop-poll/inc/admin.php:728
+#: yop-poll/inc/admin.php:807 yop-poll/inc/admin.php:1638
+#: yop-poll/inc/admin.php:1788
+msgid "#"
+msgstr "#"
+
+#: yop-poll/inc/admin.php:649 yop-poll/inc/admin.php:2234
+#: yop-poll/inc/admin.php:2283
+msgid "Vote ID"
+msgstr "ID du vote"
+
+#: yop-poll/inc/admin.php:650
+msgid "POLL Name"
+msgstr "Nom du sondage"
+
+#: yop-poll/inc/admin.php:652 yop-poll/inc/admin.php:2252
+#: yop-poll/inc/admin.php:2301
+msgid "User"
+msgstr "Utilisateur"
+
+#: yop-poll/inc/admin.php:653 yop-poll/inc/admin.php:2258
+#: yop-poll/inc/admin.php:2307
+msgid "User Email"
+msgstr "Utilisateur Email"
+
+#: yop-poll/inc/admin.php:654 yop-poll/inc/admin.php:2515
+#: yop-poll/inc/admin.php:2565
+msgid "IP"
+msgstr "IP"
+
+#: yop-poll/inc/admin.php:655 yop-poll/inc/admin.php:733
+#: yop-poll/inc/admin.php:812 yop-poll/inc/admin.php:1647
+#: yop-poll/inc/admin.php:1797 yop-poll/inc/admin.php:2270
+#: yop-poll/inc/admin.php:2319
+msgid "Vote Date"
+msgstr "Date du vote"
+
+#: yop-poll/inc/admin.php:661 yop-poll/inc/admin.php:738
+#: yop-poll/inc/admin.php:817
+msgid "Can't open php://output!"
+msgstr "Impossible d'ouvrir le php://output!"
+
+#: yop-poll/inc/admin.php:664 yop-poll/inc/admin.php:680
+#: yop-poll/inc/admin.php:742 yop-poll/inc/admin.php:821
+msgid "Can't write header!"
+msgstr "Impossible d'écrire l'en-tête"
+
+#: yop-poll/inc/admin.php:685 yop-poll/inc/admin.php:765
+#: yop-poll/inc/admin.php:844
+msgid "Can't close php://output!"
+msgstr "Impossible de fermer le php://output!"
+
+#: yop-poll/inc/admin.php:761 yop-poll/inc/admin.php:840
+msgid "Can't write record!"
+msgstr "Impossible d'écrire l'enregistrement"
+
+#: yop-poll/inc/admin.php:961 yop-poll/inc/admin.php:1062
+msgid "You are not allowed to clone this item."
+msgstr ""
+
+#: yop-poll/inc/admin.php:1075
+msgid "You are not allowed to reset stats for this item."
+msgstr ""
+
+#: yop-poll/inc/admin.php:1088
+msgid "You are not allowed to delete logs for this item."
+msgstr ""
+
+#: yop-poll/inc/admin.php:1169
+#, php-format
+msgid "%s Poll deleted."
+msgstr "%s Sondage supprimé."
+
+#: yop-poll/inc/admin.php:1178
+#, php-format
+msgid "%s Poll cloned."
+msgstr "%s Sondage cloné."
+
+#: yop-poll/inc/admin.php:1187
+#, php-format
+msgid "Vote reseted for %s Poll."
+msgstr "Vote rétablit pour %s sondage"
+
+#: yop-poll/inc/admin.php:1197
+#, php-format
+msgid "Log deleted for %s Poll."
+msgstr "Log supprimé pour %s sondage"
+
+#: yop-poll/inc/admin.php:1212 yop-poll/inc/admin.php:1214
+#: yop-poll/inc/admin.php:1908 yop-poll/inc/admin.php:1910
+msgid "Search Polls"
+msgstr "Recherchez des sondages"
+
+#: yop-poll/inc/admin.php:1219 yop-poll/inc/admin.php:1915
+#: yop-poll/inc/admin.php:2181 yop-poll/inc/admin.php:2543
+msgid "Bulk Actions"
+msgstr "Actions masse"
+
+#: yop-poll/inc/admin.php:1220 yop-poll/inc/admin.php:1331
+#: yop-poll/inc/admin.php:1916 yop-poll/inc/admin.php:1978
+#: yop-poll/inc/admin.php:2183 yop-poll/inc/admin.php:2186
+#: yop-poll/inc/admin.php:2360 yop-poll/inc/admin.php:2368
+#: yop-poll/inc/admin.php:2544
+msgid "Delete"
+msgstr "Supprimer"
+
+#: yop-poll/inc/admin.php:1221 yop-poll/inc/admin.php:1334
+#: yop-poll/inc/admin.php:1917 yop-poll/inc/admin.php:1981
+msgid "Clone"
+msgstr "Clone"
+
+#: yop-poll/inc/admin.php:1222
+msgid "Reset Votes"
+msgstr "Réinitialisez les votes"
+
+#: yop-poll/inc/admin.php:1223 yop-poll/inc/admin.php:1343
+msgid "Delete Logs"
+msgstr "Supprimez les logs"
+
+#: yop-poll/inc/admin.php:1225 yop-poll/inc/admin.php:1919
+#: yop-poll/inc/admin.php:2189 yop-poll/inc/admin.php:2546
+msgid "Apply"
+msgstr "Appliquer"
+
+#: yop-poll/inc/admin.php:1229
+msgid "View All Polls"
+msgstr "Voyez tous les sondages"
+
+#: yop-poll/inc/admin.php:1230 yop-poll/inc/admin.php:1372
+msgid "Never Expire"
+msgstr "N' expirent jamais"
+
+#: yop-poll/inc/admin.php:1231
+msgid "Expired"
+msgstr "Expiré"
+
+#: yop-poll/inc/admin.php:1232
+msgid "Started"
+msgstr "Commencé"
+
+#: yop-poll/inc/admin.php:1233
+msgid "Not Started"
+msgstr "Pas commencé"
+
+#: yop-poll/inc/admin.php:1235 yop-poll/inc/admin.php:1627
+#: yop-poll/inc/admin.php:1765 yop-poll/inc/admin.php:2208
+#: yop-poll/inc/admin.php:2569
+msgid "Filter"
+msgstr "Filtrer"
+
+#: yop-poll/inc/admin.php:1247 yop-poll/inc/admin.php:1402
+#: yop-poll/inc/admin.php:1931 yop-poll/inc/admin.php:2037
+#: yop-poll/inc/admin.php:2588 yop-poll/inc/admin.php:2619
+msgid "ID"
+msgstr "ID"
+
+#: yop-poll/inc/admin.php:1253 yop-poll/inc/admin.php:1408
+#: yop-poll/inc/admin.php:1937 yop-poll/inc/admin.php:2043
+msgid "Name"
+msgstr "Nom"
+
+#: yop-poll/inc/admin.php:1259 yop-poll/inc/admin.php:1414
+msgid "Total Votes"
+msgstr " Total des votes"
+
+#: yop-poll/inc/admin.php:1265 yop-poll/inc/admin.php:1420
+msgid "Total Answers"
+msgstr "Total des rèponses"
+
+#: yop-poll/inc/admin.php:1271 yop-poll/inc/admin.php:1426
+#: yop-poll/inc/admin.php:4089
+msgid "Question"
+msgstr "Question"
+
+#: yop-poll/inc/admin.php:1276 yop-poll/inc/admin.php:1431
+#: yop-poll/inc/admin.php:1942 yop-poll/inc/admin.php:2048
+msgid "Author"
+msgstr ""
+
+#: yop-poll/inc/admin.php:1280 yop-poll/inc/admin.php:1435
+#: yop-poll/inc/admin.php:1623 yop-poll/inc/admin.php:1749
+#: yop-poll/inc/admin.php:2204 yop-poll/inc/admin.php:3717
+#: yop-poll/inc/admin.php:4426
+msgid "Start Date"
+msgstr "Date du début"
+
+#: yop-poll/inc/admin.php:1286 yop-poll/inc/admin.php:1441
+#: yop-poll/inc/admin.php:1625 yop-poll/inc/admin.php:1757
+#: yop-poll/inc/admin.php:2206
+msgid "End Date"
+msgstr "Date de fin"
+
+#: yop-poll/inc/admin.php:1325 yop-poll/inc/admin.php:1975
+msgid "Edit"
+msgstr "Éditer"
+
+#: yop-poll/inc/admin.php:1331
+msgid "You are about to delete this poll"
+msgstr "Vous êtes sur le point de supprimer ce sondage"
+
+#: yop-poll/inc/admin.php:1331 yop-poll/inc/admin.php:1334
+#: yop-poll/inc/admin.php:1340 yop-poll/inc/admin.php:1343
+#: yop-poll/inc/admin.php:1978 yop-poll/inc/admin.php:1981
+#: yop-poll/inc/admin.php:2360 yop-poll/inc/admin.php:2368
+#: yop-poll/inc/admin.php:2658
+msgid "Cancel"
+msgstr "Annuler"
+
+#: yop-poll/inc/admin.php:1331 yop-poll/inc/admin.php:1334
+#: yop-poll/inc/admin.php:1340 yop-poll/inc/admin.php:1343
+#: yop-poll/inc/admin.php:1978 yop-poll/inc/admin.php:1981
+#: yop-poll/inc/admin.php:2360 yop-poll/inc/admin.php:2368
+#: yop-poll/inc/admin.php:2658
+msgid "to stop"
+msgstr "pour arrêter"
+
+#: yop-poll/inc/admin.php:1331 yop-poll/inc/admin.php:1334
+#: yop-poll/inc/admin.php:1340 yop-poll/inc/admin.php:1343
+#: yop-poll/inc/admin.php:1978 yop-poll/inc/admin.php:1981
+#: yop-poll/inc/admin.php:2360 yop-poll/inc/admin.php:2368
+#: yop-poll/inc/admin.php:2658
+msgid "OK"
+msgstr "OK"
+
+#: yop-poll/inc/admin.php:1331 yop-poll/inc/admin.php:1978
+#: yop-poll/inc/admin.php:2360 yop-poll/inc/admin.php:2368
+msgid "to delete"
+msgstr "pour supprimer"
+
+#: yop-poll/inc/admin.php:1334
+msgid "You are about to clone this poll"
+msgstr "Vous êtes sur le point de cloner ce sondage"
+
+#: yop-poll/inc/admin.php:1334 yop-poll/inc/admin.php:1981
+msgid "to clone"
+msgstr "pour cloner"
+
+#: yop-poll/inc/admin.php:1337
+msgid "Results"
+msgstr "Résultats"
+
+#: yop-poll/inc/admin.php:1340
+msgid "You are about to reset votes for this poll"
+msgstr "Vous êtes sur le point de réinitialiser les votes pour ce sondage"
+
+#: yop-poll/inc/admin.php:1340
+msgid "to reset votes"
+msgstr "pour réinitialiser les votes"
+
+#: yop-poll/inc/admin.php:1340
+msgid "Reset Stats"
+msgstr "Réinitialisez les statistiques"
+
+#: yop-poll/inc/admin.php:1343
+msgid "You are about to delete logs for this poll"
+msgstr "Vous êtes sur le point de supprimer des logs pour ce sondage"
+
+#: yop-poll/inc/admin.php:1343
+msgid "to delete logs"
+msgstr "pour supprimer des logs"
+
+#: yop-poll/inc/admin.php:1387
+msgid "No poll found!"
+msgstr "Aucun sondage trouvé!"
+
+#: yop-poll/inc/admin.php:1464
+msgid "You are not allowed to view results for this item."
+msgstr ""
+
+#: yop-poll/inc/admin.php:1484 yop-poll/inc/admin.php:1510
+#: yop-poll/inc/admin.php:1725 yop-poll/inc/admin.php:2142
+#: yop-poll/inc/admin.php:2451 yop-poll/inc/public-admin.php:54
+msgid "&laquo; Previous"
+msgstr "&laquo; Précédent"
+
+#: yop-poll/inc/admin.php:1485 yop-poll/inc/admin.php:1511
+#: yop-poll/inc/admin.php:1726 yop-poll/inc/admin.php:2143
+#: yop-poll/inc/admin.php:2452 yop-poll/inc/public-admin.php:55
+msgid "Next &raquo;"
+msgstr "Suivant &raquo;"
+
+#: yop-poll/inc/admin.php:1517
+msgid "Yop Poll Results"
+msgstr " Les résultats du Yop sondage "
+
+#: yop-poll/inc/admin.php:1517 yop-poll/inc/admin.php:1732
+#: yop-poll/inc/yop_poll_model.php:1896
+msgid "All Yop Polls"
+msgstr "Tous les  Yop Polls"
+
+#: yop-poll/inc/admin.php:1527 yop-poll/inc/admin.php:1574
+msgid "Votes"
+msgstr "Votes"
+
+#: yop-poll/inc/admin.php:1528
+msgid "Percent"
+msgstr "Pourcent"
+
+#: yop-poll/inc/admin.php:1548
+msgid "No answers defined!"
+msgstr "Aucune réponse défini!"
+
+#: yop-poll/inc/admin.php:1555
+msgid "Poll Other Answers"
+msgstr "Autres réponses du sondage"
+
+#: yop-poll/inc/admin.php:1565 yop-poll/inc/admin.php:1630
+#: yop-poll/inc/admin.php:1780 yop-poll/inc/admin.php:2218
+#: yop-poll/inc/admin.php:2572
+msgid "Items Per Page"
+msgstr "Eléments par page"
+
+#: yop-poll/inc/admin.php:1565 yop-poll/inc/admin.php:1630
+#: yop-poll/inc/admin.php:1780 yop-poll/inc/admin.php:2220
+#: yop-poll/inc/admin.php:2574
+msgid "Set"
+msgstr "Fixer"
+
+#: yop-poll/inc/admin.php:1573
+msgid "Other Answers"
+msgstr " Des autres réponses"
+
+#: yop-poll/inc/admin.php:1591
+msgid "No other answers defined!"
+msgstr "Pas des autres réponses définies!"
+
+#: yop-poll/inc/admin.php:1606 yop-poll/inc/admin.php:1732
+msgid "Custom Fields"
+msgstr "Champs  personnalisés"
+
+#: yop-poll/inc/admin.php:1619 yop-poll/inc/admin.php:1774
+#: yop-poll/inc/admin.php:2212
+msgid "This Page"
+msgstr "Cette page"
+
+#: yop-poll/inc/admin.php:1620 yop-poll/inc/admin.php:1775
+#: yop-poll/inc/admin.php:2213
+msgid "All Pages"
+msgstr "Toutes les pages"
+
+#: yop-poll/inc/admin.php:1696
+msgid "Your poll doesn`t exist!"
+msgstr "Votre sondage n `existe pas!"
+
+#: yop-poll/inc/admin.php:1773
+msgid "Do Not Export"
+msgstr "N'exportez pas"
+
+#: yop-poll/inc/admin.php:1844
+msgid "This poll doesn't have set custom fields!"
+msgstr "Ce sondage n'a pas définis les champs personnalisés!"
+
+#: yop-poll/inc/admin.php:1850
+msgid "Your Poll doesn`t exist!"
+msgstr "Votre Sondage n `existe pas!"
+
+#: yop-poll/inc/admin.php:1883
+msgid "Yop Poll Templates"
+msgstr "Les modèles du Yop Poll"
+
+#: yop-poll/inc/admin.php:1888
+#, php-format
+msgid "%s Poll template deleted."
+msgstr "%s  modèle du sondage est supprimé."
+
+#: yop-poll/inc/admin.php:1897
+#, php-format
+msgid "%s Poll template cloned."
+msgstr "%s modèle du sondage est cloné."
+
+#: yop-poll/inc/admin.php:1946 yop-poll/inc/admin.php:2052
+msgid "Last Modified"
+msgstr "Dernière modification "
+
+#: yop-poll/inc/admin.php:1978
+msgid "You are about to delete this poll template"
+msgstr "Vous êtes sur le point de supprimer le modèle de ce sondage"
+
+#: yop-poll/inc/admin.php:1981
+msgid "You are about to clone this poll template"
+msgstr "Vous êtes sur le point de cloner le monèle de ce sondage"
+
+#: yop-poll/inc/admin.php:2018
+msgid " You haven't used our template editor to create any yop poll templates!"
+msgstr ""
+"Vous n'avez créé aucun yop modèle du sondages en utilisant notre editeur des "
+"modèles!"
+
+#: yop-poll/inc/admin.php:2019
+msgid "Please create your poll template first."
+msgstr "S'il vous plaît créer premier  le modèle de votre sondage"
+
+#: yop-poll/inc/admin.php:2020
+msgid "Create a poll template now"
+msgstr "Maintenant crèez un modèle du sondage "
+
+#: yop-poll/inc/admin.php:2149
+msgid "Yop Poll Logs"
+msgstr "Les enregistres du Yop Poll"
+
+#: yop-poll/inc/admin.php:2154
+#, php-format
+msgid "%s Poll Log deleted."
+msgstr "%s connexion du sondage est supprimé."
+
+#: yop-poll/inc/admin.php:2165 yop-poll/inc/admin.php:2167
+msgid "Search Poll Logs"
+msgstr "Recherchez les logs du sondage"
+
+#: yop-poll/inc/admin.php:2172
+msgid "Group Logs By Answer"
+msgstr "Grouper les enregistres par réponse"
+
+#: yop-poll/inc/admin.php:2173
+msgid "Group Logs By Vote"
+msgstr "Grouper les enregistres par vote"
+
+#: yop-poll/inc/admin.php:2175
+msgid "Group"
+msgstr "Grouper"
+
+#: yop-poll/inc/admin.php:2193
+msgid "All Logs"
+msgstr "Tous les Logs"
+
+#: yop-poll/inc/admin.php:2240 yop-poll/inc/admin.php:2289
+#: yop-poll/inc/admin.php:2594 yop-poll/inc/admin.php:2625
+#: yop-poll/inc/admin.php:4082
+msgid "Poll Name"
+msgstr "Nom du sondage"
+
+#: yop-poll/inc/admin.php:2264 yop-poll/inc/admin.php:2313
+msgid "Ip"
+msgstr "Ip"
+
+#: yop-poll/inc/admin.php:2360
+msgid "You are about to delete this vote log"
+msgstr "Vous êtes sur le point de supprimer ce vote du sondage"
+
+#: yop-poll/inc/admin.php:2368
+msgid "You are about to delete this poll log"
+msgstr "Vous êtes sur le point de supprimer ce log du sondage"
+
+#: yop-poll/inc/admin.php:2458
+msgid "Yop Poll Bans"
+msgstr "Les interdictions du Yop Poll "
+
+#: yop-poll/inc/admin.php:2463
+#, php-format
+msgid "%s Poll Ban deleted!"
+msgstr "%s  interdiction du sondage  a ètè supprimé!"
+
+#: yop-poll/inc/admin.php:2472
+#, php-format
+msgid "%s Poll Ban added!"
+msgstr "%s interdiction du sondage a ètè ajoutè!"
+
+#: yop-poll/inc/admin.php:2486
+msgid "Ban IP, Username or Email"
+msgstr "Interdisez IP,nom d'utilisateur ou email"
+
+#: yop-poll/inc/admin.php:2494
+msgid "Poll"
+msgstr "Sondage"
+
+#: yop-poll/inc/admin.php:2497
+msgid "Bans For All Polls"
+msgstr "Interdictions pour tous les sondages"
+
+#: yop-poll/inc/admin.php:2511
+msgid "Type"
+msgstr "Type"
+
+#: yop-poll/inc/admin.php:2514
+msgid "Choose Ban Type"
+msgstr "Choisissez le type d'interdiction"
+
+#: yop-poll/inc/admin.php:2516 yop-poll/inc/admin.php:2566
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: yop-poll/inc/admin.php:2517 yop-poll/inc/admin.php:2567
+msgid "Email"
+msgstr "Email"
+
+#: yop-poll/inc/admin.php:2521
+msgid "Value"
+msgstr "Valeur"
+
+#: yop-poll/inc/admin.php:2521
+msgid "One Value Per Line"
+msgstr "Une valeur par ligne"
+
+#: yop-poll/inc/admin.php:2526
+msgid "Add Ban"
+msgstr "Ajoutez l'interdiction"
+
+#: yop-poll/inc/admin.php:2526 yop-poll/inc/admin.php:5180
+#: yop-poll/inc/admin.php:5218
+msgid "Close"
+msgstr "Fermer"
+
+#: yop-poll/inc/admin.php:2536 yop-poll/inc/admin.php:2538
+msgid "Search Poll Bans"
+msgstr "Rercherchez l'interdiction du sondage"
+
+#: yop-poll/inc/admin.php:2564
+msgid "All Ban Types"
+msgstr "Tous les types d'interdictions"
+
+#: yop-poll/inc/admin.php:2600 yop-poll/inc/admin.php:2631
+msgid "Ban Type"
+msgstr "Type d'interdiction"
+
+#: yop-poll/inc/admin.php:2606 yop-poll/inc/admin.php:2637
+msgid "Ban Value"
+msgstr " La valeur d' interdiction"
+
+#: yop-poll/inc/admin.php:2658
+msgid "You are about to remove this poll ban"
+msgstr "Vous êtes sur le point de supprimer cette interdiction du sondage"
+
+#: yop-poll/inc/admin.php:2658
+msgid "to remove"
+msgstr "pour éliminer"
+
+#: yop-poll/inc/admin.php:2700
+msgid "Option \"Allow Other Answer\" Updated!"
+msgstr "Option \"Permettez des autres réponse \"Actualiser!"
+
+#: yop-poll/inc/admin.php:2705
+msgid "Option \"Allow Other Answer\" Not Updated! Choose \"yes\" or \"no\"!"
+msgstr ""
+"Option \"Permettez des autres réponse \"Pas actualiser!Choisissez  \"oui \" "
+"ou \"pas \"!"
+
+#: yop-poll/inc/admin.php:2713
+msgid "Option \"Other Answer Label\" Updated!"
+msgstr "Option \"L'étiquette d'autre réponse\" Actualiser!"
+
+#: yop-poll/inc/admin.php:2721
+msgid "Option \"Display Other Answers Values\" Updated!"
+msgstr "Option \"Afficher autres valeurs des réponses\"Actualisé!"
+
+#: yop-poll/inc/admin.php:2726
+msgid ""
+"Option \"Display Other Answers Values\" Not Updated! Choose \"yes\" or \"no"
+"\"!"
+msgstr ""
+"Option \"Afficher autres valeurs des réponses\"Pas actualisé! Choisissez "
+"\"oui\" ou \"non\"!"
+
+#: yop-poll/inc/admin.php:2737
+msgid "Option \"Allow Multiple Answers\" Updated!"
+msgstr "Option \"Permettez des plusieurs rèponses\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2746
+msgid "Option \"Number of allowed answers\" Updated!"
+msgstr "Option \"Nombre des réponses autorisées\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2751
+msgid ""
+"Option \"Number of allowed answers\" Not Updated! Please fill in a number!"
+msgstr ""
+"Option \"Nombre des réponses autorisées\"Pas actualisé!S'il vous plaît "
+"écrivez un nombre!"
+
+#: yop-poll/inc/admin.php:2758
+msgid ""
+"Option \"Allow Multiple Answers\" Not Updated! Choose \"yes\" or \"no\"!"
+msgstr ""
+"Option \"Permettez des plusieurs rèponses\" Pas actualisé! Choisissez \"oui"
+"\" ou \"non\"!"
+
+#: yop-poll/inc/admin.php:2767
+msgid "Option \"Use CAPTCHA\" Updated!"
+msgstr ""
+
+#: yop-poll/inc/admin.php:2772
+msgid "Option \"Use CAPTCHA\" Not Updated! Choose \"yes\" or \"no\"!"
+msgstr ""
+
+#: yop-poll/inc/admin.php:2781
+msgid "Option \"Display Answers\" Updated!"
+msgstr "Option \"Afficher des réponses\"Actualisé!"
+
+#: yop-poll/inc/admin.php:2790
+msgid "Option \"Columns for Tabulated Display Answers\" Updated!"
+msgstr ""
+"Option \"Colonnes pour afficher des réponses dans un tableau\"Actualisé!"
+
+#: yop-poll/inc/admin.php:2795
+msgid ""
+"Option \"Columns for Tabulated Display Answers\" Not Updated! Please fill in "
+"a number!"
+msgstr ""
+"Option \"Colonnes pour afficher des réponses dans un tableau\"  Pas "
+"actualisé! S'il vous plaît écrivez un nombre!"
+
+#: yop-poll/inc/admin.php:2802
+msgid ""
+"Option \"Display Answers\" Not Updated! you must choose between 'vertical', "
+"'orizontal' or 'tabulated'"
+msgstr ""
+"Option \"Afficher des réponses\" Pas actualisé!vous devez choisir entre "
+"'verticale', 'orizontal' ou 'tableau'"
+
+#: yop-poll/inc/admin.php:2811
+msgid "Option \"Display Results\" Updated!"
+msgstr "Option \"Afficher des résultats\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2820
+msgid "Option \"Columns for Tabulated Display Results\" Updated!"
+msgstr ""
+"Option \"Colonnes pour afficher des résultats dans un tableau\"  Actualisé!"
+
+#: yop-poll/inc/admin.php:2825
+msgid ""
+"Option \"Columns for Tabulated Display Results\" Not Updated! Please fill in "
+"a number!"
+msgstr ""
+"Option \"Colonnes pour afficher des résultats dans un tableau\"  Pas "
+"actualisé! S'il vous plaît écrivez un nombre!"
+
+#: yop-poll/inc/admin.php:2832
+msgid ""
+"Option \"Display Results\" Not Updated! Choose the display layout: "
+"'vertical', 'orizontal' or 'tabulated'"
+msgstr ""
+"Option \"Afficher des réponses\" Pas actualisé! Choisissez le Format de "
+"l'affichage: 'vertical', 'orizontal' ou 'tableau'"
+
+#: yop-poll/inc/admin.php:2841
+msgid "Option \"Use Template Result Bar\" Updated!"
+msgstr "Option \" Utiliser le modèle de la barre du résultat\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2850
+msgid "Option \"Result Bar Background Color\" Updated!"
+msgstr "Option \" Couleur du fond de la barre de résultat\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2855
+msgid ""
+"Option \"Result Bar Background Color\" Not Updated! Fill in an alphanumeric "
+"value!"
+msgstr ""
+"Option \" Couleur du fond de la barre de résultat\" Pas actualisé! Écrivez "
+"une valeur alphanumérique!"
+
+#: yop-poll/inc/admin.php:2864
+msgid "Option \"Result Bar Height\" Updated!"
+msgstr "Option \"Hauteur de la barre de résultat\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2869
+msgid "Option \"Result Bar Height\" Not Updated! Please fill in a number!"
+msgstr ""
+"Option \"Hauteur de la barre de résultat\" Pas actualisé! S'il vous plaît "
+"écrivez un nombre!"
+
+#: yop-poll/inc/admin.php:2878
+msgid "Option \"Result Bar Border Color\" Updated!"
+msgstr "Option \"Couleur de la bordure de la barre de résultat\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2883
+msgid ""
+"Option \"Result Bar Border Color\" Not Updated! Please fill in a number!"
+msgstr ""
+"Option \"Couleur de la bordure de la barre de résultat\"  Pas actualisé! "
+"S'il vous plaît écrivez un nombre!"
+
+#: yop-poll/inc/admin.php:2892
+msgid "Option \"Result Bar Border Width\" Updated!"
+msgstr "Option \"Largeur de la bordure de la barre de résultat\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2897
+msgid ""
+"Option \"Result Bar Border Width\" Not Updated! Please fill in a number!"
+msgstr ""
+"Option \"Largeur de la bordure de la barre de résultat\" Pas actualisé! S'il "
+"vous plaît écrivez un nombre!"
+
+#: yop-poll/inc/admin.php:2906
+msgid "Option \"Result Bar Border Style\" Updated!"
+msgstr "Option \"Le style de la bordure de la barre de résultat\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2911
+msgid ""
+"Option \"Result Bar Border Style\" Not Updated! Fill in an alphanumeric "
+"value!"
+msgstr ""
+"Option \"Le style de la bordure de la barre de résultat\" Pas actualisé! "
+"Écrivez une valeur alphanumérique!"
+
+#: yop-poll/inc/admin.php:2918
+msgid ""
+"Option \"Use Template Result Bar\" Not Updated! Choose \"yes\" or \"no\"!"
+msgstr ""
+"Option \" Utiliser le modèle de la barre du résultat \" Pas actualisé! "
+"Choisissez \"oui\" ou \"non\"!"
+
+#: yop-poll/inc/admin.php:2927
+msgid "Option \"Sort Answers\" Updated!"
+msgstr "Option \" Assortir les réponses\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2935
+msgid "Option \"Sort Answers Direction\" Updated!"
+msgstr "Option \"Modalité d'assortir les répones\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2940
+msgid ""
+"Option \"Sort Answers Direction\" Not Updated! Please choose between "
+"'Ascending' or 'Descending'"
+msgstr ""
+"Option \"Modalité d'assortir les répones\" Pas actualisé! S'il vous plaît "
+"choissez entre 'Ascendant' ou 'Descendant'"
+
+#: yop-poll/inc/admin.php:2946
+msgid ""
+"Option \"Sort Answers\" Not Updated! Please choose between: 'exact', "
+"'alphabetical', 'random' or 'votes'"
+msgstr ""
+"Option \"Assortir les réponses\" Pas actualisé! S'il vous plaît choissez "
+"entre: 'exacte', 'alphabétique', 'aléatoire' ou 'votes'"
+
+#: yop-poll/inc/admin.php:2955
+msgid "Option \"Sort Results\" Updated!"
+msgstr "Option \"Assortir les résultats\"  Actualisé! "
+
+#: yop-poll/inc/admin.php:2963
+msgid "Option \"Sort Results Direction\" Updated!"
+msgstr "Option \"Modalité d'assortir les résultats\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2968
+msgid ""
+"Option \"Sort Results Direction\" Not Updated! Please choose between "
+"'Ascending' or 'Descending'"
+msgstr ""
+"Option \"Modalité d'assortir les résultats\" Pas actualisé!  S'il vous plaît "
+"choissez entre 'Ascendant' ou 'Descendant'"
+
+#: yop-poll/inc/admin.php:2974
+msgid ""
+"Option \"Sort Results\" Not Updated! Please choose between: 'exact', "
+"'alphabetical', 'random' or 'votes'"
+msgstr ""
+"Option \"Modalité d'assortir les résultats\" Pas actualisé!  S'il vous plaît "
+"choissez entre: 'exacte', 'alphabétique', 'aléatoire' ou 'votes'"
+
+#: yop-poll/inc/admin.php:2983
+msgid "Option \"Poll Start Date\" Updated!"
+msgstr " Option \"Date de début du Sondage\" Actualisé!"
+
+#: yop-poll/inc/admin.php:2988
+msgid "Option \"Poll Start Date\" Not Updated! The field is empty!"
+msgstr " Option \"Date de début du Sondage\" Pas actualisé! Le champ est vide!"
+
+#: yop-poll/inc/admin.php:2997 yop-poll/inc/admin.php:3011
+msgid "Option \"Poll End Date\" Updated!"
+msgstr "Option \"Date de fin du sondage\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3002
+msgid "Option \"Poll End Date\" Not Updated! "
+msgstr "Option \"Date de fin du sondage\" Pas actualisé!"
+
+#: yop-poll/inc/admin.php:3015
+msgid "Option \"Poll End Date\" Not Updated! The field is empty! "
+msgstr "Option \"Date de fin du sondage\" Pas actualisé! Le champ est vide!"
+
+#: yop-poll/inc/admin.php:3026
+msgid "Option \"View Results\" Updated!"
+msgstr "Option \"Voir les résultats\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3034
+msgid "Option \"View Results Custom Date\" Updated!"
+msgstr "Option \"La date personnalisé pour afficher les résultats\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3041
+msgid ""
+"Option \"View Results\" Not Updated! Please choose between: 'Before', "
+"'After', 'After Poll End Date', 'Never' or 'Custom Date'"
+msgstr ""
+"Option \"Voir les résultats\" Pas actualisé! S'il vous plaît choissez entre: "
+"'Avant', 'Après', 'Après la date de fin du sondage ',' Jamais' ou  'Date "
+"personalisée'"
+
+#: yop-poll/inc/admin.php:3050
+msgid "Option \"View Results Type\" Updated!"
+msgstr "Option \"Visualiser le type des résultats\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3055
+msgid ""
+"Option \"View Results Type\" Not Updated! Please choose between: 'Votes "
+"number', 'Percentages' or 'Votes number and percentages' "
+msgstr ""
+"Option \"Visualiser le type des résultats\" Pas actualisé! S'il vous plaît "
+"choissez entre: 'Nombre des votes', ' pourcentages ' ou ' nombre des votes "
+"et pourcentages '"
+
+#: yop-poll/inc/admin.php:3064 yop-poll/inc/yop_poll_model.php:160
+msgid ""
+"Option \"Poll Answer Result Label\" Not Updated! You must use %POLL-ANSWER-"
+"RESULT-VOTES%!"
+msgstr ""
+"Option \"L'étiquette du résultat du sondage\" Pas actualisé! Vous devez "
+"utiliser %POLL-ANSWER-RESULT-VOTES%"
+
+#: yop-poll/inc/admin.php:3069 yop-poll/inc/admin.php:3082
+#: yop-poll/inc/admin.php:3099
+msgid "Option \"Poll Answer Result Label\" Updated!"
+msgstr "Option \"L'étiquette du résultat du sondage\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3077 yop-poll/inc/yop_poll_model.php:167
+msgid ""
+"Option \"Poll Answer Result Label\" Not Updated! You must use %POLL-ANSWER-"
+"RESULT-PERCENTAGES%!"
+msgstr ""
+"Option \"L'étiquette du résultat du sondage\" Pas actualisé! Vous devez "
+"utiliser %POLL-ANSWER-RESULT-PERCENTAGES%!"
+
+#: yop-poll/inc/admin.php:3090 yop-poll/inc/admin.php:3094
+#: yop-poll/inc/yop_poll_model.php:174 yop-poll/inc/yop_poll_model.php:178
+msgid ""
+"Option \"Poll Answer Result Label\" Not Updated! You must use %POLL-ANSWER-"
+"RESULT-VOTES% and %POLL-ANSWER-RESULT-PERCENTAGES%!"
+msgstr ""
+"Option \"L'étiquette du résultat du sondage\" Pas actualisé! Vous devez "
+"utiliser %POLL-ANSWER-RESULT-VOTES% and %POLL-ANSWER-RESULT-PERCENTAGES%!"
+
+#: yop-poll/inc/admin.php:3110
+msgid "Option \"Poll Answer Result Votes Number Singular Label\" Updated!"
+msgstr ""
+"Option \"L'étiquette du singulier pour le nombre des votes du  résultat du "
+"sondage\"Actualiser!"
+
+#: yop-poll/inc/admin.php:3115
+msgid ""
+"Option \"Poll Answer Result Votes Number Singular Label\" Not Updated! The "
+"field is empty!"
+msgstr ""
+"Option \"L'étiquette du singulier pour le nombre des votes du  résultat du "
+"sondage\" Pas actualiser!Le champ est vide!"
+
+#: yop-poll/inc/admin.php:3124
+msgid "Option \"Poll Answer Result Votes Number Plural Label\" Updated!"
+msgstr ""
+"Option \"L'étiquette du pluriel pour le nombre des votes du  résultat du "
+"sondage\"Actualiser!"
+
+#: yop-poll/inc/admin.php:3129
+msgid ""
+"Option \"Poll Answer Result Votes Number Plural Label\" Not Updated! The "
+"field is empty!"
+msgstr ""
+"Option \"L'étiquette du pluriel pour le nombre des votes du  résultat du "
+"sondage\" Pas actualiser!Le champ est vide!"
+
+#: yop-poll/inc/admin.php:3138
+msgid "Option \"Vote Button Label\" Updated!"
+msgstr "Option \"L'étiquette du bouton voter\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3143
+msgid "Option \"Vote Button Label\" Not Updated! The field is empty!"
+msgstr "Option \"L'étiquette du bouton:voter\"Pas actualisé!Le champ est vide!"
+
+#: yop-poll/inc/admin.php:3153
+msgid "Option \"View Results Link\" Updated!"
+msgstr "Option \"Affichez  le chaînon des résultats\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3162
+msgid "Option \"View Results Link Label\" Updated!"
+msgstr "Option \"L'ètiquette du chaînon  pour voir les résultats\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3167
+msgid "Option \"View Results Link Label\" Not Updated! The field is empty!"
+msgstr ""
+"Option \"L'ètiquette du chaînon  pour voir les résultats\" Pas actualisé! Le "
+"champ est vide!"
+
+#: yop-poll/inc/admin.php:3174
+msgid ""
+"Option \"View Results Link\" Not Updated! Please choose between 'yes' or 'no'"
+msgstr ""
+"Option \"Affichez  le chaînon des résultats\" Pas actualisé! S'il vous plaît "
+"choissez entre 'oui' ou 'non'"
+
+#: yop-poll/inc/admin.php:3183
+msgid "Option \"View Back To Vote Link\" Updated!"
+msgstr "Option \"Affichez le chaînon pour le retour à vote\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3192
+msgid "Option \"View Back to Vote Link Label\" Updated!"
+msgstr "Option \"L'ètiquette du chaînon  pour le retour à vote\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3197
+msgid ""
+"Option \"View Back to Vote Link Label\" Not Updated! The field is empty!"
+msgstr ""
+"Option \"L'ètiquette du chaînon  pour le retour à vote\" Pas actualisé! Le "
+"champ est vide!"
+
+#: yop-poll/inc/admin.php:3204
+msgid ""
+"Option \"View Back to Vote Link\" Not Updated! Please choose between 'yes' "
+"or 'no'"
+msgstr ""
+"Option \"L'ètiquette du chaînon  pour le retour à vote\" Pas actualisé!  "
+"S'il vous plaît choissez entre 'oui' ou 'non'"
+
+#: yop-poll/inc/admin.php:3213
+msgid "Option \"View Total Votes\" Updated!"
+msgstr "Option \"Voyez le total des votes\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3221 yop-poll/inc/yop_poll_model.php:249
+msgid "You must use %POLL-TOTAL-VOTES% to define your Total Votes label!"
+msgstr ""
+"Vous devez utiliser %POLL-TOTAL-VOTES% pour definir votre étiquette pour le "
+"total des votes!"
+
+#: yop-poll/inc/admin.php:3226
+msgid "Option \"View Total Votes Label\" Updated!"
+msgstr "Option \" L'ètiquette pour voir les votes totals\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3234
+msgid ""
+"Option \"View Total Votes\" Not Updated! Please choose between 'yes' or 'no'"
+msgstr ""
+"Option \"Voyez les votes totals\" Pas actualisé! S'il vous plaît choissez "
+"entre 'oui' ou 'non'"
+
+#: yop-poll/inc/admin.php:3243
+msgid "Option \"View Total Answers\" Updated!"
+msgstr "Option \"Voyez le nombre total des réponses\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3251 yop-poll/inc/yop_poll_model.php:276
+msgid "You must use %POLL-TOTAL-ANSWERS% to define your Total Answers label!"
+msgstr ""
+"Vous devez utiliser %POLL-TOTAL-ANSWERS%pour définir votre ètiquette pour le "
+"total des réponses!"
+
+#: yop-poll/inc/admin.php:3256
+msgid "Option \"View Total Answers Label\" Updated!"
+msgstr ""
+"Option \" L'étiquette pour voir le nombre total des réponses\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3264
+msgid ""
+"Option \"View Total Answers\" Not Updated! Please choose between 'yes' or "
+"'no'"
+msgstr ""
+"Option  \"Voyez le nombre total des réponses\"Pas actualisé!S'il vous plaît "
+"choisir entre 'oui' ou 'non'"
+
+#: yop-poll/inc/admin.php:3273
+msgid "Option \"Use Default Loading Image\" Updated!"
+msgstr ""
+
+#: yop-poll/inc/admin.php:3281
+msgid "You must use a url like \"http://..\" to define your Loading Image Url!"
+msgstr ""
+
+#: yop-poll/inc/admin.php:3286
+msgid "Option \"Loading Image Url\" Updated!"
+msgstr ""
+
+#: yop-poll/inc/admin.php:3294
+msgid ""
+"Option \"Use Default Loading Image\" Not Updated! Please choose between "
+"'yes' or 'no'"
+msgstr ""
+
+#: yop-poll/inc/admin.php:3303
+msgid "Option \"Vote Permisions\" Updated!"
+msgstr "Option \"Permisions de voter\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3308
+msgid ""
+"Option \"Vote Permisions\" Not Updated! Please choose between 'Quest Only', "
+"'Registered Only', 'Guest & Registered Users'"
+msgstr ""
+"Option \"Permisions de voter\" Pas actualisé! S'il vous plaît choissez "
+"entre  'Visiteur' , 'Enregistré' ,'Visiteurs & Enregistré Utilisateurs'"
+
+#: yop-poll/inc/admin.php:3317
+msgid "Option \"Blocking Voters\" Updated!"
+msgstr "Option \"Blocage des électeurs\" Actualisé"
+
+#: yop-poll/inc/admin.php:3326
+msgid "Option \"Blocking Voters Interval Value\" Updated!"
+msgstr ""
+"Option \" La valeur de l'interval du blocage des électeurs\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3331
+msgid ""
+"Option \"Blocking Voters Interval Value\" Not Updated! Please fill in a "
+"number!"
+msgstr ""
+"Option \" La valeur de l'interval du blocage des électeurs\" Pas actualisé! "
+"S'il vous plaît écrivez un nombre!"
+
+#: yop-poll/inc/admin.php:3340
+msgid "Option \"Blocking Voters Interval Unit\" Updated!"
+msgstr "Option \"L'unité de l'interval du blocage des électeurs\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3345
+msgid ""
+"Option \"Blocking Voters Interval Unit\" Not Updated! Please choose between "
+"'Seconds', 'Minutes', 'Hours' or 'Days'"
+msgstr ""
+"Option \"L'unité de l'interval du blocage des électeurs\" Pas actualisé!  "
+"S'il vous plaît choissez entre 'Secondes', 'Minutes', 'Heures' ou 'Jours'"
+
+#: yop-poll/inc/admin.php:3352
+msgid ""
+"Option \"Blocking Voters\" Not Updated! Please choose between: 'Don`t "
+"Block', 'Cookie', 'Ip', 'Username', 'Cookie and Ip'"
+msgstr ""
+"Option \"Blocage des électeurs\" Pas actualisé! S'il vous plaît choissez "
+"entre: 'Ne bloquer pas', 'Cookie', 'IP', 'Nom d'utilisateur', 'Cookie ei Ip'"
+
+#: yop-poll/inc/admin.php:3361
+msgid "Option \"Percentages Decimals\" Updated!"
+msgstr "Option \"Les décimales des pourcentages\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3366
+msgid "Option \"Percentages Decimals\" Not Updated! Please fill in a number!"
+msgstr ""
+"Option \"Les décimales des pourcentages\" Pas actualisé!S'il vous plaît "
+"introduire un certain nombre!"
+
+#: yop-poll/inc/admin.php:3375
+msgid "Option \"View Poll Archive Link\" Updated!"
+msgstr "Option \"Voir le chaînon de l'archive du sondage\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3384
+msgid "Option \"View Poll Archive Link Label\" Updated!"
+msgstr ""
+"Option \"L'étiquette pour voir le chaînon de l'archive du sondage\" "
+"Actualisé!"
+
+#: yop-poll/inc/admin.php:3389
+msgid ""
+"Option \"View Poll Archive Link Label\" Not Updated! The field is empty!"
+msgstr ""
+"Option \"L'étiquette pour voir le chaînon de l'archive du sondage\" Pas "
+"actualisé! Le champ est vide!"
+
+#: yop-poll/inc/admin.php:3397
+msgid "Option \"Poll Archive URL\" Updated!"
+msgstr "Option \"URL de l'archive du sondage\" Actualizé!"
+
+#: yop-poll/inc/admin.php:3402
+msgid "Option \"Poll Archive URL\" Not Updated! The field is empty!"
+msgstr ""
+"Option \"URL de l'archive du sondage\" Pas actualizé! Le champ est vide!"
+
+#: yop-poll/inc/admin.php:3409
+msgid ""
+"Option \"View Poll Archive Link\" Not Updated! Please choose between 'yes' "
+"or 'no'"
+msgstr ""
+"Option \"Voyez le chaînon de l'archive du sondage\" Pas actualisé! S'il vous "
+"plaît choisissez entre 'oui' ou 'non' "
+
+#: yop-poll/inc/admin.php:3418
+msgid "Option \"Show Poll in Arhive"
+msgstr "Option \"Voyez le sondage dans l'archive "
+
+#: yop-poll/inc/admin.php:3427
+msgid "Option \"Archive Order\" Updated!"
+msgstr "Option \" L'ordre de l'archive\" Actualisé!"
+
+#: yop-poll/inc/admin.php:3432
+msgid "Option \"Archive Order\" Not Updated! Please fill in a number!"
+msgstr ""
+"Option \" L'ordre de l'archive\" Pas actualisé! S'il vous plaît écrivez un "
+"nombre!"
+
+#: yop-poll/inc/admin.php:3439
+msgid ""
+"Option \"Show Poll in Archive\" Not Updated! Please choose between 'yes' or "
+"'no'"
+msgstr ""
+"Option \"Voyez le sondage dans l'archive\" Pas actualisé! S'il vous plaît "
+"choisissez entre 'oui' ou 'non'"
+
+#: yop-poll/inc/admin.php:3448
+msgid "Option \"Archive Polls Per Page"
+msgstr "Option \"Sondages achivés par page"
+
+#: yop-poll/inc/admin.php:3453
+msgid "Option \"Archive Polls Per Page\" Not Updated! Please fill in a number!"
+msgstr ""
+"Option \"Sondages achivés par page\" Pas actualisé! S'il vous plaît écrivez "
+"un nombre!"
+
+#: yop-poll/inc/admin.php:3472
+msgid "Yop Poll Options"
+msgstr "Les options du Yop Poll"
+
+#: yop-poll/inc/admin.php:3484
+msgid "Answers options"
+msgstr "Les options des rèponses"
+
+#: yop-poll/inc/admin.php:3490 yop-poll/inc/admin.php:4206
+msgid "Allow other answers "
+msgstr "Permettez des autres réponses"
+
+#: yop-poll/inc/admin.php:3499 yop-poll/inc/admin.php:4215
+msgid "Other Answer Label"
+msgstr "L'étiquette d'autre réponse"
+
+#: yop-poll/inc/admin.php:3508 yop-poll/inc/admin.php:4224
+msgid "Display Other Answers Values"
+msgstr "Afficher d'autres valeurs des réponses"
+
+#: yop-poll/inc/admin.php:3517 yop-poll/inc/admin.php:4233
+msgid "Allow Multiple Answers "
+msgstr "Permettez des plusieurs rèponses"
+
+#: yop-poll/inc/admin.php:3527 yop-poll/inc/admin.php:4243
+msgid "Number of allowed answers"
+msgstr "Nombre des réponses autorisées"
+
+#: yop-poll/inc/admin.php:3539
+msgid "Display Options"
+msgstr "Options d'affichage"
+
+#: yop-poll/inc/admin.php:3545 yop-poll/inc/admin.php:4603
+msgid "Use CAPTCHA "
+msgstr ""
+
+#: yop-poll/inc/admin.php:3554 yop-poll/inc/admin.php:4251
+msgid "Display Answers "
+msgstr "Réponses d'affichage"
+
+#: yop-poll/inc/admin.php:3557 yop-poll/inc/admin.php:3575
+#: yop-poll/inc/admin.php:4254 yop-poll/inc/admin.php:4272
+msgid "Vertical"
+msgstr "Vertical"
+
+#: yop-poll/inc/admin.php:3558 yop-poll/inc/admin.php:3576
+#: yop-poll/inc/admin.php:4255 yop-poll/inc/admin.php:4273
+msgid "Orizontal"
+msgstr "Orizontal"
+
+#: yop-poll/inc/admin.php:3559 yop-poll/inc/admin.php:3577
+#: yop-poll/inc/admin.php:4256 yop-poll/inc/admin.php:4274
+msgid "Tabulated"
+msgstr "Colonnes"
+
+#: yop-poll/inc/admin.php:3564 yop-poll/inc/admin.php:3582
+#: yop-poll/inc/admin.php:4261 yop-poll/inc/admin.php:4279
+msgid "Columns"
+msgstr "Colonnes"
+
+#: yop-poll/inc/admin.php:3572 yop-poll/inc/admin.php:4269
+msgid "Display Results "
+msgstr "Résultats d'affichage"
+
+#: yop-poll/inc/admin.php:3594
+msgid "Poll Bar Style"
+msgstr "L'aspect  de la barre du sondage"
+
+#: yop-poll/inc/admin.php:3665
+msgid "Sorting Answers &amp; Results"
+msgstr "Le triage des réponses &amp; Résultats"
+
+#: yop-poll/inc/admin.php:3670 yop-poll/inc/admin.php:4347
+msgid "Sort Answers"
+msgstr " Assortissez les réponses"
+
+#: yop-poll/inc/admin.php:3672 yop-poll/inc/admin.php:3690
+#: yop-poll/inc/admin.php:4349 yop-poll/inc/admin.php:4367
+msgid "Exact Order"
+msgstr " Ordre exact"
+
+#: yop-poll/inc/admin.php:3673 yop-poll/inc/admin.php:3691
+#: yop-poll/inc/admin.php:4350 yop-poll/inc/admin.php:4368
+msgid "Alphabetical Order"
+msgstr "Ordre alphabétique"
+
+#: yop-poll/inc/admin.php:3674 yop-poll/inc/admin.php:3692
+#: yop-poll/inc/admin.php:4351 yop-poll/inc/admin.php:4369
+msgid "Random Order"
+msgstr "Ordre aléatoire"
+
+#: yop-poll/inc/admin.php:3675 yop-poll/inc/admin.php:3693
+#: yop-poll/inc/admin.php:4352 yop-poll/inc/admin.php:4370
+msgid "Number of Votes"
+msgstr "Nombre des votes"
+
+#: yop-poll/inc/admin.php:3680 yop-poll/inc/admin.php:4357
+msgid "Sort Answers Rule"
+msgstr "La règle du triage des réponses"
+
+#: yop-poll/inc/admin.php:3683 yop-poll/inc/admin.php:3701
+#: yop-poll/inc/admin.php:4360 yop-poll/inc/admin.php:4378
+msgid "Ascending"
+msgstr "Ascendant"
+
+#: yop-poll/inc/admin.php:3684 yop-poll/inc/admin.php:3702
+#: yop-poll/inc/admin.php:4361 yop-poll/inc/admin.php:4379
+msgid "Descending"
+msgstr "Descendant"
+
+#: yop-poll/inc/admin.php:3688
+msgid "Sorting Results"
+msgstr "Triant des résultats"
+
+#: yop-poll/inc/admin.php:3698 yop-poll/inc/admin.php:4375
+msgid "Sorting Results Rule"
+msgstr "La règle du triage des  résultats"
+
+#: yop-poll/inc/admin.php:3711 yop-poll/inc/admin.php:4420
+msgid "Poll Start/End Date"
+msgstr "La date du début/de fin"
+
+#: yop-poll/inc/admin.php:3725 yop-poll/inc/admin.php:4434
+msgid "End Date "
+msgstr "La date de fin"
+
+#: yop-poll/inc/admin.php:3729 yop-poll/inc/admin.php:4438
+msgid "Do NOT Expire This Poll"
+msgstr ""
+
+#: yop-poll/inc/admin.php:3738 yop-poll/inc/admin.php:4447
+msgid "View Results Options"
+msgstr "Voyez les options des résultats"
+
+#: yop-poll/inc/admin.php:3744 yop-poll/inc/admin.php:4453
+msgid "View Results"
+msgstr "Afficher les résultats"
+
+#: yop-poll/inc/admin.php:3747 yop-poll/inc/admin.php:4456
+msgid "Before Vote"
+msgstr "Avant le vote"
+
+#: yop-poll/inc/admin.php:3748 yop-poll/inc/admin.php:4457
+msgid "After Vote"
+msgstr "Après le vote"
+
+#: yop-poll/inc/admin.php:3749 yop-poll/inc/admin.php:4458
+msgid "After Poll End Date"
+msgstr "Après la fin du sondage"
+
+#: yop-poll/inc/admin.php:3750 yop-poll/inc/admin.php:4459
+msgid "Never"
+msgstr "Jamais"
+
+#: yop-poll/inc/admin.php:3751 yop-poll/inc/admin.php:4460
+msgid "Custom Date"
+msgstr "Date personnalisèe"
+
+#: yop-poll/inc/admin.php:3753 yop-poll/inc/admin.php:4462
+msgid "Results display date (after this date the user can see the results)"
+msgstr ""
+"La date d'affichage des résultats(après cette date  l'utilisateur peut voir "
+"les résultats)"
+
+#: yop-poll/inc/admin.php:3759 yop-poll/inc/admin.php:4468
+msgid "Results Display"
+msgstr "Résultats d'affichage"
+
+#: yop-poll/inc/admin.php:3762 yop-poll/inc/admin.php:4471
+msgid "By Votes Number"
+msgstr "Par nombre des votes"
+
+#: yop-poll/inc/admin.php:3763 yop-poll/inc/admin.php:4472
+msgid "Percentages"
+msgstr "Pourcentages"
+
+#: yop-poll/inc/admin.php:3764 yop-poll/inc/admin.php:4473
+msgid "by Votes Number and Percentages"
+msgstr "Par nombre des votes et Pourcentages"
+
+#: yop-poll/inc/admin.php:3769 yop-poll/inc/admin.php:4478
+msgid "Poll Answer Result Label"
+msgstr "L'étiquette du résultat du sondage"
+
+#: yop-poll/inc/admin.php:3772 yop-poll/inc/admin.php:4481
+msgid ""
+"Use %POLL-ANSWER-RESULT-PERCENTAGES% for showing answer percentages and  "
+"%POLL-ANSWER-RESULT-VOTES% for showing answer number of votes"
+msgstr ""
+
+#: yop-poll/inc/admin.php:3777 yop-poll/inc/admin.php:4486
+msgid "Poll Answer Result Votes Number Label"
+msgstr "L'étiquette  pour le nombre des votes du  résultat du sondage"
+
+#: yop-poll/inc/admin.php:3780 yop-poll/inc/admin.php:4489
+msgid "Singular"
+msgstr "Singulier"
+
+#: yop-poll/inc/admin.php:3782 yop-poll/inc/admin.php:4491
+msgid "Plural"
+msgstr "Pluriel"
+
+#: yop-poll/inc/admin.php:3789 yop-poll/inc/admin.php:4498
+msgid "Vote Button Label"
+msgstr "L'étiquette du bouton:voter"
+
+#: yop-poll/inc/admin.php:3797 yop-poll/inc/admin.php:4506
+msgid "View Results Link"
+msgstr "Affichez  le chaînon des résultats"
+
+#: yop-poll/inc/admin.php:3806 yop-poll/inc/admin.php:4515
+msgid "View Results Link Label"
+msgstr "L'ètiquette du chaînon  pour voir les résultats"
+
+#: yop-poll/inc/admin.php:3814 yop-poll/inc/admin.php:4523
+msgid "View Back To Vote Link "
+msgstr "Affichez le chaînon pour le retour à vote"
+
+#: yop-poll/inc/admin.php:3823 yop-poll/inc/admin.php:4532
+msgid "View Back To Vote Link Label"
+msgstr "L'ètiquette du chaînon  pour  le retour à vote"
+
+#: yop-poll/inc/admin.php:3831 yop-poll/inc/admin.php:4540
+msgid "View Total Votes "
+msgstr "Voyez les votes totals"
+
+#: yop-poll/inc/admin.php:3840 yop-poll/inc/admin.php:4549
+msgid "View Total Votes Label"
+msgstr " L'ètiquette pour voir les votes totals"
+
+#: yop-poll/inc/admin.php:3848 yop-poll/inc/admin.php:4557
+msgid "View Total Answers "
+msgstr "Voyez le nombre total des réponses"
+
+#: yop-poll/inc/admin.php:3857
+msgid "View Total answers Label"
+msgstr " L'ètiquette pour: voyez le nombre total des réponses "
+
+#: yop-poll/inc/admin.php:3865 yop-poll/inc/admin.php:4585
+msgid "Poll Page Url "
+msgstr "Url de la page du sondage"
+
+#: yop-poll/inc/admin.php:3877 yop-poll/inc/admin.php:4597
+msgid "Other Options"
+msgstr "Des autres options"
+
+#: yop-poll/inc/admin.php:3883 yop-poll/inc/admin.php:4612
+msgid "Vote Permisions "
+msgstr "Permisions pour voter"
+
+#: yop-poll/inc/admin.php:3886 yop-poll/inc/admin.php:4615
+msgid "Guest Only"
+msgstr " Seulement visiteur"
+
+#: yop-poll/inc/admin.php:3887 yop-poll/inc/admin.php:4616
+msgid "Registered Users Only"
+msgstr "Seulement des utilisateurs enregistrés "
+
+#: yop-poll/inc/admin.php:3888 yop-poll/inc/admin.php:4617
+msgid "Guest &amp; Registered Users"
+msgstr "Visiteur&amp; Utilisateurs enregistrés "
+
+#: yop-poll/inc/admin.php:3893 yop-poll/inc/admin.php:4622
+msgid "Blocking Voters "
+msgstr "Le blocage des électeurs"
+
+#: yop-poll/inc/admin.php:3896 yop-poll/inc/admin.php:4625
+msgid "Dont`t Block"
+msgstr "Ne bloquez pas"
+
+#: yop-poll/inc/admin.php:3897 yop-poll/inc/admin.php:4626
+msgid "By Cookie"
+msgstr "Par Cookie"
+
+#: yop-poll/inc/admin.php:3898 yop-poll/inc/admin.php:4627
+msgid "By Ip"
+msgstr "Par IP"
+
+#: yop-poll/inc/admin.php:3899 yop-poll/inc/admin.php:4628
+msgid "By Username"
+msgstr "Par nom d'utilisateur"
+
+#: yop-poll/inc/admin.php:3900 yop-poll/inc/admin.php:4629
+msgid "By Cookie &amp; Ip"
+msgstr "Par Cookie &amp ;Ip"
+
+#: yop-poll/inc/admin.php:3905 yop-poll/inc/admin.php:4634
+msgid "Blocking voters interval"
+msgstr "L'intervalle pour bloquer les électeurs"
+
+#: yop-poll/inc/admin.php:3910 yop-poll/inc/admin.php:4639
+msgid "Seconds"
+msgstr "Secondes"
+
+#: yop-poll/inc/admin.php:3911 yop-poll/inc/admin.php:4640
+msgid "Minutes"
+msgstr "Minutes"
+
+#: yop-poll/inc/admin.php:3912 yop-poll/inc/admin.php:4641
+msgid "Hours"
+msgstr "Heures"
+
+#: yop-poll/inc/admin.php:3913 yop-poll/inc/admin.php:4642
+msgid "Days"
+msgstr "Jours"
+
+#: yop-poll/inc/admin.php:3919 yop-poll/inc/admin.php:4668
+msgid "Percentages Decimals"
+msgstr "Les décimales des pourcentages"
+
+#: yop-poll/inc/admin.php:3927 yop-poll/inc/admin.php:4676
+msgid "Use Default Loading Image"
+msgstr ""
+
+#: yop-poll/inc/admin.php:3936 yop-poll/inc/admin.php:4685
+msgid "Loading Image Url"
+msgstr ""
+
+#: yop-poll/inc/admin.php:3948 yop-poll/inc/admin.php:4697
+msgid "Archive Options"
+msgstr " Les options d'archive"
+
+#: yop-poll/inc/admin.php:3954 yop-poll/inc/admin.php:4703
+msgid "View Poll Archive Link "
+msgstr "Voyez le chaînon pour l'archive du sondage"
+
+#: yop-poll/inc/admin.php:3963 yop-poll/inc/admin.php:4712
+msgid "View Poll Archive Link Label"
+msgstr "Voyez l'étiquette du chaînon pour l'archive du sondage"
+
+#: yop-poll/inc/admin.php:3971 yop-poll/inc/admin.php:4720
+msgid "Poll Archive Url"
+msgstr "URL de l'archive du sondage"
+
+#: yop-poll/inc/admin.php:3979 yop-poll/inc/admin.php:4728
+msgid "Show Poll In Archive "
+msgstr "Voyez le sondage de l'archive"
+
+#: yop-poll/inc/admin.php:3988 yop-poll/inc/admin.php:4737
+msgid "Archive Order"
+msgstr "L'ordre de l'archive"
+
+#: yop-poll/inc/admin.php:3996
+msgid "Archive Polls Per Page"
+msgstr "Sondages archives par page"
+
+#: yop-poll/inc/admin.php:4006 yop-poll/inc/admin.php:4015
+#: yop-poll/inc/admin.php:4022
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: yop-poll/inc/admin.php:4044
+msgid "Add New Yop Poll"
+msgstr "Ajouter un nouveau Yop Poll"
+
+#: yop-poll/inc/admin.php:4052 yop-poll/inc/admin.php:4789
+msgid "You are not allowed to edit this item."
+msgstr ""
+
+#: yop-poll/inc/admin.php:4057
+msgid "Edit Poll"
+msgstr "Modifier le sondage"
+
+#: yop-poll/inc/admin.php:4085
+msgid "Example: Test Poll"
+msgstr "Exemple: Test Sondage"
+
+#: yop-poll/inc/admin.php:4092
+msgid "Example: How is my plugin?"
+msgstr "Exemple: Comment est mon plugin?"
+
+#: yop-poll/inc/admin.php:4096
+msgid "Answers"
+msgstr "Réponses"
+
+#: yop-poll/inc/admin.php:4198
+msgid "Add New Answer"
+msgstr "Ajouter une nouvelle Réponse"
+
+#: yop-poll/inc/admin.php:4199
+msgid "Answers Advanced Options"
+msgstr "Les options avancées des réponses "
+
+#: yop-poll/inc/admin.php:4365
+msgid "Sorting Results in"
+msgstr "Assortissez les résultats"
+
+#: yop-poll/inc/admin.php:4388
+msgid "Custom Text Fields"
+msgstr "Champ du texte personnalisé"
+
+#: yop-poll/inc/admin.php:4413
+msgid "Add New Custom Field"
+msgstr "Ajouter un nouveau champ personalisè"
+
+#: yop-poll/inc/admin.php:4566
+msgid "View Total Answers Label"
+msgstr " L'étiquette pour voir le nombre total des réponses"
+
+#: yop-poll/inc/admin.php:4575
+msgid "Auto Generate Poll Page "
+msgstr "Générer automatiquement la page du sondage"
+
+#: yop-poll/inc/admin.php:4647
+msgid "Poll Template "
+msgstr "Modèle du sondage"
+
+#: yop-poll/inc/admin.php:4653
+msgid "--SELECT Template--"
+msgstr "--Sélectionner le modèle--"
+
+#: yop-poll/inc/admin.php:4749 yop-poll/inc/admin.php:4762
+msgid "Save Poll"
+msgstr "Enregistrer le sondage"
+
+#: yop-poll/inc/admin.php:4757 yop-poll/inc/admin.php:4862
+msgid "Save"
+msgstr "Sauver"
+
+#: yop-poll/inc/admin.php:4782
+msgid "Add New Poll Template"
+msgstr "Ajouter un  nouveau modèle du  sondage"
+
+#: yop-poll/inc/admin.php:4790
+msgid "Edit Poll Template"
+msgstr "Modifier le modèle du sondage"
+
+#: yop-poll/inc/admin.php:4805
+msgid "Template Name"
+msgstr "Nom du modèle"
+
+#: yop-poll/inc/admin.php:4808
+msgid "Example: Test Poll Template"
+msgstr "Exemple:Modèle du sondage de test"
+
+#: yop-poll/inc/admin.php:4812
+msgid "Template Before Vote"
+msgstr "Modèle avant le vote"
+
+#: yop-poll/inc/admin.php:4818
+msgid "Template After Vote"
+msgstr "Modèle aprè le vote"
+
+#: yop-poll/inc/admin.php:4825
+msgid "Template Before Start Date"
+msgstr " Modèle avant la date de début"
+
+#: yop-poll/inc/admin.php:4832
+msgid "Template After End Date"
+msgstr "Modèle après la date de fin"
+
+#: yop-poll/inc/admin.php:4839
+msgid "Css"
+msgstr "Css"
+
+#: yop-poll/inc/admin.php:4846
+msgid "JavaScript"
+msgstr "JavaScript"
+
+#: yop-poll/inc/admin.php:4854 yop-poll/inc/admin.php:4867
+msgid "Save Poll Template"
+msgstr "Enregistrer le modèle du sondage"
+
+#: yop-poll/inc/admin.php:4882
+msgid "Reset"
+msgstr "réinitialiser"
+
+#: yop-poll/inc/admin.php:4884
+msgid "Select Template For Reset"
+msgstr "Sélectionner le modèle pour la réinitialisation"
+
+#: yop-poll/inc/admin.php:4885
+msgid "Template to reset"
+msgstr "Modèle pour réinitialiser"
+
+#: yop-poll/inc/admin.php:4887
+msgid "White"
+msgstr "Blanc"
+
+#: yop-poll/inc/admin.php:4888
+msgid "Grey"
+msgstr "Gris"
+
+#: yop-poll/inc/admin.php:4889
+msgid "Dark"
+msgstr "Sombre"
+
+#: yop-poll/inc/admin.php:4890
+msgid "Blue v1"
+msgstr "Bleu v1"
+
+#: yop-poll/inc/admin.php:4891
+msgid "Blue v2"
+msgstr "Bleu v2"
+
+#: yop-poll/inc/admin.php:4892
+msgid "Blue v3"
+msgstr "Bleu v3"
+
+#: yop-poll/inc/admin.php:4893
+msgid "Red v1"
+msgstr "Rouge v1"
+
+#: yop-poll/inc/admin.php:4894
+msgid "Red v2"
+msgstr "Rouge v2"
+
+#: yop-poll/inc/admin.php:4895
+msgid "Red v3"
+msgstr "Rouge v3"
+
+#: yop-poll/inc/admin.php:4896
+msgid "Green v1"
+msgstr "Vert v1"
+
+#: yop-poll/inc/admin.php:4897
+msgid "Green v2"
+msgstr "Vert v2"
+
+#: yop-poll/inc/admin.php:4898
+msgid "Green v3"
+msgstr "Vert v3"
+
+#: yop-poll/inc/admin.php:4899
+msgid "Orange v1"
+msgstr "Orange v1"
+
+#: yop-poll/inc/admin.php:4900
+msgid "Orange v2"
+msgstr "Orange v2"
+
+#: yop-poll/inc/admin.php:4901
+msgid "Orange v3"
+msgstr "Orange v3"
+
+#: yop-poll/inc/admin.php:4906
+msgid "Reset Poll Template"
+msgstr "Réinitialiser le modèle du  sondage"
+
+#: yop-poll/inc/admin.php:4942
+msgid "Poll successfully added!"
+msgstr "Sondage ajouté avec succès!"
+
+#: yop-poll/inc/admin.php:4952
+msgid "Poll successfully Edited!"
+msgstr "Sondage modifié avec succès!"
+
+#: yop-poll/inc/admin.php:4957
+msgid "We're unable to update your poll!"
+msgstr "Nous ne pouvons pas actualiser votre sondage!"
+
+#: yop-poll/inc/admin.php:4973
+msgid "Poll template successfully added!"
+msgstr "Le modèle du sondage est ajouté avec succès!"
+
+#: yop-poll/inc/admin.php:4983
+msgid "Poll Template successfully Edited!"
+msgstr "Le modèle du sondage a été modifié avec succèss"
+
+#: yop-poll/inc/admin.php:4990
+msgid "We're unable to update your poll template!"
+msgstr "Nous ne pouvons pas actualiser le modèle de votre sondage!"
+
+#: yop-poll/inc/admin.php:5007
+msgid "Poll Template Successfully Reseted!"
+msgstr "Le modèle du sondage a été  réinitialisé avec succès!"
+
+#: yop-poll/inc/admin.php:5014
+msgid "We're unable to reset your poll template!"
+msgstr "Nous n'avons pas pu  réinitialiser votre modèle de sondage!"
+
+#: yop-poll/inc/admin.php:5039 yop-poll/inc/admin.php:5065
+#: yop-poll/inc/admin.php:5091
+msgid "Invalid Request! Try later!"
+msgstr "Demande invalide! Essayez plus tard!"
+
+#: yop-poll/inc/admin.php:5140 yop-poll/inc/admin.php:5178
+#: yop-poll/inc/admin.php:5215 yop-poll/inc/admin.php:5294
+msgid "Insert Poll"
+msgstr "Insérer le sondage"
+
+#: yop-poll/inc/admin.php:5145
+msgid "Error: Invalid Yop Poll!\\n\\nPlease choose the poll again:\\n\\n"
+msgstr ""
+"Erreur: Le sondage Yop est invalide!\\n\\nS'il vous plaît choisir le sondage "
+"encore une fois:\\n"
+
+#: yop-poll/inc/admin.php:5162 yop-poll/inc/admin.php:5197
+msgid "Poll to Display"
+msgstr "Sondage pour l'affichage"
+
+#: yop-poll/inc/admin.php:5164 yop-poll/inc/admin.php:5199
+#: yop-poll/inc/widget.php:83
+msgid "Display Random Poll"
+msgstr "Afficher un sondage au hasard"
+
+#: yop-poll/inc/admin.php:5165 yop-poll/inc/admin.php:5200
+#: yop-poll/inc/widget.php:84
+msgid "Display Latest Poll"
+msgstr "Afficher le dernier sondage"
+
+#: yop-poll/inc/admin.php:5166 yop-poll/inc/admin.php:5201
+#: yop-poll/inc/widget.php:85
+msgid "Display Current Active Poll"
+msgstr "Afficher le sondage actif et actuel"
+
+#: yop-poll/inc/admin.php:5295
+msgid "Please insert the poll ID:\\n\\n"
+msgstr "S'il vous plaît insérer l'ID du sondage:\\n\\n"
+
+#: yop-poll/inc/admin.php:5296
+msgid ""
+"Error: Poll Id must be numeric!\\n\\nPlease insert the poll ID Again:\\n\\n"
+msgstr ""
+"Erreur: Id du sondage doit être numérique!\\n\\n S'il vous plaît insérer "
+"l'ID sondage encore une fois:\\n\\n"
+
+#: yop-poll/inc/admin.php:5338 yop-poll/inc/admin.php:5955
+msgid "Support This Plugin"
+msgstr "Soutenez ce plugin"
+
+#: yop-poll/inc/admin.php:5340
+msgid ""
+"Have you found this plugin useful? Please help support it's continued "
+"development with a donation"
+msgstr ""
+"Avez-vous trouvé ce plugin utile? S'il vous plaît aider à soutenir son "
+"développement continu avec a donation"
+
+#: yop-poll/inc/admin.php:5343
+msgid "Donate"
+msgstr "Donner"
+
+#: yop-poll/inc/admin.php:5347
+msgid "Short on funds?"
+msgstr "À court de fonds?"
+
+#: yop-poll/inc/admin.php:5350
+msgid "Rate YOP POLL 5&#9733;'s on WordPress.org"
+msgstr "Notez le Yop Sondage  5&#9733;'s sur WordPress.org"
+
+#: yop-poll/inc/admin.php:5353
+msgid "Talk about it on your site and link back to the"
+msgstr "Parlez-en sur votre site et faire un lien vers l'"
+
+#: yop-poll/inc/admin.php:5354
+msgid "plugin page"
+msgstr "page du plugin"
+
+#: yop-poll/inc/admin.php:5357
+msgid "Tweet about it"
+msgstr "Tweet ce sujet"
+
+#: yop-poll/inc/admin.php:5367
+msgid "Need Help?"
+msgstr "Besoin d'aide?"
+
+#: yop-poll/inc/admin.php:5369
+msgid ""
+"If you need help getting this plugin or have found a bug please visit the "
+msgstr ""
+"Si vous avez besoin d'aide pour acquérir ce plugin ou vous  trouvez une "
+"erreur s'il vous plaît visitez le "
+
+#: yop-poll/inc/admin.php:5369
+msgid "support forums"
+msgstr "forums de support"
+
+#: yop-poll/inc/admin.php:5385
+msgid "The Latest About Yop Poll"
+msgstr "Les nouvelles du sondage Yop"
+
+#: yop-poll/inc/admin.php:5407
+msgid "Get The Latest News From The Team"
+msgstr ""
+
+#: yop-poll/inc/admin.php:5951
+msgid ""
+"It looks like you've been enjoying YOP POLL Plugin for at least 30 days."
+msgstr ""
+"Il semble que vous avez apprécié  Plugin SONDAGE YOP pendant au moins 30 "
+"jours."
+
+#: yop-poll/inc/admin.php:5952
+msgid ""
+"Would you consider a small donation to help support continued development of "
+"the plugin?"
+msgstr ""
+"Pourriez-vous offrir une petite donation pour aider au développement continu "
+"du plugin?"
+
+#: yop-poll/inc/admin.php:5956
+msgid "Rate it 5&#9733;'s"
+msgstr "Notez le 5&#9733;'s"
+
+#: yop-poll/inc/admin.php:5957
+msgid "Tell Your Followers"
+msgstr "Dites à vos abbonés"
+
+#: yop-poll/inc/admin.php:5958
+msgid "Don't Bug Me Again"
+msgstr "Ne plus afficher ce message"
+
+#: yop-poll/inc/plugin-functions.php:150
+msgid "Y/m/d g:i:s A"
+msgstr ""
+
+#: yop-poll/inc/plugin-functions.php:157
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: yop-poll/inc/plugin-functions.php:159
+msgid "Y/m/d"
+msgstr ""
+
+#: yop-poll/inc/public-admin.php:86 yop-poll/inc/widget.php:41
+msgid "Loading"
+msgstr "Chargement"
+
+#: yop-poll/inc/widget.php:14
+msgid "Yop Poll Widget"
+msgstr "Sondage Yop Widget"
+
+#: yop-poll/inc/widget.php:63
+msgid "Yop Polls"
+msgstr "Sondages Yop"
+
+#: yop-poll/inc/widget.php:82
+msgid "Do NOT Display Poll (Disable)"
+msgstr "Ne pas afficher le sondage"
+
+#: yop-poll/inc/yop_poll_model.php:86
+msgid "Poll name needed!"
+msgstr "Le nom du sondage est nécessaire"
+
+#: yop-poll/inc/yop_poll_model.php:90
+msgid "Poll question needed!"
+msgstr " La question du sondage est nécessaire"
+
+#: yop-poll/inc/yop_poll_model.php:94
+msgid "At least "
+msgstr "Au moins"
+
+#: yop-poll/inc/yop_poll_model.php:102
+msgid "Answer "
+msgstr "Réponse"
+
+#: yop-poll/inc/yop_poll_model.php:110
+msgid "Answers not found!"
+msgstr "Des réponses non trouvés"
+
+#: yop-poll/inc/yop_poll_model.php:120
+msgid "Custom Field "
+msgstr "Champ  personnalisé"
+
+#: yop-poll/inc/yop_poll_model.php:130
+msgid "Start Date needed!"
+msgstr "La date de début est nécessaire"
+
+#: yop-poll/inc/yop_poll_model.php:135
+msgid "Start Date not found!"
+msgstr " La date de début n'a été pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:142
+msgid "End Date needed!"
+msgstr " La date de fin est nécessaire"
+
+#: yop-poll/inc/yop_poll_model.php:149
+msgid "Invalid entry! Start Date is after the  End Date! "
+msgstr "Entrée invalide! La date de début est postérieure à la date de fin"
+
+#: yop-poll/inc/yop_poll_model.php:184
+msgid "Option \"Poll Answer Result Label\" Not Updated!"
+msgstr "Option \"L'étiquette du résultat du sondage\" Pas actualisé!"
+
+#: yop-poll/inc/yop_poll_model.php:195
+msgid "Option \"View Results Link Label\" is empty!"
+msgstr "Option\"'L'ètiquette du chaînon pour voir les résultats\" est vide!"
+
+#: yop-poll/inc/yop_poll_model.php:200
+msgid "Option \"View Results Link Label\" not found!"
+msgstr "Option\"L'ètiquette du chaînon  pour voir les résultats\" pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:206
+msgid ""
+"Option \"View Results Link\" is invalid! You must choose between 'yes' or "
+"'no'"
+msgstr ""
+"Option \"Affichez  le chaînon des résultats\" est invalide! Vous devez "
+"choisir entre 'oui' ou 'non'"
+
+#: yop-poll/inc/yop_poll_model.php:211
+msgid "Option \"View Results Link\" not found!"
+msgstr "Option \"Affichez  le chaînon des résultats\" pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:222
+msgid "Option \"View Back to Vote Link Label\" is empty!"
+msgstr "Option\"L'ètiquette du chaînon  pour retour à vote\" est vide!"
+
+#: yop-poll/inc/yop_poll_model.php:227
+msgid "Option \"View Back to Vote Link Label\" not found!"
+msgstr "Option\"L'ètiquette du chaînon  pour retour à vote\" pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:233
+msgid ""
+"Option \"View Back to Vote Link\" is invalid! You must choose between 'yes' "
+"or 'no'"
+msgstr ""
+"Option \"Affichez le chaînon pour le retour à vote\" est invalide! Vous "
+"devez choisir entre 'oui' ou 'non'"
+
+#: yop-poll/inc/yop_poll_model.php:238
+msgid "Option \"View Back to Vote Link\" not found!"
+msgstr "Option \"Affichez le chaînon pour le retour à vote\" pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:254
+msgid "Option \"Total Votes Label\" not found!"
+msgstr "Option \"L'étiquette du total des votes\" pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:260
+msgid ""
+"Option \"View Total Votes\" is invalid! Please choose between 'yes' or 'no'"
+msgstr ""
+"Options\"Affichez le total des votes\" S'il vous plaît choisir entre 'oui' "
+"ou 'non'"
+
+#: yop-poll/inc/yop_poll_model.php:265
+msgid "Option \"View Total Votes\" not found!"
+msgstr "Options\"Affichez le total des votes \" pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:281
+msgid "Option \"Total Answers Label\" not found!"
+msgstr "Option \" L'ètiquette pour le total des réponses \" Pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:287
+msgid ""
+"Option \"View Total Answers\" is invalid! You must choose between 'yes' or "
+"'no'"
+msgstr ""
+"Option  \"Voyez le nombre total des réponses \" est invalide! Vous devez "
+"choisir entre 'oui' ou 'non'"
+
+#: yop-poll/inc/yop_poll_model.php:292
+msgid "Option \"View Total Answers\" not found!"
+msgstr "Option \"Voyez le nombre total des réponses\" Pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:303
+msgid "Option \"View Poll Archive Link Label\" is empty!"
+msgstr ""
+"Option \"L'étiquette pour voir le chaînon de l'archive du sondage\" est vide!"
+
+#: yop-poll/inc/yop_poll_model.php:308
+msgid "Option \"View Poll Archive Link Label\" not found!"
+msgstr ""
+"Option \"L'étiquette pour voir le chaînon de l'archive du sondage\"  pas "
+"trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:315
+msgid "Option \"Poll Archive URL\" is empty!"
+msgstr "Option \"URL de l'archive du sondage\" est vide!"
+
+#: yop-poll/inc/yop_poll_model.php:320
+msgid "Option \"Poll Archive URL\" not found!"
+msgstr "Option \"URL de l'archive du sondage\"  pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:326
+msgid ""
+"Option \"View Poll Archive Link\" Is Invalid! You must choose between 'yes' "
+"or 'no'"
+msgstr ""
+"Option \"Voyez le chaînon pour l'archive du sondage\" est invalide! Vous "
+"devez choisir entre 'oui' ou 'non'"
+
+#: yop-poll/inc/yop_poll_model.php:331
+msgid "Option \"View Poll Archive Link\" not found!"
+msgstr "Option \"Voyez le chaînon pour l'achive du sondage\" pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:342
+msgid "Option \"Archive Order\" is empty!"
+msgstr "Option \"L'ordre de l'archive\" est vide!"
+
+#: yop-poll/inc/yop_poll_model.php:347
+msgid "Option \"Archive Order\" not found!"
+msgstr "Option \"L'ordre de l'archive\" pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:353
+msgid ""
+"Option \"Show in Archive\" is invalid! You must choose between 'yes' or 'no'"
+msgstr ""
+"Option \" Affichez dans l'archive \" est invalide! Vous devez choisir entre "
+"'oui' ou 'non' "
+
+#: yop-poll/inc/yop_poll_model.php:358
+msgid "Option \"Show in Archive\" not found!"
+msgstr "Option \" Affichez dans l'archive \" pas trouvé!"
+
+#: yop-poll/inc/yop_poll_model.php:365
+msgid "Template not found!"
+msgstr "Modèle non trouvé"
+
+#: yop-poll/inc/yop_poll_model.php:370
+msgid "You must choose a template for your poll!"
+msgstr "Vous devez choisir un modèle pour votre sondage!"
+
+#: yop-poll/inc/yop_poll_model.php:381
+msgid "Poll Template name needed!"
+msgstr "Le nom du modèle du sondage est nécessaire!"
+
+#: yop-poll/inc/yop_poll_model.php:385
+msgid "Poll template needed!"
+msgstr "Le modèle du sondage est nécessaire!"
+
+#: yop-poll/inc/yop_poll_model.php:415
+msgid "This template name allready exist! Please choose another name!"
+msgstr "Ce nom du modèle déja existe! S'i vous plaît choisissez autre nom!  "
+
+#: yop-poll/inc/yop_poll_model.php:430
+msgid "You must choose a yop poll! "
+msgstr "Vous devez choisir un sondage yop!"
+
+#: yop-poll/inc/yop_poll_model.php:433
+msgid "Invalid Yop Poll! Please try again! "
+msgstr "Yop sondage invalide! S'il vous plaît essayez de nouveau!"
+
+#: yop-poll/inc/yop_poll_model.php:436
+msgid "You must choose a ban type!"
+msgstr "Vous devez choisir un type d'interdiction!"
+
+#: yop-poll/inc/yop_poll_model.php:439
+msgid "You must choose a ban value!"
+msgstr "Vous devez choisir une valuer pour l'interdiction!"
+
+#: yop-poll/inc/yop_poll_model.php:490
+msgid "This template name already exists! Please choose another name!"
+msgstr "Ce nom du modèle déja existe! S'îl vous plaît choissisez autre nom!"
+
+#: yop-poll/inc/yop_poll_model.php:495 yop-poll/inc/yop_poll_model.php:518
+msgid "This poll template doesn`t exist!"
+msgstr "Ce modèle du sondage n `existe  pas!"
+
+#: yop-poll/inc/yop_poll_model.php:513
+msgid "You need to choose a template to reset!"
+msgstr "Vous devez choisir un modèle pour réinitialiser!"
+
+#: yop-poll/inc/yop_poll_model.php:826
+msgid "This poll already exists! Please choose another name!"
+msgstr "Ce sondage déja existe! S'îl vous plaît choissisez autre nom!"
+
+#: yop-poll/inc/yop_poll_model.php:975
+msgid "This poll doesn`t exist!"
+msgstr "Ce sondage n `existe pas!"
+
+#: yop-poll/inc/yop_poll_model.php:1634 yop-poll/inc/yop_poll_model.php:1719
+msgid "_GUEST"
+msgstr "_Visiteur"
+
+#: yop-poll/inc/yop_poll_model.php:2429 yop-poll/inc/yop_poll_model.php:2602
+msgid "This poll is closed!"
+msgstr "Ce sondage est fermé!"
+
+#: yop-poll/inc/yop_poll_model.php:2455 yop-poll/inc/yop_poll_model.php:2489
+msgid "Your other answer is empty!"
+msgstr "Votre autre réponse  est vide!"
+
+#: yop-poll/inc/yop_poll_model.php:2460 yop-poll/inc/yop_poll_model.php:2494
+msgid "Your other answer is invalid!"
+msgstr "Votre autre réponse n'est pas valide!"
+
+#: yop-poll/inc/yop_poll_model.php:2468
+msgid "To many answers! Only "
+msgstr "Trop de réponses! Seulement"
+
+#: yop-poll/inc/yop_poll_model.php:2468
+msgid " answers allowed!"
+msgstr " réponses permises!"
+
+#: yop-poll/inc/yop_poll_model.php:2508 yop-poll/inc/yop_poll_model.php:2524
+msgid "Custom field "
+msgstr "Champ  personnalisé"
+
+#: yop-poll/inc/yop_poll_model.php:2508
+msgid " is required! "
+msgstr " est nécessaire!"
+
+#: yop-poll/inc/yop_poll_model.php:2524
+msgid " is missing! "
+msgstr " est absent!"
+
+#: yop-poll/inc/yop_poll_model.php:2530
+msgid "Custom fields are missing!"
+msgstr "Les champs personnalisés sont absents"
+
+#: yop-poll/inc/yop_poll_model.php:2560
+msgid "Incorrect security code entered!"
+msgstr ""
+
+#: yop-poll/inc/yop_poll_model.php:2586
+msgid "No vote was registered!"
+msgstr "Aucun vote n'été enregistré!"
+
+#: yop-poll/inc/yop_poll_model.php:2591
+msgid "No answer selected!"
+msgstr "Pas de réponse sélectionnée!"
+
+#: yop-poll/inc/yop_poll_model.php:2596
+msgid "You Already voted!"
+msgstr "Vous avez déjà voté!"
+
+#: yop-poll/inc/yop_poll_model.php:2607
+msgid "You can vote once the poll starts!"
+msgstr "Vous pouvez voter après le commencement du sondage!"
+
+#: yop-poll/inc/yop_poll_model.php:2612
+msgid "You are not allowed to vote!"
+msgstr "Vous n'êtes pas autorisé à voter!"
+
+#: yop-poll/inc/yop_poll_model.php:2906
+msgid "Other"
+msgstr "Autre"
+
+#: yop-poll/inc/yop_poll_model.php:3041
+msgid "Reload"
+msgstr ""
+
+#~ msgid ""
+#~ "Option \"Other Answer Label\" Not Updated! The field must not be empty!"
+#~ msgstr ""
+#~ "Option \"L'étiquette d'autre réponse\"Pas actualisé! Le champ ne doit pas "
+#~ "être vide!"
+
+#~ msgid ""
+#~ "Option \"Number of allowed answers\" Not Updated! The field must not be "
+#~ "empty!"
+#~ msgstr ""
+#~ "Option \"Nombre des réponses autorisées\"Pas actualisé! Le champ ne doit "
+#~ "pas être vide!"
+
+#~ msgid "Option \"Use HTML tags in poll name\" Updated!"
+#~ msgstr "Option \"Utilisez des balises HTML en nom sondage \"Actualiser!"
+
+#~ msgid ""
+#~ "Option \"Use HTML tags in poll name\" Not Updated! Choose \"yes\" or \"no"
+#~ "\"!"
+#~ msgstr ""
+#~ "Option \"Utilisez des balises HTML en nom sondage \" Pas actualisé! "
+#~ "Choisissez \"oui\" ou \"non\"!"
+
+#~ msgid "Option \"Use HTML tags in poll question\" Updated!"
+#~ msgstr ""
+#~ "Option \"Utiliser des balises HTML en question sondage \"Actualiser!"
+
+#~ msgid ""
+#~ "Option \"Use HTML tags in poll question\" Not Updated! Choose \"yes\" or "
+#~ "\"no\"!"
+#~ msgstr ""
+#~ "Option \"Utiliser des balises HTML en question sondage \" Pas actualisé! "
+#~ "Choisissez \"oui\" ou \"non\"!"
+
+#~ msgid "Option \"Use HTML tags in poll answers\" Updated!"
+#~ msgstr ""
+#~ "Option \"Utiliser des balises HTML dans les réponses du sondage "
+#~ "\"Actualiser!"
+
+#~ msgid ""
+#~ "Option \"Use HTML tags in poll answers\" Not Updated! Choose \"yes\" or "
+#~ "\"no\"!"
+#~ msgstr ""
+#~ "Option \"Utiliser des balises HTML dans les réponses du sondage \" Pas "
+#~ "actualisé! Choisissez \"oui\" ou \"non\"!"
+
+#~ msgid "Option \"Use HTML tags in poll custom fields\" Updated!"
+#~ msgstr ""
+#~ "Option \"Utiliser des balises HTML dans les sondages champs personnalisés "
+#~ "\"Actualiser!"
+
+#~ msgid ""
+#~ "Option \"Use HTML tags in poll custom fields\" Not Updated! Choose \"yes"
+#~ "\" or \"no\"!"
+#~ msgstr ""
+#~ "Option \"Utiliser des balises HTML dans les sondages champs personnalisés "
+#~ "\" Pas actualisé! Choisissez \"oui\" ou \"non\"!"
+
+#~ msgid "Option \"Columns for Tabulated Display Answers\" Not Updated!"
+#~ msgstr ""
+#~ "Option \"Colonnes pour afficher des réponses dans un tableau\"  Pas "
+#~ "actualisé!"
+
+#~ msgid "Option \"Display Answers\" Not Updated!"
+#~ msgstr "Option \"Afficher des réponses\" Pas actualisé!"
+
+#~ msgid "Option \"Columns for Tabulated Display Results\" Not Updated!"
+#~ msgstr ""
+#~ "Option \"Colonnes pour afficher des résultats dans un tableau\"  Pas "
+#~ "actualisé!"
+
+#~ msgid "Option \"Display Results\" Not Updated!"
+#~ msgstr "Option \"Afficher des réponses\" Pas actualisé!"
+
+#~ msgid "Option \"Result Bar Background Color\" Not Updated!"
+#~ msgstr "Option \" Couleur du fond de la barre de résultat\" Pas actualisé!"
+
+#~ msgid "Option \"Result Bar Height\" Not Updated!"
+#~ msgstr "Option \"Hauteur de la barre de résultat\" Pas actualisé!"
+
+#~ msgid "Option \"Result Bar Border Color\" Not Updated!"
+#~ msgstr ""
+#~ "Option \"Couleur de la bordure de la barre de résultat\"  Pas actualisé!"
+
+#~ msgid "Option \"Result Bar Border Width\" Not Updated!"
+#~ msgstr ""
+#~ "Option \"Largeur de la bordure de la barre de résultat\" Pas actualisé!"
+
+#~ msgid "Option \"Result Bar Border Style\" Not Updated!"
+#~ msgstr ""
+#~ "Option \"Le style de la bordure de la barre de résultat\" Pas actualisé! "
+
+#~ msgid "Option \"Use Template Result Bar\" Not Updated!"
+#~ msgstr ""
+#~ "Option \" Utiliser le modèle de la barre du résultat \" Pas actualisé!"
+
+#~ msgid "Option \"Sort Answers Direction\" Not Updated!"
+#~ msgstr "Option \"Modalité d'assortir les répones\" Pas actualisé!"
+
+#~ msgid "Option \"Sort Answers\" Not Updated!"
+#~ msgstr "Option \"Assortir les réponses\" Pas actualisé! "
+
+#~ msgid "Option \"Sort Results Direction\" Not Updated!"
+#~ msgstr "Option \"Modalité d'assortir les résultats\" Pas actualisé!"
+
+#~ msgid "Option \"Poll Start Date\" Not Updated!"
+#~ msgstr " Option \"Date de début du Sondage\" Pas actualisé!"
+
+#~ msgid "Option \"View Results\" Not Updated!"
+#~ msgstr "Option \"Voir les résultats\" Pas actualisé!"
+
+#~ msgid "Option \"View Results Type\" Not Updated!"
+#~ msgstr "Option \"Visualiser le type des résultats\" Pas actualisé!"
+
+#~ msgid ""
+#~ "Option \"Poll Answer Result Votes Number Singular Label\" Not Updated!"
+#~ msgstr ""
+#~ "Option \"L'étiquette du singulier pour le nombre des votes du  résultat "
+#~ "du sondage\" Pas actualiser!"
+
+#~ msgid "Option \"Poll Answer Result Votes Number Plural Label\" Not Updated!"
+#~ msgstr ""
+#~ "Option \"L'étiquette du pluriel pour le nombre des votes du  résultat du "
+#~ "sondage\" Pas actualiser!"
+
+#~ msgid "Option \"Vote Button Label\" Not Updated!"
+#~ msgstr "Option \"L'étiquette du bouton voter\"Pas actualisé!"
+
+#~ msgid "Option \"View Results Link Label\" Not Updated!"
+#~ msgstr ""
+#~ "Option \"L'ètiquette du chaînon  pour voir les résultats\" Pas actualisé!"
+
+#~ msgid "Option \"View Results Link\" Not Updated!"
+#~ msgstr "Option \"Affichez  le chaînon des résultats\" Pas actualisé!"
+
+#~ msgid "Option \"View Back to Vote Link Label\" Not Updated!"
+#~ msgstr ""
+#~ "Option \"L'ètiquette du chaînon  pour le retour à vote\" Pas actualisé! "
+
+#~ msgid "Option \"View Back to Vote Link\" Not Updated!"
+#~ msgstr ""
+#~ "Option \"Affichez le chaînon pour le retour à vote\"  Pas actualisé!"
+
+#~ msgid "Option \"Total Votes Label\" Not Updated!"
+#~ msgstr "Option \" L'ètiquette pour le total des votes\" Pas actualisé!"
+
+#~ msgid "Option \"View Total Votes\" Not Updated!"
+#~ msgstr "Option \"Voyez le total des votes\" Pas actualisé!"
+
+#~ msgid "Option \"Total Answers Label\" Not Updated!"
+#~ msgstr "Option \" L'ètiquette pour le total des réponses \" Pas actualisé!"
+
+#~ msgid "Option \"View Total Answers\" Not Updated!"
+#~ msgstr "Option \"Voyez le nombre total des réponses\"Pas actualisé!"
+
+#~ msgid "Option \"Vote Permisions\" Not Updated!"
+#~ msgstr "Option \"Permisions de voter\" Pas actualisé!"
+
+#~ msgid "Option \"Blocking Voters Interval Value\" Not Updated!"
+#~ msgstr ""
+#~ "Option \" La valeur de l'interval du blocage des électeurs\" Pas "
+#~ "actualisé!"
+
+#~ msgid "Option \"Blocking Voters Interval Unit\" Not Updated!"
+#~ msgstr ""
+#~ "Option \"L'unité de l'interval du blocage des électeurs\" Pas actualisé!"
+
+#~ msgid "Option \"Blocking Voters\" Not Updated!"
+#~ msgstr "Option \"Blocage des électeurs\" Pas actualisé!"
+
+#~ msgid "Option \"Percentages Decimals\" Not Updated!"
+#~ msgstr "Option \"Les décimales des pourcentages\" Pas actualisé!"
+
+#~ msgid "Option \"View Poll Archive Link Label\" Not Updated!"
+#~ msgstr ""
+#~ "Option \"L'étiquette pour voir le chaînon de l'archive du sondage\" Pas "
+#~ "actualisé!"
+
+#~ msgid "Option \"Poll Archive URL\" Not Updated!"
+#~ msgstr "Option \"URL de l'archive du sondage\" Pas actualizé!"
+
+#~ msgid "Option \"View Poll Archive Link\" Not Updated!"
+#~ msgstr "Option \"Voyez le chaînon de l'archive du sondage\" Pas actualisé!"
+
+#~ msgid "Option \"Show Poll in Archive\" Not Updated!"
+#~ msgstr "Option \"Voyez le sondage dans l'archive\" Pas actualisé!"
+
+#~ msgid "Option \"Archive Polls Per Page\" Not Updated!"
+#~ msgstr "Option \"Sondages achivés par page\" Pas actualisé!"
+
+#~ msgid "Use HTML tags in poll name "
+#~ msgstr "Utilisez des balises HTML en nom sondage"
+
+#~ msgid "Use HTML tags in poll question "
+#~ msgstr "Utiliser des balises HTML en question sondage"
+
+#~ msgid "Use HTML tags in poll answers "
+#~ msgstr "Utiliser des balises HTML dans les réponses du sondage"
+
+#~ msgid "Use HTML tags in poll custom fields "
+#~ msgstr "Utiliser des balises HTML dans les sondages champs personnalisés"
+
+#~ msgid "Custom Fields Advanced Options"
+#~ msgstr "Les options avancées des champs  personnalisés"
+
+#~ msgid "No news items"
+#~ msgstr "Pas de nouvelles"
+
+#~ msgid ""
+#~ "Option \"Allow Other Answer Label\" Not Updated! The field must not be "
+#~ "empty!"
+#~ msgstr ""
+#~ "Option \"L'étiquette pour la permission d'autre réponse\"Pas actualisé! "
+#~ "Le champ ne doit pas être vide!"
+
+#~ msgid "Total Voters"
+#~ msgstr "Total des électeurs"
+
+#~ msgid "vote"
+#~ msgstr "voter"
+
+#~ msgid "votes"
+#~ msgstr "votes"
