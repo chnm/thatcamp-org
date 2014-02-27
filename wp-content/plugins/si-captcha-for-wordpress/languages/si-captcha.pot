@@ -1,0 +1,752 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/si-captcha-for-wordpress\n"
+"POT-Creation-Date: 2013-11-18 18:21:48+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: si-captcha-admin.php:20
+msgid "You do not have permissions for managing this option"
+msgstr ""
+
+#: si-captcha-admin.php:97
+msgid "Options saved."
+msgstr ""
+
+#: si-captcha-admin.php:100 si-captcha.php:49 si-captcha.php:50
+#: si-captcha.php:53 si-captcha.php:54 si-captcha.php:57
+msgid "SI Captcha Options"
+msgstr ""
+
+#: si-captcha-admin.php:141
+msgid "Downloaded %s times"
+msgstr ""
+
+#: si-captcha-admin.php:146 si-captcha-admin.php:154
+msgid "(Average rating based on %s ratings)"
+msgstr ""
+
+#: si-captcha-admin.php:148
+msgid "5 stars"
+msgstr ""
+
+#: si-captcha-admin.php:149
+msgid "4 stars"
+msgstr ""
+
+#: si-captcha-admin.php:150
+msgid "3 stars"
+msgstr ""
+
+#: si-captcha-admin.php:151
+msgid "2 stars"
+msgstr ""
+
+#: si-captcha-admin.php:152
+msgid "1 star"
+msgstr ""
+
+#: si-captcha-admin.php:154
+msgid "rate"
+msgstr ""
+
+#: si-captcha-admin.php:165
+msgid "a newer version is available: %s"
+msgstr ""
+
+#: si-captcha-admin.php:167
+msgid "A newer version of SI Captcha Anti-Spam is available: %s"
+msgstr ""
+
+#: si-captcha-admin.php:170
+msgid "(latest version)"
+msgstr ""
+
+#: si-captcha-admin.php:176
+msgid "Version:"
+msgstr ""
+
+#: si-captcha-admin.php:177
+msgid "Changelog"
+msgstr ""
+
+#: si-captcha-admin.php:178
+msgid "FAQ"
+msgstr ""
+
+#: si-captcha-admin.php:179 si-captcha-admin.php:225
+msgid "Rate This"
+msgstr ""
+
+#: si-captcha-admin.php:180
+msgid "Support"
+msgstr ""
+
+#: si-captcha-admin.php:181 si-captcha-admin.php:195
+msgid "Donate"
+msgstr ""
+
+#: si-captcha-admin.php:182
+msgid "Free PHP Scripts"
+msgstr ""
+
+#: si-captcha-admin.php:198
+msgid "Please donate to keep this plugin FREE"
+msgstr ""
+
+#: si-captcha-admin.php:199
+msgid ""
+"If you find this plugin useful to you, please consider making a small "
+"donation to help contribute to my time invested and to further development. "
+"Thanks for your kind support!"
+msgstr ""
+
+#: si-captcha-admin.php:199
+msgid "More from Mike Challis"
+msgstr ""
+
+#: si-captcha-admin.php:211
+msgid "ThemeFuse Original WP Themes"
+msgstr ""
+
+#: si-captcha-admin.php:223
+msgid ""
+"Mike Challis says: \"Hello, I have spend hundreds of hours coding this "
+"plugin just for you. Please consider making a small donation. If you are not "
+"able to, that is OK."
+msgstr ""
+
+#: si-captcha-admin.php:224
+msgid ""
+"Suggested donation: $25, $20, $15, $10, $5, $3. Donations can be made with "
+"your PayPal account, or securely using any of the major credit cards. Please "
+"also rate my plugin.\""
+msgstr ""
+
+#: si-captcha-admin.php:227
+msgid "Close this message"
+msgstr ""
+
+#: si-captcha-admin.php:252
+msgid "I have donated to help contribute for the development of this plugin."
+msgstr ""
+
+#: si-captcha-admin.php:257
+msgid "Usage"
+msgstr ""
+
+#: si-captcha-admin.php:260
+msgid "Your theme must have a"
+msgstr ""
+
+#: si-captcha-admin.php:260
+msgid "tag inside your comments.php form. Most themes do."
+msgstr ""
+
+#: si-captcha-admin.php:261
+msgid ""
+"The best place to locate the tag is before the comment textarea, you may "
+"want to move it if it is below the comment textarea, or the captcha image "
+"and captcha code entry might display after the submit button."
+msgstr ""
+
+#: si-captcha-admin.php:267
+msgid "Test Compatibility"
+msgstr ""
+
+#: si-captcha-admin.php:270
+msgid ""
+"Be sure to test the CAPTCHA and make sure it works. It should display, allow "
+"actions on valid code, and block actions on wrong code."
+msgstr ""
+
+#: si-captcha-admin.php:272
+msgid ""
+"Some other plugins or themes can cause conflicts that let spammers bypass "
+"the CAPTCHA."
+msgstr ""
+
+#: si-captcha-admin.php:274
+msgid ""
+"Some other security plugins use the same WordPress authenticate functions "
+"for Login and Registration."
+msgstr ""
+
+#: si-captcha-admin.php:276
+msgid ""
+"After installing or updating plugins and themes, test the CAPTCHA on each "
+"form where it is enabled on."
+msgstr ""
+
+#: si-captcha-admin.php:278
+msgid ""
+"If the CAPTCHA does not work, try deactivating other plugins to find the one "
+"that is incompatible."
+msgstr ""
+
+#: si-captcha-admin.php:282
+msgid "Options"
+msgstr ""
+
+#: si-captcha-admin.php:285 si-captcha-admin.php:622
+msgid "Update Options"
+msgstr ""
+
+#: si-captcha-admin.php:293
+msgid "CAPTCHA:"
+msgstr ""
+
+#: si-captcha-admin.php:297
+msgid "Enable CAPTCHA on the login form."
+msgstr ""
+
+#: si-captcha-admin.php:298 si-captcha-admin.php:306 si-captcha-admin.php:314
+#: si-captcha-admin.php:322 si-captcha-admin.php:354 si-captcha-admin.php:362
+#: si-captcha-admin.php:371 si-captcha-admin.php:379 si-captcha-admin.php:418
+#: si-captcha-admin.php:431 si-captcha-admin.php:443 si-captcha-admin.php:519
+#: si-captcha-admin.php:543 si-captcha-admin.php:598
+msgid "Click for Help!"
+msgstr ""
+
+#: si-captcha-admin.php:298 si-captcha-admin.php:306 si-captcha-admin.php:314
+#: si-captcha-admin.php:322 si-captcha-admin.php:354 si-captcha-admin.php:362
+#: si-captcha-admin.php:371 si-captcha-admin.php:379 si-captcha-admin.php:418
+#: si-captcha-admin.php:431 si-captcha-admin.php:443 si-captcha-admin.php:519
+#: si-captcha-admin.php:543 si-captcha-admin.php:598
+msgid "help"
+msgstr ""
+
+#: si-captcha-admin.php:300
+msgid ""
+"The Login form captcha is not enabled by default because it might be "
+"annoying to users. Only enable it if you are having spam problems related to "
+"bots automatically logging in."
+msgstr ""
+
+#: si-captcha-admin.php:305
+msgid "Enable CAPTCHA on the register form."
+msgstr ""
+
+#: si-captcha-admin.php:308
+msgid ""
+"Prevents automated spam bots by requiring that the user pass a CAPTCHA test "
+"before registering."
+msgstr ""
+
+#: si-captcha-admin.php:313
+msgid "Enable CAPTCHA on the lost password form."
+msgstr ""
+
+#: si-captcha-admin.php:316
+msgid ""
+"Prevents automated spam bots by requiring that the user pass a CAPTCHA test "
+"before lost password request."
+msgstr ""
+
+#: si-captcha-admin.php:321
+msgid "Enable CAPTCHA on the comment form."
+msgstr ""
+
+#: si-captcha-admin.php:324
+msgid ""
+"Prevents automated spam bots by requiring that the user pass a CAPTCHA test "
+"before posting comments."
+msgstr ""
+
+#: si-captcha-admin.php:330
+msgid "Hide CAPTCHA for"
+msgstr ""
+
+#: si-captcha-admin.php:331
+msgid "registered"
+msgstr ""
+
+#: si-captcha-admin.php:332
+msgid "users who can:"
+msgstr ""
+
+#: si-captcha-admin.php:336
+msgid "CAPTCHA input label position on the comment form:"
+msgstr ""
+
+#: si-captcha-admin.php:340
+msgid "input-label-required"
+msgstr ""
+
+#: si-captcha-admin.php:341
+msgid "label-required-input"
+msgstr ""
+
+#: si-captcha-admin.php:342
+msgid "label-required-linebreak-input"
+msgstr ""
+
+#: si-captcha-admin.php:343
+msgid "label-input-required"
+msgstr ""
+
+#: si-captcha-admin.php:356
+msgid ""
+"Changes position of the CAPTCHA input labels on the comment form. Some "
+"themes have different label positions on the comment form. After changing "
+"this setting, be sure to view the comments to verify the setting is correct."
+msgstr ""
+
+#: si-captcha-admin.php:361
+msgid ""
+"Change the display order of the CAPTCHA input field on the comment form."
+msgstr ""
+
+#: si-captcha-admin.php:364
+msgid ""
+"Sometimes the CAPTCHA image and input field are displayed AFTER the submit "
+"button on the comment form."
+msgstr ""
+
+#: si-captcha-admin.php:365
+msgid "Enable this setting and javascript will relocate the button."
+msgstr ""
+
+#: si-captcha-admin.php:370
+msgid "Enable smaller size CAPTCHA image."
+msgstr ""
+
+#: si-captcha-admin.php:373
+msgid "Makes the CAPTCHA image smaller."
+msgstr ""
+
+#: si-captcha-admin.php:378
+msgid "Enable PHP sessions."
+msgstr ""
+
+#: si-captcha-admin.php:381
+msgid ""
+"Enables PHP session handling. Only enable this if you have CAPTCHA token "
+"errors. Enable this setting to use PHP sessions for the CAPTCHA. PHP "
+"Sessions must be supported by your web host or there may be session errors."
+msgstr ""
+
+#: si-captcha-admin.php:392 si-captcha-admin.php:400
+msgid "There is a problem with the directory"
+msgstr ""
+
+#: si-captcha-admin.php:394
+msgid ""
+"The directory is not found, a <a href=\"http://codex.wordpress.org/"
+"Changing_File_Permissions\" target=\"_blank\">permissions</a> problem may "
+"have prevented this directory from being created."
+msgstr ""
+
+#: si-captcha-admin.php:396 si-captcha-admin.php:408
+msgid ""
+"Fixing the actual problem is recommended, but you can check this setting on "
+"the SI CAPTCHA options page: \"Use PHP sessions\" and the captcha will work "
+"(if PHP sessions are supported by your web host)."
+msgstr ""
+
+#: si-captcha-admin.php:401
+msgid ""
+"The directory Unwritable (<a href=\"http://codex.wordpress.org/"
+"Changing_File_Permissions\" target=\"_blank\">fix permissions</a>)"
+msgstr ""
+
+#: si-captcha-admin.php:402
+msgid "Permissions are: "
+msgstr ""
+
+#: si-captcha-admin.php:406
+msgid ""
+"Fixing this may require assigning 0755 permissions or higher (e.g. 0777 on "
+"some hosts. Try 0755 first, because 0777 is sometimes too much and will not "
+"work.)"
+msgstr ""
+
+#: si-captcha-admin.php:417
+msgid "Enable honeypot spambot trap."
+msgstr ""
+
+#: si-captcha-admin.php:420
+msgid ""
+"Enables hidden empty field honyepot trap for spam bots. For best results, do "
+"not enable unless you have a spam problem."
+msgstr ""
+
+#: si-captcha-admin.php:427
+msgid "Accessibility:"
+msgstr ""
+
+#: si-captcha-admin.php:430
+msgid "Enable aria-required tags for screen readers"
+msgstr ""
+
+#: si-captcha-admin.php:433
+msgid ""
+"aria-required is a form input WAI ARIA tag. Screen readers use it to "
+"determine which fields are required. Enabling this is good for "
+"accessability, but will cause the HTML to fail the W3C Validation (there is "
+"no attribute \"aria-required\"). WAI ARIA attributes are soon to be accepted "
+"by the HTML validator, so you can safely ignore the validation error it will "
+"cause."
+msgstr ""
+
+#: si-captcha-admin.php:439
+msgid "Akismet:"
+msgstr ""
+
+#: si-captcha-admin.php:441
+msgid "Akismet spam prevention status:"
+msgstr ""
+
+#: si-captcha-admin.php:445
+msgid ""
+"Akismet is a WordPress plugin. Akismet will greatly reduce or even "
+"completely eliminate the comment and trackback spam you get on your site. If "
+"one does happen to get through, simply mark it as \"spam\" on the moderation "
+"screen and Akismet will learn from the mistakes. When Akismet is installed "
+"and active, all comment posts will be checked with Akismet to help prevent "
+"spam."
+msgstr ""
+
+#: si-captcha-admin.php:453
+msgid "Akismet is installed."
+msgstr ""
+
+#: si-captcha-admin.php:457
+msgid ""
+"Check this and click \"Update Options\" to determine if Akismet key is "
+"active."
+msgstr ""
+
+#: si-captcha-admin.php:470
+msgid ""
+"Akismet is installed and the key is valid. Comment posts will be checked "
+"with Akismet to help prevent spam."
+msgstr ""
+
+#: si-captcha-admin.php:473
+msgid "Akismet plugin is installed but key needs to be activated."
+msgstr ""
+
+#: si-captcha-admin.php:476
+msgid "Akismet plugin is installed but key failed to verify."
+msgstr ""
+
+#: si-captcha-admin.php:479
+msgid "Configure Akismet"
+msgstr ""
+
+#: si-captcha-admin.php:482
+msgid "Akismet plugin is not installed or is deactivated."
+msgstr ""
+
+#: si-captcha-admin.php:496
+msgid "Warning: Your web host has not upgraded from PHP4 to PHP5."
+msgstr ""
+
+#: si-captcha-admin.php:498
+msgid ""
+"PHP4 was officially discontinued August 8, 2008 and is no longer considered "
+"safe."
+msgstr ""
+
+#: si-captcha-admin.php:499
+msgid ""
+"PHP5 is faster, has more features, and is and safer. Using PHP4 might still "
+"work, but is highly discouraged. Contact your web host for support."
+msgstr ""
+
+#: si-captcha-admin.php:507
+msgid "CAPTCHA Form CSS Style:"
+msgstr ""
+
+#: si-captcha-admin.php:513
+msgid "Reset the CAPTCHA form styles to default."
+msgstr ""
+
+#: si-captcha-admin.php:518
+msgid "Modifiable CAPTCHA Form CSS Style Feature:"
+msgstr ""
+
+#: si-captcha-admin.php:521
+msgid ""
+"Use to adjust the font colors, image positioning, or other CSS styling of "
+"the CAPTCHA form."
+msgstr ""
+
+#: si-captcha-admin.php:522
+msgid "Acceptable Examples:"
+msgstr ""
+
+#: si-captcha-admin.php:528
+msgid "Select the method of delivering the CAPTCHA form style:"
+msgstr ""
+
+#: si-captcha-admin.php:532
+msgid "Internal Style Sheet CSS (default, edit below)"
+msgstr ""
+
+#: si-captcha-admin.php:533
+msgid "External Style Sheet CSS (requires editing style.css)"
+msgstr ""
+
+#: si-captcha-admin.php:545
+msgid ""
+"By default, the CAPTCHA form styles are editable below when using \"Internal "
+"Style Sheet CSS\". The CAPTCHA CSS will be automatically be included in the "
+"page &lt;head&gt; section."
+msgstr ""
+
+#: si-captcha-admin.php:546
+msgid ""
+"Premium themes may have already added support for SI Captcha Anti-Spam style "
+"in the theme's style.css. If that is the case, then select \"External Style "
+"Sheet CSS\" if instructed by the theme's installation instructions."
+msgstr ""
+
+#: si-captcha-admin.php:547
+msgid ""
+"The CAPTCHA CSS will NOT be included in the page &lt;head&gt; section, and "
+"it must be included in the style.css of the theme. Be sure to remember this "
+"if you switch your theme later on."
+msgstr ""
+
+#: si-captcha-admin.php:549
+msgid "External Style Sheet CSS starting point for theme builders:"
+msgstr ""
+
+#: si-captcha-admin.php:570
+msgid ""
+"Caution: \"External Style Sheet CSS\" is enabled. This setting requires your "
+"theme's style.css to include the CAPTCHA CSS. Check the CAPTCHA images and "
+"input field on your comment form, make sure they are aligned properly. Be "
+"sure your theme includes the CAPTCHA style for this plugin, if it does not, "
+"then change the setting back to \"Internal Style Sheet CSS\"."
+msgstr ""
+
+#: si-captcha-admin.php:574
+msgid ""
+"Note: \"Internal Style Sheet CSS\" fields below are not editable while "
+"\"External Style Sheet CSS\" is enabled."
+msgstr ""
+
+#: si-captcha-admin.php:579
+msgid "Internal Style Sheet CSS:"
+msgstr ""
+
+#: si-captcha-admin.php:580
+msgid "CSS style for CAPTCHA DIV:"
+msgstr ""
+
+#: si-captcha-admin.php:581
+msgid "CSS style for Small CAPTCHA Image DIV:"
+msgstr ""
+
+#: si-captcha-admin.php:582
+msgid "CSS style for Large CAPTCHA Image DIV:"
+msgstr ""
+
+#: si-captcha-admin.php:583
+msgid "CSS style for CAPTCHA image:"
+msgstr ""
+
+#: si-captcha-admin.php:584
+msgid "CSS style for Refresh image:"
+msgstr ""
+
+#: si-captcha-admin.php:585
+msgid "CSS style for CAPTCHA input DIV:"
+msgstr ""
+
+#: si-captcha-admin.php:586
+msgid "CSS style for CAPTCHA input label:"
+msgstr ""
+
+#: si-captcha-admin.php:587
+msgid "CSS style for CAPTCHA input field:"
+msgstr ""
+
+#: si-captcha-admin.php:593
+msgid "Text Labels:"
+msgstr ""
+
+#: si-captcha-admin.php:597
+msgid "Change text labels:"
+msgstr ""
+
+#: si-captcha-admin.php:600
+msgid ""
+"Some people wanted to change the text labels. These fields can be filled in "
+"to override the standard text labels."
+msgstr ""
+
+#: si-captcha-admin.php:603
+msgid "Required"
+msgstr ""
+
+#: si-captcha-admin.php:604 si-captcha.php:784 si-captcha.php:813
+msgid "Possible spam bot"
+msgstr ""
+
+#: si-captcha-admin.php:605 si-captcha.php:787 si-captcha.php:817
+msgid "Wrong CAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:606 si-captcha.php:687 si-captcha.php:762
+#: si-captcha.php:767
+msgid "Empty CAPTCHA"
+msgstr ""
+
+#: si-captcha-admin.php:607 si-captcha.php:769
+msgid "Missing CAPTCHA token"
+msgstr ""
+
+#: si-captcha-admin.php:608
+msgid "Unreadable CAPTCHA token"
+msgstr ""
+
+#: si-captcha-admin.php:609 si-captcha.php:798
+msgid "Unreadable CAPTCHA cookie"
+msgstr ""
+
+#: si-captcha-admin.php:610 si-captcha.php:593 si-captcha.php:608
+#: si-captcha.php:620 si-captcha.php:663 si-captcha.php:686 si-captcha.php:697
+msgid "ERROR"
+msgstr ""
+
+#: si-captcha-admin.php:611 si-captcha.php:242 si-captcha.php:323
+#: si-captcha.php:374 si-captcha.php:415 si-captcha.php:448 si-captcha.php:484
+#: si-captcha.php:530 si-captcha.php:563
+msgid "CAPTCHA Code"
+msgstr ""
+
+#: si-captcha-admin.php:612 si-captcha.php:871 si-captcha.php:873
+msgid "CAPTCHA Image"
+msgstr ""
+
+#: si-captcha-admin.php:613 si-captcha.php:881 si-captcha.php:888
+msgid "Refresh Image"
+msgstr ""
+
+#: si-captcha-admin.php:630
+msgid "More WordPress plugins by Mike Challis:"
+msgstr ""
+
+#: si-captcha-admin.php:632
+msgid "Fast Secure Contact Form"
+msgstr ""
+
+#: si-captcha-admin.php:633
+msgid "SI CAPTCHA Anti-Spam"
+msgstr ""
+
+#: si-captcha-admin.php:634
+msgid "Visitor Maps and Who's Online"
+msgstr ""
+
+#: si-captcha-admin.php:639
+msgid ""
+"\"I recommend <a href=\"%s\" target=\"_blank\">HostGator Web Hosting</a>. "
+"All my sites are hosted there. The prices are great and they offer great "
+"features for WordPress users. If you click this link and start an account at "
+"HostGator, I get a small commission.\" - Mike Challis"
+msgstr ""
+
+#: si-captcha-admin.php:641
+msgid "Web Site Hosting"
+msgstr ""
+
+#: si-captcha.php:169
+msgid "All registered users"
+msgstr ""
+
+#: si-captcha.php:170
+msgid "Edit posts"
+msgstr ""
+
+#: si-captcha.php:171
+msgid "Publish Posts"
+msgstr ""
+
+#: si-captcha.php:172
+msgid "Moderate Comments"
+msgstr ""
+
+#: si-captcha.php:173
+msgid "Administer site"
+msgstr ""
+
+#: si-captcha.php:191
+msgid "ERROR: si-captcha.php plugin says GD image support not detected in PHP!"
+msgstr ""
+
+#: si-captcha.php:192
+msgid ""
+"Contact your web host and ask them why GD image support is not enabled for "
+"PHP."
+msgstr ""
+
+#: si-captcha.php:196
+msgid ""
+"ERROR: si-captcha.php plugin says imagepng function not detected in PHP!"
+msgstr ""
+
+#: si-captcha.php:197
+msgid ""
+"Contact your web host and ask them why imagepng function is not enabled for "
+"PHP."
+msgstr ""
+
+#: si-captcha.php:201
+msgid "ERROR: si-captcha.php plugin says captcha_library not found."
+msgstr ""
+
+#: si-captcha.php:276
+msgid "Submit Comment"
+msgstr ""
+
+#: si-captcha.php:679
+msgid "<strong>ERROR</strong>: The username field is empty."
+msgstr ""
+
+#: si-captcha.php:682
+msgid "<strong>ERROR</strong>: The password field is empty."
+msgstr ""
+
+#: si-captcha.php:706
+msgid ""
+"<strong>ERROR</strong>: Invalid username. <a href=\"%s\" title=\"Password "
+"Lost and Found\">Lost your password</a>?"
+msgstr ""
+
+#: si-captcha.php:714
+msgid "<strong>ERROR</strong>: Your account has been marked as a spammer."
+msgstr ""
+
+#: si-captcha.php:720
+msgid "Site Suspended."
+msgstr ""
+
+#: si-captcha.php:730
+msgid ""
+"<strong>ERROR</strong>: Incorrect password. <a href=\"%s\" title=\"Password "
+"Lost and Found\">Lost your password</a>?"
+msgstr ""
+
+#: si-captcha.php:790
+msgid "Unreadable CAPTCHA token file"
+msgstr ""
+
+#: si-captcha.php:864
+msgid "Leave this field empty"
+msgstr ""
+
+#: si-captcha.php:901
+msgid "Settings"
+msgstr ""
