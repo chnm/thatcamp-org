@@ -106,6 +106,26 @@ class THATCamp_Favorites {
 			$afav_gloss
 		);
 	}
+	
+	
+	public function get_new_favorite_count_by_user( $user_id ) {
+	
+		$args = array(
+			'per_page' => 10000,
+			'show_hidden' => true,
+			'user_id' => $user_id,
+			'action' => 'thatcamp_favoriters_count'
+		);
+		
+		if ( bp_has_activities( $args ) ) {
+			global $activities_template;
+			$count = $activities_template->total_activity_count;
+		} else {
+			$count = 0;
+		}
+
+		return $count;
+	}	
 
 	/**
 	 * Given a post_id and a blog_id, return the corresponding activity_id
