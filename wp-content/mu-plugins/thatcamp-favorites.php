@@ -299,8 +299,13 @@ class THATCamp_Favorites {
 		return $aloc > $bloc ? 1 : -1;
 	}
 
-	public function admin_menu_cb() {
-		$aids = $this->get_most_favorited_activities( is_network_admin() );
+	public function admin_menu_cb($override = false) {
+		if ($override){
+			$admin_status = true;
+		} else {
+			$admin_status = is_network_admin();
+		}		
+		$aids = $this->get_most_favorited_activities( $admin_status );
 
 		$activities = bp_activity_get( array( 'in' => wp_list_pluck( $aids, 'activity_id' ) ) );
 
@@ -328,7 +333,7 @@ class THATCamp_Favorites {
 					<th>Post</th>
 					<th>Author</th>
 
-					<?php if ( is_network_admin() ) : ?>
+					<?php if ( $admin_status ) : ?>
 						<th>Site</th>
 					<?php endif ?>
 
