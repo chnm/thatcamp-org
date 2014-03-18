@@ -50,7 +50,10 @@ echo wp_title(' ');
 						<?php endif ?>
 						<span class="meta-date"><?php echo get_the_date(); ?></span>	
 						<span class="meta-cat"><?php echo "Categorized: " ?><?php the_category(', '); ?></span>
-						<span class="meta-tags"><?php the_tags('Tagged: ', ', ', '<br />'); ?></span>									
+						<span class="meta-tags"><?php the_tags('Tagged: ', ', ', '<br />'); ?></span>
+						<span class="meta-favs"><?php 
+							echo buddypress()->thatcamp_favorites->get_fed_favorite_button();  	
+						?></span> 	
 					</div>
 				</article>
 
