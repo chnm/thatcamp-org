@@ -106,7 +106,17 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 			</form>
 		<?php endif ?>
 		<?php else : ?>
-		<?php echo ('You must <a href="/wp-login.php" title="Log in" name="Log in">log in</a> with your THATCamp account before you can register a new THATCamp. If you have ever been to a THATCamp, you probably already have a THATCamp account; if you have forgotten how to log in, you can <a href="/wp-login.php/?action=lostpassword" title="Reset your password" name="Reset your password">reset your password</a>. If you do not have a THATCamp account, you can <a href="/signup" title="Sign up for an account" name="Sign up for an account">sign up for an account</a>.'); ?>	
+		<?php echo ('<h3 style="text-align:center;margin:2em;">You must <a href="/wp-login.php" title="Log in" name="Log in">log in</a> to register a new THATCamp.</h3>
+		<p style="margin-bottom: 1.5em;">If you have ever been to a THATCamp, you probably already have a THATCamp account; if you have forgotten your login information, you can <a href="/wp-login.php/?action=lostpassword" title="Reset your password" name="Reset your password">reset your password</a> with your email address. If you do not have a THATCamp account, you can <a href="/signup" title="Sign up for an account" name="Sign up for an account">sign up for an account</a>.</p>'); ?>	
+		<?php echo ('When you register a THATCamp, you must agree that your THATCamp will be:
+					<ul>
+						<li>FREE or CHEAP to attend (registration fees of up to $30 USD are fine)</li>
+						<li>OPEN to anyone who wishes to apply or register (no restricting registration to members of a particular institution, association, organization, discipline, or rank)</li>						
+						<li>PUBLIC on the open web (sessions can be blogged, twittered, photographed, recorded, and posted)</li>
+						<li>SELF-ORGANIZING (no program committee: all participants together will set the agenda, either before or during the unconference)</li>
+						<li>PARTICIPATORY and spontaneous (most sessions are group discussions, productive co-working sessions, or joyous collaborations of any kind; there should be few if any prepared, monologuing presentations, papers, or demonstrations with the exception of skills training workshops, and even workshops should generally allow for hands-on exercises by the group)</li>
+					</ul>
+		'); ?>
 		<?php endif ?>
 	</div>
 </div>
