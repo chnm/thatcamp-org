@@ -48,6 +48,31 @@ class THATCamp_Favorites {
 		add_filter( 'the_content', array( $this, 'add_button_to_the_content' ), 9999999 );
 		return $content;
 	}
+	
+	
+	public function get_fed_favorite_button($id = 0){
+		if ($id == 0){
+			$id = get_the_ID();
+		}
+		
+		$blog_id = get_post_meta($id, 'blogid', true);
+		if (empty($blog_id)){
+			$button = $this->get_favorite_button(); 	
+		} else {
+		$url = get_post_meta($id, 'permalink', true); 
+			switch_to_blog($blog_id);
+			$blog_post_id = url_to_postid( $url );
+			$args = array(
+				'blog_id' => $blog_id,
+				'post_id' => $blog_post_id 
+			);
+			
+			$button = $this->get_favorite_button($args); 
+			restore_current_blog();
+		}
+		
+		return $button;
+	}	
 
 	/**
 	 * Creates a favorite button
