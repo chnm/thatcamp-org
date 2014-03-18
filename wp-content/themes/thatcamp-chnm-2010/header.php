@@ -27,7 +27,7 @@
     <body<?php if(is_home()) echo ' id="home"'; if(is_page('campers') || is_author()) echo ' id="campers"'; if(is_page('blog') || is_single()) echo ' id="blog"'; if(is_page('schedule')) echo ' id="schedule"';?>>
         <div id="wrap" class="group">
         	<div id="header">
-                <h1 id="thatcamp"><a href="<?php bloginfo('home'); ?>"><img src="/files/2012/02/thatcamp-logo.gif" alt="THATCamp" /></a></h1>
+                <h1 id="thatcamp"><a href="<?php bloginfo('home'); ?>"><img src="/files/2010/05/thatcamp-logo.gif" alt="THATCamp" /></a></h1>
                 <?php /* ?>
 				<div id="user-login"><?php global $current_user;
 				      get_currentuserinfo(); ?>
