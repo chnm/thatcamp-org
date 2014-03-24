@@ -16,6 +16,8 @@ class THATCamp_Favorites {
 
 		add_action( 'bp_actions', array( $this, 'catch_mark_favorite' ), 5 );
 		add_action( 'bp_actions', array( $this, 'catch_unmark_favorite' ), 5 );
+		
+		add_shortcode('tcfavs', array($this, 'tc_favslist_shortcode'));
 
 		// admin panels
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
@@ -297,6 +299,10 @@ class THATCamp_Favorites {
 		}
 
 		return $aloc > $bloc ? 1 : -1;
+	}
+	
+	public function tc_favslist_shortcode(){
+		$this->admin_menu_cb(true);
 	}
 
 	public function admin_menu_cb($override = false) {
