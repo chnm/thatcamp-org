@@ -44,7 +44,7 @@ class THATCamp_Favorites {
 	 * Wrapper that grabs the_content and throws a button on the end
 	 */
 	public function add_button_to_the_content( $content ) {
-		if ( is_user_logged_in() && ! is_admin() ) {
+		if ( ! is_admin() ) {
 			$content .= $this->get_favorite_button();
 		}
 		add_filter( 'the_content', array( $this, 'add_button_to_the_content' ), 9999999 );
