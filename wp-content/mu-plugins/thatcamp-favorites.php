@@ -25,6 +25,8 @@ class THATCamp_Favorites {
 
 		// css
 		add_action( 'wp_print_scripts', array( $this, 'print_styles' ) );
+		
+		#add_filter( 'login_redirect', array($this,'redirect_to_favorite_after_login'), 10, 3 );
 	}
 
 	/**
@@ -222,6 +224,18 @@ class THATCamp_Favorites {
 		bp_activity_update_meta( $activity_id, 'thatcamp_favoriters', $activity_favoriters );
 		bp_activity_update_meta( $activity_id, 'thatcamp_favoriters_count', count( $activity_favoriters ) );
 	}
+	
+	# Trying to redirect the user to the origin page on login
+	public function redirect_to_favorite_after_login($redirect_to, $request, $user){
+		#var_dump($request); die();
+		parse_str($request, $result);
+		if (isset($_GET['tcfav']) && ('ready' == $_GET['tcfav'])){
+			return $redirect_to;
+		} else {
+			#var_dump($_GET); die();
+			return admin_url();
+		}
+	}	
 
 	/**
 	 * Screen function for grabbing a favorite request
@@ -238,7 +252,12 @@ class THATCamp_Favorites {
 
 		if ( !is_user_logged_in() || !bp_is_activity_component() || !bp_is_current_action( 'favorite' ) ){
 			if (!is_user_logged_in()){
-				wp_redirect(wp_login_url( stripslashes( urldecode( $_GET['redirect_to'] ) ) ));
+				# Not logged in? Get them to log in.
+				$post_url = stripslashes( urldecode( $_GET['redirect_to'] ) );
+				$url = wp_login_url( $post_url );
+				$url = add_query_arg(array('tcfav' => 'ready'), $url);
+				wp_redirect($url);
+				exit;
 			} else {
 				return false;
 			}
