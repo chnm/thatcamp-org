@@ -93,6 +93,12 @@ class THATCamp_Favorites {
                 if ( ! $activity_id ) {
                         return '';
                 }
+                
+		if( 0 == $r['user_id'] ){
+			$style_logged = 'style="background:rgba(125, 138, 88, 0.71);"';
+		} else {
+			$style_logged = '';
+		}                
 
 		$afav_count = intval( bp_activity_get_meta( $activity_id, 'thatcamp_favoriters_count' ) );
 
@@ -125,7 +131,7 @@ class THATCamp_Favorites {
 		}
 
 		return sprintf(
-			'<div class="thatcamp-favorite"><a href="%s" class="%s" title="%s">%s</a> %s</div>',
+			'<div class="thatcamp-favorite"><a href="%s" class="%s" title="%s" '.$style_logged.'>%s</a> %s</div>',
 			$url,
 			$class,
 			$title,
