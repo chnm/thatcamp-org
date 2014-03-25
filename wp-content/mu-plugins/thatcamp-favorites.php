@@ -230,8 +230,13 @@ class THATCamp_Favorites {
 			return;
 		}
 
-		if ( !is_user_logged_in() || !bp_is_activity_component() || !bp_is_current_action( 'favorite' ) )
-			return false;
+		if ( !is_user_logged_in() || !bp_is_activity_component() || !bp_is_current_action( 'favorite' ) ){
+			if (!is_user_logged_in()){
+				wp_redirect(wp_login_url( stripslashes( urldecode( $_GET['redirect_to'] ) ) ));
+			} else {
+				return false;
+			}
+		}
 
 		remove_action( 'bp_actions', 'bp_activity_action_mark_favorite' );
 
