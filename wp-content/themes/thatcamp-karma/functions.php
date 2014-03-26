@@ -530,8 +530,28 @@ function thatcamp_mod_user_nav() {
 		'screen_function'         => 'bp_activity_screen_my_activity',
 	);
 
+	$activity_f = bp_activity_get( array(
+			'filter' => array(
+				'action' => 'bbp_topic_create', 
+				'user_id' => $bp->displayed_user->id
+			)
+	));
+	
+	$forum_post_count = $activity_f['total'];	
+
+	$activity_fr = bp_activity_get( array(
+			'filter' => array(
+				'action' => 'bbp_reply_create', 
+				'user_id' => $bp->displayed_user->id
+			)
+	));
+	
+	$forum_post_reply_count = $activity_fr['total'];
+
+	$forum_activity_count = $forum_post_count+$forum_post_reply_count;
+	
 	$bp->bp_nav['forums'] = array(
-		'name'                    => 'Forum Posts',
+		'name'                    => sprintf( 'Forum Posts <span>%s</span>', $forum_activity_count),
 		'slug'                    => 'forums',
 		'link'                    => add_query_arg( 'a_type', 'forums', $activity_base ),
 		'css_id'                  => 'forums',
