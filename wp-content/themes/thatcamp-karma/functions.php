@@ -523,8 +523,10 @@ function thatcamp_mod_user_nav() {
 		'screen_function'         => 'bp_activity_screen_my_activity',
 	);
 
+	$favcount = count(bp_activity_get_user_favorites(get_current_user_id()));
+	
 	$bp->bp_nav['favorites'] = array(
-		'name'                    => 'Favorites',
+		'name'                    => sprintf( 'Favorites <span>%s</span>', $favcount),
 		'slug'                    => 'favorites',
 		'link'                    => add_query_arg( 'a_type', 'favorites', $activity_base ),
 		'css_id'                  => 'favorites',
