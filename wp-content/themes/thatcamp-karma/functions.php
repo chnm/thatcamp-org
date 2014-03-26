@@ -492,6 +492,8 @@ function thatcamp_mod_user_nav() {
         } else {
                 $activity_base = bp_get_activity_slug() . '/';
         }
+		
+	#Gets blog post activity for display on profile.	
 	$activity_b = bp_activity_get( array(
 			'filter' => array(
 				'action' => 'new_blog_post', 
@@ -511,6 +513,7 @@ function thatcamp_mod_user_nav() {
 		'screen_function'         => 'bp_activity_screen_my_activity',
 	);
 
+	#Gets blog commenting activity for display on profile.
 	$activity_bc = bp_activity_get( array(
 			'filter' => array(
 				'action' => 'new_blog_comment', 
@@ -530,6 +533,7 @@ function thatcamp_mod_user_nav() {
 		'screen_function'         => 'bp_activity_screen_my_activity',
 	);
 
+	#Gets forum post activity for display on profile.
 	$activity_f = bp_activity_get( array(
 			'filter' => array(
 				'action' => 'bbp_topic_create', 
@@ -539,6 +543,7 @@ function thatcamp_mod_user_nav() {
 	
 	$forum_post_count = $activity_f['total'];	
 
+	#Gets forum reply activity for display on profile.
 	$activity_fr = bp_activity_get( array(
 			'filter' => array(
 				'action' => 'bbp_reply_create', 
@@ -548,6 +553,7 @@ function thatcamp_mod_user_nav() {
 	
 	$forum_post_reply_count = $activity_fr['total'];
 
+	# Combines forum reply and post activity into one number to show on user profiles. 
 	$forum_activity_count = $forum_post_count+$forum_post_reply_count;
 	
 	$bp->bp_nav['forums'] = array(
