@@ -492,14 +492,14 @@ function thatcamp_mod_user_nav() {
         } else {
                 $activity_base = bp_get_activity_slug() . '/';
         }
-	$activity_a = bp_activity_get( array(
+	$activity_b = bp_activity_get( array(
 			'filter' => array(
 				'action' => 'new_blog_post', 
 				'user_id' => $bp->displayed_user->id
 			)
 	));
 	
-	$postcount = $activity_a['total'];
+	$postcount = $activity_b['total'];
 		
 	$bp->bp_nav['blogs'] = array(
 		'name'                    => sprintf( 'Blog Posts <span>%s</span>', $postcount),
@@ -511,8 +511,17 @@ function thatcamp_mod_user_nav() {
 		'screen_function'         => 'bp_activity_screen_my_activity',
 	);
 
+	$activity_bc = bp_activity_get( array(
+			'filter' => array(
+				'action' => 'new_blog_comment', 
+				'user_id' => $bp->displayed_user->id
+			)
+	));
+	
+	$blog_comment_count = $activity_bc['total'];	
+	
 	$bp->bp_nav['comments'] = array(
-		'name'                    => 'Blog Comments',
+		'name'                    => sprintf( 'Blog Comments <span>%s</span>', $blog_comment_count),
 		'slug'                    => 'comments',
 		'link'                    => add_query_arg( 'a_type', 'blog_comments', $activity_base ),
 		'css_id'                  => 'comments',
