@@ -492,9 +492,17 @@ function thatcamp_mod_user_nav() {
         } else {
                 $activity_base = bp_get_activity_slug() . '/';
         }
-
+	$activity_a = bp_activity_get( array(
+			'filter' => array(
+				'action' => 'new_blog_post', 
+				'user_id' => $bp->displayed_user->id
+			)
+	));
+	
+	$postcount = $activity_a['total'];
+		
 	$bp->bp_nav['blogs'] = array(
-		'name'                    => 'Blog Posts',
+		'name'                    => sprintf( 'Blog Posts <span>%s</span>', $postcount),
 		'slug'                    => 'blogs',
 		'link'                    => add_query_arg( 'a_type', 'blog_posts', $activity_base ),
 		'css_id'                  => 'blogs',
