@@ -442,6 +442,7 @@ class blcLinkQuery {
 		if ( !empty($params['orderby']) ) {
 			$allowed_columns = array(
 				'url' => 'links.url',
+				'link_text' => 'instances.link_text',
 			);
 			$column = $params['orderby'];
 
@@ -563,7 +564,7 @@ class blcLinkQuery {
 		if ( $params['max_results'] || $params['offset'] ){
 			$q .= sprintf("\nLIMIT %d, %d", $params['offset'], $params['max_results']);
 		}
-		
+
 		$results = $wpdb->get_results($q, ARRAY_A);
 		if ( empty($results) ){
 			return array();

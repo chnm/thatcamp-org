@@ -14,6 +14,7 @@ define('BLC_LEVEL_ERROR', 3);
  * @author Janis Elsts
  */
 class blcLogger {
+	protected $log_level = BLC_LEVEL_DEBUG;
 	
 	function __construct($param = ''){
 		
@@ -53,6 +54,10 @@ class blcLogger {
 	
 	function clear(){
 		
+	}
+
+	public function set_log_level($level) {
+		$this->log_level = $level;
 	}
 }
 
@@ -117,6 +122,67 @@ class blcCachedOptionLogger extends blcLogger {
  * A dummy logger that doesn't log anything.
  */
 class blcDummyLogger extends blcLogger { }
+
+/**
+ * A basic logger that logs messages to a file.
+ */
+class blcFileLogger extends blcLogger {
+	protected $fileName;
+
+	public function __construct($fileName = ''){
+		$this->fileName = $fileName;
+	}
+
+	function log($message, $object = null, $level = BLC_LEVEL_DEBUG){
+		if ( $level < $this->log_level ) {
+			return;
+		}
+
+		$line = sprintf(
+			'[%1$s] %2$s %3$s',
+			date('Y-m-d H:i:s P'),
+			$this->get_level_string($level),
+			$message
+		);
+
+		if ( isset($object) ) {
+			$line .= ' ' . var_export($object, true);
+		}
+
+		$line .= "\n";
+
+		error_log($line, 3, $this->fileName);
+	}
+
+	function get_messages($min_level = BLC_LEVEL_DEBUG){
+		return array(__CLASS__ . ':get_messages() is not implemented');
+	}
+
+	function get_log($min_level = BLC_LEVEL_DEBUG){
+		return array(__CLASS__ . ':get_log() is not implemented');
+	}
+
+	public function clear(){
+		if ( is_file($this->fileName) && is_writable($this->fileName) ) {
+			$handle = fopen($this->fileName, 'w');
+			fclose($handle);
+		}
+	}
+
+	protected function get_level_string($level) {
+		switch ($level) {
+			case BLC_LEVEL_DEBUG:
+				return 'DEBUG:';
+			case BLC_LEVEL_ERROR:
+				return 'ERROR:';
+			case BLC_LEVEL_WARNING:
+				return 'WARN:';
+			case BLC_LEVEL_INFO:
+				return 'INFO:';
+		}
+		return 'LOG:';
+	}
+}
 
 endif;
 

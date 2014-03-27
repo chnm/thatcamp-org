@@ -220,6 +220,8 @@ class blcTablePrinter {
 			'new-link-text' => array(
 				'heading' => __('Link Text', 'broken-link-checker'),
 				'content' => array($this, 'column_new_link_text'),
+				'sortable' => true,
+				'orderby' => 'link_text',
 			),
 
 			'redirect-url' => array(

@@ -7,22 +7,20 @@ msgstr ""
 "Project-Id-Version: Broken Link Checker 0.9.5\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: PositionMaker <info@positionmaker.pl>\n"
+"Last-Translator: Janis Elsts <whiteshadow@w-shadow.com>\n"
 "Language-Team: PositionMaker <info@positionmaker.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: POLAND\n"
+"Language: pl_PL\n"
+"X-Generator: Poedit 1.5.7\n"
 
-#: core/core.php:152
-#: includes/admin/links-page-js.php:37
+#: core/core.php:152 includes/admin/links-page-js.php:37
 msgid "Loading..."
 msgstr "Wczytywanie..."
 
-#: core/core.php:176
-#: includes/admin/options-page-js.php:18
+#: core/core.php:176 includes/admin/options-page-js.php:18
 msgid "[ Network error ]"
 msgstr "[ Błąd sieci ]"
 
@@ -36,10 +34,9 @@ msgstr "Ustawienia Link Checker"
 
 #: core/core.php:343
 msgid "Link Checker"
-msgstr "Lick Checker"
+msgstr "Link Checker"
 
-#: core/core.php:348
-#: includes/link-query.php:26
+#: core/core.php:348 includes/link-query.php:26
 msgid "Broken Links"
 msgstr "Niedziałające linki"
 
@@ -51,11 +48,14 @@ msgstr "Pokaż niedziałające linki"
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: core/core.php:404
-#: core/core.php:1186
+#: core/core.php:404 core/core.php:1186
 #, php-format
-msgid "Error: The plugin's database tables are not up to date! (Current version : %d, expected : %d)"
-msgstr "Błąd: tabele w bazie danych pluginu są nieaktualne! (Bieżąca wersja: %d, spodziewana: %d)"
+msgid ""
+"Error: The plugin's database tables are not up to date! (Current version : "
+"%d, expected : %d)"
+msgstr ""
+"Błąd: tabele w bazie danych pluginu są nieaktualne! (Bieżąca wersja: %d, "
+"spodziewana: %d)"
 
 #: core/core.php:543
 msgid "Settings saved."
@@ -65,8 +65,7 @@ msgstr "Ustawienia zapisane."
 msgid "Complete site recheck started."
 msgstr "Rozpoczęto sprawdzanie całej strony."
 
-#: core/core.php:564
-#: core/core.php:2744
+#: core/core.php:564 core/core.php:2744
 msgid "Details"
 msgstr "Szczegóły"
 
@@ -94,13 +93,11 @@ msgstr "Zaawansowane"
 msgid "Broken Link Checker Options"
 msgstr "Opcje pluginu Link Checker"
 
-#: core/core.php:612
-#: includes/admin/table-printer.php:168
+#: core/core.php:612 includes/admin/table-printer.php:168
 msgid "Status"
 msgstr "Status"
 
-#: core/core.php:614
-#: includes/admin/options-page-js.php:56
+#: core/core.php:614 includes/admin/options-page-js.php:56
 msgid "Show debug info"
 msgstr "Pokaż informacje typu debug"
 
@@ -114,8 +111,12 @@ msgid "Every %s hours"
 msgstr "Co %s godzin"
 
 #: core/core.php:656
-msgid "Existing links will be checked this often. New links will usually be checked ASAP."
-msgstr "Częstość sprawdzania istniejących linków. Nowe linki będą sprawdzane tak szybko, jak to możliwe."
+msgid ""
+"Existing links will be checked this often. New links will usually be checked "
+"ASAP."
+msgstr ""
+"Częstość sprawdzania istniejących linków. Nowe linki będą sprawdzane tak "
+"szybko, jak to możliwe."
 
 #: core/core.php:663
 msgid "E-mail notifications"
@@ -123,7 +124,8 @@ msgstr "Powiadomienia na E-mail"
 
 #: core/core.php:669
 msgid "Send me e-mail notifications about newly detected broken links"
-msgstr "Wysyłaj do mnie E-mail z wiadomością o nowowykrytych niedziałających linkach."
+msgstr ""
+"Wysyłaj do mnie E-mail z wiadomością o nowowykrytych niedziałających linkach."
 
 #: core/core.php:676
 msgid "Link tweaks"
@@ -133,8 +135,7 @@ msgstr "Linki-dodatki"
 msgid "Apply custom formatting to broken links"
 msgstr "Ustaw odmienne formatowanie niedziałających linków"
 
-#: core/core.php:686
-#: core/core.php:714
+#: core/core.php:686 core/core.php:714
 msgid "Edit CSS"
 msgstr "Edytuj CSS"
 
@@ -167,28 +168,30 @@ msgid "Exclusion list"
 msgstr "Lista wykluczeń"
 
 #: core/core.php:813
-msgid "Don't check links where the URL contains any of these words (one per line) :"
-msgstr "Nie sprawdzaj linków, które zawierają w URLu następujące słowa (jedno słowo na linię):"
+msgid ""
+"Don't check links where the URL contains any of these words (one per line) :"
+msgstr ""
+"Nie sprawdzaj linków, które zawierają w URLu następujące słowa (jedno słowo "
+"na linię):"
 
 #: core/core.php:831
 msgid "Check links using"
 msgstr "Sprawdź linki używając"
 
-#: core/core.php:850
-#: includes/links.php:849
+#: core/core.php:850 includes/links.php:849
 msgid "Timeout"
 msgstr "Timeout"
 
-#: core/core.php:856
-#: core/core.php:902
-#: core/core.php:2871
+#: core/core.php:856 core/core.php:902 core/core.php:2871
 #, php-format
 msgid "%s seconds"
 msgstr "% sekundy"
 
 #: core/core.php:865
 msgid "Links that take longer than this to load will be marked as broken."
-msgstr "Linki, których sprawdzenie zajmie więcej niż ten czas, będą oznaczone jako niedziałające."
+msgstr ""
+"Linki, których sprawdzenie zajmie więcej niż ten czas, będą oznaczone jako "
+"niedziałające."
 
 #: core/core.php:872
 msgid "Link monitor"
@@ -207,8 +210,16 @@ msgid "Max. execution time"
 msgstr "Maksymalny czas wykonywania"
 
 #: core/core.php:913
-msgid "The plugin works by periodically launching a background job that parses your posts for links, checks the discovered URLs, and performs other time-consuming tasks. Here you can set for how long, at most, the link monitor may run each time before stopping."
-msgstr "Ten plugin działa poprzez cykliczne odpalanie zadania w tle, które pobiera linków z wpisów, sprawdza ich URLe i wykonuje inne wymagające czasowo zadania. Tutaj możesz ustawić na jak długi maksymalnie czas monitor linków może działać, zanim się zatrzyma."
+msgid ""
+"The plugin works by periodically launching a background job that parses your "
+"posts for links, checks the discovered URLs, and performs other time-"
+"consuming tasks. Here you can set for how long, at most, the link monitor "
+"may run each time before stopping."
+msgstr ""
+"Ten plugin działa poprzez cykliczne odpalanie zadania w tle, które pobiera "
+"linków z wpisów, sprawdza ich URLe i wykonuje inne wymagające czasowo "
+"zadania. Tutaj możesz ustawić na jak długi maksymalnie czas monitor linków "
+"może działać, zanim się zatrzyma."
 
 #: core/core.php:923
 msgid "Custom temporary directory"
@@ -227,8 +238,12 @@ msgid "Error : This directory doesn't exist."
 msgstr "Błąd: ten katalog nie istnieje."
 
 #: core/core.php:948
-msgid "Set this field if you want the plugin to use a custom directory for its lockfiles. Otherwise, leave it blank."
-msgstr "Ustaw to pole, jesli chcesz by plugin korzystał z własnego katalogu dla plików tymczasowych. Lub zostaw puste dla domyślnego katalogu."
+msgid ""
+"Set this field if you want the plugin to use a custom directory for its "
+"lockfiles. Otherwise, leave it blank."
+msgstr ""
+"Ustaw to pole, jesli chcesz by plugin korzystał z własnego katalogu dla "
+"plików tymczasowych. Lub zostaw puste dla domyślnego katalogu."
 
 #: core/core.php:955
 msgid "Server load limit"
@@ -241,16 +256,25 @@ msgstr "Bieżące obciążenie: %s"
 
 #: core/core.php:976
 #, php-format
-msgid "Link checking will be suspended if the average <a href=\"%s\">server load</a> rises above this number. Leave this field blank to disable load limiting."
-msgstr "Sprawdzanie linków będzie zawieszone, jeśli średnie <a href=\"%s\">obciążenie procesora</a> wzrośnie powyżej tej wartości. Zostaw puste, aby usunąć limit."
+msgid ""
+"Link checking will be suspended if the average <a href=\"%s\">server load</"
+"a> rises above this number. Leave this field blank to disable load limiting."
+msgstr ""
+"Sprawdzanie linków będzie zawieszone, jeśli średnie <a href=\"%s"
+"\">obciążenie procesora</a> wzrośnie powyżej tej wartości. Zostaw puste, aby "
+"usunąć limit."
 
 #: core/core.php:984
 msgid "Not available"
 msgstr "Niedostępne"
 
 #: core/core.php:986
-msgid "Load limiting only works on Linux-like systems where <code>/proc/loadavg</code> is present and accessible."
-msgstr "Limit obciążenia działa tylko na serwerach Linux, w których jest dostępny <code>/proc/loadavg</code>."
+msgid ""
+"Load limiting only works on Linux-like systems where <code>/proc/loadavg</"
+"code> is present and accessible."
+msgstr ""
+"Limit obciążenia działa tylko na serwerach Linux, w których jest dostępny "
+"<code>/proc/loadavg</code>."
 
 #: core/core.php:994
 msgid "Forced recheck"
@@ -261,8 +285,12 @@ msgid "Re-check all pages"
 msgstr "Sprawdź wszystkie strony"
 
 #: core/core.php:1001
-msgid "The \"Nuclear Option\". Click this button to make the plugin empty its link database and recheck the entire site from scratch."
-msgstr "\"Opcja Atomowa\". Kliknij ten przycisk, jeśli chcesz wyczyścić bazę danych pluginu i sprawdzić całą stronę od początku."
+msgid ""
+"The \"Nuclear Option\". Click this button to make the plugin empty its link "
+"database and recheck the entire site from scratch."
+msgstr ""
+"\"Opcja Atomowa\". Kliknij ten przycisk, jeśli chcesz wyczyścić bazę danych "
+"pluginu i sprawdzić całą stronę od początku."
 
 #: core/core.php:1012
 msgid "Save Changes"
@@ -280,9 +308,7 @@ msgstr "Ta opcja jest dostępna tylko w wersji Pro"
 msgid "Check URLs entered in these custom fields (one per line) :"
 msgstr "Sprawdź poniższe URLe (jedno słowo na linię):"
 
-#: core/core.php:1286
-#: core/core.php:1370
-#: core/core.php:1402
+#: core/core.php:1286 core/core.php:1370 core/core.php:1402
 #, php-format
 msgid "Database error : %s"
 msgstr "Błąd bazy danych: %s"
@@ -356,10 +382,18 @@ msgstr[1] "Nie udało się usunąć linków: %d"
 
 #: core/core.php:1732
 #, php-format
-msgid "%d item was skipped because it can't be moved to the Trash. You need to delete it manually."
-msgid_plural "%d items were skipped because they can't be moved to the Trash. You need to delete them manually."
-msgstr[0] "%d pozycja została pominięta, ponieważ nie może zostać przeniesiona do Kosza. Musisz ją usunąć ręcznie."
-msgstr[1] "%d pozycje zostały pominięte, ponieważ nie mogą zostać przeniesione do Kosza. Musisz je usunąć ręcznie."
+msgid ""
+"%d item was skipped because it can't be moved to the Trash. You need to "
+"delete it manually."
+msgid_plural ""
+"%d items were skipped because they can't be moved to the Trash. You need to "
+"delete them manually."
+msgstr[0] ""
+"%d pozycja została pominięta, ponieważ nie może zostać przeniesiona do "
+"Kosza. Musisz ją usunąć ręcznie."
+msgstr[1] ""
+"%d pozycje zostały pominięte, ponieważ nie mogą zostać przeniesione do "
+"Kosza. Musisz je usunąć ręcznie."
 
 #: core/core.php:1753
 msgid "Didn't find anything to delete!"
@@ -372,8 +406,7 @@ msgid_plural "%d links scheduled for rechecking"
 msgstr[0] "%d link ustawiony do ponownego sprawdzenia"
 msgstr[1] "Linków ustawionych do ponownego sprawdzenia: %d"
 
-#: core/core.php:1826
-#: core/core.php:2431
+#: core/core.php:1826 core/core.php:2431
 msgid "This link was manually marked as working by the user."
 msgstr "Ten link został przez użytkownika oznaczony jako działający."
 
@@ -401,8 +434,7 @@ msgstr "Pokaż na ekranie"
 msgid "links"
 msgstr "linki"
 
-#: core/core.php:1911
-#: includes/admin/table-printer.php:136
+#: core/core.php:1911 includes/admin/table-printer.php:136
 msgid "Apply"
 msgstr "Zastosuj"
 
@@ -419,10 +451,7 @@ msgstr "Zaznacz linki niedziałające linki przez co najmniej %s dni"
 msgid "Color-code status codes"
 msgstr "Kolorowe kody statusów"
 
-#: core/core.php:1956
-#: core/core.php:2416
-#: core/core.php:2452
-#: core/core.php:2515
+#: core/core.php:1956 core/core.php:2416 core/core.php:2452 core/core.php:2515
 msgid "You're not allowed to do that!"
 msgstr "Nie wolno Ci tego zrobić!"
 
@@ -483,9 +512,7 @@ msgctxt "current load"
 msgid "Unknown"
 msgstr "Nieznany"
 
-#: core/core.php:2424
-#: core/core.php:2462
-#: core/core.php:2525
+#: core/core.php:2424 core/core.php:2462 core/core.php:2525
 #, php-format
 msgid "Oops, I can't find the link %d"
 msgstr "Ojj, nie mogę znaleść linkac %d"
@@ -494,8 +521,7 @@ msgstr "Ojj, nie mogę znaleść linkac %d"
 msgid "Oops, couldn't modify the link!"
 msgstr "Ojj, nie mogę zmodyfikować linka!"
 
-#: core/core.php:2440
-#: core/core.php:2551
+#: core/core.php:2440 core/core.php:2551
 msgid "Error : link_id not specified"
 msgstr "Błąd: nie ustalono link_id"
 
@@ -503,8 +529,7 @@ msgstr "Błąd: nie ustalono link_id"
 msgid "Oops, the new URL is invalid!"
 msgstr "Ojj, nowy URL nie niepoprawny!"
 
-#: core/core.php:2483
-#: core/core.php:2534
+#: core/core.php:2483 core/core.php:2534
 msgid "An unexpected error occured!"
 msgstr "Wystąpił nieoczekiwany błąd!"
 
@@ -533,21 +558,43 @@ msgstr "Broken Link Checker"
 
 #: core/core.php:2730
 #, php-format
-msgid "The current temporary directory is not accessible; please <a href=\"%s\">set a different one</a>."
-msgstr "Bieżący tymczasowy katalog nie jest dostępny; proszę go <a href=\"%s\">zmienić</a>."
+msgid ""
+"The current temporary directory is not accessible; please <a href=\"%s\">set "
+"a different one</a>."
+msgstr ""
+"Bieżący tymczasowy katalog nie jest dostępny; proszę go <a href=\"%s"
+"\">zmienić</a>."
 
 #: core/core.php:2735
 #, php-format
-msgid "Please make the directory <code>%1$s</code> writable by plugins or <a href=\"%2$s\">set a custom temporary directory</a>."
-msgstr "Proszę ustawić uprawnienie do zapisu dla katalogu <code>%1$s</code> bądź <a href=\"%2$s\">ustawić własny katalog tymczasowy</a>."
+msgid ""
+"Please make the directory <code>%1$s</code> writable by plugins or <a href="
+"\"%2$s\">set a custom temporary directory</a>."
+msgstr ""
+"Proszę ustawić uprawnienie do zapisu dla katalogu <code>%1$s</code> bądź <a "
+"href=\"%2$s\">ustawić własny katalog tymczasowy</a>."
 
 #: core/core.php:2742
 msgid "Broken Link Checker can't create a lockfile."
 msgstr "Broken Link Checker nie może stworzyć pliku zapisu"
 
 #: core/core.php:2747
-msgid "The plugin uses a file-based locking mechanism to ensure that only one instance of the resource-heavy link checking algorithm is running at any given time. Unfortunately, BLC can't find a writable directory where it could store the lockfile - it failed to detect the location of your server's temporary directory, and the plugin's own directory isn't writable by PHP. To fix this problem, please make the plugin's directory writable or enter a specify a custom temporary directory in the plugin's settings."
-msgstr "Ten plugin używa opartego o pliki mechanizmu zabezpieczeń przed jednoczesnym uruchomieniem w tym samym momencie kilku wysoce obciążających instancji algorytmu sprawdzania linków. Niestety BLC nie znalazł katalogu, do którego mógłby zapisywać plik tzw. \"lockfile\" - nie znalazł katalogu tymczasowe na Twoim serwerze, a katalog pluginu nie ma uprawnień do zapisu dla PHP. Aby naprawić ten problem, nadaj uprawnienia zapisu katalogowi pluginu bądź ustaw inny katalog tymczasowy w ustawieniach pluginu."
+msgid ""
+"The plugin uses a file-based locking mechanism to ensure that only one "
+"instance of the resource-heavy link checking algorithm is running at any "
+"given time. Unfortunately, BLC can't find a writable directory where it "
+"could store the lockfile - it failed to detect the location of your server's "
+"temporary directory, and the plugin's own directory isn't writable by PHP. "
+"To fix this problem, please make the plugin's directory writable or enter a "
+"specify a custom temporary directory in the plugin's settings."
+msgstr ""
+"Ten plugin używa opartego o pliki mechanizmu zabezpieczeń przed jednoczesnym "
+"uruchomieniem w tym samym momencie kilku wysoce obciążających instancji "
+"algorytmu sprawdzania linków. Niestety BLC nie znalazł katalogu, do którego "
+"mógłby zapisywać plik tzw. \"lockfile\" - nie znalazł katalogu tymczasowe na "
+"Twoim serwerze, a katalog pluginu nie ma uprawnień do zapisu dla PHP. Aby "
+"naprawić ten problem, nadaj uprawnienia zapisu katalogowi pluginu bądź ustaw "
+"inny katalog tymczasowy w ustawieniach pluginu."
 
 #: core/core.php:2766
 msgid "PHP version"
@@ -558,12 +605,13 @@ msgid "MySQL version"
 msgstr "Wersja MySQL"
 
 #: core/core.php:2785
-msgid "You have an old version of CURL. Redirect detection may not work properly."
-msgstr "Posiadasz starą wersję biblioteki cURL. Wykrywanie przekierowań może nie działać prawidłowo."
+msgid ""
+"You have an old version of CURL. Redirect detection may not work properly."
+msgstr ""
+"Posiadasz starą wersję biblioteki cURL. Wykrywanie przekierowań może nie "
+"działać prawidłowo."
 
-#: core/core.php:2797
-#: core/core.php:2813
-#: core/core.php:2818
+#: core/core.php:2797 core/core.php:2813 core/core.php:2818
 msgid "Not installed"
 msgstr "Nie zinstalowane"
 
@@ -585,10 +633,10 @@ msgstr "Włączony"
 
 #: core/core.php:2831
 msgid "Redirects may be detected as broken links when safe_mode is on."
-msgstr "Przekierowania mogą nie zostać wykryte, ponieważ włączony jest safe_mode."
+msgstr ""
+"Przekierowania mogą nie zostać wykryte, ponieważ włączony jest safe_mode."
 
-#: core/core.php:2836
-#: core/core.php:2850
+#: core/core.php:2836 core/core.php:2850
 msgid "Off"
 msgstr "Wyłączony"
 
@@ -599,15 +647,21 @@ msgstr "Włączony ( %s )"
 
 #: core/core.php:2845
 msgid "Redirects may be detected as broken links when open_basedir is on."
-msgstr "Przekierowania mogą nie zostać wykryte, ponieważ włączony jest open_basedir."
+msgstr ""
+"Przekierowania mogą nie zostać wykryte, ponieważ włączony jest open_basedir."
 
 #: core/core.php:2864
 msgid "Can't create a lockfile. Please specify a custom temporary directory."
-msgstr "Nie można utworzyć pliku \"lockfile\". Ustaw własny katalog tymczasowy."
+msgstr ""
+"Nie można utworzyć pliku \"lockfile\". Ustaw własny katalog tymczasowy."
 
 #: core/core.php:2888
-msgid "If this value is zero even after several page reloads you have probably encountered a bug."
-msgstr "Jeśli ta wartość wynosi zero nawet po kilku odświeżeniach strony, prawdopodobnie mamy do czynienia z błędem."
+msgid ""
+"If this value is zero even after several page reloads you have probably "
+"encountered a bug."
+msgstr ""
+"Jeśli ta wartość wynosi zero nawet po kilku odświeżeniach strony, "
+"prawdopodobnie mamy do czynienia z błędem."
 
 #: core/core.php:2959
 #, php-format
@@ -617,9 +671,12 @@ msgstr "[%s] Wykryto niedziałające linki"
 #: core/core.php:2965
 #, php-format
 msgid "Broken Link Checker has detected %d new broken link on your site."
-msgid_plural "Broken Link Checker has detected %d new broken links on your site."
-msgstr[0] "Broken Link Checker wykrył %d nowy niedziałający link na Twojej stronie."
-msgstr[1] "Broken Link Checker wykrył nowe niedziałające linki na Twojej stronie: %d"
+msgid_plural ""
+"Broken Link Checker has detected %d new broken links on your site."
+msgstr[0] ""
+"Broken Link Checker wykrył %d nowy niedziałający link na Twojej stronie."
+msgstr[1] ""
+"Broken Link Checker wykrył nowe niedziałające linki na Twojej stronie: %d"
 
 #: core/core.php:2980
 #, php-format
@@ -668,13 +725,11 @@ msgstr "Instalacja Broken Link Checkera nie powiodła się"
 msgid "Failed to delete old DB tables. Database error : %s"
 msgstr "Nie udało się usunąć starych tabel bazy danych. Błąd: %s"
 
-#: includes/admin/links-page-js.php:58
-#: includes/admin/links-page-js.php:301
+#: includes/admin/links-page-js.php:58 includes/admin/links-page-js.php:301
 msgid "Wait..."
 msgstr "Czekaj..."
 
-#: includes/admin/links-page-js.php:99
-#: includes/admin/table-printer.php:592
+#: includes/admin/links-page-js.php:99 includes/admin/table-printer.php:592
 msgid "Not broken"
 msgstr "Działający"
 
@@ -685,15 +740,17 @@ msgstr "%d wystąpień linka zosta pomyślnie zmodyfikowanych"
 
 #: includes/admin/links-page-js.php:219
 #, php-format
-msgid "However, %d instances couldn't be edited and still point to the old URL."
-msgstr "Jednakże, %d wystąpień nie mogło został edytowanych i nadal prowadzą do starego URLa."
+msgid ""
+"However, %d instances couldn't be edited and still point to the old URL."
+msgstr ""
+"Jednakże, %d wystąpień nie mogło został edytowanych i nadal prowadzą do "
+"starego URLa."
 
 #: includes/admin/links-page-js.php:225
 msgid "The link could not be modified."
 msgstr "Link nie mógł zostać zmodyfikowany."
 
-#: includes/admin/links-page-js.php:228
-#: includes/admin/links-page-js.php:353
+#: includes/admin/links-page-js.php:228 includes/admin/links-page-js.php:353
 msgid "The following error(s) occured :"
 msgstr "Wystąpiły następujące błedy:"
 
@@ -711,8 +768,7 @@ msgstr "Jednakże, %d wystąpień nie można było usunąć"
 msgid "The plugin failed to remove the link."
 msgstr "Nie udało się usunąć linku"
 
-#: includes/admin/links-page-js.php:361
-#: includes/admin/table-printer.php:237
+#: includes/admin/links-page-js.php:361 includes/admin/table-printer.php:237
 #: includes/admin/table-printer.php:586
 msgid "Unlink"
 msgstr "Odlinkuj"
@@ -731,15 +787,18 @@ msgstr ""
 
 #: includes/admin/links-page-js.php:439
 msgid ""
-"Are you sure you want to delete all posts, bookmarks or other items that contain any of the selected links? This action can't be undone.\n"
+"Are you sure you want to delete all posts, bookmarks or other items that "
+"contain any of the selected links? This action can't be undone.\n"
 "'Cancel' to stop, 'OK' to delete"
 msgstr ""
-"Czy na pewno usunąć wszystkie wpisy, zakładki i inne rzeczy, zawierające wybrane linki? Nie da się ich później przywrócić.\n"
+"Czy na pewno usunąć wszystkie wpisy, zakładki i inne rzeczy, zawierające "
+"wybrane linki? Nie da się ich później przywrócić.\n"
 "'Anuluj' aby przerwać, 'OK' aby usunąć"
 
 #: includes/admin/links-page-js.php:449
 msgid ""
-"Are you sure you want to remove the selected links? This action can't be undone.\n"
+"Are you sure you want to remove the selected links? This action can't be "
+"undone.\n"
 "'Cancel' to stop, 'OK' to remove"
 msgstr ""
 "Czy na pewno usunąć zaznaczone linki? Nie da się je później przywrócić.\n"
@@ -765,8 +824,7 @@ msgstr "Zapisz to wyszukania jako Filtr"
 msgid "Delete This Filter"
 msgstr "Usuń ten filtr"
 
-#: includes/admin/search-form.php:32
-#: includes/link-query.php:53
+#: includes/admin/search-form.php:32 includes/link-query.php:53
 msgid "Search"
 msgstr "Szukaj"
 
@@ -774,13 +832,11 @@ msgstr "Szukaj"
 msgid "Link text"
 msgstr "Tekst linku"
 
-#: includes/admin/search-form.php:45
-#: includes/admin/table-printer.php:173
+#: includes/admin/search-form.php:45 includes/admin/table-printer.php:173
 msgid "URL"
 msgstr "URL"
 
-#: includes/admin/search-form.php:48
-#: includes/admin/table-printer.php:460
+#: includes/admin/search-form.php:48 includes/admin/table-printer.php:460
 msgid "HTTP code"
 msgstr "Kod HTTP"
 
@@ -788,8 +844,7 @@ msgstr "Kod HTTP"
 msgid "Link status"
 msgstr "Status linku"
 
-#: includes/admin/search-form.php:68
-#: includes/admin/search-form.php:85
+#: includes/admin/search-form.php:68 includes/admin/search-form.php:85
 msgid "Link type"
 msgstr "Typ linku"
 
@@ -805,10 +860,8 @@ msgstr "Linki użyte w"
 msgid "Search Links"
 msgstr "Przeszukaj linki"
 
-#: includes/admin/search-form.php:113
-#: includes/admin/table-printer.php:318
-#: includes/admin/table-printer.php:600
-#: includes/admin/table-printer.php:606
+#: includes/admin/search-form.php:113 includes/admin/table-printer.php:318
+#: includes/admin/table-printer.php:600 includes/admin/table-printer.php:606
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -832,8 +885,7 @@ msgstr "Tekst linka"
 msgid "Bulk Actions"
 msgstr "Masowe działania"
 
-#: includes/admin/table-printer.php:233
-#: includes/admin/table-printer.php:583
+#: includes/admin/table-printer.php:233 includes/admin/table-printer.php:583
 msgid "Edit URL"
 msgstr "Edytuj URL"
 
@@ -868,7 +920,8 @@ msgstr "&raquo;"
 #: includes/admin/table-printer.php:271
 #, php-format
 msgid "Displaying %s&#8211;%s of <span class=\"current-link-count\">%s</span>"
-msgstr "Wyświetlanie %s&#8211;%s z <span class=\"current-link-count\">%s</span>"
+msgstr ""
+"Wyświetlanie %s&#8211;%s z <span class=\"current-link-count\">%s</span>"
 
 #: includes/admin/table-printer.php:294
 msgid "Bulk Edit URLs"
@@ -980,30 +1033,24 @@ msgstr "Zaktualizuj URL"
 msgid "[An orphaned link! This is a bug.]"
 msgstr "[Porzucony link! To jest bug.]"
 
-#: includes/any-post.php:398
-#: modules/containers/blogroll.php:46
-#: modules/containers/comment.php:153
-#: modules/containers/custom_field.php:197
+#: includes/any-post.php:398 modules/containers/blogroll.php:46
+#: modules/containers/comment.php:153 modules/containers/custom_field.php:197
 msgid "Edit"
 msgstr "Edytuj"
 
-#: includes/any-post.php:406
-#: modules/containers/custom_field.php:203
+#: includes/any-post.php:406 modules/containers/custom_field.php:203
 msgid "Move this item to the Trash"
 msgstr "Przenieś to do Kosza"
 
-#: includes/any-post.php:408
-#: modules/containers/custom_field.php:205
+#: includes/any-post.php:408 modules/containers/custom_field.php:205
 msgid "Trash"
 msgstr "Kosz"
 
-#: includes/any-post.php:413
-#: modules/containers/custom_field.php:210
+#: includes/any-post.php:413 modules/containers/custom_field.php:210
 msgid "Delete this item permanently"
 msgstr "Usuń to nieodwracalnie"
 
-#: includes/any-post.php:415
-#: modules/containers/blogroll.php:47
+#: includes/any-post.php:415 modules/containers/blogroll.php:47
 #: modules/containers/custom_field.php:212
 msgid "Delete"
 msgstr "Usuń"
@@ -1022,19 +1069,16 @@ msgstr "Podgląd"
 msgid "View &#8220;%s&#8221;"
 msgstr "Pokaż &#8220;%s&#8221;"
 
-#: includes/any-post.php:437
-#: modules/containers/comment.php:166
+#: includes/any-post.php:437 modules/containers/comment.php:166
 #: modules/containers/custom_field.php:217
 msgid "View"
 msgstr "Pokaż"
 
-#: includes/any-post.php:456
-#: modules/containers/custom_field.php:197
+#: includes/any-post.php:456 modules/containers/custom_field.php:197
 msgid "Edit this item"
 msgstr "Edytuj to"
 
-#: includes/any-post.php:520
-#: modules/containers/blogroll.php:83
+#: includes/any-post.php:520 modules/containers/blogroll.php:83
 #: modules/containers/comment.php:43
 msgid "Nothing to update"
 msgstr "Brak rzeczy do aktualizacji"
@@ -1044,20 +1088,21 @@ msgstr "Brak rzeczy do aktualizacji"
 msgid "Updating post %d failed"
 msgstr "Nie udało się zaktualizować wpisu %d"
 
-#: includes/any-post.php:565
-#: modules/containers/custom_field.php:284
+#: includes/any-post.php:565 modules/containers/custom_field.php:284
 #, php-format
 msgid "Failed to delete post \"%s\" (%d)"
 msgstr "Nie udało się usunąć wpisu \"%s\" (%d)"
 
-#: includes/any-post.php:584
-#: modules/containers/custom_field.php:303
+#: includes/any-post.php:584 modules/containers/custom_field.php:303
 #, php-format
-msgid "Can't move post \"%s\" (%d) to the trash because the trash feature is disabled"
-msgstr "Nie udało się przenieść wpisu \"%s\" (%d) do Kosza, ponieważ ta funkcja została wyłączona"
+msgid ""
+"Can't move post \"%s\" (%d) to the trash because the trash feature is "
+"disabled"
+msgstr ""
+"Nie udało się przenieść wpisu \"%s\" (%d) do Kosza, ponieważ ta funkcja "
+"została wyłączona"
 
-#: includes/any-post.php:604
-#: modules/containers/custom_field.php:322
+#: includes/any-post.php:604 modules/containers/custom_field.php:322
 #, php-format
 msgid "Failed to move post \"%s\" (%d) to the trash"
 msgstr "Nie udało się przenieść wpisu \"%s\" (%d) do Kosza"
@@ -1111,8 +1156,7 @@ msgid_plural "%d '%s' have been deleted"
 msgstr[0] "%d '%s' został usunięty"
 msgstr[1] "Usuniętych: %d '%s'"
 
-#: includes/containers.php:882
-#: includes/containers.php:900
+#: includes/containers.php:882 includes/containers.php:900
 #, php-format
 msgid "Container type '%s' not recognized"
 msgstr "Nie rozpoznano typu kontenera '%s'"
@@ -1197,14 +1241,12 @@ msgctxt "module name"
 msgid "Pages"
 msgstr "Strony"
 
-#: includes/instances.php:102
-#: includes/instances.php:158
+#: includes/instances.php:102 includes/instances.php:158
 #, php-format
 msgid "Container %s[%d] not found"
 msgstr "Nie znaleziono kontenera %s[%d]"
 
-#: includes/instances.php:111
-#: includes/instances.php:167
+#: includes/instances.php:111 includes/instances.php:167
 #, php-format
 msgid "Parser '%s' not found."
 msgstr "Nie znaleziono parsera '%s'"
@@ -1245,8 +1287,7 @@ msgstr "Nie znaleziono linków (na razie)"
 msgid "Search Results"
 msgstr "Wyniki wyszykiwania"
 
-#: includes/link-query.php:55
-#: includes/link-query.php:106
+#: includes/link-query.php:55 includes/link-query.php:106
 msgid "No links found for your query"
 msgstr "Nie znaleziono linków dla tego zapytania"
 
@@ -1266,15 +1307,15 @@ msgstr "Link jest poprawny"
 msgid "Link is broken."
 msgstr "Link niedziałający."
 
-#: includes/links.php:564
-#: includes/links.php:666
-#: includes/links.php:693
+#: includes/links.php:564 includes/links.php:666 includes/links.php:693
 msgid "Link is not valid"
 msgstr "Link nie jest poprawny"
 
 #: includes/links.php:581
-msgid "This link can not be edited because it is not used anywhere on this site."
-msgstr "Ten link nie może być edytowany, ponieważ nie jest użyty nigdzie na stronie."
+msgid ""
+"This link can not be edited because it is not used anywhere on this site."
+msgstr ""
+"Ten link nie może być edytowany, ponieważ nie jest użyty nigdzie na stronie."
 
 #: includes/links.php:607
 msgid "Failed to create a DB entry for the new URL."
@@ -1284,8 +1325,7 @@ msgstr "Nie udało się utworzyć wpisu w bazie danych dla nowego URLa."
 msgid "This link is not a redirect"
 msgstr "Ten link nie jest przekierowaniem"
 
-#: includes/links.php:720
-#: includes/links.php:757
+#: includes/links.php:720 includes/links.php:757
 msgid "Couldn't delete the link's database record"
 msgstr "Nie udało się usunąć linka z bazy danych"
 
@@ -1294,8 +1334,7 @@ msgctxt "link status"
 msgid "Unknown"
 msgstr "Nieznany"
 
-#: includes/links.php:845
-#: modules/checkers/http.php:263
+#: includes/links.php:845 modules/checkers/http.php:263
 msgid "Unknown Error"
 msgstr "Nieznany błąd"
 
@@ -1312,8 +1351,7 @@ msgctxt "link status"
 msgid "OK"
 msgstr "OK"
 
-#: includes/module-manager.php:122
-#: includes/module-manager.php:139
+#: includes/module-manager.php:122 includes/module-manager.php:139
 msgctxt "module name"
 msgid "Name"
 msgstr "Nazwa"
@@ -1406,14 +1444,12 @@ msgstr "Nie znaleziono serwera"
 msgid "Connection Failed"
 msgstr "Błąd połączenia"
 
-#: modules/checkers/http.php:292
-#: modules/checkers/http.php:362
+#: modules/checkers/http.php:292 modules/checkers/http.php:362
 #, php-format
 msgid "HTTP code : %d"
 msgstr "Kod HTTP: %d"
 
-#: modules/checkers/http.php:294
-#: modules/checkers/http.php:364
+#: modules/checkers/http.php:294 modules/checkers/http.php:364
 msgid "(No response)"
 msgstr "(Brak odpowiedzi)"
 
@@ -1433,8 +1469,7 @@ msgstr "Używam Snoopy"
 msgid "Bookmark"
 msgstr "Zakładka"
 
-#: modules/containers/blogroll.php:27
-#: modules/containers/blogroll.php:46
+#: modules/containers/blogroll.php:27 modules/containers/blogroll.php:46
 msgid "Edit this bookmark"
 msgstr "Edytuj zakładkę"
 
@@ -1479,8 +1514,7 @@ msgstr "Nie udało się usunąć komentarza %d"
 msgid "Can't move comment %d to the trash"
 msgstr "Nie udało się przenieść komentarza %d do Kosza"
 
-#: modules/containers/comment.php:153
-#: modules/containers/comment.php:195
+#: modules/containers/comment.php:153 modules/containers/comment.php:195
 msgid "Edit comment"
 msgstr "Edytuj komentarz"
 
@@ -1538,8 +1572,7 @@ msgstr "Edytuj wpis"
 msgid "View \"%s\""
 msgstr "Pokaż \"%s\""
 
-#: modules/containers/dummy.php:34
-#: modules/containers/dummy.php:45
+#: modules/containers/dummy.php:34 modules/containers/dummy.php:45
 #, php-format
 msgid "I don't know how to edit a '%s' [%d]."
 msgstr "Nie wiem jak edytować '%s' [%d]."
@@ -1557,8 +1590,12 @@ msgid "http://w-shadow.com/blog/2007/08/05/broken-link-checker-for-wordpress/"
 msgstr "http://w-shadow.com/blog/2007/08/05/broken-link-checker-for-wordpress/"
 
 #. Description of the plugin/theme
-msgid "Checks your blog for broken links and missing images and notifies you on the dashboard if any are found."
-msgstr "Sprawdza Twój blog pod kątem niedziałających linków, brakujących obrazków i informuje o tym na Kokpicie."
+msgid ""
+"Checks your blog for broken links and missing images and notifies you on the "
+"dashboard if any are found."
+msgstr ""
+"Sprawdza Twój blog pod kątem niedziałających linków, brakujących obrazków i "
+"informuje o tym na Kokpicie."
 
 #. Author of the plugin/theme
 msgid "Janis Elsts"
@@ -1567,4 +1604,3 @@ msgstr "Janis Elsts"
 #. Author URI of the plugin/theme
 msgid "http://w-shadow.com/blog/"
 msgstr "http://w-shadow.com/blog/"
-

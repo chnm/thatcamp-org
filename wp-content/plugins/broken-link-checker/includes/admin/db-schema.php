@@ -48,7 +48,7 @@ function blc_get_db_schema(){
 	
 	CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}blc_links` (
 		`link_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
-		`url` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+		`url` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
 		`first_failure` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
 		`last_check` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
 		`last_success` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',

@@ -3,8 +3,8 @@ Contributors: whiteshadow
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6P9S6CE3SRSW
 Tags: links, broken, maintenance, blogroll, custom fields, admin, comments, posts
 Requires at least: 3.2
-Tested up to: 3.8
-Stable tag: 1.9.2
+Tested up to: 3.9-beta2
+Stable tag: 1.9.3
 
 This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found. 
 
@@ -70,6 +70,7 @@ You can also click on the contents of the "Status" or "Link Text" columns to get
 * Spanish - [Neoshinji](http://blog.tuayudainformatica.com/traducciones-de-plugins-wordpress/)
 * Turkish - [Murat Durgun](http://www.lanwifi.net/)
 * Ukrainian - [Stas Mykhajlyuk](http://www.kosivart.com/)
+* Vietnamese - [Biz.O](http://bizover.net/)
 
 *Note: Some translations are not entirely up to date with the latest release, so parts of the interface may appear untranslated.*
 
@@ -95,6 +96,18 @@ To upgrade your installation
 1. Reactivate the plugin. Your settings will be retained from the previous version.
 
 == Changelog ==
+
+= 1.9.3 =
+* Tested on WP 3.8.1 and WP 3.9-beta2.
+* Added an option to sort links by link text. May produce unexpected results for links that have multiple copies with different anchor text.
+* Added a Vietnamese translation.
+* Added file-based logging for debugging purposes. Logging can be enabled in the "Advanced" section of the plugin settings page.
+* Added a "Auto-Submitted: auto-generated" header to notification emails sent by the plugin. This should prevent "out-of-office" auto-responders and similar software from responding to these emails.
+* Added domain-based rate limiting to the HTTP checker module.
+* Throttled background parsing by about 40% to reduce overall resource usage.
+* Fixed (probably) a long-standing bug related to encoding international characters in link URLs.
+* Fixed a typo in the Polish translation.
+* Made the error message that's displayed when trying to network-activate the plugin more useful.
 
 = 1.9.2 =
 * Fixed several UI/layout issues related to the new WP 3.8 admin style.

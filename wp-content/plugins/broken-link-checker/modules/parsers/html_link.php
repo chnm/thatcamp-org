@@ -56,33 +56,39 @@ class blcHTMLLink extends blcParser {
    * @return blcLinkInstance|null
    */
 	function parser_callback($link, $params){
+		global $blclog;
 		$base_url = $params['base_url'];
 		
 		$url = $raw_url = $link['href'];
 		$url = trim($url);
 		//FB::log($url, "Found link");
+		$blclog->info(__CLASS__ .':' . __FUNCTION__ . ' Found a link, raw URL = "' . $raw_url . '"');
 		
 		//Sometimes links may contain shortcodes. Execute them.
 		$url = do_shortcode($url);
 		
 		//Skip empty URLs
 		if ( empty($url) ){
+			$blclog->warn(__CLASS__ .':' . __FUNCTION__ . ' Skipping the link (empty URL)');
 			return null;
 		};
 		
 		//Attempt to parse the URL
 		$parts = @parse_url($url);
 	    if(!$parts) {
+			$blclog->warn(__CLASS__ .':' . __FUNCTION__ . ' Skipping the link (parse_url failed)');
 			return null; //Skip invalid URLs
 		};
 		
 		if ( !isset($parts['scheme']) ){
 			//No scheme - likely a relative URL. Turn it into an absolute one.
 			$url = $this->relative2absolute($url, $base_url); //$base_url comes from $params
+			$blclog->info(__CLASS__ .':' . __FUNCTION__ . ' Convert relative URL to absolute. Absolute URL = "' . $url . '"');
 		}
 		
 		//Skip invalid links (again)
 		if ( !$url || (strlen($url)<6) ) {
+			$blclog->info(__CLASS__ .':' . __FUNCTION__ . ' Skipping the link (invalid/short URL)');
 			return null;
 		}
 		

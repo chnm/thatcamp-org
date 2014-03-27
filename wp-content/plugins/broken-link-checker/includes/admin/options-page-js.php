@@ -117,6 +117,16 @@ jQuery(function($){
 		$('#recheck').val('1'); //populate the hidden field
 		$('#link_checker_options input[name="submit"]').click(); //.submit() didn't work for some reason	
 	});
+
+	//Enable/disable log-related options depending on whether "Enable logging" is on.
+	function blcToggleLogOptions() {
+		$('#blc-logging-options')
+			.find('input')
+			.prop('disabled', ! $('#logging_enabled').is(':checked'));
+	}
+
+	blcToggleLogOptions();
+	$('#logging_enabled').change(blcToggleLogOptions);
 });
 
 </script>

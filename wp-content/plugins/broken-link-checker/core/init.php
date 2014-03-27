@@ -46,7 +46,7 @@ define('BLC_FOR_EDITING', 'edit');
 define('BLC_FOR_PARSING', 'parse');
 define('BLC_FOR_DISPLAY', 'display');
 
-define('BLC_DATABASE_VERSION', 6);
+define('BLC_DATABASE_VERSION', 7);
 
 /***********************************************
 				Configuration
@@ -61,7 +61,7 @@ $blc_config_manager = new blcConfigurationManager(
 	'wsblc_options', 
 	//Initialize default settings
 	array(
-        'max_execution_time' => 5*60, 	//(in seconds) How long the worker instance may run, at most. 
+        'max_execution_time' => 7*60, 	//(in seconds) How long the worker instance may run, at most.
         'check_threshold' => 72, 		//(in hours) Check each link every 72 hours.
         
         'recheck_count' => 3, 			//How many times a broken link should be re-checked. 
@@ -112,7 +112,10 @@ $blc_config_manager = new blcConfigurationManager(
 		'highlight_permanent_failures' => false,//Highlight links that have appear to be permanently broken (in Tools -> Broken Links).
 		'failure_duration_threshold' => 3, 		//(days) Assume a link is permanently broken if it still hasn't 
 												//recovered after this many days.
-												
+		'logging_enabled' => false,
+		'log_file' => '',
+		'custom_log_file_enabled' => false,
+
 		'installation_complete' => false,
 		'installation_flag_cleared_on' => 0,
 		'installation_flag_set_on'   => 0,
@@ -129,7 +132,11 @@ $blc_config_manager = new blcConfigurationManager(
 include BLC_DIRECTORY . '/includes/logger.php';
 
 global $blclog;
-$blclog = new blcDummyLogger;
+if ($blc_config_manager->get('logging_enabled', false) && is_writable($blc_config_manager->get('log_file'))) {
+	$blclog = new blcFileLogger($blc_config_manager->get('log_file'));
+} else {
+	$blclog = new blcDummyLogger;
+}
 
 /*
 if ( defined('BLC_DEBUG') && constant('BLC_DEBUG') ){
@@ -285,7 +292,7 @@ if ( $blc_config_manager->options['installation_complete'] ){
 		require_once BLC_DIRECTORY . '/includes/link-query.php';
 		require_once BLC_DIRECTORY . '/includes/instances.php';
 		require_once BLC_DIRECTORY . '/includes/utility-class.php';
-		
+
 		//Load the module subsystem
 		require_once BLC_DIRECTORY . '/includes/modules.php';
 		
@@ -323,6 +330,11 @@ if ( $blc_config_manager->options['installation_complete'] ){
 		$messages = array(
 			'<strong>' . __('Broken Link Checker installation failed. Try deactivating and then reactivating the plugin.', 'broken-link-checker') . '</strong>',
 		);
+
+		if ( is_multisite() && is_plugin_active_for_network(plugin_basename(BLC_PLUGIN_FILE)) ) {
+			$messages[] = __('Please activate the plugin separately on each site. Network activation is not supported.', 'broken-link-checker');
+			$messages[] = '';
+		}
 
 		if ( ! $blc_config_manager->db_option_loaded ) {
 			$messages[] = sprintf(
