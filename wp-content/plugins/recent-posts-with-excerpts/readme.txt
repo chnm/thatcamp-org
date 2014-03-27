@@ -6,7 +6,7 @@ Text Domain: recent_posts_with_excerpts
 Domain Path: /languages
 Requires at least: 2.8
 Tested up to: 3.8.1
-Stable tag: 2.5.2
+Stable tag: 2.5.4
 
 
 A widget that lists your most recent posts with optional excerpts.   
@@ -16,6 +16,13 @@ A widget that lists your most recent posts with optional excerpts.
 A widget that lists your most recent posts with excerpts, optionally limited to a category. The number of posts and excerpts is configurable; for example, you could show the titles of five posts but include the excerpt for only the two most recent. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">the_excerpt Reloaded</a> and <a href="http://sparepencil.com/code/advanced-excerpt/">Advanced Excerpt</a> for excerpts with HTML formatting.
 
 New! Supports displaying post thumbnails along with excerpts. Widget options let you place the thumbnails above the title, in between the title and the excerpt, or below the excerpt.
+
+= Translations =
+
+* Serbo-Croatian (sr-RS) by <a href="http://www.webhostinghub.com">Borisa Djuraskovic</a>
+
+If you would like to send me a translation, please write to me through <a href="http://stephanieleary.com/about/contact/">my contact page</a>. Let me know which plugin you've translated and how you would like to be credited. I will write you back so you can attach the files in your reply.
+
 
 == Installation ==
 
@@ -31,20 +38,19 @@ To style your excerpts, add a declaration for `.recent_with_excerpt li blockquot
 To add a link to the bottom of the widget's output, below the list, use the `recent_posts_with_excerpts_end` action. Example:
 
 `
-add_action( 'recent_posts_with_excerpts_end', 'tti_recent_posts_more' );
-function tti_recent_posts_more() {
+add_action( 'recent_posts_with_excerpts_end', 'my_recent_posts_more' );
+function my_recent_posts_more() {
 	echo '<a class="readmore" href="/news/archive">More</a>';
 }
 `
 
 To add something above the list, use the `recent_posts_with_excerpts_begin` action instead.
 
-== Translations ==
-
-If you would like to send me a translation, please write to me through <a href="http://sillybean.net/about/contact/">my contact page</a>. Let me know which plugin you've translated and how you would like to be credited. I will write you back so you can attach the files in your reply.
 
 == Changelog ==
 
+= 2.5.3 =
+* Added POT file.
 = 2.5.2 =
 * Added 'recent_posts_with_excerpts_query' filter to allow modifications to the widget's query.
 = 2.5.1 =

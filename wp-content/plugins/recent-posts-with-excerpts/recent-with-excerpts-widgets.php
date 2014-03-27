@@ -4,7 +4,7 @@ Plugin Name: Recent Posts with Excerpts
 Plugin URI: http://stephanieleary.com/code/wordpress/recent-posts-with-excerpts/
 Donate link: http://stephanieleary.com/code/wordpress/recent-posts-with-excerpts/
 Description: A widget that lists your most recent posts with excerpts. The number of posts and excerpts is configurable; for example, you could show five posts but include the excerpt for only the most recent. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a> and <a href="http://sparepencil.com/code/advanced-excerpt/">Advanced Excerpt</a>.
-Version: 2.5.2
+Version: 2.5.4
 Author: Stephanie Leary
 Author URI: http://stephanieleary.com
 
@@ -194,19 +194,19 @@ class RecentPostsWithExcerpts extends WP_Widget {
         </p>
         <?php
         if (function_exists('the_excerpt_reloaded')) { ?>
-        <p>
-        <label for="<?php echo $this->get_field_id('words'); ?>"><?php _e('Limit excerpt to how many words?', 'recent_posts_with_excerpts'); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id('words'); ?>" name="<?php echo $this->get_field_name('words'); ?>" type="text" value="<?php echo $instance['words']; ?>" />
-        </p>
-        <p>
-        <label for="<?php echo $this->get_field_id('tags'); ?>"><?php _e('Allowed HTML tags:', 'recent_posts_with_excerpts'); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id('tags'); ?>" name="<?php echo $this->get_field_name('tags'); ?>" type="text" value="<?php echo htmlspecialchars($instance['tags'], ENT_QUOTES); ?>" />
-        <br /><small><?php 
-		_e('E.g.:', 'recent_posts_with_excerpts');
-		echo '&lt;p&gt;&lt;div&gt;&lt;span&gt;&lt;br&gt;&lt;img&gt;&lt;a&gt;&lt;ul&gt;&lt;ol&gt;&lt;li&gt;&lt;blockquote&gt;&lt;cite&gt;&lt;em&gt;&lt;i&gt;&lt;strong&gt;&lt;b&gt;&lt;h2&gt;&lt;h3&gt;&lt;h4&gt;&lt;h5&gt;&lt;h6&gt;'; 
-		?>
-        </small></p>
-			<?php } ?>
+        	<p>
+	        <label for="<?php echo $this->get_field_id('words'); ?>"><?php _e('Limit excerpt to how many words?', 'recent_posts_with_excerpts'); ?></label>
+	        <input class="widefat" id="<?php echo $this->get_field_id('words'); ?>" name="<?php echo $this->get_field_name('words'); ?>" type="text" value="<?php echo $instance['words']; ?>" />
+	        </p>
+	        <p>
+	        <label for="<?php echo $this->get_field_id('tags'); ?>"><?php _e('Allowed HTML tags:', 'recent_posts_with_excerpts'); ?></label>
+	        <input class="widefat" id="<?php echo $this->get_field_id('tags'); ?>" name="<?php echo $this->get_field_name('tags'); ?>" type="text" value="<?php echo htmlspecialchars($instance['tags'], ENT_QUOTES); ?>" />
+	        <br /><small><?php 
+			printf( __('E.g.: %s', 'recent_posts_with_excerpts'), 
+			'&lt;p&gt;&lt;div&gt;&lt;span&gt;&lt;br&gt;&lt;img&gt;&lt;a&gt;&lt;ul&gt;&lt;ol&gt;&lt;li&gt;&lt;blockquote&gt;&lt;cite&gt;&lt;em&gt;&lt;i&gt;&lt;strong&gt;&lt;b&gt;&lt;h2&gt;&lt;h3&gt;&lt;h4&gt;&lt;h5&gt;&lt;h6&gt;');
+			?>
+	        </small></p>
+		<?php } ?>
 		<p>
         <label for="<?php echo $this->get_field_id('thumb'); ?>"><?php _e('Show featured images in excerpts?', 'recent_posts_with_excerpts'); ?></label>
         <input id="<?php echo $this->get_field_id('thumb'); ?>" name="<?php echo $this->get_field_name('thumb'); ?>" type="checkbox" value="1" <?php checked($instance['thumb'], '1'); ?> />
