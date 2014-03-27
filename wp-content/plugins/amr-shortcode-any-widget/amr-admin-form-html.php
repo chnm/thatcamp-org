@@ -57,6 +57,7 @@ if (!class_exists('amr_saw_plugin_admin')) {
 		}		
 		function config_page() {
 			$this->admin_heading($this->longname); 
+			echo '<h3><a href="http://wordpress.org/plugins/amr-shortcode-any-widget/">More detailed instructions at the wordpress plugin page.</a></h3>';
 			echo '<ul>';
 			echo '<li>';
 			_e('Drag the widgets you want to use to the shortcodes sidebar.');
@@ -85,8 +86,15 @@ if (!class_exists('amr_saw_plugin_admin')) {
 			echo '<a title="Create a page" href="'
 			.add_query_arg('content','[do_widget_area]', get_admin_url('','post-new.php?post_type=page'))
 			.'"> ';
+			_e('Create a page with do_widget_area shortcode without the widget_area class'); 
+			echo '</a> Hoping to avoid theme styling.';
+			echo '</li>';
+			echo '<li>';
+			echo '<a title="Create a page" href="'
+			.add_query_arg('content','[do_widget_area widget_area_class=none]', get_admin_url('','post-new.php?post_type=page'))
+			.'"> ';
 			_e('Create a page with do_widget_area shortcode'); 
-			echo '</a>';
+			echo '</a> Hoping to use theme styling.';
 			echo '</li>';
 			echo '<li>';
 			_e('Examples:');
@@ -95,14 +103,13 @@ if (!class_exists('amr_saw_plugin_admin')) {
 			_e('[do_widget_area] or [do_widget_area widget_area=sidebar-1]');
 			echo '</li>';
 			echo '<li>';
-			_e('NB: Using something like the twenty-fourteen theme? you might end up with white text on a white background.  Be prepared to adjust your css!');
+			_e('NB: Using something like the twenty-fourteen theme? you might end up with white text on a white background.  Tweak the widget classes or the html of the wrap or title. If that fails, adjust your css.');
 			echo '</li>';
 			echo '</ul>';
 			echo '<br />';
 
 			echo '<h2>';
 			_e('To add a single widget to a page');
-
 			echo '</h2>';
 			echo '<ul>';
 			echo '<li>';
@@ -111,6 +118,13 @@ if (!class_exists('amr_saw_plugin_admin')) {
 			echo '</li>';
 			echo '<li>';
 			_e('[do_widget "tag cloud"] or [do_widget id=widgetid]');
+			echo '</li>';
+			echo '<li>';
+			echo '<a title="Create a page" href="'
+			.add_query_arg('content','[do_widget Archives widget_classes=none]', get_admin_url('','post-new.php?post_type=page'))
+			.'"> ';
+			_e('Create a page with do_widget shortcode and remove widget_classes'); 
+			echo '</a>';
 			echo '</li>';
 			echo '<li>';
 			echo '<a title="Create a page" href="'

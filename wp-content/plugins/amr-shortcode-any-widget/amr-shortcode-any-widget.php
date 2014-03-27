@@ -4,24 +4,50 @@ Plugin Name: amr shortcode any widget
 Plugin URI: http://webdesign.anmari.com/shortcode-any-widget/
 Description: Include any widget in a page for any theme.  [do_widget widgetname ] or  [do_widget "widget name" ] or include a whole widget area [do_widget_area]. If upgrading see changelog.  Can be very powerful eg: with queryposts widget it can become a templater.
 Author: anmari
-Version: 2.1
+Version: 2.2
 Author URI: http://webdesign.anmari.com
 
 */
+function amr_remove_widget_class($params) {  // remove the widget classes
+	if (!empty($params[0]['before_widget'])) {
+		$params[0]['before_widget'] = 
+			str_replace ('"widget ','"',$params[0]['before_widget']);
+	}
+	
+	if (!empty($params[0]['before_title'])) {  
+
+		$params[0]['before_title'] = 
+			$params[0]['before_title'] = str_replace ('widget-title','',$params[0]['before_title']);
+			
+	}
+	
+	return ($params);
+}
 /*-----------------------------------*/
 function do_widget_area($atts) {
 
 global $wp_registered_widgets, $_wp_sidebars_widgets, $wp_registered_sidebars;
 
 	extract(shortcode_atts(array(
-		'widget_area' => 'widgets_for_shortcodes'
+		'widget_area' => 'widgets_for_shortcodes',
+		'class' => 'amr_widget_area', /* the widget class is picked up automatically.  If we want to add an additional class at the wrap level to try to match a theme, use this */
+		'widget_area_class' =>  '',  /* option to disassociate from themes widget styling use =none*/
+		'widget_classes' =>  ''  /* option to disassociate from themes widget styling */
+
 	), $atts));
 
-	$output = PHP_EOL.'<div id="'.$widget_area.'" class="amr-widget-area widget-area">';
+	$class = 'class="amr-widget-area ';
+	if (empty($widget_area_class) or !($widget_area_class=='none'))
+		$class .= ' widget-area"';
+	$output = PHP_EOL.'<div id="'.$widget_area.'" '.$class. '>';
+	
+	if (!empty($widget_classes) and ($widget_classes=='none'))
+		add_filter('dynamic_sidebar_params','amr_remove_widget_class');
 	
 	ob_start();  /* catch the echo output, so we can control where it appears in the text  */
 	dynamic_sidebar($widget_area);
 	$output .= ob_get_clean();
+	remove_filter('dynamic_sidebar_params','amr_remove_widget_class');
 			
 	$output .= '</div>'.PHP_EOL;
 			
@@ -49,7 +75,8 @@ if it is in, then get the instance  data and use that */
 		'name' => '', /* MKM added explicit 'name' attribute.  For existing users we still need to allow prev method, else too many support queries will happen */
 		'title' => '',   /* do the default title unless they ask us not to - use string here not boolean */
 		'class' => 'amr_widget', /* the widget class is picked up automatically.  If we want to add an additional class at the wrap level to try to match a theme, use this */
-		'wrap' => '' /* wrap the whole thing - title plus widget in a div - maybe the themes use a div, maybe not, maybe we want that styling, maybe not */
+		'wrap' => '', /* wrap the whole thing - title plus widget in a div - maybe the themes use a div, maybe not, maybe we want that styling, maybe not */
+		'widget_classes' =>  ''  /* option to disassociate from themes widget styling */
 	), $atts));
 	
 
@@ -140,7 +167,7 @@ if it is in, then get the instance  data and use that */
 		$output = '';
 		foreach ($wid as $i=>$widget_instance) {
 			ob_start();  /* catch the echo output, so we can control where it appears in the text  */
-			shortcode_sidebar($widget_instance, $sidebar, $title, $class, $wrap);
+			shortcode_sidebar($widget_instance, $sidebar, $title, $class, $wrap, $widget_classes);
 			$output .= ob_get_clean();
 			}
 	}
@@ -148,7 +175,7 @@ if it is in, then get the instance  data and use that */
 	return ($output);
 }
 /* -------------------------------------------------------------------------*/
-function shortcode_sidebar( $widget_id, $name="widgets_for_shortcode", $title=true, $class='', $wrap='') { /* This is basically the wordpress code, slightly modified  */
+function shortcode_sidebar( $widget_id, $name="widgets_for_shortcode", $title=true, $class='', $wrap='', $widget_classes='') { /* This is basically the wordpress code, slightly modified  */
 	global $wp_registered_sidebars, $wp_registered_widgets;
 	
 	$debug = amr_check_if_widget_debug();
@@ -167,8 +194,10 @@ function shortcode_sidebar( $widget_id, $name="widgets_for_shortcode", $title=tr
 
 		$params = array_merge(
 			array( 
-				array_merge( $sidebar, array('widget_id' => $widget_id, 'widget_name' => $wp_registered_widgets[$widget_id]['name']) ) ),
-					(array) $wp_registered_widgets[$widget_id]['params']
+				array_merge( $sidebar, 
+					array('widget_id' => $widget_id, 
+						'widget_name' => $wp_registered_widgets[$widget_id]['name']) ) ),
+						(array) $wp_registered_widgets[$widget_id]['params']
 		);	
 			
 		$validtitletags = array ('h1','h2','h3','h4','h5','header','strong','em');
@@ -182,7 +211,7 @@ function shortcode_sidebar( $widget_id, $name="widgets_for_shortcode", $title=tr
 		}
 
 		if (!empty ($wrap)) {
-			$params[0]['before_widget'] = '<'.$wrap.' id="%1$s" class="%2$s ">';
+			$params[0]['before_widget'] = '<'.$wrap.' id="%1$s" class="%2$s">';
 			$params[0]['after_widget'] = '</'.$wrap.'>';
 		}
 		
@@ -200,17 +229,25 @@ function shortcode_sidebar( $widget_id, $name="widgets_for_shortcode", $title=tr
 		// add MKM and others requested class in to the wp classname string
 		// if no class specfied, then class will = amrwidget.  These classes are so can reverse out unwanted widget styling.
 
-		$classname_ .= ' widget '.$class;
+		// $classname_ .= ' widget '; // wordpress seems to almost always adds the widget class
+		
 
+		$classname_ .= ' '.$class;
+
+		// we are picking up the defaults from the  thems sidebar ad they have registered heir sidebar to issue widget classes?
+		
+		
 		// Substitute HTML id and class attributes into before_widget		
 		if (!empty($params[0]['before_widget'])) 
 			$params[0]['before_widget'] = sprintf($params[0]['before_widget'], $widget_id, $classname_);
 		else 
 			$params[0]['before_widget'] = '';
 		
-		if (empty($params[0]['before_widget'])) $params[0]['after_widget'] = '';
+		if (empty($params[0]['before_widget'])) 
+			$params[0]['after_widget'] = '';
 
-		//$params = apply_filters( 'dynamic_sidebar_params', $params );  // should we do this? - intended for sidebar but we not in sidebar
+		$params = apply_filters( 'dynamic_sidebar_params', $params );  
+		// allow, any pne usingmust ensure they apply to the correct sidebars
 		
 		if (!empty($title)) {
 			if ($title=='false') { /* amr switch off the title html, still need to get rid of title separately */
@@ -219,11 +256,18 @@ function shortcode_sidebar( $widget_id, $name="widgets_for_shortcode", $title=tr
 				}
 			else {
 				if (in_array( $title, $validtitletags)) {
-					$params[0]['before_title'] = '<'.$title.' class="widget-title">';
+					$class = ' class="widget-title" ';					
+						
+					$params[0]['before_title'] = '<'.$title.' '.$class.' >';
 					$params[0]['after_title'] = '</'.$title.'>';
 				}
 			}			
 		}
+		
+		if (!empty($widget_classes) and ($widget_classes == 'none') ) {
+			$params = amr_remove_widget_class($params);  // also called in widget area shortcode
+		}
+		
 
 		$callback = $wp_registered_widgets[$widget_id]['callback'];
 		if ( is_callable($callback) ) {
@@ -245,7 +289,7 @@ if ( function_exists('register_sidebar') )  {  // maybe later, get the first mai
 		'description'   => 'Sidebar to hold widgets and their settings. These widgets will be used in a shortcode.  This sidebars widgets should be saved with your theme settings now.',
 		'before_widget' => '<aside'.' id="%1$s" class="%2$s ">',  // 201402 to match twentyfourteen theme
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title" >', // 201402 maybe dont use widget class - we are in content here not in a widget area but others want?
+		'before_title'  => '<h1 class="widget-title" >', // 201402 maybe dont use widget class - we are in content here not in a widget area but others want the widget styling. ?
 		'after_title'   => '</h1>' );
 		
 	
