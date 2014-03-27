@@ -17,6 +17,7 @@ class THATCamp_Favorites {
 		add_action( 'bp_actions', array( $this, 'catch_mark_favorite' ), 5 );
 		add_action( 'bp_actions', array( $this, 'catch_unmark_favorite' ), 5 );
 		
+		//shortcode
 		add_shortcode('tcfavs', array($this, 'tc_favslist_shortcode'));
 
 		// admin panels
@@ -320,11 +321,25 @@ class THATCamp_Favorites {
 		return $aloc > $bloc ? 1 : -1;
 	}
 	
-	public function tc_favslist_shortcode(){
-		$this->admin_menu_cb(true);
+	public function tc_favslist_shortcode($atts){
+		extract(
+			shortcode_atts(
+				'exclude_zero' 	=> 'yes',
+				'count'			=> 20,
+				'blogs_only'	=> 'yes',
+			, $atts, 'tcfavs')
+		);
+		$exclude_zero = strtolower($exclude_zero);
+		$blogs_only = strtolower($blogs_only);
+		if ('yes' == $exclude_zero){ $exclude_zero = true; } else { $exclude_zero = false; }
+		if ('yes' == $blogs_only){ $blogs_only = true; } else { $blogs_only = false; }
+		ob_start();
+		$this->admin_menu_cb(true, $exclude_zero, (int)$count, $blogs_only);
+		
+		return ob_get_clean();
 	}
 
-	public function admin_menu_cb($override = false) {
+	public function admin_menu_cb($override = false, $exclude_zero = false, $count = 0, $blogs_only = false) {
 		if ($override){
 			$admin_status = true;
 		} else {
@@ -347,7 +362,7 @@ class THATCamp_Favorites {
 		foreach ( $activities['activities'] as &$a ) {
 			$a->favorite_count = $fav_counts[ $a->id ];
 		}
-
+			$c = 0;
 		?>
 		<div class="wrap">
 			<h2>Favorites</h2>
@@ -364,7 +379,9 @@ class THATCamp_Favorites {
 
 					<th>Count</th>
 				</tr>
-			<?php foreach ( $activities['activities'] as $a ) : ?>
+			<?php foreach ( $activities['activities'] as $a ) : 
+					$c++;
+			?>
 				<tr>
 					<td>
 						<?php $post = preg_replace( '/.*new post, (.*?<\/a>).*/', '\1', $a->action ) ?>
@@ -387,7 +404,12 @@ class THATCamp_Favorites {
 						<?php echo number_format_i18n( $a->favorite_count ) ?>
 					</td>
 				</tr>
-			<?php endforeach ?>
+			<?php 
+			
+				if (($count > 0) && ($c >= 20)){
+					break;
+				}
+			endforeach ?>
 			</table>
 		</div>
 		<?php
