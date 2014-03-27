@@ -11,7 +11,7 @@ class WPORG_Polldaddy extends WP_Polldaddy {
 	function __construct() {
 		parent::__construct();
 		$this->log( 'Created WPORG_Polldaddy Object: constructor' );
-		$this->version                = '2.0.19';
+		$this->version                = '2.0.22';
 		$this->base_url               = plugins_url() . '/' . dirname( plugin_basename( __FILE__ ) ) . '/';
 		$this->polldaddy_client_class = 'WPORG_Polldaddy_Client';
 		$this->use_ssl                = (int) get_option( 'polldaddy_use_ssl' );
@@ -914,16 +914,20 @@ if ( class_exists( 'WP_Widget' ) ) {
 			}
 			
 			$show = "PDRTJS_TOP.get_top( 'posts', '0' );";
-			if ( $instance['show_pages'] == 1 )
+			$widget_class = 'posts';
+			if ( $instance['show_pages'] == 1 ) {
 				$show = "PDRTJS_TOP.get_top( 'pages', '0' );";
-			elseif ( $instance['show_comments'] == 1 )
+				$widget_class = 'pages';
+			} elseif ( $instance['show_comments'] == 1 ) {
 				$show = "PDRTJS_TOP.get_top( 'comments', '0' );";
+				$widget_class = 'comments';
+			}
 
         	echo '</script>';
 			
 			$widget = <<<EOD
 {$before_title}{$title}{$after_title}
-<div id="pd_top_rated_holder"></div>
+<div id="pd_top_rated_holder" class="pd_top_rated_holder_{$widget_class}"></div>
 <script language="javascript" charset="UTF-8" src="http://i0.poll.fm/js/rating/rating-top.js"></script>
 <script type="text/javascript" charset="UTF-8"><!--//--><![CDATA[//><!--
 PDRTJS_TOP = new PDRTJS_RATING_TOP( {$posts_rating_id}, {$pages_rating_id}, {$comments_rating_id}, '{$rating_seq}', {$instance['item_count']} );{$filter}{$show}
@@ -1001,7 +1005,7 @@ EOD;
 function polldaddy_login_warning() {
 	global $cache_enabled;
 	$page = isset( $_GET[ 'page' ] ) ? $_GET[ 'page' ] : '';
-	if ( $page != 'polls' && false == get_option( 'polldaddy_api_key' ) && function_exists( "admin_url" ) )
+	if ( false == get_option( 'polldaddy_api_key' ) && function_exists( "admin_url" ) )
 		echo '<div class="updated"><p><strong>' . sprintf( __( 'Warning! The Polldaddy plugin must be linked to your Polldaddy.com account. Please visit the <a href="%s">plugin settings page</a> to login.', 'polldaddy' ), admin_url( 'options-general.php?page=polls&action=options' ) ) . '</strong></p></div>';
 }
 add_action( 'admin_notices', 'polldaddy_login_warning' );
@@ -1011,7 +1015,7 @@ add_action( 'admin_notices', 'polldaddy_login_warning' );
  */
 function polldaddy_setup_schedule() {
 	if ( false == wp_next_scheduled( 'polldaddy_rating_update_job' ) ) {
-		wp_schedule_event( time(), 'daily', 'polldaddy_rating_update_job');
+		wp_schedule_event( time(), 'twicedaily', 'polldaddy_rating_update_job');
 	}
 }
 add_action( 'init', 'polldaddy_setup_schedule' );
@@ -1028,14 +1032,26 @@ register_deactivation_hook( __FILE__, 'polldaddy_deactivation' );
  * On the scheduled action hook, run a function.
  */
 function polldaddy_rating_update() {
-	global $polldaddy_object;
-	$polldaddy = $polldaddy_object->get_client( WP_POLLDADDY__PARTNERGUID, get_option( 'pd-rating-usercode' ) );
-	$response = $polldaddy->get_rating_results( $rating[ 'id' ], 2, 0, 15 );
-	$ratings = $response->ratings;
-	if ( empty( $ratings ) )
+	if ( false == get_option( 'pd-rich-snippets', 1 ) )
 		return false;
 
-	polldaddy_update_ratings_cache( $ratings );
+	global $polldaddy_object;
+	$polldaddy = $polldaddy_object->get_client( WP_POLLDADDY__PARTNERGUID, get_option( 'pd-rating-usercode' ) );
+	$rating_id = get_option( 'pd-rating-posts-id' );
+	$finished = false;
+	$c = 0;
+	while ( !$finished ) {
+		$response = $polldaddy->get_rating_results( $rating_id, 2, $c, 50 );
+		$ratings = $response->rating;
+		if ( false == is_array( $ratings ) )
+			$finished = true;
+		else
+			polldaddy_update_ratings_cache( $ratings );
+		$c += 50;
+		if ( $c > 1000 ) // gotta stop somewhere
+			$finished = true;
+	}
+	return true;
 }
 
 add_action( 'polldaddy_rating_update_job', 'polldaddy_rating_update' );
@@ -1054,6 +1070,8 @@ function polldaddy_update_ratings_cache( $ratings ) {
 }
 
 function polldaddy_post_rating( $content ) {
+	if ( false == get_option( 'pd-rich-snippets', 1 ) )
+		return $content;
 	if ( false == is_singular() )
 		return $content;
 	if ( false == get_option( 'pd-rating-usercode' ) )
@@ -1066,11 +1084,10 @@ function polldaddy_post_rating( $content ) {
 		$average = ceil( ( $rating[0][ 'average' ] / $rating[0][ 'votes' ] ) * 5 );
 	else
 		$average = $rating[ 'average' ];
-	return $content . '
-		<div itemtype="http://schema.org/AggregateRating" itemscope itemprop="aggregateRating">
-		<meta itemprop="ratingValue" content=' . $average . '>
-		<meta itemprop="ratingCount" content=' . $rating[0][ 'votes' ] . '>
-		</div>';
+	if ( $average < 0 )
+		return $content;
+	global $post;
+	return $content . '<span class="hreview-aggregate"><span class="item"><span class="fn">"' . $post->post_title . '"</span></span>, <span class="rating"><span class="average">' . $average . '</span> out of <span class="best">5</span> based on <span class="votes">' . $rating[0][ 'votes' ] . '</span> ratings.</span></span>';
 }
 add_filter( 'the_content', 'polldaddy_post_rating' );
 ?>

@@ -6,7 +6,7 @@ Plugin URI: http://wordpress.org/extend/plugins/polldaddy/
 Description: Create and manage Polldaddy polls and ratings in WordPress
 Author: Automattic, Inc.
 Author URL: http://polldaddy.com/
-Version: 2.0.21
+Version: 2.0.23
 */
 
 // You can hardcode your Polldaddy PartnerGUID (API Key) here
@@ -32,7 +32,7 @@ class WP_Polldaddy {
 		$this->log( 'Created WP_Polldaddy Object: constructor' );
 		$this->errors                 = new WP_Error;
 		$this->scheme                 = 'https';
-		$this->version                = '2.0.19';
+		$this->version                = '2.0.22';
 		$this->multiple_accounts      = true;
 		$this->polldaddy_client_class = 'api_client';
 		$this->polldaddy_clients      = array();
@@ -70,6 +70,7 @@ class WP_Polldaddy {
 	}
 
 	function admin_menu() {	
+		add_action( 'wp_enqueue_scripts', array( &$this, 'register_polldaddy_styles' ) );
 		add_action( 'admin_head', array( &$this, 'do_admin_css' ) );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'menu_alter' ) );
 
@@ -82,24 +83,15 @@ class WP_Polldaddy {
 		}
 		
 		$capability = 'edit_posts';
-		$icon       = "{$this->base_url}img/pd-wp-icon-gray.png";
 		$function   = array( &$this, 'management_page' );
-					
-		if ( !WP_POLLDADDY__PARTNERGUID ) {
-			foreach( array( 'polls' => __( 'Polls', 'polldaddy' ), 'ratings' => __( 'Ratings', 'polldaddy' ) ) as $menu_slug => $menu_title ) {
-				$hook = add_object_page( $menu_title, $menu_title, $capability, $menu_slug, array( &$this, 'api_key_page' ), $icon );
-				add_action( "load-$hook", array( &$this, 'api_key_page_load' ) );
-			}
-			return false;
-		}
-		
-		$hook = add_object_page( __( 'Feedback', 'polldaddy' ), __( 'Feedback', 'polldaddy' ), $capability, 'feedback', $function, $icon );
+
+		$hook = add_object_page( __( 'Feedback', 'polldaddy' ), __( 'Feedback', 'polldaddy' ), $capability, 'feedback', $function, 'div' );
 		add_action( "load-$hook", array( &$this, 'management_page_load' ) );
 		
 		foreach( array( 'polls' => __( 'Polls', 'polldaddy' ), 'ratings' => __( 'Ratings', 'polldaddy' ) ) as $menu_slug => $page_title ) {
 			$menu_title  = $page_title;
 			
-			$hook = add_object_page( $menu_title, $menu_title, $capability, $menu_slug, $function, $icon );
+			$hook = add_object_page( $menu_title, $menu_title, $capability, $menu_slug, $function, 'div' );
 			add_action( "load-$hook", array( &$this, 'management_page_load' ) );
 			
 			add_submenu_page( 'feedback', $page_title, $page_title, $capability, $menu_slug, $function );			
@@ -117,20 +109,55 @@ class WP_Polldaddy {
 		
 		add_action( 'media_buttons', array( &$this, 'media_buttons' ) );		
 	}
-	
-	function menu_alter() {}
 
 	function do_admin_css() {
-
-		$scheme =  get_user_option( 'admin_color' );
-
-		if ( $scheme == 'classic' ) {
-			$color = "blue";
+		wp_register_style( 'polldaddy-icons', plugins_url( 'css/polldaddy-icons.css', __FILE__ ) );
+		wp_enqueue_style( 'polldaddy-icons' );
+	}
+	
+	function menu_alter() {
+		// Make sure we're working off a clean version.
+		include( ABSPATH . WPINC . '/version.php' );
+		if ( version_compare( $wp_version, '3.8', '>=' ) ) {
+			wp_enqueue_style( 'polldaddy-icons' );
+			$css = "
+				#toplevel_page_feedback .wp-menu-image:before {
+					font-family: 'polldaddy' !important;
+					content: '\\0061';
+				}
+				#toplevel_page_feedback .wp-menu-image {
+					background-repeat: no-repeat;
+				}
+				#menu-posts-feedback .wp-menu-image:before {
+					font-family: dashicons !important;
+					content: '\\f175';
+				}
+				#adminmenu #menu-posts-feedback div.wp-menu-image {
+					background: none !important;
+					background-repeat: no-repeat;
+				}";
 		} else {
-			$color = "gray";
+			$css = "
+				#toplevel_page_polldaddy .wp-menu-image {
+					background: url( " . plugins_url( 'img/polldaddy.png', __FILE__ ) . " ) 0 90% no-repeat;
+				}
+				/* Retina Polldaddy Menu Icon */
+				@media  only screen and (-moz-min-device-pixel-ratio: 1.5),
+						only screen and (-o-min-device-pixel-ratio: 3/2),
+						only screen and (-webkit-min-device-pixel-ratio: 1.5),
+						only screen and (min-device-pixel-ratio: 1.5) {
+					#toplevel_page_polldaddy .wp-menu-image {
+						background: url( " . plugins_url( 'polldaddy@2x.png', __FILE__ ) . " ) 0 90% no-repeat;
+						background-size:30px 64px;
+					}
+				}
+				#toplevel_page_polldaddy.current .wp-menu-image,
+				#toplevel_page_polldaddy.wp-has-current-submenu .wp-menu-image,
+				#toplevel_page_polldaddy:hover .wp-menu-image {
+					background-position: top left;
+				}";
 		}
-
-		include 'admin-style.php';
+		wp_add_inline_style( 'wp-admin', $css );
 	}
 
 	function api_key_page_load() {
@@ -1172,10 +1199,6 @@ class WP_Polldaddy {
 				$action = '';
 			}
 			switch ( $action ) {
-			case 'signup' :
-			case 'account' :
-				$this->signup();
-				break;
 			case 'preview' :
 				if ( isset( $_GET['iframe'] ) ):
 					if ( !isset( $_GET['popup'] ) ) { ?>
@@ -1314,6 +1337,8 @@ class WP_Polldaddy {
 			$polls_object = $polldaddy->get_polls_by_parent_id( ( $page - 1 ) * 10 + 1, $page * 10 );
 
 		$this->parse_errors( $polldaddy );
+        if ( in_array( 'API Key Not Found, 890', $polldaddy->errors ) )
+            return false;
 		$this->print_errors();
 		$polls = & $polls_object->poll;
 		if ( isset( $polls_object->_total ) )
@@ -3577,7 +3602,7 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 
 	function rating_settings() {
 		global $action, $rating;
-		$show_posts = $show_posts_index = $show_pages = $show_comments = $pos_posts = $pos_posts_index = $pos_pages = $pos_comments = 0;
+		$rich_snippets = $show_posts = $show_posts_index = $show_pages = $show_comments = $pos_posts = $pos_posts_index = $pos_pages = $pos_comments = 0;
 		$show_settings = $rating_updated = ( $action == 'update-rating' ? true : false );
 		$error = false;
 
@@ -3616,6 +3641,8 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 			$blog_name = 'WordPress Blog';
 		$blog_name .= ' - ' . $report_type;
 
+		if ( !defined( 'WP_POLLDADDY__PARTNERGUID' ) )
+			return false;
 		$polldaddy = $this->get_client( WP_POLLDADDY__PARTNERGUID, $this->rating_user_code );
 		$polldaddy->reset();
 
@@ -3678,6 +3705,11 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 
 			switch ( $_POST[ 'pd_rating_action_type' ]  ) {
 			case 'posts' :
+				if ( isset( $_POST[ 'pd_rich_snippets' ] ) && (int) $_POST[ 'pd_rich_snippets' ] == 1 )
+					$rich_snippets = 1;
+
+				update_option( 'pd-rich-snippets', $rich_snippets );
+
 				if ( isset( $_POST[ 'pd_show_posts' ] ) && (int) $_POST[ 'pd_show_posts' ] == 1 )
 					$show_posts = get_option( 'pd-rating-posts-id' );
 
@@ -3729,6 +3761,7 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 			}//end switch
 		}
 
+		$rich_snippets    = (int) get_option( 'pd-rich-snippets', 1 );
 		$show_posts       = (int) get_option( 'pd-rating-posts' );
 		$show_pages       = (int) get_option( 'pd-rating-pages' );
 		$show_comments    = (int) get_option( 'pd-rating-comments' );
@@ -3783,13 +3816,20 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 				$this_class = ' class="tabs"';  ?>
             <li <?php echo $this_class; ?>><a href="<?php echo $comments_link; ?>"><?php _e( 'Comments', 'polldaddy' );?></a></li>
           </ul>
-          <div class="tabs-panel" id="categories-all" style="background: #FFFFFF;height: auto; overflow: visible;max-height:400px;">
+          <div class="tabs-panel" id="categories-all" style="background: #FFFFFF;height: auto; overflow: visible;max-height:500px;">
             <form action="" method="post">
             <input type="hidden" name="pd_rating_action_type" value="<?php echo $report_type; ?>" />
 <?php wp_nonce_field( 'action-rating_settings_' . $report_type ); ?>
             <table class="form-table" style="width: normal;">
-              <tbody><?php
-			if ( $report_type == 'posts' ) { ?>
+              <tbody>
+			<?php if ( $report_type == 'posts' ) { ?>
+                <tr valign="top">
+					<th scope="row"><label><?php _e( 'Rich Snippets in Search Results', 'polldaddy' );?></label></th>
+					<td>
+						<label><input type="checkbox" name="pd_rich_snippets" id="pd_rich_snippets" <?php if ( $rich_snippets == 1 ) echo ' checked="checked" '; ?> value="1" /> <?php printf( __( 'Display rich snippets in search results using post and page ratings (<a href="%s">documentation</a> and <a href="">page tester</a>)', 'polldaddy' ), 'https://support.google.com/webmasters/answer/99170', 'http://www.google.com/webmasters/tools/richsnippets' );?></label>
+						<p><?php _e( 'Once activated, it may take several weeks before the snippets show up in Google search results.', 'polldaddy' );?></p>
+					</td>
+				</tr>
                 <tr valign="top">
 					<th scope="row"><label><?php _e( 'Show Ratings on', 'polldaddy' );?></label></th>
 					<td>
@@ -4480,6 +4520,9 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 		}
 	}
 	function rating_reports() {
+		if ( !defined( 'WP_POLLDADDY__PARTNERGUID' ) || WP_POLLDADDY__PARTNERGUID == false )
+			return false;
+
 		$polldaddy = $this->get_client( WP_POLLDADDY__PARTNERGUID, $this->rating_user_code );
 		$rating_id = get_option( 'pd-rating-posts-id' );
 
@@ -4818,18 +4861,16 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
   <h2>
     <?php _e( 'Poll Settings', 'polldaddy' ); ?>
   </h2>
-	<?php 
-		if ( $this->is_admin || $this->multiple_accounts ) {
-			if ( $account_email != false ) {
-	?>
-	<h3>
-		<?php _e( 'Polldaddy Account Info', 'polldaddy' ); ?>
-	</h3>
-	<p><?php _e( '<em>Polldaddy</em> and <em>WordPress.com</em> are now connected using <a href="http://en.support.wordpress.com/wpcc-faq/">WordPress.com Connect</a>. If you have a WordPress.com account you can use it to login to <a href="http://polldaddy.com/">Polldaddy.com</a>. Click on the Polldaddy "sign in" button, authorize the connection and create your new Polldaddy account.', 'polldaddy' ); ?></p>
-	<p><?php _e( 'Login to the Polldaddy website and scroll to the end of your <a href="http://polldaddy.com/account/#apikey">account page</a> to create or retrieve an API key.', 'polldaddy' ); ?></p>
-	<p><?php printf( __( 'Your account is currently linked to this API key: <strong>%s</strong>', 'polldaddy' ), WP_POLLDADDY__PARTNERGUID ); ?></p>
-	<br />
-	<h3><?php _e( 'Link to a different Polldaddy account', 'polldaddy' ); ?></h3>
+	<?php if ( $this->is_admin || $this->multiple_accounts ) { ?>
+		<h3>
+			<?php _e( 'Polldaddy Account Info', 'polldaddy' ); ?>
+		</h3>
+		<p><?php _e( '<em>Polldaddy</em> and <em>WordPress.com</em> are now connected using <a href="http://en.support.wordpress.com/wpcc-faq/">WordPress.com Connect</a>. If you have a WordPress.com account you can use it to login to <a href="http://polldaddy.com/">Polldaddy.com</a>. Click on the Polldaddy "sign in" button, authorize the connection and create your new Polldaddy account.', 'polldaddy' ); ?></p>
+		<p><?php _e( 'Login to the Polldaddy website and scroll to the end of your <a href="http://polldaddy.com/account/#apikey">account page</a> to create or retrieve an API key.', 'polldaddy' ); ?></p>
+		<?php if ( $account_email != false ) { ?>
+			<p><?php printf( __( 'Your account is currently linked to this API key: <strong>%s</strong>', 'polldaddy' ), WP_POLLDADDY__PARTNERGUID ); ?></p>
+			<br />
+			<h3><?php _e( 'Link to a different Polldaddy account', 'polldaddy' ); ?></h3>
 		<?php } else { ?>
 			<br />
 			<h3><?php _e( 'Link to your Polldaddy account', 'polldaddy' ); ?></h3>
