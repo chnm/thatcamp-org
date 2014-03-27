@@ -1,0 +1,113 @@
+# Copyright (C) 2014 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/recent-posts-with-excerpts\n"
+"POT-Creation-Date: 2014-02-28 19:42:11+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: recent-with-excerpts-widgets.php:34
+msgid "Your most recent posts, with optional excerpts"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:35
+msgid "Recent Posts with Excerpts"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:145
+msgid "Recent Posts"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:149
+msgid "more..."
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:161
+msgid "Title:"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:166
+msgid "Link widget title to blog home page?"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:169
+msgid "Number of posts to show:"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:173
+msgid "Number of excerpts to show:"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:177
+msgid "\"More\" link text:"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:179
+msgid "Leave blank to omit \"more\" link"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:183
+msgid "Date format:"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:185
+msgid "Leave blank to omit the date"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:188
+msgid "Limit to category:"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:189
+msgid "None (all categories)"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:191
+msgid "Limit to tags:"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:193
+msgid "Enter post tags separated by commas (\"cat,dog\")"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:198
+msgid "Limit excerpt to how many words?"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:202
+msgid "Allowed HTML tags:"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:205
+msgid "E.g.:"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:211
+msgid "Show featured images in excerpts?"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:215
+msgid "Featured image position:"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:217
+msgid "Above title"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:218
+msgid "Between title and excerpt"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:219
+msgid "Below excerpt"
+msgstr ""
+
+#: recent-with-excerpts-widgets.php:223
+msgid "Featured image size:"
+msgstr ""
