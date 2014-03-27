@@ -1,5 +1,11 @@
 <!-- Begin PayPal Donations by http://johansteen.se/ -->
-<form action="<?php echo apply_filters( 'paypal_donations_url', 'https://www.paypal.com/cgi-bin/webscr'); ?>" method="post">
+<form
+    action="<?php echo apply_filters( 'paypal_donations_url', 'https://www.paypal.com/cgi-bin/webscr'); ?>"
+    method="post"
+    <?php if ($pd_options['new_tab']) {
+        echo 'target="_blank"';
+    } ?>
+>
     <div class="paypal-donations">
         <input type="hidden" name="cmd" value="_donations" />
         <input type="hidden" name="business" value="<?php echo $pd_options['paypal_account']; ?>" />

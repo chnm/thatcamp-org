@@ -5,11 +5,11 @@ Plugin URI: http://johansteen.se/code/paypal-donations/
 Description: Easy and simple setup and insertion of PayPal donate buttons with a shortcode or through a sidebar Widget. Donation purpose can be set for each button. A few other customization options are available as well.
 Author: Johan Steen
 Author URI: http://johansteen.se/
-Version: 1.8.1
+Version: 1.8.2
 License: GPLv2 or later
-Text Domain: paypal-donations 
+Text Domain: paypal-donations
 
-Copyright 2009-2013  Johan Steen  (email : artstorm [at] gmail [dot] com)
+Copyright 2009-2014  Johan Steen  (email : artstorm [at] gmail [dot] com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -37,13 +37,16 @@ spl_autoload_register('PayPalDonations::autoload');
  */
 class PayPalDonations
 {
+    /** Holds the plugin instance */
+    private static $instance = false;
+
+    /** Define plugin constants */
     const MIN_PHP_VERSION  = '5.2.4';
     const MIN_WP_VERSION   = '3.0';
     const OPTION_DB_KEY    = 'paypal_donations_options';
     const TEXT_DOMAIN      = 'paypal-donations';
     const FILE             = __FILE__;
 
-    private static $instance = false;
 
     // -------------------------------------------------------------------------
     // Define constant data arrays
@@ -158,8 +161,6 @@ class PayPalDonations
     /**
      * PSR-0 compliant autoloader to load classes as needed.
      *
-     * @since  1.7
-     *
      * @param  string  $classname  The name of the class
      * @return null    Return early if the class name does not start with the
      *                 correct prefix
@@ -178,7 +179,7 @@ class PayPalDonations
             $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace);
             $fileName .= DIRECTORY_SEPARATOR;
         }
-        $fileName .= str_replace('_', DIRECTORY_SEPARATOR, 'lib_'.$className);
+        $fileName .= str_replace('_', DIRECTORY_SEPARATOR, 'src_'.$className);
         $fileName .='.php';
 
         require $fileName;
@@ -251,7 +252,7 @@ class PayPalDonations
             $button_url
         );
     }
-    
+
     /**
      * Generate the PayPal button HTML code
      */
@@ -270,7 +271,7 @@ class PayPalDonations
         $amount = (!$amount) ? $pd_options['amount'] : $amount;
         $return_page = (!$return_page) ? $pd_options['return_page'] : $return_page;
         $button_url = (!$button_url) ? $pd_options['button_url'] : $button_url;
-        
+
         $data = array(
             'pd_options' => $pd_options,
             'return_page' => $return_page,

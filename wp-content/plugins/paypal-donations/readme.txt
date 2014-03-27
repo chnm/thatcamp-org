@@ -3,8 +3,8 @@ Contributors: artstorm
 Donate link: http://johansteen.se/donate/
 Tags: paypal, donation, shortcode, widget, donate, button, sidebar
 Requires at least: 3.0
-Tested up to: 3.5.1
-Stable tag: 1.8.1
+Tested up to: 3.8.1
+Stable tag: 1.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,11 +32,11 @@ This donation plugin generates valid XHTML Transitional and Strict code.
 
 = Related Links =
 
-* [Documentation](http://johansteen.se/code/paypal-donations/ 
+* [Documentation](http://johansteen.se/code/paypal-donations/
   "Usage instructions")
-* [Support Forum](http://wordpress.org/support/plugin/paypal-donations 
+* [Support Forum](http://wordpress.org/support/plugin/paypal-donations
   "Use this for support and feature requests")
-* [GitHub](https://github.com/artstorm/paypal-donations 
+* [GitHub](https://github.com/artstorm/paypal-donations
   "Develop and contribute your code or report bugs")
 
 
@@ -59,7 +59,7 @@ This donation plugin generates valid XHTML Transitional and Strict code.
 
 = Where can I get support? =
 
-Please visit the [Support Forum](http://wordpress.org/support/plugin/paypal-donations "Use this for support and feature requests") 
+Please visit the [Support Forum](http://wordpress.org/support/plugin/paypal-donations "Use this for support and feature requests")
 for questions, answers, support and feature requests.
 
 = Where can I send bug reports? =
@@ -82,6 +82,9 @@ Contributions are appreciated and encouraged.
 
 == Changelog ==
 
+= Version 1.8.2 - 22 Mar 2014 =
+ * Adds the option to have PayPal open in a new tab.
+
 = Version 1.8.1 - 27 Apr 2013 =
  * Various minor code improvements.
  * Bumps required WordPress version to v3.0.
@@ -96,8 +99,8 @@ Contributions are appreciated and encouraged.
  * Updated Swedish translation.
 
 = Version 1.7 - 19 Feb 2013 =
- * Moved the development to 
-   [GitHub](https://github.com/artstorm/paypal-donations). 
+ * Moved the development to
+   [GitHub](https://github.com/artstorm/paypal-donations).
  * Refactored code to comply with the PSR-2 standard.
  * Bumped minimum PHP version to 5.2.4.
  * Bumped minimum required WordPress version to WordPress 2.8.
@@ -119,7 +122,7 @@ Contributions are appreciated and encouraged.
  * Added filter 'paypal_donations_url', to hook into the URL used, to be able to
    try the button against PayPal's Sandbox for instance.
  * Added filter 'paypal_donations_amount', to hook into the set amount before
-   rendering the button. 
+   rendering the button.
  * Included Lithuanian translation by Nata Strazda.
  * Changed the plugin class name from paypal_donations to Paypal_Donations.
 
@@ -128,7 +131,7 @@ Contributions are appreciated and encouraged.
 
 = Version 1.4.9.3 - 18 Apr 2011 =
  * Added Turkish Lira (TRY) to the list of currencies.
- 
+
 = Version 1.4.9.2 - 02 Apr 2011 =
  * Added four new currencies that PayPal supports for donations to choose from:
    Brazilian Real (BRL), Taiwan New Dollar (TWD), Philippine Peso (PHP), Thai
@@ -176,7 +179,7 @@ Contributions are appreciated and encouraged.
 
 = Version 1.3.2 - 28 Aug 2009 =
  * Included Russian translation by FatCow.
- 
+
 = Version 1.3.1 - 25 August 2009 =
  * Added Swedish translation.
  * Added the .pot file and textdomained all strings to allow translations.
