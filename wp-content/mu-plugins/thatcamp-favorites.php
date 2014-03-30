@@ -333,13 +333,14 @@ class THATCamp_Favorites {
 		$blogs_only = strtolower($blogs_only);
 		if ('yes' == $exclude_zero){ $exclude_zero = true; } else { $exclude_zero = false; }
 		if ('yes' == $blogs_only){ $blogs_only = true; } else { $blogs_only = false; }
+		$shortcode = true;
 		ob_start();
-		$this->admin_menu_cb(true, $exclude_zero, (int)$count, $blogs_only);
+		$this->admin_menu_cb(true, $exclude_zero, (int)$count, $blogs_only, $shortcode);
 		
 		return ob_get_clean();
 	}
 
-	public function admin_menu_cb($override = false, $exclude_zero = false, $count = 0, $blogs_only = false) {
+	public function admin_menu_cb($override = false, $exclude_zero = false, $count = 0, $blogs_only = false, $shortcode = false) {
 		if ($override){
 			$admin_status = true;
 		} else {
@@ -362,7 +363,22 @@ class THATCamp_Favorites {
 		foreach ( $activities['activities'] as &$a ) {
 			$a->favorite_count = $fav_counts[ $a->id ];
 		}
-			$c = 0;
+		
+		if ($shortcode) {
+			$this->outside_fav_menu($admin_status, $activities);
+		} else {
+			$this->inside_fav_menu($admin_status, $activities);
+		}
+
+	}
+	
+	/*
+	 * Menu for display inside the admin dashboard.
+	 */
+	
+	public function inside_fav_menu($admin_status, $activities){
+		
+		$c = 0;
 		?>
 		<div class="wrap">
 			<h2>Favorites</h2>
@@ -413,6 +429,28 @@ class THATCamp_Favorites {
 			</table>
 		</div>
 		<?php
+	}
+	
+	/*
+	 * Favourites menu for display by shortcode
+	 */
+	public function outside_fav_menu($admin_status, $activities){
+		
+		$c = 0;	
+		foreach ( $activities['activities'] as $a ) : 
+			$c++;
+			?>
+			
+				<article id="activity-count-<?php echo $c; ?>">
+					<div class="post-avatar">
+						
+					</div>
+			
+			<?php
+				if (($count > 0) && ($c >= 20)){
+					break;
+				}			
+		endforeach; 
 	}
 
 	public function get_most_favorited_activities( $is_network_admin = false ) {
