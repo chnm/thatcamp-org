@@ -1,0 +1,221 @@
+# Copyright (C) 2014 Email Log
+# This file is distributed under the same license as the Email Log package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Log 1.7\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/email-log\n"
+"POT-Creation-Date: 2014-03-30 07:34:34+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: email-log.php:91
+msgid "Buy Addons"
+msgstr ""
+
+#. #-#-#-#-#  email-log.pot (Email Log 1.7)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: email-log.php:101
+msgid "Email Log"
+msgstr ""
+
+#: email-log.php:114
+msgid "Email Logs"
+msgstr ""
+
+#: email-log.php:120
+msgid "1 email log deleted."
+msgid_plural "%s email logs deleted"
+msgstr[0] ""
+msgstr[1] ""
+
+#: email-log.php:122
+msgid "There was some problem in deleting the email logs"
+msgstr ""
+
+#: email-log.php:130
+msgid "Search Logs"
+msgstr ""
+
+#: email-log.php:163 tmp_addon/email-log-forward-email.php:152
+msgid "About Plugin"
+msgstr ""
+
+#: email-log.php:165 tmp_addon/email-log-forward-email.php:154
+msgid ""
+"Email Log WordPress Plugin, allows you to log all emails that are sent "
+"through WordPress."
+msgstr ""
+
+#: email-log.php:172 tmp_addon/email-log-forward-email.php:162
+msgid "More information"
+msgstr ""
+
+#: email-log.php:173 tmp_addon/email-log-forward-email.php:163
+msgid "Plugin Homepage/support"
+msgstr ""
+
+#: email-log.php:174 tmp_addon/email-log-forward-email.php:164
+msgid "Plugin author's blog"
+msgstr ""
+
+#: email-log.php:175 tmp_addon/email-log-forward-email.php:165
+msgid "Other Plugin's by Author"
+msgstr ""
+
+#: email-log.php:182
+msgid "Entries per page"
+msgstr ""
+
+#: email-log.php:287
+msgid "Log"
+msgstr ""
+
+#: email-log.php:297
+msgid "plugin"
+msgstr ""
+
+#: email-log.php:297
+msgid "Version"
+msgstr ""
+
+#: email-log.php:297
+msgid "by"
+msgstr ""
+
+#: include/class-email-log-list-table.php:36
+msgid "More fields are available in Pro addon. "
+msgstr ""
+
+#: include/class-email-log-list-table.php:38
+msgid "Buy Now"
+msgstr ""
+
+#: include/class-email-log-list-table.php:49
+msgid ""
+"The following are the list of pro addons that are currently available for "
+"purchase."
+msgstr ""
+
+#: include/class-email-log-list-table.php:55
+msgid "Email Log - Forward Email"
+msgstr ""
+
+#: include/class-email-log-list-table.php:56
+msgid ""
+"This addon allows you to send a copy of all emails send from WordPress to "
+"another email address"
+msgstr ""
+
+#: include/class-email-log-list-table.php:57
+#: include/class-email-log-list-table.php:64
+msgid "More Info"
+msgstr ""
+
+#: include/class-email-log-list-table.php:58
+#: include/class-email-log-list-table.php:65
+msgid "Buy now"
+msgstr ""
+
+#: include/class-email-log-list-table.php:62
+msgid "Email Log - More fields"
+msgstr ""
+
+#: include/class-email-log-list-table.php:63
+msgid ""
+"Adds more fields (From, CC, BCC, Reply To, Attachment) to the logs page."
+msgstr ""
+
+#: include/class-email-log-list-table.php:88
+msgid "Sent at"
+msgstr ""
+
+#: include/class-email-log-list-table.php:89
+#: tmp_addon/email-log-forward-email.php:180
+msgid "To"
+msgstr ""
+
+#: include/class-email-log-list-table.php:90
+msgid "Subject"
+msgstr ""
+
+#: include/class-email-log-list-table.php:171
+#: include/class-email-log-list-table.php:224
+msgid "Delete"
+msgstr ""
+
+#: include/class-email-log-list-table.php:175
+msgid "%s @ %s"
+msgstr ""
+
+#: include/class-email-log-list-table.php:180
+msgid "View Content"
+msgstr ""
+
+#: include/class-email-log-list-table.php:225
+msgid "Delete All Logs"
+msgstr ""
+
+#: include/class-email-log-list-table.php:331
+msgid "Your email log is empty"
+msgstr ""
+
+#: tmp_addon/email-log-forward-email.php:105
+#: tmp_addon/email-log-forward-email.php:117
+msgid "Forward Email"
+msgstr ""
+
+#: tmp_addon/email-log-forward-email.php:105
+msgid "Email Log - Forward Email Addon"
+msgstr ""
+
+#: tmp_addon/email-log-forward-email.php:127
+msgid "Forward Emails"
+msgstr ""
+
+#: tmp_addon/email-log-forward-email.php:181
+#: tmp_addon/email-log-more-fields.php:81
+msgid "CC"
+msgstr ""
+
+#: tmp_addon/email-log-forward-email.php:182
+#: tmp_addon/email-log-more-fields.php:82
+msgid "BCC"
+msgstr ""
+
+#: tmp_addon/email-log-forward-email.php:225
+#: tmp_addon/email-log-forward-email.php:236
+#: tmp_addon/email-log-forward-email.php:247
+msgid "Enter multiple email address by separating them using comma"
+msgstr ""
+
+#: tmp_addon/email-log-more-fields.php:80
+msgid "From"
+msgstr ""
+
+#: tmp_addon/email-log-more-fields.php:83
+msgid "Reply To"
+msgstr ""
+
+#: tmp_addon/email-log-more-fields.php:84
+msgid "Attachment"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://sudarmuthu.com/wordpress/email-log"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Logs every email sent through WordPress"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Sudar"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://sudarmuthu.com/"
+msgstr ""
