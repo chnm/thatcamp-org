@@ -327,6 +327,7 @@ class THATCamp_Favorites {
 				'exclude_zero' 	=> 'yes',
 				'count'			=> 20,
 				'blogs_only'	=> 'yes',
+				'until'			=> false
 			), $atts, 'tcfavs')
 		);
 		$exclude_zero = strtolower($exclude_zero);
@@ -335,12 +336,12 @@ class THATCamp_Favorites {
 		if ('yes' == $blogs_only){ $blogs_only = true; } else { $blogs_only = false; }
 		$shortcode = true;
 		ob_start();
-		$this->admin_menu_cb(true, $exclude_zero, (int)$count, $blogs_only, $shortcode);
+		$this->admin_menu_cb(true, $exclude_zero, (int)$count, $blogs_only, $shortcode, $until);
 		
 		return ob_get_clean();
 	}
 
-	public function admin_menu_cb($override = false, $exclude_zero = false, $count = 0, $blogs_only = false, $shortcode = false) {
+	public function admin_menu_cb($override = false, $exclude_zero = false, $count = 0, $blogs_only = false, $shortcode = false, $until) {
 		if ($override){
 			$admin_status = true;
 		} else {
@@ -365,7 +366,7 @@ class THATCamp_Favorites {
 		}
 		?><div class="thatcamp-stream"><?php 
 		if ($shortcode) {
-			$this->outside_fav_menu($admin_status, $activities, $exclude_zero, $count, $blogs_only);
+			$this->outside_fav_menu($admin_status, $activities, $exclude_zero, $count, $blogs_only, $until);
 		} else {
 			$this->inside_fav_menu($admin_status, $activities);
 		}
@@ -435,7 +436,7 @@ class THATCamp_Favorites {
 	/*
 	 * Favourites menu for display by shortcode
 	 */
-	public function outside_fav_menu($admin_status, $activities, $exclude_zero = true, $count = 20, $blogs_only = true){
+	public function outside_fav_menu($admin_status, $activities, $exclude_zero = true, $count = 20, $blogs_only = true, $until){
 		
 		$c = 0;	
 		foreach ( $activities['activities'] as $a ) : 
@@ -444,6 +445,14 @@ class THATCamp_Favorites {
 			}
 			if(($exclude_zero) && (0 == $a->favorite_count)){
 				continue;
+			}
+			if ((!empty($until)) && (false != $until)){
+				$a_unix_datetime = mysql2date('U' , $a->date_recorded );
+				$until_datetime = mysql2date('U', $until);
+				if ( $until_datetime > $a_unix_datetime){
+					continue;
+				}
+				
 			}
 			$c++;
 			?>
