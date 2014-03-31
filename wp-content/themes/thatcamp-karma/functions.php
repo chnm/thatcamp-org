@@ -492,9 +492,19 @@ function thatcamp_mod_user_nav() {
         } else {
                 $activity_base = bp_get_activity_slug() . '/';
         }
-
+		
+	#Gets blog post activity for display on profile.	
+	$activity_b = bp_activity_get( array(
+			'filter' => array(
+				'action' => 'new_blog_post', 
+				'user_id' => $bp->displayed_user->id
+			)
+	));
+	
+	$postcount = $activity_b['total'];
+		
 	$bp->bp_nav['blogs'] = array(
-		'name'                    => 'Blog Posts',
+		'name'                    => sprintf( 'Blog Posts <span>%s</span>', $postcount),
 		'slug'                    => 'blogs',
 		'link'                    => add_query_arg( 'a_type', 'blog_posts', $activity_base ),
 		'css_id'                  => 'blogs',
@@ -503,8 +513,18 @@ function thatcamp_mod_user_nav() {
 		'screen_function'         => 'bp_activity_screen_my_activity',
 	);
 
+	#Gets blog commenting activity for display on profile.
+	$activity_bc = bp_activity_get( array(
+			'filter' => array(
+				'action' => 'new_blog_comment', 
+				'user_id' => $bp->displayed_user->id
+			)
+	));
+	
+	$blog_comment_count = $activity_bc['total'];	
+	
 	$bp->bp_nav['comments'] = array(
-		'name'                    => 'Blog Comments',
+		'name'                    => sprintf( 'Blog Comments <span>%s</span>', $blog_comment_count),
 		'slug'                    => 'comments',
 		'link'                    => add_query_arg( 'a_type', 'blog_comments', $activity_base ),
 		'css_id'                  => 'comments',
@@ -513,8 +533,31 @@ function thatcamp_mod_user_nav() {
 		'screen_function'         => 'bp_activity_screen_my_activity',
 	);
 
+	#Gets forum post activity for display on profile.
+	$activity_f = bp_activity_get( array(
+			'filter' => array(
+				'action' => 'bbp_topic_create', 
+				'user_id' => $bp->displayed_user->id
+			)
+	));
+	
+	$forum_post_count = $activity_f['total'];	
+
+	#Gets forum reply activity for display on profile.
+	$activity_fr = bp_activity_get( array(
+			'filter' => array(
+				'action' => 'bbp_reply_create', 
+				'user_id' => $bp->displayed_user->id
+			)
+	));
+	
+	$forum_post_reply_count = $activity_fr['total'];
+
+	# Combines forum reply and post activity into one number to show on user profiles. 
+	$forum_activity_count = $forum_post_count+$forum_post_reply_count;
+	
 	$bp->bp_nav['forums'] = array(
-		'name'                    => 'Forum Posts',
+		'name'                    => sprintf( 'Forum Posts <span>%s</span>', $forum_activity_count),
 		'slug'                    => 'forums',
 		'link'                    => add_query_arg( 'a_type', 'forums', $activity_base ),
 		'css_id'                  => 'forums',
@@ -523,8 +566,10 @@ function thatcamp_mod_user_nav() {
 		'screen_function'         => 'bp_activity_screen_my_activity',
 	);
 
+	$favcount = count(bp_activity_get_user_favorites(get_current_user_id()));
+	
 	$bp->bp_nav['favorites'] = array(
-		'name'                    => 'Favorites',
+		'name'                    => sprintf( 'Favorites <span>%s</span>', $favcount),
 		'slug'                    => 'favorites',
 		'link'                    => add_query_arg( 'a_type', 'favorites', $activity_base ),
 		'css_id'                  => 'favorites',
