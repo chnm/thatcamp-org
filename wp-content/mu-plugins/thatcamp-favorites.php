@@ -479,7 +479,7 @@ class THATCamp_Favorites {
 							$fav_count = number_format_i18n( $a->favorite_count );
 							$post_link = $a->primary_link;
 						?>
-							<h3 class="post-title"><a href="<?php echo strip_tags($post_link); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), strip_tags($post_title) ); ?>" rel="bookmark" class="postlink"><?php echo strip_tags($post_title); ?></a><span style="float:right;" class="thatcamp-favorite listed-count"><?php echo 'Favorited:'. $a->favorite_count; ?></span></h3>
+							<h3 class="post-title"><a href="<?php echo strip_tags($post_link); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), strip_tags($post_title) ); ?>" rel="bookmark" class="postlink"><?php echo strip_tags($post_title); ?></a><span class="thatcamp-favorite-listed-count"><?php echo 'Favorites: '. $a->favorite_count; ?></span></h3>
 						</header>
 						<span class="meta-author"><?php printf( _x( 'By %s', 'Post written by...', 'thatcamp' ), bp_core_get_userlink( $a->user_id ) ); ?></span>
 						<span class="meta-source"><?php printf( _x( 'at %s', 'From the blog...', 'thatcamp' ), $source_blog_link ); ?></span>
@@ -544,7 +544,7 @@ class THATCamp_Favorites {
   font-style: italic;
   color: #999;
 }
-.thatcamp-favorite .button, .thatcamp-favorite.listed-count {
+.thatcamp-favorite .button {
   background: #668800 url('http://epicplay2013.thatcamp.org/wp-content/themes/thatcamp-karma/assets/images/thatcamp-greenbutton.jpg');
   font-style: normal;
   border: 1px solid #668800;
@@ -562,6 +562,11 @@ class THATCamp_Favorites {
   line-height: 14px;
   text-decoration: -1px -1px 0px #668800;
 }
+
+.thatcamp-favorite-listed-count {
+float: right; 
+}
+
 .thatcamp-favorite .button:hover {
   opacity: 0.9;
 }
