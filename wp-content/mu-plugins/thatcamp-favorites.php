@@ -484,7 +484,7 @@ class THATCamp_Favorites {
 						<span class="meta-author"><?php printf( _x( 'By %s', 'Post written by...', 'thatcamp' ), bp_core_get_userlink( $a->user_id ) ); ?></span>
 						<span class="meta-source"><?php printf( _x( 'at %s', 'From the blog...', 'thatcamp' ), $source_blog_link ); ?></span>
 						<a href="<?php echo strip_tags($post_link); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), strip_tags($post_title) ); ?>" rel="bookmark" class="postlink"><span class="meta-date"><?php echo mysql2date('l, F j, Y' , $a->date_recorded ); ?></span></a>
-						<span class="meta-favs"><?php
+						<span class="meta-favs"><?php # For if we want to use the button instead. 
 													#  echo $this->get_favorite_button(array(
 													#				'user_id' => bp_loggedin_user_id(),
 													#				'post_id' => $a->secondary_item_id,
