@@ -323,11 +323,11 @@ class THATCamp_Favorites {
 	
 	public function tc_favslist_shortcode($atts){
 		extract(
-			shortcode_atts(
+			shortcode_atts(array(
 				'exclude_zero' 	=> 'yes',
 				'count'			=> 20,
 				'blogs_only'	=> 'yes',
-			, $atts, 'tcfavs')
+			), $atts, 'tcfavs')
 		);
 		$exclude_zero = strtolower($exclude_zero);
 		$blogs_only = strtolower($blogs_only);
@@ -363,12 +363,13 @@ class THATCamp_Favorites {
 		foreach ( $activities['activities'] as &$a ) {
 			$a->favorite_count = $fav_counts[ $a->id ];
 		}
-		
+		?><div class="thatcamp-stream"><?php 
 		if ($shortcode) {
-			$this->outside_fav_menu($admin_status, $activities);
+			$this->outside_fav_menu($admin_status, $activities, $exclude_zero, $count, $blogs_only);
 		} else {
 			$this->inside_fav_menu($admin_status, $activities);
 		}
+		?></div><?php 
 
 	}
 	
@@ -422,7 +423,7 @@ class THATCamp_Favorites {
 				</tr>
 			<?php 
 			
-				if (($count > 0) && ($c >= 20)){
+				if (($count > 0) && ($c >= $count)){
 					break;
 				}
 			endforeach ?>
@@ -434,20 +435,60 @@ class THATCamp_Favorites {
 	/*
 	 * Favourites menu for display by shortcode
 	 */
-	public function outside_fav_menu($admin_status, $activities){
+	public function outside_fav_menu($admin_status, $activities, $exclude_zero = true, $count = 20, $blogs_only = true){
 		
 		$c = 0;	
 		foreach ( $activities['activities'] as $a ) : 
+			if(($blogs_only) && ('new_blog_post' != $a->type)){
+				continue;
+			}
+			if(($exclude_zero) && (0 == $a->favorite_count)){
+				continue;
+			}
 			$c++;
 			?>
 			
-				<article id="activity-count-<?php echo $c; ?>">
+				<article id="activity-count-<?php echo $c; ?>" class="post hentry">
 					<div class="post-avatar">
+						<?php 
+							$source_blog_id = $a->item_id;
+							$source_blog_url  = get_blog_option( $source_blog_id, 'home', true );
+							$source_blog_name = get_blog_option( $source_blog_id, 'blogname', true );
+							$source_blog_link = '<a href="' . $source_blog_url . '">' . $source_blog_name . '</a>';
+							$avatar = bp_core_fetch_avatar( array(
+								'item_id' => $a->user_id,
+								'email'   => $a->user_email,
+								'width'   => 50,
+								'height'  => 50,
+								'alt'     => sprintf( __( 'Profile picture of %s', 'thatcamp' ), $a->display_name )
+							) );
 						
+						?>
+						<span class="img-wrapper <?php echo $a->user_id; ?>"><?php echo $avatar; ?></span>						
 					</div>
-			
+					<div class="post-meta">
+						<header class="post-header">
+						<?php 
+							$pt = preg_match_all( '/.*?(,)(.*)(,)/is', $a->action, $p );
+							$post_title = $p[2][0];
+							if (empty($post_title)){
+								$post_title = substr($a->content, 0, 60);
+							}
+							$author = preg_replace( '/(.*?<\/a>).*/', '\1', $a->action );
+							$site = preg_replace( '/.*the site (.*)$/', '\1', $a->action );
+							$fav_count = number_format_i18n( $a->favorite_count );
+							$post_link = $a->primary_link;
+						?>
+							<h3 class="post-title"><a href="<?php echo strip_tags($post_link); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), strip_tags($post_title) ); ?>" rel="bookmark" class="postlink"><?php echo $post_title; ?></a></h3>
+						</header>
+						<span class="meta-author"><?php printf( _x( 'By %s', 'Post written by...', 'thatcamp' ), bp_core_get_userlink( $a->user_id ) ); ?></span>
+						<span class="meta-source"><?php printf( _x( 'at %s', 'From the blog...', 'thatcamp' ), $source_blog_link ); ?></span>
+						<a href="<?php echo strip_tags($post_link); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), strip_tags($post_title) ); ?>" rel="bookmark" class="postlink"><span class="meta-date"><?php echo mysql2date('l, F j, Y' , $a->date_recorded ); ?></span></a>
+				
+				</article>				
 			<?php
-				if (($count > 0) && ($c >= 20)){
+				#var_dump($a);
+				if (($count > 0) && ($c >= $count)){
 					break;
 				}			
 		endforeach; 
