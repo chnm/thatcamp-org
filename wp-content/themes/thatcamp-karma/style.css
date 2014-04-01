@@ -1188,8 +1188,33 @@ a:hover.button.socialbutton {
   margin: 0 10px 0 0;
 }
 
+div#bbpress-forums, div#bbpress-forums div, div#bbpress-forums span, div#bbpress-forums ul {
+font-size: medium !important;
+}
+
+li.bbp-topic-title { 
+width: 54%;
+}
+
+li.bbp-topic-voice-count { 
+width: 9%;
+}
+
+li.bbp-topic-reply-count { 
+width: 9%;
+}
+
+li.bbp-topic-freshness { 
+width: 25%;
+}
+
+span.bbp-topic-freshness-author img.avatar, p.bbp-forum-description img.avatar, span.bbp-topic-started-by img.avatar {
+margin-bottom: 3px !important;
+}
+
 #bbp-search-form {
-width: 280px;
+width: 330px;
+margin-top: 15px;
 }
 
 #bbp-search-form .screen-reader-text {
@@ -3781,9 +3806,9 @@ ie9 #user-section {
   div.item-desc div, div.item-desc span {
   display:block;
   }
-  div#primary {
+/*  div#primary {
   width: 100%;
-  }
+  } */
   .post, .page {
   overflow: visible;
   }
@@ -3866,9 +3891,9 @@ div.dir-search input[type="text"], #tc-region {
   bottom: 20px;
   left: -7px;
   }
-  div#primary {
+/*  div#primary {
   width: 100%;
-  }
+  } */
   #sidebar {
     width: 75%;
     display:block;
@@ -3937,7 +3962,7 @@ div.dir-search input[type="text"], #tc-region {
     float: right;
     width: 68%;
     clear: none;
-  }
+  } 
   #sidebar {
     width: 26%;
     float: left;
@@ -3946,16 +3971,18 @@ div.dir-search input[type="text"], #tc-region {
     margin-top: 20px;
   }
   #sidebar-documents {
-    width: 35%;
+    width: 26%;
     float: left;
     clear:none;
+    padding: 0px 15px;
+    margin-top: 20px;    
   }
-nav#side-nav li ul {
-  display:none;
+  nav#side-nav li ul {
+  	display:none;
   }
   #primary-documents {
     float: right;
-    width: 60%;
+    width: 68%;
     clear:none;
   }
   #sidebar-innerleft {
