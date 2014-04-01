@@ -1192,19 +1192,19 @@ div#bbpress-forums, div#bbpress-forums div, div#bbpress-forums span, div#bbpress
 font-size: medium !important;
 }
 
-li.bbp-topic-title { 
+li.bbp-forum-info, li.bbp-topic-title  { 
 width: 54%;
 }
 
-li.bbp-topic-voice-count { 
+li.forum-topic-count, li.bbp-topic-voice-count { 
 width: 9%;
 }
 
-li.bbp-topic-reply-count { 
+li.bbp-forum-reply-count, li.bbp-topic-reply-count { 
 width: 9%;
 }
 
-li.bbp-topic-freshness { 
+li.bbp-forum-freshness, li.bbp-topic-freshness { 
 width: 25%;
 }
 
