@@ -1,6 +1,6 @@
 <?php
 /**
- * Sidebar Documents
+ * Sidebar Forums
  *
  * @package thatcamp
  * @since thatcamp 1.0
