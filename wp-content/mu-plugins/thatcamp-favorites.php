@@ -341,7 +341,7 @@ class THATCamp_Favorites {
 		return ob_get_clean();
 	}
 
-	public function admin_menu_cb($override = false, $exclude_zero = false, $count = 0, $blogs_only = false, $shortcode = false, $since) {
+	public function admin_menu_cb($override = false, $exclude_zero = false, $count = 0, $blogs_only = false, $shortcode = false, $since = false) {
 		if ($override){
 			$admin_status = true;
 		} else {
