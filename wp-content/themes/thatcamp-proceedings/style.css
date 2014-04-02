@@ -48,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     h1 { font-size: 32px; margin-top: 0; }
-    h2 { font-size: 24px; margin-top: 20px; }
+    h2 { font-size: 24px; margin-top: 20px; margin-bottom: 5px;}
     h3 { font-size: 20px; margin-top: 20px; }
     h4 { font-size: 16px; margin-top: 20px; }
 
@@ -516,6 +516,10 @@ a.subscribe-email {
 .nav-newer {
 	text-align: right;
 }
+
+h3.widgettitle { font-size: 24px; margin-top: 20px; margin-bottom: 5px;}
+
+
 
 /* Different color scheme for external links
 .post-title a:link, .meta-author a:link, .meta-source a:link, .readmore a:link {
