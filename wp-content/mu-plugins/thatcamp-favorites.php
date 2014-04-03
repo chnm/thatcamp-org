@@ -487,7 +487,7 @@ class THATCamp_Favorites {
 							$fav_count = number_format_i18n( $a->favorite_count );
 							$post_link = $a->primary_link;
 						?>
-							<h3 class="post-title"><a href="<?php echo strip_tags($post_link); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), strip_tags($post_title) ); ?>" rel="bookmark" class="postlink"><?php echo strip_tags($post_title); ?></a><span class="thatcamp-favorite-listed-count"><?php echo 'Favorites: '. $a->favorite_count; ?></span></h3>
+							<h3 class="post-title"><?php echo $this->get_post_link( $a ); ?> <span class="thatcamp-favorite-listed-count"><?php echo 'Favorites: '. $a->favorite_count; ?></span></h3>
 						</header>
 						<span class="meta-author"><?php printf( _x( 'By %s', 'Post written by...', 'thatcamp' ), bp_core_get_userlink( $a->user_id ) ); ?></span>
 						<span class="meta-source"><?php printf( _x( 'at %s', 'From the blog...', 'thatcamp' ), $source_blog_link ); ?></span>
@@ -553,8 +553,10 @@ class THATCamp_Favorites {
 
                         restore_current_blog();
                 }
+                
+                $attr_title = sprintf( esc_attr__( 'Permalink to %s', 'thatcamp'), strip_tags($post_title) );
 
-                return sprintf( '<a href="%s">%s</a>', $post_url, $post_title );
+                return sprintf( '<a href="%s" title="%s" rel="bookmark" class="postlink">%s</a>', $post_url, $attr_title, $post_title );
         }
 
 	public function get_most_favorited_activities( $is_network_admin = false ) {
