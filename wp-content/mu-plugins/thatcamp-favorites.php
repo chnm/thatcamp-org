@@ -402,13 +402,12 @@ class THATCamp_Favorites {
 			?>
 				<tr>
 					<td>
-						<?php $post = preg_replace( '/.*new post, (.*?<\/a>).*/', '\1', $a->action ) ?>
-						<?php echo $post ?>
+						<?php echo $this->get_post_link( $a ) ?>
 					</td>
 
 					<td>
 						<?php $author = preg_replace( '/(.*?<\/a>).*/', '\1', $a->action ) ?>
-						<?php echo $author ?>
+						<?php echo bp_core_get_userlink( $a->user_id ) ?>
 					</td>
 
 					<?php if ( is_network_admin() ) : ?>
@@ -502,16 +501,61 @@ class THATCamp_Favorites {
 						<p class="excerpt"><?php echo $a->content; ?>
 							<span class="readmore"><a href="<?php echo strip_tags($post_link); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="postlink"> Read more on the original site...</a></span>
 						</p>
-							
+
 					</div>
-				</article>				
+				</article>
 			<?php
 				#var_dump($a);
 				if (($count > 0) && ($c >= $count)){
 					break;
-				}			
-		endforeach; 
+				}
+		endforeach;
 	}
+
+        /**
+         * Get a post link from a new_blog_post activity item.
+         */
+        public function get_post_link( $activity ) {
+                $link = '';
+
+                if ( 'new_blog_post' !== $activity->type && 'new_blog_comment' !== $activity->type ) {
+                        return $link;
+                }
+
+                // Check activitymeta first
+                $post_title = bp_activity_get_meta( $activity->id, 'post_title' );
+
+                if ( 'new_blog_post' === $activity->type ) {
+                        $post_url = $activity->primary_link;
+                } else {
+                        $post_url = bp_activity_get_meta( $activity->id, 'post_url' );
+                }
+
+                if ( empty( $post_title ) || empty( $post_url ) ) {
+                        switch_to_blog( $activity->item_id );
+
+                        if ( 'new_blog_comment' === $activity->type ) {
+                                $comment = get_comment( $activity->secondary_item_id );
+                                if ( ! empty( $comment->comment_post_ID ) ) {
+                                        $post_id = $comment->comment_post_ID;
+                                        $post_url = get_permalink( $post_id );
+                                        bp_activity_update_meta( $activity->id, 'post_url', $post_url );
+                                }
+                        } else {
+                                $post_id = $activity->secondary_item_id;
+                        }
+
+                        $post = get_post( $activity->secondary_item_id );
+                        if ( is_a( $post, 'WP_Post' ) ) {
+                                $post_title = $post->post_title;
+                                bp_activity_update_meta( $activity->id, 'post_title', $post_title );
+                        }
+
+                        restore_current_blog();
+                }
+
+                return sprintf( '<a href="%s">%s</a>', $post_url, $post_title );
+        }
 
 	public function get_most_favorited_activities( $is_network_admin = false ) {
 		global $wpdb, $bp;
