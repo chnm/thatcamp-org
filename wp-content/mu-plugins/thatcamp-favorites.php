@@ -16,7 +16,7 @@ class THATCamp_Favorites {
 
 		add_action( 'bp_actions', array( $this, 'catch_mark_favorite' ), 5 );
 		add_action( 'bp_actions', array( $this, 'catch_unmark_favorite' ), 5 );
-		
+
 		//shortcode
 		add_shortcode('tcfavs', array($this, 'tc_favslist_shortcode'));
 
@@ -26,7 +26,7 @@ class THATCamp_Favorites {
 
 		// css
 		add_action( 'wp_print_scripts', array( $this, 'print_styles' ) );
-		
+
 		#add_filter( 'login_redirect', array($this,'redirect_to_favorite_after_login'), 10, 3 );
 	}
 
@@ -53,31 +53,31 @@ class THATCamp_Favorites {
 		add_filter( 'the_content', array( $this, 'add_button_to_the_content' ), 9999999 );
 		return $content;
 	}
-	
-	
+
+
 	public function get_fed_favorite_button($id = 0){
 		if ($id == 0){
 			$id = get_the_ID();
 		}
-		
+
 		$blog_id = get_post_meta($id, 'blogid', true);
 		if (empty($blog_id)){
-			$button = $this->get_favorite_button(); 	
+			$button = $this->get_favorite_button();
 		} else {
-		$url = get_post_meta($id, 'permalink', true); 
+		$url = get_post_meta($id, 'permalink', true);
 			switch_to_blog($blog_id);
 			$blog_post_id = url_to_postid( $url );
 			$args = array(
 				'blog_id' => $blog_id,
-				'post_id' => $blog_post_id 
+				'post_id' => $blog_post_id
 			);
-			
-			$button = $this->get_favorite_button($args); 
+
+			$button = $this->get_favorite_button($args);
 			restore_current_blog();
 		}
-		
+
 		return $button;
-	}	
+	}
 
 	/**
 	 * Creates a favorite button
@@ -96,12 +96,12 @@ class THATCamp_Favorites {
                 if ( ! $activity_id ) {
                         return '';
                 }
-                
+
 		if( 0 == $r['user_id'] ){
 			$style_logged = 'style="background:rgba(125, 138, 88, 0.71);"';
 		} else {
 			$style_logged = '';
-		}                
+		}
 
 		$afav_count = intval( bp_activity_get_meta( $activity_id, 'thatcamp_favoriters_count' ) );
 
@@ -142,15 +142,15 @@ class THATCamp_Favorites {
 			$afav_gloss
 		);
 	}
-	
-	
+
+
 	public function get_new_favorite_count_by_user( $user_id ) {
-	
+
 		$favs = bp_activity_get_user_favorites( $user_id );
 		$count = count( $favs );
 
 		return $count;
-	}	
+	}
 
 	/**
 	 * Given a post_id and a blog_id, return the corresponding activity_id
@@ -225,7 +225,7 @@ class THATCamp_Favorites {
 		bp_activity_update_meta( $activity_id, 'thatcamp_favoriters', $activity_favoriters );
 		bp_activity_update_meta( $activity_id, 'thatcamp_favoriters_count', count( $activity_favoriters ) );
 	}
-	
+
 	# Trying to redirect the user to the origin page on login
 	public function redirect_to_favorite_after_login($redirect_to, $request, $user){
 		#var_dump($request); die();
@@ -236,7 +236,7 @@ class THATCamp_Favorites {
 			#var_dump($_GET); die();
 			return admin_url();
 		}
-	}	
+	}
 
 	/**
 	 * Screen function for grabbing a favorite request
@@ -320,7 +320,7 @@ class THATCamp_Favorites {
 
 		return $aloc > $bloc ? 1 : -1;
 	}
-	
+
 	public function tc_favslist_shortcode($atts){
 		extract(
 			shortcode_atts(array(
@@ -337,7 +337,7 @@ class THATCamp_Favorites {
 		$shortcode = true;
 		ob_start();
 		$this->admin_menu_cb(true, $exclude_zero, (int)$count, $blogs_only, $shortcode, $since);
-		
+
 		return ob_get_clean();
 	}
 
@@ -346,7 +346,7 @@ class THATCamp_Favorites {
 			$admin_status = true;
 		} else {
 			$admin_status = is_network_admin();
-		}		
+		}
 		$aids = $this->get_most_favorited_activities( $admin_status );
 
 		$activities = bp_activity_get( array( 'in' => wp_list_pluck( $aids, 'activity_id' ) ) );
@@ -364,22 +364,22 @@ class THATCamp_Favorites {
 		foreach ( $activities['activities'] as &$a ) {
 			$a->favorite_count = $fav_counts[ $a->id ];
 		}
-		?><div class="thatcamp-stream"><?php 
+		?><div class="thatcamp-stream"><?php
 		if ($shortcode) {
 			$this->outside_fav_menu($admin_status, $activities, $exclude_zero, $count, $blogs_only, $since);
 		} else {
 			$this->inside_fav_menu($admin_status, $activities);
 		}
-		?></div><?php 
+		?></div><?php
 
 	}
-	
+
 	/*
 	 * Menu for display inside the admin dashboard.
 	 */
-	
+
 	public function inside_fav_menu($admin_status, $activities){
-		
+
 		$c = 0;
 		?>
 		<div class="wrap">
@@ -397,7 +397,7 @@ class THATCamp_Favorites {
 
 					<th>Count</th>
 				</tr>
-			<?php foreach ( $activities['activities'] as $a ) : 
+			<?php foreach ( $activities['activities'] as $a ) :
 					$c++;
 			?>
 				<tr>
@@ -421,8 +421,8 @@ class THATCamp_Favorites {
 						<?php echo number_format_i18n( $a->favorite_count ) ?>
 					</td>
 				</tr>
-			<?php 
-			
+			<?php
+
 				if (($count > 0) && ($c >= $count)){
 					break;
 				}
@@ -431,14 +431,14 @@ class THATCamp_Favorites {
 		</div>
 		<?php
 	}
-	
+
 	/*
 	 * Favourites menu for display by shortcode
 	 */
 	public function outside_fav_menu($admin_status, $activities, $exclude_zero = true, $count = 20, $blogs_only = true, $since){
-		
-		$c = 0;	
-		foreach ( $activities['activities'] as $a ) : 
+
+		$c = 0;
+		foreach ( $activities['activities'] as $a ) :
 			if(($blogs_only) && ('new_blog_post' != $a->type)){
 				continue;
 			}
@@ -451,14 +451,14 @@ class THATCamp_Favorites {
 				if ( $since_datetime > $a_unix_datetime){
 					continue;
 				}
-				
+
 			}
 			$c++;
 			?>
-			
+
 				<article id="activity-count-<?php echo $c; ?>" class="post hentry">
 					<div class="post-avatar">
-						<?php 
+						<?php
 							$source_blog_id = $a->item_id;
 							$source_blog_url  = get_blog_option( $source_blog_id, 'home', true );
 							$source_blog_name = get_blog_option( $source_blog_id, 'blogname', true );
@@ -470,13 +470,13 @@ class THATCamp_Favorites {
 								'height'  => 50,
 								'alt'     => sprintf( __( 'Profile picture of %s', 'thatcamp' ), $a->display_name )
 							) );
-						
+
 						?>
-						<span class="img-wrapper <?php echo $a->user_id; ?>"><?php echo $avatar; ?></span>						
+						<span class="img-wrapper <?php echo $a->user_id; ?>"><?php echo $avatar; ?></span>
 					</div>
 					<div class="post-meta">
 						<header class="post-header">
-						<?php 
+						<?php
 							$pt = preg_match_all( '/.*?(,)(.*)(,)/is', $a->action, $p );
 							$post_title = $p[2][0];
 							if (empty($post_title)){
@@ -492,7 +492,7 @@ class THATCamp_Favorites {
 						<span class="meta-author"><?php printf( _x( 'By %s', 'Post written by...', 'thatcamp' ), bp_core_get_userlink( $a->user_id ) ); ?></span>
 						<span class="meta-source"><?php printf( _x( 'at %s', 'From the blog...', 'thatcamp' ), $source_blog_link ); ?></span>
 						<a href="<?php echo strip_tags($post_link); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), strip_tags($post_title) ); ?>" rel="bookmark" class="postlink"><span class="meta-date"><?php echo mysql2date('l, F j, Y' , $a->date_recorded ); ?></span></a>
-						<span class="meta-favs"><?php # For if we want to use the button instead. 
+						<span class="meta-favs"><?php # For if we want to use the button instead.
 													#  echo $this->get_favorite_button(array(
 													#				'user_id' => bp_loggedin_user_id(),
 													#				'post_id' => $a->secondary_item_id,
@@ -617,7 +617,7 @@ class THATCamp_Favorites {
 }
 
 .thatcamp-favorite-listed-count {
-float: right; 
+float: right;
 }
 
 .thatcamp-favorite .button:hover {
