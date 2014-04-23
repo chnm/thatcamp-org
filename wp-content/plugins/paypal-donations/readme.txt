@@ -3,8 +3,8 @@ Contributors: artstorm
 Donate link: http://johansteen.se/donate/
 Tags: paypal, donation, shortcode, widget, donate, button, sidebar
 Requires at least: 3.0
-Tested up to: 3.8.1
-Stable tag: 1.8.2
+Tested up to: 3.9
+Stable tag: 1.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,11 @@ Contributions are appreciated and encouraged.
 
 
 == Changelog ==
+
+= Version 1.8.3 - 11 Apr 2014 =
+ * Adds a Remove Line Feeds option on the Advanced tab, that makes the PayPal
+   form output not be affected if using a theme or a plugin that modifies
+   WordPress to start auto styling shortcodes/widgets.
 
 = Version 1.8.2 - 22 Mar 2014 =
  * Adds the option to have PayPal open in a new tab.

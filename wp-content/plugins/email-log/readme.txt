@@ -2,8 +2,8 @@
 Contributors: sudar  
 Tags: email, wpmu, wordpress-mu, log  
 Requires at least: 3.3  
-Tested up to: 3.8.1  
-Stable tag: 1.7  
+Tested up to: 3.8.3  
+Stable tag: 1.7.2  
 
 Logs every email sent through WordPress. Works with WordPress Multisite as well
 
@@ -112,6 +112,12 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/wp-readme'>wp-readme</a>, which generates readme files for WordPress Plugins.
 == Changelog ==
 
+= v1.7.2  (2014-04-16) - (Dev time: 0.5 hours) =
+- Fix: Fix issue in register_activation_hook
+
+= v1.7.1  (2014-04-02) - (Dev time: 0.5 hours) =
+- Fix: Fix the issue that was preventing the tables to be created
+
 = v1.7  (2014-03-29) - (Dev time: 2.5 hours) =
 - Fix: Fix whitespace
 - New: Add support for WordPress Multisite (issue #18)
@@ -199,6 +205,12 @@ This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/
 - Initial Release
 
 == Upgrade Notice ==
+
+= 1.7.2 =
+Fix the bug that was introduced in v1.7
+
+= 1.7.1 =
+Fix the bug that was introduced in v1.7
 
 = 1.6 =
 Ability to view content of the email

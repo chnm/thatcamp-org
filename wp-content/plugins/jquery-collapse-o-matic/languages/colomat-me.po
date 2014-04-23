@@ -1,0 +1,156 @@
+# Translation of Collapse-O-Matic in Montenegrin
+# This file is distributed under the same license as the Collapse-O-Matic package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2014-04-14 14:36+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.6.4\n"
+"Project-Id-Version: Collapse-O-Matic\n"
+"POT-Creation-Date: \n"
+"Last-Translator: Twinpictues <info@twinpictures.de>\n"
+"Language-Team: Twinpictures <info@twinpictures.de>\n"
+"Language: me\n"
+
+#: collapse-o-matic.php:383
+msgid "Shortcode Loads Scripts"
+msgstr ""
+
+#: collapse-o-matic.php:384
+msgid "Only load scripts with shortcode."
+msgstr ""
+
+#: collapse-o-matic.php:385
+msgid "Only load Collapse-O-Matic scripts if [expand] shortcode is used."
+msgstr ""
+
+#: collapse-o-matic.php:391
+msgid ""
+"%sCollapse-Pro-Matic%s is our preimum plugin that offers additional "
+"attributes and features for <i>ultimate</i> flexibility."
+msgstr ""
+
+#: collapse-o-matic.php:416
+msgid "%sFree%s Opensource Support"
+msgstr ""
+
+#: collapse-o-matic.php:417
+msgid ""
+"If this plugin %s, please consider %sreviewing it at WordPress.org%s to help "
+"others."
+msgstr ""
+
+#: collapse-o-matic.php:277
+msgid "Settings"
+msgstr ""
+
+#: collapse-o-matic.php:328
+msgid ""
+"Select Light for sites with lighter backgrounds. Select Dark for sites with "
+"darker backgrounds."
+msgstr ""
+
+#: collapse-o-matic.php:376
+msgid "Custom Style"
+msgstr ""
+
+#: collapse-o-matic.php:378
+msgid "Custom CSS style for <em>ultimate flexibility</em>"
+msgstr ""
+
+#: collapse-o-matic.php:309
+msgid "Style"
+msgstr "Stil"
+
+#: collapse-o-matic.php:316
+msgid "Light"
+msgstr "Svetlo"
+
+#: collapse-o-matic.php:317
+msgid "Dark"
+msgstr "Tamno"
+
+#: collapse-o-matic.php:297 collapse-o-matic.php:409
+msgid "Click to toggle"
+msgstr "Klik za toggle"
+
+#: collapse-o-matic.php:298
+msgid "Default Collapse-O-Matic Settings"
+msgstr "Default Collapse-O-Matic Settings"
+
+#: collapse-o-matic.php:333
+msgid "Tag Attribute"
+msgstr "Tag atributa"
+
+#: collapse-o-matic.php:335
+msgid ""
+"HTML tag use to wrap the trigger text. See %sTag Attribute%s in the "
+"documentation for more info."
+msgstr ""
+"HTML tagove upotrebiti za zamotavanje tekst okidača . Pogledajte % Stag "
+"Atribut % s  dokumentaciju za više informacija ."
+
+#: collapse-o-matic.php:345
+msgid "Collapse/Expand Duration"
+msgstr "Collapse/Expand Duration"
+
+#: collapse-o-matic.php:347
+msgid ""
+"A string or number determining how long the animation will run. See "
+"%sDuration%s in the documentation for more info."
+msgstr ""
+"String ili broj određivanja koliko će dugo  trajati animacija . Pogledajte % "
+"sDuration % s  dokumentaciju  za više informacija ."
+
+#: collapse-o-matic.php:352
+msgid "Animation Effect"
+msgstr "Animation Effect"
+
+#: collapse-o-matic.php:359
+msgid "Slide Only"
+msgstr "Samo slajduj"
+
+#: collapse-o-matic.php:360
+msgid "Slide & Fade"
+msgstr "Slajduj & Ukloni"
+
+#: collapse-o-matic.php:371
+msgid ""
+"Animation effect to use while collapsing and expanding. See %sAnimation "
+"Effect%s in the documentation for more info."
+msgstr ""
+"Efekat Animacija koristiti kod kolapsa i proširenje . Pogledajte % "
+"sAnimation Effect % s  dokumentaciju  za više informacija ."
+
+#: collapse-o-matic.php:390
+msgid "Level Up!"
+msgstr "Podigni na veći nivo!"
+
+#: collapse-o-matic.php:398
+msgid "Save Changes"
+msgstr "Sačuvaj promene"
+
+#: collapse-o-matic.php:410
+msgid "About"
+msgstr "o"
+
+#: collapse-o-matic.php:413
+msgid ""
+"Remove clutter, save space. Display and hide additional content in a SEO "
+"friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a "
+"lovely jQuery expanding and collapsing element."
+msgstr ""
+"Uklonite gužvu , uštede prostora . Prikazati i sakriti dodatnih sadržaja na "
+"SEO prijateljski način . Umotajte svaki sadržashortcodes&mdash; kratke "
+"brojeve - u divnom jQuery širenja i rušenja elemenata ."
+
+#: collapse-o-matic.php:415
+msgid ""
+"%sDetailed documentation%s, complete with working demonstrations of all "
+"shortcode attributes, is available for your instructional enjoyment."
+msgstr ""
+" %sDetaljna dokumentacija , zajedno sa radnim demonstracijama svih shortcode "
+"atributa , je dostupna za vaše nastavno uživanje ."

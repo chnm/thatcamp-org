@@ -321,6 +321,20 @@ class PayPalDonations_Admin
             )
         );
         add_settings_field(
+            'remove_lf',
+            __('Remove Line Feeds', PayPalDonations::TEXT_DOMAIN),
+            array($this, 'removeLfCallback'),
+            self::PAGE_SLUG,
+            'extras_section',
+            array(
+                'label_for' => 'remove_lf',
+                'description' => __(
+                    'Enable this if your theme or a plugin adds autostyling to shortcodes/widgets.',
+                    PayPalDonations::TEXT_DOMAIN
+                ),
+            )
+        );
+        add_settings_field(
             'set_checkout_language',
             __('Enable Checkout Language', PayPalDonations::TEXT_DOMAIN),
             array($this, 'setCheckoutLangugageCallback'),
@@ -590,6 +604,23 @@ class PayPalDonations_Admin
             false;
         echo "<input type='checkbox' id='new_tab' ";
         echo "name='{$optionKey}[new_tab]' value='1' ";
+        if ($checked) {
+            echo 'checked ';
+        }
+        echo "/>";
+
+        echo "<p class='description'>{$args['description']}</p>";
+    }
+
+    public function removeLfCallback($args)
+    {
+        $optionKey = PayPalDonations::OPTION_DB_KEY;
+        $options = get_option($optionKey);
+        $checked = isset($options['remove_lf']) ?
+            $options['remove_lf'] :
+            false;
+        echo "<input type='checkbox' id='remove_lf' ";
+        echo "name='{$optionKey}[remove_lf]' value='1' ";
         if ($checked) {
             echo 'checked ';
         }

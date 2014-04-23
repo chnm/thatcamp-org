@@ -3,7 +3,7 @@
  * Ultimate Tag Cloud Widget
  *
  * @author     Rickard Andersson <rickard@0x539.se>
- * @version    2.6.1
+ * @version    2.7.2
  * @license    GPLv2
  * @package    utcw
  * @subpackage main
@@ -106,9 +106,7 @@ class UTCW_Render
             // If theme styling should be avoided, keep the utcw specific classes
             if ($this->config->avoid_theme_styling) {
                 $markup[] = $this->config->before_widget;
-            }
-
-            // If theme styling should be enforced, swap classes to the regular tag cloud classes
+            } // If theme styling should be enforced, swap classes to the regular tag cloud classes
             else {
                 $markup[] = str_replace('widget_utcw', 'widget_utcw widget_tag_cloud', $this->config->before_widget);
             }
@@ -154,10 +152,11 @@ class UTCW_Render
             $displayName = $this->plugin->applyFilters('utcw_render_term_display_name', $displayName, $term->name);
 
             $terms[] = sprintf(
-                '%s<%s class="tag-link-%s" href="%s" style="font-size:%s%s"%s>%s</%s>%s',
+                '%s<%s class="tag-link-%s utcw-tag utcw-tag-%s" href="%s" style="font-size:%s%s"%s>%s</%s>%s',
                 $this->config->prefix,
                 $tag,
                 $term->term_id,
+                $term->slug,
                 $term->link,
                 $term->size,
                 $color,
@@ -192,7 +191,7 @@ class UTCW_Render
             $markup[] = $this->config->after_widget;
         }
 
-        return join('', $markup);
+        return do_shortcode(join('', $markup));
     }
 
     /**
@@ -251,7 +250,7 @@ class UTCW_Render
                 $term_title_singular = $this->plugin->applyFilters('utcw_render_term_title_singular', '%d topic');
                 $term_title_plural   = $this->plugin->applyFilters('utcw_render_term_title_plural', '%d topics');
 
-                $title = _n($term_title_singular, $term_title_plural, $term->count);
+                $title = _n($term_title_singular, $term_title_plural, $term->count, 'utcw');
 
                 if (strpos($title, '%d') !== false) {
                     $title = sprintf(' title="' . $title . '"', $term->count);

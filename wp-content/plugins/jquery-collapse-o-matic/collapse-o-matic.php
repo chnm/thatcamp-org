@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.5.7
+Version: 1.5.8
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -23,7 +23,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.5.7';
+	var $version = '1.5.8';
 
 	/**
 	 * Used as prefix for options entry
@@ -46,7 +46,8 @@ class WP_Collapse_O_Matic {
 		'duration' => 'fast',
 		'slideEffect' => 'slideFade',
 		'custom_css' => '',
-		'script_check' => 1
+		'script_check' => '',
+		'script_location' => 'footer'
 	);
 
 	/**
@@ -66,8 +67,12 @@ class WP_Collapse_O_Matic {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'plugin_actions' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action( 'wp_footer', array( $this, 'colomat_js_vars' ) );
-		
+		if($this->options['script_location'] == 'footer' ){
+			add_action( 'wp_footer', array( $this, 'colomat_js_vars' ) );
+		}
+		else{
+			add_action('wp_head', array( $this, 'colomat_js_vars' ) );
+		}
 		add_shortcode('expand', array($this, 'shortcode'));
 		
 		//add expandsub shortcodes
@@ -97,7 +102,11 @@ class WP_Collapse_O_Matic {
 	 */
 	function collapsTronicInit() {		
 		//collapse script
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.7', true);
+		$load_in_footer = false;
+		if($this->options['script_location'] == 'footer' ){
+			$load_in_footer = true;
+		}
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.7', $load_in_footer);
 		if( empty($this->options['script_check']) ){
 			wp_enqueue_script('collapseomatic-js');
 		}
@@ -380,9 +389,33 @@ class WP_Collapse_O_Matic {
 								</tr>
 								
 								<tr>
-									<th><?php _e( 'Shortcode Loads Scripts', 'colomat' ) ?></th>
+									<th><?php _e( 'Shortcode Loads Scripts', 'colomat' ) ?>:</th>
 									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[script_check]" name="<?php echo $this->options_name ?>[script_check]" value="1"  <?php echo checked( $options['script_check'], 1 ); ?> /> <?php _e('Only load scripts with shortcode.', 'colomat'); ?>
 										<br /><span class="description"><?php _e('Only load Collapse-O-Matic scripts if [expand] shortcode is used.', 'colomat'); ?></span></label>
+									</td>
+								</tr>
+								
+								<tr>
+									<th><?php _e( 'Script Load Location', 'colomat' ) ?>:</th>
+									<td><label><select id="<?php echo $this->options_name ?>[script_location]" name="<?php echo $this->options_name ?>[script_location]">
+										<?php
+											if(empty($options['script_location'])){
+												$options['script_location'] = 'footer';
+											}
+											$sl_array = array(
+												__('Header', 'colomat') => 'header',
+												__('Footer', 'colomat') => 'footer'
+											);
+											foreach( $sl_array as $key => $value){
+												$selected = '';
+												if($options['script_location'] == $value){
+													$selected = 'SELECTED';
+												}
+												echo '<option value="'.$value.'" '.$selected.'>'.$key.'</option>';
+											}
+										?>
+										</select>
+										<br /><span class="description"><?php _e('Where should the script be loaded, in the Header or the Footer?', 'colomat'); ?></span></label>
 									</td>
 								</tr>
 								

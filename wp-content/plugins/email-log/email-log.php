@@ -5,7 +5,7 @@ Plugin URI: http://sudarmuthu.com/wordpress/email-log
 Description: Logs every email sent through WordPress
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
 Author: Sudar
-Version: 1.7
+Version: 1.7.2
 Author URI: http://sudarmuthu.com/
 Text Domain: email-log
 Domain Path: languages/
@@ -29,6 +29,15 @@ Check readme file for full release notes
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+
+/**
+ * Plugin Root File
+ *
+ * @since 1.7.2
+ */
+if ( ! defined( 'EMAIL_LOG_PLUGIN_FILE' ) ) {
+    define( 'EMAIL_LOG_PLUGIN_FILE', __FILE__ );
+}
 
 // handle installation and table creation
 require_once dirname( __FILE__ ) . '/include/install.php';

@@ -2,10 +2,10 @@
 
 Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
-Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more
+Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more, plugin oven
 Requires at least: 3.5
-Tested up to: 3.8
-Stable tag: 1.5.7
+Tested up to: 3.9
+Stable tag: 1.5.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,13 +21,13 @@ Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` 
 1. Activate the Plug-in
 1. Add a the shortcode to your post like so: `[expand title="Displayed Title Goes Here"]Hidden content goes here[/expand]`
 1. Test that the this plug-in meets your demanding needs.
-1. Tweak the CSS to match your flavor.
+1. Tweak the CSS to match your flavour.
 1. Rate the plug-in and verify if it works at wordpress.org.
 1. Leave a comment regarding bugs, feature request, cocktail recipes at http://wordpress.org/tags/jquery-collapse-o-matic/
 
 == Frequently Asked Questions ==
 
-= Where can I translate this plugin into my favorite langauge? =
+= Where can I translate this plugin into my favourite language? =
 <a href='http://translate.twinpictures.de/projects/colomat'>Community translation for Collapse-O-Matic</a> has been set up. All are <a href='http://translate.twinpictures.de/wordpress/wp-login.php?action=register'>welcome to join</a>.
 
 = I am a Social Netwookiee, might Twinpictures have a Facebook page? =
@@ -49,6 +49,10 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.5.8 =
+* load scripts only if shortcode is in use defaults to false - load all the time
+* added option to choose where all scripts will load: header or footer
 
 = 1.5.7 =
 * option to only load scripts if shortcode is in use
@@ -229,6 +233,10 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.5.8 =
+* scripts always load by default
+* can choose if script loads in header or footer
 
 = 1.5.7 =
 * option to only load scripts if shortcode is in use
