@@ -1,0 +1,96 @@
+body, img, input, textarea {
+font-family: calibri, sans-serif;
+font-size: 12px;
+}
+
+a:link,
+a:visited,
+a:active,
+a:focus {
+color: #ff6600;
+}
+
+#background {
+background: url(img/blue_background.jpg);
+}
+
+#layout {
+background: url(img/blue_layout.jpg) center 35px no-repeat;
+min-height: 600px;
+}
+
+#c_top {
+height: 30px;
+background: black;
+border-bottom: 5px solid #003a57;
+}
+
+#logo {
+width: 660px;
+background: url(img/blue_logo.png);
+}
+
+#locality {
+width: 300px;
+background: url(img/blue_locality_2011-florence.png);
+}
+
+#navigation {
+border-bottom: 5px solid #006699;
+}
+
+#navigation li.current_page_parent a:link,
+#navigation li.current_page_parent a:visited,
+#navigation li.current_page_item a:link,
+#navigation li.current_page_item a:visited {
+background: #006699;
+}
+
+#navigation ul li ul li,
+#navigation ul li ul li a:link,
+#navigation ul li ul li a:visited,
+#navigation ul li.current_page_item ul li,
+#navigation ul li.current_page_item ul li a:link,
+#navigation ul li.current_page_item ul li a:visited,
+#navigation ul li.current_page_parent ul li,
+#navigation ul li.current_page_parent ul li a:link,
+#navigation ul li.current_page_parent ul li a:visited {
+font-size: 11px;
+color: #666;
+}
+
+#navigation ul li ul li a:hover,
+#navigation ul li.current_page_item ul li a:hover,
+#navigation ul li.current_page_parent ul li a:hover {
+background: #006699;
+color: white;
+border-bottom: 1px solid #006699;
+}
+
+.postmetadata a:link,
+.postmetadata a:visited {
+color: #336699;
+}
+
+/* font */
+
+#search input {
+font-size: 11px;
+}
+
+#navigation li a:link,
+#navigation li a:visited {
+font-size: 14px;
+}
+
+#content h2 {
+font-size: 18px;
+}
+
+#content h2 span:after {
+font-size: 14px;
+}
+
+#sidebar h2 {
+font-size: 16px;
+}
