@@ -6,7 +6,7 @@ Plugin URI: http://wordpress.org/extend/plugins/polldaddy/
 Description: Create and manage Polldaddy polls and ratings in WordPress
 Author: Automattic, Inc.
 Author URL: http://polldaddy.com/
-Version: 2.0.23
+Version: 2.0.24
 */
 
 // You can hardcode your Polldaddy PartnerGUID (API Key) here
@@ -3679,7 +3679,7 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 			}
 
 			if ( empty( $pd_rating ) ) { //something's up!
-				echo '<div class="error" id="polldaddy"><p>'.sprintf( __( 'Sorry! There was an error creating your rating widget. Please contact <a href="%1$s" %2$s>Polldaddy support</a> to fix this.', 'polldaddy' ), 'http://polldaddy.com/feedback/', 'target="_blank"' ) . '</p></div>';
+				echo '<div class="error" id="polldaddy"><p>'.sprintf( __( 'Sorry! There was an error creating your rating widget. Please contact <a href="%1$s" %2$s>Polldaddy support</a> and tell them your usercode is %3$s.', 'polldaddy' ), 'http://polldaddy.com/feedback/', 'target="_blank"', $this->rating_user_code ) . '</p></div>';
 				$error = true;
 			} else {
 				$rating_id = (int) $pd_rating->_id;
@@ -4867,7 +4867,7 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 		</h3>
 		<p><?php _e( '<em>Polldaddy</em> and <em>WordPress.com</em> are now connected using <a href="http://en.support.wordpress.com/wpcc-faq/">WordPress.com Connect</a>. If you have a WordPress.com account you can use it to login to <a href="http://polldaddy.com/">Polldaddy.com</a>. Click on the Polldaddy "sign in" button, authorize the connection and create your new Polldaddy account.', 'polldaddy' ); ?></p>
 		<p><?php _e( 'Login to the Polldaddy website and scroll to the end of your <a href="http://polldaddy.com/account/#apikey">account page</a> to create or retrieve an API key.', 'polldaddy' ); ?></p>
-		<?php if ( $account_email != false ) { ?>
+		<?php if ( isset( $account_email ) && $account_email != false ) { ?>
 			<p><?php printf( __( 'Your account is currently linked to this API key: <strong>%s</strong>', 'polldaddy' ), WP_POLLDADDY__PARTNERGUID ); ?></p>
 			<br />
 			<h3><?php _e( 'Link to a different Polldaddy account', 'polldaddy' ); ?></h3>
@@ -4899,6 +4899,13 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
   </form>
   <br />
   <?php } ?>
+<?php 
+// if not connected to a Polldaddy account can't save defaults so don't show the form.
+if ( false == is_object( $poll ) ) {
+	echo "</div>";
+	return false;
+}
+?>
   <h3>
     <?php _e( 'General Settings', 'polldaddy' ); ?>
   </h3>

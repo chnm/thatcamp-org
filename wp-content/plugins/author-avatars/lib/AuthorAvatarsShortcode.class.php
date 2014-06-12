@@ -73,15 +73,21 @@ class AuthorAvatarsShortcode {
 		
 		// hidden users 
 		$hiddenusers = array(); // default value: no restriction -> all users
-		if (!empty($atts['hiddenusers'])) {
-			if (!is_array( $atts['hiddenusers'])){
-				$hiddenusers = explode(',', $atts['hiddenusers']);
-			}else{
-				$hiddenusers = array_map('trim', $hiddenusers);
+		if ( !empty( $atts['hiddenusers'] ) ) {
+			if ( !is_array( $atts['hiddenusers'] ) ){
+				$hiddenusers = explode( ',', $atts['hiddenusers'] );
 			}
-			$hiddenusers = array_map('trim', $hiddenusers);
 		}
-		$this->userlist->hiddenusers = $hiddenusers;
+		$this->userlist->hiddenusers = array_map( 'trim', $hiddenusers );
+
+		// just these users 
+		$onlyusers = array(); // default value: no restriction -> all users
+		if ( !empty( $atts['onlyusers'] ) ) {
+			if ( !is_array( $atts['onlyusers'] ) ){
+				$onlyusers = explode( ',', $atts['onlyusers'] );
+			}
+		}
+		$this->userlist->onlyusers = array_map( 'trim', $onlyusers );		
 		
 		// link to author page? (deprecated)
 		if (isset($atts['link_to_authorpage'])&& ( strlen($atts['link_to_authorpage'])>0) ) {

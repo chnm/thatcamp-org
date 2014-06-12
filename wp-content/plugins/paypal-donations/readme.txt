@@ -4,7 +4,7 @@ Donate link: http://johansteen.se/donate/
 Tags: paypal, donation, shortcode, widget, donate, button, sidebar
 Requires at least: 3.0
 Tested up to: 3.9
-Stable tag: 1.8.3
+Stable tag: 1.8.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,11 @@ Contributions are appreciated and encouraged.
 
 
 == Changelog ==
+
+= Version 1.8.4 - 5 May 2014 =
+ * Additional currencies: Malaysian Ringgit, Russian Ruble.
+ * Additional Checkout Languages: Belgium, Switzerland, Poland, Russia.
+ * Removes PHP notice when running WordPress in debug mode.
 
 = Version 1.8.3 - 11 Apr 2014 =
  * Adds a Remove Line Feeds option on the Advanced tab, that makes the PayPal

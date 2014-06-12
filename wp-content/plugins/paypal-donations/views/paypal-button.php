@@ -1,6 +1,6 @@
 <!-- Begin PayPal Donations by http://johansteen.se/ -->
 <form action="<?php echo apply_filters( 'paypal_donations_url', 'https://www.paypal.com/cgi-bin/webscr'); ?>" method="post"<?php
-if ($pd_options['new_tab']) {
+if (isset($pd_options['new_tab'])) {
         echo ' target="_blank"';
 }
 ?>>

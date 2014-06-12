@@ -128,11 +128,12 @@ if ( !function_exists( 'AA_is_super_admin' ) ):
 		$user_login = '';
 		if ( !empty( $user_id ) ) {
 			$user_info = get_userdata( $user_id );
-			if ( empty( $user_info->user_login ) )
+			if ( empty( $user_info->user_login ) ){
 				return false;
+			}
 			$user_login = $user_info->user_login;
 		}
-		return is_site_admin( $user_login );
+		return is_super_admin( $user_login );
 	}
 endif;
 

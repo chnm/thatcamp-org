@@ -50,7 +50,7 @@ class FormHelper {
 	 * @param array $attributes Array of (html) attributes.
 	 * @return string Html rendered form element.
 	 */
-	function choice($name, $choices, $values, $attributes=array()) {
+	static function choice($name, $choices, $values, $attributes=array()) {
 		// make sure we have an array of choices
 		if (!is_array($choices) || empty($choices)) {
 			return __("Sorry, no choices available.");
@@ -175,7 +175,7 @@ class FormHelper {
 	 * @param array $attributes Array of (html) attributes.
 	 * @return string Html rendered form element.
 	 */
-	function input($type, $name, $value, $attributes=array()) {
+	static function input($type, $name, $value, $attributes=array()) {
 		$valid_types = array('text', 'hidden', 'password', 'submit', 'reset');
 		if (!in_array($type, $valid_types)) return '[Only types "'.join('", "', $valid_types).'" are allowed in FormHelper::input()]';
 
@@ -234,7 +234,7 @@ class FormHelper {
 	 * @param $attributes Array of attributes
 	 * @return string
 	 */
-	function buildHtmlAttributes($attributes) {
+	static function buildHtmlAttributes($attributes) {
 		if (!is_array($attributes) || empty($attributes)) return '';
 
 		$string = '';
@@ -252,7 +252,7 @@ class FormHelper {
 	 * @param $id string id
 	 * @return string
 	 */
-	function cleanHtmlId($id) {
+	static function cleanHtmlId($id) {
 		return strtolower(trim(str_replace('--', '-', preg_replace('/[\W]/', '-', $id)), "- \t\n\r\0\x0B"));
 	}
 }

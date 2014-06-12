@@ -1,15 +1,15 @@
 <?php
 /**
  * @package Export_Users_to_CSV
- * @version 0.3
+ * @version 1.0.0
  */
 /*
 Plugin Name: Export Users to CSV
-Plugin URI: http://pubpoet.com/plugins/
+Plugin URI: http://wordpress.org/extend/plugins/export-users-to-csv/
 Description: Export Users data and metadata to a csv file.
-Version: 0.3
-Author: PubPoet
-Author URI: http://pubpoet.com/
+Version: 1.0.0
+Author: Ulrich Sossou
+Author URI: http://ulrichsossou.com/
 License: GPL2
 Text Domain: export-users-to-csv
 */
@@ -110,7 +110,7 @@ class PP_EU_Export_Users {
 				if ( in_array( $field, $exclude_data ) )
 					unset( $fields[$key] );
 				else
-					$headers[] = '"' . $field . '"';
+					$headers[] = '"' . strtolower( $field ) . '"';
 			}
 			echo implode( ',', $headers ) . "\n";
 

@@ -35,7 +35,7 @@ class AuthorAvatars {
 	 */
 	function init() {
 
-		if (!$this->system_check()) {
+		if ( !$this->system_check() ) {
 			_e('Author avatars: system check failed.', 'author-avatars');
 		}
 		elseif(!$this->install_check()) {
@@ -65,8 +65,12 @@ class AuthorAvatars {
 	 * Check we got everything we need to use the plugin
 	 */
 	function system_check() {
-		if (!defined('AUTHOR_AVATARS_VERSION')) die('Author Avatars: constant AUTHOR_AVATARS_VERSION is not defined.');
-		if (!defined('AUTHOR_AVATARS_VERSION_HISTORY')) die('Author Avatars: constant AUTHOR_AVATARS_VERSION_HISTORY is not defined.');
+		if ( !defined( 'AUTHOR_AVATARS_VERSION' ) ){
+			die( 'Author Avatars: constant AUTHOR_AVATARS_VERSION is not defined.' );
+		} 
+		if ( !defined( 'AUTHOR_AVATARS_VERSION_HISTORY' ) ){
+			die( 'Author Avatars: constant AUTHOR_AVATARS_VERSION_HISTORY is not defined.' );
+		} 
 		return true;
 	}
 
@@ -75,11 +79,11 @@ class AuthorAvatars {
 	 */
 	function init_settings() {
 		// include global helper functions file.
-		require_once('helper.functions.php');
+		require_once( 'helper.functions.php' );
 		// include settings file
-		require_once('AuthorAvatarsSettings.class.php');
+		require_once( 'AuthorAvatarsSettings.class.php' );
 		// load translation domain on init action
-		add_action('init', array($this, 'load_translation_domain'), 20);
+		add_action( 'init', array( $this, 'load_translation_domain' ), 20 );
 
 
 	}
@@ -91,7 +95,7 @@ class AuthorAvatars {
 	 */
 	function load_translation_domain() {
 		// load translation file
-		$plugin_dir = basename(dirname(dirname(__FILE__)));
+		$plugin_dir = basename( dirname ( dirname( __FILE__ ) ) );
 		load_plugin_textdomain( 'author-avatars', false, $plugin_dir . '/translations' );
 	}
 
@@ -100,20 +104,18 @@ class AuthorAvatars {
 	 */
 	function register_resources() {
 		$aa_ver = AUTHOR_AVATARS_VERSION;
-		// make sure styles are written on wp_head action
-//		add_action( 'wp_head', 'wp_print_styles' );
-		// styles 
-		wp_register_style( 'MCE_BoxStyles', get_stylesheet_directory_uri().'/editorstyle.css' );
-		wp_register_style( 'author-avatars-widget', WP_PLUGIN_URL . '/author-avatars/css/widget.css', array(), $aa_ver );
-		wp_register_style( 'author-avatars-shortcode', WP_PLUGIN_URL . '/author-avatars/css/shortcode.css', array(), $aa_ver );
-		wp_register_style( 'admin-form', WP_PLUGIN_URL . '/author-avatars/css/admin-form.css', array(), $aa_ver );
-/**/	
+
+		// styles
+		wp_register_style( 'author-avatars-widget', plugins_url( '../css/widget.css', __FILE__ ), array(), $aa_ver );
+		wp_register_style( 'author-avatars-shortcode', plugins_url( '../css/shortcode.css', __FILE__ ), array(), $aa_ver );
+		wp_register_style( 'admin-form', plugins_url( '../css/admin-form.css', __FILE__ ), array(), $aa_ver );
+	
 		// scripts
-		wp_register_script( 'jquery-ui-resizable', WP_PLUGIN_URL . '/author-avatars/js/jquery-ui.resizable.js', array( 'jquery-ui-core' ), '1.5.3' );
-		wp_register_script( 'author-avatars-form', WP_PLUGIN_URL . '/author-avatars/js/form.js', array( 'jquery-ui-resizable'), $aa_ver );
-		wp_register_script( 'author-avatars-widget-admin', WP_PLUGIN_URL . '/author-avatars/js/widget.admin.js', array( 'author-avatars-form'  ), $aa_ver );
+		wp_register_script( 'jquery-ui-resizable', plugins_url( '../js/jquery-ui.resizable.js', __FILE__ ), array( 'jquery-ui-core' ), '1.5.3' );
+		wp_register_script( 'author-avatars-form', plugins_url( '../js/form.js', __FILE__ ), array( 'jquery-ui-resizable'), $aa_ver );
+		wp_register_script( 'author-avatars-widget-admin', plugins_url( '../js/widget.admin.js', __FILE__ ), array( 'author-avatars-form'  ), $aa_ver );
 		wp_register_script( 'tinymce-popup', '/wp-includes/js/tinymce/tiny_mce_popup.js', array(), function_exists( 'mce_version') ? mce_version() : false );
-		wp_register_script( 'author-avatars-tinymce-popup', WP_PLUGIN_URL .'/author-avatars/js/tinymce.popup.js', array( 'author-avatars-form', 'jquery-ui-tabs' ), $aa_ver );
+		wp_register_script( 'author-avatars-tinymce-popup', plugins_url( '../js/tinymce.popup.js', __FILE__ ), array( 'author-avatars-form', 'jquery-ui-tabs' ), $aa_ver );
 	}
 
 	// /**
@@ -123,8 +125,8 @@ class AuthorAvatars {
 		// include necessary file(s).
 		add_action( 'widgets_init', array( $this, 'author_avatars_widget_init' ) );
 		
-	    add_action('wp_enqueue_scripts', array(&$this, 'wp_enqueue_resources'));
-		add_action('admin_enqueue_scripts', array(&$this, 'admin_enqueue_resources'));
+	    add_action( 'wp_enqueue_scripts', array( &$this, 'wp_enqueue_resources' ) );
+		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_resources' ) );
 
 	}
 
@@ -135,9 +137,9 @@ class AuthorAvatars {
 	 */
 
 	function admin_enqueue_resources() {	
-		if (is_admin() && basename($_SERVER['PHP_SELF']) == 'widgets.php') { 
-			wp_enqueue_script('author-avatars-widget-admin');
-			wp_enqueue_style('admin-form');
+		if ( is_admin() && basename( $_SERVER['PHP_SELF'] ) == 'widgets.php' ) { 
+			wp_enqueue_script( 'author-avatars-widget-admin' );
+			wp_enqueue_style( 'admin-form' );
 		}
 	}
 		/**
@@ -147,8 +149,8 @@ class AuthorAvatars {
 	 */
 
 	function wp_enqueue_resources() {
-		if (!is_admin())	
-			wp_enqueue_style('author-avatars-widget');
+		if ( !is_admin() )	
+			wp_enqueue_style( 'author-avatars-widget' );
 	}
 
 	public function author_avatars_widget_init()
@@ -162,8 +164,8 @@ class AuthorAvatars {
 	 */
 	function init_shortcodes() {
 		// include necessary file(s).
-		require_once('AuthorAvatarsShortcode.class.php');
-		require_once('ShowAvatarShortcode.class.php');
+		require_once( 'AuthorAvatarsShortcode.class.php' );
+		require_once( 'ShowAvatarShortcode.class.php' );
 		// Create objects of the shortcode classes. Registering is done in the objects' constructors
 		$this->author_avatars_shortcode = new AuthorAvatarsShortcode();
 		$this->show_avatar = new ShowAvatarShortcode();
@@ -174,7 +176,7 @@ class AuthorAvatars {
 	 */
 	function init_tinymce_editor() {
 		// load the Editor class for TinyMCE
-		require_once('AuthorAvatarsEditorButton.class.php');
+		require_once( 'AuthorAvatarsEditorButton.class.php' );
 		$this->editor_button = new AuthorAvatarsEditorButton();
 	}
 
@@ -183,7 +185,7 @@ class AuthorAvatars {
 	 */
 	function init_controlpanels() {
 		// include necessary file(s).
-		require_once('AuthorAvatarsSitewideAdminPanel.class.php');
+		require_once( 'AuthorAvatarsSitewideAdminPanel.class.php' );
 		$this->wpmu_settings = new AuthorAvatarsSitewideAdminPanel();
 	}
 
@@ -198,8 +200,8 @@ class AuthorAvatars {
 	 * returns the version number of the currently installed plugin.
 	 */
 	function get_installed_version($reset = false) {
-		if ($this->__version_installed == null || $reset) {
-			$this->__version_installed = get_option('author_avatars_version');
+		if ( $this->__version_installed == null || $reset ) {
+			$this->__version_installed = get_option( 'author_avatars_version' );
 		}
 		return $this->__version_installed;
 	}
@@ -210,10 +212,10 @@ class AuthorAvatars {
 	function set_installed_version($value) {
 		$oldversion = $this->get_installed_version();
 		if (empty($oldversion)) {
-			add_option('author_avatars_version', $value);
+			add_option( 'author_avatars_version', $value );
 		}
 		else {
-			update_option('author_avatars_version', $value);
+			update_option( 'author_avatars_version', $value );
 		}
 		$this->__version_installed = $value;
 	}

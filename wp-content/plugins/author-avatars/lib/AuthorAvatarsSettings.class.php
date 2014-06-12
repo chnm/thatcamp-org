@@ -52,7 +52,7 @@ class AuthorAvatarsSettings {
 	 * @access public
 	 * @return AuthorAvatarsSettings singleton class instance
 	 */
-	function &get_instance() {
+	static function &get_instance() {
 		static $instance = null;
 		
 		if ($instance === null) {

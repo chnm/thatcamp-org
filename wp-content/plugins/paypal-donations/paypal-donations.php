@@ -5,7 +5,7 @@ Plugin URI: http://johansteen.se/code/paypal-donations/
 Description: Easy and simple setup and insertion of PayPal donate buttons with a shortcode or through a sidebar Widget. Donation purpose can be set for each button. A few other customization options are available as well.
 Author: Johan Steen
 Author URI: http://johansteen.se/
-Version: 1.8.3
+Version: 1.8.4
 License: GPLv2 or later
 Text Domain: paypal-donations
 
@@ -58,28 +58,30 @@ class PayPalDonations
     );
     private $currency_codes = array(
         'AUD' => 'Australian Dollars (A $)',
+        'BRL' => 'Brazilian Real',
         'CAD' => 'Canadian Dollars (C $)',
+        'CZK' => 'Czech Koruna',
+        'DKK' => 'Danish Krone',
         'EUR' => 'Euros (&euro;)',
-        'GBP' => 'Pounds Sterling (&pound;)',
-        'JPY' => 'Yen (&yen;)',
-        'USD' => 'U.S. Dollars ($)',
-        'NZD' => 'New Zealand Dollar ($)',
-        'CHF' => 'Swiss Franc',
         'HKD' => 'Hong Kong Dollar ($)',
+        'HUF' => 'Hungarian Forint',
+        'ILS' => 'Israeli New Shekel',
+        'JPY' => 'Yen (&yen;)',
+        'MYR' => 'Malaysian Ringgit',
+        'MXN' => 'Mexican Peso',
+        'NOK' => 'Norwegian Krone',
+        'NZD' => 'New Zealand Dollar ($)',
+        'PHP' => 'Philippine Peso',
+        'PLN' => 'Polish Zloty',
+        'GBP' => 'Pounds Sterling (&pound;)',
+        'RUB' => 'Russian Ruble',
         'SGD' => 'Singapore Dollar ($)',
         'SEK' => 'Swedish Krona',
-        'DKK' => 'Danish Krone',
-        'PLN' => 'Polish Zloty',
-        'NOK' => 'Norwegian Krone',
-        'HUF' => 'Hungarian Forint',
-        'CZK' => 'Czech Koruna',
-        'ILS' => 'Israeli Shekel',
-        'MXN' => 'Mexican Peso',
-        'BRL' => 'Brazilian Real',
+        'CHF' => 'Swiss Franc',
         'TWD' => 'Taiwan New Dollar',
-        'PHP' => 'Philippine Peso',
+        'THB' => 'Thai Baht',
         'TRY' => 'Turkish Lira',
-        'THB' => 'Thai Baht'
+        'USD' => 'U.S. Dollars ($)',
     );
     private $localized_buttons = array(
         'en_AU' => 'Australia - Australian English',
@@ -102,6 +104,7 @@ class PayPalDonations
     private $checkout_languages = array(
         'AU' => 'Australia',
         'AT' => 'Austria',
+        'BE' => 'Belgium',
         'BR' => 'Brazil',
         'CA' => 'Canada',
         'CN' => 'China',
@@ -109,8 +112,12 @@ class PayPalDonations
         'DE' => 'Germany',
         'IT' => 'Italy',
         'NL' => 'Netherlands',
+        'PL' => 'Poland',
+        'PR' => 'Portugal',
+        'RU' => 'Russia',
         'ES' => 'Spain',
         'SE' => 'Sweden',
+        'CH' => 'Switzerland',
         'GB' => 'United Kingdom',
         'US' => 'United States',
     );

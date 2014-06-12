@@ -3,8 +3,8 @@ Contributors: pbearne, bforchhammer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=MZTZ5S8MGF75C&lc=CA&item_name=Wordpress%20Development%20%2f%20Paul%20Bearne&item_number=AuthorAvatarsList%20Plugin&currency_code=CAD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: Avatar, Author, BuddyPress, Comment, Editor, Image, Multisite, Photo, Picture, Profile, Shortcode, Random, Sidebar, Thumbnail, User, Widget, Wpmu, BBPress, co-authors
 Requires at least: 3.0
-Tested up to: 3.9-alpha
-Stable tag: 1.8.3
+Tested up to: 3.9
+Stable tag: 1.8.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,7 +32,7 @@ Both shortcode and widget can be configured to...
 
 The plugin makes use of built in wordpress (core) functions to retrieve user information and get avatars.
 
-The Plug-in can show users from bb-press, Budy-press and Co-Author Plus Plug-in 
+The Plug-in can show users from bb-press, Budy-press and Co-Author Plus Plug-in
 
 Single user avatars can be inserted using the [show_avatar shortcode](http://authoravatars.wordpress.com/documentation/show_avatar-shortcode/) and configured to...
 
@@ -41,7 +41,7 @@ Single user avatars can be inserted using the [show_avatar shortcode](http://aut
 
 Please report bugs and provide feedback in the [wordpress support forum](http://wordpress.org/tags/author-avatars?forum_id=10#postform).
 
-**Plugin support:** As of April 2011, Ben is stepping down as maintainer and handing over ownership to Paul Bearne, who will provide support and drive the development of new features. 
+**Plugin support:** As of April 2011, Ben is stepping down as maintainer and handing over ownership to Paul Bearne, who will provide support and drive the development of new features.
 
 == Installation ==
 
@@ -67,6 +67,18 @@ If you have added CSS to your theme you may have to update it for this upgrade (
 5. List of users with name and biography
 
 == Changelog ==
+
+= 1.8.4.1 =
+* Fix mixed limmint cache ID
+
+
+= 1.8.4 =
+* Added Ukrainian Translation (by Michael Yunat:  Get Voip - http://getvoip.com)
+* Fixes around the cache id
+* Replaced Deprecated : is_site_admin() with  is_super_admin()
+* Fixed path to tinyMCE js files reomved hardcoded path
+* fix static call when starting class
+
 = 1.8.3 =
 * added a tile to the span arond the image.
 * disabled / delete the transit cache for logged in users to help clear them.
@@ -103,15 +115,15 @@ If you have added CSS to your theme you may have to update it for this upgrade (
 
 = 1.6.2 =
 * Added display options for single Avatar options
-* Added donation link 
+* Added donation link
 
 = 1.6.1 =
-* Fixed a bug that stoped the loading of default CSS sheet for the plugin that I added a bug in in 1.6 
+* Fixed a bug that stoped the loading of default CSS sheet for the plugin that I added a bug in in 1.6
 
 = 1.6.0 =
 * Added the option to link to BBpress profile in the link to the shortcode and generator  user_link=bbpress_memberpage
 * Fixed bug - the the shortcode generator was shown up in the tinyMCE edit if it was loaded on a page (BBpress forum posts) the popup was 404'ing so add a $pagenow != 'index.php' to make sure we are in the addmin section
-* Fixed bug causing the RTL layout to break	 
+* Fixed bug causing the RTL layout to break
 
 = 1.5.1 =
 *  Added  Hindi language (by Love Chandel:  Outshine Solutions - http://outshinesolutions.com)
@@ -121,7 +133,7 @@ If you have added CSS to your theme you may have to update it for this upgrade (
 *  Added  Romanian language (by Alexander Ovsov:  Web Hosting Geeks - http://webhostinggeeks.com)
 
 = 1.4 =
-*   Fix a bug in the js code for the short-code generator in the tinyMCE editor. 
+*   Fix a bug in the js code for the short-code generator in the tinyMCE editor.
 *   It wasn't possible to set the show name / post count / biography options.
 
 = 1.2 =
@@ -172,7 +184,7 @@ If you have added CSS to your theme you may have to update it for this upgrade (
 = 0.7 =
 *   Removed invalid characters from uninstall.php (fixes uninstall behaviour).
 *   New feature to link users to their website or blog (wpmu).
-*   Added new feature to allow specification of a sort direction for sorted user lists. 
+*   Added new feature to allow specification of a sort direction for sorted user lists.
 *   Changed string-based sorting to case-insensitive (strcmp -> strcasecmp).
 *   Added feature to sort users by date of registration.
 *   Optimised UserList filtering.
@@ -185,7 +197,7 @@ If you have added CSS to your theme you may have to update it for this upgrade (
 *   Added uninstall.php to remove plugin related data when the plugin is deleted.
 
 = 0.6.1 =
-*   Fixed bug which caused other tinymce plugins to stop working. 
+*   Fixed bug which caused other tinymce plugins to stop working.
 *   Improved way of detecting a wpmu install.
 
 = 0.6 =
@@ -205,7 +217,7 @@ If you have added CSS to your theme you may have to update it for this upgrade (
 *   Removed "Group by blogs" checkbox for users without the blog selection filter.
 
 = 0.5.1 =
-*   Fixed method chaining error that caused a critical syntax error on PHP 4 
+*   Fixed method chaining error that caused a critical syntax error on PHP 4
 
 = 0.5 =
 *    Added "show_avatar" shortcode
@@ -280,3 +292,5 @@ You can override the styles in that file by copying a style block to your theme'
 `html .widget_author_avatars .author-list .user {
   padding: 0;
 }`
+
+demo edit

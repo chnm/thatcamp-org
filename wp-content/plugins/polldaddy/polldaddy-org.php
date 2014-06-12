@@ -118,7 +118,7 @@ class WPORG_Polldaddy extends WP_Polldaddy {
 					
 					$rating_title_filter = '';
 					if ( isset( $_POST['polldaddy-ratings-title-filter'] ) )
-						$rating_title_filter = $_POST['polldaddy-ratings-title-filter'];
+						$rating_title_filter = sanitize_text_field( $_POST['polldaddy-ratings-title-filter'] );
 						
 					update_option( 'pd-rating-title-filter', $rating_title_filter );
 				}
@@ -374,7 +374,7 @@ class WPORG_Polldaddy extends WP_Polldaddy {
       </label>
     </th>
     <td>
-      <input type="text" name="polldaddy-ratings-title-filter" id="polldaddy-ratings-title-filter" value="<?php echo $rating_title_filter; ?>" style="width: auto" />
+      <input type="text" name="polldaddy-ratings-title-filter" id="polldaddy-ratings-title-filter" value="<?php echo esc_attr( $rating_title_filter ); ?>" style="width: auto" />
         <span class="description">
           <label for="polldaddy-ratings-title-filter"><?php _e( 'This setting allows you to specify a filter to use with your ratings title.', 'polldaddy' ); ?></label>
         </span>
@@ -1084,7 +1084,7 @@ function polldaddy_post_rating( $content ) {
 		$average = ceil( ( $rating[0][ 'average' ] / $rating[0][ 'votes' ] ) * 5 );
 	else
 		$average = $rating[ 'average' ];
-	if ( $average < 0 )
+	if ( $average < 0 || $average == '' )
 		return $content;
 	global $post;
 	return $content . '<span class="hreview-aggregate"><span class="item"><span class="fn">"' . $post->post_title . '"</span></span>, <span class="rating"><span class="average">' . $average . '</span> out of <span class="best">5</span> based on <span class="votes">' . $rating[0][ 'votes' ] . '</span> ratings.</span></span>';
