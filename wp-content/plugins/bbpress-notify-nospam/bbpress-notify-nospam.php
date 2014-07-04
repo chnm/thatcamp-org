@@ -2,7 +2,7 @@
 /*
 * Plugin Name: bbPress Notify (No-Spam)
 * Description: Sends email notifications upon topic/reply creation, as long as it's not flagged as spam.
-* Version: 1.5.3
+* Version: 1.5.4
 * Author: Vinny Alves, Andreas Baumgartner, Paul Schroeder
 * License:       GNU General Public License, v2 (or newer)
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -26,7 +26,6 @@ load_plugin_textdomain('bbpress_notify',false, dirname( plugin_basename( __FILE_
 class bbPress_Notify_noSpam {
 	
 	protected $settings_section = 'bbpress_notify_options';
-	protected $boundary;
 	protected $bbpress_topic_post_type;
 	protected $bbpress_reply_post_type;
 	
@@ -55,9 +54,6 @@ class bbPress_Notify_noSpam {
 		}
 		
 		// New topics and replies can be generated from admin and non-admin interfaces
-		
-		// Boundary used for multipart/alternative emails
-		$this->boundary = md5(date('U'));
 		
 		// Set the bbpress post_types
 		add_action('plugins_loaded', array(&$this,'set_post_types'));
@@ -96,6 +92,23 @@ class bbPress_Notify_noSpam {
 	 */
 	public static function bootstrap()
 	{
+		// Make sure bbPress is still installed and avoid race conditions
+		if (! class_exists('bbPress') )
+		{
+			if ( 'plugins_loaded' !== current_filter() )
+			{
+				add_action('plugins_loaded', array('bbPress_Notify_NoSpam', 'bootstrap'), 100000);
+			}
+			else
+			{
+				add_action('admin_notices', array('bbPress_Notify_NoSpam', 'missing_bbpress_notice'));
+			}
+			
+			return false;
+		}
+		
+		
+		// bbPress is here, so let's load ourselves 
 		if (! isset(self::$instance))
 			self::$instance = new self();
 		
@@ -641,12 +654,26 @@ class bbPress_Notify_noSpam {
 		}
 			
 	}
+	
+	/**
+	 * @since 1.5.4
+	 */
+	public static function missing_bbpress_notice()
+	{
+		?>
+		<div class="error">
+			<p>
+				<?php _e('<strong>bbPress Notify (No-Spam)</strong> could not find an active bbPress plugin. It will not load until bbPress is installed and active.'); ?>
+			</p>
+		</div>
+		<?php 
+	}
 }
-
 
 
 /* Kick off the class */
 bbPress_Notify_NoSpam::bootstrap();
+
 
 /* End of file bbpress-notify-nospam.php */
 /* Location: bbpress-notify-nospam/bbpress-notify-nospam.php */

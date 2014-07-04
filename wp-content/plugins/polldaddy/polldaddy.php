@@ -6,7 +6,7 @@ Plugin URI: http://wordpress.org/extend/plugins/polldaddy/
 Description: Create and manage Polldaddy polls and ratings in WordPress
 Author: Automattic, Inc.
 Author URL: http://polldaddy.com/
-Version: 2.0.24
+Version: 2.0.25
 */
 
 // You can hardcode your Polldaddy PartnerGUID (API Key) here
@@ -347,6 +347,8 @@ class WP_Polldaddy {
 			
 			if ( !empty( $this->user_code ) ) {
 				update_option( 'pd-usercode-'.$this->id, $this->user_code );
+			} elseif ( get_option( 'polldaddy_api_key' ) ) {
+				$this->contact_support_message( 'There was a problem linking your account', $polldaddy->errors );
 			}
 		}
 	}
@@ -361,7 +363,7 @@ class WP_Polldaddy {
 		if ( empty( $this->user_code ) && $page == 'polls' ) {
 			// one last try to get the user code automatically if possible
 			$this->user_code = apply_filters_ref_array( 'polldaddy_get_user_code', array( $this->user_code, &$this ) );
-			if ( false == $this->user_code )
+			if ( false == $this->user_code && $action != 'restore-account' )
 				$action = 'signup';
 		}
 
@@ -400,6 +402,8 @@ class WP_Polldaddy {
 			case 'options' :
 			case 'update-options' :
 			case 'import-account' :
+			case 'reset-account' :
+			case 'restore-account' :
 				$plugin_page = 'polls&action=options';
 				break;
 			}//end switch
@@ -470,6 +474,41 @@ class WP_Polldaddy {
 
 		if ( $page == 'polls' ) {
 			switch ( $action ) {
+			case 'reset-account' : // reset everything
+				global $current_user;
+				check_admin_referer( 'polldaddy-reset' . $this->id );
+				$fields = array( 'polldaddy_api_key', 'pd-rating-comments', 'pd-rating-comments-id', 'pd-rating-comments-pos', 'pd-rating-exclude-post-ids', 'pd-rating-pages', 'pd-rating-pages-id', 'pd-rating-posts', 'pd-rating-posts-id', 'pd-rating-posts-index', 'pd-rating-posts-index-id', 'pd-rating-posts-index-pos', 'pd-rating-posts-pos', 'pd-rating-title-filter', 'pd-rating-usercode', 'pd-rich-snippets', 'pd-usercode-' . $current_user->ID );
+				$msg = __( "You have just reset your Polldaddy connection settings." ) . "\n\n";
+				foreach( $fields as $field ) {
+					$value = get_option( $field );
+					if ( $value != false ) {
+						$settings[ $field ] = $value;
+						$msg .= "$field: $value\n";
+						delete_option( $field );
+					}
+				}
+				if ( isset( $_POST[ 'email' ] ) )
+					wp_mail( $current_user->user_email, "Polldaddy Settings", $msg );
+				update_option( 'polldaddy_settings', $settings );
+				break;
+			case 'restore-account' : // restore everything
+				global $current_user;
+				check_admin_referer( 'polldaddy-restore' . $this->id );
+				$previous_settings = get_option( 'polldaddy_settings' );
+				foreach( $previous_settings as $key => $value )
+					update_option( $key, $value );
+				delete_option( 'polldaddy_settings' );
+				break;
+			case 'restore-ratings' : // restore ratings
+				global $current_user;
+				check_admin_referer( 'polldaddy-restore-ratings' . $this->id );
+				$previous_settings = get_option( 'polldaddy_settings' );
+				$fields = array( 'pd-rating-comments', 'pd-rating-comments-id', 'pd-rating-comments-pos', 'pd-rating-exclude-post-ids', 'pd-rating-pages', 'pd-rating-pages-id', 'pd-rating-posts', 'pd-rating-posts-id', 'pd-rating-posts-index', 'pd-rating-posts-index-id', 'pd-rating-posts-index-pos', 'pd-rating-posts-pos', 'pd-rating-title-filter' );
+				foreach( $fields as $key ) {
+					if ( isset( $previous_settings[ $key ] ) )
+						update_option( $key, $previous_settings[ $key ] );
+				}
+				break;
 			case 'signup' : // sign up for first time
 			case 'account' : // reauthenticate
 			case 'import-account' : // reauthenticate
@@ -3643,15 +3682,21 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 
 		if ( !defined( 'WP_POLLDADDY__PARTNERGUID' ) )
 			return false;
+
+		if ( $this->rating_user_code == '' )
+			die();
 		$polldaddy = $this->get_client( WP_POLLDADDY__PARTNERGUID, $this->rating_user_code );
 		$polldaddy->reset();
 
+		$rating_errors = array();
 		if ( empty( $rating_id ) ) {
 			$pd_rating = $polldaddy->create_rating( $blog_name , $new_type );
 			if ( !empty( $pd_rating ) ) {
 				$rating_id = (int) $pd_rating->_id;
 				update_option ( 'pd-rating-' . $report_type . '-id', $rating_id );
 				update_option ( 'pd-rating-' . $report_type, 0 );
+			} else {
+				$rating_errors[] = $polldaddy->errors;
 			}
 		} else
 			$pd_rating = $polldaddy->get_rating( $rating_id );
@@ -3670,16 +3715,18 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 					$polldaddy = $this->get_client( WP_POLLDADDY__PARTNERGUID, $this->rating_user_code );
 					$polldaddy->reset();
 					$pd_rating = $polldaddy->get_rating( $rating_id ); //see it exists
+					$rating_errors[] = $polldaddy->errors;
 
 					if ( empty( $pd_rating ) || (int) $pd_rating->_id == 0 ) { //if not then create a rating for blog
 						$polldaddy->reset();
 						$pd_rating = $polldaddy->create_rating( $blog_name , $new_type );
+						$rating_errors[] = $polldaddy->errors;
 					}
 				}
 			}
 
 			if ( empty( $pd_rating ) ) { //something's up!
-				echo '<div class="error" id="polldaddy"><p>'.sprintf( __( 'Sorry! There was an error creating your rating widget. Please contact <a href="%1$s" %2$s>Polldaddy support</a> and tell them your usercode is %3$s.', 'polldaddy' ), 'http://polldaddy.com/feedback/', 'target="_blank"', $this->rating_user_code ) . '</p></div>';
+				$this->contact_support_message( __( 'There was an error creating your rating widget' ), $rating_errors );
 				$error = true;
 			} else {
 				$rating_id = (int) $pd_rating->_id;
@@ -3916,6 +3963,12 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
               </tbody>
             </table>
           </form>
+		<?php // check for previous settings
+		$previous_settings = get_option( 'polldaddy_settings' );
+		if ( get_option( 'pd-rating-posts-id' ) && get_option( 'pd-rating-posts-id' ) != $previous_settings[ 'pd-rating-posts-id' ] ) {
+			echo "<p>" . sprintf( __( "Previous settings for ratings on this site discovered. You can restore them on the <a href='%s'>poll settings page</a> if your site is missing ratings after resetting your connection settings.", 'polldaddy' ), "options-general.php?page=polls&action=options" ) . "</p>";
+		}
+		?>
         </div>
         
           <div style="padding:20px 0px 0px 0px"><?php
@@ -4897,14 +4950,14 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
       <input type="submit" class="button-primary" value="<?php echo esc_attr( __( 'Link Account', 'polldaddy' ) ); ?>" />
     </p>
   </form>
-  <br />
-  <?php } ?>
+
+	<?php
+	} ?>
 <?php 
 // if not connected to a Polldaddy account can't save defaults so don't show the form.
 if ( false == is_object( $poll ) ) {
 	echo "</div>";
-	return false;
-}
+} else {
 ?>
   <h3>
     <?php _e( 'General Settings', 'polldaddy' ); ?>
@@ -4991,6 +5044,89 @@ if ( false == is_object( $poll ) ) {
   </form>
 </div>
   <?php
+	} // is_object( $poll )
+	global $current_user;
+	$fields = array( 'polldaddy_api_key', 'pd-rating-comments', 'pd-rating-comments-id', 'pd-rating-comments-pos', 'pd-rating-exclude-post-ids', 'pd-rating-pages', 'pd-rating-pages-id', 'pd-rating-posts', 'pd-rating-posts-id', 'pd-rating-posts-index', 'pd-rating-posts-index-id', 'pd-rating-posts-index-pos', 'pd-rating-posts-pos', 'pd-rating-title-filter', 'pd-rating-usercode', 'pd-rich-snippets', 'pd-usercode-' . $current_user->ID );
+	$show_reset_form = false;
+	foreach( $fields as $field ) {
+		$value = get_option( $field );
+		if ( $value != false )
+			$show_reset_form = true;
+		$settings[ $field ] = $value;
+	}
+	if ( $show_reset_form ) {
+		echo "<h3>" . __( 'Reset Connection Settings', 'polldaddy' ) . "</h3>";
+		echo "<p>" . __( 'If you are experiencing problems connecting to the Polldaddy website resetting your connection settings may help. A backup will be made. After resetting, link your account again with the same API key.', 'polldaddy' ) . "</p>";
+		echo "<p>" . __( 'The following settings will be reset:', 'polldaddy' ) . "</p>";
+		echo "<table>";
+		foreach( $settings as $key => $value ) {
+			if ( $value != '' ) {
+				if ( strpos( $key, 'usercode' ) )
+					$value = "***********" . substr( $value, -4 );
+				elseif ( in_array( $key, array( 'pd-rating-pages-id', 'pd-rating-comments-id', 'pd-rating-posts-id' ) ) )
+					$value = "$value (<a href='http://polldaddy.com/ratings/{$value}/edit/'>" . __( 'Edit', 'polldaddy' ) . "</a>)";
+				echo "<tr><th style='text-align: right'>$key:</th><td>$value</td></tr>\n";
+			}
+		}
+		echo "</table>";
+		echo "<p>" . __( "* The usercode is like a password, keep it secret.", 'polldaddy' ) . "</p>";
+		?>
+		<form action="" method="post">
+			<p class="submit">
+				<?php wp_nonce_field( 'polldaddy-reset' . $current_user->ID ); ?>
+				<input type="hidden" name="action" value="reset-account" />
+				<input type="hidden" name="account" value="import" />
+				<p><input type="checkbox" name="email" value="1" /> <?php _e( 'Send me an email with the connection settings for future reference' ); ?></p>
+				<input type="submit" class="button-primary" value="<?php echo esc_attr( __( 'Reset', 'polldaddy' ) ); ?>" />
+			</p>
+		</form>
+		<br />
+		<?php 
+	}
+	$previous_settings = get_option( 'polldaddy_settings' );
+	if ( is_array( $previous_settings ) && !empty( $previous_settings ) ) {
+		echo "<h3>" . __( 'Restore Previous Settings', 'polldaddy' ) . "</h3>";
+		echo "<p>" . __( 'The connection settings for this site were reset but a backup was made. The following settings can be restored:', 'polldaddy' ) . "</p>";
+		echo "<table>";
+		foreach( $previous_settings as $key => $value ) {
+			if ( $value != '' ) {
+				if ( strpos( $key, 'usercode' ) )
+					$value = "***********" . substr( $value, -4 );
+				elseif ( in_array( $key, array( 'pd-rating-pages-id', 'pd-rating-comments-id', 'pd-rating-posts-id' ) ) )
+					$value = "$value (<a href='http://polldaddy.com/ratings/{$value}/edit/'>" . __( 'Edit', 'polldaddy' ) . "</a>)";
+				echo "<tr><th style='text-align: right'>$key:</th><td>$value</td></tr>\n";
+			}
+		}
+		echo "</table>";
+		echo "<p>" . __( "* The usercode is like a password, keep it secret.", 'polldaddy' ) . "</p>";
+		?>
+		<form action="" method="post">
+			<p class="submit">
+				<?php wp_nonce_field( 'polldaddy-restore' . $current_user->ID ); ?>
+				<input type="hidden" name="action" value="restore-account" />
+				<input type="hidden" name="account" value="import" />
+				<input type="submit" class="button-primary" value="<?php echo esc_attr( __( 'Restore', 'polldaddy' ) ); ?>" />
+			</p>
+		</form>
+		<br />
+		<?php 
+		if ( $show_reset_form && isset( $settings[ 'pd-rating-posts-id' ] ) && $settings[ 'pd-rating-posts-id' ] != $previous_settings[ 'pd-rating-posts-id' ] ) {
+			echo "<h3>" . __( 'Restore Ratings Settings', 'polldaddy' ) . "</h3>";
+			echo "<p>" . __( 'Different rating settings detected. If you are missing ratings on your posts, pages or comments you can restore the original rating settings by clicking the button below.', 'polldaddy' ) . "</p>";
+			echo "<p>" . __( 'This tells the plugin to look for this data in a different rating in your Polldaddy account.', 'polldaddy' ) . "</p>";
+			?>
+			<form action="" method="post">
+				<p class="submit">
+					<?php wp_nonce_field( 'polldaddy-restore-ratings' . $current_user->ID ); ?>
+					<input type="hidden" name="action" value="restore-ratings" />
+					<input type="hidden" name="account" value="import" />
+					<input type="submit" class="button-primary" value="<?php echo esc_attr( __( 'Restore Ratings Only', 'polldaddy' ) ); ?>" />
+				</p>
+			</form>
+			<br />
+			<?php 
+		}
+	}
 	}
 
 	function plugin_options_add() {}
@@ -5036,6 +5172,22 @@ if ( false == is_object( $poll ) ) {
 	}
 
 	function log( $message ) {}
+
+	function contact_support_message( $message, $errors ) {
+		global $current_user;
+		echo '<div class="error" id="polldaddy">';
+		echo '<h1>' . $message . '</h1>';
+		echo '<p>' . __( "There are a few things you can do:" );
+		echo "<ul><ol>" . __( "Press reload on your browser and reload this page. There may have been a temporary problem communicating with Polldaddy.com", "polldaddy" ) . "</ol>";
+		echo "<ol>" . sprintf( __( "Go to the <a href='%s'>poll settings page</a>, scroll to the end of the page and reset your connection settings. Link your account again with the same API key.", "polldaddy" ), 'options-general.php?page=polls&action=options' ) . "</ol>";
+		echo "<ol>" . sprintf( __( 'Contact <a href="%1$s" %2$s>Polldaddy support</a> and tell them your rating usercode is %3$s', 'polldaddy' ), 'http://polldaddy.com/feedback/', 'target="_blank"', $this->rating_user_code ) . '<br />' . __( 'Also include the following information when contacting support to help us resolve your problem as quickly as possible:', 'polldaddy' ) . '';
+		echo "<ul><li> API Key: " . get_option( 'polldaddy_api_key' ) . "</li>";
+		echo "<li> ID Usercode: " . get_option( 'pd-usercode-' . $current_user->ID ) . "</li>";
+		echo "<li> pd-rating-usercode: " . get_option( 'pd-rating-usercode' ) . "</li>";
+		echo "<li> pd-rating-posts-id: " . get_option( 'pd-rating-posts-id' ) . "</li>";
+		echo "<li> Errors: " . print_r( $errors, 1 ) . "</li></ul>";
+		echo "</ol></ul></div>";
+	}
 }
 
 require dirname( __FILE__ ).'/rating.php';
