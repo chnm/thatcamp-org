@@ -462,7 +462,7 @@ function thatcamp_country_picker( $args = array() ) {
       <option <?php selected( $r['country'], 'Sweden' ) ?> value="Sweden" data-alternative-spellings="SE Sverige" data-relevancy-booster="1.5">Sweden</option>
       <option <?php selected( $r['country'], 'Switzerland' ) ?> value="Switzerland" data-alternative-spellings="CH Swiss Confederation Schweiz Suisse Svizzera Svizra" data-relevancy-booster="1.5">Switzerland</option>
       <option <?php selected( $r['country'], 'Syrian Arab Republic' ) ?> value="Syrian Arab Republic" data-alternative-spellings="SY Syria سورية">Syrian Arab Republic</option>
-      <option <?php selected( $r['country'], 'Taiwan, Province of China' ) ?> value="Taiwan, Province of China" data-alternative-spellings="TW 台灣 臺灣">Taiwan, Province of China</option>
+      <option <?php selected( $r['country'], 'Taiwan' ) ?> value="Taiwan" data-alternative-spellings="TW 台灣 臺灣">Taiwan</option>
       <option <?php selected( $r['country'], 'Tajikistan' ) ?> value="Tajikistan" data-alternative-spellings="TJ Тоҷикистон Toçikiston">Tajikistan</option>
       <option <?php selected( $r['country'], 'Tanzania, United Republic of' ) ?> value="Tanzania, United Republic of" data-alternative-spellings="TZ">Tanzania, United Republic of</option>
       <option <?php selected( $r['country'], 'Thailand' ) ?> value="Thailand" data-alternative-spellings="TH ประเทศไทย Prathet Thai">Thailand</option>
