@@ -19,13 +19,13 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	
 	public function __construct()
 	{
-		$this->topic_body = "<p>This is <br> a <br /> test paragraph for topic</p>\n\n<p>And a new <br/>paragraph</p>";
+		$this->topic_body = "<p>This is <br> a <br /> test paragraph for topic URL: [topic-url], and Author: [topic-author]</p>\n\n<p>And a new <br/>paragraph</p>";
 		
-		$this->reply_body = "<p>This is <br> a <br /> test paragraph for reply</p>\n\n<p>And a new <br/>paragraph</p>";
+		$this->reply_body = "<p>This is <br> a <br /> test paragraph for reply URL: [reply-url], and Author: [reply-author]</p>\n\n<p>And a new <br/>paragraph</p>";
 		
-		$this->topic_body_clean = "This is  a  test paragraph for topic\n\nAnd a new paragraph\n";
+		$this->topic_body_clean = "This is  a  test paragraph for topic URL: [topic-url], and Author: [topic-author]\n\nAnd a new paragraph\n";
 		
-		$this->reply_body_clean = "This is  a  test paragraph for reply\n\nAnd a new paragraph\n";
+		$this->reply_body_clean = "This is  a  test paragraph for reply URL: [reply-url], and Author: [reply-author]\n\nAnd a new paragraph\n";
 	}
 	
 	
@@ -44,9 +44,10 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		// Create new topic
 		$this->topic_id = bbp_insert_topic(
 			array(
-				'post_parent' => $this->forum_id,
-				'post_title'  => 'test-topic',
-				'post_content' => $this->topic_body
+				'post_parent'  => $this->forum_id,
+				'post_title'   => 'test-topic',
+				'post_content' => $this->topic_body,
+				'post_author'  => 1,
 			),
 			array(
 				'forum_id' => $this->forum_id		
@@ -56,9 +57,10 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		// Create new reply
 		$this->reply_id = bbp_insert_reply(
 			array(
-				'post_parent' => $this->topic_id,
-				'post_title'  => 'test-reply',
-				'post_content' => $this->reply_body
+				'post_parent'  => $this->topic_id,
+				'post_title'   => 'test-reply',
+				'post_content' => $this->reply_body,
+				'post_author'  => 1,
 			),
 			array(
 				'forum_id' => $this->forum_id,
@@ -132,7 +134,11 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$this->assertTrue(is_array($arry), 'Good notify returns array in test mode');
 		
 		list($recipients, $body) = $arry;
-		$this->assertEquals($this->topic_body_clean, $body, 'Topic body munged correctly');
+		
+		$reg_body = str_replace('[topic-url]', '[^ ,]+', $this->topic_body_clean );
+		$reg_body = str_replace('[topic-author]', 'admin', $reg_body );
+		
+		$this->assertRegexp("/$reg_body/", $body, 'Topic body munged correctly');
 		
 		
 		// Force skip
@@ -169,7 +175,11 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$this->assertTrue(is_array($arry), 'Good notify returns array in test mode');
 		
 		list($recipients, $body) = $arry;
-		$this->assertEquals($this->reply_body_clean, $body, 'Reply body munged correctly');
+		
+		$reg_body = str_replace('[reply-url]', '[^ ,]+', $this->replyc_body_clean );
+		$reg_body = str_replace('[reply-author]', 'admin', $reg_body );
+		
+		$this->assertRegexp("/$reg_body/", $body, 'Reply body munged correctly');
 		
 		// Force skip
 		add_filter('bbpnns_skip_reply_notification', '__return_true');

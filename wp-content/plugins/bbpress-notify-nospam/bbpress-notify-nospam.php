@@ -2,7 +2,7 @@
 /*
 * Plugin Name: bbPress Notify (No-Spam)
 * Description: Sends email notifications upon topic/reply creation, as long as it's not flagged as spam.
-* Version: 1.5.4
+* Version: 1.5.5
 * Author: Vinny Alves, Andreas Baumgartner, Paul Schroeder
 * License:       GNU General Public License, v2 (or newer)
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -305,45 +305,45 @@ class bbPress_Notify_noSpam {
 		// Replace shortcodes
 		if ('topic' === $type)
 		{
-			$topic_content = bbp_get_topic_content($post_id);
-			$topic_title   = html_entity_decode(strip_tags(bbp_get_topic_title($post_id)), ENT_NOQUOTES, 'UTF-8');
-			$topic_excerpt = html_entity_decode(strip_tags(bbp_get_topic_excerpt($post_id, $excerpt_size)), ENT_NOQUOTES, 'UTF-8');
-			$topic_author  = bbp_get_topic_author($post_id);
-			$topic_url     = bbp_get_topic_permalink($post_id);
+			$content = bbp_get_topic_content($post_id);
+			$title   = html_entity_decode(strip_tags(bbp_get_topic_title($post_id)), ENT_NOQUOTES, 'UTF-8');
+			$excerpt = html_entity_decode(strip_tags(bbp_get_topic_excerpt($post_id, $excerpt_size)), ENT_NOQUOTES, 'UTF-8');
+			$author  = bbp_get_topic_author($post_id);
+			$url     = bbp_get_topic_permalink($post_id);
 		}
 		elseif ('reply' === $type)
 		{
-			$topic_content = bbp_get_reply_content($post_id);
-			$topic_title   = html_entity_decode(strip_tags(bbp_get_reply_title($post_id)), ENT_NOQUOTES, 'UTF-8');
-			$topic_excerpt = html_entity_decode(strip_tags(bbp_get_reply_excerpt($post_id, $excerpt_size)), ENT_NOQUOTES, 'UTF-8');
-			$topic_author  = bbp_get_reply_author($post_id);
-			$topic_url     = bbp_get_reply_permalink($post_id);
+			$content = bbp_get_reply_content($post_id);
+			$title   = html_entity_decode(strip_tags(bbp_get_reply_title($post_id)), ENT_NOQUOTES, 'UTF-8');
+			$excerpt = html_entity_decode(strip_tags(bbp_get_reply_excerpt($post_id, $excerpt_size)), ENT_NOQUOTES, 'UTF-8');
+			$author  = bbp_get_reply_author($post_id);
+			$url     = bbp_get_reply_permalink($post_id);
 		}
 		else 
 		{
 			wp_die('Invalid type!');
 		}
 		
-		$topic_content = preg_replace('/<br\s*\/?>/is', "\n", $topic_content);
-		$topic_content = preg_replace('/(?:<\/p>\s*<p>)/ism', "\n\n", $topic_content);
-		$topic_content = html_entity_decode(strip_tags($topic_content), ENT_NOQUOTES, 'UTF-8');
+		$content = preg_replace('/<br\s*\/?>/is', "\n", $content);
+		$content = preg_replace('/(?:<\/p>\s*<p>)/ism', "\n\n", $content);
+		$content = html_entity_decode(strip_tags($content), ENT_NOQUOTES, 'UTF-8');
 		
 		$topic_reply = bbp_get_reply_url($post_id);
 		
 		$email_subject = str_replace('[blogname]', $blogname, $email_subject);
-		$email_subject = str_replace("[$type-title]", $topic_title, $email_subject);
-		$email_subject = str_replace("[$type-content]", $topic_content, $email_subject);
-		$email_subject = str_replace("[$type-excerpt]", $topic_excerpt, $email_subject);
-		$email_subject = str_replace("[$type-author]", $topic_author, $email_subject);
-		$email_subject = str_replace("[$type-url]", $topic_url, $email_subject);
+		$email_subject = str_replace("[$type-title]", $title, $email_subject);
+		$email_subject = str_replace("[$type-content]", $content, $email_subject);
+		$email_subject = str_replace("[$type-excerpt]", $excerpt, $email_subject);
+		$email_subject = str_replace("[$type-author]", $author, $email_subject);
+		$email_subject = str_replace("[$type-url]", $url, $email_subject);
 		$email_subject = str_replace("[$type-replyurl]", $topic_reply, $email_subject);
 		
 		$email_body = str_replace('[blogname]', $blogname, $email_body);
-		$email_body = str_replace("[$type-title]", $topic_title, $email_body);
-		$email_body = str_replace("[$type-content]", $topic_content, $email_body);
-		$email_body = str_replace("[$type-excerpt]", $topic_excerpt, $email_body);
-		$email_body = str_replace("[$type-author]", $topic_author, $email_body);
-		$email_body = str_replace("[$type-url]", $topic_url, $email_body);
+		$email_body = str_replace("[$type-title]", $title, $email_body);
+		$email_body = str_replace("[$type-content]", $content, $email_body);
+		$email_body = str_replace("[$type-excerpt]", $excerpt, $email_body);
+		$email_body = str_replace("[$type-author]", $author, $email_body);
+		$email_body = str_replace("[$type-url]", $url, $email_body);
 		$email_body = str_replace("[$type-replyurl]", $topic_reply, $email_body);
 		
 		return array($email_subject, $email_body);

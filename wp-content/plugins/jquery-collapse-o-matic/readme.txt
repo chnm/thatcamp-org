@@ -4,8 +4,8 @@ Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more, plugin oven
 Requires at least: 3.5
-Tested up to: 3.9
-Stable tag: 1.5.8
+Tested up to: 3.9.1
+Stable tag: 1.5.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,13 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.5.9 =
+* fixed issue with missing classes in dark style
+* streamlined the collapse/expand function
+* streamlined the collapseall/expandall functions
+* added auto to scrollonclose attribute
+* added new colomat_expandall and colomat_collpaseall functions that can be triggered externally
 
 = 1.5.8 =
 * load scripts only if shortcode is in use defaults to false - load all the time
@@ -233,6 +240,13 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.5.9 =
+* fixed issue with missing classes in dark style
+* streamlined the collapse/expand function
+* streamlined the collapseall/expandall functions
+* scrollonclose attribute now accepts auto as value
+* added new colomat_expandall and colomat_collpaseall functions that can be triggered externally
 
 = 1.5.8 =
 * scripts always load by default

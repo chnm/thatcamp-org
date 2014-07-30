@@ -1,8 +1,8 @@
 /*!
- * Collapse-O-Matic v1.5.7
+ * Collapse-O-Matic JavaSctipt v1.5.10
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
- * Copyright 2013, Twinpictures
+ * Copyright 2014, Twinpictures
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -61,6 +61,54 @@ function swapTitle(origObj, swapObj){
 	}
 }
 
+function toggleState (obj, id, maptastic, trig_id) {
+	if (maptastic) {
+		jQuery('[id^=target][id$='+id+']').removeClass('maptastic');
+	}
+		
+	//slideToggle
+	if(colomatslideEffect == 'slideToggle'){
+		jQuery('[id^=target][id$='+id+']').slideToggle(colomatduration, function() {
+			// Animation complete.
+			if( obj.hasClass('colomat-inline') && obj.is(':visible') ){
+				obj.css('display', 'inline');
+			}
+			
+			//deal with any findme links
+			if(trig_id && jQuery('#'+trig_id).is('.find-me.colomat-close')){
+				offset_top = jQuery('#find-'+trig_id).attr('name');
+				if(!offset_top){
+					target_offset = jQuery('#'+trig_id).offset();
+					offset_top = target_offset.top;
+				}
+				jQuery('html, body').animate({scrollTop:offset_top}, 500);
+			}
+		});
+	}
+	//slideFade
+	else if(colomatslideEffect == 'slideFade'){
+		jQuery('[id^=target][id$='+id+']').animate({
+			height: "toggle",
+			opacity: "toggle"
+		}, colomatduration, function (){
+			//Animation complete
+			if( obj.hasClass('colomat-inline') && obj.is(':visible') ){
+				obj.css('display', 'inline');
+			}
+			
+			//deal with any findme links
+			if(trig_id && jQuery('#'+trig_id).is('.find-me.colomat-close')){
+				offset_top = jQuery('#find-'+trig_id).attr('name');
+				if(!offset_top){
+					target_offset = jQuery('#'+trig_id).offset();
+					offset_top = target_offset.top;
+				}
+				jQuery('html, body').animate({scrollTop:offset_top}, 500);
+			}
+		});
+	}
+}
+
 function closeOtherGroups(rel){
 	jQuery('.collapseomatic[rel!="' + rel +'"]').each(function(index) {
 		//add close class if open
@@ -82,28 +130,8 @@ function closeOtherGroups(rel){
 			if(jQuery("#swapexcerpt-"+id).length > 0){
 				swapTitle("#exerpt-"+id, "#swapexcerpt-"+id);
 			}
-	
-			//slideToggle
-			if(colomatslideEffect == 'slideToggle'){
-				jQuery('#target-'+id).slideToggle(colomatduration, function() {
-					// Animation complete.
-					if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-						jQuery(this).css('display', 'inline');
-					}
-				});
-			}
-			//slideFade
-			else if(colomatslideEffect == 'slideFade'){
-				jQuery('#target-'+id).animate({
-					height: "toggle",
-					opacity: "toggle"
-				}, colomatduration, function (){
-					//Animation complete
-					if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-						jQuery(this).css('display', 'inline');
-					}
-				});
-			}
+			
+			toggleState (jQuery(this), id, false, false);
 			
 			//check if there are nested children that need to be collapsed
 			var ancestors = jQuery('.collapseomatic', '#target-'+id);
@@ -144,27 +172,8 @@ function closeOtherMembers(rel, id){
 			if(!jQuery(this).hasClass('colomat-close') && jQuery(this).hasClass('snap-shut')){
 				jQuery('#target-'+thisid).hide();
 			}
-			
-			//slideToggle
-			else if(colomatslideEffect == 'slideToggle'){
-				jQuery('#target-'+thisid).slideToggle(colomatduration, function() {
-					// Animation complete.
-					if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-						jQuery(this).css('display', 'inline');
-					}
-				});
-			}
-			//slideFade
-			else if(colomatslideEffect == 'slideFade'){
-				jQuery('#target-'+thisid).animate({
-					height: "toggle",
-					opacity: "toggle"
-				}, colomatduration, function(){
-					// Animation complete.
-					if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-						jQuery(this).css('display', 'inline');
-					}
-				});
+			else{
+				toggleState (jQuery(this), thisid, false, false);
 			}
 			
 			//check if there are nested children that need to be collapsed
@@ -189,6 +198,10 @@ function closeOtherMembers(rel, id){
 					//deal with any scroll to links from the Title Trigger
 					if(jQuery('#'+id).hasClass('scroll-to-trigger')){
 						offset_top = jQuery('#scrollonclose-'+id).attr('name');
+						if (offset_top == 'auto') {
+							var target_offset = jQuery('#'+id).offset();
+							offset_top = target_offset.top;
+						}
 					}
 					
 					//toggle master trigger arrow
@@ -213,6 +226,54 @@ function closeOtherMembers(rel, id){
 				}
 			})
 		}
+	});
+}
+
+function colomat_expandall(loop_items){
+	if (!loop_items){
+		loop_items = jQuery('.collapseomatic:not(.colomat-close)');
+	}
+	loop_items.each(function(index) {
+		jQuery(this).addClass('colomat-close');
+		var thisid = jQuery(this).attr('id');
+		jQuery('#parent-'+thisid).addClass('colomat-parent-highlight');
+		
+		if(jQuery("#swap-"+thisid).length > 0){
+			swapTitle(this, "#swap-"+thisid);
+		}
+		
+		if(jQuery("#swapexcerpt-"+thisid).length > 0){
+			swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
+		}
+		
+		toggleState(jQuery(this), thisid, false, false);
+	});
+}
+
+function colomat_collapseall(loop_items){
+	if (!loop_items){
+		loop_items = jQuery('.collapseomatic.colomat-close');
+	}
+		
+	loop_items.each(function(index) {
+		if(jQuery(this).hasClass('colomat-expand-only') && jQuery(this).hasClass('colomat-close')){
+			return;
+		}
+		
+		jQuery(this).removeClass('colomat-close');
+		var thisid = jQuery(this).attr('id');
+		jQuery('#parent-'+thisid).removeClass('colomat-parent-highlight');
+		
+		if(jQuery("#swap-"+thisid).length > 0){
+			swapTitle(this, "#swap-"+thisid);
+		}
+		
+		if(jQuery("#swapexcerpt-"+thisid).length > 0){
+			swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
+		}
+		
+		toggleState(jQuery(this), thisid, false, false);
+
 	});
 }
 
@@ -250,6 +311,10 @@ jQuery(document).ready(function() {
 		//deal with any scroll to links
 		if(jQuery(this).hasClass('colomat-close') && jQuery(this).hasClass('scroll-to-trigger')){
 			offset_top = jQuery('#scrollonclose-'+id).attr('name');
+			if (offset_top == 'auto') {
+				var target_offset = jQuery('#'+id).offset();
+				offset_top = target_offset.top;
+			}
 		}
 		
 		var id_arr = id.split('-');
@@ -269,6 +334,10 @@ jQuery(document).ready(function() {
 			//deal with any scroll to links from the Title Trigger
 			if(jQuery('#'+id).hasClass('scroll-to-trigger')){
 				offset_top = jQuery('#scrollonclose-'+id).attr('name');
+				if (offset_top == 'auto') {
+					var target_offset = jQuery('#'+id).offset();
+					offset_top = target_offset.top;
+				}
 			}
 			
 			//toggle master trigger arrow
@@ -291,6 +360,10 @@ jQuery(document).ready(function() {
 			//deal with any scroll to links from the Title Trigger
 			if(jQuery('#'+id).hasClass('scroll-to-trigger')){
 				offset_top = jQuery('#scrollonclose-'+id).attr('name');
+				if (offset_top == 'auto') {
+					var target_offset = jQuery('#'+id).offset();
+					offset_top = target_offset.top;
+				}
 			}
 		}
 		else{
@@ -320,235 +393,56 @@ jQuery(document).ready(function() {
 		if(!jQuery(this).hasClass('colomat-close') && jQuery(this).hasClass('snap-shut')){
 			jQuery('#target-'+id).hide();
 		}
-		
-		//slideToggle
-		else if(colomatslideEffect == 'slideToggle'){
-			jQuery('#target-'+id).removeClass('maptastic');
-			jQuery('#target-'+id).slideToggle(colomatduration, function() {
-				// Animation complete.
-				if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-					jQuery(this).css('display', 'inline');
-				}
-							
-				if( jQuery('#'+id).hasClass('find-me') && jQuery('#'+id).hasClass('colomat-close') ){
-					offset_top = jQuery('#find-'+id).attr('name');
-					if(!offset_top){
-						target_offset = jQuery('#'+id).offset();
-						offset_top = target_offset.top;
-					}
-					jQuery('html, body').animate({scrollTop:offset_top}, 500);
-				}
-			});
-		}
-		//slideFade
-		else if(colomatslideEffect == 'slideFade'){
-			jQuery('#target-'+id).removeClass('maptastic');
-			jQuery('#target-'+id).animate({
-				height: "toggle",
-				opacity: "toggle"
-			}, colomatduration, function() {
-				// Animation complete.
-				if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-					jQuery(this).css('display', 'inline');
-				}
-				
-				//deal with any findme links				
-				if( jQuery('#'+id).hasClass('find-me') && jQuery('#'+id).hasClass('colomat-close') ){
-					offset_top = jQuery('#find-'+id).attr('name');
-					if(!offset_top){
-						target_offset = jQuery('#'+id).offset();
-						offset_top = target_offset.top;
-					}
-					jQuery('html, body').animate({scrollTop:offset_top}, 500);
-				}
-			});
+		else{
+			toggleState (jQuery(this), id, true, id);
 		}
         
-        //deal with grouped items if needed
-        if(jQuery(this).attr('rel') !== undefined){
-            var rel = jQuery(this).attr('rel');
+		//deal with grouped items if needed
+		if(jQuery(this).attr('rel') !== undefined){
+			var rel = jQuery(this).attr('rel');
 			if(rel.indexOf('-highlander') != '-1'){
 				closeOtherMembers(rel, id);
 			}
 			else{
 				closeOtherGroups(rel);
 			}   
-        }
-		
+		}
+			
 		if(offset_top){
 			jQuery('html, body').animate({scrollTop:offset_top}, 500);
 		}
-		
-    });
+	});
 	
+
 	jQuery(document).on('click', '.expandall', function(event) {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
-			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic:not(.colomat-close)').each(function(index) {
-					jQuery(this).addClass('colomat-close');
-					var thisid = jQuery(this).attr('id');
-					jQuery('#parent-'+thisid).addClass('colomat-parent-highlight');
-					
-					if(jQuery("#swap-"+thisid).length > 0){
-						swapTitle(this, "#swap-"+thisid);
-					}
-					
-					if(jQuery("#swapexcerpt-"+thisid).length > 0){
-						swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
-					}
-					
-					//slideToggle
-					if(colomatslideEffect == 'slideToggle'){
-						jQuery('#target-'+thisid).slideToggle(colomatduration, function() {
-							// Animation complete.
-							if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-								jQuery(this).css('display', 'inline');
-							}
-						});
-					}
-					//slideFade
-					else if(colomatslideEffect == 'slideFade'){
-						jQuery('#target-'+thisid).animate({
-							height: "toggle",
-							opacity: "toggle"
-						}, colomatduration, function(){
-							//Animation complete
-							if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-								jQuery(this).css('display', 'inline');
-							}
-						});
-					}
-			});
-	    }
-		else{
-			jQuery('.collapseomatic:not(.colomat-close)').each(function(index) {
-				jQuery(this).addClass('colomat-close');
-				var thisid = jQuery(this).attr('id');
-				jQuery('#parent-'+thisid).addClass('colomat-parent-highlight');
-				
-				if(jQuery("#swap-"+thisid).length > 0){
-					swapTitle(this, "#swap-"+thisid);
-				}
-				
-				if(jQuery("#swapexcerpt-"+thisid).length > 0){
-					swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
-				}
-				
-				//slideToggle
-				if(colomatslideEffect == 'slideToggle'){
-					jQuery('#target-'+thisid).slideToggle(colomatduration, function() {
-						// Animation complete.
-						if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-							jQuery(this).css('display', 'inline');
-						}
-					});
-				}
-				//slideFade
-				else if(colomatslideEffect == 'slideFade'){
-					jQuery('#target-'+thisid).animate({
-						height: "toggle",
-						opacity: "toggle"
-					}, colomatduration, function(){
-						//animation complete
-						if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-							jQuery(this).css('display', 'inline');
-						}
-					});
-				}
-			});
+			var loop_items = jQuery('.collapseomatic:not(.colomat-close)[rel="' + rel +'"]');
 		}
-    });
-    
+		else{
+			var loop_items = jQuery('.collapseomatic:not(.colomat-close)');
+		}
+
+		colomat_expandall(loop_items);
+	});
+	
 	jQuery(document).on('click', '.collapseall', function(event) {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
-			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic.colomat-close').each(function(index) {
-				if(jQuery(this).hasClass('colomat-expand-only') && jQuery(this).hasClass('colomat-close')){
-					return;
-				}
-				
-				jQuery(this).removeClass('colomat-close');
-				var thisid = jQuery(this).attr('id');
-				jQuery('#parent-'+thisid).removeClass('colomat-parent-highlight');
-				
-				if(jQuery("#swap-"+thisid).length > 0){
-					swapTitle(this, "#swap-"+thisid);
-				}
-				
-				if(jQuery("#swapexcerpt-"+thisid).length > 0){
-					swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
-				}
-				
-				//slideToggle
-				if(colomatslideEffect == 'slideToggle'){
-					jQuery('#target-'+thisid).slideToggle(colomatduration, function() {
-						// Animation complete
-						if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-							jQuery(this).css('display', 'inline');
-						}
-					});
-				}
-				//slideFade
-				else if(colomatslideEffect == 'slideFade'){
-					jQuery('#target-'+thisid).animate({
-						height: "toggle",
-						opacity: "toggle"
-					}, colomatduration, function(){
-						// Animation complete
-						if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-							jQuery(this).css('display', 'inline');
-						}
-					});
-				}
-			});
+			var loop_items = jQuery('.collapseomatic.colomat-close[rel="' + rel +'"]');
 		}
-		else{
-			jQuery('.collapseomatic.colomat-close').each(function(index) {
-				if(jQuery(this).hasClass('colomat-expand-only') && jQuery(this).hasClass('colomat-close')){
-					return;
-				}
-				jQuery(this).removeClass('colomat-close');
-				var thisid = jQuery(this).attr('id');
-				jQuery('#parent-'+thisid).removeClass('colomat-parent-highlight');
-				
-				if(jQuery("#swap-"+thisid).length > 0){
-					swapTitle(this, "#swap-"+thisid);
-				}
-				
-				if(jQuery("#swapexcerpt-"+thisid).length > 0){
-					swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
-				}
-				
-				//slideToggle
-				if(colomatslideEffect == 'slideToggle'){
-					jQuery('#target-'+thisid).slideToggle(colomatduration, function() {
-						// Animation complete.
-						if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-							jQuery(this).css('display', 'inline');
-						}
-					});
-				}
-				//slideFade
-				else if(colomatslideEffect == 'slideFade'){
-					jQuery('#target-'+thisid).animate({
-						height: "toggle",
-						opacity: "toggle"
-					}, colomatduration, function(){
-						// Animation complete
-						if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
-							jQuery(this).css('display', 'inline');
-						}
-					});
-				}
-			});
+		else {
+			var loop_items = jQuery('.collapseomatic.colomat-close');
 		}
-    });
+		
+		colomat_collapseall(loop_items);
+	});
 	
 	//handle new page loads with anchor
 	var myFile = document.location.toString();
-    if (myFile.match('#')) { // the URL contains an anchor
-        // click the navigation item corresponding to the anchor
-        var anchor_arr = myFile.split('#');
+	if (myFile.match('#')) { // the URL contains an anchor
+		// click the navigation item corresponding to the anchor
+		var anchor_arr = myFile.split('#');
 		if(anchor_arr.length > 1){
 			junk = anchor_arr.splice(0, 1);
 			anchor = anchor_arr.join('#');
@@ -564,7 +458,7 @@ jQuery(document).ready(function() {
 			parent = parent_arr.join('-');
 			jQuery('#' + parent).click();
 		})
-    }
+	}
 	
 	//handle anchor links within the same page
 	jQuery(document).on('click', 'a.expandanchor', function(event) {

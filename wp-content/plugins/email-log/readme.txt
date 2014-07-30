@@ -3,7 +3,7 @@ Contributors: sudar
 Tags: email, log, multisite  
 Requires at least: 3.3  
 Tested up to: 3.9.1  
-Stable tag: 1.7.3  
+Stable tag: 1.7.4  
 
 Logs every email sent through WordPress. Works with WordPress Multisite as well
 
@@ -118,6 +118,10 @@ wpmandrill plugin has a bug that prevents this plugin from logging the content o
 This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/wp-readme'>wp-readme</a>, which generates readme files for WordPress Plugins.
 == Changelog ==
 
+= v1.7.4  (2014-07-24) - (Dev time: 0.5 hours) =
+- Fix: Handle cases where `date_format` or `time_format` are empty (issue #23)
+- Tweak: Remove excessive comments from include/class-email-log-list-table.php (issue #10)
+
 = v1.7.3  (2014-05-14) - (Dev time: 0.5 hours) =
 - Fix: Fixed a compatibility issue with wpmandrill plugin (issue #20)
 
@@ -214,6 +218,9 @@ This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/
 - Initial Release
 
 == Upgrade Notice ==
+
+= 1.7.4 =
+Handle cases where `date_format` or `time_format` are empty
 
 = 1.7.2 =
 Fix the bug that was introduced in v1.7

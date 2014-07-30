@@ -8,7 +8,7 @@ Tested up to: 3.9.1
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
 == Description ==
@@ -46,6 +46,10 @@ Not really. I just want to stop receiving spam from my bbPress install. However,
 
 
 == Changelog ==
+= 1.5.5 =
+* Improved Tests
+* Renamed some variables.
+
 = 1.5.4 =
 * Fix: Make sure bbPress is installed and avoid race conditions when loading.
 
