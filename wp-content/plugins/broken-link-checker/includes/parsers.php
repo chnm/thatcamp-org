@@ -47,7 +47,15 @@ class blcParser extends blcModule {
 		parent::activated();
 		$this->resynch_relevant_containers();
 	}
-	
+
+	/**
+	 * Called when BLC is activated.
+	 */
+	function plugin_activated() {
+		//Intentionally do nothing. BLC can not parse containers while it's inactive, so we can be
+		//pretty sure that there are no already-parsed containers that need to be resynchronized.
+	}
+
 	/**
 	 * Mark containers that this parser might be interested in as unparsed.
 	 * 

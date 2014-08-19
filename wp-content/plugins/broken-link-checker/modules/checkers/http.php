@@ -79,7 +79,7 @@ class blcHttpChecker extends blcChecker {
 			$this->token_bucket_list->takeToken($domain);
 		}
 
-		$blclog->info('HTTP module checking "' . $url . '"');
+		$blclog->debug('HTTP module checking "' . $url . '"');
 		return $this->implementation->check($url, $use_get);
 	}
 }
@@ -95,14 +95,17 @@ class blcHttpCheckerBase extends blcChecker {
 	
 	function clean_url($url){
 		$url = html_entity_decode($url);
-	    $url = preg_replace(
+
+		$ltrm = preg_quote(json_decode('"\u200E"'), '/');
+		$url = preg_replace(
 	        array(
 				'/([\?&]PHPSESSID=\w+)$/i',	//remove session ID
 	            '/(#[^\/]*)$/',				//and anchors/fragments
 	            '/&amp;/',					//convert improper HTML entities
-	            '/([\?&]sid=\w+)$/i'		//remove another flavour of session ID
+	            '/([\?&]sid=\w+)$/i',		//remove another flavour of session ID
+				'/' . $ltrm . '/',			//remove Left-to-Right marks that can show up when copying from Word.
 	        ),
-	        array('','','&',''),
+	        array('', '', '&', '', ''),
 	        $url
 		);
 	    $url = trim($url);
@@ -171,13 +174,20 @@ class blcCurlHttp extends blcHttpCheckerBase {
 		
 		//Init curl.
 	 	$ch = curl_init();
+		$request_headers = array();
         curl_setopt($ch, CURLOPT_URL, $this->urlencodefix($url));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
         //Masquerade as Internet Explorer
 		$ua = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)';
+		//$ua = 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko';
         curl_setopt($ch, CURLOPT_USERAGENT, $ua);
-        
+
+		//Close the connection after the request (disables keep-alive). The plugin rate-limits requests,
+		//so it's likely we'd overrun the keep-alive timeout anyway.
+		curl_setopt($ch, CURLOPT_FORBID_REUSE, true);
+		$request_headers[] = 'Connection: close';
+
         //Add a semi-plausible referer header to avoid tripping up some bot traps 
         curl_setopt($ch, CURLOPT_REFERER, home_url());
         
@@ -225,9 +235,14 @@ class blcCurlHttp extends blcHttpCheckerBase {
 			curl_setopt($ch, CURLOPT_NOBODY, true);  
 		} else {
 			//If we must use GET at least limit the amount of downloaded data.
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Range: bytes=0-2048')); //2 KB
+			$request_headers[] = 'Range: bytes=0-2048'; //2 KB
 		}
-        
+
+		//Set request headers.
+		if ( !empty($request_headers) ) {
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);
+		}
+
         //Register a callback function which will process the HTTP header(s).
 		//It can be called multiple times if the remote server performs a redirect. 
 		curl_setopt($ch, CURLOPT_HEADERFUNCTION, array(&$this,'read_header'));
@@ -293,6 +308,13 @@ class blcCurlHttp extends blcHttpCheckerBase {
         	$result['broken'] = $this->is_error_code($result['http_code']);
         }
         curl_close($ch);
+
+		$blclog->info(sprintf(
+			'HTTP response: %d, duration: %.2f seconds, status text: "%s"',
+			$result['http_code'],
+			$result['request_duration'],
+			isset($result['status_text']) ? $result['status_text'] : 'N/A'
+		));
         
         if ( $nobody && $result['broken'] ){
 			//The site in question might be expecting GET instead of HEAD, so lets retry the request 

@@ -2,9 +2,9 @@
 Contributors: blackbam
 Tags: user, search, backend, user search
 Requires at least: 3.0
-Tested up to: 3.3.2
+Tested up to: 3.9.1
 License: GPLv2
-Stable tag: 1.2.4
+Stable tag: 1.2.6
  
 Improves the search for users in the backend significantly: Search for first name, last, email and more of users instead of only nicename.
 
@@ -34,6 +34,11 @@ Special characters like quotes are escaped, problems with the query may apper wh
 
 == Changelog ==
 
+= 1.2.6 = 
+Additional security fix sanitizing text field input.
+
+= 1.2.5 =
+- Removed a possible XSS/CSRF vulnerability in the backend.
 
 == 1.2.4 ==
 

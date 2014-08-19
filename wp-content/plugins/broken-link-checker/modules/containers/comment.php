@@ -298,19 +298,21 @@ class blcCommentManager extends blcContainerManager {
 		
 		if ( $forced ){
 			//Create new synchronization records for all comments.
-			$blclog->log('...... Creating synch. records for comments'); 
+			$blclog->log('...... Creating synch. records for comments');
+			$start = microtime(true);
 	    	$q = "INSERT INTO {$wpdb->prefix}blc_synch(container_id, container_type, synched)
 				  SELECT comment_ID, '{$this->container_type}', 0
 				  FROM {$wpdb->comments}
 				  WHERE
 				  	{$wpdb->comments}.comment_approved = '1'";
 	 		$wpdb->query( $q );
-	 		$blclog->log(sprintf('...... %d rows affected', $wpdb->rows_affected));
+	 		$blclog->log(sprintf('...... %d rows inserted in %.3f seconds', $wpdb->rows_affected, microtime(true) - $start));
  		} else {
  			//Delete synch records corresponding to comments that no longer exist 
 			//or have been trashed/spammed/unapproved.
 			$blclog->log('...... Deleting synch. records for removed comments');
- 			$q = "DELETE synch.*
+			$start = microtime(true);
+			$q = "DELETE synch.*
 				  FROM 
 					 {$wpdb->prefix}blc_synch AS synch LEFT JOIN {$wpdb->comments} AS comments
 					 ON comments.comment_ID = synch.container_id
@@ -318,10 +320,11 @@ class blcCommentManager extends blcContainerManager {
 					 synch.container_type = '{$this->container_type}' 
 					 AND (comments.comment_ID IS NULL OR comments.comment_approved <> '1')";
 			$wpdb->query( $q );
-			$blclog->log(sprintf('...... %d rows affected', $wpdb->rows_affected));
+			$blclog->log(sprintf('...... %d rows deleted in %.3f seconds', $wpdb->rows_affected, microtime(true) - $start));
 			
 			//Create synch. records for comments that don't have them.
 			$blclog->log('...... Creating synch. records for new comments');
+			$start = microtime(true);
 			$q = "INSERT INTO {$wpdb->prefix}blc_synch(container_id, container_type, synched)
 				  SELECT comment_ID, '{$this->container_type}', 0
 				  FROM 
@@ -331,7 +334,7 @@ class blcCommentManager extends blcContainerManager {
 				  	comments.comment_approved = '1'
 					AND synch.container_id IS NULL";
 			$wpdb->query($q);
-			$blclog->log(sprintf('...... %d rows affected', $wpdb->rows_affected));
+			$blclog->log(sprintf('...... %d rows inserted in %.3f seconds', $wpdb->rows_affected, microtime(true) - $start));
 			
 			/*
 			Note that there is no way to detect comments that were *edited* (not added - those

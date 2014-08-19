@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Broken Link Checker v1.9.1\n"
+"Project-Id-Version: Broken Link Checker v1.9.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-11-29 06:43:30-0600\n"
+"PO-Revision-Date: 2014-03-27 21:31:48+0000\n"
 "Last-Translator: admin <eitan@caspi.org.il>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Textdomain-Support: yes"
 
 #: core/core.php:153
-#: includes/admin/links-page-js.php:37
+#: includes/admin/links-page-js.php:44
 #@ broken-link-checker
 msgid "Loading..."
 msgstr "טוען..."
@@ -73,343 +73,343 @@ msgstr "אל הקישורים השבורים"
 msgid "Settings"
 msgstr "הגדרות"
 
-#: core/core.php:538
+#: core/core.php:572
 #@ broken-link-checker
 msgid "Settings saved."
 msgstr "ההגדרות נשמרו"
 
-#: core/core.php:544
+#: core/core.php:578
 #@ broken-link-checker
 msgid "Thank you for your donation!"
 msgstr "תודה לך על תרומתך!"
 
-#: core/core.php:552
+#: core/core.php:586
 #@ broken-link-checker
 msgid "Complete site recheck started."
 msgstr "החלה בדיקה חוזרת של האתר."
 
-#: core/core.php:561
+#: core/core.php:595
 #@ broken-link-checker
 msgid "Details"
 msgstr "פרטים"
 
-#: core/core.php:575
+#: core/core.php:609
 #@ broken-link-checker
 msgid "General"
 msgstr "כללי"
 
-#: core/core.php:576
+#: core/core.php:610
 #@ broken-link-checker
 msgid "Look For Links In"
 msgstr "חיפוש קישורים על פי:"
 
-#: core/core.php:577
+#: core/core.php:611
 #@ broken-link-checker
 msgid "Which Links To Check"
 msgstr "סוגי קישורים שיבדקו"
 
-#: core/core.php:578
+#: core/core.php:612
 #@ broken-link-checker
 msgid "Protocols & APIs"
 msgstr "פרוטוקולים ו-APIs"
 
-#: core/core.php:579
+#: core/core.php:613
 #@ broken-link-checker
 msgid "Advanced"
 msgstr "הגדרות מתקדמות"
 
-#: core/core.php:594
+#: core/core.php:628
 #@ broken-link-checker
 msgid "Broken Link Checker Options"
 msgstr "הגדרות בודק קישורים שבורים"
 
-#: core/core.php:636
-#: includes/admin/table-printer.php:200
+#: core/core.php:670
+#: includes/admin/table-printer.php:203
 #@ broken-link-checker
 msgid "Status"
 msgstr "סטטוס"
 
-#: core/core.php:638
+#: core/core.php:672
 #: includes/admin/options-page-js.php:56
 #@ broken-link-checker
 msgid "Show debug info"
 msgstr "הצגת מידע מערכת"
 
-#: core/core.php:666
+#: core/core.php:700
 #@ broken-link-checker
 msgid "Check each link"
 msgstr "בדיקה חוזרת של כל הקישורים"
 
-#: core/core.php:671
+#: core/core.php:705
 #, php-format
 #@ broken-link-checker
 msgid "Every %s hours"
 msgstr "תבוצע בדיקה כל %s שעות"
 
-#: core/core.php:680
+#: core/core.php:714
 #@ broken-link-checker
 msgid "Existing links will be checked this often. New links will usually be checked ASAP."
 msgstr "קישורים קיימים יבדקו בתכיפות הזו. קישורים חדשים בדרך כלל יבדקו בהקדם האפשרי.<br>(ערך ברירת מחדל: 72. ערך מינימום: 1. ערך מקסימום: 99999. אפס (0) אינו ערך מותר)"
 
-#: core/core.php:687
+#: core/core.php:721
 #@ broken-link-checker
 msgid "E-mail notifications"
 msgstr "התראות בדואר אלקטרוני"
 
-#: core/core.php:693
+#: core/core.php:727
 #@ broken-link-checker
 msgid "Send me e-mail notifications about newly detected broken links"
 msgstr "משלוח התראות בדואר אלקטרוני אודות קישורים שבורים חדשים שנמצאו"
 
-#: core/core.php:701
+#: core/core.php:735
 #@ broken-link-checker
 msgid "Send authors e-mail notifications about broken links in their posts"
 msgstr "מחברי פוסטים יקבלו התראות בדואר אלקטרוני אודות קישורים שבורים בפוסטים שלהם"
 
-#: core/core.php:708
+#: core/core.php:742
 #@ broken-link-checker
 msgid "Notification e-mail address"
 msgstr "כתובת הדואר האלקטרוני למשלוח התראות"
 
-#: core/core.php:720
+#: core/core.php:754
 #@ broken-link-checker
 msgid "Leave empty to use the e-mail address specified in Settings &rarr; General."
 msgstr "השאירו שדה זה ריק אם ברצונכם שההתראות ישלחו לכתובת הדואר האלקטרוני הראשית של האתר, זו הרשומה בהגדרות הכלליות של וורדפרס (הגדרות -> כללי)"
 
-#: core/core.php:727
+#: core/core.php:761
 #@ broken-link-checker
 msgid "Link tweaks"
 msgstr "עיצוב טקסט הקישור<br>(כאן ניתן לציין עיצוב מבוסס CSS לטקסט של קישורים על פי הסטטוס שלהם. למשל קו חוצה/מוחק על טקסט של קישור שבור, כך שהקוראים יבינו שהקישור שבור מבלי שיצטרכו להקליק על הקישור)"
 
-#: core/core.php:733
+#: core/core.php:767
 #@ broken-link-checker
 msgid "Apply custom formatting to broken links"
 msgstr "החלת עיצוב מותאם לטקסט שהקישור שלו שבור"
 
-#: core/core.php:737
-#: core/core.php:768
+#: core/core.php:771
+#: core/core.php:802
 #@ broken-link-checker
 msgid "Edit CSS"
 msgstr "עריכת CSS"
 
-#: core/core.php:753
+#: core/core.php:787
 #, php-format
 #@ broken-link-checker
 msgid "Example : Lorem ipsum <a %s>broken link</a>, dolor sit amet."
 msgstr "דוגמה: \"גנן גידל דגן בגן, <a %s>קישור שבור</a> דגן גדול גדל בגן\"."
 
-#: core/core.php:756
-#: core/core.php:787
+#: core/core.php:790
+#: core/core.php:821
 #@ broken-link-checker
 msgid "Click \"Save Changes\" to update example output."
 msgstr "במידה ושיניתם את קוד ה-CSS הקליקו \"שמור שינויים\" בכדי לעדכן את הדוגמה."
 
-#: core/core.php:764
+#: core/core.php:798
 #@ broken-link-checker
 msgid "Apply custom formatting to removed links"
 msgstr "החלת עיצוב מותאם לטקסט שהקישור שלו הוסר"
 
-#: core/core.php:784
+#: core/core.php:818
 #, php-format
 #@ broken-link-checker
 msgid "Example : Lorem ipsum <span %s>removed link</span>, dolor sit amet."
 msgstr "דוגמה: \"גנן גידל דגן בגן, <span %s>קישור להסרה</span> דגן גדול גדל בגן\"."
 
-#: core/core.php:797
+#: core/core.php:831
 #@ broken-link-checker
 msgid "Stop search engines from following broken links"
 msgstr "חסימת מנועי חיפוש מלהמשיך אל עמוד היעד של קישור שבור"
 
-#: core/core.php:827
+#: core/core.php:861
 #@ broken-link-checker
 msgid "Look for links in"
 msgstr "סוגי מקורות הקישורים"
 
-#: core/core.php:838
+#: core/core.php:872
 #@ broken-link-checker
 msgid "Post statuses"
 msgstr "סטטוס של פוסטים"
 
-#: core/core.php:871
+#: core/core.php:905
 #@ broken-link-checker
 msgid "Link types"
 msgstr "סוגי קישורים"
 
-#: core/core.php:877
+#: core/core.php:911
 #@ broken-link-checker
 msgid "Error : All link parsers missing!"
 msgstr "שגיאה: כל רכיבי הניתוח (Parsers) של הקישורים לא נמצאו!"
 
-#: core/core.php:884
+#: core/core.php:918
 #@ broken-link-checker
 msgid "Exclusion list"
 msgstr "רשימת התעלמות (Exclusion)"
 
-#: core/core.php:885
+#: core/core.php:919
 #@ broken-link-checker
 msgid "Don't check links where the URL contains any of these words (one per line) :"
 msgstr "לא ייבדקו קישורים שכתובת האינטרנט שלהם מכילה לפחות את אחת מהמילים הבאות (יש לרשום בכל שורה רק מילה אחת):"
 
-#: core/core.php:903
+#: core/core.php:937
 #@ broken-link-checker
 msgid "Check links using"
 msgstr "בדיקת קישורים בעזרת"
 
-#: core/core.php:922
-#: includes/links.php:857
+#: core/core.php:956
+#: includes/links.php:867
 #@ broken-link-checker
 msgid "Timeout"
 msgstr "משך הבדיקה המקסימלי לכל קישור (Timeout)"
 
-#: core/core.php:928
-#: core/core.php:997
-#: core/core.php:2904
+#: core/core.php:962
+#: core/core.php:1031
+#: core/core.php:3019
 #, php-format
 #@ broken-link-checker
 #@ default
 msgid "%s seconds"
 msgstr "%s שניות"
 
-#: core/core.php:937
+#: core/core.php:971
 #@ broken-link-checker
 msgid "Links that take longer than this to load will be marked as broken."
 msgstr "קישורים שלא שולחים חזרה קוד שגיאה או הפניה אך זמן הטעינה של עמוד היעד שלהם ארוך מערך זה - כנראה בעייתים מסיבה כלשהי ולכן יסומנו כשבורים.<br>(ערך ברירת מחדל: 30. ערך מינימום: 1. ערך מקסימום: 999. אפס (0) אינו ערך מותר)"
 
-#: core/core.php:944
+#: core/core.php:978
 #@ broken-link-checker
 msgid "Link monitor"
 msgstr "תכיפות ניטור הקישורים<br>(שימו לב - אם שתי תיבות הסימון של הגדרה זו יהיו ריקות - התוסף למעשה יפסיק לחלוטין לבדוק קישורים! (אז תשאירו לפחות אחד מסומן))"
 
-#: core/core.php:952
+#: core/core.php:986
 #@ broken-link-checker
 msgid "Run continuously while the Dashboard is open"
 msgstr "ניטור מתמשך כל עוד ממשק הניהול של וורדפרס פתוח על ידי משתמש אחד לפחות (ללא הגבלת ה-\"תפקיד\" (Role) אליו משויך המשתמש - משתמש כלשהו)"
 
-#: core/core.php:960
+#: core/core.php:994
 #@ broken-link-checker
 msgid "Run hourly in the background"
 msgstr "ניטור פעם בשעה ברקע, ללא קשר למצב ממשק הניהול"
 
-#: core/core.php:968
+#: core/core.php:1002
 #@ broken-link-checker
 msgid "Show the dashboard widget for"
 msgstr "הצגת וידג'ט התוסף בעמוד \"לוח בקרה\" רק למשתמשים מסוג"
 
-#: core/core.php:973
+#: core/core.php:1007
 #@ broken-link-checker
 msgctxt "dashboard widget visibility"
 msgid "Administrator"
 msgstr "מנהל"
 
-#: core/core.php:974
+#: core/core.php:1008
 #@ broken-link-checker
 msgctxt "dashboard widget visibility"
 msgid "Editor and above"
 msgstr "עורך ומעלה"
 
-#: core/core.php:975
+#: core/core.php:1009
 #@ broken-link-checker
 msgctxt "dashboard widget visibility"
 msgid "Nobody (disables the widget)"
 msgstr "אף אחד (מכבה את הוידג'ט)"
 
-#: core/core.php:991
+#: core/core.php:1025
 #@ broken-link-checker
 msgid "Max. execution time"
 msgstr "משך זמן מקסימלי לבדיקת כל הקישורים באתר"
 
-#: core/core.php:1008
+#: core/core.php:1042
 #@ broken-link-checker
 msgid "The plugin works by periodically launching a background job that parses your posts for links, checks the discovered URLs, and performs other time-consuming tasks. Here you can set for how long, at most, the link monitor may run each time before stopping."
 msgstr "התוסף פועל על ידי משימה של בדיקת קישורים אשר בוחנת את סוגי התכנים השונים באתר ומנסה למצוא בהם קישורים. אם נמצאו קישורים המשימה  בודקת את תקינותם ומבצעת פעילויות אחרות שגוזלות זמן ומשאבי מערכת. בשדה זה אתם יכולים להגדיר את כמות זמן הניטור המקסימלית המותרת. לאחר משך זמן זה תופסק פעילות הניטור באופן יזום על ידי התוסף.<br>(ערך ברירת מחדל: 300. ערך מינימום: 1. ערך מקסימום: 99999. אפס (0) אינו ערך מותר)"
 
-#: core/core.php:1017
+#: core/core.php:1051
 #@ broken-link-checker
 msgid "Server load limit"
 msgstr "הגבלת עומס על השרת"
 
-#: core/core.php:1032
+#: core/core.php:1066
 #, php-format
 #@ broken-link-checker
 msgid "Current load : %s"
 msgstr "העומס הנוכחי על השרת: %s"
 
-#: core/core.php:1038
+#: core/core.php:1072
 #, php-format
 #@ broken-link-checker
 msgid "Link checking will be suspended if the average <a href=\"%s\">server load</a> rises above this number. Leave this field blank to disable load limiting."
 msgstr "משימת בדיקת הקישורים תושעה במידה וממוצע <a href=\"%s\" target=\\\"_blank\\\">העומס על השרת</a> יעלה מעל מספר זה. ניתן להשאיר שדה זה ריק בכדי לכבות אפשרות זו - אולם מומלץ מאוד שלא לעשות זאת, בכדי למנוע את השבתת האתר שלכם על ידי ספק האירוח במידה ופעולת בדיקת הקישורים באתר שלכם תגרום לעומס אשר יפריע לפעולת השרת המארח."
 
-#: core/core.php:1046
+#: core/core.php:1080
 #@ broken-link-checker
 msgid "Not available"
 msgstr "לא זמין"
 
-#: core/core.php:1048
+#: core/core.php:1082
 #@ broken-link-checker
 msgid "Load limiting only works on Linux-like systems where <code>/proc/loadavg</code> is present and accessible."
 msgstr "הגבלת עומס על השרת פועלת רק על מערכות דמויות Linux כאשר <code>/proc/loadavg</code> קיים ונגיש."
 
-#: core/core.php:1056
+#: core/core.php:1138
 #@ broken-link-checker
 msgid "Forced recheck"
 msgstr "איפוס ממצאי התוסף"
 
-#: core/core.php:1059
+#: core/core.php:1141
 #@ broken-link-checker
 msgid "Re-check all pages"
 msgstr "איפוס ממצאי התוסף"
 
-#: core/core.php:1063
+#: core/core.php:1145
 #@ broken-link-checker
 msgid "The \"Nuclear Option\". Click this button to make the plugin empty its link database and recheck the entire site from scratch."
 msgstr "***זהירות***: הקלקה על כפתור זה תמחק לחלוטין את התוכן הנוכחי של מסד הנתונים של התוסף (רק מידע שנאסף אודות הקישורים, לא ההגדרות של התוסף) ולאחר מכן תחל בדיקה מחדש של כל הקישורים באתר זה."
 
-#: core/core.php:1074
+#: core/core.php:1156
 #@ default
 msgid "Save Changes"
 msgstr "שמירת שינויים"
 
-#: core/core.php:1125
+#: core/core.php:1207
 #@ broken-link-checker
 msgid "Configure"
 msgstr "פירוט"
 
-#: core/core.php:1338
-#: core/core.php:1421
-#: core/core.php:1453
+#: core/core.php:1420
+#: core/core.php:1503
+#: core/core.php:1535
 #, php-format
 #@ broken-link-checker
 msgid "Database error : %s"
 msgstr "שגיאת מסד נתונים: %s"
 
-#: core/core.php:1403
+#: core/core.php:1485
 #@ broken-link-checker
 msgid "You must enter a filter name!"
 msgstr "חובה להזין שם מסנן!"
 
-#: core/core.php:1407
+#: core/core.php:1489
 #@ broken-link-checker
 msgid "Invalid search query."
 msgstr "שאילתת חיפוש לא תקינה."
 
-#: core/core.php:1416
+#: core/core.php:1498
 #, php-format
 #@ broken-link-checker
 msgid "Filter \"%s\" created"
 msgstr "הסינון \"%s\" נוצר"
 
-#: core/core.php:1443
+#: core/core.php:1525
 #@ broken-link-checker
 msgid "Filter ID not specified."
 msgstr "לא מצוין קוד זיהוי מסנן."
 
-#: core/core.php:1450
+#: core/core.php:1532
 #@ broken-link-checker
 msgid "Filter deleted"
 msgstr "המסנן נמחק"
 
-#: core/core.php:1498
+#: core/core.php:1580
 #, php-format
 #@ broken-link-checker
 msgid "Replaced %d redirect with a direct link"
@@ -417,7 +417,7 @@ msgid_plural "Replaced %d redirects with direct links"
 msgstr[0] " %d הפניה החליפה את הקישור המקורי"
 msgstr[1] "%d הפניות החליפו את הקישורים המקוריים"
 
-#: core/core.php:1509
+#: core/core.php:1591
 #, php-format
 #@ broken-link-checker
 msgid "Failed to fix %d redirect"
@@ -425,12 +425,12 @@ msgid_plural "Failed to fix %d redirects"
 msgstr[0] "נכשל הניסיון לתקן %d הפניה"
 msgstr[1] "נכשל הניסיון לתקן %d הפניות"
 
-#: core/core.php:1519
+#: core/core.php:1601
 #@ broken-link-checker
 msgid "None of the selected links are redirects!"
 msgstr "אף אחד מהקישורים שנבחרו אינו הפניה!"
 
-#: core/core.php:1598
+#: core/core.php:1680
 #, php-format
 #@ broken-link-checker
 msgid "%d link updated."
@@ -438,7 +438,7 @@ msgid_plural "%d links updated."
 msgstr[0] "עודכן %d קישור."
 msgstr[1] "עודכנו %d קישורים."
 
-#: core/core.php:1609
+#: core/core.php:1691
 #, php-format
 #@ broken-link-checker
 msgid "Failed to update %d link."
@@ -446,7 +446,7 @@ msgid_plural "Failed to update %d links."
 msgstr[0] "נכשל הניסיון לעדכן %d קישור."
 msgstr[1] "נכשל הניסיון לעדכן %d קישורים."
 
-#: core/core.php:1698
+#: core/core.php:1780
 #, php-format
 #@ broken-link-checker
 msgid "%d link removed"
@@ -454,7 +454,7 @@ msgid_plural "%d links removed"
 msgstr[0] "%d קישור הוסר"
 msgstr[1] "הוסרו %d קישורים"
 
-#: core/core.php:1709
+#: core/core.php:1791
 #, php-format
 #@ broken-link-checker
 msgid "Failed to remove %d link"
@@ -462,7 +462,7 @@ msgid_plural "Failed to remove %d links"
 msgstr[0] "נכשל הניסיון להסיר את הקישור %d"
 msgstr[1] "נכשל הניסיון להסיר את הקישורים %d"
 
-#: core/core.php:1818
+#: core/core.php:1900
 #, php-format
 #@ default
 msgid "%d item was skipped because it can't be moved to the Trash. You need to delete it manually."
@@ -470,12 +470,12 @@ msgid_plural "%d items were skipped because they can't be moved to the Trash. Yo
 msgstr[0] "%d פריט לא עובד בגלל שלא ניתן להעביר אותו לסל המחזור. צריך למחוק אותו ידנית."
 msgstr[1] "%d פריטים לא עובדו בגלל שלא ניתן להעביר אותם לסל המחזור. צריך למחוק אותם ידנית."
 
-#: core/core.php:1839
+#: core/core.php:1921
 #@ broken-link-checker
 msgid "Didn't find anything to delete!"
 msgstr "לא נמצאו פריטים למחיקה!"
 
-#: core/core.php:1868
+#: core/core.php:1950
 #, php-format
 #@ broken-link-checker
 msgid "%d link scheduled for rechecking"
@@ -483,19 +483,19 @@ msgid_plural "%d links scheduled for rechecking"
 msgstr[0] "%d קישור תוזמן לבדיקה חוזרת"
 msgstr[1] "%d קישורים תוזמנו לבדיקה חוזרת"
 
-#: core/core.php:1913
-#: core/core.php:2522
+#: core/core.php:1995
+#: core/core.php:2637
 #@ broken-link-checker
 msgid "This link was manually marked as working by the user."
 msgstr "הקישור סומן ידנית כ'לא שבור' על ידי משתמש."
 
-#: core/core.php:1920
+#: core/core.php:2002
 #, php-format
 #@ broken-link-checker
 msgid "Couldn't modify link %d"
 msgstr "לא ניתן היה לשנות את הקישור %d"
 
-#: core/core.php:1931
+#: core/core.php:2013
 #, php-format
 #@ broken-link-checker
 msgid "%d link marked as not broken"
@@ -503,59 +503,59 @@ msgid_plural "%d links marked as not broken"
 msgstr[0] "הקישור %d סומן כ\\\"לא שבור\\\""
 msgstr[1] "הקישורים %d סומנו כ\\\"לא שבור\\\""
 
-#: core/core.php:1970
+#: core/core.php:2052
 #@ broken-link-checker
 msgid "Table columns"
 msgstr "טורי טבלה"
 
-#: core/core.php:1989
+#: core/core.php:2071
 #@ default
 msgid "Show on screen"
 msgstr "הצג במסך"
 
-#: core/core.php:1996
+#: core/core.php:2078
 #@ broken-link-checker
 msgid "links"
 msgstr "קישורים"
 
-#: core/core.php:1997
-#: includes/admin/table-printer.php:168
+#: core/core.php:2079
+#: includes/admin/table-printer.php:171
 #@ default
 #@ broken-link-checker
 msgid "Apply"
 msgstr "ביצוע"
 
-#: core/core.php:2001
+#: core/core.php:2083
 #@ broken-link-checker
 msgid "Misc"
 msgstr "שונות"
 
-#: core/core.php:2016
+#: core/core.php:2098
 #, php-format
 #@ broken-link-checker
 msgid "Highlight links broken for at least %s days"
 msgstr "הדגשת הרקע של קישורים אשר שבורים כבר במשך לפחות %s ימים"
 
-#: core/core.php:2025
+#: core/core.php:2107
 #@ broken-link-checker
 msgid "Color-code status codes"
 msgstr "קודי סטטוס צבעוניים"
 
-#: core/core.php:2042
-#: core/core.php:2507
-#: core/core.php:2547
-#: core/core.php:2580
-#: core/core.php:2667
+#: core/core.php:2124
+#: core/core.php:2622
+#: core/core.php:2662
+#: core/core.php:2695
+#: core/core.php:2782
 #@ broken-link-checker
 msgid "You're not allowed to do that!"
 msgstr "אינכם מורשים לבצע פעולה זו!"
 
-#: core/core.php:2377
+#: core/core.php:2492
 #@ broken-link-checker
 msgid "View broken links"
 msgstr "צפיה בקישורים השבורים"
 
-#: core/core.php:2378
+#: core/core.php:2493
 #, php-format
 #@ broken-link-checker
 msgid "Found %d broken link"
@@ -563,12 +563,12 @@ msgid_plural "Found %d broken links"
 msgstr[0] "נמצאו %d קישור שבור"
 msgstr[1] "נמצאו %d קישורים שבורים"
 
-#: core/core.php:2384
+#: core/core.php:2499
 #@ broken-link-checker
 msgid "No broken links found."
 msgstr "לא נמצאו קישורים שבורים."
 
-#: core/core.php:2391
+#: core/core.php:2506
 #, php-format
 #@ broken-link-checker
 msgid "%d URL in the work queue"
@@ -576,12 +576,12 @@ msgid_plural "%d URLs in the work queue"
 msgstr[0] "קיימת %d ‏כתובת אינטרנט בתור המשימות"
 msgstr[1] "קיימות %d ‏כתובות אינטרנט בתור המשימות"
 
-#: core/core.php:2394
+#: core/core.php:2509
 #@ broken-link-checker
 msgid "No URLs in the work queue."
 msgstr "אין בתור המשימות כתובות אינטרנט לבדיקה"
 
-#: core/core.php:2400
+#: core/core.php:2515
 #, php-format
 #@ broken-link-checker
 msgctxt "for the \"Detected X unique URLs in Y links\" message"
@@ -590,7 +590,7 @@ msgid_plural "%d unique URLs"
 msgstr[0] "%d ‏כתובת אינטרנט יחודית"
 msgstr[1] "%d ‏כתובות אינטרנט יחודיות"
 
-#: core/core.php:2404
+#: core/core.php:2519
 #, php-format
 #@ broken-link-checker
 msgctxt "for the \"Detected X unique URLs in Y links\" message"
@@ -599,169 +599,169 @@ msgid_plural "%d links"
 msgstr[0] "%d קישור"
 msgstr[1] "%d קישורים"
 
-#: core/core.php:2410
+#: core/core.php:2525
 #, php-format
 #@ broken-link-checker
 msgid "Detected %1$s in %2$s and still searching..."
 msgstr "נמצאו %1$s בתוך %2$s והחיפוש ממשיך..."
 
-#: core/core.php:2416
+#: core/core.php:2531
 #, php-format
 #@ broken-link-checker
 msgid "Detected %1$s in %2$s."
 msgstr "נמצאו %1$s בתוך %2$s."
 
-#: core/core.php:2423
+#: core/core.php:2538
 #@ broken-link-checker
 msgid "Searching your blog for links..."
 msgstr "מתבצע חיפוש קישורים באתר..."
 
-#: core/core.php:2425
+#: core/core.php:2540
 #@ broken-link-checker
 msgid "No links detected."
 msgstr "לא נמצאו קישורים."
 
-#: core/core.php:2451
+#: core/core.php:2566
 #@ broken-link-checker
 msgctxt "current load"
 msgid "Unknown"
 msgstr "לא ידוע"
 
-#: core/core.php:2515
-#: core/core.php:2555
-#: core/core.php:2595
-#: core/core.php:2677
+#: core/core.php:2630
+#: core/core.php:2670
+#: core/core.php:2710
+#: core/core.php:2792
 #, php-format
 #@ broken-link-checker
 msgid "Oops, I can't find the link %d"
 msgstr "אופס, לא נמצא הקישור %d"
 
-#: core/core.php:2528
-#: core/core.php:2565
+#: core/core.php:2643
+#: core/core.php:2680
 #@ broken-link-checker
 msgid "Oops, couldn't modify the link!"
 msgstr "אופס, לא ניתן לשנות את הקישור!"
 
-#: core/core.php:2531
-#: core/core.php:2568
-#: core/core.php:2703
+#: core/core.php:2646
+#: core/core.php:2683
+#: core/core.php:2818
 #@ broken-link-checker
 msgid "Error : link_id not specified"
 msgstr "שגיאה: link_id אינו מוגדר"
 
-#: core/core.php:2604
+#: core/core.php:2719
 #@ broken-link-checker
 msgid "Oops, the new URL is invalid!"
 msgstr "אופס, כתובת האינטרנט החדשה אינה תקינה!"
 
-#: core/core.php:2686
+#: core/core.php:2801
 #@ broken-link-checker
 msgid "An unexpected error occured!"
 msgstr "אירעה שגיאה לא צפויה!"
 
-#: core/core.php:2586
+#: core/core.php:2701
 #@ broken-link-checker
 msgid "Error : link_id or new_url not specified"
 msgstr "שגיאה: link_id או new_url אינם מוגדרים"
 
-#: core/core.php:2712
+#: core/core.php:2827
 #@ broken-link-checker
 msgid "You don't have sufficient privileges to access this information!"
 msgstr "אין לכם את ההרשאות המתאימות בכדי לגשת למידע זה!"
 
-#: core/core.php:2725
+#: core/core.php:2840
 #@ broken-link-checker
 msgid "Error : link ID not specified"
 msgstr "שגיאה: לא מוגדר קוד זיהוי קישור"
 
-#: core/core.php:2739
+#: core/core.php:2854
 #, php-format
 #@ broken-link-checker
 msgid "Failed to load link details (%s)"
 msgstr "נכשל הניסיון לטעון את פרטי הקישור (%s)"
 
-#: core/core.php:2793
+#: core/core.php:2908
 #@ broken-link-checker
 msgid "Broken Link Checker"
 msgstr "בודק קישורים שבורים"
 
-#: core/core.php:2813
+#: core/core.php:2928
 #@ broken-link-checker
 msgid "PHP version"
 msgstr "גרסת PHP"
 
-#: core/core.php:2819
+#: core/core.php:2934
 #@ broken-link-checker
 msgid "MySQL version"
 msgstr "גרסת MySQL"
 
-#: core/core.php:2832
+#: core/core.php:2947
 #@ broken-link-checker
 msgid "You have an old version of CURL. Redirect detection may not work properly."
 msgstr "גרסת ה-CURL באתר שלכם ישנה. בשל כך קיים סיכוי שתהליך איתור ההפניות לא יעבוד באופן תקין. כדאי לבקש ממנהלי האתר שלכם לעדכן את גרסת ה-CURL לגרסה עדכנית."
 
-#: core/core.php:2844
-#: core/core.php:2860
-#: core/core.php:2865
+#: core/core.php:2959
+#: core/core.php:2975
+#: core/core.php:2980
 #@ broken-link-checker
 msgid "Not installed"
 msgstr "לא מותקן"
 
-#: core/core.php:2847
+#: core/core.php:2962
 #@ broken-link-checker
 msgid "CURL version"
 msgstr "גרסת CURL"
 
-#: core/core.php:2853
+#: core/core.php:2968
 #@ broken-link-checker
 msgid "Installed"
 msgstr "מותקן"
 
-#: core/core.php:2866
+#: core/core.php:2981
 #@ broken-link-checker
 msgid "You must have either CURL or Snoopy installed for the plugin to work!"
 msgstr "תוכנת CURL או Snoopy חייבת להיות מותקנת בכדי שתוסף זה יעבוד באופן תקין! אנא פנו למנהלי האתר או חברת אירוח האתרים בה מתארח אתר זה ובקשו מהם להתקין את אחת מהתוכנות האלו, בגרסה עדכנית."
 
-#: core/core.php:2877
+#: core/core.php:2992
 #@ broken-link-checker
 msgid "On"
 msgstr "פעיל"
 
-#: core/core.php:2878
+#: core/core.php:2993
 #@ broken-link-checker
 msgid "Redirects may be detected as broken links when safe_mode is on."
 msgstr "ייתכן והפניות יסווגו כקישורים שבורים כאשר safe_mode פעיל."
 
-#: core/core.php:2883
-#: core/core.php:2897
+#: core/core.php:2998
+#: core/core.php:3012
 #@ broken-link-checker
 msgid "Off"
 msgstr "כבוי"
 
-#: core/core.php:2891
+#: core/core.php:3006
 #, php-format
 #@ broken-link-checker
 msgid "On ( %s )"
 msgstr "פעיל ( %s )"
 
-#: core/core.php:2892
+#: core/core.php:3007
 #@ broken-link-checker
 msgid "Redirects may be detected as broken links when open_basedir is on."
 msgstr "ייתכן והפניות יסווגו כקישורים שבורים כאשר open_basedir פעיל."
 
-#: core/core.php:2921
+#: core/core.php:3036
 #@ broken-link-checker
 msgid "If this value is zero even after several page reloads you have probably encountered a bug."
 msgstr "אם ערך זה הוא 0 (אפס) אפילו לאחר מספר טעינות עמוד חוזרות - כנראה שנתקלתם בבאג."
 
-#: core/core.php:3044
 #: core/core.php:3159
+#: core/core.php:3278
 #, php-format
 #@ broken-link-checker
 msgid "[%s] Broken links detected"
 msgstr "נמצאו [%s] קישורים שבורים"
 
-#: core/core.php:3050
+#: core/core.php:3165
 #, php-format
 #@ broken-link-checker
 msgid "Broken Link Checker has detected %d new broken link on your site."
@@ -769,7 +769,7 @@ msgid_plural "Broken Link Checker has detected %d new broken links on your site.
 msgstr[0] "בודק קישורים שבורים איתר %d קישור שבור חדש באתר שלכם."
 msgstr[1] "בודק קישורים שבורים איתר %d קישורים שבורים חדשים באתר שלכם."
 
-#: core/core.php:3081
+#: core/core.php:3196
 #, php-format
 #@ broken-link-checker
 msgid "Here's a list of the first %d broken links:"
@@ -777,35 +777,35 @@ msgid_plural "Here's a list of the first %d broken links:"
 msgstr[0] "הנה רשימה של %d הקישור השבור הראשון:"
 msgstr[1] "הנה רשימה של %d הקישורים השבורים הראשונים:"
 
-#: core/core.php:3089
+#: core/core.php:3204
 #@ broken-link-checker
 msgid "Here's a list of the new broken links: "
 msgstr "הנה רשימה של קישורים שבורים חדשים: "
 
-#: core/core.php:3098
+#: core/core.php:3213
 #, php-format
 #@ broken-link-checker
 msgid "Link text : %s"
 msgstr "טקסט קישור: %s"
 
-#: core/core.php:3099
+#: core/core.php:3214
 #, php-format
 #@ broken-link-checker
 msgid "Link URL : <a href=\"%s\">%s</a>"
 msgstr "קישור כתובת אינטרנט: ‏<a href=\"%s\">%s</a>"
 
-#: core/core.php:3100
+#: core/core.php:3215
 #, php-format
 #@ broken-link-checker
 msgid "Source : %s"
 msgstr "מקור הקישור: %s"
 
-#: core/core.php:3114
+#: core/core.php:3229
 #@ broken-link-checker
 msgid "You can see all broken links here:"
 msgstr "ניתן לצפות בכל הקישורים השבורים כאן:"
 
-#: core/core.php:3165
+#: core/core.php:3284
 #, php-format
 #@ broken-link-checker
 msgid "Broken Link Checker has detected %d new broken link in your posts."
@@ -813,17 +813,17 @@ msgid_plural "Broken Link Checker has detected %d new broken links in your posts
 msgstr[0] "בודק קישורים שבורים איתר %d קישור שבור חדש בפוסטים שלכם."
 msgstr[1] "בודק קישורים שבורים איתר %d קישורים שבורים חדשים בפוסטים שלכם."
 
-#: core/init.php:242
+#: core/init.php:249
 #@ default
 msgid "Once Weekly"
 msgstr "פעם בשבוע"
 
-#: core/init.php:248
+#: core/init.php:255
 #@ default
 msgid "Twice a Month"
 msgstr "פעמיים בחודש"
 
-#: core/init.php:324
+#: core/init.php:331
 #@ broken-link-checker
 msgid "Broken Link Checker installation failed. Try deactivating and then reactivating the plugin."
 msgstr "התקנת התוסף בודק קישורים שבורים נכשלה. נסו לכבות ואז להפעיל מחדש את התוסף."
@@ -834,77 +834,77 @@ msgstr "התקנת התוסף בודק קישורים שבורים נכשלה. �
 msgid "Failed to delete old DB tables. Database error : %s"
 msgstr "נכשל הניסיון למחוק טבלאות מסד נתונים ישנות. שגיאת מסד נתונים: %s"
 
-#: includes/admin/links-page-js.php:55
-#: includes/admin/links-page-js.php:517
+#: includes/admin/links-page-js.php:62
+#: includes/admin/links-page-js.php:525
 #@ broken-link-checker
 msgid "Wait..."
 msgstr "המתינו..."
 
-#: includes/admin/links-page-js.php:100
-#: includes/admin/table-printer.php:658
+#: includes/admin/links-page-js.php:107
+#: includes/admin/table-printer.php:663
 #@ broken-link-checker
 msgid "Not broken"
 msgstr "לא שבור"
 
-#: includes/admin/links-page-js.php:379
+#: includes/admin/links-page-js.php:387
 #, php-format
 #@ broken-link-checker
 msgid "%d instances of the link were successfully modified."
 msgstr "%d מופעים של הקישור שונו בהצלחה."
 
-#: includes/admin/links-page-js.php:385
+#: includes/admin/links-page-js.php:393
 #, php-format
 #@ broken-link-checker
 msgid "However, %d instances couldn't be edited and still point to the old URL."
 msgstr "אולם, לא היה ניתן לערוך %d מופעים ולכן הם עדיין מצביעים לכתובת האינטרנט הישנה."
 
-#: includes/admin/links-page-js.php:391
+#: includes/admin/links-page-js.php:399
 #@ broken-link-checker
 msgid "The link could not be modified."
 msgstr "לא היה ניתן לשנות את הקישור."
 
-#: includes/admin/links-page-js.php:569
+#: includes/admin/links-page-js.php:577
 #@ broken-link-checker
 msgid "The following error(s) occured :"
 msgstr "השגיאה או השגיאות הבאות התרחשו:"
 
-#: includes/admin/links-page-js.php:555
+#: includes/admin/links-page-js.php:563
 #, php-format
 #@ broken-link-checker
 msgid "%d instances of the link were successfully unlinked."
 msgstr "%d פעמים שהקישור נמצא עבור הסרת קישור"
 
-#: includes/admin/links-page-js.php:561
+#: includes/admin/links-page-js.php:569
 #, php-format
 #@ broken-link-checker
 msgid "However, %d instances couldn't be removed."
 msgstr "אולם, לא היה ניתן להסיר %d מופעים."
 
-#: includes/admin/links-page-js.php:566
+#: includes/admin/links-page-js.php:574
 #@ broken-link-checker
 msgid "The plugin failed to remove the link."
 msgstr "התוסף לא הצליח להסיר את הקישור."
 
-#: includes/admin/links-page-js.php:577
-#: includes/admin/table-printer.php:276
-#: includes/admin/table-printer.php:652
+#: includes/admin/links-page-js.php:585
+#: includes/admin/table-printer.php:281
+#: includes/admin/table-printer.php:657
 #@ broken-link-checker
 msgid "Unlink"
 msgstr "הסרת הקישור (טקסט הקישור לא יוסר)"
 
-#: includes/admin/links-page-js.php:621
+#: includes/admin/links-page-js.php:629
 #@ broken-link-checker
 msgid "Enter a name for the new custom filter"
 msgstr "הזינו שם למסנן המותאם החדש"
 
-#: includes/admin/links-page-js.php:632
+#: includes/admin/links-page-js.php:641
 #@ broken-link-checker
 msgid ""
 "You are about to delete the current filter.\n"
 "'Cancel' to stop, 'OK' to delete"
 msgstr "אתם עומדים למחוק את המסנן הפעיל. הקליקו 'Cancel' למניעת המחיקה או 'OK' לביצוע המחיקה."
 
-#: includes/admin/links-page-js.php:652
+#: includes/admin/links-page-js.php:665
 #@ broken-link-checker
 msgid ""
 "Are you sure you want to delete all posts, bookmarks or other items that contain any of the selected links? This action can't be undone.\n"
@@ -913,7 +913,7 @@ msgstr ""
 "האם אתם בטוחים שאתם רוצים למחוק את כל הפוסטים, סימניות או פריטים אחרים שכוללים בתוכם את הקישורים שבחרתם? לא ניתן לבטל את המחיקה לאחר ביצועה. הקליקו \n"
 "'Cancel' למניעת המחיקה או 'OK' לביצוע המחיקה"
 
-#: includes/admin/links-page-js.php:662
+#: includes/admin/links-page-js.php:679
 #@ broken-link-checker
 msgid ""
 "Are you sure you want to remove the selected links? This action can't be undone.\n"
@@ -922,12 +922,12 @@ msgstr ""
 "האם אתם בטוחים שאתם רוצים להסיר את הקישורים שנבחרו? לא ניתן לבטל את המחיקה לאחר ביצועה. הקליקו \n"
 "'Cancel' למניעת המחיקה או 'OK' לביצוע המחיקה"
 
-#: includes/admin/links-page-js.php:771
+#: includes/admin/links-page-js.php:791
 #@ broken-link-checker
 msgid "Enter a search string first."
 msgstr "ראשית הזינו טקסט חיפוש."
 
-#: includes/admin/links-page-js.php:778
+#: includes/admin/links-page-js.php:798
 #@ broken-link-checker
 msgid "Select one or more links to edit."
 msgstr "בחרו קישור אחד או יותר לעריכה."
@@ -959,13 +959,13 @@ msgid "Link text"
 msgstr "טקסט הקישור"
 
 #: includes/admin/search-form.php:45
-#: includes/admin/table-printer.php:205
+#: includes/admin/table-printer.php:208
 #@ broken-link-checker
 msgid "URL"
 msgstr "כתובת האינטרנט"
 
 #: includes/admin/search-form.php:48
-#: includes/admin/table-printer.php:522
+#: includes/admin/table-printer.php:527
 #@ broken-link-checker
 msgid "HTTP code"
 msgstr "קוד HTTP‏"
@@ -997,9 +997,9 @@ msgid "Search Links"
 msgstr "חיפוש קישורים"
 
 #: includes/admin/search-form.php:113
-#: includes/admin/table-printer.php:352
-#: includes/admin/table-printer.php:682
-#: includes/admin/table-printer.php:807
+#: includes/admin/table-printer.php:357
+#: includes/admin/table-printer.php:687
+#: includes/admin/table-printer.php:812
 #@ broken-link-checker
 msgid "Cancel"
 msgstr "ביטול"
@@ -1024,156 +1024,156 @@ msgstr "אם אתם אוהבים תוסף זה, בבקשה תרמו בכדי ל�
 msgid "Return to WordPress Dashboard"
 msgstr "חזרה ללוח המחוונים של Wordpress"
 
-#: includes/admin/table-printer.php:182
+#: includes/admin/table-printer.php:185
 #@ broken-link-checker
 msgid "Compact View"
 msgstr "תצוגה מצומצמת"
 
-#: includes/admin/table-printer.php:183
+#: includes/admin/table-printer.php:186
 #@ broken-link-checker
 msgid "Detailed View"
 msgstr "תצוגה מפורטת"
 
-#: includes/admin/table-printer.php:212
+#: includes/admin/table-printer.php:215
 #@ broken-link-checker
 msgid "Source"
 msgstr "מקור הקישור"
 
-#: includes/admin/table-printer.php:218
+#: includes/admin/table-printer.php:221
 #@ broken-link-checker
 msgid "Link Text"
 msgstr "טקסט הקישור"
 
-#: includes/admin/table-printer.php:223
+#: includes/admin/table-printer.php:228
 #@ broken-link-checker
 msgid "Redirect URL"
 msgstr "כתובת ההפניה"
 
-#: includes/admin/table-printer.php:271
+#: includes/admin/table-printer.php:276
 #@ broken-link-checker
 msgid "Bulk Actions"
 msgstr "פעולות על מספר קישורים במקביל"
 
-#: includes/admin/table-printer.php:272
-#: includes/admin/table-printer.php:649
+#: includes/admin/table-printer.php:277
+#: includes/admin/table-printer.php:654
 #@ broken-link-checker
 msgid "Edit URL"
 msgstr "עריכת הקישור"
 
-#: includes/admin/table-printer.php:273
+#: includes/admin/table-printer.php:278
 #@ broken-link-checker
 msgid "Recheck"
 msgstr "בדיקה חוזרת"
 
-#: includes/admin/table-printer.php:274
+#: includes/admin/table-printer.php:279
 #@ broken-link-checker
 msgid "Fix redirects"
 msgstr "החלפת הקישור המקורי בקישור ההפניה"
 
-#: includes/admin/table-printer.php:275
+#: includes/admin/table-printer.php:280
 #@ broken-link-checker
 msgid "Mark as not broken"
 msgstr "סימון כ'לא שבור'"
 
-#: includes/admin/table-printer.php:279
+#: includes/admin/table-printer.php:284
 #@ broken-link-checker
 msgid "Move sources to Trash"
 msgstr "העברה לפח (=מחיקה) של מקור הקישור (פוסט, עמוד וכדומה)"
 
-#: includes/admin/table-printer.php:281
+#: includes/admin/table-printer.php:286
 #@ broken-link-checker
 msgid "Delete sources"
 msgstr "מחיקת מקורות הקישור"
 
-#: includes/admin/table-printer.php:296
+#: includes/admin/table-printer.php:301
 #@ default
 msgid "&laquo;"
 msgstr "&laquo;"
 
-#: includes/admin/table-printer.php:297
+#: includes/admin/table-printer.php:302
 #@ default
 msgid "&raquo;"
 msgstr "&raquo;"
 
-#: includes/admin/table-printer.php:305
+#: includes/admin/table-printer.php:310
 #, php-format
 #@ broken-link-checker
 msgid "Displaying %s&#8211;%s of <span class=\"current-link-count\">%s</span>"
 msgstr "הצגת %s&#8211;%s מתוך <span class=\"current-link-count\">%s</span>"
 
-#: includes/admin/table-printer.php:328
+#: includes/admin/table-printer.php:333
 #@ broken-link-checker
 msgid "Bulk Edit URLs"
 msgstr "עריכה של קישורים מרובים במקביל"
 
-#: includes/admin/table-printer.php:330
+#: includes/admin/table-printer.php:335
 #@ broken-link-checker
 msgid "Find"
 msgstr "מצא"
 
-#: includes/admin/table-printer.php:334
+#: includes/admin/table-printer.php:339
 #@ broken-link-checker
 msgid "Replace with"
 msgstr "החלפה ב-"
 
-#: includes/admin/table-printer.php:342
+#: includes/admin/table-printer.php:347
 #@ broken-link-checker
 msgid "Case sensitive"
 msgstr "עם רגישות לגודל אותיות אנגליות (Case Sensitive)"
 
-#: includes/admin/table-printer.php:346
+#: includes/admin/table-printer.php:351
 #@ broken-link-checker
 msgid "Regular expression"
 msgstr "Regular Expression"
 
-#: includes/admin/table-printer.php:354
-#: includes/admin/table-printer.php:808
+#: includes/admin/table-printer.php:359
+#: includes/admin/table-printer.php:813
 #@ broken-link-checker
 msgid "Update"
 msgstr "עדכון"
 
-#: includes/admin/table-printer.php:507
+#: includes/admin/table-printer.php:512
 #@ broken-link-checker
 msgid "Post published on"
 msgstr "פוסטים שפורסמו ב:"
 
-#: includes/admin/table-printer.php:512
+#: includes/admin/table-printer.php:517
 #@ broken-link-checker
 msgid "Link last checked"
 msgstr "הקישור נבדק לאחרונה בתאריך"
 
-#: includes/admin/table-printer.php:516
+#: includes/admin/table-printer.php:521
 #@ broken-link-checker
 msgid "Never"
 msgstr "מעולם לא"
 
-#: includes/admin/table-printer.php:527
+#: includes/admin/table-printer.php:532
 #@ broken-link-checker
 msgid "Response time"
 msgstr "זמן תגובה"
 
-#: includes/admin/table-printer.php:529
+#: includes/admin/table-printer.php:534
 #, php-format
 #@ broken-link-checker
 msgid "%2.3f seconds"
 msgstr "%2.3f שניות"
 
-#: includes/admin/table-printer.php:532
+#: includes/admin/table-printer.php:537
 #@ broken-link-checker
 msgid "Final URL"
 msgstr "כתובת אינטרנט סופית"
 
-#: includes/admin/table-printer.php:537
+#: includes/admin/table-printer.php:542
 #@ broken-link-checker
 msgid "Redirect count"
 msgstr "כמות הפניות"
 
-#: includes/admin/table-printer.php:542
+#: includes/admin/table-printer.php:547
 #@ broken-link-checker
 msgid "Instance count"
 msgstr "כמות מופעים"
 
-#: includes/admin/table-printer.php:551
+#: includes/admin/table-printer.php:556
 #, php-format
 #@ broken-link-checker
 msgid "This link has failed %d time."
@@ -1181,74 +1181,74 @@ msgid_plural "This link has failed %d times."
 msgstr[0] "הקישור נכשל ב-%d בדיקה."
 msgstr[1] "הקישור נכשל ב-%d בדיקות."
 
-#: includes/admin/table-printer.php:559
+#: includes/admin/table-printer.php:564
 #, php-format
 #@ broken-link-checker
 msgid "This link has been broken for %s."
 msgstr "הקישור שבור במשך לפחות %s."
 
-#: includes/admin/table-printer.php:570
+#: includes/admin/table-printer.php:575
 #@ broken-link-checker
 msgid "Log"
 msgstr "פרטי הבדיקה:<br>"
 
-#: includes/admin/table-printer.php:595
+#: includes/admin/table-printer.php:600
 #@ broken-link-checker
 msgid "Show more info about this link"
 msgstr "הצג מידע נוסף אודות קישור זה"
 
-#: includes/admin/table-printer.php:613
+#: includes/admin/table-printer.php:618
 #@ broken-link-checker
 msgctxt "checked how long ago"
 msgid "Checked"
 msgstr "נבדק"
 
-#: includes/admin/table-printer.php:629
+#: includes/admin/table-printer.php:634
 #@ broken-link-checker
 msgid "Broken for"
 msgstr "שבור כבר לפחות"
 
-#: includes/admin/table-printer.php:651
+#: includes/admin/table-printer.php:656
 #@ broken-link-checker
 msgid "Remove this link from all posts"
 msgstr "הסרת קישור זה מכל הפוסטים בהם הוא מופיע. טקסט הקישור לא יוסר ולא ישתנה."
 
-#: includes/admin/table-printer.php:657
+#: includes/admin/table-printer.php:662
 #@ broken-link-checker
 msgid "Remove this link from the list of broken links and mark it as valid"
 msgstr "הסרת קישור זה מהרשימה הנוכחית וסימונו כתקין"
 
-#: includes/admin/table-printer.php:665
+#: includes/admin/table-printer.php:670
 #@ broken-link-checker
 msgid "Hide this link and do not report it again unless its status changes"
 msgstr "הקישור יועבר אל רשימת \"בהמתנה\" ולא ידווח שוב כשבור אלא אם הסטטוס שלו ישתנה"
 
-#: includes/admin/table-printer.php:666
+#: includes/admin/table-printer.php:671
 #@ broken-link-checker
 msgid "Dismiss"
 msgstr "העברה למצב המתנה"
 
-#: includes/admin/table-printer.php:671
+#: includes/admin/table-printer.php:676
 #@ broken-link-checker
 msgid "Undismiss this link"
 msgstr "הוצאת קישור זה ממצב המתנה והחזרתו לרשימת הקישורים השבורים"
 
-#: includes/admin/table-printer.php:672
+#: includes/admin/table-printer.php:677
 #@ broken-link-checker
 msgid "Undismiss"
 msgstr "ביטול מצב המתנה"
 
-#: includes/admin/table-printer.php:683
+#: includes/admin/table-printer.php:688
 #@ broken-link-checker
 msgid "Update URL"
 msgstr "עדכון כתובת אינטרנט"
 
-#: includes/admin/table-printer.php:710
+#: includes/admin/table-printer.php:715
 #@ broken-link-checker
 msgid "[An orphaned link! This is a bug.]"
 msgstr "[קישור יתום! זה באג.]"
 
-#: includes/any-post.php:397
+#: includes/any-post.php:398
 #: modules/containers/blogroll.php:46
 #: modules/containers/comment.php:153
 #: modules/containers/custom_field.php:207
@@ -1256,96 +1256,96 @@ msgstr "[קישור יתום! זה באג.]"
 msgid "Edit"
 msgstr "עריכה"
 
-#: includes/any-post.php:405
+#: includes/any-post.php:406
 #: modules/containers/custom_field.php:213
 #@ default
 msgid "Move this item to the Trash"
 msgstr "העבר פריט זה לסל המחזור"
 
-#: includes/any-post.php:407
+#: includes/any-post.php:408
 #: modules/containers/custom_field.php:215
 #@ default
 msgid "Trash"
 msgstr "סל המחזור"
 
-#: includes/any-post.php:412
+#: includes/any-post.php:413
 #: modules/containers/custom_field.php:220
 #@ default
 msgid "Delete this item permanently"
 msgstr "מחיקת פריט זה באופן מוחלט"
 
-#: includes/any-post.php:414
+#: includes/any-post.php:415
 #: modules/containers/blogroll.php:47
 #: modules/containers/custom_field.php:222
 #@ default
 msgid "Delete"
 msgstr "מחיקה"
 
-#: includes/any-post.php:427
+#: includes/any-post.php:428
 #, php-format
 #@ default
 msgid "Preview &#8220;%s&#8221;"
 msgstr "תצוגה מקדימה &#8220;%s&#8221;"
 
-#: includes/any-post.php:428
+#: includes/any-post.php:429
 #@ default
 msgid "Preview"
 msgstr "תצוגה מקדימה"
 
-#: includes/any-post.php:435
+#: includes/any-post.php:436
 #, php-format
 #@ default
 msgid "View &#8220;%s&#8221;"
 msgstr "צפיה &#8220;%s&#8221;"
 
-#: includes/any-post.php:436
+#: includes/any-post.php:437
 #: modules/containers/comment.php:166
 #: modules/containers/custom_field.php:227
 #@ default
 msgid "View"
 msgstr "צפיה"
 
-#: includes/any-post.php:455
+#: includes/any-post.php:456
 #: modules/containers/custom_field.php:207
 #@ default
 msgid "Edit this item"
 msgstr "עריכת פריט זה"
 
-#: includes/any-post.php:519
+#: includes/any-post.php:520
 #: modules/containers/blogroll.php:83
 #: modules/containers/comment.php:43
 #@ broken-link-checker
 msgid "Nothing to update"
 msgstr "אין מה לעדכן"
 
-#: includes/any-post.php:529
+#: includes/any-post.php:530
 #, php-format
 #@ broken-link-checker
 msgid "Updating post %d failed"
 msgstr "עדכון הפוסט %d נכשל"
 
-#: includes/any-post.php:566
+#: includes/any-post.php:567
 #: modules/containers/custom_field.php:294
 #, php-format
 #@ broken-link-checker
 msgid "Failed to delete post \"%s\" (%d)"
 msgstr "נכשל הניסיון למחוק את הפוסט \"%s\" (%d)"
 
-#: includes/any-post.php:585
+#: includes/any-post.php:586
 #: modules/containers/custom_field.php:313
 #, php-format
 #@ broken-link-checker
 msgid "Can't move post \"%s\" (%d) to the trash because the trash feature is disabled"
 msgstr "לא ניתן להעביר את הפוסט \"%s\" (%d) אל הפח מפני שרכיב הפח לא פעיל"
 
-#: includes/any-post.php:605
+#: includes/any-post.php:606
 #: modules/containers/custom_field.php:332
 #, php-format
 #@ broken-link-checker
 msgid "Failed to move post \"%s\" (%d) to the trash"
 msgstr "נכשל הניסיון להעביר את הפוסט \"%s\" (%d) אל הפח"
 
-#: includes/any-post.php:713
+#: includes/any-post.php:714
 #, php-format
 #@ broken-link-checker
 msgid "%d post deleted."
@@ -1353,7 +1353,7 @@ msgid_plural "%d posts deleted."
 msgstr[0] "הפוסט %d נמחק."
 msgstr[1] "הפוסטים %d נמחקו."
 
-#: includes/any-post.php:715
+#: includes/any-post.php:716
 #, php-format
 #@ broken-link-checker
 msgid "%d page deleted."
@@ -1361,7 +1361,7 @@ msgid_plural "%d pages deleted."
 msgstr[0] "העמוד %d נמחק."
 msgstr[1] "העמודים %d נמחקו."
 
-#: includes/any-post.php:717
+#: includes/any-post.php:718
 #, php-format
 #@ broken-link-checker
 msgid "%d \"%s\" deleted."
@@ -1369,7 +1369,7 @@ msgid_plural "%d \"%s\" deleted."
 msgstr[0] "%d \"%s\" נמחק."
 msgstr[1] "%d \"%s\" נמחקו."
 
-#: includes/any-post.php:736
+#: includes/any-post.php:737
 #, php-format
 #@ broken-link-checker
 msgid "%d post moved to the Trash."
@@ -1377,7 +1377,7 @@ msgid_plural "%d posts moved to the Trash."
 msgstr[0] "הפוסט %d הועבר לפח."
 msgstr[1] "הפוסטים %d הועברו לפח."
 
-#: includes/any-post.php:738
+#: includes/any-post.php:739
 #, php-format
 #@ broken-link-checker
 msgid "%d page moved to the Trash."
@@ -1385,7 +1385,7 @@ msgid_plural "%d pages moved to the Trash."
 msgstr[0] "העמוד %d הועבר לפח."
 msgstr[1] "העמודים %d הועברו לפח."
 
-#: includes/any-post.php:740
+#: includes/any-post.php:741
 #, php-format
 #@ broken-link-checker
 msgid "%d \"%s\" moved to the Trash."
@@ -1620,79 +1620,79 @@ msgstr "תוצאות החיפוש"
 msgid "No links found for your query"
 msgstr "לא נמצאו קישורים על פי השאילתא שלכם"
 
-#: includes/links.php:218
+#: includes/links.php:222
 #@ broken-link-checker
 msgid "The plugin script was terminated while trying to check the link."
 msgstr "תסריט התוסף הסתיים בזמן בדיקת הקישור."
 
-#: includes/links.php:264
+#: includes/links.php:268
 #@ broken-link-checker
 msgid "The plugin doesn't know how to check this type of link."
 msgstr "התוסף אינו יודע כיצד לבדוק סוג זה של קישור."
 
-#: includes/links.php:357
+#: includes/links.php:361
 #@ broken-link-checker
 msgid "Link is valid."
 msgstr "הקישור תקין."
 
-#: includes/links.php:359
+#: includes/links.php:363
 #@ broken-link-checker
 msgid "Link is broken."
 msgstr "הקישור שבור."
 
-#: includes/links.php:572
-#: includes/links.php:674
-#: includes/links.php:701
+#: includes/links.php:582
+#: includes/links.php:684
+#: includes/links.php:711
 #@ broken-link-checker
 msgid "Link is not valid"
 msgstr "הקישור אינו תקין"
 
-#: includes/links.php:589
+#: includes/links.php:599
 #@ broken-link-checker
 msgid "This link can not be edited because it is not used anywhere on this site."
 msgstr "לא ניתן לערוך את הקישור בגלל שלא נעשה בו שימוש במקום כלשהו באתר זה."
 
-#: includes/links.php:615
+#: includes/links.php:625
 #@ broken-link-checker
 msgid "Failed to create a DB entry for the new URL."
 msgstr "נכשל הניסיון ליצור רשומת מסד נתונים עבור כתובת האינטרנט החדשה."
 
-#: includes/links.php:681
+#: includes/links.php:691
 #@ broken-link-checker
 msgid "This link is not a redirect"
 msgstr "הקישור אינו הפניה"
 
-#: includes/links.php:728
-#: includes/links.php:765
+#: includes/links.php:738
+#: includes/links.php:775
 #@ broken-link-checker
 msgid "Couldn't delete the link's database record"
 msgstr "לא ניתן למחוק את רשומת מסד הנתונים של הקישור"
 
-#: includes/links.php:839
+#: includes/links.php:849
 #@ broken-link-checker
 msgctxt "link status"
 msgid "Unknown"
 msgstr "לא ידוע"
 
-#: includes/links.php:853
-#: modules/checkers/http.php:263
+#: includes/links.php:863
+#: modules/checkers/http.php:289
 #: modules/extras/mediafire.php:101
 #@ link status
 #@ broken-link-checker
 msgid "Unknown Error"
 msgstr "שגיאה לא ידועה"
 
-#: includes/links.php:877
+#: includes/links.php:887
 #@ broken-link-checker
 msgid "Not checked"
 msgstr "טרם נבדק"
 
-#: includes/links.php:880
+#: includes/links.php:890
 #@ broken-link-checker
 msgid "False positive"
 msgstr "זיהוי שגוי כשבור (False Positive)"
 
-#: includes/links.php:883
+#: includes/links.php:893
 #: modules/extras/fileserve.php:121
 #: modules/extras/megaupload.php:115
 #: modules/extras/rapidshare.php:145
@@ -1802,40 +1802,40 @@ msgid_plural "%d months ago"
 msgstr[0] "לפני %d חודש"
 msgstr[1] "לפני %d חודשים"
 
-#: modules/checkers/http.php:242
+#: modules/checkers/http.php:268
 #@ broken-link-checker
 msgid "Server Not Found"
 msgstr "שרת לא נמצא"
 
-#: modules/checkers/http.php:257
+#: modules/checkers/http.php:283
 #@ broken-link-checker
 msgid "Connection Failed"
 msgstr "ההתקשרות נכשלה"
 
-#: modules/checkers/http.php:292
-#: modules/checkers/http.php:362
+#: modules/checkers/http.php:318
+#: modules/checkers/http.php:388
 #, php-format
 #@ broken-link-checker
 msgid "HTTP code : %d"
 msgstr "קוד HTTP: ‏%d"
 
-#: modules/checkers/http.php:294
-#: modules/checkers/http.php:364
+#: modules/checkers/http.php:320
+#: modules/checkers/http.php:390
 #@ broken-link-checker
 msgid "(No response)"
 msgstr "(אין תגובה)"
 
-#: modules/checkers/http.php:300
+#: modules/checkers/http.php:326
 #@ broken-link-checker
 msgid "Most likely the connection timed out or the domain doesn't exist."
 msgstr "קיימת סבירות גבוהה שההתקשרות הסתיימה בגלל היעדר תגובה מהשרת המארח את עמוד היעד של הקישור"
 
-#: modules/checkers/http.php:371
+#: modules/checkers/http.php:397
 #@ broken-link-checker
 msgid "Request timed out."
 msgstr "זמן המתנה מקסימלי (Timeout) לבקשה."
 
-#: modules/checkers/http.php:389
+#: modules/checkers/http.php:415
 #@ broken-link-checker
 msgid "Using Snoopy"
 msgstr "עושה שימוש ב-Snoopy"
@@ -2196,99 +2196,131 @@ msgstr "תמונה"
 msgid "Custom field"
 msgstr "שדה מותאם"
 
-#: core/core.php:805
+#: core/core.php:839
 #@ broken-link-checker
 msgctxt "settings page"
 msgid "Suggestions"
 msgstr "הצעות לקישור חלופי מארכיב אינטרנט"
 
-#: core/core.php:811
+#: core/core.php:845
 #@ broken-link-checker
 msgid "Suggest alternatives to broken links"
 msgstr "לקישורים שבורים יוצעו אפשרויות לקישור חלופי מאתר <a href=\"http://archive.org/web/\" target=\\\"_blank\\\">ארכיב אינטרנט</a>.<br> אפשרות זו מתאימה בעיקר למקרה בו העמוד המדובר (או אפילו האתר כולו) כבר לא קיים בכלל באינטרנט, ולכן עדיף לפחות לתת קישור לעמוד ארכיב של עמוד המקור במקום להסיר לגמרי את הקישור."
 
-#: core/core.php:1208
+#: core/core.php:1290
 #@ broken-link-checker
 msgid "Enter the names of custom fields you want to check (one per line). If a field contains HTML code, prefix its name with <code>html:</code>. For example, <code>html:field_name</code>."
 msgstr "הזינו את שמות השדות המותאמים שברצונכם לבדוק (שם אחד בכל שורה). אם השדה מכיל קוד HTML, הוסיפו לשם השדה קידומת של <code>html:</code>. למשל <code>html:field_name</code>"
 
-#: core/core.php:2619
+#: core/core.php:2734
 #@ broken-link-checker
 msgid "An unexpected error occurred!"
 msgstr "התרחשה שגיאה לא צפויה!"
 
-#: includes/admin/links-page-js.php:235
+#: includes/admin/links-page-js.php:243
 #@ broken-link-checker
 msgctxt "link text"
 msgid "(None)"
 msgstr "(לא קיים)"
 
-#: includes/admin/links-page-js.php:236
+#: includes/admin/links-page-js.php:244
 #@ broken-link-checker
 msgctxt "link text"
 msgid "(Multiple links)"
 msgstr "(הקישור משויך למספר טקסטים במקביל)"
 
-#: includes/admin/links-page-js.php:294
+#: includes/admin/links-page-js.php:302
 #@ broken-link-checker
 msgctxt "link suggestions"
 msgid "Searching..."
 msgstr "מחפש..."
 
-#: includes/admin/links-page-js.php:295
+#: includes/admin/links-page-js.php:303
 #@ broken-link-checker
 msgctxt "link suggestions"
 msgid "No suggestions available."
 msgstr "לא נמצאו הצעות."
 
-#: includes/admin/links-page-js.php:296
+#: includes/admin/links-page-js.php:304
 #, php-format
 #@ broken-link-checker
 msgctxt "link suggestions"
 msgid "Archived page from %s (via the Wayback Machine)"
 msgstr "עמוד ארכיב מתאריך %s (דרך ארכיב אינטרנט)"
 
-#: includes/admin/links-page-js.php:394
+#: includes/admin/links-page-js.php:402
 #@ broken-link-checker
 msgid "The following error(s) occurred :"
 msgstr "השגיאה(ות) הבאה(ות) התרחשה(ו): "
 
-#: includes/admin/links-page-js.php:480
+#: includes/admin/links-page-js.php:488
 #@ broken-link-checker
 msgid "Error: Link URL must not be empty."
 msgstr "שגיאה: קישור כתובת האינטרנט לא יכול להיות ריק."
 
-#: includes/admin/table-printer.php:649
+#: includes/admin/table-printer.php:654
 #@ broken-link-checker
 msgid "Edit this link"
 msgstr "עריכת הקישור הזה"
 
-#: includes/admin/table-printer.php:787
+#: includes/admin/table-printer.php:792
 #@ broken-link-checker
 msgctxt "inline editor title"
 msgid "Edit Link"
 msgstr "עריכת הקישור"
 
-#: includes/admin/table-printer.php:790
+#: includes/admin/table-printer.php:795
 #@ broken-link-checker
 msgctxt "inline link editor"
 msgid "Text"
 msgstr "טקסט"
 
-#: includes/admin/table-printer.php:795
+#: includes/admin/table-printer.php:800
 #@ broken-link-checker
 msgctxt "inline link editor"
 msgid "URL"
 msgstr "כתובת"
 
-#: includes/admin/table-printer.php:800
+#: includes/admin/table-printer.php:805
 #@ broken-link-checker
 msgctxt "inline link editor"
 msgid "Suggestions"
 msgstr "הצעות מארכיב האינטרנט"
 
-#: includes/admin/table-printer.php:820
+#: includes/admin/table-printer.php:825
 #@ broken-link-checker
 msgid "Use this URL"
 msgstr "החלפה לכתובת הזו"
+
+#: core/core.php:1090
+#@ broken-link-checker
+msgid "Logging"
+msgstr "רישום אירועי התוסף (Logging)"
+
+#: core/core.php:1096
+#@ broken-link-checker
+msgid "Enable logging"
+msgstr "הפעל רישום אירועי התוסף"
+
+#: core/core.php:1103
+#@ broken-link-checker
+msgid "Log file location"
+msgstr "מיקום קובץ רישום אירועי התוסף"
+
+#: core/core.php:1112
+#@ broken-link-checker
+msgctxt "log file location"
+msgid "Default"
+msgstr "ברירת מחדל"
+
+#: core/core.php:1126
+#@ broken-link-checker
+msgctxt "log file location"
+msgid "Custom"
+msgstr "מיקום מותאם"
+
+#: core/init.php:335
+#@ broken-link-checker
+msgid "Please activate the plugin separately on each site. Network activation is not supported."
+msgstr "בבקשה הפעל את התוסף בנפרד עבור כל אתר. הפעלת רשת אינה נתמכת."
 

@@ -4,7 +4,7 @@ Plugin Name: amr shortcode any widget
 Plugin URI: http://webdesign.anmari.com/shortcode-any-widget/
 Description: Include any widget in a page for any theme.  [do_widget widgetname ] or  [do_widget "widget name" ] or include a whole widget area [do_widget_area]. If upgrading see changelog.  Can be very powerful eg: with queryposts widget it can become a templater.
 Author: anmari
-Version: 2.2
+Version: 2.3
 Author URI: http://webdesign.anmari.com
 
 */
@@ -30,26 +30,40 @@ global $wp_registered_widgets, $_wp_sidebars_widgets, $wp_registered_sidebars;
 
 	extract(shortcode_atts(array(
 		'widget_area' => 'widgets_for_shortcodes',
-		'class' => 'amr_widget_area', /* the widget class is picked up automatically.  If we want to add an additional class at the wrap level to try to match a theme, use this */
+		'class' => 'amr-widget-area', /* the widget class is picked up automatically.  If we want to add an additional class at the wrap level to try to match a theme, use this */
 		'widget_area_class' =>  '',  /* option to disassociate from themes widget styling use =none*/
 		'widget_classes' =>  ''  /* option to disassociate from themes widget styling */
 
 	), $atts));
 
-	$class = 'class="amr-widget-area ';
-	if (empty($widget_area_class) or !($widget_area_class=='none'))
-		$class .= ' widget-area"';
-	$output = PHP_EOL.'<div id="'.$widget_area.'" '.$class. '>';
+
+	if (empty ($wp_registered_sidebars[$widget_area])) {
+		echo '<br/>Widget area "'.$widget_area.'" not found. Registered widget areas (sidebars) are: <br/>';
+		foreach ($wp_registered_sidebars as $area=> $sidebar) echo $area.'<br />';
+	}
+	if (isset($_REQUEST['do_widget_debug']) and current_user_can('administrator')) var_dump( $wp_registered_sidebars); /**/
 	
+	if ($widget_area_class=='none')
+		$class = '';
+	else {	
+		
+		if (!empty($widget_area_class))  //2014 08  
+			$class .= 'class="'.$class.' '.$widget_area_class.'"';
+		else
+		$class = 'class="'.$class.'"';		
+	}	
+
 	if (!empty($widget_classes) and ($widget_classes=='none'))
 		add_filter('dynamic_sidebar_params','amr_remove_widget_class');
 	
 	ob_start();  /* catch the echo output, so we can control where it appears in the text  */
 	dynamic_sidebar($widget_area);
-	$output .= ob_get_clean();
+	$output = ob_get_clean();
 	remove_filter('dynamic_sidebar_params','amr_remove_widget_class');
-			
-	$output .= '</div>'.PHP_EOL;
+
+	$output = PHP_EOL.'<div id="'.$widget_area.'" '.$class. '>'
+		.$output			
+		.'</div>'.PHP_EOL;
 			
 return ($output);
 }
@@ -107,6 +121,9 @@ if it is in, then get the instance  data and use that */
 				return (false);		
 			}
 	}
+	
+	if (empty($widget)) $widget = '';
+	if (empty($id)) $id = '';
 	
 	if (empty ($widget_ids)) { 
 		echo '<br /><a href="" title="Error: Your Requested widget '.$widget.' '.$id.' is not in the widget list. Typo maybe?">!</a><br />';

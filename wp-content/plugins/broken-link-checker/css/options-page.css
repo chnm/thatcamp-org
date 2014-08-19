@@ -43,13 +43,23 @@ Sidebar
 }
 
 #themefuse-ad .inside,
-#managewp-ad .inside
+#managewp-ad .inside,
+#embedplus-ad .inside
 {
 	padding: 2px 0 0 0;
 	margin: 0;
 	text-align: center;
 }
 
+#embedplus-ad .inside {
+	padding-top: 0;
+}
+
+#embedplus-ad {
+	border-style: none;
+	background-color: transparent;
+	box-shadow: none;
+}
 
 
 #link_checker_options .form-table th {

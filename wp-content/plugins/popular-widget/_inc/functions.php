@@ -35,7 +35,9 @@
 		 */
 		function load_admin_styles(){
 			global $pagenow;
-			if( $pagenow != 'widgets.php' ) return;
+
+			if( ! in_array( $pagenow ,array( 'widgets.php', 'customize.php')) )
+				return;
 			
 			wp_enqueue_style( 'popular-admin', POPWIDGET_URL . '_css/admin.css', NULL, $this->version );
 			wp_enqueue_script( 'popular-admin', POPWIDGET_URL . '_js/admin.js', array( 'jquery', 'jquery-ui-sortable' ), $this->version, true ); 

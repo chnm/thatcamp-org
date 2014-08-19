@@ -605,6 +605,7 @@ function blc_cleanup_instances(){
 	global $blclog;
 	
 	//Delete all instances that reference non-existent containers
+	$start = microtime(true);
 	$q = "DELETE instances.*
 		  FROM 
   			{$wpdb->prefix}blc_instances AS instances LEFT JOIN {$wpdb->prefix}blc_synch AS synch
@@ -612,9 +613,11 @@ function blc_cleanup_instances(){
 		  WHERE
  			synch.container_id IS NULL";
 	$rez = $wpdb->query($q);
-	$blclog->log(sprintf('... %d instances deleted', $wpdb->rows_affected));
+	$elapsed = microtime(true) - $start;
+	$blclog->log(sprintf('... %d instances deleted in %.3f seconds', $wpdb->rows_affected, $elapsed));
 	
 	//Delete instances that reference containers and parsers that are no longer active
+	$start = microtime(true);
 	$manager = blcModuleManager::getInstance();
 	$active_containers = $manager->get_escaped_ids('container');
 	$active_parsers = $manager->get_escaped_ids('parser');
@@ -625,7 +628,8 @@ function blc_cleanup_instances(){
 	        instances.container_type NOT IN ({$active_containers}) OR
 	        instances.parser_type NOT IN ({$active_parsers})";
 	$rez2 = $wpdb->query($q);
-	$blclog->log(sprintf('... %d more instances deleted', $wpdb->rows_affected));
+	$elapsed = microtime(true) - $start;
+	$blclog->log(sprintf('... %d more instances deleted in %.3f seconds', $wpdb->rows_affected, $elapsed));
 	
 	return ($rez !== false) && ($rez2 !== false);
 }

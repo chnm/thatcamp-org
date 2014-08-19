@@ -790,7 +790,7 @@ class blcContainerHelper {
 	 * @param array $container_types Associative array of timestamps, indexed by container types. 
 	 * @return bool
 	 */
-	function mark_as_unsynched_where($formats, $container_types){
+	static function mark_as_unsynched_where($formats, $container_types){
 		global $wpdb; /* @var wpdb $wpdb */
 		global $blclog;
 		
@@ -855,14 +855,16 @@ class blcContainerHelper {
 		global $blclog;
 		
 		$module_manager = blcModuleManager::getInstance();
+
+		$start = microtime(true);
 		$active_containers = $module_manager->get_escaped_ids('container');
-		
 		$q = "DELETE synch.*
 		      FROM {$wpdb->prefix}blc_synch AS synch
 		      WHERE
 	      	    synch.container_type NOT IN ({$active_containers})";
 		$rez = $wpdb->query($q);
-		$blclog->log(sprintf('... %d synch records deleted', $wpdb->rows_affected));
+		$elapsed = microtime(true) - $start;
+		$blclog->log(sprintf('... %d synch records deleted in %.3f seconds', $wpdb->rows_affected, $elapsed));
 		
 		return $rez !== false;
 	}

@@ -443,21 +443,33 @@ class blcPostMetaManager extends blcContainerManager {
 	function resynch($forced = false){
 		global $wpdb; /** @var wpdb $wpdb */
 		global $blclog;
-		
+
+		//Only check custom fields on selected post types. By default, that's "post" and "page".
+		$post_types = array('post', 'page');
+		if ( class_exists('blcPostTypeOverlord') ) {
+			$overlord = blcPostTypeOverlord::getInstance();
+			$post_types = array_merge($post_types, $overlord->enabled_post_types);
+			$post_types = array_unique($post_types);
+		}
+
+		$escaped_post_types = "'" . implode("', '", array_map('esc_sql', $post_types)) . "'";
+
 		if ( $forced ){
 			//Create new synchronization records for all posts. 
-			$blclog->log('...... Creating synch records for all custom fields');
-	    	$q = "INSERT INTO {$wpdb->prefix}blc_synch(container_id, container_type, synched)
+			$blclog->log('...... Creating synch records for all custom fields on ' . $escaped_post_types);
+			$start = microtime(true);
+			$q = "INSERT INTO {$wpdb->prefix}blc_synch(container_id, container_type, synched)
 				  SELECT id, '{$this->container_type}', 0
 				  FROM {$wpdb->posts}
 				  WHERE
 				  	{$wpdb->posts}.post_status = 'publish'
-	 				AND {$wpdb->posts}.post_type IN ('post', 'page')";
+	 				AND {$wpdb->posts}.post_type IN ({$escaped_post_types})";
 	 		$wpdb->query( $q );
-	 		$blclog->log(sprintf('...... %d rows affected', $wpdb->rows_affected));
+	 		$blclog->log(sprintf('...... %d rows inserted in %.3f seconds', $wpdb->rows_affected, microtime(true) - $start));
  		} else {
  			//Delete synch records corresponding to posts that no longer exist.
  			$blclog->log('...... Deleting custom field synch records corresponding to deleted posts');
+			$start = microtime(true);
  			$q = "DELETE synch.*
 				  FROM 
 					 {$wpdb->prefix}blc_synch AS synch LEFT JOIN {$wpdb->posts} AS posts
@@ -465,12 +477,13 @@ class blcPostMetaManager extends blcContainerManager {
 				  WHERE 
 					 synch.container_type = '{$this->container_type}' AND posts.ID IS NULL";
 			$wpdb->query( $q );
-			$blclog->log(sprintf('...... %d rows affected', $wpdb->rows_affected));
+			$blclog->log(sprintf('...... %d rows deleted in %.3f seconds', $wpdb->rows_affected, microtime(true) - $start));
  			
 			//Remove the 'synched' flag from all posts that have been updated
 			//since the last time they were parsed/synchronized.
-			$blclog->log('...... Marking custom fields on changed post as unsynched');
-			$q = "UPDATE 
+			$blclog->log('...... Marking custom fields on changed posts as unsynched');
+			$start = microtime(true);
+			$q = "UPDATE
 					{$wpdb->prefix}blc_synch AS synch
 					JOIN {$wpdb->posts} AS posts ON (synch.container_id = posts.ID and synch.container_type='{$this->container_type}')
 				  SET 
@@ -478,10 +491,11 @@ class blcPostMetaManager extends blcContainerManager {
 				  WHERE
 					synch.last_synch < posts.post_modified";
 			$wpdb->query( $q );
-			$blclog->log(sprintf('...... %d rows affected', $wpdb->rows_affected));
+			$blclog->log(sprintf('...... %d rows updated in %.3f seconds', $wpdb->rows_affected, microtime(true) - $start));
 			
 			//Create synch. records for posts that don't have them.
-			$blclog->log('...... Creating custom field synch records for new posts');
+			$blclog->log('...... Creating custom field synch records for new ' . $escaped_post_types);
+			$start = microtime(true);
 			$q = "INSERT INTO {$wpdb->prefix}blc_synch(container_id, container_type, synched)
 				  SELECT id, '{$this->container_type}', 0
 				  FROM 
@@ -489,10 +503,10 @@ class blcPostMetaManager extends blcContainerManager {
 					ON (synch.container_id = posts.ID and synch.container_type='{$this->container_type}')  
 				  WHERE
 				  	posts.post_status = 'publish'
-	 				AND posts.post_type IN ('post', 'page')
+	 				AND posts.post_type IN ({$escaped_post_types})
 					AND synch.container_id IS NULL";
 			$wpdb->query($q);
-			$blclog->log(sprintf('...... %d rows affected', $wpdb->rows_affected));	 				
+			$blclog->log(sprintf('...... %d rows inserted in %.3f seconds', $wpdb->rows_affected, microtime(true) - $start));
 		}
 	}
 	
@@ -532,6 +546,12 @@ class blcPostMetaManager extends blcContainerManager {
 			return;
 		}
 		if ( !array_key_exists($meta_key, $this->selected_fields) ){
+			return;
+		}
+
+		//Skip revisions. We only care about custom fields on the main post.
+		$post = get_post($object_id);
+		if ( empty($post) || !isset($post->post_type) || ($post->post_type === 'revision') ) {
 			return;
 		}
 

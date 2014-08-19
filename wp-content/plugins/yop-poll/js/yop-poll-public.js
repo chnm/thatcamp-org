@@ -327,10 +327,14 @@ function yop_poll_view_results( poll_id, poll_location, unique_id ) {
 	result_link_loading_image.id	= 'yop_poll_result_link_loading_img-'+ poll_id + unique_id;
 	jQuery('#yop_poll_result_link'+ poll_id  + unique_id).after( result_link_loading_image );
 	jQuery('#yop_poll_result_link_loading_img-'+ poll_id + unique_id ).css( 'border', 'none' );
+    var pollData = {
+
+    };
+   pollData = jQuery.param(pollData) + "&" + jQuery('#yop-poll-form-'+ poll_id + unique_id ).serialize();
 	jQuery.ajax({
 			type: 'POST',
 			url: yop_poll_public_config_general.ajax.url,
-			data: 'action='+yop_poll_public_config_general.ajax.view_results_action+'&poll_id=' + poll_id + '&unique_id=' + unique_id + '&location=' + poll_location + '&tr_id=' + jQuery('#yop-poll-tr-id-' + poll_id + unique_id ).val(),
+			data: 'action='+yop_poll_public_config_general.ajax.view_results_action+'&poll_id=' + poll_id + '&unique_id=' + unique_id + '&location=' + poll_location + '&tr_id=' + jQuery('#yop-poll-tr-id-' + poll_id + unique_id ).val()+pollData,
 			cache: false,
 			error: function() {
 				alert('An error has occured!');
@@ -357,7 +361,7 @@ function yop_poll_view_results( poll_id, poll_location, unique_id ) {
 						jQuery( '#yop-poll-container-success-'+ poll_id + unique_id ).html('');
 					}
 				}
-				jQuery('#yop_poll_result_link_loading_img-'+ poll_id + unique_id ).remove();
+				jQuery('#yop_poll_result_link_loading_img-'+ poll_id + unique_id ).remove();  licence
 				jQuery('#yop_poll_result_link'+ poll_id + unique_id ).show();
 			}
 	});

@@ -26,3 +26,6 @@ $blc_module_manager = blcModuleManager::getInstance(array(
 ));
 
 require 'any-post.php';
+
+//Let other plugins register virtual modules.
+do_action('blc_register_modules', $blc_module_manager);

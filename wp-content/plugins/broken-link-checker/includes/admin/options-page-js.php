@@ -127,6 +127,11 @@ jQuery(function($){
 
 	blcToggleLogOptions();
 	$('#logging_enabled').change(blcToggleLogOptions);
+
+	//
+	$('#target_resource_usage').change(function() {
+		$('#target_resource_usage_percent').text($(this).val() + '%')
+	});
 });
 
 </script>

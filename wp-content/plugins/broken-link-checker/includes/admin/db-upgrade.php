@@ -8,7 +8,7 @@ class blcDatabaseUpgrader {
    * @return bool
    */
     public static function upgrade_database(){
-		global $wpdb, $blclog;
+		global $blclog;
 		
 		$conf = blc_get_configuration();
 		$current = $conf->options['current_db_version'];
@@ -47,9 +47,10 @@ class blcDatabaseUpgrader {
    *
    * @return bool
    */
-	function make_schema_current(){
+	static function make_schema_current(){
 		global $blclog;
-		
+
+		$start = microtime(true);
 		if ( !function_exists('blc_get_db_schema') ){
 			require 'db-schema.php';
 		}
@@ -58,13 +59,14 @@ class blcDatabaseUpgrader {
 		$have_errors = false;
 		foreach($query_log as $item){
 			if ( $item['success'] ){
-				$blclog->info(' [OK] ' . $item['query']);
+				$blclog->info(' [OK] ' . $item['query'] . sprintf(' (%.3f seconds)', $item['query_time']));
 			} else {
 				$blclog->error(' [  ] ' . $item['query']);
 				$blclog->error(' Database error : ' . $item['error_message']);
 				$have_errors = true;
 			}
 		}
+		$blclog->info(sprintf('Schema update took %.3f seconds', microtime(true) - $start));
 		
 		$blclog->info('Database schema updated.');
 		return !$have_errors;
@@ -75,7 +77,7 @@ class blcDatabaseUpgrader {
 	 * 
 	 * @return bool
 	 */
-	function drop_tables(){
+	static function drop_tables(){
 		global $wpdb, $blclog; /** @var wpdb $wpdb */
 		
 		$blclog->info('Deleting the plugin\'s database tables'); 
@@ -107,7 +109,7 @@ class blcDatabaseUpgrader {
 		return true;
 	}
 	
-	function upgrade_095($trigger_errors = false){
+	static function upgrade_095($trigger_errors = false){
 		global $wpdb; /** @var wpdb $wpdb */
 		
 		//Prior to 0.9.5 all supported post types were internally represented using 
@@ -163,7 +165,7 @@ class blcTableDelta {
 	 * @return array   
 	 */
 	static function delta($queries, $execute = true, $drop_columns = true, $drop_indexes = true){
-		global $wpdb; /** @var wpdb $wpdb */
+		global $wpdb, $blclog; /** @var wpdb $wpdb */
 	
 		// Separate individual queries into an array
 		if ( !is_array($queries) ) {
@@ -184,7 +186,10 @@ class blcTableDelta {
 		}
 		
 		// Check to see which tables and fields exist
+		$start_show_tables = microtime(true);
 		if ($tables = $wpdb->get_col('SHOW TABLES;')) {
+			$blclog->info(sprintf('... SHOW TABLES (%.3f seconds)', microtime(true) - $start_show_tables));
+
 			// For every table in the database
 			foreach ($tables as $table) {
 
@@ -219,7 +224,9 @@ class blcTableDelta {
 					//echo "Detected fields : <br>"; print_r($cfields);
 	
 					// Fetch the table column structure from the database
+					$start = microtime(true);
 					$tablefields = $wpdb->get_results("SHOW FULL COLUMNS FROM {$table};");
+					$blclog->info(sprintf('... SHOW FULL COLUMNS FROM %s %.3f seconds', $table, microtime(true) - $start));
 	
 					// For every field in the table
 					foreach ($tablefields as $tablefield) {
@@ -265,8 +272,10 @@ class blcTableDelta {
 					//echo 'Detected indexes : <br>'; print_r($indices);
 					
 					// Fetch the table index structure from the database
+					$start = microtime(true);
 					$tableindices = $wpdb->get_results("SHOW INDEX FROM `{$table}`;");
-	
+					$blclog->info(sprintf('... SHOW INDEX FROM %s %.3f seconds', $table, microtime(true) - $start));
+
 					if ($tableindices) {
 						// Clear the index array
 						$index_ary = array();
@@ -333,8 +342,10 @@ class blcTableDelta {
 		foreach ($cqueries as $query) {
 			$log_item = array('query' => $query,);
 			if ( $execute ) {
+				$start = microtime(true);
 				$log_item['success'] = ($wpdb->query($query) !== false);
 				$log_item['error_message'] = $wpdb->last_error;
+				$log_item['query_time'] = microtime(true) - $start;
 			}
 			$query_log[] = $log_item;
 		}
@@ -351,7 +362,7 @@ class blcTableDelta {
 	 * @param string $line
 	 * @return array
 	 */
-	function parse_create_definition($line){
+	static function parse_create_definition($line){
 		$line = preg_replace('@[,\r\n\s]+$@', '', $line); //Strip the ", " line separator
 		
 		$pieces = preg_split('@\s+|(?=\()@', $line, -1, PREG_SPLIT_NO_EMPTY);
@@ -426,7 +437,7 @@ class blcTableDelta {
 	 * @param string $line
 	 * @return array Array of index columns
 	 */
-	function parse_index_column_list($line){
+	static function parse_index_column_list($line){
 		$line = preg_replace('@^\s*\(|\)\s*$@', '', $line); //Strip the braces that surround the column list
 		$pieces = preg_split('@\s*,\s*@', $line);
 		
@@ -461,7 +472,7 @@ class blcTableDelta {
 	 * @param string $line
 	 * @return array
 	 */
-	function parse_column_definition($line){
+	static function parse_column_definition($line){
 		$line = trim($line);
 	
 		//Extract datatype. This regexp is not entirely reliable - for example, it won't work 
@@ -545,7 +556,7 @@ class blcTableDelta {
 	 * @param array $definition The return value of blcTableDelta::parse_create_definition()
 	 * @return string 
 	 */
-	function generate_index_string($definition){
+	static function generate_index_string($definition){
 		
 		//Rebuild the index def. in a normalized form
 		$index_definition = '';

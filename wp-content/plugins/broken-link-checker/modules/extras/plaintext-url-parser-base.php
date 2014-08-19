@@ -4,7 +4,7 @@ class blcPlaintextUrlBase extends blcParser {
 	var $supported_formats = array('html', 'plaintext');
 
 	//Regexp for detecting plaintext URLs lifted from make_clickable()
-	var $url_regexp = '#(?<=[\s>\]])(\()?([\w]+?://(?:[\w\\x80-\\xff\#$%&~/=?@\[\](+-]|[.,;:](?![\s<]|(\))?([\s]|$))|(?(1)\)(?![\s<.,;:]|$)|\)))+)#is';
+	var $url_regexp = '#(?<=[\s>\]]|^)(\()?([\w]+?://(?:[\w\\x80-\\xff\#$%&~/=?@\[\](+-]|[.,;:](?![\s<]|(\))?([\s]|$))|(?(1)\)(?![\s<.,;:]|$)|\)))+)#is';
 
 	//Used by the edit and unlink callbacks
 	var $old_url = '';

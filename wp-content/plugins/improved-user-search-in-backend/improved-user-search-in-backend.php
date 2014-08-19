@@ -3,7 +3,7 @@
 Plugin Name: Improved User Search in Backend
 Plugin URI: http://www.blackbam.at/blackbams-blog/2011/06/27/wordpress-improved-user-search-first-name-last-name-email-in-backend/
 Description:  Improves the search for users in the backend significantly: Search for first name, last, email and more of users instead of only nicename.
-Version: 1.2.4
+Version: 1.2.6
 Author: David Stöckl
 Author URI: http://www.blackbam.at/
 */
@@ -92,9 +92,13 @@ if(is_admin()) {
 			if(isset($_POST['improved_user_search_in_backend_update']) && $_POST['improved_user_search_in_backend_update']!="") {
 				
 				// remove whitespace
-				$sanitized = implode(",",array_map('trim', explode(",",$_POST['iusib_meta_fields'])));
+				$sanitized = stripslashes(implode(",",array_map('trim', explode(",",$_POST['iusib_meta_fields']))));
+
+				if(preg_match('/^[a-zA-Z0-9,]+$/',$sanitized)) {
+					update_option('iusib_meta_fields',$sanitized); 
+				}
 				
-				update_option('iusib_meta_fields',stripslashes($sanitized)); ?>
+				?>
 					<div id="setting-error-settings_updated" class="updated settings-error"> 
 						<p><strong><?php _e('Settings saved successfully.','improved-user-search-in-backend'); ?></strong></p>
 					</div>
@@ -104,7 +108,7 @@ if(is_admin()) {
 					<table class="form-table">
 						<tr valign="top">
 							<th scope="row"><?php _e('Custom Meta Fields (comma seperated)', 'improved-user-search-in-backend'); ?></th>
-							<td><textarea name="iusib_meta_fields" rows="6" cols="50"><?php echo get_option('iusib_meta_fields'); ?></textarea></td>
+							<td><textarea name="iusib_meta_fields" rows="6" cols="50"><?php echo sanitize_text_field(get_option('iusib_meta_fields')); ?></textarea></td>
 							<td class="description"><?php _e('Add custom user meta fields from your usermeta table for integration in the user search (e.g. "url", "description", "aim", or custom like "birthday")', 'improved-user-search-in-backend'); ?></td>
 						</tr>
 					</table>

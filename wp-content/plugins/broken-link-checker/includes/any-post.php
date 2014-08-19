@@ -12,8 +12,8 @@
  * @access private
  */
 class blcPostTypeOverlord {
-	var $enabled_post_types = array();  //Post types currently selected for link checking
-	var $enabled_post_statuses = array('publish'); //Only posts that have one of these statuses shall be checked
+	public $enabled_post_types = array();  //Post types currently selected for link checking
+	public $enabled_post_statuses = array('publish'); //Only posts that have one of these statuses shall be checked
 	 
 	var $plugin_conf;  
 	var $resynch_already_done = false;
@@ -44,8 +44,7 @@ class blcPostTypeOverlord {
 		
 		$post_types = get_post_types(array(), 'objects');
 		$exceptions = array('revision', 'nav_menu_item', 'attachment');
-		$built_in = array('post', 'page');
-		
+
 		foreach($post_types as $data){
 			$post_type = $data->name;
 			
@@ -192,6 +191,7 @@ class blcPostTypeOverlord {
 		if ( $forced ){
 			//Create new synchronization records for all posts. 
 			$blclog->log('...... Creating synch records for these post types: '.implode(', ', $escaped_post_types) . ' that have one of these statuses: ' . implode(', ', $escaped_post_statuses));
+			$start = microtime(true);
 	    	$q = "INSERT INTO {$wpdb->prefix}blc_synch(container_id, container_type, synched)
 				  SELECT posts.id, posts.post_type, 0
 				  FROM {$wpdb->posts} AS posts
@@ -204,11 +204,12 @@ class blcPostTypeOverlord {
 				"'" . implode("', '", $escaped_post_types) . "'"
 			);
 	 		$wpdb->query( $q );
-	 		$blclog->log(sprintf('...... %d rows inserted', $wpdb->rows_affected));
+	 		$blclog->log(sprintf('...... %d rows inserted in %.3f seconds', $wpdb->rows_affected, microtime(true) - $start));
  		} else {
  			//Delete synch records corresponding to posts that no longer exist.
  			$blclog->log('...... Deleting synch records for removed posts');
- 			$q = "DELETE synch.*
+			$start = microtime(true);
+			$q = "DELETE synch.*
 				  FROM 
 					 {$wpdb->prefix}blc_synch AS synch LEFT JOIN {$wpdb->posts} AS posts
 					 ON posts.ID = synch.container_id
@@ -219,12 +220,15 @@ class blcPostTypeOverlord {
 				"'" . implode("', '", $escaped_post_types) . "'"
 			);
 			$wpdb->query( $q );
-			$blclog->log(sprintf('...... %d rows deleted', $wpdb->rows_affected));
+			$elapsed = microtime(true) - $start;
+			$blclog->debug($q);
+			$blclog->log(sprintf('...... %d rows deleted in %.3f seconds', $wpdb->rows_affected, $elapsed));
  			
 			//Remove the 'synched' flag from all posts that have been updated
 			//since the last time they were parsed/synchronized.
 			$blclog->log('...... Marking changed posts as unsynched');
-			$q = "UPDATE 
+			$start = microtime(true);
+			$q = "UPDATE
 					{$wpdb->prefix}blc_synch AS synch
 					JOIN {$wpdb->posts} AS posts ON (synch.container_id = posts.ID and synch.container_type=posts.post_type)
 				  SET 
@@ -232,10 +236,13 @@ class blcPostTypeOverlord {
 				  WHERE
 					synch.last_synch < posts.post_modified";
 			$wpdb->query( $q );
-			$blclog->log(sprintf('...... %d rows updated', $wpdb->rows_affected));
+			$elapsed = microtime(true) - $start;
+			$blclog->debug($q);
+			$blclog->log(sprintf('...... %d rows updated in %.3f seconds', $wpdb->rows_affected, $elapsed));
 			
 			//Create synch. records for posts that don't have them.
 			$blclog->log('...... Creating synch records for new posts');
+			$start = microtime(true);
 			$q = "INSERT INTO {$wpdb->prefix}blc_synch(container_id, container_type, synched)
 				  SELECT posts.id, posts.post_type, 0
 				  FROM 
@@ -251,7 +258,9 @@ class blcPostTypeOverlord {
 				"'" . implode("', '", $escaped_post_types) . "'"
 			);
 			$wpdb->query($q);
-			$blclog->log(sprintf('...... %d rows inserted', $wpdb->rows_affected)); 				
+			$elapsed = microtime(true) - $start;
+			$blclog->debug($q);
+			$blclog->log(sprintf('...... %d rows inserted in %.3f seconds', $wpdb->rows_affected, $elapsed));
 		}
 		
 		$this->resynch_already_done = true;
@@ -641,7 +650,7 @@ class blcAnyPostContainerManager extends blcContainerManager {
 	
 	function init(){
 		parent::init();
-		
+
 		//Notify the overlord that the post/container type that this instance is 
 		//responsible for is enabled.
 		$overlord = blcPostTypeOverlord::getInstance();

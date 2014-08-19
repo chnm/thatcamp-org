@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Broken Link Checker | V1.9.3\n"
+"Project-Id-Version: Broken Link Checker | V1.9\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/broken-link-checker\n"
-"POT-Creation-Date: 2014-03-25 12:29:11+00:00\n"
-"PO-Revision-Date: 2014-04-06 15:32+0100\n"
-"Last-Translator: Ivan Graf <contact@bildergallery.com>\n"
+"POT-Creation-Date: 2013-10-14 09:34:17+00:00\n"
+"PO-Revision-Date: 2014-07-15 13:08+0100\n"
+"Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
 "Language-Team: \n"
 "Language: de_CH\n"
 "MIME-Version: 1.0\n"
@@ -16,28 +16,28 @@ msgstr ""
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Textdomain-Support: yes\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
 # @ broken-link-checker
-#: core/core.php:153 includes/admin/links-page-js.php:44
+#: core/core.php:153 includes/admin/links-page-js.php:37
 msgid "Loading..."
-msgstr "Wird geladen ..."
+msgstr "Učitavanje..."
 
 # @ broken-link-checker
 #: core/core.php:177 includes/admin/options-page-js.php:18
 msgid "[ Network error ]"
-msgstr "[ Netzwerk Fehler ]"
+msgstr "[ Greška u mreži ]"
 
 # @ broken-link-checker
 #: core/core.php:204
 msgid "Automatically expand the widget if broken links have been detected"
-msgstr "Vergrössere Widget automatisch wenn fehlerhafte Links gefunden wurden"
+msgstr "Automatski razvija widget ako su otkriveni prekinuti linkovi."
 
 # @ broken-link-checker
 #: core/core.php:295
 msgid "Link Checker Settings"
-msgstr "Link Checker Einstellungen"
+msgstr "Postavke za Link Checker"
 
 # @ broken-link-checker
 #: core/core.php:296
@@ -47,464 +47,438 @@ msgstr "Link Checker"
 # @ broken-link-checker
 #: core/core.php:301 includes/link-query.php:27
 msgid "Broken Links"
-msgstr "Fehlerhafte Links"
+msgstr "Prekinuti linkovi"
 
 # @ broken-link-checker
 #: core/core.php:317
 msgid "View Broken Links"
-msgstr "Fehlerhafte Links anschauen"
+msgstr "Pregledaj prekinute linkove"
 
 #: core/core.php:332
 msgid "Feedback"
-msgstr "Feedback"
+msgstr "Povratne informacije"
 
 # @ broken-link-checker
 #: core/core.php:340
 msgid "Go to Broken Links"
-msgstr "Gehe zu fehlerhaften Links"
+msgstr "Idi na prekinute linkove"
 
 # @ default
 #: core/core.php:369
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr "Postavke"
 
 # @ broken-link-checker
-#: core/core.php:572
+#: core/core.php:538
 msgid "Settings saved."
-msgstr "Einstellungen gespeichert."
+msgstr "Postavke sačuvane"
 
-#: core/core.php:578
+#: core/core.php:544
 msgid "Thank you for your donation!"
-msgstr "Besten Dank für Ihre Spende!"
+msgstr "Hvala vam za donaciju!"
 
 # @ broken-link-checker
-#: core/core.php:586
+#: core/core.php:552
 msgid "Complete site recheck started."
-msgstr "Komplette Überprüfung der Webseite noch einmal gestartet."
+msgstr "Započeta kompletna provera "
 
 # @ broken-link-checker
-#: core/core.php:595
+#: core/core.php:561
 msgid "Details"
-msgstr "Details"
+msgstr "Detalji"
 
 # @ broken-link-checker
-#: core/core.php:609
+#: core/core.php:575
 msgid "General"
-msgstr "Allgemein"
+msgstr "Opšti"
 
 # @ broken-link-checker
-#: core/core.php:610
+#: core/core.php:576
 msgid "Look For Links In"
-msgstr "Suchen Sie nach Links in"
+msgstr "Potraži linkove na"
 
 # @ broken-link-checker
-#: core/core.php:611
+#: core/core.php:577
 msgid "Which Links To Check"
-msgstr "Welche Links überprüfen"
+msgstr "Koje linkove treba proveriti "
 
 # @ broken-link-checker
-#: core/core.php:612
+#: core/core.php:578
 msgid "Protocols & APIs"
-msgstr "Protokoll & Schnittstellen"
+msgstr "Protokoli i programski interfejsi "
 
 # @ broken-link-checker
-#: core/core.php:613
+#: core/core.php:579
 msgid "Advanced"
-msgstr "Erweitert"
+msgstr "Napredni"
 
 # @ broken-link-checker
-#: core/core.php:628
+#: core/core.php:594
 msgid "Broken Link Checker Options"
-msgstr "Broken Link Checker Optionen"
+msgstr "Opcije za Broken Link Checker "
 
 # @ broken-link-checker
-#: core/core.php:670 includes/admin/table-printer.php:203
+#: core/core.php:636 includes/admin/table-printer.php:200
 msgid "Status"
 msgstr "Status"
 
 # @ broken-link-checker
-#: core/core.php:672 includes/admin/options-page-js.php:56
+#: core/core.php:638 includes/admin/options-page-js.php:56
 msgid "Show debug info"
-msgstr "Debug Infos anzeigen"
+msgstr "Prikaži informacije za otklanjanje grešaka"
 
 # @ broken-link-checker
-#: core/core.php:700
+#: core/core.php:666
 msgid "Check each link"
-msgstr "Überprüfe jeden Link"
+msgstr "Proveri svaki link"
 
 # @ broken-link-checker
-#: core/core.php:705
+#: core/core.php:671
 msgid "Every %s hours"
-msgstr "Alle %s Stunden"
+msgstr "Svakih %s sata"
 
 # @ broken-link-checker
-#: core/core.php:714
+#: core/core.php:680
 msgid ""
 "Existing links will be checked this often. New links will usually be checked "
 "ASAP."
-msgstr ""
-"Vorhandene Links werden nach Ablauf der Zeit automatisch kontrolliert. Neue "
-"Links werden sofort geprüft."
+msgstr "Postojeći linkovi biće proveravani u ovim vremenskim intervalima."
 
 # @ broken-link-checker
-#: core/core.php:721
+#: core/core.php:687
 msgid "E-mail notifications"
-msgstr "E-Mail Benachrichtigungen"
+msgstr "Obaveštenja putem mail-a"
 
 # @ broken-link-checker
-#: core/core.php:727
+#: core/core.php:693
 msgid "Send me e-mail notifications about newly detected broken links"
 msgstr ""
-"Dem Administrator eine E-Mail Benachrichtigung senden, wenn neue fehlerhafte "
-"Links erkannt werden"
+"Pošalji mi obaveštenja putem mail-a o novootkrivenim prekinutim linkovima"
 
 # @ broken-link-checker
-#: core/core.php:735
+#: core/core.php:701
 msgid "Send authors e-mail notifications about broken links in their posts"
 msgstr ""
-"Den Autoren eine E-Mail Benachrichtigung senden, wenn neue fehlerhafte Links "
-"erkannt werden"
+"Pošalji autorima obaveštenja putem mail-a o prekinutim linkovima u njihovim "
+"postovima"
 
-#: core/core.php:742
+#: core/core.php:708
 msgid "Notification e-mail address"
-msgstr "Benachrichtigungs-E-Mail-Adresse"
+msgstr "Mail adrese za obaveštenja"
 
-#: core/core.php:754
+#: core/core.php:720
 msgid ""
 "Leave empty to use the e-mail address specified in Settings &rarr; General."
 msgstr ""
-"Leer lassen, um die E-Mail-Adresse in Einstellungen &rarr; Allgemein zu "
-"verwenden."
+"Ostavite prazno da biste koristili mail adrese navedene u Postavkama &rarr-"
+"u, Opšte  "
 
 # @ broken-link-checker
-#: core/core.php:761
+#: core/core.php:727
 msgid "Link tweaks"
-msgstr "Link Einstellungen"
+msgstr "Prekidi linka"
 
 # @ broken-link-checker
-#: core/core.php:767
+#: core/core.php:733
 msgid "Apply custom formatting to broken links"
-msgstr "Benutzerdefinierte Formatierung auf fehlerhafte Links übernehmen"
+msgstr "Primeni prilagođeno formatiranje na prekinute linkove"
 
 # @ broken-link-checker
-#: core/core.php:771 core/core.php:802
+#: core/core.php:737 core/core.php:768
 msgid "Edit CSS"
-msgstr "Bearbeite CSS"
+msgstr "Uredi CSS"
 
-#: core/core.php:787
+#: core/core.php:753
 msgid "Example : Lorem ipsum <a %s>broken link</a>, dolor sit amet."
-msgstr "Beispiel: Lorem ipsum <a %s>fehlerhafter Link</a>, dolor sit amet."
+msgstr "Primer: Lorem ipsum <a %s>prekinuti link</a>, dolor sit amet."
 
-#: core/core.php:790 core/core.php:821
+#: core/core.php:756 core/core.php:787
 msgid "Click \"Save Changes\" to update example output."
-msgstr "Drücken Sie \"Änderung übernehmen\", um das Beispiel zu aktualisieren."
+msgstr "Kliknite na \"Save Changes\" da biste ažurirali izlaz primera."
 
 # @ broken-link-checker
-#: core/core.php:798
+#: core/core.php:764
 msgid "Apply custom formatting to removed links"
-msgstr "Benutzerdefinierte Formatierung auf entfernte Links übernehmen"
+msgstr "Primeni prilagođeno formatiranje na uklonjene linkove."
 
-#: core/core.php:818
+#: core/core.php:784
 msgid "Example : Lorem ipsum <span %s>removed link</span>, dolor sit amet."
-msgstr "Beispiel: Lorem ipsum <span %s>entfernter Link</span>, dolor sit amet."
+msgstr "Primer: Lorem ipsum <span %s>uklonjen link</span>, dolor sit amet."
 
 # @ broken-link-checker
-#: core/core.php:831
+#: core/core.php:797
 msgid "Stop search engines from following broken links"
-msgstr "Suchmaschinen von folgenden fehlerhaften Links stoppen"
+msgstr "Zaustavi pretraživač u praćenju prekinutih linkova"
 
-#: core/core.php:839
+#: core/core.php:805
 msgctxt "settings page"
 msgid "Suggestions"
-msgstr "Vorschläge"
+msgstr "Predlozi"
 
 # @ broken-link-checker
-#: core/core.php:845
+#: core/core.php:811
 msgid "Suggest alternatives to broken links"
-msgstr "Alternativen zu fehlerhaften Links vorschlagen"
+msgstr "Predloži alternative za prekinute linkove"
 
 # @ broken-link-checker
-#: core/core.php:861
+#: core/core.php:827
 msgid "Look for links in"
-msgstr "Suchen Sie nach Links in"
+msgstr "Potraži linkove na"
 
 # @ broken-link-checker
-#: core/core.php:872
+#: core/core.php:838
 msgid "Post statuses"
-msgstr "Beitrag Status"
+msgstr "Statusi posta"
 
 # @ broken-link-checker
-#: core/core.php:905
+#: core/core.php:871
 msgid "Link types"
-msgstr "Link Typen"
+msgstr "Vrste linkova"
 
 # @ broken-link-checker
-#: core/core.php:911
+#: core/core.php:877
 msgid "Error : All link parsers missing!"
-msgstr "Fehler: Alle Link-Parser fehlen!"
+msgstr "Greška: nedostaju svi parseri linka"
 
 # @ broken-link-checker
-#: core/core.php:918
+#: core/core.php:884
 msgid "Exclusion list"
-msgstr "Ausschlussliste"
+msgstr "Lista isključenja"
 
 # @ broken-link-checker
-#: core/core.php:919
+#: core/core.php:885
 msgid ""
 "Don't check links where the URL contains any of these words (one per line) :"
 msgstr ""
-"URLs, die folgende Wörter beinhalten nicht überprüfen (ein Wort pro Zeile):"
+"Ne proveravaj linkove čiji URL sadrži neke od navedenih reči (po jednu u "
+"svakom redu):"
 
 # @ broken-link-checker
-#: core/core.php:937
+#: core/core.php:903
 msgid "Check links using"
-msgstr "Überprüfe Links"
+msgstr "Proveri linkove koristeći:"
 
 # @ broken-link-checker
-#: core/core.php:956 includes/links.php:867
+#: core/core.php:922 includes/links.php:857
 msgid "Timeout"
-msgstr "Zeitüberschreitung"
+msgstr "Pauza"
 
 # @ broken-link-checker
 # @ default
-#: core/core.php:962 core/core.php:1031 core/core.php:3019
+#: core/core.php:928 core/core.php:997 core/core.php:2904
 msgid "%s seconds"
-msgstr "%s Sekunden"
+msgstr "%s sekundi"
 
 # @ broken-link-checker
-#: core/core.php:971
+#: core/core.php:937
 msgid "Links that take longer than this to load will be marked as broken."
 msgstr ""
-"Links die länger zum laden brauchen als hier eingetragen, gelten als "
-"fehlerhaft."
+"Linkovi kojima za učitavanje treba više vremena od navedenog biće označeni "
+"kao prekinuti "
 
 # @ broken-link-checker
-#: core/core.php:978
+#: core/core.php:944
 msgid "Link monitor"
-msgstr "Link Monitor"
+msgstr "Monitor linka"
 
 # @ broken-link-checker
-#: core/core.php:986
+#: core/core.php:952
 msgid "Run continuously while the Dashboard is open"
-msgstr "Ununterbrochen arbeiten, während das Dashboard geöffnet ist"
+msgstr "Pokreni istovremeno kad je otvorena komandna tabla"
 
 # @ broken-link-checker
-#: core/core.php:994
+#: core/core.php:960
 msgid "Run hourly in the background"
-msgstr "Stündlich im Hintergrund arbeiten"
+msgstr "Pokreni u pozadini, na svakih sat vremena"
 
-#: core/core.php:1002
+#: core/core.php:968
 msgid "Show the dashboard widget for"
-msgstr "Dashboard-Widget anzeigen für"
+msgstr "Prikaži widget komandne table za"
 
-#: core/core.php:1007
+#: core/core.php:973
 msgctxt "dashboard widget visibility"
 msgid "Administrator"
-msgstr "Administrator"
+msgstr "Administratora"
 
-#: core/core.php:1008
+#: core/core.php:974
 msgctxt "dashboard widget visibility"
 msgid "Editor and above"
-msgstr "Redakteur und höher"
+msgstr "Urednika i višu poziciju"
 
-#: core/core.php:1009
+#: core/core.php:975
 msgctxt "dashboard widget visibility"
 msgid "Nobody (disables the widget)"
-msgstr "Niemand (deaktiviert das Widget)"
+msgstr "Nikoga (deaktivira widget)"
 
 # @ broken-link-checker
-#: core/core.php:1025
+#: core/core.php:991
 msgid "Max. execution time"
-msgstr "Max. Ausführungszeit"
+msgstr "Maksimalno vreme izvođenja"
 
 # @ broken-link-checker
-#: core/core.php:1042
+#: core/core.php:1008
 msgid ""
 "The plugin works by periodically launching a background job that parses your "
 "posts for links, checks the discovered URLs, and performs other time-"
 "consuming tasks. Here you can set for how long, at most, the link monitor "
 "may run each time before stopping."
 msgstr ""
-"Das Plugin arbeitet in regelmässigen Abständen im Hintergrund. Ihre Beiträge "
-"werden auf Links analysiert, entdeckte URLs geprüft und andere "
-"zeitaufwendige Aufgaben ausführt. Hier können Sie einstellen, wie lange die "
-"Instanzen laufen sollen, bevor sie gestoppt werden."
+"Plugin funkcioniše periodično pokrećući pozadinski zadatak koji analizira "
+"vaše post-ove u potrazi za linkovima, proverava otkrivene URL-e i izvodi "
+"druge zadatke koji zahtevaju vreme. Ovde možete podesiti koliko (najviše) "
+"vremena monitor linka može da radi pre nego što se zaustavi."
 
 # @ broken-link-checker
-#: core/core.php:1051
+#: core/core.php:1017
 msgid "Server load limit"
-msgstr "Server Belastungsgrenze"
+msgstr "Ograničenje opterećenja servera"
 
-#: core/core.php:1066
+#: core/core.php:1032
 msgid "Current load : %s"
-msgstr "Aktuelle Belastung: %s"
+msgstr "Trenutno opterećenje %s"
 
 # @ broken-link-checker
-#: core/core.php:1071
+#: core/core.php:1037
 msgid ""
 "Link checking will be suspended if the average <a href=\"%s\">server load</"
 "a> rises above this number. Leave this field blank to disable load limiting."
 msgstr ""
-"Die Link Überprüfung wird ausgesetzt, wenn die durchschnittliche <a href=\"%s"
-"\">Belastung des Servers</a> über diese Zahl ansteigt. Lassen Sie dieses "
-"Feld leer, um das Ladelimit zu deaktivieren."
+"Provera linka biće obustavljena ako prosečno <a href=\"%s\">opterećenje "
+"servera </a> premaši ovaj broj. Ostavite ovo polje prazno da biste "
+"deaktivirali ograničenje opterećenja."
 
 # @ broken-link-checker
-#: core/core.php:1080
+#: core/core.php:1046
 msgid "Not available"
-msgstr "Nicht verfügbar"
+msgstr "Nije raspoloživo"
 
 # @ broken-link-checker
-#: core/core.php:1082
+#: core/core.php:1048
 msgid ""
 "Load limiting only works on Linux-like systems where <code>/proc/loadavg</"
 "code> is present and accessible."
 msgstr ""
-"Das Ladelimit funktioniert nur auf Linux Systemen wo <code>/proc/loadavg</"
-"code> vorhanden und zugänglich ist."
-
-#: core/core.php:1090
-msgid "Logging"
-msgstr "Protokollierung"
-
-#: core/core.php:1096
-msgid "Enable logging"
-msgstr "Protokollierung aktivieren"
-
-#: core/core.php:1103
-msgid "Log file location"
-msgstr "Speicherort Protokolldatei"
-
-#: core/core.php:1112
-msgctxt "log file location"
-msgid "Default"
-msgstr "Standard"
+"Ograničenje opterećenja radi samo na sistemima kao što je Linux gde je "
+"<code>/proc/loadavg</code> prisutan i pristupačan"
 
 # @ broken-link-checker
-#: core/core.php:1126
-msgctxt "log file location"
-msgid "Custom"
-msgstr "Benutzerdefiniert"
-
-# @ broken-link-checker
-#: core/core.php:1138
+#: core/core.php:1056
 msgid "Forced recheck"
-msgstr "Erneute Überprüfung erzwingen"
+msgstr "Nasilna ponovna provera"
 
 # @ broken-link-checker
-#: core/core.php:1141
+#: core/core.php:1059
 msgid "Re-check all pages"
-msgstr "Überprüfe alle Seiten noch einmal"
+msgstr "Ponovo proveri sve stranice"
 
 # @ broken-link-checker
-#: core/core.php:1145
+#: core/core.php:1063
 msgid ""
 "The \"Nuclear Option\". Click this button to make the plugin empty its link "
 "database and recheck the entire site from scratch."
 msgstr ""
-"Die \"Nuklear Option\". Klicken Sie auf diese Schaltfläche, um die Link-"
-"Datenbank des Plugins zu leeren und die gesamte Website neu aufzubauen."
+"Kliknite na taster \"Nuclear Option\" da bi plugin ispraznio svoju bazu "
+"podataka i ponovo proverio da li na celom site-u ima ogrebotina.  "
 
 # @ default
-#: core/core.php:1156
+#: core/core.php:1074
 msgid "Save Changes"
-msgstr "Änderungen speichern"
+msgstr "Sačuvaj izmene"
 
 # @ broken-link-checker
-#: core/core.php:1207
+#: core/core.php:1125
 msgid "Configure"
-msgstr "Konfigurieren"
+msgstr "Konfiguriši"
 
-#: core/core.php:1289
+#: core/core.php:1207
 msgid ""
 "Enter the names of custom fields you want to check (one per line). If a "
 "field contains HTML code, prefix its name with <code>html:</code>. For "
 "example, <code>html:field_name</code>."
 msgstr ""
-"Geben Sie die Namen der benutzerdefinierten Felder ein, die Sie überprüfen "
-"möchten (eine pro Zeile). Wenn ein Feld HTML-Code enthält, verwenden Sie ein "
-"Präfix im Namen <code>html:</code>. Zum Beispiel: <code>html:field_name</"
-"code>."
+"Unesite nazive prilagođenih polja koje želite da proverite (po jedno polje u "
+"svakom redu). Ako polje sadrži HTML kod, pre naziva navedite prefiks "
+"<code>html:</code>. Na primer, <code>html:field_name</code>."
 
 # @ broken-link-checker
-#: core/core.php:1420 core/core.php:1503 core/core.php:1535
+#: core/core.php:1338 core/core.php:1421 core/core.php:1453
 msgid "Database error : %s"
-msgstr "Datenbank Fehler: %s"
+msgstr "Greška baze podataka %s"
 
 # @ broken-link-checker
-#: core/core.php:1485
+#: core/core.php:1403
 msgid "You must enter a filter name!"
-msgstr "Sie müssen einen Filter Namen eingeben!"
+msgstr "Morate uneti naziv filtera!"
 
 # @ broken-link-checker
-#: core/core.php:1489
+#: core/core.php:1407
 msgid "Invalid search query."
-msgstr "Ungültige Suchanfrage."
+msgstr "Nevažeći upit za pretragu."
 
 # @ broken-link-checker
-#: core/core.php:1498
+#: core/core.php:1416
 msgid "Filter \"%s\" created"
-msgstr "Filter \"%s\" erstellt"
+msgstr "Kreiran je\"%s\"  filter. "
 
 # @ broken-link-checker
-#: core/core.php:1525
+#: core/core.php:1443
 msgid "Filter ID not specified."
-msgstr "Link ID nicht spezifiziert."
+msgstr "ID filtera nije naveden."
 
 # @ broken-link-checker
-#: core/core.php:1532
+#: core/core.php:1450
 msgid "Filter deleted"
-msgstr "Filter gelöscht"
+msgstr "Filter je obrisan"
 
 # @ broken-link-checker
-#: core/core.php:1579
+#: core/core.php:1497
 msgid "Replaced %d redirect with a direct link"
 msgid_plural "Replaced %d redirects with direct links"
-msgstr[0] "Ersetze %d Umleitung mit einem direkten Link"
-msgstr[1] "Ersetze %d Umleitungen mit direkten Links"
+msgstr[0] "Zamenjeni %d preusmeri direktnim linkom."
+msgstr[1] "Zamenjeni %d preusmeri direktnim linkom."
 
 # @ broken-link-checker
-#: core/core.php:1590
+#: core/core.php:1508
 msgid "Failed to fix %d redirect"
 msgid_plural "Failed to fix %d redirects"
-msgstr[0] "Löschen der festen Umleitung %d schlug fehl"
-msgstr[1] "Löschen der festen Umleitungen %d schlug fehl"
+msgstr[0] "Nije uspela popravka %d preusmeravanja"
+msgstr[1] "Nije uspela popravka %d preusmeravanja"
 
 # @ broken-link-checker
-#: core/core.php:1601
+#: core/core.php:1519
 msgid "None of the selected links are redirects!"
-msgstr "Keiner der ausgewählten Links sind Umleitungen!"
+msgstr "Nijedan od odabranih linkova nije za preusmeravanje!"
 
 # @ broken-link-checker
-#: core/core.php:1679
+#: core/core.php:1597
 msgid "%d link updated."
 msgid_plural "%d links updated."
-msgstr[0] "Link %d aktualisiert."
-msgstr[1] "Links %d aktualisiert."
+msgstr[0] "%d link ažuriran"
+msgstr[1] "%d link ažuriran"
 
 # @ broken-link-checker
-#: core/core.php:1690
+#: core/core.php:1608
 msgid "Failed to update %d link."
 msgid_plural "Failed to update %d links."
-msgstr[0] "Link %d konnte nicht aktualisiert werden."
-msgstr[1] "Links %d konnten nicht aktualisiert werden."
+msgstr[0] "Nije uspelo ažuriranje %d linka"
+msgstr[1] "Nije uspelo ažuriranje %d linka"
 
 # @ broken-link-checker
-#: core/core.php:1779
+#: core/core.php:1697
 msgid "%d link removed"
 msgid_plural "%d links removed"
-msgstr[0] "%d Link entfernt"
-msgstr[1] "%d Links entfernt"
+msgstr[0] "%d link je uklonjen"
+msgstr[1] "%d link je uklonjen"
 
 # @ broken-link-checker
-#: core/core.php:1790
+#: core/core.php:1708
 msgid "Failed to remove %d link"
 msgid_plural "Failed to remove %d links"
-msgstr[0] "Link %d konnte nicht entfernt werden"
-msgstr[1] "Links %d konnten nicht entfernt werden"
+msgstr[0] "Neuspešno uklanjanje %d linka"
+msgstr[1] "Neuspešno uklanjanje %d linka"
 
 # @ default
-#: core/core.php:1899
+#: core/core.php:1817
 msgid ""
 "%d item was skipped because it can't be moved to the Trash. You need to "
 "delete it manually."
@@ -512,1047 +486,1032 @@ msgid_plural ""
 "%d items were skipped because they can't be moved to the Trash. You need to "
 "delete them manually."
 msgstr[0] ""
-"%d Das Element wurde übersprungen, weil es nicht in den Papierkorb "
-"verschoben werden kann. Löschen Sie es manuell."
+"%d jedinica je preskočena jer ne može da se prebaci u kantu za otpatke. "
+"Morate je ručno obrisati."
 msgstr[1] ""
-"%d Die Elemente wurde übersprungen, weil sie nicht in den Papierkorb "
-"verschoben werden können. Löschen Sie diese manuell."
+"%d jedinica je preskočena jer ne može da se prebaci u kantu za otpatke. "
+"Morate je ručno obrisati."
 
 # @ broken-link-checker
-#: core/core.php:1921
+#: core/core.php:1839
 msgid "Didn't find anything to delete!"
-msgstr "Nichts gefunden um zu löschen!"
+msgstr "Nije pronađeno ništa za brisanje!"
 
 # @ broken-link-checker
-#: core/core.php:1949
+#: core/core.php:1867
 msgid "%d link scheduled for rechecking"
 msgid_plural "%d links scheduled for rechecking"
-msgstr[0] "%d Link zur erneuten Überprüfung geplant"
-msgstr[1] "%d Links zur erneuten Überprüfung geplant"
+msgstr[0] "%d link planiran za ponovnu proveru"
+msgstr[1] "%d link planiran za ponovnu proveru"
 
 # @ broken-link-checker
-#: core/core.php:1995 core/core.php:2637
+#: core/core.php:1913 core/core.php:2522
 msgid "This link was manually marked as working by the user."
-msgstr ""
-"Dieser Link wurde vom Benutzer manuell als funktionierender Link markiert."
+msgstr "Korisnik je ručno označio ovaj link kao aktivan."
 
 # @ broken-link-checker
-#: core/core.php:2002
+#: core/core.php:1920
 msgid "Couldn't modify link %d"
-msgstr "Link %d konnte nicht geändert werden"
+msgstr "Link %d nije se mogao modifikovati"
 
 # @ broken-link-checker
-#: core/core.php:2012
+#: core/core.php:1930
 msgid "%d link marked as not broken"
 msgid_plural "%d links marked as not broken"
-msgstr[0] "%d Link als nicht fehlerhaft markiert"
-msgstr[1] "%d Links als nicht fehlerhaft markiert"
+msgstr[0] "%d link označen kao neprekinut"
+msgstr[1] "%d link označen kao neprekinut"
 
 # @ broken-link-checker
-#: core/core.php:2052
+#: core/core.php:1970
 msgid "Table columns"
-msgstr "Tabellenspalten"
+msgstr "Kolone u tabeli"
 
 # @ default
-#: core/core.php:2071
+#: core/core.php:1989
 msgid "Show on screen"
-msgstr "Auf dem Bildschirm anzeigen"
+msgstr "Prikaži na ekranu"
 
 # @ broken-link-checker
-#: core/core.php:2078
+#: core/core.php:1996
 msgid "links"
-msgstr "Links"
+msgstr "linkovi"
 
 # @ default
 # @ broken-link-checker
-#: core/core.php:2079 includes/admin/table-printer.php:171
+#: core/core.php:1997 includes/admin/table-printer.php:168
 msgid "Apply"
-msgstr "Anwenden"
+msgstr "Primeni"
 
 # @ broken-link-checker
-#: core/core.php:2083
+#: core/core.php:2001
 msgid "Misc"
-msgstr "Sonstige"
+msgstr "Razno"
 
 # @ broken-link-checker
-#: core/core.php:2098
+#: core/core.php:2016
 msgid "Highlight links broken for at least %s days"
-msgstr "Markiere fehlerhafte Links für mindestens %s Tage"
+msgstr "Markiraj linkove prekinute najmanje %s dana"
 
 # @ broken-link-checker
-#: core/core.php:2107
+#: core/core.php:2025
 msgid "Color-code status codes"
-msgstr "Farb-Code Status Codes"
+msgstr "Kodovi statusa prema boji koda"
 
 # @ broken-link-checker
-#: core/core.php:2124 core/core.php:2622 core/core.php:2662 core/core.php:2695
-#: core/core.php:2782
+#: core/core.php:2042 core/core.php:2507 core/core.php:2547 core/core.php:2580
+#: core/core.php:2667
 msgid "You're not allowed to do that!"
-msgstr "Sie haben nicht die Erlaubnis das zu tun!"
+msgstr "Nemate dozvolu za tu aktivnost!"
 
 # @ broken-link-checker
-#: core/core.php:2492
+#: core/core.php:2377
 msgid "View broken links"
-msgstr "Fehlerhafte Links anschauen"
+msgstr "Vidi prekinute linkove"
 
 # @ broken-link-checker
-#: core/core.php:2493
+#: core/core.php:2378
 msgid "Found %d broken link"
 msgid_plural "Found %d broken links"
-msgstr[0] "%d fehlerhafte Links gefunden"
-msgstr[1] "%d fehlerhafte Links gefunden"
+msgstr[0] "Nađen %d prekinuti link."
+msgstr[1] "Nađen %d prekinuti link."
 
 # @ broken-link-checker
-#: core/core.php:2499
+#: core/core.php:2384
 msgid "No broken links found."
-msgstr "Keine fehlerhaften Links gefunden."
+msgstr "Nisu pronađeni prekinuti linkovi"
 
 # @ broken-link-checker
-#: core/core.php:2506
+#: core/core.php:2391
 msgid "%d URL in the work queue"
 msgid_plural "%d URLs in the work queue"
-msgstr[0] "%d URL in der Warteschlange"
-msgstr[1] "%d URLs in der Warteschlange"
+msgstr[0] "%d URL u redu za rad"
+msgstr[1] "%d URL u redu za rad"
 
 # @ broken-link-checker
-#: core/core.php:2509
+#: core/core.php:2394
 msgid "No URLs in the work queue."
-msgstr "Keine URLs in der Warteschlange."
+msgstr "Nema URL-a u redu za rad"
 
 # @ broken-link-checker
-#: core/core.php:2515
+#: core/core.php:2400
 msgctxt "for the \"Detected X unique URLs in Y links\" message"
 msgid "%d unique URL"
 msgid_plural "%d unique URLs"
-msgstr[0] "%d eindeutige URL"
-msgstr[1] "%d eindeutige URLs"
+msgstr[0] "%d jedinstveni URL"
+msgstr[1] "%d jedinstveni URL"
 
 # @ broken-link-checker
-#: core/core.php:2519
+#: core/core.php:2404
 msgctxt "for the \"Detected X unique URLs in Y links\" message"
 msgid "%d link"
 msgid_plural "%d links"
-msgstr[0] "%d Link"
-msgstr[1] "%d Links"
+msgstr[0] "%d link"
+msgstr[1] "% link% link%d link"
 
 # @ broken-link-checker
-#: core/core.php:2525
+#: core/core.php:2410
 msgid "Detected %1$s in %2$s and still searching..."
-msgstr "Endeckt %1$s in %2$s und suche immer noch ..."
+msgstr "Pronađeno  %1$s u %2$s i još tražimo..."
 
 # @ broken-link-checker
-#: core/core.php:2531
+#: core/core.php:2416
 msgid "Detected %1$s in %2$s."
-msgstr "Endeckt %1$s in %2$s."
+msgstr "Pronađeno  %1$s u %2$s."
 
 # @ broken-link-checker
-#: core/core.php:2538
+#: core/core.php:2423
 msgid "Searching your blog for links..."
-msgstr "Durchsucht Ihr Blog nach Links ..."
+msgstr "Pretraživanje vašeg blog-a u potrazi za linkovima..."
 
 # @ broken-link-checker
-#: core/core.php:2540
+#: core/core.php:2425
 msgid "No links detected."
-msgstr "Keine Links gefunden."
+msgstr "Nema pronađenih linkova."
 
 # @ broken-link-checker
-#: core/core.php:2566
+#: core/core.php:2451
 msgctxt "current load"
 msgid "Unknown"
-msgstr "Unbekannt"
+msgstr "Nepoznat"
 
 # @ broken-link-checker
-#: core/core.php:2630 core/core.php:2670 core/core.php:2710 core/core.php:2792
+#: core/core.php:2515 core/core.php:2555 core/core.php:2595 core/core.php:2677
 msgid "Oops, I can't find the link %d"
-msgstr "Hoppla, der Link %d konnte nicht gefunden werden!"
+msgstr "Ups, ne mogu da nađem link %d"
 
 # @ broken-link-checker
-#: core/core.php:2643 core/core.php:2680
+#: core/core.php:2528 core/core.php:2565
 msgid "Oops, couldn't modify the link!"
-msgstr "Hoppla, der Link konnte nicht geändert werden!"
+msgstr "Ups, link nije mogao da se izmeni!"
 
 # @ broken-link-checker
-#: core/core.php:2646 core/core.php:2683 core/core.php:2818
+#: core/core.php:2531 core/core.php:2568 core/core.php:2703
 msgid "Error : link_id not specified"
-msgstr "Fehler: Link ID nicht spezifiziert"
+msgstr "Greška: id_linka nije naveden"
 
 # @ broken-link-checker
-#: core/core.php:2701
+#: core/core.php:2586
 msgid "Error : link_id or new_url not specified"
-msgstr "Fehler: Link ID oder neue URL sind nicht spezifiziert"
+msgstr "Greška: id_linka ili novi_url nije naveden"
 
 # @ broken-link-checker
-#: core/core.php:2719
+#: core/core.php:2604
 msgid "Oops, the new URL is invalid!"
-msgstr "Hoppla, die neue URL funktioniert nicht!"
+msgstr "Ups, novi URL je nevažeči!"
 
 # @ broken-link-checker
-#: core/core.php:2734
+#: core/core.php:2619
 msgid "An unexpected error occurred!"
-msgstr "Ein unerwarteter Fehler ist aufgetreten!"
+msgstr "Pojavila se neočekivana greška!"
 
 # @ broken-link-checker
-#: core/core.php:2801
+#: core/core.php:2686
 msgid "An unexpected error occured!"
-msgstr "Ein unerwarteter Fehler ist aufgetreten!"
+msgstr "Pojavila se neočekivana greška!"
 
 # @ broken-link-checker
-#: core/core.php:2827
+#: core/core.php:2712
 msgid "You don't have sufficient privileges to access this information!"
-msgstr "Sie haben nicht genug Rechte, um diese Information zu sehen!"
+msgstr "Nemate odgovarajuće dozvole za pristup ovim informacijama!"
 
 # @ broken-link-checker
-#: core/core.php:2840
+#: core/core.php:2725
 msgid "Error : link ID not specified"
-msgstr "Fehler: Link ID nicht spezifiziert"
+msgstr "Greška: ID linka nije naveden"
 
 # @ broken-link-checker
-#: core/core.php:2854
+#: core/core.php:2739
 msgid "Failed to load link details (%s)"
-msgstr "Laden der Link Details (%s) schlug fehl"
+msgstr "Detalji linka nisu učitani (%s)"
 
 # @ broken-link-checker
+#. #-#-#-#-#  plugin.pot (Broken Link Checker 1.8.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: core/core.php:2908
+#: core/core.php:2793
 msgid "Broken Link Checker"
 msgstr "Broken Link Checker"
 
 # @ broken-link-checker
-#: core/core.php:2928
+#: core/core.php:2813
 msgid "PHP version"
-msgstr "PHP Version"
+msgstr "PHP verzija"
 
 # @ broken-link-checker
-#: core/core.php:2934
+#: core/core.php:2819
 msgid "MySQL version"
-msgstr "MySQL Version"
+msgstr "MySQL verzija"
 
 # @ broken-link-checker
-#: core/core.php:2947
+#: core/core.php:2832
 msgid ""
 "You have an old version of CURL. Redirect detection may not work properly."
 msgstr ""
-"Sie haben eine veraltete Version von CURL. Erkennung von Umleitungen "
-"funktioniert eventuell nicht."
+"Imate staru verziju CURL-a. Detekcija preusmeravanja  možda neće ispravno "
+"raditi."
 
 # @ broken-link-checker
-#: core/core.php:2959 core/core.php:2975 core/core.php:2980
+#: core/core.php:2844 core/core.php:2860 core/core.php:2865
 msgid "Not installed"
-msgstr "Nicht installiert"
+msgstr "Nije instalirana"
 
 # @ broken-link-checker
-#: core/core.php:2962
+#: core/core.php:2847
 msgid "CURL version"
-msgstr "CURL Version"
+msgstr "CURL verzija"
 
 # @ broken-link-checker
-#: core/core.php:2968
+#: core/core.php:2853
 msgid "Installed"
-msgstr "Installiert"
+msgstr "Instalirana"
 
 # @ broken-link-checker
-#: core/core.php:2981
+#: core/core.php:2866
 msgid "You must have either CURL or Snoopy installed for the plugin to work!"
-msgstr ""
-"Es muss entweder CURL oder Snoppy installiert sein, damit das Plugin "
-"funktioniert!"
+msgstr "Morate imati instaliran CURL ili Snoopy da bi ovaj plugin radio!"
 
 # @ broken-link-checker
-#: core/core.php:2992
+#: core/core.php:2877
 msgid "On"
-msgstr "An"
+msgstr "Uključen"
 
 # @ broken-link-checker
-#: core/core.php:2993
+#: core/core.php:2878
 msgid "Redirects may be detected as broken links when safe_mode is on."
 msgstr ""
-"Umleitungen werden eventuell als fehlerhafte Links erkannt, falls safe_mode "
-"aktiviert ist."
+"Preusmeravanja mogu biti detektovana kao prekinuti linkovi kad je uključen "
+"‘safe_mode’."
 
 # @ broken-link-checker
-#: core/core.php:2998 core/core.php:3012
+#: core/core.php:2883 core/core.php:2897
 msgid "Off"
-msgstr "Aus"
+msgstr "Isključen"
 
 # @ broken-link-checker
-#: core/core.php:3006
+#: core/core.php:2891
 msgid "On ( %s )"
-msgstr "An (%s)"
+msgstr "Uključen (%s)"
 
 # @ broken-link-checker
-#: core/core.php:3007
+#: core/core.php:2892
 msgid "Redirects may be detected as broken links when open_basedir is on."
 msgstr ""
-"Umleitungen werden eventuell als fehlerhafte Links erkannt, falls "
-"open_basedir aktiviert ist."
+"Preusmeravanja mogu biti detektovana kao prekinuti linkovi kad je uključena "
+"opcija ‘open_basedir’. "
 
 # @ broken-link-checker
-#: core/core.php:3036
+#: core/core.php:2921
 msgid ""
 "If this value is zero even after several page reloads you have probably "
 "encountered a bug."
 msgstr ""
-"Wenn dieser Wert nach mehreren geladenen Seiten Null ist, ist wahrscheinlich "
-"ein Fehler aufgetreten."
+"Ako je ova vrednost podešena na nulu, posle nekoliko ponovnih učitavanja "
+"stranice, verovatno ste naišli na grešku. "
 
 # @ broken-link-checker
-#: core/core.php:3159 core/core.php:3278
+#: core/core.php:3044 core/core.php:3159
 msgid "[%s] Broken links detected"
-msgstr "[%s] Fehlerhafte Links entdeckt"
+msgstr "Otkriveno [%s] prekinutih linkova"
 
 # @ broken-link-checker
-#: core/core.php:3164
+#: core/core.php:3049
 msgid "Broken Link Checker has detected %d new broken link on your site."
 msgid_plural ""
 "Broken Link Checker has detected %d new broken links on your site."
 msgstr[0] ""
-"Broken Link Checker hat %d fehlerhaften Link auf Ihrer Webseite entdeckt."
+"Broken Link Checker otkrio je %d novi prekinuti link na vašem site-u"
 msgstr[1] ""
-"Broken Link Checker hat %d fehlerhafte Links auf Ihrer Webseite entdeckt."
+"Broken Link Checker otkrio je %d novi prekinuti link na vašem site-u"
 
 # @ broken-link-checker
-#: core/core.php:3195
+#: core/core.php:3080
 msgid "Here's a list of the first %d broken links:"
 msgid_plural "Here's a list of the first %d broken links:"
-msgstr[0] "Hier ist eine Liste der ersten %d fehlerhaften Links:"
-msgstr[1] "Hier ist eine Liste der ersten %d fehlerhaften Links:"
+msgstr[0] "Ovde je spisak prvih %d prekinutih linkova"
+msgstr[1] "Ovde je spisak prvih %d prekinutih linkova"
 
 # @ broken-link-checker
-#: core/core.php:3204
+#: core/core.php:3089
 msgid "Here's a list of the new broken links: "
-msgstr "Hier ist eine Liste von neuen fehlerhaften Links:"
+msgstr "Ovde je spisak novih prekinutih linkova"
 
 # @ broken-link-checker
-#: core/core.php:3213
+#: core/core.php:3098
 msgid "Link text : %s"
-msgstr "Linktext: %s"
+msgstr "Teks linka: %s"
 
 # @ broken-link-checker
-#: core/core.php:3214
+#: core/core.php:3099
 msgid "Link URL : <a href=\"%s\">%s</a>"
-msgstr "Link URL: <a href=\"%s\">%s</a>"
+msgstr "URL linka: <a href=\"%s\">%s</a>"
 
 # @ broken-link-checker
-#: core/core.php:3215
+#: core/core.php:3100
 msgid "Source : %s"
-msgstr "Quelle: %s"
+msgstr "Izvor: %s"
 
 # @ brokenk-link-checker
-#: core/core.php:3229
+#: core/core.php:3114
 msgid "You can see all broken links here:"
-msgstr "Hier sehen Sie alle fehlerhaften Links:"
+msgstr "Ovde možete videti sve prekinute linkove"
 
 # @ broken-link-checker
-#: core/core.php:3283
+#: core/core.php:3164
 msgid "Broken Link Checker has detected %d new broken link in your posts."
 msgid_plural ""
 "Broken Link Checker has detected %d new broken links in your posts."
-msgstr[0] ""
-"Broken Link Checker hat %d fehlerhafter Link in einem Beitrag entdeckt."
-msgstr[1] "Broken Link Checker hat %d fehlerhafte Links in Beiträgen entdeckt."
+msgstr[0] "Broken Link Checker otkrio je %d  prekinutih linkova u vašem post-u"
+msgstr[1] "Broken Link Checker otkrio je %d  prekinutih linkova u vašem post-u"
 
 # @ default
-#: core/init.php:249
+#: core/init.php:242
 msgid "Once Weekly"
-msgstr "Einmal wöchentlich"
+msgstr "Jednom nedeljno"
 
 # @ default
-#: core/init.php:255
+#: core/init.php:248
 msgid "Twice a Month"
-msgstr "Zweimal im Monat"
+msgstr "Dva puta mesečno"
 
 # @ broken-link-checker
-#: core/init.php:331
+#: core/init.php:324
 msgid ""
 "Broken Link Checker installation failed. Try deactivating and then "
 "reactivating the plugin."
 msgstr ""
-"Broken Link Checker Installation fehlgeschlagen. Deaktivieren Sie das Plugin "
-"und aktivieren es anschliessend wieder."
-
-#: core/init.php:335
-msgid ""
-"Please activate the plugin separately on each site. Network activation is "
-"not supported."
-msgstr ""
-"Bitte aktivieren Sie das Plugin auf jeder Seite. Netzwerkaktivierung wird "
-"nicht unterstützt."
+"Broken Link Checker nije instaliran. Pokušajte da deaktivirate i da ponovo "
+"aktivirate plugin."
 
 # @ broken-link-checker
 #: includes/admin/db-upgrade.php:95
 msgid "Failed to delete old DB tables. Database error : %s"
-msgstr "Konnte alte Datenbantabellen nicht löschen. Datenbank Fehler: %s"
+msgstr ""
+"Neuspešno brisanje tabela stare baze podataka. Greška baze podataka: %s"
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:62 includes/admin/links-page-js.php:525
+#: includes/admin/links-page-js.php:55 includes/admin/links-page-js.php:517
 msgid "Wait..."
-msgstr "Warte ..."
+msgstr "Sačekajte..."
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:107 includes/admin/table-printer.php:663
+#: includes/admin/links-page-js.php:100 includes/admin/table-printer.php:658
 msgid "Not broken"
-msgstr "Nicht fehlerhaft"
+msgstr "Nije prekinut"
 
-#: includes/admin/links-page-js.php:243
+#: includes/admin/links-page-js.php:235
 msgctxt "link text"
 msgid "(None)"
-msgstr "(Keine)"
+msgstr "(Nijedan)"
 
-#: includes/admin/links-page-js.php:244
+#: includes/admin/links-page-js.php:236
 msgctxt "link text"
 msgid "(Multiple links)"
-msgstr "(Mehrere Links)"
+msgstr "(Višestruki linkovi)"
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:302
+#: includes/admin/links-page-js.php:294
 msgctxt "link suggestions"
 msgid "Searching..."
-msgstr "Suche ..."
+msgstr "Tražim..."
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:303
+#: includes/admin/links-page-js.php:295
 msgctxt "link suggestions"
 msgid "No suggestions available."
-msgstr "Kein Vorschlag verfügbar."
+msgstr "Nema raspoloživih predloga."
 
-#: includes/admin/links-page-js.php:304
+#: includes/admin/links-page-js.php:296
 msgctxt "link suggestions"
 msgid "Archived page from %s (via the Wayback Machine)"
-msgstr "Archivierte Seite von %s (via Wayback Machine)"
+msgstr "Stranica arhivirana %s (pomoću Wayback Machine)."
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:387
+#: includes/admin/links-page-js.php:379
 msgid "%d instances of the link were successfully modified."
-msgstr "%d Instanzen von diesem Link wurden erfolgreich geändert."
+msgstr "%d primeri linka uspešno su izmenjeni."
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:393
+#: includes/admin/links-page-js.php:385
 msgid ""
 "However, %d instances couldn't be edited and still point to the old URL."
-msgstr ""
-"Allerdings, %d Instanzen konnten nicht bearbeitet werden und verweisen zudem "
-"noch auf die alte URL."
+msgstr "Ipak, %d primeri nisu mogli biti izmenjeni i još pokazuju stari URL."
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:399
+#: includes/admin/links-page-js.php:391
 msgid "The link could not be modified."
-msgstr "Der Link konnte nicht geändert werden."
+msgstr "Link se nije mogao modifikovati."
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:402
+#: includes/admin/links-page-js.php:394
 msgid "The following error(s) occurred :"
-msgstr "Folgende Fehler sind aufgetreten:"
+msgstr "Pojavila se sledeća greška:"
 
-#: includes/admin/links-page-js.php:488
+#: includes/admin/links-page-js.php:480
 msgid "Error: Link URL must not be empty."
-msgstr "Fehler: Die Link URL darf nicht leer sein."
+msgstr "Greška: URL linka ne sme biti prazan."
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:563
+#: includes/admin/links-page-js.php:555
 msgid "%d instances of the link were successfully unlinked."
-msgstr "%d Instanzen von diesem Link wurden erfolgreich gelöscht."
+msgstr "%d primeri linka uspešno su odvojeni"
+
+# @ broken-link-checker
+#: includes/admin/links-page-js.php:561
+msgid "However, %d instances couldn't be removed."
+msgstr "Međutim, %d  primeri nisu mogli biti uklonjeni."
+
+# @ broken-link-checker
+#: includes/admin/links-page-js.php:566
+msgid "The plugin failed to remove the link."
+msgstr "Plugin nije mogao da ukloni link."
 
 # @ broken-link-checker
 #: includes/admin/links-page-js.php:569
-msgid "However, %d instances couldn't be removed."
-msgstr "Allerdings, %d Instanzen konnten nicht entfernt werden."
-
-# @ broken-link-checker
-#: includes/admin/links-page-js.php:574
-msgid "The plugin failed to remove the link."
-msgstr "Das Plugin konnte den Link nicht entfernen."
-
-# @ broken-link-checker
-#: includes/admin/links-page-js.php:577
 msgid "The following error(s) occured :"
-msgstr "Folgende Fehler sind aufgetreten:"
+msgstr "Pojavila se sledeća greška:"
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:585 includes/admin/table-printer.php:281
-#: includes/admin/table-printer.php:657
+#: includes/admin/links-page-js.php:577 includes/admin/table-printer.php:276
+#: includes/admin/table-printer.php:652
 msgid "Unlink"
-msgstr "Link aufheben"
+msgstr "Odvoji"
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:629
+#: includes/admin/links-page-js.php:621
 msgid "Enter a name for the new custom filter"
-msgstr "Gib einen Namen für den neuen benutzerdefinierten Filter ein"
+msgstr "Unesi ime za novi prilagođeni filter"
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:641
+#: includes/admin/links-page-js.php:632
 msgid ""
 "You are about to delete the current filter.\n"
 "'Cancel' to stop, 'OK' to delete"
 msgstr ""
-"Möchten Sie den aktuellen Filter löschen '%s'\n"
-" 'Abbrechen' um abzubrechen, 'OK' um zu löschen."
+"Pripremate se da obrišete postojeći filter. Kliknite na .\n"
+"'Cancel' da biste zaustavili aktivnost, 'OK' da biste ga obrisali."
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:665
+#: includes/admin/links-page-js.php:652
 msgid ""
 "Are you sure you want to delete all posts, bookmarks or other items that "
 "contain any of the selected links? This action can't be undone.\n"
 "'Cancel' to stop, 'OK' to delete"
 msgstr ""
-"Sind Sie sicher, dass Sie alle Beiträge, Lesezeichen oder andere Elemente "
-"die in den ausgewählten Links enthalten sind, löschen möchten? Diese Aktion "
-"kann nicht rückgängig gemacht werden.\n"
-" 'Abbrechen' um abzubrechen, 'OK' um zu löschen."
+"Jeste li sigurni da želite da obrišete sve post-ove, oznake i druge stavke "
+"koje sadrže odabrane linkove? Ova aktivnost ne može se poništiti. Kliknite "
+"na .\n"
+"'Cancel' da biste zaustavili aktivnost, 'OK' da biste ih obrisali."
 
 # @ broken-link-checker
-#: includes/admin/links-page-js.php:679
+#: includes/admin/links-page-js.php:662
 msgid ""
 "Are you sure you want to remove the selected links? This action can't be "
 "undone.\n"
 "'Cancel' to stop, 'OK' to remove"
 msgstr ""
-"Sind Sie sicher, dass Sie die ausgewählten Links entfernen möchten? Diese "
-"Aktion kann nicht rückgängig gemacht werden.\n"
-" 'Abbrechen' um abzubrechen, 'OK' um zu entfernen."
+"Jeste li sigurni da želite da uklonite odabrane linkove? Ova aktivnost ne "
+"može se poništiti. Kliknite na .\n"
+"'Cancel' da biste zaustavili aktivnost, 'OK' da biste uklonili linkove."
 
-#: includes/admin/links-page-js.php:791
+#: includes/admin/links-page-js.php:771
 msgid "Enter a search string first."
-msgstr "Geben Sie zuerst einen Suchbegriff ein."
+msgstr "Prvo unesite niz za pretragu"
 
-#: includes/admin/links-page-js.php:798
+#: includes/admin/links-page-js.php:778
 msgid "Select one or more links to edit."
-msgstr "Wählen Sie einen oder mehrere Links zum bearbeiten."
+msgstr "Odaberite jedan link ili više linkova za uređivanje."
 
 # @ broken-link-checker
 #: includes/admin/options-page-js.php:54
 msgid "Hide debug info"
-msgstr "Debug Info verbergen"
+msgstr "Sakrij informacije o otklanjanju greške"
 
 # @ broken-link-checker
 #: includes/admin/search-form.php:16
 msgid "Save This Search As a Filter"
-msgstr "Diese Suche als Filter speichern"
+msgstr "Saćuvaj ovu pretragu kao filter"
 
 # @ broken-link-checker
 #: includes/admin/search-form.php:26
 msgid "Delete This Filter"
-msgstr "Diesen Filter löschen"
+msgstr "Obriši ovaj filter"
 
 # @ broken-link-checker
 #: includes/admin/search-form.php:32 includes/link-query.php:65
 msgid "Search"
-msgstr "Suche"
+msgstr "Traži"
 
 # @ broken-link-checker
 #: includes/admin/search-form.php:42
 msgid "Link text"
-msgstr "Linktext"
+msgstr "Tekst linka"
 
 # @ broken-link-checker
-#: includes/admin/search-form.php:45 includes/admin/table-printer.php:208
+#: includes/admin/search-form.php:45 includes/admin/table-printer.php:205
 msgid "URL"
 msgstr "URL"
 
 # @ broken-link-checker
-#: includes/admin/search-form.php:48 includes/admin/table-printer.php:527
+#: includes/admin/search-form.php:48 includes/admin/table-printer.php:522
 msgid "HTTP code"
-msgstr "HTTP Code"
+msgstr "HTTP kod"
 
 # @ broken-link-checker
 #: includes/admin/search-form.php:51
 msgid "Link status"
-msgstr "Link Status"
+msgstr "Status linka"
 
 # @ broken-link-checker
 #: includes/admin/search-form.php:68 includes/admin/search-form.php:85
 msgid "Link type"
-msgstr "Link Typ"
+msgstr "Vrsta linka"
 
 # @ broken-link-checker
 #: includes/admin/search-form.php:70
 msgid "Any"
-msgstr "Beliebig"
+msgstr "Bilo koja"
 
 # @ broken-link-checker
 #: includes/admin/search-form.php:74
 msgid "Links used in"
-msgstr "Links verwendet in"
+msgstr "Linkovi upotrebljeni u"
 
 # @ broken-link-checker
 #: includes/admin/search-form.php:112
 msgid "Search Links"
-msgstr "Suche Links"
+msgstr "Pretraži linkove"
 
 # @ broken-link-checker
-#: includes/admin/search-form.php:113 includes/admin/table-printer.php:357
-#: includes/admin/table-printer.php:687 includes/admin/table-printer.php:812
+#: includes/admin/search-form.php:113 includes/admin/table-printer.php:352
+#: includes/admin/table-printer.php:682 includes/admin/table-printer.php:807
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Pretraži linkove"
 
 #: includes/admin/sidebar.php:24
 msgid "More plugins by Janis Elsts"
-msgstr "Weitere Plugins von Janis Elsts"
+msgstr "Više plugin-a od Janis Elsts"
 
 #: includes/admin/sidebar.php:47
 msgid "Donate $10, $20 or $50!"
-msgstr "Spenden Sie $10, $20 oder $50!"
+msgstr "Donirajte $10, $20 ili $50!"
 
 #: includes/admin/sidebar.php:50
 msgid ""
 "If you like this plugin, please donate to support development and "
 "maintenance!"
 msgstr ""
-"Mögen Sie dieses Plugin, dann helfen Sie uns mit einer Spende für die "
-"Entwicklung und Wartung."
+"Ako vam se dopada ovaj plugin, molimo vas da donirate novac da biste "
+"podržali razvoj i održavanje!"
 
 #: includes/admin/sidebar.php:68
 msgid "Return to WordPress Dashboard"
-msgstr "Zurück zum Wordpress Dashboard"
+msgstr "Vrati se na WordPress komandnu tablu"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:185
+#: includes/admin/table-printer.php:182
 msgid "Compact View"
-msgstr "Kompaktansicht"
+msgstr "Kompaktan pregled"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:186
+#: includes/admin/table-printer.php:183
 msgid "Detailed View"
-msgstr "Detailansicht"
+msgstr "Detaljan pregled"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:215
+#: includes/admin/table-printer.php:212
 msgid "Source"
-msgstr "Quelle"
+msgstr "Izvor"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:221
+#: includes/admin/table-printer.php:218
 msgid "Link Text"
-msgstr "Linktext"
+msgstr "Tekst linka"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:228
+#: includes/admin/table-printer.php:223
 msgid "Redirect URL"
-msgstr "URL umleiten"
+msgstr "Preusmeri URL"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:276
+#: includes/admin/table-printer.php:271
 msgid "Bulk Actions"
-msgstr "Massenänderung"
+msgstr "Grupne akcije"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:277 includes/admin/table-printer.php:654
+#: includes/admin/table-printer.php:272 includes/admin/table-printer.php:649
 msgid "Edit URL"
-msgstr "Bearbeite URL"
+msgstr "Uredi URL"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:278
+#: includes/admin/table-printer.php:273
 msgid "Recheck"
-msgstr "Erneut überprüfen"
+msgstr "Ponovo proveri"
+
+# @ broken-link-checker
+#: includes/admin/table-printer.php:274
+msgid "Fix redirects"
+msgstr "Popravi preusmeravanja"
+
+# @ broken-link-checker
+#: includes/admin/table-printer.php:275
+msgid "Mark as not broken"
+msgstr "Označi kao neprekinut"
 
 # @ broken-link-checker
 #: includes/admin/table-printer.php:279
-msgid "Fix redirects"
-msgstr "Feste Umleitungen"
-
-# @ broken-link-checker
-#: includes/admin/table-printer.php:280
-msgid "Mark as not broken"
-msgstr "Als nicht fehlerhaft markieren"
-
-# @ broken-link-checker
-#: includes/admin/table-printer.php:284
 msgid "Move sources to Trash"
-msgstr "Verschiebe Quelle in den Papierkorb"
+msgstr "Premesti izvore u korpu za otpatke"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:286
+#: includes/admin/table-printer.php:281
 msgid "Delete sources"
-msgstr "Quellen löschen"
+msgstr "Obriši izvore"
 
 # @ default
-#: includes/admin/table-printer.php:301
+#: includes/admin/table-printer.php:296
 msgid "&laquo;"
 msgstr "&laquo;"
 
 # @ default
-#: includes/admin/table-printer.php:302
+#: includes/admin/table-printer.php:297
 msgid "&raquo;"
 msgstr "&raquo;"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:310
+#: includes/admin/table-printer.php:305
 msgid "Displaying %s&#8211;%s of <span class=\"current-link-count\">%s</span>"
-msgstr "Anzeigen %s&#8211;%s von <span class=\"current-link-count\">%s</span>"
+msgstr "Prikazivanje %s&#8211;%s <span class=\"current-link-count\">%s</span>"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:333
+#: includes/admin/table-printer.php:328
 msgid "Bulk Edit URLs"
-msgstr "Mehrere URLs bearbeiten"
+msgstr "Grupno uređivanje URL-a"
 
-#: includes/admin/table-printer.php:335
+#: includes/admin/table-printer.php:330
 msgid "Find"
-msgstr "Finden"
+msgstr "Nađi"
 
-#: includes/admin/table-printer.php:339
+#: includes/admin/table-printer.php:334
 msgid "Replace with"
-msgstr "Ersetzen mit"
+msgstr "Zameni sa"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:347
+#: includes/admin/table-printer.php:342
 msgid "Case sensitive"
-msgstr "Gross- und Kleinschreibung"
+msgstr "Velika i mala slova"
 
-#: includes/admin/table-printer.php:351
+#: includes/admin/table-printer.php:346
 msgid "Regular expression"
-msgstr "Regulärer Ausdruck"
+msgstr "Regularan izraz"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:359 includes/admin/table-printer.php:813
+#: includes/admin/table-printer.php:354 includes/admin/table-printer.php:808
 msgid "Update"
-msgstr "Aktualisieren"
+msgstr "Ažuriraj"
+
+# @ broken-link-checker
+#: includes/admin/table-printer.php:507
+msgid "Post published on"
+msgstr "Post objavljen na"
 
 # @ broken-link-checker
 #: includes/admin/table-printer.php:512
-msgid "Post published on"
-msgstr "Beitrag publiziert am"
-
-# @ broken-link-checker
-#: includes/admin/table-printer.php:517
 msgid "Link last checked"
-msgstr "Link zuletzt geprüft"
+msgstr "Link poslednji put proveren"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:521
+#: includes/admin/table-printer.php:516
 msgid "Never"
-msgstr "Nie"
+msgstr "Nikad"
+
+# @ broken-link-checker
+#: includes/admin/table-printer.php:527
+msgid "Response time"
+msgstr "Vreme odgovora"
+
+# @ broken-link-checker
+#: includes/admin/table-printer.php:529
+msgid "%2.3f seconds"
+msgstr "%2.3f sekunde"
 
 # @ broken-link-checker
 #: includes/admin/table-printer.php:532
-msgid "Response time"
-msgstr "Reaktionszeit"
-
-# @ broken-link-checker
-#: includes/admin/table-printer.php:534
-msgid "%2.3f seconds"
-msgstr "%2.3f Sekunden"
+msgid "Final URL"
+msgstr "Konačni url"
 
 # @ broken-link-checker
 #: includes/admin/table-printer.php:537
-msgid "Final URL"
-msgstr "Endgültige URL"
+msgid "Redirect count"
+msgstr "Preusmeri obračun"
 
 # @ broken-link-checker
 #: includes/admin/table-printer.php:542
-msgid "Redirect count"
-msgstr "Weiterleitung Anzahl"
-
-# @ broken-link-checker
-#: includes/admin/table-printer.php:547
 msgid "Instance count"
-msgstr "Instanz Anzahl"
+msgstr "Navedi obračun"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:556
+#: includes/admin/table-printer.php:551
 msgid "This link has failed %d time."
 msgid_plural "This link has failed %d times."
-msgstr[0] "Dieser Link schlug %d mal fehl."
-msgstr[1] "Dieser Link schlug %d mal fehl."
+msgstr[0] "Ovaj link je %d put neuspešan."
+msgstr[1] "Ovaj link je %d put neuspešan."
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:564
+#: includes/admin/table-printer.php:559
 msgid "This link has been broken for %s."
-msgstr "Dieser Links ist fehlerhaft seit %s."
+msgstr "Ovaj link je prekinut %s."
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:575
+#: includes/admin/table-printer.php:570
 msgid "Log"
-msgstr "Log"
+msgstr "Prijavite"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:600
+#: includes/admin/table-printer.php:595
 msgid "Show more info about this link"
-msgstr "Mehr Informationen über diesen Link anzeigen"
+msgstr "Prikažite više podataka o ovom linku"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:618
+#: includes/admin/table-printer.php:613
 msgctxt "checked how long ago"
 msgid "Checked"
-msgstr "Geprüft"
+msgstr "Proveren"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:634
+#: includes/admin/table-printer.php:629
 msgid "Broken for"
-msgstr "Fehlerhaft für"
+msgstr "Prekinut već"
 
 # @ default
-#: includes/admin/table-printer.php:654
+#: includes/admin/table-printer.php:649
 msgid "Edit this link"
-msgstr "Diesen Link bearbeiten"
+msgstr "Uredi ovaj link"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:656
+#: includes/admin/table-printer.php:651
 msgid "Remove this link from all posts"
-msgstr "Löschen Sie diesen Link von allen Beiträgen"
+msgstr "Ukloni link iz svih post-ova"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:662
+#: includes/admin/table-printer.php:657
 msgid "Remove this link from the list of broken links and mark it as valid"
-msgstr ""
-"Löschen Sie diesen Link von der fehlerhaften Linkliste und markieren ihn als "
-"gültig"
+msgstr "Ukloni ovaj link sa spiska prekinutih linkova i označi ga kao važeći"
 
-#: includes/admin/table-printer.php:670
+#: includes/admin/table-printer.php:665
 msgid "Hide this link and do not report it again unless its status changes"
 msgstr ""
-"Verstecken Sie diesen Link und melden ihn nicht wieder, auch wenn sein "
-"Status ändert"
+"Sakrij ovaj link i ne šalji obaveštenja, osim ako mu se ne promeni status"
+
+#: includes/admin/table-printer.php:666
+msgid "Dismiss"
+msgstr "Odbaci"
 
 #: includes/admin/table-printer.php:671
-msgid "Dismiss"
-msgstr "Ausblenden"
-
-#: includes/admin/table-printer.php:676
 msgid "Undismiss this link"
-msgstr "Link wieder einblenden"
+msgstr "Poništi odbacivanje linka"
 
-#: includes/admin/table-printer.php:677
+#: includes/admin/table-printer.php:672
 msgid "Undismiss"
-msgstr "Einblenden"
+msgstr "Poništi odbacivanje"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:688
+#: includes/admin/table-printer.php:683
 msgid "Update URL"
-msgstr "Aktualisiere URL"
+msgstr "Ažuriraj URL"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:715
+#: includes/admin/table-printer.php:710
 msgid "[An orphaned link! This is a bug.]"
-msgstr "[Ein verwaister Link! Dies ist ein Bug.]"
+msgstr "[Napušteni link.To je greška.]"
 
 # @ broken-link-checker
-#: includes/admin/table-printer.php:792
+#: includes/admin/table-printer.php:787
 msgctxt "inline editor title"
 msgid "Edit Link"
-msgstr "Link bearbeiten"
+msgstr "Uredi link"
+
+# @ broken-link-checker
+#: includes/admin/table-printer.php:790
+msgctxt "inline link editor"
+msgid "Text"
+msgstr "Tekst"
 
 # @ broken-link-checker
 #: includes/admin/table-printer.php:795
 msgctxt "inline link editor"
-msgid "Text"
-msgstr "Text"
-
-# @ broken-link-checker
-#: includes/admin/table-printer.php:800
-msgctxt "inline link editor"
 msgid "URL"
 msgstr "URL"
 
-#: includes/admin/table-printer.php:805
+#: includes/admin/table-printer.php:800
 msgctxt "inline link editor"
 msgid "Suggestions"
-msgstr "Vorschläge"
+msgstr "Predlozi"
 
-#: includes/admin/table-printer.php:825
+#: includes/admin/table-printer.php:820
 msgid "Use this URL"
-msgstr "URL verwenden"
+msgstr "Upotrebi ovaj URL"
 
 # @ default
-#: includes/any-post.php:398 modules/containers/blogroll.php:46
+#: includes/any-post.php:397 modules/containers/blogroll.php:46
 #: modules/containers/comment.php:153 modules/containers/custom_field.php:207
 msgid "Edit"
-msgstr "Bearbeiten"
+msgstr "Uredi"
 
 # @ default
-#: includes/any-post.php:406 modules/containers/custom_field.php:213
+#: includes/any-post.php:405 modules/containers/custom_field.php:213
 msgid "Move this item to the Trash"
-msgstr "Element in den Papierkorb verschieben"
+msgstr "Prebaci jedinicu u korpu za otpatke"
 
 # @ default
-#: includes/any-post.php:408 modules/containers/custom_field.php:215
+#: includes/any-post.php:407 modules/containers/custom_field.php:215
 msgid "Trash"
-msgstr "Papierkorb"
+msgstr "Korpa za otpatke"
 
 # @ default
-#: includes/any-post.php:413 modules/containers/custom_field.php:220
+#: includes/any-post.php:412 modules/containers/custom_field.php:220
 msgid "Delete this item permanently"
-msgstr "Element endgültig löschen"
+msgstr "Trajno obrišite ovu jedinicu"
 
 # @ default
-#: includes/any-post.php:415 modules/containers/blogroll.php:47
+#: includes/any-post.php:414 modules/containers/blogroll.php:47
 #: modules/containers/custom_field.php:222
 msgid "Delete"
-msgstr "Löschen"
+msgstr "Obriši"
+
+# @ default
+#: includes/any-post.php:427
+msgid "Preview &#8220;%s&#8221;"
+msgstr "Pregledaj &#8220;%s&#8221;"
 
 # @ default
 #: includes/any-post.php:428
-msgid "Preview &#8220;%s&#8221;"
-msgstr "Vorschau &#8220;%s&#8221;"
-
-# @ default
-#: includes/any-post.php:429
 msgid "Preview"
-msgstr "Vorschau"
+msgstr "Pregledaj"
 
 # @ default
-#: includes/any-post.php:436
+#: includes/any-post.php:435
 msgid "View &#8220;%s&#8221;"
-msgstr "Ansehen &#8220;%s&#8221;"
+msgstr "Vidi &#8220;%s&#8221;"
 
 # @ default
-#: includes/any-post.php:437 modules/containers/comment.php:166
+#: includes/any-post.php:436 modules/containers/comment.php:166
 #: modules/containers/custom_field.php:227
 msgid "View"
-msgstr "Ansehen"
+msgstr "Izgled"
 
 # @ default
-#: includes/any-post.php:456 modules/containers/custom_field.php:207
+#: includes/any-post.php:455 modules/containers/custom_field.php:207
 msgid "Edit this item"
-msgstr "Bearbeiten Sie dieses Element"
+msgstr "Uredi ovu jedinicu"
 
 # @ broken-link-checker
-#: includes/any-post.php:520 modules/containers/blogroll.php:83
+#: includes/any-post.php:519 modules/containers/blogroll.php:83
 #: modules/containers/comment.php:43
 msgid "Nothing to update"
-msgstr "Nichts zu aktualisieren"
+msgstr "Nema ničega za ažuriranje"
 
 # @ broken-link-checker
-#: includes/any-post.php:530
+#: includes/any-post.php:529
 msgid "Updating post %d failed"
-msgstr "Beitrag Aktualisierung %d fehlgeschlagen"
+msgstr "Neuspešno ažuriranje %d  post-a"
 
 # @ broken-link-checker
-#: includes/any-post.php:567 modules/containers/custom_field.php:294
+#: includes/any-post.php:566 modules/containers/custom_field.php:294
 msgid "Failed to delete post \"%s\" (%d)"
-msgstr "Löschen des Beitrages \"%s\" (%d) schlug fehl"
+msgstr "Neuspešno brisanje post-a  \"%s\" (%d)"
 
 # @ broken-link-checker
-#: includes/any-post.php:586 modules/containers/custom_field.php:313
+#: includes/any-post.php:585 modules/containers/custom_field.php:313
 msgid ""
 "Can't move post \"%s\" (%d) to the trash because the trash feature is "
 "disabled"
 msgstr ""
-"Der Beitrag \"%s\" (%d) kann nicht in den Papierkorb verschoben werden, weil "
-"diese Funktion deaktiviert ist"
+"Post \"%s\" (%d) ne može se prebaciti u korpu za otpatke jer je funkcija "
+"korpe za otpatke deaktivirana."
 
 # @ broken-link-checker
-#: includes/any-post.php:606 modules/containers/custom_field.php:332
+#: includes/any-post.php:605 modules/containers/custom_field.php:332
 msgid "Failed to move post \"%s\" (%d) to the trash"
-msgstr "Verschieben des Beitrages \"%s\" (%d) in den Papierkorb schlug fehl"
+msgstr "Neuspelo premeštanje post-a \"%s\" (%d) u kantu za otpatke"
 
 # @ broken-link-checker
-#: includes/any-post.php:714
+#: includes/any-post.php:713
 msgid "%d post deleted."
 msgid_plural "%d posts deleted."
-msgstr[0] "%d Artikel gelöscht."
-msgstr[1] "%d Artikel gelöscht."
+msgstr[0] "%d post obrisan"
+msgstr[1] "%d post obrisan"
 
 # @ broken-link-checker
-#: includes/any-post.php:716
+#: includes/any-post.php:715
 msgid "%d page deleted."
 msgid_plural "%d pages deleted."
-msgstr[0] "%d Seite gelöscht."
-msgstr[1] "%d Seiten gelöscht."
+msgstr[0] "stranica %d obrisana"
+msgstr[1] "stranica %d obrisana"
 
 # @ broken-link-checker
-#: includes/any-post.php:718
+#: includes/any-post.php:717
 msgid "%d \"%s\" deleted."
 msgid_plural "%d \"%s\" deleted."
-msgstr[0] "%d \"%s\" gelöscht."
-msgstr[1] "%d \"%s\" gelöscht."
+msgstr[0] "%d \"%s\" obrisani"
+msgstr[1] "%d \"%s\" obrisani"
 
 # @ broken-link-checker
-#: includes/any-post.php:737
+#: includes/any-post.php:736
 msgid "%d post moved to the Trash."
 msgid_plural "%d posts moved to the Trash."
-msgstr[0] "%d Artikel in den Papierkorb verschoben."
-msgstr[1] "%d Artikel in den Papierkorb verschoben."
+msgstr[0] "%d post premešten u korpu za otpatke"
+msgstr[1] "%d post premešten u korpu za otpatke"
 
 # @ broken-link-checker
-#: includes/any-post.php:739
+#: includes/any-post.php:738
 msgid "%d page moved to the Trash."
 msgid_plural "%d pages moved to the Trash."
-msgstr[0] "%d Seite in den Papierkorb verschoben."
-msgstr[1] "%d Seiten in den Papierkorb verschoben."
+msgstr[0] "%d stranica premeštena u korpu za otpatke"
+msgstr[1] "%d stranica premeštena u korpu za otpatke"
 
 # @ broken-link-checker
-#: includes/any-post.php:741
+#: includes/any-post.php:740
 msgid "%d \"%s\" moved to the Trash."
 msgid_plural "%d \"%s\" moved to the Trash."
-msgstr[0] "%d \"%s\" in den Papierkorb verschoben."
-msgstr[1] "%d \"%s\" in den Papierkorb verschoben."
+msgstr[0] "%d \"%s\" premešten u korpu za otpatke"
+msgstr[1] "%d \"%s\" premešten u korpu za otpatke"
 
 # @ broken-link-checker
 #: includes/containers.php:122
 msgid "%d '%s' has been deleted"
 msgid_plural "%d '%s' have been deleted"
-msgstr[0] "%d '%s' wurde gelöscht"
-msgstr[1] "%d '%s' wurden gelöscht"
+msgstr[0] "%d '%' je obrisan"
+msgstr[1] "%d '%' je obrisan"
 
 # @ broken-link-checker
 #: includes/containers.php:880 includes/containers.php:898
 msgid "Container type '%s' not recognized"
-msgstr "Container Typ '%s' nicht erkannt"
+msgstr "Nije prepoznata vrsta kontejnera  '%s'"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:2
 msgctxt "module name"
 msgid "Basic HTTP"
-msgstr "Standard HTTP"
+msgstr "Osnovni HTTP"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:3
 msgctxt "module name"
 msgid "Blogroll items"
-msgstr "Blogroll Elemente"
+msgstr "Blogroll stavke"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:4
 msgctxt "module name"
 msgid "Comments"
-msgstr "Kommentare"
+msgstr "Komentari"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:5
 msgctxt "module name"
 msgid "Custom fields"
-msgstr "Benutzerdefinierte Felder"
+msgstr "Prilagodi polja"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:6
 msgctxt "module name"
 msgid "Embedded DailyMotion videos"
-msgstr "Eingebettete DailyMotion Videos"
+msgstr "Ubačeni DailyMotion video-snimci"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:7
 msgctxt "module name"
 msgid "Embedded GoogleVideo videos"
-msgstr "Eingebettete GoogleVideo Videos"
+msgstr "Ubačeni GoogleVideo video-snimci"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:8
 msgctxt "module name"
 msgid "Embedded Megavideo videos"
-msgstr "Eingebettete Megavideo Videos"
+msgstr "Ubačeni Megavideo video-snimci"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:9
 msgctxt "module name"
 msgid "Embedded Vimeo videos"
-msgstr "Eingebettete Vimeo Videos"
+msgstr "Ubačeni Vimeo video-snimci"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:10
 msgctxt "module name"
 msgid "Embedded YouTube playlists (old embed code)"
-msgstr "Eingebettete YouTube Wiedergabelisten (alter Code)"
+msgstr "Ubačene YouTube liste pesama (stari ugrađeni kod)"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:11
 msgctxt "module name"
 msgid "Embedded YouTube videos"
-msgstr "Eingebettete YouTube Videos"
+msgstr "Ubačeni YouTube video-snimci"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:12
 msgctxt "module name"
 msgid "Embedded YouTube videos (old embed code)"
-msgstr "Eingebettete YouTube Videos (alter Code)"
+msgstr "Ubačeni YouTube video-snimci (stari ugrađeni kod)"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:13
@@ -1564,13 +1523,13 @@ msgstr "FileServe API"
 #: includes/extra-strings.php:14
 msgctxt "module name"
 msgid "HTML images"
-msgstr "HTML Bilder"
+msgstr "HTML slike"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:15
 msgctxt "module name"
 msgid "HTML links"
-msgstr "HTML Links"
+msgstr "HTML linkovi"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:16
@@ -1588,7 +1547,7 @@ msgstr "MegaUpload API"
 #: includes/extra-strings.php:18
 msgctxt "module name"
 msgid "Plaintext URLs"
-msgstr "Klartext URLs"
+msgstr "Plaintext URL"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:19
@@ -1599,7 +1558,7 @@ msgstr "RapidShare API"
 #: includes/extra-strings.php:20
 msgctxt "module name"
 msgid "Smart YouTube httpv:// URLs"
-msgstr "Smart YouTube httpv:// URLs"
+msgstr "Smart YouTube httpv:// URL"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:21
@@ -1611,162 +1570,159 @@ msgstr "YouTube API"
 #: includes/extra-strings.php:22
 msgctxt "module name"
 msgid "Posts"
-msgstr "Beiträge"
+msgstr "Post-ovi"
 
 # @ broken-link-checker
 #: includes/extra-strings.php:23
 msgctxt "module name"
 msgid "Pages"
-msgstr "Seiten"
+msgstr "Stranice"
 
 # @ broken-link-checker
 #: includes/instances.php:105 includes/instances.php:161
 msgid "Container %s[%d] not found"
-msgstr "Container %s[%d] nicht gefunden"
+msgstr "Kontejner %s[%d] nije pronađen"
 
 # @ broken-link-checker
 #: includes/instances.php:114 includes/instances.php:170
 msgid "Parser '%s' not found."
-msgstr "Parser '%s' nicht gefunden."
+msgstr "Parser '%s' nije pronađen"
 
 # @ broken-link-checker
 #: includes/link-query.php:26
 msgid "Broken"
-msgstr "Fehlerhaft"
+msgstr "Prekinut"
 
 # @ broken-link-checker
 #: includes/link-query.php:28
 msgid "No broken links found"
-msgstr "Keine fehlerhaften Links gefunden"
+msgstr "Nije pronađen prekinut link"
 
 # @ broken-link-checker
 #: includes/link-query.php:36
 msgid "Redirects"
-msgstr "Umleitungen"
+msgstr "Preusmeravanja"
 
 # @ broken-link-checker
 #: includes/link-query.php:37
 msgid "Redirected Links"
-msgstr "Umgeleitete Links"
+msgstr "Preusmereni linkovi"
 
 # @ broken-link-checker
 #: includes/link-query.php:38
 msgid "No redirects found"
-msgstr "Keine umgeleiteten Links gefunden"
+msgstr "Preusmeravanja nisu pronađena"
 
 #: includes/link-query.php:46
 msgid "Dismissed"
-msgstr "Ausgeblendete"
+msgstr "Odbačen"
 
 # @ broken-link-checker
 #: includes/link-query.php:47
 msgid "Dismissed Links"
-msgstr "Ausgeblendete Links"
+msgstr "Odbačeni linkovi"
 
 # @ broken-link-checker
 #: includes/link-query.php:48
 msgid "No dismissed links found"
-msgstr "Keine ausgeblendeten Links gefunden"
+msgstr "Nisu pronađeni odbačeni linkovi"
 
 # @ broken-link-checker
 #: includes/link-query.php:56
 msgid "All"
-msgstr "Alle"
+msgstr "Svi"
 
 # @ broken-link-checker
 #: includes/link-query.php:57
 msgid "Detected Links"
-msgstr "Gefundene Links"
+msgstr "Detektovani linkovi"
 
 # @ broken-link-checker
 #: includes/link-query.php:58
 msgid "No links found (yet)"
-msgstr "(Noch) keine Links gefunden"
+msgstr "Nisu pronađeni linkovi (još)"
 
 # @ broken-link-checker
 #: includes/link-query.php:66
 msgid "Search Results"
-msgstr "Such Resultat"
+msgstr "Rezultati pretrage"
 
 # @ broken-link-checker
 #: includes/link-query.php:67 includes/link-query.php:114
 msgid "No links found for your query"
-msgstr "Keine Links für Deine Anfrage gefunden"
+msgstr "Za vašu pretragu nisu pronađeni linkovi"
 
 # @ broken-link-checker
-#: includes/links.php:222
+#: includes/links.php:218
 msgid "The plugin script was terminated while trying to check the link."
-msgstr "Das Plugin-Skript wurde beim Versuch den Link zu überprüfen beendet."
+msgstr "Skripte plugin-a obustavljene su dok pokušavamo da proverimo link."
 
 # @ broken-link-checker
-#: includes/links.php:268
+#: includes/links.php:264
 msgid "The plugin doesn't know how to check this type of link."
-msgstr "Das Plugin weiss nicht genau, wie er diesen Link Typ überprüfen soll."
+msgstr "Plugin ne zna kako da proveri ovu vrstu linka."
 
 # @ broken-link-checker
-#: includes/links.php:361
+#: includes/links.php:357
 msgid "Link is valid."
-msgstr "Link ist valide."
+msgstr "Link je validan."
 
 # @ broken-link-checker
-#: includes/links.php:363
+#: includes/links.php:359
 msgid "Link is broken."
-msgstr "Link ist fehlerhaft."
+msgstr "Link je prekinut."
 
 # @ broken-link-checker
-#: includes/links.php:582 includes/links.php:684 includes/links.php:711
+#: includes/links.php:572 includes/links.php:674 includes/links.php:701
 msgid "Link is not valid"
-msgstr "Link ist nicht gültig"
+msgstr "Link nije važeći."
 
 # @ broken-link-checker
-#: includes/links.php:599
+#: includes/links.php:589
 msgid ""
 "This link can not be edited because it is not used anywhere on this site."
-msgstr ""
-"Dieser Link kann nicht bearbeitet werden, weil er nicht überall auf dieser "
-"Website verwendet wird."
+msgstr "Link ne može da se uredi jer se ne koristi nigde na datom site-u."
 
 # @ broken-link-checker
-#: includes/links.php:625
+#: includes/links.php:615
 msgid "Failed to create a DB entry for the new URL."
-msgstr ""
-"Das Erstellen eines Datenbankeintrages für die neue URL ist fehlgeschlagen."
+msgstr "Novi unos u bazu podataka za novi URL nije kreiran."
 
 # @ broken-link-checker
-#: includes/links.php:691
+#: includes/links.php:681
 msgid "This link is not a redirect"
-msgstr "Dieser Link ist keine Umleitung"
+msgstr "Ovaj link nije za preusmeravanje"
 
 # @ broken-link-checker
-#: includes/links.php:738 includes/links.php:775
+#: includes/links.php:728 includes/links.php:765
 msgid "Couldn't delete the link's database record"
-msgstr "Links können nicht aus der Datenbank gelöscht werden"
+msgstr "Nije moguće izbrisati zapis linka iz baze podataka."
 
 # @ broken-link-checker
-#: includes/links.php:849
+#: includes/links.php:839
 msgctxt "link status"
 msgid "Unknown"
-msgstr "Unbekannt"
+msgstr "Nepoznat"
 
 # @ link status
 # @ broken-link-checker
-#: includes/links.php:863 modules/checkers/http.php:289
+#: includes/links.php:853 modules/checkers/http.php:263
 #: modules/extras/mediafire.php:101
 msgid "Unknown Error"
-msgstr "Unbekannter Fehler"
+msgstr "Nepoznata greška"
 
 # @ broken-link-checker
-#: includes/links.php:887
+#: includes/links.php:877
 msgid "Not checked"
-msgstr "Nicht überprüft"
+msgstr "Nije proveren"
 
 # @ broken-link-checker
-#: includes/links.php:890
+#: includes/links.php:880
 msgid "False positive"
-msgstr "Falsch positiv"
+msgstr "Lažno pozitivan"
 
 # @ broken-link-checker
-#: includes/links.php:893 modules/extras/fileserve.php:121
+#: includes/links.php:883 modules/extras/fileserve.php:121
 #: modules/extras/megaupload.php:115 modules/extras/rapidshare.php:145
 #: modules/extras/rapidshare.php:151 modules/extras/rapidshare.php:178
 msgctxt "link status"
@@ -1776,128 +1732,127 @@ msgstr "OK"
 # @ broken-link-checker
 #: includes/parsers.php:109
 msgid "Editing is not implemented in the '%s' parser"
-msgstr "Editieren ist nicht im '%s' Parser implementiert"
+msgstr "Uređivanje nije implementirano u '%s'  parser"
 
 # @ broken-link-checker
 #: includes/parsers.php:124
 msgid "Unlinking is not implemented in the '%s' parser"
-msgstr "Aufheben der Verknüpfung ist nicht im '%s' Parser implementiert"
+msgstr "Odvajanje  nije implementirano u'%s' parser"
 
 # @ default
 #: includes/utility-class.php:245
 msgid "%d second"
 msgid_plural "%d seconds"
-msgstr[0] "%s Sekunde"
-msgstr[1] "%s Sekunden"
+msgstr[0] "%d sekunda"
+msgstr[1] "%d sekunda"
 
 # @ default
 #: includes/utility-class.php:246
 msgid "%d second ago"
 msgid_plural "%d seconds ago"
-msgstr[0] "%s Sekunde vergangen"
-msgstr[1] "%s Sekunden vergangen"
+msgstr[0] "pre %d sekundi "
+msgstr[1] "pre %d sekundi "
 
 # @ default
 #: includes/utility-class.php:249
 msgid "%d minute"
 msgid_plural "%d minutes"
-msgstr[0] "%d Minute"
-msgstr[1] "%d Minuten"
+msgstr[0] "%d minuta"
+msgstr[1] "%d minuta"
 
 # @ default
 #: includes/utility-class.php:250
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
-msgstr[0] "%d Minute vergangen"
-msgstr[1] "%d Minuten vergangen"
+msgstr[0] "pre %d minuta"
+msgstr[1] "pre %d minuta"
 
 # @ default
 #: includes/utility-class.php:253
 msgid "%d hour"
 msgid_plural "%d hours"
-msgstr[0] "%d Stunde"
-msgstr[1] "%d Stunden"
+msgstr[0] "%d sat"
+msgstr[1] "%d sat"
 
 # @ default
 #: includes/utility-class.php:254
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
-msgstr[0] "%d Stunde vergangen"
-msgstr[1] "%d Stunden vergangen"
+msgstr[0] "pre %d sata"
+msgstr[1] "pre %d sata"
 
 # @ default
 #: includes/utility-class.php:257
 msgid "%d day"
 msgid_plural "%d days"
-msgstr[0] "%d Tag"
-msgstr[1] "%d Tage"
+msgstr[0] "%d  dan "
+msgstr[1] "%d  dan "
 
 # @ default
 #: includes/utility-class.php:258
 msgid "%d day ago"
 msgid_plural "%d days ago"
-msgstr[0] "%d Tag vergangen"
-msgstr[1] "%d Tage vergangen"
+msgstr[0] "pre %d dana"
+msgstr[1] "pre %d dana"
 
 # @ default
 #: includes/utility-class.php:261
 msgid "%d month"
 msgid_plural "%d months"
-msgstr[0] "%d Monat"
-msgstr[1] "%d Monate"
+msgstr[0] "%d mesec"
+msgstr[1] "%d mesec"
 
 # @ default
 #: includes/utility-class.php:262
 msgid "%d month ago"
 msgid_plural "%d months ago"
-msgstr[0] "%d Monat vergangen"
-msgstr[1] "%d Monate vergangen"
+msgstr[0] "pre %d meseci"
+msgstr[1] "pre %d meseci"
 
 # @ broken-link-checker
-#: modules/checkers/http.php:268
+#: modules/checkers/http.php:242
 msgid "Server Not Found"
-msgstr "Server nicht gefunden"
+msgstr "Server nije pronađen"
 
 # @ broken-link-checker
-#: modules/checkers/http.php:283
+#: modules/checkers/http.php:257
 msgid "Connection Failed"
-msgstr "Verbindung fehlgeschlagen"
+msgstr "Konekcija neuspešna"
 
 # @ broken-link-checker
-#: modules/checkers/http.php:318 modules/checkers/http.php:388
+#: modules/checkers/http.php:292 modules/checkers/http.php:362
 msgid "HTTP code : %d"
-msgstr "HTTP Code: %d"
+msgstr "HTTP kod: %d"
 
 # @ broken-link-checker
-#: modules/checkers/http.php:320 modules/checkers/http.php:390
+#: modules/checkers/http.php:294 modules/checkers/http.php:364
 msgid "(No response)"
-msgstr "(Keine Antwort)"
+msgstr "(Nema odgovora)"
 
 # @ broken-link-checker
-#: modules/checkers/http.php:326
+#: modules/checkers/http.php:300
 msgid "Most likely the connection timed out or the domain doesn't exist."
-msgstr ""
-"Vermutlich hat die Verbindung ein Timeout oder die Domain existiert nicht."
+msgstr "Najverovatnije je konekcija istekla ili domen ne postoji."
 
 # @ broken-link-checker
-#: modules/checkers/http.php:397
+#: modules/checkers/http.php:371
 msgid "Request timed out."
-msgstr "Erfordert Zeitlimit."
+msgstr "Zahtev je istekao."
 
 # @ broken-link-checker
-#: modules/checkers/http.php:415
+#: modules/checkers/http.php:389
 msgid "Using Snoopy"
-msgstr "Benutzt Snoopy"
+msgstr "Koristi Snoopy"
 
 # @ broken-link-checker
 #: modules/containers/blogroll.php:21
 msgid "Bookmark"
-msgstr "Lesezeichen"
+msgstr "Oznaka"
 
 # @ broken-link-checker
 #: modules/containers/blogroll.php:27 modules/containers/blogroll.php:46
 msgid "Edit this bookmark"
-msgstr "Lesezeichen bearbeiten"
+msgstr "Uredi ovu oznaku"
 
 # @ default
 #: modules/containers/blogroll.php:47
@@ -1905,139 +1860,140 @@ msgid ""
 "You are about to delete this link '%s'\n"
 "  'Cancel' to stop, 'OK' to delete."
 msgstr ""
-"Möchten Sie diesen Link löschen '%s'\n"
-"  'Abbrechen' um abzubrechen, 'OK' um zu löschen."
+"Pripremate se da obrišete ovaj link %s'\n"
+". Kliknite na 'Cancel' da obustavite ovu aktivnost ili na 'OK' da je "
+"obrišete."
 
 # @ broken-link-checker
 #: modules/containers/blogroll.php:97
 msgid "Updating bookmark %d failed"
-msgstr "Lesezeichen Aktualisierung %d fehlgeschlagen"
+msgstr "Ažuriranje %d oznake neuspešno."
 
 # @ broken-link-checker
 #: modules/containers/blogroll.php:128
 msgid "Failed to delete blogroll link \"%s\" (%d)"
-msgstr "Löschen des Blogroll Link \"%s\" (%d) schlug fehl"
+msgstr "Neuspešno brisanje blogroll linka \"%s\" (%d)."
 
 # @ broken-link-checker
 #: modules/containers/blogroll.php:298
 msgid "%d blogroll link deleted."
 msgid_plural "%d blogroll links deleted."
-msgstr[0] "%d Blogroll Link gelöscht."
-msgstr[1] "%d Blogroll Links gelöscht."
+msgstr[0] "%d blogroll link obrisan."
+msgstr[1] "%d blogroll link obrisan."
 
 # @ broken-link-checker
 #: modules/containers/comment.php:53
 msgid "Updating comment %d failed"
-msgstr "Kommentar Aktualisierung %d fehlgeschlagen"
+msgstr "Neuspelo ažuriranje %d komentara"
 
 # @ broken-link-checker
 #: modules/containers/comment.php:74
 msgid "Failed to delete comment %d"
-msgstr "Fehler beim Kommentar löschen %d"
+msgstr "Neuspešno brisanje %d komentara"
 
 # @ broken-link-checker
 #: modules/containers/comment.php:95
 msgid "Can't move comment %d to the trash"
-msgstr "Kommentar %d kann nicht in den Papierkorb verschoben werden"
+msgstr "Komentar %d ne može da se prebaci u korpu za otpatke."
 
 # @ default
 #: modules/containers/comment.php:153 modules/containers/comment.php:195
 msgid "Edit comment"
-msgstr "Kommentar bearbeiten"
+msgstr "Uredi komentar"
 
 # @ default
 #: modules/containers/comment.php:160
 msgid "Delete Permanently"
-msgstr "Endgültig löschen"
+msgstr "Obriši trajno"
 
 # @ default
 #: modules/containers/comment.php:162
 msgid "Move this comment to the trash"
-msgstr "%d Kommentar in den Papierkorb verschieben"
+msgstr "Prebaci ovaj komentar u korpu za otpatke"
 
 # @ default
 #: modules/containers/comment.php:162
 msgctxt "verb"
 msgid "Trash"
-msgstr "Papierkorb"
+msgstr "Korpa za otpatke"
 
 # @ broken-link-checker
 #: modules/containers/comment.php:166
 msgid "View comment"
-msgstr "Kommentar ansehen"
+msgstr "Vidi komentar"
 
 # @ broken-link-checker
 #: modules/containers/comment.php:183
 msgid "Comment"
-msgstr "Kommentar"
+msgstr "Komentar"
 
 # @ broken-link-checker
 #: modules/containers/comment.php:355
 msgid "%d comment has been deleted."
 msgid_plural "%d comments have been deleted."
-msgstr[0] "%d Kommentar wurde gelöscht."
-msgstr[1] "%d Kommentare wurde gelöscht."
+msgstr[0] "Komentar %d je obrisan."
+msgstr[1] "Komentar %d je obrisan."
 
 # @ broken-link-checker
 #: modules/containers/comment.php:374
 msgid "%d comment moved to the Trash."
 msgid_plural "%d comments moved to the Trash."
-msgstr[0] "%d Kommentar in den Papierkorb verschoben."
-msgstr[1] "%d Kommentare in den Papierkorb verschoben."
+msgstr[0] "Komentar %d premešten je u korpu za otpatke."
+msgstr[1] "Komentar %d premešten je u korpu za otpatke."
 
 # @ broken-link-checker
 #: modules/containers/custom_field.php:85
 msgid "Failed to update the meta field '%s' on %s [%d]"
-msgstr "Aktualisieren des Meta-Feldes '%s' in %s [%d] schlug fehl"
+msgstr "Meta-polje '%s'  na % [%d] nije ažurirano "
 
 # @ broken-link-checker
 #: modules/containers/custom_field.php:115
 msgid "Failed to delete the meta field '%s' on %s [%d]"
-msgstr "Löschen des Meta-Feldes '%s' in %s [%d] schlug fehl"
+msgstr "Meta-polje '%s' na % [%d] nije obrisano"
 
 # @ default
 #: modules/containers/custom_field.php:197
 msgid "Edit this post"
-msgstr "Bearbeiten Sie diesen Beitrag"
+msgstr "Uredi ovaj post"
 
 # @ broken-link-checker
 #: modules/containers/custom_field.php:227
 msgid "View \"%s\""
-msgstr "\"%s\" ansehen"
+msgstr "Vidi  \"%s\""
 
 # @ broken-link-checker
 #: modules/containers/dummy.php:34 modules/containers/dummy.php:45
 msgid "I don't know how to edit a '%s' [%d]."
-msgstr "Das Bearbeiten von '%s' [%d] ist fehlgeschlagen."
+msgstr "Ne znam kako da uredim '%s' [%d]"
 
 # @ broken-link-checker
 #: modules/extras/dailymotion-embed.php:23
 msgid "DailyMotion Video"
-msgstr "DailyMotion Video"
+msgstr "DailyMotion video"
 
 # @ broken-link-checker
 #: modules/extras/dailymotion-embed.php:24
 msgid "Embedded DailyMotion video"
-msgstr "Eingebettete DailyMotion Videos"
+msgstr "Ubačeni DailyMotion video"
 
 #: modules/extras/embed-parser-base.php:197
 msgid ""
 "Embedded videos can't be edited using Broken Link Checker. Please edit or "
 "replace the video in question manually."
 msgstr ""
-"Eingebettete Videos können mit Broken Link Checker nicht editiert werden. "
-"Bitte ändern oder ersetzen Sie das betreffende Video manuell."
+"Broken Link Checker ne može urediti ubačeni video. Uredite ili zamenite dati "
+"video ručno."
 
 #: modules/extras/fileserve.php:55
 msgid "Using FileServe API"
-msgstr "Verwende FileServe API"
+msgstr "Koristi FileServe API"
 
 # @ broken-link-checker
 #: modules/extras/fileserve.php:112 modules/extras/mediafire.php:91
 #: modules/extras/mediafire.php:96 modules/extras/megaupload.php:81
 #: modules/extras/megaupload.php:123 modules/extras/rapidshare.php:139
 msgid "Not Found"
-msgstr "Nicht gefunden"
+msgstr "Nije pronađen"
 
 #: modules/extras/fileserve.php:115
 msgid "FileServe : %d %s"
@@ -2051,15 +2007,15 @@ msgstr "GoogleVideo Video"
 # @ broken-link-checker
 #: modules/extras/googlevideo-embed.php:25
 msgid "Embedded GoogleVideo video"
-msgstr "Eingebetteter GoogleVideo Video"
+msgstr "Ubačeni GoogleVideo video"
 
 #: modules/extras/megaupload.php:130
 msgid "File Temporarily Unavailable"
-msgstr "Datei vorübergehend nicht erreichbar"
+msgstr "Datoteka trenutno nije dostupna"
 
 #: modules/extras/megaupload.php:136
 msgid "API Error"
-msgstr "API Fehler"
+msgstr "API greška"
 
 # @ broken-link-checker
 #: modules/extras/megavideo-embed.php:24
@@ -2069,26 +2025,26 @@ msgstr "Megavideo Video"
 # @ broken-link-checker
 #: modules/extras/megavideo-embed.php:25
 msgid "Embedded Megavideo video"
-msgstr "Eingebetteter Megavideo Video"
+msgstr "Ubačeni Megavideo Video"
 
 # @ broken-link-checker
 #: modules/extras/rapidshare.php:51
 msgid "Using RapidShare API"
-msgstr "Verwende RapidShare API"
+msgstr "Koristi RapidShare API"
 
 # @ broken-link-checker
 #: modules/extras/rapidshare.php:158
 msgid "RS Server Down"
-msgstr "RS Server nicht verfügbar"
+msgstr "RS Server ne radi"
 
 # @ broken-link-checker
 #: modules/extras/rapidshare.php:165
 msgid "File Blocked"
-msgstr "Datei blockiert"
+msgstr "Datoteka blokirana"
 
 #: modules/extras/rapidshare.php:172
 msgid "File Locked"
-msgstr "Datei gesperrt"
+msgstr "Datoteka zaključana"
 
 # @ broken-link-checker
 #: modules/extras/rapidshare.php:183
@@ -2098,7 +2054,7 @@ msgstr "RapidShare: %s"
 # @ broken-link-checker
 #: modules/extras/rapidshare.php:189
 msgid "RapidShare API error: %s"
-msgstr "RapidShare API Fehler: %s"
+msgstr "RapidShare API greška: %s"
 
 # @ broken-link-checker
 #: modules/extras/vimeo-embed.php:24
@@ -2108,7 +2064,7 @@ msgstr "Vimeo Video"
 # @ broken-link-checker
 #: modules/extras/vimeo-embed.php:25
 msgid "Embedded Vimeo video"
-msgstr "Eingebettete Vimeo Videos"
+msgstr "Ubačeni Vimeo video"
 
 # @ broken-link-checker
 #: modules/extras/youtube-embed.php:24 modules/extras/youtube-iframe.php:25
@@ -2118,30 +2074,30 @@ msgstr "YouTube Video"
 # @ broken-link-checker
 #: modules/extras/youtube-embed.php:25 modules/extras/youtube-iframe.php:26
 msgid "Embedded YouTube video"
-msgstr "Eingebettete YouTube Videos"
+msgstr " Ubačen YouTube video"
 
 # @ broken-link-checker
 #: modules/extras/youtube-playlist-embed.php:24
 msgid "YouTube Playlist"
-msgstr "YouTube Wiedergabeliste"
+msgstr "YouTube lista pesama"
 
 # @ broken-link-checker
 #: modules/extras/youtube-playlist-embed.php:25
 msgid "Embedded YouTube playlist"
-msgstr "Eingebettete YouTube Wiedergabeliste"
+msgstr "Ubačena YouTube lista pesama"
 
 # @ broken-link-checker
 #: modules/extras/youtube.php:124 modules/extras/youtube.php:127
 msgid "Video Not Found"
-msgstr "Video nicht gefunden"
+msgstr "Video nije pronađen"
 
 #: modules/extras/youtube.php:135
 msgid "Video Removed"
-msgstr "Video entfernt"
+msgstr "Video je uklonjen"
 
 #: modules/extras/youtube.php:143
 msgid "Invalid Video ID"
-msgstr "Ungültige Video ID"
+msgstr "Nevažeći ID videa"
 
 #: modules/extras/youtube.php:155
 msgid "Video OK"
@@ -2155,51 +2111,50 @@ msgstr "OK"
 
 #: modules/extras/youtube.php:170 modules/extras/youtube.php:271
 msgid "Video status : %s%s"
-msgstr "Video Status : %s%s"
+msgstr "Status videa %s%s"
 
 #: modules/extras/youtube.php:182 modules/extras/youtube.php:280
 msgid "Video Restricted"
-msgstr "Video mit Einschränkungen"
+msgstr "Video ograničen"
 
 #: modules/extras/youtube.php:199 modules/extras/youtube.php:305
 msgid "Unknown YouTube API response received."
-msgstr "Unbekannte Antwort der YouTube API erhalten."
+msgstr "Primljen nepoznat API odgovor od You Tube-a"
 
 # @ broken-link-checker
 #: modules/extras/youtube.php:217 modules/extras/youtube.php:220
 msgid "Playlist Not Found"
-msgstr "Wiedergabeliste nicht gefunden"
+msgstr "Lista pesama nije pronađena"
 
 #: modules/extras/youtube.php:227
 msgid "Playlist Restricted"
-msgstr "Wiedergabeliste mit Einschränkungen"
+msgstr "Lista pesama ograničena"
 
 #: modules/extras/youtube.php:234
 msgid "Invalid Playlist"
-msgstr "Ungültige Wiedergabeliste"
+msgstr "Nevažeća lista pesama"
 
 #: modules/extras/youtube.php:248
 msgid "Playlist OK"
-msgstr "Wiedergabeliste in Ordnung"
+msgstr "Lista pesama je OK"
 
 #: modules/extras/youtube.php:255
 msgid "This playlist has no entries or all entries have been deleted."
-msgstr ""
-"Diese Wiedergabeliste hat keine Einträge oder alle Einträge wurden gelöscht."
+msgstr "Ova lista pesama nema unose ili su svi unosi obrisani."
 
 #: modules/extras/youtube.php:256
 msgid "Empty Playlist"
-msgstr "Leere Wiedergabeliste"
+msgstr "Isprazni listu pesama"
 
 # @ broken-link-checker
 #: modules/parsers/image.php:164
 msgid "Image"
-msgstr "Bild"
+msgstr "Slika"
 
 # @ broken-link-checker
 #: modules/parsers/metadata.php:119
 msgid "Custom field"
-msgstr "Benutzerdefiniertes Feld"
+msgstr "Prilagodi polje"
 
 #. Plugin URI of the plugin/theme
 msgid "http://w-shadow.com/blog/2007/08/05/broken-link-checker-for-wordpress/"
@@ -2210,8 +2165,8 @@ msgid ""
 "Checks your blog for broken links and missing images and notifies you on the "
 "dashboard if any are found."
 msgstr ""
-"Überprüft Ihr Blog auf fehlerhafte Links und nicht vorhandene Bilder und "
-"benachrichtigt Sie im Dashboard, wenn nichts gefunden wird."
+"Proverava prekinute linkove i slike koje nedostaju u vašem blogu i "
+"obaveštava vas na kontrolnoj tabli ako ih pronađe."
 
 #. Author of the plugin/theme
 msgid "Janis Elsts"

@@ -3,7 +3,7 @@ Contributors: yourownprogrammer
 Donate Link: http://www.yop-poll.com/thankyou/don.php
 Tags: poll, polls, vote, voting, survey, polling, yop poll, yop
 Requires at least: 3.3
-Tested up to: 3.8.1
+Tested up to: 3.9.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.htm
@@ -24,13 +24,13 @@ Designed to intuitive and easy to use, this plugin allows shortcodes and include
 
 Current poll features:     
 
-   *  Create/ Edit / Clone/Delete poll - allows you to create or intervene in your survey at any time, if you consider it necessary.   
+   *  Create/ Edit / Clone/Delete poll - allows you to create or intervene in your poll at any time, if you consider it necessary.   
    
-   *  Poll scheduling:  programs each poll to start/end on a certain date. You can simultaneously run multiple polls you can use this option to schedule your polls one after another.    
+   *  Poll scheduling:  programs each poll to start/end on a certain date. You can simultaneously run multiple polls. This option can be used to schedule your po;;s one after another.    
    
    *  Display polls: you can choose to display one or more polls on your website by simply adding the corresponding poll ID. You can also decide for a random display of your active polls.    
    
-   *  View all polls: lists all your polls that you can sort by number of votes or voters, by question or by date and includes a search option.     
+   *  View all polls: lists all your polls that you can sort by number of votes or voters, by question or by date. It also includes a search option.     
 
    *  Poll answers - allows other answers, multiple answers and includes a sorting module by various criteria: in exact order, in alphabetical order, by number of votes, ascending, descending etc.   
 
@@ -142,6 +142,9 @@ You can have only one question per poll. If you want to ask more than one questi
 5. YOP Poll on a page with a custom field defined
 
 == Changelog ==
+
+= 4.9.2 =
+* Fixed security issue 
 
 = 4.9.1 =
 * Fixed issue with Template preview not working in IE8

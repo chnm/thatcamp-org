@@ -24,7 +24,7 @@ class blcLogger {
 		$this->__construct($param);
 	}
 	
-	function log($message, $object = null, $level = BLC_LEVEL_DEBUG){
+	function log($message, $object = null, $level = BLC_LEVEL_INFO){
 		
 	}
 	
@@ -133,7 +133,7 @@ class blcFileLogger extends blcLogger {
 		$this->fileName = $fileName;
 	}
 
-	function log($message, $object = null, $level = BLC_LEVEL_DEBUG){
+	function log($message, $object = null, $level = BLC_LEVEL_INFO){
 		if ( $level < $this->log_level ) {
 			return;
 		}

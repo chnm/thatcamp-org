@@ -2412,7 +2412,8 @@
 			$poll_id   = $this->poll['id'];
 			$unique_id = $this->unique_id;
 			$location  = $request['location'];
-			if ( wp_verify_nonce( $request['yop-poll-nonce-' . $poll_id . $unique_id], 'yop_poll-' . $poll_id . $unique_id . '-user-actions' ) ){
+            yop_poll_dump($request['yop-poll-nonce-' . $poll_id . $unique_id]);
+            if( wp_verify_nonce( $request['yop-poll-nonce-' . $poll_id . $unique_id], 'yop_poll-' . $poll_id     . $unique_id . '-user-actions' ) ) {
 				$poll_details = $this->poll;
 				$poll_options = $this->poll_options;
 				$vote_id      = uniqid( 'vote_id_' );
@@ -2446,6 +2447,7 @@
 				}
 
 				$current_date = YOP_POLL_MODEL::get_mysql_curent_date();
+                if( wp_verify_nonce( $request['yop-poll-nonce-' . $poll_id . $unique_id], 'yop_poll-' . $poll_id . $unique_id . '-user-actions' ) ) {
 				if ( $this->is_allowed_to_vote( $vote_type, $facebook_user_details ) ){
 					if ( $current_date >= $poll_details['start_date'] ){
 						if ( $current_date <= $poll_details['end_date'] ){
@@ -2464,6 +2466,8 @@
 										$voter['user_id']   = $facebook_user_id;
 										$voter['user_type'] = $vote_type;
 									}
+
+
 									if ( $this->user_have_votes_to_vote( $voter ) ){
 										if ( isset ( $request['yop_poll_answer'] ) ){
 											if ( 'yes' == $poll_options['allow_multiple_answers'] ){
@@ -2492,6 +2496,7 @@
 																if ( isset( $request['yop_poll_other_answer'] ) ){
 																	if ( '' != strip_tags( trim( $request['yop_poll_other_answer'] ) ) ){
 																		$answer['other_answer_value'] = strip_tags( $request['yop_poll_other_answer'] );
+
 																		$answer['type']               = 'other';
 																	}
 																	else {
@@ -2539,6 +2544,14 @@
 												if ( 'other' == $answer_details['type'] ){
 													if ( isset( $request['yop_poll_other_answer'] ) ){
 														if ( '' != strip_tags( trim( $request['yop_poll_other_answer'] ) ) ){
+                                                            $ans = self::yop_poll_get_answer_from_db($poll_id);
+                                                           foreach($ans as $a){
+
+                                                               if(strtoupper (strip_tags( $request['yop_poll_other_answer'] ))==strtoupper( $a['answer'])) {
+                                                                   $this->error = __( 'mesaj de eroare!', 'yop_poll' );
+                                                                   return false;
+                                                               }
+                                                           }
 															$answer['other_answer_value'] = strip_tags( $request['yop_poll_other_answer'] );
 															$answer['type']               = 'other';
 														}
@@ -2604,7 +2617,7 @@
 														$votes                      = 0;
 														$mail_notifications_answers = '';
 														foreach ( $answers as &$answer ) {
-															if ( 'facebook' == $vote_type ){
+															if (    'facebook' == $vote_type ){
 																$answer['user_id'] = $facebook_user_id;
 															}
 															if ( 'anonymous' == $vote_type ){
@@ -2800,6 +2813,11 @@
 				$this->error = __( 'Bad Request!', 'yop_poll' );
 				return false;
 			}
+            }
+            else {
+                $this->error = __( 'Bad Request!', 'yop_poll' );
+                return false;
+            }
 		}
 
 		public function return_poll_css( $attr = array( 'location' => 'page', 'preview' => false, 'template_id' => '', 'loc' => 1 ) ) {
@@ -2947,7 +2965,125 @@
 				return $t;
 			}
 		}
+        public  function back_4_9_1(){}
 
+
+
+
+        public function yop_poll_get_answer_from_db($id) {
+            global $wpdb;
+            $answer = $wpdb->get_results( $wpdb->prepare( "
+					SELECT *
+					FROM " . $wpdb->yop_poll_answers . "
+					WHERE poll_id = %d
+					",$id ), ARRAY_A );
+            return $answer;
+
+        }
+
+        public function yop_poll_get_polls_meta_from_db() {
+            global $wpdb;
+            $result = $wpdb->get_results( $GLOBALS['wpdb']->prepare( "
+                            SELECT *
+                            FROM " . $wpdb->prefix . "yop2_pollmeta ORDER BY yop_poll_id ASC
+                            " ), ARRAY_A );
+            return $result;
+
+        }
+
+        public function yop_poll_get_answers_meta_from_db() {
+            global $wpdb;
+
+            $result = $wpdb->get_results( $GLOBALS['wpdb']->prepare( "
+                            SELECT *
+                            FROM " . $wpdb->prefix . "yop2_poll_answermeta
+                            " ), ARRAY_A );
+            return $result;
+
+        }
+
+        public function yop_poll_get_questions_from_db() {
+            global $wpdb;
+            $result = $wpdb->get_results( $wpdb->prepare( "
+                            SELECT *
+                            FROM  " . $wpdb->prefix . "yop2_poll_questions ORDER BY poll_id ASC
+                            " ), ARRAY_A );
+            return $result;
+        }
+
+        public function yop_poll_get_custom_fields_from_db() {
+            global $wpdb;
+            $result = $wpdb->get_results( $GLOBALS['wpdb']->prepare( "
+                            SELECT *
+                            FROM " . $wpdb->prefix . "yop2_poll_custom_fields ORDER BY poll_id ASC
+                            " ), ARRAY_A );
+            return $result;
+        }
+
+        public function yop_poll_get_custom_fields_votes_from_db() {
+            global $wpdb;
+            $result = $wpdb->get_results( $GLOBALS['wpdb']->prepare( "
+                            SELECT *
+                            FROM  " . $wpdb->prefix . "yop2_poll_votes_custom_fields
+                            " ), ARRAY_A );
+            return $result;
+        }
+
+        public function yop_poll_get_bans_from_db() {
+            global $wpdb;
+            $result = $wpdb->get_results( $wpdb->prepare( "
+                            SELECT *
+                            FROM   " . $wpdb->prefix . "yop2_poll_bans ORDER BY poll_id ASC
+                            " ), ARRAY_A );
+            return $result;
+        }
+
+        public function yop_poll_get_answers_from_db() {
+            global $wpdb;
+            $result = $wpdb->get_results( $wpdb->prepare( "
+                            SELECT *
+                            FROM  " . $wpdb->prefix . "yop2_poll_answers ORDER BY poll_id ASC
+                            " ), ARRAY_A );
+            return $result;
+        }
+
+        public function yop_poll_get_logs_from_db() {
+            global $wpdb;
+            $result = $wpdb->get_results( $wpdb->prepare( "
+                            SELECT *
+                            FROM " . $wpdb->prefix . "yop2_poll_logs
+                            " ), ARRAY_A );
+            return $result;
+        }
+
+        private static function insert_ban_in_db( $ban ) {
+            global $wpdb;
+            $sql = $wpdb->query( $wpdb->prepare( "
+	                INSERT INTO $wpdb->yop_poll_bans
+                              ( poll_id,type,value,period ,unit)
+		  	                    VALUES(%d,%s,%s,%d,%s)
+	                        ", $ban['poll_id'], $ban['type'], $ban['value'], intval( $ban['period'] ), $ban['unit'] ) );
+            return $wpdb->get_results( $sql );
+        }
+        private function save_poll_order( $poll, $poll_order ) {
+            $poll_archive_order = get_option( 'yop_poll_archive_order', array() );
+            if( $poll_archive_order == "" ) {
+                $poll_archive_order = array();
+            }if( trim( $poll_order ) <= 0 ) {
+                $poll_order = 1;
+            }
+            $key = array_search( $poll, $poll_archive_order );
+            if( $key !== false ) {
+                unset( $poll_archive_order[$key] );
+            }
+            if( $poll_order > count( $poll_archive_order ) ) {
+                array_push( $poll_archive_order, $poll );
+            }
+            else {
+                array_splice( $poll_archive_order, trim( $poll_order ) - 1, 0, array( $poll ) );
+            }
+            update_option( 'yop_poll_archive_order', $poll_archive_order );
+        }
 		public function return_poll_html( $attr = array( 'tr_id' => '', 'location' => 'page', 'load_css' => false, 'load_js' => false ) ) {
 			$tr_id     = isset( $attr['tr_id'] ) ? $attr['tr_id'] : '';
 			$location  = isset( $attr['location'] ) ? $attr['location'] : 'page';
