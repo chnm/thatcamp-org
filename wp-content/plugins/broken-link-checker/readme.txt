@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: links, broken, maintenance, blogroll, custom fields, admin, comments, posts
 Requires at least: 3.2
 Tested up to: 4.0-beta4
-Stable tag: 1.9.4.1
+Stable tag: 1.9.4.2
 
 This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found. 
 
@@ -45,7 +45,6 @@ You can also click on the contents of the "Status" or "Link Text" columns to get
 
 * Arabic - Yaser Maadan
 * Belorussian - [M. Comfi](http://www.comfi.com/)
-* Bulgarian - [Ajoft Technologes](http://www.ajoft.com/)
 * Chinese Simplified - Kaijia Feng
 * Chinese Traditional - [YILIN](http://sh2153.com)
 * Czech - [Lelkoun](http://lelkoun.cz/)
@@ -98,6 +97,10 @@ To upgrade your installation
 1. Reactivate the plugin. Your settings will be retained from the previous version.
 
 == Changelog ==
+
+= 1.9.4.2 =
+* Updated Dutch translation again.
+* Removed Bulgarian translation because it was poor quality and outdated.
 
 = 1.9.4.1 =
 * Updated Dutch translation.

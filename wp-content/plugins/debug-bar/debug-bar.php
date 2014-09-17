@@ -4,7 +4,7 @@
  Plugin URI: http://wordpress.org/extend/plugins/debug-bar/
  Description: Adds a debug menu to the admin bar that shows query, cache, and other helpful debugging information.
  Author: wordpressdotorg
- Version: 0.8.1
+ Version: 0.8.2
  Author URI: http://wordpress.org/
  */
 
@@ -31,7 +31,8 @@ class Debug_Bar {
 			return;
 
 		add_action( 'admin_bar_menu',               array( &$this, 'admin_bar_menu' ), 1000 );
-		add_action( 'wp_after_admin_bar_render',    array( &$this, 'render' ) );
+		add_action( 'admin_footer',                 array( &$this, 'render' ), 1000 );
+		add_action( 'wp_footer',                    array( &$this, 'render' ), 1000 );
 		add_action( 'wp_head',                      array( &$this, 'ensure_ajaxurl' ), 1 );
 		add_filter( 'body_class',                   array( &$this, 'body_class' ) );
 		add_filter( 'admin_body_class',             array( &$this, 'body_class' ) );
@@ -57,17 +58,19 @@ class Debug_Bar {
 	}
 
 	function requirements() {
+		$path = plugin_dir_path( __FILE__ );
+		require_once( $path . '/compat.php' );
 		$recs = array( 'panel', 'php', 'queries', 'request', 'wp-query', 'object-cache', 'deprecated', 'js' );
 		foreach ( $recs as $rec )
-			require_once "panels/class-debug-bar-$rec.php";
+			require_once "$path/panels/class-debug-bar-$rec.php";
 	}
 
 	function enqueue() {
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
 
-		wp_enqueue_style( 'debug-bar', plugins_url( "css/debug-bar$suffix.css", __FILE__ ), array(), '20111209' );
+		wp_enqueue_style( 'debug-bar', plugins_url( "css/debug-bar$suffix.css", __FILE__ ), array(), '20120317' );
 
-		wp_enqueue_script( 'debug-bar', plugins_url( "js/debug-bar$suffix.js", __FILE__ ), array( 'jquery' ), '20111209', true );
+		wp_enqueue_script( 'debug-bar', plugins_url( "js/debug-bar$suffix.js", __FILE__ ), array( 'jquery' ), '20121228.2', true );
 
 		do_action('debug_bar_enqueue_scripts');
 	}
@@ -80,6 +83,7 @@ class Debug_Bar {
 			'Debug_Bar_Deprecated',
 			'Debug_Bar_Request',
 			'Debug_Bar_Object_Cache',
+			'Debug_Bar_JS',
 		);
 
 		foreach ( $classes as $class ) {

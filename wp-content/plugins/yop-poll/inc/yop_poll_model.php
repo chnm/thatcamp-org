@@ -2412,14 +2412,16 @@
 			$poll_id   = $this->poll['id'];
 			$unique_id = $this->unique_id;
 			$location  = $request['location'];
-            yop_poll_dump($request['yop-poll-nonce-' . $poll_id . $unique_id]);
+            if($location!="page" && $location!="widget"){
+                $this->error = __( 'Bad request!', 'yop_poll' );
+                return false;
+            }
             if( wp_verify_nonce( $request['yop-poll-nonce-' . $poll_id . $unique_id], 'yop_poll-' . $poll_id     . $unique_id . '-user-actions' ) ) {
 				$poll_details = $this->poll;
 				$poll_options = $this->poll_options;
 				$vote_id      = uniqid( 'vote_id_' );
-				$vote_type    = $request['vote_type'];
-				$tr_id        = $request['yop_poll_tr_id'];
-
+				$vote_type    = strip_tags(xss_clean($request['vote_type']));
+                $tr_id                 = strip_tags(xss_clean( $request['yop_poll_tr_id']));
 				$facebook_error        = $request['facebook_error'];
 				$facebook_user_details = json_decode( self::base64_decode( $request['facebook_user_details'] ), true );
 
