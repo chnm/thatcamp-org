@@ -92,7 +92,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 						<li><input type="checkbox" name="i-agree[public]" id="i-agree-public" checked="checked" value="1" /> PUBLIC on the open web (sessions can be blogged, twittered, photographed, recorded, and posted)</li>
 						<li><input type="checkbox" name="i-agree[self-organizing]" id="i-agree-self-organizing" checked="checked" value="1" /> SELF-ORGANIZING (no program committee: all participants together will set the agenda, either before or during the unconference)</li>
 						<li><input type="checkbox" name="i-agree[informal]" id="i-agree-informal" checked="checked" value="1" /> PARTICIPATORY and spontaneous (most sessions are group discussions, productive co-working sessions, or joyous collaborations of any kind; there should be few if any prepared, monologuing presentations, papers, or demonstrations with the exception of skills training workshops, and even workshops should generally allow for hands-on exercises by the group)</li>
-						<li>SAFE <input type="checkbox" name="i-agree[safe]" id="i-agree-informal" checked="checked" value="1" /> and welcoming to all participants; THATCamps are required to adopt our <a href="/anti-harassment-policy">anti-harassment policy</a> and to abide by its procedures.</li> 
+						<li><input type="checkbox" name="i-agree[safe]" id="i-agree-informal" checked="checked" value="1" />SAFE for and welcoming to all participants; THATCamps are required to adopt our <a href="/anti-harassment-policy">anti-harassment policy</a> and to abide by its procedures.</li> 
 					</ul>
 				</div>
 
@@ -116,6 +116,7 @@ add_action( 'wp_enqueue_scripts', 'thatcamp_admin_scripts' );
 						<li>PUBLIC on the open web (sessions can be blogged, twittered, photographed, recorded, and posted)</li>
 						<li>SELF-ORGANIZING (no program committee: all participants together will set the agenda, either before or during the unconference)</li>
 						<li>PARTICIPATORY and spontaneous (most sessions are group discussions, productive co-working sessions, or joyous collaborations of any kind; there should be few if any prepared, monologuing presentations, papers, or demonstrations with the exception of skills training workshops, and even workshops should generally allow for hands-on exercises by the group)</li>
+						<li>SAFE and welcoming to all participants; THATCamps are required to adopt our <a href="/anti-harassment-policy">anti-harassment policy</a> and to abide by its procedures.</li> 
 					</ul>
 		'); ?>
 		<?php endif ?>
