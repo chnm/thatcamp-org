@@ -110,9 +110,11 @@ function wp_get_theme( $stylesheet = null, $theme_root = null ) {
  * Clears the cache held by get_theme_roots() and WP_Theme.
  *
  * @since 3.5.0
+ * @param bool $clear_update_cache Whether to clear the Theme updates cache
  */
-function wp_clean_themes_cache() {
-	delete_site_transient('update_themes');
+function wp_clean_themes_cache( $clear_update_cache = true ) {
+	if ( $clear_update_cache )
+		delete_site_transient( 'update_themes' );
 	search_theme_directories( true );
 	foreach ( wp_get_themes( array( 'errors' => null ) ) as $theme )
 		$theme->cache_delete();
@@ -373,8 +375,10 @@ function search_theme_directories( $force = false ) {
 
 		// Start with directories in the root of the current theme directory.
 		$dirs = @ scandir( $theme_root );
-		if ( ! $dirs )
-			return false;
+		if ( ! $dirs ) {
+			trigger_error( "$theme_root is not readable", E_USER_NOTICE );
+			continue;
+		}
 		foreach ( $dirs as $dir ) {
 			if ( ! is_dir( $theme_root . '/' . $dir ) || $dir[0] == '.' || $dir == 'CVS' )
 				continue;
@@ -390,8 +394,10 @@ function search_theme_directories( $force = false ) {
 				// wp-content/themes/a-folder-of-themes/*
 				// wp-content/themes is $theme_root, a-folder-of-themes is $dir, then themes are $sub_dirs
 				$sub_dirs = @ scandir( $theme_root . '/' . $dir );
-				if ( ! $sub_dirs )
-					return false;
+				if ( ! $sub_dirs ) {
+					trigger_error( "$theme_root/$dir is not readable", E_USER_NOTICE );
+					continue;
+				}
 				foreach ( $sub_dirs as $sub_dir ) {
 					if ( ! is_dir( $theme_root . '/' . $dir . '/' . $sub_dir ) || $dir[0] == '.' || $dir == 'CVS' )
 						continue;
@@ -643,7 +649,10 @@ function preview_theme_ob_filter_callback( $matches ) {
 	)
 		return $matches[1] . "#$matches[2] onclick=$matches[2]return false;" . $matches[4];
 
-	$link = add_query_arg( array( 'preview' => 1, 'template' => $_GET['template'], 'stylesheet' => @$_GET['stylesheet'], 'preview_iframe' => 1 ), $matches[3] );
+	$stylesheet = isset( $_GET['stylesheet'] ) ? $_GET['stylesheet'] : '';
+	$template   = isset( $_GET['template'] )   ? $_GET['template']   : '';
+
+	$link = add_query_arg( array( 'preview' => 1, 'template' => $template, 'stylesheet' => $stylesheet, 'preview_iframe' => 1 ), $matches[3] );
 	if ( 0 === strpos($link, 'preview=1') )
 		$link = "?$link";
 	return $matches[1] . esc_attr( $link ) . $matches[4];
@@ -1264,6 +1273,20 @@ function add_theme_support( $feature ) {
 				$args[0] = array_intersect( $args[0], array_keys( get_post_format_slugs() ) );
 			break;
 
+		case 'html5' :
+			// You can't just pass 'html5', you need to pass an array of types.
+			if ( empty( $args[0] ) ) {
+				$args = array( 0 => array( 'comment-list', 'comment-form', 'search-form' ) );
+			} elseif ( ! is_array( $args[0] ) ) {
+				_doing_it_wrong( "add_theme_support( 'html5' )", 'You need to pass an array of types.', '3.6.1' );
+				return false;
+			}
+
+			// Calling 'html5' again merges, rather than overwrites.
+			if ( isset( $_wp_theme_features['html5'] ) )
+				$args[0] = array_merge( $_wp_theme_features['html5'][0], $args[0] );
+			break;
+
 		case 'custom-header-uploads' :
 			return add_theme_support( 'custom-header', array( 'uploads' => true ) );
 			break;
@@ -1547,11 +1570,15 @@ function current_theme_supports( $feature ) {
 			return in_array( $content_type, $_wp_theme_features[$feature][0] );
 			break;
 
+		case 'html5':
 		case 'post-formats':
 			// specific post formats can be registered by passing an array of types to
 			// add_theme_support()
-			$post_format = $args[0];
-			return in_array( $post_format, $_wp_theme_features[$feature][0] );
+
+			// Specific areas of HTML5 support *must* be passed via an array to add_theme_support()
+
+			$type = $args[0];
+			return in_array( $type, $_wp_theme_features[$feature][0] );
 			break;
 
 		case 'custom-header':
