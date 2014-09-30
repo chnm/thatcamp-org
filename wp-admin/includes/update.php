@@ -103,9 +103,9 @@ function find_core_auto_update() {
 function get_core_checksums( $version, $locale ) {
 	$return = array();
 
-	$url = 'http://api.wordpress.org/core/checksums/1.0/?' . http_build_query( compact( 'version', 'locale' ), null, '&' );
+	$url = $http_url = 'http://api.wordpress.org/core/checksums/1.0/?' . http_build_query( compact( 'version', 'locale' ), null, '&' );
 
-	if ( wp_http_supports( array( 'ssl' ) ) )
+	if ( $ssl = wp_http_supports( array( 'ssl' ) ) )
 		$url = set_url_scheme( $url, 'https' );
 
 	$options = array(
@@ -113,6 +113,10 @@ function get_core_checksums( $version, $locale ) {
 	);
 
 	$response = wp_remote_get( $url, $options );
+	if ( $ssl && is_wp_error( $response ) ) {
+		trigger_error( __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="http://wordpress.org/support/">support forums</a>.' ) . ' ' . '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)', headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE );
+		$response = wp_remote_get( $http_url, $options );
+	}
 
 	if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) )
 		return false;
@@ -281,7 +285,42 @@ function wp_plugin_update_row( $file, $plugin_data ) {
 		else
 			printf( __('There is a new version of %1$s available. <a href="%2$s" class="thickbox" title="%3$s">View version %4$s details</a> or <a href="%5$s">update now</a>.'), $plugin_name, esc_url($details_url), esc_attr($plugin_name), $r->new_version, wp_nonce_url( self_admin_url('update.php?action=upgrade-plugin&plugin=') . $file, 'upgrade-plugin_' . $file) );
 
-		do_action( "in_plugin_update_message-$file", $plugin_data, $r );
+		/**
+		 * Fires at the end of the update message container in each
+		 * row of the plugins list table.
+		 *
+		 * The dynamic portion of the hook name, $file, refers to the path
+		 * of the plugin's primary file relative to the plugins directory.
+		 *
+		 * @since 2.8.0
+		 *
+		 * @param array $plugin_data {
+		 *     An array of plugin metadata.
+		 *
+		 *     @type string $name         The human-readable name of the plugin.
+		 *     @type string $plugin_uri   Plugin URI.
+		 *     @type string $version      Plugin version.
+		 *     @type string $description  Plugin description.
+		 *     @type string $author       Plugin author.
+		 *     @type string $author_uri   Plugin author URI.
+		 *     @type string $text_domain  Plugin text domain.
+		 *     @type string $domain_path  Relative path to the plugin's .mo file(s).
+		 *     @type bool   $network      Whether the plugin can only be activated network wide.
+		 *     @type string $title        The human-readable title of the plugin.
+		 *     @type string $author_name  Plugin author's name.
+		 *     @type bool   $update       Whether there's an available update. Default null.
+	 	 * }
+	 	 * @param array $r {
+	 	 *     An array of metadata about the available plugin update.
+	 	 *
+	 	 *     @type int    $id           Plugin ID.
+	 	 *     @type string $slug         Plugin slug.
+	 	 *     @type string $new_version  New plugin version.
+	 	 *     @type string $url          Plugin URL.
+	 	 *     @type string $package      Plugin update package URL.
+	 	 * }
+		 */
+		do_action( "in_plugin_update_message-{$file}", $plugin_data, $r );
 
 		echo '</div></td></tr>';
 	}
@@ -338,7 +377,25 @@ function wp_theme_update_row( $theme_key, $theme ) {
 	else
 		printf( __('There is a new version of %1$s available. <a href="%2$s" class="thickbox" title="%3$s">View version %4$s details</a> or <a href="%5$s">update now</a>.'), $theme['Name'], esc_url($details_url), esc_attr($theme['Name']), $r['new_version'], wp_nonce_url( self_admin_url('update.php?action=upgrade-theme&theme=') . $theme_key, 'upgrade-theme_' . $theme_key) );
 
-	do_action( "in_theme_update_message-$theme_key", $theme, $r );
+	/**
+	 * Fires at the end of the update message container in each
+	 * row of the themes list table.
+	 *
+	 * The dynamic portion of the hook name, $theme_key, refers to
+	 * the theme slug as found in the WordPress.org themes repository.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param WP_Theme $theme The WP_Theme object.
+	 * @param array    $r {
+	 *     An array of metadata about the available theme update.
+	 *
+	 *     @type string $new_version New theme version.
+	 *     @type string $url         Theme URL.
+	 *     @type string $package     Theme update package URL.
+	 * }
+	 */
+	do_action( "in_theme_update_message-{$theme_key}", $theme, $r );
 
 	echo '</div></td></tr>';
 }
@@ -360,7 +417,7 @@ function maintenance_nag() {
 		 * This flag is cleared whenever a successful update occurs using Core_Upgrader.
 		 */
 		$comparison = ! empty( $failed['critical'] ) ? '>=' : '>';
-		if ( version_compare( $failed['attempted'], $wp_version, '>=' ) )
+		if ( version_compare( $failed['attempted'], $wp_version, $comparison ) )
 			$nag = true;
 	}
 

@@ -60,17 +60,23 @@ function plugins_api($action, $args = null) {
 	$res = apply_filters( 'plugins_api', false, $action, $args );
 
 	if ( false === $res ) {
-		$url = 'http://api.wordpress.org/plugins/info/1.0/';
-		if ( wp_http_supports( array( 'ssl' ) ) )
+		$url = $http_url = 'http://api.wordpress.org/plugins/info/1.0/';
+		if ( $ssl = wp_http_supports( array( 'ssl' ) ) )
 			$url = set_url_scheme( $url, 'https' );
 
-		$request = wp_remote_post( $url, array(
+		$args = array(
 			'timeout' => 15,
 			'body' => array(
 				'action' => $action,
 				'request' => serialize( $args )
 			)
-		) );
+		);
+		$request = wp_remote_post( $url, $args );
+
+		if ( $ssl && is_wp_error( $request ) ) {
+			trigger_error( __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="http://wordpress.org/support/">support forums</a>.' ) . ' ' . '(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)', headers_sent() || WP_DEBUG ? E_USER_WARNING : E_USER_NOTICE );
+			$request = wp_remote_post( $http_url, $args );
+		}
 
 		if ( is_wp_error($request) ) {
 			$res = new WP_Error('plugins_api_failed', __( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="http://wordpress.org/support/">support forums</a>.' ), $request->get_error_message() );
@@ -407,9 +413,7 @@ function install_plugin_information() {
 		</ul>
 		<?php if ( ! empty($api->rating) ) : ?>
 		<h2><?php _e('Average Rating') ?></h2>
-		<div class="star-holder" title="<?php printf(_n('(based on %s rating)', '(based on %s ratings)', $api->num_ratings), number_format_i18n($api->num_ratings)); ?>">
-			<div class="star star-rating" style="width: <?php echo esc_attr( str_replace( ',', '.', $api->rating ) ); ?>px"></div>
-		</div>
+		<?php wp_star_rating( array( 'rating' => $api->rating, 'type' => 'percent', 'number' => $api->num_ratings ) ); ?>
 		<small><?php printf(_n('(based on %s rating)', '(based on %s ratings)', $api->num_ratings), number_format_i18n($api->num_ratings)); ?></small>
 		<?php endif; ?>
 	</div>
