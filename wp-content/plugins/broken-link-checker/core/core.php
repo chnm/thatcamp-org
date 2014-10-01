@@ -2371,7 +2371,7 @@ class wsBrokenLinkChecker {
 			
 			foreach ($links as $link) {
 				//Does this link need to be checked? Excluded links aren't checked, but their URLs are still
-				//tested periodically to see if they're still on the exlusion list.
+				//tested periodically to see if they're still on the exclusion list.
         		if ( !$this->is_excluded( $link->url ) ) {
         			//Check the link.
         			//FB::log($link->url, "Checking link {$link->link_id}");

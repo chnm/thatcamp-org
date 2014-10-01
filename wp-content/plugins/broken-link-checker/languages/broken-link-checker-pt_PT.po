@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Broken Link Checker v1.9.3\n"
+"Project-Id-Version: Broken Link Checker v1.9.4.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-12-11 10:00-0000\n"
-"PO-Revision-Date: 2014-03-31 13:03:47+0000\n"
+"PO-Revision-Date: 2014-09-04 18:39:24+0000\n"
 "Last-Translator: \n"
 "Language-Team: wordpress.mowster.net <wordpress@mowster.net>\n"
 "MIME-Version: 1.0\n"
@@ -73,287 +73,287 @@ msgstr "Ir a Links offline"
 msgid "Settings"
 msgstr "Definições"
 
-#: core/core.php:572
+#: core/core.php:585
 #@ broken-link-checker
 msgid "Settings saved."
 msgstr "Definições guardadas."
 
-#: core/core.php:578
+#: core/core.php:591
 #@ broken-link-checker
 msgid "Thank you for your donation!"
 msgstr "Obrigado pela sua colaboração!"
 
-#: core/core.php:586
+#: core/core.php:599
 #@ broken-link-checker
 msgid "Complete site recheck started."
 msgstr "Reverificação completa do sítio iniciada."
 
-#: core/core.php:595
+#: core/core.php:608
 #@ broken-link-checker
 msgid "Details"
 msgstr "Detalhes"
 
-#: core/core.php:609
+#: core/core.php:622
 #@ broken-link-checker
 msgid "General"
 msgstr "Geral"
 
-#: core/core.php:610
+#: core/core.php:623
 #@ broken-link-checker
 msgid "Look For Links In"
 msgstr "Procurar links"
 
-#: core/core.php:611
+#: core/core.php:624
 #@ broken-link-checker
 msgid "Which Links To Check"
 msgstr "Links para verificar"
 
-#: core/core.php:612
+#: core/core.php:625
 #@ broken-link-checker
 msgid "Protocols & APIs"
 msgstr "Protocolos & APIs"
 
-#: core/core.php:613
+#: core/core.php:626
 #@ broken-link-checker
 msgid "Advanced"
 msgstr "Avançado"
 
-#: core/core.php:628
+#: core/core.php:641
 #@ broken-link-checker
 msgid "Broken Link Checker Options"
 msgstr "Opções : Links offline"
 
-#: core/core.php:670
-#: includes/admin/table-printer.php:203
+#: core/core.php:683
+#: includes/admin/table-printer.php:211
 #@ broken-link-checker
 msgid "Status"
 msgstr "Estado"
 
-#: core/core.php:672
+#: core/core.php:685
 #: includes/admin/options-page-js.php:56
 #@ broken-link-checker
 msgid "Show debug info"
 msgstr "Mostrar sistema"
 
-#: core/core.php:700
+#: core/core.php:713
 #@ broken-link-checker
 msgid "Check each link"
 msgstr "Verificar cada link"
 
-#: core/core.php:705
+#: core/core.php:718
 #, php-format
 #@ broken-link-checker
 msgid "Every %s hours"
 msgstr "Cada %s horas"
 
-#: core/core.php:714
+#: core/core.php:727
 #@ broken-link-checker
 msgid "Existing links will be checked this often. New links will usually be checked ASAP."
 msgstr "Os links existentes serão verificados com esta frequência. Os novos links serão verificados logo que possível."
 
-#: core/core.php:721
+#: core/core.php:734
 #@ broken-link-checker
 msgid "E-mail notifications"
 msgstr "Notificações por e-mail"
 
-#: core/core.php:727
+#: core/core.php:740
 #@ broken-link-checker
 msgid "Send me e-mail notifications about newly detected broken links"
 msgstr "Enviar um e-mail notificando sobre os novos links offline encontrados"
 
-#: core/core.php:761
+#: core/core.php:774
 #@ broken-link-checker
 msgid "Link tweaks"
 msgstr "Melhoria de Links"
 
-#: core/core.php:767
+#: core/core.php:780
 #@ broken-link-checker
 msgid "Apply custom formatting to broken links"
 msgstr "Aplicar formatação personalizada para os links offline"
 
-#: core/core.php:771
-#: core/core.php:802
+#: core/core.php:784
+#: core/core.php:815
 #@ broken-link-checker
 msgid "Edit CSS"
 msgstr "Editar CSS"
 
-#: core/core.php:798
+#: core/core.php:811
 #@ broken-link-checker
 msgid "Apply custom formatting to removed links"
 msgstr "Aplicar formatação personalizada para os links removidos"
 
-#: core/core.php:831
+#: core/core.php:844
 #@ broken-link-checker
 msgid "Stop search engines from following broken links"
 msgstr "Não permitir aos motores de busca seguir os links offline"
 
-#: core/core.php:861
+#: core/core.php:874
 #@ broken-link-checker
 msgid "Look for links in"
 msgstr "Procurar links em"
 
-#: core/core.php:872
+#: core/core.php:885
 #@ broken-link-checker
 msgid "Post statuses"
 msgstr "Estado do Artigo"
 
-#: core/core.php:905
+#: core/core.php:918
 #@ broken-link-checker
 msgid "Link types"
 msgstr "Tipos de link"
 
-#: core/core.php:911
+#: core/core.php:924
 #@ broken-link-checker
 msgid "Error : All link parsers missing!"
 msgstr "Erro : Análises aos links não encontradas!"
 
-#: core/core.php:918
+#: core/core.php:931
 #@ broken-link-checker
 msgid "Exclusion list"
 msgstr "Lista de exclusão"
 
-#: core/core.php:919
+#: core/core.php:932
 #@ broken-link-checker
 msgid "Don't check links where the URL contains any of these words (one per line) :"
 msgstr "Não verificar links que a URL tenha alguma destas palavras (uma por linha) :"
 
-#: core/core.php:937
+#: core/core.php:950
 #@ broken-link-checker
 msgid "Check links using"
 msgstr "Verificar links utilizando"
 
-#: core/core.php:956
+#: core/core.php:969
 #: includes/links.php:867
 #@ broken-link-checker
 msgid "Timeout"
 msgstr "Intervalo"
 
-#: core/core.php:962
-#: core/core.php:1031
-#: core/core.php:3019
+#: core/core.php:975
+#: core/core.php:1044
+#: core/core.php:3097
 #, php-format
 #@ broken-link-checker
 #@ default
 msgid "%s seconds"
 msgstr "%s segundos"
 
-#: core/core.php:971
+#: core/core.php:984
 #@ broken-link-checker
 msgid "Links that take longer than this to load will be marked as broken."
 msgstr "Os links que demoram mais que este tempo a abrir serão marcados como offline."
 
-#: core/core.php:978
+#: core/core.php:991
 #@ broken-link-checker
 msgid "Link monitor"
 msgstr "Monitor de links"
 
-#: core/core.php:986
+#: core/core.php:999
 #@ broken-link-checker
 msgid "Run continuously while the Dashboard is open"
 msgstr "Executar continuamente enquanto o Painel do WordPress está aberto"
 
-#: core/core.php:994
+#: core/core.php:1007
 #@ broken-link-checker
 msgid "Run hourly in the background"
 msgstr "Executar a cada hora em segundo plano"
 
-#: core/core.php:1025
+#: core/core.php:1038
 #@ broken-link-checker
 msgid "Max. execution time"
 msgstr "Tempo máximo de execução"
 
-#: core/core.php:1042
+#: core/core.php:1055
 #@ broken-link-checker
 msgid "The plugin works by periodically launching a background job that parses your posts for links, checks the discovered URLs, and performs other time-consuming tasks. Here you can set for how long, at most, the link monitor may run each time before stopping."
 msgstr "O plugin funciona executando periodicamente uma tarefa em segundo plano que analisa os links, verifica os URL encontrados e realiza outras tarefas que consomem tempo. Aqui pode-se estabelecer a duração máxima cada vez que o monitor de links é executado antes de parar."
 
-#: core/core.php:1051
+#: core/core.php:1064
 #@ broken-link-checker
 msgid "Server load limit"
 msgstr "Limite de carregamento do servidor"
 
-#: core/core.php:1066
+#: core/core.php:1079
 #, php-format
 #@ broken-link-checker
 msgid "Current load : %s"
 msgstr "Carga atual : %s"
 
-#: core/core.php:1072
+#: core/core.php:1085
 #, php-format
 #@ broken-link-checker
 msgid "Link checking will be suspended if the average <a href=\"%s\">server load</a> rises above this number. Leave this field blank to disable load limiting."
 msgstr "A verificação dos links será suspensa se a média do <a href=\"%s\">carregamento do servidor</a> passa este valor. Deixar o campo em branco para não existir limite."
 
-#: core/core.php:1080
+#: core/core.php:1093
 #@ broken-link-checker
 msgid "Not available"
 msgstr "Não disponível"
 
-#: core/core.php:1082
+#: core/core.php:1095
 #@ broken-link-checker
 msgid "Load limiting only works on Linux-like systems where <code>/proc/loadavg</code> is present and accessible."
 msgstr "O limite de carregamento somente funciona em sistemas Linux onde <code>/proc/loadavg</code> está presente e acessível."
 
-#: core/core.php:1138
+#: core/core.php:1169
 #@ broken-link-checker
 msgid "Forced recheck"
 msgstr "Reverificação forçada"
 
-#: core/core.php:1141
+#: core/core.php:1172
 #@ broken-link-checker
 msgid "Re-check all pages"
 msgstr "Verificar de novo todas as páginas"
 
-#: core/core.php:1145
+#: core/core.php:1176
 #@ broken-link-checker
 msgid "The \"Nuclear Option\". Click this button to make the plugin empty its link database and recheck the entire site from scratch."
 msgstr "\"Opção Nuclear\". Clique para limpar todos os dados do plugin na base de dados e reverificar todo o sítio desde o início."
 
-#: core/core.php:1156
+#: core/core.php:1187
 #@ default
 msgid "Save Changes"
 msgstr "Guardar alterações"
 
-#: core/core.php:1207
+#: core/core.php:1238
 #@ broken-link-checker
 msgid "Configure"
 msgstr "Configurar"
 
-#: core/core.php:1420
-#: core/core.php:1503
-#: core/core.php:1535
+#: core/core.php:1451
+#: core/core.php:1534
+#: core/core.php:1566
 #, php-format
 #@ broken-link-checker
 msgid "Database error : %s"
 msgstr "Erro na Base de dados: %s"
 
-#: core/core.php:1485
+#: core/core.php:1516
 #@ broken-link-checker
 msgid "You must enter a filter name!"
 msgstr "Deve introduzir um nome para o filtro!"
 
-#: core/core.php:1489
+#: core/core.php:1520
 #@ broken-link-checker
 msgid "Invalid search query."
 msgstr "Procura inválida."
 
-#: core/core.php:1498
+#: core/core.php:1529
 #, php-format
 #@ broken-link-checker
 msgid "Filter \"%s\" created"
 msgstr "Filtro \"%s\" criado"
 
-#: core/core.php:1525
+#: core/core.php:1556
 #@ broken-link-checker
 msgid "Filter ID not specified."
 msgstr "ID do Filtro não especificado."
 
-#: core/core.php:1532
+#: core/core.php:1563
 #@ broken-link-checker
 msgid "Filter deleted"
 msgstr "Filtro eliminado"
 
-#: core/core.php:1580
+#: core/core.php:1611
 #, php-format
 #@ broken-link-checker
 msgid "Replaced %d redirect with a direct link"
@@ -361,7 +361,7 @@ msgid_plural "Replaced %d redirects with direct links"
 msgstr[0] "Substituído %d redirect com link direto"
 msgstr[1] "Substituídos %d redirects com links diretos"
 
-#: core/core.php:1591
+#: core/core.php:1622
 #, php-format
 #@ broken-link-checker
 msgid "Failed to fix %d redirect"
@@ -369,12 +369,12 @@ msgid_plural "Failed to fix %d redirects"
 msgstr[0] "Não foi possível reparar %d redirect"
 msgstr[1] "Não foi possível reparar %d redirects"
 
-#: core/core.php:1601
+#: core/core.php:1632
 #@ broken-link-checker
 msgid "None of the selected links are redirects!"
 msgstr "Nenhum dos links selecionados são redirects!"
 
-#: core/core.php:1680
+#: core/core.php:1711
 #, php-format
 #@ broken-link-checker
 msgid "%d link updated."
@@ -382,7 +382,7 @@ msgid_plural "%d links updated."
 msgstr[0] "%d link atualizado."
 msgstr[1] "%d links atualizados."
 
-#: core/core.php:1691
+#: core/core.php:1722
 #, php-format
 #@ broken-link-checker
 msgid "Failed to update %d link."
@@ -390,7 +390,7 @@ msgid_plural "Failed to update %d links."
 msgstr[0] "Erro a atualizar %d link."
 msgstr[1] "Erro a atualizar %d links."
 
-#: core/core.php:1780
+#: core/core.php:1811
 #, php-format
 #@ broken-link-checker
 msgid "%d link removed"
@@ -398,7 +398,7 @@ msgid_plural "%d links removed"
 msgstr[0] "%d link eliminado"
 msgstr[1] "%d links eliminados"
 
-#: core/core.php:1791
+#: core/core.php:1822
 #, php-format
 #@ broken-link-checker
 msgid "Failed to remove %d link"
@@ -406,7 +406,7 @@ msgid_plural "Failed to remove %d links"
 msgstr[0] "Erro a remover %d link"
 msgstr[1] "Erro a remover %d links"
 
-#: core/core.php:1900
+#: core/core.php:1931
 #, php-format
 #@ default
 msgid "%d item was skipped because it can't be moved to the Trash. You need to delete it manually."
@@ -414,12 +414,12 @@ msgid_plural "%d items were skipped because they can't be moved to the Trash. Yo
 msgstr[0] "%d item foi evitado porque não pode ser movido para o Lixo. Necessita de o efetuar manualmente."
 msgstr[1] "%d itens foram evitados porque não podem ser movidos para o Lixo. Necessita de o efetuar manualmente."
 
-#: core/core.php:1921
+#: core/core.php:1952
 #@ broken-link-checker
 msgid "Didn't find anything to delete!"
 msgstr "Não foi encontrado nada para apagar!"
 
-#: core/core.php:1950
+#: core/core.php:1981
 #, php-format
 #@ broken-link-checker
 msgid "%d link scheduled for rechecking"
@@ -427,19 +427,19 @@ msgid_plural "%d links scheduled for rechecking"
 msgstr[0] "%d link agendado para verificação"
 msgstr[1] "%d links agendados para verificação"
 
-#: core/core.php:1995
-#: core/core.php:2637
+#: core/core.php:2026
+#: core/core.php:2715
 #@ broken-link-checker
 msgid "This link was manually marked as working by the user."
 msgstr "Este link foi assinalado manualmente como válido pelo utilizador."
 
-#: core/core.php:2002
+#: core/core.php:2033
 #, php-format
 #@ broken-link-checker
 msgid "Couldn't modify link %d"
 msgstr "Impossível modificar o link %d"
 
-#: core/core.php:2013
+#: core/core.php:2044
 #, php-format
 #@ broken-link-checker
 msgid "%d link marked as not broken"
@@ -447,59 +447,59 @@ msgid_plural "%d links marked as not broken"
 msgstr[0] "%d link marcado como funcional"
 msgstr[1] "%d links marcados como funcionais"
 
-#: core/core.php:2052
+#: core/core.php:2083
 #@ broken-link-checker
 msgid "Table columns"
 msgstr "Colunas da Tabela"
 
-#: core/core.php:2071
+#: core/core.php:2102
 #@ default
 msgid "Show on screen"
 msgstr "Mostrar no ecrán"
 
-#: core/core.php:2078
+#: core/core.php:2109
 #@ broken-link-checker
 msgid "links"
 msgstr "links"
 
-#: core/core.php:2079
+#: core/core.php:2110
 #: includes/admin/table-printer.php:171
 #@ default
 #@ broken-link-checker
 msgid "Apply"
 msgstr "Aplicar"
 
-#: core/core.php:2083
+#: core/core.php:2114
 #@ broken-link-checker
 msgid "Misc"
 msgstr "Vários"
 
-#: core/core.php:2098
+#: core/core.php:2129
 #, php-format
 #@ broken-link-checker
 msgid "Highlight links broken for at least %s days"
 msgstr "Realçar links offline pelo menos durante %s dias"
 
-#: core/core.php:2107
+#: core/core.php:2138
 #@ broken-link-checker
 msgid "Color-code status codes"
 msgstr "Cor-código status códigos"
 
-#: core/core.php:2124
-#: core/core.php:2622
-#: core/core.php:2662
-#: core/core.php:2695
-#: core/core.php:2782
+#: core/core.php:2155
+#: core/core.php:2700
+#: core/core.php:2740
+#: core/core.php:2773
+#: core/core.php:2860
 #@ broken-link-checker
 msgid "You're not allowed to do that!"
 msgstr "Não permitido!"
 
-#: core/core.php:2492
+#: core/core.php:2570
 #@ broken-link-checker
 msgid "View broken links"
 msgstr "Ver links offline"
 
-#: core/core.php:2493
+#: core/core.php:2571
 #, php-format
 #@ broken-link-checker
 msgid "Found %d broken link"
@@ -507,12 +507,12 @@ msgid_plural "Found %d broken links"
 msgstr[0] "Encontrado %d Link offline"
 msgstr[1] "Encontrados %d Links offline"
 
-#: core/core.php:2499
+#: core/core.php:2577
 #@ broken-link-checker
 msgid "No broken links found."
 msgstr "Não existem links offline."
 
-#: core/core.php:2506
+#: core/core.php:2584
 #, php-format
 #@ broken-link-checker
 msgid "%d URL in the work queue"
@@ -520,156 +520,156 @@ msgid_plural "%d URLs in the work queue"
 msgstr[0] "%d URL em espera"
 msgstr[1] "%d URLs em espera"
 
-#: core/core.php:2509
+#: core/core.php:2587
 #@ broken-link-checker
 msgid "No URLs in the work queue."
 msgstr "Não existem URL em espera para verificação."
 
-#: core/core.php:2538
+#: core/core.php:2616
 #@ broken-link-checker
 msgid "Searching your blog for links..."
 msgstr "Procurando links..."
 
-#: core/core.php:2540
+#: core/core.php:2618
 #@ broken-link-checker
 msgid "No links detected."
 msgstr "Nenhuns links encontrados."
 
-#: core/core.php:2630
-#: core/core.php:2670
-#: core/core.php:2710
-#: core/core.php:2792
+#: core/core.php:2708
+#: core/core.php:2748
+#: core/core.php:2788
+#: core/core.php:2870
 #, php-format
 #@ broken-link-checker
 msgid "Oops, I can't find the link %d"
 msgstr "Oops, não é possível encontrar o link %d"
 
-#: core/core.php:2643
-#: core/core.php:2680
+#: core/core.php:2721
+#: core/core.php:2758
 #@ broken-link-checker
 msgid "Oops, couldn't modify the link!"
 msgstr "Oops, não é possível modificar o link!"
 
-#: core/core.php:2646
-#: core/core.php:2683
-#: core/core.php:2818
+#: core/core.php:2724
+#: core/core.php:2761
+#: core/core.php:2896
 #@ broken-link-checker
 msgid "Error : link_id not specified"
 msgstr "Erro : link_id não especificado"
 
-#: core/core.php:2719
+#: core/core.php:2797
 #@ broken-link-checker
 msgid "Oops, the new URL is invalid!"
 msgstr "Oops, a nova URL não é válida!"
 
-#: core/core.php:2801
+#: core/core.php:2879
 #@ broken-link-checker
 msgid "An unexpected error occured!"
 msgstr "Ocorreu um erro inesperado!"
 
-#: core/core.php:2701
+#: core/core.php:2779
 #@ broken-link-checker
 msgid "Error : link_id or new_url not specified"
 msgstr "Erro : link_id ou new_url não especificado"
 
-#: core/core.php:2827
+#: core/core.php:2905
 #@ broken-link-checker
 msgid "You don't have sufficient privileges to access this information!"
 msgstr "Não tem privilégios suficientes para aceder a esta informação!"
 
-#: core/core.php:2840
+#: core/core.php:2918
 #@ broken-link-checker
 msgid "Error : link ID not specified"
 msgstr "Erro : link ID não especificado"
 
-#: core/core.php:2854
+#: core/core.php:2932
 #, php-format
 #@ broken-link-checker
 msgid "Failed to load link details (%s)"
 msgstr "Erro a carregar os detalhes do link (%s)"
 
-#: core/core.php:2908
+#: core/core.php:2986
 #@ broken-link-checker
 msgid "Broken Link Checker"
 msgstr "Links offline"
 
-#: core/core.php:2928
+#: core/core.php:3006
 #@ broken-link-checker
 msgid "PHP version"
 msgstr "Versão PHP"
 
-#: core/core.php:2934
+#: core/core.php:3012
 #@ broken-link-checker
 msgid "MySQL version"
 msgstr "Versão MySQL"
 
-#: core/core.php:2947
+#: core/core.php:3025
 #@ broken-link-checker
 msgid "You have an old version of CURL. Redirect detection may not work properly."
 msgstr "Versão de CURL obsoleta. A deteção de redirects pode não funcionar corretamente."
 
-#: core/core.php:2959
-#: core/core.php:2975
-#: core/core.php:2980
+#: core/core.php:3037
+#: core/core.php:3053
+#: core/core.php:3058
 #@ broken-link-checker
 msgid "Not installed"
 msgstr "Não instalado"
 
-#: core/core.php:2962
+#: core/core.php:3040
 #@ broken-link-checker
 msgid "CURL version"
 msgstr "Versão CURL"
 
-#: core/core.php:2968
+#: core/core.php:3046
 #@ broken-link-checker
 msgid "Installed"
 msgstr "Instalado"
 
-#: core/core.php:2981
+#: core/core.php:3059
 #@ broken-link-checker
 msgid "You must have either CURL or Snoopy installed for the plugin to work!"
 msgstr "Instalação de CURL ou Snoopy necessário para que funcione o plugin!"
 
-#: core/core.php:2992
+#: core/core.php:3070
 #@ broken-link-checker
 msgid "On"
 msgstr "Ativado"
 
-#: core/core.php:2993
+#: core/core.php:3071
 #@ broken-link-checker
 msgid "Redirects may be detected as broken links when safe_mode is on."
 msgstr "Os redirects podem ser detetados como links offline quando o safe_mode está habilitado."
 
-#: core/core.php:2998
-#: core/core.php:3012
+#: core/core.php:3076
+#: core/core.php:3090
 #@ broken-link-checker
 msgid "Off"
 msgstr "Desativado"
 
-#: core/core.php:3006
+#: core/core.php:3084
 #, php-format
 #@ broken-link-checker
 msgid "On ( %s )"
 msgstr "Ativado ( %s )"
 
-#: core/core.php:3007
+#: core/core.php:3085
 #@ broken-link-checker
 msgid "Redirects may be detected as broken links when open_basedir is on."
 msgstr "Os redirects podem ser considerados links offline quando o open_basedir está ativo."
 
-#: core/core.php:3036
+#: core/core.php:3114
 #@ broken-link-checker
 msgid "If this value is zero even after several page reloads you have probably encountered a bug."
 msgstr "Se este valor é zero depois de recarregar várias provavelmente encontrou um bug."
 
-#: core/core.php:3159
-#: core/core.php:3278
+#: core/core.php:3237
+#: core/core.php:3356
 #, php-format
 #@ broken-link-checker
 msgid "[%s] Broken links detected"
 msgstr "[%s] Links offline encontrados"
 
-#: core/core.php:3165
+#: core/core.php:3243
 #, php-format
 #@ broken-link-checker
 msgid "Broken Link Checker has detected %d new broken link on your site."
@@ -677,7 +677,7 @@ msgid_plural "Broken Link Checker has detected %d new broken links on your site.
 msgstr[0] "Links offline detetou %d novo link sem ligação."
 msgstr[1] "Links offline detetou %d novos links sem ligação."
 
-#: core/core.php:3196
+#: core/core.php:3274
 #, php-format
 #@ broken-link-checker
 msgid "Here's a list of the first %d broken links:"
@@ -685,30 +685,30 @@ msgid_plural "Here's a list of the first %d broken links:"
 msgstr[0] "Lista do primeiro %d link sem ligação:"
 msgstr[1] "Lista dos primeiros %d links sem ligação:"
 
-#: core/core.php:3204
+#: core/core.php:3282
 #@ broken-link-checker
 msgid "Here's a list of the new broken links: "
 msgstr "Novos links offline: "
 
-#: core/core.php:3213
+#: core/core.php:3291
 #, php-format
 #@ broken-link-checker
 msgid "Link text : %s"
 msgstr "Texto do Link : %s"
 
-#: core/core.php:3214
+#: core/core.php:3292
 #, php-format
 #@ broken-link-checker
 msgid "Link URL : <a href=\"%s\">%s</a>"
 msgstr "Link URL : <a href=\"%s\">%s</a>"
 
-#: core/core.php:3215
+#: core/core.php:3293
 #, php-format
 #@ broken-link-checker
 msgid "Source : %s"
 msgstr "Fonte : %s"
 
-#: core/core.php:3229
+#: core/core.php:3307
 #@ broken-link-checker
 msgid "You can see all broken links here:"
 msgstr "Links offline:"
@@ -728,7 +728,7 @@ msgstr "Bi-Mensal"
 msgid "Broken Link Checker installation failed. Try deactivating and then reactivating the plugin."
 msgstr "A instalação do plugin Links offline falhou. Desative e ative o plugin."
 
-#: includes/any-post.php:398
+#: includes/any-post.php:407
 #: modules/containers/blogroll.php:46
 #: modules/containers/comment.php:153
 #: modules/containers/custom_field.php:207
@@ -736,96 +736,96 @@ msgstr "A instalação do plugin Links offline falhou. Desative e ative o plugin
 msgid "Edit"
 msgstr "Editar"
 
-#: includes/any-post.php:406
+#: includes/any-post.php:415
 #: modules/containers/custom_field.php:213
 #@ default
 msgid "Move this item to the Trash"
 msgstr "Apagar este item"
 
-#: includes/any-post.php:408
+#: includes/any-post.php:417
 #: modules/containers/custom_field.php:215
 #@ default
 msgid "Trash"
 msgstr "Lixo"
 
-#: includes/any-post.php:413
+#: includes/any-post.php:422
 #: modules/containers/custom_field.php:220
 #@ default
 msgid "Delete this item permanently"
 msgstr "Apagar este item definitivamente"
 
-#: includes/any-post.php:415
+#: includes/any-post.php:424
 #: modules/containers/blogroll.php:47
 #: modules/containers/custom_field.php:222
 #@ default
 msgid "Delete"
 msgstr "Apagar"
 
-#: includes/any-post.php:428
+#: includes/any-post.php:437
 #, php-format
 #@ default
 msgid "Preview &#8220;%s&#8221;"
 msgstr "Pré-vizualizar &#8220;%s&#8221;"
 
-#: includes/any-post.php:429
+#: includes/any-post.php:438
 #@ default
 msgid "Preview"
 msgstr "Pré-visualizar"
 
-#: includes/any-post.php:436
+#: includes/any-post.php:445
 #, php-format
 #@ default
 msgid "View &#8220;%s&#8221;"
 msgstr "Visualizar &#8220;%s&#8221;"
 
-#: includes/any-post.php:437
+#: includes/any-post.php:446
 #: modules/containers/comment.php:166
 #: modules/containers/custom_field.php:227
 #@ default
 msgid "View"
 msgstr "Ver"
 
-#: includes/any-post.php:456
+#: includes/any-post.php:465
 #: modules/containers/custom_field.php:207
 #@ default
 msgid "Edit this item"
 msgstr "Editar este item"
 
-#: includes/any-post.php:520
+#: includes/any-post.php:529
 #: modules/containers/blogroll.php:83
 #: modules/containers/comment.php:43
 #@ broken-link-checker
 msgid "Nothing to update"
 msgstr "Sem atualização"
 
-#: includes/any-post.php:530
+#: includes/any-post.php:539
 #, php-format
 #@ broken-link-checker
 msgid "Updating post %d failed"
 msgstr "Atualização do artigo %d falhou"
 
-#: includes/any-post.php:567
+#: includes/any-post.php:576
 #: modules/containers/custom_field.php:294
 #, php-format
 #@ broken-link-checker
 msgid "Failed to delete post \"%s\" (%d)"
 msgstr "Erro ao apagar o artigo \"%s\" (%d)"
 
-#: includes/any-post.php:586
+#: includes/any-post.php:595
 #: modules/containers/custom_field.php:313
 #, php-format
 #@ broken-link-checker
 msgid "Can't move post \"%s\" (%d) to the trash because the trash feature is disabled"
 msgstr "Não é possível mover o artigo \"%s\" (%d) para o lixo porque a função está desabilitada"
 
-#: includes/any-post.php:606
+#: includes/any-post.php:615
 #: modules/containers/custom_field.php:332
 #, php-format
 #@ broken-link-checker
 msgid "Failed to move post \"%s\" (%d) to the trash"
 msgstr "Erro ao apagar o artigo \"%s\" (%d)"
 
-#: includes/any-post.php:714
+#: includes/any-post.php:723
 #, php-format
 #@ broken-link-checker
 msgid "%d post deleted."
@@ -833,7 +833,7 @@ msgid_plural "%d posts deleted."
 msgstr[0] "%d artigo apagado."
 msgstr[1] "%d artigos apagados."
 
-#: includes/any-post.php:716
+#: includes/any-post.php:725
 #, php-format
 #@ broken-link-checker
 msgid "%d page deleted."
@@ -841,7 +841,7 @@ msgid_plural "%d pages deleted."
 msgstr[0] "%d página apagada."
 msgstr[1] "%d páginas apagadas."
 
-#: includes/any-post.php:718
+#: includes/any-post.php:727
 #, php-format
 #@ broken-link-checker
 msgid "%d \"%s\" deleted."
@@ -849,7 +849,7 @@ msgid_plural "%d \"%s\" deleted."
 msgstr[0] "%d \"%s\" apagado."
 msgstr[1] "%d \"%s\" apagados."
 
-#: includes/any-post.php:737
+#: includes/any-post.php:746
 #, php-format
 #@ broken-link-checker
 msgid "%d post moved to the Trash."
@@ -857,7 +857,7 @@ msgid_plural "%d posts moved to the Trash."
 msgstr[0] "%d artigo transferido para o Lixo."
 msgstr[1] "%d artigos transferidos para o Lixo."
 
-#: includes/any-post.php:739
+#: includes/any-post.php:748
 #, php-format
 #@ broken-link-checker
 msgid "%d page moved to the Trash."
@@ -865,7 +865,7 @@ msgid_plural "%d pages moved to the Trash."
 msgstr[0] "%d página transferida para o Lixo."
 msgstr[1] "%d páginas transferidas para o Lixo."
 
-#: includes/any-post.php:741
+#: includes/any-post.php:750
 #, php-format
 #@ broken-link-checker
 msgid "%d \"%s\" moved to the Trash."
@@ -881,8 +881,8 @@ msgid_plural "%d '%s' have been deleted"
 msgstr[0] "%d '%s' foi apagado"
 msgstr[1] "%d '%s' foram apagados"
 
-#: includes/containers.php:880
-#: includes/containers.php:898
+#: includes/containers.php:882
+#: includes/containers.php:900
 #, php-format
 #@ broken-link-checker
 msgid "Container type '%s' not recognized"
@@ -1008,7 +1008,7 @@ msgid "Couldn't delete the link's database record"
 msgstr "Não é possível apagar o registo do link na Base de dados"
 
 #: includes/links.php:863
-#: modules/checkers/http.php:289
+#: modules/checkers/http.php:304
 #: modules/extras/mediafire.php:101
 #@ link status
 #@ broken-link-checker
@@ -1033,19 +1033,19 @@ msgstr "Falso positivo"
 msgid "OK"
 msgstr "OK"
 
-#: includes/parsers.php:109
+#: includes/parsers.php:117
 #, php-format
 #@ broken-link-checker
 msgid "Editing is not implemented in the '%s' parser"
 msgstr "Edição não implementada no '%s' analisador sintático"
 
-#: includes/parsers.php:124
+#: includes/parsers.php:132
 #, php-format
 #@ broken-link-checker
 msgid "Unlinking is not implemented in the '%s' parser"
 msgstr "Remover links não foi implementado no '%s' analisador sintático"
 
-#: includes/admin/db-upgrade.php:95
+#: includes/admin/db-upgrade.php:97
 #, php-format
 #@ broken-link-checker
 msgid "Failed to delete old DB tables. Database error : %s"
@@ -1058,7 +1058,7 @@ msgid "Wait..."
 msgstr "Espere ..."
 
 #: includes/admin/links-page-js.php:107
-#: includes/admin/table-printer.php:663
+#: includes/admin/table-printer.php:671
 #@ broken-link-checker
 msgid "Not broken"
 msgstr "Funcional"
@@ -1103,8 +1103,8 @@ msgid "The plugin failed to remove the link."
 msgstr "O plugin não apagou o link."
 
 #: includes/admin/links-page-js.php:585
-#: includes/admin/table-printer.php:281
-#: includes/admin/table-printer.php:657
+#: includes/admin/table-printer.php:289
+#: includes/admin/table-printer.php:665
 #@ broken-link-checker
 msgid "Unlink"
 msgstr "Remover link"
@@ -1172,13 +1172,13 @@ msgid "Link text"
 msgstr "Texto do link"
 
 #: includes/admin/search-form.php:45
-#: includes/admin/table-printer.php:208
+#: includes/admin/table-printer.php:216
 #@ broken-link-checker
 msgid "URL"
 msgstr "URL"
 
 #: includes/admin/search-form.php:48
-#: includes/admin/table-printer.php:527
+#: includes/admin/table-printer.php:535
 #@ broken-link-checker
 msgid "HTTP code"
 msgstr "Código HTTP"
@@ -1210,178 +1210,178 @@ msgid "Search Links"
 msgstr "Procurar"
 
 #: includes/admin/search-form.php:113
-#: includes/admin/table-printer.php:357
-#: includes/admin/table-printer.php:687
-#: includes/admin/table-printer.php:812
+#: includes/admin/table-printer.php:365
+#: includes/admin/table-printer.php:695
+#: includes/admin/table-printer.php:820
 #@ broken-link-checker
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: includes/admin/sidebar.php:47
+#: includes/admin/sidebar.php:48
 #@ broken-link-checker
 msgid "Donate $10, $20 or $50!"
 msgstr "Doar $10, $20 ou $50!"
 
-#: includes/admin/sidebar.php:50
+#: includes/admin/sidebar.php:51
 #@ broken-link-checker
 msgid "If you like this plugin, please donate to support development and maintenance!"
 msgstr "Se gosta deste plugin, por favor faça um donativo para financiar o seu desenvolvimento e manutenção!"
 
-#: includes/admin/sidebar.php:68
+#: includes/admin/sidebar.php:69
 #@ broken-link-checker
 msgid "Return to WordPress Dashboard"
 msgstr "Regressar ao Painel"
 
-#: includes/admin/sidebar.php:24
+#: includes/admin/sidebar.php:25
 #@ broken-link-checker
 msgid "More plugins by Janis Elsts"
 msgstr "Mais plugins de Janis Elsts"
 
-#: includes/admin/table-printer.php:185
+#: includes/admin/table-printer.php:188
 #@ broken-link-checker
 msgid "Compact View"
 msgstr "Visão compacta"
 
-#: includes/admin/table-printer.php:186
+#: includes/admin/table-printer.php:193
 #@ broken-link-checker
 msgid "Detailed View"
 msgstr "Detalhes"
 
-#: includes/admin/table-printer.php:215
+#: includes/admin/table-printer.php:223
 #@ broken-link-checker
 msgid "Source"
 msgstr "Fonte"
 
-#: includes/admin/table-printer.php:221
+#: includes/admin/table-printer.php:229
 #@ broken-link-checker
 msgid "Link Text"
 msgstr "Texto do Link"
 
-#: includes/admin/table-printer.php:276
+#: includes/admin/table-printer.php:284
 #@ broken-link-checker
 msgid "Bulk Actions"
 msgstr "Edição em Massa"
 
-#: includes/admin/table-printer.php:277
-#: includes/admin/table-printer.php:654
+#: includes/admin/table-printer.php:285
+#: includes/admin/table-printer.php:662
 #@ broken-link-checker
 msgid "Edit URL"
 msgstr "Editar URL"
 
-#: includes/admin/table-printer.php:278
+#: includes/admin/table-printer.php:286
 #@ broken-link-checker
 msgid "Recheck"
 msgstr "Voltar a verificar"
 
-#: includes/admin/table-printer.php:279
+#: includes/admin/table-printer.php:287
 #@ broken-link-checker
 msgid "Fix redirects"
 msgstr "Reparar redirects"
 
-#: includes/admin/table-printer.php:280
+#: includes/admin/table-printer.php:288
 #@ broken-link-checker
 msgid "Mark as not broken"
 msgstr "Funcional"
 
-#: includes/admin/table-printer.php:284
+#: includes/admin/table-printer.php:292
 #@ broken-link-checker
 msgid "Move sources to Trash"
 msgstr "Apagar fontes"
 
-#: includes/admin/table-printer.php:286
+#: includes/admin/table-printer.php:294
 #@ broken-link-checker
 msgid "Delete sources"
 msgstr "Apagar fontes"
 
-#: includes/admin/table-printer.php:301
+#: includes/admin/table-printer.php:309
 #@ default
 msgid "&laquo;"
 msgstr "&laquo;"
 
-#: includes/admin/table-printer.php:302
+#: includes/admin/table-printer.php:310
 #@ default
 msgid "&raquo;"
 msgstr "&raquo;"
 
-#: includes/admin/table-printer.php:310
+#: includes/admin/table-printer.php:318
 #, php-format
 #@ broken-link-checker
 msgid "Displaying %s&#8211;%s of <span class=\"current-link-count\">%s</span>"
 msgstr "Mostrando %s&#8211;%s de <span class=\"current-link-count\">%s</span>"
 
-#: includes/admin/table-printer.php:333
+#: includes/admin/table-printer.php:341
 #@ broken-link-checker
 msgid "Bulk Edit URLs"
 msgstr "Editar URLs em massa"
 
-#: includes/admin/table-printer.php:335
+#: includes/admin/table-printer.php:343
 #@ broken-link-checker
 msgid "Find"
 msgstr "Procura"
 
-#: includes/admin/table-printer.php:339
+#: includes/admin/table-printer.php:347
 #@ broken-link-checker
 msgid "Replace with"
 msgstr "Substituir com"
 
-#: includes/admin/table-printer.php:347
+#: includes/admin/table-printer.php:355
 #@ broken-link-checker
 msgid "Case sensitive"
 msgstr "Coincidir maiúsculas/minúsculas"
 
-#: includes/admin/table-printer.php:351
+#: includes/admin/table-printer.php:359
 #@ broken-link-checker
 msgid "Regular expression"
 msgstr "Expressão regular"
 
-#: includes/admin/table-printer.php:359
-#: includes/admin/table-printer.php:813
+#: includes/admin/table-printer.php:367
+#: includes/admin/table-printer.php:821
 #@ broken-link-checker
 msgid "Update"
 msgstr "Atualizar"
 
-#: includes/admin/table-printer.php:512
+#: includes/admin/table-printer.php:520
 #@ broken-link-checker
 msgid "Post published on"
 msgstr "Artigo publicado em"
 
-#: includes/admin/table-printer.php:517
+#: includes/admin/table-printer.php:525
 #@ broken-link-checker
 msgid "Link last checked"
 msgstr "Última verificação"
 
-#: includes/admin/table-printer.php:521
+#: includes/admin/table-printer.php:529
 #@ broken-link-checker
 msgid "Never"
 msgstr "Nunca"
 
-#: includes/admin/table-printer.php:532
+#: includes/admin/table-printer.php:540
 #@ broken-link-checker
 msgid "Response time"
 msgstr "Tempo de resposta"
 
-#: includes/admin/table-printer.php:534
+#: includes/admin/table-printer.php:542
 #, php-format
 #@ broken-link-checker
 msgid "%2.3f seconds"
 msgstr "%2.3f segundos"
 
-#: includes/admin/table-printer.php:537
+#: includes/admin/table-printer.php:545
 #@ broken-link-checker
 msgid "Final URL"
 msgstr "URL final"
 
-#: includes/admin/table-printer.php:542
+#: includes/admin/table-printer.php:550
 #@ broken-link-checker
 msgid "Redirect count"
 msgstr "Contagem de redirects"
 
-#: includes/admin/table-printer.php:547
+#: includes/admin/table-printer.php:555
 #@ broken-link-checker
 msgid "Instance count"
 msgstr "Contagem de casos"
 
-#: includes/admin/table-printer.php:556
+#: includes/admin/table-printer.php:564
 #, php-format
 #@ broken-link-checker
 msgid "This link has failed %d time."
@@ -1389,81 +1389,81 @@ msgid_plural "This link has failed %d times."
 msgstr[0] "Este link falhou %d vez."
 msgstr[1] "Este link falhou %d vezes."
 
-#: includes/admin/table-printer.php:564
+#: includes/admin/table-printer.php:572
 #, php-format
 #@ broken-link-checker
 msgid "This link has been broken for %s."
 msgstr "Link offline durante %s."
 
-#: includes/admin/table-printer.php:575
+#: includes/admin/table-printer.php:583
 #@ broken-link-checker
 msgid "Log"
 msgstr "Registo"
 
-#: includes/admin/table-printer.php:600
+#: includes/admin/table-printer.php:608
 #@ broken-link-checker
 msgid "Show more info about this link"
 msgstr "Mostrar mais informação sobre este link"
 
-#: includes/admin/table-printer.php:634
+#: includes/admin/table-printer.php:642
 #@ broken-link-checker
 msgid "Broken for"
 msgstr "Offline"
 
-#: includes/admin/table-printer.php:656
+#: includes/admin/table-printer.php:664
 #@ broken-link-checker
 msgid "Remove this link from all posts"
 msgstr "Eliminar este link"
 
-#: includes/admin/table-printer.php:662
+#: includes/admin/table-printer.php:670
 #@ broken-link-checker
 msgid "Remove this link from the list of broken links and mark it as valid"
 msgstr "Eliminar este link da lista dos links offline e marcá-lo como válido"
 
-#: includes/admin/table-printer.php:688
+#: includes/admin/table-printer.php:696
 #@ broken-link-checker
 msgid "Update URL"
 msgstr "Atualizar URL"
 
-#: includes/admin/table-printer.php:715
+#: includes/admin/table-printer.php:723
 #@ broken-link-checker
 msgid "[An orphaned link! This is a bug.]"
 msgstr "[Um link órfão! Bug.]"
 
-#: modules/checkers/http.php:268
+#: modules/checkers/http.php:283
 #@ broken-link-checker
 msgid "Server Not Found"
 msgstr "Servidor Não Encontrado"
 
-#: modules/checkers/http.php:283
+#: modules/checkers/http.php:298
 #@ broken-link-checker
 msgid "Connection Failed"
 msgstr "Sem Ligação"
 
-#: modules/checkers/http.php:318
-#: modules/checkers/http.php:388
+#: modules/checkers/http.php:340
+#: modules/checkers/http.php:410
 #, php-format
 #@ broken-link-checker
 msgid "HTTP code : %d"
 msgstr "Código HTTP : %d"
 
-#: modules/checkers/http.php:320
-#: modules/checkers/http.php:390
+#: modules/checkers/http.php:342
+#: modules/checkers/http.php:412
 #@ broken-link-checker
 msgid "(No response)"
 msgstr "(Sem resposta)"
 
-#: modules/checkers/http.php:326
+#: modules/checkers/http.php:348
 #@ broken-link-checker
 msgid "Most likely the connection timed out or the domain doesn't exist."
 msgstr "Provável que o tempo da ligação se tenha esgotado ou que o domínio não exista."
 
-#: modules/checkers/http.php:397
+#: modules/checkers/http.php:419
 #@ broken-link-checker
 msgid "Request timed out."
 msgstr "Tempo de espera esgotado."
 
-#: modules/checkers/http.php:415
+#: modules/checkers/http.php:437
 #@ broken-link-checker
 msgid "Using Snoopy"
 msgstr "Utilizando Snoopy"
@@ -1542,7 +1542,7 @@ msgstr "Ver comentário"
 msgid "Comment"
 msgstr "Comentário"
 
-#: modules/containers/comment.php:356
+#: modules/containers/comment.php:359
 #, php-format
 #@ broken-link-checker
 msgid "%d comment has been deleted."
@@ -1550,7 +1550,7 @@ msgid_plural "%d comments have been deleted."
 msgstr[0] "%d comentário foi apagado."
 msgstr[1] "%d comentários foram apagados."
 
-#: modules/containers/comment.php:375
+#: modules/containers/comment.php:378
 #, php-format
 #@ broken-link-checker
 msgid "%d comment moved to the Trash."
@@ -1603,25 +1603,12 @@ msgstr "Vídeo DailyMotion embutido"
 msgid "Embedded videos can't be edited using Broken Link Checker. Please edit or replace the video in question manually."
 msgstr "Vídeos embutidos não podem ser editados utilizando o Links offline. Por favor, editar ou substituir manualmente o vídeo em questão."
 
-#: modules/extras/fileserve.php:112
 #: modules/extras/mediafire.php:91
 #: modules/extras/mediafire.php:96
-#: modules/extras/megaupload.php:81
-#: modules/extras/megaupload.php:123
 #: modules/extras/rapidshare.php:139
 #@ broken-link-checker
 msgid "Not Found"
 msgstr "Não Encontrado"
-
-#: modules/extras/megaupload.php:130
-#@ broken-link-checker
-msgid "File Temporarily Unavailable"
-msgstr "Ficheiro Temporariamente Indisponível"
-
-#: modules/extras/megaupload.php:136
-#@ broken-link-checker
-msgid "API Error"
-msgstr "Erro API"
 
 #: modules/extras/rapidshare.php:158
 #@ broken-link-checker
@@ -1722,18 +1709,18 @@ msgstr "Imagem"
 msgid "Custom field"
 msgstr "Campo personalizado"
 
-#: core/core.php:735
+#: core/core.php:748
 #@ broken-link-checker
 msgid "Send authors e-mail notifications about broken links in their posts"
 msgstr "Enviar aos autores notificações por e-mail sobre links offline encontrados nos seus artigos"
 
-#: core/core.php:2566
+#: core/core.php:2644
 #@ broken-link-checker
 msgctxt "current load"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: core/core.php:3284
+#: core/core.php:3362
 #, php-format
 #@ broken-link-checker
 msgid "Broken Link Checker has detected %d new broken link in your posts."
@@ -1741,7 +1728,7 @@ msgid_plural "Broken Link Checker has detected %d new broken links in your posts
 msgstr[0] "%d novo link offline encontrado nos seus artigos."
 msgstr[1] "%d novos links offline encontrados nos seus artigos."
 
-#: includes/admin/table-printer.php:618
+#: includes/admin/table-printer.php:626
 #@ broken-link-checker
 msgctxt "checked how long ago"
 msgid "Checked"
@@ -1777,73 +1764,67 @@ msgctxt "module name"
 msgid "Embedded DailyMotion videos"
 msgstr "Vídeos DailyMotion embutido"
 
-#: includes/extra-strings.php:9
+#: includes/extra-strings.php:8
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Embedded Vimeo videos"
 msgstr "Vídeo Vimeo embutido"
 
-#: includes/extra-strings.php:11
+#: includes/extra-strings.php:10
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Embedded YouTube videos"
 msgstr "Vídeos YouTube embutido"
 
-#: includes/extra-strings.php:12
+#: includes/extra-strings.php:11
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Embedded YouTube videos (old embed code)"
 msgstr "Vídeos YouTube embutido (código antigo)"
 
-#: includes/extra-strings.php:14
+#: includes/extra-strings.php:12
 #@ broken-link-checker
 msgctxt "module name"
 msgid "HTML images"
 msgstr "Imagens HTML"
 
-#: includes/extra-strings.php:15
+#: includes/extra-strings.php:13
 #@ broken-link-checker
 msgctxt "module name"
 msgid "HTML links"
 msgstr "HTML links"
 
-#: includes/extra-strings.php:16
+#: includes/extra-strings.php:14
 #@ broken-link-checker
 msgctxt "module name"
 msgid "MediaFire API"
 msgstr "MediaFire API"
 
-#: includes/extra-strings.php:17
-#@ broken-link-checker
-msgctxt "module name"
-msgid "MegaUpload API"
-msgstr "MegaUpload API"
-
-#: includes/extra-strings.php:18
+#: includes/extra-strings.php:15
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Plaintext URLs"
 msgstr "Texto URLs"
 
-#: includes/extra-strings.php:19
+#: includes/extra-strings.php:16
 #@ broken-link-checker
 msgctxt "module name"
 msgid "RapidShare API"
 msgstr "RapidShare API"
 
-#: includes/extra-strings.php:21
+#: includes/extra-strings.php:18
 #@ broken-link-checker
 msgctxt "module name"
 msgid "YouTube API"
 msgstr "YouTube API"
 
-#: includes/extra-strings.php:22
+#: includes/extra-strings.php:19
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Posts"
 msgstr "Artigos"
 
-#: includes/extra-strings.php:23
+#: includes/extra-strings.php:20
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Pages"
@@ -1856,8 +1837,6 @@ msgid "Unknown"
 msgstr "Desconhecido"
 
 #: includes/links.php:893
-#: modules/extras/fileserve.php:121
-#: modules/extras/megaupload.php:115
 #: modules/extras/rapidshare.php:145
 #: modules/extras/rapidshare.php:151
 #: modules/extras/rapidshare.php:178
@@ -1970,19 +1949,19 @@ msgctxt "verb"
 msgid "Trash"
 msgstr "Lixo"
 
-#: core/core.php:787
+#: core/core.php:800
 #, php-format
 #@ broken-link-checker
 msgid "Example : Lorem ipsum <a %s>broken link</a>, dolor sit amet."
 msgstr "Exemplo : Lorem ipsum <a %s>link offline</a>, dolor sit amet."
 
-#: core/core.php:790
-#: core/core.php:821
+#: core/core.php:803
+#: core/core.php:834
 #@ broken-link-checker
 msgid "Click \"Save Changes\" to update example output."
 msgstr "Clicar \"Guardar Alterações\" para atualizar a visualização do exemplo."
 
-#: core/core.php:818
+#: core/core.php:831
 #, php-format
 #@ broken-link-checker
 msgid "Example : Lorem ipsum <span %s>removed link</span>, dolor sit amet."
@@ -1994,29 +1973,6 @@ msgctxt "module name"
 msgid "Embedded GoogleVideo videos"
 msgstr "Vídeos GoogleVideos embutido"
 
-#: includes/extra-strings.php:8
-#@ broken-link-checker
-msgctxt "module name"
-msgid "Embedded Megavideo videos"
-msgstr "Vídeos Megavideo embutido"
-
-#: includes/extra-strings.php:13
-#@ broken-link-checker
-msgctxt "module name"
-msgid "FileServe API"
-msgstr "FileServe API"
-
-#: modules/extras/fileserve.php:55
-#@ broken-link-checker
-msgid "Using FileServe API"
-msgstr "Utilizar FileServe API"
-
-#: modules/extras/fileserve.php:115
-#, php-format
-#@ broken-link-checker
-msgid "FileServe : %d %s"
-msgstr "FileServe : %d %s"
-
 #: modules/extras/googlevideo-embed.php:24
 #@ broken-link-checker
 msgid "GoogleVideo Video"
@@ -2027,42 +1983,32 @@ msgstr "Vídeo GoogleVideo"
 msgid "Embedded GoogleVideo video"
 msgstr "Vídeo GoogleVideo embutido"
 
-#: modules/extras/megavideo-embed.php:24
-#@ broken-link-checker
-msgid "Megavideo Video"
-msgstr "Vídeo Megavideo"
-
-#: modules/extras/megavideo-embed.php:25
-#@ broken-link-checker
-msgid "Embedded Megavideo video"
-msgstr "Vídeo Megavideo embutido"
-
 #: modules/extras/rapidshare.php:51
 #@ broken-link-checker
 msgid "Using RapidShare API"
 msgstr "Utilizar RapidShare API"
 
-#: includes/admin/table-printer.php:228
+#: includes/admin/table-printer.php:236
 #@ broken-link-checker
 msgid "Redirect URL"
 msgstr "Redirect URL"
 
-#: includes/admin/table-printer.php:670
+#: includes/admin/table-printer.php:678
 #@ broken-link-checker
 msgid "Hide this link and do not report it again unless its status changes"
 msgstr "Ocultar este link e não reportá-lo de novo expecto se houver mudança de estado "
 
-#: includes/admin/table-printer.php:671
+#: includes/admin/table-printer.php:679
 #@ broken-link-checker
 msgid "Dismiss"
 msgstr "Descartar"
 
-#: includes/admin/table-printer.php:676
+#: includes/admin/table-printer.php:684
 #@ broken-link-checker
 msgid "Undismiss this link"
 msgstr "Restabelecer este link"
 
-#: includes/admin/table-printer.php:677
+#: includes/admin/table-printer.php:685
 #@ broken-link-checker
 msgid "Undismiss"
 msgstr "Restabelecer"
@@ -2082,7 +2028,7 @@ msgstr "Links descartados"
 msgid "No dismissed links found"
 msgstr "Nenhuns links descartados encontrados"
 
-#: core/core.php:2515
+#: core/core.php:2593
 #, php-format
 #@ broken-link-checker
 msgctxt "for the \"Detected X unique URLs in Y links\" message"
@@ -2091,7 +2037,7 @@ msgid_plural "%d unique URLs"
 msgstr[0] "%d URL única"
 msgstr[1] "%d URLs únicas"
 
-#: core/core.php:2519
+#: core/core.php:2597
 #, php-format
 #@ broken-link-checker
 msgctxt "for the \"Detected X unique URLs in Y links\" message"
@@ -2100,46 +2046,46 @@ msgid_plural "%d links"
 msgstr[0] "%d link"
 msgstr[1] "%d links"
 
-#: core/core.php:2525
+#: core/core.php:2603
 #, php-format
 #@ broken-link-checker
 msgid "Detected %1$s in %2$s and still searching..."
 msgstr "Encontrados %1$s em %2$s e procurando..."
 
-#: core/core.php:2531
+#: core/core.php:2609
 #, php-format
 #@ broken-link-checker
 msgid "Detected %1$s in %2$s."
 msgstr "Encontrados %1$s em %2$s."
 
-#: core/core.php:742
+#: core/core.php:755
 #@ broken-link-checker
 msgid "Notification e-mail address"
 msgstr "Endereço de e-mail para Notificação"
 
-#: core/core.php:754
+#: core/core.php:767
 #@ broken-link-checker
 msgid "Leave empty to use the e-mail address specified in Settings &rarr; General."
 msgstr "Deixar em branco para usar o endereço de e-mail especificado em Configurações &rarr; Geral."
 
-#: core/core.php:1002
+#: core/core.php:1015
 #@ broken-link-checker
 msgid "Show the dashboard widget for"
 msgstr "Mostrar o widget do Painel para"
 
-#: core/core.php:1007
+#: core/core.php:1020
 #@ broken-link-checker
 msgctxt "dashboard widget visibility"
 msgid "Administrator"
 msgstr "Administrador"
 
-#: core/core.php:1008
+#: core/core.php:1021
 #@ broken-link-checker
 msgctxt "dashboard widget visibility"
 msgid "Editor and above"
 msgstr "Editor e superior"
 
-#: core/core.php:1009
+#: core/core.php:1022
 #@ broken-link-checker
 msgctxt "dashboard widget visibility"
 msgid "Nobody (disables the widget)"
@@ -2186,35 +2132,35 @@ msgstr "Esta playlist não tem registos ou foram todos excluídos."
 msgid "Empty Playlist"
 msgstr "Playlist Vazia"
 
-#: includes/extra-strings.php:10
+#: includes/extra-strings.php:9
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Embedded YouTube playlists (old embed code)"
 msgstr "Playlists YouTube embutidas (código de embutimento antigo)"
 
-#: includes/extra-strings.php:20
+#: includes/extra-strings.php:17
 #@ broken-link-checker
 msgctxt "module name"
 msgid "Smart YouTube httpv:// URLs"
 msgstr "Smart YouTube httpv:// URLs"
 
-#: core/core.php:839
+#: core/core.php:852
 #@ broken-link-checker
 msgctxt "settings page"
 msgid "Suggestions"
 msgstr "Sugestões"
 
-#: core/core.php:845
+#: core/core.php:858
 #@ broken-link-checker
 msgid "Suggest alternatives to broken links"
 msgstr "Sugerir links offline alternativos"
 
-#: core/core.php:1290
+#: core/core.php:1321
 #@ broken-link-checker
 msgid "Enter the names of custom fields you want to check (one per line). If a field contains HTML code, prefix its name with <code>html:</code>. For example, <code>html:field_name</code>."
 msgstr "Introduzir os nomes dos campos personalizados que pretende verificar (um por linha).<br />Se um campo tiver código HTML, utilizar o prefixo <code>html:</code>. Por exemplo, <code>html:nome_campo</code>."
 
-#: core/core.php:2734
+#: core/core.php:2812
 #@ broken-link-checker
 msgid "An unexpected error occurred!"
 msgstr "Ocorreu um erro inesperado!"
@@ -2260,62 +2206,62 @@ msgstr "Ocorreu o seguinte erro(s): "
 msgid "Error: Link URL must not be empty."
 msgstr "Erro: URL do link não pode ser nulo."
 
-#: includes/admin/table-printer.php:654
+#: includes/admin/table-printer.php:662
 #@ broken-link-checker
 msgid "Edit this link"
 msgstr "Editar este link"
 
-#: includes/admin/table-printer.php:792
+#: includes/admin/table-printer.php:800
 #@ broken-link-checker
 msgctxt "inline editor title"
 msgid "Edit Link"
 msgstr "Editar Link"
 
-#: includes/admin/table-printer.php:795
+#: includes/admin/table-printer.php:803
 #@ broken-link-checker
 msgctxt "inline link editor"
 msgid "Text"
 msgstr "Texto"
 
-#: includes/admin/table-printer.php:800
+#: includes/admin/table-printer.php:808
 #@ broken-link-checker
 msgctxt "inline link editor"
 msgid "URL"
 msgstr "URL"
 
-#: includes/admin/table-printer.php:805
+#: includes/admin/table-printer.php:813
 #@ broken-link-checker
 msgctxt "inline link editor"
 msgid "Suggestions"
 msgstr "Sugestões"
 
-#: includes/admin/table-printer.php:825
+#: includes/admin/table-printer.php:833
 #@ broken-link-checker
 msgid "Use this URL"
 msgstr "Utilizar URL"
 
-#: core/core.php:1090
+#: core/core.php:1121
 #@ broken-link-checker
 msgid "Logging"
 msgstr "Processar Log"
 
-#: core/core.php:1096
+#: core/core.php:1127
 #@ broken-link-checker
 msgid "Enable logging"
 msgstr "Ativar Log"
 
-#: core/core.php:1103
+#: core/core.php:1134
 #@ broken-link-checker
 msgid "Log file location"
 msgstr "Localização do ficheiro Log"
 
-#: core/core.php:1112
+#: core/core.php:1143
 #@ broken-link-checker
 msgctxt "log file location"
 msgid "Default"
 msgstr "Padrão"
 
-#: core/core.php:1126
+#: core/core.php:1157
 #@ broken-link-checker
 msgctxt "log file location"
 msgid "Custom"
@@ -2325,4 +2271,9 @@ msgstr "Personalizado"
 #@ broken-link-checker
 msgid "Please activate the plugin separately on each site. Network activation is not supported."
 msgstr "Por favor, ativar o plugin separadamente em cada site. Não é suportada ativação em rede."
+
+#: core/core.php:1103
+#@ broken-link-checker
+msgid "Target resource usage"
+msgstr "Utilização de recursos alvo"
 

@@ -356,7 +356,7 @@ class blcCurlHttp extends blcHttpCheckerBase {
 			$result['http_code'],
 			!empty($result['broken'])?'broken':'0',
 			!empty($result['timeout'])?'timeout':'0',
-			md5($result['final_url']),
+			blcLink::remove_query_string($result['final_url']),
 		));
         
         return $result;
@@ -443,7 +443,7 @@ class blcSnoopyHttp extends blcHttpCheckerBase {
 			$result['http_code'],
 			$result['broken']?'broken':'0', 
 			$result['timeout']?'timeout':'0',
-			md5($result['final_url']),
+			blcLink::remove_query_string($result['final_url']),
 		));
 		
 		return $result;

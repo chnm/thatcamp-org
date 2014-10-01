@@ -319,6 +319,13 @@ class blcLink {
 	private function status_changed($broken, $new_result_hash = ''){
 		//If a link's status changes, un-dismiss it.
 		if ( $this->result_hash != $new_result_hash ) {
+			if ( $this->dismissed ) {
+				$this->log .= sprintf(
+					"Restoring a dismissed link. \nOld status: \n%s\nNew status: \n%s\n",
+					$this->result_hash,
+					$new_result_hash
+				);
+			}
 			$this->dismissed = false;
 		}
 		
@@ -907,6 +914,16 @@ class blcLink {
 	 */
 	function get_ascii_url(){
 		return blcUtility::idn_to_ascii($this->url);
+	}
+
+	/**
+	 * Remove the query string from an URL.
+	 *
+	 * @param string $url
+	 * @return string
+	 */
+	public static function remove_query_string($url) {
+		return preg_replace('@\?[^#]*?(#|$)@', '$1', $url);
 	}
 }
 
