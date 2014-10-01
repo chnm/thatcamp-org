@@ -1,17 +1,47 @@
+.mejs-container {
+	clear: both;
+}
+
 .mejs-container * {
 	font-family: Helvetica, Arial;
 }
 
-.mejs-container, .mejs-embed, .mejs-embed body {
-	background: #000;
+.mejs-container,
+.mejs-embed,
+.mejs-embed body,
+.mejs-container .mejs-controls {
+	background: #222;
 }
 
-.mejs-controls .mejs-time-rail .mejs-time-loaded {
-	background: #21759b;
+.mejs-controls .mejs-time-rail .mejs-time-loaded,
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+	background: #fff;
 }
 
 .mejs-controls .mejs-time-rail .mejs-time-current {
-	background: #d54e21;
+	background: #0074a2;
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-total,
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+	background: rgba(255, 255, 255, .33);
+}
+
+.mejs-controls .mejs-time-rail span,
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total,
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+	border-radius: 0;
+}
+
+.mejs-overlay-loading {
+	background: transparent;
+}
+
+/* Override theme styles that may conflict with controls. */
+.mejs-controls button:hover {
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
 
 .me-cannotplay {
@@ -23,9 +53,17 @@
 	max-width: 400px;
 }
 
+.audio-details .embed-media-settings {
+	overflow: visible;
+}
+
 .media-embed-details .embed-media-settings .setting span {
 	max-width: 400px;
 	width: auto;
+}
+
+.media-embed-details .embed-media-settings .checkbox-setting span {
+	display: inline-block;
 }
 
 .media-embed-details .embed-media-settings {
@@ -50,8 +88,19 @@
 }
 
 .media-embed-details .embed-media-settings .checkbox-setting {
-	width: 100px;
-	clear: none;
+	float: none;
+	margin: 0 0 10px;
+}
+
+.wp-video {
+	max-width: 100%;
+	height: auto;
+}
+
+video.wp-video-shortcode,
+.wp-video-shortcode video {
+	max-width: 100%;
+	display: inline-block;
 }
 
 .video-details .wp-video-holder {
@@ -65,6 +114,10 @@
 	margin: 12px 0 18px;
 	font-size: 14px;
 	line-height: 1.5;
+}
+
+.wp-admin .wp-playlist {
+	margin: 0 0 18px;
 }
 
 .wp-playlist video {
@@ -98,6 +151,7 @@
 }
 
 .wp-playlist-caption {
+	display: block;
 	max-width: 88%;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -109,6 +163,8 @@
 .wp-playlist-item .wp-playlist-caption {
 	text-decoration: none;
 	color: #000;
+	max-width: -webkit-calc(100% - 40px);
+	max-width: calc(100% - 40px);
 }
 
 .wp-playlist-item-meta {
@@ -140,6 +196,11 @@
 	top: 0;
 	font-size: 14px;
 	line-height: 1.5;
+}
+
+.rtl .wp-playlist-item-length {
+	left: 3px;
+	right: auto;
 }
 
 .wp-playlist-tracks {
@@ -195,9 +256,19 @@
 	border: 0;
 }
 
+.rtl .wp-playlist .wp-playlist-current-item img {
+	float: right;
+	margin-left: 10px;
+	margin-right: 0;
+}
+
 .wp-playlist-current-item .wp-playlist-item-title,
 .wp-playlist-current-item .wp-playlist-item-artist {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+.wp-audio-playlist .me-cannotplay span {
+	padding: 5px 15px;
 }

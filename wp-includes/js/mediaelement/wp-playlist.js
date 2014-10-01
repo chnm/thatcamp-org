@@ -7,7 +7,7 @@
 		initialize : function (options) {
 			this.index = 0;
 			this.settings = {};
-			this.data = options.metadata || $.parseJSON( this.$('script').html() );
+			this.data = options.metadata || $.parseJSON( this.$('script.wp-playlist-script').html() );
 			this.playerNode = this.$( this.data.type );
 
 			this.tracks = new Backbone.Collection( this.data.tracks );
@@ -31,15 +31,15 @@
 			_.bindAll( this, 'bindPlayer', 'bindResetPlayer', 'setPlayer', 'ended', 'clickTrack' );
 
 			if ( ! _.isUndefined( window._wpmejsSettings ) ) {
-				this.settings.pluginPath = _wpmejsSettings.pluginPath;
+				this.settings = _wpmejsSettings;
 			}
 			this.settings.success = this.bindPlayer;
 			this.setPlayer();
 		},
 
 		bindPlayer : function (mejs) {
-			this.player = mejs;
-			this.player.addEventListener( 'ended', this.ended );
+			this.mejs = mejs;
+			this.mejs.addEventListener( 'ended', this.ended );
 		},
 
 		bindResetPlayer : function (mejs) {
@@ -47,31 +47,35 @@
 			this.playCurrentSrc();
 		},
 
-		setPlayer: function () {
-			if ( this._player ) {
-				this._player.pause();
-				this._player.remove();
+		setPlayer: function (force) {
+			if ( this.player ) {
+				this.player.pause();
+				this.player.remove();
 				this.playerNode = this.$( this.data.type );
+			}
+
+			if (force) {
 				this.playerNode.attr( 'src', this.current.get( 'src' ) );
 				this.settings.success = this.bindResetPlayer;
 			}
+
 			/**
 			 * This is also our bridge to the outside world
 			 */
-			this._player = new MediaElementPlayer( this.playerNode.get(0), this.settings );
+			this.player = new MediaElementPlayer( this.playerNode.get(0), this.settings );
 		},
 
 		playCurrentSrc : function () {
 			this.renderCurrent();
-			this.player.setSrc( this.playerNode.attr( 'src' ) );
-			this.player.load();
-			this.player.play();
+			this.mejs.setSrc( this.playerNode.attr( 'src' ) );
+			this.mejs.load();
+			this.mejs.play();
 		},
 
 		renderCurrent : function () {
-			var dimensions;
+			var dimensions, defaultImage = 'wp-includes/images/media/video.png';
 			if ( 'video' === this.data.type ) {
-				if ( this.data.images && this.current.get( 'image' ) ) {
+				if ( this.data.images && this.current.get( 'image' ) && -1 === this.current.get( 'image' ).src.indexOf( defaultImage ) ) {
 					this.playerNode.attr( 'poster', this.current.get( 'image' ).src );
 				}
 				dimensions = this.current.get( 'dimensions' ).resized;
@@ -118,8 +122,7 @@
 				this.next();
 			} else {
 				this.index = 0;
-				this.current = this.tracks.at( this.index );
-				this.loadCurrent();
+				this.setCurrent();
 			}
 		},
 
@@ -134,13 +137,13 @@
 		},
 
 		loadCurrent : function () {
-			var last = this.playerNode.attr( 'src' ).split('.').pop(),
+			var last = this.playerNode.attr( 'src' ) && this.playerNode.attr( 'src' ).split('.').pop(),
 				current = this.current.get( 'src' ).split('.').pop();
 
-			this.player.pause();
+			this.mejs && this.mejs.pause();
 
 			if ( last !== current ) {
-				this.setPlayer();
+				this.setPlayer( true );
 			} else {
 				this.playerNode.attr( 'src', this.current.get( 'src' ) );
 				this.playCurrentSrc();
@@ -162,11 +165,9 @@
 	});
 
     $(document).ready(function () {
-		if ( ! $( 'body' ).hasClass( 'wp-admin' ) || $( 'body' ).hasClass( 'about-php' ) ) {
-			$('.wp-playlist').each(function () {
-				return new WPPlaylistView({ el: this });
-			});
-		}
+		$('.wp-playlist').each( function() {
+			return new WPPlaylistView({ el: this });
+		} );
     });
 
 	window.WPPlaylistView = WPPlaylistView;
