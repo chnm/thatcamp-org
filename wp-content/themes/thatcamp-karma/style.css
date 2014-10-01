@@ -1407,7 +1407,7 @@ nav#top-nav li ul li a {
 }
 nav#top-nav li ul li a {
   display: block;
-  width: 110px;
+  width: 130px;
 }
 nav#top-nav li ul li a:hover {
   background: #111;
@@ -2011,9 +2011,30 @@ aside ul li {
 list-style-type: none !important;
 }
 
+#transposh-wrapper input {
+display:inline;
+}
+
 #tr_credit {
 float:right;
 margin-right:5px;
+}
+
+.yop-poll-answers ul li input {
+display:inline;
+}
+
+.yop-poll-container {
+font-size:large;
+}
+
+
+aside#bbp_topics_widget-2 ul li {
+margin-bottom:1em;
+}
+
+input#bbp_topic_subscription {
+display:inline;
 }
 
 
@@ -3670,6 +3691,7 @@ body.register div.page ul {
 	margin-top: 0;
 }
 
+
 /*--------------------------------------------------------------
 7.0 - Browser specific
 --------------------------------------------------------------*/
@@ -4037,6 +4059,10 @@ div.dir-search input[type="text"], #tc-region {
 /*--------------------------------------------------------------
 9.0 - THATCamp Registry
 --------------------------------------------------------------*/
+
+.register-page #message {
+display:none;
+}
 
 .registry-section {
 	margin: 2rem 0 3rem;
