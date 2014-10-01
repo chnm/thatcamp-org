@@ -28,7 +28,7 @@
 						<?php printf( __( '%s', 'twentyten' ), get_the_author() ); ?>
 						</a>
 						</div><!-- #author-link	-->
-                <?php thatcamp_add_friend_button( get_the_author_ID() ) ?>                
+                                
 		</header><!-- .entry-header -->
 
 		<?php if ( is_search() ) : // Only display Excerpts for Search ?>

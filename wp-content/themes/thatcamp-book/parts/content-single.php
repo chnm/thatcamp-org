@@ -11,7 +11,7 @@
 		<h1 class="post-title"><?php the_title(); ?></h1>
 	</header>
 	<div class="post-meta">
-		<div class="post-author">By <?php the_author_posts_link() ?> <?php thatcamp_add_friend_button( get_the_author_ID() ) ?></div>
+		<div class="post-author">By <?php the_author_posts_link() ?> </div>
 	</div>
 	<div class="post-body">
 		<?php the_content(); ?>

@@ -4,7 +4,7 @@
 			<h1><?php the_title(); ?></h1>
 			<div class="thedate"><?php the_time(get_option('date_format')); ?> by <?php echo the_author_posts_link();?>
 			</div>
-				<?php thatcamp_add_friend_button( get_the_author_ID() ) ?>    
+				    
 			<div class="entry">
 				<?php the_content(); ?>
 				<?php the_tags(__('<p class="tags"><small>Tags: ', "feed-me-seymour"), ', ', '</small></p>'); ?>

@@ -65,7 +65,7 @@
 
        <?php if (have_posts()): ?>
         <h1><?php printf(__('Posts by %s', 'arclite'), $curauth->display_name); ?></h1>
-		<?php thatcamp_add_friend_button( get_the_author_ID() ) ?>        
+		        
         <?php while (have_posts()) : the_post(); ?>
          <div id="post-<?php the_ID(); ?>" <?php if (function_exists("post_class")) post_class(); else print 'class="post"'; ?>>
   	   	   <h3 id="post-<?php the_ID(); ?>" class="post-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>

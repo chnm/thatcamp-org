@@ -24,7 +24,7 @@ Template Name: Campers
 
 
 								<div class="camper_posts"><a href="<?php echo get_author_posts_url($usr->ID); ?>">Posts (<?php echo get_usernumposts($usr->ID); ?>)</a></div>
-								<?php thatcamp_add_friend_button( $usr->ID ) ?>
+								
 							</div>
 					<?php } ?>
 			</div>

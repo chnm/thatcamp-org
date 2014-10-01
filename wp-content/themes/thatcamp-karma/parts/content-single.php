@@ -19,7 +19,7 @@
 			<span class="author-link"><?php printf( _x( 'by %s', 'Post written by...', 'thatcamp' ), bp_core_get_userlink( $post->post_author ) ); ?></span>
 			<span class="cat-links"><?php _e( 'Categories: ', 'thatcamp'); ?><?php the_category( ', ' ); ?></span>
 			<span class="post-date"><?php echo get_the_date(); ?></span>
-		    <div class="friend-button"><?php thatcamp_add_friend_button( get_the_author_ID() ) ?>                </div>
+		    <div class="friend-button">                </div>
 		</div>
 	</header>
 	<div class="post-body">
