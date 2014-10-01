@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Email Users v4.3.7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-02-07 16:21-0000\n"
+"PO-Revision-Date: 2014-09-13 21:25-0000\n"
 "Last-Translator: Mike Walsh <mpwalsh8@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Textdomain-Support: yes\n"
 "Language: ru\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.9\n"
 "X-Poedit-SearchPath-0: .\n"
 
 # @ email-users
@@ -345,8 +345,9 @@ msgstr ""
 
 # @ email-users
 #: email_users_options_form.php:162
+#, fuzzy
 msgid "20"
-msgstr ""
+msgstr "По умолчанию таблица будет отображать 20 строк."
 
 # @ email-users
 #: email_users_options_form.php:163
@@ -734,8 +735,9 @@ msgstr "Разрешить пользователям изменять наст�
 
 # @ without passing the  id!
 #: email_users_notify_form.php:38
+#, fuzzy
 msgid "Trying to notify users of a "
-msgstr ""
+msgstr "Уведомления пользователей"
 
 # @ email-users
 #: email_users_notify_form.php:50
@@ -783,5 +785,6 @@ msgstr ""
 
 # @ email-users
 #: email_users_options_form.php:173
+#, fuzzy
 msgid "Default<br/>User Settings"
-msgstr ""
+msgstr "Настройка пользователей<br/>Кол-во строк"

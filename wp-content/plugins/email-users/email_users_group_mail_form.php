@@ -106,7 +106,7 @@
 
                     foreach ($targets as $key => $value)
                     {
-                        $index = strtolower($prefix . '-' . $key); ?>
+                        $index = strtolower(MAILUSERS_CM_FILTER_PREFIX . '-' . $key); ?>
                         <option value="<?php echo $index; ?>"
                         <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
                         <?php printf('%s - %s', $prefix, $value); ?>
@@ -135,7 +135,7 @@
 
                         foreach ($targets as $key => $value)
                         {
-                            $index = strtolower($prefix . '-' . $key); ?>
+                            $index = MAILUSERS_USERS_GROUPS_PREFIX . '-' . strtolower($key); ?>
                             <option value="<?php echo $index; ?>"
                             <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
                             <?php printf('%s - %s', $prefix, __($value)); ?>
@@ -152,7 +152,7 @@
 
                         foreach ($targets as $key => $value)
                         {
-                            $index = strtolower($prefix . '-' . $key); ?>
+                            $index = MAILUSERS_USER_ACCESS_MANAGER_PREFIX . '-' . strtolower($key); ?>
                             <option value="<?php echo $index; ?>"
                             <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
                             <?php printf('%s - %s', $prefix, __($value)); ?>
@@ -169,7 +169,7 @@
 
                         foreach ($targets as $key => $value)
                         {
-                            $index = strtolower($prefix . '-' . $key); ?>
+                            $index = MAILUSERS_ITTHINX_GROUPS_PREFIX . '-' . strtolower($key); ?>
                             <option value="<?php echo $index; ?>"
                             <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
                             <?php printf('%s - %s', $prefix, __($value)); ?>
@@ -188,7 +188,7 @@
 
                         foreach ($targets as $key => $value)
                         {
-                            $index = strtolower($prefix . '-' . $key); ?>
+                            $index = MAILUSERS_PMPRO_PREFIX . '-' . strtolower($key); ?>
                             <option value="<?php echo $index; ?>"
                             <?php echo (in_array($index, $send_targets) ? ' selected="yes"' : '');?>>
                             <?php printf('%s - %s', $prefix, __($value)); ?>

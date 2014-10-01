@@ -500,7 +500,7 @@ ul#adminmenu > li.current > a.current:after {
 }
 
 #adminmenu .awaiting-mod,
-#adminmenu span.update-plugins,
+#adminmenu .update-plugins,
 #sidemenu li a span.update-plugins {
 	display: inline-block;
 	background-color: #d54e21;
@@ -612,10 +612,10 @@ li#wp-admin-bar-menu-toggle {
 
 
 /* Auto-folding of the admin menu */
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 960px) {
 	.auto-fold #wpcontent,
 	.auto-fold #wpfooter {
-		margin-left: 56px;
+		margin-left: 36px;
 	}
 
 	.auto-fold #adminmenuback,

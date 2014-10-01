@@ -1,9 +1,9 @@
 === Jetpack by WordPress.com ===
 Contributors: automattic, alternatekev, andy, apeatling, azaozz, barry, beaulebens, blobaugh, cfinke, chellycat, danielbachhuber, daniloercoli, designsimply, eoigal, ethitter, gibrown, georgestephanis, hew, hugobaeta, iammattthomas, jblz, jeherve, jkudish, Joen, johnjamesjacoby, jshreve, kraftbj, lancewillett, martinremy, matt, matveb, mcsf, mdawaffe, migueluy, nickmomrik, obenland, pento, richardmtl, stephdau, tmoorewp, Viper007Bond, westi, yoavf
 Tags: WordPress.com, statistics, stats, views, tweets, twitter, widget, gravatar, hovercards, profile, equations, latex, math, maths, youtube, shortcode, archives, audio, blip, bliptv, dailymotion, digg, flickr, googlevideo, google, googlemaps, kyte, kytetv, livevideo, redlasso, rockyou, rss, scribd, slide, slideshare, soundcloud, vimeo, shortlinks, wp.me, subscriptions, notifications, notes, json, api, rest, mosaic, gallery, slideshow, videopress, monitor, search, omnisearch, sso, jet pack
-Stable tag: 2.9.3
-Requires at least: 3.7
-Tested up to: 3.9
+Stable tag: 3.1.1
+Requires at least: 3.8
+Tested up to: 4.0
 
 Supercharge your WordPress site with powerful features previously only available to WordPress.com users.
 
@@ -84,24 +84,135 @@ Learn more (and get detailed instructions) in our [contribute guide](http://jetp
 7. CSS Editor
 8. Mobile Theme
 
-== Upgrade Notice ==
-
-= 2.9.3 =
-Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
-
 == Changelog ==
 
+= 3.1.1 =
+Release Date: August 7, 2014
+
+* Enhancement: Update translation files for strings that had been submitted/approved since release.
+* Bug Fix: Social Links: Add a function check to better degrade if Publicize isn't around.
+* Bug Fix: Open Graph: Add WordPress SEO back to the blacklist, until they update how they opt us out.
+* Bug Fix: Asset Minification: Add another caveat ( empty $plugin ) to short out on.
+* Bug Fix: Deprecated Hooks: Fixing our expectations where something that should be an array occasionally wasn't.
+* Bug Fix: Custom CSS: Add extra whitelist rule for -o-keyframe rules.
+
+= 3.1 =
+Release Date: July 31, 2014
+
+* Enhancement: New Custom Content Types module.
+* Enhancement: New Jetpack Logo.
+* Enhancement: New optional JSON API endpoints for viewing updates and managing plugins and themes.
+* Enhancement: New Custom Post Type: Portfolio!
+* Enhancement: Rearranged buttons on the modules modals for easier management.
+* Enhancement: Jetpack Settings have improved keyboard accessibility.
+* Enhancement: Improved RTL support for After the Deadline, Carousel, Contact Form, Comics CPT, Custom CSS, Omnisearch, Publicize, Related Posts, Slideshow short code, Tiled Gallery, Widget-Visibility and Widgets Gallery.
+* Enhancement: Contact Form: Add an "Empty Spam" option.
+* Enhancement: i18n: Change the priority of where plugin_textdomain is hooked so that the plugins can better translate Jetpack.
+* Enhancement: Monitor: Displays how often the site is checked for downtime.
+* Enhancement: Shortcode: Added Mixcloud shortcode and oEmbed support.
+* Enhancement: Social Links: Improved handling of customizer hooks in non-admin context.
+* Enhancement: Stats: The smiley image is gone by default.
+* Enhancement: Stats: Added link to the configure page for stats so that the stats settings page is easier to find.
+* Enhancement: Theme Tools: Added the responsive videos to theme tools so that themes can support responsive videos more easily.
+* Update: Updated Genericons to version 3.1, new icons for website, ellipsis, foursquare, x-post, sitemap, hierarchy and paintbrush.
+* Bug Fix: Contact Form: Prefix function to avoid conflicts with other plugins.
+* Bug Fix: Custom CSS: Admin UI has a responsive layout.
+* Bug Fix: Custom CSS: Custom $content_width value doesn't overwrite theme's $content_width.
+* Bug Fix: Contact Form: Feedback link takes you to the form page.
+* Bug Fix: Carousel: Confirms an avatar is returned by get_avatar before displaying.
+* Bug Fix: Featured Content: Don't remove setting validation.
+* Bug Fix: Infinite Scroll: Google Universal Analytics support added.
+* Bug Fix: Multisite: Add message when updating multisite settings.
+* Bug Fix: Photon: Photon will no longer upscale images larger than the original size.
+* Bug Fix: Photon: Check that the image exists before rewriting the image URL to utilize Photon.
+* Bug Fix: Sharing: Pinterest adds attribute to display share count.
+* Bug Fix: Sharing: Respect an empty sharing title.
+* Bug Fix: Sharing: Share buttons now appear in the bbPress forms.
+* Bug Fix: Sharing: Support for multiple meta html tag og:image values.
+* Bug Fix: Single Sign On: Logout allows override of forcing Single Sign On.
+* Bug Fix: Single Sign On: Remove the lost password link on auto-forward logout.
+* Bug Fix: Social Links: Do not use anonymous function for compatibility with PHP 5.2.
+* Bug Fix: Tiled Galleries: Update jQuery mouseover caption effect to reduce flickering.
+* Bug Fix: Widgets Visibility: Works better in the customizer admin view.
+
+= 3.0.2 =
+Release Date: June 17, 2014
+
+* Enhancement: General: Make module categories filter more visible when active.
+* Enhancement: General: Updated translation files with more strings added since the last release.
+* Enhancement: General: Allow deep-linking to the Contact Support form.
+* Bug Fix: General: RTL Jetpack Admin UI looks better.
+* Bug Fix: General: Fixed PHP warning when bulk deactivating modules.
+* Bug Fix: General: Removed an unnecessary description.
+* Bug Fix: General: Resolved an SSL error on Jetpack Admin UI.
+* Bug Fix: General: Fix error comparing signatures when the WordPress installation is using site_url filters (applied mostly to WPEngine sites).
+* Bug Fix: General: Resolved PHP strict error on the mobile menu.
+* Bug Fix: General: Fix timing of conditional checks, so that calling developer mode via a plugin works again.
+* Bug Fix: General: Main page categories tab now properly translates module names.
+* Bug Fix: Related Posts: Fix a typo, the "more info" link now works.
+* Bug Fix: Likes: Improve button styling.
+* Bug Fix: Likes: Remove unused UI for Reblog settings on social settings page.
+* Bug Fix: Contact Form: Updated to no longer use a deprecated Akismet function.
+* Bug Fix: Contact Form: Sends email to the administrator that is not marked as spam again.
+* Bug Fix: Open Graph: Resolved PHP warning on open graph gallery pages when the gallery is empty.
+
+= 3.0.1 =
+Release Date: May 22, 2014
+
+* Bug Fix: AtD: A wpcom-only function got synced by mistake and caused a few errors. Fixed.
+* Bug Fix: Post By Email: Add static keyword to a function.
+* Bug Fix: ShareDaddy: In the admin-side configuration of sharing links, we used a Path icon instead of Pinterest. Oops!
+* Bug Fix: ShareDaddy: We inadvertently appended `via @jetpack` to some twitter shares. This is no longer the case.
+* Bug Fix: Related Posts: Tidying up and relocation of the `resync` button formerly on the more info modal.
+* Bug Fix: Infinite Scroll: Work better with core's MediaElement.js
+* Bug Fix: Heartbeat: Undeclared variable fixed.
+
+= 3.0 =
+Release Date: May 20, 2014
+
+* New User Interface for managing modules and settings
+* New Module: Verfication Tools
+* Enhancement: New look for the Sharing module
+* Enhancement: Multiple improvements on which Twitter handle a Twitter card will display
+* Enhancement: Add option to hide Google+ Authorship banner while still receiving the benefits
+* Enhancement: Many Infinite Scroll enhancements to improve performance
+* Enhancement: Infinite Scroll will use your CPT's display name instead of "Older Posts"
+* Enhancement: JSON API added /media/new endpoint
+* Enhancement: Added filter to assign new default image for Open Graph tags
+* Enhancement: New [jetpack-related-posts] shortcode to add Related Posts to page instead of default placement
+* Enhancement: Added SSO option to turn off login form completely, to use WordPress.com login exclusively
+* Enhancement: The [googlemaps] shortcode allows for Google Maps Engine
+* Enhancement: YouTube shortcode allows HD playback
+* Enhancement: Smoother, Faster Tiled Galleries!
+* Enhancement: New languages! Use Jetpack in Irish, Fulah, and Tigrinya
+* Bug Fix: Use your browser's Back and Forward buttons when naviagating a Carousel
+* Bug Fix: Various Related Posts fixes and improvements for added flexibility
+* Bug Fix: WordPress 3.9: Restores ability to edit Contact Forms
+* Bug Fix: WordPress 3.9: Restores Gallery Widget compatability
+* Bug Fix: Ensure Markdown is kept when Bulk Editing posts
+* Bug Fix: Improved Jetpack's Multisite Network Admin page for networks with a large number of sites
+* Bug Fix: Ensure Sharing settings persist when Bulk Editing a post
+* Bug Fix: Various other shortcode improvements
+
 = 2.9.3 =
+Release Date: April 10, 2014
+
 * Important security update. CVE-2014-0173
 
 = 2.9.2 =
-* Bugfix: Publicize: When publishing from a mobile app or third-party client, Publicize now works again.
+Release Date: March 17, 2014
+
+* Bug Fix: Publicize: When publishing from a mobile app or third-party client, Publicize now works again.
 
 = 2.9.1 =
-* Bugfix: After the Deadline: Fix a Javascript glitch that could prevent publishing of posts.
-* Bugfix: SSO: Disable the implementation of an option that had been removed before release.  This would have only been an issue if a site administrator had enabled the module during an early beta of 2.9.
+Release Date: March 6, 2014
+
+* Bug Fix: After the Deadline: Fix a Javascript glitch that could prevent publishing of posts.
+* Bug Fix: SSO: Disable the implementation of an option that had been removed before release.  This would have only been an issue if a site administrator had enabled the module during an early beta of 2.9.
 
 = 2.9 =
+Release Date: February 26, 2014
+
 * Added Multisite network functionality
 * New Module: Related Posts
 * Enhancement: Single Sign On
@@ -112,17 +223,19 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Enhancement: Update kses with Markdown
 * Enhancement: Adding keyboard accessibility to sharing buttons config page
 * Enhancement: Pull WordPress testing bits from the new official git mirror at WordPress.org
-* Bugfix: Widget Visibility
-* Bugfix: Revisions box in Custom CSS
-* Bugfix: Fix several bugs in the WordPress Posts Widget so that it correctly updates
-* Bugfix: Limit Login Attempts no longer generates false positives from xmlrpc.
-* Bugfix: Clear max_posts transient on theme switch.
-* Bugfix: Lower priority of sync to allow all CPTs to be registered.
-* Bugfix: Contact form fields emailed in correct order. 
+* Bug Fix: Widget Visibility
+* Bug Fix: Revisions box in Custom CSS
+* Bug Fix: Fix several bugs in the WordPress Posts Widget so that it correctly updates
+* Bug Fix: Limit Login Attempts no longer generates false positives from xmlrpc.
+* Bug Fix: Clear max_posts transient on theme switch.
+* Bug Fix: Lower priority of sync to allow all CPTs to be registered.
+* Bug Fix: Contact form fields emailed in correct order.
 
 * Other bugfixes and enhancements at https://github.com/Automattic/jetpack/commits/2.9
 
 = 2.8 =
+Release Date: January 31, 2014
+
 * New Module: Markdown
 * Module Update: Jetpack Monitor
 * Enhancement: Infinite Scroll: Keep track of $current_day between requests so the_date() works well.
@@ -138,7 +251,7 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Enhancement: Stats: Improve dashboard styles in 3.8.
 * Enhancement: Stats: No longer use Quantcast.
 * Enhancement: Top Posts: Add `jetpack_top_posts_days` filter.
-* Enhancement: AtD: Add TinyMCE 4 compatability for its pending arrival in WordPress 3.9
+* Enhancement: AtD: Add TinyMCE 4 compatibility for its pending arrival in WordPress 3.9
 * Enhancement: Genericons: Update to v3.0.3
 * Enhancement: Tiled Galleries: Add alt attributes to images.
 * Enhancement: Shortcode: YouTube: Accept protocol-relative URLs.
@@ -161,6 +274,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Some plugins trying to catch brute-force attacks mistakenly flagged the Jetpack connection as one.
 
 = 2.7 =
+Release Date: December 11, 2013
+
 * Enhancement: Google+ Publicize
 * Enhancement: Add Cloudup as an oEmbed provider
 * Enhancement: Subscriptions: Add subscribe_field_id filter to allow updated ids when using multiple widgets
@@ -177,12 +292,14 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Sharing: Add new translation width for share button, and Google Plus icons
 * Bug Fix: Shortcodes: Support Ineternational Google domains for maps
 * Bug Fix: Shortcodes: Facebook Embeds: Register alternate permalink.php URL for posts
-* Bug Fix: Subscriptions: Moved inline styles from widget email input to seperate css file
+* Bug Fix: Subscriptions: Moved inline styles from widget email input to separate css file
 * Bug Fix: Theme Tools: Fix glitch where random-redirect.php also showed as a plugin being deleted if you were deleting Jetpack
 * Bug Fix: Misc: Internationalization & RTL updates
 * Bug Fix: Misc: Prevent collisions with 'Facebook Featured Image & OG Meta Tags' plugin
 
 = 2.6.1 =
+Release Date: December 3, 2013
+
 * Bug Fix: minor styling fix in pre- and post-MP6/3.8 UI changes.
 * Bug Fix: Stats: spinner gif url fix when the user is viewing it over https.
 * Bug Fix: Stats: Switch to esc_html from htmlspecialchars in error message -- better to be native
@@ -193,6 +310,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Correct max supported version number -- had been 3.6, update to 3.7.1
 
 = 2.6 =
+Release Date: November 28, 2013
+
 * Enhancement: WPCC / now called [SSO](http://jetpack.me/support/sso/): refactored.
 * Enhancement: Monitor: new module which will notify you if your site goes down(http://jetpack.me/support/monitor/).
 * Enhancement: Custom CSS: replace Ace editor with Codemirror.
@@ -228,6 +347,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Tiled Galleries: improve display of panoramic images and fix errors when an image is not uploaded properly.
 
 = 2.5 =
+Release Date: September 19, 2013
+
 * Enhancement: Connect your Google+ profile and WordPress site to prove authorship of posts.
 * Enhancement: Improved sharing buttons display.
 * Enhancement: Comment on your posts using Google+ to signin.
@@ -250,6 +371,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Check for post in G+ authorship before accessing it
 
 = 2.4.2 =
+Release Date: September 5, 2013
+
 * Enhancement: Converted to module headers to detect Auto-Activating modules.
 * Enhancement: WPCC: Added 'Close' link to deactivate WPCC in the admin nag.
 * Enhancement: JSON API: Add User Nicename to the user data.
@@ -268,9 +391,13 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Slideshow Shortcode: Add a height of 410px.
 
 = 2.4.1 =
+Release Date: September 4, 2013
+
 * Enhancement: Don't auto-activate WPCC.
 
 = 2.4 =
+Release Date: August 30, 2013
+
 * Enhancement: WordPress.com Connect (WPCC): New Module.
 * Enhancement: Widget Visibility: New Module.
 * Enhancement: Shortcode: Addition of new Twitter Timeline shortcode.
@@ -294,9 +421,13 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Add an empty debug.php file to the /modules/ folder, to solve some update issues where it never got deleted.
 
 = 2.3.5 =
+Release Date: August 12, 2013
+
 * Enhancement: Added Path support to Publicize.
 
 = 2.3.4 =
+Release Date: August 6, 2013
+
 * Bug Fix: Correct when output occurs with CSV export for feedback.
 * Bug Fix: Tidy up the Heartbeat API.
 * Enhancement: User Agent: Improve detecting of bots.
@@ -308,16 +439,22 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Deprecation: Removing the retinization code for 3.4, as it was included in WordPress trunk from 3.5 onwards.
 
 = 2.3.3 =
+Release Date: July 26, 2013
+
 * Bug Fix: We were inadvertently overwriting cron schedules with our Jetpack heartbeat. This should now be fixed.
 * Enhancement: New Facebook Sharing icons.
 * Enhancement: Minor update to the Minileven stylesheet.
 
 = 2.3.2 =
+Release Date: July 25, 2013
+
 * Bug Fix: Fixed an issue where Facebook Pages were not available when connecting a Publicize account.
 * Bug Fix: For some web hosts, fixed an issue where 'Jetpack ID' error would occur consistently on connecting to WordPress.com.
 * Enhancement: Adding some new stats and heartbeat checking to Jetpack.
 
 = 2.3.1 =
+Release Date: July 2, 2013
+
 * Enhancement: Social Links: Retooling the class for better consistency and performance behind the scenes.
 * Enhancement: Omnisearch: Make it easier to search Custom Post Types.  No longer need to extend the class, if all you want is a basic display.  Just call `new Jetpack_Omnisearch_Posts( 'cpt' );`
 * Enhancement: Sharing Buttons: LinkedIn: Use the official button's sharing link on the Jetpack implementation for a more consistent sharing experience and produce better results on LinkedIn's end.
@@ -337,6 +474,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Add some further security measures to module activation.
 
 = 2.3 =
+Release Date: June 19, 2013
+
 * Enhancement: Omnisearch: Search once, get results from everything! Omnisearch is a single search box that lets you search many different things
 * Enhancement: Debugger: this module helps you debug connection issues right from your dashboard, and contact the Jetpack support team if needed
 * Enhancement: Social Links: this module is a canonical source, based on Publicize, that themes can use to let users specify where social icons should link to
@@ -387,6 +526,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Note: Adding Jetpack_Options class, and abstracting out options functions to it
 
 = 2.2.5 =
+Release Date: May 1, 2013
+
 * Enhancement: Stats: Counting of registered users' views can now be enabled for specific roles
 * Bug Fix: Security tightening for metadata support in the REST API
 * Bug Fix: Update the method for checking Twitter Timeline widget_id and update coding standards
@@ -394,9 +535,13 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Custom CSS: Fix possible missing argument warning.
 
 = 2.2.4 =
+Release Date: April 26, 2013
+
 * Bug Fix: JSON API compat file include was not assigning a variable correctly, thus throwing errors. This has been resolved.
 
 = 2.2.3 =
+Release Date: April 26, 2013
+
 * Enhancement: Comments - Add the reply-title H3 to the comment form so that themes or user CSS can style it
 * Enhancement: Custom CSS - Support for the CSS @viewport
 * Enhancement: JSON API - Support for i_like, is_following, and is_reblogged
@@ -442,6 +587,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Enhancement: Twitter Timeline Widget: New JavaScript based widget. Old one will discontinue May 7th.
 
 = 2.2.2 =
+Release Date: April 5, 2013
+
 * Enhancement: Mobile Theme: Add controls for custom CSS.
 * Enhancement: Sharing: Add Pocket to the available services.
 * Bug Fix: Custom CSS: Update the method for generating content width setting.
@@ -454,6 +601,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Jetpack Post Images security fixes.
 
 = 2.2.1 =
+Release Date: March 28, 2013
+
 * Enhancement: Development Mode: Define the `JETPACK_DEV_DEBUG` constant to `true` to enable an offline mode for localhost development. Only modules that don't require a WordPress.com connection can be enabled in this mode.
 * Enhancement: Likes: Added the number of likes to the wp-admin/edit.php screens.
 * Enhancement: Mobile Theme - design refresh
@@ -487,6 +636,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Prophylactic strict equality check
 
 = 2.2 =
+Release Date: February 26, 2013
+
 * Enhancement: Likes: Allow your readers to show their appreciation of your posts.
 * Enhancement: Shortcodes: SoundCloud: Update to version 2.3 of the SoundCloud plugin (HTML5 default player, various fixes).
 * Enhancement: Shortcodes: Subscriptions: Add a shortcode to enable placement of a subscription signup form in a post or page.
@@ -519,6 +670,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Publicize: Twitter: Re-enable character count turning red when more than 140 characters are typed.
 
 = 2.1.2 =
+Release Date: February 5, 2013
+
 * Enhancement: Infinite Scroll: Introduce filters for Infinite Scroll.
 * Enhancement: Shortcodes: TED shortcode.
 * Bug Fix: Carousel: Make sure to use large image sizes.
@@ -558,9 +711,13 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 
 
 = 2.1.1 =
+Release Date: January 5, 2013
+
 * Bug Fix: Fix for an error appearing for blogs updating from Jetpack 1.9.2 or earlier to 2.1.
 
 = 2.1 =
+Release Date: January 4, 2013
+
 * Enhancement: Tiled Galleries: Show off your photos with cool mosaic galleries.
 * Enhancement: Slideshow gallery type: Display any gallery as a slideshow.
 * Enhancement: Custom CSS: Allow zoom property.
@@ -582,9 +739,13 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 
 
 = 2.0.4 =
+Release Date: December 14, 2012
+
 * Bug Fix: Open Graph: Correct a bug that prevents Jetpack from being activated if the SharePress plugin isn't installed.
 
 = 2.0.3 =
+Release Date: December 14, 2012
+
 * Enhancement: Infinite Scroll: support [VideoPress](http://wordpress.org/extend/plugins/video/) plugin.
 * Enhancement: Photon: Apply to all images retrieved from the Media Library.
 * Enhancement: Photon: Retina image support.
@@ -596,9 +757,13 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Custom CSS: Fix for bug preventing @import from working with url()-style URLs.
 
 = 2.0.2 =
+Release Date: November 21, 2012
+
 * Bug Fix: Remove an erroneous PHP short open tag with the full tag to correct fatal errors under certain PHP configurations.
 
 = 2.0.1 =
+Release Date: November 21, 2012
+
 * Enhancement: Photon: Support for the [Lazy Load](http://wordpress.org/extend/plugins/lazy-load/) plugin.
 * Bug Fix: Photon: Fix warped images with un- or under-specified dimensions.
 * Bug Fix: Photon: Fix warped images with pre-photonized URLs; don't try to photonize them twice.
@@ -609,6 +774,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Notifications: Use locally-installed Javascript libraries if available.
 
 = 2.0 =
+Release Date: November 8, 2012
+
 * Enhancement: Publicize: Connect your site to popular social networks and automatically share new posts with your friends.
 * Enhancement: Post By Email: Publish posts to your blog directly from your personal email account.
 * Enhancement: Photon: Images served through the global WordPress.com cloud.
@@ -623,6 +790,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: JSON API: Fixed error when creating some posts in some versions of PHP.
 
 = 1.9.2 =
+Release Date: October 29, 2012
+
 * Bug Fix: Only sync options on upgrade once.
 
 = 1.9.1 =
@@ -631,6 +800,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Prioritize syncing comments over deleting comments on WordPress.com. Fixes comment notifications marked as spam appearing to be trashed.
 
 = 1.9 =
+Release Date: October 26, 2012
+
 * Enhancement: Notifications: Display Notifications in the toolbar and support reply/moderation of comment notifications.
 * Enhancement: Mobile Push Notifications: Added support for mobile push notifications of new comments for users that linked their accounts to WordPress.com accounts.
 * Enhancement: JSON API: Allows applications to send API requests via WordPress.com (see [the docs](http://developer.wordpress.com/docs/api/) )
@@ -653,11 +824,15 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Contact Form: Fix a bug where some web hosts would reject mail from the contact form due to email address spoofing.
 
 = 1.8.3 =
+Release Date: October 23, 2012
+
 * Bug Fix: Subscriptions: Fix a bug where subscriptions were not being sent from the blog.
 * Bug Fix: Twitter: Fix a bug where the Twitter username was being saved as blank.
 * Bug Fix: Fix a bug where Contact Form notification emails were not being sent.
 
 = 1.8.2 =
+Release Date: October 4, 2012
+
 * Bug Fix: Subscriptions: Fix a bug where subscriptions were not sent for posts and comments written by some authors.
 * Bug Fix: Widgets: Fix CSS that was uglifying some themes (like P2).
 * Bug Fix: Widgets: Improve Top Posts and Pages styling.
@@ -665,6 +840,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Fix Lithuanian translation.
 
 = 1.8.1 =
+Release Date: September 28, 2012
+
 * Bug Fix: Stats: Fixed a bug preventing some users from viewing stats.
 * Bug Fix: Mobile Theme: Fixed some disabled toolbar buttons.
 * Bug Fix: Top Posts widget: Fixed a bug preventing the usage of the Top Posts widget.
@@ -674,6 +851,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Mobile Theme: Fixed a bug that caused errors for some users with custom header images.
 
 = 1.8 =
+Release Date: September 27, 2012
+
 * Enhancement: Mobile Theme: Automatically serve a slimmed down version of your site to users on mobile devices.
 * Enhancement: Multiuser: Allow multiple users to link their accounts to WordPress.com accounts.
 * Enhancement: Custom CSS: Added support for object-fit, object-position, transition, and filter properties.
@@ -689,6 +868,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Gravatar Profile Widget: Reduce size of header margins
 
 = 1.7 =
+Release Date: August 23, 2012
+
 * Enhancement: CSS Editor: Customize your site's design without modifying your theme.
 * Enhancement: Comments: Submit the comment within the iframe.  No more full page load to jetpack.wordpress.com.
 * Enhancement: Sharing: Share counts for Twitter, Facebook, LinkedIn
@@ -712,11 +893,15 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Carousel: CSS Compatibility with more themes.
 
 = 1.6.1 =
+Release Date: August 4, 2012
+
 * Bug Fix: Prevent Fatal error under certain conditions in sharing module
 * Bug Fix: Add cachebuster to sharing.css
 * Bug Fix: Disable via for Twitter until more robust code is in place
 
 = 1.6 =
+Release Date: August 2, 2012
+
 * Enhancement: Carousel: Better image resolution selection based on available width/height.
 * Enhancement: Carousel: Load image caption, metadata, comments, et alii when a slide is clicked to switch to instead of waiting.
 * Enhancement: Carousel: Added a "Comment" button and handling to scroll to and focus on comment textarea.
@@ -734,18 +919,26 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Contact Form: If send_to_editor() exists, use it. Fixes an IE9 text area issue.
 
 = 1.5 =
+Release Date: July 31, 2012
+
 * Enhancement: Add Gallery Carousel feature
 * Note: the Carousel module bundles http://fgnass.github.com/spin.js/ (MIT license)
 
 = 1.4.2 =
+Release Date: June 20, 2012
+
 * Bug Fix: Jetpack Comments: Add alternative Javascript event listener for Internet 8 users.
 * Enhancement: Remove more PHP 4 backwards-compatible code (WordPress andJetpack only support PHP 5).
 * Enhancement: Remove more WordPress 3.1 and under backwards-compatible code.
 
 = 1.4.1 =
+Release Date: June 15, 2012
+
 * Bug Fix: Jetpack Comments / Subscriptions: Add checkboxes and logic control for the Subscription checkboxes.
 
 = 1.4 =
+Release Date: June 14, 2012
+
 * Enhancement: Add Jetpack Comments feature.
 * Bug Fix: Sharing: Make the sharing_label translatable.
 * Bug Fix: Sharing: Fixed the file type on the LinkedIn graphic.
@@ -759,15 +952,23 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: After the Deadline: Code clean up and removal of inconsistencies.
 
 = 1.3.4 =
+Release Date: May 24, 2012
+
 * Bug Fix: Revert changes to the top level menu that are causing problems.
 
 = 1.3.3 =
+Release Date: May 22, 2012
+
 * Bug Fix: Fix notices caused by last update
 
 = 1.3.2 =
+Release Date: May 22, 2012
+
 * Bug Fix: Fix Jetpack menu so that Akismet and VaultPress submenus show up.
 
 = 1.3.1 =
+Release Date: May 22, 2012
+
 * Enhancement: Add a new widget, the Facebook Likebox
 * Bug Fix: Sharing: Sharing buttons can now be used on custom post types.
 * Bug Fix: Contact Forms: Make Contact Forms widget shortcode less aggressive about the shortcodes it converts.
@@ -777,14 +978,20 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Subscriptions: Fix an issue that was causing errors with new BuddyPress forum posts.
 
 = 1.3 =
+Release Date: April 25, 2012
+
 * Enhancement: Add Contact Forms feature.  Formerly Grunion Contact Forms.
 * Bug Fix: Tweak YouTube autoembedder to catch more YouTube URLs.
 * Bug Fix: Correctly load the Sharing CSS files.
 
 = 1.2.4 =
+Release Date: April 6, 2012
+
 * Bug Fix: Fix rare bug with static front pages
 
 = 1.2.3 =
+Release Date: April 5, 2012
+
 * Enhancement: Twitter Widget: Expand t.co URLs
 * Bug Fix: Various PHP Notices.
 * Bug Fix: WordPress Deprecated `add_contextual_help()` notices
@@ -807,12 +1014,16 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Spelling and Grammar: Don't prevent post save when proofreading service is unavailable.
 
 = 1.2.2 =
+Release Date: December 6, 2011
+
 * Bug Fix: Ensure expected modules get reactivated correctly during upgrade.
 * Bug Fix: Don't send subscription request during spam comment submission.
 * Bug Fix: Increased theme compatibility for subscriptions.
 * Bug Fix: Remove reference to unused background image.
 
 = 1.2.1 =
+Release Date: November 18, 2011
+
 * Bug Fix: Ensure Site Stats menu item is accessible.
 * Bug Fix: Fixed errors displayed during some upgrades.
 * Bug Fix: Fix inaccurate new modules "bubble" in menu for some upgrades.
@@ -820,6 +1031,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Fix link to http://jetpack.me/faq/
 
 = 1.2 =
+Release Date: November 17, 2011
+
 * Enhancement: Add Subscriptions: Subscribe to site's posts and posts' comments.
 * Enhancement: Add Google Maps shortcode.
 * Enhancement: Add Image Widget.
@@ -833,6 +1046,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Bug Fix: Correctly detect host's ability to make outgoing HTTPS requests.
 
 = 1.1.3 =
+Release Date: July 19, 2011
+
 * Bug Fix: Increase compatibility with WordPress 3.2's new `wp_remote_request()` API.
 * Bug Fix: Increase compatibility with Admin Bar.
 * Bug Fix: Stats: Improved performance when creating new posts.
@@ -843,6 +1058,8 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Translations: Updated: Spanish, French, Italian, Japanese, Brazilian Portuguese, Portuguese
 
 = 1.1.2 =
+Release Date: July 6, 2011
+
 * Bug Fix: Note, store, and keep fresh the time difference between the Jetpack site's host and the Jetpack servers at WordPress.com.  Should fix all "timestamp is too old" errors.
 * Bug Fix: Improve experience on hosts capable of making outgoing HTTPS requests but incapable of verifying SSL certificates. Fixes some "register_http_request_failed", "error setting certificate verify locations", and "error:14090086:lib(20):func(144):reason(134)" errors.
 * Bug Fix: Better fallback when WordPress.com is experiencing problems.
@@ -858,6 +1075,7 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Enhancement: Gravatar Hovercards: Improved experience for Windows browsers.
 
 = 1.1.1 =
+Release Date: March 19, 2011
 * Bug Fix: Improve experience on hosts capable of making outgoing HTTPS requests but incapable of verifying SSL certificates. Fixes most "Your Jetpack has a glitch. Connecting this site with WordPress.com is not possible. This usually means your site is not publicly accessible (localhost)." errors.
 * Bug Fix: Sharedaddy: Fatal error under PHP4.  Disable on PHP4 hosts.
 * Bug Fix: Stats: Fatal error under PHP4.  Rewrite to be PHP4 compatible.
@@ -876,4 +1094,6 @@ Jetpack 2.9.3 fixes a security bug. Please upgrade immediately.
 * Enhancement: Improve performance of LaTeX URLs be using cookieless CDN.
 
 = 1.1 =
+Release Date: March 9, 2011
+
 * Initial release

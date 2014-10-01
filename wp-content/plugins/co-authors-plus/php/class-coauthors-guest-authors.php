@@ -46,6 +46,9 @@ class CoAuthors_Guest_Authors
 		// Filter author links and such
 		add_filter( 'author_link', array( $this, 'filter_author_link' ), 10, 3 );
 
+		// Over-ride the author feed
+		add_filter( 'author_feed_link', array( $this, 'filter_author_feed_link' ), 10, 2 );
+
 		// Validate new guest authors
 		add_filter( 'wp_insert_post_empty_content', array( $this, 'filter_wp_insert_post_empty_content' ), 10, 2 );
 
@@ -94,7 +97,7 @@ class CoAuthors_Guest_Authors
 				'labels' => array(
 						'name' => $this->labels['plural'],
 						'singular_name' => $this->labels['singular'],
-						'add_new' => _x( 'Add New', 'co-authors-plus' ),
+						'add_new' => _x( 'Add New', 'guest author', 'co-authors-plus' ),
 						'all_items' => $this->labels['all_items'],
 						'add_new_item' => $this->labels['add_new_item'],
 						'edit_item' => $this->labels['edit_item'],
@@ -578,7 +581,19 @@ class CoAuthors_Guest_Authors
 			echo '<tr><th>';
 			echo '<label for="' . esc_attr( $pm_key ) . '">' . $field['label'] . '</label>';
 			echo '</th><td>';
-			echo '<input type="text" name="' . esc_attr( $pm_key ) . '" value="' . esc_attr( $value ) . '" class="regular-text" />';
+			
+			if( !isset( $field['input'] ) ) {
+				$field['input'] = "text"; 
+			}
+			$field['input'] = apply_filters( 'coauthors_name_field_type_'. $pm_key , $field['input'] );
+			switch( $field['input'] ) {
+				case "checkbox":
+					echo '<input type="checkbox" name="' . esc_attr( $pm_key ) . '"'. checked( '1', $value, false ) .' value="1"/>';
+				break;
+				default:
+					echo '<input type="'. esc_attr( $field['input'] )  .'" name="' . esc_attr( $pm_key ) . '" value="' . esc_attr( $value ) . '" class="regular-text" />';
+			break;
+			} 
 			echo '</td></tr>';
 		}
 		echo '</tbody></table>';
@@ -601,7 +616,20 @@ class CoAuthors_Guest_Authors
 			echo '<tr><th>';
 			echo '<label for="' . esc_attr( $pm_key ) . '">' . $field['label'] . '</label>';
 			echo '</th><td>';
-			echo '<input type="text" name="' . esc_attr( $pm_key ) . '" value="' . esc_attr( $value ) . '" class="regular-text" />';
+			
+			if( !isset( $field['input'] ) ) {
+				$field['input'] = "text";
+			}
+			$field['input'] = apply_filters( 'coauthors_name_field_type_'. $pm_key , $field['input'] );
+			switch( $field['input'] ) {
+				case "checkbox":
+					echo '<input type="checkbox" name="' . esc_attr( $pm_key ) . '"'. checked( '1', $value, false ) .' value="1"/>';
+				break;
+				default:
+					echo '<input type="'. esc_attr( $field['input'] ) .'" name="' . esc_attr( $pm_key ) . '" value="' . esc_attr( $value ) . '" class="regular-text" />';
+			break;
+			} 
+
 			echo '</td></tr>';
 		}
 		echo '</tbody></table>';
@@ -646,7 +674,12 @@ class CoAuthors_Guest_Authors
 		if ( !isset( $_POST['guest-author-nonce'] ) || !wp_verify_nonce( $_POST['guest-author-nonce'], 'guest-author-nonce' ) )
 			return $post_data;
 
+		// Validate the display name
+		if ( empty( $_POST['cap-display_name'] ) ) {
+			wp_die( __( 'Guest authors cannot be created without display names.', 'co-authors-plus' ) );
+		}
 		$post_data['post_title'] = sanitize_text_field( $_POST['cap-display_name'] );
+
 		$slug = sanitize_title( get_post_meta( $original_args['ID'], $this->get_post_meta_key( 'user_login' ), true ) );
 		if ( ! $slug )
 			$slug = sanitize_title( $_POST['cap-display_name'] );
@@ -862,6 +895,7 @@ class CoAuthors_Guest_Authors
 						'key'      => 'ID',
 						'label'    => __( 'ID', 'co-authors-plus' ),
 						'group'    => 'hidden',
+						'input'	   => 'hidden',
 					),
 				// Name
 				array(
@@ -891,6 +925,7 @@ class CoAuthors_Guest_Authors
 						'key'      => 'user_email',
 						'label'    => __( 'E-mail', 'co-authors-plus' ),
 						'group'    => 'contact-info',
+						'input'	   => 'email',
 					),
 				array(
 						'key'      => 'linked_account',
@@ -901,6 +936,7 @@ class CoAuthors_Guest_Authors
 						'key'      => 'website',
 						'label'    => __( 'Website', 'co-authors-plus' ),
 						'group'    => 'contact-info',
+						'input'	   => 'url',
 					),
 				array(
 						'key'      => 'aim',
@@ -1229,7 +1265,8 @@ class CoAuthors_Guest_Authors
 	 */
 	function filter_user_row_actions( $actions, $user_object ) {
 
-		if ( ! current_user_can( $this->list_guest_authors_cap ) )
+		if ( ! current_user_can( $this->list_guest_authors_cap )
+			|| is_network_admin() )
 			return $actions;
 
 		$new_actions = array();
@@ -1243,7 +1280,9 @@ class CoAuthors_Guest_Authors
 					'nonce' => wp_create_nonce( 'create-guest-author' ),
 				);
 			$create_guest_author_link = add_query_arg( $query_args, admin_url( $this->parent_page ) );
-			$new_actions['create-guest-author'] = '<a href="' . esc_url( $create_guest_author_link ) . '">' . __( 'Create Profile', 'co-authors-plus' ) . '</a>';
+			if ( apply_filters( 'coauthors_show_create_profile_user_link', false ) ) {
+				$new_actions['create-guest-author'] = '<a href="' . esc_url( $create_guest_author_link ) . '">' . __( 'Create Profile', 'co-authors-plus' ) . '</a>';
+			}
 		}
 
 		return $new_actions + $actions;
@@ -1297,6 +1336,46 @@ class CoAuthors_Guest_Authors
 		}
 		return $link;
 
+	}
+
+	/**
+	 * Filter Author Feed Link for non native authors
+	 *
+	 * @since 3.1
+	 *
+	 * @param string $feed_link Required. Original feed link for the author.
+	 * @param string $feed Required. Type of feed being generated.
+	 * @return string Feed link for the author updated, if needs to be
+	 */
+	public function filter_author_feed_link( $feed_link, $feed ) {
+		if ( ! is_author() ) {
+			return $feed_link;
+		}
+
+		// Get author, then check if author is guest-author because 
+		// that's the only type that will need to be adjusted
+		$author = get_queried_object();
+		if ( empty ( $author ) || 'guest-author' != $author->type ) {
+			return $feed_link;
+		}
+
+		// The next section is similar to 
+		// get_author_feed_link() in wp-includes/link-template.php
+		$permalink_structure = get_option('permalink_structure');
+
+		if ( empty( $feed ) ) {
+			$feed = get_default_feed();
+		}
+
+		if ( '' == $permalink_structure ) {
+			$link = home_url( "?feed=$feed&amp;author=" . $author->ID );
+		} else {
+			$link = get_author_posts_url( $author->ID );
+			$feed_link = ( $feed == get_default_feed() ) ? 'feed' : "feed/$feed";
+			$link = trailingslashit($link) . user_trailingslashit($feed_link, 'feed');
+		}
+
+		return $link;
 	}
 
 }

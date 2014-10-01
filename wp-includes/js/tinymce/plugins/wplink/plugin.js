@@ -15,8 +15,11 @@ tinymce.PluginManager.add( 'wplink', function( editor ) {
 	editor.addShortcut( 'ctrl+k', '', 'WP_Link' );
 
 	function setState( button, node ) {
-		button.disabled( editor.selection.isCollapsed() && node.nodeName !== 'A' );
-		button.active( node.nodeName === 'A' && ! node.name );
+		var parent = editor.dom.getParent( node, 'a' ),
+			getView = editor.plugins.wpview ? editor.plugins.wpview.getView : function() { return false; };
+
+		button.disabled( ( editor.selection.isCollapsed() && ! parent ) || ( parent && ! parent.href ) || getView( node ) );
+		button.active( parent && parent.href );
 	}
 
 	editor.addButton( 'link', {

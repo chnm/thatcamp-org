@@ -32,19 +32,23 @@
     do_action('mailusers_update_custom_meta_filters') ;
 
 	$err_msg = '';
+	get_currentuserinfo();
+
 	$from_sender = 0;
+    $from_address = empty($user_email) ? get_bloginfo('email') : $user_email;
+    $from_name = empty($user_identity) ? get_bloginfo('name') : $user_identity;
+
 
 	// Send the email if it has been requested
-		if (array_key_exists('send', $_POST) && $_POST['send']=='true') {
-			get_currentuserinfo();
-		// Use current user info only if from name and address has not been set by the form
-		if (!isset($_POST['fromName']) || !isset($_POST['fromAddress']) || empty($_POST['fromName']) || empty($_POST['fromAddress'])) {
-			$from_name = $user_identity;
-			$from_address = $user_email;
-		} else {
-			$from_name = $_POST['fromName'];
-			$from_address = $_POST['fromAddress'];
-		}
+	if (array_key_exists('send', $_POST) && $_POST['send']=='true') {
+	    // Use current user info only if from name and address has not been set by the form
+	    if (!isset($_POST['fromName']) || !isset($_POST['fromAddress']) || empty($_POST['fromName']) || empty($_POST['fromAddress'])) {
+	        $from_name = empty($user_identity) ? get_bloginfo('name') : $user_identity;
+		    $from_address = $user_email;
+	    } else {
+		    $from_name = $_POST['fromName'];
+		    $from_address = $_POST['fromAddress'];
+	    }
 	    $override_name = mailusers_get_from_sender_name_override() ;
         $override_address = mailusers_get_from_sender_address_override() ;
         $exclude_sender = mailusers_get_from_sender_exclude() ;
@@ -113,6 +117,14 @@
         if (!empty($override_name)) $from_name = $override_name ;
     }
 
+    // Replace the template variables concerning the blog and sender details
+    // --
+
+    $subject = mailusers_replace_sender_templates($subject, $from_name);
+    $mail_content = mailusers_replace_sender_templates($mail_content, $from_name);
+    $subject = mailusers_replace_blog_templates($subject);
+    $mail_content = mailusers_replace_blog_templates($mail_content);
+
 	// If error, we simply show the form again
 	if (array_key_exists('send', $_POST) && ($_POST['send']=='true') && ($err_msg == '')) {
 		// No error, send the mail
@@ -145,23 +157,23 @@
             //  Once known, put the target value in the proper pile
             switch ($key)
             {
-                case 'filter':
+                case MAILUSERS_CM_FILTER_PREFIX:
                     $send_filters[] = $value ;
                     break ;
 
-                case 'user group':
+                case MAILUSERS_USERS_GROUPS_PREFIX:
                     $send_ug[] = $value ;
                     break ;
 
-                case 'uam':
+                case MAILUSERS_USER_ACCESS_MANAGER_PREFIX:
                     $send_uam[] = $value ;
                     break ;
 
-                case 'groups':
+                case MAILUSERS_ITTHINX_GROUPS_PREFIX:
                     $send_groups[] = $value ;
                     break ;
 
-                case 'pmpro':
+                case MAILUSERS_PMPRO_PREFIX:
                     $send_pmpro[] = $value ;
                     break ;
 

@@ -7,7 +7,7 @@
 
 /* Shortcode handler */
 
-add_action( 'init', 'wpcf7_add_shortcode_number', 5 );
+add_action( 'wpcf7_init', 'wpcf7_add_shortcode_number' );
 
 function wpcf7_add_shortcode_number() {
 	wpcf7_add_shortcode( array( 'number', 'number*', 'range', 'range*' ),
@@ -32,7 +32,7 @@ function wpcf7_number_shortcode_handler( $tag ) {
 	$atts = array();
 
 	$atts['class'] = $tag->get_class_option( $class );
-	$atts['id'] = $tag->get_option( 'id', 'id', true );
+	$atts['id'] = $tag->get_id_option();
 	$atts['tabindex'] = $tag->get_option( 'tabindex', 'int', true );
 	$atts['min'] = $tag->get_option( 'min', 'signed_int', true );
 	$atts['max'] = $tag->get_option( 'max', 'signed_int', true );
@@ -44,6 +44,8 @@ function wpcf7_number_shortcode_handler( $tag ) {
 	if ( $tag->is_required() )
 		$atts['aria-required'] = 'true';
 
+	$atts['aria-invalid'] = $validation_error ? 'true' : 'false';
+
 	$value = (string) reset( $tag->values );
 
 	if ( $tag->has_option( 'placeholder' ) || $tag->has_option( 'watermark' ) ) {
@@ -51,8 +53,7 @@ function wpcf7_number_shortcode_handler( $tag ) {
 		$value = '';
 	}
 
-	if ( wpcf7_is_posted() && isset( $_POST[$tag->name] ) )
-		$value = stripslashes_deep( $_POST[$tag->name] );
+	$value = wpcf7_get_hangover( $tag->name, $value );
 
 	$atts['value'] = $value;
 
@@ -68,7 +69,7 @@ function wpcf7_number_shortcode_handler( $tag ) {
 
 	$html = sprintf(
 		'<span class="wpcf7-form-control-wrap %1$s"><input %2$s />%3$s</span>',
-		$tag->name, $atts, $validation_error );
+		sanitize_html_class( $tag->name ), $atts, $validation_error );
 
 	return $html;
 }
@@ -107,6 +108,10 @@ function wpcf7_number_validation_filter( $result, $tag ) {
 		$result['reason'][$name] = wpcf7_get_message( 'number_too_large' );
 	}
 
+	if ( isset( $result['reason'][$name] ) && $id = $tag->get_id_option() ) {
+		$result['idref'][$name] = $id;
+	}
+
 	return $result;
 }
 
@@ -118,18 +123,18 @@ add_filter( 'wpcf7_messages', 'wpcf7_number_messages' );
 function wpcf7_number_messages( $messages ) {
 	return array_merge( $messages, array(
 		'invalid_number' => array(
-			'description' => __( "Number format that the sender entered is invalid", 'wpcf7' ),
-			'default' => __( 'Number format seems invalid.', 'wpcf7' )
+			'description' => __( "Number format that the sender entered is invalid", 'contact-form-7' ),
+			'default' => __( 'Number format seems invalid.', 'contact-form-7' )
 		),
 
 		'number_too_small' => array(
-			'description' => __( "Number is smaller than minimum limit", 'wpcf7' ),
-			'default' => __( 'This number is too small.', 'wpcf7' )
+			'description' => __( "Number is smaller than minimum limit", 'contact-form-7' ),
+			'default' => __( 'This number is too small.', 'contact-form-7' )
 		),
 
 		'number_too_large' => array(
-			'description' => __( "Number is larger than maximum limit", 'wpcf7' ),
-			'default' => __( 'This number is too large.', 'wpcf7' )
+			'description' => __( "Number is larger than maximum limit", 'contact-form-7' ),
+			'default' => __( 'This number is too large.', 'contact-form-7' )
 		) ) );
 }
 
@@ -142,18 +147,18 @@ function wpcf7_add_tag_generator_number() {
 	if ( ! function_exists( 'wpcf7_add_tag_generator' ) )
 		return;
 
-	wpcf7_add_tag_generator( 'number', __( 'Number (spinbox)', 'wpcf7' ),
+	wpcf7_add_tag_generator( 'number', __( 'Number (spinbox)', 'contact-form-7' ),
 		'wpcf7-tg-pane-number', 'wpcf7_tg_pane_number' );
 
-	wpcf7_add_tag_generator( 'range', __( 'Number (slider)', 'wpcf7' ),
+	wpcf7_add_tag_generator( 'range', __( 'Number (slider)', 'contact-form-7' ),
 		'wpcf7-tg-pane-range', 'wpcf7_tg_pane_range' );
 }
 
-function wpcf7_tg_pane_number( &$contact_form ) {
+function wpcf7_tg_pane_number( $contact_form ) {
 	wpcf7_tg_pane_number_and_relatives( 'number' );
 }
 
-function wpcf7_tg_pane_range( &$contact_form ) {
+function wpcf7_tg_pane_range( $contact_form ) {
 	wpcf7_tg_pane_number_and_relatives( 'range' );
 }
 
@@ -165,44 +170,44 @@ function wpcf7_tg_pane_number_and_relatives( $type = 'number' ) {
 <div id="wpcf7-tg-pane-<?php echo $type; ?>" class="hidden">
 <form action="">
 <table>
-<tr><td><input type="checkbox" name="required" />&nbsp;<?php echo esc_html( __( 'Required field?', 'wpcf7' ) ); ?></td></tr>
-<tr><td><?php echo esc_html( __( 'Name', 'wpcf7' ) ); ?><br /><input type="text" name="name" class="tg-name oneline" /></td><td></td></tr>
+<tr><td><input type="checkbox" name="required" />&nbsp;<?php echo esc_html( __( 'Required field?', 'contact-form-7' ) ); ?></td></tr>
+<tr><td><?php echo esc_html( __( 'Name', 'contact-form-7' ) ); ?><br /><input type="text" name="name" class="tg-name oneline" /></td><td></td></tr>
 </table>
 
 <table>
 <tr>
-<td><code>id</code> (<?php echo esc_html( __( 'optional', 'wpcf7' ) ); ?>)<br />
+<td><code>id</code> (<?php echo esc_html( __( 'optional', 'contact-form-7' ) ); ?>)<br />
 <input type="text" name="id" class="idvalue oneline option" /></td>
 
-<td><code>class</code> (<?php echo esc_html( __( 'optional', 'wpcf7' ) ); ?>)<br />
+<td><code>class</code> (<?php echo esc_html( __( 'optional', 'contact-form-7' ) ); ?>)<br />
 <input type="text" name="class" class="classvalue oneline option" /></td>
 </tr>
 
 <tr>
-<td><code>min</code> (<?php echo esc_html( __( 'optional', 'wpcf7' ) ); ?>)<br />
+<td><code>min</code> (<?php echo esc_html( __( 'optional', 'contact-form-7' ) ); ?>)<br />
 <input type="number" name="min" class="numeric oneline option" /></td>
 
-<td><code>max</code> (<?php echo esc_html( __( 'optional', 'wpcf7' ) ); ?>)<br />
+<td><code>max</code> (<?php echo esc_html( __( 'optional', 'contact-form-7' ) ); ?>)<br />
 <input type="number" name="max" class="numeric oneline option" /></td>
 </tr>
 
 <tr>
-<td><code>step</code> (<?php echo esc_html( __( 'optional', 'wpcf7' ) ); ?>)<br />
+<td><code>step</code> (<?php echo esc_html( __( 'optional', 'contact-form-7' ) ); ?>)<br />
 <input type="number" name="step" class="numeric oneline option" min="1" /></td>
 </tr>
 
 <tr>
-<td><?php echo esc_html( __( 'Default value', 'wpcf7' ) ); ?> (<?php echo esc_html( __( 'optional', 'wpcf7' ) ); ?>)<br /><input type="text" name="values" class="oneline" /></td>
+<td><?php echo esc_html( __( 'Default value', 'contact-form-7' ) ); ?> (<?php echo esc_html( __( 'optional', 'contact-form-7' ) ); ?>)<br /><input type="text" name="values" class="oneline" /></td>
 
 <td>
-<br /><input type="checkbox" name="placeholder" class="option" />&nbsp;<?php echo esc_html( __( 'Use this text as placeholder?', 'wpcf7' ) ); ?>
+<br /><input type="checkbox" name="placeholder" class="option" />&nbsp;<?php echo esc_html( __( 'Use this text as placeholder?', 'contact-form-7' ) ); ?>
 </td>
 </tr>
 </table>
 
-<div class="tg-tag"><?php echo esc_html( __( "Copy this code and paste it into the form left.", 'wpcf7' ) ); ?><br /><input type="text" name="<?php echo $type; ?>" class="tag" readonly="readonly" onfocus="this.select()" /></div>
+<div class="tg-tag"><?php echo esc_html( __( "Copy this code and paste it into the form left.", 'contact-form-7' ) ); ?><br /><input type="text" name="<?php echo $type; ?>" class="tag wp-ui-text-highlight code" readonly="readonly" onfocus="this.select()" /></div>
 
-<div class="tg-mail-tag"><?php echo esc_html( __( "And, put this code into the Mail fields below.", 'wpcf7' ) ); ?><br /><span class="arrow">&#11015;</span>&nbsp;<input type="text" class="mail-tag" readonly="readonly" onfocus="this.select()" /></div>
+<div class="tg-mail-tag"><?php echo esc_html( __( "And, put this code into the Mail fields below.", 'contact-form-7' ) ); ?><br /><input type="text" class="mail-tag wp-ui-text-highlight code" readonly="readonly" onfocus="this.select()" /></div>
 </form>
 </div>
 <?php

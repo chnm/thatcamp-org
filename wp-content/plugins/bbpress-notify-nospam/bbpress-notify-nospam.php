@@ -2,7 +2,7 @@
 /*
 * Plugin Name: bbPress Notify (No-Spam)
 * Description: Sends email notifications upon topic/reply creation, as long as it's not flagged as spam.
-* Version: 1.5.5
+* Version: 1.6.1
 * Author: Vinny Alves, Andreas Baumgartner, Paul Schroeder
 * License:       GNU General Public License, v2 (or newer)
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -309,7 +309,7 @@ class bbPress_Notify_noSpam {
 			$title   = html_entity_decode(strip_tags(bbp_get_topic_title($post_id)), ENT_NOQUOTES, 'UTF-8');
 			$excerpt = html_entity_decode(strip_tags(bbp_get_topic_excerpt($post_id, $excerpt_size)), ENT_NOQUOTES, 'UTF-8');
 			$author  = bbp_get_topic_author($post_id);
-			$url     = bbp_get_topic_permalink($post_id);
+			$url     = apply_filters( 'bbpnns_topic_url', bbp_get_topic_permalink($post_id), $post_id, $title );
 		}
 		elseif ('reply' === $type)
 		{
@@ -317,7 +317,7 @@ class bbPress_Notify_noSpam {
 			$title   = html_entity_decode(strip_tags(bbp_get_reply_title($post_id)), ENT_NOQUOTES, 'UTF-8');
 			$excerpt = html_entity_decode(strip_tags(bbp_get_reply_excerpt($post_id, $excerpt_size)), ENT_NOQUOTES, 'UTF-8');
 			$author  = bbp_get_reply_author($post_id);
-			$url     = bbp_get_reply_permalink($post_id);
+			$url     = apply_filters( 'bbpnns_reply_url', bbp_get_reply_permalink($post_id), $post_id, $title );
 		}
 		else 
 		{
@@ -328,7 +328,7 @@ class bbPress_Notify_noSpam {
 		$content = preg_replace('/(?:<\/p>\s*<p>)/ism', "\n\n", $content);
 		$content = html_entity_decode(strip_tags($content), ENT_NOQUOTES, 'UTF-8');
 		
-		$topic_reply = bbp_get_reply_url($post_id);
+		$topic_reply = apply_filters( 'bbpnns_topic_reply', bbp_get_reply_url($post_id), $post_id, $title );
 		
 		$email_subject = str_replace('[blogname]', $blogname, $email_subject);
 		$email_subject = str_replace("[$type-title]", $title, $email_subject);

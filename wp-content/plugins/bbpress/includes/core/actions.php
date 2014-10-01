@@ -37,21 +37,21 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  *           v--WordPress Actions        v--bbPress Sub-actions
  */
-add_action( 'plugins_loaded',           'bbp_loaded',                   10    );
-add_action( 'init',                     'bbp_init',                     0     ); // Early for bbp_register
-add_action( 'parse_query',              'bbp_parse_query',              2     ); // Early for overrides
-add_action( 'widgets_init',             'bbp_widgets_init',             10    );
-add_action( 'generate_rewrite_rules',   'bbp_generate_rewrite_rules',   10    );
-add_action( 'wp_enqueue_scripts',       'bbp_enqueue_scripts',          10    );
-add_action( 'wp_head',                  'bbp_head',                     10    );
-add_action( 'wp_footer',                'bbp_footer',                   10    );
-add_action( 'set_current_user',         'bbp_setup_current_user',       10    );
-add_action( 'setup_theme',              'bbp_setup_theme',              10    );
-add_action( 'after_setup_theme',        'bbp_after_setup_theme',        10    );
-add_action( 'template_redirect',        'bbp_template_redirect',        8     ); // Before BuddyPress's 10 [BB2225]
-add_action( 'login_form_login',         'bbp_login_form_login',         10    );
-add_action( 'profile_update',           'bbp_profile_update',           10, 2 ); // user_id and old_user_data
-add_action( 'user_register',            'bbp_user_register',            10    );
+add_action( 'plugins_loaded',           'bbp_loaded',                 10    );
+add_action( 'init',                     'bbp_init',                   0     ); // Early for bbp_register
+add_action( 'parse_query',              'bbp_parse_query',            2     ); // Early for overrides
+add_action( 'widgets_init',             'bbp_widgets_init',           10    );
+add_action( 'generate_rewrite_rules',   'bbp_generate_rewrite_rules', 10    );
+add_action( 'wp_enqueue_scripts',       'bbp_enqueue_scripts',        10    );
+add_action( 'wp_head',                  'bbp_head',                   10    );
+add_action( 'wp_footer',                'bbp_footer',                 10    );
+add_action( 'set_current_user',         'bbp_setup_current_user',     10    );
+add_action( 'setup_theme',              'bbp_setup_theme',            10    );
+add_action( 'after_setup_theme',        'bbp_after_setup_theme',      10    );
+add_action( 'template_redirect',        'bbp_template_redirect',      8     ); // Before BuddyPress's 10 [BB2225]
+add_action( 'login_form_login',         'bbp_login_form_login',       10    );
+add_action( 'profile_update',           'bbp_profile_update',         10, 2 ); // user_id and old_user_data
+add_action( 'user_register',            'bbp_user_register',          10    );
 
 /**
  * bbp_loaded - Attached to 'plugins_loaded' above
@@ -74,12 +74,14 @@ add_action( 'bbp_loaded', 'bbp_filter_user_roles_option',  16 );
  *
  * Attach various initialization actions to the init action.
  * The load order helps to execute code at the correct time.
- *                                              v---Load order
+ *                                               v---Load order
  */
-add_action( 'bbp_init', 'bbp_load_textdomain',  0   );
-add_action( 'bbp_init', 'bbp_register',         0   );
-add_action( 'bbp_init', 'bbp_add_rewrite_tags', 20  );
-add_action( 'bbp_init', 'bbp_ready',            999 );
+add_action( 'bbp_init', 'bbp_load_textdomain',   0   );
+add_action( 'bbp_init', 'bbp_register',          0   );
+add_action( 'bbp_init', 'bbp_add_rewrite_tags',  20  );
+add_action( 'bbp_init', 'bbp_add_rewrite_rules', 30  );
+add_action( 'bbp_init', 'bbp_add_permastructs',  40  );
+add_action( 'bbp_init', 'bbp_ready',             999 );
 
 /**
  * There is no action API for roles to use, so hook in immediately after
@@ -116,8 +118,8 @@ add_action( 'bbp_register', 'bbp_register_views',          8  );
 add_action( 'bbp_register', 'bbp_register_shortcodes',     10 );
 
 // Autoembeds
-add_action( 'bbp_init', 'bbp_reply_content_autoembed', 8   );
-add_action( 'bbp_init', 'bbp_topic_content_autoembed', 8   );
+add_action( 'bbp_init', 'bbp_reply_content_autoembed', 8 );
+add_action( 'bbp_init', 'bbp_topic_content_autoembed', 8 );
 
 /**
  * bbp_ready - attached to end 'bbp_init' above
@@ -179,8 +181,8 @@ add_action( 'bbp_edit_forum_post_extras',        'bbp_save_forum_extras', 2 );
 add_action( 'bbp_forum_attributes_metabox_save', 'bbp_save_forum_extras', 2 );
 
 // New/Edit Reply
-add_action( 'bbp_new_reply',  'bbp_update_reply', 10, 6 );
-add_action( 'bbp_edit_reply', 'bbp_update_reply', 10, 6 );
+add_action( 'bbp_new_reply',  'bbp_update_reply', 10, 7 );
+add_action( 'bbp_edit_reply', 'bbp_update_reply', 10, 7 );
 
 // Before Delete/Trash/Untrash Reply
 add_action( 'wp_trash_post', 'bbp_trash_reply'   );
@@ -222,7 +224,10 @@ add_action( 'bbp_delete_topic', 'bbp_remove_topic_from_all_favorites' );
 // Subscriptions
 add_action( 'bbp_trash_topic',  'bbp_remove_topic_from_all_subscriptions'       );
 add_action( 'bbp_delete_topic', 'bbp_remove_topic_from_all_subscriptions'       );
+add_action( 'bbp_trash_forum',  'bbp_remove_forum_from_all_subscriptions'       );
+add_action( 'bbp_delete_forum', 'bbp_remove_forum_from_all_subscriptions'       );
 add_action( 'bbp_new_reply',    'bbp_notify_subscribers',                 11, 5 );
+add_action( 'bbp_new_topic',    'bbp_notify_forum_subscribers',           11, 4 );
 
 // Sticky
 add_action( 'bbp_trash_topic',  'bbp_unstick_topic' );
@@ -295,10 +300,12 @@ add_action( 'bbp_post_request', 'bbp_new_reply_handler',      10 );
 add_action( 'bbp_post_request', 'bbp_new_topic_handler',      10 );
 
 // Theme-side GET requests
-add_action( 'bbp_get_request', 'bbp_toggle_topic_handler',   1  );
-add_action( 'bbp_get_request', 'bbp_toggle_reply_handler',   1  );
-add_action( 'bbp_get_request', 'bbp_favorites_handler',      1  );
-add_action( 'bbp_get_request', 'bbp_subscriptions_handler',  1  );
+add_action( 'bbp_get_request', 'bbp_toggle_topic_handler',        1  );
+add_action( 'bbp_get_request', 'bbp_toggle_reply_handler',        1  );
+add_action( 'bbp_get_request', 'bbp_favorites_handler',           1  );
+add_action( 'bbp_get_request', 'bbp_subscriptions_handler',       1  );
+add_action( 'bbp_get_request', 'bbp_forum_subscriptions_handler', 1  );
+add_action( 'bbp_get_request', 'bbp_search_results_redirect',     10 );
 
 // Maybe convert the users password
 add_action( 'bbp_login_form_login', 'bbp_user_maybe_convert_pass' );

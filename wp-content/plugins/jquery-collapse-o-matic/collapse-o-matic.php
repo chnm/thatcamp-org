@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.5.9
+Version: 1.5.10
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -23,7 +23,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.5.9';
+	var $version = '1.5.10';
 
 	/**
 	 * Used as prefix for options entry
@@ -106,7 +106,7 @@ class WP_Collapse_O_Matic {
 		if($this->options['script_location'] == 'footer' ){
 			$load_in_footer = true;
 		}
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.10', $load_in_footer);
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.11', $load_in_footer);
 		if( empty($this->options['script_check']) ){
 			wp_enqueue_script('collapseomatic-js');
 		}
@@ -231,12 +231,12 @@ class WP_Collapse_O_Matic {
 			if($findme != 'true' && $findme != 'auto'){
 				$offset = $findme;
 			}
-			$anchor = '<a id="find-'.$id.'" name="'.$offset.'"> </a>';
+			$anchor = '<input type="hidden" id="find-'.$id.'" name="'.$offset.'"/>';
 		}
 		$closeanchor = '';
 		if($scrollonclose && (is_numeric($scrollonclose) || $scrollonclose == 0)){
 			$trigclass .= ' scroll-to-trigger';
-			$closeanchor = '<a id="scrollonclose-'.$id.'" name="'.$scrollonclose.'"> </a>';
+			$closeanchor = '<input type="hidden" id="scrollonclose-'.$id.'" name="'.$scrollonclose.'"/>';
 		}
 		$link = $closeanchor.$anchor.'<'.$tag.' class="collapseomatic '.$trigclass.'" id="'.$id.'" '.$relatt.' '.$altatt.'>'.$startwrap.$title.$endwrap.'</'.$tag.'>';
 		if($swaptitle){

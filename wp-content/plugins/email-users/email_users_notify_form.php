@@ -40,6 +40,9 @@
             MAILUSERS_I18N_DOMAIN), __(ucwords($post_type)), __(ucwords($post_type)));
     }
     
+	if (!isset($mail_format)) {
+		$mail_format = mailusers_get_default_mail_format();
+	}
 
     $screen = get_current_screen() ;
     $post_type = $screen->post_type == '' ? 'post' : $screen->post_type ;
@@ -77,25 +80,24 @@
     $mail_format = mailusers_get_default_mail_format() == 'html' ? 
         __('HTML', MAILUSERS_I18N_DOMAIN) :    __('Plain text', MAILUSERS_I18N_DOMAIN);
                     
-    $subject = mailusers_get_default_subject();
-    $mail_content = mailusers_get_default_body();
-
-    // Replace the template variables concerning the blog details
-    // --
-    $subject = mailusers_replace_blog_templates($subject);
-    $mail_content = mailusers_replace_blog_templates($mail_content);
-        
     // Replace the template variables concerning the sender details
     // --    
     get_currentuserinfo();
 
     $from_name = $user_identity;
     $from_address = $user_email;
+
     $override_name = mailusers_get_from_sender_name_override();
     $override_address = mailusers_get_from_sender_address_override();
-    $subject = mailusers_replace_sender_templates($subject, $from_name);
-    $mail_content = mailusers_replace_sender_templates($mail_content, $from_name);
-        
+
+    //  Override the send from address?
+    if (($from_sender == 1) && !empty($override_address) && is_email($override_address)) {
+
+        $from_address = $override_address ;
+        if (!empty($override_name)) $from_name = $override_name ;
+
+    }
+
     // Replace the template variables concerning the post details
     // --
     $post = get_post( $post_id );
@@ -107,6 +109,10 @@
 
     if (empty($post_excerpt)) $post_excerpt = $post_content[0];
 
+    //  Deal with post content in array form
+    if (is_array($post_content)) $post_content = $post_content[0] ;
+
+if (0):
     if (mailusers_get_default_mail_format()=='html') {
         $post_excerpt = wpautop($post_excerpt);
     }
@@ -116,11 +122,27 @@
         $post_excerpt = do_shortcode($post_excerpt) ;
     }
     
-    //  Deal with post content in array form
-    if (is_array($post_content)) $post_content = $post_content[0] ;
+    // Replace the template variables concerning the blog details
+    // unless content has already been sent and comes back through a POST
+    // --
+	if (!isset($subject)) {
+        $subject = mailusers_get_default_subject();
+        $subject = mailusers_replace_blog_templates($subject);
+        $subject = mailusers_replace_sender_templates($subject, $from_name);
+        $subject = mailusers_replace_post_templates($subject, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+	}
 
-    $subject = mailusers_replace_post_templates($subject, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
-    $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+    // Replace the template variables concerning the blog details
+    // unless content has already been sent and comes back through a POST
+    // --
+	if (!isset($mail_content)) {
+        $mail_content = mailusers_get_default_body();
+        $mail_content = mailusers_replace_blog_templates($mail_content);
+        $mail_content = mailusers_replace_sender_templates($mail_content, $from_name);
+        $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+	}
+endif;
+
 ?>
 
 <div class="wrap">
@@ -143,6 +165,13 @@
         <input type="hidden" name="subject" value="<?php echo format_to_edit($subject);?>" />
         
         <table class="form-table" width="100%" cellspacing="2" cellpadding="5">
+		<tr>
+			<th scope="row" valign="top"><?php _e('Mail format', MAILUSERS_I18N_DOMAIN); ?></th>
+			<td><select name="mail_format" style="width: 158px;">
+				<option value="html" <?php if ($mail_format=='html') echo 'selected="selected"'; ?>><?php _e('HTML', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="plaintext" <?php if ($mail_format=='plaintext') echo 'selected="selected"'; ?>><?php _e('Plain text', MAILUSERS_I18N_DOMAIN); ?></option>
+			</select></td>
+		</tr>
         <tr>
             <th scope="row" valign="top"></th>
             <td><strong><?php _e('Mail will be sent as:', MAILUSERS_I18N_DOMAIN); ?> <?php echo $mail_format; ?></strong></td>
@@ -340,13 +369,48 @@
             </td>
         </tr>
         <tr>
-            <th scope="row" valign="top"><label for="subject"><?php _e('Subject', MAILUSERS_I18N_DOMAIN); ?></label></th>
-            <td><?php echo mailusers_get_default_mail_format()=='html' ? $subject : '<pre>' . format_to_edit($subject) . '</pre>';?></td>
+            <th scope="row" valign="top"><label for="mailcontent"><?php _e('Preview', MAILUSERS_I18N_DOMAIN); ?></label></th>
+            <td>
+                <div id="mail-content-preview" style="width: 647px;">
+                <table class="widefat">
+	                <thead>
+	                <tr>
+		                <th style="padding-left: 3px;" colspan="2"><?php _e('Notification Mail Preview (based on default notification body)', MAILUSERS_I18N_DOMAIN); ?></th>
+	                </tr>
+	                </thead>
+	                <tbody>
+	                <tr>
+		                <td><b><?php _e('Subject', MAILUSERS_I18N_DOMAIN); ?></b></td>
+		                <td><?php echo mailusers_get_default_mail_format()=='html' ? $subject : '<pre>' . format_to_edit($subject) . '</pre>';?></td>
+	                </tr>
+	                <tr>
+		                <td style="vertical-align: top;"><b><?php _e('Message', MAILUSERS_I18N_DOMAIN); ?></b></td>
+                        <td><?php echo mailusers_get_default_mail_format()=='html' ? do_shortcode($mail_content) : '<pre>' . wordwrap(strip_tags($mail_content), 80, "\n") . '</pre>';?></td>
+	                </tr>
+	                </tbody>
+                </table>
+                </div>
+                <br class="clear"/>
+            </td>
+        </tr>
+        <tr>
+			<th scope="row" valign="top"><label for="subject"><?php _e('Subject', MAILUSERS_I18N_DOMAIN); ?></label></th>
+			<td><input type="text" id="subject" name="subject" value="<?php echo format_to_edit($subject);?>" style="width: 647px;" /></td>
         </tr>
         <tr>
             <th scope="row" valign="top"><label for="mailcontent"><?php _e('Message', MAILUSERS_I18N_DOMAIN); ?></label></th>
-            <td><?php echo mailusers_get_default_mail_format()=='html' ? $mail_content : '<pre>' . wordwrap(strip_tags($mail_content), 80, "\n") . '</pre>';?>
-                <textarea rows="10" cols="80" name="mailcontent" id="mailcontent" style="width: 647px; display: none;" readonly="yes"><?php echo $mail_content;?></textarea>
+            <td>
+				<div id="mail-content-editor" style="width: 647px;">
+				<?php
+					if (strtolower($mail_format) === 'html') {
+						wp_editor(stripslashes($mail_content), "mailcontent");
+					} else {
+				?>
+					<textarea rows="10" cols="80" name="mailcontent" id="mailcontent" style="width: 647px;"><?php echo stripslashes($mail_content);?></textarea>
+				<?php 
+					}
+				?>
+				</div>
             </td>
         </tr>
         </table>
