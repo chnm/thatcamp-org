@@ -37,3 +37,10 @@
 	left: -10000px !important;
 	display:block !important;
 }
+.span_fix {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.span_fix:before, .span_fix:after {
+	content: none;
+}

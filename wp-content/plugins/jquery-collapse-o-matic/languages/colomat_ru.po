@@ -2,140 +2,122 @@
 # This file is distributed under the same license as the Collapse-O-Matic package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-11-19 08:16+0100\n"
+"PO-Revision-Date: 2014-09-22 10:05:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.5.7\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/0.1\n"
 "Project-Id-Version: Collapse-O-Matic\n"
-"POT-Creation-Date: \n"
-"Last-Translator: astroBro <baden@twinpictures.de>\n"
-"Language-Team: Twinpictures <info@twinpictures.de>\n"
-"Language: Russian\n"
 
-#: colomat.php:287
+#: collapse-o-matic.php:383
+msgid "Shortcode Loads Scripts"
+msgstr "Шорт-код загружает скрипт"
+
+#: collapse-o-matic.php:384
+msgid "Only load scripts with shortcode."
+msgstr "Только загрузка скриптов с шорткодом."
+
+#: collapse-o-matic.php:385
+msgid "Only load Collapse-O-Matic scripts if [expand] shortcode is used."
+msgstr "Если используется шорт-код [expand], загружает только скрипты Collapse-O-Matic"
+
+#: collapse-o-matic.php:391
+msgid "%sCollapse-Pro-Matic%s is our preimum plugin that offers additional attributes and features for <i>ultimate</i> flexibility."
+msgstr "%sCollapse-Pro-Matic%s - наш премиум плагин, который предлагает дополнительные атрибуты и функции для <i>максимальной</i> гибкости."
+
+#: collapse-o-matic.php:416
+msgid "%sFree%s Opensource Support"
+msgstr "%sБесплатно%s Открытый код Поддержка"
+
+#: collapse-o-matic.php:417
+msgid "If this plugin %s, please consider %sreviewing it at WordPress.org%s to help others."
+msgstr "Если этот плагин %s, почему бы не %sнаписать обзор на WordPress.org%s , чтобы помочь другим."
+
+#: collapse-o-matic.php:277
+msgid "Settings"
+msgstr "Настройки"
+
+#: collapse-o-matic.php:328
+msgid "Select Light for sites with lighter backgrounds. Select Dark for sites with darker backgrounds."
+msgstr "Выберите Светлый для сайтов с более светлым фоном. Выберите Темный для сайтов с более темным фоном."
+
+#: collapse-o-matic.php:376
+msgid "Custom Style"
+msgstr "Пользовательский стиль"
+
+#: collapse-o-matic.php:378
+msgid "Custom CSS style for <em>ultimate flexibility</em>"
+msgstr "Пользовательская таблица стилей CSS для <em>наибольшей гибкости</em>"
+
+#: collapse-o-matic.php:309
 msgid "Style"
 msgstr "Стиль"
 
-#: colomat.php:294
+#: collapse-o-matic.php:316
 msgid "Light"
 msgstr "Светлый"
 
-#: colomat.php:295
+#: collapse-o-matic.php:317
 msgid "Dark"
 msgstr "Темный"
 
-#: colomat.php:306
-msgid ""
-"Select Light for sites with lighter backgroudns. Select Dark for sites with "
-"darker backgrounds."
-msgstr ""
-"Выберите Светлый стиль для сайтов со светлым фоном. Темный для сайтов с "
-"темным."
-
-#: colomat.php:275 colomat.php:373
+#: collapse-o-matic.php:297 collapse-o-matic.php:409
 msgid "Click to toggle"
 msgstr "Нажмите, что бы переключить"
 
-#: colomat.php:276
+#: collapse-o-matic.php:298
 msgid "Default Collapse-O-Matic Settings"
 msgstr "Настройки по умолчанию для Collapse-O-Matic"
 
-#: colomat.php:311
+#: collapse-o-matic.php:333
 msgid "Tag Attribute"
 msgstr "Атрибут Тега"
 
-#: colomat.php:313
-msgid ""
-"HTML tag use to wrap the trigger text. See %sTag Attribute%s in the "
-"documentation for more info."
-msgstr ""
+#: collapse-o-matic.php:335
+msgid "HTML tag use to wrap the trigger text. See %sTag Attribute%s in the documentation for more info."
+msgstr "HTML-теги используемые, чтобы обернуть текст триггера. См. %sTag Attribute%s в документации для получения дополнительной информации."
 
-#: colomat.php:323
+#: collapse-o-matic.php:345
 msgid "Collapse/Expand Duration"
-msgstr ""
+msgstr "Продолжительность Свертывания/Развертывания"
 
-#: colomat.php:325
-msgid ""
-"A string or number determining how long the animation will run. See "
-"%sDuration%s in the documentation for more info."
-msgstr ""
+#: collapse-o-matic.php:347
+msgid "A string or number determining how long the animation will run. See %sDuration%s in the documentation for more info."
+msgstr "Строка или число, определяющие, как долго будет работать анимация. См. %sDuration%s в документации для получения дополнительной информации."
 
-#: colomat.php:330
+#: collapse-o-matic.php:352
 msgid "Animation Effect"
-msgstr ""
+msgstr "Эффект анимации "
 
-#: colomat.php:337
+#: collapse-o-matic.php:359
 msgid "Slide Only"
-msgstr ""
+msgstr "Только скольжение"
 
-#: colomat.php:338
+#: collapse-o-matic.php:360
 msgid "Slide & Fade"
-msgstr ""
+msgstr "Скольжение и выцветание"
 
-#: colomat.php:349
-msgid ""
-"Animation effect to use while collapsing and expanding. See %sAnimation "
-"Effect%s in the documentation for more info."
-msgstr ""
+#: collapse-o-matic.php:371
+msgid "Animation effect to use while collapsing and expanding. See %sAnimation Effect%s in the documentation for more info."
+msgstr "Эффект анимации, который используется при свертывании и развертывании. См. %sAnimation Effect%s в документации для получения дополнительной информации."
 
-#: colomat.php:354
+#: collapse-o-matic.php:390
 msgid "Level Up!"
-msgstr ""
+msgstr "Повысить уровень!"
 
-#: colomat.php:355
-msgid ""
-"<em>Comming Soon: Collapse-Pro-Matic</em> our preimum plugin that offers "
-"additional attributes and the ability to set default attribute settings for "
-"all attributes."
-msgstr ""
-
-#: colomat.php:362
+#: collapse-o-matic.php:398
 msgid "Save Changes"
-msgstr ""
+msgstr "Сохранить изменения"
 
-#: colomat.php:374
+#: collapse-o-matic.php:410
 msgid "About"
-msgstr ""
+msgstr "О плагине"
 
-#: colomat.php:377
-msgid ""
-"Remove clutter, save space. Display and hide additional content in a SEO "
-"friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a "
-"lovely jQuery expanding and collapsing element."
-msgstr ""
+#: collapse-o-matic.php:413
+msgid "Remove clutter, save space. Display and hide additional content in a SEO friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a lovely jQuery expanding and collapsing element."
+msgstr "Удалить беспорядок, сэкономить место. Показать и скрыть дополнительный контент дружественным SEO способом. Оберните любой контент, включая другие шорткоды в прекрасный  развертывающийся и свертывающийся элемент на JQuery."
 
-#: colomat.php:379
-msgid ""
-"%sDetailed documentation%s, complete with working demonstrations of all "
-"shortcode attributes, is available for your instructional enjoyment."
-msgstr ""
-
-#: colomat.php:380
-msgid "%sFree%s & %sPremimum%s Support"
-msgstr ""
-
-#: colomat.php:381
-msgid ""
-"If you like this plugin, please consider %sreviewing it at WordPress.org%s "
-"to help others."
-msgstr ""
-
-msgid "jQuery Collapse-O-Matic"
-msgstr ""
-
-msgid "http://plugins.twinpictures.de/plugins/collapse-o-matic/"
-msgstr ""
-
-msgid ""
-"Collapse-O-Matic adds an [expand] shortcode that wraps content into a "
-"lovely, jQuery collapsible div."
-msgstr ""
-
-msgid "twinpictures, baden03"
-msgstr ""
-
-msgid "http://twinpictures.de/"
-msgstr ""
+#: collapse-o-matic.php:415
+msgid "%sDetailed documentation%s, complete with working demonstrations of all shortcode attributes, is available for your instructional enjoyment."
+msgstr "%sПолная документация%s в комплекте с рабочими демонстрациями всех атрибутов шорткода, доступна для Вашего удовольствия."

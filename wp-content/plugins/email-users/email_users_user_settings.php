@@ -359,10 +359,10 @@ class MailUsers_List_Table extends WP_List_Table {
         $totalitems = count_users() ;
 
         //Search?
-        $search = !empty($_GET['s']) ? mysql_real_escape_string($_GET['s']) : '';
+        $search = !empty($_GET['s']) ? esc_sql($_GET['s']) : '';
 
         //Which page is this?
-        $paged = !empty($_GET['paged']) ? mysql_real_escape_string($_GET['paged']) : '';
+        $paged = !empty($_GET['paged']) ? esc_sql($_GET['paged']) : '';
 
         //Page Number
         if (empty($paged) || !is_numeric($paged) || $paged <= 0 ) $paged=1;
@@ -378,8 +378,8 @@ class MailUsers_List_Table extends WP_List_Table {
  
         /* -- Ordering parameters -- */
         //Parameters that are going to be used to order the result
-        $orderby = !empty($_GET['orderby']) ? mysql_real_escape_string($_GET['orderby']) : 'display_name';
-        $order = !empty($_GET['order']) ? mysql_real_escape_string($_GET['order']) : 'ASC';
+        $orderby = !empty($_GET['orderby']) ? esc_sql($_GET['orderby']) : 'display_name';
+        $order = !empty($_GET['order']) ? esc_sql($_GET['order']) : 'ASC';
  
         /* -- Register the pagination -- */
         $this->set_pagination_args( array(

@@ -5,7 +5,7 @@ Plugin URI: http://johansteen.se/code/paypal-donations/
 Description: Easy and simple setup and insertion of PayPal donate buttons with a shortcode or through a sidebar Widget. Donation purpose can be set for each button. A few other customization options are available as well.
 Author: Johan Steen
 Author URI: http://johansteen.se/
-Version: 1.8.4
+Version: 1.8.5
 License: GPLv2 or later
 Text Domain: paypal-donations
 

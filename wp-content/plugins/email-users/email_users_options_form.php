@@ -20,8 +20,8 @@
 
 <?php 
 	wp_enqueue_script('postbox');
-    wp_enqueue_style('dashboard');
     wp_enqueue_script('dashboard');
+    wp_enqueue_style('dashboard');
 
 	if (!current_user_can('manage_options')) {
         wp_die(printf('<div class="error fade"><p>%s</p></div>',
@@ -152,13 +152,14 @@ print $reflection->getFileName();
 		<td>
 			<select name="mailusers_max_bcc_recipients" style="width: 235px;">
 				<option value="0" <?php if (mailusers_get_max_bcc_recipients()=='0') echo 'selected="true"';?>><?php _e('None', MAILUSERS_I18N_DOMAIN); ?></option>
-				<option value="1" <?php if (mailusers_get_max_bcc_recipients()=='1') echo 'selected="true"';?>>1</option>
-				<option value="10" <?php if (mailusers_get_max_bcc_recipients()=='10') echo 'selected="true"';?>>10</option>
-				<option value="30" <?php if (mailusers_get_max_bcc_recipients()=='30') echo 'selected="true"';?>>30</option>
-				<option value="100" <?php if (mailusers_get_max_bcc_recipients()=='100') echo 'selected="true"';?>>100</option>
-				<option value="250" <?php if (mailusers_get_max_bcc_recipients()=='250') echo 'selected="true"';?>>250</option>
-				<option value="500" <?php if (mailusers_get_max_bcc_recipients()=='500') echo 'selected="true"';?>>500</option>
-				<option value="1000" <?php if (mailusers_get_max_bcc_recipients()=='1000') echo 'selected="true"';?>>1000</option>
+                <option value="-1" <?php if (mailusers_get_max_bcc_recipients()=='-1') echo 'selected="true"';?>><?php _e('1 (use To: field)', MAILUSERS_I18N_DOMAIN);?></option>
+				<option value="1" <?php if (mailusers_get_max_bcc_recipients()=='1') echo 'selected="true"';?>><?php _e('1 (use Bcc: field)', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="10" <?php if (mailusers_get_max_bcc_recipients()=='10') echo 'selected="true"';?>><?php _e('10', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="30" <?php if (mailusers_get_max_bcc_recipients()=='30') echo 'selected="true"';?>><?php _e('30', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="100" <?php if (mailusers_get_max_bcc_recipients()=='100') echo 'selected="true"';?>><?php _e('100', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="250" <?php if (mailusers_get_max_bcc_recipients()=='250') echo 'selected="true"';?>><?php _e('250', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="500" <?php if (mailusers_get_max_bcc_recipients()=='500') echo 'selected="true"';?>><?php _e('500', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="1000" <?php if (mailusers_get_max_bcc_recipients()=='1000') echo 'selected="true"';?>><?php _e('1000', MAILUSERS_I18N_DOMAIN);?></option>
 			</select><br/><i><small><?php _e('Try 30 if you have problems sending emails to many users (some providers forbid too many recipients in BCC field).', MAILUSERS_I18N_DOMAIN); ?></i></small>
 		</td>
 	</tr>
@@ -272,7 +273,11 @@ print $reflection->getFileName();
 			<input 	type="checkbox"
 					name="mailusers_default_user_control" id="mailusers_default_user_control" value="true"
 					<?php if (mailusers_get_default_user_control()=='true') echo 'checked="checked"';?> ></input>
-			<?php _e('Allow Users to control their own Email Users settings.', MAILUSERS_I18N_DOMAIN); ?>
+			<?php _e('Allow Users to control their own Email Users settings.', MAILUSERS_I18N_DOMAIN); ?><br />
+			<input 	type="checkbox"
+					name="mailusers_no_role_filter" id="mailusers_no_role_filter" value="true"
+					<?php if (mailusers_get_no_role_filter()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Filter Users with <a href="https://codex.wordpress.org/Roles_and_Capabilities#Roles">no role</a> from Recipient List.', MAILUSERS_I18N_DOMAIN); ?>
 		</td>
 	</tr>
 	<tr>
@@ -295,6 +300,15 @@ print $reflection->getFileName();
 					name="mailusers_debug" id="mailusers_debug" value="true"
 					<?php if (mailusers_get_debug()=='true') echo 'checked="checked"';?> ></input>
 			<?php _e('Enable Debug Mode<br/><small><i>Note:  Email is not sent when in debug mode.</i></small>', MAILUSERS_I18N_DOMAIN); ?><br/>
+		</td>
+	</tr>
+	<tr style="display:none;">
+    <th><?php _e('Base64 Encode Email', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<input 	type="checkbox" disabled
+					name="mailusers_base64_encode" id="mailusers_base64_encode" value="true"
+					<?php if (mailusers_get_base64_encode()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Enable Base64 Encoding<br/><small><i>Note:  All email will be Base64 encoded when enabled.</i></small>', MAILUSERS_I18N_DOMAIN); ?><br/>
 		</td>
 	</tr>
 	</table>
@@ -383,8 +397,23 @@ print $reflection->getFileName();
 		get_currentuserinfo();
 		global $post, $user_identity, $user_email ;
 
-		$from_name = $user_identity;
-		$from_address = $user_email;
+        $from_sender = 0;
+        $from_address = empty($user_email) ? get_bloginfo('email') : $user_email;
+        $from_name = empty($user_identity) ? get_bloginfo('name') : $user_identity;
+        
+
+        $override_name = mailusers_get_from_sender_name_override();
+        $override_address = mailusers_get_from_sender_address_override();
+
+        //  Override the send from address?
+        if (($from_sender == 1) && !empty($override_address) && is_email($override_address))
+        {
+
+            $from_address = $override_address ;
+            if (!empty($override_name)) $from_name = $override_name ;
+
+        }
+
 		$subject = mailusers_replace_sender_templates($subject, $from_name);
 		$mail_content = mailusers_replace_sender_templates($mail_content, $from_name);
 	
@@ -554,11 +583,11 @@ print $reflection->getFileName();
     It is important to note that if the <strong><i>expected</i></strong> and <strong><i>actual</i></strong> do
     not match, it does not automatically mean there will be a problem.  However, if Email Users is not producing
     the expected results AND the <strong><i>expected</i></strong> and <strong><i>actual</i></strong> do not match,
-    it is something which should be looked at as a potential source of the problem.', MAILUSERS_I18_DOMAIN) ; ?>
+    it is something which should be looked at as a potential source of the problem.', MAILUSERS_I18N_DOMAIN) ; ?>
     </p>
     <p>
 <?php _e('The recommended way to eliminate the overloaded version of wp_mail() as the source of a problem is to disable
-    the plugin or theme which has overloaded wp_mail().', MAILUSERS_I18_DOMAIN) ; ?>
+    the plugin or theme which has overloaded wp_mail().', MAILUSERS_I18N_DOMAIN) ; ?>
     </p>
 <br/>
 </div><!-- inside -->

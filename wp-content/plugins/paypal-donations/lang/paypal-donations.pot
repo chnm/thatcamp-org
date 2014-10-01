@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-22 04:16+0000\n"
+"POT-Creation-Date: 2014-09-21 10:10+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,7 +123,7 @@ msgstr ""
 msgid "Select Button"
 msgstr ""
 
-#: src/PayPalDonations/Admin.php:244 src/PayPalDonations/Admin.php:513
+#: src/PayPalDonations/Admin.php:244 src/PayPalDonations/Admin.php:527
 msgid "Custom Button"
 msgstr ""
 
@@ -156,38 +156,47 @@ msgid "Open PayPal in New Tab"
 msgstr ""
 
 #: src/PayPalDonations/Admin.php:325
+msgid "Remove Line Feeds"
+msgstr ""
+
+#: src/PayPalDonations/Admin.php:332
+msgid ""
+"Enable this if your theme or a plugin adds autostyling to shortcodes/widgets."
+msgstr ""
+
+#: src/PayPalDonations/Admin.php:339
 msgid "Enable Checkout Language"
 msgstr ""
 
-#: src/PayPalDonations/Admin.php:336
+#: src/PayPalDonations/Admin.php:350
 msgid "Checkout Language"
 msgstr ""
 
-#: src/PayPalDonations/Admin.php:347
+#: src/PayPalDonations/Admin.php:361
 msgid "Return Method"
 msgstr ""
 
-#: src/PayPalDonations/Admin.php:354
+#: src/PayPalDonations/Admin.php:368
 msgid "Takes effect only if the return page is set."
 msgstr ""
 
-#: src/PayPalDonations/Admin.php:374
+#: src/PayPalDonations/Admin.php:388
 msgid "Required fields."
 msgstr ""
 
-#: src/PayPalDonations/Admin.php:388
+#: src/PayPalDonations/Admin.php:402
 msgid "Optional extra settings to fine tune the setup in certain scenarios."
 msgstr ""
 
-#: src/PayPalDonations/Admin.php:647
+#: src/PayPalDonations/Admin.php:678
 msgid "GET method (default)"
 msgstr ""
 
-#: src/PayPalDonations/Admin.php:648
+#: src/PayPalDonations/Admin.php:679
 msgid "GET method, no variables"
 msgstr ""
 
-#: src/PayPalDonations/Admin.php:649
+#: src/PayPalDonations/Admin.php:680
 msgid "POST method"
 msgstr ""
 

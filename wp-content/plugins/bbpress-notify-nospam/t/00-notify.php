@@ -205,6 +205,29 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		list($got_recipients, $body) = $bbpnns->send_notification($recipients, 'test subject', 'test_body');
 		$this->assertEquals('administrator', $got_recipients, 'Filtered send_notification returns administrator');
 	}
+	
+	
+	public function test_filters()
+	{
+		$url     = 'foo';
+		$post_id = 1;
+		$title   = 'test title'; 
+		
+		foreach ( array( 'bbpnns_topic_url', 'bbpnns_reply_url', 'bbpnns_topic_reply') as $filter )
+		{
+			add_filter( $filter, array(&$this, '_url_filter'), 10, 3 );
+			
+			$out = apply_filters( $filter, $url, $post_id, $title );
+			$this->assertEquals( $out, 'Bar ' . $post_id . ' ' . $title, $filter . ' Filter works');
+		}
+		
+	}
+	
+	
+	public function _url_filter( $url, $post_id, $title )
+	{
+		return 'Bar ' . $post_id . ' ' . $title;
+	}
 		
 }
 

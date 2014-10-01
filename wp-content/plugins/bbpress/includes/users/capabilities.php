@@ -68,7 +68,7 @@ function bbp_set_user_role( $user_id = 0, $new_role = '' ) {
 		$role = bbp_get_user_role( $user_id );
 
 		// User already has this role so no new role is set
-		if ( $new_role == $role ) {
+		if ( $new_role === $role ) {
 			$new_role = false;
 
 		// Users role is different than the new role
@@ -115,13 +115,20 @@ function bbp_get_user_role( $user_id = 0 ) {
 	$user    = get_userdata( $user_id );
 	$role    = false;
 
-	// User has roles so lets
+	// User has roles so look for a bbPress one
 	if ( ! empty( $user->roles ) ) {
-		$roles = array_intersect( array_values( $user->roles ), array_keys( bbp_get_dynamic_roles() ) );
 
-		// If there's a role in the array, use the first one
+		// Look for a bbPress role
+		$roles = array_intersect(
+			array_values( $user->roles ),
+			array_keys( bbp_get_dynamic_roles() )
+		);
+
+		// If there's a role in the array, use the first one. This isn't very
+		// smart, but since roles aren't exactly hierarchical, and bbPress
+		// does not yet have a UI for multiple user roles, it's fine for now.
 		if ( !empty( $roles ) ) {
-			$role = array_shift( array_values( $roles ) );
+			$role = array_shift( $roles );
 		}
 	}
 
@@ -142,25 +149,27 @@ function bbp_get_user_role( $user_id = 0 ) {
 function bbp_get_user_blog_role( $user_id = 0 ) {
 
 	// Add bbPress roles (returns $wp_roles global)
-	$wp_roles  = bbp_add_forums_roles();
+	bbp_add_forums_roles();
 
 	// Validate user id
-	$user_id   = bbp_get_user_id( $user_id );
-	$user      = get_userdata( $user_id );
-	$role      = false;
+	$user_id = bbp_get_user_id( $user_id );
+	$user    = get_userdata( $user_id );
+	$role    = false;
 
 	// User has roles so lets
 	if ( ! empty( $user->roles ) ) {
 
-		// Apply the WordPress 'editable_roles' filter to let plugins ride along
-		$all_roles = apply_filters( 'editable_roles', $wp_roles->roles );
+		// Look for a non bbPress role
+		$roles     = array_intersect(
+			array_values( $user->roles ),
+			array_keys( bbp_get_blog_roles() )
+		);
 
-		// Look for an intersection of user roles to available blog roles
-		$roles     = array_intersect( array_values( $user->roles ), array_keys( $all_roles ) );
-
-		// If there's a role in the array, use the first one
+		// If there's a role in the array, use the first one. This isn't very
+		// smart, but since roles aren't exactly hierarchical, and WordPress
+		// does not yet have a UI for multiple user roles, it's fine for now.
 		if ( !empty( $roles ) ) {
-			$role = array_shift( array_values( $roles ) );
+			$role = array_shift( $roles );
 		}
 	}
 
@@ -192,7 +201,7 @@ function bbp_profile_update_role( $user_id = 0 ) {
 	$forums_role = bbp_get_user_role( $user_id );
 
 	// Bail if no role change
-	if ( $new_role == $forums_role )
+	if ( $new_role === $forums_role )
 		return;
 
 	// Bail if trying to set their own role
@@ -280,7 +289,7 @@ function bbp_set_current_user_default_role() {
 	/** Add or Map ************************************************************/
 
 	// Add the user to the site
-	if ( true == $add_to_site ) {
+	if ( true === $add_to_site ) {
 
 		// Make sure bbPress roles are added
 		bbp_add_forums_roles();
@@ -366,7 +375,7 @@ function bbp_is_user_spammer( $user_id = 0 ) {
 
  * @uses bbp_is_single_user()
  * @uses bbp_is_user_home()
- * @uses bbp_get_displayed_user_field()
+ * @uses bbp_get_displayed_user_id()
  * @uses bbp_is_user_keymaster()
  * @uses get_blogs_of_user()
  * @uses get_current_blog_id()
@@ -407,7 +416,6 @@ function bbp_make_spam_user( $user_id = 0 ) {
 	// Make array of post types to mark as spam
 	$post_types  = array( bbp_get_topic_post_type(), bbp_get_reply_post_type() );
 	$post_types  = "'" . implode( "', '", $post_types ) . "'";
-	$status      = bbp_get_public_status_id();
 
 	// Loop through blogs and remove their posts
 	foreach ( (array) array_keys( $blogs ) as $blog_id ) {
@@ -416,7 +424,7 @@ function bbp_make_spam_user( $user_id = 0 ) {
 		switch_to_blog( $blog_id );
 
 		// Get topics and replies
-		$posts = $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} WHERE post_author = {$user_id} AND post_status = '{$status}' AND post_type IN ({$post_types})" );
+		$posts = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_author = %d AND post_status = '%s' AND post_type IN ( {$post_types} )", $user_id, bbp_get_public_status_id() ) );
 
 		// Loop through posts and spam them
 		if ( !empty( $posts ) ) {
@@ -455,7 +463,7 @@ function bbp_make_spam_user( $user_id = 0 ) {
  *
  * @uses bbp_is_single_user()
  * @uses bbp_is_user_home()
- * @uses bbp_get_displayed_user_field()
+ * @uses bbp_get_displayed_user_id()
  * @uses bbp_is_user_keymaster()
  * @uses get_blogs_of_user()
  * @uses bbp_get_topic_post_type()
@@ -472,7 +480,7 @@ function bbp_make_ham_user( $user_id = 0 ) {
 
 	// Use displayed user if it's not yourself
 	if ( empty( $user_id ) && bbp_is_single_user() && !bbp_is_user_home() )
-		$user_id = bbp_get_displayed_user_field();
+		$user_id = bbp_get_displayed_user_id();
 
 	// Bail if no user ID
 	if ( empty( $user_id ) )
@@ -495,7 +503,6 @@ function bbp_make_ham_user( $user_id = 0 ) {
 	// Make array of post types to mark as spam
 	$post_types = array( bbp_get_topic_post_type(), bbp_get_reply_post_type() );
 	$post_types = "'" . implode( "', '", $post_types ) . "'";
-	$status     = bbp_get_spam_status_id();
 
 	// Loop through blogs and remove their posts
 	foreach ( (array) array_keys( $blogs ) as $blog_id ) {
@@ -504,7 +511,7 @@ function bbp_make_ham_user( $user_id = 0 ) {
 		switch_to_blog( $blog_id );
 
 		// Get topics and replies
-		$posts = $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} WHERE post_author = {$user_id} AND post_status = '{$status}' AND post_type IN ({$post_types})" );
+		$posts = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_author = %d AND post_status = '%s' AND post_type IN ( {$post_types} )", $user_id, bbp_get_spam_status_id() ) );
 
 		// Loop through posts and spam them
 		if ( !empty( $posts ) ) {

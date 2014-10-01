@@ -2,9 +2,9 @@
 Contributors: vprat, mpwalsh8, marvinlabs
 Donate link: http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/
 Tags: email, users, list, admin
-Requires at least: 3.5.1
-Tested up to: 3.8
-Stable tag: 4.6.3
+Requires at least: 3.6.1
+Tested up to: 4.0
+Stable tag: 4.6.10
 License: GPL
 
 == Description ==
@@ -189,6 +189,41 @@ function update_publicworks_meta_filter()
 `
 
 == Changelog ==
+
+= Version 4.6.10 =
+* Fixed bug with from_name which happens in certain circumstances.
+* Added ability to edit post/page/cpt email content and subject.
+* Added _mailusers_before_wp_mail_ and _mailusers_before_wp_mail_ hooks to allow doing actions before and after calling wp_mail().
+* Fixed malformed email header when omitting display names [per Support Forum bug report](https://wordpress.org/support/topic/bug-report-can-not-set-sender-with-omit-option-on#post-5939774).
+* Preliminary work to support option to Base64 encode email [per Support Forum request](http://wordpress.org/support/topic/chinese-character-encoding-problem-on-ios-device?replies=3#post-5931091) to better support mobile devices.  This feature is not currently enabled.
+* Updated German translations (thank you Dr. Dieter Menne).
+
+= Version 4.6.9 =
+* Removed references to deprecated WordPress API function format_to_post().
+* Fixed bug where %FROM_NAME% substitution was not handled properly with Sender Name overrides.
+* Added author and blog keyword substitution to user and group emails.
+* Updated German translation (thank you Dr. Dieter Menne)
+
+= Version 4.6.8 =
+* Added Finnish translation (thank you Juga Paazmaya)
+* Replaced calls to mysql_real_escape_string() with esc_sql() for PHP 5.5 compatibility.
+
+= Version 4.6.7 =
+* Fixed problem with User Access Manager integration which resulted in sending email to all users regardless of UAM group assignment.
+
+= Version 4.6.6 =
+* Added new option to filter users with no role from the User Recipient List.
+* Bumped supported version of WordPress to 3.6.1.
+* Added ability to have recipient appear in To: list instead of Bcc: list when using BCC option of 1.
+* Fixed internationalization of BCC options.
+* Fixed problem with User Groups when using non-English versions of WordPress or groups which contain hyphen characters.
+
+= Version 4.6.5 =
+* Fixed sorting issue which was caused by commenting out code for debugging purposes to resolve problem fixed in 4.6.4.
+
+= Version 4.6.4 =
+* Fixed bug which caused first and last names to display as N/A in some instances.
+* Updated Dutch translation support (thank you Bart van Strien).
 
 = Version 4.6.3 =
 * Fixed several strings which were not properly set up for language translation.

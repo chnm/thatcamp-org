@@ -1,5 +1,5 @@
 /*!
- * Collapse-O-Matic JavaSctipt v1.5.10
+ * Collapse-O-Matic JavaSctipt v1.5.11
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2014, Twinpictures
@@ -70,8 +70,8 @@ function toggleState (obj, id, maptastic, trig_id) {
 	if(colomatslideEffect == 'slideToggle'){
 		jQuery('[id^=target][id$='+id+']').slideToggle(colomatduration, function() {
 			// Animation complete.
-			if( obj.hasClass('colomat-inline') && obj.is(':visible') ){
-				obj.css('display', 'inline');
+			if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+				jQuery(this).css('display', 'inline');
 			}
 			
 			//deal with any findme links
@@ -92,8 +92,8 @@ function toggleState (obj, id, maptastic, trig_id) {
 			opacity: "toggle"
 		}, colomatduration, function (){
 			//Animation complete
-			if( obj.hasClass('colomat-inline') && obj.is(':visible') ){
-				obj.css('display', 'inline');
+			if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
+				jQuery(this).css('display', 'inline');
 			}
 			
 			//deal with any findme links

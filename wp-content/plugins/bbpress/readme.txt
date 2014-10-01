@@ -1,13 +1,13 @@
 === bbPress ===
-Contributors: matt, johnjamesjacoby, jmdodd
+Contributors: matt, johnjamesjacoby, jmdodd, netweb
 Tags: forums, discussion, support, theme, akismet, multisite
-Requires at least: 3.5
-Tested up to: 3.6
-Stable tag: 2.3.2
+Requires at least: 3.6
+Tested up to: 4.0
+Stable tag: 2.5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-bbPress is forum software, made the WordPress way
+bbPress is forum software, made the WordPress way.
 
 == Description ==
 
@@ -17,14 +17,86 @@ We're keeping things as small and light as possible while still allowing for gre
 
 == Installation ==
 
-1. Place the 'bbpress' folder in your '/wp-content/plugins/' directory.
-2. Activate bbPress.
-3. Visit 'Settings > Forums' and adjust your configuration.
-4. Create some forums.
-5. View your site.
-6. Adjust the CSS of your theme as needed, to make everything pretty.
+= From your WordPress dashboard =
+
+1. Visit 'Plugins > Add New'
+2. Search for 'bbPress'
+3. Activate bbPress from your Plugins page. (You'll be greeted with a Welcome page.)
+4. Visit 'Forums > Add New' and create some forums. (You can always delete these later.)
+5a. If you have pretty permalinks enabled, visit yourdomain.com/forums.
+5b. If you do not have pretty permalinks enabled, visit yourdomain.com?post_type=forum
+
+= From WordPress.org =
+
+1. Download bbPress.
+2. Upload the 'bbpress' directory to your '/wp-content/plugins/' directory, using your favorite method (ftp, sftp, scp, etc...)
+3. Activate bbPress from your Plugins page. (You'll be greeted with a Welcome page.)
+4. Visit 'Forums > Add New' and create some forums. (You can always delete these later.)
+5a. If you have pretty permalinks enabled, visit yourdomain.com/forums.
+5b. If you do not have pretty permalinks enabled, visit yourdomain.com?post_type=forum
+
+= Extra =
+
+1. Visit 'Settings > Forums' and adjust your configuration.
+2. Adjust the CSS of your theme as needed, to make everything pretty.
 
 == Changelog ==
+
+= 2.5.4 =
+* Fix reply editing causing polluted hierarchy
+* Add tool for repairing reply positions within topics
+* Improved custom slug and displayed user field sanitization
+* Improved SSL support when relying on theme compatibility
+
+= 2.5.3 =
+* WordPress 3.8 support (dashicons, new color schemes)
+* Fix dropdown selects in settings pages
+* Fix accidental topic subscription removal on reply form
+* Fix poor grammar in profile title element
+* Fix admin area SSL support
+
+= 2.5.2 =
+* Fix BuddyPress (1.9.1) Notification integration
+
+= 2.5.1 =
+* Updated subscriptions setting description
+* Fix forum subscriptions not appearing on profiles for some users
+* Allow links to have targets
+* Improve Windows compatibility
+
+= 2.5 =
+* Added forum subscriptions
+* Added importers for AEF, Drupal, FluxBB, Kunena Forums (Joomla), MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, Xenforo and XMB
+* Added BuddyPress Notifications integration
+* Added ability to enqueue scripts and styles in the template stack
+* Fix various existing importer scripts
+* Fix forum visibility meta saving
+* Fix Akismet anonymous user meta checking
+* Fix inconsistent bbp_dropdown() results
+* Fix topic and reply ping-status inconsistencies
+
+= 2.4.1 =
+* Fix forum status saving
+* Fix widget settings saving
+* Fix custom wp_title compatibility
+* Fix search results custom permalink compatibility
+* Fix custom user topics & replies pages
+* Fix hierarchical reply handling in converter
+
+= 2.4 =
+* Added hierarchical reply support
+* Added ability to disable forum search
+* Reorganized settings page
+* Improved rewrite rules
+* Improved responsive CSS
+* Improved code posting
+* Improved user capability integration
+* Improved cache getting and setting
+* Audit strict type comparisons
+* Audit GlotPress string escaping
+* Audit title attribute usage
+* Audit WordPress core function usage
+* General code clean-up
 
 = 2.3.2 =
 * Improved posting of preformatted code

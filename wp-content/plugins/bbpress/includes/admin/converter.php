@@ -220,7 +220,7 @@ class BBP_Converter {
 					jQuery('#bbp-converter-start').hide();
 					jQuery('#bbp-converter-stop').show();
 					jQuery('#bbp-converter-progress').show();
-					bbconverter_log( '<p class="loading"><?php _e( 'Starting Conversion', 'bbpress' ); ?></p>' );
+					bbconverter_log( '<p class="loading"><?php esc_html_e( 'Starting Conversion', 'bbpress' ); ?></p>' );
 					bbconverter_run();
 				}
 			}
@@ -245,7 +245,7 @@ class BBP_Converter {
 			function bbconverter_success(response) {
 				bbconverter_log(response);
 
-				if ( response == '<p class="loading"><?php _e( 'Conversion Complete', 'bbpress' ); ?></p>' || response.indexOf('error') > -1 ) {
+				if ( response == '<p class="loading"><?php esc_html_e( 'Conversion Complete', 'bbpress' ); ?></p>' || response.indexOf('error') > -1 ) {
 					bbconverter_log('<p>Repair any missing information: <a href="<?php echo admin_url(); ?>tools.php?page=bbp-repair">Continue</a></p>');
 					bbconverter_stop();
 				} else if( bbconverter_is_running ) { // keep going
@@ -437,8 +437,38 @@ class BBP_Converter {
 
 				break;
 
-			// STEP 7. Convert tags.
+			// STEP 7. Stick topics.
 			case 7 :
+				if ( $converter->convert_topic_stickies( $start ) ) {
+					update_option( '_bbp_converter_step',  $step + 1 );
+					update_option( '_bbp_converter_start', 0         );
+					if ( empty( $start ) ) {
+						$this->converter_output( __( 'No stickies to stick', 'bbpress' ) );
+					}
+				} else {
+					update_option( '_bbp_converter_start', $max + 1 );
+					$this->converter_output( sprintf( __( 'Calculating topic stickies (%1$s - %2$s)', 'bbpress' ), $min, $max ) );
+				}
+
+				break;
+
+			// STEP 8. Stick to front topics (Super Sicky).
+			case 8 :
+				if ( $converter->convert_topic_super_stickies( $start ) ) {
+					update_option( '_bbp_converter_step',  $step + 1 );
+					update_option( '_bbp_converter_start', 0         );
+					if ( empty( $start ) ) {
+						$this->converter_output( __( 'No super stickies to stick', 'bbpress' ) );
+					}
+				} else {
+					update_option( '_bbp_converter_start', $max + 1 );
+					$this->converter_output( sprintf( __( 'Calculating topic super stickies (%1$s - %2$s)', 'bbpress' ), $min, $max ) );
+				}
+
+				break;
+
+			// STEP 9. Convert tags.
+			case 9 :
 				if ( $converter->convert_tags( $start ) ) {
 					update_option( '_bbp_converter_step',  $step + 1 );
 					update_option( '_bbp_converter_start', 0         );
@@ -452,8 +482,8 @@ class BBP_Converter {
 
 				break;
 
-			// STEP 8. Convert replies.
-			case 8 :
+			// STEP 10. Convert replies.
+			case 10 :
 				if ( $converter->convert_replies( $start ) ) {
 					update_option( '_bbp_converter_step',  $step + 1 );
 					update_option( '_bbp_converter_start', 0         );
@@ -463,6 +493,21 @@ class BBP_Converter {
 				} else {
 					update_option( '_bbp_converter_start', $max + 1 );
 					$this->converter_output( sprintf( __( 'Converting replies (%1$s - %2$s)', 'bbpress' ), $min, $max ) );
+				}
+
+				break;
+
+			// STEP 11. Convert reply_to parents.
+			case 11 :
+				if ( $converter->convert_reply_to_parents( $start ) ) {
+					update_option( '_bbp_converter_step',  $step + 1 );
+					update_option( '_bbp_converter_start', 0         );
+					if ( empty( $start ) ) {
+						$this->converter_output( __( 'No reply_to parents to convert', 'bbpress' ) );
+					}
+				} else {
+					update_option( '_bbp_converter_start', $max + 1 );
+					$this->converter_output( sprintf( __( 'Calculating reply_to parents (%1$s - %2$s)', 'bbpress' ), $min, $max ) );
 				}
 
 				break;
@@ -557,6 +602,11 @@ abstract class BBP_Converter_Base {
 	 * @var array() Map of from old topic ids to new topic ids.  It is for optimization.
 	 */
 	private $map_topicid = array();
+
+	/**
+	 * @var array() Map of from old reply_to ids to new reply_to ids.  It is for optimization.
+	 */
+	private $map_reply_to = array();
 
 	/**
 	 * @var array() Map of from old user ids to new user ids.  It is for optimization.
@@ -929,7 +979,14 @@ abstract class BBP_Converter_Base {
 
 							case 'tags':
 								$post_id = wp_set_object_terms( $insert_postmeta['objectid'], $insert_postmeta['name'], 'topic-tag', true );
-								break;
+								$term = get_term_by( 'name', $insert_postmeta['name'], 'topic-tag');
+								if ( false !== $term ) {
+									wp_update_term( $term->term_id, 'topic-tag', array(
+										'description' => $insert_postmeta['description'],
+										'slug'        => $insert_postmeta['slug']
+									) );
+								}
+ 								break;
 
 							/** Forum, Topic, Reply ***************************/
 
@@ -963,6 +1020,11 @@ abstract class BBP_Converter_Base {
 										} elseif ( '_id' == substr( $key, -3 ) && ( true === $this->sync_table ) ) {
 											$this->wpdb->insert( $this->sync_table_name, array( 'value_type' => 'post', 'value_id' => $post_id, 'meta_key' => $key, 'meta_value' => $value ) );
 										}
+
+										// Replies need to save their old reply_to ID for hierarchical replies association
+										if ( ( 'reply' == $to_type ) && ( '_bbp_reply_to' == $key ) ) {
+											add_post_meta( $post_id, '_bbp_old_reply_to', $value );
+										}
 									}
 								}
 								break;
@@ -976,6 +1038,9 @@ abstract class BBP_Converter_Base {
 		return ! $has_insert;
 	}
 
+	/**
+	 * This method converts old forum heirarchy to new bbPress heirarchy.
+	 */
 	public function convert_forum_parents( $start ) {
 
 		$has_update = false;
@@ -993,6 +1058,95 @@ abstract class BBP_Converter_Base {
 		foreach ( (array) $forum_array as $row ) {
 			$parent_id = $this->callback_forumid( $row->meta_value );
 			$this->wpdb->query( 'UPDATE ' . $this->wpdb->posts . ' SET post_parent = "' . $parent_id . '" WHERE ID = "' . $row->value_id . '" LIMIT 1' );
+			$has_update = true;
+		}
+
+		return ! $has_update;
+	}
+
+	/**
+	 * This method converts old topic stickies to new bbPress stickies.
+	 *
+	 * @since bbPress (r)
+	 *
+	 * @uses WPDB $wpdb
+	 * @uses bbp_stick_topic() to set the imported topic as sticky
+	 *
+	 */
+	public function convert_topic_stickies( $start ) {
+
+		$has_update = false;
+
+		if ( !empty( $this->sync_table ) ) {
+			$query = 'SELECT value_id, meta_value FROM ' . $this->sync_table_name . ' WHERE meta_key = "_bbp_old_sticky_status" AND meta_value = "sticky" LIMIT ' . $start . ', ' . $this->max_rows;
+		} else {
+			$query = 'SELECT post_id AS value_id, meta_value FROM ' . $this->wpdb->postmeta . ' WHERE meta_key = "_bbp_old_sticky_status" AND meta_value = "sticky" LIMIT ' . $start . ', ' . $this->max_rows;
+		}
+
+		update_option( '_bbp_converter_query', $query );
+
+		$sticky_array = $this->wpdb->get_results( $query );
+
+		foreach ( (array) $sticky_array as $row ) {
+			bbp_stick_topic( $row->value_id );
+			$has_update = true;
+		}
+
+		return ! $has_update;
+	}
+
+	/**
+	 * This method converts old topic super stickies to new bbPress super stickies.
+	 *
+	 * @since bbPress (r)
+	 *
+	 * @uses WPDB $wpdb
+	 * @uses bbp_stick_topic() to set the imported topic as super sticky
+	 *
+	 */
+	public function convert_topic_super_stickies( $start ) {
+
+		$has_update = false;
+
+		if ( !empty( $this->sync_table ) ) {
+			$query = 'SELECT value_id, meta_value FROM ' . $this->sync_table_name . ' WHERE meta_key = "_bbp_old_sticky_status" AND meta_value = "super-sticky" LIMIT ' . $start . ', ' . $this->max_rows;
+		} else {
+			$query = 'SELECT post_id AS value_id, meta_value FROM ' . $this->wpdb->postmeta . ' WHERE meta_key = "_bbp_old_sticky_status" AND meta_value = "super-sticky" LIMIT ' . $start . ', ' . $this->max_rows;
+		}
+
+		update_option( '_bbp_converter_query', $query );
+
+		$sticky_array = $this->wpdb->get_results( $query );
+
+		foreach ( (array) $sticky_array as $row ) {
+			$super = true;
+			bbp_stick_topic( $row->value_id, $super );
+			$has_update = true;
+		}
+
+		return ! $has_update;
+	}
+
+	/**
+	 * This method converts old reply_to post id to new bbPress reply_to post id.
+	 */
+	public function convert_reply_to_parents( $start ) {
+
+		$has_update = false;
+
+		if ( !empty( $this->sync_table ) ) {
+			$query = 'SELECT value_id, meta_value FROM ' . $this->sync_table_name . ' WHERE meta_key = "_bbp_old_reply_to" AND meta_value > 0 LIMIT ' . $start . ', ' . $this->max_rows;
+		} else {
+			$query = 'SELECT post_id AS value_id, meta_value FROM ' . $this->wpdb->postmeta . ' WHERE meta_key = "_bbp_old_reply_to" AND meta_value > 0 LIMIT ' . $start . ', ' . $this->max_rows;
+		}
+
+		update_option( '_bbp_converter_query', $query );
+
+		$reply_to_array = $this->wpdb->get_results( $query );
+
+		foreach ( (array) $reply_to_array as $row ) {
+			$reply_to = $this->callback_reply_to( $row->meta_value );
+			$this->wpdb->query( 'UPDATE ' . $this->wpdb->postmeta . ' SET meta_value = "' . $reply_to . '" WHERE meta_key = "_bbp_reply_to" AND post_id = "' . $row->value_id . '" LIMIT 1' );
 			$has_update = true;
 		}
 
@@ -1183,6 +1337,29 @@ abstract class BBP_Converter_Base {
 			}
 		}
 		return $this->map_topicid[$field];
+	}
+
+	/**
+	 * A mini cache system to reduce database calls to reply_to post id.
+	 *
+	 * @param string $field
+	 * @return string
+	 */
+	private function callback_reply_to( $field ) {
+		if ( !isset( $this->map_reply_to[$field] ) ) {
+			if ( !empty( $this->sync_table ) ) {
+				$row = $this->wpdb->get_row( $this->wpdb->prepare( 'SELECT value_id, meta_value FROM ' . $this->sync_table_name . ' WHERE meta_key = "_bbp_post_id" AND meta_value = "%s" LIMIT 1', $field ) );
+			} else {
+				$row = $this->wpdb->get_row( $this->wpdb->prepare( 'SELECT post_id AS value_id FROM ' . $this->wpdb->postmeta . ' WHERE meta_key = "_bbp_post_id" AND meta_value = "%s" LIMIT 1', $field ) );
+			}
+
+			if ( !is_null( $row ) ) {
+				$this->map_reply_to[$field] = $row->value_id;
+			} else {
+				$this->map_reply_to[$field] = 0;
+			}
+		}
+		return $this->map_reply_to[$field];
 	}
 
 	/**

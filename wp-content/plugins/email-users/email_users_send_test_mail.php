@@ -48,6 +48,19 @@
 
 	$from_name = $user_identity;
 	$from_address = $user_email;
+
+    $override_name = mailusers_get_from_sender_name_override();
+    $override_address = mailusers_get_from_sender_address_override();
+
+    //  Override the send from address?
+    if (($from_sender == 1) && !empty($override_address) && is_email($override_address))
+    {
+
+        $from_address = $override_address ;
+        if (!empty($override_name)) $from_name = $override_name ;
+
+    }
+
 	$subject = mailusers_replace_sender_templates($subject, $from_name);
 	$mail_content = mailusers_replace_sender_templates($mail_content, $from_name);
 
@@ -90,7 +103,7 @@
 		<p><strong><?php _e('No recipients were found.', MAILUSERS_I18N_DOMAIN); ?></strong></p>
 <?php
 	} else {
-		mailusers_send_mail($recipients, format_to_post($subject), $mail_content, $mail_format, $from_name, $from_address);
+		mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address);
 ?>
 		<div class="updated fade">
 			<p><?php echo sprintf(__("Test email sent to %s.", MAILUSERS_I18N_DOMAIN), $from_address); ?></p>

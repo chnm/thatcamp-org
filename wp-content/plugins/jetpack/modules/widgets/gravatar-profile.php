@@ -79,7 +79,7 @@ class Jetpack_Gravatar_Profile_Widget extends WP_Widget {
 			<img src="<?php echo esc_url( $gravatar_url ); ?>" class="grofile-thumbnail no-grav" alt="<?php echo esc_attr( $profile['displayName'] ); ?>" />
 			<div class="grofile-meta">
 				<h4><a href="<?php echo esc_url( $profile['profileUrl'] ); ?>"><?php echo esc_html( $profile['displayName'] ); ?></a></h4>
-				<p><?php echo wp_kses_data( $profile['aboutMe'] ); ?></p>
+				<p><?php echo wp_kses_post( $profile['aboutMe'] ); ?></p>
 			</div>
 
 			<?php
@@ -266,20 +266,20 @@ class Jetpack_Gravatar_Profile_Widget extends WP_Widget {
 		$cache_key = 'grofile-' . $hashed_email;
 
 		if( ! $profile = get_transient( $cache_key ) ) {
-			$profile_url = esc_url_raw( sprintf( '%s.gravatar.com/%s.php', ( is_ssl() ? 'https://secure' : 'http://www' ), $hashed_email ), array( 'http', 'https' ) );
+			$profile_url = esc_url_raw( sprintf( '%s.gravatar.com/%s.json', ( is_ssl() ? 'https://secure' : 'http://www' ), $hashed_email ), array( 'http', 'https' ) );
 
 			$expire = 300;
 			$response = wp_remote_get( $profile_url, array( 'User-Agent' => 'WordPress.com Gravatar Profile Widget' ) );
 			$response_code = wp_remote_retrieve_response_code( $response );
 			if ( 200 == $response_code ) {
 				$profile = wp_remote_retrieve_body( $response );
-				$profile = unserialize( $profile );
+				$profile = json_decode( $profile, true );
 
 				if ( is_array( $profile ) && ! empty( $profile['entry'] ) && is_array( $profile['entry'] ) ) {
 					$expire = 900; // cache for 15 minutes
 					$profile = $profile['entry'][0];
 				} else {
-					// Something strange happend.  Cache for 5 minutes.
+					// Something strange happened.  Cache for 5 minutes.
 					$profile = array();
 				}
 
