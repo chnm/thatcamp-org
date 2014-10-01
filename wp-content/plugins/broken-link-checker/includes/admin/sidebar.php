@@ -97,7 +97,7 @@ if ( !$configuration->get('user_has_donated') ):
 	?>
 	<div id="embedplus-ad" class="postbox">
 		<div class="inside" style="text-align: left">
-			<a href="http://wordpress.org/plugins/youtube-embed-plus/" title="YouTube EmbedPlus">
+			<a href="http://bit.ly/wordpress-youtube-plugin" title="YouTube EmbedPlus">
 				<img src="<?php echo plugins_url('images/embedplus_banner.jpg', BLC_PLUGIN_FILE) ?>" width="255" height="255" alt="YouTube EmbedPlus">
 			</a>
 

@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/broken-link-checker\n"
 "POT-Creation-Date: 2014-08-19 14:12:36+00:00\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Robin Roelofsen <info@dreamdesignsolutions.nl>\n"
+"Last-Translator: Janis Elsts <whiteshadow@w-shadow.com>\n"
 "Language-Team: Brokenlinkchecker <gvmelle@gmail.com>\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_c\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.8\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
@@ -494,7 +494,7 @@ msgstr "Divers"
 
 #: core/core.php:2129
 msgid "Highlight links broken for at least %s days"
-msgstr "Laat links zien die minstens %s dagen verbroken zijn"
+msgstr "Kleurcodering voor links die minstens %s dagen verbroken zijn"
 
 #: core/core.php:2138
 msgid "Color-code status codes"
@@ -826,7 +826,7 @@ msgstr "De volgende fout(en) kwam(en) voor:"
 #: includes/admin/links-page-js.php:585 includes/admin/table-printer.php:289
 #: includes/admin/table-printer.php:665
 msgid "Unlink"
-msgstr "ontkoppel"
+msgstr "Ontkoppel"
 
 #: includes/admin/links-page-js.php:629
 msgid "Enter a name for the new custom filter"

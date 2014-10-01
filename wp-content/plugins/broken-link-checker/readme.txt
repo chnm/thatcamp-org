@@ -3,8 +3,8 @@ Contributors: whiteshadow
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6P9S6CE3SRSW
 Tags: links, broken, maintenance, blogroll, custom fields, admin, comments, posts
 Requires at least: 3.2
-Tested up to: 4.0-beta4
-Stable tag: 1.9.4.2
+Tested up to: 4.0
+Stable tag: 1.9.5
 
 This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found. 
 
@@ -97,6 +97,13 @@ To upgrade your installation
 1. Reactivate the plugin. Your settings will be retained from the previous version.
 
 == Changelog ==
+
+= 1.9.5 =
+* Fixed missing YouTube videos not being detected when the video URL starts with https instead of http.
+* Enabled the YouTube video checker by default on new installations.
+* Made the "dismiss link" option more permanent. Instead of restoring a dismissed link if the redirect URL changes even a little bit, the plugin will now ignore query string changes. This should fix many of the reports about dismissed links reappearing for no apparent reason.
+* Updated Portuguese, German and Dutch translations.
+* Other minor fixes.
 
 = 1.9.4.2 =
 * Updated Dutch translation again.

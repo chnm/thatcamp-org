@@ -13,7 +13,7 @@ ModuleLazyInit: true
 ModuleClassName: blcYouTubeChecker
 ModulePriority: 100
 
-ModuleCheckerUrlPattern: @^http://(?:([\w\d]+\.)*youtube\.[^/]+/watch\?.*v=[^/#]|youtu\.be/[^/#\?]+|(?:[\w\d]+\.)*?youtube\.[^/]+/(playlist|view_play_list)\?[^/#]{15,}?)@i
+ModuleCheckerUrlPattern: @^https?://(?:([\w\d]+\.)*youtube\.[^/]+/watch\?.*v=[^/#]|youtu\.be/[^/#\?]+|(?:[\w\d]+\.)*?youtube\.[^/]+/(playlist|view_play_list)\?[^/#]{15,}?)@i
 */
 
 class blcYouTubeChecker extends blcChecker {
