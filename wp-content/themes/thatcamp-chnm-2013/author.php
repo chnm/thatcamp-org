@@ -37,7 +37,7 @@ $lastname = strtolower($current_camper->last_name);
 			<?php echo $current_camper->display_name; ?>
 			<?php endif; ?>
 </h1>
-                <?php thatcamp_add_friend_button( get_the_author_ID() ) ?>   
+                   
 
     <?php if (@$_GET['dev'] == 1) print_r($current_camper); ?>
 

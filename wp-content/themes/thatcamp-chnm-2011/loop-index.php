@@ -131,7 +131,7 @@
                 </div>
                 <?php endif; ?>
                 
-                <?php thatcamp_add_friend_button( get_the_author_ID() ) ?>                
+                                
                 
                 <?php /* Post content */ ?>
                 <div class="entry-content clearfix">
@@ -213,7 +213,7 @@
         </div>
         <?php endif; ?>
         
-         <?php thatcamp_add_friend_button( get_the_author_ID() ) ?>                
+                         
         
          <?php /* For printing: the permalink */
 			if ($graphene_settings['print_css']) {

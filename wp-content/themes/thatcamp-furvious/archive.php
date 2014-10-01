@@ -33,7 +33,7 @@
 					
 					<p><?php kreative_author_avatar($post->post_author); ?></p>
 					<p class="authorp">Posted by<br /><?php the_author_posts_link(); ?></p>
-				    <?php thatcamp_add_friend_button( get_the_author_ID() ) ?>                
+				                    
 					<br /> 
 					<p>Category</p>
 					<ul>

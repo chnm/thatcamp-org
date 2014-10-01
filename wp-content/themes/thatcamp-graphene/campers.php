@@ -131,7 +131,7 @@
 </div>	
 
 	<div class="camper_befriend">
-        <?php thatcamp_add_friend_button( $usr->ID ) ?>	
+        	
 	</div>		
 	<div style="clear:both;"></div>	
 </div>

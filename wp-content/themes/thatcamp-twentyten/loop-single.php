@@ -27,7 +27,7 @@
 
 					<div class="entry-meta">
 						<?php twentyten_posted_on(); ?>
-						<?php thatcamp_add_friend_button( get_the_author_ID() ) ?>
+						
 					</div><!-- .entry-meta -->
 
 					<div class="entry-content">

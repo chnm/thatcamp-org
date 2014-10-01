@@ -34,7 +34,7 @@
 				<?php comments_popup_link( __( 'Comment', 'notecamp'), __( '1 Comment', 'notecamp'), __( '% Comments', 'notecamp') ); ?>
 			</div>
 		<?php endif; ?>
-		<div class="post-author">By <?php the_author_posts_link() ?> <?php thatcamp_add_friend_button( get_the_author_ID() ) ?></div>
+		<div class="post-author">By <?php the_author_posts_link() ?> </div>
 		<div class="post-date"><?php echo get_the_date(); ?></div>
 		<div class="post-categories">
 			<?php _e( 'Categories: ', 'notecamp'); ?><?php the_category( ' ' ); ?>

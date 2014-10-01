@@ -16,7 +16,7 @@ endif;
 
             <?php echo get_avatar( $current_camper->user_email, $size = '96'); ?>&nbsp;&nbsp;
 
-	        <?php thatcamp_add_friend_button( $current_camper->ID ) ?>
+	        
 
         		<ul>
         		    <?php if ( $title = $current_camper->user_title ): ?>

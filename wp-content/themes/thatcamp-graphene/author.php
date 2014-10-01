@@ -33,7 +33,7 @@ $lastname = strtolower($current_camper->last_name);
 
     <?php echo get_avatar( $current_camper->user_email, $size = '150'); ?>&nbsp;&nbsp;
 
-	        <?php thatcamp_add_friend_button( $current_camper->ID ) ?>
+	        
 
 <div id="author-info">
 		<ul>	

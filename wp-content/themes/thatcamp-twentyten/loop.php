@@ -132,7 +132,7 @@
 
 			<div class="entry-meta">
 				<?php twentyten_posted_on(); ?>
-				<?php thatcamp_add_friend_button( get_the_author_ID() ) ?>
+				
 			</div><!-- .entry-meta -->
 
 	<?php if ( is_archive() || is_search() ) : // Only display excerpts for archives and search. ?>

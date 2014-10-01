@@ -8,7 +8,7 @@
 			<ul class="entry-info two" style="float:left;">
 				<li><strong><?php the_time('F jS, Y') ?></strong></li>
 				<li><a href="http://thatcamp.org/camper/<?php the_author_login(); ?>"><?php the_author(); ?></a></li>
-				<li>				<?php thatcamp_add_friend_button( get_the_author_ID() ) ?></li>
+				<li>				</li>
 				<li><?php the_tags( 'Tags: ', ', ', ''); ?></li>
 			</ul>
 			<div class="entry six" style="float:right;">

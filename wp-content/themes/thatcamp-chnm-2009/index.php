@@ -14,7 +14,7 @@
 			<div class="post">
 				<h3 id="post-<?php the_ID(); ?>"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 				<p><strong><?php the_time('l, F jS, Y') ?> | <a href="http://thatcamp.org/camper/<?php the_author_login(); ?>"><?php the_author(); ?></a> | <?php //echo the_author_meta('ID'); ?></strong></p>
-				<?php thatcamp_add_friend_button( get_the_author_ID() ) ?>
+				
 				<div class="entry">
 					<?php the_content() ?>
 				</div>

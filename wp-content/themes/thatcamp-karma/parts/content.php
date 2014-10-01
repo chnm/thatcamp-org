@@ -19,7 +19,7 @@
 		</header>
 		<span class="meta-date"><?php echo get_the_date(); ?></span>
 		<span class="meta-author"><?php printf( _x( 'by %s', 'Post written by...', 'thatcamp' ), bp_core_get_userlink( $post->post_author ) ); ?></span>
-	    <div class="friend-button"><?php thatcamp_add_friend_button( get_the_author_ID() ) ?>                </div>
+	    <div class="friend-button">                </div>
 		<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thatcamp'), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="readmore postlink"><?php _e( 'Read more...', 'thatcamp' ); ?></a>
 	</div>
 </article>

@@ -22,7 +22,7 @@ get_header(); ?>
 					<div class="entry-meta">
 						<?php boilerplate_posted_on(); ?>
 					</div><!-- .entry-meta -->
-				<?php thatcamp_add_friend_button( get_the_author_ID() ) ?>                
+				                
 					<div class="entry-content">
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'boilerplate' ), 'after' => '' ) ); ?>

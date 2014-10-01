@@ -3563,6 +3563,9 @@ div.message-search {
 div.message-search label {
   float: left;
 }
+input#send-notice {
+display:inline;
+}
 /*--------------------------------------------------------------
 6.9 - Extended Profiles
 --------------------------------------------------------------*/

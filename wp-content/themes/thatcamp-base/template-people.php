@@ -50,7 +50,7 @@ foreach($authors as $author) {
     $avatar = get_avatar($author['ID'], $avatar_size);
     $author_profile_url = get_author_posts_url($author['ID']);
 
-    echo '<li><a href="', $author_profile_url, '">', $avatar , '</a><a href="', $author_profile_url, '" class="contributor-link">', $display_name, '</a>', thatcamp_add_friend_button( $author['ID'] ) , '</li>';
+    echo '<li><a href="', $author_profile_url, '">', $avatar , '</a><a href="', $author_profile_url, '" class="contributor-link">', $display_name, '</a>', '</li>';
 }
 echo '</ul>';
 ?>
