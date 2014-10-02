@@ -32,8 +32,12 @@
             return null;
         }
 
-        email = email.replace('[at]', '@');
-        email = rot13(email.replace(/\[a\]/g, '@'));
+        // replace [at] sign
+        email = email.replace(/\[at\]/g, '@');
+
+        // encode
+        email = rot13(email);
+
         return email;
     }
 
@@ -58,7 +62,7 @@
     }
 
     // on DOM ready...
-    if (window.jQuery && false) {
+    if (window.jQuery) {
     // jQuery DOMready method
         jQuery(function ($) {
             $('body').delegate('a[data-enc-email]', 'click', function () {
