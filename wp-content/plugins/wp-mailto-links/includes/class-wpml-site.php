@@ -13,24 +13,29 @@ if (!class_exists('WPML_Site') && class_exists('WPML_Admin')):
 
 class WPML_Site extends WPML_Admin {
 
+    // @link http://www.mkyong.com/regular-expressions/how-to-validate-email-address-with-regular-expression/
+    const REGEXP_EMAIL = '([_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,}))';
+
     /**
      * Regular expressions
      * @var array
      */
-    public $regexps = array(
-        // @link http://www.mkyong.com/regular-expressions/how-to-validate-email-address-with-regular-expression/
-        'email_plain' => '/([_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,}))/i',
-        'email_mailto' => '/mailto\:[\s+]*([_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,}))/i',
-        '<a>' => '/<a[^A-Za-z](.*?)>(.*?)<\/a[\s+]*>/is',
-        '<img>' => '/<img([^>]*)>/is',
-        '<body>' => '/(<body(([^>]*)>))/is',
-    );
+    public $regexps = array();
 
     /**
      * Constructor
      */
     public function __construct() {
         parent::__construct();
+
+        $this->regexps = array(
+            'email_plain' => '/' . self::REGEXP_EMAIL . '/i',
+            'email_mailto' => '/mailto\:[\s+]*' . self::REGEXP_EMAIL . '/i',
+            'input' => '/<input([^>]*)value=["\'][\s+]*' . self::REGEXP_EMAIL . '[\s+]*["\']([^>]*)>/is',
+            'mailto_link' => '/<a[\s+]*(([^>]*)href=["\']mailto\:([^>]*)["\'])>(.*?)<\/a[\s+]*>/is',
+            '<img>' => '/<img([^>]*)>/is',
+            '<body>' => '/(<body(([^>]*)>))/is',
+        );
 
         // add actions
         add_action('wp', array($this, 'wp_site'), 10);
@@ -46,12 +51,20 @@ class WPML_Site extends WPML_Admin {
      */
     public function wp_head() {
         $icon = $this->options['icon'];
+        $class_name = $this->options['class_name'];
 
+        // add style to <head>
         echo '<style type="text/css" media="screen">' . "\n";
         echo '/* WP Mailto Links Plugin */' . "\n";
         echo '.wpml-nodis { display:none; }';
         echo '.wpml-rtl { unicode-bidi:bidi-override; direction:rtl; }';
 
+        // add nowrap style
+        if ($class_name) {
+            echo '.' . $class_name . ' { white-space:nowrap; }';
+        }
+
+        // add icon styling
         if ($icon) {
             $padding = ($icon < 19) ? 15 : 17;
             echo '.mail-icon-' . $icon . ' { background:url(' . plugins_url('/images/mail-icon-' . $icon . '.png', WP_MAILTO_LINKS_FILE) . ') no-repeat 100% 75%; padding-right:' . $padding . 'px; }';
@@ -204,8 +217,11 @@ class WPML_Site extends WPML_Admin {
     public function callback_filter_content($content) {
         $filtered = $content;
 
-        // get <a> elements
-        $filtered = preg_replace_callback($this->regexps['<a>'], array($this, 'parse_link'), $filtered);
+        // first encode email address in input values
+        $filtered = preg_replace_callback($this->regexps['input'], array($this, 'callback_input_values'), $filtered);
+
+        // get mailto links
+        $filtered = preg_replace_callback($this->regexps['mailto_link'], array($this, 'parse_mailto'), $filtered);
 
         // convert plain emails
         if ($this->options['convert_emails'] == 1) {
@@ -223,6 +239,21 @@ class WPML_Site extends WPML_Admin {
         }
 
         return $filtered;
+    }
+
+    /**
+     * Encode emails in input values
+     * @param array $match
+     * @return string
+     */
+    public function callback_input_values($match) {
+        $input = $match[0];
+        $email = $match[2];
+
+        // replace email by encoded
+        $input = str_replace($email, antispambot($email), $input);
+
+        return $input;
     }
 
     /**
@@ -288,21 +319,13 @@ class WPML_Site extends WPML_Admin {
      * -------------------------------------------------------------------------*/
 
     /**
-     * Make a clean <a> code
+     * Make a clean protected mailto link
      * @param array $match Result of a preg call in callback_filter_content()
-     * @return string Clean <a> code
+     * @return string Protected mailto link
      */
-    public function parse_link($match) {
+    public function parse_mailto($match) {
         $attrs = shortcode_parse_atts($match[1]);
-
-        $href_tolower = (isset($attrs['href'])) ? strtolower($attrs['href']) : '';
-
-        // check url
-        if (substr($href_tolower, 0, 7) === 'mailto:') {
-            $link = $this->protected_mailto($match[2], $attrs);
-        } else {
-            $link = $match[0];
-        }
+        $link = $this->protected_mailto($match[4], $attrs);
 
         return $link;
     }
