@@ -135,7 +135,9 @@ add_action( 'widgets_init', 'thatcampbase_widgets_init' );
  * Always add our styles when using the proper theme
  *
  * Done inline to reduce overhead
- */
+ * 
+ * Put back into style.css so that themes will work on standalone sites w/o BuddyPress - AF
+
 function thatcamp_add_styles_alt() {
 	if ( bp_is_root_blog() ) {
 		return;
@@ -191,6 +193,7 @@ div.generic-button.disabled-button:hover span {
 }
 remove_action( 'wp_head', 'thatcamp_add_styles' );
 add_action( 'wp_head', 'thatcamp_add_styles_alt' );
+*/
 
 function excerpt_read_more_link($output) {
  global $post;
