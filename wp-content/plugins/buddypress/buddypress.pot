@@ -2,16 +2,16 @@
 # This file is distributed under the GPLv2 or later (license.txt).
 msgid ""
 msgstr ""
-"Project-Id-Version: BuddyPress 2.1\n"
+"Project-Id-Version: BuddyPress 2.1.1\n"
 "Report-Msgid-Bugs-To: https://buddypress.trac.wordpress.org\n"
-"POT-Creation-Date: 2014-09-18 18:01:13+00:00\n"
+"POT-Creation-Date: 2014-10-06 21:39:12+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "Last-Translator: JOHN JAMES JACOBY <jjj@buddypress.org>\n"
 "Language-Team: ENGLISH <jjj@buddypress.org>\n"
-"X-Generator: grunt-wp-i18n 0.4.5\n"
+"X-Generator: grunt-wp-i18n 0.4.8\n"
 
 #: bp-activity/bp-activity-actions.php:157
 msgid "Activity deleted successfully"
@@ -26,7 +26,7 @@ msgid "The activity item has been marked as spam and is no longer visible."
 msgstr ""
 
 #: bp-activity/bp-activity-actions.php:269
-#: bp-templates/bp-legacy/buddypress-functions.php:708
+#: bp-templates/bp-legacy/buddypress-functions.php:711
 msgid "Please enter some content to post."
 msgstr ""
 
@@ -39,7 +39,7 @@ msgid "There was an error when posting your update, please try again."
 msgstr ""
 
 #: bp-activity/bp-activity-actions.php:329
-#: bp-templates/bp-legacy/buddypress-functions.php:769
+#: bp-templates/bp-legacy/buddypress-functions.php:772
 msgid "Please do not leave the comment area blank."
 msgstr ""
 
@@ -48,8 +48,8 @@ msgid "Reply Posted!"
 msgstr ""
 
 #: bp-activity/bp-activity-actions.php:342
-#: bp-templates/bp-legacy/buddypress-functions.php:772
-#: bp-templates/bp-legacy/buddypress-functions.php:781
+#: bp-templates/bp-legacy/buddypress-functions.php:775
+#: bp-templates/bp-legacy/buddypress-functions.php:784
 msgid "There was an error posting that reply, please try again."
 msgstr ""
 
@@ -788,7 +788,7 @@ msgstr ""
 #: bp-templates/bp-legacy/buddypress/members/single/messages/messages-loop.php:51
 #: bp-templates/bp-legacy/buddypress/members/single/messages/single.php:24
 #: bp-xprofile/bp-xprofile-admin.php:407
-#: bp-xprofile/bp-xprofile-classes.php:3165
+#: bp-xprofile/bp-xprofile-classes.php:3167
 msgid "Delete"
 msgstr ""
 
@@ -2792,7 +2792,7 @@ msgid "You already have a pending friendship request with this user"
 msgstr ""
 
 #: bp-friends/bp-friends-actions.php:76
-#: bp-templates/bp-legacy/buddypress-functions.php:1096
+#: bp-templates/bp-legacy/buddypress-functions.php:1099
 msgid "Friendship could not be canceled."
 msgstr ""
 
@@ -2940,7 +2940,7 @@ msgid "%d friends"
 msgstr ""
 
 #: bp-friends/bp-friends-template.php:313
-#: bp-templates/bp-legacy/buddypress-functions.php:1108
+#: bp-templates/bp-legacy/buddypress-functions.php:1111
 msgid "Cancel Friendship Request"
 msgstr ""
 
@@ -2960,8 +2960,8 @@ msgstr ""
 
 #: bp-friends/bp-friends-template.php:364
 #: bp-friends/bp-friends-template.php:365
-#: bp-templates/bp-legacy/buddypress-functions.php:1098
-#: bp-templates/bp-legacy/buddypress-functions.php:1116
+#: bp-templates/bp-legacy/buddypress-functions.php:1101
+#: bp-templates/bp-legacy/buddypress-functions.php:1119
 msgid "Add Friend"
 msgstr ""
 
@@ -3930,13 +3930,13 @@ msgid "Requests"
 msgstr ""
 
 #: bp-groups/bp-groups-template.php:2398 bp-groups/bp-groups-template.php:2399
-#: bp-templates/bp-legacy/buddypress-functions.php:1194
-#: bp-templates/bp-legacy/buddypress-functions.php:1207
+#: bp-templates/bp-legacy/buddypress-functions.php:1197
+#: bp-templates/bp-legacy/buddypress-functions.php:1210
 msgid "Leave Group"
 msgstr ""
 
 #: bp-groups/bp-groups-template.php:2421 bp-groups/bp-groups-template.php:2422
-#: bp-templates/bp-legacy/buddypress-functions.php:1228
+#: bp-templates/bp-legacy/buddypress-functions.php:1231
 msgid "Join Group"
 msgstr ""
 
@@ -3949,7 +3949,7 @@ msgid "Request Sent"
 msgstr ""
 
 #: bp-groups/bp-groups-template.php:2472 bp-groups/bp-groups-template.php:2473
-#: bp-templates/bp-legacy/buddypress-functions.php:1230
+#: bp-templates/bp-legacy/buddypress-functions.php:1233
 msgid "Request Membership"
 msgstr ""
 
@@ -4601,7 +4601,7 @@ msgid "There was an error deleting messages."
 msgstr ""
 
 #: bp-messages/bp-messages-actions.php:117
-#: bp-templates/bp-legacy/buddypress-functions.php:1386
+#: bp-templates/bp-legacy/buddypress-functions.php:1389
 msgid "Messages deleted."
 msgstr ""
 
@@ -4798,7 +4798,7 @@ msgid "%d Recipients"
 msgstr ""
 
 #: bp-messages/bp-messages-template.php:1750
-#: bp-templates/bp-legacy/buddypress-functions.php:1295
+#: bp-templates/bp-legacy/buddypress-functions.php:1298
 msgid "Sent %s"
 msgstr ""
 
@@ -4942,15 +4942,15 @@ msgstr ""
 msgid "%s was successfully deleted."
 msgstr ""
 
-#: bp-settings/bp-settings-actions.php:446
+#: bp-settings/bp-settings-actions.php:449
 msgid "You have successfully verified your new email address."
 msgstr ""
 
-#: bp-settings/bp-settings-actions.php:449
+#: bp-settings/bp-settings-actions.php:452
 msgid "There was a problem verifying your new email address. Please try again."
 msgstr ""
 
-#: bp-settings/bp-settings-actions.php:458
+#: bp-settings/bp-settings-actions.php:461
 msgid "You have successfully dismissed your pending email change."
 msgstr ""
 
@@ -4999,15 +4999,15 @@ msgstr ""
 
 #: bp-templates/bp-legacy/buddypress/activity/entry.php:66
 #: bp-templates/bp-legacy/buddypress-functions.php:242
-#: bp-templates/bp-legacy/buddypress-functions.php:941
-#: bp-templates/bp-legacy/buddypress-functions.php:958
+#: bp-templates/bp-legacy/buddypress-functions.php:944
+#: bp-templates/bp-legacy/buddypress-functions.php:961
 msgid "Favorite"
 msgstr ""
 
 #: bp-templates/bp-legacy/buddypress/activity/entry.php:70
 #: bp-templates/bp-legacy/buddypress-functions.php:245
-#: bp-templates/bp-legacy/buddypress-functions.php:939
-#: bp-templates/bp-legacy/buddypress-functions.php:960
+#: bp-templates/bp-legacy/buddypress-functions.php:942
+#: bp-templates/bp-legacy/buddypress-functions.php:963
 msgid "Remove Favorite"
 msgstr ""
 
@@ -5349,7 +5349,7 @@ msgstr ""
 
 #: bp-templates/bp-legacy/buddypress/groups/create.php:225
 #: bp-templates/bp-legacy/buddypress/groups/single/invites-loop.php:51
-#: bp-templates/bp-legacy/buddypress-functions.php:1047
+#: bp-templates/bp-legacy/buddypress-functions.php:1050
 msgid "Remove Invite"
 msgstr ""
 
@@ -5937,75 +5937,75 @@ msgid ""
 "be lost."
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:723
+#: bp-templates/bp-legacy/buddypress-functions.php:726
 msgid "There was a problem posting your update; please try again."
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:841
-#: bp-templates/bp-legacy/buddypress-functions.php:877
+#: bp-templates/bp-legacy/buddypress-functions.php:844
+#: bp-templates/bp-legacy/buddypress-functions.php:880
 msgid "There was a problem when deleting. Please try again."
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1051
+#: bp-templates/bp-legacy/buddypress-functions.php:1054
 msgid ""
 "%s has previously requested to join this group. Sending an invitation will "
 "automatically add the member to the group."
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1106
+#: bp-templates/bp-legacy/buddypress-functions.php:1109
 msgid " Friendship could not be requested."
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1118
+#: bp-templates/bp-legacy/buddypress-functions.php:1121
 msgid "Friendship request could not be cancelled."
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1123
+#: bp-templates/bp-legacy/buddypress-functions.php:1126
 msgid "Request Pending"
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1143
+#: bp-templates/bp-legacy/buddypress-functions.php:1146
 msgid "There was a problem accepting that request. Please try again."
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1162
+#: bp-templates/bp-legacy/buddypress-functions.php:1165
 msgid "There was a problem rejecting that request. Please try again."
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1192
+#: bp-templates/bp-legacy/buddypress-functions.php:1195
 msgid "Error joining group"
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1205
-#: bp-templates/bp-legacy/buddypress-functions.php:1215
+#: bp-templates/bp-legacy/buddypress-functions.php:1208
+#: bp-templates/bp-legacy/buddypress-functions.php:1218
 msgid "Error requesting membership"
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1217
+#: bp-templates/bp-legacy/buddypress-functions.php:1220
 msgid "Membership Requested"
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1226
+#: bp-templates/bp-legacy/buddypress-functions.php:1229
 msgid "Error leaving group"
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1249
+#: bp-templates/bp-legacy/buddypress-functions.php:1252
 msgid "There was a problem closing the notice."
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1312
+#: bp-templates/bp-legacy/buddypress-functions.php:1315
 msgid "There was a problem sending that reply. Please try again."
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1330
+#: bp-templates/bp-legacy/buddypress-functions.php:1333
 msgid "There was a problem marking messages as unread."
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1355
+#: bp-templates/bp-legacy/buddypress-functions.php:1358
 msgid "There was a problem marking messages as read."
 msgstr ""
 
-#: bp-templates/bp-legacy/buddypress-functions.php:1380
+#: bp-templates/bp-legacy/buddypress-functions.php:1383
 msgid "There was a problem deleting messages."
 msgstr ""
 
@@ -6260,31 +6260,31 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: bp-xprofile/bp-xprofile-classes.php:3088
+#: bp-xprofile/bp-xprofile-classes.php:3090
 msgid "Please enter options for this Field:"
 msgstr ""
 
-#: bp-xprofile/bp-xprofile-classes.php:3091
+#: bp-xprofile/bp-xprofile-classes.php:3093
 msgid "Sort Order:"
 msgstr ""
 
-#: bp-xprofile/bp-xprofile-classes.php:3093
+#: bp-xprofile/bp-xprofile-classes.php:3095
 msgid "Custom"
 msgstr ""
 
-#: bp-xprofile/bp-xprofile-classes.php:3094
+#: bp-xprofile/bp-xprofile-classes.php:3096
 msgid "Ascending"
 msgstr ""
 
-#: bp-xprofile/bp-xprofile-classes.php:3095
+#: bp-xprofile/bp-xprofile-classes.php:3097
 msgid "Descending"
 msgstr ""
 
-#: bp-xprofile/bp-xprofile-classes.php:3160
+#: bp-xprofile/bp-xprofile-classes.php:3162
 msgid "Default Value"
 msgstr ""
 
-#: bp-xprofile/bp-xprofile-classes.php:3177
+#: bp-xprofile/bp-xprofile-classes.php:3179
 msgid "Add Another Option"
 msgstr ""
 

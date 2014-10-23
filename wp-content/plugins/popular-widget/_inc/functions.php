@@ -410,7 +410,7 @@
 			extract( $this->instance );
 			
 			foreach( $posts as $key => $post ){ 
-				$output .= '<li><a href="'. esc_url( get_permalink( $post->ID ) ) . '" title="' . esc_attr( $post->post_title ) . '" rel="bookmark">';
+				$output .= '<li><a href="'. esc_url( get_permalink( $post->ID ) ) . '" title="' . esc_attr( $post->post_title ) . '" rel="' . esc_attr( $rel ) . '">';
 				
 				//image
 				if( !empty( $thumb ) )  $image = $this->get_post_image( $post->ID, $imgsize );
@@ -456,7 +456,7 @@
 				$comment_author = ( $comment->comment_author ) ? $comment->comment_author : "Anonymous";
 				
 				$output .= '<li><a href="'. esc_url( get_comment_link( $comment->comment_ID ) ) . '" title="' . 
-				esc_attr( $comment_author ) . '" rel="bookmark">';
+				esc_attr( $comment_author ) . '" rel="' . esc_attr( $rel ) . '">';
 				
 				//image
 				if( !empty( $thumb ) )  $image = get_avatar( $comment->comment_author_email, 100 ); 

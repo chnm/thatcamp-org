@@ -940,7 +940,7 @@ jq(document).ready( function() {
 
 			// Search terms
 			if ( jq('div.dir-search input').length ) {
-				search_terms = jq('.dir-search input').val();
+				search_terms =  jq('.dir-search input').prop('placeholder') ? jq('.dir-search input').prop('placeholder') : jq('.dir-search input').val();
 			}
 
 			// The Group Members page has a different selector for
@@ -1558,25 +1558,25 @@ jq(document).ready( function() {
 
 	/* Clear BP cookies on logout */
 	jq('a.logout').on( 'click', function() {
-		jq.cookie('bp-activity-scope', null, {
+		jq.removeCookie('bp-activity-scope', {
 			path: '/'
 		});
-		jq.cookie('bp-activity-filter', null, {
+		jq.removeCookie('bp-activity-filter', {
 			path: '/'
 		});
-		jq.cookie('bp-activity-oldestpage', null, {
+		jq.removeCookie('bp-activity-oldestpage', {
 			path: '/'
 		});
 
 		var objects = [ 'members', 'groups', 'blogs', 'forums' ];
 		jq(objects).each( function(i) {
-			jq.cookie('bp-' + objects[i] + '-scope', null, {
+			jq.removeCookie('bp-' + objects[i] + '-scope', {
 				path: '/'
 			} );
-			jq.cookie('bp-' + objects[i] + '-filter', null, {
+			jq.removeCookie('bp-' + objects[i] + '-filter', {
 				path: '/'
 			} );
-			jq.cookie('bp-' + objects[i] + '-extras', null, {
+			jq.removeCookie('bp-' + objects[i] + '-extras', {
 				path: '/'
 			} );
 		});

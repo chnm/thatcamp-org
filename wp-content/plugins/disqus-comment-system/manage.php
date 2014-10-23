@@ -13,7 +13,7 @@ if ( !current_user_can('moderate_comments') ) {
 }
 
 function has_valid_nonce() {
-    $nonce_actions = array('upgrade', 'reset', 'install', 'settings');
+    $nonce_actions = array('upgrade', 'reset', 'install', 'settings', 'active');
     $nonce_form_prefix = 'dsq-form_nonce_';
     $nonce_action_prefix = 'dsq-wpnonce_';
 
@@ -167,11 +167,11 @@ if ( isset($_POST['disqus_forum_url']) && isset($_POST['disqus_replace']) ) {
     update_option('disqus_disable_ssr', isset($_POST['disqus_disable_ssr']));
     update_option('disqus_public_key', $_POST['disqus_public_key']);
     update_option('disqus_secret_key', $_POST['disqus_secret_key']);
-    // Handle any SSO button and icon uploads
+    // Handle SSO button uploads
     if ( version_compare($wp_version, '3.5', '>=') ) {
         // Use WP 3.5's new, streamlined, much-improved built-in media uploader
 
-        // Only update if a value is actually POSTed, otherwise any time the form is saved the button and icon will be un-set
+        // Only update if a value is actually POSTed, otherwise any time the form is saved the button will be un-set
         if ($_POST['disqus_sso_button']) { update_option('disqus_sso_button', $_POST['disqus_sso_button']); }
     } else {
         // WP is older than 3.5, use legacy, less-elegant media uploader
@@ -183,7 +183,7 @@ if ( isset($_POST['disqus_forum_url']) && isset($_POST['disqus_replace']) ) {
 }
 
 // handle disqus_active
-if ( isset($_GET['active']) ) {
+if ( isset($_POST['active']) && isset($_GET['active']) ) {
     update_option('disqus_active', ($_GET['active'] == '1' ? '1' : '0'));
 }
 
@@ -289,7 +289,7 @@ endforeach;
 
             <p class="submit" style="text-align: left">
                 <input type="hidden" name="dsq_user_api_key" value="<?php echo htmlspecialchars($dsq_user_api_key); ?>"/>
-                <input name="submit" type="submit" value="Next &raquo;" />
+                <input name="submit" type="submit" class="button-primary button" value="Next &raquo;" />
             </p>
             </form>
         </div>
@@ -320,7 +320,7 @@ case 1:
             </table>
 
             <p class="submit" style="text-align: left">
-                <input name="submit" type="submit" value="Next &raquo;" tabindex="3">
+                <input name="submit" type="submit" class="button-primary button" value="Next &raquo;" tabindex="3">
             </p>
 
             <script type="text/javascript"> document.getElementById('dsq-username').focus(); </script>
@@ -354,19 +354,25 @@ case 0:
     $dsq_public_key = get_option('disqus_public_key');
     $dsq_secret_key = get_option('disqus_secret_key');
     $dsq_sso_button = get_option('disqus_sso_button');
+    $disqus_enabled = get_option('disqus_active') == '1';
+    $disqus_enabled_state = $disqus_enabled ? 'enabled' : 'disabled';
 ?>
     <!-- Settings -->
     <div id="dsq-advanced" class="dsq-content dsq-advanced"<?php if (!$show_advanced) echo ' style="display:none;"'; ?>>
         <h2><?php echo dsq_i('Settings'); ?></h2>
         <p><?php echo dsq_i('Version: %s', esc_html(DISQUS_VERSION)); ?></p>
-        <?php
-        if (get_option('disqus_active') == '0') {
-            // disqus is not active
-            echo dsq_i('<p class="status">Disqus comments are currently <span class="dsq-disabled-text">disabled</span>. (<a href="?page=disqus&amp;active=1">Enable</a>)</p>');
-        } else {
-            echo dsq_i('<p class="status">Disqus comments are currently <span class="dsq-enabled-text">enabled</span>. (<a href="?page=disqus&amp;active=0">Disable</a>)</p>');
-        }
-        ?>
+
+        <!-- Enable/disable Disqus toggle -->
+        <form method="POST" action="?page=disqus&amp;active=<?php echo (string)((int)($disqus_enabled != true)); ?>">
+        <?php wp_nonce_field('dsq-wpnonce_active', 'dsq-form_nonce_active'); ?>
+            <p class="status">
+                <?php echo dsq_i('Disqus comments are currently '); ?>
+                <span class="dsq-<?php echo $disqus_enabled_state; ?>-text"><?php echo dsq_i($disqus_enabled_state); ?></span>
+            </p>
+            <input type="submit" name="active" class="button" value="<?php echo dsq_i($disqus_enabled ? 'Disable' : 'Enable'); ?>" />
+        </form>
+
+        <!-- Configuration form -->
         <form method="POST" enctype="multipart/form-data">
         <?php wp_nonce_field('dsq-wpnonce_settings', 'dsq-form_nonce_settings'); ?>
         <table class="form-table">
@@ -541,7 +547,13 @@ case 0:
                 <th scope="row" valign="top"><?php echo dsq_i('Export comments to Disqus'); ?></th>
                 <td>
                     <div id="dsq_export">
-                        <p class="status"><a href="#" class="button"><?php echo dsq_i('Export Comments'); ?></a>  <?php echo dsq_i('This will export your existing WordPress comments to Disqus'); ?></p>
+                        <form method="POST" action="">
+                        <?php wp_nonce_field('dsq-wpnonce_export', 'dsq-form_nonce_export'); ?>
+                            <p class="status">
+                                <a href="#" class="button"><?php echo dsq_i('Export Comments'); ?></a>  
+                                <?php echo dsq_i('This will export your existing WordPress comments to Disqus'); ?>
+                            </p>
+                        </form>
                     </div>
                 </td>
             </tr>
@@ -550,10 +562,13 @@ case 0:
                 <th scope="row" valign="top"><?php echo dsq_i('Sync Disqus with WordPress'); ?></th>
                 <td>
                     <div id="dsq_import">
-                        <div class="status">
-                            <p><a href="#" class="button"><?php echo dsq_i('Sync Comments'); ?></a>  <?php echo dsq_i('This will download your Disqus comments and store them locally in WordPress'); ?></p>
-                            <label><input type="checkbox" id="dsq_import_wipe" name="dsq_import_wipe" value="1"/> <?php echo dsq_i('Remove all imported Disqus comments before syncing.'); ?></label><br/>
-                        </div>
+                        <form method="POST" action="">
+                        <?php wp_nonce_field('dsq-wpnonce_import', 'dsq-form_nonce_import'); ?>
+                            <div class="status">
+                                <p><a href="#" class="button"><?php echo dsq_i('Sync Comments'); ?></a>  <?php echo dsq_i('This will download your Disqus comments and store them locally in WordPress'); ?></p>
+                                <label><input type="checkbox" id="dsq_import_wipe" name="dsq_import_wipe" value="1"/> <?php echo dsq_i('Remove all imported Disqus comments before syncing.'); ?></label><br/>
+                            </div>
+                        </form>
                     </div>
                 </td>
             </tr>

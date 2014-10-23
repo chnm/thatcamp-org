@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.5.10
+Version: 1.6.1
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -23,7 +23,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.5.10';
+	var $version = '1.6.1';
 
 	/**
 	 * Used as prefix for options entry
@@ -42,12 +42,15 @@ class WP_Collapse_O_Matic {
 	 */
 	var $options = array(
 		'style' => 'light',
+		'cid' => '',
 		'tag' => 'span',
 		'duration' => 'fast',
 		'slideEffect' => 'slideFade',
 		'custom_css' => '',
 		'script_check' => '',
-		'script_location' => 'footer'
+		'script_location' => 'footer',
+		'cc_download_key' => '',
+		'cc_email' => ''
 	);
 
 	/**
@@ -106,7 +109,7 @@ class WP_Collapse_O_Matic {
 		if($this->options['script_location'] == 'footer' ){
 			$load_in_footer = true;
 		}
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.11', $load_in_footer);
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.12', $load_in_footer);
 		if( empty($this->options['script_check']) ){
 			wp_enqueue_script('collapseomatic-js');
 		}
@@ -146,6 +149,7 @@ class WP_Collapse_O_Matic {
 		$ran = rand(1, 10000);
 		extract(shortcode_atts(array(
 			'title' => '',
+			'cid' => '',
 			'swaptitle' => '',
 			'alt' => '',
 			'swapalt' => '',
@@ -171,6 +175,33 @@ class WP_Collapse_O_Matic {
 			'elwraptag' => '',
 			'elwrapclass' => ''
 		), $atts));
+		
+		if(!empty($cid)){
+			$args = array(
+				'post_type'	=> 'expand-element',
+				'p'		=> $cid,
+			);
+			$query_commander = new WP_Query( $args );
+			if ( $query_commander->have_posts() ) {
+				while ( $query_commander->have_posts() ) {
+					$query_commander->the_post();
+					$title = get_the_title();
+					if(get_the_content()){
+						$content = apply_filters('the_content',get_the_content());
+					}
+
+					$meta_values = get_post_meta( $cid );
+					foreach($meta_values as $key => $value){
+						if(!empty($value) && $key[0] != '_'){
+							${substr($key, 9)} = $value[0];
+						}
+					}
+					if(!empty($highlander) && !empty($rel)){
+						$rel .= '-highlander';
+					}
+				}
+			}
+		}
 		
 		$ewo = '';
 		$ewc = '';
@@ -355,6 +386,15 @@ class WP_Collapse_O_Matic {
 									</td>
 								</tr>
 								
+								<?php if( is_plugin_active( 'collapse-commander/collapse-commander.php' ) ) : ?>
+								<tr>
+									<th><?php _e( 'CID Attribute', 'colomat' ) ?>:</th>
+									<td><label><input type="text" id="<?php echo $this->options_name ?>[cid]" name="<?php echo $this->options_name ?>[cid]" value="<?php echo $options['cid']; ?>" />
+										<br /><span class="description"><?php printf( __('Default %sCollapse Commander%s ID', 'colomat'), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-commander/" target="_blank">', '</a>'); ?></span></label>
+									</td>
+								</tr>
+								<?php endif; ?>
+								
 								<tr>
 									<th><?php _e( 'Tag Attribute', 'colomat' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[tag]" name="<?php echo $this->options_name ?>[tag]" value="<?php echo $options['tag']; ?>" />
@@ -435,7 +475,13 @@ class WP_Collapse_O_Matic {
 										<br /><span class="description"><?php _e('Where should the script be loaded, in the Header or the Footer?', 'colomat'); ?></span></label>
 									</td>
 								</tr>
-								
+								<?php if( !is_plugin_active( 'collapse-commander/collapse-commander.php' ) ) : ?>
+								<tr>
+									<th><strong><?php _e( 'Collapse Managment', 'colomat' ) ?></strong></th>
+									<td><?php printf(__( '%sCollapse Commander%s is an add-on plugin that introduces an advanced management interface to better organize expand elements and simplify expand shortcodes.', 'colomat' ), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-commander/">', '</a>'); ?>
+									</td>
+								</tr>
+								<?php endif; ?>
 								<tr>
 									<th><strong><?php _e( 'Level Up!', 'colomat' ) ?></strong></th>
 									<td><?php printf(__( '%sCollapse-Pro-Matic%s is our preimum plugin that offers additional attributes and features for <i>ultimate</i> flexibility.', 'colomat' ), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-pro-matic/">', '</a>'); ?>
@@ -447,7 +493,6 @@ class WP_Collapse_O_Matic {
 							<p class="submit">
 								<input class="button-primary" type="submit" value="<?php _e( 'Save Changes' ) ?>" />
 							</p>
-						</form>
 					</div>
 				</div>
 			</div>
@@ -472,6 +517,42 @@ class WP_Collapse_O_Matic {
 			</div>
 			<div class="clear"></div>
 		</div>
+		
+		<?php if( is_plugin_active( 'collapse-commander/collapse-commander.php' ) ) : ?>
+		
+		<div class="postbox-container side metabox-holder" style="width:29%;">
+			<div style="margin:0 5px;">
+				<div class="postbox">
+					<h3 class="handle"><?php _e( 'Register Collapse Commander', 'colomat') ?></h3>
+					<div class="inside">
+					<p><?php _e('To receive plugin updates you must register your plugin. Enter your Receipt ID and email address used to purchase the plugin below.', 'colomat'); ?></p>
+							<fieldset>
+								<table>
+									<tr>
+										<th><?php _e( 'Receipt ID', 'colomat' ) ?>:</th>
+										<td><label><input type="text" id="<?php echo $this->options_name ?>[cc_download_key]" name="<?php echo $this->options_name ?>[cc_download_key]" value="<?php echo $options['cc_download_key']; ?>" style="width: 100%" />
+											<br /><span class="description"><?php _e('Receipt ID is found in the Collapse Commander Purchase Receipt', 'colomat'); ?></span></label>
+										</td>
+									</tr>
+									
+									<tr>
+										<th><?php _e( 'Email', 'colomat' ) ?>:</th>
+										<td><label><input type="text" id="<?php echo $this->options_name ?>[cc_email]" name="<?php echo $this->options_name ?>[cc_email]" value="<?php echo $options['cc_email']; ?>" style="width: 100%" />
+										<br /><span class="description"><?php _e('Email address used to purchase Collapse Commander', 'colomat'); ?></span></label>
+										</td>
+									</tr>
+								</table>
+							</fieldset>
+							<p class="submit" style="margin-bottom: 20px;">
+								<input class="button-primary" type="submit" style="float: right;" value="<?php _e( 'Register', 'colomat') ?>" />
+							</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<?php endif; ?>
+		</form>
 	<?php
 	}
 	

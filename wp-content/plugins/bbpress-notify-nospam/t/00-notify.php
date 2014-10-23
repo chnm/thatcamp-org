@@ -206,6 +206,39 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$this->assertEquals('administrator', $got_recipients, 'Filtered send_notification returns administrator');
 	}
 	
+	public function test_notify_on_save()
+	{
+			$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+			$bbpnns->set_post_types();
+	
+			$author_id = $this->factory->user->create( array( 'role' => 'administrator' ) );
+	
+			wp_set_current_user($author_id);
+	
+			$nonce_id = wp_create_nonce('bbpress_send_topic_notification_nonce');
+	
+			$_POST = array( 'bbpress_notify_send_notification'       => true,
+							'bbpress_send_topic_notification_nonce'  => $nonce_id
+					 );
+	
+			$post = array(
+							'post_content' => 'Test content',
+							'post_name'    => 'Test name',
+							'post_status'  => 'publish',
+							'post_author'  => $author_id,
+							'post_type'    => 'topic',
+					);
+	
+			$topic_id = wp_insert_post( $post );
+	
+			$post = get_post( $topic_id );
+	
+			$result = $bbpnns->notify_on_save($topic_id, $post);
+	
+			$this->assertFalse( empty( $result ) );
+		}
+
+	
 	
 	public function test_filters()
 	{
