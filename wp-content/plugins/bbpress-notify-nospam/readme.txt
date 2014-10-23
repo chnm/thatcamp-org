@@ -8,7 +8,7 @@ Tested up to: 4.0
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
 == Description ==
@@ -46,6 +46,12 @@ Not really. I just want to stop receiving spam from my bbPress install. However,
 
 
 == Changelog ==
+= 1.6.2 =
+* Fix bug where topic and reply post_types were not set in time to send post.
+* Only send notification if post_status is publish, besides not being spam.
+* Adjustments to notify_on_save
+* Added tests for notify_on_save
+
 = 1.6.1 =
 * Passing $post_id and $title variables to filters added in 1.6.
 

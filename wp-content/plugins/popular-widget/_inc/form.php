@@ -26,8 +26,14 @@
 	</p>
 	
 	<p>
-		<label for="<?php $this->field_id( 'meta_key') ?>"><a href="http://codex.wordpress.org/Using_Custom_Fields#Advanced_Techniques_for_Custom_Fields"><?php _e( 'Custom Field','pop-wid' )?> </a>
-			<input class="widefat" id="<?php $this->field_id( 'meta_key' )?>" name="<?php $this->field_name( 'meta_key' )?>"  type="text" value="<?php echo esc_attr( $meta_key ) ?>"/> <br /><small><?php _e( 'Custom field used to calculate views count.', 'pop-wid' )?> </small>
+		<label for="<?php $this->field_id( 'meta_key') ?>"><a href="//codex.wordpress.org/Using_Custom_Fields#Advanced_Techniques_for_Custom_Fields" target="_blank"><?php _e( 'Custom Field','pop-wid' )?> </a>
+			<input class="widefat" id="<?php $this->field_id( 'meta_key' )?>" name="<?php $this->field_name( 'meta_key' )?>"  type="text" value="<?php echo esc_attr( $meta_key ) ?>"/> <br /><small><?php _e( 'Custom field used to calculate view count.', 'pop-wid' )?> </small>
+		</label>
+	</p>
+	
+	<p>
+		<label for="<?php $this->field_id( 'rel') ?>"><a href="//www.w3schools.com/tags/att_a_rel.asp" target="_blank"><?php _e( 'Link "rel" (relationship) attribute', 'pop-wid' )?> </a>
+			<input class="widefat" id="<?php $this->field_id( 'rel' )?>" name="<?php $this->field_name( 'rel' )?>"  type="text" value="<?php echo esc_attr( $rel ) ?>"/> <br /><small><?php _e( 'Link "rel" (relationship) attribute for all links in widget.', 'pop-wid' )?> </small>
 		</label>
 	</p>
 	
@@ -173,4 +179,4 @@
 	
 	<?php do_action( 'pop_admin_form' ) ?>
 	
-	<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YM9GXCFBND89E"><?php _e( 'Donate', 'pop-wid' )?></a> </p>
+	<p><a href="//www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YM9GXCFBND89E" target="_blank"><?php _e( 'Donate', 'pop-wid' )?></a> </p>
