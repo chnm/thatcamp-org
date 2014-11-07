@@ -126,6 +126,7 @@ class AuthorAvatarsEditorButton {
 		$basic_left .= $form->renderFieldUserLink( 'authorpage' );
 		$basic_left .= '</div>';
 		$basic_right = $form->renderFieldAvatarSize();
+		$basic_right .= $form->renderFieldMaxBioLength();
 		$basic_tab   = $form->renderTabStart( __( 'Basic', 'author-avatars' ) );
 		$basic_tab .= $form->renderColumns( $basic_left, $basic_right );
 		$basic_tab .= $form->renderTabEnd();

@@ -1,0 +1,303 @@
+# Copyright (C) 2012 Author Avatars List
+# This file is distributed under the same license as the Author Avatars List package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Author Avatars List\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/author-avatars\n"
+"POT-Creation-Date: 2012-07-17 22:01:50+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: lib/AuthorAvatars.class.php:13
+msgid "Author avatars: system check failed."
+msgstr "Автор аватари: перевірка системи не вдалася."
+
+#: lib/AuthorAvatars.class.php:16
+msgid "Author avatars: install check failed."
+msgstr "Автор аватари: перевірити встановлення не вдалося."
+
+#: lib/AuthorAvatars.class.php:19
+msgid "Author avatars: update check failed."
+msgstr "Автор аватари: оновлення перевірити не вдалося."
+
+#: lib/AuthorAvatars.class.php:243 lib/AuthorAvatarsWidget.class.php:37
+msgid "Blog Authors"
+msgstr "Автори блогу"
+
+#: lib/AuthorAvatarsEditorButton.class.php:93
+msgid "Author avatars shortcodes"
+msgstr "Автор аватари шорткоди"
+
+#: lib/AuthorAvatarsEditorButton.class.php:122
+#: lib/AuthorAvatarsWidget.class.php:349
+msgid "Basic"
+msgstr "Основний"
+
+#: lib/AuthorAvatarsEditorButton.class.php:141
+#: lib/AuthorAvatarsWidget.class.php:375
+msgid "Advanced"
+msgstr "Просунутий"
+
+#: lib/AuthorAvatarsEditorButton.class.php:149
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: lib/AuthorAvatarsEditorButton.class.php:152
+msgid "Insert"
+msgstr "Вставити"
+
+#: lib/AuthorAvatarsForm.class.php:107
+msgid "Show users from blogs"
+msgstr "Показувати юзерів з блогів"
+
+#: lib/AuthorAvatarsForm.class.php:108
+msgid "If no blog is selected only users from the current blog are displayed."
+msgstr "Якщо не обраний жоден блог відображаються тільки користувачі з поточного блогу."
+
+#: lib/AuthorAvatarsForm.class.php:143
+msgid "Group by blogs"
+msgstr "Група по блогах"
+
+#: lib/AuthorAvatarsForm.class.php:151
+msgid "User list grouping"
+msgstr "Користувачі угруповання"
+
+#: lib/AuthorAvatarsForm.class.php:170
+msgid "Commentators"
+msgstr "Коментатори"
+
+#: lib/AuthorAvatarsForm.class.php:178
+msgid "Show roles"
+msgstr "Показати роль"
+
+#: lib/AuthorAvatarsForm.class.php:226
+msgid "Hidden users"
+msgstr "Прихованих користувачів"
+
+#: lib/AuthorAvatarsForm.class.php:227
+msgid "Comma separate list of user login ids"
+msgstr "Список Ім&#39;я ідентифікаторів розділених комою"
+
+#: lib/AuthorAvatarsForm.class.php:265
+msgid "Show name"
+msgstr "Показати ім&#39;я"
+
+#: lib/AuthorAvatarsForm.class.php:266
+msgid "Show number of posts"
+msgstr "Показати кількість повідомлень"
+
+#: lib/AuthorAvatarsForm.class.php:267
+msgid "Show biography"
+msgstr "Показати біографію"
+
+#: lib/AuthorAvatarsForm.class.php:273
+msgid "Display options"
+msgstr "Параметри відображення"
+
+#: lib/AuthorAvatarsForm.class.php:288
+msgid "Date of Registration"
+msgstr "Дата реєстрації"
+
+#: lib/AuthorAvatarsForm.class.php:289
+msgid "Display Name"
+msgstr "Показати ім&#39;я"
+
+#: lib/AuthorAvatarsForm.class.php:290
+msgid "First Name"
+msgstr "Ім&#39;я"
+
+#: lib/AuthorAvatarsForm.class.php:291
+msgid "Last Name"
+msgstr "Прізвище"
+
+#: lib/AuthorAvatarsForm.class.php:292
+msgid "Login Name"
+msgstr "Ім&#39;я входу"
+
+#: lib/AuthorAvatarsForm.class.php:293
+msgid "Number of Posts"
+msgstr "Кількість повідомлень"
+
+#: lib/AuthorAvatarsForm.class.php:294
+msgid "Random"
+msgstr "Випадковий"
+
+#: lib/AuthorAvatarsForm.class.php:295
+msgid "User Id"
+msgstr "Ідентифікатор користувача"
+
+#: lib/AuthorAvatarsForm.class.php:296
+msgid "Recent Activity"
+msgstr "Остання активність"
+
+#: lib/AuthorAvatarsForm.class.php:300
+msgid "Sorting order"
+msgstr "Порядок сортування"
+
+#: lib/AuthorAvatarsForm.class.php:315
+msgid "Author Page"
+msgstr "Автор сторінки"
+
+#: lib/AuthorAvatarsForm.class.php:316
+msgid "Website"
+msgstr "Сайт"
+
+#: lib/AuthorAvatarsForm.class.php:319
+msgid "BP Member Page"
+msgstr "ВР член сторінки"
+
+#: lib/AuthorAvatarsForm.class.php:322
+msgid "Blog"
+msgstr "Блог"
+
+#: lib/AuthorAvatarsForm.class.php:325
+msgid "BBpress Member Page"
+msgstr "Практикуючих Член Сторінки Юристів"
+
+#: lib/AuthorAvatarsForm.class.php:329
+msgid "Link users to"
+msgstr "Посилання на"
+
+#: lib/AuthorAvatarsForm.class.php:343
+msgid "Ascending"
+msgstr "Висхідний (А-Я)"
+
+#: lib/AuthorAvatarsForm.class.php:344
+msgid "Descending"
+msgstr "Спадний (Я-А)"
+
+#: lib/AuthorAvatarsForm.class.php:348
+msgid "Sorting direction"
+msgstr "Напрямок сортування"
+
+#: lib/AuthorAvatarsForm.class.php:363
+msgid "Max. number of avatars shown"
+msgstr "Максимальна кількість показаних аватарів"
+
+#: lib/AuthorAvatarsForm.class.php:379
+msgid "Max. number of avatars per page"
+msgstr "Максимальна кількість аватарів на сторінку"
+
+#: lib/AuthorAvatarsForm.class.php:395
+msgid "Required minimum number of posts"
+msgstr "Потрібна мінімальна кількість повідомлень"
+
+#: lib/AuthorAvatarsForm.class.php:411
+msgid "Avatar Size"
+msgstr "Розмір Аватари"
+
+#: lib/AuthorAvatarsForm.class.php:434
+msgid "Single Avatar"
+msgstr "Одномісний Аватар"
+
+#: lib/AuthorAvatarsForm.class.php:435
+msgid "List of Users"
+msgstr "Список користувачів"
+
+#: lib/AuthorAvatarsForm.class.php:439
+msgid "Shortcode Type"
+msgstr "Короткий Тип"
+
+#: lib/AuthorAvatarsForm.class.php:456
+msgid "Email address or user id"
+msgstr "Адреса електронної пошти або ідентифікатор користувача"
+
+#: lib/AuthorAvatarsForm.class.php:471
+msgid "None"
+msgstr "Жоден"
+
+#: lib/AuthorAvatarsForm.class.php:472
+msgid "Left"
+msgstr "Зліва"
+
+#: lib/AuthorAvatarsForm.class.php:473
+msgid "Center"
+msgstr "Центр"
+
+#: lib/AuthorAvatarsForm.class.php:474
+msgid "Right"
+msgstr "Право"
+
+#: lib/AuthorAvatarsForm.class.php:478
+msgid "Alignment"
+msgstr "Вирівнювання"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:41
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:44
+msgid "Sitewide Author Avatars Configuration"
+msgstr "Сквозна конфігурація автора аватара по всьому сайту"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:41
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:44
+msgid "Author Avatars List"
+msgstr "Список авторів аватар"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:70
+msgid "Options saved."
+msgstr "Налаштування збережені."
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:76
+msgid "Sitewide Author Avatars Options"
+msgstr "Сквозні опції автора аватара по всьому сайту"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:79
+msgid "Avatar list settings"
+msgstr "Налаштування списку Аватар"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:86
+msgid "Save Changes"
+msgstr "Зберегти зміни"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:96
+msgid "Enable blog filter"
+msgstr "Включити в блозі фільтр"
+
+#: lib/AuthorAvatarsSitewideAdminPanel.class.php:103
+msgid ""
+"Select the blogs which you would like the blog filter to be enabled. Only "
+"blogs selected here can display users from other blogs."
+msgstr ""&quot;Виберіть блоги, для яких фільтр повинен бути включений. Тільки&quot; &quot;блоги вибрані тут можуть відображати користувачів з інших блогів&quot;.
+
+#: lib/AuthorAvatarsWidget.class.php:111
+msgid "Displays avatars of blog users."
+msgstr "Відображає аватари користувачів в блозі."
+
+#: lib/AuthorAvatarsWidget.class.php:325
+msgid "Title"
+msgstr "Назва"
+
+#: lib/FormHelper.class.php:56
+msgid "Sorry, no choices available."
+msgstr "На жаль, немає доступних виборів."
+
+#: lib/ShowAvatarShortcode.class.php:63
+msgid "[show_author shortcode: please set id/email attribute]"
+msgstr "[Show_author шорткод: будь ласка, встановіть ідентифікатор атрибута / електронної пошти]"
+
+#: lib/UserList.class.php:323
+msgid "No users found."
+msgstr "Не знайдено користувачів."
+
+#: lib/UserList.class.php:471
+msgid "<<"
+msgstr "<<"
+
+#: lib/UserList.class.php:487
+msgid ">>"
+msgstr ">>"
+
+#: lib/UserList.class.php:680
+msgid "%d comment"
+msgid_plural "%d comments"
+msgstr "%d коментувати &quot;
+msgid_plural&quot;%d коментарі"
+
+#: lib/UserList.class.php:688
+msgid "%d post"
+msgid_plural "%d posts"
+msgstr "%d повідомлення &quot;msgid_plural&quot;%d повідомлень"
+

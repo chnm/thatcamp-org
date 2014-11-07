@@ -327,6 +327,10 @@ class Akismet_Admin {
 		if ( 'approved' == $comment_status )
 			return;
 
+		if ( 'spam' == $comment_status ) {
+			return;
+		}
+
 		if ( function_exists('plugins_url') )
 			$link = add_query_arg( array( 'action' => 'akismet_recheck_queue' ), admin_url( 'admin.php' ) );
 		else

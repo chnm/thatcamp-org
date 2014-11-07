@@ -4,7 +4,7 @@
  * Show Avatar Shortcode: provides a shortcode for displaying avatars for any email address/userid
  */
 class ShowAvatarShortcode {
-
+	var $userlist = null;
 	/**
 	 * Constructor
 	 */
@@ -25,14 +25,15 @@ class ShowAvatarShortcode {
 	 * Example: [show_avatar id=pbearne@tycoelectronics.com avatar_size=30 align=right]
 	 */
 	function shortcode_handler( $atts, $content = null ) {
-		$extraClass = "";
-		$hrefStart  = "";
-		$name       = "";
-		$bio        = "";
-		$style      = "";
-		$email      = "";
-		$link       = "";
-		$id         = ''; // get id or email
+		$extraClass 	= '';
+		$hrefStart 		= '';
+		$name 			= '';
+		$bio 			= '';
+		$last_post 		= '';
+		$style 			= '';
+		$email 			= '';
+		$link 			= '';
+		$id 			= ''; // get id or email
 
 		if ( ! empty( $atts['id'] ) ) {
 			$id = preg_replace( '[^\w\.\@\-]', '', $atts['id'] );
@@ -167,13 +168,28 @@ class ShowAvatarShortcode {
 
 				if ( ! empty( $atts['show_biography'] ) ) {
 					$bio = get_the_author_meta( 'description', $id );
+					$bio = wp_trim_words( $bio, apply_filters( 'aa_user_bio_length', absint( $atts['max_bio_length'] ) ) );
 					if ( ! empty( $atts['show_name'] ) ) {
-						$bio = '<div class="bio">' . $bio . '</div>';
+						$bio = '<div class="bio bio-length-'. $atts['max_bio_length'] .'">' . $bio . '</div>';
 					}
 					if ( empty( $bio ) ) {
-						$extraClass .= 'biography-missing';
+						$extraClass .= ' biography-missing';
 					} else {
 						$extraClass .= ' with-biography';
+					}
+				}
+				// show last_post?
+				if ( isset( $atts['show_last_post'] ) && ( strlen( $atts['show_last_post'] ) > 0 ) ) {
+					require_once( 'UserList.class.php' );
+					if( null == $this->userlist ){
+						$this->userlist = new UserList();
+					}
+
+					$last_post = '<div class="last_post">' .$this->userlist->aa_get_last_post( $id ). '</div>';
+					if ( empty( $last_post ) ) {
+						$extraClass .= ' last-post-missing';
+					} else {
+						$extraClass .= ' with-last-post';
 					}
 				}
 			}
@@ -187,6 +203,6 @@ class ShowAvatarShortcode {
 			$style = ' style="' . $style . '"';
 		}
 
-		return '<div class="shortcode-show-avatar ' . $extraClass . '"' . $style . '>' . $hrefStart . $avatar . $name . $hrefend . $bio . $email . '</div>' . $content;
+		return '<div class="shortcode-show-avatar ' . $extraClass . '"' . $style . '>' . $hrefStart . $avatar . $name . $last_post . $hrefend . $bio . $email . '</div>' . $content;
 	}
 }

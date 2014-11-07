@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: PayPal Donations
-Plugin URI: http://johansteen.se/code/paypal-donations/
+Plugin URI: https://www.tipsandtricks-hq.com/paypal-donations-widgets-plugin
 Description: Easy and simple setup and insertion of PayPal donate buttons with a shortcode or through a sidebar Widget. Donation purpose can be set for each button. A few other customization options are available as well.
-Author: Johan Steen
-Author URI: http://johansteen.se/
-Version: 1.8.5
+Author: Tips and Tricks HQ, Johan Steen
+Author URI: https://www.tipsandtricks-hq.com/
+Version: 1.8.6
 License: GPLv2 or later
 Text Domain: paypal-donations
 

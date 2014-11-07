@@ -24,7 +24,6 @@ if ( ! empty( $email ) ) {
 
 	$clean_email     = $wp_subscribe_reloaded->clean_email( $email );
 	$subscriber_salt = $wp_subscribe_reloaded->generate_key( $clean_email );
-	$post_permalink  = get_permalink( $post_ID );
 
 	$headers = "MIME-Version: 1.0\n";
 	$headers .= "From: $from_name <$from_email>\n";
@@ -49,14 +48,6 @@ if ( ! empty( $email ) ) {
 	}
 
 	wp_mail( $clean_email, $subject, $message, $headers );
-
-	$message = str_replace( '[post_permalink]', $post_permalink, html_entity_decode( stripslashes( get_option( 'subscribe_reloaded_request_mgmt_link_thankyou' ) ), ENT_COMPAT, 'UTF-8' ) );
-	if ( function_exists( 'qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage' ) ) {
-		$message = str_replace( '[post_title]', qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage( $post->post_title ), $message );
-		$message = qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage( $message );
-	} else {
-		$message = str_replace( '[post_title]', $post->post_title, $message );
-	}
 
 	echo $message;
 } else {

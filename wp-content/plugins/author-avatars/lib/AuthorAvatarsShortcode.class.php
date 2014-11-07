@@ -104,55 +104,41 @@ class AuthorAvatarsShortcode {
 			$this->userlist->user_link = $atts['user_link'];
 		}
 
-		// show author name?
-		if ( isset( $atts['show_name'] ) && ( strlen( $atts['show_name'] ) > 0 ) ) {
-			$set_to_false = ( $atts['show_name'] == 'false' );
-			if ( $set_to_false ) {
-				$this->userlist->show_name = false;
-			} else {
-				$this->userlist->show_name = true;
+		$display = array();
+		if ( ! empty( $atts['display'] ) ) {
+			if ( ! is_array( $atts['display'] ) ) {
+				$display = explode( ',', $atts['display'] );
+			}else{
+				$display = $atts['display'];
 			}
 		}
 
-		// show post count?
-		if ( isset( $atts['show_postcount'] ) && ( strlen( $atts['show_postcount'] ) > 0 ) ) {
-			$set_to_false = ( $atts['show_postcount'] == 'false' );
-			if ( $set_to_false ) {
-				$this->userlist->show_postcount = false;
+		$display = apply_filters('AA_shortcode_display_list', $display );
+
+		// support for all style shortcode
+		$default_display_options = array('show_name','show_postcount','show_email','show_biography','show_last_post','show_bbpress_post_count');
+		// loop the old name=true settings and add them to the new array format
+		foreach( $default_display_options as $default_display_option ){
+			if ( isset( $atts[$default_display_option] ) && ( strlen( $atts[$default_display_option] ) > 0 ) ) {
+				if( true == $atts[$default_display_option] && !in_array( $default_display_option, $display ) ){
+					$display[] = $default_display_option;
+				}
+			}
+
+		}
+		// the defaults array and set the globals if found
+		foreach( $default_display_options as $default_display_option ){
+			if ( in_array( $default_display_option, $display ) ) {
+				$this->userlist->$default_display_option = true;
 			} else {
-				$this->userlist->show_postcount = true;
+				$this->userlist->$default_display_option = false;
 			}
 		}
 
-		// show email?
-		if ( isset( $atts['show_email'] ) && ( strlen( $atts['show_email'] ) > 0 ) ) {
-			$set_to_false = ( $atts['show_email'] == 'false' );
-			if ( $set_to_false ) {
-				$this->userlist->show_email = false;
-			} else {
-				$this->userlist->show_email = true;
-			}
-		}
+		$this->userlist->display_extra = array_diff($display, $default_display_options );
 
-		// show biography?
-		if ( isset( $atts['show_biography'] ) && ( strlen( $atts['show_biography'] ) > 0 ) ) {
-			$set_to_false = ( $atts['show_biography'] == 'false' );
-			if ( $set_to_false ) {
-				$this->userlist->show_biography = false;
-			} else {
-				$this->userlist->show_biography = true;
-			}
-		}
+		//var_dump($this->userlist->display_extra);
 
-		// show show_bbpress_post_count?
-		if ( isset( $atts['show_bbpress_post_count'] ) && ( strlen( $atts['show_bbpress_post_count'] ) > 0 ) ) {
-			$set_to_false = ( $atts['show_bbpress_post_count'] == 'false' );
-			if ( $set_to_false ) {
-				$this->userlist->show_bbpress_post_count = false;
-			} else {
-				$this->userlist->show_bbpress_post_count = true;
-			}
-		}
 
 		// avatar size
 		if ( ! empty( $atts['avatar_size'] ) ) {
@@ -167,6 +153,14 @@ class AuthorAvatarsShortcode {
 			$limit = intval( $atts['limit'] );
 			if ( $limit > 0 ) {
 				$this->userlist->limit = $limit;
+			}
+		}
+
+		// max. number of avatars
+		if ( ! empty( $atts['max_bio_length'] ) ) {
+			$bio_length = intval( $atts['max_bio_length'] );
+			if ( $bio_length > 0 ) {
+				$this->userlist->bio_length = $bio_length;
 			}
 		}
 

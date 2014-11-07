@@ -60,9 +60,23 @@ class UserList {
 	var $show_biography = false;
 
 	/**
+	 * Maximum number of words in bio
+	 */
+	var $bio_length = -1;
+
+	/**
+	 * Flag whether to show a user's biography
+	 */
+	var $show_last_post = false;
+	/**
 	 * Flag whether to show a user's email
 	 */
 	var $show_email = false;
+
+	/**
+	 * Size of avatars.
+	 */
+	var $display_extra = array();
 
 	/**
 	 * Size of avatars.
@@ -285,6 +299,8 @@ class UserList {
 			'show_postcount'          => $this->show_postcount,
 			'show_bbpress_post_count' => $this->show_bbpress_post_count,
 			'show_biography'          => $this->show_biography,
+			'bio_length'			  => $this->bio_length,
+			'show_last_post'          => $this->show_last_post,
 			'show_email'              => $this->show_email,
 			'avatar_size'             => $this->avatar_size,
 			'limit'                   => $this->limit,
@@ -405,7 +421,7 @@ class UserList {
 
 				$title .= ' (' . sprintf( _n( "%d post", "%d posts", $postcount, 'author-avatars' ), $postcount ) . ')';
 			}
-			$name .= sprintf( ' (%d)', $postcount );
+			$name .= sprintf( apply_filters( 'aa_post_count', ' (%d)', $postcount ), $postcount );
 		}
 
 		if ( $this->show_bbpress_post_count && AA_is_bbpress() ) {
@@ -425,10 +441,31 @@ class UserList {
 			} else {
 				$biography = ( isset( $user->description ) ) ? $user->description : '';
 			}
-			$divcss[] = 'with-biography';
+
+			$biography = apply_filters( 'aa_user_biography_filter', $biography );
+
+
+			// trim $biography to bio_length
+			if( 0 <=  $this->bio_length ){
+				$biography =   $this->truncate_html( wpautop( $biography, true ) , apply_filters( 'aa_user_bio_length', $this->bio_length ) );
+			}
+
+			$divcss[] = 'with-biography bio-length-'.$this->bio_length;
 			$name     = '<strong>' . $name . '</strong>';
 			if ( empty( $biography ) ) {
 				$divcss[] = 'biography-missing';
+			}
+		}
+
+		$show_last_post = false;
+
+		if ( $this->show_last_post ) {
+			$show_last_post = $this->aa_get_last_post( $user->user_id );
+			$show_last_post = apply_filters( 'aa_user_show_last_post_filter', $show_last_post );
+			$divcss[] = 'with-last-post';
+
+			if ( empty( $show_last_post ) ) {
+				$divcss[] = 'last-post-missing';
 			}
 		}
 
@@ -497,6 +534,14 @@ class UserList {
 			$html .= sprintf( apply_filters( 'aa_user_biography_template', '<div class="biography">%s</div>', $biography ), $biography );
 		}
 
+		if ( $show_last_post ) {
+			$html .= sprintf( apply_filters( 'aa_user_last_post_template', '<div class="show_last_post">%s</div>', $show_last_post ), $show_last_post );
+		}
+
+		if ( ! empty ( $this->display_extra ) ) {
+			$html .= apply_filters( 'aa_user_display_extra', $this->display_extra, $user );
+		}
+
 		$tpl_vars['{class}'] = implode( $divcss, ' ' );
 		$tpl_vars['{user}']  =  apply_filters( 'aa_user_final_content', $html, $user );
 
@@ -511,6 +556,7 @@ class UserList {
 	function get_users() {
 
 		global $blog_id;
+		$random_order = false;
 
 		$cache_id = join( "_", $this->roles ) . "_" . $blog_id;
 		if ( ! empty( $this->blogs ) ) {
@@ -527,6 +573,7 @@ class UserList {
 		// if order set then add
 		if ( ! empty( $this->order ) ) {
 			$cache_id .= "_" . $this->order;
+			$random_order = ('random' == $this->order)?true:false;
 		}
 		// if hidden user set then add
 		if ( ! empty( $this->hiddenusers ) ) {
@@ -622,7 +669,40 @@ class UserList {
 			set_transient( $cache_id, $users, 1 * HOUR_IN_SECONDS );
 		}
 
+		if( $random_order ){
+			$this->_sort( $users );
+		}
 		return $users;
+	}
+
+	/**
+	 * @param $user_id
+	 *
+	 * @return null|string
+	 */
+	function aa_get_last_post( $user_id ){
+		$args=array(
+			'author' => $user_id ,
+			'post_type' => 'post',
+			'post_status' => 'publish',
+			'posts_per_page' => 1,
+			'ignore_sticky_posts'=> 1
+		);
+		$my_query = null;
+		$out = null;
+		$my_query = new WP_Query($args);
+		if( $my_query->have_posts() ) {
+			while ($my_query->have_posts()) : $my_query->the_post();
+				$id = $my_query->posts[0]->ID;
+				$out .= sprintf('<a href="%s" rel="bookmark" title="Permanent Link to %s">%s</a>',
+					get_the_permalink( $id ),
+					the_title_attribute( array( 'echo'=>false, 'post'=>$id ) ),
+					get_the_title( $id )
+				);
+			endwhile;
+		}
+		wp_reset_query();  // Restore global post data stomped by the_post().
+		return $out;
 	}
 
 	/**
@@ -1300,5 +1380,114 @@ class UserList {
 		}
 
 		return $name;
+	}
+
+
+	/**
+	 * truncateHtml can truncate a string up to a number of characters while preserving whole words and HTML tags
+	 *
+	 * @param string $text String to truncate.
+	 * @param integer $length Length of returned string, including ellipsis.
+	 * @param string $ending Ending to be appended to the trimmed string.
+	 * @param boolean $exact If false, $text will not be cut mid-word
+	 * @param boolean $considerHtml If true, HTML tags would be handled correctly
+	 *
+	 * @return string Trimmed string.
+	 */
+	function truncate_html($text, $length = 100, $ending = '...', $exact = false, $considerHtml = true) {
+		if ($considerHtml) {
+			// if the plain text is shorter than the maximum length, return the whole text
+			if (strlen(preg_replace('/<.*?>/', '', $text)) <= $length) {
+				return $text;
+			}
+			// splits all html-tags to scanable lines
+			preg_match_all('/(<.+?>)?([^<>]*)/s', $text, $lines, PREG_SET_ORDER);
+			$total_length = strlen($ending);
+			$open_tags = array();
+			$truncate = '';
+			foreach ($lines as $line_matchings) {
+				// if there is any html-tag in this line, handle it and add it (uncounted) to the output
+				if (!empty($line_matchings[1])) {
+					// if it's an "empty element" with or without xhtml-conform closing slash
+					if (preg_match('/^<(\s*.+?\/\s*|\s*(img|br|input|hr|area|base|basefont|col|frame|isindex|link|meta|param)(\s.+?)?)>$/is', $line_matchings[1])) {
+						// do nothing
+						// if tag is a closing tag
+					} else if (preg_match('/^<\s*\/([^\s]+?)\s*>$/s', $line_matchings[1], $tag_matchings)) {
+						// delete tag from $open_tags list
+						$pos = array_search($tag_matchings[1], $open_tags);
+						if ($pos !== false) {
+							unset($open_tags[$pos]);
+						}
+						// if tag is an opening tag
+					} else if (preg_match('/^<\s*([^\s>!]+).*?>$/s', $line_matchings[1], $tag_matchings)) {
+						// add tag to the beginning of $open_tags list
+						array_unshift($open_tags, strtolower($tag_matchings[1]));
+					}
+					// add html-tag to $truncate'd text
+					$truncate .= $line_matchings[1];
+				}
+				// calculate the length of the plain text part of the line; handle entities as one character
+				$content_length = strlen(preg_replace('/&[0-9a-z]{2,8};|&#[0-9]{1,7};|[0-9a-f]{1,6};/i', ' ', $line_matchings[2]));
+				if ($total_length+$content_length> $length) {
+					// the number of characters which are left
+					$left = $length - $total_length;
+					$entities_length = 0;
+					// search for html entities
+					if (preg_match_all('/&[0-9a-z]{2,8};|&#[0-9]{1,7};|[0-9a-f]{1,6};/i', $line_matchings[2], $entities, PREG_OFFSET_CAPTURE)) {
+						// calculate the real length of all entities in the legal range
+						foreach ($entities[0] as $entity) {
+							if ($entity[1]+1-$entities_length <= $left) {
+								$left--;
+								$entities_length += strlen($entity[0]);
+							} else {
+								// no more characters left
+								break;
+							}
+						}
+					}
+					$truncate .= substr($line_matchings[2], 0, $left+$entities_length);
+					// maximum lenght is reached, so get off the loop
+					break;
+				} else {
+					$truncate .= $line_matchings[2];
+					$total_length += $content_length;
+				}
+				// if the maximum length is reached, get off the loop
+				if($total_length>= $length) {
+					break;
+				}
+			}
+		} else {
+			if (strlen($text) <= $length) {
+				return $text;
+			} else {
+				$truncate = substr($text, 0, $length - strlen($ending));
+			}
+		}
+		// if the words shouldn't be cut in the middle...
+		if (!$exact) {
+			// ...search the last occurance of a space...
+			$spacepos = strrpos($truncate, ' ');
+
+			if ( isset($spacepos ) ) {
+				$br_pos = strrpos( substr( $truncate, $spacepos-4, $spacepos ), '<' );
+				if( isset( $br_pos ) ){
+					$truncate = substr( $truncate, 0, $spacepos - ( 4 - ( $br_pos ) ) );
+				}else{
+					// ...and cut the text in this position
+					$truncate = substr($truncate, 0, $spacepos);
+				}
+			}
+		}
+		// add the defined ending to the text
+
+		$truncate .= $ending;
+		if($considerHtml) {
+			// close all unclosed html-tags
+			foreach ($open_tags as $tag) {
+				$truncate .= '</' . $tag . '>';
+			}
+		}
+		return $truncate;
 	}
 }

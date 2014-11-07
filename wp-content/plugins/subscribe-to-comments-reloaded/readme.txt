@@ -4,8 +4,8 @@ Contributors: coolmann, Reedyseth, raamdev
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XF86X93FDCGYA&lc=US&item_name=Datasoft%20Engineering&item_number=DI%2dSTCR&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 Tags: subscribe, comments, notification, subscription, manage, double check-in, follow, commenting
 Requires at least: 2.9.2
-Tested up to: 3.9
-Stable tag: 140515
+Tested up to: 4.0
+Stable tag: 141103
 
 Subscribe to Comments Reloaded allows commenters to sign up for e-mail notifications of subsequent replies.
 
@@ -57,6 +57,10 @@ Use the shortcode `[subscribe-url]`, or use the following code in your theme:
 Yes! Just disable the corresponding option under Settings > Comment Form and then add the following code where you want to display the checkbox:
 `<?php if (function_exists('subscribe_reloaded_show')) subscribe_reloaded_show(); ?>`
 
+= What if after update to the version 141024 I still see plain HTML messages? =
+The information of your configuration needs to be updated. Go to the Subscribe to Comments Reloaded settings and click the `Save Changes` button on the tab
+where you have you messages with HTML.
+
 == Screenshots ==
 
 1. Manage your subscriptions
@@ -67,11 +71,32 @@ Yes! Just disable the corresponding option under Settings > Comment Form and the
 
 == Upgrade Notice ==
 
+== v141103 ==
+
+**Broken links and settings issue** Please upgrade to fix the URL creation on the Request Management link and to save the settings values correctly.
+
+= v141025 =
+
+v1410124 Fixed several issues reported on the support forum like broken links, raw HTML on the messages, clean user interface with buttons not needed. See the change log for details.
+
 = v140220 =
 
 **Security Fix; PLEASE UPGRADE IMMEDIATELY**. v140219 fixes an XSS/CSRF vulnerability that was discovered by Tom Adams and reported by a WordPress Plugin Repository moderator.
 
 == Changelog ==
+
+== v141103=
+* **Fix** URL generation for the Request Management link.
+* **Fix** Saving of settings values. Settings with a single quote was not saving correcting. Every option with a single quote was broken, after update please save the settings on every tab where you have single quotes.
+
+= v141025 =
+* **Fix** Post variable missing on request_management_link.php.
+* **Change** the helper class for the function esc_attr( $_value ) to safety add the URL.
+* **Fix** data overflow when the comment reply column is not available and when the plugin is activated.
+* **Fix** the raw HTML input on the messages. The messages where encoding twice, the fix is on index.php
+* **Fix** broken link when Virtual Management Page is disabled.
+* **Remove** bold, italic, link and image buttons, currently they don't work, right now this feature is not supported for the plugin.
+* **Update** Virtual Management link, old one was broken. The new link points to the the Virtual Management Page documentation.
 
 = v140515 =
 
@@ -145,7 +170,7 @@ Yes! Just disable the corresponding option under Settings > Comment Form and the
 * Maintenance release: 2.0 shipped with a bunch of annoying bugs, sorry about that!
 * Added: option to not subscribe in 'advanced mode' (thank you [LincolnAdams](http://wordpress.org/support/topic/replies-only-broken))
 * Added: subscriptions count for each post (All Posts panel)
-* Added: option to disable the virtual management page, for those [having problems](http://lab.duechiacchiere.it/index.php?topic=71.0) with their theme
+* Added: option to disable the virtual management page, for those [having problems](http://behstant.com/subscribe-reloaded/realMgnPage.php) with their theme
 * Fixed: subscriptions to replies only were not working properly, fixed (thank you [LincolnAdams](http://wordpress.org/support/topic/replies-only-broken))
 * Fixed: some warning popping up with WP_DEBUG mode enabled
 * Updated: most localizations are now up-to-date, thank you everybody!

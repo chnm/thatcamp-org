@@ -49,7 +49,7 @@
 }
 
 
-/** Light grey italic captions **/ 
+/** Light grey italic captions **/
 em.p3-em {
 	color: #999999;
 }
@@ -70,7 +70,7 @@ em.p3-em {
 .noTitle .ui-dialog-titlebar {
 	display: none;
 }
-.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { 
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
     float: none;
     text-align: center;
 }
@@ -80,7 +80,7 @@ em.p3-em {
 
 
 
-/** Turn "Cancel" button into link **/ 
+/** Turn "Cancel" button into link **/
 button.p3-cancel-button{
 	border-width: 0px !important;
 	background-image: none !important;
@@ -263,7 +263,7 @@ p3-glossary-container {
 	height: 60px;
 }
 .p3-faded-grey {
-	color: #dddddd;	
+	color: #dddddd;
 }
 
 
@@ -387,6 +387,6 @@ div#p3-reminder-wrapper {
 }
 
 /** http://wordpress.org/support/topic/plugin-broken-with-wp-371?replies=14#post-4976803 **/
-.ui-front {
+.ui-front:first-child {
 	z-index: 100 !important;
 }

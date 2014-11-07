@@ -2,10 +2,10 @@
 /*
 Plugin Name: Subscribe to Comments Reloaded
 
-Version: 140515
-Stable tag: 140515
+Version: 141103
+Stable tag: 141103
 Requires at least: 2.9.2
-Tested up to: 3.9
+Tested up to: 4.0
 
 Plugin URI: http://wordpress.org/extend/plugins/subscribe-to-comments-reloaded/
 Description: Subscribe to Comments Reloaded is a robust plugin that enables commenters to sign up for e-mail notifications. It includes a full-featured subscription manager that your commenters can use to unsubscribe to certain posts or suspend all notifications.
@@ -115,7 +115,7 @@ if ( get_option( 'subscribe_reloaded_show_subscription_box', 'yes' ) == 'yes' ) 
 
 class wp_subscribe_reloaded {
 
-	public $current_version = '140515';
+	public $current_version = '141103';
 
 	/**
 	 * Constructor -- Sets things up.
@@ -135,7 +135,7 @@ class wp_subscribe_reloaded {
 			if ( empty( $manager_page_permalink ) ) {
 				$manager_page_permalink = get_option( 'subscribe_reloaded_manager_page', '/comment-subscriptions/' );
 			}
-			if ( ( strpos( $_SERVER["REQUEST_URI"], $manager_page_permalink ) !== false ) && get_option( 'subscribe_reloaded_manager_page_enabled', 'yes' ) == 'yes' ) {
+			if ( ( strpos( $_SERVER["REQUEST_URI"], $manager_page_permalink ) !== false ) ) {
 				add_filter( 'the_posts', array( &$this, 'subscribe_reloaded_manage' ), 10, 2 );
 			}
 
@@ -294,6 +294,7 @@ class wp_subscribe_reloaded {
 		add_option( 'subscribe_reloaded_author_label', __( "You can <a href='[manager_link]'>manage the subscriptions</a> of this post.", 'subscribe-reloaded' ), '', 'no' );
 
 		add_option( 'subscribe_reloaded_manager_page_enabled', 'yes', '', 'no' );
+		add_option( 'subscribe_reloaded_virtual_manager_page_enabled', 'yes', '', 'no' );
 		add_option( 'subscribe_reloaded_manager_page_title', __( 'Manage subscriptions', 'subscribe-reloaded' ), '', 'no' );
 		add_option( 'subscribe_reloaded_custom_header_meta', "<meta name='robots' content='noindex,nofollow'>", '', 'no' );
 		add_option( 'subscribe_reloaded_request_mgmt_link', __( 'To manage your subscriptions, please enter your email address here below. We will send you a message containing the link to access your personal management page.', 'subscribe-reloaded' ), '', 'no' );
@@ -322,6 +323,7 @@ class wp_subscribe_reloaded {
 		add_option( 'subscribe_reloaded_enable_admin_messages', 'no', '', 'no' );
 		add_option( 'subscribe_reloaded_admin_subscribe', 'no', '', 'no' );
 		add_option( 'subscribe_reloaded_admin_bcc', 'no', '', 'no' );
+
 
 		// Schedule the autopurge hook
 		if ( ! wp_next_scheduled( 'subscribe_reloaded_purge' ) ) {
@@ -1178,9 +1180,7 @@ class wp_subscribe_reloaded {
 	 * Generate a unique key to allow users to manage their subscriptions
 	 */
 	public function generate_key( $_email ) {
-		$day = date_i18n( 'Ymd' );
-
-		return md5( $day . $this->salt . $_email );
+		return md5( $this->salt . $_email );
 	}
 	// end generate_key
 
@@ -1394,25 +1394,30 @@ class wp_subscribe_reloaded {
 	 */
 	private function _import_crn_data() {
 		global $wpdb;
+		$crn_data_count          = null;
 		$subscriptions_to_import = array();
+		$commentMailColumn       = $wpdb->get_var( "SHOW COLUMNS FROM $wpdb->comments LIKE 'comment_mail_notify' " );
+		if ( empty( $commentMailColumn ) ) {
+			$crn_data_count = 0;
+		} else {
+			// Import the information collected by Subscribe to Comments, if needed
+			$crn_data_count = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->comments WHERE comment_mail_notify = 1" );
+		}
 
-		// Import the information collected by Subscribe to Comments, if needed
-		$crn_data_count = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->comments WHERE comment_mail_notify = 1" );
-
-		if ( $crn_data_count > 0 ) {
-			// 1) If there are subscriptions Retrieve all of them from COMMENT_REPLY_NOTIFICATION
+		if ( $crn_data_count > 0 ) { // if $crn_data_count is 0 there is no Comment Reply
+			// plugin installed and therefore no comment_mail_notify
+			// column.
+			// Since we know that there are subscriptions Retrieve all of them from COMMENT_REPLY_NOTIFICATION
 			$crn_data             = $wpdb->get_results(
-				"
-									SELECT comment_post_ID, comment_author_email
-									FROM wp_comments WHERE comment_mail_notify = '1'
-									GROUP BY comment_author_email
-								", OBJECT
+				" SELECT comment_post_ID, comment_author_email"
+				. " FROM wp_comments WHERE comment_mail_notify = '1'"
+				. " GROUP BY comment_author_email"
+				, OBJECT
 			);
 			$stcr_data            = $wpdb->get_results(
-				"
-									SELECT post_id, SUBSTRING(meta_key,8) AS email
-									FROM wp_postmeta WHERE meta_key LIKE '_stcr@_%'
-								", ARRAY_N
+				" SELECT post_id, SUBSTRING(meta_key,8) AS email"
+				. "FROM wp_postmeta WHERE meta_key LIKE '_stcr@_%'"
+				, ARRAY_N
 			);
 			$sctr_data_array_size = sizeof( $stcr_data );
 			// Lets make sure that there is not another subscription with the same compose key
@@ -1433,7 +1438,7 @@ class wp_subscribe_reloaded {
 					array(
 						"post_id"    => $row->comment_post_ID,
 						"meta_key"   => "_stcr@_" . $row->comment_author_email,
-						"meta_value" => current_time( "mysql" ) . "|Y"
+						"meta_value" => current_time( "mysql" ) . "|R"
 					),
 					array(
 						"%d",
