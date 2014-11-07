@@ -1,10 +1,10 @@
 ﻿=== Author Avatars List ===
 Contributors: pbearne, bforchhammer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=MZTZ5S8MGF75C&lc=CA&item_name=Wordpress%20Development%20%2f%20Paul%20Bearne&item_number=AuthorAvatarsList%20Plugin&currency_code=CAD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
-Tags: Avatar, Author, BuddyPress, Comment, Editor, Image, Multisite, Photo, Picture, Profile, Shortcode, Random, Sidebar, Thumbnail, User, Widget, Wpmu, BBPress, co-authors
+Tags: Avatar, Author, BuddyPress, xprofile, Comment, Editor, Image, Multisite, Photo, Picture, Profile, Shortcode, Random, Sidebar, Thumbnail, User, Widget, Wpmu, BBPress, co-authors
 Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 1.8.5.0
+Tested up to: 4.1
+Stable tag: 1.8.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,7 +32,7 @@ Both shortcode and widget can be configured to...
 
 The plugin makes use of built in wordpress (core) functions to retrieve user information and get avatars.
 
-The Plug-in can show users from bb-press, Budy-press and Co-Author Plus Plug-in
+The Plug-in can show users from bb-press, Budy-press (xprofile) and Co-Author Plus Plug-in
 
 Single user avatars can be inserted using the [show_avatar shortcode](http://authoravatars.wordpress.com/documentation/show_avatar-shortcode/) and configured to...
 
@@ -67,6 +67,22 @@ If you have added CSS to your theme you may have to update it for this upgrade (
 5. List of users with name and biography
 
 == Changelog ==
+
+
+= 1.8.6.3 =
+set the bios to maintain line breaks
+
+= 1.8.6.2 =
+Fixed the random order if not logged in
+
+= 1.8.6.1 =
+deploy script failed to add new file
+
+= 1.8.6.0 =
+* added the ability to truncate bio
+* added support for BuddyPress xprofile
+* add filter to post count number @props Andrew Minion
+
 
 = 1.8.4.2 =
 * Whitespace reformat

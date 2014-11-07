@@ -1,4 +1,4 @@
-<!-- Begin PayPal Donations by http://johansteen.se/ -->
+<!-- Begin PayPal Donations by https://www.tipsandtricks-hq.com/paypal-donations-widgets-plugin -->
 <?php
 $url = isset($pd_options['sandbox']) ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 'https://www.paypal.com/cgi-bin/webscr';
 ?>

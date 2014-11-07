@@ -92,13 +92,13 @@ class P3_Profiler {
 	 * @var array
 	 */
 	private $_debug_entry = array();
-	
+
 	/**
 	 * Last stack should be marked as plugin time
 	 * @const
 	 */
 	const CATEGORY_PLUGIN = 1;
-	
+
 	/**
 	 * Last stack should be marked as theme time
 	 * @const
@@ -121,7 +121,7 @@ class P3_Profiler {
 
 		// Set up paths
 		$this->_P3_PATH      = realpath( dirname( __FILE__ ) );
-		
+
 		// Debug mode
 		$this->_debug_entry = array(
 			'profiling_enabled'  => false,
@@ -148,7 +148,7 @@ class P3_Profiler {
 				}
 			}
 		}
-		
+
 		// Add a global flag to let everyone know we're profiling
 		if ( !empty( $opts ) && preg_match( '/' . $opts['profiling_enabled']['ip'] . '/', p3_profiler_get_ip() ) ) {
 			define( 'WPP_PROFILING_STARTED', true );
@@ -161,13 +161,13 @@ class P3_Profiler {
 		if ( !defined( 'WPP_PROFILING_STARTED' ) ) {
 			return $this;
 		}
-		
+
 		// Emergency shut off switch
 		if ( isset( $_REQUEST['P3_SHUTOFF'] ) && !empty( $_REQUEST['P3_SHUTOFF'] ) ) {
 			p3_profiler_disable();
 			return $this;
 		}
-		
+
 		// Hook shutdown
 		register_shutdown_function( array( $this, 'shutdown_handler' ) );
 
@@ -188,7 +188,7 @@ class P3_Profiler {
 			@ini_set( 'memory_limit', '256M' );
 		}
 		@set_time_limit( 90 );
-		
+
 		// Set the profile file
 		$this->_profile_filename = $opts['profiling_enabled']['name'] . '.json';
 
@@ -255,7 +255,7 @@ class P3_Profiler {
 		}
 		$themes_folder = 'themes';
 
-		// Start timing time spent in the profiler 
+		// Start timing time spent in the profiler
 		$start = microtime( true );
 
 		// Calculate the last call time
@@ -284,20 +284,32 @@ class P3_Profiler {
 
 		// Examine the current stack, see if we should track it.  It should be
 		// related to a plugin file if we're going to track it
-		if ( version_compare( PHP_VERSION, '5.3.6' ) < 0 ) {
-			$bt = debug_backtrace( true );
-		} elseif ( version_compare( PHP_VERSION, '5.4.0' ) < 0 ) {
+		static $is_540;
+		static $is_536;
+
+		if ( $is_540 == null ) {
+			if ( version_compare( PHP_VERSION, '5.4.0', '>=' ) == false ) {
+				$is_540 = false;
+				$is_536 = version_compare( PHP_VERSION, '5.3.6', '>=' );
+			} else {
+				$is_540 = true;
+			}
+		}
+
+		if ( $is_540 ) { // if $ver >= 5.4.0
+			$bt = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS | DEBUG_BACKTRACE_PROVIDE_OBJECT, 2 );
+		} elseif ( $is_536 ) { // if $ver >= 5.3.6
 			$bt = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS | DEBUG_BACKTRACE_PROVIDE_OBJECT );
-		} else {
-			$bt = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS | DEBUG_BACKTRACE_PROVIDE_OBJECT, 2 ); // Examine the last 2 frames
+		} else { // if $ver < 5.3.6
+			$bt = debug_backtrace( true );
 		}
 
 		// Find our function
 		$frame = $bt[0];
-		if ( count( $bt ) >= 2 ) {
+		if ( isset( $bt[1] ) )
 			$frame = $bt[1];
-		}
-		$lambda_file = @$bt[0]['file'];
+
+		$lambda_file = isset( $bt[0]['file']{0} ) ? $bt[0]['file'] : '';
 
 		// Free up memory
 		unset( $bt );
@@ -305,7 +317,7 @@ class P3_Profiler {
 		// Include/require
 		if ( in_array( strtolower( $frame['function'] ), array( 'include', 'require', 'include_once', 'require_once' ) ) ) {
 			$file = $frame['args'][0];
-			
+
 		// Object instances
 		} elseif ( isset( $frame['object'] ) && method_exists( $frame['object'], $frame['function'] ) ) {
 			try {
@@ -313,7 +325,7 @@ class P3_Profiler {
 				$file      = $reflector->getFileName();
 			} catch ( Exception $e ) {
 			}
-		
+
 		// Static object calls
 		} elseif ( isset( $frame['class'] ) && method_exists( $frame['class'], $frame['function'] ) ) {
 			try {
@@ -342,7 +354,7 @@ class P3_Profiler {
 		} else {
 			$file = $_SERVER['SCRIPT_FILENAME'];
 		}
-		
+
 		// Check for "eval()'d code"
 		if ( strpos( $file, "eval()'d" ) ) {
 			list($file, $junk) = explode(': eval(', $str, 2);
@@ -628,7 +640,7 @@ class P3_Profiler {
 		$transient  .= json_encode( $this->_profile ) . PHP_EOL;
 		update_option( 'p3_scan_' . $opts['profiling_enabled']['name'], $transient );
 	}
-	
+
 	/**
 	 * Get the current URL
 	 * @return string

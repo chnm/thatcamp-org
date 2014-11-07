@@ -6,16 +6,22 @@
  */
 
 // include global helper functions file.
-require_once( 'helper.functions.php' );
+require_once( dirname( __FILE__ ) . '/helper.functions.php' );
 // include settings file
-require_once( 'AuthorAvatarsSettings.class.php' );
-require_once( 'AuthorAvatarsWidget.class.php' );
+require_once( dirname( __FILE__ ) . '/AuthorAvatarsSettings.class.php' );
+require_once( dirname( __FILE__ ) . '/AuthorAvatarsWidget.class.php' );
 
-function myplugin_register_widgets() {
+
+function aa_register_widgets() {
 	register_widget( 'AuthorAvatarsWidget' );
 }
+add_action( 'widgets_init', 'aa_register_widgets' );
 
-add_action( 'widgets_init', 'myplugin_register_widgets' );
+// only add is bb is loaded
+function buddy_press_support_init() {
+	require( dirname( __FILE__ ) . '/BuddyPressSupport.class.php' );
+}
+add_action( 'bp_include', 'buddy_press_support_init' );
 
 
 class AuthorAvatars {
@@ -77,9 +83,9 @@ class AuthorAvatars {
 	 */
 	function init_settings() {
 		// include global helper functions file.
-		require_once( 'helper.functions.php' );
+		require_once( dirname( __FILE__ ) . '/helper.functions.php' );
 		// include settings file
-		require_once( 'AuthorAvatarsSettings.class.php' );
+		require_once( dirname( __FILE__ ) . '/AuthorAvatarsSettings.class.php' );
 		// load translation domain on init action
 		add_action( 'init', array( $this, 'load_translation_domain' ), 20 );
 
@@ -104,16 +110,16 @@ class AuthorAvatars {
 		$aa_ver = AUTHOR_AVATARS_VERSION;
 
 		// styles
-		wp_register_style( 'author-avatars-widget', plugins_url( '../css/widget.css', __FILE__ ), array(), $aa_ver );
-		wp_register_style( 'author-avatars-shortcode', plugins_url( '../css/shortcode.css', __FILE__ ), array(), $aa_ver );
-		wp_register_style( 'admin-form', plugins_url( '../css/admin-form.css', __FILE__ ), array(), $aa_ver );
+		wp_register_style( 'author-avatars-widget', plugins_url( 'css/widget.css', dirname( __FILE__ ) ), array(), $aa_ver );
+		wp_register_style( 'author-avatars-shortcode', plugins_url( 'css/shortcode.css', dirname( __FILE__ ) ), array(), $aa_ver );
+		wp_register_style( 'admin-form', plugins_url( 'css/admin-form.css', dirname( __FILE__ ) ), array(), $aa_ver );
 
 		// scripts
-		wp_register_script( 'jquery-ui-resizable', plugins_url( '../js/jquery-ui.resizable.js', __FILE__ ), array( 'jquery-ui-core' ), '1.5.3' );
-		wp_register_script( 'author-avatars-form', plugins_url( '../js/form.js', __FILE__ ), array( 'jquery-ui-resizable' ), $aa_ver );
-		wp_register_script( 'author-avatars-widget-admin', plugins_url( '../js/widget.admin.js', __FILE__ ), array( 'author-avatars-form' ), $aa_ver );
+		wp_register_script( 'jquery-ui-resizable', plugins_url( 'js/jquery-ui.resizable.js', dirname( __FILE__ ) ), array( 'jquery-ui-core' ), '1.5.3' );
+		wp_register_script( 'author-avatars-form', plugins_url( 'js/form.js', dirname( __FILE__ ) ), array( 'jquery-ui-resizable' ), $aa_ver );
+		wp_register_script( 'author-avatars-widget-admin', plugins_url( 'js/widget.admin.js',dirname( __FILE__ ) ), array( 'author-avatars-form' ), $aa_ver );
 		wp_register_script( 'tinymce-popup', '/wp-includes/js/tinymce/tiny_mce_popup.js', array(), function_exists( 'mce_version' ) ? mce_version() : false );
-		wp_register_script( 'author-avatars-tinymce-popup', plugins_url( '../js/tinymce.popup.js', __FILE__ ), array(
+		wp_register_script( 'author-avatars-tinymce-popup', plugins_url( 'js/tinymce.popup.js', dirname( __FILE__ ) ), array(
 				'author-avatars-form',
 				'jquery-ui-tabs'
 			), $aa_ver );
@@ -166,8 +172,8 @@ class AuthorAvatars {
 	 */
 	function init_shortcodes() {
 		// include necessary file(s).
-		require_once( 'AuthorAvatarsShortcode.class.php' );
-		require_once( 'ShowAvatarShortcode.class.php' );
+		require_once( dirname( __FILE__ ) . '/AuthorAvatarsShortcode.class.php' );
+		require_once( dirname( __FILE__ ) . '/ShowAvatarShortcode.class.php' );
 		// Create objects of the shortcode classes. Registering is done in the objects' constructors
 		$this->author_avatars_shortcode = new AuthorAvatarsShortcode();
 		$this->show_avatar              = new ShowAvatarShortcode();
@@ -178,7 +184,7 @@ class AuthorAvatars {
 	 */
 	function init_tinymce_editor() {
 		// load the Editor class for TinyMCE
-		require_once( 'AuthorAvatarsEditorButton.class.php' );
+		require_once( dirname( __FILE__ ) . '/AuthorAvatarsEditorButton.class.php' );
 		$this->editor_button = new AuthorAvatarsEditorButton();
 	}
 
@@ -187,7 +193,7 @@ class AuthorAvatars {
 	 */
 	function init_controlpanels() {
 		// include necessary file(s).
-		require_once( 'AuthorAvatarsSitewideAdminPanel.class.php' );
+		require_once( dirname( __FILE__ ) . '/AuthorAvatarsSitewideAdminPanel.class.php' );
 		$this->wpmu_settings = new AuthorAvatarsSitewideAdminPanel();
 	}
 

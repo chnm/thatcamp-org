@@ -110,34 +110,46 @@ function insertAuthorAvatarsCode() {
             tagtext += " user_link=" + user_link;
         }
 
-
+        var display = new Array();
         jQuery('.fields_type_authoravatars #display :checked').each(function (i, el) {
-            // show_name
-            if ('show_name' == jQuery(el).val()) {
-                tagtext += " show_name=true";
-            }
+            display.push( jQuery(el).val() );
 
-            // show_email
-            if ('show_email' == jQuery(el).val()) {
-                tagtext += " show_email=true";
-            }
+           // tagtext += " "+jQuery(el).val()+"=true";
 
-            // show_postcount
-            if ('show_postcount' == jQuery(el).val()) {
-                tagtext += " show_postcount=true";
-            }
-
-            // show_biography
-            if ('show_biography' == jQuery(el).val()) {
-                tagtext += " show_biography=true";
-            }
-
-            // BBPRESS_post_count
-            if ('show_bbpress_post_count' == jQuery(el).val()) {
-                tagtext += " show_bbpress_post_count=true";
-            }
+            //// show_name
+            //if ('show_name' == jQuery(el).val()) {
+            //    tagtext += " show_name=true";
+            //}
+            //
+            //// show_email
+            //if ('show_email' == jQuery(el).val()) {
+            //    tagtext += " show_email=true";
+            //}
+            //
+            //// show_postcount
+            //if ('show_postcount' == jQuery(el).val()) {
+            //    tagtext += " show_postcount=true";
+            //}
+            //
+            //// show_biography
+            //if ('show_biography' == jQuery(el).val()) {
+            //    tagtext += " show_biography=true";
+            //}
+            //
+            //// show_last_post
+            //if ('show_last_post' == jQuery(el).val()) {
+            //    tagtext += " show_last_post=true";
+            //}
+            //
+            //// BBPRESS_post_count
+            //if ('show_bbpress_post_count' == jQuery(el).val()) {
+            //    tagtext += " show_bbpress_post_count=true";
+            //}
 
         });
+        if (display.length > 0) {
+            tagtext += " display=" + display.join(',');
+        }
 
         // limit
         var limit = jQuery("#limit").val() || "";
@@ -223,6 +235,11 @@ function insertAuthorAvatarsCode() {
                 tagtext += " show_biography=true";
             }
 
+            // show_last_post
+            if ('show_last_post' == jQuery(el).val()) {
+                tagtext += " show_last_post=true";
+            }
+
             // BBPRESS_post_count
             if ('show_bbpress_post_count' == jQuery(el).val()) {
                 tagtext += " show_bbpress_post_count=true";
@@ -239,6 +256,11 @@ function insertAuthorAvatarsCode() {
         tagtext += " avatar_size=" + avatar_size;
     }
 
+    // max bio length
+    var bio_length = jQuery("#max_bio_length").val() || "";
+    if (bio_length.length > 0) {
+        tagtext += " max_bio_length=" + bio_length;
+    }
     tagtext += "]";
 
     if (error == true) {
