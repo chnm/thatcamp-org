@@ -42,7 +42,9 @@ function cw_get_authors() {
 function thatcamp_twitter_stream($keyword = 'thatcamp') {
     $rss = fetch_rss('http://search.twitter.com/search.atom?q='.$keyword);
     $maxitems = 5;
-    $items = array_slice($rss->items, 0, $maxitems);
+    if(is_array($rss->items)){
+        $items = array_slice($rss->items, 0, $maxitems);
+    }
     ?>
     <ul id="twitter">
     <?php if (empty($items)) echo '<li>No items</li>';

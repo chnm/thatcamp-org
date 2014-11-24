@@ -5,7 +5,9 @@
     include_once(ABSPATH . WPINC . '/rss.php');
     $rss = fetch_rss('http://search.twitter.com/search.atom?q=thatcamp');
     $maxitems = 5;
-    $items = array_slice($rss->items, 0, $maxitems);
+    if(is_array($rss->items)){
+        $items = array_slice($rss->items, 0, $maxitems);
+    }
     ?>
     <ul id="twitter">
     <?php if (empty($items)) echo '<li>No items</li>';
