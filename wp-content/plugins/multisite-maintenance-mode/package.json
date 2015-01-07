@@ -1,0 +1,17 @@
+{
+  "name": "multiste-maintenance-mode",
+  "version": "0.1.0",
+  "description": "A maintenance mode plugin for WordPress",
+  "main": "multisite-maintenance-mode.php",
+  "repository": "",
+  "author": "J. Aaron Eaton",
+  "license": "GPL2",
+  "readmeFilename": "README.md",
+  "gitHead": "1b683c38aa9161f7c9787a8e2c75c47f5444d338",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-po2mo": "~0.1.0",
+    "grunt-pot": "~0.1.2",
+    "grunt-checktextdomain": "~0.1.1"
+  }
+}

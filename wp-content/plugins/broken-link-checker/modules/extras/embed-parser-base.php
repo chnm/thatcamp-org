@@ -109,7 +109,7 @@ class blcEmbedParserBase extends blcParser {
 		}
 
 		//Find <embed> elements not wrapped in an <object> element.
-		$embeds = blcUtility::extract_tags($html, 'embed', false, true);
+		$embeds = blcUtility::extract_tags($html, 'embed', true, true);
 		foreach($embeds as $embed) {
 			if ( !empty($embed['attributes']['src']) ){
 				$embed['embed_code'] = $embed['full_tag'];

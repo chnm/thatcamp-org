@@ -37,12 +37,10 @@ class wsBrokenLinkChecker {
    * @param blcConfigurationManager $conf An instance of the configuration manager
    * @return void
    */
-    function wsBrokenLinkChecker ( $loader, &$conf ) {
-        global $wpdb;
-
+    function wsBrokenLinkChecker ( $loader, $conf ) {
 		$this->db_version = BLC_DATABASE_VERSION;
         
-        $this->conf = &$conf;
+        $this->conf = $conf;
         $this->loader = $loader;
         $this->my_basename = plugin_basename( $this->loader );
 
@@ -51,25 +49,27 @@ class wsBrokenLinkChecker {
         //Unlike the activation hook, the deactivation callback *can* be registered in this file
         //because deactivation happens after this class has already been instantiated (durinng the 
 		//'init' action). 
-        register_deactivation_hook($loader, array(&$this, 'deactivation'));
+        register_deactivation_hook($loader, array($this, 'deactivation'));
         
-        add_action('admin_menu', array(&$this,'admin_menu'));
+        add_action('admin_menu', array($this,'admin_menu'));
 
 		//Load jQuery on Dashboard pages (probably redundant as WP already does that)
-        add_action('admin_print_scripts', array(&$this,'admin_print_scripts'));
+        add_action('admin_print_scripts', array($this,'admin_print_scripts'));
         
         //The dashboard widget
-        add_action('wp_dashboard_setup', array(&$this, 'hook_wp_dashboard_setup'));
+        add_action('wp_dashboard_setup', array($this, 'hook_wp_dashboard_setup'));
 		
         //AJAXy hooks
-        add_action( 'wp_ajax_blc_full_status', array(&$this,'ajax_full_status') );
-        add_action( 'wp_ajax_blc_dashboard_status', array(&$this,'ajax_dashboard_status') );
-        add_action( 'wp_ajax_blc_work', array(&$this,'ajax_work') );
-        add_action( 'wp_ajax_blc_discard', array(&$this,'ajax_discard') );
-        add_action( 'wp_ajax_blc_edit', array(&$this,'ajax_edit') );
-        add_action( 'wp_ajax_blc_link_details', array(&$this,'ajax_link_details') );
-        add_action( 'wp_ajax_blc_unlink', array(&$this,'ajax_unlink') );
-        add_action( 'wp_ajax_blc_current_load', array(&$this,'ajax_current_load') );
+        add_action( 'wp_ajax_blc_full_status', array($this,'ajax_full_status') );
+        add_action( 'wp_ajax_blc_dashboard_status', array($this,'ajax_dashboard_status') );
+        add_action( 'wp_ajax_blc_work', array($this,'ajax_work') );
+        add_action( 'wp_ajax_blc_discard', array($this,'ajax_discard') );
+        add_action( 'wp_ajax_blc_edit', array($this,'ajax_edit') );
+        add_action( 'wp_ajax_blc_link_details', array($this,'ajax_link_details') );
+        add_action( 'wp_ajax_blc_unlink', array($this,'ajax_unlink') );
+        add_action( 'wp_ajax_blc_recheck', array($this,'ajax_recheck') );
+        add_action( 'wp_ajax_blc_deredirect', array($this,'ajax_deredirect') );
+        add_action( 'wp_ajax_blc_current_load', array($this,'ajax_current_load') );
 
 	    add_action( 'wp_ajax_blc_dismiss', array($this, 'ajax_dismiss') );
 	    add_action( 'wp_ajax_blc_undismiss', array($this, 'ajax_undismiss') );
@@ -78,13 +78,13 @@ class wsBrokenLinkChecker {
         $this->setup_cron_events();
         
         //Set hooks that listen for our Cron actions
-    	add_action('blc_cron_email_notifications', array( &$this, 'maybe_send_email_notifications' ));
-		add_action('blc_cron_check_links', array(&$this, 'cron_check_links'));
-		add_action('blc_cron_database_maintenance', array(&$this, 'database_maintenance'));
-		add_action('blc_cron_check_news', array(&$this, 'check_news'));
+    	add_action('blc_cron_email_notifications', array( $this, 'maybe_send_email_notifications' ));
+		add_action('blc_cron_check_links', array($this, 'cron_check_links'));
+		add_action('blc_cron_database_maintenance', array($this, 'database_maintenance'));
+		add_action('blc_cron_check_news', array($this, 'check_news'));
 		
         //Set the footer hook that will call the worker function via AJAX.
-        add_action('admin_footer', array(&$this,'admin_footer'));
+        add_action('admin_footer', array($this,'admin_footer'));
 		
 		//Add a "Screen Options" panel to the "Broken Links" page
 		add_screen_options_panel(
@@ -95,6 +95,9 @@ class wsBrokenLinkChecker {
 			array($this, 'ajax_save_screen_options'),
 			true
 		);
+
+		//Display an explanatory note on the "Tools -> Broken Links -> Warnings" page.
+		add_action('admin_notices', array($this, 'show_warnings_section_notice'));
     }
 
   /**
@@ -162,7 +165,7 @@ class wsBrokenLinkChecker {
 							'action' : 'blc_dashboard_status',
 							'random' : Math.random()
 						},
-						function (data, textStatus){
+						function (data){
 							if ( data && ( typeof(data.text) != 'undefined' ) ) {
 								$('#wsblc_activity_box').html(data.text); 
 								<?php if ( $this->conf->options['autoexpand_widget'] ) { ?>
@@ -289,13 +292,13 @@ class wsBrokenLinkChecker {
      */
     function admin_menu(){
     	if (current_user_can('manage_options'))
-          add_filter('plugin_action_links', array(&$this, 'plugin_action_links'), 10, 2);
+          add_filter('plugin_action_links', array($this, 'plugin_action_links'), 10, 2);
     	
         $options_page_hook = add_options_page( 
 			__('Link Checker Settings', 'broken-link-checker'), 
 			__('Link Checker', 'broken-link-checker'), 
 			'manage_options',
-            'link-checker-settings',array(&$this, 'options_page')
+            'link-checker-settings',array($this, 'options_page')
 		);
 		
 		$menu_title = __('Broken Links', 'broken-link-checker');
@@ -317,14 +320,14 @@ class wsBrokenLinkChecker {
 			__('View Broken Links', 'broken-link-checker'), 
 			$menu_title, 
 			'edit_others_posts',
-            'view-broken-links',array(&$this, 'links_page')
+            'view-broken-links',array($this, 'links_page')
 		);
 		 
 		//Add plugin-specific scripts and CSS only to the it's own pages
-		add_action( 'admin_print_styles-' . $options_page_hook, array(&$this, 'options_page_css') );
-        add_action( 'admin_print_styles-' . $links_page_hook, array(&$this, 'links_page_css') );
-		add_action( 'admin_print_scripts-' . $options_page_hook, array(&$this, 'enqueue_settings_scripts') );
-        add_action( 'admin_print_scripts-' . $links_page_hook, array(&$this, 'enqueue_link_page_scripts') );
+		add_action( 'admin_print_styles-' . $options_page_hook, array($this, 'options_page_css') );
+        add_action( 'admin_print_styles-' . $links_page_hook, array($this, 'links_page_css') );
+		add_action( 'admin_print_scripts-' . $options_page_hook, array($this, 'enqueue_settings_scripts') );
+        add_action( 'admin_print_scripts-' . $links_page_hook, array($this, 'enqueue_link_page_scripts') );
         
         //Add a "Feedback" button that links to the plugin's UserVoice forum
         add_screen_meta_link(
@@ -371,8 +374,6 @@ class wsBrokenLinkChecker {
     }
 
     function options_page(){
-    	global $blclog;
-
     	$moduleManager = blcModuleManager::getInstance();
 
 	    //Prior to 1.5.2 (released 2012-05-27), there was a bug that would cause the donation flag to be
@@ -395,6 +396,15 @@ class wsBrokenLinkChecker {
 			wp_redirect( add_query_arg( array( 'recheck-initiated' => true), $base_url ) );
 			die();
         }
+
+		$available_link_actions = array(
+			'edit'               => __('Edit URL' , 'broken-link-checker'),
+			'delete'             => __('Unlink', 'broken-link-checker'),
+			'blc-discard-action' => __('Not broken', 'broken-link-checker'),
+			'blc-dismiss-action' => __('Dismiss', 'broken-link-checker'),
+			'blc-recheck-action' => __('Recheck', 'broken-link-checker'),
+			'blc-deredirect-action' => _x('Fix redirect', 'link action; replace one redirect with a direct link', 'broken-link-checker')
+		);
         
         if(isset($_POST['submit'])) {
 			check_admin_referer('link-checker-options');
@@ -421,9 +431,14 @@ class wsBrokenLinkChecker {
 			if ( empty($enabled_post_statuses) ){
 				$enabled_post_statuses = array('publish');
 			}
+
+			//Did the user add/remove any post statuses?
+			$same_statuses = array_intersect($enabled_post_statuses, $this->conf->options['enabled_post_statuses']);
+			$post_statuses_changed = (count($same_statuses) != count($enabled_post_statuses))
+				|| (count($same_statuses) !== count($this->conf->options['enabled_post_statuses']));
+
 			$this->conf->options['enabled_post_statuses'] = $enabled_post_statuses;
-			//TODO: Resynch enabled post types when enabled statuses change.
-			
+
 			//The execution time limit must be above zero
             $new_execution_time = intval($_POST['max_execution_time']);
             if( $new_execution_time > 0 ){
@@ -448,10 +463,10 @@ class wsBrokenLinkChecker {
 			
             $this->conf->options['suggestions_enabled'] = !empty($_POST['suggestions_enabled']);
 
-            $this->conf->options['exclusion_list'] = array_filter( 
+            $this->conf->options['exclusion_list'] = array_filter(
 				preg_split( 
 					'/[\s\r\n]+/',				//split on newlines and whitespace 
-					$_POST['exclusion_list'], 
+					$cleanPost['exclusion_list'],
 					-1,
 					PREG_SPLIT_NO_EMPTY			//skip empty values
 				) 
@@ -459,15 +474,22 @@ class wsBrokenLinkChecker {
                 
             //Parse the custom field list
             $new_custom_fields = array_filter( 
-				preg_split( '/[\r\n]+/', $_POST['blc_custom_fields'], -1, PREG_SPLIT_NO_EMPTY )
+				preg_split( '/[\r\n]+/', $cleanPost['blc_custom_fields'], -1, PREG_SPLIT_NO_EMPTY )
 			);
             
 			//Calculate the difference between the old custom field list and the new one (used later)
             $diff1 = array_diff( $new_custom_fields, $this->conf->options['custom_fields'] );
             $diff2 = array_diff( $this->conf->options['custom_fields'], $new_custom_fields );
             $this->conf->options['custom_fields'] = $new_custom_fields;
-            
-            //HTTP timeout
+
+			//Turning off warnings turns existing warnings into "broken" links.
+			$warnings_enabled = !empty($_POST['warnings_enabled']);
+			if ( $this->conf->get('warnings_enabled') && !$warnings_enabled ) {
+				$this->promote_warnings_to_broken();
+			}
+			$this->conf->options['warnings_enabled'] = $warnings_enabled;
+
+			//HTTP timeout
             $new_timeout = intval($_POST['timeout']);
             if( $new_timeout > 0 ){
                 $this->conf->options['timeout'] = $new_timeout ;
@@ -523,6 +545,14 @@ class wsBrokenLinkChecker {
 		        $this->conf->options['dashboard_widget_capability'] = $widget_cap;
 	        }
 
+			//Link actions. The user can hide some of them to reduce UI clutter.
+			$show_link_actions = array();
+			foreach(array_keys($available_link_actions) as $action) {
+				$show_link_actions[$action] = isset($_POST['show_link_actions']) &&
+					!empty($_POST['show_link_actions'][$action]);
+			}
+			$this->conf->set('show_link_actions', $show_link_actions);
+
 			//Logging. The plugin can log various events and results for debugging purposes.
 			$this->conf->options['logging_enabled'] = !empty($_POST['logging_enabled']);
 			$this->conf->options['custom_log_file_enabled'] = !empty($_POST['custom_log_file_enabled']);
@@ -574,6 +604,17 @@ class wsBrokenLinkChecker {
 					blc_got_unsynched_items();
 				}
 			}
+
+			//Resynchronize posts when the user enables or disables post statuses.
+			if ( $post_statuses_changed ) {
+				$overlord = blcPostTypeOverlord::getInstance();
+				$overlord->enabled_post_statuses = $this->conf->get('enabled_post_statuses', array());
+				$overlord->resynch('wsh_status_resynch_trigger');
+
+				blc_got_unsynched_items();
+				blc_cleanup_instances();
+				blc_cleanup_links();
+			}
 			
 			//Redirect back to the settings page
 			$base_url = remove_query_arg( array('_wpnonce', 'noheader', 'updated', 'error', 'action', 'message') );
@@ -605,8 +646,7 @@ class wsBrokenLinkChecker {
         
 		$debug = $this->get_debug_info();
 		
-		$details_text = __('Details', 'broken-link-checker');
-		add_filter('blc-module-settings-custom_field', array(&$this, 'make_custom_field_input'), 10, 2);
+		add_filter('blc-module-settings-custom_field', array($this, 'make_custom_field_input'), 10, 2);
 		
 		//Translate and markup-ify module headers for display
 		$modules = $moduleManager->get_modules_by_category('', true, true);
@@ -638,7 +678,7 @@ class wsBrokenLinkChecker {
 		<![endif]-->
 		
         <div class="wrap" id="blc-settings-wrap">
-		<?php screen_icon(); ?><h2><?php _e('Broken Link Checker Options', 'broken-link-checker'); ?></h2>
+		<h2><?php _e('Broken Link Checker Options', 'broken-link-checker'); ?></h2>
 		
 		
         <div id="blc-sidebar">
@@ -782,7 +822,7 @@ class wsBrokenLinkChecker {
 			|
 			<a id="toggle-broken-link-css-editor" href="#" class="blc-toggle-link"><?php
 				_e('Edit CSS', 'broken-link-checker');
-			?></a>			
+			?></a>
 			</p>
 			
 			<div id="broken-link-css-wrap"<?php 
@@ -790,7 +830,7 @@ class wsBrokenLinkChecker {
 					echo ' class="hidden"';
 				} 
 			?>>
-		        <textarea name="broken_link_css" id="broken_link_css" cols='45' rows='4'/><?php
+		        <textarea name="broken_link_css" id="broken_link_css" cols='45' rows='4'><?php
 		            if( isset($this->conf->options['broken_link_css']) ) {
 						echo $this->conf->options['broken_link_css'];
 					}
@@ -821,7 +861,7 @@ class wsBrokenLinkChecker {
 					echo ' class="hidden"';
 				} 
 			?>>
-		        <textarea name="removed_link_css" id="removed_link_css" cols='45' rows='4'/><?php
+		        <textarea name="removed_link_css" id="removed_link_css" cols='45' rows='4'><?php
 		            if( isset($this->conf->options['removed_link_css']) )
 		                echo $this->conf->options['removed_link_css'];
 		        ?></textarea>
@@ -845,22 +885,43 @@ class wsBrokenLinkChecker {
 			</label>
 			</p>
 
+			<p class="description">
+				<?php
+				echo _x(
+					'These settings only apply to the content of posts, not comments or custom fields.',
+					'"Link tweaks" settings',
+					'broken-link-checker'
+				);
+				?>
+			</p>
         </td>
         </tr>
 
 			<tr valign="top">
 				<th scope="row"><?php echo _x('Suggestions', 'settings page', 'broken-link-checker'); ?></th>
 				<td>
-					<p>
-						<label>
-							<input type="checkbox" name="suggestions_enabled" id="suggestions_enabled"
-								<?php checked($this->conf->options['suggestions_enabled']); ?>/>
-							<?php _e('Suggest alternatives to broken links', 'broken-link-checker'); ?>
-						</label>
-					</p>
+					<label>
+						<input type="checkbox" name="suggestions_enabled" id="suggestions_enabled"
+							<?php checked($this->conf->options['suggestions_enabled']); ?>/>
+						<?php _e('Suggest alternatives to broken links', 'broken-link-checker'); ?>
+					</label>
 				</td>
 			</tr>
-        
+
+			<tr valign="top">
+				<th scope="row"><?php echo _x('Warnings', 'settings page', 'broken-link-checker'); ?></th>
+				<td id="blc_warning_settings">
+					<label>
+						<input type="checkbox" name="warnings_enabled" id="warnings_enabled"
+							<?php checked($this->conf->options['warnings_enabled']); ?>/>
+						<?php _e('Show uncertain or minor problems as "warnings" instead of "broken"', 'broken-link-checker'); ?>
+					</label>
+					<p class="description"><?php
+						_e('Turning off this option will make the plugin report all problems as broken links.', 'broken-link-checker');
+					?></p>
+				</td>
+			</tr>
+
         </table>
         
         </div>
@@ -930,9 +991,9 @@ class wsBrokenLinkChecker {
     	<tr valign="top">
         <th scope="row"><?php _e('Exclusion list', 'broken-link-checker'); ?></th>
         <td><?php _e("Don't check links where the URL contains any of these words (one per line) :", 'broken-link-checker'); ?><br/>
-        <textarea name="exclusion_list" id="exclusion_list" cols='45' rows='4' wrap='off'/><?php
+        <textarea name="exclusion_list" id="exclusion_list" cols='45' rows='4'><?php
             if( isset($this->conf->options['exclusion_list']) )
-                echo implode("\n", $this->conf->options['exclusion_list']);
+                echo esc_textarea(implode("\n", $this->conf->options['exclusion_list']));
         ?></textarea>
 
         </td>
@@ -1033,6 +1094,24 @@ class wsBrokenLinkChecker {
 		        ?>
 	        </td>
         </tr>
+
+		<tr valign="top">
+			<th scope="row"><?php echo _x('Show link actions', 'settings page', 'broken-link-checker'); ?></th>
+			<td>
+				<?php
+				$show_link_actions = $this->conf->get('show_link_actions', array());
+				foreach($available_link_actions as $action => $text) {
+					$enabled = isset($show_link_actions[$action]) ? (bool)($show_link_actions[$action]) : true;
+					printf(
+						'<p><label><input type="checkbox" name="show_link_actions[%1$s]" %3$s> %2$s</label></p>',
+						$action,
+						$text,
+						checked($enabled, true, false)
+					);
+				}
+				?>
+			</td>
+		</tr>
         
         <tr valign="top">
         <th scope="row"><?php _e('Max. execution time', 'broken-link-checker'); ?></th>
@@ -1322,9 +1401,9 @@ class wsBrokenLinkChecker {
 						'broken-link-checker'
 					) .
 				 '</span>';
-    	$html .= '<br><textarea name="blc_custom_fields" id="blc_custom_fields" cols="45" rows="4" />';
+    	$html .= '<br><textarea name="blc_custom_fields" id="blc_custom_fields" cols="45" rows="4">';
         if( isset($current_settings['custom_fields']) )
-            $html .= implode("\n", $current_settings['custom_fields']);
+            $html .= esc_textarea(implode("\n", $current_settings['custom_fields']));
         $html .= '</textarea>';
         
         return $html;
@@ -1336,7 +1415,7 @@ class wsBrokenLinkChecker {
      * @return void
      */
     function options_page_css(){
-    	wp_enqueue_style('blc-options-page', plugins_url('css/options-page.css', BLC_PLUGIN_FILE), array(), '20140818');
+    	wp_enqueue_style('blc-options-page', plugins_url('css/options-page.css', BLC_PLUGIN_FILE), array(), '20141113');
     	wp_enqueue_style('dashboard');
 	}
 	
@@ -1347,7 +1426,7 @@ class wsBrokenLinkChecker {
      * @return void
      */
     function links_page(){
-        global $wpdb, $blclog; /* @var wpdb $wpdb */
+        global $wpdb; /* @var wpdb $wpdb */
         
         $blc_link_query = blcLinkQuery::getInstance();
 
@@ -1414,6 +1493,10 @@ class wsBrokenLinkChecker {
 				list($message, $msg_class) = $this->do_bulk_discard($selected_links);
 				break;
 
+			case 'bulk-dismiss':
+				list($message, $msg_class) = $this->do_bulk_dismiss($selected_links);
+				break;
+
 			case 'bulk-edit':
 				list($message, $msg_class) = $this->do_bulk_edit($selected_links);
 				break;
@@ -1459,7 +1542,7 @@ class wsBrokenLinkChecker {
 	var blc_suggestions_enabled = <?php echo $this->conf->options['suggestions_enabled'] ? 'true' : 'false'; ?>;
 </script>
         
-<div class="wrap"><?php screen_icon(); ?>
+<div class="wrap">
 	<?php
 		$blc_link_query->print_filter_heading($current_filter);
 		$blc_link_query->print_filter_menu($filter_id);
@@ -2015,12 +2098,13 @@ class wsBrokenLinkChecker {
 				}
 				
 				//Skip links that weren't actually detected as broken
-				if ( !$link->broken ){
+				if ( !$link->broken && !$link->warning ){
 					continue;
 				}
 				
 				//Make it appear "not broken"
-				$link->broken = false;  
+				$link->broken = false;
+				$link->warning = false;
 				$link->false_positive = true;
 				$link->last_check_attempt = time();
 				$link->log = __("This link was manually marked as working by the user.", 'broken-link-checker');
@@ -2052,6 +2136,64 @@ class wsBrokenLinkChecker {
 		
 		return array(implode('<br>', $messages), $msg_class);
 	}
+
+	/**
+	 * Dismiss multiple links.
+	 *
+	 * @param array $selected_links An array of link IDs
+	 * @return array Confirmation message and the CSS class to use with that message.
+	 */
+	function do_bulk_dismiss($selected_links){
+		check_admin_referer( 'bulk-action' );
+
+		$messages = array();
+		$msg_class = 'updated';
+		$processed_links = 0;
+
+		if ( count($selected_links) > 0 ){
+			foreach($selected_links as $link_id){
+				//Load the link
+				$link = new blcLink( intval($link_id) );
+
+				//Skip links that don't actually exist
+				if ( !$link->valid() ){
+					continue;
+				}
+
+				//We can only dismiss broken links and redirects.
+				if ( !($link->broken || $link->warning || ($link->redirect_count > 0)) ){
+					continue;
+				}
+
+				$link->dismissed = true;
+
+				//Save the changes
+				if ( $link->save() ){
+					$processed_links++;
+				} else {
+					$messages[] = sprintf(
+						__("Couldn't modify link %d", 'broken-link-checker'),
+						$link_id
+					);
+					$msg_class = 'error';
+				}
+			}
+		}
+
+		if ( $processed_links > 0 ){
+			$messages[] = sprintf(
+				_n(
+					'%d link dismissed',
+					'%d links dismissed',
+					$processed_links,
+					'broken-link-checker'
+				),
+				$processed_links
+			);
+		}
+
+		return array(implode('<br>', $messages), $msg_class);
+	}
 	
     
 	/**
@@ -2060,7 +2202,60 @@ class wsBrokenLinkChecker {
 	 * @return void
 	 */
 	function links_page_css(){
-		wp_enqueue_style('blc-links-page', plugins_url('css/links-page.css', $this->loader), array(), '20131008');
+		wp_enqueue_style('blc-links-page', plugins_url('css/links-page.css', $this->loader), array(), '20141113-2');
+	}
+
+	/**
+	 * Show an admin notice that explains what the "Warnings" section under "Tools -> Broken Links" does.
+	 * The user can hide the notice.
+	 */
+	public function show_warnings_section_notice() {
+		$is_warnings_section = isset($_GET['filter_id'])
+			&& ($_GET['filter_id'] === 'warnings')
+			&& isset($_GET['page'])
+			&& ($_GET['page'] === 'view-broken-links');
+
+		if ( !($is_warnings_section && current_user_can('edit_others_posts')) ) {
+			return;
+		}
+
+		//Let the user hide the notice.
+		$conf = blc_get_configuration();
+		$notice_name = 'show_warnings_section_hint';
+
+		if ( isset($_GET[$notice_name]) && is_numeric($_GET[$notice_name]) ) {
+			$conf->set($notice_name, (bool)$_GET[$notice_name]);
+			$conf->save_options();
+		}
+		if ( !$conf->get($notice_name, true) ) {
+			return;
+		}
+
+		printf(
+			'<div class="updated">
+					<p>%1$s</p>
+					<p>
+						<a href="%2$s">%3$s</a> |
+						<a href="%4$s">%5$s</a>
+					<p>
+				</div>',
+			__(
+				'The "Warnings" page lists problems that are probably temporary or suspected to be false positives.<br> Warnings that persist for a long time will usually be reclassified as broken links.',
+				'broken-link-checker'
+			),
+			add_query_arg($notice_name, '0'),
+			_x(
+				'Hide notice',
+				'admin notice under Tools - Broken links - Warnings',
+				'broken-link-checker'
+			),
+			admin_url('options-general.php?page=link-checker-settings#blc_warning_settings'),
+			_x(
+				'Change warning settings',
+				'a link from the admin notice under Tools - Broken links - Warnings',
+				'broken-link-checker'
+			)
+		);
 	}
 	
 	/**
@@ -2186,7 +2381,16 @@ class wsBrokenLinkChecker {
    * @return void
    */
 	function work(){
-		global $wpdb, $blclog;
+		global $blclog;
+
+		//Close the session to prevent lock-ups.
+		//PHP sessions are blocking. session_start() will wait until all other scripts that are using the same session
+		//are finished. As a result, a long-running script that unintentionally keeps the session open can cause
+		//the entire site to "lock up" for the current user/browser. WordPress itself doesn't use sessions, but some
+		//plugins do, so we should explicitly close the session (if any) before starting the worker.
+		if ( session_id() != '' ) {
+			session_write_close();
+		}
 		
 		if ( !$this->acquire_lock() ){
 			//FB::warn("Another instance of BLC is already working. Stop.");
@@ -2221,11 +2425,15 @@ class wsBrokenLinkChecker {
 		
 		//Don't stop the script when the connection is closed
 		ignore_user_abort( true );
-		
+
 		//Close the connection as per http://www.php.net/manual/en/features.connection-handling.php#71172
 		//This reduces resource usage.
 		//(Disable when debugging or you won't get the FirePHP output)
-		if ( !headers_sent() && (!defined('BLC_DEBUG') || !constant('BLC_DEBUG')) ){
+		if (
+			!headers_sent()
+			&& (defined('DOING_AJAX') && constant('DOING_AJAX'))
+			&& (!defined('BLC_DEBUG') || !constant('BLC_DEBUG'))
+		){
 			@ob_end_clean(); //Discard the existing buffer, if any
 	 		header("Connection: close");
 			ob_start();
@@ -2455,7 +2663,7 @@ class wsBrokenLinkChecker {
    * @return int|blcLink[]
    */
 	function get_links_to_check($max_results = 0, $count_only = false){
-		global $wpdb, $blclog; /* @var wpdb $wpdb */
+		global $wpdb; /* @var wpdb $wpdb */
 		
 		$check_threshold = date('Y-m-d H:i:s', strtotime('-'.$this->conf->options['check_threshold'].' hours'));
 		$recheck_threshold = date('Y-m-d H:i:s', time() - $this->conf->options['recheck_threshold']);
@@ -2661,7 +2869,6 @@ class wsBrokenLinkChecker {
    * @return array
    */
 	function get_status(){
-		global $wpdb;
 		$blc_link_query = blcLinkQuery::getInstance();
 		
 		$check_threshold=date('Y-m-d H:i:s', strtotime('-'.$this->conf->options['check_threshold'].' hours'));
@@ -2710,6 +2917,7 @@ class wsBrokenLinkChecker {
 			}
 			//Make it appear "not broken"
 			$link->broken = false;  
+			$link->warning = false;
 			$link->false_positive = true;
 			$link->last_check_attempt = time();
 			$link->log = __("This link was manually marked as working by the user.", 'broken-link-checker');
@@ -2798,6 +3006,17 @@ class wsBrokenLinkChecker {
 			)));
 		}
 
+		if ( !current_user_can('unfiltered_html') ) {
+			//Disallow potentially dangerous URLs like "javascript:...".
+			$protocols = wp_allowed_protocols();
+			$good_protocol_url = wp_kses_bad_protocol($new_url, $protocols);
+			if ( $new_url != $good_protocol_url ) {
+				die( json_encode( array(
+					'error' => __("Oops, the new URL is invalid!", 'broken-link-checker')
+				)));
+			}
+		}
+
 		$new_text = (isset($_POST['new_text']) && is_string($_POST['new_text'])) ? stripslashes($_POST['new_text']) : null;
 		if ( $new_text === '' ) {
 			$new_text = null;
@@ -2831,8 +3050,11 @@ class wsBrokenLinkChecker {
 				'status_text' => $new_status['text'],
 				'status_code' => $new_status['code'],
 				'http_code'   => empty($new_link->http_code) ? '' : $new_link->http_code,
+				'redirect_count' => $new_link->redirect_count,
 
 				'url' => $new_link->url,
+				'escaped_url' => esc_url_raw($new_link->url),
+				'final_url' => $new_link->final_url,
 				'link_text' => isset($new_text) ? $new_text : null,
 				'ui_link_text' => isset($new_text) ? $ui_link_text : null,
 
@@ -2896,6 +3118,109 @@ class wsBrokenLinkChecker {
 					'error' => __("Error : link_id not specified", 'broken-link-checker') 
 				 )));
 		}
+	}
+
+	public function ajax_deredirect() {
+		if ( !current_user_can('edit_others_posts') || !check_ajax_referer('blc_deredirect', false, false) ){
+			die( json_encode( array(
+				'error' => __("You're not allowed to do that!", 'broken-link-checker')
+			)));
+		}
+
+		if ( !isset($_POST['link_id']) || !is_numeric($_POST['link_id']) ) {
+			die( json_encode( array(
+				'error' => __("Error : link_id not specified", 'broken-link-checker')
+			)));
+		}
+
+		$id = intval($_POST['link_id']);
+		$link = new blcLink($id);
+
+		if ( !$link->valid() ){
+			die( json_encode( array(
+				'error' => sprintf(__("Oops, I can't find the link %d", 'broken-link-checker'), $id)
+			)));
+		}
+
+		//The actual task is simple; it's error handling that's complicated.
+		$result = $link->deredirect();
+		if ( is_wp_error($result) ) {
+			die( json_encode( array(
+				'error' => sprintf('%s [%s]', $result->get_error_message(), $result->get_error_code())
+			)));
+		}
+
+		$link = $result['new_link'] /** @var blcLink $link */;
+
+		$status = $link->analyse_status();
+		$response = array(
+			'url' => $link->url,
+			'escaped_url' => esc_url_raw($link->url),
+			'new_link_id' => $result['new_link_id'],
+
+			'status_text' => $status['text'],
+			'status_code' => $status['code'],
+			'http_code'   => empty($link->http_code) ? '' : $link->http_code,
+			'redirect_count' => $link->redirect_count,
+			'final_url' => $link->final_url,
+
+			'cnt_okay' => $result['cnt_okay'],
+			'cnt_error' => $result['cnt_error'],
+			'errors' => array(),
+		);
+
+		//Convert WP_Error's to simple strings.
+		if ( !empty($result['errors']) ) {
+			foreach($result['errors'] as $error) { /** @var WP_Error $error */
+				$response['errors'][] = $error->get_error_message();
+			}
+		}
+
+		die(json_encode($response));
+	}
+
+	/**
+	 * AJAX hook for the "Recheck" action.
+	 */
+	public function ajax_recheck() {
+		if (!current_user_can('edit_others_posts') || !check_ajax_referer('blc_recheck', false, false)){
+			die( json_encode( array(
+				'error' => __("You're not allowed to do that!", 'broken-link-checker')
+			)));
+		}
+
+		if ( !isset($_POST['link_id']) || !is_numeric($_POST['link_id']) ) {
+			die( json_encode( array(
+				'error' => __("Error : link_id not specified", 'broken-link-checker')
+			)));
+		}
+
+		$id = intval($_POST['link_id']);
+		$link = new blcLink($id);
+
+		if ( !$link->valid() ){
+			die( json_encode( array(
+				'error' => sprintf(__("Oops, I can't find the link %d", 'broken-link-checker'), $id)
+			)));
+		}
+
+		//In case the immediate check fails, this will ensure the link is checked during the next work() run.
+		$link->last_check_attempt = 0;
+		$link->save();
+
+		//Check the link and save the results.
+		$link->check(true);
+
+		$status = $link->analyse_status();
+		$response = array(
+			'status_text' => $status['text'],
+			'status_code' => $status['code'],
+			'http_code'   => empty($link->http_code) ? '' : $link->http_code,
+			'redirect_count' => $link->redirect_count,
+			'final_url' => $link->final_url,
+		);
+
+		die(json_encode($response));
 	}
 	
 	function ajax_link_details(){
@@ -2984,8 +3309,8 @@ class wsBrokenLinkChecker {
 			wp_add_dashboard_widget(
 				'blc_dashboard_widget', 
 				__('Broken Link Checker', 'broken-link-checker'), 
-				array( &$this, 'dashboard_widget' ),
-				array( &$this, 'dashboard_widget_control' )
+				array( $this, 'dashboard_widget' ),
+				array( $this, 'dashboard_widget_control' )
 			 );
 		}
 	}
@@ -3313,7 +3638,7 @@ class wsBrokenLinkChecker {
 
 	function send_html_email($email_address, $subject, $body) {
 		//Need to override the default 'text/plain' content type to send a HTML email.
-		add_filter('wp_mail_content_type', array(&$this, 'override_mail_content_type'));
+		add_filter('wp_mail_content_type', array($this, 'override_mail_content_type'));
 
 		//Let auto-responders and similar software know this is an auto-generated email
 		//that they shouldn't respond to.
@@ -3323,7 +3648,7 @@ class wsBrokenLinkChecker {
 
 		//Remove the override so that it doesn't interfere with other plugins that might
 		//want to send normal plaintext emails.
-		remove_filter('wp_mail_content_type', array(&$this, 'override_mail_content_type'));
+		remove_filter('wp_mail_content_type', array($this, 'override_mail_content_type'));
 
 		$this->conf->options['last_email'] = array(
 			'subject' => $subject,
@@ -3379,8 +3704,26 @@ class wsBrokenLinkChecker {
 		}
 	}
 	
-	function override_mail_content_type($content_type){
+	function override_mail_content_type(/** @noinspection PhpUnusedParameterInspection */ $content_type){
 		return 'text/html';
+	}
+
+	/**
+	 * Promote all links with the "warning" status to "broken".
+	 */
+	private function promote_warnings_to_broken() {
+		global $wpdb; /** @var wpdb $wpdb */
+		$wpdb->update(
+			$wpdb->prefix . 'blc_links',
+			array(
+				'broken'  => 1,
+				'warning' => 0,
+			),
+			array(
+				'warning' => 1,
+			),
+			'%d'
+		);
 	}
 	
   /**

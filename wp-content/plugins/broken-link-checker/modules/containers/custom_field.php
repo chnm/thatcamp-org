@@ -191,6 +191,25 @@ class blcPostMeta extends blcContainer {
 	}
 	
 	function ui_get_source($container_field = '', $context = 'display'){
+		if ( !post_type_exists(get_post_type($this->container_id)) ) {
+			//Error: Invalid post type. The user probably removed a CPT without removing the actual posts.
+			$post_html = '';
+
+			$post = get_post($this->container_id);
+			if ( $post ) {
+				$post_html .= sprintf(
+					'<span class="row-title">%s</span><br>',
+					get_the_title($post)
+				);
+			}
+			$post_html .= sprintf(
+				'Invalid post type "%s"',
+				htmlentities($this->container_type)
+			);
+
+			return $post_html;
+		}
+
 		$post_html = sprintf(
 			'<a class="row-title" href="%s" title="%s">%s</a>',
 			esc_url($this->get_edit_url()),
@@ -203,6 +222,10 @@ class blcPostMeta extends blcContainer {
 	
 	function ui_get_action_links($container_field){
 		$actions = array();
+		if ( !post_type_exists(get_post_type($this->container_id)) ) {
+			return $actions;
+		}
+
 		if ( current_user_can('edit_post', $this->container_id) ) {
 			$actions['edit'] = '<span class="edit"><a href="' . $this->get_edit_url() . '" title="' . esc_attr(__('Edit this item')) . '">' . __('Edit') . '</a>';
 			

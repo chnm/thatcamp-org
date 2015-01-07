@@ -46,7 +46,7 @@ if ( 'current-scan' == self::$action || !empty( $_REQUEST['current_scan'] ) ) {
 				}
 			});
 		});
-		
+
 		// Callouts
 		$( "div#p3-reminder-wrapper" )
 			.corner( "round 8px" )
@@ -70,7 +70,7 @@ if ( 'current-scan' == self::$action || !empty( $_REQUEST['current_scan'] ) ) {
 			<label for="button-history-scans" class="history-tab"><?php _e( 'History', 'p3-profiler' ); ?></label>
 			<input type="radio" name="p3-nav" id="button-help" <?php echo $button_help_checked; ?> /><label for="button-help" class="help-tab"><?php _e( 'Help', 'p3-profiler' ); ?></label>
 		</div>
-		
+
 		<div id="p3-scan-label">
 			<?php if ( !empty( self::$profile ) ) : ?>
 				<?php _e( 'Scan name:', 'p3-profiler' ); ?> <?php echo self::$profile->profile_name; ?>
@@ -92,18 +92,21 @@ if ( 'current-scan' == self::$action || !empty( $_REQUEST['current_scan'] ) ) {
 
 </div>
 
-<div id="p3-reminder">
-	<div id="p3-reminder-wrapper">
-		<?php _e( 'Do you like this plugin?', 'p3-profiler' ); ?>
-		<ul>
-			<li><a href="http://twitter.com/home?status=<?php echo rawurlencode( sprintf( __( 'I just optimized my WordPress site with %1$s %2$s', 'p3-profiler' ), '#p3plugin', 'http://wordpress.org/extend/plugins/p3-profiler/') ); ?>" target="_blank"><?php _e( 'Tweet about it', 'p3-profiler' ); ?></a></li>
-			<li><a href="http://wordpress.org/extend/plugins/p3-profiler/" target="_blank"><?php _e( 'Rate it on the repository', 'p3-profiler' ); ?></a></li>
-		</ul>
+<div id="p3-footer-wrapper">
+	<div id="p3-reminder">
+		<div id="p3-reminder-wrapper">
+			<?php _e( 'Do you like this plugin?', 'p3-profiler' ); ?>
+			<ul>
+				<li><a href="http://twitter.com/home?status=<?php echo rawurlencode( sprintf( __( 'I just optimized my WordPress site with %1$s %2$s', 'p3-profiler' ), '#p3plugin', 'http://wordpress.org/extend/plugins/p3-profiler/') ); ?>" target="_blank"><?php _e( 'Tweet about it', 'p3-profiler' ); ?></a></li>
+				<li><a href="http://wordpress.org/extend/plugins/p3-profiler/" target="_blank"><?php _e( 'Rate it on the repository', 'p3-profiler' ); ?></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="p3-copyright">
+		<img src="<?php echo plugins_url() . '/p3-profiler/css/logo.png'; ?>" alt="<?php esc_attr_e( 'Logo', 'p3-profiler' ); ?>" title="<?php esc_attr_e( 'Logo', 'p3-profiler' ); ?>" />
+		<br />
+		<?php printf( __( 'P3 (Plugin Performance Profiler) is Copyright &copy; %1$s - %2$s <a href="%3$s" target="_blank">GoDaddy.com</a>.  All rights reserved.', 'p3-profiler' ), 2011, date( 'Y' ), 'http://www.godaddy.com/' ); ?>
 	</div>
 </div>
 
-<div id="p3-copyright">
-	<img src="<?php echo plugins_url() . '/p3-profiler/css/logo.gif'; ?>" alt="<?php esc_attr_e( 'Logo', 'p3-profiler' ); ?>" title="<?php esc_attr_e( 'Logo', 'p3-profiler' ); ?>" />
-	<br />
-	<?php printf( __( 'P3 (Plugin Performance Profiler) is Copyright &copy; %1$s - %2$s <a href="%3$s" target="_blank">GoDaddy.com</a>.  All rights reserved.', 'p3-profiler' ), 2011, date( 'Y' ), 'http://www.godaddy.com/' ); ?>
-</div>

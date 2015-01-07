@@ -446,8 +446,10 @@ class UserList {
 
 
 			// trim $biography to bio_length
-			if( 0 <=  $this->bio_length ){
-				$biography =   $this->truncate_html( wpautop( $biography, true ) , apply_filters( 'aa_user_bio_length', $this->bio_length ) );
+			if( 0 < $this->bio_length ){
+				$biography = $this->truncate_html( wpautop( $biography, true ) , apply_filters( 'aa_user_bio_length', $this->bio_length ) );
+			}else{
+				$biography = wpautop( $biography, true ) ;
 			}
 
 			$divcss[] = 'with-biography bio-length-'.$this->bio_length;

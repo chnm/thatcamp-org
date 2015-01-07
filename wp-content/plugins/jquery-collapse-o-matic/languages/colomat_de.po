@@ -2,51 +2,260 @@
 # This file is distributed under the same license as the Collapse-O-Matic package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-11-19 08:15+0100\n"
+"PO-Revision-Date: 2014-12-02 09:55+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.10\n"
 "Project-Id-Version: Collapse-O-Matic\n"
 "POT-Creation-Date: \n"
-"Last-Translator: astroBro <baden@twinpictures.de>\n"
+"Last-Translator: Twinpictues <info@twinpictures.de>\n"
 "Language-Team: Twinpictures <info@twinpictures.de>\n"
-"Language: German\n"
+"Language: de\n"
 
-#: colomat.php:287
+#: collapse-o-matic.php:358
+msgid "really tied the room together"
+msgstr "wirklich hielt den Raum zusammen"
+
+#: collapse-o-matic.php:359
+msgid "made you feel all warm and fuzzy on the inside"
+msgstr "für ein warmes, kuscheliges Gefühl in deinem Inneren gesorgt hat"
+
+#: collapse-o-matic.php:360
+msgid "restored your faith in humanity... even if only for a fleeting second"
+msgstr ""
+"dein Vertrauen in die Menschheit wieder hergestellt hat... wenn auch nur für "
+"eine Sekunde"
+
+#: collapse-o-matic.php:361
+msgid "rocked your world"
+msgstr "deine Welt auf Kopf gestellt"
+
+#: collapse-o-matic.php:362
+msgid "inspired you to commit a random act of kindness"
+msgstr "hat dich inspiriert, einen wahllosen Akt der Güte zu vollbringen"
+
+#: collapse-o-matic.php:363
+msgid "encouraged more regular flossing of the teeth"
+msgstr ""
+"hat dich motiviert, dir regelmäßig die Zähne mit Zahnseide zu bearbeiten"
+
+#: collapse-o-matic.php:364
+msgid "helped organize your life in the small ways that matter"
+msgstr ""
+"hat dir geholfen dein Leben in den Kleinigkeiten die zählen besser zu "
+"organisieren"
+
+#: collapse-o-matic.php:365
+msgid "saved your minutes--if not tens of minutes--writing your own solution"
+msgstr ""
+
+#: collapse-o-matic.php:366
+msgid "brightened your day... or darkened if if you are trying to sleep in"
+msgstr ""
+
+#: collapse-o-matic.php:367
+msgid "caused you to dance a little jig of joy and joyousness"
+msgstr ""
+
+#: collapse-o-matic.php:368
+msgid "inspired you to tweet a little @twinpictues social love"
+msgstr ""
+
+#: collapse-o-matic.php:369
+msgid "tasted great, while also being less filling"
+msgstr ""
+
+#: collapse-o-matic.php:370
+msgid "caused you to shout: \"everybody spread love, give me some mo!\""
+msgstr ""
+
+#: collapse-o-matic.php:371
+msgid "helped you keep the funk alive"
+msgstr "Helfe mit den Fuk am Leben zu halten"
+
+#: collapse-o-matic.php:372
+msgid ""
+"<a href=\"http://www.youtube.com/watch?v=dvQ28F5fOdU\" target=\"_blank"
+"\">soften hands while you do dishes</a>"
+msgstr ""
+
+#: collapse-o-matic.php:373
+msgid ""
+"helped that little old lady <a href=\"http://www.youtube.com/watch?"
+"v=Ug75diEyiA0\" target=\"_blank\">find the beef</a>"
+msgstr ""
+
+#: collapse-o-matic.php:423
+msgid "CID Attribute"
+msgstr ""
+
+#: collapse-o-matic.php:425
+msgid "Default %sCollapse Commander%s ID"
+msgstr ""
+
+#: collapse-o-matic.php:438
+msgid "Trigclass Attribute"
+msgstr ""
+
+#: collapse-o-matic.php:440
+msgid ""
+"Default class assigned to the trigger element. See %sTrigclass Attribute%s "
+"in the documentation for more info."
+msgstr ""
+
+#: collapse-o-matic.php:452
+msgid "Targclass Attribute"
+msgstr ""
+
+#: collapse-o-matic.php:454
+msgid ""
+"Default class assigned to the target element. See %sTargclass Attribute%s in "
+"the documentation for more info."
+msgstr ""
+
+#: collapse-o-matic.php:509
+msgid "Script Load Location"
+msgstr ""
+
+#: collapse-o-matic.php:516
+msgid "Header"
+msgstr ""
+
+#: collapse-o-matic.php:517
+msgid "Footer"
+msgstr ""
+
+#: collapse-o-matic.php:528
+msgid "Where should the script be loaded, in the Header or the Footer?"
+msgstr ""
+
+#: collapse-o-matic.php:533
+msgid "Take Command!"
+msgstr ""
+
+#: collapse-o-matic.php:534
+msgid ""
+"%sCollapse Commander%s is an add-on plugin that introduces an advanced "
+"management interface to better organize expand elements and simplify expand "
+"shortcodes."
+msgstr ""
+
+#: collapse-o-matic.php:540
+msgid ""
+"%sCollapse-Pro-Matic%s is our premium plugin that offers additional "
+"attributes and features for <i>ultimate</i> flexibility."
+msgstr ""
+
+#: collapse-o-matic.php:564
+msgid "%sFree Opensource Support%s"
+msgstr ""
+
+#: collapse-o-matic.php:580
+msgid "Register Collapse Commander"
+msgstr ""
+
+#: collapse-o-matic.php:582
+msgid ""
+"To receive plugin updates you must register your plugin. Enter your Receipt "
+"ID and email address used to purchase the plugin below."
+msgstr ""
+
+#: collapse-o-matic.php:588
+msgid "Receipt ID is found in the Collapse Commander Purchase Receipt"
+msgstr ""
+
+#: collapse-o-matic.php:595
+msgid "Email address used to purchase Collapse Commander"
+msgstr ""
+
+msgid "Collapse-O-Matic"
+msgstr ""
+
+#: collapse-o-matic.php:502
+msgid "Shortcode Loads Scripts"
+msgstr ""
+
+#: collapse-o-matic.php:503
+msgid "Only load scripts with shortcode."
+msgstr ""
+
+#: collapse-o-matic.php:504
+msgid "Only load Collapse-O-Matic scripts if [expand] shortcode is used."
+msgstr ""
+
+#: collapse-o-matic.php:565
+msgid ""
+"If this plugin %s, please consider %sreviewing it at WordPress.org%s to help "
+"others."
+msgstr ""
+
+#: collapse-o-matic.php:349
+msgid "Settings"
+msgstr ""
+
+#: collapse-o-matic.php:417
+msgid ""
+"Select Light for sites with lighter backgrounds. Select Dark for sites with "
+"darker backgrounds."
+msgstr ""
+
+#: collapse-o-matic.php:445
+msgid "Targtag Attribute"
+msgstr ""
+
+#: collapse-o-matic.php:447
+msgid ""
+"HTML tag use for the target element. See %sTargtag Attribute%s in the "
+"documentation for more info."
+msgstr ""
+
+#: collapse-o-matic.php:495
+msgid "Custom Style"
+msgstr ""
+
+#: collapse-o-matic.php:497
+msgid "Custom CSS style for <em>ultimate flexibility</em>"
+msgstr ""
+
+#: collapse-o-matic.php:586
+msgid "Receipt ID"
+msgstr ""
+
+#: collapse-o-matic.php:593
+msgid "Email"
+msgstr ""
+
+#: collapse-o-matic.php:601
+msgid "Register"
+msgstr ""
+
+#: collapse-o-matic.php:398
 msgid "Style"
 msgstr "Erscheinungsbild"
 
-#: colomat.php:294
+#: collapse-o-matic.php:405
 msgid "Light"
 msgstr "Hell"
 
-#: colomat.php:295
+#: collapse-o-matic.php:406
 msgid "Dark"
 msgstr "Dunkel"
 
-#: colomat.php:306
-msgid ""
-"Select Light for sites with lighter backgroudns. Select Dark for sites with "
-"darker backgrounds."
-msgstr ""
-"Wählen Sie \"Hell\" für Websiten mit hellem Hintergrund und \"Dunkel\" für "
-"Seiten mit dunklem Hintergrund"
-
-#: colomat.php:275 colomat.php:373
+#: collapse-o-matic.php:386 collapse-o-matic.php:557
 msgid "Click to toggle"
 msgstr "Klicken Sie zum Ein-/Ausklappen."
 
-#: colomat.php:276
+#: collapse-o-matic.php:387
 msgid "Default Collapse-O-Matic Settings"
 msgstr "Standardeinstellungen von Collapse-O-Matic"
 
-#: colomat.php:311
+#: collapse-o-matic.php:431
 msgid "Tag Attribute"
 msgstr "Tag Attribut"
 
-#: colomat.php:313
+#: collapse-o-matic.php:433
 msgid ""
 "HTML tag use to wrap the trigger text. See %sTag Attribute%s in the "
 "documentation for more info."
@@ -54,11 +263,11 @@ msgstr ""
 "HTML Tag, welcher um den Aktivierungstext gelegt wird. Suchen Sie nach %sTag "
 "Attribute%s in der Dokumentation für weitere Informationen (Englisch)."
 
-#: colomat.php:323
+#: collapse-o-matic.php:464
 msgid "Collapse/Expand Duration"
 msgstr "Zeit des Öffnens/Schließens"
 
-#: colomat.php:325
+#: collapse-o-matic.php:466
 msgid ""
 "A string or number determining how long the animation will run. See "
 "%sDuration%s in the documentation for more info."
@@ -67,19 +276,19 @@ msgstr ""
 "wird. Suchen Sie nach %sAnimation%s in der englischsprachigen Dokumentation "
 "für mehr Informationen."
 
-#: colomat.php:330
+#: collapse-o-matic.php:471
 msgid "Animation Effect"
 msgstr "Animationseffekt"
 
-#: colomat.php:337
+#: collapse-o-matic.php:478
 msgid "Slide Only"
 msgstr "Nur gleiten"
 
-#: colomat.php:338
+#: collapse-o-matic.php:479
 msgid "Slide & Fade"
 msgstr "Gleiten & Ausblenden"
 
-#: colomat.php:349
+#: collapse-o-matic.php:490
 msgid ""
 "Animation effect to use while collapsing and expanding. See %sAnimation "
 "Effect%s in the documentation for more info."
@@ -88,29 +297,19 @@ msgstr ""
 "Weitere Informationen finden Sie unter %sAnimation Effect%s in der "
 "englischen Dokumentation."
 
-#: colomat.php:354
+#: collapse-o-matic.php:539
 msgid "Level Up!"
 msgstr "Verbessern Sie Ihre Programmversion!"
 
-#: colomat.php:355
-msgid ""
-"<em>Comming Soon: Collapse-Pro-Matic</em> our preimum plugin that offers "
-"additional attributes and the ability to set default attribute settings for "
-"all attributes."
-msgstr ""
-"<em>Bald erhältlich: Collapse-Pro-Matic</em>, unser Premium-Plug-In welches "
-"Ihnen mehr Einstellungsmöglichkeiten bieten wird sowie die Option, "
-"Standardattribute für alle Attribute festzulegen."
-
-#: colomat.php:362
+#: collapse-o-matic.php:547
 msgid "Save Changes"
 msgstr "Speichere die vorgenommenen Änderungen"
 
-#: colomat.php:374
+#: collapse-o-matic.php:558
 msgid "About"
 msgstr "Über"
 
-#: colomat.php:377
+#: collapse-o-matic.php:561
 msgid ""
 "Remove clutter, save space. Display and hide additional content in a SEO "
 "friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a "
@@ -121,28 +320,13 @@ msgstr ""
 "suchmaschinenfreundlich! Verpacke jedmöglichen Inhalt sowie andere "
 "Shortcodes in ein tolles jQuery Element."
 
-#: colomat.php:379
+#: collapse-o-matic.php:563
 msgid ""
 "%sDetailed documentation%s, complete with working demonstrations of all "
 "shortcode attributes, is available for your instructional enjoyment."
 msgstr ""
 "Zum besseren Verständnis sind %sDetailed documentation%s verfügbar mit "
 "Demonstration aller Shortcodes und Attributen."
-
-#: colomat.php:380
-msgid "%sFree%s & %sPremimum%s Support"
-msgstr "%sFree%s & %sPremium%s Hilfe (Support)"
-
-#: colomat.php:381
-msgid ""
-"If you like this plugin, please consider %sreviewing it at WordPress.org%s "
-"to help others."
-msgstr ""
-"Wenn Sie dieses Plug-In mögen bitten wir sie es auf  %sreviewing it at "
-"WordPress.org%s zu bewerten."
-
-msgid "jQuery Collapse-O-Matic"
-msgstr "jQuery Collapse-O-Matic"
 
 msgid "http://plugins.twinpictures.de/plugins/collapse-o-matic/"
 msgstr "http://plugins.twinpictures.de/plugins/collapse-o-matic/"

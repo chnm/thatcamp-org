@@ -26,7 +26,7 @@ class AuthorAvatarsWidget extends WP_Widget {
 				'order'          => 'display_name',
 				'sort_direction' => 'asc',
 				'user_link'      => 'authorpage',
-				'bio_length'	 => 100,
+				'bio_length'	 => '',
 			),
 		);
 

@@ -1,5 +1,5 @@
 /*!
- * Collapse-O-Matic JavaSctipt v1.5.12
+ * Collapse-O-Matic JavaSctipt v1.5.14
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2014, Twinpictures
@@ -62,7 +62,7 @@ function swapTitle(origObj, swapObj){
 }
 
 function toggleState (obj, id, maptastic, trig_id) {
-	if (maptastic) {
+	if (maptastic && jQuery('[id^=target][id$='+id+']').hasClass('maptastic') ) {
 		jQuery('[id^=target][id$='+id+']').removeClass('maptastic');
 	}
 		
@@ -298,6 +298,13 @@ jQuery(document).ready(function() {
 		}
 	}, '.collapseomatic'); //pass the element as an argument to .on
     
+	//tabindex enter
+	jQuery(document).on('keypress','.collapseomatic', function(event) {
+		if (event.which == 13) {
+			event.currentTarget.click();
+		};
+	});
+	
 	//the main collapse/expand function
 	jQuery(document).on('click', '.collapseomatic', function(event) {
 		var offset_top;

@@ -292,8 +292,8 @@ p3-glossary-container {
 }
 #p3-copyright img {
 	margin-bottom: 7px;
-	height: 47px;
-	width: 125px;
+	#height: 47px;
+	#width: 125px;
 }
 
 
@@ -369,9 +369,12 @@ div.p3-question h2.p3-help-question {
 
 
 /** Did you liek this plugin? **/
+div#p3-footer-wrapper {
+	min-height: 150px;
+}
 div#p3-reminder {
 	position: relative;
-	z-index: 10;
+	z-index: 0;
 	float: left;
 	bottom: 0;
 	left: 0;
@@ -389,4 +392,18 @@ div#p3-reminder-wrapper {
 /** http://wordpress.org/support/topic/plugin-broken-with-wp-371?replies=14#post-4976803 **/
 .ui-front:first-child {
 	z-index: 100 !important;
+}
+
+/** Overlay levels, explicitly set for browser compat **/
+div[aria-describedby="p3-scanner-dialog"],
+div[aria-describedby="p3-ip-dialog"] {
+	z-index: 1;
+}
+
+div[aria-describedby="p3-scan-name-dialog"] {
+	z-index: 2;
+}
+
+div[aria-describedby="p3-progress-dialog"] {
+	z-index: 3;
 }

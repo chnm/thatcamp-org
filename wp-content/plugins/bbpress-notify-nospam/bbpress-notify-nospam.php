@@ -2,7 +2,7 @@
 /*
 * Plugin Name: bbPress Notify (No-Spam)
 * Description: Sends email notifications upon topic/reply creation, as long as it's not flagged as spam.
-* Version: 1.6.2
+* Version: 1.6.3.1
 * Author: Vinny Alves, Andreas Baumgartner, Paul Schroeder
 * License:       GNU General Public License, v2 (or newer)
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -30,6 +30,8 @@ class bbPress_Notify_noSpam {
 	protected $bbpress_reply_post_type;
 	
 	public static $instance;
+	
+	public $domain = 'bbpress_notify'; 
 
 	function __construct()
 	{
@@ -51,6 +53,8 @@ class bbPress_Notify_noSpam {
 			add_action('add_meta_boxes', array(&$this,'add_notification_meta_box'), 10);
 			
 			add_action('save_post', array(&$this, 'notify_on_save'), 10, 2);
+			
+			add_action( 'admin_notices', array( &$this, 'maybe_show_pro_message' ) );
 		}
 		
 		// New topics and replies can be generated from admin and non-admin interfaces
@@ -142,6 +146,26 @@ class bbPress_Notify_noSpam {
 		}
 	
 	}
+	
+	function maybe_show_pro_message()
+	{
+		if ( isset($_GET['dismiss-bbpnp']) )
+		{
+			update_option('bbpress-notify-pro-dismissed', true);
+		}
+		elseif ( ! get_option('bbpress-notify-pro-dismissed') )
+		{
+			$url = add_query_arg( array( 'dismiss-bbpnp' => 1), $_SERVER['REQUEST_URI'] );
+            ?>
+				<div class="updated">
+                <p><?php _e( sprintf('Have you heard about the <strong><a href="https://www.kickstarter.com/projects/usestrict/bbpress-notify-pro-for-wordpress" target    ="_new">bbPress Notify Pro</a></strong> project at Kickstarter? ' .
+									 'Help us reach the goal and get a nifty reward =] ! | <a href="%s">Dismiss</a>.',$url), $this->domain ); ?></p>
+				</div>
+			<?php
+			 
+		}
+	}
+	
 	
 	/* Checks whether bbPress is active because we need it. If bbPress isn't active, we are going to disable ourself */
 	function on_activation()
