@@ -396,7 +396,8 @@ div#p3-reminder-wrapper {
 
 /** Overlay levels, explicitly set for browser compat **/
 div[aria-describedby="p3-scanner-dialog"],
-div[aria-describedby="p3-ip-dialog"] {
+div[aria-describedby="p3-ip-dialog"],
+div[aria-describedby="p3-email-results-dialog"] {
 	z-index: 1;
 }
 

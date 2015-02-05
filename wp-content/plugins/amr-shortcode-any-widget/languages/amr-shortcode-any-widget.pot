@@ -1,0 +1,118 @@
+# Copyright (C) 2015 amr shortcode any widget
+# This file is distributed under the same license as the amr shortcode any widget package.
+msgid ""
+msgstr ""
+"Project-Id-Version: amr shortcode any widget 2.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/amr-shortcode-any-"
+"widget\n"
+"POT-Creation-Date: 2015-02-05 06:56:45+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: amr-admin-form-html.php:37
+msgid "Settings"
+msgstr ""
+
+#: amr-admin-form-html.php:63
+msgid "Drag the widgets you want to use to the shortcodes sidebar."
+msgstr ""
+
+#: amr-admin-form-html.php:67
+msgid "Set the widgets parameters if there are any."
+msgstr ""
+
+#: amr-admin-form-html.php:70
+msgid ""
+"You could test the widgets out in a displayable widget area (sidebar/"
+"footer), then drag them to the widgets_for_shortcodes sidebar."
+msgstr ""
+
+#: amr-admin-form-html.php:75
+msgid "Go to widgets"
+msgstr ""
+
+#: amr-admin-form-html.php:81
+msgid "To add a widget area - all widgets in the widget area:"
+msgstr ""
+
+#: amr-admin-form-html.php:89
+msgid ""
+"Create a page with do_widget_area shortcode without the widget_area class"
+msgstr ""
+
+#: amr-admin-form-html.php:96
+msgid "Create a page with do_widget_area shortcode"
+msgstr ""
+
+#: amr-admin-form-html.php:100 amr-admin-form-html.php:117
+msgid "Examples:"
+msgstr ""
+
+#: amr-admin-form-html.php:103
+msgid "[do_widget_area] or [do_widget_area widget_area=sidebar-1]"
+msgstr ""
+
+#: amr-admin-form-html.php:106
+msgid ""
+"NB: Using something like the twenty-fourteen theme? you might end up with "
+"white text on a white background.  Tweak the widget classes or the html of "
+"the wrap or title. If that fails, adjust your css."
+msgstr ""
+
+#: amr-admin-form-html.php:112
+msgid "To add a single widget to a page"
+msgstr ""
+
+#: amr-admin-form-html.php:116
+msgid "Add the shortcode [do_widget widgetname] to a page."
+msgstr ""
+
+#: amr-admin-form-html.php:120
+msgid "[do_widget \"tag cloud\"] or [do_widget id=widgetid]"
+msgstr ""
+
+#: amr-admin-form-html.php:126
+msgid "Create a page with do_widget shortcode and remove widget_classes"
+msgstr ""
+
+#: amr-admin-form-html.php:133
+msgid "Create a page with do_widget shortcode"
+msgstr ""
+
+#: amr-admin-form-html.php:174
+msgid ""
+"If you have any problems with this plugin or good ideas for improvements or "
+"new features, please talk about them in the"
+msgstr ""
+
+#: amr-admin-form-html.php:174
+msgid "Support forums"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "amr shortcode any widget"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://webdesign.anmari.com/shortcode-any-widget/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Include any widget in a page for any theme.  [do_widget widgetname ] or  "
+"[do_widget \"widget name\" ] or include a whole widget area "
+"[do_widget_area]. If upgrading see changelog.  Can be very powerful eg: with "
+"queryposts widget it can become a templater."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "anmari"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://webdesign.anmari.com"
+msgstr ""

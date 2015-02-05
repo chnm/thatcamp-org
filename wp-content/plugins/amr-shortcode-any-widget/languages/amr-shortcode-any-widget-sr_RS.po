@@ -1,0 +1,113 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: amr shortcode any widget v2.4\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/amr-shortcode-any-widget\n"
+"POT-Creation-Date: 2014-09-10 04:32:05+00:00\n"
+"PO-Revision-Date: 2015-02-05 07:22:13+0000\n"
+"Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: amr-admin-form-html.php:37
+#@ amr-shortcode-any-widget
+msgid "Settings"
+msgstr "Podešavanja"
+
+#: amr-admin-form-html.php:63
+#@ amr-shortcode-any-widget
+msgid "Drag the widgets you want to use to the shortcodes sidebar."
+msgstr "Prevucite widget-e koje želite da koristite u shortcode bočni meni. "
+
+#: amr-admin-form-html.php:67
+#@ amr-shortcode-any-widget
+msgid "Set the widgets parameters if there are any."
+msgstr "Podesite parametre widget-a ako ih ima."
+
+#: amr-admin-form-html.php:70
+#@ amr-shortcode-any-widget
+msgid "You could test the widgets out in a displayable widget area (sidebar/footer), then drag them to the widgets_for_shortcodes sidebar."
+msgstr "Možete da testirate widget-e u widget oblasti za prikazivanje (bočni meni/podnožje), a zatim ih prevucite u widgets_for_shortcodes bočni meni.     "
+
+#: amr-admin-form-html.php:75
+#@ amr-shortcode-any-widget
+msgid "Go to widgets"
+msgstr "Idite na widget-e"
+
+#: amr-admin-form-html.php:81
+#@ amr-shortcode-any-widget
+msgid "To add a widget area - all widgets in the widget area:"
+msgstr "Da biste sve widget-e dodali u widget oblast:"
+
+#: amr-admin-form-html.php:89
+#@ amr-shortcode-any-widget
+msgid "Create a page with do_widget_area shortcode without the widget_area class"
+msgstr "Kreirajte stranicu uz shortcode do_widget_area, ali bez widget_area klase"
+
+#: amr-admin-form-html.php:96
+#@ amr-shortcode-any-widget
+msgid "Create a page with do_widget_area shortcode"
+msgstr "Kreirajte stranicu uz do_widget_area shortcode"
+
+#: amr-admin-form-html.php:100
+#: amr-admin-form-html.php:117
+#@ amr-shortcode-any-widget
+msgid "Examples:"
+msgstr "Primeri:"
+
+#: amr-admin-form-html.php:103
+#@ amr-shortcode-any-widget
+msgid "[do_widget_area] or [do_widget_area widget_area=sidebar-1]"
+msgstr "[do_widget_area] ili [do_widget_area widget_area=sidebar-1]"
+
+#: amr-admin-form-html.php:106
+#@ amr-shortcode-any-widget
+msgid "NB: Using something like the twenty-fourteen theme? you might end up with white text on a white background.  Tweak the widget classes or the html of the wrap or title. If that fails, adjust your css."
+msgstr "Zapamtite: Koristite li nešto poput 2014 teme? Možete završiti sa belim tekstom na beloj pozadini. Uzmite klase widget-a ili html sa  preloma ili iz naslova. Ako to ne uspe, prilagodite svoj css."
+
+#: amr-admin-form-html.php:112
+#@ amr-shortcode-any-widget
+msgid "To add a single widget to a page"
+msgstr "Da biste dodali pojedinačni widget stranici"
+
+#: amr-admin-form-html.php:116
+#@ amr-shortcode-any-widget
+msgid "Add the shortcode [do_widget widgetname] to a page."
+msgstr "Dodajte shortcode [do_widget widgetname] stranici."
+
+#: amr-admin-form-html.php:120
+#@ amr-shortcode-any-widget
+msgid "[do_widget \"tag cloud\"] or [do_widget id=widgetid]"
+msgstr "[do_widget \"tag cloud\"] ili [do_widget id=widgetid]"
+
+#: amr-admin-form-html.php:126
+#@ amr-shortcode-any-widget
+msgid "Create a page with do_widget shortcode and remove widget_classes"
+msgstr "Kreirajte stranicu uz pomoć do_widget shortcode i remove widget_classes"
+
+#: amr-admin-form-html.php:133
+#@ amr-shortcode-any-widget
+msgid "Create a page with do_widget shortcode"
+msgstr "Kreirajte stranicu koristeći do_widget shortcode"
+
+#: amr-admin-form-html.php:174
+#@ amr-shortcode-any-widget
+msgid "If you have any problems with this plugin or good ideas for improvements or new features, please talk about them in the"
+msgstr "Ako imate bilo kakvih problema s ovim plugin-om ili dobre ideje za poboljšanja, odnosno, nove funkcionalnosti, pričajte o njima na"
+
+#: amr-admin-form-html.php:174
+#@ amr-shortcode-any-widget
+msgid "Support forums"
+msgstr "Forumima za podršku"
+
