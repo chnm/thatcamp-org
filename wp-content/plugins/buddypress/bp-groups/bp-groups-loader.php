@@ -12,7 +12,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 class BP_Groups_Component extends BP_Component {
 
@@ -507,6 +507,57 @@ class BP_Groups_Component extends BP_Component {
 					'item_css_id'     => 'admin',
 					'no_access_url'   => $group_link,
 				);
+
+				$admin_link = trailingslashit( $group_link . 'admin' );
+
+				// Common params to all nav items
+				$default_params = array(
+					'parent_url'        => $admin_link,
+					'parent_slug'       => $this->current_group->slug . '_manage',
+					'screen_function'   => 'groups_screen_group_admin',
+					'user_has_access'   => bp_is_item_admin(),
+					'show_in_admin_bar' => true,
+				);
+
+				$sub_nav[] = array_merge( array(
+					'name'            => __( 'Details', 'buddypress' ),
+					'slug'            => 'edit-details',
+					'position'        => 0,
+				), $default_params );
+
+				$sub_nav[] = array_merge( array(
+					'name'            => __( 'Settings', 'buddypress' ),
+					'slug'            => 'group-settings',
+					'position'        => 10,
+				), $default_params );
+
+				if ( ! (int) bp_get_option( 'bp-disable-avatar-uploads' ) && buddypress()->avatar->show_avatars ) {
+					$sub_nav[] = array_merge( array(
+						'name'        => __( 'Photo', 'buddypress' ),
+						'slug'        => 'group-avatar',
+						'position'    => 20,
+					), $default_params );
+				}
+
+				$sub_nav[] = array_merge( array(
+					'name'            => __( 'Members', 'buddypress' ),
+					'slug'            => 'manage-members',
+					'position'        => 30,
+				), $default_params );
+
+				if ( 'private' == $this->current_group->status ) {
+					$sub_nav[] = array_merge( array(
+						'name'            => __( 'Requests', 'buddypress' ),
+						'slug'            => 'membership-requests',
+						'position'        => 40,
+					), $default_params );
+				}
+
+				$sub_nav[] = array_merge( array(
+					'name'            => __( 'Delete', 'buddypress' ),
+					'slug'            => 'delete-group',
+					'position'        => 1000,
+				), $default_params );
 			}
 
 			parent::setup_nav( $main_nav, $sub_nav );
@@ -597,7 +648,7 @@ class BP_Groups_Component extends BP_Component {
 			if ( bp_is_my_profile() && !bp_is_single_item() ) {
 				$bp->bp_options_title = _x( 'Memberships', 'My Groups page <title>', 'buddypress' );
 
-			} else if ( !bp_is_my_profile() && !bp_is_single_item() ) {
+			} elseif ( !bp_is_my_profile() && !bp_is_single_item() ) {
 				$bp->bp_options_avatar = bp_core_fetch_avatar( array(
 					'item_id' => bp_displayed_user_id(),
 					'type'    => 'thumb',
@@ -607,7 +658,7 @@ class BP_Groups_Component extends BP_Component {
 
 			// We are viewing a single group, so set up the
 			// group navigation menu using the $this->current_group global.
-			} else if ( bp_is_single_item() ) {
+			} elseif ( bp_is_single_item() ) {
 				$bp->bp_options_title  = $this->current_group->name;
 				$bp->bp_options_avatar = bp_core_fetch_avatar( array(
 					'item_id'    => $this->current_group->id,
@@ -624,6 +675,24 @@ class BP_Groups_Component extends BP_Component {
 		}
 
 		parent::setup_title();
+	}
+
+	/**
+	 * Setup cache groups
+	 *
+	 * @since BuddyPress (2.2.0)
+	 */
+	public function setup_cache_groups() {
+
+		// Global groups
+		wp_cache_add_global_groups( array(
+			'bp_groups',
+			'bp_group_admins',
+			'bp_group_invite_count',
+			'group_meta'
+		) );
+
+		parent::setup_cache_groups();
 	}
 }
 

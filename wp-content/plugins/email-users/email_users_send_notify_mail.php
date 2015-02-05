@@ -95,10 +95,12 @@
         // Replace the template variables concerning the post details
         // --
         $post = get_post( $post_id );
+        setup_postdata($post) ;
         $post_title = $post->post_title;
         $post_url = get_permalink( $post_id );            
         $post_content = explode( '<!--more-->', $post->post_content, 2 );
-        $post_excerpt = get_the_excerpt() ;
+        //$post_excerpt = get_the_excerpt() ;
+        $post_excerpt = $post->post_excerpt ;
         $post_author = get_userdata( $post->post_author )->display_name;
 
         if (empty($post_excerpt)) $post_excerpt = $post_content[0];
@@ -134,8 +136,7 @@
             $mail_content = mailusers_replace_sender_templates($mail_content, $from_name);
             $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
 	    }
-    }
-    else {
+    } else {
 	    if (!isset($subject)) {
             $subject = mailusers_get_default_subject();
 	    }
@@ -144,6 +145,7 @@
             $mail_content = mailusers_get_default_body();
 	    }	
 	}
+
 	
     //  Override the send from address?
     if (($from_sender == 1) && !empty($override_address) && is_email($override_address)) {

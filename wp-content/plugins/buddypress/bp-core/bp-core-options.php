@@ -8,7 +8,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Get the default site options and their values.
@@ -435,7 +435,7 @@ function bp_core_get_root_options() {
 /** Active? *******************************************************************/
 
 /**
- * Is profile sycing disabled?
+ * Is profile syncing disabled?
  *
  * @since BuddyPress (1.6.0)
  *

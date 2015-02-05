@@ -7,7 +7,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Prune the WP Super Cache.
@@ -25,16 +25,6 @@ function bp_core_clear_cache() {
 		return prune_super_cache( $cache_path, true );
 	}
 }
-
-/**
- * Add 'bp' to global group of network wide cachable objects.
- */
-function bp_core_add_global_group() {
-	if ( function_exists( 'wp_cache_add_global_groups' ) ) {
-		wp_cache_add_global_groups( array( 'bp' ) );
-	}
-}
-add_action( 'bp_loaded', 'bp_core_add_global_group' );
 
 /**
  * Clear all cached objects for a user, or those that a user is part of.

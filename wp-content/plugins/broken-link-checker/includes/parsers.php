@@ -165,6 +165,10 @@ class blcParser extends blcModule {
 	
   /**
    * Turn a relative URL into an absolute one.
+   *
+   * WordPress 3.4 has WP_Http::make_absolute_url() which is well-tested but not as comprehensive
+   * as this implementation. For example, WP_Http doesn't properly handle directory traversal with "..",
+   * and it removes #anchors for no good reason. The BLC implementation deals with both pretty well.
    * 
    * @param string $url Relative URL.
    * @param string $base_url Base URL. If omitted, the blog's root URL will be used.

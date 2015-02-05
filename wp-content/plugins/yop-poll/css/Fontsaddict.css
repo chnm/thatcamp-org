@@ -1,0 +1,38 @@
+@font-face {
+	font-family: "Fontsaddict";
+	src: url("Fontsaddict.eot");
+	src: url("Fontsaddict.eot#iefix") format("embedded-opentype"),
+	url("Fontsaddict.woff") format("woff"),
+	url("Fontsaddict.ttf") format("truetype"),
+	url("Fontsaddict.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="icon-"]:before, [class*=" icon-"]:before,
+[class^="icon-"]:after, [class*=" icon-"]:after {   
+	font-family: Fontsaddict;
+	font-size: 20px;
+	font-style: normal;
+	margin-left: 20px;
+}
+.icon-checkbox:before {
+	content: "\e801"
+}
+.icon-checkbox-1:before {
+	content: "\e802"
+}
+.icon-radio:before {
+	content: "\e800"
+}
+.icon-checked:before {
+	content: "\e803"
+}
+.icon-checked-1:before {
+	content: "\e804"
+}
+.icon-check:before {
+	content: "\e805"
+}
+.icon-radio-1:before {
+	content: "\e806"
+}

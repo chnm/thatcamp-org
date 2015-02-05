@@ -11,7 +11,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Register activity actions for the Groups component.
@@ -40,6 +40,15 @@ function groups_register_activity_actions() {
 		__( 'Joined a group', 'buddypress' ),
 		'bp_groups_format_activity_action_joined_group',
 		__( 'Group Memberships', 'buddypress' ),
+		array( 'activity', 'group', 'member', 'member_groups' )
+	);
+
+	bp_activity_set_action(
+		$bp->groups->id,
+		'group_details_updated',
+		__( 'Group details edited', 'buddypress' ),
+		'bp_groups_format_activity_action_group_details_updated',
+		__( 'Group Updates', 'buddypress' ),
 		array( 'activity', 'group', 'member', 'member_groups' )
 	);
 
@@ -128,6 +137,51 @@ function bp_groups_format_activity_action_joined_group( $action, $activity ) {
 }
 
 /**
+ * Format 'group_details_updated' activity actions.
+ *
+ * @since BuddyPress (2.2.0)
+ *
+ * @param  string $action   Static activity action.
+ * @param  object $activity Activity data object.
+ * @return string
+ */
+function bp_groups_format_activity_action_group_details_updated( $action, $activity ) {
+	$user_link = bp_core_get_userlink( $activity->user_id );
+
+	$group = groups_get_group( array(
+		'group_id'        => $activity->item_id,
+		'populate_extras' => false,
+	) );
+	$group_link = '<a href="' . esc_url( bp_get_group_permalink( $group ) ) . '">' . esc_html( $group->name ) . '</a>';
+
+	/*
+	 * Changed group details are stored in groupmeta, keyed by the activity
+	 * timestamp. See {@link bp_groups_group_details_updated_add_activity()}.
+	 */
+	$changed = groups_get_groupmeta( $activity->item_id, 'updated_details_' . $activity->date_recorded );
+
+	// No changed details were found, so use a generic message.
+	if ( empty( $changed ) ) {
+		$action = sprintf( __( '%1$s updated details for the group %2$s', 'buddypress' ), $user_link, $group_link );
+
+	// Name and description changed - to keep things short, don't describe changes in detail.
+	} elseif ( isset( $changed['name'] ) && isset( $changed['description'] ) ) {
+		$action = sprintf( __( '%1$s changed the name and description of the group %2$s', 'buddypress' ), $user_link, $group_link );
+
+	// Name only.
+	} elseif ( ! empty( $changed['name']['old'] ) && ! empty( $changed['name']['new'] ) ) {
+		$action = sprintf( __( '%1$s changed the name of the group %2$s from "%3$s" to "%4$s"', 'buddypress' ), $user_link, $group_link, esc_html( $changed['name']['old'] ), esc_html( $changed['name']['new'] ) );
+
+	// Description only.
+	} elseif ( ! empty( $changed['description']['old'] ) && ! empty( $changed['description']['new'] ) ) {
+		$action = sprintf( __( '%1$s changed the description of the group %2$s from "%3$s" to "%4$s"', 'buddypress' ), $user_link, $group_link, esc_html( $changed['description']['old'] ), esc_html( $changed['description']['new'] ) );
+
+	}
+
+	return apply_filters( 'bp_groups_format_activity_action_joined_group', $action, $activity );
+}
+
+/**
  * Fetch data related to groups at the beginning of an activity loop.
  *
  * This reduces database overhead during the activity loop.
@@ -178,6 +232,68 @@ function bp_groups_prefetch_activity_object_data( $activities ) {
 	return $activities;
 }
 add_filter( 'bp_activity_prefetch_object_data', 'bp_groups_prefetch_activity_object_data' );
+
+/**
+ * Set up activity arguments for use with the 'groups' scope.
+ *
+ * @since BuddyPress (2.2.0)
+ *
+ * @param array $retval Empty array by default
+ * @param array $filter Current activity arguments
+ * @return array
+ */
+function bp_groups_filter_activity_scope( $retval = array(), $filter = array() ) {
+
+	// Determine the user_id
+	if ( ! empty( $filter['user_id'] ) ) {
+		$user_id = $filter['user_id'];
+	} else {
+		$user_id = bp_displayed_user_id()
+			? bp_displayed_user_id()
+			: bp_loggedin_user_id();
+	}
+
+	// Determine groups of user
+	$groups = groups_get_user_groups( $user_id );
+	if ( empty( $groups['groups'] ) ) {
+		$groups = array( 'groups' => 0 );
+	}
+
+	// Should we show all items regardless of sitewide visibility?
+	$show_hidden = array();
+	if ( ! empty( $user_id ) && ( $user_id !== bp_loggedin_user_id() ) ) {
+		$show_hidden = array(
+			'column' => 'hide_sitewide',
+			'value'  => 0
+		);
+	}
+
+	$retval = array(
+		'relation' => 'AND',
+		array(
+			'relation' => 'AND',
+			array(
+				'column' => 'component',
+				'value'  => buddypress()->groups->id
+			),
+			array(
+				'column'  => 'item_id',
+				'compare' => 'IN',
+				'value'   => (array) $groups['groups']
+			),
+		),
+		$show_hidden,
+
+		// overrides
+		'override' => array(
+			'filter'      => array( 'user_id' => 0 ),
+			'show_hidden' => true
+		),
+	);
+
+	return $retval;
+}
+add_filter( 'bp_activity_set_groups_scope_args', 'bp_groups_filter_activity_scope', 10, 2 );
 
 /**
  * Record an activity item related to the Groups component.
@@ -288,6 +404,78 @@ function bp_groups_membership_accepted_add_activity( $user_id, $group_id ) {
 	) );
 }
 add_action( 'groups_membership_accepted', 'bp_groups_membership_accepted_add_activity', 10, 2 );
+
+/**
+ * Add an activity item when a group's details are updated.
+ *
+ * @since BuddyPress (2.2.0)
+ *
+ * @param  int             $group_id       ID of the group.
+ * @param  BP_Groups_Group $old_group      Group object before the details had been changed.
+ * @param  bool            $notify_members True if the admin has opted to notify group members, otherwise false.
+ * @return int|bool The ID of the activity on success. False on error.
+ */
+function bp_groups_group_details_updated_add_activity( $group_id, $old_group, $notify_members ) {
+
+	// Bail if Activity is not active.
+	if ( ! bp_is_active( 'activity' ) ) {
+		return false;
+	}
+
+	if ( ! isset( $old_group->name ) || ! isset( $old_group->description ) ) {
+		return false;
+	}
+
+	// If the admin has opted not to notify members, don't post an activity item either
+	if ( empty( $notify_members ) ) {
+		return;
+	}
+
+	$group = groups_get_group( array(
+		'group_id' => $group_id,
+	) );
+
+	/*
+	 * Store the changed data, which will be used to generate the activity
+	 * action. Since we haven't yet created the activity item, we store the
+	 * old group data in groupmeta, keyed by the timestamp that we'll put
+	 * on the activity item.
+	 */
+	$changed = array();
+
+	if ( $group->name !== $old_group->name ) {
+		$changed['name'] = array(
+			'old' => $old_group->name,
+			'new' => $group->name,
+		);
+	}
+
+	if ( $group->description !== $old_group->description ) {
+		$changed['description'] = array(
+			'old' => $old_group->description,
+			'new' => $group->description,
+		);
+	}
+
+	// If there are no changes, don't post an activity item.
+	if ( empty( $changed ) ) {
+		return;
+	}
+
+	$time = bp_core_current_time();
+	groups_update_groupmeta( $group_id, 'updated_details_' . $time, $changed );
+
+	// Record in activity streams.
+	return groups_record_activity( array(
+		'type'          => 'group_details_updated',
+		'item_id'       => $group_id,
+		'user_id'       => bp_loggedin_user_id(),
+		'recorded_time' => $time,
+
+	) );
+
+}
+add_action( 'groups_details_updated', 'bp_groups_group_details_updated_add_activity', 10, 3 );
 
 /**
  * Delete all activity items related to a specific group.

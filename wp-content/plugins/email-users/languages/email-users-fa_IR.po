@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Email Users\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-04 18:31+0100\n"
+"POT-Creation-Date: 2014-12-03 17:22-0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Mike Walsh <mpwalsh8@gmail.com>\n"
 "Language-Team: Persian Wordpress <Mostafa.s1990@gmail.com>\n"
@@ -10,333 +10,17 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: C:\\inetpub\\wwwroot\\wordpress\\wp-content\\plugins"
-"\\email-users\n"
-"X-Generator: Poedit 1.6.6\n"
-
-#: email_users_send_notify_mail.php:24 email_users_notify_form.php:26
-msgid "You are not allowed to notify users about posts and pages."
-msgstr "شما اجازه آگاهی دادن به کاربران برای نوشته و برگه ها را ندارید."
-
-#: email_users_send_notify_mail.php:54
-msgid "You must select at least a recipient."
-msgstr "شما باید انتخاب کنید دسته کم یک گیرنده."
-
-#: email_users_send_notify_mail.php:61 email_users_send_user_mail.php:59
-#: email_users_send_custom_filter_mail.php:73
-#: email_users_send_group_mail.php:67
-msgid "You must enter a subject."
-msgstr "باید حتما موضوع ایمیل را وارد کنید"
-
-#: email_users_send_notify_mail.php:67 email_users_send_user_mail.php:65
-#: email_users_send_custom_filter_mail.php:79
-#: email_users_send_group_mail.php:73
-msgid "You must enter some content."
-msgstr "باید حتما متن ایمیل را وارد کنید."
-
-#: email_users_send_notify_mail.php:197 email_users_send_test_mail.php:90
-#: email_users_send_user_mail.php:130
-#: email_users_send_custom_filter_mail.php:144
-#: email_users_send_group_mail.php:190
-msgid "No recipients were found."
-msgstr "گیرنده چیزی دریافت نکرد."
-
-#: email_users_send_notify_mail.php:203
-#, php-format
-msgid "Notification sent to %s user(s)."
-msgstr "ایمیل اطلاع ارسال شد به %s کاربر."
-
-#: email_users_notify_form.php:39
-#, fuzzy, php-format
-msgid "Trying to notify users of a %s without passing the %s id!"
-msgstr "دوباره امتحان کنید برای آگاهی نوشته های گذشته!"
-
-#: email_users_notify_form.php:50 email_users_notify_form.php:128
-#, fuzzy, php-format
-msgid "Notify Users of a %s"
-msgstr "آگاهی کاربران درباره این نوشته"
-
-#: email_users_notify_form.php:52
-#, php-format
-msgid "Please select the %s that you wish to notify users about."
-msgstr ""
-
-#: email_users_notify_form.php:65
-#, php-format
-msgid "Select %s"
-msgstr ""
-
-#: email_users_notify_form.php:78 email_users_user_mail_form.php:71
-#: email_users_group_mail_form.php:82 email_users_options_form.php:127
-#: email_users_custom_filter_mail_form.php:73
-msgid "HTML"
-msgstr "اچ تی ام ال"
-
-#: email_users_notify_form.php:78 email_users_user_mail_form.php:72
-#: email_users_group_mail_form.php:83 email_users_options_form.php:128
-#: email_users_custom_filter_mail_form.php:74
-msgid "Plain text"
-msgstr "متن ساده"
-
-#: email_users_notify_form.php:132 email_users_user_mail_form.php:59
-#: email_users_group_mail_form.php:68 email_users_options_form.php:105
-#: email_users_custom_filter_mail_form.php:61
-msgid "Please correct the errors displayed above and try again."
-msgstr "لطفا خطا را در بالا مشاهده کنید, سپس دوباره امتحان کنید."
-
-#: email_users_notify_form.php:148
-msgid "Mail will be sent as:"
-msgstr "ایمیل ارسال شود به:"
-
-#: email_users_notify_form.php:151 email_users_user_mail_form.php:76
-#: email_users_group_mail_form.php:87
-#: email_users_custom_filter_mail_form.php:78
-msgid "Sender"
-msgstr "ارسال کننده"
-
-#: email_users_notify_form.php:159 email_users_user_mail_form.php:84
-#: email_users_group_mail_form.php:95
-#: email_users_custom_filter_mail_form.php:86
-msgid "Recipients"
-msgstr "گیرنده"
-
-#: email_users_notify_form.php:161
-msgid "Use CTRL key to select/deselect multiple items"
-msgstr "شما میتوانید با استفاده از کلید Ctrl چند گروه انتخاب کنید."
-
-#: email_users_notify_form.php:163
-#, fuzzy
-msgid ""
-"The users that did not agree to receive notifications do not appear here."
-msgstr "آگاهی گیرنده برای کاربران در اینجا ظاهر شد."
-
-#: email_users_notify_form.php:168 email_users_group_mail_form.php:104
-msgid "Filter"
-msgstr ""
-
-#: email_users_notify_form.php:181 email_users_group_mail_form.php:117
-msgid "Role"
-msgstr "وظیفه"
-
-#: email_users_notify_form.php:197 email_users_group_mail_form.php:133
-msgid "User Group"
-msgstr ""
-
-#: email_users_notify_form.php:214 email_users_group_mail_form.php:150
-msgid "UAM"
-msgstr ""
-
-#: email_users_notify_form.php:231 email_users_group_mail_form.php:167
-#, fuzzy
-msgid "Groups"
-msgstr "نوشتن ایمیل برای گروهی از کاربران."
-
-#: email_users_notify_form.php:250 email_users_user_mail_form.php:97
-#: email_users_custom_filter_mail_form.php:99
-msgid "N/A"
-msgstr ""
-
-#: email_users_notify_form.php:318 email_users_user_mail_form.php:165
-#: email_users_custom_filter_mail_form.php:167
-msgid "User"
-msgstr "کاربر"
-
-#: email_users_notify_form.php:327 email_users_user_mail_form.php:174
-#: email_users_group_mail_form.php:184 email_users_options_form.php:402
-#: email_users_custom_filter_mail_form.php:176
-msgid "Subject"
-msgstr "موضوع"
-
-#: email_users_notify_form.php:331 email_users_user_mail_form.php:178
-#: email_users_group_mail_form.php:188 email_users_options_form.php:406
-#: email_users_custom_filter_mail_form.php:180
-msgid "Message"
-msgstr "پیغام"
-
-#: email_users_notify_form.php:339 email_users_user_mail_form.php:196
-#: email_users_group_mail_form.php:207
-#: email_users_custom_filter_mail_form.php:198
-msgid "Send Email"
-msgstr "ارسال ایمیل"
-
-#: email_users_overview.php:26
-msgid "You are not allowed to send emails."
-msgstr "شما نمیتوانید اجازه بدهید در ارسال ایمیل ها."
-
-#: email_users_overview.php:33 email-users.php:297 email-users.php:312
-#: email-users.php:346 email-users.php:347 email-users.php:353
-#: email-users.php:354
-msgid "Email Users"
-msgstr "ایمیل کاربران"
-
-#: email_users_overview.php:45 email_users_overview.php:51
-msgid "Send Individual Message"
-msgstr ""
-
-#: email_users_overview.php:48
-msgid "Send an email to one or more individual users"
-msgstr "ارسال ایمیل به یک یا چند نفر از کاربران."
-
-#: email_users_overview.php:50
-#, fuzzy
-msgid ""
-"You can send an email to one or more users by selecting them individually."
-msgstr "ارسال ایمیل به یک یا چند نفر از کاربران."
-
-#: email_users_overview.php:63
-#, fuzzy
-msgid "Send a Group Message"
-msgstr "ارسال گروهی"
-
-#: email_users_overview.php:66
-msgid "Send an email to one or more user groups"
-msgstr "ارسال ایمیل به گروهی از کاربران."
-
-#: email_users_overview.php:68
-msgid ""
-"You can send an email to one or more user groups (i.e. users belonging to "
-"the same WordPress role)."
-msgstr ""
-
-#: email_users_overview.php:69
-#, fuzzy
-msgid "Send Group Message"
-msgstr "ارسال گروهی"
-
-#: email_users_user_settings.php:30
-#, fuzzy
-msgid "You are not allowed to view the user settings."
-msgstr "شما فعلا یک کاربر را میتوانید انتخاب کنید."
-
-#: email_users_user_settings.php:107 email-users.php:1557 email-users.php:1561
-#: email-users.php:1565
-msgid "On"
-msgstr ""
-
-#: email_users_user_settings.php:107 email-users.php:1557 email-users.php:1561
-#: email-users.php:1565
-msgid "Off"
-msgstr ""
-
-#: email_users_user_settings.php:182 email_users_options_form.php:137
-#, fuzzy
-msgid "Display Name"
-msgstr "نام وبلاگ شما"
-
-#: email_users_user_settings.php:183
-#, fuzzy
-msgid "Username"
-msgstr "کاربر"
-
-#: email_users_user_settings.php:184
-#, fuzzy
-msgid "E-Mail Address"
-msgstr "ایمیل ارسال شود به:"
-
-#: email_users_user_settings.php:187
-#, fuzzy
-msgid "Notifications"
-msgstr "آگاهی گیرنده برای کاربران در اینجا ظاهر شد."
-
-#: email_users_user_settings.php:188
-#, fuzzy
-msgid "Mass Email"
-msgstr "پست الکترونیک"
-
-#: email_users_user_settings.php:239
-#, fuzzy
-msgid "Notifications On"
-msgstr "آگاهی گیرنده برای کاربران در اینجا ظاهر شد."
-
-#: email_users_user_settings.php:240
-msgid "Notifications Off"
-msgstr ""
-
-#: email_users_user_settings.php:241
-#, fuzzy
-msgid "Mass Email On"
-msgstr "پست الکترونیک"
-
-#: email_users_user_settings.php:242
-#, fuzzy
-msgid "Mass Email Off"
-msgstr "پست الکترونیک"
-
-#: email_users_user_settings.php:243
-#, fuzzy
-msgid "Notifications On & Mass Email On"
-msgstr "پست الکترونیک"
-
-#: email_users_user_settings.php:244
-msgid "Notifications On & Mass Email Off"
-msgstr ""
-
-#: email_users_user_settings.php:245
-msgid "Notifications Off & Mass Email On"
-msgstr ""
-
-#: email_users_user_settings.php:246
-msgid "Notifications Off & Mass Email Off"
-msgstr ""
-
-#: email_users_user_settings.php:324
-#, fuzzy
-msgid "No users selected"
-msgstr "ایمیل کاربران"
-
-#: email_users_user_settings.php:489
-msgid "Search"
-msgstr ""
-
-#: email_users_user_mail_form.php:27 email_users_send_user_mail.php:25
-#: email_users_custom_filter_mail_form.php:28
-msgid "You are not allowed to send emails to users."
-msgstr "شما اجازه ندارید به کاربران ایمیل ارسال کنید."
-
-#: email_users_user_mail_form.php:55
-#, fuzzy
-msgid "Send an Email to Individual Users"
-msgstr "ارسال ایمیل به یک یا چند نفر از کاربران."
-
-#: email_users_user_mail_form.php:69 email_users_group_mail_form.php:80
-#: email_users_custom_filter_mail_form.php:71
-msgid "Mail format"
-msgstr "قالب ایمیل"
-
-#: email_users_user_mail_form.php:88
-#: email_users_custom_filter_mail_form.php:90
-msgid "You are only allowed to select one user at a time."
-msgstr "شما فعلا یک کاربر را میتوانید انتخاب کنید."
-
-#: email_users_user_mail_form.php:90
-#: email_users_custom_filter_mail_form.php:92
-msgid ""
-"You can select multiple users by pressing the CTRL key.  When selecting "
-"multiple users, any user who should not receive Mass Email will be filtered "
-"from the recipient list."
-msgstr ""
-
-#: email_users_send_test_mail.php:24 email_users_options_form.php:28
-#: email_users_set_options.php:24
-msgid "You are not allowed to change the options of this plugin."
-msgstr "شما اجازه تغییر در تنظیمات این افزونه را ندارید."
-
-#: email_users_send_test_mail.php:61 email_users_options_form.php:365
-msgid "No post found in the blog in order to build a notification preview."
-msgstr "نوشته در این وبلاگ برای مشاهده اگاهی پیدا نشد."
-
-#: email_users_send_test_mail.php:96
-#, php-format
-msgid "Test email sent to %s."
-msgstr "ایمیل آزمایش ارسال شد به: %s"
-
-#: email-users.php:89
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../email-users.php:100
 #, fuzzy
 msgid "A post of interest:"
 msgstr "[%BLOG_NAME%] یک نوشته با نام: \"%POST_TITLE%\""
 
-#: email-users.php:91
+#: ../email-users.php:102
 msgid ""
 "<p>Hello, </p><p>I would like to bring your attention on a new post "
 "published on the blog. Details of the post follow; I hope you will find it "
@@ -352,243 +36,396 @@ msgstr ""
 "href=\"%POST_URL%\">%POST_URL%</a></li><li>پیوند به %BLOG_NAME%: <a href="
 "\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
 
-#: email-users.php:123
+#: ../email-users.php:136
 msgid "Powered by"
 msgstr ""
 
-#: email-users.php:299
+#: ../email-users.php:316 ../email-users.php:331 ../email-users.php:365
+#: ../email-users.php:366 ../email-users.php:372 ../email-users.php:373
+#: ../email_users_overview.php:33
+msgid "Email Users"
+msgstr "ایمیل کاربران"
+
+#: ../email-users.php:318
 #, fuzzy
 msgid "Notify Users About this Post"
 msgstr "آگاهی کاربران درباره این نوشته"
 
-#: email-users.php:314
+#: ../email-users.php:333
 #, fuzzy
 msgid "Notify Users About this Page"
 msgstr "آگاهی کاربران درباره این صفحه"
 
-#: email-users.php:332 email-users.php:333 email-users.php:339
-#: email-users.php:340
+#: ../email-users.php:351 ../email-users.php:352 ../email-users.php:358
+#: ../email-users.php:359
 #, fuzzy
 msgid "Notify Users"
 msgstr "آگاهی کاربران درباره این نوشته"
 
-#: email-users.php:362 email-users.php:363
+#: ../email-users.php:381 ../email-users.php:382
 #, fuzzy
 msgid "Send to User(s)"
 msgstr "ارسال به کاربران"
 
-#: email-users.php:392 email-users.php:393
+#: ../email-users.php:411 ../email-users.php:412
 #, fuzzy, php-format
 msgid "Send to %s"
 msgstr "ارسال به کاربران"
 
-#: email-users.php:401 email-users.php:402
+#: ../email-users.php:420 ../email-users.php:421
 #, fuzzy
 msgid "Send to Group(s)"
 msgstr "ارسال گروهی"
 
-#: email-users.php:433 email-users.php:434 email_users_options_form.php:617
+#: ../email-users.php:452 ../email-users.php:453
+#: ../email_users_options_form.php:654
 #, fuzzy
 msgid "User Settings"
 msgstr "کاربر"
 
-#: email-users.php:550
+#: ../email-users.php:569
 msgid "Email Preferences"
 msgstr "تنظیمات ایمیل"
 
-#: email-users.php:563
+#: ../email-users.php:582
 #, fuzzy
 msgid "Accept to receive post or page notification emails"
 msgstr "نوشته یا برگه جدید را به اطلاع گیرنده برساند."
 
-#: email-users.php:571
+#: ../email-users.php:590
 #, fuzzy
 msgid ""
 "Accept to receive emails sent to multiple recipients (but still accept "
 "emails sent only to me)"
 msgstr "پذیرفتن چندگانه ایمیل های ارسالی به گیرنده ها"
 
-#: email-users.php:1445
+#: ../email-users.php:1528
 #, php-format
 msgid ""
 "The email address (%s) of the user you are trying to send mail to is not a "
 "valid email address format."
 msgstr ""
 
-#: email-users.php:1504
+#: ../email-users.php:1599
 #, php-format
 msgid "Invalid email address (\"%s\") found."
 msgstr ""
 
-#: email-users.php:1553
+#: ../email-users.php:1654
 #, fuzzy
 msgid "Default User Settings"
 msgstr "وظیفه"
 
-#: email-users.php:1556
+#: ../email-users.php:1657
 #, fuzzy
 msgid "Receive post or page notification emails:"
 msgstr "نوشته یا برگه جدید را به اطلاع گیرنده برساند."
 
-#: email-users.php:1560
+#: ../email-users.php:1658 ../email-users.php:1662 ../email-users.php:1666
+#: ../email-users.php:1670 ../email_users_user_settings.php:107
+msgid "On"
+msgstr ""
+
+#: ../email-users.php:1658 ../email-users.php:1662 ../email-users.php:1666
+#: ../email-users.php:1670 ../email_users_user_settings.php:107
+msgid "Off"
+msgstr ""
+
+#: ../email-users.php:1661
 msgid "Receive emails sent to multiple recipients:"
 msgstr ""
 
-#: email-users.php:1564
+#: ../email-users.php:1665
 msgid "Allow Users to control their own Email Users settings:"
 msgstr ""
 
-#: email-users.php:1578
+#: ../email-users.php:1669
+msgid "Filter Users with no role from Recipient List:"
+msgstr ""
+
+#: ../email-users.php:1683
 #, fuzzy
 msgid "User Statistics"
 msgstr "کاربر"
 
-#: email-users.php:1581 email_users_options_form.php:73
+#: ../email-users.php:1686 ../email_users_options_form.php:73
 #, fuzzy
 msgid "Number of Users who accept post or page notification emails:"
 msgstr "نوشته یا برگه جدید را به اطلاع گیرنده برساند."
 
-#: email-users.php:1585 email_users_options_form.php:77
+#: ../email-users.php:1690 ../email_users_options_form.php:77
 msgid "Number of Users who accept emails sent to multiple recipients:"
 msgstr ""
 
-#: email-users.php:1633 email-users.php:1634
+#: ../email-users.php:1696
+#, fuzzy
+msgid "Content Filters"
+msgstr "شما باید متحوا را وارد کنید."
+
+#: ../email-users.php:1724
+msgid "Present"
+msgstr ""
+
+#: ../email-users.php:1724
+msgid "Missing"
+msgstr ""
+
+#: ../email-users.php:1783 ../email-users.php:1784
 msgid "Mail sending aborted."
 msgstr ""
 
-#: email-users.php:1657
+#: ../email-users.php:1807
 msgid "PHPMailer Debug"
 msgstr ""
 
-#: email-users.php:1689
+#: ../email-users.php:1839
 #, fuzzy
 msgid "wp_mail() Debug"
 msgstr "ایمیل ارسال شود به:"
 
-#: email_users_group_mail_form.php:26
-#: email_users_send_custom_filter_mail.php:24
-#: email_users_send_group_mail.php:24
-msgid "You are not allowed to send emails to user groups."
-msgstr "شما جازه ندارید به کاربران ایمیل گروهی ارسال کنید."
-
-#: email_users_group_mail_form.php:64
-msgid "Send an Email to User Groups Filtered by User Meta Data"
-msgstr ""
-
-#: email_users_group_mail_form.php:64
-#, fuzzy
-msgid "Send an Email to a Group of Users"
-msgstr "ارسال گروهی"
-
-#: email_users_group_mail_form.php:97
-msgid "You can select multiple groups by pressing the CTRL key."
-msgstr "شما میتوانید با استفاده از کلید Ctrl چند گروه انتخاب کنید."
-
-#: email_users_group_mail_form.php:99
-msgid ""
-"Only the groups having at least one user that accepts group mails appear "
-"here."
-msgstr "با انتخاب یک گروه, ایمیل به همه کاربران آن ارسال میشود."
-
-#: email_users_credits.php:23 email_users_options_form.php:652
+#: ../email_users_credits.php:23 ../email_users_options_form.php:689
 msgid "Make a Donation"
 msgstr ""
 
-#: email_users_credits.php:29 email_users_options_form.php:658
+#: ../email_users_credits.php:29 ../email_users_options_form.php:695
 #, fuzzy
 msgid "Plugin's Home Page"
 msgstr "خانه این افزونه"
 
-#: email_users_credits.php:38
+#: ../email_users_credits.php:38
 msgid "EN"
 msgstr "EN"
 
-#: email_users_credits.php:51 email_users_options_form.php:686
+#: ../email_users_credits.php:51 ../email_users_options_form.php:723
 msgid "Discover other Plugins by MarvinLabs"
 msgstr ""
 
-#: email_users_credits.php:56 email_users_options_form.php:691
+#: ../email_users_credits.php:56 ../email_users_options_form.php:728
 msgid ""
 "If Email-Users is not robust enough or if you want to allow your users to "
 "communicate with each other, try: "
 msgstr ""
 
-#: email_users_credits.php:57 email_users_options_form.php:692
+#: ../email_users_credits.php:57 ../email_users_options_form.php:729
 msgid "If you lose time copy/pasting the same post structure every time, try: "
 msgstr ""
 
-#: email_users_credits.php:65 email_users_options_form.php:672
+#: ../email_users_credits.php:65 ../email_users_options_form.php:709
 msgid "More Plugins from Mike Walsh"
 msgstr ""
 
-#: email_users_credits.php:70 email_users_options_form.php:677
+#: ../email_users_credits.php:70 ../email_users_options_form.php:714
 msgid ""
 "If you use Google Forms and want to integrate them with your WordPress site, "
 "try: "
 msgstr ""
 
-#: email_users_send_user_mail.php:47
-#: email_users_send_custom_filter_mail.php:53
-#: email_users_send_group_mail.php:55
-msgid "You must specify the mail format."
-msgstr "شما باید قالب ایمیل را تعیید کنید."
+#: ../email_users_custom_filter_mail_form.php:28
+#: ../email_users_send_user_mail.php:25 ../email_users_user_mail_form.php:27
+msgid "You are not allowed to send emails to users."
+msgstr "شما اجازه ندارید به کاربران ایمیل ارسال کنید."
 
-#: email_users_send_user_mail.php:53
-#: email_users_send_custom_filter_mail.php:59
-msgid "You must enter at least a recipient."
-msgstr "شما باید دست کم یک گیرنده وارد کنید."
-
-#: email_users_send_user_mail.php:124
-#, php-format
-msgid ""
-"<br/>%d users who should not to receive Mass Email were filtered from the "
-"recipient list."
-msgstr ""
-
-#: email_users_send_user_mail.php:136
-#: email_users_send_custom_filter_mail.php:149
-#: email_users_send_group_mail.php:195
+#: ../email_users_custom_filter_mail_form.php:57
 #, fuzzy
-msgid "There was a problem trying to send email to users."
-msgstr "ارسال ایمیل به یک یا چند نفر از کاربران."
+msgid "Send an Email to a Custom Filtered list of Users"
+msgstr "ارسال ایمیل به یک کاربر."
 
-#: email_users_send_user_mail.php:138
-#: email_users_send_custom_filter_mail.php:152
-#: email_users_send_group_mail.php:197
+#: ../email_users_custom_filter_mail_form.php:61
+#: ../email_users_group_mail_form.php:68 ../email_users_notify_form.php:154
+#: ../email_users_options_form.php:105 ../email_users_user_mail_form.php:59
+msgid "Please correct the errors displayed above and try again."
+msgstr "لطفا خطا را در بالا مشاهده کنید, سپس دوباره امتحان کنید."
+
+#: ../email_users_custom_filter_mail_form.php:71
+#: ../email_users_group_mail_form.php:80 ../email_users_notify_form.php:169
+#: ../email_users_user_mail_form.php:69
+msgid "Mail format"
+msgstr "قالب ایمیل"
+
+#: ../email_users_custom_filter_mail_form.php:73
+#: ../email_users_group_mail_form.php:82 ../email_users_notify_form.php:81
+#: ../email_users_notify_form.php:171 ../email_users_options_form.php:127
+#: ../email_users_user_mail_form.php:71
+msgid "HTML"
+msgstr "اچ تی ام ال"
+
+#: ../email_users_custom_filter_mail_form.php:74
+#: ../email_users_group_mail_form.php:83 ../email_users_notify_form.php:81
+#: ../email_users_notify_form.php:172 ../email_users_options_form.php:128
+#: ../email_users_user_mail_form.php:72
+msgid "Plain text"
+msgstr "متن ساده"
+
+#: ../email_users_custom_filter_mail_form.php:78
+#: ../email_users_group_mail_form.php:87 ../email_users_notify_form.php:180
+#: ../email_users_user_mail_form.php:76
+msgid "Sender"
+msgstr "ارسال کننده"
+
+#: ../email_users_custom_filter_mail_form.php:86
+#: ../email_users_group_mail_form.php:95 ../email_users_notify_form.php:188
+#: ../email_users_user_mail_form.php:84
+msgid "Recipients"
+msgstr "گیرنده"
+
+#: ../email_users_custom_filter_mail_form.php:90
+#: ../email_users_user_mail_form.php:88
+msgid "You are only allowed to select one user at a time."
+msgstr "شما فعلا یک کاربر را میتوانید انتخاب کنید."
+
+#: ../email_users_custom_filter_mail_form.php:92
+#: ../email_users_user_mail_form.php:90
 msgid ""
-"No email has been sent to other users. This may be because no valid email "
-"addresses were found."
+"You can select multiple users by pressing the CTRL key.  When selecting "
+"multiple users, any user who should not receive Mass Email will be filtered "
+"from the recipient list."
 msgstr ""
 
-#: email_users_send_user_mail.php:142
-#: email_users_send_custom_filter_mail.php:156
-#: email_users_send_group_mail.php:201
+#: ../email_users_custom_filter_mail_form.php:99
+#: ../email_users_notify_form.php:295 ../email_users_user_mail_form.php:97
+msgid "N/A"
+msgstr ""
+
+#: ../email_users_custom_filter_mail_form.php:167
+#: ../email_users_notify_form.php:363 ../email_users_user_mail_form.php:165
+msgid "User"
+msgstr "کاربر"
+
+#: ../email_users_custom_filter_mail_form.php:176
+#: ../email_users_group_mail_form.php:204 ../email_users_notify_form.php:383
+#: ../email_users_notify_form.php:397 ../email_users_options_form.php:434
+#: ../email_users_user_mail_form.php:174
+msgid "Subject"
+msgstr "موضوع"
+
+#: ../email_users_custom_filter_mail_form.php:180
+#: ../email_users_group_mail_form.php:208 ../email_users_notify_form.php:387
+#: ../email_users_notify_form.php:401 ../email_users_options_form.php:438
+#: ../email_users_user_mail_form.php:178
+msgid "Message"
+msgstr "پیغام"
+
+#: ../email_users_custom_filter_mail_form.php:198
+#: ../email_users_group_mail_form.php:227 ../email_users_notify_form.php:419
+#: ../email_users_user_mail_form.php:196
+msgid "Send Email"
+msgstr "ارسال ایمیل"
+
+#: ../email_users_group_mail_form.php:26
+#: ../email_users_send_custom_filter_mail.php:24
+#: ../email_users_send_group_mail.php:24
+msgid "You are not allowed to send emails to user groups."
+msgstr "شما جازه ندارید به کاربران ایمیل گروهی ارسال کنید."
+
+#: ../email_users_group_mail_form.php:64
+msgid "Send an Email to User Groups Filtered by User Meta Data"
+msgstr ""
+
+#: ../email_users_group_mail_form.php:64
+#, fuzzy
+msgid "Send an Email to a Group of Users"
+msgstr "ارسال گروهی"
+
+#: ../email_users_group_mail_form.php:97
+msgid "You can select multiple groups by pressing the CTRL key."
+msgstr "شما میتوانید با استفاده از کلید Ctrl چند گروه انتخاب کنید."
+
+#: ../email_users_group_mail_form.php:99
+msgid ""
+"Only the groups having at least one user that accepts group mails appear "
+"here."
+msgstr "با انتخاب یک گروه, ایمیل به همه کاربران آن ارسال میشود."
+
+#: ../email_users_group_mail_form.php:104 ../email_users_notify_form.php:197
+msgid "Filter"
+msgstr ""
+
+#: ../email_users_group_mail_form.php:117 ../email_users_notify_form.php:210
+msgid "Role"
+msgstr "وظیفه"
+
+#: ../email_users_group_mail_form.php:133 ../email_users_notify_form.php:226
+msgid "User Group"
+msgstr ""
+
+#: ../email_users_group_mail_form.php:150 ../email_users_notify_form.php:243
+msgid "UAM"
+msgstr ""
+
+#: ../email_users_group_mail_form.php:167 ../email_users_notify_form.php:260
+#, fuzzy
+msgid "Groups"
+msgstr "نوشتن ایمیل برای گروهی از کاربران."
+
+#: ../email_users_group_mail_form.php:186 ../email_users_notify_form.php:276
+msgid "PMPro"
+msgstr ""
+
+#: ../email_users_notify_form.php:26 ../email_users_send_notify_mail.php:24
+msgid "You are not allowed to notify users about posts and pages."
+msgstr "شما اجازه آگاهی دادن به کاربران برای نوشته و برگه ها را ندارید."
+
+#: ../email_users_notify_form.php:39
 #, fuzzy, php-format
-msgid "Email sent to %s user(s)."
-msgstr "ایمیل اطلاع ارسال شد به %s کاربر."
+msgid "Trying to notify users of a %s without passing the %s id!"
+msgstr "دوباره امتحان کنید برای آگاهی نوشته های گذشته!"
 
-#: email_users_send_user_mail.php:146
-#: email_users_send_custom_filter_mail.php:160
-#: email_users_send_group_mail.php:205
-msgid "WARNING: More email has been sent than the number of recipients found."
+#: ../email_users_notify_form.php:53 ../email_users_notify_form.php:150
+#, fuzzy, php-format
+msgid "Notify Users of a %s"
+msgstr "آگاهی کاربران درباره این نوشته"
+
+#: ../email_users_notify_form.php:55
+#, php-format
+msgid "Please select the %s that you wish to notify users about."
 msgstr ""
 
-#: email_users_send_user_mail.php:148
+#: ../email_users_notify_form.php:68
+#, php-format
+msgid "Select %s"
+msgstr ""
+
+#: ../email_users_notify_form.php:177
+msgid "Mail will be sent as:"
+msgstr "ایمیل ارسال شود به:"
+
+#: ../email_users_notify_form.php:190
+msgid "Use CTRL key to select/deselect multiple items"
+msgstr "شما میتوانید با استفاده از کلید Ctrl چند گروه انتخاب کنید."
+
+#: ../email_users_notify_form.php:192
+#, fuzzy
+msgid ""
+"The users that did not agree to receive notifications do not appear here."
+msgstr "آگاهی گیرنده برای کاربران در اینجا ظاهر شد."
+
+#: ../email_users_notify_form.php:372
+#, fuzzy
+msgid "Preview"
+msgstr "مشاهده ایمیل (تنظیمات ذخیره و به روز رسانی هستند)"
+
+#: ../email_users_notify_form.php:378
+#, fuzzy
+msgid "Notification Mail Preview (based on default notification body)"
+msgstr "مشاهده ایمیل (تنظیمات ذخیره و به روز رسانی هستند)"
+
+#: ../email_users_notify_form.php:438 ../email_users_user_mail_form.php:213
 #, php-format
 msgid ""
-"Email has been sent to %d users, but %d recipients were originally found. "
-"Perhaps some users don't have valid email addresses?"
+"Warning:  The number of users (%d) plus overhead exceeds the PHP <a href="
+"\"http://php.net/manual/en/info.configuration.php#ini.max-input-vars"
+"\">max_input_vars</a> setting (%d).  You will not be able to send email to "
+"more than %d users in one batch.  This can be changed by increasing the "
+"value of <a href=\"http://php.net/manual/en/info.configuration.php#ini.max-"
+"input-vars\">max_input_vars</a> setting in the PHP.ini configuration file."
 msgstr ""
 
-#: email_users_send_custom_filter_mail.php:162
-#: email_users_send_group_mail.php:207
-#, php-format
-msgid ""
-"Email has been sent to %s users, but %s recipients were originally found. "
-"Perhaps some users don't have valid email addresses?"
-msgstr ""
+#: ../email_users_options_form.php:28 ../email_users_send_test_mail.php:24
+#: ../email_users_set_options.php:24
+msgid "You are not allowed to change the options of this plugin."
+msgstr "شما اجازه تغییر در تنظیمات این افزونه را ندارید."
 
-#: email_users_options_form.php:35
+#: ../email_users_options_form.php:35
 msgid ""
 "It looks like you have an old version of the plugin activated. Please "
 "deactivate the plugin and activate it again to complete the installation of "
@@ -598,105 +435,145 @@ msgstr ""
 "deactivate the plugin and activate it again to complete the installation of "
 "the new version."
 
-#: email_users_options_form.php:38
+#: ../email_users_options_form.php:38
 #, fuzzy
 msgid "Installed Version:"
 msgstr "نسخه نصب شده:"
 
-#: email_users_options_form.php:39
+#: ../email_users_options_form.php:39
 #, fuzzy
 msgid "Current Version:"
 msgstr "نسخه جاری:"
 
-#: email_users_options_form.php:56
+#: ../email_users_options_form.php:56
 msgid "Warning:  wp_mail() appears to be overloaded."
 msgstr ""
 
-#: email_users_options_form.php:70
+#: ../email_users_options_form.php:70
 msgid ""
 "Current settings show post or page notification and/or mass email may not be "
 "received by any users."
 msgstr ""
 
-#: email_users_options_form.php:100
+#: ../email_users_options_form.php:100
 #, fuzzy
 msgid "Email Users Settings"
 msgstr "ایمیل کاربران"
 
-#: email_users_options_form.php:115
+#: ../email_users_options_form.php:115
 msgid "Email-Users Plugin Settings"
 msgstr ""
 
-#: email_users_options_form.php:124
+#: ../email_users_options_form.php:124
 #, fuzzy
 msgid "Mail Format"
 msgstr "قالب ایمیل"
 
-#: email_users_options_form.php:129
+#: ../email_users_options_form.php:129
 #, fuzzy
 msgid "Send mail as plain text or HTML by default?"
 msgstr "ارسال ایمیل به طور متن ساده یا HTML به طور پیشفرض؟"
 
-#: email_users_options_form.php:133
+#: ../email_users_options_form.php:133
 #, fuzzy
 msgid "Sort Users By"
 msgstr "ایمیل کاربران"
 
-#: email_users_options_form.php:136 email_users_options_form.php:154
+#: ../email_users_options_form.php:136 ../email_users_options_form.php:154
 msgid "None"
 msgstr "هیچ کدام"
 
-#: email_users_options_form.php:138
+#: ../email_users_options_form.php:137 ../email_users_user_settings.php:182
+#, fuzzy
+msgid "Display Name"
+msgstr "نام وبلاگ شما"
+
+#: ../email_users_options_form.php:138
 #, fuzzy
 msgid "Display Name (User Login)"
 msgstr "نام کاربری در وردپرس برای ارسال شخصی"
 
-#: email_users_options_form.php:139
+#: ../email_users_options_form.php:139
 #, fuzzy
 msgid "First Name Last Name"
 msgstr "نام وبلاگ شما"
 
-#: email_users_options_form.php:140
+#: ../email_users_options_form.php:140
 msgid "First Name Last Name (User Login)"
 msgstr ""
 
-#: email_users_options_form.php:141
+#: ../email_users_options_form.php:141
 #, fuzzy
 msgid "Last Name, First Name"
 msgstr "نام وبلاگ شما"
 
-#: email_users_options_form.php:142
+#: ../email_users_options_form.php:142
 msgid "Last Name, First Name (User Login)"
 msgstr ""
 
-#: email_users_options_form.php:143
+#: ../email_users_options_form.php:143
 #, fuzzy
 msgid "User Login"
 msgstr "کاربر"
 
-#: email_users_options_form.php:144
+#: ../email_users_options_form.php:144
 #, fuzzy
 msgid "User Login (Display Name)"
 msgstr "نام کاربری در وردپرس برای ارسال شخصی"
 
-#: email_users_options_form.php:145
+#: ../email_users_options_form.php:145
 msgid "User Login (First Name Last Name)"
 msgstr ""
 
-#: email_users_options_form.php:146
+#: ../email_users_options_form.php:146
 msgid "User Login (Last Name, First Name)"
 msgstr ""
 
-#: email_users_options_form.php:147
+#: ../email_users_options_form.php:147
 msgid "Determine how to sort and display names in the User selection list?"
 msgstr ""
 
-#: email_users_options_form.php:151
+#: ../email_users_options_form.php:151
 #, fuzzy
 msgid "BCC Limit"
 msgstr "حد و اندازه BCC"
 
-#: email_users_options_form.php:159
+#: ../email_users_options_form.php:155
+msgid "1 (use To: field)"
+msgstr ""
+
+#: ../email_users_options_form.php:156
+msgid "1 (use Bcc: field)"
+msgstr ""
+
+#: ../email_users_options_form.php:157 ../email_users_options_form.php:252
+msgid "10"
+msgstr ""
+
+#: ../email_users_options_form.php:158
+#, fuzzy
+msgid "30"
+msgstr ""
+"اگر در ارسال ایمیل به تعداد زیادی از کاربران مشکل دارید, سعی کنید 30 را "
+"انتخاب کنید."
+
+#: ../email_users_options_form.php:159 ../email_users_options_form.php:257
+msgid "100"
+msgstr ""
+
+#: ../email_users_options_form.php:160
+msgid "250"
+msgstr ""
+
+#: ../email_users_options_form.php:161 ../email_users_options_form.php:259
+msgid "500"
+msgstr ""
+
+#: ../email_users_options_form.php:162
+msgid "1000"
+msgstr ""
+
+#: ../email_users_options_form.php:163
 msgid ""
 "Try 30 if you have problems sending emails to many users (some providers "
 "forbid too many recipients in BCC field)."
@@ -704,279 +581,288 @@ msgstr ""
 "اگر در ارسال ایمیل به تعداد زیادی از کاربران مشکل دارید, سعی کنید 30 را "
 "انتخاب کنید."
 
-#: email_users_options_form.php:164
+#: ../email_users_options_form.php:168
 #, fuzzy
 msgid "Default<br/>Notification Subject"
 msgstr "عنوان پیشفرض اطلاع:"
 
-#: email_users_options_form.php:171
+#: ../email_users_options_form.php:175
 msgid "Display Names"
 msgstr ""
 
-#: email_users_options_form.php:175
+#: ../email_users_options_form.php:179
 msgid "Omit Display Names when sending email."
 msgstr ""
 
-#: email_users_options_form.php:176
+#: ../email_users_options_form.php:180
 msgid ""
 "Use \"john.doe@example.com\" instead of \"John Doe &lt;john.doe@example."
 "com&gt;\""
 msgstr ""
 
-#: email_users_options_form.php:180
+#: ../email_users_options_form.php:184
 #, fuzzy
 msgid "Copy Sender"
 msgstr "ارسال کننده"
 
-#: email_users_options_form.php:184
+#: ../email_users_options_form.php:188
 msgid "Copy sender (add sender email to Cc: header) when sending email."
 msgstr ""
 
-#: email_users_options_form.php:188
+#: ../email_users_options_form.php:192
 msgid "From Sender<br/>Exclude"
 msgstr ""
 
-#: email_users_options_form.php:192
+#: ../email_users_options_form.php:196
 msgid "Exclude sender from email recipient list."
 msgstr ""
 
-#: email_users_options_form.php:197
+#: ../email_users_options_form.php:201
 msgid "From Sender<br/>Name Override"
 msgstr ""
 
-#: email_users_options_form.php:201
+#: ../email_users_options_form.php:205
 msgid ""
 "A name that can be used in place of the logged in user's name when sending "
 "email or notifications."
 msgstr ""
 
-#: email_users_options_form.php:205
+#: ../email_users_options_form.php:209
 msgid "From Sender Email<br/>Address Override"
 msgstr ""
 
-#: email_users_options_form.php:209
+#: ../email_users_options_form.php:213
 msgid ""
 "An email address that can be used in place of the logged in user's email "
 "address when sending email or notifications."
 msgstr ""
 
-#: email_users_options_form.php:209 email_users_options_form.php:217
+#: ../email_users_options_form.php:213 ../email_users_options_form.php:221
 msgid "Note:  Invalid email addresses are not saved."
 msgstr ""
 
-#: email_users_options_form.php:213
+#: ../email_users_options_form.php:217
 msgid "Send Bounces To Email<br/>Address Override"
 msgstr ""
 
-#: email_users_options_form.php:217
+#: ../email_users_options_form.php:221
 msgid ""
 "An email address that can be used in place of the logged in user's email "
 "address to receive bounced email notifications."
 msgstr ""
 
-#: email_users_options_form.php:221
+#: ../email_users_options_form.php:225
 #, fuzzy
 msgid "Default<br/>Notification Body"
 msgstr "متن پیشفرض اطلاع"
 
-#: email_users_options_form.php:229
+#: ../email_users_options_form.php:233
 #, fuzzy
 msgid "Email Footer"
 msgstr "پست الکترونیک"
 
-#: email_users_options_form.php:236
+#: ../email_users_options_form.php:240
 msgid "Short Code<br/>Processing"
 msgstr ""
 
-#: email_users_options_form.php:240
+#: ../email_users_options_form.php:244
 msgid "Process short codes embedded in posts or pages."
 msgstr ""
 
-#: email_users_options_form.php:245
+#: ../email_users_options_form.php:249
 msgid "User Settings<br/>Table Rows"
 msgstr ""
 
-#: email_users_options_form.php:248
-msgid "10"
-msgstr ""
-
-#: email_users_options_form.php:249
+#: ../email_users_options_form.php:253
 msgid "20"
 msgstr ""
 
-#: email_users_options_form.php:250
+#: ../email_users_options_form.php:254
 msgid "40"
 msgstr ""
 
-#: email_users_options_form.php:251
+#: ../email_users_options_form.php:255
 msgid "50"
 msgstr ""
 
-#: email_users_options_form.php:252
+#: ../email_users_options_form.php:256
 msgid "75"
 msgstr ""
 
-#: email_users_options_form.php:253
-msgid "100"
-msgstr ""
-
-#: email_users_options_form.php:254
+#: ../email_users_options_form.php:258
 msgid "200"
 msgstr ""
 
-#: email_users_options_form.php:255
-msgid "500"
-msgstr ""
-
-#: email_users_options_form.php:256
+#: ../email_users_options_form.php:260
 msgid "By default the table will display 20 rows."
 msgstr ""
 
-#: email_users_options_form.php:260
+#: ../email_users_options_form.php:264
 msgid "Default<br/>User Settings"
 msgstr ""
 
-#: email_users_options_form.php:264
+#: ../email_users_options_form.php:268
 #, fuzzy
 msgid "Receive post or page notification emails."
 msgstr "نوشته یا برگه جدید را به اطلاع گیرنده برساند."
 
-#: email_users_options_form.php:268
+#: ../email_users_options_form.php:272
 msgid "Receive emails sent to multiple recipients."
 msgstr ""
 
-#: email_users_options_form.php:272
+#: ../email_users_options_form.php:276
 msgid "Allow Users to control their own Email Users settings."
 msgstr ""
 
-#: email_users_options_form.php:276
+#: ../email_users_options_form.php:280
+msgid ""
+"Filter Users with <a href=\"https://codex.wordpress.org/"
+"Roles_and_Capabilities#Roles\">no role</a> from Recipient List."
+msgstr ""
+
+#: ../email_users_options_form.php:284
 msgid "Additional<br/>Mail Headers"
 msgstr ""
 
-#: email_users_options_form.php:281
+#: ../email_users_options_form.php:289
 msgid ""
 "Add <b>X-Mailer</b> mail header record.<br/><small><i>Not recommended for "
 "typical WordPress installations.</i></small>"
 msgstr ""
 
-#: email_users_options_form.php:285
+#: ../email_users_options_form.php:293
 msgid ""
 "Add <a href=\"http://en.wikipedia.org/wiki/MIME-Version#MIME-Version\">MIME-"
 "Version</a> mail header record.<br/><small><i>Not recommended for typical "
 "WordPress installations.</i></small>"
 msgstr ""
 
-#: email_users_options_form.php:289
+#: ../email_users_options_form.php:297
 msgid "Debug"
 msgstr ""
 
-#: email_users_options_form.php:294
+#: ../email_users_options_form.php:302
 msgid ""
 "Enable Debug Mode<br/><small><i>Note:  Email is not sent when in debug mode."
 "</i></small>"
 msgstr ""
 
-#: email_users_options_form.php:300
+#: ../email_users_options_form.php:306
+#, fuzzy
+msgid "Base64 Encode Email"
+msgstr "پست الکترونیک"
+
+#: ../email_users_options_form.php:311
+msgid ""
+"Enable Base64 Encoding<br/><small><i>Note:  All email will be Base64 encoded "
+"when enabled.</i></small>"
+msgstr ""
+
+#: ../email_users_options_form.php:317
 #, fuzzy
 msgid "Save Changes"
 msgstr "ذخیره تغییرات"
 
-#: email_users_options_form.php:311
+#: ../email_users_options_form.php:328
 #, fuzzy
 msgid "Email-Users Defaults"
 msgstr "ایمیل کاربران"
 
-#: email_users_options_form.php:313
+#: ../email_users_options_form.php:330
 msgid ""
 "Email-Users has default values for all settings.  When reset, the following "
 "values are used."
 msgstr ""
 
-#: email_users_options_form.php:317
+#: ../email_users_options_form.php:334
 msgid "Settings"
 msgstr ""
 
-#: email_users_options_form.php:318
+#: ../email_users_options_form.php:335
 #, fuzzy
 msgid "Default Value"
 msgstr "وظیفه"
 
-#: email_users_options_form.php:338
+#: ../email_users_options_form.php:355
 #, fuzzy
 msgid "Apply Default Settings"
 msgstr "وظیفه"
 
-#: email_users_options_form.php:349
+#: ../email_users_options_form.php:366
 msgid "Email-Users Test Notification Mail"
 msgstr ""
 
-#: email_users_options_form.php:351
+#: ../email_users_options_form.php:368
 msgid "Use this Test Notification to verify proper operation of Email-Users."
 msgstr ""
 
-#: email_users_options_form.php:355
+#: ../email_users_options_form.php:372
 #, fuzzy
 msgid "Notification Mail Preview (updated when the options are saved)"
 msgstr "مشاهده ایمیل (تنظیمات ذخیره و به روز رسانی هستند)"
 
-#: email_users_options_form.php:417
+#: ../email_users_options_form.php:382 ../email_users_send_test_mail.php:74
+msgid "No post found in the blog in order to build a notification preview."
+msgstr "نوشته در این وبلاگ برای مشاهده اگاهی پیدا نشد."
+
+#: ../email_users_options_form.php:449
 #, fuzzy
 msgid "Send Test Notification to Yourself"
 msgstr "ارسال ایمیل آزمایشی به خود شما"
 
-#: email_users_options_form.php:427
+#: ../email_users_options_form.php:459
 #, fuzzy
 msgid "Email-Users Variables"
 msgstr "ایمیل کاربران"
 
-#: email_users_options_form.php:429
+#: ../email_users_options_form.php:461
 msgid "Variables you can include in the subject or body templates"
 msgstr "متغیرهای شما شامل عنوان و قالب متن میباشد"
 
-#: email_users_options_form.php:433
+#: ../email_users_options_form.php:465
 msgid "Variable"
 msgstr ""
 
-#: email_users_options_form.php:434 email_users_options_form.php:488
+#: ../email_users_options_form.php:466 ../email_users_options_form.php:520
 msgid "Description"
 msgstr "توضیح"
 
-#: email_users_options_form.php:440
+#: ../email_users_options_form.php:472
 msgid "the link to the blog"
 msgstr "پیوند به وبلاگ شما"
 
-#: email_users_options_form.php:444
+#: ../email_users_options_form.php:476
 msgid "the blog's name"
 msgstr "نام وبلاگ شما"
 
-#: email_users_options_form.php:448
+#: ../email_users_options_form.php:480
 #, fuzzy
 msgid "the WordPress user name of the person sending the mail"
 msgstr "نام کاربری در وردپرس برای ارسال شخصی"
 
-#: email_users_options_form.php:452
+#: ../email_users_options_form.php:484
 msgid "the title of the post you want to highlight"
 msgstr "عنوان نوشته شما"
 
-#: email_users_options_form.php:456
+#: ../email_users_options_form.php:488
 #, fuzzy
 msgid "the author of the post you want to highlight"
 msgstr "عنوان نوشته شما"
 
-#: email_users_options_form.php:460
+#: ../email_users_options_form.php:492
 msgid "the excerpt of the post you want to highlight"
 msgstr "گلچین نوشته های شما"
 
-#: email_users_options_form.php:464
+#: ../email_users_options_form.php:496
 #, fuzzy
 msgid "the content of the post you want to highlight"
-msgstr "عنوان نوشته شما"
+msgstr "گلچین نوشته های شما"
 
-#: email_users_options_form.php:468
+#: ../email_users_options_form.php:500
 msgid "the link to the post you want to highlight"
 msgstr "آدرس پیوند نوشته شما"
 
-#: email_users_options_form.php:479
+#: ../email_users_options_form.php:511
 #, fuzzy
 msgid "Email-Users Capabilities"
 msgstr ""
@@ -984,7 +870,7 @@ msgstr ""
 "is a list of the capabilities used by the plugin and the default user role "
 "allowed to make these actions."
 
-#: email_users_options_form.php:482
+#: ../email_users_options_form.php:514
 msgid ""
 "Email Users uses capabilities to define what users are allowed to do. Below "
 "is a list of the capabilities used by the plugin and the default user role "
@@ -994,172 +880,179 @@ msgstr ""
 "is a list of the capabilities used by the plugin and the default user role "
 "allowed to make these actions."
 
-#: email_users_options_form.php:482
+#: ../email_users_options_form.php:514
 msgid ""
 "If you want to change the roles having those capabilities, you should use "
 "the plugin:"
 msgstr "در این افزونه شما میتوانید وظیفه و استعدادشان را تغییر دهید."
 
-#: email_users_options_form.php:487
+#: ../email_users_options_form.php:519
 msgid "Capability"
 msgstr "قابلیت"
 
-#: email_users_options_form.php:489
+#: ../email_users_options_form.php:521
 #, fuzzy
 msgid "Default Roles"
 msgstr "وظیفه"
 
-#: email_users_options_form.php:495
+#: ../email_users_options_form.php:527
 msgid "Access this options page."
 msgstr "دستیابی به تنظیمات این صفحه."
 
-#: email_users_options_form.php:496
+#: ../email_users_options_form.php:528
 msgid "Administrators only."
 msgstr "فقط مدیریت"
 
-#: email_users_options_form.php:500
+#: ../email_users_options_form.php:532
 msgid "Send an email to a single user."
 msgstr "ارسال ایمیل به یک کاربر."
 
-#: email_users_options_form.php:501
+#: ../email_users_options_form.php:533
 msgid "Administrators, editors, authors and contributors."
 msgstr ".مدیر, ویرایشگر و نویسنده وشرکت کننده"
 
-#: email_users_options_form.php:505
+#: ../email_users_options_form.php:537
 msgid "Send an email to various users at the same time."
 msgstr "ارسال یک ایمیل به کاربران گوناگون در یک وقت."
 
-#: email_users_options_form.php:506
+#: ../email_users_options_form.php:538
 msgid "Administrators, editors and authors."
 msgstr "مدیر, ویرایشگر و نویسنده"
 
-#: email_users_options_form.php:510
+#: ../email_users_options_form.php:542
 msgid "Notify users of new posts."
 msgstr "آگاهی کاربر از نوشته جدید."
 
-#: email_users_options_form.php:511 email_users_options_form.php:516
+#: ../email_users_options_form.php:543 ../email_users_options_form.php:548
 msgid "Administrators and editors."
 msgstr "مدیر و ویرایش گر."
 
-#: email_users_options_form.php:515
+#: ../email_users_options_form.php:547
 msgid "Send an email to user groups."
 msgstr "ارسال ایمیل به گروهی از کاربران."
 
-#: email_users_options_form.php:527
+#: ../email_users_options_form.php:559
 msgid "Email-Users wp_mail() Check"
 msgstr ""
 
-#: email_users_options_form.php:530
+#: ../email_users_options_form.php:562
 msgid ""
 "Email Users is dependent on the <a href=\"http://codex.wordpress.org/"
 "Function_Reference/wp_mail\">wp_mail()</a> function."
 msgstr ""
 
-#: email_users_options_form.php:535
+#: ../email_users_options_form.php:567
 msgid "wp_mail() is loaded from:"
 msgstr ""
 
-#: email_users_options_form.php:539
+#: ../email_users_options_form.php:571
 msgid "Expected:"
 msgstr ""
 
-#: email_users_options_form.php:543
+#: ../email_users_options_form.php:575
 msgid "Actual:"
 msgstr ""
 
-#: email_users_options_form.php:549
+#: ../email_users_options_form.php:581
 msgid ""
 "The WordPress wp_mail() function is <a href=\"http://codex.wordpress.org/"
-"Pluggable_Functions\">pluggable</a>\r\n"
+"Pluggable_Functions\">pluggable</a>\n"
 "    which means the standard WordPress functionality can be overloaded by a "
-"Theme or another WordPress plugin.\r\n"
+"Theme or another WordPress plugin.\n"
 "    It is important to note that if the <strong><i>expected</i></strong> and "
-"<strong><i>actual</i></strong> do\r\n"
+"<strong><i>actual</i></strong> do\n"
 "    not match, it does not automatically mean there will be a problem.  "
-"However, if Email Users is not producing\r\n"
+"However, if Email Users is not producing\n"
 "    the expected results AND the <strong><i>expected</i></strong> and "
-"<strong><i>actual</i></strong> do not match,\r\n"
+"<strong><i>actual</i></strong> do not match,\n"
 "    it is something which should be looked at as a potential source of the "
 "problem."
 msgstr ""
 
-#: email_users_options_form.php:557
+#: ../email_users_options_form.php:589
 msgid ""
 "The recommended way to eliminate the overloaded version of wp_mail() as the "
-"source of a problem is to disable\r\n"
+"source of a problem is to disable\n"
 "    the plugin or theme which has overloaded wp_mail()."
 msgstr ""
 
-#: email_users_options_form.php:566
+#: ../email_users_options_form.php:598
 #, fuzzy
 msgid "Email-Users Integration"
 msgstr "ایمیل کاربران"
 
-#: email_users_options_form.php:569
+#: ../email_users_options_form.php:601
 msgid ""
 "Email Users provides integration hooks with several WordPress \"Group\" "
 "plugins."
 msgstr ""
 
-#: email_users_options_form.php:574
+#: ../email_users_options_form.php:606
 #, fuzzy
 msgid "Plugin"
 msgstr "خانه این افزونه"
 
-#: email_users_options_form.php:575
+#: ../email_users_options_form.php:607
 msgid "Description <small><i>(from the plugin web site)</i></small>"
 msgstr ""
 
-#: email_users_options_form.php:576
+#: ../email_users_options_form.php:608
 msgid "Status"
 msgstr ""
 
-#: email_users_options_form.php:582
+#: ../email_users_options_form.php:614
 msgid ""
 "This plugin does one thing, and does it well: create groups and organize "
 "your users by that group."
 msgstr ""
 
-#: email_users_options_form.php:587
+#: ../email_users_options_form.php:619
 msgid ""
 "With the \"User Access Manager\"-plugin you can manage the access to your "
 "posts, pages and files."
 msgstr ""
 
-#: email_users_options_form.php:592
+#: ../email_users_options_form.php:624
 msgid ""
 "Groups provides group-based user membership management, group-based "
 "capabilities and content access control."
 msgstr ""
 
-#: email_users_options_form.php:611
+#: ../email_users_options_form.php:629
+msgid ""
+"Paid Memberships Pro:  The easiest way to GET PAID with your WordPress site. "
+"Flexible content control by Membership Level, Reports, Affiliates and "
+"Discounts."
+msgstr ""
+
+#: ../email_users_options_form.php:648
 #, fuzzy
 msgid "Email-Users Information"
 msgstr "ایمیل کاربران"
 
-#: email_users_options_form.php:619
+#: ../email_users_options_form.php:656
 #, fuzzy
 msgid "Number of Users who accept<br/>post or page notification emails:"
 msgstr "نوشته یا برگه جدید را به اطلاع گیرنده برساند."
 
-#: email_users_options_form.php:623
+#: ../email_users_options_form.php:660
 msgid "Number of Users who accept<br/>emails sent to multiple recipients:"
 msgstr ""
 
-#: email_users_options_form.php:629
+#: ../email_users_options_form.php:666
 msgid "Filters"
 msgstr ""
 
-#: email_users_options_form.php:637
+#: ../email_users_options_form.php:674
 msgid "Yes"
 msgstr ""
 
-#: email_users_options_form.php:637
+#: ../email_users_options_form.php:674
 #, fuzzy
 msgid "No"
 msgstr "هیچ کدام"
 
-#: email_users_options_form.php:643
+#: ../email_users_options_form.php:680
 msgid ""
 "There are a number of <a href=\"http://codex.wordpress.org/Plugin_API/"
 "Filter_Reference\">WordPress Filters</a> which <strong><i>may</i></strong> "
@@ -1169,18 +1062,219 @@ msgid ""
 "detail isn't as expected."
 msgstr ""
 
-#: email_users_send_group_mail.php:61
+#: ../email_users_overview.php:26
+msgid "You are not allowed to send emails."
+msgstr "شما نمیتوانید اجازه بدهید در ارسال ایمیل ها."
+
+#: ../email_users_overview.php:45 ../email_users_overview.php:51
+msgid "Send Individual Message"
+msgstr ""
+
+#: ../email_users_overview.php:48
+msgid "Send an email to one or more individual users"
+msgstr "ارسال ایمیل به یک یا چند نفر از کاربران."
+
+#: ../email_users_overview.php:50
+#, fuzzy
+msgid ""
+"You can send an email to one or more users by selecting them individually."
+msgstr "ارسال ایمیل به یک یا چند نفر از کاربران."
+
+#: ../email_users_overview.php:63
+#, fuzzy
+msgid "Send a Group Message"
+msgstr "ارسال گروهی"
+
+#: ../email_users_overview.php:66
+msgid "Send an email to one or more user groups"
+msgstr "ارسال ایمیل به گروهی از کاربران."
+
+#: ../email_users_overview.php:68
+msgid ""
+"You can send an email to one or more user groups (i.e. users belonging to "
+"the same WordPress role)."
+msgstr ""
+
+#: ../email_users_overview.php:69
+#, fuzzy
+msgid "Send Group Message"
+msgstr "ارسال گروهی"
+
+#: ../email_users_send_custom_filter_mail.php:53
+#: ../email_users_send_group_mail.php:59 ../email_users_send_user_mail.php:52
+msgid "You must specify the mail format."
+msgstr "شما باید قالب ایمیل را تعیید کنید."
+
+#: ../email_users_send_custom_filter_mail.php:59
+#: ../email_users_send_user_mail.php:58
+msgid "You must enter at least a recipient."
+msgstr "شما باید دست کم یک گیرنده وارد کنید."
+
+#: ../email_users_send_custom_filter_mail.php:73
+#: ../email_users_send_group_mail.php:71
+#: ../email_users_send_notify_mail.php:61 ../email_users_send_user_mail.php:64
+msgid "You must enter a subject."
+msgstr "باید حتما موضوع ایمیل را وارد کنید"
+
+#: ../email_users_send_custom_filter_mail.php:79
+#: ../email_users_send_group_mail.php:77
+#: ../email_users_send_notify_mail.php:67 ../email_users_send_user_mail.php:70
+msgid "You must enter some content."
+msgstr "باید حتما متن ایمیل را وارد کنید."
+
+#: ../email_users_send_custom_filter_mail.php:144
+#: ../email_users_send_group_mail.php:209
+#: ../email_users_send_notify_mail.php:261
+#: ../email_users_send_test_mail.php:103 ../email_users_send_user_mail.php:143
+msgid "No recipients were found."
+msgstr "گیرنده چیزی دریافت نکرد."
+
+#: ../email_users_send_custom_filter_mail.php:149
+#: ../email_users_send_group_mail.php:214
+#: ../email_users_send_user_mail.php:149
+#, fuzzy
+msgid "There was a problem trying to send email to users."
+msgstr "ارسال ایمیل به یک یا چند نفر از کاربران."
+
+#: ../email_users_send_custom_filter_mail.php:152
+#: ../email_users_send_group_mail.php:216
+#: ../email_users_send_user_mail.php:151
+msgid ""
+"No email has been sent to other users. This may be because no valid email "
+"addresses were found."
+msgstr ""
+
+#: ../email_users_send_custom_filter_mail.php:156
+#: ../email_users_send_group_mail.php:220
+#: ../email_users_send_user_mail.php:155
+#, fuzzy, php-format
+msgid "Email sent to %s user(s)."
+msgstr "ایمیل اطلاع ارسال شد به %s کاربر."
+
+#: ../email_users_send_custom_filter_mail.php:160
+#: ../email_users_send_group_mail.php:224
+#: ../email_users_send_user_mail.php:159
+msgid "WARNING: More email has been sent than the number of recipients found."
+msgstr ""
+
+#: ../email_users_send_custom_filter_mail.php:162
+#: ../email_users_send_group_mail.php:226
+#, php-format
+msgid ""
+"Email has been sent to %s users, but %s recipients were originally found. "
+"Perhaps some users don't have valid email addresses?"
+msgstr ""
+
+#: ../email_users_send_group_mail.php:65
 msgid "You must select at least a role."
 msgstr "شما باید دست کم یک وظیفه انتخاب کنید."
 
-#: email_users_set_options.php:37
+#: ../email_users_send_notify_mail.php:54
+msgid "You must select at least a recipient."
+msgstr "شما باید انتخاب کنید دسته کم یک گیرنده."
+
+#: ../email_users_send_notify_mail.php:267
+#, php-format
+msgid "Notification sent to %s user(s)."
+msgstr "ایمیل اطلاع ارسال شد به %s کاربر."
+
+#: ../email_users_send_test_mail.php:109
+#, php-format
+msgid "Test email sent to %s."
+msgstr "ایمیل آزمایش ارسال شد به: %s"
+
+#: ../email_users_send_user_mail.php:137
+#, php-format
+msgid ""
+"<br/>%d users who should not to receive Mass Email were filtered from the "
+"recipient list."
+msgstr ""
+
+#: ../email_users_send_user_mail.php:161
+#, php-format
+msgid ""
+"Email has been sent to %d users, but %d recipients were originally found. "
+"Perhaps some users don't have valid email addresses?"
+msgstr ""
+
+#: ../email_users_set_options.php:37
 msgid "Plugin settings have been restored to the defaults."
 msgstr ""
 
-#: email_users_custom_filter_mail_form.php:57
+#: ../email_users_user_mail_form.php:55
 #, fuzzy
-msgid "Send an Email to a Custom Filtered list of Users"
-msgstr "ارسال ایمیل به یک کاربر."
+msgid "Send an Email to Individual Users"
+msgstr "ارسال ایمیل به یک یا چند نفر از کاربران."
+
+#: ../email_users_user_settings.php:30
+#, fuzzy
+msgid "You are not allowed to view the user settings."
+msgstr "شما فعلا یک کاربر را میتوانید انتخاب کنید."
+
+#: ../email_users_user_settings.php:183
+#, fuzzy
+msgid "Username"
+msgstr "کاربر"
+
+#: ../email_users_user_settings.php:184
+#, fuzzy
+msgid "E-Mail Address"
+msgstr "ایمیل ارسال شود به:"
+
+#: ../email_users_user_settings.php:187
+#, fuzzy
+msgid "Notifications"
+msgstr "آگاهی گیرنده برای کاربران در اینجا ظاهر شد."
+
+#: ../email_users_user_settings.php:188
+#, fuzzy
+msgid "Mass Email"
+msgstr "پست الکترونیک"
+
+#: ../email_users_user_settings.php:239
+#, fuzzy
+msgid "Notifications On"
+msgstr "آگاهی گیرنده برای کاربران در اینجا ظاهر شد."
+
+#: ../email_users_user_settings.php:240
+msgid "Notifications Off"
+msgstr ""
+
+#: ../email_users_user_settings.php:241
+#, fuzzy
+msgid "Mass Email On"
+msgstr "پست الکترونیک"
+
+#: ../email_users_user_settings.php:242
+#, fuzzy
+msgid "Mass Email Off"
+msgstr "پست الکترونیک"
+
+#: ../email_users_user_settings.php:243
+#, fuzzy
+msgid "Notifications On & Mass Email On"
+msgstr "پست الکترونیک"
+
+#: ../email_users_user_settings.php:244
+msgid "Notifications On & Mass Email Off"
+msgstr ""
+
+#: ../email_users_user_settings.php:245
+msgid "Notifications Off & Mass Email On"
+msgstr ""
+
+#: ../email_users_user_settings.php:246
+msgid "Notifications Off & Mass Email Off"
+msgstr ""
+
+#: ../email_users_user_settings.php:324
+#, fuzzy
+msgid "No users selected"
+msgstr "ایمیل کاربران"
+
+#: ../email_users_user_settings.php:489
+msgid "Search"
+msgstr ""
 
 #~ msgid "[%BLOG_NAME%] A post of interest: \"%POST_TITLE%\""
 #~ msgstr "[%BLOG_NAME%] یک نوشته با نام: \"%POST_TITLE%\""

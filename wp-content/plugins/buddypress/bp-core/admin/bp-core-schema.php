@@ -8,7 +8,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Get the DB schema to use for BuddyPress components
@@ -84,7 +84,7 @@ function bp_core_install( $active_components = false ) {
  * Install database tables for the Notifications component
  *
  * @since BuddyPress (1.0.0)
- * 
+ *
  * @uses bp_core_set_charset()
  * @uses bp_core_get_table_prefix()
  * @uses dbDelta()
@@ -119,7 +119,7 @@ function bp_core_install_notifications() {
  * Install database tables for the Activity component
  *
  * @since BuddyPress (1.0.0)
- * 
+ *
  * @uses bp_core_set_charset()
  * @uses bp_core_get_table_prefix()
  * @uses dbDelta()
@@ -136,7 +136,7 @@ function bp_core_install_activity_streams() {
 				type varchar(75) NOT NULL,
 				action text NOT NULL,
 				content longtext NOT NULL,
-				primary_link varchar(255) NOT NULL,
+				primary_link text NOT NULL,
 				item_id bigint(20) NOT NULL,
 				secondary_item_id bigint(20) DEFAULT NULL,
 				date_recorded datetime NOT NULL,
@@ -172,7 +172,7 @@ function bp_core_install_activity_streams() {
  * Install database tables for the Notifications component
  *
  * @since BuddyPress (1.0.0)
- * 
+ *
  * @uses bp_core_set_charset()
  * @uses bp_core_get_table_prefix()
  * @uses dbDelta()
@@ -200,7 +200,7 @@ function bp_core_install_friends() {
  * Install database tables for the Groups component
  *
  * @since BuddyPress (1.0.0)
- * 
+ *
  * @uses bp_core_set_charset()
  * @uses bp_core_get_table_prefix()
  * @uses dbDelta()
@@ -257,10 +257,10 @@ function bp_core_install_groups() {
 }
 
 /**
- * Install database tables for the Messsages component
+ * Install database tables for the Messages component
  *
  * @since BuddyPress (1.0.0)
- * 
+ *
  * @uses bp_core_set_charset()
  * @uses bp_core_get_table_prefix()
  * @uses dbDelta()
@@ -304,6 +304,15 @@ function bp_core_install_private_messaging() {
 				KEY is_active (is_active)
 			) {$charset_collate};";
 
+	$sql[] = "CREATE TABLE {$bp_prefix}bp_messages_meta (
+				id bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				message_id bigint(20) NOT NULL,
+				meta_key varchar(255) DEFAULT NULL,
+				meta_value longtext DEFAULT NULL,
+				KEY message_id (message_id),
+				KEY meta_key (meta_key)
+			) {$charset_collate};";
+
 	dbDelta( $sql );
 }
 
@@ -311,7 +320,7 @@ function bp_core_install_private_messaging() {
  * Install database tables for the Profiles component
  *
  * @since BuddyPress (1.0.0)
- * 
+ *
  * @uses bp_core_set_charset()
  * @uses bp_core_get_table_prefix()
  * @uses dbDelta()
@@ -401,7 +410,7 @@ function bp_core_install_extended_profiles() {
  * Install database tables for the Sites component
  *
  * @since BuddyPress (1.0.0)
- * 
+ *
  * @uses bp_core_set_charset()
  * @uses bp_core_get_table_prefix()
  * @uses dbDelta()

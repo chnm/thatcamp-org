@@ -8,7 +8,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Creates the administration interface menus and checks to see if the DB
@@ -43,22 +43,22 @@ function xprofile_admin( $message = '', $type = 'error' ) {
 	if ( isset( $_GET['mode'] ) && isset( $_GET['group_id'] ) && 'add_field' == $_GET['mode'] )
 		xprofile_admin_manage_field( $_GET['group_id'] );
 
-	else if ( isset( $_GET['mode'] ) && isset( $_GET['group_id'] ) && isset( $_GET['field_id'] ) && 'edit_field' == $_GET['mode'] )
+	elseif ( isset( $_GET['mode'] ) && isset( $_GET['group_id'] ) && isset( $_GET['field_id'] ) && 'edit_field' == $_GET['mode'] )
 		xprofile_admin_manage_field( $_GET['group_id'], $_GET['field_id'] );
 
-	else if ( isset( $_GET['mode'] ) && isset( $_GET['field_id'] ) && 'delete_field' == $_GET['mode'] )
+	elseif ( isset( $_GET['mode'] ) && isset( $_GET['field_id'] ) && 'delete_field' == $_GET['mode'] )
 		xprofile_admin_delete_field( $_GET['field_id'], 'field');
 
-	else if ( isset( $_GET['mode'] ) && isset( $_GET['option_id'] ) && 'delete_option' == $_GET['mode'] )
+	elseif ( isset( $_GET['mode'] ) && isset( $_GET['option_id'] ) && 'delete_option' == $_GET['mode'] )
 		xprofile_admin_delete_field( $_GET['option_id'], 'option' );
 
-	else if ( isset( $_GET['mode'] ) && 'add_group' == $_GET['mode'] )
+	elseif ( isset( $_GET['mode'] ) && 'add_group' == $_GET['mode'] )
 		xprofile_admin_manage_group();
 
-	else if ( isset( $_GET['mode'] ) && isset( $_GET['group_id'] ) && 'delete_group' == $_GET['mode'] )
+	elseif ( isset( $_GET['mode'] ) && isset( $_GET['group_id'] ) && 'delete_group' == $_GET['mode'] )
 		xprofile_admin_delete_group( $_GET['group_id'] );
 
-	else if ( isset( $_GET['mode'] ) && isset( $_GET['group_id'] ) && 'edit_group' == $_GET['mode'] )
+	elseif ( isset( $_GET['mode'] ) && isset( $_GET['group_id'] ) && 'edit_group' == $_GET['mode'] )
 		xprofile_admin_manage_group( $_GET['group_id'] );
 
 	else { ?>
@@ -118,6 +118,18 @@ function xprofile_admin( $message = '', $type = 'error' ) {
 									<a class="confirm submitdelete deletion ajax-option-delete" href="users.php?page=bp-profile-setup&amp;mode=delete_group&amp;group_id=<?php echo esc_attr( $group->id ); ?>"><?php _e( 'Delete Group', 'buddypress' ); ?></a>
 
 								<?php endif; ?>
+
+								<?php
+
+								/**
+								 * Fires at end of action buttons in xprofile management admin.
+								 *
+								 * @since BuddyPress (2.2.0)
+								 *
+								 * @param BP_XProfile_Group $group BP_XProfile_Group object
+								 *                                 for the current group.
+								 */
+								do_action( 'xprofile_admin_group_action', $group ); ?>
 
 							</div>
 						</div>
@@ -186,7 +198,7 @@ function xprofile_admin_manage_group( $group_id = null ) {
 			$group->description	= !empty( $_POST['group_description'] ) ? wp_filter_kses( $_POST['group_description'] ) : '';
 
 			if ( !$group->save() ) {
-				$message = __( 'There was an error saving the group. Please try again', 'buddypress' );
+				$message = __( 'There was an error saving the group. Please try again.', 'buddypress' );
 				$type    = 'error';
 			} else {
 				$message = __( 'The group was saved successfully.', 'buddypress' );
@@ -195,6 +207,13 @@ function xprofile_admin_manage_group( $group_id = null ) {
 				if ( 1 == $group_id )
 					bp_update_option( 'bp-xprofile-base-group-name', $group->name );
 
+				/**
+				 * Fires at the end of the group adding/saving process, if successful.
+				 *
+				 * @since BuddyPress (1.0.0)
+				 *
+				 * @param BP_XProfile_Group $group Current BP_XProfile_Group object.
+				 */
 				do_action( 'xprofile_groups_saved_group', $group );
 			}
 
@@ -218,12 +237,19 @@ function xprofile_admin_delete_group( $group_id ) {
 	$group = new BP_XProfile_Group( $group_id );
 
 	if ( !$group->delete() ) {
-		$message = __( 'There was an error deleting the group. Please try again', 'buddypress' );
+		$message = __( 'There was an error deleting the group. Please try again.', 'buddypress' );
 		$type    = 'error';
 	} else {
 		$message = __( 'The group was deleted successfully.', 'buddypress' );
 		$type    = 'success';
 
+		/**
+		 * Fires at the end of group deletion process, if successful.
+		 *
+		 * @since BuddyPress (1.0.0)
+		 *
+		 * @param BP_XProfile_Group $group Current BP_XProfile_Group object.
+		 */
 		do_action( 'xprofile_groups_deleted_group', $group );
 	}
 
@@ -262,7 +288,7 @@ function xprofile_admin_manage_field( $group_id, $field_id = null ) {
 			$field_id = $field->save();
 
 			if ( !$field_id ) {
-				$message = __( 'There was an error saving the field. Please try again', 'buddypress' );
+				$message = __( 'There was an error saving the field. Please try again.', 'buddypress' );
 				$type = 'error';
 
 				unset( $_GET['mode'] );
@@ -285,6 +311,13 @@ function xprofile_admin_manage_field( $group_id, $field_id = null ) {
 
 				unset( $_GET['mode'] );
 
+				/**
+				 * Fires at the end of the process to save a field for a user, if successful.
+				 *
+				 * @since BuddyPress (1.0.0)
+				 *
+				 * @param BP_XProfile_Field $field Current BP_XProfile_Field object.
+				 */
 				do_action( 'xprofile_fields_saved_field', $field );
 
 				$groups = bp_xprofile_get_groups();
@@ -301,7 +334,7 @@ function xprofile_admin_manage_field( $group_id, $field_id = null ) {
 /**
  * Handles the deletion of a profile field (or field option)
  *
- * @since BuddyPress (1.0)
+ * @since BuddyPress (1.0.0)
  * @global string $message The feedback message to show
  * @global $type The type of feedback message to show
  * @param int $field_id The field to delete
@@ -317,12 +350,19 @@ function xprofile_admin_delete_field( $field_id, $field_type = 'field', $delete_
 	$field       = new BP_XProfile_Field( $field_id );
 
 	if ( !$field->delete( (bool) $delete_data ) ) {
-		$message = sprintf( __( 'There was an error deleting the %s. Please try again', 'buddypress' ), $field_type );
+		$message = sprintf( __( 'There was an error deleting the %s. Please try again.', 'buddypress' ), $field_type );
 		$type    = 'error';
 	} else {
 		$message = sprintf( __( 'The %s was deleted successfully!', 'buddypress' ), $field_type );
 		$type    = 'success';
 
+		/**
+		 * Fires at the end of the field deletion process, if successful.
+		 *
+		 * @since BuddyPress (1.0.0)
+		 *
+		 * @param BP_XProfile_Field $field Current BP_XProfile_Field object.
+		 */
 		do_action( 'xprofile_fields_deleted_field', $field );
 	}
 
@@ -379,15 +419,41 @@ function xprofile_admin_field( $admin_field, $admin_group, $class = '' ) {
 	$field = $admin_field; ?>
 
 	<fieldset id="field_<?php echo esc_attr( $field->id ); ?>" class="sortable<?php echo ' ' . $field->type; if ( !empty( $class ) ) echo ' ' . $class; ?>">
-		<legend><span><?php bp_the_profile_field_name(); ?> <?php if( !$field->can_delete ) : ?> <?php _e( '(Primary)', 'buddypress' ); endif; ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(Required)', 'buddypress' ) ?><?php endif; ?></span></legend>
+		<legend>
+			<span>
+				<?php bp_the_profile_field_name(); ?>
+				<?php if ( ! $field->can_delete ) : ?> <?php _e( '(Primary)', 'buddypress' ); endif; ?>
+				<?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(Required)', 'buddypress' ) ?><?php endif; ?>
+				<?php
+
+				/**
+				 * Fires at end of legend above the name field in base xprofile group.
+				 *
+				 * @since BuddyPress (2.2.0)
+				 *
+				 * @param BP_XProfile_Field $field Current BP_XProfile_Field
+				 *                                 object being rendered.
+				 */
+				do_action( 'xprofile_admin_field_name_legend', $field ); ?>
+			</span>
+		</legend>
 		<div class="field-wrapper">
 
 			<?php
 			if ( in_array( $field->type, array_keys( bp_xprofile_get_field_types() ) ) ) {
 				$field_type = bp_xprofile_create_field_type( $field->type );
 				$field_type->admin_field_html();
-
 			} else {
+
+				/**
+				 * Fires after the input if the current field is not in default field types.
+				 *
+				 * @since BuddyPress (1.5.0)
+				 *
+				 * @param BP_XProfile_Field $field Current BP_XProfile_Field
+				 *                                 object being rendered.
+				 * @param int               $value Integer 1.
+				 */
 				do_action( 'xprofile_admin_field', $field, 1 );
 			}
 			?>
@@ -408,6 +474,19 @@ function xprofile_admin_field( $admin_field, $admin_group, $class = '' ) {
 					</div>
 
 				<?php endif; ?>
+
+				<?php
+
+				/**
+				 * Fires at end of field management links in xprofile management admin.
+				 *
+				 * @since BuddyPress (2.2.0)
+				 *
+				 * @param BP_XProfile_Group $group BP_XProfile_Group object
+				 *                                 for the current group.
+				 */
+				do_action( 'xprofile_admin_field_action', $field ); ?>
+
 			</div>
 		</div>
 	</fieldset>
@@ -682,6 +761,15 @@ class BP_XProfile_User_Admin {
 				if ( ! xprofile_set_field_data( $field_id, $user_id, $value, $is_required[ $field_id ] ) ) {
 					$errors = true;
 				} else {
+
+					/**
+					 * Fires after the saving of each profile field, if successful.
+					 *
+					 * @since BuddyPress (1.1.0)
+					 *
+					 * @param int    $field_id ID of the field being updated.
+					 * @param string $value    Value that was saved to the field.
+					 */
 					do_action( 'xprofile_profile_field_data_updated', $field_id, $value );
 				}
 
@@ -690,6 +778,15 @@ class BP_XProfile_User_Admin {
 				xprofile_set_field_visibility_level( $field_id, $user_id, $visibility_level );
 			}
 
+			/**
+			 * Fires after all of the profile fields have been saved.
+			 *
+			 * @since BuddyPress (1.0.0)
+			 *
+			 * @param int   $user_id          ID of the user whose data is being saved.
+			 * @param array $posted_field_ids IDs of the fields that were submitted.
+			 * @param bool  $errors           Whether or not errors occurred during saving.
+			 */
 			do_action( 'xprofile_updated_profile', $user_id, $posted_field_ids, $errors );
 
 			// Set the feedback messages
@@ -759,6 +856,11 @@ class BP_XProfile_User_Admin {
 
 					<?php endif;
 
+					/**
+					 * Fires before display of visibility form elements for profile metaboxes.
+					 *
+					 * @since BuddyPress (1.7.0)
+					 */
 					do_action( 'bp_custom_profile_edit_fields_pre_visibility' );
 
 					$can_change_visibility = bp_current_user_can( 'bp_xprofile_change_field_visibility' ); ?>
@@ -788,7 +890,14 @@ class BP_XProfile_User_Admin {
 
 					<?php endif; ?>
 
-					<?php do_action( 'bp_custom_profile_edit_fields' ); ?>
+					<?php
+
+					/**
+					 * Fires at end of custom profile field items on your xprofile screen tab.
+					 *
+					 * @since BuddyPress (1.1.0)
+					 */
+					do_action( 'bp_custom_profile_edit_fields' ); ?>
 
 				</div>
 

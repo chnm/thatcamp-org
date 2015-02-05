@@ -10,16 +10,22 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Allow core components and dependent plugins to register activity actions.
  *
- * @since BuddyPress (1.2)
+ * @since BuddyPress (1.2.0)
  *
  * @uses do_action() To call 'bp_register_activity_actions' hook.
  */
 function bp_register_activity_actions() {
+
+	/**
+	 * Fires on bp_init to allow core components and dependent plugins to register activity actions.
+	 *
+	 * @since BuddyPress (1.2.0)
+	 */
 	do_action( 'bp_register_activity_actions' );
 }
 add_action( 'bp_init', 'bp_register_activity_actions', 8 );
@@ -85,7 +91,7 @@ function bp_activity_action_permalink_router() {
 		}
 
 	// Set redirect to users' activity stream
-	} else if ( ! empty( $activity->user_id ) ) {
+	} elseif ( ! empty( $activity->user_id ) ) {
 		$redirect = bp_core_get_user_domain( $activity->user_id, $activity->user_nicename, $activity->user_login ) . bp_get_activity_slug() . '/' . $activity->id . '/';
 	}
 
@@ -96,7 +102,13 @@ function bp_activity_action_permalink_router() {
 		$redirect = add_query_arg( urlencode_deep( $query_frags ), $redirect );
 	}
 
-	// Allow redirect to be filtered
+	/**
+	 * Filter the intended redirect url before the redirect occurs for the single activity item.
+	 *
+	 * @since BuddyPress (1.2.2)
+	 *
+	 * @param array Array with url to redirect to and activity related to the redirect.
+	 */
 	if ( ! $redirect = apply_filters_ref_array( 'bp_activity_permalink_redirect_url', array( $redirect, &$activity ) ) ) {
 		bp_core_redirect( bp_get_root_domain() );
 	}
@@ -149,7 +161,14 @@ function bp_activity_action_delete_activity( $activity_id = 0 ) {
 	if ( ! bp_activity_user_can_delete( $activity ) )
 		return false;
 
-	// Call the action before the delete so plugins can still fetch information about it
+	/**
+	 * Fires before the deletion so plugins can still fetch information about it.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 *
+	 * @param int $activity_id The activity ID.
+	 * @param int $user_id The user associated with the activity.
+	 */
 	do_action( 'bp_activity_before_action_delete_activity', $activity_id, $activity->user_id );
 
 	// Delete the activity item and provide user feedback
@@ -158,6 +177,14 @@ function bp_activity_action_delete_activity( $activity_id = 0 ) {
 	else
 		bp_core_add_message( __( 'There was an error when deleting that activity', 'buddypress' ), 'error' );
 
+	/**
+	 * Fires after the deletion so plugins can act afterwards based on the activity.
+	 *
+	 * @since BuddyPress (1.1.0)
+	 *
+	 * @param int $activity_id The activity ID.
+	 * @param int $user_id The user associated with the activity.
+	 */
 	do_action( 'bp_activity_action_delete_activity', $activity_id, $activity->user_id );
 
 	// Check for the redirect query arg, otherwise let WP handle things
@@ -203,16 +230,31 @@ function bp_activity_action_spam_activity( $activity_id = 0 ) {
 	// Check nonce
 	check_admin_referer( 'bp_activity_akismet_spam_' . $activity->id );
 
-	// Call an action before the spamming so plugins can modify things if they want to
+	/**
+	 * Fires before the marking activity as spam so plugins can modify things if they want to.
+	 *
+	 * @since BuddyPress (1.6.0)
+	 *
+	 * @param int    $activity_id Activity ID to be marked as spam.
+	 * @param object $activity Activity object for the ID to be marked as spam.
+	 */
 	do_action( 'bp_activity_before_action_spam_activity', $activity->id, $activity );
 
 	// Mark as spam
 	bp_activity_mark_as_spam( $activity );
 	$activity->save();
 
-	// Tell the user the spamming has been succesful
+	// Tell the user the spamming has been successful
 	bp_core_add_message( __( 'The activity item has been marked as spam and is no longer visible.', 'buddypress' ) );
 
+	/**
+	 * Fires after the marking activity as spam so plugins can act afterwards based on the activity.
+	 *
+	 * @since BuddyPress (1.6.0)
+	 *
+	 * @param int $activity_id Activity ID that was marked as spam.
+	 * @param int $user_id User ID associated with activity.
+	 */
 	do_action( 'bp_activity_action_spam_activity', $activity_id, $activity->user_id );
 
 	// Check for the redirect query arg, otherwise let WP handle things
@@ -253,14 +295,36 @@ function bp_activity_action_post_update() {
 	// Check the nonce
 	check_admin_referer( 'post_update', '_wpnonce_post_update' );
 
-	// Get activity info
+	/**
+	 * Filters the content provided in the activity input field.
+	 *
+	 * @since BuddyPress (1.2.0)
+	 *
+	 * @param string $whats-new Activity message being posted.
+	 */
 	$content = apply_filters( 'bp_activity_post_update_content', $_POST['whats-new'] );
 
 	if ( ! empty( $_POST['whats-new-post-object'] ) ) {
+
+		/**
+		 * Filters the item type that the activity update should be associated with.
+		 *
+		 * @since BuddyPress (1.2.0)
+		 *
+		 * @param string $whats-new-post-object Item type to associate with.
+		 */
 		$object = apply_filters( 'bp_activity_post_update_object', $_POST['whats-new-post-object'] );
 	}
 
 	if ( ! empty( $_POST['whats-new-post-in'] ) ) {
+
+		/**
+		 * Filters what component the activity is being to.
+		 *
+		 * @since BuddyPress (1.2.0)
+		 *
+		 * @param string $whats-new-post-in Chosen component to post activity to.
+		 */
 		$item_id = apply_filters( 'bp_activity_post_update_item_id', $_POST['whats-new-post-in'] );
 	}
 
@@ -275,13 +339,22 @@ function bp_activity_action_post_update() {
 		$activity_id = bp_activity_post_update( array( 'content' => $content ) );
 
 	// Post to groups object
-	} else if ( 'groups' == $object && bp_is_active( 'groups' ) ) {
+	} elseif ( 'groups' == $object && bp_is_active( 'groups' ) ) {
 		if ( (int) $item_id ) {
 			$activity_id = groups_post_update( array( 'content' => $content, 'group_id' => $item_id ) );
 		}
 
-	// Special circumstance so let filters handle it
 	} else {
+
+		/**
+		 * Filters activity object for BuddyPress core and plugin authors before posting activity update.
+		 *
+		 * @since BuddyPress (1.2.0)
+		 *
+		 * @param string $object Activity item being associated to.
+		 * @param string $item_id Component ID being posted to.
+		 * @param string $content Activity content being posted.
+		 */
 		$activity_id = apply_filters( 'bp_activity_custom_update', $object, $item_id, $content );
 	}
 
@@ -289,7 +362,7 @@ function bp_activity_action_post_update() {
 	if ( !empty( $activity_id ) )
 		bp_core_add_message( __( 'Update Posted!', 'buddypress' ) );
 	else
-		bp_core_add_message( __( 'There was an error when posting your update, please try again.', 'buddypress' ), 'error' );
+		bp_core_add_message( __( 'There was an error when posting your update. Please try again.', 'buddypress' ), 'error' );
 
 	// Redirect
 	bp_core_redirect( wp_get_referer() );
@@ -322,7 +395,22 @@ function bp_activity_action_post_comment() {
 	// Check the nonce
 	check_admin_referer( 'new_activity_comment', '_wpnonce_new_activity_comment' );
 
+	/**
+	 * Filters the activity ID a comment will be in reply to.
+	 *
+	 * @since BuddyPress (1.2.0)
+	 *
+	 * @param string $comment_form_id ID of the activity being replied to.
+	 */
 	$activity_id = apply_filters( 'bp_activity_post_comment_activity_id', $_POST['comment_form_id'] );
+
+	/**
+	 * Filters the comment content for a comment reply.
+	 *
+	 * @since BuddyPress (1.2.0)
+	 *
+	 * @param string $ac_input_activity_id Comment content being posted.
+	 */
 	$content = apply_filters( 'bp_activity_post_comment_content', $_POST['ac_input_' . $activity_id] );
 
 	if ( empty( $content ) ) {
@@ -339,7 +427,7 @@ function bp_activity_action_post_comment() {
 	if ( !empty( $comment_id ) )
 		bp_core_add_message( __( 'Reply Posted!', 'buddypress' ) );
 	else
-		bp_core_add_message( __( 'There was an error posting that reply, please try again.', 'buddypress' ), 'error' );
+		bp_core_add_message( __( 'There was an error posting that reply. Please try again.', 'buddypress' ), 'error' );
 
 	bp_core_redirect( wp_get_referer() . '#ac-form-' . $activity_id );
 }
@@ -373,7 +461,7 @@ function bp_activity_action_mark_favorite() {
 	if ( bp_activity_add_user_favorite( bp_action_variable( 0 ) ) )
 		bp_core_add_message( __( 'Activity marked as favorite.', 'buddypress' ) );
 	else
-		bp_core_add_message( __( 'There was an error marking that activity as a favorite, please try again.', 'buddypress' ), 'error' );
+		bp_core_add_message( __( 'There was an error marking that activity as a favorite. Please try again.', 'buddypress' ), 'error' );
 
 	bp_core_redirect( wp_get_referer() . '#activity-' . bp_action_variable( 0 ) );
 }
@@ -407,7 +495,7 @@ function bp_activity_action_remove_favorite() {
 	if ( bp_activity_remove_user_favorite( bp_action_variable( 0 ) ) )
 		bp_core_add_message( __( 'Activity removed as favorite.', 'buddypress' ) );
 	else
-		bp_core_add_message( __( 'There was an error removing that activity as a favorite, please try again.', 'buddypress' ), 'error' );
+		bp_core_add_message( __( 'There was an error removing that activity as a favorite. Please try again.', 'buddypress' ), 'error' );
 
 	bp_core_redirect( wp_get_referer() . '#activity-' . bp_action_variable( 0 ) );
 }
@@ -640,7 +728,13 @@ function bp_activity_setup_akismet() {
 	if ( ! bp_get_option( 'wordpress_api_key' ) && ! defined( 'WPCOM_API_KEY' ) )
 		return;
 
-	// Bail if BuddyPress Activity Akismet support has been disabled by another plugin
+	/**
+	 * Filters if BuddyPress Activity Akismet support has been disabled by another plugin.
+	 *
+	 * @since BuddyPress (1.6.0)
+	 *
+	 * @param bool bp_is_akismet_active Return value of bp_is_akismet_active boolean function.
+	 */
 	if ( ! apply_filters( 'bp_activity_use_akismet', bp_is_akismet_active() ) )
 		return;
 
@@ -659,10 +753,17 @@ function bp_ajax_get_suggestions() {
 		exit;
 	}
 
-	$results = bp_core_get_suggestions( array(
+	$args = array(
 		'term' => sanitize_text_field( $_GET['term'] ),
 		'type' => sanitize_text_field( $_GET['type'] ),
-	) );
+	);
+
+	// Support per-Group suggestions.
+	if ( ! empty( $_GET['group-id'] ) ) {
+		$args['group_id'] = absint( $_GET['group-id'] );
+	}
+
+	$results = bp_core_get_suggestions( $args );
 
 	if ( is_wp_error( $results ) ) {
 		wp_send_json_error( $results->get_error_message() );
@@ -672,3 +773,58 @@ function bp_ajax_get_suggestions() {
 	wp_send_json_success( $results );
 }
 add_action( 'wp_ajax_bp_get_suggestions', 'bp_ajax_get_suggestions' );
+
+/**
+ * Detect a change in post type status, and initiate an activity update if necessary.
+ *
+ * @since BuddyPress (2.2.0)
+ *
+ * @todo Support untrashing better.
+ *
+ * @param string $new_status New status for the post.
+ * @param string $old_status Old status for the post.
+ * @param object $post       Post data.
+ */
+function bp_activity_catch_transition_post_type_status( $new_status, $old_status, $post ) {
+	if ( ! post_type_supports( $post->post_type, 'buddypress-activity' ) ) {
+		return;
+	}
+
+	// This is an edit.
+	if ( $new_status === $old_status ) {
+		// An edit of an existing post should update the existing activity item.
+		if ( $new_status == 'publish' ) {
+			bp_activity_post_type_update( $post );
+		}
+
+		return;
+	}
+
+	// Publishing a previously unpublished post.
+	if ( 'publish' === $new_status ) {
+		// Untrashing the post type - nothing here yet.
+		if ( 'trash' == $old_status ) {
+
+			/**
+			 * Fires if untrashing post in a post type.
+			 *
+			 * This is a variable filter that is dependent on the post type
+			 * being untrashed.
+			 *
+			 * @since BuddyPress (2.2.0)
+			 *
+			 * @param WP_Post $post Post data.
+			 */
+			do_action( 'bp_activity_post_type_untrash_' . $post->post_type, $post );
+		} else {
+			// Record the post.
+			bp_activity_post_type_publish( $post->ID, $post );
+		}
+
+	// Unpublishing a previously published post.
+	} elseif ( 'publish' === $old_status ) {
+		// Some form of pending status - only remove the activity entry
+		bp_activity_post_type_unpublish( $post->ID, $post );
+	}
+}
+add_action( 'transition_post_status', 'bp_activity_catch_transition_post_type_status', 10, 3 );

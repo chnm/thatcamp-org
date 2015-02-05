@@ -13,7 +13,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Create a new message.
@@ -155,7 +155,13 @@ function messages_new_message( $args = '' ) {
 		return false;
 	}
 
-	// Allow additional actions when a message is sent successfully
+	/**
+	 * Fires after a message has been successfully sent.
+	 *
+	 * @since BuddyPress (1.1.0)
+	 *
+	 * @param BP_Messages_Message $message Message object. Passed by reference.
+	 */
 	do_action_ref_array( 'messages_message_sent', array( &$message ) );
 
 	// Return the thread ID
@@ -182,6 +188,14 @@ function messages_send_notice( $subject, $message ) {
 		$notice->is_active = 1;
 		$notice->save(); // send it.
 
+		/**
+		 * Fires after a notice has been successfully sent.
+		 *
+		 * @since BuddyPress (1.0.0)
+		 *
+		 * @param string $subject Subject of the notice.
+		 * @param string $message Content of the notice.
+		 */
 		do_action_ref_array( 'messages_send_notice', array( $subject, $message ) );
 
 		return true;
@@ -195,6 +209,14 @@ function messages_send_notice( $subject, $message ) {
  * @return bool True on success, false on failure.
  */
 function messages_delete_thread( $thread_ids ) {
+
+	/**
+	 * Fires before specified thread IDs have been deleted.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 *
+	 * @param int|array Thread ID or array of thread IDs that were deleted.
+	 */
 	do_action( 'messages_before_delete_thread', $thread_ids );
 
 	if ( is_array( $thread_ids ) ) {
@@ -209,6 +231,13 @@ function messages_delete_thread( $thread_ids ) {
 			return false;
 		}
 
+		/**
+		 * Fires after specified thread IDs have been deleted.
+		 *
+		 * @since BuddyPress (1.0.0)
+		 *
+		 * @param int|array Thread ID or array of thread IDs that were deleted.
+		 */
 		do_action( 'messages_delete_thread', $thread_ids );
 
 		return true;
@@ -217,6 +246,7 @@ function messages_delete_thread( $thread_ids ) {
 			return false;
 		}
 
+		/** This action is documented in bp-messages/bp-messages-functions.php */
 		do_action( 'messages_delete_thread', $thread_ids );
 
 		return true;
@@ -334,4 +364,89 @@ function messages_get_message_sender( $message_id ) {
  */
 function messages_is_valid_thread( $thread_id ) {
 	return BP_Messages_Thread::is_valid( $thread_id );
+}
+
+/** Messages Meta *******************************************************/
+
+/**
+ * Delete metadata for a message.
+ *
+ * If $meta_key is false, this will delete all meta for the message ID.
+ *
+ * @since BuddyPress (2.2.0)
+ *
+ * @see delete_metadata() for full documentation excluding $meta_type variable.
+ */
+function bp_messages_delete_meta( $message_id, $meta_key = false, $meta_value = false, $delete_all = false ) {
+	// Legacy - if no meta_key is passed, delete all for the item
+	if ( empty( $meta_key ) ) {
+		global $wpdb;
+
+		$keys = $wpdb->get_col( $wpdb->prepare( "SELECT meta_key FROM {$wpdb->messagemeta} WHERE message_id = %d", $message_id ) );
+
+		// With no meta_key, ignore $delete_all
+		$delete_all = false;
+	} else {
+		$keys = array( $meta_key );
+	}
+
+	// no keys, so stop now!
+	if ( empty( $keys ) ) {
+		return false;
+	}
+
+	add_filter( 'query', 'bp_filter_metaid_column_name' );
+
+	foreach ( $keys as $key ) {
+		$retval = delete_metadata( 'message', $message_id, $key, $meta_value, $delete_all );
+	}
+
+	remove_filter( 'query', 'bp_filter_metaid_column_name' );
+
+	return $retval;
+}
+
+/**
+ * Get a piece of message metadata.
+ *
+ * @since BuddyPress (2.2.0)
+ *
+ * @see get_metadata() for full documentation excluding $meta_type variable.
+ */
+function bp_messages_get_meta( $message_id, $meta_key = '', $single = true ) {
+	add_filter( 'query', 'bp_filter_metaid_column_name' );
+	$retval = get_metadata( 'message', $message_id, $meta_key, $single );
+	remove_filter( 'query', 'bp_filter_metaid_column_name' );
+
+	return $retval;
+}
+
+/**
+ * Update a piece of message metadata.
+ *
+ * @since BuddyPress (2.2.0)
+ *
+ * @see update_metadata() for full documentation excluding $meta_type variable.
+ */
+function bp_messages_update_meta( $message_id, $meta_key, $meta_value, $prev_value = '' ) {
+	add_filter( 'query', 'bp_filter_metaid_column_name' );
+	$retval = update_metadata( 'message', $message_id, $meta_key, $meta_value, $prev_value );
+	remove_filter( 'query', 'bp_filter_metaid_column_name' );
+
+	return $retval;
+}
+
+/**
+ * Add a piece of message metadata.
+ *
+ * @since BuddyPress (2.2.0)
+ *
+ * @see add_metadata() for full documentation excluding $meta_type variable.
+ */
+function bp_message_add_meta( $message_id, $meta_key, $meta_value, $unique = false ) {
+	add_filter( 'query', 'bp_filter_metaid_column_name' );
+	$retval = add_metadata( 'message', $message_id, $meta_key, $meta_value, $unique );
+	remove_filter( 'query', 'bp_filter_metaid_column_name' );
+
+	return $retval;
 }

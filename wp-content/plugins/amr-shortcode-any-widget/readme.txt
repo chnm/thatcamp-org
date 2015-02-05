@@ -1,32 +1,32 @@
 === amr shortcode any widget ===
 Contributors: anmari
 Tags: shortcode, widget, page, templates, page template, widget_area, sidebar
-Tested up to: 3.9.1
-Version: 2.3
+Tested up to: 4.0
+Version: 2.4
 Stable tag: trunk
 
 == Description ==
 Insert a widget or multiple widgets or a entire widget area (sidebar) into a page using a shortcode. 
 
-The Widget settings are specified in a specially created sidebar called "widgets for shortcode".  This means you have the full widget settings avaiabled just like you normally setup a widget..  Setup th ewidgte first in a normal sidebar, then drag it into the widgets sidebar.  These settings will be saved even if you change your theme. The widgets for shortcode sidebar will remember it self and recreate itself if you change themes.
+Set up your widget first in a normal sidebar.  Check it works. THEN Drag your chosen widgets to the sidebar called "widgets for shortcode".   These settings will be saved even if you change your theme. The widgets for shortcode sidebar will recreate itself if you change themes.
 
-You can reference a specific widget instance from the do_widget shortcode, or the chosen sidebar from the do_widget_area shortcode. 
+If you need more control, you can reference a specific widget instance from the do_widget shortcode, or the chosen sidebar from the do_widget_area shortcode. 
 
 For example: You could use the query posts widget in the page to create a archive within a page, or the rss widget to list feed content from other sites.  For more details see [anmari.com](http://webdesign.anmari.com/category/plugins/shortcode-any-widget/)
 
-The plugins default action is that it will magically find the settings for your themes first sidebar and use them to control the widget's output.  In most cases this would mean that the widget will be styled as per the rest of your theme.  
-
-If that does not look good, parameters exist to override this behaviour.
+The plugins default action is that it will magically find the settings for your themes first sidebar and use them to control the widget's output.  In most cases this would mean that the widget will be styled as per the rest of your theme.  If that does not look good, parameters exist to override this behaviour.
 
 Change your theme? No problem, the plugin will save and restore the widgets_for_shortcode settings.  On display it will then pick up the new themes sidebar settings.  Check this still looks nice please! in some themes you may ned up with white text on a white background and will then have to override or change css.
 
-**Instructions:**
+Please read https://wordpress.org/plugins/amr-shortcode-any-widget/installation/ before asking any questions.
 
-1. Test your chosen widget works in a normal sidebar or widget area first. 
-2. Then Activate this plugin
+== Installation ==
+
+1. Test your chosen widget works in a normal sidebar or widget area first. Make sure it works.
+2. THEN Activate this plugin
 3. Go to Appearance > widgets and find the " widgets for shortcode" sidebar or widget area
-4. Drag your chosen widgets from to the shortcodes sidebar. Save. 
-5. Go the shortcode any widget settings.  Click on one of the create page links to help you setup the shortcode.
+4. Drag your chosen widgets from your normal sidebar to the shortcodes sidebar. Save. 
+5. Either Go the shortcode any widget settings.  Click on one of the create page links to help you setup the shortcode in a new page.
 6. OR go to an existing page and enter a shortcode:
 
  [do_widget widgetname]   eg: [do_widget calendar]
@@ -35,11 +35,12 @@ Change your theme? No problem, the plugin will save and restore the widgets_for_
  
  [do_widget_area]  (will use the  "widgets in shortcodes" widget area / sidebar
  [do_widget_area sidebarname]  for another sidebar or widget area - eg: to maximise likelihood of getting your theme's widget css to apply.  
- 
-WARNING: using do_widget_area with a widget area other than the shortcode one means that if you changes themes and the new theme has different sidebars, then this shortcode with a named widgete area will not work.  Go that ?
- 
+
 7. If the plugin cannot work out what you want and you are logged in as an administrator, it will show a debug prompt to you, the logged in admin only.   
 Click on the link 'Try debug'.  It will produce a bunch of info. Look for the id of your widget in the shortcodes sidebar (you may have to scroll through a lot of debug info). Try using the widget id - ie [do_widget id=somename-n].  Examples are tag-cloud-3, meta-2 etc.  Sometimes the widget name that wordpress calls it internally is not the same as what you see on the screen and you will need the 'debug' to find the id.
+
+**STOP - Do not read any further until you have got the basics working.**
+
 
 **[do_widget ...] Parameters:**
 
@@ -57,7 +58,8 @@ Click on the link 'Try debug'.  It will produce a bunch of info. Look for the id
 *  widget_area_class=none    /* option to remove theme styling by removing the widget_area class from the sidebar html */
 *  widget_classes=none     /* option to remove the widget class from the widget wrappinghtml
 *  class=*yourclassname*   default is amr_widget_area.  This will affect the widget area NOT the individual widgets. At the moment can only remove the widget classes, not replace them when using do_widget_area.
-
+ 
+Advanced users WARNING: using do_widget_area with a widget area other than the shortcode one means that if you changes themes and the new theme has different sidebars, then this shortcode with a named widget area will not work.  Got that ?
 
 See the settings page for links to help your create the shortcodes in a page.
 
@@ -68,6 +70,8 @@ The plugin has been tested with most standard widgets (rss feeds, tag cloud, pag
 
 If you use a widget more than once for different reasons, you may need to use the widget id to isolate which widget instance and it's settings to use.  ie: [do_widget id=categories-6] .  If you just use the name, it will display all widgets in the shortcode sidebar with that name (all instances). 
 
+See also [home page](http://wordpress.org/plugins/amr-shortcode-any-widget/)
+
 If you liked this plugin, you might also like my other plugins:
 [icalevents.com](http://icalevents.com) - a ics compliant events plugin fully integrated with wordpress, so it will work with many other plugins (seo, maps, social)
 [wpusersplugin.com](http://wpusersplugin.com) - a suite of plugins to help with membership sites. Major plugin is [amr users](http://wordpress.org/extend/plugins/amr-users/)
@@ -76,7 +80,7 @@ If you liked this plugin, you might also like my other plugins:
 
 **Widget help, the widget is doing this, when it should do that** 
 
-Please see
+There are 1000's of widgets. I cannot help you with these.  Please get it working first in a normal sidebar without this plugin.   Please see
 http://wordpress.org/support/topic/widget-help-settings-functioning-etc?replies=1
 
 
@@ -124,10 +128,14 @@ You may have undesired effects applying that do not work in the main content are
 You may have desired effects not applying because the css is specific to a themes sidebar.
 
 Via the plugin you can do the following to affect styling:
-* Remove the general wordpress 'widget' class from the widgets wrapping html and the 'widget_title' from the title html.  ([do_widget *widgetname* widget_classes=none] 
-* Hardcode away from your themes html for widgets and widget title.  EG: if your theme uses aside and h2, you could specify: [do_widget *widgetname* widget_classes=none wrap=div title=h3].  By default the plugin will use whatever your first sidebar uses.  This will change if you change themes, but only if you have NOT overridden the html with wrap and title.
-* Apply an existing class in your theme.  Use [do_widget *widgetname* class=*yourclass*].
-* Use the addition class 'amr-widget' provided to specify alternate css in your themes stylesheet or with something like wordpress custom css.
+
+*  Remove the general wordpress 'widget' class from the widgets wrapping html and the 'widget_title' from the title html.  ([do_widget *widgetname* widget_classes=none] 
+
+*  Hardcode away from your themes html for widgets and widget title.  EG: if your theme uses aside and h2, you could specify: [do_widget *widgetname* widget_classes=none wrap=div title=h3].  By default the plugin will use whatever your first sidebar uses.  This will change if you change themes, but only if you have NOT overridden the html with wrap and title.
+
+*  Apply an existing class in your theme.  Use [do_widget *widgetname* class=*yourclass*].
+
+*  Use the additional class 'amr-widget' provided to specify alternate css in your themes stylesheet or with something like wordpress custom css.
 
 One of the new features is as a default setting is that the plugin will try have your current themes first sidebar styling apply to the widgets inserted into a page via the shortcode.
 
@@ -139,7 +147,7 @@ It also depends on what the original widget plugin does with css and js. It may 
 
 For example: An unwanted effect could be white text on a white background as in the twenty fourteen theme.
 
-If you have an undesired effect with the default setings:
+** If you have an undesired styling effect with the default settings: **
 
 You need to learn the joys of the 'inspect element' tools in various browsers or browser web developer, firebug add-ons, so you can see what css is applying to what html. Then you can either change some of the html or override or change the css.
 
@@ -174,6 +182,9 @@ More info on background: http://wordpress.org/support/topic/your-theme-your-side
 
 
 == Changelog ==
+= Version 2.4 =
+*  Tested on 4.1, Cleaned up the readme, Lang file for info page - most texts.
+
 = Version 2.3 =
 *  Fixed some widget area class options that were not working.
 *  Added a widget area debug option to make it easier to find how your theme has stored it's widget area / sidebar ids.  They are not always easy to find.
@@ -230,20 +241,7 @@ More info on background: http://wordpress.org/support/topic/your-theme-your-side
 = 1.0 =
 *  Launch of the plugin
 
-== Installation ==
 
-0. Activate plugin
-1. Goto Appearance > widgets and find "shortcode" sidebar
-1. Drag chosen widgets to shortcodes sidebar. Save. (note the names)
-2. Add [do_widget widgetname] in a page or post  or [do_widget_area]
-3. If it fails, it will offer a debug prompt to logged-in admin, click on the debug prompt and look for the id of your widget, use that.
-4. To force a debug anyway without waiting for an error, then be logged in as admin and on the page where you have a [do_widget something] shortcode, add  ?do_widget_debug=1  to the url , hit enter and look for the list of widget ids that are in the widgets_for_shortcode sidebar.
-
-Or  can use [do_widget widgetname] within the text in the page and save.  If the widget name has a space in it, use [do_widget "widget name"].
-
-If you use a widget more than once for different shortcodes, you can use the widget id to isolate which widget instance (and of course associated settings to use).  ie: [do_widget id=categories-6]  
-For detailed instructions on shortcodes and their parameters, see the [home page](http://wordpress.org/plugins/amr-shortcode-any-widget/)
- 
 
 
 == Screenshots ==

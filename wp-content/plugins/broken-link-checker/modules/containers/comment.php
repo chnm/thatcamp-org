@@ -24,7 +24,7 @@ class blcComment extends blcContainer{
    */
 	function get_wrapped_object($ensure_consistency = false){
 		if( $ensure_consistency || is_null($this->wrapped_object) ){
-			$this->wrapped_object = &get_comment($this->container_id);
+			$this->wrapped_object = get_comment($this->container_id);
 		}		
 		return $this->wrapped_object;
 	}	
@@ -106,7 +106,7 @@ class blcComment extends blcContainer{
 	 */
 	function current_user_can_delete(){
 		//TODO: Fix for custom post types? WP itself doesn't care, at least in 3.0.
-		$comment = &$this->get_wrapped_object();
+		$comment = $this->get_wrapped_object();
 		return current_user_can('edit_post', $comment->comment_post_ID); 
 	}
 	
@@ -146,9 +146,15 @@ class blcComment extends blcContainer{
 		
 		$comment = $this->get_wrapped_object();
 		$post = get_post($comment->comment_post_ID); /* @var StdClass $post */
-		
+
+		//If the post type no longer exists, we can't really do anything with this comment.
+		//WordPress will just throw errors if we try.
+		if ( !post_type_exists(get_post_type($post)) ) {
+			return $actions;
+		}
+
 		//Display Edit & Delete/Trash links only if the user has the right caps.
-		$user_can = current_user_can('edit_post', $comment->comment_post_ID);  
+		$user_can = current_user_can('edit_post', $comment->comment_post_ID);
 		if ( $user_can ){
 			$actions['edit'] = "<a href='". $this->get_edit_url() ."' title='" . esc_attr__('Edit comment') . "'>". __('Edit') . '</a>';
 		
@@ -226,12 +232,12 @@ class blcCommentManager extends blcContainerManager {
 	function init(){
 		parent::init();
 		
-		add_action('post_comment', array(&$this, 'hook_post_comment'), 10, 2);
-		add_action('edit_comment', array(&$this, 'hook_edit_comment'));
-		add_action('transition_comment_status', array(&$this, 'hook_comment_status'), 10, 3);
+		add_action('post_comment', array($this, 'hook_post_comment'), 10, 2);
+		add_action('edit_comment', array($this, 'hook_edit_comment'));
+		add_action('transition_comment_status', array($this, 'hook_comment_status'), 10, 3);
 		
-		add_action('trashed_post_comments', array(&$this, 'hook_trashed_post_comments'), 10, 2);
-		add_action('untrash_post_comments', array(&$this, 'hook_untrash_post_comments'));
+		add_action('trashed_post_comments', array($this, 'hook_trashed_post_comments'), 10, 2);
+		add_action('untrash_post_comments', array($this, 'hook_untrash_post_comments'));
 	}
 
 	function hook_post_comment($comment_id, $comment_status){
@@ -261,7 +267,7 @@ class blcCommentManager extends blcContainerManager {
 		}
 	}
 	
-	function hook_trashed_post_comments($post_id, $statuses){
+	function hook_trashed_post_comments(/** @noinspection PhpUnusedParameterInspection */$post_id, $statuses){
 		foreach($statuses as $comment_id => $comment_status){
 			if ( $comment_status == '1' ){
 				$container = blcContainerHelper::get_container(array($this->container_type, $comment_id));
