@@ -179,10 +179,7 @@ class Thatcamp_Registrations_Admin {
 
 		<h3><?php _e( 'Discipline', 'thatcamp-registrations' ) ?></h3>
 		<?php echo $applicant->discipline; ?>
-		
-		<h3><?php _e( 'Particular Needs', 'thatcamp-registrations' ) ?></h3>
-    	<?php echo $applicant->particular_needs; ?>
-    	
+		   	
  		<h3><?php _e( 'Days Attending', 'thatcamp-registrations' ) ?></h3>
 		<?php echo $applicant->days_attending ?>
 
@@ -194,6 +191,9 @@ class Thatcamp_Registrations_Admin {
 
     	<h3><?php _e( 'Children', 'thatcamp-registrations' ) ?></h3>
     	<?php if($children = $applicant->children) { echo $children; } else { echo '0'; } ?>
+
+		<h3><?php _e( 'Particular Needs', 'thatcamp-registrations' ) ?></h3>
+    	<?php echo $applicant->particular_needs; ?>    	
     
 
     
