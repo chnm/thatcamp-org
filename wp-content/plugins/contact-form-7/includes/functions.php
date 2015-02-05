@@ -395,6 +395,7 @@ function wpcf7_rmdir_p( $dir ) {
 	return @rmdir( $dir );
 }
 
+<<<<<<< HEAD
 /* From _http_build_query in wp-includes/functions.php */
 function wpcf7_build_query( $args, $key = '' ) {
 	$sep = '&';
@@ -456,4 +457,6 @@ function wpcf7_count_code_units( $string ) {
 	return floor( $byte_count / 2 );
 }
 
+=======
+>>>>>>> parent of 417df59... Update 3 themes and 14 plugins
 ?>

@@ -73,7 +73,7 @@ class Search
 		return __( "No search pattern", 'search-regex' );
 	}
 
-	static function get_searches()
+	function get_searches()
 	{
 		global $search_regex_searches;
 		if( !is_array( $search_regex_searches))
@@ -100,7 +100,7 @@ class Search
 		return $search_regex_searches;
 	}
 
-	static function valid_search( $class )	{
+	function valid_search( $class )	{
 		$classes = Search::get_searches();
 		foreach ( $classes AS $item )	{
 			if ( strcasecmp( get_class( $item ), $class ) == 0 )

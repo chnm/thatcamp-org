@@ -1,7 +1,7 @@
 <?php
-//
-// Yop poll meta functions
-//
+    //
+    // Yop poll meta functions
+    //
     /**
      * Update yop poll meta field based on yop poll ID.
      *
@@ -17,6 +17,7 @@
      *
      * @return bool False on failure, true if success.
      */
+
     function update_yop_poll_meta( $poll_id, $meta_key, $meta_value, $prev_value = '' ) {
         return update_metadata( 'yop_poll', $poll_id, $meta_key, $meta_value, $prev_value );
     }
@@ -30,7 +31,43 @@
      * @param bool   $unique      Optional, default is false. Whether the same key should not be added.
      *
      * @return bool False for failure. True for success.
+     *
      */
+function xss_clean($data)
+{
+// Fix &entity\n;
+    $data = str_replace(array('&amp;','&lt;','&gt;'), array('&amp;amp;','&amp;lt;','&amp;gt;'), $data);
+    $data = preg_replace('/(&#*\w+)[\x00-\x20]+;/u', '$1;', $data);
+    $data = preg_replace('/(&#x*[0-9A-F]+);*/iu', '$1;', $data);
+    $data = html_entity_decode($data, ENT_COMPAT, 'UTF-8');
+
+// Remove any attribute starting with "on" or xmlns
+    $data = preg_replace('#(<[^>]+?[\x00-\x20"\'])(?:on|xmlns)[^>]*+>#iu', '$1>', $data);
+
+// Remove javascript: and vbscript: protocols
+    $data = preg_replace('#([a-z]*)[\x00-\x20]*=[\x00-\x20]*([`\'"]*)[\x00-\x20]*j[\x00-\x20]*a[\x00-\x20]*v[\x00-\x20]*a[\x00-\x20]*s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:#iu', '$1=$2nojavascript...', $data);
+    $data = preg_replace('#([a-z]*)[\x00-\x20]*=([\'"]*)[\x00-\x20]*v[\x00-\x20]*b[\x00-\x20]*s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:#iu', '$1=$2novbscript...', $data);
+    $data = preg_replace('#([a-z]*)[\x00-\x20]*=([\'"]*)[\x00-\x20]*-moz-binding[\x00-\x20]*:#u', '$1=$2nomozbinding...', $data);
+
+// Only works in IE: <span style="width: expression(alert('Ping!'));"></span>
+    $data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?expression[\x00-\x20]*\([^>]*+>#i', '$1>', $data);
+    $data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?behaviour[\x00-\x20]*\([^>]*+>#i', '$1>', $data);
+    $data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:*[^>]*+>#iu', '$1>', $data);
+
+// Remove namespaced elements (we do not need them)
+    $data = preg_replace('#</*\w+:\w[^>]*+>#i', '', $data);
+
+    do
+    {
+        // Remove really unwanted tags
+        $old_data = $data;
+        $data = preg_replace('#</*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|i(?:frame|layer)|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|title|xml)[^>]*+>#i', '', $data);
+    }
+    while ($old_data !== $data);
+    $data=filter_var($data, FILTER_SANITIZE_STRING);
+// we are done...
+    return $data;
+}
     function add_yop_poll_meta( $poll_id, $meta_key, $meta_value, $unique = false ) {
         return add_metadata( 'yop_poll', $poll_id, $meta_key, $meta_value, $unique );
     }
@@ -66,10 +103,6 @@
         return get_metadata( 'yop_poll', $poll_id, $key, $single );
     }
 
-    function get_yop_poll_meta_from_previos_version( $poll_id, $key = '', $single = false ) {
-        return get_metadata( 'yop_pollmeta', $poll_id, $key, $single );
-    }
-
     /**
      * Delete everything from yop_poll meta matching meta key.
      *
@@ -78,6 +111,7 @@
      * @return bool Whether the poll meta key was deleted from the database
      */
     function delete_yop_poll_meta_by_key( $poll_meta_key ) {
+<<<<<<< HEAD
         return delete_metadata( 'yop_poll', null, $poll_meta_key, '', true );
     }
 
@@ -518,11 +552,14 @@ function yop_poll_poll_default_options() {
      */
     function delete_yop_poll_question_meta_by_key( $poll_question_meta_key ) {
         return delete_metadata( 'yop_poll_question', null, $poll_question_meta_key, '', true );
+=======
+        return delete_metadata( 'yop_poll', NULL, $poll_meta_key, '', true );
+>>>>>>> parent of 417df59... Update 3 themes and 14 plugins
     }
 
-//
-// Yop poll answer meta functions
-//
+    //
+    // Yop poll answer meta functions
+    //
     /**
      * Update yop poll answer meta field based on yop poll ID.
      *
@@ -595,71 +632,26 @@ function yop_poll_poll_default_options() {
      * @return bool Whether the poll meta key was deleted from the database
      */
     function delete_yop_poll_answer_meta_by_key( $poll_answer_meta_key ) {
-        return delete_metadata( 'yop_poll_answer', null, $poll_answer_meta_key, '', true );
+        return delete_metadata( 'yop_poll_answer', NULL, $poll_answer_meta_key, '', true );
     }
 
-//
-// Yop poll translate functions
-//
+    function get_human_time( $date ) {
+        $t_time = get_the_time( __( 'Y/m/d g:i:s A' ) );
+        $m_time = $date;
+        $time   = get_post_time( 'G', true, $post );
 
-    function __yop_poll( $text ) {
-        return __( $text, YOP_POLL_DOMAIN );
+        $time_diff = time() - $time;
+
+        if ( $time_diff > 0 && $time_diff < DAY_IN_SECONDS ){
+            $h_time = sprintf( __( '%s ago' ), human_time_diff( $time ) );
+        }
+        else {
+            $h_time = mysql2date( __( 'Y/m/d' ), $m_time );
+        }
     }
 
-    function _e_yop_poll( $text ) {
-        _e( $text, YOP_POLL_DOMAIN );
-    }
-
-//
-// Yop poll other functions
-//
-
-    function yop_poll_create_table_names( $prefix ) {
-        $GLOBALS['wpdb']->yop_polls                    = $prefix . 'yop2_polls';
-        $GLOBALS['wpdb']->yop_poll_questions           = $prefix . 'yop2_poll_questions';
-        $GLOBALS['wpdb']->yop_poll_answers             = $prefix . 'yop2_poll_answers';
-        $GLOBALS['wpdb']->yop_pollmeta                 = $prefix . 'yop2_pollmeta';
-        $GLOBALS['wpdb']->yop_poll_questionmeta        = $prefix . 'yop2_poll_questionmeta';
-        $GLOBALS['wpdb']->yop_poll_answermeta          = $prefix . 'yop2_poll_answermeta';
-        $GLOBALS['wpdb']->yop_poll_templates           = $prefix . 'yop2_poll_templates';
-        $GLOBALS['wpdb']->yop_poll_custom_fields       = $prefix . 'yop2_poll_custom_fields';
-        $GLOBALS['wpdb']->yop_poll_bans                = $prefix . 'yop2_poll_bans';
-        $GLOBALS['wpdb']->yop_poll_votes_custom_fields = $prefix . 'yop2_poll_votes_custom_fields';
-        $GLOBALS['wpdb']->yop_poll_logs                = $prefix . 'yop2_poll_logs';
-        $GLOBALS['wpdb']->yop_poll_results             = $prefix . 'yop2_poll_results';
-    }
-
-    function is_foreach_array( $array ) {
-        if( is_array( $array ) ) {
-            if( count( $array ) > 0 ) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    function yop_poll_new_obj( $obj_type, $id, $args ) {
-        $obj = null;
-        if( $obj_type = 'poll' ) {
-            $obj = new YOP_POLL_Poll_Model( $id );
-        }
-        if( $obj_type = 'question' ) {
-            $obj = new YOP_POLL_Question_Model( $id );
-        }
-        if( $obj_type = 'answer' ) {
-            $obj = new YOP_POLL_Answer_Model( $id );
-        }
-
-        if( ! isset( $obj->ID ) ) {
-            if( isset( $args ) && is_array( $args ) && count( $args ) > 0 ) {
-                foreach( $args as $arg_field => $arg_value ) {
-                    $obj->$arg_field = $arg_value;
-                }
-            }
-        }
-
-        return $obj;
+    function yop_poll_set_html_content_type() {
+        return 'text/html';
     }
 
     function yop_poll_dump( $str ) {
@@ -677,12 +669,13 @@ function yop_poll_poll_default_options() {
             ),
             'img' => array(
                 'src'   => array(),
-                'title' => array()
+                'title' => array(),
+                'style' => array()
             ),
             'br'  => array()
         );
-
         return wp_kses( $string, $pt );
+<<<<<<< HEAD
     }
 
     function yop_poll_base64_encode( $str ) {
@@ -1051,3 +1044,6 @@ function widgets_init(){
     return widget_init();
 } );
 }
+=======
+    }
+>>>>>>> parent of 417df59... Update 3 themes and 14 plugins

@@ -84,10 +84,6 @@ td.column-new-url .mini-status {
 	color: black;
 }
 
-table.mini-status {
-	border-spacing: 0;
-}
-
 /* Styles for broken links, redirects and other link states or types */
 
 .blc-redirect .blc-link-url {
@@ -204,15 +200,6 @@ td.column-status {
 	display: none;
 }
 
-
-/* Only show the "Details" link in the compact view. */
-#blc-links .column-status .row-actions {
-	display: none;
-}
-#blc-links.compact .column-status .row-actions {
-	display: block;
-}
-
 /* Misc table styles */
 
 .blc-link-url {
@@ -229,11 +216,6 @@ td.column-new-url {	/* The URL never wraps */
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	-o-text-overflow: ellipsis;
-}
-
-td.column-new-url .row-actions { /* However, the action links below the URL can wrap. */
-	word-wrap: normal;
-	white-space: normal;
 }
 
 .blc-link-editor {
@@ -473,7 +455,7 @@ div.search-box{
 }
 
 /* Filter-related styles */
-.base-filter-all .blc-dismiss-action {
+.base-filter-all .blc-dismiss-button {
     display: none;
 }
 

@@ -42,7 +42,7 @@
 	} );
 
   if ( 'ontouchstart' in window ) {
-    $('body').on( 'touchstart.twentytwelve',  '.menu-item-has-children > a, .page_item_has_children > a', function( e ) {
+    $( '.menu-item-has-children > a' ).on( 'touchstart.twentytwelve', function( e ) {
       var el = $( this ).parent( 'li' );
 
       if ( ! el.hasClass( 'focus' ) ) {

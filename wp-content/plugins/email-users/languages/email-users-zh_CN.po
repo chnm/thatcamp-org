@@ -1,180 +1,92 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Email Users\n"
-"POT-Creation-Date: 2014-12-03 17:28-0000\n"
-"PO-Revision-Date: 2014-12-03 17:28-0000\n"
+"POT-Creation-Date: 2014-09-13 21:24-0000\n"
+"PO-Revision-Date: 2014-09-13 21:24-0000\n"
 "Last-Translator: Mike Walsh <mpwalsh8@gmail.com>\n"
 "Language-Team: \n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-KeywordsList: _;_e\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../email-users.php:100
-#, fuzzy
-msgid "A post of interest:"
-msgstr "通知用户关于这篇文章"
-
-#: ../email-users.php:102
-msgid ""
-"<p>Hello, </p><p>I would like to bring your attention on a new post "
-"published on the blog. Details of the post follow; I hope you will find it "
-"interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr><p><strong>"
-"%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: <a "
-"href=\"%POST_URL%\">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href="
-"\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
-msgstr ""
-"<p>你好, </p><p>有一篇新的文章已经发布到网站，全文如下，希望你能对网站有兴"
-"趣。</p><p>顺致问候, </p><p>%FROM_NAME%</p><hr><p><strong>%POST_TITLE%</"
-"strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: <a href=\"%POST_URL"
-"%\">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href=\"%BLOG_URL%\">"
-"%BLOG_URL%</a></li></ul>"
-
-#: ../email-users.php:136
-msgid "Powered by"
-msgstr ""
-
-#: ../email-users.php:316 ../email-users.php:331 ../email-users.php:365
-#: ../email-users.php:366 ../email-users.php:372 ../email-users.php:373
+#: ../email-users.php:312 ../email-users.php:327
 #: ../email_users_overview.php:33
 msgid "Email Users"
 msgstr "邮件用户"
 
-#: ../email-users.php:318
+#: ../email-users.php:314
 msgid "Notify Users About this Post"
 msgstr "通知用户关于这篇文章"
 
-#: ../email-users.php:333
+#: ../email-users.php:329
 msgid "Notify Users About this Page"
 msgstr "通知用户关于这个页面"
 
-#: ../email-users.php:351 ../email-users.php:352 ../email-users.php:358
-#: ../email-users.php:359
-msgid "Notify Users"
-msgstr "通知用户"
-
-#: ../email-users.php:381 ../email-users.php:382
-msgid "Send to User(s)"
-msgstr "发到用户"
-
-#: ../email-users.php:411 ../email-users.php:412
-#, fuzzy, php-format
-msgid "Send to %s"
-msgstr "发送邮件"
-
-#: ../email-users.php:420 ../email-users.php:421
-msgid "Send to Group(s)"
-msgstr "发到群组"
-
-#: ../email-users.php:452 ../email-users.php:453
-#: ../email_users_options_form.php:654
-msgid "User Settings"
-msgstr "用户设置"
-
-#: ../email-users.php:569
+#: ../email-users.php:565
 msgid "Email Preferences"
 msgstr "邮件选项"
 
-#: ../email-users.php:582
+#: ../email-users.php:578
 msgid "Accept to receive post or page notification emails"
 msgstr "接受接受文章或页面通知电子邮件"
 
-#: ../email-users.php:590
+#: ../email-users.php:586
 msgid ""
 "Accept to receive emails sent to multiple recipients (but still accept "
 "emails sent only to me)"
 msgstr "接受接收电子邮件发送给多个收件人（但仍然能接受只发送给我的电子邮件）"
 
-#: ../email-users.php:1528
-#, php-format
-msgid ""
-"The email address (%s) of the user you are trying to send mail to is not a "
-"valid email address format."
-msgstr ""
-"电子邮件地址 (%s) 不是一个有效的电子邮件地址格式的用户，你正试图将邮件发送"
-"到。"
-
-#: ../email-users.php:1599
-#, php-format
-msgid "Invalid email address (\"%s\") found."
-msgstr "无效的电子邮件地址 (\"%s\") found."
-
-#: ../email-users.php:1654
+#: ../email-users.php:1637
 #, fuzzy
 msgid "Default User Settings"
 msgstr "默认<br/>用户设置"
 
-#: ../email-users.php:1657
+#: ../email-users.php:1640
 #, fuzzy
 msgid "Receive post or page notification emails:"
 msgstr "接受接受文章或页面通知电子邮件"
 
-#: ../email-users.php:1658 ../email-users.php:1662 ../email-users.php:1666
-#: ../email-users.php:1670 ../email_users_user_settings.php:107
-msgid "On"
-msgstr "On"
-
-#: ../email-users.php:1658 ../email-users.php:1662 ../email-users.php:1666
-#: ../email-users.php:1670 ../email_users_user_settings.php:107
-msgid "Off"
-msgstr "Off"
-
-#: ../email-users.php:1661
+#: ../email-users.php:1644
 #, fuzzy
 msgid "Receive emails sent to multiple recipients:"
 msgstr "接受接收电子邮件发送给多个收件人（但仍然能接受只发送给我的电子邮件）"
 
-#: ../email-users.php:1665
+#: ../email-users.php:1648
 #, fuzzy
 msgid "Allow Users to control their own Email Users settings:"
 msgstr "允许用户控制自己的电子邮件用户设置。"
 
-#: ../email-users.php:1669
+#: ../email-users.php:1652
 msgid "Filter Users with no role from Recipient List:"
 msgstr ""
 
-#: ../email-users.php:1683
+#: ../email-users.php:1666
 #, fuzzy
 msgid "User Statistics"
 msgstr "用户登录"
 
-#: ../email-users.php:1686 ../email_users_options_form.php:73
+#: ../email-users.php:1669 ../email_users_options_form.php:73
 #, fuzzy
 msgid "Number of Users who accept post or page notification emails:"
 msgstr "接受接受文章或页面通知电子邮件"
 
-#: ../email-users.php:1690 ../email_users_options_form.php:77
+#: ../email-users.php:1673 ../email_users_options_form.php:77
 #, fuzzy
 msgid "Number of Users who accept emails sent to multiple recipients:"
 msgstr "收到的邮件发送给多个收件人。"
 
-#: ../email-users.php:1696
-msgid "Content Filters"
-msgstr ""
-
-#: ../email-users.php:1724
-msgid "Present"
-msgstr ""
-
-#: ../email-users.php:1724
-msgid "Missing"
-msgstr ""
-
-#: ../email-users.php:1783 ../email-users.php:1784
-msgid "Mail sending aborted."
-msgstr ""
-
-#: ../email-users.php:1807
+#: ../email-users.php:1752
 msgid "PHPMailer Debug"
 msgstr ""
 
-#: ../email-users.php:1839
+#: ../email-users.php:1784
 #, fuzzy
 msgid "wp_mail() Debug"
 msgstr "邮件格式"
@@ -216,11 +128,6 @@ msgid ""
 "try: "
 msgstr "如果你使用谷歌形式，并要整合他们与你的WordPress网站，尝试："
 
-#: ../email_users_custom_filter_mail_form.php:28
-#: ../email_users_send_user_mail.php:25 ../email_users_user_mail_form.php:27
-msgid "You are not allowed to send emails to users."
-msgstr "您没有被允许向用户发送电子邮件。"
-
 #: ../email_users_custom_filter_mail_form.php:57
 #, fuzzy
 msgid "Send an Email to a Custom Filtered list of Users"
@@ -239,16 +146,14 @@ msgid "Mail format"
 msgstr "邮件格式"
 
 #: ../email_users_custom_filter_mail_form.php:73
-#: ../email_users_group_mail_form.php:82 ../email_users_notify_form.php:81
-#: ../email_users_notify_form.php:171 ../email_users_options_form.php:127
-#: ../email_users_user_mail_form.php:71
+#: ../email_users_group_mail_form.php:82 ../email_users_notify_form.php:171
+#: ../email_users_options_form.php:127 ../email_users_user_mail_form.php:71
 msgid "HTML"
 msgstr "HTML"
 
 #: ../email_users_custom_filter_mail_form.php:74
-#: ../email_users_group_mail_form.php:83 ../email_users_notify_form.php:81
-#: ../email_users_notify_form.php:172 ../email_users_options_form.php:128
-#: ../email_users_user_mail_form.php:72
+#: ../email_users_group_mail_form.php:83 ../email_users_notify_form.php:172
+#: ../email_users_options_form.php:128 ../email_users_user_mail_form.php:72
 msgid "Plain text"
 msgstr "纯文本"
 
@@ -279,16 +184,6 @@ msgstr ""
 "你可以在用户列表中键选择用户，从收件人列表中不应该接受任何用户群发邮件会被过"
 "滤。"
 
-#: ../email_users_custom_filter_mail_form.php:99
-#: ../email_users_notify_form.php:295 ../email_users_user_mail_form.php:97
-msgid "N/A"
-msgstr "N/A"
-
-#: ../email_users_custom_filter_mail_form.php:167
-#: ../email_users_notify_form.php:363 ../email_users_user_mail_form.php:165
-msgid "User"
-msgstr "用户"
-
 #: ../email_users_custom_filter_mail_form.php:176
 #: ../email_users_group_mail_form.php:204 ../email_users_notify_form.php:383
 #: ../email_users_notify_form.php:397 ../email_users_options_form.php:434
@@ -309,12 +204,6 @@ msgstr "内容"
 msgid "Send Email"
 msgstr "发送邮件"
 
-#: ../email_users_group_mail_form.php:26
-#: ../email_users_send_custom_filter_mail.php:24
-#: ../email_users_send_group_mail.php:24
-msgid "You are not allowed to send emails to user groups."
-msgstr "你不允许发送电子邮件的用户群体。"
-
 #: ../email_users_group_mail_form.php:64
 #, fuzzy
 msgid "Send an Email to User Groups Filtered by User Meta Data"
@@ -334,56 +223,6 @@ msgid ""
 "Only the groups having at least one user that accepts group mails appear "
 "here."
 msgstr "至少有一个用户可以接受群邮件的群体才会出现在这里。"
-
-#: ../email_users_group_mail_form.php:104 ../email_users_notify_form.php:197
-msgid "Filter"
-msgstr ""
-
-#: ../email_users_group_mail_form.php:117 ../email_users_notify_form.php:210
-msgid "Role"
-msgstr "角色"
-
-#: ../email_users_group_mail_form.php:133 ../email_users_notify_form.php:226
-#, fuzzy
-msgid "User Group"
-msgstr "用户登录"
-
-#: ../email_users_group_mail_form.php:150 ../email_users_notify_form.php:243
-msgid "UAM"
-msgstr ""
-
-#: ../email_users_group_mail_form.php:167 ../email_users_notify_form.php:260
-#, fuzzy
-msgid "Groups"
-msgstr "发送电子邮件至用户群体。"
-
-#: ../email_users_group_mail_form.php:186 ../email_users_notify_form.php:276
-msgid "PMPro"
-msgstr ""
-
-#: ../email_users_notify_form.php:26 ../email_users_send_notify_mail.php:24
-msgid "You are not allowed to notify users about posts and pages."
-msgstr "你不允许通知用户有关的文章和网页。"
-
-#: ../email_users_notify_form.php:39
-#, php-format
-msgid "Trying to notify users of a %s without passing the %s id!"
-msgstr "试图通知用户 %s 没有通过 %s id!"
-
-#: ../email_users_notify_form.php:53 ../email_users_notify_form.php:150
-#, php-format
-msgid "Notify Users of a %s"
-msgstr "通知用户 %s"
-
-#: ../email_users_notify_form.php:55
-#, php-format
-msgid "Please select the %s that you wish to notify users about."
-msgstr "请选择 %s 您要通知用户。"
-
-#: ../email_users_notify_form.php:68
-#, php-format
-msgid "Select %s"
-msgstr "选择 %s"
 
 #: ../email_users_notify_form.php:177
 msgid "Mail will be sent as:"
@@ -408,22 +247,6 @@ msgstr "通知邮件预览（更新当选项被保存）"
 msgid "Notification Mail Preview (based on default notification body)"
 msgstr "通知邮件预览（更新当选项被保存）"
 
-#: ../email_users_notify_form.php:438 ../email_users_user_mail_form.php:213
-#, php-format
-msgid ""
-"Warning:  The number of users (%d) plus overhead exceeds the PHP <a href="
-"\"http://php.net/manual/en/info.configuration.php#ini.max-input-vars"
-"\">max_input_vars</a> setting (%d).  You will not be able to send email to "
-"more than %d users in one batch.  This can be changed by increasing the "
-"value of <a href=\"http://php.net/manual/en/info.configuration.php#ini.max-"
-"input-vars\">max_input_vars</a> setting in the PHP.ini configuration file."
-msgstr ""
-
-#: ../email_users_options_form.php:28 ../email_users_send_test_mail.php:24
-#: ../email_users_set_options.php:24
-msgid "You are not allowed to change the options of this plugin."
-msgstr "您不得改变这个插件的选项。"
-
 #: ../email_users_options_form.php:35
 msgid ""
 "It looks like you have an old version of the plugin activated. Please "
@@ -440,10 +263,6 @@ msgstr "安装的版本："
 #: ../email_users_options_form.php:39
 msgid "Current Version:"
 msgstr "当前版本："
-
-#: ../email_users_options_form.php:56
-msgid "Warning:  wp_mail() appears to be overloaded."
-msgstr ""
 
 #: ../email_users_options_form.php:70
 msgid ""
@@ -475,7 +294,7 @@ msgstr "排序用户"
 msgid "None"
 msgstr "无"
 
-#: ../email_users_options_form.php:137 ../email_users_user_settings.php:182
+#: ../email_users_options_form.php:137
 msgid "Display Name"
 msgstr "显示名字"
 
@@ -838,7 +657,7 @@ msgstr "摘录的文章，你要突出"
 #: ../email_users_options_form.php:496
 #, fuzzy
 msgid "the content of the post you want to highlight"
-msgstr "文章标题要突出显示"
+msgstr "摘录的文章，你要突出"
 
 #: ../email_users_options_form.php:500
 msgid "the link to the post you want to highlight"
@@ -1007,6 +826,10 @@ msgstr ""
 msgid "Email-Users Information"
 msgstr "邮件用户"
 
+#: ../email_users_options_form.php:654
+msgid "User Settings"
+msgstr "用户设置"
+
 #: ../email_users_options_form.php:656
 #, fuzzy
 msgid "Number of Users who accept<br/>post or page notification emails:"
@@ -1021,15 +844,6 @@ msgstr "收到的邮件发送给多个收件人。"
 msgid "Filters"
 msgstr ""
 
-#: ../email_users_options_form.php:674
-msgid "Yes"
-msgstr ""
-
-#: ../email_users_options_form.php:674
-#, fuzzy
-msgid "No"
-msgstr "无"
-
 #: ../email_users_options_form.php:680
 msgid ""
 "There are a number of <a href=\"http://codex.wordpress.org/Plugin_API/"
@@ -1039,10 +853,6 @@ msgid ""
 "reaching all of the intended recipients or the mail format and/or header "
 "detail isn't as expected."
 msgstr ""
-
-#: ../email_users_overview.php:26
-msgid "You are not allowed to send emails."
-msgstr "你不允许发送电子邮件。"
 
 #: ../email_users_overview.php:45 ../email_users_overview.php:51
 msgid "Send Individual Message"
@@ -1075,106 +885,12 @@ msgstr "您可以发送电子邮件给一个或多个用户组（即用户属于
 msgid "Send Group Message"
 msgstr "发送群组邮件"
 
-#: ../email_users_send_custom_filter_mail.php:53
-#: ../email_users_send_group_mail.php:59 ../email_users_send_user_mail.php:52
-msgid "You must specify the mail format."
-msgstr "您必须指定邮件格式。"
-
-#: ../email_users_send_custom_filter_mail.php:59
-#: ../email_users_send_user_mail.php:58
-msgid "You must enter at least a recipient."
-msgstr "您必须选择至少一个收件人。"
-
-#: ../email_users_send_custom_filter_mail.php:73
-#: ../email_users_send_group_mail.php:71
-#: ../email_users_send_notify_mail.php:61 ../email_users_send_user_mail.php:64
-msgid "You must enter a subject."
-msgstr "您必须输入一个主题。"
-
-#: ../email_users_send_custom_filter_mail.php:79
-#: ../email_users_send_group_mail.php:77
-#: ../email_users_send_notify_mail.php:67 ../email_users_send_user_mail.php:70
-msgid "You must enter some content."
-msgstr "您必须输入一些内容。"
-
 #: ../email_users_send_custom_filter_mail.php:144
 #: ../email_users_send_group_mail.php:209
-#: ../email_users_send_notify_mail.php:261
-#: ../email_users_send_test_mail.php:103 ../email_users_send_user_mail.php:143
+#: ../email_users_send_notify_mail.php:259
+#: ../email_users_send_test_mail.php:103 ../email_users_send_user_mail.php:140
 msgid "No recipients were found."
 msgstr "没有收件人被发现。"
-
-#: ../email_users_send_custom_filter_mail.php:149
-#: ../email_users_send_group_mail.php:214
-#: ../email_users_send_user_mail.php:149
-msgid "There was a problem trying to send email to users."
-msgstr "出现问题，尝试向用户发送电子邮件。"
-
-#: ../email_users_send_custom_filter_mail.php:152
-#: ../email_users_send_group_mail.php:216
-#: ../email_users_send_user_mail.php:151
-msgid ""
-"No email has been sent to other users. This may be because no valid email "
-"addresses were found."
-msgstr ""
-"已经没有电子邮件发送给其他用户。这可能是因为没有有效的电子邮件地址被发现。"
-
-#: ../email_users_send_custom_filter_mail.php:156
-#: ../email_users_send_group_mail.php:220
-#: ../email_users_send_user_mail.php:155
-#, php-format
-msgid "Email sent to %s user(s)."
-msgstr "邮件发送到 %s 个用户 。"
-
-#: ../email_users_send_custom_filter_mail.php:160
-#: ../email_users_send_group_mail.php:224
-#: ../email_users_send_user_mail.php:159
-msgid "WARNING: More email has been sent than the number of recipients found."
-msgstr "警告：电子邮件已经发送比收件人的数量更多。"
-
-#: ../email_users_send_custom_filter_mail.php:162
-#: ../email_users_send_group_mail.php:226
-#, fuzzy, php-format
-msgid ""
-"Email has been sent to %s users, but %s recipients were originally found. "
-"Perhaps some users don't have valid email addresses?"
-msgstr ""
-"电子邮件已经发送到 %d 个用户，但 %d 只有个收件人被找到。或许有些用户没有有效"
-"的电子邮件地址？"
-
-#: ../email_users_send_group_mail.php:65
-msgid "You must select at least a role."
-msgstr "必须选择至少一个角色。"
-
-#: ../email_users_send_notify_mail.php:54
-msgid "You must select at least a recipient."
-msgstr "你必须至少选择一个收件人。"
-
-#: ../email_users_send_notify_mail.php:267
-#, php-format
-msgid "Notification sent to %s user(s)."
-msgstr "通知发送到 %s 个用户 。"
-
-#: ../email_users_send_test_mail.php:109
-#, php-format
-msgid "Test email sent to %s."
-msgstr "测试邮件发送到 %s 。"
-
-#: ../email_users_send_user_mail.php:137
-#, php-format
-msgid ""
-"<br/>%d users who should not to receive Mass Email were filtered from the "
-"recipient list."
-msgstr "<br/>%d  从收件人列表中过滤的用户不会收到群发电子邮件。"
-
-#: ../email_users_send_user_mail.php:161
-#, php-format
-msgid ""
-"Email has been sent to %d users, but %d recipients were originally found. "
-"Perhaps some users don't have valid email addresses?"
-msgstr ""
-"电子邮件已经发送到 %d 个用户，但 %d 只有个收件人被找到。或许有些用户没有有效"
-"的电子邮件地址？"
 
 #: ../email_users_set_options.php:37
 msgid "Plugin settings have been restored to the defaults."
@@ -1184,71 +900,180 @@ msgstr "插件设置已经恢复为默认值。"
 msgid "Send an Email to Individual Users"
 msgstr "向个人用户发送电子邮件"
 
-#: ../email_users_user_settings.php:30
-msgid "You are not allowed to view the user settings."
-msgstr "您不允许查看用户设置。"
-
-#: ../email_users_user_settings.php:183
-msgid "Username"
-msgstr "用户名"
-
-#: ../email_users_user_settings.php:184
-msgid "E-Mail Address"
-msgstr "电子邮件地址"
-
-#: ../email_users_user_settings.php:187
-msgid "Notifications"
-msgstr "通知"
-
-#: ../email_users_user_settings.php:188
-msgid "Mass Email"
-msgstr "群发电子邮件"
-
-#: ../email_users_user_settings.php:239
-msgid "Notifications On"
-msgstr "通知 On"
-
-#: ../email_users_user_settings.php:240
-msgid "Notifications Off"
-msgstr "通知 Off"
-
-#: ../email_users_user_settings.php:241
-msgid "Mass Email On"
-msgstr "群发邮件 On"
-
-#: ../email_users_user_settings.php:242
-msgid "Mass Email Off"
-msgstr "群发邮件 Off"
-
-#: ../email_users_user_settings.php:243
-msgid "Notifications On & Mass Email On"
-msgstr "Notifications On & Mass Email On"
-
-#: ../email_users_user_settings.php:244
-msgid "Notifications On & Mass Email Off"
-msgstr "Notifications On & Mass Email Off"
-
-#: ../email_users_user_settings.php:245
-msgid "Notifications Off & Mass Email On"
-msgstr "Notifications Off & Mass Email On"
-
-#: ../email_users_user_settings.php:246
-msgid "Notifications Off & Mass Email Off"
-msgstr "Notifications Off & Mass Email Off"
-
-#: ../email_users_user_settings.php:324
-msgid "No users selected"
-msgstr "没有用户选择"
-
-#: ../email_users_user_settings.php:489
-msgid "Search"
-msgstr ""
-
 #~ msgid "[%BLOG_NAME%] A post of interest: \"%POST_TITLE%\""
 #~ msgstr "一篇文章"
+
+#~ msgid ""
+#~ "<p>Hello, </p><p>I would like to bring your attention on a new post "
+#~ "published on the blog. Details of the post follow; I hope you will find "
+#~ "it interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr><p><strong>"
+#~ "%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: "
+#~ "<a href=\"%POST_URL%\">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a "
+#~ "href=\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
+#~ msgstr ""
+#~ "<p>你好, </p><p>有一篇新的文章已经发布到网站，全文如下，希望你能对网站有兴"
+#~ "趣。</p><p>顺致问候, </p><p>%FROM_NAME%</p><hr><p><strong>%POST_TITLE%</"
+#~ "strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: <a href="
+#~ "\"%POST_URL%\">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href="
+#~ "\"%BLOG_URL%\">%BLOG_URL%</a></li></ul>"
+
+#~ msgid "Notify Users"
+#~ msgstr "通知用户"
+
+#~ msgid "Send to User(s)"
+#~ msgstr "发到用户"
+
+#~ msgid "Send to Group(s)"
+#~ msgstr "发到群组"
+
+#~ msgid ""
+#~ "The email address (%s) of the user you are trying to send mail to is not "
+#~ "a valid email address format."
+#~ msgstr ""
+#~ "电子邮件地址 (%s) 不是一个有效的电子邮件地址格式的用户，你正试图将邮件发送"
+#~ "到。"
+
+#~ msgid "Invalid email address (\"%s\") found."
+#~ msgstr "无效的电子邮件地址 (\"%s\") found."
+
+#~ msgid "You are not allowed to send emails to user groups."
+#~ msgstr "你不允许发送电子邮件的用户群体。"
+
+#~ msgid "Role"
+#~ msgstr "角色"
+
+#~ msgid "You are not allowed to notify users about posts and pages."
+#~ msgstr "你不允许通知用户有关的文章和网页。"
+
+#~ msgid "Trying to notify users of a %s without passing the %s id!"
+#~ msgstr "试图通知用户 %s 没有通过 %s id!"
+
+#~ msgid "Notify Users of a %s"
+#~ msgstr "通知用户 %s"
+
+#~ msgid "Please select the %s that you wish to notify users about."
+#~ msgstr "请选择 %s 您要通知用户。"
+
+#~ msgid "Select %s"
+#~ msgstr "选择 %s"
+
+#~ msgid "N/A"
+#~ msgstr "N/A"
+
+#~ msgid "User"
+#~ msgstr "用户"
+
+#~ msgid "You are not allowed to change the options of this plugin."
+#~ msgstr "您不得改变这个插件的选项。"
+
+#~ msgid "You are not allowed to send emails."
+#~ msgstr "你不允许发送电子邮件。"
+
+#~ msgid "You must specify the mail format."
+#~ msgstr "您必须指定邮件格式。"
+
+#~ msgid "You must select at least a role."
+#~ msgstr "必须选择至少一个角色。"
+
+#~ msgid "You must enter a subject."
+#~ msgstr "您必须输入一个主题。"
+
+#~ msgid "You must enter some content."
+#~ msgstr "您必须输入一些内容。"
+
+#~ msgid "Email sent to %s user(s)."
+#~ msgstr "邮件发送到 %s 个用户 。"
+
+#~ msgid "You must select at least a recipient."
+#~ msgstr "你必须至少选择一个收件人。"
+
+#~ msgid "Notification sent to %s user(s)."
+#~ msgstr "通知发送到 %s 个用户 。"
+
+#~ msgid "Test email sent to %s."
+#~ msgstr "测试邮件发送到 %s 。"
+
+#~ msgid "You are not allowed to send emails to users."
+#~ msgstr "您没有被允许向用户发送电子邮件。"
+
+#~ msgid "You must enter at least a recipient."
+#~ msgstr "您必须选择至少一个收件人。"
+
+#~ msgid ""
+#~ "<br/>%d users who should not to receive Mass Email were filtered from the "
+#~ "recipient list."
+#~ msgstr "<br/>%d  从收件人列表中过滤的用户不会收到群发电子邮件。"
+
+#~ msgid "There was a problem trying to send email to users."
+#~ msgstr "出现问题，尝试向用户发送电子邮件。"
+
+#~ msgid ""
+#~ "No email has been sent to other users. This may be because no valid email "
+#~ "addresses were found."
+#~ msgstr ""
+#~ "已经没有电子邮件发送给其他用户。这可能是因为没有有效的电子邮件地址被发现。"
+
+#~ msgid ""
+#~ "WARNING: More email has been sent than the number of recipients found."
+#~ msgstr "警告：电子邮件已经发送比收件人的数量更多。"
+
+#~ msgid ""
+#~ "Email has been sent to %d users, but %d recipients were originally found. "
+#~ "Perhaps some users don't have valid email addresses?"
+#~ msgstr ""
+#~ "电子邮件已经发送到 %d 个用户，但 %d 只有个收件人被找到。或许有些用户没有有"
+#~ "效的电子邮件地址？"
+
+#~ msgid "You are not allowed to view the user settings."
+#~ msgstr "您不允许查看用户设置。"
+
+#~ msgid "On"
+#~ msgstr "On"
+
+#~ msgid "Off"
+#~ msgstr "Off"
 
 #~ msgid "Last Name"
 #~ msgstr "姓"
 
 #~ msgid "First Name"
 #~ msgstr "名字"
+
+#~ msgid "Username"
+#~ msgstr "用户名"
+
+#~ msgid "E-Mail Address"
+#~ msgstr "电子邮件地址"
+
+#~ msgid "Notifications"
+#~ msgstr "通知"
+
+#~ msgid "Mass Email"
+#~ msgstr "群发电子邮件"
+
+#~ msgid "Notifications On"
+#~ msgstr "通知 On"
+
+#~ msgid "Notifications Off"
+#~ msgstr "通知 Off"
+
+#~ msgid "Mass Email On"
+#~ msgstr "群发邮件 On"
+
+#~ msgid "Mass Email Off"
+#~ msgstr "群发邮件 Off"
+
+#~ msgid "Notifications On & Mass Email On"
+#~ msgstr "Notifications On & Mass Email On"
+
+#~ msgid "Notifications On & Mass Email Off"
+#~ msgstr "Notifications On & Mass Email Off"
+
+#~ msgid "Notifications Off & Mass Email On"
+#~ msgstr "Notifications Off & Mass Email On"
+
+#~ msgid "Notifications Off & Mass Email Off"
+#~ msgstr "Notifications Off & Mass Email Off"
+
+#~ msgid "No users selected"
+#~ msgstr "没有用户选择"

@@ -1,9 +1,14 @@
 === P3 (Plugin Performance Profiler) ===
-Contributors: Godaddy, StarfieldTech, kurtpayne
+Contributors: Godaddy, StarfieldTech, kurtpayne, cklosows
 Tags: debug, debugging, developer, development, performance, plugin, profiler, speed
 Requires at least: 3.3
+<<<<<<< HEAD
 Tested up to: 4.1
 Stable tag: 1.5.3.6
+=======
+Tested up to: 4.0
+Stable tag: 1.5.3.1
+>>>>>>> parent of 417df59... Update 3 themes and 14 plugins
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +51,7 @@ Manual installation:
 4. Then activate the Plugin from Plugins page.
 
 == Upgrade Notice ==
+<<<<<<< HEAD
 = 1.5.3.6 =
 Internal version bump to ensure new CSS/JS isn't cached
 
@@ -60,6 +66,8 @@ Fixes a CSS issue with overlays and some browsers
 
 = 1.5.3.2 =
 Style updates for 4.1
+=======
+>>>>>>> parent of 417df59... Update 3 themes and 14 plugins
 
 = 1.5.3.1 =
 Fixed logic bug in determining debug_backtrace arguements
@@ -165,6 +173,7 @@ add_filter( 'p3_automatic_scan_urls', 'my_p3_auto_scan_pages' );
 </code>
 
 == Changelog ==
+<<<<<<< HEAD
 = 1.5.3.6 =
 Internal version bump to ensure new CSS/JS isn't cached
 
@@ -176,6 +185,8 @@ Internal version bump to ensure new CSS/JS isn't cached
 
 = 1.5.3.2 =
 * Style Updates for 4.1
+=======
+>>>>>>> parent of 417df59... Update 3 themes and 14 plugins
 
 = 1.5.3.1 =
 * Fixed logic bug in determining debug_backtrace arguements

@@ -2,7 +2,11 @@
 /*
 * Plugin Name: bbPress Notify (No-Spam)
 * Description: Sends email notifications upon topic/reply creation, as long as it's not flagged as spam.
+<<<<<<< HEAD
 * Version: 1.6.6.1
+=======
+* Version: 1.6.2
+>>>>>>> parent of 417df59... Update 3 themes and 14 plugins
 * Author: Vinny Alves, Andreas Baumgartner, Paul Schroeder
 * License:       GNU General Public License, v2 (or newer)
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -30,8 +34,6 @@ class bbPress_Notify_noSpam {
 	protected $bbpress_reply_post_type;
 	
 	public static $instance;
-	
-	public $domain = 'bbpress_notify'; 
 
 	function __construct()
 	{
@@ -53,8 +55,11 @@ class bbPress_Notify_noSpam {
 			add_action('add_meta_boxes', array(&$this,'add_notification_meta_box'), 10);
 			
 			add_action('save_post', array(&$this, 'notify_on_save'), 10, 2);
+<<<<<<< HEAD
 			
 // 			add_action( 'admin_notices', array( &$this, 'maybe_show_pro_message' ) );
+=======
+>>>>>>> parent of 417df59... Update 3 themes and 14 plugins
 		}
 		
 		// New topics and replies can be generated from admin and non-admin interfaces
@@ -147,6 +152,7 @@ class bbPress_Notify_noSpam {
 	
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * Deprecated, the project did not get backing.
 	 */
@@ -170,6 +176,8 @@ class bbPress_Notify_noSpam {
 	}
 	
 	
+=======
+>>>>>>> parent of 417df59... Update 3 themes and 14 plugins
 	/* Checks whether bbPress is active because we need it. If bbPress isn't active, we are going to disable ourself */
 	function on_activation()
 	{

@@ -166,8 +166,6 @@ class blcCurlHttp extends blcHttpCheckerBase {
 
 		$result = array(
 			'broken' => false,
-			'timeout' => false,
-			'warning' => false,
 		);
 		$log = '';
 		
@@ -283,7 +281,6 @@ class blcCurlHttp extends blcHttpCheckerBase {
         		case 6: //CURLE_COULDNT_RESOLVE_HOST
 		        	$result['status_code'] = BLC_LINK_STATUS_WARNING;
 		        	$result['status_text'] = __('Server Not Found', 'broken-link-checker');
-					$result['error_code'] = 'couldnt_resolve_host';
 		        	break;
 		        	
 		        case 28: //CURLE_OPERATION_TIMEDOUT
@@ -299,7 +296,6 @@ class blcCurlHttp extends blcHttpCheckerBase {
 	        		} else {
 	        			$result['status_code'] = BLC_LINK_STATUS_WARNING;
 	        			$result['status_text'] = __('Connection Failed', 'broken-link-checker');
-						$result['error_code'] = 'connection_failed';
 	        		}
 	        		break;
 	        		

@@ -10,7 +10,7 @@
  */
 
 class Jetpack_Likes {
-	var $version = '20141028';
+	var $version = '20140922';
 
 	public static function init() {
 		static $instance = NULL;
@@ -73,8 +73,6 @@ class Jetpack_Likes {
 
 		add_action( 'admin_bar_menu', array( $this, 'admin_bar_likes' ), 60 );
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'load_styles_register_scripts' ) );
-
 		add_action( 'save_post', array( $this, 'meta_box_save' ) );
 		add_action( 'edit_attachment', array( $this, 'meta_box_save' ) );
 		add_action( 'sharing_global_options', array( $this, 'admin_settings_init' ), 20 );
@@ -106,17 +104,6 @@ class Jetpack_Likes {
 	function load_jp_css() {
 		// Do we really need `admin_styles`? With the new admin UI, it's breaking some bits.
 		// Jetpack::init()->admin_styles();
-	}
-	/**
-	 * Load style on the front end.
-	 * @return null
-	 */
-	function load_styles_register_scripts() {
-
-		wp_enqueue_style( 'jetpack_likes', plugins_url( 'likes/style.css', __FILE__ ), array(), JETPACK__VERSION );
-		if( $this->in_jetpack ) {
-			$this->register_scripts();
-		}
 	}
 
 	/**
@@ -576,6 +563,8 @@ class Jetpack_Likes {
 			add_filter( 'the_content', array( &$this, 'post_likes' ), 30, 1 );
 			add_filter( 'the_excerpt', array( &$this, 'post_likes' ), 30, 1 );
 
+			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
+
 		} else {
 			add_filter( 'post_flair', array( &$this, 'post_likes' ), 30, 1 );
 			add_filter( 'post_flair_block_css', array( $this, 'post_flair_service_enabled_like' ) );
@@ -595,14 +584,16 @@ class Jetpack_Likes {
 	}
 
 	/**
-	* Register scripts
+	* Enqueue scripts
 	*/
-	function register_scripts() {
-		// Lets register all the sciprts
-		wp_register_script( 'postmessage', plugins_url( '_inc/postmessage.js', dirname(__FILE__) ), array( 'jquery' ), JETPACK__VERSION, false );
-		wp_register_script( 'jquery_inview', plugins_url( '_inc/jquery.inview.js', dirname(__FILE__) ), array( 'jquery' ), JETPACK__VERSION, false );
-		wp_register_script( 'jetpack_resize', plugins_url( '_inc/jquery.jetpack-resize.js' , dirname(__FILE__) ), array( 'jquery' ), JETPACK__VERSION, false );
-		wp_register_script( 'jetpack_likes_queuehandler', plugins_url( 'likes/queuehandler.js' , __FILE__ ), array( 'jquery', 'postmessage', 'jetpack_resize', 'jquery_inview' ), JETPACK__VERSION, true );
+	function enqueue_scripts() {
+		if ( $this->is_likes_visible() ) {
+			wp_enqueue_script( 'postmessage', plugins_url( '_inc/postmessage.js', dirname(__FILE__) ), array( 'jquery' ), JETPACK__VERSION, false );
+			wp_enqueue_script( 'jquery_inview', plugins_url( '_inc/jquery.inview.js', dirname(__FILE__) ), array( 'jquery' ), JETPACK__VERSION, false );
+			wp_enqueue_script( 'jetpack_resize', plugins_url( '_inc/jquery.jetpack-resize.js' , dirname(__FILE__) ), array( 'jquery' ), JETPACK__VERSION, false );
+			wp_enqueue_style( 'jetpack_likes', plugins_url( 'likes/style.css', __FILE__ ), array(), JETPACK__VERSION );
+			wp_enqueue_script( 'jetpack_likes_queuehandler', plugins_url( 'likes/queuehandler.js' , __FILE__ ), array( 'jquery' ), JETPACK__VERSION, true );
+		}
 	}
 
 	/**
@@ -614,22 +605,8 @@ class Jetpack_Likes {
 			.fixed .column-likes { width: 5em; padding-top: 8px; text-align: center !important; }
 			.fixed .column-stats { width: 5em; }
 			.fixed .column-likes .post-com-count { background-image: none; }
-			.fixed .column-likes .post-com-count::after { border: none !important; }
-			.fixed .column-likes .comment-count { background-color: #bbb; }
-			.fixed .column-likes .comment-count:hover { background-color: #2ea2cc; }
-			.fixed .column-likes .vers img { display: none; }
-			.fixed .column-likes .vers:before {
-				font: normal 20px/1 dashicons;
-				content: '\f155';
-				speak: none;
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
-			}
-			@media screen and (max-width: 782px) {
-				.fixed .column-likes {
-					display: none;
-				}
-			}
+			.fixed .column-likes .comment-count { background-color: #888; }
+			.fixed .column-likes .comment-count:hover { background-color: #D54E21; }
 		</style>
 		<?php
 	}
@@ -705,8 +682,8 @@ class Jetpack_Likes {
 			$url_parts = parse_url( $url );
 			$domain = $url_parts['host'];
 		}
-		// make sure to include the scripts before the iframe otherwise weird things happen
-		add_action( 'wp_footer', array( $this, 'likes_master' ), 21 );
+
+		add_filter( 'wp_footer', array( $this, 'likes_master' ) );
 
 		/**
 		* if the same post appears more then once on a page the page goes crazy
@@ -722,9 +699,6 @@ class Jetpack_Likes {
 		$html .= "<div class='likes-widget-placeholder post-likes-widget-placeholder' style='height:55px'><span class='button'><span>" . esc_html__( 'Like', 'jetpack' ) . '</span></span> <span class="loading">' . esc_html__( 'Loading...', 'jetpack' ) . '</span></div>';
 		$html .= "<span class='sd-text-color'></span><a class='sd-link-color'></a>";
 		$html .= '</div>';
-
-		// Lets make sure that the script is enqued
-		wp_enqueue_script( 'jetpack_likes_queuehandler' );
 
 		return $content . $html;
 	}
@@ -750,8 +724,8 @@ class Jetpack_Likes {
 			$url_parts = parse_url( $url );
 			$domain = $url_parts['host'];
 		}
-		// make sure to include the scripts before the iframe otherwise weird things happen
-		add_action( 'wp_footer', array( $this, 'likes_master' ), 21 );
+
+		add_filter( 'wp_footer', array( $this, 'likes_master' ) );
 
 		$src = sprintf( '%1$s://widgets.wp.com/likes/#blog_id=%2$d&amp;comment_id=%3$d&amp;origin=%1$s://%4$s', $protocol, $blog_id, $comment->comment_ID, $domain );
 		$name = sprintf( 'like-comment-frame-%1$d-%2$d', $blog_id, $comment->comment_ID );
@@ -789,8 +763,8 @@ class Jetpack_Likes {
 			$url_parts = parse_url( $url );
 			$domain = $url_parts['host'];
 		}
-		// make sure to include the scripts before the iframe otherwise weird things happen
-		add_action( 'wp_footer', array( $this, 'likes_master' ), 21 );
+
+		add_filter( 'wp_footer', array( $this, 'likes_master' ) );
 
 		$src = sprintf( '%1$s://widgets.wp.com/likes/#blog_id=%2$d&amp;post_id=%3$d&amp;origin=%1$s://%4$s', $protocol, $blog_id, $post->ID, $domain );
 
@@ -806,10 +780,6 @@ class Jetpack_Likes {
 		$wp_admin_bar->add_node( $node );
 	}
 
-	/**
-	 * This function needs to get loaded after the scripts get added to the page.
-	 *
-	 */
 	function likes_master() {
 		$protocol = 'http';
 		if ( is_ssl() )
@@ -825,10 +795,10 @@ class Jetpack_Likes {
 		}
 
 		$likersText = wp_kses( __( '<span>%d</span> bloggers like this:', 'jetpack' ), array( 'span' => array() ) );
-		?>
+?>
 		<iframe src='<?php echo $src; ?>' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
 		<div id='likes-other-gravatars'><div class="likes-text"><?php echo $likersText; ?></div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
-		<?php
+<?php
 	}
 
 	/**
@@ -898,9 +868,9 @@ class Jetpack_Likes {
 
 			// Sharing Setting Overrides ****************************************
 
-			// Single post including custom post types
-			if ( is_single() ) {
-				if ( ! $this->is_single_post_enabled( $post->post_type ) ) {
+			// Single post
+			if ( is_singular( 'post' ) ) {
+				if ( ! $this->is_single_post_enabled() ) {
 					$enabled = false;
 				}
 
@@ -921,7 +891,7 @@ class Jetpack_Likes {
 				$enabled = false;
 			}
 		}
-
+		
 		if( is_object( $post ) ) {
 			// Check that the post is a public, published post.
 			if ( 'attachment' == $post->post_type ) {
@@ -1019,15 +989,11 @@ class Jetpack_Likes {
 	/**
 	 * Are Post Likes enabled on single posts?
 	 *
-	 * @param String $post_type custom post type identifier
 	 * @return bool
 	 */
-	function is_single_post_enabled( $post_type = 'post' ) {
+	function is_single_post_enabled() {
 		$options = $this->get_options();
-		return (bool) apply_filters(
-			"wpl_is_single_{$post_type}_disabled",
-			(bool) in_array( $post_type, $options['show'] )
-		);
+		return (bool) apply_filters( 'wpl_is_single_post_disabled', (bool) in_array( 'post', $options['show'] ) );
 	}
 
 	/**
@@ -1049,6 +1015,7 @@ class Jetpack_Likes {
 		$options = $this->get_options();
 		return (bool) apply_filters( 'wpl_is_attachment_disabled', (bool) in_array( 'attachment', $options['show'] ) );
 	}
+
 }
 
 Jetpack_Likes::init();

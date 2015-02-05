@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 /*
 Plugin Name: Email Users
-Version: 4.7.0
+Version: 4.6.10
 Plugin URI: http://wordpress.org/extend/plugins/email-users/
 Description: Allows the site editors to send an e-mail to the blog users. Credits to <a href="http://www.catalinionescu.com">Catalin Ionescu</a> who gave me (Vincent Pratt) some ideas for the plugin and has made a similar plugin. Bug reports and corrections by Cyril Crua, Pokey and Mike Walsh.  Development for enhancements and bug fixes since version 4.1 primarily by <a href="http://michaelwalsh.org">Mike Walsh</a>.
 Author: Mike Walsh & MarvinLabs
@@ -27,7 +27,7 @@ Author URI: http://www.michaelwalsh.org
 */
 
 // Version of the plugin
-define( 'MAILUSERS_CURRENT_VERSION', '4.7.0');
+define( 'MAILUSERS_CURRENT_VERSION', '4.6.10');
 
 // i18n plugin domain
 define( 'MAILUSERS_I18N_DOMAIN', 'email-users' );
@@ -241,14 +241,14 @@ function mailusers_add_default_capabilities() {
 	$role = get_role('contributor');
 
     if ($role !== null) {
-        //error_log(sprintf("%s::%s  contributor", basename(__FILE__), __LINE__)) ;
+        error_log(sprintf("%s::%s  contributor", basename(__FILE__), __LINE__)) ;
 	    $role->add_cap(MAILUSERS_EMAIL_SINGLE_USER_CAP);
     }
 
 	$role = get_role('author');
 
     if ($role !== null) {
-        //error_log(sprintf("%s::%s  author", basename(__FILE__), __LINE__)) ;
+        error_log(sprintf("%s::%s  author", basename(__FILE__), __LINE__)) ;
 	    $role->add_cap(MAILUSERS_EMAIL_SINGLE_USER_CAP);
 	    $role->add_cap(MAILUSERS_EMAIL_MULTIPLE_USERS_CAP);
     }
@@ -256,7 +256,7 @@ function mailusers_add_default_capabilities() {
 	$role = get_role('editor');
 
     if ($role !== null) {
-        //error_log(sprintf("%s::%s  editor", basename(__FILE__), __LINE__)) ;
+        error_log(sprintf("%s::%s  editor", basename(__FILE__), __LINE__)) ;
 	    $role->add_cap(MAILUSERS_NOTIFY_USERS_CAP);
 	    $role->add_cap(MAILUSERS_EMAIL_SINGLE_USER_CAP);
 	    $role->add_cap(MAILUSERS_EMAIL_MULTIPLE_USERS_CAP);
@@ -266,7 +266,7 @@ function mailusers_add_default_capabilities() {
 	$role = get_role('administrator');
 
     if ($role !== null) {
-        //error_log(sprintf("%s::%s  admin", basename(__FILE__), __LINE__)) ;
+        error_log(sprintf("%s::%s  admin", basename(__FILE__), __LINE__)) ;
 	    $role->add_cap(MAILUSERS_NOTIFY_USERS_CAP);
 	    $role->add_cap(MAILUSERS_EMAIL_SINGLE_USER_CAP);
 	    $role->add_cap(MAILUSERS_EMAIL_MULTIPLE_USERS_CAP);
@@ -1467,7 +1467,7 @@ function mailusers_send_mail($recipients = array(), $subject = '', $message = ''
 	$headers[] = ($omit) ? sprintf('From: %s', $sender_email) : sprintf('From: "%s" <%s>', $sender_name, $sender_email);
 	$headers[] = sprintf('Return-Path: <%s>', $return_path);
 	$headers[] = ($omit) ? sprintf('Reply-To: %s', $sender_email) : sprintf('Reply-To: "%s" <%s>', $sender_name, $sender_email);
-    //$headers[] = 'MIME-Version: 1.0';
+    $headers[] = 'MIME-Version: 1.0';
 
     if (mailusers_get_add_x_mailer_header() == 'true')
 	    $headers[] = sprintf('X-Mailer: PHP %s', phpversion()) ;
@@ -1690,44 +1690,6 @@ function mailusers_dashboard_widget_function() {
     <th><?php _e('Number of Users who accept emails sent to multiple recipients:', MAILUSERS_I18N_DOMAIN); ?></th>
 	<td<?php if ( count($massemails) == 0) echo ' style="color: red;"' ; ?>><?php echo count($massemails) ; ?></td>
 	</tr>
-	</table>
-    </div>
-    <div class="table table_content">
-    <p class="sub"><?php _e('Content Filters', MAILUSERS_I18N_DOMAIN); ?></p>
-    <table style="text-align: left; width: 90%;">
-<?php
-    global $wp_filter;
-    $filters = array(
-        'the_content' => 'http://codex.wordpress.org/Function_Reference/the_content',
-        'the_excerpt' => 'http://codex.wordpress.org/Function_Reference/the_excerpt'
-    ) ;
-    $hooks = array(
-        'wpautop' => 'http://codex.wordpress.org/Function_Reference/wpautop',
-        'wptexturize' => 'http://codex.wordpress.org/Function_Reference/wptexturize',
-        'shortcode_unautop' => 'https://developer.wordpress.org/reference/functions/shortcode_unautop/'
-    ) ;
-
-    //  Loop through filters and hooks checking for anything missing
- 
-    foreach ($filters as $fkey => $fvalue)
-    {
-        if (has_filter($fkey))
-        {
-            $f = array() ;
-            foreach (array_keys($wp_filter[$fkey]) as $key => $value)
-                $f= array_merge($f, array_keys($wp_filter[$fkey][$value])) ;
-            foreach ($hooks as $key => $value)
-            {
-?>
-   	<tr>
-    <th><a href="<?php echo $fvalue; ?>"><?php echo $fkey; ?></a> / <a href="<?php echo $value; ?>"><?php echo $key; ?></a></th>
-	  <td<?php if (!in_array($key, $f)) echo ' style="color: red;"' ; ?>><?php echo in_array($key, $f) ? __('Present', MAILUSERS_I18N_DOMAIN) : __('Missing', MAILUSERS_I18N_DOMAIN) ; ?></td>
-	</tr>
-<?php
-            }
-        }
-    }
-?>
 	</table>
     </div>
 <?php

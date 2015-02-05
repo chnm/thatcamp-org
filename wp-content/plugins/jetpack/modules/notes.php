@@ -60,9 +60,7 @@ class Jetpack_Notifications {
 			return $version;
 		}
 
-		$user_agent = isset( $_SERVER['HTTP_USER_AGENT']  ) ? $_SERVER['HTTP_USER_AGENT'] : '';
-
-		preg_match( '/MSIE (\d+)/', $user_agent, $matches );
+		preg_match( '/MSIE (\d+)/', $_SERVER['HTTP_USER_AGENT'], $matches );
 		$version = empty( $matches[1] ) ? null : $matches[1];
 		if ( empty( $version ) || !$version ) {
 			return false;

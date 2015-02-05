@@ -8,7 +8,7 @@ function wpcf7_admin_menu() {
 	add_object_page( __( 'Contact Form 7', 'contact-form-7' ),
 		__( 'Contact', 'contact-form-7' ),
 		'wpcf7_read_contact_forms', 'wpcf7',
-		'wpcf7_admin_management_page', 'dashicons-email' );
+		'wpcf7_admin_management_page' );
 
 	$edit = add_submenu_page( 'wpcf7',
 		__( 'Edit Contact Form', 'contact-form-7' ),
@@ -139,24 +139,14 @@ function wpcf7_load_contact_form_admin() {
 		$post = WPCF7_ContactForm::get_instance( $_GET['post'] );
 	}
 
-	$current_screen = get_current_screen();
-
-	require_once WPCF7_PLUGIN_DIR . '/admin/includes/help-tabs.php';
-	$help_tabs = new WPCF7_Help_Tabs( $current_screen );
-
 	if ( $post && current_user_can( 'wpcf7_edit_contact_form', $post->id() ) ) {
-		$help_tabs->set_help_tabs( 'edit' );
 		wpcf7_add_meta_boxes( $post->id() );
 
-	} else if ( 'wpcf7-new' == $plugin_page ) {
-		$help_tabs->set_help_tabs( 'add_new' );
-
 	} else {
-		$help_tabs->set_help_tabs( 'list' );
+		$current_screen = get_current_screen();
 
-		if ( ! class_exists( 'WPCF7_Contact_Form_List_Table' ) ) {
+		if ( ! class_exists( 'WPCF7_Contact_Form_List_Table' ) )
 			require_once WPCF7_PLUGIN_DIR . '/admin/includes/class-contact-forms-list-table.php';
-		}
 
 		add_filter( 'manage_' . $current_screen->id . '_columns',
 			array( 'WPCF7_Contact_Form_List_Table', 'define_columns' ) );

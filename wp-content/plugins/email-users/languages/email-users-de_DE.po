@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Email Users\n"
-"POT-Creation-Date: 2014-12-03 17:15-0000\n"
-"PO-Revision-Date: 2014-12-03 17:28-0000\n"
+"POT-Creation-Date: 2014-09-22 14:34-0000\n"
+"PO-Revision-Date: 2014-09-22 14:34-0000\n"
 "Last-Translator: Mike Walsh <mpwalsh8@gmail.com>\n"
 "Language-Team: Menne Biomed Consulting\n"
 "Language: de\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.6.9\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
@@ -148,28 +148,15 @@ msgstr ""
 msgid "Number of Users who accept emails sent to multiple recipients:"
 msgstr "Anzahl der Benutzer die Mails an mehrere Empfänger akzeptieren"
 
-#: ../email-users.php:1696
-msgid "Content Filters"
-msgstr ""
-
-#: ../email-users.php:1724
-msgid "Present"
-msgstr ""
-
-#: ../email-users.php:1724
-msgid "Missing"
-msgstr ""
-
-#: ../email-users.php:1783 ../email-users.php:1784
+#: ../email-users.php:1745 ../email-users.php:1746
 msgid "Mail sending aborted."
 msgstr "Versand der Mail abgebrochen"
 
-#: ../email-users.php:1807
-#, fuzzy
+#: ../email-users.php:1769
 msgid "PHPMailer Debug"
-msgstr "Debug"
+msgstr ""
 
-#: ../email-users.php:1839
+#: ../email-users.php:1801
 msgid "wp_mail() Debug"
 msgstr "wp_mail Debug"
 
@@ -341,9 +328,8 @@ msgstr ""
 "erscheinen hier."
 
 #: ../email_users_group_mail_form.php:104 ../email_users_notify_form.php:197
-#, fuzzy
 msgid "Filter"
-msgstr "Benutzer ohne zugewiesene Rollen nicht anzeigen"
+msgstr ""
 
 #: ../email_users_group_mail_form.php:117 ../email_users_notify_form.php:210
 msgid "Role"
@@ -412,11 +398,8 @@ msgstr ""
 "nicht aufgeführt."
 
 #: ../email_users_notify_form.php:372
-#, fuzzy
 msgid "Preview"
 msgstr ""
-"Benachrichtigungs Mail Vorschau (wird beim Speichern der Optionen "
-"aktualisiert)"
 
 #: ../email_users_notify_form.php:378
 #, fuzzy
@@ -424,17 +407,6 @@ msgid "Notification Mail Preview (based on default notification body)"
 msgstr ""
 "Benachrichtigungs Mail Vorschau (wird beim Speichern der Optionen "
 "aktualisiert)"
-
-#: ../email_users_notify_form.php:438 ../email_users_user_mail_form.php:213
-#, php-format
-msgid ""
-"Warning:  The number of users (%d) plus overhead exceeds the PHP <a href="
-"\"http://php.net/manual/en/info.configuration.php#ini.max-input-vars"
-"\">max_input_vars</a> setting (%d).  You will not be able to send email to "
-"more than %d users in one batch.  This can be changed by increasing the "
-"value of <a href=\"http://php.net/manual/en/info.configuration.php#ini.max-"
-"input-vars\">max_input_vars</a> setting in the PHP.ini configuration file."
-msgstr ""
 
 #: ../email_users_options_form.php:28 ../email_users_send_test_mail.php:24
 #: ../email_users_set_options.php:24
@@ -608,7 +580,7 @@ msgstr ""
 #: ../email_users_options_form.php:184
 #, fuzzy
 msgid "Copy Sender"
-msgstr "Absender in CC einschließen"
+msgstr "Absender"
 
 #: ../email_users_options_form.php:188
 msgid "Copy sender (add sender email to Cc: header) when sending email."
@@ -760,7 +732,7 @@ msgstr "Emails werden im Debug-Modus nicht verschickt"
 #: ../email_users_options_form.php:306
 #, fuzzy
 msgid "Base64 Encode Email"
-msgstr "Email Users"
+msgstr "Email senden"
 
 #: ../email_users_options_form.php:311
 #, fuzzy
@@ -946,9 +918,8 @@ msgid ""
 msgstr ""
 
 #: ../email_users_options_form.php:567
-#, fuzzy
 msgid "wp_mail() is loaded from:"
-msgstr "wp_mail Debug"
+msgstr ""
 
 #: ../email_users_options_form.php:571
 msgid "Expected:"
@@ -1103,43 +1074,43 @@ msgid "Send Group Message"
 msgstr "Gruppennachricht senden"
 
 #: ../email_users_send_custom_filter_mail.php:53
-#: ../email_users_send_group_mail.php:59 ../email_users_send_user_mail.php:52
+#: ../email_users_send_group_mail.php:59 ../email_users_send_user_mail.php:49
 msgid "You must specify the mail format."
 msgstr "Sie müssen das Email Format angeben."
 
 #: ../email_users_send_custom_filter_mail.php:59
-#: ../email_users_send_user_mail.php:58
+#: ../email_users_send_user_mail.php:55
 msgid "You must enter at least a recipient."
 msgstr "Sie müssen mindestens einen Empfänger angeben."
 
 #: ../email_users_send_custom_filter_mail.php:73
 #: ../email_users_send_group_mail.php:71
-#: ../email_users_send_notify_mail.php:61 ../email_users_send_user_mail.php:64
+#: ../email_users_send_notify_mail.php:61 ../email_users_send_user_mail.php:61
 msgid "You must enter a subject."
 msgstr "Sie müssen einen Betreff angeben."
 
 #: ../email_users_send_custom_filter_mail.php:79
 #: ../email_users_send_group_mail.php:77
-#: ../email_users_send_notify_mail.php:67 ../email_users_send_user_mail.php:70
+#: ../email_users_send_notify_mail.php:67 ../email_users_send_user_mail.php:67
 msgid "You must enter some content."
 msgstr "Sie müssen eine Nachricht eingeben."
 
 #: ../email_users_send_custom_filter_mail.php:144
 #: ../email_users_send_group_mail.php:209
-#: ../email_users_send_notify_mail.php:261
-#: ../email_users_send_test_mail.php:103 ../email_users_send_user_mail.php:143
+#: ../email_users_send_notify_mail.php:259
+#: ../email_users_send_test_mail.php:103 ../email_users_send_user_mail.php:140
 msgid "No recipients were found."
 msgstr "Es wurden keine Empfänger gefunden."
 
 #: ../email_users_send_custom_filter_mail.php:149
 #: ../email_users_send_group_mail.php:214
-#: ../email_users_send_user_mail.php:149
+#: ../email_users_send_user_mail.php:146
 msgid "There was a problem trying to send email to users."
 msgstr "Es gab ein Problem beim Versand der Email an die Benutzer."
 
 #: ../email_users_send_custom_filter_mail.php:152
 #: ../email_users_send_group_mail.php:216
-#: ../email_users_send_user_mail.php:151
+#: ../email_users_send_user_mail.php:148
 msgid ""
 "No email has been sent to other users. This may be because no valid email "
 "addresses were found."
@@ -1149,14 +1120,14 @@ msgstr ""
 
 #: ../email_users_send_custom_filter_mail.php:156
 #: ../email_users_send_group_mail.php:220
-#: ../email_users_send_user_mail.php:155
+#: ../email_users_send_user_mail.php:152
 #, php-format
 msgid "Email sent to %s user(s)."
 msgstr "Email wurde an %s Benutzer gesendet."
 
 #: ../email_users_send_custom_filter_mail.php:160
 #: ../email_users_send_group_mail.php:224
-#: ../email_users_send_user_mail.php:159
+#: ../email_users_send_user_mail.php:156
 msgid "WARNING: More email has been sent than the number of recipients found."
 msgstr ""
 "WARNUNG: Es wurden mehr Emails versandt als Empfänger angegeben wurden."
@@ -1179,7 +1150,7 @@ msgstr "Sie müssen zumindest eine Rolle angeben."
 msgid "You must select at least a recipient."
 msgstr "Sie müssen mindestens einen Empfänger auswählen."
 
-#: ../email_users_send_notify_mail.php:267
+#: ../email_users_send_notify_mail.php:265
 #, php-format
 msgid "Notification sent to %s user(s)."
 msgstr "Benachrichtigung wurde an %s Benutzer gesendet."
@@ -1189,7 +1160,7 @@ msgstr "Benachrichtigung wurde an %s Benutzer gesendet."
 msgid "Test email sent to %s."
 msgstr "Test Email wurde an %s gesendet."
 
-#: ../email_users_send_user_mail.php:137
+#: ../email_users_send_user_mail.php:134
 #, php-format
 msgid ""
 "<br/>%d users who should not to receive Mass Email were filtered from the "
@@ -1198,7 +1169,7 @@ msgstr ""
 "<br/>%d Benutzer die keine Massen Email erhalten sollen wurden aus der "
 "Empfängerliste entfernt."
 
-#: ../email_users_send_user_mail.php:161
+#: ../email_users_send_user_mail.php:158
 #, php-format
 msgid ""
 "Email has been sent to %d users, but %d recipients were originally found. "

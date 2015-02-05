@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Email-Users\n"
-"POT-Creation-Date: 2014-12-03 17:25-0000\n"
-"PO-Revision-Date: 2014-12-03 17:25-0000\n"
+"POT-Creation-Date: 2014-09-13 21:25-0000\n"
+"PO-Revision-Date: 2014-09-13 21:25-0000\n"
 "Last-Translator: Mike Walsh <mpwalsh8@gmail.com>\n"
 "Language-Team: bvstrien\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.6.9\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -38,52 +38,52 @@ msgstr ""
 msgid "Powered by"
 msgstr "Powered by"
 
-#: ../email-users.php:316 ../email-users.php:331 ../email-users.php:365
-#: ../email-users.php:366 ../email-users.php:372 ../email-users.php:373
+#: ../email-users.php:312 ../email-users.php:327 ../email-users.php:361
+#: ../email-users.php:362 ../email-users.php:368 ../email-users.php:369
 #: ../email_users_overview.php:33
 msgid "Email Users"
 msgstr "Email Gebruikers"
 
-#: ../email-users.php:318
+#: ../email-users.php:314
 msgid "Notify Users About this Post"
 msgstr "Breng andere gebruikers op de hoogte van dit bericht"
 
-#: ../email-users.php:333
+#: ../email-users.php:329
 msgid "Notify Users About this Page"
 msgstr "Breng andere gebruikers op de hoogte van deze pagina"
 
-#: ../email-users.php:351 ../email-users.php:352 ../email-users.php:358
-#: ../email-users.php:359
+#: ../email-users.php:347 ../email-users.php:348 ../email-users.php:354
+#: ../email-users.php:355
 msgid "Notify Users"
 msgstr "Informeer Gebruikers"
 
-#: ../email-users.php:381 ../email-users.php:382
+#: ../email-users.php:377 ../email-users.php:378
 msgid "Send to User(s)"
 msgstr "Stuur aan Gebruiker(s)"
 
-#: ../email-users.php:411 ../email-users.php:412
+#: ../email-users.php:407 ../email-users.php:408
 #, php-format
 msgid "Send to %s"
 msgstr "Stuur aan %s"
 
-#: ../email-users.php:420 ../email-users.php:421
+#: ../email-users.php:416 ../email-users.php:417
 msgid "Send to Group(s)"
 msgstr "Stuur aan Groep(en)"
 
-#: ../email-users.php:452 ../email-users.php:453
+#: ../email-users.php:448 ../email-users.php:449
 #: ../email_users_options_form.php:654
 msgid "User Settings"
 msgstr "Gebruikers Instellingen"
 
-#: ../email-users.php:569
+#: ../email-users.php:565
 msgid "Email Preferences"
 msgstr "Email Instellingen"
 
-#: ../email-users.php:582
+#: ../email-users.php:578
 msgid "Accept to receive post or page notification emails"
 msgstr "Accepteer om bericht of pagina meldingen per email te ontvangen"
 
-#: ../email-users.php:590
+#: ../email-users.php:586
 msgid ""
 "Accept to receive emails sent to multiple recipients (but still accept "
 "emails sent only to me)"
@@ -91,7 +91,7 @@ msgstr ""
 "Accepteer om email berichten te ontvangen van meerdere ontvangers (maar "
 "accepteer ook email berichten die alleen aan mij gestuurd zijn)"
 
-#: ../email-users.php:1528
+#: ../email-users.php:1519
 #, php-format
 msgid ""
 "The email address (%s) of the user you are trying to send mail to is not a "
@@ -100,77 +100,64 @@ msgstr ""
 "Het emailadres (%s) van de gebruiker aan wie je een mail probeert te "
 "versturen, heeft een ongeldige emailadres indeling."
 
-#: ../email-users.php:1599
+#: ../email-users.php:1586
 #, php-format
 msgid "Invalid email address (\"%s\") found."
 msgstr "Ongeldig email adres (\"%s\") gevonden."
 
-#: ../email-users.php:1654
+#: ../email-users.php:1637
 msgid "Default User Settings"
 msgstr "Standaard Gebruikers Instellingen"
 
-#: ../email-users.php:1657
+#: ../email-users.php:1640
 msgid "Receive post or page notification emails:"
 msgstr "Ontvang bericht of pagina meldingen per emailbericht:"
 
-#: ../email-users.php:1658 ../email-users.php:1662 ../email-users.php:1666
-#: ../email-users.php:1670 ../email_users_user_settings.php:107
+#: ../email-users.php:1641 ../email-users.php:1645 ../email-users.php:1649
+#: ../email-users.php:1653 ../email_users_user_settings.php:107
 msgid "On"
 msgstr "Aan"
 
-#: ../email-users.php:1658 ../email-users.php:1662 ../email-users.php:1666
-#: ../email-users.php:1670 ../email_users_user_settings.php:107
+#: ../email-users.php:1641 ../email-users.php:1645 ../email-users.php:1649
+#: ../email-users.php:1653 ../email_users_user_settings.php:107
 msgid "Off"
 msgstr "Uit"
 
-#: ../email-users.php:1661
+#: ../email-users.php:1644
 msgid "Receive emails sent to multiple recipients:"
 msgstr "Ontvang emailberichten verstuurd aan meerdere ontvangers."
 
-#: ../email-users.php:1665
+#: ../email-users.php:1648
 msgid "Allow Users to control their own Email Users settings:"
 msgstr "Laat gebruikers hun eigen Email-Users instellingen veranderen:"
 
-#: ../email-users.php:1669
+#: ../email-users.php:1652
 msgid "Filter Users with no role from Recipient List:"
 msgstr ""
 
-#: ../email-users.php:1683
+#: ../email-users.php:1666
 msgid "User Statistics"
 msgstr "Gebruikers Statistieken"
 
-#: ../email-users.php:1686 ../email_users_options_form.php:73
+#: ../email-users.php:1669 ../email_users_options_form.php:73
 msgid "Number of Users who accept post or page notification emails:"
 msgstr "Aantal gebruikers dat bericht op pagina meldingen accepteert:"
 
-#: ../email-users.php:1690 ../email_users_options_form.php:77
+#: ../email-users.php:1673 ../email_users_options_form.php:77
 msgid "Number of Users who accept emails sent to multiple recipients:"
 msgstr ""
 "Aantal gebruikers dat emailberichten accepteert welke verstuurd zijn aan "
 "meerdere ontvangers."
 
-#: ../email-users.php:1696
-#, fuzzy
-msgid "Content Filters"
-msgstr "Filters"
-
-#: ../email-users.php:1724
-msgid "Present"
-msgstr ""
-
-#: ../email-users.php:1724
-msgid "Missing"
-msgstr ""
-
-#: ../email-users.php:1783 ../email-users.php:1784
+#: ../email-users.php:1728 ../email-users.php:1729
 msgid "Mail sending aborted."
 msgstr "Het versturen van emailberichten is afgebroken."
 
-#: ../email-users.php:1807
+#: ../email-users.php:1752
 msgid "PHPMailer Debug"
 msgstr "PHPMailer Debug"
 
-#: ../email-users.php:1839
+#: ../email-users.php:1784
 msgid "wp_mail() Debug"
 msgstr "wp_mail() Debug"
 
@@ -420,17 +407,6 @@ msgid "Notification Mail Preview (based on default notification body)"
 msgstr ""
 "Voorbeeld van het testbericht (wordt geupdate als de instellingen worden "
 "opgeslagen)"
-
-#: ../email_users_notify_form.php:438 ../email_users_user_mail_form.php:213
-#, php-format
-msgid ""
-"Warning:  The number of users (%d) plus overhead exceeds the PHP <a href="
-"\"http://php.net/manual/en/info.configuration.php#ini.max-input-vars"
-"\">max_input_vars</a> setting (%d).  You will not be able to send email to "
-"more than %d users in one batch.  This can be changed by increasing the "
-"value of <a href=\"http://php.net/manual/en/info.configuration.php#ini.max-"
-"input-vars\">max_input_vars</a> setting in the PHP.ini configuration file."
-msgstr ""
 
 #: ../email_users_options_form.php:28 ../email_users_send_test_mail.php:24
 #: ../email_users_set_options.php:24
@@ -1153,37 +1129,37 @@ msgid "Send Group Message"
 msgstr "Stuur groepsbericht"
 
 #: ../email_users_send_custom_filter_mail.php:53
-#: ../email_users_send_group_mail.php:59 ../email_users_send_user_mail.php:52
+#: ../email_users_send_group_mail.php:59 ../email_users_send_user_mail.php:49
 msgid "You must specify the mail format."
 msgstr "U dient het email format aan te geven."
 
 #: ../email_users_send_custom_filter_mail.php:59
-#: ../email_users_send_user_mail.php:58
+#: ../email_users_send_user_mail.php:55
 msgid "You must enter at least a recipient."
 msgstr "U dient minimaal één ontvanger in te voeren."
 
 #: ../email_users_send_custom_filter_mail.php:73
 #: ../email_users_send_group_mail.php:71
-#: ../email_users_send_notify_mail.php:61 ../email_users_send_user_mail.php:64
+#: ../email_users_send_notify_mail.php:61 ../email_users_send_user_mail.php:61
 msgid "You must enter a subject."
 msgstr "U dient een onderwerp in te voeren."
 
 #: ../email_users_send_custom_filter_mail.php:79
 #: ../email_users_send_group_mail.php:77
-#: ../email_users_send_notify_mail.php:67 ../email_users_send_user_mail.php:70
+#: ../email_users_send_notify_mail.php:67 ../email_users_send_user_mail.php:67
 msgid "You must enter some content."
 msgstr "U dient tekst in te voeren."
 
 #: ../email_users_send_custom_filter_mail.php:144
 #: ../email_users_send_group_mail.php:209
-#: ../email_users_send_notify_mail.php:261
-#: ../email_users_send_test_mail.php:103 ../email_users_send_user_mail.php:143
+#: ../email_users_send_notify_mail.php:259
+#: ../email_users_send_test_mail.php:103 ../email_users_send_user_mail.php:140
 msgid "No recipients were found."
 msgstr "Er zijn geen ontvangers gevonden."
 
 #: ../email_users_send_custom_filter_mail.php:149
 #: ../email_users_send_group_mail.php:214
-#: ../email_users_send_user_mail.php:149
+#: ../email_users_send_user_mail.php:146
 msgid "There was a problem trying to send email to users."
 msgstr ""
 "Er is een probleem met het versturen van de emailberichten naar de "
@@ -1191,7 +1167,7 @@ msgstr ""
 
 #: ../email_users_send_custom_filter_mail.php:152
 #: ../email_users_send_group_mail.php:216
-#: ../email_users_send_user_mail.php:151
+#: ../email_users_send_user_mail.php:148
 msgid ""
 "No email has been sent to other users. This may be because no valid email "
 "addresses were found."
@@ -1201,14 +1177,14 @@ msgstr ""
 
 #: ../email_users_send_custom_filter_mail.php:156
 #: ../email_users_send_group_mail.php:220
-#: ../email_users_send_user_mail.php:155
+#: ../email_users_send_user_mail.php:152
 #, php-format
 msgid "Email sent to %s user(s)."
 msgstr "Emailbericht is verstuurd aan %s gebruiker(s)."
 
 #: ../email_users_send_custom_filter_mail.php:160
 #: ../email_users_send_group_mail.php:224
-#: ../email_users_send_user_mail.php:159
+#: ../email_users_send_user_mail.php:156
 msgid "WARNING: More email has been sent than the number of recipients found."
 msgstr ""
 "WAARSCHUWING: Er zijn meer emailberichten verstuurd dan het aantal gevonden "
@@ -1233,7 +1209,7 @@ msgstr "U dient minimaal één rol te selecteren."
 msgid "You must select at least a recipient."
 msgstr "U dient minimaal één gebruiker te selecteren."
 
-#: ../email_users_send_notify_mail.php:267
+#: ../email_users_send_notify_mail.php:265
 #, php-format
 msgid "Notification sent to %s user(s)."
 msgstr "Het bericht is verstuurd aan %s gebruiker(s)."
@@ -1243,7 +1219,7 @@ msgstr "Het bericht is verstuurd aan %s gebruiker(s)."
 msgid "Test email sent to %s."
 msgstr "Test emailbericht is aan %s verstuurd."
 
-#: ../email_users_send_user_mail.php:137
+#: ../email_users_send_user_mail.php:134
 #, php-format
 msgid ""
 "<br/>%d users who should not to receive Mass Email were filtered from the "
@@ -1252,7 +1228,7 @@ msgstr ""
 "<br/>%d gebruikers die geen Massa Mail kunnen of willen ontvangen, zijn "
 "gefilterd uit de list met ontvangers."
 
-#: ../email_users_send_user_mail.php:161
+#: ../email_users_send_user_mail.php:158
 #, php-format
 msgid ""
 "Email has been sent to %d users, but %d recipients were originally found. "

@@ -35,7 +35,7 @@
 
 				settings.windowName = this.name || settings.windowName;
 				settings.windowURL = this.href || settings.windowURL;
-				var centeredY,centeredX;
+				var centeredY,centeredX;  
 
 				if(settings.centerBrowser){
 

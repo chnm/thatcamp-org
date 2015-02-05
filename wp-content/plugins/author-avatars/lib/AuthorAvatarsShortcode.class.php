@@ -157,10 +157,9 @@ class AuthorAvatarsShortcode {
 		}
 
 		// max. number of avatars
-		$this->userlist->bio_length = -1;
 		if ( ! empty( $atts['max_bio_length'] ) ) {
 			$bio_length = intval( $atts['max_bio_length'] );
-			if (  0 < $bio_length ) {
+			if ( $bio_length > 0 ) {
 				$this->userlist->bio_length = $bio_length;
 			}
 		}
@@ -168,14 +167,14 @@ class AuthorAvatarsShortcode {
 		// min. number of posts
 		if ( ! empty( $atts['min_post_count'] ) ) {
 			$min_post_count = intval( $atts['min_post_count'] );
-			if ( 0 < $min_post_count ) {
+			if ( $min_post_count > 0 ) {
 				$this->userlist->min_post_count = $min_post_count;
 			}
 		}
 		// get page size
 		if ( ! empty( $atts['page_size'] ) ) {
 			$page_size = intval( $atts['page_size'] );
-			if ( 0 < $page_size ) {
+			if ( $page_size > 0 ) {
 				$this->userlist->page_size = $page_size;
 			}
 		}
@@ -184,12 +183,12 @@ class AuthorAvatarsShortcode {
 		if ( ! empty( $atts['aa_page'] ) ) {
 
 			$page_size = intval( $atts['aa_page'] );
-			if ( 0 < $page_size ) {
+			if ( $page_size > 0 ) {
 				$this->userlist->aa_page = $page_size;
 			}
 		} elseif ( isSet( $_REQUEST['aa_page'] ) && is_numeric( $_REQUEST['aa_page'] ) ) {
 			$page_size = intval( $_REQUEST['aa_page'] );
-			if ( 0 < $page_size ) {
+			if ( $page_size > 0 ) {
 				$this->userlist->aa_page = $page_size;
 			}
 		}

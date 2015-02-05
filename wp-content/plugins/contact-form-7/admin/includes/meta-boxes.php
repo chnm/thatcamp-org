@@ -24,11 +24,7 @@ function wpcf7_mail_meta_box( $post, $box ) {
 		'use' => null ) );
 
 	$id = esc_attr( $args['id'] );
-
-	$mail = wp_parse_args( $post->prop( $args['name'] ), array(
-		'active' => false, 'recipient' => '', 'sender' => '',
-		'subject' => '', 'body' => '', 'additional_headers' => '',
-		'attachments' => '', 'use_html' => false, 'exclude_blank' => false ) );
+	$mail = $post->prop( $args['name'] );
 
 	if ( ! empty( $args['use'] ) ) :
 ?>

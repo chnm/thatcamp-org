@@ -4,11 +4,19 @@ Author URI: http://www.usestrict.net/
 Plugin URI: http://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
+<<<<<<< HEAD
 Tested up to: 4.1
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Stable tag: 1.6.6.1
+=======
+Tested up to: 4.0
+Text Domain: bbpress_notify
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: 1.6.2
+>>>>>>> parent of 417df59... Update 3 themes and 14 plugins
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
 == Description ==
@@ -17,16 +25,10 @@ This is a modification of the original bbPress-Notify plugin, after several fail
 This plugin integrates into bbPress and sends a notification via e-mail when new topics or replies are posted. It is fully configurable in the bbPress settings.
 
 Settings include:
-
- * Notification recipients for new topics, 
- * Notification recipients for new replies, 
- * Notification e-mail's subject and body for both new topics and replies
- * Set Background Notifications (no longer causes delays in loading pages for large user databases)
-
-= bbPress Notify Pro =
-
-We're trying to raise funds to build the Pro version of this plugin. It will include all of the features of bbpress Notify (no-spam) plus lots of other goodies that have been asked for by our users.
-Please have a look at the [Kickstarter page](https://www.kickstarter.com/projects/usestrict/bbpress-notify-pro-for-wordpress) for all the details and help us reach the project goal! 
+* Notification recipients for new topics, 
+* Notification recipients for new replies, 
+* Notification e-mail's subject and body for both new topics and replies
+* Set Background Notifications (no longer causes delays in loading pages for large user databases)
 
 
 == Installation ==
@@ -52,6 +54,7 @@ Not really. I just want to stop receiving spam from my bbPress install. However,
 
 
 == Changelog ==
+<<<<<<< HEAD
 = 1.6.6.1 =
 * Removed Pro message.
 
@@ -74,6 +77,8 @@ Not really. I just want to stop receiving spam from my bbPress install. However,
 = 1.6.3 =
 * Added notice about bbPress Notify Pro project at Kickstarter.
 
+=======
+>>>>>>> parent of 417df59... Update 3 themes and 14 plugins
 = 1.6.2 =
 * Fix bug where topic and reply post_types were not set in time to send post.
 * Only send notification if post_status is publish, besides not being spam.

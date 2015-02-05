@@ -31,8 +31,7 @@
 		}
 
 		.grofile-thumbnail {
-			width: 500px;
-			max-width: 100%;
+			width: 100%;
 		}
 		@media
 only screen and (-webkit-min-device-pixel-ratio: 1.5),

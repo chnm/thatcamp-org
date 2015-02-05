@@ -28,7 +28,7 @@
 						author : 'YourOwnProgrammer',
 						authorurl : 'http://www.YourOwnProgrammer.com',
 						infourl : 'http://www.YourOwnProgrammer.com/yop_poll',
-						version : "5.0"
+						version : "1.0"
 					};
 				}
 		});

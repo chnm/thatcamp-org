@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: AJAX Heartbeat Tool
-Version: 1.4
+Version: 1.0
 Description: Provides a method of turning the WordPress heartbeat off as well as change some settings. 
 Author: Mikel King
 Text Domain: ajax-heartbeat-tool
@@ -46,12 +46,14 @@ License URI: http://opensource.org/licenses/BSD-3-Clause
 */
 
 class Ajax_Heartbeat_Tool {
-    const VERSION   = '1.4';
+    const VERSION   = '1.0';
     const INTERVAL  = 60;
     const DISABLED  = false;
     const ENABLED   = true;
     
-    private static $instance;
+    private static $instance = array();
+    
+    protected static $initialized = false;
 
     public function __construct() {
         add_action( 'admin_enqueue_scripts', array( $this, 'unregister_wp_heartbeat' ));
@@ -71,34 +73,31 @@ class Ajax_Heartbeat_Tool {
     }
 
     public static function get_instance() {
-        self::$instance = null;
-
-        if ( self::$instance === null ) {
-            self::$instance = new static();
+        $caller = get_called_class();
+        if ( !isset( self::$instance[$caller] ) ) {
+            self::$instance[$caller] = new $caller();
+            self::$instance[$caller]->init();
         }
 
-        return( self::$instance );
+        return( self::$instance[$caller] );
     }
 
-    public function disable_wp_heartbeat_autostart( $settings = null ) {
-        $settings['autostart'] = self::DISABLED;
+    public function disable_wp_heartbeat_autostart( $settings ) {
+        $settings['autostart'] = self::INTERVAL;
         return( $settings );
     }
     
-    public function set_wp_heartbeat_interval( $settings = null ) {
-        $settings['interval'] = self::INTERVAL;
+    public function set_wp_heartbeat_interval( $settings ) {
+        $settings['interval'] = self::DISABLED;
         return( $settings );
     }
     
     public function unregister_wp_heartbeat() {
     	global $pagenow;
     	
-    	if ( $pagenow != 'post.php' &&
-             $pagenow != 'post-new.php' &&
-             $pagenow != 'edit.php'
-           ) {
-
+    	if ( 'post.php' != $pagenow && 'post-new.php' != $pagenow ) {
     		wp_deregister_script('heartbeat');
+    		//wp_register_script('heartbeat', false);
     	}
     }
 }
