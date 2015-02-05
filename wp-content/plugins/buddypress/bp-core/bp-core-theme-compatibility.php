@@ -8,7 +8,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /** Theme Compat **************************************************************/
 
@@ -68,7 +68,7 @@ class BP_Theme_Compat {
 	/**
 	 * Set up the BuddyPress-specific theme compat methods.
 	 *
-	 * Themes shoud use this method in their constructor.
+	 * Themes should use this method in their constructor.
 	 *
 	 * @since BuddyPress (1.7.0)
 	 */
@@ -155,7 +155,7 @@ function bp_setup_theme_compat( $theme = '' ) {
  * Get the ID of the theme package being used.
  *
  * This can be filtered or set manually. Tricky theme authors can override the
- * default and include their own BuddyPress compatability layers for their themes.
+ * default and include their own BuddyPress compatibility layers for their themes.
  *
  * @since BuddyPress (1.7.0)
  *
@@ -171,7 +171,7 @@ function bp_get_theme_compat_id() {
  * Get the name of the theme package being used.
  *
  * This can be filtered or set manually. Tricky theme authors can override the
- * default and include their own BuddyPress compatability layers for their themes.
+ * default and include their own BuddyPress compatibility layers for their themes.
  *
  * @since BuddyPress (1.7.0)
  *
@@ -187,7 +187,7 @@ function bp_get_theme_compat_name() {
  * Get the version of the theme package being used.
  *
  * This can be filtered or set manually. Tricky theme authors can override the
- * default and include their own BuddyPress compatability layers for their themes.
+ * default and include their own BuddyPress compatibility layers for their themes.
  *
  * @since BuddyPress (1.7.0)
  *
@@ -203,7 +203,7 @@ function bp_get_theme_compat_version() {
  * Get the absolute path of the theme package being used.
  *
  * or set manually. Tricky theme authors can override the default and include
- * their own BuddyPress compatability layers for their themes.
+ * their own BuddyPress compatibility layers for their themes.
  *
  * @since BuddyPress (1.7.0)
  *
@@ -219,7 +219,7 @@ function bp_get_theme_compat_dir() {
  * Get the URL of the theme package being used.
  *
  * This can be filtered, or set manually. Tricky theme authors can override
- * the default and include their own BuddyPress compatability layers for their
+ * the default and include their own BuddyPress compatibility layers for their
  * themes.
  *
  * @since BuddyPress (1.7.0)
@@ -286,9 +286,9 @@ function bp_detect_theme_compat_with_current_theme() {
 		if ( in_array( 'bp-default', array( get_template(), get_stylesheet() ) ) ) {
 			$theme_compat = false;
 
-		// Bruteforce check for a BP template
+		// Brute-force check for a BP template
 		// Examples are clones of bp-default
-		} else if ( locate_template( 'members/members-loop.php', false, false ) ) {
+		} elseif ( locate_template( 'members/members-loop.php', false, false ) ) {
 			$theme_compat = false;
 		}
 	}
@@ -309,8 +309,9 @@ function bp_detect_theme_compat_with_current_theme() {
 function bp_is_theme_compat_active() {
 	$bp = buddypress();
 
-	if ( empty( $bp->theme_compat->active ) )
+	if ( empty( $bp->theme_compat->active ) ) {
 		return false;
+	}
 
 	return $bp->theme_compat->active;
 }
@@ -392,8 +393,9 @@ function bp_set_theme_compat_original_template( $template = '' ) {
 function bp_is_theme_compat_original_template( $template = '' ) {
 	$bp = buddypress();
 
-	if ( empty( $bp->theme_compat->original_template ) )
+	if ( empty( $bp->theme_compat->original_template ) ) {
 		return false;
+	}
 
 	return (bool) ( $bp->theme_compat->original_template == $template );
 }
@@ -602,8 +604,9 @@ function bp_template_include_theme_compat( $template = '' ) {
 	do_action( 'bp_template_include_reset_dummy_post_data' );
 
 	// Bail if the template already matches a BuddyPress template
-	if ( !empty( buddypress()->theme_compat->found_template ) )
+	if ( ! empty( buddypress()->theme_compat->found_template ) ) {
 		return $template;
+	}
 
 	/**
 	 * If we are relying on BuddyPress's built in theme compatibility to load
@@ -651,8 +654,9 @@ function bp_template_include_theme_compat( $template = '' ) {
 function bp_replace_the_content( $content = '' ) {
 
 	// Bail if not the main loop where theme compat is happening
-	if ( ! bp_do_theme_compat() )
+	if ( ! bp_do_theme_compat() ) {
 		return $content;
+	}
 
 	// Set theme compat to false early, to avoid recursion from nested calls to
 	// the_content() that execute before theme compat has unhooked itself.
@@ -662,7 +666,7 @@ function bp_replace_the_content( $content = '' ) {
 	$new_content = apply_filters( 'bp_replace_the_content', $content );
 
 	// Juggle the content around and try to prevent unsightly comments
-	if ( !empty( $new_content ) && ( $new_content !== $content ) ) {
+	if ( ! empty( $new_content ) && ( $new_content !== $content ) ) {
 
 		// Set the content to be the new content
 		$content = $new_content;
@@ -718,7 +722,7 @@ function bp_remove_all_filters( $tag, $priority = false ) {
 	if ( isset( $wp_filter[$tag] ) ) {
 
 		// Filters exist in this priority
-		if ( !empty( $priority ) && isset( $wp_filter[$tag][$priority] ) ) {
+		if ( ! empty( $priority ) && isset( $wp_filter[$tag][$priority] ) ) {
 
 			// Store filters in a backup
 			$bp->filters->wp_filter[$tag][$priority] = $wp_filter[$tag][$priority];
@@ -774,7 +778,7 @@ function bp_restore_all_filters( $tag, $priority = false ) {
 	if ( isset( $bp->filters->wp_filter[$tag] ) ) {
 
 		// Filters exist in this priority
-		if ( !empty( $priority ) && isset( $bp->filters->wp_filter[$tag][$priority] ) ) {
+		if ( ! empty( $priority ) && isset( $bp->filters->wp_filter[$tag][$priority] ) ) {
 
 			// Store filters in a backup
 			$wp_filter[$tag][$priority] = $bp->filters->wp_filter[$tag][$priority];

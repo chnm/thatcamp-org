@@ -8,7 +8,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Is this a fresh installation of BuddyPress?
@@ -241,6 +241,11 @@ function bp_version_updater() {
 		if ( $raw_db_version < 8311 ) {
 			bp_update_to_2_0_1();
 		}
+
+		// 2.2
+		if ( $raw_db_version < 9181 ) {
+			bp_update_to_2_2();
+		}
 	}
 
 	/** All done! *************************************************************/
@@ -388,6 +393,80 @@ function bp_update_to_2_0_1() {
 	// Don't worry; it won't break anything, and safely handles all cases.
 	bp_core_maybe_install_signups();
 }
+
+/**
+ * 2.2.0 update routine.
+ *
+ * - Add messages meta table
+ * - Update the component field of the 'new members' activity type
+ * - Clean up hidden friendship activities
+ *
+ * @since BuddyPress (2.2.0)
+ */
+function bp_update_to_2_2() {
+	if ( bp_is_active( 'messages' ) ) {
+		bp_core_install_private_messaging();
+	}
+
+	if ( bp_is_active( 'activity' ) ) {
+		bp_migrate_new_member_activity_component();
+
+		if ( bp_is_active( 'friends' ) ) {
+			bp_cleanup_friendship_activities();
+		}
+	}
+}
+
+/**
+ * Updates the component field for new_members type.
+ *
+ * @since BuddyPress (2.2.0)
+ *
+ * @global $wpdb
+ * @uses   buddypress()
+ *
+ */
+function bp_migrate_new_member_activity_component() {
+	global $wpdb;
+	$bp = buddypress();
+
+	// Update the component for the new_member type
+	$wpdb->update(
+		// Activity table
+		$bp->members->table_name_last_activity,
+		array(
+			'component' => $bp->members->id,
+		),
+		array(
+			'component' => 'xprofile',
+			'type'      => 'new_member',
+		),
+		// Data sanitization format
+		array(
+			'%s',
+		),
+		// WHERE sanitization format
+		array(
+			'%s',
+			'%s'
+		)
+	);
+}
+
+/**
+ * Remove all hidden friendship activities
+ *
+ * @since BuddyPress (2.2.0)
+ *
+ * @uses bp_activity_delete() to delete the corresponding friendship activities
+ */
+function bp_cleanup_friendship_activities() {
+	bp_activity_delete( array(
+		'component'     => buddypress()->friends->id,
+		'type'          => 'friendship_created',
+		'hide_sitewide' => true,
+	) );
+ }
 
 /**
  * Redirect user to BP's What's New page on first page load after activation.

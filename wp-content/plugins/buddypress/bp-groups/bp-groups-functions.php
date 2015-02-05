@@ -13,7 +13,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Check whether there is a Groups directory page in the $bp global.
@@ -120,10 +120,14 @@ function groups_create_group( $args = '' ) {
 	}
 
 	// Set creator ID
-	if ( ! empty( $creator_id ) ) {
+	if ( $creator_id ) {
 		$group->creator_id = (int) $creator_id;
-	} else {
+	} elseif ( is_user_logged_in() ) {
 		$group->creator_id = bp_loggedin_user_id();
+	}
+
+	if ( ! $group->creator_id ) {
+		return false;
 	}
 
 	// Validate status
@@ -186,7 +190,9 @@ function groups_edit_base_group_details( $group_id, $group_name, $group_desc, $n
 	if ( empty( $group_name ) || empty( $group_desc ) )
 		return false;
 
-	$group              = groups_get_group( array( 'group_id' => $group_id ) );
+	$group     = groups_get_group( array( 'group_id' => $group_id ) );
+	$old_group = clone $group;
+
 	$group->name        = $group_name;
 	$group->description = $group_desc;
 
@@ -194,10 +200,19 @@ function groups_edit_base_group_details( $group_id, $group_name, $group_desc, $n
 		return false;
 
 	if ( $notify_members ) {
-		groups_notification_group_updated( $group->id );
+		groups_notification_group_updated( $group->id, $old_group );
 	}
 
-	do_action( 'groups_details_updated', $group->id );
+	/**
+	 * Fired after a group's details are updated.
+	 *
+	 * @since BuddyPress (2.2.0)
+	 *
+	 * @param int             $value          ID of the group.
+	 * @param BP_Groups_Group $old_group      Group object, before being modified.
+	 * @param bool            $notify_members Whether to send an email notification to members about the change.
+	 */
+	do_action( 'groups_details_updated', $group->id, $old_group, $notify_members );
 
 	return true;
 }
@@ -394,7 +409,7 @@ function groups_join_group( $group_id, $user_id = 0 ) {
 
 	// Check if the user has an outstanding request. If so, delete it.
 	if ( groups_check_for_membership_request( $user_id, $group_id ) )
-		groups_delete_membership_request( $user_id, $group_id );
+		groups_delete_membership_request( null, $user_id, $group_id );
 
 	// User is already a member, just return true
 	if ( groups_is_user_member( $user_id, $group_id ) )
@@ -629,7 +644,9 @@ function groups_get_groups( $args = '' ) {
  * @return int
  */
 function groups_get_total_group_count() {
-	if ( !$count = wp_cache_get( 'bp_total_group_count', 'bp' ) ) {
+	$count = wp_cache_get( 'bp_total_group_count', 'bp' );
+
+	if ( false === $count ) {
 		$count = BP_Groups_Group::get_total_group_count();
 		wp_cache_set( 'bp_total_group_count', $count, 'bp' );
 	}
@@ -669,7 +686,9 @@ function groups_total_groups_for_user( $user_id = 0 ) {
 	if ( empty( $user_id ) )
 		$user_id = ( bp_displayed_user_id() ) ? bp_displayed_user_id() : bp_loggedin_user_id();
 
-	if ( !$count = wp_cache_get( 'bp_total_groups_for_user_' . $user_id, 'bp' ) ) {
+	$count = wp_cache_get( 'bp_total_groups_for_user_' . $user_id, 'bp' );
+
+	if ( false === $count ) {
 		$count = BP_Groups_Member::total_group_count( $user_id );
 		wp_cache_set( 'bp_total_groups_for_user_' . $user_id, $count, 'bp' );
 	}
@@ -902,7 +921,7 @@ function groups_invite_user( $args = '' ) {
 		groups_accept_membership_request( $membership_id, $user_id, $group_id );
 
 	// Otherwise, create a new invitation
-	} else if ( ! groups_is_user_member( $user_id, $group_id ) && ! groups_check_user_has_invite( $user_id, $group_id, 'all' ) ) {
+	} elseif ( ! groups_is_user_member( $user_id, $group_id ) && ! groups_check_user_has_invite( $user_id, $group_id, 'all' ) ) {
 		$invite                = new BP_Groups_Member;
 		$invite->group_id      = $group_id;
 		$invite->user_id       = $user_id;
@@ -957,7 +976,7 @@ function groups_accept_invite( $user_id, $group_id ) {
 		}
 
 		if ( groups_check_for_membership_request( $user_id, $group_id ) ) {
-			groups_delete_membership_request( $user_id, $group_id );
+			groups_delete_membership_request( null, $user_id, $group_id );
 		}
 
 		return true;
@@ -1043,6 +1062,14 @@ function groups_send_invites( $user_id, $group_id ) {
 	do_action( 'groups_send_invites', $group_id, $invited_users );
 }
 
+/**
+ * Get IDs of users with outstanding invites to a given group from a specified user.
+ *
+ * @param int $user_id ID of the inviting user.
+ * @param int $group_id ID of the group.
+ * @return array IDs of users who have been invited to the group by the
+ *         user but have not yet accepted.
+ */
 function groups_get_invites_for_group( $user_id, $group_id ) {
 	return BP_Groups_Group::get_invites( $user_id, $group_id );
 }
@@ -1101,7 +1128,7 @@ function groups_promote_member( $user_id, $group_id, $status ) {
 }
 
 /**
- * Demone a user to 'member' status within a group.
+ * Demote a user to 'member' status within a group.
  *
  * @param int $user_id ID of the user.
  * @param int $group_id ID of the group.

@@ -14,7 +14,7 @@
  * The following functions are wrappers for hooks, allowing them to be
  * manually called and/or piggy-backed on top of other hooks if needed.
  *
- * @todo use anonymous functions when PHP minimun requirement allows (5.3)
+ * @todo use anonymous functions when PHP minimum requirement allows (5.3)
  */
 
 /**
@@ -36,6 +36,15 @@ function bp_setup_components() {
  */
 function bp_setup_canonical_stack() {
 	do_action( 'bp_setup_canonical_stack' );
+}
+
+/**
+ * Fire the 'bp_register_taxonomies' action, where plugins should register taxonomies.
+ *
+ * @since BuddyPress (2.2.0)
+ */
+function bp_register_taxonomies() {
+	do_action( 'bp_register_taxonomies' );
 }
 
 /**
@@ -72,6 +81,15 @@ function bp_setup_title() {
  */
 function bp_setup_widgets() {
 	do_action( 'bp_register_widgets' );
+}
+
+/**
+ * Fire the 'bp_setup_cache_groups' action, where cache groups are registered.
+ *
+ * @since BuddyPress (2.2.0)
+ */
+function bp_setup_cache_groups() {
+	do_action( 'bp_setup_cache_groups' );
 }
 
 /**
@@ -357,19 +375,24 @@ function bp_allowed_themes( $themes ) {
 function bp_post_request() {
 
 	// Bail if not a POST action
-	if ( ! bp_is_post_request() )
+	if ( ! bp_is_post_request() ) {
 		return;
+	}
 
 	// Bail if no action
-	if ( empty( $_POST['action'] ) )
+	if ( empty( $_POST['action'] ) ) {
 		return;
+	}
+
+	// Sanitize the POST action
+	$action = sanitize_key( $_POST['action'] );
 
 	// This dynamic action is probably the one you want to use. It narrows down
 	// the scope of the 'action' without needing to check it in your function.
-	do_action( 'bp_post_request_' . $_POST['action'] );
+	do_action( 'bp_post_request_' . $action );
 
 	// Use this static action if you don't mind checking the 'action' yourself.
-	do_action( 'bp_post_request',   $_POST['action'] );
+	do_action( 'bp_post_request',   $action );
 }
 
 /**
@@ -381,17 +404,22 @@ function bp_post_request() {
 function bp_get_request() {
 
 	// Bail if not a POST action
-	if ( ! bp_is_get_request() )
+	if ( ! bp_is_get_request() ) {
 		return;
+	}
 
 	// Bail if no action
-	if ( empty( $_GET['action'] ) )
+	if ( empty( $_GET['action'] ) ) {
 		return;
+	}
+
+	// Sanitize the GET action
+	$action = sanitize_key( $_GET['action'] );
 
 	// This dynamic action is probably the one you want to use. It narrows down
 	// the scope of the 'action' without needing to check it in your function.
-	do_action( 'bp_get_request_' . $_GET['action'] );
+	do_action( 'bp_get_request_' . $action );
 
 	// Use this static action if you don't mind checking the 'action' yourself.
-	do_action( 'bp_get_request',   $_GET['action'] );
+	do_action( 'bp_get_request',   $action );
 }

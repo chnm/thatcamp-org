@@ -36,11 +36,16 @@
       };
 
       EditableCaret.prototype.getIEPosition = function() {
-        return $.noop();
+        return this.getPosition();
       };
 
       EditableCaret.prototype.getPosition = function() {
-        return $.noop();
+        var inputor_offset, offset;
+        offset = this.getOffset();
+        inputor_offset = this.$inputor.offset();
+        offset.left -= inputor_offset.left;
+        offset.top -= inputor_offset.top;
+        return offset;
       };
 
       EditableCaret.prototype.getOldIEPos = function() {
@@ -79,25 +84,38 @@
       };
 
       EditableCaret.prototype.getOffset = function(pos) {
-        var clonedRange, offset, range, rect;
+        var clonedRange, offset, range, rect, shadowCaret;
         if (oWindow.getSelection && (range = this.range())) {
-          if (range.endOffset - 1 < 0) {
-            return null;
+          if (range.endOffset - 1 > 0 && range.endContainer === !this.domInputor) {
+            clonedRange = range.cloneRange();
+            clonedRange.setStart(range.endContainer, range.endOffset - 1);
+            clonedRange.setEnd(range.endContainer, range.endOffset);
+            rect = clonedRange.getBoundingClientRect();
+            offset = {
+              height: rect.height,
+              left: rect.left + rect.width,
+              top: rect.top
+            };
+            clonedRange.detach();
           }
-          clonedRange = range.cloneRange();
-          clonedRange.setStart(range.endContainer, range.endOffset - 1);
-          clonedRange.setEnd(range.endContainer, range.endOffset);
-          rect = clonedRange.getBoundingClientRect();
-          offset = {
-            height: rect.height,
-            left: rect.left + rect.width,
-            top: rect.top
-          };
-          clonedRange.detach();
+          if (!offset || (offset != null ? offset.height : void 0) === 0) {
+            clonedRange = range.cloneRange();
+            shadowCaret = $(oDocument.createTextNode("|"));
+            clonedRange.insertNode(shadowCaret[0]);
+            clonedRange.selectNode(shadowCaret[0]);
+            rect = clonedRange.getBoundingClientRect();
+            offset = {
+              height: rect.height,
+              left: rect.left,
+              top: rect.top
+            };
+            shadowCaret.remove();
+            clonedRange.detach();
+          }
         } else if (oDocument.selection) {
           offset = this.getOldIEOffset();
         }
-        if (offset && !oFrame) {
+        if (offset) {
           offset.top += $(oWindow).scrollTop();
           offset.left += $(oWindow).scrollLeft();
         }
@@ -206,7 +224,7 @@
         var $inputor, at_rect, end_range, format, html, mirror, start_range;
         $inputor = this.$inputor;
         format = function(value) {
-          return value.replace(/</g, '&lt').replace(/>/g, '&gt').replace(/`/g, '&#96').replace(/"/g, '&quot').replace(/\r\n|\r|\n/g, "<br />");
+          return $('<div></div>').text(value).html().replace(/\r\n|\r|\n/g, "<br/>").replace(/\s/g, "&nbsp;");
         };
         if (pos === void 0) {
           pos = this.getPos();
@@ -307,13 +325,8 @@
         }
       },
       offset: function(pos) {
-        var iOffset, offset;
+        var offset;
         offset = this.getOffset(pos);
-        if (oFrame) {
-          iOffset = $(oFrame).offset();
-          offset.top += iOffset.top;
-          offset.left += iOffset.left;
-        }
         return offset;
       }
     };

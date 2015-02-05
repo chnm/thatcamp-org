@@ -7,7 +7,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Output the "options nav", the secondary-level single item navigation menu.
@@ -26,12 +26,13 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @uses bp_get_user_nav() Renders the navigation for a profile of a currently
  *       viewed user.
  */
-function bp_get_options_nav() {
+function bp_get_options_nav( $parent_slug = '' ) {
 	$bp = buddypress();
 
 	// If we are looking at a member profile, then the we can use the current
 	// component as an index. Otherwise we need to use the component's root_slug
 	$component_index = !empty( $bp->displayed_user ) ? bp_current_component() : bp_get_root_slug( bp_current_component() );
+	$selected_item   = bp_current_action();
 
 	if ( ! bp_is_single_item() ) {
 		if ( !isset( $bp->bp_options_nav[$component_index] ) || count( $bp->bp_options_nav[$component_index] ) < 1 ) {
@@ -40,10 +41,17 @@ function bp_get_options_nav() {
 			$the_index = $component_index;
 		}
 	} else {
-		if ( !isset( $bp->bp_options_nav[bp_current_item()] ) || count( $bp->bp_options_nav[bp_current_item()] ) < 1 ) {
+		$current_item = bp_current_item();
+
+		if ( ! empty( $parent_slug ) ) {
+			$current_item  = $parent_slug;
+			$selected_item = bp_action_variable( 0 );
+		}
+
+		if ( !isset( $bp->bp_options_nav[$current_item] ) || count( $bp->bp_options_nav[$current_item] ) < 1 ) {
 			return false;
 		} else {
-			$the_index = bp_current_item();
+			$the_index = $current_item;
 		}
 	}
 
@@ -54,7 +62,7 @@ function bp_get_options_nav() {
 		}
 
 		// If the current action or an action variable matches the nav item id, then add a highlight CSS class.
-		if ( $subnav_item['slug'] == bp_current_action() ) {
+		if ( $subnav_item['slug'] == $selected_item ) {
 			$selected = ' class="current selected"';
 		} else {
 			$selected = '';
@@ -64,7 +72,7 @@ function bp_get_options_nav() {
 		$list_type = bp_is_group() ? 'groups' : 'personal';
 
 		// echo out the final list item
-		echo apply_filters( 'bp_get_options_nav_' . $subnav_item['css_id'], '<li id="' . $subnav_item['css_id'] . '-' . $list_type . '-li" ' . $selected . '><a id="' . $subnav_item['css_id'] . '" href="' . $subnav_item['link'] . '">' . $subnav_item['name'] . '</a></li>', $subnav_item );
+		echo apply_filters( 'bp_get_options_nav_' . $subnav_item['css_id'], '<li id="' . $subnav_item['css_id'] . '-' . $list_type . '-li" ' . $selected . '><a id="' . $subnav_item['css_id'] . '" href="' . $subnav_item['link'] . '">' . $subnav_item['name'] . '</a></li>', $subnav_item, $selected_item );
 	}
 }
 
@@ -482,6 +490,80 @@ function bp_custom_profile_boxes() {
 function bp_custom_profile_sidebar_boxes() {
 	do_action( 'bp_custom_profile_sidebar_boxes' );
 }
+
+/**
+ * Output the attributes for a form field.
+ *
+ * @since BuddyPress (2.2.0)
+ *
+ * @param string $name       The field name to output attributes for.
+ * @param array  $attributes Array of existing attributes to add.
+ */
+function bp_form_field_attributes( $name = '', $attributes = array() ) {
+	echo bp_get_form_field_attributes( $name, $attributes );
+}
+	/**
+	 * Get the attributes for a form field.
+	 *
+	 * Primarily to add better support for touchscreen devices, but plugin devs
+	 * can use the 'bp_get_form_field_extra_attributes' filter for further
+	 * manipulation.
+	 *
+	 * @since BuddyPress (2.2.0)
+	 *
+	 * @param string $name       The field name to get attributes for.
+	 * @param array  $attributes Array of existing attributes to add.
+	 * @return string
+	 */
+	function bp_get_form_field_attributes( $name = '', $attributes = array() ) {
+		$retval = '';
+
+		if ( empty( $attributes ) ) {
+			$attributes = array();
+		}
+
+		$name = strtolower( $name );
+
+		switch ( $name ) {
+			case 'username' :
+			case 'blogname' :
+				$attributes['autocomplete']   = 'off';
+				$attributes['autocapitalize'] = 'none';
+				break;
+
+			case 'email' :
+				if ( wp_is_mobile() ) {
+					$attributes['autocapitalize'] = 'none';
+				}
+				break;
+
+			case 'password' :
+				$attributes['spellcheck']   = 'false';
+				$attributes['autocomplete'] = 'off';
+
+				if ( wp_is_mobile() ) {
+					$attributes['autocorrect']    = 'false';
+					$attributes['autocapitalize'] = 'none';
+				}
+				break;
+		}
+
+		/**
+		 * Filter the attributes for a field before rendering output.
+		 *
+		 * @since BuddyPress (2.2.0)
+		 *
+		 * @param array  $attributes The field attributes
+		 * @param string $name       The field name
+		 */
+		$attributes = (array) apply_filters( 'bp_get_form_field_attributes', $attributes, $name );
+
+		foreach( $attributes as $attr => $value ) {
+			$retval .= sprintf( ' %s="%s"', sanitize_key( $attr ), esc_attr( $value ) );
+		}
+
+		return $retval;
+	}
 
 /**
  * Create and output a button.
@@ -1081,9 +1163,9 @@ function bp_loggedin_user_id() {
  * @param string $component Name of the component being checked.
  * @return bool Returns true if the component matches, or else false.
  */
-function bp_is_current_component( $component ) {
-	global $wp_query;
+function bp_is_current_component( $component = '' ) {
 
+	// Default is no match. We'll check a few places for matches
 	$is_current_component = false;
 
 	// Always return false if a null value is passed to the function
@@ -1098,6 +1180,7 @@ function bp_is_current_component( $component ) {
 
 	$bp = buddypress();
 
+	// Only check if BuddyPress found a current_component
 	if ( ! empty( $bp->current_component ) ) {
 
 		// First, check to see whether $component_name and the current
@@ -1136,21 +1219,6 @@ function bp_is_current_component( $component ) {
 					$is_current_component = true;
 					break;
 				}
-			}
-		}
-
-	// Page template fallback check if $bp->current_component is empty
-	} elseif ( !is_admin() && is_a( $wp_query, 'WP_Query' ) && is_page() ) {
-		global $wp_query;
-
-		$page = $wp_query->get_queried_object();
-		if ( isset( $page->ID ) ) {
-			$custom_fields = get_post_custom_values( '_wp_page_template', $page->ID );
-			$page_template = $custom_fields[0];
-
-			// Component name is in the page template name
-			if ( !empty( $page_template ) && strstr( strtolower( $page_template ), strtolower( $component ) ) ) {
-				$is_current_component = true;
 			}
 		}
 	}
@@ -1301,8 +1369,8 @@ function bp_is_directory() {
 /**
  * Check to see if a component's URL should be in the root, not under a member page.
  *
- * - Yes ('groups' is root)    : http://domain.com/groups/the-group
- * - No  ('groups' is not-root): http://domain.com/members/andy/groups/the-group
+ * - Yes ('groups' is root)    : http://example.com/groups/the-group
+ * - No  ('groups' is not-root): http://example.com/members/andy/groups/the-group
  *
  * This function is on the chopping block. It's currently only used by a few
  * already deprecated functions.
@@ -1931,7 +1999,7 @@ function bp_is_group() {
 	if ( ! empty( $retval ) ) {
 		$retval = bp_is_groups_component() && groups_get_current_group();
 	}
-	
+
 	return (bool) $retval;
 }
 
@@ -2359,6 +2427,10 @@ function bp_the_body_class() {
 		}
 
 		/** Groups ************************************************************/
+
+		if ( bp_is_group() ) {
+			$bp_classes[] = 'group-' . groups_get_current_group()->slug;
+		}
 
 		if ( bp_is_group_leave() ) {
 			$bp_classes[] = 'leave-group';

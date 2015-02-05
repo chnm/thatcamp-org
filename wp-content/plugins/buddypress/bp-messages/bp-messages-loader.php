@@ -10,7 +10,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Implementation of BP_Component for the Messages component.
@@ -22,7 +22,7 @@ class BP_Messages_Component extends BP_Component {
 	 * If this is true, the Message autocomplete will return friends only, unless
 	 * this is set to false, in which any matching users will be returned.
 	 *
-	 * @since BuddyPress (1.5)
+	 * @since BuddyPress (1.5.0)
 	 * @var bool
 	 */
 	public $autocomplete_all;
@@ -90,22 +90,27 @@ class BP_Messages_Component extends BP_Component {
 		$global_tables = array(
 			'table_name_notices'    => $bp->table_prefix . 'bp_messages_notices',
 			'table_name_messages'   => $bp->table_prefix . 'bp_messages_messages',
-			'table_name_recipients' => $bp->table_prefix . 'bp_messages_recipients'
+			'table_name_recipients' => $bp->table_prefix . 'bp_messages_recipients',
+			'table_name_meta'       => $bp->table_prefix . 'bp_messages_meta',
 		);
 
-		// All globals for messaging component.
-		// Note that global_tables is included in this array.
-		$globals = array(
-			'slug'                  => BP_MESSAGES_SLUG,
-			'has_directory'         => false,
-			'notification_callback' => 'messages_format_notifications',
-			'search_string'         => __( 'Search Messages...', 'buddypress' ),
-			'global_tables'         => $global_tables
+		// Metadata tables for messaging component
+		$meta_tables = array(
+			'message' => $bp->table_prefix . 'bp_messages_meta',
 		);
 
 		$this->autocomplete_all = defined( 'BP_MESSAGES_AUTOCOMPLETE_ALL' );
 
-		parent::setup_globals( $globals );
+		// All globals for messaging component.
+		// Note that global_tables is included in this array.
+		parent::setup_globals( array(
+			'slug'                  => BP_MESSAGES_SLUG,
+			'has_directory'         => false,
+			'notification_callback' => 'messages_format_notifications',
+			'search_string'         => __( 'Search Messages...', 'buddypress' ),
+			'global_tables'         => $global_tables,
+			'meta_tables'           => $meta_tables
+		) );
 	}
 
 	/**
@@ -286,6 +291,23 @@ class BP_Messages_Component extends BP_Component {
 		}
 
 		parent::setup_title();
+	}
+
+	/**
+	 * Setup cache groups
+	 *
+	 * @since BuddyPress (2.2.0)
+	 */
+	public function setup_cache_groups() {
+
+		// Global groups
+		wp_cache_add_global_groups( array(
+			'bp_messages',
+			'bp_messages_unread_count',
+			'message_meta'
+		) );
+
+		parent::setup_cache_groups();
 	}
 }
 

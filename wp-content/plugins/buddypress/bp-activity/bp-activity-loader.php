@@ -10,7 +10,7 @@
  */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Main Activity Class.
@@ -60,6 +60,8 @@ class BP_Activity_Component extends BP_Component {
 
 		// Load Akismet support if Akismet is configured
 		$akismet_key = bp_get_option( 'wordpress_api_key' );
+
+		/** This filter is documented in bp-activity/bp-activity-actions.php */
 		if ( defined( 'AKISMET_VERSION' ) && ( !empty( $akismet_key ) || defined( 'WPCOM_API_KEY' ) ) && apply_filters( 'bp_activity_use_akismet', bp_is_akismet_active() ) ) {
 			$includes[] = 'akismet';
 		}
@@ -359,6 +361,23 @@ class BP_Activity_Component extends BP_Component {
 		add_action( 'bp_include', 'bp_activity_setup_akismet' );
 
 		parent::setup_actions();
+	}
+
+	/**
+	 * Setup cache groups
+	 *
+	 * @since BuddyPress (2.2.0)
+	 */
+	public function setup_cache_groups() {
+
+		// Global groups
+		wp_cache_add_global_groups( array(
+			'bp_activity',
+			'bp_activity_comments',
+			'activity_meta'
+		) );
+
+		parent::setup_cache_groups();
 	}
 }
 
