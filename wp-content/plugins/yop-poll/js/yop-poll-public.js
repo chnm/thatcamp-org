@@ -667,8 +667,9 @@ function yop_poll_do_vote(yop_poll_various_config) {
                          response = JSON.parse( data );
                          if( '' != response.error ) {
                              yop_poll_show_message( response.error, poll_id, unique_id, "error" );
-                             jQuery( '#yop_poll_wordpress-vote-button-' + poll_id + unique_id ).show();
-                             jQuery( '#yop_poll_anonimous-vote-button-' + poll_id + unique_id).show();
+                            // jQuery( '#yop_poll_wordpress-vote-button-' + poll_id + unique_id ).show();
+                            // jQuery( '#yop_poll_anonimous-vote-button-' + poll_id + unique_id).show();
+                             jQuery('#yop_poll_vote_options_div-'+ poll_id + unique_id).remove();
                              jQuery( '#yop_poll_vote-button-' + poll_id + unique_id ).show();
                              jQuery( '#yop_poll_wordpress_loading_img-' + poll_id + unique_id ).remove();
 
@@ -722,8 +723,9 @@ function yop_poll_do_vote(yop_poll_various_config) {
                                  }
                              }
                              else {
-                                 jQuery( '#yop_poll_wordpress-vote-button-' + poll_id + unique_id ).show();
-                                 jQuery( '#yop_poll_anonimous-vote-button-' + poll_id + unique_id).show();
+                                 jQuery('#yop_poll_vote_options_div-'+ poll_id + unique_id).remove();
+                                // jQuery( '#yop_poll_wordpress-vote-button-' + poll_id + unique_id ).show();
+                                 //jQuery( '#yop_poll_anonimous-vote-button-' + poll_id + unique_id).show();
                                  jQuery( '#yop_poll_wordpress_loading_img-' + poll_id + unique_id ).remove();
 
                                  yop_poll_show_message( "An error has occured", poll_id, unique_id, "error" );
@@ -732,8 +734,9 @@ function yop_poll_do_vote(yop_poll_various_config) {
                          }
                      },
                      error: function() {
-                         jQuery( '#yop_poll_wordpress-vote-button-' + poll_id + unique_id ).show();
-                         jQuery( '#yop_poll_anonimous-vote-button-' + poll_id + unique_id).show();
+                         jQuery('#yop_poll_vote_options_div-'+ poll_id + unique_id).remove();
+                         //jQuery( '#yop_poll_wordpress-vote-button-' + poll_id + unique_id ).show();
+                         //jQuery( '#yop_poll_anonimous-vote-button-' + poll_id + unique_id).show();
                          jQuery( '#yop_poll_wordpress_loading_img-' + poll_id + unique_id ).remove();
 
                          yop_poll_show_message( "An error has occured", poll_id, unique_id, "error" );

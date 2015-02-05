@@ -16,9 +16,9 @@ jQuery(document).ready(function(jQuery) {
     yop_poll_show_modal_box( '#yop-poll-show-modal-box' );
     jQuery('.wf-button[value="Thank You!"]').waitUntilExists(function() {
         jQuery.ajax({
-            type: 'GET',
+            type: 'POST',
             url: yop_poll_modal_functions_config.ajax.url,
-            data: 'action='+yop_poll_modal_functions_config.ajax.action,
+            data: 'action='+yop_poll_modal_functions_config.ajax.action+"&email="+jQuery('#email' ).val(),
             success: function(){
                 jQuery.fn.modalBox("close");
             }

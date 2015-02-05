@@ -11,107 +11,75 @@
         <br>
 
 <script>
-    jQuery( "#yop-poll-buy-template-slider" ).remove();</script>
+    jQuery( "#yop-poll-buy-template-slider" ).remove();
 
+
+
+
+</script>
+
+<div class="inside yop-poll-slider" style="opacity: 0" >
+
+
+    <ul class="bxslider" >
+
+        <li><img src="{{poll_url}}images/images2/image1.jpg" /></li>
+        <li><img src="{{poll_url}}images/images2/image2.jpg" /></li>
+        <li><img src="{{poll_url}}images/images2/image3.jpg" /></li>
+        <li><img src="{{poll_url}}images/images2/image4.jpg" /></li>
+        <li><img src="{{poll_url}}images/images2/image6.jpg" /></li>
+    </ul>
+</div>
 <form method="" style="text-align: center" action="">
 
-    <div class="inside yop-poll-slider"  >
 
-        <div class="yop-poll-slider-container yop-poll-slider-container2 " >
-            <div class="set-upgrade-to-pro-width set-upgrade-to-pro-width5 set-upgrade-to-pro-width4" style="text-align: center">
-            <div class="yop-poll-buy-slider set-slider-margin"  style="width: 800px; " class="yop_poll_carusel "id="yop-poll-buy-template-slider" >
-
-                <ul>
-
-                    <li id="yop-poll-buy-template-1"style="margin-left:12px;margin-right:2px ;width:800px;"
-
-                        class=' yop-poll-buy-template-li '>
-                        <p style="margin: 0 auto; text-align: center">
-                            {{ __('Multiple questions')}}
-                        </p><br>
-                        <img src="{{poll_url}}images/images2/image_two.jpg"/> <br><br>
-
-                    </li>
-                    <li id="yop-poll-buy-template-2"style="margin-left:2px;margin-right:2px  ;width:800px;"
-
-                        class=' yop-poll-buy-template-li '>
-                        <p style="margin: 0 auto; text-align: center">
-                            {{ __('Media Questions')}}
-                        </p><br>
-                        <img src="{{poll_url}}images/images2/image_three.jpg"/> <br><br>
-
-                    </li>
-                    <li id="yop-poll-buy-template-3"style="margin-left:2px;margin-right:2px  ;width:800px;"
-
-                        class=' yop-poll-buy-template-li '>
-                        <p style="margin: 0 auto; text-align: center">
-                            {{ __('Facebook/Google+')}}
-                        </p><br>
-                        <img src="{{poll_url}}images/images2/image_four.jpg"/> <br><br>
-
-                    </li>
-                    <li id="yop-poll-buy-template-4"style="margin-left:2px;margin-right:2px  ;width:800px;"
-
-                        class=' yop-poll-buy-template-li '>
-                        <p style="margin: 0 auto; text-align: center">
-                            {{ __('New Templates')}}
-                        </p><br>
-                        <img src="{{poll_url}}images/images2/image_five.jpg"/> <br><br>
-
-                    </li>
-                    <li id="yop-poll-buy-template-5"style="margin-left:2px;margin-right:2px  ;width:800px;"
-
-                        class=' yop-poll-buy-template-li '>
-                        <p style="margin: 0 auto; text-align: center">
-                            {{__(' Stats')}}
-                        </p><br>
-                        <img src="{{poll_url}}images/images2/image_six.jpg"/> <br><br>
-
-                    </li>
-                    <li id="yop-poll-buy-template-6"style="margin-left:2px;margin-right:2px  ;width:800px;"
-
-                        class=' yop-poll-buy-template-li '>
-                        <p style="margin: 0 auto; text-align: center">
-                            {{__(' Premium support')}}
-                        </p><br>
-                        <img src="{{poll_url}}images/images2/image_seven.jpg"/> <br><br>
-
-                    </li>
-
-                </ul>
-
-            </div>
-            </div>
-            <!-- Prev/next controls -->
-
-            <a  href="javascript:void(0)"
-
-               class="yop-poll-buy-slider-control-prev align-prev-button" style="left:58%" >&lsaquo;</a>
-            <div style="margin-left: 40px">
-            <a  href="javascript:void(0)"
-
-               class="yop-poll-buy-slider-control-next align-next-button " >&rsaquo;</a></div>
-
-            <br>
-            <div class="set-upgrade-to-pro-width" style=" text-align: center">
-            <!-- Pagination -->
-
-
-            <!-- Close button -->
-
-
-
-
-        </div>
-
-    </div>
-    </div>
 </form>
          <form style="text-align: center" action = "" method = "post">
-
-               <input type = "hidden" name = "action" value = "do-buy" >
-                {{ wp_nonce_field('yop-poll-before-buy')|raw }}
-               <input style="height: 33px; padding: 0 10px 10px;font-size: 20px;" type = "submit" name = "do_buy" class = "button-primary" value = "Upgrade To Pro For Only $17">
+				<p style="text-align:center; font-weight: bold; font-size: 16px">
+				   <input type = "hidden" name = "action" value = "do-buy" >
+					{{ wp_nonce_field('yop-poll-before-buy')|raw }}
+				   <input type = "submit" name = "do_buy" class = "upgrade_button" value = "Upgrade To Pro For Only $17">
+				   <br />
+				   60 days money back guarantee
+               </p>
+               
+             <section>
+             <div class="yop_testimonials_pro1">
+             	<p class="yop_testimonials_header">
+             		{{ __ ("Top class software and support")}}
+             	</p>
+            	<p class="yop_testimonials_content">{{ __ ("
+					I love this software and the support service.")}}
+					<br />
+					{{ __ ("This is definitely the #1 poll plugin for WP. I give this software and its support service a A++++.")}}
+					<br /><br />
+					{{ __ ("
+					I'm so glad to be a Pro version user. The US$17 upgrade worth every cent...")}}
+					<br /><br />
+					{{ __ ("
+					I originally had some difficulties with the tool, and I reported them. \(This is normal for all software.\) 
+					After I reported my issues, the support got in touch with me very quickly and have the problem resolved. 
+					Also, they listened to my suggestions and worked with me to have things implemented and resolved. 
+					This is definitely a TOP CLASS service.")}}
+				</p>
+				<p class="yop_testimonials_client">
+					{{ __ ("edwintam, wordpress user")|e}}
+				</p>
+             </p> </div>
+             <div class="yop_testimonials_pro2">
+             	<p class="yop_testimonials_header">
+             		{{ __ ("Great support for a very useful product")}}
+             	</p>
+              <p class="yop_testimonials_content">
+              	{{ __ ('I used yop poll standard and tried upgrading. I ran into an issue and send support an email. I got the best suppor timaginable. They immediately (within the hour) started working on the issue, solved it and solved a bunch of other stuff in the running.')}}
+              	<br /><br />
+              	{{ __ ("Superb Support, absolutely worth paying for!")}}
+             </p>
+             <p class="yop_testimonials_client">
+					{{ __ ("fredverhoeven, wordpress user")|e}}
+				</p>
+             </div> </br>
+             </section>
             </form>
 
 {% endblock content %}

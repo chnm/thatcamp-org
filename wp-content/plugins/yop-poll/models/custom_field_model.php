@@ -91,7 +91,7 @@
                 return false;
             }
 
-            wp_cache_add( $custom_field->id, $custom_field, 'yop_poll_custom_field' );
+            wp_cache_add( $custom_field->ID, $custom_field, 'yop_poll_custom_field' );
             return $custom_field;
         }
 
@@ -114,7 +114,7 @@
                 return false;
             }
 
-            $answer_options = get_yop_poll_answer_meta( $this->id, 'options', true );
+            $answer_options = get_yop_poll_answer_meta( $this->ID, 'options', true );
 
             if ( isset( $answer_options[$key] ) ){
                 return true;
@@ -162,7 +162,7 @@
             {
                 return false;
             }
-            $answer_options = get_yop_poll_answer_meta( $this->id, 'options', true );
+            $answer_options = get_yop_poll_answer_meta( $this->ID, 'options', true );
             if ( isset( $answer_options[$key] ) ){
                 return $answer_options[$key];
             }
@@ -185,7 +185,7 @@
         function __set( $key, $value ) {
             if ( 'id' == strtolower( $key ) ){
                 $this->ID       = $value;
-                $this->data->id = $value;
+                $this->data->ID = $value;
                 return;
             }
 
@@ -230,11 +230,11 @@
                                 'status'       => $this->status
                             )
             );
-            $this->id = $GLOBALS['wpdb']->insert_id;
+            $this->ID = $GLOBALS['wpdb']->insert_id;
 
-            if ( intval( $this->id ) > 0 ){
-                wp_cache_delete( $this->id, 'yop_poll_custom_field' );
-                return $this->id;
+            if ( intval( $this->ID ) > 0 ){
+                wp_cache_delete( $this->ID, 'yop_poll_custom_field' );
+                return $this->ID;
             }
             return false;
         }
@@ -251,8 +251,8 @@
                                 'ID' => $this->ID
                             )
             );
-            wp_cache_delete( $this->id, 'yop_poll_custom_field' );
-            return $this->id;
+            wp_cache_delete( $this->ID, 'yop_poll_custom_field' );
+            return $this->ID;
         }
 
         function delete() {
@@ -262,7 +262,7 @@
                                 'ID' => $this->ID
                             )
             );
-            wp_cache_delete( $this->id, 'yop_poll_custom_field' );
+            wp_cache_delete( $this->ID, 'yop_poll_custom_field' );
             $this->_unset();
         }
     }

@@ -156,7 +156,7 @@
                         <small> {{ __('Will force users to login into Facebook')}}</small>
                     </th>
                     <td>
-                        {{ label( 'Yes', 'yop-poll-vote-permisions-facebook-yes', 'yop_poll_options[vote_permisions_facebook]', "yes", "radio", "yop_poll_tooltip-buy_pro yop_poll_tooltip-buy", current_poll.vote_permisions_facebook, "yes","sadas","dsada" ) }}
+                        {{ label( 'Yes', 'yop-poll-vote-permisions-facebook-yes', 'yop_poll_options[vote_permisions_facebook]', "yes", "radio", "yop_poll_tooltip-buy_pro yop_poll_tooltip-buy", current_poll.vote_permisions_facebook, "yes","","" ) }}
                         {{ label( 'No',  'yop-poll-vote-permisions-facebook-no',  'yop_poll_options[vote_permisions_facebook]', "no",  "radio", "yop_poll_tooltip-buy_pro yop_poll_tooltip-buy", current_poll.vote_permisions_facebook, "no","","" ) }}
                         <input id="yop-poll-for-slider-page1" type="radio" style="display: none" name="yop_poll_options[vote_permisions_facebook]" checked >
                     </td>
@@ -238,7 +238,7 @@
                         {{ label( 'No',  'yop-poll-vote-permisions-anonymous-no',  'yop_poll_options[vote_permisions_anonymous]', "no",  "radio", "", current_poll.vote_permisions_anonymous, "no" ) }}
                     </td>
                 </tr>
-                <tr class="yop-poll-vote-as-div yop_poll_suboption" id="yop-poll-vote-permisions-anonymous-div" >
+                <tr class="yop-poll-vote-as-div yop_poll_suboption" id="yop-poll-vote-permisions-anonymous-label-div" >
                     <th> {{ __('"Vote as Anonymous User" Button Label') }}</th>
                     <td>
                         {{ input( current_poll.vote_permisions_anonymous_label, 'yop-poll-vote-permisions-anonymous-label', 'yop_poll_options[vote_permisions_anonymous_label]') }}
@@ -269,7 +269,6 @@
                 </tr>
                 <tr class="yop-poll-limit-number-of-votes-per-user-div">
                     <th> {{ __('Limit Number of Votes per User') }}:<br>
-                        <small>({{ __('Only for logged users') }})</small>
                     </th>
                     <td>
                         {{ label( 'Yes', 'yop-poll-limit-number-of-votes-per-user-yes', 'yop_poll_options[limit_number_of_votes_per_user]', "yes", "radio", "", current_poll.limit_number_of_votes_per_user, "yes" ) }}

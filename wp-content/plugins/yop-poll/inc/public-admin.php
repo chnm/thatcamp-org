@@ -169,15 +169,18 @@
             $temp = "";
 
             if($ok==1){
-            for( $i = ( $args['current'] - 1 ) * $per_page; $i <= ( $args['current'] - 1 ) * $per_page + $per_page - 1; $i ++ ) {
-                $temp .= $this->return_yop_poll( $archives[$i]['ID'], $results );
-            }
+                for( $i = ( $args['current'] - 1 ) * $per_page; $i <= ( $args['current'] - 1 ) * $per_page + $per_page - 1; $i ++ ) {
+                  if(isset($archives[$i]['ID']))
+                    $temp .= $this->return_yop_poll( $archives[$i]['ID'], $results );
+                }
             }else{
                 for( $i = ( $args['current'] - 1 ) * $per_page; $i <= ( $args['current'] - 1 ) * $per_page + $per_page - 1; $i ++ ) {
+                    if(isset($archives[$i]['ID']))
                     $temp .= $this->return_yop_poll( $archives[$i], $results );
-            }
+                }
             }
             return $temp . paginate_links( $args );
+
 
 
         }
@@ -283,7 +286,7 @@
                 'loading_image_src' => $loading_image_src,
                 'loading_image_alt' => __yop_poll( 'Loading' ),
             );
-			
+
 			$tabulate['results']=false;
             $tabulate['answers']=false;
             $tabulate['orizontal_answers']=0;

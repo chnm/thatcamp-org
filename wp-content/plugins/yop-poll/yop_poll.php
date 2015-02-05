@@ -5,7 +5,7 @@
     * Description: Use a full option polling functionality to get the answers you need. YOP Poll is the perfect, easy to use plugin for your WordPress website.
     * Author: yourownprogrammer
     * Author URL: http://www.yop-poll.com/thankyou/
-    * Version: 5.3
+    * Version: 5.5
     * Network: false
     */
 
@@ -22,7 +22,7 @@
 if (!(version_compare(phpversion(), '5.3', '<'))) {
     define ( 'YOP_POLL_DOMAIN', 'yop_poll' );
     define ( 'YOP_POLL_WP_VERSION', '3.3' );
-    define ( 'YOP_POLL_VERSION', '5.3' );
+    define ( 'YOP_POLL_VERSION', '5.5' );
     define ( 'YOP_POLL_PATH', plugin_dir_path( __FILE__ ) ); ///home/..../wp-content/plugins/yop-poll-2.0/
     define ( 'YOP_POLL_URL', plugin_dir_url( __FILE__ ) ); //http://your-domain/wp-content/plugins/yop-poll-2.0/
     define ( 'YOP_POLL_PLUGIN_FILE', __FILE__ ); ///home/..../wp-content/plugins/yop-poll-2.0/yop-poll-2.0.php
@@ -30,7 +30,7 @@ if (!(version_compare(phpversion(), '5.3', '<'))) {
     define ( 'YOP_POLL_PLUGIN_DIR', plugin_basename( dirname( __FILE__ ) ) ); //yop-poll-2.0
     define ( 'YOP_POLL_INC', YOP_POLL_PATH . 'inc/' );
     define ( 'YOP_POLL_MODELS', YOP_POLL_PATH . 'models/' );
-    define ( "YOP_POLL_DEBUG", false );
+    define ( "YOP_POLL_DEBUG", true );
 
     require_once( YOP_POLL_PATH . 'lib/Twig/Autoloader.php' );
     Twig_Autoloader::register();

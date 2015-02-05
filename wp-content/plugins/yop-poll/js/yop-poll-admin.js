@@ -2,77 +2,96 @@ var write_console = false;
 var yoppolltitlehint;
 jQuery(".yop_poll_tooltip-buy_pro" ).click( function(){
     var id=this.id;
+    jQuery('#myModal').reveal({
+        animation: 'fade',
+        animationspeed: 300,
+        closeonbackgroundclick: false,
+        dismissmodalclass: 'close-reveal-modal',
+        slideshowSpeed: 70000
+
+    });
+
     //console.log(id);
     if(id=='add_new_media_question2'){
-        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
-        jQuery('#yop-poll-buy-template-2').addClass('yop-poll-buy-template-selected');
+        jQuery('.flexslider').flexslider({
+            startAt: 0,
+            slideshow: true,
+            slideshowSpeed: 8000
+        });
+        jQuery(".flexslider").data('flexslider').flexAnimate(0, false);
+        jQuery('.flex-prev').css("opacity","0.7");
+        jQuery('.flex-next').css("opacity","0.7");
+
     }
     if(id=='add_new_text_question2')
     {
-        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
-        jQuery('#yop-poll-buy-template-1').addClass('yop-poll-buy-template-selected');
+        jQuery('.flexslider').flexslider({
+            startAt: 0,
+            slideshow: true,
+            slideshowSpeed: 8000
+        });
+        jQuery(".flexslider").data('flexslider').flexAnimate(0, false);
+        jQuery('.flex-prev').css("opacity","0.7");
+        jQuery('.flex-next').css("opacity","0.7");
+
     }
     if(id=='yop-poll-1'){
-        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
-        jQuery('#yop-poll-buy-template-4').addClass('yop-poll-buy-template-selected');
+        jQuery('.flexslider').flexslider({
+            startAt: 3,
+            slideshow: true,
+            slideshowSpeed: 8000
+        });
+        jQuery(".flexslider").data('flexslider').flexAnimate(3, false);
+        jQuery('.flex-prev').css("opacity","0.7");
+        jQuery('.flex-next').css("opacity","0.7");
     }
     if(id=='yop-poll-vote-permisions-facebook-integration-yes' || id=='yop-poll-vote-permisions-facebook-no' ||
-            id=='yop-poll-facebook-share-after-vote-yes' || id=='yop-poll-facebook-share-after-vote-no'  ||
-            id=='yop-poll-vote-permisions-google-yes' || id=='yop-poll-vote-permisions-google-no'||
-            id=='yop-poll-vote-permisions-show-g-share-button-yes'|| id=='yop-poll-vote-permisions-show-g-share-button-no' ||
-            id=='yop_poll_google_integration-yes' || id=='yop_poll_google_integration-no'
-            || id=='yop-poll-for-slider-page-4'||id=='yop-poll-for-slider-page2'
-            || id=='yop-poll-for-slider-page3'){
+        id=='yop-poll-facebook-share-after-vote-yes' || id=='yop-poll-facebook-share-after-vote-no'  ||
+        id=='yop-poll-vote-permisions-google-yes' || id=='yop-poll-vote-permisions-google-no'||
+        id=='yop-poll-vote-permisions-show-g-share-button-yes'|| id=='yop-poll-vote-permisions-show-g-share-button-no' ||
+        id=='yop_poll_google_integration-yes' || id=='yop_poll_google_integration-no'
+        || id=='yop-poll-for-slider-page-4'||id=='yop-poll-for-slider-page2'
+        || id=='yop-poll-for-slider-page3' || id=='yop-poll-vote-permisions-facebook-yes'){
 
 
 
-        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
-
-        jQuery("#yop-poll-buy-template-3").addClass('yop-poll-buy-template-selected');
+        jQuery('.flexslider').flexslider({
+            startAt: 2,
+            slideshow: true,
+            slideshowSpeed: 8000
+        });
+        jQuery(".flexslider").data('flexslider').flexAnimate(2, false);
+        jQuery('.flex-prev').css("opacity","0.7");
+        jQuery('.flex-next').css("opacity","0.7");
     }
-    if(id=='yop-poll-user-interface-type-beginner' || id=='yop-poll-user-interface-type-advanced'){
-        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
-        jQuery("#yop-poll-buy-template-0").addClass('yop-poll-buy-template-selected');
-    }
+
     if(id=='yop-poll-for-slider-page'||id=='yop-poll-for-slider-page1'){
-        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
-        jQuery("#yop-poll-buy-template-3").addClass('yop-poll-buy-template-selected');
+        jQuery('.flexslider').flexslider({
+            startAt: 2,
+            slideshow: true,
+            slideshowSpeed: 8000
+        });
+
+        jQuery(".flexslider").data('flexslider').flexAnimate(2, false);
+        jQuery('.flex-prev').css("opacity","0.7");
+        jQuery('.flex-next').css("opacity","0.7");
     }
     if(id=='yop-poll-for-slider-page-7'){
-        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
-        jQuery("#yop-poll-buy-template-5").addClass('yop-poll-buy-template-selected');
+
+
+        jQuery('.flexslider').flexslider({
+            startAt: 4,
+            slideshow: true,
+            slideshowSpeed: 8000
+        });
+        jQuery(".flexslider").data('flexslider').flexAnimate(4, false);
+        jQuery('.flex-prev').css("opacity","0.7");
+        jQuery('.flex-next').css("opacity","0.7");
+
     }
-
-
-
-
-    jQuery(".yop_poll_pro_feature").dialog({
-
-        height: '650',
-
-        width: 'auto',
-
-        resizable: false,
-
-        modal: true,
-
-        dialogClass: 'fixed-dialog'
-
-        //position:{top:'top+100'}
-
-    });
-    jQuery( "#yop-poll-buy-template-slider" ).jcarousel( 'scroll', jQuery( '.yop-poll-buy-template-selected' ) );
-    //if (jQuery(this).is(':radio')) {
-    //    jQuery(this ).attr('checked', false);
-
-    // }
-    // jQuery(".yop_poll_pro_feature").removeClass('yop-poll-buy-template-selected');
+   // jQuery('#myModal').css("top","0px");
 });
-jQuery('#yop-poll-pro-close').click(function() {
 
-    jQuery(".yop_poll_pro_feature").dialog('close');
-
-});
 
 function cslw( msg ) {
     if ( write_console ) {
@@ -254,6 +273,18 @@ function end_date_option(){
         jQuery('#yop-poll-end-date-input').show();
     }
 }
+jQuery(window).load(function() {
+    jQuery('.bxslider').bxSlider({
+        mode: 'fade',
+        auto: true,
+        slideWidth: 1400,
+        pause: 7000
 
+    });
+    jQuery(".yop-poll-slider").css("opacity","1")
+
+
+
+});
 
 

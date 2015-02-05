@@ -1,5 +1,4 @@
 <?php
-    error_reporting( 0 );
 abstract class YOP_POLL_Abstract_Model {
 
 
@@ -901,6 +900,7 @@ abstract class YOP_POLL_Abstract_Model {
             $this->poll_end_date=$original[1].'-'.$original[0].'-'.$original[2].' '.$original1[1];
 
         }
+
         if($this->poll_end_date=="01-01-2038 23:59:59")
             $this->poll_end_date=convert_date( $this->poll_end_date, 'Y-m-d H:i:s' );
         else {
@@ -931,7 +931,9 @@ abstract class YOP_POLL_Abstract_Model {
 
         if(isset($this->ID)){
 
-        $GLOBALS['wpdb']->query( $GLOBALS['wpdb']->prepare( "
+
+
+            $GLOBALS['wpdb']->query( $GLOBALS['wpdb']->prepare( "
 
 					INSERT INTO " . $GLOBALS['wpdb']->yop_polls . "
 
@@ -959,7 +961,8 @@ abstract class YOP_POLL_Abstract_Model {
 
 						",$this->ID, $this->poll_title, $this->poll_name, $this->poll_author, $this->poll_date, $this->poll_status, $this->poll_modified, $this->type,  $this->poll_start_date,$this->poll_end_date, $this->poll_total_votes ) );
 
-            $this->id = $this->ID;
+            $this->id = $GLOBALS['wpdb']->insert_id;
+
         }
         else{
             $GLOBALS['wpdb']->query( $GLOBALS['wpdb']->prepare( "
@@ -1486,7 +1489,7 @@ abstract class YOP_POLL_Abstract_Model {
 
 					SELECT id
 
-					FROM " . $wpdb->yop_poll_logs . "
+					FROM " . $wpdb->yop_poll_results . "
 
 					WHERE poll_id = %d AND
 
@@ -1852,7 +1855,7 @@ abstract class YOP_POLL_Abstract_Model {
 
 					SELECT id
 
-					FROM " . $wpdb->yop_poll_logs . "
+					FROM " . $wpdb->yop_poll_results . "
 
 					WHERE poll_id = %d AND
 
@@ -1920,7 +1923,7 @@ abstract class YOP_POLL_Abstract_Model {
     protected function user_have_votes_to_vote( $voter, $cookie ) {
 
         $poll_options = get_yop_poll_meta( $voter['poll_id'], "options", true );
-
+        ///yop_poll_dump($cookie);
         if( $voter['user_type'] == "anonymous" ) {
             if( 'yes' == $poll_options['limit_number_of_votes_per_user'] ) {
 
