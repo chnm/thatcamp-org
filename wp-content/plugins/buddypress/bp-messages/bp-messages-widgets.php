@@ -62,14 +62,6 @@ class BP_Messages_Sitewide_Notices_Widget extends WP_Widget {
 		extract( $args );
 
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
-
-		/**
-		 * Filters the title of the Messages widget.
-		 *
-		 * @since BuddyPress (1.9.0)
-		 *
-		 * @param string $title The widget title.
-		 */
 		$title = apply_filters( 'widget_title', $title, $instance );
 
 		echo $before_widget;

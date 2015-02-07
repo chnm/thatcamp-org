@@ -8,7 +8,7 @@
  */
 
 // Exit if accessed directly
-defined( 'ABSPATH' ) || exit;
+if ( !defined( 'ABSPATH' ) ) exit;
 
 /** Moderation ****************************************************************/
 
@@ -31,19 +31,16 @@ defined( 'ABSPATH' ) || exit;
 function bp_core_check_for_flood( $user_id = 0 ) {
 
 	// Option disabled. No flood checks.
-	if ( !$throttle_time = bp_get_option( '_bp_throttle_time' ) ) {
+	if ( !$throttle_time = bp_get_option( '_bp_throttle_time' ) )
 		return true;
-	}
 
 	// Bail if no user ID passed
-	if ( empty( $user_id ) ) {
+	if ( empty( $user_id ) )
 		return false;
-	}
 
 	$last_posted = get_user_meta( $user_id, '_bp_last_posted', true );
-	if ( isset( $last_posted ) && ( time() < ( $last_posted + $throttle_time ) ) && !current_user_can( 'throttle' ) ) {
+	if ( isset( $last_posted ) && ( time() < ( $last_posted + $throttle_time ) ) && !current_user_can( 'throttle' ) )
 		return false;
-	}
 
 	return true;
 }
@@ -64,61 +61,13 @@ function bp_core_check_for_flood( $user_id = 0 ) {
  */
 function bp_core_check_for_moderation( $user_id = 0, $title = '', $content = '' ) {
 
-	// Allow for moderation check to be skipped
-	if ( apply_filters( 'bp_bypass_check_for_moderation', false, $user_id, $title, $content ) ) {
-		return true;
-	}
-
 	// Bail if super admin is author
-	if ( is_super_admin( $user_id ) ) {
+	if ( is_super_admin( $user_id ) )
 		return true;
-	}
 
 	// Define local variable(s)
-	$_post     = array();
+	$post      = array();
 	$match_out = '';
-
-	/** User Data *************************************************************/
-
-	if ( ! empty( $user_id ) ) {
-
-		// Get author data
-		$user = get_userdata( $user_id );
-
-		// If data exists, map it
-		if ( ! empty( $user ) ) {
-			$_post['author'] = $user->display_name;
-			$_post['email']  = $user->user_email;
-			$_post['url']    = $user->user_url;
-		}
-	}
-
-	// Current user IP and user agent
-	$_post['user_ip'] = bp_core_current_user_ip();
-	$_post['user_ua'] = bp_core_current_user_ua();
-
-	// Post title and content
-	$_post['title']   = $title;
-	$_post['content'] = $content;
-
-	/** Max Links *************************************************************/
-
-	$max_links = get_option( 'comment_max_links' );
-	if ( ! empty( $max_links ) ) {
-
-		// How many links?
-		$num_links = preg_match_all( '/(http|ftp|https):\/\//i', $content, $match_out );
-
-		// Allow for bumping the max to include the user's URL
-		if ( ! empty( $_post['url'] ) ) {
-			$num_links = apply_filters( 'comment_max_links_url', $num_links, $_post['url'] );
-		}
-
-		// Das ist zu viele links!
-		if ( $num_links >= $max_links ) {
-			return false;
-		}
-	}
 
 	/** Blacklist *************************************************************/
 
@@ -126,36 +75,76 @@ function bp_core_check_for_moderation( $user_id = 0, $title = '', $content = '' 
 	$blacklist = trim( get_option( 'moderation_keys' ) );
 
 	// Bail if blacklist is empty
-	if ( ! empty( $blacklist ) ) {
+	if ( empty( $blacklist ) )
+		return true;
 
-		// Get words separated by new lines
-		$words = explode( "\n", $blacklist );
+	/** User Data *************************************************************/
 
-		// Loop through words
-		foreach ( (array) $words as $word ) {
+	if ( !empty( $user_id ) ) {
 
-			// Trim the whitespace from the word
-			$word = trim( $word );
+		// Get author data
+		$user = get_userdata( $user_id );
 
-			// Skip empty lines
-			if ( empty( $word ) ) {
-				continue;
-			}
+		// If data exists, map it
+		if ( !empty( $user ) ) {
+			$post['author'] = $user->display_name;
+			$post['email']  = $user->user_email;
+			$post['url']    = $user->user_url;
+		}
+	}
 
-			// Do some escaping magic so that '#' chars in the
-			// spam words don't break things:
-			$word    = preg_quote( $word, '#' );
-			$pattern = "#$word#i";
+	// Current user IP and user agent
+	$post['user_ip'] = bp_core_current_user_ip();
+	$post['user_ua'] = bp_core_current_user_ua();
 
-			// Loop through post data
-			foreach ( $_post as $post_data ) {
+	// Post title and content
+	$post['title']   = $title;
+	$post['content'] = $content;
 
-				// Check each user data for current word
-				if ( preg_match( $pattern, $post_data ) ) {
+	/** Max Links *************************************************************/
 
-					// Post does not pass
-					return false;
-				}
+	$max_links = get_option( 'comment_max_links' );
+	if ( !empty( $max_links ) ) {
+
+		// How many links?
+		$num_links = preg_match_all( '/<a [^>]*href/i', $content, $match_out );
+
+		// Allow for bumping the max to include the user's URL
+		$num_links = apply_filters( 'comment_max_links_url', $num_links, $post['url'] );
+
+		// Das ist zu viele links!
+		if ( $num_links >= $max_links ) {
+			return false;
+		}
+	}
+
+	/** Words *****************************************************************/
+
+	// Get words separated by new lines
+	$words = explode( "\n", $blacklist );
+
+	// Loop through words
+	foreach ( (array) $words as $word ) {
+
+		// Trim the whitespace from the word
+		$word = trim( $word );
+
+		// Skip empty lines
+		if ( empty( $word ) ) { continue; }
+
+		// Do some escaping magic so that '#' chars in the
+		// spam words don't break things:
+		$word    = preg_quote( $word, '#' );
+		$pattern = "#$word#i";
+
+		// Loop through post data
+		foreach( $post as $post_data ) {
+
+			// Check each user data for current word
+			if ( preg_match( $pattern, $post_data ) ) {
+
+				// Post does not pass
+				return false;
 			}
 		}
 	}
@@ -180,18 +169,12 @@ function bp_core_check_for_moderation( $user_id = 0, $title = '', $content = '' 
  */
 function bp_core_check_for_blacklist( $user_id = 0, $title = '', $content = '' ) {
 
-	// Allow for blacklist check to be skipped
-	if ( apply_filters( 'bp_bypass_check_for_blacklist', false, $user_id, $title, $content ) ) {
-		return true;
-	}
-
 	// Bail if super admin is author
-	if ( is_super_admin( $user_id ) ) {
+	if ( is_super_admin( $user_id ) )
 		return true;
-	}
 
 	// Define local variable
-	$_post = array();
+	$post = array();
 
 	/** Blacklist *************************************************************/
 
@@ -199,33 +182,32 @@ function bp_core_check_for_blacklist( $user_id = 0, $title = '', $content = '' )
 	$blacklist = trim( get_option( 'blacklist_keys' ) );
 
 	// Bail if blacklist is empty
-	if ( empty( $blacklist ) ) {
+	if ( empty( $blacklist ) )
 		return true;
-	}
 
 	/** User Data *************************************************************/
 
 	// Map current user data
-	if ( ! empty( $user_id ) ) {
+	if ( !empty( $user_id ) ) {
 
 		// Get author data
 		$user = get_userdata( $user_id );
 
 		// If data exists, map it
-		if ( ! empty( $user ) ) {
-			$_post['author'] = $user->display_name;
-			$_post['email']  = $user->user_email;
-			$_post['url']    = $user->user_url;
+		if ( !empty( $user ) ) {
+			$post['author'] = $user->display_name;
+			$post['email']  = $user->user_email;
+			$post['url']    = $user->user_url;
 		}
 	}
 
 	// Current user IP and user agent
-	$_post['user_ip'] = bp_core_current_user_ip();
-	$_post['user_ua'] = bp_core_current_user_ua();
+	$post['user_ip'] = bp_core_current_user_ip();
+	$post['user_ua'] = bp_core_current_user_ua();
 
 	// Post title and content
-	$_post['title']   = $title;
-	$_post['content'] = $content;
+	$post['title']   = $title;
+	$post['content'] = $content;
 
 	/** Words *****************************************************************/
 
@@ -241,13 +223,12 @@ function bp_core_check_for_blacklist( $user_id = 0, $title = '', $content = '' )
 		// Skip empty lines
 		if ( empty( $word ) ) { continue; }
 
-		// Do some escaping magic so that '#' chars in the
-		// spam words don't break things:
+		// Do some escaping magic so that '#' chars in the spam words don't break things:
 		$word    = preg_quote( $word, '#' );
 		$pattern = "#$word#i";
 
 		// Loop through post data
-		foreach( $_post as $post_data ) {
+		foreach( $post as $post_data ) {
 
 			// Check each user data for current word
 			if ( preg_match( $pattern, $post_data ) ) {
@@ -285,11 +266,10 @@ function bp_core_current_user_ip() {
 function bp_core_current_user_ua() {
 
 	// Sanity check the user agent
-	if ( ! empty( $_SERVER['HTTP_USER_AGENT'] ) ) {
+	if ( !empty( $_SERVER['HTTP_USER_AGENT'] ) )
 		$retval = substr( $_SERVER['HTTP_USER_AGENT'], 0, 254 );
-	} else {
+	else
 		$retval = '';
-	}
 
 	return apply_filters( 'bp_core_current_user_ua', $retval );
 }

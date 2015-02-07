@@ -8,7 +8,7 @@
  */
 
 // Exit if accessed directly
-defined( 'ABSPATH' ) || exit;
+if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
  * BuddyPress Group object.
@@ -781,7 +781,7 @@ class BP_Groups_Group {
 		$paged_groups_sql = apply_filters( 'bp_groups_get_paged_groups_sql', join( ' ', (array) $sql ), $sql, $r );
 		$paged_groups     = $wpdb->get_results( $paged_groups_sql );
 
-		$total_sql['select'] = "SELECT COUNT(DISTINCT g.id) FROM {$bp->groups->table_name} g, {$bp->groups->table_name_groupmeta} gm";
+		$total_sql['select'] = "SELECT COUNT(DISTINCT g.id) FROM {$bp->groups->table_name} g, {$bp->groups->table_name_members} gm1, {$bp->groups->table_name_groupmeta} gm2";
 
 		if ( ! empty( $r['user_id'] ) ) {
 			$total_sql['select'] .= ", {$bp->groups->table_name_members} m";
@@ -820,8 +820,9 @@ class BP_Groups_Group {
 			$total_sql['where'][] = "g.id NOT IN ({$exclude})";
 		}
 
-		$total_sql['where'][] = "g.id = gm.group_id";
-		$total_sql['where'][] = "gm.meta_key = 'last_activity'";
+		$total_sql['where'][] = "g.id = gm1.group_id";
+		$total_sql['where'][] = "g.id = gm2.group_id";
+		$total_sql['where'][] = "gm2.meta_key = 'last_activity'";
 
 		$t_sql = $total_sql['select'];
 
@@ -894,12 +895,12 @@ class BP_Groups_Group {
 			// @todo It may be better in the long run to refactor
 			// the more general query syntax to accord better with
 			// BP/WP convention
-			preg_match_all( '/JOIN (.+?) ON/', $meta_sql['join'], $matches_a );
-			preg_match_all( '/ON \((.+?)\)/', $meta_sql['join'], $matches_b );
+			preg_match_all( '/INNER JOIN (.*) ON/', $meta_sql['join'], $matches_a );
+			preg_match_all( '/ON \((.*)\)/', $meta_sql['join'], $matches_b );
 
 			if ( ! empty( $matches_a[1] ) && ! empty( $matches_b[1] ) ) {
 				$sql_array['join']  = implode( ',', $matches_a[1] ) . ', ';
-				$sql_array['where'] = $meta_sql['where'] . ' AND ' . implode( ' AND ', $matches_b[1] );
+				$sql_array['where'] = $meta_sql['where'] . ' AND ' . implode ( ' AND ', $matches_b[1] );
 			}
 		}
 
@@ -1295,7 +1296,7 @@ class BP_Groups_Group {
 					$is_member = '1';
 
 				// invite_sent means the user has been invited
-				} elseif ( $user_status[ $gid ]->invite_sent ) {
+				} else if ( $user_status[ $gid ]->invite_sent ) {
 					$is_invited = '1';
 
 				// User has sent request, but has not been confirmed
@@ -1611,7 +1612,7 @@ class BP_Group_Member_Query extends BP_User_Query {
 				$sql['where'][] = "inviter_id = 0";
 
 			// The string 'any' matches any non-zero value (inviter_id != 0)
-			} elseif ( 'any' === $inviter_id ) {
+			} else if ( 'any' === $inviter_id ) {
 				$sql['where'][] = "inviter_id != 0";
 
 			// Assume that a list of inviter IDs has been passed
@@ -2773,26 +2774,24 @@ class BP_Groups_Member {
  * of arguments to parent::init() to configure your widget. The config array
  * supports the following values:
  *   - 'slug' A unique identifier for your extension. This value will be used
- *     to build URLs, so make it URL-safe.
+ *     to build URLs, so make it URL-safe
  *   - 'name' A translatable name for your extension. This value is used to
- *     populate the navigation tab, as well as the default titles for admin/
- *     edit/create tabs.
+       populate the navigation tab, as well as the default titles for admin/
+       edit/create tabs.
  *   - 'visibility' Set to 'public' (default) for your extension (the main tab
  *     as well as the widget) to be available to anyone who can access the
  *     group, 'private' otherwise.
  *   - 'nav_item_position' An integer explaining where the nav item should
- *     appear in the tab list.
+ *     appear in the tab list
  *   - 'enable_nav_item' Set to true for your extension's main tab to be
  *     available to anyone who can access the group.
  *   - 'nav_item_name' The translatable text you want to appear in the nav tab.
  *     Defaults to the value of 'name'.
  *   - 'display_hook' The WordPress action that the widget_display() method is
- *     hooked to.
+ *     hooked to
  *   - 'template_file' The template file that will be used to load the content
  *     of your main extension tab. Defaults to 'groups/single/plugins.php'.
- *   - 'screens' A multi-dimensional array, described below.
- * 	 - 'access' Which users can visit the plugin's tab.
- * 	 - 'show_tab' Which users can see the plugin's navigation tab.
+ *   - 'screens' A multi-dimensional array, described below
  *
  * BP_Group_Extension uses the concept of "settings screens". There are three
  * contexts for settings screens:
@@ -2875,7 +2874,7 @@ class BP_Group_Extension {
 	public $class_reflection = null;
 
 	/**
-	 * Parsed configuration parameters for the extension.
+	 * Parsed configuration paramaters for the extension.
 	 *
 	 * @since BuddyPress (1.8.0)
 	 * @access public
@@ -3046,7 +3045,7 @@ class BP_Group_Extension {
 	 */
 
 	// The content of the group tab
-	public function display( $group_id = null ) {}
+	public function display() {}
 
 	// Content displayed in a widget sidebar, if applicable
 	public function widget_display() {}
@@ -3083,9 +3082,7 @@ class BP_Group_Extension {
 	 *       parent::init( $args );
 	 *   }
 	 *
-	 * @since BuddyPress (1.8.0)
-	 * @since BuddyPress (2.1.0) Added 'access' and 'show_tab' arguments
-	 * 		  to $args.
+	 * @since BuddyPress (1.8)
 	 * @param array $args {
 	 *     Array of initialization arguments.
 	 *     @type string $slug Unique, URL-safe identifier for your
@@ -3112,19 +3109,6 @@ class BP_Group_Extension {
 	 *     @type array $screens A multi-dimensional array of configuration
 	 *           information for the extension screens. See docblock of
 	 *           {@link BP_Group_Extension} for more details.
-	 *     @type string $access Which users can visit the plugin's tab.
-	 *			 Possible values: 'anyone', 'loggedin', 'member',
-	 *        	 'mod', 'admin' or 'noone'
-	 *			 ('member', 'mod', 'admin' refer to user's role in group.)
-	 * 			 Defaults to 'anyone' for public groups and 'member' for
-	 *			 private groups.
-	 *     @type string $show_tab Which users can see the plugin's navigation
-	 *			 tab.
-	 *			 Possible values: 'anyone', 'loggedin', 'member',
-	 *        	 'mod', 'admin' or 'noone'
-	 *			 ('member', 'mod', 'admin' refer to user's role in group.)
-	 * 			 Defaults to 'anyone' for public groups and 'member' for
-	 *			 private groups.
 	 * }
 	 */
 	public function init( $args = array() ) {
@@ -3326,7 +3310,7 @@ class BP_Group_Extension {
 	 * @since BuddyPress (2.1.0)
 	 */
 	protected function setup_access_settings() {
-		// Bail if no group ID is available
+		// Bail if no gruop ID is available
 		if ( empty( $this->group_id ) ) {
 			return;
 		}
@@ -3386,7 +3370,7 @@ class BP_Group_Extension {
 				// constructor. So we always trust this value
 				$this->params['show_tab'] = 'noone';
 
-			} elseif ( isset( $this->params_raw['enable_nav_item'] ) || isset( $this->params_raw['visibility'] ) ) {
+			} else if ( isset( $this->params_raw['enable_nav_item'] ) || isset( $this->params_raw['visibility'] ) ) {
 				// If enable_nav_item or visibility is passed,
 				// we assume this  is a legacy extension.
 				// Legacy behavior is that enable_nav_item=true +
@@ -3516,20 +3500,8 @@ class BP_Group_Extension {
 	 * Hook the main display method, and loads the template file
 	 */
 	public function _display_hook() {
-		add_action( 'bp_template_content', array( &$this, 'call_display' ) );
+		add_action( 'bp_template_content', array( &$this, 'display' ) );
 		bp_core_load_template( apply_filters( 'bp_core_template_plugin', $this->template_file ) );
-	}
-
-	/**
-	 * Call the display() method.
-	 *
-	 * We use this wrapper so that we can pass the group_id to the
-	 * display() callback.
-	 *
-	 * @since BuddyPress (2.1.1)
-	 */
-	public function call_display() {
-		$this->display( $this->group_id );
 	}
 
 	/**
@@ -3665,10 +3637,6 @@ class BP_Group_Extension {
 	 * @since BuddyPress (1.8.0)
 	 */
 	protected function setup_edit_hooks() {
-		// Bail if not in a group
-		if ( ! bp_is_group() ) {
-			return;
-		}
 
 		// Bail if not an edit screen
 		if ( ! $this->is_screen_enabled( 'edit' ) || ! bp_is_item_admin() ) {
@@ -3678,28 +3646,15 @@ class BP_Group_Extension {
 		$screen = $this->screens['edit'];
 
 		$position = isset( $screen['position'] ) ? (int) $screen['position'] : 10;
-		$position += 40;
 
-		$current_group = groups_get_current_group();
-		$admin_link = trailingslashit( bp_get_group_permalink( $current_group ) . 'admin' );
-
-		$subnav_args = array(
-			'name'            => $screen['name'],
-			'slug'            => $screen['slug'],
-			'parent_slug'     => $current_group->slug . '_manage',
-			'parent_url'      => trailingslashit( bp_get_group_permalink( $current_group ) . 'admin' ),
-			'user_has_access' => bp_is_item_admin(),
-			'position'        => $position,
-			'screen_function' => 'groups_screen_group_admin',
-		);
-
-		// Should we add a menu to the Group's WP Admin Bar
-		if ( ! empty( $screen['show_in_admin_bar'] ) ) {
-			$subnav_args['show_in_admin_bar'] = true;
-		}
-
-		// Add the tab to the manage navigation
-		bp_core_new_subnav_item( $subnav_args );
+		// Add the tab
+		// @todo BP should be using bp_core_new_subnav_item()
+		add_action( 'groups_admin_tabs', create_function( '$current, $group_slug',
+			'$selected = "";
+			if ( "' . esc_attr( $screen['slug'] ) . '" == $current )
+				$selected = " class=\"current\"";
+			echo "<li{$selected}><a href=\"' . trailingslashit( bp_get_root_domain() . '/' . bp_get_groups_root_slug() . '/{$group_slug}/admin/' . esc_attr( $screen['slug'] ) ) . '\">' . esc_attr( $screen['name'] ) . '</a></li>";'
+		), $position, 2 );
 
 		// Catch the edit screen and forward it to the plugin template
 		if ( bp_is_groups_component() && bp_is_current_action( 'admin' ) && bp_is_action_variable( $screen['slug'], 0 ) ) {

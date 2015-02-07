@@ -9,23 +9,19 @@
 		<p id="message-recipients">
 			<span class="highlight">
 
-				<?php if ( bp_get_thread_recipients_count() <= 1 ) : ?>
+				<?php if ( !bp_get_the_thread_recipients() ) : ?>
 
 					<?php _e( 'You are alone in this conversation.', 'buddypress' ); ?>
 
-				<?php elseif ( 5 <= bp_get_thread_recipients_count() ) : ?>
-
-					<?php printf( __( 'Conversation between %s recipients.', 'buddypress' ), number_format_i18n( bp_get_thread_recipients_count() ) ); ?>
-
 				<?php else : ?>
 
-					<?php printf( __( 'Conversation between %s and you.', 'buddypress' ), bp_get_thread_recipients_list() ); ?>
+					<?php printf( __( 'Conversation between %s and you.', 'buddypress' ), bp_get_the_thread_recipients() ); ?>
 
 				<?php endif; ?>
 
 			</span>
 
-			<a class="button confirm" href="<?php bp_the_thread_delete_link(); ?>" title="<?php esc_attr_e( "Delete Conversation", "buddypress" ); ?>"><?php _e( 'Delete', 'buddypress' ); ?></a>
+			<a class="button confirm" href="<?php bp_the_thread_delete_link(); ?>" title="<?php esc_attr_e( "Delete Message", "buddypress" ); ?>"><?php _e( 'Delete', 'buddypress' ); ?></a> &nbsp;
 		</p>
 
 		<?php do_action( 'bp_before_message_thread_list' ); ?>

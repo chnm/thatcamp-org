@@ -7,7 +7,7 @@
  */
 
 // Exit if accessed directly
-defined( 'ABSPATH' ) || exit;
+if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
  * Bootstrap bbPress 1.x, and manipulate globals to integrate with BuddyPress.
@@ -18,7 +18,7 @@ function bp_forums_load_bbpress() {
 	global $wpdb, $wp_roles, $current_user, $wp_users_object;
 	global $bb, $bbdb, $bb_table_prefix, $bb_current_user;
 	global $bb_roles, $wp_taxonomy_object, $bb_queries;
-
+	
 	// Return if we've already run this function.
 	if ( is_object( $bbdb ) )
 		return;
@@ -86,25 +86,8 @@ function bp_forums_load_bbpress() {
 		bb_init_roles( $bb_roles );
 	}
 
-	/**
-	 * Fires during the bootstrap setup for bbPress 1.x.
-	 *
-	 * @since BuddyPress (1.1.0)
-	 */
 	do_action( 'bb_got_roles' );
-
-	/**
-	 * Fires during the bootstrap setup for bbPress 1.x.
-	 *
-	 * @since BuddyPress (1.1.0)
-	 */
 	do_action( 'bb_init'      );
-
-	/**
-	 * Fires during the bootstrap setup for bbPress 1.x.
-	 *
-	 * @since BuddyPress (1.1.0)
-	 */
 	do_action( 'init_roles'   );
 
 	$bb_current_user = $current_user;
@@ -141,11 +124,6 @@ function bp_forums_load_bbpress() {
 		bb_update_option( 'uri', BB_URL );
 	}
 
-	/**
-	 * Fires inside an anonymous function that is run on bbPress shutdown.
-	 *
-	 * @since BuddyPress (1.1.0)
-	 */
 	register_shutdown_function( create_function( '', 'do_action("bb_shutdown");' ) );
 }
 add_action( 'bbpress_init', 'bp_forums_load_bbpress' );
@@ -193,7 +171,7 @@ class BP_Forums_BB_Auth {
  * bbPress needs the DB class to be BPDB, but we want to use WPDB, so we can extend it and use this.
  *
  * The class is pluggable, so that plugins that swap out WPDB with a custom
- * database class (such as HyperDB and ShareDB) can provide their own versions
+ * database class (such as HyperDB and SharDB) can provide their own versions
  * of BPDB which extend the appropriate base class.
  */
 if ( ! class_exists( 'BPDB' ) ) :
@@ -218,7 +196,7 @@ if ( ! class_exists( 'BPDB' ) ) :
 		/**
 		 * Determine if a database supports a particular feature.
 		 *
-		 * Overridden here to work around differences between bbPress's
+		 * Overriden here to work around differences between bbPress's
 		 * and WordPress's implementations. In particular, when
 		 * BuddyPress tries to run bbPress' SQL installation script,
 		 * the collation check always failed. The capability is long
@@ -361,7 +339,7 @@ function bp_bb_dbDelta($queries, $execute = true) {
 			if ( array_key_exists(strtolower($table), $cqueries) ) {
 				// Clear the field and index arrays
 				$cfields = $indices = array();
-				// Get all of the field names in the query from between the parents
+				// Get all of the field names in the query from between the parens
 				preg_match("|\((.*)\)|ms", $cqueries[strtolower($table)], $match2);
 				$qryline = trim($match2[1]);
 

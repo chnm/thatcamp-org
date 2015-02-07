@@ -7,7 +7,7 @@
  */
 
 // Exit if accessed directly
-defined( 'ABSPATH' ) || exit;
+if ( !defined( 'ABSPATH' ) ) exit;
 
 /** bbPress 2.x ***************************************************************/
 
@@ -79,8 +79,6 @@ function bp_forums_has_directory() {
  * @return object bbPress forum object.
  */
 function bp_forums_get_forum( $forum_id ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 	return bb_get_forum( $forum_id );
 }
@@ -102,8 +100,6 @@ function bp_forums_get_forum( $forum_id ) {
  * @return int ID of the newly created forum.
  */
 function bp_forums_new_forum( $args = '' ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	$r = wp_parse_args( $args, array(
@@ -133,11 +129,9 @@ function bp_forums_new_forum( $args = '' ) {
  *     @type bool $forum_order Order.
  *     @type int $forum_is_category Whether the forum is a category. Default: 0.
  * }
- * @return bool True on success, false on failure.
+ * @return bool Ttrue on success, false on failure.
  */
 function bp_forums_update_forum( $args = '' ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	$r = wp_parse_args( $args, array(
@@ -163,8 +157,6 @@ function bp_forums_delete_group_forum( $group_id ) {
 	$forum_id = groups_get_groupmeta( $group_id, 'forum_id' );
 
 	if ( !empty( $forum_id ) && is_int( $forum_id ) ) {
-
-		/** This action is documented in bp-forums/bp-forums-screens */
 		do_action( 'bbpress_init' );
 		bb_delete_forum( $forum_id );
 	}
@@ -196,8 +188,6 @@ add_action( 'groups_delete_group', 'bp_forums_delete_group_forum' );
  * @return array Found topics.
  */
 function bp_forums_get_forum_topics( $args = '' ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	$r = wp_parse_args( $args, array(
@@ -240,14 +230,6 @@ function bp_forums_get_forum_topics( $args = '' ) {
 		$topics = array();
 	}
 
-	/**
-	 * Filters the found forum topics for provided arguments.
-	 *
-	 * @since BuddyPress (1.1.0)
-	 *
-	 * @param array $topics Array of found topics. Passed by reference.
-	 * @param array $r      Array of parsed arguments for query. Passed by reference.
-	 */
 	return apply_filters_ref_array( 'bp_forums_get_forum_topics', array( &$topics, &$r ) );
 }
 
@@ -258,8 +240,6 @@ function bp_forums_get_forum_topics( $args = '' ) {
  * @return object Details about the topic.
  */
 function bp_forums_get_topic_details( $topic_id ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	$query = new BB_Query( 'topic', 'topic_id=' . $topic_id . '&page=1' /* Page override so bbPress doesn't use the URI */ );
@@ -276,8 +256,6 @@ function bp_forums_get_topic_details( $topic_id ) {
  * @return int|bool ID of the topic (if found), false on failure.
  */
 function bp_forums_get_topic_id_from_slug( $topic_slug ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	if ( empty( $topic_slug ) )
@@ -317,7 +295,6 @@ function bp_forums_get_topic_id_from_slug( $topic_slug ) {
 function bp_forums_new_topic( $args = '' ) {
 	global $bp;
 
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	$r = wp_parse_args( $args, array(
@@ -331,7 +308,7 @@ function bp_forums_new_topic( $args = '' ) {
 		'topic_start_time'       => bp_core_current_time(),
 		'topic_time'             => bp_core_current_time(),
 		'topic_open'             => 1,
-		'topic_tags'             => false, // accepts array or comma delimited
+		'topic_tags'             => false, // accepts array or comma delim
 		'forum_id'               => 0      // accepts ids or slugs
 	) );
 	extract( $r, EXTR_SKIP );
@@ -357,13 +334,6 @@ function bp_forums_new_topic( $args = '' ) {
 	if ( !bp_forums_insert_post( array( 'topic_id' => $topic_id, 'post_text' => $topic_text, 'post_time' => $topic_time, 'poster_id' => $topic_poster ) ) )
 		return false;
 
-	/**
-	 * Fires after a new forum topic has been created.
-	 *
-	 * @since BuddyPress (1.0.0)
-	 *
-	 * @param int $topic_id ID of the newly created topic post.
-	 */
 	do_action( 'bp_forums_new_topic', $topic_id );
 
 	return $topic_id;
@@ -384,8 +354,6 @@ function bp_forums_new_topic( $args = '' ) {
  *         {@link bp_forums_get_topic_details()}.
  */
 function bp_forums_update_topic( $args = '' ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	$r = wp_parse_args( $args, array(
@@ -417,8 +385,6 @@ function bp_forums_update_topic( $args = '' ) {
 }
 
 function bp_forums_sticky_topic( $args = '' ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	$r = wp_parse_args( $args, array(
@@ -446,8 +412,6 @@ function bp_forums_sticky_topic( $args = '' ) {
  * @return bool True on success, false on failure.
  */
 function bp_forums_openclose_topic( $args = '' ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	$r = wp_parse_args( $args, array(
@@ -473,8 +437,6 @@ function bp_forums_openclose_topic( $args = '' ) {
  * @return bool True on success, false on failure.
  */
 function bp_forums_delete_topic( $args = '' ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	$r = wp_parse_args( $args, array(
@@ -493,7 +455,6 @@ function bp_forums_delete_topic( $args = '' ) {
 function bp_forums_total_topic_count() {
 	global $bbdb;
 
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	if ( isset( $bbdb ) ) {
@@ -510,13 +471,6 @@ function bp_forums_total_topic_count() {
 		$count = 0;
 	}
 
-	/**
-	 * Filters the total topic count for the site.
-	 *
-	 * @since BuddyPress (1.5.0)
-	 *
-	 * @param int $count Total topic count.
-	 */
 	return apply_filters( 'bp_forums_total_topic_count', $count );
 }
 
@@ -537,8 +491,6 @@ function bp_forums_reply_exists( $text = '', $topic_id = 0, $user_id = 0 ) {
 	$reply_exists = false;
 
 	if ( $text && $topic_id && $user_id ) {
-
-		/** This action is documented in bp-forums/bp-forums-screens */
 		do_action( 'bbpress_init' );
 
 		$args = array(
@@ -560,16 +512,6 @@ function bp_forums_reply_exists( $text = '', $topic_id = 0, $user_id = 0 ) {
 		$reply_exists = (bool) !empty( $query->results );
 	}
 
-	/**
-	 * Filters whether a user has already left this particular reply on a given post.
-	 *
-	 * @since BuddyPress (1.6.0)
-	 *
-	 * @param bool   $reply_exists Whether or not a reply exists.
-	 * @param string $text         The text of the comment.
-	 * @param int    $topic_id     The topic ID.
-	 * @param int    $user_id      The user ID.
-	 */
 	return (bool) apply_filters( 'bp_forums_reply_exists', $reply_exists, $text, $topic_id, $user_id );
 }
 	/**
@@ -597,8 +539,6 @@ function bp_forums_reply_exists( $text = '', $topic_id = 0, $user_id = 0 ) {
  * @return int $count The topic count.
  */
 function bp_forums_total_topic_count_for_user( $user_id = 0, $type = 'active' ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	if ( !$user_id )
@@ -638,8 +578,6 @@ function bp_forums_total_topic_count_for_user( $user_id = 0, $type = 'active' ) 
  * @return int $count Topic count.
  */
 function bp_forums_total_replied_count_for_user( $user_id = 0, $type = 'active' ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	if ( !$user_id )
@@ -671,14 +609,6 @@ function bp_forums_total_replied_count_for_user( $user_id = 0, $type = 'active' 
 		$count = 0;
 	}
 
-	/**
-	 * Filters the total number of topics replied to by a given user.
-	 *
-	 * @since BuddyPress (1.5.0)
-	 *
-	 * @param int $count   Total number of topics replied to by a given user.
-	 * @param int $user_id The user ID.
-	 */
 	return apply_filters( 'bp_forums_total_replied_count_for_user', $count, $user_id );
 }
 
@@ -763,8 +693,6 @@ function bp_forums_get_topic_extras( $topics ) {
  * @return array List of posts.
  */
 function bp_forums_get_topic_posts( $args = '' ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	$defaults = array(
@@ -789,8 +717,6 @@ function bp_forums_get_topic_posts( $args = '' ) {
  * @return object Post object.
  */
 function bp_forums_get_post( $post_id ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 	return bb_get_post( $post_id );
 }
@@ -806,8 +732,6 @@ function bp_forums_get_post( $post_id ) {
  * @return bool True on success, false on failure.
  */
 function bp_forums_delete_post( $args = '' ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	$r = wp_parse_args( $args, array(
@@ -839,8 +763,6 @@ function bp_forums_delete_post( $args = '' ) {
  * @return int|bool ID of the new post on success, false on failure.
  */
 function bp_forums_insert_post( $args = '' ) {
-
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	$defaults = array(
@@ -880,17 +802,8 @@ function bp_forums_insert_post( $args = '' ) {
 
 	$post_id = bb_insert_post( array( 'post_id' => $post_id, 'topic_id' => $topic_id, 'post_text' => stripslashes( trim( $post_text ) ), 'post_time' => $post_time, 'poster_id' => $poster_id, 'poster_ip' => $poster_ip, 'post_status' => $post_status, 'post_position' => $post_position ) );
 
-	if ( !empty( $post_id ) ) {
-
-		/**
-		 * Fires if there was a new post created.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param int $post_id ID of the newly created forum post.
-		 */
+	if ( !empty( $post_id ) )
 		do_action( 'bp_forums_new_post', $post_id );
-	}
 
 	return $post_id;
 }
@@ -940,13 +853,6 @@ function bp_forums_get_post_extras( $posts ) {
 		}
 	}
 
-	/**
-	 * Filters BP-specific details about a set of posts.
-	 *
-	 * @since BuddyPress (1.5.0)
-	 *
-	 * @param array $posts Array of posts holding BP-specific details.
-	 */
 	return apply_filters( 'bp_forums_get_post_extras', $posts );
 }
 
@@ -960,7 +866,6 @@ function bp_forums_get_post_extras( $posts ) {
 function bp_forums_get_forum_topicpost_count( $forum_id ) {
 	global $wpdb, $bbdb;
 
-	/** This action is documented in bp-forums/bp-forums-screens */
 	do_action( 'bbpress_init' );
 
 	// Need to find a bbPress function that does this
@@ -1000,14 +905,6 @@ add_filter( 'user_has_cap', 'bp_forums_filter_caps' );
  * @return int Forum ID.
  */
 function bp_forums_parent_forum_id() {
-
-	/**
-	 * Filters the parent forum ID for the bbPress abstraction layer.
-	 *
-	 * @since BuddyPress (1.5.0)
-	 *
-	 * @param int BP_FORUMS_PARENT_FORUM_ID The Parent forum ID constant.
-	 */
 	return apply_filters( 'bp_forums_parent_forum_id', BP_FORUMS_PARENT_FORUM_ID );
 }
 
@@ -1023,14 +920,6 @@ function bp_forums_parent_forum_id() {
  *         directory, otherwise false.
  */
 function bp_forums_enable_global_directory_stickies() {
-
-	/**
-	 * Filters whether or not sticky topics should be broken out of regular topic order.
-	 *
-	 * @since BuddyPress (1.5.0)
-	 *
-	 * @param bool $value Whether or not to break out of topic order.
-	 */
 	return apply_filters( 'bp_forums_enable_global_directory_stickies', defined( 'BP_FORUMS_ENABLE_GLOBAL_DIRECTORY_STICKIES' ) && BP_FORUMS_ENABLE_GLOBAL_DIRECTORY_STICKIES );
 }
 
@@ -1075,7 +964,7 @@ add_action( 'topic_loop_start', 'bp_forums_embed' );
  * Wrapper function for {@link bb_get_postmeta()}.
  *
  * @package BuddyPress_Forums
- * @since BuddyPress (1.5.0)
+ * @since BuddyPress (1.5)
  */
 function bp_embed_forum_cache( $cache, $id, $cachekey ) {
 	return bb_get_postmeta( $id, $cachekey );

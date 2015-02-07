@@ -11,7 +11,7 @@
  */
 
 // Exit if accessed directly
-defined( 'ABSPATH' ) || exit;
+if ( !defined( 'ABSPATH' ) ) exit;
 
 /** Emails ********************************************************************/
 
@@ -56,51 +56,13 @@ To view %3$s\'s profile: %4$s
 		$message .= sprintf( __( 'To disable these notifications please log in and go to: %s', 'buddypress' ), $settings_link );
 	}
 
-	/**
-	 * Filters the email address for who is getting the friend request.
-	 *
-	 * @since BuddyPress (1.2.0)
-	 *
-	 * @param string $to Email address for who is getting the friend request.
-	 */
+	// Send the message
 	$to      = apply_filters( 'friends_notification_new_request_to', $to );
-
-	/**
-	 * Filters the subject for the friend request email.
-	 *
-	 * @since BuddyPress (1.2.0)
-	 *
-	 * @param string $subject Subject line to be used in friend request email.
-	 * @param string $initiator_name Name of the person requesting friendship.
-	 */
 	$subject = apply_filters( 'friends_notification_new_request_subject', $subject, $initiator_name );
-
-	/**
-	 * Filters the message for the friend request email.
-	 *
-	 * @since BuddyPress (1.2.0)
-	 *
-	 * @param string $message Message to be used in friend request email.
-	 * @param string $initiator_name Name of the person requesting friendship.
-	 * @param string $initiator_link Profile link of person requesting friendship.
-	 * @param string $all_requests_link User's friends request management link.
-	 * @param string $settings_link Email recipient's settings management link.
-	 */
 	$message = apply_filters( 'friends_notification_new_request_message', $message, $initiator_name, $initiator_link, $all_requests_link, $settings_link );
 
 	wp_mail( $to, $subject, $message );
 
-	/**
-	 * Fires after the new friend request email is sent.
-	 *
-	 * @since BuddyPress (1.5.0)
-	 *
-	 * @param int    $friend_id ID of the request recipient.
-	 * @param string $subject Text for the friend request subject field.
-	 * @param string $message Text for the friend request message field.
-	 * @param int    $friendship_id ID of the friendship object.
-	 * @param int    $initiator_id ID of the friendship requester.
-	 */
 	do_action( 'bp_friends_sent_request_email', $friend_id, $subject, $message, $friendship_id, $initiator_id );
 }
 add_action( 'friends_friendship_requested', 'friends_notification_new_request', 10, 3 );
@@ -143,50 +105,13 @@ To view %2$s\'s profile: %3$s
 		$message .= sprintf( __( 'To disable these notifications please log in and go to: %s', 'buddypress' ), $settings_link );
 	}
 
-	/**
-	 * Filters the email address for whose friend request got accepted.
-	 *
-	 * @since BuddyPress (1.2.0)
-	 *
-	 * @param string $to Email address for whose friend request got accepted.
-	 */
+	// Send the message
 	$to      = apply_filters( 'friends_notification_accepted_request_to', $to );
-
-	/**
-	 * Filters the subject for the friend request accepted email.
-	 *
-	 * @since BuddyPress (1.2.0)
-	 *
-	 * @param string $subject Subject line to be used in friend request accepted email.
-	 * @param string $friend_name Name of the person who accepted the friendship request.
-	 */
 	$subject = apply_filters( 'friends_notification_accepted_request_subject', $subject, $friend_name );
-
-	/**
-	 * Filters the message for the friend request accepted email.
-	 *
-	 * @since BuddyPress (1.2.0)
-	 *
-	 * @param string $message Message to be used in friend request email.
-	 * @param string $friend_name Name of the person who accepted the friendship request.
-	 * @param string $friend_link Profile link of person who accepted the friendship request.
-	 * @param string $settings_link Email recipient's settings management link.
-	 */
 	$message = apply_filters( 'friends_notification_accepted_request_message', $message, $friend_name, $friend_link, $settings_link );
 
 	wp_mail( $to, $subject, $message );
 
-	/**
-	 * Fires after the friend request accepted email is sent.
-	 *
-	 * @since BuddyPress (1.5.0)
-	 *
-	 * @param int    $initiator_id ID of the friendship requester.
-	 * @param string $subject Text for the friend request subject field.
-	 * @param string $message Text for the friend request message field.
-	 * @param int    $friendship_id ID of the friendship object.
-	 * @param int    $friend_id ID of the request recipient.
-	 */
 	do_action( 'bp_friends_sent_accepted_email', $initiator_id, $subject, $message, $friendship_id, $friend_id );
 }
 add_action( 'friends_friendship_accepted', 'friends_notification_accepted_request', 10, 3 );
@@ -211,16 +136,13 @@ function friends_format_notifications( $action, $item_id, $secondary_item_id, $t
 		case 'friendship_accepted':
 			$link = trailingslashit( bp_loggedin_user_domain() . bp_get_friends_slug() . '/my-friends' );
 
-			// $action and $amount are used to generate dynamic filter names.
-			$action = 'accepted';
-
 			// Set up the string and the filter
 			if ( (int) $total_items > 1 ) {
 				$text = sprintf( __( '%d friends accepted your friendship requests', 'buddypress' ), (int) $total_items );
-				$amount = 'multiple';
+				$filter = 'bp_friends_multiple_friendship_accepted_notification';
 			} else {
 				$text = sprintf( __( '%s accepted your friendship request', 'buddypress' ),  bp_core_get_user_displayname( $item_id ) );
-				$amount = 'single';
+				$filter = 'bp_friends_single_friendship_accepted_notification';
 			}
 
 			break;
@@ -228,15 +150,13 @@ function friends_format_notifications( $action, $item_id, $secondary_item_id, $t
 		case 'friendship_request':
 			$link = bp_loggedin_user_domain() . bp_get_friends_slug() . '/requests/?new';
 
-			$action = 'request';
-
 			// Set up the string and the filter
 			if ( (int) $total_items > 1 ) {
 				$text = sprintf( __( 'You have %d pending friendship requests', 'buddypress' ), (int) $total_items );
-				$amount = 'multiple';
+				$filter = 'bp_friends_multiple_friendship_request_notification';
 			} else {
 				$text = sprintf( __( 'You have a friendship request from %s', 'buddypress' ),  bp_core_get_user_displayname( $item_id ) );
-				$amount = 'single';
+				$filter = 'bp_friends_single_friendship_request_notification';
 			}
 
 			break;
@@ -244,46 +164,14 @@ function friends_format_notifications( $action, $item_id, $secondary_item_id, $t
 
 	// Return either an HTML link or an array, depending on the requested format
 	if ( 'string' == $format ) {
-
-		/**
-		 * Filters the format of friendship notifications based on type and amount * of notifications pending.
-		 *
-		 * This is a variable filter that has four possible versions.
-		 * The four possible versions are:
-		 *   - bp_friends_single_friendship_accepted_notification
-		 *   - bp_friends_multiple_friendship_accepted_notification
-		 *   - bp_friends_single_friendship_request_notification
-		 *   - bp_friends_multiple_friendship_request_notification
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string|array $value       Depending on format, an HTML link to new requests profile
-		 *                                  tab or array with link and text.
-		 * @param int          $total_items The total number of messaging-related notifications
-		 *                                  waiting for the user.
-		 * @param int          $item_id     The primary item ID.
-		 */
-		$return = apply_filters( 'bp_friends_' . $amount . '_friendship_' . $action . '_notification', '<a href="' . esc_url( $link ) . '">' . esc_html( $text ) . '</a>', (int) $total_items, $item_id );
+		$return = apply_filters( $filter, '<a href="' . esc_url( $link ) . '">' . esc_html( $text ) . '</a>', (int) $total_items, $item_id );
 	} else {
-		/** This filter is documented in bp-friends/bp-friends-notifications.php */
-		$return = apply_filters( 'bp_friends_' . $amount . '_friendship_' . $action . '_notification', array(
+		$return = apply_filters( $filter, array(
 			'link' => $link,
 			'text' => $text
 		), (int) $total_items, $item_id );
 	}
 
-	/**
-	 * Fires at the end of the bp-friends notification format callback.
-	 *
-	 * @since BuddyPress (1.0.0)
-	 *
-	 * @param string       $action            The kind of notification being rendered.
-	 * @param int          $item_id           The primary item ID.
-	 * @param int          $secondary_item_id The secondary item ID.
-	 * @param int          $total_items       The total number of messaging-related notifications
-	 *                                        waiting for the user.
-	 * @param array|string $return            Notification text string or array of link and text.
-	 */
 	do_action( 'friends_format_notifications', $action, $item_id, $secondary_item_id, $total_items, $return );
 
 	return $return;
@@ -329,7 +217,7 @@ add_action( 'friends_screen_my_friends', 'bp_friends_mark_friendship_accepted_no
  * @since BuddyPress (1.9.0)
  * @param int $friendship_id The unique ID of the friendship
  * @param int $initiator_user_id The friendship initiator user ID
- * @param int $friend_user_id The friendship request receiver user ID
+ * @param int $friend_user_id The friendship request reciever user ID
  */
 function bp_friends_friendship_requested_notification( $friendship_id, $initiator_user_id, $friend_user_id ) {
 	if ( bp_is_active( 'notifications' ) ) {
@@ -367,7 +255,7 @@ add_action( 'friends_friendship_rejected', 'bp_friends_mark_friendship_rejected_
  * @since BuddyPress (1.9.0)
  * @param int $friendship_id The unique ID of the friendship
  * @param int $initiator_user_id The friendship initiator user ID
- * @param int $friend_user_id The friendship request receiver user ID
+ * @param int $friend_user_id The friendship request reciever user ID
  */
 function bp_friends_add_friendship_accepted_notification( $friendship_id, $initiator_user_id, $friend_user_id ) {
 

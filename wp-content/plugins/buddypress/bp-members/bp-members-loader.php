@@ -8,19 +8,9 @@
  */
 
 // Exit if accessed directly
-defined( 'ABSPATH' ) || exit;
+if ( !defined( 'ABSPATH' ) ) exit;
 
 class BP_Members_Component extends BP_Component {
-	/**
-	 * Member types.
-	 *
-	 * @see bp_register_member_type()
-	 *
-	 * @access public
-	 * @since  BuddyPress (2.2.0)
-	 * @var    array
-	 */
-	public $types = array();
 
 	/**
 	 * Start the members component creation process.
@@ -55,14 +45,8 @@ class BP_Members_Component extends BP_Component {
 			'screens',
 			'template',
 			'adminbar',
-			'functions',
-			'widgets',
-			'cache',
+			'functions'
 		);
-
-		if ( bp_is_active( 'activity' ) ) {
-			$includes[] = 'activity';
-		}
 
 		// Include these only if in admin
 		if ( is_admin() ) {
@@ -120,7 +104,7 @@ class BP_Members_Component extends BP_Component {
 		// Hits the DB on single WP installs so get this separately
 		$bp->loggedin_user->is_super_admin = $bp->loggedin_user->is_site_admin = is_super_admin( bp_loggedin_user_id() );
 
-		// The domain for the user currently logged in. eg: http://example.com/members/andy
+		// The domain for the user currently logged in. eg: http://domain.com/members/andy
 		$bp->loggedin_user->domain         = bp_core_get_user_domain( bp_loggedin_user_id() );
 
 		/** Displayed user ****************************************************/
@@ -276,21 +260,6 @@ class BP_Members_Component extends BP_Component {
 		}
 
 		parent::setup_title();
-	}
-
-	/**
-	 * Setup cache groups
-	 *
-	 * @since BuddyPress (2.2.0)
-	 */
-	public function setup_cache_groups() {
-
-		// Global groups
-		wp_cache_add_global_groups( array(
-			'bp_member_type'
-		) );
-
-		parent::setup_cache_groups();
 	}
 }
 

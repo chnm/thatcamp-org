@@ -8,7 +8,7 @@
  */
 
 // Exit if accessed directly
-defined( 'ABSPATH' ) || exit;
+if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
  * Message Box Template Class
@@ -114,65 +114,34 @@ class BP_Messages_Box_Template {
 	/**
 	 * Constructor method.
 	 *
-	 * @param array $args {
-	 *     Array of arguments. See bp_has_message_threads() for full description.
-	 * }
+	 * @param int $user_id ID of the user whose Messages box is being
+	 *        viewed.
+	 * @param string $box Type of box being viewed ('notices', 'sentbox',
+	 *        'inbox').
+	 * @param int $per_page Number of thread to return per page of results.
+	 * @param int $max Max number of results to return.
+	 * @param string $type Type of results to return. 'unread', 'read',
+	 *        or 'all'.
+	 * @param string $search_terms Search terms for limiting results.
+	 * @param string $page_arg Optional. URL argument for pagination
+	 *        parameter. Default: 'mpage'.
 	 */
-	public function __construct( $args = array() ) {
+	public function __construct( $user_id, $box, $per_page, $max, $type, $search_terms, $page_arg = 'mpage' ) {
+		$this->pag_page = isset( $_GET[$page_arg] ) ? intval( $_GET[$page_arg] ) : 1;
+		$this->pag_num  = isset( $_GET['num'] )   ? intval( $_GET['num'] )   : $per_page;
 
-		// Backward compatibility with old method of passing arguments
-		if ( ! is_array( $args ) || func_num_args() > 1 ) {
-			_deprecated_argument( __METHOD__, '2.2.0', sprintf( __( 'Arguments passed to %1$s should be in an associative array. See the inline documentation at %2$s for more details.', 'buddypress' ), __METHOD__, __FILE__ ) );
+		$this->user_id      = $user_id;
+		$this->box          = $box;
+		$this->type         = $type;
+		$this->search_terms = $search_terms;
 
-			$old_args_keys = array(
-				0 => 'user_id',
-				1 => 'box',
-				2 => 'per_page',
-				3 => 'max',
-				4 => 'type',
-				5 => 'search_terms',
-				6 => 'page_arg'
-			);
-
-			$func_args = func_get_args();
-			$args      = bp_core_parse_args_array( $old_args_keys, $func_args );
-		}
-
-		$r = wp_parse_args( $args, array(
-			'page'         => 1,
-			'per_page'     => 10,
-			'page_arg'     => 'mpage',
-			'box'          => 'inbox',
-			'type'         => 'all',
-			'user_id'      => bp_loggedin_user_id(),
-			'max'          => false,
-			'search_terms' => '',
-			'meta_query'   => array(),
-		) );
-
-		$this->pag_arg      = sanitize_key( $r['page_arg'] );
-		$this->pag_page     = bp_sanitize_pagination_arg( $this->pag_arg, $r['page']     );
-		$this->pag_num      = bp_sanitize_pagination_arg( 'num',          $r['per_page'] );
-		$this->user_id      = $r['user_id'];
-		$this->box          = $r['box'];
-		$this->type         = $r['type'];
-		$this->search_terms = $r['search_terms'];
-
-		if ( 'notices' === $this->box ) {
+		if ( 'notices' == $this->box ) {
 			$this->threads = BP_Messages_Notice::get_notices( array(
 				'pag_num'  => $this->pag_num,
 				'pag_page' => $this->pag_page
 			) );
 		} else {
-			$threads = BP_Messages_Thread::get_current_threads_for_user( array(
-				'user_id'      => $this->user_id,
-				'box'          => $this->box,
-				'type'         => $this->type,
-				'limit'        => $this->pag_num,
-				'page'         => $this->pag_page,
-				'search_terms' => $this->search_terms,
-				'meta_query'   => $r['meta_query'],
-			) );
+			$threads = BP_Messages_Thread::get_current_threads_for_user( $this->user_id, $this->box, $this->type, $this->pag_num, $this->pag_page, $this->search_terms );
 
 			$this->threads            = $threads['threads'];
 			$this->total_thread_count = $threads['total'];
@@ -184,19 +153,19 @@ class BP_Messages_Box_Template {
 		} else {
 			$total_notice_count = BP_Messages_Notice::get_total_notice_count();
 
-			if ( empty( $r['max'] ) || ( (int) $r['max'] >= (int) $total_notice_count ) ) {
-				if ( 'notices' === $this->box ) {
+			if ( !$max || $max >= (int) $total_notice_count ) {
+				if ( 'notices' == $this->box ) {
 					$this->total_thread_count = (int) $total_notice_count;
 				}
 			} else {
-				$this->total_thread_count = (int) $r['max'];
+				$this->total_thread_count = (int) $max;
 			}
 
-			if ( ! empty( $r['max'] ) ) {
-				if ( (int) $r['max'] >= count( $this->threads ) ) {
+			if ( $max ) {
+				if ( $max >= count( $this->threads ) ) {
 					$this->thread_count = count( $this->threads );
 				} else {
-					$this->thread_count = (int) $r['max'];
+					$this->thread_count = (int) $max;
 				}
 			} else {
 				$this->thread_count = count( $this->threads );
@@ -205,7 +174,7 @@ class BP_Messages_Box_Template {
 
 		if ( (int) $this->total_thread_count && (int) $this->pag_num ) {
 			$pag_args = array(
-				$r['page_arg'] => '%#%',
+				$page_arg => '%#%',
 			);
 
 			if ( defined( 'DOING_AJAX' ) && true === (bool) DOING_AJAX ) {
@@ -214,10 +183,8 @@ class BP_Messages_Box_Template {
 				$base = '';
 			}
 
-			$add_args = array();
-
 			if ( ! empty( $this->search_terms ) ) {
-				$add_args['s'] = $this->search_terms;
+				$pag_args['s'] = $this->search_terms;
 			}
 
 			$this->pag_links = paginate_links( array(
@@ -227,8 +194,7 @@ class BP_Messages_Box_Template {
 				'current'   => $this->pag_page,
 				'prev_text' => _x( '&larr;', 'Message pagination previous text', 'buddypress' ),
 				'next_text' => _x( '&rarr;', 'Message pagination next text', 'buddypress' ),
-				'mid_size'  => 1,
-				'add_args'  => $add_args,
+				'mid_size'  => 1
 			) );
 		}
 	}
@@ -285,13 +251,7 @@ class BP_Messages_Box_Template {
 		if ( $this->current_thread + 1 < $this->thread_count ) {
 			return true;
 		} elseif ( $this->current_thread + 1 == $this->thread_count ) {
-
-			/**
-			 * Fires when at the end of threads to iterate over.
-			 *
-			 * @since BuddyPress (1.5.0)
-			 */
-			do_action( 'messages_box_loop_end' );
+			do_action('messages_box_loop_end');
 			// Do some cleaning up after the loop
 			$this->rewind_threads();
 		}
@@ -347,12 +307,6 @@ class BP_Messages_Box_Template {
 
 		// loop has just started
 		if ( 0 == $this->current_thread ) {
-
-			/**
-			 * Fires if at the start of the message thread loop.
-			 *
-			 * @since BuddyPress (1.5.0)
-			 */
 			do_action( 'messages_box_loop_start' );
 		}
 	}
@@ -381,8 +335,6 @@ class BP_Messages_Box_Template {
  *           the value of $_REQUEST['s'].
  *     @type string $page_arg URL argument used for the pagination param.
  *           Default: 'mpage'.
- *     @type array $meta_query Meta query arguments. Only applicable if $box is
- *           not 'notices'. See WP_Meta_Query more details.
  * }
  * @return bool True if there are threads to display, otherwise false.
  */
@@ -407,7 +359,6 @@ function bp_has_message_threads( $args = '' ) {
 		'type'         => 'all',
 		'search_terms' => isset( $_REQUEST['s'] ) ? stripslashes( $_REQUEST['s'] ) : '',
 		'page_arg'     => 'mpage', // See https://buddypress.trac.wordpress.org/ticket/3679
-		'meta_query'   => array()
 	), 'has_message_threads' );
 
 	// If trying to access notices without capabilities, redirect to root domain
@@ -416,17 +367,16 @@ function bp_has_message_threads( $args = '' ) {
 	}
 
 	// Load the messages loop global up with messages
-	$messages_template = new BP_Messages_Box_Template( $r );
+	$messages_template = new BP_Messages_Box_Template(
+		$r['user_id'],
+		$r['box'],
+		$r['per_page'],
+		$r['max'],
+		$r['type'],
+		$r['search_terms'],
+		$r['page_arg']
+	);
 
-	/**
-	 * Filters if there are any message threads to display in inbox/sentbox/notices.
-	 *
-	 * @since BuddyPress (1.1.0)
-	 *
-	 * @param bool                     $value             Whether or not the message has threads.
-	 * @param BP_Messages_Box_Template $messages_template Current message box template object.
-	 * @param array                    $r                 Array of parsed arguments passed into function.
-	 */
 	return apply_filters( 'bp_has_message_threads', $messages_template->has_threads(), $messages_template, $r );
 }
 
@@ -464,13 +414,6 @@ function bp_message_thread_id() {
 	function bp_get_message_thread_id() {
 		global $messages_template;
 
-		/**
-		 * Filters the ID of the current thread in the loop.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param int $thread_id ID of the current thread in the loop.
-		 */
 		return apply_filters( 'bp_get_message_thread_id', $messages_template->thread->thread_id );
 	}
 
@@ -488,13 +431,6 @@ function bp_message_thread_subject() {
 	function bp_get_message_thread_subject() {
 		global $messages_template;
 
-		/**
-		 * Filters the subject of the current thread in the loop.
-		 *
-		 * @since BuddyPress (1.1.0)
-		 *
-		 * @param string $value Subject of the current thread in the loop.
-		 */
 		return apply_filters( 'bp_get_message_thread_subject', stripslashes_deep( $messages_template->thread->last_message_subject ) );
 	}
 
@@ -512,13 +448,6 @@ function bp_message_thread_excerpt() {
 	function bp_get_message_thread_excerpt() {
 		global $messages_template;
 
-		/**
-		 * Filters the excerpt of the current thread in the loop.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $value Excerpt of the current thread in the loop.
-		 */
 		return apply_filters( 'bp_get_message_thread_excerpt', strip_tags( bp_create_excerpt( $messages_template->thread->last_message_content, 75 ) ) );
 	}
 
@@ -551,13 +480,6 @@ function bp_message_thread_content() {
 	function bp_get_message_thread_content() {
 		global $messages_template;
 
-		/**
-		 * Filters the content of the last message in the thread.
-		 *
-		 * @since BuddyPress (2.0.0)
-		 *
-		 * @param string $last_message_content Content of the last message in the thread.
-		 */
 		return apply_filters( 'bp_get_message_thread_content', $messages_template->thread->last_message_content );
 	}
 
@@ -575,13 +497,6 @@ function bp_message_thread_from() {
 	function bp_get_message_thread_from() {
 		global $messages_template;
 
-		/**
-		 * Filters the link to the page of the current thread's last author.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $value Link to the page of the current thread's last author.
-		 */
 		return apply_filters( 'bp_get_message_thread_from', bp_core_get_userlink( $messages_template->thread->last_sender_id ) );
 	}
 
@@ -598,14 +513,6 @@ function bp_message_thread_to() {
 	 */
 	function bp_get_message_thread_to() {
 		global $messages_template;
-
-		/**
-		 * Filters the HTML links to the pages of the current thread's recipients.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $value HTML links to the pages of the current thread's recipients.
-		 */
 		return apply_filters( 'bp_message_thread_to', BP_Messages_Thread::get_recipient_links($messages_template->thread->recipients ) );
 	}
 
@@ -634,13 +541,6 @@ function bp_message_thread_view_link( $thread_id = 0 ) {
 			$thread_id = $messages_template->thread->thread_id;
 		}
 
-		/**
-		 * Filters the permalink of a particular thread.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $value permalink of a particular thread.
-		 */
 		return apply_filters( 'bp_get_message_thread_view_link', trailingslashit( bp_loggedin_user_domain() . bp_get_messages_slug() . '/view/' . $thread_id ) );
 	}
 
@@ -657,110 +557,7 @@ function bp_message_thread_delete_link() {
 	 */
 	function bp_get_message_thread_delete_link() {
 		global $messages_template;
-
-		/**
-		 * Filters the URL for deleting the current thread.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $value URL for deleting the current thread.
-		 * @param string $value Text indicating action being executed.
-		 */
 		return apply_filters( 'bp_get_message_thread_delete_link', wp_nonce_url( trailingslashit( bp_loggedin_user_domain() . bp_get_messages_slug() . '/' . bp_current_action() . '/delete/' . $messages_template->thread->thread_id ), 'messages_delete_thread' ) );
-	}
-
-/**
- * Output the URL used for marking a single message thread as unread.
- *
- * Since this function directly outputs a URL, it is escaped.
- *
- * @since BuddyPress (2.2.0)
- */
-function bp_the_message_thread_mark_unread_url() {
-	echo esc_url( bp_get_the_message_thread_mark_unread_url() );
-}
-	/**
-	 * Return the URL used for marking a single message thread as unread.
-	 *
-	 * @since BuddyPress (2.2.0)
-	 *
-	 * @return string
-	 */
-	function bp_get_the_message_thread_mark_unread_url() {
-
-		// Get the message ID.
-		$id = bp_get_message_thread_id();
-
-		// Get the args to add to the URL.
-		$args = array(
-			'action'     => 'unread',
-			'message_id' => $id
-		);
-
-		// Base unread URL.
-		$url = trailingslashit( bp_loggedin_user_domain() . bp_get_messages_slug() . '/' . bp_current_action() . '/unread' );
-
-		// Add the args to the URL.
-		$url = add_query_arg( $args, $url );
-
-		// Add the nonce.
-		$url = wp_nonce_url( $url, 'bp_message_thread_mark_unread_' . $id );
-
-		/**
-		 * Filters the URL used for marking a single message thread as unread.
-		 *
-		 * @since BuddyPress (2.2.0)
-		 *
-		 * @param string $url URL used for marking a single message thread as unread.
-		 */
-		return apply_filters( 'bp_get_the_message_thread_mark_unread_url', $url );
-	}
-
-/**
- * Output the URL used for marking a single message thread as read.
- *
- * Since this function directly outputs a URL, it is escaped.
- *
- * @since BuddyPress (2.2.0)
- */
-function bp_the_message_thread_mark_read_url() {
-	echo esc_url( bp_get_the_message_thread_mark_read_url() );
-}
-	/**
-	 * Return the URL used for marking a single message thread as read
-	 *
-	 * @since BuddyPress (2.2.0)
-	 *
-	 * @return string
-	 */
-	function bp_get_the_message_thread_mark_read_url() {
-
-		// Get the message ID.
-		$id = bp_get_message_thread_id();
-
-		// Get the args to add to the URL.
-		$args = array(
-			'action'     => 'read',
-			'message_id' => $id
-		);
-
-		// Base read URL.
-		$url = trailingslashit( bp_loggedin_user_domain() . bp_get_messages_slug() . '/' . bp_current_action() . '/read' );
-
-		// Add the args to the URL.
-		$url = add_query_arg( $args, $url );
-
-		// Add the nonce.
-		$url = wp_nonce_url( $url, 'bp_message_thread_mark_read_' . $id );
-
-		/**
-		 * Filters the URL used for marking a single message thread as read.
-		 *
-		 * @since BuddyPress (2.2.0)
-		 *
-		 * @param string $url URL used for marking a single message thread as read.
-		 */
-		return apply_filters( 'bp_get_the_message_thread_mark_read_url', $url );
 	}
 
 /**
@@ -783,13 +580,6 @@ function bp_message_css_class() {
 			$class .= 'alt';
 		}
 
-		/**
-		 * Filters the CSS class for the current thread.
-		 *
-		 * @since BuddyPress (1.2.10)
-		 *
-		 * @param string $class Class string to be added to the list of classes.
-		 */
 		return apply_filters( 'bp_get_message_css_class', trim( $class ) );
 	}
 
@@ -805,13 +595,6 @@ function bp_message_thread_has_unread() {
 		? true
 		: false;
 
-	/**
-	 * Filters whether or not a message thread has unread items.
-	 *
-	 * @since BuddyPress (2.1.0)
-	 *
-	 * @param bool $retval Whether or not a message thread has unread items.
-	 */
 	return apply_filters( 'bp_message_thread_has_unread', $retval );
 }
 
@@ -833,88 +616,7 @@ function bp_message_thread_unread_count() {
 			? (int) $messages_template->thread->unread_count
 			: false;
 
-		/**
-		 * Filters the current thread's unread count.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param int $count Current thread unread count.
-		 */
 		return apply_filters( 'bp_get_message_thread_unread_count', $count );
-	}
-
-/**
- * Output a thread's total message count.
- *
- * @since BuddyPress (2.2.0)
- *
- * @param int $thread_id Optional. ID of the thread. Defaults to current thread ID.
- */
-function bp_message_thread_total_count( $thread_id = false ) {
-	echo bp_get_message_thread_total_count( $thread_id );
-}
-	/**
-	 * Get the current thread's total message count.
-	 *
-	 * @since BuddyPress (2.2.0)
-	 *
-	 * @param int $thread_id Optional. ID of the thread. Defaults to
-	 *        current thread ID.
-	 * @return int
-	 */
-	function bp_get_message_thread_total_count( $thread_id = false ) {
-		if ( false === $thread_id ) {
-			$thread_id = bp_get_message_thread_id();
-		}
-
-		$thread_template = new BP_Messages_Thread_Template( $thread_id, 'ASC', array(
-			'update_meta_cache' => false
-		) );
-
-		$count = 0;
-		if ( ! empty( $thread_template->message_count ) ) {
-			$count = intval( $thread_template->message_count );
-		}
-
-		/**
-		 * Filters the current thread's total message count.
-		 *
-		 * @since BuddyPress (2.2.0)
-		 *
-		 * @param int $count Current thread total message count.
-		 */
-		return apply_filters( 'bp_get_message_thread_total_count', $count );
-	}
-
-/**
- * Output markup for the current thread's total and unread count.
- *
- * @since BuddyPress (2.2.0)
- *
- * @param int $thread_id Optional. ID of the thread. Default: current thread ID.
- */
-function bp_message_thread_total_and_unread_count( $thread_id = false ) {
-	echo bp_get_message_thread_total_and_unread_count( $thread_id );
-}
-	/**
-	 * Get markup for the current thread's total and unread count.
-	 *
-	 * @param int $thread_id Optional. ID of the thread. Default: current thread ID.
-	 * @return string Markup displaying the total and unread count for the thread.
-	 */
-	function bp_get_message_thread_total_and_unread_count( $thread_id = false ) {
-		if ( false === $thread_id ) {
-			$thread_id = bp_get_message_thread_id();
-		}
-
-		$total  = bp_get_message_thread_total_count( $thread_id );
-		$unread = bp_get_message_thread_unread_count( $thread_id );
-
-		return sprintf(
-			'<span class="thread-count">(%1$s)</span> <span class="bp-screen-reader-text">%2$s</span>',
-			number_format_i18n( $total ),
-			sprintf( _n( '%d unread', '%d unread', $unread, 'buddypress' ), number_format_i18n( $unread ) )
-		);
 	}
 
 /**
@@ -931,13 +633,6 @@ function bp_message_thread_last_post_date_raw() {
 	function bp_get_message_thread_last_post_date_raw() {
 		global $messages_template;
 
-		/**
-		 * Filters the unformatted date of the last post in the current thread.
-		 *
-		 * @since BuddyPress (2.1.0)
-		 *
-		 * @param string $last_message_date Unformatted date of the last post in the current thread.
-		 */
 		return apply_filters( 'bp_get_message_thread_last_message_date', $messages_template->thread->last_message_date );
 	}
 
@@ -953,14 +648,6 @@ function bp_message_thread_last_post_date() {
 	 * @return string
 	 */
 	function bp_get_message_thread_last_post_date() {
-
-		/**
-		 * Filters the nicely formatted date of the last post in the current thread.
-		 *
-		 * @since BuddyPress (2.1.0)
-		 *
-		 * @param string $value Formatted date of the last post in the current thread.
-		 */
 		return apply_filters( 'bp_get_message_thread_last_post_date', bp_format_time( strtotime( bp_get_message_thread_last_post_date_raw() ) ) );
 	}
 
@@ -1008,13 +695,6 @@ function bp_message_thread_avatar( $args = '' ) {
 			'alt'    => $alt
 		) );
 
-		/**
-		 * Filters the avatar for the last sender in the current message thread.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $value User avatar string.
-		 */
 		return apply_filters( 'bp_get_message_thread_avatar', bp_core_fetch_avatar( array(
 			'item_id' => $messages_template->thread->last_sender_id,
 			'type'    => $r['type'],
@@ -1038,14 +718,6 @@ function bp_total_unread_messages_count() {
 	 * @return int
 	 */
 	function bp_get_total_unread_messages_count() {
-
-		/**
-		 * Filters the unread messages count for the current inbox.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param int $value Unread messages count for the current inbox.
-		 */
 		return apply_filters( 'bp_get_total_unread_messages_count', BP_Messages_Thread::get_inbox_count() );
 	}
 
@@ -1062,14 +734,6 @@ function bp_messages_pagination() {
 	 */
 	function bp_get_messages_pagination() {
 		global $messages_template;
-
-		/**
-		 * Filters the pagination HTML for the current thread loop.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param int $pag_links Pagination HTML for the current thread loop.
-		 */
 		return apply_filters( 'bp_get_messages_pagination', $messages_template->pag_links );
 	}
 
@@ -1092,41 +756,19 @@ function bp_messages_pagination_count() {
 /**
  * Output the Private Message search form.
  *
- * @todo  Move markup to template part in: /members/single/messages/search.php
  * @since BuddyPress (1.6.0)
  */
 function bp_message_search_form() {
 
-	// Get the default search text
 	$default_search_value = bp_get_search_default_text( 'messages' );
-
-	// Setup a few values based on what's being searched for
-	$search_submitted     = ! empty( $_REQUEST['s'] ) ? stripslashes( $_REQUEST['s'] ) : $default_search_value;
-	$search_placeholder   = ( $search_submitted === $default_search_value ) ? ' placeholder="' .  esc_attr( $search_submitted ) . '"' : '';
-	$search_value         = ( $search_submitted !== $default_search_value ) ? ' value="'       .  esc_attr( $search_submitted ) . '"' : '';
-
-	// Start the output buffer, so form can be filtered
-	ob_start(); ?>
+	$search_value         = !empty( $_REQUEST['s'] ) ? stripslashes( $_REQUEST['s'] ) : $default_search_value; ?>
 
 	<form action="" method="get" id="search-message-form">
-		<label for="messages_search" class="bp-screen-reader-text"><?php esc_html_e( 'Search Messages', 'buddypress' ); ?></label>
-		<input type="text" name="s" id="messages_search"<?php echo $search_placeholder . $search_value; ?> />
-		<input type="submit" class="button" id="messages_search_submit" name="messages_search_submit" value="<?php esc_html_e( 'Search', 'buddypress' ); ?>" />
+		<label><input type="text" name="s" id="messages_search" <?php if ( $search_value === $default_search_value ) : ?>placeholder="<?php echo esc_html( $search_value ); ?>"<?php endif; ?> <?php if ( $search_value !== $default_search_value ) : ?>value="<?php echo esc_html( $search_value ); ?>"<?php endif; ?> /></label>
+		<input type="submit" id="messages_search_submit" name="messages_search_submit" value="<?php esc_attr_e( 'Search', 'buddypress' ) ?>" />
 	</form>
 
-	<?php
-
-	// Get the search form from the above output buffer
-	$search_form_html = ob_get_clean();
-
-	/**
-	 * Filters the private message component search form.
-	 *
-	 * @since BuddyPress (2.2.0)
-	 *
-	 * @param string $search_form_html HTML markup for the message search form.
-	 */
-	echo apply_filters( 'bp_message_search_form', $search_form_html );
+<?php
 }
 
 /**
@@ -1141,14 +783,6 @@ function bp_messages_form_action() {
 	 * @return string The form action
 	 */
 	function bp_get_messages_form_action() {
-
-		/**
-		 * Filters the form action for Messages HTML forms.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string The form action.
-		 */
 		return apply_filters( 'bp_get_messages_form_action', trailingslashit( bp_loggedin_user_domain() . bp_get_messages_slug() . '/' . bp_current_action() . '/' . bp_action_variable( 0 ) ) );
 	}
 
@@ -1165,20 +799,8 @@ function bp_messages_username_value() {
 	 */
 	function bp_get_messages_username_value() {
 		if ( isset( $_COOKIE['bp_messages_send_to'] ) ) {
-
-			/**
-			 * Filters the default username for the recipient box.
-			 *
-			 * Value passed into filter is dependent on if the 'bp_messages_send_to'
-			 * cookie or 'r' $_GET parameter is set.
-			 *
-			 * @since BuddyPress (1.0.0)
-			 *
-			 * @param string $value Default user name.
-			 */
 			return apply_filters( 'bp_get_messages_username_value', $_COOKIE['bp_messages_send_to'] );
-		} elseif ( isset( $_GET['r'] ) && !isset( $_COOKIE['bp_messages_send_to'] ) ) {
-			/** This filter is documented in bp-messages-template.php */
+		} else if ( isset( $_GET['r'] ) && !isset( $_COOKIE['bp_messages_send_to'] ) ) {
 			return apply_filters( 'bp_get_messages_username_value', $_GET['r'] );
 		}
 	}
@@ -1202,13 +824,6 @@ function bp_messages_subject_value() {
 			? $_POST['subject']
 			: '';
 
-		/**
-		 * Filters the default value for the subject field.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $subject The default value for the subject field.
-		 */
 		return apply_filters( 'bp_get_messages_subject_value', $subject );
 	}
 
@@ -1232,13 +847,6 @@ function bp_messages_content_value() {
 			? $_POST['content']
 			: '';
 
-		/**
-		 * Filters the default value for the content field.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $content The default value for the content field.
-		 */
 		return apply_filters( 'bp_get_messages_content_value', $content );
 	}
 
@@ -1248,18 +856,16 @@ function bp_messages_content_value() {
 function bp_messages_options() {
 ?>
 
-	<label for="message-type-select" class="bp-screen-reader-text">
-		<?php _e( 'Select:', 'buddypress' ) ?>
-	 </label>
+	<?php _e( 'Select:', 'buddypress' ) ?>
 
 	<select name="message-type-select" id="message-type-select">
-		<option value=""><?php _e( 'Select', 'buddypress' ); ?></option>
+		<option value=""></option>
 		<option value="read"><?php _ex('Read', 'Message dropdown filter', 'buddypress') ?></option>
 		<option value="unread"><?php _ex('Unread', 'Message dropdown filter', 'buddypress') ?></option>
 		<option value="all"><?php _ex('All', 'Message dropdown filter', 'buddypress') ?></option>
 	</select> &nbsp;
 
-	<?php if ( ! bp_is_current_action( 'sentbox' ) && ! bp_is_current_action( 'notices' ) ) : ?>
+	<?php if ( ! bp_is_current_action( 'sentbox' ) && bp_is_current_action( 'notices' ) ) : ?>
 
 		<a href="#" id="mark_as_read"><?php _ex('Mark as Read', 'Message management markup', 'buddypress') ?></a> &nbsp;
 		<a href="#" id="mark_as_unread"><?php _ex('Mark as Unread', 'Message management markup', 'buddypress') ?></a> &nbsp;
@@ -1269,24 +875,6 @@ function bp_messages_options() {
 	<a href="#" id="delete_<?php echo bp_current_action(); ?>_messages"><?php _e( 'Delete Selected', 'buddypress' ); ?></a> &nbsp;
 
 <?php
-}
-
-/**
- * Output the dropdown for bulk management of messages.
- *
- * @since BuddyPress (2.2.0)
- */
-function bp_messages_bulk_management_dropdown() {
-	?>
-	<label class="bp-screen-reader-text" for="messages-select"><?php _e( 'Select Bulk Action', 'buddypress' ); ?></label>
-	<select name="messages_bulk_action" id="messages-select">
-		<option value="" selected="selected"><?php _e( 'Bulk Actions', 'buddypress' ); ?></option>
-		<option value="read"><?php _e( 'Mark read', 'buddypress' ); ?></option>
-		<option value="unread"><?php _e( 'Mark unread', 'buddypress' ); ?></option>
-		<option value="delete"><?php _e( 'Delete', 'buddypress' ); ?></option>
-	</select>
-	<input type="submit" id="messages-bulk-manage" class="button action" value="<?php esc_attr_e( 'Apply', 'buddypress' ); ?>">
-	<?php
 }
 
 /**
@@ -1301,13 +889,6 @@ function bp_messages_is_active_notice() {
 		? true
 		: false;
 
-	/**
-	 * Filters whether or not the notice is currently active.
-	 *
-	 * @since BuddyPress (2.1.0)
-	 *
-	 * @param bool $retval Whether or not the notice is currently active.
-	 */
 	return apply_filters( 'bp_messages_is_active_notice', $retval );
 }
 
@@ -1355,14 +936,6 @@ function bp_message_notice_id() {
 	 */
 	function bp_get_message_notice_id() {
 		global $messages_template;
-
-		/**
-		 * Filters the ID of the current notice in the loop.
-		 *
-		 * @since BuddyPress (1.5.0)
-		 *
-		 * @param int $id ID of the current notice in the loop.
-		 */
 		return apply_filters( 'bp_get_message_notice_id', $messages_template->thread->id );
 	}
 
@@ -1379,14 +952,6 @@ function bp_message_notice_post_date() {
 	 */
 	function bp_get_message_notice_post_date() {
 		global $messages_template;
-
-		/**
-		 * Filters the post date of the current notice in the loop.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $value Formatted post date of the current notice in the loop.
-		 */
 		return apply_filters( 'bp_get_message_notice_post_date', bp_format_time( strtotime( $messages_template->thread->date_sent ) ) );
 	}
 
@@ -1403,14 +968,6 @@ function bp_message_notice_subject() {
 	 */
 	function bp_get_message_notice_subject() {
 		global $messages_template;
-
-		/**
-		 * Filters the subject of the current notice in the loop.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $subject Subject of the current notice in the loop.
-		 */
 		return apply_filters( 'bp_get_message_notice_subject', $messages_template->thread->subject );
 	}
 
@@ -1427,14 +984,6 @@ function bp_message_notice_text() {
 	 */
 	function bp_get_message_notice_text() {
 		global $messages_template;
-
-		/**
-		 * Filters the text of the current notice in the loop.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $message Text for the current notice in the loop.
-		 */
 		return apply_filters( 'bp_get_message_notice_text', $messages_template->thread->message );
 	}
 
@@ -1452,14 +1001,6 @@ function bp_message_notice_delete_link() {
 	function bp_get_message_notice_delete_link() {
 		global $messages_template;
 
-		/**
-		 * Filters the URL for deleting the current notice.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $value URL for deleting the current notice.
-		 * @param string $value Text indicating action being executed.
-		 */
 		return apply_filters( 'bp_get_message_notice_delete_link', wp_nonce_url( bp_loggedin_user_domain() . bp_get_messages_slug() . '/notices/delete/' . $messages_template->thread->id, 'messages_delete_thread' ) );
 	}
 
@@ -1482,14 +1023,6 @@ function bp_message_activate_deactivate_link() {
 		} else {
 			$link = wp_nonce_url( trailingslashit( bp_loggedin_user_domain() . bp_get_messages_slug() . '/notices/activate/' . $messages_template->thread->id ), 'messages_activate_notice' );
 		}
-
-		/**
-		 * Filters the URL for deactivating the current notice.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $link URL for deactivating the current notice.
-		 */
 		return apply_filters( 'bp_get_message_activate_deactivate_link', $link );
 	}
 
@@ -1500,7 +1033,7 @@ function bp_message_activate_deactivate_text() {
 	echo bp_get_message_activate_deactivate_text();
 }
 	/**
-	 * Generate the text ('Deactivate' or 'Activate') for the notice action link.
+	 * Generate the text ('Deactivate' or 'Activate' for the notice action link.
 	 *
 	 * @return string
 	 */
@@ -1512,14 +1045,6 @@ function bp_message_activate_deactivate_text() {
 		} else {
 			$text = __('Activate', 'buddypress');
 		}
-
-		/**
-		 * Filters the "Deactivate" or "Activate" text for notice action links.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $text Text used for notice action links.
-		 */
 		return apply_filters( 'bp_message_activate_deactivate_text', $text );
 	}
 
@@ -1541,14 +1066,6 @@ function bp_messages_slug() {
 	 * @return string
 	 */
 	function bp_get_messages_slug() {
-
-		/**
-		 * Filters the messages component slug.
-		 *
-		 * @since BuddyPress (1.5.0)
-		 *
-		 * @param string $slug Messages component slug.
-		 */
 		return apply_filters( 'bp_get_messages_slug', buddypress()->messages->slug );
 	}
 
@@ -1600,13 +1117,6 @@ function bp_send_private_message_link() {
 			return false;
 		}
 
-		/**
-		 * Filters the URL for the Private Message link in member profile headers.
-		 *
-		 * @since BuddyPress (1.2.10)
-		 *
-		 * @param string $value URL for the Private Message link in member profile headers.
-		 */
 		return apply_filters( 'bp_get_send_private_message_link', wp_nonce_url( bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_core_get_username( bp_displayed_user_id() ) ) );
 	}
 
@@ -1638,14 +1148,6 @@ function bp_send_message_button() {
 		// Note: 'bp_get_send_message_button' is a legacy filter. Use
 		// 'bp_get_send_message_button_args' instead. See #4536
 		return apply_filters( 'bp_get_send_message_button',
-
-			/**
-			 * Filters the "Private Message" button for member profile headers.
-			 *
-			 * @since BuddyPress (1.8.0)
-			 *
-			 * @param array $value See {@link BP_Button}.
-			 */
 			bp_get_button( apply_filters( 'bp_get_send_message_button_args', array(
 				'id'                => 'private_message',
 				'component'         => 'messages',
@@ -1672,14 +1174,6 @@ function bp_message_loading_image_src() {
 	 * @return string
 	 */
 	function bp_get_message_loading_image_src() {
-
-		/**
-		 * Filters the URL of the Messages AJAX loader gif.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $value URL of the Messages AJAX loader gif.
-		 */
 		return apply_filters( 'bp_get_message_loading_image_src', buddypress()->messages->image_base . '/ajax-loader.gif' );
 	}
 
@@ -1722,13 +1216,6 @@ function bp_message_get_recipient_usernames() {
 	function bp_get_message_get_recipient_usernames() {
 		$recipients = isset( $_GET['r'] ) ? stripslashes( $_GET['r'] ) : '';
 
-		/**
-		 * Filters the recipients usernames for prefilling the 'To' field on the Compose screen.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $recipients Recipients usernames for 'To' field prefilling.
-		 */
 		return apply_filters( 'bp_get_message_get_recipient_usernames', $recipients );
 	}
 
@@ -1813,10 +1300,11 @@ class BP_Messages_Thread_Template {
 	/**
 	 * Constructor method.
 	 *
-	 * @see BP_Messages_Thread::populate() for full parameter info
+	 * @param int $thread_id ID of the message thread.
+	 * @param string $order 'ASC' or 'DESC'.
 	 */
-	public function __construct( $thread_id = 0, $order = 'ASC', $args = array() ) {
-		$this->thread        = new BP_Messages_Thread( $thread_id, $order, $args );
+	public function __construct( $thread_id, $order ) {
+		$this->thread        = new BP_Messages_Thread( $thread_id, $order );
 		$this->message_count = count( $this->thread->messages );
 
 		$last_message_index                 = $this->message_count - 1;
@@ -1879,12 +1367,6 @@ class BP_Messages_Thread_Template {
 		if ( ( $this->current_message + 1 ) < $this->message_count ) {
 			return true;
 		} elseif ( ( $this->current_message + 1 ) === $this->message_count ) {
-
-			/**
-			 * Fires when at the end of messages to iterate over.
-			 *
-			 * @since BuddyPress (1.1.0)
-			 */
 			do_action( 'thread_loop_end' );
 			// Do some cleaning up after the loop
 			$this->rewind_messages();
@@ -1909,12 +1391,6 @@ class BP_Messages_Thread_Template {
 
 		// loop has just started
 		if ( 0 === $this->current_message ) {
-
-			/**
-			 * Fires if at the start of the message loop.
-			 *
-			 * @since BuddyPress (1.1.0)
-			 */
 			do_action( 'thread_loop_start' );
 		}
 	}
@@ -1929,8 +1405,6 @@ class BP_Messages_Thread_Template {
  *           Default: if viewing a thread, the thread ID will be parsed from
  *           the URL (bp_action_variable( 0 )).
  *     @type string $order 'ASC' or 'DESC'. Default: 'ASC'.
- *     @type bool $update_meta_cache Whether to pre-fetch metadata for
- *           queried message items. Default: true.
  * }
  * @return bool True if there are messages to display, otherwise false.
  */
@@ -1938,20 +1412,15 @@ function bp_thread_has_messages( $args = '' ) {
 	global $thread_template;
 
 	$r = bp_parse_args( $args, array(
-		'thread_id'         => false,
-		'order'             => 'ASC',
-		'update_meta_cache' => true,
+		'thread_id' => false,
+		'order'     => 'ASC'
 	), 'thread_has_messages' );
 
 	if ( empty( $r['thread_id'] ) && bp_is_messages_component() && bp_is_current_action( 'view' ) ) {
 		$r['thread_id'] = (int) bp_action_variable( 0 );
 	}
 
-	// Set up extra args
-	$extra_args = $r;
-	unset( $extra_args['thread_id'], $extra_args['order'] );
-
-	$thread_template = new BP_Messages_Thread_Template( $r['thread_id'], $r['order'], $extra_args );
+	$thread_template = new BP_Messages_Thread_Template( $r['thread_id'], $r['order'] );
 
 	return $thread_template->has_messages();
 }
@@ -2008,13 +1477,6 @@ function bp_the_thread_id() {
 	function bp_get_the_thread_id() {
 		global $thread_template;
 
-		/**
-		 * Filters the ID of the thread that the current loop belongs to.
-		 *
-		 * @since BuddyPress (1.1.0)
-		 *
-		 * @param int $thread_id ID of the thread.
-		 */
 		return apply_filters( 'bp_get_the_thread_id', $thread_template->thread->thread_id );
 	}
 
@@ -2032,66 +1494,28 @@ function bp_the_thread_subject() {
 	function bp_get_the_thread_subject() {
 		global $thread_template;
 
-		/**
-		 * Filters the subject of the thread currently being iterated over.
-		 *
-		 * @since BuddyPress (1.1.0)
-		 *
-		 * @return string $last_message_subject Subject of the thread currently being iterated over.
-		 */
 		return apply_filters( 'bp_get_the_thread_subject', $thread_template->thread->last_message_subject );
 	}
 
 /**
- * Get a list of thread recipients or a "x recipients" string.
- *
- * In BuddyPress 2.2.0, this parts of this functionality were moved into the
- * members/single/messages/single.php template. This function is no longer used
- * by BuddyPress.
- *
- * @return string
- */
-function bp_get_the_thread_recipients(){
-	if ( 5 <= bp_get_thread_recipients_count() ) {
-		$recipients = sprintf( __( '%s recipients', 'buddypress' ), number_format_i18n( bp_get_thread_recipients_count() ) );
-	} else {
-		$recipients = bp_get_thread_recipients_list();
-	}
-
-	return apply_filters( 'bp_get_the_thread_recipients', $recipients );
-}
-
-/**
- * Get the number of recipients in the current thread.
- *
- * @since BuddyPress (2.2.0)
- *
- * @return int
- */
-function bp_get_thread_recipients_count() {
-	global $thread_template;
-	return count( $thread_template->thread->recipients );
-}
-
-/**
  * Output HTML links to recipients in the current thread.
- *
- * @since BuddyPress (2.2.0)
  */
-function bp_the_thread_recipients_list() {
-	echo bp_get_thread_recipients_list();
+function bp_the_thread_recipients() {
+	echo bp_get_the_thread_recipients();
 }
 	/**
 	 * Generate HTML links to the profiles of recipients in the current thread.
 	 *
-	 * @since BuddyPress (2.2.0)
-	 *
 	 * @return string
 	 */
-	function bp_get_thread_recipients_list() {
+	function bp_get_the_thread_recipients() {
 		global $thread_template;
 
 		$recipient_links = array();
+
+		if ( count( $thread_template->thread->recipients ) >= 5 ) {
+			return apply_filters( 'bp_get_the_thread_recipients', sprintf( __( '%d Recipients', 'buddypress' ), count( $thread_template->thread->recipients ) ) );
+		}
 
 		foreach( (array) $thread_template->thread->recipients as $recipient ) {
 			if ( (int) $recipient->user_id !== bp_loggedin_user_id() ) {
@@ -2105,14 +1529,7 @@ function bp_the_thread_recipients_list() {
 			}
 		}
 
-		/**
-		 * Filters the HTML links to the profiles of recipients in the current thread.
-		 *
-		 * @since BuddyPress (2.2.0)
-		 *
-		 * @param string $value Comma-separated list of recipient HTML links for current thread.
-		 */
-		return apply_filters( 'bp_get_the_thread_recipients_list', implode( ', ', $recipient_links ) );
+		return apply_filters( 'bp_get_the_thread_recipients', implode( ', ', $recipient_links ) );
 	}
 
 /**
@@ -2137,13 +1554,6 @@ function bp_the_thread_message_id() {
 			? (int) $thread_template->message->id
 			: null;
 
-		/**
-		 * Filters the ID of the current message in the thread.
-		 *
-		 * @since BuddyPress (1.9.0)
-		 *
-		 * @param int $thread_message_id ID of the current message in the thread.
-		 */
 		return apply_filters( 'bp_get_the_thread_message_id', $thread_message_id );
 	}
 
@@ -2178,13 +1588,6 @@ function bp_the_thread_message_css_class() {
 			$classes[] = 'sent-by-me';
 		}
 
-		/**
-		 * Filters the CSS classes for messages within a single thread.
-		 *
-		 * @since BuddyPress (2.1.0)
-		 *
-		 * @param array $classes Array of classes to add to the HTML class attribute.
-		 */
 		$classes = apply_filters( 'bp_get_the_thread_message_css_class', $classes );
 
 		return implode( ' ', $classes );
@@ -2210,13 +1613,6 @@ function bp_the_thread_message_alt_class() {
 			$class = 'odd';
 		}
 
-		/**
-		 * Filters the CSS class used for message zebra striping.
-		 *
-		 * @since BuddyPress (1.1.0)
-		 *
-		 * @param string $class Class determined to be next for zebra striping effect.
-		 */
 		return apply_filters( 'bp_get_the_thread_message_alt_class', $class );
 	}
 
@@ -2242,13 +1638,6 @@ function bp_the_thread_message_sender_id() {
 			? $thread_template->message->sender_id
 			: 0;
 
-		/**
-		 * Filters the ID for message sender within a single thread.
-		 *
-		 * @since BuddyPress (2.1.0)
-		 *
-		 * @param int $user_id ID of the message sender.
-		 */
 		return (int) apply_filters( 'bp_get_the_thread_message_css_class', (int) $user_id );
 	}
 
@@ -2282,13 +1671,6 @@ function bp_the_thread_message_sender_avatar( $args = '' ) {
 			'height' => false,
 		) );
 
-		/**
-		 * Filters the avatar for the current message sender.
-		 *
-		 * @since BuddyPress (1.1.0)
-		 *
-		 * @param string $value <img> tag containing the avatar value.
-		 */
 		return apply_filters( 'bp_get_the_thread_message_sender_avatar_thumb', bp_core_fetch_avatar( array(
 			'item_id' => $thread_template->message->sender_id,
 			'type'    => $r['type'],
@@ -2312,13 +1694,6 @@ function bp_the_thread_message_sender_link() {
 	function bp_get_the_thread_message_sender_link() {
 		global $thread_template;
 
-		/**
-		 * Filters the link to the sender of the current message.
-		 *
-		 * @since BuddyPress (1.1.0)
-		 *
-		 * @param string $value Link to the sender of the current message.
-		 */
 		return apply_filters( 'bp_get_the_thread_message_sender_link', bp_core_get_userlink( $thread_template->message->sender_id, false, true ) );
 	}
 
@@ -2342,13 +1717,6 @@ function bp_the_thread_message_sender_name() {
 			$display_name = __( 'Deleted User', 'buddypress' );
 		}
 
-		/**
-		 * Filters the display name of the sender of the current message.
-		 *
-		 * @since BuddyPress (1.1.0)
-		 *
-		 * @param string $display_name Display name of the sender of the current message.
-		 */
 		return apply_filters( 'bp_get_the_thread_message_sender_name', $display_name );
 	}
 
@@ -2364,15 +1732,6 @@ function bp_the_thread_delete_link() {
 	 * @return string URL
 	 */
 	function bp_get_the_thread_delete_link() {
-
-		/**
-		 * Filters the URL for deleting the current thread.
-		 *
-		 * @since BuddyPress (1.0.0)
-		 *
-		 * @param string $value URL for deleting the current thread.
-		 * @param string $value Text indicating action being executed.
-		 */
 		return apply_filters( 'bp_get_message_thread_delete_link', wp_nonce_url( bp_loggedin_user_domain() . bp_get_messages_slug() . '/inbox/delete/' . bp_get_the_thread_id(), 'messages_delete_thread' ) );
 	}
 
@@ -2388,14 +1747,6 @@ function bp_the_thread_message_time_since() {
 	 * @return string
 	 */
 	function bp_get_the_thread_message_time_since() {
-
-		/**
-		 * Filters the 'Sent x hours ago' string for the current message.
-		 *
-		 * @since BuddyPress (1.1.0)
-		 *
-		 * @param string $value Default text of 'Sent x hours ago'.
-		 */
 		return apply_filters( 'bp_get_the_thread_message_time_since', sprintf( __( 'Sent %s', 'buddypress' ), bp_core_time_since( bp_get_the_thread_message_date_sent() ) ) );
 	}
 
@@ -2418,13 +1769,6 @@ function bp_the_thread_message_date_sent() {
 	function bp_get_the_thread_message_date_sent() {
 		global $thread_template;
 
-		/**
-		 * Filters the date sent value for the current message as a timestamp.
-		 *
-		 * @since BuddyPress (2.1.0)
-		 *
-		 * @param string $value Timestamp of the date sent value for the current message.
-		 */
 		return apply_filters( 'bp_get_the_thread_message_date_sent', strtotime( $thread_template->message->date_sent ) );
 	}
 
@@ -2442,13 +1786,6 @@ function bp_the_thread_message_content() {
 	function bp_get_the_thread_message_content() {
 		global $thread_template;
 
-		/**
-		 * Filters the content of the current message in the loop.
-		 *
-		 * @since BuddyPress (1.1.0)
-		 *
-		 * @param string $message The content of the current message in the loop.
-		 */
 		return apply_filters( 'bp_get_the_thread_message_content', $thread_template->message->message );
 	}
 
@@ -2457,47 +1794,15 @@ function bp_the_thread_message_content() {
 /**
  * Enable oEmbed support for Messages.
  *
+ * There's no caching as BP 1.5 does not have a Messages meta API.
+ *
  * @since BuddyPress (1.5.0)
  *
  * @see BP_Embed
+ *
+ * @todo Add Messages meta?
  */
 function bp_messages_embed() {
-	add_filter( 'embed_post_id',         'bp_get_the_thread_message_id' );
-	add_filter( 'bp_embed_get_cache',    'bp_embed_message_cache',      10, 3 );
-	add_action( 'bp_embed_update_cache', 'bp_embed_message_save_cache', 10, 3 );
+	add_filter( 'embed_post_id', 'bp_get_message_thread_id' );
 }
-add_action( 'thread_loop_start', 'bp_messages_embed' );
-
-/**
- * Fetch a private message item's cached embeds.
- *
- * Used during {@link BP_Embed::parse_oembed()} via {@link bp_messages_embed()}.
- *
- * @since BuddyPress (2.2.0)
- *
- * @param string $cache An empty string passed by BP_Embed::parse_oembed() for
- *        functions like this one to filter.
- * @param int $id The ID of the message item.
- * @param string $cachekey The cache key generated in BP_Embed::parse_oembed().
- * @return mixed The cached embeds for this message item.
- */
-function bp_embed_message_cache( $cache, $id, $cachekey ) {
-	return bp_messages_get_meta( $id, $cachekey );
-}
-
-/**
- * Set a private message item's embed cache.
- *
- * Used during {@link BP_Embed::parse_oembed()} via {@link bp_messages_embed()}.
- *
- * @since BuddyPress (2.2.0)
- *
- * @param string $cache An empty string passed by BP_Embed::parse_oembed() for
- *        functions like this one to filter.
- * @param string $cachekey The cache key generated in BP_Embed::parse_oembed().
- * @param int $id The ID of the message item.
- * @return bool True on success, false on failure.
- */
-function bp_embed_message_save_cache( $cache, $cachekey, $id ) {
-	bp_messages_update_meta( $id, $cachekey, $cache );
-}
+add_action( 'messages_box_loop_start', 'bp_messages_embed' );

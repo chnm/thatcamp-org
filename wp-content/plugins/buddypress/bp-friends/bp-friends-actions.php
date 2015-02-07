@@ -12,7 +12,7 @@
  */
 
 // Exit if accessed directly
-defined( 'ABSPATH' ) || exit;
+if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
  * Catch and process friendship requests.
@@ -40,7 +40,7 @@ function friends_action_add_friend() {
 			bp_core_add_message( __( 'Friendship requested', 'buddypress' ) );
 		}
 
-	} elseif ( 'is_friend' == $friendship_status ) {
+	} else if ( 'is_friend' == $friendship_status ) {
 		bp_core_add_message( __( 'You are already friends with this user', 'buddypress' ), 'error' );
 	} else {
 		bp_core_add_message( __( 'You already have a pending friendship request with this user', 'buddypress' ), 'error' );
@@ -78,7 +78,7 @@ function friends_action_remove_friend() {
 			bp_core_add_message( __( 'Friendship canceled', 'buddypress' ) );
 		}
 
-	} elseif ( 'is_friends' == $friendship_status ) {
+	} else if ( 'is_friends' == $friendship_status ) {
 		bp_core_add_message( __( 'You are not yet friends with this user', 'buddypress' ), 'error' );
 	} else {
 		bp_core_add_message( __( 'You have a pending friendship request with this user', 'buddypress' ), 'error' );

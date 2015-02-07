@@ -13,7 +13,7 @@
  */
 
 // Exit if accessed directly
-defined( 'ABSPATH' ) || exit;
+if ( !defined( 'ABSPATH' ) ) exit;
 
 class BP_Forums_Component extends BP_Component {
 

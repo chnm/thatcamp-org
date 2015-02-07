@@ -8,7 +8,7 @@
  */
 
 // Exit if accessed directly
-defined( 'ABSPATH' ) || exit;
+if ( !defined( 'ABSPATH' ) ) exit;
 
 /** Versions ******************************************************************/
 
@@ -93,40 +93,39 @@ function bp_core_get_table_prefix() {
 }
 
 /**
- * Sort an array of objects or arrays by a specific key/property.
+ * Sort an array of objects or arrays by alphabetically sorting by a specific key/property.
+ *
+ * For instance, if you have an array of WordPress post objects, you can sort
+ * them by post_name as follows:
+ *     $sorted_posts = bp_alpha_sort_by_key( $posts, 'post_name' );
  *
  * The main purpose for this function is so that you can avoid having to create
  * your own awkward callback function for usort().
  *
- * @since BuddyPress (2.2.0)
+ * @since BuddyPress (1.9.0)
  *
- * @param  array      $items The items to be sorted. Its constituent items can be either associative arrays or objects.
- * @param  string|int $key   The array index or property name to sort by.
- * @param  string     $type  Sort type. 'alpha' for alphabetical, 'num' for numeric. Default: 'alpha'.
- * @return array      $items The sorted array.
+ * @param array $items The array to be sorted. Its constituent items can be
+ *        either associative arrays or objects.
+ * @param string|int $key The array index or property name to sort by.
+ * @return array $items The sorted array.
  */
-function bp_sort_by_key( $items, $key, $type = 'alpha' ) {
+function bp_alpha_sort_by_key( $items, $key ) {
 	usort( $items, create_function( '$a, $b', '
 		$values = array( 0 => false, 1 => false, );
 		$func_args = func_get_args();
 		foreach ( $func_args as $indexi => $index ) {
 			if ( isset( $index->' . $key . ' ) ) {
 				$values[ $indexi ] = $index->' . $key . ';
-			} elseif ( isset( $index["' . $key . '"] ) ) {
+			} else if ( isset( $index["' . $key . '"] ) ) {
 				$values[ $indexi ] = $index["' . $key . '"];
 			}
 		}
 
-		if ( isset( $values[0], $values[1] ) ) {
-			if ( "num" === "' . $type . '" ) {
-				$cmp = $values[0] - $values[1];
-			} else {
-				$cmp = strcmp( $values[0], $values[1] );
-			}
-
+		if ( $values[0] && $values[1] ) {
+			$cmp = strcmp( $values[0], $values[1] );
 			if ( 0 > $cmp ) {
 				$retval = -1;
-			} elseif ( 0 < $cmp ) {
+			} else if ( 0 < $cmp ) {
 				$retval = 1;
 			} else {
 				$retval = 0;
@@ -138,23 +137,6 @@ function bp_sort_by_key( $items, $key, $type = 'alpha' ) {
 	') );
 
 	return $items;
-}
-
-/**
- * Sort an array of objects or arrays by alphabetically sorting by a specific key/property.
- *
- * For instance, if you have an array of WordPress post objects, you can sort
- * them by post_name as follows:
- *     $sorted_posts = bp_alpha_sort_by_key( $posts, 'post_name' );
- *
- * @since BuddyPress (1.9.0)
- *
- * @param  array      $items The items to be sorted. Its constituent items can be either associative arrays or objects.
- * @param  string|int $key   The array index or property name to sort by.
- * @return array      $items The sorted array.
- */
-function bp_alpha_sort_by_key( $items, $key ) {
-	return bp_sort_by_key( $items, $key, 'alpha' );
 }
 
 /**
@@ -268,35 +250,6 @@ function bp_parse_args( $args, $defaults = array(), $filter_key = '' ) {
 }
 
 /**
- * Sanitizes a pagination argument based on both the request override and the
- * original value submitted via a query argument, likely to a template class
- * responsible for limiting the resultset of a template loop.
- *
- * @since BuddyPress (2.2.0)
- *
- * @param  string $page_arg The $_REQUEST argument to look for
- * @param  int    $page     The original page value to fall back to
- * @return int              A sanitized integer value, good for pagination
- */
-function bp_sanitize_pagination_arg( $page_arg = '', $page = 1 ) {
-
-	// Check if request overrides exist
-	if ( isset( $_REQUEST[ $page_arg ] ) ) {
-
-		// Get the absolute integer value of the override
-		$int = absint( $_REQUEST[ $page_arg ] );
-
-		// If override is 0, do not use it. This prevents unlimited result sets.
-		// @see https://buddypress.trac.wordpress.org/ticket/5796
-		if ( $int ) {
-			$page = $int;
-		}
-	}
-
-	return intval( $page );
-}
-
-/**
  * Sanitize an 'order' parameter for use in building SQL queries.
  *
  * Strings like 'DESC', 'desc', ' desc' will be interpreted into 'DESC'.
@@ -370,7 +323,7 @@ function bp_use_wp_admin_bar() {
 	// Default to true (to avoid loading deprecated BuddyBar code)
 	$use_admin_bar = true;
 
-	// Has the WP Toolbar constant been explicitly opted into?
+	// Has the WP Toolbar constant been explicity opted into?
 	if ( defined( 'BP_USE_WP_ADMIN_BAR' ) ) {
 		$use_admin_bar = (bool) BP_USE_WP_ADMIN_BAR;
 
@@ -428,16 +381,7 @@ function bp_core_get_directory_page_ids() {
 	if ( !empty( $page_ids ) && is_array( $page_ids ) ) {
 		foreach( (array) $page_ids as $component_name => $page_id ) {
 			if ( empty( $component_name ) || empty( $page_id ) ) {
-				unset( $page_ids[ $component_name ] );
-			}
-
-			// 'register' and 'activate' do not have components, but should be whitelisted.
-			if ( bp_get_signup_allowed() && ( 'register' === $component_name || 'activate' === $component_name ) ) {
-				continue;
-			}
-
-			if ( ! bp_is_active( $component_name ) || 'trash' == get_post_status( $page_id ) ) {
-				unset( $page_ids[ $component_name ] );
+				unset( $page_ids[$component_name] );
 			}
 		}
 	}
@@ -623,25 +567,6 @@ function bp_core_add_page_mappings( $components, $existing = 'keep' ) {
 }
 
 /**
- * Remove the entry from bp_pages when the corresponding WP page is deleted.
- *
- * @since BuddyPress (2.2.0)
- *
- * @param int $post_id Post ID.
- */
-function bp_core_on_directory_page_delete( $post_id ) {
-	$page_ids = bp_core_get_directory_page_ids();
-	$component_name = array_search( $post_id, $page_ids );
-
-	if ( ! empty( $component_name ) ) {
-		unset( $page_ids[ $component_name ] );
-	}
-
-	bp_core_update_directory_page_ids( $page_ids );
-}
-add_action( 'delete_post', 'bp_core_on_directory_page_delete' );
-
-/**
  * Create a default component slug from a WP page root_slug.
  *
  * Since 1.5, BP components get their root_slug (the slug used immediately
@@ -786,7 +711,7 @@ function bp_do_register_theme_directory() {
 /**
  * Return the domain for the root blog.
  *
- * eg: http://example.com OR https://example.com
+ * eg: http://domain.com OR https://domain.com
  *
  * @uses get_blog_option() WordPress function to fetch blog meta.
  *
@@ -854,7 +779,7 @@ function bp_core_get_site_path() {
 		if ( count( $site_path ) < 2 ) {
 			$site_path = '/';
 		} else {
-			// Unset the first three segments (http(s)://example.com part)
+			// Unset the first three segments (http(s)://domain.com part)
 			unset( $site_path[0] );
 			unset( $site_path[1] );
 			unset( $site_path[2] );
@@ -1356,7 +1281,7 @@ function bp_use_embed_in_activity() {
 }
 
 /**
- * Are oembeds allowed in activity replies?
+ * Are oembeds allwoed in activity replies?
  *
  * @since BuddyPress (1.5.0)
  *
@@ -1775,23 +1700,17 @@ function bp_is_get_request() {
  * @return bool True on success, false on failure.
  */
 function bp_core_load_buddypress_textdomain() {
-	$domain = 'buddypress';
-	$mofile_custom = sprintf( '%s-%s.mo', $domain, apply_filters( 'buddypress_locale', get_locale() ) );
+	// Try to load via load_plugin_textdomain() first, for future
+	// wordpress.org translation downloads
+	if ( load_plugin_textdomain( 'buddypress', false, 'buddypress/bp-languages' ) ) {
+		return true;
+	}
 
-	$locations = apply_filters( 'buddypress_locale_locations', array(
-		trailingslashit( WP_LANG_DIR . '/' . $domain  ),
-		trailingslashit( WP_LANG_DIR ),
-	) );
+	// Nothing found in bp-languages, so try to load from WP_LANG_DIR
+	$locale = apply_filters( 'buddypress_locale', get_locale() );
+	$mofile = WP_LANG_DIR . '/buddypress-' . $locale . '.mo';
 
-	// Try custom locations in WP_LANG_DIR
-	foreach ( $locations as $location ) {
-		if ( load_textdomain( 'buddypress', $location . $mofile_custom ) ) {
-			return true;
-		}
- 	}
-
-	// default to WP and glotpress
-	return load_plugin_textdomain( $domain );
+	return load_textdomain( 'buddypress', $mofile );
 }
 add_action ( 'bp_core_loaded', 'bp_core_load_buddypress_textdomain' );
 
@@ -1941,6 +1860,7 @@ function bp_nav_menu_get_loggedin_pages() {
 	$page_args = array();
 
 	foreach ( $bp_menu_items as $bp_item ) {
+		$item_name = '';
 
 		// Remove <span>number</span>
 		$item_name = preg_replace( '/([.0-9]+)/', '', $bp_item['name'] );
@@ -2079,7 +1999,7 @@ function bp_nav_menu_get_item_url( $slug ) {
  * @since BuddyPress (2.1.0)
  */
 function bp_core_get_suggestions( $args ) {
-	$args = bp_parse_args( $args, array(), 'get_suggestions' );
+	$args = wp_parse_args( $args );
 
 	if ( ! $args['type'] ) {
 		return new WP_Error( 'missing_parameter' );
