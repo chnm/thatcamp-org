@@ -162,7 +162,7 @@ class Thatcamp_Registrations_Admin {
 
                 	<?php if ( ! empty( $registration->additional_information ) ) : echo $registration->additional_information; endif; ?>
 
-        <h3>Biography</h3>
+                	<h3>Biography</h3>
 		<?php echo $applicant->description; ?>
 
 		<h3>Website</h3>
@@ -179,24 +179,18 @@ class Thatcamp_Registrations_Admin {
 
 		<h3><?php _e( 'Discipline', 'thatcamp-registrations' ) ?></h3>
 		<?php echo $applicant->discipline; ?>
-		
-		<h3><?php _e( 'Particular Needs', 'thatcamp-registrations' ) ?></h3>
-    	<?php echo $applicant->particular_needs; ?>
-    	
- 		<h3><?php _e( 'Days Attending', 'thatcamp-registrations' ) ?></h3>
-		<?php echo $applicant->days_attending ?>
 
 		<h3><?php _e( 'Technology Skill Level', 'thatcamp-registrations' ) ?></h3>
 		<?php echo $applicant->technology_skill_level; ?>
 
+		<h3><?php _e( 'Days Attending', 'thatcamp-registrations' ) ?></h3>
+		<?php echo $applicant->days_attending ?>
+
 		<h3><?php _e( 'T-shirt Size', 'thatcamp-registrations' ) ?></h3>
 		<?php echo $applicant->tshirt_size ?>
 
-    	<h3><?php _e( 'Children', 'thatcamp-registrations' ) ?></h3>
-    	<?php if($children = $applicant->children) { echo $children; } else { echo '0'; } ?>
-    
-
-    
+    <h3><?php _e( 'Children', 'thatcamp-registrations' ) ?></h3>
+    <?php if($children = $applicant->children) { echo $children; } else { echo '0'; } ?>
 </div>
             <?php
             // Otherwise, we need to view the list of registrations.
@@ -523,9 +517,7 @@ class Thatcamp_Registrations_Admin {
 			array( 'ukey' => 'days_attending', 'title' => __( 'Days Attending', 'thatcamp-registrations' ) ),
 			array( 'ukey' => 'application_text', 'title' => 'Application Text' ),
 			array( 'ukey' => 'status', 'title' => 'Status' ),
-      		array( 'ukey' => 'children', 'title' => 'Children' ),
-            array( 'ukey' => 'particular_needs', 'title' => 'Particular Needs' ),
-
+      array( 'ukey' => 'children', 'title' => 'Children' ),
 		);
 
 		// Column headers

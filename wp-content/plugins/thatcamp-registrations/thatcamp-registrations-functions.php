@@ -64,13 +64,6 @@ function thatcamp_registrations_fields( $type = 'limited' ) {
 			'public'      => true,
 		),
 		array(
-			'id'          => 'particular_needs',
-			'name'        => __( 'Particular Needs', 'thatcamp-registrations' ),
-			'explanation' => __( 'If you have dietary, language, spatial, accessibility, or other needs, please describe them here. We will make every effort to accommodate you.', 'thatcamp-registrations' ),
-			'public'      => false,
-			'type'		  => 'textarea',
-		),
-		array(
 			'id'          => 'days_attending',
 			'name'        => __( 'Days Attending', 'thatcamp-registrations' ),
 			'explanation' => __( 'Which days do you plan to attend this THATCamp?', 'thatcamp-registrations' ),
@@ -188,7 +181,7 @@ function thatcamp_registrations_fields( $type = 'limited' ) {
 			'explanation' => __( 'Kids are welcome! Let us know how many you plan to bring.', 'thatcamp-registrations' ),
       'public'      => false,
       'checked'     => false
-		),		
+		),
 	);
 
 	if ( 'limited' == $type ) {

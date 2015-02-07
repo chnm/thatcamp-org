@@ -139,7 +139,7 @@ class Thatcamp_Registrations_Public_Registration {
     // Could be greatly improved if we more deliberately differentiate between cross-camp and per-camp registration fields.
     if ( is_user_logged_in() ) {
         // An array of fields whose values would be camp-specific.
-        $campSpecificFields = array( 'days_attending', 'technology_skill_level', 'tshirt_size', 'children', 'particular_needs', );
+        $campSpecificFields = array( 'days_attending', 'technology_skill_level', 'tshirt_size', 'children' );
 
         foreach ( $fields as $field_key => $field ) {
             if ( ! in_array( $field['id'], $campSpecificFields ) ) {
