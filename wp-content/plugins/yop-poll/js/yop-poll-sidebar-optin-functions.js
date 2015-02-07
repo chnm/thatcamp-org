@@ -1,12 +1,10 @@
 jQuery(document).ready(function(jQuery) {
 	jQuery('.wf-button[value="Thank You!"]').waitUntilExists(function() {
-
-        jQuery.ajax({
-			type: 'POST',
+		jQuery.ajax({
+			type: 'GET',
 			url: yop_poll_sidebar_functions_config.ajax.url,
-			data: 'action='+yop_poll_sidebar_functions_config.ajax.action+"&email="+jQuery('#email' ).val(),
+			data: 'action='+yop_poll_sidebar_functions_config.ajax.action,
 			success: function(){
-
 				jQuery('#linksubmitdiv3').fadeOut();
                 jQuery("#WFItem394041").hide();
 			}

@@ -49,9 +49,9 @@ jQuery(document).ready(function(jQuery) {
 
         jQuery(".yop_poll_pro_feature").dialog({
 
-            height: '700',
+            height: '650',
 
-            width: '750',
+            width: 'auto',
 
             resizable: false,
 

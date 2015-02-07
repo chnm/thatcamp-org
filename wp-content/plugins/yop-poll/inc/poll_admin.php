@@ -580,9 +580,6 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
             $current->email_notifications_recipients=$options['email_notifications_recipients'];
             $current->email_notifications_subject=$options['email_notifications_subject'];
             $current->email_notifications_body=$options['email_notifications_body'];
-            $current->vote_permisions_wordpress_label=$options['vote_permisions_wordpress_label'];
-            $current->vote_permisions_anonymous_label=$options['vote_permisions_anonymous_label'];
-            $current->vote_button_label=$options['vote_button_label'];
         }
         $data['current_poll'] = $current;
         if( 'edit' == $action_type ) {
@@ -679,7 +676,6 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                 $archive                 = get_option( 'yop_poll_archive_order', array() );
                 if(($key = array_search($_REQUEST['id'], $archive)) !== false) {
                     unset($archive[$key]);
-                    $archive=array_values($archive);
                     update_option( 'yop_poll_archive_order', $archive );
 
                 }
@@ -693,7 +689,6 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                         $archive                 = get_option( 'yop_poll_archive_order', array() );
                         if(($key = array_search($poll_id, $archive)) !== false) {
                             unset($archive[$key]);
-                            $archive=array_values($archive);
                             update_option( 'yop_poll_archive_order', $archive );
                         }
                     }
@@ -744,11 +739,11 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
         global $wpdb, $current_user;
         $poll_details = self::get_poll_from_database_by_id( $poll_id );
         $clone_number = self::count_poll_from_database_like_name( $poll_details['poll_name'] . ' - clone' );
-        $meta                             = get_yop_poll_meta( $poll_id, 'options', true );
+
         $current_poll   = new YOP_POLL_Poll_Model( $poll_id );
-        $current_poll->poll_total_votes=0;
-        $poll_clone     =$current_poll;
-        $poll_clone->ID = 0;
+        $poll_clone     = clone $current_poll;
+        $poll_clone->poll_total_votes=0;
+        $poll_clone->ID = NULL;
         if( $poll_details ) {
             $poll                   = array(
                 'title'       => $poll_details['poll_title'] . ' - clone' . ( 0 == $clone_number ? '' : $clone_number ),
@@ -756,7 +751,7 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                 'end_date'    => $poll_details['poll_end_date'],
                 'status'      => $poll_details['poll_status'],
                 'poll_date'   => $poll_details['poll_date'],
-                'poll_total_votes' => 0,
+                'total_votes' => $poll_details['poll_total_votes'],
                 'author'      => $poll_details['poll_author'],
                 'name'        => $poll_details['poll_name'] . ' - clone' . ( 0 == $clone_number ? '' : $clone_number ),
                 'type'        => $poll_details['poll_type'],
@@ -765,63 +760,20 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
             $poll_clone->poll_name  = $poll['name'];
             $poll_clone->poll_title = $poll['title'];
 
-            foreach( $poll_clone->questions as $question ) {
-                $question->ID = 0;
-                foreach( $question->answers as $answer ) {
-                    $answer->ID = 0;
-                }
-                if(isset($question->custom_fields))
-                foreach($question->custom_fields as $custom){
-                    $custom->ID=0;
-                    $custom->poll_id=0;
-                    $custom->question_id=0;
+            foreach( $poll_clone->questions as &$question ) {
+                $question->ID = NULL;
+
+                foreach( $question->answers as &$answer ) {
+                    $answer->ID = NULL;
                 }
             }
 
-            $id_poll=$poll_clone->save();
-            self::save_poll_order($poll_clone,$poll_clone->poll_archive_order);
-            update_yop_poll_meta( $id_poll, 'options', $meta );
+          //  yop_poll_dump($poll_clone);
+            $poll_clone->save();
 
         }
     }
 
-    private static function save_poll_order( $poll, $poll_order ) {
-        $poll_archive_order = get_option( 'yop_poll_archive_order', array() );
-        if( $poll_archive_order == "" ) {
-            $poll_archive_order = array();
-        }
-        if( isset( $poll->show_poll_in_archive ) ) {
-            if(  $poll->show_poll_in_archive  == 'yes'  ) {
-                if( isset( $poll_order ) && is_numeric( trim( $poll_order ) ) ) {
-                    if( trim( $poll_order ) <= 0 ) {
-                        $poll_order = 1;
-                    }
-                    $key = array_search( $poll->ID, $poll_archive_order );
-                    if( $key !== false ) {
-                        unset( $poll_archive_order[$key] );
-                    }
-                    if( $poll_order > count( $poll_archive_order ) ) {
-                        array_push( $poll_archive_order, $poll->ID );
-                    }
-                    else {
-                        array_splice( $poll_archive_order, trim( $poll_order ) - 1, 0, array( $poll->ID ) );
-                    }
-
-                }
-
-            }
-            else {
-                $key = array_search( $poll->ID, $poll_archive_order );
-
-                if( $key !== null ) {
-                    unset( $poll_archive_order[$key] );
-                }
-            }
-        }
-
-        $poll_archive_order = array_values( $poll_archive_order );
-        update_option( 'yop_poll_archive_order', $poll_archive_order );
-    }
     public static function get_poll_total_customfields_logs( $poll_id, $quest_id, $sdate = '', $edate = '' ) {
         global $wpdb;
         $sdatesql = '';
@@ -2291,7 +2243,7 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                     unset($answer_details);
                 }
                 if($cheked==0){
-                    $message['error']= "You must select at least one answer!";
+                    $message['error']= "You must select at least an answer!";
                     wp_die( json_encode( $message ) );
                 }
             }

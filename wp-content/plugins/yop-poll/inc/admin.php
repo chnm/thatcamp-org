@@ -199,17 +199,16 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
     public function ajax_modal_option_signup() {
         $optin_box_modal_options                      = get_option( 'yop_poll_optin_box_modal_options_yop' );
         $optin_box_modal_options ['modal_had_submit'] = 'yes';
-        $optin_box_modal_options['modal_email']=isset($_POST['email'])?$_POST['email']:"johndoe@email.com";
         update_option( 'yop_poll_optin_box_modal_options', $optin_box_modal_options );
         die ();
     }
     public function ajax_show_optin_box_modal() {
         $this->yop_poll_optin_form1();
+
         $optin_box_modal_options                    = get_option( 'yop_poll_optin_box_modal_options' );
         $optin_box_modal_options ['show']          = 'no'; //restore to no
         $optin_box_modal_options ['sidebar_had_submit'] = 'no';
         $optin_box_modal_options ['modal_had_submit'] = 'no';
-        $optin_box_modal_options['modal_email']=isset($_POST['email'])?$_POST['email']:"johndoe@email.com";
         update_option( 'yop_poll_optin_box_modal_options_yop', $optin_box_modal_options );
 
 
@@ -416,7 +415,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         $optin_box_modal_options                        = get_option( 'yop_poll_optin_box_modal_options_yop' );
        $optin_box_modal_options ['sidebar_had_submit'] = 'yes';
        $optin_box_modal_options ['modal_had_submit'] = 'yes';
-       $optin_box_modal_options['modal_email']=isset($_POST['email'])?$_POST['email']:"johndoe@email.com";
         update_option( 'yop_poll_optin_box_modal_options_yop', $optin_box_modal_options );
         die ();
     }
@@ -432,12 +430,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         wp_enqueue_style( 'yop-poll-timepicker', YOP_POLL_URL . "css/timepicker.css", array(), YOP_POLL_VERSION );
         wp_enqueue_style( 'yop-poll-colorpicker', YOP_POLL_URL . "css/colorpicker.css", array(), YOP_POLL_VERSION );
         wp_enqueue_style( 'yop-poll-jquery-ui', YOP_POLL_URL . "css/jquery-ui.css", array(), YOP_POLL_VERSION );
-        wp_enqueue_style( 'yop-poll-bxslider-css', YOP_POLL_URL . "js/bxslider/jquery.bxslider.css", array(), YOP_POLL_VERSION );
-        wp_enqueue_style( 'yop-poll-flex-slider-css', YOP_POLL_URL . "css/flexslider.css", array(), YOP_POLL_VERSION );
-        wp_enqueue_style( 'yop-poll-reveal-css', YOP_POLL_URL . "css/reveal.css", array(), YOP_POLL_VERSION );
-        wp_enqueue_script( 'yop-poll--flex-slider-js', YOP_POLL_URL . "js/jquery.flexslider.js", array( 'jquery','jquery-ui-slider' ), YOP_POLL_VERSION, true );
-        wp_enqueue_script( 'yop-poll-jquery-bxslider.js', YOP_POLL_URL . "js/bxslider/jquery.bxslider.js", array( 'jquery','jquery-ui-slider' ), YOP_POLL_VERSION, true );
-        wp_enqueue_script( 'yop-poll-reveal.js', YOP_POLL_URL . "js/jquery.reveal.js", array( 'jquery' ), YOP_POLL_VERSION, true );
         wp_enqueue_script( 'yop-poll-admin-js', YOP_POLL_URL . "js/yop-poll-admin.js", array( 'jquery','jquery-ui-tooltip' ), YOP_POLL_VERSION, true );
         wp_enqueue_script( 'yop-poll-tool_tips-js', YOP_POLL_URL . "js/yop_poll_tool_tips.js", array( 'jquery','jquery-ui-tooltip' ), YOP_POLL_VERSION, true );
         wp_enqueue_script( 'yop-poll-color', YOP_POLL_URL . "js/color.picker.js", array( 'jquery','jquery-ui-tooltip' ), YOP_POLL_VERSION, true );
@@ -446,7 +438,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
             'jquery-ui-datepicker',
             'jquery-ui-slider'
         ), YOP_POLL_VERSION, true );
-
 
         $time_format="hh:mm:ss";
         $options                     = get_option('yop_poll_options' );

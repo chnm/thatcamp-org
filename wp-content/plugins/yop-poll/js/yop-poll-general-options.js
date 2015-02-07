@@ -4,9 +4,9 @@ jQuery( document ).ready( function() {
     jQuery(".yop_poll_tooltip-buy_pro" ).click( function(){
         jQuery(".yop_poll_pro_feature").dialog({
 
-            height: '700',
+            height: '650',
 
-            width: '750',
+            width: 'auto',
 
             resizable: false,
 
@@ -107,10 +107,6 @@ jQuery( document ).ready( function() {
                 jQuery( '.yop-poll-vote-as-div' ).hide();
             }
         }
-        if( jQuery( '#yop-poll-vote-permisions-guest' ).attr( "checked" ) != 'checked' &&jQuery( '#yop-poll-vote-permisions-registered' ).attr( "checked" ) != 'checked')
-            jQuery( '#yop-poll-vote-permisions-anonymous-label-div' ).hide();
-        else
-            jQuery( '#yop-poll-vote-permisions-anonymous-label-div' ).show();
     } );
     jQuery( '#yop-poll-vote-permisions-registered' ).change( function() {
         if( jQuery( this ).attr( 'checked' ) == "checked" ) {
@@ -131,10 +127,6 @@ jQuery( document ).ready( function() {
         else {
             jQuery( '.yop-poll-vote-as-div' ).hide();
         }
-        if( jQuery( '#yop-poll-vote-permisions-guest' ).attr( "checked" ) != 'checked' &&jQuery( '#yop-poll-vote-permisions-registered' ).attr( "checked" ) != 'checked')
-            jQuery( '#yop-poll-vote-permisions-anonymous-label-div' ).hide();
-        else
-            jQuery( '#yop-poll-vote-permisions-anonymous-label-div' ).show();
     } );
     //</editor-fold>
 

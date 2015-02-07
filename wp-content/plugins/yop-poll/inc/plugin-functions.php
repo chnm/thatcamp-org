@@ -180,7 +180,7 @@ function yop_poll_default_options() {
 
         'view_poll_archive_link'                    => 'no',
 
-        'auto_generate_poll_page'                   => 'no',
+        'auto_generate_poll_page'                   => 'yes',
 
         'has_auto_generate_poll_page'               => 'no',
 
@@ -369,7 +369,7 @@ function yop_poll_poll_default_options() {
 
         'view_poll_archive_link'                    => 'no',
 
-        'auto_generate_poll_page'                   => 'no',
+        'auto_generate_poll_page'                   => 'yes',
 
         'has_auto_generate_poll_page'               => 'no',
 
@@ -983,13 +983,13 @@ function xss_clean($data)
     }
     function yop_poll_ret_poll_by_votes_desc ($array){
        if(count($array)>0) {
-        $sql        = 'SELECT ID, poll_total_votes FROM ' . $GLOBALS['wpdb']->yop_polls . ' WHERE (ID='.$array[0].')';
+        $sql        = 'SELECT ID FROM ' . $GLOBALS['wpdb']->yop_polls . ' WHERE (ID='.$array[0].')';
 
         for( $i = 1; $i < count( $array ); $i ++ ) {
-            $sql.=' OR (ID='. $array[$i]. ')';
+            $sql.='OR (ID= '. $array[$i]. ')';
         }
         $sql.=' ORDER BY poll_total_votes DESC ';
-           return $GLOBALS['wpdb']->get_results( $sql, ARRAY_A );
+        return $GLOBALS['wpdb']->get_results( $sql, ARRAY_A );
        }
     }
     function yop_poll_sort_desc_database ($array){
@@ -1000,7 +1000,7 @@ function xss_clean($data)
             $sql.='OR (ID= '. $array[$i]. ')';
         }
         $sql.=' ORDER BY ID DESC ';
-            return $GLOBALS['wpdb']->get_results( $sql, ARRAY_A );
+        return $GLOBALS['wpdb']->get_results( $sql, ARRAY_A );
         }
     }
     function yop_poll_sort_asc_database ($array){
