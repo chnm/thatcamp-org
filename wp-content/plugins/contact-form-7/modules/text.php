@@ -37,12 +37,6 @@ function wpcf7_text_shortcode_handler( $tag ) {
 
 	$atts['size'] = $tag->get_size_option( '40' );
 	$atts['maxlength'] = $tag->get_maxlength_option();
-	$atts['minlength'] = $tag->get_minlength_option();
-
-	if ( $atts['maxlength'] && $atts['minlength'] && $atts['maxlength'] < $atts['minlength'] ) {
-		unset( $atts['maxlength'], $atts['minlength'] );
-	}
-
 	$atts['class'] = $tag->get_class_option( $class );
 	$atts['id'] = $tag->get_id_option();
 	$atts['tabindex'] = $tag->get_option( 'tabindex', 'int', true );
@@ -60,9 +54,9 @@ function wpcf7_text_shortcode_handler( $tag ) {
 	if ( $tag->has_option( 'placeholder' ) || $tag->has_option( 'watermark' ) ) {
 		$atts['placeholder'] = $value;
 		$value = '';
+	} elseif ( '' === $value ) {
+		$value = $tag->get_default_option();
 	}
-
-	$value = $tag->get_default_option( $value );
 
 	$value = wpcf7_get_hangover( $tag->name, $value );
 
@@ -106,53 +100,45 @@ function wpcf7_text_validation_filter( $result, $tag ) {
 		? trim( wp_unslash( strtr( (string) $_POST[$name], "\n", " " ) ) )
 		: '';
 
-	if ( 'text' == $tag->basetype ) {
-		if ( $tag->is_required() && '' == $value ) {
-			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+	if ( 'text*' == $tag->type ) {
+		if ( '' == $value ) {
+			$result['valid'] = false;
+			$result['reason'][$name] = wpcf7_get_message( 'invalid_required' );
 		}
 	}
 
 	if ( 'email' == $tag->basetype ) {
 		if ( $tag->is_required() && '' == $value ) {
-			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+			$result['valid'] = false;
+			$result['reason'][$name] = wpcf7_get_message( 'invalid_required' );
 		} elseif ( '' != $value && ! wpcf7_is_email( $value ) ) {
-			$result->invalidate( $tag, wpcf7_get_message( 'invalid_email' ) );
+			$result['valid'] = false;
+			$result['reason'][$name] = wpcf7_get_message( 'invalid_email' );
 		}
 	}
 
 	if ( 'url' == $tag->basetype ) {
 		if ( $tag->is_required() && '' == $value ) {
-			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+			$result['valid'] = false;
+			$result['reason'][$name] = wpcf7_get_message( 'invalid_required' );
 		} elseif ( '' != $value && ! wpcf7_is_url( $value ) ) {
-			$result->invalidate( $tag, wpcf7_get_message( 'invalid_url' ) );
+			$result['valid'] = false;
+			$result['reason'][$name] = wpcf7_get_message( 'invalid_url' );
 		}
 	}
 
 	if ( 'tel' == $tag->basetype ) {
 		if ( $tag->is_required() && '' == $value ) {
-			$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+			$result['valid'] = false;
+			$result['reason'][$name] = wpcf7_get_message( 'invalid_required' );
 		} elseif ( '' != $value && ! wpcf7_is_tel( $value ) ) {
-			$result->invalidate( $tag, wpcf7_get_message( 'invalid_tel' ) );
+			$result['valid'] = false;
+			$result['reason'][$name] = wpcf7_get_message( 'invalid_tel' );
 		}
 	}
 
-	if ( ! empty( $value ) ) {
-		$maxlength = $tag->get_maxlength_option();
-		$minlength = $tag->get_minlength_option();
-
-		if ( $maxlength && $minlength && $maxlength < $minlength ) {
-			$maxlength = $minlength = null;
-		}
-
-		$code_units = wpcf7_count_code_units( $value );
-
-		if ( false !== $code_units ) {
-			if ( $maxlength && $maxlength < $code_units ) {
-				$result->invalidate( $tag, wpcf7_get_message( 'invalid_too_long' ) );
-			} elseif ( $minlength && $code_units < $minlength ) {
-				$result->invalidate( $tag, wpcf7_get_message( 'invalid_too_short' ) );
-			}
-		}
+	if ( isset( $result['reason'][$name] ) && $id = $tag->get_id_option() ) {
+		$result['idref'][$name] = $id;
 	}
 
 	return $result;

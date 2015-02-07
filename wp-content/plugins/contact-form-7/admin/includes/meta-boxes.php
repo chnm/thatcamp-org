@@ -96,33 +96,16 @@ function wpcf7_mail_meta_box( $post, $box ) {
 }
 
 function wpcf7_messages_meta_box( $post ) {
-	$updated = isset( $_REQUEST['message'] )
-		&& in_array( $_REQUEST['message'], array( 'saved', 'created' ) );
-	$count = 0;
-	$messages = wpcf7_messages();
-
-	foreach ( $messages as $key => $arr ) {
-		$count += 1;
+	foreach ( wpcf7_messages() as $key => $arr ) :
 		$field_name = 'wpcf7-message-' . strtr( $key, '_', '-' );
 
 ?>
 <div class="message-field">
-<p class="description"><label for="<?php echo $field_name; ?>"><?php echo esc_html( $arr['description'] ); ?></label></p>
+<label for="<?php echo $field_name; ?>"><em># <?php echo esc_html( $arr['description'] ); ?></em></label><br />
 <input type="text" id="<?php echo $field_name; ?>" name="<?php echo $field_name; ?>" class="wide" size="70" value="<?php echo esc_attr( $post->message( $key, false ) ); ?>" />
 </div>
 <?php
-
-		if ( ! $updated && 10 <= count( $messages ) ) {
-			if ( 6 == $count ) {
-				echo '<p><a href="#" id="show-all-messages">' . esc_html( __( 'Show all messages', 'contact-form-7' ) ) . '</a></p>' . "\n";
-				echo '<div class="hide-initially">';
-			}
-
-			if ( count( $messages ) == $count ) {
-				echo '</div>';
-			}
-		}
-	}
+	endforeach;
 }
 
 function wpcf7_additional_settings_meta_box( $post ) {

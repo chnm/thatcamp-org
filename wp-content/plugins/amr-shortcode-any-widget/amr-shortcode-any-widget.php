@@ -4,7 +4,7 @@ Plugin Name: amr shortcode any widget
 Plugin URI: http://webdesign.anmari.com/shortcode-any-widget/
 Description: Include any widget in a page for any theme.  [do_widget widgetname ] or  [do_widget "widget name" ] or include a whole widget area [do_widget_area]. If upgrading see changelog.  Can be very powerful eg: with queryposts widget it can become a templater.
 Author: anmari
-Version: 2.4
+Version: 2.3
 Author URI: http://webdesign.anmari.com
 
 */
@@ -303,7 +303,7 @@ if ( function_exists('register_sidebar') )  {  // maybe later, get the first mai
 	$args = array(
 		'name'			=>'Widgets for Shortcodes',
 		'id'            => 'widgets_for_shortcodes',  // hope to avoid losing widgets
-		'description'   => __('Sidebar to hold widgets and their settings. These widgets will be used in a shortcode.  This sidebars widgets should be saved with your theme settings now.','amr-shortcode-any-widget'),
+		'description'   => 'Sidebar to hold widgets and their settings. These widgets will be used in a shortcode.  This sidebars widgets should be saved with your theme settings now.',
 		'before_widget' => '<aside'.' id="%1$s" class="%2$s ">',  // 201402 to match twentyfourteen theme
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h1 class="widget-title" >', // 201402 maybe dont use widget class - we are in content here not in a widget area but others want the widget styling. ?
@@ -339,10 +339,5 @@ add_shortcode('do_widget', 		'do_widget');
 add_shortcode('do_widget_area', 'do_widget_area');  // just dump the whole widget area - to get same styling
 
 //require_once(ABSPATH . 'wp-includes/widgets.php');   // *** do we really need this here?
-function amr_saw_load_text() { 
-// wp (see l10n.php) will check wp-content/languages/plugins if nothing found in plugin dir
-	$result = load_plugin_textdomain( 'amr-shortcode-any-widget', false, 
-	dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-}
-	add_action('plugins_loaded'         , 'amr_saw_load_text' );
+
 ?>

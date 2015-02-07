@@ -49,6 +49,11 @@ function wpcf7_checkbox_shortcode_handler( $tag ) {
 	if ( false !== $tabindex )
 		$tabindex = absint( $tabindex );
 
+	$defaults = array();
+
+	if ( $matches = $tag->get_first_match_option( '/^default:([0-9_]+)$/' ) )
+		$defaults = explode( '_', $matches[1] );
+
 	$html = '';
 	$count = 0;
 
@@ -70,24 +75,6 @@ function wpcf7_checkbox_shortcode_handler( $tag ) {
 			$labels = array_merge( $labels, array_values( $data ) );
 		}
 	}
-
-	$defaults = array();
-
-	$default_choice = $tag->get_default_option( null, 'multiple=1' );
-
-	foreach ( $default_choice as $value ) {
-		$key = array_search( $value, $values, true );
-
-		if ( false !== $key ) {
-			$defaults[] = (int) $key + 1;
-		}
-	}
-
-	if ( $matches = $tag->get_first_match_option( '/^default:([0-9_]+)$/' ) ) {
-		$defaults = array_merge( $defaults, explode( '_', $matches[1] ) );
-	}
-
-	$defaults = array_unique( $defaults );
 
 	$hangover = wpcf7_get_hangover( $tag->name, $multiple ? array() : '' );
 
@@ -195,8 +182,15 @@ function wpcf7_checkbox_validation_filter( $result, $tag ) {
 
 	$value = isset( $_POST[$name] ) ? (array) $_POST[$name] : array();
 
-	if ( $tag->is_required() && empty( $value ) ) {
-		$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+	if ( 'checkbox*' == $type ) {
+		if ( empty( $value ) ) {
+			$result['valid'] = false;
+			$result['reason'][$name] = wpcf7_get_message( 'invalid_required' );
+		}
+	}
+
+	if ( isset( $result['reason'][$name] ) && $id = $tag->get_id_option() ) {
+		$result['idref'][$name] = $id;
 	}
 
 	return $result;

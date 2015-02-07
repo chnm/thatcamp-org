@@ -36,6 +36,11 @@ function wpcf7_select_shortcode_handler( $tag ) {
 
 	$atts['aria-invalid'] = $validation_error ? 'true' : 'false';
 
+	$defaults = array();
+
+	if ( $matches = $tag->get_first_match_option( '/^default:([0-9_]+)$/' ) )
+		$defaults = explode( '_', $matches[1] );
+
 	$multiple = $tag->has_option( 'multiple' );
 	$include_blank = $tag->has_option( 'include_blank' );
 	$first_as_label = $tag->has_option( 'first_as_label' );
@@ -48,30 +53,11 @@ function wpcf7_select_shortcode_handler( $tag ) {
 		$labels = array_merge( $labels, array_values( $data ) );
 	}
 
-	$defaults = array();
+	$empty_select = empty( $values );
 
-	$default_choice = $tag->get_default_option( null, 'multiple=1' );
-
-	foreach ( $default_choice as $value ) {
-		$key = array_search( $value, $values, true );
-
-		if ( false !== $key ) {
-			$defaults[] = (int) $key + 1;
-		}
-	}
-
-	if ( $matches = $tag->get_first_match_option( '/^default:([0-9_]+)$/' ) ) {
-		$defaults = array_merge( $defaults, explode( '_', $matches[1] ) );
-	}
-
-	$defaults = array_unique( $defaults );
-
-	$shifted = false;
-
-	if ( $include_blank || empty( $values ) ) {
+	if ( $empty_select || $include_blank ) {
 		array_unshift( $labels, '---' );
 		array_unshift( $values, '' );
-		$shifted = true;
 	} elseif ( $first_as_label ) {
 		$values[0] = '';
 	}
@@ -89,9 +75,7 @@ function wpcf7_select_shortcode_handler( $tag ) {
 				$selected = ( $hangover == esc_sql( $value ) );
 			}
 		} else {
-			if ( ! $shifted && in_array( (int) $key + 1, (array) $defaults ) ) {
-				$selected = true;
-			} elseif ( $shifted && in_array( (int) $key, (array) $defaults ) ) {
+			if ( ! $empty_select && in_array( $key + 1, (array) $defaults ) ) {
 				$selected = true;
 			}
 		}
@@ -140,10 +124,16 @@ function wpcf7_select_validation_filter( $result, $tag ) {
 		}
 	}
 
-	$empty = ! isset( $_POST[$name] ) || empty( $_POST[$name] ) && '0' !== $_POST[$name];
+	if ( $tag->is_required() ) {
+		if ( ! isset( $_POST[$name] )
+		|| empty( $_POST[$name] ) && '0' !== $_POST[$name] ) {
+			$result['valid'] = false;
+			$result['reason'][$name] = wpcf7_get_message( 'invalid_required' );
+		}
+	}
 
-	if ( $tag->is_required() && $empty ) {
-		$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+	if ( isset( $result['reason'][$name] ) && $id = $tag->get_id_option() ) {
+		$result['idref'][$name] = $id;
 	}
 
 	return $result;

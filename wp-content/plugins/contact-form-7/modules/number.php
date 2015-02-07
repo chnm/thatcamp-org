@@ -53,8 +53,6 @@ function wpcf7_number_shortcode_handler( $tag ) {
 		$value = '';
 	}
 
-	$value = $tag->get_default_option( $value );
-
 	$value = wpcf7_get_hangover( $tag->name, $value );
 
 	$atts['value'] = $value;
@@ -97,13 +95,21 @@ function wpcf7_number_validation_filter( $result, $tag ) {
 	$max = $tag->get_option( 'max', 'signed_int', true );
 
 	if ( $tag->is_required() && '' == $value ) {
-		$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+		$result['valid'] = false;
+		$result['reason'][$name] = wpcf7_get_message( 'invalid_required' );
 	} elseif ( '' != $value && ! wpcf7_is_number( $value ) ) {
-		$result->invalidate( $tag, wpcf7_get_message( 'invalid_number' ) );
+		$result['valid'] = false;
+		$result['reason'][$name] = wpcf7_get_message( 'invalid_number' );
 	} elseif ( '' != $value && '' != $min && (float) $value < (float) $min ) {
-		$result->invalidate( $tag, wpcf7_get_message( 'number_too_small' ) );
+		$result['valid'] = false;
+		$result['reason'][$name] = wpcf7_get_message( 'number_too_small' );
 	} elseif ( '' != $value && '' != $max && (float) $max < (float) $value ) {
-		$result->invalidate( $tag, wpcf7_get_message( 'number_too_large' ) );
+		$result['valid'] = false;
+		$result['reason'][$name] = wpcf7_get_message( 'number_too_large' );
+	}
+
+	if ( isset( $result['reason'][$name] ) && $id = $tag->get_id_option() ) {
+		$result['idref'][$name] = $id;
 	}
 
 	return $result;

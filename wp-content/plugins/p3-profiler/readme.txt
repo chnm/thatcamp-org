@@ -3,7 +3,7 @@ Contributors: Godaddy, StarfieldTech, kurtpayne
 Tags: debug, debugging, developer, development, performance, plugin, profiler, speed
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 1.5.3.6
+Stable tag: 1.5.3.4
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,17 +46,11 @@ Manual installation:
 4. Then activate the Plugin from Plugins page.
 
 == Upgrade Notice ==
-= 1.5.3.6 =
-Internal version bump to ensure new CSS/JS isn't cached
-
-= 1.5.3.5 =
-CSS fix for jQuery UI Dialogs
-
 = 1.5.3.4 =
-Fixes another CSS issue with overlays and some browsers
+Fixes another CSS issue with overlays and soem browsers
 
 = 1.5.3.3 =
-Fixes a CSS issue with overlays and some browsers
+Fixes a CSS issue with overlays and soem browsers
 
 = 1.5.3.2 =
 Style updates for 4.1
@@ -165,11 +159,8 @@ add_filter( 'p3_automatic_scan_urls', 'my_p3_auto_scan_pages' );
 </code>
 
 == Changelog ==
-= 1.5.3.6 =
-Internal version bump to ensure new CSS/JS isn't cached
-
-= 1.5.3.5 =
-* CSS fix for jQuery UI Dialogs.  props cklosows
+= 1.5.3.4 =
+* Fixes another CSS issue with overlays and soem browsers
 
 = 1.5.3.3 =
 * Fixes a CSS issue with overlays and soem browsers

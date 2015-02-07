@@ -80,12 +80,16 @@ function wpcf7_file_validation_filter( $result, $tag ) {
 	$file = isset( $_FILES[$name] ) ? $_FILES[$name] : null;
 
 	if ( $file['error'] && UPLOAD_ERR_NO_FILE != $file['error'] ) {
-		$result->invalidate( $tag, wpcf7_get_message( 'upload_failed_php_error' ) );
+		$result['valid'] = false;
+		$result['reason'][$name] = wpcf7_get_message( 'upload_failed_php_error' );
+		$result['idref'][$name] = $id ? $id : null;
 		return $result;
 	}
 
 	if ( empty( $file['tmp_name'] ) && $tag->is_required() ) {
-		$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+		$result['valid'] = false;
+		$result['reason'][$name] = wpcf7_get_message( 'invalid_required' );
+		$result['idref'][$name] = $id ? $id : null;
 		return $result;
 	}
 
@@ -144,14 +148,18 @@ function wpcf7_file_validation_filter( $result, $tag ) {
 	$file_type_pattern = '/\.' . $file_type_pattern . '$/i';
 
 	if ( ! preg_match( $file_type_pattern, $file['name'] ) ) {
-		$result->invalidate( $tag, wpcf7_get_message( 'upload_file_type_invalid' ) );
+		$result['valid'] = false;
+		$result['reason'][$name] = wpcf7_get_message( 'upload_file_type_invalid' );
+		$result['idref'][$name] = $id ? $id : null;
 		return $result;
 	}
 
 	/* File size validation */
 
 	if ( $file['size'] > $allowed_size ) {
-		$result->invalidate( $tag, wpcf7_get_message( 'upload_file_too_large' ) );
+		$result['valid'] = false;
+		$result['reason'][$name] = wpcf7_get_message( 'upload_file_too_large' );
+		$result['idref'][$name] = $id ? $id : null;
 		return $result;
 	}
 
@@ -160,15 +168,15 @@ function wpcf7_file_validation_filter( $result, $tag ) {
 	$uploads_dir = wpcf7_maybe_add_random_dir( $uploads_dir );
 
 	$filename = $file['name'];
-	$filename = wpcf7_canonicalize( $filename );
-	$filename = sanitize_file_name( $filename );
 	$filename = wpcf7_antiscript_file_name( $filename );
 	$filename = wp_unique_filename( $uploads_dir, $filename );
 
 	$new_file = trailingslashit( $uploads_dir ) . $filename;
 
 	if ( false === @move_uploaded_file( $file['tmp_name'], $new_file ) ) {
-		$result->invalidate( $tag, wpcf7_get_message( 'upload_failed' ) );
+		$result['valid'] = false;
+		$result['reason'][$name] = wpcf7_get_message( 'upload_failed' );
+		$result['idref'][$name] = $id ? $id : null;
 		return $result;
 	}
 

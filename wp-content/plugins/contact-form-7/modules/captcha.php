@@ -73,13 +73,6 @@ function wpcf7_captcha_shortcode_handler( $tag ) {
 
 		$atts['size'] = $tag->get_size_option( '40' );
 		$atts['maxlength'] = $tag->get_maxlength_option();
-		$atts['minlength'] = $tag->get_minlength_option();
-
-		if ( $atts['maxlength'] && $atts['minlength']
-		&& $atts['maxlength'] < $atts['minlength'] ) {
-			unset( $atts['maxlength'], $atts['minlength'] );
-		}
-
 		$atts['class'] = $tag->get_class_option( $class );
 		$atts['id'] = $tag->get_id_option();
 		$atts['tabindex'] = $tag->get_option( 'tabindex', 'int', true );
@@ -125,10 +118,14 @@ function wpcf7_captcha_validation_filter( $result, $tag ) {
 
 	$prefix = isset( $_POST[$captchac] ) ? (string) $_POST[$captchac] : '';
 	$response = isset( $_POST[$name] ) ? (string) $_POST[$name] : '';
-	$response = wpcf7_canonicalize( $response );
 
 	if ( 0 == strlen( $prefix ) || ! wpcf7_check_captcha( $prefix, $response ) ) {
-		$result->invalidate( $tag, wpcf7_get_message( 'captcha_not_match' ) );
+		$result['valid'] = false;
+		$result['reason'][$name] = wpcf7_get_message( 'captcha_not_match' );
+	}
+
+	if ( isset( $result['reason'][$name] ) && $id = $tag->get_id_option() ) {
+		$result['idref'][$name] = $id;
 	}
 
 	if ( 0 != strlen( $prefix ) ) {
