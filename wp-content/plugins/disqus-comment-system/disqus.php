@@ -4,7 +4,7 @@ Plugin Name: Disqus Comment System
 Plugin URI: http://disqus.com/
 Description: The Disqus comment system replaces your WordPress comment system with your comments hosted and powered by Disqus. Head over to the Comments admin page to set up your Disqus Comment System.
 Author: Disqus <team@disqus.com>
-Version: 2.81
+Version: 2.84
 Author URI: http://disqus.com/
 */
 
@@ -18,7 +18,7 @@ define('DISQUS_CAN_EXPORT',         is_file(dirname(__FILE__) . '/export.php'));
 if (!defined('DISQUS_DEBUG')) {
     define('DISQUS_DEBUG',          false);
 }
-define('DISQUS_VERSION',            '2.81');
+define('DISQUS_VERSION',            '2.84');
 define('DISQUS_SYNC_TIMEOUT',       30);
 
 /**
@@ -36,6 +36,7 @@ function dsq_options() {
         'disqus_user_api_key',
         'disqus_replace',
         'disqus_cc_fix',
+        'dsq_external_js',
         # SSO features
         'disqus_partner_key',
         'disqus_public_key',
@@ -274,6 +275,10 @@ function dsq_manage_dialog($message, $error = false) {
 }
 
 function dsq_sync_comments($comments) {
+    if ( count($comments) < 1 ) {
+        return;
+    }
+
     global $wpdb;
 
     // user MUST be logged out during this process
@@ -287,11 +292,13 @@ function dsq_sync_comments($comments) {
 
     $thread_ids = array_keys($thread_map);
 
+    $threads_query = implode(', ', array_fill(0, count($thread_ids), '%s'));
+
     // add as many placeholders as needed
     $sql = "
         SELECT post_id, meta_value 
         FROM $wpdb->postmeta 
-        WHERE meta_key = 'dsq_thread_id' AND meta_value IN (".implode(', ', array_fill(0, count($thread_ids), '%s')).")
+        WHERE meta_key = 'dsq_thread_id' AND meta_value IN (" . $threads_query . ")
     ";
 
     // Call $wpdb->prepare passing the values of the array as separate arguments
@@ -688,12 +695,18 @@ function dsq_get_pending_post_ids() {
 }
 
 function dsq_clear_pending_post_ids($post_ids) {
+    if ( count($post_ids) < 1 ) {
+        return;
+    }
+
     global $wpdb;
+
+    $posts_query = implode(', ', array_fill(0, count($post_ids), '%s'));
 
     // add as many placeholders as needed
     $sql = "
         DELETE FROM {$wpdb->postmeta} 
-        WHERE meta_key = 'dsq_needs_sync' AND post_id IN (".implode(', ', array_fill(0, count($post_ids), '%s')).")
+        WHERE meta_key = 'dsq_needs_sync' AND post_id IN (" . $posts_query . ")
     ";
 
     // Call $wpdb->prepare passing the values of the array as separate arguments
@@ -1161,54 +1174,46 @@ function dsq_add_query_posts($posts) {
     }
 }
 
-// check to see if the posts in the loop match the original request or an explicit request, if so output the JS
-function dsq_loop_end($query) {
-    if ( get_option('disqus_cc_fix') == '1' || 
-        !count($query->posts) || 
-        is_single() || 
-        is_page() || 
-        is_feed() || 
-        !dsq_can_replace() 
-        ) {
-        return;
-    }
-    global $DSQ_QUERY_POST_IDS;
-    foreach ($query->posts as $post) {
-        $loop_ids[] = intval($post->ID);
-    }
-    $posts_key = md5(serialize($loop_ids));
-    if (isset($DSQ_QUERY_POST_IDS[$posts_key])) {
-        dsq_output_loop_comment_js($DSQ_QUERY_POST_IDS[$posts_key]);
-    }
-}
-add_action('loop_end', 'dsq_loop_end');
-
-// if someone has a better hack, let me know
-// prevents duplicate calls to count.js
-$_HAS_COUNTS = false;
-
 function dsq_output_count_js() {
-    $count_vars = array(
-        'disqusShortname' => strtolower( get_option( 'disqus_forum_url' ) ),
-    );
+    if ( get_option('dsq_external_js') == '1' ) {
+        $count_vars = array(
+            'disqusShortname' => strtolower( get_option( 'disqus_forum_url' ) ),
+        );
 
-    wp_register_script( 'dsq_count_script', plugins_url( '/media/js/count.js', __FILE__ ) );
-    wp_localize_script( 'dsq_count_script', 'countVars', $count_vars );
-    wp_enqueue_script( 'dsq_count_script', plugins_url( '/media/js/count.js', __FILE__ ) );
-}
-
-function dsq_output_loop_comment_js($post_ids = null) {
-    global $_HAS_COUNTS;
-    if ($_HAS_COUNTS) return;
-    $_HAS_COUNTS = true;
-    if (count($post_ids)) {
-        dsq_output_count_js();
+        wp_register_script( 'dsq_count_script', plugins_url( '/media/js/count.js', __FILE__ ) );
+        wp_localize_script( 'dsq_count_script', 'countVars', $count_vars );
+        wp_enqueue_script( 'dsq_count_script', plugins_url( '/media/js/count.js', __FILE__ ) );
+    }
+    else {
+        ?>
+        <script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = '<?php echo strtolower( get_option('disqus_forum_url') ); ?>';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1) {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script'); 
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.<?php echo DISQUS_DOMAIN; ?>/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+        <?php
     }
 }
 
 function dsq_output_footer_comment_js() {
     if (!dsq_can_replace()) return;
-    if (get_option('disqus_cc_fix') != '1') return;
 
     dsq_output_count_js();
 }
@@ -1339,6 +1344,22 @@ if(!function_exists('cf_json_encode')) {
 }
 
 // Single Sign-on Integration
+
+function dsq_sso_login() {      
+    global $current_site;      
+    $sitename = get_bloginfo('name');      
+    $siteurl = site_url();     
+    $button = get_option('disqus_sso_button');     
+    $sso_login_str = 'this.sso = {     
+          name: "' . esc_js( $sitename ) . '",       
+          button: "' . $button . '",       
+          url: "' . $siteurl . '/wp-login.php",        
+          logout: "' . $siteurl . '/wp-login.php?action=logout",       
+          width: "800",        
+          height: "700"        
+    };';        
+    return $sso_login_str;     
+}
 
 function dsq_sso() {
     if ($key = get_option('disqus_partner_key')) {

@@ -10,6 +10,7 @@ if (isset($pd_options['new_tab'])) {
 ?>>
     <div class="paypal-donations">
         <input type="hidden" name="cmd" value="_donations" />
+        <input type="hidden" name="bn" value="TipsandTricks_SP" />
         <input type="hidden" name="business" value="<?php echo $pd_options['paypal_account']; ?>" />
 <?php
         # Build the button

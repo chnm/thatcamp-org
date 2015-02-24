@@ -223,7 +223,26 @@ class blcPostTypeOverlord {
 			$elapsed = microtime(true) - $start;
 			$blclog->debug($q);
 			$blclog->log(sprintf('...... %d rows deleted in %.3f seconds', $wpdb->rows_affected, $elapsed));
- 			
+
+			//Delete records where the post status is not one of the enabled statuses.
+			$blclog->log('...... Deleting synch records for posts that have a disallowed status');
+			$start = microtime(true);
+			$q = "DELETE synch.*
+				  FROM
+					 {$wpdb->prefix}blc_synch AS synch
+					 LEFT JOIN {$wpdb->posts} AS posts
+					 ON (synch.container_id = posts.ID and synch.container_type = posts.post_type)
+				  WHERE
+					 posts.post_status NOT IN (%s)";
+			$q = sprintf(
+				$q,
+				"'" . implode("', '", $escaped_post_statuses) . "'"
+			);
+			$wpdb->query( $q );
+			$elapsed = microtime(true) - $start;
+			$blclog->debug($q);
+			$blclog->log(sprintf('...... %d rows deleted in %.3f seconds', $wpdb->rows_affected, $elapsed));
+
 			//Remove the 'synched' flag from all posts that have been updated
 			//since the last time they were parsed/synchronized.
 			$blclog->log('...... Marking changed posts as unsynched');
@@ -280,7 +299,7 @@ class blcPostTypeOverlord {
         	return $content;
        	}
         
-        //Retrieve info about all occurences of broken links in the current post 
+        //Retrieve info about all occurrences of broken links in the current post
         $q = "
 			SELECT instances.raw_url
 			FROM {$wpdb->prefix}blc_instances AS instances JOIN {$wpdb->prefix}blc_links AS links 

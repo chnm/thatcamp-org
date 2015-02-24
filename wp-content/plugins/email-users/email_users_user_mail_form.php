@@ -98,7 +98,7 @@
 					$sortby = mailusers_get_default_sort_users_by();
 	
 					$users = mailusers_get_users($user_ID);
-                    
+
 					foreach ($users as $user) {
 						switch ($sortby) {
 							case 'fl' :  //  First Last
@@ -197,3 +197,19 @@
 		</p>
 	</form>
 </div>
+<?php
+    //  Check to see if number of users in select list will exceed the
+    //  PHP INI max_input_vars setting.  If it does and the user selects
+    //  more users than the max_input_vars value (minus some overhead for
+    //  other form fields) the form will be redisplayed without the subject
+    //  and email content.  This is an unusual situation which results in
+    //  user confusion as it isn't clear what is wrong.
+    //
+    //  If the scenario is detected, a warning will be displayed on the page.
+    
+    //  Account for the other form fields of which there are about 10 including hidden fields ...
+    if (count($users) > (ini_get('max_input_vars') - 10))
+    {
+        printf('<div style="border-left: 4px solid #ffba00;" class="error nag"><p>%s</p></div>', sprintf(__('Warning:  The number of users (%d) plus overhead exceeds the PHP <a href="http://php.net/manual/en/info.configuration.php#ini.max-input-vars">max_input_vars</a> setting (%d).  You will not be able to send email to more than %d users in one batch.  This can be changed by increasing the value of <a href="http://php.net/manual/en/info.configuration.php#ini.max-input-vars">max_input_vars</a> setting in the PHP.ini configuration file.', MAILUSERS_I18N_DOMAIN), count($users), ini_get('max_input_vars'), ini_get('max_input_vars') - 10)) ;
+    }
+?>

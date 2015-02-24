@@ -62,7 +62,8 @@ function blc_get_db_schema(){
 		`status_text` varchar(250) DEFAULT '',
 		`request_duration` float NOT NULL DEFAULT '0',
 		`timeout` tinyint(1) unsigned NOT NULL DEFAULT '0',
-		`broken` tinyint(1) NOT NULL DEFAULT '0',
+		`broken` tinyint(1) unsigned NOT NULL DEFAULT '0',
+		`warning` tinyint(1) unsigned NOT NULL DEFAULT '0',
 		`may_recheck` tinyint(1) NOT NULL DEFAULT '1',
 		`being_checked` tinyint(1) NOT NULL DEFAULT '0',
 

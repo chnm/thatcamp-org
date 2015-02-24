@@ -6,7 +6,7 @@ Plugin URI: http://wordpress.org/extend/plugins/polldaddy/
 Description: Create and manage Polldaddy polls and ratings in WordPress
 Author: Automattic, Inc.
 Author URL: http://polldaddy.com/
-Version: 2.0.25
+Version: 2.0.26
 */
 
 // You can hardcode your Polldaddy PartnerGUID (API Key) here
@@ -3688,6 +3688,7 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 		$polldaddy = $this->get_client( WP_POLLDADDY__PARTNERGUID, $this->rating_user_code );
 		$polldaddy->reset();
 
+		$error = false;
 		$rating_errors = array();
 		if ( empty( $rating_id ) ) {
 			$pd_rating = $polldaddy->create_rating( $blog_name , $new_type );
@@ -3722,10 +3723,19 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 						$pd_rating = $polldaddy->create_rating( $blog_name , $new_type );
 						$rating_errors[] = $polldaddy->errors;
 					}
+				} elseif ( isset( $polldaddy->errors[ -1 ] ) && $polldaddy->errors[ -1 ] == "Can't connect" ) {
+					$this->contact_support_message( __( 'Could not connect to the Polldaddy API' ), $rating_errors );
+					$error = true;
+				} elseif ( isset( $polldaddy->errors[ -1 ] ) && $polldaddy->errors[ -1 ] == "Invalid API URL" ) {
+					$this->contact_support_message( __( 'The API URL is incorrect' ), $rating_errors );
+					$error = true;
+				} elseif ( isset( $polldaddy->errors[ -2 ] ) && $polldaddy->errors[ -2 ] == "No Data" ) {
+					$this->contact_support_message( __( 'Your API request did not return any data' ), $rating_errors );
+					$error = true;
 				}
 			}
 
-			if ( empty( $pd_rating ) ) { //something's up!
+			if ( $error == false && empty( $pd_rating ) ) { //something's up!
 				$this->contact_support_message( __( 'There was an error creating your rating widget' ), $rating_errors );
 				$error = true;
 			} else {
@@ -4510,23 +4520,26 @@ src="http://static.polldaddy.com/p/<?php echo (int) $poll_id; ?>.js"&gt;&lt;/scr
 			$polldaddy = $this->get_client( WP_POLLDADDY__PARTNERGUID, $this->rating_user_code );
 			$polldaddy->reset();
 			$rating = $polldaddy->update_rating( $rating_id, $settings_text, $rating_type );
-		}
-		elseif ( $this->is_admin && $new_rating_id > 0 ) {
-			switch ( $type ) {
-			case 'pages':
-				update_option( 'pd-rating-pages-id', $new_rating_id );
-				if ( (int) get_option( 'pd-rating-pages' ) > 0 )
-					update_option( 'pd-rating-pages', $new_rating_id );
-				break;
-			case 'comments':
-				update_option( 'pd-rating-comments-id', $new_rating_id );
-				if ( (int) get_option( 'pd-rating-comments' ) > 0 )
-					update_option( 'pd-rating-comments', $new_rating_id );
-				break;
-			case 'posts':
-				update_option( 'pd-rating-posts-id', $new_rating_id );
-				if ( (int) get_option( 'pd-rating-posts' ) > 0 )
-					update_option( 'pd-rating-posts', $new_rating_id );
+		} elseif ( $this->is_admin && $new_rating_id > 0 ) {
+			$polldaddy = $this->get_client( WP_POLLDADDY__PARTNERGUID, $this->rating_user_code );
+			$pd_rating = $polldaddy->get_rating( $new_rating_id );
+			if ( false !== $pd_rating ) {
+				switch ( $type ) {
+				case 'pages':
+					update_option( 'pd-rating-pages-id', $new_rating_id );
+					if ( (int) get_option( 'pd-rating-pages' ) > 0 )
+						update_option( 'pd-rating-pages', $new_rating_id );
+					break;
+				case 'comments':
+					update_option( 'pd-rating-comments-id', $new_rating_id );
+					if ( (int) get_option( 'pd-rating-comments' ) > 0 )
+						update_option( 'pd-rating-comments', $new_rating_id );
+					break;
+				case 'posts':
+					update_option( 'pd-rating-posts-id', $new_rating_id );
+					if ( (int) get_option( 'pd-rating-posts' ) > 0 )
+						update_option( 'pd-rating-posts', $new_rating_id );
+				}
 			}
 		}
 

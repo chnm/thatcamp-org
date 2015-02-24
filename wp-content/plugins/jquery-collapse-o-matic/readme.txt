@@ -3,9 +3,9 @@
 Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more, plugin oven
-Requires at least: 3.5
-Tested up to: 4.0
-Stable tag: 1.6.1
+Requires at least: 3.9
+Tested up to: 4.2
+Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,26 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.6.5 =
+* maptastic class only removed when present
+* maptastic has a max-width assigned to prevent content from entering display area.
+* updated collapse-commander integration to work with new licensing system
+* tested up to: WordPress 4.2-alpha-31047
+
+= 1.6.4 =
+* added plugin to GitHub: https://github.com/baden03/collapse-o-matic
+* added new tabindex attribute to shortcode and options page
+* registration fields are masked using password input type
+
+= 1.6.3 =
+* added shortcode and html support for the title, swaptitle, startwrap, enwrap and excerpt attributes using placeholders
+* added wpex_clean_shortcodes filter to strip unwanted p and br tags from the shortcode
+* added the ability to set trigclass, targtag and targclass attribute values in the plugin options page
+
+= 1.6.2 =
+* added colomat-swap class to the swaptitle element
+* added optional cid default to the shortcode
 
 = 1.6.1 =
 * fixed undeclared cid variable
@@ -253,6 +273,23 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.6.4 =
+* added plugin to GitHub: https://github.com/baden03/collapse-o-matic
+* added new tabindex attribute to shortcode and options page
+* registration fields are masked using password input type
+
+= 1.6.3 =
+* added shortcode support for the excerpt attribute
+* added wpex_clean_shortcodes filter to strip unwanted p and br tags from the shortcode
+* added the ability to set trigclass, targtag and targclass attribute values in the plugin options page
+
+= 1.6.2 =
+* added colomat-swap class to the swaptitle element
+* added optional cid default to the shortcode
+
+= 1.6.1 =
+* fixed undeclared cid variable
 
 = 1.6 =
 * fixed issue with using id anchor links on elements with expanded=‘true’

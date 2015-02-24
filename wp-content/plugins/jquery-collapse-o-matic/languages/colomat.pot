@@ -1,10 +1,10 @@
-# Copyright (C) 2014 
-# This file is distributed under the same license as the  package.
+# Copyright (C) 2014 Collapse-O-Matic
+# This file is distributed under the same license as the Collapse-O-Matic package.
 msgid ""
 msgstr ""
-"Project-Id-Version:  \n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/colomat\n"
-"POT-Creation-Date: 2014-01-16 10:31:43+00:00\n"
+"Project-Id-Version: Collapse-O-Matic 1.6.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/colomat\n"
+"POT-Creation-Date: 2014-12-02 08:32:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,131 +12,281 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: collapse-o-matic.php:277
+#: collapse-o-matic.php:349
 msgid "Settings"
 msgstr ""
 
-#: collapse-o-matic.php:297 collapse-o-matic.php:409
-msgid "Click to toggle"
-msgstr ""
-
-#: collapse-o-matic.php:298
-msgid "Default Collapse-O-Matic Settings"
-msgstr ""
-
-#: collapse-o-matic.php:309
-msgid "Style"
-msgstr ""
-
-#: collapse-o-matic.php:316
-msgid "Light"
-msgstr ""
-
-#: collapse-o-matic.php:317
-msgid "Dark"
-msgstr ""
-
-#: collapse-o-matic.php:328
-msgid ""
-"Select Light for sites with lighter backgrounds. Select Dark for sites with "
-"darker backgrounds."
-msgstr ""
-
-#: collapse-o-matic.php:333
-msgid "Tag Attribute"
-msgstr ""
-
-#: collapse-o-matic.php:335
-msgid ""
-"HTML tag use to wrap the trigger text. See %sTag Attribute%s in the "
-"documentation for more info."
-msgstr ""
-
-#: collapse-o-matic.php:345
-msgid "Collapse/Expand Duration"
-msgstr ""
-
-#: collapse-o-matic.php:347
-msgid ""
-"A string or number determining how long the animation will run. See %"
-"sDuration%s in the documentation for more info."
-msgstr ""
-
-#: collapse-o-matic.php:352
-msgid "Animation Effect"
+#: collapse-o-matic.php:358
+msgid "really tied the room together"
 msgstr ""
 
 #: collapse-o-matic.php:359
-msgid "Slide Only"
+msgid "made you feel all warm and fuzzy on the inside"
 msgstr ""
 
 #: collapse-o-matic.php:360
-msgid "Slide & Fade"
+msgid "restored your faith in humanity... even if only for a fleeting second"
+msgstr ""
+
+#: collapse-o-matic.php:361
+msgid "rocked your world"
+msgstr ""
+
+#: collapse-o-matic.php:362
+msgid "inspired you to commit a random act of kindness"
+msgstr ""
+
+#: collapse-o-matic.php:363
+msgid "encouraged more regular flossing of the teeth"
+msgstr ""
+
+#: collapse-o-matic.php:364
+msgid "helped organize your life in the small ways that matter"
+msgstr ""
+
+#: collapse-o-matic.php:365
+msgid "saved your minutes--if not tens of minutes--writing your own solution"
+msgstr ""
+
+#: collapse-o-matic.php:366
+msgid "brightened your day... or darkened if if you are trying to sleep in"
+msgstr ""
+
+#: collapse-o-matic.php:367
+msgid "caused you to dance a little jig of joy and joyousness"
+msgstr ""
+
+#: collapse-o-matic.php:368
+msgid "inspired you to tweet a little @twinpictues social love"
+msgstr ""
+
+#: collapse-o-matic.php:369
+msgid "tasted great, while also being less filling"
+msgstr ""
+
+#: collapse-o-matic.php:370
+msgid "caused you to shout: \"everybody spread love, give me some mo!\""
 msgstr ""
 
 #: collapse-o-matic.php:371
-msgid ""
-"Animation effect to use while collapsing and expanding. See %sAnimation "
-"Effect%s in the documentation for more info."
+msgid "helped you keep the funk alive"
 msgstr ""
 
-#: collapse-o-matic.php:376
-msgid "Custom Style"
+#: collapse-o-matic.php:372
+msgid "<a href=\"http://www.youtube.com/watch?v=dvQ28F5fOdU\" target=\"_blank\">soften hands while you do dishes</a>"
 msgstr ""
 
-#: collapse-o-matic.php:378
-msgid "Custom CSS style for <em>ultimate flexibility</em>"
+#: collapse-o-matic.php:373
+msgid "helped that little old lady <a href=\"http://www.youtube.com/watch?v=Ug75diEyiA0\" target=\"_blank\">find the beef</a>"
 msgstr ""
 
-#: collapse-o-matic.php:383
-msgid "Shortcode Loads Scripts"
+#: collapse-o-matic.php:386 collapse-o-matic.php:557
+msgid "Click to toggle"
 msgstr ""
 
-#: collapse-o-matic.php:384
-msgid "Only load scripts with shortcode."
-msgstr ""
-
-#: collapse-o-matic.php:385
-msgid "Only load Collapse-O-Matic scripts if [expand] shortcode is used."
-msgstr ""
-
-#: collapse-o-matic.php:390
-msgid "Level Up!"
-msgstr ""
-
-#: collapse-o-matic.php:391
-msgid ""
-"%sCollapse-Pro-Matic%s is our preimum plugin that offers additional "
-"attributes and features for <i>ultimate</i> flexibility."
+#: collapse-o-matic.php:387
+msgid "Default Collapse-O-Matic Settings"
 msgstr ""
 
 #: collapse-o-matic.php:398
-msgid "Save Changes"
+msgid "Style"
 msgstr ""
 
-#: collapse-o-matic.php:410
-msgid "About"
+#: collapse-o-matic.php:405
+msgid "Light"
 msgstr ""
 
-#: collapse-o-matic.php:413
-msgid ""
-"Remove clutter, save space. Display and hide additional content in a SEO "
-"friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a "
-"lovely jQuery expanding and collapsing element."
-msgstr ""
-
-#: collapse-o-matic.php:415
-msgid ""
-"%sDetailed documentation%s, complete with working demonstrations of all "
-"shortcode attributes, is available for your instructional enjoyment."
-msgstr ""
-
-#: collapse-o-matic.php:416
-msgid "%sFree%s Opensource Support"
+#: collapse-o-matic.php:406
+msgid "Dark"
 msgstr ""
 
 #: collapse-o-matic.php:417
-msgid ""
-"If this plugin %s, please consider %sreviewing it at WordPress.org%s to help "
-"others."
+msgid "Select Light for sites with lighter backgrounds. Select Dark for sites with darker backgrounds."
+msgstr ""
+
+#: collapse-o-matic.php:423
+msgid "CID Attribute"
+msgstr ""
+
+#: collapse-o-matic.php:425
+msgid "Default %sCollapse Commander%s ID"
+msgstr ""
+
+#: collapse-o-matic.php:431
+msgid "Tag Attribute"
+msgstr ""
+
+#: collapse-o-matic.php:433
+msgid "HTML tag use to wrap the trigger text. See %sTag Attribute%s in the documentation for more info."
+msgstr ""
+
+#: collapse-o-matic.php:438
+msgid "Trigclass Attribute"
+msgstr ""
+
+#: collapse-o-matic.php:440
+msgid "Default class assigned to the trigger element. See %sTrigclass Attribute%s in the documentation for more info."
+msgstr ""
+
+#: collapse-o-matic.php:445
+msgid "Targtag Attribute"
+msgstr ""
+
+#: collapse-o-matic.php:447
+msgid "HTML tag use for the target element. See %sTargtag Attribute%s in the documentation for more info."
+msgstr ""
+
+#: collapse-o-matic.php:452
+msgid "Targclass Attribute"
+msgstr ""
+
+#: collapse-o-matic.php:454
+msgid "Default class assigned to the target element. See %sTargclass Attribute%s in the documentation for more info."
+msgstr ""
+
+#: collapse-o-matic.php:464
+msgid "Collapse/Expand Duration"
+msgstr ""
+
+#: collapse-o-matic.php:466
+msgid "A string or number determining how long the animation will run. See %sDuration%s in the documentation for more info."
+msgstr ""
+
+#: collapse-o-matic.php:471
+msgid "Animation Effect"
+msgstr ""
+
+#: collapse-o-matic.php:478
+msgid "Slide Only"
+msgstr ""
+
+#: collapse-o-matic.php:479
+msgid "Slide & Fade"
+msgstr ""
+
+#: collapse-o-matic.php:490
+msgid "Animation effect to use while collapsing and expanding. See %sAnimation Effect%s in the documentation for more info."
+msgstr ""
+
+#: collapse-o-matic.php:495
+msgid "Custom Style"
+msgstr ""
+
+#: collapse-o-matic.php:497
+msgid "Custom CSS style for <em>ultimate flexibility</em>"
+msgstr ""
+
+#: collapse-o-matic.php:502
+msgid "Shortcode Loads Scripts"
+msgstr ""
+
+#: collapse-o-matic.php:503
+msgid "Only load scripts with shortcode."
+msgstr ""
+
+#: collapse-o-matic.php:504
+msgid "Only load Collapse-O-Matic scripts if [expand] shortcode is used."
+msgstr ""
+
+#: collapse-o-matic.php:509
+msgid "Script Load Location"
+msgstr ""
+
+#: collapse-o-matic.php:516
+msgid "Header"
+msgstr ""
+
+#: collapse-o-matic.php:517
+msgid "Footer"
+msgstr ""
+
+#: collapse-o-matic.php:528
+msgid "Where should the script be loaded, in the Header or the Footer?"
+msgstr ""
+
+#: collapse-o-matic.php:533
+msgid "Take Command!"
+msgstr ""
+
+#: collapse-o-matic.php:534
+msgid "%sCollapse Commander%s is an add-on plugin that introduces an advanced management interface to better organize expand elements and simplify expand shortcodes."
+msgstr ""
+
+#: collapse-o-matic.php:539
+msgid "Level Up!"
+msgstr ""
+
+#: collapse-o-matic.php:540
+msgid "%sCollapse-Pro-Matic%s is our premium plugin that offers additional attributes and features for <i>ultimate</i> flexibility."
+msgstr ""
+
+#: collapse-o-matic.php:547
+msgid "Save Changes"
+msgstr ""
+
+#: collapse-o-matic.php:558
+msgid "About"
+msgstr ""
+
+#: collapse-o-matic.php:561
+msgid "Remove clutter, save space. Display and hide additional content in a SEO friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a lovely jQuery expanding and collapsing element."
+msgstr ""
+
+#: collapse-o-matic.php:563
+msgid "%sDetailed documentation%s, complete with working demonstrations of all shortcode attributes, is available for your instructional enjoyment."
+msgstr ""
+
+#: collapse-o-matic.php:564
+msgid "%sFree Opensource Support%s"
+msgstr ""
+
+#: collapse-o-matic.php:565
+msgid "If this plugin %s, please consider %sreviewing it at WordPress.org%s to help others."
+msgstr ""
+
+#: collapse-o-matic.php:580
+msgid "Register Collapse Commander"
+msgstr ""
+
+#: collapse-o-matic.php:582
+msgid "To receive plugin updates you must register your plugin. Enter your Receipt ID and email address used to purchase the plugin below."
+msgstr ""
+
+#: collapse-o-matic.php:586
+msgid "Receipt ID"
+msgstr ""
+
+#: collapse-o-matic.php:588
+msgid "Receipt ID is found in the Collapse Commander Purchase Receipt"
+msgstr ""
+
+#: collapse-o-matic.php:593
+msgid "Email"
+msgstr ""
+
+#: collapse-o-matic.php:595
+msgid "Email address used to purchase Collapse Commander"
+msgstr ""
+
+#: collapse-o-matic.php:601
+msgid "Register"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "Collapse-O-Matic"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://plugins.twinpictures.de/plugins/collapse-o-matic/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "twinpictures, baden03"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://twinpictures.de/"
 msgstr ""

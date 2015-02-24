@@ -18,6 +18,9 @@
 .colomat-close {
 	background-image: url(images/arrow-up.png);
 }
+.colomat-swap {
+	display: none;
+}
 .collapseomatic_excerpt, .collapseomatic_content {
 	margin-top: 0px;
 	margin-left: 16px;
@@ -36,6 +39,7 @@
 	position: absolute !important;
 	left: -10000px !important;
 	display:block !important;
+	max-width: 9999px;
 }
 .span_fix {
 	padding: 0 !important;

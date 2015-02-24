@@ -3,10 +3,10 @@ Contributors: oferwald
 Donate link: http://transposh.org/donate/
 Tags: translation, translate, i18n, widget, filter, buddypress, bilingual, multilingual, transposh, language, crowdsourcing, google translate, bing translate, context, wiki, RTL, Hebrew, Spanish, French, Russian, English, Arabic, Portuguese
 Requires at least: 3.3
-Tested up to: 3.8
-Stable tag: 0.9.5
+Tested up to: 4.1
+Stable tag: 0.9.6
 
-Transposh adds best of breed translation support to wordpress, 82 languages are automatically translated and can be manually corrected with ease.
+Transposh adds best of breed translation support to wordpress, 92 languages are automatically translated and can be manually corrected with ease.
 
 == Description ==
 Transposh translation filter for WordPress offers a unique approach to blog translation. It allows your blog to combine automatic translation with human translation aided by your users with an easy to use in-context interface.
@@ -23,7 +23,7 @@ You can watch the video above, made by Fabrice Meuwissen of obviousidea.com whic
 * Translation of external plugins without a need for .po/.mo files
 * Automatic translation mode for all content (including comments!)
 * Professional translation bt [One Hour Translation](http://transposh.org/redir/oht)
-* Use either Google Translate,MS Translate or Apertium backends - 82 languages supported!
+* Use either Google Translate,MS Translate or Apertium backends - 92 languages supported!
 * Automatic translation can be triggered on demand by the readers or on the server side
 * RSS feeds are translated too
 * Takes care of hidden elements, link tags, meta contents and titles
@@ -125,6 +125,10 @@ This version allows sorting of languages within the widget
  * Portuguese (Brazil) translation by [Amilton Junior](http://www.dicasemgeral.com)
 
 == Changelog ==
+= 2014/12/27 - 0.9.6 =
+ * Added 10 new google languages
+ * edit parameter renamed to tpedit to reduce collisions with other plugins
+ * Pay attention, no bug fixes and new features here, please upgrade to the full and free version
 = 2014/02/05 - 0.9.5 =
  * Added 9 new google languages
 = 2013/10/31 - 0.9.4 =

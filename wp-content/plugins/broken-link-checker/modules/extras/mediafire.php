@@ -12,7 +12,7 @@ ModuleLazyInit: true
 ModuleClassName: blcMediaFireChecker
 ModulePriority: 100
 
-ModuleCheckerUrlPattern: @^http://(?:www\.)?mediafire\.com/(?:download\.php)?\?([0-9a-zA-Z]{11})(?:$|[^0-9a-zA-Z])@
+ModuleCheckerUrlPattern: @^http://(?:www\.)?mediafire\.com/(?:(?:download\.php)?\?|download/)([0-9a-zA-Z]{11,20})(?:$|[^0-9a-zA-Z])@
 */
 
 /**
@@ -81,29 +81,44 @@ class blcMediaFireChecker extends blcChecker {
 				$result['broken'] = false;
 				$result['log'] .= "File OK";
 			} elseif ( isset($rez['headers']['location']) ) {
-				//Redirect = some kind of error. Redirects to an error page with an explanatory message.
-				//The redirect URL is structured like this : '/error.php?errno=320'. The 'errno' argument
-				//contains an (undocumented) error code. The only known value is 'errno=320', which
-				//indicates that the file is invalid or has been deleted.
+				//Redirect = either an error or a redirect to the full file URL.
+				//For errors, the redirect URL is structured like this : '/error.php?errno=320'.
+				//The 'errno' argument contains an (undocumented) error code.
 				$result['broken'] = true;
-				if ( strpos($rez['headers']['location'], 'errno=320') !== false ){
+
+				if ( strpos($rez['headers']['location'], '/download/') !== false ) {
+					$result['broken'] = false;
+					$result['http_code'] = 200;
+					$result['log'] .= "File OK";
+					$result['log'] .= "\nFull URL: " . $rez['headers']['location'];
+
+				} elseif ( strpos($rez['headers']['location'], 'errno=320') !== false ){
 					$result['status_code'] = BLC_LINK_STATUS_ERROR;
 					$result['status_text'] = __('Not Found', 'broken-link-checker');
 					$result['http_code'] = 0;
 					$result['log'] .= "The file is invalid or has been removed.";
-				} else if ( strpos($rez['headers']['location'], 'errno=378') !== false ){
+
+				} elseif ( strpos($rez['headers']['location'], 'errno=378') !== false ) {
 					$result['status_code'] = BLC_LINK_STATUS_ERROR;
 					$result['status_text'] = __('Not Found', 'broken-link-checker');
 					$result['http_code'] = 0;
 					$result['log'] .= "The file has been removed due to a violation of MediaFire ToS.";
+
+				} elseif ( strpos($rez['headers']['location'], 'errno=388') !== false ) {
+					$result['status_code'] = BLC_LINK_STATUS_WARNING;
+					$result['status_text'] = __('Permission Denied', 'broken-link-checker');
+					$result['http_code'] = 0;
+					$result['log'] .= "Permission denied. Most likely the plugin sent too many requests too quickly. Try again later.";
+
 				} else {
 					$result['status_code'] = BLC_LINK_STATUS_INFO;
 					$result['status_text'] = __('Unknown Error', 'broken-link-checker');
 					$result['log'] .= "Unknown error.\n\n";
 					foreach($rez['headers'] as $name => $value){
-						$result['log'] .= printf("%s: %s\n", $name, $value);
+						$result['log'] .= sprintf("%s: %s\n", $name, $value);
 					}
 				}
+
 			} else {
 				$result['log'] .= "Unknown error.\n\n" . implode("\n",$rez['headers']);
 			}
@@ -138,28 +153,14 @@ class blcMediaFireChecker extends blcChecker {
 	 * @return array|WP_Error
 	 */
 	function head($url){
-		//Only consider transports that allow redirection to be disabled.
-		$args = array();
-		if ( class_exists('WP_Http_ExtHttp') && (true === WP_Http_ExtHttp::test($args)) ) {
-			$transport = new WP_Http_ExtHttp();
-		} else if ( class_exists('WP_Http_Curl') && (true === WP_Http_Curl::test($args)) ) {
-			$transport = new WP_Http_Curl();
-		} else if ( class_exists('WP_Http_Curl') && (true === WP_Http_Fsockopen::test($args)) ) {
-			$transport = new WP_Http_Fsockopen();
-		} else {
-			return new WP_Error(
-				'no_suitable_transport',
-				"No suitable HTTP transport found. Please upgrade to a more recent version of PHP or install the CURL extension."
-			);
-		}
-		
 		$conf = blc_get_configuration();
 		$args = array(
 			'timeout' => $conf->options['timeout'],
 			'redirection' => 0,
-			'method' => 'HEAD',
+			'_redirection' => 0, //Internal flag that turns off redirect handling. See WP_Http::handle_redirects()
 		);
-		return $transport->request($url, $args);
+
+		return wp_remote_head($url, $args);
 	}
 	
 }

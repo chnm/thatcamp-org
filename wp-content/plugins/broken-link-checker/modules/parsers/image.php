@@ -60,7 +60,7 @@ class blcHTMLImage extends blcParser {
 				};
 				
 				if ( !isset($parts['scheme']) ){
-					//No sheme - likely a relative URL. Turn it into an absolute one.
+					//No scheme - likely a relative URL. Turn it into an absolute one.
 					$url = $this->relative2absolute($url, $base_url);
 				}
 				

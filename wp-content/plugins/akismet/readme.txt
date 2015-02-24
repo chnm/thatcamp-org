@@ -1,9 +1,9 @@
 === Akismet ===
-Contributors: matt, ryan, andy, mdawaffe, tellyworth, josephscott, lessbloat, eoigal, cfinke, automattic
+Contributors: matt, ryan, andy, mdawaffe, tellyworth, josephscott, lessbloat, eoigal, cfinke, automattic, jgs
 Tags: akismet, comments, spam
 Requires at least: 3.1
-Tested up to: 4.0
-Stable tag: 3.0.3
+Tested up to: 4.1
+Stable tag: 3.0.4
 License: GPLv2 or later
 
 Akismet checks your comments against the Akismet Web service to see if they look like spam or not.
@@ -29,6 +29,15 @@ Upload the Akismet plugin to your blog, Activate it, then enter your [Akismet.co
 1, 2, 3: You're done!
 
 == Changelog ==
+
+= 3.0.4 =
+*Release Date - 11th December, 2014*
+
+* Fix to make .htaccess compatible with Apache 2.4.
+* Fix to allow removal of https author URLs.
+* Fix to avoid stripping part of the author URL when removing and re-adding.
+* Removed the "Check for Spam" button from the "Trash" and "Approved" queues, where it would have no effect.
+* Allow automatic API key configuration when Jetpack is installed and connected to a WordPress.com account
 
 = 3.0.3 =
 *Release Date - 3rd November, 2014*

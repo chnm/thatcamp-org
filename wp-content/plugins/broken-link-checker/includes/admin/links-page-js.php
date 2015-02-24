@@ -57,6 +57,7 @@ jQuery(function($){
     	var master = $(this).parents('.blc-row');
     	var link_id = master.attr('id').split('-')[2];
 		$('#link-details-'+link_id).toggle();
+		return false;
     });
 
 	var ajaxInProgressHtml = '<?php echo esc_js(__('Wait...', 'broken-link-checker')); ?>';
@@ -89,9 +90,11 @@ jQuery(function($){
 					master.attr('class', classNames);
 					
 					//Flash the main row green to indicate success, then remove it if the current view
-					//is supposed to show only broken links.
+					//is supposed to show only broken links or warnings.
+					var should_hide_link = blc_is_broken_filter || (blc_current_base_filter == 'warnings');
+
 					flashElementGreen(master, function(){
-						if ( blc_is_broken_filter ){
+						if ( should_hide_link ){
 							details.remove();
 							master.remove();
 						} else {
@@ -100,7 +103,7 @@ jQuery(function($){
 					});
 					
 					//Update the elements displaying the number of results for the current filter.
-					if( blc_is_broken_filter ){
+					if( should_hide_link ){
                     	alterLinkCounter(-1);
                     }
 				} else {
@@ -121,7 +124,7 @@ jQuery(function($){
 
 		var master = me.closest('.blc-row');
 		var link_id = master.attr('id').split('-')[2];
-		var should_hide_link = (blc_current_base_filter == 'broken') || (blc_current_base_filter == 'redirects');
+		var should_hide_link = $.inArray(blc_current_base_filter, ['broken', 'redirects', 'warnings']) > -1;
 
 		$.post(
 			"<?php echo admin_url('admin-ajax.php'); ?>",
@@ -206,9 +209,131 @@ jQuery(function($){
 		return false;
 	});
 
+	//The "Recheck" button.
+	$(".blc-recheck-button").click(function () {
+		var me = $(this);
+		var oldButtonHtml = me.html();
+		me.html(ajaxInProgressHtml);
+
+		var master = me.closest('.blc-row');
+		var link_id = master.attr('id').split('-')[2];
+
+		$.post(
+			"<?php echo admin_url('admin-ajax.php'); ?>",
+			{
+				'action' : 'blc_recheck',
+				'link_id' : link_id,
+				'_ajax_nonce' : '<?php echo esc_js(wp_create_nonce('blc_recheck'));  ?>'
+			},
+			function (response){
+				me.html(oldButtonHtml);
+
+				if (response && (typeof(response['error']) != 'undefined')){
+					//An internal error occurred before the plugin could check the link (e.g. database error).
+					alert(response.error);
+				} else {
+					//Display the new status in the link row.
+					displayLinkStatus(master, response);
+					reloadDetailsRow(link_id);
+
+					//Flash the row green to indicate success
+					flashElementGreen(master);
+				}
+			},
+			'json'
+		);
+
+		return false;
+	});
+
+	//The "Fix redirect" action.
+	$('.blc-deredirect-button').click(function() {
+		//This action can only be used once. If it succeeds, it will no longer be applicable to the current link.
+		//If it fails, something is broken and trying again probably won't help.
+		var me = $(this);
+		me.text(ajaxInProgressHtml);
+
+		var master = me.closest('.blc-row');
+		var linkId = master.attr('id').split('-')[2];
+		var shouldHideLink = blc_current_base_filter == 'redirects';
+		var details = $('#link-details-' + linkId);
+
+		$.post(
+			"<?php echo admin_url('admin-ajax.php'); ?>",
+			{
+				'action' : 'blc_deredirect',
+				'link_id' : linkId,
+				'_ajax_nonce' : '<?php echo esc_js(wp_create_nonce('blc_deredirect'));  ?>'
+			},
+			function (response){
+				me.closest('span').hide();
+
+				if (handleEditResponse(response, master, linkId, null)) {
+					if (shouldHideLink) {
+						details.remove();
+						master.remove();
+					}
+				}
+			},
+			'json'
+		);
+
+		return false;
+	});
+
 	function flashElementGreen(element, callback) {
 		var oldColor = element.css('background-color');
 		element.animate({ backgroundColor: "#E0FFB3" }, 200).animate({ backgroundColor: oldColor }, 300, callback);
+	}
+
+
+	/**
+	 * Update status indicators for a link. This includes the contents of the "Status" column, CSS classes and so on.
+	 *
+	 * @param {Object} row Table row as a jQuery object.
+	 * @param {Object} status
+	 */
+	function displayLinkStatus(row, status) {
+		//Update the status code and class.
+		var statusColumn = row.find('td.column-status');
+		if (status.status_text) {
+			statusColumn.find('.status-text').text(status.status_text);
+		}
+		statusColumn.find('.http-code').text(status.http_code ? status.http_code : '');
+
+		var oldStatusClass = row.attr('class').match(/(?:^|\s)(link-status-[^\s]+)(?:\s|$)/);
+		oldStatusClass = oldStatusClass ? oldStatusClass[1] : '';
+		var newStatusClass = 'link-status-' + status.status_code;
+
+		statusColumn.find('.link-status-row').removeClass(oldStatusClass).addClass(newStatusClass);
+		row.removeClass(oldStatusClass).addClass(newStatusClass);
+
+		//Last check time and failure duration are complicated to update, so we'll just hide them.
+		//The user can refresh the page to get the new values.
+		statusColumn.find('.link-last-checked td').html('&nbsp;');
+		statusColumn.find('.link-broken-for td').html('&nbsp;');
+
+		//The link may or may not be a redirect now.
+		row.toggleClass('blc-redirect', status.redirect_count > 0);
+
+		if (typeof status['redirect_count'] !== 'undefined') {
+			var redirectColumn = row.find('td.column-redirect-url').empty();
+
+			if (status.redirect_count > 0 && status.final_url) {
+				redirectColumn.append(
+					$(
+						'<a></a>',
+						{
+							href: status.final_url,
+							text: status.final_url,
+							title: status.final_url,
+							'class': 'blc-redirect-url',
+							target: '_blank'
+						}
+					)
+				);
+			}
+		}
 	}
 
 
@@ -234,7 +359,8 @@ jQuery(function($){
 
 		//Populate editor fields.
 		var urlElement = master.find('a.blc-link-url');
-		var urlInput = editRow.find('.blc-link-url-field').val(urlElement.attr('href'));
+		var linkUrl = urlElement.data('editable-url') || urlElement.attr('href');
+		var urlInput = editRow.find('.blc-link-url-field').val(linkUrl);
 
 		var titleInput = editRow.find('.blc-link-text-field');
 		var linkText = master.data('link-text'),
@@ -265,7 +391,7 @@ jQuery(function($){
 		if (canEditUrl && blc_suggestions_enabled && (master.hasClass('link-status-error') || master.hasClass('link-status-warning'))) {
 			editRow.find('.blc-url-replacement-suggestions').show();
 			var suggestionList = editRow.find('.blc-suggestion-list');
-			findReplacementSuggestions(urlElement.attr('href'), suggestionList);
+			findReplacementSuggestions(linkUrl, suggestionList);
 		}
 
 		editRow.find('.blc-update-link-button').prop('disabled', !(canEditUrl || canEditText));
@@ -375,84 +501,81 @@ jQuery(function($){
 				progressIndicator.hide();
 				updateButton.prop('disabled', false);
 
-				if (response && (typeof(response['error']) != 'undefined')){
-					//An internal error occurred before the link could be edited.
-					alert(response.error);
-				} else if (response.errors.length > 0) {
-					//Build and display an error message.
-					var msg = '';
-
-					if ( response.cnt_okay > 0 ){
-						var fragment = sprintf(
-							'<?php echo esc_js(__('%d instances of the link were successfully modified.', 'broken-link-checker')); ?>',
-							response.cnt_okay
-						);
-						msg = msg + fragment + '\n';
-						if ( response.cnt_error > 0 ){
-							fragment = sprintf(
-								'<?php echo esc_js(__("However, %d instances couldn't be edited and still point to the old URL.", 'broken-link-checker')); ?>',
-								response.cnt_error
-							);
-							msg = msg + fragment + "\n";
-						}
-					} else {
-						msg = msg + '<?php echo esc_js(__('The link could not be modified.', 'broken-link-checker')); ?>\n';
-					}
-
-					msg = msg + '\n<?php echo esc_js(__("The following error(s) occurred :", 'broken-link-checker')); ?>\n* ';
-					msg = msg + response.errors.join('\n* ');
-
-					alert(msg);
-				} else {
-					//Everything went well. Update the link row with the new values.
-
-					//Replace the displayed link URL with the new one.
-					urlElement.attr('href', response.url).text(response.url);
-
-					//Save the new ID
-					replaceLinkId(linkId, response.new_link_id);
-					//Load up the new link info
-					reloadDetailsRow(response.new_link_id);
-
-					//Update the link text if it was edited.
-					if ((newText !== null) && (response.link_text !== null)) {
-						master.data('link-text', response.link_text);
-						if (response.ui_link_text !== null) {
-							master.find('.column-new-link-text').html(response.ui_link_text);
-						}
-					}
-
-					//Update the status code and class.
-					var statusColumn = master.find('td.column-status');
-					if (response.status_text) {
-						statusColumn.find('.status-text').text(response.status_text);
-					}
-					statusColumn.find('.http-code').text(response.http_code ? response.http_code : '');
-
-					var oldStatusClass = master.attr('class').match(/(?:^|\s)(link-status-[^\s]+)(?:\s|$)/);
-					oldStatusClass = oldStatusClass ? oldStatusClass[1] : '';
-					var newStatusClass = 'link-status-' + response.status_code;
-
-					statusColumn.find('.link-status-row').removeClass(oldStatusClass).addClass(newStatusClass);
-					master.removeClass(oldStatusClass).addClass(newStatusClass);
-
-					//Last check time and failure duration are complicated to update, so we'll just hide them.
-					//The user can refresh the page to get the new values.
-					statusColumn.find('.link-last-checked td').html('&nbsp;');
-					statusColumn.find('.link-broken-for td').html('&nbsp;');
-
-					//We don't know if the link is still a redirect.
-					master.removeClass('blc-redirect');
-
-					//Flash the row green to indicate success
-					flashElementGreen(master);
-				}
+				handleEditResponse(response, master, linkId, newText);
 
 				hideLinkEditor(editRow);
 			},
 			'json'
 		);
 
+	}
+
+	function handleEditResponse(response, master, linkId, newText) {
+		if (response && (typeof(response['error']) != 'undefined')){
+			//An internal error occurred before the link could be edited.
+			alert(response.error);
+			return false;
+		} else if (response.errors.length > 0) {
+			//Build and display an error message.
+			var msg = '';
+
+			if ( response.cnt_okay > 0 ){
+				var fragment = sprintf(
+					'<?php echo esc_js(__('%d instances of the link were successfully modified.', 'broken-link-checker')); ?>',
+					response.cnt_okay
+				);
+				msg = msg + fragment + '\n';
+				if ( response.cnt_error > 0 ){
+					fragment = sprintf(
+						'<?php echo esc_js(__("However, %d instances couldn't be edited and still point to the old URL.", 'broken-link-checker')); ?>',
+						response.cnt_error
+					);
+					msg = msg + fragment + "\n";
+				}
+			} else {
+				msg = msg + '<?php echo esc_js(__('The link could not be modified.', 'broken-link-checker')); ?>\n';
+			}
+
+			msg = msg + '\n<?php echo esc_js(__("The following error(s) occurred :", 'broken-link-checker')); ?>\n* ';
+			msg = msg + response.errors.join('\n* ');
+
+			alert(msg);
+			return false;
+		} else {
+			//Everything went well. Update the link row with the new values.
+
+			//Replace the displayed link URL with the new one.
+			var urlElement = master.find('a.blc-link-url');
+			urlElement
+				.attr('href', response.url)
+				.text(response.url)
+				.data('editable-url', response.url)
+				.prop('title', response.url);
+			if ( typeof response['escaped_url'] != 'undefined' ) {
+				urlElement.attr('href', response.escaped_url)
+			}
+
+			//Save the new ID
+			replaceLinkId(linkId, response.new_link_id);
+			//Load up the new link info
+			reloadDetailsRow(response.new_link_id);
+
+			//Update the link text if it was edited.
+			if ((newText !== null) && (response.link_text !== null)) {
+				master.data('link-text', response.link_text);
+				if (response.ui_link_text !== null) {
+					master.find('.column-new-link-text').html(response.ui_link_text);
+				}
+			}
+
+			//Update the status code and class.
+			displayLinkStatus(master, response);
+
+			//Flash the row green to indicate success
+			flashElementGreen(master);
+
+			return true;
+		}
 	}
 
     //The "Edit URL" button - displays the inline editor
@@ -598,25 +721,19 @@ jQuery(function($){
 		dialogClass : 'blc-search-container',
 		resizable: false
 	});
-    
+
     $('#blc-open-search-box').click(function(){
     	if ( searchForm.dialog('isOpen') ){
 			searchForm.dialog('close');
 		} else {
-			//Display the search form under the "Search" button
-	    	var button_position = $('#blc-open-search-box').offset();
-	    	var button_height = $('#blc-open-search-box').outerHeight(true);
-	    	var button_width = $('#blc-open-search-box').outerWidth(true);
-	    	
-			var dialog_width = searchForm.dialog('option', 'width');
-						
-	    	searchForm.dialog('option', 'position', 
-				[ 
-					button_position.left - dialog_width + button_width/2, 
-					button_position.top + button_height + 1 - $(document).scrollTop()
-				]
-			);
-			searchForm.dialog('open');
+			searchForm
+				.dialog('open')
+				.dialog('widget')
+				.position({
+					my: 'right top',
+					at: 'right bottom',
+					of: $('#blc-open-search-box')
+				});
 		}
 	});
 	
@@ -639,7 +756,7 @@ jQuery(function($){
 		echo esc_js(
 			html_entity_decode(
 				__("You are about to delete the current filter.\n'Cancel' to stop, 'OK' to delete", 'broken-link-checker'),
-				ENT_QUOTES | ENT_HTML401,
+				ENT_QUOTES,
 				get_bloginfo('charset')
 			)
 		);
@@ -663,7 +780,7 @@ jQuery(function($){
 				echo esc_js(  
 					html_entity_decode(
 						__("Are you sure you want to delete all posts, bookmarks or other items that contain any of the selected links? This action can't be undone.\n'Cancel' to stop, 'OK' to delete", 'broken-link-checker'),
-						ENT_QUOTES | ENT_HTML401,
+						ENT_QUOTES,
 						get_bloginfo('charset')
 					)
 				); 
@@ -677,7 +794,7 @@ jQuery(function($){
 				echo esc_js(  
 					html_entity_decode(
 						__("Are you sure you want to remove the selected links? This action can't be undone.\n'Cancel' to stop, 'OK' to remove", 'broken-link-checker'),
-						ENT_QUOTES | ENT_HTML401,
+						ENT_QUOTES,
 						get_bloginfo('charset')
 					)
 				); 
@@ -686,6 +803,24 @@ jQuery(function($){
 				return false;
 			}
 		}
+	});
+
+	//Automatically disable bulk actions that don't apply to the currently selected links.
+	$('#blc-bulk-action').focus(function() {
+		var redirectsSelected = false, brokenLinksSelected = false;
+		$('tr th.check-column input:checked', '#blc-links').each(function() {
+			var row = $(this).closest('tr');
+			if (row.hasClass('blc-redirect')) {
+				redirectsSelected = true
+			}
+			if (row.hasClass('link-status-error') || row.hasClass('link-status-warning')) {
+				brokenLinksSelected = true;
+			}
+		});
+
+		var bulkAction = $(this);
+		bulkAction.find('option[value="bulk-deredirect"]').prop('disabled', !redirectsSelected);
+		bulkAction.find('option[value="bulk-not-broken"]').prop('disabled', !brokenLinksSelected);
 	});
 	
 	//------------------------------------------------------------
@@ -799,6 +934,8 @@ jQuery(function($){
 			e.preventDefault();
 		}
 	});
+
+
 });
 
 </script>

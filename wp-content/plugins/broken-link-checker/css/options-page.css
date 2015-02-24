@@ -236,3 +236,8 @@ ul.ui-tabs-nav li.ui-tabs-active a {
 #blc-settings-wrap .hndle {
 	cursor: default;
 }
+
+/* Miscellaneous */
+td:target, label:target {
+	background: #ffffaa;
+}
