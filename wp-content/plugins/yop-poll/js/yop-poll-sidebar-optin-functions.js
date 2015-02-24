@@ -8,13 +8,16 @@ jQuery(document).ready(function(jQuery) {
 			success: function(){
 
 				jQuery('#linksubmitdiv3').fadeOut();
+                jQuery("#WFItem394041").hide();
 			}
 		});
 	});
+
 });
 
 (function ($) {
 	jQuery.fn.waitUntilExists    = function (handler, shouldRunHandlerOnce, isChild) {
+
 		var found       = 'found';
 		var $this       = jQuery(this.selector);
 		var $elements   = $this.not(function () { return jQuery(this).data(found); }).each(handler).data(found, true);

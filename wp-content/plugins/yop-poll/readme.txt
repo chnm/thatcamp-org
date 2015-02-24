@@ -3,7 +3,7 @@ Contributors: yourownprogrammer
 Donate Link: http://www.yop-poll.com/thankyou/don.php
 Tags: booth, poll, polls, vote, voting, survey, polling, yop poll, yop
 Requires at least: 3.3
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.htm
@@ -144,11 +144,14 @@ You can have only one question per poll. If you want to ask more than one questi
 == Changelog ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 = 5.5 =
 * Fixed issue with clone poll
 * Fixed issue with archive page
 * Fixed issue with captcha
 
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 = 5.3 =
 * Fixed issue with links color being overwritten
 * Fixed issue with start date and end date not displaying corectly
@@ -160,8 +163,11 @@ You can have only one question per poll. If you want to ask more than one questi
 * Wizard to guide you when creating a poll
 * You can now change the order answers are being displayed
 
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 417df59... Update 3 themes and 14 plugins
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 = 4.9.3 =
 * Fixed security issue. Many thanks to Antonio Sanchez for all his help.
 

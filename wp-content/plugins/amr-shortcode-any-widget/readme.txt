@@ -22,30 +22,51 @@ Please read https://wordpress.org/plugins/amr-shortcode-any-widget/installation/
 
 == Installation ==
 
+<<<<<<< HEAD
 1. Test your chosen widget works in a normal sidebar or widget area first. Make sure it works.
 2. THEN Activate this plugin
 3. Go to Appearance > widgets and find the " widgets for shortcode" sidebar or widget area
 4. Drag your chosen widgets from your normal sidebar to the shortcodes sidebar. Save. 
 5. Either Go the shortcode any widget settings.  Click on one of the create page links to help you setup the shortcode in a new page.
 6. OR go to an existing page and enter a shortcode:
+=======
+1. Test your chosen widget in a normal sidebar or widget area first. Make sure it works.
+2. Then and only then activate this plugin
+3. Go to Appearance > widgets and find the " widgets for shortcode" sidebar or widget area
+4. Drag your chosen widget from your normal sidebar to the shortcodes sidebar. Save. 
+5. Now go to a page and enter a shortcode (Or Go the shortcode any widget settings.  Click on one of the create page links to help you setup the shortcode in a new page.)
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 
- [do_widget widgetname]   eg: [do_widget calendar]
- [do_widget "widget name"].   eg: [do_widget "tag cloud"]
- [do_widget id=widgetid] .     eg: [do_widget id=tag-cloud-3]
+*  [do_widget widgetname]   eg: [do_widget calendar]
+*  [do_widget "widget name"].   eg: [do_widget "tag cloud"]
+*  [do_widget id=widgetid] .     eg: [do_widget id=tag-cloud-3]
  
+<<<<<<< HEAD
  [do_widget_area]  (will use the  "widgets in shortcodes" widget area / sidebar
  [do_widget_area sidebarname]  for another sidebar or widget area - eg: to maximise likelihood of getting your theme's widget css to apply.  
 
 7. If the plugin cannot work out what you want and you are logged in as an administrator, it will show a debug prompt to you, the logged in admin only.   
 Click on the link 'Try debug'.  It will produce a bunch of info. Look for the id of your widget in the shortcodes sidebar (you may have to scroll through a lot of debug info). Try using the widget id - ie [do_widget id=somename-n].  Examples are tag-cloud-3, meta-2 etc.  Sometimes the widget name that wordpress calls it internally is not the same as what you see on the screen and you will need the 'debug' to find the id.
+=======
+*  [do_widget_area]  (will use the  "widgets in shortcodes" widget area / sidebar
+*  [do_widget_area sidebarname]  for another sidebar or widget area - eg: to maximise likelihood of getting your theme's widget css to apply.  
+
+7. If the plugin cannot work out what you want and you are logged in as an administrator, it will show a debug prompt to you (the logged in admin) only.   Sometimes the widget name that wordpress calls it internally is not the same as what you see on the screen and you will need the 'debug' to find the id.
+*  Click on the link 'Try debug'.  It will produce a bunch of info. 
+*  Look for the id of your widget in the shortcodes sidebar (you may have to scroll through a lot of debug info). 
+*  Try using the widget id - ie [do_widget id=somename-n].  Examples are tag-cloud-3, meta-2 etc.  
+
+**STOP - Do not read any further until you have got the basics working. You may make it too complicated, when it can be so simple.**
+
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 
 **STOP - Do not read any further until you have got the basics working.**
 
 
 **[do_widget ...] Parameters:**
 
-*  *nameofwidget* or name="*nameofwidget*"  This is NOT the title of the widget.  THis is the name that you see in the widgets menu page even when unassigned to a sidebar.  For existing users , you can also use just the name of the widget without name=.  It must bethe first parameter then.
-*  id=*wordpress assigned id of widget*.   Examples: meta-3, tag-cloud-9 etc
+*  *nameofwidget* or name="*nameofwidget*"  This is NOT the title of the widget.  THis is the name that you see in the widgets menu page even when unassigned to a sidebar.  For existing users , you can also use just the name of the widget without name=.  It must be the first parameter then.  You can only do this with the name, not the id.
+*  id=*wordpress assigned id of widget*.   Examples: id=meta-3, id=tag-cloud-9 etc
 *  title=false to hide the widgets title OR to override your themes first sidebar html settings for widget titles, use title=*htmltag* where *htmltag* is one of h1,h2,h3,h4,h5,header,strong,em.  If not entered plugin will use the same title html that your themes first sidebar uses - yes even if you change themes, it will switch to the new themes html.
 *  wrap=*htmltag* where *htmltag* is one of div,p,main,aside,section.  This will override your themes first sidebar html settings for widget wrapping html.
 *  widget_classes=none  This will remove the class "widget" from the wrapping html and the class "widget_title" from the title html.  This may be enough to remove any unwanted css styling from your theme.
@@ -73,28 +94,32 @@ If you use a widget more than once for different reasons, you may need to use th
 See also [home page](http://wordpress.org/plugins/amr-shortcode-any-widget/)
 
 If you liked this plugin, you might also like my other plugins:
-[icalevents.com](http://icalevents.com) - a ics compliant events plugin fully integrated with wordpress, so it will work with many other plugins (seo, maps, social)
-[wpusersplugin.com](http://wpusersplugin.com) - a suite of plugins to help with membership sites. Major plugin is [amr users](http://wordpress.org/extend/plugins/amr-users/)
+*  [icalevents.com](http://icalevents.com) - a ics compliant events plugin fully integrated with wordpress, so it will work with many other plugins (seo, maps, social)
+*  [wpusersplugin.com](http://wpusersplugin.com) - a suite of plugins to help with membership sites. Major plugin is [amr users](http://wordpress.org/extend/plugins/amr-users/)
 
 == Frequently Asked Questions ==
 
 **Widget help, the widget is doing this, when it should do that** 
 
+<<<<<<< HEAD
 There are 1000's of widgets. I cannot help you with these.  Please get it working first in a normal sidebar without this plugin.   Please see
+=======
+There are 1000's and 1000's of widgets. I cannot help you with these.  Please get it working first in a normal sidebar without this plugin and ask for support on the widgets forum it is does not work in a normal sidebar.   Please see
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 http://wordpress.org/support/topic/widget-help-settings-functioning-etc?replies=1
 
 
 **How to identify widget**
 
-To identify your widget in the shortcode, use a safe constant identfier like the NAME or the ID.
+To identify your widget in the shortcode, use a safe constant identifier like the NAME or the ID.
 
-The name is the generic NAME like "tag cloud".  It is NOT your unique title eg: "Amazing Cloud Of Keywords" which you might change one day while procrastinating about doing real work, idly decide looks a bit twee and change to "Cloud of tags". That would break the do_widget shortcode and it would not find your widget (if that was the way it worked).
+The name is the generic NAME like "tag cloud".  It is NOT your unique title eg: "Amazing Cloud Of Keywords" which you might change one day while procrastinating about doing real work, idly decide it looks a bit twee and change to "Cloud of tags". That would break the do_widget shortcode and it would not find your widget (if that was the way it worked).
 
 For this reason the plugin deliberately does not allow identification by 'title'. It is not necessary - for simple usage the name is perfectly adequate, for more complicated multi-instance usage, the ID is safer all around.
 
 Also the parameter 'title=' is being used to allow you to change the html tag used around the title (or hide the title), so it would be a tad confusing anyway to offer it and not necessary.
 
-Need more instruction: As per step 7 on the front page: To find the id of your chosen widget you can either
+Need more help: To find the id of your chosen widget you can either
 
 1)
 enter some garbage in the shortcode [do_widget wtf] and the plugin will offer you a try debug (if you are admin and logged in that is)
@@ -123,11 +148,17 @@ More info here: http://wordpress.org/support/topic/ids-and-multiple-instances-of
 
 **Styling, your theme, css, overriding**
 
-Check your styling.  The effects are very dependent on how your theme has specified the css that may apply to widgets and sidebars/widget areas.  It may work beautifully and have the content looking like it belongs with your theme.
-You may have undesired effects applying that do not work in the main content area.
-You may have desired effects not applying because the css is specific to a themes sidebar.
+There are 10s of 1000s of themes and widgets.  Multiply out the possible combinations.  Add in css specifity, inheritance and cascading rules.  Consider you are moving the widget out of the sidebar where the thee and lugin expect it to be.  Yes anything could happen wrt the appearance.  The effects are very dependent on how your theme has specified the css that may apply to widgets and sidebars/widget areas.  It may work beautifully and have the content looking like it belongs with your theme.
 
+<<<<<<< HEAD
 Via the plugin you can do the following to affect styling:
+=======
+But
+*  you may have undesired effects applying that do not work in the main content area
+*  You may have desired effects not applying because the css is specific to a themes sidebar and does not apply to the html in a page.
+
+The plugin can help a bit - Via the plugin you can do the following to affect styling:
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 
 *  Remove the general wordpress 'widget' class from the widgets wrapping html and the 'widget_title' from the title html.  ([do_widget *widgetname* widget_classes=none] 
 

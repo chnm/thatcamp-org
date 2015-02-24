@@ -8,10 +8,14 @@ Author URI: http://ideasilo.wordpress.com/
 Text Domain: contact-form-7
 Domain Path: /languages/
 <<<<<<< HEAD
+<<<<<<< HEAD
 Version: 4.1
 =======
 Version: 4.0.1
 >>>>>>> parent of 417df59... Update 3 themes and 14 plugins
+=======
+Version: 4.0.3
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 */
 
 /*  Copyright 2007-2015 Takayuki Miyoshi (email: takayukister at gmail.com)
@@ -32,10 +36,14 @@ Version: 4.0.1
 */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 define( 'WPCF7_VERSION', '4.1' );
 =======
 define( 'WPCF7_VERSION', '4.0.1' );
 >>>>>>> parent of 417df59... Update 3 themes and 14 plugins
+=======
+define( 'WPCF7_VERSION', '4.0.3' );
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 
 define( 'WPCF7_REQUIRED_WP_VERSION', '4.0' );
 

@@ -8,9 +8,14 @@ Tested up to: 4.1
 Stable tag: 4.1
 =======
 Requires at least: 3.9
+<<<<<<< HEAD
 Tested up to: 4.0
 Stable tag: 4.0.1
 >>>>>>> parent of 417df59... Update 3 themes and 14 plugins
+=======
+Tested up to: 4.1
+Stable tag: 4.0.3
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,7 +53,7 @@ The following are other recommended plugins by the author of Contact Form 7.
 * Belarusian (be_BY) - Igor Dubilei
 * Bosnian (bs_BA) - Vedran
 * Bulgarian (bg_BG) - Iliyan Darganov
-* Catalan (ca) - Jordi Sancho, Robert Buj, Jaume Aragay Badia
+* Catalan (ca) - Jordi Sancho, Robert Buj, Jaume Aragay Badia, luba lee
 * Central Kurdish (ckb) - Mahr Hassan
 * Chinese (China; zh_CN) - Soz, Keefe Dunn, Stella Hu
 * Chinese (Taiwan; zh_TW) - James Wu
@@ -93,7 +98,7 @@ The following are other recommended plugins by the author of Contact Form 7.
 * Sinhala (si_LK) - Nitin Aggarwal
 * Slovak (sk_SK) - Patrik Bóna, WordPress Slovakia
 * Slovene (sl_SI) - Mihael Simonič, Jani Roskar
-* Spanish (es_ES) - Jordi Sancho, Vladimir Prieto, Federico Mikaelian, Matias Baldanza, Carlos Agnese, Lourdes Cuesta
+* Spanish (es_ES) - Jordi Sancho, Vladimir Prieto, Federico Mikaelian, Matias Baldanza, Carlos Agnese, Lourdes Cuesta, Carlos Oropesa
 * Swedish (sv_SE) - Fredrik Jonsson, the Swedish community
 * Tagalog (tl) - Rupert Agnew Lanuza, Hanne, Language Connect
 * Tamil (ta) - Nitin Aggarwal
@@ -132,6 +137,7 @@ Do you have questions or issues with Contact Form 7? Use these support channels 
 For more information, see [Releases](http://contactform7.com/category/releases/).
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 = 4.1 =
 
 * Added maxlength and minlength options to several form-tag types.
@@ -142,6 +148,8 @@ For more information, see [Releases](http://contactform7.com/category/releases/)
 * Translations for Turkish, German, Portuguese, Dutch, and Hebrew have been updated.
 * WordPress 4.0 or higher is required.
 
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 = 4.0.3 =
 
 * The contextual help tab has been added to admin pages.
@@ -153,8 +161,11 @@ For more information, see [Releases](http://contactform7.com/category/releases/)
 * Introduced wpcf7_build_query() to correctly apply urlencode to keys and values in URL queries.
 * Translations for Portuguese, Spanish, Hungarian, and German have been updated.
 
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 417df59... Update 3 themes and 14 plugins
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 = 4.0.1 =
 
 * Fixed a bug that caused an error when creating new contact forms in some environment.

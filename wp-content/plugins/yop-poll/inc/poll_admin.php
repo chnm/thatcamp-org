@@ -580,9 +580,12 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
             $current->email_notifications_recipients=$options['email_notifications_recipients'];
             $current->email_notifications_subject=$options['email_notifications_subject'];
             $current->email_notifications_body=$options['email_notifications_body'];
+<<<<<<< HEAD
             $current->vote_permisions_wordpress_label=$options['vote_permisions_wordpress_label'];
             $current->vote_permisions_anonymous_label=$options['vote_permisions_anonymous_label'];
             $current->vote_button_label=$options['vote_button_label'];
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
         }
         $data['current_poll'] = $current;
         if( 'edit' == $action_type ) {
@@ -679,7 +682,10 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                 $archive                 = get_option( 'yop_poll_archive_order', array() );
                 if(($key = array_search($_REQUEST['id'], $archive)) !== false) {
                     unset($archive[$key]);
+<<<<<<< HEAD
                     $archive=array_values($archive);
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
                     update_option( 'yop_poll_archive_order', $archive );
 
                 }
@@ -693,7 +699,10 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                         $archive                 = get_option( 'yop_poll_archive_order', array() );
                         if(($key = array_search($poll_id, $archive)) !== false) {
                             unset($archive[$key]);
+<<<<<<< HEAD
                             $archive=array_values($archive);
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
                             update_option( 'yop_poll_archive_order', $archive );
                         }
                     }
@@ -744,11 +753,19 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
         global $wpdb, $current_user;
         $poll_details = self::get_poll_from_database_by_id( $poll_id );
         $clone_number = self::count_poll_from_database_like_name( $poll_details['poll_name'] . ' - clone' );
+<<<<<<< HEAD
         $meta                             = get_yop_poll_meta( $poll_id, 'options', true );
         $current_poll   = new YOP_POLL_Poll_Model( $poll_id );
         $current_poll->poll_total_votes=0;
         $poll_clone     =$current_poll;
         $poll_clone->ID = 0;
+=======
+
+        $current_poll   = new YOP_POLL_Poll_Model( $poll_id );
+        $poll_clone     = clone $current_poll;
+        $poll_clone->poll_total_votes=0;
+        $poll_clone->ID = NULL;
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
         if( $poll_details ) {
             $poll                   = array(
                 'title'       => $poll_details['poll_title'] . ' - clone' . ( 0 == $clone_number ? '' : $clone_number ),
@@ -756,7 +773,11 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                 'end_date'    => $poll_details['poll_end_date'],
                 'status'      => $poll_details['poll_status'],
                 'poll_date'   => $poll_details['poll_date'],
+<<<<<<< HEAD
                 'poll_total_votes' => 0,
+=======
+                'total_votes' => $poll_details['poll_total_votes'],
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
                 'author'      => $poll_details['poll_author'],
                 'name'        => $poll_details['poll_name'] . ' - clone' . ( 0 == $clone_number ? '' : $clone_number ),
                 'type'        => $poll_details['poll_type'],
@@ -765,6 +786,7 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
             $poll_clone->poll_name  = $poll['name'];
             $poll_clone->poll_title = $poll['title'];
 
+<<<<<<< HEAD
             foreach( $poll_clone->questions as $question ) {
                 $question->ID = 0;
                 foreach( $question->answers as $answer ) {
@@ -781,10 +803,23 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
             $id_poll=$poll_clone->save();
             self::save_poll_order($poll_clone,$poll_clone->poll_archive_order);
             update_yop_poll_meta( $id_poll, 'options', $meta );
+=======
+            foreach( $poll_clone->questions as &$question ) {
+                $question->ID = NULL;
+
+                foreach( $question->answers as &$answer ) {
+                    $answer->ID = NULL;
+                }
+            }
+
+          //  yop_poll_dump($poll_clone);
+            $poll_clone->save();
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 
         }
     }
 
+<<<<<<< HEAD
     private static function save_poll_order( $poll, $poll_order ) {
         $poll_archive_order = get_option( 'yop_poll_archive_order', array() );
         if( $poll_archive_order == "" ) {
@@ -822,6 +857,8 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
         $poll_archive_order = array_values( $poll_archive_order );
         update_option( 'yop_poll_archive_order', $poll_archive_order );
     }
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
     public static function get_poll_total_customfields_logs( $poll_id, $quest_id, $sdate = '', $edate = '' ) {
         global $wpdb;
         $sdatesql = '';
@@ -2291,7 +2328,11 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                     unset($answer_details);
                 }
                 if($cheked==0){
+<<<<<<< HEAD
                     $message['error']= "You must select at least one answer!";
+=======
+                    $message['error']= "You must select at least an answer!";
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
                     wp_die( json_encode( $message ) );
                 }
             }

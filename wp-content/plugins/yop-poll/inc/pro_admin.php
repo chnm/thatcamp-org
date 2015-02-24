@@ -168,6 +168,7 @@ class YOP_POLL_Pro_Admin extends YOP_POLL_Abstract_Admin {
                     $pro_options                = get_option( "yop_poll_pro" );
                     $pro_options['rand_number'] = $rand_number;
                     update_option( "yop_poll_pro", $pro_options );
+<<<<<<< HEAD
                     $optin_box_modal_options = get_option( 'yop_poll_optin_box_modal_options_yop' );
                     $email=isset($optin_box_modal_options['modal_email'])?$optin_box_modal_options['modal_email']:"johndoe@email.com";
                     $redirect_url            = urlencode( "https://yop-poll.com/yop-licence/upgrade.php?action=getPackageLink&domain=" .
@@ -175,6 +176,11 @@ class YOP_POLL_Pro_Admin extends YOP_POLL_Abstract_Admin {
                         urlencode( $rand_number )."&yop_email=".
                         urlencode($email).
                         "&redirect_after=". urlencode( add_query_arg( array(
+=======
+                    $redirect_url            = urlencode( "https://yop-poll.com/yop-licence/upgrade.php?action=getPackageLink&domain=" .
+                        urlencode( $domain ) . "&rand=" .
+                        urlencode( $rand_number )."&redirect_after=". urlencode( add_query_arg( array(
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
                         "page"   => "yop-polls-become-pro",
                         "action" => 'after-buy'
                     ), admin_url( 'admin.php' ) ) )
@@ -182,7 +188,11 @@ class YOP_POLL_Pro_Admin extends YOP_POLL_Abstract_Admin {
                     $paypalUrl    = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7YBTNHDBFJBG6&return=" .
                         "$redirect_url&rm=2&custom=" .
                         urlencode( $domain . ";" .
+<<<<<<< HEAD
                             $rand_number. ";" .$email
+=======
+                            $rand_number
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
                         ) . "";
                 ;
 

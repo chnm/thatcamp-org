@@ -3,9 +3,15 @@ jQuery( document ).ready( function( jQuery ) {
     jQuery(".yop_poll_tooltip-buy_pro" ).click( function(){
         jQuery(".yop_poll_pro_feature").dialog({
 
+<<<<<<< HEAD
             height: '700',
 
             width: '750',
+=======
+            height: '650',
+
+            width: 'auto',
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 
             resizable: false,
 

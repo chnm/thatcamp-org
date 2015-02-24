@@ -91,7 +91,11 @@
                 return false;
             }
 
+<<<<<<< HEAD
             wp_cache_add( $custom_field->ID, $custom_field, 'yop_poll_custom_field' );
+=======
+            wp_cache_add( $custom_field->id, $custom_field, 'yop_poll_custom_field' );
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
             return $custom_field;
         }
 
@@ -114,7 +118,11 @@
                 return false;
             }
 
+<<<<<<< HEAD
             $answer_options = get_yop_poll_answer_meta( $this->ID, 'options', true );
+=======
+            $answer_options = get_yop_poll_answer_meta( $this->id, 'options', true );
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 
             if ( isset( $answer_options[$key] ) ){
                 return true;
@@ -162,7 +170,11 @@
             {
                 return false;
             }
+<<<<<<< HEAD
             $answer_options = get_yop_poll_answer_meta( $this->ID, 'options', true );
+=======
+            $answer_options = get_yop_poll_answer_meta( $this->id, 'options', true );
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
             if ( isset( $answer_options[$key] ) ){
                 return $answer_options[$key];
             }
@@ -185,7 +197,11 @@
         function __set( $key, $value ) {
             if ( 'id' == strtolower( $key ) ){
                 $this->ID       = $value;
+<<<<<<< HEAD
                 $this->data->ID = $value;
+=======
+                $this->data->id = $value;
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
                 return;
             }
 
@@ -230,11 +246,19 @@
                                 'status'       => $this->status
                             )
             );
+<<<<<<< HEAD
             $this->ID = $GLOBALS['wpdb']->insert_id;
 
             if ( intval( $this->ID ) > 0 ){
                 wp_cache_delete( $this->ID, 'yop_poll_custom_field' );
                 return $this->ID;
+=======
+            $this->id = $GLOBALS['wpdb']->insert_id;
+
+            if ( intval( $this->id ) > 0 ){
+                wp_cache_delete( $this->id, 'yop_poll_custom_field' );
+                return $this->id;
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
             }
             return false;
         }
@@ -251,8 +275,13 @@
                                 'ID' => $this->ID
                             )
             );
+<<<<<<< HEAD
             wp_cache_delete( $this->ID, 'yop_poll_custom_field' );
             return $this->ID;
+=======
+            wp_cache_delete( $this->id, 'yop_poll_custom_field' );
+            return $this->id;
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
         }
 
         function delete() {
@@ -262,7 +291,11 @@
                                 'ID' => $this->ID
                             )
             );
+<<<<<<< HEAD
             wp_cache_delete( $this->ID, 'yop_poll_custom_field' );
+=======
+            wp_cache_delete( $this->id, 'yop_poll_custom_field' );
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
             $this->_unset();
         }
     }

@@ -11,6 +11,7 @@
         <br>
 
 <script>
+<<<<<<< HEAD
     jQuery( "#yop-poll-buy-template-slider" ).remove();
 
 
@@ -80,6 +81,109 @@
 				</p>
              </div> </br>
              </section>
+=======
+    jQuery( "#yop-poll-buy-template-slider" ).remove();</script>
+
+<form method="" style="text-align: center" action="">
+
+    <div class="inside yop-poll-slider"  >
+
+        <div class="yop-poll-slider-container yop-poll-slider-container2 " >
+            <div class="set-upgrade-to-pro-width set-upgrade-to-pro-width5 set-upgrade-to-pro-width4" style="text-align: center">
+            <div class="yop-poll-buy-slider set-slider-margin"  style="width: 800px; " class="yop_poll_carusel "id="yop-poll-buy-template-slider" >
+
+                <ul>
+
+                    <li id="yop-poll-buy-template-1"style="margin-left:12px;margin-right:2px ;width:800px;"
+
+                        class=' yop-poll-buy-template-li '>
+                        <p style="margin: 0 auto; text-align: center">
+                            {{ __('Multiple questions')}}
+                        </p><br>
+                        <img src="{{poll_url}}images/images2/image_two.jpg"/> <br><br>
+
+                    </li>
+                    <li id="yop-poll-buy-template-2"style="margin-left:2px;margin-right:2px  ;width:800px;"
+
+                        class=' yop-poll-buy-template-li '>
+                        <p style="margin: 0 auto; text-align: center">
+                            {{ __('Media Questions')}}
+                        </p><br>
+                        <img src="{{poll_url}}images/images2/image_three.jpg"/> <br><br>
+
+                    </li>
+                    <li id="yop-poll-buy-template-3"style="margin-left:2px;margin-right:2px  ;width:800px;"
+
+                        class=' yop-poll-buy-template-li '>
+                        <p style="margin: 0 auto; text-align: center">
+                            {{ __('Facebook/Google+')}}
+                        </p><br>
+                        <img src="{{poll_url}}images/images2/image_four.jpg"/> <br><br>
+
+                    </li>
+                    <li id="yop-poll-buy-template-4"style="margin-left:2px;margin-right:2px  ;width:800px;"
+
+                        class=' yop-poll-buy-template-li '>
+                        <p style="margin: 0 auto; text-align: center">
+                            {{ __('New Templates')}}
+                        </p><br>
+                        <img src="{{poll_url}}images/images2/image_five.jpg"/> <br><br>
+
+                    </li>
+                    <li id="yop-poll-buy-template-5"style="margin-left:2px;margin-right:2px  ;width:800px;"
+
+                        class=' yop-poll-buy-template-li '>
+                        <p style="margin: 0 auto; text-align: center">
+                            {{__(' Stats')}}
+                        </p><br>
+                        <img src="{{poll_url}}images/images2/image_six.jpg"/> <br><br>
+
+                    </li>
+                    <li id="yop-poll-buy-template-6"style="margin-left:2px;margin-right:2px  ;width:800px;"
+
+                        class=' yop-poll-buy-template-li '>
+                        <p style="margin: 0 auto; text-align: center">
+                            {{__(' Premium support')}}
+                        </p><br>
+                        <img src="{{poll_url}}images/images2/image_seven.jpg"/> <br><br>
+
+                    </li>
+
+                </ul>
+
+            </div>
+            </div>
+            <!-- Prev/next controls -->
+
+            <a  href="javascript:void(0)"
+
+               class="yop-poll-buy-slider-control-prev align-prev-button" style="left:58%" >&lsaquo;</a>
+            <div style="margin-left: 40px">
+            <a  href="javascript:void(0)"
+
+               class="yop-poll-buy-slider-control-next align-next-button " >&rsaquo;</a></div>
+
+            <br>
+            <div class="set-upgrade-to-pro-width" style=" text-align: center">
+            <!-- Pagination -->
+
+
+            <!-- Close button -->
+
+
+
+
+        </div>
+
+    </div>
+    </div>
+</form>
+         <form style="text-align: center" action = "" method = "post">
+
+               <input type = "hidden" name = "action" value = "do-buy" >
+                {{ wp_nonce_field('yop-poll-before-buy')|raw }}
+               <input style="height: 33px; padding: 0 10px 10px;font-size: 20px;" type = "submit" name = "do_buy" class = "button-primary" value = "Upgrade To Pro For Only $17">
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
             </form>
 
 {% endblock content %}

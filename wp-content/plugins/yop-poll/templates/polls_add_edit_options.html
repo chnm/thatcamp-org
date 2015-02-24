@@ -71,12 +71,15 @@
                         <small><i> {{ __('Use %POLL-ANSWER-RESULT-PERCENTAGES% for showing answer percentages and %POLL-ANSWER-RESULT-VOTES% for showing answer number of votes' ) }}</i></small>
                     </td>
                 </tr>
+<<<<<<< HEAD
                      <tr>
                     <th> {{ __('Vote Button Label') }}:</th>
                     <td>
                         {{ input( current_poll.vote_button_label, 'yop-poll-vote-button-label', 'yop_poll_options[vote_button_label]') }}
                     </td>
                 </tr>
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
                 <tr>
                     <th>  {{ __('Display Results Link') }}:  </th>
                     <td>
@@ -135,6 +138,7 @@
                         {{ label( 'No', 'yop-poll-vote-permisions-wordpress-no', 'yop_poll_options[vote_permisions_wordpress]', "no", "radio", "", current_poll.vote_permisions_wordpress, "no" ) }}
                     </td>
                 </tr>
+<<<<<<< HEAD
                 <tr class="yop_poll_suboption yop-poll-vote-as-div" id="yop-poll-vote-permisions-wordpress-div" >
                     <th>
                         {{ __('"Vote as Wordpress User" Button Label') }}:
@@ -143,6 +147,8 @@
                         {{ input( current_poll.vote_permisions_wordpress_label, 'yop-poll-vote-permisions-wordpress-label', 'yop_poll_options[vote_permisions_wordpress_label]') }}
                     </td>
                 </tr>
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
                 <tr class="yop-poll-vote-as-div"  id="yop-poll-vote-anonymous" style="{% if not in_array( 'registered', current_poll.vote_permisions ) %} display: none; {% endif %}">
                     <th>{{ __('Vote as Anonymous User') }}: <br><small>( {{ __('Logged users will be treated as anonymous') }} )</small>
                     </th>
@@ -151,12 +157,15 @@
                         {{ label( 'No',  'yop-poll-vote-permisions-anonymous-no', 'yop_poll_options[vote_permisions_anonymous]', "no", "radio", "", current_poll.vote_permisions_anonymous, "no" ) }}
                     </td>
                 </tr>
+<<<<<<< HEAD
                  <tr class="yop_poll_suboption" id="yop-poll-vote-permisions-anonymous-label-div" >
                     <th> {{ __('"Vote as Anonymous User" Button Label') }}</th>
                     <td>
                         {{ input( current_poll.vote_permisions_anonymous_label, 'yop-poll-vote-permisions-anonymous-label', 'yop_poll_options[vote_permisions_anonymous_label]') }}
                     </td>
                 </tr>
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
                 <tr>
                     <th> {{ __('Blocking Voters') }}: </th>
                     <td>
@@ -167,7 +176,10 @@
                         {{ label( 'By SuperCookie',     'yop-poll-blocking-voters-supercookie', 'yop_poll_options[blocking_voters][]', "supercookie", "checkbox", "yop-poll-blocking-voters-show-interval", current_poll.blocking_voters, "supercookie"  ) }}
                     </td>
                 </tr>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
                 <tr class="yop_poll_suboption" id="yop-poll-blocking-voters-interval-div" style="{% if in_array( 'dont-block', current_poll.blocking_voters ) %}  display: none; {% endif %}">
                     <th> {{ __("Blocking Voters Interval") }}: </th>
                     <td>
@@ -182,7 +194,11 @@
                     </td>
                 </tr>
                 <tr class="yop-poll-limit-number-of-votes-per-user-div">
+<<<<<<< HEAD
                     <th> {{ __('Limit Number of Votes per User') }}:  </th>
+=======
+                    <th> {{ __('Limit Number of Votes per User') }}:<br><small>({{ __('Only for logged users') }})</small>  </th>
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
                     <td>
                         {{ label( 'Yes', 'yop-poll-limit-number-of-votes-per-user-yes', 'yop_poll_options[limit_number_of_votes_per_user]', "yes", "radio", "", current_poll.limit_number_of_votes_per_user, "yes" ) }}
                         {{ label( 'No', 'yop-poll-limit-number-of-votes-per-user-no', 'yop_poll_options[limit_number_of_votes_per_user]', "no", "radio", "", current_poll.limit_number_of_votes_per_user, "no" ) }}

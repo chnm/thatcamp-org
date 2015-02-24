@@ -292,8 +292,8 @@ p3-glossary-container {
 }
 #p3-copyright img {
 	margin-bottom: 7px;
-	height: 47px;
-	width: 125px;
+	#height: 47px;
+	#width: 125px;
 }
 
 
@@ -369,9 +369,12 @@ div.p3-question h2.p3-help-question {
 
 
 /** Did you liek this plugin? **/
+div#p3-footer-wrapper {
+	min-height: 150px;
+}
 div#p3-reminder {
 	position: relative;
-	z-index: 10;
+	z-index: 0;
 	float: left;
 	bottom: 0;
 	left: 0;
@@ -391,11 +394,18 @@ div#p3-reminder-wrapper {
 	z-index: 100 !important;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 /** Overlay levels, explicitly set for browser compat **/
 div[aria-describedby="p3-scanner-dialog"],
 div[aria-describedby="p3-ip-dialog"],
 div[aria-describedby="p3-email-results-dialog"] {
+=======
+
+/** Overlay levels, explicitly set for browser compat **/
+div[aria-describedby="p3-scanner-dialog"],
+div[aria-describedby="p3-ip-dialog"] {
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 	z-index: 1;
 }
 
@@ -406,5 +416,8 @@ div[aria-describedby="p3-scan-name-dialog"] {
 div[aria-describedby="p3-progress-dialog"] {
 	z-index: 3;
 }
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 417df59... Update 3 themes and 14 plugins
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44

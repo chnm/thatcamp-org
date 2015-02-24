@@ -548,10 +548,13 @@ NOWDOC;
             }
             update_option( "yop_poll_version", YOP_POLL_VERSION );
         }
+<<<<<<< HEAD
         $installed_version = get_option( "yop_poll_version" );
         if ( version_compare( $installed_version, '5.3', '<=' ) ){
             update_option( "yop_poll_version", YOP_POLL_VERSION );
         }
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 
     }
     public function yop_poll_get_polls_for_body_mail_update(){

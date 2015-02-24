@@ -5,10 +5,14 @@ Plugin URI: http://support.godaddy.com/godaddy/wordpress-p3-plugin/
 Description: See which plugins are slowing down your site.  Create a profile of your WordPress site's plugins' performance by measuring their impact on your site's load time.
 Author: GoDaddy.com
 <<<<<<< HEAD
+<<<<<<< HEAD
 Version: 1.5.3.6
 =======
 Version: 1.5.3.1
 >>>>>>> parent of 417df59... Update 3 themes and 14 plugins
+=======
+Version: 1.5.3.4
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 Author URI: http://www.godaddy.com/
 Text Domain: p3-profiler
 Domain Path: /languages
@@ -30,6 +34,8 @@ load_plugin_textdomain( 'p3-profiler', false, plugin_basename( P3_PATH ) . '/lan
 
 // Plugin slug
 define( 'P3_PLUGIN_SLUG', 'p3-profiler' );
+
+define( 'P3_VERSION', '1.5.3.4' );
 
 /**************************************************************************/
 /**        AUTOLOADING                                                   **/

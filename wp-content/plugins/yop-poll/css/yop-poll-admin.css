@@ -1,4 +1,44 @@
-.icon32-yop-poll{background:url(../images/yop-poll-admin-menu-icon32.png) no-repeat center center;}
+.icon32-yop-poll {
+	position: relative;
+	width: 32px;
+	height: 32px;
+	background:url(../images/yop-poll-admin-menu-icon32.png) no-repeat center center;
+	float: left; 
+	margin: 5px;  
+}
+.icon32-yop-poll-question-section {
+    position: relative;
+    width: 32px;
+    height: 32px;
+	background:url(../images/yop-poll-admin-question-section-icon32.png) no-repeat center center;
+    float: left;
+    margin: 5px;
+}.more_details {
+    position: relative;
+    width: 15px;
+    height: 15px;
+	background:url(../images/more-details-button.png) no-repeat center center;
+    float: left;
+    margin: 5px;
+}
+ .less_details{
+     position: relative;
+     width: 15px;
+     height: 15px;
+     background:url(../images/less-details-button.png) no-repeat center center;
+     float: left;
+     margin: 5px;
+ }
+
+.yop-poll-section-header{
+	padding: 9px 15px 4px 0 !important;
+	clear:none !important;
+	margin-top:0px !important;
+	/*margin-bottom:5px !important;
+	border-bottom: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #DFDFDF;*/
+}
 .yop-small-input { max-width:280px; }
 #donate_ul{ margin-left: 20px; margin-right: 20px; }
 #donate_ul li { line-height: 16px; list-style: disc outside none; }
@@ -8,6 +48,9 @@
 	padding-left: 35px;
 	background:url(../images/yop-poll-list-style.png) no-repeat 20px 8px;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 }
 
 .stuffbox {
@@ -233,7 +276,11 @@ a {
     color: #0088cc;
     text-decoration: none;
 }
+<<<<<<< HEAD
 .wp-switch-editor { display:none!important; }
 =======
 }  
 >>>>>>> parent of 417df59... Update 3 themes and 14 plugins
+=======
+.wp-switch-editor { display:none!important; }
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44

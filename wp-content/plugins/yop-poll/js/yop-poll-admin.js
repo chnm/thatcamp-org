@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 var write_console = false;
 var yoppolltitlehint;
 jQuery(".yop_poll_tooltip-buy_pro" ).click( function(){
     var id=this.id;
+<<<<<<< HEAD
     jQuery('#myModal').reveal({
         animation: 'fade',
         animationspeed: 300,
@@ -93,6 +97,79 @@ jQuery(".yop_poll_tooltip-buy_pro" ).click( function(){
    // jQuery('#myModal').css("top","0px");
 });
 
+=======
+    //console.log(id);
+    if(id=='add_new_media_question2'){
+        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+        jQuery('#yop-poll-buy-template-2').addClass('yop-poll-buy-template-selected');
+    }
+    if(id=='add_new_text_question2')
+    {
+        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+        jQuery('#yop-poll-buy-template-1').addClass('yop-poll-buy-template-selected');
+    }
+    if(id=='yop-poll-1'){
+        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+        jQuery('#yop-poll-buy-template-4').addClass('yop-poll-buy-template-selected');
+    }
+    if(id=='yop-poll-vote-permisions-facebook-integration-yes' || id=='yop-poll-vote-permisions-facebook-no' ||
+            id=='yop-poll-facebook-share-after-vote-yes' || id=='yop-poll-facebook-share-after-vote-no'  ||
+            id=='yop-poll-vote-permisions-google-yes' || id=='yop-poll-vote-permisions-google-no'||
+            id=='yop-poll-vote-permisions-show-g-share-button-yes'|| id=='yop-poll-vote-permisions-show-g-share-button-no' ||
+            id=='yop_poll_google_integration-yes' || id=='yop_poll_google_integration-no'
+            || id=='yop-poll-for-slider-page-4'||id=='yop-poll-for-slider-page2'
+            || id=='yop-poll-for-slider-page3'){
+
+
+
+        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+
+        jQuery("#yop-poll-buy-template-3").addClass('yop-poll-buy-template-selected');
+    }
+    if(id=='yop-poll-user-interface-type-beginner' || id=='yop-poll-user-interface-type-advanced'){
+        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+        jQuery("#yop-poll-buy-template-0").addClass('yop-poll-buy-template-selected');
+    }
+    if(id=='yop-poll-for-slider-page'||id=='yop-poll-for-slider-page1'){
+        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+        jQuery("#yop-poll-buy-template-3").addClass('yop-poll-buy-template-selected');
+    }
+    if(id=='yop-poll-for-slider-page-7'){
+        jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+        jQuery("#yop-poll-buy-template-5").addClass('yop-poll-buy-template-selected');
+    }
+
+
+
+
+    jQuery(".yop_poll_pro_feature").dialog({
+
+        height: '650',
+
+        width: 'auto',
+
+        resizable: false,
+
+        modal: true,
+
+        dialogClass: 'fixed-dialog'
+
+        //position:{top:'top+100'}
+
+    });
+    jQuery( "#yop-poll-buy-template-slider" ).jcarousel( 'scroll', jQuery( '.yop-poll-buy-template-selected' ) );
+    //if (jQuery(this).is(':radio')) {
+    //    jQuery(this ).attr('checked', false);
+
+    // }
+    // jQuery(".yop_poll_pro_feature").removeClass('yop-poll-buy-template-selected');
+});
+jQuery('#yop-poll-pro-close').click(function() {
+
+    jQuery(".yop_poll_pro_feature").dialog('close');
+
+});
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 
 function cslw( msg ) {
     if ( write_console ) {
@@ -274,6 +351,7 @@ function end_date_option(){
         jQuery('#yop-poll-end-date-input').show();
     }
 }
+<<<<<<< HEAD
 jQuery(window).load(function() {
     jQuery('.bxslider').bxSlider({
         mode: 'fade',
@@ -322,3 +400,8 @@ jQuery( document ).ready( function () {
     }
 } );
 >>>>>>> parent of 417df59... Update 3 themes and 14 plugins
+=======
+
+
+
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44

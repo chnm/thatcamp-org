@@ -26,6 +26,7 @@ jQuery( document ).ready( function( jQuery ) {
         jQuery("#yop_poll_email_notification").hide();
     }
 
+<<<<<<< HEAD
     if( jQuery( "#yop-poll-vote-permisions-registered" ).attr( "checked" ) != 'checked' ) {
 
         jQuery( '#yop-poll-vote-permisions-wordpress-div' ).hide();
@@ -60,14 +61,27 @@ jQuery( document ).ready( function( jQuery ) {
     }
     else{
         jQuery( '#yop-poll-vote-anonymous' ).show();
+=======
+    if( jQuery( '#yop-poll-vote-permisions-guest' ).attr( "checked" ) == 'checked' ) {
+
+        jQuery( '#yop-poll-vote-anonymous' ).show();
+
+    }
+    else{
+        jQuery( '#yop-poll-vote-anonymous' ).hide();
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
     }
     jQuery("#yop-poll-edit-add-new-form").css('visibility', 'visible');
     if(jQuery('#yop-poll-send-email-notifications-yes').attr("checked")=='checked'){
         jQuery("#yop_poll_email_notification").show();
     }
+<<<<<<< HEAD
 
 
     yop_poll_answers_sortable = function() {
+=======
+  yop_poll_answers_sortable = function() {
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
     jQuery( ".yop-poll-answers-sortable" ).sortable( {
       update: function( event, ui ) {
         Ordinable = ui.item.parent().find( '.yop-poll-answer-order-input' );
@@ -133,6 +147,7 @@ jQuery( document ).ready( function( jQuery ) {
                 jQuery("#yop_poll_email_notification").hide();
 
             });
+<<<<<<< HEAD
     jQuery( '#yop-poll-vote-permisions-guest' ).change( function() {
 
         if( jQuery( '#yop-poll-vote-permisions-registered' ).attr( "checked" ) != 'checked' ) {
@@ -246,6 +261,41 @@ jQuery( document ).ready( function( jQuery ) {
 
 
     } );
+=======
+  jQuery( '#yop-poll-vote-permisions-guest' ).change( function() {
+
+      if( jQuery( '#yop-poll-vote-permisions-registered' ).attr( "checked" ) != 'checked' ) {
+        jQuery( '.yop-poll-vote-as-div' ).hide();
+      }
+      if( jQuery( '#yop-poll-vote-permisions-registered' ).attr( "checked" ) == 'checked' ) {
+          jQuery( '#yop-poll-vote-anonymous' ).show();
+      }
+
+      if( jQuery( '#yop-poll-vote-permisions-guest' ).attr( "checked" ) == 'checked' ) {
+
+          jQuery( '#yop-poll-vote-anonymous' ).hide();
+          jQuery( '#yop-poll-vote-permisions-anonymous-yes' ).attr( "checked",true );
+
+      }
+
+  } );
+  jQuery( '#yop-poll-vote-permisions-registered' ).change( function() {
+    if( jQuery( this ).attr( 'checked' ) == "checked" ) {
+      jQuery( '.yop-poll-vote-as-div' ).show();
+        jQuery( '#yop-poll-vote-anonymous' ).show();
+
+    }
+    else {
+      jQuery( '.yop-poll-vote-as-div' ).hide();
+    }
+      if( jQuery( '#yop-poll-vote-permisions-guest' ).attr( "checked" ) == 'checked' ) {
+
+          jQuery( '#yop-poll-vote-anonymous' ).hide();
+          jQuery( '#yop-poll-vote-permisions-anonymous-yes' ).attr( "checked",true );
+              }
+
+  } );
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
   //</editor-fold>
     if( jQuery( '#yop-poll-view-results-custom' ).is( ':checked' )==true){
         jQuery( '#yop-poll-display-view-results-div' ).show();
@@ -361,6 +411,7 @@ jQuery( document ).ready( function( jQuery ) {
   //yop_poll_reorder_questions();
    jQuery(".yop_poll_tooltip-buy_pro" ).click( function(){
        var id=this.id;
+<<<<<<< HEAD
        jQuery('#myModal').reveal({
            animation: 'fade',
            animationspeed: 300,
@@ -402,6 +453,21 @@ jQuery( document ).ready( function( jQuery ) {
            jQuery(".flexslider").data('flexslider').flexAnimate(3, true);
            jQuery('.flex-prev').css("opacity","0.7");
            jQuery('.flex-next').css("opacity","0.7");
+=======
+       //console.log(id);
+       if(id=='add_new_media_question2'){
+           jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+           jQuery('#yop-poll-buy-template-2').addClass('yop-poll-buy-template-selected');
+       }
+       if(id=='add_new_text_question2')
+       {
+           jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+           jQuery('#yop-poll-buy-template-1').addClass('yop-poll-buy-template-selected');
+       }
+       if(id=='yop-poll-1'){
+           jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+           jQuery('#yop-poll-buy-template-4').addClass('yop-poll-buy-template-selected');
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
        }
        if(id=='yop-poll-vote-permisions-facebook-integration-yes' || id=='yop-poll-vote-permisions-facebook-no' ||
            id=='yop-poll-facebook-share-after-vote-yes' || id=='yop-poll-facebook-share-after-vote-no'  ||
@@ -413,6 +479,7 @@ jQuery( document ).ready( function( jQuery ) {
 
 
 
+<<<<<<< HEAD
            jQuery('.flexslider').flexslider({
                startAt: 2,
                slideshow: true,
@@ -449,6 +516,55 @@ jQuery( document ).ready( function( jQuery ) {
        }
    });
 
+=======
+           jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+
+           jQuery("#yop-poll-buy-template-3").addClass('yop-poll-buy-template-selected');
+       }
+       if(id=='yop-poll-user-interface-type-beginner' || id=='yop-poll-user-interface-type-advanced'){
+           jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+           jQuery("#yop-poll-buy-template-0").addClass('yop-poll-buy-template-selected');
+       }
+       if(id=='yop-poll-for-slider-page'||id=='yop-poll-for-slider-page1'){
+           jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+           jQuery("#yop-poll-buy-template-3").addClass('yop-poll-buy-template-selected');
+       }
+       if(id=='yop-poll-for-slider-page-7'){
+           jQuery('.yop-poll-buy-template-li').removeClass('yop-poll-buy-template-selected');
+           jQuery("#yop-poll-buy-template-5").addClass('yop-poll-buy-template-selected');
+       }
+
+
+
+
+       jQuery(".yop_poll_pro_feature").dialog({
+
+           height: '650',
+
+           width: 'auto',
+
+           resizable: false,
+
+           modal: true,
+
+           dialogClass: 'fixed-dialog'
+
+           //position:{top:'top+100'}
+
+       });
+       jQuery( "#yop-poll-buy-template-slider" ).jcarousel( 'scroll', jQuery( '.yop-poll-buy-template-selected' ) );
+       //if (jQuery(this).is(':radio')) {
+       //    jQuery(this ).attr('checked', false);
+
+      // }
+      // jQuery(".yop_poll_pro_feature").removeClass('yop-poll-buy-template-selected');
+   });
+    jQuery('#yop-poll-pro-close').click(function() {
+
+        jQuery(".yop_poll_pro_feature").dialog('close');
+
+    });
+>>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 
 } );
 
