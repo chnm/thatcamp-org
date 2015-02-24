@@ -3,7 +3,7 @@ Contributors: vprat, mpwalsh8, marvinlabs
 Donate link: http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/
 Tags: email, users, list, admin
 Requires at least: 3.6.1
-Tested up to: 4.0
+Tested up to: 4.1.1
 Stable tag: 4.7.0
 License: GPL
 
@@ -189,6 +189,10 @@ function update_publicworks_meta_filter()
 `
 
 == Changelog ==
+
+= Version 4.7.1 =
+*  Tightened up the max_input_vars check to account for older versions of PHP which do not have this setting.
+*  Added support for the WordPress [Editable Roles Filter](http://codex.wordpress.org/Plugin_API/Filter_Reference/editable_roles) per a request from the [WordPress Support Forum](https://wordpress.org/support/topic/mailusers_get_roles-function-to-use-the-core-get_editable_roles?replies=2#post-6513328).
 
 = Version 4.7.0 =
 * Added code to detect scenario where number of email recipients could potentially exceed the web server's ability to process it (PHP's max_input_vars setting).  A warning is displayed to the user when this situation is detected.

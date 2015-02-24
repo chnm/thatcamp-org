@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 /*
 Plugin Name: Email Users
-Version: 4.7.0
+Version: 4.7.1-beta-1
 Plugin URI: http://wordpress.org/extend/plugins/email-users/
 Description: Allows the site editors to send an e-mail to the blog users. Credits to <a href="http://www.catalinionescu.com">Catalin Ionescu</a> who gave me (Vincent Pratt) some ideas for the plugin and has made a similar plugin. Bug reports and corrections by Cyril Crua, Pokey and Mike Walsh.  Development for enhancements and bug fixes since version 4.1 primarily by <a href="http://michaelwalsh.org">Mike Walsh</a>.
 Author: Mike Walsh & MarvinLabs
@@ -27,7 +27,7 @@ Author URI: http://www.michaelwalsh.org
 */
 
 // Version of the plugin
-define( 'MAILUSERS_CURRENT_VERSION', '4.7.0');
+define( 'MAILUSERS_CURRENT_VERSION', '4.7.1-beta-1');
 
 // i18n plugin domain
 define( 'MAILUSERS_I18N_DOMAIN', 'email-users' );
@@ -1244,15 +1244,21 @@ function mailusers_sort_users_by_user_login( $a, $b )
 /**
  * Get the users based on roles
  * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
+ *
+ * Added support for editable_roles filter
+ * @see https://wordpress.org/support/topic/mailusers_get_roles-function-to-use-the-core-get_editable_roles?replies=2#post-6513328
+ *
  */
 function mailusers_get_roles( $exclude_id='', $meta_filter = '') {
 	$roles = array();
 
-	$wp_roles = new WP_Roles();
-	foreach ($wp_roles->get_names() as $key => $value) {
+	$wp_roles = get_editable_roles( );
+	$wp_roles['roles'] = $wp_roles;
+
+	foreach ($wp_roles as $key => $value) {
 		$users_in_role = mailusers_get_recipients_from_roles(array($key), $exclude_id, $meta_filter);
 		if (!empty($users_in_role)) {
-			$roles[$key] = $value;
+			$roles[$key] = $value['name'];
         }
 	}
 
@@ -1699,7 +1705,8 @@ function mailusers_dashboard_widget_function() {
     global $wp_filter;
     $filters = array(
         'the_content' => 'http://codex.wordpress.org/Function_Reference/the_content',
-        'the_excerpt' => 'http://codex.wordpress.org/Function_Reference/the_excerpt'
+        'the_excerpt' => 'http://codex.wordpress.org/Function_Reference/the_excerpt',
+        'tiny_mce_before_init' => 'http://codex.wordpress.org/Plugin_API/Filter_Reference/tiny_mce_before_init'
     ) ;
     $hooks = array(
         'wpautop' => 'http://codex.wordpress.org/Function_Reference/wpautop',
@@ -1713,6 +1720,8 @@ function mailusers_dashboard_widget_function() {
     {
         if (has_filter($fkey))
         {
+            //error_log($fkey) ;
+            //error_log(print_r($wp_filter[$fkey], true)) ;
             $f = array() ;
             foreach (array_keys($wp_filter[$fkey]) as $key => $value)
                 $f= array_merge($f, array_keys($wp_filter[$fkey][$value])) ;

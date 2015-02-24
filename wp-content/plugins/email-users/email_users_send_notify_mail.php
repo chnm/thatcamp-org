@@ -113,7 +113,9 @@
         }
         // Process short codes?
         if (mailusers_get_shortcode_processing() == 'true') {
+            error_log(print_r(htmlentities($post_content), true)) ;
             $post_content = do_shortcode($post_content) ;
+            error_log(print_r(htmlentities($post_content), true)) ;
             $post_excerpt = do_shortcode($post_excerpt) ;
         }
     
