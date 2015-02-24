@@ -1,0 +1,147 @@
+# Copyright (C) 2012 bbPress Notify
+# This file is distributed under the same license as the bbPress Notify package.
+msgid ""
+msgstr ""
+"Project-Id-Version: bbPress Notify 0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/bbpress-notify\n"
+"POT-Creation-Date: 2012-10-18 13:49:12+00:00\n"
+"PO-Revision-Date: 2012-10-18 15:51+0100\n"
+"Last-Translator: Andreas Baumgartner <andreas.baumgartner@gmail.com>\n"
+"Language-Team: Andreas Baumgartner <mail@andreas.bz.it>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+
+#: bbpress-notify.php:40
+msgid "Sorry, you need to activate bbPress first."
+msgstr "Um dieses Plugin nutzen zu können, musst du zuerst bbPress aktivieren."
+
+#: bbpress-notify.php:54
+msgid "[[blogname]] New topic: [topic-title]"
+msgstr "[[blogname]] Neues Thema: [topic-title]"
+
+#: bbpress-notify.php:58
+msgid ""
+"Hello!\n"
+"A new topic has been posted by [topic-author].\n"
+"Topic title: [topic-title]\n"
+"Topic url: [topic-url]\n"
+"\n"
+"Excerpt:\n"
+"[topic-excerpt]"
+msgstr ""
+"Hallo!\n"
+"Im Forum gibt es ein neues Thema von [topic-author].\n"
+"Titel: [topic-title]\n"
+"Adresse: [topic-url]}n\n"
+"Vorschau:\n"
+"[topic-excerpt]"
+
+#: bbpress-notify.php:62
+msgid "[[blogname]] [reply-title]"
+msgstr "[[blogname]] [reply-title]"
+
+#: bbpress-notify.php:66
+msgid ""
+"Hello!\n"
+"A new reply has been posted by [reply-author].\n"
+"Topic title: [reply-title]\n"
+"Topic url: [reply-url]\n"
+"\n"
+"Excerpt:\n"
+"[reply-excerpt]"
+msgstr ""
+"Hallo!\n"
+"[reply-author] hat eine Antwort verfasse.\n"
+"Titel: [reply-title]\n"
+"Adresse: [reply-url]\n"
+"\n"
+"Vorschau:\n"
+"[repy-excerpt]"
+
+#: bbpress-notify.php:318
+msgid "E-mail Notifications"
+msgstr "E-Mail-Benachrichtigungen"
+
+#: bbpress-notify.php:321
+msgid "Notifications about new topics are sent to"
+msgstr "E-Mail-Benachrichtigungen über neue Themen werden gesendet an"
+
+#: bbpress-notify.php:322
+#: bbpress-notify.php:325
+msgid "E-mail subject"
+msgstr "Betreff"
+
+#: bbpress-notify.php:323
+msgid "E-mail body (template tags: [blogname], [topic-title], [topic-content], [topic-excerpt], [topic-author], [topic-url], [topic-replyurl])"
+msgstr "Nachrichtentext (Variablen: [blogname], [topic-title], [topic-content], [topic-excerpt], [topic-author], [topic-url], [topic-replyurl])"
+
+#: bbpress-notify.php:324
+msgid "Notifications about replies are sent to"
+msgstr "E-Mail-Benachrichtigungen über neue Antworten werden gesendet an"
+
+#: bbpress-notify.php:326
+msgid "E-mail body (template tags: [blogname], [reply-title], [reply-content], [reply-excerpt], [reply-author], [reply-url], [reply-replyurl])"
+msgstr "Nachrichtentext (Variablen: [blogname], [reply-title], [reply-content], [reply-excerpt], [reply-author], [reply-url], [reply-replyurl])"
+
+#: bbpress-notify.php:342
+msgid "Configure e-mail notifications when new topics and/or replies are posted."
+msgstr "Lege fest, ob und wie E-Mail-Benachrichtigungen über neue Themen und/oder Antworten versendet werden."
+
+#: bbpress-notify.php:350
+#: bbpress-notify.php:371
+msgid "Blog owner"
+msgstr "Blog-Eigentümer"
+
+#: bbpress-notify.php:351
+#: bbpress-notify.php:372
+msgid "All Administrators"
+msgstr "alle Administratoren"
+
+#: bbpress-notify.php:352
+#: bbpress-notify.php:373
+msgid "All Editors"
+msgstr "alle Redakteure"
+
+#: bbpress-notify.php:353
+#: bbpress-notify.php:374
+msgid "All Authors"
+msgstr "alle Autoren"
+
+#: bbpress-notify.php:354
+#: bbpress-notify.php:375
+msgid "All Contributors"
+msgstr "alle Mitarbeiter"
+
+#: bbpress-notify.php:355
+#: bbpress-notify.php:376
+msgid "All Subscribers"
+msgstr "alle Abonnenten"
+
+#: bbpress-notify.php:400
+#: bbpress-notify.php:414
+msgid "Shortcodes"
+msgstr "Variablen"
+
+#. Plugin Name of the plugin/theme
+msgid "bbPress Notify"
+msgstr "bbPress Notify"
+
+#. Description of the plugin/theme
+msgid "Notifies all registered users by e-mail when a new bbPress topic is created."
+msgstr "Benachrichtigt alle registrierten Benutzer via E-Mail, sobald ein neues bbPress-Diskussionsthema erstellt wurde."
+
+#. Author of the plugin/theme
+msgid "Andreas Baumgartner"
+msgstr "Andreas Baumgartner"
+
+#~ msgid "All Users"
+#~ msgstr "alle Benutzer"
+
+#~ msgid "None"
+#~ msgstr "niemanden"
+
+#~ msgid "E-mail body (template tags: [TODO])"
+#~ msgstr "Text (template tags: [TODO])"
