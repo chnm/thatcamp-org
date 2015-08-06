@@ -1377,7 +1377,7 @@ function bbp_edit_user_handler( $action = '' ) {
 
 		$new_email = get_option( $user_id . '_new_email' );
 
-		if ( $new_email['hash'] === $_GET['newuseremail'] ) {
+		if ( hash_equals( $new_email['hash'], $_GET['newuseremail'] ) ) {
 			$user             = new WP_User();
 			$user->ID         = $user_id;
 			$user->user_email = esc_html( trim( $new_email['newemail'] ) );
@@ -1434,7 +1434,7 @@ function bbp_edit_user_handler( $action = '' ) {
 	} elseif ( is_integer( $edit_user ) ) {
 
 		// Maybe update super admin ability
-		if ( is_multisite() && ! bbp_is_user_home_edit() ) {
+		if ( is_multisite() && ! bbp_is_user_home_edit() && current_user_can( 'manage_network_options' ) && is_super_admin() ) {
 			empty( $_POST['super_admin'] ) ? revoke_super_admin( $edit_user ) : grant_super_admin( $edit_user );
 		}
 
