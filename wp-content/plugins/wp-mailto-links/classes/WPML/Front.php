@@ -14,7 +14,7 @@ class WPML_Front
      * Regular expressions
      * @var array
      */
-    public $regexps = array();
+    protected $regexps = array();
 
     /**
      * @var array
@@ -30,16 +30,19 @@ class WPML_Front
         $regexpEmail = '([_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,}))';
 
         $this->regexps = array(
-            'email_plain' => '/'.$regexpEmail.'/i',
-            'email_mailto' => '/mailto\:[\s+]*'.$regexpEmail.'/i',
+            'emailPlain' => '/'.$regexpEmail.'/i',
+            'emailMailto' => '/mailto\:[\s+]*'.$regexpEmail.'/i',
             'input' => '/<input([^>]*)value=["\'][\s+]*'.$regexpEmail.'[\s+]*["\']([^>]*)>/is',
-            'mailto_link' => '/<a[\s+]*(([^>]*)href=["\']mailto\:([^>]*)["\'])>(.*?)<\/a[\s+]*>/is',
-            '<img>' => '/<img([^>]*)>/is',
-            '<body>' => '/(<body(([^>]*)>))/is',
+            'mailtoLink' => '/<a[\s+]*(([^>]*)href=["\']mailto\:([^>]*)["\'])>(.*?)<\/a[\s+]*>/is',
+            'image' => '/<img([^>]*)>/is',
+            'body' => '/(<body(([^>]*)>))/is',
         );
 
         // set values
         $this->optionValues = WPML::get('optionValues')->get();
+
+        // create template function
+        $this->createTemplateFunctions();
 
         // add actions
         add_action('wp', array($this, 'actionWpSite'), 10);
@@ -51,10 +54,6 @@ class WPML_Front
      */
     public function actionWpSite()
     {
-        if (is_admin()) {
-            return;
-        }
-
         if (is_feed()) {
             // rss feed
             if ($this->optionValues['filter_rss']) {
@@ -72,7 +71,7 @@ class WPML_Front
             // set js file
             if ($this->optionValues['protect']) {
                 wp_enqueue_script('wp-mailto-links',
-                    WPML::url('js/wp-mailto-links.js'), array(),
+                    WPML::url('js/wp-mailto-links.js'), array('jquery'),
                     WPML::get('version'));
             }
 
@@ -163,7 +162,7 @@ class WPML_Front
     {
         $filtered = $content;
 
-        $html_split = preg_split($this->regexps['<body>'], $filtered, null, PREG_SPLIT_DELIM_CAPTURE);
+        $html_split = preg_split($this->regexps['body'], $filtered, null, PREG_SPLIT_DELIM_CAPTURE);
 
         if (count($html_split) >= 4) {
             // protect emails in <head> section
@@ -232,7 +231,7 @@ class WPML_Front
         $filtered = preg_replace_callback($this->regexps['input'], array($this, 'pregReplaceInputValues'), $filtered);
 
         // get mailto links
-        $filtered = preg_replace_callback($this->regexps['mailto_link'], array($this, 'pregReplaceMailto'), $filtered);
+        $filtered = preg_replace_callback($this->regexps['mailtoLink'], array($this, 'pregReplaceMailto'), $filtered);
 
         // convert plain emails
         if ($this->optionValues['convert_emails'] == 1) {
@@ -240,7 +239,7 @@ class WPML_Front
             $filtered = $this->replacePlainEmails($filtered);
         } elseif ($this->optionValues['convert_emails'] == 2) {
             // make mailto links from plain emails
-            $filtered = preg_replace_callback($this->regexps['email_plain'], array($this, 'pregReplacePlainEmail'), $filtered);
+            $filtered = preg_replace_callback($this->regexps['emailPlain'], array($this, 'pregReplacePlainEmail'), $filtered);
         }
 
         // when no filtered content
@@ -261,10 +260,22 @@ class WPML_Front
         $input = $match[0];
         $email = $match[2];
 
-        // replace email by encoded
-        $input = str_replace($email, antispambot($email), $input);
+        $encodedEmail = $this->getEncEmail($email);
 
-        return $input;
+        if ($this->optionValues['input_strong_protection'] == 1) {
+            // add data-enc-email after "<input"
+            $encodedInput .= substr($input, 0, 6);
+            $encodedInput .= ' data-enc-email="' . $encodedEmail . '"';
+            $encodedInput .= substr($input, 6);
+
+            // remove email from value attribute
+            $encodedInput = str_replace($email, '', $encodedInput);
+        } else {
+            // replace email in value attribute
+            $encodedInput = str_replace($email, antispambot($email), $input);
+        }
+
+        return $encodedInput;
     }
 
     /**
@@ -299,7 +310,7 @@ class WPML_Front
     public function filterRss($content)
     {
         $content = $this->replacePlainEmails($content);
-        $content = preg_replace($this->regexps['email_mailto'], 'mailto:'.WPML::__($this->optionValues['protection_text']), $content);
+        $content = preg_replace($this->regexps['emailMailto'], 'mailto:'.WPML::__($this->optionValues['protection_text']), $content);
         return $content;
     }
 
@@ -312,7 +323,7 @@ class WPML_Front
     public function replacePlainEmails($content, $emailReplacement = null)
     {
         $emailReplacement = ($emailReplacement === null) ? WPML::__($this->optionValues['protection_text']) : $emailReplacement;
-        return preg_replace($this->regexps['email_plain'], $emailReplacement, $content);
+        return preg_replace($this->regexps['emailPlain'], $emailReplacement, $content);
     }
 
     /**
@@ -323,7 +334,7 @@ class WPML_Front
      */
     public function shortcodeProtectedMailto($attrs, $content = '')
     {
-        if ($this->optionValues['protect'] && preg_match($this->regexps['email_plain'], $content) > 0) {
+        if ($this->optionValues['protect'] && preg_match($this->regexps['emailPlain'], $content) > 0) {
             $content = $this->getProtectedDisplay($content);
         }
 
@@ -353,7 +364,7 @@ class WPML_Front
         if ($this->optionValues['icon'] > 0 && (empty($this->optionValues['no_icon_class'])
                 || strpos($class_ori, $this->optionValues['no_icon_class']) === FALSE) && strpos($class_ori, 'mail-icon-') === FALSE
                 && !($this->optionValues['image_no_icon'] == 1
-                && (bool) preg_match($this->regexps['<img>'], $display))) {
+                && (bool) preg_match($this->regexps['image'], $display))) {
             $icon_class = 'mail-icon-' . $this->optionValues['icon'];
 
             $attrs['class'] = (empty($attrs['class'])) ? $icon_class : $attrs['class'] .' '.$icon_class;
@@ -375,14 +386,9 @@ class WPML_Front
         foreach ($attrs AS $key => $value) {
             if (strtolower($key) == 'href' && $this->optionValues['protect']) {
                 // get email from href
-                $email         = substr($value, 7);
-                $encoded_email = $email;
-                // decode entities
-                $encoded_email = html_entity_decode($encoded_email);
-                // rot13 encoding
-                $encoded_email = str_rot13($encoded_email);
-                // replace @
-                $encoded_email = str_replace('@', '[at]', $encoded_email);
+                $email = substr($value, 7);
+
+                $encoded_email = $this->getEncEmail($email);
 
                 // set attrs
                 $link .= 'href="javascript:;" ';
@@ -396,7 +402,7 @@ class WPML_Front
         $link = substr($link, 0, -1);
 
         $link .= '>';
-        $link .= ($this->optionValues['protect'] && preg_match($this->regexps['email_plain'], $display) > 0) ? $this->getProtectedDisplay($display) : $display;
+        $link .= ($this->optionValues['protect'] && preg_match($this->regexps['emailPlain'], $display) > 0) ? $this->getProtectedDisplay($display) : $display;
         $link .= '</a>';
 
         // filter
@@ -406,6 +412,27 @@ class WPML_Front
         $link = $this->replacePlainEmails($link);
 
         return $link;
+    }
+
+    /**
+     * Get encoded email, used for data-attribute (translate by javascript)
+     * @param string $email
+     * @return string
+     */
+    protected function getEncEmail($email)
+    {
+        $encEmail = $email;
+
+        // decode entities
+        $encEmail = html_entity_decode($encEmail);
+
+        // rot13 encoding
+        $encEmail = str_rot13($encEmail);
+
+        // replace @
+        $encEmail = str_replace('@', '[at]', $encEmail);
+
+        return $encEmail;
     }
 
     /**
@@ -459,19 +486,27 @@ class WPML_Front
     /**
      * Create the global template functions
      */
-    public function createTemplateFunctions()
+    protected function createTemplateFunctions()
     {
         if (!function_exists('wpml_mailto')):
             function wpml_mailto($email, $display = null, $attrs = array())
             {
-                return WPML_Front::mailto($email, $display, $attrs);
+                if (is_array($display)) {
+                   // backwards compatibility (old params: $display, $attrs = array())
+                   $attrs   = $display;
+                   $display = $email;
+               } else {
+                   $attrs['href'] = 'mailto:'.$email;
+               }
+
+               return WPML::get('front')->protectedMailto($display, $attrs);
             }
         endif;
 
         if (!function_exists('wpml_filter')):
             function wpml_filter($content)
             {
-                return WPML_Front::filter($content);
+                return WPML::get('front')->filterContent($content);
             }
         endif;
     }

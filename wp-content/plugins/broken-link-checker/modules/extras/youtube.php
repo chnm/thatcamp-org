@@ -3,7 +3,7 @@
 /*
 Plugin Name: YouTube API
 Description: Check links to YouTube videos and playlists using the YouTube API.
-Version: 1.1
+Version: 3
 Author: Janis Elsts
 
 ModuleID: youtube-checker
@@ -17,7 +17,7 @@ ModuleCheckerUrlPattern: @^https?://(?:([\w\d]+\.)*youtube\.[^/]+/watch\?.*v=[^/
 */
 
 class blcYouTubeChecker extends blcChecker {
-	var $youtube_developer_key = 'AI39si4OM05fWUMbt1g8hBdYPRTGpNbOWVD0-7sKwShqZTOpKigo7Moj1YGk7dMk95-VWB1Iue2aiTNJb655L32-QGM2xq_yVQ';
+	var $youtube_developer_key = 'AIzaSyAyye_rE5jYd7VpwvcLNItXQCo5zxVvMFY';
 	var $api_grace_period = 0.3; //How long to wait between YouTube API requests.
 	var $last_api_request = 0;   //Timestamp of the last request.
 	
@@ -68,9 +68,9 @@ class blcYouTubeChecker extends blcChecker {
 
 		//Fetch video or playlist from the YouTube API
 		if ( !empty($video_id) ) {
-			$api_url = $this->get_video_feed_url($video_id);
+			$api_url = $this->get_video_resource_url($video_id);
 		} else {
-			$api_url = $this->get_playlist_feed_url($playlist_id);
+			$api_url = $this->get_playlist_resource_url($playlist_id);
 		}
 
 		$conf = blc_get_configuration();
@@ -119,85 +119,38 @@ class blcYouTubeChecker extends blcChecker {
 	 * @return array New result array.
 	 */
 	protected function check_video($response, $result) {
-		switch($result['http_code']){
-			case 404 : //Not found
-				$result['log'] .= __('Video Not Found', 'broken-link-checker');
-				$result['broken'] = true;
-				$result['http_code'] = 0;
-				$result['status_text'] = __('Video Not Found', 'broken-link-checker');
-				$result['status_code'] = BLC_LINK_STATUS_ERROR;
-				break;
+		$api = json_decode($response['body'], true);
+		$videoFound = ($result['http_code'] == 200) && isset($api['items'], $api['items'][0]);
 
-			case 403 : //Forbidden. Usually means that the video has been removed. Body contains details.
-				$result['log'] .= $response['body'];
-				$result['broken'] = true;
-				$result['http_code'] = 0;
-				$result['status_text'] = __('Video Removed', 'broken-link-checker');
-				$result['status_code'] = BLC_LINK_STATUS_ERROR;
-				break;
+		if ( isset($api['error']) && ($result['http_code'] != 404) ) { //404's are handled later.
+			$result['status_code'] = BLC_LINK_STATUS_WARNING;
+			$result['warning'] = true;
 
-			case 400 : //Bad request. Usually means that the video ID is incorrect. Body contains details.
-				$result['log'] .= $response['body'];
-				$result['broken'] = true;
-				$result['http_code'] = 0;
-				$result['status_text'] = __('Invalid Video ID', 'broken-link-checker');
-				$result['status_code'] = BLC_LINK_STATUS_WARNING;
-				break;
+			if ( isset($api['error']['message']) ) {
+				$result['status_text'] = $api['error']['message'];
+			} else {
+				$result['status_text'] = __('Unknown Error', 'broken-link-checker');
+			}
+			$result['log'] .= $this->format_api_error($response, $api);
 
-			case 200 : //Video exists, but may be restricted. Check for <yt:state> tags.
-				//See http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:state
+		} else if ( $videoFound ) {
+			$result['log'] .= __("Video OK", 'broken-link-checker');
+			$result['status_text'] = _x('OK', 'link status', 'broken-link-checker');
+			$result['status_code'] = BLC_LINK_STATUS_OK;
+			$result['http_code'] = 0;
 
-				//Can we count on an XML parser being installed? No, probably not.
-				//Back to our makeshift tag "parser" we go.
-				$state = blcUtility::extract_tags($response['body'], 'yt:state', false);
-				if ( empty($state) ){
-					//Phew, no restrictions.
-					$result['log'] .= __("Video OK", 'broken-link-checker');
-					$result['status_text'] = __('OK', 'link status', 'broken-link-checker');
-					$result['status_code'] = BLC_LINK_STATUS_OK;
-					$result['http_code'] = 0;
-				} else {
+			//Add the video title to the log, purely for information.
+			if ( isset($api['items'][0]['snippet']['title']) ) {
+				$title = $api['items'][0]['snippet']['title'];
+				$result['log'] .= "\n\nTitle : \"" . htmlentities($title) . '"';
+			}
 
-					//Get the state name and code and append them to the log
-					$state = reset($state);
-					$state_name = $state['attributes']['name'];
-					$state_reason = isset($state['attributes']['reasonCode'])?$state['attributes']['reasonCode']:'';
-
-					$result['state_name'] = $state_name;
-					$result['state_reason'] = $state_reason;
-
-					$result['log'] .= sprintf(
-						__('Video status : %s%s', 'broken-link-checker'),
-						$state_name,
-						$state_reason ? ' ['.$state_reason.']':''
-					);
-
-					if ( $this->is_state_ok($state_name, $state_reason) ) {
-						$result['broken'] = false;
-						$result['status_text'] = __('OK', 'link status', 'broken-link-checker');
-						$result['status_code'] = BLC_LINK_STATUS_OK;
-						$result['http_code'] = 0;
-					} else {
-						$result['broken'] = true;
-						$result['status_text'] = __('Video Restricted', 'broken-link-checker');
-						$result['status_code'] = BLC_LINK_STATUS_WARNING;
-						$result['http_code'] = 0;
-					}
-				}
-
-				//Add the video title to the log, purely for information.
-				//http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_media:title
-				$title = blcUtility::extract_tags($response['body'], 'media:title', false);
-				if ( !empty($title) ){
-					$result['log'] .= "\n\nTitle : \"" . $title[0]['contents'] . '"';
-				}
-
-				break;
-
-			default:
-				$result['log'] .= $result['http_code'] . $response['response']['message'];
-				$result['log'] .= "\n" . __('Unknown YouTube API response received.');
-				break;
+		} else {
+			$result['log'] .= __('Video Not Found', 'broken-link-checker');
+			$result['broken'] = true;
+			$result['http_code'] = 0;
+			$result['status_text'] = __('Video Not Found', 'broken-link-checker');
+			$result['status_code'] = BLC_LINK_STATUS_ERROR;
 		}
 
 		return $result;
@@ -211,140 +164,122 @@ class blcYouTubeChecker extends blcChecker {
 	 * @return array
 	 */
 	protected function check_playlist($response, $result) {
+		$api = json_decode($response['body'], true);
 
-		switch($result['http_code']){
-			case 404 : //Not found
-				$result['log'] .= __('Playlist Not Found', 'broken-link-checker');
-				$result['broken'] = true;
-				$result['http_code'] = 0;
-				$result['status_text'] = __('Playlist Not Found', 'broken-link-checker');
-				$result['status_code'] = BLC_LINK_STATUS_ERROR;
-				break;
+		if ( $result['http_code'] == 404 ) {
+			//Not found.
+			$result['log'] .= __('Playlist Not Found', 'broken-link-checker');
+			$result['broken'] = true;
+			$result['http_code'] = 0;
+			$result['status_text'] = __('Playlist Not Found', 'broken-link-checker');
+			$result['status_code'] = BLC_LINK_STATUS_ERROR;
 
-			case 403 : //Forbidden. We're unlikely to see this code for playlists, but lets allow it.
-				$result['log'] .= $response['body'];
-				$result['broken'] = true;
-				$result['status_text'] = __('Playlist Restricted', 'broken-link-checker');
-				$result['status_code'] = BLC_LINK_STATUS_ERROR;
-				break;
+		} else if ( $result['http_code'] == 403 ) {
+			//Forbidden. We're unlikely to see this code for playlists, but lets allow it.
+			$result['log'] .= htmlentities($response['body']);
+			$result['broken'] = true;
+			$result['status_text'] = __('Playlist Restricted', 'broken-link-checker');
+			$result['status_code'] = BLC_LINK_STATUS_ERROR;
 
-			case 400 : //Bad request. Probably indicates a client error (invalid API request). Body contains details.
-				$result['log'] .= $response['body'];
-				$result['broken'] = true;
-				$result['status_text'] = __('Invalid Playlist', 'broken-link-checker');
+		} else if ( ($result['http_code'] == 200) && isset($api['items']) && is_array($api['items']) ) {
+			//The playlist exists.
+			if ( empty($api['items']) ) {
+				//An empty playlist. It is possible that all of the videos have been deleted.
+				$result['log'] .= __("This playlist has no entries or all entries have been deleted.", 'broken-link-checker');
+				$result['status_text'] = _x('Empty Playlist', 'link status', 'broken-link-checker');
 				$result['status_code'] = BLC_LINK_STATUS_WARNING;
-				break;
+				$result['http_code'] = 0;
+				$result['broken'] = true;
+			} else {
+				//Treat the playlist as broken if at least one video is inaccessible.
+				foreach($api['items'] as $video) {
+					$is_private = isset($video['status']['privacyStatus']) && ($video['status']['privacyStatus'] == 'private');
+					if ( $is_private ) {
+						$result['log'] .= sprintf(
+							__('Video status : %s%s', 'broken-link-checker'),
+							$video['status']['privacyStatus'],
+							''
+						);
 
-			case 200 :
-				//The playlist exists, but some of the videos may be restricted.
-				//Check for <yt:state> tags.
-				$video_states = blcUtility::extract_tags($response['body'], 'yt:state', false);
-				if ( empty($video_states) ){
-
-					//No restrictions. Does the playlist have any entries?
-					$entries = blcUtility::extract_tags($response['body'], 'entry', false);
-					if ( !empty($entries) ) {
-						//All is well.
-						$result['log'] .= __("Playlist OK", 'broken-link-checker');
-						$result['status_text'] = __('OK', 'link status', 'broken-link-checker');
-						$result['status_code'] = BLC_LINK_STATUS_OK;
-						$result['http_code'] = 0;
-					} else {
-						//An empty playlist. It is possible that all of the videos
-						//have been deleted. Treat it as a warning.
-						$result['log'] .= __("This playlist has no entries or all entries have been deleted.", 'broken-link-checker');
-						$result['status_text'] = __('Empty Playlist', 'link status', 'broken-link-checker');
+						$result['broken'] = true;
+						$result['status_text'] = __('Video Restricted', 'broken-link-checker');
 						$result['status_code'] = BLC_LINK_STATUS_WARNING;
 						$result['http_code'] = 0;
-						$result['broken'] = true;
-					}
-
-				} else {
-
-					//Treat the playlist as broken if at least one video is inaccessible.
-					foreach($video_states as $state) {
-						$state_name = $state['attributes']['name'];
-						$state_reason = isset($state['attributes']['reasonCode'])?$state['attributes']['reasonCode']:'';
-
-						if ( ! $this->is_state_ok($state_name, $state_reason) ) {
-							$result['log'] .= sprintf(
-								__('Video status : %s%s', 'broken-link-checker'),
-								$state_name,
-								$state_reason ? ' ['.$state_reason.']':''
-							);
-
-							$result['state_name'] = $state_name;
-							$result['state_reason'] = $state_reason;
-
-							$result['broken'] = true;
-							$result['status_text'] = __('Video Restricted', 'broken-link-checker');
-							$result['status_code'] = BLC_LINK_STATUS_WARNING;
-							$result['http_code'] = 0;
-
-							break;
-						}
-					}
-
-					if ( ! $result['broken'] ) {
-						$result['status_text'] = __('OK', 'link status', 'broken-link-checker');
-						$result['status_code'] = BLC_LINK_STATUS_OK;
-						$result['http_code'] = 0;
+						break;
 					}
 				}
 
-				//Add the playlist title to the log, purely for information.
-				$title = blcUtility::extract_tags($response['body'], 'title', false);
-				if ( !empty($title) ){
-					$result['log'] .= "\n\nPlaylist title : \"" . $title[0]['contents'] . '"';
+				if ( !$result['broken'] ) {
+					//All is well.
+					$result['log'] .= __("Playlist OK", 'broken-link-checker');
+					$result['status_text'] = _x('OK', 'link status', 'broken-link-checker');
+					$result['status_code'] = BLC_LINK_STATUS_OK;
+					$result['http_code'] = 0;
 				}
+			}
 
-				break;
+		} else {
+			//Some other error.
+			$result['status_code'] = BLC_LINK_STATUS_WARNING;
+			$result['warning'] = true;
 
-			default:
-				$result['log'] .= $result['http_code'] . $response['response']['message'];
-				$result['log'] .= "\n" . __('Unknown YouTube API response received.');
-				break;
+			if ( isset($api['error']['message']) ) {
+				$result['status_text'] = $api['error']['message'];
+			} else {
+				$result['status_text'] = __('Unknown Error', 'broken-link-checker');
+			}
+			$result['log'] .= $this->format_api_error($response, $api);
 		}
 
 		return $result;
 	}
 
-	protected function get_video_feed_url($video_id) {
-		return 'http://gdata.youtube.com/feeds/api/videos/' . $video_id . '?key=' . urlencode($this->youtube_developer_key);
+	protected function get_video_resource_url($video_id) {
+		$params = array(
+			'part' => 'status,snippet',
+			'id' => $video_id,
+			'key' => $this->youtube_developer_key,
+		);
+		$params = array_map('urlencode', $params);
+		return 'https://www.googleapis.com/youtube/v3/videos?' . build_query($params);
 	}
 
-	protected function get_playlist_feed_url($playlist_id) {
+	protected function get_playlist_resource_url($playlist_id) {
 		if ( strpos($playlist_id, 'PL') === 0 ) {
 			$playlist_id = substr($playlist_id, 2);
 		}
-		$query = http_build_query(
-			array(
-				'key' => $this->youtube_developer_key,
-				'v' => 2,
-				'safeSearch' => 'none'
-			),
-			'', '&'
+		$params = array(
+			'key' => $this->youtube_developer_key,
+			'playlistId' => $playlist_id,
+			'part' => 'snippet,status',
+			'maxResults' => 10, //Playlists can be big. Lets just check the first few videos.
 		);
-
-		return 'http://gdata.youtube.com/feeds/api/playlists/' . $playlist_id . '?' . $query;
+		$query = build_query(array_map('urlencode', $params));
+		return 'https://www.googleapis.com/youtube/v3/playlistItems?' . $query;
 	}
 
-	/**
-	 * Check if a video is restricted due to some minor problem (e.g. it's still processing)
-	 * or if we should treat it as broken.
-	 *
-	 * @param string $state_name
-	 * @param string $state_reason
-	 * @return bool
-	 */
-	protected function is_state_ok($state_name, $state_reason) {
-		//A couple of restricted states are not that bad
-		$state_ok = ($state_name == 'processing') ||    //Video still processing; temporary.
-			(
-				$state_name == 'restricted' &&
-				$state_reason == 'limitedSyndication' //Only available in browser
-			);
-		return $state_ok;
+	protected function format_api_error($response, $api) {
+		$log = $response['response']['code'] . ' ' . $response['response']['message'];
+		$log .= "\n" . __('Unknown YouTube API response received.');
+
+		//Log error details.
+		if ( isset($api['error']['errors']) && is_array($api['error']['errors']) ) {
+			foreach($api['error']['errors'] as $error) {
+				$log .= "\n---\n";
+
+				if (is_array($error)) {
+					foreach($error as $key => $value) {
+						$log .= sprintf(
+							"%s: %s\n",
+							htmlentities($key),
+							htmlentities($value)
+						);
+					}
+				}
+			}
+		}
+
+		return $log;
 	}
 
 }

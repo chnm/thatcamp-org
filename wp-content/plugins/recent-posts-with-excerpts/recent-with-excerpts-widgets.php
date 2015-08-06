@@ -3,8 +3,11 @@
 Plugin Name: Recent Posts with Excerpts
 Plugin URI: http://stephanieleary.com/code/wordpress/recent-posts-with-excerpts/
 Donate link: http://stephanieleary.com/code/wordpress/recent-posts-with-excerpts/
-Description: A widget that lists your most recent posts with excerpts. The number of posts and excerpts is configurable; for example, you could show five posts but include the excerpt for only the most recent. Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a> and <a href="http://sparepencil.com/code/advanced-excerpt/">Advanced Excerpt</a>.
-Version: 2.5.4
+Description: A widget that lists your most recent posts with excerpts. The number of posts and excerpts is configurable; 
+for example, you could show five posts but include the excerpt for only the most recent. 
+Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a> and 
+<a href="http://sparepencil.com/code/advanced-excerpt/">Advanced Excerpt</a>.
+Version: 2.5.5
 Author: Stephanie Leary
 Author URI: http://stephanieleary.com
 
@@ -71,8 +74,14 @@ class RecentPostsWithExcerpts extends WP_Widget {
 			
 			// retrieve last n blog posts
 			$q = array('posts_per_page' => $instance['numposts']);
+			
+			if (!empty($instance['ignore_sticky_posts'])) {
+				$q["ignore_sticky_posts"] = $instance['ignore_sticky_posts'];
+			}
 			if (!empty($instance['cat'])) 
 				$q['cat'] = $instance['cat'];
+			if (!empty($instance['offset']) && $instance['offset'] > 0 )
+				$q['offset'] = $instance['offset'];
 			if (!empty($instance['tag'])) 
 				$q['tag'] = $instance['tag'];
 			$q = apply_filters('recent_posts_with_excerpts_query', $q);
@@ -122,6 +131,8 @@ class RecentPostsWithExcerpts extends WP_Widget {
 			$instance = $old_instance;
 			$instance['title'] = strip_tags($new_instance['title']);
 			$instance['numposts'] = intval($new_instance['numposts']);
+			$instance['ignore_sticky_posts'] = $new_instance['ignore_sticky_posts'];
+			$instance['offset'] = intval($new_instance['offset']);
 			$instance['numexcerpts'] = intval($new_instance['numexcerpts']);
 			$instance['more_text'] = strip_tags($new_instance['more_text']);
 			$instance['date'] = strip_tags($new_instance['date']);
@@ -144,6 +155,7 @@ class RecentPostsWithExcerpts extends WP_Widget {
 				$instance = wp_parse_args( (array) $instance, array( 
 						'title' => __('Recent Posts', 'recent_posts_with_excerpts'),
 						'numposts' => 5,
+						'ignore_sticky_posts' => 1,
 						'numexcerpts' => 5,
 						'date' => get_option('date_format'),
 						'more_text' => __('more...', 'recent_posts_with_excerpts'),
@@ -154,7 +166,8 @@ class RecentPostsWithExcerpts extends WP_Widget {
 						'postlink' => $link,
 						'thumb' => 0,
 						'thumbposition' => 'above',
-						'thumbsize' => ''));
+						'thumbsize' => '',
+						'offset' => 0 ));
 			
 	?>  
        
@@ -168,6 +181,13 @@ class RecentPostsWithExcerpts extends WP_Widget {
         </p>
         <p><label for="<?php echo $this->get_field_id('numposts'); ?>"><?php _e('Number of posts to show:', 'recent_posts_with_excerpts'); ?></label> 
         <input class="widefat" id="<?php echo $this->get_field_id('numposts'); ?>" name="<?php echo $this->get_field_name('numposts'); ?>" type="text" value="<?php echo $instance['numposts']; ?>" /></p>
+
+	<p>
+        <label for="<?php echo $this->get_field_id('ignore_sticky_posts'); ?>"><?php _e('Ignore sticky posts?', 'recent_posts_with_excerpts'); ?></label>
+        <input id="<?php echo $this->get_field_id('ignore_sticky_posts'); ?>" name="<?php echo $this->get_field_name('ignore_sticky_posts'); ?>" type="checkbox" <?php if ($instance['ignore_sticky_posts']) { ?> checked="checked" <?php } ?> />
+        </p>
+        <p><label for="<?php echo $this->get_field_id('offset'); ?>"><?php _e('Offset By:', 'recent_posts_with_excerpts'); ?></label> 
+        <input class="widefat" id="<?php echo $this->get_field_id('offset'); ?>" name="<?php echo $this->get_field_name('offset'); ?>" type="text" value="<?php echo $instance['offset']; ?>" /></p>
         
         <p>
         <p><label for="<?php echo $this->get_field_id('numexcerpts'); ?>"><?php _e('Number of excerpts to show:', 'recent_posts_with_excerpts'); ?></label> 

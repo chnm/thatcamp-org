@@ -7,7 +7,7 @@
 <form method="post" name="yop_poll_edit_add_new_form" id="yop-poll-edit-add-new-form">
     	<div class="" id="yop_poll_show_shortcode" style="display:none;text-align: center;padding: 12px;">
 
-                            <span> {{ __( 'Use this shortcode to display your poll' ) }}:        <br><br>
+                            <span> {{ __( "Use this shortcode to display your poll" ) }}:        <br><br>
 
                                 <input id="yop_poll_shortcode_input" type="text" value='' readonly="readonly">
 
@@ -16,7 +16,7 @@
 						</div>
 	{{ wp_nonce_field( 'yop-poll-add-edit-action', 'yop-poll-add-edit-name', false, false ) | raw }}
 	{% if ( 'edit' == action_type ) %}
-	<span> {{ __( 'Use this shortcode to display your poll' ) }}:
+	<span> {{ __( "Use this shortcode to display your poll" ) }}:
 		<input style="text-align: center" id="yop_poll_shortcode" type="text" value='[yop_poll id="{{ current_poll.ID }}"]' readonly="readonly">
 	</span>
 	{% endif %}
@@ -27,7 +27,7 @@
 					<div class="yop-poll-titlediv">
 						<div class="yop-poll-titlewrap">
                             {% if ( 'edit' != action_type ) %}
-	                         <label for="yop-poll-title" class="yop-poll-title-prompt-text">{{ __( 'Enter Poll Title Here') }}</label>
+	                         <label for="yop-poll-title" class="yop-poll-title-prompt-text">{{ __( "Enter Poll Title Here") }}</label>
 	                            {% endif %}
 
 							<input type="text" id="yop-poll-title" class="yop-poll-title" value="{{ current_poll.poll_title }}" size="30" name="poll_title" autofocus="true">
@@ -38,11 +38,11 @@
 
 				<div class="postbox-container" id="postbox-container-1">
 					<div class="postbox stuffbox">
-						<div title="{{ __('Click to toggle') }}" class="handlediv">
+						<div title='{{ __("Click to toggle") }}' class="handlediv">
 							<br/>
 						</div>
 						<h3 class="hndle">
-							<span>{{ __('Save') }}</span>
+							<span>{{ __("Save") }}</span>
 						</h3>
 						<div class="inside">
 							<div id="submitlink" class="submitbox">
@@ -50,7 +50,7 @@
 									<div id="publishing-action">
 										<input type="hidden" value="{{ current_poll.ID }}" name="poll_id"/>
 										<input type="hidden" value="{{ action_type }}" name="action_type"/>
-										<input tabindex="200" type="button" accesskey="p" class="button-primary" value="{{ __('Save') }}" id="yop-poll-edit-add-new-form-submit" onclick="save_poll()"/>
+										<input tabindex="200" type="button" accesskey="p" class="button-primary" value='{{ __("Save") }}' id="yop-poll-edit-add-new-form-submit" onclick="save_poll()"/>
 									</div>
 									<div class="clear"></div>
 								</div>
@@ -62,7 +62,7 @@
 
 				<div class="postbox-container" id="postbox-container-2">
 					<div class="icon32-yop-poll-question-section">&nbsp;</div>
-					<h2 class="yop-poll-section-header">{{ __( 'Questions' ) }}:</h2>
+					<h2 class="yop-poll-section-header">{{ __( "Questions" ) }}:</h2>
                         {% if action_type!='edit'%}
                         {% set question 			= new_obj( 'question', '', { 'id': uniqid('q_') , 'poll_order' : 1} ) %}
 					     {% include 'polls_question_template.html' %}

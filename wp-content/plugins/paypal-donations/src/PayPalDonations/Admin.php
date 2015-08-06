@@ -536,7 +536,7 @@ class PayPalDonations_Admin
             }
             echo " /> <img src='" . str_replace('en_US', $button_localized, $button) . "' alt='" . $key  . "' style='vertical-align: middle;' /></label><br /><br />\n";
         }
-        echo '  <label><input type="radio" name="{$optionKey}[button]" value="custom"';
+        echo '  <label><input type="radio" name="'.$optionKey.'[button]" value="custom"';
         checked($custom, true);
         echo '/> '.__('Custom Button', PayPalDonations::TEXT_DOMAIN);
 

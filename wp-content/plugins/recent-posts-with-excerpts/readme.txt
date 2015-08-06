@@ -5,8 +5,8 @@ Donate link: http://stephanieleary.com/code/wordpress/recent-posts-with-excerpts
 Text Domain: recent_posts_with_excerpts
 Domain Path: /languages
 Requires at least: 2.8
-Tested up to: 3.8.1
-Stable tag: 2.5.4
+Tested up to: 4.2
+Stable tag: 2.5.5
 
 
 A widget that lists your most recent posts with optional excerpts.   
@@ -49,6 +49,9 @@ To add something above the list, use the `recent_posts_with_excerpts_begin` acti
 
 == Changelog ==
 
+= 2.5.5 =
+* New offset option, props Carlos Santana.
+* New option to ignore sticky posts, props Francesco Mele.
 = 2.5.3 =
 * Added POT file.
 = 2.5.2 =

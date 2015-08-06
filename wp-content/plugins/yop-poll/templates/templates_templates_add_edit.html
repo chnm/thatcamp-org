@@ -1,7 +1,7 @@
 {% extends "polls_base.html" %}
 {% from "form_macros.html" import yop_poll_select as select  %}
 {%block addnew%}
-<a id="yop-poll-add-new-template" class="add-new-h2"   href="{{ esc_url( add_query_arg( { 'action' : 'add-new-template'  } ),'yop-poll-templates-add-edit-action', 'yop-poll-templates-add-edit-name' ) | raw }}">{{ __('Add New') }}  </a>
+<a id="yop-poll-add-new-template" class="add-new-h2"   href="{{ esc_url( add_query_arg( { 'action' : 'add-new-template'  } ),'yop-poll-templates-add-edit-action', 'yop-poll-templates-add-edit-name' ) | raw }}">{{ __("Add New") }}  </a>
 {%endblock addnew%}
 
 {% block content%}
@@ -20,19 +20,19 @@
                 <div id="post-body-content">
                     <div class="stuffbox" id="yop-poll-template-namediv">
                         <h3>
-                            <label for="yop-poll-template-name">{{__( 'Template Name')}}</label>
+                            <label for="yop-poll-template-name">{{__( "Template Name")}}</label>
                         </h3>
                         <div class="inside">
                             <input type="text" id="yop-poll-template-name"
 
                                    value="{{ stripslashes(current_template.name) |e}}"
                                    tabindex="1" name="yop_poll_template_name" size="30"/>
-                            <p>{{__( 'Example: Test Poll Template')}}</p>
+                            <p>{{__( "Example: Test Poll Template")}}</p>
                         </div>
                     </div>
                     <div class="stuffbox" id="yop-poll-before-vote-template-div">
                         <h3>
-                            <label for="yop-poll-before_vote-template-input">{{__( 'Template Before Vote')}}</label>
+                            <label for="yop-poll-before_vote-template-input">{{__( "Template Before Vote")}}</label>
                         </h3>
                         <div class="inside">
                             {{ wp_editor( stripslashes( current_template.before_vote_template ), 'yop-poll-before-vote-template-input', array( {'textarea_name' : 'yop_poll_before_vote_template', 'teeny' : 'true', 'media_buttons' :'false' }) )}}
@@ -40,57 +40,57 @@
                     </div>
                     <div class="stuffbox" id="yop-poll-after-vote-template-div">
                         <h3>
-                            <label for="yop-poll-after_vote-template-input">{{__( 'Template After Vote')}}</label>
+                            <label for="yop-poll-after_vote-template-input">{{__( "Template After Vote")}}</label>
                         </h3>
                         <div class="inside">
                             {{wp_editor( stripslashes( current_template.after_vote_template ), 'yop-poll-after-vote-template-input', array( {'textarea_name' : 'yop_poll_after_vote_template', 'teeny' : 'true', 'media_buttons' :'false '}) )}}
                         </div>
                     </div>
                     <div class="postbox" id="yop-poll-template-before-start-date-div">
-                        <div title="Click to toggle" class="handlediv"
+                        <div title='{{__("Click to toggle")}}' class="handlediv"
                              id="yop-poll-template-before-start-date-handler">
                         </div>
                         <h3>
-                            <label for="yop-poll-template_before-start-date-input">{{__( 'Template Before Start Date' )}}</label>
+                            <label for="yop-poll-template_before-start-date-input">{{__( "Template Before Start Date")}}</label>
                         </h3>
                         <div class="inside" id="template-before-start-date">
                             {{ wp_editor( stripslashes( current_template.before_start_date_template ), 'yop-poll-template-before-start-date-input', array( { 'textarea_name' : 'yop_poll_template_before_start_date', 'teeny' :true, 'media_buttons' :'false' } ) )}}
                         </div>
                     </div>
                     <div class="postbox" id="yop-poll-template-after-end-date-div">
-                        <div title="Click to toggle" class="handlediv"
+                        <div title='{{__("Click to toggle")}}' class="handlediv"
                              id="yop-poll-template-after-end-date-handler">
 
 
                         </div>
                         <h3>
-                            <label for="yop-poll-template-after_end-date-input">{{__( 'Template After End Date')}}</label>
+                            <label for="yop-poll-template-after_end-date-input">{{__( "Template After End Date")}}</label>
                         </h3>
                         <div class="inside">
                             {{ wp_editor(stripslashes( current_template.after_end_date_template ), 'yop-poll-template-after-end-date-input', array( {'textarea_name' : 'yop_poll_template_after_end_date', 'teeny' : 'true', 'media_buttons' : 'false' } ) ) }}
                         </div>
                     </div>
                     <div class="postbox" id="yop-poll-template-css-div">
-                        <div title="Click to toggle" class="handlediv"
+                        <div title='{{__("Click to toggle")}}' class="handlediv"
                              id="yop-poll-template-css-handler">
                             <br>
 
                         </div>
                         <h3>
-                            <label for="yop-poll-template_css-input">{{__( 'Css')}}</label>
+                            <label for="yop-poll-template_css-input">{{__( "Css")}}</label>
                         </h3>
                         <div class="inside" >
                             {{ wp_editor( stripslashes( current_template.css ), 'yop-poll-template-css-input', array( {'textarea_name': 'yop_poll_template_css', 'teeny' :'true', 'media_buttons' : 'false' }) )}}
                         </div>
                     </div>
                     <div class="postbox" id="yop-poll-template-js-div">
-                        <div title="Click to toggle" class="handlediv"
+                        <div title='{{__("Click to toggle")}}' class="handlediv"
                              id="yop-poll-template-js-handler">
                             <br>
 
                         </div>
                         <h3>
-                            <label for="yop-poll-template_js-input">{{__( 'JavaScript' )}}</label>
+                            <label for="yop-poll-template_js-input">{{__( "JavaScript" )}}</label>
                         </h3>
                         <div class="inside">
                             {{ wp_editor( stripslashes( current_template.js ), 'yop-poll-template-js-input', array( {'textarea_name': 'yop_poll_template_js', 'teeny' : 'true', 'media_buttons' : 'false' }) )}}
@@ -102,22 +102,24 @@
                            id="yop-poll-edit-add-new-template-form-template-id"/> <input
                         type="hidden" value="{{action_type}}"
                         name="action_type"
-                        id="yop-poll-edit-add-new-template-form-action-type"/> <input
+                        id="yop-poll-edit-add-new-template-form-action-type"/>
+
+                    <input
                         type="button" class="button-primary"
                       {% if action_type=='add-new-template' %}
-                        value="{{__( 'Add Template') }}"
+                        value="{{__( "Add Template") }}"
                     {%else%}
-                    value="{{__( 'Save changes') }}"
+                    value="{{__( "Save changes") }}"
                     {%endif%}
                         id="yop-poll-edit-add-new-template-form-save"/>
                 </div>
                 <div class="postbox-container" id="postbox-container-1">
                     <div class="postbox stuffbox">
-                        <div title="{{ __('Click to toggle') }}" class="handlediv">
+                        <div title='{{ __("Click to toggle") }}' class="handlediv">
                             <br/>
                         </div>
                         <h3 class="hndle">
-                                <span>{{__( 'Save' )}}</span>
+                                <span>{{__( "Save" )}}</span>
                             </h3>
                             <div class="inside">
                                 <div id="submitlink" class="submitbox">
@@ -125,9 +127,9 @@
                                         <div id="publishing-action">
                                             <input type="button" accesskey="p" class="button-primary"
                                             {% if action_type=='add-new-template' %}
-                                            value="{{__( 'Add Template') }}"
+                                            value="{{__( "Add Template") }}"
                                             {%else%}
-                                            value="{{__( 'Save changes') }}"
+                                            value="{{__( "Save changes") }}"
                                             {%endif%}
                                                    id="yop-poll-edit-add-new-template-form-save1"/>
                                         </div>
@@ -143,11 +145,11 @@
 
 
                         <div class="postbox stuffbox">
-                            <div title="{{ __('Click to toggle') }}" class="handlediv">
+                            <div title='{{ __("Click to toggle") }}' class="handlediv">
                                 <br/>
                             </div>
                             <h3 class="hndle">
-                                <span>{{__( 'Tools ')}}</span>
+                                <span>{{__( "Tools")}}</span>
                             </h3>
 
                             <div class="inside">
@@ -155,7 +157,7 @@
                                     <div id="minor-publishing">
                                         <div id="misc-publishing-actions">
                                             <div class="misc-pub-section">
-                                                <label for="post_status">{{__( 'Template Author' )}}
+                                                <label for="post_status">{{__( "Template Author" )}}
                                                                          :</label>
 
 															<span id="yop-poll-change-template-author-container-{{current_template['id']}}">{{template_author_name.user_nicename}}
@@ -170,7 +172,7 @@
                                 <div id="minor-publishing">
                                     <div id="misc-publishing-actions">
                                         <div class="misc-pub-section">
-                                            <p>{{( 'Select Template For Reset')}}
+                                            <p>{{__( "Select Template For Reset")}}
                                                :</p>
                                             <select name="yop_poll_reset_template_id"
                                                     id="yop-poll-reset-template-id">
@@ -198,7 +200,8 @@
                                 <div id="submitlink" class="submitbox">
                                     <div id="major-publishing-actions">
                                         <div id="publishing-action">
-                                            <input type="button"  class="button-primary"
+                                            <label for="yop-poll-edit-add-new-template-form-reset" class="button-primary">{{__( "Reset Poll Template")}} </label>
+                                            <input type="button"  class="button-primary" style="display: none"
                                                    value="{{__( 'Reset Poll Template')}}"
                                             id="yop-poll-edit-add-new-template-form-reset"
 

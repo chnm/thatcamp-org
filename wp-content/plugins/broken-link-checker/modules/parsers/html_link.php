@@ -79,6 +79,7 @@ class blcHTMLLink extends blcParser {
 		
 		if ( !isset($parts['scheme']) ){
 			//No scheme - likely a relative URL. Turn it into an absolute one.
+			//TODO: Also log the original URL and base URL.
 			$url = $this->relative2absolute($url, $base_url); //$base_url comes from $params
 			$blclog->info(__CLASS__ .':' . __FUNCTION__ . ' Convert relative URL to absolute. Absolute URL = "' . $url . '"');
 		}

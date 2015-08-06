@@ -2,11 +2,11 @@
 /*
 Plugin Name: Simple User Management
 Description: Allows site administrators to eaily manage which blogs belong to which users, and which users to which blogs.
-Version: 1.4
+Version: 1.5
 Author: Chris Taylor
 Author URI: http://www.stillbreathing.co.uk
 Plugin URI: http://www.stillbreathing.co.uk/wordpress/simple-user-admin/
-Date: 2011-09-09
+Date: 2015-04-20
 */
 
 // when the admin menu is built
@@ -20,7 +20,7 @@ define('SIMPLE_USER_MANAGEMENT_PARENT_SLUG', 'users.php');
 
 // add the admin menu button (based on the SIMPLE_USER_MANAGEMENT_PARENT_SLUG constant, currently underneath the Users menu)
 function simple_user_management_add_admin() {
-	add_submenu_page(SIMPLE_USER_MANAGEMENT_PARENT_SLUG, 'Simple User Management', 'Simple User Management', 10, 'simple_user_management', 'simple_user_management');
+	add_submenu_page(SIMPLE_USER_MANAGEMENT_PARENT_SLUG, 'Simple User Management', 'Simple User Management', 'manage_network_users', 'simple_user_management', 'simple_user_management');
 }
 
 // security check
@@ -223,7 +223,7 @@ function simple_user_management()
 		}
 		
 		// if the blog has users
-		if ($users = get_users_of_blog((int)$_GET["blog"]))
+		if ( $users = get_users( array( 'blog_id' => (int)$_GET["blog"] ) ) )
 		{
 			// show the table of blog users
 			simple_user_management_show_blog_users_table($_GET["blog"], $users);
@@ -269,12 +269,12 @@ function simple_user_management()
 	{
 		// display a table with all users
 		echo '<h3>' . __("All Users") . '</h3>';
-		$results = simple_user_management_search_users($_POST["userquery"]);
+		$results = simple_user_management_search_users('');
 		simple_user_management_show_user_table($results);
 
 		// display a table with all blogs
 		echo '<h3>' . __("All Blogs") . '</h3>';
-		$results = simple_user_management_search_blogs($_POST["blogquery"]);
+		$results = simple_user_management_search_blogs('');
 		simple_user_management_show_blog_table($results);
 	}
 	
@@ -493,6 +493,7 @@ function simple_user_management_show_blog_users_table($blog, $results)
 	<tbody>
 	';
 	$blogids = "";
+	$userids = "";
 	foreach ($results as $user)
 	{
 		$user = simple_user_management_get_user( $user->ID );
@@ -556,11 +557,14 @@ function simple_user_management_search_blogs($query)
 {
 	global $wpdb;
 	if (!empty($query)) {
-		$sql = "select blog_id, domain, path
+		$sql = $wpdb->prepare( "select blog_id, domain, path
 				from " . $wpdb->blogs . "
-				where blog_id = " . $wpdb->escape((int)$query) . "
-				or domain like '%" . $wpdb->escape($query) . "%'
-				or path like '%" . $wpdb->escape($query) . "%';";
+				where blog_id = %d
+				or domain like '%%%s%%'
+				or path like '%%%s%%';",
+				$query,
+				$query,
+				$query );
 	} else {
 		// select them all!
 		$sql = "select blog_id, domain, path
@@ -606,12 +610,16 @@ function simple_user_management_search_users($query)
 {
 	global $wpdb;
 	if (!empty($query)) {
-		$sql = "select id, display_name, user_login, user_email
+		$sql = $wpdb->prepare( "select id, display_name, user_login, user_email
 				from " . $wpdb->users . "
-				where id = " . $wpdb->escape((int)$query) . "
-				or display_name like '%" . $wpdb->escape($query) . "%'
-				or user_login like '%" . $wpdb->escape($query) . "%'
-				or user_email like '%" . $wpdb->escape($query) . "%';";
+				where id = %d
+				or display_name like '%%%s%%'
+				or user_login like '%%%s%%'
+				or user_email like '%%%s%%';",
+				$query,
+				$query,
+				$query,
+				$query );
 	} else {
 		// select them all!
 		$sql = "select id, display_name, user_login, user_email

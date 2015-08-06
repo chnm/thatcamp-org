@@ -62,7 +62,7 @@ class UserList {
 	/**
 	 * Maximum number of words in bio
 	 */
-	var $bio_length = -1;
+	var $bio_length = - 1;
 
 	/**
 	 * Flag whether to show a user's biography
@@ -299,7 +299,7 @@ class UserList {
 			'show_postcount'          => $this->show_postcount,
 			'show_bbpress_post_count' => $this->show_bbpress_post_count,
 			'show_biography'          => $this->show_biography,
-			'bio_length'			  => $this->bio_length,
+			'bio_length'              => $this->bio_length,
 			'show_last_post'          => $this->show_last_post,
 			'show_email'              => $this->show_email,
 			'avatar_size'             => $this->avatar_size,
@@ -356,6 +356,14 @@ class UserList {
 
 		if ( $user->user_id == - 1 && "guest-author" != $type ) {
 			$link_type = 'website';
+			$divcss[]  = 'user-0';
+		} else {
+			if ( "guest-author" == $type ) {
+				$divcss[] = 'guest-author-' . $user->user_id;
+			} else {
+				$divcss[] = 'user-' . $user->user_id;
+			}
+
 		}
 
 		switch ( $link_type ) {
@@ -399,6 +407,20 @@ class UserList {
 				if ( empty( $link ) || $link == 'http://' ) {
 					$link = false;
 				}
+				break;
+			case 'last_post':
+				$recent = get_posts( array(
+					'author'      => $user->user_id,
+					'orderby'     => 'date',
+					'order'       => 'desc',
+					'numberposts' => 1
+				) );
+				$link   = get_permalink( $recent[0]->ID );
+				break;
+
+			case 'last_post_all':
+				$last_post = get_most_recent_post_of_user( $user->user_id );
+				$link      = get_permalink( $last_post['post_id'] );
 				break;
 		}
 
@@ -446,13 +468,13 @@ class UserList {
 
 
 			// trim $biography to bio_length
-			if( 0 < $this->bio_length ){
-				$biography = $this->truncate_html( wpautop( $biography, true ) , apply_filters( 'aa_user_bio_length', $this->bio_length ) );
-			}else{
-				$biography = wpautop( $biography, true ) ;
+			if ( 0 < $this->bio_length ) {
+				$biography = $this->truncate_html( wpautop( $biography, true ), apply_filters( 'aa_user_bio_length', $this->bio_length ) );
+			} else {
+				$biography = wpautop( $biography, true );
 			}
 
-			$divcss[] = 'with-biography bio-length-'.$this->bio_length;
+			$divcss[] = 'with-biography bio-length-' . $this->bio_length;
 			$name     = '<strong>' . $name . '</strong>';
 			if ( empty( $biography ) ) {
 				$divcss[] = 'biography-missing';
@@ -463,8 +485,16 @@ class UserList {
 
 		if ( $this->show_last_post ) {
 			$show_last_post = $this->aa_get_last_post( $user->user_id );
-			$show_last_post = apply_filters( 'aa_user_show_last_post_filter', $show_last_post );
-			$divcss[] = 'with-last-post';
+			/**
+			 * Filter the users last post.
+			 *
+			 * @since 1.8.6.0
+			 *
+			 * @param string $show_last_post The HTML link to users last post.
+			 * @param object                    The Current user object.
+			 */
+			$show_last_post = apply_filters( 'aa_user_show_last_post_filter', $show_last_post, $user );
+			$divcss[]       = 'with-last-post';
 
 			if ( empty( $show_last_post ) ) {
 				$divcss[] = 'last-post-missing';
@@ -474,8 +504,17 @@ class UserList {
 		$email = false;
 		if ( $this->show_email && $user->user_email ) {
 			$userEmail = $user->user_email;
-			$email     = "<a href='mailto:" . $userEmail . "''>" . $userEmail . "</a>";
-			$divcss[]  = 'with-email';
+			/**
+			 * Filter the title tag content for an admin page.
+			 *
+			 * @since 1.8.6.0
+			 *
+			 * @param string                The mailto href for sprintf the $1$s is where the email is inserted.
+			 * @param string $userEmail The Email to be inserted.
+			 * @param object                The Current user object.
+			 */
+			$email    = sprintf( apply_filters( 'aa_user_email_url_template', '<a href="mailto:%1$s">%1$s</a>', $userEmail, $user ), $userEmail );
+			$divcss[] = 'with-email';
 			if ( empty( $email ) ) {
 				$divcss[] = 'email-missing';
 			}
@@ -485,6 +524,7 @@ class UserList {
 			// use email for commentators
 			$avatar = get_avatar( $user->user_email, $avatar_size );
 		} else {
+			// if on buddypress install use BP function
 			if ( function_exists( 'bp_core_fetch_avatar' ) ) {
 				$avatar = bp_core_fetch_avatar( array(
 					'item_id' => $user->user_id,
@@ -495,6 +535,7 @@ class UserList {
 					'title'   => $title
 				) );
 			} else {
+				// call the standard avatar function
 				$avatar = get_avatar( $user->user_id, $avatar_size );
 			}
 		}
@@ -506,6 +547,7 @@ class UserList {
 			$avatar = preg_replace( '@<\s*\/?\s*[aA]\s*.*?>@', '', $avatar );
 		}
 
+		// the buddypress code
 		if ( ! function_exists( 'bp_core_fetch_avatar' ) ) {
 			/* strip alt and title parameter */
 			$avatar = preg_replace( '@alt=["\'][\w]*["\'] ?@', '', $avatar );
@@ -520,32 +562,99 @@ class UserList {
 		}
 
 		$html = '';
-		$html .= sprintf( apply_filters( 'aa_user_avatar_template', '<span class="avatar" title="%s">%s</span>',$title, $avatar ), $title, $avatar  );
+		/**
+		 * filter the span that holds the avatar
+		 *
+		 * @param string            The sprintf template.
+		 * @param string @title    The value passed to the title attr in span.
+		 * @param string @avatar    The HTML returned from get_avatar() etc.
+		 * @param object $user The user object
+		 */
+		$html .= sprintf( apply_filters( 'aa_user_avatar_template', '<span class="avatar" title="%s">%s</span>', $title, $avatar, $user ), $title, $avatar );
+
 		if ( $this->show_name || $this->show_bbpress_post_count || $this->show_postcount ) {
-			$html .=  sprintf( apply_filters( 'aa_user_name_template', '<span class="name">%s</span>', $name ), $name );		}
+			/**
+			 * filter the span that contains the users name
+			 *
+			 * @param string            The sprintf template.
+			 * @param string $name The value (users name) passed into the span
+			 * @param object $user The user object
+			 */
+			$html .= sprintf( apply_filters( 'aa_user_name_template', '<span class="name">%s</span>', $name, $user ), $name );
+		}
 
 		if ( $link ) {
-			$html = sprintf( apply_filters( 'aa_user_link_template', '<a href="%s" title="%s">%s</a>', $link , $title  , $html ), $link , $title , $html );
+			/**
+			 * filter the href that wrap's avatar and users name
+			 *
+			 * @param string            The sprintf template.
+			 * @param string $link The href value.
+			 * @param string $title The value for the href title
+			 * @param string $html The HTML with avatar and name
+			 * @param object $user The user object
+			 */
+			$html = sprintf( apply_filters( 'aa_user_link_template', '<a href="%s" title="%s">%s</a>', $link, $title, $html, $user ), $link, $title, $html );
 		}
 
 		if ( $email ) {
-			$html .=  sprintf( apply_filters( 'aa_user_email_template', '<div class="email">%s</div>', $email ), $email );
+			/**
+			 * filter that wrap's the email link in a div
+			 *
+			 * @param string            The sprintf template.
+			 * @param string $email The HTML containing the mailto href and email string.
+			 * @param object $user The user object
+			 */
+			$html .= sprintf( apply_filters( 'aa_user_email_template', '<div class="email">%s</div>', $email, $user ), $email );
 		}
 
 		if ( $biography ) {
-			$html .= sprintf( apply_filters( 'aa_user_biography_template', '<div class="biography">%s</div>', $biography ), $biography );
+			/**
+			 * filter that wrap's the BIO text in a div
+			 *
+			 * @param string            The sprintf template.
+			 * @param string $biography The Bio text.
+			 * @param object $user The user object
+			 */
+			$html .= sprintf( apply_filters( 'aa_user_biography_template', '<div class="biography">%s</div>', $biography, $user ), $biography );
 		}
 
 		if ( $show_last_post ) {
-			$html .= sprintf( apply_filters( 'aa_user_last_post_template', '<div class="show_last_post">%s</div>', $show_last_post ), $show_last_post );
+			/**
+			 * filter that wrap's the last post link in a div
+			 *
+			 * @param string                    The sprintf template.
+			 * @param string $show_last_post The last post link.
+			 * @param object $user The user object
+			 */
+			$html .= sprintf( apply_filters( 'aa_user_last_post_template', '<div class="show_last_post">%s</div>', $show_last_post, $user ), $show_last_post );
 		}
 
 		if ( ! empty ( $this->display_extra ) ) {
-			$html .= apply_filters( 'aa_user_display_extra', $this->display_extra, $user );
+			/**
+			 * filter the extra HTML block before its appended
+			 *
+			 * @param string $extra extra HTML / string.
+			 * @param object $user The user object
+			 */
+			$html .= apply_filters( '
+			aa_user_display_extra', $this->display_extra, $user );
 		}
 
 		$tpl_vars['{class}'] = implode( $divcss, ' ' );
-		$tpl_vars['{user}']  =  apply_filters( 'aa_user_final_content', $html, $user );
+		/**
+		 * filter on the complete HTML for the user
+		 *
+		 * @param string $html The generated HTML.
+		 * @param object $user the user object
+		 */
+		$tpl_vars['{user}'] = apply_filters( 'aa_user_final_content', $html, $user );
+
+		/**
+		 * filter the outer HTML template
+		 *
+		 * @param string $html The outer user template.
+		 * @param object $user the user object
+		 */
 
 		return str_replace( array_keys( $tpl_vars ), $tpl_vars, apply_filters( 'aa_user_template', $this->user_template, $user ) );
 	}
@@ -570,12 +679,12 @@ class UserList {
 		}
 		// if limit set then add
 		if ( ! empty( $this->limit ) ) {
-			$cache_id .= "_".$this->limit;
+			$cache_id .= "_" . $this->limit;
 		}
 		// if order set then add
 		if ( ! empty( $this->order ) ) {
 			$cache_id .= "_" . $this->order;
-			$random_order = ('random' == $this->order)?true:false;
+			$random_order = ( 'random' == $this->order ) ? true : false;
 		}
 		// if hidden user set then add
 		if ( ! empty( $this->hiddenusers ) ) {
@@ -618,50 +727,65 @@ class UserList {
 
 				if ( in_array( 'coauthors_plus', $this->roles ) ) {
 					global $coauthors_plus;
-					$args = array( 'orderby' => 'term_order', 'order' => 'ASC', );
-					//	$args = array(
-					// 		'optioncount'      => false,
-					// 		'show_fullname'    => true,
-					// 		'hide_empty'       => false,
-					// 		'feed'             => '',
-					// 		'feed_image'       => '',
-					// 		'feed_type'        => '',
-					// 		'echo'             => false,
-					// 		'html'             => false,
-					// 		'number'           => 99,
-					// );
-					$coauthors = array();
+					if ( null !== $coauthors_plus ) {
 
-					//	$coauthor_terms = coauthors_wp_list_authors( $args );
+						$args = array( 'orderby' => 'term_order', 'order' => 'ASC', );
+						//	$args = array(
+						// 		'optioncount'      => false,
+						// 		'show_fullname'    => true,
+						// 		'hide_empty'       => false,
+						// 		'feed'             => '',
+						// 		'feed_image'       => '',
+						// 		'feed_type'        => '',
+						// 		'echo'             => false,
+						// 		'html'             => false,
+						// 		'number'           => 99,
+						// );
+						$coauthors = array();
 
-					$coauthor_terms = get_terms( $coauthors_plus->coauthor_taxonomy, $args );
+						//	$coauthor_terms = coauthors_wp_list_authors( $args );
 
-					if ( is_array( $coauthor_terms ) && ! empty( $coauthor_terms ) ) {
-						foreach ( $coauthor_terms as $coauthor ) {
-							$coauthor_slug = preg_replace( '#^cap\-#', '', $coauthor->slug );
-							$post_author   = $coauthors_plus->get_coauthor_by( 'user_nicename', $coauthor_slug );
+						$coauthor_terms = get_terms( $coauthors_plus->coauthor_taxonomy, $args );
 
-							// In case the user has been deleted while plugin was deactivated
-							if ( ! empty( $post_author ) ) {
-								$post_author->user_id  = - 1; // to stop the fliter from breaking
-								$post_author->user_url = $post_author->website;
-								$coauthors[]           = $post_author;
+						if ( is_array( $coauthor_terms ) && ! empty( $coauthor_terms ) ) {
+
+							foreach ( $coauthor_terms as $coauthor ) {
+								$coauthor_slug = preg_replace( '#^cap\-#', '', $coauthor->slug );
+
+								$post_author = $coauthors_plus->get_coauthor_by( 'user_nicename', $coauthor_slug );
+
+								// In case the user has been deleted while plugin was deactivated
+								if ( ! empty( $post_author ) || false !== $post_author ) {
+									if ( ! isset( $post_author->type ) ) {
+										$post_author->type = 'guest-author';
+									}
+									if ( 'wpuser' === $post_author->type ) {
+										$post_author->data->ID      = $post_author->ID;
+										$post_author->data->user_id = $post_author->ID;
+										$coauthors[]                = $post_author->data;
+									} else {
+										$post_author->user_id  = '-' . $post_author->ID; // to stop the fliter from breaking
+										$post_author->user_url = $post_author->website;
+										$coauthors[]           = $post_author;
+
+									}
+								}
 							}
 
+							$users = array_merge( $users, $coauthors );
 						}
-						$users = array_merge( $users, $coauthors );
 					}
 				}
 			}
 
 			// filter them
-			$this->_filter( $users );
+			$users = $this->_filter( $users );
 
 			// sort them
-			$this->_sort( $users );
+			$users = $this->_sort( $users );
 
 			// group them
-			$this->_group( $users );
+			$users = $this->_group( $users );
 
 			// and limit the number
 			if ( intval( $this->limit ) > 0 ) {
@@ -671,9 +795,11 @@ class UserList {
 			set_transient( $cache_id, $users, 1 * HOUR_IN_SECONDS );
 		}
 
-		if( $random_order ){
-			$this->_sort( $users );
+		if ( $random_order ) {
+			$users = $this->_sort( $users );
 		}
+
+//		var_dump($users);
 		return $users;
 	}
 
@@ -682,23 +808,42 @@ class UserList {
 	 *
 	 * @return null|string
 	 */
-	function aa_get_last_post( $user_id ){
-		$args=array(
-			'author' => $user_id ,
-			'post_type' => 'post',
-			'post_status' => 'publish',
-			'posts_per_page' => 1,
-			'ignore_sticky_posts'=> 1
+	function aa_get_last_post( $user_id ) {
+		$args     = array(
+			'author'              => $user_id,
+			'post_type'           => 'post',
+			'post_status'         => 'publish',
+			'posts_per_page'      => 1,
+			'ignore_sticky_posts' => 1
 		);
 		$my_query = null;
-		$out = null;
-		$my_query = new WP_Query($args);
-		if( $my_query->have_posts() ) {
-			while ($my_query->have_posts()) : $my_query->the_post();
+		$out      = null;
+		$my_query = new WP_Query( $args );
+		if ( $my_query->have_posts() ) {
+			while ( $my_query->have_posts() ) : $my_query->the_post();
 				$id = $my_query->posts[0]->ID;
-				$out .= sprintf('<a href="%s" rel="bookmark" title="Permanent Link to %s">%s</a>',
+				/**
+				 * Filter the users last post link HTML.
+				 *
+				 * @since 1.8.6.0
+				 *
+				 * @param string $permalink The last post permalink.
+				 * @param string $title_attr The last post Title attribute.
+				 * @param string $title The last post Title.
+				 * @param int $id The last post ID.
+				 * @param int $user_id The Current user ID.
+				 */
+				$out .= sprintf(
+					apply_filters( 'aa_user_show_last_post_html_filter',
+						'<a href="%s" rel="bookmark" title="Permanent Link to %s">%s</a>',
+						get_the_permalink( $id ),
+						the_title_attribute( array( 'echo' => false, 'post' => $id ) ),
+						get_the_title( $id ),
+						$id,
+						$user_id
+					),
 					get_the_permalink( $id ),
-					the_title_attribute( array( 'echo'=>false, 'post'=>$id ) ),
+					the_title_attribute( array( 'echo' => false, 'post' => $id ) ),
 					get_the_title( $id )
 				);
 			endwhile;
@@ -784,34 +929,36 @@ class UserList {
 	 *
 	 * @access private
 	 *
-	 * @param $users Array of users (WP_User objects). (by reference)
+	 * @param $users Array of users (WP_User objects).
 	 *
-	 * @return void
+	 * @return $users Array of users
 	 */
-	function _filter( &$users ) {
+	function _filter( $users ) {
 		if ( is_array( $users ) ) {
 			// arrays for keeping track of all 'valid' user ids and commentator emails
 			$user_ids    = array();
 			$user_emails = array();
 
-			foreach ( $users as $id => $usr ) {
-				$user = & $users[ $id ];
+			foreach ( $users as $id => $user ) {
+			//	$user = $users[ $id ];
 				$add  = true;
 
 				// Check user role
 				// if we have set some roles to restrict by
 				$type = ( isset( $user->type ) ) ? $user->type : null;
-				// don't fileter gust authors
-				if ( "guest-author" != $type ) {
+
+				// don't fileter guest authors
+				if ( 'wpuser' === $type ) {
 					if ( is_array( $this->roles ) && ! empty( $this->roles ) ) {
 						if ( ! isset( $user->user_roles ) ) {
 							if ( isset( $user->meta_value ) ) {
 								$user->user_roles = array_keys( unserialize( $user->meta_value ) );
 							} else {
-								$user->user_roles = $user->roles;
+								$wpuser = get_user_by( 'id', $user->ID);
+								$user->user_roles = array_merge( $wpuser->roles, array('coauthors_plus'));
 							}
-
 						}
+
 						// if the current user does not have one of those roles
 						if ( ! AA_array_in_array( $user->user_roles, $this->roles ) ) {
 							// do not add this user
@@ -831,9 +978,10 @@ class UserList {
 					$add = false;
 				}
 
-				// real user
+				// real user and co-authors
 				if ( $user->user_id != - 1 ) {
 					// Remove duplicates
+
 					if (
 						// if we're not grouping anything
 						empty( $this->group_by ) &&
@@ -854,6 +1002,7 @@ class UserList {
 						// do not add this user
 						$add = false;
 					}
+
 				} // commentator
 				else {
 					if (
@@ -877,6 +1026,8 @@ class UserList {
 				}
 			}
 		}
+
+		return $users;
 	}
 
 	/**
@@ -898,12 +1049,12 @@ class UserList {
 	 *
 	 * @access private
 	 *
-	 * @param Array $users Array of users (WP_User objects). (by reference)
+	 * @param Array $users Array of users (WP_User objects).
 	 * @param String $order The key to sort by. Can be one of the following: random, user_id, user_login, display_name.
 	 *
-	 * @return void
+	 * @return Array $users Array of users (WP_User objects)
 	 */
-	function _sort( &$users, $order = false ) {
+	function _sort( $users, $order = false ) {
 		if ( ! $order ) {
 			$order = $this->order;
 		}
@@ -947,6 +1098,8 @@ class UserList {
 				@usort( $users, array( $this, '_user_cmp_budypress_activity' ) );
 				break;
 		}
+
+		return $users;
 	}
 
 	/**
@@ -1111,7 +1264,17 @@ class UserList {
 			}
 			foreach ( $blogs as $blog_id ) {
 				switch_to_blog( $blog_id );
-				$total += count_user_posts( $user_id );
+
+				/*
+				 * @since 1.8.6.5
+				 *
+				 *  The dynamic portion of the hook name, $blog_id, is the current blog
+				 *
+				 * @param int $total_post The user's post count
+				 * @param int $user_id of the user post being counted.
+				 * @param int $blog_id the current blog being queried
+		        */
+				$total += apply_filters( "aa_get_user_postcount_{$blog_id}", count_user_posts( $user_id ), $user_id, $blog_id );
 			}
 			// reset to current blog done out side to save lot of switching
 			restore_current_blog();
@@ -1119,7 +1282,14 @@ class UserList {
 			$total += count_user_posts( $user_id );
 		}
 
-		return $total;
+		/*
+		 * @since 1.8.6.5
+		 *
+		 * @param int $total_post The user's post count
+		 * @param int $user_id of the user post being counted.
+        */
+
+		return apply_filters( 'aa_get_user_postcount', $total, $user_id );
 	}
 
 	/**
@@ -1326,11 +1496,11 @@ class UserList {
 	 * @param Array of WP_User objects, by reference
 	 *
 	 * @access private
-	 * @return void
+	 * @return Array of WP_User objects
 	 */
-	function _group( &$users ) {
+	function _group( $users ) {
 		if ( empty( $this->group_by ) ) {
-			return;
+			return $users;
 		}
 
 		switch ( $this->group_by ) {
@@ -1361,6 +1531,8 @@ class UserList {
 
 				break;
 		}
+
+		return $users;
 	}
 
 	/**
@@ -1396,58 +1568,58 @@ class UserList {
 	 *
 	 * @return string Trimmed string.
 	 */
-	function truncate_html($text, $length = 100, $ending = '...', $exact = false, $considerHtml = true) {
-		if ($considerHtml) {
+	function truncate_html( $text, $length = 100, $ending = '...', $exact = false, $considerHtml = true ) {
+		if ( $considerHtml ) {
 			// if the plain text is shorter than the maximum length, return the whole text
-			if (strlen(preg_replace('/<.*?>/', '', $text)) <= $length) {
+			if ( strlen( preg_replace( '/<.*?>/', '', $text ) ) <= $length ) {
 				return $text;
 			}
 			// splits all html-tags to scanable lines
-			preg_match_all('/(<.+?>)?([^<>]*)/s', $text, $lines, PREG_SET_ORDER);
-			$total_length = strlen($ending);
-			$open_tags = array();
-			$truncate = '';
-			foreach ($lines as $line_matchings) {
+			preg_match_all( '/(<.+?>)?([^<>]*)/s', $text, $lines, PREG_SET_ORDER );
+			$total_length = strlen( $ending );
+			$open_tags    = array();
+			$truncate     = '';
+			foreach ( $lines as $line_matchings ) {
 				// if there is any html-tag in this line, handle it and add it (uncounted) to the output
-				if (!empty($line_matchings[1])) {
+				if ( ! empty( $line_matchings[1] ) ) {
 					// if it's an "empty element" with or without xhtml-conform closing slash
-					if (preg_match('/^<(\s*.+?\/\s*|\s*(img|br|input|hr|area|base|basefont|col|frame|isindex|link|meta|param)(\s.+?)?)>$/is', $line_matchings[1])) {
+					if ( preg_match( '/^<(\s*.+?\/\s*|\s*(img|br|input|hr|area|base|basefont|col|frame|isindex|link|meta|param)(\s.+?)?)>$/is', $line_matchings[1] ) ) {
 						// do nothing
 						// if tag is a closing tag
-					} else if (preg_match('/^<\s*\/([^\s]+?)\s*>$/s', $line_matchings[1], $tag_matchings)) {
+					} else if ( preg_match( '/^<\s*\/([^\s]+?)\s*>$/s', $line_matchings[1], $tag_matchings ) ) {
 						// delete tag from $open_tags list
-						$pos = array_search($tag_matchings[1], $open_tags);
-						if ($pos !== false) {
-							unset($open_tags[$pos]);
+						$pos = array_search( $tag_matchings[1], $open_tags );
+						if ( $pos !== false ) {
+							unset( $open_tags[ $pos ] );
 						}
 						// if tag is an opening tag
-					} else if (preg_match('/^<\s*([^\s>!]+).*?>$/s', $line_matchings[1], $tag_matchings)) {
+					} else if ( preg_match( '/^<\s*([^\s>!]+).*?>$/s', $line_matchings[1], $tag_matchings ) ) {
 						// add tag to the beginning of $open_tags list
-						array_unshift($open_tags, strtolower($tag_matchings[1]));
+						array_unshift( $open_tags, strtolower( $tag_matchings[1] ) );
 					}
 					// add html-tag to $truncate'd text
 					$truncate .= $line_matchings[1];
 				}
 				// calculate the length of the plain text part of the line; handle entities as one character
-				$content_length = strlen(preg_replace('/&[0-9a-z]{2,8};|&#[0-9]{1,7};|[0-9a-f]{1,6};/i', ' ', $line_matchings[2]));
-				if ($total_length+$content_length> $length) {
+				$content_length = strlen( preg_replace( '/&[0-9a-z]{2,8};|&#[0-9]{1,7};|[0-9a-f]{1,6};/i', ' ', $line_matchings[2] ) );
+				if ( $total_length + $content_length > $length ) {
 					// the number of characters which are left
-					$left = $length - $total_length;
+					$left            = $length - $total_length;
 					$entities_length = 0;
 					// search for html entities
-					if (preg_match_all('/&[0-9a-z]{2,8};|&#[0-9]{1,7};|[0-9a-f]{1,6};/i', $line_matchings[2], $entities, PREG_OFFSET_CAPTURE)) {
+					if ( preg_match_all( '/&[0-9a-z]{2,8};|&#[0-9]{1,7};|[0-9a-f]{1,6};/i', $line_matchings[2], $entities, PREG_OFFSET_CAPTURE ) ) {
 						// calculate the real length of all entities in the legal range
-						foreach ($entities[0] as $entity) {
-							if ($entity[1]+1-$entities_length <= $left) {
-								$left--;
-								$entities_length += strlen($entity[0]);
+						foreach ( $entities[0] as $entity ) {
+							if ( $entity[1] + 1 - $entities_length <= $left ) {
+								$left --;
+								$entities_length += strlen( $entity[0] );
 							} else {
 								// no more characters left
 								break;
 							}
 						}
 					}
-					$truncate .= substr($line_matchings[2], 0, $left+$entities_length);
+					$truncate .= substr( $line_matchings[2], 0, $left + $entities_length );
 					// maximum lenght is reached, so get off the loop
 					break;
 				} else {
@@ -1455,41 +1627,42 @@ class UserList {
 					$total_length += $content_length;
 				}
 				// if the maximum length is reached, get off the loop
-				if($total_length>= $length) {
+				if ( $total_length >= $length ) {
 					break;
 				}
 			}
 		} else {
-			if (strlen($text) <= $length) {
+			if ( strlen( $text ) <= $length ) {
 				return $text;
 			} else {
-				$truncate = substr($text, 0, $length - strlen($ending));
+				$truncate = substr( $text, 0, $length - strlen( $ending ) );
 			}
 		}
 		// if the words shouldn't be cut in the middle...
-		if (!$exact) {
+		if ( ! $exact ) {
 			// ...search the last occurance of a space...
-			$spacepos = strrpos($truncate, ' ');
+			$spacepos = strrpos( $truncate, ' ' );
 
-			if ( isset($spacepos ) ) {
-				$br_pos = strrpos( substr( $truncate, $spacepos-4, $spacepos ), '<' );
-				if( isset( $br_pos ) ){
+			if ( isset( $spacepos ) ) {
+				$br_pos = strrpos( substr( $truncate, $spacepos - 4, $spacepos ), '<' );
+				if ( isset( $br_pos ) ) {
 					$truncate = substr( $truncate, 0, $spacepos - ( 4 - ( $br_pos ) ) );
-				}else{
+				} else {
 					// ...and cut the text in this position
-					$truncate = substr($truncate, 0, $spacepos);
+					$truncate = substr( $truncate, 0, $spacepos );
 				}
 			}
 		}
 		// add the defined ending to the text
 
 		$truncate .= $ending;
-		if($considerHtml) {
+		if ( $considerHtml ) {
 			// close all unclosed html-tags
-			foreach ($open_tags as $tag) {
+			foreach ( $open_tags as $tag ) {
 				$truncate .= '</' . $tag . '>';
 			}
 		}
+
 		return $truncate;
 	}
 }

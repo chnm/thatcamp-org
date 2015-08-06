@@ -16,7 +16,14 @@ class YOP_POLL_Pro_Admin extends YOP_POLL_Abstract_Admin {
     protected function __construct() {
         parent::__construct( 'pro' );
     }
+    public function yop_poll_help() {
+        $data                    = array();
+        $data['title']    = __yop_poll( "Help!" );
+        $data['REQUEST']  = $_REQUEST;
+        $data['poll_url'] =YOP_POLL_URL;
+        $this->display( 'help.html', $data );
 
+    }
     public function manage_pages() {
         global $action;
         switch( $action ) {

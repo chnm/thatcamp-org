@@ -1,11 +1,11 @@
 === Subscribe To Comments Reloaded ===
-Author: camu, Reedyseth, andreasbo, raamdev
-Contributors: coolmann, Reedyseth, raamdev
+Author: camu, reedyseth, andreasbo, raamdev
+Contributors: coolmann, reedyseth, raamdev
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XF86X93FDCGYA&lc=US&item_name=Datasoft%20Engineering&item_number=DI%2dSTCR&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 Tags: subscribe, comments, notification, subscription, manage, double check-in, follow, commenting
 Requires at least: 2.9.2
-Tested up to: 4.0
-Stable tag: 141103
+Tested up to: 4.2.2
+Stable tag: 150611
 
 Subscribe to Comments Reloaded allows commenters to sign up for e-mail notifications of subsequent replies.
 
@@ -61,6 +61,9 @@ Yes! Just disable the corresponding option under Settings > Comment Form and the
 The information of your configuration needs to be updated. Go to the Subscribe to Comments Reloaded settings and click the `Save Changes` button on the tab
 where you have you messages with HTML.
 
+= How to generate a new Key for my Site? =
+Just go to the Options Panel and click the generate button. By generating a new key you prevent the spam bots to steal your links.
+
 == Screenshots ==
 
 1. Manage your subscriptions
@@ -70,6 +73,18 @@ where you have you messages with HTML.
 5. Customize the plugin's behavior
 
 == Upgrade Notice ==
+
+== v150611 ==
+
+v150611 Fix the creation of the new table realated to the Google PII issue with AdWords, see v150422 Change log for details.
+
+== v150422 ==
+
+**Security Fix; PLEASE UPGRADE IMMEDIATELY** Google PII issue with AdWords. Protect user email Address and uses an encrypted key instead on URL. Several issues are fix, see the change log.
+
+== v150207 ==
+
+Improvements on the links security. Now you get a Unique Key for your site. Check the Options Panel.
 
 == v141103 ==
 
@@ -85,7 +100,36 @@ v1410124 Fixed several issues reported on the support forum like broken links, r
 
 == Changelog ==
 
-== v141103=
+= v150611 =
+
+* **Fix** The creation of the new table realated to the Google PII issue with AdWords, see bug/#100
+* **Fix** The manage subscription link broke due to a wrong SRE key generation, see bug/#102
+* **Add** Fixed French translation(thanks to Jean-Michel Meyer)
+
+= v150422 =
+
+* **Fix** Google PII complaint. See bug/#79 on GitHub.
+* **Fix** The ability to manage any subscription is remove, the manage link will only appear on the subscriber email address. bug/#81.
+* **Fix** Fix wrong html markup on the advance subscription dropdown.
+* **Fix** Subscription List filter using the "start with" option on the Manage Subscription Panel. bug/#82
+* **Fix** HTML email label for for screen readers. reported on bug/#76.
+* **Fix** Database information with correct encoding. A new routine to clean the database information encoding. This was outputting raw HTML.
+* **New Feature** Update subscription status to 'All Comments' on user Management Page.
+* **Add** New table to store every subscriber email.
+* **Add** Czech translation file.
+* **Add** Hungarian translation file.
+* **Add** Hebrew translation file.
+
+= v150207 =
+
+* **Fix** The output link for the manage subscriptions.
+* **Fix** Display of URL to use escape characters.
+* **New Feature** a Unique Key to the plugin. This Key will help to prevent spam bots to hijack your links.
+* **Add** Plugin GitHub link for bug reporting. Check the "You can Help" panel.
+* **See** the commit history on (GitHub)[https://github.com/stcr/subscribe-to-comments-reloaded]
+
+= v141103 =
+
 * **Fix** URL generation for the Request Management link.
 * **Fix** Saving of settings values. Settings with a single quote was not saving correcting. Every option with a single quote was broken, after update please save the settings on every tab where you have single quotes.
 
@@ -213,3 +257,6 @@ localization is ready. Currently, we support the following languages:
 * Serbian - [Anna Swedziol](http://www.sneg.iz.rs/)
 * Spanish - [TodoWordPress team](http://www.todowp.org/), [Juan Luis Perez](http://www.juanluperez.com/)
 * Turkish - [MaD, Kali](http://www.dusunsel.com/)
+* Hebrew - [Ahrale Shrem](http://atar4u.com/), [Eitan Caspi](http://fudie.net/)
+* Hungarian - [László Tavaszi]
+* Czech - [Daniel Král](http://www.danielkral.cz/)

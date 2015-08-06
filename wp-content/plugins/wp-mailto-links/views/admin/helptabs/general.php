@@ -3,9 +3,9 @@
 
 <h4>Features</h4>
 <ul>
-    <li>Protect mailto links (automatically or shortcode)</li>
+    <li>Protect mailto links automatically</li>
     <li>Protect plain email addresses or convert them to mailto links</li>
+    <li>Protect RSS feed</li>
     <li>Set mail icon</li>
-    <li>RSS feed protection</li>
-    <li>And more...</li>
+    <li>Use shortcodes, template functions, action and filter hooks</li>
 </ul>

@@ -229,6 +229,7 @@ td.column-new-url {	/* The URL never wraps */
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	-o-text-overflow: ellipsis;
+	overflow-x: hidden;
 }
 
 td.column-new-url .row-actions { /* However, the action links below the URL can wrap. */

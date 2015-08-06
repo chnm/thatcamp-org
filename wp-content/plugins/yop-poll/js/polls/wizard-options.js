@@ -39,9 +39,9 @@ function SmartWizard( target, options ) {
     this.elmStepContainer = jQuery( '<div></div>' ).addClass( "stepContainer" );
     this.loader = jQuery( '<div>Loading</div>' ).addClass( "loader" );
     this.buttons = {
-        next: jQuery( '<a>' + options.labelNext + '</a>' ).attr( "href", "#" ).addClass( "buttonNext" ),
-        previous: jQuery( '<a>' + options.labelPrevious + '</a>' ).attr( "href", "#" ).addClass( "buttonPrevious" ),
-        finish: jQuery( '<a>' + options.labelFinish + '</a>' ).attr( "href", "#" ).addClass( "buttonFinish" )
+        next: jQuery( '<a>' +button_yop.next_next+ '</a>' ).attr( "href", "#" ).addClass( "buttonNext" ),
+        previous: jQuery( '<a>' +  button_yop.prev_prev + '</a>' ).attr( "href", "#" ).addClass( "buttonPrevious" ),
+        finish: jQuery( '<a>' +button_yop.savee + '</a>' ).attr( "href", "#" ).addClass( "buttonFinish" )
     };
 
     /*

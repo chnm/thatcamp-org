@@ -46,22 +46,37 @@
 	* allowing multiple different settings on the same page.
 	*/
 	function Timepicker() {
-		this.regional = []; // Available regional settings, indexed by language code
-		this.regional[''] = { // Default regional settings
-			currentText: 'Now',
-			closeText: 'Done',
-			ampm: false,
-			amNames: ['AM', 'A'],
-			pmNames: ['PM', 'P'],
-			timeFormat: 'hh:mm tt',
-			timeSuffix: '',
-			timeOnlyTitle: 'Choose Time',
-			timeText: 'Time',
-			hourText: 'Hour',
-			minuteText: 'Minute',
-			secondText: 'Second',
-			millisecText: 'Millisecond',
-			timezoneText: 'Time Zone'
+        this.regional = []; // Available regional settings, indexed by language code
+
+        this.regional[''] = { // Default regional settings
+
+            currentText: translation_array_calendar.noww,
+
+            closeText: translation_array_calendar.done,
+
+            ampm: false,
+
+            amNames: ['AM', 'A'],
+
+            pmNames: ['PM', 'P'],
+
+            timeFormat: 'hh:mm tt',
+
+            timeSuffix: '',
+
+            timeOnlyTitle: 'Choose Time',
+
+            timeText: translation_array_calendar.timee,
+
+            hourText: translation_array_calendar.hourr,
+
+            minuteText: translation_array_calendar.minutee,
+
+            secondText: translation_array_calendar.secondd,
+
+            millisecText: 'Millisecond',
+
+            timezoneText: 'Time Zone'
 		};
 		this._defaults = { // Global defaults for all the datetime picker instances
 			showButtonPanel: true,

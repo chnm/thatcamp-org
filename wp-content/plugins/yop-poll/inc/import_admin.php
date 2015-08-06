@@ -483,7 +483,7 @@
 
 
 
-            $data['title']='Import Polls from Wp-Poll';
+            $data['title']=__yop_poll("Import Polls from Wp-Poll");
 
 
 
@@ -756,7 +756,7 @@
 
 
             }
-            $data['title']='Import Polls from Wp-Poll';
+            $data['title']=__yop_poll("Import Polls from Wp-Poll");
 
             $this->display('imports.html',$data);
 

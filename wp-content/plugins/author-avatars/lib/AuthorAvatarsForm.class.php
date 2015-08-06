@@ -148,7 +148,7 @@ class AuthorAvatarsForm {
 			'deleted' => 0
 		);
 
-		$where_options_filtered = apply_filters( 'AA_get_all_blogs_where', $where_options );
+		$where_options_filtered = apply_filters( 'aa_get_all_blogs_where', $where_options );
 		$where_string = '';
 		foreach ($where_options_filtered as $key => $where){
 
@@ -341,7 +341,7 @@ class AuthorAvatarsForm {
 			$display_options['show_bbpress_post_count'] = __( 'Show BBPress Post Count', 'author-avatars' );
 		}
 
-		$display_options = apply_filters( 'AA_render_field_display_options', $display_options );
+		$display_options = apply_filters( 'aa_render_field_display_options', $display_options );
 
 		$attributes = array(
 			'id'          => $this->_getFieldId( $name ),
@@ -403,14 +403,17 @@ class AuthorAvatarsForm {
 	 */
 	function renderFieldUserLink( $values = array(), $name = 'user_link' ) {
 		$user_link_options = Array(
-			''           => '-',
-			'authorpage' => __( 'Author Page', 'author-avatars' ),
-			'website'    => __( 'Website', 'author-avatars' ),
+			''                      => '-',
+			'authorpage'            => __( 'Author Page', 'author-avatars' ),
+			'website'               => __( 'Website', 'author-avatars' ),
+			'last_post'             => __( 'Users Last Post this blog','author-avatars' ),
+			'last_post_filtered'    => __( 'Filtered Last Post','author-avatars' ),
 		);
 		if ( AA_is_bp() ) {
 			$user_link_options['bp_memberpage'] = __( 'BP Member Page', 'author-avatars' );
 		}
 		if ( AA_is_wpmu() ) {
+			$user_link_options['last_post_all'] = __( 'Users Last Post ALL blogs', 'author-avatars' );
 			$user_link_options['blog'] = __( 'Blog', 'author-avatars' );
 		}
 		if ( AA_is_bbpress() ) {

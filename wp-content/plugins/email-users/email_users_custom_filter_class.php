@@ -34,7 +34,7 @@ class CustomMetaKeyGroupFilter
      * @param $meta_key string name of the user meta key
      * @param $meta_value string optional value of the user meta key
      */
-    private function get_users_by_meta_key($meta_key, $meta_value = null)
+    private static function get_users_by_meta_key($meta_key, $meta_value = null)
     {
     	// Query for users based on the meta data
      
@@ -51,7 +51,7 @@ class CustomMetaKeyGroupFilter
      * @param $meta_key string name of the user meta key
      * @param $meta_value string optional value of the user meta key
      */
-    private function get_user_meta_key_values($meta_key, $meta_value = null)
+    private static function get_user_meta_key_values($meta_key, $meta_value = null)
     {
     	$meta_values = array() ;
     
@@ -83,7 +83,7 @@ class CustomMetaKeyGroupFilter
      * @param $meta_key string name of the user meta key
      * @param $meta_value string optional value of the user meta key
      */
-    public function BuildFilter($meta_key, $meta_value = null, $label_cb)
+    public static function BuildFilter($meta_key, $meta_value = null, $label_cb)
     {
         $meta_values = self::get_user_meta_key_values($meta_key, $meta_value) ;
 

@@ -473,6 +473,7 @@
 			name varchar(255) NOT NULL,
 			before_vote_template text NOT NULL,
 			after_vote_template text NOT NULL,
+			after_vote_template_chart text NOT NULL,
 			before_start_date_template text NOT NULL,
 			after_end_date_template text NOT NULL,
 			css text NOT NULL,
@@ -536,6 +537,7 @@
 					%POLL-OTHER-ANSWER-LABEL%
 					<span id = "yop-poll-results-text-%POLL-ID%-%QUESTION-ID%"
                           class = "yop-poll-results-text-%POLL-ID%">%POLL-ANSWER-RESULT-LABEL%</span>
+
 					%POLL-OTHER-ANSWER-TEXT-INPUT%
 					%POLL-ANSWER-RESULT-BAR%
 				</li>
@@ -619,6 +621,30 @@ NOWDOC;
 </div>
 NOWDOC;
             $after_vote_template = addslashes( $after_vote_template );
+
+            $after_vote_template_chart = <<<NOWDOC
+[QUESTION_CONTAINER]
+	<div id = "yop-poll-question-container-%POLL-ID%-%QUESTION-ID%" class = "yop-poll-question-container-%POLL-ID%">
+		<div id = "yop-poll-question-%POLL-ID%-%QUESTION-ID%"
+             class = "yop-poll-question-%POLL-ID%">%POLL-QUESTION%</div>
+		<div id = "yop-poll-answers-%POLL-ID%-%QUESTION-ID%" class = "yop-poll-answers-%POLL-ID%">
+                       <div id = "yop-poll-answers-chart-canvas-%POLL-ID%-%QUESTION-ID%" style="text-align:center;" class="yop-poll-answers-container-chart-%POLL-ID% yop-poll-center-chart">
+			<canvas id="yop-poll-answers-chart-%POLL-ID%-%QUESTION-ID%" class="yop-poll-answers-chart"></canvas>
+                       </div>
+		</div>
+	</div>
+	<div class = "yop-poll-clear-%POLL-ID%"></div>
+	[/QUESTION_CONTAINER]
+<div id = "yop-poll-vote-%POLL-ID%" class = "yop-poll-footer">
+	<div>%POLL-TOTAL-ANSWERS-LABEL%</div>
+	<div>%POLL-TOTAL-VOTES-LABEL%</div>
+	<div id = "yop-poll-back-%POLL-ID%">%POLL-BACK-TO-VOTE-LINK%</div>
+	<div id = "yop-poll-archive-%POLL-ID%">%POLL-VIEW-ARCHIVE-LINK%</div>
+	%SHARE-BUTTON%
+</div>
+NOWDOC;
+
+            $after_vote_template_chart= addslashes( $after_vote_template_chart );
 
             $before_start_date_template = <<<NOWDOC
 This poll is about to<br>
@@ -704,62 +730,109 @@ function strip_results_%POLL-ID%() {
 }
 
 jQuery(document).ready(function(e) {
+   jQuery('.yop-poll-forms').removeClass('yop-poll-forms-display');
 	if(typeof window.strip_results_%POLL-ID% == "function")
 		strip_results_%POLL-ID%();
 	if(typeof window.tabulate_answers_%POLL-ID% == "function")
 		tabulate_answers_%POLL-ID%();
 	if(typeof window.tabulate_results_%POLL-ID% == "function")
 		tabulate_results_%POLL-ID%();
+
+
+
 });
 
 function equalWidth_%POLL-ID%(obj, cols, findWidest ) {
-	findWidest  = typeof findWidest  !== "undefined" ? findWidest  : false;
-	if ( findWidest ) {
-		obj.each(function() {
-			var thisWidth = jQuery(this).width();
-			width = parseInt(thisWidth / cols);
-			jQuery(this).width(width);
-			jQuery(this).css("float", "left");
-		});
-	}
-	else {
-		var widest = 0;
-		obj.each(function() {
-			var thisWidth = jQuery(this).width();
-			if(thisWidth > widest) {
-				widest = thisWidth;
-			}
-		});
-		width = parseInt( %POLL-WIDTH% / cols[0]);
-		obj.width(width-20);
-		obj.css("float", "left");
-	}
+
+    findWidest  = typeof findWidest  !== "undefined" ? findWidest  : false;
+    var quest=0;
+    if ( findWidest ) {
+        obj.each(function() {
+            var thisWidth = jQuery(this).width();
+            width = parseInt(thisWidth / cols);
+            jQuery(this).width(width);
+            jQuery(this).css("float", "left");
+        });
+    }
+    else {
+        var widest = 0;
+        var count  = 0;
+        var poz_each_question=0;
+
+        obj.each(function() {
+
+            count++;
+            cols[quest][2]=(jQuery('#yop-poll-answers-%POLL-ID%-'+ cols[quest][3] +' li').length);
+            var thisWidth = jQuery(this).width();
+            if(thisWidth > widest) {
+                widest = thisWidth;
+            }
+            if(count<cols[quest][2])
+            { width = parseInt( %POLL-WIDTH% / cols[quest][0]);
+             if(cols[quest][0]==1)
+                        jQuery(".yop-poll-li-answer-%POLL-ID%-"+cols[quest][3]).css("width","100%");
+             else
+                         jQuery(".yop-poll-li-answer-%POLL-ID%-"+cols[quest][3]).width(width-20);
+             jQuery(".yop-poll-li-answer-%POLL-ID%-"+cols[quest][3]).css("float", "left");
+            }
+            else
+            {
+                count=0;
+
+
+                width = parseInt( %POLL-WIDTH% / cols[quest][0]);
+                jQuery(".yop-poll-li-answer-%POLL-ID%-"+cols[quest][3]).width(width-20);
+                jQuery(".yop-poll-li-answer-%POLL-ID%-"+cols[quest][3]).css("float", "left");
+                quest++;
+            }
+
+        });
+}
 }
 
 function equalWidth2_%POLL-ID%(obj, cols, findWidest ) {
-	findWidest  = typeof findWidest  !== "undefined" ? findWidest  : false;
-	if ( findWidest ) {
-		obj.each(function() {
-			var thisWidth = jQuery(this).width();
-			width = parseInt(thisWidth / cols);
-			jQuery(this).width(width);
-			jQuery(this).css("float", "left");
-		});
-	}
-	else {
-		var widest = 0;
-		obj.each(function() {
-			var thisWidth = jQuery(this).width();
-			if(thisWidth > widest) {
-				widest = thisWidth;
-			}
-		});
-		width = parseInt( %POLL-WIDTH% / cols[1]);
-		obj.width(width-20);
-		obj.css("float", "left");
-	}
-}
+    findWidest  = typeof findWidest  !== "undefined" ? findWidest  : false;
+    var quest=0;
 
+    if ( findWidest ) {
+        obj.each(function() {
+            var thisWidth = jQuery(this).width();
+            width = parseInt(thisWidth / cols);
+            jQuery(this).width(width);
+            jQuery(this).css("float", "left");
+        });
+    }
+    else {
+        var widest = 0;
+        var count  = 0;
+        var poz_each_question=0;
+
+        obj.each(function() {
+            count++;
+            cols[quest][2]=(jQuery('#yop-poll-answers-%POLL-ID%-'+ cols[quest][3] +' li').length);
+            var thisWidth = jQuery(this).width();
+            if(thisWidth > widest) {
+                widest = thisWidth;
+            }
+            if(count<cols[quest][2])
+            { width = parseInt( %POLL-WIDTH% / cols[quest][1]);
+             jQuery(".yop-poll-li-result-%POLL-ID%-"+cols[quest][3]).width(width-20);
+             jQuery(".yop-poll-li-result-%POLL-ID%-"+cols[quest][3]).css("float", "left");
+            }
+            else
+            {
+                count=0;
+
+
+                width = parseInt( %POLL-WIDTH% / cols[quest][1]);
+                jQuery(".yop-poll-li-result-%POLL-ID%-"+cols[quest][3]).width(width-20);
+                jQuery(".yop-poll-li-result-%POLL-ID%-"+cols[quest][3]).css("float", "left");
+                quest++;
+            }
+
+        });
+}
+}
 function tabulate_answers_%POLL-ID%() {
 
 	equalWidth_%POLL-ID%( jQuery("#yop-poll-container-%POLL-ID% .yop-poll-li-answer-%POLL-ID%"), %ANSWERS-TABULATED-COLS% );
@@ -786,2618 +859,3954 @@ NOWDOC;
                 case 'White':
                 { //White
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width: %POLL-WIDTH%;
-	background:#fff;
-	padding:10px;
-	color:#555;
-	overflow:hidden;
-	font-size:12px;
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    border:1px solid #000000;
+    color:#000000;
 }
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
+.yop-poll-customfield-%POLL-ID% {
+border:1px solid #000000;
+    color:#000000;
 }
-
-.yop-poll-name-%POLL-ID% {
-	font-size:14px;
-	font-weight:bold;
+div#yop-poll-container-%POLL-ID% {
+  background:#fff;
+  box-sizing: border-box;
+  color: #555;
+  display: inline-block;
+  font-size: 14px;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
-}
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
-}
-.yop-poll-question-%POLL-ID% {
-	font-style: italic;
-	text-align: center;
-	 margin-bottom: 21px;
-    margin-top: -10px;
-	width: 100%;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-	height:10px;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#555;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#555;
-	text-decoration:underline;
-	font-size:12px;
-}#yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#555;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
+}
+#yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:lowercase;
-margin-bottom:20px;
-  text-align:center;
-}
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
 
-.yop-poll-clear-%POLL-ID% {
-	clear: both;
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
 NOWDOC;
                     break;
                 }
                 case 'Grey':
                 { //Grey
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width: %POLL-WIDTH%;
-	background:#eee;
-	padding:10px;
-	color:#000;
-	overflow:hidden;
-	font-size:12px;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    border:1px solid #000000;
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-size:14px;
-	font-weight:bold;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+border:1px solid #000000;
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#eee;
+  box-sizing: border-box;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  color:#000;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
 }
-.yop-poll-question-%POLL-ID% {
- margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-	height:10px;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#000;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#000;
-	text-decoration:underline;
-	font-size:12px;
-}#yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#000;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
+}
+#yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:lowercase;
-	margin-bottom:20px;
-  text-align:center;
-  margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
+
+
+
+
+
+
+
 NOWDOC;
                     break;
                 }
                 case 'Dark':
                 { //Dark
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width: %POLL-WIDTH%;
-	background:#555;
-	padding:10px;
-	color:#fff;
-	overflow:hidden;
-	font-size:12px;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-size:14px;
-	font-weight:bold;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#555;
+  box-sizing: border-box;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
 }
-.yop-poll-question-%POLL-ID% {
-	 margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#333333;
-	height:10px;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
-}#yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
+}
+#yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:lowercase;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
+
+
+
+
+
+
+
+
 NOWDOC;
                     break;
                 }
                 case 'Blue v1':
                 { //Blue v1
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width: %POLL-WIDTH%;
-	background:#327BD6;
-	padding:10px;
-	color:#fff;
-	overflow:hidden;
-	font-size:12px;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-size:14px;
-	font-weight:bold;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#327BD6;
+  box-sizing: border-box;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
 }
-.yop-poll-question-%POLL-ID% {
- margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-	height:10px;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:lowercase;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
 NOWDOC;
                     break;
                 }
                 case 'Blue v2':
                 { //Blue v2
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width: %POLL-WIDTH%;
-	background:#fff;
-	padding:10px;
-	color:#555;
-	overflow:hidden;
-	font-size:12px;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-weight:bold;
-	background:#327BD6;
-	color:#fff;
-	padding:5px;
-	text-align:center;
-	font-size:12px;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#fff;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  color:#555;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
 }
-.yop-poll-question-%POLL-ID% {
-	background:#327BD6;
-	color:#fff;
-	 margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-    padding:5px;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-	height:10px;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  background:#327BD6;
+  color:#fff;
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#555;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#555;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:lowercase;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
 NOWDOC;
                     break;
                 }
                 case 'Blue v3':
                 { //Blue v3
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width: %POLL-WIDTH%;
-	background:#fff;
-	padding:10px;
-	color:#555;
-	overflow:hidden;
-	font-size:12px;
-	border: 5px solid #327BD6;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    border:1px solid #000000;
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-size:14px;
-	font-weight:bold;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+border:1px solid #000000;
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#fff;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  color:#555;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
+  border: 5px solid #327BD6;
 }
-.yop-poll-question-%POLL-ID% {
-	 margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-	height:10px;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#555;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#555;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#555;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:lowercase;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
 NOWDOC;
                     break;
                 }
                 case 'Red v1':
                 { //Red v1
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width: %POLL-WIDTH%;
-	background:#B70004;
-	padding:10px;
-	color:#fff;
-	overflow:hidden;
-	font-size:12px;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-size:14px;
-	font-weight:bold;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#B70004;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  color:white;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
 }
-.yop-poll-question-%POLL-ID% {
- margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-	height:10px;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:lowercase;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
 NOWDOC;
                     break;
                 }
                 case 'Red v2':
                 { //Red v2
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width: %POLL-WIDTH%;
-	background:#fff;
-	padding:0px;
-	color:#555;
-	overflow:hidden;
-	font-size:12px;
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    border:1px solid #000000;
+    color:#000000;
+
 }
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
+.yop-poll-customfield-%POLL-ID% {
+border:1px solid #000000;
+    color:#000000;
+}
+div#yop-poll-container-%POLL-ID% {
+  background:#fff;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  color:#555;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
+}
+/* A nice little reset */
+div.yop-poll-container * {
+
 }
 
-.yop-poll-name-%POLL-ID% {
-	font-weight:bold;
-	background:#B70004;
-	color:#fff;
-	padding:5px;
-	text-align:center;
-	font-size:12px;
+form#yop-poll-form-%POLL-ID% {
+
+}
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  background:#B70004;
+  color:#fff;
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
 }
 
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
-}
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
-}
-.yop-poll-question-%POLL-ID% {
- margin-bottom: 21px;
-	background:#B70004;
-	color:#fff;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-	padding:5px;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-    margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {}
-
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-}
-/* End Result bar*/
-
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
-}
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#B70004;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#B70004;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#B70004;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform: capitalize;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
 NOWDOC;
                     break;
                 }
                 case 'Red v3':
                 { //Red v3
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width: %POLL-WIDTH%;
-	background:#fff;
-	padding:10px;
-	color:#555;
-	overflow:hidden;
-	font-size:12px;
-	border:5px solid #B70004;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    border:1px solid #000000;
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-weight:bold;
-	font-size:14px;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+border:1px solid #000000;
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#fff;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  color:#555;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
+  border:5px solid #B70004;
 }
-.yop-poll-question-%POLL-ID% {
- margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#B70004;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#B70004;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#B70004;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform: capitalize;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
 NOWDOC;
                     break;
                 }
                 case 'Green v1':
                 { //Green v1
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width:%POLL-WIDTH%;
-	background:#3F8B43;
-	padding:10px;
-	color:#fff;
-	overflow:hidden;
-	font-size:12px;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-size:14px;
-	font-weight:bold;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#3F8B43;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  color:white;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
 }
-.yop-poll-question-%POLL-ID% {
- margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:capitalize;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
 NOWDOC;
                     break;
                 }
                 case 'Green v2':
                 { //Green v2
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width:%POLL-WIDTH%;
-	background:#fff;
-	padding:0px;
-	color:#555;
-	overflow:hidden;
-	font-size:12px;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    border:1px solid #000000;
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-weight:bold;
-	background:#3F8B43;
-	color:#fff;
-	padding:5px;
-	text-align:center;
-	font-size:12px;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+border:1px solid #000000;
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#fff;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  color:#555;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
 }
-.yop-poll-question-%POLL-ID% {
- margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-	background:#3F8B43;
-	color:#fff;
-	padding:5px;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  background:#3F8B43;
+  color:#fff;
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#3F8B43;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#3F8B43;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#3F8B43;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:capitalize;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	text-transform:capitalize;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
+
 NOWDOC;
                     break;
                 }
                 case 'Green v3':
                 { //Green v3
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width:%POLL-WIDTH%;
-	background:#fff;
-	padding:10px;
-	color:#555;
-	overflow:hidden;
-	font-size:12px;
-	border:5px solid #3F8B43;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    border:1px solid #000000;
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-weight:bold;
-	font-size:14x;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+border:1px solid #000000;
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#fff;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  color:#555;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
+  border:5px solid #3F8B43;
 }
-.yop-poll-question-%POLL-ID% {
- margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#3F8B43;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#3F8B43;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#3F8B43;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:capitalize;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	text-transform:capitalize;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
 NOWDOC;
                     break;
                 }
                 case 'Orange v1':
                 { //Orange v1
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width:%POLL-WIDTH%;
-	background:#FB6911;
-	padding:10px;
-	color:#fff;
-	overflow:hidden;
-	font-size:12px;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-size:14px;
-	font-weight:bold;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#FB6911;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  color:white;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
 }
-.yop-poll-question-%POLL-ID% {
- margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#fff;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:capitalize;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	text-transform:capitalize;
-    margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
+
 NOWDOC;
                     break;
                 }
                 case 'Orange v2':
                 { //Orange v2
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width:%POLL-WIDTH%;
-	background:#fff;
-	padding:0px;
-	color:#555;
-	overflow:hidden;
-	font-size:12px;;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    border:1px solid #000000;
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-weight:bold;
-	background:#FB6911;
-	color:#fff;
-	padding:5px;
-	text-align:center;
-	font-size:12px;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+border:1px solid #000000;
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#fff;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  color:#555;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
 }
-.yop-poll-question-%POLL-ID% {
- margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-	background:#FB6911;
-	color:#fff;
-	padding:5px;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  background:#FB6911;
+  color:#fff;
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#FB6911;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#FB6911;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#FB6911;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:capitalize;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	text-transform:capitalize;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
 NOWDOC;
                     break;
                 }
-
-
-
-
-
-
-
                 case 'Orange v3':
                 { //Orange v3
                     $css = <<<NOWDOC
-#yop-poll-container-%POLL-ID% {
-	width:%POLL-WIDTH%;
-	background:#fff;
-	padding:10px;
-	color:#555;
-	overflow:hidden;
-	font-size:12px;
-	border:5px solid #FB6911;
-}
-#yop-poll-container-%POLL-ID% input[type='text'] {
-	margin:0px 0px 5px 0px;
-	padding:2%;
-	width:96%;
-	text-indent:2%;
-	font-size:12px;
-}
+/*
+  Main Container
+  ---------------------------------------------------------------------------
+*/
+#yop-poll-other-answer-%POLL-ID%-other {
+    border:1px solid #000000;
+    color:#000000;
 
-.yop-poll-name-%POLL-ID% {
-	font-weight:bold;
-	font-size:14x;
 }
-
-#yop-poll-questions-container-%POLL-ID% {
-	font-size:14px;
-	margin:5px 0px;
+.yop-poll-customfield-%POLL-ID% {
+border:1px solid #000000;
+    color:#000000;
 }
-.yop-poll-question-container-%POLL-ID% {
-	padding: 2px;
+div#yop-poll-container-%POLL-ID% {
+  background:#fff;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  color:#555;
+  padding: 10px;
+  width: %POLL-WIDTH%;
+  zoom: 1;
+  border:5px solid #FB6911;
 }
-.yop-poll-question-%POLL-ID% {
- margin-bottom: 21px;
-    margin-top: -10px;
-	font-style: italic;
-	text-align: center;
-	width: 100%;
-}
-.yop-poll-answers-%POLL-ID% {  }
-.yop-poll-answers-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-answer-%POLL-ID% {
-	font-style:normal;
-	margin:0px 0px 10px 0px;
-	padding:0px;
-	font-size:12px;
-	margin-bottom:20px;
-}
-.yop-poll-li-answer-%POLL-ID% input {
-	margin:0px;
-	float:none;
-}
-.yop-poll-li-answer-%POLL-ID% label {
-	margin:0px;
-	font-style:normal;
-	font-weight:normal;
-	font-size:12px;
-	float:none;
-}
-.yop-poll-results-%POLL-ID% {
-	font-size: 12px;
-	font-style: italic;
-	font-weight: normal;
-	margin-left: 15px;
-}
-
-.yop-poll-customs-%POLL-ID% {  }
-.yop-poll-customs-%POLL-ID% ul {
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-}
-.yop-poll-li-custom-%POLL-ID% {
-	padding:0px;
-	margin:0px;
-	font-size:14px;
-}
-
-/* Start CAPTCHA div style*/
-#yop-poll-captcha-input-div-%POLL-ID% {
-	margin-top:5px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% {
-	width:30px;
-	float:left;
-	margin-left:5px;
-	height:0px;
-}
-#yop-poll-captcha-helpers-div-%POLL-ID% img {
-	margin-bottom:2px;
-}
-#yop-poll-captcha-image-div-%POLL-ID% {
-	margin-bottom:5px;
-}
-#yop_poll_captcha_image_%POLL-ID% {
-	float:left;
-}
-/* End CAPTCHA div style*/
-
-.yop-poll-clear-%POLL-ID% {
-	clear:both;
-}
-
-#yop-poll-vote-%POLL-ID% {
+/* A nice little reset */
+div.yop-poll-container * {
 
 }
 
-/* Start Result bar*/
-.yop-poll-results-bar-%POLL-ID% {
-	background:#f5f5f5;
-	height:10px;
-}
-.yop-poll-results-bar-%POLL-ID% div {
-	background:#555;
-}
-/* End Result bar*/
+form#yop-poll-form-%POLL-ID% {
 
-/* Start Vote Button*/
-#yop-poll-vote-%POLL-ID% div#yop-poll-vote-%POLL-ID% button {
-	float:left;
 }
+/*
+  Error message
+  ..................................
+*/
+div#yop-poll-container-error-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:red;
+  text-transform:lowercase;
+  text-align:center;
+}
+/*
+  Success message
+  ..................................
+*/
+div#yop-poll-container-success-%POLL-ID% {
+  font-size:.8em;
+  font-style:italic;
+  color:green;
+  text-align:center;
+}
+/*
+  Poll Question
+  ---------------------------------------------------------------------------
+*/
+div#yop-poll-questions-container-%POLL-ID% { margin:.5em; }
+div.yop-poll-question-container-%POLL-ID% { margin: 0; }
+div.yop-poll-question-%POLL-ID% {
+  border: 0 none;
+  margin: 0 0 2em;
+  padding: .25em;
+  text-align: center;
+  font-size: 14px;
+}
+/*
+  Poll Options / Answers
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-answers-%POLL-ID% {}
+div.yop-poll-answers-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-answer-%POLL-ID%,
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2em;
+
+}
+div.yop-poll-answers-%POLL-ID% ul li.yop-poll-li-result-%POLL-ID% {padding-bottom: 1em;}
+/*
+  Label
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label {
+  margin:0px;
+  font-style:normal;
+  font-weight:normal;
+  font-size:14px;
+  float:none;
+  display:inline-block;
+}
+/* Actual text label of the answer */
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(2) {
+}
+/*
+  Custom answer / Other
+  ..................................
+*/
+div.yop-poll-answers-%POLL-ID%  ul li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) {
+  width: 100%;
+  overflow: hidden;
+}
+div#yop-poll-container-%POLL-ID%  li.yop-poll-li-answer-%POLL-ID% label:nth-of-type(3) input[type="text"] {
+  width: 94%;
+  overflow: hidden;
+}
+/*
+  Custom checkbox and radio button style
+  ---------------------------------------------------------------------------
+*/
+
+
+/*
+  Custom fields
+  ---------------------------------------------------------------------------
+*/
+div.yop-poll-customs-%POLL-ID% {
+  clear: both;
+
+}
+div.yop-poll-customs-%POLL-ID% ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% {
+  display: block;
+  font-size:14px;
+  list-style: none;
+}
+div.yop-poll-customs-%POLL-ID% ul li.yop-poll-li-custom-%POLL-ID% label {
+  display: block;
+}
+div#yop-poll-container-%POLL-ID% li.yop-poll-li-custom-%POLL-ID% input[type="text"] {
+  width: 94%;
+}
+/*
+  Vote Button
+  ---------------------------------------------------------------------------
+*/
+.yop-poll-footer { /*height: 4em;*/ }
+
+.yop-poll-vote-centered-%POLL-ID% { text-align:center; }
+
+#yop-poll-vote-%POLL-ID% div button {
+
+  cursor:pointer;
+  display: block;
+  font-size:14px;
+  margin: 0 auto;
+  }
+
+
+#yop-poll-vote-%POLL-ID% div button.yop_poll_vote_button {}
+#yop-poll-vote-%POLL-ID% div button.yop_poll_wordpress_vote_button { margin: 1em auto 0; }
+#yop-poll-vote-%POLL-ID% div button.yop_poll_anonymous_vote_button { margin: 1em auto 0; }
+
+/*
+  Results
+  ---------------------------------------------------------------------------
+*/
+
+li.yop-poll-results-%POLL-ID% {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin-left: 15px;
+  color: #38595E;
+}
+/*
+  Style for results that are displayed on columns
+  ..................................
+*/
+li.yop-poll-li-answer-%POLL-ID% {
+  float: left;
+  display: inline-block;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+}
+
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% {
-	float: right;
-	margin-bottom: 20px;
-	margin-top: -20px;
-	width: auto;
+  float: right;
+  width: auto;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-results-%POLL-ID% a {
-	color:#FB6911;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-back-%POLL-ID% a {
-	color:#FB6911;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div#yop-poll-archive-%POLL-ID% a {
-	color:#FB6911;
-	text-decoration:underline;
-	font-size:12px;
+  color:#000;
+  text-decoration:underline;
+  font-size:12px;
 }
 #yop-poll-vote-%POLL-ID% div {
-	float:left;
-	width:100%;
+  float:left;
+  width:100%;
 }
-/* End Vote Button*/
+/*
+  Result Bar
+  ..................................
+*/
 
-/* Start Messages*/
-#yop-poll-container-error-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:red;
-	text-transform:capitalize;
-	margin-bottom:20px;
-  text-align:center;
+.yop-poll-results-bar-%POLL-ID% div { background:#555; width:90%;}
+
+
+/*
+  ---------------------------------------------------------------------------
+  EXTRAS
+  ---------------------------------------------------------------------------
+*/
+/*
+  CAPTCHA
+  ..................................
+*/
+#yop-poll-captcha-input-div-%POLL-ID% { margin-top:5px; }
+#yop-poll-captcha-helpers-div-%POLL-ID% {
+  width:30px;
+  float:left;
+  margin-left:5px;
+  height:0px;
 }
-#yop-poll-container-success-%POLL-ID% {
-	font-size:12px;
-	font-style:italic;
-	color:green;
-	text-transform:capitalize;
-	margin-bottom:20px;
-  text-align:center;
-}
-/* End Messages*/
+#yop-poll-captcha-helpers-div-%POLL-ID% img { margin-bottom:2px; }
+#yop-poll-captcha-image-div-%POLL-ID% { margin-bottom:5px; }
+#yop_poll_captcha_image_%POLL-ID% { float:left; }
+
+.yop-poll-clear-%POLL-ID% { clear:both; }
+
+.yop-poll-name-%POLL-ID% { color:#38595E; font-size: 18px; }
+
+
+.yop-poll-li-answer-%POLL-ID% label  img     { max-width: 98%; }
+.yop-poll-li-result-%POLL-ID% label span img { max-width: 98%; }
+
+.content { position :unset !important; }
+
+div.yop-poll-container br,
+div#yop-poll-container-%POLL-ID% br { display: none; }
+
+div#yop_poll_vote_options_div-%POLL-ID% div:nth-last-of-type(1) { display: none; }
+
+
+
+
+
+
+
+
 NOWDOC;
                     break;
                 }
@@ -3411,6 +4820,7 @@ NOWDOC;
 
             $sql .= "`before_vote_template` = '{$before_vote_template}',
 			`after_vote_template`           = '{$after_vote_template}',
+			`after_vote_template_chart`     = '{$after_vote_template_chart}',
 			`before_start_date_template`    = '{$before_start_date_template}',
 			`after_end_date_template`       = '{$after_end_date_template}',
 			`js`                            = '$js',

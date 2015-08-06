@@ -1,32 +1,36 @@
 <?php
 /*
-* Plugin Name: bbPress Notify (No-Spam)
-* Description: Sends email notifications upon topic/reply creation, as long as it's not flagged as spam.
-* Version: 1.6.7
-* Author: Vinny Alves, Andreas Baumgartner, Paul Schroeder
-* License:       GNU General Public License, v2 (or newer)
+* Plugin Name:  bbPress Notify (No-Spam)
+* Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam.
+* Version:      1.8.2
+* Author:       Vinny Alves
+* License:      GNU General Public License, v2 ( or newer )
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
 * the Free Software Foundation; either version 2 of the License, or
-* (at your option) any later version.
+* ( at your option ) any later version.
 *
 * This program is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 * GNU General Public License for more details.
 *
-* Copyright (C) 2012-2015 www.usestrict.net, released under the GNU General Public License.
+* Copyright ( C ) 2012-2015 www.usestrict.net, released under the GNU General Public License.
 */
 
 /* Search for translations */
-load_plugin_textdomain('bbpress_notify',false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
+load_plugin_textdomain( 'bbpress_notify',false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 class bbPress_Notify_noSpam {
 	
+	const VERSION = '1.8.2';
+	
 	protected $settings_section = 'bbpress_notify_options';
+	
 	protected $bbpress_topic_post_type;
+	
 	protected $bbpress_reply_post_type;
 	
 	public static $instance;
@@ -36,56 +40,56 @@ class bbPress_Notify_noSpam {
 	function __construct()
 	{
 		/* Register hooks, filters and actions */
-		if (is_admin())
+		if ( is_admin() )
 		{
 			// Add settings to the Dashboard
-			add_action('admin_init', array(&$this,'admin_settings'));
+			add_action( 'admin_init', array( &$this, 'admin_settings' ) );
 			// Add Settings link to the plugin page
-			add_filter( 'plugin_action_links', array(&$this,'plugin_action_links'), 10, 2 );
+			add_filter( 'plugin_action_links', array( &$this, 'plugin_action_links' ), 10, 2 );
 			
 			// On plugin activation, check whether bbPress is active
-			register_activation_hook(__FILE__, array(&$this,'on_activation'));
+			register_activation_hook( __FILE__, array( &$this, 'on_activation' ) );
 				
 			// Deactivate original bbPress Notify if found
-			add_action('admin_init', array(&$this,'deactivate_old'));
+			add_action( 'admin_init', array( &$this, 'deactivate_old' ) );
 			
 			// Notification meta boxes if needed
-			add_action('add_meta_boxes', array(&$this,'add_notification_meta_box'), 10);
+			add_action( 'add_meta_boxes', array( &$this, 'add_notification_meta_box' ), 10 );
 			
-			add_action('save_post', array(&$this, 'notify_on_save'), 10, 2);
+			add_action( 'save_post', array( &$this, 'notify_on_save' ), 10, 2 );
 			
-// 			add_action( 'admin_notices', array( &$this, 'maybe_show_pro_message' ) );
+// 			add_action( 'admin_notices', array( &$this, 'maybe_show_admin_message' ) );
 		}
 		
 		// New topics and replies can be generated from admin and non-admin interfaces
 		
 		// Set the bbpress post_types
-		add_action('init', array(&$this,'set_post_types'));
+		add_action( 'init', array( &$this, 'set_post_types' ) );
 		
 		// Triggers the notifications on new topics
-		if ( get_option('bbpress_notify_newtopic_background') )
+		if ( get_option( 'bbpress_notify_newtopic_background' ) )
 		{
-			add_action('bbpress_notify_bg_topic', array(&$this, 'notify_new_topic'), 10, 4);
-			add_action('bbp_new_topic', array(&$this,'bg_notify_new_topic'), 100);
+			add_action( 'bbpress_notify_bg_topic', array( &$this, 'notify_new_topic' ), 10, 4 );
+			add_action( 'bbp_new_topic', array( &$this, 'bg_notify_new_topic' ), 100, 4 );
 		}
 		else
 		{
-			add_action('bbp_new_topic', array(&$this,'notify_new_topic'), 100);
+			add_action( 'bbp_new_topic', array( &$this, 'notify_new_topic' ), 100, 4 );
 		} 
 		
 		// Triggers the notifications on new replies
-		if ( get_option('bbpress_notify_newreply_background') )
+		if ( get_option( 'bbpress_notify_newreply_background' ) )
 		{
-			add_action('bbpress_notify_bg_reply', array(&$this, 'notify_new_reply'), 10, 4);
-			add_action('bbp_new_reply', array(&$this,'bg_notify_new_reply'), 100, 4);
+			add_action( 'bbpress_notify_bg_reply', array( &$this, 'notify_new_reply' ), 10, 7 );
+			add_action( 'bbp_new_reply', array( &$this, 'bg_notify_new_reply' ), 100, 7 );
 		}
 		else
 		{
-			add_action('bbp_new_reply', array(&$this,'notify_new_reply'), 100);
+			add_action( 'bbp_new_reply', array( &$this, 'notify_new_reply' ), 100, 7 );
 		}
 		
 		// Munge bbpress_notify_newtopic_recipients if forum is hidden
-		add_filter('bbpress_notify_recipients_hidden_forum', array(&$this, 'munge_newtopic_recipients'), 10, 2);
+		add_filter( 'bbpress_notify_recipients_hidden_forum', array( &$this, 'munge_newtopic_recipients' ), 10, 2 );
 	}
 	
 	
@@ -97,15 +101,15 @@ class bbPress_Notify_noSpam {
 	public static function bootstrap()
 	{
 		// Make sure bbPress is still installed and avoid race conditions
-		if (! class_exists('bbPress') )
+		if ( ! class_exists( 'bbPress' ) )
 		{
 			if ( 'plugins_loaded' !== current_filter() )
 			{
-				add_action('plugins_loaded', array('bbPress_Notify_NoSpam', 'bootstrap'), 100000);
+				add_action( 'plugins_loaded', array( 'bbPress_Notify_NoSpam', 'bootstrap' ), 100000 );
 			}
 			else
 			{
-				add_action('admin_notices', array('bbPress_Notify_NoSpam', 'missing_bbpress_notice'));
+				add_action( 'admin_notices', array( 'bbPress_Notify_NoSpam', 'missing_bbpress_notice' ) );
 			}
 			
 			return false;
@@ -113,7 +117,7 @@ class bbPress_Notify_noSpam {
 		
 		
 		// bbPress is here, so let's load ourselves 
-		if (! isset(self::$instance))
+		if ( ! isset( self::$instance ) )
 			self::$instance = new self();
 		
 		return self::$instance;
@@ -124,25 +128,25 @@ class bbPress_Notify_noSpam {
 		$this->bbpress_topic_post_type = bbp_get_topic_post_type();
 		$this->bbpress_reply_post_type = bbp_get_reply_post_type();
 	}
-	
-	function bg_notify_new_reply($topic_id = 0, $forum_id = 0, $anonymous_data = false, $topic_author = 0)
+ 	
+	function bg_notify_new_reply( $reply_id = 0, $topic_id = 0, $forum_id = 0, $anonymous_data = false, $reply_author = 0, $bool=false, $reply_to=null )
 	{
-		wp_schedule_single_event(time() + 10, 'bbpress_notify_bg_reply', array($topic_id, $forum_id, $anonymous_data, $topic_author));
+		wp_schedule_single_event( time() + 10, 'bbpress_notify_bg_reply', array( $reply_id, $topic_id, $forum_id, $anonymous_data, $reply_author, $bool, $reply_to ) );
 	}
 	
 	
-	function bg_notify_new_topic($topic_id = 0, $forum_id = 0, $anonymous_data = false, $topic_author = 0)
+	function bg_notify_new_topic( $topic_id = 0, $forum_id = 0, $anonymous_data = false, $topic_author = 0 )
 	{
-		wp_schedule_single_event(time() + 10, 'bbpress_notify_bg_topic', array($topic_id, $forum_id, $anonymous_data, $topic_author));
+		wp_schedule_single_event( time() + 10, 'bbpress_notify_bg_topic', array( $topic_id, $forum_id, $anonymous_data, $topic_author ) );
 	}
 	
 	
 	function deactivate_old()
 	{
 		$old_plugin = 'bbpress-notify/bbpress-notify.php';
-		if (is_plugin_active($old_plugin))
+		if ( is_plugin_active( $old_plugin ) )
 		{
-			deactivate_plugins($old_plugin);
+			deactivate_plugins( $old_plugin );
 		}
 	
 	}
@@ -150,22 +154,27 @@ class bbPress_Notify_noSpam {
 	/**
 	 * Deprecated, the project did not get backing.
 	 */
-	function maybe_show_pro_message()
+	function maybe_show_admin_message()
 	{
-		if ( isset($_GET['dismiss-bbpnp']) )
+		$old_key     = 'bbpnns-dismissed-1_7_1';
+		$dismiss_key = 'bbpnns-opt-out-msg';
+		
+		if ( isset( $_GET[$dismiss_key] )  )
 		{
-			update_option('bbpress-notify-pro-dismissed', true);
+			delete_option( 'bbpress-notify-pro-dismissed' );
+			update_option( $dismiss_key, true );
 		}
-		elseif ( ! get_option('bbpress-notify-pro-dismissed') )
+		elseif ( ! get_option( $old_key ) || ! get_option( $dismiss_key ) )
 		{
-			$url = add_query_arg( array( 'dismiss-bbpnp' => 1), $_SERVER['REQUEST_URI'] );
+			$add_on_url  = 'http://usestrict.net/2015/03/bbpress-notify-no-spam-opt-out-add-on/'; 
+			$dismiss_url = esc_url( add_query_arg( array( $dismiss_key => 1 ), $_SERVER['REQUEST_URI'] ) );
             ?>
 				<div class="updated">
-                <p><?php _e( sprintf('Have you heard about the <strong><a href="https://www.kickstarter.com/projects/usestrict/bbpress-notify-pro-for-wordpress" target="_new">bbPress Notify Pro</a></strong> project at Kickstarter? ' .
-									 'Help us reach the goal and get a nifty reward =] ! | <a href="%s">Dismiss</a>.',$url), $this->domain ); ?></p>
+                <p><?php _e( sprintf( '<div style="display:inline">Users asked and we delivered! Allow your subscribers to opt-out 
+									   from receiving your notifications with <a href="%s" target="_new"><strong>bbPress Notify ( No Spam ) Opt Out Add On</strong></a>.</div> 
+									   <div style="float:right"><a href="%s">Dismiss</a></div>', $add_on_url, $dismiss_url ), $this->domain ); ?></p>
 				</div>
 			<?php
-			 
 		}
 	}
 	
@@ -173,84 +182,85 @@ class bbPress_Notify_noSpam {
 	/* Checks whether bbPress is active because we need it. If bbPress isn't active, we are going to disable ourself */
 	function on_activation()
 	{
-		if(!class_exists('bbPress'))
+		if( !class_exists( 'bbPress' ) )
 		{
-			deactivate_plugins(plugin_basename(__FILE__));
-			wp_die( __('Sorry, you need to activate bbPress first.', 'bbpress_notify'));
+			deactivate_plugins( plugin_basename( __FILE__ ) );
+			wp_die( __( 'Sorry, you need to activate bbPress first.', 'bbpress_notify' ) );
 		}
 	
 		// Default settings
-		if (!get_option('bbpress_notify_newtopic_background'))
+		if ( !get_option( 'bbpress_notify_newtopic_background' ) )
 		{
-			update_option('bbpress_notify_newtopic_background', 0);
+			update_option( 'bbpress_notify_newtopic_background', 0 );
 		}
-		if (!get_option('bbpress_notify_newreply_background'))
+		if ( !get_option( 'bbpress_notify_newreply_background' ) )
 		{
-			update_option('bbpress_notify_newreply_background', 0);
+			update_option( 'bbpress_notify_newreply_background', 0 );
 		}
-		if (!get_option('bbpress_notify_newtopic_recipients'))
+		if ( !get_option( 'bbpress_notify_newtopic_recipients' ) )
 		{
-			update_option('bbpress_notify_newtopic_recipients', array('administrator'));
+			update_option( 'bbpress_notify_newtopic_recipients', array( 'administrator' ) );
 		}
-		if (!get_option('bbpress_notify_newreply_recipients'))
+		if ( !get_option( 'bbpress_notify_newreply_recipients' ) )
 		{
-			update_option('bbpress_notify_newreply_recipients', array('administrator'));
+			update_option( 'bbpress_notify_newreply_recipients', array( 'administrator' ) );
 		}
-		if (!get_option('bbpress_notify_newtopic_email_subject'))
+		if ( !get_option( 'bbpress_notify_newtopic_email_subject' ) )
 		{
-			update_option('bbpress_notify_newtopic_email_subject', __('[[blogname]] New topic: [topic-title]'));
+			update_option( 'bbpress_notify_newtopic_email_subject', __( '[[blogname]] New topic: [topic-title]' ) );
 		}
-		if (!get_option('bbpress_notify_newtopic_email_body'))
+		if ( !get_option( 'bbpress_notify_newtopic_email_body' ) )
 		{
-			update_option('bbpress_notify_newtopic_email_body', __("Hello!\nA new topic has been posted by [topic-author].\nTopic title: [topic-title]\nTopic url: [topic-url]\n\nExcerpt:\n[topic-excerpt]"));
+			update_option( 'bbpress_notify_newtopic_email_body', __( "Hello!\nA new topic has been posted by [topic-author].\nTopic title: [topic-title]\nTopic url: [topic-url]\n\nExcerpt:\n[topic-excerpt]" ) );
 		}
-		if (!get_option('bbpress_notify_newreply_email_subject'))
+		if ( !get_option( 'bbpress_notify_newreply_email_subject' ) )
 		{
-			update_option('bbpress_notify_newreply_email_subject', __('[[blogname]] [reply-title]'));
+			update_option( 'bbpress_notify_newreply_email_subject', __( '[[blogname]] [reply-title]' ) );
 		}
-		if (!get_option('bbpress_notify_newreply_email_body'))
+		if ( !get_option( 'bbpress_notify_newreply_email_body' ) )
 		{
-			update_option('bbpress_notify_newreply_email_body', __("Hello!\nA new reply has been posted by [reply-author].\nTopic title: [reply-title]\nTopic url: [reply-url]\n\nExcerpt:\n[reply-excerpt]"));
+			update_option( 'bbpress_notify_newreply_email_body', __( "Hello!\nA new reply has been posted by [reply-author].\nTopic title: [reply-title]\nTopic url: [reply-url]\n\nExcerpt:\n[reply-excerpt]" ) );
 		}
-		if (!get_option("bbpress_notify_default_{$this->bbpress_topic_post_type}_notification"))
+		if ( !get_option( "bbpress_notify_default_{$this->bbpress_topic_post_type}_notification" ) )
 		{
-			update_option("bbpress_notify_default_{$this->bbpress_topic_post_type}_notification", 0);
+			update_option( "bbpress_notify_default_{$this->bbpress_topic_post_type}_notification", 0 );
 		}
-		if (!get_option("bbpress_notify_default_{$this->bbpress_reply_post_type}_notification"))
+		if ( !get_option( "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification" ) )
 		{
-			update_option("bbpress_notify_default_{$this->bbpress_reply_post_type}_notification", 0);
+			update_option( "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification", 0 );
 		}
 	}
 	
 	/**
 	 * @since 1.0
 	 */
-	function notify_new_topic($topic_id = 0, $forum_id = 0)
+	function notify_new_topic( $topic_id = 0, $forum_id = 0 )
 	{
 		global $wpdb;
 
-		$status = get_post_status($topic_id); 
+		$status = get_post_status( $topic_id ); 
 
-		if ( 'spam' === $status || 'publish' !== $status )
+		if (   in_array( $status, (array) apply_filters( 'bbpnns_post_status_blacklist', array( 'spam' ), $status, $forum_id, $topic_id, $reply_id=false ) ) || 
+			 ! in_array( $status, (array) apply_filters( 'bbpnns_post_status_whitelist', array( 'publish' ), $status, $forum_id, $topic_id, $reply_id=false ) ) )
 			return -1;
 
-		if (0 === $forum_id)
-			$forum_id = bbp_get_topic_forum_id($topic_id);
+		if ( 0 === $forum_id )
+			$forum_id = bbp_get_topic_forum_id( $topic_id );
 
-		if (true === apply_filters('bbpnns_skip_topic_notification', false, $forum_id, $topic_id))
+		if ( true === apply_filters( 'bbpnns_skip_topic_notification', false, $forum_id, $topic_id ) )
 			return -3;
 
-		$opt_recipients = apply_filters('bbpress_notify_recipients_hidden_forum', get_option('bbpress_notify_newtopic_recipients'), $forum_id);
+		$opt_recipients = apply_filters( 'bbpress_notify_recipients_hidden_forum', get_option( 'bbpress_notify_newtopic_recipients' ), $forum_id );
 
 		$recipients = array();
-		foreach ((array)$opt_recipients as $opt_recipient)
+		foreach ( ( array )$opt_recipients as $opt_recipient )
 		{
-			if (! $opt_recipient) continue;
+			if ( ! $opt_recipient ) continue;
 
-			$users = get_users(array('role' => $opt_recipient));
-			foreach ((array)$users as $user)
+			$users = get_users( array( 'role' => $opt_recipient ) );
+			foreach ( ( array )$users as $user )
 			{
-				$user = get_object_vars($user);
+				$user = get_object_vars( $user );
 				$recipients[$user['ID']] = $user['ID']; // make sure unique recepients
 			}
 		}
@@ -259,14 +269,14 @@ class bbPress_Notify_noSpam {
 		 * Allow topic recipients munging
 		 * @since 1.6.5
 		 */
-		$recipients = apply_filters('bbpress_topic_notify_recipients', $recipients, $topic_id, $forum_id);
+		$recipients = apply_filters( 'bbpress_topic_notify_recipients', $recipients, $topic_id, $forum_id );
 
-		if ( empty($recipients) )
+		if ( empty( $recipients ) )
 			return -2;
 
-		list($email_subject, $email_body) = $this->_build_email('topic', $topic_id);
+		list( $email_subject, $email_body ) = $this->_build_email( 'topic', $topic_id );
 
-		return $this->send_notification($recipients, $email_subject, $email_body);
+		return $this->send_notification( $recipients, $email_subject, $email_body );
 	}
 	
 	
@@ -277,10 +287,10 @@ class bbPress_Notify_noSpam {
 	 * @param number $topic_id
 	 * @return array
 	 */
-	public function munge_newtopic_recipients($recipients=array(), $forum_id = 0)
+	public function munge_newtopic_recipients( $recipients=array(), $forum_id = 0 )
 	{
-		if (true === (bool) bbp_is_forum_hidden($forum_id) &&
-		    true === (bool) get_option('bbpress_notify_hidden_forum_topic_override', true))
+		if ( true === ( bool ) bbp_is_forum_hidden( $forum_id ) &&
+		    true === ( bool ) get_option( 'bbpress_notify_hidden_forum_topic_override', true ) )
 		{
 			$recipients = 'administrator';
 		}
@@ -292,29 +302,33 @@ class bbPress_Notify_noSpam {
 	/**
 	 * @since 1.0
 	 */
-	function notify_new_reply($reply_id = 0, $topic_id = 0, $forum_id = 0)
+	function notify_new_reply( $reply_id = 0, $topic_id = 0, $forum_id = 0, $anonymous_data = false, $reply_author = 0, $bool = false, $reply_to = null )
 	{
 		global $wpdb;
 
-		$status = get_post_status($reply_id); 
+		$status = get_post_status( $reply_id ); 
 
-		if ( 'spam' === $status || 'publish' !== $status )
+		if ( 0 === $forum_id )
+			$forum_id = bbp_get_reply_forum_id( $reply_id );
+		
+		if (   in_array( $status, (array) apply_filters( 'bbpnns_post_status_blacklist', array( 'spam' ), $status, $forum_id, $topic_id, $reply_id ) ) || 
+			 ! in_array( $status, (array) apply_filters( 'bbpnns_post_status_whitelist', array( 'publish' ), $status, $forum_id, $topic_id, $reply_id ) ) )
 			return -1;
 
-		if (true === apply_filters('bbpnns_skip_reply_notification', false, $forum_id, $topic_id, $reply_id))
+		if ( true === apply_filters( 'bbpnns_skip_reply_notification', false, $forum_id, $topic_id, $reply_id ) )
 			return -3;
 
-		$opt_recipients = apply_filters('bbpress_notify_recipients_hidden_forum', get_option('bbpress_notify_newreply_recipients'), $forum_id);
+		$opt_recipients = apply_filters( 'bbpress_notify_recipients_hidden_forum', get_option( 'bbpress_notify_newreply_recipients' ), $forum_id );
 
 		$recipients = array();
-		foreach ((array)$opt_recipients as $opt_recipient)
+		foreach ( ( array )$opt_recipients as $opt_recipient )
 		{
-			if (! $opt_recipient) continue;
+			if ( ! $opt_recipient ) continue;
 
-			$users = get_users(array('role' => $opt_recipient));
-			foreach ((array)$users as $user)
+			$users = get_users( array( 'role' => $opt_recipient ) );
+			foreach ( ( array )$users as $user )
 			{
-				$user = get_object_vars($user);
+				$user = get_object_vars( $user );
 				$recipients[$user['ID']] = $user['ID']; // make sure unique recepients
 			}
 		}
@@ -323,124 +337,140 @@ class bbPress_Notify_noSpam {
 		 * Allow reply recipients munging
 		 * @since 1.6.5
 		 */
-		$recipients = apply_filters('bbpress_reply_notify_recipients', $recipients, $reply_id, $topic_id, $forum_id);
+		$recipients = apply_filters( 'bbpress_reply_notify_recipients', $recipients, $reply_id, $topic_id, $forum_id );
 
-		if ( empty($recipients) )
+		if ( empty( $recipients ) )
 			return -2;
 
-		list($email_subject, $email_body) = $this->_build_email('reply', $reply_id);
+		list( $email_subject, $email_body ) = $this->_build_email( 'reply', $reply_id );
 
-		return $this->send_notification($recipients, $email_subject, $email_body);
+		return $this->send_notification( $recipients, $email_subject, $email_body );
 	}
 	
 	
 	/**
 	 * @since 1.4
 	 */
-	private function _build_email($type, $post_id)
+	private function _build_email( $type, $post_id )
 	{
-		$email_subject = get_option("bbpress_notify_new{$type}_email_subject");
-		$email_body    = get_option("bbpress_notify_new{$type}_email_body");
+		$email_subject = get_option( "bbpress_notify_new{$type}_email_subject" );
+		$email_body    = get_option( "bbpress_notify_new{$type}_email_body" );
 		
-		$blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
-		$excerpt_size = apply_filters('bpnns_excerpt_size', 100);
+		$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
+		$excerpt_size = apply_filters( 'bpnns_excerpt_size', 100 );
 		
 		// Replace shortcodes
-		if ('topic' === $type)
+		if ( 'topic' === $type )
 		{
-			$content = bbp_get_topic_content($post_id);
-			$title   = html_entity_decode(strip_tags(bbp_get_topic_title($post_id)), ENT_NOQUOTES, 'UTF-8');
-			$excerpt = html_entity_decode(strip_tags(bbp_get_topic_excerpt($post_id, $excerpt_size)), ENT_NOQUOTES, 'UTF-8');
-			$author  = bbp_get_topic_author($post_id);
-			$url     = apply_filters( 'bbpnns_topic_url', bbp_get_topic_permalink($post_id), $post_id, $title );
-			$forum 	 = html_entity_decode(strip_tags(get_the_title(bbp_get_topic_forum_id($post_id))), ENT_NOQUOTES, 'UTF-8');
+			$content = bbp_get_topic_content( $post_id );
+			$title   = html_entity_decode( strip_tags( bbp_get_topic_title( $post_id ) ), ENT_NOQUOTES, 'UTF-8' );
+			$excerpt = html_entity_decode( strip_tags( bbp_get_topic_excerpt( $post_id, $excerpt_size ) ), ENT_NOQUOTES, 'UTF-8' );
+			$author  = bbp_get_topic_author( $post_id );
+			$url     = apply_filters( 'bbpnns_topic_url', bbp_get_topic_permalink( $post_id ), $post_id, $title );
+			$forum 	 = html_entity_decode( strip_tags( get_the_title( bbp_get_topic_forum_id( $post_id ) ) ), ENT_NOQUOTES, 'UTF-8' );
 		}
-		elseif ('reply' === $type)
+		elseif ( 'reply' === $type )
 		{
-			$content = bbp_get_reply_content($post_id);
-			$title   = html_entity_decode(strip_tags(bbp_get_reply_title($post_id)), ENT_NOQUOTES, 'UTF-8');
-			$excerpt = html_entity_decode(strip_tags(bbp_get_reply_excerpt($post_id, $excerpt_size)), ENT_NOQUOTES, 'UTF-8');
-			$author  = bbp_get_reply_author($post_id);
-			$url     = apply_filters( 'bbpnns_reply_url', bbp_get_reply_permalink($post_id), $post_id, $title );
-			$forum 	 = html_entity_decode(strip_tags(get_the_title(bbp_get_reply_forum_id($post_id))), ENT_NOQUOTES, 'UTF-8');
+			$content = bbp_get_reply_content( $post_id );
+			$title   = html_entity_decode( strip_tags( bbp_get_reply_title( $post_id ) ), ENT_NOQUOTES, 'UTF-8' );
+			$excerpt = html_entity_decode( strip_tags( bbp_get_reply_excerpt( $post_id, $excerpt_size ) ), ENT_NOQUOTES, 'UTF-8' );
+			$author  = bbp_get_reply_author( $post_id );
+			$url     = apply_filters( 'bbpnns_reply_url', bbp_get_reply_permalink( $post_id ), $post_id, $title );
+			$forum 	 = html_entity_decode( strip_tags( get_the_title( bbp_get_reply_forum_id( $post_id ) ) ), ENT_NOQUOTES, 'UTF-8' );
 		}
 		else 
 		{
-			wp_die('Invalid type!');
+			wp_die( 'Invalid type!' );
 		}
 		
-		$content = preg_replace('/<br\s*\/?>/is', PHP_EOL, $content);
-		$content = preg_replace('/(?:<\/p>\s*<p>)/ism', PHP_EOL . PHP_EOL, $content);
-		$content = html_entity_decode(strip_tags($content), ENT_NOQUOTES, 'UTF-8');
+		$content = preg_replace( '/<br\s*\/?>/is', PHP_EOL, $content );
+		$content = preg_replace( '/(?:<\/p>\s*<p>)/ism', PHP_EOL . PHP_EOL, $content );
+		$content = html_entity_decode( strip_tags( $content ), ENT_NOQUOTES, 'UTF-8' );
 		
-		$topic_reply = apply_filters( 'bbpnns_topic_reply', bbp_get_reply_url($post_id), $post_id, $title );
+		$topic_reply = apply_filters( 'bbpnns_topic_reply', bbp_get_reply_url( $post_id ), $post_id, $title );
 		
-		$email_subject = str_replace('[blogname]', $blogname, $email_subject);
-		$email_subject = str_replace("[$type-title]", $title, $email_subject);
-		$email_subject = str_replace("[$type-content]", $content, $email_subject);
-		$email_subject = str_replace("[$type-excerpt]", $excerpt, $email_subject);
-		$email_subject = str_replace("[$type-author]", $author, $email_subject);
-		$email_subject = str_replace("[$type-url]", $url, $email_subject);
-		$email_subject = str_replace("[$type-replyurl]", $topic_reply, $email_subject);
-		$email_subject = str_replace("[$type-forum]", $forum, $email_subject);
+		$email_subject = str_replace( '[blogname]', $blogname, $email_subject );
+		$email_subject = str_replace( "[$type-title]", $title, $email_subject );
+		$email_subject = str_replace( "[$type-content]", $content, $email_subject );
+		$email_subject = str_replace( "[$type-excerpt]", $excerpt, $email_subject );
+		$email_subject = str_replace( "[$type-author]", $author, $email_subject );
+		$email_subject = str_replace( "[$type-url]", $url, $email_subject );
+		$email_subject = str_replace( "[$type-replyurl]", $topic_reply, $email_subject );
+		$email_subject = str_replace( "[$type-forum]", $forum, $email_subject );
 		
-		$email_body = str_replace('[blogname]', $blogname, $email_body);
-		$email_body = str_replace("[$type-title]", $title, $email_body);
-		$email_body = str_replace("[$type-content]", $content, $email_body);
-		$email_body = str_replace("[$type-excerpt]", $excerpt, $email_body);
-		$email_body = str_replace("[$type-author]", $author, $email_body);
-		$email_body = str_replace("[$type-url]", $url, $email_body);
-		$email_body = str_replace("[$type-replyurl]", $topic_reply, $email_body);
-		$email_body = str_replace("[$type-forum]", $forum, $email_body);
+		$email_body = str_replace( '[blogname]', $blogname, $email_body );
+		$email_body = str_replace( "[$type-title]", $title, $email_body );
+		$email_body = str_replace( "[$type-content]", $content, $email_body );
+		$email_body = str_replace( "[$type-excerpt]", $excerpt, $email_body );
+		$email_body = str_replace( "[$type-author]", $author, $email_body );
+		$email_body = str_replace( "[$type-url]", $url, $email_body );
+		$email_body = str_replace( "[$type-replyurl]", $topic_reply, $email_body );
+		$email_body = str_replace( "[$type-forum]", $forum, $email_body );
 		
 		/**
 		 * Allow subject and body modifications
 		 * @since 1.6.6
 		 */
-		$email_subject = apply_filters('bbpnns_filter_email_subject_in_build', $email_subject);
-		$email_body    = apply_filters('bbpnns_filter_email_body_in_build', $email_body);
+		$email_subject = apply_filters( 'bbpnns_filter_email_subject_in_build', $email_subject );
+		$email_body    = apply_filters( 'bbpnns_filter_email_body_in_build', $email_body );
 		
-		return array($email_subject, $email_body);
+		return array( $email_subject, $email_body );
 	}
 	
 	/**
 	 * @since 1.0
 	 */
-	function send_notification($recipients, $subject, $body)
+	function send_notification( $recipients, $subject, $body )
 	{
-		$headers = sprintf("From: %s <%s>\r\n", get_option('blogname'), get_bloginfo('admin_email'));
-		$headers = apply_filters('bbpnns_extra_headers', $headers, $recipients, $subject, $body);
+		$headers = sprintf( "From: %s <%s>\r\n", get_option( 'blogname' ), get_bloginfo( 'admin_email' ) );
+		$headers = apply_filters( 'bbpnns_extra_headers', $headers, $recipients, $subject, $body );
 		
 		// Allow Management of recipients list
-		$recipients = apply_filters('bbpnns_filter_recipients_before_send', $recipients);
+		$recipients = apply_filters( 'bbpnns_filter_recipients_before_send', $recipients );
 		
-		foreach ( (array) $recipients as $recipient_id)
+		foreach ( ( array ) $recipients as $recipient_id )
 		{
-			$user_info = get_userdata($recipient_id);
+			$user_info = get_userdata( $recipient_id );
 			
 			/**
 			 * Allow per user subject and body modifications
 			 * @since 1.6.4 
 			 */ 
-			$filtered_subject = apply_filters('bbpnns_filter_email_subject_for_user', $subject, $user_info);
-			$filtered_body    = apply_filters('bbpnns_filter_email_body_for_user', $body, $user_info);
+			$filtered_subject = apply_filters( 'bbpnns_filter_email_subject_for_user', $subject, $user_info );
+			$filtered_body    = apply_filters( 'bbpnns_filter_email_body_for_user', $body, $user_info );
 			
-			$email = ($recipient_id == -1) ? get_bloginfo('admin_email') : (string) $user_info->user_email ; 
+			$email = ( $recipient_id == -1 ) ? get_bloginfo( 'admin_email' ) : ( string ) $user_info->user_email ; 
 
-			if (false === apply_filters('bbpnns_dry_run', false))
+			if ( false === apply_filters( 'bbpnns_dry_run', false ) )
 			{
-				if ( ! wp_mail($email, $filtered_subject, $filtered_body, $headers) )
+				// Turn on nl2br for wpmandrill
+				add_filter( 'mandrill_nl2br', array( &$this, 'handle_mandrill_nl2br' ), 10, 2 );
+				if ( ! wp_mail( $email, $filtered_subject, $filtered_body, $headers ) )
 				{
-					error_log('[bbPress Notify No Spam] wp_mail failed: ' . print_r(error_get_last(),1));
-					return false;
+					error_log( '[bbPress Notify No Spam] wp_mail failed for: ' . $email . ', with message: ' . print_r( error_get_last(),1 ) );
+					continue;
 				}
+				remove_filter( 'mandrill_nl2br', array( &$this, 'handle_mandrill_nl2br' ), 10 );
 			}
 		}
 		
-		if (true === apply_filters('bbpnns_dry_run', false))
-			return array($recipients, $body);
+		if ( true === apply_filters( 'bbpnns_dry_run', false ) )
+			return array( $recipients, $body );
 		
 		return true;
+	}
+	
+	/**
+	 * On-the-fly handling of nl2br by Mandrill
+	 * @param bool $nl2br
+	 * @param array $message
+	 * @return bool
+	 */
+	public function handle_mandrill_nl2br( $nl2br, $message )
+	{
+		$bbpnns_nl2b2_option = apply_filters( 'bbpnns_handle_mandrill_nl2br', true ); 
+		
+		return $bbpnns_nl2b2_option;
 	}
 	
 	/**
@@ -449,56 +479,68 @@ class bbPress_Notify_noSpam {
 	/* Add the settings to the bbPress page in the Dashboard */
 	function admin_settings() {
 		// Add section to bbPress options
-		add_settings_section($this->settings_section, __('E-mail Notifications', 'bbpress_notify'), array(&$this,'_settings_intro_text'), 'bbpress');
-	
+		add_settings_section( $this->settings_section, __( 'E-mail Notifications', 'bbpress_notify' ), array( &$this, '_settings_intro_text' ), 'bbpress' );
+
+		// Hook for additional topic settings
+		do_action( 'bbpnns_before_topic_settings' );
+		
 		// Add background option
-		add_settings_field('bbpress_notify_newtopic_background', __('Background Topic Notifications', 'bbpress_notify'), array(&$this,'_topic_background_inputfield'), 'bbpress', 'bbpress_notify_options');
+		add_settings_field( 'bbpress_notify_newtopic_background', __( 'Background Topic Notifications', 'bbpress_notify' ), array( &$this, '_topic_background_inputfield' ), 'bbpress', 'bbpress_notify_options' );
 		
 		// Add default notification option
-		add_settings_field("bbpress_notify_default_{$this->bbpress_topic_post_type}_notification", __('Admin UI Topic Notifications', 'bbpress_notify'), array(&$this,'_admin_ui_topic_inputfield'), 'bbpress', 'bbpress_notify_options');
+		add_settings_field( "bbpress_notify_default_{$this->bbpress_topic_post_type}_notification", __( 'Admin UI Topic Notifications', 'bbpress_notify' ), array( &$this, '_admin_ui_topic_inputfield' ), 'bbpress', 'bbpress_notify_options' );
 		
 		// Add form fields for all settings
-		add_settings_field('bbpress_notify_newtopic_recipients', __('Notifications about new topics are sent to', 'bbpress_notify'), array(&$this,'_topic_recipients_inputfield'), 'bbpress', 'bbpress_notify_options');
-		add_settings_field('bbpress_notify_hidden_forum_topic_override', __('Force Admin-only emails if Forum is hidden (topics)', 'bbpress_notify'), array(&$this,'_hidden_forum_topic_override'), 'bbpress', 'bbpress_notify_options');
+		add_settings_field( 'bbpress_notify_newtopic_recipients', __( 'Notifications about new topics are sent to', 'bbpress_notify' ), array( &$this, '_topic_recipients_inputfield' ), 'bbpress', 'bbpress_notify_options' );
+		add_settings_field( 'bbpress_notify_hidden_forum_topic_override', __( 'Force Admin-only emails if Forum is hidden ( topics )', 'bbpress_notify' ), array( &$this, '_hidden_forum_topic_override' ), 'bbpress', 'bbpress_notify_options' );
 		
-		add_settings_field('bbpress_notify_newtopic_email_subject', __('E-mail subject', 'bbpress_notify'), array(&$this,'_email_newtopic_subject_inputfield'), 'bbpress', 'bbpress_notify_options');
-		add_settings_field('bbpress_notify_newtopic_email_body', __('E-mail body (template tags: [blogname], [topic-forum], [topic-title], [topic-content], [topic-excerpt], [topic-author], [topic-url], [topic-replyurl])', 'bbpress_notify'), array(&$this,'_email_newtopic_body_inputfield'), 'bbpress', 'bbpress_notify_options');
+		add_settings_field( 'bbpress_notify_newtopic_email_subject', __( 'E-mail subject', 'bbpress_notify' ), array( &$this, '_email_newtopic_subject_inputfield' ), 'bbpress', 'bbpress_notify_options' );
+		add_settings_field( 'bbpress_notify_newtopic_email_body', __( 'E-mail body', 'bbpress_notify' ), array( &$this, '_email_newtopic_body_inputfield' ), 'bbpress', 'bbpress_notify_options' );
+
+		// Hook for additional topic settings
+		do_action( 'bbpnns_after_topic_settings' );
 		
-		add_settings_field('bbpress_notify_newreply_background', __('Background Reply Notifications', 'bbpress_notify'), array(&$this,'_reply_background_inputfield'), 'bbpress', 'bbpress_notify_options');
+		add_settings_field( 'bbpress_notify_newreply_background', __( 'Background Reply Notifications', 'bbpress_notify' ), array( &$this, '_reply_background_inputfield' ), 'bbpress', 'bbpress_notify_options' );
 		
 		// Add default notification option
-		add_settings_field("bbpress_notify_default_{$this->bbpress_reply_post_type}_notification", __('Admin UI Reply Notifications', 'bbpress_notify'), array(&$this,'_admin_ui_reply_inputfield'), 'bbpress', 'bbpress_notify_options');
+		add_settings_field( "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification", __( 'Admin UI Reply Notifications', 'bbpress_notify' ), array( &$this, '_admin_ui_reply_inputfield' ), 'bbpress', 'bbpress_notify_options' );
 		
-		add_settings_field('bbpress_notify_newreply_recipients', __('Notifications about replies are sent to', 'bbpress_notify'), array(&$this,'_reply_recipients_inputfield'), 'bbpress', 'bbpress_notify_options');
-		add_settings_field('bbpress_notify_hidden_forum_reply_override', __('Force Admin-only emails if Forum is hidden (replies)', 'bbpress_notify'), array(&$this,'_hidden_forum_reply_override'), 'bbpress', 'bbpress_notify_options');
+		add_settings_field( 'bbpress_notify_newreply_recipients', __( 'Notifications about replies are sent to', 'bbpress_notify' ), array( &$this, '_reply_recipients_inputfield' ), 'bbpress', 'bbpress_notify_options' );
+		add_settings_field( 'bbpress_notify_hidden_forum_reply_override', __( 'Force Admin-only emails if Forum is hidden ( replies )', 'bbpress_notify' ), array( &$this, '_hidden_forum_reply_override' ), 'bbpress', 'bbpress_notify_options' );
 		
 		
-		add_settings_field('bbpress_notify_newreply_email_subject', __('E-mail subject', 'bbpress_notify'), array(&$this,'_email_newreply_subject_inputfield'), 'bbpress', 'bbpress_notify_options');
-		add_settings_field('bbpress_notify_newreply_email_body', __('E-mail body (template tags: [blogname], [reply-forum], [reply-title], [reply-content], [reply-excerpt], [reply-author], [reply-url], [reply-replyurl])', 'bbpress_notify'), array(&$this,'_email_newreply_body_inputfield'), 'bbpress', 'bbpress_notify_options');
+		add_settings_field( 'bbpress_notify_newreply_email_subject', __( 'E-mail subject', 'bbpress_notify' ), array( &$this, '_email_newreply_subject_inputfield' ), 'bbpress', 'bbpress_notify_options' );
+		add_settings_field( 'bbpress_notify_newreply_email_body', __( 'E-mail body', 'bbpress_notify' ), array( &$this, '_email_newreply_body_inputfield' ), 'bbpress', 'bbpress_notify_options' );
 	
+		// Hook for additional reply settings
+		do_action( 'bbpnns_after_reply_settings' );
+		
 		// Register the settings as part of the bbPress settings
-		register_setting('bbpress', 'bbpress_notify_newtopic_recipients');
-		register_setting('bbpress', 'bbpress_notify_hidden_forum_topic_override');
-		register_setting('bbpress', 'bbpress_notify_hidden_forum_reply_override');
-		register_setting('bbpress', 'bbpress_notify_newtopic_email_subject');
-		register_setting('bbpress', 'bbpress_notify_newtopic_email_body');
-		register_setting('bbpress', 'bbpress_notify_newtopic_background');
+		register_setting( 'bbpress', 'bbpress_notify_newtopic_recipients' );
+		register_setting( 'bbpress', 'bbpress_notify_hidden_forum_topic_override' );
+		register_setting( 'bbpress', 'bbpress_notify_hidden_forum_reply_override' );
+		register_setting( 'bbpress', 'bbpress_notify_newtopic_email_subject' );
+		register_setting( 'bbpress', 'bbpress_notify_newtopic_email_body' );
+		register_setting( 'bbpress', 'bbpress_notify_newtopic_background' );
 	
-		register_setting('bbpress', 'bbpress_notify_newreply_recipients');
-		register_setting('bbpress', 'bbpress_notify_newreply_email_subject');
-		register_setting('bbpress', 'bbpress_notify_newreply_email_body');
-		register_setting('bbpress', 'bbpress_notify_newreply_background');
+		register_setting( 'bbpress', 'bbpress_notify_newreply_recipients' );
+		register_setting( 'bbpress', 'bbpress_notify_newreply_email_subject' );
+		register_setting( 'bbpress', 'bbpress_notify_newreply_email_body' );
+		register_setting( 'bbpress', 'bbpress_notify_newreply_background' );
 		
-		register_setting('bbpress', "bbpress_notify_default_{$this->bbpress_topic_post_type}_notification");
-		register_setting('bbpress', "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification");
+		register_setting( 'bbpress', "bbpress_notify_default_{$this->bbpress_topic_post_type}_notification" );
+		register_setting( 'bbpress', "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification" );
+		
+		// Hook to register additional topic/reply settings
+		do_action( 'bbpnns_register_settings' );
 	}
 	
 	/**
 	 * @since 1.0
 	 */
-	function _settings_intro_text($args)
+	function _settings_intro_text( $args )
 	{
-		printf('<span id="%s">%s</span>', $args['id'], __('Configure e-mail notifications when new topics and/or replies are posted.', 'bbpress_notify'));
+		printf( '<span id="%s">%s</span>', $args['id'], __( 'Configure e-mail notifications when new topics and/or replies are posted.', 'bbpress_notify' ) );
 	}
 	
 	/**
@@ -506,10 +548,10 @@ class bbPress_Notify_noSpam {
 	 */
 	function _topic_background_inputfield()
 	{
-		$saved_option = get_option('bbpress_notify_newtopic_background');
+		$saved_option = get_option( 'bbpress_notify_newtopic_background' );
 		$html_checked = ( $saved_option ) ? 'checked="checked"' : '';
-		$description = __('Send emails in the background the next time the site is visited', 'bbpress_notify');
-		printf('<input type="checkbox" %s name="bbpress_notify_newtopic_background" value="1"/> %s<br>', $html_checked, $description);
+		$description = __( 'Send emails in the background the next time the site is visited', 'bbpress_notify' );
+		printf( '<label><input type="checkbox" %s name="bbpress_notify_newtopic_background" value="1"/> %s </label><br>', $html_checked, $description );
 	}
 	
 	/**
@@ -517,10 +559,10 @@ class bbPress_Notify_noSpam {
 	 */
 	function _reply_background_inputfield()
 	{
-		$saved_option = get_option('bbpress_notify_newreply_background');
+		$saved_option = get_option( 'bbpress_notify_newreply_background' );
 		$html_checked = ( $saved_option ) ? 'checked="checked"' : '';
-		$description = __('Send emails in the background the next time the site is visited', 'bbpress_notify');
-		printf('<input type="checkbox" %s name="bbpress_notify_newreply_background" value="1"/> %s<br>', $html_checked, $description);
+		$description = __( 'Send emails in the background the next time the site is visited', 'bbpress_notify' );
+		printf( '<label><input type="checkbox" %s name="bbpress_notify_newreply_background" value="1"/> %s</label><br>', $html_checked, $description );
 	}
 	
 	/**
@@ -532,12 +574,12 @@ class bbPress_Notify_noSpam {
 		global $wp_roles;
 		
 		$options = $wp_roles->get_names();
-		$saved_option = get_option('bbpress_notify_newtopic_recipients');
-		foreach ($options as $value => $description)
+		$saved_option = get_option( 'bbpress_notify_newtopic_recipients' );
+		foreach ( $options as $value => $description )
 		{
 			$html_checked = '';
-			if (in_array($value, (array)$saved_option)) { $html_checked = 'checked="checked"'; }
-			printf('<input type="checkbox" %s name="bbpress_notify_newtopic_recipients[]" value="%s"/> %s<br>', $html_checked, $value, $description);
+			if ( in_array( $value, ( array )$saved_option ) ) { $html_checked = 'checked="checked"'; }
+			printf( '<label><input type="checkbox" %s name="bbpress_notify_newtopic_recipients[]" value="%s"/> %s</label><br>', $html_checked, $value, $description );
 		}
 	}
 	
@@ -546,10 +588,11 @@ class bbPress_Notify_noSpam {
 	 */
 	function _hidden_forum_topic_override()
 	{
-		$saved_option = get_option('bbpress_notify_hidden_forum_topic_override');
+		$saved_option = get_option( 'bbpress_notify_hidden_forum_topic_override' );
 		
-		$checked = true === (bool) $saved_option ? 'checked="checked"' : '';
-		printf('<input type="checkbox" %s name="bbpress_notify_hidden_forum_topic_override" value="1"/><br>', $checked);
+		$checked = true === ( bool ) $saved_option ? 'checked="checked"' : '';
+		printf( '<label><input type="checkbox" %s name="bbpress_notify_hidden_forum_topic_override" value="1"/> %s</label><br>', $checked,
+		__( 'Force Admin-only emails if Forum is hidden ( topics )', 'bbpress-notify' ) );
 	}
 	
 	/**
@@ -561,12 +604,12 @@ class bbPress_Notify_noSpam {
 		global $wp_roles;
 
 		$options = $wp_roles->get_names();
-		$saved_option = get_option('bbpress_notify_newreply_recipients');
-		foreach ($options as $value => $description)
+		$saved_option = get_option( 'bbpress_notify_newreply_recipients' );
+		foreach ( $options as $value => $description )
 		{
 			$html_checked = '';
-			if (in_array($value, (array)$saved_option)) { $html_checked = 'checked="checked"'; }
-			printf('<input type="checkbox" %s name="bbpress_notify_newreply_recipients[]" value="%s"/> %s<br>', $html_checked, $value, $description);
+			if ( in_array( $value, ( array )$saved_option ) ) { $html_checked = 'checked="checked"'; }
+			printf( '<label><input type="checkbox" %s name="bbpress_notify_newreply_recipients[]" value="%s"/> %s</label><br>', $html_checked, $value, $description );
 		}
 	}
 	
@@ -576,10 +619,11 @@ class bbPress_Notify_noSpam {
 	 */
 	function _hidden_forum_reply_override()
 	{
-		$saved_option = get_option('bbpress_notify_hidden_forum_reply_override');
+		$saved_option = get_option( 'bbpress_notify_hidden_forum_reply_override' );
 	
-		$checked = true === (bool) $saved_option ? 'checked="checked"' : '';
-		printf('<input type="checkbox" %s name="bbpress_notify_hidden_forum_reply_override" value="1"/><br>', $checked);
+		$checked = true === ( bool ) $saved_option ? 'checked="checked"' : '';
+		printf( '<label><input type="checkbox" %s name="bbpress_notify_hidden_forum_reply_override" value="1"/> %s</label><br>', $checked,
+		__( 'Force Admin-only emails if Forum is hidden ( replies )', 'bbpress-notify' ) );
 	}
 	
 	
@@ -589,7 +633,7 @@ class bbPress_Notify_noSpam {
 	/* Show a <input> field for new topic e-mail subject */
 	function _email_newtopic_subject_inputfield()
 	{
-		printf('<input type="text" id="bbpress_notify_newtopic_email_subject" name="bbpress_notify_newtopic_email_subject" value="%s" />', get_option('bbpress_notify_newtopic_email_subject'));
+		printf( '<input type="text" id="bbpress_notify_newtopic_email_subject" name="bbpress_notify_newtopic_email_subject" value="%s" />', get_option( 'bbpress_notify_newtopic_email_subject' ) );
 	}
 	
 	/**
@@ -598,8 +642,15 @@ class bbPress_Notify_noSpam {
 	/* Show a <textarea> input for new topic e-mail body */
 	function _email_newtopic_body_inputfield()
 	{
-		printf('<textarea id="bbpress_notify_newtopic_email_body" name="bbpress_notify_newtopic_email_body" cols="50" rows="5">%s</textarea>', get_option('bbpress_notify_newtopic_email_body'));
-		printf('<p>%s: [blogname], [topic-title], [topic-content], [topic-excerpt], [topic-url], [topic-replyurl], [topic-author]</p>', __('Shortcodes', 'bbpress_notify'));
+		printf( '<textarea id="bbpress_notify_newtopic_email_body" name="bbpress_notify_newtopic_email_body" cols="50" rows="5">%s</textarea>', get_option( 'bbpress_notify_newtopic_email_body' ) );
+		
+		$tags 		= '[blogname], [topic-title], [topic-content], [topic-excerpt], [topic-url], [topic-replyurl], [topic-author]';
+		$extra_tags = apply_filters( 'bbpnns_extra_topic_tags',  null );
+		
+		if ( $extra_tags )
+			$tags .= ', '. $extra_tags;
+		
+		printf( '<p>%s: %s</p>', __( 'Available Tags', 'bbpress_notify' ), $tags );
 	}
 	
 	/**
@@ -608,7 +659,7 @@ class bbPress_Notify_noSpam {
 	/* Show a <input> field for new reply e-mail subject */
 	function _email_newreply_subject_inputfield()
 	{
-		printf('<input type="text" id="bbpress_notify_newreply_email_subject" name="bbpress_notify_newreply_email_subject" value="%s" />', get_option('bbpress_notify_newreply_email_subject'));
+		printf( '<input type="text" id="bbpress_notify_newreply_email_subject" name="bbpress_notify_newreply_email_subject" value="%s" />', get_option( 'bbpress_notify_newreply_email_subject' ) );
 	}
 	
 	/**
@@ -617,8 +668,15 @@ class bbPress_Notify_noSpam {
 	/* Show a <textarea> input for new reply e-mail body */
 	function _email_newreply_body_inputfield()
 	{
-		printf('<textarea id="bbpress_notify_newreply_email_body" name="bbpress_notify_newreply_email_body" cols="50" rows="5">%s</textarea>', get_option('bbpress_notify_newreply_email_body'));
-		printf('<p>%s: [blogname], [reply-title], [reply-content], [reply-excerpt], [reply-url], [reply-replyurl], [reply-author]</p>', __('Shortcodes', 'bbpress_notify'));
+		printf( '<textarea id="bbpress_notify_newreply_email_body" name="bbpress_notify_newreply_email_body" cols="50" rows="5">%s</textarea>', get_option( 'bbpress_notify_newreply_email_body' ) );
+		
+		$tags 		= '[blogname], [reply-title], [reply-content], [reply-excerpt], [reply-url], [reply-replyurl], [reply-author]';
+		$extra_tags = apply_filters( 'bbpnns_extra_reply_tags',  null );
+		
+		if ( $extra_tags )
+			$tags .= ', '. $extra_tags;
+		
+		printf( '<p>%s: %s</p>', __( 'Available Tags', 'bbpress_notify' ), $tags );
 	}
 	
 	/**
@@ -626,7 +684,7 @@ class bbPress_Notify_noSpam {
 	 */
 	function plugin_action_links( $links, $file ) 
 	{
-		if ( $file === plugin_basename( dirname(__FILE__).'/bbpress-notify-nospam.php' ) )
+		if ( $file === plugin_basename( dirname( __FILE__ ).'/bbpress-notify-nospam.php' ) )
 			$links[] = '<a href="' . admin_url( 'admin.php?page=bbpress#' . $this->settings_section ) . '">'.__( 'Settings' ).'</a>';
 		
 	
@@ -639,10 +697,10 @@ class bbPress_Notify_noSpam {
 	function add_notification_meta_box()
 	{
 		add_meta_box( 'send_notification', __( 'Notifications', 'bbpress_notify' ),
-			array(&$this,'notification_meta_box_content'),  bbp_get_topic_post_type(), 'side','high' );
+			array( &$this, 'notification_meta_box_content' ),  bbp_get_topic_post_type(), 'side', 'high' );
 		
 		add_meta_box( 'send_notification', __( 'Notifications', 'bbpress_notify' ),
-			array(&$this,'notification_meta_box_content'),  bbp_get_reply_post_type(), 'side','high' );
+			array( &$this, 'notification_meta_box_content' ),  bbp_get_reply_post_type(), 'side', 'high' );
 	} 
 	
 	/**
@@ -650,15 +708,15 @@ class bbPress_Notify_noSpam {
 	 */
 	function notification_meta_box_content( $post )
 	{
-		$type = ($post->post_type === $this->bbpress_topic_post_type) ? 'topic' : 'reply';
+		$type = ( $post->post_type === $this->bbpress_topic_post_type ) ? 'topic' : 'reply';
 		
-		$default = get_option("bbpress_notify_default_{$type}_notification");
-		$checked = checked($default, true, false);
+		$default = get_option( "bbpress_notify_default_{$type}_notification" );
+		$checked = checked( $default, true, false );
 		
-		wp_create_nonce("bbpress_send_{$type}_notification_nonce");
+		wp_create_nonce( "bbpress_send_{$type}_notification_nonce" );
 		
-		wp_nonce_field("bbpress_send_{$type}_notification_nonce", "bbpress_send_{$type}_notification_nonce");
-		printf('<input type="checkbox" name="bbpress_notify_send_notification" %s> %s',$checked, __('Send notification.', 'bbpress_notify'));
+		wp_nonce_field( "bbpress_send_{$type}_notification_nonce", "bbpress_send_{$type}_notification_nonce" );
+		printf( '<label><input type="checkbox" name="bbpress_notify_send_notification" %s> %s</label>', $checked, __( 'Send notification.', 'bbpress_notify' ) );
 	} 
 	
 	/**
@@ -666,11 +724,11 @@ class bbPress_Notify_noSpam {
 	 */
 	function _admin_ui_topic_inputfield()
 	{
-		$default = get_option("bbpress_notify_default_{$this->bbpress_topic_post_type}_notification");
-		$checked = checked($default, true, false);
+		$default = get_option( "bbpress_notify_default_{$this->bbpress_topic_post_type}_notification" );
+		$checked = checked( $default, true, false );
 
-		printf('<input type="checkbox" value="1" name="%s" %s> ', "bbpress_notify_default_{$this->bbpress_topic_post_type}_notification", $checked);
-		_e('Send notifications when creating Topics in the Admin UI (<span class="description">Can be overridden in the New/Update Topic screen</span>).');
+		printf( '<label><input type="checkbox" value="1" name="%s" %s> %s</label>', "bbpress_notify_default_{$this->bbpress_topic_post_type}_notification", $checked,
+		__( 'Send notifications when creating Topics in the Admin UI ( <span class="description">Can be overridden in the New/Update Topic screen</span> ).' ) );
 	}
 	
 	/**
@@ -678,11 +736,11 @@ class bbPress_Notify_noSpam {
 	 */
 	function _admin_ui_reply_inputfield()
 	{
-		$default = get_option("bbpress_notify_default_{$this->bbpress_reply_post_type}_notification");
-		$checked = checked($default, true, false);
+		$default = get_option( "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification" );
+		$checked = checked( $default, true, false );
 
-		printf('<input type="checkbox" value="1" name="%s" %s> ', "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification", $checked);
-		_e('Send notifications when creating Replies in the Admin UI (<span class="description">Can be overridden in the New/Update Reply screen</span>).');
+		printf( '<label><input type="checkbox" value="1" name="%s" %s> %s</label>', "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification", $checked,
+		__( 'Send notifications when creating Replies in the Admin UI ( <span class="description">Can be overridden in the New/Update Reply screen</span> ).' ) );
 	}
 	
 	/**
@@ -691,33 +749,33 @@ class bbPress_Notify_noSpam {
 	 * @param object $post
 	 * @return array
 	 */
-	function notify_on_save($post_id, $post)
+	function notify_on_save( $post_id, $post )
 	{
-		if (empty($_POST)) return;
+		if ( empty( $_POST ) ) return;
 
-		if ($this->bbpress_topic_post_type !== $post->post_type && $this->bbpress_reply_post_type !== $post->post_type) return;
+		if ( $this->bbpress_topic_post_type !== $post->post_type && $this->bbpress_reply_post_type !== $post->post_type ) return;
 		
-		if (! current_user_can('manage_options') && ! current_user_can('edit_post', $post_id)) return;
+		if ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'edit_post', $post_id ) ) return;
 		
-		if (wp_is_post_revision( $post_id )) return;
+		if ( wp_is_post_revision( $post_id ) ) return;
 		
-		if (! isset($_POST['bbpress_notify_send_notification']) || ! $_POST['bbpress_notify_send_notification']) return;
+		if ( ! isset( $_POST['bbpress_notify_send_notification'] ) || ! $_POST['bbpress_notify_send_notification'] ) return;
 
-		$type = ($post->post_type === $this->bbpress_topic_post_type) ? 'topic' : 'reply';
-		if (! isset($_POST["bbpress_send_{$type}_notification_nonce"]) ||
+		$type = ( $post->post_type === $this->bbpress_topic_post_type ) ? 'topic' : 'reply';
+		if ( ! isset( $_POST["bbpress_send_{$type}_notification_nonce"] ) ||
 			! wp_verify_nonce( $_POST["bbpress_send_{$type}_notification_nonce"], "bbpress_send_{$type}_notification_nonce" ) )
 		{
 			return;
 		}
 
 		// Still here, so we can notify
-		if ($post->post_type === $this->bbpress_topic_post_type)
+		if ( $post->post_type === $this->bbpress_topic_post_type )
 		{
-			return $this->notify_new_topic($post_id);
+			return $this->notify_new_topic( $post_id );
 		}
 		else 
 		{
-			return $this->notify_new_reply($post_id);
+			return $this->notify_new_reply( $post_id );
 		}
 	}
 	
@@ -729,7 +787,7 @@ class bbPress_Notify_noSpam {
 		?>
 		<div class="error">
 			<p>
-				<?php _e('<strong>bbPress Notify (No-Spam)</strong> could not find an active bbPress plugin. It will not load until bbPress is installed and active.'); ?>
+				<?php _e( '<strong>bbPress Notify (No-Spam)</strong> could not find an active bbPress plugin. It will not load until bbPress is installed and active.' ); ?>
 			</p>
 		</div>
 		<?php 

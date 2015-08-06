@@ -46,6 +46,13 @@ class YOP_POLL_General_Options extends YOP_POLL_Abstract_Admin {
         require_once( ABSPATH . '/wp-admin/options-head.php' );
         wp_enqueue_style( 'yop-poll-wizard-css', YOP_POLL_URL . 'css/yop-poll-wizard.css', array(), YOP_POLL_VERSION );
         wp_enqueue_script( 'yop-poll-wizard-js', YOP_POLL_URL . 'js/polls/wizard-options.js', array( 'jquery' ), YOP_POLL_VERSION, true );
+        $translation_array = array(
+            'next_next' => __( "Next" ),
+            'prev_prev' => __yop_poll( "Previous" ),
+            'savee' => __('Save'),
+            'empty_answer' => __yop_poll( "Please fill in empty answers from Question" )
+        );
+        wp_localize_script( 'yop-poll-wizard-js', 'button_yop', $translation_array );
         wp_enqueue_script( 'jquery-ui-dialog' );
         $isdone = array( 1 );
 

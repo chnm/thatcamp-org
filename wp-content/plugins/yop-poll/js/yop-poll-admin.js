@@ -51,7 +51,9 @@ jQuery(".yop_poll_tooltip-buy_pro" ).click( function(){
         id=='yop-poll-vote-permisions-show-g-share-button-yes'|| id=='yop-poll-vote-permisions-show-g-share-button-no' ||
         id=='yop_poll_google_integration-yes' || id=='yop_poll_google_integration-no'
         || id=='yop-poll-for-slider-page-4'||id=='yop-poll-for-slider-page2'
-        || id=='yop-poll-for-slider-page3' || id=='yop-poll-vote-permisions-facebook-yes'){
+        || id=='yop-poll-for-slider-page3' || id=='yop-poll-vote-permisions-facebook-yes' ||
+        id=='yop_poll_results_bar_pie' || id=='yop_poll_results_polar' ||
+        id=='yop_poll_results_doughnut'){
 
 
 

@@ -6,7 +6,7 @@
 
 
 
-<a id="yop-poll-add-new-ban" class="add-new-h2" href="javascript:void(0);">{{ __('Add New') }}  </a>
+<a id="yop-poll-add-new-ban" class="add-new-h2" href="javascript:void(0);">{{ __("Add New") }}  </a>
 
 {% endblock  addnew %}
 
@@ -34,7 +34,7 @@
 
 <div id='yop-poll-add-ban-div' style="display:none ;">
 
-    <p>{{__( 'Ban IP, Username or Email' ) }}</p>
+    <p>{{__( "Ban IP, Username or Email" ) }}</p>
 
     <form  action="?page=yop-polls-bans&action=add-new" method="post" id="add-edit-ban">
 
@@ -52,7 +52,7 @@
 
             <tr class="form-field form-required">
 
-                <th scope="row"><label for="yop-poll-name">{{__( 'Poll' ) }} <span
+                <th scope="row"><label for="yop-poll-name">{{__( "Poll" ) }} <span
 
                         class="description">(required)</span></label></th>
 
@@ -60,7 +60,7 @@
 
 
 
-                    <option id="choose-option" value="0">{{__( 'Bans For All Polls' )}}</option>
+                    <option id="choose-option" value="0">{{__( "Bans For All Polls" )}}</option>
 
                     {% if  count( yop_polls ) > 0 %}
 
@@ -82,19 +82,19 @@
 
             <tr class="form-field form-required">
 
-                <th scope="row"><label for="yop-poll-type">{{__( 'Type' )}} <span
+                <th scope="row"><label for="yop-poll-type">{{__( "Type" )}} <span
 
                         class="description">(required)</span></label></th>
 
                 <td><select name="ban_type" style="width: 15%" id="yop-poll-bans-type">
 
-                    <option id="choose-option-type"  value="">{{__( 'Choose Ban Type' )}} </option>
+                    <option id="choose-option-type"  value="">{{__( "Choose Ban Type" )}} </option>
 
-                    <option value="ip">{{__( 'Ip' ) }}</option>
+                    <option value="ip">{{__( "Ip" ) }}</option>
 
-                    <option value="username">{{__( 'Username' ) }} </option>
+                    <option value="username">{{__( "Username" ) }} </option>
 
-                    <option value="email">{{__( 'Email' ) }}</option></select>
+                    <option value="email">{{__( "Email" ) }}</option></select>
 
                 </td>
 
@@ -104,7 +104,7 @@
 
             <tr class="form-field form-required">
 
-                <th scope="row"><label for="yop-poll-ban-period" value="">{{__( 'Period&Unit' )}} <span
+                <th scope="row"><label for="yop-poll-ban-period" value="">{{__( "Period&Unit" )}} <span
 
                         class="description">(required)</span></label></th>
 
@@ -114,15 +114,15 @@
 
                     <select id="yop-poll-bans-unit" name="ban_unit"  style="width: 15%;align:left">
 
-                        <option  value="">{{__( 'Choose Unit' )}} </option>
+                        <option  value="">{{__( "Choose Unit" )}} </option>
 
-                        <option value="hours">{{__( 'Hours' ) }}</option>
+                        <option value="hours">{{__( "Hours" ) }}</option>
 
-                        <option value="days">{{__( 'Days' ) }} </option>
+                        <option value="days">{{__( "Days" ) }} </option>
 
-                        <option value="weeks">{{__( 'Weeks' ) }}</option>
+                        <option value="weeks">{{__( "Weeks" ) }}</option>
 
-                        <option value="months">{{__( 'Months' ) }}</option>
+                        <option value="months">{{__( "Months" ) }}</option>
 
                     </select> </td>
 
@@ -134,11 +134,11 @@
 
             <tr class="form-field form-required">
 
-                <th scope="row"><label for="yop-poll-ban-value">{{__( 'Value' )}}
+                <th scope="row"><label for="yop-poll-ban-value">{{__( "Value" )}}
 
                                         <span
 
-                                                class="description">(required)</span><br> <small><i>{{__( 'One Value Per Line' ) }}</i></small></label></th>
+                                                class="description">(required)</span><br> <small><i>{{__( "One Value Per Line" ) }}</i></small></label></th>
 
                 <td><textarea rows="5" cols="5" style="width: 32%" id="yop-poll-ban-value"
 
@@ -152,11 +152,11 @@
 
         <p class="submit">
 
-            <input  id="add-new-ban" type="submit" value="{{__( 'Add Ban') }} "
+            <input  id="add-new-ban" type="submit" value='{{__( "Add Ban") }} '
 
                     class="button-primary"/> <input id="yop-poll-add-ban-close"
 
-                                                    type="button" value="{{__( 'Close' )}} "
+                                                    type="button" value='{{__( "Close" )}} '
 
                                                     class="button-primary">
 
@@ -186,7 +186,7 @@
 
 
 
-    <label class="screen-reader-text" for="yop-poll-search-input">{{__( 'Search Poll Bans' )}}</label>
+    <label class="screen-reader-text" for="yop-poll-search-input">{{__( "Search Poll Bans" )}}</label>
 
     <input id="yop-poll-search-input" type="search"
 
@@ -194,7 +194,7 @@
 
            name="s"/> <input id="search-submit" class="button" type="submit"
 
-                             value="{{__( 'Search Poll Bans')}}" name=""/>
+                             value='{{__( "Search Poll Bans")}}' name=""/>
 
 </p>
 
@@ -206,15 +206,15 @@
 
         <select name="action">
 
-            <option selected="selected" value="-1">{{__( 'Bulk Actions')}}</option>
+            <option selected="selected" value="-1">{{__( "Bulk Actions")}}</option>
 
-            <option value="delete">{{__( 'Delete' )}}</option>
+            <option value="delete">{{__( "Delete" )}}</option>
 
         </select>
 
         <input type="submit"
 
-               value="{{__( 'Apply' )}}"
+               value='{{__( "Apply" )}}'
 
                class="button-secondary action" id="doaction" name="">
 
@@ -224,7 +224,7 @@
 
         <select name="poll_id">
 
-            <option value="">{{__( 'All Polls' )}}</option>
+            <option value="">{{__( "All Polls" )}}</option>
 
             {% if  count( yop_polls ) > 0 %}
 
@@ -252,19 +252,19 @@
 
         <select name="type">
 
-            <option value="">{{__( 'All Ban Types' )}}</option>
+            <option value="">{{__( "All Ban Types" )}}</option>
 
-            <option {{ selected( 'ip', type )}} value="ip">{{__( 'IP' ) }}</option>
+            <option {{ selected( 'ip', type )}} value="ip">{{__( "IP" ) }}</option>
 
-            <option {{ selected( 'username', type )}} value="username">{{__( 'Username' ) }}</option>
+            <option {{ selected( 'username', type )}} value="username">{{__( "Username" ) }}</option>
 
-            <option {{ selected( 'email', type )}} value="email">{{__( 'Email' )}}</option>
+            <option {{ selected( 'email', type )}} value="email">{{__( "Email" )}}</option>
 
         </select>
-
+        <label for="post-query-submit" class="button-secondary">{{__( "Filter" ) }}</label>
         <input type="submit"
-
-               value="{{__( 'Filter' ) }}"
+               style="display: none"
+               value='{{__( "Filter" ) }}'
 
                class="button-secondary" id="post-query-submit" name="">
 
@@ -272,7 +272,7 @@
 
     <div class="tablenav-pages one-page">
                  <span style="margin:0 16px 0 0;">
-        <label for="yop-poll-items-per-page" class="displaying-num">{{__( 'Items Per Page' )}}
+        <label for="yop-poll-items-per-page" class="displaying-num">{{__( "Items Per Page" )}}
 
             :</label>
 
@@ -280,11 +280,12 @@
 
                value="{{per_page | raw}}"/> <input name="a" class="button-secondary"
 
-                                                   value="{{__( 'Set' )}}" type="submit"/>&nbsp;&nbsp;
+                                                   value='{{__( "Set" )}}' type="submit"/>&nbsp;&nbsp;
                                </span>
 						<span class="displaying-num">{{count( bans ) }} / {{total_bans}}
 
-                                {{__( 'Bans')}} </span>
+                                {{__( "Bans")}} </span>
+
 
         {{pagination | raw}}
 
@@ -316,7 +317,7 @@
 
             href="{{ esc_url( add_query_arg( { 'orderby' : 'id', 'order' : order_direction.id } ) ) | raw }}">
 
-        <span>{{__( 'ID')}}</span> <span
+        <span>{{__( "ID")}}</span> <span
 
             class="sorting-indicator"></span>
 
@@ -330,7 +331,7 @@
 
             href="{{ esc_url( add_query_arg( { 'orderby' : 'name', 'order' : order_direction.name } ) ) | raw }}">
 
-        <span>{{__( 'Poll Name' )}}</span> <span
+        <span>{{__( "Poll Name" )}}</span> <span
 
             class="sorting-indicator"></span>
 
@@ -344,7 +345,7 @@
 
             href="{{ esc_url( add_query_arg( { 'orderby' : 'type', 'order' : order_direction.type } ) ) | raw }}">
 
-        <span>{{__( 'Ban Type' )}}</span> <span
+        <span>{{__( "Ban Type" )}}</span> <span
 
             class="sorting-indicator"></span>
 
@@ -360,7 +361,7 @@
 
 
 
-        <span>{{__( 'Ban value' )}}</span> <span
+        <span>{{__( "Ban value" )}}</span> <span
 
 
 
@@ -378,7 +379,7 @@
 
 
 
-    <span>{{__( 'Period' )}}</span> <span
+    <span>{{__( "Period" )}}</span> <span
 
 
 
@@ -398,7 +399,7 @@
 
 
 
-    <span>{{__( 'Unit' )}}</span> <span
+    <span>{{__( "Unit" )}}</span> <span
 
 
 
@@ -448,7 +449,7 @@
 
                       href="{{ wp_nonce_url( add_query_arg( {  'action' : 'delete', 'id' : ban.id } ) ,'yop-poll-bans', 'yop-poll-ban') | raw }}"
 
-                            >{{__('Delete')}}
+                            >{{__("Delete")}}
 
 
 
@@ -468,7 +469,7 @@
 
                              href="javascript:edit_yopp_ban ({{id_poll}}, {{ban.poll_id}},'{{ban_type}}',{{ban.period}},'{{ban.unit}}','{{ban.value}}' ); "
 
-                             >{{__('Edit')}}
+                             >{{__("Edit")}}
 
                      </a>
 
@@ -524,7 +525,7 @@
 
 						<span class="displaying-num">{{ count( bans )}} / {{total_bans}}
 
-                                {{__( 'Bans' )}} </span>
+                                {{__( "Bans" )}} </span>
 
         {{pagination | raw}}
 

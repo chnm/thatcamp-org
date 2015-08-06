@@ -1,9 +1,9 @@
 /*!
- * Collapse-O-Matic JavaSctipt v1.5.14
+ * Collapse-O-Matic JavaSctipt v1.5.16
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
- * Copyright 2014, Twinpictures
- * 
+ * Copyright 2015, Twinpictures
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -11,10 +11,10 @@
  * bake, hack, scramble, difiburlate, digest and/or sell copies of the Software,
  * and to permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,13 +28,13 @@ function collapse_init() {
 	jQuery('.force_content_collapse').each(function(index) {
 		jQuery(this).css('display', 'none');
 	});
-	
+
 	//inital collapse
 	jQuery('.collapseomatic:not(.colomat-close)').each(function(index) {
 		var thisid = jQuery(this).attr('id');
 		jQuery('#target-'+thisid).css('display', 'none');
 	});
-	
+
 	//inital swaptitle for pre-expanded elements
 	jQuery('.collapseomatic.colomat-close').each(function(index) {
 		var thisid = jQuery(this).attr('id');
@@ -50,10 +50,10 @@ function collapse_init() {
 function swapTitle(origObj, swapObj){
 	var orightml = jQuery(origObj).html();
 	var swaphtml = jQuery(swapObj).html();
-	
+
 	jQuery(origObj).html(swaphtml);
 	jQuery(swapObj).html(orightml);
-	
+
 	//is cufon involved? if so, do that thing
 	if(swaphtml.indexOf("<cufon") != -1){
 		var trigelem = jQuery(this).get(0).tagName;
@@ -65,7 +65,7 @@ function toggleState (obj, id, maptastic, trig_id) {
 	if (maptastic && jQuery('[id^=target][id$='+id+']').hasClass('maptastic') ) {
 		jQuery('[id^=target][id$='+id+']').removeClass('maptastic');
 	}
-		
+
 	//slideToggle
 	if(colomatslideEffect == 'slideToggle'){
 		jQuery('[id^=target][id$='+id+']').slideToggle(colomatduration, function() {
@@ -73,7 +73,7 @@ function toggleState (obj, id, maptastic, trig_id) {
 			if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
 				jQuery(this).css('display', 'inline');
 			}
-			
+
 			//deal with any findme links
 			if(trig_id && jQuery('#'+trig_id).is('.find-me.colomat-close')){
 				offset_top = jQuery('#find-'+trig_id).attr('name');
@@ -95,7 +95,7 @@ function toggleState (obj, id, maptastic, trig_id) {
 			if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
 				jQuery(this).css('display', 'inline');
 			}
-			
+
 			//deal with any findme links
 			if(trig_id && jQuery('#'+trig_id).is('.find-me.colomat-close')){
 				offset_top = jQuery('#find-'+trig_id).attr('name');
@@ -114,25 +114,25 @@ function closeOtherGroups(rel){
 		//add close class if open
 		if(jQuery(this).hasClass('colomat-expand-only') && jQuery(this).hasClass('colomat-close')){
 			return;
-		}	
+		}
 		if(jQuery(this).hasClass('colomat-close') && jQuery(this).attr('rel') !== undefined){
 			jQuery(this).removeClass('colomat-close');
 			var id = jQuery(this).attr('id');
 			//remove parent highlight class
 			jQuery('#parent-'+id).removeClass('colomat-parent-highlight');
-			
+
 			//check if the title needs to be swapped out
 			if(jQuery("#swap-"+id).length > 0){
 				swapTitle(this, "#swap-"+id);
 			}
-			
+
 			//check if the excerpt needs to be swapped out
 			if(jQuery("#swapexcerpt-"+id).length > 0){
 				swapTitle("#exerpt-"+id, "#swapexcerpt-"+id);
 			}
-			
+
 			toggleState (jQuery(this), id, false, false);
-			
+
 			//check if there are nested children that need to be collapsed
 			var ancestors = jQuery('.collapseomatic', '#target-'+id);
 			ancestors.each(function(index) {
@@ -149,7 +149,7 @@ function closeOtherMembers(rel, id){
 		if(jQuery(this).hasClass('colomat-expand-only') && jQuery(this).hasClass('colomat-close')){
 			return;
 		}
-		
+
 		//add close class if open
 		if(jQuery(this).attr('id') != id && jQuery(this).hasClass('colomat-close') && jQuery(this).attr('rel') !== undefined){
 			//collapse the element
@@ -157,17 +157,17 @@ function closeOtherMembers(rel, id){
 			var thisid = jQuery(this).attr('id');
 			//remove parent highlight class
 			jQuery('#parent-'+thisid).removeClass('colomat-parent-highlight');
-			
+
 			//check if the title needs to be swapped out
 			if(jQuery("#swap-"+thisid).length > 0){
 				swapTitle(this, "#swap-"+thisid);
 			}
-			
+
 			//check if the excerpt needs to be swapped out
 			if(jQuery("#swapexcerpt-"+thisid).length > 0){
 				swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
 			}
-			
+
 			//check for snap-shut
 			if(!jQuery(this).hasClass('colomat-close') && jQuery(this).hasClass('snap-shut')){
 				jQuery('#target-'+thisid).hide();
@@ -175,7 +175,7 @@ function closeOtherMembers(rel, id){
 			else{
 				toggleState (jQuery(this), thisid, false, false);
 			}
-			
+
 			//check if there are nested children that need to be collapsed
 			var ancestors = jQuery('.collapseomatic', '#target-'+id);
 			ancestors.each(function(index) {
@@ -188,13 +188,13 @@ function closeOtherMembers(rel, id){
 					//console.log('this is an extra trigger');
 					pre = pre_id.splice(0, 1);
 					id = pre_id.join('-');
-					
+
 					//deal with any scroll to links from the Extra Collapse Trigger
 					if(jQuery(this).hasClass('scroll-to-trigger')){
 						var target_offset = jQuery('#'+id).offset();
 						offset_top = target_offset.top;
 					}
-					
+
 					//deal with any scroll to links from the Title Trigger
 					if(jQuery('#'+id).hasClass('scroll-to-trigger')){
 						offset_top = jQuery('#scrollonclose-'+id).attr('name');
@@ -203,14 +203,14 @@ function closeOtherMembers(rel, id){
 							offset_top = target_offset.top;
 						}
 					}
-					
+
 					//toggle master trigger arrow
 					jQuery('#'+id).toggleClass('colomat-close');
-					
+
 					//toggle any other extra trigger arrows
 					jQuery('[id^=extra][id$='+id+']').toggleClass('colomat-close');
 				}
-				
+
 				if(jQuery(this).attr('id').indexOf('bot-') == '-1'){
 					jQuery(this).removeClass('colomat-close');
 					var thisid = jQuery(this).attr('id');
@@ -237,15 +237,15 @@ function colomat_expandall(loop_items){
 		jQuery(this).addClass('colomat-close');
 		var thisid = jQuery(this).attr('id');
 		jQuery('#parent-'+thisid).addClass('colomat-parent-highlight');
-		
+
 		if(jQuery("#swap-"+thisid).length > 0){
 			swapTitle(this, "#swap-"+thisid);
 		}
-		
+
 		if(jQuery("#swapexcerpt-"+thisid).length > 0){
 			swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
 		}
-		
+
 		toggleState(jQuery(this), thisid, false, false);
 	});
 }
@@ -254,39 +254,45 @@ function colomat_collapseall(loop_items){
 	if (!loop_items){
 		loop_items = jQuery('.collapseomatic.colomat-close');
 	}
-		
+
 	loop_items.each(function(index) {
 		if(jQuery(this).hasClass('colomat-expand-only') && jQuery(this).hasClass('colomat-close')){
 			return;
 		}
-		
+
 		jQuery(this).removeClass('colomat-close');
 		var thisid = jQuery(this).attr('id');
 		jQuery('#parent-'+thisid).removeClass('colomat-parent-highlight');
-		
+
 		if(jQuery("#swap-"+thisid).length > 0){
 			swapTitle(this, "#swap-"+thisid);
 		}
-		
+
 		if(jQuery("#swapexcerpt-"+thisid).length > 0){
 			swapTitle("#excerpt-"+thisid, "#swapexcerpt-"+thisid);
 		}
-		
+
 		toggleState(jQuery(this), thisid, false, false);
 
 	});
 }
 
+
 jQuery(document).ready(function() {
 	//console.log(colomatduration, colomatslideEffect);
 	collapse_init();
-	
+
+	//jetpack infinite scroll catch-all
+	jQuery( document.body ).on( 'post-load', function () {
+		collapse_init();
+	} );
+
 	//Display the collapse wrapper... use to reverse the show-all on no JavaScript degredation.
 	jQuery('.content_collapse_wrapper').each(function(index) {
 		jQuery(this).css('display', 'inline');
 	});
-	
-	//hover	
+
+	//hover
 	jQuery(document).on({
 		mouseenter: function(){
 			//stuff to do on mouseover
@@ -295,26 +301,34 @@ jQuery(document).ready(function() {
 		mouseleave: function(){
 			//stuff to do on mouseleave
 			jQuery(this).removeClass('colomat-hover');
+		},
+		focusin: function(){
+			//stuff to do on keyboard focus
+			jQuery(this).addClass('colomat-hover');
+		},
+		focusout: function(){
+			//stuff to do on losing keyboard focus
+			jQuery(this).removeClass('colomat-hover');
 		}
 	}, '.collapseomatic'); //pass the element as an argument to .on
-    
+
 	//tabindex enter
 	jQuery(document).on('keypress','.collapseomatic', function(event) {
 		if (event.which == 13) {
 			event.currentTarget.click();
 		};
 	});
-	
+
 	//the main collapse/expand function
 	jQuery(document).on('click', '.collapseomatic', function(event) {
 		var offset_top;
-		
+
 		//alert('phones ringin dude');
 		if(jQuery(this).hasClass('colomat-expand-only') && jQuery(this).hasClass('colomat-close')){
 			return;
 		}
 		var id = jQuery(this).attr('id');
-		
+
 		//deal with any scroll to links
 		if(jQuery(this).hasClass('colomat-close') && jQuery(this).hasClass('scroll-to-trigger')){
 			offset_top = jQuery('#scrollonclose-'+id).attr('name');
@@ -323,21 +337,21 @@ jQuery(document).ready(function() {
 				offset_top = target_offset.top;
 			}
 		}
-		
+
 		var id_arr = id.split('-');
-		
+
 		//deal with extra tirggers
 		if (id_arr[0].indexOf('extra') != '-1') {
 			//console.log('this is an extra trigger');
 			pre = id_arr.splice(0, 1);
 			id = id_arr.join('-');
-			
+
 			//deal with any scroll to links from the Extra Collapse Trigger
 			if(jQuery(this).hasClass('scroll-to-trigger')){
 				var target_offset = jQuery('#'+id).offset();
 				offset_top = target_offset.top;
 			}
-			
+
 			//deal with any scroll to links from the Title Trigger
 			if(jQuery('#'+id).hasClass('scroll-to-trigger')){
 				offset_top = jQuery('#scrollonclose-'+id).attr('name');
@@ -346,24 +360,24 @@ jQuery(document).ready(function() {
 					offset_top = target_offset.top;
 				}
 			}
-			
+
 			//toggle master trigger arrow
 			jQuery('#'+id).toggleClass('colomat-close');
-			
+
 			//toggle any other extra trigger arrows
 			jQuery('[id^=extra][id$='+id+']').toggleClass('colomat-close');
 		}
-		
+
 		else if(id.indexOf('bot-') != '-1'){
 			id = id.substr(4);
 			jQuery('#'+id).toggleClass('colomat-close');
-			
+
 			//deal with any scroll to links from the Internal Collapse Trigger
 			if(jQuery(this).hasClass('scroll-to-trigger')){
 				var target_offset = jQuery('#'+id).offset();
 				offset_top = target_offset.top;
 			}
-			
+
 			//deal with any scroll to links from the Title Trigger
 			if(jQuery('#'+id).hasClass('scroll-to-trigger')){
 				offset_top = jQuery('#scrollonclose-'+id).attr('name');
@@ -378,24 +392,24 @@ jQuery(document).ready(function() {
 			//toggle any extra triggers
 			jQuery('[id^=extra][id$='+id+']').toggleClass('colomat-close');
 		}
-		
+
 		//check if the title needs to be swapped out
 		if(jQuery("#swap-"+id).length > 0){
 			swapTitle(jQuery('#'+id), "#swap-"+id);
 		}
-		
+
 		//check if the excerpt needs to be swapped out
 		if(jQuery("#swapexcerpt-"+id).length > 0){
 			swapTitle("#excerpt-"+id, "#swapexcerpt-"+id);
 		}
-		
+
 		//add visited class
 		jQuery(this).addClass('colomat-visited');
-		
+
 		//toggle parent highlight class
 		var parentID = 'parent-'+id;
 		jQuery('#' + parentID).toggleClass('colomat-parent-highlight');
-		
+
 		//check for snap-shut
 		if(!jQuery(this).hasClass('colomat-close') && jQuery(this).hasClass('snap-shut')){
 			jQuery('#target-'+id).hide();
@@ -403,7 +417,7 @@ jQuery(document).ready(function() {
 		else{
 			toggleState (jQuery(this), id, true, id);
 		}
-        
+
 		//deal with grouped items if needed
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
@@ -412,14 +426,14 @@ jQuery(document).ready(function() {
 			}
 			else{
 				closeOtherGroups(rel);
-			}   
+			}
 		}
-			
+
 		if(offset_top){
 			jQuery('html, body').animate({scrollTop:offset_top}, 500);
 		}
 	});
-	
+
 
 	jQuery(document).on('click', '.expandall', function(event) {
 		if(jQuery(this).attr('rel') !== undefined){
@@ -432,7 +446,7 @@ jQuery(document).ready(function() {
 
 		colomat_expandall(loop_items);
 	});
-	
+
 	jQuery(document).on('click', '.collapseall', function(event) {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
@@ -441,10 +455,10 @@ jQuery(document).ready(function() {
 		else {
 			var loop_items = jQuery('.collapseomatic.colomat-close');
 		}
-		
+
 		colomat_collapseall(loop_items);
 	});
-	
+
 	//handle new page loads with anchor
 	var myFile = document.location.toString();
 	if (myFile.match('#')) { // the URL contains an anchor
@@ -457,7 +471,7 @@ jQuery(document).ready(function() {
 		else{
 			anchor = anchor_arr[0];
 		}
-		
+
 		if( !jQuery('#' + anchor).hasClass('colomat-close') ){
 			jQuery('#' + anchor).click();
 		}
@@ -471,7 +485,7 @@ jQuery(document).ready(function() {
 			}
 		})
 	}
-	
+
 	//handle anchor links within the same page
 	jQuery(document).on('click', 'a.expandanchor', function(event) {
 		event.preventDefault();
@@ -489,7 +503,7 @@ jQuery(document).ready(function() {
 			if(!jQuery('#' + anchor).hasClass('colomat-close')){
 				jQuery('#' + anchor).click();
 			}
-			
+
 			//expand any nested parents
 			jQuery('#' + anchor).parents('.collapseomatic_content, .collapseomatic_content_inline').each(function(index) {
 				parent_arr = jQuery(this).attr('id').split('-');
@@ -498,12 +512,12 @@ jQuery(document).ready(function() {
 				if(!jQuery('#' + parent).hasClass('colomat-close')){
 					jQuery('#' + parent).click();
 				}
-				
+
 			})
 		}
 	});
-	
+
 	jQuery(document).on('click', 'a.colomat-nolink', function(event) {
 		event.preventDefault();
-	});	
+	});
 });

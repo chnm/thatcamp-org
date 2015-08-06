@@ -432,14 +432,14 @@ class blcAnyPostContainer extends blcContainer {
 					$actions['trash'] = sprintf(
 						"<span class='trash'><a class='submitdelete' title='%s' href='%s'>%s</a>",
 						esc_attr(__('Move this item to the Trash')),
-						get_delete_post_link($this->container_id, '', false),
+						esc_attr(get_delete_post_link($this->container_id, '', false)),
 						__('Trash')
 					);
 				} else {
 					$actions['delete'] = sprintf(
 						"<span><a class='submitdelete' title='%s' href='%s'>%s</a>",
 						esc_attr(__('Delete this item permanently')),
-						get_delete_post_link($this->container_id, '', true),
+						esc_attr(get_delete_post_link($this->container_id, '', true)),
 						__('Delete')
 					);
 				}

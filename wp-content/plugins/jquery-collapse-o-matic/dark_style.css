@@ -4,6 +4,9 @@
 	padding: 0 0 10px 16px;
 	cursor: pointer;
 }
+.collapseomatic:focus {
+      outline: 0;
+}
 .arrowright {
 	background-position: top right;
 	padding: 0 16px 10px 0;
@@ -32,7 +35,7 @@
 .collapseall, .expandall {
 	cursor: pointer;
 }
-.collapseall:hover, .expandall:hover {
+.collapseall:hover, .expandall:hover, .collapseall:focus, .expandall:focus {
 	text-decoration: underline;
 }
 .maptastic {

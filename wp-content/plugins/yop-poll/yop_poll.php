@@ -1,28 +1,20 @@
 <?php
+
     /*
     * Plugin Name: YOP Poll
-    * URI: http://www.yop-poll.com/thankyou/
-    * Description: Use a full option polling functionality to get the answers you need. YOP Poll is the perfect, easy to use plugin for your WordPress website.
+    * Plugin URI: http://www.yop-poll.com
+    * Description: Use a full option polling functionality to get the answers you need. YOP Poll is the perfect, easy to use poll plugin for your WordPress website.
+	* Version: 5.7.5
     * Author: yourownprogrammer
-    * Author URL: http://www.yop-poll.com
-    * Version: 5.6
-    * Network: false
+    * Author URI: http://www.yop-poll.com
+	* License: GPLv2 or later 
     */
 
-    /**
-     * @todo update to 2.0 database default options
-     * @todo edit abstract_model -> is_voted on cookie-ip update to logs table
-     * @todo insert facebook users
-     * @todo users_have_votes_to_vote
-     * @todo vote_with_wordpress questions
-     * @todo answer_result_callback multiple params
-     * @todo poll preview template
-     * @todo paypal buy now button ID
-     * */
 if (!(version_compare(phpversion(), '5.3', '<'))) {
+
     define ( 'YOP_POLL_DOMAIN', 'yop_poll' );
     define ( 'YOP_POLL_WP_VERSION', '3.3' );
-    define ( 'YOP_POLL_VERSION', '5.6' );
+    define ( 'YOP_POLL_VERSION', '5.7.5' );
     define ( 'YOP_POLL_PATH', plugin_dir_path( __FILE__ ) ); ///home/..../wp-content/plugins/yop-poll-2.0/
     define ( 'YOP_POLL_URL', plugin_dir_url( __FILE__ ) ); //http://your-domain/wp-content/plugins/yop-poll-2.0/
     define ( 'YOP_POLL_PLUGIN_FILE', __FILE__ ); ///home/..../wp-content/plugins/yop-poll-2.0/yop-poll-2.0.php
@@ -30,10 +22,10 @@ if (!(version_compare(phpversion(), '5.3', '<'))) {
     define ( 'YOP_POLL_PLUGIN_DIR', plugin_basename( dirname( __FILE__ ) ) ); //yop-poll-2.0
     define ( 'YOP_POLL_INC', YOP_POLL_PATH . 'inc/' );
     define ( 'YOP_POLL_MODELS', YOP_POLL_PATH . 'models/' );
-    define ( "YOP_POLL_DEBUG", true );
+    define ( "YOP_POLL_DEBUG", false );
 
     require_once( YOP_POLL_PATH . 'lib/Twig/Autoloader.php' );
-    Twig_Autoloader::register();
+    Yop_Twig_Autoloader::register();
 
     require_once( YOP_POLL_MODELS . 'abstract_model.php' );
     require_once( YOP_POLL_MODELS . 'poll_model.php' );

@@ -1316,14 +1316,12 @@ abstract class YOP_POLL_Abstract_Model {
 
 
 
-    protected function is_voted( $vote_type = 'default', $facebook_user_details = null, $from_register = null, $SuperCookie = null ) {
-
+    protected function is_voted( $vote_type = 'default', $facebook_user_details = null, $from_register = null, $SuperCookie = null,$google_user_details=null ) {
         if( $this->vote ) {
 
             return true;
 
         }
-
 
 
         if( isset( $this->blocking_voters ) ) {
@@ -1344,6 +1342,7 @@ abstract class YOP_POLL_Abstract_Model {
 
             if( in_array( "cookie", $this->blocking_voters ) ) {
 
+
                 $is_voted = $is_voted || $this->is_voted_cookie();
 
             }
@@ -1351,8 +1350,8 @@ abstract class YOP_POLL_Abstract_Model {
             if( in_array( "user_id", $this->blocking_voters ) ) {
 
                 $is_voted = $is_voted || $this->is_voted_username( $vote_type = 'default', $facebook_user_details = null, $google_user_details, $from_register );
-
             }
+
             if( in_array( "supercookie", $this->blocking_voters ) ) {
 
             }
@@ -1364,7 +1363,6 @@ abstract class YOP_POLL_Abstract_Model {
         return true;
 
     }
-
 
 
     private function is_ban( $vote_type = 'default', $facebook_user_details = null, $google_user_details = null ) {
@@ -1752,12 +1750,12 @@ abstract class YOP_POLL_Abstract_Model {
 
 
         if( ! $from_register ) {
-
-            $vote_type                   = in_array( $_COOKIE['yop_poll_vote_type_' . $this->poll['id']], array("anonymous")) ? $_COOKIE['yop_poll_vote_type_' . $this->poll['id']] : 'default';
-
-            $facebook_user_details['id'] = $_COOKIE['yop_poll_vote_facebook_user_' . $this->poll['id']];
-
-            $google_user_details['id']   = $_COOKIE['yop_poll_vote_google_user_' . $this->poll['id']];
+            if(isset($_COOKIE['yop_poll_vote_type_' . $this->poll['id']]))
+                $vote_type                   = in_array( $_COOKIE['yop_poll_vote_type_' . $this->poll['id']], array("anonymous")) ? $_COOKIE['yop_poll_vote_type_' . $this->poll['id']] : 'default';
+            if(isset($_COOKIE['yop_poll_vote_facebook_user_' . $this->poll['id']]))
+                $facebook_user_details['id'] = $_COOKIE['yop_poll_vote_facebook_user_' . $this->poll['id']];
+            if(isset($_COOKIE['yop_poll_vote_google_user_' . $this->poll['id']]))
+                $google_user_details['id']   = $_COOKIE['yop_poll_vote_google_user_' . $this->poll['id']];
 
         }
 
@@ -1765,9 +1763,9 @@ abstract class YOP_POLL_Abstract_Model {
 
         $unit = 'DAY';
 
-        if( isset( $this->poll_options['blocking_voters_interval_unit'] ) ) {
+        if( isset( $this->options['blocking_voters_interval_unit'] ) ) {
 
-            switch( $this->poll_options['blocking_voters_interval_unit'] ) {
+            switch( $this->options['blocking_voters_interval_unit'] ) {
 
                 case 'seconds' :
 
@@ -1813,9 +1811,9 @@ abstract class YOP_POLL_Abstract_Model {
 
         $value = 30;
 
-        if( isset( $this->poll_options['blocking_voters_interval_value'] ) ) {
+        if( isset( $this->options['blocking_voters_interval_value'] ) ) {
 
-            $value = $this->poll_options['blocking_voters_interval_value'];
+            $value = $this->options['blocking_voters_interval_value'];
 
         }
 
@@ -1851,26 +1849,24 @@ abstract class YOP_POLL_Abstract_Model {
 
 
 
-        $log_id = $wpdb->query( $wpdb->prepare( "
-
-					SELECT id
-
-					FROM " . $wpdb->yop_poll_results . "
+        $sql= $wpdb->prepare( "
+					SELECT * FROM " . $wpdb->yop_poll_results . "
 
 					WHERE poll_id = %d AND
 
 					user_id = %d AND
 
-					vote_date >= DATE_ADD( %s, INTERVAL -%d " . $unit . ")
+					vote_date >= DATE_SUB( NOW(), INTERVAL %d " . $unit . ")
 
-					", $this->ID, $user_id, current_time( 'mysql' ), $value ) );
+   					LIMIT 1", $this->ID, $user_id, $value );
+        $result = $wpdb->get_results($sql,ARRAY_A );
 
-
-        return $log_id;
+        if(isset($result[0]['vote_date']))
+            return true;
+        else
+            return false;
 
     }
-
-
 
     protected function get_voter_number_of_votes( $voter ) {
 
@@ -1913,6 +1909,7 @@ abstract class YOP_POLL_Abstract_Model {
 
 
     public static function convert_date( $original_date, $new_format = '' ) {
+        $original_date=convert_date( $original_date, 'Y-m-d H:i:s' );
         $original_date=str_replace('-', '/', $original_date);
         return date_i18n( $new_format, strtotime( $original_date ) );
 
@@ -1946,7 +1943,7 @@ abstract class YOP_POLL_Abstract_Model {
 
                 }
 
-                if( $this->get_votes_number_from_supercookie( $cookie ) >= $poll_options['number_of_votes_per_user'] ) {
+                if( $this->get_votes_number_from_supercookie( $cookie ) >= $poll_options['number_of_votes_per_user'] && in_array( "cookie", $this->blocking_voters  ) ) {
 
                     return false;
 
@@ -1991,7 +1988,7 @@ abstract class YOP_POLL_Abstract_Model {
             $template = '';
 
             foreach( $q as $question ) {
-                        yop_poll_dump($m[5]);
+                        //yop_poll_dump($m[5]);
                 $temp_question_body = str_ireplace( "%QUESTION_TEXT%", $question->question, $m[5] );
 
 

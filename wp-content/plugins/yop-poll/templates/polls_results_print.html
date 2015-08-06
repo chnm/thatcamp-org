@@ -1,0 +1,566 @@
+
+
+
+
+{%block content%}
+
+
+<div class = "wrap results_not_remove" style = "position: relative;">
+
+{% if  poll_details %}
+
+
+<div id = "poststuff">
+    <div id = "post-body" class = "metabox-holder columns-1">
+        <div class = "meta-box-sortables ui-sortable">
+            <div class = "postbox-container content">
+                {%set i=0%}
+
+                {% for question_detail in questions_details%}
+                {%set i=i+1%}
+                {%if question_print %}
+                <div class = "postbox stuffbox">
+                    <div title = '{{ __("Click to toggle") }}' class = "handlediv"><br/></div>
+                    <h3 class = "hndle">
+                                    <span>{{ __("Question") }}:
+                                        <span class = "yop-poll-question-order-span">{{ question.poll_order }}</span>
+                                        <span id = "yop-poll-question-{{ question_detail.q_id }}-summar">{{ esc_html( stripslashes( question_detail.name) )}}</span>
+                                    </span>
+                    </h3>
+
+                    <div class = "inside" style = "padding: 0px;">
+                        <div id = "poststuff1">
+                            <div class = "yop-poll-subsection postbox">
+                                <table class="wp-list-table widefat fixed" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th  class="column-answer" style="width: 40%;" scope="col">{{ __ ("Answer") }}</th>
+                                        <th class="column-votes" style="width: 5%;" scope="col">{{ __ ("Votes")  }}</th>
+                                        <th  class="column-percent" style="width: 5%;" scope="col">{{ __ ("Percent")  }}</th>
+                                        <th  class="column-bar" style="width: 45%;" scope="col"></th>
+                                    </tr>
+
+
+                                    </thead>
+
+                                    <tbody>
+                                    {% for answerr in question_detail.answers%}
+                                    <tr>
+                                        <th> {{answerr.answer}}</th>
+                                        <th>{{answerr.votes}}</th>
+                                        <th>{{answerr.status}} %</th>
+                                        <td><span class="yop-poll-admin-result-bar" style="width:{{(answerr.status*5)}}px">
+										        </span></td>
+                                    </tr>
+                                    {%endfor%}
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                         </div>
+                    </div>
+
+                </div>
+                {% endif%}
+                <br>
+                {%if other_print%}
+                <div class="postbox stuffbox">
+                    <div class = "inside" style = "padding: 0px;">
+                        <div class = "yop-poll-subsection postbox">
+
+                            <div title = "{{ __('Click to toggle') }}" class = "handlediv"><br/> </div>
+
+                            <h4 class = "yop-poll-subsection-title hndle" style = "padding-top: 5px; padding-bottom: 5px; padding-left: 10px;">{{__( "Poll Other Answers")}}:</h4>
+
+                            <div class = "inside" style = " padding: 0px;">
+                                <div>
+                                    <table class = "wp-list-table widefat fixed" cellspacing = "0">
+                                        <thead>
+                                        <tr>
+                                            <th class = "column-answer" scope = "col">{{__( "Value" )}}</th>
+                                            <th class = "column-votes" scope = "col">{{__( "Votes" )}}</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {%set index=0%}
+                                        {% for  answer in question_detail.answers%}
+                                        <tr>
+                                            {%  if answer.type == 'other' %}
+                                            <th>{{ esc_html( stripslashes( answer.answer ) )}}</th>
+                                            <td>{{ esc_html( stripslashes( answer.votes ) )}}</td>
+                                            {%set index=1 %}
+                                            {%endif%}
+                                        </tr>
+                                        {%endfor%}
+                                        {% if index==0 %}
+                                        <tr>
+                                            <td colspan = "2">{{__( 'No other answers defined!')}}</td>
+                                        </tr>
+                                        {%endif%}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif%}
+                <br>
+                {%if custom_print%}
+                <div class="postbox stuffbox">
+                    <div class = "inside" style = "padding: 0px;">
+                        <div class = "yop-poll-subsection postbox">
+
+                            <div title = '{{ __("Click to toggle") }}' class = "handlediv"><br/> </div>
+
+                            <h4 class = "yop-poll-subsection-title hndle" style = "padding-top: 5px; padding-bottom: 5px; padding-left: 10px;">
+                                {{__( "Custom Fields")}}:
+                            </h4>
+                            <form method = "get" action = "">
+                                <div>
+                                    <div style = "position: absolute; float: right; top: 0px; right: 30px;">
+                                        {{ wp_nonce_field( 'yop-poll-custom-fields', 'yop-poll-custom-fields', false, false ) | raw }}
+                                        <label for = "yop-poll-items-per-page" class = "displaying-num">{{__( "Items Per Page" )}}:</label>
+                                        <input style="margin-top: 4px;"
+                                               id = "yop-poll-items-per-page" type = "text" name = "cf_per_page"
+                                               value = "{{cf_per_page}}"/>
+                                        <input name = "a"
+                                               value = '{{__( "Set")}}' class="button-secondary" style="margin-top: 2px;"
+                                               type = "submit"/>&nbsp;&nbsp;
+                                                        <span class = "displaying-num">
+                                                                {{ count( question_detail.custom_fields_logs_details)}} / {{question_detail.total_custom_fields_logs}} {{__( "items")}}
+                                                        </span>
+                                        <input type="hidden" name="page" value="yop-polls">
+                                        <input type="hidden" name="action" value="resultvotes">
+                                        <input type="hidden" name="cf_page_no" value="{{cf_page_no}}">
+                                        <input type = "hidden" name = "id" value = "{{poll_id}}"/>
+                                        <input type = "hidden" name = "q_id" value = "{{ question_detail.q_id }}"/>
+                                        {{question_detail.cf_pagination | raw}}
+                                        <select name = "export">
+                                            <option value = "page">{{__( "This Page")}}</option>
+                                            <option value = "all">{{__( "All Pages")}}</option>
+                                        </select>
+                                        <input type = "submit" value = '{{__( "Export" )}}' class = "button-secondary action" id = "doaction" name = "a">
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class = "inside" style = "border-top: 1px solid #AAAAAA; padding: 0px;">
+                                <table class = "wp-list-table widefat fixed">
+                                    <thead>
+                                    <tr>
+                                        <th class = "column-answer" scope = "col">{{__( '#' )}}</th>
+                                        {% for  custom_field in question_detail.custom_fields %}
+
+                                        <th id = "custom_field_{{custom_field.ID}}"
+                                            class = "column-custom-field"
+                                            scope = "col">{{ ucfirst( custom_field.custom_field )}}</th>
+                                        {%endfor%}
+                                        <th class = "column-vote-id" style = "width:20%"
+                                            scope = "col">{{__( "Vote ID")}}</th>
+                                        <th class = "column-tr-id" style = "width:15%"
+                                            scope = "col">{{__( "Tracking ID" )}}</th>
+                                        <th class = "column-vote-date" style = "width:15%"
+                                            scope = "col">{{__( "Vote Date")}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%set index=0%}
+                                    {%for custom_field_detail in question_detail.custom_fields_logs_details%}
+                                    <tr>
+                                        {%set index=index+1%}
+                                        <td>{{index}}</td>
+                                        {%for id in custom_field_detail.column_custom_fields_ids%}
+                                        {%set value=custom_field_detail.custom_fields_value%}
+
+                                        <td>{{value[id]}}</td>
+
+                                        {%endfor%}
+                                        <td>{{custom_field_detail.vote_id}}</td>
+                                        <td>{{custom_field_detail.tr_id}}</td>
+                                        <td>{{custom_field_detail.vote_date}}</td>
+
+                                    </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="4">
+                                            {{ __("No Custom Field Defined") }}
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif%}
+                <br>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="" id="show_results">
+
+
+
+{{ wp_nonce_field( 'yop-poll-results_vote','yop-poll-results_votes', false, false ) | raw }}
+
+
+
+
+{%if votes_print%}
+    <table class="wp-list-table widefat fixed" cellspacing="0" id="table_results">
+
+<thead>
+
+<tr>
+
+
+
+
+
+
+    {%if votes_id%}
+    </th>   <th
+
+                style="width: 30%" scope="col">
+
+
+
+    <span>{{__( 'Vote ID')}}</span>
+
+
+
+    </a></th>
+    {%endif%}
+
+
+
+    {%if user_type%}
+    <th
+
+        class="manage-column {{order_sortable.user_type}} {{order_direction_reverse.user_type}}"
+
+        style="width: 22%" scope="col">
+
+        <span>{{__( 'User Type')}}</span>
+
+        </a></th>
+    {%endif%}
+
+    {%if track_id%}
+    <th
+
+        class="manage-column {{order_sortable.tr_id}} {{order_direction_reverse.tr_id}}"
+
+        href="{{esc_url( add_query_arg( array( {'orderby' : 'tr_id', 'order' : order_direction.tr_id,'action' :'resultvotes'}  ) ) )}}"
+
+        style="width: 16%" scope="col">
+
+        <span>{{( 'Tracking ID')}}</span>
+
+        </a></th>
+    {%endif%}
+
+    {%if ip_print%}
+    <th
+
+        class="manage-column {{order_sortable.ip}} {{order_direction_reverse.ip}}"
+
+        style="width: 22%" scope="col">
+
+        <span>{{__( 'Ip' )}}</span>
+
+        </a></th>
+    {%endif%}
+
+
+
+
+
+    {%if date_print%}
+    </a></th>   <th
+
+                    class="manage-column {{order_sortable.vote_date}} {{order_direction_reverse.vote_date}}"
+
+                    style="width: 25%" scope="col">
+
+
+
+    <span>{{__( 'Vote Date')}}</span> <span
+
+
+
+        ></span>
+
+
+
+
+    {%endif%}
+    <th style="width: 19%;">
+
+    <span>{{__( 'Vote')}}</span>
+
+    </th>
+</tr>
+
+</thead>
+<tfoot>
+
+<tr>
+
+
+
+
+
+
+    {%if votes_id%}
+       <th
+
+                style="width: 12%" scope="col">
+
+
+
+    <span>{{__( 'Vote ID')}}</span>
+
+
+
+    </a></th>
+    {%endif%}
+
+
+
+    {%if user_type%}
+    <th id="user_from"
+
+        class="manage-column {{order_sortable.user_type}} {{order_direction_reverse.user_type}}"
+
+        style="width: 6%" scope="col">
+
+        <span>{{__( 'User Type')}}</span>
+
+        </a></th>
+{%endif%}
+
+    {%if track_id%}
+    <th id="tr_id"
+
+        class="manage-column {{order_sortable.tr_id}} {{order_direction_reverse.tr_id}}"
+
+        href="{{esc_url( add_query_arg( array( {'orderby' : 'tr_id', 'order' : order_direction.tr_id,'action' :'resultvotes'}  ) ) )}}"
+
+        style="width: 16%" scope="col">
+
+        <span>{{( 'Tracking ID')}}</span>
+
+        </a></th>
+    {%endif%}
+    {%if ip_print%}
+    <th id="ip"
+
+        class="manage-column {{order_sortable.ip}} {{order_direction_reverse.ip}}"
+
+        style="width: 8%" scope="col">
+
+        <span>{{__( 'Ip' )}}</span>
+
+        </a></th>
+    {%endif%}
+
+
+
+
+
+    {%if date_print%}
+    </a></th>   <th id="period"
+
+                    class="manage-column {{order_sortable.vote_date}} {{order_direction_reverse.vote_date}}"
+
+                    style="width: 11%" scope="col">
+
+
+
+    <span>{{__( 'Vote Date')}}</span> <span ></span>
+
+
+    {%endif%}
+    <th style="width: 19%;">
+
+    <span>{{__( 'Vote')}}</span>
+
+    </th>
+</tr>
+
+</tfoot>
+
+
+{%set index=1%}
+
+
+
+
+
+<tbody id="the-list">
+{% if  count( results ) > 0 %}
+
+{% for result in results %}
+
+<tr valign="middle" class="alternate"
+
+    id="yop-poll-log{{log.id}}">
+
+
+    {%if votes_id%}
+    <td><strong>{{result.vote_id}}</strong><br>
+
+        <br>
+
+        <div class="row-actions">
+
+
+
+
+
+
+        </div></td>
+    {%endif%}
+    <td style="display: none"><input  id="yop-poll-results-ip_{{index}}" value="{{esc_html( stripslashes( result.ip ))}}"><input></td>
+
+    <td style="display: none"><input  id="yop-poll-results-userid_{{index}}" value="{{esc_html( stripslashes( result.user_id ))}}"><input></td>
+
+
+    {%if user_type%}
+    <td>
+
+        {{esc_html( stripslashes(result.user_type ))}}
+
+    </td>
+    {%endif%}
+    {%if track_id%}
+    <td>
+
+        {{esc_html( stripslashes( result.tr_id ))}}
+
+    </td>
+    {%endif%}
+    {%if ip_print%}
+    <td>
+
+        {{esc_html( stripslashes( result.ip ))}}
+
+    </td>
+    {%endif%}
+    {%if date_print%}
+    <td>
+
+        {{esc_html( stripslashes( result.vote_date ))}}
+
+    </td>
+    {%endif%}
+    <td>
+        {{__("Questions")}}<br><strong>  {{result.vote_answers |nl2br}}</strong><br>
+        {%if strlen (result.custom_fields)>1%}
+        {{__("Custom Fields")}}<br><strong>{{ result.custom_fields|nl2br}}</strong>
+
+
+    </td>
+    {%endif%}
+
+</tr>
+
+<tr style="display: none; " class="results_details">
+
+    <td></td> <td></td>
+
+
+
+    <td>
+    {{__("Questions")}}<br><strong>  {{result.vote_answers |nl2br}}</strong><br>
+    {%if strlen (result.custom_fields)>1%}
+        {{__("Custom Fields")}}<br><strong>{{ result.custom_fields|nl2br}}</strong>
+    </td>
+
+    </td>
+    {%endif%}
+</tr>
+{%set index=index+1%}
+
+{%endfor%}
+
+{%endif%}
+
+</tbody>
+
+
+
+</table>
+
+    <div class="tablenav bottom">
+
+    <div class="tablenav-pages one-page">
+
+						<span class="displaying-num">{{count( results )}} / {{total_results}}
+
+                                                                                   results</span>
+
+        {{pagination | raw}}
+
+    </div>
+
+</div>
+{%endif%}
+</form>
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+{%else %}
+<h3>{{__( 'Your poll doesn`t exist!' )}}</h3>
+{%endif%}
+</div>
+<div style="position: absolute">
+</div>
+
+      <script type="text/javascript">
+
+
+
+      jQuery(".results_not_remove").parents().each(function(){
+          if(jQuery(this).is('div'))
+                 jQuery(".results_not_remove").unwrap();
+      })  ;
+      jQuery('body').find('div').each(function(){
+        if(!jQuery(this).hasClass('results_not_remove'))
+          jQuery(this).remove();
+          else{
+            jQuery(this).find('*').each(function(){
+                jQuery(this).addClass("results_not_remove")
+            });
+        }
+      });
+       jQuery(document).ready(function(){
+           var e =   document.getElementById('wpfooter');
+           e.style.display="none";
+       });
+
+  </script>
+
+
+
+
+
+{%endblock content%}

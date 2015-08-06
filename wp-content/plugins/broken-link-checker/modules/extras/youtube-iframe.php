@@ -91,7 +91,8 @@ class blcYouTubeIframe extends blcEmbedParserBase {
 
 		} else {
 			//Extract video ID from the SRC. The ID is always 11 characters.
-			$video_id = substr(	end(explode('/', $parts['path'])), 0, 11 );
+			$exploded = explode('/', $parts['path']);
+			$video_id = substr(	end($exploded), 0, 11 );
 
 			//Reconstruct the video permalink based on the ID
 			$url = 'http://www.youtube.com/watch?v='.$video_id;

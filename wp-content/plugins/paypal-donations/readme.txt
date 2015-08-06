@@ -3,8 +3,8 @@ Contributors: Tips and Tricks HQ, artstorm
 Donate link: https://www.tipsandtricks-hq.com/paypal-donations-widgets-plugin
 Tags: paypal, donation, shortcode, widget, donate, button, sidebar, paypal donation, payment
 Requires at least: 3.0
-Tested up to: 4.1
-Stable tag: 1.8.7
+Tested up to: 4.3
+Stable tag: 1.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,8 +87,17 @@ for questions, answers, support and feature requests.
 
 
 == Changelog ==
+= version 1.9.0 =
+* Added a new filter that will allow tweaks to localize the button image on a multi-lingual website.
+* Added PayPal IPN validation option.
 
-= Version 1.8.6 =
+= version 1.8.9 =
+* Fixed an issue with saving the custom image URL for the donate button in the admin interface.
+
+= Version 1.8.8 =
+ * WordPress 4.2 compatibility
+
+= Version 1.8.7 =
  * WordPress 4.1 compatibility
 
 = Version 1.8.6 =

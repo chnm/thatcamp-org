@@ -79,7 +79,8 @@
 
                                         <div class="misc-pub-section">
 
-                                            <input tabindex="200" type="button" class="button-primary" value="Preview"
+                                            <label for="yop-poll-preview-button-1" class="button-primary">{{__("Preview")}}</label>
+                                            <input tabindex="200" type="button" class="button-primary" value="Preview" id="yop-poll-preview-button-1" style="display: none"
 
                                                    onclick="yop_poll_preview_add_edit()">
 
@@ -129,7 +130,7 @@
 
                         <li><a tabindex="199" href="#step-3">{{ __( 'Poll Options' ) }}</a></li>
 
-                        <li><a tabindex="199" href="#step-4">{{ __( 'Result Options' ) }}</a></li>
+                        <li><a tabindex="199" href="#step-4">{{ __( "Result Options" ) }}</a></li>
 
                         <li><a tabindex="199" href="#step-5">{{ __( 'Shortcode' ) }}</a></li>
 
@@ -199,7 +200,7 @@
 <body>
 <div id="loading" style="position:absolute; margin-left: 500px; text-align:justify;
     top:300px;">   <br>  <br>
-    <span style="position: static; float:left;margin-left: -15px;">Please wait...</span>
+    <span style="position: static; float:left;margin-left: -15px;">{{__("Please wait")}}...</span>
 
 </div>
 

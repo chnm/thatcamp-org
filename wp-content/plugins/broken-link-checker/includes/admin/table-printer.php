@@ -551,7 +551,7 @@ class blcTablePrinter {
 		    	
 		    	<li><strong><?php _e('Final URL', 'broken-link-checker'); ?>:</strong>
 		    	<span class='final_url'><?php 
-		    		print $link->final_url; 
+		    		print esc_html($link->final_url);
 		    	?></span></li>
 		    	
 		    	<li><strong><?php _e('Redirect count', 'broken-link-checker'); ?>:</strong>

@@ -198,7 +198,7 @@
 
 .yop-poll-pro-slider .yop-poll-pro-template-li p, .yop-poll-widget-slider .yop-poll-widget-template-li p, .yop-poll-buy-slider .yop-poll-buy-template-li p {
 
-    margin: 0;
+    margin: 0 auto;
 
     padding: 3px;
 
@@ -532,6 +532,25 @@
     transition: all 0.3s linear;
 
 }
+
+.yop-poll-page-template-buy p, .yop-poll-widget-template-buy p, .yop-poll-buy-template-buy p  {
+
+    background: #00A8FF;
+
+    color: #FFF;
+
+    -webkit-transition: all 0.3s linear;
+
+    -moz-transition: all 0.3s linear;
+
+    -ms-transition: all 0.3s linear;
+
+    -o-transition: all 0.3s linear;
+
+    transition: all 0.3s linear;
+
+}
+
 li:before, li:after {
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }

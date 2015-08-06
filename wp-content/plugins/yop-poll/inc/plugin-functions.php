@@ -226,6 +226,8 @@ function yop_poll_default_options() {
 
         'bar_border_color'                          => 'EDB918',
 
+        'show_results_in'                           => 'bar',
+
         'bar_border_width'                          => 2,
 
         'bar_border_style'                          => 'solid',
@@ -410,6 +412,8 @@ function yop_poll_poll_default_options() {
         'bar_height'                                => 10,
 
         'bar_border_color'                          => 'EDB918',
+
+        'show_results_in'                           => 'bar',
 
         'bar_border_width'                          => 2,
 

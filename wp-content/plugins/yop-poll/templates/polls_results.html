@@ -1,7 +1,7 @@
 {% extends "polls_base.html" %}
 {%block addnew%}
 <a class = "add-new-h2"
-        href = "{{ esc_url( add_query_arg( { 'page' : 'yop-polls', 'id' : false, 'deleted' : false, 'cloned' : false,'action':false } ) ) | raw }}">{{__( 'All  Polls')}}</a>
+        href = "{{ esc_url( add_query_arg( { 'page' : 'yop-polls', 'id' : false, 'deleted' : false, 'cloned' : false,'action':false } ) ) | raw }}">{{__( "All  Polls")}}</a>
 {%endblock addnew%}
 
 {%block content%}
@@ -20,21 +20,22 @@
             <input type = "hidden" name = "oa_per_page" value = "{{oa_per_page}}"/>
             <div class = "tablenav top">
                 <div class = "alignleft actions">
-                    <div style = "display:inline; float:left; margin:7px;">{{__( 'Order By' )}}</div>
+                    <div style = "display:inline; float:left; margin:7px;">{{__( "Order By" )}}</div>
                     <select name = "results_order_by">
-                        <option {{selected( results_order_by, 'answer' )}} value="answer">{{__( 'Answer Value' )}}</option>
-                        <option {{ selected( results_order_by, 'votes' )}} value="votes">{{__( 'Votes' )}}</option>
+                        <option {{selected( results_order_by, 'answer' )}} value="answer">{{__( "Answer Value" )}}</option>
+                        <option {{ selected( results_order_by, 'votes' )}} value="votes">{{__( "Votes" )}}</option>
                     </select>
                     <select name = "results_order">
-                        <option {{ selected( results_order, 'ASC' )}} value="ASC">{{__( 'ASC' )}}</option>
-                        <option {{ selected( results_order, 'DESC' )}} value="DESC">{{__( 'DESC' )}}</option>
+                        <option {{ selected( results_order, 'ASC' )}} value="ASC">{{__( "ASC" )}}</option>
+                        <option {{ selected( results_order, 'DESC' )}} value="DESC">{{__( "DESC" )}}</option>
                     </select>
                     &nbsp;| &nbsp;
                     <input type = "checkbox" value = "yes" {{checked( soav, 'yes' )}} name="soav" id="yop-poll-show_other_answers_values"/>
-                    <label for = "yop-poll-show_other_answers_values">{{__( 'Show Other Answers Values')}}</label>
+                    <label for = "yop-poll-show_other_answers_values">{{__( "Show Other Answers Values")}}</label>
+                    <label for="doaction2" class="button-secondary">{{__( "Filter" ) }}</label>
                     <input type = "submit"
-                            value = "{{__( 'Filter' )}}"
-                            class = "button-secondary action" id = "doaction" name = "a">
+                            value = '{{__( "Filter" )}}' style="display: none"
+                            class = "button-secondary action" id = "doaction2" name = "a">
                 </div>
 
             </div>
@@ -47,9 +48,9 @@
                         {% for question_detail in questions_details%}
                         {%set i=i+1%}
                             <div class = "postbox stuffbox">
-                                <div title = "{{ __('Click to toggle') }}" class = "handlediv"><br/></div>
+                                <div title = '{{ __("Click to toggle") }}' class = "handlediv"><br/></div>
                                 <h3 class = "hndle">
-                                    <span>{{ __('Question') }}:
+                                    <span>{{ __("Question") }}:
                                         <span class = "yop-poll-question-order-span">{{ question.poll_order }}</span>
                                         <span id = "yop-poll-question-{{ question_detail.q_id }}-summar">{{ esc_html( stripslashes( question_detail.name) )}}</span>
                                     </span>
@@ -60,9 +61,9 @@
                                         <table class="wp-list-table widefat fixed" cellspacing="0">
                                             <thead>
                                             <tr>
-                                                <th id="" class="column-answer" style="width: 40%;" scope="col">{{ __ ('Answer') }}</th>
-                                                <th id="" class="column-votes" style="width: 5%;" scope="col">{{ __ ('Votes')  }}</th>
-                                                <th id="" class="column-percent" style="width: 5%;" scope="col">{{ __ ('Percent')  }}</th>
+                                                <th id="" class="column-answer" style="width: 40%;" scope="col">{{ __ ("Answer") }}</th>
+                                                <th id="" class="column-votes" style="width: 5%;" scope="col">{{ __ ("Votes")  }}</th>
+                                                <th id="" class="column-percent" style="width: 5%;" scope="col">{{ __ ("Percent")  }}</th>
                                                 <th id="" class="column-bar" style="width: 45%;" scope="col"></th>
                                             </tr>
 
@@ -88,16 +89,16 @@
 
 
                                             </div>
-                                            <div title = "{{ __('Click to toggle') }}" class = "handlediv"><br/> </div>
+                                            <div title = '{{ __("Click to toggle") }}' class = "handlediv"><br/> </div>
 
-                                                <h4 class = "yop-poll-subsection-title hndle" style = "padding-top: 5px; padding-bottom: 5px; padding-left: 10px;">{{__( 'Other Answers')}}:</h4>
+                                                <h4 class = "yop-poll-subsection-title hndle" style = "padding-top: 5px; padding-bottom: 5px; padding-left: 10px;">{{__( "Other Answers")}}:</h4>
 
                                                 <div class = "inside" style = "border-top: 1px solid #AAAAAA; padding: 0px;">
 
                                                     <table class="wp-list-table widefat fixed" cellspacing="0">
                                                     <thead>
-                                                    <th id="" class="column-answer" style="width: 40%;" scope="col">{{ __ ('Other Answer') }}</th>
-                                                    <th id="" class="column-votes" style="width: 5%;" scope="col">{{ __ ('Votes')  }}</th>
+                                                    <th id="" class="column-answer" style="width: 40%;" scope="col">{{ __ ("Other Answer") }}</th>
+                                                    <th id="" class="column-votes" style="width: 5%;" scope="col">{{ __ ("Votes")  }}</th>
                                                     </thead>
                                                     <tbody>
                                                     {%for answerr in question_detail.answers%}

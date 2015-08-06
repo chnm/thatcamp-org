@@ -58,15 +58,28 @@ abstract class WP_Plugin_Abstract
 
     /**
      * Get singleton instance
+     * @param array $globals  Optional, only on first call
      */
-    public static function getInstance()
+    public static function getInstance(array $globals = array())
     {
         if (self::$instance === null) {
             self::$instance = new WPML;
+
+            // set globals
+            foreach ($globals as $key => $value) {
+                self::$instance->globals[$key] = $value;
+            }
+
+            self::$instance->init();
         }
 
         return self::$instance;
     }
+
+    /**
+     * Init procedure to implement
+     */
+    abstract protected function init();
 
     /**
      * Get translation

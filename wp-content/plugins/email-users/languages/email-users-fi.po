@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Email Users\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-03 17:23-0000\n"
-"PO-Revision-Date: 2014-12-03 17:23-0000\n"
+"POT-Creation-Date: 2015-03-04 00:09-0000\n"
+"PO-Revision-Date: 2015-03-04 00:09-0000\n"
 "Last-Translator: Mike Walsh <mpwalsh8@gmail.com>\n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
@@ -33,58 +33,58 @@ msgstr ""
 msgid "Powered by"
 msgstr ""
 
-#: ../email-users.php:316 ../email-users.php:331 ../email-users.php:365
-#: ../email-users.php:366 ../email-users.php:372 ../email-users.php:373
+#: ../email-users.php:318 ../email-users.php:333 ../email-users.php:367
+#: ../email-users.php:368 ../email-users.php:374 ../email-users.php:375
 #: ../email_users_overview.php:33
 msgid "Email Users"
 msgstr "Meilaa Käyttäjiä"
 
-#: ../email-users.php:318
+#: ../email-users.php:320
 msgid "Notify Users About this Post"
 msgstr "Ilmoita käyttäjille tästä julkaisusta"
 
-#: ../email-users.php:333
+#: ../email-users.php:335
 msgid "Notify Users About this Page"
 msgstr "Ilmoita käyttäjille tästä sivusta"
 
-#: ../email-users.php:351 ../email-users.php:352 ../email-users.php:358
-#: ../email-users.php:359
+#: ../email-users.php:353 ../email-users.php:354 ../email-users.php:360
+#: ../email-users.php:361
 msgid "Notify Users"
 msgstr "Ilmoita käyttäjille"
 
-#: ../email-users.php:381 ../email-users.php:382
+#: ../email-users.php:383 ../email-users.php:384
 msgid "Send to User(s)"
 msgstr "Lähetä käyttäjille"
 
-#: ../email-users.php:411 ../email-users.php:412
+#: ../email-users.php:413 ../email-users.php:414
 #, php-format
 msgid "Send to %s"
 msgstr "Lähetä %s"
 
-#: ../email-users.php:420 ../email-users.php:421
+#: ../email-users.php:422 ../email-users.php:423
 msgid "Send to Group(s)"
 msgstr "Lähetä ryhmille"
 
-#: ../email-users.php:452 ../email-users.php:453
-#: ../email_users_options_form.php:654
+#: ../email-users.php:454 ../email-users.php:455
+#: ../email_users_options_form.php:663
 msgid "User Settings"
 msgstr "Käyttäjäasetukset"
 
-#: ../email-users.php:569
+#: ../email-users.php:571
 msgid "Email Preferences"
 msgstr "Viestiasetukset"
 
-#: ../email-users.php:582
+#: ../email-users.php:584
 msgid "Accept to receive post or page notification emails"
 msgstr "Hyväksy viestien vastaanottaminen sähköpostitse"
 
-#: ../email-users.php:590
+#: ../email-users.php:592
 msgid ""
 "Accept to receive emails sent to multiple recipients (but still accept "
 "emails sent only to me)"
 msgstr ""
 
-#: ../email-users.php:1528
+#: ../email-users.php:1564
 #, php-format
 msgid ""
 "The email address (%s) of the user you are trying to send mail to is not a "
@@ -93,87 +93,87 @@ msgstr ""
 "Osoite (%s) jota yrität käyttää ei ole oikeassa muodossa oleva "
 "sähköpostiosoite."
 
-#: ../email-users.php:1599
+#: ../email-users.php:1644
 #, php-format
 msgid "Invalid email address (\"%s\") found."
 msgstr "Virheellisiä sähköpostiosoitteita (\"%s\") löytynyt."
 
-#: ../email-users.php:1654
+#: ../email-users.php:1711
 msgid "Default User Settings"
 msgstr "Oletus käyttäjäasetukset"
 
-#: ../email-users.php:1657
+#: ../email-users.php:1714
 msgid "Receive post or page notification emails:"
 msgstr "Vastaanota viestit tai ilmoitukset:"
 
-#: ../email-users.php:1658 ../email-users.php:1662 ../email-users.php:1666
-#: ../email-users.php:1670 ../email_users_user_settings.php:107
+#: ../email-users.php:1715 ../email-users.php:1719 ../email-users.php:1723
+#: ../email-users.php:1727 ../email_users_user_settings.php:107
 msgid "On"
 msgstr "Toiminnassa"
 
-#: ../email-users.php:1658 ../email-users.php:1662 ../email-users.php:1666
-#: ../email-users.php:1670 ../email_users_user_settings.php:107
+#: ../email-users.php:1715 ../email-users.php:1719 ../email-users.php:1723
+#: ../email-users.php:1727 ../email_users_user_settings.php:107
 msgid "Off"
 msgstr "Pois päältä"
 
-#: ../email-users.php:1661
+#: ../email-users.php:1718
 msgid "Receive emails sent to multiple recipients:"
 msgstr "Vastaanota viestit jotka on lähetetty usealle vastaanottajalle:"
 
-#: ../email-users.php:1665
+#: ../email-users.php:1722
 msgid "Allow Users to control their own Email Users settings:"
 msgstr "Anna käyttäjien hallita omia Meilaa-Käyttäjiä asetuksiaan."
 
-#: ../email-users.php:1669
+#: ../email-users.php:1726
 msgid "Filter Users with no role from Recipient List:"
 msgstr ""
 
-#: ../email-users.php:1683
+#: ../email-users.php:1740
 msgid "User Statistics"
 msgstr "Käyttäjästatistiikkaa"
 
-#: ../email-users.php:1686 ../email_users_options_form.php:73
+#: ../email-users.php:1743 ../email_users_options_form.php:73
 msgid "Number of Users who accept post or page notification emails:"
 msgstr ""
 "Käyttäjien lukumäärä jotka ovat hyväksyneet ilmoitusten vastaanottamisen:"
 
-#: ../email-users.php:1690 ../email_users_options_form.php:77
+#: ../email-users.php:1747 ../email_users_options_form.php:77
 msgid "Number of Users who accept emails sent to multiple recipients:"
 msgstr ""
 "Käyttäjien lukumäärä jotka ovat hyväksyneet usealle vastaanottajalle "
 "lähetetyt viestit:"
 
-#: ../email-users.php:1696
+#: ../email-users.php:1753
 #, fuzzy
 msgid "Content Filters"
 msgstr "Suodattimet"
 
-#: ../email-users.php:1724
+#: ../email-users.php:1784
 msgid "Present"
 msgstr ""
 
-#: ../email-users.php:1724
+#: ../email-users.php:1784
 msgid "Missing"
 msgstr ""
 
-#: ../email-users.php:1783 ../email-users.php:1784
+#: ../email-users.php:1843 ../email-users.php:1844
 msgid "Mail sending aborted."
 msgstr "Viestin lähetys keskeytetty."
 
-#: ../email-users.php:1807
+#: ../email-users.php:1867
 #, fuzzy
 msgid "PHPMailer Debug"
 msgstr "wp_mail() debuggaus"
 
-#: ../email-users.php:1839
+#: ../email-users.php:1899
 msgid "wp_mail() Debug"
 msgstr "wp_mail() debuggaus"
 
-#: ../email_users_credits.php:23 ../email_users_options_form.php:689
+#: ../email_users_credits.php:23 ../email_users_options_form.php:698
 msgid "Make a Donation"
 msgstr "Tee lahjoitus"
 
-#: ../email_users_credits.php:29 ../email_users_options_form.php:695
+#: ../email_users_credits.php:29 ../email_users_options_form.php:704
 msgid "Plugin's Home Page"
 msgstr "Lisäosan kotivisvu"
 
@@ -181,25 +181,25 @@ msgstr "Lisäosan kotivisvu"
 msgid "EN"
 msgstr "EN"
 
-#: ../email_users_credits.php:51 ../email_users_options_form.php:723
+#: ../email_users_credits.php:51 ../email_users_options_form.php:732
 msgid "Discover other Plugins by MarvinLabs"
 msgstr "Löydä muut lisäosat jotka MarvinLabs on tehnyt"
 
-#: ../email_users_credits.php:56 ../email_users_options_form.php:728
+#: ../email_users_credits.php:56 ../email_users_options_form.php:737
 msgid ""
 "If Email-Users is not robust enough or if you want to allow your users to "
 "communicate with each other, try: "
 msgstr ""
 
-#: ../email_users_credits.php:57 ../email_users_options_form.php:729
+#: ../email_users_credits.php:57 ../email_users_options_form.php:738
 msgid "If you lose time copy/pasting the same post structure every time, try: "
 msgstr "Mikäli joka kerta tuhlaat aikaasi saman asian kopiointiin, kokeile:"
 
-#: ../email_users_credits.php:65 ../email_users_options_form.php:709
+#: ../email_users_credits.php:65 ../email_users_options_form.php:718
 msgid "More Plugins from Mike Walsh"
 msgstr "Lisää lisäosia Mike Walshilta"
 
-#: ../email_users_credits.php:70 ../email_users_options_form.php:714
+#: ../email_users_credits.php:70 ../email_users_options_form.php:723
 msgid ""
 "If you use Google Forms and want to integrate them with your WordPress site, "
 "try: "
@@ -281,14 +281,14 @@ msgstr "Käyttäjä"
 
 #: ../email_users_custom_filter_mail_form.php:176
 #: ../email_users_group_mail_form.php:204 ../email_users_notify_form.php:383
-#: ../email_users_notify_form.php:397 ../email_users_options_form.php:434
+#: ../email_users_notify_form.php:397 ../email_users_options_form.php:443
 #: ../email_users_user_mail_form.php:174
 msgid "Subject"
 msgstr "Aihe"
 
 #: ../email_users_custom_filter_mail_form.php:180
 #: ../email_users_group_mail_form.php:208 ../email_users_notify_form.php:387
-#: ../email_users_notify_form.php:401 ../email_users_options_form.php:438
+#: ../email_users_notify_form.php:401 ../email_users_options_form.php:447
 #: ../email_users_user_mail_form.php:178
 msgid "Message"
 msgstr "Viesti"
@@ -706,36 +706,46 @@ msgid ""
 msgstr ""
 
 #: ../email_users_options_form.php:297
+msgid "Dashboard Widgets"
+msgstr ""
+
+#: ../email_users_options_form.php:302
+msgid ""
+"Display Dashboard Widgets<br/><small><i>Note:  Email can show informational "
+"widgets on the Dashboard.</i></small>"
+msgstr ""
+
+#: ../email_users_options_form.php:306
 #, fuzzy
 msgid "Debug"
 msgstr "wp_mail() debuggaus"
 
-#: ../email_users_options_form.php:302
+#: ../email_users_options_form.php:311
 msgid ""
 "Enable Debug Mode<br/><small><i>Note:  Email is not sent when in debug mode."
 "</i></small>"
 msgstr ""
 
-#: ../email_users_options_form.php:306
+#: ../email_users_options_form.php:315
 #, fuzzy
 msgid "Base64 Encode Email"
-msgstr "Meilaa Käyttäjiä"
+msgstr "Lähetä viesti ryhmälle käyttäjiä"
 
-#: ../email_users_options_form.php:311
+#: ../email_users_options_form.php:320
 msgid ""
 "Enable Base64 Encoding<br/><small><i>Note:  All email will be Base64 encoded "
 "when enabled.</i></small>"
 msgstr ""
 
-#: ../email_users_options_form.php:317
+#: ../email_users_options_form.php:326
 msgid "Save Changes"
 msgstr "Tallenna muutokset"
 
-#: ../email_users_options_form.php:328
+#: ../email_users_options_form.php:337
 msgid "Email-Users Defaults"
 msgstr "Meilaa-Käyttäjiä oletukset"
 
-#: ../email_users_options_form.php:330
+#: ../email_users_options_form.php:339
 msgid ""
 "Email-Users has default values for all settings.  When reset, the following "
 "values are used."
@@ -743,171 +753,171 @@ msgstr ""
 "Meilaa-Käyttäjiä omaa oletusasetukset kaikille asetuksille. Kun ne otetaan "
 "käyttöön, ovat ne seuraavat."
 
-#: ../email_users_options_form.php:334
+#: ../email_users_options_form.php:343
 msgid "Settings"
 msgstr "Asetukset"
 
-#: ../email_users_options_form.php:335
+#: ../email_users_options_form.php:344
 msgid "Default Value"
 msgstr "Oletusarvo"
 
-#: ../email_users_options_form.php:355
+#: ../email_users_options_form.php:364
 msgid "Apply Default Settings"
 msgstr "Ota käyttöön oletusasetukset"
 
-#: ../email_users_options_form.php:366
+#: ../email_users_options_form.php:375
 msgid "Email-Users Test Notification Mail"
 msgstr "Meilaa-Käyttäjiä testi-ilmoitusviesti"
 
-#: ../email_users_options_form.php:368
+#: ../email_users_options_form.php:377
 msgid "Use this Test Notification to verify proper operation of Email-Users."
 msgstr ""
 
-#: ../email_users_options_form.php:372
+#: ../email_users_options_form.php:381
 msgid "Notification Mail Preview (updated when the options are saved)"
 msgstr ""
 
-#: ../email_users_options_form.php:382 ../email_users_send_test_mail.php:74
+#: ../email_users_options_form.php:391 ../email_users_send_test_mail.php:74
 msgid "No post found in the blog in order to build a notification preview."
 msgstr ""
 
-#: ../email_users_options_form.php:449
+#: ../email_users_options_form.php:458
 msgid "Send Test Notification to Yourself"
 msgstr "Lähetä testi-ilmoitus itsellesi"
 
-#: ../email_users_options_form.php:459
+#: ../email_users_options_form.php:468
 msgid "Email-Users Variables"
 msgstr "Meilaa-Käyttäjiä muuttujat"
 
-#: ../email_users_options_form.php:461
+#: ../email_users_options_form.php:470
 msgid "Variables you can include in the subject or body templates"
 msgstr "Muuttujat joita voit käyttää viestissä"
 
-#: ../email_users_options_form.php:465
+#: ../email_users_options_form.php:474
 msgid "Variable"
 msgstr "Muuttuja"
 
-#: ../email_users_options_form.php:466 ../email_users_options_form.php:520
+#: ../email_users_options_form.php:475 ../email_users_options_form.php:529
 msgid "Description"
 msgstr "Seloste"
 
-#: ../email_users_options_form.php:472
+#: ../email_users_options_form.php:481
 msgid "the link to the blog"
 msgstr "linkki blogiin"
 
-#: ../email_users_options_form.php:476
+#: ../email_users_options_form.php:485
 msgid "the blog's name"
 msgstr "blogin nimi"
 
-#: ../email_users_options_form.php:480
+#: ../email_users_options_form.php:489
 msgid "the WordPress user name of the person sending the mail"
 msgstr "WordPress käyttäjä jolle viestiä ollaan lähettämässä"
 
-#: ../email_users_options_form.php:484
+#: ../email_users_options_form.php:493
 msgid "the title of the post you want to highlight"
 msgstr "postauksen otsikko jota haluat korostaa"
 
-#: ../email_users_options_form.php:488
+#: ../email_users_options_form.php:497
 msgid "the author of the post you want to highlight"
 msgstr "postauksen tekijä jota haluat korostaa"
 
-#: ../email_users_options_form.php:492
+#: ../email_users_options_form.php:501
 msgid "the excerpt of the post you want to highlight"
 msgstr "osa postauksesta jota haluat korostaa"
 
-#: ../email_users_options_form.php:496
+#: ../email_users_options_form.php:505
 msgid "the content of the post you want to highlight"
 msgstr "postauksen sisältö jota haluat korostaa"
 
-#: ../email_users_options_form.php:500
+#: ../email_users_options_form.php:509
 msgid "the link to the post you want to highlight"
 msgstr "linkki postaukseen jota haluat korostaa"
 
-#: ../email_users_options_form.php:511
+#: ../email_users_options_form.php:520
 msgid "Email-Users Capabilities"
 msgstr "Meilaa-Käyttäjiä oikeudet"
 
-#: ../email_users_options_form.php:514
+#: ../email_users_options_form.php:523
 msgid ""
 "Email Users uses capabilities to define what users are allowed to do. Below "
 "is a list of the capabilities used by the plugin and the default user role "
 "allowed to make these actions."
 msgstr ""
 
-#: ../email_users_options_form.php:514
+#: ../email_users_options_form.php:523
 msgid ""
 "If you want to change the roles having those capabilities, you should use "
 "the plugin:"
 msgstr ""
 
-#: ../email_users_options_form.php:519
+#: ../email_users_options_form.php:528
 msgid "Capability"
 msgstr "Oikeudet"
 
-#: ../email_users_options_form.php:521
+#: ../email_users_options_form.php:530
 msgid "Default Roles"
 msgstr "Oletusroolit"
 
-#: ../email_users_options_form.php:527
+#: ../email_users_options_form.php:536
 msgid "Access this options page."
 msgstr "Asetukset sivulle."
 
-#: ../email_users_options_form.php:528
+#: ../email_users_options_form.php:537
 msgid "Administrators only."
 msgstr "Vain pääkäyttäjille."
 
-#: ../email_users_options_form.php:532
+#: ../email_users_options_form.php:541
 msgid "Send an email to a single user."
 msgstr "Lähetä viesti yhdelle käyttäjälle."
 
-#: ../email_users_options_form.php:533
+#: ../email_users_options_form.php:542
 msgid "Administrators, editors, authors and contributors."
 msgstr "Vain pääkäyttäjille, muokkaajille ja yleishyödyllisille."
 
-#: ../email_users_options_form.php:537
+#: ../email_users_options_form.php:546
 msgid "Send an email to various users at the same time."
 msgstr "Lähetä viesti eri käyttäjille samanaikaisesti."
 
-#: ../email_users_options_form.php:538
+#: ../email_users_options_form.php:547
 msgid "Administrators, editors and authors."
 msgstr "Vain pääkäyttäjille, muokkaajille ja kirjoittajille."
 
-#: ../email_users_options_form.php:542
+#: ../email_users_options_form.php:551
 msgid "Notify users of new posts."
 msgstr "Ilmoita käyttäjille uusista blogijulkaisuista."
 
-#: ../email_users_options_form.php:543 ../email_users_options_form.php:548
+#: ../email_users_options_form.php:552 ../email_users_options_form.php:557
 msgid "Administrators and editors."
 msgstr "Hallinnoijat ja muokkaajat."
 
-#: ../email_users_options_form.php:547
+#: ../email_users_options_form.php:556
 msgid "Send an email to user groups."
 msgstr "Lähetä viesti käyttäjäryhmälle."
 
-#: ../email_users_options_form.php:559
+#: ../email_users_options_form.php:568
 msgid "Email-Users wp_mail() Check"
 msgstr "Meilaa-Käyttäjiä wp_mail() tarkistus"
 
-#: ../email_users_options_form.php:562
+#: ../email_users_options_form.php:571
 msgid ""
 "Email Users is dependent on the <a href=\"http://codex.wordpress.org/"
 "Function_Reference/wp_mail\">wp_mail()</a> function."
 msgstr ""
 
-#: ../email_users_options_form.php:567
+#: ../email_users_options_form.php:576
 #, fuzzy
 msgid "wp_mail() is loaded from:"
 msgstr "wp_mail() debuggaus"
 
-#: ../email_users_options_form.php:571
+#: ../email_users_options_form.php:580
 msgid "Expected:"
 msgstr "Odotettu:"
 
-#: ../email_users_options_form.php:575
+#: ../email_users_options_form.php:584
 msgid "Actual:"
 msgstr "Varsinainen:"
 
-#: ../email_users_options_form.php:581
+#: ../email_users_options_form.php:590
 msgid ""
 "The WordPress wp_mail() function is <a href=\"http://codex.wordpress.org/"
 "Pluggable_Functions\">pluggable</a>\n"
@@ -923,87 +933,87 @@ msgid ""
 "problem."
 msgstr ""
 
-#: ../email_users_options_form.php:589
+#: ../email_users_options_form.php:598
 msgid ""
 "The recommended way to eliminate the overloaded version of wp_mail() as the "
 "source of a problem is to disable\n"
 "    the plugin or theme which has overloaded wp_mail()."
 msgstr ""
 
-#: ../email_users_options_form.php:598
+#: ../email_users_options_form.php:607
 msgid "Email-Users Integration"
 msgstr "Meilaa Käyttäjiä -integraatio"
 
-#: ../email_users_options_form.php:601
+#: ../email_users_options_form.php:610
 msgid ""
 "Email Users provides integration hooks with several WordPress \"Group\" "
 "plugins."
 msgstr ""
 
-#: ../email_users_options_form.php:606
+#: ../email_users_options_form.php:615
 msgid "Plugin"
 msgstr "Lisäosa"
 
-#: ../email_users_options_form.php:607
+#: ../email_users_options_form.php:616
 msgid "Description <small><i>(from the plugin web site)</i></small>"
 msgstr ""
 
-#: ../email_users_options_form.php:608
+#: ../email_users_options_form.php:617
 msgid "Status"
 msgstr "Tila"
 
-#: ../email_users_options_form.php:614
+#: ../email_users_options_form.php:623
 msgid ""
 "This plugin does one thing, and does it well: create groups and organize "
 "your users by that group."
 msgstr ""
 
-#: ../email_users_options_form.php:619
+#: ../email_users_options_form.php:628
 msgid ""
 "With the \"User Access Manager\"-plugin you can manage the access to your "
 "posts, pages and files."
 msgstr ""
 
-#: ../email_users_options_form.php:624
+#: ../email_users_options_form.php:633
 msgid ""
 "Groups provides group-based user membership management, group-based "
 "capabilities and content access control."
 msgstr ""
 
-#: ../email_users_options_form.php:629
+#: ../email_users_options_form.php:638
 msgid ""
 "Paid Memberships Pro:  The easiest way to GET PAID with your WordPress site. "
 "Flexible content control by Membership Level, Reports, Affiliates and "
 "Discounts."
 msgstr ""
 
-#: ../email_users_options_form.php:648
+#: ../email_users_options_form.php:657
 msgid "Email-Users Information"
 msgstr "Meilaa Käyttäjiä -tietoja"
 
-#: ../email_users_options_form.php:656
+#: ../email_users_options_form.php:665
 msgid "Number of Users who accept<br/>post or page notification emails:"
 msgstr "Käyttäjien lukumäärä jotka ovat hyväksyneet ilmoitusten vastaanoton:"
 
-#: ../email_users_options_form.php:660
+#: ../email_users_options_form.php:669
 msgid "Number of Users who accept<br/>emails sent to multiple recipients:"
 msgstr ""
 "Käyttäjien lukumäärä jotka ovat hyväksyneet usealle vastaanottajalle "
 "lähetettyjen viestien vastaanoton:"
 
-#: ../email_users_options_form.php:666
+#: ../email_users_options_form.php:675
 msgid "Filters"
 msgstr "Suodattimet"
 
-#: ../email_users_options_form.php:674
+#: ../email_users_options_form.php:683
 msgid "Yes"
 msgstr "Kyllä"
 
-#: ../email_users_options_form.php:674
+#: ../email_users_options_form.php:683
 msgid "No"
 msgstr "Ei"
 
-#: ../email_users_options_form.php:680
+#: ../email_users_options_form.php:689
 msgid ""
 "There are a number of <a href=\"http://codex.wordpress.org/Plugin_API/"
 "Filter_Reference\">WordPress Filters</a> which <strong><i>may</i></strong> "
@@ -1072,7 +1082,7 @@ msgstr "Jotakin sisältöä viestillä tulisi olla."
 
 #: ../email_users_send_custom_filter_mail.php:144
 #: ../email_users_send_group_mail.php:209
-#: ../email_users_send_notify_mail.php:261
+#: ../email_users_send_notify_mail.php:263
 #: ../email_users_send_test_mail.php:103 ../email_users_send_user_mail.php:143
 msgid "No recipients were found."
 msgstr "Vastaanottajia ei löytynyt."
@@ -1122,7 +1132,7 @@ msgstr "Valitse ainakin yksi rooli."
 msgid "You must select at least a recipient."
 msgstr "Sinun on valittava vähintään yksi vastaanottaja"
 
-#: ../email_users_send_notify_mail.php:267
+#: ../email_users_send_notify_mail.php:269
 #, php-format
 msgid "Notification sent to %s user(s)."
 msgstr "Ilmoitus lähetetty %s käyttäjälle."

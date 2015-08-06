@@ -133,11 +133,19 @@ class WPML_Admin extends WP_Plugin_AdminPage
      */
     public function actionAdminNotices()
     {
-        if (!isset($_GET['page']) || $_GET['page'] !== WPML::get('adminPage') || !is_plugin_active('email-encoder-bundle/email-encoder-bundle.php')) {
-            return;
+        if ( ! WPML::get('isCompatible')) {
+            $plugin_title = get_admin_page_title();
+
+            echo '<div class="error">';
+            echo sprintf(WPML::__('<p>Error - The plugin <strong>%1$s</strong> requires PHP %2$s + and WP %3$s +.'
+                    . '  Please upgrade your PHP and/or WordPress.'
+                    . '<br/>Disable the plugin to remove this message.</p>'), $plugin_title, WPML::get('minPhpVersion'), WPML::get('minWpVersion'));
+            echo '</div>';
         }
 
-        WPML_View::factory('/admin/notices.php')->show();
+        if (isset($_GET['page']) && $_GET['page'] === WPML::get('adminPage') && is_plugin_active('email-encoder-bundle/email-encoder-bundle.php')) {
+            WPML_View::factory('/admin/notices.php')->show();
+        }
     }
 
     /**

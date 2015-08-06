@@ -48,7 +48,7 @@
             }
 
             $sql_search = '';
-            if( count( $search['fields'] ) > 0 ) {
+            if( isset( $search['fields']) && count( $search['fields'] ) > 0 ) {
                 foreach( $search['fields'] as $field ) {
                     $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr( $field ) . '` like \'%%%s%%\' OR', $search['value'] );
                 }
@@ -477,5 +477,33 @@
             $sql .= ' ORDER BY ' . esc_attr( $orderby ) . ' ' . esc_attr( $order );
             $sql .= $wpdb->prepare( ' LIMIT %d, %d', $offset, $per_page );
             return $wpdb->get_results( $sql, ARRAY_A );
+        }
+
+        public static function get_poll_options_by_id( $poll_id = 0 ) {
+
+            $poll_options    = get_yop_poll_meta( $poll_id, 'options', true );
+
+            $default_options = get_option( 'yop_poll_options', false );
+
+            if( is_array( $default_options ) ) {
+
+                if( count( $default_options ) > 0 ) {
+
+                    foreach( $default_options as $option_name => $option_value ) {
+
+                        if( ! isset( $poll_options [$option_name] ) ) {
+
+                            $poll_options    [$option_name] = $option_value;
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            return $poll_options;
+
         }
     }

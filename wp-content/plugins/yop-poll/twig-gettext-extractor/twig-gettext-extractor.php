@@ -19,7 +19,7 @@
 	define ( 'YOP_POLL_PATH', rtrim( dirname( dirname( __FILE__ ) ), '/') . '/' );
 
 	require_once (YOP_POLL_PATH . 'lib/Twig/Autoloader.php' );
-	Twig_Autoloader::register();
+	Yop_Twig_Autoloader::register();
 
 	require_once YOP_POLL_PATH . 'twig-gettext-extractor/composer/autoload_real.php';
 	ComposerAutoloaderInit031aac423df037c03110742e23a42464::getLoader();

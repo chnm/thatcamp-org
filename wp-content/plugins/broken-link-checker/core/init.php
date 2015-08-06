@@ -46,7 +46,7 @@ define('BLC_FOR_EDITING', 'edit');
 define('BLC_FOR_PARSING', 'parse');
 define('BLC_FOR_DISPLAY', 'display');
 
-define('BLC_DATABASE_VERSION', 8);
+define('BLC_DATABASE_VERSION', 9);
 
 /***********************************************
 				Configuration

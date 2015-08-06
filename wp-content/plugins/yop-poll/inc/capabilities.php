@@ -191,6 +191,15 @@ class YOP_POLL_Capabilities{
             'author'        => false,
             'contributor'   => false,
             'subscriber'    => false
+
+        ),
+        'help_yop_poll_page'            => array(
+            'administrator' => true,
+            'editor'        => true,
+            'author'        => true,
+            'contributor'   => false,
+            'subscriber'    => false
+
         )
     );
 

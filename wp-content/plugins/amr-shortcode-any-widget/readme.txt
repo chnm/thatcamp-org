@@ -1,53 +1,37 @@
 === amr shortcode any widget ===
 Contributors: anmari
 Tags: shortcode, widget, page, templates, page template, widget_area, sidebar
-Tested up to: 4.0
-Version: 2.4
+Tested up to: 4.2
+Version: 2.6
 Stable tag: trunk
 
 == Description ==
 Insert a widget or multiple widgets or a entire widget area (sidebar) into a page using a shortcode. 
 
-Set up your widget first in a normal sidebar.  Check it works. THEN Drag your chosen widgets to the sidebar called "widgets for shortcode".   These settings will be saved even if you change your theme. The widgets for shortcode sidebar will recreate itself if you change themes.
+Set up your widget first in a normal sidebar.  Check it works. THEN Drag your chosen widgets to the sidebar called "widgets for shortcode".   
 
-If you need more control, you can reference a specific widget instance from the do_widget shortcode, or the chosen sidebar from the do_widget_area shortcode. 
+Using a widget more than once? Reference a specific widget instance from the do_widget shortcode, or the chosen sidebar from the do_widget_area shortcode.  Eg: [do_widget id=widget-n]
 
 For example: You could use the query posts widget in the page to create a archive within a page, or the rss widget to list feed content from other sites.  For more details see [anmari.com](http://webdesign.anmari.com/category/plugins/shortcode-any-widget/)
 
-The plugins default action is that it will magically find the settings for your themes first sidebar and use them to control the widget's output.  In most cases this would mean that the widget will be styled as per the rest of your theme.  If that does not look good, parameters exist to override this behaviour.
+The plugins default action is that it will magically find the settings for your themes first sidebar and use the sidebars html to control the widgets output.  In most cases this means the widget will be styled as per the rest of your theme.  If that does not look good, parameters exist to override this behaviour.  EG: in twenty-fourteen theme widget text ends up being white on white! widget_classes=none fixes that. Eg: [do_widget widget_classes=none yourwidget]
 
-Change your theme? No problem, the plugin will save and restore the widgets_for_shortcode settings.  On display it will then pick up the new themes sidebar settings.  Check this still looks nice please! in some themes you may ned up with white text on a white background and will then have to override or change css.
+Change your theme and woried about losing the sidebar settings ? No problem, the plugin will save and restore the widgets_for_shortcode settings.  On display it will then pick up the new themes sidebar settings.  Check this still looks nice please! in some themes you may ned up with white text on a white background and will then have to override or change css.
 
-Please read https://wordpress.org/plugins/amr-shortcode-any-widget/installation/ before asking any questions.
+PLEASE get your widgets working in a sidebar BEFORE activating this plugin, and PLEASE read https://wordpress.org/plugins/amr-shortcode-any-widget/installation/ before asking any questions.
 
 == Installation ==
 
-<<<<<<< HEAD
-1. Test your chosen widget works in a normal sidebar or widget area first. Make sure it works.
-2. THEN Activate this plugin
-3. Go to Appearance > widgets and find the " widgets for shortcode" sidebar or widget area
-4. Drag your chosen widgets from your normal sidebar to the shortcodes sidebar. Save. 
-5. Either Go the shortcode any widget settings.  Click on one of the create page links to help you setup the shortcode in a new page.
-6. OR go to an existing page and enter a shortcode:
-=======
 1. Test your chosen widget in a normal sidebar or widget area first. Make sure it works.
 2. Then and only then activate this plugin
 3. Go to Appearance > widgets and find the " widgets for shortcode" sidebar or widget area
 4. Drag your chosen widget from your normal sidebar to the shortcodes sidebar. Save. 
 5. Now go to a page and enter a shortcode (Or Go the shortcode any widget settings.  Click on one of the create page links to help you setup the shortcode in a new page.)
->>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 
 *  [do_widget widgetname]   eg: [do_widget calendar]
 *  [do_widget "widget name"].   eg: [do_widget "tag cloud"]
 *  [do_widget id=widgetid] .     eg: [do_widget id=tag-cloud-3]
  
-<<<<<<< HEAD
- [do_widget_area]  (will use the  "widgets in shortcodes" widget area / sidebar
- [do_widget_area sidebarname]  for another sidebar or widget area - eg: to maximise likelihood of getting your theme's widget css to apply.  
-
-7. If the plugin cannot work out what you want and you are logged in as an administrator, it will show a debug prompt to you, the logged in admin only.   
-Click on the link 'Try debug'.  It will produce a bunch of info. Look for the id of your widget in the shortcodes sidebar (you may have to scroll through a lot of debug info). Try using the widget id - ie [do_widget id=somename-n].  Examples are tag-cloud-3, meta-2 etc.  Sometimes the widget name that wordpress calls it internally is not the same as what you see on the screen and you will need the 'debug' to find the id.
-=======
 *  [do_widget_area]  (will use the  "widgets in shortcodes" widget area / sidebar
 *  [do_widget_area sidebarname]  for another sidebar or widget area - eg: to maximise likelihood of getting your theme's widget css to apply.  
 
@@ -57,10 +41,6 @@ Click on the link 'Try debug'.  It will produce a bunch of info. Look for the id
 *  Try using the widget id - ie [do_widget id=somename-n].  Examples are tag-cloud-3, meta-2 etc.  
 
 **STOP - Do not read any further until you have got the basics working. You may make it too complicated, when it can be so simple.**
-
->>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
-
-**STOP - Do not read any further until you have got the basics working.**
 
 
 **[do_widget ...] Parameters:**
@@ -93,7 +73,8 @@ If you use a widget more than once for different reasons, you may need to use th
 
 See also [home page](http://wordpress.org/plugins/amr-shortcode-any-widget/)
 
-If you liked this plugin, you might also like my other plugins:
+**If you liked this plugin, you might also like my other plugins:**
+
 *  [icalevents.com](http://icalevents.com) - a ics compliant events plugin fully integrated with wordpress, so it will work with many other plugins (seo, maps, social)
 *  [wpusersplugin.com](http://wpusersplugin.com) - a suite of plugins to help with membership sites. Major plugin is [amr users](http://wordpress.org/extend/plugins/amr-users/)
 
@@ -101,11 +82,7 @@ If you liked this plugin, you might also like my other plugins:
 
 **Widget help, the widget is doing this, when it should do that** 
 
-<<<<<<< HEAD
-There are 1000's of widgets. I cannot help you with these.  Please get it working first in a normal sidebar without this plugin.   Please see
-=======
-There are 1000's and 1000's of widgets. I cannot help you with these.  Please get it working first in a normal sidebar without this plugin and ask for support on the widgets forum it is does not work in a normal sidebar.   Please see
->>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
+Please get the widget working first in a normal sidebar without this plugin and ask for support on the widgets forum it is does not work in a normal sidebar. There are 1000's and 1000's of widgets. I cannot help you with all ofthese.  Please see
 http://wordpress.org/support/topic/widget-help-settings-functioning-etc?replies=1
 
 
@@ -113,26 +90,29 @@ http://wordpress.org/support/topic/widget-help-settings-functioning-etc?replies=
 
 To identify your widget in the shortcode, use a safe constant identifier like the NAME or the ID.
 
-The name is the generic NAME like "tag cloud".  It is NOT your unique title eg: "Amazing Cloud Of Keywords" which you might change one day while procrastinating about doing real work, idly decide it looks a bit twee and change to "Cloud of tags". That would break the do_widget shortcode and it would not find your widget (if that was the way it worked).
+The name is the generic NAME like "tag cloud".  
+
+It is NOT your unique title eg: "Amazing Cloud Of Keywords" which you might change one day while procrastinating about doing real work, idly decide it looks a bit twee and change to "Cloud of tags". That would break the do_widget shortcode and it would not find your widget (if that was the way it worked).
 
 For this reason the plugin deliberately does not allow identification by 'title'. It is not necessary - for simple usage the name is perfectly adequate, for more complicated multi-instance usage, the ID is safer all around.
 
 Also the parameter 'title=' is being used to allow you to change the html tag used around the title (or hide the title), so it would be a tad confusing anyway to offer it and not necessary.
 
-Need more help: To find the id of your chosen widget you can either
+The id is how wordpress identifies the instance of the widget.  
+To help you find the wordpress id of your chosen widget you can either:
 
 1)
 enter some garbage in the shortcode [do_widget wtf] and the plugin will offer you a try debug (if you are admin and logged in that is)
 Click on the "try debug"
 
-2) else add ?do_widget_debug=1 to the url of the page where the [do_widget] shortcode is
+2) else add ?do_widget_debug=1 to the url of the page that contains the [do_widget] shortcode.
 
-either way you should see a list of stuff. It will say something like the widgets in "widgets for shortcode" are:
+either way you should see a list of stuff.   See the screenshots for examples.  It will say something like the widgets in "widgets for shortcode" are:
 xxx-n
 xxxxxx-n
 xxx-xxxxx-n
 
-and it will list the ids of your widget - the n's are numbers that distinguish multiple instanaces of the same widget. xxx's are the abbreviated names of the widgets.
+and it will list the ids of your widget - the n's are numbers that distinguish multiple instances of the same widget. xxx's are the abbreviated names of the widgets.
 
 as per screenshot 5
 http://s.w.org/plugins/amr-shortcode-any-widget/screenshot-5.png?r=884849
@@ -148,17 +128,14 @@ More info here: http://wordpress.org/support/topic/ids-and-multiple-instances-of
 
 **Styling, your theme, css, overriding**
 
-There are 10s of 1000s of themes and widgets.  Multiply out the possible combinations.  Add in css specifity, inheritance and cascading rules.  Consider you are moving the widget out of the sidebar where the thee and lugin expect it to be.  Yes anything could happen wrt the appearance.  The effects are very dependent on how your theme has specified the css that may apply to widgets and sidebars/widget areas.  It may work beautifully and have the content looking like it belongs with your theme.
+Yes anything could happen wrt the appearance.(There are 10s of 1000s of themes and widgets.  Multiply out the possible combinations.  Add in css specifity, inheritance and cascading rules.  Consider you are moving the widget out of the sidebar where the the theme and widget plugin expect it to be. )  The effects are very dependent on how your theme has specified the css that may apply to widgets and sidebars/widget areas.  It may work beautifully and have the content looking like it belongs with your theme.  This plugin tries to help encourage that 'belonging' look.  If it fails then it offers ways to switch the html and/or the classes being generated.     
 
-<<<<<<< HEAD
-Via the plugin you can do the following to affect styling:
-=======
-But
+ 
+Examples:
 *  you may have undesired effects applying that do not work in the main content area
 *  You may have desired effects not applying because the css is specific to a themes sidebar and does not apply to the html in a page.
 
 The plugin can help a bit - Via the plugin you can do the following to affect styling:
->>>>>>> 2456b2aa5cace983592b883c128b948c55977b44
 
 *  Remove the general wordpress 'widget' class from the widgets wrapping html and the 'widget_title' from the title html.  ([do_widget *widgetname* widget_classes=none] 
 
@@ -213,6 +190,16 @@ More info on background: http://wordpress.org/support/topic/your-theme-your-side
 
 
 == Changelog ==
+= Version 2.5 =
+*  Tested on 4.2
+*  Removed from admin settings area the use of add_query_arg (unnecessary)
+*  Added esc_url to widget id 'debug' oage just in case (it is only accessed by logged in admin, but lets be safe and keep everyone happy if the see the add_query_arg and remove_query_arg
+
+= Version 2.5 =
+*  Tested on 4.1.1, Linked to the settings help page from the plugin action menu.
+*  Changed the readme a bit to try further aid understanding and reduce support issues
+*  Updated some screenshots.
+
 = Version 2.4 =
 *  Tested on 4.1, Cleaned up the readme, Lang file for info page - most texts.
 
@@ -282,9 +269,10 @@ More info on background: http://wordpress.org/support/topic/your-theme-your-side
 3.  widgets in a page 
 4.  with the default widget class and with widget_classes=none
 two rss feed widgets in shortcode sidebar - both will show if just name used
-5.  Debug messages - scroll down till you see the shortcodes sidebar - the widgets and their ids will be listed.  Use the id of the widget you want.
-6.  Examples of a page with several do_widgets: query_posts and tag cloud 
-7.  Example of rss widgets in a custom theme
+5.  Don't know the id? Just type junk and view page - the debug message will show. Click on it.
+6.  After clicking on debug message - scroll down till you see the shortcodes sidebar - the widgets and their ids will be listed. Find the id of the widget you want.
+7.  Shortcode parameters to remove widget-classes in theme like the twenty-fourteen theme (avoid white text on white background) 
+8.  Example of multiple rss widgets in twenty-fourteen theme
 
 
  

@@ -15,7 +15,8 @@
                         // Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mcestorify');
                         ed.addCommand('mcestorify', function() {
                                 ed.windowManager.open({
-                                        file : storify.pluginUrl + 'dialog.php',
+										// file is modified for VIP, we use admin-ajax.php instead of plugin's dialog.php
+                                        file : ajaxurl + '?action=storify_dialog',
                                         width : 640,
                                         height : 450,
                                         inline : 1,
@@ -62,7 +63,7 @@
                         return {
                                 longname : 'Storify',
                                 author : 'Storify',
-                                authorurl : 'http://storify.com',
+                                authorurl : 'https://storify.com',
                                 infourl : '',
                                 version : "1.0"
                         };

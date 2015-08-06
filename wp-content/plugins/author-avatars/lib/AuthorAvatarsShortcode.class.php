@@ -113,7 +113,7 @@ class AuthorAvatarsShortcode {
 			}
 		}
 
-		$display = apply_filters('AA_shortcode_display_list', $display );
+		$display = apply_filters('aa_shortcode_display_list', $display );
 
 		// support for all style shortcode
 		$default_display_options = array('show_name','show_postcount','show_email','show_biography','show_last_post','show_bbpress_post_count');

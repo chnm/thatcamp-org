@@ -11,7 +11,7 @@
         <td><label><input type="radio" id="<?php echo WPML::get('optionName') ?>[convert_emails]" name="<?php echo WPML::get('optionName') ?>[convert_emails]" value="0" <?php checked('0', (int) $values['convert_emails']); ?> />
             <span><?php WPML::_e('No, keep plain emails as they are') ?></span></label>
             <br/><label><input type="radio" id="<?php echo WPML::get('optionName') ?>[convert_emails]" name="<?php echo WPML::get('optionName') ?>[convert_emails]" value="1" <?php checked('1', (int) $values['convert_emails']); ?> />
-            <span><?php WPML::_e('Yes, protect plain emails with protection text *') ?></span> <span class="description"><?php WPML::_e('(recommended)') ?></span></label>
+            <span><?php WPML::_e('Yes, protect plain emails with protection text *') ?></span> <span class="description"><?php WPML::_e('(Recommended)') ?></span></label>
             <br/><label><input type="radio" id="<?php echo WPML::get('optionName') ?>[convert_emails]" name="<?php echo WPML::get('optionName') ?>[convert_emails]" value="2" <?php checked('2', (int) $values['convert_emails']); ?> />
             <span><?php WPML::_e('Yes, convert plain emails to mailto links') ?></span></label>
         </td>
@@ -35,6 +35,8 @@
                 <span><?php WPML::_e('<code>&lt;head&gt;</code>-section by replacing emails with protection text *') ?></span></label>
             <br/><label><input type="checkbox" name="<?php echo WPML::get('optionName') ?>[filter_rss]" value="1" <?php checked('1', (int) $values['filter_rss']); ?> />
                 <span><?php WPML::_e('RSS feed by replacing emails with protection text *') ?></span></label>
+            <br/><label><input type="checkbox" name="<?php echo WPML::get('optionName') ?>[input_strong_protection]" value="1" <?php checked('1', (int) $values['input_strong_protection']); ?> />
+                <span><?php WPML::_e('Strong protection for input form fields') ?></span> <span class="description"><?php WPML::_e('(Warning: this option could conflict with certain form plugins. Test it first.)') ?></span></label>
         </td>
     </tr>
     <tr>

@@ -31,7 +31,7 @@ function amr_check_if_widget_debug() {
 		return false;
 		
 	if (isset($_REQUEST['do_widget_debug'])) {
-		$url_without_debug_query = remove_query_arg( 'do_widget_debug');
+		$url_without_debug_query = esc_url(remove_query_arg( 'do_widget_debug'));
 		$eek = '<a href="'.$url_without_debug_query.'">Remove debug</a>';
 		echo '<br/>Note: Debugs only shown to a Logged in Administrator.'
 		.'<br />'
@@ -51,7 +51,7 @@ global $wp_registered_sidebars, $wp_registered_widgets, $_wp_sidebars_widgets;
 		
 	if ($type=='empty') {
 		if (current_user_can('administrator')) 
-			echo '<br /> You are admin: <a href="'.add_query_arg('do_widget_debug','1').'">Try debug </a></b>'
+			echo '<br /> You are admin: <a href="'.esc_url(add_query_arg('do_widget_debug','1')).'">Try debug </a></b>'
 			.'See a exclamation point ! above ?.  Hover over to see error message.'
 			.'</p>'; 
 	
@@ -81,7 +81,7 @@ global $wp_registered_sidebars, $wp_registered_widgets, $_wp_sidebars_widgets;
 			$found = false;
 			foreach ($_wp_sidebars_widgets as $i=> $w) {
 				if (($i == "widgets_for_shortcodes")) {
-				echo 'Sidebar:&nbsp;<b>'.$i.': '.amr_get_sidebar_name($i).'</b> has widgets: <br />';
+				echo 'Sidebar:&nbsp;<b>'.$i.': '.amr_get_sidebar_name($i).'</b> has widgets with these ids: <br />';
 				$found = true;
 				if (is_array($w)) {
 					sort ($w);

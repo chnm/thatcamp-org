@@ -14,7 +14,7 @@
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class Twig_Autoloader
+class Yop_Twig_Autoloader
 {
     /**
      * Registers Twig_Autoloader as an SPL autoloader.

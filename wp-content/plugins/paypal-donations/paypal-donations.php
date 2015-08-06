@@ -5,26 +5,12 @@ Plugin URI: https://www.tipsandtricks-hq.com/paypal-donations-widgets-plugin
 Description: Easy and simple setup and insertion of PayPal donate buttons with a shortcode or through a sidebar Widget. Donation purpose can be set for each button. A few other customization options are available as well.
 Author: Tips and Tricks HQ, Johan Steen
 Author URI: https://www.tipsandtricks-hq.com/
-Version: 1.8.7
+Version: 1.9.0
 License: GPLv2 or later
 Text Domain: paypal-donations
-
-Copyright 2009-2014  Johan Steen  (email : artstorm [at] gmail [dot] com)
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+
+include_once('paypal_utility.php');
 
 /** Load all of the necessary class files for the plugin */
 spl_autoload_register('PayPalDonations::autoload');
@@ -246,6 +232,7 @@ class PayPalDonations
                     'amount' => '',
                     'return_page' => '',
                     'button_url' => '',
+                    'validate_ipn' => '',
                 ),
                 $atts
             )
@@ -256,7 +243,8 @@ class PayPalDonations
             $reference,
             $amount,
             $return_page,
-            $button_url
+            $button_url,
+            $validate_ipn
         );
     }
 
@@ -268,7 +256,8 @@ class PayPalDonations
         $reference = null,
         $amount = null,
         $return_page = null,
-        $button_url = null
+        $button_url = null,
+        $validate_ipn = ''
     ) {
         $pd_options = get_option(self::OPTION_DB_KEY);
 
@@ -287,6 +276,7 @@ class PayPalDonations
             'amount' => $amount,
             'button_url' => $button_url,
             'donate_buttons' => $this->donate_buttons,
+            'validate_ipn' => $validate_ipn,
         );
 
         return PayPalDonations_View::render('paypal-button', $data);

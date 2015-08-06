@@ -2,9 +2,9 @@
 /*
 Plugin Name: amr shortcode any widget
 Plugin URI: http://webdesign.anmari.com/shortcode-any-widget/
-Description: Include any widget in a page for any theme.  [do_widget widgetname ] or  [do_widget "widget name" ] or include a whole widget area [do_widget_area]. If upgrading see changelog.  Can be very powerful eg: with queryposts widget it can become a templater.
+Description: Include any widget in a page for any theme.  [do_widget widgetname ] or  [do_widget "widget name" ] [do_widget id=widgetnamedashed-n ]or include a whole widget area [do_widget_area]. Please read: <a href="https://wordpress.org/plugins/amr-shortcode-any-widget/installation/">Installation</a> and <a href="https://wordpress.org/plugins/amr-shortcode-any-widget/faq/">FAQ</a>.
 Author: anmari
-Version: 2.4
+Version: 2.6
 Author URI: http://webdesign.anmari.com
 
 */
@@ -207,7 +207,7 @@ function shortcode_sidebar( $widget_id, $name="widgets_for_shortcode", $title=tr
 	 
 	/* lifted from wordpress code, keep as similar as possible for now */
 
-		if ( !isset($wp_registered_widgets[$widget_id]) ) continue;
+		if ( !isset($wp_registered_widgets[$widget_id]) ) return; // wp had continue
 
 		$params = array_merge(
 			array( 
@@ -294,7 +294,7 @@ function shortcode_sidebar( $widget_id, $name="widgets_for_shortcode", $title=tr
 //	}
 	return $did_one;
 }
-/* -------------------------------------------------------------------------------------------------------------*/
+/* ---------------------------------------------------------------------------*/
 function amr_reg_sidebar() {  // this is fired late, so hopefully any theme sidebars will have been registered already.
 
 global $wp_registered_widgets, $_wp_sidebars_widgets, $wp_registered_sidebars;
@@ -344,5 +344,16 @@ function amr_saw_load_text() {
 	$result = load_plugin_textdomain( 'amr-shortcode-any-widget', false, 
 	dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
+
+
 	add_action('plugins_loaded'         , 'amr_saw_load_text' );
+
+	add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'add_action_links' );
+
+function add_action_links ( $links ) {
+ $mylinks = array(
+ '<a href="' . admin_url( 'options-general.php?page=amr_saw' ) . '">HELP</a>',
+ );
+return array_merge( $links, $mylinks );
+}
 ?>

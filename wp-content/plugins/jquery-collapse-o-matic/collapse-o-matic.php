@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.6.5
+Version: 1.6.12
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -30,14 +30,14 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.6.5';
+	var $version = '1.6.12';
 
 	/**
 	 * Used as prefix for options entry
 	 * @var string
 	 */
 	var $domain = 'colomat';
-	
+
 	/**
 	 * Name of the options
 	 * @var string
@@ -61,13 +61,14 @@ class WP_Collapse_O_Matic {
 		'script_check' => '',
 		'script_location' => 'footer',
 		'cc_download_key' => '',
-		'cc_email' => ''
+		'cc_email' => '',
+		'filter_content' => '',
 	);
-	
+
 	var $license_group = 'colomat_licenseing';
-        
+
         var $license_name = 'WP_Collapse_O_Matic_license';
-        
+
         var $license_options = array(
                 'collapse_commander_license_key' => '',
                 'collapse_commander_license_status' => ''
@@ -79,13 +80,13 @@ class WP_Collapse_O_Matic {
 	function __construct() {
 		// set option values
 		$this->_set_options();
-		
+
 		// load text domain for translations
 		load_plugin_textdomain( 'colomat', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-		
+
 		//load the script and style if viewing the front-end
 		add_action('wp_enqueue_scripts', array( $this, 'collapsTronicInit' ) );
-		
+
 		// add actions
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'plugin_actions' ) );
@@ -97,13 +98,13 @@ class WP_Collapse_O_Matic {
 			add_action('wp_head', array( $this, 'colomat_js_vars' ) );
 		}
 		add_shortcode('expand', array($this, 'shortcode'));
-		
+
 		//add expandsub shortcodes
 		for ($i=1; $i<30; $i++) {
 			add_shortcode('expandsub'.$i, array($this, 'shortcode'));
 		}
-		
-		// Add shortcode support for widgets  
+
+		// Add shortcode support for widgets
 		add_filter('widget_text', 'do_shortcode');
 	}
 
@@ -119,24 +120,26 @@ class WP_Collapse_O_Matic {
 			echo "\n</style>\n";
 		}
 	}
-	
+
 	/**
 	 * Callback init
 	 */
-	function collapsTronicInit() {		
+	function collapsTronicInit() {
 		//collapse script
 		$load_in_footer = false;
 		if($this->options['script_location'] == 'footer' ){
 			$load_in_footer = true;
 		}
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.14', $load_in_footer);
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.16', $load_in_footer);
 		if( empty($this->options['script_check']) ){
 			wp_enqueue_script('collapseomatic-js');
 		}
-		
+
 		//css
-		wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.6' );
-		wp_enqueue_style( 'collapseomatic-css' );
+		if ($this->options['style'] !== 'none') {
+			wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.6' );
+			wp_enqueue_style( 'collapseomatic-css' );
+		}
 	}
 
 	/**
@@ -157,7 +160,7 @@ class WP_Collapse_O_Matic {
 		register_setting( $this->domain, $this->options_name );
 		register_setting( $this->license_group, $this->license_name, array($this, 'edd_sanitize_license') );
 	}
-	
+
 	/**
 	 * Callback shortcode
 	 */
@@ -195,9 +198,9 @@ class WP_Collapse_O_Matic {
 			'endwrap' => '',
 			'elwraptag' => '',
 			'elwrapclass' => '',
+			'filter' => $options['filter_content'],
 			'tabindex' => $options['tabindex']
 		), $atts));
-		
 		if(!empty($cid)){
 			$args = array(
 				'post_type'	=> 'expand-element',
@@ -208,7 +211,7 @@ class WP_Collapse_O_Matic {
 				while ( $query_commander->have_posts() ) {
 					$query_commander->the_post();
 					$title = get_the_title();
-					
+
 					//meta values
 					$meta_values = get_post_meta( $cid );
 					foreach($meta_values as $key => $value){
@@ -222,31 +225,33 @@ class WP_Collapse_O_Matic {
 					if(!empty($highlander) && !empty($rel)){
 						$rel .= '-highlander';
 					}
-					
+
 					//content
-					if(get_the_content()){
-						if(empty($filter)){
-							$content = get_the_content();
-						}else{
-							$content = apply_filters( 'the_content', get_the_content() );
-							$content = str_replace( ']]>', ']]&gt;', $content );
-						}
-					}
+					$content = get_the_content();
 				}
 			}
 			wp_reset_postdata();
 		}
-		
+
+		//content filtering
+		if(empty($filter) || $filter == 'false'){
+			$content = do_shortcode($content);
+		}
+		else{
+			$content = apply_filters( 'the_content', $content );
+			$content = str_replace( ']]>', ']]&gt;', $content );
+		}
+
 		$ewo = '';
 		$ewc = '';
-		
+
 		//id does not allow spaces
 		$id = preg_replace('/\s+/', '_', $id);
-		
+
 		//placeholders
 		$placeholder_arr = array('%(%', '%)%', '%{%', '%}%');
 		$swapout_arr = array('<', '>', '[', ']');
-	
+
 		$title = do_shortcode(str_replace($placeholder_arr, $swapout_arr, $title));
 		if($swaptitle){
 			$swaptitle = do_shortcode(str_replace($placeholder_arr, $swapout_arr, $swaptitle));
@@ -261,7 +266,7 @@ class WP_Collapse_O_Matic {
 		if(empty($targtag)){
 			$targtag = 'div';
 		}
-		
+
 		if($elwraptag){
 			$ewclass = '';
 			if($elwrapclass){
@@ -270,7 +275,7 @@ class WP_Collapse_O_Matic {
 			$ewo = '<'.$elwraptag.' '.$ewclass.'>';
 			$ewc = '</'.$elwraptag.'>';
 		}
-		
+
 		$eDiv = '';
 		if($content){
 			$inline_class = '';
@@ -279,12 +284,19 @@ class WP_Collapse_O_Matic {
 				$inline_class = 'colomat-inline ';
 				$collapse_class = 'collapseomatic_content_inline ';
 			}
-			$eDiv = '<'.$targtag.' id="target-'.$id.'" class="'.$collapse_class.$inline_class.$targclass.'">'.do_shortcode($content).'</'.$targtag.'>';	
+			$eDiv = '<'.$targtag.' id="target-'.$id.'" class="'.$collapse_class.$inline_class.$targclass.'">'.$content.'</'.$targtag.'>';
 		}
-			
+
 		if($excerpt){
-			$excerpt = do_shortcode(str_replace($placeholder_arr, $swapout_arr, $excerpt));
-			
+			$excerpt = str_replace($placeholder_arr, $swapout_arr, $excerpt);
+			if(empty($filter) || $filter == 'false'){
+				$excerpt = do_shortcode($excerpt);
+			}
+			else{
+				$excerpt = apply_filters( 'the_content', $excerpt );
+				$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
+			}
+
 			if($targpos == 'inline'){
 				$excerpt .= $eDiv;
 				$eDiv = '';
@@ -297,7 +309,14 @@ class WP_Collapse_O_Matic {
 			}
 			//swapexcerpt
 			if($swapexcerpt !== false){
-				$swapexcerpt = do_shortcode(str_replace($placeholder_arr, $swapout_arr, $swapexcerpt));
+				$swapexcerpt = str_replace($placeholder_arr, $swapout_arr, $swapexcerpt);
+				if(empty($filter) || $filter == 'false'){
+					$swapexcerpt = do_shortcode($swapexcerpt);
+				}
+				else{
+					$swapexcerpt = apply_filters( 'the_content', $swapexcerpt );
+					$swapexcerpt = str_replace( ']]>', ']]&gt;', $swapexcerpt );
+				}
 				$nibble .= '<'.$excerpttag.' id="swapexcerpt-'.$id.'" style="display:none;">'.$swapexcerpt.'</'.$excerpttag.'>';
 			}
 		}
@@ -337,7 +356,7 @@ class WP_Collapse_O_Matic {
 		if($swaptitle){
 			$link .= "<".$tag." id='swap-".$id."' alt='".$swapalt."' class='colomat-swap' style='display:none;'>".$startwrap.$swaptitle.$endwrap."</".$tag.">";
 		}
-		
+
 		if($excerpt){
 			if($excerptpos == 'above-trigger'){
 				if($trigpos == 'below'){
@@ -374,7 +393,7 @@ class WP_Collapse_O_Matic {
 		}
 		return $retStr;
 	}
-	
+
 	// Add link to options page from plugin list
 	function plugin_actions($links) {
 		$new_links = array();
@@ -411,7 +430,7 @@ class WP_Collapse_O_Matic {
 			<div class="icon32" id="icon-options-custom" style="background:url( <?php echo plugins_url( 'images/collapse-o-matic-icon.png', __FILE__ ) ?> ) no-repeat 50% 50%"><br></div>
 			<h2>Collapse-O-Matic</h2>
 		</div>
-		
+
 		<div class="postbox-container metabox-holder meta-box-sortables" style="width: 69%">
 			<div style="margin:0 5px;">
 				<div class="postbox">
@@ -434,7 +453,8 @@ class WP_Collapse_O_Matic {
 											}
 											$st_array = array(
 												__('Light', 'colomat') => 'light',
-												__('Dark', 'colomat') => 'dark'
+												__('Dark', 'colomat') => 'dark',
+												__('None', 'colomat') => 'none'
 											);
 											foreach( $st_array as $key => $value){
 												$selected = '';
@@ -445,10 +465,10 @@ class WP_Collapse_O_Matic {
 											}
 										?>
 										</select>
-										<br /><span class="description"><?php _e('Select Light for sites with lighter backgrounds. Select Dark for sites with darker backgrounds.', 'colomat'); ?></span></label>
+										<br /><span class="description"><?php _e('Select Light for sites with lighter backgrounds. Select Dark for sites with darker backgrounds. Select None to handle styling yourself.', 'colomat'); ?></span></label>
 									</td>
 								</tr>
-								
+
 								<?php if( is_plugin_active( 'collapse-commander/collapse-commander.php' ) ) : ?>
 								<tr>
 									<th><?php _e( 'CID Attribute', 'colomat' ) ?>:</th>
@@ -457,42 +477,42 @@ class WP_Collapse_O_Matic {
 									</td>
 								</tr>
 								<?php endif; ?>
-								
+
 								<tr>
 									<th><?php _e( 'Tag Attribute', 'colomat' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[tag]" name="<?php echo $this->options_name ?>[tag]" value="<?php echo $options['tag']; ?>" />
 										<br /><span class="description"><?php printf(__('HTML tag use to wrap the trigger text. See %sTag Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#tag" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
-								
+
 								<tr>
 									<th><?php _e( 'Trigclass Attribute', 'colomat' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[trigclass]" name="<?php echo $this->options_name ?>[trigclass]" value="<?php echo $options['trigclass']; ?>" />
 										<br /><span class="description"><?php printf(__('Default class assigned to the trigger element. See %sTrigclass Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#trigclass" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
-								
+
 								<tr>
 									<th><?php _e( 'Tabindex Attribute', 'colomat' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[tabindex]" name="<?php echo $this->options_name ?>[tabindex]" value="<?php echo $options['tabindex']; ?>" />
 										<br /><span class="description"><?php printf(__('Default tabindex value to be assigned to the trigger element. See %sTabindex Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#tabindex" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
-								
+
 								<tr>
 									<th><?php _e( 'Targtag Attribute', 'colomat' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[targtag]" name="<?php echo $this->options_name ?>[targtag]" value="<?php echo $options['targtag']; ?>" />
 										<br /><span class="description"><?php printf(__('HTML tag use for the target element. See %sTargtag Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#targtag" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
-								
+
 								<tr>
 									<th><?php _e( 'Targclass Attribute', 'colomat' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[targclass]" name="<?php echo $this->options_name ?>[targclass]" value="<?php echo $options['targclass']; ?>" />
 										<br /><span class="description"><?php printf(__('Default class assigned to the target element. See %sTargclass Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#targclass" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
-								
+
 								<tr>
 									<?php
 										if(empty($options['duration'])){
@@ -504,7 +524,7 @@ class WP_Collapse_O_Matic {
 										<br /><span class="description"><?php printf(__('A string or number determining how long the animation will run. See %sDuration%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#duration" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
-								
+
 								<tr>
 									<th><?php _e( 'Animation Effect', 'colomat' ) ?>:</th>
 									<td><label><select id="<?php echo $this->options_name ?>[slideEffect]" name="<?php echo $this->options_name ?>[slideEffect]">
@@ -528,21 +548,28 @@ class WP_Collapse_O_Matic {
 										<br /><span class="description"><?php printf(__('Animation effect to use while collapsing and expanding. See %sAnimation Effect%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#animation-effect" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
-								
+
 								<tr>
 									<th><?php _e( 'Custom Style', 'colomat' ) ?>:</th>
 									<td><label><textarea id="<?php echo $this->options_name ?>[custom_css]" name="<?php echo $this->options_name ?>[custom_css]" style="width: 100%; height: 150px;"><?php echo $options['custom_css']; ?></textarea>
 										<br /><span class="description"><?php _e( 'Custom CSS style for <em>ultimate flexibility</em>', 'colomat' ) ?></span></label>
 									</td>
 								</tr>
-								
+
+								<tr>
+									<th><?php _e( 'Content Filter', 'colomat' ) ?>:</th>
+									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[filter_content]" name="<?php echo $this->options_name ?>[filter_content]" value="1"  <?php echo checked( $options['filter_content'], 1 ); ?> /> <?php _e('Apply filter', 'colomat'); ?>
+										<br /><span class="description"><?php _e('Apply the_content filter to target content.', 'colomat'); ?></span></label>
+									</td>
+								</tr>
+
 								<tr>
 									<th><?php _e( 'Shortcode Loads Scripts', 'colomat' ) ?>:</th>
 									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[script_check]" name="<?php echo $this->options_name ?>[script_check]" value="1"  <?php echo checked( $options['script_check'], 1 ); ?> /> <?php _e('Only load scripts with shortcode.', 'colomat'); ?>
 										<br /><span class="description"><?php _e('Only load Collapse-O-Matic scripts if [expand] shortcode is used.', 'colomat'); ?></span></label>
 									</td>
 								</tr>
-								
+
 								<tr>
 									<th><?php _e( 'Script Load Location', 'colomat' ) ?>:</th>
 									<td><label><select id="<?php echo $this->options_name ?>[script_location]" name="<?php echo $this->options_name ?>[script_location]">
@@ -580,7 +607,7 @@ class WP_Collapse_O_Matic {
 								</tr>
 								</table>
 							</fieldset>
-							
+
 							<p class="submit">
 								<input class="button-primary" type="submit" value="<?php _e( 'Save Changes' ) ?>" />
 							</p>
@@ -589,7 +616,7 @@ class WP_Collapse_O_Matic {
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="postbox-container side metabox-holder meta-box-sortables" style="width:29%;">
 			<div style="margin:0 5px;">
 				<div class="postbox">
@@ -612,9 +639,9 @@ class WP_Collapse_O_Matic {
 			</div>
 			<div class="clear"></div>
 		</div>
-		
+
 		<?php if( is_plugin_active( 'collapse-commander/collapse-commander.php' ) ) : ?>
-		
+
 		<div class="postbox-container side metabox-holder" style="width:29%;">
 			<div style="margin:0 5px;">
 				<div class="postbox">
@@ -635,11 +662,11 @@ class WP_Collapse_O_Matic {
 											<td><label for="<?php echo $this->license_name ?>[collapse_commander_license_key]"><input type="text" id="<?php echo $this->license_name ?>[collapse_commander_license_key]" name="<?php echo $this->license_name ?>[collapse_commander_license_key]" value="<?php esc_attr_e( $cc_licence ); ?>" style="width: 100%" />
 												<br /><span class="description"><?php _e('Enter your license key', 'colpromat'); ?></span></label>
 											</td>
-											
+
 										</tr>
-											
+
 										<?php if( isset($options['collapse_commander_license_key']) ) { ?>
-										    <tr valign="top">	
+										    <tr valign="top">
 											<th><?php _e('License Status', 'colpromat'); ?>:</th>
 											<td>
 											    <?php if( isset($options['collapse_commander_license_status']) && $options['collapse_commander_license_status'] == 'valid' ) { ?>
@@ -647,7 +674,7 @@ class WP_Collapse_O_Matic {
 												<input type="submit" class="button-secondary" name="edd_cc_license_deactivate" value="<?php _e('Deactivate License'); ?>"/>
 											    <?php } else {
 												    if( isset($options['collapse_commander_license_status']) ){ ?>
-													<span style="color: red"><?php echo $options['collapse_commander_license_status']; ?></span><br/>        
+													<span style="color: red"><?php echo $options['collapse_commander_license_status']; ?></span><br/>
 												<?php } else { ?>
 													<span style="color: grey">inactive</span><br/>
 												<?php } ?>
@@ -682,7 +709,7 @@ class WP_Collapse_O_Matic {
 		<?php endif; ?>
 	<?php
 	}
-	
+
 	/**
 	 * Set options from save values or defaults
 	 */
@@ -694,7 +721,7 @@ class WP_Collapse_O_Matic {
 		if ( empty( $saved_options ) ) {
 			$saved_options = get_option( $this->domain . 'options' );
 		}
-		
+
 		// set all options
 		if ( ! empty( $saved_options ) ) {
 			foreach ( $this->options AS $key => $option ) {
@@ -702,55 +729,55 @@ class WP_Collapse_O_Matic {
 			}
 		}
 	}
-	
+
 	function edd_sanitize_license( $new ) {
             //collapse commander
             $options = get_option($this->license_name);
             $old_cc = ( !isset( $options['collapse_commander_license_key'] ) ) ? '' : $options['collapse_commander_license_key'];
             $old_cc_status = ( !isset( $options['collapse_commander_license_status'] ) ) ? '' : $options['collapse_commander_license_status'];
-                                                                    
+
             if( !empty($old_cc) && $old_cc != $new['collapse_commander_license_key'] ) {
                     $new['collapse_commander_license_status'] = '';
             }
             else{
                 $new['collapse_commander_license_status'] = $old_cc_status;
             }
-            
+
             if( isset( $_POST['edd_cc_license_activate'] ) ) {
                 $new['collapse_commander_license_status'] = $this->plugin_oven_activate_license( urlencode( PLUGIN_OVEN_CC ), $new['collapse_commander_license_key'], 'activate_license');
             }
-            
+
             if( isset( $_POST['edd_cc_license_deactivate'] ) ) {
                 $new['collapse_commander_license_status'] = $this->plugin_oven_activate_license( urlencode( PLUGIN_OVEN_CC ), $new['collapse_commander_license_key'], 'deactivate_license');
             }
             return $new;
         }
-        
-	
+
+
 	/************************************
-	* this illustrates how to activate 
+	* this illustrates how to activate
 	* a license key
 	*************************************/
-	
-	function plugin_oven_activate_license($plugin_name, $license_key, $edd_action) {                    
+
+	function plugin_oven_activate_license($plugin_name, $license_key, $edd_action) {
             // data to send in our API request
-            $api_params = array( 
-                    'edd_action'    => $edd_action, 
-                    'license' 	    => $license_key, 
+            $api_params = array(
+                    'edd_action'    => $edd_action,
+                    'license' 	    => $license_key,
                     'item_name'     => $plugin_name,
                     'url'           => home_url()
             );
-            
+
             // Call the custom API.
-            $response = wp_remote_get( add_query_arg( $api_params, PLUGIN_OVEN_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
-           
+			$response = wp_remote_get( esc_url_raw( add_query_arg( $api_params, PLUGIN_OVEN_URL ) ), array( 'timeout' => 15, 'sslverify' => false ) );
+
             // make sure the response came back okay
             if ( is_wp_error( $response ) )
                     return false;
-                
+
             // decode the license data
             $license_data = json_decode( wp_remote_retrieve_body( $response ) );
-            
+
             // $license_data->license will be either "valid" or "invalid"
             return $license_data->license;
 	}
@@ -765,17 +792,17 @@ $WP_Collapse_O_Matic = new WP_Collapse_O_Matic;
 
 //clean unwanted p and br tags from shortcodes
 //http://www.wpexplorer.com/clean-up-wordpress-shortcode-formatting
-if (!function_exists('wpex_clean_shortcodes')) {
-	function wpex_clean_shortcodes($content){   
+if (!function_exists('tp_clean_shortcodes')) {
+	function tp_clean_shortcodes($content){
 		$array = array (
-		    '<p>[' => '[', 
-		    ']</p>' => ']', 
+		    '<p>[' => '[',
+		    ']</p>' => ']',
 		    ']<br />' => ']'
 		);
 		$content = strtr($content, $array);
 		return $content;
 	}
-	add_filter('the_content', 'wpex_clean_shortcodes');
+	add_filter('the_content', 'tp_clean_shortcodes');
 }
 
 ?>

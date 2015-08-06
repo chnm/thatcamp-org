@@ -2,11 +2,11 @@
 
 {% block content %}
         <form action="" method="post" class="set-upgrade-to-pro-width2">
-            {{__('If you already have a license, please enter it below to activate YOP Poll Pro:')}}<br><br>
+            {{__("If you already have a license, please enter it below to activate YOP Poll Pro:")}}<br><br>
             <input type = "hidden" name = "action" value = "validate_licence">
             {{ wp_nonce_field('yop-poll-before-buy')|raw }}
             <input type="text" name="licence">
-            <input type = "submit" nameadd_poll = "check_licence" class = "button-primary" value = "Activate">
+            <input type = "submit" nameadd_poll = "check_licence" class = "button-primary" value = '{{__("Activate")}}'>
         </form>
         <br>
 
@@ -28,6 +28,7 @@
         <li><img src="{{poll_url}}images/images2/image3.jpg" /></li>
         <li><img src="{{poll_url}}images/images2/image4.jpg" /></li>
         <li><img src="{{poll_url}}images/images2/image6.jpg" /></li>
+        <li><img src="{{poll_url}}images/images2/image7.jpg" /></li>
     </ul>
 </div>
 <form method="" style="text-align: center" action="">
@@ -38,9 +39,10 @@
 				<p style="text-align:center; font-weight: bold; font-size: 16px">
 				   <input type = "hidden" name = "action" value = "do-buy" >
 					{{ wp_nonce_field('yop-poll-before-buy')|raw }}
-				   <input type = "submit" name = "do_buy" class = "upgrade_button" value = "Upgrade To Pro For Only $17">
+                    <label for="yop-poll-buy-pro-version" class="upgrade_button">{{__("Upgrade to Pro for only $17")}}</label>
+				   <input id="yop-poll-buy-pro-version" style="display: none" type = "submit" name = "do_buy" class = "upgrade_button" value = '{{__("Upgrade To Pro For Only $17")}}'>
 				   <br />
-				   60 days money back guarantee
+				   {{__("60 days money back guarantee")}}
                </p>
                
              <section>
@@ -48,19 +50,16 @@
              	<p class="yop_testimonials_header">
              		{{ __ ("Top class software and support")}}
              	</p>
-            	<p class="yop_testimonials_content">{{ __ ("
-					I love this software and the support service.")}}
+            	<p class="yop_testimonials_content">{{ __ ("I love this software and the support service.")}}
 					<br />
 					{{ __ ("This is definitely the #1 poll plugin for WP. I give this software and its support service a A++++.")}}
 					<br /><br />
-					{{ __ ("
-					I'm so glad to be a Pro version user. The US$17 upgrade worth every cent...")}}
+					{{ __ ("I'm so glad to be a Pro version user. The US$17 upgrade worth every cent...")}}
 					<br /><br />
-					{{ __ ("
-					I originally had some difficulties with the tool, and I reported them. \(This is normal for all software.\) 
-					After I reported my issues, the support got in touch with me very quickly and have the problem resolved. 
-					Also, they listened to my suggestions and worked with me to have things implemented and resolved. 
-					This is definitely a TOP CLASS service.")}}
+					{{ __ ("I originally had some difficulties with the tool, and I reported them. \(This is normal for all software.\)")}}
+                    {{ __ ("After I reported my issues, the support got in touch with me very quickly and have the problem resolved.")}}
+                    {{ __ ("Also, they listened to my suggestions and worked with me to have things implemented and resolved.")}}
+                    {{ __ ("This is definitely a TOP CLASS service.")}}
 				</p>
 				<p class="yop_testimonials_client">
 					{{ __ ("edwintam, wordpress user")|e}}
@@ -71,7 +70,7 @@
              		{{ __ ("Great support for a very useful product")}}
              	</p>
               <p class="yop_testimonials_content">
-              	{{ __ ('I used yop poll standard and tried upgrading. I ran into an issue and send support an email. I got the best suppor timaginable. They immediately (within the hour) started working on the issue, solved it and solved a bunch of other stuff in the running.')}}
+              	{{ __ ("I used yop poll standard and tried upgrading. I ran into an issue and send support an email. I got the best suppor timaginable. They immediately (within the hour) started working on the issue, solved it and solved a bunch of other stuff in the running.")}}
               	<br /><br />
               	{{ __ ("Superb Support, absolutely worth paying for!")}}
              </p>

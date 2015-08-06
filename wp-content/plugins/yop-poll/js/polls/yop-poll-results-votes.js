@@ -28,6 +28,10 @@ jQuery( document ).ready( function( jQuery ) {
 
         jQuery(".yop_poll_pro_feature").dialog('close');
     });
+    if(jQuery("#yop-poll-answer-votes-print").is(":checked"))
+        jQuery(".yop-poll-print-votes-votes").css('display','inline');
+    else
+        jQuery(".yop-poll-print-votes-votes").css('display','none');
 });
 function show_poll_to_vote(){
 
@@ -45,12 +49,30 @@ function show_poll_to_vote(){
         modal: true
 
     });
-
-
-
-
 }
+function yop_poll_print_values(){
+    if(jQuery("#yop-poll-answer-votes-print").is(":checked"))
+        jQuery(".yop-poll-print-votes-votes").css('display','block');
+    else
+        jQuery(".yop-poll-print-votes-votes").css('display','none');
+}
+function show_poll_print_options(){
 
+
+    jQuery( "#success>p" ).remove();
+    jQuery( "#error>p" ).remove();
+    jQuery("#yop_poll_print_votes").dialog({
+
+        minHeight: 'auto',
+
+        minWidth: 'auto',
+
+
+
+        modal: true
+
+    });
+}
 
 function add_votes( ) {
 
@@ -227,12 +249,11 @@ function show_details(){
     if(jQuery(this).closest('tr').next('tr').is(":visible") ){
 
         jQuery(this).closest('tr').next('tr').hide();
-        alert(1);
     }
 
     else
 
-    { alert(2);
+    {
 
         jQuery(".results_details").each(function( i ) {
 

@@ -32,7 +32,8 @@ function replaceLinkId(old_id, new_id){
 	
 	master.attr('id', 'blc-row-'+new_id);
 	master.find('.blc-link-id').html(new_id);
-	
+	master.find('th.check-column input[type="checkbox"]').val(new_id);
+
 	var details_row = jQuery('#link-details-'+old_id);
 	details_row.attr('id', 'link-details-'+new_id);
 }
@@ -614,11 +615,12 @@ jQuery(function($){
 		}
 
 		var newLinkText = null,
-			linkTextField = editRow.find('.blc-link-text-field');
+			linkTextField = editRow.find('.blc-link-text-field'),
+			oldLinkText = master.data('link-text');
 		if (!linkTextField.prop('readonly')) {
 			newLinkText = linkTextField.val();
-			//Empty text = leave the text unchanged.
-			if (newLinkText == '') {
+			//Empty or identical to the original = leave the text unchanged.
+			if ((newLinkText === '') || (newLinkText === oldLinkText)) {
 				newLinkText = null;
 			}
 		}
@@ -661,7 +663,7 @@ jQuery(function($){
 				eval('data = ' + data);
 				 
 				if ( data && (typeof(data['error']) != 'undefined') ){
-					//An internal error occured before the link could be edited.
+					//An internal error occurred before the link could be edited.
 					//data.error is an error message.
 					alert(data.error);
 				} else {

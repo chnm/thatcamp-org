@@ -3,7 +3,7 @@ Contributors: yourownprogrammer
 Donate Link: http://www.yop-poll.com
 Tags: booth, create poll, poll plugin, poll, polls, wordpress poll, vote, voting, survey, polling, yop poll, yop
 Requires at least: 3.3
-Tested up to: 4.1.1
+Tested up to: 4.2.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.htm
@@ -141,6 +141,32 @@ You can have only one question per poll. If you want to ask more than one questi
 5. YOP Poll on a page with a custom field defined
 
 == Changelog ==
+
+= 5.7.5 =
+* Fixed issue with vote button not showing up
+* Other minor fixes
+
+= 5.7.4 =
+* Fixed security issue. A big thank you to [g0blin Research](https://twitter.com/g0blinResearch) for his help in getting this issue fixed
+
+= 5.7.3 =
+* Fixed display poll issue
+
+= 5.7.2 =
+* Display poll improvements
+
+= 5.7.1 =
+* Fixed issue with polls not being displayed
+
+= 5.7 =
+* Fixed issue with random polls
+* Fixed issue with tabulated display
+* Removed autoscroll after a failed vote
+* Fixed issue with inserted code when using html editor
+* Fixed issue with blocking voters option
+* Fixed issue with in_array causing errors
+* Fixed twig compatibility
+* Added Print Votes page
 
 = 5.6 =
 * Fixed issue with login popup

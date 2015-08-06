@@ -837,8 +837,15 @@ class blcLink {
 				__("This link is not a redirect", 'broken-link-checker')
 			);
 		}
+
+		//Preserve the existing #anchor if the redirect doesn't include one.
+		$new_url = $this->final_url;
+		$anchor = @parse_url($this->url, PHP_URL_FRAGMENT);
+		if ( !empty($anchor) && (strrpos($new_url, '#') === false) ) {
+			$new_url .= '#' . $anchor;
+		}
 		
-		return $this->edit($this->final_url);
+		return $this->edit($new_url);
 	}
 
   /**
@@ -1005,7 +1012,7 @@ class blcLink {
 			
 			if ( $this->broken || $this->warning ){
 				$code = BLC_LINK_STATUS_WARNING;
-				$text = __('Unknown Error', 'link status', 'broken-link-checker');
+				$text = __('Unknown Error', 'broken-link-checker');
 				
 				if ( $this->timeout ){
 					

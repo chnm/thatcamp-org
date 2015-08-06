@@ -29,6 +29,11 @@ if (isset($pd_options['new_tab'])) {
         if ($amount)
             $paypal_btn .=  $indent.'<input type="hidden" name="amount" value="' . apply_filters( 'paypal_donations_amount', $amount ) . '" />'.PHP_EOL;
 
+        if (!empty($validate_ipn)){
+            $notify_url = site_url() . '/?ppd_paypal_ipn=process';
+            $paypal_btn .=  $indent.'<input type="hidden" name="notify_url" value="' .$notify_url. '" />'.PHP_EOL; // Notify URL
+        }
+        
         // More Settings
         if (isset($pd_options['return_method']))
             $paypal_btn .= $indent.'<input type="hidden" name="rm" value="' .$pd_options['return_method']. '" />'.PHP_EOL;
@@ -43,8 +48,10 @@ if (isset($pd_options['new_tab'])) {
         //      $paypal_btn .=     '<input type="hidden" name="amount" value="20" />';
 
         // Get the button URL
-        if ( $pd_options['button'] != "custom" && !$button_url)
+        if ( $pd_options['button'] != "custom" && !$button_url){
+            $button_localized = apply_filters('pd_button_localized_value', $button_localized);
             $button_url = str_replace('en_US', $button_localized, $donate_buttons[$pd_options['button']]);
+        }        
         $paypal_btn .=  $indent.'<input type="image" src="' .$button_url. '" name="submit" alt="PayPal - The safer, easier way to pay online." />'.PHP_EOL;
 
         // PayPal stats tracking

@@ -5,6 +5,8 @@
 
         public function __construct( Yop_Poll_Config $config ) {
             $this->_config = $config;
+            $plugin_path = $this->_config->plugin_dir . '/' . $this->_config->languages_dir;
+            load_plugin_textdomain( 'yop_poll', false, $plugin_path );
             $this->init();
         }
 

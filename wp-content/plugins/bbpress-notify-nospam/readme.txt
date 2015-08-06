@@ -4,11 +4,11 @@ Author URI: http://www.usestrict.net/
 Plugin URI: http://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
-Tested up to: 4.1.1
+Tested up to: 4.3-alpha-32294
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.6.7
+Stable tag: 1.8.2
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
 == Description ==
@@ -22,29 +22,29 @@ Settings include:
  * Notification recipients for new replies, 
  * Notification e-mail's subject and body for both new topics and replies
  * Set Background Notifications (no longer causes delays in loading pages for large user databases)
+ * Extensible through several handy filters
 
-= bbPress Notify Pro =
+= Premium Add-Ons =
 
-We're trying to raise funds to build the Pro version of this plugin. It will include all of the features of bbpress Notify (no-spam) plus lots of other goodies that have been asked for by our users.
-Please have a look at the [Kickstarter page](https://www.kickstarter.com/projects/usestrict/bbpress-notify-pro-for-wordpress) for all the details and help us reach the project goal! 
+ * [Opt-out Module](http://usestrict.net/2015/03/bbpress-notify-no-spam-opt-out-add-on/): Allow your audience to choose not to receive notifications. A must-have for CAN-SPAM laws!
+ * [bbPress Moderation Integration](http://usestrict.net/product/bbpress-moderation-plugin-add-on/): Make bbpnns work with [bbPress Moderation](https://wordpress.org/plugins/bbpressmoderation/). 
+ * [bbPress Private Groups Integration](http://usestrict.net/product/bbpress-notify-no-spam-private-groups-bridge/): Make bbpnns respect [bbPress Private Groups](https://wordpress.org/plugins/bbp-private-groups/) rules.
 
 
 == Installation ==
 
 1. Upload the entire plugin folder via FTP to `/wp-content/plugins/`.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Go to the Settings -> Forums and select which group our groups should get notifications. 
+3. Go to the <strong>Settings -> Forums</strong> and select which group our groups should get notifications. 
 
 == Frequently Asked Questions ==
-= Did you write this plugin? =
-No, I simply added a spam filter and a couple of other improvements.
+= Can a user turn off notifications? =
+ * Originally, this plugin was developed to alert Administrators of new topics and replies. After a few iterations, users requested that I add the ability to send
+messages to other roles, which then could be characterized as spam. To allow your users to opt-out from receiving notifications, please consider purchasing 
+the [Opt-out Module](http://usestrict.net/2015/03/bbpress-notify-no-spam-opt-out-add-on/).
 
-= Why did you do this? =
-Because the original author never answered the WP support forums (or any emails, for that matter).
-
-= Do you plan on improving the plugin? =
-Not really. I just want to stop receiving spam from my bbPress install. However, if you want an improvement badly enough, contact me through vinny [at] usestrict [dot] net and we'll discuss it.
-
+= Does this plugin integrate with BuddyPress Groups? =
+ * Not at this moment.
 
 == Screenshots ==
 1. The settings page
@@ -52,6 +52,36 @@ Not really. I just want to stop receiving spam from my bbPress install. However,
 
 
 == Changelog ==
+= 1.8.2 =
+* Added: support for people using wpMandrill and getting emails without newlines. We turn on nl2br momentarily while sending out our emails. 
+This option can be overridden by using the filter 'bbpnns_handle_mandrill_nl2br'.
+
+= 1.8.1 =
+* Fix: no longer return if wp_mail fails for a given email address. This was an issue for people using wpMandrill with an address in the blacklist.
+
+= 1.8 =
+* New Filter: bbpnns_post_status_blacklist
+* New Filter: bbpnns_post_status_whitelist
+* New Action: bbpnns_before_topic_settings
+* New Action: bbpnns_after_topic_settings
+* New Action: bbpnns_after_reply_settings
+* New Action: bbpnns_register_settings  
+
+= 1.7.3 =
+* Remove admin message as it's not getting dismissed properly.
+* Update tested up to.
+
+= 1.7.2 =
+* Fix parameters for 'bbp_new_reply' filter
+* Added call to 'bbp_get_reply_forum_id()' in case the forum_id was blank (should no longer happen with 'bbp_new_reply' filter fix)
+
+= 1.7.1 =
+* Notify about existence of Opt-Out add-on
+
+= 1.7 =
+* Added support for Opt-Out add-on
+* Added labels to all input fields
+
 = 1.6.7 =
 * Added support for tags [topic-forum], and [reply-forum]. ([Towfiq I.](https://wordpress.org/support/topic/feature-forum-name-in-email))
 
@@ -160,11 +190,4 @@ Not really. I just want to stop receiving spam from my bbPress install. However,
 * First alpha version
 
 == Upgrade Notice ==
-= 1.4.2 =
-In some installs, people were getting duplicate emails. We're making sure that only one email is sent per user.
-
-= 1.4.1 =
-Fixes an error in preg_replace. Update is strongly recommended.
-
-= 1.4 =
-Fixes a couple of strict notices, and adds Settings action link, swaps <br> tags for newlines and enables sending notifications when creating a topic or reply from the admin UI.
+No upgrade needed at this time.

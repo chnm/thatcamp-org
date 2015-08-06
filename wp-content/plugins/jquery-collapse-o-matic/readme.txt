@@ -4,8 +4,8 @@ Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more, plugin oven
 Requires at least: 3.9
-Tested up to: 4.2
-Stable tag: 1.6.5
+Tested up to: 4.2.2
+Stable tag: 1.6.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,31 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.6.12 =
+* removed css that changed the display to block on focus
+
+= 1.6.11 =
+* added css to remove the border on focus
+
+= 1.6.10 =
+* added styles and jQuery for accessibility: focus/keyboard navigation
+
+= 1.6.9 =
+* added catch-all callback for jetpack’s infinite-scroll
+* fix: XSS Vulnerability
+
+= 1.6.8 =
+* fixed filter_content toggle bug.
+* even if content is not to be filtered, it will still be passed through do_shortcode function
+
+= 1.6.7 =
+* added filter_content to the options page, defaults to off
+
+= 1.6.6 =
+* added filter attribute to pass the content through the_content filter
+* changed name of wpex_clean_shortcodes function
+* tested up to: WordPress 4.2-alpha-31047
 
 = 1.6.5 =
 * maptastic class only removed when present
@@ -274,197 +299,4 @@ Fixed auto-expand of urls with id-anchors
 
 == Upgrade Notice ==
 
-= 1.6.4 =
-* added plugin to GitHub: https://github.com/baden03/collapse-o-matic
-* added new tabindex attribute to shortcode and options page
-* registration fields are masked using password input type
-
-= 1.6.3 =
-* added shortcode support for the excerpt attribute
-* added wpex_clean_shortcodes filter to strip unwanted p and br tags from the shortcode
-* added the ability to set trigclass, targtag and targclass attribute values in the plugin options page
-
-= 1.6.2 =
-* added colomat-swap class to the swaptitle element
-* added optional cid default to the shortcode
-
-= 1.6.1 =
-* fixed undeclared cid variable
-
-= 1.6 =
-* fixed issue with using id anchor links on elements with expanded=‘true’
-* added support for Collapse Commander add-on plugin to manage expand elements
-
-= 1.5.10 =
-* fixed an HTML5 validation issue with anchors having name attributes
-* fixed bug with trigpos inline
-* added span_fix classes to css files
-* added 4.0 icons to assets
-
-= 1.5.9 =
-* fixed issue with missing classes in dark style
-* streamlined the collapse/expand function
-* streamlined the collapseall/expandall functions
-* scrollonclose attribute now accepts auto as value
-* added new colomat_expandall and colomat_collpaseall functions that can be triggered externally
-
-= 1.5.8 =
-* scripts always load by default
-* can choose if script loads in header or footer
-
-= 1.5.7 =
-* option to only load scripts if shortcode is in use
-* script loads in footer
-* script and style are now hooked to wp_enqueue_scripts rather than init
-* added Serbian language files courtesy of Borisa Djuraskovic from webhostinghub.com
-
-= 1.5.6 =
-* admin_init error is fixed.  oops!
-
-= 1.5.5 =
-* updated for 3.8
-* cleaned up old code
-
-= 1.5.4 =
-* updated jQuery .on() method
-* removed php4 constructor
-* added DE and RU languages
-
-= 1.5.3 =
-* shortcode works in sidebar widgets (again)
-* fixed hasClass error in Slide Only animation option
-
-= 1.5.2 =
-* find-me is now called after all collapse/expand animations finish
-* removed livequery in favor of jQuery .on() method
-* updated Requires at least tag to 3.3
-* added swapexcerpt attribute
-* fixed typos on the options page
-* added custom css to options page
-* added targtag and targpos attributes
-* added ability to add extra internal triggers
-
-= 1.5.1 =
-* find-me auto feature now works with responsive websites
-
-= 1.5 =
-* Plugin code completely rewritten
-* Added Option Page
-* added scroll-to-trigger class for Internal Collapse Triggers
-* added livequery and callbacks to handle dynamically added collapse elements
-* language translation support
-
-= 1.4.11 =
-* added colomat-parent-highlight class functionality
-* findme auto position calculated after images have loaded
-* Added elwraptag and elwrapclass attributes to wrap entire expand elements in an html element
-* Added snap-shut class to slam collapses shut
-
-= 1.4.10 =
-* Added colomat-nolink class to prevent &lt;a&gt; anchors auto scrolling the page.
-* bot- links text will no longer swap out if triggers use swap-title
-
-= 1.4.9 =
-* on() event handler rolled back to .click() and .hover() for WordPress installs that still use jQuery 1.6.4 - if you can believe that.
-
-= 1.4.8 =
-* on() event handler for dynamic content
-* added notitle attribute
-* added title wrapping
-* fixed a few obscure bugs
-* added expandanchor class
-* added colomat-expand-only class
-* added scrollonclose attribute and scroll-to-trigger class
-
-= 1.4.7 =
-* Fixed auto-expand of urls with id-anchors
-
-= 1.4.6 =
-* Fixed JS bug in 1.4.5 - Sorry people
-
-= 1.4.5 =
-* Added SlideFade/SlideToggle option and visited trigers now have colomat-visited class
-
-= 1.4.4 =
-* JavaScript has been minified for faster page loads
-
-= 1.4.3 =
-* added findme attribute to autoscroll to expanded elements
-
-= 1.4.2 =
-* added speed control to collapse/expand effect
-
-= 1.4.1 =
-* Swaptitle will be triggered by autoexpand/collapse events such as highlander grouping.
-
-= 1.4 =
-* Improved support and FAQs on Plugin Oven support page
-
-= 1.3.18 =
-* Added alternate style sheet for sites with dark backgrounds.
-
-= 1.3.17 =
-* Improved nesting collapse function for sub-levels and added support for nesting 30 levels deep.
-
-= 1.3.16.1 =
-* Added noarrows class for better integration of images as triggers.
-
-= 1.3.16 =
-* Bug Fix for the new trigpos attribute, stupid, stupid, stupid
-
-= 1.3.15 =
-Added trigpos attribute to position the trigger below the target.
-
-= 1.3.14 =
-Fixed Enqueue error and swap title on expand/collpase all.  Expanded roll-your-own features.
-
-= 1.3.13 =
-Added the ability to place a second trigger link inside the expanding content area.
-
-= 1.3.12 =
-Now when Highlander Grouping collapses an element, it will automatically collapse nested elements as well. 
-
-= 1.3.11 =
-Added excerpt feature that allows a juicy bit of nibble text to be displayed above and below the trigger text&mdash;as well as below the target text.
-
-= 1.3.10 =
-Rebuilt swaptitle to support images and cufon text.  Change CSS names to be more plug-in specific.
-
-= 1.3.9 =
-Title triggers that contain <img> or <cufon> tags will not trigger swaptitle. Added rel grouping option to expand/collapse-all triggers.
-
-= 1.3.8 =
-Expand elements that have content containing only one space will not insert target elements.
-
-= 1.3.7 =
-New expandsub1 - expandsub3 shortcodes for nested expand elements.  Collapse/Expand all triggers.  Improved arrow icons.
-
-= 1.3.6 =
-Plug-in degrades gracefully when JS is disabled. Title can now have expand/collapse states using swaptitle attribute.
-
-= 1.3.5 =
-Random ID's are now valid xhtml. 
-
-= 1.3.4 =
-Changed highlander grouping trigger from -member to -highlander.
-
-= 1.3.3 =
-Added highlander grouping... called it -member.
-
-= 1.3.2 =
-Expanded attribute and right arrow style added.
-
-= 1.3.1 =
-Hover style added.
-
-= 1.3 =
-Collapse-O-Matic has been significantly advanced.  Elements can now be grouped together.
-
-= 1.2 =
-Style has been updated for ultimate flexibility.  Shortcode can now be written as `[expand title="title goes here" id="optional-id-goes-here" tag="optional-html-tag-goes-here"]content goes here[/expand]`.
-
-= 1.1 =
-Shortcode now works in sidebars.  Shortcode must be written as `[expand title="title goes here" id="optional-id-goes-here"]content goes here[/expand]`.
-
-= 1.0 =
-Where once there was not, there now is.
+* removed css that changed the display to block on focus causing span triggers to jump down to the next line.

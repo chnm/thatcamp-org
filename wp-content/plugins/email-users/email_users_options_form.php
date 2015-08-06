@@ -294,6 +294,15 @@ print $reflection->getFileName();
 		</td>
 	</tr>
 	<tr>
+    <th><?php _e('Dashboard Widgets', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<input 	type="checkbox"
+					name="mailusers_dashboard_widgets" id="mailusers_dashboard_widgets" value="true"
+					<?php if (mailusers_get_dashboard_widgets()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Display Dashboard Widgets<br/><small><i>Note:  Email can show informational widgets on the Dashboard.</i></small>', MAILUSERS_I18N_DOMAIN); ?><br/>
+		</td>
+	</tr>
+	<tr>
     <th><?php _e('Debug', MAILUSERS_I18N_DOMAIN); ?></th>
 		<td>
 			<input 	type="checkbox"

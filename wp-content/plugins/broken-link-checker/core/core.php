@@ -109,6 +109,7 @@ class wsBrokenLinkChecker {
     	if ( !$this->conf->options['run_in_dashboard'] ){
 			return;
 		}
+		$nonce = wp_create_nonce('blc_work');
         ?>
         <!-- wsblc admin footer -->
         <script type='text/javascript'>
@@ -119,7 +120,8 @@ class wsBrokenLinkChecker {
 				$.post(
 					"<?php echo admin_url('admin-ajax.php'); ?>",
 					{
-						'action' : 'blc_work'
+						'action' : 'blc_work',
+						'_ajax_nonce' : '<?php echo esc_js($nonce); ?>'
 					}
 				);
 			}
@@ -1313,7 +1315,7 @@ class wsBrokenLinkChecker {
 				
 				printf(
 					' | <a class="blc-toggle-link toggle-module-settings" id="toggle-module-settings-%s" href="#">%s</a>',
-					$module_id,
+					esc_attr($module_id),
 					__('Configure', 'broken-link-checker')
 				);
 				
@@ -1593,7 +1595,7 @@ class wsBrokenLinkChecker {
 		//Create a custom filter!
     	check_admin_referer( 'create-custom-filter' );
     	$msg_class = 'updated';
-    	
+
     	//Filter name must be set
 		if ( empty($_POST['name']) ){
 			$message = __("You must enter a filter name!", 'broken-link-checker');
@@ -1604,12 +1606,13 @@ class wsBrokenLinkChecker {
 			$msg_class = 'error';
 		} else {
 			//Save the new filter
+			$name = strip_tags(strval($_POST['name']));
 			$blc_link_query = blcLinkQuery::getInstance();
-			$filter_id = $blc_link_query->create_custom_filter($_POST['name'], $_POST['params']);
+			$filter_id = $blc_link_query->create_custom_filter($name, $_POST['params']);
 			
 			if ( $filter_id ){
 				//Saved
-				$message = sprintf( __('Filter "%s" created', 'broken-link-checker'), $_POST['name']);
+				$message = sprintf( __('Filter "%s" created', 'broken-link-checker'), $name);
 				//A little hack to make the filter active immediately
 				$_GET['filter_id'] = $filter_id;			
 			} else {
@@ -2052,6 +2055,8 @@ class wsBrokenLinkChecker {
 		
 		$message = '';
 		$msg_class = 'updated';
+
+		check_admin_referer('bulk-action');
 		
 		if ( count($selected_links) > 0 ){
 			$q = "UPDATE {$wpdb->prefix}blc_links 
@@ -2243,13 +2248,13 @@ class wsBrokenLinkChecker {
 				'The "Warnings" page lists problems that are probably temporary or suspected to be false positives.<br> Warnings that persist for a long time will usually be reclassified as broken links.',
 				'broken-link-checker'
 			),
-			add_query_arg($notice_name, '0'),
+			esc_attr(add_query_arg($notice_name, '0')),
 			_x(
 				'Hide notice',
 				'admin notice under Tools - Broken links - Warnings',
 				'broken-link-checker'
 			),
-			admin_url('options-general.php?page=link-checker-settings#blc_warning_settings'),
+			esc_attr(admin_url('options-general.php?page=link-checker-settings#blc_warning_settings')),
 			_x(
 				'Change warning settings',
 				'a link from the admin notice under Tools - Broken links - Warnings',
@@ -2778,7 +2783,7 @@ class wsBrokenLinkChecker {
 				"<a href='%s' title='" . __('View broken links', 'broken-link-checker') . "'><strong>". 
 					_n('Found %d broken link', 'Found %d broken links', $status['broken_links'], 'broken-link-checker') .
 				"</strong></a>",
-			  	admin_url('tools.php?page=view-broken-links'), 
+			  	esc_attr(admin_url('tools.php?page=view-broken-links')),
 				$status['broken_links']
 			);
 		} else {
@@ -2892,6 +2897,8 @@ class wsBrokenLinkChecker {
 	}
 	
 	function ajax_work(){
+		check_ajax_referer('blc_work');
+
 		//Run the worker function 
 		$this->work();
 		die();
@@ -3421,7 +3428,15 @@ class wsBrokenLinkChecker {
 	 		'state' => 'ok',
 	 		'value' => sprintf(__('%s seconds'), ini_get('max_execution_time')),
 		);
-		
+
+		//Database character set. Usually it's UTF-8. Setting it to something else can cause problems
+		//unless the site owner really knows what they're doing.
+		$charset = $wpdb->get_charset_collate();
+		$debug[ __('Database character set', 'broken-link-checker') ] = array(
+			'state' => 'ok',
+			'value' => !empty($charset) ? $charset : '-',
+		);
+
 		//Resynch flag.
 		$debug['Resynch. flag'] = array(
 	 		'state' => 'ok',

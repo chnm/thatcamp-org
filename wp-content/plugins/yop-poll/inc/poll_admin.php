@@ -38,6 +38,9 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                     case "addvote":
                         self::add_vote();
                         break;
+                    case "print_votes":
+                        $this->print_votes();
+                        break;
                     case "reset_votes":
                         self::reset_stats();
                         break;
@@ -151,6 +154,13 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
         if( isset( $poll_options['user_interface_type'] ) && $poll_options['user_interface_type'] == 'beginner' ) {
             wp_enqueue_style( 'yop-poll-wizard-css', YOP_POLL_URL . 'css/yop-poll-wizard.css', array(), YOP_POLL_VERSION );
             wp_enqueue_script( 'yop-poll-wizard-js', YOP_POLL_URL . 'js/polls/yop-poll-wizard.js', array( 'jquery' ), YOP_POLL_VERSION, true );
+            $translation_array = array(
+                'next_next' => __( "Next" ),
+                'prev_prev' => __yop_poll( "Previous" ),
+                'savee' => __('Save'),
+                'empty_answer' => __yop_poll( "Please fill in empty answers from Question" )
+            );
+            wp_localize_script( 'yop-poll-wizard-js', 'button_yop', $translation_array );
             wp_enqueue_script( 'jquery-ui-dialog' );
             $isdone = array( - 1 );
             if( 'edit' == $action_type ) {
@@ -369,9 +379,263 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
     private function view_all_polls_operations() {
 
     }
+    public  function print_votes() {
+        global $message;
+        $time_format="H:i:s";
+        $options                     = get_option('yop_poll_options' );
+        if($options['date_format']=="UE")
+            $date_format="d-m-Y";            else{
+            $date_format="m-d-Y";
+        }
+        $data['date_format']=$date_format.' '.$time_format;
+        wp_enqueue_style( 'yop-poll-slider-css', YOP_POLL_URL . 'css/yop-poll-slider.css', array(), YOP_POLL_VERSION );
+
+        wp_enqueue_script( 'yop-poll-add-edit-js', YOP_POLL_URL . 'js/polls/yop-poll-add-edit.js', array(
+            'jquery',
+            'jquery-ui-sortable',
+            'jquery-ui-dialog',
+        ), YOP_POLL_VERSION, true );
+
+        wp_enqueue_script( 'yop-poll-slider-js', YOP_POLL_URL . 'js/yop-poll-slider.js', array(
+            'jquery',
+            'jquery-ui-dialog'
+        ), YOP_POLL_VERSION, true );
+
+        wp_enqueue_script( 'yop-poll-results-votes-js', YOP_POLL_URL . '/js/polls/yop-poll-results-votes.js', array(
+            'jquery',
+            'jquery-ui-dialog'
+        ), YOP_POLL_VERSION, true );
+        wp_enqueue_style( 'yop-poll-add-edit-css', YOP_POLL_URL . 'css/polls/add-edit.css', array(), YOP_POLL_VERSION );
+
+        $data                    = array();
+        if(isset($_POST['question_print']))
+            $data['question_print']=true;
+        if(isset($_POST['other_print']))
+            $data['other_print']=true;
+        if(isset($_POST['custom_print']))
+            $data['custom_print']=true;
+
+        if(isset($_POST['votes_print']))
+            $data['votes_print']=true;
+        if(isset($_POST['votes_id']))
+            $data['votes_id']=true;
+        if(isset($_POST['user_type']))
+            $data['user_type']=true;
+
+        if(isset($_POST['track_id']))
+            $data['track_id']=true;
+        if(isset($_POST['ip_print']))
+            $data['ip_print']=true;
+        if(isset($_POST['date_print']))
+            $data['date_print']=true;
+        $data['poll_url']= YOP_POLL_URL;
+        $data['poll_id']         = $_REQUEST['id'];
+        $current_poll            = new YOP_POLL_Poll_Model( $data['poll_id'] );
+        $data['poll_title']      = $current_poll->poll_name;
+        $data['per_page']        = ( isset( $_REQUEST ['per_page'] ) && intval( $_REQUEST ['per_page'] ) > 0 ) ? intval( $_REQUEST ['per_page'] ) : 100;
+        $data['page_no']         = ( isset( $_REQUEST ['page_no'] ) && intval( $_REQUEST ['page_no'] ) > 0 ) ? intval( $_REQUEST ['page_no'] ) : 1;
+        $orderby                 = ( empty ( $GLOBALS['orderby'] ) ) ? 'ip' : $GLOBALS['orderby'];
+        $order                   = ( empty ( $GLOBALS['order'] ) ) ? 'desc' : $GLOBALS['order'];
+        $data['request']['s_ip'] = ( isset ( $_REQUEST ['s_ip'] ) ? $_REQUEST ['s_ip'] : '' );
+        $order_fields            = array(
+            'vote_date',
+            'user_type',
+            'ip'
+        );
+        $args                    = array(
+            'poll_id'       => $_REQUEST['id'],
+            'return_fields' => 'COUNT(*) as total_results',
+            'search'        => array(
+                'fields' => array( 'ip' ),
+                'value'  => isset ( $_REQUEST ['s_ip'] ) ? $_REQUEST ['s_ip'] : ''
+            ),
+            'orderby'       => $orderby,
+            'order'         => $order
+        );
+        $total_results           = self::get_polls_results_filter_search( $args );
+        if( ! isset( $total_results[0]['total_results'] ) ) {
+            $total_results[0]['total_results'] = 0;
+        }
+        $data['total_results'] = $total_results[0]['total_results'];
+        $total_results_pages   = ceil( $total_results[0]['total_results'] / $data['per_page'] );
+        if( intval( $data['page_no'] ) > intval( $total_results_pages ) ) {
+            $data['page_no'] = 1;
+        }
+        $args['limit']                   = ( $data['page_no'] - 1 ) * $data['per_page'] . ', ' . $data['per_page'];
+        $args['return_fields']           = "*";
+        $data['REQUEST']                 = $_REQUEST;
+        $data['orderby']                 = $orderby;
+        $data['order']                   = $order;
+        $data['order_direction']         = $this->make_order_array( $order_fields, 'asc', $orderby, ( 'desc' == $order ) ? 'asc' : 'desc' );
+        $data['order_sortable']          = $this->make_order_array( $order_fields, 'sortable', $orderby, 'sorted' );
+        $data['order_direction_reverse'] = $this->make_order_array( $order_fields, 'desc', $orderby, ( 'desc' == $order ) ? 'desc' : 'asc' );
+        $data['results']                 = self::get_polls_results_for_view( $args );
+        $data['total_items']             = $total_results[0]['total_results'];
+        $data['current_user']            = $GLOBALS['current_user'];
+        $data['message']['success']      = $message['success'];
+        $data['message']['error']        = $message['error'];
+        foreach( $data['results'] as &$result ) {
+            $result['votes_details'] = json_decode( $result['result_details'], true );
+            foreach( $result['votes_details'] as $question ) {
+                $vote_answer = $question['question'] . ": ";
+                foreach( $question['answers'] as $answer ) {
+                    $vote_answer .= $answer . ", ";
+                }
+                $result['vote_answers'] .= $vote_answer . ".\n";
+                $result['vote_answers']=str_replace(", .",".",$result['vote_answers']);
+                if( isset( $question['cf'] ) ) {
+                    $custom_fields_details = "";
+                    foreach( $question['cf'] as $cf_id ) {
+                        $custom_field_log = self::get_custom_field_log_by_id( $cf_id );
+                        $custom_field     = self::get_custom_field_by_id( $custom_field_log[0]['custom_field_id'] );
+                        if($custom_field_log[0]['custom_field_value'])
+                            $custom_fields_details .= $custom_field[0]['custom_field'] . ": " . $custom_field_log[0]['custom_field_value'] . ".\n";
+
+                    }
+                    $result['custom_fields'] = $custom_fields_details;
+                }
+            }
+        }
+        $paginate_args           = array(
+            'base'      => remove_query_arg( 'page_no', $_SERVER ['REQUEST_URI'] ) . '%_%',
+            'format'    => '&page_no=%#%',
+            'total'     => $total_results_pages,
+            'current'   => max( 1, $data['page_no'] ),
+            'prev_next' => true,
+            'prev_text' => __yop_poll( '&laquo; Previous' ),
+            'next_text' => __yop_poll( 'Next &raquo;' )
+        );
+        $_SERVER ['REQUEST_URI'] = remove_query_arg( array( 'action' ), $_SERVER ['REQUEST_URI'] );
+        $data['pagination']      = paginate_links( $paginate_args );
+        $data['poll']            = new YOP_POLL_Poll_Model( $data['poll_id'] );
+        $data['title']           = "Votes";
+
+
+
+
+
+
+
+
+        wp_enqueue_script( 'yop-poll-results-votes-js', YOP_POLL_URL . '/js/polls/yop-poll-results-votes.js', array( 'jquery' ), YOP_POLL_VERSION, true );
+        $index=1;$data['title']            = __( "Results" );
+        $data['poll_id']          = ( isset ( $_GET ['id'] ) ? intval( $_GET ['id'] ) : 0 );
+        $data['results_order_by'] = ( isset ( $_GET ['results_order_by'] ) ? $_GET ['results_order_by'] : 'id' );
+        $data['results_order']    = ( isset ( $_GET ['results_order'] ) ? $_GET ['results_order'] : 'ASC' );
+        $data['soav']             = ( isset ( $_GET ['soav'] ) ? $_GET ['soav'] : 'no' );
+        $data['a']                = ( isset ( $_GET ['a'] ) ? $_GET ['a'] : 'no' );
+        $current_poll             = new YOP_POLL_Poll_Model( $data['poll_id'], $is_view_results = "no", $question_sort = "poll_order", $question_sort_rule = "ASC", $answer_sort = $data['results_order_by'], $answer_sort_rule = $data['results_order'] );
+        $data['poll_details']     = array( 'name' => $current_poll->poll_title, 'question' => $current_poll->questions );
+        if ( 'yes' == $data['soav'] ){
+            $data['display_other_answers_values'] = true;
+        }
+        else {
+            $data['display_other_answers_values'] = false;
+        }
+        $percentages = array();
+        $total_votes = array();
+        $i           = 0;
+        foreach ( $current_poll->questions as $question ) {
+            $total_votes[$i] = 0;
+            foreach ( $question->answers as $answer ) {
+                $total_votes[$i] += floatval( $answer->votes );
+            }
+            $i++;
+        }
+        $i = 0;
+
+        foreach ( $current_poll->questions as $question ) {
+            foreach ( $question->answers as $answer ) {
+                if ( $answer->votes > 0 ){
+                    $answer->status = round( ( $answer->votes * 100 ) / $total_votes[$i], 1 );
+                }
+                else {
+                    $percentages[$i][] = 0;
+                    $answer->status    = 0;
+                }
+            }
+            $i++;
+        }
+
+
+        $data['cf_sdate']      = ( isset ( $_GET ['cf_sdate'] ) ? $_GET ['cf_sdate'] : '' );
+        $data['cf_edate']      = ( isset ( $_GET ['cf_edate'] ) ? $_GET ['cf_edate'] : '' );
+        $data['title']         = "View Votes";
+        $data['custom_fields'] = array();
+
+        foreach ( $current_poll->questions as $question ) {
+            $data['cf_per_page'] = ( isset ( $_REQUEST ['cf_per_page'] ) ? intval( $_REQUEST ['cf_per_page'] ) : 100 );
+            $data['cf_page_no']  = ( isset ( $_REQUEST ['cf_page_no'] ) ? ( int )$_REQUEST ['cf_page_no'] : 1 );
+
+            $poll_custom_fields = self::get_poll_customfields( $data['poll_id'], $question->ID );
+            $custom_fields_logs = self::get_poll_customfields_logs( $data['poll_id'], $question->ID, 'vote_id', 'asc', ( $data['cf_page_no'] - 1 ) * $data['cf_per_page'], $data['cf_per_page'], $data['cf_sdate'], $data['cf_edate'] );
+            unset( $column_custom_fields_ids );
+            foreach ( $poll_custom_fields as $custom_field ) {
+                $column_custom_fields_ids [] = $custom_field ['ID'];
+
+            }
+            if ( count( $custom_fields_logs ) > 0 ){
+                foreach ( $custom_fields_logs as &$logs ) {
+                    foreach ( $column_custom_fields_ids as $custom_field_id ) {
+                        $vote_log_values = array();
+                        $vote_logs       = explode( '<#!,>', $logs ['vote_log'] );
+                        if ( count( $vote_logs ) > 0 ){
+                            foreach ( $vote_logs as $vote_log ) {
+                                $temp                        = explode( '<#!->', $vote_log );
+                                $vote_log_values [$temp [1]] = stripslashes( $temp [0] );
+                            }
+                        }
+                    }
+                    $custom_fields_logs_details[] = array( 'vote_id' => $logs['vote_id'], "tr_id" => $logs['tr_id'], "vote_date" => $logs['vote_date'], "custom_fields_value" => $vote_log_values, 'column_custom_fields_ids' => $column_custom_fields_ids, );
+                }
+
+            }
+            $data['total_custom_fields_logs'] = self::get_poll_total_customfields_logs( $data['poll_id'], $question->ID, $data['cf_sdate'], $data['cf_edate'] );
+            $data['total_custom_fields_logs_pages'] = ceil( $data['total_custom_fields_logs'] / $data['cf_per_page'] );
+            $data['column_custom_fields_ids']       = array();
+
+            if ( intval( $data['cf_page_no'] ) > intval( $data['total_custom_fields_logs_pages'] ) ){
+                $data['cf_page_no'] = 1;
+            }
+            $data['cf_args']           = array( 'base' => remove_query_arg( 'cf_page_no', $_SERVER ['REQUEST_URI'] ) . '%_%', 'format' => '&cf_page_no=%#%', 'total' => $data['total_custom_fields_logs_pages'], 'current' => max( 1, $data['cf_page_no'] ), 'prev_next' => true, 'prev_text' => __( '&laquo; Previous' ), 'next_text' => __( 'Next &raquo;' ) );
+            $data['cf_pagination']     = paginate_links( $data['cf_args'] );
+            $chart_answer[$index][0][]="Answer";$i=1;
+            $chart_answer[$index][0][]="Votes";
+            foreach ( $question->answers as $answer ) {
+                if(($answer->type=="other"&& $data['display_other_answers_values'] ==1)||$answer->type!="other"){
+                    $chart_answer[$index][$i][0]=$answer->answer;
+                    $chart_answer[$index][$i][1]=(int)$answer->votes;
+                    $i++;
+                }
+            }
+
+
+            $question_detail[]         = array( 'other_answer' => $question->other_answers_label, 'name' => $question->question, 'answers' => $question->answers, 'custom_fields' => self::get_poll_customfields( $data['poll_id'], $question->ID ), 'custom_fields_logs_details' => $custom_fields_logs_details, 'q_id' => $question->ID, 'total_custom_fields_logs' => $data['total_custom_fields_logs'], 'cf_pagination' => $data['cf_pagination'] );
+            $data['questions_details'] = $question_detail;
+
+            unset( $custom_fields_logs_details );
+            unset( $column_custom_fields_ids );
+            $index++;
+        }
+        wp_localize_script( 'yop-poll-results-votes-js', 'charts_answer',  $chart_answer );
+
+        $data['total_logs_other_answers'] = 0;
+        foreach ( $current_poll->questions as $question ) {
+            foreach ( $question->answers as $other_answer ) {
+                if ( $other_answer->type == 'other' ){
+                    $data['total_logs_other_answers']++;
+                }
+            }
+        }
+
+
+        $this->display( 'results_print.html', $data );
+
+    }
+
 
     private function export_answers() {
-        $data['title']            = __( "Results" );
+        $data['title']            = __( "View Votes" );
         $data['poll_id']          = ( isset ( $_GET ['id'] ) ? intval( $_GET ['id'] ) : 0 );
         $data['results_order_by'] = ( isset ( $_GET ['results_order_by'] ) ? $_GET ['results_order_by'] : 'id' );
         $data['results_order']    = ( isset ( $_GET ['results_order'] ) ? $_GET ['results_order'] : 'ASC' );
@@ -558,7 +822,7 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
         $poll_id             = ( isset ( $_GET ['id'] ) ? intval( $_GET ['id'] ) : 0 );
         $data                = array();
         $data['action_type'] = $action_type;
-        $data['title']       = __yop_poll( 'Add New Poll' );
+        $data['title']       = __yop_poll( "Add New Poll" );
         $data['templates']   = YOP_POLL_MODEL::get_yop_poll_templates_search( 'id', 'asc' );
         $data['poll_url']=YOP_POLL_URL;
         $n                   = count( $data['templates'] );
@@ -1290,7 +1554,7 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
             'poll_id'       => $_REQUEST['id'],
             'return_fields' => 'COUNT(*) as total_results',
             'search'        => array(
-                'fields' => array( 'ip' ),
+                'fields' => array( $_REQUEST['searchbox']  ),
                 'value'  => isset ( $_REQUEST ['s_ip'] ) ? $_REQUEST ['s_ip'] : ''
             ),
             'orderby'       => $orderby,
@@ -1404,7 +1668,7 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
 
         $data['cf_sdate']      = ( isset ( $_GET ['cf_sdate'] ) ? $_GET ['cf_sdate'] : '' );
         $data['cf_edate']      = ( isset ( $_GET ['cf_edate'] ) ? $_GET ['cf_edate'] : '' );
-        $data['title']         = "Results";
+        $data['title']         = "View Votes";
         $data['custom_fields'] = array();
 
         foreach ( $current_poll->questions as $question ) {
@@ -1475,6 +1739,8 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
         $this->display( 'results_votes.html', $data );
 
     }
+
+
     public function view_poll_results() {
         global $page, $action, $current_user;
         $poll_id          = ( isset ( $_GET ['id'] ) ? intval( $_GET ['id'] ) : 0 );
@@ -1841,7 +2107,17 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
         $sql_search = '';
         if( count( $search['fields'] ) > 0 ) {
             foreach( $search['fields'] as $field ) {
-                $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr( $field ) . '` like \'%%%s%%\' OR', $search['value'] );
+                if(!isset($field) || $field=='all'){
+                    $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr( 'ip' ) . '` like \'%%%s%%\' OR', $search['value'] );
+                    $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr('vote_id') . '` like \'%%%s%%\' OR', $search['value'] );
+                    $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr('user_type') . '` like \'%%%s%%\' OR', $search['value'] );
+                    $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr('tr_id') . '` like \'%%%s%%\' OR', $search['value'] );
+                    $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr('vote_date') . '` like \'%%%s%%\' OR', $search['value'] );
+                }
+                else
+                {
+                    $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr( $field ) . '` like \'%%%s%%\' OR', $search['value'] );
+                }
             }
             $sql_search = ' AND ( ' . trim( $sql_search, 'OR' ) . ' ) ';
         }
@@ -1900,7 +2176,17 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
         $sql_search = '';
         if( count( $search['fields'] ) > 0 ) {
             foreach( $search['fields'] as $field ) {
-                $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr( $field ) . '` like \'%%%s%%\' OR', $search['value'] );
+                if(!isset($field) || $field=='all'){
+                    $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr( 'ip' ) . '` like \'%%%s%%\' OR', $search['value'] );
+                    $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr('vote_id') . '` like \'%%%s%%\' OR', $search['value'] );
+                    $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr('user_type') . '` like \'%%%s%%\' OR', $search['value'] );
+                    $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr('tr_id') . '` like \'%%%s%%\' OR', $search['value'] );
+                    $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr('vote_date') . '` like \'%%%s%%\' OR', $search['value'] );
+                }
+                else
+                {
+                    $sql_search .= $GLOBALS['wpdb']->prepare( ' `' . esc_attr( $field ) . '` like \'%%%s%%\' OR', $search['value'] );
+                }
             }
             $sql_search = ' AND ( ' . trim( $sql_search, 'OR' ) . ' ) ';
         }
@@ -2021,24 +2307,29 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
 
         $csv_file_name    = 'votes_export.' . date( 'YmdHis' ) . '.csv';
         $csv_header_array = array(
-            __( 'Vote ID', 'yop_poll' ),
+
             __( 'Vote details', 'yop_poll' ),
-            __( 'User_type', 'yop_poll' ),
-            __( 'Traking Id', 'yop_poll' ),
             __( 'Ip', 'yop_poll' ),
             __( 'Vote date', 'yop_poll' ),
-            __( 'Custom Fields', 'yop_poll' )
+
         );
+
         header( "Content-Type: text/csv" );
         header( "Cache-Control: must-revalidate, post-check=0,pre-check=0" );
         header( "Content-Transfer-Encoding: binary\n" );
         header( 'Content-Disposition: attachment; filename="' . $csv_file_name . '"' );
         ob_start();
         $f = fopen( 'php://output', 'w' ) or show_error( __( "Can't open php://output!", 'yop_poll' ) );
-
+        $custom=self::get_custom_field_by_poll_id(  $data['poll_id'] );
+        $custom_to_export=array();
+        foreach($custom as $cust){
+            array_push($csv_header_array,$cust['custom_field']);
+            array_push($custom_to_export,$cust['ID']);
+        }
         if( ! fputcsv( $f, $csv_header_array ) ) {
             _e( "Can't write header!", 'yop_poll' );
         }
+
         if( $_REQUEST ['export'] != "all" ) {
             $votes = array();
 
@@ -2049,32 +2340,39 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
             foreach( $data['results'] as &$result ) {
                 $result['votes_details'] = json_decode( $result['result_details'], true );
                 foreach( $result['votes_details'] as $question ) {
-                    $vote_answer = $question['question'] . ": ";
+                    $vote_answer = "";
                     foreach( $question['answers'] as $answer ) {
-                        $vote_answer .= $answer . ", ";
+                        $vote_answer .= $answer . "\n";
                     }
                     $result['vote_answers'] .= $vote_answer . ".\n";
                     if( isset( $question['cf'] ) ) {
                         $custom_fields_details = "";
                         foreach( $question['cf'] as $cf_id ) {
-                            $custom_field_log = self::get_custom_field_log_by_id( $cf_id );
-                            $custom_field     = self::get_custom_field_by_id( $custom_field_log[0]['custom_field_id'] );
-                            $custom_fields_details .= $custom_field[0]['custom_field'] . ": " . $custom_field_log[0]['custom_field_value'] . "";
+                                $custom_field_log = self::get_custom_field_log_by_id($cf_id);
+                                $custom_field = self::get_custom_field_by_id($custom_field_log[0]['custom_field_id']);
+
+                             $custom_fields_details[$custom_field_log[0]['custom_field_id']]=$custom_field_log[0]['custom_field_value'];
 
                         }
+
                         $result['custom_fields'] = $custom_fields_details;
 
                     }
                 }
             }
             foreach( $data['results'] as $detail ) {
-                $votes[] = $detail['vote_id'];
+
                 $votes[] = $detail['vote_answers'];
-                $votes[] = $detail['user_type'];
-                $votes[] = $detail['tr_id'];
+
                 $votes[] = $detail['ip'];
                 $votes[] = $detail['vote_date'];
-                $votes[] = $detail['custom_fields'];
+
+                foreach($custom_to_export as $export)
+
+                    if(isset($detail['custom_fields'][$export]))
+                        $votes[] = $detail['custom_fields'][$export];
+                    else
+                        $votes[] = " ";
                 if( ! fputcsv( $f, $votes ) ) {
                     _e( "Can't write header!", 'yop_poll' );
                 }
@@ -2098,9 +2396,9 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                     if( isset( $question['cf'] ) ) {
                         $custom_fields_details = "";
                         foreach( $question['cf'] as $cf_id ) {
-                            $custom_field_log = self::get_custom_field_log_by_id( $cf_id );
-                            $custom_field     = self::get_custom_field_by_id( $custom_field_log[0]['custom_field_id'] );
-                            $custom_fields_details .= $custom_field[0]['custom_field'] . ": " . $custom_field_log[0]['custom_field_value'] . ".";
+                            $custom_field_log = self::get_custom_field_log_by_id($cf_id);
+                            $custom_field = self::get_custom_field_by_id($custom_field_log[0]['custom_field_id']);
+                            $custom_fields_details[$custom_field_log[0]['custom_field_id']]=$custom_field_log[0]['custom_field_value'];
 
                         }
                         $result['custom_fields'] = $custom_fields_details;
@@ -2108,14 +2406,18 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                     }
                 }
             }
+
             foreach( $data['results'] as $detail ) {
-                $votes[] = $detail['vote_id'];
+
                 $votes[] = $detail['vote_answers'];
-                $votes[] = $detail['user_type'];
-                $votes[] = $detail['tr_id'];
                 $votes[] = $detail['ip'];
                 $votes[] = $detail['vote_date'];
-                $votes[] = $detail['custom_fields'];
+
+                foreach($custom_to_export as $export)
+                    if(isset($detail['custom_fields'][$export]))
+                        $votes[] = $detail['custom_fields'][$export];
+                else
+                    $votes[] = " ";
                 if( ! fputcsv( $f, $votes ) ) {
                     _e( "Can't write header!", 'yop_poll' );
                 }
@@ -2543,7 +2845,16 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
 
         return $result;
     }
+    public function get_custom_field_by_poll_id( $poll_id ) {
+        global $wpdb;
+        $result = $wpdb->get_results( $wpdb->prepare( "
+                        SELECT *
+                        FROM   $wpdb->yop_poll_custom_fields
+                        WHERE poll_id = %d ORDER  BY ID Asc
+                        ", $poll_id ), ARRAY_A );
 
+        return $result;
+    }
     public function yop_poll_get_results_by_poll_id( $poll_id ) {
         global $wpdb;
         $result = $wpdb->get_results( $wpdb->prepare( "

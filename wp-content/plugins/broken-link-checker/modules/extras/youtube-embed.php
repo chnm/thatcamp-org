@@ -28,7 +28,8 @@ class blcYouTubeEmbed extends blcEmbedParserBase {
 	
 	function link_url_from_src($src){
 		//Extract video ID from the SRC. The ID is always 11 characters.
-		$video_id = substr(	end(explode('/', $src)), 0, 11 );
+		$parts = explode('/', $src);
+		$video_id = substr(	end($parts), 0, 11 );
 		
 		//Reconstruct the video permalink based on the ID
 		$url = 'http://www.youtube.com/watch?v='.$video_id;

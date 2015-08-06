@@ -1,9 +1,9 @@
 === WP Mailto Links - Manage Email Links ===
 Contributors: freelancephp
 Tags: hide, email, email address, mailto, link, antispam, protect, spambot, encode, encrypt, obfuscate, email icon, javascript
-Requires at least: 3.4.0
-Tested up to: 4.0.0
-Stable tag: 1.4.1
+Requires at least: 3.6.0
+Tested up to: 4.2.2
+Stable tag: 1.6.0
 
 Protect email addresses and mailto links from spambots and being used for spamming. Easy to use without configuration.
 
@@ -11,31 +11,25 @@ Protect email addresses and mailto links from spambots and being used for spammi
 Protect your email addresses and manage mailto links on your site, set mail icon, styling and more.
 
 = Features =
-* Protect mailto links (automatically or shortcode)
+* Protect mailto links automatically
 * Protect plain email addresses or convert them to mailto links
+* Protect RSS feed
 * Set mail icon
-* RSS feed protection
-* And more...
+* Use shortcodes, template functions, action and filter hooks
+* Compatible with WPMU (Multisite)
 
 The plugin combines the best email protection methods explained in [this article](http://perishablepress.com/press/2010/08/01/best-method-for-email-obfuscation/) by Jeff Starr.
 
 = Easy to use =
 After activating the plugin all options are already set for protecting your emails and mailto links. Optionally you can also set some style options, like adding an icon.
 
-Although the plugin can scan mailto links automatically, you could also use the shortcode:
-`[wpml_mailto email="info@myemail.com"]My Email[/wpml_mailto]`
-
-[See more documentation](http://wordpress.org/extend/plugins/wp-mailto-links/other_notes/).
-
-= Support =
-This plugin has the same [requirements](http://wordpress.org/about/requirements/) as WordPress.
-If you are experiencing any problems, just take a look at the [FAQ](http://wordpress.org/extend/plugins/wp-mailto-links/faq/) or report it in the [support section](http://wordpress.org/support/plugin/wp-mailto-links). You can also send me a mail with [this contactform](http://www.freelancephp.net/contact/).
-
-= Github =
-I published the code on [Github](https://github.com/freelancephp/WP-Mailto-Links) so anybody can commit code changes.
+= Sources =
+* [Documentation](http://wordpress.org/extend/plugins/wp-mailto-links/other_notes/)
+* [FAQ](http://wordpress.org/extend/plugins/wp-mailto-links/faq/)
+* [Github](https://github.com/freelancephp/WP-Mailto-Links)
 
 = Like this plugin? =
-Please [rate this plugin](http://wordpress.org/support/view/plugin-reviews/wp-mailto-links) or [post a comment](http://www.freelancephp.net/wp-mailto-links/) on my blog.
+[Send your review](http://wordpress.org/support/view/plugin-reviews/wp-mailto-links).
 
 == Installation ==
 
@@ -46,11 +40,6 @@ Please [rate this plugin](http://wordpress.org/support/view/plugin-reviews/wp-ma
 1. The plugin sets by default the right options for protecting your emails. All mailto links will automatically be scanned and protected.
 
 == Frequently Asked Questions ==
-
-= Prefilled form field for emailaddress contains weird value. How to solve? =
-
-A prefilled form field that contains an emailaddress is also being protected by the plugin. The protection code is causing a weird value.
-This can be solved by excluding that particular page from being processed by the plugin. See answer of the next question how to do that.
 
 = How can I exclude pages? =
 
@@ -73,6 +62,24 @@ add_filter('wpml_mailto', 'special_mailto', 10, 4);`
 By default shortcodes are not applied to (text) widgets. To support that you can add it to the text widget filter ([for more](http://www.wprecipes.com/how-to-add-shortcodes-in-sidebar-widgets)).
 
 If you are not a coder, then just activate [this plugin](http://wordpress.org/extend/plugins/shortcodes-in-sidebar-widgets/), which does the same thing.
+
+= How to set a font icon for mailto links, like Font Awesome Icons? =
+
+To set a [Font Awesome Icons](http://fortawesome.github.io/Font-Awesome/) use the `wpml_mailto` filter and add this code to functions.php of your theme:
+
+`function set_font_icon_on_mailto($link, $display, $email, $attrs) {
+    return str_replace('</a>', ' <i class="fa fa-envelope-o"></i></a>', $link);
+}
+
+add_filter('wpml_mailto', 'set_font_icon_on_mailto', 10, 4);`
+
+The CSS of Font Awesome Icons alse needs to be loaded. To do so also add this code:
+
+`function add_font_awesome_style() {
+    wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+}
+
+add_action('wp_enqueue_scripts', 'add_font_awesome_style');`
 
 = I got a blank page on my site. What to do about it? =
 There have been some reports of blank pages, sometimes in combination with other plugins. It has probably to do with filtering the whole html page. Try disable in the admin panel the option "Options have effect" > "All contents"  (keep in mind that not the whole page will be scanned for protecting emails). Please report it.
@@ -123,6 +130,14 @@ add_filter('wpml_mailto', 'special_mailto', 10, 4);`
 Now all mailto links will be wrapped around a `<b>`-tag.
 
 == Changelog ==
+
+= 1.6.0 =
+* Added option strong protection for emails in input fields
+* JavaScript depends on jQuery
+* Solved $wp_version missing error
+
+= 1.5.0 =
+* Secure JS encoding for input fields
 
 = 1.4.1 =
 * Solved JS only loading on plugin admin page

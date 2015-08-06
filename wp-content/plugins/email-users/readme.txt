@@ -3,8 +3,8 @@ Contributors: vprat, mpwalsh8, marvinlabs
 Donate link: http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/
 Tags: email, users, list, admin
 Requires at least: 3.6.1
-Tested up to: 4.1.1
-Stable tag: 4.7.0
+Tested up to: 4.2.2
+Stable tag: 4.7.5
 License: GPL
 
 == Description ==
@@ -58,6 +58,37 @@ No.  Email Users does not have any "queueing" capability nor is it planned.  Ema
 
 Unfortunately there is no way to know for sure.  Email Users has a "debug" mode which will allow you to see the composition of the email headers.  Examining this data will allow you to confirm the expected addresses are indeed in the headers.  What happens to the actual email once it is sent using wp_mail() is out of Email Users control and there is no way using WordPress to verify the email was sent and received.
 
+== Filters and Actions ==
+
+Email Users supports a number of filters and actions.
+1.  Action:  mailusers_before_wp_mail - called before wp_mail is called.
+1.  Action:  mailusers_after_wp_mail - called after wp_mail is called.
+1.  Filter:  mailusers_manipulate_headers - called before wp_mail is called.
+
+This example shows how the mailusers_manipulate_headers filter can be used to change the headers to be compatible with [wpMandrill](https://wordpress.org/plugins/wpmandrill/).  This code could/would be placed in your [functions.php](http://codex.wordpress.org/Functions_File_Explained) file.
+
+`
+/**
+ * wpMandrill needs the recipients in the TO header instead
+ * of the BCC header which Email Users uses by default.  This
+ * filter will move all of the recipients from the BCC header
+ * into the TO header and clean up any formatting and then nuke
+ * the BCC header.
+ *
+ */
+function mailusers_mandrill_headers($to, $headers, $bcc)
+{
+    //  Copy the BCC headers to the TO header without the "Bcc:" prefix
+    $to = preg_replace('/^Bcc:\s+/', '', $bcc) ;
+
+    //  Empty out the BCC header
+    $bcc = array() ;
+
+    return array($to, $headers, $bcc) ;
+}
+
+add_filter('mailusers_manipulate_headers', 'mailusers_mandrill_headers', 10, 3) ;
+`
 == Custom Filter Usage ==
 
 Email Users provides the ability to send email to a very specific set of users using a custom meta filter.  To create a special mail list, you will need to add something similar to the following to your theme's functions.php file or create a separate plugin file.
@@ -190,9 +221,23 @@ function update_publicworks_meta_filter()
 
 == Changelog ==
 
+= Version 4.7.5 =
+* Fixed bug in footer text setting introduced during WPBE testing.
+
+= Version 4.7.4 =
+*  Resolved a number of PHP Strict Standard notices resulting from calling non-static functions statically.
+
+= Version 4.7.3 =
+*  Changed plugin activation hook to handle sites with large amounts of users.  This addresses an out of memory bug reported on the WordPress Support Forum.  The get_users() function returns a large amount of information for each user by default, the activation hook only needs the ID field.
+* Added example to demonstrate filter usage to allow Email Users to work with WP Better Emails.
+
+= Version 4.7.2 =
+*  Added *mailusers_html_wrapper* filter to allow sites to customize the HTML which is wrapped around the message text.  When using this hook, the hook implementation is responsible for adding all of necessary HTML necessary for a valid document.  There is an example usage in the /examples directory within the plugin.
+
 = Version 4.7.1 =
 *  Tightened up the max_input_vars check to account for older versions of PHP which do not have this setting.
 *  Added support for the WordPress [Editable Roles Filter](http://codex.wordpress.org/Plugin_API/Filter_Reference/editable_roles) per a request from the [WordPress Support Forum](https://wordpress.org/support/topic/mailusers_get_roles-function-to-use-the-core-get_editable_roles?replies=2#post-6513328).
+*  Added filter to facilitate manipulating mail headers.  This is primarily targeted at wpMandrill support but can be used for other purposes.
 
 = Version 4.7.0 =
 * Added code to detect scenario where number of email recipients could potentially exceed the web server's ability to process it (PHP's max_input_vars setting).  A warning is displayed to the user when this situation is detected.
@@ -460,4 +505,4 @@ You can now start sending email or notifications.
 
 == Upgrade Notice ==
 
-After updating Email Users, visit the Plugin Settings page (Dashboard->Settings->Email Users) and check for any new options.  Make any necessary ajustments and save the options.  A notice will appear on the Settings page until the options are saved noting that the plugin version has been updated.
+After updating Email Users, visit the Plugin Settings page (Dashboard->Settings->Email Users) and check for any new options.  Make any necessary adjustments and save the options.  A notice will appear on the Settings page until the options are saved noting that the plugin version has been updated.

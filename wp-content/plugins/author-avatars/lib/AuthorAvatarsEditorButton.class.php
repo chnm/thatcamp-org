@@ -30,7 +30,8 @@ class AuthorAvatarsEditorButton {
 		// we need to test that we are in the admin section bewfore we add the button to tinyMCE
 		if ( $pagenow != 'index.php' ) {
 			// Don't bother adding the button if the current user lacks permissions
-			if ( current_user_can( 'edit_posts' ) || current_user_can( 'edit_pages' ) ) {
+			$user_level_for_editor = apply_filters( 'aa_user_level_for_editor', 'edit_posts' );
+			if ( current_user_can( $user_level_for_editor ) || current_user_can( $user_level_for_editor ) ) {
 				// Add only in Rich Editor mode
 				if ( get_user_option( 'rich_editing' ) == 'true' ) {
 					add_filter( 'mce_external_plugins', array( &$this, 'add_tinymce_plugin' ) );

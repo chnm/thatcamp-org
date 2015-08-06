@@ -703,9 +703,15 @@ class blcLinkQuery {
 				$class = 'class="current"';
 				$number_class .= ' current-link-count';
 			}
-			
-			$items[] = "<li><a href='tools.php?page=view-broken-links&filter_id=$filter' {$class}>
-				{$data['name']}</a> <span class='count'>(<span class='$number_class'>{$data['count']}</span>)</span>";
+
+			$items[] = sprintf(
+				"<li><a href='tools.php?page=view-broken-links&filter_id=%s' %s>%s</a> <span class='count'>(<span class='%s'>%d</span>)</span>",
+				esc_attr($filter),
+				$class,
+				esc_html($data['name']),
+				$number_class,
+				$data['count']
+			);
 		}
 		echo implode(' |</li>', $items);
 		

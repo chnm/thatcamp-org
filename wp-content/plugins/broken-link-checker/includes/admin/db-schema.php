@@ -34,7 +34,7 @@ function blc_get_db_schema(){
 		`link_id` int(10) unsigned NOT NULL,
 		`container_id` int(10) unsigned NOT NULL,
 		`container_type` varchar(40) NOT NULL DEFAULT 'post',
-		`link_text` varchar(250) NOT NULL DEFAULT '',
+		`link_text` text NOT NULL DEFAULT '',
 		`parser_type` varchar(40) NOT NULL DEFAULT 'link',
 		`container_field` varchar(250) NOT NULL DEFAULT '',
 		`link_context` varchar(250) NOT NULL DEFAULT '',

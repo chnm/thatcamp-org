@@ -6,7 +6,7 @@
 <form method="post" name="yop_poll_edit_add_new_form" id="yop-poll-edit-add-new-form">
 	{{ wp_nonce_field( 'yop-poll-add-edit-action', 'yop-poll-add-edit-name', false, false ) | raw }}
 	{% if ( 'edit' == action_type ) %}
-    <span> {{ __( 'Shortcode' ) }}:
+    <span> {{ __( "Shortcode" ) }}:
         <input id="yop_poll_shortcode" type="text" value='[yop_poll id="{{ current_poll.ID }}"]' readonly="readonly">
     </span>
     {% endif %}
@@ -16,7 +16,7 @@
                 <div id="post-body-content">
                     <div class="yop-poll-titlediv">
                         <div class="yop-poll-titlewrap">
-                            <label for="yop-poll-title" class="yop-poll-title-prompt-text">{{ __( 'Enter Poll Title Here') }}</label>
+                            <label for="yop-poll-title" class="yop-poll-title-prompt-text">{{ __( "Enter Poll Title Here") }}</label>
                             <input type="text" id="yop-poll-title" class="yop-poll-title" value="{{ current_poll.poll_title }}" size="30" name="poll_title" >
                         </div><!-- titlewrap -->
                     </div><!-- titlediv -->
@@ -25,11 +25,11 @@
 
                 <div class="postbox-container" id="postbox-container-1">
                     <div class="postbox stuffbox">
-                        <div title="{{ __('Click to toggle') }}" class="handlediv">
+                        <div title='{{ __("Click to toggle") }}' class="handlediv">
                             <br/>
                         </div>
                         <h3 class="hndle">
-                            <span>{{ __('Save') }}</span>
+                            <span>{{ __("Save") }}</span>
                         </h3>
                         <div class="inside">
                             <div id="submitlink" class="submitbox">
@@ -37,7 +37,7 @@
                                     <div id="publishing-action">
                                         <input type="hidden" value="{{ current_poll.ID }}" name="poll_id"/>
                                         <input type="hidden" value="{{ action_type }}" name="action_type"/>
-                                        <input type="button" accesskey="p" class="button-primary" value="{{ __('Save') }}" id="yop-poll-edit-add-new-form-submit" onclick="save_poll()"/>
+                                        <input type="button" accesskey="p" class="button-primary" value='{{ __("Save") }}' id="yop-poll-edit-add-new-form-submit" onclick="save_poll()"/>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
@@ -49,7 +49,7 @@
 
                 <div class="postbox-container" id="postbox-container-2">
                     <div class="icon32-yop-poll-question-section">&nbsp;</div>
-                    <h2 class="yop-poll-section-header">{{ __( 'Questions' ) }}:</h2>
+                    <h2 class="yop-poll-section-header">{{ __( "Questions" ) }}:</h2>
                     <div class="yop-poll-questions-sortable">
                         {% for question in current_poll.questions %}
                         {% include 'polls_question_template.html' %}
@@ -60,7 +60,7 @@
                     </div>
                     <div id="publishing-action">
                         <span class="spinner"></span>
-                        {{ input( __('Add New Question') , 'yop-poll-edit-add-new-question', '', 'button', '', 'button-primary', "yop_poll_add_new_question( \'\', this )" ) }}
+                        {{ input( __("Add New Question") , 'yop-poll-edit-add-new-question', '', 'button', '', 'button-primary', "yop_poll_add_new_question( \'\', this )" ) }}
                     </div>
                     <div class="clear"></div>
                     <hr class="yop-poll-sections-delimiter"/>
@@ -68,14 +68,14 @@
 
                     <!-- Start Poll Template -->
                     <div class="postbox stuffbox">
-                        <div title="{{ __('Click to toggle') }}" class="handlediv"><br/> </div>
+                        <div title='{{ __("Click to toggle") }}' class="handlediv"><br/> </div>
                         <h3 class="hndle" style="border-bottom: 1px solid #AAAAAA;">
-                            <span>{{ __('Poll Templates') }}</span>
+                            <span>{{ __("Poll Templates") }}</span>
                         </h3>
                         <div class="inside yop-poll-slider">
                             <div class="yop-poll-slider-container">
                                 <h4 class="hndle">
-                                    <span>{{ __('Page Template') }}:</span>
+                                    <span>{{ __("Page Template") }}:</span>
                                 </h4>
                                 <input type="hidden" id="yop-poll-page-template" name="yop_poll_options[template]" value="{{ current_poll.template }}">
                                     <div class="yop-poll-page-slider" id="yop-poll-page-template-slider">
@@ -97,7 +97,7 @@
                             </div>
                             <div class="yop-poll-slider-container">
                                 <h4 class="hndle">
-                                    <span>{{ __('Widget Template') }}:</span>
+                                    <span>{{ __("Widget Template") }}:</span>
                                 </h4>
                                 <input type="hidden" id="yop-poll-widget-template" name="yop_poll_options[widget_template]" value="{{ current_poll.widget_template }}">
                                     <div class="yop-poll-widget-slider" id="yop-poll-widget-template-slider">
@@ -123,16 +123,16 @@
 
                     <!-- Start Poll Options -->
                     <div class="postbox stuffbox closed">
-                        <div title="{{ __('Click to toggle') }}" class="handlediv"><br/> </div>
+                        <div title='{{ __("Click to toggle") }}' class="handlediv"><br/> </div>
                         <h3 class="hndle" style="border-bottom: 1px solid #AAAAAA;">
-                            <span>{{ __('Poll Options') }}</span>
+                            <span>{{ __("Poll Options") }}</span>
                         </h3>
                         <div class="inside">
                             <table width="100%" cellspacing="0" class="yop-poll-options-table links-table">
                                 <tbody>
                                     <tr>
                                         <th>
-                                            {{__( 'Start Date' ) }}:
+                                            {{__( "Start Date" ) }}:
                                         </th>
                                         <td valign="top">
                                             {{ input(current_poll.poll_start_date, 'yop-poll-start-date', 'poll_start_date', 'text', '', 'hasDatePicker' ) }}
@@ -140,7 +140,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            {{__( 'End Date' ) }}:
+                                            {{__( "End Date" ) }}:
                                         </th>
                                         <td valign="top">
                                             <label for="yop-poll-never-expire">
@@ -150,121 +150,121 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>{{__('Display Results')}}:</th>
+                                        <th>{{__("Display Results")}}:</th>
                                         <td>
-                                            {{ label( 'Before Vote',        'yop-poll-view-results-before-vote',    'yop_poll_options[view_results]',       "before",               "radio", "yop-poll-view-results-hide-custom", current_poll.view_results, "before"               ) }}
-                                            {{ label( 'After Vote',         'yop-poll-view-results-after-vote',     'yop_poll_options[view_results]',       "after",                "radio", "yop-poll-view-results-hide-custom", current_poll.view_results, "after"                ) }}
-                                            {{ label( 'After Poll End Date','yop-poll-view-results-after-poll-end-date', 'yop_poll_options[view_results]',  "after-poll-end-date",  "radio", "yop-poll-view-results-hide-custom", current_poll.view_results, "after-poll-end-date"  ) }}
-                                            {{ label( 'Never',              'yop-poll-view-results-never',          'yop_poll_options[view_results]',       "never",                "radio", "yop-poll-view-results-hide-custom", current_poll.view_results, "never"                ) }}
-                                            {{ label( 'Custom Date',        'yop-poll-view-results-custom',         'yop_poll_options[view_results]',       "custom-date",          "radio", "yop-poll-view-results-show-custom", current_poll.view_results, "custom-date"          ) }}
+                                            {{ label( __("Before Vote"),        'yop-poll-view-results-before-vote',    'yop_poll_options[view_results]',       "before",               "radio", "yop-poll-view-results-hide-custom", current_poll.view_results, "before"               ) }}
+                                            {{ label( __("After Vote"),         'yop-poll-view-results-after-vote',     'yop_poll_options[view_results]',       "after",                "radio", "yop-poll-view-results-hide-custom", current_poll.view_results, "after"                ) }}
+                                            {{ label( __("After Poll End Date"),'yop-poll-view-results-after-poll-end-date', 'yop_poll_options[view_results]',  "after-poll-end-date",  "radio", "yop-poll-view-results-hide-custom", current_poll.view_results, "after-poll-end-date"  ) }}
+                                            {{ label( __("Never"),              'yop-poll-view-results-never',          'yop_poll_options[view_results]',       "never",                "radio", "yop-poll-view-results-hide-custom", current_poll.view_results, "never"                ) }}
+                                            {{ label( __("Custom Date"),        'yop-poll-view-results-custom',         'yop_poll_options[view_results]',       "custom-date",          "radio", "yop-poll-view-results-show-custom", current_poll.view_results, "custom-date"          ) }}
                                             <div id="yop-poll-display-view-results-div" style="{% if current_poll.view_results != 'custom-date' %} display: none; {% endif %}">
                                                 <label for="yop-poll-view-results-start-date">
-                                                    {{__('Results display date')}}
-                                                    <small>{{__('(the users will be able to view poll results starting with following date )')}}</small>:
+                                                    {{__("Results display date")}}
+                                                    <small>{{__("(the users will be able to view poll results starting with following date )")}}</small>:
                                                     <input type="text" id="yop-poll-view-results-start-date" name="yop_poll_options[view_results_start_date]" value="{{ current_poll.view_results_start_date }}" class='hasDatePicker'>
                                                 </label>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Display Results Permissions')}} </th>
+                                        <th> {{ __("Display Results Permissions")}} </th>
                                         <td>
-                                            {{ label( 'Guest Only',                 'yop-poll-view-results-permissions-quest-only',         'yop_poll_options[view_results_permissions]', "guest-only",         "radio", "", current_poll.view_results_permissions, "guest-only" ) }}
-                                            {{ label( 'Registered Only',            'yop-poll-view-results-permissions-registered-only',    'yop_poll_options[view_results_permissions]', "registered-only",    "radio", "", current_poll.view_results_permissions, "registered-only" ) }}
-                                            {{ label( 'Guest & Registered Users',   'yop-poll-view-results-permissions-guest-registered',   'yop_poll_options[view_results_permissions]', "guest-registered",   "radio", "", current_poll.view_results_permissions, "guest-registered" ) }}
+                                            {{ label( __("Guest Only"),                 'yop-poll-view-results-permissions-quest-only',         'yop_poll_options[view_results_permissions]', "guest-only",         "radio", "", current_poll.view_results_permissions, "guest-only" ) }}
+                                            {{ label( __("Registered Only"),            'yop-poll-view-results-permissions-registered-only',    'yop_poll_options[view_results_permissions]', "registered-only",    "radio", "", current_poll.view_results_permissions, "registered-only" ) }}
+                                            {{ label( __("Guest & Registered Users"),   'yop-poll-view-results-permissions-guest-registered',   'yop_poll_options[view_results_permissions]', "guest-registered",   "radio", "", current_poll.view_results_permissions, "guest-registered" ) }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{__( 'Results Display')}}: </th>
+                                        <th> {{__( "Results Display")}}: </th>
                                         <td>
-                                            {{ label( 'By Votes Number',                 'yop-poll-view-results-votes-number',                  'yop_poll_options[view_results_type]', "votes-number",                  "radio", "", current_poll.view_results_type, "votes-number" ) }}
-                                            {{ label( 'Percentages',                     'yop-poll-view-results-percentages',                   'yop_poll_options[view_results_type]', "percentages",                   "radio", "", current_poll.view_results_type, "percentages" ) }}
-                                            {{ label( 'by Votes Number and Percentages', 'yop-poll-view-results-votes-number-and-percentages',  'yop_poll_options[view_results_type]', "votes-number-and-percentages",  "radio", "", current_poll.view_results_type, "votes-number-and-percentages" ) }}
+                                            {{ label( __("By Votes Number"),                 'yop-poll-view-results-votes-number',                  'yop_poll_options[view_results_type]', "votes-number",                  "radio", "", current_poll.view_results_type, "votes-number" ) }}
+                                            {{ label( __("Percentages"),                     'yop-poll-view-results-percentages',                   'yop_poll_options[view_results_type]', "percentages",                   "radio", "", current_poll.view_results_type, "percentages" ) }}
+                                            {{ label( __("by Votes Number and Percentages"), 'yop-poll-view-results-votes-number-and-percentages',  'yop_poll_options[view_results_type]', "votes-number-and-percentages",  "radio", "", current_poll.view_results_type, "votes-number-and-percentages" ) }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{__( 'Poll Answer Result Label')}}: </th>
+                                        <th> {{__( "Poll Answer Result Label")}}: </th>
                                         <td>
                                             {{ input(current_poll.answer_result_label, 'yop-poll-answer-result-label', 'yop_poll_options[answer_result_label]', 'text' ) }}
-                                            <small><i> {{ __('Use %POLL-ANSWER-RESULT-PERCENTAGES% for showing answer percentages and %POLL-ANSWER-RESULT-VOTES% for showing answer number of votes' ) }}</i></small>
+                                            <small><i> {{ __("Use %POLL-ANSWER-RESULT-PERCENTAGES% for showing answer percentages and %POLL-ANSWER-RESULT-VOTES% for showing answer number of votes" ) }}</i></small>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Vote Button Label') }}: </th>
+                                        <th> {{ __("Vote Button Label") }}: </th>
                                         <td>
                                             {{ input( current_poll.vote_button_label, 'yop-poll-vote-button-label', 'yop_poll_options[vote_button_label]') }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>  {{ __('Display Results Link') }}:  </th>
+                                        <th>  {{ __("Display Results Link") }}:  </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-view-results-link-yes', 'yop_poll_options[view_results_link]', "yes", "radio", "", current_poll.view_results_link, "yes" ) }}
-                                            {{ label( 'No',  'yop-poll-view-results-link-no',  'yop_poll_options[view_results_link]', "no",  "radio", "", current_poll.view_results_link, "no" ) }}
+                                            {{ label( __("Yes"), 'yop-poll-view-results-link-yes', 'yop_poll_options[view_results_link]', "yes", "radio", "", current_poll.view_results_link, "yes" ) }}
+                                            {{ label( __("No"),  'yop-poll-view-results-link-no',  'yop_poll_options[view_results_link]', "no",  "radio", "", current_poll.view_results_link, "no" ) }}
                                         </td>
                                     </tr>
                                     <tr class="yop_poll_suboption" id="yop-poll-view-results-link-div" style="{% if current_poll.view_results_link != 'yes' %} display: none; {% endif %}">
-                                        <th> {{ __('Results Link Label') }}: </th>
+                                        <th> {{ __("Results Link Label") }}: </th>
                                         <td>
                                             {{ input( current_poll.view_results_link_label, 'yop-poll-view-results-link-label', 'yop_poll_options[view_results_link_label]') }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>  {{ __('Display Back To Vote Link') }}:  </th>
+                                        <th>  {{ __("Display Back To Vote Link") }}:  </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-view-back-to-vote-link-yes', 'yop_poll_options[view_back_to_vote_link]', "yes", "radio", "", current_poll.view_back_to_vote_link, "yes" ) }}
-                                            {{ label( 'No',  'yop-poll-view-back-to-vote-link-no',  'yop_poll_options[view_back_to_vote_link]', "no",  "radio", "", current_poll.view_back_to_vote_link, "no"  ) }}
+                                            {{ label( __("Yes"), 'yop-poll-view-back-to-vote-link-yes', 'yop_poll_options[view_back_to_vote_link]', "yes", "radio", "", current_poll.view_back_to_vote_link, "yes" ) }}
+                                            {{ label( __("No"),  'yop-poll-view-back-to-vote-link-no',  'yop_poll_options[view_back_to_vote_link]', "no",  "radio", "", current_poll.view_back_to_vote_link, "no"  ) }}
                                         </td>
                                     </tr>
                                     <tr class="yop_poll_suboption" id="yop-poll-view-back-to-vote-link-div" style="{% if current_poll.view_back_to_vote_link != 'yes' %} display: none; {% endif %}">
-                                        <th> {{ __('Back To Vote Link Label') }}: </th>
+                                        <th> {{ __("Back To Vote Link Label") }}: </th>
                                         <td>
                                             {{ input( current_poll.view_back_to_vote_link_label, 'yop-poll-view-back-to-vote-link-label', 'yop_poll_options[view_back_to_vote_link_label]') }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>  {{ __('Display Total Votes') }}:  </th>
+                                        <th>  {{ __("Display Total Votes") }}:  </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-view-total-votes-yes', 'yop_poll_options[view_total_votes]', "yes", "radio", "", current_poll.view_total_votes, "yes" ) }}
-                                            {{ label( 'No',  'yop-poll-view-total-votes-no',  'yop_poll_options[view_total_votes]', "no",  "radio", "", current_poll.view_total_votes, "no"  ) }}
+                                            {{ label( __("Yes"), 'yop-poll-view-total-votes-yes', 'yop_poll_options[view_total_votes]', "yes", "radio", "", current_poll.view_total_votes, "yes" ) }}
+                                            {{ label( __("No"),  'yop-poll-view-total-votes-no',  'yop_poll_options[view_total_votes]', "no",  "radio", "", current_poll.view_total_votes, "no"  ) }}
                                         </td>
                                     </tr>
                                     <tr class="yop_poll_suboption" id="yop-poll-view-total-votes-div" style="{% if current_poll.view_total_votes != 'yes' %} display: none; {% endif %}">
-                                        <th> {{ __('Total Votes Label') }}: </th>
+                                        <th> {{ __("Total Votes Label") }}: </th>
                                         <td>
                                             {{ input( current_poll.view_total_votes_label, 'yop-poll-view-total-votes-label', 'yop_poll_options[view_total_votes_label]') }}
-                                            <br><small><i> {{ __('Use %POLL-TOTAL-VOTES% for displaying poll\'s total number of votes' ) }}</i></small>
+                                            <br><small><i> {{ __("Use %POLL-TOTAL-VOTES% for displaying poll\'s total number of votes" ) }}</i></small>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Display Total Answers') }}: </th>
+                                        <th> {{ __("Display Total Answers") }}: </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-view-total-answers-yes', 'yop_poll_options[view_total_answers]', "yes", "radio", "", current_poll.view_total_answers, "yes" ) }}
-                                            {{ label( 'No',  'yop-poll-view-total-answers-no',  'yop_poll_options[view_total_answers]', "no",  "radio", "", current_poll.view_total_answers, "no" ) }}
+                                            {{ label( __("Yes"), 'yop-poll-view-total-answers-yes', 'yop_poll_options[view_total_answers]', "yes", "radio", "", current_poll.view_total_answers, "yes" ) }}
+                                            {{ label( __("No"),  'yop-poll-view-total-answers-no',  'yop_poll_options[view_total_answers]', "no",  "radio", "", current_poll.view_total_answers, "no" ) }}
                                         </td>
                                     </tr>
                                     <tr class="yop_poll_suboption" id="yop-poll-view-total-answers-div" style="{% if current_poll.view_total_answers != 'yes' %} display: none; {% endif %}">
-                                        <th> {{ __('Total Answers Label') }}: </th>
+                                        <th> {{ __("Total Answers Label") }}: </th>
                                         <td>
                                             {{ input( current_poll.view_total_answers_label, 'yop-poll-view-total-answers-label', 'yop_poll_options[view_total_answers_label]') }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Message After Vote') }} </th>
+                                        <th> {{ __("Message After Vote") }} </th>
                                         <td>
                                             {{ input( current_poll.message_after_vote, 'yop-poll-message-after-vote', 'yop_poll_options[message_after_vote]') }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Vote Permissions') }} </th>
+                                        <th> {{ __("Vote Permissions") }} </th>
                                         <td>
-                                            {{ label( 'Guest Only',                 'yop-poll-vote-permisions-quest-only',      'yop_poll_options[vote_permisions]', "guest-only",      "radio", "", current_poll.vote_permisions, "guest-only" ) }}
-                                            {{ label( 'Registered Only',            'yop-poll-vote-permisions-registered-only', 'yop_poll_options[vote_permisions]', "registered-only", "radio", "", current_poll.vote_permisions, "registered-only" ) }}
-                                            {{ label( 'Guest & Registered Users',   'yop-poll-vote-permisions-guest-registered','yop_poll_options[vote_permisions]', "guest-registered","radio", "", current_poll.vote_permisions, "guest-registered" ) }}
+                                            {{ label( __("Guest Only"),                 'yop-poll-vote-permisions-quest-only',      'yop_poll_options[vote_permisions]', "guest-only",      "radio", "", current_poll.vote_permisions, "guest-only" ) }}
+                                            {{ label( __("Registered Only"),            'yop-poll-vote-permisions-registered-only', 'yop_poll_options[vote_permisions]', "registered-only", "radio", "", current_poll.vote_permisions, "registered-only" ) }}
+                                            {{ label( __("Guest & Registered Users"),   'yop-poll-vote-permisions-guest-registered','yop_poll_options[vote_permisions]', "guest-registered","radio", "", current_poll.vote_permisions, "guest-registered" ) }}
                                         </td>
                                     </tr>
                                     {% if current_poll.is_pro == true %}
                                     <tr class="yop-poll-vote-as-div" style="{% if current_poll.vote_permisions == 'guest-only' %} display: none; {% endif %}">
-                                        <th>{{ __("Vote as Facebook User") }} <br><small> {{ __('Will force users to login into Facebook')}}</small> </th>
+                                        <th>{{ __("Vote as Facebook User") }} <br><small> {{ __("Will force users to login into Facebook")}}</small> </th>
                                         <td>
                                             <input type="radio" value="Yes" name="vote_with_facebook" disabled>
                                             <input type="radio" value="No"  name="vote_with_facebook" disabled>
@@ -272,48 +272,48 @@
                                         </td>
                                     </tr>
                                     <tr class="yop-poll-vote-as-div yop_poll_suboption" id="yop-poll-vote-permisions-wordpress-div" style="{% if current_poll.vote_permisions_wordpress != 'yes' %} display: none; {% elseif current_poll.vote_permisions == 'guest-only' %} display: none; {% endif %}">
-                                        <th>{{ __('"Vote as Facebook User" Button Label') }}:</th>
+                                        <th>{{ __("'Vote as Facebook User' Button Label") }}:</th>
                                         <td>
                                             {{ input( current_poll.vote_permisions_facebook_label, 'yop-poll-vote-permisions-facebook-label', 'yop_poll_options[vote_permisions_facebook_label]') }}
                                         </td>
                                     </tr>
                                     {% endif %}
                                     <tr class="yop-poll-vote-as-div" style="{% if current_poll.vote_permisions == 'guest-only' %} display: none; {% endif %}">
-                                        <th>{{ __("Vote as Wordpress User") }} <br><small> {{ __('Will force users to login')}}</small> </th>
+                                        <th>{{ __("Vote as Wordpress User") }} <br><small> {{ __("Will force users to login")}}</small> </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-vote-permisions-wordpress-yes', 'yop_poll_options[vote_permisions_wordpress]', "yes", "radio", "", current_poll.vote_permisions_wordpress, "yes" ) }}
-                                            {{ label( 'No', 'yop-poll-vote-permisions-wordpress-no', 'yop_poll_options[vote_permisions_wordpress]', "no", "radio", "", current_poll.vote_permisions_wordpress, "no" ) }}
+                                            {{ label( __("Yes"), 'yop-poll-vote-permisions-wordpress-yes', 'yop_poll_options[vote_permisions_wordpress]', "yes", "radio", "", current_poll.vote_permisions_wordpress, "yes" ) }}
+                                            {{ label( __("No"), 'yop-poll-vote-permisions-wordpress-no', 'yop_poll_options[vote_permisions_wordpress]', "no", "radio", "", current_poll.vote_permisions_wordpress, "no" ) }}
                                         </td>
                                     </tr>
                                     <tr class="yop-poll-vote-as-div yop_poll_suboption" id="yop-poll-vote-permisions-wordpress-div" style="{% if current_poll.vote_permisions_wordpress != 'yes' %} display: none; {% elseif current_poll.vote_permisions == 'guest-only' %} display: none {% endif %}">
-                                        <th>{{ __('"Vote as Wordpress User" Button Label') }}:
+                                        <th>{{ __("'Vote as Wordpress User' Button Label") }}:
                                         </th>
                                         <td>
                                             {{ input( current_poll.vote_permisions_wordpress_label, 'yop-poll-vote-permisions-wordpress-label', 'yop_poll_options[vote_permisions_wordpress_label]') }}
                                         </td>
                                     </tr>
                                     <tr class="yop-poll-vote-as-div" style="{% if current_poll.vote_permisions == 'guest-only' %} display: none; {% endif %}">
-                                        <th>{{ __('Vote as Anonymous User') }} <br><small>( {{ __('Logged users will be treated as anonymous') }} )</small>:
+                                        <th>{{ __("Vote as Anonymous User") }} <br><small>( {{ __("Logged users will be treated as anonymous") }} )</small>:
                                         </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-vote-permisions-anonymous-yes', 'yop_poll_options[vote_permisions_anonymous]', "yes", "radio", "", current_poll.vote_permisions_anonymous, "yes" ) }}
-                                            {{ label( 'No', 'yop-poll-vote-permisions-anonymous-no', 'yop_poll_options[vote_permisions_anonymous]', "no", "radio", "", current_poll.vote_permisions_anonymous, "no" ) }}
+                                            {{ label( __("Yes"), 'yop-poll-vote-permisions-anonymous-yes', 'yop_poll_options[vote_permisions_anonymous]', "yes", "radio", "", current_poll.vote_permisions_anonymous, "yes" ) }}
+                                            {{ label( __("No"), 'yop-poll-vote-permisions-anonymous-no', 'yop_poll_options[vote_permisions_anonymous]', "no", "radio", "", current_poll.vote_permisions_anonymous, "no" ) }}
                                         </td>
                                     </tr>
                                     <tr class="yop-poll-vote-as-div yop_poll_suboption" id="yop-poll-vote-permisions-anonymous-label-div" style="{% if current_poll.vote_permisions_anonymous != 'yes' %} display: none; {% elseif current_poll.vote_permisions == 'guest-only' %} display: none; {% endif %}">
-                                        <th> {{ __('"Vote as Anonymous User" Button Label') }} </th>
+                                        <th> {{ __("'Vote as Anonymous User' Button Label") }} </th>
                                         <td>
                                             {{ input( current_poll.vote_permisions_anonymous_label, 'yop-poll-vote-permisions-anonymous-label', 'yop_poll_options[vote_permisions_anonymous_label]') }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Blocking Voters') }}: </th>
+                                        <th> {{ __("Blocking Voters") }}: </th>
                                         <td>
-                                            {{ label( 'Don\'t Block',       'yop-poll-blocking-voters-dont-block',  'yop_poll_options[blocking_voters]', "dont-block",  "radio", "yop-poll-blocking-voters-hide-interval", current_poll.blocking_voters, "dont-block"   ) }}
-                                            {{ label( 'By Cookie',          'yop-poll-blocking-voters-cookie',      'yop_poll_options[blocking_voters]', "cookie",      "radio", "yop-poll-blocking-voters-show-interval", current_poll.blocking_voters, "cookie"       ) }}
-                                            {{ label( 'By IP',              'yop-poll-blocking-voters-ip',          'yop_poll_options[blocking_voters]', "ip",          "radio", "yop-poll-blocking-voters-show-interval", current_poll.blocking_voters, "ip"           ) }}
-                                            {{ label( 'By Username',        'yop-poll-blocking-voters-username',    'yop_poll_options[blocking_voters]', "username",    "radio", "yop-poll-blocking-voters-show-interval", current_poll.blocking_voters, "username"     ) }}
-                                            {{ label( 'By Cookie and Ip',   'yop-poll-blocking-voters-cookie-ip',   'yop_poll_options[blocking_voters]', "cookie-ip",   "radio", "yop-poll-blocking-voters-show-interval", current_poll.blocking_voters, "cookie-ip"    ) }}
+                                            {{ label( __("Don\'t Block"),       'yop-poll-blocking-voters-dont-block',  'yop_poll_options[blocking_voters]', "dont-block",  "radio", "yop-poll-blocking-voters-hide-interval", current_poll.blocking_voters, "dont-block"   ) }}
+                                            {{ label( __("By Cookie"),          'yop-poll-blocking-voters-cookie',      'yop_poll_options[blocking_voters]', "cookie",      "radio", "yop-poll-blocking-voters-show-interval", current_poll.blocking_voters, "cookie"       ) }}
+                                            {{ label( __("By IP"),              'yop-poll-blocking-voters-ip',          'yop_poll_options[blocking_voters]', "ip",          "radio", "yop-poll-blocking-voters-show-interval", current_poll.blocking_voters, "ip"           ) }}
+                                            {{ label( __("By Username"),        'yop-poll-blocking-voters-username',    'yop_poll_options[blocking_voters]', "username",    "radio", "yop-poll-blocking-voters-show-interval", current_poll.blocking_voters, "username"     ) }}
+                                            {{ label( __("By Cookie and Ip"),   'yop-poll-blocking-voters-cookie-ip',   'yop_poll_options[blocking_voters]', "cookie-ip",   "radio", "yop-poll-blocking-voters-show-interval", current_poll.blocking_voters, "cookie-ip"    ) }}
                                         </td>
                                     </tr>
                                     <tr class="yop_poll_suboption" id="yop-poll-blocking-voters-interval-div" style="{% if current_poll.blocking_voters == 'dont-block' %}  display: none; {% endif %}">
@@ -328,87 +328,87 @@
                                     </td>
                                     </tr>
                                     <tr class="yop-poll-limit-number-of-votes-per-user-div">
-                                        <th> {{ __('Limit Number of Votes per User') }}:  </th>
+                                        <th> {{ __("Limit Number of Votes per User") }}:  </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-limit-number-of-votes-per-user-yes', 'yop_poll_options[limit_number_of_votes_per_user]', "yes", "radio", "", current_poll.limit_number_of_votes_per_user, "yes" ) }}
-                                            {{ label( 'No', 'yop-poll-limit-number-of-votes-per-user-no', 'yop_poll_options[limit_number_of_votes_per_user]', "no", "radio", "", current_poll.limit_number_of_votes_per_user, "no" ) }}
+                                            {{ label( __("Yes"), 'yop-poll-limit-number-of-votes-per-user-yes', 'yop_poll_options[limit_number_of_votes_per_user]', "yes", "radio", "", current_poll.limit_number_of_votes_per_user, "yes" ) }}
+                                            {{ label( __("No"), 'yop-poll-limit-number-of-votes-per-user-no', 'yop_poll_options[limit_number_of_votes_per_user]', "no", "radio", "", current_poll.limit_number_of_votes_per_user, "no" ) }}
                                         </td>
                                     </tr>
                                     <tr class="yop-poll-limit-number-of-votes-per-user-divs yop_poll_suboption" id="yop-poll-number-of-votes-per-user-div" style="{% if current_poll.limit_number_of_votes_per_user != 'yes' %} display: none; {% endif %}">
-                                        <th> {{ __('Number of Votes per User') }}: </th>
+                                        <th> {{ __("Number of Votes per User") }}: </th>
                                         <td>
                                             {{ input( current_poll.number_of_votes_per_user, 'yop-poll-number-of-votes-per-user', 'yop_poll_options[number_of_votes_per_user]' )}}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Percentages Decimals') }}: </th>
+                                        <th> {{ __("Percentages Decimals") }}: </th>
                                         <td>
                                             {{ input( current_poll.percentages_decimals, 'yop-poll-percentages-decimals',  'yop_poll_options[percentages_decimals]' )}}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Use Default Loading Image') }}:  </th>
+                                        <th> {{ __("Use Default Loading Image") }}:  </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-use-default-loading-image-yes', 'yop_poll_options[use_default_loading_image]', "yes", "radio", "", current_poll.use_default_loading_image, "yes" ) }}
-                                            {{ label( 'No',  'yop-poll-use-default-loading-image-no',  'yop_poll_options[use_default_loading_image]', "no", "radio", "",  current_poll.use_default_loading_image, "no" ) }}
+                                            {{ label( __("Yes"), 'yop-poll-use-default-loading-image-yes', 'yop_poll_options[use_default_loading_image]', "yes", "radio", "", current_poll.use_default_loading_image, "yes" ) }}
+                                            {{ label( __("No"),  'yop-poll-use-default-loading-image-no',  'yop_poll_options[use_default_loading_image]', "no", "radio", "",  current_poll.use_default_loading_image, "no" ) }}
                                         </td>
                                     </tr>
                                     <tr class="yop_poll_suboption" id="yop-poll-use-default-loading-image-div" style="{% if 'yes' == current_poll.use_default_loading_image %} display: none; {% endif %} ">
-                                        <th>{{ __('Loading Image Url') }}: </th>
+                                        <th>{{ __("Loading Image Url") }}: </th>
                                         <td>
                                             {{ input( current_poll.loading_image_url, 'yop-poll-loading-image-url', 'yop_poll_options[loading_image_url]' ) }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Redirect After Vote') }} : </th>
+                                        <th> {{ __("Redirect After Vote") }} : </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-redirect-after-vote-yes', 'yop_poll_options[redirect_after_vote]', "yes", "radio", "", current_poll.redirect_after_vote, "yes" ) }}
-                                            {{ label( 'No',  'yop-poll-redirect-after-vote-no',  'yop_poll_options[redirect_after_vote]', "no",  "radio", "", current_poll.redirect_after_vote, "no"  ) }}
+                                            {{ label( __("Yes"), 'yop-poll-redirect-after-vote-yes', 'yop_poll_options[redirect_after_vote]', "yes", "radio", "", current_poll.redirect_after_vote, "yes" ) }}
+                                            {{ label( __("No"),  'yop-poll-redirect-after-vote-no',  'yop_poll_options[redirect_after_vote]', "no",  "radio", "", current_poll.redirect_after_vote, "no"  ) }}
                                         </td>
                                     </tr>
                                     <tr class="yop_poll_suboption" id="yop-poll-redirect-after-vote-url-div" style="{%if 'no' == current_poll.redirect_after_vote %} 'display: none; {% endif %}}">
-                                        <th> {{ __('Redirect After Vote URL') }} : </th>
+                                        <th> {{ __("Redirect After Vote URL") }} : </th>
                                         <td>
                                             {{ input ( current_poll.redirect_after_vote_url, 'yop-poll-redirect-after-vote-url', 'yop_poll_options[redirect_after_vote_url]' ) }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>{{ __('Display Archive Link') }}:  </th>
+                                        <th>{{ __("Display Archive Link") }}:  </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-view-poll-archive-link-yes', 'yop_poll_options[view_poll_archive_link]', "yes", "radio", "", current_poll.view_poll_archive_link, "yes" ) }}
-                                            {{ label( 'No',  'yop-poll-view-poll-archive-link-no',  'yop_poll_options[view_poll_archive_link]', "no", "radio",  "", current_poll.view_poll_archive_link, "no"  ) }}
+                                            {{ label( __("Yes"), 'yop-poll-view-poll-archive-link-yes', 'yop_poll_options[view_poll_archive_link]', "yes", "radio", "", current_poll.view_poll_archive_link, "yes" ) }}
+                                            {{ label( __("No"),  'yop-poll-view-poll-archive-link-no',  'yop_poll_options[view_poll_archive_link]', "no", "radio",  "", current_poll.view_poll_archive_link, "no"  ) }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Auto Generate Poll Page') }}:  </th>
+                                        <th> {{ __("Auto Generate Poll Page") }}:  </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-auto-generate-poll-page-yes', 'yop_poll_options[auto_generate_poll_page]', "yes", "radio", "", current_poll.auto_generate_poll_page, "yes" ) }}
-                                            {{ label( 'No',  'yop-poll-auto-generate-poll-page-no',  'yop_poll_options[auto_generate_poll_page]', "no",  "radio", "", current_poll.auto_generate_poll_page, "no"  ) }}
+                                            {{ label( __("Yes"), 'yop-poll-auto-generate-poll-page-yes', 'yop_poll_options[auto_generate_poll_page]', "yes", "radio", "", current_poll.auto_generate_poll_page, "yes" ) }}
+                                            {{ label( __("No"),  'yop-poll-auto-generate-poll-page-no',  'yop_poll_options[auto_generate_poll_page]', "no",  "radio", "", current_poll.auto_generate_poll_page, "no"  ) }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Use CAPTCHA') }}:  </th>
+                                        <th> {{ __("Use CAPTCHA") }}:  </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-use-captcha-yes', 'yop_poll_options[use_captcha]', "yes", "radio", "", current_poll.use_captcha, "yes" ) }}
-                                            {{ label( 'No',  'yop-poll-use-captcha-no',  'yop_poll_options[use_captcha]', "no",  "radio", "", current_poll.use_captcha, "no"  ) }}
+                                            {{ label( __("Yes"), 'yop-poll-use-captcha-yes', 'yop_poll_options[use_captcha]', "yes", "radio", "", current_poll.use_captcha, "yes" ) }}
+                                            {{ label( __("No"),  'yop-poll-use-captcha-no',  'yop_poll_options[use_captcha]', "no",  "radio", "", current_poll.use_captcha, "no"  ) }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Send Email Notifications') }}:  </th>
+                                        <th> {{ __("Send Email Notifications") }}:  </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-send-email-notifications-yes', 'yop_poll_options[send_email_notifications]', "yes", "radio", "", current_poll.send_email_notifications, "yes" ) }}
-                                            {{ label( 'No',  'yop-poll-send-email-notifications-no',  'yop_poll_options[send_email_notifications]', "no",  "radio", "", current_poll.send_email_notifications, "no"  ) }}
+                                            {{ label( __("Yes"), 'yop-poll-send-email-notifications-yes', 'yop_poll_options[send_email_notifications]', "yes", "radio", "", current_poll.send_email_notifications, "yes" ) }}
+                                            {{ label( __("No"),  'yop-poll-send-email-notifications-no',  'yop_poll_options[send_email_notifications]', "no",  "radio", "", current_poll.send_email_notifications, "no"  ) }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Show Poll In Archive') }}: </th>
+                                        <th> {{ __("Show Poll In Archive") }}: </th>
                                         <td>
-                                            {{ label( 'Yes', 'yop-poll-show-poll-in-archive-yes', 'yop_poll_options[show_poll_in_archive]', "yes", "radio", "", current_poll.show_poll_in_archive, "yes" ) }}
-                                            {{ label( 'No',  'yop-poll-show-poll-in-archive-no',  'yop_poll_options[show_poll_in_archive]', "no",  "radio", "", current_poll.show_poll_in_archive, "no"  ) }}
+                                            {{ label( __("Yes"), 'yop-poll-show-poll-in-archive-yes', 'yop_poll_options[show_poll_in_archive]', "yes", "radio", "", current_poll.show_poll_in_archive, "yes" ) }}
+                                            {{ label( __("No"),  'yop-poll-show-poll-in-archive-no',  'yop_poll_options[show_poll_in_archive]', "no",  "radio", "", current_poll.show_poll_in_archive, "no"  ) }}
                                         </td>
                                     </tr>
                                     <tr class="yop_poll_suboption" id="yop-poll-show-poll-in-archive-div" style="{% if current_poll.show_poll_in_archive != 'yes' %} display: none; {% endif %}">
-                                        <th> {{ __('Poll Archive Order') }}: </th>
+                                        <th> {{ __("Poll Archive Order") }}: </th>
                                         <td>
                                              {{ input( current_poll.poll_archive_order,  'yop-poll-poll-archive-order', 'poll_archive_order' )}}
                                         </td>
@@ -421,48 +421,48 @@
 
                     <!-- Start Results Options -->
                     <div class="postbox stuffbox closed" id="3">
-                        <div title="{{ __('Click to toggle') }}" class="handlediv"><br/></div>
+                        <div title='{{ __("Click to toggle") }}' class="handlediv"><br/></div>
                         <h3 class="hndle" style="border-bottom: 1px solid #AAAAAA;">
-                            <span>{{ __( 'Results Options' ) }}</span>
+                            <span>{{ __( "Results Options" ) }}</span>
                         </h3>
                         <div class="inside">
                             <table width="100%" cellspacing="0" class="yop-poll-options-table links-table">
                                 <tbody>
                                     <tr>
-                                        <th>{{ __('Sort Results') }}:</th>
+                                        <th>{{ __("Sort Results") }}:</th>
                                         <td>
-                                            {{ label( 'As Defined',         'yop_poll_sorting_results_as_defined',      'yop_poll_options[sorting_results]', "as_defined",   "radio", "", current_poll.sorting_results, "as_defined"    ) }}
-                                            {{ label( 'Database Id',        'yop_poll_sorting_results_database',        'yop_poll_options[sorting_results]', "database",     "radio", "", current_poll.sorting_results, "database"      ) }}
-                                            {{ label( 'Alphabetical Order', 'yop_poll_sorting_results_alphabetical',    'yop_poll_options[sorting_results]', "alphabetical", "radio", "", current_poll.sorting_results, "alphabetical"  ) }}
-                                            {{ label( 'by Number of Votes', 'yop_poll_sorting_results_votes',           'yop_poll_options[sorting_results]', "votes",        "radio", "", current_poll.sorting_results, "votes"         ) }}
+                                            {{ label( __("As Defined"),         'yop_poll_sorting_results_as_defined',      'yop_poll_options[sorting_results]', "as_defined",   "radio", "", current_poll.sorting_results, "as_defined"    ) }}
+                                            {{ label( __("Database Id"),        'yop_poll_sorting_results_database',        'yop_poll_options[sorting_results]', "database",     "radio", "", current_poll.sorting_results, "database"      ) }}
+                                            {{ label( __("Alphabetical Order"), 'yop_poll_sorting_results_alphabetical',    'yop_poll_options[sorting_results]', "alphabetical", "radio", "", current_poll.sorting_results, "alphabetical"  ) }}
+                                            {{ label( __("by Number of Votes"), 'yop_poll_sorting_results_votes',           'yop_poll_options[sorting_results]', "votes",        "radio", "", current_poll.sorting_results, "votes"         ) }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>{{ __('Sort Results Rule') }}:</th>
+                                        <th>{{ __("Sort Results Rule") }}:</th>
                                         <td>
-                                            {{ label('Ascending',  'yop_poll_sorting_results_asc',  'yop_poll_options[sorting_results_direction]', 'asc',  'radio', '', current_poll.sorting_results_direction, "asc" ) }}
-                                            {{ label('Descending', 'yop_poll_sorting_results_desc', 'yop_poll_options[sorting_results_direction]', 'desc', 'radio', '', current_poll.sorting_results_direction, "desc") }}
+                                            {{ label(__("Ascending"),  'yop_poll_sorting_results_asc',  'yop_poll_options[sorting_results_direction]', 'asc',  'radio', '', current_poll.sorting_results_direction, "asc" ) }}
+                                            {{ label(__("Descending"), 'yop_poll_sorting_results_desc', 'yop_poll_options[sorting_results_direction]', 'desc', 'radio', '', current_poll.sorting_results_direction, "desc") }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th> {{ __('Poll Answer Result Votes Number Label') }}: </th>
+                                        <th> {{ __("Poll Answer Result Votes Number Label") }}: </th>
                                         <td>
-                                            {{ __('Singular') }}
+                                            {{ __("Singular") }}
                                             {{ input( current_poll.singular_answer_result_votes_number_label, 'yop-poll-singular-answer-result-votes-number-label', 'yop_poll_options[singular_answer_result_votes_number_label]') }}
-                                            {{ __('Plural') }}
+                                            {{ __("Plural") }}
                                             {{ input( current_poll.plural_answer_result_votes_number_label, 'yop-poll-plural-answer-result-votes-number-label', 'yop_poll_options[plural_answer_result_votes_number_label]') }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>{{ __('Display Results') }}: </th>
+                                        <th>{{ __("Display Results") }}: </th>
                                         <td>
-                                            {{ label( 'Vertical',    'yop-poll-display-results-vertical',  'yop_poll_options[display_results]', "vertical",  "radio", "", current_poll.display_results, "vertical" ) }}
-                                            {{ label( 'Horizontal',  'yop-poll-display-results-orizontal', 'yop_poll_options[display_results]', "orizontal", "radio", "", current_poll.display_results, "orizontal" ) }}
-                                            {{ label( 'Tabulated',   'yop-poll-display-results-tabulated', 'yop_poll_options[display_results]', "tabulated", "radio", "", current_poll.display_results, "tabulated" ) }}
+                                            {{ label( __("Vertical"),    'yop-poll-display-results-vertical',  'yop_poll_options[display_results]', "vertical",  "radio", "", current_poll.display_results, "vertical" ) }}
+                                            {{ label( __("Horizontal"),  'yop-poll-display-results-orizontal', 'yop_poll_options[display_results]', "orizontal", "radio", "", current_poll.display_results, "orizontal" ) }}
+                                            {{ label( __("Tabulated"),   'yop-poll-display-results-tabulated', 'yop_poll_options[display_results]', "tabulated", "radio", "", current_poll.display_results, "tabulated" ) }}
                                         </td>
                                     </tr>
                                     <tr class="yop_poll_suboption" id="yop-poll-display-results-tabulated-div" style="{% if 'tabulated' != current_poll.display_results %} display: none; {% endif %}">
-                                        <th> {{ __( 'Columns' ) }}: </th>
+                                        <th> {{ __( "Columns" ) }}: </th>
                                         <td>
                                             {{ input( current_poll.display_results_tabulated_cols, 'yop-poll-display-results-tabulated-cols', 'yop_poll_options[display_results_tabulated_cols]') }}
                                         </td>
@@ -480,6 +480,6 @@
                 </div><!-- postbox-container-2 -->
             </div>
 		</div><!-- post-body -->
-	</div><!-- poststuff --> 
+	</div><!-- poststuff -->
 </form>
 {% endblock content %}
