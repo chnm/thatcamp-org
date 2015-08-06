@@ -81,6 +81,10 @@ class Nova_Restaurant {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_nova_styles'  ) );
 		add_action( 'admin_head',            array( $this, 'set_custom_font_icon' ) );
 
+		// Enable Omnisearch for Menu Items.
+		if ( class_exists( 'Jetpack_Omnisearch_Posts' ) )
+			new Jetpack_Omnisearch_Posts( self::MENU_ITEM_POST_TYPE );
+
 		// Always sort menu items correctly
 		add_action( 'parse_query',   array( $this, 'sort_menu_item_queries_by_menu_order'    ) );
 		add_filter( 'posts_results', array( $this, 'sort_menu_item_queries_by_menu_taxonomy' ), 10, 2 );
@@ -110,6 +114,14 @@ class Nova_Restaurant {
 			return true;
 
 		// Otherwise, say no unless something wants to filter us to say yes.
+		/**
+		 * Allow something else to hook in and enable this CPT.
+		 *
+		 * @since 2.6.0
+		 *
+		 * @param bool false Whether or not to enable this CPT.
+		 * @param string $var The slug for this CPT.
+		 */
 		return (bool) apply_filters( 'jetpack_enable_cpt', false, self::MENU_ITEM_POST_TYPE );
 	}
 
@@ -269,16 +281,16 @@ class Nova_Restaurant {
 	 */
 	function add_to_dashboard() {
 		$number_menu_items = wp_count_posts( self::MENU_ITEM_POST_TYPE );
-		$number_menu_items_published = sprintf( '%1s %2s',
-			number_format_i18n( $number_menu_items->publish ),
-			_n( 'Food Menu Item', 'Food Menu Items', intval( $number_menu_items->publish ), 'jetpack' )
-		);
 
 		if ( current_user_can( 'administrator' ) ) {
-			$number_menu_items_published = sprintf( '<a href="%1s">%2s %3s</a>',
+			$number_menu_items_published = sprintf( '<a href="%1$s">%2$s</a>',
 				esc_url( get_admin_url( get_current_blog_id(), 'edit.php?post_type=' . self::MENU_ITEM_POST_TYPE ) ),
-				number_format_i18n( $number_menu_items->publish ),
-				_n( 'Food Menu Item', 'Food Menu Items', intval( $number_menu_items->publish ), 'jetpack' )
+				sprintf( _n( '%1$d Food Menu Item', '%1$d Food Menu Items', intval( $number_menu_items->publish ), 'jetpack' ), number_format_i18n( $number_menu_items->publish ) )
+			);
+		}
+		else {
+			$number_menu_items_published = sprintf( '<span>%1$s</span>',
+				sprintf( _n( '%1$d Food Menu Item', '%1$d Food Menu Items', intval( $number_menu_items->publish ), 'jetpack' ), number_format_i18n( $number_menu_items->publish ) )
 			);
 		}
 

@@ -9,6 +9,14 @@
  * Module Tags: Social
  */
 
+Jetpack::dns_prefetch( array(
+	'//widgets.wp.com',
+	'//s0.wp.com',
+	'//0.gravatar.com',
+	'//1.gravatar.com',
+	'//2.gravatar.com',
+) );
+
 class Jetpack_Likes {
 	var $version = '20141028';
 
@@ -416,6 +424,7 @@ class Jetpack_Likes {
 	function process_update_requests_if_sharedaddy_not_loaded() {
 		if ( isset( $_GET['page'] ) && ( $_GET['page'] == 'sharing.php' || $_GET['page'] == 'sharing' ) ) {
 			if ( isset( $_POST['_wpnonce'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'sharing-options' ) ) {
+				/** This action is documented in modules/sharedaddy/sharing.php */
 				do_action( 'sharing_admin_update' );
 				wp_safe_redirect( admin_url( 'options-general.php?page=sharing&update=saved' ) );
 				die();
@@ -531,7 +540,10 @@ class Jetpack_Likes {
 		<form method="post" action="">
 		<table class="form-table">
 		<tbody>
-			<?php do_action( 'sharing_global_options' ); ?>
+			<?php
+			/** This action is documented in modules/sharedaddy/sharing.php */
+			do_action( 'sharing_global_options' );
+			?>
 		</tbody>
 		</table>
 
@@ -552,7 +564,12 @@ class Jetpack_Likes {
 		add_action( "admin_print_scripts-edit.php", array( $this, 'enqueue_admin_scripts' ) );
 
 		if ( $this->in_jetpack ) {
-			Jetpack_Sync::sync_posts( __FILE__ );
+			$post_stati = get_post_stati( array( 'public' => true ) ); // All public post stati
+			$post_stati[] = 'private';                                 // Content from private stati will be redacted
+			Jetpack_Sync::sync_posts( __FILE__, array(
+				'post_types' => get_post_types( array( 'public' => true ) ),
+				'post_stati' => $post_stati,
+				) );
 		}
 	}
 
@@ -583,14 +600,7 @@ class Jetpack_Likes {
 			wp_enqueue_script( 'postmessage', '/wp-content/js/postmessage.js', array( 'jquery' ), JETPACK__VERSION, false );
 			wp_enqueue_script( 'jquery_inview', '/wp-content/js/jquery/jquery.inview.js', array( 'jquery' ), JETPACK__VERSION, false );
 			wp_enqueue_script( 'jetpack_resize', '/wp-content/js/jquery/jquery.jetpack-resize.js', array( 'jquery' ), JETPACK__VERSION, false );
-
-
-			// @todo: Remove this opt-out filter in the future
-			if ( apply_filters( 'wpl_sharing_2014_1', true ) ) {
-				wp_enqueue_style( 'jetpack_likes', plugins_url( 'jetpack-likes.css', __FILE__ ), array(), JETPACK__VERSION );
-			} else {
-				wp_enqueue_style( 'jetpack_likes', plugins_url( 'jetpack-likes-legacy.css', __FILE__ ), array(), JETPACK__VERSION );
-			}
+			wp_enqueue_style( 'jetpack_likes', plugins_url( 'jetpack-likes.css', __FILE__ ), array(), JETPACK__VERSION );
 		}
 	}
 
@@ -815,14 +825,27 @@ class Jetpack_Likes {
 		if ( is_ssl() )
 			$protocol = 'https';
 
-		$locale = ( '' == get_locale() || 'en' == get_locale() ) ? '' : '&amp;lang=' . strtolower( substr( get_locale(), 0, 2 ) );
-
-		// @todo: Remove this opt-out filter in the future
-		if ( apply_filters( 'wpl_sharing_2014_1', true ) ) {
-			$src = sprintf( '%1$s://widgets.wp.com/likes/master.html?ver=%2$s#ver=%2$s%3$s&amp;mp6=%4$d', $protocol, $this->version, $locale, apply_filters( 'mp6_enabled', 0 ) );
-		} else {
-			$src = sprintf( '%1$s://widgets.wp.com/likes/master-legacy.html?ver=%2$s#ver=%2$s%3$s&amp;mp6=%4$d', $protocol, $this->version, $locale, apply_filters( 'mp6_enabled', 0 ) );
+		if ( version_compare( $GLOBALS['wp_version'], '3.8-alpha', '>=' ) ) {
+			add_filter( 'mp6_enabled', '__return_true', 97 );
 		}
+
+		$_locale = get_locale();
+
+		// We have to account for WP.org vs WP.com locale divergence
+		if ( $this->in_jetpack ) {
+			if ( ! defined( 'JETPACK__GLOTPRESS_LOCALES_PATH' ) || ! file_exists( JETPACK__GLOTPRESS_LOCALES_PATH ) ) {
+				return false;
+			}
+
+			require_once JETPACK__GLOTPRESS_LOCALES_PATH;
+
+			$gp_locale = GP_Locales::by_field( 'wp_locale', $_locale );
+			$_locale = isset( $gp_locale->slug ) ? $gp_locale->slug : '';
+		}
+
+		$likes_locale = ( '' == $_locale || 'en' == $_locale ) ? '' : '&amp;lang=' . strtolower( $_locale );
+
+		$src = sprintf( '%1$s://widgets.wp.com/likes/master.html?ver=%2$s#ver=%2$s%3$s&amp;mp6=%4$d', $protocol, $this->version, $likes_locale, apply_filters( 'mp6_enabled', 0 ) );
 
 		$likersText = wp_kses( __( '<span>%d</span> bloggers like this:', 'jetpack' ), array( 'span' => array() ) );
 		?>
@@ -876,7 +899,7 @@ class Jetpack_Likes {
 	 */
 	function is_likes_visible() {
 
-		global $post;              // Used to apply 'sharing_show' filter
+		global $post, $wp_current_filter;              // Used to apply 'sharing_show' filter
 
 		// Never show on feeds or previews
 		if ( is_feed() || is_preview() || is_comments_popup() ) {
@@ -895,6 +918,10 @@ class Jetpack_Likes {
 
 			if ( post_password_required() )
 				$enabled = false;
+
+			if ( in_array( 'get_the_excerpt', (array) $wp_current_filter ) ) {
+				$enabled = false;
+			}
 
 			// Sharing Setting Overrides ****************************************
 
@@ -935,6 +962,7 @@ class Jetpack_Likes {
 		}
 
 		// Run through the sharing filters
+		/** This filter is documented in modules/sharedaddy/sharing-service.php */
 		$enabled = apply_filters( 'sharing_show', $enabled, $post );
 
 		return (bool) apply_filters( 'wpl_is_likes_visible', $enabled );

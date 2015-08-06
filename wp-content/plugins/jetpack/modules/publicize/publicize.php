@@ -32,7 +32,7 @@ abstract class Publicize_Base {
 	*/
 	var $default_prefix  = '';
 	var $default_message = '%title%';
-	var $default_suffix  = ' %url%';
+	var $default_suffix  = '';
 
 	/**
 	 * What WP capability is require to create/delete global connections?
@@ -97,15 +97,18 @@ abstract class Publicize_Base {
 		$cmeta = $this->get_connection_meta( $c );
 
 		if ( isset( $cmeta['connection_data']['meta']['link'] ) ) {
+			if ( 'facebook' == $service_name && 0 === strpos( parse_url( $cmeta['connection_data']['meta']['link'], PHP_URL_PATH ), '/app_scoped_user_id/' ) ) {
+				// App-scoped Facebook user IDs are not usable profile links
+				return false;
+			}
+
 			return $cmeta['connection_data']['meta']['link'];
 		} elseif ( 'facebook' == $service_name && isset( $cmeta['connection_data']['meta']['facebook_page'] ) ) {
-			return 'http://facebook.com/' . $cmeta['connection_data']['meta']['facebook_page'];
-		} elseif ( 'facebook' == $service_name ) {
-			return 'http://www.facebook.com/' . $cmeta['external_id'];
+			return 'https://facebook.com/' . $cmeta['connection_data']['meta']['facebook_page'];
 		} elseif ( 'tumblr' == $service_name && isset( $cmeta['connection_data']['meta']['tumblr_base_hostname'] ) ) {
 			 return 'http://' . $cmeta['connection_data']['meta']['tumblr_base_hostname'];
 		} elseif ( 'twitter' == $service_name ) {
-			return 'http://twitter.com/' . substr( $cmeta['external_display'], 1 ); // Has a leading '@'
+			return 'https://twitter.com/' . substr( $cmeta['external_display'], 1 ); // Has a leading '@'
 		} elseif ( 'google_plus' == $service_name && isset( $cmeta['connection_data']['meta']['google_plus_page'] ) ) {
 			return 'https://plus.google.com/' . $cmeta['connection_data']['meta']['google_plus_page'];
 		} elseif ( 'google_plus' == $service_name ) {
@@ -229,8 +232,9 @@ abstract class Publicize_Base {
 		// Don't Publicize during certain contexts:
 
 		// - import
-		if ( defined( 'WP_IMPORTING' ) && WP_IMPORTING  )
+		if ( defined( 'WP_IMPORTING' ) && WP_IMPORTING  ) {
 			$submit_post = false;
+		}
 
 		// - on quick edit, autosave, etc but do fire on p2, quickpress, and instapost ajax
 		if (
@@ -250,8 +254,9 @@ abstract class Publicize_Base {
 		}
 
 		// - bulk edit
-		if ( isset( $_GET['bulk_edit'] ) )
+		if ( isset( $_GET['bulk_edit'] ) ) {
 			$submit_post = false;
+		}
 
 		// - API/XML-RPC Test Posts
 		if (
@@ -271,12 +276,14 @@ abstract class Publicize_Base {
 		}
 
 		// only work with certain statuses (avoids inherits, auto drafts etc)
-		if ( !in_array( $post->post_status, array( 'publish', 'draft', 'future' ) ) )
+		if ( !in_array( $post->post_status, array( 'publish', 'draft', 'future' ) ) ) {
 			$submit_post = false;
+		}
 
 		// don't publish password protected posts
-		if ( '' !== $post->post_password )
+		if ( '' !== $post->post_password ) {
 			$submit_post = false;
+		}
 
 		// Did this request happen via wp-admin?
 		$from_web = 'post' == strtolower( $_SERVER['REQUEST_METHOD'] ) && isset( $_POST[$this->ADMIN_PAGE] );
@@ -314,6 +321,9 @@ abstract class Publicize_Base {
 
 				// This was a wp-admin request, so we need to check the state of checkboxes
 				if ( $from_web ) {
+					// delete stray service-based post meta
+					delete_post_meta( $post_id, $this->POST_SKIP . $service_name );
+	
 					// We *unchecked* this stream from the admin page, or it's set to readonly, or it's a new addition
 					if ( empty( $_POST[$this->ADMIN_PAGE]['submit'][$unique_id] ) ) {
 						// Also make sure that the service-specific input isn't there.
@@ -323,6 +333,9 @@ abstract class Publicize_Base {
 							// Nothing seems to be checked, so we're going to mark this one to be skipped
 							update_post_meta( $post_id, $this->POST_SKIP . $unique_id, 1 );
 							continue;
+						} else {
+							// clean up any stray post meta
+							delete_post_meta( $post_id, $this->POST_SKIP . $unique_id );
 						}
 					} else {
 						// The checkbox for this connection is explicitly checked -- make sure we DON'T skip it

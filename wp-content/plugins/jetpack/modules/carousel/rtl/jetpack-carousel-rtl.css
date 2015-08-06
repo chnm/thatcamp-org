@@ -1,4 +1,4 @@
-/* This file was automatically generated on Oct 06 2014 18:02:19 */
+/* This file was automatically generated on May 08 2015 23:47:14 */
 
 .jp-carousel-wrap * {
 	line-height:inherit; /* prevent declarations of line-height in the universal selector */
@@ -278,7 +278,7 @@ a.jp-carousel-image-download {
 
 div.jp-carousel-buttons a.jp-carousel-reblog,
 div.jp-carousel-buttons a.jp-carousel-commentlink {
-	margin:0 0 0 14px !important;
+	margin: 0 0 0 14px !important;
 }
 
 div.jp-carousel-buttons a.jp-carousel-reblog.reblogged,
@@ -286,7 +286,7 @@ div.jp-carousel-buttons a.jp-carousel-like.liked {
 	background-color: #303030;
 	padding-left: 8px !important;
 	border-radius: 2px;
-	border-radius:2px;
+	border-radius: 2px;
 	-webkit-border-radius:2px;
 	-moz-border-radius:2px;
 	-ms-border-radius:2px;
@@ -294,13 +294,13 @@ div.jp-carousel-buttons a.jp-carousel-like.liked {
 }
 
 div.jp-carousel-buttons a.jp-carousel-reblog.reblogged {
-	margin:0 -12px 0 2px !important;
+	margin: 0 -12px 0 2px !important;
 }
-
 
 div.jp-carousel-buttons a.jp-carousel-reblog,
 div.jp-carousel-buttons a.jp-carousel-reblog.reblogged:hover {
 	background-position: 6px -36px;
+	padding-left: auto !important;
 	padding-right: 26px !important;
 	color: #999;
 }
@@ -308,9 +308,6 @@ div.jp-carousel-buttons a.jp-carousel-reblog.reblogged:hover {
 div.jp-carousel-buttons a.jp-carousel-commentlink {
 	background-position: 0px -156px;
 	padding-right: 19px !important;
-}
-.rtl div.jp-carousel-buttons a.jp-carousel-commentlink{
-	background-position: 100% -156px;
 }
 
 div.jp-carousel-buttons a.jp-carousel-reblog.reblogged:hover {
@@ -579,9 +576,6 @@ a.jp-carousel-image-download {
 	text-decoration: none;
 	background-position: 0 -82px;
 }
-.rtl a.jp-carousel-image-download{
-	background-position: 100% -82px;
-}
 
 a.jp-carousel-image-download span.photo-size {
 	font-size: 11px;
@@ -598,9 +592,6 @@ a.jp-carousel-image-download:hover {
 	background-position: 0 -122px;
 	color: #68c9e8;
 	border: none !important;
-}
-.rtl a.jp-carousel-image-download:hover{
-	background-position: 100% -122px;
 }
 
 /** Meta Box End **/
@@ -863,7 +854,7 @@ textarea#jp-carousel-comment-form-comment-field:focus::-webkit-input-placeholder
 }
 
 #jp-carousel-comments-loading {
-	font: 444 15px/1.7 "Helvetica Neue", sans-serif !important;
+	font: 400 15px/1.7 "Helvetica Neue", sans-serif !important;
 	display: none;
 	color: #999;
 	text-align: right;
@@ -942,9 +933,6 @@ textarea#jp-carousel-comment-form-comment-field:focus::-webkit-input-placeholder
 
 .jp-carousel-light div.jp-carousel-buttons a.jp-carousel-commentlink {
 	background-position: 0px -176px;
-}
-.rtl .jp-carousel-light div.jp-carousel-buttons a.jp-carousel-commentlink{
-	background-position: 100% -176px;
 }
 
 .jp-carousel-light div.jp-carousel-buttons a.jp-carousel-like,
@@ -1037,17 +1025,9 @@ textarea#jp-carousel-comment-form-comment-field:focus::-webkit-input-placeholder
 	background-position: 0 -122px;
 }
 
-.rtl .jp-carousel-light a.jp-carousel-image-download {
-	background-position: 100% -122px;
-}
-
 .jp-carousel-light a.jp-carousel-image-download:hover {
 	background-position: 0 -122px;
 	color: #f1831e;
-}
-
-.rtl .jp-carousel-light a.jp-carousel-image-download:hover {
-	background-position: 100% -122px;
 }
 
 .jp-carousel-light textarea#jp-carousel-comment-form-comment-field {

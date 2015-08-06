@@ -15,15 +15,20 @@ add_action( 'admin_enqueue_scripts', 'grunion_menu_alter' );
  */
 add_action( 'media_buttons', 'grunion_media_button', 999 );
 function grunion_media_button( ) {
-	global $post_ID, $temp_ID;
+	global $post_ID, $temp_ID, $pagenow;
+
+	if ( 'press-this.php' === $pagenow ) {
+		return;
+	}
+
 	$iframe_post_id = (int) (0 == $post_ID ? $temp_ID : $post_ID);
-	$title = esc_attr( __( 'Add a custom form', 'jetpack' ) );
+	$title = __( 'Add Contact Form', 'jetpack' );
 	$plugin_url = esc_url( GRUNION_PLUGIN_URL );
 	$site_url = esc_url( admin_url( "/admin-ajax.php?post_id={$iframe_post_id}&action=grunion_form_builder&TB_iframe=true&width=768" ) );
 	?>
 
-	<a id="insert-jetpack-contact-form" class="button thickbox" title="<?php esc_html_e( 'Add Contact Form', 'jetpack' ); ?>" data-editor="content" href="<?php echo $site_url ?>&id=add_form">
-		<span class="jetpack-contact-form-icon"></span> <?php esc_html_e( 'Add Contact Form', 'jetpack' ); ?>
+	<a id="insert-jetpack-contact-form" class="button thickbox" title="<?php echo esc_attr( $title ); ?>" data-editor="content" href="<?php echo $site_url ?>&id=add_form">
+		<span class="jetpack-contact-form-icon"></span> <?php echo esc_html( $title ); ?>
 	</a>
 
 	<?php
@@ -77,7 +82,7 @@ color: #D98500;
 }
 
 #icon-edit.icon32-posts-feedback, #icon-post.icon32-posts-feedback { background: url("<?php echo GRUNION_PLUGIN_URL; ?>images/grunion-menu-big.png") no-repeat !important; }
-@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+@media only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
 	#icon-edit.icon32-posts-feedback, #icon-post.icon32-posts-feedback { background: url("<?php echo GRUNION_PLUGIN_URL; ?>images/grunion-menu-big-2x.png") no-repeat !important; background-size: 30px 31px !important; }
 }
 
@@ -109,20 +114,20 @@ function grunion_add_bulk_edit_option() {
 	if ( isset( $_GET['post_status'] ) && 'spam' == $_GET['post_status'] ) {
 		// Create Delete Permanently bulk item
 		$option_val = 'delete';
-		$option_txt = __( 'Delete permantently', 'jetpack' );
+		$option_txt = __( 'Delete Permanently', 'jetpack' );
 		$pseudo_selector = 'last-child';
 
 	} else {
 		// Create Mark Spam bulk item
 		$option_val = 'spam';
-		$option_txt = __( 'Mark Spam', 'jetpack' );
+		$option_txt = __( 'Mark as Spam', 'jetpack' );
 		$pseudo_selector = 'first-child';
 	}
 
 	?>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
-				$('#posts-filter .actions select[name=action] option:<?php echo $pseudo_selector; ?>').after('<option value="<?php echo $option_val; ?>"><?php echo esc_attr( $option_txt ); ?></option>' );
+				$('#posts-filter .actions select').filter('[name=action], [name=action2]').find('option:<?php echo $pseudo_selector; ?>').after('<option value="<?php echo $option_val; ?>"><?php echo esc_attr( $option_txt ); ?></option>' );
 			})
 		</script>
 	<?php
@@ -173,8 +178,9 @@ function grunion_handle_bulk_spam() {
 	if ( ! empty( $_REQUEST['message'] ) && 'marked-spam' == $_REQUEST['message'] )
 		add_action( 'admin_notices', 'grunion_message_bulk_spam' );
 
-	if ( empty( $_REQUEST['action'] ) || 'spam' != $_REQUEST['action'] )
+	if ( ( empty( $_REQUEST['action'] ) || 'spam' != $_REQUEST['action'] ) && ( empty( $_REQUEST['action2'] ) || 'spam' != $_REQUEST['action2'] ) ) {
 		return;
+	}
 
 	check_admin_referer('bulk-posts');
 
@@ -758,3 +764,86 @@ function grunion_omnisearch_add_providers() {
 		new Jetpack_Omnisearch_Grunion;
 	}
 }
+
+/**
+ * Add the scripts that will add the "Check for Spam" button to the Feedbacks dashboard page.
+ */
+function grunion_enable_spam_recheck() {
+	if ( ! defined( 'AKISMET_VERSION' ) ) {
+		return;
+	}
+
+	$screen = get_current_screen();
+
+	// Only add to feedback, only to non-spam view
+	if ( 'edit-feedback' != $screen->id || ( ! empty( $_GET['post_status'] ) && 'spam' == $_GET['post_status'] ) ) {
+		return;
+	}
+
+	// Add the scripts that handle the spam check event.
+	wp_register_script( 'grunion-admin', plugin_dir_url( __FILE__ ) . 'js/grunion-admin.js', array( 'jquery' ) );
+	wp_enqueue_script( 'grunion-admin' );
+
+	wp_enqueue_style( 'grunion.css' );
+
+	// Add the actual "Check for Spam" button.
+	add_action( 'admin_head', 'grunion_check_for_spam_button' );
+}
+
+add_action( 'admin_enqueue_scripts', 'grunion_enable_spam_recheck' );
+
+/**
+ * Add the "Check for Spam" button to the Feedbacks dashboard page.
+ */
+function grunion_check_for_spam_button() {
+	// Get HTML for the button
+	$button_html = get_submit_button(
+		__( 'Check for Spam', 'jetpack' ),
+		'secondary',
+		'jetpack-check-feedback-spam',
+		false,
+		array( 'class' => 'jetpack-check-feedback-spam' )  
+	);
+	$button_html .= '<span class="jetpack-check-feedback-spam-spinner"></span>';
+
+	// Add the button next to the filter button via js
+	?>
+	<script type="text/javascript">
+		jQuery( function( $ ) {
+			$( '#posts-filter #post-query-submit' ).after( '<?php echo $button_html; ?>' );
+		} );
+	</script>
+	<?php
+}
+
+/**
+ * Recheck all approved feedbacks for spam.
+ */
+function grunion_recheck_queue() {
+	global $wpdb;
+
+	$query = 'post_type=feedback&post_status=publish';
+
+	if ( isset( $_POST['limit'], $_POST['offset'] ) ) {
+		$query .= '&posts_per_page=' . intval( $_POST['limit'] ) . '&offset=' . intval( $_POST['offset'] );
+	}
+
+	$approved_feedbacks = get_posts( $query );
+
+	foreach ( $approved_feedbacks as $feedback ) {
+		$meta = get_post_meta( $feedback->ID, '_feedback_akismet_values', true );
+
+		$is_spam = apply_filters( 'jetpack_contact_form_is_spam', false, $meta );
+
+		if ( $is_spam ) {
+			wp_update_post( array( 'ID' => $feedback->ID, 'post_status' => 'spam' ) );
+			do_action( 'contact_form_akismet', 'spam', $akismet_values );
+		}
+	}
+
+	wp_send_json( array(
+		'processed' => count( $approved_feedbacks ),
+	) );
+}
+
+add_action( 'wp_ajax_grunion_recheck_queue', 'grunion_recheck_queue' );

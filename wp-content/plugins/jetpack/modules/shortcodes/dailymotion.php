@@ -21,31 +21,38 @@
  */
 
 function dailymotion_embed_to_shortcode( $content ) {
-	if ( false === stripos( $content, 'www.dailymotion.com/swf/' ) )
+	if ( false === stripos( $content, 'www.dailymotion.com/swf/' ) ) {
 		return $content;
+	}
 
-	$regexp = '!<object.*>\s*(<param.*></param>\s*)*<embed((?:\s+\w+="[^"]*")*)\s+src="http(?:\:|&#0*58;)//(www\.dailymotion\.com/swf/[^"]*)"((?:\s+\w+="[^"]*")*)\s*(?:/>|>\s*</embed>)\s*</object><br /><b><a .*>.*</a></b><br /><i>.*</i>!';
+	$regexp     = '!<object.*>\s*(<param.*></param>\s*)*<embed((?:\s+\w+="[^"]*")*)\s+src="http(?:\:|&#0*58;)//(www\.dailymotion\.com/swf/[^"]*)"((?:\s+\w+="[^"]*")*)\s*(?:/>|>\s*</embed>)\s*</object><br /><b><a .*>.*</a></b><br /><i>.*</i>!';
 	$regexp_ent = str_replace( '&amp;#0*58;', '&amp;#0*58;|&#0*58;', htmlspecialchars( $regexp, ENT_NOQUOTES ) );
 
 	foreach ( array( 'regexp', 'regexp_ent' ) as $reg ) {
-		if ( ! preg_match_all( $$reg, $content, $matches, PREG_SET_ORDER ) )
+		if ( ! preg_match_all( $$reg, $content, $matches, PREG_SET_ORDER ) ) {
 			continue;
+		}
 
 		foreach ( $matches as $match ) {
-			$src = html_entity_decode( $match[3] );
+			$src    = html_entity_decode( $match[3] );
 			$params = $match[2] . $match[4];
+
 			if ( 'regexp_ent' == $reg ) {
-				$src = html_entity_decode( $src );
+				$src    = html_entity_decode( $src );
 				$params = html_entity_decode( $params );
 			}
+
 			$params = wp_kses_hair( $params, array( 'http' ) );
-			if ( !isset( $params['type'] ) || 'application/x-shockwave-flash' != $params['type']['value'] )
+
+			if ( ! isset( $params['type'] ) || 'application/x-shockwave-flash' != $params['type']['value'] ) {
 				continue;
+			}
 
 			$id = basename( substr( $src, strlen( 'www.dailymotion.com/swf' ) ) );
 			$id = preg_replace( '/[^a-z0-9].*$/i', '', $id );
 
 			$content = str_replace( $match[0], "[dailymotion id=$id]", $content );
+			/** This action is documented in modules/shortcodes/youtube.php */
 			do_action( 'jetpack_embed_to_shortcode', 'dailymotion', $id );
 		}
 	}
@@ -81,42 +88,118 @@ function dailymotion_shortcode( $atts ) {
 	if ( isset( $atts[0] ) ) {
 		$id = ltrim( $atts[0], '=' );
 		$atts['id'] = $id;
+
 	} else {
 		$params = shortcode_new_to_old_params( $atts );
 		parse_str( $params, $atts_new );
+
 		foreach( $atts_new as $k => $v ) {
 			$atts[ $k ] = $v;
 		}
 	}
 
-	if ( isset( $atts['id'] ) )
+	if ( isset( $atts['id'] ) ) {
 		$id = $atts['id'];
-	else
+	} else {
 		return '<!--Dailymotion error: bad or missing ID-->';
+	}
 
-	if ( !empty( $content_width ) )
+	if ( ! empty( $content_width ) ) {
 		$width = min( 425, intval( $content_width ) );
-	else
+	} else {
 		$width = 425;
+	}
 
 	$height = ( 425 == $width ) ? 334 : ( $width / 425 ) * 334;
-	$id = urlencode( $id );
+	$id     = urlencode( $id );
 
 	if ( preg_match( '/^[A-Za-z0-9]+$/', $id ) ) {
-		$output = '<iframe width="' . $width . '" height="' . $height . '" src="http://www.dailymotion.com/embed/video/' . $id . '" frameborder="0"></iframe>';
-		$after = '';
+		$output = '<iframe width="' . $width . '" height="' . $height . '" src="' . esc_url( '//www.dailymotion.com/embed/video/' . $id ) . '" frameborder="0"></iframe>';
+		$after  = '';
 
-		if ( array_key_exists( 'video', $atts ) && $video = preg_replace( '/[^-a-z0-9_]/i', '', $atts['video'] ) && array_key_exists( 'title', $atts ) && $title = wp_kses( $atts['title'], array() ) )
-			$after .= '<br /><strong><a href="http://www.dailymotion.com/video/' . $video . '">' . $title . '</a></strong>';
+		if ( array_key_exists( 'video', $atts ) && $video = preg_replace( '/[^-a-z0-9_]/i', '', $atts['video'] ) && array_key_exists( 'title', $atts ) && $title = wp_kses( $atts['title'], array() ) ) {
+			$after .= '<br /><strong><a href="' . esc_url( 'http://www.dailymotion.com/video/' . $video ) . '">' . esc_html( $title ) . '</a></strong>';
+		}
 
-		if ( array_key_exists( 'user', $atts ) && $user = preg_replace( '/[^-a-z0-9_]/i', '', $atts['user'] ) )
-			$after .= '<br /><em>Uploaded by <a href="http://www.dailymotion.com/' . $user . '">' . $user . '</a></em>';
+		if ( array_key_exists( 'user', $atts ) && $user = preg_replace( '/[^-a-z0-9_]/i', '', $atts['user'] ) ) {
+			$after .= '<br /><em>Uploaded by <a href="' . esc_url( 'http://www.dailymotion.com/' . $user ) . '">' . esc_html( $user ) . '</a></em>';
+		}
 	}
 
 	return $output . $after;
 }
 
 add_shortcode( 'dailymotion', 'dailymotion_shortcode' );
+
+/**
+ * DailyMotion Channel Shortcode
+ *
+ * Examples:
+ * [dailymotion-channel user=MatthewDominick]
+ * [dailymotion-channel user=MatthewDominick type=grid] (supports grid, carousel, badge/default)
+ */
+function dailymotion_channel_shortcode( $atts ) {
+	$username = $atts['user'];
+
+	switch( $atts['type'] ) {
+		case 'grid':
+			return '<iframe width="300px" height="264px" scrolling="no" frameborder="0" src="' . esc_url( '//www.dailymotion.com/badge/user/' . $username . '?type=grid' ) . '"></iframe>';
+			break;
+		case 'carousel':
+			return '<iframe width="300px" height="360px" scrolling="no" frameborder="0" src="' . esc_url( '//www.dailymotion.com/badge/user/' . $username . '?type=carousel' ) . '"></iframe>';
+			break;
+		default:
+			return '<iframe width="300px" height="78px" scrolling="no" frameborder="0" src="' . esc_url( '//www.dailymotion.com/badge/user/' . $username ) . '"></iframe>';
+	}
+}
+
+add_shortcode( 'dailymotion-channel', 'dailymotion_channel_shortcode' );
+
+/**
+ * Embed Reversal for Badge/Channel
+ */
+function dailymotion_channel_reversal( $content ) {
+	if ( false === stripos( $content, 'dailymotion.com/badge/' ) ) {
+		return $content;
+	}
+
+	/* Sample embed code:
+		<iframe width="300px" height="360px" scrolling="no" frameborder="0" src="http://www.dailymotion.com/badge/user/Dailymotion?type=carousel"></iframe>
+	*/
+
+	$regexes = array();
+
+	$regexes[] = '#<iframe[^>]+?src=" (?:https?:)?//(?:www\.)?dailymotion\.com/badge/user/([^"\'/]++) "[^>]*+></iframe>#ix';
+
+	// Let's play nice with the visual editor too.
+	$regexes[] = '#&lt;iframe(?:[^&]|&(?!gt;))+?src=" (?:https?:)?//(?:www\.)?dailymotion\.com/badge/user/([^"\'/]++) "(?:[^&]|&(?!gt;))*+&gt;&lt;/iframe&gt;#ix';
+
+	foreach ( $regexes as $regex ) {
+		if ( ! preg_match_all( $regex, $content, $matches, PREG_SET_ORDER ) ) {
+	 		continue;
+		}
+
+		foreach ( $matches as $match ) {
+			$url_pieces = parse_url( $match[1] );
+
+			if ( 'type=carousel' === $url_pieces['query'] ) {
+				$type = 'carousel';
+			} else if ( 'type=grid' === $url_pieces['query'] ) {
+				$type = 'grid';
+			} else {
+				$type = 'badge';
+			}
+
+			$shortcode = '[dailymotion-channel user=' . esc_attr( $url_pieces['path'] ) . ' type=' . esc_attr( $type ) . ']';
+			$replace_regex = sprintf( '#\s*%s\s*#', preg_quote( $match[0], '#' ) );
+			$content       = preg_replace( $replace_regex, sprintf( "\n\n%s\n\n", $shortcode ), $content );
+		}
+	}
+
+	return $content;
+}
+
+add_filter( 'pre_kses', 'dailymotion_channel_reversal' );
 
 /**
  * Dailymotion Embed Reversal (with new iframe code as of 17.09.2014)
@@ -126,14 +209,14 @@ add_shortcode( 'dailymotion', 'dailymotion_shortcode' );
  */
 
 function jetpack_dailymotion_embed_reversal( $content ) {
-	if ( false === stripos( $content, 'dailymotion.com/embed' ) )
+	if ( false === stripos( $content, 'dailymotion.com/embed' ) ) {
 		return $content;
+	}
 
 	/* Sample embed code as of Sep 17th 2014:
 
 		<iframe frameborder="0" width="480" height="270" src="//www.dailymotion.com/embed/video/x25x71x" allowfullscreen></iframe><br /><a href="http://www.dailymotion.com/video/x25x71x_dog-with-legs-in-casts-learns-how-to-enter-the-front-door_animals" target="_blank">Dog with legs in casts learns how to enter the...</a> <i>by <a href="http://www.dailymotion.com/videobash" target="_blank">videobash</a></i>
 	*/
-
 	$regexes = array();
 
 	// I'm Konstantin and I love regex.
@@ -146,13 +229,16 @@ function jetpack_dailymotion_embed_reversal( $content ) {
 	(?: &lt;i&gt;.*?&lt;a(?:[^&]|&(?!gt;))+?href=" (?:https?:)?//(?:www\.)?dailymotion\.com/[^"\']++ "(?:[^&]|&(?!gt;))*+&gt;.+?&lt;/a&gt;\s*+&lt;/i&gt; )?#ix';
 
 	foreach ( $regexes as $regex ) {
-		if ( ! preg_match_all( $regex, $content, $matches, PREG_SET_ORDER ) )
+		if ( ! preg_match_all( $regex, $content, $matches, PREG_SET_ORDER ) ) {
 			continue;
+		}
 
 		foreach ( $matches as $match ) {
-			$url = esc_url( sprintf( 'https://dailymotion.com/video/%s', $match[1] ) );
+			$url           = esc_url( sprintf( 'https://dailymotion.com/video/%s', $match[1] ) );
 			$replace_regex = sprintf( '#\s*%s\s*#', preg_quote( $match[0], '#' ) );
-			$content = preg_replace( $replace_regex, sprintf( "\n\n%s\n\n", $url ), $content );
+			$content       = preg_replace( $replace_regex, sprintf( "\n\n%s\n\n", $url ), $content );
+
+			/** This action is documented in modules/shortcodes/youtube.php */
 			do_action( 'jetpack_embed_to_shortcode', 'dailymotion', $url );
 		}
 	}

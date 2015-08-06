@@ -3,11 +3,14 @@
 /**
  * Module Name: Jetpack Single Sign On
  * Module Description: Allow your users to log in using their WordPress.com accounts.
+ * Jumpstart Description: lets you login to all your Jetpack-enabled sites with one click using your WordPress.com account.
  * Sort Order: 30
+ * Recommendation Order: 5
  * First Introduced: 2.6
  * Requires Connection: Yes
  * Auto Activate: No
  * Module Tags: Developers
+ * Feature: Jumpstart
  */
 
 class Jetpack_SSO {
@@ -357,6 +360,10 @@ class Jetpack_SSO {
 		} elseif ( 'jetpack-sso' === $action ) {
 			if ( isset( $_GET['result'], $_GET['user_id'], $_GET['sso_nonce'] ) && 'success' == $_GET['result'] ) {
 				$this->handle_login();
+				wp_enqueue_script( 'jquery' );
+				wp_enqueue_style( 'genericons' );
+				add_action( 'login_footer', array( $this, 'login_form' ) );
+				add_action( 'login_footer', array( $this, 'login_footer' ) );
 			} else {
 				if ( Jetpack::check_identity_crisis() ) {
 					wp_die( __( "Error: This site's Jetpack connection is currently experiencing problems.", 'jetpack' ) );
@@ -756,7 +763,15 @@ class Jetpack_SSO {
 		return $url;
 	}
 
-	function get_user_by_wpcom_id( $wpcom_user_id ) {
+	/**
+ 	* Determines local user associated with a given WordPress.com user ID.
+ 	*
+ 	* @since 2.6.0
+ 	*
+ 	* @param int $wpcom_user_id User ID from WordPress.com
+ 	* @return object Local user object if found, null if not.
+	*/
+	static function get_user_by_wpcom_id( $wpcom_user_id ) {
 		$user_query = new WP_User_Query( array(
 			'meta_key'   => 'wpcom_user_id',
 			'meta_value' => intval( $wpcom_user_id ),
@@ -776,7 +791,7 @@ class Jetpack_SSO {
 	 * @return string
 	 **/
 	public function error_msg_enable_two_step( $message ) {
-		$err = __( sprintf( 'This site requires two step authentication be enabled for your user account on WordPress.com. Please visit the <a href="%1$s"> Security Settings</a> page to enable two step', 'https://wordpress.com/settings/security/' ) , 'jetpack' );
+		$err = __( sprintf( 'This site requires two step authentication be enabled for your user account on WordPress.com. Please visit the <a href="%1$s"> Security Settings</a> page to enable two step', 'https://wordpress.com/me/security/two-step' ) , 'jetpack' );
 
 		$message .= sprintf( '<p class="message" id="login_error">%s</p>', $err );
 
@@ -903,9 +918,9 @@ class Jetpack_SSO {
 								<span class="two_step">
 									<?php
 										if( $user_data->two_step_enabled ) {
-											?> <p class="enabled"><a href="https://wordpress.com/settings/security/"><?php _e( 'Two step Enabled', 'jetpack' ); ?></a></p> <?php
+											?> <p class="enabled"><a href="https://wordpress.com/me/security/two-step"><?php _e( 'Two-Step Authentication Enabled', 'jetpack' ); ?></a></p> <?php
 										} else {
-											?> <p class="disabled"><a href="https://wordpress.com/settings/security/"><?php _e( 'Two step Disabled', 'jetpack' ); ?></a></p> <?php
+											?> <p class="disabled"><a href="https://wordpress.com/me/security/two-step"><?php _e( 'Two-Step Authentication Disabled', 'jetpack' ); ?></a></p> <?php
 										}
 									?>
 								</span>

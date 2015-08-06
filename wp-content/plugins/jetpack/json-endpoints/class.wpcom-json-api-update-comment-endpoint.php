@@ -50,7 +50,7 @@ class WPCOM_JSON_API_Update_Comment_Endpoint extends WPCOM_JSON_API_Comment_Endp
 			return new WP_Error( 'unknown_post', 'Unknown post', 404 );
 		}
 
-		if ( -1 == get_option( 'blog_public' ) && ! is_user_member_of_blog() && ! is_super_admin() ) {
+		if ( -1 == get_option( 'blog_public' ) && ! apply_filters( 'wpcom_json_api_user_is_member_of_blog', is_user_member_of_blog() ) && ! is_super_admin() ) {
 			return new WP_Error( 'unauthorized', 'User cannot create comments', 403 );
 		}
 
@@ -63,7 +63,7 @@ class WPCOM_JSON_API_Update_Comment_Endpoint extends WPCOM_JSON_API_Comment_Endp
 			return $can_view;
 		}
 
-		$post_status = get_post_status_object( $post->post_status );
+		$post_status = get_post_status_object( get_post_status( $post ) );
 		if ( !$post_status->public && !$post_status->private ) {
 			return new WP_Error( 'unauthorized', 'Comments on drafts are not allowed', 403 );
 		}

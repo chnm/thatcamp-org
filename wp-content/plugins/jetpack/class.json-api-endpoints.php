@@ -1,6 +1,6 @@
 <?php
 
-define( 'WPCOM_JSON_API__CURRENT_VERSION', '1' );
+require_once( dirname( __FILE__ ) . '/json-api-config.php' );
 
 // Endpoint
 abstract class WPCOM_JSON_API_Endpoint {
@@ -51,8 +51,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 			'false' => '',
 			'true'  => 'Output pretty JSON',
 		),
-		'meta' => "(string) Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma separated list. Example: meta=site,likes",
-		'fields' => '(string) Optional. Returns specified fields only. Comma separated list. Example: fields=ID,title',
+		'meta' => "(string) Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes",
+		'fields' => '(string) Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title',
 		// Parameter name => description (default value is empty)
 		'callback' => '(string) An optional JSONP callback function.',
 	);
@@ -95,12 +95,19 @@ abstract class WPCOM_JSON_API_Endpoint {
 	var $custom_fields_filtering = false;
 
 	/**
-	 * @var bool Set to true if the endpoint accepts all cross origin requests
-	 *    You probably should not set this flag. If you are thinking of setting it,
-	 *    then discuss it with someone:
-	 *       http://operationapi.wordpress.com/2014/06/25/patch-allowing-endpoints-to-do-cross-origin-requests/
+	 * @var bool Set to true if the endpoint accepts all cross origin requests. You probably should not set this flag.
 	 */
 	var $allow_cross_origin_request = false;
+
+	/**
+	 * @var bool Set to true if the endpoint can recieve unauthorized POST requests.
+	 */
+	var $allow_unauthorized_request = false;
+
+	/**
+	 * @var bool Set to true if the endpoint should accept site based (not user based) authentication.
+	 */
+	var $allow_jetpack_site_auth = false;
 
 	function __construct( $args ) {
 		$defaults = array(
@@ -129,6 +136,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 			'can_use_user_details_instead_of_blog_membership' => false,
 			'custom_fields_filtering' => false,
 			'allow_cross_origin_request' => false,
+			'allow_unauthorized_request' => false,
+			'allow_jetpack_site_auth'    => false,
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -156,6 +165,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 		$this->can_use_user_details_instead_of_blog_membership = $args['can_use_user_details_instead_of_blog_membership'];
 
 		$this->allow_cross_origin_request = (bool) $args['allow_cross_origin_request'];
+		$this->allow_unauthorized_request = (bool) $args['allow_unauthorized_request'];
+		$this->allow_jetpack_site_auth    = (bool) $args['allow_jetpack_site_auth'];
 
 		$this->version     = $args['version'];
 
@@ -378,8 +389,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 					}
 
 					$return[$key] = $files;
+					break;
 				}
-				break;
 			} else {
 				// no break - treat as 'array'
 			}
@@ -553,6 +564,28 @@ abstract class WPCOM_JSON_API_Endpoint {
 			);
 			$return[$key] = (object) $this->cast_and_filter( $value, apply_filters( 'wpcom_json_api_plugin_cast_and_filter', $docs ), false, $for_output );
 			break;
+		case 'sharing_button' :
+			$docs = array(
+				'ID'         => '(string)',
+				'name'       => '(string)',
+				'URL'        => '(string)',
+				'icon'       => '(string)',
+				'enabled'    => '(bool)',
+				'visibility' => '(string)',
+			);
+			$return[$key] = (array) $this->cast_and_filter( $value, $docs, false, $for_output );
+			break;
+		case 'sharing_button_service':
+			$docs = array(
+				'ID'               => '(string) The service identifier',
+				'name'             => '(string) The service name',
+				'class_name'       => '(string) Class name for custom style sharing button elements',
+				'genericon'        => '(string) The Genericon unicode character for the custom style sharing button icon',
+				'preview_smart'    => '(string) An HTML snippet of a rendered sharing button smart preview',
+				'preview_smart_js' => '(string) An HTML snippet of the page-wide initialization scripts used for rendering the sharing button smart preview'
+			);
+			$return[$key] = (array) $this->cast_and_filter( $value, $docs, false, $for_output );
+			break;
 
 		default :
 			$method_name = $type['type'] . '_docs';
@@ -590,8 +623,8 @@ abstract class WPCOM_JSON_API_Endpoint {
 	}
 
 	/**
- 	 * Checks if the endpoint is publicly displayable
- 	 */
+	 * Checks if the endpoint is publicly displayable
+	 */
 	function is_publicly_documentable() {
 		return '__do_not_document' !== $this->group && true !== $this->in_testing;
 	}
@@ -601,6 +634,7 @@ abstract class WPCOM_JSON_API_Endpoint {
 	 * Echoes HTML.
 	 */
 	function document( $show_description = true ) {
+		global $wpdb;
 		$original_post = isset( $GLOBALS['post'] ) ? $GLOBALS['post'] : 'unset';
 		unset( $GLOBALS['post'] );
 
@@ -619,28 +653,46 @@ abstract class WPCOM_JSON_API_Endpoint {
 <p><strong>This endpoint is deprecated in favor of version <?php echo floatval( $this->new_version ); ?></strong></p>
 <?php } ?>
 
-<section class="resource-url">
-	<h2 id="apidoc-resource-url">Resource URL</h2>
+<section class="resource-info">
+	<h2 id="apidoc-resource-info">Resource Information</h2>
+
 	<table class="api-doc api-doc-resource-parameters api-doc-resource">
-		<thead>
-			<tr>
-				<th class="api-index-title" scope="column">Type</th>
-				<th class="api-index-title" scope="column">URL and Format</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="api-index-item">
-				<th scope="row" class="parameter api-index-item-title"><?php echo wp_kses_post( $doc['method'] ); ?></th>
-				<?php
-				$version = WPCOM_JSON_API__CURRENT_VERSION;
-				if ( !empty( $this->max_version ) ) {
-					$version = $this->max_version;
-				}
-				?>
-				<td class="type api-index-item-title" style="white-space: nowrap;">https://public-api.wordpress.com/rest/v<?php echo floatval( $version ); ?><?php echo wp_kses_post( $doc['path_labeled'] ); ?></td>
-			</tr>
-		</tbody>
+
+	<thead>
+		<tr>
+			<th class="api-index-title" scope="column">&nbsp;</th>
+			<th class="api-index-title" scope="column">&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr class="api-index-item">
+			<th scope="row" class="parameter api-index-item-title">Method</th>
+			<td class="type api-index-item-title"><?php echo wp_kses_post( $doc['method'] ); ?></td>
+		</tr>
+
+		<tr class="api-index-item">
+			<th scope="row" class="parameter api-index-item-title">URL</th>
+			<?php
+			$version = WPCOM_JSON_API__CURRENT_VERSION;
+			if ( !empty( $this->max_version ) ) {
+				$version = $this->max_version;
+			}
+			?>
+			<td class="type api-index-item-title">https://public-api.wordpress.com/rest/v<?php echo floatval( $version ); ?><?php echo wp_kses_post( $doc['path_labeled'] ); ?></td>
+		</tr>
+
+		<tr class="api-index-item">
+			<th scope="row" class="parameter api-index-item-title">Requires authentication?</th>
+			<?php
+			$requires_auth = $wpdb->get_row( $wpdb->prepare( "SELECT requires_authentication FROM rest_api_documentation WHERE `version` = %s AND `path` = %s AND `method` = %s LIMIT 1", $version, untrailingslashit( $doc['path_labeled'] ), $doc['method'] ) );
+			?>
+			<td class="type api-index-item-title"><?php echo ( true === (bool) $requires_auth->requires_authentication ? 'Yes' : 'No' ); ?></td>
+		</tr>
+
+	</tbody>
 	</table>
+
 </section>
 
 <?php
@@ -693,143 +745,6 @@ abstract class WPCOM_JSON_API_Endpoint {
 <?php endforeach; ?>
 
 <?php
-		// If no example was hardcoded in the doc, try to get some
-		if ( empty( $this->example_response ) ) {
-
-			// Examples for endpoint documentation response
-			$response_key  = 'dev_example_response_' . $this->version . '_' . $this->method . '_' . sanitize_key( $this->path );
-			$response_body = wp_cache_get( $response_key );
-
-			// Response doesn't exist, so run the request
-			if ( false === $response_body ) {
-
-				// Only trust GET request
-				if ( 'GET' === $this->method ) {
-					$response      = wp_remote_get( $this->example_request );
-					$response_body = wp_remote_retrieve_body( $response );
-
-					// Only cache if there's a result
-					if ( ! is_wp_error( $response ) && strlen( $response_body ) ) {
-						wp_cache_set( $response_key, $response_body );
-					} else {
-						wp_cache_delete( $response_key );
-					}
-				}
-			}
-
-		// Example response was passed into the constructor via params
-		} else {
-			$response_body = $this->example_response;
-		}
-
-		// Wrap the response in a sourcecode shortcode
-		if ( !empty( $response_body ) && !is_wp_error( $response ) ) {
-			$response_body = '[sourcecode language="javascript" wraplines="false" light="true" autolink="false" htmlscript="false"]' . $response_body . '[/sourcecode]';
-			$response_body = apply_filters( 'the_content', $response_body );
-			$this->example_response = $response_body;
-		}
-
-		$curl = 'curl';
-
-		$php_opts = array( 'ignore_errors' => true );
-
-		if ( 'GET' !== $this->method ) {
-			$php_opts['method'] = $this->method;
-		}
-
-		if ( $this->example_request_data ) {
-			if ( isset( $this->example_request_data['headers'] ) && is_array( $this->example_request_data['headers'] ) ) {
-				$php_opts['header'] = array();
-				foreach ( $this->example_request_data['headers'] as $header => $value ) {
-					$curl .= " \\\n -H " . escapeshellarg( "$header: $value" );
-					$php_opts['header'][] = "$header: $value";
-				}
-			}
-
-			if ( isset( $this->example_request_data['body'] ) && is_array( $this->example_request_data['body'] ) ) {
-				$php_opts['content'] = $this->example_request_data['body'];
-				$php_opts['header'][] = 'Content-Type: application/x-www-form-urlencoded';
-				foreach ( $this->example_request_data['body'] as $key => $value ) {
-					$curl .= " \\\n --data-urlencode " . escapeshellarg( "$key=$value" );
-				}
-			}
-		}
-
-		if ( $php_opts ) {
-			$php_opts_exported = var_export( array( 'http' => $php_opts ), true );
-			if ( !empty( $php_opts['content'] ) ) {
-				$content_exported = preg_quote( var_export( $php_opts['content'], true ), '/' );
-				$content_exported = '\\s*' . str_replace( "\n", "\n\\s*", $content_exported ) . '\\s*';
-				$php_opts_exported = preg_replace_callback( "/$content_exported/", array( $this, 'add_http_build_query_to_php_content_example' ), $php_opts_exported );
-			}
-			$php = <<<EOPHP
-<?php
-
-\$options  = $php_opts_exported;
-
-\$context  = stream_context_create( \$options );
-\$response = file_get_contents(
-  '$this->example_request',
-  false,
-  \$context
-);
-\$response = json_decode( \$response );
-
-?>
-EOPHP;
-		} else {
-			$php = <<<EOPHP
-<?php
-
-\$response = file_get_contents( '$this->example_request' );
-\$response = json_decode( \$response );
-
-?>
-EOPHP;
-		}
-
-		if ( false !== strpos( $curl, "\n" ) ) {
-			$curl .= " \\\n";
-		}
-
-		$curl .= ' ' . escapeshellarg( $this->example_request );
-
-		$curl = '[sourcecode language="bash" wraplines="false" light="true" autolink="false" htmlscript="false"]' . $curl . '[/sourcecode]';
-		$curl = apply_filters( 'the_content', $curl );
-
-		$php = '[sourcecode language="php" wraplines="false" light="true" autolink="false" htmlscript="false"]' . $php . '[/sourcecode]';
-		$php = apply_filters( 'the_content', $php );
-?>
-
-<?php if ( ! empty( $this->example_request ) || ! empty( $this->example_request_data ) || ! empty( $this->example_response ) ) : ?>
-
-	<section class="example-response">
-		<h2 id="apidoc-example">Example</h2>
-
-		<section>
-			<h3>cURL</h3>
-			<?php echo wp_kses_post( $curl ); ?>
-		</section>
-
-		<section>
-			<h3>PHP</h3>
-			<?php echo wp_kses_post( $php ); ?>
-		</section>
-
-		<?php if ( ! empty( $this->example_response ) ) : ?>
-
-			<section>
-				<h3>Response Body</h3>
-				<?php echo $this->example_response; ?>
-			</section>
-
-		<?php endif; ?>
-
-	</section>
-
-<?php endif; ?>
-
-<?php
 		if ( 'unset' !== $original_post ) {
 			$GLOBALS['post'] = $original_post;
 		}
@@ -872,7 +787,10 @@ EOPHP;
 	 */
 	function generate_documentation() {
 		$format       = str_replace( '%d', '%s', $this->path );
-		$path_labeled = vsprintf( $format, array_keys( $this->path_labels ) );
+		$path_labeled = $format;
+		if ( ! empty( $this->path_labels ) ) {
+			$path_labeled = vsprintf( $format, array_keys( $this->path_labels ) );
+		}
 		$boolean_arg  = array( 'false', 'true' );
 		$naeloob_arg  = array( 'true', 'false' );
 
@@ -986,7 +904,7 @@ EOPHP;
 			}
 		}
 
-		if ( -1 == get_option( 'blog_public' ) && !current_user_can( 'read_post', $post->ID ) ) {
+		if ( -1 == get_option( 'blog_public' ) && ! apply_filters( 'wpcom_json_api_user_can_view_post', current_user_can( 'read_post', $post->ID ), $post ) ) {
 			return new WP_Error( 'unauthorized', 'User cannot view post', array( 'status_code' => 403, 'error' => 'private_blog' ) );
 		}
 
@@ -1028,7 +946,7 @@ EOPHP;
 					return null;
 				$is_jetpack = true === apply_filters( 'is_jetpack_site', false, get_current_blog_id() );
 				$post_id = $author->ID;
-				if ( $is_jetpack ) {
+				if ( $is_jetpack && ( defined( 'IS_WPCOM' ) && IS_WPCOM ) ) {
 					$ID    = get_post_meta( $post_id, '_jetpack_post_author_external_id', true );
 					$email = get_post_meta( $post_id, '_jetpack_author_email', true );
 					$login = '';
@@ -1107,6 +1025,12 @@ EOPHP;
 			'metadata'         => wp_get_attachment_metadata( $media_item->ID ),
 		);
 
+		if ( defined( 'IS_WPCOM' ) && IS_WPCOM && is_array( $response['metadata'] ) && ! empty( $response['metadata']['file'] ) ) {
+			remove_filter( '_wp_relative_upload_path', 'wpcom_wp_relative_upload_path', 10 );
+			$response['metadata']['file'] = _wp_relative_upload_path( $response['metadata']['file'] );
+			add_filter( '_wp_relative_upload_path', 'wpcom_wp_relative_upload_path', 10, 2 );
+		}
+
 		$response['meta'] = (object) array(
 			'links' => (object) array(
 				'self' => (string) $this->get_media_link( $this->api->get_blog_id_for_output(), $media_id ),
@@ -1140,12 +1064,19 @@ EOPHP;
 			'title'        => $media_item->post_title,
 			'caption'      => $media_item->post_excerpt,
 			'description'  => $media_item->post_content,
+			'alt'          => get_post_meta( $media_item->ID, '_wp_attachment_image_alt', true ),
+			'thumbnails'   => array()
 		);
 
 		if ( in_array( $ext, array( 'jpg', 'jpeg', 'png', 'gif' ) ) ) {
 			$metadata = wp_get_attachment_metadata( $media_item->ID );
 			$response['height'] = $metadata['height'];
 			$response['width']  = $metadata['width'];
+			if ( is_array( $metadata['sizes'] ) ) {
+			      	foreach ( $metadata['sizes'] as $size => $size_details ) {
+			      	      	$response['thumbnails'][ $size ] = dirname( $response['URL'] ) . '/' . $size_details['file'];
+			      	}
+			}
 			$response['exif']   = $metadata['image_meta'];
 		}
 
@@ -1156,12 +1087,26 @@ EOPHP;
 
 		if ( in_array( $ext, array( 'ogv', 'mp4', 'mov', 'wmv', 'avi', 'mpg', '3gp', '3g2', 'm4v' ) ) ) {
 			$metadata = wp_get_attachment_metadata( $media_item->ID );
-			$response['height'] = $metadata['height'];
-			$response['width']  = $metadata['width'];
+			if ( isset( $metadata['height'], $metadata['width'] ) ) {
+				$response['height'] = $metadata['height'];
+				$response['width']  = $metadata['width'];
+			}
 
 			// add VideoPress info
 			if ( function_exists( 'video_get_info_by_blogpostid' ) ) {
 				$info = video_get_info_by_blogpostid( $this->api->get_blog_id_for_output(), $media_id );
+
+				// Thumbnails
+				if ( function_exists( 'video_format_done' ) && function_exists( 'video_image_url_by_guid' ) ) {
+					$response['thumbnails'] = array( 'fmt_hd' => '', 'fmt_dvd' => '', 'fmt_std' => '' );
+					foreach ( $response['thumbnails'] as $size => $thumbnail_url ) {
+						if ( video_format_done( $info, $size ) ) {
+							$response['thumbnails'][ $size ] = video_image_url_by_guid( $info->guid, $size );
+						} else {
+							unset( $response['thumbnails'][ $size ] );
+						}
+					}
+				}
 
 				$response['videopress_guid'] = $info->guid;
 				$response['videopress_processing_done'] = true;
@@ -1170,6 +1115,8 @@ EOPHP;
 				}
 			}
 		}
+
+		$response['thumbnails'] = (object) $response['thumbnails'];
 
 		$response['meta'] = (object) array(
 			'links' => (object) array(
@@ -1352,7 +1299,7 @@ EOPHP;
 
 	// Load the functions.php file for the current theme to get its post formats, CPTs, etc.
 	function load_theme_functions() {
-		// the theme info we care about is found either within functions.php or one of the jetpack files. it might also make sense to load inc/wpcom.php and includes/wpcom.php if there is a need for it
+		// the theme info we care about is found either within functions.php or one of the jetpack files.
 		$function_files = array( '/functions.php', '/inc/jetpack.compat.php', '/inc/jetpack.php', '/includes/jetpack.compat.php' );
 
 		// Is this a child theme? Load the child theme's functions file.
@@ -1369,6 +1316,9 @@ EOPHP;
 				require_once(  get_template_directory() . $function_file );
 			}
 		}
+
+		// add inc/wpcom.php and/or includes/wpcom.php
+		wpcom_load_theme_compat_file();
 
 		// since the stuff we care about (CPTS, post formats, are usually on setup or init hooks, we want to load those)
 		$this->copy_hooks( 'after_setup_theme', 'restapi_theme_after_setup_theme', WP_CONTENT_DIR . '/themes' );
@@ -1419,19 +1369,179 @@ EOPHP;
 		return false;
 	}
 
+	/**
+	 * Try to find the closest supported version of an endpoint to the current endpoint
+	 *
+	 * For example, if we were looking at the path /animals/panda:
+	 * - if the current endpoint is v1.3 and there is a v1.3 of /animals/%s available, we return 1.3
+	 * - if the current endpoint is v1.3 and there is no v1.3 of /animals/%s known, we fall back to the
+	 *   maximum available version of /animals/%s, e.g. 1.1
+	 *
+	 * This method is used in get_link() to construct meta links for API responses.
+	 *
+	 * @param $path string The current endpoint path, relative to the version
+	 * @param $method string Request method used to access the endpoint path
+	 * @return string The current version, or otherwise the maximum version available
+	 */
+	function get_closest_version_of_endpoint( $path, $request_method = 'GET' ) {
+
+		$path = untrailingslashit( $path );
+
+		// /help is a special case - always use the current request version
+		if ( wp_endswith( $path, '/help' ) ) {
+			return $this->api->version;
+		}
+
+		$endpoint_path_versions = $this->get_endpoint_path_versions();
+		$last_path_segment = $this->get_last_segment_of_relative_path( $path );
+		$max_version_found = null;
+
+		foreach ( $endpoint_path_versions as $endpoint_last_path_segment => $endpoints ) {
+
+			// Does the last part of the path match the path key? (e.g. 'posts')
+			// If the last part contains a placeholder (e.g. %s), we want to carry on
+			if ( $last_path_segment != $endpoint_last_path_segment && ! strstr( $endpoint_last_path_segment, '%' ) ) {
+				continue;
+			}
+
+			foreach ( $endpoints as $endpoint ) {
+				// Does the request method match?
+				if ( ! in_array( $request_method, $endpoint['request_methods'] ) ) {
+					continue;
+				}
+
+				$endpoint_path = untrailingslashit( $endpoint['path'] );
+				$endpoint_path_regex = str_replace( array( '%s', '%d' ), array( '([^/?&]+)', '(\d+)' ), $endpoint_path );
+
+				if ( ! preg_match( "#^$endpoint_path_regex\$#", $path, $matches ) ) {
+					continue;
+				}
+
+				// Make sure the endpoint exists at the same version
+				if ( version_compare( $this->api->version, $endpoint['min_version'], '>=') &&
+					 version_compare( $this->api->version, $endpoint['max_version'], '<=') ) {
+					return $this->api->version;
+				}
+
+				// If the endpoint doesn't exist at the same version, record the max version we found
+				if ( empty( $max_version_found ) || version_compare( $max_version_found, $endpoint['max_version'], '<' ) ) {
+					$max_version_found = $endpoint['max_version'];
+				}
+			}
+		}
+
+		// If the endpoint version is less than the requested endpoint version, return the max version found
+		if ( ! empty( $max_version_found ) ) {
+			return $max_version_found;
+		}
+
+		// Otherwise, use the API version of the current request
+		return $this->api->version;
+	}
+
+	/**
+	 * Get an array of endpoint paths with their associated versions
+	 *
+	 * The result is cached for 30 minutes.
+	 *
+	 * @return array Array of endpoint paths, min_versions and max_versions, keyed by last segment of path
+	 **/
+	protected function get_endpoint_path_versions() {
+
+		// Do we already have the result of this method in the cache?
+		$cache_result = get_transient( 'endpoint_path_versions' );
+
+		if ( ! empty ( $cache_result ) ) {
+			return $cache_result;
+		}
+
+		/*
+		 * Create a map of endpoints and their min/max versions keyed by the last segment of the path (e.g. 'posts')
+		 * This reduces the search space when finding endpoint matches in get_closest_version_of_endpoint()
+		 */
+		$endpoint_path_versions = array();
+
+		foreach ( $this->api->endpoints as $key => $endpoint_objects ) {
+
+			// The key contains a serialized path, min_version and max_version
+			list( $path, $min_version, $max_version ) = unserialize( $key );
+
+			// Grab the last component of the relative path to use as the top-level key
+			$last_path_segment = $this->get_last_segment_of_relative_path( $path );
+
+			$endpoint_path_versions[ $last_path_segment ][] = array(
+				'path' => $path,
+				'min_version' => $min_version,
+				'max_version' => $max_version,
+				'request_methods' => array_keys( $endpoint_objects )
+			);
+		}
+
+		set_transient(
+			'endpoint_path_versions',
+			$endpoint_path_versions,
+			(HOUR_IN_SECONDS / 2)
+		);
+
+		return $endpoint_path_versions;
+	}
+
+	/**
+	 * Grab the last segment of a relative path
+	 *
+	 * @param string $path Path
+	 * @return string Last path segment
+	 */
+	protected function get_last_segment_of_relative_path( $path) {
+		$path_parts = array_filter( explode( '/', $path ) );
+
+		if ( empty( $path_parts ) ) {
+			return null;
+		}
+
+		return end( $path_parts );
+	}
+
+	/**
+	 * Generate a URL to an endpoint
+	 *
+	 * Used to construct meta links in API responses
+	 *
+	 * @param mixed $args Optional arguments to be appended to URL
+	 * @return string Endpoint URL
+	 **/
 	function get_link() {
 		$args   = func_get_args();
 		$format = array_shift( $args );
-		array_unshift( $args, $this->api->public_api_scheme, WPCOM_JSON_API__BASE );
+		$base = WPCOM_JSON_API__BASE;
+
 		$path = array_pop( $args );
+
 		if ( $path ) {
 			$path = '/' . ltrim( $path, '/' );
 		}
+
 		$args[] = $path;
 
+		// Escape any % in args before using sprintf
+		$escaped_args = array();
+		foreach ( $args as $arg_key => $arg_value ) {
+			$escaped_args[ $arg_key ] = str_replace( '%', '%%', $arg_value );
+		}
+
+		$relative_path = vsprintf( "$format%s", $escaped_args );
+
+		if ( ! wp_startswith( $relative_path, '.' ) ) {
+			// Generic version. Match the requested version as best we can
+			$api_version = $this->get_closest_version_of_endpoint( $relative_path );
+			$base        = substr( $base, 0, - 1 ) . $api_version;
+		}
+
+		// escape any % in the relative path before running it through sprintf again
+		$relative_path = str_replace( '%', '%%', $relative_path );
 		// http, WPCOM_JSON_API__BASE, ...    , path
 		// %s  , %s                  , $format, %s
-		return esc_url_raw( vsprintf( "%s://%s$format%s", $args ) );
+		return esc_url_raw( sprintf( "%s://%s$relative_path", $this->api->public_api_scheme, $base ) );
 	}
 
 	function get_me_link( $path = '' ) {
@@ -1466,15 +1576,38 @@ EOPHP;
 	}
 
 	function get_publicize_connections_link( $keyring_token_id, $path = '' ) {
-		return $this->get_link( '.1/me/publicize-connections/?keyring_token_ID=%d', $keyring_token_id, $path );
+		return $this->get_link( '.1/me/publicize-connections/?keyring_connection_ID=%d', $keyring_token_id, $path );
 	}
 
-	function get_keyring_token_link( $keyring_token_id, $path = '' ) {
-		return $this->get_link( '.1/me/keyring-tokens/%d', $keyring_token_id, $path );
+	function get_keyring_connection_link( $keyring_token_id, $path = '' ) {
+		return $this->get_link( '.1/me/keyring-connections/%d', $keyring_token_id, $path );
 	}
 
 	function get_external_service_link( $external_service, $path = '' ) {
 		return $this->get_link( '.1/meta/external-services/%s', $external_service, $path );
+	}
+
+
+	/**
+	* Check whether a user can view or edit a post type
+	* @param string $post_type              post type to check
+	* @param string $context                'display' or 'edit'
+	* @return bool
+	*/
+	function current_user_can_access_post_type( $post_type, $context='display' ) {
+		$post_type_object = get_post_type_object( $post_type );
+		if ( ! $post_type_object ) {
+			return false;
+		}
+
+		switch( $context ) {
+			case 'edit':
+				return current_user_can( $post_type_object->cap->edit_posts );
+			case 'display':
+				return $post_type_object->public || current_user_can( $post_type_object->cap->read_private_posts );
+			default:
+				return false;
+		}
 	}
 
 	function is_post_type_allowed( $post_type ) {
@@ -1614,7 +1747,7 @@ EOPHP;
 
 		$tmp = download_url( $url );
 		if ( is_wp_error( $tmp ) ) {
-			return false;
+			return $tmp;
 		}
 
 		if ( ! file_is_displayable_image( $tmp ) ) {
@@ -1630,6 +1763,10 @@ EOPHP;
 
 		$id = media_handle_sideload( $file_array, $parent_post_id );
 		@unlink( $tmp );
+
+		if ( is_wp_error( $id ) ) {
+			return $id;
+		}
 
 		if ( ! $id || ! is_int( $id ) ) {
 			return false;
@@ -1681,6 +1818,27 @@ EOPHP;
 		return $mimes;
 	}
 
+	function is_current_site_multi_user() {
+		$users = wp_cache_get( 'site_user_count', 'WPCOM_JSON_API_Endpoint' );
+		if ( false === $users ) {
+			$user_query = new WP_User_Query( array(
+				'blog_id' => get_current_blog_id(),
+				'fields'  => 'ID',
+			) );
+			$users = (int) $user_query->get_total();
+			wp_cache_set( 'site_user_count', $users, 'WPCOM_JSON_API_Endpoint', DAY_IN_SECONDS );
+		}
+		return $users > 1;
+	}
+
+	function allows_cross_origin_requests() {
+		return 'GET' == $this->method || $this->allow_cross_origin_request;
+	}
+
+	function allows_unauthorized_requests( $origin, $complete_access_origins  ) {
+		return 'GET' == $this->method || ( $this->allow_unauthorized_request && in_array( $origin, $complete_access_origins ) );
+	}
+
 	/**
 	 * Return endpoint response
 	 *
@@ -1692,6 +1850,7 @@ EOPHP;
 	 *	$data: HTTP 200, json_encode( $data ) response body
 	 */
 	abstract function callback( $path = '' );
+
 
 }
 

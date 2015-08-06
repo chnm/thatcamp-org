@@ -1,6 +1,6 @@
 <?php
 class Jetpack_RelatedPosts {
-	const VERSION = '20141201';
+	const VERSION = '20150408';
 	const SHORTCODE = 'jetpack-related-posts';
 
 	/**
@@ -674,7 +674,7 @@ EOT;
 			'title' => $this->_to_utf8( $this->_get_title( $post->post_title, $post->post_content ) ),
 			'date' => get_the_date( '', $post->ID ),
 			'format' => get_post_format( $post->ID ),
-			'excerpt' => $this->_to_utf8( $this->_get_excerpt( $post->post_excerpt, $post->post_content ) ),
+			'excerpt' => html_entity_decode( $this->_to_utf8( $this->_get_excerpt( $post->post_excerpt, $post->post_content ) ), ENT_QUOTES, 'UTF-8' ),
 			'context' => apply_filters(
 				'jetpack_relatedposts_filter_post_context',
 				$this->_to_utf8( $this->_generate_related_post_context( $post->ID ) ),
@@ -860,8 +860,8 @@ EOT;
 		// Build cache key
 		$cache_key = md5( serialize( $body ) );
 
-		// Cache is valid! Return cacheed value.
-		if ( is_array( $cache[ $cache_key ] ) && $cache[ $cache_key ][ 'expires' ] > $now_ts ) {
+		// Cache is valid! Return cached value.
+		if ( isset( $cache[ $cache_key ] ) && is_array( $cache[ $cache_key ] ) && $cache[ $cache_key ][ 'expires' ] > $now_ts ) {
 			return $cache[ $cache_key ][ 'payload' ];
 		}
 
@@ -877,7 +877,7 @@ EOT;
 
 		// Oh no... return nothing don't cache errors.
 		if ( is_wp_error( $response ) ) {
-			if ( is_array( $cache[ $cache_key ] ) )
+			if ( isset( $cache[ $cache_key ] ) && is_array( $cache[ $cache_key ] ) )
 				return $cache[ $cache_key ][ 'payload' ]; // return stale
 			else
 				return array();

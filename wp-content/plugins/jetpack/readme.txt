@@ -1,9 +1,9 @@
 === Jetpack by WordPress.com ===
-Contributors: automattic, alternatekev, andy, apeatling, azaozz, barry, beaulebens, blobaugh, cfinke, chellycat, danielbachhuber, daniloercoli, designsimply, dsmart, eoigal, ethitter, gibrown, georgestephanis, hew, hugobaeta, iammattthomas, jblz, jeherve, jkudish, Joen, johnjamesjacoby, jshreve, kraftbj, lancewillett, martinremy, matt, matveb, maverick3x6, mcsf, mdawaffe, migueluy, nickmomrik, obenland, pento, professor44, richardmtl, roccotripaldi, sdquirk, stephdau, tmoorewp, Viper007Bond, westi, yoavf
-Tags: WordPress.com, statistics, stats, views, tweets, twitter, widget, gravatar, hovercards, profile, equations, latex, math, maths, youtube, shortcode, archives, audio, blip, bliptv, dailymotion, digg, flickr, googlevideo, google, googlemaps, kyte, kytetv, livevideo, redlasso, rockyou, rss, scribd, slide, slideshare, soundcloud, vimeo, shortlinks, wp.me, subscriptions, notifications, notes, json, api, rest, mosaic, gallery, slideshow, videopress, monitor, search, omnisearch, sso, jet pack
-Stable tag: 3.3.2
-Requires at least: 3.9
-Tested up to: 4.1
+Contributors: automattic, alternatekev, andy, apeatling, azaozz, barry, beaulebens, blobaugh, cfinke, chellycat, danielbachhuber, daniloercoli, designsimply, dsmart, eoigal, ethitter, gibrown, georgestephanis, hew, hugobaeta, iammattthomas, jblz, jeherve, jkudish, Joen, johnjamesjacoby, jshreve, kraftbj, lancewillett, martinremy, matt, matveb, maverick3x6, mcsf, mdawaffe, migueluy, nickmomrik, obenland, pento, professor44, richardmtl, roccotripaldi, samhotchkiss, sdquirk, stephdau, tmoorewp, Viper007Bond, westi, yoavf, zinigor
+Tags: WordPress.com, jet pack, comments, contact, gallery, performance, sharing, security, shortcodes, stats, subscriptions, widgets
+Stable tag: 3.6.1
+Requires at least: 4.1.1
+Tested up to: 4.2.3
 
 Your WordPress, Streamlined.
 
@@ -35,7 +35,7 @@ Your WordPress, Streamlined.
 * Integration with social networks including Twitter, Facebook, Tumblr, Path, and LinkedIn.
 * For the Math geeks, a simple way to include beautiful mathematical expressions.
 * A widget for displaying recent tweets.
-* Your readers can easily share your posts via email or their favorite social networks. 
+* Your readers can easily share your posts via email or their favorite social networks.
 * Improved writing thanks to an AI-based spell, style, and grammar checker.
 * Turn WordPress  galleries into a gorgeous full-screen photo browsing experience.
 * A CSS editor that lets you customize your site design without modifying your theme.
@@ -99,6 +99,191 @@ Learn more (and get detailed instructions) in our [contribute guide](http://jetp
 8. Mobile Theme
 
 == Changelog ==
+= 3.6.1 =
+Release Date: July 24, 2015
+
+* Enhancement: Fully compatible with upcoming WordPress 4.3
+* Enhancement: Site Icon: Start to deprecate Site Icon in favor of Core's version (if available)
+* Bug Fix: Subscriptions: You can now use more than one Subscription form on a single page
+* Bug Fix: Quieted PHP notices and warnings with the JSON API, Display Posts Widget and Gallery Widget (slideshow mode)
+* Bug Fix: Correct permissions check for connection panel
+* Hardening: Increase permissions checks
+
+= 3.6 =
+Release Date: July 6th, 2015
+Release Post: http://jetpack.me/2015/07/06/jetpack-3-6-updated-social-widgets-jetpack-cli-and-more/
+
+Feature Enhancements:
+
+* CLI: Add a number of Jetpack CLI improvements: see http://jetpack.me/support/jetpack-cli
+* New Jetpack admin page for connection management
+* New Social Media Icons widget
+* FB Like Box: A visual refresh of the Facebook likebox widget
+* Protect: When your IP is blocked, use a math captcha as a fallback instead of a complete block
+
+Additional changes:
+
+* Enhancement: Custom CSS: Add more Flexbox support and other enhancements
+* Enhancement: Extra Sidebar Widgets: Top Posts Widget: Choose what Post Types to display
+* Enhancement: General: Save on some requests! print CSS inline when there isn't much of it
+* Enhancement: Likes: Likes can now be shown on all post types
+* Enhancement: Minileven: Add Featured Image to Gallery Post Format and Pages
+* Enhancement: Mobile Theme: Add div wrapping View Mobile Site link to allow for easier CSS customizations
+* Enhancement: Omnisearch: Link to edit post in titles
+* Enhancement: Protect: Learn Trusted Headers locally and cache blocks properly
+* Enhancement: REST API: Add locale support
+* Enhancement: Sharing: Retire StumbleUpon
+* Enhancement: Sharing:	Upgrade to reCAPTCHA 2.0 for Email Sharing
+* Enhancement: Shortcode Embeds: Add Mesh oembed support
+* Enhancement: Shortcode Embeds: New Wufoo Shortcode from WordPress.com
+* Enhancement: Shortcode Embeds: Mixcloud: handle accented characters in URLs
+* Enhancement: Site Logo: Adding itemprops to support logo schema.
+* Enhancement: Slideshow Gallery: New parameters *size* and *autostart*
+* Enhancement: Slideshow Gallery: Use more reliable CSS for resizing instead of js
+* Enhancement: Stats: No longer track stats for preview pages
+* Enhancement: Tiled Gallery: Improve the shapes and distributions of shapes in the Tiled Gallery, based on observations for its usage.
+* Enhancement: Protect: Whitelist for multisite globally and locally
+* Enhancement: Sharing: LinkedIn always uses https for share counts. (saved extra http request)
+* Bug Fix: Carousel: Jetpack Carousel now supports HTML5 gallery
+* Bug Fix: Extra Sidebar Widgets: Choose Images button works in accessibility mode
+* Bug Fix: General: Fix: Cannot remove hooks from filter 'jetpack_get_available_modules'
+* Bug Fix: Infinite Scroll: Check that search terms exist before matching against post title. fixes #2075
+* Bug Fix: Likes: Never double show on search results
+* Bug Fix: Notifications: Notifications didn't load on wp-admin/network pages
+* Bug Fix: Sharing: Fix Facebook share button not showing for Australian & Canadian locale
+* Bug Fix: Shortcode Embed: Slideshare Shortcode now fixed
+* Bug Fix: SSO: Hide login no matter what when using the filter to do so
+* Bug Fix: Subs Widget: Don't hide email input if submit failed
+* Bug Fix: Tiled Gallery: Show columns setting for Thumbnail Grid when Tiled Mosaic galleries are the default
+* Bug Fix: Twitter Cards: Remove deprecated card types
+
+= 3.5.3 =
+Release Date: May 6th, 2015
+
+* Security Hardening: Remove Genericons example.html file.
+
+= 3.5.2 =
+Release Date: May 5th, 2015
+
+* Bug Fix: Sharing: Changes Facebook share count endpoint
+
+
+= 3.5.1 =
+Release Date: May 5th, 2015
+
+* Enhancement: Sharing: Changes Facebook share count method per Facebook API change
+* Enhancement: General: Remove .po files to reduce plugin size
+* Bug Fix: General: Remove identity crisis notification
+* Bug Fix: Subscriptions: Correct required input validation
+* Security hardening
+
+= 3.5 =
+Release Date: April 23rd, 2015
+Release Post: http://jetpack.me/2016/04/23/jetpack-3-5-menu-management/
+
+Jetpack 3.5 introduces the ability to manage your site's menus directly from WordPress.com and several bug fixes and enhancements.  This upgrade is recommended for all users.
+
+* Enhancement: General: Change security reporting to use a transient instead of option to reduce backup load
+* Enhancement: General: Improve module search
+* Enhancement: JSON API: Allow users to manage menus through WordPress.com
+* Enhancement: Sharing: Reduce spam through email sharing
+* Bug Fix: Custom CSS: Improve recall of CSS revisions
+* Bug Fix: Extra Sidebar Widgets: Change class name for Contact Info widget
+* Bug Fix: Extra Sidebar Widgets: Fix errors when adding widgets via the customizer
+* Bug Fix: Extra Sidebar Widgets: Fix PHP notices in RSS widget
+* Bug Fix: General: Fix redirect loop on activation
+* Bug Fix: General: Styling fixes
+* Bug Fix: Protect: Add IP translation fallback when inet_pton is not available
+* Bug Fix: Protect: Always allow login from local IDs
+* Bug Fix: Protect: Sanitize displayed IP after block
+* Bug Fix: Publicize: Prevent generating Facebook profile links for app-scoped user IDs
+* Bug Fix: Subscriptions: Improve error handling
+* Bug Fix: Theme Tools: Include breadcrumb code
+* Misc: Extra Sidebar Widgets: Remove Readmill Widget
+
+= 3.4.3 =
+Release Date: April 20th, 2015
+
+* Security hardening.
+
+= 3.4.2 =
+Release Date: April 19th, 2015
+
+* Bug Fix: Contact info widget namespacing
+* Bug Fix: Javascript errors on wp-admin due to stats display code
+* Bug Fix: Potential fatal error from improperly called function
+* Bug Fix: Potential fatal error when protect servers are unreachable for WordPress Multisite
+
+= 3.4.1 =
+Release Date: March 19th, 2015
+
+* Bug Fix: General: Modules not displaying properly in non-English installs
+* Bug Fix: Manage: Some installs showing a transient fatal error
+* Bug Fix: Protect: Protect module not auto-activating for users who upgrade
+* Bug Fix: Omnisearch: Some installs not properly reporting WP version number, causing Omnisearch error
+* Bug Fix: Stats: Top posts/pages widget not loading
+* Bug Fix: Contact Info Widget: Fix conflict with Avada theme
+
+= 3.4 =
+Release Date: March 18th, 2015
+
+Release Post: http://jetpack.me/2015/03/17/jetpack-3-4-protect-secure-and-simplify/
+
+* Enhancement : Config Settings: provide a notification for users that update features settings
+* Enhancement : Config Settings: provide a notification for users that update features settings
+* Enhancement : Contact Form: Use the predefined $title variable in the anchor tag in grunion contact form button
+* Enhancement : Contact Form: Use the predefined $title variable in the anchor tag in the button on admin
+* Enhancement : Custom Content Type: Add all Custom Post Types to Omnisearch
+* Enhancement : Custom Content Type: Add option to add Testimonial Custom Content Type in admin
+* Enhancement : Custom Content Type: bring consistency between the portfolio and testimonial shared codebase
+* Enhancement : Custom Content Type: code cleanup
+* Enhancement : Custom Content Type: register namespaced 'jetpack_portfolio' shortcode/use a prefix for shortcode for Portfolio
+* Enhancement : Custom Content Type: set shortcode image size to 'large' and add jetpack_portfolio_thumbnail_size filter to allow themes to set their own size for Portfolio
+* Enhancement : Custom Content Type: testimonial shortcode enhancement
+* Enhancement : Extra Sidebar Widgets: Add subscription widget wildcard
+* Enhancement : Extra Sidebar Widgets: Likes and Sharing Shortcodes
+* Enhancement : Extra Sidebar Widgets: Minor fixes to Facebook widget plugin for SSL
+* Enhancement : Fix/update jetpack version
+* Enhancement : General: Add DNS Prefetching
+* Enhancement : General: Add Jetpack admin dashboard widget
+* Enhancement : GlotPress: Update GP_Locales and GP_Locale classes
+* Enhancement : Improved control over Nova Theme Menu output markup
+* Enhancement : Infinite Scroll: Adds a `button` wrapper for the infinity handle.
+* Enhancement : Infinite Scroll: Check for response.html before using indexOf
+* Enhancement : Integrate BruteProtect for protection against Brute Force attacks
+* Enhancement : JSON API Manage: Added Mock Jetpack Option to Sync options that don't have to live in the Database
+* Enhancement : JSON API: Add/empty trash days option to sync
+* Enhancement : Jump Start: Add "Jump Start" interface for new users
+* Enhancement : Manage: Add "modified_before" and "modified_after" parameters to /sites/%s/posts/ via JSON API
+* Enhancement : Mobile Theme: Add filter for choosing mobile theme menu
+* Enhancement : Notifications: Changes to load the new notifications client.
+* Enhancement : Protect: Add a filter so that user can add thier own bots
+* Enhancement : Protect: Add security reporting
+* Enhancement : Protect: Add/whitelist endpoints via JSON API for Jetpack Protect
+* Enhancement : Publicize: update connection confirmation message
+* Enhancement : Sharing: Add custom service name as a class
+* Enhancement : Sharing: display name of custom service in link title
+* Enhancement : Sharing: Remove default post types for showing share links
+* Enhancement : Sharing: use Jetpack version number when enqueing sharing.js
+* Enhancement : Shortcodes Team Partnerships: Backport fixes from SoundCloud 2.3.1 through 3.0.2
+* Enhancement : Shortlinks: use HTTPS when possible
+* Enhancement : Stats: Make loading of stats async
+* Enhancement : Subscriptions: Added settings field for comment sub text
+* Enhancement : Subscriptions: Hide Form After Submit
+* Enhancement : Subscriptions: remove label from widget title
+* Enhancement : Subscriptions: Update subscriptions.php
+* Bug Fix : Contact form: Increase CSS specificity for Contact Forms in widgets
+* Bug Fix : Custom Content Type: Testimonial Custom Content Type: use core `WP_Customize_Image_Control` instead of custom...
+* Bug Fix : Extra Sidebar Widgets: add missing & to if statement for widget visibility
+* Bug Fix : Extra Sidebar Widgets: Don't require height/width values in the Twitter Timeline widget
+* Bug Fix : Extra Sidebar Widgets: Upload images from the customizer/Extra Sidebar Widgets Tiled Galleries for Gallery Widget
+* Bug Fix : General: Fix bug that was preventing modules from displaying properly
+* Bug Fix : Manage: When calling /sites/%s/posts/ include all attachments not just the first five via JSON API
+* Bug Fix : Mobile Theme: Minileven; Start after DOM ready
+* Bug Fix : Sharing: Open sharing in same window
+* Bug Fix : Stats language
+* Bug Fix : Subscritpions: fix invalid field when no email address
+
 
 = 3.3.2 =
 Release Date: February 19th, 2015
@@ -126,6 +311,7 @@ Release Date: February 11th, 2015
 
 = 3.3 =
 Release Date: December 15th, 2014
+Release Post: http://jetpack.me/2014/12/16/jetpack-3-3-a-single-home-for-all-your-wordpress-sites/
 
 * Enhancement: Adds responsive video support to BuddyPress.
 * Enhancement: Custom Content Types: Added 'order' and 'orderby' options to portfolio shortcode.
@@ -174,6 +360,7 @@ Release Date: November 14th, 2014
 
 = 3.2 =
 Release Date: October 29, 2014
+Release Post: http://jetpack.me/2014/11/03/jetpack-3-2/
 
 * Enhancement: Speed Improvements (woohoo!).
 * Enhancement: Add site icons: an avatar for your blog.
@@ -211,6 +398,7 @@ Release Date: August 7, 2014
 
 = 3.1 =
 Release Date: July 31, 2014
+Release Post: http://jetpack.me/2014/07/31/jetpack-3-1-portfolio-custom-post-types-a-new-logo-and-much-more/
 
 * Enhancement: New Custom Content Types module.
 * Enhancement: New Jetpack Logo.
@@ -282,6 +470,7 @@ Release Date: May 22, 2014
 
 = 3.0 =
 Release Date: May 20, 2014
+Release Post: http://jetpack.me/2014/05/20/jetpack-3-0/
 
 * New User Interface for managing modules and settings
 * New Module: Verfication Tools
@@ -325,6 +514,7 @@ Release Date: March 6, 2014
 
 = 2.9 =
 Release Date: February 26, 2014
+Release Post: http://jetpack.me/2014/02/26/jetpack-2-9/
 
 * Added Multisite network functionality
 * New Module: Related Posts
@@ -348,6 +538,7 @@ Release Date: February 26, 2014
 
 = 2.8 =
 Release Date: January 31, 2014
+Release Post: http://jetpack.me/2014/01/31/jetpack-2-8-introducing-markdown-and-improving-monitor/
 
 * New Module: Markdown
 * Module Update: Jetpack Monitor
@@ -388,6 +579,7 @@ Release Date: January 31, 2014
 
 = 2.7 =
 Release Date: December 11, 2013
+Release Post: http://jetpack.me/2013/12/11/jetpack-2-7-publicize/
 
 * Enhancement: Google+ Publicize
 * Enhancement: Add Cloudup as an oEmbed provider
@@ -424,6 +616,7 @@ Release Date: December 3, 2013
 
 = 2.6 =
 Release Date: November 28, 2013
+Release Post: http://jetpack.me/2013/11/26/new-release-jetpack-2-6/
 
 * Enhancement: WPCC / now called [SSO](http://jetpack.me/support/sso/): refactored.
 * Enhancement: Monitor: new module which will notify you if your site goes down(http://jetpack.me/support/monitor/).
@@ -461,6 +654,7 @@ Release Date: November 28, 2013
 
 = 2.5 =
 Release Date: September 19, 2013
+Release Post: http://jetpack.me/2013/09/19/jetpack-2-5/
 
 * Enhancement: Connect your Google+ profile and WordPress site to prove authorship of posts.
 * Enhancement: Improved sharing buttons display.
@@ -510,6 +704,7 @@ Release Date: September 4, 2013
 
 = 2.4 =
 Release Date: August 30, 2013
+Release Post: http://jetpack.me/2013/09/04/jetpack-2-4-widget-visibility-and-wpcc-and-more/
 
 * Enhancement: WordPress.com Connect (WPCC): New Module.
 * Enhancement: Widget Visibility: New Module.
@@ -588,6 +783,7 @@ Release Date: July 2, 2013
 
 = 2.3 =
 Release Date: June 19, 2013
+Release Post: http://jetpack.me/2013/06/19/jetpack-2-3/
 
 * Enhancement: Omnisearch: Search once, get results from everything! Omnisearch is a single search box that lets you search many different things
 * Enhancement: Debugger: this module helps you debug connection issues right from your dashboard, and contact the Jetpack support team if needed
@@ -750,6 +946,7 @@ Release Date: March 28, 2013
 
 = 2.2 =
 Release Date: February 26, 2013
+Release Post: http://jetpack.me/2013/02/26/jetpack-2-2-likes/
 
 * Enhancement: Likes: Allow your readers to show their appreciation of your posts.
 * Enhancement: Shortcodes: SoundCloud: Update to version 2.3 of the SoundCloud plugin (HTML5 default player, various fixes).
@@ -830,6 +1027,7 @@ Release Date: January 5, 2013
 
 = 2.1 =
 Release Date: January 4, 2013
+Release Post: http://jetpack.me/2013/01/04/galleries/
 
 * Enhancement: Tiled Galleries: Show off your photos with cool mosaic galleries.
 * Enhancement: Slideshow gallery type: Display any gallery as a slideshow.
@@ -888,6 +1086,7 @@ Release Date: November 21, 2012
 
 = 2.0 =
 Release Date: November 8, 2012
+Release Post: http://jetpack.me/2012/11/08/jetpack-2-0-publicize-to-facebook-twitter-linkedin-tumblr-post-by-email-photon-infinite-scroll/
 
 * Enhancement: Publicize: Connect your site to popular social networks and automatically share new posts with your friends.
 * Enhancement: Post By Email: Publish posts to your blog directly from your personal email account.
@@ -914,6 +1113,7 @@ Release Date: October 29, 2012
 
 = 1.9 =
 Release Date: October 26, 2012
+Release Post: http://jetpack.me/2012/10/26/jetpack-1-9-toolbar-notifications/
 
 * Enhancement: Notifications: Display Notifications in the toolbar and support reply/moderation of comment notifications.
 * Enhancement: Mobile Push Notifications: Added support for mobile push notifications of new comments for users that linked their accounts to WordPress.com accounts.
@@ -965,6 +1165,7 @@ Release Date: September 28, 2012
 
 = 1.8 =
 Release Date: September 27, 2012
+Release Post: http://jetpack.me/2012/09/27/jetpack-1-8-mobile-theme/
 
 * Enhancement: Mobile Theme: Automatically serve a slimmed down version of your site to users on mobile devices.
 * Enhancement: Multiuser: Allow multiple users to link their accounts to WordPress.com accounts.
@@ -982,6 +1183,7 @@ Release Date: September 27, 2012
 
 = 1.7 =
 Release Date: August 23, 2012
+Release Post: http://jetpack.me/2012/08/23/jetpack-1-7-custom-css/
 
 * Enhancement: CSS Editor: Customize your site's design without modifying your theme.
 * Enhancement: Comments: Submit the comment within the iframe.  No more full page load to jetpack.wordpress.com.
@@ -1014,6 +1216,7 @@ Release Date: August 4, 2012
 
 = 1.6 =
 Release Date: August 2, 2012
+Release Post: http://jetpack.me/2012/08/02/jetpack-1-6-retina-and-pinterest/
 
 * Enhancement: Carousel: Better image resolution selection based on available width/height.
 * Enhancement: Carousel: Load image caption, metadata, comments, et alii when a slide is clicked to switch to instead of waiting.
@@ -1092,6 +1295,7 @@ Release Date: May 22, 2012
 
 = 1.3 =
 Release Date: April 25, 2012
+Release Post: http://jetpack.me/2012/04/24/jetpack-1-3-released-contact-forms/
 
 * Enhancement: Add Contact Forms feature.  Formerly Grunion Contact Forms.
 * Bug Fix: Tweak YouTube autoembedder to catch more YouTube URLs.
@@ -1145,6 +1349,7 @@ Release Date: November 18, 2011
 
 = 1.2 =
 Release Date: November 17, 2011
+Release Post: http://jetpack.me/2011/11/17/announcing-jetpack-1-2/
 
 * Enhancement: Add Subscriptions: Subscribe to site's posts and posts' comments.
 * Enhancement: Add Google Maps shortcode.

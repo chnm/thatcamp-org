@@ -25,19 +25,27 @@ class Jetpack_Admin {
 		$this->jetpack = Jetpack::init();
 
 		jetpack_require_lib( 'admin-pages/class.jetpack-landing-page' );
-		jetpack_require_lib( 'admin-pages/class.jetpack-settings-page' );
-
-		// Initialize objects building landing and settings pages
 		$this->landing_page = new Jetpack_Landing_Page;
+
+		jetpack_require_lib( 'admin-pages/class.jetpack-settings-page' );
 		$this->settings_page = new Jetpack_Settings_Page;
+
+		jetpack_require_lib( 'admin-pages/class.jetpack-my-jetpack-page' );
+		$this->my_jetpack_page = new Jetpack_My_Jetpack_Page;
+
+		if ( isset( $_POST['jetpack-set-master-user'] ) ) {
+			add_action( 'init', array( $this->my_jetpack_page, 'jetpack_my_jetpack_change_user' ) );
+		}
 
 		// Add hooks for admin menus
 		add_action( 'admin_menu',                    array( $this->landing_page, 'add_actions' ), 998 );
 		add_action( 'jetpack_admin_menu',            array( $this, 'admin_menu_debugger' ) );
-		add_action( 'jetpack_admin_menu',        	 array( $this->settings_page, 'add_actions' ) );
+		add_action( 'jetpack_admin_menu',            array( $this->settings_page, 'add_actions' ) );
+		add_action( 'jetpack_admin_menu',            array( $this->my_jetpack_page, 'add_actions' ) );
+
 
 		// Add redirect to current page for activation/deactivation of modules
-		add_action( 'jetpack_pre_activate_module',   array( $this, 'fix_redirect' ) );
+		add_action( 'jetpack_pre_activate_module',   array( $this, 'fix_redirect' ), 10, 2 );
 		add_action( 'jetpack_pre_deactivate_module', array( $this, 'fix_redirect' ) );
 
 		// Add module bulk actions handler
@@ -45,12 +53,13 @@ class Jetpack_Admin {
 	}
 
 	static function sort_requires_connection_last( $module1, $module2 ) {
-		if ( $module1['requires_connection'] == $module2['requires_connection'] )
+		if ( $module1['requires_connection'] == $module2['requires_connection'] ) {
 			return 0;
-		if ( $module1['requires_connection'] )
+		} elseif ( $module1['requires_connection'] ) {
 			return 1;
-		if ( $module2['requires_connection'] )
+		} elseif ( $module2['requires_connection'] ) {
 			return -1;
+		}
 
 		return 0;
 	}
@@ -66,7 +75,14 @@ class Jetpack_Admin {
 		foreach ( $available_modules as $module ) {
 			if ( $module_array = $this->jetpack->get_module( $module ) ) {
 				$short_desc = apply_filters( 'jetpack_short_module_description', $module_array['description'], $module );
-				$short_desc_trunc = ( strlen( $short_desc ) > 143 ) ? substr( $short_desc, 0, 140 ) . '...' : $short_desc;
+				// Fix: correct multibyte strings truncate with checking for mbstring extension
+				$short_desc_trunc = ( function_exists( 'mb_strlen' ) )
+							? ( ( mb_strlen( $short_desc ) > 143 )
+								? mb_substr( $short_desc, 0, 140 ) . '...'
+								: $short_desc )
+							: ( ( strlen( $short_desc ) > 143 )
+								? substr( $short_desc, 0, 140 ) . '...'
+								: $short_desc );
 
 				$module_array['module']            = $module;
 				$module_array['activated']         = ( $jetpack_active ? in_array( $module, $active_modules ) : false );
@@ -86,7 +102,35 @@ class Jetpack_Admin {
 				} else {
 					do_action( 'jetpack_module_more_info_' . $module );
 				}
-				$module_array['long_description']  = ob_get_clean();
+				
+				/**
+				* Filter the long description of a module.
+	 			*
+	 			* @since 3.5.0
+	 			*
+	 			* @param string ob_get_clean() The module long description.
+				* @param string $module The module name.
+	 			*/
+				$module_array['long_description'] = apply_filters( 'jetpack_long_module_description', ob_get_clean(), $module );
+
+				ob_start();
+				/**
+				 * Filter the search terms for a module
+				 *
+				 * Search terms are be typically added to a module in module-info.php.
+				 *
+				 * Use syntax:
+				 * function jetpack_$module_search_terms( $terms ) {
+				 *  $terms = _x( 'term 1, term 2', 'search terms', 'jetpack' );
+				 *  return $terms;
+				 * }
+				 * add_filter( 'jetpack_search_terms_$module', 'jetpack_$module_search_terms' );
+				 *
+				 * @since 3.5.0
+				 * @param string The search terms (comma separated)
+				 */
+				echo apply_filters( 'jetpack_search_terms_' . $module, '' );
+				$module_array['search_terms'] = ob_get_clean();
 
 				$module_array['configurable'] = false;
 				if ( current_user_can( 'manage_options' ) && apply_filters( 'jetpack_module_configurable_' . $module, false ) ) {
@@ -111,14 +155,14 @@ class Jetpack_Admin {
 			return false;
 
 		/**
-		 * We never want to show VaultPress as activate-able through Jetpack.
+		 * We never want to show VaultPress as activatable through Jetpack.
 		 */
 		if ( 'vaultpress' === $module['module'] ) {
 			return false;
 		}
 
 		if ( Jetpack::is_development_mode() ) {
-			return ! ( $module['requires_connection'] && ! Jetpack::is_active() );
+			return ! ( $module['requires_connection'] );
 		} else {
 			return Jetpack::is_active();
 		}
@@ -162,7 +206,10 @@ class Jetpack_Admin {
 		}
 	}
 
-	function fix_redirect() {
+	function fix_redirect( $module, $redirect = true ) {
+		if ( ! $redirect ) {
+			return;
+		}
 		if ( wp_get_referer() ) {
 			add_filter( 'wp_redirect', 'wp_get_referer' );
 		}

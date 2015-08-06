@@ -28,6 +28,9 @@ class WPCOM_JSON_API {
 	var $trapped_error = null;
 	var $did_output = false;
 
+	/**
+	 * @return WPCOM_JSON_API instance
+	 */
 	static function init( $method = null, $url = null, $post_body = null ) {
 		if ( !self::$self ) {
 			$class = function_exists( 'get_called_class' ) ? get_called_class() : __CLASS__;
@@ -54,6 +57,17 @@ class WPCOM_JSON_API {
 		case 't' :
 		case 'true' :
 			return true;
+		}
+
+		return false;
+	}
+
+	static function is_falsy( $value ) {
+		switch ( strtolower( (string) $value ) ) {
+			case '0' :
+			case 'f' :
+			case 'false' :
+				return true;
 		}
 
 		return false;
@@ -194,6 +208,12 @@ class WPCOM_JSON_API {
 			$endpoint_path        = $endpoint_path_versions[0];
 			$endpoint_min_version = $endpoint_path_versions[1];
 			$endpoint_max_version = $endpoint_path_versions[2];
+
+			// Make sure max_version is not less than min_version
+			if ( version_compare( $endpoint_max_version, $endpoint_min_version, '<' ) ) {
+				$endpoint_max_version = $endpoint_min_version;
+			}
+
 			foreach ( $methods as $method ) {
 				if ( !isset( $endpoints_by_method[$method] ) ) {
 					continue;
@@ -397,8 +417,10 @@ class WPCOM_JSON_API {
 	}
 
 	function output_error( $error ) {
-		if ( function_exists( 'bump_stats_extra' ) )
-			bump_stats_extra( 'rest-api-errors', $this->token_details['client_id'] );
+		if ( function_exists( 'bump_stats_extra' ) ) {
+			$client_id = ! empty( $this->token_details['client_id'] ) ? $this->token_details['client_id'] : 0;
+			bump_stats_extra( 'rest-api-errors', $client_id );
+		}
 
 		$error_response = $this->serializable_error( $error );
 
@@ -494,11 +516,21 @@ class WPCOM_JSON_API {
 	}
 
 	function switch_to_blog_and_validate_user( $blog_id = 0, $verify_token_for_blog = true ) {
+		if ( $this->is_restricted_blog( $blog_id ) ) {
+			return new WP_Error( 'unauthorized', 'User cannot access this restricted blog', 403 );
+		}
+
 		if ( -1 == get_option( 'blog_public' ) && !current_user_can( 'read' ) ) {
 			return new WP_Error( 'unauthorized', 'User cannot access this private blog.', 403 );
 		}
 
 		return $blog_id;
+	}
+
+	// Returns true if the specified blog ID is a restricted blog
+	function is_restricted_blog( $blog_id ) {
+		$restricted_blog_ids = apply_filters( 'wpcom_json_api_restricted_blog_ids', array() );
+		return true === in_array( $blog_id, $restricted_blog_ids );
 	}
 
 	function post_like_count( $blog_id, $post_id ) {

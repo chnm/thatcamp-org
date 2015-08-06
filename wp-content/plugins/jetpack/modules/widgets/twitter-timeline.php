@@ -64,8 +64,10 @@ class Jetpack_Twitter_Timeline_Widget extends WP_Widget {
 
 		echo $args['before_widget'];
 
-		if ( $instance['title'] )
+		if ( $instance['title'] ) {
+			/** This filter is documented in core/src/wp-includes/default-widgets.php */
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+		}
 
 		$data_attribs = array( 'widget-id', 'theme', 'link-color', 'border-color', 'chrome', 'tweet-limit' );
 		$attribs      = array( 'width', 'height', 'lang' );
@@ -90,11 +92,33 @@ class Jetpack_Twitter_Timeline_Widget extends WP_Widget {
 				echo ' ' . esc_attr( $att ) . '="' . esc_attr( $instance[$att] ) . '"';
 		}
 
-		echo '>' . esc_html__( 'My Tweets', 'jetpack' ) . '</a>';
+		echo '>';
+
+		$timeline_placeholder = __( 'My Tweets', 'jetpack' );
+
+		/**
+		 * Filter the Timeline placeholder text.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @param string $timeline_placeholder Timeline placeholder text.
+		 */
+		$timeline_placeholder = apply_filters( 'jetpack_twitter_timeline_placeholder', $timeline_placeholder );
+
+		echo esc_html( $timeline_placeholder ) . '</a>';
+
 		// End tag output
 
 		echo $args['after_widget'];
 
+		/**
+		 * Fires after echoing a widget on the frontend, can be used to track the number of widgets that are added.
+		 *
+		 * @since 2.2.3
+		 *
+		 * @param string widget Type of action to track.
+		 * @param string twitter_timeline Type of widget being displayed.
+		 */
 		do_action( 'jetpack_bump_stats_extras', 'widget', 'twitter_timeline' );
 	}
 
@@ -115,8 +139,8 @@ class Jetpack_Twitter_Timeline_Widget extends WP_Widget {
 		$instance['title']         = sanitize_text_field( $new_instance['title'] );
 		$instance['width']         = (int) $new_instance['width'];
 		$instance['height']        = (int) $new_instance['height'];
-		$instance['width']         = ( 0 !== (int) $new_instance['width'] )  ? (int) $new_instance['width']  : 225;
-		$instance['height']        = ( 0 !== (int) $new_instance['height'] ) ? (int) $new_instance['height'] : 400;
+		$instance['width']         = ( 0 !== (int) $new_instance['width'] )  ? (int) $new_instance['width']  : '';
+		$instance['height']        = ( 0 !== (int) $new_instance['height'] ) ? (int) $new_instance['height'] : '';
 		$instance['tweet-limit']   = ( 0 !== (int) $new_instance['tweet-limit'] ) ? (int) $new_instance['tweet-limit'] : null;
 
 		// If they entered something that might be a full URL, try to parse it out

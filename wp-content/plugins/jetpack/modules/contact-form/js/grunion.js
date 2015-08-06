@@ -234,6 +234,7 @@ FB.ContactForm = (function() {
 			jQuery('#TB_imageOff', window.parent.document).unbind('click');
 			jQuery('#TB_closeWindowButton', window.parent.document).unbind('click');
 			jQuery('#TB_window', window.parent.document).fadeOut('fast');
+			jQuery('body', window.parent.document).removeClass('modal-open');
 			jQuery('#TB_window,#TB_overlay,#TB_HideSelect', window.parent.document).trigger('unload').unbind().remove();
 			jQuery('#TB_load', window.parent.document).remove();
 			if (typeof window.parent.document.body.style.maxHeight === 'undefined') {//if IE 6
@@ -393,6 +394,8 @@ FB.ContactForm = (function() {
 
 				// Remove new lines that cause BR tags to show up
 				response = response.replace(/\n/g,' ');
+				// Convert characters to comma
+				response = response.replace( '%26#x002c;' , ',' );
 
 				// Add new shortcode
 				if (currentCode.match(regexp)) {

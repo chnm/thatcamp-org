@@ -66,6 +66,18 @@ class Jetpack_Custom_CSS {
 			do_action( 'safecss_migrate_post' );
 		}
 
+		/**
+		 * Never embed the style in the head on wpcom.
+		 * Yes, this filter should be added to an unsynced file on wpcom, but
+		 * there is no good syntactically-correct location to put it yet.
+		 * @link https://github.com/Automattic/jetpack/commit/a1be114e9179f64d147124727a58e2cf76c7e5a1#commitcomment-7763921
+		 */
+		if ( defined( 'IS_WPCOM' ) && IS_WPCOM ) {
+			add_filter( 'safecss_embed_style', '__return_false' );
+		} else {
+			add_filter( 'safecss_embed_style', array( 'Jetpack_Custom_CSS', 'should_we_inline_custom_css' ), 10, 2 );
+		}
+
 		add_action( 'wp_head', array( 'Jetpack_Custom_CSS', 'link_tag' ), 101 );
 
 		add_filter( 'jetpack_content_width', array( 'Jetpack_Custom_CSS', 'jetpack_content_width' ) );
@@ -94,6 +106,17 @@ class Jetpack_Custom_CSS {
 
 			if ( $save_result )
 				add_action( 'admin_notices', array( 'Jetpack_Custom_CSS', 'saved_message' ) );
+		}
+
+		// Prevent content filters running on CSS when restoring revisions
+		if ( isset( $_REQUEST[ 'action' ] ) && 'restore' === $_REQUEST[ 'action' ] && false !== strstr( $_SERVER[ 'REQUEST_URI' ], 'revision.php' ) ) {
+			$parent_post = get_post( wp_get_post_parent_id( intval( $_REQUEST[ 'revision' ] ) ) );
+			if ( $parent_post && ! is_wp_error( $parent_post ) && 'safecss' === $parent_post->post_type ) {
+				// Remove wp_filter_post_kses, this causes CSS escaping issues
+				remove_filter( 'content_save_pre', 'wp_filter_post_kses' );
+				remove_filter( 'content_filtered_save_pre', 'wp_filter_post_kses' );
+				remove_all_filters( 'content_save_pre' );
+			}
 		}
 
 		// Modify all internal links so that preview state persists
@@ -518,7 +541,7 @@ class Jetpack_Custom_CSS {
 					apply_filters(
 						'safecss_default_css',
 						__(
-							"Welcome to Custom CSS!\n\nCSS (Cascading Style Sheets) is a kind of code that tells the browser how to render a web page. You may delete these comments and get started with your customizations.\n\nBy default, your stylesheet will be loaded after the theme stylesheets, which means that your rules can take precedence and override the theme CSS rules. Just write here what you want to change, you don't need to copy all your theme's stylesheet content.",
+							"Welcome to Custom CSS!\n\nTo learn how this works, see http://wp.me/PEmnE-Bt",
 							'jetpack'
 						)
 					)
@@ -531,6 +554,15 @@ class Jetpack_Custom_CSS {
 		return $css;
 	}
 
+	static function replace_insecure_urls( $css ) {
+		if ( ! function_exists( '_sa_get_frontend_https_url_replacement_map' ) ) {
+			return $css;
+		}
+		list( $http_urls, $secure_urls ) = _sa_get_frontend_https_url_replacement_map();
+
+		return str_replace( $http_urls, $secure_urls, $css );
+	}
+
 	static function print_css() {
 		
 		/**
@@ -540,8 +572,13 @@ class Jetpack_Custom_CSS {
 		 * @module Custom_CSS
 		 **/
 		do_action( 'safecss_print_pre' );
+		$css = Jetpack_Custom_CSS::get_css( true );
+		echo self::replace_insecure_urls( $css );
+	}
 
-		echo Jetpack_Custom_CSS::get_css( true );
+	static function should_we_inline_custom_css( $should_we, $css ) {
+		// If the CSS is less than 2,000 characters, inline it! otherwise return what was passed in.
+		return ( strlen( $css ) < 2000 ) ? true : $should_we;
 	}
 
 	static function link_tag() {
@@ -596,20 +633,28 @@ class Jetpack_Custom_CSS {
 		if ( $css == '' )
 			return;
 
-		$href = home_url( '/' );
-		$href = add_query_arg( 'custom-css', 1, $href );
-		$href = add_query_arg( 'csblog', $blog_id, $href );
-		$href = add_query_arg( 'cscache', 6, $href );
-		$href = add_query_arg( 'csrev', (int) get_option( $option . '_rev' ), $href );
+		if ( apply_filters( 'safecss_embed_style', false, $css ) ) {
 
-		$href = apply_filters( 'safecss_href', $href, $blog_id );
+			echo "\r\n" . '<style id="custom-css-css">' . Jetpack_Custom_CSS::get_css( true ) . "</style>\r\n";
 
-		if ( Jetpack_Custom_CSS::is_preview() )
-			$href = add_query_arg( 'csspreview', 'true', $href );
+		} else {
 
-		?>
-		<link rel="stylesheet" id="custom-css-css" type="text/css" href="<?php echo esc_url( $href ); ?>" />
-		<?php
+			$href = home_url( '/' );
+			$href = add_query_arg( 'custom-css', 1, $href );
+			$href = add_query_arg( 'csblog', $blog_id, $href );
+			$href = add_query_arg( 'cscache', 6, $href );
+			$href = add_query_arg( 'csrev', (int) get_option( $option . '_rev' ), $href );
+
+			$href = apply_filters( 'safecss_href', $href, $blog_id );
+
+			if ( Jetpack_Custom_CSS::is_preview() )
+				$href = add_query_arg( 'csspreview', 'true', $href );
+
+			?>
+			<link rel="stylesheet" id="custom-css-css" type="text/css" href="<?php echo esc_url( $href ); ?>" />
+			<?php
+
+		}
 
 		/**
 		 * Fires after creating the <link> in the <head> element
@@ -625,7 +670,7 @@ class Jetpack_Custom_CSS {
 		if ( Jetpack_Custom_CSS::is_freetrial() && ( ! Jetpack_Custom_CSS::is_preview() || ! current_user_can( 'switch_themes' ) ) )
 			return $current;
 		else if ( Jetpack_Custom_CSS::skip_stylesheet() )
-			return apply_filters( 'safecss_style_filter_url', plugins_url( 'custom-css/blank.css', __FILE__ ) );
+			return apply_filters( 'safecss_style_filter_url', plugins_url( 'custom-css/css/blank.css', __FILE__ ) );
 
 		return $current;
 	}
@@ -768,6 +813,7 @@ class Jetpack_Custom_CSS {
 				<div id="poststuff">
 					<p class="css-support"><?php echo apply_filters( 'safecss_intro_text', __( 'New to CSS? Start with a <a href="http://www.htmldog.com/guides/cssbeginner/">beginner tutorial</a>. Questions?
 		Ask in the <a href="http://wordpress.org/support/forum/themes-and-templates">Themes and Templates forum</a>.', 'jetpack' ) ); ?></p>
+					<p class="css-support"><?php echo __( 'Note: Custom CSS will be reset when changing themes.', 'jetpack' ); ?></p>
 					
 					<div id="post-body" class="metabox-holder columns-2">
 						<div id="post-body-content">
@@ -1538,7 +1584,7 @@ function safecss_class() {
 	require_once( dirname( __FILE__ ) . '/csstidy/class.csstidy.php' );
 
 	class safecss extends csstidy_optimise {
-		function safecss( &$css ) {
+		function __construct( &$css ) {
 			return $this->csstidy_optimise( $css );
 		}
 
