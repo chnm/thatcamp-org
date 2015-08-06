@@ -17,14 +17,17 @@
 	</style>
 
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-	<?php wp_get_archives('type=monthly&format=link'); ?>
+	<?php wp_get_archives(array('type' => 'monthly', 'format' => 'link')); ?>
 	<?php //comments_popup_script(); // off by default ?>
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 <div id="rap">
-<h1 id="header"><a href="<?php bloginfo('url'); ?>/"><?php bloginfo('name'); ?></a></h1>
+<h1 id="header">
+	<a href="<?php bloginfo('url'); ?>/"><?php bloginfo('name'); ?></a>
+	<span id="tagline"><?php bloginfo('description'); ?></span>
+</h1>
 
 <div id="content">
 <!-- end header -->

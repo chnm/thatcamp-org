@@ -6,7 +6,7 @@
 
 $content_width = 450;
 
-automatic_feed_links();
+add_theme_support( 'automatic-feed-links' );
 
 if ( function_exists('register_sidebar') ) {
 	register_sidebar(array(
@@ -371,7 +371,7 @@ function kubrick_theme_page_head() {
 }
 
 function kubrick_theme_page() {
-	if ( isset( $_REQUEST['saved'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.__('Options saved.').'</strong></p></div>';
+	if ( isset( $_REQUEST['saved'] ) ) echo '<div id="message" class="updated"><p><strong>'.__('Options saved.').'</strong></p></div>';
 ?>
 <div class='wrap'>
 	<h2><?php _e('Customize Header'); ?></h2>

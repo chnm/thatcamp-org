@@ -1,10 +1,10 @@
 /*
-Theme Name: WordPress Classic
+Theme Name: Classic
 Theme URI: http://wordpress.org/
 Description: The original WordPress theme that graced versions 1.2.x and prior.
-Version: 1.5
+Version: 1.6
 Author: Dave Shea
-Tags: mantle color, variable width, two columns, widgets
+Tags: green, white, two-columns, right-sidebar, flexible-width, sticky-post, rtl-language-support, translation-ready
 
 Default WordPress by Dave Shea || http://mezzoblue.com
 Modifications by Matthew Mullenweg || http://photomatt.net
@@ -196,6 +196,13 @@ ul.post-meta span.post-meta-key {
 
 #header a:hover {
 	text-decoration: underline;
+}
+
+#tagline {
+	color: #aba;
+	display: block;
+	font-size: 0.475em;
+	letter-spacing: 0.2em;
 }
 
 #menu {

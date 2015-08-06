@@ -1,11 +1,12 @@
 /*
-Theme Name: WordPress Default
+Theme Name: Default
 Theme URI: http://wordpress.org/
-Description: The default WordPress theme based on the famous <a href="http://binarybonsai.com/kubrick/">Kubrick</a>.
-Version: 1.6
+Description: The default WordPress theme that graced version 1.5 to version 2.9, based on the famous <a href="http://binarybonsai.com/kubrick/">Kubrick</a>.
+Version: 1.7.2
 Author: Michael Heilemann
 Author URI: http://binarybonsai.com/
-Tags: blue, custom header, fixed width, two columns, widgets
+Tags: blue, silver, white, two-columns, fixed-width, right-sidebar, fixed-width, custom-header, threaded-comments, sticky-post, rtl-language-support, translation-ready
+Text Domain: kubrick
 
 	Kubrick v1.5
 	 http://binarybonsai.com/kubrick/
@@ -545,7 +546,6 @@ select {
 	margin: 15px 0 10px;
 	padding: 5px 5px 10px 10px;
 	list-style: none;
-
 	}
 .commentlist li ul li { 
 	margin-right: -5px;

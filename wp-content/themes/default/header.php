@@ -28,7 +28,7 @@ if ( empty($withcomments) && !is_single() ) {
 
 </style>
 
-<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
+<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?> 
 
 <?php wp_head(); ?>
 </head>
