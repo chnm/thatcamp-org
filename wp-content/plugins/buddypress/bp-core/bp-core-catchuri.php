@@ -33,11 +33,13 @@ defined( 'ABSPATH' ) || exit;
  * @since BuddyPress (1.0.0)
  */
 function bp_core_set_uri_globals() {
-	global $bp, $current_blog, $wp_rewrite;
+	global $current_blog, $wp_rewrite;
 
 	// Don't catch URIs on non-root blogs unless multiblog mode is on
 	if ( !bp_is_root_blog() && !bp_is_multiblog_mode() )
 		return false;
+
+	$bp = buddypress();
 
 	// Define local variables
 	$root_profile = $match   = false;
@@ -49,11 +51,17 @@ function bp_core_set_uri_globals() {
 
 	// Ajax or not?
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX || strpos( $_SERVER['REQUEST_URI'], 'wp-load.php' ) )
-		$path = bp_core_referrer();
+		$path = bp_get_referer_path();
 	else
 		$path = esc_url( $_SERVER['REQUEST_URI'] );
 
-	// Filter the path
+	/**
+	 * Filters the BuddyPress global URI path.
+	 *
+	 * @since BuddyPress (1.0.0)
+	 *
+	 * @param string $path Path to set.
+	 */
 	$path = apply_filters( 'bp_uri', $path );
 
 	// Take GET variables off the URL to avoid problems
@@ -250,37 +258,54 @@ function bp_core_set_uri_globals() {
 		// If members component, do more work to find the actual component
 		if ( 'members' == $match->key ) {
 
-			// Viewing a specific user
-			if ( !empty( $bp_uri[$uri_offset + 1] ) ) {
+			$after_member_slug = false;
+			if ( ! empty( $bp_uri[ $uri_offset + 1 ] ) ) {
+				$after_member_slug = $bp_uri[ $uri_offset + 1 ];
+			}
 
+			// Are we viewing a specific user?
+			if ( $after_member_slug ) {
 				// Switch the displayed_user based on compatibility mode
 				if ( bp_is_username_compatibility_mode() ) {
-					$bp->displayed_user->id = (int) bp_core_get_userid( urldecode( $bp_uri[$uri_offset + 1] ) );
+					$bp->displayed_user->id = (int) bp_core_get_userid( urldecode( $after_member_slug ) );
 				} else {
-					$bp->displayed_user->id = (int) bp_core_get_userid_from_nicename( urldecode( $bp_uri[$uri_offset + 1] ) );
+					$bp->displayed_user->id = (int) bp_core_get_userid_from_nicename( $after_member_slug );
 				}
+			}
 
-				if ( !bp_displayed_user_id() ) {
+			// Is this a member type directory?
+			if ( ! bp_displayed_user_id() && $after_member_slug === apply_filters( 'bp_members_member_type_base', _x( 'type', 'member type URL base', 'buddypress' ) ) && ! empty( $bp_uri[ $uri_offset + 2 ] ) ) {
+				$matched_types = bp_get_member_types( array(
+					'has_directory'  => true,
+					'directory_slug' => $bp_uri[ $uri_offset + 2 ],
+				) );
 
-					// Prevent components from loading their templates
-					$bp->current_component = '';
+				if ( ! empty( $matched_types ) ) {
+					$bp->current_member_type = reset( $matched_types );
+					unset( $bp_uri[ $uri_offset + 1 ] );
+				}
+			}
 
+			// If the slug matches neither a member type nor a specific member, 404.
+			if ( ! bp_displayed_user_id() && ! bp_get_current_member_type() && $after_member_slug ) {
+				// Prevent components from loading their templates.
+				$bp->current_component = '';
+				bp_do_404();
+				return;
+			}
+
+			// If the displayed user is marked as a spammer, 404 (unless logged-in user is a super admin)
+			if ( bp_displayed_user_id() && bp_is_user_spammer( bp_displayed_user_id() ) ) {
+				if ( bp_current_user_can( 'bp_moderate' ) ) {
+					bp_core_add_message( __( 'This user has been marked as a spammer. Only site admins can view this profile.', 'buddypress' ), 'warning' );
+				} else {
 					bp_do_404();
 					return;
 				}
+			}
 
-				// If the displayed user is marked as a spammer, 404 (unless logged-
-				// in user is a super admin)
-				if ( bp_displayed_user_id() && bp_is_user_spammer( bp_displayed_user_id() ) ) {
-					if ( bp_current_user_can( 'bp_moderate' ) ) {
-						bp_core_add_message( __( 'This user has been marked as a spammer. Only site admins can view this profile.', 'buddypress' ), 'warning' );
-					} else {
-						bp_do_404();
-						return;
-					}
-				}
-
-				// Bump the offset
+			// Bump the offset.
+			if ( bp_displayed_user_id() ) {
 				if ( isset( $bp_uri[$uri_offset + 2] ) ) {
 					$bp_uri                = array_merge( array(), array_slice( $bp_uri, $uri_offset + 2 ) );
 					$bp->current_component = $bp_uri[0];
@@ -325,6 +350,13 @@ function bp_core_enable_root_profiles() {
 	if ( defined( 'BP_ENABLE_ROOT_PROFILES' ) && ( true == BP_ENABLE_ROOT_PROFILES ) )
 		$retval = true;
 
+	/**
+	 * Filters whether or not root profiles are enabled and allowed.
+	 *
+	 * @since BuddyPress (1.6.0)
+	 *
+	 * @param bool $retval Whether or not root profiles are available.
+	 */
 	return apply_filters( 'bp_core_enable_root_profiles', $retval );
 }
 
@@ -368,7 +400,16 @@ function bp_core_load_template( $templates ) {
 		$template = '';
 	}
 
-	// Filter the template locations so that plugins can alter where they are located
+	/**
+	 * Filters the template locations.
+	 *
+	 * Allows plugins to alter where the template files are located.
+	 *
+	 * @since BuddyPress (1.1.0)
+	 *
+	 * @param string $template           Located template path.
+	 * @param array  $filtered_templates Array of templates to attempt to load.
+	 */
 	$located_template = apply_filters( 'bp_located_template', $template, $filtered_templates );
 	if ( !empty( $located_template ) ) {
 		// Template was located, lets set this as a valid page and not a 404.
@@ -377,10 +418,31 @@ function bp_core_load_template( $templates ) {
 		$wp_query->is_singular = true;
 		$wp_query->is_404      = false;
 
+		/**
+		 * Fires before the loading of a located template file.
+		 *
+		 * @since BuddyPress (1.6.0)
+		 *
+		 * @param string $located_template Template found to be loaded.
+		 */
 		do_action( 'bp_core_pre_load_template', $located_template );
 
+		/**
+		 * Filters the selected template right before loading.
+		 *
+		 * @since BuddyPress (1.1.0)
+		 *
+		 * @param string $located_template Template found to be loaded.
+		 */
 		load_template( apply_filters( 'bp_load_template', $located_template ) );
 
+		/**
+		 * Fires after the loading of a located template file.
+		 *
+		 * @since BuddyPress (1.6.0)
+		 *
+		 * @param string $located_template Template found that was loaded.
+		 */
 		do_action( 'bp_core_post_load_template', $located_template );
 
 		// Kill any other output after this.
@@ -399,6 +461,11 @@ function bp_core_load_template( $templates ) {
 			$wp_query->is_404      = false;
 		}
 
+		/**
+		 * Fires if there are no found templates to load and theme compat is needed.
+		 *
+		 * @since BuddyPress (1.7.0)
+		 */
 		do_action( 'bp_setup_theme_compat' );
 	}
 }
@@ -408,6 +475,14 @@ function bp_core_load_template( $templates ) {
  */
 function bp_core_catch_profile_uri() {
 	if ( !bp_is_active( 'xprofile' ) ) {
+
+		/**
+		 * Filters the path to redirect users to if XProfile is not enabled.
+		 *
+		 * @since BuddyPress (1.0.0)
+		 *
+		 * @param string $value Path to redirect users to.
+		 */
 		bp_core_load_template( apply_filters( 'bp_core_template_display_profile', 'members/single/home' ) );
 	}
 }
@@ -418,7 +493,9 @@ function bp_core_catch_profile_uri() {
  * @since BuddyPress (1.5.0)
  */
 function bp_core_catch_no_access() {
-	global $bp, $wp_query;
+	global $wp_query;
+
+	$bp = buddypress();
 
 	// If coming from bp_core_redirect() and $bp_no_status_set is true,
 	// we are redirecting to an accessible page so skip this check.
@@ -468,6 +545,14 @@ function bp_core_no_access( $args = '' ) {
 	);
 
 	$r = wp_parse_args( $args, $defaults );
+
+	/**
+	 * Filters the arguments used for user redirecting when visiting access controlled areas.
+	 *
+	 * @since BuddyPress (1.6.0)
+	 *
+	 * @param array $r Array of parsed arguments for redirect determination.
+	 */
 	$r = apply_filters( 'bp_core_no_access', $r );
 	extract( $r, EXTR_SKIP );
 
@@ -499,8 +584,9 @@ function bp_core_no_access( $args = '' ) {
 		default :
 
 			$url = $root;
-			if ( !empty( $redirect ) )
+			if ( !empty( $redirect ) ) {
 				$url = add_query_arg( 'redirect_to', urlencode( $redirect ), $root );
+			}
 
 			if ( !empty( $message ) ) {
 				bp_core_add_message( $message, 'error' );
@@ -524,6 +610,14 @@ function bp_core_no_access( $args = '' ) {
 function bp_core_no_access_wp_login_error() {
 	global $error;
 
+	/**
+	 * Filters the error message for wp-login.php when needing to log in before accessing.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 *
+	 * @param string $value Error message to display.
+	 * @param string $value URL to redirect user to after successful login.
+	 */
 	$error = apply_filters( 'bp_wp_login_error', __( 'You must log in to access the page you requested.', 'buddypress' ), $_REQUEST['redirect_to'] );
 
 	// shake shake shake!
@@ -549,8 +643,14 @@ add_action( 'login_form_bpnoaccess', 'bp_core_no_access_wp_login_error' );
  * @uses bp_get_requested_url()
  */
 function bp_redirect_canonical() {
-	global $bp;
 
+	/**
+	 * Filters whether or not to do canonical redirects on BuddyPress URLs.
+	 *
+	 * @since BuddyPress (1.6.0)
+	 *
+	 * @param bool $value Whether or not to do canonical redirects. Default true.
+	 */
 	if ( !bp_is_blog_page() && apply_filters( 'bp_do_redirect_canonical', true ) ) {
 		// If this is a POST request, don't do a canonical redirect.
 		// This is for backward compatibility with plugins that submit form requests to
@@ -572,6 +672,8 @@ function bp_redirect_canonical() {
 
 		// Only redirect if we've assembled a URL different from the request
 		if ( $canonical_url !== $req_url_clean ) {
+
+			$bp = buddypress();
 
 			// Template messages have been deleted from the cookie by this point, so
 			// they must be readded before redirecting
@@ -618,12 +720,13 @@ function bp_rel_canonical() {
  * @return string Canonical URL for the current page.
  */
 function bp_get_canonical_url( $args = array() ) {
-	global $bp;
 
 	// For non-BP content, return the requested url, and let WP do the work
 	if ( bp_is_blog_page() ) {
 		return bp_get_requested_url();
 	}
+
+	$bp = buddypress();
 
 	$defaults = array(
 		'include_query_args' => false // Include URL arguments, eg ?foo=bar&foo2=bar2
@@ -648,7 +751,15 @@ function bp_get_canonical_url( $args = array() ) {
 		// and the current user is logged in. In this case we send to
 		// the members directory to avoid redirect loops
 		} elseif ( bp_is_register_page() && 'register' == $front_page_component && is_user_logged_in() ) {
-			$bp->canonical_stack['canonical_url'] = apply_filters( 'bp_loggedin_register_page_redirect_to', trailingslashit( bp_get_root_domain() . '/' . bp_get_members_root_slug() ) );
+
+			/**
+			 * Filters the logged in register page redirect URL.
+			 *
+			 * @since BuddyPress (1.5.1)
+			 *
+			 * @param string $value URL to redirect logged in members to.
+			 */
+			$bp->canonical_stack['canonical_url'] = apply_filters( 'bp_loggedin_register_page_redirect_to', bp_get_members_directory_permalink() );
 		}
 	}
 
@@ -689,6 +800,14 @@ function bp_get_canonical_url( $args = array() ) {
 		$canonical_url = array_pop( $canonical_url );
 	}
 
+	/**
+	 * Filters the canonical url of the current page.
+	 *
+	 * @since BuddyPress (1.6.0)
+	 *
+	 * @param string $canonical_url Canonical URL of the current page.
+	 * @param array  $args          Array of arguments to help determine canonical URL.
+	 */
 	return apply_filters( 'bp_get_canonical_url', $canonical_url, $args );
 }
 
@@ -700,13 +819,20 @@ function bp_get_canonical_url( $args = array() ) {
  * @return string Requested URL string.
  */
 function bp_get_requested_url() {
-	global $bp;
+	$bp = buddypress();
 
 	if ( empty( $bp->canonical_stack['requested_url'] ) ) {
 		$bp->canonical_stack['requested_url']  = is_ssl() ? 'https://' : 'http://';
 		$bp->canonical_stack['requested_url'] .= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	}
 
+	/**
+	 * Filters the URL as requested on the current page load by the user agent.
+	 *
+	 * @since BuddyPress (1.7.0)
+	 *
+	 * @param string $value Requested URL string.
+	 */
 	return apply_filters( 'bp_get_requested_url', $bp->canonical_stack['requested_url'] );
 }
 
@@ -753,8 +879,8 @@ add_action( 'bp_init', '_bp_maybe_remove_redirect_canonical' );
  *
  * @since BuddyPress (1.6.1)
  *
- * @link http://buddypress.trac.wordpress.org/ticket/4329
- * @link http://buddypress.trac.wordpress.org/ticket/4415
+ * @link https://buddypress.trac.wordpress.org/ticket/4329
+ * @link https://buddypress.trac.wordpress.org/ticket/4415
  */
 function _bp_rehook_maybe_redirect_404() {
 	if ( defined( 'NOBLOGREDIRECT' ) ) {

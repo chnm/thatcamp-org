@@ -179,6 +179,7 @@ function bp_activity_check_blacklist_keys( $activity ) {
  * @uses wp_kses()
  *
  * @param string $content The activity content.
+ *
  * @return string $content Filtered activity content.
  */
 function bp_activity_filter_kses( $content ) {
@@ -209,7 +210,7 @@ function bp_activity_filter_kses( $content ) {
 	 *
 	 * @since BuddyPress (1.2.0)
 	 *
-	 * @param array Array of allowed HTML tags and attributes.
+	 * @param array $value Array of allowed HTML tags and attributes.
 	 */
 	$activity_allowedtags = apply_filters( 'bp_activity_allowed_tags', $activity_allowedtags );
 	return wp_kses( $content, $activity_allowedtags );
@@ -220,8 +221,9 @@ function bp_activity_filter_kses( $content ) {
  *
  * @since BuddyPress (1.2.0)
  *
- * @param string $content The contents of a given item.
- * @param int $activity_id The activity id. Deprecated.
+ * @param string $content     The contents of a given item.
+ * @param int    $activity_id The activity id. Deprecated.
+ *
  * @return string $content Content filtered for mentions.
  */
 function bp_activity_at_name_filter( $content, $activity_id = 0 ) {
@@ -318,7 +320,7 @@ function bp_activity_at_name_filter_updates( $activity ) {
  * @uses bp_activity_at_message_notification()
  * @uses bp_activity_update_mention_count_for_user()
  *
- * @param BP_Activity_Activity $activity The BP_Activity_Activity object
+ * @param BP_Activity_Activity $activity The BP_Activity_Activity object.
  */
 function bp_activity_at_name_send_emails( $activity ) {
 	// Are mentions disabled?
@@ -338,12 +340,13 @@ function bp_activity_at_name_send_emails( $activity ) {
 
 	// Send @mentions and setup BP notifications
 	foreach( (array) $usernames as $user_id => $username ) {
+
 		/**
 		 * Filters BuddyPress' ability to send email notifications for @mentions.
 		 *
 		 * @since BuddyPress (1.6.0)
 		 *
-		 * @param bool  Whether or not BuddyPress should send a notification to the mentioned users.
+		 * @param bool  $value     Whether or not BuddyPress should send a notification to the mentioned users.
 		 * @param array $usernames Array of users potentially notified.
 		 */
 		if ( apply_filters( 'bp_activity_at_name_do_notifications', true, $usernames ) ) {
@@ -361,6 +364,7 @@ function bp_activity_at_name_send_emails( $activity ) {
  * @since BuddyPress (1.2.0)
  *
  * @param string $text Activity text.
+ *
  * @return string $text Text with rel=nofollow added to any links.
  */
 function bp_activity_make_nofollow_filter( $text ) {
@@ -372,10 +376,9 @@ function bp_activity_make_nofollow_filter( $text ) {
 	 *
 	 * @since BuddyPress (1.2.0)
 	 *
-	 * @param array $matches
-	 *
 	 * @param array $matches Items matched by preg_replace_callback() in bp_activity_make_nofollow_filter().
-	 * @return string $text Link with rel=nofollow added
+	 *
+	 * @return string $text Link with rel=nofollow added.
 	 */
 	function bp_activity_make_nofollow_filter_callback( $matches ) {
 		$text = $matches[1];
@@ -385,6 +388,8 @@ function bp_activity_make_nofollow_filter( $text ) {
 
 /**
  * Truncate long activity entries when viewed in activity streams.
+ *
+ * This method can only be used inside the Activity loop.
  *
  * @since BuddyPress (1.5.0)
  *
@@ -397,21 +402,35 @@ function bp_activity_make_nofollow_filter( $text ) {
  * @uses apply_filters() To call the 'bp_activity_truncate_entry' hook.
  *
  * @param string $text The original activity entry text.
+ *
  * @return string $excerpt The truncated text.
  */
 function bp_activity_truncate_entry( $text ) {
 	global $activities_template;
 
+	/**
+	 * Provides a filter that lets you choose whether to skip this filter on a per-activity basis.
+	 *
+	 * @since BuddyPress (2.3.0)
+	 *
+	 * @param bool $value If true, text should be checked to see if it needs truncating.
+	 */
+	$maybe_truncate_text = apply_filters(
+		'bp_activity_maybe_truncate_entry',
+		isset( $activities_template->activity->type ) && ! in_array( $activities_template->activity->type, array( 'new_blog_post', ), true )
+	);
+
 	// The full text of the activity update should always show on the single activity screen
-	if ( bp_is_single_activity() )
+	if ( ! $maybe_truncate_text || bp_is_single_activity() ) {
 		return $text;
+	}
 
 	/**
 	 * Filters the appended text for the activity excerpt.
 	 *
 	 * @since BuddyPress (1.5.0)
 	 *
-	 * @param string $read_more Internationalized "Read more" text.
+	 * @param string $value Internationalized "Read more" text.
 	 */
 	$append_text    = apply_filters( 'bp_activity_excerpt_append_text', __( '[Read more]', 'buddypress' ) );
 
@@ -420,7 +439,7 @@ function bp_activity_truncate_entry( $text ) {
 	 *
 	 * @since BuddyPress (1.5.0)
 	 *
-	 * @param int $excerpt_length Number indicating how many words to trim the excerpt down to.
+	 * @param int $value Number indicating how many words to trim the excerpt down to.
 	 */
 	$excerpt_length = apply_filters( 'bp_activity_excerpt_length', 358 );
 
@@ -442,21 +461,22 @@ function bp_activity_truncate_entry( $text ) {
 	 *
 	 * @since BuddyPress (1.5.0)
 	 *
-	 * @param string $excerpt Excerpt text and markup to be displayed.
-	 * @param string $text The original activity entry text.
+	 * @param string $excerpt     Excerpt text and markup to be displayed.
+	 * @param string $text        The original activity entry text.
 	 * @param string $append_text The final append text applied.
 	 */
 	return apply_filters( 'bp_activity_truncate_entry', $excerpt, $text, $append_text );
 }
 
 /**
- * Include extra javascript dependencies for activity component.
+ * Include extra JavaScript dependencies for activity component.
  *
  * @since BuddyPress (2.0.0)
  *
  * @uses bp_activity_do_heartbeat() to check if heartbeat is required.
  *
  * @param array $js_handles The original dependencies.
+ *
  * @return array $js_handles The new dependencies.
  */
 function bp_activity_get_js_dependencies( $js_handles = array() ) {
@@ -477,6 +497,7 @@ add_filter( 'bp_core_get_js_dependencies', 'bp_activity_get_js_dependencies', 10
  * @since BuddyPress (2.0.0)
  *
  * @param string $classes
+ *
  * @return string $classes
  */
 function bp_activity_newest_class( $classes = '' ) {
@@ -496,6 +517,7 @@ function bp_activity_newest_class( $classes = '' ) {
  * @since BuddyPress (2.0.0)
  *
  * @param string $classes
+ *
  * @return string $classes
  */
 function bp_activity_timestamp_class( $classes = '' ) {
@@ -521,10 +543,11 @@ add_filter( 'bp_get_activity_css_class', 'bp_activity_timestamp_class', 9, 1 );
  *
  * @since BuddyPress (2.0.0)
  *
- * @uses bp_activity_get_last_updated() to get the recorded date of the last activity
+ * @uses bp_activity_get_last_updated() to get the recorded date of the last activity.
  *
  * @param array $response
  * @param array $data
+ *
  * @return array $response
  */
 function bp_activity_heartbeat_last_recorded( $response = array(), $data = array() ) {
@@ -586,6 +609,7 @@ add_filter( 'heartbeat_nopriv_received', 'bp_activity_heartbeat_last_recorded', 
  * @since BuddyPress (2.0.0)
  *
  * @param array $strings Localized strings.
+ *
  * @return array $strings
  */
 function bp_activity_heartbeat_strings( $strings = array() ) {
@@ -601,7 +625,7 @@ function bp_activity_heartbeat_strings( $strings = array() ) {
 	 *
 	 * @since BuddyPress (2.0.0)
 	 *
-	 * @param array $settings Heartbeat settings array.
+	 * @param array $value Heartbeat settings array.
 	 */
 	$heartbeat_settings = apply_filters( 'heartbeat_settings', array() );
 	if ( ! empty( $heartbeat_settings['interval'] ) ) {
@@ -614,7 +638,7 @@ function bp_activity_heartbeat_strings( $strings = array() ) {
 	 *
 	 * @since BuddyPress (2.0.0)
 	 *
-	 * @param int $frequency The frequency in seconds between pulses.
+	 * @param int $value The frequency in seconds between pulses.
 	 */
 	$bp_activity_pulse = apply_filters( 'bp_activity_heartbeat_pulse', 15 );
 
@@ -646,8 +670,9 @@ add_filter( 'bp_core_get_js_strings', 'bp_activity_heartbeat_strings', 10, 1 );
  *
  * @since BuddyPress (2.2.0)
  *
- * @param array $retval Empty array by default
- * @param array $filter Current activity arguments
+ * @param array $retval Empty array by default.
+ * @param array $filter Current activity arguments.
+ *
  * @return array
  */
 function bp_activity_filter_just_me_scope( $retval = array(), $filter = array() ) {
@@ -674,7 +699,7 @@ function bp_activity_filter_just_me_scope( $retval = array(), $filter = array() 
 		'relation' => 'AND',
 		array(
 			'column' => 'user_id',
-			'value'  => $filter['user_id']
+			'value'  => $user_id
 		),
 		$show_hidden,
 
@@ -695,8 +720,9 @@ add_filter( 'bp_activity_set_just-me_scope_args', 'bp_activity_filter_just_me_sc
  *
  * @since BuddyPress (2.2.0)
  *
- * @param array $retval Empty array by default
- * @param array $filter Current activity arguments
+ * @param array $retval Empty array by default.
+ * @param array $filter Current activity arguments.
+ *
  * @return array
  */
 function bp_activity_filter_favorites_scope( $retval = array(), $filter = array() ) {
@@ -752,8 +778,9 @@ add_filter( 'bp_activity_set_favorites_scope_args', 'bp_activity_filter_favorite
  *
  * @since BuddyPress (2.2.0)
  *
- * @param array $retval Empty array by default
- * @param array $filter Current activity arguments
+ * @param array $retval Empty array by default.
+ * @param array $filter Current activity arguments.
+ *
  * @return array
  */
 function bp_activity_filter_mentions_scope( $retval = array(), $filter = array() ) {

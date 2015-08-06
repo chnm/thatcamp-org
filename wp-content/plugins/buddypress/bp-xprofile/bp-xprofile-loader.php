@@ -28,8 +28,9 @@ class BP_XProfile_Component extends BP_Component {
 	 *
 	 * @see bp_xprofile_get_visibility_levels()
 	 * @since BuddyPress (1.6.0)
+	 * @var array
 	 */
-	var $visibility_levels = array();
+	public $visibility_levels = array();
 
 	/**
 	 * Start the xprofile component creation process
@@ -94,11 +95,11 @@ class BP_XProfile_Component extends BP_Component {
 		// to use in SQL statements.
 		// Defined conditionally to accommodate unit tests
 		if ( ! defined( 'BP_XPROFILE_BASE_GROUP_NAME' ) ) {
-			define( 'BP_XPROFILE_BASE_GROUP_NAME', stripslashes( $bp->site_options['bp-xprofile-base-group-name'] ) );
+			define( 'BP_XPROFILE_BASE_GROUP_NAME', stripslashes( bp_core_get_root_option( 'avatar_default' ) ) );
 		}
 
 		if ( ! defined( 'BP_XPROFILE_FULLNAME_FIELD_NAME' ) ) {
-			define( 'BP_XPROFILE_FULLNAME_FIELD_NAME', stripslashes( $bp->site_options['bp-xprofile-fullname-field-name'] ) );
+			define( 'BP_XPROFILE_FULLNAME_FIELD_NAME', stripslashes( bp_core_get_root_option( 'bp-xprofile-fullname-field-name' ) ) );
 		}
 
 		/**
@@ -366,6 +367,7 @@ class BP_XProfile_Component extends BP_Component {
 		wp_cache_add_global_groups( array(
 			'bp_xprofile',
 			'bp_xprofile_data',
+			'bp_xprofile_groups',
 			'xprofile_meta'
 		) );
 

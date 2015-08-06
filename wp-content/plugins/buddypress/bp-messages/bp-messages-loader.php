@@ -3,7 +3,7 @@
 /**
  * BuddyPress Messages Loader
  *
- * A private messages component, for users to send messages to each other
+ * A private messages component, for users to send messages to each other.
  *
  * @package BuddyPress
  * @subpackage MessagesLoader
@@ -18,6 +18,7 @@ defined( 'ABSPATH' ) || exit;
  * @since BuddyPress (1.5.0)
  */
 class BP_Messages_Component extends BP_Component {
+
 	/**
 	 * If this is true, the Message autocomplete will return friends only, unless
 	 * this is set to false, in which any matching users will be returned.
@@ -38,7 +39,8 @@ class BP_Messages_Component extends BP_Component {
 			__( 'Private Messages', 'buddypress' ),
 			buddypress()->plugin_dir,
 			array(
-				'adminbar_myaccount_order' => 50
+				'adminbar_myaccount_order' => 50,
+				'features'                 => array( 'star' )
 			)
 		);
 	}
@@ -66,6 +68,11 @@ class BP_Messages_Component extends BP_Component {
 			'widgets',
 		);
 
+		// Conditional includes
+		if ( bp_is_active( $this->id, 'star' ) ) {
+			$includes[] = 'star';
+		}
+
 		parent::includes( $includes );
 	}
 
@@ -83,8 +90,9 @@ class BP_Messages_Component extends BP_Component {
 		$bp = buddypress();
 
 		// Define a slug, if necessary
-		if ( !defined( 'BP_MESSAGES_SLUG' ) )
+		if ( !defined( 'BP_MESSAGES_SLUG' ) ) {
 			define( 'BP_MESSAGES_SLUG', $this->id );
+		}
 
 		// Global tables for messaging component
 		$global_tables = array(
@@ -117,7 +125,7 @@ class BP_Messages_Component extends BP_Component {
 	 * Set up navigation for user pages.
 	 *
 	 * @param array $main_nav See {BP_Component::setup_nav()} for details.
-	 * @param array $sub_nav See {BP_Component::setup_nav()} for details.
+	 * @param array $sub_nav  See {BP_Component::setup_nav()} for details.
 	 */
 	public function setup_nav( $main_nav = array(), $sub_nav = array() ) {
 
@@ -164,6 +172,18 @@ class BP_Messages_Component extends BP_Component {
 			'user_has_access' => bp_core_can_edit_settings()
 		);
 
+		if ( bp_is_active( $this->id, 'star' ) ) {
+			$sub_nav[] = array(
+				'name'            => __( 'Starred', 'buddypress' ),
+				'slug'            => bp_get_messages_starred_slug(),
+				'parent_url'      => $messages_link,
+				'parent_slug'     => $this->slug,
+				'screen_function' => 'bp_messages_star_screen',
+				'position'        => 11,
+				'user_has_access' => bp_core_can_edit_settings()
+			);
+		}
+
 		$sub_nav[] = array(
 			'name'            => __( 'Sent', 'buddypress' ),
 			'slug'            => 'sentbox',
@@ -203,7 +223,7 @@ class BP_Messages_Component extends BP_Component {
 	 * Set up the Toolbar.
 	 *
 	 * @param array $wp_admin_nav See {BP_Component::setup_admin_bar()}
-	 *        for details.
+	 *                            for details.
 	 */
 	public function setup_admin_bar( $wp_admin_nav = array() ) {
 		$bp = buddypress();
@@ -240,6 +260,16 @@ class BP_Messages_Component extends BP_Component {
 				'title'  => $inbox,
 				'href'   => trailingslashit( $messages_link . 'inbox' )
 			);
+
+			// Starred
+			if ( bp_is_active( $this->id, 'star' ) ) {
+				$wp_admin_nav[] = array(
+					'parent' => 'my-account-' . $this->id,
+					'id'     => 'my-account-' . $this->id . '-starred',
+					'title'  => __( 'Starred', 'buddypress' ),
+					'href'   => trailingslashit( $messages_link . bp_get_messages_starred_slug() )
+				);
+			}
 
 			// Sent Messages
 			$wp_admin_nav[] = array(
@@ -303,6 +333,7 @@ class BP_Messages_Component extends BP_Component {
 		// Global groups
 		wp_cache_add_global_groups( array(
 			'bp_messages',
+			'bp_messages_threads',
 			'bp_messages_unread_count',
 			'message_meta'
 		) );

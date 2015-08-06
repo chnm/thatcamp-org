@@ -41,7 +41,7 @@ function bp_blogs_creation_location( $url ) {
 	 *
 	 * @param string $value URL for the 'Create a new site' signup page.
 	 */
-	return apply_filters( 'bp_blogs_creation_location', trailingslashit( bp_get_root_domain() . '/' . bp_get_blogs_root_slug() . '/create', $url ) );
+	return apply_filters( 'bp_blogs_creation_location', trailingslashit( bp_get_blogs_directory_permalink() . 'create' ), $url );
 }
 add_filter( 'wp_signup_location', 'bp_blogs_creation_location' );
 
@@ -86,11 +86,13 @@ function bp_blogs_post_pre_publish( $return = true, $blog_id = 0, $post_id = 0, 
 	 * Stop infinite loops with WordPress MU Sitewide Tags.
 	 * That plugin changed the way its settings were stored at some point. Thus the dual check.
 	 */
-	if ( ! empty( $bp->site_options['sitewide_tags_blog'] ) ) {
-		$st_options = maybe_unserialize( $bp->site_options['sitewide_tags_blog'] );
+	$sitewide_tags_blog_settings = bp_core_get_root_option( 'sitewide_tags_blog' );
+	if ( ! empty( $sitewide_tags_blog_settings ) ) {
+		$st_options = maybe_unserialize( $sitewide_tags_blog_settings );
 		$tags_blog_id = isset( $st_options['tags_blog_id'] ) ? $st_options['tags_blog_id'] : 0;
 	} else {
-		$tags_blog_id = isset( $bp->site_options['tags_blog_id'] ) ? $bp->site_options['tags_blog_id'] : 0;
+		$tags_blog_id = bp_core_get_root_option( 'sitewide_tags_blog' );
+		$tags_blog_id = intval( $tags_blog_id );
 	}
 
 	/**

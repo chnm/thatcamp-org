@@ -21,6 +21,12 @@ function bp_core_clear_cache() {
 	global $cache_path;
 
 	if ( function_exists( 'prune_super_cache' ) ) {
+
+		/**
+		 * Fires before the pruning of WP Super Cache.
+		 *
+		 * @since BuddyPress (1.0.0)
+		 */
 		do_action( 'bp_core_clear_cache' );
 		return prune_super_cache( $cache_path, true );
 	}
@@ -63,7 +69,7 @@ function bp_core_clear_directory_pages_cache_page_edit( $post_id ) {
 		return;
 	}
 
-	$page_ids = bp_core_get_directory_page_ids();
+	$page_ids = bp_core_get_directory_page_ids( 'all' );
 
 	if ( ! in_array( $post_id, (array) $page_ids ) ) {
 		return;

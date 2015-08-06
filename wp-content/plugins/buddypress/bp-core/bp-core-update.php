@@ -187,6 +187,13 @@ function bp_version_updater() {
 	// Get the raw database version
 	$raw_db_version = (int) bp_get_db_version_raw();
 
+	/**
+	 * Filters the default components to activate for a new install.
+	 *
+	 * @since BuddyPress (1.7.0)
+	 *
+	 * @param array $value Array of default components to activate.
+	 */
 	$default_components = apply_filters( 'bp_new_install_default_components', array(
 		'activity'      => 1,
 		'members'       => 1,
@@ -195,7 +202,7 @@ function bp_version_updater() {
 		'notifications' => 1,
 	) );
 
-	require_once( buddypress()->plugin_dir . '/bp-core/admin/bp-core-schema.php' );
+	require_once( buddypress()->plugin_dir . '/bp-core/admin/bp-core-admin-schema.php' );
 
 	// Install BP schema and activate only Activity and XProfile
 	if ( bp_is_install() ) {
@@ -211,18 +218,18 @@ function bp_version_updater() {
 		// Run the schema install to update tables
 		bp_core_install();
 
-		// 1.5
+		// 1.5.0
 		if ( $raw_db_version < 1801 ) {
 			bp_update_to_1_5();
 			bp_core_add_page_mappings( $default_components, 'delete' );
 		}
 
-		// 1.6
+		// 1.6.0
 		if ( $raw_db_version < 6067 ) {
 			bp_update_to_1_6();
 		}
 
-		// 1.9
+		// 1.9.0
 		if ( $raw_db_version < 7553 ) {
 			bp_update_to_1_9();
 		}
@@ -232,7 +239,7 @@ function bp_version_updater() {
 			bp_update_to_1_9_2();
 		}
 
-		// 2.0
+		// 2.0.0
 		if ( $raw_db_version < 7892 ) {
 			bp_update_to_2_0();
 		}
@@ -242,9 +249,14 @@ function bp_version_updater() {
 			bp_update_to_2_0_1();
 		}
 
-		// 2.2
+		// 2.2.0
 		if ( $raw_db_version < 9181 ) {
 			bp_update_to_2_2();
+		}
+
+		// 2.3.0
+		if ( $raw_db_version < 9615 ) {
+			bp_update_to_2_3();
 		}
 	}
 
@@ -252,6 +264,41 @@ function bp_version_updater() {
 
 	// Bump the version
 	bp_version_bump();
+}
+
+/**
+ * Perform database operations that must take place before the general schema upgrades.
+ *
+ * `dbDelta()` cannot handle certain operations - like changing indexes - so we do it here instead.
+ *
+ * @since BuddyPress (2.3.0)
+ */
+function bp_pre_schema_upgrade() {
+	global $wpdb;
+
+	$raw_db_version = (int) bp_get_db_version_raw();
+	$bp_prefix      = bp_core_get_table_prefix();
+
+	// 2.3.0: Change index lengths to account for utf8mb4.
+	if ( $raw_db_version < 9695 ) {
+		// table_name => columns.
+		$tables = array(
+			$bp_prefix . 'bp_activity_meta'       => array( 'meta_key' ),
+			$bp_prefix . 'bp_groups_groupmeta'    => array( 'meta_key' ),
+			$bp_prefix . 'bp_messages_meta'       => array( 'meta_key' ),
+			$bp_prefix . 'bp_notifications_meta'  => array( 'meta_key' ),
+			$bp_prefix . 'bp_user_blogs_blogmeta' => array( 'meta_key' ),
+			$bp_prefix . 'bp_xprofile_meta'       => array( 'meta_key' ),
+		);
+
+		foreach ( $tables as $table_name => $indexes ) {
+			foreach ( $indexes as $index ) {
+				if ( $wpdb->query( $wpdb->prepare( "SHOW TABLES LIKE %s", bp_esc_like( $table_name ) ) ) ) {
+					$wpdb->query( "ALTER TABLE {$table_name} DROP INDEX {$index}" );
+				}
+			}
+		}
+	}
 }
 
 /** Upgrade Routines **********************************************************/
@@ -404,6 +451,8 @@ function bp_update_to_2_0_1() {
  * @since BuddyPress (2.2.0)
  */
 function bp_update_to_2_2() {
+
+	// Also handled by `bp_core_install()`
 	if ( bp_is_active( 'messages' ) ) {
 		bp_core_install_private_messaging();
 	}
@@ -414,6 +463,21 @@ function bp_update_to_2_2() {
 		if ( bp_is_active( 'friends' ) ) {
 			bp_cleanup_friendship_activities();
 		}
+	}
+}
+
+/**
+ * 2.3.0 update routine.
+ *
+ * - Add notifications meta table
+ *
+ * @since BuddyPress (2.3.0)
+ */
+function bp_update_to_2_3() {
+
+	// Also handled by `bp_core_install()`
+	if ( bp_is_active( 'notifications' ) ) {
+		bp_core_install_notifications();
 	}
 }
 
@@ -557,7 +621,13 @@ function bp_activation() {
 	// Add options
 	bp_add_options();
 
-	// Use as of (1.6)
+	/**
+	 * Fires during the activation of BuddyPress.
+	 *
+	 * Use as of (1.6.0)
+	 *
+	 * @since BuddyPress (1.6.0)
+	 */
 	do_action( 'bp_activation' );
 
 	// @deprecated as of (1.6)
@@ -586,7 +656,13 @@ function bp_deactivation() {
 		update_option( 'stylesheet_root', get_raw_theme_root( WP_DEFAULT_THEME, true ) );
 	}
 
-	// Use as of (1.6)
+	/**
+	 * Fires during the deactivation of BuddyPress.
+	 *
+	 * Use as of (1.6.0)
+	 *
+	 * @since BuddyPress (1.6.0)
+	 */
 	do_action( 'bp_deactivation' );
 
 	// @deprecated as of (1.6)
@@ -603,5 +679,11 @@ function bp_deactivation() {
  * @uses do_action() Calls 'bp_uninstall' hook.
  */
 function bp_uninstall() {
+
+	/**
+	 * Fires during the uninstallation of BuddyPress.
+	 *
+	 * @since BuddyPress (1.6.0)
+	 */
 	do_action( 'bp_uninstall' );
 }

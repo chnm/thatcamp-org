@@ -15,12 +15,10 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since BuddyPress (1.0.0)
  *
- * @global object $bp The BuddyPress global settings object.
- *
  * @return bool|null Returns false if activity component is not active.
  */
 function bp_blogs_register_activity_actions() {
-	global $bp;
+	$bp = buddypress();
 
 	// Bail if activity is not active
 	if ( ! bp_is_active( 'activity' ) ) {
@@ -34,6 +32,7 @@ function bp_blogs_register_activity_actions() {
 			__( 'New site created', 'buddypress' ),
 			'bp_blogs_format_activity_action_new_blog',
 			__( 'New Sites', 'buddypress' ),
+			array( 'activity', 'member' ),
 			0
 		);
 	}
@@ -174,7 +173,7 @@ function bp_blogs_format_activity_action_new_blog_post( $action, $activity ) {
 	}
 
 	// Build the 'post link' part of the activity action string
-	$post_link  = '<a href="' . $post_url . '">' . $post_title . '</a>';
+	$post_link  = '<a href="' . esc_url( $post_url ) . '">' . $post_title . '</a>';
 
 	$user_link = bp_core_get_userlink( $activity->user_id );
 
@@ -251,7 +250,7 @@ function bp_blogs_format_activity_action_new_blog_comment( $action, $activity ) 
 		restore_current_blog();
 	}
 
-	$post_link = '<a href="' . $post_url . '">' . $post_title . '</a>';
+	$post_link = '<a href="' . esc_url( $post_url ) . '">' . $post_title . '</a>';
 	$user_link = bp_core_get_userlink( $activity->user_id );
 
 	if ( is_multisite() ) {
@@ -321,7 +320,6 @@ add_filter( 'bp_activity_prefetch_object_data', 'bp_blogs_prefetch_activity_obje
  * @since BuddyPress (1.0.0)
  *
  * @see bp_activity_add() for description of parameters.
- * @global object $bp The BuddyPress global settings object.
  *
  * @param array $args {
  *     See {@link bp_activity_add()} for complete description of arguments.
@@ -332,12 +330,13 @@ add_filter( 'bp_activity_prefetch_object_data', 'bp_blogs_prefetch_activity_obje
  * @return int|bool On success, returns the activity ID. False on failure.
  */
 function bp_blogs_record_activity( $args = '' ) {
-	global $bp;
 
 	// Bail if activity is not active
 	if ( ! bp_is_active( 'activity' ) ) {
 		return false;
 	}
+
+	$bp = buddypress();
 
 	$defaults = array(
 		'user_id'           => bp_loggedin_user_id(),
@@ -353,11 +352,6 @@ function bp_blogs_record_activity( $args = '' ) {
 	);
 
 	$r = wp_parse_args( $args, $defaults );
-
-	// Remove large images and replace them with just one image thumbnail
-	if ( ! empty( $r['content'] ) ) {
-		$r['content'] = bp_activity_thumbnail_content_images( $r['content'], $r['primary_link'], $r );
-	}
 
 	if ( ! empty( $r['action'] ) ) {
 
@@ -378,11 +372,11 @@ function bp_blogs_record_activity( $args = '' ) {
 		 *
 		 * @since BuddyPress (1.2.0)
 		 *
-		 * @param string $value Generated excerpt from content for the activity stream.
+		 * @param string $value Generated summary from content for the activity stream.
 		 * @param string $value Content for the activity stream.
 		 * @param array  $r     Array of arguments used for the activity stream item.
 		 */
-		$r['content'] = apply_filters( 'bp_blogs_record_activity_content', bp_create_excerpt( $r['content'] ), $r['content'], $r );
+		$r['content'] = apply_filters( 'bp_blogs_record_activity_content', bp_activity_create_summary( $r['content'], $r ), $r['content'], $r );
 	}
 
 	// Check for an existing entry and update if one exists.

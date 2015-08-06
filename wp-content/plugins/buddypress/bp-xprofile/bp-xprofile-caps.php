@@ -4,11 +4,11 @@
  * Roles and capabilities logic for the XProfile component
  *
  * @package BuddyPress
- * @since BuddyPress (1.6)
+ * @since BuddyPress (1.6.0)
  */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Maps XProfile caps to built in WordPress caps

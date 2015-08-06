@@ -1,6 +1,6 @@
 /* exported add_option, show_options, hide, fixHelper */
 /* jshint scripturl: true */
-/* global XProfileAdmin */
+/* global XProfileAdmin, ajaxurl */
 
 /**
  * Add option for the forWhat type.
@@ -200,7 +200,7 @@ jQuery( document ).ready( function() {
 	// Allow reordering of fields within groups
 	jQuery( 'fieldset.field-group' ).sortable({
 		cursor: 'move',
-		opacity: 1,
+		opacity: 0.7,
 		items: 'fieldset',
 		tolerance: 'pointer',
 
@@ -217,10 +217,7 @@ jQuery( document ).ready( function() {
 	})
 
 	// Disallow text selection
-	.disableSelection()
-
-	// Change cursor to move if JS is enabled
-	.css( 'cursor', 'move' );
+	.disableSelection();
 
 	// Allow reordering of field options
 	enableSortableFieldOptions( jQuery('#fieldtype :selected').val() );

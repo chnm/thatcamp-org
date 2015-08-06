@@ -80,10 +80,10 @@ function bp_activity_root_slug() {
  * @uses bp_get_activity_directory_permalink()
  */
 function bp_activity_directory_permalink() {
-	echo bp_get_activity_directory_permalink();
+	echo esc_url( bp_get_activity_directory_permalink() );
 }
 	/**
-	 * Return activity directory permalink
+	 * Return activity directory permalink.
 	 *
 	 * @since BuddyPress (1.5.0)
 	 *
@@ -114,13 +114,59 @@ function bp_activity_directory_permalink() {
  * @since BuddyPress (1.0.0)
  */
 class BP_Activity_Template {
-	var $current_activity = -1;
-	var $activity_count;
-	var $total_activity_count;
-	var $activities;
-	var $activity;
+	/**
+	 * The loop iterator.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 * @access public
+	 * @var int
+	 */
+	public $current_activity = -1;
 
-	var $in_the_loop;
+	/**
+	 * The activity count.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 * @access public
+	 * @var int
+	 */
+	public $activity_count;
+
+	/**
+	 * The total activity count.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 * @access public
+	 * @var int
+	 */
+	public $total_activity_count;
+
+	/**
+	 * Array of activities located by the query.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 * @access public
+	 * @var array
+	 */
+	public $activities;
+
+	/**
+	 * The activity object currently being iterated on.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 * @access public
+	 * @var object
+	 */
+	public $activity;
+
+	/**
+	 * A flag for whether the loop is currently being iterated.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 * @access public
+	 * @var bool
+	 */
+	public $in_the_loop;
 
 	/**
 	 * URL parameter key for activity pagination. Default: 'acpage'.
@@ -128,13 +174,43 @@ class BP_Activity_Template {
 	 * @since BuddyPress (2.1.0)
 	 * @var string
 	 */
-	var $pag_arg;
+	public $pag_arg;
 
-	var $pag_page;
-	var $pag_num;
-	var $pag_links;
+	/**
+	 * The page number being requested.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 * @access public
+	 * @var int
+	 */
+	public $pag_page;
 
-	var $full_name;
+	/**
+	 * The number of items being requested per page.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 * @access public
+	 * @var int
+	 */
+	public $pag_num;
+
+	/**
+	 * An HTML string containing pagination links.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 * @access public
+	 * @var string
+	 */
+	public $pag_links;
+
+	/**
+	 * The displayed user's full name.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 * @access public
+	 * @var string
+	 */
+	public $full_name;
 
 	/**
 	 * Constructor method.
@@ -150,21 +226,21 @@ class BP_Activity_Template {
 	 *     BP_Activity_Activity::get(), as well as 'page_arg' and
 	 *     'include'. Default values for 'per_page' and 'display_comments'
 	 *     differ from the originating function, and are described below.
-	 *     @type string $page_arg The string used as a query parameter in
-	 *           pagination links. Default: 'acpage'.
-	 *     @type array|bool $include Pass an array of activity IDs to
-	 *           retrieve only those items, or false to noop the 'include'
-	 *           parameter. 'include' differs from 'in' in that 'in' forms
-	 *           an IN clause that works in conjunction with other filters
-	 *           passed to the function, while 'include' is interpreted as
-	 *           an exact list of items to retrieve, which skips all other
-	 *           filter-related parameters. Default: false.
-	 *     @type int|bool $per_page Default: 20.
+	 *     @type string      $page_arg         The string used as a query parameter in
+	 *                                         pagination links. Default: 'acpage'.
+	 *     @type array|bool  $include          Pass an array of activity IDs to
+	 *                                         retrieve only those items, or false to noop the 'include'
+	 *                                         parameter. 'include' differs from 'in' in that 'in' forms
+	 *                                         an IN clause that works in conjunction with other filters
+	 *                                         passed to the function, while 'include' is interpreted as
+	 *                                         an exact list of items to retrieve, which skips all other
+	 *                                         filter-related parameters. Default: false.
+	 *     @type int|bool    $per_page         Default: 20.
 	 *     @type string|bool $display_comments Default: 'threaded'.
 	 * }
 	 */
-	function __construct( $args ) {
-		global $bp;
+	public function __construct( $args ) {
+		$bp = buddypress();
 
 		// Backward compatibility with old method of passing arguments
 		if ( !is_array( $args ) || func_num_args() > 1 ) {
@@ -219,7 +295,7 @@ class BP_Activity_Template {
 		$this->pag_num  = bp_sanitize_pagination_arg( 'num',          $r['per_page'] );
 
 		// Check if blog/forum replies are disabled
-		$this->disable_blogforum_replies = isset( $bp->site_options['bp-disable-blogforum-comments'] ) ? $bp->site_options['bp-disable-blogforum-comments'] : false;
+		$this->disable_blogforum_replies = (bool) bp_core_get_root_option( 'bp-disable-blogforum-comments' );
 
 		// Get an array of the logged in user's favorite activities
 		$this->my_favs = maybe_unserialize( bp_get_user_meta( bp_loggedin_user_id(), 'bp_favorite_activities', true ) );
@@ -290,25 +366,28 @@ class BP_Activity_Template {
 
 		// Fetch parent content for activity comments so we do not have to query in the loop
 		foreach ( (array) $this->activities as $activity ) {
-			if ( 'activity_comment' != $activity->type )
+			if ( 'activity_comment' != $activity->type ) {
 				continue;
+			}
 
 			$parent_ids[] = $activity->item_id;
 		}
 
-		if ( !empty( $parent_ids ) )
+		if ( !empty( $parent_ids ) ) {
 			$activity_parents = bp_activity_get_specific( array( 'activity_ids' => $parent_ids ) );
+		}
 
 		if ( !empty( $activity_parents['activities'] ) ) {
-			foreach( $activity_parents['activities'] as $parent )
+			foreach( $activity_parents['activities'] as $parent ) {
 				$this->activity_parents[$parent->id] = $parent;
+			}
 
 			unset( $activity_parents );
 		}
 
 		if ( (int) $this->total_activity_count && (int) $this->pag_num ) {
 			$this->pag_links = paginate_links( array(
-				'base'      => add_query_arg( $page_arg, '%#%' ),
+				'base'      => add_query_arg( $this->pag_arg, '%#%' ),
 				'format'    => '',
 				'total'     => ceil( (int) $this->total_activity_count / (int) $this->pag_num ),
 				'current'   => (int) $this->pag_page,
@@ -328,8 +407,9 @@ class BP_Activity_Template {
 	 * @return bool True if there are items in the loop, otherwise false.
 	 */
 	function has_activities() {
-		if ( $this->activity_count )
+		if ( $this->activity_count ) {
 			return true;
+		}
 
 		return false;
 	}
@@ -339,9 +419,9 @@ class BP_Activity_Template {
 	 *
 	 * @return object The next activity item to iterate over.
 	 */
-	function next_activity() {
+	public function next_activity() {
 		$this->current_activity++;
-		$this->activity = $this->activities[$this->current_activity];
+		$this->activity = $this->activities[ $this->current_activity ];
 
 		return $this->activity;
 	}
@@ -349,7 +429,7 @@ class BP_Activity_Template {
 	/**
 	 * Rewind the posts and reset post index.
 	 */
-	function rewind_activities() {
+	public function rewind_activities() {
 		$this->current_activity = -1;
 		if ( $this->activity_count > 0 ) {
 			$this->activity = $this->activities[0];
@@ -368,10 +448,10 @@ class BP_Activity_Template {
 	 * @return bool True if there are more activity items to show,
 	 *              otherwise false.
 	 */
-	function user_activities() {
-		if ( $this->current_activity + 1 < $this->activity_count ) {
+	public function user_activities() {
+		if ( ( $this->current_activity + 1 ) < $this->activity_count ) {
 			return true;
-		} elseif ( $this->current_activity + 1 == $this->activity_count ) {
+		} elseif ( ( $this->current_activity + 1 ) == $this->activity_count ) {
 
 			/**
 			 * Fires right before the rewinding of activity posts.
@@ -379,11 +459,13 @@ class BP_Activity_Template {
 			 * @since BuddyPress (1.1.0)
 			 */
 			do_action( 'activity_loop_end' );
+
 			// Do some cleaning up after the loop
 			$this->rewind_activities();
 		}
 
 		$this->in_the_loop = false;
+
 		return false;
 	}
 
@@ -396,15 +478,17 @@ class BP_Activity_Template {
 	 *
 	 * @see bp_the_activity()
 	 */
-	function the_activity() {
+	public function the_activity() {
 
 		$this->in_the_loop = true;
 		$this->activity    = $this->next_activity();
 
-		if ( is_array( $this->activity ) )
+		if ( is_array( $this->activity ) ) {
 			$this->activity = (object) $this->activity;
+		}
 
-		if ( $this->current_activity == 0 ) { // loop has just started
+		// loop has just started
+		if ( $this->current_activity == 0 ) {
 
 			/**
 			 * Fires if the current activity item is the first in the activity loop.
@@ -426,7 +510,6 @@ class BP_Activity_Template {
  * @since BuddyPress (1.0.0)
  *
  * @global object $activities_template {@link BP_Activity_Template}
- * @global object $bp BuddyPress global settings.
  * @uses groups_is_user_member()
  * @uses bp_current_action()
  * @uses bp_is_current_action()
@@ -439,7 +522,7 @@ class BP_Activity_Template {
  * @uses bp_activity_get_user_favorites()
  * @uses apply_filters() To call the 'bp_has_activities' hook.
  *
- * @param array $args {
+ * @param array|string $args {
  *     Arguments for limiting the contents of the activity loop. Most arguments
  *     are in the same format as {@link BP_Activity_Activity::get()}. However,
  *     because the format of the arguments accepted here differs in a number of
@@ -472,11 +555,11 @@ class BP_Activity_Template {
  *     @type string            $search_terms     Limit results by a search term. Default: false.
  *     @type string            $scope            Use a BuddyPress pre-built filter.
  *                                                 - 'just-me' retrieves items belonging only to a user; this is equivalent
- *                                                   to passing a 'user_id' argument
- *                                                 - 'friends' retrieves items belonging to the friends of a user
- *                                                 - 'groups' retrieves items belonging to groups to which a user belongs to
- *                                                 - 'favorites' retrieves a user's favorited activity items
- *                                                 - 'mentions' retrieves items where a user has received an @-mention
+ *                                                   to passing a 'user_id' argument.
+ *                                                 - 'friends' retrieves items belonging to the friends of a user.
+ *                                                 - 'groups' retrieves items belonging to groups to which a user belongs to.
+ *                                                 - 'favorites' retrieves a user's favorited activity items.
+ *                                                 - 'mentions' retrieves items where a user has received an @-mention.
  *                                               The default value of 'scope' is set to one of the above if that value
  *                                               appears in the appropriate place in the URL; eg, 'scope' will be 'groups'
  *                                               when visiting http://example.com/members/joe/activity/groups/. Otherwise
@@ -508,16 +591,16 @@ class BP_Activity_Template {
  *                                               Note that providing an offset will disable pagination. Default: false.
  *     @type string|bool       $display_comments How to handle activity comments. Possible values:
  *                                                 - 'threaded' - comments appear in a threaded tree, under their parent
- *                                                   items
+ *                                                   items.
  *                                                 - 'stream' - the activity stream is presented in a flat manner, with
- *                                                   comments sorted in chronological order alongside other activity items
- *                                                 - false - don't fetch activity comments at all
+ *                                                   comments sorted in chronological order alongside other activity items.
+ *                                                 - false - don't fetch activity comments at all.
  *                                               Default: 'threaded'.
  *     @type bool              $show_hidden      Whether to show items marked hide_sitewide. Defaults to false, except in
  *                                               the following cases:
- *                                                 - User is viewing his own activity stream
+ *                                                 - User is viewing his own activity stream.
  *                                                 - User is viewing the activity stream of a non-public group of which he
- *                                                   is a member
+ *                                                   is a member.
  *     @type string|bool       $spam             Spam status. 'ham_only', 'spam_only', or false to show all activity
  *                                               regardless of spam status. Default: 'ham_only'.
  *     @type bool              $populate_extras  Whether to pre-fetch the activity metadata for the queried items.
@@ -526,61 +609,56 @@ class BP_Activity_Template {
  * @return bool Returns true when activities are found, otherwise false.
  */
 function bp_has_activities( $args = '' ) {
-	global $activities_template, $bp;
+	global $activities_template;
 
-	/***
-	 * Set the defaults based on the current page. Any of these will be overridden
-	 * if arguments are directly passed into the loop. Custom plugins should always
-	 * pass their parameters directly to the loop.
-	 */
-	$user_id     = false;
-	$include     = false;
-	$exclude     = false;
-	$in          = false;
-	$show_hidden = false;
-	$object      = false;
-	$primary_id  = false;
+	// Get BuddyPress
+	$bp = buddypress();
+
+	/** Smart Defaults ********************************************************/
 
 	// User filtering
-	if ( bp_displayed_user_id() )
-		$user_id = bp_displayed_user_id();
+	$user_id = bp_displayed_user_id()
+		? bp_displayed_user_id()
+		: false;
 
 	// Group filtering
-	if ( !empty( $bp->groups->current_group ) ) {
-		$object = $bp->groups->id;
-		$primary_id = $bp->groups->current_group->id;
-
-		if ( groups_is_user_member( bp_loggedin_user_id(), $bp->groups->current_group->id ) || bp_current_user_can( 'bp_moderate' ) ) {
-			$show_hidden = true;
-		}
+	if ( bp_is_group() ) {
+		$object      = $bp->groups->id;
+		$primary_id  = bp_get_current_group_id();
+		$show_hidden = (bool) ( groups_is_user_member( bp_loggedin_user_id(), $primary_id ) || bp_current_user_can( 'bp_moderate' ) );
+	} else {
+		$object      = false;
+		$primary_id  = false;
+		$show_hidden = false;
 	}
 
 	// The default scope should recognize custom slugs
-	if ( array_key_exists( bp_current_action(), (array) $bp->loaded_components ) ) {
-		$scope = $bp->loaded_components[bp_current_action()];
-	}
-	else
-		$scope = bp_current_action();
+	$scope = array_key_exists( bp_current_action(), (array) $bp->loaded_components )
+		? $bp->loaded_components[ bp_current_action() ]
+		: bp_current_action();
 
 	// Support for permalinks on single item pages: /groups/my-group/activity/124/
-	if ( bp_is_current_action( bp_get_activity_slug() ) )
-		$include = bp_action_variable( 0 );
+	$include = bp_is_current_action( bp_get_activity_slug() )
+		? bp_action_variable( 0 )
+		: false;
 
-	// Note: any params used for filtering can be a single value, or multiple values comma separated.
-	$defaults = array(
+	/** Parse Args ************************************************************/
+
+	// Note: any params used for filtering can be a single value, or multiple
+	// values comma separated.
+	$r = bp_parse_args( $args, array(
 		'display_comments'  => 'threaded',   // false for none, stream/threaded - show comments in the stream or threaded under items
 		'include'           => $include,     // pass an activity_id or string of IDs comma-separated
-		'exclude'           => $exclude,     // pass an activity_id or string of IDs comma-separated
-		'in'                => $in,          // comma-separated list or array of activity IDs among which to search
+		'exclude'           => false,        // pass an activity_id or string of IDs comma-separated
+		'in'                => false,        // comma-separated list or array of activity IDs among which to search
 		'sort'              => 'DESC',       // sort DESC or ASC
 		'page'              => 1,            // which page to load
 		'per_page'          => 20,           // number of items per page
+		'page_arg'          => 'acpage',     // See https://buddypress.trac.wordpress.org/ticket/3679
 		'max'               => false,        // max number to return
 		'count_total'       => false,
 		'show_hidden'       => $show_hidden, // Show activity items that are hidden site-wide?
 		'spam'              => 'ham_only',   // Hide spammed items
-
-		'page_arg'          => 'acpage',     // See https://buddypress.trac.wordpress.org/ticket/3679
 
 		// Scope - pre-built activity filters for a user (friends/groups/favorites/mentions)
 		'scope'             => $scope,
@@ -601,30 +679,31 @@ function bp_has_activities( $args = '' ) {
 		// Searching
 		'search_terms'      => false,        // specify terms to search on
 		'update_meta_cache' => true,
-	);
+	), 'has_activities' );
 
-	$r = bp_parse_args( $args, $defaults, 'has_activities' );
-	extract( $r );
+	/** Smart Overrides *******************************************************/
 
 	// Translate various values for 'display_comments'
 	// This allows disabling comments via ?display_comments=0
 	// or =none or =false. Final true is a strict type check. See #5029
-	if ( in_array( $display_comments, array( 0, '0', 'none', 'false' ), true ) ) {
-		$display_comments = false;
+	if ( in_array( $r['display_comments'], array( 0, '0', 'none', 'false' ), true ) ) {
+		$r['display_comments'] = false;
 	}
 
 	// Ignore pagination if an offset is passed
-	if ( ! empty( $offset ) ) {
-		$page = 0;
+	if ( ! empty( $r['offset'] ) ) {
+		$r['page'] = 0;
 	}
 
 	// Search terms
-	if ( empty( $search_terms ) && ! empty( $_REQUEST['s'] ) )
-		$search_terms = $_REQUEST['s'];
+	if ( ! empty( $_REQUEST['s'] ) && empty( $r['search_terms'] ) ) {
+		$r['search_terms'] = $_REQUEST['s'];
+	}
 
 	// Do not exceed the maximum per page
-	if ( !empty( $max ) && ( (int) $per_page > (int) $max ) )
-		$per_page = $max;
+	if ( ! empty( $r['max'] ) && ( (int) $r['per_page'] > (int) $r['max'] ) ) {
+		$r['per_page'] = $r['max'];
+	}
 
 	/**
 	 * Filters whether BuddyPress should enable afilter support.
@@ -637,51 +716,44 @@ function bp_has_activities( $args = '' ) {
 	 *
 	 * @param bool $value True if BuddyPress should enable afilter support.
 	 */
-	if ( isset( $_GET['afilter'] ) && apply_filters( 'bp_activity_enable_afilter_support', false ) )
-		$filter = array( 'object' => $_GET['afilter'] );
-	elseif ( ! empty( $user_id ) || ! empty( $object ) || ! empty( $action ) || ! empty( $primary_id ) || ! empty( $secondary_id ) || ! empty( $offset ) || ! empty( $since ) )
-		$filter = array( 'user_id' => $user_id, 'object' => $object, 'action' => $action, 'primary_id' => $primary_id, 'secondary_id' => $secondary_id, 'offset' => $offset, 'since' => $since );
-	else
-		$filter = false;
+	if ( isset( $_GET['afilter'] ) && apply_filters( 'bp_activity_enable_afilter_support', false ) ) {
+		$r['filter'] = array(
+			'object' => $_GET['afilter']
+		);
+	} elseif ( ! empty( $r['user_id'] ) || ! empty( $r['object'] ) || ! empty( $r['action'] ) || ! empty( $r['primary_id'] ) || ! empty( $r['secondary_id'] ) || ! empty( $r['offset'] ) || ! empty( $r['since'] ) ) {
+		$r['filter'] = array(
+			'user_id'      => $r['user_id'],
+			'object'       => $r['object'],
+			'action'       => $r['action'],
+			'primary_id'   => $r['primary_id'],
+			'secondary_id' => $r['secondary_id'],
+			'offset'       => $r['offset'],
+			'since'        => $r['since']
+		);
+	} else {
+		$r['filter'] = false;
+	}
 
-	// If specific activity items have been requested, override the $hide_spam argument. This prevents backpat errors with AJAX.
-	if ( !empty( $include ) && ( 'ham_only' == $spam ) )
-		$spam = 'all';
+	// If specific activity items have been requested, override the $hide_spam
+	// argument. This prevents backpat errors with AJAX.
+	if ( ! empty( $r['include'] ) && ( 'ham_only' === $r['spam'] ) ) {
+		$r['spam'] = 'all';
+	}
 
-	$template_args = array(
-		'page'              => $page,
-		'per_page'          => $per_page,
-		'page_arg'          => $page_arg,
-		'max'               => $max,
-		'count_total'       => $count_total,
-		'sort'              => $sort,
-		'include'           => $include,
-		'exclude'           => $exclude,
-		'in'                => $in,
-		'filter'            => $filter,
-		'scope'             => $scope,
-		'search_terms'      => $search_terms,
-		'meta_query'        => $meta_query,
-		'date_query'        => $date_query,
-		'filter_query'      => $filter_query,
-		'display_comments'  => $display_comments,
-		'show_hidden'       => $show_hidden,
-		'spam'              => $spam,
-		'update_meta_cache' => $update_meta_cache,
-	);
+	/** Query *****************************************************************/
 
-	$activities_template = new BP_Activity_Template( $template_args );
+	$activities_template = new BP_Activity_Template( $r );
 
 	/**
 	 * Filters whether or not there are activity items to display.
 	 *
 	 * @since BuddyPress (1.1.0)
 	 *
-	 * @param bool   $has_activities Whether or not there are activity items to display.
+	 * @param bool   $value               Whether or not there are activity items to display.
 	 * @param string $activities_template Current activities template being used.
-	 * @param array  $template_args Array of arguments passed into the BP_Activity_Template class.
+	 * @param array  $r                   Array of arguments passed into the BP_Activity_Template class.
 	 */
-	return apply_filters( 'bp_has_activities', $activities_template->has_activities(), $activities_template, $template_args );
+	return apply_filters( 'bp_has_activities', $activities_template->has_activities(), $activities_template, $r );
 }
 
 /**
@@ -720,22 +792,29 @@ function bp_the_activity() {
  * @since BuddyPress (2.1.0)
  */
 function bp_activity_load_more_link() {
-	echo bp_get_activity_load_more_link();
+	echo esc_url( bp_get_activity_load_more_link() );
 }
+	/**
+	 * Get the URL for the Load More link.
+	 *
+	 * @since BuddyPress (2.1.0)
+	 */
 	function bp_get_activity_load_more_link() {
 		global $activities_template;
 
-		$link = bp_get_requested_url();
-		$link = add_query_arg( $activities_template->pag_arg, $activities_template->pag_page + 1, $link );
+		$url  = bp_get_requested_url();
+		$link = add_query_arg( $activities_template->pag_arg, $activities_template->pag_page + 1, $url );
 
 		/**
 		 * Filters the Load More link URL.
 		 *
 		 * @since BuddyPress (2.1.0)
 		 *
-		 * @param string $link The Load More link URL.
+		 * @param string $link                The "Load More" link URL with appropriate query args.
+		 * @param string $url                 The original URL.
+		 * @param object $activities_template The activity template loop global.
 		 */
-		return apply_filters( 'bp_get_activity_load_more_link', $link );
+		return apply_filters( 'bp_get_activity_load_more_link', $link, $url, $activities_template );
 	}
 
 /**
@@ -768,7 +847,13 @@ function bp_activity_pagination_count() {
 		$to_num    = bp_core_number_format( ( $start_num + ( $activities_template->pag_num - 1 ) > $activities_template->total_activity_count ) ? $activities_template->total_activity_count : $start_num + ( $activities_template->pag_num - 1 ) );
 		$total     = bp_core_number_format( $activities_template->total_activity_count );
 
-		return sprintf( _n( 'Viewing 1 item', 'Viewing %1$s - %2$s of %3$s items', $total, 'buddypress' ), $from_num, $to_num, $total );
+		if ( 1 == $activities_template->total_activity_count ) {
+			$message = __( 'Viewing 1 item', 'buddypress' );
+		} else {
+			$message = sprintf( _n( 'Viewing %1$s - %2$s of %3$s item', 'Viewing %1$s - %2$s of %3$s items', $activities_template->total_activity_count, 'buddypress' ), $from_num, $to_num, $total );
+		}
+
+		return $message;
 	}
 
 /**
@@ -962,7 +1047,7 @@ function bp_activities_no_activity() {
 	 * @since BuddyPress (1.0.0)
 	 *
 	 * @global string $bp_activity_no_activity
-	 * @uses apply_filters() To call the 'bp_get_activities_no_activity' hook
+	 * @uses apply_filters() To call the 'bp_get_activities_no_activity' hook.
 	 * @todo Deprecate.
 	 *
 	 * @return string
@@ -1117,7 +1202,7 @@ function bp_activity_date_recorded() {
 	}
 
 /**
- * Output the display name of the member who posted the activity
+ * Output the display name of the member who posted the activity.
  *
  * @since BuddyPress (2.1.0)
  *
@@ -1128,7 +1213,7 @@ function bp_activity_member_display_name() {
 }
 
 	/**
-	 * Return the display name of the member who posted the activity
+	 * Return the display name of the member who posted the activity.
 	 *
 	 * @since BuddyPress (2.1.0)
 	 *
@@ -1336,7 +1421,7 @@ function bp_activity_user_link() {
  * @see bp_get_activity_avatar() for description of arguments.
  * @uses bp_get_activity_avatar()
  *
- * @param array $args See {@link bp_get_activity_avatar()} for description.
+ * @param array|string $args See {@link bp_get_activity_avatar()} for description.
  */
 function bp_activity_avatar( $args = '' ) {
 	echo bp_get_activity_avatar( $args );
@@ -1348,26 +1433,25 @@ function bp_activity_avatar( $args = '' ) {
 	 *
 	 * @see bp_core_fetch_avatar() For a description of the arguments.
 	 * @global object $activities_template {@link BP_Activity_Template}
-	 * @global object $bp BuddyPress global settings
 	 * @uses bp_is_single_activity()
 	 * @uses wp_parse_args()
-	 * @uses apply_filters() To call the 'bp_get_activity_avatar_object_' . $current_activity_item->component hook
-	 * @uses apply_filters() To call the 'bp_get_activity_avatar_item_id' hook
+	 * @uses apply_filters() To call the 'bp_get_activity_avatar_object_' . $current_activity_item->component hook.
+	 * @uses apply_filters() To call the 'bp_get_activity_avatar_item_id' hook.
 	 * @uses bp_core_fetch_avatar()
-	 * @uses apply_filters() To call the 'bp_get_activity_avatar' hook
+	 * @uses apply_filters() To call the 'bp_get_activity_avatar' hook.
 	 *
-	 * @param array $args  {
+	 * @param array|string $args  {
 	 *     Arguments are listed here with an explanation of their defaults.
 	 *     For more information about the arguments, see
 	 *     {@link bp_core_fetch_avatar()}.
-	 *     @type string $alt Default: 'Profile picture of [user name]' if
-	 *           activity user name is available, otherwise 'Profile picture'.
-	 *     @type string $class Default: 'avatar'.
-	 *     @type string|bool $email Default: Email of the activity's
-	 *           associated user, if available. Otherwise false.
-	 *     @type string $type Default: 'full' when viewing a single activity
-	 *           permalink page, otherwise 'thumb'.
-	 *     @type int|bool $user_id Default: ID of the activity's user.
+	 *     @type string      $alt     Default: 'Profile picture of [user name]' if
+	 *                                activity user name is available, otherwise 'Profile picture'.
+	 *     @type string      $class   Default: 'avatar'.
+	 *     @type string|bool $email   Default: Email of the activity's
+	 *                                associated user, if available. Otherwise false.
+	 *     @type string      $type    Default: 'full' when viewing a single activity
+	 *                                permalink page, otherwise 'thumb'.
+	 *     @type int|bool    $user_id Default: ID of the activity's user.
 	 * }
 	 * @return string User avatar string.
 	 */
@@ -1441,8 +1525,9 @@ function bp_activity_avatar( $args = '' ) {
 		$item_id = apply_filters( 'bp_get_activity_avatar_item_id', $item_id );
 
 		// If this is a user object pass the users' email address for Gravatar so we don't have to prefetch it.
-		if ( 'user' == $object && empty( $user_id ) && empty( $email ) && isset( $current_activity_item->user_email ) )
+		if ( 'user' == $object && empty( $user_id ) && empty( $email ) && isset( $current_activity_item->user_email ) ) {
 			$email = $current_activity_item->user_email;
+		}
 
 		/**
 		 * Filters the value returned by bp_core_fetch_avatar.
@@ -1471,14 +1556,14 @@ function bp_activity_avatar( $args = '' ) {
  * @see bp_get_activity_secondary_avatar() for description of arguments.
  * @uses bp_get_activity_secondary_avatar()
  *
- * @param array $args See {@link bp_get_activity_secondary_avatar} for description.
+ * @param array|string $args See {@link bp_get_activity_secondary_avatar} for description.
  */
 function bp_activity_secondary_avatar( $args = '' ) {
 	echo bp_get_activity_secondary_avatar( $args );
 }
 
 	/**
-	 * Return the avatar of the object that action was performed on
+	 * Return the avatar of the object that action was performed on.
 	 *
 	 * @since BuddyPress (1.2.0)
 	 *
@@ -1491,15 +1576,15 @@ function bp_activity_secondary_avatar( $args = '' ) {
 	 * @uses bp_core_fetch_avatar()
 	 * @uses apply_filters() To call the 'bp_get_activity_secondary_avatar' hook.
 	 *
-	 * @param array $args  {
+	 * @param array|string $args  {
 	 *     For a complete description of arguments, see {@link bp_core_fetch_avatar()}.
-	 *     @type string $alt Default value varies based on current activity
-	 *           item component.
-	 *     @type string $type Default: 'full' when viewing a single activity
-	 *           permalink page, otherwise 'thumb'.
-	 *     @type string $class Default: 'avatar'.
-	 *     @type string|bool $email Default: email of the activity's user.
-	 *     @type int|bool $user_id Default: ID of the activity's user.
+	 *     @type string      $alt     Default value varies based on current activity
+	 *                                item component.
+	 *     @type string      $type    Default: 'full' when viewing a single activity
+	 *                                permalink page, otherwise 'thumb'.
+	 *     @type string      $class   Default: 'avatar'.
+	 *     @type string|bool $email   Default: email of the activity's user.
+	 *     @type int|bool    $user_id Default: ID of the activity's user.
 	 * }
 	 * @return string The secondary avatar
 	 */
@@ -1521,6 +1606,10 @@ function bp_activity_secondary_avatar( $args = '' ) {
 		// Set item_id and object (default to user)
 		switch ( $activities_template->activity->component ) {
 			case 'groups' :
+				if ( bp_disable_group_avatar_uploads() ) {
+					return false;
+				}
+
 				$object  = 'group';
 				$item_id = $activities_template->activity->item_id;
 				$link    = '';
@@ -1625,7 +1714,7 @@ function bp_activity_secondary_avatar( $args = '' ) {
 			 *
 			 * @since BuddyPress (1.7.0)
 			 *
-			 * @param string $link Link to wrap the avatar image in.
+			 * @param string $link      Link to wrap the avatar image in.
 			 * @param string $component Activity component being acted on.
 			 */
 			$link = apply_filters( 'bp_get_activity_secondary_avatar_link', $link, $activities_template->activity->component );
@@ -1635,7 +1724,7 @@ function bp_activity_secondary_avatar( $args = '' ) {
 			 *
 			 * @since BuddyPress (1.2.10)
 			 *
-			 * @param string Formatted HTML <img> element, or raw avatar URL.
+			 * @param string $avatar Formatted HTML <img> element, or raw avatar URL.
 			 */
 			$avatar = apply_filters( 'bp_get_activity_secondary_avatar', $avatar );
 
@@ -1651,7 +1740,7 @@ function bp_activity_secondary_avatar( $args = '' ) {
 	}
 
 /**
- * Output the activity action
+ * Output the activity action.
  *
  * @since BuddyPress (1.2.0)
  *
@@ -1663,32 +1752,28 @@ function bp_activity_action( $args = array() ) {
 }
 
 	/**
-	 * Return the activity action
+	 * Return the activity action.
 	 *
 	 * @since BuddyPress (1.2.0)
 	 *
 	 * @global object $activities_template {@link BP_Activity_Template}
 	 * @param array $args Only parameter is "no_timestamp". If true, timestamp is shown in output.
-	 * @uses apply_filters_ref_array() To call the 'bp_get_activity_action_pre_meta' hook
+	 * @uses apply_filters_ref_array() To call the 'bp_get_activity_action_pre_meta' hook.
 	 * @uses bp_insert_activity_meta()
 	 * @uses apply_filters_ref_array() To call the 'bp_get_activity_action' hook.
 	 *
 	 * @param array $args {
 	 *     @type bool $no_timestamp Whether to exclude the timestamp.
 	 * }
+	 *
 	 * @return string The activity action.
 	 */
 	function bp_get_activity_action( $args = array() ) {
 		global $activities_template;
 
-		$defaults = array(
+		$r = wp_parse_args( $args, array(
 			'no_timestamp' => false,
-		);
-
-		$args = wp_parse_args( $args, $defaults );
-		extract( $args, EXTR_SKIP );
-
-		$action = $activities_template->activity->action;
+		) );
 
 		/**
 		 * Filters the activity action before the action is inserted as meta.
@@ -1697,10 +1782,16 @@ function bp_activity_action( $args = array() ) {
 		 *
 		 * @param array $value Array containing the current action, the current activity, and the $args array passed into the function.
 		 */
-		$action = apply_filters_ref_array( 'bp_get_activity_action_pre_meta', array( $action, &$activities_template->activity, $args ) );
+		$action = apply_filters_ref_array( 'bp_get_activity_action_pre_meta', array(
+			$activities_template->activity->action,
+			&$activities_template->activity,
+			$r
+		) );
 
-		if ( ! empty( $action ) && ! $no_timestamp )
+		// Prepend the activity action meta (link, time since, etc...)
+		if ( ! empty( $action ) && empty( $r['no_timestamp'] ) ) {
 			$action = bp_insert_activity_meta( $action );
+		}
 
 		/**
 		 * Filters the activity action after the action has been inserted as meta.
@@ -1709,11 +1800,15 @@ function bp_activity_action( $args = array() ) {
 		 *
 		 * @param array $value Array containing the current action, the current activity, and the $args array passed into the function.
 		 */
-		return apply_filters_ref_array( 'bp_get_activity_action', array( $action, &$activities_template->activity, $args ) );
+		return apply_filters_ref_array( 'bp_get_activity_action', array(
+			$action,
+			&$activities_template->activity,
+			$r
+		) );
 	}
 
 /**
- * Output the activity content body
+ * Output the activity content body.
  *
  * @since BuddyPress (1.2.0)
  *
@@ -1724,7 +1819,7 @@ function bp_activity_content_body() {
 }
 
 	/**
-	 * Return the activity content body
+	 * Return the activity content body.
 	 *
 	 * @since BuddyPress (1.2.0)
 	 *
@@ -1738,8 +1833,9 @@ function bp_activity_content_body() {
 		global $activities_template;
 
 		// Backwards compatibility if action is not being used
-		if ( empty( $activities_template->activity->action ) && !empty( $activities_template->activity->content ) )
+		if ( empty( $activities_template->activity->action ) && ! empty( $activities_template->activity->content ) ) {
 			$activities_template->activity->content = bp_insert_activity_meta( $activities_template->activity->content );
+		}
 
 		/**
 		 * Filters the activity content body.
@@ -1763,8 +1859,9 @@ function bp_activity_content_body() {
 function bp_activity_has_content() {
 	global $activities_template;
 
-	if ( !empty( $activities_template->activity->content ) )
+	if ( ! empty( $activities_template->activity->content ) ) {
 		return true;
+	}
 
 	return false;
 }
@@ -1801,7 +1898,7 @@ function bp_activity_content() {
 
 		/**
 		 * If you want to filter activity update content, please use
-		 * the filter 'bp_get_activity_content_body'
+		 * the filter 'bp_get_activity_content_body'.
 		 *
 		 * This function is mainly for backwards compatibility.
 		 */
@@ -1827,13 +1924,17 @@ function bp_activity_content() {
  * @uses apply_filters() To call the 'bp_insert_activity_meta' hook.
  *
  * @param string $content The activity content.
+ *
  * @return string The activity content with the metadata string attached.
  */
-function bp_insert_activity_meta( $content ) {
+function bp_insert_activity_meta( $content = '' ) {
 	global $activities_template;
 
 	// Strip any legacy time since placeholders from BP 1.0-1.1
-	$content = str_replace( '<span class="time-since">%s</span>', '', $content );
+	$new_content = str_replace( '<span class="time-since">%s</span>', '', $content );
+
+	// Get the time since this activity was recorded
+	$date_recorded  = bp_core_time_since( $activities_template->activity->date_recorded );
 
 	/**
 	 * Filters the activity item time since markup.
@@ -1842,10 +1943,22 @@ function bp_insert_activity_meta( $content ) {
 	 *
 	 * @param array $value Array containing the time since markup and the current activity component.
 	 */
-	$time_since = apply_filters_ref_array( 'bp_activity_time_since', array( '<span class="time-since">' . bp_core_time_since( $activities_template->activity->date_recorded ) . '</span>', &$activities_template->activity ) );
+	$time_since = apply_filters_ref_array( 'bp_activity_time_since', array(
+		'<span class="time-since">' . $date_recorded . '</span>',
+		&$activities_template->activity
+	) );
 
 	// Insert the permalink
-	if ( !bp_is_single_activity() ) {
+	if ( ! bp_is_single_activity() ) {
+
+		// Setup variables for activity meta
+		$activity_permalink = bp_activity_get_permalink( $activities_template->activity->id, $activities_template->activity );
+		$activity_meta      = sprintf( '%1$s <a href="%2$s" class="view activity-time-since" title="%3$s">%4$s</a>',
+			$new_content,
+			$activity_permalink,
+			esc_attr__( 'View Discussion', 'buddypress' ),
+			$time_since
+		);
 
 		/**
 		 * Filters the activity permalink to be added to the activity content.
@@ -1854,9 +1967,12 @@ function bp_insert_activity_meta( $content ) {
 		 *
 		 * @param array $value Array containing the html markup for the activity permalink, after being parsed by sprintf and current activity component.
 		 */
-		$content = apply_filters_ref_array( 'bp_activity_permalink', array( sprintf( '%1$s <a href="%2$s" class="view activity-time-since" title="%3$s">%4$s</a>', $content, bp_activity_get_permalink( $activities_template->activity->id, $activities_template->activity ), esc_attr__( 'View Discussion', 'buddypress' ), $time_since ), &$activities_template->activity ) );
+		$new_content = apply_filters_ref_array( 'bp_activity_permalink', array(
+			$activity_meta,
+			&$activities_template->activity
+		) );
 	} else {
-		$content .= str_pad( $time_since, strlen( $time_since ) + 2, ' ', STR_PAD_BOTH );
+		$new_content .= str_pad( $time_since, strlen( $time_since ) + 2, ' ', STR_PAD_BOTH );
 	}
 
 	/**
@@ -1866,7 +1982,7 @@ function bp_insert_activity_meta( $content ) {
 	 *
 	 * @param string $content Activity content with the activity metadata added.
 	 */
-	return apply_filters( 'bp_insert_activity_meta', $content );
+	return apply_filters( 'bp_insert_activity_meta', $new_content, $content );
 }
 
 /**
@@ -1875,9 +1991,10 @@ function bp_insert_activity_meta( $content ) {
  * @since BuddyPress (1.2.0)
  *
  * @global object $activities_template {@link BP_Activity_Template}
- * @uses apply_filters() To call the 'bp_activity_user_can_delete' hook
+ * @uses apply_filters() To call the 'bp_activity_user_can_delete' hook.
  *
- * @param object $activity Optional. Falls back on the current item in the loop.
+ * @param object|bool $activity Optional. Falls back on the current item in the loop.
+ *
  * @return bool True if can delete, false otherwise.
  */
 function bp_activity_user_can_delete( $activity = false ) {
@@ -1923,7 +2040,7 @@ function bp_activity_user_can_delete( $activity = false ) {
 	 * @since BuddyPress (1.5.0)
 	 *
 	 * @param bool   $can_delete Whether the user can delete the item.
-	 * @param object $activity Current activity item object.
+	 * @param object $activity   Current activity item object.
 	 */
 	return (bool) apply_filters( 'bp_activity_user_can_delete', $can_delete, $activity );
 }
@@ -1936,7 +2053,7 @@ function bp_activity_user_can_delete( $activity = false ) {
  * @see bp_get_activity_parent_content() for a description of arguments.
  * @uses bp_get_activity_parent_content()
  *
- * @param array $args See {@link bp_get_activity_parent_content} for description.
+ * @param array|string $args See {@link bp_get_activity_parent_content} for description.
  */
 function bp_activity_parent_content( $args = '' ) {
 	echo bp_get_activity_parent_content($args);
@@ -1948,43 +2065,40 @@ function bp_activity_parent_content( $args = '' ) {
 	 * @since BuddyPress (1.2.0)
 	 *
 	 * @global object $activities_template {@link BP_Activity_Template}
-	 * @uses wp_parse_args()
 	 * @uses apply_filters() To call the 'bp_get_activity_parent_content' hook.
 	 *
-	 * @param array $args {
-	 *     Array of optional arguments.
-	 *     @deprecated bool $hide_user No longer used.
-	 * }
-	 * @return mixed False on failure, otherwise the activity parent content
+	 * @param string $args Unused. Left over from an earlier implementation.
+	 *
+	 * @return mixed False on failure, otherwise the activity parent content.
 	 */
 	function bp_get_activity_parent_content( $args = '' ) {
 		global $activities_template;
 
-		$defaults = array(
-			'hide_user' => false
-		);
-
-		$r = wp_parse_args( $args, $defaults );
-		extract( $r, EXTR_SKIP );
+		// Bail if no activity on no item ID
+		if ( empty( $activities_template->activity ) || empty( $activities_template->activity->item_id ) ) {
+			return false;
+		}
 
 		// Get the ID of the parent activity content
-		if ( !$parent_id = $activities_template->activity->item_id )
-			return false;
+		$parent_id = (int) $activities_template->activity->item_id;
 
 		// Bail if no parent content
-		if ( empty( $activities_template->activity_parents[$parent_id] ) )
+		if ( empty( $activities_template->activity_parents[ $parent_id ] ) ) {
 			return false;
+		}
 
 		// Bail if no action
-		if ( empty( $activities_template->activity_parents[$parent_id]->action ) )
+		if ( empty( $activities_template->activity_parents[ $parent_id ]->action ) ) {
 			return false;
+		}
 
 		// Content always includes action
-		$content = $activities_template->activity_parents[$parent_id]->action;
+		$content = $activities_template->activity_parents[ $parent_id ]->action;
 
 		// Maybe append activity content, if it exists
-		if ( ! empty( $activities_template->activity_parents[$parent_id]->content ) )
-			$content .= ' ' . $activities_template->activity_parents[$parent_id]->content;
+		if ( ! empty( $activities_template->activity_parents[ $parent_id ]->content ) ) {
+			$content .= ' ' . $activities_template->activity_parents[ $parent_id ]->content;
+		}
 
 		// Remove the time since content for backwards compatibility
 		$content = str_replace( '<span class="time-since">%s</span>', '', $content );
@@ -2019,28 +2133,30 @@ function bp_activity_parent_user_id() {
 	 * @global BP_Activity_Template $activities_template
 	 *
 	 * @return bool|int False if parent activity can't be found, otherwise
-	 *         the parent activity's user ID.
+	 *                  the parent activity's user ID.
 	 */
 	function bp_get_activity_parent_user_id() {
 		global $activities_template;
 
 		// Bail if no activity on no item ID
-		if ( empty( $activities_template->activity ) || empty( $activities_template->activity->item_id ) )
+		if ( empty( $activities_template->activity ) || empty( $activities_template->activity->item_id ) ) {
 			return false;
+		}
 
 		// Get the ID of the parent activity content
-		if ( !$parent_id = $activities_template->activity->item_id )
-			return false;
+		$parent_id = (int) $activities_template->activity->item_id;
 
 		// Bail if no parent item
-		if ( empty( $activities_template->activity_parents[$parent_id] ) )
+		if ( empty( $activities_template->activity_parents[ $parent_id ] ) ) {
 			return false;
+		}
 
 		// Bail if no parent user ID
-		if ( empty( $activities_template->activity_parents[$parent_id]->user_id ) )
+		if ( empty( $activities_template->activity_parents[ $parent_id ]->user_id ) ) {
 			return false;
+		}
 
-		$retval = $activities_template->activity_parents[$parent_id]->user_id;
+		$retval = $activities_template->activity_parents[ $parent_id ]->user_id;
 
 		/**
 		 * Filters the activity parent item's user ID.
@@ -2093,7 +2209,7 @@ function bp_activity_is_favorite() {
  *
  * @todo deprecate $args param
  *
- * @param string $args Unused. Appears to be left over from an earlier implementation.
+ * @param array|string $args See {@link bp_activity_get_comments} for description.
  */
 function bp_activity_comments( $args = '' ) {
 	echo bp_activity_get_comments( $args );
@@ -2109,41 +2225,48 @@ function bp_activity_comments( $args = '' ) {
 	 * @todo Given that checks for children already happen in bp_activity_recurse_comments(),
 	 *    this function can probably be streamlined or removed.
 	 *
-	 * @param string $args Unused. Appears to be left over from an earlier implementation.
+	 * @param string $args Unused. Left over from an earlier implementation.
 	 *
 	 * @global object $activities_template {@link BP_Activity_Template}
 	 * @uses bp_activity_recurse_comments()
+	 *
+	 * @return bool
 	 */
 	function bp_activity_get_comments( $args = '' ) {
 		global $activities_template;
 
-		if ( !isset( $activities_template->activity->children ) || !$activities_template->activity->children )
+		if ( empty( $activities_template->activity->children ) ) {
 			return false;
+		}
 
 		bp_activity_recurse_comments( $activities_template->activity );
 	}
 
 		/**
-		 * Loops through a level of activity comments and loads the template for each
+		 * Loops through a level of activity comments and loads the template for each.
 		 *
 		 * Note: The recursion itself used to happen entirely in this function. Now it is
 		 * split between here and the comment.php template.
 		 *
 		 * @since BuddyPress (1.2.0)
 		 *
-		 * @param object $comment The activity object currently being recursed
+		 * @param object $comment The activity object currently being recursed.
 		 *
 		 * @global object $activities_template {@link BP_Activity_Template}
 		 * @uses locate_template()
+		 *
+		 * @return bool|string
 		 */
 		function bp_activity_recurse_comments( $comment ) {
 			global $activities_template;
 
-			if ( empty( $comment ) )
+			if ( empty( $comment ) ) {
 				return false;
+			}
 
-			if ( empty( $comment->children ) )
+			if ( empty( $comment->children ) ) {
 				return false;
+			}
 
 			/**
 			 * Filters the opening tag for the template that lists activity comments.
@@ -2152,8 +2275,9 @@ function bp_activity_comments( $args = '' ) {
 			 *
 			 * @param string $value Opening tag for the HTML markup to use.
 			 */
-			echo apply_filters( 'bp_activity_recurse_comments_start_ul', '<ul>');
+			echo apply_filters( 'bp_activity_recurse_comments_start_ul', '<ul>' );
 			foreach ( (array) $comment->children as $comment_child ) {
+
 				// Put the comment into the global so it's available to filters
 				$activities_template->activity->current_comment = $comment_child;
 
@@ -2179,7 +2303,7 @@ function bp_activity_comments( $args = '' ) {
 			 *
 			 * @param string $value Closing tag for the HTML markup to use.
 			 */
-			echo apply_filters( 'bp_activity_recurse_comments_end_ul', '</ul>');
+			echo apply_filters( 'bp_activity_recurse_comments_end_ul', '</ul>' );
 		}
 
 /**
@@ -2191,12 +2315,14 @@ function bp_activity_comments( $args = '' ) {
  * @uses apply_filters() To call the 'bp_activity_current_comment' hook.
  *
  * @return object|bool $current_comment The activity comment currently being
- *         displayed. False on failure.
+ *                                      displayed. False on failure.
  */
 function bp_activity_current_comment() {
 	global $activities_template;
 
-	$current_comment = !empty( $activities_template->activity->current_comment ) ? $activities_template->activity->current_comment : false;
+	$current_comment = !empty( $activities_template->activity->current_comment )
+		? $activities_template->activity->current_comment
+		: false;
 
 	/**
 	 * Filters the current comment being recursed.
@@ -2228,8 +2354,8 @@ function bp_activity_comment_id() {
 	 * @global object $activities_template {@link BP_Activity_Template}
 	 * @uses apply_filters() To call the 'bp_activity_comment_id' hook.
 	 *
-	 * @return int|bool $comment_id The ID of the activity comment
-	 *         currently being displayed, false if none is found.
+	 * @return int|bool $comment_id The ID of the activity comment currently
+	 *                              being displayed, false if none is found.
 	 */
 	function bp_get_activity_comment_id() {
 		global $activities_template;
@@ -2266,7 +2392,7 @@ function bp_activity_comment_user_id() {
 	 * @uses apply_filters() To call the 'bp_activity_comment_user_id' hook.
 	 *
 	 * @return int|bool $user_id The user_id of the author of the displayed
-	 *         activity comment. False on failure.
+	 *                           activity comment. False on failure.
 	 */
 	function bp_get_activity_comment_user_id() {
 		global $activities_template;
@@ -2301,7 +2427,7 @@ function bp_activity_comment_user_link() {
 	 *
 	 * @uses bp_core_get_user_domain()
 	 * @uses bp_get_activity_comment_user_id()
-	 * @uses apply_filters() To call the 'bp_activity_comment_user_link' hook
+	 * @uses apply_filters() To call the 'bp_activity_comment_user_link' hook.
 	 *
 	 * @return string $user_link The URL of the activity comment author's profile.
 	 */
@@ -2364,7 +2490,7 @@ function bp_activity_comment_name() {
 	}
 
 /**
- * Output the date_recorded of the activity comment currently being displayed.
+ * Output the formatted date_recorded of the activity comment currently being displayed.
  *
  * @since BuddyPress (1.5.0)
  *
@@ -2375,24 +2501,17 @@ function bp_activity_comment_date_recorded() {
 }
 
 	/**
-	 * Return the date_recorded for the activity comment currently being displayed.
+	 * Return the formatted date_recorded for the activity comment currently being displayed.
 	 *
 	 * @since BuddyPress (1.5.0)
 	 *
-	 * @global object $activities_template {@link BP_Activity_Template}
 	 * @uses bp_core_time_since()
-	 * @uses apply_filters() To call the 'bp_activity_comment_date_recorded' hook
+	 * @uses apply_filters() To call the 'bp_activity_comment_date_recorded' hook.
 	 *
 	 * @return string|bool $date_recorded Time since the activity was recorded,
-	 *         in the form "%s ago". False on failure.
+	 *                                    in the form "%s ago". False on failure.
 	 */
 	function bp_get_activity_comment_date_recorded() {
-		global $activities_template;
-
-		if ( empty( $activities_template->activity->current_comment->date_recorded ) )
-			return false;
-
-		$date_recorded = bp_core_time_since( $activities_template->activity->current_comment->date_recorded );
 
 		/**
 		 * Filters the recorded date of the activity comment currently being displayed.
@@ -2401,7 +2520,43 @@ function bp_activity_comment_date_recorded() {
 		 *
 		 * @param string|bool Date for the activity comment currently being displayed.
 		 */
-		return apply_filters( 'bp_activity_comment_date_recorded', $date_recorded );
+		return apply_filters( 'bp_activity_comment_date_recorded', bp_core_time_since( bp_get_activity_comment_date_recorded_raw() ) );
+	}
+
+/**
+ * Output the date_recorded of the activity comment currently being displayed.
+ *
+ * @since BuddyPress (2.3.0)
+ *
+ * @uses bp_get_activity_comment_date_recorded()
+ */
+function bp_activity_comment_date_recorded_raw() {
+	echo bp_get_activity_comment_date_recorded_raw();
+}
+
+	/**
+	 * Return the date_recorded for the activity comment currently being displayed.
+	 *
+	 * @since BuddyPress (2.3.0)
+	 *
+	 * @global object $activities_template {@link BP_Activity_Template}
+	 * @uses bp_core_time_since()
+	 * @uses apply_filters() To call the 'bp_activity_comment_date_recorded' hook.
+	 *
+	 * @return string|bool $date_recorded Time since the activity was recorded,
+	 *                                    in the form "%s ago". False on failure.
+	 */
+	function bp_get_activity_comment_date_recorded_raw() {
+		global $activities_template;
+
+		/**
+		 * Filters the raw recorded date of the activity comment currently being displayed.
+		 *
+		 * @since BuddyPress (2.3.0)
+		 *
+		 * @param string|bool Raw date for the activity comment currently being displayed.
+		 */
+		return apply_filters( 'bp_activity_comment_date_recorded', $activities_template->activity->current_comment->date_recorded );
 	}
 
 /**
@@ -2416,7 +2571,7 @@ function bp_activity_comment_delete_link() {
 }
 
 	/**
-	 * Gets the 'delete' URL for the activity comment currently being displayed
+	 * Gets the 'delete' URL for the activity comment currently being displayed.
 	 *
 	 * @since BuddyPress (1.5.0)
 	 *
@@ -2427,7 +2582,7 @@ function bp_activity_comment_delete_link() {
 	 * @uses apply_filters() To call the 'bp_activity_comment_delete_link' hook.
 	 *
 	 * @return string $link The nonced URL for deleting the current
-	 *         activity comment.
+	 *                      activity comment.
 	 */
 	function bp_get_activity_comment_delete_link() {
 		$link = wp_nonce_url( bp_get_root_domain() . '/' . bp_get_activity_slug() . '/delete/' . bp_get_activity_comment_id() . '?cid=' . bp_get_activity_comment_id(), 'bp_activity_delete_link' );
@@ -2541,10 +2696,10 @@ function bp_activity_comment_count() {
 		 * @since BuddyPress (1.2.0)
 		 *
 		 * @uses bp_activity_recurse_comment_count()
-		 * @uses apply_filters() To call the 'bp_activity_recurse_comment_count' hook
+		 * @uses apply_filters() To call the 'bp_activity_recurse_comment_count' hook.
 		 *
 		 * @param object $comment Activity comment object.
-		 * @param int $count The current iteration count.
+		 * @param int    $count The current iteration count.
 		 *
 		 * @return int $count The activity comment count.
 		 */
@@ -2567,8 +2722,8 @@ function bp_activity_comment_count() {
 			 * @since BuddyPress (2.1.0)
 			 *
 			 * @param int    $new_count New total count for the current comment.
-			 * @param object $comment Activity comment object.
-			 * @param int    $count Current iteration count for the current comment.
+			 * @param object $comment   Activity comment object.
+			 * @param int    $count     Current iteration count for the current comment.
 			 */
 			return apply_filters( 'bp_activity_recurse_comment_count', $new_count, $comment, $count );
 		}
@@ -2586,7 +2741,7 @@ function bp_activity_comment_depth() {
 	 *
 	 * @since BuddyPress (2.0.0)
 	 *
-	 * @return int $depth Depth for the current activity comment
+	 * @return int $depth Depth for the current activity comment.
 	 */
 	function bp_activity_get_comment_depth() {
 		global $activities_template;
@@ -2636,7 +2791,7 @@ function bp_activity_comment_link() {
 	}
 
 /**
- * Output the activity comment form no javascript display CSS.
+ * Output the activity comment form no JavaScript display CSS.
  *
  * @since BuddyPress (1.2.0)
  *
@@ -2647,19 +2802,21 @@ function bp_activity_comment_form_nojs_display() {
 }
 
 	/**
-	 * Return the activity comment form no javascript display CSS.
+	 * Return the activity comment form no JavaScript display CSS.
 	 *
 	 * @since BuddyPress (1.2.0)
 	 *
 	 * @global object $activities_template {@link BP_Activity_Template}
 	 *
-	 * @return string|bool The activity comment form no javascript
-	 *         display CSS. False on failure
+	 * @return string|bool The activity comment form no JavaScript
+	 *                     display CSS. False on failure.
 	 */
 	function bp_get_activity_comment_form_nojs_display() {
 		global $activities_template;
-		if ( isset( $_GET['ac'] ) && $_GET['ac'] == $activities_template->activity->id . '/' )
+
+		if ( isset( $_GET['ac'] ) && ( $_GET['ac'] === ( $activities_template->activity->id . '/' ) ) ) {
 			return 'style="display: block"';
+		}
 
 		return false;
 	}
@@ -2807,7 +2964,7 @@ function bp_activity_comment_permalink() {
 		 *
 		 * @since BuddyPress (1.8.0)
 		 *
-		 * @param string $link Activity comment permalink.
+		 * @param string $link       Activity comment permalink.
 		 * @param int    $comment_id ID for the current activity comment.
 		 */
 		return apply_filters( 'bp_get_activity_comment_permalink', $link, $comment_id );
@@ -2833,7 +2990,7 @@ function bp_activity_favorite_link() {
 	 * @uses wp_nonce_url()
 	 * @uses home_url()
 	 * @uses bp_get_activity_root_slug()
-	 * @uses apply_filters() To call the 'bp_get_activity_favorite_link' hook
+	 * @uses apply_filters() To call the 'bp_get_activity_favorite_link' hook.
 	 *
 	 * @return string The activity favorite link.
 	 */
@@ -2932,11 +3089,13 @@ function bp_activity_css_class() {
 
 		$class = ' activity-item';
 
-		if ( in_array( $activities_template->activity->type, (array) $mini_activity_actions ) || empty( $activities_template->activity->content ) )
+		if ( in_array( $activities_template->activity->type, (array) $mini_activity_actions ) || empty( $activities_template->activity->content ) ) {
 			$class .= ' mini';
+		}
 
-		if ( bp_activity_get_comment_count() && bp_activity_can_comment() )
+		if ( bp_activity_get_comment_count() && bp_activity_can_comment() ) {
 			$class .= ' has-comments';
+		}
 
 		/**
 		 * Filters the determined classes to add to the HTML element.
@@ -2969,13 +3128,12 @@ function bp_activity_delete_link() {
 	 * @uses bp_get_activity_root_slug()
 	 * @uses bp_is_activity_component()
 	 * @uses bp_current_action()
-	 * @uses add_query_arg()
 	 * @uses wp_get_referer()
 	 * @uses wp_nonce_url()
 	 * @uses apply_filters() To call the 'bp_get_activity_delete_link' hook.
 	 *
 	 * @return string $link Activity delete link. Contains $redirect_to arg
-	 *         if on single activity page.
+	 *                      if on single activity page.
 	 */
 	function bp_get_activity_delete_link() {
 
@@ -3000,7 +3158,7 @@ function bp_activity_delete_link() {
 	}
 
 /**
- * Output the URL to delete a single activity stream item
+ * Output the URL to delete a single activity stream item.
  *
  * @since BuddyPress (2.1.0)
  *
@@ -3010,7 +3168,7 @@ function bp_activity_delete_url() {
 	echo esc_url( bp_get_activity_delete_url() );
 }
 	/**
-	 * Return the URL to delete a single activity item
+	 * Return the URL to delete a single activity item.
 	 *
 	 * @since BuddyPress (2.1.0)
 	 *
@@ -3025,7 +3183,7 @@ function bp_activity_delete_url() {
 	 * @uses apply_filters() To call the 'bp_get_activity_delete_link' hook.
 	 *
 	 * @return string $link Activity delete link. Contains $redirect_to arg
-	 *         if on single activity page.
+	 *                      if on single activity page.
 	 */
 	function bp_get_activity_delete_url() {
 		global $activities_template;
@@ -3071,26 +3229,30 @@ function bp_activity_latest_update( $user_id = 0 ) {
 	 * @uses bp_is_user_inactive()
 	 * @uses bp_core_is_user_deleted()
 	 * @uses bp_get_user_meta()
-	 * @uses apply_filters() To call the 'bp_get_activity_latest_update_excerpt' hook
+	 * @uses apply_filters() To call the 'bp_get_activity_latest_update_excerpt' hook.
 	 * @uses bp_create_excerpt()
 	 * @uses bp_get_root_domain()
 	 * @uses bp_get_activity_root_slug()
-	 * @uses apply_filters() To call the 'bp_get_activity_latest_update' hook
+	 * @uses apply_filters() To call the 'bp_get_activity_latest_update' hook.
 	 *
 	 * @param int $user_id If empty, will fall back on displayed user.
+	 *
 	 * @return string|bool $latest_update The activity latest update link.
-	 *         False on failure
+	 *                                    False on failure.
 	 */
 	function bp_get_activity_latest_update( $user_id = 0 ) {
 
-		if ( empty( $user_id ) )
+		if ( empty( $user_id ) ) {
 			$user_id = bp_displayed_user_id();
+		}
 
-		if ( bp_is_user_inactive( $user_id ) )
+		if ( bp_is_user_inactive( $user_id ) ) {
 			return false;
+		}
 
-		if ( !$update = bp_get_user_meta( $user_id, 'bp_latest_update', true ) )
+		if ( !$update = bp_get_user_meta( $user_id, 'bp_latest_update', true ) ) {
 			return false;
+		}
 
 		/**
 		 * Filters the latest update excerpt.
@@ -3126,7 +3288,7 @@ function bp_activity_latest_update( $user_id = 0 ) {
  * @see bp_get_activity_filter_links() for description of parameters.
  * @uses bp_get_activity_filter_links()
  *
- * @param array $args See {@link bp_get_activity_filter_links()} for description.
+ * @param array|bool $args See {@link bp_get_activity_filter_links()} for description.
  */
 function bp_activity_filter_links( $args = false ) {
 	echo bp_get_activity_filter_links( $args );
@@ -3145,21 +3307,18 @@ function bp_activity_filter_links( $args = false ) {
 	 * @uses apply_filters() To call the 'bp_get_activity_filter_link_href' hook.
 	 * @uses apply_filters() To call the 'bp_get_activity_filter_links' hook.
 	 *
-	 * @param array $args {
+	 * @param array|bool $args {
 	 *     @type string $style The type of markup to use for the links.
-	 *           'list', 'paragraph', or 'span'. Default: 'list'.
+	 *                         'list', 'paragraph', or 'span'. Default: 'list'.
 	 * }
 	 * @return string|bool $component_links The activity filter links.
 	 *         False on failure.
 	 */
 	function bp_get_activity_filter_links( $args = false ) {
 
-		$defaults = array(
+		$r = wp_parse_args( $args, array(
 			'style' => 'list'
-		);
-
-		$r = wp_parse_args( $args, $defaults );
-		extract( $r, EXTR_SKIP );
+		) );
 
 		// Define local variable
 		$component_links = array();
@@ -3167,23 +3326,26 @@ function bp_activity_filter_links( $args = false ) {
 		// Fetch the names of components that have activity recorded in the DB
 		$components = BP_Activity_Activity::get_recorded_components();
 
-		if ( empty( $components ) )
+		if ( empty( $components ) ) {
 			return false;
+		}
 
 		foreach ( (array) $components as $component ) {
 
 			// Skip the activity comment filter
-			if ( 'activity' == $component )
+			if ( 'activity' == $component ) {
 				continue;
+			}
 
-			if ( isset( $_GET['afilter'] ) && $component == $_GET['afilter'] )
+			if ( isset( $_GET['afilter'] ) && $component == $_GET['afilter'] ) {
 				$selected = ' class="selected"';
-			else
-				unset($selected);
+			} else {
+				$selected = '';
+			}
 
 			$component = esc_attr( $component );
 
-			switch ( $style ) {
+			switch ( $r['style'] ) {
 				case 'list':
 					$tag = 'li';
 					$before = '<li id="afilter-' . $component . '"' . $selected . '>';
@@ -3209,18 +3371,19 @@ function bp_activity_filter_links( $args = false ) {
 			 *
 			 * @since BuddyPress (1.1.0)
 			 *
-			 * @param string $link The URL for the current component.
+			 * @param string $link      The URL for the current component.
 			 * @param string $component The current component getting links constructed for.
 			 */
 			$link = apply_filters( 'bp_get_activity_filter_link_href', $link, $component );
 
-			$component_links[] = $before . '<a href="' . esc_attr( $link ) . '">' . ucwords( $component ) . '</a>' . $after;
+			$component_links[] = $before . '<a href="' . esc_url( $link ) . '">' . ucwords( $component ) . '</a>' . $after;
 		}
 
 		$link = remove_query_arg( 'afilter' , $link );
 
-		if ( isset( $_GET['afilter'] ) )
-			$component_links[] = '<' . $tag . ' id="afilter-clear"><a href="' . esc_attr( $link ) . '">' . __( 'Clear Filter', 'buddypress' ) . '</a></' . $tag . '>';
+		if ( isset( $_GET['afilter'] ) ) {
+			$component_links[] = '<' . $tag . ' id="afilter-clear"><a href="' . esc_url( $link ) . '">' . __( 'Clear Filter', 'buddypress' ) . '</a></' . $tag . '>';
+		}
 
 		/**
 		 * Filters all of the constructed filter links.
@@ -3285,7 +3448,7 @@ function bp_activity_can_comment() {
 	 *
 	 * @since BuddyPress (1.5.0)
 	 *
-	 * @param bool   $can_comment Status on if activity can be commented on.
+	 * @param bool   $can_comment     Status on if activity can be commented on.
 	 * @param string $activity_action Current activity action being checked on.
 	 */
 	return apply_filters( 'bp_activity_can_comment', $can_comment, $activity_action );
@@ -3296,11 +3459,11 @@ function bp_activity_can_comment() {
  *
  * @since BuddyPress (1.5.0)
  *
- * @param object $comment Activity comment.
- * @return bool $can_comment True if comment can receive comments, otherwise
- *         false.
+ * @param  bool|object $comment     Activity comment.
+ * @return bool        $can_comment True if comment can receive comments,
+ *                                  otherwise false.
  */
-function bp_activity_can_comment_reply( $comment = '' ) {
+function bp_activity_can_comment_reply( $comment = false ) {
 
 	// Assume activity can be commented on
 	$can_comment = true;
@@ -3333,7 +3496,7 @@ function bp_activity_can_comment_reply( $comment = '' ) {
 	 * @since BuddyPress (1.5.0)
 	 *
 	 * @param bool   $can_comment Status on if activity reply can be commented on.
-	 * @param string $comment Current comment being checked on.
+	 * @param string $comment     Current comment being checked on.
 	 */
 	return (bool) apply_filters( 'bp_activity_can_comment_reply', $can_comment, $comment );
 }
@@ -3381,22 +3544,26 @@ function bp_total_favorite_count_for_user( $user_id = 0 ) {
 	 * @since BuddyPress (1.2.0)
 	 *
 	 * @uses bp_activity_total_favorites_for_user()
-	 * @uses apply_filters() To call the 'bp_get_total_favorite_count_for_user' hook
+	 * @uses apply_filters() To call the 'bp_get_total_favorite_count_for_user' hook.
 	 *
 	 * @param int $user_id ID of user being queried. Default: displayed user ID.
+	 *
 	 * @return int The total favorite count for the specified user.
 	 */
 	function bp_get_total_favorite_count_for_user( $user_id = 0 ) {
+		$retval = false;
 
-		// Default to displayed user if none is passed
-		$user_id = empty( $user_id )
-			? bp_displayed_user_id()
-			: $user_id;
+		if ( bp_activity_can_favorite() ) {
+			// Default to displayed user if none is passed
+			$user_id = empty( $user_id )
+				? bp_displayed_user_id()
+				: $user_id;
 
-		// Get user meta if user ID exists
-		$retval = ! empty( $user_id )
-			? bp_activity_total_favorites_for_user( $user_id )
-			: false;
+			// Get user meta if user ID exists
+			if ( ! empty( $user_id ) ) {
+				$retval = bp_activity_total_favorites_for_user( $user_id );
+			}
+		}
 
 		/**
 		 * Filters the total favorite count for a user.
@@ -3432,6 +3599,7 @@ function bp_total_mention_count_for_user( $user_id = 0 ) {
 	 * @uses apply_filters() To call the 'bp_get_total_mention_count_for_user' hook.
 	 *
 	 * @param int $user_id ID of user being queried. Default: displayed user ID.
+	 *
 	 * @return int The total mention count for the specified user.
 	 */
 	function bp_get_total_mention_count_for_user( $user_id = 0 ) {
@@ -3464,7 +3632,7 @@ function bp_total_mention_count_for_user( $user_id = 0 ) {
  * @uses bp_get_send_public_message_link()
  */
 function bp_send_public_message_link() {
-	echo bp_get_send_public_message_link();
+	echo esc_url( bp_get_send_public_message_link() );
 }
 
 	/**
@@ -3477,7 +3645,7 @@ function bp_send_public_message_link() {
 	 * @uses bp_is_user()
 	 * @uses wp_nonce_url()
 	 * @uses bp_get_activity_directory_permalink()
-	 * @uses apply_filters() To call the 'bp_get_send_public_message_link' hook
+	 * @uses apply_filters() To call the 'bp_get_send_public_message_link' hook.
 	 *
 	 * @return string The public message link for the displayed user.
 	 */
@@ -3509,6 +3677,7 @@ function bp_send_public_message_link() {
  *
  * @param array $activity Array of activities generated from {@link bp_activity_get()}.
  * @param array $activity_ids Used for recursion purposes in this function.
+ *
  * @return array
  */
 function bp_activity_recurse_comments_activity_ids( $activity = array(), $activity_ids = array() ) {
@@ -3537,21 +3706,22 @@ function bp_activity_recurse_comments_activity_ids( $activity = array(), $activi
  * @see bp_get_mentioned_user_display_name() for description of parameters.
  * @uses bp_get_mentioned_user_display_name()
  *
- * @param int|string $user_id_or_username See {@link bp_get_mentioned_user_display_name()}.
+ * @param int|string|bool $user_id_or_username See {@link bp_get_mentioned_user_display_name()}.
  */
 function bp_mentioned_user_display_name( $user_id_or_username = false ) {
 	echo bp_get_mentioned_user_display_name( $user_id_or_username );
 }
 
 	/**
-	 * Returns the mentioned user display name
+	 * Returns the mentioned user display name.
 	 *
 	 * @since BuddyPress (1.2.0)
 	 *
 	 * @uses bp_core_get_user_displayname()
 	 * @uses apply_filters() To call the 'bp_get_mentioned_user_display_name' hook.
 	 *
-	 * @param int|string User ID or username.
+	 * @param int|string|bool User ID or username.
+	 *
 	 * @return string The mentioned user's display name.
 	 */
 	function bp_get_mentioned_user_display_name( $user_id_or_username = false ) {
@@ -3569,7 +3739,7 @@ function bp_mentioned_user_display_name( $user_id_or_username = false ) {
 		 *
 		 * @since BuddyPress (1.2.0)
 		 *
-		 * @param string     $name Display name for the mentioned user.
+		 * @param string     $name                Display name for the mentioned user.
 		 * @param int|string $user_id_or_username User ID or username use for query.
 		 */
 		return apply_filters( 'bp_get_mentioned_user_display_name', $name, $user_id_or_username );
@@ -3583,7 +3753,7 @@ function bp_mentioned_user_display_name( $user_id_or_username = false ) {
  * @see bp_get_send_public_message_button() for description of parameters.
  * @uses bp_get_send_public_message_button()
  *
- * @param array $args See {@link bp_get_send_public_message_button()}.
+ * @param array|string $args See {@link bp_get_send_public_message_button()}.
  */
 function bp_send_public_message_button( $args = '' ) {
 	echo bp_get_send_public_message_button( $args );
@@ -3599,20 +3769,20 @@ function bp_send_public_message_button( $args = '' ) {
 	 * @uses bp_get_button()
 	 * @uses apply_filters() To call the 'bp_get_send_public_message_button' hook.
 	 *
-	 * @param array $args {
+	 * @param array|string $args {
 	 *     All arguments are optional. See {@link BP_Button} for complete
 	 *     descriptions.
-	 *     @type string $id Default: 'public_message'.
-	 *     @type string $component Default: 'activity'.
-	 *     @type bool $must_be_logged_in Default: true.
-	 *     @type bool $block_self Default: true.
-	 *     @type string $wrapper_id Default: 'post-mention'.
-	 *     @type string $link_href Default: the public message link for
-	 *           the current member in the loop.
-	 *     @type string $link_title Default: 'Send a public message on your
-	 *           activity stream.'.
-	 *     @type string $link_text Default: 'Public Message'.
-	 *     @type string $link_class Default: 'activity-button mention'.
+	 *     @type string $id                Default: 'public_message'.
+	 *     @type string $component         Default: 'activity'.
+	 *     @type bool   $must_be_logged_in Default: true.
+	 *     @type bool   $block_self        Default: true.
+	 *     @type string $wrapper_id        Default: 'post-mention'.
+	 *     @type string $link_href         Default: the public message link for
+	 *                                     the current member in the loop.
+	 *     @type string $link_title        Default: 'Send a public message on your
+	 *                                     activity stream.'.
+	 *     @type string $link_text         Default: 'Public Message'.
+	 *     @type string $link_class        Default: 'activity-button mention'.
 	 * }
 	 * @return string The button for sending a public message.
 	 */
@@ -3740,7 +3910,7 @@ function bp_activity_comments_user_avatars( $args = array() ) {
 	 * @since BuddyPress (1.7.0)
 	 *
 	 * @param string $retval HTML markup for the list of avatars.
-	 * @param array  $r Array of arguments used for each avatar.
+	 * @param array  $r      Array of arguments used for each avatar.
 	 * @param array  $output Array of each avatar found, before imploded into single string.
 	 */
 	echo apply_filters( 'bp_activity_comments_user_avatars', $retval, $r, $output );
@@ -3776,6 +3946,7 @@ function bp_activity_get_comments_user_ids() {
 	 * @since BuddyPress (1.7.0)
 	 *
 	 * @param array $comments Array of {@link BP_Activity_Activity} items.
+	 *
 	 * @return array Array of user IDs.
 	 */
 	function bp_activity_recurse_comments_user_ids( array $comments = array() ) {
@@ -3846,13 +4017,13 @@ function bp_displayed_user_mentionname() {
  *
  * @since BuddyPress (1.7.0)
  *
- * @param string $output Optional. Either 'select' or 'checkbox'. Default: 'select'.
- * @param array $args {
+ * @param string       $output Optional. Either 'select' or 'checkbox'. Default: 'select'.
+ * @param array|string $args {
  *     Optional extra arguments.
- *     @type string $checkbox_name When returning checkboxes, sets the 'name'
- *           attribute.
- *     @type array|string $selected A list of types that should be checked/
- *           selected.
+ *     @type string       $checkbox_name When returning checkboxes, sets the 'name'
+ *                                       attribute.
+ *     @type array|string $selected      A list of types that should be checked/
+ *                                       selected.
  * }
  */
 function bp_activity_types_list( $output = 'select', $args = '' ) {
@@ -3890,8 +4061,8 @@ function bp_activity_types_list( $output = 'select', $args = '' ) {
 		 *
 		 * @since BuddyPress (1.7.0)
 		 *
-		 * @param array  $args Array of arguments passed into function.
-		 * @param string $type Activity type being rendered in the output.
+		 * @param array  $args        Array of arguments passed into function.
+		 * @param string $type        Activity type being rendered in the output.
 		 * @param string $description Description of the activity type being rendered.
 		 */
 		do_action( 'bp_activity_types_list_' . $output, $args, $type, $description );
@@ -4122,7 +4293,7 @@ function bp_activity_feed_item_title() {
 	}
 
 /**
- * Output the activity feed item link
+ * Output the activity feed item link.
  *
  * @since BuddyPress (1.0.0)
  *
@@ -4133,7 +4304,7 @@ function bp_activity_feed_item_link() {
 }
 
 	/**
-	 * Return the activity feed item link
+	 * Return the activity feed item link.
 	 *
 	 * @since BuddyPress (1.0.0)
 	 *
@@ -4266,7 +4437,7 @@ add_action( 'bp_head', 'bp_activity_sitewide_feed' );
  * @since BuddyPress (2.1.0)
  *
  * @param string $context The current context. 'activity', 'member',
- *	  'member_groups', 'group'.
+ *	                      'member_groups', 'group'.
  * @uses bp_get_activity_show_filters()
  */
 function bp_activity_show_filters( $context = '' ) {
@@ -4278,7 +4449,8 @@ function bp_activity_show_filters( $context = '' ) {
 	 * @since BuddyPress (2.1.0)
 	 *
 	 * @param string $context The current context. 'activity', 'member',
-	 *	  'member_groups', 'group'
+	 *	                      'member_groups', 'group'.
+	 *
 	 * @return string HTML for <option> values.
 	 */
 	function bp_get_activity_show_filters( $context = '' ) {
@@ -4328,7 +4500,7 @@ function bp_activity_show_filters( $context = '' ) {
 		 *
 		 * @since BuddyPress (2.2.0)
 		 *
-		 * @param array $filters Array of filter options for the given context, in the following format: $option_value => $option_name.
+		 * @param array  $filters Array of filter options for the given context, in the following format: $option_value => $option_name.
 		 * @param string $context Context for the filter. 'activity', 'member', 'member_groups', 'group'.
 		 */
 		$filters = apply_filters( 'bp_get_activity_show_filters_options', $filters, $context );
@@ -4347,7 +4519,7 @@ function bp_activity_show_filters( $context = '' ) {
 		 *
 		 * @since BuddyPress (2.1.0)
 		 *
-		 * @param string $output HTML output for the activity filter dropdown.
+		 * @param string $output  HTML output for the activity filter dropdown.
 		 * @param array  $filters Array of filter options for the given context, in the following format: $option_value => $option_name.
 		 * @param string $context Context for the filter. 'activity', 'member', 'member_groups', 'group'.
 		 */

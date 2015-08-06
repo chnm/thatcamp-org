@@ -66,6 +66,7 @@ class BP_Blogs_Component extends BP_Component {
 			'slug'                  => BP_BLOGS_SLUG,
 			'root_slug'             => isset( $bp->pages->blogs->slug ) ? $bp->pages->blogs->slug : BP_BLOGS_SLUG,
 			'has_directory'         => is_multisite(), // Non-multisite installs don't need a top-level Sites directory, since there's only one site
+			'directory_title'       => _x( 'Sites', 'component directory title', 'buddypress' ),
 			'notification_callback' => 'bp_blogs_format_notifications',
 			'search_string'         => __( 'Search sites...', 'buddypress' ),
 			'autocomplete_all'      => defined( 'BP_MESSAGES_AUTOCOMPLETE_ALL' ),
@@ -81,12 +82,13 @@ class BP_Blogs_Component extends BP_Component {
 		 *
 		 * In case the config is not multisite, the blog_public option is ignored.
 		 */
-		if ( 0 !== (int) get_option( 'blog_public' ) || ! is_multisite() ) {
+		if ( 0 !== apply_filters( 'bp_is_blog_public', (int) get_option( 'blog_public' ) ) || ! is_multisite() ) {
 
 			/**
-			 * Filters the post types to track for the Blog component.
+			 * Filters the post types to track for the Blogs component.
 			 *
 			 * @since BuddyPress (1.5.0)
+			 * @deprecated BuddyPress (2.3.0)
 			 *
 			 * @param array $value Array of post types to track.
 			 */
@@ -153,8 +155,11 @@ class BP_Blogs_Component extends BP_Component {
 		}
 
 		// Add 'Sites' to the main navigation
-		$main_nav =  array(
-			'name'                => sprintf( __( 'Sites <span>%d</span>', 'buddypress' ), bp_get_total_blog_count_for_user() ),
+		$count    = (int) bp_get_total_blog_count_for_user();
+		$class    = ( 0 === $count ) ? 'no-count' : 'count';
+		$nav_text = sprintf( __( 'Sites <span class="%s">%s</span>', 'buddypress' ), esc_attr( $class ), number_format_i18n( $count )  );
+		$main_nav = array(
+			'name'                => $nav_text,
 			'slug'                => $this->slug,
 			'position'            => 30,
 			'screen_function'     => 'bp_blogs_screen_my_blogs',
@@ -293,8 +298,23 @@ class BP_Blogs_Component extends BP_Component {
 	 *
 	 * @see bp_activity_get_post_type_tracking_args() for information on parameters.
 	 */
-	public function post_tracking_args( $params = array(), $post_type = 0 ) {
-		if ( 'post' != $post_type ) {
+	public function post_tracking_args( $params = null, $post_type = 0 ) {
+		/**
+		 * Filters the post types to track for the Blogs component.
+		 *
+		 * @since BuddyPress (1.5.0)
+		 * @deprecated BuddyPress (2.3.0)
+		 *
+		 * Make sure plugins still using 'bp_blogs_record_post_post_types'
+		 * to track their post types will generate new_blog_post activities
+		 * See https://buddypress.trac.wordpress.org/ticket/6306
+		 *
+		 * @param array $value Array of post types to track.
+		 */
+		$post_types = apply_filters( 'bp_blogs_record_post_post_types', array( 'post' ) );
+		$post_types_array = array_flip( $post_types );
+
+		if ( ! isset( $post_types_array[ $post_type ] ) ) {
 			return $params;
 		}
 

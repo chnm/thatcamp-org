@@ -55,6 +55,56 @@ add_filter( 'bp_xprofile_set_field_data_pre_validate',  'xprofile_filter_pre_val
 add_filter( 'xprofile_data_value_before_save',          'xprofile_sanitize_data_value_before_save', 1, 4 );
 add_filter( 'xprofile_filtered_data_value_before_save', 'trim', 2 );
 
+// Save field groups
+add_filter( 'xprofile_group_name_before_save',        'wp_filter_kses' );
+add_filter( 'xprofile_group_description_before_save', 'wp_filter_kses' );
+
+// Save fields
+add_filter( 'xprofile_field_name_before_save',         'wp_filter_kses' );
+add_filter( 'xprofile_field_type_before_save',         'wp_filter_kses' );
+add_filter( 'xprofile_field_description_before_save',  'wp_filter_kses' );
+add_filter( 'xprofile_field_order_by_before_save',     'wp_filter_kses' );
+add_filter( 'xprofile_field_is_required_before_save',  'absint' );
+add_filter( 'xprofile_field_field_order_before_save',  'absint' );
+add_filter( 'xprofile_field_option_order_before_save', 'absint' );
+add_filter( 'xprofile_field_can_delete_before_save',   'absint' );
+
+// Save field options
+add_filter( 'xprofile_field_options_before_save', 'bp_xprofile_sanitize_field_options' );
+add_filter( 'xprofile_field_default_before_save', 'bp_xprofile_sanitize_field_default' );
+
+/**
+ * Sanitize each field option name for saving to the database
+ *
+ * @since BuddyPress (2.3.0)
+ *
+ * @param  mixed $field_options
+ * @return mixed
+ */
+function bp_xprofile_sanitize_field_options( $field_options = '' ) {
+	if ( is_array( $field_options ) ) {
+		return array_map( 'sanitize_text_field', $field_options );
+	} else {
+		return sanitize_text_field( $field_options );
+	}
+}
+
+/**
+ * Sanitize each field option default for saving to the database
+ *
+ * @since BuddyPress (2.3.0)
+ *
+ * @param  mixed $field_default
+ * @return mixed
+ */
+function bp_xprofile_sanitize_field_default( $field_default = '' ) {
+	if ( is_array( $field_default ) ) {
+		return array_map( 'intval', $field_default );
+	} else {
+		return intval( $field_default );
+	}
+}
+
 /**
  * xprofile_filter_kses ( $content )
  *
@@ -350,14 +400,14 @@ add_filter( 'bp_user_query_populate_extras', 'bp_xprofile_filter_user_query_popu
  * @param BP_User_Query User query object.
  */
 function bp_xprofile_add_xprofile_query_to_user_query( BP_User_Query $q ) {
-	global $wpdb;
 
+	// Bail if no `xprofile_query` clause
 	if ( empty( $q->query_vars['xprofile_query'] ) ) {
 		return;
 	}
 
 	$xprofile_query = new BP_XProfile_Query( $q->query_vars['xprofile_query'] );
-	$sql = $xprofile_query->get_sql( 'u', $q->uid_name );
+	$sql            = $xprofile_query->get_sql( 'u', $q->uid_name );
 
 	if ( ! empty( $sql['join'] ) ) {
 		$q->uid_clauses['select'] .= $sql['join'];

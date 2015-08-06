@@ -205,6 +205,15 @@ class BP_Notifications_Template {
 	public $pag_page;
 
 	/**
+	 * The $_GET argument used in URLs for determining pagination
+	 *
+	 * @since BuddyPress (1.9.0)
+	 * @access public
+	 * @var int
+	 */
+	public $pag_arg;
+
+	/**
 	 * The number of items to display per page of results.
 	 *
 	 * @since BuddyPress (1.9.0)
@@ -250,6 +259,14 @@ class BP_Notifications_Template {
 	public $sort_order;
 
 	/**
+	 * Array of variables used in this notification query
+	 *
+	 * @since BuddyPress (2.2.2)
+	 * @var array
+	 */
+	public $query_vars;
+
+	/**
 	 * Constructor method.
 	 *
 	 * @see bp_has_notifications() For information on the array format.
@@ -267,6 +284,7 @@ class BP_Notifications_Template {
 		$r = wp_parse_args( $args, array(
 			'id'                => false,
 			'user_id'           => 0,
+			'item_id'           => false,
 			'secondary_item_id' => false,
 			'component_name'    => bp_notifications_get_registered_components(),
 			'component_action'  => false,
@@ -274,10 +292,12 @@ class BP_Notifications_Template {
 			'search_terms'      => '',
 			'order_by'          => 'date_notified',
 			'sort_order'        => 'DESC',
+			'page_arg'          => 'npage',
 			'page'              => 1,
 			'per_page'          => 25,
 			'max'               => null,
-			'page_arg'          => 'npage',
+			'meta_query'        => false,
+			'date_query'        => false
 		) );
 
 		// Overrides
@@ -299,10 +319,26 @@ class BP_Notifications_Template {
 		$this->search_terms = $r['search_terms'];
 		$this->order_by     = $r['order_by'];
 		$this->sort_order   = $r['sort_order'];
+		$this->query_vars   = array(
+			'id'                => $r['id'],
+			'user_id'           => $this->user_id,
+			'item_id'           => $r['item_id'],
+			'secondary_item_id' => $r['secondary_item_id'],
+			'component_name'    => $r['component_name'],
+			'component_action'  => $r['component_action'],
+			'meta_query'        => $r['meta_query'],
+			'date_query'        => $r['date_query'],
+			'is_new'            => $this->is_new,
+			'search_terms'      => $this->search_terms,
+			'order_by'          => $this->order_by,
+			'sort_order'        => $this->sort_order,
+			'page'              => $this->pag_page,
+			'per_page'          => $this->pag_num,
+		);
 
 		// Setup the notifications to loop through
-		$this->notifications            = BP_Notifications_Notification::get( $r );
-		$this->total_notification_count = BP_Notifications_Notification::get_total_count( $r );
+		$this->notifications            = BP_Notifications_Notification::get( $this->query_vars );
+		$this->total_notification_count = BP_Notifications_Notification::get_total_count( $this->query_vars );
 
 		if ( empty( $this->notifications ) ) {
 			$this->notification_count       = 0;
@@ -335,10 +371,6 @@ class BP_Notifications_Template {
 				'mid_size'  => 1,
 				'add_args'  => $add_args,
 			) );
-
-			// Remove first page from pagination
-			$this->pag_links = str_replace( '?'      . $r['page_arg'] . '=1', '', $this->pag_links );
-			$this->pag_links = str_replace( '&#038;' . $r['page_arg'] . '=1', '', $this->pag_links );
 		}
 	}
 
@@ -506,6 +538,8 @@ function bp_has_notifications( $args = '' ) {
 		'search_terms'      => isset( $_REQUEST['s'] ) ? stripslashes( $_REQUEST['s'] ) : '',
 		'order_by'          => 'date_notified',
 		'sort_order'        => 'DESC',
+		'meta_query'        => false,
+		'date_query'        => false,
 		'page'              => 1,
 		'per_page'          => 25,
 
@@ -796,10 +830,12 @@ function bp_the_notification_description() {
 		 * Filters the full-text description for a specific notification.
 		 *
 		 * @since BuddyPress (1.9.0)
+		 * @since BuddyPress (2.3.0) Added the `$notification` parameter.
 		 *
-		 * @param string $description Full-text description for a specific notification.
+		 * @param string $description  Full-text description for a specific notification.
+		 * @param object $notification Notification object.
 		 */
-		return apply_filters( 'bp_get_the_notification_description', $description );
+		return apply_filters( 'bp_get_the_notification_description', $description, $notification );
 	}
 
 /**
@@ -1148,7 +1184,12 @@ function bp_notifications_pagination_count() {
 		$from_num   = bp_core_number_format( $start_num );
 		$to_num     = bp_core_number_format( ( $start_num + ( $query_loop->pag_num - 1 ) > $query_loop->total_notification_count ) ? $query_loop->total_notification_count : $start_num + ( $query_loop->pag_num - 1 ) );
 		$total      = bp_core_number_format( $query_loop->total_notification_count );
-		$pag        = sprintf( _n( 'Viewing 1 notification', 'Viewing %1$s - %2$s of %3$s notifications', $total, 'buddypress' ), $from_num, $to_num, $total );
+
+		if ( 1 == $query_loop->total_notification_count ) {
+			$pag = __( 'Viewing 1 notification', 'buddypress' );
+		} else {
+			$pag = sprintf( _n( 'Viewing %1$s - %2$s of %3$s notification', 'Viewing %1$s - %2$s of %3$s notifications', $query_loop->total_notification_count, 'buddypress' ), $from_num, $to_num, $total );
+		}
 
 		/**
 		 * Filters the pagination count for the current notification loop.

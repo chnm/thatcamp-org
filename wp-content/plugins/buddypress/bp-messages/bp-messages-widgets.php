@@ -1,6 +1,6 @@
 <?php
 /**
- * BuddyPress Messages Widgets
+ * BuddyPress Messages Widgets.
  *
  * @package BuddyPress
  * @subpackage Messages
@@ -44,8 +44,8 @@ class BP_Messages_Sitewide_Notices_Widget extends WP_Widget {
 	 *
 	 * @see WP_Widget::widget() for a description of parameters.
 	 *
-	 * @param array $args See {@WP_Widget::widget()}.
-	 * @param array $args See {@WP_Widget::widget()}.
+	 * @param array $args     See {@WP_Widget::widget()}.
+	 * @param array $instance See {@WP_Widget::widget()}.
 	 */
 	public function widget( $args, $instance ) {
 
@@ -67,10 +67,13 @@ class BP_Messages_Sitewide_Notices_Widget extends WP_Widget {
 		 * Filters the title of the Messages widget.
 		 *
 		 * @since BuddyPress (1.9.0)
+		 * @since BuddyPress (2.3.0) Added 'instance' and 'id_base' to arguments passed to filter.
 		 *
-		 * @param string $title The widget title.
+		 * @param string $title    The widget title.
+		 * @param array  $instance The settings for the particular instance of the widget.
+		 * @param string $id_base  Root ID for all widgets of this type.
 		 */
-		$title = apply_filters( 'widget_title', $title, $instance );
+		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
 		echo $before_widget;
 		echo $before_title . $title . $after_title; ?>
@@ -92,6 +95,7 @@ class BP_Messages_Sitewide_Notices_Widget extends WP_Widget {
 	 *
 	 * @param array $new_instance See {@WP_Widget::update()}.
 	 * @param array $old_instance See {@WP_Widget::update()}.
+	 *
 	 * @return array $instance See {@WP_Widget::update()}.
 	 */
 	public function update( $new_instance, $old_instance ) {
@@ -106,6 +110,8 @@ class BP_Messages_Sitewide_Notices_Widget extends WP_Widget {
 	 * @see WP_Widget::form() for a description of parameters.
 	 *
 	 * @param array $instance See {@WP_Widget::form()}.
+	 *
+	 * @return string Widget form output.
 	 */
 	public function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array(

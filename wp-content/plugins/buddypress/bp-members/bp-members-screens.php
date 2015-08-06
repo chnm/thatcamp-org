@@ -1,7 +1,7 @@
 <?php
 
 /**
- * BuddyPress Member Screens
+ * BuddyPress Member Screens.
  *
  * Handlers for member screens that aren't handled elsewhere.
  *
@@ -64,7 +64,7 @@ add_action( 'bp_screens', 'bp_members_screen_index' );
  * Handle the loading of the signup screen.
  */
 function bp_core_screen_signup() {
-	global $bp;
+	$bp = buddypress();
 
 	if ( ! bp_is_current_component( 'register' ) || bp_current_action() )
 		return;
@@ -74,10 +74,10 @@ function bp_core_screen_signup() {
 
 	// If the user is logged in, redirect away from here
 	if ( is_user_logged_in() ) {
-		if ( bp_is_component_front_page( 'register' ) )
-			$redirect_to = trailingslashit( bp_get_root_domain() . '/' . bp_get_members_root_slug() );
-		else
-			$redirect_to = bp_get_root_domain();
+
+		$redirect_to = bp_is_component_front_page( 'register' )
+			? bp_get_members_directory_permalink()
+			: bp_get_root_domain();
 
 		/**
 		 * Filters the URL to redirect logged in users to when visiting registration page.
@@ -156,7 +156,7 @@ function bp_core_screen_signup() {
 
 		// Finally, let's check the blog details, if the user wants a blog and blog creation is enabled
 		if ( isset( $_POST['signup_with_blog'] ) ) {
-			$active_signup = $bp->site_options['registration'];
+			$active_signup = bp_core_get_root_option( 'registration' );
 
 			if ( 'blog' == $active_signup || 'all' == $active_signup ) {
 				$blog_details = bp_core_validate_blog_signup( $_POST['signup_blog_url'], $_POST['signup_blog_title'] );
@@ -196,7 +196,7 @@ function bp_core_screen_signup() {
 			$bp->signup->step = 'save-details';
 
 			// No errors! Let's register those deets.
-			$active_signup = !empty( $bp->site_options['registration'] ) ? $bp->site_options['registration'] : '';
+			$active_signup = bp_core_get_root_option( 'registration' );
 
 			if ( 'none' != $active_signup ) {
 
@@ -293,7 +293,7 @@ add_action( 'bp_screens', 'bp_core_screen_signup' );
  * @todo Move the actual activation process into an action in bp-members-actions.php
  */
 function bp_core_screen_activation() {
-	
+
 	// Bail if not viewing the activation page
 	if ( ! bp_is_current_component( 'activate' ) ) {
 		return false;
@@ -305,7 +305,7 @@ function bp_core_screen_activation() {
 		// If activation page is also front page, set to members directory to
 		// avoid an infinite loop. Otherwise, set to root domain.
 		$redirect_to = bp_is_component_front_page( 'activate' )
-			? bp_get_root_domain() . '/' . bp_get_members_root_slug()
+			? bp_get_members_directory_permalink()
 			: bp_get_root_domain();
 
 		// Trailing slash it, as we expect these URL's to be
@@ -521,7 +521,8 @@ class BP_Members_Theme_Compat {
 	 * @since BuddyPress (1.8.0)
 	 *
 	 * @param string $templates The templates from
-	 *        bp_get_theme_compat_templates().
+	 *                          bp_get_theme_compat_templates().
+	 *
 	 * @return array $templates Array of custom templates to look for.
 	 */
 	public function single_template_hierarchy( $templates ) {
@@ -591,7 +592,7 @@ new BP_Members_Theme_Compat();
 class BP_Registration_Theme_Compat {
 
 	/**
-	 * Setup the groups component theme compatibility
+	 * Setup the groups component theme compatibility.
 	 *
 	 * @since BuddyPress (1.7.0)
 	 */
@@ -631,6 +632,7 @@ class BP_Registration_Theme_Compat {
 	 * @since BuddyPress (1.8.0)
 	 *
 	 * @param string $templates The templates from bp_get_theme_compat_templates().
+	 *
 	 * @return array $templates Array of custom templates to look for.
 	 */
 	public function template_hierarchy( $templates ) {

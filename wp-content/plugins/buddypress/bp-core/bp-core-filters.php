@@ -94,6 +94,13 @@ function bp_core_exclude_pages( $pages = array() ) {
 	if ( !empty( $bp->pages->forums ) && ( !bp_is_active( 'forums' ) || ( bp_is_active( 'forums' ) && bp_forums_has_directory() && !bp_forums_is_installed_correctly() ) ) )
 		$pages[] = $bp->pages->forums->id;
 
+	/**
+	 * Filters specific pages that shouldn't show up on page listings.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 *
+	 * @param array $pages Array of pages to exclude.
+	 */
 	return apply_filters( 'bp_core_exclude_pages', $pages );
 }
 add_filter( 'wp_list_pages_excludes', 'bp_core_exclude_pages' );
@@ -234,6 +241,14 @@ add_filter( 'nav_menu_css_class', 'bp_core_menu_highlight_nav_menu_item', 10, 2 
  * @return string The blog name for the root blog.
  */
 function bp_core_email_from_name_filter() {
+
+	/**
+	 * Filters the "From" name in outgoing email to the site name.
+	 *
+	 * @since BuddyPress (1.2.0)
+	 *
+	 * @param string $value Value to set the "From" name to.
+	 */
  	return apply_filters( 'bp_core_email_from_name_filter', bp_get_option( 'blogname', 'WordPress' ) );
 }
 add_filter( 'wp_mail_from_name', 'bp_core_email_from_name_filter' );
@@ -300,7 +315,19 @@ function bp_core_login_redirect( $redirect_to, $redirect_to_raw, $user ) {
 		return $redirect_to;
 	}
 
-	// Allow plugins to allow or disallow redirects, as desired
+	/**
+	 * Filters whether or not to redirect.
+	 *
+	 * Allows plugins to have finer grained control of redirect upon login.
+	 *
+	 * @since BuddyPress (1.6.0)
+	 *
+    * @param bool    $value           Whether or not to redirect.
+	 * @param string  $redirect_to     Sanitized URL to be redirected to.
+	 * @param string  $redirect_to_raw Unsanitized URL to be redirected to.
+	 * @param WP_User $user            The WP_User object corresponding to a
+	 *                                 successfully logged in user.
+	 */
 	$maybe_redirect = apply_filters( 'bp_core_login_redirect', false, $redirect_to, $redirect_to_raw, $user );
 	if ( false !== $maybe_redirect ) {
 		return $maybe_redirect;
@@ -317,6 +344,13 @@ function bp_core_login_redirect( $redirect_to, $redirect_to_raw, $user ) {
 		return wp_get_referer();
 	}
 
+	/**
+	 * Filters the URL to redirect users to upon successful login.
+	 *
+	 * @since BuddyPress (1.9.0)
+	 *
+	 * @param string $value URL to redirect to.
+	 */
 	return apply_filters( 'bp_core_login_redirect_to', bp_get_root_domain() );
 }
 add_filter( 'bp_login_redirect', 'bp_core_login_redirect', 10, 3 );
@@ -414,9 +448,52 @@ function bp_core_activation_signup_blog_notification( $domain, $path, $title, $u
 	$message = sprintf( __( "%1\$s,\n\n\n\nThanks for registering! To complete the activation of your account and blog, please click the following link:\n\n%2\$s\n\n\n\nAfter you activate, you can visit your blog here:\n\n%3\$s", 'buddypress' ), $user, $activate_url, esc_url( "http://{$domain}{$path}" ) );
 	$subject = bp_get_email_subject( array( 'text' => sprintf( __( 'Activate %s', 'buddypress' ), 'http://' . $domain . $path ) ) );
 
-	// Email filters
+	/**
+	 * Filters the email that the notification is going to upon successful registration with blog.
+	 *
+	 * @since BuddyPress (1.2.0)
+	 *
+	 * @param string $user_email The user's email address.
+	 * @param string $domain     The new blog domain.
+	 * @param string $path       The new blog path.
+	 * @param string $title      The site title.
+	 * @param string $user       The user's login name.
+	 * @param string $user_email The user's email address.
+	 * @param string $key        The activation key created in wpmu_signup_blog().
+	 * @param array  $meta       Array of meta values for the created site.
+	 */
 	$to      = apply_filters( 'bp_core_activation_signup_blog_notification_to',   $user_email, $domain, $path, $title, $user, $user_email, $key, $meta );
+
+	/**
+	 * Filters the subject that the notification uses upon successful registration with blog.
+	 *
+	 * @since BuddyPress (1.2.0)
+	 *
+	 * @param string $subject    The subject to use.
+	 * @param string $domain     The new blog domain.
+	 * @param string $path       The new blog path.
+	 * @param string $title      The site title.
+	 * @param string $user       The user's login name.
+	 * @param string $user_email The user's email address.
+	 * @param string $key        The activation key created in wpmu_signup_blog().
+	 * @param array  $meta       Array of meta values for the created site.
+	 */
 	$subject = apply_filters( 'bp_core_activation_signup_blog_notification_subject', $subject, $domain, $path, $title, $user, $user_email, $key, $meta );
+
+	/**
+	 * Filters the message that the notification uses upon successful registration with blog.
+	 *
+	 * @since BuddyPress (1.2.0)
+	 *
+	 * @param string $message    The message to use.
+	 * @param string $domain     The new blog domain.
+	 * @param string $path       The new blog path.
+	 * @param string $title      The site title.
+	 * @param string $user       The user's login name.
+	 * @param string $user_email The user's email address.
+	 * @param string $key        The activation key created in wpmu_signup_blog().
+	 * @param array  $meta       Array of meta values for the created site.
+	 */
 	$message = apply_filters( 'bp_core_activation_signup_blog_notification_message', $message, $domain, $path, $title, $user, $user_email, $key, $meta );
 
 	// Send the email
@@ -425,6 +502,22 @@ function bp_core_activation_signup_blog_notification( $domain, $path, $title, $u
 	// Set up the $admin_email to pass to the filter
 	$admin_email = bp_get_option( 'admin_email' );
 
+	/**
+	 * Fires after the sending of the notification to new users for successful registration with blog.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 *
+	 * @param string $admin_email Admin Email address for the site.
+	 * @param string $subject     Subject used in the notification email.
+	 * @param string $message     Message used in the notification email.
+	 * @param string domain       The new blog domain.
+	 * @param string $path        The new blog path.
+	 * @param string $title       The site title.
+	 * @param string $user        The user's login name.
+	 * @param string $user_email  The user's email address.
+	 * @param string $key         The activation key created in wpmu_signup_blog().
+	 * @param array  $meta        Array of meta values for the created site.
+	 */
 	do_action( 'bp_core_sent_blog_signup_email', $admin_email, $subject, $message, $domain, $path, $title, $user, $user_email, $key, $meta );
 
 	// Return false to stop the original WPMU function from continuing
@@ -479,9 +572,43 @@ function bp_core_activation_signup_user_notification( $user, $user_email, $key, 
 	$message = sprintf( __( "Thanks for registering! To complete the activation of your account please click the following link:\n\n%1\$s\n\n", 'buddypress' ), $activate_url );
 	$subject = bp_get_email_subject( array( 'text' => __( 'Activate Your Account', 'buddypress' ) ) );
 
-	// Email filters
+	/**
+	 * Filters the email that the notification is going to upon successful registration without blog.
+	 *
+	 * @since BuddyPress (1.2.0)
+	 *
+	 * @param string $user_email The user's email address.
+	 * @param string $user       The user's login name.
+	 * @param string $user_email The user's email address.
+	 * @param string $key        The activation key created in wpmu_signup_blog().
+	 * @param array  $meta       Array of meta values for the created site.
+	 */
 	$to      = apply_filters( 'bp_core_activation_signup_user_notification_to',   $user_email, $user, $user_email, $key, $meta );
+
+	/**
+	 * Filters the subject that the notification uses upon successful registration without blog.
+	 *
+	 * @since BuddyPress (1.2.0)
+	 *
+	 * @param string $subject    The subject to use.
+	 * @param string $user       The user's login name.
+	 * @param string $user_email The user's email address.
+	 * @param string $key        The activation key created in wpmu_signup_blog().
+	 * @param array  $meta       Array of meta values for the created site.
+	 */
 	$subject = apply_filters( 'bp_core_activation_signup_user_notification_subject', $subject, $user, $user_email, $key, $meta );
+
+	/**
+	 * Filters the message that the notification uses upon successful registration without blog.
+	 *
+	 * @since BuddyPress (1.2.0)
+	 *
+	 * @param string $message    The message to use.
+	 * @param string $user       The user's login name.
+	 * @param string $user_email The user's email address.
+	 * @param string $key        The activation key created in wpmu_signup_blog().
+	 * @param array  $meta       Array of meta values for the created site.
+	 */
 	$message = apply_filters( 'bp_core_activation_signup_user_notification_message', $message, $user, $user_email, $key, $meta );
 
 	// Send the email
@@ -490,6 +617,19 @@ function bp_core_activation_signup_user_notification( $user, $user_email, $key, 
 	// Set up the $admin_email to pass to the filter
 	$admin_email = bp_get_option( 'admin_email' );
 
+	/**
+	 * Fires after the sending of the notification to new users for successful registration without blog.
+	 *
+	 * @since BuddyPress (1.5.0)
+	 *
+	 * @param string $admin_email Admin Email address for the site.
+	 * @param string $subject     Subject used in the notification email.
+	 * @param string $message     Message used in the notification email.
+	 * @param string $user        The user's login name.
+	 * @param string $user_email  The user's email address.
+	 * @param string $key         The activation key created in wpmu_signup_blog().
+	 * @param array  $meta        Array of meta values for the created site. Default empty array.
+	 */
 	do_action( 'bp_core_sent_user_signup_email', $admin_email, $subject, $message, $user, $user_email, $key, $meta );
 
 	// Return false to stop the original WPMU function from continuing
@@ -505,13 +645,14 @@ add_filter( 'wpmu_signup_user_notification', 'bp_core_activation_signup_user_not
  * @see wp_title()
  * @global object $bp BuddyPress global settings.
  *
- * @param string $title Original page title.
- * @param string $sep How to separate the various items within the page title.
- * @param string $seplocation Direction to display title.
- * @return string New page title.
+ * @param  string $title       Original page title.
+ * @param  string $sep         How to separate the various items within the page title.
+ * @param  string $seplocation Direction to display title.
+ *
+ * @return string              New page title.
  */
-function bp_modify_page_title( $title, $sep = '', $seplocation = '' ) {
-	global $bp;
+function bp_modify_page_title( $title = '', $sep = '&raquo;', $seplocation = 'right' ) {
+	global $bp, $paged, $page, $_wp_theme_features;
 
 	// If this is not a BP page, just return the title produced by WP
 	if ( bp_is_blog_page() ) {
@@ -528,23 +669,29 @@ function bp_modify_page_title( $title, $sep = '', $seplocation = '' ) {
 		return $title;
 	}
 
-	$title = '';
+	// Return WP's title if not a BuddyPress page
+	if ( ! is_buddypress() ) {
+		return $title;
+	}
+
+	// Setup an empty title parts array
+	$title_parts = array();
+
+	// Is there a displayed user, and do they have a name?
+	$displayed_user_name = bp_get_displayed_user_fullname();
 
 	// Displayed user
-	if ( bp_get_displayed_user_fullname() && ! is_404() ) {
+	if ( ! empty( $displayed_user_name ) && ! is_404() ) {
+
 		// Get the component's ID to try and get its name
 		$component_id = $component_name = bp_current_component();
 
+		// Set empty subnav name
+		$component_subnav_name = '';
+
 		// Use the component nav name
 		if ( ! empty( $bp->bp_nav[$component_id] ) ) {
-			// Remove counts that are added by the nav item
-			$span = strpos( $bp->bp_nav[ $component_id ]['name'], '<span' );
-			if ( false !== $span ) {
-				$component_name = substr( $bp->bp_nav[ $component_id ]['name'], 0, $span - 1 );
-
-			} else {
-				$component_name = $bp->bp_nav[ $component_id ]['name'];
-			}
+			$component_name = _bp_strip_spans_from_title( $bp->bp_nav[ $component_id ]['name'] );
 
 		// Fall back on the component ID
 		} elseif ( ! empty( $bp->{$component_id}->id ) ) {
@@ -555,81 +702,138 @@ function bp_modify_page_title( $title, $sep = '', $seplocation = '' ) {
 		if ( ! empty( $bp->bp_options_nav[ $component_id ] ) && ! empty( $bp->canonical_stack['action'] ) ) {
 			$component_subnav_name = wp_filter_object_list( $bp->bp_options_nav[ $component_id ], array( 'slug' => bp_current_action() ), 'and', 'name' );
 
-			if ( $component_subnav_name ) {
+			if ( ! empty( $component_subnav_name ) ) {
 				$component_subnav_name = array_shift( $component_subnav_name );
-			} else {
-				$component_subnav_name = '';
 			}
-
-		} else {
-			$component_subnav_name = '';
 		}
 
 		// If on the user profile's landing page, just use the fullname
-		if ( bp_is_current_component( $bp->default_component ) && bp_get_requested_url() === bp_displayed_user_domain() ) {
-			$title = bp_get_displayed_user_fullname();
+		if ( bp_is_current_component( $bp->default_component ) && ( bp_get_requested_url() === bp_displayed_user_domain() ) ) {
+			$title_parts[] = $displayed_user_name;
 
 		// Use component name on member pages
 		} else {
+			$title_parts = array_merge( $title_parts, array_map( 'strip_tags', array(
+				$displayed_user_name,
+				$component_name,
+			) ) );
+
 			// If we have a subnav name, add it separately for localization
 			if ( ! empty( $component_subnav_name ) ) {
-				// translators: construct the page title. 1 = user name, 2 = component name, 3 = separator, 4 = component subnav name
-				$title = strip_tags( sprintf( __( '%1$s %3$s %2$s %3$s %4$s', 'buddypress' ), bp_get_displayed_user_fullname(), $component_name, $sep, $component_subnav_name ) );
-
-			} else {
-				// translators: construct the page title. 1 = user name, 2 = component name, 3 = separator
-				$title = strip_tags( sprintf( __( '%1$s %3$s %2$s', 'buddypress' ), bp_get_displayed_user_fullname(), $component_name, $sep ) );
+				$title_parts[] = strip_tags( $component_subnav_name );
 			}
 		}
 
 	// A single group
 	} elseif ( bp_is_active( 'groups' ) && ! empty( $bp->groups->current_group ) && ! empty( $bp->bp_options_nav[ $bp->groups->current_group->slug ] ) ) {
-		$subnav = isset( $bp->bp_options_nav[ $bp->groups->current_group->slug ][ bp_current_action() ]['name'] ) ? $bp->bp_options_nav[ $bp->groups->current_group->slug ][ bp_current_action() ]['name'] : '';
-		// translators: 1 = group name, 2 = group nav section name, 3 = separator
-		$title = sprintf( __( '%1$s %3$s %2$s', 'buddypress' ), $bp->bp_options_title, $subnav, $sep );
+		$subnav      = isset( $bp->bp_options_nav[ $bp->groups->current_group->slug ][ bp_current_action() ]['name'] ) ? $bp->bp_options_nav[ $bp->groups->current_group->slug ][ bp_current_action() ]['name'] : '';
+		$title_parts = array( $bp->bp_options_title, $subnav );
 
 	// A single item from a component other than groups
 	} elseif ( bp_is_single_item() ) {
-		// translators: 1 = component item name, 2 = component nav section name, 3 = separator
-		$title = sprintf( __( '%1$s %3$s %2$s', 'buddypress' ), $bp->bp_options_title, $bp->bp_options_nav[ bp_current_item() ][ bp_current_action() ]['name'], $sep );
+		$title_parts = array( $bp->bp_options_title, $bp->bp_options_nav[ bp_current_item() ][ bp_current_action() ]['name'] );
 
 	// An index or directory
 	} elseif ( bp_is_directory() ) {
 		$current_component = bp_current_component();
 
 		// No current component (when does this happen?)
-		if ( empty( $current_component ) ) {
-			$title = _x( 'Directory', 'component directory title', 'buddypress' );
-		} else {
-			$title = bp_get_directory_title( $current_component );
-		}
+		$title_parts = array( _x( 'Directory', 'component directory title', 'buddypress' ) );
+
+		if ( ! empty( $current_component ) ) {
+			$title_parts = array( bp_get_directory_title( $current_component ) );
+ 		}
 
 	// Sign up page
 	} elseif ( bp_is_register_page() ) {
-		$title = __( 'Create an Account', 'buddypress' );
+		$title_parts = array( __( 'Create an Account', 'buddypress' ) );
 
 	// Activation page
 	} elseif ( bp_is_activation_page() ) {
-		$title = __( 'Activate your Account', 'buddypress' );
+		$title_parts = array( __( 'Activate your Account', 'buddypress' ) );
 
 	// Group creation page
 	} elseif ( bp_is_group_create() ) {
-		$title = __( 'Create a Group', 'buddypress' );
+		$title_parts = array( __( 'Create a Group', 'buddypress' ) );
 
 	// Blog creation page
 	} elseif ( bp_is_create_blog() ) {
-		$title = __( 'Create a Site', 'buddypress' );
+		$title_parts = array( __( 'Create a Site', 'buddypress' ) );
 	}
 
-	// Some BP nav items contain item counts. Remove them
-	$title = preg_replace( '|<span>[0-9]+</span>|', '', $title );
+	// Strip spans
+	$title_parts = array_map( '_bp_strip_spans_from_title', $title_parts );
 
-	return apply_filters( 'bp_modify_page_title', $title . ' ' . $sep . ' ', $title, $sep, $seplocation );
+	// sep on right, so reverse the order
+	if ( 'right' == $seplocation ) {
+		$title_parts = array_reverse( $title_parts );
+	}
+
+	// Get the blog name, so we can check if the original $title included it
+	$blogname = get_bloginfo( 'name', 'display' );
+
+	/**
+	 * Are we going to fake 'title-tag' theme functionality?
+	 *
+	 * @link https://buddypress.trac.wordpress.org/ticket/6107
+	 * @see wp_title()
+	 */
+	$title_tag_compatibility = (bool) ( ! empty( $_wp_theme_features['title-tag'] ) || strstr( $title, $blogname ) );
+
+	// Append the site title to title parts if theme supports title tag
+	if ( true === $title_tag_compatibility ) {
+		$title_parts[] = $blogname;
+
+		if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
+			$title_parts[] = sprintf( __( 'Page %s', 'buddypress' ), max( $paged, $page ) );
+		}
+	}
+
+	// Pad the separator with 1 space on each side
+	$prefix = str_pad( $sep, strlen( $sep ) + 2, ' ', STR_PAD_BOTH );
+
+	// Join the parts together
+	$new_title = join( $prefix, array_filter( $title_parts ) );
+
+	// Append the prefix for pre `title-tag` compatibility
+	if ( false === $title_tag_compatibility ) {
+		$new_title = $new_title . $prefix;
+	}
+
+	/**
+	 * Filters the page title for BuddyPress pages.
+	 *
+	 * @since  BuddyPress (1.5.0)
+	 *
+	 * @param  string $new_title   The BuddyPress page title.
+	 * @param  string $title       The original WordPress page title.
+	 * @param  string $sep         The title parts separator.
+	 * @param  string $seplocation Location of the separator (left or right).
+	 */
+	return apply_filters( 'bp_modify_page_title', $new_title, $title, $sep, $seplocation );
 }
-add_filter( 'wp_title', 'bp_modify_page_title', 10, 3 );
+add_filter( 'wp_title', 'bp_modify_page_title', 20, 3 );
 add_filter( 'bp_modify_page_title', 'wptexturize'     );
 add_filter( 'bp_modify_page_title', 'convert_chars'   );
 add_filter( 'bp_modify_page_title', 'esc_html'        );
+
+/**
+ * Strip span tags out of title part strings.
+ *
+ * This is a temporary function for compatibility with WordPress versions
+ * less than 4.0, and should be removed at a later date.
+ *
+ * @param  string $title_part
+ * @return string
+ */
+function _bp_strip_spans_from_title( $title_part = '' ) {
+	$title = $title_part;
+	$span = strpos( $title, '<span' );
+	if ( false !== $span ) {
+		$title = substr( $title, 0, $span - 1 );
+	}
+	return $title;
+}
 
 /**
  * Add BuddyPress-specific items to the wp_nav_menu.

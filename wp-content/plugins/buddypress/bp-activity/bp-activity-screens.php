@@ -121,9 +121,9 @@ function bp_activity_screen_friends() {
  * @uses bp_is_active()
  * @uses bp_update_is_item_admin()
  * @uses bp_current_user_can()
- * @uses do_action() To call the 'bp_activity_screen_groups' hook
+ * @uses do_action() To call the 'bp_activity_screen_groups' hook.
  * @uses bp_core_load_template()
- * @uses apply_filters() To call the 'bp_activity_template_groups_activity' hook
+ * @uses apply_filters() To call the 'bp_activity_template_groups_activity' hook.
  */
 function bp_activity_screen_groups() {
 	if ( !bp_is_active( 'groups' ) )
@@ -155,9 +155,9 @@ function bp_activity_screen_groups() {
  *
  * @uses bp_update_is_item_admin()
  * @uses bp_current_user_can()
- * @uses do_action() To call the 'bp_activity_screen_favorites' hook
+ * @uses do_action() To call the 'bp_activity_screen_favorites' hook.
  * @uses bp_core_load_template()
- * @uses apply_filters() To call the 'bp_activity_template_favorite_activity' hook
+ * @uses apply_filters() To call the 'bp_activity_template_favorite_activity' hook.
  */
 function bp_activity_screen_favorites() {
 	bp_update_is_item_admin( bp_current_user_can( 'bp_moderate' ), 'activity' );
@@ -186,9 +186,9 @@ function bp_activity_screen_favorites() {
  *
  * @uses bp_update_is_item_admin()
  * @uses bp_current_user_can()
- * @uses do_action() To call the 'bp_activity_screen_mentions' hook
+ * @uses do_action() To call the 'bp_activity_screen_mentions' hook.
  * @uses bp_core_load_template()
- * @uses apply_filters() To call the 'bp_activity_template_mention_activity' hook
+ * @uses apply_filters() To call the 'bp_activity_template_mention_activity' hook.
  */
 function bp_activity_screen_mentions() {
 	bp_update_is_item_admin( bp_current_user_can( 'bp_moderate' ), 'activity' );
@@ -230,7 +230,6 @@ add_action( 'bp_activity_screen_mentions', 'bp_activity_reset_my_new_mentions' )
  *
  * @since BuddyPress (1.2.0)
  *
- * @global object $bp BuddyPress global settings
  * @uses bp_is_activity_component()
  * @uses bp_activity_get_specific()
  * @uses bp_current_action()
@@ -239,8 +238,8 @@ add_action( 'bp_activity_screen_mentions', 'bp_activity_reset_my_new_mentions' )
  * @uses bp_is_active()
  * @uses groups_get_group()
  * @uses groups_is_user_member()
- * @uses apply_filters_ref_array() To call the 'bp_activity_permalink_access' hook
- * @uses do_action() To call the 'bp_activity_screen_single_activity_permalink' hook
+ * @uses apply_filters_ref_array() To call the 'bp_activity_permalink_access' hook.
+ * @uses do_action() To call the 'bp_activity_screen_single_activity_permalink' hook.
  * @uses bp_core_add_message()
  * @uses is_user_logged_in()
  * @uses bp_core_redirect()
@@ -249,10 +248,10 @@ add_action( 'bp_activity_screen_mentions', 'bp_activity_reset_my_new_mentions' )
  * @uses bp_get_root_domain()
  * @uses bp_get_activity_root_slug()
  * @uses bp_core_load_template()
- * @uses apply_filters() To call the 'bp_activity_template_profile_activity_permalink' hook
+ * @uses apply_filters() To call the 'bp_activity_template_profile_activity_permalink' hook.
  */
 function bp_activity_screen_single_activity_permalink() {
-	global $bp;
+	$bp = buddypress();
 
 	// No displayed user or not viewing activity component
 	if ( !bp_is_activity_component() )
@@ -314,8 +313,8 @@ function bp_activity_screen_single_activity_permalink() {
 	 *
 	 * @since BuddyPress (1.2.0)
 	 *
-	 * @param BP_Activity_Activity $activity Object representing the current activity item being displayed.
-	 * @param bool $has_access Whether or not the current user has access to view activity.
+	 * @param BP_Activity_Activity $activity   Object representing the current activity item being displayed.
+	 * @param bool                 $has_access Whether or not the current user has access to view activity.
 	 */
 	do_action( 'bp_activity_screen_single_activity_permalink', $activity, $has_access );
 
@@ -476,6 +475,7 @@ class BP_Activity_Theme_Compat {
 	 * @since BuddyPress (1.8.0)
 	 *
 	 * @param string $templates The templates from bp_get_theme_compat_templates().
+	 *
 	 * @return array $templates Array of custom templates to look for.
 	 */
 	public function directory_template_hierarchy( $templates ) {
@@ -536,6 +536,7 @@ class BP_Activity_Theme_Compat {
 	 * @since BuddyPress (1.8.0)
 	 *
 	 * @param string $templates The templates from bp_get_theme_compat_templates().
+	 *
 	 * @return array $templates Array of custom templates to look for.
 	 */
 	public function single_template_hierarchy( $templates ) {
