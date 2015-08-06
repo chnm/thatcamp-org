@@ -117,6 +117,7 @@ class SyndicatedPost {
 		if (is_null($this->item)) :
 			$this->post = NULL;
 		else :
+
 			# Note that nothing is run through esc_sql() here.
 			# That's deliberate. The escaping is done at the point
 			# of insertion, not here, to avoid double-escaping and
@@ -127,6 +128,7 @@ class SyndicatedPost {
 				$this->entry->get_title(), $this
 			);
 
+
 			$this->named['author'] = apply_filters(
 				'syndicated_item_author',
 				$this->author(), $this
@@ -134,7 +136,7 @@ class SyndicatedPost {
 			// This just gives us an alphanumeric name for the author.
 			// We look up (or create) the numeric ID for the author
 			// in SyndicatedPost::add().
-			
+
 			$this->post['post_content'] = apply_filters(
 				'syndicated_item_content',
 				$this->content(), $this
@@ -348,6 +350,7 @@ class SyndicatedPost {
 
 			$this->post['post_type'] = apply_filters('syndicated_post_type', $this->link->setting('syndicated post type', 'syndicated_post_type', 'post'), $this);
 		endif;
+		
 	} /* SyndicatedPost::SyndicatedPost() */
 
 	#####################################
@@ -589,6 +592,7 @@ class SyndicatedPost {
 	} /* SyndicatedPost::title () */
 	
 	function content ($params = array()) {
+
 		$params = wp_parse_args($params, array(
 		"full only" => false, 
 		));
@@ -635,6 +639,7 @@ class SyndicatedPost {
 			endif;
 			
 		endif;
+		
 		return $content;
 	} /* SyndicatedPost::content() */
 
@@ -1213,6 +1218,7 @@ class SyndicatedPost {
 	function resolve_single_relative_uri ($refs) {
 		$tag = FeedWordPressHTML::attributeMatch($refs);
 		$url = SimplePie_Misc::absolutize_url($tag['value'], $this->_base);
+
 		return $tag['prefix'] . $url . $tag['suffix'];
 	} /* function SyndicatedPost::resolve_single_relative_uri() */
 
@@ -1233,11 +1239,17 @@ class SyndicatedPost {
 			foreach ($obj->uri_attrs as $pair) :
 				list($tag, $attr) = $pair;
 				$pattern = FeedWordPressHTML::attributeRegex($tag, $attr);
+
+				// FIXME: Encountered issue while testing an extremely long (= 88827 characters) item
+				// Relying on preg_replace_callback() here can cause a PHP seg fault on my development
+				// server. preg_match_all() causes a similar problem. Apparently this is a PCRE issue
+				// Cf. discussion of similar issue <https://bugs.php.net/bug.php?id=65009>
 				$content = preg_replace_callback (
 					$pattern,
 					array($obj, 'resolve_single_relative_uri'),
 					$content
 				);
+
 			endforeach;
 		endif;
 

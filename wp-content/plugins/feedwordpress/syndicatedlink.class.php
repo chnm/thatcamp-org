@@ -130,9 +130,9 @@ class SyndicatedLink {
 
 		$url = $this->uri(array('add_params' => true, 'fetch' => true));
 		FeedWordPress::diagnostic('updated_feeds', 'Polling feed ['.$url.']');
-
+	
 		$this->fetch();
-
+	
 		$new_count = NULL;
 
 		$resume = ('yes'==$this->setting('update/unfinished'));
@@ -178,6 +178,7 @@ class SyndicatedLink {
 			$this->save_settings(/*reload=*/ true);
 
 		elseif (is_object($this->simplepie)) :
+
 			// Success; clear out error setting, if any.
 			$this->update_setting('update/error', NULL);
 
@@ -285,7 +286,9 @@ class SyndicatedLink {
 							break;
 						endif;
 					endif;
+
 					unset($post);
+					
 				endforeach;
 			endif;
 
@@ -720,8 +723,13 @@ class SyndicatedLink {
 		'fetch' => false,
 		));
 
+		// Initialize $qp (= array for added query parameters, if any)
+		$qp = array();
+		
 		$link_rss = (is_object($this->link) ? $this->link->link_rss : NULL); 
-
+		
+		// $link_rss stores the URI for the subscription as stored in the feed's record.
+		// $uri stores the effective URI of the request including any/all added query parameters 
 		$uri = $link_rss;
 		if (!is_null($uri) and strlen($uri) > 0 and $params['add_params']) :
 			$qp = maybe_unserialize($this->setting('query parameters', array()));
@@ -729,6 +737,7 @@ class SyndicatedLink {
 			// For high-tech HTTP feed request kung fu
 			$qp = apply_filters('syndicated_feed_parameters', $qp, $uri, $this);
 
+			// $qp is an array of key-value pairs stored as arrays of format [$key, $value]
 			$q = array();
 			if (is_array($qp) and count($qp) > 0) :
 				foreach ($qp as $pair) :

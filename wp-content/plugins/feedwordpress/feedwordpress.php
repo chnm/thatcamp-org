@@ -3,7 +3,7 @@
 Plugin Name: FeedWordPress
 Plugin URI: http://feedwordpress.radgeek.com/
 Description: simple and flexible Atom/RSS syndication for WordPress
-Version: 2014.0805
+Version: 2015.0514
 Author: Charles Johnson
 Author URI: http://radgeek.com/
 License: GPL
@@ -11,7 +11,7 @@ License: GPL
 
 /**
  * @package FeedWordPress
- * @version 2014.0805
+ * @version 2015.0514
  */
 
 # This uses code derived from:
@@ -32,7 +32,7 @@ License: GPL
 
 # -- Don't change these unless you know what you're doing...
 
-define ('FEEDWORDPRESS_VERSION', '2014.0805');
+define ('FEEDWORDPRESS_VERSION', '2015.0514');
 define ('FEEDWORDPRESS_AUTHOR_CONTACT', 'http://radgeek.com/contact');
 
 if (!defined('FEEDWORDPRESS_BLEG')) :
@@ -1284,7 +1284,7 @@ class FeedWordPress {
 					$sendback .= ( ! empty( $post_type ) ) ? '?post_type=' . $post_type : '';
 				endif;
 			else :
-				$sendback = remove_query_arg( array('trashed', 'untrashed', 'deleted', 'zapped', 'unzapped', 'ids'), $sendback );
+				$sendback = esc_url( remove_query_arg( array('trashed', 'untrashed', 'deleted', 'zapped', 'unzapped', 'ids'), $sendback ) );
 			endif;
 
 			// Make sure we have a post corresponding to this ID.
@@ -1324,7 +1324,7 @@ class FeedWordPress {
 				add_post_meta($post_id, '_feedwordpress_zapped_blank_me', 1, /*unique=*/ true);
 				add_post_meta($post_id, '_feedwordpress_zapped_blank_old_status', $old_status, /*unique=*/ true);
 				
-				wp_redirect( add_query_arg( array('zapped' => 1, 'ids' => $post_id), $sendback ) );
+				wp_redirect( esc_url_raw( add_query_arg( array('zapped' => 1, 'ids' => $post_id), $sendback ) ) );
 
 			else :
 				$old_status = get_post_meta($post_id, '_feedwordpress_zapped_blank_old_status', /*single=*/ true);
@@ -1336,7 +1336,7 @@ class FeedWordPress {
 				delete_post_meta($post_id, '_feedwordpress_zapped_blank_me');
 				delete_post_meta($post_id, '_feedwordpress_zapped_blank_old_status');
 
-				wp_redirect( add_query_arg( array('unzapped' => 1, 'ids' => $post_id), $sendback ) );
+				wp_redirect( esc_url_raw( add_query_arg( array('unzapped' => 1, 'ids' => $post_id), $sendback ) ) );
 
 			endif;
 				
@@ -1642,7 +1642,7 @@ class FeedWordPress {
 	} /* FeedWordPress::redirect_retired () */
 
 	public function row_actions ($actions, $post) {
-		if (is_syndicated($post->ID)) :
+		if (is_syndicated($post->ID) && current_user_can('edit_post', $post->ID)) :
 			$link = get_delete_post_link($post->ID, '', true);
 			$eraseLink = MyPHP::url($link, array("fwp_post_delete" => "nuke"));
 
