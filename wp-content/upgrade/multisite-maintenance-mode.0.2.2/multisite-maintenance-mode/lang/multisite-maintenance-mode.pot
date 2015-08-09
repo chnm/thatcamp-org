@@ -1,0 +1,47 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: multiste-maintenance-mode 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-01 17:38-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: multisite-maintenance-mode.php:95 multisite-maintenance-mode.php:96
+#: views/admin.php:2
+msgid "Multisite Maintenance Mode"
+msgstr ""
+
+#: multisite-maintenance-mode.php:114 multisite-maintenance-mode.php:184
+msgid "This network is in maintenance mode."
+msgstr ""
+
+#: views/admin.php:6
+msgid "Toggle Maintenance Mode"
+msgstr ""
+
+#: views/admin.php:9
+msgid "Set maintenance mode status"
+msgstr ""
+
+#: views/admin.php:11
+msgid "Turn on maintenance mode"
+msgstr ""
+
+#: views/admin.php:15
+msgid "Admin bar message"
+msgstr ""
+
+#: views/admin.php:20
+msgid "URL to your announcement page"
+msgstr ""
