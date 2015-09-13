@@ -158,6 +158,22 @@ class THATCamp_Favorites {
 	 * Returns false if none is found
 	 */
 	public function get_activity_id_for_post( $post_id, $blog_id ) {
+		global $wpdb, $bp;
+
+		$activity_id = $wpdb->get_var( $wpdb->prepare( 
+			"SELECT id FROM {$bp->activity->table_name}
+			 WHERE primary_id = %d
+			 AND secondary_id = %d
+			 AND action = 'new_blog_post'",
+			$blog_id,
+			$post_id
+		) );
+
+		if ( ! $activity_id ) {
+			$activity_id = false;
+		}
+		
+		/*
 		// 'component' is not provided, to support groupblog futzing
 		$activities = bp_activity_get( array(
 			'filter' => array(
@@ -173,6 +189,7 @@ class THATCamp_Favorites {
 		if ( ! empty( $activities ) ) {
 			$activity_id = $activities['activities'][0]->id;
 		}
+		*/
 
 		return $activity_id;
 	}
