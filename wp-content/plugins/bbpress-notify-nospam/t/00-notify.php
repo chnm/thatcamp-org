@@ -87,12 +87,23 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		remove_all_filters( 'bbpnns_skip_topic_notification' );
 	}
 	
+	public function test_available_tags()
+	{
+		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+		
+		$this->assertTrue( (bool) has_filter( 'bbpnns_available_tags', array( $bbpnns, 'get_available_tags' ) ), 'Filter found' );
+		
+		$tags = $bbpnns->get_available_tags( null );
+		
+		$this->assertNotEmpty( $tags, 'Available tags are not empty' );
+	}
+	
 	
 	public function test_topic_recipient_filter()
 	{
 		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
 		
-		$this->assertTrue( (bool ) has_filter( 'bbpress_notify_recipients_hidden_forum', array( &$bbpnns, 'munge_newtopic_recipients' )), 
+		$this->assertTrue( (bool ) has_filter( 'bbpress_notify_recipients_hidden_forum', array( $bbpnns, 'munge_newtopic_recipients' )), 
 				'bbpress_notify_recipients_hidden_forum filter exists' );
 		
 		$expected = array( 'foo', 'bar' );
@@ -173,6 +184,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		// Non-spam, non-empty recipents
 		update_option( 'bbpress_notify_newreply_recipients', array( 'administrator', 'subscriber' ));
 		$arry = $bbpnns->notify_new_reply( $this->reply_id, $this->topic_id, $this->forum_id );
+		
 		$this->assertTrue( is_array( $arry ), 'Good notify returns array in test mode' );
 		
 		list( $recipients, $body ) = $arry;
@@ -192,22 +204,44 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	
 	public function test_send_notification()
 	{
-		$expected_recipients = array( 'administrator', 'subscriber' );
+		$roles = array( 'administrator' );
 		
 		// Non-hidden forum
-		update_option( 'bbpress_notify_newtopic_recipients', $recipients );
+		update_option( 'bbpress_notify_newtopic_recipients', $roles );
 		
 		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
-		list( $got_recipients, $body ) = $bbpnns->send_notification( $expected_recipients, 'test subject', 'test_body' );
-		$this->assertEquals( $expected_recipients, $got_recipients, 'Test mode got expected recipients' );
+		$users = get_users( array( 'role' => join(', ', $roles) ) );
+
+		$recipients = array();
+		foreach ( $users as $u )
+		{
+			$recipients[ $u->ID ] = $u;
+		}
+		
+		list( $got_recipients, $body ) = $bbpnns->send_notification( $recipients, 'test subject', 'test_body' );
+		$this->assertEquals( $recipients, $got_recipients, 'Test mode got expected recipients' );
 		
 		// Hidden forum returns admins only
 		bbp_hide_forum( $this->forum_id );
-		$recipients = apply_filters( 'bbpress_notify_recipients_hidden_forum', $expected_recipients, $this->forum_id );
+		
+		$roles = array( 'administrator', 'subscriber' );
+		$roles = (array) apply_filters( 'bbpress_notify_recipients_hidden_forum', $roles, $this->forum_id );
+	
+		$users = get_users( array( 'role' => join(', ', $roles) ) );
+		
+		$recipients = array();
+		foreach ( $users as $u )
+		{
+			$recipients[ $u->ID ] = $u;
+		}
+		
 		list( $got_recipients, $body ) = $bbpnns->send_notification( $recipients, 'test subject', 'test_body' );
 		
 		$this->assertTrue( is_array( $got_recipients ), 'Got an array back');
-		$this->assertTrue( in_array( 'administrator', $got_recipients ), 'Filtered send_notification returns administrator' );
+		
+		$result = array_intersect_key( $recipients, $got_recipients );
+		
+		$this->assertTrue( ! empty ( $result ), 'Filtered send_notification returns users' );
 	}
 	
 	public function test_notify_on_save()
@@ -232,7 +266,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 							'post_author'  => $author_id,
 							'post_type'    => 'topic',
 					 );
-	
+
 			$topic_id = wp_insert_post( $post );
 	
 			$post = get_post( $topic_id );
@@ -252,7 +286,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 		foreach ( array( 'bbpnns_topic_url', 'bbpnns_reply_url', 'bbpnns_topic_reply' ) as $filter )
 		{
-			add_filter( $filter, array( &$this, '_url_filter' ), 10, 3 );
+			add_filter( $filter, array( $this, '_url_filter' ), 10, 3 );
 			
 			$out = apply_filters( $filter, $url, $post_id, $title );
 			$this->assertEquals( $out, 'Bar ' . $post_id . ' ' . $title, $filter . ' Filter works' );

@@ -1,8 +1,8 @@
 === amr shortcode any widget ===
 Contributors: anmari
 Tags: shortcode, widget, page, templates, page template, widget_area, sidebar
-Tested up to: 4.2
-Version: 2.6
+Tested up to: 4.3
+Version: 2.7
 Stable tag: trunk
 
 == Description ==
@@ -33,7 +33,7 @@ PLEASE get your widgets working in a sidebar BEFORE activating this plugin, and 
 *  [do_widget id=widgetid] .     eg: [do_widget id=tag-cloud-3]
  
 *  [do_widget_area]  (will use the  "widgets in shortcodes" widget area / sidebar
-*  [do_widget_area sidebarname]  for another sidebar or widget area - eg: to maximise likelihood of getting your theme's widget css to apply.  
+*  [do_widget_area sidebarname] or [do_widget_area widget_area=sidebarname] for another sidebar or widget area - eg: to maximise likelihood of getting your theme's widget css to apply.  
 
 7. If the plugin cannot work out what you want and you are logged in as an administrator, it will show a debug prompt to you (the logged in admin) only.   Sometimes the widget name that wordpress calls it internally is not the same as what you see on the screen and you will need the 'debug' to find the id.
 *  Click on the link 'Try debug'.  It will produce a bunch of info. 
@@ -190,7 +190,12 @@ More info on background: http://wordpress.org/support/topic/your-theme-your-side
 
 
 == Changelog ==
-= Version 2.5 =
+= Version 2.6 =
+*  Tested on 4.3
+*  Allow one to skip using widget_area parameter [do_widget_area widget_area=sidebar-3] and just say [do_widget_area sidebar-3]
+
+
+= Version 2.6 =
 *  Tested on 4.2
 *  Removed from admin settings area the use of add_query_arg (unnecessary)
 *  Added esc_url to widget id 'debug' oage just in case (it is only accessed by logged in admin, but lets be safe and keep everyone happy if the see the add_query_arg and remove_query_arg

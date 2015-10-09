@@ -1,15 +1,6 @@
 <?php
 $known_headers = array("Last-Modified", "Expires", "Content-Type", "Content-type", "X-Pingback", "ETag", "Cache-Control", "Pragma");
 
-if (!class_exists('CacheMeta')) {
-	class CacheMeta {
-		var $dynamic = false;
-		var $headers = array();
-		var $uri = '';
-		var $post = 0;
-	}
-}
-
 $WPSC_HTTP_HOST = htmlentities( $_SERVER[ 'HTTP_HOST' ] );
 
 // We want to be able to identify each blog in a WordPress MU install
@@ -21,7 +12,7 @@ if ( defined( 'VHOST' ) || ( defined( 'WP_ALLOW_MULTISITE' ) && constant( 'WP_AL
 	} else {
 		if ( isset( $base ) == false )
 			$base = '';
-		$request_uri = preg_replace('/[ <>\'\"\r\n\t\(\)]/', '', str_replace( '..', '', $_SERVER['REQUEST_URI'] ) );
+		$request_uri = str_replace( '..', '', preg_replace('/[ <>\'\"\r\n\t\(\)]/', '', $_SERVER['REQUEST_URI'] ) );
 		if( strpos( $request_uri, '/', 1 ) ) {
 			if( $base == '/' ) {
 				$blogcacheid = substr( $request_uri, 1, strpos( $request_uri, '/', 1 ) - 1 );

@@ -4,8 +4,8 @@ Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more, plugin oven
 Requires at least: 3.9
-Tested up to: 4.2.2
-Stable tag: 1.6.12
+Tested up to: 4.3.1
+Stable tag: 1.6.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,19 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.6.15 =
+* renamed language files to xx_XX.po and xx_XX.mo
+* recreated the .pot file
+
+= 1.6.14 =
+* hash-bang (#!) that are used in urls will not be processed as url anchors
+* now checks if a url anchor is actually an existing element before trying to process it 
+* changed language domain to jquery-collapse-o-matic to work with WordPress’ new translation process
+* updated tested up to tag to 4.3.1
+
+= 1.6.13 =
+* added map resize support for google maps builder
 
 = 1.6.12 =
 * removed css that changed the display to block on focus
@@ -298,5 +311,4 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
-
-* removed css that changed the display to block on focus causing span triggers to jump down to the next line.
+Internationalisation (i18n) improvements for better language localisation integration. Wow, that’s a mouthful!

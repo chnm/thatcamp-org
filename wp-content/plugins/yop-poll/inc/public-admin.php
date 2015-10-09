@@ -159,15 +159,15 @@
 
             $args = array(
                 'base'      => remove_query_arg( 'yop_poll_page', $_SERVER['REQUEST_URI'] ) . '%_%',
-                'format'    => '&&yop_poll_page=%#%',
+                'format'    => '&yop_poll_page=%#%',
                 'total'     => $total_per_page,
                 'current'   => max( 1, $yop_poll_page ),
                 'prev_next' => true,
                 'prev_text' => __( '&laquo; Previous', 'yop_poll' ),
                 'next_text' => __( 'Next &raquo;', 'yop_poll' )
             );
-            $temp = "";
 
+            $temp = "<style> .yop-poll-container{display:block !important;}.yop-poll-footer{display: inline-block;margin: auto;text-align: center;width: 100%;}</style>";
             if($ok==1){
                 for( $i = ( $args['current'] - 1 ) * $per_page; $i <= ( $args['current'] - 1 ) * $per_page + $per_page - 1; $i ++ ) {
                   if(isset($archives[$i]['ID']))

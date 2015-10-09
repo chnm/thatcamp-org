@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Collapse-O-Matic
-Text Domain: colomat
+Text Domain: jquery-collapse-o-matic
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.6.12
+Version: 1.6.15
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -30,7 +30,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.6.12';
+	var $version = '1.6.15';
 
 	/**
 	 * Used as prefix for options entry
@@ -82,7 +82,7 @@ class WP_Collapse_O_Matic {
 		$this->_set_options();
 
 		// load text domain for translations
-		load_plugin_textdomain( 'colomat', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'jquery-collapse-o-matic', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 		//load the script and style if viewing the front-end
 		add_action('wp_enqueue_scripts', array( $this, 'collapsTronicInit' ) );
@@ -130,7 +130,7 @@ class WP_Collapse_O_Matic {
 		if($this->options['script_location'] == 'footer' ){
 			$load_in_footer = true;
 		}
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.16', $load_in_footer);
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.18', $load_in_footer);
 		if( empty($this->options['script_check']) ){
 			wp_enqueue_script('collapseomatic-js');
 		}
@@ -397,7 +397,7 @@ class WP_Collapse_O_Matic {
 	// Add link to options page from plugin list
 	function plugin_actions($links) {
 		$new_links = array();
-		$new_links[] = '<a href="options-general.php?page=collapse-o-matic-options">' . __('Settings', 'colomat') . '</a>';
+		$new_links[] = '<a href="options-general.php?page=collapse-o-matic-options">' . __('Settings', 'jquery-collapse-o-matic') . '</a>';
 		return array_merge($new_links, $links);
 	}
 
@@ -406,22 +406,22 @@ class WP_Collapse_O_Matic {
 	 */
 	function options_page() {
 		$like_it_arr = array(
-			__('really tied the room together', 'colomat'),
-			__('made you feel all warm and fuzzy on the inside', 'colomat'),
-			__('restored your faith in humanity... even if only for a fleeting second', 'colomat'),
-			__('rocked your world', 'provided a positive vision of future living', 'colomat'),
-			__('inspired you to commit a random act of kindness', 'colomat'),
-			__('encouraged more regular flossing of the teeth', 'colomat'),
-			__('helped organize your life in the small ways that matter', 'colomat'),
-			__('saved your minutes--if not tens of minutes--writing your own solution', 'colomat'),
-			__('brightened your day... or darkened if if you are trying to sleep in', 'colomat'),
-			__('caused you to dance a little jig of joy and joyousness', 'colomat'),
-			__('inspired you to tweet a little @twinpictues social love', 'colomat'),
-			__('tasted great, while also being less filling', 'colomat'),
-			__('caused you to shout: "everybody spread love, give me some mo!"', 'colomat'),
-			__('helped you keep the funk alive', 'colomat'),
-			__('<a href="http://www.youtube.com/watch?v=dvQ28F5fOdU" target="_blank">soften hands while you do dishes</a>', 'colomat'),
-			__('helped that little old lady <a href="http://www.youtube.com/watch?v=Ug75diEyiA0" target="_blank">find the beef</a>', 'colomat')
+			__('really tied the room together', 'jquery-collapse-o-matic'),
+			__('made you feel all warm and fuzzy on the inside', 'jquery-collapse-o-matic'),
+			__('restored your faith in humanity... even if only for a fleeting second', 'jquery-collapse-o-matic'),
+			__('rocked your world', 'provided a positive vision of future living', 'jquery-collapse-o-matic'),
+			__('inspired you to commit a random act of kindness', 'jquery-collapse-o-matic'),
+			__('encouraged more regular flossing of the teeth', 'jquery-collapse-o-matic'),
+			__('helped organize your life in the small ways that matter', 'jquery-collapse-o-matic'),
+			__('saved your minutes--if not tens of minutes--writing your own solution', 'jquery-collapse-o-matic'),
+			__('brightened your day... or darkened if if you are trying to sleep in', 'jquery-collapse-o-matic'),
+			__('caused you to dance a little jig of joy and joyousness', 'jquery-collapse-o-matic'),
+			__('inspired you to tweet a little @twinpictues social love', 'jquery-collapse-o-matic'),
+			__('tasted great, while also being less filling', 'jquery-collapse-o-matic'),
+			__('caused you to shout: "everybody spread love, give me some mo!"', 'jquery-collapse-o-matic'),
+			__('helped you keep the funk alive', 'jquery-collapse-o-matic'),
+			__('<a href="http://www.youtube.com/watch?v=dvQ28F5fOdU" target="_blank">soften hands while you do dishes</a>', 'jquery-collapse-o-matic'),
+			__('helped that little old lady <a href="http://www.youtube.com/watch?v=Ug75diEyiA0" target="_blank">find the beef</a>', 'jquery-collapse-o-matic')
 		);
 		$rand_key = array_rand($like_it_arr);
 		$like_it = $like_it_arr[$rand_key];
@@ -434,8 +434,8 @@ class WP_Collapse_O_Matic {
 		<div class="postbox-container metabox-holder meta-box-sortables" style="width: 69%">
 			<div style="margin:0 5px;">
 				<div class="postbox">
-					<div class="handlediv" title="<?php _e( 'Click to toggle', 'colomat' ) ?>"><br/></div>
-					<h3 class="hndle"><?php _e( 'Default Collapse-O-Matic Settings', 'colomat' ) ?></h3>
+					<div class="handlediv" title="<?php _e( 'Click to toggle', 'jquery-collapse-o-matic' ) ?>"><br/></div>
+					<h3 class="hndle"><?php _e( 'Default Collapse-O-Matic Settings', 'jquery-collapse-o-matic' ) ?></h3>
 					<div class="inside">
 						<form method="post" action="options.php">
 							<?php
@@ -445,16 +445,16 @@ class WP_Collapse_O_Matic {
 							<fieldset class="options">
 								<table class="form-table">
 								<tr>
-									<th><?php _e( 'Style', 'colomat' ) ?>:</th>
+									<th><?php _e( 'Style', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><select id="<?php echo $this->options_name ?>[style]" name="<?php echo $this->options_name ?>[style]">
 										<?php
 											if(empty($options['style'])){
 												$options['style'] = 'light';
 											}
 											$st_array = array(
-												__('Light', 'colomat') => 'light',
-												__('Dark', 'colomat') => 'dark',
-												__('None', 'colomat') => 'none'
+												__('Light', 'jquery-collapse-o-matic') => 'light',
+												__('Dark', 'jquery-collapse-o-matic') => 'dark',
+												__('None', 'jquery-collapse-o-matic') => 'none'
 											);
 											foreach( $st_array as $key => $value){
 												$selected = '';
@@ -465,51 +465,51 @@ class WP_Collapse_O_Matic {
 											}
 										?>
 										</select>
-										<br /><span class="description"><?php _e('Select Light for sites with lighter backgrounds. Select Dark for sites with darker backgrounds. Select None to handle styling yourself.', 'colomat'); ?></span></label>
+										<br /><span class="description"><?php _e('Select Light for sites with lighter backgrounds. Select Dark for sites with darker backgrounds. Select None to handle styling yourself.', 'jquery-collapse-o-matic'); ?></span></label>
 									</td>
 								</tr>
 
 								<?php if( is_plugin_active( 'collapse-commander/collapse-commander.php' ) ) : ?>
 								<tr>
-									<th><?php _e( 'CID Attribute', 'colomat' ) ?>:</th>
+									<th><?php _e( 'CID Attribute', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[cid]" name="<?php echo $this->options_name ?>[cid]" value="<?php echo $options['cid']; ?>" />
-										<br /><span class="description"><?php printf( __('Default %sCollapse Commander%s ID', 'colomat'), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-commander/" target="_blank">', '</a>'); ?></span></label>
+										<br /><span class="description"><?php printf( __('Default %sCollapse Commander%s ID', 'jquery-collapse-o-matic'), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-commander/" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
 								<?php endif; ?>
 
 								<tr>
-									<th><?php _e( 'Tag Attribute', 'colomat' ) ?>:</th>
+									<th><?php _e( 'Tag Attribute', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[tag]" name="<?php echo $this->options_name ?>[tag]" value="<?php echo $options['tag']; ?>" />
-										<br /><span class="description"><?php printf(__('HTML tag use to wrap the trigger text. See %sTag Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#tag" target="_blank">', '</a>'); ?></span></label>
+										<br /><span class="description"><?php printf(__('HTML tag use to wrap the trigger text. See %sTag Attribute%s in the documentation for more info.', 'jquery-collapse-o-matic'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#tag" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
 
 								<tr>
-									<th><?php _e( 'Trigclass Attribute', 'colomat' ) ?>:</th>
+									<th><?php _e( 'Trigclass Attribute', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[trigclass]" name="<?php echo $this->options_name ?>[trigclass]" value="<?php echo $options['trigclass']; ?>" />
-										<br /><span class="description"><?php printf(__('Default class assigned to the trigger element. See %sTrigclass Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#trigclass" target="_blank">', '</a>'); ?></span></label>
+										<br /><span class="description"><?php printf(__('Default class assigned to the trigger element. See %sTrigclass Attribute%s in the documentation for more info.', 'jquery-collapse-o-matic'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#trigclass" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
 
 								<tr>
-									<th><?php _e( 'Tabindex Attribute', 'colomat' ) ?>:</th>
+									<th><?php _e( 'Tabindex Attribute', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[tabindex]" name="<?php echo $this->options_name ?>[tabindex]" value="<?php echo $options['tabindex']; ?>" />
-										<br /><span class="description"><?php printf(__('Default tabindex value to be assigned to the trigger element. See %sTabindex Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#tabindex" target="_blank">', '</a>'); ?></span></label>
+										<br /><span class="description"><?php printf(__('Default tabindex value to be assigned to the trigger element. See %sTabindex Attribute%s in the documentation for more info.', 'jquery-collapse-o-matic'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#tabindex" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
 
 								<tr>
-									<th><?php _e( 'Targtag Attribute', 'colomat' ) ?>:</th>
+									<th><?php _e( 'Targtag Attribute', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[targtag]" name="<?php echo $this->options_name ?>[targtag]" value="<?php echo $options['targtag']; ?>" />
-										<br /><span class="description"><?php printf(__('HTML tag use for the target element. See %sTargtag Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#targtag" target="_blank">', '</a>'); ?></span></label>
+										<br /><span class="description"><?php printf(__('HTML tag use for the target element. See %sTargtag Attribute%s in the documentation for more info.', 'jquery-collapse-o-matic'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#targtag" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
 
 								<tr>
-									<th><?php _e( 'Targclass Attribute', 'colomat' ) ?>:</th>
+									<th><?php _e( 'Targclass Attribute', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[targclass]" name="<?php echo $this->options_name ?>[targclass]" value="<?php echo $options['targclass']; ?>" />
-										<br /><span class="description"><?php printf(__('Default class assigned to the target element. See %sTargclass Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#targclass" target="_blank">', '</a>'); ?></span></label>
+										<br /><span class="description"><?php printf(__('Default class assigned to the target element. See %sTargclass Attribute%s in the documentation for more info.', 'jquery-collapse-o-matic'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#targclass" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
 
@@ -519,22 +519,22 @@ class WP_Collapse_O_Matic {
 												$options['duration'] = 'fast';
 										}
 									?>
-									<th><?php _e( 'Collapse/Expand Duration', 'colomat' ) ?>:</th>
+									<th><?php _e( 'Collapse/Expand Duration', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[duration]" name="<?php echo $this->options_name ?>[duration]" value="<?php echo $options['duration']; ?>" />
-										<br /><span class="description"><?php printf(__('A string or number determining how long the animation will run. See %sDuration%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#duration" target="_blank">', '</a>'); ?></span></label>
+										<br /><span class="description"><?php printf(__('A string or number determining how long the animation will run. See %sDuration%s in the documentation for more info.', 'jquery-collapse-o-matic'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#duration" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
 
 								<tr>
-									<th><?php _e( 'Animation Effect', 'colomat' ) ?>:</th>
+									<th><?php _e( 'Animation Effect', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><select id="<?php echo $this->options_name ?>[slideEffect]" name="<?php echo $this->options_name ?>[slideEffect]">
 										<?php
 											if(empty($options['slideEffect'])){
 												$options['slideEffect'] = 'slideFade';
 											}
 											$se_array = array(
-												__('Slide Only', 'colomat') => 'slideToggle',
-												__('Slide & Fade', 'colomat') => 'slideFade'
+												__('Slide Only', 'jquery-collapse-o-matic') => 'slideToggle',
+												__('Slide & Fade', 'jquery-collapse-o-matic') => 'slideFade'
 											);
 											foreach( $se_array as $key => $value){
 												$selected = '';
@@ -545,41 +545,41 @@ class WP_Collapse_O_Matic {
 											}
 										?>
 										</select>
-										<br /><span class="description"><?php printf(__('Animation effect to use while collapsing and expanding. See %sAnimation Effect%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#animation-effect" target="_blank">', '</a>'); ?></span></label>
+										<br /><span class="description"><?php printf(__('Animation effect to use while collapsing and expanding. See %sAnimation Effect%s in the documentation for more info.', 'jquery-collapse-o-matic'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#animation-effect" target="_blank">', '</a>'); ?></span></label>
 									</td>
 								</tr>
 
 								<tr>
-									<th><?php _e( 'Custom Style', 'colomat' ) ?>:</th>
+									<th><?php _e( 'Custom Style', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><textarea id="<?php echo $this->options_name ?>[custom_css]" name="<?php echo $this->options_name ?>[custom_css]" style="width: 100%; height: 150px;"><?php echo $options['custom_css']; ?></textarea>
-										<br /><span class="description"><?php _e( 'Custom CSS style for <em>ultimate flexibility</em>', 'colomat' ) ?></span></label>
+										<br /><span class="description"><?php _e( 'Custom CSS style for <em>ultimate flexibility</em>', 'jquery-collapse-o-matic' ) ?></span></label>
 									</td>
 								</tr>
 
 								<tr>
-									<th><?php _e( 'Content Filter', 'colomat' ) ?>:</th>
-									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[filter_content]" name="<?php echo $this->options_name ?>[filter_content]" value="1"  <?php echo checked( $options['filter_content'], 1 ); ?> /> <?php _e('Apply filter', 'colomat'); ?>
-										<br /><span class="description"><?php _e('Apply the_content filter to target content.', 'colomat'); ?></span></label>
+									<th><?php _e( 'Content Filter', 'jquery-collapse-o-matic' ) ?>:</th>
+									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[filter_content]" name="<?php echo $this->options_name ?>[filter_content]" value="1"  <?php echo checked( $options['filter_content'], 1 ); ?> /> <?php _e('Apply filter', 'jquery-collapse-o-matic'); ?>
+										<br /><span class="description"><?php _e('Apply the_content filter to target content.', 'jquery-collapse-o-matic'); ?></span></label>
 									</td>
 								</tr>
 
 								<tr>
-									<th><?php _e( 'Shortcode Loads Scripts', 'colomat' ) ?>:</th>
-									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[script_check]" name="<?php echo $this->options_name ?>[script_check]" value="1"  <?php echo checked( $options['script_check'], 1 ); ?> /> <?php _e('Only load scripts with shortcode.', 'colomat'); ?>
-										<br /><span class="description"><?php _e('Only load Collapse-O-Matic scripts if [expand] shortcode is used.', 'colomat'); ?></span></label>
+									<th><?php _e( 'Shortcode Loads Scripts', 'jquery-collapse-o-matic' ) ?>:</th>
+									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[script_check]" name="<?php echo $this->options_name ?>[script_check]" value="1"  <?php echo checked( $options['script_check'], 1 ); ?> /> <?php _e('Only load scripts with shortcode.', 'jquery-collapse-o-matic'); ?>
+										<br /><span class="description"><?php _e('Only load Collapse-O-Matic scripts if [expand] shortcode is used.', 'jquery-collapse-o-matic'); ?></span></label>
 									</td>
 								</tr>
 
 								<tr>
-									<th><?php _e( 'Script Load Location', 'colomat' ) ?>:</th>
+									<th><?php _e( 'Script Load Location', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><select id="<?php echo $this->options_name ?>[script_location]" name="<?php echo $this->options_name ?>[script_location]">
 										<?php
 											if(empty($options['script_location'])){
 												$options['script_location'] = 'footer';
 											}
 											$sl_array = array(
-												__('Header', 'colomat') => 'header',
-												__('Footer', 'colomat') => 'footer'
+												__('Header', 'jquery-collapse-o-matic') => 'header',
+												__('Footer', 'jquery-collapse-o-matic') => 'footer'
 											);
 											foreach( $sl_array as $key => $value){
 												$selected = '';
@@ -590,19 +590,19 @@ class WP_Collapse_O_Matic {
 											}
 										?>
 										</select>
-										<br /><span class="description"><?php _e('Where should the script be loaded, in the Header or the Footer?', 'colomat'); ?></span></label>
+										<br /><span class="description"><?php _e('Where should the script be loaded, in the Header or the Footer?', 'jquery-collapse-o-matic'); ?></span></label>
 									</td>
 								</tr>
 								<?php if( !is_plugin_active( 'collapse-commander/collapse-commander.php' ) ) : ?>
 								<tr>
-									<th><strong><?php _e( 'Take Command!', 'colomat' ) ?></strong></th>
-									<td><?php printf(__( '%sCollapse Commander%s is an add-on plugin that introduces an advanced management interface to better organize expand elements and simplify expand shortcodes.', 'colomat' ), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-commander/?utm_source=collapse-o-matic&utm_medium=plugin-settings-page&utm_content=collapse-commander&utm_campaign=collapse-o-matic-commander">', '</a>'); ?>
+									<th><strong><?php _e( 'Take Command!', 'jquery-collapse-o-matic' ) ?></strong></th>
+									<td><?php printf(__( '%sCollapse Commander%s is an add-on plugin that introduces an advanced management interface to better organize expand elements and simplify expand shortcodes.', 'jquery-collapse-o-matic' ), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-commander/?utm_source=collapse-o-matic&utm_medium=plugin-settings-page&utm_content=collapse-commander&utm_campaign=collapse-o-matic-commander">', '</a>'); ?>
 									</td>
 								</tr>
 								<?php endif; ?>
 								<tr>
-									<th><strong><?php _e( 'Level Up!', 'colomat' ) ?></strong></th>
-									<td><?php printf(__( '%sCollapse-Pro-Matic%s is our premium plugin that offers additional attributes and features for <i>ultimate</i> flexibility.', 'colomat' ), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-pro-matic/?utm_source=collapse-o-matic&utm_medium=plugin-settings-page&utm_content=collapse-pro-matic&utm_campaign=collapse-o-matic-pro">', '</a>'); ?>
+									<th><strong><?php _e( 'Level Up!', 'jquery-collapse-o-matic' ) ?></strong></th>
+									<td><?php printf(__( '%sCollapse-Pro-Matic%s is our premium plugin that offers additional attributes and features for <i>ultimate</i> flexibility.', 'jquery-collapse-o-matic' ), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-pro-matic/?utm_source=collapse-o-matic&utm_medium=plugin-settings-page&utm_content=collapse-pro-matic&utm_campaign=collapse-o-matic-pro">', '</a>'); ?>
 									</td>
 								</tr>
 								</table>
@@ -620,15 +620,15 @@ class WP_Collapse_O_Matic {
 		<div class="postbox-container side metabox-holder meta-box-sortables" style="width:29%;">
 			<div style="margin:0 5px;">
 				<div class="postbox">
-					<div class="handlediv" title="<?php _e( 'Click to toggle', 'colomat' ) ?>"><br/></div>
+					<div class="handlediv" title="<?php _e( 'Click to toggle', 'jquery-collapse-o-matic' ) ?>"><br/></div>
 					<h3 class="hndle"><?php _e( 'About' ) ?></h3>
 					<div class="inside">
 						<h4><img src="<?php echo plugins_url( 'images/collapse-o-matic-icon.png', __FILE__ ) ?>" width="16" height="16"/> Collapse-O-Matic Version <?php echo $this->version; ?></h4>
-						<p><?php _e( 'Remove clutter, save space. Display and hide additional content in a SEO friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a lovely jQuery expanding and collapsing element.', 'colomat') ?></p>
+						<p><?php _e( 'Remove clutter, save space. Display and hide additional content in a SEO friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a lovely jQuery expanding and collapsing element.', 'jquery-collapse-o-matic') ?></p>
 						<ul>
-							<li><?php printf( __( '%sDetailed documentation%s, complete with working demonstrations of all shortcode attributes, is available for your instructional enjoyment.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/" target="_blank">', '</a>'); ?></li>
-							<li><?php printf( __( '%sFree Opensource Support%s', 'colomat'), '<a href="http://wordpress.org/support/plugin/jquery-collapse-o-matic" target="_blank">', '</a>'); ?></li>
-							<li><?php printf( __('If this plugin %s, please consider %sreviewing it at WordPress.org%s to help others.', 'colomat'), $like_it, '<a href="http://wordpress.org/support/view/plugin-reviews/jquery-collapse-o-matic" target="_blank">', '</a>' ) ?></li>
+							<li><?php printf( __( '%sDetailed documentation%s, complete with working demonstrations of all shortcode attributes, is available for your instructional enjoyment.', 'jquery-collapse-o-matic'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/" target="_blank">', '</a>'); ?></li>
+							<li><?php printf( __( '%sFree Opensource Support%s', 'jquery-collapse-o-matic'), '<a href="http://wordpress.org/support/plugin/jquery-collapse-o-matic" target="_blank">', '</a>'); ?></li>
+							<li><?php printf( __('If this plugin %s, please consider %sreviewing it at WordPress.org%s to help others.', 'jquery-collapse-o-matic'), $like_it, '<a href="http://wordpress.org/support/view/plugin-reviews/jquery-collapse-o-matic" target="_blank">', '</a>' ) ?></li>
 							<li><a href="http://wordpress.org/extend/plugins/jquery-collapse-o-matic/" target="_blank">WordPress.org</a> | <a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/" target="_blank">Twinpictues Plugin Oven</a></li>
 						</ul>
 						<!--
@@ -645,7 +645,7 @@ class WP_Collapse_O_Matic {
 		<div class="postbox-container side metabox-holder" style="width:29%;">
 			<div style="margin:0 5px;">
 				<div class="postbox">
-					<h3 class="handle"><?php _e( 'Register Collapse Commander', 'colomat') ?></h3>
+					<h3 class="handle"><?php _e( 'Register Collapse Commander', 'jquery-collapse-o-matic') ?></h3>
 					<div class="inside">
                                             <p><?php printf( __('To receive plugin updates you must register your plugin. Enter your Collapse Commander licence key below. Licence keys may be viewed and manged by logging into %syour account%s.', 'colpromat'), '<a href="http://plugins.twinpictures.de/your-account/" target="_blank">', '</a>'); ?></p>
 						<form method="post" action="options.php">
@@ -696,7 +696,7 @@ class WP_Collapse_O_Matic {
 		<div class="postbox-container side metabox-holder meta-box-sortables" style="width:29%;">
 			<div style="margin:0 5px;">
 				<div class="postbox">
-					<div class="handlediv" title="<?php _e( 'Click to toggle', 'colomat' ) ?>"><br/></div>
+					<div class="handlediv" title="<?php _e( 'Click to toggle', 'jquery-collapse-o-matic' ) ?>"><br/></div>
 					<h3 class="hndle">Collapse Commander</h3>
 						<div class="inside">
 							<p>A brief and not-exactly-sober overview of <a href="http://plugins.twinpictures.de/premium-plugins/collapse-commander/?utm_source=collapse-o-matic&utm_medium=plugin-settings-page&utm_content=collapse-commander&utm_campaign=collapse-o-matic-commander">Collapse Commander</a>, a new add-on plugin for Collapse-O-Matic and Collapse-Pro-Matic that adds and advanded expand shortcode management system.</p>

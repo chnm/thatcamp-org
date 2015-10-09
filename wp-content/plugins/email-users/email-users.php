@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 /*
 Plugin Name: Email Users
-Version: 4.7.5
+Version: 4.7.9
 Plugin URI: http://wordpress.org/extend/plugins/email-users/
 Description: Allows the site editors to send an e-mail to the blog users. Credits to <a href="http://www.catalinionescu.com">Catalin Ionescu</a> who gave me (Vincent Pratt) some ideas for the plugin and has made a similar plugin. Bug reports and corrections by Cyril Crua, Pokey and Mike Walsh.  Development for enhancements and bug fixes since version 4.1 primarily by <a href="http://michaelwalsh.org">Mike Walsh</a>.
 Author: Mike Walsh & MarvinLabs
@@ -27,7 +27,7 @@ Author URI: http://www.michaelwalsh.org
 */
 
 // Version of the plugin
-define( 'MAILUSERS_CURRENT_VERSION', '4.7.5');
+define( 'MAILUSERS_CURRENT_VERSION', '4.7.9');
 
 // i18n plugin domain
 define( 'MAILUSERS_I18N_DOMAIN', 'email-users' );
@@ -1785,8 +1785,6 @@ function mailusers_dashboard_widget_function() {
     {
         if (has_filter($fkey))
         {
-            //error_log($fkey) ;
-            //error_log(print_r($wp_filter[$fkey], true)) ;
             $f = array() ;
             foreach (array_keys($wp_filter[$fkey]) as $key => $value)
                 $f= array_merge($f, array_keys($wp_filter[$fkey][$value])) ;
@@ -1843,6 +1841,31 @@ function mailusers_plugin_integration()
     endif;
 
 }
+
+/**
+ * mailusers_fix_return_path()
+ *
+ * Fix the bounce (return path) setting if specified.  The return
+ * path header isn't recognized correctly in some (most?) cases.
+ *
+ * @param $mailer mixed PHPMailer instance
+ * @see https://wordpress.org/support/topic/bounced-email-testing
+ *
+ * From the WordPress class-phpmailer.php file:
+ *
+ * @deprecated Email senders should never set a return-path header;
+ * it's the receiver's job (RFC5321 section 4.4), so this no longer does anything.
+ * @link https://tools.ietf.org/html/rfc5321#section-4.4 RFC5321 reference
+ */
+function mailusers_fix_return_path( $phpmailer ) {
+    $return_path = mailusers_get_send_bounces_to_address_override() ;
+
+    if (!empty($return_path)) {
+        $phpmailer->addReplyTo($return_path);
+    }
+}
+add_action( 'phpmailer_init', 'mailusers_fix_return_path' );
+    
 
 if (MAILUSERS_DEBUG) :
 

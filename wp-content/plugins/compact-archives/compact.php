@@ -3,7 +3,7 @@
 Plugin Name: WPBeginner's Compact Archives
 Plugin URI: http://www.wpbeginner.com
 Description: Displays a compact monthly archive instead of the default long list. Either display it as a block suitable for the body of a page or in a form compact enough for a sidebar. 
-Version: 3.0.3
+Version: 3.0.4
 Author: WPBeginner
 Author URI: http://www.wpbeginner.com
 */
@@ -177,12 +177,13 @@ add_action( 'widgets_init', 'wpb_caw_load_widget' );
  *
  */
 class WPBeginner_CAW_Widget extends WP_Widget {
-	function WPBeginner_CAW_Widget() {
+
+	function __construct() {
 		$widget_ops = array(
 			'classname'   => 'wpb_caw_widget',
 			'description' => __( 'Create a widget for Compact Archives plugin', 'wpb-caw-domain' )
 		);
-		$this->WP_Widget( 'wpb-caw-widget', __( 'Compact Archives Widget', 'wpb-caw-domain' ), $widget_ops );
+		parent::__construct( 'wpb-caw-widget', __( 'Compact Archives Widget', 'wpb-caw-domain' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {

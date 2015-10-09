@@ -106,7 +106,7 @@ jQuery(document).ready(function($) {
 			var commentFormMarkup = '<div id="jp-carousel-comment-form-container">';
 
 			if ( jetpackCarouselStrings.local_comments_commenting_as && jetpackCarouselStrings.local_comments_commenting_as.length ) {
-				// Jetpack comments not enabled, fallback to local comments
+				// Comments not enabled, fallback to local comments
 
 				if ( 1 !== Number( jetpackCarouselStrings.is_logged_in ) && 1 === Number( jetpackCarouselStrings.comment_registration ) ) {
 					commentFormMarkup += '<div id="jp-carousel-comment-form-commenting-as">' + jetpackCarouselStrings.local_comments_commenting_as + '</div>';
@@ -1425,6 +1425,10 @@ jQuery(document).ready(function($) {
 			return;
 		}
 		e.preventDefault();
+
+		// Stopping propagation in case there are parent elements
+		// with .gallery or .tiled-gallery class
+		e.stopPropagation();
 		$(this).jp_carousel('open', {start_index: $(this).find('.gallery-item, .tiled-gallery-item').index($(e.target).parents('.gallery-item, .tiled-gallery-item'))});
 	});
 

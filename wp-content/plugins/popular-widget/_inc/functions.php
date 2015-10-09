@@ -106,16 +106,16 @@
 		function load_text_domain(){
 			
 			$locale = get_locale();
-			if ( $locale  == 'en_US' || is_textdomain_loaded( 'pop-wid' ) )
+			if ( $locale  == 'en_US' || is_textdomain_loaded( 'popular-widget' ) )
 				return;
 	
-			$filedir = WP_CONTENT_DIR . '/languages/' . 'pop-wid' . '-' . $locale  . '.mo';
+			$filedir = WP_CONTENT_DIR . '/languages/' . 'popular-widget' . '-' . $locale  . '.mo';
 		
 			if ( function_exists( 'load_plugin_textdomain' ) )
-				load_plugin_textdomain( 'pop-wid', false, apply_filters('pop_load_textdomain', '../languages/', 'pop-wid', $locale ) );
+				load_plugin_textdomain( 'popular-widget', false, apply_filters('pop_load_textdomain', '../languages/', 'popular-widget', $locale ) );
 				
 			elseif ( function_exists( 'load_textdomain' ) )
-				load_textdomain( 'pop-wid', apply_filters('pop_load_textdomain', $filedir, 'pop-wid', $locale ) );
+				load_textdomain( 'popular-widget', apply_filters('pop_load_textdomain', $filedir, 'popular-widget', $locale ) );
 		}
 		
 		/**
@@ -231,6 +231,7 @@
 				$meta_key_old = $meta_key;
 				
 				do_action( 'pop_after_set_pos_view', $instance, $number );
+				do_action( 'pop_after_set_post_view', $instance, $number );
 			}
 			die();
 		}
@@ -412,6 +413,8 @@
 			foreach( $posts as $key => $post ){ 
 				$output .= '<li><a href="'. esc_url( get_permalink( $post->ID ) ) . '" title="' . esc_attr( $post->post_title ) . '" rel="' . esc_attr( $rel ) . '">';
 				
+				$output .= apply_filters( "pop_{$this->current_tab}_before_post",  '', $post );
+
 				//image
 				if( !empty( $thumb ) )  $image = $this->get_post_image( $post->ID, $imgsize );
 				$output .= isset( $image ) ? $image . '<span class="pop-overlay">' : '<span class="pop-text">';
@@ -432,7 +435,10 @@
 					else $output .= '<span class="pop-summary">' . $this->limit_words( ( $post->post_content ), $excerptlength ) . '</span>';
 				 }
 			 
-				$output .= '</span></a><br class="pop-cl" /></li>';
+				$output .= '</span>';
+				
+				$output .= apply_filters( "pop_{$this->current_tab}_after_post", '', $post );
+				$output .= '</a><br class="pop-cl" /></li>';
 			}
 			return $output;
 		}

@@ -1,20 +1,11 @@
 <?php
-/*
- * Plugin Name: Jetpack Testimonial
- * Plugin URI:
- * Author: Automattic
- * Version: 0.1
- * License: GPL v2 or later
- * Text Domain: jetpack
- * Domain Path: /languages/
- */
 
 class Jetpack_Testimonial {
 	const CUSTOM_POST_TYPE       = 'jetpack-testimonial';
 	const OPTION_NAME            = 'jetpack_testimonial';
 	const OPTION_READING_SETTING = 'jetpack_testimonial_posts_per_page';
 
-	var $version = '0.1';
+	public $version = '0.1';
 
 	static function init() {
 		static $instance = false;
@@ -202,7 +193,7 @@ class Jetpack_Testimonial {
 	 * Bump Testimonial > New Activation stat
 	 */
 	function new_activation_stat_bump() {
-		bump_stats_extras( 'testimonials', 'new-activation' );
+		do_action( 'jetpack_bump_stats_extras', 'testimonials', 'new-activation' );
 	}
 
 	/**
@@ -210,11 +201,11 @@ class Jetpack_Testimonial {
 	 */
 	function update_option_stat_bump( $old, $new ) {
 		if ( empty( $old ) && ! empty( $new ) ) {
-			bump_stats_extras( 'testimonials', 'option-on' );
+			do_action( 'jetpack_bump_stats_extras', 'testimonials', 'option-on' );
 		}
 
 		if ( ! empty( $old ) && empty( $new ) ) {
-			bump_stats_extras( 'testimonials', 'option-off' );
+			do_action( 'jetpack_bump_stats_extras', 'testimonials', 'option-off' );
 		}
 	}
 
@@ -222,7 +213,7 @@ class Jetpack_Testimonial {
 	 * Bump Testimonial > Published Testimonials stat when testimonials are published
 	 */
 	function new_testimonial_stat_bump() {
-		bump_stats_extras( 'testimonials', 'published-testimonials' );
+		do_action ( 'jetpack_bump_stats_extras', 'testimonials', 'published-testimonials' );
 	}
 
 	/*

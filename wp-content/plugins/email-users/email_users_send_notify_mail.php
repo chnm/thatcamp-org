@@ -92,6 +92,13 @@
     if ( isset( $args['post_id']) ) {
 		$post_id = $args['post_id'] ;
 
+        //  Make sure Post Id is clean so there is no chance of XSS
+        //  per security notification from WordPress.com.
+        if (!is_numeric($post_id) || absint($post_id) !== (int)$post_id) {
+            wp_die(printf('<div class="error fade"><p>%s</p></div>',
+            __('Invalid Post Id passed, aborting.', MAILUSERS_I18N_DOMAIN)));
+        }
+
         // Replace the template variables concerning the post details
         // --
         $post = get_post( $post_id );
@@ -113,9 +120,9 @@
         }
         // Process short codes?
         if (mailusers_get_shortcode_processing() == 'true') {
-            error_log(print_r(htmlentities($post_content), true)) ;
+            //error_log(print_r(htmlentities($post_content), true)) ;
             $post_content = do_shortcode($post_content) ;
-            error_log(print_r(htmlentities($post_content), true)) ;
+            //error_log(print_r(htmlentities($post_content), true)) ;
             $post_excerpt = do_shortcode($post_excerpt) ;
         }
     

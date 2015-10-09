@@ -76,7 +76,7 @@ function mailusers_get_recipients_from_itthinx_groups_group($itthinx_groups_ids,
     {
         $group = new Groups_Group($value) ;
 
-        foreach ($group->users as $u)
+        foreach ($group->__get('users') as $u)
         {
             $ids[] = $u->user->ID ;
         }

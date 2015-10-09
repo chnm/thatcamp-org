@@ -3,8 +3,8 @@ Contributors: vprat, mpwalsh8, marvinlabs
 Donate link: http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/
 Tags: email, users, list, admin
 Requires at least: 3.6.1
-Tested up to: 4.2.2
-Stable tag: 4.7.5
+Tested up to: 4.3.1
+Stable tag: 4.7.9
 License: GPL
 
 == Description ==
@@ -220,6 +220,21 @@ function update_publicworks_meta_filter()
 `
 
 == Changelog ==
+
+= Version 4.7.9 =
+* Fixed bug in "Test Notification Email" feature on Settings page which prevented the test email from being sent.
+
+= Version 4.7.8 =
+* Fixed bug in Post/Page Notification Dasboard menu resulting in bad post ID error message.
+* Fixed Mandrill sample integration to account for selecting a single user.
+* Added explicit header setting for bounces which is unlikely to work based on comments in WordPress' class-phpmailer.php file.
+
+= Version 4.7.7 =
+* Fixed bug in User Settings which prevented bulk setting user Notification and Mass Email settings.
+
+= Version 4.7.6 =
+* Fixed integration bug with ItThinx Groups plugin due to PHP 5.4 and 5.5 differences.  Tested with Groups 1.7.1 and WordPress 4.2.2.
+* Fixed security concern raised by WordPress.com.
 
 = Version 4.7.5 =
 * Fixed bug in footer text setting introduced during WPBE testing.

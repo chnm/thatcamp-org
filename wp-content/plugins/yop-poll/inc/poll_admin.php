@@ -1046,6 +1046,7 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                 $question->ID = 0;
                 foreach( $question->answers as $answer ) {
                     $answer->ID = 0;
+                    $answer->votes = 0;
                 }
                 if(isset($question->custom_fields))
                 foreach($question->custom_fields as $custom){
@@ -1054,8 +1055,8 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                     $custom->question_id=0;
                 }
             }
-
-            $id_poll=$poll_clone->save();
+            $is_clone=true;
+            $id_poll=$poll_clone->save($is_clone);
             self::save_poll_order($poll_clone,$poll_clone->poll_archive_order);
             update_yop_poll_meta( $id_poll, 'options', $meta );
 

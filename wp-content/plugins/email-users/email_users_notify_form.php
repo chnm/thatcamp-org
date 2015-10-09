@@ -40,6 +40,13 @@
             MAILUSERS_I18N_DOMAIN), __(ucwords($post_type)), __(ucwords($post_type)));
     }
     
+    //  Make sure Post Id is clean so there is no chance of XSS
+    //  per security notification from WordPress.com.
+    if (isset($post_id) && (!is_numeric($post_id) || absint($post_id) !== (int)$post_id)) {
+        wp_die(printf('<div class="error fade"><p>%s</p></div>',
+        __('Invalid Post Id passed, aborting.', MAILUSERS_I18N_DOMAIN)));
+    }
+
 	if (!isset($mail_format)) {
 		$mail_format = mailusers_get_default_mail_format();
 	}

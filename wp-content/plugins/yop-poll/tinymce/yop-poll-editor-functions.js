@@ -43,7 +43,7 @@ jQuery(document).ready(function($){
 		if(document.getElementById("ed_toolbar")){
 			edButtons[edButtons.length] = new edButton("ed_yop_poll", yop_poll_editor_config.name, "", "", "");
 			jQuery(document).ready(function($){
-					jQuery('#qt_content_ed_yop_poll').replaceWith('<input onclick="show_tb();" type="button" id="qt_content_ed_yop_poll" accesskey="" class="ed_button" value="' + yop_poll_editor_config.name + '" title="' + yop_poll_editor_config.title + '" />');
+					jQuery('#qt_content_ed_yop_poll').replaceWith('<input onclick="show_tb();" type="button" id="qt_content_ed_yop_poll" accesskey="" class="ed_button button  button-small" value="' + yop_poll_editor_config.name + '" title="' + yop_poll_editor_config.title + '" />');
 			});
 		}
 });

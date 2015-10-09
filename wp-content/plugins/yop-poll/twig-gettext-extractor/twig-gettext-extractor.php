@@ -18,7 +18,7 @@
 	define ( 'YOP_POLL_PLUGIN_PATH', rtrim( dirname( dirname( dirname( __FILE__ ) ) ), '/'). PATH_SEPARATOR );
 	define ( 'YOP_POLL_PATH', rtrim( dirname( dirname( __FILE__ ) ), '/') . '/' );
 
-	require_once (YOP_POLL_PATH . 'lib/Twig/Autoloader.php' );
+	require_once (YOP_POLL_PATH . 'lib/Twig/AutoloaderYOP.php' );
 	Yop_Twig_Autoloader::register();
 
 	require_once YOP_POLL_PATH . 'twig-gettext-extractor/composer/autoload_real.php';

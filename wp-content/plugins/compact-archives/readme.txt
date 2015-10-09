@@ -2,8 +2,8 @@
 Contributors: smub, noumaan
 Tags: posts, archive, archives
 Requires at least: 3.0
-Tested up to: 3.5.1
-Stable tag: 3.0.3
+Tested up to: 4.3
+Stable tag: trunk
 
 Displays a monthly archive of posts in a more compact form than the usual long list.
 
@@ -122,6 +122,8 @@ Compact Archives also honours whatever kind of permalink pattern you have set.
 1. Compact archives displayed in block layout
 
 == Changelog ==
+= 3.0.4 =
+* WordPress 4.3 compat
 = 3.0.3 =
 * Minor bug fix
 = 3.0.2 =

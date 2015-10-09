@@ -4,12 +4,13 @@
 	Plugin URI: http://xparkmedia.com/plugins/popular-widget/
 	Description: Display most viewed, most commented and tags in one widget (with tabs)
 	Author: Hafid R. Trujillo Huizar
-	Version: 1.6.8
+	Version: 1.7.0
 	Author URI: http://www.xparkmedia.com
 	Requires at least: 3.0.0
-	Tested up to: 4.0
+	Tested up to: 4.3.1
+	Text Domain: popular-widget
 	
-	Copyright 2011-2013 by Hafid Trujillo http://www.xparkmedia.com
+	Copyright 2011-2015 by Hafid Trujillo http://www.xparkmedia.com
 	
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -32,14 +33,14 @@
 	
 	if( ! class_exists( 'PopularWidget' )
 	&& ! class_exists( 'PopularWidgetFunctions' ) 
-	&& file_exists( dirname( __FILE__ ) . "/_inc/functions.php" ) ){
+	&& file_exists(  dirname( __FILE__ ) . "/_inc/functions.php" ) ){
 		
-	include_once( dirname( __FILE__ ) . "/_inc/functions.php" );
+	include_once(  dirname( __FILE__ )  . "/_inc/functions.php" );
 	
 	class PopularWidget extends PopularWidgetFunctions {
 		
 		public $tabs = array();
-		public $version = '1.6.8';
+		public $version = '1.7.0';
 		public $defaults = array();
 		public $current_tab = false;
 		
@@ -54,8 +55,8 @@
 			$this->load_text_domain( );
 			$this->PopularWidgetFunctions( ); 
 			
-			$this->WP_Widget( 'popular-widget', __( 'Popular Widget', 'pop-wid' ), 
-				array( 'classname' => 'popular-widget', 'description' => __( "Display most popular posts and tags", 'pop-wid' ) ) 
+			WP_Widget::__construct( 'popular-widget', __( 'Popular Widget', 'popular-widget' ), 
+				array( 'classname' => 'popular-widget', 'description' => __( "Display most popular posts and tags", 'popular-widget' ) ) 
 			);
 			
 			define( 'POPWIDGET_FOLDER', plugin_basename( dirname( __FILE__ ) ) );
@@ -71,11 +72,11 @@
 			) );
 			
 			$this->tabs = apply_filters( 'pop_defaults_tabs', array(
-				 'recent' =>  __( 'Recent Posts', 'pop-wid' ) , 
-				 'comments' => __( 'Recent Comments', 'pop-wid' ) , 
-				 'commented' => __( 'Most Commented', 'pop-wid' ), 
-				 'viewed' => __( 'Most Viewed', 'pop-wid' ), 
-				 'tags' => __( 'Tags', 'pop-wid' ) 
+				 'recent' =>  __( 'Recent Posts', 'popular-widget' ) , 
+				 'comments' => __( 'Recent Comments', 'popular-widget' ) , 
+				 'commented' => __( 'Most Commented', 'popular-widget' ), 
+				 'viewed' => __( 'Most Viewed', 'popular-widget' ), 
+				 'tags' => __( 'Tags', 'popular-widget' ) 
 			 ) );
 			 
 		}

@@ -753,6 +753,13 @@ NOWDOC;
         if (version_compare($installed_version, '5.7.4', '<=')) {
             global $wpdb;
             update_option("yop_poll_version", '5.7.5');
+        }if (version_compare($installed_version, '5.7.5', '<=')) {
+            global $wpdb;
+            update_option("yop_poll_version", '5.7.6');
+        }
+        if (version_compare($installed_version, '5.7.6', '<=')) {
+            global $wpdb;
+            update_option("yop_poll_version", '5.7.7');
         }
     }
 

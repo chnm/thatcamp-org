@@ -314,7 +314,7 @@ jQuery( document ).ready( function() {
     jQuery('#yop-poll-email-notifications-body').textcomplete([
 
         { // tech companies
-            words: ['%VOTE_DATE%', '%POLL_NAME%', '[ QUESTION ] ','[/QUESTION]', '[ ANSWERS ]', ' %ANSWER_VALUE%', '[/ANSWERS]','[ CUSTOM_FIELDS ]','%CUSTOM_FIELD_NAME%','%CUSTOM_FIELD_VALUE%','[/CUSTOM_FIELDS]'],
+            words: ['%VOTE_DATE%', '%POLL_NAME%','%POLL_TOTAL_VOTES%','%WP_USERNAME%','%WP_FIRST_NAME%','%WP_LAST_NAME%', '[ QUESTION ] ','[/QUESTION]', '[ ANSWERS ]', ' %ANSWER_VALUE%', '[/ANSWERS]','[ CUSTOM_FIELDS ]','%CUSTOM_FIELD_NAME%','%CUSTOM_FIELD_VALUE%','[/CUSTOM_FIELDS]'],
             match: /(\[|%)(\w*)$/,
             search: function (term, callback) {
                 callback(jQuery.map(this.words, function (word) {

@@ -21,11 +21,20 @@
  */
 function mailusers_mandrill_headers($to, $headers, $bcc)
 {
-    //  Copy the BCC headers to the TO header without the "Bcc:" prefix
-    $to = preg_replace('/^Bcc:\s+/', '', $bcc) ;
 
-    //  Empty out the BCC header
-    $bcc = array() ;
+    //  Copy the BCC headers to the TO header without the "Bcc:" prefix
+    //  ... but only if there are actually addresses in the BCC header.
+    //  When only one (1) recipient is selected, Email Users will place
+    //  the recipient address in the TO header instead of the BCC header.
+
+    //  Only do this when there is something in the BCC header ...
+
+    if (count($bcc) > 0) {
+        $to = preg_replace('/^Bcc:\s+/', '', $bcc) ;
+
+        //  Empty out the BCC header
+        $bcc = array() ;
+    }
 
     return array($to, $headers, $bcc) ;
 }

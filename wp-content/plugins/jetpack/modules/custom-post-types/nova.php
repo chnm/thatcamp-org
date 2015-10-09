@@ -1,16 +1,6 @@
 <?php
 
 /*
- * Plugin Name: Nova - Restaurant Websites Shouldn't Suck
- * Plugin URI: http://wordpress.org/extend/plugins/nova/
- * Author: Automattic
- * Version: 0.1
- * License: GPL2+
- * Text Domain: nova
- * Domain Path: /languages/
- */
-
-/*
  * Put the following code in your theme's Food Menu Page Template to customize the markup of the menu.
 
 if ( class_exists( 'Nova_Restaurant' ) ) {
@@ -40,7 +30,7 @@ class Nova_Restaurant {
 	const MENU_ITEM_LABEL_TAX = 'nova_menu_item_label';
 	const MENU_TAX = 'nova_menu';
 
-	var $version = '0.1';
+	public $version = '0.1';
 
 	protected $default_menu_item_loop_markup = array(
 		'menu_tag'               => 'section',

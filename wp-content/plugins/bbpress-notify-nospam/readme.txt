@@ -4,11 +4,11 @@ Author URI: http://www.usestrict.net/
 Plugin URI: http://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
-Tested up to: 4.3-alpha-32294
+Tested up to: 4.3.1
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.8.2
+Stable tag: 1.9.1
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
 == Description ==
@@ -26,9 +26,12 @@ Settings include:
 
 = Premium Add-Ons =
 
- * [Opt-out Module](http://usestrict.net/2015/03/bbpress-notify-no-spam-opt-out-add-on/): Allow your audience to choose not to receive notifications. A must-have for CAN-SPAM laws!
+ * [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/): Allow your audience to choose not to receive notifications. A must-have for CAN-SPAM and CASL laws!
+ * [Digest Add-on](http://usestrict.net/product/bbpress-notify-no-spam-digests/): Allow your audience to choose to receive daily, weekly, or monthly digests.
  * [bbPress Moderation Integration](http://usestrict.net/product/bbpress-moderation-plugin-add-on/): Make bbpnns work with [bbPress Moderation](https://wordpress.org/plugins/bbpressmoderation/). 
  * [bbPress Private Groups Integration](http://usestrict.net/product/bbpress-notify-no-spam-private-groups-bridge/): Make bbpnns respect [bbPress Private Groups](https://wordpress.org/plugins/bbp-private-groups/) rules.
+ * [bbPress Private Groups Integration](http://usestrict.net/product/bbpress-notify-no-spam-private-groups-bridge/): Make bbpnns respect [bbPress Private Groups](https://wordpress.org/plugins/bbp-private-groups/) rules.
+ 
 
 
 == Installation ==
@@ -41,10 +44,10 @@ Settings include:
 = Can a user turn off notifications? =
  * Originally, this plugin was developed to alert Administrators of new topics and replies. After a few iterations, users requested that I add the ability to send
 messages to other roles, which then could be characterized as spam. To allow your users to opt-out from receiving notifications, please consider purchasing 
-the [Opt-out Module](http://usestrict.net/2015/03/bbpress-notify-no-spam-opt-out-add-on/).
+the [Opt-out Module](http://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/).
 
 = Does this plugin integrate with BuddyPress Groups? =
- * Not at this moment.
+ * Not at this moment. But if you want this feature badly enough, let me know and I'll look into it.
 
 == Screenshots ==
 1. The settings page
@@ -52,6 +55,24 @@ the [Opt-out Module](http://usestrict.net/2015/03/bbpress-notify-no-spam-opt-out
 
 
 == Changelog ==
+= 1.9.1 =
+* New action: bbpnns_email_failed_single_user, allows for better handling of failed emails. Params: $user_info, $filtered_subject, $filtered_body, $recipient_headers
+* New action: bbpnns_before_wp_mail, executed immediately before wp_mail() call. Params: $user_info, $filtered_subject, $filtered_body, $recipient_headers
+* New action: bbpnns_after_wp_mail, executed immediately after wp_mail() call. Params: $user_info, $filtered_subject, $filtered_body, $recipient_headers
+
+= 1.9 =
+* New Filter: bbpnns_skip_notification
+* New Filter: bbpnns_available_tags
+* New Action: bbpnns_after_email_sent_single_user
+* New Action: bbpnns_after_email_sent_all_users
+* Change: Only filter subject and body if user is OK to receive message
+* Change: Reduce DB calls by one per user
+* Change: stop using PHP4-style pass-by-reference. PHP5 always passes by reference now.
+* Change: Improve Encoding of subject line
+
+= 1.8.2.1 =
+* Fix: added a workaround for emails with UTF-8 Characters in the subject line that weren't being sent.
+
 = 1.8.2 =
 * Added: support for people using wpMandrill and getting emails without newlines. We turn on nl2br momentarily while sending out our emails. 
 This option can be overridden by using the filter 'bbpnns_handle_mandrill_nl2br'.
@@ -190,4 +211,6 @@ This option can be overridden by using the filter 'bbpnns_handle_mandrill_nl2br'
 * First alpha version
 
 == Upgrade Notice ==
-No upgrade needed at this time.
+= 1.9 =
+Version 1.9 comes with a few new filters and actions to make it more versatile to extend.
+It also comes with some performance improvements, like reducing the number of overall DB calls.

@@ -265,6 +265,7 @@ class MailUsers_List_Table extends WP_List_Table {
 
         if (($this->current_action() !== false) && array_key_exists('user', $_GET))
         {
+            error_log(print_r($_GET['user'], true)) ;
             foreach ($_GET['user'] as $user)
             {
                 switch ($this->current_action())
