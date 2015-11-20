@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Term Management Tools
-Version: 1.1.3
+Version: 1.1.4
 Description: Allows you to merge terms and set term parents in bulk
 Author: scribu
 Author URI: http://scribu.net/
@@ -82,10 +82,15 @@ class Term_Management_Tools {
 		if ( !isset( $r ) )
 			return;
 
-		if ( $referer = wp_get_referer() && false !== strpos( $referer, 'edit-tags.php' ) ) {
+		$referer = wp_get_referer();
+		if ( $referer && false !== strpos( $referer, 'edit-tags.php' ) ) {
 			$location = $referer;
 		} else {
 			$location = add_query_arg( 'taxonomy', $taxonomy, 'edit-tags.php' );
+		}
+
+		if ( isset( $_REQUEST['post_type'] ) && 'post' != $_REQUEST['post_type'] ) {
+			$location = add_query_arg( 'post_type', $_REQUEST['post_type'], $location );
 		}
 
 		wp_redirect( add_query_arg( 'message', $r ? 'tmt-updated' : 'tmt-error', $location ) );
@@ -195,8 +200,10 @@ class Term_Management_Tools {
 			$wpdb->query( "UPDATE $wpdb->term_taxonomy SET parent = 0 WHERE term_taxonomy_id IN ($tt_ids)" );
 		}
 
-		delete_option( "{$taxonomy}_children" );
-		delete_option( "{$new_tax}_children" );
+		clean_term_cache( $tt_ids, $taxonomy );
+		clean_term_cache( $tt_ids, $new_tax );
+
+		do_action( 'term_management_tools_term_changed_taxonomy', $tt_ids, $new_tax, $taxonomy );
 
 		return true;
 	}

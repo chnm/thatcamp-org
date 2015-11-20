@@ -100,65 +100,105 @@
 					$users = mailusers_get_users($user_ID);
 
 					foreach ($users as $user) {
-						switch ($sortby) {
-							case 'fl' :  //  First Last
-								$name = sprintf('%s %s',
-									is_null($user->first_name) ? $na : $user->first_name,
-									is_null($user->last_name) ? $na : $user->last_name);
-								break;
+                       switch ($sortby) {
+                            case 'fl' :  //  First Last
+                                $name = sprintf('%s %s',
+                                    is_null($user->first_name) ? $na : $user->first_name,
+                                    is_null($user->last_name) ? $na : $user->last_name);
+                                break;
 
-							case 'flul' :  //  First Last User Login
-								$name = sprintf('%s %s (%s)',
-									is_null($user->first_name) ? $na : $user->first_name,
-									is_null($user->last_name) ? $na : $user->last_name,
-									$user->user_login);
-								break;
+                            case 'flul' :  //  First Last User Login
+                                $name = sprintf('%s %s (%s)',
+                                    is_null($user->first_name) ? $na : $user->first_name,
+                                    is_null($user->last_name) ? $na : $user->last_name,
+                                    $user->user_login);
+                                break;
 
-							case 'lf' :
-								$name = sprintf('%s, %s',
-									is_null($user->last_name) ? $na : $user->last_name,
-									is_null($user->first_name) ? $na : $user->first_name);
-								break;
+                            case 'flue' :  //  First Last User Email
+                                $name = sprintf('%s %s (%s)',
+                                    is_null($user->first_name) ? $na : $user->first_name,
+                                    is_null($user->last_name) ? $na : $user->last_name,
+                                    $user->user_email);
+                                break;
 
-							case 'lful' :
-								$name = sprintf('%s, %s (%s)',
-									is_null($user->last_name) ? $na : $user->last_name,
-									is_null($user->first_name) ? $na : $user->first_name,
-									$user->user_login);
-								break;
+                            case 'lf' :
+                                $name = sprintf('%s, %s',
+                                    is_null($user->last_name) ? $na : $user->last_name,
+                                    is_null($user->first_name) ? $na : $user->first_name);
+                                break;
 
-							case 'ul' :
-								$name = sprintf('%s', $user->user_login);
-								break;
+                            case 'lful' :
+                                $name = sprintf('%s, %s (%s)',
+                                    is_null($user->last_name) ? $na : $user->last_name,
+                                    is_null($user->first_name) ? $na : $user->first_name,
+                                    $user->user_login);
+                                break;
 
-							case 'uldn' :
-								$name = sprintf('%s (%s)',
-									$user->user_login, $user->display_name);
-								break;
+                            case 'lfue' :
+                                $name = sprintf('%s, %s (%s)',
+                                    is_null($user->last_name) ? $na : $user->last_name,
+                                    is_null($user->first_name) ? $na : $user->first_name,
+                                    $user->user_email);
+                                break;
 
-							case 'ulfl' :
-								$name = sprintf('%s (%s %s)', $user->user_login,
-									is_null($user->first_name) ? $na : $user->first_name,
-									is_null($user->last_name) ? $na : $user->last_name);
-								break;
+                            case 'ul' :
+                                $name = sprintf('%s', $user->user_login);
+                                break;
 
-							case 'ullf' :
-								$name = sprintf('%s (%s, %s)', $user->user_login,
-									is_null($user->last_name) ? $na : $user->last_name,
-									is_null($user->first_name) ? $na : $user->first_name);
-								break;
+                            case 'ue' :
+                                $name = sprintf('%s', $user->user_email);
+                                break;
 
-							case 'dnul' :
-								$name = sprintf('%s (%s)',
-									$user->display_name, $user->user_login);
-								break;
+                            case 'uldn' :
+                                $name = sprintf('%s (%s)',
+                                    $user->user_login, $user->display_name);
+                                break;
 
-							case 'dn' :
-							case 'none' :
-							default:
-								$name = $user->display_name;
-								break;
-						}
+                            case 'uedn' :
+                                $name = sprintf('%s (%s)',
+                                    $user->user_email, $user->display_name);
+                                break;
+
+                            case 'ulfl' :
+                                $name = sprintf('%s (%s %s)', $user->user_login,
+                                    is_null($user->first_name) ? $na : $user->first_name,
+                                    is_null($user->last_name) ? $na : $user->last_name);
+                                break;
+
+                            case 'uefl' :
+                                $name = sprintf('%s (%s %s)', $user->user_email,
+                                    is_null($user->first_name) ? $na : $user->first_name,
+                                    is_null($user->last_name) ? $na : $user->last_name);
+                                break;
+
+                            case 'ullf' :
+                                $name = sprintf('%s (%s, %s)', $user->user_login,
+                                    is_null($user->last_name) ? $na : $user->last_name,
+                                    is_null($user->first_name) ? $na : $user->first_name);
+                                break;
+
+                            case 'uelf' :
+                                $name = sprintf('%s (%s, %s)', $user->user_email,
+                                    is_null($user->last_name) ? $na : $user->last_name,
+                                    is_null($user->first_name) ? $na : $user->first_name);
+                                break;
+
+                            case 'dnul' :
+                                $name = sprintf('%s (%s)',
+                                    $user->display_name, $user->user_login);
+                                break;
+
+                            case 'dnue' :
+                                $name = sprintf('%s (%s)',
+                                    $user->display_name, $user->user_email);
+                                break;
+
+                            case 'dn' :
+                            case 'none' :
+                            default:
+                                $name = $user->display_name;
+                                break;
+                        }
 				?>
 					<option value="<?php echo $user->ID; ?>" <?php
 						echo (in_array($user->ID, $send_users) ? ' selected="yes"' : '');?>>

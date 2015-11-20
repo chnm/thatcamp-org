@@ -262,7 +262,7 @@ function wp_db_backup_validate($input) {
 			} else {
 				echo '<p>No Database Backups Created!</p>';
 			}
-			echo "<div class='alert alert-success' role='alert'><h4>Get Flat 25% off on <a href='http://www.wpseeds.com/product/wp-all-backup/' target='_blank'>WP All Backup Plugin.</a> Use Coupon code 'WPDB25'</h4></div>";
+			echo "<div class='alert alert-success' role='alert'><h4>Get Flat 30% off on <a href='http://www.wpseeds.com/product/wp-all-backup/' target='_blank'>WP All Backup Plugin.</a> Use Coupon code 'WPDB30'</h4></div>";
 		echo '</div>';
 	
 	echo '<div class="tab-pane" id="db_schedul">';
@@ -572,7 +572,7 @@ echo '</form>';
                     <div class="tab-pane" id="db_advanced">               
                         <h4>A 'WP ALL Backup' Plugin will backup and restore your entire site at will,
                         complete with FTP & S3 integration.</h4>
-                        <h2>Pro Features </h2><h4>Get Flat 25% off on WP All Backup Plugin .Use Coupon code 'WPDB25'</h4>
+                        <h2>Pro Features </h2><h4>Get Flat 30% off on WP All Backup Plugin .Use Coupon code 'WPDB30'</h4>
                         <div class="row">
                         <div class="col-md-3"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Complete Backup</div>
                         <div class="col-md-3"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Only Selected file Backup</div>
@@ -831,7 +831,8 @@ function wp_db_backup_create_archive() {
           //  fwrite($f, "IndexIgnore *");
           //  fclose($f);         
 	/*Begin : Generate SQL DUMP and save to file database.sql*/
-        $WPDBFileName=Date("Y_m_d").'_'.Time("H:M:S").rand(9, 9999).'_database';       
+        $siteName=preg_replace('/[^A-Za-z0-9\_]/', '_', get_bloginfo('name'));
+        $WPDBFileName=$siteName.'_'.Date("Y_m_d").'_'.Time("H:M:S").rand(9, 9999).'_database';       
         $SQLfilename=$WPDBFileName.'.sql';
 	$filename=$WPDBFileName.'.zip';
 	$handle = fopen($path_info['basedir'].'/db-backup/'.$SQLfilename,'w+');
@@ -967,19 +968,10 @@ function wp_db_backup_event_process() {
 	 $subject="Database Backup Created Successfully";
 	 $filename=$details['filename'];
 	 $filesze=$details['size'];
-         $site_url= site_url(); 	 
-         $message='<img src="http://www.wpseeds.com/wp-content/uploads/2015/07/wordpress-wp-database-backup.png" alt="WP Database Backup" width="750" height="200"/>
-            <p>Dear WP Database Backup User,<br/></p>            
-            <p>Database Backup Created Successfully.</p>
-            <p>File Name :'.$filename.'</p>
-            <p>File Size :'.$this->wp_db_backup_format_bytes($filesze).'</p>
-            <p>You\'re receiving this email because you have active Email Notification on your site('.$site_url.').</p>
-            <p>Best regards,<br/><br/>
-            <a title="WPSeeds-WprdPress Products" href="http://www.wpseeds.com/shop/" target="_blank"><img src="http://www.wpseeds.com/wp-content/uploads/2015/06/wpseedslogo.png" alt="WPSeeds-WprdPress Products" /></a>
-            <br/><a title="Pro-WP All Backup Plugin" href="www.wpseeds.com/product/wp-all-backup/" target="_blank">Get Pro WP All Backup Plugin</a></p>
-            <p>Tech Support: http://www.wpseeds.com/support/</p>
-            <p>Documentation: http://www.wpseeds.com/wp-database-backup/</p>
-            <p>Pro Features: http://www.wpseeds.com/wp-all-backup/</p>';
+         $site_url= site_url(); 	         
+        
+            include('template_email_notification.php');            
+        
          
 	$headers = array('Content-Type: text/html; charset=UTF-8');
 	  $wp_db_backup_email_attachment_file=get_option('wp_db_backup_email_attachment');

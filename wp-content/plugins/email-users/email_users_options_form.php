@@ -42,6 +42,15 @@
 <?php
 	}
 
+    $bounce = mailusers_get_send_bounces_to_address_override() ;
+    if (!empty($bounce)) {
+?>
+    <div class="update-nag fade">
+    <p><?php printf(__('Setting a bounce email address is no longer recommended due to it casuing delivery problems with some servers and unreliabilty.<br />If you experience delivery problems, please remove the current setting:  %s', MAILUSERS_I18N_DOMAIN), $bounce) ; ?></p>
+    </div>
+<?php
+    }
+
     //  Check to see if wp_mail() has been overloaded
 
     if (class_exists('ReflectionFunction'))
@@ -136,14 +145,21 @@ print $reflection->getFileName();
 				<option value="none" <?php if (mailusers_get_default_sort_users_by()=='none') echo 'selected="true"';?>><?php _e('None', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="dn" <?php if (mailusers_get_default_sort_users_by()=='dn') echo 'selected="true"';?>><?php _e('Display Name', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="dnul" <?php if (mailusers_get_default_sort_users_by()=='dnul') echo 'selected="true"';?>><?php _e('Display Name (User Login)', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="dnue" <?php if (mailusers_get_default_sort_users_by()=='dnue') echo 'selected="true"';?>><?php _e('Display Name (User Email)', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="fl" <?php if (mailusers_get_default_sort_users_by()=='fl') echo 'selected="true"';?>><?php _e('First Name Last Name', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="flul" <?php if (mailusers_get_default_sort_users_by()=='flul') echo 'selected="true"';?>><?php _e('First Name Last Name (User Login)', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="flue" <?php if (mailusers_get_default_sort_users_by()=='flue') echo 'selected="true"';?>><?php _e('First Name Last Name (User Email)', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="lf" <?php if (mailusers_get_default_sort_users_by()=='lf') echo 'selected="true"';?>><?php _e('Last Name, First Name', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="lful" <?php if (mailusers_get_default_sort_users_by()=='lful') echo 'selected="true"';?>><?php _e('Last Name, First Name (User Login)', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="lfue" <?php if (mailusers_get_default_sort_users_by()=='lfue') echo 'selected="true"';?>><?php _e('Last Name, First Name (User Email)', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="ul" <?php if (mailusers_get_default_sort_users_by()=='ul') echo 'selected="true"';?>><?php _e('User Login', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="ue" <?php if (mailusers_get_default_sort_users_by()=='ue') echo 'selected="true"';?>><?php _e('User Email', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="uldn" <?php if (mailusers_get_default_sort_users_by()=='uldn') echo 'selected="true"';?>><?php _e('User Login (Display Name)', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="uedn" <?php if (mailusers_get_default_sort_users_by()=='uedn') echo 'selected="true"';?>><?php _e('User Email (Display Name)', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="ulfl" <?php if (mailusers_get_default_sort_users_by()=='ulfl') echo 'selected="true"';?>><?php _e('User Login (First Name Last Name)', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="uefl" <?php if (mailusers_get_default_sort_users_by()=='uefl') echo 'selected="true"';?>><?php _e('User Email (First Name Last Name)', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="ullf" <?php if (mailusers_get_default_sort_users_by()=='ullf') echo 'selected="true"';?>><?php _e('User Login (Last Name, First Name)', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="uelf" <?php if (mailusers_get_default_sort_users_by()=='uelf') echo 'selected="true"';?>><?php _e('User Email (Last Name, First Name)', MAILUSERS_I18N_DOMAIN); ?></option>
 			</select><br/><i><small><?php _e('Determine how to sort and display names in the User selection list?', MAILUSERS_I18N_DOMAIN); ?></small></i></td>
 	</tr>
 	<tr>
@@ -216,7 +232,7 @@ print $reflection->getFileName();
 		<th scope="row" valign="top">
             <label for="send_bounces_to_address_override"><?php _e('Send Bounces To Email<br/>Address Override', MAILUSERS_I18N_DOMAIN); ?></th>
 		<td>
-			<input type="text" name="mailusers_send_bounces_to_address_override" style="width: 235px;" 
+        <input placeholder="<?php _e('Not recommended, potential delivery issues.', MAILUSERS_I18N_DOMAIN) ?>" type="text" name="mailusers_send_bounces_to_address_override" style="width: 235px;" 
 				value="<?php echo format_to_edit(mailusers_get_send_bounces_to_address_override()); ?>" 
                 size="80" id="from_sender_address_override"/><br/><div style="width: 90%;"><i><small><?php _e('An email address that can be used in place of the logged in user\'s email address to receive bounced email notifications.', MAILUSERS_I18N_DOMAIN); ?><br /><b><i><?php _e('Note:  Invalid email addresses are not saved.', MAILUSERS_I18N_DOMAIN); ?></i></b></small></i></div></td>
 	</tr>
@@ -242,6 +258,14 @@ print $reflection->getFileName();
 			<input 	type="checkbox" name="mailusers_shortcode_processing" id="mailusers_shortcode_processing" value="true"
 					<?php if (mailusers_get_shortcode_processing()=='true') echo 'checked="checked"';?> ></input>
 			<?php _e('Process short codes embedded in posts or pages.', MAILUSERS_I18N_DOMAIN); ?><br/>
+		</td>
+	</tr>
+	<tr>
+        <th><?php _e('Process Content<br/>with wpautop', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<input 	type="checkbox" name="mailusers_wpautop_processing" id="mailusers_wpautop_processing" value="true"
+					<?php if (mailusers_get_wpautop_processing()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Changes double line-breaks in the text into HTML paragraphs (&lt;p&gt;...&lt;/p&gt;).', MAILUSERS_I18N_DOMAIN); ?><br/>
 		</td>
 	</tr>
 	<tr>
@@ -437,7 +461,10 @@ print $reflection->getFileName();
         if (is_array($post_content)) $post_content = $post_content[0] ;
 
 		$subject = mailusers_replace_post_templates($subject, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
-		$mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+        if (mailusers_get_wpautop_processing()=='true')
+		    $mail_content = wpautop(mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url));
+        else
+		    $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
 ?>
 	<tr>
 		<td><b><?php _e('Subject', MAILUSERS_I18N_DOMAIN); ?></b></td>

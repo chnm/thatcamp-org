@@ -1,9 +1,9 @@
 <?php
 /*
 * Plugin Name:  bbPress Notify (No-Spam)
-* Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam.
-* Version:      1.9.1
-* Author:       Vinny Alves
+* Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a>
+* Version:      1.9.3
+* Author:       <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:      GNU General Public License, v2 ( or newer )
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 *
@@ -25,7 +25,7 @@ load_plugin_textdomain( 'bbpress_notify',false, dirname( plugin_basename( __FILE
 
 class bbPress_Notify_noSpam {
 	
-	const VERSION = '1.9.1';
+	const VERSION = '1.9.3';
 	
 	protected $settings_section = 'bbpress_notify_options';
 	
@@ -232,6 +232,10 @@ class bbPress_Notify_noSpam {
 		{
 			update_option( "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification", 0 );
 		}
+		if ( ! get_option( 'bbpress_notify_encode_subject' ) )
+		{
+			update_option( 'bbpress_notify_encode_subject', 1 );
+		}
 	}
 	
 	/**
@@ -290,7 +294,7 @@ class bbPress_Notify_noSpam {
 			$users = get_users( array( 'role' => $role ) );
 			foreach ( ( array ) $users as $user )
 			{
-				$recipients[$user->ID] = $user; // make sure unique recepients
+				$recipients[$user->ID] = $user; // make sure unique recipients
 			}
 		}
 		
@@ -416,8 +420,8 @@ class bbPress_Notify_noSpam {
 		 * Allow subject and body modifications
 		 * @since 1.6.6
 		 */
-		$email_subject = apply_filters( 'bbpnns_filter_email_subject_in_build', $email_subject );
-		$email_body    = apply_filters( 'bbpnns_filter_email_body_in_build', $email_body );
+		$email_subject = apply_filters( 'bbpnns_filter_email_subject_in_build', $email_subject, $type, $post_id );
+		$email_body    = apply_filters( 'bbpnns_filter_email_body_in_build', $email_body, $type, $post_id );
 		
 		return array( $email_subject, $email_body );
 	}
@@ -433,15 +437,22 @@ class bbPress_Notify_noSpam {
 		// Allow Management of recipients list
 		$recipients = apply_filters( 'bbpnns_filter_recipients_before_send', $recipients );
 
+		/**
+		 * This is a workaround for cases where UTF-8 characters were blocking the message.
+		 * Run these functions outside the loop for better performance.
+		 */ 
+		$do_enc      = ( bool ) get_option( 'bbpress_notify_encode_subject', false );
+		$enc         = iconv_get_encoding( 'internal_encoding' );
+		$preferences = apply_filters( 'bbpnns_subject_enc_preferences',
+				array( 'input-charset' => $enc, 'output-charset' => "UTF-8", 'scheme' => 'Q' )
+		);
+		
 		foreach ( ( array ) $recipients as $recipient_id => $user_info )
 		{
 			/**
 			 * Allow per user subject and body modifications
 			 * @since 1.6.4 
 			 */ 
-			// This is a workaround for cases where UTF-8 characters were blocking the message.
-			$enc = mb_internal_encoding();
-			
 			$email = ( $recipient_id == -1 ) ? get_bloginfo( 'admin_email' ) : ( string ) $user_info->user_email ;
 			$email = apply_filters( 'bbpnns_skip_notification', $email ); // Allow user to be skipped for some reason
 
@@ -455,15 +466,18 @@ class bbPress_Notify_noSpam {
 				$filtered_subject = apply_filters( 'bbpnns_filter_email_subject_for_user', $subject, $user_info );
 				
 				/**
-				 * Enable UTF-8 characters in subject line
-				 * @since 1.9
+				 * Make this optional
+				 * @since 1.9.3
 				 */
-				$preferences = apply_filters( 'bbpnns_subject_enc_preferences',
-						array( 'input-charset' => $enc, 'output-charset' => "UTF-8", 'scheme' => 'Q' )
-				);
-					
-				$filtered_subject = iconv_mime_encode( 'Subject', $filtered_subject, $preferences );
-				$filtered_subject = substr( $filtered_subject, strlen( 'Subject:' ) );
+				if ( true === $do_enc )
+				{
+					/**
+					 * Enable UTF-8 characters in subject line
+					 * @since 1.9
+					 */
+					$filtered_subject = iconv_mime_encode( 'Subject', $filtered_subject, $preferences );
+					$filtered_subject = substr( $filtered_subject, strlen( 'Subject:' ) );
+				}
 				
 				/**
 				 * User headers, if any
@@ -523,6 +537,8 @@ class bbPress_Notify_noSpam {
 		// Add section to bbPress options
 		add_settings_section( $this->settings_section, __( 'E-mail Notifications', 'bbpress_notify' ), array( $this, '_settings_intro_text' ), 'bbpress' );
 
+		add_settings_field( 'bbpress_notify_encode_subject', __( 'Encode Topic and Reply Subject line', 'bbpress_notify' ), array( $this, '_encode_subject' ), 'bbpress', 'bbpress_notify_options' );
+		
 		// Hook for additional topic settings
 		do_action( 'bbpnns_before_topic_settings' );
 		
@@ -572,6 +588,7 @@ class bbPress_Notify_noSpam {
 		
 		register_setting( 'bbpress', "bbpress_notify_default_{$this->bbpress_topic_post_type}_notification" );
 		register_setting( 'bbpress', "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification" );
+		register_setting( 'bbpress', 'bbpress_notify_encode_subject' );
 		
 		// Hook to register additional topic/reply settings
 		do_action( 'bbpnns_register_settings' );
@@ -584,6 +601,18 @@ class bbPress_Notify_noSpam {
 	{
 		printf( '<span id="%s">%s</span>', $args['id'], __( 'Configure e-mail notifications when new topics and/or replies are posted.', 'bbpress_notify' ) );
 	}
+	
+	/**
+	 * @since 1.9.3
+	 */
+	public function _encode_subject()
+	{
+		$saved_option = get_option( 'bbpress_notify_encode_subject' );
+		$html_checked = ( $saved_option ) ? 'checked="checked"' : '';
+		$description = __( 'Encode Subject line using UTF-8.<br><span class="description">Turn this OFF if you\'re using a plugin that already encodes it like wpMandrill and are seeing extra question marks in the email subject.</span>', 'bbpress_notify' );
+		printf( '<label><input type="checkbox" %s name="bbpress_notify_encode_subject" value="1"/> %s </label><br>', $html_checked, $description );
+	}
+	
 	
 	/**
 	 * @since 1.3

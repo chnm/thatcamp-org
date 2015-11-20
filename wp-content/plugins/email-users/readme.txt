@@ -4,7 +4,7 @@ Donate link: http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/
 Tags: email, users, list, admin
 Requires at least: 3.6.1
 Tested up to: 4.3.1
-Stable tag: 4.7.9
+Stable tag: 4.7.10
 License: GPL
 
 == Description ==
@@ -220,6 +220,11 @@ function update_publicworks_meta_filter()
 `
 
 == Changelog ==
+
+= Version 4.7.10 =
+* Added new setting to control applying post content with wpautop prior to seending an update to th team.
+* Changed mechanism for handling bounce email address.  Added warning to note bounce addresses have proven to be unreliable.
+* Added User Email as an option for user sorting and display in selection lists.
 
 = Version 4.7.9 =
 * Fixed bug in "Test Notification Email" feature on Settings page which prevented the test email from being sent.

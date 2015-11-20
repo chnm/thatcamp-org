@@ -3,10 +3,10 @@ Contributors: managewp,freediver
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6P9S6CE3SRSW
 Tags: links, broken, maintenance, blogroll, custom fields, admin, comments, posts
 Requires at least: 3.2
-Tested up to: 4.2.4
-Stable tag: 1.10.9
+Tested up to: 4.3.1
+Stable tag: 1.10.10
 
-This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found. 
+This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found.
 
 == Description ==
 This plugin will monitor your blog looking for broken links and let you know if any are found.
@@ -85,7 +85,7 @@ This plugin uses some icons from the [Font Awesome icon font](http://fortawesome
 To do a new installation of the plugin, please follow these steps
 
 1. Download the broken-link-checker.zip file to your computer.
-1. Unzip the file 
+1. Unzip the file
 1. Upload `broken-link-checker` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
@@ -98,6 +98,9 @@ To upgrade your installation
 1. Reactivate the plugin. Your settings will be retained from the previous version.
 
 == Changelog ==
+
+= 1.10.10 =
+* New plugin image that was long overdue.
 
 = 1.10.9 =
 * Fixed a security vulnerability where part of the log data visibile in the "Details" view was not properly sanitized.
@@ -152,7 +155,7 @@ To upgrade your installation
 = 1.10 =
 * Added a way to hide individual link actions like "Dismiss" and "Unlink".
 * Added a "Fix redirect" link action. It replaces a redirect with a direct link. It is hidden by default and can be enabled through the settings page.
-* Added a "Recheck" link action. Unlike the bulk action by the same name, it checks a link immediately and displays the results without having to refresh the page. 
+* Added a "Recheck" link action. Unlike the bulk action by the same name, it checks a link immediately and displays the results without having to refresh the page.
 * Added a "Dismiss" bulk action.
 * Added a note below the "link tweaks" settings explaining that they only apply to the contents of posts (and pages, and CPTs), not comments or custom fields.
 * Made the "Redirect URL" column sortable.
@@ -286,7 +289,7 @@ To upgrade your installation
 * Added a Finnish translation.
 * Fixed a graphical bug where the currently selected settings tab would not be highlighted in WordPress 3.5.
 * Removed the "Blogroll items" module from the list of link containers enabled by default. The WordPress developer team is planning to remove Link Manager from core, and the "Links" menu will be hidden by default in new WP 3.5 installs.
-* Removed the Admin Menu Editor Pro ad from the "Settings -> Link Checker" and the "Tools -> Broken Links" pages. 
+* Removed the Admin Menu Editor Pro ad from the "Settings -> Link Checker" and the "Tools -> Broken Links" pages.
 * Disabled the news link (if any) for users who have donated.
 * Removed support for pre-WP 2.9 post meta actions.
 * Minor styling changes of screen meta links.
@@ -391,7 +394,7 @@ To upgrade your installation
 * Added a poll asking for feedback on a new BLC-related web application idea.
 * Minor wording change in the debug info table.
 
-= 1.2.2 = 
+= 1.2.2 =
 * All Pro features now included in the free version!
 * Updated Japanese translation.
 * Updated Polish translation.
@@ -412,7 +415,7 @@ To upgrade your installation
 * Added Polish translation.
 * Updated Danish translation.
 * Updated Italian translation.
-* Fixed an uncommon "Cannot break/continue 1 level" error. 
+* Fixed an uncommon "Cannot break/continue 1 level" error.
 * Added a new user feedback survey (the link only shows up after you've used this version for at least two weeks).
 
 = 0.9.7.1 =
@@ -678,7 +681,7 @@ To upgrade your installation
 * Fix a bug when the plugin creates a DB table with the wrong prefix.
 
 = 0.5 =
-* This is a near-complete rewrite with a lot of new features. 
+* This is a near-complete rewrite with a lot of new features.
 * See �http://w-shadow.com/blog/2009/05/22/broken-link-checker-05/ for details.
 
 = 0.4.14 =
@@ -715,7 +718,7 @@ To upgrade your installation
 * Grr :P
 
 = 0.4.7 =
-* Minor enhancements : 
+* Minor enhancements :
 * Autoselect link URL after the user clicks "Edit".
 * Make sure only HTTP and HTTPS links are checked.
 * More substantive improvements will hopefully follow next week.

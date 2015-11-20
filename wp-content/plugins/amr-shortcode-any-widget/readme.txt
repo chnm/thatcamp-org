@@ -2,13 +2,15 @@
 Contributors: anmari
 Tags: shortcode, widget, page, templates, page template, widget_area, sidebar
 Tested up to: 4.3
-Version: 2.7
+Version: 2.9
 Stable tag: trunk
 
 == Description ==
 Insert a widget or multiple widgets or a entire widget area (sidebar) into a page using a shortcode. 
 
 Set up your widget first in a normal sidebar.  Check it works. THEN Drag your chosen widgets to the sidebar called "widgets for shortcode".   
+
+PLEASE get your widgets working in a sidebar BEFORE activating this plugin, and PLEASE read https://wordpress.org/plugins/amr-shortcode-any-widget/installation/ before asking any questions.
 
 Using a widget more than once? Reference a specific widget instance from the do_widget shortcode, or the chosen sidebar from the do_widget_area shortcode.  Eg: [do_widget id=widget-n]
 
@@ -18,7 +20,7 @@ The plugins default action is that it will magically find the settings for your 
 
 Change your theme and woried about losing the sidebar settings ? No problem, the plugin will save and restore the widgets_for_shortcode settings.  On display it will then pick up the new themes sidebar settings.  Check this still looks nice please! in some themes you may ned up with white text on a white background and will then have to override or change css.
 
-PLEASE get your widgets working in a sidebar BEFORE activating this plugin, and PLEASE read https://wordpress.org/plugins/amr-shortcode-any-widget/installation/ before asking any questions.
+
 
 == Installation ==
 
@@ -79,6 +81,8 @@ See also [home page](http://wordpress.org/plugins/amr-shortcode-any-widget/)
 *  [wpusersplugin.com](http://wpusersplugin.com) - a suite of plugins to help with membership sites. Major plugin is [amr users](http://wordpress.org/extend/plugins/amr-users/)
 
 == Frequently Asked Questions ==
+
+PLEASE get your widgets working in a sidebar BEFORE activating this plugin, and PLEASE read https://wordpress.org/plugins/amr-shortcode-any-widget/installation/ before asking any questions.
 
 **Widget help, the widget is doing this, when it should do that** 
 
@@ -190,9 +194,13 @@ More info on background: http://wordpress.org/support/topic/your-theme-your-side
 
 
 == Changelog ==
-= Version 2.6 =
-*  Tested on 4.3
-*  Allow one to skip using widget_area parameter [do_widget_area widget_area=sidebar-3] and just say [do_widget_area sidebar-3]
+= Version 2.9 =
+*  in debug help, the link to the installation page help was not properly setup. Fixed. 
+
+= Version 2.8 =
+*  Tested on 4.3.1
+*  No real functional change.
+*  Tweaked debug info to look a little prettier.  Also some error messages will not show unless you haev requested debug (?do_widiet_debug) to try to avoid the message that some genesis theme users are experiencing. I have not been able to recreate this with the genesis theme myself - it might be a plugin that they are using.
 
 
 = Version 2.6 =

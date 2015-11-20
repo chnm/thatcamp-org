@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 /*
 Plugin Name: Email Users
-Version: 4.7.9
+Version: 4.7.10
 Plugin URI: http://wordpress.org/extend/plugins/email-users/
 Description: Allows the site editors to send an e-mail to the blog users. Credits to <a href="http://www.catalinionescu.com">Catalin Ionescu</a> who gave me (Vincent Pratt) some ideas for the plugin and has made a similar plugin. Bug reports and corrections by Cyril Crua, Pokey and Mike Walsh.  Development for enhancements and bug fixes since version 4.1 primarily by <a href="http://michaelwalsh.org">Mike Walsh</a>.
 Author: Mike Walsh & MarvinLabs
@@ -27,7 +27,7 @@ Author URI: http://www.michaelwalsh.org
 */
 
 // Version of the plugin
-define( 'MAILUSERS_CURRENT_VERSION', '4.7.9');
+define( 'MAILUSERS_CURRENT_VERSION', '4.7.10');
 
 // i18n plugin domain
 define( 'MAILUSERS_I18N_DOMAIN', 'email-users' );
@@ -124,6 +124,8 @@ function mailusers_get_default_plugin_settings($option = null)
 		'mailusers_no_role_filter' => 'false',
 		// Mail User - Default setting for Short Code Processing
 		'mailusers_shortcode_processing' => 'false',
+		// Mail User - Default setting for wpautop Processing
+		'mailusers_wpautop_processing' => 'false',
 		// Mail User - Default setting for From Sender Exclude
 		'mailusers_from_sender_exclude' => 'true',
 		// Mail User - Default setting for Copy Sender
@@ -674,6 +676,7 @@ function mailusers_admin_init() {
     register_setting('email_users', 'mailusers_max_bcc_recipients') ;
     register_setting('email_users', 'mailusers_user_settings_table_rows') ;
     register_setting('email_users', 'mailusers_shortcode_processing') ;
+    register_setting('email_users', 'mailusers_wpautop_processing') ;
     register_setting('email_users', 'mailusers_from_sender_exclude') ;
     register_setting('email_users', 'mailusers_omit_display_names') ;
     register_setting('email_users', 'mailusers_copy_sender') ;
@@ -969,6 +972,20 @@ function mailusers_get_shortcode_processing() {
  */
 function mailusers_update_shortcode_processing( $shortcode_processing ) {
 	return update_option( 'mailusers_shortcode_processing', $shortcode_processing );
+}
+
+/**
+ * Wrapper for the short code processing setting
+ */
+function mailusers_get_wpautop_processing() {
+	return get_option( 'mailusers_wpautop_processing' );
+}
+
+/**
+ * Wrapper for the short code processing setting
+ */
+function mailusers_update_wpautop_processing( $wpautop_processing ) {
+	return update_option( 'mailusers_wpautop_processing', $wpautop_processing );
 }
 
 /**
@@ -1495,13 +1512,18 @@ function mailusers_send_mail($recipients = array(), $subject = '', $message = ''
     $ccsender = mailusers_get_copy_sender() ;
 
     //  Return path defaults to sender email if not specified
-    $return_path = mailusers_get_send_bounces_to_address_override() ;
-    if ($return_path == '') $return_path = $sender_email;
+    //$return_path = mailusers_get_send_bounces_to_address_override() ;
+    //if (!empty($return_path)) {
+    //    echo '<div class="update-nag fade"><p>' . sprintf(__('Setting a bounce email address is no longer supported due to casuing problems delivering mail.  Please remove the current setting (%s).', MAILUSERS_I18N_DOMAIN), $return_path) . '</p></div>';
+    //}
 
     //  Build headers
 	$headers[] = ($omit) ? sprintf('From: %s', $sender_email) : sprintf('From: "%s" <%s>', $sender_name, $sender_email);
-	$headers[] = sprintf('Return-Path: <%s>', $return_path);
-	$headers[] = ($omit) ? sprintf('Reply-To: %s', $sender_email) : sprintf('Reply-To: "%s" <%s>', $sender_name, $sender_email);
+	//$headers[] = sprintf('Return-Path: <%s>', $return_path);
+    //  Return path defaults to sender email if not specified
+    $return_path = mailusers_get_send_bounces_to_address_override() ;
+    if (empty($return_path))
+	    $headers[] = ($omit) ? sprintf('Reply-To: %s', $sender_email) : sprintf('Reply-To: "%s" <%s>', $sender_name, $sender_email);
     //$headers[] = 'MIME-Version: 1.0';
 
     if (mailusers_get_add_x_mailer_header() == 'true')

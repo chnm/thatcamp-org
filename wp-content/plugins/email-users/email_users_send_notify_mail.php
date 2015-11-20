@@ -60,13 +60,16 @@
 		if ( !isset( $_POST['subject'] ) || trim($_POST['subject'])=='' ) {
 			$err_msg = $err_msg . __('You must enter a subject.', MAILUSERS_I18N_DOMAIN) . '<br/>';
 		} else {
-			$subject = $_POST['subject'];
+			$subject = stripslashes($_POST['subject']);
 		}
 		
 		if ( !isset( $_POST['mailcontent'] ) || trim($_POST['mailcontent'])=='' ) {
 			$err_msg = $err_msg . __('You must enter some content.', MAILUSERS_I18N_DOMAIN) . '<br/>';
 		} else {
-			$mail_content = $_POST['mailcontent'];
+            if (mailusers_get_wpautop_processing()=='true')
+			    $mail_content = wpautop(stripslashes($_POST['mailcontent']));
+            else
+			    $mail_content = stripslashes($_POST['mailcontent']);
 		}
 		
 		if ( !isset( $_POST['from_sender'] ) || trim($_POST['from_sender'])=='' ) {
@@ -143,7 +146,10 @@
             $mail_content = mailusers_get_default_body();
             $mail_content = mailusers_replace_blog_templates($mail_content);
             $mail_content = mailusers_replace_sender_templates($mail_content, $from_name);
-            $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+            if (mailusers_get_wpautop_processing()=='true')
+                $mail_content = wpautop(mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url));
+            else
+                $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
 	    }
     } else {
 	    if (!isset($subject)) {

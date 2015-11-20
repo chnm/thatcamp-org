@@ -146,7 +146,10 @@ if (0):
         $mail_content = mailusers_get_default_body();
         $mail_content = mailusers_replace_blog_templates($mail_content);
         $mail_content = mailusers_replace_sender_templates($mail_content, $from_name);
-        $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+        if (mailusers_get_wpautop_processing()=='true')
+            $mail_content = wpautop(mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url));
+        else
+            $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
 	}
 endif;
 
@@ -319,6 +322,13 @@ endif;
                                     $user->user_login);
                                 break;
 
+                            case 'flue' :  //  First Last User Email
+                                $name = sprintf('%s %s (%s)',
+                                    is_null($user->first_name) ? $na : $user->first_name,
+                                    is_null($user->last_name) ? $na : $user->last_name,
+                                    $user->user_email);
+                                break;
+
                             case 'lf' :
                                 $name = sprintf('%s, %s',
                                     is_null($user->last_name) ? $na : $user->last_name,
@@ -332,8 +342,19 @@ endif;
                                     $user->user_login);
                                 break;
 
+                            case 'lfue' :
+                                $name = sprintf('%s, %s (%s)',
+                                    is_null($user->last_name) ? $na : $user->last_name,
+                                    is_null($user->first_name) ? $na : $user->first_name,
+                                    $user->user_email);
+                                break;
+
                             case 'ul' :
                                 $name = sprintf('%s', $user->user_login);
+                                break;
+
+                            case 'ue' :
+                                $name = sprintf('%s', $user->user_email);
                                 break;
 
                             case 'uldn' :
@@ -341,8 +362,19 @@ endif;
                                     $user->user_login, $user->display_name);
                                 break;
 
+                            case 'uedn' :
+                                $name = sprintf('%s (%s)',
+                                    $user->user_email, $user->display_name);
+                                break;
+
                             case 'ulfl' :
                                 $name = sprintf('%s (%s %s)', $user->user_login,
+                                    is_null($user->first_name) ? $na : $user->first_name,
+                                    is_null($user->last_name) ? $na : $user->last_name);
+                                break;
+
+                            case 'uefl' :
+                                $name = sprintf('%s (%s %s)', $user->user_email,
                                     is_null($user->first_name) ? $na : $user->first_name,
                                     is_null($user->last_name) ? $na : $user->last_name);
                                 break;
@@ -353,9 +385,20 @@ endif;
                                     is_null($user->first_name) ? $na : $user->first_name);
                                 break;
 
+                            case 'uelf' :
+                                $name = sprintf('%s (%s, %s)', $user->user_email,
+                                    is_null($user->last_name) ? $na : $user->last_name,
+                                    is_null($user->first_name) ? $na : $user->first_name);
+                                break;
+
                             case 'dnul' :
                                 $name = sprintf('%s (%s)',
                                     $user->display_name, $user->user_login);
+                                break;
+
+                            case 'dnue' :
+                                $name = sprintf('%s (%s)',
+                                    $user->display_name, $user->user_email);
                                 break;
 
                             case 'dn' :

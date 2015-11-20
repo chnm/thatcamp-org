@@ -48,7 +48,10 @@ WP Database Backup plugin helps you to Restore Database Backup easily on single 
 <li>Pagination.</li>
 <li>Search and sort database backup feature.</li>
 </ul>
-<a href="http://www.wpseeds.com/product/wp-all-backup/" target="_blank">Get Pro 'WP All Backup' Plugin</a>
+
+<b>Get Pro 'WP All Backup' Plugin </b>
+* http://www.wpseeds.com/product/wp-all-backup/
+
 <p>WP All Backup will backup and restore your entire site at will, complete with FTP &amp; S3 integration</p>
 <h2>Features</h2>
 <ul>
@@ -76,7 +79,8 @@ WP Database Backup plugin helps you to Restore Database Backup easily on single 
 1. Download the plugin file, unzip and place it in your wp-content/plugins/ folder. You can alternatively upload it via the WordPress plugin backend.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. WP Database Backup menu will appear in Dashboard->Tool->WP-DB-Backup. Click on it & get started to use.
-4. Refer to the for <a href=" http://www.wpseeds.com/wp-database-backup/">More Information</a>.
+4. Refer bellow link for more information
+http://www.wpseeds.com/wp-database-backup/
 
 == Screenshots ==
 
@@ -85,7 +89,9 @@ screenshot2.jpeg
 screenshot3.jpeg
 screenshot4.jpeg
 
-Refer to the for <a href=" http://www.wpseeds.com/wp-database-backup/">Screenshots and More Information</a>.
+Refer bellow link for more information
+http://www.wpseeds.com/wp-database-backup/
+
 
 == Changelog ==
 
@@ -149,6 +155,10 @@ Refer to the for <a href=" http://www.wpseeds.com/wp-database-backup/">Screensho
 = 3.4 = 
 <br>Improve security(CSRF protection): Validate that the contents of the form request came from the current site and not somewhere else.
 
+= 3.5 = 
+<br>Backup zip labeled with the site name(Help when backing up multiple sites).
+<br>Changes in Email Notification template.
+
 == Frequently Asked Questions ==
 
  Q-How to  create database Backup?
@@ -179,12 +189,16 @@ Refer to the for <a href=" http://www.wpseeds.com/wp-database-backup/">Screensho
  Q.want more featur?
  If you want more feature then
  Drop Mail :walke.prashant28@gmail.com
+ Pro Features : http://www.wpseeds.com/product/wp-all-backup/         
   
 == Upgrade Notice ==
 
-= 3.4 = 
-Improve security(CSRF protection): Validate that the contents of the form request came from the current site and not somewhere else.
-
+= 3.5 = 
+<br>Backup zip labeled with the site name(Help when backing up multiple sites).
+<br>Changes in Email Notification template.
 
 == Official Site ==
-For <a href="walkeprashant.wordpress.com/wp-database-backup/">More Information</a> Or Advanced feature drop mail:walke.prashant28@gmail.com
+* http://www.wpseeds.com/wp-database-backup/
+* http://www.wpseeds.com/product/wp-all-backup/
+* http://walkeprashant.wordpress.com/wp-database-backup/
+* walke.prashant28@gmail.com
