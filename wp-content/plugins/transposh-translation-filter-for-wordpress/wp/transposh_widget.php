@@ -27,7 +27,7 @@ class transposh_base_widget {
     /**
      * Function that performs the actual subwidget rendering
      */
-    static function tp_widget_do() {
+    static function tp_widget_do( $args ) {
         echo "you should override this function in your widget";
     }
 
@@ -76,14 +76,14 @@ class transposh_plugin_widget extends WP_Widget {
     /** @staticvar int Counts call to the widget do to generate unique IDs */
     static $draw_calls = '';
 
-    function transposh_plugin_widget() {
+    function __construct() {
         // We get the transposh details from the global variable
         $this->transposh = &$GLOBALS['my_transposh_plugin'];
 
         // Widget control defenitions
         $widget_ops = array('classname' => 'widget_transposh', 'description' => __('Transposh language selection widget', TRANSPOSH_TEXT_DOMAIN));
         $control_ops = array('width' => 200, 'height' => 300);
-        $this->WP_Widget('transposh', __('Transposh'), $widget_ops, $control_ops);
+        parent::__construct('transposh', __('Transposh'), $widget_ops, $control_ops);
 
         add_action('widgets_init', create_function('', 'register_widget("transposh_plugin_widget");'));
 

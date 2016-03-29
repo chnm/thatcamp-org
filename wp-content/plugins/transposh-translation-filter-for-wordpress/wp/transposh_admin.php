@@ -31,7 +31,7 @@ class transposh_plugin_admin {
     private $page = '';
 
     // constructor of class, PHP4 compatible construction for backward compatibility
-    function transposh_plugin_admin(&$transposh) {
+    function __construct(&$transposh) {
         $this->transposh = &$transposh;
         // add our notices
         add_action('admin_notices', array(&$this, 'notices'));

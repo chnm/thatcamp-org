@@ -341,7 +341,7 @@ class transposh_plugin {
      * @param string $buffer Original page
      * @return string Modified page buffer
      */
-    function process_page(&$buffer) {
+    function process_page($buffer) {
         /*        if (!$this->target_language) {
           global $wp;
           $this->on_parse_request($wp);

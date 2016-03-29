@@ -54,7 +54,7 @@ class parserstats {
     /**
      * This function is when the object is initialized, which is a good time to start ticking.
      */
-    function parserstats() {
+    function __construct() {
         $this->start_time = microtime(true);
     }
 

@@ -52,7 +52,7 @@ class transposh_database {
     /**
      * constructor of class, PHP4 compatible construction for backward compatibility
      */
-    function transposh_database(&$transposh) {
+    function __construct(&$transposh) {
         $this->transposh = &$transposh;
         $this->translation_table = $GLOBALS['wpdb']->prefix . TRANSLATIONS_TABLE;
         $this->translation_log_table = $GLOBALS['wpdb']->prefix . TRANSLATIONS_LOG;
