@@ -418,7 +418,7 @@ function thatcamp_registrations_process_user($registrationId = null, $role = 'au
             $userEmail = $registration->applicant_email;
 
             // Get a sanitized and unique username
-            $uarray = split( '@', $userEmail );
+            $uarray = explode( '@', $userEmail );
             $userName = sanitize_user( $uarray[0], true ); // Use strict to get rid of nastiness
 	    $unique_user_name = apply_filters( 'pre_user_login', $userName );
 
