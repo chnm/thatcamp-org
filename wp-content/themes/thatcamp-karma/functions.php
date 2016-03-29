@@ -534,11 +534,13 @@ function thatcamp_mod_user_nav() {
 		'screen_function'         => 'bp_activity_screen_my_activity',
 	);
 
-	$bp->bp_nav[ bp_get_groups_slug() ]['name'] = str_replace( 'Groups', 'Camps', $bp->bp_nav[ bp_get_groups_slug() ]['name'] );
-
-	// Cheating: Put Camps before Friends
 	if ( isset( $bp->bp_nav[ bp_get_groups_slug() ] ) ) {
-		$bp->bp_nav[ bp_get_groups_slug() ]['position'] = 55;
+		$bp->bp_nav[ bp_get_groups_slug() ]['name'] = str_replace( 'Groups', 'Camps', $bp->bp_nav[ bp_get_groups_slug() ]['name'] );
+
+		// Cheating: Put Camps before Friends
+		if ( isset( $bp->bp_nav[ bp_get_groups_slug() ] ) ) {
+			$bp->bp_nav[ bp_get_groups_slug() ]['position'] = 55;
+		}
 	}
 
 	// Correct the Edit My Profile link
