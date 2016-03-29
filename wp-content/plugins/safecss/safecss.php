@@ -119,7 +119,9 @@ add_filter('get_edit_post_link', 'safecss_revision_post_link');
  */
 function get_safecss_post() {
 
-	if ( $a = array_shift( get_posts( array( 'numberposts' => 1, 'post_type' => 'safecss', 'post_status' => 'publish' ) ) ) )
+	$posts = get_posts( array( 'numberposts' => 1, 'post_type' => 'safecss', 'post_status' => 'publish' ) );
+	$a = array_shift( $posts );
+	if ( $a )
 		$safecss_post = get_object_vars( $a );
 	else
 		$safecss_post = false;
