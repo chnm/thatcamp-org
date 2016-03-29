@@ -9,7 +9,7 @@ Author URI: http://boone.gorg.es
 */
 
 class Participad {
-	function instance() {
+	static function instance() {
 		static $instance;
 
 		if ( empty( $instance ) ) {
