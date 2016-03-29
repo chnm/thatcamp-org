@@ -441,7 +441,7 @@ function thatcamp_registrations_process_user($registrationId = null, $role = 'au
 	    }
 
             thatcamp_registrations_update_user_data($userId, $userInfo);
-            wp_new_user_notification($userId, $randomPassword);
+            wp_new_user_notification( $userId, $randomPassword, 'both' );
         }
     }
 
