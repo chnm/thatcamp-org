@@ -53,7 +53,7 @@
 		function __construct( ){
 
 			$this->load_text_domain( );
-			$this->PopularWidgetFunctions( );
+			parent::__construct( );
 
 			WP_Widget::__construct( 'popular-widget', __( 'Popular Widget', 'popular-widget' ),
 				array( 'classname' => 'popular-widget', 'description' => __( "Display most popular posts and tags", 'popular-widget' ) )
