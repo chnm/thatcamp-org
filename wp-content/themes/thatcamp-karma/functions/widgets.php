@@ -17,8 +17,8 @@ class THATCamp_Network_Posts extends WP_Widget {
 	/**
 	 * Don't think we need any options
 	 */
-	public function form() {}
-	public function update() {}
+	public function form( $instance ) {}
+	public function update( $new_instance, $old_instance ) {}
 
 	public function widget( $args, $instance ) {
 		if ( ! function_exists( 'get_sitewide_tags_option' ) ) {
