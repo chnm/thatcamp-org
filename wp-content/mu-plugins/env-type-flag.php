@@ -34,5 +34,3 @@ function bbg_env_type_flag() {
 }
 add_action( 'wp_footer', 'bbg_env_type_flag' );
 add_action( 'admin_footer', 'bbg_env_type_flag' );
-
-?>

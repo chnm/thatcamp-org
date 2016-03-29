@@ -485,7 +485,7 @@ function thatcamp_mod_user_nav() {
 	if ( bp_is_active( 'settings' ) && is_user_logged_in() ) {
 		bp_core_remove_nav_item( 'settings' );
 	}
-	
+
         // There's a baffling bug in BuddyPress that makes this necessary
         // I blame the Buddybar
         if ( is_user_logged_in() ) {
