@@ -255,7 +255,7 @@ function safecss_init() {
 		// Why KSES instead of strip_tags?  Who knows?
 		$css = wp_kses_split( $prev = $css, array(), array() );
 		$css = str_replace( '&gt;', '>', $css ); // kses replaces lone '>' with &gt;
-		
+
 		// Why both KSES and strip_tags?  Because we just added some '>'.
 		$css = strip_tags( $css );
 
