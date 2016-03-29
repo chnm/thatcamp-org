@@ -21,9 +21,6 @@ Network: true
 */
 class ds_revisions_limit {
 
-	function ds_revisions_limit() {
-	}
-
 	function limit($limit) {
 		$ds_revisions_number = get_site_option('ds_revisions_limit');
 		if ( !$ds_revisions_number ) {

@@ -49,19 +49,12 @@ class c2c_AutoHyperlinkURLs extends C2C_Plugin_025 {
 
 	public static $instance;
 
-	/**
-	 * Constructor
-	 */
 	public function __construct() {
-		$this->c2c_AutoHyperlinkURLs();
-	}
-
-	public function c2c_AutoHyperlinkURLs() {
 		// Be a singleton
 		if ( ! is_null( self::$instance ) )
 			return;
 
-		$this->C2C_Plugin_025( '4.0', 'autohyperlink-urls', 'c2c', __FILE__, array() );
+		parent::__construct( '4.0', 'autohyperlink-urls', 'c2c', __FILE__, array() );
 		register_activation_hook( __FILE__, array( __CLASS__, 'activation' ) );
 		self::$instance = $this;
 	}
@@ -149,7 +142,7 @@ class c2c_AutoHyperlinkURLs extends C2C_Plugin_025 {
 	 *
 	 * @return void (Text will be echoed.)
 	 */
-	public function options_page_description() {
+	public function options_page_description( $localized_heading_text = '' ) {
 		$options = $this->get_options();
 		parent::options_page_description( __( 'Auto-hyperlink URLs', $this->textdomain ) );
 		echo '<p>' . __( 'Automatically hyperlink text URLs and email addresses originally written only as plaintext.', $this->textdomain ) . '</p>';

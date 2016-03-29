@@ -32,7 +32,7 @@ class Thatcamp_User_Profile_Sites {
 	/**
 	* The main loader. The heavyweight. Hooks our stuff into WP
 	*/
-	function thatcamp_user_profile_sites() {
+	function __construct() {
 
 		add_action( 'init', array ( $this, 'init' ) );
 		add_action( 'plugins_loaded', array ( $this, 'loaded' ) );

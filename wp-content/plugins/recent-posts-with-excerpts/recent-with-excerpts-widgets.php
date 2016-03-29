@@ -33,9 +33,9 @@ load_plugin_textdomain( 'recent_posts_with_excerpts', '', plugin_dir_path(__FILE
 
 class RecentPostsWithExcerpts extends WP_Widget {
 
-	function RecentPostsWithExcerpts() {
+	function __construct() {
 			$widget_ops = array('classname' => 'recent_with_excerpt', 'description' => __( 'Your most recent posts, with optional excerpts', 'recent_posts_with_excerpts') );
-			$this->WP_Widget('RecentPostsWithExcerpts', __('Recent Posts with Excerpts', 'recent_posts_with_excerpts'), $widget_ops);
+			parent::__construct('RecentPostsWithExcerpts', __('Recent Posts with Excerpts', 'recent_posts_with_excerpts'), $widget_ops);
 	}
 	
 	

@@ -15,8 +15,8 @@ if (!class_exists('amr_saw_plugin_admin')) {
 		var $homepage	= '';
 		var $parent_slug = 'plugin_listings_menu';
 		var $accesslvl	= 'manage_options';
-		
-		function amr_saw_plugin_admin() {  
+
+		function __construct() {
 			add_action('admin_menu', array(&$this, 'register_settings_page') );
 			add_filter('plugin_action_links', array(&$this, 'add_action_link'), 10, 2 );			
 		}		

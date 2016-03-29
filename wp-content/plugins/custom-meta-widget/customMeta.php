@@ -30,7 +30,7 @@ function customMetaWidget() {
 	); 
 	
 	// extend widget
-	$this->WP_Widget( 'customMetaWidget', 'Custom Meta', $widget_ops );
+	parent::__construct( 'customMetaWidget', 'Custom Meta', $widget_ops );
 }
 
 

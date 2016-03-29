@@ -70,7 +70,7 @@ abstract class C2C_Plugin_025 {
 	 * @param array $plugin_options (optional) Array specifying further customization of plugin configuration.
 	 * @return void
 	 */
-	public function C2C_Plugin_025( $version, $id_base, $author_prefix, $file, $plugin_options = array() ) {
+	public function __construct( $version, $id_base, $author_prefix, $file, $plugin_options = array() ) {
 		global $pagenow;
 		$id_base = sanitize_title( $id_base );
 		if ( !file_exists( $file ) )
