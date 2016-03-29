@@ -10,7 +10,14 @@ class Thatcamp_Registrations_Public_Registration {
     function __construct() {
         add_shortcode('thatcamp-registration', array($this, 'shortcode'));
         $this->options = get_option('thatcamp_registrations_options');
-        $this->current_user = wp_get_current_user();
+    }
+
+    protected function current_user() {
+	if ( ! isset( $this->current_user ) ) {
+		$this->current_user = wp_get_current_user();
+	}
+
+	return $this->current_user;
     }
 
 
@@ -71,7 +78,7 @@ class Thatcamp_Registrations_Public_Registration {
             }
         }
 
-            $userEmail = is_user_logged_in() ? $this->current_user->user_email : @$_POST['user_email'];
+            $userEmail = is_user_logged_in() ? $this->current_user()->user_email : @$_POST['user_email'];
 
             if ($existingApp = thatcamp_registrations_get_registration_by_applicant_email($userEmail)) {
                 $alerts['existing_application'] = __('You have already submitted the form with that email address.','thatcamp-registrations');
@@ -84,7 +91,7 @@ class Thatcamp_Registrations_Public_Registration {
             echo '<div>You must have a user account to complete the form. Please <a href="<?php echo wp_login_url( get_permalink() ); ?>" title="Login">log in</a>.</div>';
         }
         // If the currently authenticated user has submitted a registration.
-        elseif (is_user_logged_in() && $existingApp = thatcamp_registrations_get_registration_by_user_id($this->current_user->ID)) {
+        elseif (is_user_logged_in() && $existingApp = thatcamp_registrations_get_registration_by_user_id($this->current_user()->ID)) {
             echo '<div>'.__('You have already submitted the form.','thatcamp-registrations').'</div>';
         }
         elseif ((!empty($_POST)) && empty($alerts)) {
@@ -107,7 +114,7 @@ class Thatcamp_Registrations_Public_Registration {
               echo "<p>" . sprintf( __( "If you've attended a THATCamp in the past, you probably already have an account on thatcamp.org. <a href='%s'>Log in</a> and we'll pre-fill some of your information for you.", 'thatcamp-registrations' ), $login_link ) . "</p>";
             } else {
               echo "<h3>" . __( "Welcome back!", 'thatcamp-registrations' ) . "</h3>";
-              echo "<p>" . sprintf( __( 'You are logged in as <strong>%1$s</strong>, using the the email address <strong>%2$s</strong>', 'thatcamp-registrations' ), $this->current_user->display_name, $this->current_user->user_email ) . "</p>";
+              echo "<p>" . sprintf( __( 'You are logged in as <strong>%1$s</strong>, using the the email address <strong>%2$s</strong>', 'thatcamp-registrations' ), $this->current_user()->display_name, $this->current_user()->user_email ) . "</p>";
             }
 
             echo '<form method="post" action="">';
@@ -116,8 +123,8 @@ class Thatcamp_Registrations_Public_Registration {
             $this->_user_info_form();
 
             if (is_user_logged_in()) {
-                echo '<input type="hidden" name="user_id" value="'. $this->current_user->ID .'" />';
-                echo '<input type="hidden" name="user_email" value="'. $this->current_user->user_email .'" />';
+                echo '<input type="hidden" name="user_id" value="'. $this->current_user()->ID .'" />';
+                echo '<input type="hidden" name="user_email" value="'. $this->current_user()->user_email .'" />';
             }
 
             echo '<input type="submit" name="thatcamp_registrations_save_registration" value="'. __('Submit Registration', 'thatcamp-registrations') .'" />';
