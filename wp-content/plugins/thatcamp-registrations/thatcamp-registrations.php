@@ -32,7 +32,7 @@ class Thatcamp_Registrations_Loader {
 	/**
 	* The main loader. The heavyweight. Hooks our stuff into WP
 	*/
-	function thatcamp_registrations_loader() {
+	function __construct() {
 
 		add_action( 'init', array ( $this, 'init' ) );
 		add_action( 'plugins_loaded', array ( $this, 'loaded' ) );

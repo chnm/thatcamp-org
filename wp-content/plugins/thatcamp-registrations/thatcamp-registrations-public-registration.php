@@ -7,7 +7,7 @@ class Thatcamp_Registrations_Public_Registration {
     private $options;
     private $current_user;
 
-    function thatcamp_registrations_public_registration() {
+    function __construct() {
         add_shortcode('thatcamp-registration', array($this, 'shortcode'));
         $this->options = get_option('thatcamp_registrations_options');
         $this->current_user = wp_get_current_user();
