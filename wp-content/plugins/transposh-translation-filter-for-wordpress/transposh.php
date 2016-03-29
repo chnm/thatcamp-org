@@ -505,7 +505,7 @@ class transposh_plugin {
 
     //function flush_transposh_rewrite_rules() {
     //add_filter('rewrite_rules_array', array(&$this, 'update_rewrite_rules'));
-//        $GLOBALS['wp_rewrite']->flush_rules();        
+//        $GLOBALS['wp_rewrite']->flush_rules();
     //}
 
     /**
@@ -952,7 +952,7 @@ class transposh_plugin {
         $use_params = !$this->enable_permalinks_rewrite;
 
         // we don't really know, but we sometime rewrite urls when we are in the default language (canonicals?), so just clean them up
-        //       if ($this->target_language == $this->options->default_language) 
+        //       if ($this->target_language == $this->options->default_language)
         if ($this->options->is_default_language($this->target_language)) {
             $href = transposh_utils::cleanup_url($href, $this->home_url);
             tp_logger("cleaned up: $href", 4);
@@ -1214,7 +1214,7 @@ class transposh_plugin {
     /**
      * This function makes sure wordpress sees the appropriate locale on translated pages for .po/.mo and mu integration
      * @param string $locale
-     * @return string 
+     * @return string
      */
     function transposh_locale_filter($locale) {
         $lang = transposh_utils::get_language_from_url($_SERVER['REQUEST_URI'], $this->home_url);
@@ -1237,7 +1237,7 @@ class transposh_plugin {
      * @see http://trac.transposh.org/wiki/ShortCodes
      * @param array $atts
      * @param string $content
-     * @return string 
+     * @return string
      */
     function tp_shortcode($atts, $content = null) {
         $only_class = '';
@@ -1622,7 +1622,7 @@ $my_transposh_plugin = new transposh_plugin();
  */
 function transposh_widget($args = array(), $instance = array('title' => 'Translation'), $extcall = false) {
     global $my_transposh_plugin;
-    $my_transposh_plugin->widget->widget($args, $instance, $extcall); //TODO!!! 
+    $my_transposh_plugin->widget->widget($args, $instance, $extcall); //TODO!!!
 }
 
 /**

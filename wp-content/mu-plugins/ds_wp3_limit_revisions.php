@@ -31,7 +31,7 @@ class ds_revisions_limit {
 		}
 		if ( $ds_revisions_number == 0) {
 			$ds_revisions_limit = false;
-		} else {	
+		} else {
 			$ds_revisions_limit = $ds_revisions_number;
 		}
 	define('WP_POST_REVISIONS', $ds_revisions_limit);
@@ -52,18 +52,18 @@ class ds_revisions_limit {
 			//300s = 5 mins
 			$ds_autosave_limit = 300;
 		}
-		
+
 		echo '<h3>Limit Post Revisions</h3>';
 		echo '<table class="form-table">
-			<tr valign="top"> 
+			<tr valign="top">
 			<th scope="row">' . __('Post Revisions') . '</th>
 			<td><input type="text" name="ds_revisions_limit" id="ds_revisions_limit" style="width: 15%" value="'.$ds_revisions_limit.'" /><br /><small>' . __('Maximum number of revisions per post. Enter 0 to disable post revisions(3 recommended).') . '</small></td>
 			</tr>
-			<tr valign="top"> 
+			<tr valign="top">
 			<th scope="row">' . __('Autosave Interval') . '</th>
 			<td><input type="text" name="ds_autosave_limit" id="ds_autosave_limit" style="width: 15%" value="'.$ds_autosave_limit.'" /><br /><small>' . __('Autosave interval in seconds. Enter 0 to disable autosave(300 recommended, 60 is WP default).') . '</small></td>
 			</tr>
-			</table>'; 
+			</table>';
 	}
 
 	function update() {
@@ -73,7 +73,7 @@ class ds_revisions_limit {
 }
 
 if (class_exists("ds_revisions_limit")) {
-	$ds_revisions_limit = new ds_revisions_limit();	
+	$ds_revisions_limit = new ds_revisions_limit();
 	}
 
 if (isset($ds_revisions_limit)) {

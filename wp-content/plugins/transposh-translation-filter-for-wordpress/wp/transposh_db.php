@@ -644,10 +644,10 @@ class transposh_database {
             // notice - keep every field on a new line or dbdelta fails
             $GLOBALS['wpdb']->query("ALTER TABLE {$this->translation_table} DROP PRIMARY KEY");
             $sql = "CREATE TABLE {$this->translation_table} (
-                    original TEXT NOT NULL, 
-                    lang CHAR(5) NOT NULL, 
-                    translated TEXT, 
-                    source TINYINT NOT NULL, 
+                    original TEXT NOT NULL,
+                    lang CHAR(5) NOT NULL,
+                    translated TEXT,
+                    source TINYINT NOT NULL,
                     KEY original (original(6),lang)
                     ) DEFAULT CHARSET=utf8 COLLATE=utf8_bin";
 
@@ -659,12 +659,12 @@ class transposh_database {
             // this should be removed in a far future...
             $GLOBALS['wpdb']->query("ALTER TABLE {$this->translation_log_table} DROP PRIMARY KEY");
             $sql = "CREATE TABLE {$this->translation_log_table} (
-                    original text NOT NULL, 
-                    lang CHAR(5) NOT NULL, 
-                    translated text, 
-                    translated_by VARCHAR(15), 
-                    source TINYINT NOT NULL, 
-                    timestamp TIMESTAMP, 
+                    original text NOT NULL,
+                    lang CHAR(5) NOT NULL,
+                    translated text,
+                    translated_by VARCHAR(15),
+                    source TINYINT NOT NULL,
+                    timestamp TIMESTAMP,
                     KEY original (original(6),lang,timestamp)
                     ) DEFAULT CHARSET=utf8 COLLATE=utf8_bin";
 

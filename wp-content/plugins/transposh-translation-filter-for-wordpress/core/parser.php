@@ -287,7 +287,7 @@ class parser {
     function is_entity_letter($entity) {
         tp_logger("checking ($entity) - " . htmlentities($entity), 4);
         $entnum = (int) substr($entity, 2);
-        // skip multiply and divide (215, 247) 
+        // skip multiply and divide (215, 247)
         if (($entnum >= 192 && $entnum <= 214) || ($entnum >= 216 && $entnum <= 246) || ($entnum >= 248 && $entnum <= 696)) {
             return true;
         }
@@ -898,7 +898,7 @@ class parser {
             $body = $this->html->find('body', 0);
             if ($body != null) $body->lastChild()->outertext .= $hiddenspans;
         }
-        
+
         // This adds a meta tag with our statistics json-encoded inside...
         $this->stats->stop_timing();
         $head = $this->html->find('head', 0);

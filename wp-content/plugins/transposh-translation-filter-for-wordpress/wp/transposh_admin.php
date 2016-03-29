@@ -216,7 +216,7 @@ class transposh_plugin_admin {
      * @return void
      */
     function admin_print_styles() {
-        
+
     }
 
     /**
@@ -425,7 +425,7 @@ class transposh_plugin_admin {
         $this->checkbox($this->transposh->options->allow_full_version_upgrade_o, __('Allow upgrading to full version', TRANSPOSH_TEXT_DOMAIN)
                 , __('Allow upgrading to full version from http://transposh.org, which has no limit on languages used and includes a full set of widgets', TRANSPOSH_TEXT_DOMAIN));
         $this->sectionstop();
-        
+
         $this->section(__('Translation related settings', TRANSPOSH_TEXT_DOMAIN));
 
         /*

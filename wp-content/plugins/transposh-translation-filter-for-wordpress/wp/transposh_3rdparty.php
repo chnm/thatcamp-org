@@ -189,7 +189,7 @@ class transposh_3rdparty {
         // we reduce the priorty by 0.2, but not below zero
         $sm_page->SetProprity(max($sm_page->GetPriority() - 0.2, 0));
 
-        /* <xhtml:link 
+        /* <xhtml:link
           rel="alternate"
           hreflang="de"
           href="http://www.example.com/de" /> */
