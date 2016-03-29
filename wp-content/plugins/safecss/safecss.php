@@ -521,7 +521,7 @@ function safecss_class() {
 		var $props_w_urls      = array( 'background', 'background-image', 'list-style', 'list-style-image' );
 		var $allowed_protocols = array( 'http' );
 
-		function safecss( &$css ) {
+		function __construct( &$css ) {
 			return $this->csstidy_optimise( $css );
 		}
 

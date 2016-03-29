@@ -19,7 +19,7 @@
 		 * @return void
 		 * @since 0.5.0
 		 */
-		function PopularWidgetFunctions( ){ 
+		function __construct( ){
 			//add_action( 'template_redirect',array( &$this,'set_post_view') );
 			add_action( 'admin_print_styles',array( &$this,'load_admin_styles' ) );
 			add_action( 'wp_enqueue_scripts',array( &$this,'load_scripts_styles' ) );

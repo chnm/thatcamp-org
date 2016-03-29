@@ -22,7 +22,7 @@ var $homepage = 'http://shinraholdings.com/plugins/custom-meta-widget/';
 /**
  * CONSTRUCTOR
  */
-function customMetaWidget() {
+function __construct() {
 	// set widget options
 	$widget_ops = array (
 		'classname' => 'customMetaWidget',

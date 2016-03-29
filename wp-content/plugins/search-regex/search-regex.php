@@ -11,7 +11,7 @@ Author URI: http://urbangiraffe.com/
 include dirname( __FILE__ ).'/plugin.php';
 
 class SearchRegex extends SearchRegex_Plugin {
-	function SearchRegex()	{
+	function __construct()	{
 		if (  is_admin()) {
 			$this->register_plugin( 'search-regex', __FILE__ );
 			$this->add_filter( 'admin_menu' );
