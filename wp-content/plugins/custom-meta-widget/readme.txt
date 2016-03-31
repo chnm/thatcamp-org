@@ -4,8 +4,8 @@ Contributors: bitacre
 Donate link: http://shinraholdings.com/donate
 Tags: meta,hide,link,admin,simple,widget,default,wordpress.org,change,rss,remove,login
 Requires at least: 2.8
-Tested up to: 3.6.1
-Stable tag: 1.4.6
+Tested up to: 4.4
+Stable tag: 1.4.7
 
 Clone of the standard Meta widget plus options to hide log in/out, admin, feed and WordPress.org/custom links.
 
@@ -48,6 +48,9 @@ Most people, myself included, are understandably reluctant to donate real curren
 3. Comparison of options between the standard and Custom Meta Widget.
 
 == Changelog ==
+= 1.4.7 =
+* Purely cosmetic update for WordPress 4.4
+
 = 1.4.6 = 
 * WordPress 3.6.1 update
 * Added fr_FR (French) translation
@@ -125,6 +128,9 @@ Most people, myself included, are understandably reluctant to donate real curren
 * There may still be bugs, but I can't find any. 
 
 == Upgrade Notice ==
+= 1.4.7 =
+* Purely cosmetic update for WordPress 4.4. Happy New Year.
+
 = 1.4.6 =
 Optional upgrade, new translations pl_PL (Polish), fr_FR (French), sr_RS (Serbian), and nl_NL (Dutch).
 
