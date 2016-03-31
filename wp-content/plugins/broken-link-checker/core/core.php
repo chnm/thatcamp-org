@@ -14,6 +14,7 @@ if ( !function_exists( 'microtime_float' ) ) {
 require BLC_DIRECTORY . '/includes/screen-options/screen-options.php';
 require BLC_DIRECTORY . '/includes/screen-meta-links.php';
 require BLC_DIRECTORY . '/includes/wp-mutex.php';
+require BLC_DIRECTORY . '/includes/transactions-manager.php';
 
 if (!class_exists('wsBrokenLinkChecker')) {
 
@@ -37,7 +38,7 @@ class wsBrokenLinkChecker {
    * @param blcConfigurationManager $conf An instance of the configuration manager
    * @return void
    */
-    function wsBrokenLinkChecker ( $loader, $conf ) {
+	function __construct ( $loader, $conf ) {
 		$this->db_version = BLC_DATABASE_VERSION;
         
         $this->conf = $conf;
@@ -81,8 +82,7 @@ class wsBrokenLinkChecker {
     	add_action('blc_cron_email_notifications', array( $this, 'maybe_send_email_notifications' ));
 		add_action('blc_cron_check_links', array($this, 'cron_check_links'));
 		add_action('blc_cron_database_maintenance', array($this, 'database_maintenance'));
-		add_action('blc_cron_check_news', array($this, 'check_news'));
-		
+
         //Set the footer hook that will call the worker function via AJAX.
         add_action('admin_footer', array($this,'admin_footer'));
 		
@@ -259,7 +259,7 @@ class wsBrokenLinkChecker {
 		wp_clear_scheduled_hook('blc_cron_check_links');
 		wp_clear_scheduled_hook('blc_cron_email_notifications');
 		wp_clear_scheduled_hook('blc_cron_database_maintenance');
-		wp_clear_scheduled_hook('blc_cron_check_news');
+		wp_clear_scheduled_hook('blc_cron_check_news'); //Unused event.
 		//Note the deactivation time for each module. This will help them 
 		//synch up propely if/when the plugin is reactivated.
 		$moduleManager = blcModuleManager::getInstance();
@@ -331,14 +331,6 @@ class wsBrokenLinkChecker {
 		add_action( 'admin_print_scripts-' . $options_page_hook, array($this, 'enqueue_settings_scripts') );
         add_action( 'admin_print_scripts-' . $links_page_hook, array($this, 'enqueue_link_page_scripts') );
         
-        //Add a "Feedback" button that links to the plugin's UserVoice forum
-        add_screen_meta_link(
-        	'blc-feedback-widget',
-        	__('Feedback', 'broken-link-checker'),
-        	'http://whiteshadow.uservoice.com/forums/58400-broken-link-checker',
-        	array($options_page_hook, $links_page_hook)
-		);
-
 	    //Make the Settings page link to the link list
 		add_screen_meta_link(
         	'blc-links-page-link',
@@ -347,17 +339,6 @@ class wsBrokenLinkChecker {
 			$options_page_hook,
 			array('style' => 'font-weight: bold;')
 		);
-		
-		//Add a link to the latest blog post/whatever about this plugin, if any.
-		if ( !$this->conf->get('user_has_donated') && isset($this->conf->options['plugin_news']) && !empty($this->conf->options['plugin_news']) ){
-			$news = $this->conf->options['plugin_news'];
-	        add_screen_meta_link(
-	        	'blc-plugin-news-link',
-	        	$news[0],
-	        	$news[1],
-	        	array($options_page_hook, $links_page_hook)
-			);
-		}
     }
     
   /**
@@ -2113,7 +2094,8 @@ class wsBrokenLinkChecker {
 				$link->false_positive = true;
 				$link->last_check_attempt = time();
 				$link->log = __("This link was manually marked as working by the user.", 'broken-link-checker');
-				
+
+				$link->isOptionLinkChanged = true;
 				//Save the changes
 				if ( $link->save() ){
 					$processed_links++;
@@ -2172,6 +2154,7 @@ class wsBrokenLinkChecker {
 
 				$link->dismissed = true;
 
+				$link->isOptionLinkChanged = true;
 				//Save the changes
 				if ( $link->save() ){
 					$processed_links++;
@@ -2581,7 +2564,10 @@ class wsBrokenLinkChecker {
 
 			//Randomizing the array reduces the chances that we'll get several links to the same domain in a row.
 			shuffle($links);
-			
+
+			$transactionManager = TransactionManager::getInstance();
+			$transactionManager->start();
+
 			foreach ($links as $link) {
 				//Does this link need to be checked? Excluded links aren't checked, but their URLs are still
 				//tested periodically to see if they're still on the exclusion list.
@@ -2611,6 +2597,7 @@ class wsBrokenLinkChecker {
 					return;
 				}
 			}
+            $transactionManager->commit();
 
 			$start = microtime(true);
 			$links = $this->get_links_to_check($max_links_per_query);
@@ -2691,30 +2678,29 @@ class wsBrokenLinkChecker {
 		//I could put an index on last_check_attempt, but that value is almost 
 		//certainly unique for each row so it wouldn't be much better than a full table scan.
 		if ( $count_only ){
-			$q = "SELECT COUNT(links.link_id)\n";
+			$q = "SELECT COUNT(DISTINCT links.link_id)\n";
 		} else {
-			$q = "SELECT links.*\n";
+			$q = "SELECT DISTINCT links.*\n";
 		}
 		$q .= "FROM {$wpdb->prefix}blc_links AS links
-		      WHERE 
-		      	(
-				  	( last_check_attempt < %s ) 
-					OR 
-			 	  	( 
-						(broken = 1 OR being_checked = 1) 
-						AND may_recheck = 1
-						AND check_count < %d 
-						AND last_check_attempt < %s 
-					)
-				)
-				AND EXISTS (
-					SELECT 1 FROM {$wpdb->prefix}blc_instances AS instances
-					WHERE 
-						instances.link_id = links.link_id
-						AND ( instances.container_type IN ({$loaded_containers}) )
-						AND ( instances.parser_type IN ({$loaded_parsers}) )
-				)
-			";
+            INNER JOIN {$wpdb->prefix}blc_instances AS instances USING(link_id)
+            WHERE
+                (
+                    ( last_check_attempt < %s )
+                    OR
+                    (
+                        (broken = 1 OR being_checked = 1)
+                        AND may_recheck = 1
+                        AND check_count < %d
+                        AND last_check_attempt < %s
+                    )
+                )
+
+            AND
+                ( instances.container_type IN ({$loaded_containers}) )
+                AND ( instances.parser_type IN ({$loaded_parsers}) )
+            ";
+
 		if ( !$count_only ){
 			$q .= "\nORDER BY last_check_attempt ASC\n";
 			if ( !empty($max_results) ){
@@ -2928,7 +2914,8 @@ class wsBrokenLinkChecker {
 			$link->false_positive = true;
 			$link->last_check_attempt = time();
 			$link->log = __("This link was manually marked as working by the user.", 'broken-link-checker');
-			
+
+			$link->isOptionLinkChanged = true;
 			//Save the changes
 			if ( $link->save() ){
 				die( "OK" );
@@ -2967,6 +2954,7 @@ class wsBrokenLinkChecker {
 			$link->dismissed = $dismiss;
 
 			//Save the changes
+			$link->isOptionLinkChanged = true;
 			if ( $link->save() ){
 				die( "OK" );
 			} else {
@@ -3213,6 +3201,7 @@ class wsBrokenLinkChecker {
 
 		//In case the immediate check fails, this will ensure the link is checked during the next work() run.
 		$link->last_check_attempt = 0;
+		$link->isOptionLinkChanged = true;
 		$link->save();
 
 		//Check the link and save the results.
@@ -3771,12 +3760,7 @@ class wsBrokenLinkChecker {
 		if ( !wp_next_scheduled('blc_cron_database_maintenance') ){
 			wp_schedule_event(time(), 'bimonthly', 'blc_cron_database_maintenance');
 		}
-		
-		//Check for news notices related to this plugin
-		if ( !wp_next_scheduled('blc_cron_check_news') ){
-			wp_schedule_event(time(), 'daily', 'blc_cron_check_news');
-		}
-	} 
+	}
 	
   /**
    * Load the plugin's textdomain.
@@ -3787,34 +3771,6 @@ class wsBrokenLinkChecker {
 		$this->is_textdomain_loaded = load_plugin_textdomain( 'broken-link-checker', false, basename(dirname($this->loader)) . '/languages' );
 	}
 	
-	/**
-	 * Check if there's a "news" link to display on the plugin's pages.
-	 * 
-	 * @return void
-	 */
-	function check_news(){
-		$url = 'http://w-shadow.com/plugin-news/broken-link-checker-news.txt';
-		
-		//Retrieve the appropriate "news" file
-		$res = wp_remote_get($url);
-		if ( is_wp_error($res) ){
-			return;
-		}
-		
-		//Anything there?
-		if ( isset($res['response']['code']) && ($res['response']['code'] == 200) && isset($res['body']) ) {
-			//The file should contain two lines - a title and an URL
-			$news = explode("\n", trim($res['body']));
-			if ( count($news) == 2 ){
-				//Save for later. 
-				$this->conf->options['plugin_news'] = $news;
-			} else {
-				$this->conf->options['plugin_news'] = null;
-			}
-			$this->conf->save_options();
-		}		
-	}
-
 	protected static function get_default_log_directory() {
 		$uploads = wp_upload_dir();
 		return $uploads['basedir'] . '/broken-link-checker';

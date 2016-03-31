@@ -1,10 +1,10 @@
 === Broken Link Checker ===
-Contributors: managewp,freediver
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6P9S6CE3SRSW
+Contributors: freediver
+Donate link:
 Tags: links, broken, maintenance, blogroll, custom fields, admin, comments, posts
 Requires at least: 3.2
-Tested up to: 4.3.1
-Stable tag: 1.10.10
+Tested up to: 4.4.2
+Stable tag: 1.11.2
 
 This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found.
 
@@ -21,8 +21,6 @@ This plugin will monitor your blog looking for broken links and let you know if 
 * You can search and filter links by URL, anchor text and so on.
 * Links can be edited directly from the plugin's page, without manually updating each post.
 * Highly configurable.
-
-[Suggest new features and improvements here](http://feedback.w-shadow.com/forums/58400-broken-link-checker)
 
 **Basic Usage**
 
@@ -80,6 +78,10 @@ You can also click on the contents of the "Status" or "Link Text" columns to get
 
 This plugin uses some icons from the [Font Awesome icon font](http://fortawesome.github.io/Font-Awesome/). Font Awesome is licensed under SIL OFL 1.1.
 
+**Contribute**
+
+Broken Link Checker is now on [GitHub](https://github.com/ManageWP/broken-link-checker). Pull Requests welcome.
+
 == Installation ==
 
 To do a new installation of the plugin, please follow these steps
@@ -98,6 +100,17 @@ To upgrade your installation
 1. Reactivate the plugin. Your settings will be retained from the previous version.
 
 == Changelog ==
+
+= 1.11.2 =
+* Fixed a compatibility issue
+
+= 1.11.1 =
+* Major performance improvement. Database queries reduced up to 10x in some cases.
+* Feel free to contribute to the plugin on [GitHub](https://github.com/ManageWP/broken-link-checker). Pull requests welcome!
+
+= 1.10.11 =
+* Fixed the issue with HTTPS (Thanks to [gmcinnes](https://wordpress.org/support/profile/gmcinnes))
+* Broken Link Checker is now on [GitHub](https://github.com/ManageWP/broken-link-checker). Pull Requests welcome.
 
 = 1.10.10 =
 * New plugin image that was long overdue.
