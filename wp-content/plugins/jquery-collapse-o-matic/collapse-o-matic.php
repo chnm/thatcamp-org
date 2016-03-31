@@ -5,7 +5,7 @@ Text Domain: jquery-collapse-o-matic
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.6.15
+Version: 1.7.0
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -30,7 +30,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.6.15';
+	var $version = '1.7.0';
 
 	/**
 	 * Used as prefix for options entry
@@ -130,7 +130,7 @@ class WP_Collapse_O_Matic {
 		if($this->options['script_location'] == 'footer' ){
 			$load_in_footer = true;
 		}
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.18', $load_in_footer);
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.6.0', $load_in_footer);
 		if( empty($this->options['script_check']) ){
 			wp_enqueue_script('collapseomatic-js');
 		}
@@ -345,14 +345,15 @@ class WP_Collapse_O_Matic {
 			if($findme != 'true' && $findme != 'auto'){
 				$offset = $findme;
 			}
-			$anchor = '<input type="hidden" id="find-'.$id.'" name="'.$offset.'"/>';
+			//$anchor = '<input type="hidden" id="find-'.$id.'" name="'.$offset.'"/>';
+			$anchor = 'data-findme="'.$offset.'"';
 		}
 		$closeanchor = '';
 		if($scrollonclose && (is_numeric($scrollonclose) || $scrollonclose == 0)){
 			$trigclass .= ' scroll-to-trigger';
 			$closeanchor = '<input type="hidden" id="scrollonclose-'.$id.'" name="'.$scrollonclose.'"/>';
 		}
-		$link = $closeanchor.$anchor.'<'.$tag.' class="collapseomatic '.$trigclass.'" id="'.$id.'" '.$relatt.' '.$inexatt.' '.$altatt.'>'.$startwrap.$title.$endwrap.'</'.$tag.'>';
+		$link = $closeanchor.'<'.$tag.' class="collapseomatic '.$trigclass.'" id="'.$id.'" '.$relatt.' '.$inexatt.' '.$altatt.' '.$anchor.'>'.$startwrap.$title.$endwrap.'</'.$tag.'>';
 		if($swaptitle){
 			$link .= "<".$tag." id='swap-".$id."' alt='".$swapalt."' class='colomat-swap' style='display:none;'>".$startwrap.$swaptitle.$endwrap."</".$tag.">";
 		}
@@ -625,15 +626,13 @@ class WP_Collapse_O_Matic {
 					<div class="inside">
 						<h4><img src="<?php echo plugins_url( 'images/collapse-o-matic-icon.png', __FILE__ ) ?>" width="16" height="16"/> Collapse-O-Matic Version <?php echo $this->version; ?></h4>
 						<p><?php _e( 'Remove clutter, save space. Display and hide additional content in a SEO friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a lovely jQuery expanding and collapsing element.', 'jquery-collapse-o-matic') ?></p>
+						<p style="padding: 5px; border: 1px dashed #cccc66; background: #EEE;"><strong>Last Chance for 2015 Prices:</strong> <a href="http://plugins.twinpictures.de/premium-plugins/collapse-pro-matic/?utm_source=collapse-o-matic&utm_medium=plugin-settings-page&utm_content=collapse-pro-matic&utm_campaign=collapse-pro-year-end">Update to Collapse-Pro-Matic</a> before January 2016 to take advantage of 2015 pricing.</p>
 						<ul>
 							<li><?php printf( __( '%sDetailed documentation%s, complete with working demonstrations of all shortcode attributes, is available for your instructional enjoyment.', 'jquery-collapse-o-matic'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/" target="_blank">', '</a>'); ?></li>
 							<li><?php printf( __( '%sFree Opensource Support%s', 'jquery-collapse-o-matic'), '<a href="http://wordpress.org/support/plugin/jquery-collapse-o-matic" target="_blank">', '</a>'); ?></li>
 							<li><?php printf( __('If this plugin %s, please consider %sreviewing it at WordPress.org%s to help others.', 'jquery-collapse-o-matic'), $like_it, '<a href="http://wordpress.org/support/view/plugin-reviews/jquery-collapse-o-matic" target="_blank">', '</a>' ) ?></li>
 							<li><a href="http://wordpress.org/extend/plugins/jquery-collapse-o-matic/" target="_blank">WordPress.org</a> | <a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/" target="_blank">Twinpictues Plugin Oven</a></li>
 						</ul>
-						<!--
-						<p style="padding: 5px; border: 1px dashed #cccc66; background: #EEE;"><strong>Limited Offer:</strong> <a href="http://plugins.twinpictures.de/premium-plugins/collapse-pro-matic/">Upgrade to Collapse-Pro-Matic</a> or add on <a href="http://plugins.twinpictures.de/premium-plugins/collapse-commander/">Collapse Commander</a> before January 1, 2015 and receive a lifetime unlimited licence.  Starting in 2015, all Plugin Oven pro plugins will introduce new pricing and licensing tiers.</p>
-						-->
 					</div>
 				</div>
 			</div>
