@@ -1,13 +1,18 @@
 <?php
 
-class SearchPostTitle extends Search
-{
-	function find ($pattern, $limit, $offset, $orderby)
-	{
+class SearchPostTitle extends Search {
+	function find ($pattern, $limit, $offset, $orderby) {
 		global $wpdb;
 
-		$results = array ();
-		$posts   = $wpdb->get_results ($wpdb->prepare( "SELECT ID, post_title FROM {$wpdb->posts} WHERE post_status != 'inherit' ORDER BY ID $orderby LIMIT %d,%d", $offset,$limit ) );
+		$results = array();
+
+		$sql = "SELECT ID, post_title FROM {$wpdb->posts} WHERE post_status != 'inherit' ORDER BY ID $orderby";
+		if ( $limit > 0 ) {
+			 $sql .= $wpdb->prepare( " LIMIT %d,%d", $offset, $limit );
+		}
+
+		$posts = $wpdb->get_results( $sql );
+
 		if (count ($posts) > 0)
 		{
 			foreach ($posts AS $post)
@@ -25,14 +30,13 @@ class SearchPostTitle extends Search
 		return $results;
 	}
 
-	function get_options ($result)
-	{
-		$options[] = '<a href="'.get_permalink ($result->id).'">'.__ ('view', 'search-regex').'</a>';
-		if ($result->replace)
-			$options[] = '<a href="#" onclick="regex_replace (\'SearchPostTitle\','.$result->id.','.$result->offset.','.$result->length.',\''.str_replace ("'", "\'", $result->replace_string).'\'); return false">replace</a>';
+	function get_options( $result ) {
+		$options[] = '<a href="'.get_permalink( $result->id ).'">'.__( 'view', 'search-regex' ).'</a>';
 
-		if (current_user_can ('edit_post', $result->id))
-			$options[] = '<a href="'.get_bloginfo ('wpurl').'/wp-admin/post.php?action=edit&amp;post='.$result->id.'">'.__ ('edit','search-regex').'</a>';
+		if ( current_user_can( 'edit_post', $result->id ) ) {
+			$options[] = '<a href="'.get_bloginfo( 'wpurl' ).'/wp-admin/post.php?action=edit&amp;post='.$result->id.'">'.__( 'edit','search-regex' ).'</a>';
+		}
+
 		return $options;
 	}
 
