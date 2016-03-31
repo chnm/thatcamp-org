@@ -34,6 +34,12 @@ class WPDB_Admin {
                           }else{
                                update_option('wp_db_log',0);           
                           }
+                          
+                           if(isset($_POST['wp_db_exclude_table'])){
+                              update_option('wp_db_exclude_table',$_POST['wp_db_exclude_table']);                            
+                          }else{
+                                update_option('wp_db_exclude_table','');
+                          }
                     }
 	        if(isset($_POST['wp_db_backup_email_id']))
 		 {
@@ -61,7 +67,7 @@ class WPDB_Admin {
             }
                // Close the directory
                 closedir($dirHandle); 
-                wp_redirect(get_bloginfo('url').'/wp-admin/tools.php?page=wp-database-backup');
+                wp_redirect(site_url().'/wp-admin/tools.php?page=wp-database-backup');
 		   	
 		   }
 	        if(isset($_GET['action']) && current_user_can('manage_options')) {
@@ -69,7 +75,7 @@ class WPDB_Admin {
  
 			case 'createdbbackup':
 				$this->wp_db_backup_event_process();
-				wp_redirect(get_bloginfo('url').'/wp-admin/tools.php?page=wp-database-backup');
+				wp_redirect(site_url().'/wp-admin/tools.php?page=wp-database-backup&notification=create');
 				break;
 			case 'removebackup':
 				$index = (int)$_GET['index'];
@@ -87,7 +93,7 @@ class WPDB_Admin {
                                  $sqlFile=  explode('.', $options[$index]['dir']);                                  
                                  @unlink($sqlFile[0].'.sql');
 				update_option('wp_db_backup_backups', $newoptions);
-				wp_redirect(get_bloginfo('url').'/wp-admin/tools.php?page=wp-database-backup');
+				wp_redirect(site_url().'/wp-admin/tools.php?page=wp-database-backup&notification=delete');
 				break;
 			case 'restorebackup':
 				$index = (int)$_GET['index'];
@@ -175,7 +181,8 @@ class WPDB_Admin {
                                          $database_file=($sqlFile[0].'.sql');
 					 @unlink( $database_file);
                                 }
-		break;
+		wp_redirect(site_url().'/wp-admin/tools.php?page=wp-database-backup&notification=restore');
+				break;
 		
 		/*END: Restore Database Content*/
 				
@@ -192,7 +199,10 @@ function wp_db_backup_validate($input) {
 	public function wp_db_backup_settings_page(){
 	        $options = get_option('wp_db_backup_backups');
 	        $settings = get_option('wp_db_backup_options');
-		?> <div class="panel panel-info">
+                include('admin_header_notification.php');
+		?>
+
+<div class="panel panel-info">
 			<div class="panel-heading">
                                  <h4><a href="http://walkeprashant.wordpress.com" target="blank"><img src="<?php echo WPDB_PLUGIN_URL.'/assets/images/wp-database-backup.png';?>" ></a>Database Backup Settings <a href="http://www.wpseeds.com/product/wp-all-backup/" target="_blank"><span style='float:right' class="label label-success">Get Pro 'WP All Backup' Plugin</span></a></h4>
                          </div>
@@ -211,7 +221,7 @@ function wp_db_backup_validate($input) {
 	                      echo '<div class="tab-content">';
                               echo '<div class="tab-pane active"  id="db_home">';
                               echo '<p class="submit">';
-				echo '<a href="'.get_bloginfo('url').'/wp-admin/tools.php?page=wp-database-backup&action=createdbbackup" class="button-primary"><span class="glyphicon glyphicon-plus-sign"></span> Create New Database Backup</a>';
+				echo '<a href="'.site_url().'/wp-admin/tools.php?page=wp-database-backup&action=createdbbackup" class="button-primary"><span class="glyphicon glyphicon-plus-sign"></span> Create New Database Backup</a>';
 			      echo '</p>';
                               ?>
                              
@@ -249,8 +259,8 @@ function wp_db_backup_validate($input) {
                                                                 echo '<a href="'.$option['url'].'" style="color: #21759B;">';
                                                                 echo '<span class="glyphicon glyphicon-download-alt"></span> Download</a></td>';
 								echo '<td>'.$this->wp_db_backup_format_bytes($option['size']).'</td>';
-								echo '<td><a href="'.get_bloginfo('url').'/wp-admin/tools.php?page=wp-database-backup&action=removebackup&index='.($count - 1).'" class="button-secondary"><span style="color:red" class="glyphicon glyphicon-remove"></span> Remove Database Backup<a/></td>';
-								echo '<td><a href="'.get_bloginfo('url').'/wp-admin/tools.php?page=wp-database-backup&action=restorebackup&index='.($count - 1).'" class="button-secondary"><span class="glyphicon glyphicon-refresh" style="color:blue"></span> Restore Database Backup<a/></td>';
+								echo '<td><a href="'.site_url().'/wp-admin/tools.php?page=wp-database-backup&action=removebackup&index='.($count - 1).'" class="button-secondary"><span style="color:red" class="glyphicon glyphicon-remove"></span> Remove Database Backup<a/></td>';
+								echo '<td><a href="'.site_url().'/wp-admin/tools.php?page=wp-database-backup&action=restorebackup&index='.($count - 1).'" class="button-secondary"><span class="glyphicon glyphicon-refresh" style="color:blue"></span> Restore Database Backup<a/></td>';
 							echo '</tr>';
 							$count++;
 						}
@@ -262,7 +272,9 @@ function wp_db_backup_validate($input) {
 			} else {
 				echo '<p>No Database Backups Created!</p>';
 			}
-			echo "<div class='alert alert-success' role='alert'><h4>Get Flat 30% off on <a href='http://www.wpseeds.com/product/wp-all-backup/' target='_blank'>WP All Backup Plugin.</a> Use Coupon code 'WPDB30'</h4></div>";
+			echo "<div class='alert alert-success' role='alert'><h4>$coupon</h4></div>";
+                        echo '<p>If you like this plugin then Give <a target="_blank" href="http://wordpress.org/support/view/plugin-reviews/wp-database-backup" title="Rating" sl-processed="1"> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> rating </a></p>
+	 ';
 		echo '</div>';
 	
 	echo '<div class="tab-pane" id="db_schedul">';
@@ -276,6 +288,7 @@ echo '<form method="post" action="options.php" name="wp_auto_commenter_form">';
 			echo '<p>Auto Database Backup Frequency<br />';
 				echo '<select name="wp_db_backup_options[autobackup_frequency]" style="width: 100%; margin: 5px 0 0;">';
 					echo '<option value="hourly" '.selected('hourly', $settings['autobackup_frequency'], false).'>Hourly</option>';
+                                        echo '<option value="twicedaily" '.selected('twicedaily', $settings['autobackup_frequency'], false).'>Twice Daily</option>';
                                         echo '<option value="daily" '.selected('daily', $settings['autobackup_frequency'], false).'>Daily</option>';
 					echo '<option value="weekly" '.selected('weekly', $settings['autobackup_frequency'], false).'>Weekly</option>';
 					echo '<option value="monthly" '.selected('monthly', $settings['autobackup_frequency'], false).'>Monthly</option>';
@@ -572,7 +585,7 @@ echo '</form>';
                     <div class="tab-pane" id="db_advanced">               
                         <h4>A 'WP ALL Backup' Plugin will backup and restore your entire site at will,
                         complete with FTP & S3 integration.</h4>
-                        <h2>Pro Features </h2><h4>Get Flat 30% off on WP All Backup Plugin .Use Coupon code 'WPDB30'</h4>
+                        <h2>Pro Features </h2><h4><?php echo $coupon ?></h4>
                         <div class="row">
                         <div class="col-md-3"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Complete Backup</div>
                         <div class="col-md-3"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Only Selected file Backup</div>
@@ -638,6 +651,8 @@ echo '</form>';
                             <?php
                             $wp_local_db_backup_count=get_option('wp_local_db_backup_count');     
                             $wp_db_log=get_option('wp_db_log');
+                            $wp_db_exclude_table=array();
+                            $wp_db_exclude_table=get_option('wp_db_exclude_table');
                             if($wp_db_log==1){
                                 $checked="checked";
                             }else{
@@ -651,11 +666,72 @@ echo '</form>';
 
                                       </div>
                                       <div class="alert alert-default" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> The minimum number of Local Database Backups that should be kept, regardless of their size.</br>Leave blank for keep unlimited database backups.</div>
-
+                                      <hr>
                                        <div class="input-group">
                                               <input type="checkbox" <?php echo $checked ?> name="wp_db_log"> Enable Log.
                                           </div>
                                       <hr>
+                                        <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseExclude">
+            Exclude Table From Database Backup.
+        </a>
+      </h4>
+    </div>
+    <div id="collapseExclude" class="panel-collapse collapse in">
+      <div class="panel-body">  
+                                      <table class="table table-condensed">
+                                     <tr class="success">                                        
+                                            <th>No.</th>
+                                            <th>Tables</th>
+                                            <th>Records</th>
+                                            <th>Exclude Table</th>
+                                         		
+                                    </tr>                                 
+                                        <?php
+                                                $no = 0;
+                                                $row_usage = 0;
+                                                $data_usage = 0;                                                
+                                                $tablesstatus = $wpdb->get_results("SHOW TABLE STATUS");
+                                                foreach($tablesstatus as  $tablestatus) {
+                                                        if($no%2 == 0) {
+                                                                $style = '';
+                                                        } else {
+                                                                $style = ' class="alternate"';
+                                                        }
+                                                        $no++;
+                                                        echo "<tr $style>\n";
+                                                        echo '<td>'.number_format_i18n($no).'</td>';
+                                                        echo "<td>$tablestatus->Name</td>";
+                                                        echo '<td>'.number_format_i18n($tablestatus->Rows).'</td>';  
+                                                        if(!empty($wp_db_exclude_table) && in_array($tablestatus->Name,$wp_db_exclude_table)){
+                                                                $checked="checked";
+                                                            }else{
+                                                                $checked="";
+                                                            }
+                                                        echo '<td> <input type="checkbox" '.$checked.' value="'.$tablestatus->Name.'" name="wp_db_exclude_table['.$tablestatus->Name.']"></td>';
+                                                       
+                                                        $row_usage += $tablestatus->Rows;
+                                                       
+				
+                                                        echo '</tr>';
+                                                        }
+                                                        echo '<tr class="thead">'."\n";
+                                                        echo '<th>'.__('Total:', 'wp-dbmanager').'</th>'."\n";
+                                                        echo '<th>'.sprintf(_n('%s Table', '%s Tables', $no, 'wp-dbmanager'), number_format_i18n($no)).'</th>'."\n";
+                                                        echo '<th>'.sprintf(_n('%s Record', '%s Records', $row_usage, 'wp-dbmanager'), number_format_i18n($row_usage)).'</th>'."\n";
+                                                        echo '<th></th>'."\n";                                             
+                                                        echo '</tr>';
+                                                ?>
+                            
+                                
+                            </table>
+          </div>		
+        </div>
+                                        </div><hr>
+                                  
+                               
                                                                   <input class="btn button-primary" type="submit" name="wpsetting" value="Save">
                                  </form>
                         </div>
@@ -785,10 +861,12 @@ function wp_db_backup_create_mysql_backup() {
 	delete_option('wp_db_backup_backups');
 	delete_option('wp_db_backup_options');
 	/*END : Prevent saving backup plugin settings in the database dump*/
-	
+        $wp_db_exclude_table=array();
+	$wp_db_exclude_table=get_option('wp_db_exclude_table');
 	$tables = $wpdb->get_col('SHOW TABLES');
 	$output = '';
 	foreach($tables as $table) {
+             if(empty($wp_db_exclude_table) || (!(in_array($table,$wp_db_exclude_table)))){
 		$result = $wpdb->get_results("SELECT * FROM {$table}", ARRAY_N);
 		$row2 = $wpdb->get_row('SHOW CREATE TABLE '.$table, ARRAY_N); 
 		$output .= "\n\n".$row2[1].";\n\n";
@@ -805,6 +883,7 @@ function wp_db_backup_create_mysql_backup() {
 			$output .= ");\n";
 		}
 		$output .= "\n";
+        }
 	}
 	$wpdb->flush();
 	/*BEGIN : Prevent saving backup plugin settings in the database dump*/
@@ -814,7 +893,223 @@ function wp_db_backup_create_mysql_backup() {
 	return $output;
 }
 
+/* Begin : Generate SQL DUMP using cmd 06-03-2016 V.3.9 */
 
+    public function set_mysqldump_command_path($path) {
+
+        $this->mysqldump_command_path = $path;
+    }
+
+    public function get_mysqldump_command_path() {
+
+        // Check shell_exec is available
+        if (!self::is_shell_exec_available())
+            return '';
+
+        // Return now if it's already been set
+        if (isset($this->mysqldump_command_path))
+            return $this->mysqldump_command_path;
+
+        $this->mysqldump_command_path = '';
+
+        // Does mysqldump work
+        if (is_null(shell_exec('hash mysqldump 2>&1'))) {
+
+            // If so store it for later
+            $this->set_mysqldump_command_path('mysqldump');
+
+            // And return now
+            return $this->mysqldump_command_path;
+        }
+
+        // List of possible mysqldump locations
+        $mysqldump_locations = array(
+            '/usr/local/bin/mysqldump',
+            '/usr/local/mysql/bin/mysqldump',
+            '/usr/mysql/bin/mysqldump',
+            '/usr/bin/mysqldump',
+            '/opt/local/lib/mysql6/bin/mysqldump',
+            '/opt/local/lib/mysql5/bin/mysqldump',
+            '/opt/local/lib/mysql4/bin/mysqldump',
+            '/xampp/mysql/bin/mysqldump',
+            '/Program Files/xampp/mysql/bin/mysqldump',
+            '/Program Files/MySQL/MySQL Server 6.0/bin/mysqldump',
+            '/Program Files/MySQL/MySQL Server 5.5/bin/mysqldump',
+            '/Program Files/MySQL/MySQL Server 5.4/bin/mysqldump',
+            '/Program Files/MySQL/MySQL Server 5.1/bin/mysqldump',
+            '/Program Files/MySQL/MySQL Server 5.0/bin/mysqldump',
+            '/Program Files/MySQL/MySQL Server 4.1/bin/mysqldump'
+        );
+
+        // Find the one which works
+        foreach ($mysqldump_locations as $location)
+            if (@is_executable(self::conform_dir($location)))
+                $this->set_mysqldump_command_path($location);
+
+        return $this->mysqldump_command_path;
+    }
+
+    public static function conform_dir($dir, $recursive = false) {
+
+        // Assume empty dir is root
+        if (!$dir)
+            $dir = '/';
+
+        // Replace single forward slash (looks like double slash because we have to escape it)
+        $dir = str_replace('\\', '/', $dir);
+        $dir = str_replace('//', '/', $dir);
+
+        // Remove the trailing slash
+        if ($dir !== '/')
+            $dir = untrailingslashit($dir);
+
+        // Carry on until completely normalized
+        if (!$recursive && self::conform_dir($dir, true) != $dir)
+            return self::conform_dir($dir);
+
+        return (string) $dir;
+    }
+
+    public static function is_shell_exec_available() {
+
+        // Are we in Safe Mode
+        if (self::is_safe_mode_active())
+            return false;
+
+        // Is shell_exec or escapeshellcmd or escapeshellarg disabled?
+        if (array_intersect(array('shell_exec', 'escapeshellarg', 'escapeshellcmd'), array_map('trim', explode(',', @ini_get('disable_functions')))))
+            return false;
+
+        // Can we issue a simple echo command?
+        if (!@shell_exec('echo WP Backup'))
+            return false;
+
+        return true;
+    }
+
+    public static function is_safe_mode_active($ini_get_callback = 'ini_get') {
+
+        if (( $safe_mode = @call_user_func($ini_get_callback, 'safe_mode') ) && strtolower($safe_mode) != 'off')
+            return true;
+
+        return false;
+    }
+
+    public function mysqldump($SQLfilename) {
+
+        $this->mysqldump_method = 'mysqldump';
+
+        //$this->do_action( 'mysqldump_started' );
+
+        $host = explode(':', DB_HOST);
+
+        $host = reset($host);
+        $port = strpos(DB_HOST, ':') ? end(explode(':', DB_HOST)) : '';
+
+        // Path to the mysqldump executable
+        $cmd = escapeshellarg($this->get_mysqldump_command_path());
+
+        // We don't want to create a new DB
+        $cmd .= ' --no-create-db';
+
+        // Allow lock-tables to be overridden
+        if (!defined('WPDB_MYSQLDUMP_SINGLE_TRANSACTION') || WPDB_MYSQLDUMP_SINGLE_TRANSACTION !== false)
+            $cmd .= ' --single-transaction';
+
+        // Make sure binary data is exported properly
+        $cmd .= ' --hex-blob';
+
+        // Username
+        $cmd .= ' -u ' . escapeshellarg(DB_USER);
+
+        // Don't pass the password if it's blank
+        if (DB_PASSWORD)
+            $cmd .= ' -p' . escapeshellarg(DB_PASSWORD);
+
+        // Set the host
+        $cmd .= ' -h ' . escapeshellarg($host);
+
+        // Set the port if it was set
+        if (!empty($port) && is_numeric($port))
+            $cmd .= ' -P ' . $port;
+
+        // The file we're saving too
+        $cmd .= ' -r ' . escapeshellarg($SQLfilename);
+        
+        $wp_db_exclude_table = array();
+        $wp_db_exclude_table = get_option('wp_db_exclude_table');       
+         if (!empty($wp_db_exclude_table)) {
+             foreach ($wp_db_exclude_table as $wp_db_exclude_table) {               
+                   $cmd .= ' --ignore-table='.DB_NAME.'.'.$wp_db_exclude_table;
+                  // error_log(DB_NAME.'.'.$wp_db_exclude_table);
+             }
+         }
+
+        // The database we're dumping
+        $cmd .= ' ' . escapeshellarg(DB_NAME);
+
+        // Pipe STDERR to STDOUT
+        $cmd .= ' 2>&1';
+        // Store any returned data in an error
+        $stderr = shell_exec($cmd);
+
+        // Skip the new password warning that is output in mysql > 5.6 
+        if (trim($stderr) === 'Warning: Using a password on the command line interface can be insecure.') {
+            $stderr = '';
+        }
+
+        if ($stderr) {
+            $this->error($this->get_mysqldump_method(), $stderr);
+            error_log($stderr);
+        }
+
+        return $this->verify_mysqldump($SQLfilename);
+    }
+    
+    public function error( $context, $error ) {
+
+		if ( empty( $context ) || empty( $error ) )
+                    return;		
+
+		$this->errors[$context][$_key = md5( implode( ':' , (array) $error ) )] = $error;
+
+	}
+
+    public function verify_mysqldump($SQLfilename) {
+
+        //$this->do_action( 'wpdb_mysqldump_verify_started' );
+        // If we've already passed then no need to check again
+        if (!empty($this->mysqldump_verified))
+            return true;
+
+        // If there are mysqldump errors delete the database dump file as mysqldump will still have written one
+        if ($this->get_errors($this->get_mysqldump_method()) && file_exists($SQLfilename))
+            unlink($SQLfilename);
+
+        // If we have an empty file delete it
+        if (@filesize($SQLfilename) === 0)
+            unlink($SQLfilename);
+
+        // If the file still exists then it must be good
+        if (file_exists($SQLfilename))
+            return $this->mysqldump_verified = true;
+
+        return false;
+    }
+
+    public function get_errors($context = null) {
+
+        if (!empty($context))
+            return isset($this->errors[$context]) ? $this->errors[$context] : array();
+
+        return $this->errors;
+    }
+
+    public function get_mysqldump_method() {
+        return $this->mysqldump_method;
+    }
+
+    /* End : Generate SQL DUMP using cmd 06-03-2016 */
 
 function wp_db_backup_create_archive() {	
 	/*Begin : Setup Upload Directory, Secure it and generate a random file name*/
@@ -835,9 +1130,25 @@ function wp_db_backup_create_archive() {
         $WPDBFileName=$siteName.'_'.Date("Y_m_d").'_'.Time("H:M:S").rand(9, 9999).'_database';       
         $SQLfilename=$WPDBFileName.'.sql';
 	$filename=$WPDBFileName.'.zip';
-	$handle = fopen($path_info['basedir'].'/db-backup/'.$SQLfilename,'w+');
-	fwrite($handle, $this->wp_db_backup_create_mysql_backup());
-	fclose($handle);
+	
+        /* Begin : Generate SQL DUMP using cmd 06-03-2016 */
+        $mySqlDump = 0;
+        if ($this->get_mysqldump_command_path()) {
+            if (!$this->mysqldump($path_info['basedir'] . '/db-backup/' . $SQLfilename)) {
+                $mySqlDump = 1;
+            } else {
+                error_log("Database dump method: mysqldump");
+            }
+        } else {
+            $mySqlDump = 1;
+        }
+        if ($mySqlDump == 1) {
+            $handle = fopen($path_info['basedir'] . '/db-backup/' . $SQLfilename, 'w+');
+            fwrite($handle, $this->wp_db_backup_create_mysql_backup());
+            fclose($handle);
+        }
+        /* End : Generate SQL DUMP using cmd 06-03-2016 */
+
 	 
 	/*End : Generate SQL DUMP and save to file database.sql*/
 	$upload_path = array(
@@ -866,7 +1177,10 @@ function wp_db_backup_create_archive() {
         $upload_path['sqlfile']=$path_info['basedir'].'/db-backup/'.$SQLfilename;
         $wp_db_log=get_option('wp_db_log');
       if($wp_db_log==1){
-        $upload_path['log']=$logMessage;
+                  $wp_db_exclude_table=get_option('wp_db_exclude_table');
+                  if(!empty($wp_db_exclude_table))
+                  $logMessage.= '<br> Exclude Table : '.implode(', ', $wp_db_exclude_table);
+                  $upload_path['log']=$logMessage;
       }
          $options = get_option('wp_db_backup_backups');
 	$newoptions = array();
@@ -926,7 +1240,7 @@ function wp_db_backup_wp_config_path() {
 function wp_db_backup_event_process() {
 	
 	$details = $this->wp_db_backup_create_archive();
-        $options = get_option('wp_db_backup_backups');
+        $options = get_option('wp_db_backup_backups');        
 
 	if(!$options) {
 		$options = array();
@@ -1002,7 +1316,19 @@ function wp_db_backup_event_process() {
 	
 }
 public function wp_db_backup_cron_schedules($schedules) {
-	$schedules['weekly'] = array(
+        $schedules['hourly'] = array(
+		'interval' => 3600,
+		'display' => 'hourly'
+	);
+        $schedules['twicedaily'] = array(
+		'interval' => 43200,
+		'display' => 'twicedaily'
+	);
+        $schedules['daily'] = array(
+		'interval' => 86400,
+		'display' => 'daily'
+	);	
+        $schedules['weekly'] = array(
 		'interval' => 604800,
 		'display' => 'Once Weekly'
 	);

@@ -72,7 +72,7 @@ $account_info = $dropbox->GetAccountInfo();
         echo $account_info->display_name . ', ' .'you have'. ' ' .$used .'GB' .'of'. ' ' . $quota . 'GB (' . round(($used / $quota) * 100, 0) .'%) ' .'free';
     
      echo '</br><p>Unlink Account for local backups</p></br>';
-     echo '<td><a href="'.get_bloginfo('url').'/wp-admin/tools.php?page=wp-database-backup&action=unlink" class="button-primary">Unlink Account<a/>';
+     echo '<td><a href="'.site_url().'/wp-admin/tools.php?page=wp-database-backup&action=unlink" class="button-primary">Unlink Account<a/>';
       
              
    

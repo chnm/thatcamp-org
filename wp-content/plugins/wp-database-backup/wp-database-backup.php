@@ -3,10 +3,12 @@
 Plugin Name: WP Database Backup
 Plugin URI:http://www.wpseeds.com/wp-database-backup
 Description: This plugin helps you to create/restore wordpress database backup. (Tools->WP-DB-Backup)
-Version: 3.5
+Version: 3.9.1
 Author:Prashant Walke
 Author URI:walkeprashant.wordpress.com
-
+Text Domain: wpdbbkp
+Domain Path: /lang
+ 
 This plugin helps you to create Database Backup easily.
 
 License: GPL v3
@@ -38,7 +40,7 @@ if ( ! class_exists( 'WPDatabaseBackup' ) ) :
  */
 final class WPDatabaseBackup {
 
-	public $version = '3.5';
+	public $version = '3.8';
 
 	protected static $_instance = null;
 
@@ -73,6 +75,8 @@ final class WPDatabaseBackup {
 		define( 'WPDB_PLUGIN_FILE', __FILE__ );
 		define( 'WPDB_VERSION', $this->version );
 		define( 'WPDBPLUGIN_VERSION', WPDB_VERSION ); // Backwards compat
+                define( 'NOTIFIER_XML_FILE_WPDB', 'http://wpseeds.com/notifier/wp-database-backup.xml' );	
+                
 		}
 
 	private function includes() {

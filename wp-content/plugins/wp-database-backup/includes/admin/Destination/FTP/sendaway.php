@@ -19,7 +19,7 @@ exit();
 */
 // 
 //
-echo "<h2>Send package to FTP site</h2>";
+error_log( "<h2>Send package to FTP site</h2>");
 
 // set up variables
 $host = get_option('backupbreeze_ftp_host');
@@ -34,7 +34,7 @@ $localfile = trailingslashit($wp_upload_dir['basedir'].'/db-backup'). $filename;
 
 // see if port option is blank and set it to 21 if it isn't
 if (!get_option('backupbreeze_ftp_port')) {
-	$port == '21';
+	$port = '21';
 } else {
 $port = get_option('backupbreeze_ftp_port');
 }
@@ -46,7 +46,7 @@ $port = get_option('backupbreeze_ftp_port');
 // If user has WP manage options permissions
 // if ( current_user_can('manage_options')) {
 // connect to host ONLY if the 2 security conditions are valid / met
-$conn = ftp_connect($host,$port);
+$conn = @ftp_connect($host,$port);
 // }
 // }
 
@@ -55,31 +55,31 @@ $conn = ftp_connect($host,$port);
 // thanks to Kara for this code ;-)
 
 if (!$conn) {
-  echo '<div class="error">Could not connect to ftp server. This will be local backup.<br /></div>';
+  error_log( '<div class="error">Could not connect to ftp server. This will be local backup.<br /></div>');
 }
 else {
-echo "Connected to $host.<br />";
+error_log( "Connected to $host.<br />");
 // log in to host
 $result = @ftp_login($conn, $user, $pass);
 if (!$result) {
- echo '<div class="error">Could not log on as $user. This will be local backup.<br /></div>';
+ error_log( '<div class="error">Could not log on as $user. This will be local backup.<br /></div>');
 }
 else {
-echo '<div class="error">Logged in as $user<br /></div>';
+error_log( '<div class="error">Logged in as $user<br /></div>');
 // Switch to passive mode
 ftp_pasv($conn, true);
 // upload file
-echo '<div class="error">Uploading package to FTP repository...<br /></div>';
+error_log( '<div class="error">Uploading package to FTP repository...<br /></div>');
 if (!$success = ftp_put($conn, $remotefile, $localfile, FTP_BINARY)) {
- echo '<div class="error">Error: Could not upload file. This will be local backup.<br /></div>';
+ error_log( '<div class="error">Error: Could not upload file. This will be local backup.<br /></div>');
 } 
 else {
-   echo '<div class="error">File was uploaded successfully <br /></div>';
+ error_log( '<div class="error">File was uploaded successfully <br /></div>');
              }
       }
 }
 // close connection to host
-ftp_quit($conn);
+@ftp_quit($conn);
 
 // echo "... Done!";
 
