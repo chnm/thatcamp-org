@@ -6,6 +6,7 @@ if ( ! function_exists( 'is_admin' ) || ! is_admin() ) {
 }
 
 $is_html_enabled = subscribe_reloaded_get_option( 'enable_html_emails', 'no' ) == 'yes' ? true : false;
+$wp_subscribe_reloaded->stcr->utils->add_ritch_editor_textarea();
 
 // Update options
 if ( isset( $_POST['options'] ) ) {
@@ -26,6 +27,13 @@ if ( isset( $_POST['options'] ) ) {
 		$faulty_fields = __( 'Notification subject', 'subscribe-reloaded' ) . ', ';
 	}
 	if ( isset( $_POST['options']['notification_content'] ) &&
+		trim( $_POST['options']['notification_content'] ) == false &&
+		! subscribe_reloaded_update_option( 'notification_content', "<h1>There is a new comment on [post_title].</h1><hr><p><strong>Comment link:</strong>&nbsp;<a href=\"[comment_permalink]\" data-mce-href=\"[comment_permalink]\">[comment_permalink]</a>&nbsp;<br><strong>Author:</strong>&nbsp;[comment_author]</p><p><strong>Comment:</strong><br>[comment_content]</p><div style=\"font-size: 0.8em\" data-mce-style=\"font-size: 0.8em;\"><strong>Permalink:</strong>&nbsp;<a href=\"[post_permalink]\" data-mce-href=\"[post_permalink]\">[post_permalink]</a><br><a href=\"[manager_link]\" data-mce-href=\"[manager_link]\">Manage your subscriptions</a>&nbsp;|&nbsp;<a href=\"[oneclick_link]\" data-mce-href=\"[oneclick_link]\">One click unsubscribe</a></div>", 'text-no-encode' )
+	) {
+		$faulty_fields = __( 'Notification message', 'subscribe-reloaded' ) . ', ';
+	}
+	if ( isset( $_POST['options']['notification_content'] ) &&
+		trim( $_POST['options']['notification_content'] )  &&
 		! subscribe_reloaded_update_option( 'notification_content', $_POST['options']['notification_content'], 'text-no-encode' )
 	) {
 		$faulty_fields = __( 'Notification message', 'subscribe-reloaded' ) . ', ';
@@ -47,6 +55,11 @@ if ( isset( $_POST['options'] ) ) {
 	}
 	if ( isset( $_POST['options']['management_content'] ) &&
 		! subscribe_reloaded_update_option( 'management_content', $_POST['options']['management_content'], 'text' )
+	) {
+		$faulty_fields = __( 'Management message', 'subscribe-reloaded' ) . ', ';
+	}
+	if ( isset( $_POST['options']['oneclick_text'] ) &&
+		! subscribe_reloaded_update_option( 'oneclick_text', $_POST['options']['oneclick_text'], 'text' )
 	) {
 		$faulty_fields = __( 'Management message', 'subscribe-reloaded' ) . ', ';
 	}
@@ -118,12 +131,12 @@ wp_print_scripts( 'quicktags' );
 				<label for="notification_content"><?php _e( 'Notification message', 'subscribe-reloaded' ) ?></label>
 			</th>
 			<td>
-				<textarea name="options[notification_content]" id="notification_content"
-						  cols="70" rows="5"><?php echo subscribe_reloaded_get_option( 'notification_content' ); ?>
+				<textarea class="rte notification_content" name="options[notification_content]" id="notification_content"
+						  cols="140" rows="25"><?php echo subscribe_reloaded_get_option( 'notification_content' ); ?>
 				</textarea>
-
 				<div class="description" style="padding-top:0">
 					<?php _e( 'Content of the notification email. Allowed tags: [post_title], [comment_permalink], [comment_author], [comment_content], [post_permalink], [manager_link]', 'subscribe-reloaded' ); ?>
+					<?php _e( '<p><strong>Note: To get a default template clear all the content and save the options.</strong></p>', 'subscribe-reloaded' ); ?>
 				</div>
 			</td>
 		</tr>
@@ -145,7 +158,7 @@ wp_print_scripts( 'quicktags' );
 				<label for="double_check_content"><?php _e( 'Double check message', 'subscribe-reloaded' ) ?></label>
 			</th>
 			<td>
-				<textarea name="options[double_check_content]" id="double_check_content" cols="70" rows="5"><?php echo subscribe_reloaded_get_option( 'double_check_content' ); ?></textarea>
+				<textarea class="rte" name="options[double_check_content]" id="double_check_content" cols="70" rows="10"><?php echo subscribe_reloaded_get_option( 'double_check_content' ); ?></textarea>
 
 				<div class="description" style="padding-top:0">
 					<?php _e( 'Content of the confirmation email. Allowed tags: [post_permalink], [confirm_link], [post_title], [manager_link]', 'subscribe-reloaded' ); ?>
@@ -170,10 +183,22 @@ wp_print_scripts( 'quicktags' );
 				<label for="management_content"><?php _e( 'Management message', 'subscribe-reloaded' ) ?></label>
 			</th>
 			<td>
-				<textarea name="options[management_content]" id="management_content" cols="70" rows="5"><?php echo subscribe_reloaded_get_option( 'management_content' ); ?></textarea>
+				<textarea class="rte" name="options[management_content]" id="management_content" cols="70" rows="5"><?php echo subscribe_reloaded_get_option( 'management_content' ); ?></textarea>
 
 				<div class="description" style="padding-top:0">
 					<?php _e( 'Content of the management email. Allowed tags: [blog_name], [manager_link]', 'subscribe-reloaded' ); ?>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">
+				<label for="oneclick_text"><?php _e( 'One Click Unsubscribe', 'subscribe-reloaded' ) ?></label>
+			</th>
+			<td>
+				<textarea class="rte" name="options[oneclick_text]" id="oneclick_text" cols="70" rows="8"><?php echo subscribe_reloaded_get_option( 'oneclick_text' ); ?></textarea>
+
+				<div class="description" style="padding-top:0">
+					<?php _e( 'Content of the One Click confirmation. Allowed tags: [post_title]', 'subscribe-reloaded' ); ?>
 				</div>
 			</td>
 		</tr>

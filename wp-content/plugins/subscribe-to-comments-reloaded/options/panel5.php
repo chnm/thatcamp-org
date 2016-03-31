@@ -51,6 +51,9 @@ if ( array_key_exists( "generate_key", $_POST ) ) {
 		if ( isset( $_POST['options']['admin_bcc'] ) && ! subscribe_reloaded_update_option( 'admin_bcc', $_POST['options']['admin_bcc'], 'yesno' ) ) {
 			$faulty_fields = __( 'BCC admin on Notifications', 'subscribe-reloaded' ) . ', ';
 		}
+		if ( isset( $_POST['options']['commentbox_place'] ) && ! subscribe_reloaded_update_option( 'commentbox_place', $_POST['options']['commentbox_place'], 'yesno' ) ) {
+			$faulty_fields = __( 'StCR Subscription Box Position', 'subscribe-reloaded' ) . ', ';
+		}
 		// Display an alert in the admin interface if something went wrong
 		echo '<div class="updated fade"><p>';
 		if ( empty( $faulty_fields ) ) {
@@ -152,6 +155,15 @@ wp_print_scripts( 'quicktags' );
 		</tr>
 		<tr>
 			<th scope="row">
+				<label for="commentbox_place"><?php _e( 'StCR Box Position', 'subscribe-reloaded' ) ?></label></th>
+			<td>
+				<input type="radio" name="options[commentbox_place]" id="commentbox_place" value="yes"<?php echo ( subscribe_reloaded_get_option( 'commentbox_place' ) == 'yes' ) ? ' checked="checked"' : ''; ?>> <?php _e( 'Yes', 'subscribe-reloaded' ) ?> &nbsp; &nbsp; &nbsp;
+				<input type="radio" name="options[commentbox_place]" value="no" <?php echo ( subscribe_reloaded_get_option( 'commentbox_place' ) == 'no' ) ? '  checked="checked"' : ''; ?>> <?php _e( 'No', 'subscribe-reloaded' ) ?>
+				<div class="description"><?php _e( 'If this option is enable the subscriptioin box will be above the submit button in your comment form.', 'subscribe-reloaded' ); ?></div>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">
 				<label for="admin_bcc"><?php _e( 'StCR Unique Key', 'subscribe-reloaded' ) ?></label></th>
 			<td>
 				<?php
@@ -169,11 +181,10 @@ wp_print_scripts( 'quicktags' );
 						   value="<?php echo subscribe_reloaded_get_option( 'unique_key' ); ?>" size="35" disabled>
 					<div class="description">
 						<?php _e(
-							"This Unique Key will be use to send the notification to your subscribers with more
-																security.",
+							"This Unique Key will be use to send the notification to your subscribers with more security.",
 							'subscribe-reloaded'
 						); ?></div>
-					<input type="submit" value="<?php _e( 'Generate' ) ?>" class="button-primary" size="6" name="generate_key" style="background-color: #D54E21;border-color: #B34B28;">
+					<input type="submit" value="<?php _e( 'Generate' ) ?>" class="button-primary" size="6" name="generate_key" style="background-color: #D54E21;border-color: #B34B28;text-shadow: none;">
 				<?php
 				endif;
 				?>

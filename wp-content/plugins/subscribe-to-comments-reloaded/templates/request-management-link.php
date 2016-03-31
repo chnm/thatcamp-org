@@ -18,12 +18,13 @@ if ( ! empty( $email ) ) {
 	$subject      = html_entity_decode( stripslashes( get_option( 'subscribe_reloaded_management_subject', 'Manage your subscriptions on [blog_name]' ) ), ENT_COMPAT, 'UTF-8' );
 	$message      = html_entity_decode( stripslashes( get_option( 'subscribe_reloaded_management_content', '' ) ), ENT_COMPAT, 'UTF-8' );
 	$manager_link = get_bloginfo( 'url' ) . get_option( 'subscribe_reloaded_manager_page', '/comment-subscriptions/' );
+	$one_click_unsubscribe_link = $manager_link;
 	if ( function_exists( 'qtrans_convertURL' ) ) {
 		$manager_link = qtrans_convertURL( $manager_link );
 	}
 
-	$clean_email     = $wp_subscribe_reloaded->clean_email( $email );
-	$subscriber_salt = $wp_subscribe_reloaded->generate_temp_key( $clean_email );
+	$clean_email     = $wp_subscribe_reloaded->stcr->utils->clean_email( $email );
+	$subscriber_salt = $wp_subscribe_reloaded->stcr->utils->generate_temp_key( $clean_email );
 
 	$headers = "MIME-Version: 1.0\n";
 	$headers .= "From: $from_name <$from_email>\n";
@@ -31,7 +32,9 @@ if ( ! empty( $email ) ) {
 	$headers .= "Content-Type: $content_type; charset=" . get_bloginfo( 'charset' );
 
 	$manager_link .= ( strpos( $manager_link, '?' ) !== false ) ? '&' : '?';
-	$manager_link .= "sre=" . $wp_subscribe_reloaded->get_subscriber_key($clean_email) . "&srk=$subscriber_salt";
+	$manager_link .= "sre=" . $wp_subscribe_reloaded->stcr->utils->get_subscriber_key($clean_email) . "&srk=$subscriber_salt";
+	$one_click_unsubscribe_link .= ( strpos( $one_click_unsubscribe_link, '?' ) !== false ) ? '&' : '?';
+	$one_click_unsubscribe_link .= ( ( strpos( $one_click_unsubscribe_link, '?' ) !== false ) ? '&' : '?' ) . "sre=" . $this->utils->get_subscriber_key( $clean_email ) . "&srk=$subscriber_salt" . "&sra=u" . "&srp=";
 
 	// Replace tags with their actual values
 	$subject = str_replace( '[blog_name]', get_bloginfo( 'name' ), $subject );
@@ -39,6 +42,7 @@ if ( ! empty( $email ) ) {
 	$page_message = str_replace( '[blog_name]', get_bloginfo( 'name' ), $message );
 	$page_message = str_replace( '[manager_link]', '', $message );
 	$message = str_replace( '[manager_link]', '<a href="' . $manager_link . '">' . $manager_link . '</a>', $message );
+	$message = str_replace( '[oneclick_link]', '<a href="' . $one_click_unsubscribe_link . '">' . $one_click_unsubscribe_link . '</a>', $message );
 
 	// QTranslate support
 	if ( function_exists( 'qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage' ) ) {
@@ -47,7 +51,7 @@ if ( ! empty( $email ) ) {
 		$page_message = qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage( $page_message );
 	}
 	if ( $content_type == 'text/html' ) {
-		$message = $wp_subscribe_reloaded->wrap_html_message( $message, $subject );
+		$message = $wp_subscribe_reloaded->stcr->utils->wrap_html_message( $message, $subject );
 	}
 
 	wp_mail( $clean_email, $subject, $message, $headers );
