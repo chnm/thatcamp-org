@@ -230,9 +230,9 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
     public function ajax_modal_option_signup() {
         $optin_box_modal_options                      = get_option( 'yop_poll_optin_box_modal_options_yop' );
         $optin_box_modal_options ['modal_had_submit'] = 'yes';
-        $optin_box_modal_options['modal_email']=isset($_POST['email'])?$_POST['email']:"johndoe@email.com";
-        update_option( 'yop_poll_optin_box_modal_options', $optin_box_modal_options );
-        die ();
+        $optin_box_modal_options['modal_email']=isset($_GET['email'])?$_GET['email']:"johndoe@email.com";
+        update_option( 'yop_poll_optin_box_modal_options_yop', $optin_box_modal_options );
+        die();
     }
     public function ajax_show_optin_box_modal() {
         $this->yop_poll_optin_form1();
@@ -443,12 +443,11 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
     <?php
     }
     public function ajax_sidebar_option_signup() {
-
-        $optin_box_modal_options                        = get_option( 'yop_poll_optin_box_modal_options_yop' );
-       $optin_box_modal_options ['sidebar_had_submit'] = 'yes';
-       $optin_box_modal_options ['modal_had_submit'] = 'yes';
-       $optin_box_modal_options['modal_email']=isset($_POST['email'])?$_POST['email']:"johndoe@email.com";
-        update_option( 'yop_poll_optin_box_modal_options_yop', $optin_box_modal_options );
+		$optin_box_modal_options                        = get_option( 'yop_poll_optin_box_modal_options_yop' );
+		$optin_box_modal_options ['sidebar_had_submit'] = 'yes';
+		$optin_box_modal_options ['modal_had_submit'] = 'yes';
+		$optin_box_modal_options['modal_email']=isset($_POST['email'])?$_POST['email']:"johndoe@email.com";
+		update_option( 'yop_poll_optin_box_modal_options_yop', $optin_box_modal_options );
         die ();
     }
 
@@ -916,15 +915,15 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
             <script type="text/javascript">
                 function close_window() {
                     var yop_poll_various_config = new Object();
-                    yop_poll_various_config.poll_id = '<?php echo yop_poll_base64_decode( $_GET['poll_id'] ) 									?>';
-                    yop_poll_various_config.unique_id = '<?php echo yop_poll_base64_decode( $_GET['unique_id'] ) 									?>';
-                    yop_poll_various_config.poll_location = '<?php echo yop_poll_base64_decode( $_GET['poll_location'] ) 								?>';
-                    yop_poll_various_config.is_modal =  <?php echo ( yop_poll_base64_decode( $_GET['is_modal'] ) == 'true' ) ? 'true' : 'false'  ?>;
-                    yop_poll_various_config.vote_loading_image_target = '<?php echo yop_poll_base64_decode( $_GET['vote_loading_image_target'] ) 					?>';
-                    yop_poll_various_config.vote_loading_image_id = '<?php echo yop_poll_base64_decode( $_GET['vote_loading_image_id'] ) 						?>';
-                    yop_poll_various_config.vote_type = '<?php echo yop_poll_base64_decode( $_GET['vote_type'] ) 									?>';
-                    yop_poll_various_config.facebook_user_details = '<?php echo $facebook_user_details; 														?>';
-                    yop_poll_various_config.facebook_error = '<?php echo $error														 				?>';
+                    yop_poll_various_config.poll_id = '<?php echo xss_clean( yop_poll_base64_decode( $_GET['poll_id'] ) )									?>';
+                    yop_poll_various_config.unique_id = '<?php echo xss_clean( yop_poll_base64_decode( $_GET['unique_id'] ) )									?>';
+                    yop_poll_various_config.poll_location = '<?php echo xss_clean( yop_poll_base64_decode( $_GET['poll_location'] ) )							?>';
+                    yop_poll_various_config.is_modal =  <?php echo ( xss_clean( yop_poll_base64_decode( $_GET['is_modal'] ) ) == 'true' ) ? 'true' : 'false'  ?>;
+                    yop_poll_various_config.vote_loading_image_target = '<?php echo xss_clean( yop_poll_base64_decode( $_GET['vote_loading_image_target'] ) )					?>';
+                    yop_poll_various_config.vote_loading_image_id = '<?php echo xss_clean( yop_poll_base64_decode( $_GET['vote_loading_image_id'] ) )						?>';
+                    yop_poll_various_config.vote_type = '<?php echo xss_clean( yop_poll_base64_decode( $_GET['vote_type'] ) )									?>';
+                    yop_poll_various_config.facebook_user_details = '<?php echo  $facebook_user_details; 														?>';
+                    yop_poll_various_config.facebook_error = '<?php echo  $error													 				?>';
                     yop_poll_various_config.public_config =  <?php echo json_encode( $public_config ); 												?>;
                     window.opener.jQuery( '#yop-poll-nonce-' + yop_poll_various_config.poll_id +
                         yop_poll_various_config.unique_id ).val( '<?php echo wp_create_nonce( 'yop_poll-'.$poll_id.$unique_id.'-user-actions' ) ?>' );
@@ -982,7 +981,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                     yop_poll_various_config.vote_loading_image_id = '<?php echo xss_clean(yop_poll_base64_decode( $_GET['vote_loading_image_id'] )) 						?>';
                     yop_poll_various_config.vote_type = '<?php echo xss_clean(yop_poll_base64_decode ( $_GET['vote_type'] ) )									?>';
                     yop_poll_various_config.facebook_user_details = '<?php echo $facebook_user_details; 														?>';
-                    yop_poll_various_config.facebook_error = '<?php echo isset( $_GET['facebook_error'] ) ? $_GET['facebook_error'] : '' 				?>';
+                    yop_poll_various_config.facebook_error = '<?php echo isset( $_GET['facebook_error'] ) ? xss_clean($_GET['facebook_error']) : '' 				?>';
                     yop_poll_various_config.public_config =  <?php echo json_encode( $public_config ); 												?>;
                     window.opener.jQuery( '#yop-poll-nonce-' + yop_poll_various_config.poll_id +
                         yop_poll_various_config.unique_id ).val( '<?php echo wp_create_nonce( 'yop_poll-'.$poll_id.$unique_id.'-user-actions' ) ?>' );
@@ -1024,30 +1023,17 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
             <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
             <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
-                <style>
-                    .label-design{
-                        display: inline-block;
-                        width: 140px;
-                    }
-                    .input-design{
-                        background: #2ea2cc; font-size: 14px;
-                        background: -webkit-gradient(linear, left top, left bottom, from(#2ea2cc), to(#1e8cbe));
-                        background: -webkit-linear-gradient(top, #2ea2cc 0%,#1e8cbe 100%);
-                        background: linear-gradient(top, #2ea2cc 0%,#1e8cbe 100%);
-                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ea2cc', endColorstr='#1e8cbe',GradientType=0 );
-                        border-color: #0074a2;
-                        -webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,0.5);
-                        box-shadow: inset 0 1px 0 rgba(120,200,230,0.5);
-                        color: #fff;
-                        text-decoration: none;
-                        text-shadow: 0 1px 0 rgba(0,86,132,0.7);
-                        cursor: pointer;
-                    }
-                </style>
                 <title><?php _e( "Insert Poll", 'yop_poll' ); ?></title>
                 <script type="text/javascript"
                         src="<?php echo get_option( 'siteurl' ) ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
                 <script type="text/javascript">
+                	var yop_display_results = "-1";
+                	function getYOPDisplayResults(){
+                		var yop_results_radio = document.getElementsByName( "show_results" );
+                		if( yop_results_radio[1].checked ) {
+                			yop_display_results = "1";
+                		}
+                	}
                     function insertYopPollTinyMce(poll_id, tr_id,show_results) {
                         tr_id = typeof tr_id !== 'undefined' ? tr_id : '';
                         show_results = typeof show_results !== 'undefined' ? show_results : '';
@@ -1057,18 +1043,22 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                         }
                         else {
                             if( poll_id != null && poll_id != '' ) {
-                                if( tr_id != '' ) {
-                                    tinyMCEPopup.editor.execCommand( 'mceInsertContent', false,
-                                        '[yop_poll id="' + poll_id + '" tr_id="' +
-                                            tr_id + '"' + '" show_results="' +
-                                            show_results + '"]' );
-                                }
-                                else {
-                                    tinyMCEPopup.editor.execCommand( 'mceInsertContent', false,
-                                        '[yop_poll id="' + poll_id + '" tr_id="' +
-                                            tr_id + '"' + '" show_results="' +
-                                            show_results + '"]' );
-                                }
+                            	if( show_results == "-1") {
+                            		if( tr_id != '' ) {
+                                    	tinyMCEPopup.editor.execCommand( 'mceInsertContent', false,
+                                        	'[yop_poll id="' + poll_id + '" tr_id="' +
+                                            tr_id + '"]' );
+									}
+									else {
+										tinyMCEPopup.editor.execCommand( 'mceInsertContent', false,
+											'[yop_poll id="' + poll_id + '"]' );
+									}
+                            	}
+                            	else {
+                            		tinyMCEPopup.editor.execCommand( 'mceInsertContent', false,
+											'[yop_poll id="' + poll_id + '" show_results="' +
+												show_results + '"]' );
+                            	}
                             }
                             else {
                                 tinyMCEPopup.editor.execCommand( 'mceInsertContent', false, '[yop_poll]' );
@@ -1077,56 +1067,133 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                         }
                     }
                 </script>
+                <style>
+                	body {
+                		background: #ffffff 50% 50% repeat-x;
+                	}
+                	select {
+                		background-color: #fff;
+                		outline: 0;
+                		transition: .05s border-color ease-in-out;
+                		margin: 1px;
+                		padding: 3px 5px;
+                		font-size: 13px;
+						line-height: 26px;
+						height: 28px;
+                	}
+                	input[type="text"] {
+                		background-color: #fff;
+                		outline: 0;
+                		transition: .05s border-color ease-in-out;
+                		margin: 1px;
+                		padding: 3px 5px;
+                		font-size: 13px;
+						line-height: 26px;
+						height: 28px;
+                	}
+                	input[type="radio"] {
+                		background-color: #fff;
+                		outline: 0;
+                		transition: .05s border-color ease-in-out;
+                		margin: 1px;
+                		padding: 3px 5px;
+                		font-size: 13px;
+						line-height: 26px;
+                	}
+                	input[type="button"] {
+                		color: #555;
+						border-color: #ccc;
+						background: #f7f7f7;
+						-webkit-box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
+						box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
+						vertical-align: top;
+						display: inline-block;
+						text-decoration: none;
+						font-size: 13px;
+						line-height: 26px;
+						height: 28px;
+						margin: 0;
+						padding: 0 10px 1px;
+						cursor: pointer;
+						border-width: 1px;
+						border-style: solid;
+						-webkit-appearance: none;
+						-webkit-border-radius: 3px;
+						border-radius: 3px;
+						white-space: nowrap;
+						-webkit-box-sizing: border-box;
+                	}
+                	table {
+                		width: 95%;
+                		height: 95%;
+                		margin: auto;
+                		border: 1px solid #e5e5e5;
+						-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.04);
+						box-shadow: 0 1px 1px rgba(0,0,0,.04);
+						border-spacing: 0;
+						width: 100%;
+						clear: both;
+						margin: 0;
+                	}
+                	tr {
+                		line-height: 40px;
+                	}
+                	td {
+                		padding-left: 10px;
+                	}
+                </style>
             </head>
             <body>
-            <p>
-                <label class="label-design"  for="yop-poll-id-dialog"> <span><?php _e("Poll to Display", 'yop_poll' ); ?>:</span>
-                </label>
-                <select class="widefat" name="yop_poll_id" id="yop-poll-id-dialog">
-                    <option value="-3"><?php _e( "Display Random Poll", 'yop_poll' ); ?></option>
-                    <option value="-2"><?php _e( "Display Latest Poll", 'yop_poll' ); ?></option>
-                    <option value="-1"><?php _e( "Display Current Active Poll", 'yop_poll' ); ?></option>
-                    <?php
-                    if( count( $yop_polls ) > 0 ) {
-                        foreach( $yop_polls as $yop_poll ) {
-                            ?>
-                            <option value="<?php echo $yop_poll['ID']; ?>"><?php echo esc_html( stripslashes( $yop_poll['poll_title'] ) ); ?></option>
-                        <?php
-                        }
-                    }
-                    ?>
-                </select>
-
-                <br/>
-                <br/>
-                <label class="label-design" for="yop-poll-tr-id-dialog"> <span ><?php _e( "Tracking ID", 'yop_poll' ); ?>:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                </label>
-                <input  class="widefat" name="yop_poll_tr_id" id="yop-poll-tr-id-dialog"/>
-                <br/>
-                <br>
-                <label class="label-design" for="yop-poll-tr-results-html-dialog"> <span ><?php _e( "Display results only", 'yop_poll' ); ?>:</span>
-                </label>
-                <select
-                    name="show_results"
-                    id="yop-poll-tr-results-html-dialog"
-                    class="widefat">
-                    <option value="-1"><?php _e( "No", 'yop_poll' ); ?></option>
-                    <option value="1"><?php _e( "Yes", 'yop_poll' ); ?></option>
-                </select>
-
-
-
-
-
-            <center><input type="button"
-                           class="button-primary input-design"
+            <table>
+            	<tr>
+            		<td>
+            			<?php _e("Poll to Display", 'yop_poll' ); ?>:
+            		</td>
+            		<td>
+            			<select class="widefat" name="yop_poll_id" id="yop-poll-id-dialog">
+							<option value="-3"><?php _e( "Display Random Poll", 'yop_poll' ); ?></option>
+							<option value="-2"><?php _e( "Display Latest Poll", 'yop_poll' ); ?></option>
+							<option value="-1"><?php _e( "Display Current Active Poll", 'yop_poll' ); ?></option>
+							<?php
+							if( count( $yop_polls ) > 0 ) {
+								foreach( $yop_polls as $yop_poll ) {
+									?>
+									<option value="<?php echo $yop_poll['ID']; ?>">
+										<?php echo esc_html( stripslashes( $yop_poll['poll_title'] ) ); ?>
+									</option>
+								<?php
+								}
+							}
+							?>
+						</select>
+            		</td>
+            	</tr>
+            	<tr>
+            		<td>
+            			<?php _e( "Tracking ID", 'yop_poll' ); ?>:
+            		</td>
+            		<td>
+            			<input type="text" name="yop_poll_tr_id" id="yop-poll-tr-id-dialog" size="35" placeholder="Leave empty if none" />
+            		</td>
+            	</tr>
+            	<tr>
+            		<td>
+            			<? _e( "Display Results Only", 'yop-poll' ); ?>:
+            		</td>
+            		<td>
+            			<input type="radio" name="show_results" value="-1" checked="checked">No
+						<input type="radio" name="show_results" value="1">Yes
+            		</td>
+            	</tr>
+            	<tr>
+            		<td colspan="2" style="text-align:center;">
+            			<input type="button"
+                           class="button button-primary input-design"
                            value="<?php _e( "Insert Poll", 'yop_poll' ); ?>"
-                           onclick=" insertYopPollTinyMce( document.getElementById('yop-poll-id-dialog').value, document.getElementById('yop-poll-tr-id-dialog').value ,document.getElementById('yop-poll-tr-results-html-dialog').value);"/>
-            </center>
-            <br/>
-
-            </p>
+                           onclick="getYOPDisplayResults(); insertYopPollTinyMce( document.getElementById('yop-poll-id-dialog').value, document.getElementById('yop-poll-tr-id-dialog').value, yop_display_results);"/>
+            		</td>
+            	</tr>
+            </table>
             </body>
             </html>
         <?php
@@ -1142,8 +1209,145 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
             require_once( YOP_POLL_MODELS . 'yop_poll_model.php' );
             $yop_polls = Yop_Poll_Model::get_polls_for_view();
             ?>
+            <title><?php _e( "Insert Poll", 'yop_poll' ); ?></title>
+             <style>
+                	body {
+                		background: #ffffff 50% 50% repeat-x;
+                	}
+                	select {
+                		background-color: #fff;
+                		outline: 0;
+                		transition: .05s border-color ease-in-out;
+                		margin: 1px;
+                		padding: 3px 5px;
+                		font-size: 13px;
+						line-height: 26px;
+						height: 28px;
+                	}
+                	input[type="text"] {
+                		background-color: #fff;
+                		outline: 0;
+                		transition: .05s border-color ease-in-out;
+                		margin: 1px;
+                		padding: 3px 5px;
+                		font-size: 13px;
+						line-height: 26px;
+						height: 28px;
+                	}
+                	input[type="radio"] {
+                		background-color: #fff;
+                		outline: 0;
+                		transition: .05s border-color ease-in-out;
+                		margin: 1px;
+                		padding: 3px 5px;
+                		font-size: 13px;
+						line-height: 26px;
+                	}
+                	input[type="button"] {
+                		color: #555;
+						border-color: #ccc;
+						background: #f7f7f7;
+						-webkit-box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
+						box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
+						vertical-align: top;
+						display: inline-block;
+						text-decoration: none;
+						font-size: 13px;
+						line-height: 26px;
+						height: 28px;
+						margin: 0;
+						padding: 0 10px 1px;
+						cursor: pointer;
+						border-width: 1px;
+						border-style: solid;
+						-webkit-appearance: none;
+						-webkit-border-radius: 3px;
+						border-radius: 3px;
+						white-space: nowrap;
+						-webkit-box-sizing: border-box;
+                	}
+                	table {
+                		width: 95%;
+                		height: 95%;
+                		margin: auto;
+                		border: 1px solid #e5e5e5;
+						-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.04);
+						box-shadow: 0 1px 1px rgba(0,0,0,.04);
+						border-spacing: 0;
+						width: 100%;
+						clear: both;
+						margin: 0;
+                	}
+                	tr {
+                		line-height: 40px;
+                	}
+                	td {
+                		padding-left: 10px;
+                	}
+                </style>
+                <script>
+                	var yop_display_results = "-1";
+                	function getYOPDisplayResults(){
+                		var yop_results_radio = document.getElementsByName( "show_results" );
+                		if( yop_results_radio[1].checked ) {
+                			yop_display_results = "1";
+                		}
+                	}
+                </script>
+                <table>
+            	<tr>
+            		<td>
+            			<?php _e("Poll to Display", 'yop_poll' ); ?>:
+            		</td>
+            		<td>
+            			<select class="widefat" name="yop_poll_id" id="yop-poll-id-dialog">
+							<option value="-3"><?php _e( "Display Random Poll", 'yop_poll' ); ?></option>
+							<option value="-2"><?php _e( "Display Latest Poll", 'yop_poll' ); ?></option>
+							<option value="-1"><?php _e( "Display Current Active Poll", 'yop_poll' ); ?></option>
+							<?php
+							if( count( $yop_polls ) > 0 ) {
+								foreach( $yop_polls as $yop_poll ) {
+									?>
+									<option value="<?php echo $yop_poll['ID']; ?>">
+										<?php echo esc_html( stripslashes( $yop_poll['poll_title'] ) ); ?>
+									</option>
+								<?php
+								}
+							}
+							?>
+						</select>
+            		</td>
+            	</tr>
+            	<tr>
+            		<td>
+            			<?php _e( "Tracking ID", 'yop_poll' ); ?>:
+            		</td>
+            		<td>
+            			<input type="text" name="yop_poll_tr_id" id="yop-poll-tr-id-dialog" size="35" placeholder="Leave empty if none" />
+            		</td>
+            	</tr>
+            	<tr>
+            		<td>
+            			<? _e( "Display Results Only", 'yop-poll' ); ?>:
+            		</td>
+            		<td>
+            			<input type="radio" name="show_results" value="-1" checked="checked">No
+						<input type="radio" name="show_results" value="1">Yes
+            		</td>
+            	</tr>
+            	<tr>
+            		<td colspan="2" style="text-align:center;">
+            			<input type="button"
+                           class="button"
+                           value="<?php _e( "Insert Poll", 'yop_poll' ); ?>"
+                           onclick="getYOPDisplayResults(); insertYopPoll( edCanvas, document.getElementById('yop-poll-id-dialog').value, document.getElementById('yop-poll-tr-id-dialog').value, yop_display_results);" />
+            		</td>
+            	</tr>
+            </table>
+            
+            <!--
             <p style="text-align: center;">
-                <label for="yop-poll-id-html-dialog"> <span><?php _e( 'Poll to Display', 'yop_poll' ); ?>:</span>
+                <label for="yop-poll-id-html-dialog"> <span><?php _e( 'Pollsss to Display', 'yop_poll' ); ?>:</span>
                     <select class="widefat" name="yop_poll_id" id="yop-poll-id-html-dialog">
                         <option value="-3"><?php _e( 'Display Random Poll', 'yop_poll' ); ?></option>
                         <option value="-2"><?php _e( 'Display Latest Poll', 'yop_poll' ); ?></option>
@@ -1152,7 +1356,9 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                         if( count( $yop_polls ) > 0 ) {
                             foreach( $yop_polls as $yop_poll ) {
                                 ?>
-                                <option value="<?php echo $yop_poll['ID']; ?>"><?php echo esc_html( stripslashes( $yop_poll['poll_title'] ) ); ?></option>
+                                <option value="<?php echo $yop_poll['ID']; ?>">
+                                	<?php echo esc_html( stripslashes( $yop_poll['poll_title'] ) ); ?>
+                                </option>
                             <?php
                             }
                         }
@@ -1185,12 +1391,9 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                                    class=""
                                    value="<?php _e( 'Insert Poll', 'yop_poll' ); ?>"
                                    onclick=" insertYopPoll( edCanvas, document.getElementById('yop-poll-id-html-dialog').value, document.getElementById('yop-poll-tr-id-html-dialog').value ,document.getElementById('yop-poll-tr-results-html-dialog'));"/>
-                <br/> <br/> <input type="button"
-                                   class=""
-                                   value="<?php _e( 'Close', 'yop_poll' ); ?>"
-                                   onclick="tb_remove();"/>
+                <br/>
             </p>
-
+			-->
         <?php
         }
         die ();
@@ -1267,14 +1470,8 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                 wp_die( __yop_poll( 'You are not allowed to access this request.' ) );
 
             }
-
-
-
             $pollAdminObj = YOP_POLL_Poll_Admin::get_instance();
-
-
             $pollAdminObj->add_votes();
-
         }
 
         die();

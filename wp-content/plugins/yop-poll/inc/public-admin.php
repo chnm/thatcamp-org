@@ -34,7 +34,9 @@
                     $yop_poll_options = Yop_Poll_Model::get_poll_options_by_id( $yop_poll_id['ID'] );
 
                     if( 'yes' == $yop_poll_options['schedule_reset_poll_stats'] ) {
-                        if( $yop_poll_options['schedule_reset_poll_date'] <= current_time( 'timestamp' ) ) {
+                    	$reset_time = new DateTime( $yop_poll_options['schedule_reset_poll_date'] );
+                    	$now_date = new DateTime(date("Y-m-d H:i:s", current_time( 'timestamp' )));
+                    	if( $reset_time -> format("Y-m-d H") == $now_date -> format("Y-m-d H") ){
                             $unit_multiplier = 0;
 
                             switch( strtolower( trim( $yop_poll_options['schedule_reset_poll_recurring_unit'] ) ) ) {
@@ -191,6 +193,7 @@
         public function return_yop_poll( $id, $results, $tr_id = '',$show_results="", $offset = 0 ) {
             //$pro_options = get_option( 'yop_poll_pro_options' );
             $options = get_option( 'yop_poll_options' );
+
             require_once( YOP_POLL_MODELS . "poll_model.php" );
 
             $poll_unique_id            = uniqid( '_yp' );
@@ -221,40 +224,26 @@
                 'vote_with_wordpress_login_url' => wp_login_url( admin_url( 'admin-ajax.php?action=yop_poll_set_wordpress_vote', ( is_ssl() ? 'https' : 'http' ) ) ),
                 'vote_with_facebook_ajax_url'   => admin_url( 'admin-ajax.php?action=yop_poll_set_facebook_vote', ( is_ssl() ? 'https' : 'http' ) ),
             );
-
-                $vote_permisions_types = 0;
-
-                if( in_array( 'registered', $yop_poll_model->vote_permisions ) ) {
-
-                    if( 'yes' == $yop_poll_model->vote_permisions_wordpress ) {
-
-                        $vote_permisions_types += 1;
-
-                    }
-
-                    if( 'yes' == $yop_poll_model->vote_permisions_anonymous &&in_array( 'guest', $yop_poll_model->vote_permisions)|| 'yes' == $yop_poll_model->vote_permisions_anonymous &&in_array( 'registered', $yop_poll_model->vote_permisions)) {
-
-                        $vote_permisions_types += 2;
-
-                    }
-
-
-
-                }  else
-                    if( in_array( 'guest', $yop_poll_model->vote_permisions ) ) {
-                        if( 'yes' == $yop_poll_model->vote_permisions_anonymous &&in_array( 'guest', $yop_poll_model->vote_permisions)) {
-
-                            $vote_permisions_types += 2;
-
-                        }
-                    }
-
-
-                if( 'yes' == $yop_poll_model->use_default_loading_image ) {
-                $loading_image_src = YOP_POLL_URL . 'images/loading36x36.gif';
+            $vote_permisions_types = 0;
+            if( in_array( 'registered', $yop_poll_model->vote_permisions ) ) {
+            	if( 'yes' == $yop_poll_model->vote_permisions_wordpress ) {
+                    $vote_permisions_types += 1;
+                }
+                if( 'yes' == $yop_poll_model->vote_permisions_anonymous &&in_array( 'guest', $yop_poll_model->vote_permisions)|| 'yes' == $yop_poll_model->vote_permisions_anonymous &&in_array( 'registered', $yop_poll_model->vote_permisions)) {
+                    $vote_permisions_types += 2;
+                }
             }
-            else {
-                $loading_image_src = $yop_poll_model->loading_image_url;
+            else
+            	if( in_array( 'guest', $yop_poll_model->vote_permisions ) ) {
+                	if( 'yes' == $yop_poll_model->vote_permisions_anonymous &&in_array( 'guest', $yop_poll_model->vote_permisions)) {
+                    	$vote_permisions_types += 2;
+                    }
+                }
+            if( 'yes' == $options["use_default_loading_image"] ) {
+            	$loading_image_src = YOP_POLL_URL . 'images/loading36x36.gif';
+        	}
+        	else {
+        	    $loading_image_src = $options["loading_image_url"];
             }
 
             if( $results ) {
@@ -290,7 +279,7 @@
                 'loading_image_alt' => __yop_poll( 'Loading' ),
             );
 
-			$tabulate['results']=false;
+			      $tabulate['results']=false;
             $tabulate['answers']=false;
             $tabulate['orizontal_answers']=0;
             $tabulate['orizontal_results']=0;

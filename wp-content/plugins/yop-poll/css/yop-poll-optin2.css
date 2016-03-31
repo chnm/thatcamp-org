@@ -1,35 +1,15 @@
-#WFItem394041 {
-    background: #0097e5; /* Old browsers */
-    background: -moz-linear-gradient(45deg,  #0097e5 0%, #20b3ff 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#0097e5), color-stop(100%,#20b3ff)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg,  #0097e5 0%,#20b3ff 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg,  #0097e5 0%,#20b3ff 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg,  #0097e5 0%,#20b3ff 100%); /* IE10+ */
-    background: linear-gradient(45deg,  #0097e5 0%,#20b3ff 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0097e5', endColorstr='#20b3ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    border: 1px solid #cfcccc;
-    color: #fff;
-    margin-top: 20px;
-    height: 190px;
-    position: relative;
-}
-
-
 @font-face {
     font-family: Lato-Reg;
     src: url(fonts/Lato-Reg.ttf);
 }
-
 @font-face {
     font-family: Lato-Lig;
     src: url(fonts/Lato-Lig.ttf);
 }
-
 @font-face {
     font-family: Lato-Bla;
     src: url(fonts/Lato-Bla.ttf);
 }
-
 @font-face {
     font-family: 'FontomasCustomRegular';
     src: url('fonts/fontomas-webfont.eot');
@@ -37,7 +17,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
 /* Optin */
 #WFItem394041 {
     background: #f7f7f7; /* Old browsers */
@@ -54,6 +33,7 @@
     box-shadow: 0px 0px 9px #dadada;
     color: #95abb7;
     text-align: center;
+    max-width: 400px;
     height: auto;
 }
 #WFItem394041 h1 {
@@ -63,11 +43,10 @@
     font-family: Lato-Bla, Arial, Helvetica, sans-serif;
     line-height: 1em;
 }
-
 #WFItem394041 label {
     position: relative;
+    font-size: 1.1em;
 }
-
 #WFItem394041 h2 {
     font-size: 3em;
     margin-top: 0.5em;
@@ -82,11 +61,12 @@
     font-weight: bold;
     color: #95abb7;
     display: inline;
+    line-height: 120%;
 }
 
 #WFItem394041 #circle {
     border-radius: 50%;
-    background: #00a8ff;
+    background: #0092d5;
     position: relative;
     margin: 0 auto;
     width: 7.75em;
@@ -95,11 +75,12 @@
 
 #WFItem394041 #email {
     border-style: none;
-    border: 1px solid #00a8ff;
+    border: 1px solid #0092d5;
+    border-radius: 5px;
     background: #fff;
     margin-top: 0.5em;
     padding-left: 2em;
-    font-size: 1.125em;
+    font-size: 1.2em;
     font-family: Calibri, Arial, Helvetica, sans-serif;
     color: #aeaaaa;
     -webkit-transition: all 0.3s linear;
@@ -107,36 +88,20 @@
     -o-transition: all 0.3s linear;
     transition: all 0.3s linear;
     width: 75%;
-    height: 2.3em;
+    height: 3em;
 }
 
 #WFItem394041 #email:focus {
     background: #f9f9f9;
 }
 
-#WFItem394041 .wf-button {
-    margin-top: 10px;
-    font-size: 1.4em;
-    height: 1.7em;
-    margin-bottom: 0.5em;
-    border: none;
-    background: #00a8ff;
-    color: white;
-    cursor: pointer;
-    width: 81%;
-}
-
-#WFItem394041 .wf-button:active {
-    background: #0098e6;
-}
-
 #yop-poll-close-modal-box {
     text-decoration: none;
     position: absolute;
-    color: #00A8FF;
+    color: #000;
     cursor: pointer;
     float: right;
-    font-size: 1.5em;
+    font-size: 1.4em;
     height: 1em;
     width: 1em;
     top: 5px;
@@ -147,14 +112,51 @@
     left: 2px;
     content: attr(data-icon);
     font-family: 'FontomasCustomRegular';
-    color: #00a8ff;
+    color: #0092d5;
     position: absolute;
     left: 5px;
     top: 4px;
     width: 20px;
+    height: 2em;
 }
 
 #poststuff h2 {
-
     margin-bottom: -15px !important;
+}
+.elButton {
+	color: #fff;
+	display: inline-block;
+	font-weight: bold;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center !important;
+	text-decoration: none !important;
+}
+.elButton:hover {
+	color: inherit;
+	text-decoration: none;
+}
+.elButton:visited, .elButton:active, .elButton:hover {
+	text-decoration: none !important;
+}
+.elButtonColor1 {
+	background-color: #0092d5;
+}
+.elButtonColor1:hover {
+	background-color: #0c69a8;
+}
+.elButtonSize2 {
+	border-radius: 5px;
+	font-size: 21px;
+	padding: 15px 35px;
+}
+.elButtonBottomBorder {
+	border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+	border-left: medium none !important;
+	border-right: medium none !important;
+}
+.elButtonSub, .elButtonSub1, .elButtonSub2 {
+	display: block;
+	font-weight: normal;
+	opacity: 0.7;
 }

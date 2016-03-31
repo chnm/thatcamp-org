@@ -73,11 +73,9 @@
 
 		</div><!-- yop-poll-subsection -->
 		<div id="publishing-action">
-
 			<span class="spinner"></span>
             <label for="yop-poll-edit-add-new-question-{{ question.ID }}-answer" class="button-primary">{{ __("Add New Answer") }}</label>
 			<input type="button" class="button-primary" value='{{ __("Add New Answer") }}' onclick="yop_poll_add_new_answer( '{{ question.ID }}', '', this,'text' )" style="display: none" id="yop-poll-edit-add-new-question-{{ question.ID }}-answer"/>
-
 		</div>
 		<!-- End Answers section -->
 
@@ -86,8 +84,11 @@
 		<hr class="yop-poll-sections-delimiter"/>
 		<!-- Start Question Options section -->
 		<div class="yop-poll-subsection postbox closed" style="">
-
-			<div title='{{ __("Click to toggle") }}' class="handlediv"><br/> </div>
+			
+			<button type="button" class="handlediv button-link" aria-expanded="true">
+				<span class="screen-reader-text">Toggle panel: Question Options</span>
+				<span class="toggle-indicator" aria-hidden="true"></span>
+			</button>
 
 			<h4 class="yop-poll-subsection-title hndle" style="padding-top: 5px; padding-bottom: 5px; padding-left: 10px;">{{ __( "Question Options" ) }}:</h4>
 
@@ -189,7 +190,10 @@
 
 		<!-- Start Custom Fields section -->
 		<div class="yop-poll-subsection postbox closed" id="yop-poll-customfieldsdiv">
-			<div title='{{ __("Click to toggle") }}' class="handlediv"><br/> </div>
+			<button type="button" class="handlediv button-link" aria-expanded="true">
+				<span class="screen-reader-text">{{__( "Toggle panel: Custom Fields" ) }}</span>
+				<span class="toggle-indicator" aria-hidden="true"></span>
+			</button>
 			<h4 class="yop-poll-subsection-title hndle" style="padding-top: 5px; padding-bottom: 5px; padding-left: 10px;">{{__( "Custom Fields" ) }}:</h4>
 			<div class="inside" style="border-top: 1px solid #AAAAAA;; padding-top: 5px;">
 				<table cellspacing="0" class="links-table"
@@ -237,18 +241,18 @@
 				</table>
 
 
-                    <span class="spinner"></span>
-				<p id="yop-poll-add-customfield-holder" style="display: block; float:right; ">
-					<input type="hidden" id="yop-poll-question-{{question.ID}}-custom-fields-no" value="{{ i+1 }}">
-					<label for="yop-poll-add-customfield-button" class="button-primary">{{ __( "Add New Custom Field" ) }}</label>
-                    <input
-						type="button"
-                        style="display: none"
-						id="yop-poll-add-customfield-button"
-						class="button-primary"
-						value='{{ __( "Add New Custom Field" ) }}'
-						onclick="yop_poll_add_table_customfield( '#yop-poll-customfields-table-{{question.ID}}' , '{{ question.ID }}' )">
-				</p>       <br> <br>
+					<div id="yop-poll-add-customfield-holder" style="float:right;">
+						<input type="hidden" id="yop-poll-question-{{question.ID}}-custom-fields-no" value="{{ i+1 }}">
+						<label for="yop-poll-add-customfield-button" class="button-primary">{{ __( "Add New Custom Field" ) }}</label>
+						<input
+							type="button"
+							style="display: none"
+							id="yop-poll-add-customfield-button"
+							class="button-primary"
+							value='{{ __( "Add New Custom Field" ) }}'
+							onclick="yop_poll_add_table_customfield( '#yop-poll-customfields-table-{{question.ID}}' , '{{ question.ID }}' )">
+					</div>       
+					<br> <br>
 
 			</div>
 		</div>

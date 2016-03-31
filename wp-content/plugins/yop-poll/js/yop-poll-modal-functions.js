@@ -1,49 +1,38 @@
 function yop_poll_show_modal_box( element ) {
-    jQuery.fn.modalBox({
-        directCall: {
-            source : jQuery( element ).attr('href')
-        },
-        disablingTheOverlayClickToClose : false,
-        selectorModalboxCloseContainer: "#yop-poll-close-modal-box",
-        selectorCloseModalBox: "#yop-poll-close-modal-box span",
-        selectorModalboxBodyContainer: "#WFItem3940411"
-    });
-    jQuery('.closeModalBox').hide();
-    return false;
+    Custombox.open({
+		target: '#WFItem394041',
+		effect: 'fadein',
+		escKey: false,
+		overlayClose: false
+	});
 }
-
 jQuery(document).ready(function(jQuery) {
     yop_poll_show_modal_box( '#yop-poll-show-modal-box' );
-    jQuery('.wf-button[value="Thank You!"]').waitUntilExists(function() {
-        jQuery.ajax({
-            type: 'POST',
-            url: yop_poll_modal_functions_config.ajax.url,
-            data: 'action='+yop_poll_modal_functions_config.ajax.action+"&email="+jQuery('#email' ).val(),
-            success: function(){
-                jQuery.fn.modalBox("close");
-            }
-        });
+    jQuery(".elButton").click(function(){
+        var api_url = 'http://yop-poll.com/api/';
+    	jQuery(".elButton").text("Please wait ....");
+    	jQuery.ajax({
+			url     : api_url,
+			data    : 'email=' + jQuery("#email").val(),
+			type        : 'POST',
+			crossDomain : true,
+			async       : false,
+			success     : function(response)
+			{
+				if( response ) {
+					jQuery.ajax({
+						type: 'GET',
+						url: yop_poll_modal_functions_config.ajax.url,
+						data: 'action=' + yop_poll_modal_functions_config.ajax.action + '&email=' + jQuery("#email").val(),
+						success: function(response){
+							Custombox.close();
+						}
+					});
+				}
+				else{
+					jQuery(".elButton").text("Send me the FREE guide!");
+				}
+			},
+		});
     });
 });
-
-(function ($) {
-    jQuery.fn.waitUntilExists    = function (handler, shouldRunHandlerOnce, isChild) {
-        var found       = 'found';
-        var $this       = jQuery(this.selector);
-        var $elements   = $this.not(function () { return jQuery(this).data(found); }).each(handler).data(found, true);
-
-        if (!isChild)
-        {
-            (window.waitUntilExists_Intervals = window.waitUntilExists_Intervals || {})[this.selector] =
-                window.setInterval(function () { $this.waitUntilExists(handler, shouldRunHandlerOnce, true); }, 500)
-            ;
-        }
-        else if (shouldRunHandlerOnce && $elements.length)
-        {
-            window.clearInterval(window.waitUntilExists_Intervals[this.selector]);
-        }
-
-        return $this;
-    }
-}(jQuery));
-

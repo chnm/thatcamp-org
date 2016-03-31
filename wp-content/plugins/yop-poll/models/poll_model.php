@@ -17,7 +17,8 @@ Class YOP_POLL_Poll_Model extends YOP_POLL_Abstract_Model
 
         if ('' == $template_id) {
             return "";
-        } else {
+        }
+        else {
             $uID = uniqid('t');
             $poll = new YOP_POLL_Poll_Model();
             $template_details = self::get_poll_template_from_database(intval($template_id));
@@ -46,6 +47,7 @@ Class YOP_POLL_Poll_Model extends YOP_POLL_Abstract_Model
             $t = $template;
             $pattern = '\[(\[?)(QUESTION_CONTAINER)\b([^\]\/]*(?:\/(?!\])[^\]\/]*)*?)(?:(\/)\]|\](?:([^\[]*+(?:\[(?!\/\2\])[^\[]*+)*+)\[\/\2\])?)(\]?)';
             preg_match("/$pattern/s", $t, $m);
+            //print_r($m);
             $m = $m[5];
 
             $m = str_ireplace("%POLL-QUESTION%", $question->question, $m);
@@ -278,10 +280,13 @@ Class YOP_POLL_Poll_Model extends YOP_POLL_Abstract_Model
                 if ($ans_no > 0) {
                     $results_tabulated_cols = $ans_no;
                 }
-            } else if ('tabulated' == $question->display_results) {
+            }
+            else if ('tabulated' == $question->display_results) {
                 $results_tabulated_cols = $question->display_results_tabulated_cols;
             }
-
+            if( !isset($ans_per_question) ){
+              $ans_per_question = '';
+            }
             array_push($tabulate, array($answers_tabulated_cols, $results_tabulated_cols, $ans_per_question, $question->ID));
         }
 
@@ -636,7 +641,6 @@ Class YOP_POLL_Poll_Model extends YOP_POLL_Abstract_Model
         $return_string = '';
         $is_voted = $this->is_voted();
         $id = $this->ID;
-
         if ($this->is_view_poll_results()) {
             $display_other_answers = false;
             if ('yes' == $question->allow_other_answers) {
@@ -649,8 +653,8 @@ Class YOP_POLL_Poll_Model extends YOP_POLL_Abstract_Model
             if (isset($this->percentages_decimals)) {
                 $percentages_decimals = $this->percentages_decimals;
             }
-
             if (isset($this->sorting_results)) {
+                error_log('maybe here');
                 if ('as_defined' == $this->sorting_results) {
                     $question->sortAnswers('question_order', 'asc');
                 } elseif ('database' == $this->sorting_results) {
@@ -1393,8 +1397,8 @@ Class YOP_POLL_Poll_Model extends YOP_POLL_Abstract_Model
                 if (in_array('after-poll-end-date', $this->view_results) || in_array('before', $this->view_results) || in_array('after', $this->view_results)) {
                     if ($this->is_view_poll_results()) {
                         $template = str_ireplace('%POLL-ANSWER-RESULT-LABEL%', $this->answer_result_label, $template);
-                        $template = str_ireplace('%POLL-END-DATE%', $this->poll_end_date, $template);
-                        $template = str_ireplace('%POLL-START-DATE%', $this->poll_start_date, $template);
+                        $template = str_ireplace('%POLL-END-DATE%', convert_date($this->poll_end_date, $date_format, 1), $template);
+                        $template = str_ireplace('%POLL-START-DATE%', convert_date($this->poll_start_date, $date_format, 1), $template);
                     }
                 }
 
@@ -1402,8 +1406,8 @@ Class YOP_POLL_Poll_Model extends YOP_POLL_Abstract_Model
         } else {
             //poll hasn't started
             $template = $template_details['before_start_date_template'];
-            $template = str_ireplace('%POLL-END-DATE%', $this->poll_end_date, $template);
-            $template = str_ireplace('%POLL-START-DATE%', $this->poll_start_date, $template);
+            $template = str_ireplace('%POLL-END-DATE%', convert_date($this->poll_end_date, $date_format, 1), $template);
+            $template = str_ireplace('%POLL-START-DATE%', convert_date($this->poll_start_date, $date_format, 1), $template);
             if (in_array('before', $this->view_results)) {
                 if ($this->is_view_poll_results()) {
                     $template = str_ireplace('%POLL-ANSWER-RESULT-LABEL%', $this->answer_result_label, $template);
@@ -1423,8 +1427,8 @@ Class YOP_POLL_Poll_Model extends YOP_POLL_Abstract_Model
                 }
             }
         }
-        $template = str_ireplace('%POLL-END-DATE%', $this->poll_end_date, $template);
-        $template = str_ireplace('%POLL-START-DATE%', $this->poll_start_date, $template);
+        $template = str_ireplace('%POLL-END-DATE%', convert_date($this->poll_end_date, $date_format, 1), $template);
+        $template = str_ireplace('%POLL-START-DATE%', convert_date($this->poll_start_date, $date_format, 1), $template);
         $template = stripslashes_deep($template);
 
         $template = str_ireplace('%POLL-ID%', $this->ID . $unique_id, $template);

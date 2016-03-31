@@ -17,7 +17,8 @@
             $orderby       = 'ID';
             $order         = 'ASC';
             $limit         = null;
-
+			
+			
             if( isset( $args['return_fields'] ) ) {
                 $return_fields = trim( $args['return_fields'], ',' );
             }
@@ -424,7 +425,23 @@
                              ), $type = null, $poll_id = null, $offset = 0, $per_page = 99999999
         ) {
             global $wpdb;
-
+			$allowed_order = array (
+								0 => "id",
+								1 => "name",
+								2 => "type",
+								3 => "value",
+								4 => "period",
+								5 => "unit"
+							);
+			
+			if( !in_array( $orderby, $allowed_order ) ) {
+				$order_bye = "id";
+			}
+			
+			if( $order != "desc" && $order != "asc") {
+				$order = "desc";
+			}
+			
             if( 'id' == $orderby ) {
                 $orderby = $wpdb->yop_poll_bans . ".id";
             }

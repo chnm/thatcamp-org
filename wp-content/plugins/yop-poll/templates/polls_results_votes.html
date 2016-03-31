@@ -142,13 +142,10 @@
             <!-- Close button -->
 
             <p style="text-align:center; font-weight: bold; font-size: 16px">
-
                 <input type = "hidden" name = "action" value = "do-buy">
                 <label for="yop-poll-buy-pro-version" class="upgrade_button">{{__("Upgrade to Pro for only $17")}}</label>
                 <input id="yop-poll-buy-pro-version" style="display: none" type = "submit" name = "do_buy" class = "button-primary" value = 'Upgrade to Pro for only $17'>
             </p>
-
-
 
         </div>
 
@@ -157,7 +154,7 @@
 
 <form style="display: none;text-align:center;font-size: 20px;font-weight: bold;" class="yop_poll_buy_pro" method="post" action="">
     <div >
-        <p>{{ __("Please buy pro version to use this feature!")}}</p>
+        <p>{{ __("Please upgrade to pro to enable this feature!")}}</p>
         <input type = "hidden" name = "action" value = "do-buy">
 
         {{ wp_nonce_field('yop-poll-before-buy')|raw }}
@@ -252,21 +249,17 @@
 
 
             <tr class="form-field form-required">
-
-                <th scope="row"><label for="yop-poll-ban-value">{{__( "Value" )}}
-
-                                        <span
-
-                                                class="description">{{__( "(required)" )}}</span><br> <small><i>{{__( "One Value Per Line" ) }}</i></small></label></th>
-
-                <td><textarea rows="5" cols="30" id="yop-poll-ban-value"
-
-                              name="ban_value" value=""></textarea></td>
-
+                <th scope="row">
+                	<label for="yop-poll-ban-value">{{__( "Value" )}}
+                	<span  class="description">{{__( "(required)" )}}</span>
+                	<br> 
+                	<small><i>{{__( "One Value Per Line" ) }}</i></small></label>
+                </th>
+                <td>
+                	<textarea rows="5" cols="30" id="yop-poll-ban-value" name="ban_value" value=""></textarea>
+                </td>
             </tr>
-
             </tbody>
-
         </table>
 
         <p class="submit">
@@ -363,11 +356,7 @@
 
 
     <form method="post" action="?page=yop-polls&action=print_votes&id={{poll.ID}}" style="display: none" id="yop_poll_print_votes" target="_blank">
-
-
         <div >
-
-
             <table style="margin-left: auto; margin-right: auto;">
                 <tbody>
                 <tr>
@@ -599,7 +588,7 @@
                                                 {%for id in custom_field_detail.column_custom_fields_ids%}
                                                 {%set value=custom_field_detail.custom_fields_value%}
 
-                                                <td>{{value[id]}}</td>
+                                                <td>{{custom_field_detail.custom_fields_value[id]}}</td>
 
                                                 {%endfor%}
                                                 <td>{{custom_field_detail.vote_id}}</td>
@@ -777,7 +766,9 @@
 
 
 
-                    </th>   <th id="period"
+                    </th>
+                    <!--
+                    <th id="period"
 
                                 style="width: 12%" scope="col">
 
@@ -788,7 +779,7 @@
 
 
                     </a></th>
-
+					-->
 
 
 
@@ -873,17 +864,20 @@
 
 
 
-                </th>   <th id="period"
+                </th>   
+                <!--
+                <th id="period"
 
                             style="width: 15%" scope="col">
 
 
 
-                    <span>{{__( "Poll ID")}}</span>
+                    <span>{{__( "Vote ID")}}</span>
 
 
 
                 </a></th>
+                -->
 
 
 
@@ -981,7 +975,7 @@
                                name="yoppollresultscheck[]">
 
                     </th>
-
+					<!--
                     <td><strong>{{result.vote_id}}</strong><br>
 
                         <br>
@@ -1007,7 +1001,7 @@
 
 
                         </div></td>
-
+					-->
                     <td style="display: none"><input  id="yop-poll-results-ip_{{index}}" value="{{esc_html( stripslashes( result.ip ))}}"><input></td>
 
                     <td style="display: none"><input  id="yop-poll-results-userid_{{index}}" value="{{esc_html( stripslashes( result.user_id ))}}"><input></td>

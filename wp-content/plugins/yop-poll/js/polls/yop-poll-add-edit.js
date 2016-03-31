@@ -12,7 +12,7 @@ else if (ie4)
 function init()
 {
     if(ns4)
-    {ld.visibility="hidden";}
+    	{ld.visibility="hidden";}
     else
     if (ns6||ie4)
         ld.display="none";
@@ -97,7 +97,26 @@ jQuery( document ).ready( function( jQuery ) {
   yop_poll_answers_sortable();
   yop_poll_questions_sortable()
 
-
+	//generate code button
+	jQuery( '.generate-code-button' ).click(function(){
+		var poll_id = jQuery( '#yop_poll_shortcode_input' ).data( 'id' );
+		var tracking_id = jQuery( '#poll_tracking_id' ).val();
+		var show_results = jQuery("input:radio[name=poll_display_results]:checked").val();
+		var code = "[yop_poll id=\"" + poll_id + "\"";
+		if( show_results == "-1") {
+			if( tracking_id != "" ) {
+				code += " tracking_id=\"" + tracking_id + "\"]";
+			}
+			else {
+				code += "]";
+			}
+		}
+		else {
+			code += " show_results=\"" + show_results + "\"]";
+		}
+		jQuery( '#yop_poll_shortcode_input' ).val( code );
+	});
+	//end generate code button
   //<editor-fold desc="View Results Checkboxes">
   jQuery( '#yop-poll-view-results-custom' ).change( function() {
     if( jQuery( this ).attr( 'checked' ) == "checked" ) {
@@ -877,17 +896,12 @@ function yop_poll_check_tabulate(answers_display,tabulated_cols) {
 }
 function yop_poll_show_poll_shortcode(poll_id){
     jQuery("#yop_poll_shortcode_input" ).val( "[yop_poll id="+'"'+poll_id+'"'+"]");
+    jQuery("#yop_poll_shortcode_input" ).data( "id", poll_id );
     jQuery("#yop_poll_show_shortcode").dialog({
-
-        height: '130',
-
-        width: '320',
-
-
+        height: '350',
+        width: '550',
         modal: true
-
     });
-
 }
 
 

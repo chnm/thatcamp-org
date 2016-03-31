@@ -105,8 +105,6 @@ function cslw( msg ) {
 
 jQuery( document ).ready( function ( jQuery ) {
 
-
-
     var top = jQuery( '#postbox-container-1' ).position();
     if( top !== undefined ) {
         var pos = "-" + top.top + "px";
@@ -283,10 +281,7 @@ jQuery(window).load(function() {
         pause: 7000
 
     });
-    jQuery(".yop-poll-slider").css("opacity","1")
-
-
-
+    jQuery(".yop-poll-slider").css("opacity","1");
 });
 
 

@@ -53,7 +53,6 @@
 		}
 
 		function init( $data, $answer_sort, $answer_sort_rule ) {
-
 			$this->data = $data;
 
 			$this->ID = (int)$data->ID;

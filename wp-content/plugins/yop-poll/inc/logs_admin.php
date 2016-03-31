@@ -232,7 +232,7 @@ class YOP_POLL_Logs_Admin extends YOP_POLL_Abstract_Admin{
 
         if(isset($data['poll_id']))
             $filters[0]['value']=$_REQUEST['poll_id'];
-        if($_REQUEST['s']!=""||$data['log_sdate']!=""||$data['log_edate']!=""){
+        if( ( isset( $_REQUEST['s'] ) && $_REQUEST['s'] !="" ) || $data['log_sdate'] !="" || $data['log_edate']!="" ){
 
             $args = array(
                 'search'        => array( 'fields' => array( 'poll_id' ), 'value' => isset ( $poll_id ) ? $poll_id : '' ), 'orderby' => $orderby, 'order' => $order );
@@ -240,7 +240,7 @@ class YOP_POLL_Logs_Admin extends YOP_POLL_Abstract_Admin{
         }
         else
             $args = array(
-                'filters'       => $filters,'orderby' => $data['orderby'], 'order' => $order);
+                'filters'       => $filters, 'orderby' => $orderby, 'order' => $order);
         $total_logs=self::get_polls_logs_filter_search($args);
         $data['total_logs']= count($total_logs);
         $data['total_logs_pages'] = ceil(   $data['total_logs'] / $data['per_page'] );

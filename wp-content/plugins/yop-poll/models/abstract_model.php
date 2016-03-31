@@ -196,15 +196,13 @@ abstract class YOP_POLL_Abstract_Model
 
     function init($data, $is_view_results, $question_sort, $question_sort_rule, $answer_sort, $answer_sort_rule)
     {
-
         $this->data = $data;
+        //$this->options =
 
         $this->ID = (int)$data->ID;
 
         $this->init_options();
-
-        if ('yes' == $is_view_results) {
-
+        if ( ( 'yes' == $is_view_results ) || ( 'before' == $this->options['view_results'][0] )) {
             switch ($this->sorting_results) {
 
                 case "database":
@@ -1994,64 +1992,40 @@ abstract class YOP_POLL_Abstract_Model
 
     public static function reset_poll_stats_from_database($poll_id)
     {
-
         global $message;
-
         $current_poll = new YOP_POLL_Poll_Model($poll_id);
-
         $message = self::delete_result_from_db_by_poll_id($poll_id);
-
         $current_poll->poll_total_votes = 0;
-
         foreach ($current_poll->questions as &$question) {
-
             foreach ($question->answers as &$answer) {
-
                 $answer->votes = 0;
-
             }
-
         }
-
         $current_poll->update_no_votes();
-
         $current_poll->save();
-
     }
 
 
     private static function delete_result_from_db_by_poll_id($poll_id)
     {
-
         global $wpdb;
-
         $response['success'] = "";
-
         $response['error'] = "";
-
-
         $sql = $wpdb->query($wpdb->prepare("
-
 					DELETE FROM  $wpdb->yop_poll_results
-
 					WHERE poll_id = %d
-
 					", $poll_id));
-
-        if ($sql) {
-
+		$sqls = $wpdb->query($wpdb->prepare("
+					DELETE FROM  $wpdb->yop_poll_votes_custom_fields
+					WHERE poll_id = %d
+					", $poll_id));
+        if ( $sql && $sqls ) {
             $response['success'] = __yop_poll('Result deleted');
-
-
-        } else {
-
-            $response['error'] = __yop_poll('Could not delete result from database! Please try again!');
-
         }
-
-
+        else {
+            $response['error'] = __yop_poll('Could not delete result from database! Please try again!');
+        }
         return $response;
-
     }
 
 }

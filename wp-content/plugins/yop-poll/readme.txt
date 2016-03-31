@@ -3,12 +3,12 @@ Contributors: yourownprogrammer
 Donate Link: http://www.yop-poll.com
 Tags: booth, create poll, poll plugin, poll, polls, wordpress poll, vote, voting, survey, polling, yop poll, yop
 Requires at least: 3.3
-Tested up to: 4.3
+Tested up to: 4.4
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.htm
 
-Use a full option polling solution to get the answers you need.       
+Use a full option polling solution to get the answers you need.
 
 YOP Poll is the perfect, easy to use poll plugin for your wordpress site.
 
@@ -25,11 +25,11 @@ Designed to intuitive and easy to use, this plugin allows shortcodes and include
 Current poll features:
 
    *  Create/ Edit / Clone/Delete poll - allows you to create or intervene in your poll at any time, if you consider it necessary.
-   
+
    *  Poll scheduling:  programs each poll to start/end on a certain date. You can simultaneously run multiple polls. This option can be used to schedule your polls one after another.
-   
+
    *  Display polls: you can choose to display one or more polls on your website by simply adding the corresponding poll ID. You can also decide for a random display of your active polls.
-   
+
    *  View all polls: lists all your polls that you can sort by number of votes or voters, by question or by date. It also includes a search option.
 
    *  Poll answers - allows other answers, multiple answers and includes a sorting module by various criteria: in exact order, in alphabetical order, by number of votes, ascending, descending etc.
@@ -85,7 +85,7 @@ Yes, you can run multiple polls at the same time or you can schedule them to beg
 
 = Can I ask for additional information from my voters? =
 
-Yes, you can customize your poll to request additional information. Eg. name, email, age, profession. 
+Yes, you can customize your poll to request additional information. Eg. name, email, age, profession.
 To include this, when you create your poll using the "Add New" form, expand "Custom Fields" section and include as many requests as you need.
 
 = How can I create/modify a template? =
@@ -141,6 +141,18 @@ You can have only one question per poll. If you want to ask more than one questi
 5. YOP Poll on a page with a custom field defined
 
 == Changelog ==
+
+= 5.7.9 =
+* start date and end date easier to read on the front end
+* Fixed issue with showing results before vote
+
+= 5.7.8 =
+* Fixed issue with reset stats
+* Fixed security issue
+* Fixed issue with automatically reset stats
+* Fixed issue with custom loading image
+* Fixed display issues
+* Updated Get Code with more options
 
 = 5.7.7 =
 * Fixed issue with translations

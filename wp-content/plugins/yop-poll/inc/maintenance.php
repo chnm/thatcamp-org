@@ -154,7 +154,7 @@ class YOP_POLL_Maintenance
     function propagate_activation($networkwide)
     {
         if (version_compare(phpversion(), '5.3', '<')) {
-            wp_die("Php version isn't high enough!");
+            wp_die("Your server is running php lower than 5.3. Please update your Php version and try again!");
         }
 
         $this->network_propagate('activate', $networkwide);
@@ -760,6 +760,14 @@ NOWDOC;
         if (version_compare($installed_version, '5.7.6', '<=')) {
             global $wpdb;
             update_option("yop_poll_version", '5.7.7');
+        }
+        if (version_compare($installed_version, '5.7.7', '<=')) {
+            global $wpdb;
+            update_option("yop_poll_version", '5.7.8');
+        }
+        if (version_compare($installed_version, '5.7.8', '<=')) {
+            global $wpdb;
+            update_option("yop_poll_version", '5.7.9');
         }
     }
 

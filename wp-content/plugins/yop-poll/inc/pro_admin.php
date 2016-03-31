@@ -186,7 +186,7 @@ class YOP_POLL_Pro_Admin extends YOP_POLL_Abstract_Admin {
                         "action" => 'after-buy'
                     ), admin_url( 'admin.php' ) ) )
                     );
-                    $paypalUrl    = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7YBTNHDBFJBG6&return=" .
+                    $paypalUrl    = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RVNRVF7HWHR4Q&return=" .
                         "$redirect_url&rm=2&custom=" .
                         urlencode( $domain . ";" .
                             $rand_number. ";" .$email
@@ -194,7 +194,7 @@ class YOP_POLL_Pro_Admin extends YOP_POLL_Abstract_Admin {
                 ;
 
                     echo "<p>" . __yop_poll( "
-Please wait while you are being redirected to PayPal<br>If you are not redirected within 10 seconds, please click " ) .
+						Please wait while you are being redirected to PayPal<br>If you are not redirected within 10 seconds, please click " ) .
                         "<a href='$paypalUrl'>" . __yop_poll( "here" ) . "</a></p>";
                     echo "<script>window.location = '$paypalUrl';</script>";
                 }
