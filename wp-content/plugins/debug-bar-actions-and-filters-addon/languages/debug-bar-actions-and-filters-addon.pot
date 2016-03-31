@@ -1,0 +1,78 @@
+# Copyright (C) 2016 Debug Bar Actions and Filters Addon
+# This file is distributed under the same license as the Debug Bar Actions and Filters Addon package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Debug Bar Actions and Filters Addon 1.5\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/git\n"
+"POT-Creation-Date: 2016-01-06 15:42:19+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: debug-bar-action-and-filters-addon.php:72
+msgid "Total Actions in this page load:"
+msgstr ""
+
+#: debug-bar-action-and-filters-addon.php:73
+msgid "List of Action Hooks"
+msgstr ""
+
+#: debug-bar-action-and-filters-addon.php:117
+msgid "Hook"
+msgstr ""
+
+#: debug-bar-action-and-filters-addon.php:118
+msgid "Priority"
+msgstr ""
+
+#: debug-bar-action-and-filters-addon.php:119
+msgid "Registered callbacks"
+msgstr ""
+
+#: debug-bar-action-and-filters-addon.php:165
+#: debug-bar-action-and-filters-addon.php:169
+msgid "closure"
+msgstr ""
+
+#: debug-bar-action-and-filters-addon.php:178
+#: debug-bar-action-and-filters-addon.php:182
+msgid "class"
+msgstr ""
+
+#: debug-bar-action-and-filters-addon.php:186
+msgid "object"
+msgstr ""
+
+#: debug-bar-action-and-filters-addon.php:211
+msgid "Total hooks with registered actions/filters:"
+msgstr ""
+
+#: debug-bar-action-and-filters-addon.php:212
+msgid "Total registered callbacks:"
+msgstr ""
+
+#: debug-bar-action-and-filters-addon.php:213
+msgid "Unique registered callbacks:"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "Debug Bar Actions and Filters Addon"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/debug-bar-actions-and-filters-addon/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "This plugin add two more tabs in the Debug Bar to display hooks(Actions and Filters) attached to the current request. Actions tab displays the actions hooked to current request. Filters tab displays the filter tags along with the functions attached to it with priority."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Subharanjan"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://subharanjan.com/"
+msgstr ""

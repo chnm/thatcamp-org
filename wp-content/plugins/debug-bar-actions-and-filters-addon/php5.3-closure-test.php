@@ -7,7 +7,7 @@
  * @package debug-bar-actions-and-filters-addon
  * @version 1.4.1
  */
-if( ! function_exists( 'debug_bar_action_and_filters_addon_is_closure' ) ) {
+if ( ! function_exists( 'debug_bar_action_and_filters_addon_is_closure' ) ) {
 	/**
 	 * Function to check for closures
 	 *
@@ -16,9 +16,10 @@ if( ! function_exists( 'debug_bar_action_and_filters_addon_is_closure' ) ) {
 	 * @return  boolean $closurecheck return whether or not a closure
 	 */
 	function debug_bar_action_and_filters_addon_is_closure( $arg ) {
-	    $test = function() {
-	    };
-	    $closurecheck = ( $arg instanceof $test );
-	    return $closurecheck;
+		$test         = function () {
+		};
+		$closurecheck = ( $arg instanceof $test );
+
+		return $closurecheck;
 	}
 }
