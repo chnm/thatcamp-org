@@ -2,7 +2,7 @@
 /*
 * Plugin Name:  bbPress Notify (No-Spam)
 * Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a>
-* Version:      1.9.3
+* Version:      1.10
 * Author:       <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:      GNU General Public License, v2 ( or newer )
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -17,15 +17,15 @@
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 * GNU General Public License for more details.
 *
-* Copyright (C) 2012-2015 www.usestrict.net, released under the GNU General Public License.
+* Copyright (C) 2012-2016 www.usestrict.net, released under the GNU General Public License.
 */
 
 /* Search for translations */
-load_plugin_textdomain( 'bbpress_notify',false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+load_plugin_textdomain( 'bbpress_notify', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 class bbPress_Notify_noSpam {
 	
-	const VERSION = '1.9.3';
+	const VERSION = '1.10';
 	
 	protected $settings_section = 'bbpress_notify_options';
 	
@@ -91,8 +91,12 @@ class bbPress_Notify_noSpam {
 		// Munge bbpress_notify_newtopic_recipients if forum is hidden
 		add_filter( 'bbpress_notify_recipients_hidden_forum', array( $this, 'munge_newtopic_recipients' ), 10, 2 );
 		
-		// Allow other plugins to fetch available tags
-		add_filter( 'bbpnns_available_tags', array( $this, 'get_available_tags' ), 10, 1 );
+		// Allow other plugins to fetch available topic tags
+		add_filter( 'bbpnns_available_tags', array( $this, 'get_available_tags' ), 10, 1 ); // deprecated, but still works
+		add_filter( 'bbpnns_available_topic_tags', array( $this, 'get_available_topic_tags' ), 10, 1 );
+		
+		// Allow other plugins to fetch available reply tags
+		add_filter( 'bbpnns_available_reply_tags', array( $this, 'get_available_reply_tags' ), 10, 1 );
 	}
 	
 	
@@ -258,7 +262,16 @@ class bbPress_Notify_noSpam {
 			return -3;
 
 		$recipients = $this->get_recipients( $forum_id, 'topic' );
+		
+		/**
+		 * Remove topic author from the recipient list
+		 * @since 1.9.4
+		 */
+		$author_id = bbp_get_topic_author_id( $topic_id );
+		
+		unset( $recipients[ $author_id ] );
 
+		
 		/**
 		 * Allow topic recipients munging
 		 * @since 1.6.5
@@ -341,6 +354,14 @@ class bbPress_Notify_noSpam {
 
 
 		$recipients = $this->get_recipients( $forum_id, 'reply' );
+		
+		/**
+		 * Remove reply author from recipients
+		 * @since 1.9.4
+		 */
+		$author_id = bbp_get_reply_author_id( $reply_id );
+		
+		unset( $recipients[ $author_id ] );
 
 		/**
 		 * Allow reply recipients munging
@@ -415,6 +436,18 @@ class bbPress_Notify_noSpam {
 		$email_body = str_replace( "[$type-url]", $url, $email_body );
 		$email_body = str_replace( "[$type-replyurl]", $topic_reply, $email_body );
 		$email_body = str_replace( "[$type-forum]", $forum, $email_body );
+		
+		/**
+		 * @since 1.10
+		 */
+		if ( 'reply' === $type && ( strpos( $email_body, '[topic-url]' ) || strpos( $email_subject, '[topic-url]' ) ) )
+		{
+			$topic_id  = bbp_get_reply_topic_id( $post_id );
+			$topic_url = bbp_get_topic_permalink( $topic_id );
+			
+			$email_subject = str_replace( '[topic-url]', $topic_url, $email_subject );
+			$email_body    = str_replace( '[topic-url]', $topic_url, $email_body );
+		}
 		
 		/**
 		 * Allow subject and body modifications
@@ -707,18 +740,47 @@ class bbPress_Notify_noSpam {
 		printf( '<input type="text" id="bbpress_notify_newtopic_email_subject" name="bbpress_notify_newtopic_email_subject" value="%s" />', get_option( 'bbpress_notify_newtopic_email_subject' ) );
 	}
 	
+	
 	/**
-	 * @since 1.9
+	 * Deprecated
+	 * @param string $tags
+	 * @return string
 	 */
 	public function get_available_tags( $tags='' )
 	{
-		$tags 		= '[blogname], [topic-title], [topic-content], [topic-excerpt], [topic-url], [topic-replyurl], [topic-author]';
+		return $this->get_available_topic_tags( $tags );	
+	}
+	
+	
+	/**
+	 * A method for the topic tags. 
+	 * @since 1.9
+	 */
+	public function get_available_topic_tags( $tags='' )
+	{
+		$tags 		= '[blogname], [topic-title], [topic-content], [topic-excerpt], [topic-url], [topic-replyurl], [topic-author], [topic-forum]';
 		$extra_tags = apply_filters( 'bbpnns_extra_topic_tags',  null );
 		
 		if ( $extra_tags )
 			$tags .= ', '. $extra_tags;
 		
 		return $tags;		
+	}
+	
+	
+	/**
+	 * A method just for the reply tags
+	 * @since 1.10
+	 */
+	public function get_available_reply_tags( $tags='' )
+	{
+		$tags 		= '[blogname], [reply-title], [reply-content], [reply-excerpt], [reply-url], [reply-replyurl], [reply-author], [reply-forum], [topic-url]';
+		$extra_tags = apply_filters( 'bbpnns_extra_reply_tags',  null );
+		
+		if ( $extra_tags )
+			$tags .= ', '. $extra_tags;
+	
+		return $tags;
 	}
 	
 	
@@ -752,11 +814,7 @@ class bbPress_Notify_noSpam {
 	{
 		printf( '<textarea id="bbpress_notify_newreply_email_body" name="bbpress_notify_newreply_email_body" cols="50" rows="5">%s</textarea>', get_option( 'bbpress_notify_newreply_email_body' ) );
 		
-		$tags 		= '[blogname], [reply-title], [reply-content], [reply-excerpt], [reply-url], [reply-replyurl], [reply-author]';
-		$extra_tags = apply_filters( 'bbpnns_extra_reply_tags',  null );
-		
-		if ( $extra_tags )
-			$tags .= ', '. $extra_tags;
+		$tags = $this->get_available_reply_tags();
 		
 		printf( '<p>%s: %s</p>', __( 'Available Tags', 'bbpress_notify' ), $tags );
 	}

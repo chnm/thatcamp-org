@@ -4,11 +4,11 @@ Author URI: http://www.usestrict.net/
 Plugin URI: http://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
-Tested up to: 4.3.1
+Tested up to: 4.4.2
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.9.3
+Stable tag: 1.10
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
 == Description ==
@@ -16,38 +16,48 @@ This is a modification of the original bbPress-Notify plugin, after several fail
 
 This plugin integrates into bbPress and sends a notification via e-mail when new topics or replies are posted. It is fully configurable in the bbPress settings.
 
-Settings include:
+= Settings include =
 
  * Notification recipients for new topics, 
  * Notification recipients for new replies, 
  * Notification e-mail's subject and body for both new topics and replies
- * Set Background Notifications (no longer causes delays in loading pages for large user databases)
- * Extensible through several handy filters
+ * Set Background Notifications (to avoid delays in loading pages for large user databases)
+ * Extensible through nearly 30 handy filters
 
+<blockquote>
 = Premium Add-Ons =
+<ul>
+    <li><a href="http://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/" target="_new">Opt-out Add-on</a>: Users can choose not to receive notifications. A must-have for CAN-SPAM and CASL laws!</li>
+    <li><a href="http://usestrict.net/product/bbpress-notify-no-spam-digests/" target="_new">Digest Add-on</a>: Users can choose to receive daily, weekly, or monthly digests.</li>
+    <li><a href="http://usestrict.net/product/bbpress-moderation-plugin-add-on/" target="_new">bbPress Moderation Integration</a>: Make bbpnns work with <a href="https://wordpress.org/plugins/bbpressmoderation/" target="_new">bbPress Moderation</a>.</li>
+    <li><a href="http://usestrict.net/product/bbpress-notify-no-spam-private-groups-bridge/" target="_new">bbPress Private Groups Integration</a>: Make bbpnns respect <a href="https://wordpress.org/plugins/bbp-private-groups/" target="_new">bbPress Private Groups</a> rules.</li>
+    <li><a href="http://usestrict.net/product/bbpress-notify-no-spam-buddypress-bridge/" target="_new">BuddyPress Integration</a>: Notify BuddyPress Group members of new Group Forum topics and replies.</li>
+</ul>
 
- * [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/): Allow your audience to choose not to receive notifications. A must-have for CAN-SPAM and CASL laws!
- * [Digest Add-on](http://usestrict.net/product/bbpress-notify-no-spam-digests/): Allow your audience to choose to receive daily, weekly, or monthly digests.
- * [bbPress Moderation Integration](http://usestrict.net/product/bbpress-moderation-plugin-add-on/): Make bbpnns work with [bbPress Moderation](https://wordpress.org/plugins/bbpressmoderation/). 
- * [bbPress Private Groups Integration](http://usestrict.net/product/bbpress-notify-no-spam-private-groups-bridge/): Make bbpnns respect [bbPress Private Groups](https://wordpress.org/plugins/bbp-private-groups/) rules.
- * [bbPress Private Groups Integration](http://usestrict.net/product/bbpress-notify-no-spam-private-groups-bridge/): Make bbpnns respect [bbPress Private Groups](https://wordpress.org/plugins/bbp-private-groups/) rules.
- 
+
+</blockquote>
 
 
 == Installation ==
 
 1. Upload the entire plugin folder via FTP to `/wp-content/plugins/`.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Go to the <strong>Settings -> Forums</strong> and select which group our groups should get notifications. 
+3. Go to the <strong>Settings -> Forums</strong> and select which roles should get notifications. 
 
 == Frequently Asked Questions ==
+= Why am I not receiving notifications of a topic/reply that I created? =
+ * As of version 1.9.4, topic/reply authors no longer get notified of their own posts.
+
+= Where are the settings? =
+ * All settings are under Admin -> Settings -> Forums -> Email Notifications
+
 = Can a user turn off notifications? =
- * Originally, this plugin was developed to alert Administrators of new topics and replies. After a few iterations, users requested that I add the ability to send
+ * Originally, this plugin was developed to alert Administrators of new topics and replies. After a few iterations, users requested the ability to send
 messages to other roles, which then could be characterized as spam. To allow your users to opt-out from receiving notifications, please consider purchasing 
-the [Opt-out Module](http://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/).
+the [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/).
 
 = Does this plugin integrate with BuddyPress Groups? =
- * Not at this moment. But if you want this feature badly enough, let me know and I'll look into it.
+ * Out of the box, no. However, you can get BuddyPress Group notification functionality using our premium [bbpnns/BuddyPress Bridge plugin](http://usestrict.net/product/bbpress-notify-no-spam-buddypress-bridge/).
 
 == Screenshots ==
 1. The settings page
@@ -55,6 +65,14 @@ the [Opt-out Module](http://usestrict.net/product/bbpress-notify-no-spam-opt-out
 
 
 == Changelog ==
+
+= 1.10 =
+* Minor bug fix: [topic-forum] and [reply-forum] tags were missing from list of available tags, although functionality was fine.
+* Add: [topic-url] is now available in replies, too.
+
+= 1.9.4 =
+* New Feature: No longer add topic/reply author to the recipient list.
+
 = 1.9.3 =
 * Fix: Replace <code>mb_internal_encoding()</code> with <code>iconv_get_encoding()</code> as at least one host didn't have <code>mb_string</code> enabled.
 * Add: Admin option to enable or disable Subject line encoding. Admin -> Settings -> Forums -> E-mail Notifications -> Encode Topic and Reply Subject line.
@@ -208,16 +226,8 @@ This option can be overridden by using the filter 'bbpnns_handle_mandrill_nl2br'
 * Fixed methods called as functions.
 
 = 1.0 =
-* No-spam version created. 
+* No-spam version forked. 
 
-= 0.2.1 =
-* Added template tags "[topic-replyurl]" and "[reply-replyurl]"
-
-= 0.2 =
-* Improved selection of e-mail recipients; now it is possible to select multiple user roles
-
-= 0.1 =
-* First alpha version
 
 == Upgrade Notice ==
 = 1.9 =

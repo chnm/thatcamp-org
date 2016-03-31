@@ -13,25 +13,23 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	public $reply_id;
 	
 	public $topic_body;
-	public $topic_body_clean;
+	public $topic_body_regex;
 	public $reply_body;
-	public $reply_body_clean;
+	public $reply_body_regex;
 	
 	public function __construct()
 	{
-		$this->topic_body = "<p>This is <br> a <br /> test paragraph for topic forum [topic-forum], URL: [topic-url], and Author: [topic-author]</p>\n\n<p>And a new <br/>paragraph</p>";
-		
-		$this->reply_body = "<p>This is <br> a <br /> test paragraph for reply forum [reply-forum], URL: [reply-url], and Author: [reply-author]</p>\n\n<p>And a new <br/>paragraph</p>";
-		
-		$this->topic_body_clean = "This is \n a \n test paragraph for topic forum [topic-forum], URL: [topic-url], and Author: [topic-author]\n\nAnd a new \nparagraph\n";
-		
-		$this->reply_body_clean = "This is \n a \n test paragraph for reply forum [reply-forum], URL: [reply-url], and Author: [reply-author]\n\nAnd a new \nparagraph\n";
+		// NOOP
 	}
 	
 	
 	public function setUp()
 	{
 		parent::setUp();
+		
+		// Set up the body templates
+		$this->topic_body = "<p>This is <br> a <br /> test paragraph for topic forum [topic-forum], URL: [topic-url], and Author: [topic-author]</p>\n\n<p>And a new <br/>paragraph</p>";
+		$this->reply_body = "<p>This is <br> a <br /> test paragraph for reply forum [reply-forum], Topic URL: [topic-url], URL: [reply-url], and Author: [reply-author]</p>\n\n<p>And a new <br/>paragraph</p>";
 		
 		// Create new forum
 		$this->forum_id = bbp_insert_forum( 
@@ -76,6 +74,9 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$subs_id = $this->factory->user->create( array( 'role' => 'subscriber' ) );
 		
 		
+		// Set up the expected body regexes
+		$this->topic_body_regex = "<p>This is <br> a <br \/> test paragraph for topic forum test-forum, URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, and Author: admin<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
+		$this->reply_body_regex = "<p>This is <br> a <br \/> test paragraph for reply forum test-forum, Topic URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, URL: http:\/\/wp_plugins\/\?p={$this->reply_id}, and Author: admin<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
 	}
 	
 	public function tearDown()
@@ -93,9 +94,20 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 		$this->assertTrue( (bool) has_filter( 'bbpnns_available_tags', array( $bbpnns, 'get_available_tags' ) ), 'Filter found' );
 		
-		$tags = $bbpnns->get_available_tags( null );
+		$tags = $bbpnns->get_available_topic_tags( null );
 		
 		$this->assertNotEmpty( $tags, 'Available tags are not empty' );
+		
+		$this->assertTrue( (bool) strpos( $tags, '[topic-forum]' ), 'Once missing [topic-forum] is available.' );
+		
+		
+		$tags = $bbpnns->get_available_reply_tags( null );
+		
+		$this->assertNotEmpty( $tags, 'Available tags are not empty' );
+
+		$this->assertTrue( (bool) strpos( $tags, '[reply-forum]' ), 'Once missing [reply-forum] is available.' );
+		
+		$this->assertTrue( (bool) strpos( $tags, '[topic-url]' ), '[topic-url] tag is there for replies' );
 	}
 	
 	
@@ -135,23 +147,21 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$status = $bbpnns->notify_new_topic( $this->topic_id, $this->forum_id );
 		$this->assertEquals( -2, $status, 'Empty Recipients -2' );
 		
-		
-		update_option( 'bbpress_notify_newtopic_email_body', '[topic-content]' );
+		update_option( 'bbpress_notify_newtopic_email_body', $this->topic_body );
 		
 		// Non-spam, non-empty recipents
 		$recipients = array( 'administrator', 'subscriber' );
 		update_option( 'bbpress_notify_newtopic_recipients', $recipients );
 		$arry = $bbpnns->notify_new_topic( $this->topic_id, $this->forum_id );
 		$this->assertTrue( is_array( $arry ), 'Good notify returns array in test mode' );
-		
+
 		list( $recipients, $body ) = $arry;
 		
-		$reg_body = str_replace( '[topic-url]', '[^ ,]+', $this->topic_body_clean );
-		$reg_body = str_replace( '[topic-author]', 'admin', $reg_body );
-		$reg_body = str_replace( '[topic-forum]', 'test-forum', $reg_body );
-		
+		$author_id = bbp_get_topic_author_id( $this->topic_id );
+		$this->assertFalse( isset( $recipients[$author_id] ), 'Author ID removed from recpients list' );
+		$reg_body = $this->topic_body_regex;
+
 		$this->assertRegexp( "/$reg_body/", $body, 'Topic body munged correctly' );
-		
 		
 		// Force skip
 		add_filter( 'bbpnns_skip_topic_notification', '__return_true' );
@@ -179,7 +189,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$status = $bbpnns->notify_new_reply( $this->reply_id, $this->topic_id, $this->forum_id );
 		$this->assertEquals( -2, $status, 'Empty Recipients -2' );
 		
-		update_option( 'bbpress_notify_newreply_email_body', '[reply-content]' );
+		update_option( 'bbpress_notify_newreply_email_body', $this->reply_body );
 		
 		// Non-spam, non-empty recipents
 		update_option( 'bbpress_notify_newreply_recipients', array( 'administrator', 'subscriber' ));
@@ -189,9 +199,10 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 		list( $recipients, $body ) = $arry;
 		
-		$reg_body = str_replace( '[reply-url]', '[^ ,]+', $this->replyc_body_clean );
-		$reg_body = str_replace( '[reply-author]', 'admin', $reg_body );
-		$reg_body = str_replace( '[reply-forum]', 'test-forum', $reg_body );
+		$author_id = bbp_get_reply_author_id( $this->reply_id );
+		$this->assertFalse( isset( $recipients[$author_id] ), 'Author ID removed from recpients list' );
+		
+		$reg_body = $this->reply_body_regex;
 		
 		$this->assertRegexp( "/$reg_body/", $body, 'Reply body munged correctly' );
 		
