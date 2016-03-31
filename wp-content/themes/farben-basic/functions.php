@@ -4,7 +4,7 @@
  *
  * @since 1.0.0
  */
-$bavotasan_theme_data = wp_get_theme();
+$bavotasan_theme_data = wp_get_theme( 'farben-basic' );
 define( 'BAVOTASAN_THEME_URL', get_template_directory_uri() );
 define( 'BAVOTASAN_THEME_TEMPLATE', get_template_directory() );
 define( 'BAVOTASAN_THEME_VERSION', trim( $bavotasan_theme_data->Version ) );
@@ -53,7 +53,7 @@ if ( ! function_exists( 'bavotasan_setup' ) ) :
  * @since 1.0.0
  */
 function bavotasan_setup() {
-	load_theme_textdomain( 'farben', BAVOTASAN_THEME_TEMPLATE . '/library/languages' );
+	load_theme_textdomain( 'farben-basic', BAVOTASAN_THEME_TEMPLATE . '/library/languages' );
 
 	// Add default posts and comments RSS feed links to <head>.
 	add_theme_support( 'automatic-feed-links' );
@@ -62,7 +62,7 @@ function bavotasan_setup() {
 	add_editor_style( 'library/css/admin/editor-style.css' );
 
 	// This theme uses wp_nav_menu() in two location.
-	register_nav_menu( 'primary', __( 'Primary Menu', 'farben' ) );
+	register_nav_menu( 'primary', __( 'Primary Menu', 'farben-basic' ) );
 
 	// Add support for a variety of post formats
 	add_theme_support( 'post-formats', array( 'gallery', 'image', 'video', 'audio', 'quote', 'link', 'status', 'aside' ) );
@@ -181,9 +181,9 @@ if ( ! function_exists( 'bavotasan_widgets_init' ) ) :
  */
 function bavotasan_widgets_init() {
 	register_sidebar( array(
-		'name' => __( 'First Sidebar', 'farben' ),
+		'name' => __( 'First Sidebar', 'farben-basic' ),
 		'id' => 'sidebar',
-		'description' => __( 'This is the first sidebar. It won&rsquo;t appear on the home page unless you set a static front page.', 'farben' ),
+		'description' => __( 'This is the first sidebar. It won&rsquo;t appear on the home page unless you set a static front page.', 'farben-basic' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => '</aside>',
 		'before_title' => '<h3 class="widget-title">',
@@ -191,13 +191,13 @@ function bavotasan_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name' => __( 'Jumbo Headline', 'farben' ),
+		'name' => __( 'Jumbo Headline', 'farben-basic' ),
 		'id' => 'jumbo-headline',
-		'description' => __( 'Area on the home page below the large header image. Designed specifically for one text widget. ', 'farben' ),
+		'description' => __( 'Area on the home page below the large header image. Designed specifically for one text widget. ', 'farben-basic' ),
 		'before_widget' => '<aside id="%1$s" class="jumbo-headline %2$s">',
 		'after_widget' => '</aside>',
-		'before_title' => '<h1>',
-		'after_title' => '</h1>',
+		'before_title' => '<h2>',
+		'after_title' => '</h2>',
 	) );
 }
 endif; // bavotasan_widgets_init
@@ -219,13 +219,13 @@ function bavotasan_pagination() {
 	?>
 
 	<nav class="navigation clearfix" role="navigation">
-		<h1 class="sr-only"><?php _e( 'Posts navigation', 'farben' ); ?></h1>
+		<div class="sr-only"><?php _e( 'Posts navigation', 'farben-basic' ); ?></div>
 		<?php if ( get_next_posts_link() ) : ?>
-		<div class="nav-previous"><?php next_posts_link( __( '<span class="sr-only">Older posts</span>', 'farben' ) ); ?></div>
+		<div class="nav-previous"><?php next_posts_link( __( '<span class="sr-only">Older posts</span>', 'farben-basic' ) ); ?></div>
 		<?php endif; ?>
 
 		<?php if ( get_previous_posts_link() ) : ?>
-		<div class="nav-next"><?php previous_posts_link( __( '<span class="sr-only">Newer posts</span>', 'farben' ) ); ?></div>
+		<div class="nav-next"><?php previous_posts_link( __( '<span class="sr-only">Newer posts</span>', 'farben-basic' ) ); ?></div>
 		<?php endif; ?>
 	</nav><!-- .navigation -->
 	<?php
@@ -266,12 +266,12 @@ function bavotasan_comment( $comment, $args, $depth ) {
 					</div>
 					<div class="comment-meta">
 						<?php
-						printf( __( '%1$s at %2$s', 'farben' ), get_comment_date(), get_comment_time() );
-						edit_comment_link( __( 'Edit', 'farben' ), '  ', '' );
+						printf( __( '%1$s at %2$s', 'farben-basic' ), get_comment_date(), get_comment_time() );
+						edit_comment_link( __( 'Edit', 'farben-basic' ), '  ', '' );
 						?>
 					</div>
 					<div class="comment-text">
-						<?php if ( '0' == $comment->comment_approved ) { echo '<em>' . __( 'Your comment is awaiting moderation.', 'farben' ) . '</em>'; } ?>
+						<?php if ( '0' == $comment->comment_approved ) { echo '<em>' . __( 'Your comment is awaiting moderation.', 'farben-basic' ) . '</em>'; } ?>
 						<?php comment_text() ?>
 					</div>
 					<?php if ( $args['max_depth'] != $depth && comments_open() && 'pingback' != $comment->comment_type ) { ?>
@@ -290,7 +290,7 @@ function bavotasan_comment( $comment, $args, $depth ) {
 		<li id="comment-<?php comment_ID(); ?>" class="pingback">
 			<div class="comment-body">
 				<i class="fa fa-paperclip"></i>
-				<?php _e( 'Pingback:', 'farben' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( '(edit)', 'farben' ), ' ' ); ?>
+				<?php _e( 'Pingback:', 'farben-basic' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( '(edit)', 'farben-basic' ), ' ' ); ?>
 			</div>
 			<?php
 			break;
@@ -312,7 +312,7 @@ if ( ! function_exists( 'bavotasan_excerpt' ) ) :
 	 * @since 1.0.0
  */
 function bavotasan_excerpt( $more ) {
-	return '&hellip; <p><a class="more-link" href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'farben' ) . '</a></p>';
+	return '&hellip; <p><a class="more-link" href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'farben-basic' ) . '</a></p>';
 }
 endif; // bavotasan_excerpt
 
@@ -505,7 +505,7 @@ function bavotasan_body_class( $classes ) {
 function bavotasan_search_title() {
 	global $wp_query;
     $num = $wp_query->found_posts;
-	printf( __( '%1$s search results for "%2$s"', 'farben'),
+	printf( __( '%1$s search results for "%2$s"', 'farben-basic'),
 	    absint( $wp_query->found_posts ),
 	    esc_html( get_search_query() )
 	);

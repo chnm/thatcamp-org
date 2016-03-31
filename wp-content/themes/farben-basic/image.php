@@ -47,16 +47,16 @@ get_header(); ?>
 	
 					<footer class="entry">
 					    <?php
-					    wp_link_pages( array( 'before' => '<p id="pages">' . __( 'Pages:', 'farben' ) ) );
-					    edit_post_link( __( 'Edit', 'farben' ), '<p class="edit-link">', '</p>' );
+					    wp_link_pages( array( 'before' => '<p id="pages">' . __( 'Pages:', 'farben-basic' ) ) );
+					    edit_post_link( __( 'Edit', 'farben-basic' ), '<p class="edit-link">', '</p>' );
 					    ?>
 					</footer><!-- .entry -->
 				</article><!-- #post-## -->
 	
 				<div id="posts-pagination" class="clearfix">
-					<h3 class="sr-only"><?php _e( 'Post navigation', 'farben' ); ?></h3>
-					<div class="previous pull-left"><?php previous_image_link( false, __( '<span class="meta-nav">&larr;</span> Previous Image', 'farben' ) ); ?></div>
-					<div class="next pull-right"><?php next_image_link( false, __( 'Next Image <span class="meta-nav">&rarr;</span>', 'farben' ) ); ?></div>
+					<h3 class="sr-only"><?php _e( 'Post navigation', 'farben-basic' ); ?></h3>
+					<div class="previous pull-left"><?php previous_image_link( false, __( '<span class="meta-nav">&larr;</span> Previous Image', 'farben-basic' ) ); ?></div>
+					<div class="next pull-right"><?php next_image_link( false, __( 'Next Image <span class="meta-nav">&rarr;</span>', 'farben-basic' ) ); ?></div>
 				</div><!-- #posts-pagination -->
 	
 				<?php comments_template(); ?>

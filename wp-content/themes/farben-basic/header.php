@@ -8,29 +8,24 @@
  * @since 1.0.0
  */
 ?><!DOCTYPE html>
-<!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>><![endif]-->
-<!--[if IE 7]><html class="lt-ie9 lt-ie8" <?php language_attributes(); ?>><![endif]-->
-<!--[if IE 8]><html class="lt-ie9" <?php language_attributes(); ?>><![endif]-->
-<!--[if gt IE 8]><!--><html <?php language_attributes(); ?>><!--<![endif]-->
+<html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<!--[if IE]><script src="<?php echo BAVOTASAN_THEME_URL; ?>/library/js/html5.js"></script><![endif]-->
 	<?php wp_head(); ?>
 </head>
-<?php
-$bavotasan_theme_options = bavotasan_theme_options();
-?>
+
 <body <?php body_class(); ?>>
 
 	<div id="page" class="clearfix">
 		<header id="header" class="navbar-default">
 			<div class="container">
 				<nav id="site-navigation" class="navbar navbar-default" role="navigation">
-					<h3 class="sr-only"><?php _e( 'Main menu', 'farben' ); ?></h3>
-					<a class="sr-only" href="#primary" title="<?php esc_attr_e( 'Skip to content', 'farben' ); ?>"><?php _e( 'Skip to content', 'farben' ); ?></a>
+					<h3 class="sr-only"><?php _e( 'Main menu', 'farben-basic' ); ?></h3>
+					<a class="sr-only" href="#primary" title="<?php esc_attr_e( 'Skip to content', 'farben-basic' ); ?>"><?php _e( 'Skip to content', 'farben-basic' ); ?></a>
 
 					<?php $header_class = ( is_rtl() ) ? ' navbar-right' : ''; ?>
 

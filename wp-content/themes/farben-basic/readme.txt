@@ -40,6 +40,13 @@ Licensed under the terms of CC0
 
 == CHANGELOG ==
 
+03/16/2016 v1.0.5
+* Fixed H1 tag issue
+* Added screen-reader-text CSS
+* Updated screenshot
+* Updated text domain
+* Updated language file
+
 05/13/2015 v1.0.4
 * Fixed sticky query issue
 * Added next page links to pages

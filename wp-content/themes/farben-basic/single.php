@@ -14,9 +14,9 @@ get_header(); ?>
 				<?php get_template_part( 'content', get_post_format() ); ?>
 	
 				<div id="posts-pagination" class="clearfix">
-					<h3 class="sr-only"><?php _e( 'Post navigation', 'farben' ); ?></h3>
-					<div class="previous pull-left"><?php previous_post_link( '%link', __( '<span class="meta-nav">&larr;</span> %title', 'farben' ) ); ?></div>
-					<div class="next pull-right"><?php next_post_link( '%link', __( '%title <span class="meta-nav">&rarr;</span>', 'farben' ) ); ?></div>
+					<h3 class="sr-only"><?php _e( 'Post navigation', 'farben-basic' ); ?></h3>
+					<div class="previous pull-left"><?php previous_post_link( '%link', __( '<span class="meta-nav">&larr;</span> %title', 'farben-basic' ) ); ?></div>
+					<div class="next pull-right"><?php next_post_link( '%link', __( '%title <span class="meta-nav">&rarr;</span>', 'farben-basic' ) ); ?></div>
 				</div><!-- #posts-pagination -->
 	
 				<?php comments_template( '', true ); ?>

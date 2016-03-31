@@ -537,7 +537,7 @@ input, textarea {
 	font-size: 16px;
 	line-height: 1.6;
 
-	h1 {
+	h2 {
 		margin: 0 0 20px;
 		text-align: center;
 		text-transform: uppercase;
@@ -1953,6 +1953,10 @@ legend {
 	display: block;
 	margin: auto;
 	padding: 10px 0;
+}
+
+.screen-reader-text {
+	@extend .sr-only;
 }
 
 /* =Woocommerce

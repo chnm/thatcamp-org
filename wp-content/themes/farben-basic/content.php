@@ -13,7 +13,7 @@
 	    <div class="entry-content description clearfix">
 		    <?php
 			if ( is_singular() && ! is_front_page() )
-			    the_content( __( 'Read more', 'farben') );
+			    the_content( __( 'Read more', 'farben-basic') );
 			else
 				the_excerpt();
 			?>

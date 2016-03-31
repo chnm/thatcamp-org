@@ -25,7 +25,7 @@
 					<div class="copyright col-lg-12">
 						<p class="pull-left">Copyright &copy; <?php echo date( 'Y' ); ?> <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a>. All Rights Reserved.</p>
 						<p class="pull-right">
-							<?php printf( __( 'The %s Theme by %s.', 'farben' ), BAVOTASAN_THEME_NAME, '<a href="https://themes.bavotasan.com/themes/farben-wordpress-theme/">bavotasan.com</a>' ); ?>
+							<?php printf( __( 'The %s Theme by %s.', 'farben-basic' ), BAVOTASAN_THEME_NAME, '<a href="https://themes.bavotasan.com/themes/farben-wordpress-theme/">bavotasan.com</a>' ); ?>
 						</p>
 					</div><!-- .col-lg-12 -->
 				</div><!-- .row -->

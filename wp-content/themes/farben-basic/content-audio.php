@@ -9,7 +9,7 @@
 	    <?php get_template_part( 'content', 'header-pf' ); ?>
 
 	    <div class="entry-content description clearfix">
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'farben') ); ?>
+			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'farben-basic') ); ?>
 		</div><!-- .entry-content -->
 
 	    <?php get_template_part( 'content', 'footer' ); ?>
