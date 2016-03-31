@@ -8,159 +8,129 @@
  * @link     http://www.freelancephp.net/
  * @license  MIT license
  */
-class WPML_Admin extends WP_Plugin_AdminPage
+final class WPML_Admin extends WPDev_Admin_Page_MetaBox
 {
 
     /**
-     * Constructor
-     * Init settings, metaboxes, helptabs etc
+     * @var WPDev_Admin_Page_Interface
+     */
+    protected $adminPage = null;
+
+    /**
+     * Initialize, add action and filter hooks
      */
     public function __construct()
     {
-        $settings = array(
-            'file' => WPML::get('file'),
-            'key' => WPML::get('key'),
-            'pageKey' => WPML::get('adminPage'),
-            'pageTitle' => WPML::__('WP Mailto Links'),
-            'menuIcon' => 'images/icon-wp-mailto-links-16.png',
-            'mainMenu' => (bool) WPML::get('optionValues')->get('own_admin_menu'),
-        );
-
-        $this->metaboxes = array(
-            'general' => array(
-                'title' => WPML::__('General Settings'),
-                'position' => 'normal',
-             ),
-            'style' => array(
-                'title' => WPML::__('Style Settings'),
-                'position' => 'normal',
-             ),
-            'admin' => array(
-                'title' => WPML::__('Admin Settings'),
-                'position' => 'normal',
-             ),
-            'this-plugin' => array(
-                'title' => WPML::__('Support'),
-                'position' => 'side',
-             ),
-            'other-plugins' => array(
-                'title' => WPML::__('Other Plugins'),
-                'position' => 'side',
-             ),
-        );
-
-        $this->helptabs = array(
-            'general' => array(
-                'title' => WPML::__('General'),
-             ),
-            'shortcodes' => array(
-                'title' => WPML::__('Shortcodes'),
-             ),
-            'templatefunctions' => array(
-                'title' => WPML::__('Template functions'),
-             ),
-            'actionhooks' => array(
-                'title' => WPML::__('Action Hooks'),
-             ),
-            'filterhooks' => array(
-                'title' => WPML::__('Filter Hooks'),
-             ),
-            'faq' => array(
-                'title' => WPML::__('FAQ'),
-             ),
-        );
-
-        parent::__construct($settings);
+        add_action('init', array($this, 'createAdminPage'));
+        add_action('admin_enqueue_scripts', array($this, 'enqueueScripts'));
     }
 
     /**
-     * WP action callback
+     * Add scripts
      */
-    public function actionAdminInit()
+    public function enqueueScripts($hook)
     {
-        // prepare view
-        WPML_View::addPath(WPML::get('dir') . '/views');
-        WPML_View::setGlobalVar('values', WPML::get('optionValues')->get());
+        if ($hook !== $this->adminPage->getHook()) {
+            return;
+        }
 
-        // actions and filters
-        add_action('admin_notices', array($this, 'actionAdminNotices'));
-        add_filter('plugin_action_links', array($this, 'filterPluginActionLinks'), 10, 2);
-    }
-
-    /**
-     * WP action callback
-     */
-    public function loadPage()
-    {
-        parent::loadPage();
-        
-        // add plugin script
         wp_enqueue_script(
-            'WPML_admin',
-            WPML::url('js/wp-mailto-links-admin.js'),
-            array('jquery'),
-            WPML::get('version')
+            'wp-mailto-links-admin'
+            , WPML::glob('URL') . '/js/wp-mailto-links-admin.js'
+            , array('jquery')
+            , false
+            , true
+        );
+        wp_localize_script('wp-mailto-links-admin', 'wpmlSettings', array(
+            'pluginUrl' => WPML::glob('URL'),
+            'dashiconsValue' => WPML::glob('option')->getValue('dashicons'),
+            'fontawesomeValue' => WPML::glob('option')->getValue('fontawesome'),
+        ));
+
+        wp_enqueue_style(
+            'font-awesome'
+            , 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
+            , array()
+            , null
         );
     }
 
     /**
-     * Callback add links on plugin page
-     * @param array $links
-     * @param string $file
-     * @return array
+     * Create admin pages
      */
-    public function filterPluginActionLinks($links, $file)
+    public function createAdminPage()
     {
-        $pluginFile = plugin_basename(WPML::get('file'));
-        $compareFile = substr($pluginFile, - strlen($file));
+        $templatesBasePath = WPML::glob('DIR') . '/templates/admin/page';
+        $globals = WPML::plugin()->getAllGlobals();
+        $mainMenu = (bool) WPML::glob('option')->getValue('own_admin_menu');
 
-        if ($file == $compareFile) {
-            $page = ($this->settings['mainMenu']) ? 'admin.php' : 'options-general.php';
+        // create page
+        $this->adminPage = new WPDev_Admin_Page_MetaBox(array(
+            'id'              => $globals['key'] . '-option-page',
+            'title'           => __('WP Mailto Links', 'wp-mailto-links'),
+            'menuTitle'       => __('Mailto Links', 'wp-mailto-links'),
+            'parentSlug'      => $mainMenu ? null : 'options-general.php',
+            'iconUrl'         => 'dashicons-email',
+            'defaultColumns'  => 2,
+            'maxColumns'      => 2,
+            'pageTemplate'    => $templatesBasePath . '/page.php',
+            'templateVars'    => $globals,
+        ));
 
-            $settings_link = '<a href="' . get_bloginfo('wpurl') . '/wp-admin/'
-                            . $page . '?page=' . WPML::get('adminPage') . '">'
-                            . WPML::__('Settings') . '</a>';
+        // create meta boxes
+        new WPDev_Admin_MetaBoxes(
+            array(
+                'mail-icon' => array(
+                    'title' => __('Mail Icon', 'wp-mailto-links'),
+                    'context' => 'normal',
+                 ),
+                'additional-classes' => array(
+                    'title' => __('Additional Classes', 'wp-mailto-links'),
+                    'context' => 'side',
+                 ),
+                'admin' => array(
+                    'title' => __('Admin', 'wp-mailto-links'),
+                    'context' => 'normal',
+                 ),
+                'support' => array(
+                    'title' => __('Support', 'wp-mailto-links'),
+                    'context' => 'side',
+                 ),
+            )
+            , array(
+                'adminPage'     => $this->adminPage,
+                'templatesPath' => $templatesBasePath . '/meta-boxes',
+                'templateVars'  => $globals,
+            )
+        );
 
-            array_unshift($links, $settings_link);
-        }
-
-        return $links;
+        // create help tabs
+        new WPDev_Admin_HelpTabs(
+            array(
+                'general' => array(
+                    'title' => __('General', 'wp-mailto-links'),
+                 ),
+                'shortcodes' => array(
+                    'title' => __('Shortcode', 'wp-mailto-links'),
+                 ),
+                'template-tags' => array(
+                    'title' => __('Template Tags', 'wp-mailto-links'),
+                 ),
+                'filter-hook' => array(
+                    'title' => __('Filter Hook', 'wp-mailto-links'),
+                 ),
+                'action-hook' => array(
+                    'title' => __('Action Hook', 'wp-mailto-links'),
+                 ),
+            )
+            , array(
+                'adminPage'     => $this->adminPage,
+                'templatesPath' => $templatesBasePath . '/help-tabs',
+                'templateVars'  => $globals,
+            )
+        );
     }
 
-    /**
-     * WP action callback
-     * @return void
-     */
-    public function actionAdminNotices()
-    {
-        if ( ! WPML::get('isCompatible')) {
-            $plugin_title = get_admin_page_title();
+}
 
-            echo '<div class="error">';
-            echo sprintf(WPML::__('<p>Error - The plugin <strong>%1$s</strong> requires PHP %2$s + and WP %3$s +.'
-                    . '  Please upgrade your PHP and/or WordPress.'
-                    . '<br/>Disable the plugin to remove this message.</p>'), $plugin_title, WPML::get('minPhpVersion'), WPML::get('minWpVersion'));
-            echo '</div>';
-        }
-
-        if (isset($_GET['page']) && $_GET['page'] === WPML::get('adminPage') && is_plugin_active('email-encoder-bundle/email-encoder-bundle.php')) {
-            WPML_View::factory('/admin/notices.php')->show();
-        }
-    }
-
-    /**
-     * Check if widget logic filter is active
-     * @return boolean
-     */
-    public static function hasWidgetLogicFilter()
-    {
-        $wlOptions = get_option('widget_logic');
-
-        if (!is_array($wlOptions) || !key_exists('widget_logic-options-filter', $wlOptions)) {
-            return false;
-        }
-
-        return ($wlOptions['widget_logic-options-filter'] === 'checked');
-    }
-
-} // End Class WPML_Admin
+/*?>*/

@@ -1,27 +1,29 @@
 === WP Mailto Links - Manage Email Links ===
 Contributors: freelancephp
-Tags: hide, email, email address, mailto, link, antispam, protect, spambot, encode, encrypt, obfuscate, email icon, javascript
+Tags: hide, email, email address, mailto, link, antispam, protect, spambot, encode, encrypt, obfuscate, email link, protection
 Requires at least: 3.6.0
-Tested up to: 4.2.2
-Stable tag: 1.6.0
+Tested up to: 4.4.0
+Stable tag: 2.0.1
 
-Protect email addresses and mailto links from spambots and being used for spamming. Easy to use without configuration.
+Protect email addresses and mailto links from spambots and spamming. Easy to use without configuration.
 
 == Description ==
-Protect your email addresses and manage mailto links on your site, set mail icon, styling and more.
+Protect email addresses and mailto links from spambots and spamming. Easy to use without configuration.
+
+http://www.youtube.com/watch?v=NxHnJWQnyuY
 
 = Features =
 * Protect mailto links automatically
 * Protect plain email addresses or convert them to mailto links
 * Protect RSS feed
-* Set mail icon
-* Use shortcodes, template functions, action and filter hooks
-* Compatible with WPMU (Multisite)
+* Set icon for all mailto links, also supports Font Awesome Icons and Dashicons
+* Use of shortcode `[wpml_mailto]`
+* Use of template tags `wpml_mailto()` and `wpml_filter()`
 
-The plugin combines the best email protection methods explained in [this article](http://perishablepress.com/press/2010/08/01/best-method-for-email-obfuscation/) by Jeff Starr.
+The plugin combines the best email protection methods (css and javascript techniques).
 
 = Easy to use =
-After activating the plugin all options are already set for protecting your emails and mailto links. Optionally you can also set some style options, like adding an icon.
+The WPML plugin works out-of-the-box. After activating the plugin all options are already set for protecting your emails and mailto links. Optionally you can also set some style options, like adding an icon.
 
 = Sources =
 * [Documentation](http://wordpress.org/extend/plugins/wp-mailto-links/other_notes/)
@@ -29,7 +31,7 @@ After activating the plugin all options are already set for protecting your emai
 * [Github](https://github.com/freelancephp/WP-Mailto-Links)
 
 = Like this plugin? =
-[Send your review](http://wordpress.org/support/view/plugin-reviews/wp-mailto-links).
+This plugin is free and I don't accept any donations. If you want to show your appreciation, just [send your review](http://wordpress.org/support/view/plugin-reviews/wp-mailto-links).
 
 == Installation ==
 
@@ -41,8 +43,16 @@ After activating the plugin all options are already set for protecting your emai
 
 == Frequently Asked Questions ==
 
-= How can I exclude pages? =
+= How does it work? =
+The plugin combines the best email protection methods (css and javascript techniques). Some of them are explained in [this article](http://perishablepress.com/press/2010/08/01/best-method-for-email-obfuscation/) by Jeff Starr.
 
+A webpage contains code on the backside. In the code all email addresses will be obfuscated, to hide them from spambots. Only when people see the page and click on the mailto link, the encoded email address will be translated to a normal email address.
+
+= What's the best way to protect my email address(es) on my site? =
+Offcourse by activating this plugin on your site. But even still it's not recommended to use email addresses directly in your posts or in your theme templates.
+It would be better to use the shortcode `[wpml_mailto]` and template tag `wpml_mailto()`, because when the plugin isn't active anymore, the email addresses would not be shown on your site.
+
+= How can I exclude pages? =
 You can exclude pages from being processed by adding a condition to the filter. Put this code in the `functions.php` and replace the values of `$exclude_pages` to the page ID's you would like to exclude.
 
 `function special_mailto($link, $display, $email, $attrs) {
@@ -56,80 +66,84 @@ You can exclude pages from being processed by adding a condition to the filter. 
 
     return $link;
 }
+
 add_filter('wpml_mailto', 'special_mailto', 10, 4);`
 
 = Shortcode does not work in widgets. How can I make it work? =
 By default shortcodes are not applied to (text) widgets. To support that you can add it to the text widget filter ([for more](http://www.wprecipes.com/how-to-add-shortcodes-in-sidebar-widgets)).
-
 If you are not a coder, then just activate [this plugin](http://wordpress.org/extend/plugins/shortcodes-in-sidebar-widgets/), which does the same thing.
 
-= How to set a font icon for mailto links, like Font Awesome Icons? =
-
-To set a [Font Awesome Icons](http://fortawesome.github.io/Font-Awesome/) use the `wpml_mailto` filter and add this code to functions.php of your theme:
-
-`function set_font_icon_on_mailto($link, $display, $email, $attrs) {
-    return str_replace('</a>', ' <i class="fa fa-envelope-o"></i></a>', $link);
-}
-
-add_filter('wpml_mailto', 'set_font_icon_on_mailto', 10, 4);`
-
-The CSS of Font Awesome Icons alse needs to be loaded. To do so also add this code:
-
-`function add_font_awesome_style() {
-    wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
-}
-
-add_action('wp_enqueue_scripts', 'add_font_awesome_style');`
-
-= I got a blank page on my site. What to do about it? =
-There have been some reports of blank pages, sometimes in combination with other plugins. It has probably to do with filtering the whole html page. Try disable in the admin panel the option "Options have effect" > "All contents"  (keep in mind that not the whole page will be scanned for protecting emails). Please report it.
-
-An alternative is using my other plugin for protecting your email addresses [Email Encoder Bundle](http://wordpress.org/extend/plugins/email-encoder-bundle/). This plugin has a different approach and does not have the option to scan the whole page, which makes it more stable.
-
-[Do you have a question? Please ask me](http://www.freelancephp.net/contact/)
+Do you have a problem or found a bug, please [report it](https://wordpress.org/support/plugin/wp-mailto-links#postform).
 
 == Screenshots ==
 
 1. Link Icon on the Site
 1. Admin Settings Page
 
-= Credits =
-* Title icon on Admin Options Page was made by [Aha-Soft Team](http://www.aha-soft.com/) taken form [iconfinder](http://findicons.com/icon/219920/e_mail)
-* Technics used in this plugin is inspired by the methods Jeff Starr explained in [this article](http://perishablepress.com/press/2010/08/01/best-method-for-email-obfuscation/)
-
 == Documentation ==
 
-= Shortcode =
+The WPML plugin works out-of-the-box. All settings are default set to protect your email addresses automatically.
+If you want to manually create protected mailto links, just use the shortcode (`[wpml_mailto]`) within your posts or use the template tags (`wpml_mailto()` or `wpml_filter()`) in your theme files.
+
+= Shortcode `[wpml_mailto email="..."]...[/wpml_mailto]` =
 Create a protected mailto link in your posts:
 `[wpml_mailto email="info@myemail.com"]My Email[/wpml_mailto]`
 
 It's also possible to add attributes to the mailto link, like a target:
 `[wpml_mailto email="info@myemail.com" target="_blank"]My Email[/wpml_mailto]`
 
-= Template functions =
-Create a protected mailto link in your template use:
-`<?php if (function_exists('wpml_mailto')) { echo wpml_mailto($display, $attrs); } ?>`
+= Template tag `wpml_mailto( $email [, $display] [, $attrs] )` =
+Create a protected mailto link in your template like:
+`<?php
+    if (function_exists('wpml_mailto')) {
+        echo wpml_mailto('info@somedomain.com', 'Mail Me');
+    }
+?>`
 
+= Template tag `wpml_filter( $content )` =
 Filter given content to protect mailto links, shortcodes and plain emails (according to the settings in admin):
-`<?php if (function_exists('wpml_filter')) { echo wpml_filter($content); } ?>`
+`<?php
+    if (function_exists('wpml_filter')) {
+        echo wpml_filter('Filter some content to protect an emailaddress like info@somedomein.com.');
+    }
+?>`
 
-= Action hook =
-The plugin also has a hook when ready, f.e. to add extra filters:
-`function extra_filters($filter_callback, $object) {
-    add_filter('some_filter', $filter_callback);
-}
-add_action('wpml_ready', 'extra_filters');`
-
-= Filter hook =
+= Filter hook (deprecated) =
 The wpml_mailto filter gives you the possibility to manipulate output of the mailto created by the plugin. F.e. make all mailto links bold:
-`public function special_mailto($link, $display, $email, $attrs) {
+`// define filter function
+public function special_mailto($link, $display, $email, $attrs) {
     return '<b>'. $link .'</b>';
 }
+
+// hook it to "wpml_mailto" filter
 add_filter('wpml_mailto', 'special_mailto', 10, 4);`
 
 Now all mailto links will be wrapped around a `<b>`-tag.
 
+= Action hook (deprecated) =
+The plugin also has a hook when ready, f.e. to add extra filters:
+`// define callback function
+function extra_filters($filter_callback, $object) {
+    add_filter('some_filter', $filter_callback);
+}
+
+// hook it to "wpml_ready" action
+add_action('wpml_ready', 'extra_filters');`
+
 == Changelog ==
+
+= 2.0.1 =
+ * Removed realpath(), causing errors on existing installs
+ * Fixed only load js on wpml admin page
+ * Security check default off
+
+= 2.0.0 =
+ * Needs PHP version 5.3+
+ * Complete refactor
+ * Added Font Awesome Icons and Dashicons
+ * Added security check for admin users
+ * Deprecated "wpml_ready" action
+ * Deprecated "wpml_mailto" filter
 
 = 1.6.0 =
 * Added option strong protection for emails in input fields

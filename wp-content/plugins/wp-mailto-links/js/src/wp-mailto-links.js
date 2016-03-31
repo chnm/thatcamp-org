@@ -1,6 +1,7 @@
 /* WP Mailto Links */
-/*global window, jQuery*/
-(function (window, $) {
+/*global jQuery, window*/
+jQuery(function ($) {
+
     'use strict';
 
     // encoding method
@@ -57,22 +58,19 @@
         }
     }
 
-    // on DOM ready...
-    $(function ($) {
-        // set mailto click
-        $('body').delegate('a[data-enc-email]', 'click', function () {
-            mailto(this);
-        });
-
-        // parse title attirbute
-        $('a[data-enc-email]').each(function () {
-            parseTitle(this);
-        });
-
-        // parse input fields
-        $('input[data-enc-email]').each(function () {
-            setInputValue(this);
-        });
+    // set mailto click
+    $('body').on('click', 'a[data-enc-email]', function () {
+        mailto(this);
     });
 
-}(window, jQuery));
+    // parse title attirbute
+    $('a[data-enc-email]').each(function () {
+        parseTitle(this);
+    });
+
+    // parse input fields
+    $('input[data-enc-email]').each(function () {
+        setInputValue(this);
+    });
+
+});

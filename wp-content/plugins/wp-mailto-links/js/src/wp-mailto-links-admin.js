@@ -1,65 +1,97 @@
-/* WP Mailto Links - Admin */
-/*global jQuery, setTimeout*/
+/* WP Mailto Links Admin */
+/*global jQuery, wpmlSettings*/
 jQuery(function ($) {
+
     'use strict';
 
-    var $wpmlAdmin = $('.wpml-admin');
-
-    // update message
-    $wpmlAdmin.delegate('#setting-error-settings_updated', 'click', function () {
-        $(this).hide();
-    });
-
-    // help link
-    $wpmlAdmin.delegate('.wpml-help-link', 'click', function (e) {
-        $('#contextual-help-link').click();
-        e.preventDefault();
-    });
-
-    // option filter whole page
-    $wpmlAdmin.find('input#filter_body')
-        .change(function () {
-            var $i = $wpmlAdmin.find('input#filter_posts, input#filter_comments, input#filter_widgets');
-
-            if ($(this).attr('checked')) {
-                $i.attr('disabled', true)
-                    .attr('checked', true);
-            } else {
-                $i.attr('disabled', false);
-            }
-        })
-        .change();
-
-    // Workaround for saving disabled checkboxes in options db
-    // prepare checkboxes before submit
-    $wpmlAdmin.find('form').submit(function () {
+    // Workaround for posting disabled checkboxes
+    // prepare checkboxes on submit
+    $('.wrap form').on('submit', function () {
         // force value 0 being saved in options
         $('*[type="checkbox"]:not(:checked)')
-            .css({ 'visibility': 'hidden' })
-            .attr({
+            .css({
+                'visibility': 'hidden'
+            })
+            .prop({
                 'value': '0',
                 'checked': 'checked'
             });
     });
 
-    // enable submit buttons
-    $wpmlAdmin.find('*[type="submit"]')
-        .attr('disabled', false)
-        .removeClass('submit'); // remove class to fix button background
+    // fill dashicons  select options
+    $.get(wpmlSettings.pluginUrl + '/data/json/fontawesome.json', null, function (data) {
+        var $select = $('.select-fontawesome');
 
-    // metabox screen columns
-    if ($wpmlAdmin.find('[data-js="screen-columns"]').size() > 0) {
-        $wpmlAdmin.find('input[name="screen_columns"]')
-            .click(function () {
-                if ($wpmlAdmin.find('input[name="screen_columns"]:checked').val() === $(this).val()) {
-                    setTimeout(function () {
-                        $(this).change();
-                    }, 1);
-                }
-            })
-            .change(function () {
-                var columns = $wpmlAdmin.find('input[name="screen_columns"]:checked').val();
-                $wpmlAdmin.find('#post-body').removeClass('columns-1').removeClass('columns-2').addClass('columns-' + columns);
-            });
+        // create select options
+        fillSelect($select, data.icons, 'unicode', 'className');
+
+        // select saved value
+        $select.find('option').each(function () {
+            if (this.value === wpmlSettings.fontawesomeValue) {
+                $(this).prop('selected', true);
+            }
+        });
+    });
+
+    // fill fontawesome select options
+    $.get(wpmlSettings.pluginUrl + '/data/json/dashicons.json', null, function (data) {
+        var $select = $('.select-dashicons');
+
+        // create select options
+        fillSelect($select, data.icons, 'unicode', 'className');
+
+        // select saved value
+        $select.find('option').each(function () {
+            if (this.value === wpmlSettings.dashiconsValue) {
+                $(this).prop('selected', true);
+            }
+        });
+    });
+
+    // fill select helper function
+    function fillSelect($select, list, keyText, keyValue) {
+        $.each(list, function (index, item) {
+            var value = item[keyValue];
+            var text = item[keyText];
+
+            $select.append('<option value="'+ value +'">&#x'+ text +'</option>');
+        });
     }
+
+    // filter body + childs
+    $('*[name="wp-mailto-links[filter_body]"]').on('change', function () {
+        var $fields = $('.filter-body-child');
+
+        if ($(this).prop('checked')) {
+            $fields.prop('disabled', true);
+            $fields.prop('checked', true);
+        } else {
+            $fields.prop('disabled', false);
+        }
+    })
+    // trigger immediatly
+    .trigger('change');
+
+    // mail icon
+    $('body').on('change', '*[name="wp-mailto-links[mail_icon]"]', function () {
+        var value = $(this).val();
+        var $images = $('.wrap-icon-images');
+        var $selectDashicons = $('.wrap-dashicons');
+        var $selectFontAwesome = $('.wrap-fontawesome');
+
+        $images.hide();
+        $selectDashicons.hide();
+        $selectFontAwesome.hide();
+
+        if (value === 'image') {
+            $images.show();
+        } else if (value === 'dashicons') {
+            $selectDashicons.show();
+        } else if (value === 'fontawesome') {
+            $selectFontAwesome.show();
+        }
+    });
+    // trigger immediatly
+    $('*[name="wp-mailto-links[mail_icon]"]:checked').change();
+
 });
