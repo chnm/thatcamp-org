@@ -138,7 +138,8 @@ class AuthorAvatarsEditorButton {
 		$adv_left .= $form->renderFieldLimit();
 		$adv_left .= $form->renderPageLimit();
 		$adv_left .= $form->renderFieldMinPostCount();
-		$adv_left .= $form->renderFieldHiddenUsers();
+		$adv_left .= $form->render_field_hidden_users();
+		$adv_left .= $form->render_field_white_list_users();
 
 		$adv_right = '';
 		if ( AA_is_wpmu() ) {

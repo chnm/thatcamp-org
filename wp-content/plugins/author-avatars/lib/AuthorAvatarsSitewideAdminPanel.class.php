@@ -77,7 +77,7 @@ class AuthorAvatarsSitewideAdminPanel {
 	}
 
 	function render_config_page( $updated ) {
-		require_once( 'FormHelper.class.php' );
+		require_once( 'AAFormHelper.class.php' );
 
 		echo '<div class="wrap">';
 
@@ -95,9 +95,9 @@ class AuthorAvatarsSitewideAdminPanel {
 		$this->_render_blogfilter_active_setting();
 
 		echo '</table>';
-		echo FormHelper::input( 'hidden', 'action', 'update' );
+		echo AAFormHelper::input( 'hidden', 'action', 'update' );
 		echo '<p class="submit">';
-		echo FormHelper::input( 'submit', 'wpmu_author_avatars_settings_save', __( 'Save Changes', 'author-avatars' ) );
+		echo AAFormHelper::input( 'submit', 'wpmu_author_avatars_settings_save', __( 'Save Changes', 'author-avatars' ) );
 		echo '</p>';
 		echo '</form>';
 		echo '</div>';
@@ -108,7 +108,7 @@ class AuthorAvatarsSitewideAdminPanel {
 
 		echo '<tr valign="top">';
 		echo '<th scope="row">' . __( 'Enable blog filter', 'author-avatars' ) . '</th><td>';
-		echo FormHelper::choice(
+		echo AAFormHelper::choice(
 			'settings_sitewide[blog_filters_enabled]',
 			AuthorAvatarsForm::_getAllBlogs(),
 			$this->settings->get_sitewide( 'blog_filters_enabled' ),

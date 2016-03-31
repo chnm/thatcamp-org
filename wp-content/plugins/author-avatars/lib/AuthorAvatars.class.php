@@ -60,7 +60,7 @@ class AuthorAvatars {
 
 
 			// add tinymce editor
-			add_action( 'init', array( &$this, 'init_tinymce_editor' ), 30 );
+			add_action( 'init', array( $this, 'init_tinymce_editor' ), 30 );
 		}
 	}
 

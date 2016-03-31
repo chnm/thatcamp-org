@@ -103,7 +103,11 @@ function insertAuthorAvatarsCode() {
         if (hiddenusers.length > 0) {
             tagtext += " hiddenusers=" + hiddenusers;
         }
-
+        // whitelistusers
+        var whitelistusers = jQuery("#whitelistusers").val() || "";
+        if (whitelistusers.length > 0) {
+            tagtext += " whitelistusers=" + whitelistusers;
+        }
         // user_link
         var user_link = jQuery(".fields_type_authoravatars #user_link").val() || "";
         if (user_link.length > 0) {

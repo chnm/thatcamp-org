@@ -114,7 +114,7 @@ class ShowAvatarShortcode {
 							break;
 						case 'website':
 							$link = get_the_author_meta( 'user_url', $id );
-							if ( empty( $link ) || $link == 'http://' ) {
+							if ( empty( $link ) || 'http://' === $link ) {
 								$link = false;
 							}
 							break;
@@ -133,30 +133,40 @@ class ShowAvatarShortcode {
 								$link = bp_core_get_userurl( $id );
 							}
 							break;
+						case 'um_profile':
+							if ( function_exists( 'um_user_profile_url' ) ) {
+								um_fetch_user( $id );
+								$link = um_user_profile_url();
+								um_reset_user();
+							}
+							if ( empty( $link ) || 'http://' === $link ) {
+								$link = false;
+							}
+							break;
 						case 'bbpress_memberpage':
 							if ( function_exists( 'bbp_get_user_profile_url' ) ) {
 								$link = bbp_get_user_profile_url( $id );
 							}
-							if ( empty( $link ) || $link == 'http://' ) {
+							if ( empty( $link ) || 'http://' === $link ) {
 								$link = false;
 							}
 							break;
 						case 'last_post':
 							$recent = get_posts(array(
-								'author'=>$id,
-								'orderby'=>'date',
-								'order'=>'desc',
-								'numberposts'=>1
+								'author' => $id,
+								'orderby' => 'date',
+								'order' => 'desc',
+								'numberposts' => 1,
 							));
 							$link = get_permalink( $recent[0]->ID );
 							break;
 
 						case 'last_post_filtered':
 							$recent = get_posts(array(
-								'author'=>$id,
-								'orderby'=>'date',
-								'order'=>'desc',
-								'numberposts'=>1
+								'author' => $id,
+								'orderby' => 'date',
+								'order' => 'desc',
+								'numberposts' => 1,
 							));
 							$link = get_permalink( $recent[0]->ID );
 							break;
@@ -210,7 +220,8 @@ class ShowAvatarShortcode {
 					}
 
 					if ( ! empty( $atts['show_name'] ) ) {
-						$bio = '<div class="bio bio-length-'. $atts['max_bio_length'] .'">' . $biography . '</div>';
+						$max_bio_length = ( isset( $atts['max_bio_length'] ) ) ? $atts['max_bio_length'] : 0;
+							$bio = '<div class="bio bio-length-'. $max_bio_length .'">' . $biography . '</div>';
 					}
 					if ( empty( $bio ) ) {
 						$extraClass .= ' biography-missing';

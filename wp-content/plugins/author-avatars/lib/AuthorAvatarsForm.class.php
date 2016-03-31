@@ -29,7 +29,7 @@ class AuthorAvatarsForm {
 	 * Constructor
 	 */
 	function AuthorAvatarsForm() {
-		require_once( 'FormHelper.class.php' );
+		require_once( 'AAFormHelper.class.php' );
 		$this->settings = AA_settings();
 		$this->tabs     = array();
 	}
@@ -100,6 +100,12 @@ class AuthorAvatarsForm {
 		if ( $this->field_name_callback != null ) {
 			$name = call_user_func( $this->field_name_callback, $name );
 		}
+		// TODO: remove when core fixed
+		// hack to handle cange in core in WP 4.4
+		if ( ( strlen( $name ) - 1 ) !== strrpos( $name, ']' ) ) {
+			$name = $name . ']';
+		}
+		$name = str_replace( ']]', ']', $name );
 
 		return $name;
 	}
@@ -107,8 +113,8 @@ class AuthorAvatarsForm {
 	/**
 	 * Renders the blog filter select field.
 	 *
-	 * @param mixed $values the field values
-	 * @param string $name the field name
+	 * @param mixed  $values the field values
+	 * @param string $name   the field name
 	 *
 	 * @return string
 	 */
@@ -117,7 +123,7 @@ class AuthorAvatarsForm {
 		if ( $this->settings->blog_selection_allowed() ) {
 			$id   = $this->_getFieldId( $name );
 			$name = $this->_getFieldName( $name );
-			$html .= '<p>' . FormHelper::choice( $name, Array( - 1 => "All" ) + $this->_getAllBlogs(), $values, array(
+			$html .= '<p>' . AAFormHelper::choice( $name, Array( - 1 => "All" ) + $this->_getAllBlogs(), $values, array(
 					'id'       => $id,
 					'multiple' => true,
 					'label'    => '<strong>' . __( 'Show users from blogs', 'author-avatars' ) . ':</strong><br />',
@@ -134,31 +140,31 @@ class AuthorAvatarsForm {
 	 * The list only contains public blogs which are not marked as archived, deleted
 	 * or spam and the list is ordered by blog name.
 	 *
-	 * @see http://codex.wordpress.org/WPMU_Functions/get_blog_list
+	 * @see    http://codex.wordpress.org/WPMU_Functions/get_blog_list
 	 * @access private
 	 * @return Array of blog names
 	 */
 	function _getAllBlogs() {
 		global $wpdb;
 		$where_options = array(
-			'public' => 1,
+			'public'   => 1,
 			'archived' => 0,
-			'mature' => 0,
-			'spam' => 0,
-			'deleted' => 0
+			'mature'   => 0,
+			'spam'     => 0,
+			'deleted'  => 0
 		);
 
 		$where_options_filtered = apply_filters( 'aa_get_all_blogs_where', $where_options );
-		$where_string = '';
-		foreach ($where_options_filtered as $key => $where){
+		$where_string           = '';
+		foreach ( $where_options_filtered as $key => $where ) {
 
-			if( ! array_key_exists( $key, $where_options )){
+			if ( ! array_key_exists( $key, $where_options ) ) {
 				continue;
 			}
-			$bool =  ( 1 == $where ) ? 1 : 0 ;
+			$bool = ( 1 == $where ) ? 1 : 0;
 			$where_string .= " AND $key = '$bool'";
 		}
-		$blogs = $wpdb->get_results( $wpdb->prepare( "SELECT blog_id, path FROM $wpdb->blogs WHERE 1 = 1 AND site_id = %d  $where_string", $wpdb->siteid  ), ARRAY_A );
+		$blogs = $wpdb->get_results( $wpdb->prepare( "SELECT blog_id, path FROM $wpdb->blogs WHERE 1 = 1 AND site_id = %d  $where_string", $wpdb->siteid ), ARRAY_A );
 
 		$blog_list = array();
 		foreach ( (array) $blogs as $details ) {
@@ -172,8 +178,8 @@ class AuthorAvatarsForm {
 	/**
 	 * Renders the group by field, which is either a dropdown field or a single checkbox if only one option is available.
 	 *
-	 * @param mixed $values the field values
-	 * @param string $name the field name
+	 * @param mixed  $values the field values
+	 * @param string $name   the field name
 	 *
 	 * @return string
 	 */
@@ -193,7 +199,7 @@ class AuthorAvatarsForm {
 				$attributes['wrapper_tag'] = 'p';
 			}
 			$name = $this->_getFieldName( $name );
-			$html = FormHelper::choice( $name, $group_by_options, $values, $attributes );
+			$html = AAFormHelper::choice( $name, $group_by_options, $values, $attributes );
 		}
 
 		return $html;
@@ -202,8 +208,8 @@ class AuthorAvatarsForm {
 	/**
 	 * Renders the roles field
 	 *
-	 * @param mixed $values the field values
-	 * @param string $name the field name
+	 * @param mixed  $values the field values
+	 * @param string $name   the field name
 	 *
 	 * @return string
 	 */
@@ -230,7 +236,7 @@ class AuthorAvatarsForm {
 				}
 			}
 			$name = $this->_getFieldName( $name );
-			$html .= FormHelper::choice( $name, $roles, $values, $attributes );
+			$html .= AAFormHelper::choice( $name, $roles, $values, $attributes );
 		}
 
 		return $html;
@@ -276,21 +282,42 @@ class AuthorAvatarsForm {
 	 * Renders the hiddenusers input text field.
 	 *
 	 * @param string $value the field value
-	 * @param string $name the field name
+	 * @param string $name  the field name
 	 *
 	 * @return string
 	 */
-	function renderFieldHiddenUsers( $value = '', $name = 'hiddenusers' ) {
+	function render_field_hidden_users( $value = '', $name = 'hiddenusers' ) {
 		$attributes = array(
 			'id'    => $this->_getFieldId( $name ),
 			'label' => '<strong>' . __( 'Hidden users', 'author-avatars' ) . ':</strong><br/>',
-			'help'  => '<br/><small>(' . __( 'Comma separate list of user login ids', 'author-avatars' ) . ')</small>',
+			'help'  => '<br/><small>(' . __( 'Comma separate list of user login ids. Hidden user are removed before the white list', 'author-avatars' ) . ')</small>',
 			'rows'  => 2,
-			'style' => 'width:95%;'
+			'style' => 'width:95%;',
 		);
 		$name       = $this->_getFieldName( $name );
 
-		return '<p>' . FormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
+		return '<p>' . AAFormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
+	}
+
+	/**
+	 * Renders the hiddenusers input text field.
+	 *
+	 * @param string $value the field value
+	 * @param string $name  the field name
+	 *
+	 * @return string
+	 */
+	function render_field_white_list_users( $value = '', $name = 'whitelistusers' ) {
+		$attributes = array(
+			'id'    => $this->_getFieldId( $name ),
+			'label' => '<strong>' . __( 'White List of users', 'author-avatars' ) . ':</strong><br/>',
+			'help'  => '<br/><small>(' . __( '0nly show these uses, Comma separate list of user login ids', 'author-avatars' ) . ')</small>',
+			'rows'  => 2,
+			'style' => 'width:95%;',
+		);
+		$name       = $this->_getFieldName( $name );
+
+		return '<p>' . AAFormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
 	}
 
 	/**
@@ -320,12 +347,11 @@ class AuthorAvatarsForm {
 	}
 
 
-
 	/**
 	 * Renders the display options checkbox matrix (show name?)
 	 *
-	 * @param mixed $values the field values
-	 * @param string $name the field name
+	 * @param mixed  $values the field values
+	 * @param string $name   the field name
 	 *
 	 * @return string
 	 */
@@ -352,16 +378,15 @@ class AuthorAvatarsForm {
 		);
 		$name       = $this->_getFieldName( $name );
 
-		return FormHelper::choice( $name, $display_options, $values, $attributes );
+		return AAFormHelper::choice( $name, $display_options, $values, $attributes );
 	}
-
 
 
 	/**
 	 * Renders the "order by" dropdown
 	 *
-	 * @param mixed $values the field values
-	 * @param string $name the field name
+	 * @param mixed  $values the field values
+	 * @param string $name   the field name
 	 *
 	 * @return string
 	 */
@@ -374,6 +399,7 @@ class AuthorAvatarsForm {
 			'user_login'           => __( 'Login Name', 'author-avatars' ),
 			'post_count'           => __( 'Number of Posts', 'author-avatars' ),
 			'random'               => __( 'Random', 'author-avatars' ),
+			'whitelist'            => __( 'White List', 'author-avatars' ),
 			'user_id'              => __( 'User Id', 'author-avatars' ),
 			'recent_post_activity' => __( 'Recent Posts Activity', 'author-avatars' ),
 			'recent_site_activity' => __( 'Recent Sitewide Activity', 'author-avatars' ),
@@ -390,31 +416,34 @@ class AuthorAvatarsForm {
 		);
 		$name       = $this->_getFieldName( $name );
 
-		return '<p>' . FormHelper::choice( $name, $order_options, $values, $attributes ) . '</p>';
+		return '<p>' . AAFormHelper::choice( $name, $order_options, $values, $attributes ) . '</p>';
 	}
 
 	/**
 	 * Renders the "user_link" dropdown
 	 *
-	 * @param mixed $values the field values
-	 * @param string $name the field name
+	 * @param mixed  $values the field values
+	 * @param string $name   the field name
 	 *
 	 * @return string
 	 */
 	function renderFieldUserLink( $values = array(), $name = 'user_link' ) {
 		$user_link_options = Array(
-			''                      => '-',
-			'authorpage'            => __( 'Author Page', 'author-avatars' ),
-			'website'               => __( 'Website', 'author-avatars' ),
-			'last_post'             => __( 'Users Last Post this blog','author-avatars' ),
-			'last_post_filtered'    => __( 'Filtered Last Post','author-avatars' ),
+			''                   => '-',
+			'authorpage'         => __( 'Author Page', 'author-avatars' ),
+			'website'            => __( 'Website', 'author-avatars' ),
+			'last_post'          => __( 'Users Last Post this blog', 'author-avatars' ),
+			'last_post_filtered' => __( 'Filtered Last Post', 'author-avatars' ),
 		);
 		if ( AA_is_bp() ) {
 			$user_link_options['bp_memberpage'] = __( 'BP Member Page', 'author-avatars' );
 		}
+		if ( class_exists( 'UM_API' ) ) {
+			$user_link_options['um_profile'] = __( 'UM Profile Page', 'author-avatars' );
+		}
 		if ( AA_is_wpmu() ) {
 			$user_link_options['last_post_all'] = __( 'Users Last Post ALL blogs', 'author-avatars' );
-			$user_link_options['blog'] = __( 'Blog', 'author-avatars' );
+			$user_link_options['blog']          = __( 'Blog', 'author-avatars' );
 		}
 		if ( AA_is_bbpress() ) {
 			$user_link_options['bbpress_memberpage'] = __( 'BBpress Member Page', 'author-avatars' );
@@ -425,14 +454,14 @@ class AuthorAvatarsForm {
 		);
 		$name       = $this->_getFieldName( $name );
 
-		return '<p>' . FormHelper::choice( $name, $user_link_options, $values, $attributes ) . '</p>';
+		return '<p>' . AAFormHelper::choice( $name, $user_link_options, $values, $attributes ) . '</p>';
 	}
 
 	/**
 	 * Renders the "order by" dropdown
 	 *
-	 * @param mixed $values the field values
-	 * @param string $name the field name
+	 * @param mixed  $values the field values
+	 * @param string $name   the field name
 	 *
 	 * @return string
 	 */
@@ -447,14 +476,14 @@ class AuthorAvatarsForm {
 		);
 		$name          = $this->_getFieldName( $name );
 
-		return '<p>' . FormHelper::choice( $name, $order_options, $values, $attributes ) . '</p>';
+		return '<p>' . AAFormHelper::choice( $name, $order_options, $values, $attributes ) . '</p>';
 	}
 
 	/**
 	 * Renders the "limit" input field
 	 *
 	 * @param string $value the field value
-	 * @param string $name the field name
+	 * @param string $name  the field name
 	 *
 	 * @return string
 	 */
@@ -466,14 +495,14 @@ class AuthorAvatarsForm {
 		);
 		$name       = $this->_getFieldName( $name );
 
-		return '<p>' . FormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
+		return '<p>' . AAFormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
 	}
 
 	/**
 	 * Renders the "limit" input field
 	 *
 	 * @param string $value the field value
-	 * @param string $name the field name
+	 * @param string $name  the field name
 	 *
 	 * @return string
 	 */
@@ -485,7 +514,7 @@ class AuthorAvatarsForm {
 		);
 		$name       = $this->_getFieldName( $name );
 
-		return '<p>' . FormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
+		return '<p>' . AAFormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
 	}
 
 
@@ -493,28 +522,28 @@ class AuthorAvatarsForm {
 	 * Renders the "max bio length" input field
 	 *
 	 * @param string $value the field value
-	 * @param string $name the field name
+	 * @param string $name  the field name
 	 *
 	 * @return string
 	 */
 	function renderFieldMaxBioLength( $value = '', $name = 'max_bio_length' ) {
 		$attributes = array(
 			'id'    => $this->_getFieldId( $name ),
-			'label' => __( 'Trim Bio Length to ', 'author-avatars' ) ,
+			'label' => __( 'Trim Bio Length to ', 'author-avatars' ),
 
-			'help'  => ' characters.',
-			'size'  => '4'
+			'help' => ' characters.',
+			'size' => '4'
 		);
 		$name       = $this->_getFieldName( $name );
 
-		return '<p>' . FormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
+		return '<p>' . AAFormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
 	}
 
 	/**
 	 * Renders the "min_post_count" input field
 	 *
 	 * @param string $value the field value
-	 * @param string $name the field name
+	 * @param string $name  the field name
 	 *
 	 * @return string
 	 */
@@ -526,15 +555,15 @@ class AuthorAvatarsForm {
 		);
 		$name       = $this->_getFieldName( $name );
 
-		return '<p>' . FormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
+		return '<p>' . AAFormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
 	}
 
 	/**
 	 * Renders the avatar size input field.
 	 *
-	 * @param string $value the field value
-	 * @param string $name the field name
-	 * @param bool $preview If set to true (default) the "avatar_size_preview" div is rendered. jQuery UI and "js/widget.admin.js" needs to included in order for this to work.
+	 * @param string $value   the field value
+	 * @param string $name    the field name
+	 * @param bool   $preview If set to true (default) the "avatar_size_preview" div is rendered. jQuery UI and "js/widget.admin.js" needs to included in order for this to work.
 	 */
 	function renderFieldAvatarSize( $value = '', $name = 'avatar_size', $preview = true ) {
 		$attributes = array(
@@ -545,7 +574,7 @@ class AuthorAvatarsForm {
 			'size'  => '5'
 		);
 		$name       = $this->_getFieldName( $name );
-		$html       = '<p>' . FormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
+		$html       = '<p>' . AAFormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
 		if ( $preview == true ) {
 			global $user_email;
 			get_currentuserinfo();
@@ -558,8 +587,8 @@ class AuthorAvatarsForm {
 	/**
 	 * Renders the shortcode type selection field
 	 *
-	 * @param mixed $values the field values
-	 * @param string $name the field name
+	 * @param mixed  $values the field values
+	 * @param string $name   the field name
 	 *
 	 * @return string
 	 */
@@ -576,14 +605,14 @@ class AuthorAvatarsForm {
 		);
 		$name         = $this->_getFieldName( $name );
 
-		return '<p>' . FormHelper::choice( $name, $type_options, $values, $attributes ) . '</p>';
+		return '<p>' . AAFormHelper::choice( $name, $type_options, $values, $attributes ) . '</p>';
 	}
 
 	/**
 	 * Renders the email/userid input field for the show_avatar wizard
 	 *
 	 * @param string $value the field value
-	 * @param string $name the field name
+	 * @param string $name  the field name
 	 *
 	 * @return string
 	 */
@@ -594,14 +623,14 @@ class AuthorAvatarsForm {
 		);
 		$name       = $this->_getFieldName( $name );
 
-		return FormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
+		return AAFormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
 	}
 
 	/**
 	 * Renders the User pick input field for the show_avatar wizard
 	 *
 	 * @param string $value the field value
-	 * @param string $name the field name
+	 * @param string $name  the field name
 	 *
 	 * @return string
 	 */
@@ -614,7 +643,7 @@ class AuthorAvatarsForm {
 
 		$users = $this->_get_all_users( array( - 1 => __( 'Custom value', 'author-avatars' ) ) );
 
-		return '<p>' . FormHelper::choice( $name, $users, $values, $attributes );
+		return '<p>' . AAFormHelper::choice( $name, $users, $values, $attributes );
 	}
 
 	/**
@@ -637,8 +666,8 @@ class AuthorAvatarsForm {
 	/**
 	 * Renders the alignment radio fields for the show_avatar wizard
 	 *
-	 * @param mixed $values the field values
-	 * @param string $name the field name
+	 * @param mixed  $values the field values
+	 * @param string $name   the field name
 	 *
 	 * @return string
 	 */
@@ -658,14 +687,14 @@ class AuthorAvatarsForm {
 		);
 		$name              = $this->_getFieldName( $name );
 
-		return '<p>' . FormHelper::choice( $name, $alignment_options, $values, $attributes ) . '</p>';
+		return '<p>' . AAFormHelper::choice( $name, $alignment_options, $values, $attributes ) . '</p>';
 	}
 
 	/**
 	 * Renders an opening tab div
 	 *
 	 * @param string $title The tab title
-	 * @param string $id tab id (optional). Generated from $title if empty.
+	 * @param string $id    tab id (optional). Generated from $title if empty.
 	 *
 	 * @return string
 	 */
@@ -673,7 +702,7 @@ class AuthorAvatarsForm {
 		if ( empty( $id ) ) {
 			$id = 'tab-' . $title;
 		}
-		$id = FormHelper::cleanHtmlId( $id );
+		$id = AAFormHelper::cleanHtmlId( $id );
 		if ( isset( $this->tabs[ $id ] ) ) {
 			trigger_error( 'Warning: id "' . $id . '" has already been used as tab identifier.', E_USER_WARNING );
 		} else {
@@ -715,9 +744,9 @@ class AuthorAvatarsForm {
 	/**
 	 * Renders the two given bits of html in columns next to each other.
 	 *
-	 * @param string $left Contents of the left column
+	 * @param string $left  Contents of the left column
 	 * @param string $right Contents of the right column
-	 * @param string html
+	 * @param        string html
 	 */
 	function renderColumns( $left = '', $right = '' ) {
 		if ( empty( $left ) || empty( $right ) ) {

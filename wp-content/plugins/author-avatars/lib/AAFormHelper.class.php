@@ -1,4 +1,4 @@
-<?php  if ( ! class_exists( 'FormHelper' ) ):
+<?php  if ( ! class_exists( 'AAFormHelper' ) ):
 
 	/*
 	Copyright (c) 2009 Benedikt Forchhammer
@@ -21,7 +21,7 @@
 	/**
 	 * This class provides a collection of functions which ease the generation of form elements.
 	 */
-	class FormHelper {
+	class AAFormHelper {
 
 		/**
 		 * Renders a set of choices/values inside a select element or a group of checkboxes/radio buttons.
@@ -83,7 +83,7 @@
 
 			// id = either from $attributes['id'] or safe version of $name
 			$wrapper_attributes['id'] = ! empty( $attributes['id'] ) ? $attributes['id'] : $name;
-			$wrapper_attributes['id'] = FormHelper::cleanHtmlId( $wrapper_attributes['id'] );
+			$wrapper_attributes['id'] = AAFormHelper::cleanHtmlId( $wrapper_attributes['id'] );
 
 			if ( $multiple ) {
 				$name .= '[]';
@@ -127,13 +127,13 @@
 			if ( ! $expanded && $field_label ) {
 				$html .= '<label>' . $field_label;
 			}
-			$html .= '<' . ( $expanded ? $wrapper_tag : 'select' ) . FormHelper::buildHtmlAttributes( $wrapper_attributes ) . '>';
+			$html .= '<' . ( $expanded ? $wrapper_tag : 'select' ) . AAFormHelper::buildHtmlAttributes( $wrapper_attributes ) . '>';
 			if ( $expanded && $field_label ) {
 				$html .= $field_label;
 			}
 
 			foreach ( $choices as $value => $label ) {
-				$attr = FormHelper::buildHtmlAttributes( $row_attributes );
+				$attr = AAFormHelper::buildHtmlAttributes( $row_attributes );
 				$attr .= ' value="' . $value . '"';
 
 				$row = '';
@@ -212,7 +212,7 @@
 			}
 
 			$attributes['id']   = ! empty( $attributes['id'] ) ? $attributes['id'] : $name;
-			$attributes['id']   = FormHelper::cleanHtmlId( $attributes['id'] );
+			$attributes['id']   = AAFormHelper::cleanHtmlId( $attributes['id'] );
 			$attributes['name'] = $name;
 
 			$label = '';
@@ -227,7 +227,7 @@
 				unset( $attributes['help'] );
 			}
 
-			$attr = FormHelper::buildHtmlAttributes( $attributes );
+			$attr = AAFormHelper::buildHtmlAttributes( $attributes );
 
 			$html = '<' . $tag . $attr;
 			if ( $tag == 'textarea' ) {

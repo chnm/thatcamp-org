@@ -14,12 +14,13 @@ class AuthorAvatarsWidget extends WP_Widget {
 	 */
 	function _setDefaults() {
 		$this->defaults = Array(
-			'title'       => __( 'Blog Authors', 'author-avatars' ),
-			'hiddenusers' => '',
-			'blogs'       => "",
-			'roles'       => array( 'administrator', 'editor' ),
-			'group_by'    => '',
-			'display'     => array(
+			'title'          => __( 'Blog Authors', 'author-avatars' ),
+			'hiddenusers'    => '',
+			'whitelistusers' => '',
+			'blogs'          => "",
+			'roles'          => array( 'administrator', 'editor' ),
+			'group_by'       => '',
+			'display'        => array(
 				'avatar_size'    => '',
 				'limit'          => '',
 				'min_post_count' => '',
@@ -43,6 +44,7 @@ class AuthorAvatarsWidget extends WP_Widget {
 	 * Widget initialisation
 	 */
 	function AuthorAvatarsWidget() {
+
 
 		$this->_setDefaults();
 
@@ -68,13 +70,20 @@ class AuthorAvatarsWidget extends WP_Widget {
 			$hiddenusers = array();
 		}
 
+		// parse whitelist users string
+		if ( ! empty( $instance['whitelistusers'] ) ) {
+			$whitelistusers = explode( ',', $instance['whitelistusers'] );
+			$whitelistusers = array_map( 'trim', $whitelistusers );
+		} else {
+			$whitelistusers = array();
+		}
 		$userlist = new UserList();
 
-		$userlist->roles       = $instance['roles'];
-		$userlist->blogs       = $instance['blogs'];
-		$userlist->group_by    = $instance['group_by'];
-		$userlist->hiddenusers = $hiddenusers;
-
+		$userlist->roles          = $instance['roles'];
+		$userlist->blogs          = $instance['blogs'];
+		$userlist->group_by       = $instance['group_by'];
+		$userlist->hiddenusers    = $hiddenusers;
+		$userlist->whitelistusers = $whitelistusers;
 
 		if ( is_array( $instance['display'] ) ) {
 
@@ -181,16 +190,22 @@ class AuthorAvatarsWidget extends WP_Widget {
 	 *
 	 * @param $new_instance The new widget options, sent from the widget control form.
 	 * @param $old_instance The options of the old instance in case we're updating a widget. This is empty if we're creating a new widget.
-	 * @param The instance of widget options which is saved to the database.
+	 * @param The           instance of widget options which is saved to the database.
+	 *
+	 * @return array $instance
 	 */
 	function update( $new_instance, $old_instance ) {
-		$instance                = $old_instance;
-		$instance['title']       = esc_html( $new_instance['title'] );
-		$instance['hiddenusers'] = esc_html( $new_instance['hiddenusers'] );
-		$instance['roles']       = (array) $new_instance['roles'];
-		$instance['blogs']       = (array) $new_instance['blogs'];
-		$instance['group_by']    = esc_html( $new_instance['group_by'] );
-		$instance['display']     = (array) $new_instance['display'];
+
+		$instance                   = $old_instance;
+		$instance['title']          = esc_html( $new_instance['title'] );
+		$instance['hiddenusers']    = esc_html( $new_instance['hiddenusers'] );
+		$instance['whitelistusers'] = esc_html( $new_instance['whitelistusers'] );
+		$instance['roles']          = (array) $new_instance['roles'];
+		$instance['blogs']          = ( isset( $new_instance['blogs'] ) ) ? (array) $new_instance['blogs'] : array();
+		$instance['group_by']       = ( isset( $new_instance['group_by'] ) ) ? esc_html( $new_instance['group_by'] ) : '';
+		$instance['display']        = (array) $new_instance['display'];
+
+		$instance['display']['avatar_size'] = absint( $instance['display']['avatar_size'] );
 
 		if ( empty( $instance['blogs'] ) ) {
 			$instance['blogs'] = $this->defaults['blogs'];
@@ -216,12 +231,12 @@ class AuthorAvatarsWidget extends WP_Widget {
 		$form->setFieldIdCallback( array( $this, 'get_field_id' ) );
 		$form->setFieldNameCallback( array( $this, 'get_field_name' ) );
 
-		if( ! class_exists( 'FormHelper' )  ){
-			require_once( 'FormHelper.class.php' );
+		if ( ! class_exists( 'AAFormHelper' ) ) {
+			require_once( 'AAFormHelper.class.php' );
 		}
 
 		// widget title
-		$widget_title = '<p>' . FormHelper::input( 'text', $this->get_field_name( 'title' ), $instance['title'],
+		$widget_title = '<p>' . AAFormHelper::input( 'text', $this->get_field_name( 'title' ), $instance['title'],
 				array(
 					'label' => '<strong>' . __( 'Title', 'author-avatars' ) . ':</strong> ',
 					'class' => 'widefat',
@@ -231,6 +246,14 @@ class AuthorAvatarsWidget extends WP_Widget {
 
 		// BASIC TAB
 		$basic_left = $widget_title;
+
+
+		if ( ! isset( $instance['display']['user_link'] ) ) {
+			$instance['display']['user_link'] = array();
+		}
+		if ( ! isset( $instance['display']['avatar_size'] ) ) {
+			$instance['display']['avatar_size'] = '';
+		}
 
 		$basic_left .= $form->renderFieldRoles( $instance['roles'] );
 		$basic_left .= $form->renderFieldUserLink( $instance['display']['user_link'], 'display][user_link' );
@@ -260,7 +283,10 @@ class AuthorAvatarsWidget extends WP_Widget {
 			$adv_left .= $form->renderFieldMinPostCount( $instance['display']['min_post_count'], 'display][min_post_count' );
 		}
 		if ( array_key_exists( 'hiddenusers', $instance ) ) {
-			$adv_left .= $form->renderFieldHiddenUsers( $instance['hiddenusers'] );
+			$adv_left .= $form->render_field_hidden_users( $instance['hiddenusers'] );
+		}
+		if ( array_key_exists( 'whitelistusers', $instance ) ) {
+			$adv_left .= $form->render_field_white_list_users( $instance['whitelistusers'] );
 		}
 
 		$adv_right = "";
@@ -278,7 +304,7 @@ class AuthorAvatarsWidget extends WP_Widget {
 		echo '<div class="aa-widget-control-panel">' . $basic . $advanced . '</div>';
 
 		// hidden "submit=1" field (do we still need this?, FIXME)
-		echo FormHelper::input( 'hidden', $this->get_field_name( 'submit' ), '1', array( 'id' => $this->get_field_id( 'submit' ) ) );
+		echo AAFormHelper::input( 'hidden', $this->get_field_name( 'submit' ), '1', array( 'id' => $this->get_field_id( 'submit' ) ) );
 	}
 
 	function get_field_name( $varname ) {
