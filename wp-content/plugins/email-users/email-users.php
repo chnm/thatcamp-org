@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 /*
 Plugin Name: Email Users
-Version: 4.7.10
+Version: 4.8.1
 Plugin URI: http://wordpress.org/extend/plugins/email-users/
 Description: Allows the site editors to send an e-mail to the blog users. Credits to <a href="http://www.catalinionescu.com">Catalin Ionescu</a> who gave me (Vincent Pratt) some ideas for the plugin and has made a similar plugin. Bug reports and corrections by Cyril Crua, Pokey and Mike Walsh.  Development for enhancements and bug fixes since version 4.1 primarily by <a href="http://michaelwalsh.org">Mike Walsh</a>.
 Author: Mike Walsh & MarvinLabs
@@ -27,7 +27,7 @@ Author URI: http://www.michaelwalsh.org
 */
 
 // Version of the plugin
-define( 'MAILUSERS_CURRENT_VERSION', '4.7.10');
+define( 'MAILUSERS_CURRENT_VERSION', '4.8.1');
 
 // i18n plugin domain
 define( 'MAILUSERS_I18N_DOMAIN', 'email-users' );
@@ -132,6 +132,8 @@ function mailusers_get_default_plugin_settings($option = null)
 		'mailusers_copy_sender' => 'false',
 		// Mail User - Default setting for Add X-Mailer header
 		'mailusers_add_x_mailer_header' => 'false',
+		// Mail User - Default setting Enhanced Recipient Selection
+		'mailusers_enhanced_recipient_selection' => 'true',
 		// Mail User - Default setting Omit Display Names in Email Addresses
 		'mailusers_omit_display_names' => 'false',
 		// Mail User - The footer to use when using the post notification functionality
@@ -372,7 +374,7 @@ function mailusers_add_pages() {
        	'mailusers-send-notify-mail-page',
        	'mailusers_send_notify_mail') ;
 
-    add_options_page(
+    $mailusers_options_page = add_options_page(
 	    __('Email Users', MAILUSERS_I18N_DOMAIN),
 	    __('Email Users', MAILUSERS_I18N_DOMAIN),
 	    'manage_options',
@@ -465,6 +467,12 @@ function mailusers_add_pages() {
 	    'edit_users',
        	'mailusers-user-settings',
        	'mailusers_user_settings_page') ;
+
+    //  Plugin specific script and CSS loading ...
+    //  ***  Not currently used!  ***
+    //add_action('admin_footer-'.$mailusers_options_page, 'mailusers_options_admin_footer') ;
+    //add_action('admin_print_scripts-'.$mailusers_options_page, 'mailusers_options_print_scripts') ;
+    //add_action('admin_print_styles-'.$mailusers_options_page, 'mailusers_options_print_styles') ;
 }
 
 /**
@@ -645,17 +653,54 @@ function mailusers_any_user_profile_update($uid) {
 }
 
 /**
+ * mailusers_register_chosen()
+ *
+ * WordPress script registration for mailusers
+ */
+function mailusers_register_chosen()
+{
+    if (mailusers_get_enhanced_recipient_selection())
+    {
+        //  Register the jQuery Chosen script from the plugin
+        wp_register_script('mailusers-chosen',
+                plugins_url(plugin_basename(dirname(__FILE__) . '/js/chosen/chosen.jquery.min.js')),
+            array('jquery'), false, true) ;
+
+        //  Register the jQuery Chosen script from the plugin
+        wp_register_script('mailusers',
+                plugins_url(plugin_basename(dirname(__FILE__) . '/js/mailusers.js')),
+            array('jquery', 'mailusers-chosen'), false, true) ;
+
+        //  Register the jQuery Chosen CSS from the plugin
+        wp_register_style('mailusers-chosen',
+                plugins_url(plugin_basename(dirname(__FILE__) . '/js/chosen/chosen.min.css'))) ;
+    }
+}
+
+/**
  * Enqueue scripts when needed
  *
  */
 function email_users_enqueue_scripts($hook) {
-    if (('email-users_page_mailusers-send-to-users-page' == $hook) ||
-        ('email-users_page_mailusers-send-to-group-page' == $hook))
+    //  Load the JS and CSS only when appropriate ...
+    switch ($hook)
     {
-	    wp_enqueue_script('word-count');
-	    wp_enqueue_script('post');
-	    wp_enqueue_script('editor');
-	    wp_enqueue_script('media-upload');
+        case 'email-users_page_mailusers-send-to-user-page':
+        case 'email-users_page_mailusers-send-to-group-page':
+        case (preg_match('/posts_page_mailusers-send-notify-mail-.*/', $hook) ? true : false) :
+            mailusers_register_chosen() ;
+
+	        wp_enqueue_script('word-count');
+	        wp_enqueue_script('post');
+	        wp_enqueue_script('editor');
+	        wp_enqueue_script('media-upload');
+
+            wp_enqueue_script('mailusers-chosen') ;
+            wp_enqueue_script('mailusers') ;
+            wp_enqueue_style('mailusers-chosen') ;
+            break ;
+        default:
+            break ;
     }
 }
 add_action('admin_enqueue_scripts', 'email_users_enqueue_scripts') ;
@@ -678,6 +723,7 @@ function mailusers_admin_init() {
     register_setting('email_users', 'mailusers_shortcode_processing') ;
     register_setting('email_users', 'mailusers_wpautop_processing') ;
     register_setting('email_users', 'mailusers_from_sender_exclude') ;
+    register_setting('email_users', 'mailusers_enhanced_recipient_selection') ;
     register_setting('email_users', 'mailusers_omit_display_names') ;
     register_setting('email_users', 'mailusers_copy_sender') ;
     register_setting('email_users', 'mailusers_from_sender_name_override') ;
@@ -986,6 +1032,25 @@ function mailusers_get_wpautop_processing() {
  */
 function mailusers_update_wpautop_processing( $wpautop_processing ) {
 	return update_option( 'mailusers_wpautop_processing', $wpautop_processing );
+}
+
+/**
+ * Wrapper for the enhanced recipient selection setting
+ */
+function mailusers_get_enhanced_recipient_selection() {
+    $option = get_option( 'mailusers_enhanced_recipient_selection' );
+
+    if ($option === false)
+        $option = mailusers_get_default_plugin_settings( 'enhanced_recipient_selection' );
+
+    return $option;
+}
+
+/**
+ * Wrapper for the omit display names setting
+ */
+function mailusers_update_enhanced_recipient_selection( $enhanced_recipient_selection ) {
+	return update_option( 'mailusers_enhanced_recipient_selection', $enhanced_recipient_selection );
 }
 
 /**

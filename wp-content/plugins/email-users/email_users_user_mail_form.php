@@ -67,7 +67,7 @@
 		<table class="form-table" width="100%" cellspacing="2" cellpadding="5">
 		<tr>
 			<th scope="row" valign="top"><?php _e('Mail format', MAILUSERS_I18N_DOMAIN); ?></th>
-			<td><select name="mail_format" style="width: 158px;">
+			<td><select class="mailusers-select" name="mail_format" style="width: 158px;">
 				<option value="html" <?php if ($mail_format=='html') echo 'selected="selected"'; ?>><?php _e('HTML', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="plaintext" <?php if ($mail_format=='plaintext') echo 'selected="selected"'; ?>><?php _e('Plain text', MAILUSERS_I18N_DOMAIN); ?></option>
 			</select></td>
@@ -91,7 +91,7 @@
 				?>
 			</small></label></th>
 			<td>
-				<select id="send_users" name="send_users[]" size="8" style="width: 654px; height: 250px;" <?php if (current_user_can(MAILUSERS_EMAIL_MULTIPLE_USERS_CAP)) echo 'multiple="multiple"'; ?> >
+				<select data-placeholder="<?php _e('Choose User Recipients ...', MAILUSERS_I18N_DOMAIN);?>" class="mailusers-select" id="send_users" name="send_users[]" size="8" style="width: 654px; height: 250px;" <?php if (current_user_can(MAILUSERS_EMAIL_MULTIPLE_USERS_CAP)) echo 'multiple="multiple"'; ?> >
 				<?php
 					//  Display of users is based on plugin setting
 					$na = __('N/A', MAILUSERS_I18N_DOMAIN);

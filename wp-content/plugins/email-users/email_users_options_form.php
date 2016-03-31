@@ -132,7 +132,7 @@ print $reflection->getFileName();
 		<th scope="row" valign="top">
 			<label for="mail_format"><?php _e('Mail Format', MAILUSERS_I18N_DOMAIN); ?></th>
 		<td>
-			<select name="mailusers_default_mail_format" style="width: 235px;">
+			<select class="mailusers-select" name="mailusers_default_mail_format" style="width: 235px;">
 				<option value="html" <?php if (mailusers_get_default_mail_format()=='html') echo 'selected="true"';?>><?php _e('HTML', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="plaintext" <?php if (mailusers_get_default_mail_format()=='plaintext') echo 'selected="true"';?>><?php _e('Plain text', MAILUSERS_I18N_DOMAIN); ?></option>
 			</select><br/><i><small><?php _e('Send mail as plain text or HTML by default?', MAILUSERS_I18N_DOMAIN); ?></small></i></td>
@@ -141,7 +141,7 @@ print $reflection->getFileName();
 		<th scope="row" valign="top">
 			<label for="sort_users_by"><?php _e('Sort Users By', MAILUSERS_I18N_DOMAIN); ?></th>
 		<td>
-			<select name="mailusers_default_sort_users_by" style="width: 235px;">
+			<select class="mailusers-select" name="mailusers_default_sort_users_by" style="width: 235px;">
 				<option value="none" <?php if (mailusers_get_default_sort_users_by()=='none') echo 'selected="true"';?>><?php _e('None', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="dn" <?php if (mailusers_get_default_sort_users_by()=='dn') echo 'selected="true"';?>><?php _e('Display Name', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="dnul" <?php if (mailusers_get_default_sort_users_by()=='dnul') echo 'selected="true"';?>><?php _e('Display Name (User Login)', MAILUSERS_I18N_DOMAIN); ?></option>
@@ -166,10 +166,13 @@ print $reflection->getFileName();
 		<th scope="row" valign="top">
 			<label for="max_bcc_recipients"><?php _e('BCC Limit', MAILUSERS_I18N_DOMAIN); ?></th>
 		<td>
-			<select name="mailusers_max_bcc_recipients" style="width: 235px;">
+			<select class="mailusers-select" name="mailusers_max_bcc_recipients" style="width: 235px;">
 				<option value="0" <?php if (mailusers_get_max_bcc_recipients()=='0') echo 'selected="true"';?>><?php _e('None', MAILUSERS_I18N_DOMAIN); ?></option>
                 <option value="-1" <?php if (mailusers_get_max_bcc_recipients()=='-1') echo 'selected="true"';?>><?php _e('1 (use To: field)', MAILUSERS_I18N_DOMAIN);?></option>
 				<option value="1" <?php if (mailusers_get_max_bcc_recipients()=='1') echo 'selected="true"';?>><?php _e('1 (use Bcc: field)', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="2" <?php if (mailusers_get_max_bcc_recipients()=='2') echo 'selected="true"';?>><?php _e('2', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="3" <?php if (mailusers_get_max_bcc_recipients()=='3') echo 'selected="true"';?>><?php _e('3', MAILUSERS_I18N_DOMAIN);?></option>
+                <option value="5" <?php if (mailusers_get_max_bcc_recipients()=='5') echo 'selected="true"';?>><?php _e('5', MAILUSERS_I18N_DOMAIN);?></option>
                 <option value="10" <?php if (mailusers_get_max_bcc_recipients()=='10') echo 'selected="true"';?>><?php _e('10', MAILUSERS_I18N_DOMAIN);?></option>
                 <option value="30" <?php if (mailusers_get_max_bcc_recipients()=='30') echo 'selected="true"';?>><?php _e('30', MAILUSERS_I18N_DOMAIN);?></option>
                 <option value="100" <?php if (mailusers_get_max_bcc_recipients()=='100') echo 'selected="true"';?>><?php _e('100', MAILUSERS_I18N_DOMAIN);?></option>
@@ -186,6 +189,15 @@ print $reflection->getFileName();
 			<input type="text" name="mailusers_default_subject" style="width: 100%;" 
 				value="<?php echo format_to_edit(mailusers_get_default_subject()); ?>" 
 				size="80" /></td>
+	</tr>
+	<tr>
+        <th><?php _e('Enhanced Recipient Selection', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<input 	type="checkbox" name="mailusers_enhanced_recipient_selection" id="mailusers_enhanced_recipient_selection" value="true"
+					<?php if (mailusers_get_enhanced_recipient_selection()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Use jQuery enhanced Select boxes for recipient selection.', MAILUSERS_I18N_DOMAIN); ?><br/>
+            <i><small><?php _e('When enabled the <a href="http://harvesthq.github.io/chosen/">Chosen jQuery plugin</a> is applied to recipient selection lists.', MAILUSERS_I18N_DOMAIN)?></small></i>
+		</td>
 	</tr>
 	<tr>
         <th><?php _e('Display Names', MAILUSERS_I18N_DOMAIN); ?></th>
@@ -272,7 +284,7 @@ print $reflection->getFileName();
 		<th scope="row" valign="top">
             <label for="user_settings_table_rows"><?php _e('User Settings<br/>Table Rows', MAILUSERS_I18N_DOMAIN); ?></th>
 		<td>
-			<select name="mailusers_user_settings_table_rows" style="width: 100px;">
+			<select class="mailusers-select" name="mailusers_user_settings_table_rows" style="width: 100px;">
                 <option value="10" <?php if (mailusers_get_user_settings_table_rows()=='10') echo 'selected="true"'; ?>><?php _e('10', MAILUSERS_I18N_DOMAIN); ?></option>
                 <option value="20" <?php if (mailusers_get_user_settings_table_rows()=='20') echo 'selected="true"'; ?>><?php _e('20', MAILUSERS_I18N_DOMAIN); ?></option>
                 <option value="40" <?php if (mailusers_get_user_settings_table_rows()=='40') echo 'selected="true"'; ?>><?php _e('40', MAILUSERS_I18N_DOMAIN); ?></option>
@@ -762,7 +774,7 @@ print $reflection->getFileName();
 <div>
 	<ul style="list-style-type: square;margin-left: 7px;">
 		<li><?php _e('If Email-Users is not robust enough or if you want to allow your users to communicate with each other, try: ', MAILUSERS_I18N_DOMAIN); ?><a href="http://user-messages.marvinlabs.com">User Messages</a></li>
-		<li><?php _e('If you lose time copy/pasting the same post structure every time, try: ', MAILUSERS_I18N_DOMAIN); ?><a href="http://post-templates.marvinlabs.com">Post Templates</a></li>
+		<li><a href="https://profiles.wordpress.org/marvinlabs/#content-plugins"><?php _e('Other Plugins from Marvin Labs', MAILUSERS_I18N_DOMAIN); ?></a></li>
 	</ul>
 </div>
 </div>

@@ -26,20 +26,14 @@
 <div style="text-align: center; font-size: 0.75em;padding:0px 5px;margin:0px auto;"><!-- PayPal box wrapper -->
 <div><!-- PayPal box-->
 	<p style="margin: 0.25em 0"><b>Email Users <?php echo mailusers_get_current_version(); ?></b></p>
-	<p style="margin: 0.25em 0"><a href="http://email-users.vincentprat.info" target="_blank"><?php _e('Plugin\'s Home Page', MAILUSERS_I18N_DOMAIN); ?></a></p>
-	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-		<input type="hidden" name="cmd" value="_xclick">
-		<input type="hidden" name="business" value="vpratfr@yahoo.fr">
-		<input type="hidden" name="item_name" value="Email Users - Wordpress Plugin">
-		<input type="hidden" name="no_shipping" value="1">
-		<input type="hidden" name="no_note" value="1">
-		<input type="hidden" name="currency_code" value="EUR">
-		<input type="hidden" name="tax" value="0">
-		<input type="hidden" name="lc" value="<?php _e('EN', MAILUSERS_I18N_DOMAIN); ?>">
-		<input type="hidden" name="bn" value="PP-DonationsBF">
-		<input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but04.gif" border="0" name="submit" alt="PayPal">
-		<img alt="" border="0" src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
-	</form>
+	<p style="margin: 0.25em 0"><a href="https://wordpress.org/plugins/email-users/" target="_blank"><?php _e('Plugin\'s Home Page', MAILUSERS_I18N_DOMAIN); ?></a></p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="XJCSFADAB32XC">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
 </div><!-- PayPal box -->
 </div>
 
@@ -53,8 +47,8 @@
 <div style="padding:0px 5px;">
 <div>
 	<ul style="list-style-type: square;margin-left: 7px;">
-		<li><?php _e('If Email-Users is not robust enough or if you want to allow your users to communicate with each other, try: ', MAILUSERS_I18N_DOMAIN); ?><a href="http://user-messages.marvinlabs.com">User Messages</a></li>
-		<li><?php _e('If you lose time copy/pasting the same post structure every time, try: ', MAILUSERS_I18N_DOMAIN); ?><a href="http://post-templates.marvinlabs.com">Post Templates</a></li>
+		<li><?php _e('If Email-Users is not robust enough or if you want to allow your users to communicate with each other, try: ', MAILUSERS_I18N_DOMAIN); ?><a href="https://wordpress.org/plugins/user-messages/">User Messages</a></li>
+		<li><a href="https://profiles.wordpress.org/marvinlabs/#content-plugins"><?php _e('Other Plugins from Marvin Labs', MAILUSERS_I18N_DOMAIN); ?></a></li>
 	</ul>
 </div>
 </div>

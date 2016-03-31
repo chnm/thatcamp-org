@@ -60,7 +60,7 @@
     <h2><?php printf(__('Notify Users of a %s', MAILUSERS_I18N_DOMAIN), __(ucwords($post_type))); ?></h2>
     <form name="SetPost" action="" method="post">
         <p><?php printf(__('Please select the %s that you wish to notify users about.', MAILUSERS_I18N_DOMAIN), __(ucwords($post_type))); ?></p>
-        <select style="width:300px;" name="post_id">
+        <select class="mailusers-select" style="width:300px;" name="post_id">
         <?php
          global $post ;
          $lastposts = get_posts(array('numberposts' => -1, 'post_type' => $post_type));
@@ -177,7 +177,7 @@ endif;
         <table class="form-table" width="100%" cellspacing="2" cellpadding="5">
 		<tr>
 			<th scope="row" valign="top"><?php _e('Mail format', MAILUSERS_I18N_DOMAIN); ?></th>
-			<td><select name="mail_format" style="width: 158px;">
+			<td><select class="mailusers-select" name="mail_format" style="width: 158px;">
 				<option value="html" <?php if ($mail_format=='html') echo 'selected="selected"'; ?>><?php _e('HTML', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="plaintext" <?php if ($mail_format=='plaintext') echo 'selected="selected"'; ?>><?php _e('Plain text', MAILUSERS_I18N_DOMAIN); ?></option>
 			</select></td>
@@ -201,7 +201,7 @@ endif;
             <br/><br/>
             <small><?php _e('The users that did not agree to receive notifications do not appear here.', MAILUSERS_I18N_DOMAIN); ?></small></label></th>
             <td>
-                <select name="send_targets[]" multiple="yes" size="8" style="width: 250px; height: 250px;">
+                <select data-placeholder="<?php _e('Choose Group Recipients ...', MAILUSERS_I18N_DOMAIN);?>" class="mailusers-select" name="send_targets[]" multiple="yes" size="8" style="width: 250px; height: 250px;">
                 <?php 
 
                     $prefix = __('Filter', MAILUSERS_I18N_DOMAIN) ;
@@ -299,7 +299,7 @@ endif;
                 ?>
                 </select> 
 
-                <select name="send_users[]" multiple="yes" size="8" style="width: 400px; height: 250px;">
+                <select data-placeholder="<?php _e('Choose User Recipients ...', MAILUSERS_I18N_DOMAIN);?>" class="mailusers-select" name="send_users[]" multiple="yes" size="8" style="width: 400px; height: 250px;">
                 <?php 
                     //  Display of users is based on plugin setting
                     $na = __('N/A', MAILUSERS_I18N_DOMAIN);

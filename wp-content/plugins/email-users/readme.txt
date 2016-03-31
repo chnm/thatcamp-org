@@ -3,8 +3,8 @@ Contributors: vprat, mpwalsh8, marvinlabs
 Donate link: http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/
 Tags: email, users, list, admin
 Requires at least: 3.6.1
-Tested up to: 4.3.1
-Stable tag: 4.7.10
+Tested up to: 4.4.1
+Stable tag: 4.8.1
 License: GPL
 
 == Description ==
@@ -220,6 +220,18 @@ function update_publicworks_meta_filter()
 `
 
 == Changelog ==
+
+= Version 4.8.1 =
+* Added option to disabled jQuery enhanced recipient selection (revert to classic select boxes).
+* Removed leftover debug code which left information in the error_log.
+* Updated translation files with missing text.
+
+= Version 4.8.0 =
+* Integrated jQuery Chosen plugin to enhance select lists when choosing recipients.
+* Added Danish translation (thank you Thomas Canell)
+* Added BCC options of 2, 3, and 5 for more granular control.
+* Added new example (remove_menus.php) to show how to remove the Email Users Dashboard menu for all users but Administrators.
+* Fixed broken links referring to Marvin Labs.
 
 = Version 4.7.10 =
 * Added new setting to control applying post content with wpautop prior to seending an update to th team.

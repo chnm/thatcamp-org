@@ -78,7 +78,7 @@
 		<table class="form-table" width="100%" cellspacing="2" cellpadding="5">
 		<tr>
 			<th scope="row" valign="top"><?php _e('Mail format', MAILUSERS_I18N_DOMAIN); ?></th>
-			<td><select name="mail_format" style="width: 158px;">
+			<td><select class="mailusers-select" name="mail_format" style="width: 158px;">
 				<option value="html" <?php if ($mail_format=='html') echo 'selected="selected"'; ?>><?php _e('HTML', MAILUSERS_I18N_DOMAIN); ?></option>
 				<option value="plaintext" <?php if ($mail_format=='plaintext') echo 'selected="selected"'; ?>><?php _e('Plain text', MAILUSERS_I18N_DOMAIN); ?></option>
 			</select></td>
@@ -98,7 +98,7 @@
 			<br/><br/>
 			<small><?php _e('Only the groups having at least one user that accepts group mails appear here.', MAILUSERS_I18N_DOMAIN); ?></small></label></th>
 			<td>
-				<select id="send_targets" name="send_targets[]" multiple="multiple" size="8" style="width: 654px; height: 250px;">
+                <select data-placeholder="<?php _e('Choose Group Recipients ...', MAILUSERS_I18N_DOMAIN);?>" class="mailusers-select" id="send_targets" name="send_targets[]" multiple="multiple" size="8" style="width: 654px; height: 250px;">
                 <?php 
 
                     $prefix = __('Filter', MAILUSERS_I18N_DOMAIN) ;
