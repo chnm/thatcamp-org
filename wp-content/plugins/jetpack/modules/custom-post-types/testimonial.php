@@ -86,6 +86,9 @@ class Jetpack_Testimonial {
 
 			// Add to Dotcom XML sitemaps
 			add_filter( 'wpcom_sitemap_post_types',                                    array( $this, 'add_to_sitemap' ) );
+		} else {
+			// Add to Jetpack XML sitemap
+			add_filter( 'jetpack_sitemap_post_types',                                  array( $this, 'add_to_sitemap' ) );
 		}
 
 		// Adjust CPT archive and custom taxonomies to obey CPT reading setting
@@ -324,6 +327,7 @@ class Jetpack_Testimonial {
 			'map_meta_cap'    => true,
 			'has_archive'     => true,
 			'query_var'       => 'testimonial',
+			'show_in_rest'    => true,
 		) );
 	}
 
@@ -600,9 +604,13 @@ class Jetpack_Testimonial {
 						// The content
 						if ( false !== $atts['display_content'] ) {
 							if ( 'full' === $atts['display_content'] ) {
-								echo '<div class="testimonial-entry-content">' . the_content() . '</div>';
+							?>
+								<div class="testimonial-entry-content"><?php the_content(); ?></div>
+							<?php
 							} else {
-								echo '<div class="testimonial-entry-content">' . the_excerpt() . '</div>';
+							?>
+								<div class="testimonial-entry-content"><?php the_excerpt(); ?></div>
+							<?php
 							}
 						}
 						?>

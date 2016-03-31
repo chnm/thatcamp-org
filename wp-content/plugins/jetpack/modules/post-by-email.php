@@ -12,16 +12,6 @@
  */
 
 add_action( 'jetpack_modules_loaded', array( 'Jetpack_Post_By_Email', 'init' ) );
-
-Jetpack_Sync::sync_options( __FILE__,
-	'large_size_w',
-	'large_size_h',
-	'thumbnail_size_w',
-	'thumbnail_size_h',
-	'medium_size_w',
-	'medium_size_h'
-);
-
 add_action( 'jetpack_activate_module_post-by-email',   array( 'Jetpack_Post_By_Email', 'module_toggle' ) );
 add_action( 'jetpack_deactivate_module_post-by-email', array( 'Jetpack_Post_By_Email', 'module_toggle' ) );
 
@@ -114,7 +104,7 @@ class Jetpack_Post_By_Email {
 					<div id="jp-pbe-info"<?php echo $info_hidden; ?>>
 						<p id="jp-pbe-email-wrapper">
 							<input type="text" id="jp-pbe-email" value="<?php echo esc_attr( $email ); ?>" readonly="readonly" class="regular-text" />
-							<span class="description"><a target="_blank" href="http://jetpack.me/support/post-by-email/"><?php esc_html_e( 'More information', 'jetpack' ); ?></a></span>
+							<span class="description"><a target="_blank" href="http://jetpack.com/support/post-by-email/"><?php esc_html_e( 'More information', 'jetpack' ); ?></a></span>
 						</p>
 						<p>
 							<input type="button" name="jp-pbe-regenerate" id="jp-pbe-regenerate" class="button" value="<?php esc_attr_e( 'Regenerate Address', 'jetpack' ); ?> " />

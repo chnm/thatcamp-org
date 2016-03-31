@@ -772,17 +772,6 @@ ul#adminmenu a.toplevel_page_jetpack:after {
   max-width: 600px;
 }
 
-.flyby {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-@media (max-width: 900px) {
-  .flyby {
-    display: none;
-  }
-}
-
 .flyer {
   position: absolute;
   bottom: -200px;
@@ -1818,7 +1807,10 @@ ul#adminmenu a.toplevel_page_jetpack:after {
   margin-top: 15px;
   display: none;
 }
-.jetpack-message h4 {
+.jetpack-message .squeezer h2 {
+  font-size: 1em;
+}
+.jetpack-message h2 {
   color: #fff;
   margin: 0;
 }
@@ -2082,6 +2074,10 @@ ul#adminmenu a.toplevel_page_jetpack:after {
 
 .jetpack-modules #site-icon-deprecated .info:before {
   content: '\f475';
+}
+
+.jetpack-modules #sitemaps .info a:before {
+  content: '\f507';
 }
 
 @media (max-width: 782px) {
@@ -3079,57 +3075,6 @@ a.what-is-primary {
   display: inline-block;
 }
 
-.miguel {
-  display: none;
-  position: fixed;
-  opacity: .35;
-  bottom: -200px;
-  left: 0;
-  z-index: 1;
-  -webkit-animation: miguel 3.4s 0s ease-in-out;
-  animation: miguel 3.4s 0s ease-in-out;
-}
-
-.miguel:nth-child(2) {
-  left: 49%;
-  width: 120px;
-  height: 131px;
-  -webkit-animation-duration: 2.4s;
-  animation-duration: 2.4s;
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-}
-
-.miguel:nth-child(3) {
-  left: 23%;
-  width: 60px;
-  height: 66px;
-  -webkit-animation-duration: 4.5s;
-  animation-duration: 4.5s;
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-}
-
-@-webkit-keyframes "miguel" {
-  0% {
-    -webkit-transform: translate3d(0px, 0px, 0px);
-    transform: translate3d(0px, 0px, 0px);
-  }
-  100% {
-    -webkit-transform: translate3d(900px, -900px, 0px);
-    transform: translate3d(900px, -900px, 0px);
-  }
-}
-@keyframes "miguel" {
-  0% {
-    -webkit-transform: translate3d(0px, 0px, 0px);
-    transform: translate3d(0px, 0px, 0px);
-  }
-  100% {
-    -webkit-transform: translate3d(900px, -900px, 0px);
-    transform: translate3d(900px, -900px, 0px);
-  }
-}
 .nux-intro h3 {
   background: #81a844;
   color: #fff;
@@ -3330,9 +3275,15 @@ a.what-is-primary {
     border-top: 1px #f9f9f9 solid;
   }
 }
+.nux-foot .actions {
+  margin-top: 1em;
+}
+.nux-foot a {
+  text-decoration: underline;
+}
 .nux-foot img {
-  float: left;
-  margin-right: 1em;
+  float: right;
+  margin-left: 1em;
   width: 75px;
   border-radius: 4px;
 }
@@ -3351,8 +3302,11 @@ a.what-is-primary {
   margin-bottom: 0;
 }
 .nux-foot ul li {
+  margin-right: .875em;
   margin-bottom: 0;
   line-height: 175%;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .form-toggle[type="checkbox"] {
@@ -3495,11 +3449,6 @@ a.what-is-primary {
 
   .nux-foot .j-col {
     border: none;
-  }
-  .nux-foot img {
-    float: right;
-    margin-right: 0;
-    margin-left: 1em;
   }
 }
 @media (max-width: 900px) {

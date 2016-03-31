@@ -18,6 +18,15 @@ class Publicize_UI {
 
 		$this->publicize = $publicize = new Publicize;
 
+		add_action( 'init', array( $this, 'init' ) );
+	}
+
+	function init() {
+		// Show only to users with the capability required to manage their Publicize connections.
+		if ( ! current_user_can( 'publish_posts' ) ) {
+			return;
+		}
+
 		// assets (css, js)
 		add_action( 'load-settings_page_sharing', array( &$this, 'load_assets' ) );
 		add_action( 'admin_head-post.php', array( &$this, 'post_page_metabox_assets' ) );
@@ -121,7 +130,7 @@ class Publicize_UI {
 
 			<?php
 			if ( $this->in_jetpack ) {
-				$doc_link = "http://jetpack.me/support/publicize/";
+				$doc_link = "http://jetpack.com/support/publicize/";
 			} else {
 				$doc_link = "http://en.support.wordpress.com/publicize/";
 			}
@@ -285,7 +294,7 @@ class Publicize_UI {
 
 	/**
 	* CSS for styling the publicize message box and counter that displays on the post page.
-	* There is also some Javascript for length counting and some basic display effects.
+	* There is also some JavaScript for length counting and some basic display effects.
 	*/
 	function post_page_metabox_assets() {
 		global $post;

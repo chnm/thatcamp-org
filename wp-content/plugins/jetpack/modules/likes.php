@@ -19,7 +19,7 @@ Jetpack::dns_prefetch( array(
 ) );
 
 class Jetpack_Likes {
-	public $version = '20141028';
+	public $version = '20151215';
 
 	public static function init() {
 		static $instance = NULL;
@@ -939,7 +939,7 @@ class Jetpack_Likes {
 
 		$_locale = get_locale();
 
-		// We have to account for WP.org vs WP.com locale divergence
+		// We have to account for w.org vs WP.com locale divergence
 		if ( $this->in_jetpack ) {
 			if ( ! defined( 'JETPACK__GLOTPRESS_LOCALES_PATH' ) || ! file_exists( JETPACK__GLOTPRESS_LOCALES_PATH ) ) {
 				return false;
@@ -1022,9 +1022,16 @@ class Jetpack_Likes {
 	function is_likes_visible() {
 
 		global $post, $wp_current_filter;              // Used to apply 'sharing_show' filter
+		// @todo: Remove this block when 4.5 is the minimum
+		global $wp_version;
+		$comment_popup = false;
+		if ( version_compare( $wp_version, '4.5-alpha', '<=' ) ) {
+			$comment_popup = is_comments_popup();
+		}
+		// End 4.5 conditional block.
 
 		// Never show on feeds or previews
-		if ( is_feed() || is_preview() || is_comments_popup() ) {
+		if ( is_feed() || is_preview() || $comment_popup ) { // @todo: Remove $comment_popup when 4.5 is minimum.
 			$enabled = false;
 
 		// Not a feed or preview, so what is it?

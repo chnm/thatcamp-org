@@ -65,6 +65,14 @@ class Jetpack_Portfolio {
 		add_shortcode( 'portfolio',                                                    array( $this, 'portfolio_shortcode' ) );
 		add_shortcode( 'jetpack_portfolio',                                            array( $this, 'portfolio_shortcode' ) );
 
+		if ( defined( 'IS_WPCOM' ) && IS_WPCOM ) {
+			// Add to Dotcom XML sitemaps
+			add_filter( 'wpcom_sitemap_post_types',                                    array( $this, 'add_to_sitemap' ) );
+		} else {
+			// Add to Jetpack XML sitemap
+			add_filter( 'jetpack_sitemap_post_types',                                  array( $this, 'add_to_sitemap' ) );
+		}
+
 		// Adjust CPT archive and custom taxonomies to obey CPT reading setting
 		add_filter( 'pre_get_posts',                                                   array( $this, 'query_reading_setting' ) );
 
@@ -235,6 +243,7 @@ class Jetpack_Portfolio {
 				'title',
 				'editor',
 				'thumbnail',
+				'author',
 				'comments',
 				'publicize',
 				'wpcom-markdown',
@@ -254,6 +263,7 @@ class Jetpack_Portfolio {
 			'taxonomies'      => array( self::CUSTOM_TAXONOMY_TYPE, self::CUSTOM_TAXONOMY_TAG ),
 			'has_archive'     => true,
 			'query_var'       => 'portfolio',
+			'show_in_rest'    => true,
 		) );
 
 		register_taxonomy( self::CUSTOM_TAXONOMY_TYPE, self::CUSTOM_POST_TYPE, array(
@@ -389,6 +399,15 @@ class Jetpack_Portfolio {
 	}
 
 	/**
+	 * Add CPT to Dotcom sitemap
+	 */
+	function add_to_sitemap( $post_types ) {
+		$post_types[] = self::CUSTOM_POST_TYPE;
+
+		return $post_types;
+	}
+
+	/**
 	 * Our [portfolio] shortcode.
 	 * Prints Portfolio data styled to look good on *any* theme.
 	 *
@@ -400,6 +419,7 @@ class Jetpack_Portfolio {
 			'display_types'   => true,
 			'display_tags'    => true,
 			'display_content' => true,
+			'display_author'  => false,
 			'show_filter'     => false,
 			'include_type'    => false,
 			'include_tag'     => false,
@@ -416,6 +436,10 @@ class Jetpack_Portfolio {
 
 		if ( $atts['display_tags'] && 'true' != $atts['display_tags'] ) {
 			$atts['display_tags'] = false;
+		}
+
+		if ( $atts['display_author'] && 'true' != $atts['display_author'] ) {
+			$atts['display_author'] = false;
 		}
 
 		if ( $atts['display_content'] && 'true' != $atts['display_content'] && 'full' != $atts['display_content'] ) {
@@ -563,6 +587,10 @@ class Jetpack_Portfolio {
 						if ( false != $atts['display_tags'] ) {
 							echo self::get_project_tags( $post_id );
 						}
+
+						if ( false != $atts['display_author'] ) {
+							echo self::get_project_author( $post_id );
+						}
 						?>
 						</div>
 
@@ -572,11 +600,16 @@ class Jetpack_Portfolio {
 				// The content
 				if ( false !== $atts['display_content'] ) {
 					if ( 'full' === $atts['display_content'] ) {
-						echo '<div class="portfolio-entry-content">' . the_content() . '</div>';
+					?>
+						<div class="portfolio-entry-content"><?php the_content(); ?></div>
+					<?php
 					} else {
-						echo '<div class="portfolio-entry-content">' . the_excerpt() . '</div>';
+					?>
+						<div class="portfolio-entry-content"><?php the_excerpt(); ?></div>
+					<?php
 					}
-				} ?>
+				}
+				?>
 				</div><!-- close .portfolio-entry -->
 				<?php $portfolio_index_number++;
 			} // end of while loop
@@ -702,6 +735,23 @@ class Jetpack_Portfolio {
 			$tags[] = '<a href="' . esc_url( $project_tag_link ) . '" rel="tag">' . esc_html( $project_tag->name ) . '</a>';
 		}
 		$html .= ' '. implode( ', ', $tags );
+		$html .= '</div>';
+
+		return $html;
+	}
+
+	/**
+	 * Displays the author of the current portfolio project.
+	 *
+	 * @return html
+	 */
+	static function get_project_author() {
+		$html = '<div class="project-author">';
+		/* translators: %1$s is link to author posts, %2$s is author display name */
+		$html .= sprintf( __( '<span>Author:</span> <a href="%1$s">%2$s</a>', 'jetpack' ),
+			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+			esc_html( get_the_author() )
+		);
 		$html .= '</div>';
 
 		return $html;

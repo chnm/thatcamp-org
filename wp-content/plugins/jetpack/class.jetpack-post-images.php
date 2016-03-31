@@ -209,7 +209,13 @@ class Jetpack_PostImages {
 
 			$too_big = ( ( ! empty( $meta['width'] ) && $meta['width'] > 1200 ) || ( ! empty( $meta['height'] ) && $meta['height'] > 1200 ) );
 
-			if ( $too_big ) {
+			if (
+				$too_big &&
+				(
+					( method_exists( 'Jetpack', 'is_module_active' ) && Jetpack::is_module_active( 'photon' ) ) ||
+					( defined( 'WPCOM' ) && IS_WPCOM )
+				)
+			) {
 				$img_src = wp_get_attachment_image_src( $thumb, array( 1200, 1200 ) );
 			} else {
 				$img_src = wp_get_attachment_image_src( $thumb, 'full' );
@@ -226,6 +232,29 @@ class Jetpack_PostImages {
 				'href'       => get_permalink( $thumb ),
 			) );
 		}
+
+		if ( empty( $images ) && ( defined( 'IS_WPCOM' ) && IS_WPCOM ) ) {
+			$meta_thumbnail = get_post_meta( $post_id, '_jetpack_post_thumbnail', true );
+			if ( ! empty( $meta_thumbnail ) ) {
+				if ( ! isset( $meta_thumbnail['width'] ) || $meta_thumbnail['width'] < $width ) {
+					return $images;
+				}
+
+				if ( ! isset( $meta_thumbnail['height'] ) || $meta_thumbnail['height'] < $height ) {
+					return $images;
+				}
+
+				$images = array( array( // Other methods below all return an array of arrays
+					'type'       => 'image',
+					'from'       => 'thumbnail',
+					'src'        => $meta_thumbnail['URL'],
+					'src_width'  => $meta_thumbnail['width'],
+					'src_height' => $meta_thumbnail['height'],
+					'href'       => $meta_thumbnail['URL'],
+				) );
+			}
+		}
+
 		return $images;
 	}
 
