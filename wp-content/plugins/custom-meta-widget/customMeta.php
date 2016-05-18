@@ -2,7 +2,7 @@
 Plugin Name: Custom Meta Widget
 Plugin URI: http://shinraholdings.com/plugins/custom-meta-widget/
 Description: Clone of the standard Meta widget with options to hide thlogin, admin, entry and comment feed, WordPress.org and /custom links.
-Version: 1.4.7
+Version: 1.4.8
 Author: bitacre
 Author URI: http://shinraholdings.com/
 License: GPLv2
@@ -21,16 +21,19 @@ var $homepage = 'http://shinraholdings.com/plugins/custom-meta-widget/';
 
 /**
  * CONSTRUCTOR
+ *
+ * Thank you to dsmiller for fixing the deprecated constructor
+ * https://wordpress.org/support/topic/updated-constructor?replies=4#post-8147479 
  */
-function customMetaWidget() {	
+function __construct() {
 	// set widget options
 	$widget_ops = array ( 
 		'classname' => 'customMetaWidget',
 		'description' => __( 'Hide the individual log in/out, admin, feed and WordPress links', 'customMetaWidget' )
-	); 
-	
+	);
+
 	// extend widget
-	$this->WP_Widget( 'customMetaWidget', 'Custom Meta', $widget_ops );
+	parent::__construct( 'customMetaWidget', __('Custom Meta', 'customMetaWidget'), $widget_ops );
 }
 
 

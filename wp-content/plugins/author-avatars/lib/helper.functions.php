@@ -1,5 +1,5 @@
 <?php
-if ( ! function_exists( 'AA_is_wpmu' ) ):
+if ( ! function_exists( 'AA_is_wpmu' ) ) :
 	/**
 	 * Helper function which checks whether we are running wpmu
 	 *
@@ -37,7 +37,7 @@ if ( ! function_exists( 'AA_is_version' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'AA_is_bp' ) ):
+if ( ! function_exists( 'AA_is_bp' ) ) :
 	/**
 	 * Helper function which checks whether we are running buddypress
 	 *
@@ -49,7 +49,7 @@ if ( ! function_exists( 'AA_is_bp' ) ):
 	}
 endif;
 
-if ( ! function_exists( 'AA_is_bbpress' ) ):
+if ( ! function_exists( 'AA_is_bbpress' ) ) :
 	/**
 	 * Helper function which checks whether we are running buddypress
 	 *
@@ -85,7 +85,7 @@ if ( ! function_exists( 'AA_in_arrayi' ) ):
 		return false;
 	}
 endif;
-if ( ! function_exists( 'AA_array_in_array' ) ):
+if ( ! function_exists( 'AA_array_in_array' ) ) :
 	/**
 	 * A simple function to type less when wanting to check if any one of many
 	 * values is in a single array.
@@ -111,7 +111,7 @@ if ( ! function_exists( 'AA_array_in_array' ) ):
 	}
 endif;
 
-if ( ! function_exists( 'AA_atrim' ) ):
+if ( ! function_exists( 'AA_atrim' ) ) :
 	/**
 	 * A simple implementation of "array_slice()" which preserves array keys.
 	 *
@@ -131,7 +131,7 @@ if ( ! function_exists( 'AA_atrim' ) ):
 	}
 endif;
 
-if ( ! function_exists( 'AA_is_super_admin' ) ):
+if ( ! function_exists( 'AA_is_super_admin' ) ) :
 	/**
 	 * Implementation of the function "AA_is_super_admin" if it doesn't not exists.
 	 * Needed for support of wordpress versions < 3.0.
@@ -156,12 +156,14 @@ if ( ! function_exists( 'AA_is_super_admin' ) ):
 endif;
 
 if ( ! function_exists( 'AA_donateButton' ) ):
+
 	/**
 	 * Donation button code
 	 *
-	 * @param string $type Optional. Size / type of output, defaults is small
-	 * @param boolean $print Optional. To return a string or echo/print the output, default is false
+	 * @param string $type
+	 * @param bool   $print
 	 *
+	 * @return string
 	 */
 	function AA_donateButton( $type = 'small', $print = false ) {
 

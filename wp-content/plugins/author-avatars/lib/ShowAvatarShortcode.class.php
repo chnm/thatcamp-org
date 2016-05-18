@@ -8,7 +8,7 @@ class ShowAvatarShortcode {
 	/**
 	 * Constructor
 	 */
-	function ShowAvatarShortcode() {
+	function __construct() {
 		$this->register();
 		require_once( 'UserList.class.php' );
 		$this->userlist = new UserList();

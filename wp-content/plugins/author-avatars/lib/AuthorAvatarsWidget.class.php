@@ -43,7 +43,7 @@ class AuthorAvatarsWidget extends WP_Widget {
 	/**
 	 * Widget initialisation
 	 */
-	function AuthorAvatarsWidget() {
+	function __construct() {
 
 
 		$this->_setDefaults();

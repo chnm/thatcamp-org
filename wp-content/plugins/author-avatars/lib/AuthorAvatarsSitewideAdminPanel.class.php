@@ -14,7 +14,7 @@ class AuthorAvatarsSitewideAdminPanel {
 	/**
 	 * Constructor
 	 */
-	function AuthorAvatarsSitewideAdminPanel() {
+	function __construct() {
 		// only init on wpmu sites...
 		if ( AA_is_wpmu() ) {
 			$this->init();

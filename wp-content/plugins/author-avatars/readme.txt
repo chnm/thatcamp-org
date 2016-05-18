@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=MZTZ5
 Tags: Avatar, Author, BuddyPress, xprofile, Comment, Editor, Image, Multisite, Photo, Picture, Profile, Shortcode, Random, Sidebar, Thumbnail, User, Widget, Wpmu, BBPress, co-authors
 Requires at least: 3.0
 Tested up to: 4.4
-Stable tag: 1.9.5
+Stable tag: 1.9.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,13 +12,15 @@ Display lists of user avatars using widgets or shortcodes.
 
 == Description ==
 
-This plugin makes it easy to *display lists of user avatars* on your (multiuser) blog. It also allows to *insert single avatars* for blog users or any email address into a post or page. (Great for displaying an image of someone you're talking about.)
+This plugin makes it easy to *display lists of user avatars*, grouped by user roles, on your (multiuser) site. It also allows you to *insert single avatars* for blog users or any email address into a post or page - great for displaying an image of someone you're talking about.
+
+It makes use of built in WordPress (core) functions to retrieve user information and get avatars.
 
 Avatar lists can be inserted into your sidebar by adding a widget or into posts/pages by using a [shortcode](http://authoravatars.wordpress.com/documentation/authoravatars-shortcode/). The plugin comes with a tinymce editor plugin which makes inserting shortcodes very easy.
 
 Please help with the plugin Translations at https://translate.wordpress.org/projects/wp-plugins/author-avatars.
 
-Both shortcode and widget can be configured to...
+Both the shortcode and widget can be configured to:
 
 *   Show a custom title (widget only)
 *   Only show specific user groups and/or hide certain users
@@ -27,23 +29,18 @@ Both shortcode and widget can be configured to...
 *   Adjust the size of user avatars
 *   Optionally show a user's name or biography
 *   Show users from the current blog, all blogs or a selection of blogs (on WPMU/Multisite)
-*   Group users by their blog (when showing from multiple blogs), and show the blog name above each grouping (experimental feature).
-*	Supports users from co-authors, Ultimate Member, BBpress and BudyPress
+*   Group users by their blog (when showing from multiple blogs), and show the blog name above each grouping.
+*   Support users from Co-Author Plus, Ultimate Member, BBpress and BuddyPress (xprofile)
+*   Limit the number of avatars per page for large sets by adding a page_size to the shortcode e.g. "page_size=30" (shortcode only)
 
-* the shortcode can page the avatars for large sets add a page_size to the shortcode e.g. "page_size=30"
-
-The plugin makes use of built in wordpress (core) functions to retrieve user information and get avatars.
-
-The Plug-in can show users from bb-press, Budy-press (xprofile) and Co-Author Plus Plug-in
-
-Single user avatars can be inserted using the [show_avatar shortcode](http://authoravatars.wordpress.com/documentation/show_avatar-shortcode/) and configured to...
+Additionaly, single user avatars can be inserted using the [show_avatar shortcode](http://authoravatars.wordpress.com/documentation/show_avatar-shortcode/) and configured to:
 
 *   Adjust the size of the user avatar.
 *   Align the avatar left, centered or right.
 
 Please report bugs and provide feedback in the [wordpress support forum](http://wordpress.org/tags/author-avatars?forum_id=10#postform).
 
-**Plugin support:** As of April 2011, Ben is stepping down as maintainer and handing over ownership to Paul Bearne, who will provide support and drive the development of new features.
+**Plugin support:** In 2011, Ben stepped down as maintainer of the Plugin, handing over ownership to co-author Paul Bearne, who continues to provide support and drive the development of new features.
 
 == Installation ==
 
@@ -70,11 +67,15 @@ If you have added CSS to your theme you may have to update it for this upgrade (
 
 == Changelog ==
 
+= 1.9.6 =
+readme update
+removed php 4 constructors
+
 = 1.9.5 =
 Added sorting by white list values
 
 = 1.9.4 =
-Added White list for users
+Added white list for users
 
 = 1.9.3 =
 renamed function causing redeclare error
@@ -88,7 +89,7 @@ fixed problem with WP 4.4 and widgets not saving
 Add help translate link
 
 = 1.8.8 =
-set the page count to strat at 1 not 0
+set the page count to start at 1 not 0
 Added support for UM profiles links
 
 
@@ -342,7 +343,7 @@ You can find a [tutorial](http://codex.wordpress.org/Author_Templates) on Author
 
 = Can I use html in user biographies? =
 
-Wordpress Core unforunately strips all html from the user biography field when entered. Install the plugin [Weasel's HTML Bios](http://wordpress.org/extend/plugins/weasels-html-bios/) if you want to use html...
+Wordpress Core unfortunately strips all html from the user biography field when entered. Install the plugin [Weasel's HTML Bios](http://wordpress.org/extend/plugins/weasels-html-bios/) if you want to use html...
 
 = How can I change the styling of the avatar lists? =
 

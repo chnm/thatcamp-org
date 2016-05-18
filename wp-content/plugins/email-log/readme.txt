@@ -2,8 +2,8 @@
 Contributors: sudar  
 Tags: email, log, multisite  
 Requires at least: 3.3  
-Tested up to: 4.4  
-Stable tag: 1.8.1  
+Tested up to: 4.5  
+Stable tag: 1.8.2  
 
 Logs every email sent through WordPress. Works with WordPress Multisite as well
 
@@ -120,6 +120,10 @@ wpmandrill plugin has a bug that prevents this plugin from logging the content o
 
 This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/wp-readme'>wp-readme</a>, which generates readme files for WordPress Plugins.
 == Changelog ==
+
+= v1.8.2 (2016-04-20) - (Dev time: 1 hour) =
+- Tweak: Log all emails from the TO field. Earlier the plugin was logging only the first email
+- Fix: Fixed issues in parsing reply-to and content-type headers
 
 = v1.8.1 (2015-12-27) - (Dev time: 0.5 hour) =
 - Fix: Fixed the "Delete All Logs" issue that was introduced in v1.8
@@ -239,6 +243,9 @@ This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/
 - Initial Release
 
 == Upgrade Notice ==
+
+= 1.8.2 =
+Added the ability to log all emails in the TO field instead of just the first one
 
 = 1.8.1 =
 Fixed issue with "Delete All Logs" action that was introduced in v1.8

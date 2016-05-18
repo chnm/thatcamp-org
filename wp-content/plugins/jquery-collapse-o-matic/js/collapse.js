@@ -1,8 +1,8 @@
 /*!
- * Collapse-O-Matic JavaSctipt v1.6.0
+ * Collapse-O-Matic JavaSctipt v1.6.2
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
- * Copyright 2015, Twinpictures
+ * Copyright 2016, Twinpictures
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,16 +48,25 @@ function collapse_init() {
 }
 
 function swapTitle(origObj, swapObj){
-	var orightml = jQuery(origObj).html();
-	var swaphtml = jQuery(swapObj).html();
+	if(jQuery(origObj).prop("tagName") == 'IMG'){
+		var origsrc = jQuery(origObj).prop('src');
+		var swapsrc = jQuery(swapObj).prop('src');
 
-	jQuery(origObj).html(swaphtml);
-	jQuery(swapObj).html(orightml);
+		jQuery(origObj).prop('src',swapsrc);
+		jQuery(swapObj).prop('src',origsrc);
+	}
+	else{
+		var orightml = jQuery(origObj).html();
+		var swaphtml = jQuery(swapObj).html();
 
-	//is cufon involved? if so, do that thing
-	if(swaphtml.indexOf("<cufon") != -1){
-		var trigelem = jQuery(this).get(0).tagName;
-		Cufon.replace(trigelem);
+		jQuery(origObj).html(swaphtml);
+		jQuery(swapObj).html(orightml);
+
+		//is cufon involved? if so, do that thing
+		if(swaphtml.indexOf("<cufon") != -1){
+			var trigelem = jQuery(this).get(0).tagName;
+			Cufon.replace(trigelem);
+		}
 	}
 }
 
@@ -451,6 +460,10 @@ jQuery(document).ready(function() {
 			var rel = jQuery(this).attr('rel');
 			var loop_items = jQuery('.collapseomatic:not(.colomat-close)[rel="' + rel +'"]');
 		}
+		else if(jQuery(this).attr('data-togglegroup') !== undefined){
+			var toggroup = jQuery(this).attr('data-togglegroup');
+			var loop_items = jQuery('.collapseomatic:not(.colomat-close)[data-togglegroup="' + toggroup +'"]');
+		}
 		else{
 			var loop_items = jQuery('.collapseomatic:not(.colomat-close)');
 		}
@@ -462,6 +475,10 @@ jQuery(document).ready(function() {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
 			var loop_items = jQuery('.collapseomatic.colomat-close[rel="' + rel +'"]');
+		}
+		else if(jQuery(this).attr('data-togglegroup') !== undefined){
+			var toggroup = jQuery(this).attr('data-togglegroup');
+			var loop_items = jQuery('.collapseomatic.colomat-close[data-togglegroup="' + toggroup +'"]');
 		}
 		else {
 			var loop_items = jQuery('.collapseomatic.colomat-close');

@@ -4,7 +4,7 @@ Plugin Name: amr shortcode any widget
 Plugin URI: http://webdesign.anmari.com/shortcode-any-widget/
 Description: Include any widget in a page for any theme.  [do_widget widgetname ] or  [do_widget "widget name" ] [do_widget id=widgetnamedashed-n ]or include a whole widget area [do_widget_area]. Please read: <a href="https://wordpress.org/plugins/amr-shortcode-any-widget/installation/">Installation</a> and <a href="https://wordpress.org/plugins/amr-shortcode-any-widget/faq/">FAQ</a>.
 Author: anmari
-Version: 3.2
+Version: 3.3
 Author URI: http://webdesign.anmari.com
 
 */
@@ -19,7 +19,6 @@ function amr_spice_get_widget_id($widget_instance) {
        echo "[do_widget id=".$widget_instance->id. "]</p>";
     }
 }
-
 
 function amr_remove_widget_class($params) {  // remove the widget classes
 	if (!empty($params[0]['before_widget'])) {
@@ -359,9 +358,9 @@ include ('amr-utilities.php');
 if (is_admin() )  $amr_saw_plugin_admin = new amr_saw_plugin_admin();  
 
 add_action('widgets_init', 		'amr_reg_sidebar',98);   // register late so it appears last
-//add_action('widgets_init', 		'amr_upgrade_sidebar',99);  // copy old shortcodes sidebar to new one if necessary
-//add_action('switch_theme', 		'amr_save_shortcodes_sidebar'); 
-//add_action('after_switch_theme','amr_restore_shortcodes_sidebar');
+
+add_action('switch_theme', 			'amr_save_shortcodes_sidebar'); 
+add_action('after_switch_theme',	'amr_restore_shortcodes_sidebar');
 
 add_shortcode('do_widget', 		'amr_do_widget');
 add_shortcode('do_widget_area', 'amr_do_widget_area');  // just dump the whole widget area - to get same styling

@@ -1,8 +1,8 @@
 === amr shortcode any widget ===
 Contributors: anmari
 Tags: shortcode, widget, page, templates, page template, widget_area, sidebar
-Tested up to: 4.4.1
-Version: 3.2
+Tested up to: 4.5
+Version: 3.3
 Stable tag: trunk
 
 == Description ==
@@ -11,7 +11,7 @@ Insert a widget or multiple widgets or a entire widget area (sidebar) into a pag
 Set up your widget first in a normal sidebar.  Check it works. 
 THEN Drag your chosen widgets to the sidebar called "widgets for shortcode".   
 
-Add the do_widget shortcode to the page where you would like the widget to appear.
+Add the do_widget shortcode to the page where you would like the widget to appear (or the do_widget_area)
 
 Using a widget more than once? 
 
@@ -160,6 +160,10 @@ If you only using widget, maybe inserting the whole sidebar or widgertarea would
 
 
 == Changelog ==
+= Version 3.3 =
+*   Retested on wordpres 4.5 and 4.5.1-alpha
+*   Re-instated the saving of widgets in the shortcode sidebar on theme switch and the reloading of these saved widgets when theme is reactivated (Was commented out for awhile back in 2014, but appears to be working well and very useful when you changing a theme but maybe forgotten about this page that has widget on it - yeah that could be bad !
+
 
 = Version 3.2 =
 *  tweaked some error messages and handle situation better where there are no widgets or possibly empty sidebars.

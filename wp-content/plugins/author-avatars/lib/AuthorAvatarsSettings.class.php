@@ -32,14 +32,14 @@ class AuthorAvatarsSettings {
 	 *
 	 * @access protected
 	 */
-	function AuthorAvatarsSettings() {
-		$this->_setDefaults();
+	function __construct() {
+		$this->_set_defaults();
 	}
 
 	/**
 	 * Initialise computed default values which cannot be set on the class field above.
 	 */
-	function _setDefaults() {
+	function _set_defaults() {
 		// blog filters only enabled for the root blog
 		$this->defaults_sitewide['blog_filters_enabled'] = defined( 'BLOGID_CURRENT_SITE' ) ? array( BLOGID_CURRENT_SITE ) : array( 1 );
 
@@ -54,7 +54,7 @@ class AuthorAvatarsSettings {
 	static function &get_instance() {
 		static $instance = null;
 
-		if ( $instance === null ) {
+		if ( null === $instance ) {
 			$c        = __CLASS__;
 			$instance = new $c;
 		}
@@ -160,6 +160,8 @@ class AuthorAvatarsSettings {
 
 		// save to database
 		update_option( 'author_avatars_settings', $settings );
+
+		return true;
 	}
 
 	/**

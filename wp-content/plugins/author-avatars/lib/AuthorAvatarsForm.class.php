@@ -28,7 +28,7 @@ class AuthorAvatarsForm {
 	/**
 	 * Constructor
 	 */
-	function AuthorAvatarsForm() {
+	function __construct() {
 		require_once( 'AAFormHelper.class.php' );
 		$this->settings = AA_settings();
 		$this->tabs     = array();

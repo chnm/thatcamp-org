@@ -5,7 +5,7 @@
  * Description: Logs every email sent through WordPress
  * Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
  * Author: Sudar
- * Version: 1.8.1
+ * Version: 1.8.2
  * Author URI: http://sudarmuthu.com/
  * Text Domain: email-log
  * Domain Path: languages/
@@ -47,7 +47,7 @@ class EmailLog {
 
 	private $admin_screen;
 
-	const VERSION                  = '1.8.1';
+	const VERSION                  = '1.8.2';
 	const FILTER_NAME              = 'wp_mail_log';
 	const PAGE_SLUG                = 'email-log';
 	const DELETE_LOG_NONCE_FIELD   = 'sm-delete-email-log-nonce';
@@ -328,7 +328,7 @@ class EmailLog {
 
 		// Log into the database
 		$wpdb->insert( $table_name, array(
-				'to_email'    => is_array( $mail_info['to'] ) ? $mail_info['to'][0] : $mail_info['to'],
+				'to_email'    => is_array( $mail_info['to'] ) ? implode( ',', $mail_info['to'] ) : $mail_info['to'],
 				'subject'     => $mail_info['subject'],
 				'message'     => $message,
 				'headers'     => is_array( $mail_info['headers'] ) ? implode( "\n", $mail_info['headers'] ) : $mail_info['headers'],

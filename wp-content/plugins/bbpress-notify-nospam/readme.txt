@@ -4,11 +4,11 @@ Author URI: http://www.usestrict.net/
 Plugin URI: http://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
-Tested up to: 4.4.2
+Tested up to: 4.5.1
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.10
+Stable tag: 1.11
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
 == Description ==
@@ -22,7 +22,7 @@ This plugin integrates into bbPress and sends a notification via e-mail when new
  * Notification recipients for new replies, 
  * Notification e-mail's subject and body for both new topics and replies
  * Set Background Notifications (to avoid delays in loading pages for large user databases)
- * Extensible through nearly 30 handy filters
+ * Extensible through almost 40 handy actions and filters
 
 <blockquote>
 = Premium Add-Ons =
@@ -65,6 +65,9 @@ the [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out
 
 
 == Changelog ==
+
+= 1.11 =
+* Added: calling set_time_out(0) if doing cron. This should help people who are not getting all mailouts sent due to too many recipients.
 
 = 1.10 =
 * Minor bug fix: [topic-forum] and [reply-forum] tags were missing from list of available tags, although functionality was fine.
@@ -230,6 +233,5 @@ This option can be overridden by using the filter 'bbpnns_handle_mandrill_nl2br'
 
 
 == Upgrade Notice ==
-= 1.9 =
-Version 1.9 comes with a few new filters and actions to make it more versatile to extend.
-It also comes with some performance improvements, like reducing the number of overall DB calls.
+= 1.11 =
+Added code to help stop timeouts during cron for people who have huge recipient lists.

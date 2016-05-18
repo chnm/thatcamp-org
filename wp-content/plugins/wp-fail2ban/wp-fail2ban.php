@@ -3,16 +3,16 @@
  * Plugin Name: WP fail2ban
  * Plugin URI: https://charles.lecklider.org/wordpress/wp-fail2ban/
  * Description: Write all login attempts to syslog for integration with fail2ban.
- * Text Domain: wp-fail2ban 
- * Version: 3.0.0
- * Author: Charles Lecklider 
- * Author URI: https://charles.lecklider.org/ 
- * License: GPL2 
+ * Text Domain: wp-fail2ban
+ * Version: 3.0.1
+ * Author: Charles Lecklider
+ * Author URI: https://charles.lecklider.org/
+ * License: GPL2
  * SPDX-License-Identifier: GPL-2.0
  */
 
 /**
- *  Copyright 2012-16  Charles Lecklider  (email : wordpress@charles.lecklider.org)
+ *  Copyright 2012-15  Charles Lecklider  (email : wordpress@charles.lecklider.org)
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License, version 2, as
@@ -161,10 +161,9 @@ if (!defined('WP_FAIL2BAN')) {
 	add_filter( 'xmlrpc_pingback_error',
 				function($ixr_error)
 				{
-					if ( $ixr_error->code === 48 )
+					if (48 === $ixr_error->code)
 						return $ixr_error;
 					openlog();
 					\syslog(LOG_NOTICE,'Pingback error '.$ixr_error->code.' generated from '.remote_addr());
 				},5);
 }
-

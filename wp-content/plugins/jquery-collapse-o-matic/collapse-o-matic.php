@@ -2,10 +2,9 @@
 /*
 Plugin Name: Collapse-O-Matic
 Text Domain: jquery-collapse-o-matic
-Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.7.0
+Version: 1.7.1
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -30,7 +29,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.7.0';
+	var $version = '1.7.1';
 
 	/**
 	 * Used as prefix for options entry
@@ -59,6 +58,7 @@ class WP_Collapse_O_Matic {
 		'slideEffect' => 'slideFade',
 		'custom_css' => '',
 		'script_check' => '',
+		'css_check' => '',
 		'script_location' => 'footer',
 		'cc_download_key' => '',
 		'cc_email' => '',
@@ -82,7 +82,7 @@ class WP_Collapse_O_Matic {
 		$this->_set_options();
 
 		// load text domain for translations
-		load_plugin_textdomain( 'jquery-collapse-o-matic', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'jquery-collapse-o-matic' );
 
 		//load the script and style if viewing the front-end
 		add_action('wp_enqueue_scripts', array( $this, 'collapsTronicInit' ) );
@@ -130,7 +130,7 @@ class WP_Collapse_O_Matic {
 		if($this->options['script_location'] == 'footer' ){
 			$load_in_footer = true;
 		}
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.6.0', $load_in_footer);
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.6.2', $load_in_footer);
 		if( empty($this->options['script_check']) ){
 			wp_enqueue_script('collapseomatic-js');
 		}
@@ -138,7 +138,9 @@ class WP_Collapse_O_Matic {
 		//css
 		if ($this->options['style'] !== 'none') {
 			wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.6' );
-			wp_enqueue_style( 'collapseomatic-css' );
+			if( empty($this->options['css_check']) ){
+				wp_enqueue_style( 'collapseomatic-css' );
+			}
 		}
 	}
 
@@ -169,6 +171,9 @@ class WP_Collapse_O_Matic {
 		if( !empty($this->options['script_check']) ){
 			wp_enqueue_script('collapseomatic-js');
 		}
+		if( !empty($this->options['css_check']) ){
+			wp_enqueue_style( 'collapseomatic-css' );
+		}
 		//find a random number, if no id is assigned
 		$ran = rand(1, 10000);
 		extract(shortcode_atts(array(
@@ -186,6 +191,8 @@ class WP_Collapse_O_Matic {
 			'targpos' => '',
 			'trigpos' => 'above',
 			'rel' => '',
+			'group' => '',
+			'togglegroup' => '',
 			'expanded' => '',
 			'excerpt' => '',
 			'swapexcerpt' => false,
@@ -200,7 +207,7 @@ class WP_Collapse_O_Matic {
 			'elwrapclass' => '',
 			'filter' => $options['filter_content'],
 			'tabindex' => $options['tabindex']
-		), $atts));
+		), $atts, 'expand'));
 		if(!empty($cid)){
 			$args = array(
 				'post_type'	=> 'expand-element',
@@ -331,6 +338,16 @@ class WP_Collapse_O_Matic {
 		if($rel){
 			$relatt = 'rel="'.$rel.'"';
 		}
+
+		$groupatt = '';
+		//legacy
+		if($group && !$togglegroup){
+			$togglegroup = $group;
+		}
+
+		if($togglegroup){
+			$groupatt = 'data-togglegroup="'.$togglegroup.'"';
+		}
 		$inexatt = '';
 		if(!empty($tabindex) || $tabindex == 0 ){
 			$inexatt = 'tabindex="'.$tabindex.'"';
@@ -353,7 +370,33 @@ class WP_Collapse_O_Matic {
 			$trigclass .= ' scroll-to-trigger';
 			$closeanchor = '<input type="hidden" id="scrollonclose-'.$id.'" name="'.$scrollonclose.'"/>';
 		}
-		$link = $closeanchor.'<'.$tag.' class="collapseomatic '.$trigclass.'" id="'.$id.'" '.$relatt.' '.$inexatt.' '.$altatt.' '.$anchor.'>'.$startwrap.$title.$endwrap.'</'.$tag.'>';
+
+		//deal with image from collapse-commander
+		if( !empty($trigtype) && $trigtype == 'image' && !empty($triggerimage) && strtolower($tag) == 'img' ){
+			$imageclass = 'collapseomatic noarrow' . $trigclass;
+			$image_atts = array( 'id' => $id, 'class' => $imageclass, 'alt' => $alt );
+			if(!$notitle){
+				$image_atts['title'] = $alt;
+			}
+			$link = $closeanchor.wp_get_attachment_image( $triggerimage, 'full', false, $image_atts );
+		}
+		else{
+			if(!empty($trigtype) && $trigtype == 'image' && !empty($triggerimage)){
+				$title =  wp_get_attachment_image( $triggerimage, 'full' );
+			}
+			$link = $closeanchor.'<'.$tag.' class="collapseomatic '.$trigclass.'" id="'.$id.'" '.$relatt.' '.$inexatt.' '.$altatt.' '.$anchor.' '.$groupatt.'>'.$startwrap.$title.$endwrap.'</'.$tag.'>';
+		}
+
+		//swap image
+		if( !empty($trigtype) && $trigtype == 'image' && !empty($swapimage) && strtolower($tag) == 'img' ){
+			$link .= wp_get_attachment_image( $swapimage, 'full', false, array( 'id' => 'swap-'.$id, 'class' => 'colomat-swap', 'alt' => $swapalt, 'style' => 'display:none;' ) );
+		}
+		else{
+			if(!empty($trigtype) && $trigtype == 'image' && !empty($swapimage)){
+				$swaptitle = wp_get_attachment_image( $swapimage, 'full' );
+			}
+		}
+		//swap title
 		if($swaptitle){
 			$link .= "<".$tag." id='swap-".$id."' alt='".$swapalt."' class='colomat-swap' style='display:none;'>".$startwrap.$swaptitle.$endwrap."</".$tag.">";
 		}
@@ -572,6 +615,13 @@ class WP_Collapse_O_Matic {
 								</tr>
 
 								<tr>
+									<th><?php _e( 'Shortcode Loads CSS', 'jquery-collapse-o-matic' ) ?>:</th>
+									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[css_check]" name="<?php echo $this->options_name ?>[css_check]" value="1"  <?php echo checked( $options['css_check'], 1 ); ?> /> <?php _e('Only load CSS with shortcode.', 'jquery-collapse-o-matic'); ?>
+										<br /><span class="description"><?php _e('Only load Collapse-O-Matic CSS if [expand] shortcode is used.', 'jquery-collapse-o-matic'); ?></span></label>
+									</td>
+								</tr>
+
+								<tr>
 									<th><?php _e( 'Script Load Location', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><select id="<?php echo $this->options_name ?>[script_location]" name="<?php echo $this->options_name ?>[script_location]">
 										<?php
@@ -626,11 +676,11 @@ class WP_Collapse_O_Matic {
 					<div class="inside">
 						<h4><img src="<?php echo plugins_url( 'images/collapse-o-matic-icon.png', __FILE__ ) ?>" width="16" height="16"/> Collapse-O-Matic Version <?php echo $this->version; ?></h4>
 						<p><?php _e( 'Remove clutter, save space. Display and hide additional content in a SEO friendly way. Wrap any content&mdash;including other shortcodes&mdash;into a lovely jQuery expanding and collapsing element.', 'jquery-collapse-o-matic') ?></p>
-						<p style="padding: 5px; border: 1px dashed #cccc66; background: #EEE;"><strong>Last Chance for 2015 Prices:</strong> <a href="http://plugins.twinpictures.de/premium-plugins/collapse-pro-matic/?utm_source=collapse-o-matic&utm_medium=plugin-settings-page&utm_content=collapse-pro-matic&utm_campaign=collapse-pro-year-end">Update to Collapse-Pro-Matic</a> before January 2016 to take advantage of 2015 pricing.</p>
+						<?php /*<p style="padding: 5px; border: 1px dashed #cccc66; background: #EEE;"><strong>Last Chance for 2015 Prices:</strong> <a href="http://plugins.twinpictures.de/premium-plugins/collapse-pro-matic/?utm_source=collapse-o-matic&utm_medium=plugin-settings-page&utm_content=collapse-pro-matic&utm_campaign=collapse-pro-year-end">Update to Collapse-Pro-Matic</a> before January 2016 to take advantage of 2015 pricing.</p> */ ?>
 						<ul>
 							<li><?php printf( __( '%sDetailed documentation%s, complete with working demonstrations of all shortcode attributes, is available for your instructional enjoyment.', 'jquery-collapse-o-matic'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/" target="_blank">', '</a>'); ?></li>
 							<li><?php printf( __( '%sFree Opensource Support%s', 'jquery-collapse-o-matic'), '<a href="http://wordpress.org/support/plugin/jquery-collapse-o-matic" target="_blank">', '</a>'); ?></li>
-							<li><?php printf( __('If this plugin %s, please consider %sreviewing it at WordPress.org%s to help others.', 'jquery-collapse-o-matic'), $like_it, '<a href="http://wordpress.org/support/view/plugin-reviews/jquery-collapse-o-matic" target="_blank">', '</a>' ) ?></li>
+							<li><?php printf( __( 'If this plugin %s, please consider %sreviewing it at WordPress.org%s to help others.', 'jquery-collapse-o-matic'), $like_it, '<a href="http://wordpress.org/support/view/plugin-reviews/jquery-collapse-o-matic" target="_blank">', '</a>' ) ?></li>
 							<li><a href="http://wordpress.org/extend/plugins/jquery-collapse-o-matic/" target="_blank">WordPress.org</a> | <a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/" target="_blank">Twinpictues Plugin Oven</a></li>
 						</ul>
 					</div>

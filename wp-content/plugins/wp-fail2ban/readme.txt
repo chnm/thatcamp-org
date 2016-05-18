@@ -5,7 +5,7 @@ Plugin URI: https://charles.lecklider.org/wordpress/wp-fail2ban/
 Tags: fail2ban, login, security, syslog
 Requires at least: 3.4.0
 Tested up to: 4.4.2
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,7 +32,7 @@ Requires PHP 5.3 or later.
 
 **Pingbacks**
 
-*WPf2b* can log all pingbacks. See `WP_FAIL2BAN_LOG_PINGBACKS` in the FAQ.
+*WPf2b* logs failed pingbacks, and can log all pingbacks. See `WP_FAIL2BAN_LOG_PINGBACKS` in the FAQ.
 
 **WP_FAIL2BAN_BLOCK_USER_ENUMERATION**
 
@@ -52,19 +52,42 @@ Requires PHP 5.3 or later.
 
 1. Upload the plugin to your plugins directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Copy `wordpress.conf` to your `fail2ban/filters.d` directory
+1. Copy `wordpress-hard.conf` and `wordpress-soft.conf` to your `fail2ban/filters.d` directory
 1. Edit `jail.local` to include something like:
 ~~~
-[wordpress]
+[wordpress-hard]
 enabled = true
-filter = wordpress
+filter = wordpress-hard
 logpath = /var/log/auth.log
+maxretry = 1
+
+[wordpress-soft]
+enabled = true
+filter = wordpress-soft
+logpath = /var/log/auth.log
+maxretry = 3
 ~~~
 5. Reload or restart `fail2ban`
 
 You may want to set `WP_FAIL2BAN_BLOCK_USER_ENUMERATION`, `WP_FAIL2BAN_PROXIES` and/or `WP_FAIL2BAN_BLOCKED_USERS`; see the FAQ for details.
 
 == Frequently Asked Questions ==
+
+= wordpress-hard.conf vs wordpress-soft.conf =
+
+There are some things that are almost always malicious, e.g. blocked users and pingbacks with errors. `wordpress-hard.conf` is designed to catch these so that you can ban the IP immediately.
+
+Other things are relatively benign, like a failed login. You can't let people try forever, but banning the IP immediately would be wrong too. `wordpress-soft.conf` is designed to catch these so that you can set a higher retry limit before banning the IP.
+
+For the avoidance of doubt: you should be using *both* filters.
+
+= WP_FAIL2BAN_HTTP_HOST – what’s it for? =
+
+This is for some flavours of Linux where `WP_FAIL2BAN_SYSLOG_SHORT_TAG` isn't enough.
+
+If you configure your web server to set an environment variable named `WP_FAIL2BAN_SYSLOG_SHORT_TAG` on a per-virtual host basis, *WPf2b* will use that in the syslog tag. This allows you to configure a unique tag per site in a way that makes sense for your configuration, rather than some arbitrary truncation or hashing within the plugin.
+
+**NB:** This feature has not been tested as extensively as others. While I'm confident it works, FreeBSD doesn't have this problem so this feature will always be second-tier.
 
 = WP_FAIL2BAN_SYSLOG_SHORT_TAG – what’s it for? =
 
@@ -138,6 +161,9 @@ to the `[wordpress]` section in `jail.local`.
 
 == Changelog ==
 
+= 3.0.1 =
+* Fix regex in `wordpress-hard.conf`
+
 = 3.0.0 =
 * Add `WP_FAIL2BAN_SYSLOG_SHORT_TAG`.
 * Add `WP_FAIL2BAN_HTTP_HOST`.
@@ -185,6 +211,9 @@ to the `[wordpress]` section in `jail.local`.
 * Initial release.
 
 == Upgrade Notice ==
+
+= 3.0.0 =
+BREAKING CHANGE: The `fail2ban` filters have been split into two files. You will need up update your `fail2ban` configuration.
 
 = 2.3.0 =
 Fix for `WP_FAIL2BAN_PROXIES`; if you're not using it you can safely skip this release.

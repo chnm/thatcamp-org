@@ -4,8 +4,8 @@ Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more, plugin oven
 Requires at least: 4.0
-Tested up to: 4.4.0
-Stable tag: 1.7.0
+Tested up to: 4.5
+Stable tag: 1.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,7 +28,7 @@ Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` 
 == Frequently Asked Questions ==
 
 = Where can I translate this plugin into my favourite language? =
-<a href='http://translate.twinpictures.de/projects/colomat'>Community translation for Collapse-O-Matic</a> has been set up. All are <a href='http://translate.twinpictures.de/wordpress/wp-login.php?action=register'>welcome to join</a>.
+<a href='https://translate.wordpress.org/projects/wp-plugins/jquery-collapse-o-matic'>Community translation for Collapse-O-Matic</a> is available via the WordPress Translation project.
 
 = I am a Social Netwookiee, might Twinpictures have a Facebook page? =
 Yes, yes... <a href='http://www.facebook.com/twinpictures'>Twinpictures is on Facebook</a>.
@@ -49,6 +49,13 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.7.1 =
+* integrated new collapse-commander image trigger feature
+* added new togglegroup shortcode attribute and data-togglegroup html attribute to reference groups of expand elements with out auto-collapsing other groups, such as when using the real attribute
+* added the ability to load plugin css only when shortcode is used
+* removed language files in favour of WordPress language packs
+* fully tested to work with WordPress 4.5
 
 = 1.7.0 =
 * reworked the find-me feature to use new data-findme attribute, rather than create a hidden element.
@@ -314,4 +321,4 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
-find-me feature has been improved to use a new data-findme attribute, rather than create a hidden element.
+Integrated new collapse-commander image trigger feature. Added new togglegroup shortcode attribute and data-togglegroup html attribute to reference groups of expand elements with out auto-collapsing other groups, such as when using the real attribute. Added the ability to load plugin css only when shortcode is used. Removed language files in favour of WordPress language packs. Plugin has been fully tested to work with WordPress 4.5.

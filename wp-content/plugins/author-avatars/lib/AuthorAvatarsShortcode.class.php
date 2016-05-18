@@ -8,7 +8,7 @@ class AuthorAvatarsShortcode {
 	/**
 	 * Constructor
 	 */
-	function AuthorAvatarsShortcode() {
+	function __construct() {
 		$this->register();
 	}
 
