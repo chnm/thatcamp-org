@@ -41,5 +41,5 @@ wp-content/debug.log
 robots.txt
 /docs
 /wp-content/plugins/si-captcha-for-wordpress/captcha/cache/*
-
+/wp-content/plugins/multisite-maintenance-mode/*
 
