@@ -9,7 +9,7 @@
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
 if ( ! current_user_can( 'manage_options' ) )
-	wp_die( __( 'You do not have sufficient permissions to manage options for this site.' ) );
+	wp_die( __( 'Sorry, you are not allowed to manage options for this site.' ) );
 
 $title = __('Discussion Settings');
 $parent_file = 'options-general.php';
@@ -25,8 +25,8 @@ get_current_screen()->add_help_tab( array(
 
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
-	'<p>' . __('<a href="https://codex.wordpress.org/Settings_Discussion_Screen" target="_blank">Documentation on Discussion Settings</a>') . '</p>' .
-	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
+	'<p>' . __('<a href="https://codex.wordpress.org/Settings_Discussion_Screen">Documentation on Discussion Settings</a>') . '</p>' .
+	'<p>' . __('<a href="https://wordpress.org/support/">Support Forums</a>') . '</p>'
 );
 
 include( ABSPATH . 'wp-admin/admin-header.php' );
@@ -71,14 +71,17 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 
 <label for="close_comments_for_old_posts">
 <input name="close_comments_for_old_posts" type="checkbox" id="close_comments_for_old_posts" value="1" <?php checked('1', get_option('close_comments_for_old_posts')); ?> />
-<?php printf( __('Automatically close comments on articles older than %s days'), '</label><label for="close_comments_days_old"><input name="close_comments_days_old" type="number" min="0" step="1" id="close_comments_days_old" value="' . esc_attr(get_option('close_comments_days_old')) . '" class="small-text" />'); ?>
+<?php printf(
+	__( 'Automatically close comments on articles older than %s days' ),
+	'</label> <label for="close_comments_days_old"><input name="close_comments_days_old" type="number" min="0" step="1" id="close_comments_days_old" value="' . esc_attr( get_option( 'close_comments_days_old' ) ) . '" class="small-text" />'
+); ?>
 </label>
 <br />
 <label for="thread_comments">
 <input name="thread_comments" type="checkbox" id="thread_comments" value="1" <?php checked('1', get_option('thread_comments')); ?> />
 <?php
 /**
- * Filter the maximum depth of threaded/nested comments.
+ * Filters the maximum depth of threaded/nested comments.
  *
  * @since 2.7.0.
  *
@@ -86,7 +89,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
  */
 $maxdeep = (int) apply_filters( 'thread_comments_depth_max', 10 );
 
-$thread_comments_depth = '</label><label for="thread_comments_depth"><select name="thread_comments_depth" id="thread_comments_depth">';
+$thread_comments_depth = '</label> <label for="thread_comments_depth"><select name="thread_comments_depth" id="thread_comments_depth">';
 for ( $i = 2; $i <= $maxdeep; $i++ ) {
 	$thread_comments_depth .= "<option value='" . esc_attr($i) . "'";
 	if ( get_option('thread_comments_depth') == $i ) $thread_comments_depth .= " selected='selected'";
@@ -101,14 +104,17 @@ printf( __('Enable threaded (nested) comments %s levels deep'), $thread_comments
 <label for="page_comments">
 <input name="page_comments" type="checkbox" id="page_comments" value="1" <?php checked( '1', get_option( 'page_comments' ) ); ?> />
 <?php
-$default_comments_page = '</label><label for="default_comments_page"><select name="default_comments_page" id="default_comments_page"><option value="newest"';
+$default_comments_page = '</label> <label for="default_comments_page"><select name="default_comments_page" id="default_comments_page"><option value="newest"';
 if ( 'newest' == get_option('default_comments_page') ) $default_comments_page .= ' selected="selected"';
 $default_comments_page .= '>' . __('last') . '</option><option value="oldest"';
 if ( 'oldest' == get_option('default_comments_page') ) $default_comments_page .= ' selected="selected"';
 $default_comments_page .= '>' . __('first') . '</option></select>';
-
-printf( __('Break comments into pages with %1$s top level comments per page and the %2$s page displayed by default'), '</label><label for="comments_per_page"><input name="comments_per_page" type="number" step="1" min="0" id="comments_per_page" value="' . esc_attr(get_option('comments_per_page')) . '" class="small-text" />', $default_comments_page );
-
+printf(
+	/* translators: 1: Form field control for number of top level comments per page, 2: Form field control for the 'first' or 'last' page */
+	__( 'Break comments into pages with %1$s top level comments per page and the %2$s page displayed by default' ),
+	'</label> <label for="comments_per_page"><input name="comments_per_page" type="number" step="1" min="0" id="comments_per_page" value="' . esc_attr( get_option( 'comments_per_page' ) ) . '" class="small-text" />',
+	$default_comments_page
+);
 ?></label>
 <br />
 <label for="comment_order"><?php
@@ -195,13 +201,13 @@ $show_avatars = get_option( 'show_avatars' );
 
 <?php
 $ratings = array(
-	/* translators: Content suitability rating: http://bit.ly/89QxZA */
+	/* translators: Content suitability rating: https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system */
 	'G' => __('G &#8212; Suitable for all audiences'),
-	/* translators: Content suitability rating: http://bit.ly/89QxZA */
+	/* translators: Content suitability rating: https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system */
 	'PG' => __('PG &#8212; Possibly offensive, usually for audiences 13 and above'),
-	/* translators: Content suitability rating: http://bit.ly/89QxZA */
+	/* translators: Content suitability rating: https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system */
 	'R' => __('R &#8212; Intended for adult audiences above 17'),
-	/* translators: Content suitability rating: http://bit.ly/89QxZA */
+	/* translators: Content suitability rating: https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system */
 	'X' => __('X &#8212; Even more mature than above')
 );
 foreach ($ratings as $key => $rating) :
@@ -229,7 +235,7 @@ $avatar_defaults = array(
 	'retro' => __('Retro (Generated)')
 );
 /**
- * Filter the default avatars.
+ * Filters the default avatars.
  *
  * Avatars are stored in key/value pairs, where the key is option value,
  * and the name is the displayed avatar name.
@@ -240,7 +246,6 @@ $avatar_defaults = array(
  */
 $avatar_defaults = apply_filters( 'avatar_defaults', $avatar_defaults );
 $default = get_option( 'avatar_default', 'mystery' );
-$size = 32;
 $avatar_list = '';
 
 // Force avatars on to display these choices
@@ -249,12 +254,7 @@ add_filter( 'pre_option_show_avatars', '__return_true', 100 );
 foreach ( $avatar_defaults as $default_key => $default_name ) {
 	$selected = ($default == $default_key) ? 'checked="checked" ' : '';
 	$avatar_list .= "\n\t<label><input type='radio' name='avatar_default' id='avatar_{$default_key}' value='" . esc_attr($default_key) . "' {$selected}/> ";
-
-	$avatar = get_avatar( $user_email, $size, $default_key );
-	$avatar = preg_replace( "/src='(.+?)'/", "src='\$1&amp;forcedefault=1'", $avatar );
-	$avatar = preg_replace( "/srcset='(.+?) 2x'/", "srcset='\$1&amp;forcedefault=1 2x'", $avatar );
-	$avatar_list .= $avatar;
-
+	$avatar_list .= get_avatar( $user_email, 32, $default_key, '', array( 'force_default' => true ) );
 	$avatar_list .= ' ' . $default_name . '</label>';
 	$avatar_list .= '<br />';
 }
@@ -262,7 +262,7 @@ foreach ( $avatar_defaults as $default_key => $default_name ) {
 remove_filter( 'pre_option_show_avatars', '__return_true', 100 );
 
 /**
- * Filter the HTML output of the default avatar list.
+ * Filters the HTML output of the default avatar list.
  *
  * @since 2.6.0
  *

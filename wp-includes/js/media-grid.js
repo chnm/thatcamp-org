@@ -150,8 +150,8 @@ var Button = wp.media.view.Button,
 DeleteSelectedPermanently = DeleteSelected.extend({
 	initialize: function() {
 		DeleteSelected.prototype.initialize.apply( this, arguments );
-		this.listenTo( this.controller, 'select:activate', this.selectActivate );
-		this.listenTo( this.controller, 'select:deactivate', this.selectDeactivate );
+		this.controller.on( 'select:activate', this.selectActivate, this );
+		this.controller.on( 'select:deactivate', this.selectDeactivate, this );
 	},
 
 	filterChange: function( model ) {
@@ -197,9 +197,9 @@ DeleteSelected = Button.extend({
 	initialize: function() {
 		Button.prototype.initialize.apply( this, arguments );
 		if ( this.options.filters ) {
-			this.listenTo( this.options.filters.model, 'change', this.filterChange );
+			this.options.filters.model.on( 'change', this.filterChange, this );
 		}
-		this.listenTo( this.controller, 'selection:toggle', this.toggleDisabled );
+		this.controller.on( 'selection:toggle', this.toggleDisabled, this );
 	},
 
 	filterChange: function( model ) {
@@ -251,8 +251,8 @@ SelectModeToggle = Button.extend({
 		} );
 
 		Button.prototype.initialize.apply( this, arguments );
-		this.listenTo( this.controller, 'select:activate select:deactivate', this.toggleBulkEditHandler );
-		this.listenTo( this.controller, 'selection:action:done', this.back );
+		this.controller.on( 'select:activate select:deactivate', this.toggleBulkEditHandler, this );
+		this.controller.on( 'selection:action:done', this.back, this );
 	},
 
 	back: function () {
@@ -623,8 +623,12 @@ Manage = MediaFrame.extend({
 		this.$body = $( document.body );
 		this.$window = $( window );
 		this.$adminBar = $( '#wpadminbar' );
+		// Store the Add New button for later reuse in wp.media.view.UploaderInline.
+		this.$uploaderToggler = $( '.page-title-action' )
+			.attr( 'aria-expanded', 'false' )
+			.on( 'click', _.bind( this.addNewClickHandler, this ) );
+
 		this.$window.on( 'scroll resize', _.debounce( _.bind( this.fixPosition, this ), 15 ) );
-		$( document ).on( 'click', '.page-title-action', _.bind( this.addNewClickHandler, this ) );
 
 		// Ensure core and media grid view UI is enabled.
 		this.$el.addClass('wp-core-ui');
@@ -774,6 +778,10 @@ Manage = MediaFrame.extend({
 	addNewClickHandler: function( event ) {
 		event.preventDefault();
 		this.trigger( 'toggle:upload:attachment' );
+
+		if ( this.uploader ) {
+			this.uploader.refresh();
+		}
 	},
 
 	/**
@@ -840,6 +848,9 @@ Manage = MediaFrame.extend({
 	startHistory: function() {
 		// Verify pushState support and activate
 		if ( window.history && window.history.pushState ) {
+			if ( Backbone.History.started ) {
+				Backbone.history.stop();
+			}
 			Backbone.history.start( {
 				root: window._wpMediaGridSettings.adminUrl,
 				pushState: true

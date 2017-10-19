@@ -51,17 +51,17 @@ function options_general_add_js() {
 
 		$("input[name='date_format']").click(function(){
 			if ( "date_format_custom_radio" != $(this).attr("id") )
-				$( "input[name='date_format_custom']" ).val( $( this ).val() ).siblings( '.example' ).text( $( this ).parent( 'label' ).text() );
+				$( "input[name='date_format_custom']" ).val( $( this ).val() ).siblings( '.example' ).text( $( this ).parent( 'label' ).children( '.format-i18n' ).text() );
 		});
-		$("input[name='date_format_custom']").focus(function(){
+		$( 'input[name="date_format_custom"]' ).on( 'click input', function() {
 			$( '#date_format_custom_radio' ).prop( 'checked', true );
 		});
 
 		$("input[name='time_format']").click(function(){
 			if ( "time_format_custom_radio" != $(this).attr("id") )
-				$( "input[name='time_format_custom']" ).val( $( this ).val() ).siblings( '.example' ).text( $( this ).parent( 'label' ).text() );
+				$( "input[name='time_format_custom']" ).val( $( this ).val() ).siblings( '.example' ).text( $( this ).parent( 'label' ).children( '.format-i18n' ).text() );
 		});
-		$("input[name='time_format_custom']").focus(function(){
+		$( 'input[name="time_format_custom"]' ).on( 'click input', function() {
 			$( '#time_format_custom_radio' ).prop( 'checked', true );
 		});
 		$("input[name='date_format_custom'], input[name='time_format_custom']").change( function() {
@@ -78,7 +78,7 @@ function options_general_add_js() {
 			// Don't show a spinner for English and installed languages,
 			// as there is nothing to download.
 			if ( ! languageSelect.find( 'option:selected' ).data( 'installed' ) ) {
-				$( '#submit', this ).after( '<span class="spinner language-install-spinner" />' );
+				$( '#submit', this ).after( '<span class="spinner language-install-spinner is-active" />' );
 			}
 		});
 	});
@@ -100,8 +100,8 @@ jQuery(document).ready(function() {
 			return;
 		jQuery('#permalink_structure').val( this.value );
 	});
-	jQuery('#permalink_structure').focus(function() {
-		jQuery("#custom_selection").attr('checked', 'checked');
+	jQuery( '#permalink_structure' ).on( 'click input', function() {
+		jQuery( '#custom_selection' ).prop( 'checked', true );
 	});
 });
 </script>
@@ -131,7 +131,7 @@ function options_reading_add_js() {
 }
 
 /**
- * Render the blog charset setting.
+ * Render the site charset setting.
  *
  * @since 3.5.0
  */

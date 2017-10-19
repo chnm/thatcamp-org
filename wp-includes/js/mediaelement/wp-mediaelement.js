@@ -20,7 +20,7 @@
 		 */
 		function initialize() {
 			if ( typeof _wpmejsSettings !== 'undefined' ) {
-				settings = _wpmejsSettings;
+				settings = $.extend( true, {}, _wpmejsSettings );
 			}
 
 			settings.success = settings.success || function (mejs) {
@@ -44,7 +44,7 @@
 			$( '.wp-audio-shortcode, .wp-video-shortcode' )
 				.not( '.mejs-container' )
 				.filter(function () {
-					return ! $( this ).parent().hasClass( '.mejs-mediaelement' );
+					return ! $( this ).parent().hasClass( 'mejs-mediaelement' );
 				})
 				.mediaelementplayer( settings );
 		}
@@ -56,6 +56,6 @@
 
 	window.wp.mediaelement = new wpMediaElement();
 
-	$( document ).on( 'ready', window.wp.mediaelement.initialize );
+	$( window.wp.mediaelement.initialize );
 
 })( window, jQuery );

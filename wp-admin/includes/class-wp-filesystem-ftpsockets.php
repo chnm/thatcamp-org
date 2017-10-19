@@ -39,7 +39,7 @@ class WP_Filesystem_ftpsockets extends WP_Filesystem_Base {
 		if ( empty($opt['port']) )
 			$this->options['port'] = 21;
 		else
-			$this->options['port'] = $opt['port'];
+			$this->options['port'] = (int) $opt['port'];
 
 		if ( empty($opt['hostname']) )
 			$this->errors->add('empty_hostname', __('FTP hostname is required'));
@@ -121,8 +121,10 @@ class WP_Filesystem_ftpsockets extends WP_Filesystem_Base {
 
 		$temp = wp_tempnam( $file );
 
-		if ( ! $temphandle = fopen($temp, 'w+') )
+		if ( ! $temphandle = fopen( $temp, 'w+' ) ) {
+			unlink( $temp );
 			return false;
+		}
 
 		mbstring_binary_safe_encoding();
 
@@ -468,9 +470,10 @@ class WP_Filesystem_ftpsockets extends WP_Filesystem_Base {
 	 *
 	 * @param string $path
 	 * @param bool $recursive
+	 * @return bool
 	 */
 	public function rmdir($path, $recursive = false ) {
-		$this->delete($path, $recursive);
+		return $this->delete($path, $recursive);
 	}
 
 	/**

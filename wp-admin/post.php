@@ -107,14 +107,14 @@ case 'edit':
 		wp_die( __( 'You attempted to edit an item that doesn&#8217;t exist. Perhaps it was deleted?' ) );
 
 	if ( ! $post_type_object )
-		wp_die( __( 'Unknown post type.' ) );
+		wp_die( __( 'Invalid post type.' ) );
 
 	if ( ! in_array( $typenow, get_post_types( array( 'show_ui' => true ) ) ) ) {
-		wp_die( __( 'You are not allowed to edit posts in this post type.' ) );
+		wp_die( __( 'Sorry, you are not allowed to edit posts in this post type.' ) );
 	}
 
 	if ( ! current_user_can( 'edit_post', $post_id ) )
-		wp_die( __( 'You are not allowed to edit this item.' ) );
+		wp_die( __( 'Sorry, you are not allowed to edit this item.' ) );
 
 	if ( 'trash' == $post->post_status )
 		wp_die( __( 'You can&#8217;t edit this item because it is in the Trash. Please restore it and try again.' ) );
@@ -208,10 +208,10 @@ case 'trash':
 		wp_die( __( 'The item you are trying to move to the Trash no longer exists.' ) );
 
 	if ( ! $post_type_object )
-		wp_die( __( 'Unknown post type.' ) );
+		wp_die( __( 'Invalid post type.' ) );
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
-		wp_die( __( 'You are not allowed to move this item to the Trash.' ) );
+		wp_die( __( 'Sorry, you are not allowed to move this item to the Trash.' ) );
 
 	if ( $user_id = wp_check_post_lock( $post_id ) ) {
 		$user = get_userdata( $user_id );
@@ -231,10 +231,10 @@ case 'untrash':
 		wp_die( __( 'The item you are trying to restore from the Trash no longer exists.' ) );
 
 	if ( ! $post_type_object )
-		wp_die( __( 'Unknown post type.' ) );
+		wp_die( __( 'Invalid post type.' ) );
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
-		wp_die( __( 'You are not allowed to restore this item from the Trash.' ) );
+		wp_die( __( 'Sorry, you are not allowed to restore this item from the Trash.' ) );
 
 	if ( ! wp_untrash_post( $post_id ) )
 		wp_die( __( 'Error in restoring from Trash.' ) );
@@ -249,10 +249,10 @@ case 'delete':
 		wp_die( __( 'This item has already been deleted.' ) );
 
 	if ( ! $post_type_object )
-		wp_die( __( 'Unknown post type.' ) );
+		wp_die( __( 'Invalid post type.' ) );
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
-		wp_die( __( 'You are not allowed to delete this item.' ) );
+		wp_die( __( 'Sorry, you are not allowed to delete this item.' ) );
 
 	if ( $post->post_type == 'attachment' ) {
 		$force = ( ! MEDIA_TRASH );
@@ -275,6 +275,17 @@ case 'preview':
 	exit();
 
 default:
+	/**
+	 * Fires for a given custom post action request.
+	 *
+	 * The dynamic portion of the hook name, `$action`, refers to the custom post action.
+	 *
+	 * @since 4.6.0
+	 *
+	 * @param int $post_id Post ID sent with the request.
+	 */
+	do_action( "post_action_{$action}", $post_id );
+
 	wp_redirect( admin_url('edit.php') );
 	exit();
 } // end switch
