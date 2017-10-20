@@ -1,0 +1,4582 @@
+# Translation of Plugins - bbPress - Stable (latest release) in Hebrew
+# This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-09-28 00:21:14+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: he_IL\n"
+"Project-Id-Version: Plugins - bbPress - Stable (latest release)\n"
+
+#. translators: user role
+#: includes/common/locale.php:56
+msgctxt "User role"
+msgid "Blocked"
+msgstr "חסום"
+
+#. translators: user role
+#: includes/common/locale.php:53
+msgctxt "User role"
+msgid "Spectator"
+msgstr "צופה"
+
+#. translators: user role
+#: includes/common/locale.php:50
+msgctxt "User role"
+msgid "Participant"
+msgstr "משתתף"
+
+#. translators: user role
+#: includes/common/locale.php:47
+msgctxt "User role"
+msgid "Moderator"
+msgstr "מנחה"
+
+#. translators: user role
+#: includes/common/locale.php:44
+msgctxt "User role"
+msgid "Keymaster"
+msgstr "מנהל בפורום"
+
+#. Author of the plugin/theme
+msgid "The bbPress Community"
+msgstr "קהילת ביביפרס"
+
+#. Plugin Name of the plugin/theme
+msgid "bbPress"
+msgstr "ביביפרס"
+
+#. Description of the plugin/theme
+msgid "bbPress is forum software with a twist from the creators of WordPress."
+msgstr "ביביפרס היא מערכת פורומים מבוססת וורדפרס."
+
+#. #-#-#-#-#  bbpress-code.pot (bbPress 2.5.13)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  bbpress-code.pot (bbPress 2.5.13)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "https://bbpress.org"
+msgstr "https://bbpress.org"
+
+#: includes/admin/tools.php:1148
+msgid "No reply positions to recalculate!"
+msgstr "לא נמצאו פוזיציות לתגובות לשם חישוב מחדש"
+
+#: includes/admin/tools.php:1147
+msgid "Recalculating reply menu order &hellip; %s"
+msgstr "מחשב מחדש את סדר התפריט של תגובות &hellip; %s"
+
+#: includes/admin/tools.php:166
+msgid "Recalculate the position of each reply"
+msgstr "חשב מחדש את הפוזיציה של כל תגובה"
+
+#: templates/default/extras/page-topic-tags.php:22
+msgid "<p>This is a collection of tags that are currently popular on our forums.</p>"
+msgstr "<p>אוסף של התגים הפופולריים בפורומים שלנו כיום.</p>"
+
+#: templates/default/extras/page-forum-statistics.php:22
+msgid "<p>Here are the statistics and popular topics of our forums.</p>"
+msgstr "<p>סטטיסטיקה של הדיונים הפופולאריים בפורומים שלנו.</p>"
+
+#: templates/default/bbpress-functions.php:426
+msgid "Please login to subscribe to this topic."
+msgstr "אנה התחבר בשביל להרשם לפורום זה"
+
+#: templates/default/bbpress-functions.php:375
+#: templates/default/bbpress-functions.php:443
+msgid "The topic could not be found."
+msgstr "הדיון לא נמצא."
+
+#: templates/default/bbpress-functions.php:358
+msgid "Please login to make this topic a favorite."
+msgstr "יש להתחבר כדי להוסיף דיון זה למועדפים."
+
+#: templates/default/bbpress-functions.php:353
+msgid "Favorites are no longer active."
+msgstr "מועדפים אינם פעילים יותר"
+
+#: templates/default/bbpress-functions.php:320
+#: templates/default/bbpress-functions.php:388
+#: templates/default/bbpress-functions.php:456
+msgid "The request was unsuccessful. Please try again."
+msgstr "הבקשה נכשלה. אנא נסה שוב."
+
+#: templates/default/bbpress-functions.php:312
+#: templates/default/bbpress-functions.php:380
+#: templates/default/bbpress-functions.php:448
+msgid "Are you sure you meant to do that?"
+msgstr "האם אתה בטוח שהתכוונת לעשות את זה?"
+
+#: templates/default/bbpress-functions.php:307
+msgid "The forum could not be found."
+msgstr "הפורום אינו נמצא."
+
+#: templates/default/bbpress-functions.php:299
+#: templates/default/bbpress-functions.php:367
+#: templates/default/bbpress-functions.php:435
+msgid "You do not have permission to do this."
+msgstr "אין לך הרשאה לבצע את הפעולה."
+
+#: templates/default/bbpress-functions.php:290
+msgid "Please login to subscribe to this forum."
+msgstr "בבקשה התחבר בשביל להרשם לפורום זה"
+
+#: templates/default/bbpress-functions.php:285
+#: templates/default/bbpress-functions.php:421
+msgid "Subscriptions are no longer active."
+msgstr "מנויים אינם פעילים יותר"
+
+#: templates/default/bbpress-functions.php:248
+#: templates/default/bbpress-functions.php:257
+msgid "Something went wrong. Refresh your browser and try again."
+msgstr "לפעמים משהו משתבש. יש לרענן את העמוד ולנסות שוב."
+
+#: templates/default/bbpress/user-topics-created.php:28
+msgid "This user has not created any topics."
+msgstr "משתמש זה לא יצר עדיין שום דיון."
+
+#: templates/default/bbpress/user-topics-created.php:28
+msgid "You have not created any topics."
+msgstr "אתה לא יצרת שום דיון."
+
+#: templates/default/bbpress/user-topics-created.php:15
+msgid "Forum Topics Started"
+msgstr "דיונים בפורום שהתחילו"
+
+#: templates/default/bbpress/user-subscriptions.php:47
+msgid "This user is not currently subscribed to any topics."
+msgstr "משתמש זה לא רשום לאף דיון."
+
+#: templates/default/bbpress/user-subscriptions.php:47
+msgid "You are not currently subscribed to any topics."
+msgstr "לא נרשמת עד כה לדיון כלשהו."
+
+#: templates/default/bbpress/user-subscriptions.php:28
+msgid "This user is not currently subscribed to any forums."
+msgstr "משתמש זה לא רשום לאף פורום כרגע"
+
+#: templates/default/bbpress/user-subscriptions.php:28
+msgid "You are not currently subscribed to any forums."
+msgstr "אתה כרגע לא נרשמת לאף פורום"
+
+#: templates/default/bbpress/user-subscriptions.php:19
+msgid "Subscribed Forums"
+msgstr "פורומים במעקב"
+
+#: templates/default/bbpress/user-replies-created.php:28
+msgid "This user has not replied to any topics."
+msgstr "המשתמש לא הגיב עדיין באחד הדיונים."
+
+#: templates/default/bbpress/user-replies-created.php:28
+msgid "You have not replied to any topics."
+msgstr "אין לך עדיין תגובות שלך בדיון כלשהו."
+
+#: templates/default/bbpress/user-replies-created.php:15
+msgid "Forum Replies Created"
+msgstr "התגובות שלי בפורום"
+
+#: templates/default/bbpress/user-profile.php:26
+msgid "Replies Created: %s"
+msgstr "תגובות: %s"
+
+#: templates/default/bbpress/user-profile.php:25
+msgid "Topics Started: %s"
+msgstr "דיונים: %s"
+
+#: templates/default/bbpress/user-profile.php:24
+msgid "Forum Role: %s"
+msgstr "תפקיד בפורום: %s"
+
+#: templates/default/bbpress/user-favorites.php:28
+msgid "This user has no favorite topics."
+msgstr "אין למשתמש דיונים מועדפים."
+
+#: templates/default/bbpress/user-favorites.php:28
+msgid "You currently have no favorite topics."
+msgstr "בשלב זה אין לך דיונים מועדפים."
+
+#: templates/default/bbpress/user-favorites.php:15
+msgid "Favorite Forum Topics"
+msgstr "דיונים מועדפים בפורום"
+
+#: templates/default/bbpress/user-details.php:58
+msgid "%s's Subscriptions"
+msgstr "הרשמות %s"
+
+#: templates/default/bbpress/user-details.php:48
+msgid "%s's Favorites"
+msgstr "המועדפים של %s"
+
+#: templates/default/bbpress/user-details.php:41
+msgid "%s's Replies Created"
+msgstr "פורסמו %s תגובות"
+
+#: templates/default/bbpress/user-details.php:35
+msgid "%s's Topics Started"
+msgstr "דיונים נוצרו על ידי %s"
+
+#: templates/default/bbpress/user-details.php:29
+#: templates/default/bbpress/user-profile.php:15
+msgid "Profile"
+msgstr "פרופיל"
+
+#: templates/default/bbpress/user-details.php:29
+msgid "%s's Profile"
+msgstr "הפרופיל של %s"
+
+#: templates/default/bbpress/loop-single-topic.php:68
+msgid "in: <a href=\"%1$s\">%2$s</a>"
+msgstr "ב<a href=\"%1$s\">%2$s</a>"
+
+#: templates/default/bbpress/loop-single-topic.php:60
+msgid "Started by: %1$s"
+msgstr "נפתח על ידי %1$s"
+
+#: templates/default/bbpress/loop-single-reply.php:21
+msgid "in reply to: "
+msgstr "בתגובה ל:"
+
+#: templates/default/bbpress/loop-search.php:22
+#: templates/default/bbpress/loop-search.php:44
+msgid "Search Results"
+msgstr "תוצאות חיפוש"
+
+#: templates/default/bbpress/loop-search-topic.php:37
+msgid "in forum "
+msgstr "בפורום"
+
+#: templates/default/bbpress/loop-search-topic.php:33
+msgid "in group forum "
+msgstr "בפורום קבוצתי"
+
+#: templates/default/bbpress/loop-search-topic.php:26
+msgid "Topic: "
+msgstr "דיון:"
+
+#: templates/default/bbpress/loop-search-reply.php:24
+msgid "In reply to: "
+msgstr "בתגובה ל:"
+
+#: templates/default/bbpress/loop-search-forum.php:26
+msgid "Forum: "
+msgstr "פורום:"
+
+#: templates/default/bbpress/loop-search-forum.php:16
+msgid "Last updated %s"
+msgstr "עודכן לאחרונה %s"
+
+#: templates/default/bbpress/form-user-roles.php:13
+msgid "Blog Role"
+msgstr "תפקיד בלוג"
+
+#: templates/default/bbpress/form-user-register.php:18
+msgid "We use your email address to email you a secure password and verify your account."
+msgstr "כתובת האימייל שלך נחוצה לאישור החשבון ולשליחת ססמה לשימוש בו. "
+
+#: templates/default/bbpress/form-user-register.php:17
+msgid "Your username must be unique, and cannot be changed later."
+msgstr "שם המשתמש חייב להיות ייחודי, והוא לא ניתן לשינוי לאחר מכן."
+
+#: templates/default/bbpress/form-user-register.php:14
+msgid "Create an Account"
+msgstr "הרשמה"
+
+#: templates/default/bbpress/form-user-lost-pass.php:27
+msgid "Reset My Password"
+msgstr "איפוס הססמה שלי"
+
+#: templates/default/bbpress/form-user-lost-pass.php:18
+msgid "Username or Email"
+msgstr "שם משתמש או אימייל"
+
+#: templates/default/bbpress/form-user-login.php:28
+msgid "Keep me signed in"
+msgstr "זכור אותי"
+
+#: templates/default/bbpress/form-user-edit.php:178
+msgid "Update User"
+msgstr "עדכן משתמש"
+
+#: templates/default/bbpress/form-user-edit.php:178
+msgid "Update Profile"
+msgstr "עדכון פרופיל"
+
+#: templates/default/bbpress/form-user-edit.php:156
+msgid "Grant this user super admin privileges for the Network."
+msgstr "הענק למשתמש זה הרשאות של מנהל-העל עבור רשת-האתרים."
+
+#: templates/default/bbpress/form-user-edit.php:153
+msgid "Network Role"
+msgstr "תפקיד רשת"
+
+#: templates/default/bbpress/form-user-edit.php:143
+#: templates/default/bbpress/form-user-edit.php:146
+msgid "User Role"
+msgstr "תפקיד משתמש"
+
+#: templates/default/bbpress/form-user-edit.php:133
+msgid "Your password should be at least ten characters long. Use upper and lower case letters, numbers, and symbols to make it even stronger."
+msgstr "הסיסמא שלך חייבת להיות בת עשרה תווים לפחות באנגלית. ניתן להשתמש באותיות גדולות, קטנות, ספרות וסימנים כדי להפכה לחזקה עוד יותר."
+
+#: templates/default/bbpress/form-user-edit.php:130
+msgid "Type your new password again."
+msgstr "הקלד שנית את הסיסמה החדשה."
+
+#: templates/default/bbpress/form-user-edit.php:127
+msgid "If you would like to change the password type a new one. Otherwise leave this blank."
+msgstr "לשינוי הסיסמה, יש להקליד כאן את הסיסמה החדשה. הסיסמה לא תשתנה אם השדה ישאר ריק."
+
+#: templates/default/bbpress/form-user-edit.php:124
+msgid "New Password"
+msgstr "סיסמה חדשה"
+
+#: templates/default/bbpress/form-user-edit.php:115
+msgid "There is a pending email address change to <code>%1$s</code>. <a href=\"%2$s\">Cancel</a>"
+msgstr "יש כתובת אימייל ממתינים לשינוי <code>%1$s</code>. <a href=\"%2$s\">ביטול</a>"
+
+#: templates/default/bbpress/form-user-edit.php:90
+#: templates/default/bbpress/form-user-edit.php:93
+msgid "Account"
+msgstr "חשבון"
+
+#: templates/default/bbpress/form-user-edit.php:82
+msgid "Biographical Info"
+msgstr "מידע אישי אודותיך"
+
+#: templates/default/bbpress/form-user-edit.php:74
+#: templates/default/bbpress/form-user-edit.php:77
+msgid "About the user"
+msgstr "אודות המשתמש"
+
+#: templates/default/bbpress/form-user-edit.php:74
+#: templates/default/bbpress/form-user-edit.php:77
+msgid "About Yourself"
+msgstr "אודותייך"
+
+#: templates/default/bbpress/form-user-edit.php:49
+#: templates/default/bbpress/form-user-edit.php:52
+msgid "Contact Info"
+msgstr "פרטי התקשרות"
+
+#: templates/default/bbpress/form-user-edit.php:39
+msgid "Display Name"
+msgstr "הצג שם"
+
+#: templates/default/bbpress/form-user-edit.php:34
+msgid "Nickname"
+msgstr "כינוי"
+
+#: templates/default/bbpress/form-user-edit.php:29
+msgid "Last Name"
+msgstr "שם משפחה"
+
+#: templates/default/bbpress/form-user-edit.php:24
+msgid "First Name"
+msgstr "שם פרטי"
+
+#: templates/default/bbpress/form-topic.php:234
+msgid "You must be logged in to create new topics."
+msgstr "יש להתחבר למערכת כדי ליצור דיון חדש."
+
+#: templates/default/bbpress/form-topic.php:234
+msgid "You cannot create new topics."
+msgstr "אין לך יכולת ליצור דיון חדש."
+
+#: templates/default/bbpress/form-topic.php:145
+msgid "Topic Status:"
+msgstr "מצב אשכול:"
+
+#: templates/default/bbpress/form-topic.php:133
+msgid "Topic Type:"
+msgstr "סוג:"
+
+#: templates/default/bbpress/form-topic.php:101
+msgid "Topic Tags:"
+msgstr "תגיות:"
+
+#: templates/default/bbpress/form-topic.php:75
+msgid "Topic Title (Maximum Length: %d):"
+msgstr "כותרת דיון (מקסימום %d תוים):"
+
+#: templates/default/bbpress/form-topic.php:53
+msgid "This forum is marked as closed to new topics, however your posting capabilities still allow you to do so."
+msgstr "פורום זה מסומן כסגור לדיונים חדשים, אולם הרשאות הפרסום שלך מאפשרות לך לעשות זאת."
+
+#: templates/default/bbpress/form-topic.php:43
+msgid "Create New Topic in &ldquo;%s&rdquo;"
+msgstr "יצירת דיון חדש בפורום \"%s\""
+
+#: templates/default/bbpress/form-topic-tag.php:101
+msgid "Are you sure you want to delete the \"%s\" tag? This is permanent and cannot be undone."
+msgstr "האם אתה בטוח שאתה רוצה למחוק את התגית \"%s\"? תגית זו קבועה ואי אפשר לבטל אותה."
+
+#: templates/default/bbpress/form-topic-tag.php:95
+msgid "Any links to this tag will no longer function."
+msgstr "קישורים לתג זה לא יהיו פעילים."
+
+#: templates/default/bbpress/form-topic-tag.php:94
+msgid "Deleting a tag cannot be undone."
+msgstr "מחיקת תג לא ניתן לבטל."
+
+#: templates/default/bbpress/form-topic-tag.php:91
+msgid "This does not delete your topics. Only the tag itself is deleted."
+msgstr "פעולה זו אינה מוחקת את הדיונים, אלא רק את התגית עצמה."
+
+#: templates/default/bbpress/form-topic-tag.php:73
+msgid "Are you sure you want to merge the \"%s\" tag into the tag you specified?"
+msgstr "האם אתה בטוח שאתה רוצה למזג את התגית \"%s\" אל התגית שציינת?"
+
+#: templates/default/bbpress/form-topic-tag.php:68
+msgid "Existing tag:"
+msgstr "קיים תג:"
+
+#: templates/default/bbpress/form-topic-tag.php:62
+msgid "Merging tags together cannot be undone."
+msgstr "מיזוג התגים לא ניתן לביטול."
+
+#: templates/default/bbpress/form-topic-tag.php:45
+msgid "Update"
+msgstr "עדכון"
+
+#: templates/default/bbpress/form-topic-tag.php:40
+msgid "Slug:"
+msgstr "מזהה לכתובת:"
+
+#: templates/default/bbpress/form-topic-tag.php:29
+msgid "Changing the slug affects its permalink. Any links to the old slug will stop working."
+msgstr "שינוי מבנה הקישורים משפיע על כתובת האתר. כל הקישורים הישנים יפסיקו לעבוד."
+
+#: templates/default/bbpress/form-topic-tag.php:25
+msgid "Leave the slug empty to have one automatically generated."
+msgstr "כדי ליצור מזהה כתובת באופן אוטומטי, יש להשאיר שדה זה ריק."
+
+#: templates/default/bbpress/form-topic-tag.php:22
+msgid "Rename"
+msgstr "שינוי שם"
+
+#: templates/default/bbpress/form-topic-tag.php:18
+msgid "Manage Tag: \"%s\""
+msgstr "ניהול תגית: \"%s\""
+
+#: templates/default/bbpress/form-topic-split.php:85
+msgid "Copy topic tags to the new topic"
+msgstr "העתקת התגיות לדיון חדש"
+
+#: templates/default/bbpress/form-topic-split.php:80
+msgid "Copy favoriters to the new topic"
+msgstr "העתק מועדפים לדיון חדש"
+
+#: templates/default/bbpress/form-topic-split.php:75
+msgid "Copy subscribers to the new topic"
+msgstr "העתק מנויים לדיון חדש"
+
+#: templates/default/bbpress/form-topic-split.php:42
+msgid "Split: %s"
+msgstr "פיצול: %s"
+
+#: templates/default/bbpress/form-topic-split.php:37
+msgid "Split Method"
+msgstr "שיטת פיצול"
+
+#: templates/default/bbpress/form-topic-split.php:33
+msgid "If you use the existing topic option, replies within both topics will be merged chronologically. The order of the merged replies is based on the time and date they were posted."
+msgstr "אם תשתמש באפשרות בדיון הקיים, תגובות בתוך שני הדיונים ימוזגו באופן כרונולוגי. סדר התגובות הממוזגות מבוסס על השעה והתאריך בהם הם פורסמו."
+
+#: templates/default/bbpress/form-topic-split.php:29
+msgid "When you split a topic, you are slicing it in half starting with the reply you just selected. Choose to use that reply as a new topic with a new title, or merge those replies into an existing topic."
+msgstr "בעת פיצול הדיון, הוא נחתך לשניים החל מהתגובה שנבחרה. יש לבחור את התגובה שממנה יחל דיון חדש עם כותרת חדשה, או שהתגובות הללו  ימוזגו לתוך דיון קיים אחר."
+
+#: templates/default/bbpress/form-topic-split.php:24
+msgid "Split topic \"%s\""
+msgstr "פצל דיון \"%s\""
+
+#: templates/default/bbpress/form-topic-merge.php:106
+#: templates/default/bbpress/form-topic-split.php:110
+msgid "You cannot edit this topic."
+msgstr "אינך יכול לערוך דיון זה."
+
+#: templates/default/bbpress/form-topic-merge.php:106
+#: templates/default/bbpress/form-topic-split.php:110
+msgid "You do not have the permissions to edit this topic!"
+msgstr "אין לך הרשאות לערוך דיון זה!"
+
+#: templates/default/bbpress/form-topic-merge.php:81
+msgid "Merge topic tags"
+msgstr "מיזוג תגיות דיון"
+
+#: templates/default/bbpress/form-topic-merge.php:76
+msgid "Merge topic favoriters"
+msgstr "מיזוג מועדפים"
+
+#: templates/default/bbpress/form-topic-merge.php:71
+msgid "Merge topic subscribers"
+msgstr "מיזוג מנויים של הדיון"
+
+#: templates/default/bbpress/form-topic-merge.php:64
+#: templates/default/bbpress/form-topic-split.php:68
+msgid "Topic Extras"
+msgstr "דיונים נוספים"
+
+#: templates/default/bbpress/form-topic-merge.php:56
+msgid "There are no other topics in this forum to merge with."
+msgstr "אין דיונים אחרים בפורום זה כדי להתמזג עם דיון זה."
+
+#: templates/default/bbpress/form-topic-merge.php:42
+msgid "Merge with this topic:"
+msgstr "מיזוג עם הדיון הזה:"
+
+#: templates/default/bbpress/form-topic-merge.php:38
+msgid "Destination"
+msgstr "יעד"
+
+#: templates/default/bbpress/form-topic-merge.php:34
+msgid "All replies within both topics will be merged chronologically. The order of the merged replies is based on the time and date they were posted. If the destination topic was created after this one, it's post date will be updated to second earlier than this one."
+msgstr "התגובות בשני הדיונים יתמזגו בסדר כרונולוגי. סדר התגובות הממוזגות מבוסס על השעה והתאריך בהם פורסמו. אם דיון היעד נוצר אחרי הדיון הנוכחי, שעת הפרסום שלו תעודכן לשנייה אחת מוקדם יותר מהדיון הנוכחי."
+
+#: templates/default/bbpress/form-topic-merge.php:30
+msgid "To keep this topic as the lead, go to the other topic and use the merge tool from there instead."
+msgstr "כדי להשאיר את הדיון הזה כמוביל, עבור לדיון אחר והשתמש בכלי למזגים דיונים."
+
+#: templates/default/bbpress/form-topic-merge.php:29
+msgid "Select the topic to merge this one into. The destination topic will remain the lead topic, and this one will change into a reply."
+msgstr "בחר את הדיון אותו הינך מעוניין למזג לתוך זה. דיון היעד עדיין יישאר, ומיזוג זה יכנס בתור תגובה לדיון היעד."
+
+#: templates/default/bbpress/form-topic-merge.php:24
+msgid "Merge topic \"%s\""
+msgstr "מיזוג דיון \"%s\""
+
+#: templates/default/bbpress/form-search.php:14
+msgid "Search for:"
+msgstr "חיפוש:"
+
+#: templates/default/bbpress/form-reply.php:174
+msgid "You must be logged in to reply to this topic."
+msgstr "יש להתחבר למערכת על מנת להגיב."
+
+#: templates/default/bbpress/form-reply.php:174
+msgid "You cannot reply to this topic."
+msgstr "אינך יכול להגיב לדיון זה."
+
+#: templates/default/bbpress/form-reply.php:166
+#: templates/default/bbpress/form-topic.php:226
+msgid "The forum &#8216;%s&#8217; is closed to new topics and replies."
+msgstr "הפורום '%s' נסגר לדיונים ולתגובות חדשות."
+
+#: templates/default/bbpress/form-reply.php:158
+msgid "The topic &#8216;%s&#8217; is closed to new replies."
+msgstr "הדיון '%s' סגור לתגובות חדשות."
+
+#: templates/default/bbpress/form-reply.php:118
+#: templates/default/bbpress/form-topic.php:188
+msgid "Optional reason for editing:"
+msgstr "סיבה אופציונלית לעריכה."
+
+#: templates/default/bbpress/form-reply.php:114
+#: templates/default/bbpress/form-topic.php:184
+msgid "Keep a log of this edit:"
+msgstr "שמור יומן רישום של עריכה זו:"
+
+#: templates/default/bbpress/form-reply.php:97
+#: templates/default/bbpress/form-topic.php:168
+msgid "Notify me of follow-up replies via email"
+msgstr "הודיעו לי על תגובות חדשות באמצעות הדוא\"ל"
+
+#: templates/default/bbpress/form-reply.php:93
+#: templates/default/bbpress/form-topic.php:164
+msgid "Notify the author of follow-up replies via email"
+msgstr "קבלו עדכונים על תגובות נוספות באמצעות האימייל"
+
+#: templates/default/bbpress/form-reply.php:75
+msgid "Tags:"
+msgstr "תגיות:"
+
+#: templates/default/bbpress/form-reply.php:36
+msgid "This topic is marked as closed to new replies, however your posting capabilities still allow you to do so."
+msgstr "דיון זה מסומן כסגור לתגובות חדשות, אולם הרשאות הפרסום שלך עדיין מאפשרות לך לעשות זאת."
+
+#: templates/default/bbpress/form-reply-move.php:85
+msgid "You cannot edit this reply."
+msgstr "אינך יכול לערך תגובה זו."
+
+#: templates/default/bbpress/form-reply-move.php:85
+msgid "You do not have the permissions to edit this reply!"
+msgstr "אין לך הרשאות לערוך תגובה זו."
+
+#: templates/default/bbpress/form-reply-move.php:68
+#: templates/default/bbpress/form-topic-merge.php:89
+#: templates/default/bbpress/form-topic-split.php:93
+msgid "<strong>WARNING:</strong> This process cannot be undone."
+msgstr "<strong>זהירות:</strong> פעולה זו אינה ניתנת לביטול."
+
+#: templates/default/bbpress/form-reply-move.php:49
+#: templates/default/bbpress/form-topic-split.php:49
+msgid "Use an existing topic in this forum:"
+msgstr "השתמש בדיונים הקיימים בפורום זה:"
+
+#: templates/default/bbpress/form-reply-move.php:42
+msgid "Moved: %s"
+msgstr "הועברו: %s"
+
+#: templates/default/bbpress/form-reply-move.php:41
+#: templates/default/bbpress/form-topic-split.php:41
+msgid "New topic in <strong>%s</strong> titled:"
+msgstr "דיון חדש תחת הכותרת <strong>%s</strong>:"
+
+#: templates/default/bbpress/form-reply-move.php:37
+msgid "Move Method"
+msgstr "שיטת העברה"
+
+#: templates/default/bbpress/form-reply-move.php:33
+msgid "If you choose an existing topic, replies will be ordered by the time and date they were created."
+msgstr "אם אתה בוחר נושא קיים, תגובות יופיעו לפי התאריך והשעה בהם פורסמו."
+
+#: templates/default/bbpress/form-reply-move.php:29
+msgid "You can either make this reply a new topic with a new title, or merge it into an existing topic."
+msgstr "אתה יכול ליצור מהתגובה נושא חדש עם כותרת חדשה, או לשלב אותה לנושא קיים."
+
+#: templates/default/bbpress/form-reply-move.php:24
+msgid "Move reply \"%s\""
+msgstr "העבר תגובה אל \"%s\""
+
+#: templates/default/bbpress/form-protected.php:14
+msgid "Protected"
+msgstr "מוגן"
+
+#: templates/default/bbpress/form-forum.php:169
+msgid "You must be logged in to create new forums."
+msgstr "עליך להיכנס כדי ליצור פורומים חדשים."
+
+#: templates/default/bbpress/form-forum.php:169
+msgid "You cannot create new forums."
+msgstr "אין לך יכולת ליצור פורום חדש."
+
+#: templates/default/bbpress/form-forum.php:161
+msgid "The forum &#8216;%s&#8217; is closed to new content."
+msgstr "הפורום &#8216;%s&#8217; סגור לתוכן חדש."
+
+#: templates/default/bbpress/form-forum.php:138
+#: templates/default/bbpress/form-reply-move.php:72
+#: templates/default/bbpress/form-reply.php:135
+#: templates/default/bbpress/form-topic-merge.php:93
+#: templates/default/bbpress/form-topic-split.php:97
+#: templates/default/bbpress/form-topic.php:203
+msgid "Submit"
+msgstr "שליחה"
+
+#: templates/default/bbpress/form-forum.php:123
+msgid "(No Parent)"
+msgstr "(ללא אב)"
+
+#: templates/default/bbpress/form-forum.php:91
+msgid "Forum Type:"
+msgstr "סוג פורום:"
+
+#: templates/default/bbpress/form-forum.php:82
+#: templates/default/bbpress/form-reply.php:64
+#: templates/default/bbpress/form-topic.php:90
+msgid "You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags and attributes:"
+msgstr "אתה יכול להשתמש בתגיות <abbr title=\"HyperText Markup Language\">HTML</abbr> והתכונות הבאות:"
+
+#: templates/default/bbpress/form-forum.php:67
+msgid "Forum Name (Maximum Length: %d):"
+msgstr "שם הפורום (מקסימום %d תוים):"
+
+#: templates/default/bbpress/form-forum.php:55
+#: templates/default/bbpress/form-reply.php:44
+#: templates/default/bbpress/form-topic.php:61
+msgid "Your account has the ability to post unrestricted HTML content."
+msgstr "לחשבון זה יש יכולת בלתי מוגבלת לפרסם תוכן HTML."
+
+#: templates/default/bbpress/form-forum.php:47
+msgid "This forum is closed to new content, however your account still allows you to do so."
+msgstr "פורום זה סגור כעת מפני הוספת תוכן חדש, עם זאת חשבונך עדיין יאפשר לעשות זאת."
+
+#: templates/default/bbpress/form-forum.php:37
+msgid "Create New Forum in &ldquo;%s&rdquo;"
+msgstr "יצירת פורום חדש תחת &ldquo;%s&rdquo;"
+
+#: templates/default/bbpress/form-forum.php:35
+#: templates/default/bbpress/form-topic.php:41
+msgid "Now Editing &ldquo;%s&rdquo;"
+msgstr "עריכת \"%s\""
+
+#: templates/default/bbpress/form-anonymous.php:27
+msgid "Mail (will not be published) (required):"
+msgstr "דוא\"ל (לא יפורסם) (חובה):"
+
+#: templates/default/bbpress/form-anonymous.php:22
+msgid "Name (required):"
+msgstr "שם (חובה):"
+
+#: templates/default/bbpress/form-anonymous.php:17
+msgid "Your information:"
+msgstr "פרטים:"
+
+#: templates/default/bbpress/feedback-no-topics.php:13
+msgid "Oh bother! No topics were found here!"
+msgstr "לא נמצאו דיונים!"
+
+#: templates/default/bbpress/feedback-no-search.php:13
+msgid "Oh bother! No search results were found here!"
+msgstr "אין תוצאות לחיפוש!"
+
+#: templates/default/bbpress/feedback-no-replies.php:13
+msgid "Oh bother! No replies were found here!"
+msgstr "מה קורה פה! אין כאן עדיין תגובות!"
+
+#: templates/default/bbpress/feedback-no-forums.php:13
+msgid "Oh bother! No forums were found here!"
+msgstr "הו! שיט! לא נמצאו כאן פורומים."
+
+#: templates/default/bbpress/feedback-no-access.php:16
+msgid "You do not have permission to view this forum."
+msgstr "אין לך הרשאות לצפות בפורום זה."
+
+#: templates/default/bbpress/feedback-no-access.php:13
+msgid "Private"
+msgstr "פרטי"
+
+#: templates/default/bbpress/feedback-logged-in.php:13
+msgid "You are already logged in."
+msgstr "אתה כבר מחובר."
+
+#: templates/default/bbpress/content-statistics.php:64
+msgid "Hidden Replies"
+msgstr "תגובות מוסתרות"
+
+#: templates/default/bbpress/content-statistics.php:53
+msgid "Hidden Topics"
+msgstr "דיונים מוסתרים"
+
+#: templates/default/bbpress/content-statistics.php:44
+msgid "Empty Topic Tags"
+msgstr "אין תגיות"
+
+#: templates/default/bbpress/content-statistics.php:17
+msgid "Registered Users"
+msgstr "משתמשים רשומים"
+
+#: includes/users/template.php:1476
+msgid "Registration complete. Please check your e-mail."
+msgstr "ההרשמה הושלמה. נא לבדוק את הדואר האלקטרוני שלך."
+
+#: includes/users/template.php:1471
+msgid "Check your e-mail for your new password."
+msgstr "ססמתך החדשה נשלחה לדואר האלקטרוני שלך."
+
+#: includes/users/template.php:1466
+msgid "Check your e-mail for the confirmation link."
+msgstr "קישור לאישור נשלח לדואר האלקטרוני שלך."
+
+#: includes/users/template.php:1457
+msgid "New user registration is currently not allowed."
+msgstr "כרגע לא ניתן להירשם."
+
+#: includes/users/template.php:1453
+msgid "You are now logged out."
+msgstr "ההתנתקות מהמערכת הושלמה."
+
+#: includes/users/template.php:1255
+msgid "&mdash; No role for this site &mdash;"
+msgstr "- אין תפקיד עבור אתר זה -"
+
+#: includes/users/template.php:1188
+msgid "This user has super admin privileges."
+msgstr "משתמש זה עם הרשאות מנהל ראשי."
+
+#: includes/users/template.php:1188
+msgid "You have super admin privileges."
+msgstr "יש לך הרשאות מנהל ראשי."
+
+#: includes/users/template.php:1163
+msgid "User updated."
+msgstr "משתמש עודכן."
+
+#: includes/users/template.php:895
+msgid "Favorited"
+msgstr "הסרה מהמועדפים"
+
+#: includes/users/template.php:557
+msgid "Admin"
+msgstr "מערכת ניהול"
+
+#: includes/users/template.php:517
+msgid "Member"
+msgstr "חבר"
+
+#: includes/users/template.php:507
+msgid "Inactive"
+msgstr "לא פעיל"
+
+#: includes/users/template.php:503
+msgid "Guest"
+msgstr "אורח"
+
+#: includes/users/functions.php:1331
+msgid "<strong>ERROR</strong>: There was a problem subscribing to that topic!"
+msgstr "<strong>שגיאה</strong>: הייתה בעיה להרשם לדיון זה!"
+
+#: includes/users/functions.php:1329
+msgid "<strong>ERROR</strong>: There was a problem unsubscribing from that topic!"
+msgstr "<strong>שגיאה</strong>: הייתה בעיה לבטל רישום מדיון זה!"
+
+#: includes/users/functions.php:1276
+msgid "<strong>ERROR</strong>: No topic was found! Which topic are you subscribing/unsubscribing to?"
+msgstr "<strong>שגיאה</strong>: לא נמצא דיון! לאיזה דיון אתה נרשם\\מבטל רישום?"
+
+#: includes/users/functions.php:1225
+msgid "<strong>ERROR</strong>: There was a problem subscribing to that forum!"
+msgstr "<strong>תקלה</strong>: היית בעיה להרשם לפורום זה"
+
+#: includes/users/functions.php:1223
+msgid "<strong>ERROR</strong>: There was a problem unsubscribing from that forum!"
+msgstr "<strong>תקלה</strong>: היית בעיה לבטל הרשמה לפורום זה"
+
+#: includes/users/functions.php:1170
+msgid "<strong>ERROR</strong>: No forum was found! Which forum are you subscribing/unsubscribing to?"
+msgstr "<strong>תקלה</strong>: לא נמצאו פורומים! לאיזה פורום נרשמת/ביטלת הרשמות?"
+
+#: includes/users/functions.php:508
+msgid "<strong>ERROR</strong>: There was a problem favoriting that topic!"
+msgstr "<strong>שגיאה</strong>: הייתה בעיה להוסיף דיון זה למועדפים!"
+
+#: includes/users/functions.php:506
+msgid "<strong>ERROR</strong>: There was a problem removing that topic from favorites!"
+msgstr "<strong>שגיאה</strong>: הייתה בעיה למחוק דיון זה מהמועדפים!"
+
+#: includes/users/functions.php:463 includes/users/functions.php:1178
+#: includes/users/functions.php:1284
+msgid "<strong>ERROR</strong>: You don't have the permission to edit favorites of that user!"
+msgstr "<strong>שגיאה</strong>: אין לך הרשאה לערוך את המועדפים של משתמש זה!"
+
+#: includes/users/functions.php:455
+msgid "<strong>ERROR</strong>: No topic was found! Which topic are you marking/unmarking as favorite?"
+msgstr "<strong>שגיאה</strong>: לא נמצא דיון! איזה דיון אתה מסמן\\מבטל כמועדף?"
+
+#: includes/topics/template.php:3375
+msgid "View Topic Tag"
+msgstr "הצג תגית דיון"
+
+#: includes/topics/template.php:3374
+msgid "New Tag Name"
+msgstr "תגית חדשה"
+
+#: includes/topics/template.php:3373
+msgid "Add New Tag"
+msgstr "הוסף תג חדש"
+
+#: includes/topics/template.php:3372
+msgid "Update Tag"
+msgstr "עדכן תג"
+
+#: includes/topics/template.php:3371
+msgid "Edit Tag"
+msgstr "עריכת תג"
+
+#: includes/topics/template.php:3370
+msgid "All Tags"
+msgstr "כל התגיות"
+
+#: includes/topics/template.php:3369
+msgid "Popular Tags"
+msgstr "תגיות פופולריות"
+
+#: includes/topics/template.php:3368
+msgid "Search Tags"
+msgstr "חיפוש תגיות"
+
+#: includes/topics/template.php:3366
+#: templates/default/bbpress/content-statistics.php:37
+msgid "Topic Tags"
+msgstr "תגיות"
+
+#: includes/topics/template.php:3320
+msgid "This topic has no replies."
+msgstr "לדיון זה אין תגובות."
+
+#: includes/topics/template.php:3316
+msgid "This topic contains %1$s and has %2$s."
+msgstr "דיון זה מכיל %1$s ויש לו %2$s."
+
+#: includes/topics/template.php:3312
+msgid "This topic contains %1$s, has %2$s, and was last updated by %3$s %4$s."
+msgstr "הדיון הזה מכיל %1$s, ויש לו %2$s, והוא עודכן לאחרונה ע״י %3$s %4$s."
+
+#: includes/topics/template.php:3306
+msgid "%s voice"
+msgid_plural "%s voices"
+msgstr[0] "משתתף %s"
+msgstr[1] "%s משתתפים"
+
+#: includes/topics/template.php:3046
+msgid "This topic is in the trash."
+msgstr "הדיון נמחק."
+
+#: includes/topics/template.php:3041
+msgid "This topic is marked as spam."
+msgstr "דיון זה מסומן כהודעת זבל."
+
+#: includes/topics/template.php:2981
+msgid "Viewing topic %2$s (of %4$s total)"
+msgid_plural "Viewing %1$s topics - %2$s through %3$s (of %4$s total)"
+msgstr[0] "מוצג דיון %2$s (מתוך %4$s סה״כ)"
+msgstr[1] "מוצגים %1$s דיונים – %2$s עד %3$s (מתוך %4$s סה״כ)"
+
+#: includes/topics/template.php:2977
+msgid "Viewing %1$s topic"
+msgid_plural "Viewing %1$s topics"
+msgstr[0] "מוצג דיון %1$s"
+msgstr[1] "מוצגים %1$s דיונים"
+
+#: includes/topics/template.php:2816
+#: templates/default/bbpress/form-topic-tag.php:59
+#: templates/default/bbpress/form-topic-tag.php:73
+msgid "Merge"
+msgstr "מיזוג"
+
+#: includes/topics/template.php:2686
+msgctxt "Topic Status"
+msgid "Open"
+msgstr "פתוח"
+
+#: includes/topics/template.php:2685
+msgctxt "Topic Status"
+msgid "Close"
+msgstr "סגור"
+
+#: includes/topics/template.php:2295
+msgid "Tagged:"
+msgstr "תגיות:"
+
+#: includes/topics/template.php:1892
+msgid "Unfavorite"
+msgstr "לא מועדף"
+
+#: includes/topics/template.php:1891 includes/users/template.php:894
+msgid "Favorite"
+msgstr "הוספה למועדפים"
+
+#: includes/topics/template.php:993
+msgid "This topic was modified %1$s by %2$s."
+msgstr "הדיון הזה עודכן %1$s ע״י%2$s."
+
+#: includes/topics/template.php:991
+msgid "This topic was modified %1$s by %2$s. Reason: %3$s"
+msgstr "הדיון הזה עודכן %1$s ע״י %2$s בגלל: %3$s"
+
+#: includes/topics/template.php:60
+msgid "No topics found in Trash"
+msgstr "לא נמצאו דיונים בפח"
+
+#: includes/topics/template.php:59
+msgid "No topics found"
+msgstr "לא נמצאו דיונים"
+
+#: includes/topics/template.php:58
+msgid "Search Topics"
+msgstr "חיפוש דיונים"
+
+#: includes/topics/template.php:56 includes/topics/template.php:57
+msgid "View Topic"
+msgstr "הצג דיון"
+
+#: includes/topics/template.php:54
+msgid "Edit Topic"
+msgstr "עריכת דיון"
+
+#: includes/topics/template.php:52 templates/default/bbpress/form-topic.php:43
+msgid "Create New Topic"
+msgstr "דיון חדש"
+
+#: includes/topics/template.php:51 includes/topics/template.php:55
+msgid "New Topic"
+msgstr "דיון חדש"
+
+#: includes/topics/functions.php:2158
+msgid "<strong>ERROR</strong>: There was a problem deleting the topic."
+msgstr "<strong>שגיאה</strong>: היתה בעיה למחוק דיון זה."
+
+#: includes/topics/functions.php:2150
+msgid "<strong>ERROR</strong>: There was a problem untrashing the topic."
+msgstr "<strong>שגיאה</strong>: הייתה בעיה לשחזר את הדיון מהפח."
+
+#: includes/topics/functions.php:2142
+msgid "<strong>ERROR</strong>: There was a problem trashing the topic."
+msgstr "<strong>שגיאה</strong>: הייתה בעיה לזרוק את הדיון לפח."
+
+#: includes/topics/functions.php:2123
+msgid "<strong>ERROR</strong>: There was a problem marking the topic as spam."
+msgstr "<strong>שגיאה</strong>: הייתה בעיה לסמן דיון זה כהודעת זבל."
+
+#: includes/topics/functions.php:2123
+msgid "<strong>ERROR</strong>: There was a problem unmarking the topic as spam."
+msgstr "<strong>שגיאה</strong>: הייתה בעיה לסמן דיון זה כלגיטימי."
+
+#: includes/topics/functions.php:2113
+msgid "<strong>ERROR</strong>: There was a problem sticking the topic."
+msgstr "<strong>שגיאה</strong>: הייתה בעיה להדביק את הדיון."
+
+#: includes/topics/functions.php:2113
+msgid "<strong>ERROR</strong>: There was a problem unsticking the topic."
+msgstr "<strong>שגיאה</strong>: הייתה בעיה להפוך דיון ללא דביק."
+
+#: includes/topics/functions.php:2102
+msgid "<strong>ERROR</strong>: There was a problem opening the topic."
+msgstr "<strong>שגיאה</strong>: הייתה בעיה לפתוח דיון זה."
+
+#: includes/topics/functions.php:2102
+msgid "<strong>ERROR</strong>: There was a problem closing the topic."
+msgstr "<strong>שגיאה</strong>: הייתה בעיה לסגור דיון זה."
+
+#: includes/topics/functions.php:2089
+msgid "<strong>ERROR:</strong> You do not have the permission to do that."
+msgstr "<strong>שגיאה</strong>: אין לך הרשאה לעשות את זה."
+
+#: includes/topics/functions.php:1984
+msgctxt "Make topic super sticky"
+msgid "Super Sticky"
+msgstr "סופר דביק"
+
+#: includes/topics/functions.php:1983
+msgctxt "Make topic sticky"
+msgid "Sticky"
+msgstr "דביק"
+
+#: includes/topics/functions.php:1982
+msgctxt "Unstick a topic"
+msgid "Normal"
+msgstr "רגיל"
+
+#: includes/topics/functions.php:1969
+msgctxt "Mark topic as pending"
+msgid "Pending"
+msgstr "ממתין לאישור"
+
+#: includes/topics/functions.php:1968
+msgctxt "Trash the topic"
+msgid "Trash"
+msgstr "מחק"
+
+#: includes/topics/functions.php:1967
+msgctxt "Spam the topic"
+msgid "Spam"
+msgstr "הודעות זבל"
+
+#: includes/topics/functions.php:1966
+msgctxt "Close the topic"
+msgid "Closed"
+msgstr "סגור"
+
+#: includes/topics/functions.php:1965
+msgctxt "Open the topic"
+msgid "Open"
+msgstr "פתוח"
+
+#: includes/topics/functions.php:1931
+msgid "<strong>ERROR</strong>: The following problem(s) have been found while deleting the tag: %s"
+msgstr "<strong>שגיאה</strong>: הבעיה\\בעיות הבאות נמצאו בזמן מחיקת התג: %s"
+
+#: includes/topics/functions.php:1922
+msgid "<strong>ERROR</strong>: You do not have the permissions to delete the topic tags."
+msgstr "<strong>שגיאה</strong>: אין לך הרשאות למחוק תגים בדיון זה."
+
+#: includes/topics/functions.php:1890
+msgid "<strong>ERROR</strong>: The tags which are being merged can not be the same."
+msgstr "<strong>שגיאה</strong>: התגים הממוזגים לא יכולים להיות זהים."
+
+#: includes/topics/functions.php:1881 includes/topics/functions.php:1899
+msgid "<strong>ERROR</strong>: The following problem(s) have been found while merging the tags: %s"
+msgstr "<strong>שגיאה</strong>: הבעיות הבאות נמצאו בזמן מיזוג התגים: %s"
+
+#: includes/topics/functions.php:1842
+msgid "<strong>ERROR</strong>: The following problem(s) have been found while updating the tag: %s"
+msgstr "<strong>שגיאה</strong>: הבעיה\\בעיות הבאות נמצאו בזמן עדכון התג %s"
+
+#: includes/topics/functions.php:1832 includes/topics/functions.php:1871
+msgid "<strong>ERROR</strong>: You need to enter a tag name."
+msgstr "<strong>שגיאה</strong>: יש להוסיף תג."
+
+#: includes/topics/functions.php:1826 includes/topics/functions.php:1865
+msgid "<strong>ERROR</strong>: You do not have the permissions to edit the topic tags."
+msgstr "<strong>שגיאה</strong>: אין לך הרשאות לערוך תגים בדיון זה."
+
+#: includes/topics/functions.php:1808
+msgid "<strong>ERROR</strong>: The following problem(s) have been found while getting the tag: %s"
+msgstr "<strong>שגיאה</strong>: הבעיה\\בעיות הבאות נמצאו בזמן קבלת התג: %s"
+
+#: includes/topics/functions.php:1492
+msgid "<strong>ERROR</strong>: The topic you want to split to was not found!"
+msgstr "<strong>שגיאה</strong>: הדיון שברצונך לפצל לא נמצא!"
+
+#: includes/topics/functions.php:1470
+msgid "<strong>ERROR</strong>: You need to choose a valid split option."
+msgstr "<strong>שגיאה</strong>: אתה צריך לבחור באפשרות חוקית כדי לפצל."
+
+#: includes/topics/functions.php:1452
+msgid "<strong>ERROR</strong>: The topic you want to split was not found."
+msgstr "<strong>שגיאה</strong>: הדיון שברצונך לפצל לא נמצא."
+
+#: includes/topics/functions.php:1443
+msgid "<strong>ERROR</strong>: The reply you want to split from was not found."
+msgstr "<strong>שגיאה</strong>: התגובה שברצונך לפצל לא נמצאה."
+
+#: includes/topics/functions.php:1435
+msgid "<strong>ERROR</strong>: Reply ID to split the topic from not found!"
+msgstr "<strong>שגיאה</strong>: לא נמצא מספר ה־ID לפיצול הדיון!"
+
+#: includes/topics/functions.php:1182
+msgid "<strong>ERROR</strong>: You do not have the permissions to edit the destination topic."
+msgstr "<strong>שגיאה</strong>: אין לך הרשאות לערוך את יעד הדיון."
+
+#: includes/topics/functions.php:1178
+msgid "<strong>ERROR</strong>: The topic you want to merge to was not found."
+msgstr "<strong>שגיאה</strong>: הדיון המועמד לשילוב לא נמצא."
+
+#: includes/topics/functions.php:1172
+msgid "<strong>ERROR</strong>: Destination topic ID not found."
+msgstr "<strong>שגיאה</strong>: מספר ה־ID של הדיון לא נמצא."
+
+#: includes/topics/functions.php:1158
+msgid "<strong>ERROR</strong>: The topic you want to merge was not found."
+msgstr "<strong>שגיאה</strong>: הדיון שאתה רוצה למזג לא נמצא."
+
+#: includes/topics/functions.php:602
+msgid "<strong>ERROR</strong>: Your topic cannot be edited at this time."
+msgstr "<strong>שגיאה</strong>: לא ניתן לערוך דיונים בשלב זה."
+
+#: includes/topics/functions.php:550
+msgid "<strong>ERROR</strong>: This forum is a category. No topics can be created in it."
+msgstr "<strong>שגיאה</strong>: פורום זה קטגוריה. אי אפשר לכתוב בו דיונים."
+
+#: includes/topics/functions.php:504
+msgid "<strong>ERROR</strong>: You do not have permission to edit that topic."
+msgstr "<strong>שגיאה</strong>: אין לך הרשאה לערוך דיון זה."
+
+#: includes/topics/functions.php:493
+msgid "<strong>ERROR</strong>: The topic you want to edit was not found."
+msgstr "<strong>שגיאה</strong>: הדיון שאתה רוצה לערוך לא נמצא."
+
+#: includes/topics/functions.php:482 includes/topics/functions.php:1146
+msgid "<strong>ERROR</strong>: Topic ID not found."
+msgstr "<strong>שגיאה</strong>: מספר ה ID של הדיון לא נמצא."
+
+#: includes/topics/functions.php:270
+msgid "<strong>ERROR</strong>: Your topic cannot be created at this time."
+msgstr "<strong>שגיאה</strong>: לא ניתן ליצור דיונים בשלב זה."
+
+#: includes/topics/functions.php:265
+msgid "<strong>ERROR</strong>: Duplicate topic detected; it looks as though you&#8217;ve already said that!"
+msgstr "<strong>שגיאה</strong>: אותר דיון כפול; נראה שכבר אמרת את זה!"
+
+#: includes/topics/functions.php:251 includes/topics/functions.php:569
+msgid "<strong>ERROR</strong>: This forum is hidden and you do not have the capability to read or create new topics in it."
+msgstr "<strong>שגיאה</strong>: פורום זה נסתר ואין לך יכולת לקרוא או לכתוב בו דיונים חדשים."
+
+#: includes/topics/functions.php:245 includes/topics/functions.php:563
+msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new topics in it."
+msgstr "<strong>שגיאה</strong>: זהו פורום פרטי ואין לך הרשאות לקרוא או לכתוב בו דיונים חדשים."
+
+#: includes/topics/functions.php:239 includes/topics/functions.php:557
+msgid "<strong>ERROR</strong>: This forum has been closed to new topics."
+msgstr "<strong>שגיאה</strong>: פורום זה סגור לדיונים חדשים."
+
+#: includes/topics/functions.php:232
+msgid "<strong>ERROR</strong>: This forum is a category. No topics can be created in this forum."
+msgstr "<strong>שגיאה</strong>: פורום זה הוא קטגוריה. דיונים לא יכולים להתווצר בפורום זה."
+
+#: includes/topics/functions.php:187 includes/topics/functions.php:597
+msgid "<strong>ERROR</strong>: Your topic cannot be empty."
+msgstr "<strong>שגיאה</strong>: יש להזין תוכן לדיון."
+
+#: includes/topics/functions.php:175 includes/topics/functions.php:585
+msgid "<strong>ERROR</strong>: Your topic needs a title."
+msgstr "<strong>שגיאה</strong>: יש להזין כותרת דיון."
+
+#: includes/topics/functions.php:150
+msgid "<strong>ERROR</strong>: You do not have permission to create new topics."
+msgstr "<strong>שגיאה</strong>: אין לך הרשאה ליצור דיונים חדשים."
+
+#: includes/search/template.php:405
+msgid "Viewing %2$s results (of %4$s total)"
+msgid_plural "Viewing %1$s results - %2$s through %3$s (of %4$s total)"
+msgstr[0] "מציג %2$s תוצאות (מתוך %4$s)"
+msgstr[1] "מציג %1$s תוצאות - %2$s עד %3$s (מתוך %4$s)"
+
+#: includes/search/template.php:401
+msgid "Viewing %1$s result"
+msgid_plural "Viewing %1$s results"
+msgstr[0] "מציג %1$s תוצאה"
+msgstr[1] "מציג %1$s תוצאות"
+
+#: includes/search/template.php:229
+msgid "Search Results for '%s'"
+msgstr "תוצאות חיפוש עבור '%s'"
+
+#: includes/replies/template.php:2366
+msgid "Viewing %2$s post (of %4$s total)"
+msgid_plural "Viewing %1$s posts - %2$s through %3$s (of %4$s total)"
+msgstr[0] " מוצגות %2$s תגובות (מתוך %4$s סה״כ)"
+msgstr[1] "מוצגות %1$s תגובות – %2$s עד %3$s (מתוך %4$s סה״כ)"
+
+#: includes/replies/template.php:2362
+msgid "Viewing %1$s post"
+msgid_plural "Viewing %1$s posts"
+msgstr[0] "מציג תגובה %1$s"
+msgstr[1] "מציג %1$s תגובות"
+
+#: includes/replies/template.php:2354
+msgid "Viewing %2$s replies (of %4$s total)"
+msgid_plural "Viewing %1$s replies - %2$s through %3$s (of %4$s total)"
+msgstr[0] "מוצגות %2$s תגובות (מתוך %4$s סה״כ)"
+msgstr[1] "מוצגות %1$s תגובות – %2$s עד %3$s (מתוך %4$s סה״כ)"
+
+#: includes/replies/template.php:2350
+msgid "Viewing %1$s reply"
+msgid_plural "Viewing %1$s replies"
+msgstr[0] "מציג תגובה %1$s"
+msgstr[1] "מציג %1$s תגובות"
+
+#: includes/replies/template.php:2343
+msgid "Viewing %1$s reply thread"
+msgid_plural "Viewing %1$s reply threads"
+msgstr[0] "מציג תגובה משורשרת %1$s"
+msgstr[1] "מציג %1$s תגובות משורשרות"
+
+#: includes/replies/template.php:2237
+msgid "Split the topic from this reply"
+msgstr "פיצול דיון מתוך תגובה זו"
+
+#: includes/replies/template.php:2236
+msgid "Split"
+msgstr "פיצול"
+
+#: includes/replies/template.php:2170
+msgid "Move this reply"
+msgstr "העבר תגובה זו"
+
+#: includes/replies/template.php:2169
+msgid "Move"
+msgstr "העברה"
+
+#: includes/replies/template.php:2106 includes/topics/template.php:2873
+msgid "Unspam"
+msgstr "לא הודעת זבל"
+
+#: includes/replies/template.php:2053 includes/topics/template.php:2634
+msgid "Are you sure you want to delete that permanently?"
+msgstr "האם אתה בטוח שאתה רוצה למחוק את זה לצמיתות?"
+
+#: includes/replies/template.php:2036 includes/topics/template.php:2617
+#: templates/default/bbpress/form-topic-tag.php:88
+#: templates/default/bbpress/form-topic-tag.php:101
+msgid "Delete"
+msgstr "מחק"
+
+#: includes/replies/template.php:1695
+msgid "Cancel"
+msgstr "ביטול"
+
+#: includes/replies/template.php:1210 includes/topics/template.php:1481
+#: includes/users/template.php:1651
+msgid "Visit %s's website"
+msgstr "בקר באתר של %s"
+
+#: includes/replies/template.php:1210 includes/topics/template.php:1481
+#: includes/users/template.php:1651
+msgid "View %s's profile"
+msgstr "הצג פרופיל של %s"
+
+#: includes/replies/template.php:1098 includes/topics/template.php:1368
+#: includes/users/template.php:184
+msgid "Anonymous"
+msgstr "אלמוני"
+
+#: includes/replies/template.php:806
+msgid "This reply was modified %1$s by %2$s."
+msgstr "התגובה הזו עודכנה לפני %1$s ע\"י %2$s."
+
+#: includes/replies/template.php:804
+msgid "This reply was modified %1$s by %2$s. Reason: %3$s"
+msgstr "התגובה הזו עודכנה לפני %1$s ע״י %2$s בגלל: %3$s"
+
+#: includes/replies/template.php:706 includes/topics/template.php:809
+msgctxt "date at time"
+msgid "%1$s at %2$s"
+msgstr "%1$s בשעה %2$s"
+
+#: includes/replies/template.php:60
+msgid "No replies found in Trash"
+msgstr "לא נמצאו תגובות בפח"
+
+#: includes/replies/template.php:59
+msgid "No replies found"
+msgstr "לא נמצאו תגובות"
+
+#: includes/replies/template.php:58
+msgid "Search Replies"
+msgstr "חיפוש תגובות"
+
+#: includes/replies/template.php:56 includes/replies/template.php:57
+msgid "View Reply"
+msgstr "הצג תגובה"
+
+#: includes/replies/template.php:54
+msgid "Edit Reply"
+msgstr "עריכת תגובה"
+
+#: includes/replies/template.php:52
+msgid "Create New Reply"
+msgstr "תגובה חדשה"
+
+#: includes/replies/template.php:51 includes/replies/template.php:55
+msgid "New Reply"
+msgstr "תגובה חדשה"
+
+#: includes/replies/functions.php:2034 includes/topics/functions.php:3464
+msgid "Replies: %s"
+msgstr "תגובות: %s"
+
+#: includes/replies/functions.php:1992
+msgid "All Posts"
+msgstr "כל התגובות"
+
+#: includes/replies/functions.php:1578
+msgid "<strong>ERROR</strong>: There was a problem deleting the reply!"
+msgstr "<strong>שגיאה</strong>: הייתה בעיה למחוק את התגובה!"
+
+#: includes/replies/functions.php:1570
+msgid "<strong>ERROR</strong>: There was a problem untrashing the reply!"
+msgstr "<strong>שגיאה</strong>: הייתה בעיה לשחזר את התגובה מהפח!"
+
+#: includes/replies/functions.php:1562
+msgid "<strong>ERROR</strong>: There was a problem trashing the reply!"
+msgstr "<strong>שגיאה</strong>: הייתה בעיה לזרוק את התגובה לפח!"
+
+#: includes/replies/functions.php:1543
+msgid "<strong>ERROR</strong>: There was a problem marking the reply as spam!"
+msgstr "<strong>שגיאה</strong>: הייתה בעיה לסמן את התגובה כהודעת זבל!"
+
+#: includes/replies/functions.php:1543
+msgid "<strong>ERROR</strong>: There was a problem unmarking the reply as spam!"
+msgstr "<strong>שגיאה</strong>: הייתה בעיה לסמן את התגובה כלגיטימית!"
+
+#: includes/replies/functions.php:1530
+msgid "<strong>ERROR:</strong> You do not have the permission to do that!"
+msgstr "<strong>שגיאה</strong>: אין לך הרשאות לעשות את זה."
+
+#: includes/replies/functions.php:1349 includes/topics/functions.php:1538
+msgid "<strong>ERROR</strong>: You do not have the permissions to create new topics. The reply could not be converted into a topic."
+msgstr "<strong>שגיאה</strong>: אין לך הרשאות ליצור דיון חדש. התגובה אינה יכולה להפוך לדיון."
+
+#: includes/replies/functions.php:1344 includes/topics/functions.php:1533
+msgid "<strong>ERROR</strong>: There was a problem converting the reply into the topic. Please try again."
+msgstr "<strong>שגיאה</strong>: הייתה בעיה להפוך את התגובה לדיון. אנא נסה שוב."
+
+#: includes/replies/functions.php:1299 includes/replies/template.php:571
+#: includes/topics/functions.php:1294 includes/topics/functions.php:1652
+#: templates/default/bbpress/form-reply.php:29
+msgid "Reply To: %s"
+msgstr "מענה ל־%s"
+
+#: includes/replies/functions.php:1290 includes/topics/functions.php:1496
+msgid "<strong>ERROR</strong>: You do not have the permissions to edit the destination topic!"
+msgstr "<strong>שגיאה</strong>: אין לך את ההרשאות לערוך את יעד הדיון!"
+
+#: includes/replies/functions.php:1285
+msgid "<strong>ERROR</strong>: The topic you want to move to was not found!"
+msgstr "<strong>שגיאה</strong>: הדיון שברצונך להעביר לא נמצא."
+
+#: includes/replies/functions.php:1275 includes/topics/functions.php:1483
+msgid "<strong>ERROR</strong>: Destination topic ID not found!"
+msgstr "<strong>שגיאה</strong>: לא נמצא מספר ה־ID של הדיון!"
+
+#: includes/replies/functions.php:1262
+msgid "<strong>ERROR</strong>: You need to choose a valid move option."
+msgstr "<strong>שגיאה</strong>: אתה צריך לבחור אופציה אפשרית."
+
+#: includes/replies/functions.php:1252 includes/topics/functions.php:1164
+#: includes/topics/functions.php:1462
+msgid "<strong>ERROR</strong>: You do not have the permissions to edit the source topic."
+msgstr "<strong>שגיאה</strong>: אין לך הרשאות לערוך תוכן בדיון זה."
+
+#: includes/replies/functions.php:1241
+msgid "<strong>ERROR</strong>: The topic you want to move from was not found."
+msgstr "<strong>שגיאה</strong>: הדיון שממנו ברצונך להעביר לא נמצא."
+
+#: includes/replies/functions.php:1232
+msgid "<strong>ERROR</strong>: The reply you want to move was not found."
+msgstr "<strong>שגיאה</strong>: התגובה שרצית להזיז לא נמצאה."
+
+#: includes/replies/functions.php:1223
+msgid "<strong>ERROR</strong>: Reply ID to move not found!"
+msgstr "<strong>שגיאה</strong>: מספר ה-ID של התגובה לא נמצא!"
+
+#: includes/replies/functions.php:616
+msgid "<strong>ERROR</strong>: Your reply cannot be edited at this time."
+msgstr "<strong>שגיאה</strong>: לא ניתן לערוך תגובות בשלב זה."
+
+#: includes/replies/functions.php:533
+msgid "<strong>ERROR</strong>: You do not have permission to edit that reply."
+msgstr "<strong>שגיאה</strong>: אין לך הרשאה לערוך תגובה זו."
+
+#: includes/replies/functions.php:522
+msgid "<strong>ERROR</strong>: The reply you want to edit was not found."
+msgstr "<strong>שגיאה</strong>: התגובה שניסית לערוך לא נמצאה."
+
+#: includes/replies/functions.php:505
+msgid "<strong>ERROR</strong>: Reply ID not found."
+msgstr "<strong>שגיאה</strong>: מספר ה־ID של התגובה לא נמצא."
+
+#: includes/replies/functions.php:377 includes/replies/functions.php:702
+msgid "<strong>ERROR</strong>: There was a problem adding the tags to the topic."
+msgstr "<strong>שגיאה</strong>: ארעה שגיאה במהלך הוספת התגיות לדיון."
+
+#: includes/replies/functions.php:318
+msgid "<strong>ERROR</strong>: Topic is closed."
+msgstr "<strong>שגיאה</strong>: הדיון סגור."
+
+#: includes/replies/functions.php:294
+msgid "<strong>ERROR</strong>: Your reply cannot be created at this time."
+msgstr "<strong>שגיאה</strong>: לא ניתן להוסיף תגובות בשלב זה."
+
+#: includes/replies/functions.php:289
+msgid "<strong>ERROR</strong>: Duplicate reply detected; it looks as though you&#8217;ve already said that!"
+msgstr "<strong>שגיאה</strong>: תגובה כפולה. נראה שכבר אמרת את זה!"
+
+#: includes/replies/functions.php:279 includes/replies/functions.php:611
+msgid "<strong>ERROR</strong>: Your reply cannot be empty."
+msgstr "<strong>שגיאה</strong>: התגובה לא יכולה להיות ריקה."
+
+#: includes/replies/functions.php:246 includes/replies/functions.php:587
+msgid "<strong>ERROR</strong>: This forum is hidden and you do not have the capability to read or create new replies in it."
+msgstr "<strong>שגיאה</strong>: פורום זה הוא נסתר ואין לך יכולת לקרוא או לכתוב בו תגובות."
+
+#: includes/replies/functions.php:240 includes/replies/functions.php:581
+msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new replies in it."
+msgstr "<strong>שגיאה</strong>: פורום זה הוא פרטי ואין לך יכולת לקרוא או לכתוב בו תגובות."
+
+#: includes/replies/functions.php:234 includes/replies/functions.php:575
+msgid "<strong>ERROR</strong>: This forum has been closed to new replies."
+msgstr "<strong>שגיאה</strong>: פורום זה נסגר לתגובות חדשות."
+
+#: includes/replies/functions.php:227 includes/replies/functions.php:568
+msgid "<strong>ERROR</strong>: This forum is a category. No replies can be created in this forum."
+msgstr "<strong>שגיאה</strong>: פורום זה הינו קטגוריה. אין אפשרות ליצור תגובות בפורום הזה."
+
+#: includes/replies/functions.php:213 includes/topics/functions.php:218
+msgid "<strong>ERROR</strong>: Forum does not exist."
+msgstr "<strong>שגיאה</strong>: הפורום לא קיים."
+
+#: includes/replies/functions.php:209 includes/topics/functions.php:214
+msgid "<strong>ERROR</strong>: Forum ID cannot be a negative number."
+msgstr "<strong>שגיאה</strong>: מספר ה-ID של הפורום לא יכול להיות מספר שלילי."
+
+#: includes/replies/functions.php:195 includes/topics/functions.php:200
+msgid "<strong>ERROR</strong>: Forum ID must be a number."
+msgstr "<strong>שגיאה</strong>: מספר ה-ID של הפורום חייב להיות מספר."
+
+#: includes/replies/functions.php:191 includes/replies/functions.php:205
+#: includes/topics/functions.php:196 includes/topics/functions.php:210
+#: includes/topics/functions.php:535
+msgid "<strong>ERROR</strong>: Forum ID is missing."
+msgstr "<strong>שגיאה</strong>: חסר מספר ID לפורום."
+
+#: includes/replies/functions.php:172
+msgid "<strong>ERROR</strong>: Topic does not exist."
+msgstr "<strong>שגיאה</strong>: הדיון לא קיים."
+
+#: includes/replies/functions.php:168
+msgid "<strong>ERROR</strong>: Topic ID cannot be a negative number."
+msgstr "<strong>שגיאה</strong>: מספר ה-ID של הדיון לא יכול להיות מספר שלילי."
+
+#: includes/replies/functions.php:158
+msgid "<strong>ERROR</strong>: Topic ID must be a number."
+msgstr "<strong>שגיאה</strong>: מספר ה-ID של הדיון חייב להיות מספר."
+
+#: includes/replies/functions.php:154
+msgid "<strong>ERROR</strong>: Topic ID is missing."
+msgstr "<strong>שגיאה</strong>: חסר מספר ID לדיון."
+
+#: includes/replies/functions.php:142
+msgid "<strong>ERROR</strong>: You do not have permission to reply."
+msgstr "<strong>שגיאה</strong>: אין לך הרשאות כדי לענות."
+
+#: includes/forums/template.php:2021
+msgid "This forum is empty."
+msgstr "הפורום ריק."
+
+#: includes/forums/template.php:2017
+msgid "This forum contains %1$s."
+msgstr "בפורום זה יש %1$s."
+
+#: includes/forums/template.php:2015
+msgid "This category contains %1$s."
+msgstr "הקטגוריה מכילה %1$s."
+
+#: includes/forums/template.php:2007
+msgid "This forum contains %1$s and %2$s."
+msgstr "פורום זה מכיל %1$s ו- %2$s."
+
+#: includes/forums/template.php:2005
+msgid "This category contains %1$s and %2$s."
+msgstr "קטגוריה זו כוללת %1$s ו-%2$s."
+
+#: includes/forums/template.php:1995
+msgid "This forum contains %1$s, and was last updated by %2$s %3$s."
+msgstr "בפורום זה יש %1$s, והוא עודכן לאחרונה בתאריך %2$s %3$s."
+
+#: includes/forums/template.php:1993
+msgid "This category contains %1$s, and was last updated by %2$s %3$s."
+msgstr "הקטגוריה מכילה %1$s, והיא עודכנה לאחרונה על ידי %2$s %3$s."
+
+#: includes/forums/template.php:1987
+msgid "This forum contains %1$s and %2$s, and was last updated by %3$s %4$s."
+msgstr "בפורום זה יש כרגע %1$s ו %2$s, והוא עודכן לאחרונה ע״י %3$s %4$s."
+
+#: includes/forums/template.php:1985
+msgid "This category contains %1$s and %2$s, and was last updated by %3$s %4$s."
+msgstr "הקטגוריה הזו מכילה %1$s ו%2$s, והיא עודכנה לאחרונה ע״י%3$s %4$s."
+
+#: includes/forums/template.php:1965 includes/topics/template.php:2102
+msgid "%s reply"
+msgid_plural "%s replies"
+msgstr[0] "תגובה %s"
+msgstr[1] "%s תגובות"
+
+#: includes/forums/template.php:1254 includes/topics/template.php:2118
+msgid " (+ %d hidden)"
+msgstr "(+ %d מוסתר)"
+
+#: includes/forums/template.php:1238 includes/forums/template.php:1976
+msgid "%s topic"
+msgid_plural "%s topics"
+msgstr[0] "דיון %s"
+msgstr[1] "%s דיונים"
+
+#: includes/forums/template.php:841 includes/topics/template.php:1847
+#: includes/users/template.php:1059
+msgid "Unsubscribe"
+msgstr "ביטול הרשמה לעדכונים"
+
+#: includes/forums/template.php:840 includes/topics/template.php:1846
+#: includes/users/template.php:1058
+msgid "Subscribe"
+msgstr "הרשמה לעדכונים"
+
+#: includes/forums/template.php:61 templates/default/bbpress/form-forum.php:118
+msgid "Parent Forum:"
+msgstr "פורום אב:"
+
+#: includes/forums/template.php:60
+msgid "No forums found in Trash"
+msgstr "לא נמצאו פורומים בפח"
+
+#: includes/forums/template.php:59
+msgid "No forums found"
+msgstr "לא נמצאו פורומים"
+
+#: includes/forums/template.php:56 includes/forums/template.php:57
+msgid "View Forum"
+msgstr "הצג פורום"
+
+#: includes/forums/template.php:54
+msgid "Edit Forum"
+msgstr "עריכת פורום"
+
+#: includes/forums/template.php:52 templates/default/bbpress/form-forum.php:37
+msgid "Create New Forum"
+msgstr "פורום חדש"
+
+#: includes/forums/template.php:51 includes/forums/template.php:55
+msgid "New Forum"
+msgstr "פורום חדש"
+
+#: includes/forums/functions.php:1632
+msgctxt "Make forum hidden"
+msgid "Hidden"
+msgstr "מוסתר"
+
+#: includes/forums/functions.php:1631
+msgctxt "Make forum private"
+msgid "Private"
+msgstr "פרטי"
+
+#: includes/forums/functions.php:1630
+msgctxt "Make forum public"
+msgid "Public"
+msgstr "ציבורי"
+
+#: includes/forums/functions.php:1617
+msgctxt "Forum is a category"
+msgid "Category"
+msgstr "קטגוריה"
+
+#: includes/forums/functions.php:1616
+msgctxt "Forum accepts new topics"
+msgid "Forum"
+msgstr "פורום"
+
+#: includes/forums/functions.php:1603
+msgctxt "Close the forum"
+msgid "Closed"
+msgstr "סגור"
+
+#: includes/forums/functions.php:1602
+msgctxt "Open the forum"
+msgid "Open"
+msgstr "פתוח"
+
+#: includes/forums/functions.php:472
+msgid "<strong>ERROR</strong>: Your forum cannot be edited at this time."
+msgstr "<strong>שגיאה</strong>: לא ניתן לערוך את הפורום כרגע."
+
+#: includes/forums/functions.php:405
+msgid "<strong>ERROR</strong>: You do not have permission to edit that forum."
+msgstr "<strong>שגיאה</strong>: אין לך הרשאות לערוך את הפורום הזה."
+
+#: includes/forums/functions.php:400
+msgid "<strong>ERROR</strong>: The forum you want to edit was not found."
+msgstr "<strong>שגיאה</strong>: הפורום שברצונך לערוך לא נמצא."
+
+#: includes/forums/functions.php:384
+msgid "<strong>ERROR</strong>: Forum ID not found."
+msgstr "<strong>שגיאה</strong>: מספר ה-ID של הפורום לא נמצא."
+
+#: includes/forums/functions.php:220
+msgid "<strong>ERROR</strong>: Your forum cannot be created at this time."
+msgstr "<strong>שגיאה</strong>: לא ניתן ליצור את הפורום כרגע."
+
+#: includes/forums/functions.php:215
+msgid "<strong>ERROR</strong>: This forum already exists."
+msgstr "<strong>שגיאה</strong>: הפורום כבר קיים."
+
+#: includes/forums/functions.php:210 includes/replies/functions.php:284
+#: includes/topics/functions.php:260
+msgid "<strong>ERROR</strong>: Slow down; you move too fast."
+msgstr "<strong>שגיאה</strong>: נא להאט, קצב עבודתך מהיר מדי."
+
+#: includes/forums/functions.php:203 includes/forums/functions.php:441
+msgid "<strong>ERROR</strong>: This forum is hidden and you do not have the capability to read or create new forums in it."
+msgstr "<strong>שגיאה</strong>: זהו פורום מוסתר ואין לך את ההרשאות לקרוא או ליצור פורומים בתוכו."
+
+#: includes/forums/functions.php:198 includes/forums/functions.php:436
+msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new forums in it."
+msgstr "<strong>שגיאה</strong>: זהו פורום פרטי ואין לך את ההרשאות לקרוא או ליצור פורומים בתוכו."
+
+#: includes/forums/functions.php:193 includes/forums/functions.php:431
+msgid "<strong>ERROR</strong>: This forum has been closed to new forums."
+msgstr "<strong>שגיאה</strong>: הפורום סגור ליצירת פורומים חדשים תחתיו."
+
+#: includes/forums/functions.php:188
+msgid "<strong>ERROR</strong>: This forum is a category. No forums can be created in this forum."
+msgstr "<strong>שגיאה</strong>: פורום זה הוא בעצם קטגוריה. אי אפשר ליצור פורומים בפורום זה."
+
+#: includes/forums/functions.php:181
+msgid "<strong>ERROR</strong>: Your forum must have a parent."
+msgstr "<strong>שגיאה</strong>: לפורום חייב להיות אב."
+
+#: includes/forums/functions.php:167 includes/forums/functions.php:467
+msgid "<strong>ERROR</strong>: Your forum description cannot be empty."
+msgstr "<strong>שגיאה</strong>: יש למלא את תיאור הפורום."
+
+#: includes/forums/functions.php:155 includes/forums/functions.php:455
+msgid "<strong>ERROR</strong>: Your forum needs a title."
+msgstr "<strong>שגיאה</strong>: יש להזין כותרת לפורום."
+
+#: includes/forums/functions.php:131
+msgid "<strong>ERROR</strong>: You do not have permission to create new forums."
+msgstr "<strong>שגיאה</strong>: אין לך הרשאות ליצור פורומים חדשים."
+
+#: includes/extend/buddypress/notifications.php:165
+msgid "<strong>ERROR</strong>: You do not have permission to mark notifications for that user."
+msgstr "<strong>תקלה</strong>: אין לך הרשאה לסמן אזהרות עבור משתמש זה"
+
+#: includes/extend/buddypress/notifications.php:57
+msgid "You have %d new reply to %s"
+msgstr "יש לך %d תגובות חדשות ל%s"
+
+#: includes/extend/buddypress/notifications.php:55
+msgid "You have %d new reply to %2$s from %3$s"
+msgstr "יש לך %d תגובות חדשות ל%2$s מ%3$s"
+
+#: includes/extend/buddypress/notifications.php:51
+msgid "You have %d new replies"
+msgstr "יש לך %d תגובות חדשות"
+
+#: includes/extend/buddypress/notifications.php:48
+msgid "Topic Replies"
+msgstr "תגובות לדיון"
+
+#: includes/extend/buddypress/loader.php:293
+#: templates/default/bbpress/user-subscriptions.php:34
+msgid "Subscribed Topics"
+msgstr "דיונים במעקב"
+
+#: includes/extend/buddypress/loader.php:105
+msgid "Search Forums..."
+msgstr "חפש בפורומים..."
+
+#: includes/extend/buddypress/groups.php:775
+msgid "This group does not currently have a forum."
+msgstr "בקבוצה זו אין כרגע פורום."
+
+#: includes/extend/buddypress/groups.php:478
+msgid "Group Forum"
+msgstr "פורום קבוצה"
+
+#: includes/extend/buddypress/groups.php:437
+msgctxt "group admin edit screen"
+msgid "Discussion Forum"
+msgstr "פורום דיון"
+
+#: includes/extend/buddypress/groups.php:339
+#: includes/extend/buddypress/groups.php:498
+#: includes/extend/buddypress/notifications.php:161
+#: includes/forums/functions.php:118 includes/forums/functions.php:395
+#: includes/replies/functions.php:116 includes/replies/functions.php:516
+#: includes/replies/functions.php:1246 includes/topics/functions.php:122
+#: includes/topics/functions.php:520 includes/topics/functions.php:1153
+#: includes/topics/functions.php:1456 includes/topics/functions.php:1820
+#: includes/topics/functions.php:1859 includes/topics/functions.php:1916
+#: includes/users/functions.php:459 includes/users/functions.php:1174
+#: includes/users/functions.php:1280 includes/users/functions.php:1407
+#: includes/users/functions.php:1413
+msgid "<strong>ERROR</strong>: Are you sure you wanted to do that?"
+msgstr "<strong>שגיאה</strong>:הנך בטוח שברצונך לבצע פעולה זאת?"
+
+#: includes/extend/buddypress/groups.php:304
+msgid "Save Settings"
+msgstr "שמור הגדרות"
+
+#: includes/extend/buddypress/groups.php:299
+msgid "Network administrators can reconfigure which forum belongs to this group."
+msgstr "מנהל הרשת יכול להגדיר מחדש אילו פורומים ישוייכו לקבוצה."
+
+#: includes/extend/buddypress/groups.php:291
+msgid "Group Forum:"
+msgstr "פורום קבוצתי:"
+
+#: includes/extend/buddypress/groups.php:286
+msgid "Saying no will not delete existing forum content."
+msgstr "אמירת \"לא\" לא תמחק תוכן פורום קיים."
+
+#: includes/extend/buddypress/groups.php:283
+#: includes/extend/buddypress/groups.php:483
+msgid "Yes. I want this group to have a forum."
+msgstr "כן. ברצוני שלקבוצה זו יהיה פורום."
+
+#: includes/extend/buddypress/groups.php:279
+#: includes/extend/buddypress/groups.php:480
+msgid "Create a discussion forum to allow members of this group to communicate in a structured, bulletin-board style fashion."
+msgstr "יצירת פורום דיון כדי לאפשר לחברי קבוצה זו לתקשר באופן מובנה, בסגנון לוח דיונים."
+
+#: includes/extend/buddypress/groups.php:275
+#: includes/extend/buddypress/groups.php:278
+msgid "Group Forum Settings"
+msgstr "הגדרות קבוצת פורומים"
+
+#: includes/extend/buddypress/activity.php:566
+msgid "%1$s replied to the topic %2$s in the forum %3$s"
+msgstr "%1$s הגיב על הדיון %2$s בפורום %3$s"
+
+#: includes/extend/buddypress/activity.php:421
+msgid "%1$s started the topic %2$s in the forum %3$s"
+msgstr "%1$s התחיל את הדיון %2$s בפורום %3$s"
+
+#: includes/extend/buddypress/activity.php:196
+msgid "New forum reply"
+msgstr "תשובת פורום חדשה"
+
+#: includes/extend/buddypress/activity.php:195
+msgid "New forum topic"
+msgstr "נושא פורום חדש"
+
+#: includes/extend/akismet.php:793
+msgid "No recorded history. Akismet has not checked this post."
+msgstr "לא נמצאה היסטוריה לפוסט זה כיוון שאקיזמט לא בדק אותו."
+
+#: includes/extend/akismet.php:735 includes/extend/akismet.php:745
+msgid "Akismet History"
+msgstr "היסטורית אקיזמט"
+
+#: includes/extend/akismet.php:489
+msgid "Akismet was unable to check this post (response: %s), will automatically retry again later."
+msgstr "אקיזמט לא יכל לבדוק פוסט זה ( סיבה: %s ), ניסיון חוזר יקרה מאוחר יותר אוטומטית"
+
+#: includes/extend/akismet.php:475
+msgid "Akismet cleared this post as not spam"
+msgstr "אקיזמט קבע כי פוסט זה נקי מספאם"
+
+#: includes/extend/akismet.php:467 includes/extend/akismet.php:482
+msgid "Post status was changed to %s"
+msgstr "סטטוס הפוסט שונה ל%s"
+
+#: includes/extend/akismet.php:463
+msgid "Akismet caught this post as spam"
+msgstr "אקיסמט סימן תגובה זו כהודעת זבל"
+
+#: includes/extend/akismet.php:405
+msgid "No response"
+msgstr "אין תגובה"
+
+#: includes/extend/akismet.php:316
+msgid "%1$s reported this %2$s as not spam"
+msgstr "%2$s זה אינו הודעת זבל, ע\"פ דיווח מאת %1$s"
+
+#: includes/extend/akismet.php:309
+msgid "%1$s reported this %2$s as spam"
+msgstr "%1$s דיווח/ה על %2$s כהודעת זבל"
+
+#: includes/core/update.php:191
+msgid "Oh, and this is what a reply looks like."
+msgstr "וכך נראית תגובה."
+
+#: includes/core/update.php:190
+msgid "Re: Hello World!"
+msgstr "תשובה: שלום עולם!"
+
+#: includes/core/update.php:189
+msgid "I am the first topic in your new forums."
+msgstr "הדיון הראשון בפורום."
+
+#: includes/core/update.php:188
+msgid "Hello World!"
+msgstr "שלום עולם!"
+
+#: includes/core/update.php:187
+msgid "General chit-chat"
+msgstr "שיחות חולין כלליות"
+
+#: includes/core/update.php:186
+msgid "General"
+msgstr "כללי"
+
+#: includes/core/capabilities.php:531
+msgid "Editable forum roles no longer exist."
+msgstr "תפקידי פורום שניתנים לעריכה לא קיימים יותר."
+
+#: includes/common/widgets.php:1252
+msgid "Recent Replies"
+msgstr "תגובות אחרונות"
+
+#: includes/common/widgets.php:1237
+msgid "Show reply author:"
+msgstr "הצג תגובת מחבר:"
+
+#: includes/common/widgets.php:1235
+msgid "Maximum replies to show:"
+msgstr "מקסימום תגובות שיוצגו:"
+
+#. translators: 1: reply link
+#: includes/common/widgets.php:1184
+msgctxt "widgets"
+msgid "%1$s"
+msgstr "%1$s"
+
+#. translators: 1: reply author, 2: reply link
+#: includes/common/widgets.php:1178
+msgctxt "widgets"
+msgid "%1$s on %2$s"
+msgstr "%1$s ב־%2$s"
+
+#. translators: 1: reply link, 2: reply timestamp
+#: includes/common/widgets.php:1172
+msgctxt "widgets"
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#. translators: 1: reply author, 2: reply link, 3: reply timestamp
+#: includes/common/widgets.php:1166
+msgctxt "widgets"
+msgid "%1$s on %2$s %3$s"
+msgstr "%1$s בשעה %2$s %3$s"
+
+#: includes/common/widgets.php:1081
+msgid "(bbPress) Recent Replies"
+msgstr "(ביביפרס) תגובות אחרונות בפורום"
+
+#: includes/common/widgets.php:1078
+msgid "A list of the most recent replies."
+msgstr "רשימה של תגובות אחרונות בפורום."
+
+#: includes/common/widgets.php:1048
+msgid "Forum Statistics"
+msgstr "סטטיסטיקות פורום"
+
+#: includes/common/widgets.php:951
+msgid "(bbPress) Statistics"
+msgstr "(ביביפרס) סטטיסטיקות"
+
+#: includes/common/widgets.php:948
+msgid "Some statistics from your forum."
+msgstr "סטטיסטיקות של הפורום שלך."
+
+#: includes/common/widgets.php:914
+msgid "Recent Topics"
+msgstr "דיונים אחרונים"
+
+#: includes/common/widgets.php:897
+msgid "Topics With Recent Replies"
+msgstr "פריטים עם תגובות אחרונות"
+
+#: includes/common/widgets.php:896
+#: templates/default/extras/page-forum-statistics.php:34
+msgid "Popular Topics"
+msgstr "דיונים פופולריים"
+
+#: includes/common/widgets.php:895
+msgid "Newest Topics"
+msgstr "פריטים החדשים ביותר"
+
+#: includes/common/widgets.php:893
+msgid "Order By:"
+msgstr "סדר לפי:"
+
+#: includes/common/widgets.php:890
+msgid "Show topic author:"
+msgstr "הצג את מחבר הפריט"
+
+#: includes/common/widgets.php:889 includes/common/widgets.php:1236
+msgid "Show post date:"
+msgstr "הצג תאריך פרסום:"
+
+#: includes/common/widgets.php:877
+msgid "Maximum topics to show:"
+msgstr "הצג מקסימום דיונים:"
+
+#: includes/common/widgets.php:815
+msgctxt "widgets"
+msgid "by %1$s"
+msgstr "על ידי %1$s"
+
+#: includes/common/widgets.php:695
+msgid "(bbPress) Recent Topics"
+msgstr "(ביביפרס) דיונים אחרונים בפורום"
+
+#: includes/common/widgets.php:692
+msgid "A list of recent topics, sorted by popularity or freshness."
+msgstr "רשימה של דיונים אחרונים, מיון לפי דיונים פופולריים או דיונים אחרונים."
+
+#: includes/common/widgets.php:646 includes/common/widgets.php:886
+msgid "\"0\" to show only root - \"any\" to show all"
+msgstr "\"0\" כדי להציג שורש בלבד - \"any\" כדי להציג את הכל."
+
+#: includes/common/widgets.php:640 includes/common/widgets.php:880
+msgid "Parent Forum ID:"
+msgstr "מספר ה-ID של פורום האב:"
+
+#: includes/common/widgets.php:515
+msgid "(bbPress) Forums List"
+msgstr "(ביביפרס) רשימת פורומים"
+
+#: includes/common/widgets.php:512
+msgid "A list of forums with an option to set the parent."
+msgstr "רשימת פורומים עם אפשרות להגדיר פורום אב."
+
+#: includes/common/widgets.php:483 includes/forums/template.php:58
+msgid "Search Forums"
+msgstr "חיפוש בפורומים"
+
+#: includes/common/widgets.php:387
+msgid "(bbPress) Forum Search Form"
+msgstr "(ביביפרס) טופס חיפוש פורום"
+
+#: includes/common/widgets.php:384
+msgid "The bbPress forum search form."
+msgstr "טופס החיפוש של ביביפרס."
+
+#: includes/common/widgets.php:246
+msgid "(bbPress) Topic Views List"
+msgstr "(ביביפרס) רשימת דיונים בפורום"
+
+#: includes/common/widgets.php:243
+msgid "A list of registered optional topic views."
+msgstr "רשימה של תצוגות רשות רשומות לדיונים."
+
+#: includes/common/widgets.php:195
+msgid "Lost Password URI:"
+msgstr "כתובת שחזור סיסמא:"
+
+#: includes/common/widgets.php:190
+msgid "Register URI:"
+msgstr "כתובת הרשמה:"
+
+#: includes/common/widgets.php:185 includes/common/widgets.php:337
+#: includes/common/widgets.php:465 includes/common/widgets.php:634
+#: includes/common/widgets.php:876 includes/common/widgets.php:1030
+#: includes/common/widgets.php:1234
+msgid "Title:"
+msgstr "כותרת:"
+
+#: includes/common/widgets.php:128
+#: templates/default/bbpress/form-user-lost-pass.php:14
+msgid "Lost Password"
+msgstr "שחזור סיסמה"
+
+#: includes/common/widgets.php:122
+#: templates/default/bbpress/form-user-register.php:36
+msgid "Register"
+msgstr "הרשמה"
+
+#: includes/common/widgets.php:103
+msgid "Remember Me"
+msgstr "זכור אותי"
+
+#: includes/common/widgets.php:97
+#: templates/default/bbpress/form-user-login.php:22
+msgid "Password"
+msgstr "סיסמה"
+
+#: includes/common/widgets.php:92
+#: templates/default/bbpress/form-user-edit.php:98
+#: templates/default/bbpress/form-user-login.php:17
+#: templates/default/bbpress/form-user-register.php:23
+msgid "Username"
+msgstr "שם משתמש"
+
+#: includes/common/widgets.php:89 includes/common/widgets.php:110
+#: templates/default/bbpress/form-user-login.php:14
+#: templates/default/bbpress/form-user-login.php:35
+msgid "Log In"
+msgstr "התחבר"
+
+#: includes/common/widgets.php:42
+msgid "(bbPress) Login Widget"
+msgstr "(ביביפרס) וידג׳ט התחברות לפורום"
+
+#: includes/common/widgets.php:39
+msgid "A simple login form with optional links to sign-up and lost password pages."
+msgstr "טופס התחברות עם לינק לעמוד הרשמה ולעמוד שחזור ססמה."
+
+#: includes/common/template.php:2646
+msgid "View: %s"
+msgstr "הצגה:%s"
+
+#: includes/common/template.php:2638
+#: templates/default/bbpress/user-details.php:65
+msgid "Edit %s's Profile"
+msgstr "עריכת הפרופיל של %s"
+
+#: includes/common/template.php:2633
+msgid "Edit Your Profile"
+msgstr "עריכת הפרופיל האישי"
+
+#: includes/common/template.php:2625
+msgid "%s Profile"
+msgstr "פרופיל %s"
+
+#: includes/common/template.php:2621
+msgid "%s Subscriptions"
+msgstr "המנויים %s"
+
+#: includes/common/template.php:2617
+msgid "%s Favorites"
+msgstr "המועדפים %s"
+
+#: includes/common/template.php:2613
+msgid "%s Replies"
+msgstr "%s תגובות"
+
+#: includes/common/template.php:2609
+msgid "%s Topics"
+msgstr "הדיונים %s"
+
+#: includes/common/template.php:2604
+msgctxt "User viewing another users profile"
+msgid "%s's"
+msgstr "%s"
+
+#: includes/common/template.php:2600
+msgctxt "User viewing his/her own profile"
+msgid "Your"
+msgstr "שלי"
+
+#: includes/common/template.php:2582
+msgid "Topic: %s"
+msgstr "דיון: %s"
+
+#: includes/common/template.php:2577
+msgid "Forum: %s"
+msgstr "פורום: %s"
+
+#: includes/common/template.php:2570
+msgid "Topic Tag Edit: %s"
+msgstr "עריכת תגית דיון: %s"
+
+#: includes/common/template.php:2565
+msgid "Reply Edit: %s"
+msgstr "עריכת תגובה: %s"
+
+#: includes/common/template.php:2560
+msgid "Topic Edit: %s"
+msgstr "עריכת דיון: %s"
+
+#: includes/common/template.php:2555
+msgid "Forum Edit: %s"
+msgstr "עריכת פורום: %s"
+
+#: includes/common/template.php:2501
+msgid "Log Out"
+msgstr "יציאה"
+
+#: includes/common/template.php:2233
+msgid "&rsaquo;"
+msgstr "&lsaquo;"
+
+#: includes/common/template.php:2233
+msgid "&lsaquo;"
+msgstr "&rsaquo;"
+
+#: includes/common/template.php:2216 includes/forums/template.php:53
+#: includes/replies/template.php:53 includes/replies/template.php:1910
+#: includes/topics/template.php:53 includes/topics/template.php:2491
+#: templates/default/bbpress/user-details.php:65
+msgid "Edit"
+msgstr "עריכה"
+
+#: includes/common/template.php:2212 includes/common/template.php:2326
+#: includes/common/template.php:2591 includes/core/theme-compat.php:739
+#: templates/default/extras/taxonomy-topic-tag-edit.php:17
+#: templates/default/extras/taxonomy-topic-tag.php:17
+msgid "Topic Tag: %s"
+msgstr "תגית: %s"
+
+#: includes/common/template.php:2208
+msgid "(Edit)"
+msgstr "(עריכה)"
+
+#: includes/common/template.php:2138
+msgid "Home"
+msgstr "ראשי"
+
+#: includes/common/template.php:1467
+msgid "None available"
+msgstr "אינו זמין"
+
+#: includes/common/template.php:1462
+msgid "No forums available"
+msgstr "אין פורומים זמינים"
+
+#: includes/common/template.php:1457
+msgid "No topics available"
+msgstr "אין דיונים זמינים"
+
+#: includes/common/functions.php:2026
+msgid "Conditional query tags do not work before the query is run. Before then, they always return false."
+msgstr "שאילתה מותנה לא עובדות לפני שהשאילתה פועלת. לפני כן, הם תמיד מחזירות שגיאה."
+
+#: includes/common/functions.php:1256
+msgid ""
+"%1$s wrote:\n"
+"\n"
+"%2$s\n"
+"\n"
+"Topic Link: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"You are receiving this email because you subscribed to a forum.\n"
+"\n"
+"Login and visit the topic to unsubscribe from these emails."
+msgstr ""
+"%1$s:\n"
+"\n"
+" \n"
+"%2$s\n"
+"\n"
+"קישור לדיון: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"האימייל הזה הגיע אליך, כי נרשמת לפורום.\n"
+"\n"
+"ניתן להתחבר ולהכנס לפרופיל האישי שלך או לדיון עצמו כדי לבטל הרשמה זו."
+
+#: includes/common/functions.php:1099
+msgid ""
+"%1$s wrote:\n"
+"\n"
+"%2$s\n"
+"\n"
+"Post Link: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"You are receiving this email because you subscribed to a forum topic.\n"
+"\n"
+"Login and visit the topic to unsubscribe from these emails."
+msgstr ""
+"%1$s:\n"
+"\n"
+" \n"
+"%2$s\n"
+"\n"
+"קישור לדיון: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"האימייל הזה הגיע אליך, כי נרשמת לדיון.\n"
+"\n"
+"ניתן להתחבר ולהכנס לפרופיל האישי שלך או לדיון עצמו כדי לבטל הרשמה זו."
+
+#: includes/common/functions.php:628
+msgid "<strong>ERROR</strong>: Invalid email address submitted!"
+msgstr "<strong>שגיאה</strong>: כתובת דוא\"ל לא חוקית!"
+
+#: includes/common/functions.php:624
+msgid "<strong>ERROR</strong>: Invalid author name submitted!"
+msgstr "<strong>שגיאה</strong>: שם המשתמש אינו חוקי!"
+
+#: includes/common/functions.php:514 includes/common/functions.php:546
+msgid "Trashed: %s"
+msgstr "אשפה:%s"
+
+#: includes/common/functions.php:513 includes/common/functions.php:545
+msgid "Spammed: %s"
+msgstr "הודעות זבל: %s"
+
+#: includes/common/functions.php:512 includes/common/functions.php:544
+msgid "Private: %s"
+msgstr "פרטי: %s"
+
+#: includes/common/functions.php:179
+msgctxt "Separator in time since"
+msgid ","
+msgstr ","
+
+#: includes/common/functions.php:124
+msgid "second"
+msgstr "שנייה"
+
+#: includes/common/functions.php:123
+msgid "minute"
+msgstr "דקות"
+
+#: includes/common/functions.php:122
+msgid "hours"
+msgstr "שעות"
+
+#: includes/common/functions.php:122
+msgid "hour"
+msgstr "שעה"
+
+#: includes/common/functions.php:121
+msgid "days"
+msgstr "ימים"
+
+#: includes/common/functions.php:121
+msgid "day"
+msgstr "יום"
+
+#: includes/common/functions.php:120
+msgid "weeks"
+msgstr "שבועות"
+
+#: includes/common/functions.php:120
+msgid "week"
+msgstr "שבוע"
+
+#: includes/common/functions.php:119
+msgid "months"
+msgstr "חודשים"
+
+#: includes/common/functions.php:119
+msgid "month"
+msgstr "חודש"
+
+#: includes/common/functions.php:118
+msgid "years"
+msgstr "שנים"
+
+#: includes/common/functions.php:118
+msgid "year"
+msgstr "שנה"
+
+#: includes/common/functions.php:114
+msgid "%s ago"
+msgstr "לפני %s"
+
+#: includes/common/functions.php:113
+msgid "right now"
+msgstr "כרגע"
+
+#: includes/common/functions.php:112
+msgid "sometime"
+msgstr "מתישהו"
+
+#: includes/admin/users.php:217
+msgid "Site Role"
+msgstr "תפקיד האתר"
+
+#: includes/admin/users.php:144
+msgid "Change"
+msgstr "שינוי"
+
+#: includes/admin/users.php:138 includes/admin/users.php:140
+msgid "Change forum role to&hellip;"
+msgstr "&hellip;שנה את תפקיד הפורום ל"
+
+#: includes/admin/users.php:96 includes/admin/users.php:100
+#: includes/users/template.php:1290
+msgid "&mdash; No role for these forums &mdash;"
+msgstr "&mdash; אין תפקיד לפורומים אלה &mdash;"
+
+#: includes/admin/users.php:87 includes/admin/users.php:218
+#: templates/default/bbpress/form-user-roles.php:20
+msgid "Forum Role"
+msgstr "תפקיד פורום"
+
+#: includes/admin/topics.php:953
+msgid "Topic draft updated. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
+msgstr "טיוטת דיון עודכנה. <a target=\"_blank\" href=\"%s\">תצוגה מקדימה</a>"
+
+#: includes/admin/topics.php:946
+msgid "Topic scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview topic</a>"
+msgstr "דיונים מתוכננים: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">תצוגה מקדימה של הדיון</a>"
+
+#: includes/admin/topics.php:943
+msgid "Topic submitted. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
+msgstr "דיון נשלח. <a target=\"_blank\" href=\"%s\">הצגת דיון</a>"
+
+#: includes/admin/topics.php:940
+msgid "Topic saved."
+msgstr "דיון נשמר."
+
+#: includes/admin/topics.php:937
+msgid "Topic created. <a href=\"%s\">View topic</a>"
+msgstr "דיון פורסם. <a href=\"%s\">הצגת דיון</a>."
+
+#. translators: %s: date and time of the revision
+#: includes/admin/topics.php:933
+msgid "Topic restored to revision from %s"
+msgstr "לשחזר את גרסת הדיון מ -%s"
+
+#: includes/admin/topics.php:928
+msgid "Topic updated."
+msgstr "הדיון עודכן."
+
+#: includes/admin/topics.php:919
+msgid "Topic updated. <a href=\"%s\">View topic</a>"
+msgstr "הדיון עודכן. <a href=\"%s\">הצג דיון</a>."
+
+#: includes/admin/topics.php:809
+msgid "Mark this topic as spam"
+msgstr "סמן דיון זה כהודעת זבל"
+
+#: includes/admin/topics.php:807
+msgid "Mark the topic as not spam"
+msgstr "סמן דיון כלא הודעת זבל."
+
+#: includes/admin/topics.php:800 includes/topics/template.php:2747
+msgid "(to front)"
+msgstr "להעביר לחזית"
+
+#: includes/admin/topics.php:800
+msgid "Stick this topic to front"
+msgstr "הדבק דיון לעמוד הראשי"
+
+#: includes/admin/topics.php:800 includes/topics/template.php:2745
+msgid "Stick"
+msgstr "הפוך לדביק"
+
+#: includes/admin/topics.php:800
+msgid "Stick this topic to its forum"
+msgstr "הפוך דיון לדביק"
+
+#: includes/admin/topics.php:797 includes/topics/template.php:2746
+msgid "Unstick"
+msgstr "לא דביק"
+
+#: includes/admin/topics.php:797
+msgid "Unstick this topic"
+msgstr "לא דביק"
+
+#: includes/admin/topics.php:788
+msgctxt "Open a Topic"
+msgid "Open"
+msgstr "פתוח"
+
+#: includes/admin/topics.php:788
+msgid "Open this topic"
+msgstr "פתח דיון זה"
+
+#: includes/admin/topics.php:786
+msgctxt "Close a Topic"
+msgid "Close"
+msgstr "סגור"
+
+#: includes/admin/topics.php:786
+msgid "Close this topic"
+msgstr "סגור דיון זה"
+
+#: includes/admin/topics.php:729 includes/topics/template.php:2064
+msgid "No Replies"
+msgstr "אין תגובות"
+
+#: includes/admin/topics.php:694 includes/extend/buddypress/groups.php:295
+#: templates/default/bbpress/form-topic.php:117
+msgid "(No Forum)"
+msgstr "(ללא פורום)"
+
+#: includes/admin/topics.php:635 templates/default/bbpress/loop-topics.php:20
+msgid "Voices"
+msgstr "משתתפים"
+
+#: includes/admin/topics.php:599
+msgid "Topic \"%1$s\" successfully unmarked as spam."
+msgstr "הדיון \"%1$s\" סומן כלא הודעת זבל."
+
+#: includes/admin/topics.php:599
+msgid "There was a problem unmarking the topic \"%1$s\" as spam."
+msgstr "היתה בעיה לבטל את הדיון \"%1$s\" כהודעת זבל."
+
+#: includes/admin/topics.php:595
+msgid "Topic \"%1$s\" successfully marked as spam."
+msgstr "הדיון \"%1$s\" סומן כהודעת זבל."
+
+#: includes/admin/topics.php:595
+msgid "There was a problem marking the topic \"%1$s\" as spam."
+msgstr "היתה בעיה לסמן את הדיון \"%1$s\" כהודעת זבל."
+
+#: includes/admin/topics.php:591
+msgid "Topic \"%1$s\" successfully unsticked."
+msgstr "דיון \"%1$s\" שוחרר בהצלחה."
+
+#: includes/admin/topics.php:591
+msgid "There was a problem unsticking the topic \"%1$s\"."
+msgstr "היתה בעיה לשחרר את הדיון \"%1$s\"."
+
+#: includes/admin/topics.php:587
+msgid "Topic \"%1$s\" successfully sticked."
+msgstr "דיון \"%1$s\" הודבק בהצלחה."
+
+#: includes/admin/topics.php:587
+msgid "There was a problem sticking the topic \"%1$s\"."
+msgstr "הייתה בעיה להדביק את הדיון \"%1$s\"."
+
+#: includes/admin/topics.php:583
+msgid "Topic \"%1$s\" successfully sticked to front."
+msgstr "דיון \"%1$s\" הודבק בהצלחה לעמוד הראשי."
+
+#: includes/admin/topics.php:583
+msgid "There was a problem sticking the topic \"%1$s\" to front."
+msgstr "הייתה בעיה להדביק את הדיון \"%1$s\" לעמוד הראשי."
+
+#: includes/admin/topics.php:579
+msgid "Topic \"%1$s\" successfully closed."
+msgstr "דיון \"%1$s\" נסגר בהצלחה."
+
+#: includes/admin/topics.php:579
+msgid "There was a problem closing the topic \"%1$s\"."
+msgstr "היתה בעיה לסגור את הדיון \"%1$s\"."
+
+#: includes/admin/topics.php:575
+msgid "Topic \"%1$s\" successfully opened."
+msgstr "דיון \"%1$s\" נפתח בהצלחה."
+
+#: includes/admin/topics.php:575
+msgid "There was a problem opening the topic \"%1$s\"."
+msgstr "היתה בעיה לפתוח את הדיון \"%1$s\"."
+
+#: includes/admin/topics.php:485
+msgid "The topic was not found!"
+msgstr "הדיון לא נמצא."
+
+#: includes/admin/topics.php:223
+msgid "<strong>Topic Type</strong> dropdown indicates the sticky status of the topic. Selecting the super sticky option would stick the topic to the front of your forums, i.e. the topic index, sticky option would stick the topic to its respective forum. Selecting normal would not stick the topic anywhere."
+msgstr "<strong>סוג דיון</strong> רשימה נגללת המגדירה את סוג הדיון. בחירה בדיון סופר דביק תדביק את הדיון לראש הפורום באינדקס הפורומים. בחירה בדיון דביק תדביק אותו לראש הפורום בו נמצא הדיון. בחירה בדיון רגיל לא תדביק אותו."
+
+#: includes/admin/topics.php:222
+msgid "<strong>Forum</strong> dropdown determines the parent forum that the topic belongs to. Select the forum or category from the dropdown, or leave the default (No Forum) to post the topic without an assigned forum."
+msgstr "<strong>פורום</strong> רשימה נגללת המצביעה על פורום האב אליו שייך הדיון. יש לבחור את הפורום או להשאיר את בררת המחדל (יש להשתמש בפורום של הדיון) כדי לפרסם את הדיון בפורום."
+
+#: includes/admin/topics.php:220
+msgid "Select the attributes that your topic should have:"
+msgstr "יש לבחור את התכונות המיועדות לנושא:"
+
+#: includes/admin/topics.php:218 includes/admin/topics.php:255
+msgid "Topic Attributes"
+msgstr "מאפיינים"
+
+#: includes/admin/topics.php:213
+msgid "<strong>Featured Image</strong> - This allows you to associate an image with your topic without inserting it. This is usually useful only if your theme makes use of the featured image as a topic thumbnail on the home page, a custom header, etc."
+msgstr "<strong>תמונה ראשית</strong> - בתיבה זו אפשר לשייך לדיון תמונה מבלי להוסיף אותה לתוכן. אפשרות זו שימושית רק אם ערכת העיצוב תומכת בתמונות ראשיות, ומציגה אותן בעמוד הראשי, בעמודי ארכיון, בכותרת או במקומות אחרים."
+
+#: includes/admin/topics.php:210
+msgid "<strong>Publish</strong> - You can set the terms of publishing your topic in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a topic or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a topic to be published in the future or backdate a topic."
+msgstr "<strong>לפרסם</strong> - בתיבת הפרסום ניתן להגדיר את תנאי פרסום של הדיון. לשינוי הסוג, הסטטוס או התצוגה לחצו על קישור העריכה כדי לחשוף אפשרויות נוספות. התצוגה כולל אפשרויות הגנה באמצעות סיסמה בדיון או מה שהופך אותו להישאר בחלק העליון של האתר ללא הגבלת זמן (דיון דביק). פרסם (מידי) מאפשר לקבוע תאריך בעתיד או בעבר, כדי לתזמן לפרסום הדיון."
+
+#: includes/admin/topics.php:207
+msgid "<strong>Topic Editor</strong> - Enter the text for your topic. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your topic text. You can insert media files by clicking the icons above the topic editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular topic editor."
+msgstr "<strong>עורך דיונים</strong> - יש להזין הטקסט לדיון. ישנם שני מצבי עריכה: עורך ויזואלי ועורך קוד. יש לבחור את המצב הרצוי על ידי לחיצה על התווית המתאימה. העורך הויזואלי מאפשר לערוך ולראות את הפלט. לחיצה על הסמל האחרון בשורה יציג שורה נוספת של פעולות. עורך קוד מאפשר להיכנס תגיות HTML גולמיות יחד עם התוכן. ניתן להוסיף קבצי מדיה לתוכן על ידי לחיצה על הכפתור מעל העורך. ניתן לגשת למסך כתיבה ללא הסחות-דעת באמצעות כפתור המסך-המלא בעורך הויזואלי (לפני אחרון בשורה העליונה) או באמצעות כפתור המסך-המלא בעורך הקוד (האחרון בשורה). במסך המלא ניתן להציג כפתורי פעולה על ידי ריחוף מעל האזור העליון."
+
+#: includes/admin/topics.php:206
+msgid "<strong>Title</strong> - Enter a title for your topic. After you enter a title, you&#8217;ll see the permalink below, which you can edit."
+msgstr "<strong>כותרת</strong> – הכנסת כותרת לדיון. אחרי הכנסת הכותרת יופיע הקישור למטה ויהיה ניתן לערוך אותו."
+
+#: includes/admin/topics.php:204
+msgid "Title and Topic Editor"
+msgstr "עורך כותרת ותוכן"
+
+#: includes/admin/topics.php:194
+msgid "The title field and the big topic editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "שדה הכותרת ואזור עריכת הדיון הם שדות קבועים, אך שאר השדות ניתנים לסידור והזזה באמצעות גרירה ושחרור, וניתן לצמצם או להרחיב אותם על ידי לחיצה על שורת הכותרת של כל תיבה. ניתן להשתמש באפשרויות מסך כדי להסתיר או לה הציג תיבות נוספות (תיאור, שליחת טראקבקים, שדות מותאמים אישית, דיון, מזהה לכתובת, מחבר) או להגדיר פריסת מסך בטור אחד או שניים."
+
+#: includes/admin/topics.php:173
+msgid "When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected topics at once. To remove a topic from the grouping, just click the x next to its name in the Bulk Edit area that appears."
+msgstr "כאשר הנך משתמש בעדכון קבוצתי, הנך יכול לשנות מטא דטה (קטגוריות, מחבר ועוד...) עבור של הדיונים שנבחרו בבת אחת. אם ברצונך להסיר דיון משינוי קבוצתי, לחץ על X ליד שם הדיון באזור העדכון הקבוצתי שיופיע."
+
+#: includes/admin/topics.php:172
+msgid "You can also edit or move multiple topics to the trash at once. Select the topics you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply."
+msgstr "הנך יכול לעדכן או להזיז את הדיונים כקבוצה בבת אחת. בחר את הדיונים שהנך מעוניין לפעול עמם, לאחר מכן בחר בפעולה הרצויה ברשימת הפעולות, ולחץ על 'בצע'"
+
+#: includes/admin/topics.php:163
+msgid "<strong>Stick <em>(to front)</em></strong> will keep the selected topic &#8217;pinned&#8217; to the top of ALL forums and be visable in any forums topics list."
+msgstr "<strong>הדבק <em>(לעמוד ראשי)</em></strong> ישאיר את הנושא הנבחר &#8217;נעוץ&#8217; לראש כל הפורומים והוא יהיה נראה בכל פורום ברשימת הנושאים."
+
+#: includes/admin/topics.php:162
+msgid "<strong>Stick</strong> will keep the selected topic &#8217;pinned&#8217; to the top the parent forum topic list."
+msgstr "<strong>הדבק</strong> ישאיר את הנושא הנבחר &#8217;נעוץ&#8217; לתחילת רשימת הנושאים של פורום האב."
+
+#: includes/admin/topics.php:161
+msgid "<strong>Close</strong> will mark the selected topic as &#8217;closed&#8217; and disable the option to post new replies to the topic."
+msgstr "<strong>סגירה</strong> ישנה את הסטטוס לסגור ולא יאפשר יותר לפרסם תגובות חדשות."
+
+#: includes/admin/topics.php:160
+msgid "<strong>Preview</strong> will show you what your draft topic will look like if you publish it. View will take you to your live site to view the topic. Which link is available depends on your topic&#8217;s status."
+msgstr "<strong>תצוגה מקדימה</strong> תציג את טיוטת הדיון כפי שהוא יראה לאחר הפרסום. התצוגה תעביר אותך לאתר כדי להציג את הדיון. זמינות הקישור תלויה במצב הדיון."
+
+#: includes/admin/topics.php:159
+msgid "<strong>Spam</strong> removes your topic from this list and places it in the spam queue, from which you can permanently delete it."
+msgstr "<strong>הודעת זבל</strong> מסיר את הדיון מהרשימה הזו ומעביר אותו לרשימת הזבל, משם ניתן למחוק אותו לצמיתות."
+
+#: includes/admin/topics.php:158
+msgid "<strong>Trash</strong> removes your topic from this list and places it in the trash, from which you can permanently delete it."
+msgstr "<strong>העבר לפח</strong> מסיר את הדיון מרשימה זו ומעביר אותו לפח, משם ניתן למחוק אותו לצמיתות."
+
+#: includes/admin/topics.php:157
+msgid "<strong>Edit</strong> takes you to the editing screen for that topic. You can also reach that screen by clicking on the topic title."
+msgstr "<strong>עריכה</strong> יעביר אותך למצב עריכה של הדיון. ניתן גם לעבור למסך הזה בלחיצה על כותרת הדיון."
+
+#: includes/admin/topics.php:155
+msgid "Hovering over a row in the topics list will display action links that allow you to manage your topic. You can perform the following actions:"
+msgstr "מעבר על שורה עם העכבר ברשימת הדיונים תציג קישורי פעולה שיאפשרו לנהל את הדיון. ניתן לבצע את הפעולות הבאות:"
+
+#: includes/admin/topics.php:146
+msgid "You can refine the list to show only topics from a specific month by using the dropdown menus above the topics list. Click the Filter button after making your selection. You also can refine the list by clicking on the topic creator in the topics list."
+msgstr "אתה יכול לסנן את הרשימה להראות רק דיונים מחודש מסויים על ידי שימוש בתפריטים הנפתחים מעל רישמת הדיונים. לחץ על כפתור הסינון אחרי ביצוע הבחירה. ניתן לסנן את הרשימה גם על ידי לחיצה על יוצר הדיון ברשימת הדיונים."
+
+#: includes/admin/topics.php:145
+msgid "You can filter the list of topics by topic status using the text links in the upper left to show All, Published, or Trashed topics. The default view is to show all topics."
+msgstr "ניתן לסנן את רשימת הדיונים לפי סטטוס הדיון על ידי שימוש בקישורי הטקסט בצד ימין למעלה להראות הכל, פורסם או דיונים בפח האשפה. ברירת המחדל היא להראות את כל הדיונים."
+
+#: includes/admin/topics.php:144
+msgid "You can hide/display columns based on your needs and decide how many topics to list per screen using the Screen Options tab."
+msgstr "ניתן להסתיר / להציג עמודות בהתאם לצרכים שלך ולהחליט כיצד תוצג רשימת הדיונים בכל מסך באמצעות \"אפשרויות המסך\"."
+
+#: includes/admin/topics.php:134
+msgid "This screen displays the individual topics on your site. You can customize the display of this screen to suit your workflow."
+msgstr "המסך מציג דיונים ייחודיים באתר שלך. הנך יכול לערך את תצוגת המסך על מנת להתאים לתהליך העבודה שלך"
+
+#: includes/admin/tools.php:1370
+msgid "Deleting Roles and Capabilities&hellip; %s"
+msgstr "התפקידים והיכולות נמחקים&hellip; %s"
+
+#: includes/admin/tools.php:1364
+msgid "Deleting Settings&hellip; %s"
+msgstr "ההגדרות נמחקות&hellip; %s"
+
+#: includes/admin/tools.php:1352
+msgid "Deleting Conversion Table&hellip; %s"
+msgstr "טבלת הדיונים נמחקת&hellip; %s"
+
+#: includes/admin/tools.php:1336 includes/admin/tools.php:1344
+msgid "Deleting User Meta&hellip; %s"
+msgstr "נתוני העל של המשתמשים נמחקים&hellip; %s"
+
+#: includes/admin/tools.php:1331
+msgid "Deleting User&hellip; %s"
+msgstr "משתמש נמחק&hellip; %s"
+
+#: includes/admin/tools.php:1316
+msgid "Deleting Topic Tags&hellip; %s"
+msgstr "מחיקת תגיות נושא&hellip; %s"
+
+#: includes/admin/tools.php:1307
+msgid "Deleting Post Meta&hellip; %s"
+msgstr "נתוני העל של התגובות נמחקות&hellip; %s"
+
+#: includes/admin/tools.php:1294
+msgid "Deleting Posts&hellip; %s"
+msgstr "התגובות נמחקות&hellip; %s"
+
+#: includes/admin/tools.php:1287
+msgid "Success!"
+msgstr "הצליח!"
+
+#: includes/admin/tools.php:1286
+msgid "Failed"
+msgstr "נכשל"
+
+#: includes/admin/tools.php:1253
+msgid "Reset bbPress"
+msgstr "איפוס ביביפרס"
+
+#: includes/admin/tools.php:1245
+msgid "Human sacrifice, dogs and cats living together... mass hysteria!"
+msgstr "קורבנות אדם, כלבים וחתולים חיים יחד ... היסטריה המונית!"
+
+#: includes/admin/tools.php:1244
+msgid "This process cannot be undone."
+msgstr "פעולה זו אינה ניתנת לביטול"
+
+#: includes/admin/tools.php:1240
+msgid "Are you sure you want to do this?"
+msgstr "האם אכן לבצע פעולה זו?"
+
+#: includes/admin/tools.php:1235
+msgid "Note: Resetting without this checked will delete the meta-data necessary to delete these users."
+msgstr "הערה: איפוס בלי לסמן זאת, ימחק את מטא דטה הדרושים כדי למחוק משתמשים אלה."
+
+#: includes/admin/tools.php:1234
+msgid "This option will delete all previously imported users, and cannot be undone."
+msgstr "אפשרות זו תמחק את כל המשתמשים שיובאו בעבר ולא ניתן יהיה לבטל את הפעולה."
+
+#: includes/admin/tools.php:1233 includes/admin/tools.php:1243
+msgid "Say it ain't so!"
+msgstr "אין מצב!"
+
+#: includes/admin/tools.php:1230
+msgid "Delete imported users?"
+msgstr "למחוק משתמשים מיובאים?"
+
+#: includes/admin/tools.php:1226
+msgid "Importer Helper Data"
+msgstr "נתוני מסייע המייבא"
+
+#: includes/admin/tools.php:1225
+msgid "Forum User Roles"
+msgstr "חוקי משתמשים בפורום"
+
+#: includes/admin/tools.php:1224
+msgid "Forum Activity"
+msgstr "פעילות בפורום"
+
+#: includes/admin/tools.php:1223
+msgid "Forum Settings"
+msgstr "הגדרות פורום"
+
+#: includes/admin/tools.php:1222
+msgid "Related Meta Data"
+msgstr "נתוני העל הקשורים"
+
+#: includes/admin/tools.php:1221
+msgid "All Topic Tags"
+msgstr "כל תגי הדיונים"
+
+#: includes/admin/tools.php:1220 includes/replies/functions.php:1994
+#: includes/replies/template.php:50
+msgid "All Replies"
+msgstr "כל התגובות"
+
+#: includes/admin/tools.php:1219 includes/topics/functions.php:3439
+#: includes/topics/template.php:50
+msgid "All Topics"
+msgstr "כל הדיונים"
+
+#: includes/admin/tools.php:1218 includes/forums/template.php:50
+msgid "All Forums"
+msgstr "כל הפורומים"
+
+#: includes/admin/tools.php:1216
+msgid "The following data will be removed:"
+msgstr "המידע הבא יימחק:"
+
+#: includes/admin/tools.php:1210
+msgid "Backup your database before proceeding."
+msgstr "יש לעשות גיבוי לדטא בייס לפני תהליך האיפוס!"
+
+#: includes/admin/tools.php:1209
+msgid "Revert your forums back to a brand new installation. This process cannot be undone."
+msgstr "לאפס את כל מערכת הפורומים לחלוטין. לא ניתן לבטל תהליך זה."
+
+#: includes/admin/tools.php:1100
+msgid "Recalculating the topic for each post &hellip; %s"
+msgstr "מתבצע חישוב מחדש של הדיון עבור כל אחת מהתגובות &hellip; %s"
+
+#: includes/admin/tools.php:1046
+msgid "Recalculating the forum for each post &hellip; %s"
+msgstr "מתבצע חישוב הפורום עבור כל אחת מהתגובות מחדש &hellip; %s"
+
+#: includes/admin/tools.php:1022
+msgid "Recalculating forum visibility &hellip; %s"
+msgstr "חישוב מחדש של נראות הפורום &hellip; %s"
+
+#: includes/admin/tools.php:965
+msgid "Repairing the sticky topic to the parent forum relationships&hellip; %s"
+msgstr "תיקון נושאים דביקים ליחסי פורום הורה... %s"
+
+#: includes/admin/tools.php:859
+msgid "Recomputing latest post in every topic and forum&hellip; %s"
+msgstr "חישוב תגובה אחרונה בכל דיון ופורום מחדש... %s"
+
+#: includes/admin/tools.php:843
+msgid "Complete! %s users updated."
+msgstr "הושלם! %s משתמשים עודכנו."
+
+#: includes/admin/tools.php:805
+msgid "Remapping forum role for each user on this site&hellip; %s"
+msgstr "מיפוי תפקיד פורום לכל משתמש באתר זה &hellip; %s"
+
+#: includes/admin/tools.php:743
+msgid "Removing trashed forums from user subscriptions&hellip; %s"
+msgstr "מתבצעת הסרה של פורומים שנמחקו מרשימת המנויים של המשתמש &hellip; %s"
+
+#: includes/admin/tools.php:682
+msgid "Removing trashed topics from user subscriptions&hellip; %s"
+msgstr "מתבצעת הסרה של דיונים שנמחקו מרשימת המנויים של המשתמש... %s"
+
+#: includes/admin/tools.php:650 includes/admin/tools.php:711
+#: includes/admin/tools.php:772
+msgid "Nothing to remove!"
+msgstr "אין מה להסיר!"
+
+#: includes/admin/tools.php:620
+msgid "Removing trashed topics from user favorites&hellip; %s"
+msgstr "מתבצעת הסרה של דיונים שנמחקו מרשימת המועדפים של המשתמש... %s"
+
+#: includes/admin/tools.php:575
+msgid "Counting the number of topics to which each user has replied&hellip; %s"
+msgstr "כמות הדיונים בהם כל משתמש השתתף נמנית מחדש... %s"
+
+#: includes/admin/tools.php:530
+msgid "Counting the number of topics each user has created&hellip; %s"
+msgstr "כמות הדיונים שכל משתמש יצר נספרת &hellip; %s"
+
+#: includes/admin/tools.php:487
+msgid "Counting the number of replies in each forum&hellip; %s"
+msgstr "מספר התגובות בכל פורום נמנה מחדש... %s"
+
+#: includes/admin/tools.php:453
+msgid "Counting the number of topics in each forum&hellip; %s"
+msgstr "מספר הדיונים בכל פורום נמנה מחדש... %s"
+
+#: includes/admin/tools.php:434
+msgid "Complete! %s groups updated; %s forums updated; %s forum statuses synced."
+msgstr "הסתיים! %s קבוצות עודכנו, %s פורומים עודכנו, %s סטטוסים של פורומים סונכרנו."
+
+#: includes/admin/tools.php:418
+msgid "group-forums"
+msgstr "group-forums"
+
+#: includes/admin/tools.php:417
+msgid "Group Forums"
+msgstr "פורומים לקבוצות"
+
+#: includes/admin/tools.php:316
+msgid "Repairing BuddyPress group-forum relationships&hellip; %s"
+msgstr "תיקון יחסי פורום קבוצתי של באדיפרס... %s"
+
+#: includes/admin/tools.php:291
+msgid "Counting the number of spammed and trashed replies in each topic&hellip; %s"
+msgstr "מספר תגובות הזבל והתגובות שנמחקו בכל דיון נמנה מחדש... %s"
+
+#: includes/admin/tools.php:249
+msgid "Counting the number of voices in each topic&hellip; %s"
+msgstr "מספר המשתתפים בכל דיון נמנה מחדש... %s"
+
+#: includes/admin/tools.php:233 includes/admin/tools.php:276
+#: includes/admin/tools.php:302 includes/admin/tools.php:469
+#: includes/admin/tools.php:514 includes/admin/tools.php:559
+#: includes/admin/tools.php:604 includes/admin/tools.php:666
+#: includes/admin/tools.php:727 includes/admin/tools.php:788
+#: includes/admin/tools.php:950 includes/admin/tools.php:1007
+#: includes/admin/tools.php:1030 includes/admin/tools.php:1085
+#: includes/admin/tools.php:1130 includes/admin/tools.php:1186
+msgid "Complete!"
+msgstr "הושלם!"
+
+#: includes/admin/tools.php:199 includes/admin/tools.php:250
+#: includes/admin/tools.php:292 includes/admin/tools.php:337
+#: includes/admin/tools.php:454 includes/admin/tools.php:488
+#: includes/admin/tools.php:531 includes/admin/tools.php:576
+#: includes/admin/tools.php:621 includes/admin/tools.php:683
+#: includes/admin/tools.php:744 includes/admin/tools.php:812
+#: includes/admin/tools.php:860 includes/admin/tools.php:966
+#: includes/admin/tools.php:1026 includes/admin/tools.php:1047
+#: includes/admin/tools.php:1101
+msgid "Failed!"
+msgstr "נכשל!"
+
+#: includes/admin/tools.php:198
+msgid "Counting the number of replies in each topic&hellip; %s"
+msgstr "מספר התגובות בכל דיון נמנה מחדש... %s"
+
+#: includes/admin/tools.php:178
+msgid "Remap existing users to default forum roles"
+msgstr "הצבה מחדש של תפקידי ברירת מחדל בפורומים למשתמשים קיימים "
+
+#: includes/admin/tools.php:177
+msgid "Remove trashed forums from user subscriptions"
+msgstr "הסרת פורומים שהושלכו לאשפה מהרשמות משתמשים"
+
+#: includes/admin/tools.php:176
+msgid "Remove trashed topics from user subscriptions"
+msgstr "הסרת דיונים שנמחקו מרשימת המנויים של המשתמש"
+
+#: includes/admin/tools.php:175
+msgid "Remove trashed topics from user favorites"
+msgstr "הסרת דיונים שנמחקו מהמועדפים של המשתמש"
+
+#: includes/admin/tools.php:174
+msgid "Count replies for each user"
+msgstr "ספירת תגובות לכל משתמש מחדש"
+
+#: includes/admin/tools.php:173
+msgid "Count topics for each user"
+msgstr "ספירת הדיונים לכל משתמש"
+
+#: includes/admin/tools.php:172
+msgid "Count spammed & trashed replies in each topic"
+msgstr "ספירת תגובות זבל ותגובות שנמחקו בכל דיון מחדש"
+
+#: includes/admin/tools.php:171
+msgid "Count voices in each topic"
+msgstr "ספירת משתתפים בכל דיון מחדש"
+
+#: includes/admin/tools.php:170
+msgid "Count replies in each topic"
+msgstr "ספירת תגובות בכל דיון מחדש"
+
+#: includes/admin/tools.php:169
+msgid "Count replies in each forum"
+msgstr "ספירת תגובות בכל פורום מחדש"
+
+#: includes/admin/tools.php:168
+msgid "Count topics in each forum"
+msgstr "ספירת דיונים בכל פורום מחדש"
+
+#: includes/admin/tools.php:167
+msgid "Repair BuddyPress Group Forum relationships"
+msgstr " תקן יחסי קבוצות פורום BuddyPress "
+
+#: includes/admin/tools.php:165
+msgid "Recalculate the sticky relationship of each topic"
+msgstr "חשב מחדש את היחסים ה\"דביקים\" של כל דיון"
+
+#: includes/admin/tools.php:164
+msgid "Recalculate last activity in each topic and forum"
+msgstr "חישוב הפעילות האחרונה בכל דיון ובכל בפורום מחדש"
+
+#: includes/admin/tools.php:163
+msgid "Recalculate private and hidden forums"
+msgstr "חשב מחדש את הפורומים המוגנים והמוסתרים."
+
+#: includes/admin/tools.php:162
+msgid "Recalculate the parent forum for each post"
+msgstr "חישוב פורום האב מחדש עבור כל אחת מהתגובות"
+
+#: includes/admin/tools.php:161
+msgid "Recalculate the parent topic for each post"
+msgstr "חישוב מחשב של דיון האב עבור כל אחת מהתגובות"
+
+#: includes/admin/tools.php:61
+msgid "Repair Items"
+msgstr "תיקון פריטים"
+
+#: includes/admin/tools.php:46
+msgid "Repair"
+msgstr "תיקון"
+
+#: includes/admin/tools.php:43
+msgid "Relationships to Repair:"
+msgstr "קשרים לתיקון:"
+
+#: includes/admin/tools.php:37
+msgid "Some of these tools create substantial database overhead. Avoid running more than 1 repair job at a time."
+msgstr "חלק מהכלים שלהלן יוצרים עומס כבד על מסד הנתונים. מומלץ להימנע מהרצת יותר ממשימת תיקון אחת כל פעם."
+
+#: includes/admin/tools.php:36
+msgid "bbPress keeps track of relationships between forums, topics, replies, and topic tags, and users. Occasionally these relationships become out of sync, most often after an import or migration. Use the tools below to manually recalculate these relationships."
+msgstr "תוסף ביביפרס עוקב אחר הקשרים שבין הפורומים, הדיונים, התגובות, התגיות והמשתמשים. לעתים קשרים אלה מתנתקים, על פי רוב לאחר יבוא או סנכרון. יש להשתמש בכלים שלהלן כדי לחשב מחדש את הקשרים הללו באופן ידני."
+
+#: includes/admin/settings.php:1755
+msgid "Possible %1$s conflict: %2$s"
+msgstr "ייתכן קונפליקט %1$s: %2$s"
+
+#: includes/admin/settings.php:1736
+msgid "%s page"
+msgstr "%s דפים"
+
+#: includes/admin/settings.php:1724
+msgid "Topic tag slug"
+msgstr "מזהה כתובת לתגית"
+
+#: includes/admin/settings.php:1721
+msgid "View base"
+msgstr "בסיס לשרשורים"
+
+#: includes/admin/settings.php:1718
+msgid "User base"
+msgstr "בסיס למשתמשים"
+
+#: includes/admin/settings.php:1715
+msgid "Reply slug"
+msgstr "מזהה כתובת לתגובה"
+
+#: includes/admin/settings.php:1712
+msgid "Topic slug"
+msgstr "מזהה כתובת לדיון"
+
+#: includes/admin/settings.php:1709
+msgid "Forum slug"
+msgstr "מזהה כתובת לפורום"
+
+#: includes/admin/settings.php:1706
+msgid "Topics base"
+msgstr "בסיס הדיונים"
+
+#: includes/admin/settings.php:1703
+msgid "Forums base"
+msgstr "בסיס הפורומים"
+
+#: includes/admin/settings.php:1698
+msgid "Category base"
+msgstr "בסיס הקטגוריה"
+
+#: includes/admin/settings.php:1695
+msgid "Tag base"
+msgstr "בסיס התגיות"
+
+#: includes/admin/settings.php:1692
+msgid "Menus"
+msgstr "תפריטים"
+
+#: includes/admin/settings.php:1691
+msgid "Attachments"
+msgstr "קבצים מצורפים"
+
+#: includes/admin/settings.php:1689
+msgid "Pages"
+msgstr "עמודים"
+
+#: includes/admin/settings.php:1688
+#: templates/default/bbpress/loop-forums.php:21
+#: templates/default/bbpress/loop-replies.php:24
+#: templates/default/bbpress/loop-replies.php:66
+#: templates/default/bbpress/loop-topics.php:21
+msgid "Posts"
+msgstr "תגובות"
+
+#: includes/admin/settings.php:1590
+msgid "In the event of a slug collision with WordPress or BuddyPress, a warning will appear next to the problem slug(s)."
+msgstr "במקרה של התנגשות במזהה כתובת עם וורדפרס או באדיפרס, תוצג אזהרה."
+
+#: includes/admin/settings.php:1589
+msgid "\"Single Slugs\" are used as a prefix when viewing an individual forum, topic, reply, user, or view."
+msgstr "\"מזהה לכתובת בעמודי תוכן\" אלה הן הגדרות של מבנה הכתובת של פורומים, דיונים, תגובות, משתמשים והצגת דיונים."
+
+#: includes/admin/settings.php:1588
+msgid "\"Archive Slugs\" are used as the \"root\" for your forums and topics. If you combine these values with existing page slugs, bbPress will attempt to output the most correct title and content."
+msgstr "\"מזהה לכתובת בארכיונים\" אלה הן הגדרות בסיס מותאמות אישית שישמשו כתחילית לפורומים ולדיונים."
+
+#: includes/admin/settings.php:1587
+msgid "The Slugs section allows you to control the permalink structure for your forums."
+msgstr "קישור ישיר מאפשר לשלוט על מבנה הקישורים בפורומים."
+
+#: includes/admin/settings.php:1586
+msgid "Slugs"
+msgstr "קישור ישיר"
+
+#: includes/admin/settings.php:1580
+msgid "These are broken up into two separate groups: one for what appears in your theme, another for RSS feeds."
+msgstr "אלו מופרדים לשתי קבוצות: האחת עבור מה שמופיע בערכת העיצוב, הנוספת עבור הזנות RSS."
+
+#: includes/admin/settings.php:1579
+msgid "This is comparable to the WordPress \"Reading Settings\" page, where you can set the number of posts that should show on blog pages and in feeds."
+msgstr "זה שווה לדף הגדרות הקריאה של וורדפרס, בו ניתן להגדיר מספר של תגובות שיוצגו בעמודי הבלוג ובהזנות."
+
+#: includes/admin/settings.php:1578
+msgid "Per Page settings allow you to control the number of topics and replies appear on each page."
+msgstr "הגדרות לפי עמוד מאפשרות לך לשלוט במספר הנושאים והתגובות בכל עמוד."
+
+#: includes/admin/settings.php:1577
+msgid "Per Page"
+msgstr "פריטים בעמוד"
+
+#: includes/admin/settings.php:1571
+msgid "You must click the Save Changes button at the bottom of the screen for new settings to take effect."
+msgstr "יש ללחוץ על הלחצן \"שמור שינויים\" בתחתית המסך כדי שההגדרות החדשות ייכנסו לתוקף."
+
+#: includes/admin/settings.php:1568
+msgid "Auto-embed will embed the media content from a URL directly into the replies. For example: links to Flickr and YouTube."
+msgstr "הטמעה אוטומטית תטמיע תוכן מדיה מכתובות ישירות לתוך התגובות. לדוגמה: קישורים מפליקר ויוטיוב."
+
+#: includes/admin/settings.php:1567
+msgid "The Fancy Editor brings the luxury of the Visual editor and HTML editor from the traditional WordPress dashboard into your theme."
+msgstr "העורך העשיר מביא פאר לעורך הויזואלי ולעורך הטקסט הסטנדרטי של וורדפרס."
+
+#: includes/admin/settings.php:1566
+msgid "\"Anonymous Posting\" allows guest users who do not have accounts on your site to both create topics as well as replies."
+msgstr "\"פרסום אנונימי\" ירשה למשתמשים אורחים שאין להם חשבון באתר לפרסם דיונים ולהגיב."
+
+#: includes/admin/settings.php:1565
+msgid "Topic-Tags allow users to filter topics between forums. This is enabled by default."
+msgstr "תגיות של נושאים מאפשרות למשתמשים לסנן את הנושאים בין הפורומים. אופציה זאת זמינה כברירת מחדל."
+
+#: includes/admin/settings.php:1564
+msgid "Subscriptions allow users to subscribe for notifications to topics that interest them. This is enabled by default."
+msgstr "מינויים מאפשרים למשתמשים להירשם לקבלת התרעות על דיונים המעניינים אותם. אפשרות זו מופעלת כבררת מחדל."
+
+#: includes/admin/settings.php:1563
+msgid "Favorites are a way for users to save and later return to topics they favor. This is enabled by default."
+msgstr "מועדפים זו דרכם של המשתמשים לשמור ולחזור בשלב מאוחר יותר לדיונים שמעניינים אותם. אפשרות זו מופעלת כבררת מחדל."
+
+#: includes/admin/settings.php:1562
+msgid "\"Throttle time\" is the amount of time required between posts from a single author. The higher the throttle time, the longer a user will need to wait between posting to the forum."
+msgstr "\"השהיית פרסום\" הוא משך הזמן שהמשתמש נדרש לחכות בין פרסום אחד לשני. ככל שההשהיה גבוהה יותר, המשתמש יצטרך לחכות יותר זמן בין פרסומים בפורום."
+
+#: includes/admin/settings.php:1561
+msgid "You can choose to lock a post after a certain number of minutes. \"Locking post editing\" will prevent the author from editing some amount of time after saving a post."
+msgstr "ניתן לנעול פוסט לאחר מספר מסוים של דקות. \"נעילת עריכת פוסט\" תמנע מן המחבר עריכה לאחר זמן מסויים משמירת הפוסט."
+
+#: includes/admin/settings.php:1558
+msgid "In the Main Settings you have a number of options:"
+msgstr "בהגדרות הראשיות יש לך מספר אפשרויות:"
+
+#: includes/admin/settings.php:1557
+msgid "Main Settings"
+msgstr "הגדרות ראשיות"
+
+#: includes/admin/settings.php:1551
+msgid "Please see the additional help tabs for more information on each indiviual section."
+msgstr "נא לעיין בלשוניות העזרה הנוספות כדי לקבל מידע נוסף לגבי כל סעיף וסעיף."
+
+#: includes/admin/settings.php:1550
+msgid "This screen provides access to all of the Forums settings."
+msgstr "מסך זה מאפשר גישה לכל הגדרות הפורומים."
+
+#: includes/admin/settings.php:1519
+msgid "Stop"
+msgstr "עצירה"
+
+#: includes/admin/settings.php:1518
+msgid "Start"
+msgstr "התחלה"
+
+#: includes/admin/settings.php:1488
+msgid "Non-bbPress passwords cannot be automatically converted. They will be converted as each user logs in."
+msgstr "לא ניתן להמיר אוטומטית ססמאות שאינן של ביביפרס. הם יומרו עם הכניסה למערכת של כל משתמש."
+
+#: includes/admin/settings.php:1487
+msgid "Attempt to import user accounts from previous forums"
+msgstr "לנסות לייבא חשבונות משתמשים מפורומים קודמים"
+
+#: includes/admin/settings.php:1473
+msgid "Use this if an import failed and you want to remove that incomplete data."
+msgstr "השתמש בזה אם ייבוא נופל, והנך מעוניין להסיר מידע שלא עודכן סופית"
+
+#: includes/admin/settings.php:1472
+msgid "Purge all information from a previously attempted import"
+msgstr "מחיקת כל הנתונים מניסיון יבוא קודם."
+
+#: includes/admin/settings.php:1458
+msgid "You should clean old conversion information before starting over."
+msgstr "מומלץ למחוק מידע בגין המרה קודמת, לפני התחלה מחדש."
+
+#: includes/admin/settings.php:1457
+msgid "Start a fresh conversion from the beginning"
+msgstr "התחל דיון חדש מהתחלה"
+
+#: includes/admin/settings.php:1443
+msgid "Keep this high to prevent too-many-connection issues."
+msgstr "יש להשאיר מספר זה גבוה כדי למנוע בעיית עודף חיבורים בו זמנית."
+
+#: includes/admin/settings.php:1442
+msgid "second(s) delay between each group of rows"
+msgstr "שניות להפסקה בין כל קבוצה של שורות"
+
+#: includes/admin/settings.php:1428
+msgid "Keep this low if you experience out-of-memory issues."
+msgstr "יש להשאיר מספר זה נמוך אם מופיעות בעיות של חריגה מהזיכרון."
+
+#: includes/admin/settings.php:1427
+msgid "rows to process at a time"
+msgstr "שורות לעיבוד בו זמנית"
+
+#: includes/admin/settings.php:1413
+msgid "(If converting from BuddyPress Forums, use \"wp_bb_\" or your custom prefix)"
+msgstr "אם אתה ממיר מפורומים של באדיפרס, השתמש בתחילית \"wp_bb_\" או בתחילית מותאמת אישית."
+
+#: includes/admin/settings.php:1399
+msgid "Some optional parameters to help tune the conversion process."
+msgstr "פרמטרים נוספים לעזור לכוון את תהליך ההמרה"
+
+#: includes/admin/settings.php:1386
+msgid "Name of the database with your old forum data"
+msgstr "שם מסד הנתונים עם נתוני הפורום הישנים"
+
+#: includes/admin/settings.php:1372
+msgid "Password to access the database"
+msgstr "ססמה לגישה למסד הנתונים"
+
+#: includes/admin/settings.php:1358
+msgid "User for your database connection"
+msgstr "שם המשתמש לצורך חיבור למסד הנתונים"
+
+#: includes/admin/settings.php:1344
+msgid "Use default 3306 if unsure"
+msgstr "כדאי להשתמש בבררת המחדל 3306 במקרה של ספק"
+
+#: includes/admin/settings.php:1330
+msgid "IP or hostname"
+msgstr "IP או שם מחשב"
+
+#: includes/admin/settings.php:1316
+msgid "is the previous forum software"
+msgstr "זאת תכנת הפורומים הקודמת"
+
+#: includes/admin/settings.php:1286
+msgid "Information about your previous forums database so that they can be converted. <strong>Backup your database before proceeding.</strong>"
+msgstr "פרטים על מסד הנתונים הקודם של הפורומים כדי שניתן יהיה להמיר אותן. <strong>מומלץ לגבות את מסד הנתונים לפני המשך הפעולה.</strong>"
+
+#: includes/admin/settings.php:1267
+#: templates/default/bbpress/form-user-edit.php:173
+msgid "Save Changes"
+msgstr "שמור שינויים"
+
+#: includes/admin/settings.php:1258
+msgid "Forums Settings"
+msgstr "הגדרות פורומים"
+
+#: includes/admin/settings.php:1235
+msgid "Allow Akismet to actively prevent forum spam."
+msgstr "הרשה לאקיזמט לחסום הודעות זבל בפורומים."
+
+#: includes/admin/settings.php:1218
+msgid "Forum settings for Akismet"
+msgstr "הגדרות פורום עבור אקיזמט"
+
+#: includes/admin/settings.php:1203
+msgid "Using the Forum Root is not recommended. Changing this does not move existing forums."
+msgstr "שימוש בפורום שורש לא מומלץ. שינוי לא יעביר פורומים קיימים."
+
+#: includes/admin/settings.php:1202
+msgid "is the parent for all group forums"
+msgstr "זה ההורה של כל קבוצות הפורומים"
+
+#: includes/admin/settings.php:1194
+msgid "&mdash; Forum root &mdash;"
+msgstr "&mdash; פורום ראשי &mdash;"
+
+#: includes/admin/settings.php:1177
+msgid "Allow BuddyPress Groups to have their own forums"
+msgstr "הרשה לקבוצות באדיפרס לקבל בעלות על הפורומים"
+
+#: includes/admin/settings.php:1161
+msgid "Forum settings for BuddyPress"
+msgstr "הגדרות פורום עבור באדיפרס"
+
+#: includes/admin/settings.php:1043
+msgid "Custom slugs for single forums, topics, replies, tags, views, and search."
+msgstr "עריכת מבנה קישורים של עמוד פורום, נושאים, תגובות, תגיות, תצוגה וחיפוש."
+
+#: includes/admin/settings.php:943
+msgid "Customize your user profile slugs."
+msgstr "עריכת מבנה קישורים של אזור הפרופיל האישי"
+
+#: includes/admin/settings.php:916
+msgid "Topics by Freshness"
+msgstr "דיונים על פי תאריך עדכון"
+
+#: includes/admin/settings.php:913
+msgid "Forum Index"
+msgstr "פורום אינדקס"
+
+#: includes/admin/settings.php:893
+msgid "Prefix all forum content with the Forum Root slug (Recommended)"
+msgstr "הוספת קידומת לכל התכנים של הפורום באמצעות המזהה של הפורום (מומלץ)"
+
+#: includes/admin/settings.php:860
+msgid "Customize your Forums root. Partner with a WordPress Page and use Shortcodes for more flexibility."
+msgstr "עריכת קישור הבסיס של הפורומים. עשו שימוש בפקודות-מקרו בעמודי וורדפרס לגמישות רבה יותר."
+
+#: includes/admin/settings.php:810
+msgid "How many topics and replies to show per RSS page"
+msgstr "כמה דיונים ותגובות יוצגו בכל עמוד RSS"
+
+#: includes/admin/settings.php:779 includes/admin/settings.php:795
+#: includes/admin/settings.php:826 includes/admin/settings.php:842
+msgid "per page"
+msgstr "פריטים בעמוד"
+
+#: includes/admin/settings.php:763
+msgid "How many topics and replies to show per page"
+msgstr "כמה דיונים ותגובות יוצגו בכל עמוד."
+
+#: includes/admin/settings.php:748
+msgid "Embed media (YouTube, Twitter, Flickr, etc...) directly into topics and replies"
+msgstr "שתול מדיה (YouTube, Twitter, Flickr, ועוד...) ישירות לתוך פריטים ותגובות"
+
+#: includes/admin/settings.php:732
+msgid "No template packages available."
+msgstr "אין תבניות זמינות."
+
+#: includes/admin/settings.php:728
+msgid "will serve all bbPress templates"
+msgstr "ישרת את כל התבניות של ביביפרס"
+
+#: includes/admin/settings.php:722
+msgid "%1$s - %2$s"
+msgstr "%1$s - %2$s"
+
+#: includes/admin/settings.php:698
+msgid "How your forum content is displayed within your existing theme."
+msgstr "איך יוצג הפורום בערכת העיצוב הנוכחית."
+
+#: includes/admin/settings.php:685
+msgid "Add toolbar & buttons to textareas to help with HTML formatting"
+msgstr "הוספת סרגל כלים וכפתורים לאזור טקסט כדי לעזור בכתיבת HTML"
+
+#: includes/admin/settings.php:669
+msgid "Allow topic and reply revision logging"
+msgstr "האם לאפשר שמירה על גרסאות לדיונים ולתגובות?"
+
+#: includes/admin/settings.php:652
+msgid "Enable threaded (nested) replies %s levels deep"
+msgstr "אפשר תגובות משורשרות בעומק של %s רמות"
+
+#: includes/admin/settings.php:613
+msgid "Allow forum wide search"
+msgstr "אפשר חיפוש מורחב בפורום"
+
+#: includes/admin/settings.php:597
+msgid "Allow topics to have tags"
+msgstr "אפשר הוספת תגיות לדיונים"
+
+#: includes/admin/settings.php:581
+msgid "Allow users to subscribe to forums and topics"
+msgstr "אפשר למשתמשים להירשם לפורומים ולדיונים"
+
+#: includes/admin/settings.php:565
+msgid "Allow users to mark topics as favorites"
+msgstr "לאפשר למשתמשים לסמן דיונים כמועדפים"
+
+#: includes/admin/settings.php:549
+msgid "Forum features that can be toggled on and off"
+msgstr "תכונות פורום שאפשר להדליק ולכבות"
+
+#: includes/admin/settings.php:533
+msgid "Automatically give registered visitors the %s forum role"
+msgstr "לתת למשתמשים רשומים באופן אוטומטי תפקיד %s בפורום"
+
+#: includes/admin/settings.php:499
+msgid "Allow guest users without accounts to create topics and replies"
+msgstr "האם לאפשר למשתמשים לא רשומים ליצור דיונים חדשים ולפרסם תגובות בדיונים קיימים?"
+
+#: includes/admin/settings.php:483 includes/common/functions.php:124
+msgid "seconds"
+msgstr "שניות"
+
+#: includes/admin/settings.php:467 includes/common/functions.php:123
+msgid "minutes"
+msgstr "דקות"
+
+#: includes/admin/settings.php:450
+msgid "Setting time limits and other user posting capabilities"
+msgstr "הגדרת מגבלות זמן ויכולות פרסום משתמש"
+
+#: includes/admin/settings.php:412
+msgid "Use Akismet"
+msgstr "שימוש באקיזמט"
+
+#: includes/admin/settings.php:399
+msgid "Group Forums Parent"
+msgstr "אב הפורומים לקבוצות"
+
+#: includes/admin/settings.php:391
+msgid "Enable Group Forums"
+msgstr "הפעלת פורומים לקבוצות"
+
+#: includes/admin/settings.php:378
+msgid "Topic Subscriptions"
+msgstr "הרשמה לדיונים"
+
+#: includes/admin/settings.php:370 includes/extend/buddypress/loader.php:285
+msgid "Favorite Topics"
+msgstr "דיונים מעודפים"
+
+#: includes/admin/settings.php:362 includes/extend/buddypress/loader.php:207
+#: includes/extend/buddypress/loader.php:277
+#: templates/default/bbpress/user-details.php:41
+msgid "Replies Created"
+msgstr "התגובות שלי"
+
+#: includes/admin/settings.php:354 includes/extend/buddypress/loader.php:196
+#: includes/extend/buddypress/loader.php:269
+#: templates/default/bbpress/user-details.php:35
+msgid "Topics Started"
+msgstr "הדיונים שלי"
+
+#: includes/admin/settings.php:346
+msgid "User Base"
+msgstr "בסיס משתמש"
+
+#: includes/admin/settings.php:317
+msgid "Topic View"
+msgstr "תצוגת דיון"
+
+#: includes/admin/settings.php:280
+msgid "Forum root should show"
+msgstr "פורום בסיס חייב להיות מוצג"
+
+#: includes/admin/settings.php:272
+msgid "Forum Prefix"
+msgstr "השתמש בקידומת לפורומים"
+
+#: includes/admin/settings.php:264
+msgid "Forum Root"
+msgstr "פורום בסיס"
+
+#: includes/admin/settings.php:209
+msgid "Current Package"
+msgstr "החבילה הנוכחית"
+
+#: includes/admin/settings.php:190
+msgid "Reply Threading"
+msgstr "הגב לאשכול"
+
+#: includes/admin/settings.php:182
+msgid "Auto-embed links"
+msgstr "הטמעת קישורים אוטומטית"
+
+#: includes/admin/settings.php:174
+msgid "Post Formatting"
+msgstr "פורמט פוסט"
+
+#: includes/admin/settings.php:166 includes/admin/settings.php:333
+#: includes/common/template.php:2330 includes/search/template.php:225
+#: templates/default/bbpress/form-search.php:17
+msgid "Search"
+msgstr "חיפוש"
+
+#: includes/admin/settings.php:158
+msgid "Topic tags"
+msgstr "תגיות"
+
+#: includes/admin/settings.php:150 includes/extend/buddypress/loader.php:230
+#: templates/default/bbpress/user-details.php:58
+msgid "Subscriptions"
+msgstr "מנויים"
+
+#: includes/admin/settings.php:142 includes/extend/buddypress/loader.php:218
+#: templates/default/bbpress/user-details.php:48
+msgid "Favorites"
+msgstr "מועדפים"
+
+#: includes/admin/settings.php:134 includes/admin/settings.php:1690
+msgid "Revisions"
+msgstr "גרסאות"
+
+#: includes/admin/settings.php:115
+msgid "Auto role"
+msgstr "תפקיד אוטומטי"
+
+#: includes/admin/settings.php:107
+msgid "Anonymous posting"
+msgstr "פרסום אנונימי"
+
+#: includes/admin/settings.php:99
+msgid "Throttle posting every"
+msgstr "לעקב פרסום בכל"
+
+#: includes/admin/settings.php:91
+msgid "Disallow editing after"
+msgstr "מניעת עריכה אחרי"
+
+#: includes/admin/settings.php:69
+msgid "Akismet Integration"
+msgstr "אינטגרציית אקיזמט"
+
+#: includes/admin/settings.php:64
+msgid "BuddyPress Integration"
+msgstr "אינטגרציית באדיפרס"
+
+#: includes/admin/settings.php:59
+msgid "Forum User Slugs"
+msgstr "מבנה קישורים למשתמש פורום"
+
+#: includes/admin/settings.php:54
+msgid "Single Forum Slugs"
+msgstr "מבנה קישורים לעמוד פורום"
+
+#: includes/admin/settings.php:49
+msgid "Forum Root Slug"
+msgstr "כתובת בסיס לפורום"
+
+#: includes/admin/settings.php:44
+msgid "Topics and Replies Per RSS Page"
+msgstr "דיונים ותגובות לדף RSS"
+
+#: includes/admin/settings.php:39
+msgid "Topics and Replies Per Page"
+msgstr "דיונים ותגובות בעמוד"
+
+#: includes/admin/settings.php:34
+msgid "Forum Theme Packages"
+msgstr "חבילות ערכת עיצוב פורום"
+
+#: includes/admin/settings.php:29
+msgid "Forum Features"
+msgstr "תכונות פורום"
+
+#: includes/admin/settings.php:24
+msgid "Forum User Settings"
+msgstr "הגדרות משתמש בפורום"
+
+#: includes/admin/replies.php:883
+msgid "Reply draft updated. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
+msgstr "טיוטת תגובה עודכנה. <a target=\"_blank\" href=\"%s\">תצוגה מקדימה</a>"
+
+#: includes/admin/replies.php:876
+msgid "Reply scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview topic</a>"
+msgstr "תגובה תוזמנה ל: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">תצוגה מקדימה</a>"
+
+#: includes/admin/replies.php:873
+msgid "Reply submitted. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
+msgstr "תגובה נשלחה. <a target=\"_blank\" href=\"%s\">תצוגה מקדימה</a>"
+
+#: includes/admin/replies.php:870
+msgid "Reply saved."
+msgstr "תגובה נשמרה."
+
+#: includes/admin/replies.php:867
+msgid "Reply created. <a href=\"%s\">View topic</a>"
+msgstr "תגובה פורסמה. <a href=\"%s\">תצוגה מקדימה</a>"
+
+#. translators: %s: date and time of the revision
+#: includes/admin/replies.php:863
+msgid "Reply restored to revision from %s"
+msgstr "שחזור תגובה מגרסה %s"
+
+#: includes/admin/replies.php:858
+msgid "Reply updated."
+msgstr "תגובה עודכנה."
+
+#: includes/admin/replies.php:849
+msgid "Reply updated. <a href=\"%s\">View topic</a>"
+msgstr "תגובה עודכנה. <a href=\"%s\">תצוגה מקדימה</a>"
+
+#: includes/admin/replies.php:789 includes/admin/topics.php:859
+msgid "In all forums"
+msgstr "בכל הפורומים"
+
+#: includes/admin/replies.php:779 includes/admin/topics.php:849
+msgid "Empty Spam"
+msgstr "רוקן הודעות זבל"
+
+#: includes/admin/replies.php:753 includes/admin/topics.php:823
+msgid "Delete Permanently"
+msgstr "מחיקה לצמיתות"
+
+#: includes/admin/replies.php:753 includes/admin/topics.php:823
+#: includes/replies/template.php:2053 includes/topics/template.php:2634
+msgid "Delete this item permanently"
+msgstr "מחק פריט לצמיתות"
+
+#: includes/admin/replies.php:749 includes/admin/topics.php:819
+#: includes/replies/template.php:2034 includes/topics/template.php:2615
+msgid "Trash"
+msgstr "מחיקה"
+
+#: includes/admin/replies.php:749 includes/admin/topics.php:819
+#: includes/replies/template.php:2049 includes/topics/template.php:2630
+msgid "Move this item to the Trash"
+msgstr "העבר פריט זה לאשפה"
+
+#: includes/admin/replies.php:747 includes/admin/topics.php:817
+#: includes/replies/template.php:2035 includes/topics/template.php:2616
+msgid "Restore"
+msgstr "שחזר"
+
+#: includes/admin/replies.php:747 includes/admin/topics.php:817
+#: includes/replies/template.php:2047 includes/topics/template.php:2628
+msgid "Restore this item from the Trash"
+msgstr "שחזור פריט מהאשפה"
+
+#: includes/admin/replies.php:738 includes/admin/topics.php:809
+#: includes/replies/template.php:2105 includes/topics/template.php:2872
+msgid "Spam"
+msgstr "הודעת זבל"
+
+#: includes/admin/replies.php:738
+msgid "Mark this reply as spam"
+msgstr "סימון תגובה כזבל"
+
+#: includes/admin/replies.php:736 includes/admin/topics.php:807
+msgid "Not spam"
+msgstr "לא הודעת זבל"
+
+#: includes/admin/replies.php:736
+msgid "Mark the reply as not spam"
+msgstr "סמן תגובה כלגיטימית"
+
+#: includes/admin/replies.php:725 includes/admin/topics.php:776
+msgid "View"
+msgstr "הצגה"
+
+#: includes/admin/replies.php:725 includes/admin/topics.php:776
+msgid "View &#8220;%s&#8221;"
+msgstr "הצגת \"%s\""
+
+#: includes/admin/replies.php:657
+msgid "(Mismatch)"
+msgstr "(לא מוצלח)"
+
+#: includes/admin/replies.php:651 includes/admin/replies.php:666
+#: includes/admin/topics.php:687
+msgid "No Forum"
+msgstr "אין פורום"
+
+#: includes/admin/replies.php:625 includes/admin/replies.php:633
+msgid "No Topic"
+msgstr "ללא דיון"
+
+#: includes/admin/replies.php:572 includes/admin/topics.php:636
+#: templates/default/bbpress/loop-replies.php:18
+#: templates/default/bbpress/loop-replies.php:60
+#: templates/default/bbpress/loop-search.php:18
+#: templates/default/bbpress/loop-search.php:40
+msgid "Author"
+msgstr "מאת"
+
+#: includes/admin/replies.php:569
+msgid "Title"
+msgstr "כותרת"
+
+#: includes/admin/replies.php:536
+msgid "Reply \"%1$s\" successfully unmarked as spam."
+msgstr "תגובה \"%1$s\" סומנה בהצלחה כתגובת לגיטימית."
+
+#: includes/admin/replies.php:536
+msgid "There was a problem unmarking the reply \"%1$s\" as spam."
+msgstr "הייתה בעיה בסימון התגובה \"%1$s\" כתגובה לגיטימית."
+
+#: includes/admin/replies.php:532
+msgid "Reply \"%1$s\" successfully marked as spam."
+msgstr "תגובה \"%1$s\" סומנה בהצלחה כתגובת זבל."
+
+#: includes/admin/replies.php:532
+msgid "There was a problem marking the reply \"%1$s\" as spam."
+msgstr "הייתה בעיה בסימון התגובה \"%1$s\" כתגובת זבל."
+
+#: includes/admin/replies.php:464 includes/admin/topics.php:488
+msgid "You do not have the permission to do that!"
+msgstr "אין לך הרשאות לעשות את זה!"
+
+#: includes/admin/replies.php:461
+msgid "The reply was not found!"
+msgstr "התגובה לא נמצאה!"
+
+#: includes/admin/replies.php:347 includes/admin/topics.php:363
+#: templates/default/bbpress/form-anonymous.php:17
+msgid "Author Information"
+msgstr "על הכותב"
+
+#: includes/admin/replies.php:223
+msgid "<strong>Reply To</strong> determines the threading of the reply."
+msgstr "<strong>תגובה ל</strong> קובע את השיוך של התגובה לדיון."
+
+#: includes/admin/replies.php:222
+msgid "<strong>Topic</strong> determines the parent topic that the reply belongs to."
+msgstr "<strong>דיון</strong> זיהוי דיון האב אליו שייכת התגובה."
+
+#: includes/admin/replies.php:221
+msgid "<strong>Forum</strong> dropdown determines the parent forum that the reply belongs to. Select the forum, or leave the default (Use Forum of Topic) to post the reply in forum of the topic."
+msgstr "<strong>פורום</strong> רשימה נגללת המצביעה על פורום האב אליו שייכת התגובה. יש לבחור את הפורום או להשאיר את בררת המחדל (יש להשתמש בפורום של הדיון) כדי לפרסם את התגובה בפורום של הדיון."
+
+#: includes/admin/replies.php:219
+msgid "Select the attributes that your reply should have:"
+msgstr "יש לבחור את התכונות הרצויות לתגובה:"
+
+#: includes/admin/replies.php:217 includes/admin/replies.php:255
+msgid "Reply Attributes"
+msgstr "מאפיינים"
+
+#: includes/admin/replies.php:212
+msgid "<strong>Featured Image</strong> - This allows you to associate an image with your reply without inserting it. This is usually useful only if your theme makes use of the featured image as a reply thumbnail on the home page, a custom header, etc."
+msgstr "<strong>תמונה ראשית</strong> - בתיבה זו אפשר לשייך לתגובה תמונה מבלי להוסיף אותה לתוכן. אפשרות זו שימושית רק אם ערכת העיצוב תומכת בתמונות ראשיות, ומציגה אותן בעמוד הראשי, בעמודי ארכיון, בכותרת או במקומות אחרים."
+
+#: includes/admin/replies.php:209
+msgid "<strong>Publish</strong> - You can set the terms of publishing your reply in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a reply or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a reply to be published in the future or backdate a reply."
+msgstr "<strong>לפרסם</strong> - בתיבת הפרסום ניתן להגדיר את תנאי פרסום של התגובה. לשינוי הסוג, הסטטוס או התצוגה לחצו על קישור העריכה כדי לחשוף אפשרויות נוספות. התצוגה כולל אפשרויות הגנה באמצעות סיסמה בתגובה או מה שהופך אותה להישאר בחלק העליון של האתר ללא הגבלת זמן (תגובה דביקה). פרסם (מידי) מאפשר לקבוע תאריך בעתיד או בעבר, כדי לתזמן לפרסום התגובה."
+
+#: includes/admin/replies.php:206
+msgid "<strong>Reply Editor</strong> - Enter the text for your reply. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your reply text. You can insert media files by clicking the icons above the reply editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular reply editor."
+msgstr ""
+"<strong>עורך תגובות</strong> - הכנס את הטקסט של תגובתך. ישנם שתי מצבים של עריכה: חזותי וHTML. בחר את המצב על ידי לחיצה על טבלר \n"
+"(tab) המתאים. מוד ויזואלי נותן לך עורך  WYSIWYG. לחץ על הסמליל האחרון בשורה על מנת לקבל שורה נוספת של פקדים. מצב הHTML מאפשר לך להכניס HTML נא ביחד עם הטקסט של התגובה שלך. אתה יכול להכניס קבצי מדיה על ידי לחיצה על הסמליל מעל העורך ומעקב אחרי ההוראות. אתה יכול להיכנס למצב כתיבה במסך האי-הפרעה דרך סמליל המסך המלא במצב החזותי (השני מהסוף בשורה העלינה) או כפתור ה\"מסך המלא\" במצב הHTML (האחרון בשורה). במצב זה, אתה יכול לגרום לכפתורים להופיע שוב על ידי ריחוף מעל האיזור העליון. צא ממצב מסך מלא חזרה לעורך התגובה הרגיל."
+
+#: includes/admin/replies.php:205
+msgid "<strong>Title</strong> - Enter a title for your reply. After you enter a title, you&#8217;ll see the permalink below, which you can edit."
+msgstr "<strong>כותרת</strong> – הכנסת כותרת לתגובה. אחרי הכנסת הכותרת יופיע הקישור למטה ויהיה ניתן לערוך אותו."
+
+#: includes/admin/replies.php:203
+msgid "Title and Reply Editor"
+msgstr "עורך כותרת ותוכן"
+
+#: includes/admin/replies.php:193
+msgid "The title field and the big reply editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "שדה הכותרת ואזור עריכת התגובה הם שדות קבועים, אך שאר השדות ניתנים לסידור והזזה באמצעות גרירה ושחרור, וניתן לצמצם או להרחיב אותם על ידי לחיצה על שורת הכותרת של כל תיבה. ניתן להשתמש באפשרויות מסך כדי להסתיר או לה הציג תיבות נוספות (תיאור, שליחת טראקבקים, שדות מותאמים אישית, דיון, מזהה לכתובת, מחבר) או להגדיר פריסת מסך בטור אחד או שניים."
+
+#: includes/admin/replies.php:172
+msgid "When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected replies at once. To remove a reply from the grouping, just click the x next to its name in the Bulk Edit area that appears."
+msgstr "בעת שימוש בעריכה קבוצתית, ניתן לשנות את נתוני העל (קטגוריות, כותב וכו׳) עבור כל התגובות שנבחרו בבת אחת. כדי להסיר פורום מהקבוצה, עליך פשוט ללחוץ על ה־x שליד שם הפורום באזור העריכה הקבוצתית שמופיע."
+
+#: includes/admin/replies.php:171
+msgid "You can also edit or move multiple replies to the trash at once. Select the replies you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply."
+msgstr "ניתן גם לערוך או להעביר כמות מסוימת של תגובות לפח בבת אחת. עליך לבחור את התגובות עליהן ברצונך לבצע פעולה כלשהו באמצעות תיבות הסימון, אז עליך לבחור את הפעולה בה ברצונך לנקוט מתפריט הפעולות הקבוצתיות וללחוץ על להחיל."
+
+#: includes/admin/replies.php:162
+msgid "<strong>Preview</strong> will show you what your draft reply will look like if you publish it. View will take you to your live site to view the reply. Which link is available depends on your reply&#8217;s status."
+msgstr "<strong>תצוגה מקדימה</strong> תציג את טיוטת התגובה כפי שהיא תראה לאחר הפרסום. התצוגה תעביר אותך לאתר כדי להציג את התגובה. זמינות הקישור תלויה במצב התגובה."
+
+#: includes/admin/replies.php:161
+msgid "<strong>Spam</strong> removes your reply from this list and places it in the spam queue, from which you can permanently delete it."
+msgstr "<strong>תגובת זבל</strong> מסיר את התגובה מרשימה זו ומעביר אותה לרשימת תגובות הזבל, משם ניתן למחוק אותה לצמיתות."
+
+#: includes/admin/replies.php:160
+msgid "<strong>Trash</strong> removes your reply from this list and places it in the trash, from which you can permanently delete it."
+msgstr "<strong>העבר לפח</strong> מסיר את התגובה מרשימה זו ומעביר אותה לפח, משם ניתן למחוק אותה לצמיתות."
+
+#: includes/admin/replies.php:158
+msgid "<strong>Edit</strong> takes you to the editing screen for that reply. You can also reach that screen by clicking on the reply title."
+msgstr "<strong>עריכה</strong> מעביר אותך למסך העריכה של התגובה. אפשר לעבור אליו גם בלחיצה על כותרת התגובה."
+
+#: includes/admin/replies.php:156
+msgid "Hovering over a row in the replies list will display action links that allow you to manage your reply. You can perform the following actions:"
+msgstr "במעבר מעל שורה ברשימת התגובות, יוצגו קישורי פעולה המאפשרים ניהול תגובתך. ניתן לבצע את הפעולות הבאות:"
+
+#: includes/admin/replies.php:147
+msgid "You can refine the list to show only replies in a specific category or from a specific month by using the dropdown menus above the replies list. Click the Filter button after making your selection. You also can refine the list by clicking on the reply author, category or tag in the replies list."
+msgstr "ניתן לסנן את הרשימה ולראות תוצאות מפורום מסויים או מחודש מסויים, זאת באמצעות התפריטים הנפתחים מעל הרשימה. אחרי ביצוע הבחירה יש ללחוץ על כפתור הסינון."
+
+#: includes/admin/replies.php:146
+msgid "You can view replies in a simple title list or with an excerpt. Choose the view you prefer by clicking on the icons at the top of the list on the right."
+msgstr "ניתן להציג תגובות בפשטות לפי כותרת או עם קטע תקציר. נא לבחור את התצוגה המועדפת עליך על ידי לחיצה על הסמלים בחלק העליון של הרשימה בצד ימין."
+
+#: includes/admin/replies.php:145
+msgid "You can filter the list of replies by reply status using the text links in the upper left to show All, Published, Draft, or Trashed replies. The default view is to show all replies."
+msgstr "ניתן לסנן את רשימת התגובות לפי מצב הפורום על ידי שימוש בקישורי הטקסט בפינה הימנית העליונה כדי להציג הכול, תגובות פורסמו, טיוטות או תגובות שהושלכו לפח. תצוגת בררת המחדל היא להציג את כל התגובות."
+
+#: includes/admin/replies.php:144
+msgid "You can hide/display columns based on your needs and decide how many replies to list per screen using the Screen Options tab."
+msgstr "ניתן להציג/להסתיר עמודות בהתאם לצורכיך ולהחליט כמה תגובות להסיך בכל מסך באמצעות לשונית אפשרויות המסך."
+
+#: includes/admin/replies.php:134
+msgid "This screen provides access to all of your replies. You can customize the display of this screen to suit your workflow."
+msgstr "מסך זה מספק גישה לכל התגובות. ניתן להתאים את תצוגת המסך הזאת כדי שתתאים לרצף העבודה שלך."
+
+#: includes/admin/metaboxes.php:525
+msgid "IP Address"
+msgstr "כתובת IP"
+
+#: includes/admin/metaboxes.php:524
+msgid "IP:"
+msgstr "IP:"
+
+#: includes/admin/metaboxes.php:517
+msgid "ID"
+msgstr "מספר ID"
+
+#: includes/admin/metaboxes.php:516
+msgid "ID:"
+msgstr "מספר ID:"
+
+#: includes/admin/metaboxes.php:509
+#: templates/default/bbpress/form-user-edit.php:57
+msgid "Website"
+msgstr "אתר"
+
+#: includes/admin/metaboxes.php:508
+#: templates/default/bbpress/form-anonymous.php:32
+msgid "Website:"
+msgstr "אתר:"
+
+#: includes/admin/metaboxes.php:503
+#: templates/default/bbpress/form-user-edit.php:103
+#: templates/default/bbpress/form-user-register.php:28
+msgid "Email"
+msgstr "אימייל"
+
+#: includes/admin/metaboxes.php:502
+msgid "Email:"
+msgstr "אימייל:"
+
+#: includes/admin/metaboxes.php:497
+#: templates/default/bbpress/form-user-edit.php:14
+#: templates/default/bbpress/form-user-edit.php:19
+msgid "Name"
+msgstr "שם"
+
+#: includes/admin/metaboxes.php:496
+#: templates/default/bbpress/form-topic-tag.php:35
+msgid "Name:"
+msgstr "שם:"
+
+#: includes/admin/metaboxes.php:464
+msgid "Reply To"
+msgstr "הגב ל"
+
+#: includes/admin/metaboxes.php:463
+msgid "Reply To:"
+msgstr "הגב ל:"
+
+#: includes/admin/metaboxes.php:457 includes/replies/template.php:61
+msgid "Topic:"
+msgstr "דיון:"
+
+#: includes/admin/metaboxes.php:379 includes/admin/metaboxes.php:433
+#: includes/extend/buddypress/groups.php:1042 includes/topics/template.php:61
+#: templates/default/bbpress/form-topic.php:114
+msgid "Forum:"
+msgstr "פורום:"
+
+#: includes/admin/metaboxes.php:368
+msgid "Select whether to open or close the topic."
+msgstr "לבחור אם לפתוח או לסגור את הדיון."
+
+#: includes/admin/metaboxes.php:356
+msgid "Topic Type"
+msgstr "סוג דיון"
+
+#: includes/admin/metaboxes.php:322
+msgid "Forum Order"
+msgstr "סדר"
+
+#: includes/admin/metaboxes.php:321
+msgid "Order:"
+msgstr "סדר:"
+
+#: includes/admin/metaboxes.php:314 includes/admin/metaboxes.php:394
+#: includes/admin/metaboxes.php:448
+msgid "&mdash; No parent &mdash;"
+msgstr "&mdash; ללא הורה &mdash;"
+
+#: includes/admin/metaboxes.php:300
+msgid "Forum Parent"
+msgstr "פורום אב"
+
+#: includes/admin/metaboxes.php:299
+msgid "Parent:"
+msgstr "אב:"
+
+#: includes/admin/metaboxes.php:285 includes/admin/metaboxes.php:286
+#: templates/default/bbpress/form-forum.php:109
+msgid "Visibility:"
+msgstr "תצוגה:"
+
+#: includes/admin/metaboxes.php:273 includes/admin/metaboxes.php:274
+#: includes/admin/metaboxes.php:367
+#: templates/default/bbpress/form-forum.php:100
+msgid "Status:"
+msgstr "סטטוס:"
+
+#: includes/admin/metaboxes.php:261 includes/admin/metaboxes.php:262
+#: includes/admin/metaboxes.php:355
+msgid "Type:"
+msgstr "סוג:"
+
+#: includes/admin/metaboxes.php:222
+msgid "You are using <span class=\"b\">bbPress %s</span>."
+msgstr "ערכת העיצוב בשימוש היא <span class=\"b\">ביביפרס %s</span>."
+
+#: includes/admin/metaboxes.php:198
+msgid "Empty Topic Tag"
+msgid_plural "Empty Topic Tags"
+msgstr[0] "דיון ללא תגית"
+msgstr[1] "דיון ללא תגיות"
+
+#: includes/admin/metaboxes.php:176
+msgid "Hidden Reply"
+msgid_plural "Hidden Replies"
+msgstr[0] "תגובה מוסתרת"
+msgstr[1] "תגובות מוסתרות"
+
+#: includes/admin/metaboxes.php:154
+msgid "Hidden Topic"
+msgid_plural "Hidden Topics"
+msgstr[0] "דיון מוסתר"
+msgstr[1] "דיונים מוסתרים"
+
+#: includes/admin/metaboxes.php:135
+msgid "User"
+msgid_plural "Users"
+msgstr[0] "משתמש"
+msgstr[1] "משתמשים"
+
+#: includes/admin/metaboxes.php:127
+msgid "Users &amp; Moderation"
+msgstr "משתמשים ועוד"
+
+#: includes/admin/metaboxes.php:103 includes/admin/settings.php:309
+#: includes/topics/template.php:3367
+msgid "Topic Tag"
+msgid_plural "Topic Tags"
+msgstr[0] "תגית"
+msgstr[1] "תגיות"
+
+#: includes/admin/metaboxes.php:84 includes/admin/settings.php:325
+#: includes/replies/template.php:49 includes/replies/template.php:1621
+#: includes/topics/template.php:2921
+msgid "Reply"
+msgid_plural "Replies"
+msgstr[0] "תגובה"
+msgstr[1] "תגובות"
+
+#: includes/admin/metaboxes.php:67 includes/admin/metaboxes.php:458
+#: includes/admin/replies.php:571 includes/admin/settings.php:301
+#: includes/topics/template.php:49
+#: templates/default/bbpress/content-single-topic-lead.php:22
+#: templates/default/bbpress/content-single-topic-lead.php:94
+#: templates/default/bbpress/loop-topics.php:19
+msgid "Topic"
+msgid_plural "Topics"
+msgstr[0] "דיון"
+msgstr[1] "דיונים"
+
+#: includes/admin/metaboxes.php:42
+msgid "Discussion"
+msgstr "דיון"
+
+#: includes/admin/forums.php:563
+msgid "Forum draft updated. <a target=\"_blank\" href=\"%s\">Preview forum</a>"
+msgstr "טיוטת הפורום עודכנה. <a target=\"_blank\" href=\"%s\">תצוגה מקדימה</a>"
+
+#. translators: Publish box date format, see http://php.net/date
+#: includes/admin/forums.php:558 includes/admin/replies.php:878
+#: includes/admin/topics.php:948
+msgid "M j, Y @ G:i"
+msgstr "ה־j בM, Y @ G:i"
+
+#: includes/admin/forums.php:556
+msgid "Forum scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview forum</a>"
+msgstr "פורום תוזמן לפרסום במועד: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">תצוגה מקדימה</a>"
+
+#: includes/admin/forums.php:553
+msgid "Forum submitted. <a target=\"_blank\" href=\"%s\">Preview forum</a>"
+msgstr "פורום נשלח. <a target=\"_blank\" href=\"%s\">תצוגה מקדימה</a>"
+
+#: includes/admin/forums.php:550
+msgid "Forum saved."
+msgstr "הפורום נשמר."
+
+#: includes/admin/forums.php:547
+msgid "Forum created. <a href=\"%s\">View forum</a>"
+msgstr "הפורום פורסם. <a href=\"%s\">לעבור לפורום</a>"
+
+#. translators: %s: date and time of the revision
+#: includes/admin/forums.php:543
+msgid "Forum restored to revision from %s"
+msgstr "הפורום שוחזר לגרסה מ־%s"
+
+#: includes/admin/forums.php:538
+msgid "Forum updated."
+msgstr "הפורום עודכן."
+
+#: includes/admin/forums.php:535 includes/admin/replies.php:855
+#: includes/admin/topics.php:925
+msgid "Custom field deleted."
+msgstr "שדה מותאם אישית נמחק."
+
+#: includes/admin/forums.php:532 includes/admin/replies.php:852
+#: includes/admin/topics.php:922
+msgid "Custom field updated."
+msgstr "שדה מותאם אישית עודכן."
+
+#: includes/admin/forums.php:529
+msgid "Forum updated. <a href=\"%s\">View forum</a>"
+msgstr "הפורום עודכן. <a href=\"%s\">תצוגה מקדימה</a>"
+
+#: includes/admin/forums.php:463 includes/forums/template.php:601
+msgid "No Topics"
+msgstr "אין דיונים"
+
+#: includes/admin/forums.php:414 includes/admin/topics.php:638
+#: templates/default/bbpress/loop-forums.php:22
+#: templates/default/bbpress/loop-topics.php:22
+msgid "Freshness"
+msgstr "עודכן לאחרונה"
+
+#: includes/admin/forums.php:413 includes/admin/replies.php:573
+#: includes/admin/topics.php:637
+msgid "Created"
+msgstr "פורסם בתאריך"
+
+#: includes/admin/forums.php:412
+#: templates/default/bbpress/content-single-topic-lead.php:18
+#: templates/default/bbpress/content-single-topic-lead.php:90
+msgid "Creator"
+msgstr "מאת"
+
+#: includes/admin/forums.php:411 includes/admin/settings.php:230
+#: includes/admin/settings.php:251 includes/admin/topics.php:634
+#: includes/core/theme-compat.php:646
+#: includes/extend/buddypress/activity.php:356
+#: includes/forums/template.php:2665 includes/replies/template.php:47
+#: includes/replies/template.php:48
+#: templates/default/bbpress/content-statistics.php:32
+#: templates/default/bbpress/loop-forums.php:21
+#: templates/default/bbpress/loop-replies.php:32
+#: templates/default/bbpress/loop-replies.php:70
+#: templates/default/bbpress/loop-topics.php:21
+msgid "Replies"
+msgstr "תגובות"
+
+#: includes/admin/forums.php:410 includes/admin/settings.php:222
+#: includes/admin/settings.php:243 includes/admin/topics.php:632
+#: includes/extend/buddypress/activity.php:355
+#: includes/forums/template.php:2601 includes/topics/template.php:47
+#: includes/topics/template.php:48
+#: templates/default/bbpress/content-statistics.php:27
+#: templates/default/bbpress/loop-forums.php:20
+msgid "Topics"
+msgstr "דיונים"
+
+#: includes/admin/forums.php:409 includes/admin/metaboxes.php:50
+#: includes/admin/metaboxes.php:380 includes/admin/metaboxes.php:434
+#: includes/admin/replies.php:570 includes/admin/settings.php:293
+#: includes/admin/topics.php:633 includes/extend/buddypress/groups.php:52
+#: includes/extend/buddypress/groups.php:53 includes/forums/template.php:49
+#: templates/default/bbpress/loop-forums.php:19
+msgid "Forum"
+msgstr "פורום"
+
+#: includes/admin/forums.php:217 includes/admin/replies.php:229
+#: includes/admin/topics.php:229
+msgid "Publish Box"
+msgstr "תיבת פרסום"
+
+#: includes/admin/forums.php:211
+msgid "<strong>Order</strong> allows you to order your forums numerically."
+msgstr "<strong>סדר</strong> מאפשר לקבוע את סדר הפורומים בצורה מספרית."
+
+#: includes/admin/forums.php:210
+msgid "<strong>Parent</strong> dropdown determines the parent forum. Select the forum or category from the dropdown, or leave the default (No Parent) to create the forum at the root of your forums."
+msgstr "<strong>אב</strong>  מאפשר לבחור פורום אב. יש לבחור פורום או קטגוריה מהרשימה או להשאיר את בררת המחדל (ללא אב) כדי ליצור את הפורום בראש היררכיית הפורומים."
+
+#: includes/admin/forums.php:209
+msgid "<strong>Visibility</strong> lets you pick the scope of each forum and what users are allowed to access it."
+msgstr "<strong>תצוגה</strong> מאפשר לבחור את הטווח של כל פורום ואילו משתמשים מורשים לגשת אליו."
+
+#: includes/admin/forums.php:208
+msgid "<strong>Status</strong> allows you to close a forum to new topics and forums."
+msgstr "<strong>סטטוס</strong> מאפשר לך לסגור את הפורום לפריטים ותגובות חדשים"
+
+#: includes/admin/forums.php:207
+msgid "<strong>Type</strong> indicates if the forum is a category or forum. Categories generally contain other forums."
+msgstr "<strong>סוג</strong> מציין אם הפורום הוא קטגוריה או פורום. קטגוריות בדרך כלל מכילות פורומים אחרים."
+
+#: includes/admin/forums.php:205
+msgid "Select the attributes that your forum should have:"
+msgstr "יש לבחור את התכונות הרצויות לפורום:"
+
+#: includes/admin/forums.php:203 includes/admin/forums.php:243
+msgid "Forum Attributes"
+msgstr "מאפיינים"
+
+#: includes/admin/forums.php:198
+msgid "<strong>Featured Image</strong> - This allows you to associate an image with your forum without inserting it. This is usually useful only if your theme makes use of the featured image as a forum thumbnail on the home page, a custom header, etc."
+msgstr "<strong>תמונה ראשית</strong> - בתיבה זו אפשר לשייך לפורום תמונה מבלי להוסיף אותה לתוכן. אפשרות זו שימושית רק אם ערכת העיצוב תומכת בתמונות ראשיות, ומציגה אותן בעמוד הראשי, בעמודי ארכיון, בכותרת או במקומות אחרים."
+
+#: includes/admin/forums.php:195
+msgid "<strong>Publish</strong> - You can set the terms of publishing your forum in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a forum or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a forum to be published in the future or backdate a forum."
+msgstr "<strong>לפרסם</strong> - בתיבת הפרסום ניתן להגדיר את תנאי פרסום של הפורום. לשינוי הסוג, הסטטוס או התצוגה לחצו על קישור העריכה כדי לחשוף אפשרויות נוספות. התצוגה כולל אפשרויות הגנה באמצעות סיסמה בפורום או מה שהופך אותו להישאר בחלק העליון של האתר ללא הגבלת זמן (פורום דביק). פרסם (מידי) מאפשר לקבוע תאריך בעתיד או בעבר, כדי לתזמן לפרסום פורום."
+
+#: includes/admin/forums.php:192
+msgid "<strong>Forum Editor</strong> - Enter the text for your forum. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your forum text. You can insert media files by clicking the icons above the forum editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular forum editor."
+msgstr ""
+"<strong> עורך פורום </strong> הקלד את הטקסט עבור הפורום שלך. יש שני מצבים של עריכה: ויזואלי ו-HTML. ניתן לבחור את המצב על ידי הקלקה על הטאב המתאים. מצב ויזואלי מאפשר לכם עורך WYSIWYG. הקליקו על כפתור האחרון בשורה כדי לקבל שורה נוספת של בקרים.\n"
+"מצב HTML נותן לך אפשרות להקליק קוד HTML יחד עם הטקסט של הפורום. אתם יכולים להכניס קבצי מדיה על ידי הקלקה על הצלמיות מעל עורך הפורום, לפי ההוראות שיופיעו. \n"
+"אתם יכולים לעבור למצב מסך מלא שמונע הסחות דעת. במצב ויזואלי: על ידי הקלקה על כפתור מסך מלא (שניה מהסוף בשורה העליונה). במצב HTML: על ידי הקלקה על כפתור מסך מלא (אחרון בשורה). אם אתם מעוניינים בכל זאת בהצגת כפתורים של העורך, ניתן לעשות זאת על ידי העברת סמן העכבר על החלק העליון של המסך. כדי לחזור למצב עריכה רגיל הקליקו על כפתור יציאה ממסך מלא."
+
+#: includes/admin/forums.php:191
+msgid "<strong>Title</strong> - Enter a title for your forum. After you enter a title, you&#8217;ll see the permalink below, which you can edit."
+msgstr "<strong>כותרת</strong> – הכנס את הכותרת לפורום. אחרי הכנסת הכותרת יוצג הקישור למטה ויהיה ניתן לערוך אותו."
+
+#: includes/admin/forums.php:189
+msgid "Title and Forum Editor"
+msgstr "עורך כותרת ותוכן"
+
+#: includes/admin/forums.php:183 includes/admin/replies.php:197
+#: includes/admin/topics.php:198
+msgid "Customizing This Display"
+msgstr "התאמת תצוגה זו"
+
+#: includes/admin/forums.php:179
+msgid "The title field and the big forum editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "שדה הכותרת ואזור עריכת הפורום הם שדות קבועים, אך שאר השדות ניתנים לסידור והזזה באמצעות גרירה ושחרור, וניתן לצמצם או להרחיב אותם על ידי לחיצה על שורת הכותרת של כל תיבה. ניתן להשתמש באפשרויות מסך כדי להסתיר או לה הציג תיבות נוספות (תיאור, שליחת טראקבקים, שדות מותאמים אישית, דיון, מזהה לכתובת, מחבר) או להגדיר פריסת מסך בטור אחד או שניים."
+
+#: includes/admin/forums.php:165 includes/admin/forums.php:224
+#: includes/admin/replies.php:179 includes/admin/replies.php:236
+#: includes/admin/settings.php:1597 includes/admin/topics.php:180
+#: includes/admin/topics.php:236
+msgid "<a href=\"http://bbpress.org/forums/\" target=\"_blank\">bbPress Support Forums</a>"
+msgstr "<a href=\"http://bbpress.org/forums/\" target=\"_blank\">פורום תמיכה</a>"
+
+#: includes/admin/forums.php:164 includes/admin/forums.php:223
+#: includes/admin/replies.php:178 includes/admin/replies.php:235
+#: includes/admin/settings.php:1596 includes/admin/topics.php:179
+#: includes/admin/topics.php:235
+msgid "<a href=\"http://codex.bbpress.org\" target=\"_blank\">bbPress Documentation</a>"
+msgstr "<a href=\"http://codex.bbpress.org\" target=\"_blank\">תיעוד ביביפרס</a>"
+
+#: includes/admin/forums.php:163 includes/admin/forums.php:222
+#: includes/admin/replies.php:177 includes/admin/replies.php:234
+#: includes/admin/settings.php:1595 includes/admin/topics.php:178
+#: includes/admin/topics.php:234
+msgid "For more information:"
+msgstr "למידע נוסף:"
+
+#: includes/admin/forums.php:158
+msgid "When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected forums at once. To remove a forum from the grouping, just click the x next to its name in the Bulk Edit area that appears."
+msgstr "כאשר הנך משתמש בעדכון קבוצתי, הנך יכול לשנות מטא דטה (קטגוריות, מחבר ועוד...) עבור של הנושאים שנבחרו בבת אחת. אם ברצונך להסיר דיון משינוי קבוצתי, לחץ על X ליד שם הנושא באזור העדכון הקבוצתי שיופיע."
+
+#: includes/admin/forums.php:157
+msgid "You can also edit or move multiple forums to the trash at once. Select the forums you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply."
+msgstr "הנך יכול לעדכן או להזיז מספר פורומים לפח אשפה. בחר את הפורומים הרצויים בעזרת ברירות כן\\לא. בחר בפעולה הרצויה תפריט הפעולות. לחץ על בצע"
+
+#: includes/admin/forums.php:155 includes/admin/replies.php:169
+#: includes/admin/topics.php:170
+msgid "Bulk Actions"
+msgstr "פעולות קבוצתיות"
+
+#: includes/admin/forums.php:148
+msgid "<strong>View</strong> will show you what your draft forum will look like if you publish it. View will take you to your live site to view the forum. Which link is available depends on your forum&#8217;s status."
+msgstr "<strong>תצוגה</strong>תציג לך איך יראה הפורום לאחר פרסום. נקח אותך לאתר חיי לצפות בפורום שלך. מה יהיה הקישור תלוי בסטטוס הפורום"
+
+#: includes/admin/forums.php:147
+msgid "<strong>Trash</strong> removes your forum from this list and places it in the trash, from which you can permanently delete it."
+msgstr "<strong>העבר לפח</strong> מסיר את הפורום מרשימה זו ומעביר אותו לפח, משם ניתן למחוק אותו לצמיתות."
+
+#: includes/admin/forums.php:146
+msgid "<strong>Edit</strong> takes you to the editing screen for that forum. You can also reach that screen by clicking on the forum title."
+msgstr "<strong>עריכה</strong> תעביר אותך למצב עריכה של הפורום. ניתן גם לעבור למסך הזה בלחיצה על כותרת הפורום."
+
+#: includes/admin/forums.php:144
+msgid "Hovering over a row in the forums list will display action links that allow you to manage your forum. You can perform the following actions:"
+msgstr "במעבר העכבר מעל שורה ברשימת הפורומים, יציג קישורי עריכה המאפשרים לך לנהל את הפורום. בין השאר ניתן לבצע את הפעולות הבאות:"
+
+#: includes/admin/forums.php:142 includes/admin/replies.php:154
+#: includes/admin/topics.php:153
+msgid "Available Actions"
+msgstr "פעולות זמינות"
+
+#: includes/admin/forums.php:135
+msgid "You can refine the list to show only forums from a specific month by using the dropdown menus above the forums list. Click the Filter button after making your selection. You also can refine the list by clicking on the forum creator in the forums list."
+msgstr "אתה יכול לסנן את הצגת רשימת הפורומים רק מחודש מסוים באמצעות תפריט הנפתח מעל רשימת הפורומים. לחץ על הלחצן סנן לאחר ביצוע הבחירה שלך. אתה גם יכול לסנן את הרשימה על ידי לחיצה על היוצר הפורום ברשימת הפורומים."
+
+#: includes/admin/forums.php:134
+msgid "You can filter the list of forums by forum status using the text links in the upper left to show All, Published, or Trashed forums. The default view is to show all forums."
+msgstr "ניתן לסנן את רשימת הפורומים לפי מצב בפורום באמצעות קישורי טקסט בפינה השמאלית העליונה כדי להראות כל, פורסם בפורומים או פרומים שהועברו לאשפה. תצוגת ברירת המחדל היא להראות את כל הפורומים."
+
+#: includes/admin/forums.php:133
+msgid "You can hide/display columns based on your needs and decide how many forums to list per screen using the Screen Options tab."
+msgstr "ניתן להסתיר / להציג עמודות בהתאם לצרכים שלך ולהחליט כיצד תוצג בכל מסך רשימת הפורומים שלך, באמצעות הכרטיסייה אפשרויות המסך."
+
+#: includes/admin/forums.php:131 includes/admin/replies.php:142
+#: includes/admin/topics.php:142
+msgid "You can customize the display of this screen&#8217;s contents in a number of ways:"
+msgstr "ניתן להתאים אישית את תצוגת המסך הזה במספר דרכים:"
+
+#: includes/admin/forums.php:129 includes/admin/replies.php:140
+#: includes/admin/topics.php:140
+msgid "Screen Content"
+msgstr "תוכן המסך"
+
+#: includes/admin/forums.php:123
+msgid "This screen displays the individual forums on your site. You can customize the display of this screen to suit your workflow."
+msgstr "המסך מציג את הפורומים הייחודיים באתר שלך. הנך יכול לערוך אותו כך שיתאים לתהליך העבודה שלך."
+
+#: includes/admin/forums.php:121 includes/admin/replies.php:132
+#: includes/admin/settings.php:1549 includes/admin/topics.php:132
+msgid "Overview"
+msgstr "סקירה"
+
+#: includes/admin/converters/AEF.php:688
+#: includes/admin/converters/FluxBB.php:643
+#: includes/admin/converters/Invision.php:525
+#: includes/admin/converters/Kunena1.php:543
+#: includes/admin/converters/Kunena2.php:585
+#: includes/admin/converters/Kunena3.php:812
+#: includes/admin/converters/PHPFox3.php:649
+#: includes/admin/converters/PunBB.php:677
+#: includes/admin/converters/SMF.php:656
+#: includes/admin/converters/SimplePress5.php:537
+#: includes/admin/converters/Vanilla.php:535
+#: includes/admin/converters/XMB.php:705
+#: includes/admin/converters/XenForo.php:722
+#: includes/admin/converters/bbPress1.php:636
+#: includes/admin/converters/phpBB.php:816
+#: includes/admin/converters/vBulletin.php:652
+#: includes/admin/converters/vBulletin3.php:652
+msgid "Re: "
+msgstr "תשובה:"
+
+#: includes/admin/converter.php:515
+msgid "Calculating reply_to parents (%1$s - %2$s)"
+msgstr "מחשב היררכיית תגובות (%1$s - %2$s)"
+
+#: includes/admin/converter.php:511
+msgid "No reply_to parents to convert"
+msgstr "אין הורה \"בתגובה ל\" להמרה"
+
+#: includes/admin/converter.php:500
+msgid "Converting replies (%1$s - %2$s)"
+msgstr "ממיר תגובות (%1$s - %2$s)"
+
+#: includes/admin/converter.php:496
+msgid "No replies to convert"
+msgstr "אין תגובות להמרה"
+
+#: includes/admin/converter.php:485
+msgid "Converting topic tags (%1$s - %2$s)"
+msgstr "ממיר תגיות דיון (%1$s - %2$s)"
+
+#: includes/admin/converter.php:481
+msgid "No tags to convert"
+msgstr "אין תגיות להמרה"
+
+#: includes/admin/converter.php:470
+msgid "Calculating topic super stickies (%1$s - %2$s)"
+msgstr "מחשב סופר דביקות של דיונים (%1$s - %2$s)"
+
+#: includes/admin/converter.php:466
+msgid "No super stickies to stick"
+msgstr "אין סופר דביק כדי להדביק"
+
+#: includes/admin/converter.php:455
+msgid "Calculating topic stickies (%1$s - %2$s)"
+msgstr "מחשב דביקות של דיונים (%1$s - %2$s)"
+
+#: includes/admin/converter.php:451
+msgid "No stickies to stick"
+msgstr "אין דיונים דביקים להדביק"
+
+#: includes/admin/converter.php:440
+msgid "Converting topics (%1$s - %2$s)"
+msgstr "ממיר דיונים (%1$s - %2$s)"
+
+#: includes/admin/converter.php:436
+msgid "No topics to convert"
+msgstr "אין דיונים להמרה"
+
+#: includes/admin/converter.php:425
+msgid "Calculating forum hierarchy (%1$s - %2$s)"
+msgstr "מחשב היררכיית פורומים (%1$s - %2$s)"
+
+#: includes/admin/converter.php:421
+msgid "No forum parents to convert"
+msgstr "אין אבות לפורומים להמרה"
+
+#: includes/admin/converter.php:410
+msgid "Converting forums (%1$s - %2$s)"
+msgstr "ממיר פורומים (%1$s - %2$s)"
+
+#: includes/admin/converter.php:406
+msgid "No forums to convert"
+msgstr "אין פורומים להמרה"
+
+#: includes/admin/converter.php:391
+msgid "Delete users WordPress default passwords (%1$s - %2$s)"
+msgstr "מחיקת סיסמת ברירת המחדל של המשתמש (%1$s - %2$s)"
+
+#: includes/admin/converter.php:387
+msgid "No passwords to clear"
+msgstr "אין ססמאות לפינוי"
+
+#: includes/admin/converter.php:371
+msgid "Converting users (%1$s - %2$s)"
+msgstr "ממיר משתמשים (%1$s - %2$s)"
+
+#: includes/admin/converter.php:367
+msgid "No users to convert"
+msgstr "אין משתמשים להמרה"
+
+#: includes/admin/converter.php:351
+msgid "Deleting previously converted data (%1$s - %2$s)"
+msgstr "מוחק מידע שהומר (%1$s - %2$s)"
+
+#: includes/admin/converter.php:347
+msgid "No data to clean"
+msgstr "אין נתונים לפינוי"
+
+#: includes/admin/converter.php:248 includes/admin/converter.php:525
+msgid "Conversion Complete"
+msgstr "ההמרה הושלמה"
+
+#: includes/admin/converter.php:223
+msgid "Starting Conversion"
+msgstr "התחלת דיון"
+
+#: includes/admin/converter.php:134
+msgid "Purge Previous Import"
+msgstr "דחה את הייצוא הקודם"
+
+#: includes/admin/converter.php:130
+msgid "Start Over"
+msgstr "התחל מחדש"
+
+#: includes/admin/converter.php:126
+msgid "Convert Users"
+msgstr "המרת משתמשים"
+
+#: includes/admin/converter.php:122
+msgid "Delay Time"
+msgstr "זמן ההשהיה"
+
+#: includes/admin/converter.php:118
+msgid "Rows Limit"
+msgstr "הגבלת שורות"
+
+#: includes/admin/converter.php:115
+msgid "Options"
+msgstr "אפשרויות"
+
+#: includes/admin/converter.php:111
+msgid "Table Prefix"
+msgstr "קידומת טבלה"
+
+#: includes/admin/converter.php:107
+msgid "Database Password"
+msgstr "ססמת מסד הנתונים"
+
+#: includes/admin/converter.php:103
+msgid "Database User"
+msgstr "משתמש מסד נתונים"
+
+#: includes/admin/converter.php:99
+msgid "Database Name"
+msgstr "שם מסד הנתונים"
+
+#: includes/admin/converter.php:95
+msgid "Database Port"
+msgstr "פתחת מסד הנתונים"
+
+#: includes/admin/converter.php:91
+msgid "Database Server"
+msgstr "שרת מסד נתונים"
+
+#: includes/admin/converter.php:87
+msgid "Select Platform"
+msgstr "נא לבחור בפלטפורמה"
+
+#: includes/admin/converter.php:84
+msgid "Database Settings"
+msgstr "הגדרות מסד נתונים"
+
+#: includes/admin/admin.php:1096
+msgid "You can update all the forums on your network through this page. It works by calling the update script of each site automatically. Hit the link below to update."
+msgstr "ניתן לעדכן את כל הפורומים ברשת דרך עמוד זה. אופן הביצוע של הפעולה הוא קריאה לסקריפט העדכון של כל אתר אוטומטית. יש ללחוץ על הקישור שלהלן כדי לעדכן."
+
+#: includes/admin/admin.php:1078
+msgid "Next Forums"
+msgstr "הפורומים הבאים"
+
+#: includes/admin/admin.php:1077
+msgid "If your browser doesn&#8217;t start loading the next page automatically, click this link:"
+msgstr "אם האתר אינו מתחיל לטעון את העמוד הבא אוטומטית, יש ללחוץ על הקישור הבא:"
+
+#: includes/admin/admin.php:1053
+msgid "Warning! Problem updating %1$s. Your server may not be able to connect to sites running on it. Error message: <em>%2$s</em>"
+msgstr "אזהרה! אירעה תקלה בעת עדכון  %1$s. יתכן שהשרת אינו מצליח להתחבר לאתרים שרצים עליו. הודעה השגיאה: <em>%2$s</em>"
+
+#: includes/admin/admin.php:983
+msgid "You can update your forum through this page. Hit the link below to update."
+msgstr "ניתן לעדכן את הפורום דרך עמוד זה. יש ללחוץ על הקישור שלהלן כדי לעדכן."
+
+#: includes/admin/admin.php:974 includes/admin/admin.php:1028
+msgid "Go Back"
+msgstr "לחזור"
+
+#: includes/admin/admin.php:973 includes/admin/admin.php:1027
+msgid "All done!"
+msgstr "הושלם!"
+
+#: includes/admin/admin.php:962 includes/admin/admin.php:984
+msgid "Update Forum"
+msgstr "עדכון פורום"
+
+#: includes/admin/admin.php:905
+msgid "Core Contributors to bbPress 2.5"
+msgstr "תורמי ליבה עבור ביביפרס 2.5"
+
+#: includes/admin/admin.php:896
+msgid "Bug Testing"
+msgstr "בדיקת תקלות"
+
+#: includes/admin/admin.php:815
+msgid "Theme Compatibility"
+msgstr "יכולות תבנית"
+
+#: includes/admin/admin.php:257 includes/admin/admin.php:258
+#: includes/admin/admin.php:266 includes/admin/admin.php:267
+msgid "Welcome to bbPress"
+msgstr "ברוכים הבאים לביביפרס"
+
+#: includes/admin/admin.php:530
+msgid "Right Now in Forums"
+msgstr "מה המצב בפורומים?"
+
+#: includes/admin/admin.php:545
+msgid "About bbPress"
+msgstr "אודות ביביפרס"
+
+#: includes/admin/admin.php:887
+msgid "Converter Specialist"
+msgstr "המרת מומחה"
+
+#: bbpress.php:485
+msgid "bbPress Forums"
+msgstr "פורומים"
+
+#: includes/admin/admin.php:816
+msgid "Better handling of styles and scripts in the template stack."
+msgstr "טיפול טוב יותר של סגנונות וסקריפטים באזור התבנית."
+
+#: includes/admin/admin.php:515
+msgid "About"
+msgstr "אודות"
+
+#: includes/admin/admin.php:865
+msgid "bbPress is created by a worldwide swarm of busy, busy bees."
+msgstr "ביביפרס נוצרה על ידי נחיל עמוס מאוד על דבורות."
+
+#: includes/admin/admin.php:867
+msgid "Project Leaders"
+msgstr "מובילי הפרוייקט"
+
+#: bbpress.php:581
+msgctxt "post"
+msgid "Spam"
+msgstr "הודעת זבל"
+
+#: includes/admin/admin.php:208 includes/admin/functions.php:277
+#: includes/admin/settings.php:1509
+msgid "Import Forums"
+msgstr "יבוא פורומים"
+
+#: bbpress.php:608
+msgctxt "post"
+msgid "Hidden <span class=\"count\">(%s)</span>"
+msgid_plural "Hidden <span class=\"count\">(%s)</span>"
+msgstr[0] "מוסתרים <span class=\"count\">(%s)</span>"
+msgstr[1] "מוסתרים <span class=\"count\">(%s)</span>"
+
+#: bbpress.php:595
+msgctxt "post"
+msgid "Orphan <span class=\"count\">(%s)</span>"
+msgid_plural "Orphans <span class=\"count\">(%s)</span>"
+msgstr[0] "יתומים <span class=\"count\">(%s)</span>"
+msgstr[1] "יתומים <span class=\"count\">(%s)</span>"
+
+#: bbpress.php:405 templates/default/bbpress-functions.php:51
+msgid "bbPress Default"
+msgstr "בררת המחדל של ביביפרס"
+
+#: bbpress.php:510
+msgid "bbPress Topics"
+msgstr "נושאי הפורומים"
+
+#: bbpress.php:678
+msgid "Most popular topics"
+msgstr "הדיונים הנפוצים ביותר"
+
+#: bbpress.php:607
+msgctxt "post"
+msgid "Hidden"
+msgstr "מוסתר"
+
+#: bbpress.php:571
+msgctxt "post"
+msgid "Closed <span class=\"count\">(%s)</span>"
+msgid_plural "Closed <span class=\"count\">(%s)</span>"
+msgstr[0] "סגורים <span class=\"count\">(%s)</span>"
+msgstr[1] "סגורים <span class=\"count\">(%s)</span>"
+
+#: bbpress.php:133 bbpress.php:140
+msgid "Cheatin&#8217; huh?"
+msgstr "ניסית לרמות הא?"
+
+#: bbpress.php:535
+msgid "bbPress Replies"
+msgstr "תגובות"
+
+#: includes/admin/admin.php:832 includes/admin/admin.php:936
+msgid "Go to Forum Settings"
+msgstr "עבור להגדרות של פורום"
+
+#: includes/admin/admin.php:854
+msgid "Thank you for updating! bbPress %s is waxed, polished, and ready for you to take it for a lap or two around the block!"
+msgstr "תודה על שעדכנת! ביביפרס %s עברה פוליש רציני, ומוכנה לקחת אותך לסיבוב או שניים מסביב לשכונה!"
+
+#: bbpress.php:570
+msgctxt "post"
+msgid "Closed"
+msgstr "סגור"
+
+#: bbpress.php:582
+msgctxt "post"
+msgid "Spam <span class=\"count\">(%s)</span>"
+msgid_plural "Spam <span class=\"count\">(%s)</span>"
+msgstr[0] "הודעות זבל <span class=\"count\">(%s)</span>"
+msgstr[1] "הודעות זבל <span class=\"count\">(%s)</span>"
+
+#: bbpress.php:594
+msgctxt "post"
+msgid "Orphan"
+msgstr "יתום"
+
+#: bbpress.php:690
+msgid "Topics with no replies"
+msgstr "דיונים ללא תגובות"
+
+#: includes/admin/admin.php:218 includes/admin/functions.php:281
+#: includes/admin/tools.php:1208
+msgid "Reset Forums"
+msgstr "איפוס פורומים"
+
+#: includes/admin/admin.php:219
+msgid "Forum Reset"
+msgstr "איפוס פורום"
+
+#: includes/admin/admin.php:233 includes/admin/admin.php:234
+#: includes/admin/admin.php:244 includes/admin/admin.php:245
+#: includes/admin/users.php:82 includes/common/widgets.php:662
+#: includes/extend/buddypress/loader.php:42
+#: includes/extend/buddypress/loader.php:175
+#: includes/extend/buddypress/loader.php:261
+#: includes/extend/buddypress/loader.php:312 includes/forums/template.php:47
+#: includes/forums/template.php:48
+#: templates/default/bbpress/content-statistics.php:22
+msgid "Forums"
+msgstr "פורומים"
+
+#: includes/admin/admin.php:280 includes/admin/admin.php:281
+#: includes/admin/admin.php:302 includes/admin/admin.php:303
+#: includes/admin/admin.php:1010 includes/admin/admin.php:1097
+msgid "Update Forums"
+msgstr "עדכון פורומים"
+
+#: includes/admin/admin.php:510
+msgid "Settings"
+msgstr "הגדרות"
+
+#: includes/admin/admin.php:639
+msgctxt "admin color scheme"
+msgid "Evergreen"
+msgstr "ירוק עד"
+
+#: includes/admin/admin.php:720 includes/admin/admin.php:758
+msgid "%s - %s"
+msgstr "%s - %s"
+
+#: includes/admin/admin.php:776 includes/admin/admin.php:853
+msgid "Welcome to bbPress %s"
+msgstr "ברוכים הבאים לביביפרס %s"
+
+#: includes/admin/admin.php:777
+msgid "Thank you for updating! bbPress %s is bundled up and ready to weather the storm of users in your community!"
+msgstr "תודה על שעדכנת! ביביפרס %s ארוזה ומוכנה לרוח הסערה של משתמשים בקהילה שלך"
+
+#: includes/admin/admin.php:778 includes/admin/admin.php:855
+msgid "Version %s"
+msgstr "גרסה %s"
+
+#: includes/admin/admin.php:782 includes/admin/admin.php:859
+msgid "What&#8217;s New"
+msgstr "מה חדש"
+
+#: includes/admin/admin.php:784 includes/admin/admin.php:861
+msgid "Credits"
+msgstr "תודות"
+
+#: includes/admin/admin.php:789
+msgid "Forum Subscriptions"
+msgstr "רשומים לפורום"
+
+#: includes/admin/admin.php:793
+msgid "Subscribe to Forums"
+msgstr "הרשמה לעדכוני הפורומים"
+
+#: includes/admin/admin.php:794
+msgid "Now your users can subscribe to new topics in specific forums."
+msgstr "עכשיו המשתמשים באתר שלך יכולים להרשם לעידכונים של נושאים מפורומים ספציפים"
+
+#: includes/admin/admin.php:798
+msgid "Manage Subscriptions"
+msgstr "ניהול רשומים"
+
+#: includes/admin/admin.php:799
+msgid "Your users can manage all of their subscriptions in one convenient location."
+msgstr "המשתמשים יכולים לנהל את כל ההרשמות שלהם במיקום נוח אחד."
+
+#: includes/admin/admin.php:805
+msgid "Converters"
+msgstr "ממירים"
+
+#: includes/admin/admin.php:809
+msgid "We&#8217;re all abuzz about the hive of new importers, AEF, Drupal, FluxBB, Kunena Forums for Joomla, MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, Xenforo and XMB. Existing importers are now sweeter than honey with improved importing stickies, topic tags, forum categories and the sting is now gone if you need to remove imported users."
+msgstr "עבדנו הרבה על חדשים ממערכות אחרות, AEF, Drupal, FluxBB, Kunena Forums for Joomla, MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, Xenforo וכן XMB. יבואנים קיימים הפכו לפשוטים יותר עם דיונים דביקים, תגיות דיון, קטגוריות פורום, ואפשרות להסיר משתמשים מיובאים."
+
+#: includes/admin/admin.php:820
+msgid "Polyglot support"
+msgstr "תמיכה בריבוי שפות"
+
+#: includes/admin/admin.php:821
+msgid "bbPress fully supports automatic translation updates."
+msgstr "ביביפרס תומכת באופן מלא בעדכון תרגום אוטומטי."
+
+#: includes/admin/admin.php:825
+msgid "User capabilities"
+msgstr "יכולות משתמש"
+
+#: includes/admin/admin.php:826
+msgid "Roles and capabilities have been swept through, cleaned up, and simplified."
+msgstr "תפקידים ויכולות נשטפו, נוקו, והפכו לפשוטים יותר."
+
+#: includes/admin/admin.php:877
+msgid "Lead Developer"
+msgstr "מפתח ראשי"
+
+#: includes/admin/admin.php:872
+msgid "Founding Developer"
+msgstr "מפתח מייסד"
+
+#: includes/admin/admin.php:630
+msgctxt "admin color scheme"
+msgid "Mint"
+msgstr "נענע"
+
+#: includes/admin/admin.php:198 includes/admin/functions.php:273
+#: includes/admin/tools.php:34
+msgid "Repair Forums"
+msgstr "תיקון פורומים"
+
+#: includes/admin/admin.php:891
+msgid "Contributing Developers"
+msgstr "מפתח תורם"
+
+#: includes/admin/admin.php:199
+msgid "Forum Repair"
+msgstr "תיקון פורום"
+
+#: includes/admin/admin.php:209
+msgid "Forum Import"
+msgstr "יבוא פורום"
+
+#: includes/admin/admin.php:882 includes/admin/admin.php:901
+msgid "Feature Developer"
+msgstr "מפתח"

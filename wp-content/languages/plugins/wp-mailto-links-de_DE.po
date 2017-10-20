@@ -1,0 +1,345 @@
+# Translation of Plugins - WP Mailto Links - Manage Email Links - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - WP Mailto Links - Manage Email Links - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-10-05 18:58:14+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - WP Mailto Links - Manage Email Links - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://www.freelancephp.net"
+msgstr "http://www.freelancephp.net"
+
+#. Author of the plugin/theme
+msgid "Victor Villaverde Laan"
+msgstr "Victor Villaverde Laan"
+
+#. Description of the plugin/theme
+msgid "Manage mailto links on your site and protect email addresses from spambots, set mail icon and more."
+msgstr "Verwalte mailto-Links auf deiner Seite und schütze E-Mail-Adressen vor Spam-Bots, lege E-Mail Symbole fest und noch mehr. "
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.freelancephp.net/wp-mailto-links-plugin"
+msgstr "http://www.freelancephp.net/wp-mailto-links-plugin"
+
+#. Plugin Name of the plugin/theme
+msgid "WP Mailto Links - Manage Email Links"
+msgstr "WP Mailto Links - Manage Email Links"
+
+#: templates/admin-pages/settings/meta-boxes/mail-icon.php:84
+msgid "Use this class when a mailto link should not show an icon."
+msgstr "Verwende diese Klasse, wenn ein mailto-Link kein Symbol zeigen soll."
+
+#: templates/admin-pages/settings/meta-boxes/mail-icon.php:80
+msgid "No-icon Class"
+msgstr "Klasse ohne Symbol"
+
+#: templates/admin-pages/settings/meta-boxes/mail-icon.php:75
+msgid "No icon for links already containing an <code>&lt;img&gt;</code>-tag"
+msgstr "Kein Symbol für Links, die schon einen <code>&lt;img&gt;</code>-Tag enthalten"
+
+#: templates/admin-pages/settings/meta-boxes/mail-icon.php:71
+msgid "Skip icon containing <code>&lt;img&gt;</code>"
+msgstr "Symbol mit <code>&lt;img&gt;</code> auslassen"
+
+#: templates/admin-pages/settings/meta-boxes/mail-icon.php:66
+msgid "Show icon in front of the text (on the left side)"
+msgstr "Zeige Symbol vor dem Text (auf der linken Seite)"
+
+#: templates/admin-pages/settings/meta-boxes/mail-icon.php:62
+msgid "Show icon left side"
+msgstr "Zeige Symbol auf der linken Seite"
+
+#: templates/admin-pages/settings/meta-boxes/mail-icon.php:52
+msgid "Font Awesome Icons"
+msgstr "Font Awesome Symbole"
+
+#: templates/admin-pages/settings/meta-boxes/mail-icon.php:43
+msgid "(Default WordPress icons)"
+msgstr "(Voreingestellte WordPress Symbole)"
+
+#: templates/admin-pages/settings/meta-boxes/mail-icon.php:41
+msgid "Dashicons"
+msgstr "Dashicons"
+
+#: templates/admin-pages/settings/meta-boxes/mail-icon.php:18
+msgid "Image"
+msgstr "Bild"
+
+#: templates/admin-pages/settings/meta-boxes/mail-icon.php:11
+msgid "No icon"
+msgstr "Kein Symbol"
+
+#: templates/admin-pages/settings/meta-boxes/mail-icon.php:5
+msgid "Choose Mail Icon"
+msgstr "Wähle E-Mail-Symbol"
+
+#: templates/admin-pages/settings/meta-boxes/admin.php:24
+msgid "Or else will be shown in \"Settings\"-menu."
+msgstr "Sonst wird es im \"Einstellungen\"-Menü gezeigt."
+
+#: templates/admin-pages/settings/meta-boxes/admin.php:23
+msgid "Show this page in the main menu item"
+msgstr "Zeige diese Seite im Hauptmenüpunkt"
+
+#: templates/admin-pages/settings/meta-boxes/admin.php:18
+msgid "Admin Menu"
+msgstr "Admin-Menü"
+
+#: templates/admin-pages/settings/meta-boxes/admin.php:12
+msgid "Only visible for admin users."
+msgstr "Nur sichtbar für Administratoren."
+
+#: templates/admin-pages/settings/meta-boxes/admin.php:10
+msgid "Mark emails on the site as successfully encoded"
+msgstr "Markieren E-Mails auf der Seite als erfolgreich verschlüsselt"
+
+#: templates/admin-pages/settings/meta-boxes/admin.php:5
+msgid "Security Check"
+msgstr "Sicherheitsüberprüfung"
+
+#: templates/admin-pages/settings/meta-boxes/additional-classes.php:4
+msgid "Add extra classes to mailto links (or leave blank)."
+msgstr "Zusätzliche Klassen zu mailto-Links hinzufügen (oder frei lassen)."
+
+#: templates/admin-pages/settings/help-tabs/template-tags.php:10
+msgid "You can pass 2 optional arguments: <code>$display</code>, <code>$attrs</code>"
+msgstr "Es können zwei zusätzliche Argumente übergeben werden: <code>$display</code>, <code>$attrs</code>"
+
+#: templates/admin-pages/settings/help-tabs/template-tags.php:4
+msgid "Create a protected mailto link:"
+msgstr "Erstelle einen geschützten mailto-Link:"
+
+#: templates/admin-pages/settings/help-tabs/template-tags.php:1
+msgid "Template functions"
+msgstr "Template Funktionen"
+
+#: templates/admin-pages/settings/help-tabs/sidebar.php:43
+msgid "Email Encoder Bundle"
+msgstr "Email Encoder Bundle"
+
+#: templates/admin-pages/settings/help-tabs/sidebar.php:37
+msgid "WP External Links"
+msgstr "WP External Links"
+
+#: templates/admin-pages/settings/help-tabs/sidebar.php:32
+msgid "Other plugins by the author"
+msgstr "Weitere Plugins des Autors"
+
+#: templates/admin-pages/settings/help-tabs/sidebar.php:26
+msgid "Rate this plugin!"
+msgstr "Bewerte dieses Plugin!"
+
+#: templates/admin-pages/settings/help-tabs/sidebar.php:17
+msgid "FAQ"
+msgstr "FAQ"
+
+#: templates/admin-pages/settings/help-tabs/sidebar.php:11
+msgid "Report a problem"
+msgstr "Ein Problem melden"
+
+#: templates/admin-pages/settings/help-tabs/sidebar.php:5
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: templates/admin-pages/settings/help-tabs/shortcodes.php:6
+msgid "It's also possible to add attributes to the mailto link, like a target:"
+msgstr "Es ist ebenso möglich, Attribute zum mailto-Link, wie z. B. ein Ziel, hinzuzufügen:"
+
+#: templates/admin-pages/settings/help-tabs/shortcodes.php:3
+msgid "Create a protected mailto link in your posts:"
+msgstr "Erstelle einen geschützten mailto-Link in deinen Beiträgen:"
+
+#: templates/admin-pages/settings/help-tabs/shortcodes.php:1
+msgid "Shortcodes"
+msgstr "Shortcodes"
+
+#: templates/admin-pages/settings/help-tabs/general.php:41
+msgid "Action hook:"
+msgstr "Action hook:"
+
+#: templates/admin-pages/settings/help-tabs/general.php:37
+msgid "Filter hook:"
+msgstr "Filter Hook:"
+
+#: templates/admin-pages/settings/help-tabs/general.php:29
+msgid "Template tags:"
+msgstr "Template Tags:"
+
+#: templates/admin-pages/settings/help-tabs/general.php:25
+msgid "Shortcode:"
+msgstr "Shortcode:"
+
+#: templates/admin-pages/settings/help-tabs/general.php:22
+msgid "Cheat Sheet"
+msgstr "Cheat Sheet"
+
+#: templates/admin-pages/settings/help-tabs/general.php:14
+msgid "Hopefully you will enjoy this plugin!"
+msgstr "Hoffentlich gefällt dieses Plugin!"
+
+#: templates/admin-pages/settings/help-tabs/general.php:13
+msgid "When you have any questions, just <a href=\"http://www.freelancephp.net/contact/\" target=\"_new\">mail me</a>. To report a problem or bug, please use <a href=\"https://wordpress.org/support/plugin/wp-mailto-links#postform\" target=\"_new\">the form on the plugins page</a>."
+msgstr "Sollte es Fragen geben, einfach <a href=\"http://www.freelancephp.net/contact/\" target=\"_new\">eine E-Mail schreiben</a>. Um Probleme oder Fehler zu melden, bitte das <a href=\"https://wordpress.org/support/plugin/wp-mailto-links#postform\" target=\"_new\">Formular auf der Plugins-Seite</a> verwenden."
+
+#: templates/admin-pages/settings/help-tabs/general.php:10
+msgid "For developers there is a filter hook (<code>wpml_mailto</code>) and an action hook (<code>wpml_ready</code>) available. These are deprecated though. The filter hook will be improved after refactoring the front end (this part still needs some serious refactoring). The action hook <code>wpml_ready</code> is actually unnecessary, you could use the WP's <code>plugins_loaded</code> action instead."
+msgstr "Für Entwickler gibt es einen Filter Hook (<code>wpml_mailto</code>) und einen Action Hook (<code>wpml_ready</code>). Diese sind jedoch veraltet. Der Filter Hook wird verbessert nach der Überarbeitung des Front Ends (dieser Teil benötigt noch einiges an Überarbeitung). Der Action Hook <code>wpml_ready</code> ist aktuell nicht relevant, man könnte stattdessen WP's <code>plugins_loaded</code> Action verwenden."
+
+#: templates/admin-pages/settings/help-tabs/general.php:7
+msgid "If you want to manually create protected mailto links, just use the shortcode (<code>[wpml_mailto]</code>) within your posts or use the template tags (<code>wpml_mailto()</code> or <code>wpml_filter()</code>) in your theme files."
+msgstr "Wenn du händisch mailto-Links erstellen willst, nutze den Shortcode (<code>[wpml_mailto]</code>) in deinen Beiträgen oder die Template Tags (<code>wpml_mailto()</code> or <code>wpml_filter()</code>) in deinen Themes-Dateien."
+
+#: templates/admin-pages/settings/help-tabs/general.php:4
+msgid "The WPML plugin works out-of-the-box. All settings are default set to protect your email addresses automatically."
+msgstr "Das WPML Plugin funktioniert out-of-the-box. Alle Einstellungen sind so voreingestellt, dass sie die E-Mail-Adressen automatisch schützen."
+
+#: templates/admin-pages/settings/help-tabs/filter-hook.php:14
+msgid "Now all mailto links will be wrapped around a <code>&lt;b&gt;</code>-tag."
+msgstr "Jetzt werden alle mailto-Links mit einem <code>&lt;b&gt;</code>-Tag umgeben."
+
+#: templates/admin-pages/settings/help-tabs/filter-hook.php:4
+msgid "The wpml_mailto filter gives you the possibility to manipulate output of the mailto created by the plugin. F.e. make all mailto links bold:"
+msgstr "Der wpml_mailto Filter ermöglicht dir die Ausgabe des vom Plugin erstellten mailto-Links zu verändern, z. B. alle mailto-Links fettgedruckt auszugeben:"
+
+#: templates/admin-pages/settings/help-tabs/filter-hook.php:1
+#: templates/admin-pages/settings/help-tabs/general.php:37
+#: templates/admin-pages/settings/help-tabs/general.php:41
+msgid "(deprecated)"
+msgstr "(veraltet)"
+
+#: templates/admin-pages/settings/body-content.php:91
+msgid "All widgets"
+msgstr "Alle Widgets"
+
+#: templates/admin-pages/settings/body-content.php:87
+msgid "Comments"
+msgstr "Kommentare"
+
+#: templates/admin-pages/settings/body-content.php:83
+msgid "Post contents"
+msgstr "Beitragsinhalte"
+
+#: templates/admin-pages/settings/body-content.php:78
+msgid "(the whole <code>&lt;body&gt;</code>)"
+msgstr "(den ganzen <code>&lt;body&gt;</code>)"
+
+#: templates/admin-pages/settings/body-content.php:77
+msgid "All contents"
+msgstr "Alle Inhalte"
+
+#: templates/admin-pages/settings/body-content.php:72
+msgid "Options have effect on"
+msgstr "Einstellungen haben Auswirkungen auf"
+
+#: templates/admin-pages/settings/body-content.php:66
+msgid "Warning: this option could conflict with certain form plugins. Test it first."
+msgstr "Achtung: diese Einstellung könnte Probleme mit bestimmten Formular-Plugins ergeben. Bitte vorher ausprobieren."
+
+#: templates/admin-pages/settings/body-content.php:65
+msgid "Strong protection for input form fields"
+msgstr "Starker Schutz für Eingabe-Formular-Felder"
+
+#: templates/admin-pages/settings/body-content.php:61
+msgid "RSS feed by replacing emails with protection text *"
+msgstr "RSS-Feed, indem E-Mails mit Schutztext ersetzt werden *"
+
+#: templates/admin-pages/settings/body-content.php:57
+msgid "<code>&lt;head&gt;</code>-section by replacing emails with protection text *"
+msgstr "<code>&lt;head&gt;</code>-Abschnitt, indem E-Mails mit Schutztext ersetzt werden *"
+
+#: templates/admin-pages/settings/body-content.php:52
+msgid "Also protect..."
+msgstr "Schütze auch..."
+
+#: templates/admin-pages/settings/body-content.php:47
+msgid "This text will be shown for protected emailaddresses."
+msgstr "Dieser Text wird bei geschützten E-Mail-Adressen gezeigt."
+
+#: templates/admin-pages/settings/body-content.php:43
+msgid "Set protection text *"
+msgstr "Lege Schutztext fest *"
+
+#: templates/admin-pages/settings/body-content.php:36
+msgid "Yes, convert plain emails to mailto links"
+msgstr "Ja, wandle einfache E-Mails in mailto-Links um"
+
+#: templates/admin-pages/settings/body-content.php:30
+msgid "(Recommended)"
+msgstr "(Empfohlen)"
+
+#: templates/admin-pages/settings/body-content.php:29
+msgid "Yes, protect plain emails with protection text *"
+msgstr "Ja, schütze einfache E-Mails mit Schutztext *"
+
+#: templates/admin-pages/settings/body-content.php:23
+msgid "No, keep plain emails as they are"
+msgstr "Nein, belasse einfache E-Mails so, wie sie sind"
+
+#: templates/admin-pages/settings/body-content.php:17
+msgid "Protect plain emails"
+msgstr "Schütze einfache E-Mails"
+
+#: templates/admin-pages/settings/body-content.php:12
+msgid "Protect mailto links against spambots"
+msgstr "Schütze mailto-Links vor Spam-Bots"
+
+#: templates/admin-pages/settings/body-content.php:8
+msgid "Protect mailto links"
+msgstr "Schütze mailto-Links"
+
+#: classes/WPML/Front/Email.php:298
+msgid "Email encoded successfully!"
+msgstr "E-Mail erfolgreich verschlüsselt!"
+
+#: classes/WPML/AdminPage/Settings.php:76
+#: classes/WPML/AdminPage/Settings.php:87
+msgid "Mailto Links"
+msgstr "mailto-Links"
+
+#: classes/WPML/AdminPage/Settings.php:75
+#: classes/WPML/AdminPage/Settings.php:86
+msgid "WP Mailto Links"
+msgstr "WP Mailto Links"
+
+#: classes/WPML/AdminPage/Settings/MetaBoxes.php:64
+msgid "Support"
+msgstr "Support"
+
+#: classes/WPML/AdminPage/Settings/MetaBoxes.php:58
+msgid "Additional Classes"
+msgstr "Zusätzliche Klassen"
+
+#: classes/WPML/AdminPage/Settings/MetaBoxes.php:52
+msgid "Admin"
+msgstr "Admin"
+
+#: classes/WPML/AdminPage/Settings/MetaBoxes.php:46
+msgid "Mail Icon"
+msgstr "Mail Icon"
+
+#: classes/WPML/AdminPage/Settings/HelpTabs.php:46
+#: templates/admin-pages/settings/help-tabs/filter-hook.php:1
+msgid "Filter Hook"
+msgstr "Filter Hook"
+
+#: classes/WPML/AdminPage/Settings/HelpTabs.php:41
+msgid "Template Tags"
+msgstr "Template Tags"
+
+#: classes/WPML/AdminPage/Settings/HelpTabs.php:36
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: classes/WPML/AdminPage/Settings/HelpTabs.php:31
+msgid "General"
+msgstr "Allgemein"
+
+#: classes/MyDevLib/FormHelper.php:194
+msgid "Save Changes"
+msgstr "Änderungen speichern"

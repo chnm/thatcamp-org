@@ -1,0 +1,4529 @@
+# Translation of Plugins - bbPress - Stable (latest release) in Greek
+# This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-01-13 20:23:48+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: el_GR\n"
+"Project-Id-Version: Plugins - bbPress - Stable (latest release)\n"
+
+#. Author of the plugin/theme
+msgid "The bbPress Community"
+msgstr "Η κοινότητα του bbPress"
+
+#. Plugin Name of the plugin/theme
+msgid "bbPress"
+msgstr "bbPress"
+
+#. Description of the plugin/theme
+msgid "bbPress is forum software with a twist from the creators of WordPress."
+msgstr "Το bbPress είναι λογισμικό για την δημιουργία φόρουμ από τους δημιουργούς του WordPress."
+
+#. #-#-#-#-#  bbpress-code.pot (bbPress 2.5.13)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  bbpress-code.pot (bbPress 2.5.13)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "https://bbpress.org"
+msgstr "https://bbpress.org"
+
+#: includes/admin/tools.php:1148
+msgid "No reply positions to recalculate!"
+msgstr "Δεν υπάρχουν θέσεις απαντήσεων για επαναϋπολογισμό!"
+
+#: includes/admin/tools.php:1147
+msgid "Recalculating reply menu order &hellip; %s"
+msgstr "Επαναϋπολογισμός ταξινόμησης μενού απάντησης &hellip; %s"
+
+#: includes/admin/tools.php:166
+msgid "Recalculate the position of each reply"
+msgstr "Επαναυπολογισμός της θέσης της κάθε απάντησης"
+
+#: templates/default/extras/page-topic-tags.php:22
+msgid "<p>This is a collection of tags that are currently popular on our forums.</p>"
+msgstr "<p>Μια συλλογή ετικετών που είναι τώρα δημοφιλείς στον χώρο συζητήσεών μας.</p>"
+
+#: templates/default/extras/page-forum-statistics.php:22
+msgid "<p>Here are the statistics and popular topics of our forums.</p>"
+msgstr "<p>Τα στατιστικά και τα δημοφιλή θέματα στον χώρο συζητήσεών μας.</p>"
+
+#: templates/default/bbpress-functions.php:426
+msgid "Please login to subscribe to this topic."
+msgstr "Παρακαλούμε συνδεθείτε για να γίνεται συνδρομητής στο θέμα."
+
+#: templates/default/bbpress-functions.php:375
+#: templates/default/bbpress-functions.php:443
+msgid "The topic could not be found."
+msgstr "Δεν ήταν δυνατή η εύρεση του θέματος."
+
+#: templates/default/bbpress-functions.php:358
+msgid "Please login to make this topic a favorite."
+msgstr "Παρακαλούμε συνδεθείτε για να προσθέσετε στα αγαπημένα το θέμα."
+
+#: templates/default/bbpress-functions.php:353
+msgid "Favorites are no longer active."
+msgstr "Τα αγαπημένα δεν είναι πλέον ενεργά."
+
+#: templates/default/bbpress-functions.php:320
+#: templates/default/bbpress-functions.php:388
+#: templates/default/bbpress-functions.php:456
+msgid "The request was unsuccessful. Please try again."
+msgstr "Το αίτημα απέτυχε. Παρακαλούμε προσπαθήστε ξανά."
+
+#: templates/default/bbpress-functions.php:312
+#: templates/default/bbpress-functions.php:380
+#: templates/default/bbpress-functions.php:448
+msgid "Are you sure you meant to do that?"
+msgstr "Σίγουρα θέλατε να το κάνετε αυτό;"
+
+#: templates/default/bbpress-functions.php:307
+msgid "The forum could not be found."
+msgstr "Δεν ήταν δυνατή η εύρεση της συζήτησης."
+
+#: templates/default/bbpress-functions.php:299
+#: templates/default/bbpress-functions.php:367
+#: templates/default/bbpress-functions.php:435
+msgid "You do not have permission to do this."
+msgstr "Δεν έχετε εξουσιοδότηση να το κάνετε αυτό."
+
+#: templates/default/bbpress-functions.php:290
+msgid "Please login to subscribe to this forum."
+msgstr "Παρακαλούμε συνδεθείτε για να γίνεται συνδρομητής σ' αυτή τη συζήτηση."
+
+#: templates/default/bbpress-functions.php:285
+#: templates/default/bbpress-functions.php:421
+msgid "Subscriptions are no longer active."
+msgstr "Οι συνδρομές δεν είναι πλέον ενεργές."
+
+#: templates/default/bbpress-functions.php:248
+#: templates/default/bbpress-functions.php:257
+msgid "Something went wrong. Refresh your browser and try again."
+msgstr "Κάτι πήγε στραβά. Ανανεώστε τον περιηγητή σας και δοκιμάστε ξανά."
+
+#: templates/default/bbpress/user-topics-created.php:28
+msgid "This user has not created any topics."
+msgstr "Ο χρήστης δεν έχει δημιουργήσει κανένα θέμα."
+
+#: templates/default/bbpress/user-topics-created.php:28
+msgid "You have not created any topics."
+msgstr "Δεν έχετε δημιουργήσει κανένα θέμα."
+
+#: templates/default/bbpress/user-topics-created.php:15
+msgid "Forum Topics Started"
+msgstr "Θέματα συζητήσεων που δημιουργήθηκαν"
+
+#: templates/default/bbpress/user-subscriptions.php:47
+msgid "This user is not currently subscribed to any topics."
+msgstr "Ο χρήστης δεν είναι συνδρομητής σε κανένα θέμα."
+
+#: templates/default/bbpress/user-subscriptions.php:47
+msgid "You are not currently subscribed to any topics."
+msgstr "Δεν είστε, προς το παρόν, συνδρομητής σε κανένα θέμα."
+
+#: templates/default/bbpress/user-subscriptions.php:28
+msgid "This user is not currently subscribed to any forums."
+msgstr "Ο χρήστης δεν είναι συνδρομητής σε καμία συζήτηση."
+
+#: templates/default/bbpress/user-subscriptions.php:28
+msgid "You are not currently subscribed to any forums."
+msgstr "Δεν είστε, προς το παρόν, συνδρομητής σε καμία συζήτηση."
+
+#: templates/default/bbpress/user-subscriptions.php:19
+msgid "Subscribed Forums"
+msgstr "Παρακολουθούμενες συζητήσεις"
+
+#: templates/default/bbpress/user-replies-created.php:28
+msgid "This user has not replied to any topics."
+msgstr "Ο χρήστης δεν έχει απαντήσει σε θέματα."
+
+#: templates/default/bbpress/user-replies-created.php:28
+msgid "You have not replied to any topics."
+msgstr "Δεν έχετε απαντήσει σε κανένα θέμα."
+
+#: templates/default/bbpress/user-replies-created.php:15
+msgid "Forum Replies Created"
+msgstr "Απαντήσεις συζητήσεων που έγιναν"
+
+#: templates/default/bbpress/user-profile.php:26
+msgid "Replies Created: %s"
+msgstr "Απαντήσεις που έδωσε: %s"
+
+#: templates/default/bbpress/user-profile.php:25
+msgid "Topics Started: %s"
+msgstr "Θέματα που ξεκίνησε: %s"
+
+#: templates/default/bbpress/user-profile.php:24
+msgid "Forum Role: %s"
+msgstr "Ρόλος συζήτησης: %s"
+
+#: templates/default/bbpress/user-favorites.php:28
+msgid "This user has no favorite topics."
+msgstr "Αυτός ο χρήστης δεν έχει αγαπημένα θέματα."
+
+#: templates/default/bbpress/user-favorites.php:28
+msgid "You currently have no favorite topics."
+msgstr "Προς το παρόν δεν έχετε αγαπημένα θέματα."
+
+#: templates/default/bbpress/user-favorites.php:15
+msgid "Favorite Forum Topics"
+msgstr "Αγαπημένα θέματα συζήτησης"
+
+#: templates/default/bbpress/user-details.php:58
+msgid "%s's Subscriptions"
+msgstr "Οι συνδρομές του/της %s"
+
+#: templates/default/bbpress/user-details.php:48
+msgid "%s's Favorites"
+msgstr "Τα αγαπημένα του/της %s"
+
+#: templates/default/bbpress/user-details.php:41
+msgid "%s's Replies Created"
+msgstr "Απαντήσεις που έγιναν από τον/την %s"
+
+#: templates/default/bbpress/user-details.php:35
+msgid "%s's Topics Started"
+msgstr "Το θέμα ξεκίνησε ο/η %s"
+
+#: templates/default/bbpress/user-details.php:29
+#: templates/default/bbpress/user-profile.php:15
+msgid "Profile"
+msgstr "Προφίλ"
+
+#: templates/default/bbpress/user-details.php:29
+msgid "%s's Profile"
+msgstr "Προφίλ του/της %s"
+
+#: templates/default/bbpress/loop-single-topic.php:68
+msgid "in: <a href=\"%1$s\">%2$s</a>"
+msgstr "στο: <a href=\"%1$s\">%2$s</a>"
+
+#: templates/default/bbpress/loop-single-topic.php:60
+msgid "Started by: %1$s"
+msgstr "Ξεκίνησε από: %1$s"
+
+#: templates/default/bbpress/loop-single-reply.php:21
+msgid "in reply to: "
+msgstr "σε απάντηση του:"
+
+#: templates/default/bbpress/loop-search.php:22
+#: templates/default/bbpress/loop-search.php:44
+msgid "Search Results"
+msgstr "Αποτελέσματα αναζήτησης"
+
+#: templates/default/bbpress/loop-search-topic.php:37
+msgid "in forum "
+msgstr "στη συζήτηση"
+
+#: templates/default/bbpress/loop-search-topic.php:33
+msgid "in group forum "
+msgstr "στη συζήτηση ομάδας"
+
+#: templates/default/bbpress/loop-search-topic.php:26
+msgid "Topic: "
+msgstr "Θέμα:"
+
+#: templates/default/bbpress/loop-search-reply.php:24
+msgid "In reply to: "
+msgstr "Σε απάντηση στο:"
+
+#: templates/default/bbpress/loop-search-forum.php:26
+msgid "Forum: "
+msgstr "Συζήτηση:"
+
+#: templates/default/bbpress/loop-search-forum.php:16
+msgid "Last updated %s"
+msgstr "Τελευταία ενημέρωση %s"
+
+#: templates/default/bbpress/form-user-roles.php:13
+msgid "Blog Role"
+msgstr "Ρόλος blog"
+
+#: templates/default/bbpress/form-user-register.php:18
+msgid "We use your email address to email you a secure password and verify your account."
+msgstr "Χρησιμοποιούμε την διεύθυνση ηλεκτρονικού ταχυδρομείου σας για να σας στείλουμε έναν ασφαλή κωδικό και για να επιβεβαιώσουμε τον λογαριασμό σας."
+
+#: templates/default/bbpress/form-user-register.php:17
+msgid "Your username must be unique, and cannot be changed later."
+msgstr "Το όνομα χρήστη σας πρέπει να είναι μοναδικό και δεν μπορεί να αλλάξει αργότερα."
+
+#: templates/default/bbpress/form-user-register.php:14
+msgid "Create an Account"
+msgstr "Δημιουργία λογαριασμού"
+
+#: templates/default/bbpress/form-user-lost-pass.php:27
+msgid "Reset My Password"
+msgstr "Επαναφορά του κωδικού μου"
+
+#: templates/default/bbpress/form-user-lost-pass.php:18
+msgid "Username or Email"
+msgstr "Όνομα χρήστη ή Διεύθυνση ηλεκτρονικού ταχυδρομείου"
+
+#: templates/default/bbpress/form-user-login.php:28
+msgid "Keep me signed in"
+msgstr "Κράτησέ με συνδεδεμένο."
+
+#: templates/default/bbpress/form-user-edit.php:178
+msgid "Update User"
+msgstr "Ενημέρωση χρήστη"
+
+#: templates/default/bbpress/form-user-edit.php:178
+msgid "Update Profile"
+msgstr "Ενημέρωση προφίλ"
+
+#: templates/default/bbpress/form-user-edit.php:156
+msgid "Grant this user super admin privileges for the Network."
+msgstr "Χορηγήστε σ' αυτόν τον χρήστη δικαιώματα Υπερδιαχειριστή για το Δίκτυο."
+
+#: templates/default/bbpress/form-user-edit.php:153
+msgid "Network Role"
+msgstr "Ρόλος δικτύου"
+
+#: templates/default/bbpress/form-user-edit.php:143
+#: templates/default/bbpress/form-user-edit.php:146
+msgid "User Role"
+msgstr "Ρόλος χρήστη"
+
+#: templates/default/bbpress/form-user-edit.php:133
+msgid "Your password should be at least ten characters long. Use upper and lower case letters, numbers, and symbols to make it even stronger."
+msgstr "Ο κωδικός σας θα πρέπει να έχει τουλάχιστον δέκα χαρακτήρες. Χρησιμοποιήστε κεφαλαία και πεζά, αριθμούς και σύμβολα για να γίνει πιο ισχυρό."
+
+#: templates/default/bbpress/form-user-edit.php:130
+msgid "Type your new password again."
+msgstr "Πληκτρολογήστε τον νέο κωδικό ξανά."
+
+#: templates/default/bbpress/form-user-edit.php:127
+msgid "If you would like to change the password type a new one. Otherwise leave this blank."
+msgstr "Αν θέλετε να αλλάξετε κωδικό πληκτρολογήστε έναν νέο. Αλλιώς αφήστε το κενό."
+
+#: templates/default/bbpress/form-user-edit.php:124
+msgid "New Password"
+msgstr "Νέος κωδικός"
+
+#: templates/default/bbpress/form-user-edit.php:115
+msgid "There is a pending email address change to <code>%1$s</code>. <a href=\"%2$s\">Cancel</a>"
+msgstr "Εκκρεμεί μια αλλαγή ηλεκτρονικού ταχυδρομείου για τον/την <code>%1$s</code>. <a href=\"%2$s\">Cancel</a>"
+
+#: templates/default/bbpress/form-user-edit.php:90
+#: templates/default/bbpress/form-user-edit.php:93
+msgid "Account"
+msgstr "Λογαριασμός"
+
+#: templates/default/bbpress/form-user-edit.php:82
+msgid "Biographical Info"
+msgstr "Βιογραφικές πληροροφορίες"
+
+#: templates/default/bbpress/form-user-edit.php:74
+#: templates/default/bbpress/form-user-edit.php:77
+msgid "About the user"
+msgstr "Σχετικά με τον χρήστη"
+
+#: templates/default/bbpress/form-user-edit.php:74
+#: templates/default/bbpress/form-user-edit.php:77
+msgid "About Yourself"
+msgstr "Σχετικά με εσάς"
+
+#: templates/default/bbpress/form-user-edit.php:49
+#: templates/default/bbpress/form-user-edit.php:52
+msgid "Contact Info"
+msgstr "Πληροφορίες επαφής"
+
+#: templates/default/bbpress/form-user-edit.php:39
+msgid "Display Name"
+msgstr "Όνομα εμφάνισης"
+
+#: templates/default/bbpress/form-user-edit.php:34
+msgid "Nickname"
+msgstr "Όνομα χρήστη"
+
+#: templates/default/bbpress/form-user-edit.php:29
+msgid "Last Name"
+msgstr "Επίθετο"
+
+#: templates/default/bbpress/form-user-edit.php:24
+msgid "First Name"
+msgstr "Όνομα"
+
+#: templates/default/bbpress/form-topic.php:234
+msgid "You must be logged in to create new topics."
+msgstr "Πρέπει να έχετε συνδεθεί για να δημιουργήσετε νέα θέματα."
+
+#: templates/default/bbpress/form-topic.php:234
+msgid "You cannot create new topics."
+msgstr "Δεν μπορείτε να δημιουργήσετε νέα θέματα."
+
+#: templates/default/bbpress/form-topic.php:145
+msgid "Topic Status:"
+msgstr "Κατάσταση θέματος:"
+
+#: templates/default/bbpress/form-topic.php:133
+msgid "Topic Type:"
+msgstr "Τύπος θέματος;"
+
+#: templates/default/bbpress/form-topic.php:101
+msgid "Topic Tags:"
+msgstr "Ετικέτες θέματος:"
+
+#: templates/default/bbpress/form-topic.php:75
+msgid "Topic Title (Maximum Length: %d):"
+msgstr "Τίτλος θέματος (μέγιστο μήκος: %d):"
+
+#: templates/default/bbpress/form-topic.php:53
+msgid "This forum is marked as closed to new topics, however your posting capabilities still allow you to do so."
+msgstr "Σ' αυτή τη συζήτηση δεν επιτρέπεται η δημιουργία νέων θεμάτων, ωστόσο έχετε εξουσιοδότηση να το κάνετε."
+
+#: templates/default/bbpress/form-topic.php:43
+msgid "Create New Topic in &ldquo;%s&rdquo;"
+msgstr "Δημιουργία νέου θέματος στο &ldquo;%s&rdquo;"
+
+#: templates/default/bbpress/form-topic-tag.php:101
+msgid "Are you sure you want to delete the \"%s\" tag? This is permanent and cannot be undone."
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε την ετικέτα \"%s\"; Θα είναι μόνιμο και δεν θα μπορεί να αναιρεθεί."
+
+#: templates/default/bbpress/form-topic-tag.php:95
+msgid "Any links to this tag will no longer function."
+msgstr "Οι σύνδεσμοι προς την ετικέτα δεν θα λειτουργούν πλέον."
+
+#: templates/default/bbpress/form-topic-tag.php:94
+msgid "Deleting a tag cannot be undone."
+msgstr "Η διαγραφή ετικέτας δεν μπορεί να αναιρεθεί."
+
+#: templates/default/bbpress/form-topic-tag.php:91
+msgid "This does not delete your topics. Only the tag itself is deleted."
+msgstr "Δεν θα διαγραφούν τα θέματά σας. Μόνο οι ετικέτες."
+
+#: templates/default/bbpress/form-topic-tag.php:73
+msgid "Are you sure you want to merge the \"%s\" tag into the tag you specified?"
+msgstr "Είστε σίγουροι ότι θέλετε να συγχωνεύσετε την ετικέτα \"%s\" μ' αυτή που καθορίσατε;"
+
+#: templates/default/bbpress/form-topic-tag.php:68
+msgid "Existing tag:"
+msgstr "Υπάρχουσα ετικέτα:"
+
+#: templates/default/bbpress/form-topic-tag.php:62
+msgid "Merging tags together cannot be undone."
+msgstr "Η συγχώνευση ετικετών δεν μπορεί να αναιρεθεί."
+
+#: templates/default/bbpress/form-topic-tag.php:45
+msgid "Update"
+msgstr "Ενημέρωση"
+
+#: templates/default/bbpress/form-topic-tag.php:40
+msgid "Slug:"
+msgstr "Slug:"
+
+#: templates/default/bbpress/form-topic-tag.php:29
+msgid "Changing the slug affects its permalink. Any links to the old slug will stop working."
+msgstr "Η αλλαγή της slug επηρεάζει τον μόνιμο σύνδεσμό της. Όποιοι σύνδεσμοι στην παλιά slug θα πάψει να δουλεύει."
+
+#: templates/default/bbpress/form-topic-tag.php:25
+msgid "Leave the slug empty to have one automatically generated."
+msgstr "Αφήστε κενή την slug για να δημιουργηθεί αυτόματα."
+
+#: templates/default/bbpress/form-topic-tag.php:22
+msgid "Rename"
+msgstr "Αλλαγή ονόματος"
+
+#: templates/default/bbpress/form-topic-tag.php:18
+msgid "Manage Tag: \"%s\""
+msgstr "Διαχείριση ετικέτας: \"%s\""
+
+#: templates/default/bbpress/form-topic-split.php:85
+msgid "Copy topic tags to the new topic"
+msgstr "Αντέγραψε τις ετικέτες του θέματος στο νέο θέμα"
+
+#: templates/default/bbpress/form-topic-split.php:80
+msgid "Copy favoriters to the new topic"
+msgstr "Αντέγραψε τα αγαπημένα στο νέο θέμα"
+
+#: templates/default/bbpress/form-topic-split.php:75
+msgid "Copy subscribers to the new topic"
+msgstr "Αντέγραψε τους συνδρομητές στο νέο θέμα"
+
+#: templates/default/bbpress/form-topic-split.php:42
+msgid "Split: %s"
+msgstr "Διαχώρισε: %s"
+
+#: templates/default/bbpress/form-topic-split.php:37
+msgid "Split Method"
+msgstr "Μέθοδος διαχωρισμού"
+
+#: templates/default/bbpress/form-topic-split.php:33
+msgid "If you use the existing topic option, replies within both topics will be merged chronologically. The order of the merged replies is based on the time and date they were posted."
+msgstr "Αν επιλέξετε την επιλογή του υπάρχοντος θέματος, οι απαντήσεις και στα δύο θέματα θα συγχωνευθούν χρονικά. Η σειρά των συγχωνευμένων απαντήσεων βασίζονται στην ώρα και στην ημερομηνία δημοσίευσής τους."
+
+#: templates/default/bbpress/form-topic-split.php:29
+msgid "When you split a topic, you are slicing it in half starting with the reply you just selected. Choose to use that reply as a new topic with a new title, or merge those replies into an existing topic."
+msgstr "Όταν χωρίζετε ένα θέμα, το χωρίζετε από την απάντηση που μόλις επιλέξατε και κάτω. Επιλέξτε να χρησιμοποιήσετε αυτήν την απάντηση σαν νέο θέμα μ' έναν νέο τίτλο, ή συγχωνεύστε αυτές τις απαντήσεις σ' ένα υπάρχον θέμα."
+
+#: templates/default/bbpress/form-topic-split.php:24
+msgid "Split topic \"%s\""
+msgstr "Χωρισμός θέματος \"%s\""
+
+#: templates/default/bbpress/form-topic-merge.php:106
+#: templates/default/bbpress/form-topic-split.php:110
+msgid "You cannot edit this topic."
+msgstr "Δεν μπορείτε να επεξεργαστείτε αυτό το θέμα!"
+
+#: templates/default/bbpress/form-topic-merge.php:106
+#: templates/default/bbpress/form-topic-split.php:110
+msgid "You do not have the permissions to edit this topic!"
+msgstr "Δεν έχετε εξουσιοδότηση να επεξεργαστείτε αυτό το θέμα!"
+
+#: templates/default/bbpress/form-topic-merge.php:81
+msgid "Merge topic tags"
+msgstr "Συγχώνευση ετικετών θέματος"
+
+#: templates/default/bbpress/form-topic-merge.php:76
+msgid "Merge topic favoriters"
+msgstr "Συγχώνευση αυτών που έχουν κάνει αγαπημένο το θέμα"
+
+#: templates/default/bbpress/form-topic-merge.php:71
+msgid "Merge topic subscribers"
+msgstr "Συγχώνευση συνδρομητών θέματος"
+
+#: templates/default/bbpress/form-topic-merge.php:64
+#: templates/default/bbpress/form-topic-split.php:68
+msgid "Topic Extras"
+msgstr "Έξτρα θεμάτων"
+
+#: templates/default/bbpress/form-topic-merge.php:56
+msgid "There are no other topics in this forum to merge with."
+msgstr "Δεν υπάρχουν άλλα θέματα σ' αυτήν τη συζήτηση για να συγχωνευθούν."
+
+#: templates/default/bbpress/form-topic-merge.php:42
+msgid "Merge with this topic:"
+msgstr "Συγχώνευση μ' αυτό το θέμα:"
+
+#: templates/default/bbpress/form-topic-merge.php:38
+msgid "Destination"
+msgstr "Προορισμός"
+
+#: templates/default/bbpress/form-topic-merge.php:34
+msgid "All replies within both topics will be merged chronologically. The order of the merged replies is based on the time and date they were posted. If the destination topic was created after this one, it's post date will be updated to second earlier than this one."
+msgstr "Όλες οι απαντήσεις και στα δύο θέματα θα συγχωνευθούν χρονικά. Η τάξη των συγχωνευμένων απαντήσεων βασίζεται στον χρόνο και στην ημερομηνία δημοσίευσης. Αν το θέμα προορισμού δημιουργήθηκε σε διαφορετικό χρόνο από αυτό, η ημερομηνία δημοσίευσης θα ανανεωθεί στην αμέσως νεότερη από αυτό."
+
+#: templates/default/bbpress/form-topic-merge.php:30
+msgid "To keep this topic as the lead, go to the other topic and use the merge tool from there instead."
+msgstr "Για να διατηρήσετε αυτό το θέμα ως κύριο, πηγαίνετε στο άλλο θέμα και χρησιμοποιήστε την συγχώνευση από εκεί."
+
+#: templates/default/bbpress/form-topic-merge.php:29
+msgid "Select the topic to merge this one into. The destination topic will remain the lead topic, and this one will change into a reply."
+msgstr "Επιλέξτε το θέμα στο οποίο θα συγχωνευθεί. Το θέμα προορισμού θα παραμείνει κύριο και αυτό θα μετατραπεί σε απάντηση."
+
+#: templates/default/bbpress/form-topic-merge.php:24
+msgid "Merge topic \"%s\""
+msgstr "Συγχώνευσε θέμα \"%s\""
+
+#: templates/default/bbpress/form-search.php:14
+msgid "Search for:"
+msgstr "Αναζήτηση για:"
+
+#: templates/default/bbpress/form-reply.php:174
+msgid "You must be logged in to reply to this topic."
+msgstr "Πρέπει να είστε συνδεδεμένοι για να απαντήσετε σ' αυτό το θέμα."
+
+#: templates/default/bbpress/form-reply.php:174
+msgid "You cannot reply to this topic."
+msgstr "Δεν μπορείτε να απαντήσετε σ' αυτό το θέμα."
+
+#: templates/default/bbpress/form-reply.php:166
+#: templates/default/bbpress/form-topic.php:226
+msgid "The forum &#8216;%s&#8217; is closed to new topics and replies."
+msgstr "Η συζήτηση &#8216;%s&#8217; δεν δέχεται νέα θέματα και απαντήσεις."
+
+#: templates/default/bbpress/form-reply.php:158
+msgid "The topic &#8216;%s&#8217; is closed to new replies."
+msgstr "Το θέμα &#8216;%s&#8217; δεν δέχεται νέες απαντήσεις."
+
+#: templates/default/bbpress/form-reply.php:118
+#: templates/default/bbpress/form-topic.php:188
+msgid "Optional reason for editing:"
+msgstr "Προαιρετικοί λόγοι επεξεργασίας:"
+
+#: templates/default/bbpress/form-reply.php:114
+#: templates/default/bbpress/form-topic.php:184
+msgid "Keep a log of this edit:"
+msgstr "Κατάγραψε αυτήν την επεξεργασία:"
+
+#: templates/default/bbpress/form-reply.php:97
+#: templates/default/bbpress/form-topic.php:168
+msgid "Notify me of follow-up replies via email"
+msgstr "Ειδοποίησέ με για ανταπαντήσεις μέσω ηλεκτρονικού ταχυδρομείου"
+
+#: templates/default/bbpress/form-reply.php:93
+#: templates/default/bbpress/form-topic.php:164
+msgid "Notify the author of follow-up replies via email"
+msgstr "Ειδοποιήστε τον συγγραφέα των ανταπαντήσεων μέσω ηλεκτρονικού ταχυδρομείου"
+
+#: templates/default/bbpress/form-reply.php:75
+msgid "Tags:"
+msgstr "Ετικέτες:"
+
+#: templates/default/bbpress/form-reply.php:36
+msgid "This topic is marked as closed to new replies, however your posting capabilities still allow you to do so."
+msgstr "Αυτό το θέμα έχει σημανθεί ως κλειδωμένο για νέες απαντήσεις, ωστόσο οι δυνατότητες δημοσίευσής σας σάς επιτρέπουν να το κάνετε."
+
+#: templates/default/bbpress/form-reply-move.php:85
+msgid "You cannot edit this reply."
+msgstr "Δεν μπορείτε να επεξεργαστείτε αυτήν την απάντηση."
+
+#: templates/default/bbpress/form-reply-move.php:85
+msgid "You do not have the permissions to edit this reply!"
+msgstr "Δεν έχετε εξουσιοδότηση να επεξεργαστείτε αυτήν την απάντηση!"
+
+#: templates/default/bbpress/form-reply-move.php:68
+#: templates/default/bbpress/form-topic-merge.php:89
+#: templates/default/bbpress/form-topic-split.php:93
+msgid "<strong>WARNING:</strong> This process cannot be undone."
+msgstr "<strong>ΠΡΟΣΟΧΗ:</strong> αυτή η διαδικασία δεν μπορεί να αναιρεθεί."
+
+#: templates/default/bbpress/form-reply-move.php:49
+#: templates/default/bbpress/form-topic-split.php:49
+msgid "Use an existing topic in this forum:"
+msgstr "Χρησιμοποιήστε ένα υπάρχον θέμα σ' αυτή τη συζήτηση:"
+
+#: templates/default/bbpress/form-reply-move.php:42
+msgid "Moved: %s"
+msgstr "Μετακινήθηκε: %s"
+
+#: templates/default/bbpress/form-reply-move.php:41
+#: templates/default/bbpress/form-topic-split.php:41
+msgid "New topic in <strong>%s</strong> titled:"
+msgstr "Νέο θέμα στο <strong>%s</strong> που ονομάζεται:"
+
+#: templates/default/bbpress/form-reply-move.php:37
+msgid "Move Method"
+msgstr "Μέθοδος μετακίνησης"
+
+#: templates/default/bbpress/form-reply-move.php:33
+msgid "If you choose an existing topic, replies will be ordered by the time and date they were created."
+msgstr "Αν επιλέξετε ένα υπάρχον θέμα, οι απαντήσεις θα ταξινομηθούν βάσει του χρόνου δημιουργίας τους."
+
+#: templates/default/bbpress/form-reply-move.php:29
+msgid "You can either make this reply a new topic with a new title, or merge it into an existing topic."
+msgstr "Μπορείτε είτε να δημιουργήσετε ένα νέο θέμα μ' αυτή την απάντηση ή να τη συγχωνεύσετε σ' ένα υπάρχον θέμα."
+
+#: templates/default/bbpress/form-reply-move.php:24
+msgid "Move reply \"%s\""
+msgstr "Μετακίνηση απάντησης \"%s\""
+
+#: templates/default/bbpress/form-protected.php:14
+msgid "Protected"
+msgstr "Προστατευμένο"
+
+#: templates/default/bbpress/form-forum.php:169
+msgid "You must be logged in to create new forums."
+msgstr "Πρέπει να έχετε συνδεθεί για να δημιουργήσετε νέες συζητήσεις."
+
+#: templates/default/bbpress/form-forum.php:169
+msgid "You cannot create new forums."
+msgstr "Δεν μπορείτε να δημιουργήσετε νέες συζητήσεις."
+
+#: templates/default/bbpress/form-forum.php:161
+msgid "The forum &#8216;%s&#8217; is closed to new content."
+msgstr "Η συζήτηση &#8216;%s&#8217; δεν δέχεται νέο περιεχόμενο."
+
+#: templates/default/bbpress/form-forum.php:138
+#: templates/default/bbpress/form-reply-move.php:72
+#: templates/default/bbpress/form-reply.php:135
+#: templates/default/bbpress/form-topic-merge.php:93
+#: templates/default/bbpress/form-topic-split.php:97
+#: templates/default/bbpress/form-topic.php:203
+msgid "Submit"
+msgstr "Υποβολή"
+
+#: templates/default/bbpress/form-forum.php:123
+msgid "(No Parent)"
+msgstr "(Κανένας γονέας)"
+
+#: templates/default/bbpress/form-forum.php:91
+msgid "Forum Type:"
+msgstr "Τύπος Συζήτησης:"
+
+#: templates/default/bbpress/form-forum.php:82
+#: templates/default/bbpress/form-reply.php:64
+#: templates/default/bbpress/form-topic.php:90
+msgid "You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags and attributes:"
+msgstr "Μπορείτε να χρησιμοποιήσετε αυτά <abbr title=\"HyperText Markup Language\">HTML</abbr>ετικέτες και χαρακτηριστικά:"
+
+#: templates/default/bbpress/form-forum.php:67
+msgid "Forum Name (Maximum Length: %d):"
+msgstr "Όνομα Συζήτησης (μέγιστο μήκος: %d):"
+
+#: templates/default/bbpress/form-forum.php:55
+#: templates/default/bbpress/form-reply.php:44
+#: templates/default/bbpress/form-topic.php:61
+msgid "Your account has the ability to post unrestricted HTML content."
+msgstr "Ο λογαριασμός σας έχει την δυνατότητα να δημοσιεύει απεριόριστο περιεχόμενο HTML."
+
+#: templates/default/bbpress/form-forum.php:47
+msgid "This forum is closed to new content, however your account still allows you to do so."
+msgstr "Αυτή η συζήτηση δεν δέχεται νέο υλικό, ωστόσο ο λογαριασμός σας σάς το επιτρέπει."
+
+#: templates/default/bbpress/form-forum.php:37
+msgid "Create New Forum in &ldquo;%s&rdquo;"
+msgstr "Δημιούργησε νέα συζήτηση στο &ldquo;%s&rdquo;"
+
+#: templates/default/bbpress/form-forum.php:35
+#: templates/default/bbpress/form-topic.php:41
+msgid "Now Editing &ldquo;%s&rdquo;"
+msgstr "Τώρα επεξεργάζεται &ldquo;%s&rdquo;"
+
+#: templates/default/bbpress/form-anonymous.php:27
+msgid "Mail (will not be published) (required):"
+msgstr "Διεύθυνση Ηλεκτρονικού Ταχυδρομείου (δεν θα είναι ορατό)(απαιτείται):"
+
+#: templates/default/bbpress/form-anonymous.php:22
+msgid "Name (required):"
+msgstr "Όνομα (απαιτείται):"
+
+#: templates/default/bbpress/form-anonymous.php:17
+msgid "Your information:"
+msgstr "Οι πληροφορίες σας:"
+
+#: templates/default/bbpress/feedback-no-topics.php:13
+msgid "Oh bother! No topics were found here!"
+msgstr "Κανένα θέμα δεν βρέθηκε!"
+
+#: templates/default/bbpress/feedback-no-search.php:13
+msgid "Oh bother! No search results were found here!"
+msgstr "Η αναζήτηση δεν έδωσε κανένα αποτέλεσμά!"
+
+#: templates/default/bbpress/feedback-no-replies.php:13
+msgid "Oh bother! No replies were found here!"
+msgstr "Καμία απάντηση δεν βρέθηκε!"
+
+#: templates/default/bbpress/feedback-no-forums.php:13
+msgid "Oh bother! No forums were found here!"
+msgstr "Καμία συζήτηση δεν βρέθηκε!"
+
+#: templates/default/bbpress/feedback-no-access.php:16
+msgid "You do not have permission to view this forum."
+msgstr "Δεν έχετε εξουσιοδότηση να "
+
+#: templates/default/bbpress/feedback-no-access.php:13
+msgid "Private"
+msgstr "Ιδιωτικό"
+
+#: templates/default/bbpress/feedback-logged-in.php:13
+msgid "You are already logged in."
+msgstr "Έχετε ήδη συνδεθεί"
+
+#: templates/default/bbpress/content-statistics.php:64
+msgid "Hidden Replies"
+msgstr "Κρυφές απαντήσεις"
+
+#: templates/default/bbpress/content-statistics.php:53
+msgid "Hidden Topics"
+msgstr "Κρυφά θέματα"
+
+#: templates/default/bbpress/content-statistics.php:44
+msgid "Empty Topic Tags"
+msgstr "Κενές ετικέτες θεμάτων"
+
+#: templates/default/bbpress/content-statistics.php:17
+msgid "Registered Users"
+msgstr "Εγγεγραμμένοι Χρήστες."
+
+#: includes/users/template.php:1476
+msgid "Registration complete. Please check your e-mail."
+msgstr "Εγγραφή ολοκληρώθηκε. Παρακαλούμε ελέγξτε το ηλεκτρονικό σας ταχυδρομείο."
+
+#: includes/users/template.php:1471
+msgid "Check your e-mail for your new password."
+msgstr "Ελέγξτε το ηλεκτρονικό σας ταχυδρομείο για το νέο σας κωδικό."
+
+#: includes/users/template.php:1466
+msgid "Check your e-mail for the confirmation link."
+msgstr "Ελέγξτε το ηλεκτρονικό σας ταχυδρομείο για τον σύνδεσμο επιβεβαίωσης."
+
+#: includes/users/template.php:1457
+msgid "New user registration is currently not allowed."
+msgstr "Η εγγραφή νέου χρήστη δεν επιτρέπεται προς το παρόν."
+
+#: includes/users/template.php:1453
+msgid "You are now logged out."
+msgstr "Έχετε αποσυνδεθεί."
+
+#: includes/users/template.php:1255
+msgid "&mdash; No role for this site &mdash;"
+msgstr "&mdash; Κανένας ρόλος σ' αυτόν τον δικτυακό τόπο &mdash;"
+
+#: includes/users/template.php:1188
+msgid "This user has super admin privileges."
+msgstr "Αυτός ο χρήστης έχει δικαιώματα υπερδιαχειριστή"
+
+#: includes/users/template.php:1188
+msgid "You have super admin privileges."
+msgstr "Έχετε δικαιώματα υπερδιαχειριστή"
+
+#: includes/users/template.php:1163
+msgid "User updated."
+msgstr "Χρήστης ανανεώθηκε."
+
+#: includes/users/template.php:895
+msgid "Favorited"
+msgstr "Αγαπημένος"
+
+#: includes/users/template.php:557
+msgid "Admin"
+msgstr "Διαχειριστής"
+
+#: includes/users/template.php:517
+msgid "Member"
+msgstr "Μέλος"
+
+#: includes/users/template.php:507
+msgid "Inactive"
+msgstr "Ανενεργός"
+
+#: includes/users/template.php:503
+msgid "Guest"
+msgstr "Επισκέπτης"
+
+#: includes/users/functions.php:1331
+msgid "<strong>ERROR</strong>: There was a problem subscribing to that topic!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε ένα πρόβλημα να γίνετε συνδρομητής σ' εκείνο το θέμα!"
+
+#: includes/users/functions.php:1329
+msgid "<strong>ERROR</strong>: There was a problem unsubscribing from that topic!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε ένα πρόβλημα στο να διαγραφείτε από συνδρομητής σ' εκείνο το θέμα!"
+
+#: includes/users/functions.php:1276
+msgid "<strong>ERROR</strong>: No topic was found! Which topic are you subscribing/unsubscribing to?"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Κανένα θέμα δεν βρέθηκε! Σε ποιο θέμα γράφεστε/διαγράφεστε συνδρομητής;"
+
+#: includes/users/functions.php:1225
+msgid "<strong>ERROR</strong>: There was a problem subscribing to that forum!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στο να γίνετε συνδρομητής σ' εκείνη τη συζήτηση!"
+
+#: includes/users/functions.php:1223
+msgid "<strong>ERROR</strong>: There was a problem unsubscribing from that forum!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στο να διαγραφείτε από συνδρομητής σ' εκείνη τη συζήτηση!"
+
+#: includes/users/functions.php:1170
+msgid "<strong>ERROR</strong>: No forum was found! Which forum are you subscribing/unsubscribing to?"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν βρέθηκε καμία συζήτηση! Σε ποια συζήτηση γράφεστε/διαγράφεστε συνδρομητής;"
+
+#: includes/users/functions.php:508
+msgid "<strong>ERROR</strong>: There was a problem favoriting that topic!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε ένα πρόβλημα στο να γίνει εκείνο το θέμα αγαπημένο!"
+
+#: includes/users/functions.php:506
+msgid "<strong>ERROR</strong>: There was a problem removing that topic from favorites!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στην αφαίρεση εκείνου του θέματος από τα αγαπημένα!"
+
+#: includes/users/functions.php:463 includes/users/functions.php:1178
+#: includes/users/functions.php:1284
+msgid "<strong>ERROR</strong>: You don't have the permission to edit favorites of that user!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε εξουσιοδότηση να επεξεργαστείτε τα αγαπημένα εκείνου του χρήστη!"
+
+#: includes/users/functions.php:455
+msgid "<strong>ERROR</strong>: No topic was found! Which topic are you marking/unmarking as favorite?"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Κανένα θέμα δεν βρέθηκε! Ποιο θέμα μαρκάρετε/ξεμαρκάρετε σαν αγαπημένο;"
+
+#: includes/topics/template.php:3375
+msgid "View Topic Tag"
+msgstr "Προβολή ετικέτας θέματος"
+
+#: includes/topics/template.php:3374
+msgid "New Tag Name"
+msgstr "Νέο όνομα ετικέτας"
+
+#: includes/topics/template.php:3373
+msgid "Add New Tag"
+msgstr "Προσθήκη νέας ετικέτας"
+
+#: includes/topics/template.php:3372
+msgid "Update Tag"
+msgstr "Ενημέρωση ετικέτας"
+
+#: includes/topics/template.php:3371
+msgid "Edit Tag"
+msgstr "Επεξεργασία ετικέτας"
+
+#: includes/topics/template.php:3370
+msgid "All Tags"
+msgstr "Όλες οι ετικέτες"
+
+#: includes/topics/template.php:3369
+msgid "Popular Tags"
+msgstr "Δημοφιλείς ετικέτες"
+
+#: includes/topics/template.php:3368
+msgid "Search Tags"
+msgstr "Αναζήτηση ετικετών"
+
+#: includes/topics/template.php:3366
+#: templates/default/bbpress/content-statistics.php:37
+msgid "Topic Tags"
+msgstr "Ετικέτες θεμάτων"
+
+#: includes/topics/template.php:3320
+msgid "This topic has no replies."
+msgstr "Αυτό το θέμα δεν έχει απαντήσεις."
+
+#: includes/topics/template.php:3316
+msgid "This topic contains %1$s and has %2$s."
+msgstr "Αυτό το θέμα περιέχει %1$s και έχει %2$s."
+
+#: includes/topics/template.php:3312
+msgid "This topic contains %1$s, has %2$s, and was last updated by %3$s %4$s."
+msgstr "Αυτό το θέμα περιέχει %1$s, έχει %2$s, και ανανεώθηκε τελευταία από %3$s %4$s."
+
+#: includes/topics/template.php:3306
+msgid "%s voice"
+msgid_plural "%s voices"
+msgstr[0] "%s φωνή"
+msgstr[1] "%s φωνές"
+
+#: includes/topics/template.php:3046
+msgid "This topic is in the trash."
+msgstr "Το θέμα βρίσκεται στα διαγραμμένα."
+
+#: includes/topics/template.php:3041
+msgid "This topic is marked as spam."
+msgstr "Το θέμα είναι χαρακτηρισμένο ως ανεπιθύμητο."
+
+#: includes/topics/template.php:2981
+msgid "Viewing topic %2$s (of %4$s total)"
+msgid_plural "Viewing %1$s topics - %2$s through %3$s (of %4$s total)"
+msgstr[0] "Προβολή θέματος %2$s (από %4$s συνολικά)"
+msgstr[1] "Προβολή %1$s θεμάτων - %2$s έως %3$s (από %4$s συνολικά)"
+
+#: includes/topics/template.php:2977
+msgid "Viewing %1$s topic"
+msgid_plural "Viewing %1$s topics"
+msgstr[0] "Προβολή %1$s θέματος"
+msgstr[1] "Προβολή %1$s θεμάτων"
+
+#: includes/topics/template.php:2816
+#: templates/default/bbpress/form-topic-tag.php:59
+#: templates/default/bbpress/form-topic-tag.php:73
+msgid "Merge"
+msgstr "Συγχώνευση"
+
+#: includes/topics/template.php:2686
+msgctxt "Topic Status"
+msgid "Open"
+msgstr "Άνοιγμα"
+
+#: includes/topics/template.php:2685
+msgctxt "Topic Status"
+msgid "Close"
+msgstr "Κλείδωμα"
+
+#: includes/topics/template.php:2295
+msgid "Tagged:"
+msgstr "Τοποθέτηση ετικέτας:"
+
+#: includes/topics/template.php:1892
+msgid "Unfavorite"
+msgstr "Κατάργηση αγαπημένου"
+
+#: includes/topics/template.php:1891 includes/users/template.php:894
+msgid "Favorite"
+msgstr "Αγαπημένο"
+
+#: includes/topics/template.php:993
+msgid "This topic was modified %1$s by %2$s."
+msgstr "Το θέμα τροποποιήθηκε %1$s από %2$s"
+
+#: includes/topics/template.php:991
+msgid "This topic was modified %1$s by %2$s. Reason: %3$s"
+msgstr "Το θέμα τροποποιήθηκε %1$s από %2$s. Λόγος: %3$s"
+
+#: includes/topics/template.php:60
+msgid "No topics found in Trash"
+msgstr "Δεν βρέθηκε κανένα θέμα στα διαγραμμένα"
+
+#: includes/topics/template.php:59
+msgid "No topics found"
+msgstr "Δεν βρέθηκε κανένα θέμα"
+
+#: includes/topics/template.php:58
+msgid "Search Topics"
+msgstr "Αναζήτηση θεμάτων"
+
+#: includes/topics/template.php:56 includes/topics/template.php:57
+msgid "View Topic"
+msgstr "Προβολή θέματος"
+
+#: includes/topics/template.php:54
+msgid "Edit Topic"
+msgstr "Επεξεργασία θέματος"
+
+#: includes/topics/template.php:52 templates/default/bbpress/form-topic.php:43
+msgid "Create New Topic"
+msgstr "Δημιουργία νέου θέματος"
+
+#: includes/topics/template.php:51 includes/topics/template.php:55
+msgid "New Topic"
+msgstr "Νέο θέμα"
+
+#: includes/topics/functions.php:2158
+msgid "<strong>ERROR</strong>: There was a problem deleting the topic."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στη διαγραφή του θέματος."
+
+#: includes/topics/functions.php:2150
+msgid "<strong>ERROR</strong>: There was a problem untrashing the topic."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στην επαναφορά του θέματος από τα Μπάζα."
+
+#: includes/topics/functions.php:2142
+msgid "<strong>ERROR</strong>: There was a problem trashing the topic."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα κατά τη μετακίνηση του θέματος στα Μπάζα."
+
+#: includes/topics/functions.php:2123
+msgid "<strong>ERROR</strong>: There was a problem marking the topic as spam."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στον χαρακτηρισμό ως ανεπιθύμητο του θέματος."
+
+#: includes/topics/functions.php:2123
+msgid "<strong>ERROR</strong>: There was a problem unmarking the topic as spam."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στον αποχαρακτηρισμό ως ανεπιθύμητο του θέματος."
+
+#: includes/topics/functions.php:2113
+msgid "<strong>ERROR</strong>: There was a problem sticking the topic."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στη μονιμοποίηση του θέματος."
+
+#: includes/topics/functions.php:2113
+msgid "<strong>ERROR</strong>: There was a problem unsticking the topic."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στην απομονιμοποίηση του θέματος."
+
+#: includes/topics/functions.php:2102
+msgid "<strong>ERROR</strong>: There was a problem opening the topic."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στο άνοιγμα του θέματος."
+
+#: includes/topics/functions.php:2102
+msgid "<strong>ERROR</strong>: There was a problem closing the topic."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα για το κλείδωμα του θέματος."
+
+#: includes/topics/functions.php:2089
+msgid "<strong>ERROR:</strong> You do not have the permission to do that."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε εξουσιοδότηση να το κάνετε αυτό."
+
+#: includes/topics/functions.php:1984
+msgctxt "Make topic super sticky"
+msgid "Super Sticky"
+msgstr "Υπερμόνιμο"
+
+#: includes/topics/functions.php:1983
+msgctxt "Make topic sticky"
+msgid "Sticky"
+msgstr "Μόνιμο"
+
+#: includes/topics/functions.php:1982
+msgctxt "Unstick a topic"
+msgid "Normal"
+msgstr "Κανονικό"
+
+#: includes/topics/functions.php:1969
+msgctxt "Mark topic as pending"
+msgid "Pending"
+msgstr "Σε αναμονή"
+
+#: includes/topics/functions.php:1968
+msgctxt "Trash the topic"
+msgid "Trash"
+msgstr "Διαγραφή"
+
+#: includes/topics/functions.php:1967
+msgctxt "Spam the topic"
+msgid "Spam"
+msgstr "Ανεπιθύμητο"
+
+#: includes/topics/functions.php:1966
+msgctxt "Close the topic"
+msgid "Closed"
+msgstr "Κλείδωμα"
+
+#: includes/topics/functions.php:1965
+msgctxt "Open the topic"
+msgid "Open"
+msgstr "Άνοιγμα"
+
+#: includes/topics/functions.php:1931
+msgid "<strong>ERROR</strong>: The following problem(s) have been found while deleting the tag: %s"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το(-α) ακόλουθο(-α) πρόβλημα(-ατα) βρέθηκαν κατά την διαγραφή της ετικέτας: %s"
+
+#: includes/topics/functions.php:1922
+msgid "<strong>ERROR</strong>: You do not have the permissions to delete the topic tags."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε εξουσιοδότηση να διαγράψετε τις ετικέτες του θέματος."
+
+#: includes/topics/functions.php:1890
+msgid "<strong>ERROR</strong>: The tags which are being merged can not be the same."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Οι ετικέτες που συγχωνεύτηκαν δεν μπορεί να είναι ίδιες."
+
+#: includes/topics/functions.php:1881 includes/topics/functions.php:1899
+msgid "<strong>ERROR</strong>: The following problem(s) have been found while merging the tags: %s"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το(-α) ακόλουθο(-α) πρόβλημα(-ατα) βρέθηκαν κατά την συγχώνευση των ετικετών: %s"
+
+#: includes/topics/functions.php:1842
+msgid "<strong>ERROR</strong>: The following problem(s) have been found while updating the tag: %s"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το(-α) ακόλουθο(-α) πρόβλημα(-ατα) βρέθηκαν κατά την ενημέρωση της ετικέτας: %s"
+
+#: includes/topics/functions.php:1832 includes/topics/functions.php:1871
+msgid "<strong>ERROR</strong>: You need to enter a tag name."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Πρέπει να εισάγετε όνομα ετικέτας."
+
+#: includes/topics/functions.php:1826 includes/topics/functions.php:1865
+msgid "<strong>ERROR</strong>: You do not have the permissions to edit the topic tags."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε την εξουσιοδότηση να επεξαργαστείτε τις ετικέτες του θέματος."
+
+#: includes/topics/functions.php:1808
+msgid "<strong>ERROR</strong>: The following problem(s) have been found while getting the tag: %s"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το(-α) ακόλουθο(-α) πρόβλημα(-ατα) βρέθηκαν στην ανάκτηση των ετικετών: %s"
+
+#: includes/topics/functions.php:1492
+msgid "<strong>ERROR</strong>: The topic you want to split to was not found!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το θέμα το οποίο θέλετε να διαχωρίσετε δεν βρέθηκε!"
+
+#: includes/topics/functions.php:1470
+msgid "<strong>ERROR</strong>: You need to choose a valid split option."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Πρέπει να επιλέξετε έγκυρη επιλογή διαχωρισμού."
+
+#: includes/topics/functions.php:1452
+msgid "<strong>ERROR</strong>: The topic you want to split was not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το θέμα που θέλετε να διαχωρίσετε δεν βρέθηκε."
+
+#: includes/topics/functions.php:1443
+msgid "<strong>ERROR</strong>: The reply you want to split from was not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η απάντηση για τον διαχωρισμό δεν βρέθηκε."
+
+#: includes/topics/functions.php:1435
+msgid "<strong>ERROR</strong>: Reply ID to split the topic from not found!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το αναγνωριστικό απάντησης για τον διαχωρισμό δεν βρέθηκε."
+
+#: includes/topics/functions.php:1182
+msgid "<strong>ERROR</strong>: You do not have the permissions to edit the destination topic."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε δικαίωμα να επεξεργαστείτε το θέμα προορισμού."
+
+#: includes/topics/functions.php:1178
+msgid "<strong>ERROR</strong>: The topic you want to merge to was not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το θέμα με το οποίο θέλετε να συγχωνευθεί δεν βρέθηκε."
+
+#: includes/topics/functions.php:1172
+msgid "<strong>ERROR</strong>: Destination topic ID not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αναγνωριστικό θέματος προορισμού δεν βρέθηκε."
+
+#: includes/topics/functions.php:1158
+msgid "<strong>ERROR</strong>: The topic you want to merge was not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το θέμα που θέλετε να συγχωνεύσετε δεν βρέθηκε."
+
+#: includes/topics/functions.php:602
+msgid "<strong>ERROR</strong>: Your topic cannot be edited at this time."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν μπορείτε να επεξεργαστείτε το θέμα σας αυτήν τη στιγμή."
+
+#: includes/topics/functions.php:550
+msgid "<strong>ERROR</strong>: This forum is a category. No topics can be created in it."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αυτή η συζήτηση είναι κατηγορία. Δεν μπορούν να δημιουργηθούν θέματα εδώ."
+
+#: includes/topics/functions.php:504
+msgid "<strong>ERROR</strong>: You do not have permission to edit that topic."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε εξουσιοδότηση να επεξεργαστείτε εκείνο το θέμα."
+
+#: includes/topics/functions.php:493
+msgid "<strong>ERROR</strong>: The topic you want to edit was not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το θέμα που θέλετε να επεξεργαστείτε δεν βρέθηκε."
+
+#: includes/topics/functions.php:482 includes/topics/functions.php:1146
+msgid "<strong>ERROR</strong>: Topic ID not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αναγνωριστικό θέματος δεν βρέθηκε."
+
+#: includes/topics/functions.php:270
+msgid "<strong>ERROR</strong>: Your topic cannot be created at this time."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το θέμα σας δεν μπορεί να δημιουργηθεί αυτήν τη στιγμή."
+
+#: includes/topics/functions.php:265
+msgid "<strong>ERROR</strong>: Duplicate topic detected; it looks as though you&#8217;ve already said that!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Διπλό θέμα εντοπίστηκε. Φαίνεται ότι εσείς κι ο/η #8217; έχετε πει το ίδιο!"
+
+#: includes/topics/functions.php:251 includes/topics/functions.php:569
+msgid "<strong>ERROR</strong>: This forum is hidden and you do not have the capability to read or create new topics in it."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αυτή η συζήτηση είναι κρυφή και δεν έχετε την δυνατότητα να διαβάσετε ή να δημιουργήσετε θέματα εδώ."
+
+#: includes/topics/functions.php:245 includes/topics/functions.php:563
+msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new topics in it."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αυτή η συζήτηση είναι ιδιωτική και δεν έχετε την δυνατότητα να διαβάσετε ή να δημιουργήσετε θέματα εδώ."
+
+#: includes/topics/functions.php:239 includes/topics/functions.php:557
+msgid "<strong>ERROR</strong>: This forum has been closed to new topics."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αυτή η συζήτηση είναι κλειστή για δημιουργία νέων θεμάτων."
+
+#: includes/topics/functions.php:232
+msgid "<strong>ERROR</strong>: This forum is a category. No topics can be created in this forum."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αυτή η συζήτηση είναι κατηγορία. Κανένα θέμα δεν μπορεί να δημιουργηθεί εδώ."
+
+#: includes/topics/functions.php:187 includes/topics/functions.php:597
+msgid "<strong>ERROR</strong>: Your topic cannot be empty."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το θέμα σας δεν μπορεί να είναι κενό."
+
+#: includes/topics/functions.php:175 includes/topics/functions.php:585
+msgid "<strong>ERROR</strong>: Your topic needs a title."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το θέμα σας χρειάζεται έναν τίτλο."
+
+#: includes/topics/functions.php:150
+msgid "<strong>ERROR</strong>: You do not have permission to create new topics."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε εξουσιοδότηση για δημιουργία νέων θεμάτων."
+
+#: includes/search/template.php:405
+msgid "Viewing %2$s results (of %4$s total)"
+msgid_plural "Viewing %1$s results - %2$s through %3$s (of %4$s total)"
+msgstr[0] "Επισκόπηση %2$s αποτελεσμάτων (από %4$s συνολικά)"
+msgstr[1] "Επισκόπηση %1$s αποτελεσμάτων - %2$s έως %3$s (από %4$s συνολικά)"
+
+#: includes/search/template.php:401
+msgid "Viewing %1$s result"
+msgid_plural "Viewing %1$s results"
+msgstr[0] "Επισκόπηση %1$s αποτελέσματος"
+msgstr[1] "Επισκόπηση %1$s αποτελεσμάτων"
+
+#: includes/search/template.php:229
+msgid "Search Results for '%s'"
+msgstr "Αποτελέσματα αναζήτησης για '%s'"
+
+#: includes/replies/template.php:2366
+msgid "Viewing %2$s post (of %4$s total)"
+msgid_plural "Viewing %1$s posts - %2$s through %3$s (of %4$s total)"
+msgstr[0] "Επισκόπηση %2$s δημοσιεύσεων (από %4$s συνολικά)"
+msgstr[1] "Επισκόπηση %1$s δημοσιεύσεων - %2$s έως %3$s (από %4$s συνολικά)"
+
+#: includes/replies/template.php:2362
+msgid "Viewing %1$s post"
+msgid_plural "Viewing %1$s posts"
+msgstr[0] "Επισκόπηση %1$s δημοσίευσης"
+msgstr[1] "Επισκόπηση %1$s δημοσιεύσεων"
+
+#: includes/replies/template.php:2354
+msgid "Viewing %2$s replies (of %4$s total)"
+msgid_plural "Viewing %1$s replies - %2$s through %3$s (of %4$s total)"
+msgstr[0] "Επισκόπηση %2$s απαντήσεων (από %4$s συνολικά)"
+msgstr[1] "Επισκόπηση %1$s απαντήσεων - %2$s έως %3$s (από %4$s συνολικά)"
+
+#: includes/replies/template.php:2350
+msgid "Viewing %1$s reply"
+msgid_plural "Viewing %1$s replies"
+msgstr[0] "Επισκόπηση %1$s απάντησης"
+msgstr[1] "Επισκόπηση %1$s απαντήσεων"
+
+#: includes/replies/template.php:2343
+msgid "Viewing %1$s reply thread"
+msgid_plural "Viewing %1$s reply threads"
+msgstr[0] "Επισκόπηση %1$s απαντητικού νήματος"
+msgstr[1] "Επισκόπηση %1$s απαντητικών νημάτων"
+
+#: includes/replies/template.php:2237
+msgid "Split the topic from this reply"
+msgstr "Διαχωρισμός του θέματος απ' αυτό το μύνημα"
+
+#: includes/replies/template.php:2236
+msgid "Split"
+msgstr "Διαχωρισμός"
+
+#: includes/replies/template.php:2170
+msgid "Move this reply"
+msgstr "Μετακίνηση αυτής της απάντησης"
+
+#: includes/replies/template.php:2169
+msgid "Move"
+msgstr "Μετακίνηση"
+
+#: includes/replies/template.php:2106 includes/topics/template.php:2873
+msgid "Unspam"
+msgstr "Χαρακτηρισμός επιθυμητού"
+
+#: includes/replies/template.php:2053 includes/topics/template.php:2634
+msgid "Are you sure you want to delete that permanently?"
+msgstr "Θέλετε σίγουρα μόνιμη διαγραφή;"
+
+#: includes/replies/template.php:2036 includes/topics/template.php:2617
+#: templates/default/bbpress/form-topic-tag.php:88
+#: templates/default/bbpress/form-topic-tag.php:101
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: includes/replies/template.php:1695
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: includes/replies/template.php:1210 includes/topics/template.php:1481
+#: includes/users/template.php:1651
+msgid "Visit %s's website"
+msgstr "Επίσκεψη ιστότοπου %s"
+
+#: includes/replies/template.php:1210 includes/topics/template.php:1481
+#: includes/users/template.php:1651
+msgid "View %s's profile"
+msgstr "Επισκόπηση προφίλ %s"
+
+#: includes/replies/template.php:1098 includes/topics/template.php:1368
+#: includes/users/template.php:184
+msgid "Anonymous"
+msgstr "Ανώνυμος"
+
+#: includes/replies/template.php:806
+msgid "This reply was modified %1$s by %2$s."
+msgstr "Αυτή η απάντηση τροποποιήθηκε στις %1$s από %2$s."
+
+#: includes/replies/template.php:804
+msgid "This reply was modified %1$s by %2$s. Reason: %3$s"
+msgstr "Αυτή η απάντηση τροποποιήθηκε στις %1$s από %2$s. Λόγος: %3$s"
+
+#: includes/replies/template.php:706 includes/topics/template.php:809
+msgctxt "date at time"
+msgid "%1$s at %2$s"
+msgstr "%1$s στις %2$s"
+
+#: includes/replies/template.php:60
+msgid "No replies found in Trash"
+msgstr "Δεν βρέθηκε καμία απάντηση στα διαγραμμένα"
+
+#: includes/replies/template.php:59
+msgid "No replies found"
+msgstr "Δεν βρέθηκαν απαντήσεις"
+
+#: includes/replies/template.php:58
+msgid "Search Replies"
+msgstr "Αναζήτηση απαντήσεων"
+
+#: includes/replies/template.php:56 includes/replies/template.php:57
+msgid "View Reply"
+msgstr "Επισκόπηση απάντησης"
+
+#: includes/replies/template.php:54
+msgid "Edit Reply"
+msgstr "Επεξεργασία απάντησης"
+
+#: includes/replies/template.php:52
+msgid "Create New Reply"
+msgstr "Δημιουργία νέας απάντησης"
+
+#: includes/replies/template.php:51 includes/replies/template.php:55
+msgid "New Reply"
+msgstr "Νέα απάντηση"
+
+#: includes/replies/functions.php:2034 includes/topics/functions.php:3464
+msgid "Replies: %s"
+msgstr "Απαντήσεις: %s"
+
+#: includes/replies/functions.php:1992
+msgid "All Posts"
+msgstr "Όλες οι δημοσιεύσεις"
+
+#: includes/replies/functions.php:1578
+msgid "<strong>ERROR</strong>: There was a problem deleting the reply!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στη διαγραφή της απάντησης!"
+
+#: includes/replies/functions.php:1570
+msgid "<strong>ERROR</strong>: There was a problem untrashing the reply!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στην επαναφορά της απάντησης από τα Μπάζα!"
+
+#: includes/replies/functions.php:1562
+msgid "<strong>ERROR</strong>: There was a problem trashing the reply!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα της μετακίνησης της απάντησης στα Μπάζα!"
+
+#: includes/replies/functions.php:1543
+msgid "<strong>ERROR</strong>: There was a problem marking the reply as spam!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στον χαρακτηρισμό αυτής της απάντησης ως ανεπιθύμητο!"
+
+#: includes/replies/functions.php:1543
+msgid "<strong>ERROR</strong>: There was a problem unmarking the reply as spam!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στον αποχαρακτηρισμό της απάντησης από ανεπιθύμητο!"
+
+#: includes/replies/functions.php:1530
+msgid "<strong>ERROR:</strong> You do not have the permission to do that!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε εξουσιοδότηση να το κάνετε αυτό!"
+
+#: includes/replies/functions.php:1349 includes/topics/functions.php:1538
+msgid "<strong>ERROR</strong>: You do not have the permissions to create new topics. The reply could not be converted into a topic."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε εξουσιοδότηση να δημιουργήσετε νέα θέματα. Η απάντηση δεν μπόρεσε να μετατραπεί σε θέμα."
+
+#: includes/replies/functions.php:1344 includes/topics/functions.php:1533
+msgid "<strong>ERROR</strong>: There was a problem converting the reply into the topic. Please try again."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Παρουσιάστηκε πρόβλημα στη μετατροπή της απάντησης στο θέμα. Παρακαλούμε προσπαθήστε ξανά."
+
+#: includes/replies/functions.php:1299 includes/replies/template.php:571
+#: includes/topics/functions.php:1294 includes/topics/functions.php:1652
+#: templates/default/bbpress/form-reply.php:29
+msgid "Reply To: %s"
+msgstr "Απαντήστε σε: %s"
+
+#: includes/replies/functions.php:1290 includes/topics/functions.php:1496
+msgid "<strong>ERROR</strong>: You do not have the permissions to edit the destination topic!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε εξουσιοδότηση να επεξεργαστείτε το θέμα προορισμού!"
+
+#: includes/replies/functions.php:1285
+msgid "<strong>ERROR</strong>: The topic you want to move to was not found!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το θέμα που θέλετε να μετακινήσετε δεν βρέθηκε!"
+
+#: includes/replies/functions.php:1275 includes/topics/functions.php:1483
+msgid "<strong>ERROR</strong>: Destination topic ID not found!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αναγνωριστικό θέματος προορισμού δεν βρέθηκε!"
+
+#: includes/replies/functions.php:1262
+msgid "<strong>ERROR</strong>: You need to choose a valid move option."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Πρέπει να επιλέξετε έγκυρη επιλογή μετακίνησης."
+
+#: includes/replies/functions.php:1252 includes/topics/functions.php:1164
+#: includes/topics/functions.php:1462
+msgid "<strong>ERROR</strong>: You do not have the permissions to edit the source topic."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε την εξουσιοδότηση να επεξεργαστείτε το πηγαίο θέμα."
+
+#: includes/replies/functions.php:1241
+msgid "<strong>ERROR</strong>: The topic you want to move from was not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το θέμα που θέλετε να μετακινήσετε δεν βρέθηκε."
+
+#: includes/replies/functions.php:1232
+msgid "<strong>ERROR</strong>: The reply you want to move was not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η απάντηση που θέλετε να μετακινήσετε δεν βρέθηκε."
+
+#: includes/replies/functions.php:1223
+msgid "<strong>ERROR</strong>: Reply ID to move not found!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν βρέθηκε το αναγνωριστικό της απάντησης για να μετακινηθεί!"
+
+#: includes/replies/functions.php:616
+msgid "<strong>ERROR</strong>: Your reply cannot be edited at this time."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν μπορείτε να επεξεργαστείτε την απάντησή σας τώρα."
+
+#: includes/replies/functions.php:533
+msgid "<strong>ERROR</strong>: You do not have permission to edit that reply."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε εξουσιοδότηση να επεξεργαατείτε εκείνη την απάντηση."
+
+#: includes/replies/functions.php:522
+msgid "<strong>ERROR</strong>: The reply you want to edit was not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η απάντηση που θέλετε να επεξεργαστείτε δεν βρέθηκε."
+
+#: includes/replies/functions.php:505
+msgid "<strong>ERROR</strong>: Reply ID not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το αναγνωριστικό απάντησης δεν βρέθηκε."
+
+#: includes/replies/functions.php:377 includes/replies/functions.php:702
+msgid "<strong>ERROR</strong>: There was a problem adding the tags to the topic."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υπήρξε πρόβλημα στην προσθήκη ετικετών στο θέμα."
+
+#: includes/replies/functions.php:318
+msgid "<strong>ERROR</strong>: Topic is closed."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το θέμα είναι κλειδωμένο."
+
+#: includes/replies/functions.php:294
+msgid "<strong>ERROR</strong>: Your reply cannot be created at this time."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η απάντησή σας δεν μπορεί να δημοσιευτεί αυτήν τη στιγμή."
+
+#: includes/replies/functions.php:289
+msgid "<strong>ERROR</strong>: Duplicate reply detected; it looks as though you&#8217;ve already said that!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Διπλή απάντηση εντοπίστηκε, φαίνεται ότι εσείς κι ο/η #8217; έχετε πει το ίδιο!"
+
+#: includes/replies/functions.php:279 includes/replies/functions.php:611
+msgid "<strong>ERROR</strong>: Your reply cannot be empty."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η απάντησή σας δεν μπορεί να είναι κενή."
+
+#: includes/replies/functions.php:246 includes/replies/functions.php:587
+msgid "<strong>ERROR</strong>: This forum is hidden and you do not have the capability to read or create new replies in it."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αυτή η συζήτηση είναι κρυφή και δεν έχετε την δυνατότητα να διαβάσετε ή να απαντήσετε εδώ."
+
+#: includes/replies/functions.php:240 includes/replies/functions.php:581
+msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new replies in it."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αυτή η συζήτηση είναι αποκλειστική και δεν έχετε την δυνατότητα να διαβάσετε ή να απαντήσετε εδώ."
+
+#: includes/replies/functions.php:234 includes/replies/functions.php:575
+msgid "<strong>ERROR</strong>: This forum has been closed to new replies."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αυτή η συζήτηση είναι κλειστή σε νέες απαντήσεις."
+
+#: includes/replies/functions.php:227 includes/replies/functions.php:568
+msgid "<strong>ERROR</strong>: This forum is a category. No replies can be created in this forum."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αυτή η συζήτηση είναι κατηγορία. Δεν μπορεί να δημιουργηθεί απάντηση εδώ."
+
+#: includes/replies/functions.php:213 includes/topics/functions.php:218
+msgid "<strong>ERROR</strong>: Forum does not exist."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η συζήτηση δεν υπάρχει."
+
+#: includes/replies/functions.php:209 includes/topics/functions.php:214
+msgid "<strong>ERROR</strong>: Forum ID cannot be a negative number."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το αναγνωριστικό της συζήτησης δεν μπορεί να είναι αρνητικός αριθμός."
+
+#: includes/replies/functions.php:195 includes/topics/functions.php:200
+msgid "<strong>ERROR</strong>: Forum ID must be a number."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το αναγνωριστικό συζήτησης πρέπει να είναι αριθμός."
+
+#: includes/replies/functions.php:191 includes/replies/functions.php:205
+#: includes/topics/functions.php:196 includes/topics/functions.php:210
+#: includes/topics/functions.php:535
+msgid "<strong>ERROR</strong>: Forum ID is missing."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το αναγνωριστικό συζήτησης απουσιάζει."
+
+#: includes/replies/functions.php:172
+msgid "<strong>ERROR</strong>: Topic does not exist."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το θέμα δεν υπάρχει."
+
+#: includes/replies/functions.php:168
+msgid "<strong>ERROR</strong>: Topic ID cannot be a negative number."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το αναγνωριστικό του θέματος δεν μπορεί να είναι αρνητικός αριθμός."
+
+#: includes/replies/functions.php:158
+msgid "<strong>ERROR</strong>: Topic ID must be a number."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το αναγνωριστικό του θέματος πρέπει να είναι αριθμός."
+
+#: includes/replies/functions.php:154
+msgid "<strong>ERROR</strong>: Topic ID is missing."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το αναγνωριστικό του θέματος απουσιάζει."
+
+#: includes/replies/functions.php:142
+msgid "<strong>ERROR</strong>: You do not have permission to reply."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε άδεια να απαντήσετε."
+
+#: includes/forums/template.php:2021
+msgid "This forum is empty."
+msgstr "Αυτή η συζήτηση είναι κενή."
+
+#: includes/forums/template.php:2017
+msgid "This forum contains %1$s."
+msgstr "Αυτή η συζήτηση περιέχει %1$s."
+
+#: includes/forums/template.php:2015
+msgid "This category contains %1$s."
+msgstr "Αυτή η κατηγορία περιέχει %1$s."
+
+#: includes/forums/template.php:2007
+msgid "This forum contains %1$s and %2$s."
+msgstr "Αυτή η συζήτηση περιέχει %1$s και %2$s."
+
+#: includes/forums/template.php:2005
+msgid "This category contains %1$s and %2$s."
+msgstr "Αυτή η κατηγορία περιέχει %1$s και %2$s."
+
+#: includes/forums/template.php:1995
+msgid "This forum contains %1$s, and was last updated by %2$s %3$s."
+msgstr "Αυτή η συζήτηση περιέχει %1$s, και ενημερώθηκε τελευταία από %2$s %3$s."
+
+#: includes/forums/template.php:1993
+msgid "This category contains %1$s, and was last updated by %2$s %3$s."
+msgstr "Αυτή η κατηγορία περιέχει %1$s, και ενημερώθηκε τελευταία από %2$s %3$s."
+
+#: includes/forums/template.php:1987
+msgid "This forum contains %1$s and %2$s, and was last updated by %3$s %4$s."
+msgstr "Αυτή η συζήτηση περιέχει %1$s και %2$s, και ενημερώθηκε τελευταία από %3$s %4$s."
+
+#: includes/forums/template.php:1985
+msgid "This category contains %1$s and %2$s, and was last updated by %3$s %4$s."
+msgstr "Αυτή η κατηγορία περιέχει %1$s και %2$s, και ενημερώθηκε τελευταία από %3$s %4$s."
+
+#: includes/forums/template.php:1965 includes/topics/template.php:2102
+msgid "%s reply"
+msgid_plural "%s replies"
+msgstr[0] "%s απάντηση"
+msgstr[1] "%s απαντήσεις"
+
+#: includes/forums/template.php:1254 includes/topics/template.php:2118
+msgid " (+ %d hidden)"
+msgstr " (+ %d κρυφά)"
+
+#: includes/forums/template.php:1238 includes/forums/template.php:1976
+msgid "%s topic"
+msgid_plural "%s topics"
+msgstr[0] "%s θέμα"
+msgstr[1] "%s θέματα"
+
+#: includes/forums/template.php:841 includes/topics/template.php:1847
+#: includes/users/template.php:1059
+msgid "Unsubscribe"
+msgstr "Ακύρωση παρακολούθησης"
+
+#: includes/forums/template.php:840 includes/topics/template.php:1846
+#: includes/users/template.php:1058
+msgid "Subscribe"
+msgstr "Παρακολούθηση"
+
+#: includes/forums/template.php:61 templates/default/bbpress/form-forum.php:118
+msgid "Parent Forum:"
+msgstr "Γονέας συζήτησης:"
+
+#: includes/forums/template.php:60
+msgid "No forums found in Trash"
+msgstr "Δεν βρέθηκε καμία συζήτηση στα διαγραμμένα"
+
+#: includes/forums/template.php:59
+msgid "No forums found"
+msgstr "Δεν βρέθηκε καμία συζήτηση"
+
+#: includes/forums/template.php:56 includes/forums/template.php:57
+msgid "View Forum"
+msgstr "Προβολή συζήτησης"
+
+#: includes/forums/template.php:54
+msgid "Edit Forum"
+msgstr "Επεξεργασία συζήτησης"
+
+#: includes/forums/template.php:52 templates/default/bbpress/form-forum.php:37
+msgid "Create New Forum"
+msgstr "Δημιούργησε νέα συζήτηση"
+
+#: includes/forums/template.php:51 includes/forums/template.php:55
+msgid "New Forum"
+msgstr "Νέα συζήτηση"
+
+#: includes/forums/functions.php:1632
+msgctxt "Make forum hidden"
+msgid "Hidden"
+msgstr "Κρυφό"
+
+#: includes/forums/functions.php:1631
+msgctxt "Make forum private"
+msgid "Private"
+msgstr "Αποκλειστικό"
+
+#: includes/forums/functions.php:1630
+msgctxt "Make forum public"
+msgid "Public"
+msgstr "Δημόσιο"
+
+#: includes/forums/functions.php:1617
+msgctxt "Forum is a category"
+msgid "Category"
+msgstr "Κατηγορία"
+
+#: includes/forums/functions.php:1616
+msgctxt "Forum accepts new topics"
+msgid "Forum"
+msgstr "Συζήτηση"
+
+#: includes/forums/functions.php:1603
+msgctxt "Close the forum"
+msgid "Closed"
+msgstr "Κλείδωμα"
+
+#: includes/forums/functions.php:1602
+msgctxt "Open the forum"
+msgid "Open"
+msgstr "Ανοιχτή"
+
+#: includes/forums/functions.php:472
+msgid "<strong>ERROR</strong>: Your forum cannot be edited at this time."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν μπορεί να γίνει επεξεργασία της συζήτησής σας τώρα."
+
+#: includes/forums/functions.php:405
+msgid "<strong>ERROR</strong>: You do not have permission to edit that forum."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε εξουσιοδότηση να επεξεργαστείτε αυτήν τη συζήτηση."
+
+#: includes/forums/functions.php:400
+msgid "<strong>ERROR</strong>: The forum you want to edit was not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η συζήτηση που θέλετε να επεξεργαστείτε δεν βρέθηκε."
+
+#: includes/forums/functions.php:384
+msgid "<strong>ERROR</strong>: Forum ID not found."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το αναγνωριστικό της συζήτησης δεν βρέθηκε."
+
+#: includes/forums/functions.php:220
+msgid "<strong>ERROR</strong>: Your forum cannot be created at this time."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η συζήτησή σας δεν μπορεί να δημιουργηθεί τώρα."
+
+#: includes/forums/functions.php:215
+msgid "<strong>ERROR</strong>: This forum already exists."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αυτή η συζήτηση υπάρχει ήδη."
+
+#: includes/forums/functions.php:210 includes/replies/functions.php:284
+#: includes/topics/functions.php:260
+msgid "<strong>ERROR</strong>: Slow down; you move too fast."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Πιο σιγά, κάνετε γρήγορες κινήσεις."
+
+#: includes/forums/functions.php:203 includes/forums/functions.php:441
+msgid "<strong>ERROR</strong>: This forum is hidden and you do not have the capability to read or create new forums in it."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η συζήτηση αυτή είναι κρυφή και δεν έχετε τη δυνατότητα να διαβάσετε ή να δημιουργήσετε νέα συζήτηση εκεί μέσα."
+
+#: includes/forums/functions.php:198 includes/forums/functions.php:436
+msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new forums in it."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η συζήτηση αυτή είναι αποκλειστική και δεν έχετε τη δυνατότητα να διαβάσετε ή να δημιουργήσετε νέα συζήτηση εκεί μέσα."
+
+#: includes/forums/functions.php:193 includes/forums/functions.php:431
+msgid "<strong>ERROR</strong>: This forum has been closed to new forums."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Ο χώρος συζητήσεων αυτός είναι κλειστός σε νέες συζητήσεις."
+
+#: includes/forums/functions.php:188
+msgid "<strong>ERROR</strong>: This forum is a category. No forums can be created in this forum."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αυτή η συζήτηση είναι κατηγορία. Καμία συζήτηση δεν μπορεί να δημιουργηθεί σ' αυτόν τον χώρο συζητήσεων."
+
+#: includes/forums/functions.php:181
+msgid "<strong>ERROR</strong>: Your forum must have a parent."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η συζήτησή σας πρέπει να έχει γονέα."
+
+#: includes/forums/functions.php:167 includes/forums/functions.php:467
+msgid "<strong>ERROR</strong>: Your forum description cannot be empty."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η περιγραφή της συζήτησής σας δεν μπορεί να είναι κενή."
+
+#: includes/forums/functions.php:155 includes/forums/functions.php:455
+msgid "<strong>ERROR</strong>: Your forum needs a title."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Η συζήτησή σας χρειάζεται τίτλο."
+
+#: includes/forums/functions.php:131
+msgid "<strong>ERROR</strong>: You do not have permission to create new forums."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε εξουσιοδότηση για την δημιουργία νέων συζητήσεων."
+
+#: includes/extend/buddypress/notifications.php:165
+msgid "<strong>ERROR</strong>: You do not have permission to mark notifications for that user."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Δεν έχετε εξουσιοδότηση να ζητήσετε ειδοποιήσεις από τον χρήστη."
+
+#: includes/extend/buddypress/notifications.php:57
+msgid "You have %d new reply to %s"
+msgstr "Έχετε %d νέες απαντήσεις στο %s"
+
+#: includes/extend/buddypress/notifications.php:55
+msgid "You have %d new reply to %2$s from %3$s"
+msgstr "Έχετε %d νέες απαντήσεις στο %2$s από %3$s"
+
+#: includes/extend/buddypress/notifications.php:51
+msgid "You have %d new replies"
+msgstr "Έχετε %d νέες απαντήσεις"
+
+#: includes/extend/buddypress/notifications.php:48
+msgid "Topic Replies"
+msgstr "Απαντήσεις θέματος"
+
+#: includes/extend/buddypress/loader.php:293
+#: templates/default/bbpress/user-subscriptions.php:34
+msgid "Subscribed Topics"
+msgstr "Συνδρομητικά Θέματα"
+
+#: includes/extend/buddypress/loader.php:105
+msgid "Search Forums..."
+msgstr "Αναζήτηση συζητήσεων..."
+
+#: includes/extend/buddypress/groups.php:775
+msgid "This group does not currently have a forum."
+msgstr "Αυτή η ομάδα δεν έχει χώρο συζήτησης."
+
+#: includes/extend/buddypress/groups.php:478
+msgid "Group Forum"
+msgstr "Συζήτηση Ομάδας"
+
+#: includes/extend/buddypress/groups.php:437
+msgctxt "group admin edit screen"
+msgid "Discussion Forum"
+msgstr "Χώρος Συζήτησης"
+
+#: includes/extend/buddypress/groups.php:339
+#: includes/extend/buddypress/groups.php:498
+#: includes/extend/buddypress/notifications.php:161
+#: includes/forums/functions.php:118 includes/forums/functions.php:395
+#: includes/replies/functions.php:116 includes/replies/functions.php:516
+#: includes/replies/functions.php:1246 includes/topics/functions.php:122
+#: includes/topics/functions.php:520 includes/topics/functions.php:1153
+#: includes/topics/functions.php:1456 includes/topics/functions.php:1820
+#: includes/topics/functions.php:1859 includes/topics/functions.php:1916
+#: includes/users/functions.php:459 includes/users/functions.php:1174
+#: includes/users/functions.php:1280 includes/users/functions.php:1407
+#: includes/users/functions.php:1413
+msgid "<strong>ERROR</strong>: Are you sure you wanted to do that?"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Είστε σίγουροι ότι θέλετε να το κάνετε αυτό;"
+
+#: includes/extend/buddypress/groups.php:304
+msgid "Save Settings"
+msgstr "Αποθήκευση ρυθμίσεων"
+
+#: includes/extend/buddypress/groups.php:299
+msgid "Network administrators can reconfigure which forum belongs to this group."
+msgstr "Οι Διαχειριστές του δικτύου μπορούν να επαναρυθμίσουν όποα συζήτηση ανήκει σ' αυτήν την ομάδα."
+
+#: includes/extend/buddypress/groups.php:291
+msgid "Group Forum:"
+msgstr "Συζήτηση Ομάδας:"
+
+#: includes/extend/buddypress/groups.php:286
+msgid "Saying no will not delete existing forum content."
+msgstr "Αν επιλέξετε \"όχι\" δεν θα διαγράψει το περιεχόμενο της συζήτησης."
+
+#: includes/extend/buddypress/groups.php:283
+#: includes/extend/buddypress/groups.php:483
+msgid "Yes. I want this group to have a forum."
+msgstr "Ναι. Επιθυμώ αυτή η ομάδα να έχει χώρο συζήτησης."
+
+#: includes/extend/buddypress/groups.php:279
+#: includes/extend/buddypress/groups.php:480
+msgid "Create a discussion forum to allow members of this group to communicate in a structured, bulletin-board style fashion."
+msgstr "Δημιουργείστε έναν χώρο συζήτησης για να επιτραπεί στα μέλη συτής της ομάδας να επικοινωνήσουν μ' έναν δομημένο, σε στυλ πίνακα ανακοινώσεων, τρόπο."
+
+#: includes/extend/buddypress/groups.php:275
+#: includes/extend/buddypress/groups.php:278
+msgid "Group Forum Settings"
+msgstr "Ρυθμίσεις Ομάδων Συζητήσεων"
+
+#: includes/extend/buddypress/activity.php:566
+msgid "%1$s replied to the topic %2$s in the forum %3$s"
+msgstr "Ο/Η %1$s απάντησε στο θέμα %2$s στη συζήτηση %3$s"
+
+#: includes/extend/buddypress/activity.php:421
+msgid "%1$s started the topic %2$s in the forum %3$s"
+msgstr "Ο/Η %1$s ξεκίνησε το θέμα %2$s στη συζήτηση %3$s"
+
+#: includes/extend/buddypress/activity.php:196
+msgid "New forum reply"
+msgstr "Νέα απάντηση στη συζήτηση"
+
+#: includes/extend/buddypress/activity.php:195
+msgid "New forum topic"
+msgstr "Νέο θέμα συζήτησης"
+
+#: includes/extend/akismet.php:793
+msgid "No recorded history. Akismet has not checked this post."
+msgstr "Κανένα καταγεγραμμένο ιστορικό. Το Akismet δεν έχει ελέγξει αυτήν την δημοσίευση."
+
+#: includes/extend/akismet.php:735 includes/extend/akismet.php:745
+msgid "Akismet History"
+msgstr "Ιστορικό του Akismet"
+
+#: includes/extend/akismet.php:489
+msgid "Akismet was unable to check this post (response: %s), will automatically retry again later."
+msgstr "Το Akismet δεν μπόρεσε να ελέγξει αυτήν την δημοσίευση (απόκριση: %s), θα προσπαθήσει αυτόματα ξανά αργότερα."
+
+#: includes/extend/akismet.php:475
+msgid "Akismet cleared this post as not spam"
+msgstr "Το Akismet απάλλαξε αυτή την δημοσίευση ως μη ανεπιθύμητη"
+
+#: includes/extend/akismet.php:467 includes/extend/akismet.php:482
+msgid "Post status was changed to %s"
+msgstr "Η κατάσταση της δημοσίευσης άλλαξε σε %s"
+
+#: includes/extend/akismet.php:463
+msgid "Akismet caught this post as spam"
+msgstr "Το Akismet θεώρησεσε αυτή την καταχώρηση ως ανεπιθύμητο"
+
+#: includes/extend/akismet.php:405
+msgid "No response"
+msgstr "Καμία απάντηση"
+
+#: includes/extend/akismet.php:316
+msgid "%1$s reported this %2$s as not spam"
+msgstr "Ο/Η %1$s ανέφερε το %2$s σαν μη ανεπιθύμητο"
+
+#: includes/extend/akismet.php:309
+msgid "%1$s reported this %2$s as spam"
+msgstr "Ο/Η %1$s ανέφερε το %2$s σαν ανεπιθύμητο"
+
+#: includes/core/update.php:191
+msgid "Oh, and this is what a reply looks like."
+msgstr "Έτσι μοιάζει μια απάντηση."
+
+#: includes/core/update.php:190
+msgid "Re: Hello World!"
+msgstr "Απ: Γεια σου, κόσμε!"
+
+#: includes/core/update.php:189
+msgid "I am the first topic in your new forums."
+msgstr "Το νέο θέμα στις νέες σου συζητήσεις."
+
+#: includes/core/update.php:188
+msgid "Hello World!"
+msgstr "Γεια σου, κόσμε!"
+
+#: includes/core/update.php:187
+msgid "General chit-chat"
+msgstr "Γενική κουβέντα"
+
+#: includes/core/update.php:186
+msgid "General"
+msgstr "Γενικά"
+
+#: includes/core/capabilities.php:531
+msgid "Editable forum roles no longer exist."
+msgstr "Ρόλοι συζητήσεως προς επεξεργασία δεν υπάρχουν πλέον."
+
+#: includes/common/widgets.php:1252
+msgid "Recent Replies"
+msgstr "Πρόσφατες απαντήσεις"
+
+#: includes/common/widgets.php:1237
+msgid "Show reply author:"
+msgstr "Προβολή συντάκτη απάντησης:"
+
+#: includes/common/widgets.php:1235
+msgid "Maximum replies to show:"
+msgstr "Μέγιστες απαντήσεις για προβολή:"
+
+#. translators: 1: reply link
+#: includes/common/widgets.php:1184
+msgctxt "widgets"
+msgid "%1$s"
+msgstr "%1$s"
+
+#. translators: 1: reply author, 2: reply link
+#: includes/common/widgets.php:1178
+msgctxt "widgets"
+msgid "%1$s on %2$s"
+msgstr "%1$s στο %2$s"
+
+#. translators: 1: reply link, 2: reply timestamp
+#: includes/common/widgets.php:1172
+msgctxt "widgets"
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#. translators: 1: reply author, 2: reply link, 3: reply timestamp
+#: includes/common/widgets.php:1166
+msgctxt "widgets"
+msgid "%1$s on %2$s %3$s"
+msgstr "%1$s στο %2$s %3$s"
+
+#: includes/common/widgets.php:1081
+msgid "(bbPress) Recent Replies"
+msgstr "(bbPress) Πρόσφατες Απαντήσεις"
+
+#: includes/common/widgets.php:1078
+msgid "A list of the most recent replies."
+msgstr "Λίστα των πιο πρόσφατων απαντήσεων."
+
+#: includes/common/widgets.php:1048
+msgid "Forum Statistics"
+msgstr "Στατιστικά Συζητήσεως"
+
+#: includes/common/widgets.php:951
+msgid "(bbPress) Statistics"
+msgstr "(bbPress) Στατιστικά"
+
+#: includes/common/widgets.php:948
+msgid "Some statistics from your forum."
+msgstr "Στατιστικά από τις συζητήσεις σας."
+
+#: includes/common/widgets.php:914
+msgid "Recent Topics"
+msgstr "Πρόσφατα Θέματα"
+
+#: includes/common/widgets.php:897
+msgid "Topics With Recent Replies"
+msgstr "Θέματα με πρόσφατες απαντήσεις"
+
+#: includes/common/widgets.php:896
+#: templates/default/extras/page-forum-statistics.php:34
+msgid "Popular Topics"
+msgstr "Δημοφιλή Θέματα"
+
+#: includes/common/widgets.php:895
+msgid "Newest Topics"
+msgstr "Νεότερα Θέματα"
+
+#: includes/common/widgets.php:893
+msgid "Order By:"
+msgstr "Ταξινόμηση κατά;"
+
+#: includes/common/widgets.php:890
+msgid "Show topic author:"
+msgstr "Δημιουργός θέματος:"
+
+#: includes/common/widgets.php:889 includes/common/widgets.php:1236
+msgid "Show post date:"
+msgstr "Ημερομηνία δημοσίευσης:"
+
+#: includes/common/widgets.php:877
+msgid "Maximum topics to show:"
+msgstr "Μέγιστος αριθμός θεμάτων για εμφάνιση:"
+
+#: includes/common/widgets.php:815
+msgctxt "widgets"
+msgid "by %1$s"
+msgstr "από %1$s"
+
+#: includes/common/widgets.php:695
+msgid "(bbPress) Recent Topics"
+msgstr "(bbPress) Πρόσφατα Θέματα"
+
+#: includes/common/widgets.php:692
+msgid "A list of recent topics, sorted by popularity or freshness."
+msgstr "Λίστα πρόσφατων θεμάτων, ταξινομημένα κατά δημοτικότητα ή νεότητα."
+
+#: includes/common/widgets.php:646 includes/common/widgets.php:886
+msgid "\"0\" to show only root - \"any\" to show all"
+msgstr "\"0\" για επίδειξη μόνο ρίζας - \"any\" για επίδειξη όλων"
+
+#: includes/common/widgets.php:640 includes/common/widgets.php:880
+msgid "Parent Forum ID:"
+msgstr "Αναγνωριστικό γονέα συζήτησης"
+
+#: includes/common/widgets.php:515
+msgid "(bbPress) Forums List"
+msgstr "(bbPress) Λίστα Συζητήσεων."
+
+#: includes/common/widgets.php:512
+msgid "A list of forums with an option to set the parent."
+msgstr "Λίστα συζητήσεων με επιλογή ορισμού γονέα."
+
+#: includes/common/widgets.php:483 includes/forums/template.php:58
+msgid "Search Forums"
+msgstr "Αναζήτηση Συζητήσεων"
+
+#: includes/common/widgets.php:387
+msgid "(bbPress) Forum Search Form"
+msgstr "(bbPress) Φόρμα Αναζήτησης Συζητήσεως"
+
+#: includes/common/widgets.php:384
+msgid "The bbPress forum search form."
+msgstr "Η φόρμα αναζήτησης των συζητήσεων του bbPress"
+
+#: includes/common/widgets.php:246
+msgid "(bbPress) Topic Views List"
+msgstr "(bbPress) Λίστα Παρουσίασης Θεμάτων"
+
+#: includes/common/widgets.php:243
+msgid "A list of registered optional topic views."
+msgstr "Λίστα προαιρετικών θεάσεων θεμάτων εγγραφής."
+
+#: includes/common/widgets.php:195
+msgid "Lost Password URI:"
+msgstr "ΕΑΠ Χαμένου κωδικού"
+
+#: includes/common/widgets.php:190
+msgid "Register URI:"
+msgstr "ΕΑΠ Εγγραφής:"
+
+#: includes/common/widgets.php:185 includes/common/widgets.php:337
+#: includes/common/widgets.php:465 includes/common/widgets.php:634
+#: includes/common/widgets.php:876 includes/common/widgets.php:1030
+#: includes/common/widgets.php:1234
+msgid "Title:"
+msgstr "Τίτλος:"
+
+#: includes/common/widgets.php:128
+#: templates/default/bbpress/form-user-lost-pass.php:14
+msgid "Lost Password"
+msgstr "Έχασα τον κωδικό μου"
+
+#: includes/common/widgets.php:122
+#: templates/default/bbpress/form-user-register.php:36
+msgid "Register"
+msgstr "Εγγραφή"
+
+#: includes/common/widgets.php:103
+msgid "Remember Me"
+msgstr "Να με θυμάσαι"
+
+#: includes/common/widgets.php:97
+#: templates/default/bbpress/form-user-login.php:22
+msgid "Password"
+msgstr "Κωδικός"
+
+#: includes/common/widgets.php:92
+#: templates/default/bbpress/form-user-edit.php:98
+#: templates/default/bbpress/form-user-login.php:17
+#: templates/default/bbpress/form-user-register.php:23
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: includes/common/widgets.php:89 includes/common/widgets.php:110
+#: templates/default/bbpress/form-user-login.php:14
+#: templates/default/bbpress/form-user-login.php:35
+msgid "Log In"
+msgstr "Σύνδεση"
+
+#: includes/common/widgets.php:42
+msgid "(bbPress) Login Widget"
+msgstr "(bbPress) Εφαρμογή σύνδεσης"
+
+#: includes/common/widgets.php:39
+msgid "A simple login form with optional links to sign-up and lost password pages."
+msgstr "Απλή φόρμα σύνδεσης με προαιρετικούς συνδέσμους σελίδων για εγγραφή και απώλεια κωδικού."
+
+#: includes/common/template.php:2646
+msgid "View: %s"
+msgstr "Εμφάνιση: %s"
+
+#: includes/common/template.php:2638
+#: templates/default/bbpress/user-details.php:65
+msgid "Edit %s's Profile"
+msgstr "Επεξεργασία προφίλ %s"
+
+#: includes/common/template.php:2633
+msgid "Edit Your Profile"
+msgstr "Επεξεργασία του Προφίλ σας"
+
+#: includes/common/template.php:2625
+msgid "%s Profile"
+msgstr "%s Προφίλ"
+
+#: includes/common/template.php:2621
+msgid "%s Subscriptions"
+msgstr "%s Παρακολουθήσεις"
+
+#: includes/common/template.php:2617
+msgid "%s Favorites"
+msgstr "%s Αγαπημένα"
+
+#: includes/common/template.php:2613
+msgid "%s Replies"
+msgstr "%s Απαντήσεις"
+
+#: includes/common/template.php:2609
+msgid "%s Topics"
+msgstr "%s θέματα"
+
+#: includes/common/template.php:2604
+msgctxt "User viewing another users profile"
+msgid "%s's"
+msgstr "%s [Χρήστης προβάλει το προφίλ άλλου χρήστη]"
+
+#: includes/common/template.php:2600
+msgctxt "User viewing his/her own profile"
+msgid "Your"
+msgstr "Το δικό σας"
+
+#: includes/common/template.php:2582
+msgid "Topic: %s"
+msgstr "Θέμα: %s"
+
+#: includes/common/template.php:2577
+msgid "Forum: %s"
+msgstr "Φόρουμ: %s"
+
+#: includes/common/template.php:2570
+msgid "Topic Tag Edit: %s"
+msgstr "Επεξεργασία ετικέτας θέματος: %s"
+
+#: includes/common/template.php:2565
+msgid "Reply Edit: %s"
+msgstr "Επεξεργασία απάντησης: %s"
+
+#: includes/common/template.php:2560
+msgid "Topic Edit: %s"
+msgstr "Επεξεργασία θέματος: %s"
+
+#: includes/common/template.php:2555
+msgid "Forum Edit: %s"
+msgstr "Επεξεργασία Φόρουμ: %s"
+
+#: includes/common/template.php:2501
+msgid "Log Out"
+msgstr "Αποσύνδεση"
+
+#: includes/common/template.php:2233
+msgid "&rsaquo;"
+msgstr "&rsaquo;"
+
+#: includes/common/template.php:2233
+msgid "&lsaquo;"
+msgstr "&lsaquo;"
+
+#: includes/common/template.php:2216 includes/forums/template.php:53
+#: includes/replies/template.php:53 includes/replies/template.php:1910
+#: includes/topics/template.php:53 includes/topics/template.php:2491
+#: templates/default/bbpress/user-details.php:65
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: includes/common/template.php:2212 includes/common/template.php:2326
+#: includes/common/template.php:2591 includes/core/theme-compat.php:739
+#: templates/default/extras/taxonomy-topic-tag-edit.php:17
+#: templates/default/extras/taxonomy-topic-tag.php:17
+msgid "Topic Tag: %s"
+msgstr "Ετικέτα θέματος"
+
+#: includes/common/template.php:2208
+msgid "(Edit)"
+msgstr "(Επεξεργασία)"
+
+#: includes/common/template.php:2138
+msgid "Home"
+msgstr "Αρχική"
+
+#: includes/common/template.php:1467
+msgid "None available"
+msgstr "Κανένα διαθέσιμο"
+
+#: includes/common/template.php:1462
+msgid "No forums available"
+msgstr "Καμία διαθέσιμη συζήτηση"
+
+#: includes/common/template.php:1457
+msgid "No topics available"
+msgstr "Κανένα διαθέσιμο θέμα"
+
+#: includes/common/functions.php:2026
+msgid "Conditional query tags do not work before the query is run. Before then, they always return false."
+msgstr "Οι ετικέτες υπό συνθήκη ερώτηματος δεν δουλεύουν πριν εκτελεστεί το ερώτημα. Στην οποία περίπτωση επιστρέφουν σφάλμα."
+
+#: includes/common/functions.php:1256
+msgid ""
+"%1$s wrote:\n"
+"\n"
+"%2$s\n"
+"\n"
+"Topic Link: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"You are receiving this email because you subscribed to a forum.\n"
+"\n"
+"Login and visit the topic to unsubscribe from these emails."
+msgstr ""
+"%1$s έγραψε:\n"
+"\n"
+"%2$s\n"
+"\n"
+"Σύνδεσμος θέματος: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"Λαμβάνεις αυτό το μήνυμα επειδή είσαι συνδρομητής στο θέμα συζήτησης.\n"
+"\n"
+"Συνδέσου κι επισκέψου το θέμα για να σταματήσεις τη συνδρομή από τέτοια μηνύματα."
+
+#: includes/common/functions.php:1099
+msgid ""
+"%1$s wrote:\n"
+"\n"
+"%2$s\n"
+"\n"
+"Post Link: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"You are receiving this email because you subscribed to a forum topic.\n"
+"\n"
+"Login and visit the topic to unsubscribe from these emails."
+msgstr ""
+"%1$s έγραψε:\n"
+"\n"
+"%2$s\n"
+"\n"
+"Συνδέσμος ανάρτησης: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"Λαμβάνεις αυτό το μήνυμα επειδή έχετε ζητήση παρακολούθηση στο θέμα συζήτησης.\n"
+"\n"
+"Συνδέσου κι επισκέψου το θέμα για να σταματήσεις την παρακολούθηση από τέτοια μηνύματα."
+
+#: includes/common/functions.php:628
+msgid "<strong>ERROR</strong>: Invalid email address submitted!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υποβλήθηκε λάθος διεύθυνση ηλ. ταχυδρομείου!"
+
+#: includes/common/functions.php:624
+msgid "<strong>ERROR</strong>: Invalid author name submitted!"
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Υποβλήθηκε λανθασμένο όνομα συγγραφέα!"
+
+#: includes/common/functions.php:514 includes/common/functions.php:546
+msgid "Trashed: %s"
+msgstr "Διεγραμμένα: %s"
+
+#: includes/common/functions.php:513 includes/common/functions.php:545
+msgid "Spammed: %s"
+msgstr "Ανεπιθύμητα: %s"
+
+#: includes/common/functions.php:512 includes/common/functions.php:544
+msgid "Private: %s"
+msgstr "Ιδιωτικά: %s"
+
+#: includes/common/functions.php:179
+msgctxt "Separator in time since"
+msgid ","
+msgstr ","
+
+#: includes/common/functions.php:124
+msgid "second"
+msgstr "δευτερόλεπτο"
+
+#: includes/common/functions.php:123
+msgid "minute"
+msgstr "λεπτό"
+
+#: includes/common/functions.php:122
+msgid "hours"
+msgstr "ώρες"
+
+#: includes/common/functions.php:122
+msgid "hour"
+msgstr "ώρα"
+
+#: includes/common/functions.php:121
+msgid "days"
+msgstr "μέρες"
+
+#: includes/common/functions.php:121
+msgid "day"
+msgstr "μέρα"
+
+#: includes/common/functions.php:120
+msgid "weeks"
+msgstr "εβδομάδες"
+
+#: includes/common/functions.php:120
+msgid "week"
+msgstr "εβδομάδα"
+
+#: includes/common/functions.php:119
+msgid "months"
+msgstr "μήνες"
+
+#: includes/common/functions.php:119
+msgid "month"
+msgstr "μήνας"
+
+#: includes/common/functions.php:118
+msgid "years"
+msgstr "χρόνια"
+
+#: includes/common/functions.php:118
+msgid "year"
+msgstr "έτος"
+
+#: includes/common/functions.php:114
+msgid "%s ago"
+msgstr "%s πριν"
+
+#: includes/common/functions.php:113
+msgid "right now"
+msgstr "τώρα"
+
+#: includes/common/functions.php:112
+msgid "sometime"
+msgstr "κάποια στιγμή"
+
+#: includes/admin/users.php:217
+msgid "Site Role"
+msgstr "Ρόλος στον ιστότοπο"
+
+#: includes/admin/users.php:144
+msgid "Change"
+msgstr "Αλλαγή"
+
+#: includes/admin/users.php:138 includes/admin/users.php:140
+msgid "Change forum role to&hellip;"
+msgstr "Αλλαγή ρόλου συζήτησης σε &hellip;"
+
+#: includes/admin/users.php:96 includes/admin/users.php:100
+#: includes/users/template.php:1290
+msgid "&mdash; No role for these forums &mdash;"
+msgstr "&mdash; Κανένας ρόλος για αυτές τις συζητήσεις &mdash;"
+
+#: includes/admin/users.php:87 includes/admin/users.php:218
+#: templates/default/bbpress/form-user-roles.php:20
+msgid "Forum Role"
+msgstr "Ρόλος συζήτησης"
+
+#: includes/admin/topics.php:953
+msgid "Topic draft updated. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
+msgstr "Ανανεώθηκε η ροή του θέματος (draft). <a target=\"_blank\" href=\"%s\">Προεπισκόπηση θέματος</a>"
+
+#: includes/admin/topics.php:946
+msgid "Topic scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview topic</a>"
+msgstr "Το θέμα δρομολογήθηκε για: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Προεπισκόπηση θέματος</a>"
+
+#: includes/admin/topics.php:943
+msgid "Topic submitted. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
+msgstr "Υποβλήθηκε το θέμα. <a target=\"_blank\" href=\"%s\">Προεπισκόπηση θέματος</a>"
+
+#: includes/admin/topics.php:940
+msgid "Topic saved."
+msgstr "Το θέμα αποθηκεύτηκε."
+
+#: includes/admin/topics.php:937
+msgid "Topic created. <a href=\"%s\">View topic</a>"
+msgstr "Το θέμα δημιουργήθηκε. <a href=\"%s\">Δες το θέμα</a>"
+
+#. translators: %s: date and time of the revision
+#: includes/admin/topics.php:933
+msgid "Topic restored to revision from %s"
+msgstr "Το θέμα επανήλθε από %s"
+
+#: includes/admin/topics.php:928
+msgid "Topic updated."
+msgstr "Το θέμα ενημερώθηκε."
+
+#: includes/admin/topics.php:919
+msgid "Topic updated. <a href=\"%s\">View topic</a>"
+msgstr "Το θέμα ενημερώθηκε. <a href=\"%s\">Δες το θέμα</a>"
+
+#: includes/admin/topics.php:809
+msgid "Mark this topic as spam"
+msgstr "Σήμανση του θέματος ως ανεπιθύμητο"
+
+#: includes/admin/topics.php:807
+msgid "Mark the topic as not spam"
+msgstr "Κατάργηση σήμανσης θέματος ως ανεπιθύμητο"
+
+#: includes/admin/topics.php:800 includes/topics/template.php:2747
+msgid "(to front)"
+msgstr "(μπροστά)"
+
+#: includes/admin/topics.php:800
+msgid "Stick this topic to front"
+msgstr "Καρφίτσωμα του θέματος μπροστά"
+
+#: includes/admin/topics.php:800 includes/topics/template.php:2745
+msgid "Stick"
+msgstr "Καρφίτσωμα"
+
+#: includes/admin/topics.php:800
+msgid "Stick this topic to its forum"
+msgstr "Καρφίτσωσε το θέμα στην κατηγορία συζήτησής του"
+
+#: includes/admin/topics.php:797 includes/topics/template.php:2746
+msgid "Unstick"
+msgstr "Ξεκαρφίτσωμα"
+
+#: includes/admin/topics.php:797
+msgid "Unstick this topic"
+msgstr "Ξεκαρφίτσωμα του θέματος"
+
+#: includes/admin/topics.php:788
+msgctxt "Open a Topic"
+msgid "Open"
+msgstr "Ανοιχτό"
+
+#: includes/admin/topics.php:788
+msgid "Open this topic"
+msgstr "Άνοιγμα του θέματος"
+
+#: includes/admin/topics.php:786
+msgctxt "Close a Topic"
+msgid "Close"
+msgstr "Κλείδωμα"
+
+#: includes/admin/topics.php:786
+msgid "Close this topic"
+msgstr "Κλείδωμα του θέματος"
+
+#: includes/admin/topics.php:729 includes/topics/template.php:2064
+msgid "No Replies"
+msgstr "Καμία απάντηση"
+
+#: includes/admin/topics.php:694 includes/extend/buddypress/groups.php:295
+#: templates/default/bbpress/form-topic.php:117
+msgid "(No Forum)"
+msgstr "(Άνευ κατηγορίας συζητήσεως)"
+
+#: includes/admin/topics.php:635 templates/default/bbpress/loop-topics.php:20
+msgid "Voices"
+msgstr "Φωνές"
+
+#: includes/admin/topics.php:599
+msgid "Topic \"%1$s\" successfully unmarked as spam."
+msgstr "Στο θέμα \"%1$s\" αφαιρέθηκε επιτυχώς η σήμανση του ανεπιθύμητου."
+
+#: includes/admin/topics.php:599
+msgid "There was a problem unmarking the topic \"%1$s\" as spam."
+msgstr "Δημιουργήθηκε πρόβλημα αποσύροντας τη σήμανση του θέματος \"%1$s\" ως ανεπιθύμητο."
+
+#: includes/admin/topics.php:595
+msgid "Topic \"%1$s\" successfully marked as spam."
+msgstr "Το θέμα \"%1$s\" σημάνθηκε επιτυχώς ως ανεπιθύμητο."
+
+#: includes/admin/topics.php:595
+msgid "There was a problem marking the topic \"%1$s\" as spam."
+msgstr "Δημιουργήθηκε πρόβλημα κατά τη σήμανση του θέματος \"%1$s\" ως ανεπιθύμητο."
+
+#: includes/admin/topics.php:591
+msgid "Topic \"%1$s\" successfully unsticked."
+msgstr "Το θέμα \"%1$s\" ξεκαρφιτσώθηκε επιτυχώς."
+
+#: includes/admin/topics.php:591
+msgid "There was a problem unsticking the topic \"%1$s\"."
+msgstr "Δημιουργήθηκε πρόβλημα στο ξεκαρφίτσωμα του θέματος \"%1$s\"."
+
+#: includes/admin/topics.php:587
+msgid "Topic \"%1$s\" successfully sticked."
+msgstr "Το θέμα \"%1$s\" επιτυχώς καρφιτσώθηκε."
+
+#: includes/admin/topics.php:587
+msgid "There was a problem sticking the topic \"%1$s\"."
+msgstr "Δημιουργήθηκε πρόβλημα καρφιτσώνοντας το θέμα \"%1$s\"."
+
+#: includes/admin/topics.php:583
+msgid "Topic \"%1$s\" successfully sticked to front."
+msgstr "Το θέμα \"%1$s\" επιτυχώς καρφιτσώθηκε μπροστά."
+
+#: includes/admin/topics.php:583
+msgid "There was a problem sticking the topic \"%1$s\" to front."
+msgstr "Δημιουργήθηκε πρόβλημα καρφιτσώνοντας το θέμα \"%1$s\" μπροστά."
+
+#: includes/admin/topics.php:579
+msgid "Topic \"%1$s\" successfully closed."
+msgstr "Το θέμα \"%1$s\" κλειδώθηκε επιτυχώς."
+
+#: includes/admin/topics.php:579
+msgid "There was a problem closing the topic \"%1$s\"."
+msgstr "Δημιουργήθηκε πρόβλημα κλειδώνοντας το θέμα \"%1$s\"."
+
+#: includes/admin/topics.php:575
+msgid "Topic \"%1$s\" successfully opened."
+msgstr "Το θέμα \"%1$s\" άνοιξε επιτυχώς."
+
+#: includes/admin/topics.php:575
+msgid "There was a problem opening the topic \"%1$s\"."
+msgstr "Προέκυψε πρόβλημα ανοίγοντας το θέμα \"%1$s\"."
+
+#: includes/admin/topics.php:485
+msgid "The topic was not found!"
+msgstr "Δεν βρέθηκε το θέμα!"
+
+#: includes/admin/topics.php:223
+msgid "<strong>Topic Type</strong> dropdown indicates the sticky status of the topic. Selecting the super sticky option would stick the topic to the front of your forums, i.e. the topic index, sticky option would stick the topic to its respective forum. Selecting normal would not stick the topic anywhere."
+msgstr "<strong>Τύπος θέματος</strong> το κυλιόμενο μενού δείχνει την κατάσταση του θέματος από πλευράς μονιμότητας. Επιλέγοντας το Υπερκαφίτσωμα θα μείνει το θέμα καρφιτσωμένο σε όλες τις συζητήσεις πρώτο πρώτο. Επιλέγοντας Καρφίτσωμα θα παραμείνει το θέμα καρφιτσωμένο μόνο στη συζήτηση που ανήκει. Επιλέγοντας Κανονικό, το θέμα δεν θα καρφιτσωθεί πουθενά."
+
+#: includes/admin/topics.php:222
+msgid "<strong>Forum</strong> dropdown determines the parent forum that the topic belongs to. Select the forum or category from the dropdown, or leave the default (No Forum) to post the topic without an assigned forum."
+msgstr "<strong>Συζήτηση</strong> με το κυλιόμενο μενού επιλέγεις την κατηγορία συζήτησης που ανήκει. Επέλεξε συζήτηση ή κατηγορία από το κυλιόμενο ή άσε την προεπιλογή (άνευ κατηγορίας συζητήσεως) για να αναρτήσεις θέμα χωρίς κατηγορία."
+
+#: includes/admin/topics.php:220
+msgid "Select the attributes that your topic should have:"
+msgstr "Επέλεξε τα χαρακτηριστικά που θες να έχει το θέμα:"
+
+#: includes/admin/topics.php:218 includes/admin/topics.php:255
+msgid "Topic Attributes"
+msgstr "Χαρακτηριστικά θέματος"
+
+#: includes/admin/topics.php:213
+msgid "<strong>Featured Image</strong> - This allows you to associate an image with your topic without inserting it. This is usually useful only if your theme makes use of the featured image as a topic thumbnail on the home page, a custom header, etc."
+msgstr "<strong>Χαρακτηριστική Εικόνα</strong> - Σας επιτρέπει την συσχέτιση μιας εικόνας με το θέμα σας χωρίς να την εισάγετε. Αυτό είναι χρήσιμο μόνο αν το θέμα σας χρησιμοποιεί την χαρακτηριστική εικόνα σαν μικρογραφία στην αρχική σελίδα, μια επικεφαλίδα, κλπ."
+
+#: includes/admin/topics.php:210
+msgid "<strong>Publish</strong> - You can set the terms of publishing your topic in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a topic or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a topic to be published in the future or backdate a topic."
+msgstr "<strong>Δημοσίευση</strong> - Μπορείς να ορίσεις κανόνες δημοσίευσης του θέματός σου στο κουτί των δημοσιευμένων. Για κατάσταση, ορατότητα και άμεση δημοσίευση πάτα στον σύνδεσμο Επεξεργασία για περισσότερες επιλογές. Η ορατότητα περιλαμβάνει επιλογές προστασίας με κωδικό ή κάνει το θέμα να φαίνεται μόνιμα πάνω. Η άμεση δημοσίευση επιτρέπει να ορίσεις χρόνο στο παρόν ή το μέλλον για να δημοσιευθεί άρθρο ή να αποδημοσιευθεί."
+
+#: includes/admin/topics.php:207
+msgid "<strong>Topic Editor</strong> - Enter the text for your topic. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your topic text. You can insert media files by clicking the icons above the topic editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular topic editor."
+msgstr "<strong>Κειμενογράφος</strong> - Βάλε το κείμενο του θέματος. Υπάρχουν 2 επιλογές επεξεργασίας: οπτικά ή μέσω κώδικα HTML. Επέλεξε τον τρόπο πατώντας στην κατάλληλη καρτέλα. Ο οπτικός σου δίνει επεξεργαστή τύπου \"αυτό που βλέπεις αυτό παίρνεις\". Πάτα στο τελευταίο εικονίδιο για να ανοίξει δεύτερη σειρά κουμπιών ελέγχου. Η επιλογή μέσω κώδικα HTML σού επιτρέπει να γράψεις κώδικα μαζί με το κείμενο. Μπορείς να εισάγεις αρχεία πολυμέσων πατώντας τα εικονίδια πάνω από τον κειμενογράφο ακολουθώντας τις οδηγίες. Μπορείς να εισέλθεις και σε οθόνη μη απόσπασης προσοχής μέσω του εικονιδίου Πλήρης Οθόνης στην οπτική επιλογή (προτελευταίο κουμπί της πάνω σειράς) ή το κουμπί Πλήρης Οθόνη στην επιλογή μέσω κώδικα HTML (τελευταίο κουμπί). Εκεί μπορείς να δημιουργήσεις κουμπιά που θα είναι ορατά αν βάλεις τον κέρσορα πάνω στην κορυφή. Η έξοδος από την Πλήρη οθόνη σε επαναφέρει στον κανονικό επεξεργαστή κειμένου."
+
+#: includes/admin/topics.php:206
+msgid "<strong>Title</strong> - Enter a title for your topic. After you enter a title, you&#8217;ll see the permalink below, which you can edit."
+msgstr "<strong>Τίτλος</strong> - Γράψε τίτλο θέματος. Αφού βάλεις τίτλο, θα δεις έναν μόνιμο σύνδεσμο από κάτω που μπορείς να τον επεξεργαστείς."
+
+#: includes/admin/topics.php:204
+msgid "Title and Topic Editor"
+msgstr "Επεξεργαστής Τίτλου και Θέματος"
+
+#: includes/admin/topics.php:194
+msgid "The title field and the big topic editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "Το πεδίο του τίτλου και το μεγάλο πεδίο επεξεργασίας κειμένου έχει στάνταρ θέση, αλλά μπορείς να αλλάξεις όλα τα υπόλοιπα πεδία σέρνοντάς τα, όπως επίσης να τα ελαχιστοποιήσεις ή να τα μεγιστοποιήσεις πατώντας στην μπάρα τίτλου του κάθε κουτιού. Χρησιμοποίησε την καρτέλα Επιλογές Οθόνης για να εμφανίσεις περισσότερα κουτάκια (Παράθεμα, Αποστολή Παρακολούθησης-Trackbacks, Χειροποίητα πεδία, Συζήτηση, Αργκώ, Συγγραφέας) ή να επιλέξεις εμφάνιση μονόστηλης ή δίστηλης διάταξης."
+
+#: includes/admin/topics.php:173
+msgid "When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected topics at once. To remove a topic from the grouping, just click the x next to its name in the Bulk Edit area that appears."
+msgstr "Όταν χρησιμοποιείς τη Μαζική Επεξεργασία, μπορείς να αλλάξεις τα μεταδεδομένα (κατηγορίες, συγγραφέας, κ.λπ) για όλα τα επιλεγμένα θέματα με μιας. Για να μεταφέρεις ένα θέμα από την ομάδα απλώς πάτα το Χ δίπλα από το όνομά του στην περιοχή της Μαζικής Επεξεργασίας όπου εμφανίζεται."
+
+#: includes/admin/topics.php:172
+msgid "You can also edit or move multiple topics to the trash at once. Select the topics you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply."
+msgstr "Μπορείς να επεξεργαστείς ή να μετακινήσεις πολλαπλά θέματα στα σκουπίδια με μιας. Επέλεξε τα θέματα που επιθυμείς χρησιμοποιώντας τα κουτάκια τσεκαρίσματος, εν συνεχεία την επιλογή δράσης που επιθυμείς από το μενού Μαζικής Δράσης και πάτα Εφαρμογή."
+
+#: includes/admin/topics.php:163
+msgid "<strong>Stick <em>(to front)</em></strong> will keep the selected topic &#8217;pinned&#8217; to the top of ALL forums and be visable in any forums topics list."
+msgstr "<strong>Καρφίτσωμα <em>(μπροστά)</em></strong> θα κρατήσει το επιλεγμένο θέμα &#8217;Καρφιτσωμένο&#8217; στην κορυφή όλων των συζητήσεων και θα είναι ορατό σε κάθε θέμα συζήτησης."
+
+#: includes/admin/topics.php:162
+msgid "<strong>Stick</strong> will keep the selected topic &#8217;pinned&#8217; to the top the parent forum topic list."
+msgstr "<strong>Καρφίτσωμα</strong> θα διατηρήσει την κατάσταση του επιλεγμένου θέματος ως &#8217;Καρφιτσωμένο&#8217; στην κορυφή της λίστας της συζήτησης."
+
+#: includes/admin/topics.php:161
+msgid "<strong>Close</strong> will mark the selected topic as &#8217;closed&#8217; and disable the option to post new replies to the topic."
+msgstr "<strong>Λουκέτο</strong> θα σημάνει το επιλεγμένο θέμα ως &#8217;Κλειδωμένο&#8217 και θα απενεργοποιήσει την επιλογή να αναρτηθούν νέες δημοσιεύσεις στο θέμα."
+
+#: includes/admin/topics.php:160
+msgid "<strong>Preview</strong> will show you what your draft topic will look like if you publish it. View will take you to your live site to view the topic. Which link is available depends on your topic&#8217;s status."
+msgstr "<strong>Προεπισκόπηση</strong> θα σου δείξει πώς θα φαίνεται το θέμα σου αν το αναρτήσεις."
+
+#: includes/admin/topics.php:159
+msgid "<strong>Spam</strong> removes your topic from this list and places it in the spam queue, from which you can permanently delete it."
+msgstr "<strong>Ανεπιθύμητο (Spam)</strong> μεταφέρει το θέμα από τη λίστα και το βάζει στην ουρά των Spam, από όπου μπορείς να το διαγράψεις μόνιμα."
+
+#: includes/admin/topics.php:158
+msgid "<strong>Trash</strong> removes your topic from this list and places it in the trash, from which you can permanently delete it."
+msgstr "<strong>Διαγραφή</strong> μεταφέρει το θέμα από τη λίστα και το βάζει στον κάδο, από όπου μπορείς να το διαγράψεις μόνιμα."
+
+#: includes/admin/topics.php:157
+msgid "<strong>Edit</strong> takes you to the editing screen for that topic. You can also reach that screen by clicking on the topic title."
+msgstr "<strong>Επεξεργασία</strong> σε μεταφέρει στην οθόνη επεξεργασίας του θέματος. Μπορείς να πας εκεί και πατώντας τον τίτλο του θέματος."
+
+#: includes/admin/topics.php:155
+msgid "Hovering over a row in the topics list will display action links that allow you to manage your topic. You can perform the following actions:"
+msgstr "Κρατώντας τον κέρσορα πάνω από το κάθε θέμα θα εμφανιστούν επιλογές διαχείρισης του θέματός σου. Μπορείς να κάνεις τα ακόλουθα:"
+
+#: includes/admin/topics.php:146
+msgid "You can refine the list to show only topics from a specific month by using the dropdown menus above the topics list. Click the Filter button after making your selection. You also can refine the list by clicking on the topic creator in the topics list."
+msgstr "Μπορείς να φιλτράρεις τη λίστα να σου δείχνει μόνο τα θέματα συγκεκριμένου μήνα χρησιμοποιώντας τα κυλιόμενα μενού πάνω από τις λίστες των θεμάτων. Πάτα το κουμπί Φιλτράρισμα αφού επιλέξεις. Μπορείς να φιλτράρεις τη λίστα πατώντας στον χρήστη που άνοιξε το θέμα από τη λίστα των θεμάτων."
+
+#: includes/admin/topics.php:145
+msgid "You can filter the list of topics by topic status using the text links in the upper left to show All, Published, or Trashed topics. The default view is to show all topics."
+msgstr "Μπορείς να φιλτράρεις τη λίστα των θεμάτων σύμφωνα με την κατάστασή τους χρησιμοποιώντας τους συνδέσμους πάνω αριστερά του Επίδειξη όλων, Δημοσιευμένων ή διεγραμμένων θεμάτων. Η προεπιλογή είναι Επίδειξη όλων."
+
+#: includes/admin/topics.php:144
+msgid "You can hide/display columns based on your needs and decide how many topics to list per screen using the Screen Options tab."
+msgstr "Μπορείς να δείξεις/κρύψεις τις στήλες βάσει των αναγκών σου και να αποφασίσεις πόσα θέματα να φαίνονται στη λίστα ανά οθόνη χρησιμοποιώντας την καρτέλα Επιλογές Οθόνης."
+
+#: includes/admin/topics.php:134
+msgid "This screen displays the individual topics on your site. You can customize the display of this screen to suit your workflow."
+msgstr "Αυτή η οθόνη δείχνει το καθένα θέμα ξεχωριστά στον ιστότοπο σου. Μπορείτε να την προσαρμόσετε στις εργασίες σας."
+
+#: includes/admin/tools.php:1370
+msgid "Deleting Roles and Capabilities&hellip; %s"
+msgstr "Διαγραφή ρόλων και δυνατοτήτων&hellip; %s"
+
+#: includes/admin/tools.php:1364
+msgid "Deleting Settings&hellip; %s"
+msgstr "Διαγραφή ρυθμίσεων&hellip; %s"
+
+#: includes/admin/tools.php:1352
+msgid "Deleting Conversion Table&hellip; %s"
+msgstr "Διαγραφή πινάκων μετατροπής&hellip; %s"
+
+#: includes/admin/tools.php:1336 includes/admin/tools.php:1344
+msgid "Deleting User Meta&hellip; %s"
+msgstr "Διαγραφή μεταδεδομένων χρηστών&hellip; %s"
+
+#: includes/admin/tools.php:1331
+msgid "Deleting User&hellip; %s"
+msgstr "Διαγραφή χρηστών&hellip; %s"
+
+#: includes/admin/tools.php:1316
+msgid "Deleting Topic Tags&hellip; %s"
+msgstr "Διαγραφή ετικετών θεμάτων&hellip; %s"
+
+#: includes/admin/tools.php:1307
+msgid "Deleting Post Meta&hellip; %s"
+msgstr "Διαγραφή μεταδεδομένων θεμάτων&hellip; %s"
+
+#: includes/admin/tools.php:1294
+msgid "Deleting Posts&hellip; %s"
+msgstr "Διαγραφή δημοσιεύσεων σε εξέλιξη&hellip; %s"
+
+#: includes/admin/tools.php:1287
+msgid "Success!"
+msgstr "Επέτυχε!"
+
+#: includes/admin/tools.php:1286
+msgid "Failed"
+msgstr "Απέτυχε"
+
+#: includes/admin/tools.php:1253
+msgid "Reset bbPress"
+msgstr "Αρχικοποίηση (reset) του bbPress"
+
+#: includes/admin/tools.php:1245
+msgid "Human sacrifice, dogs and cats living together... mass hysteria!"
+msgstr "Θυσία ανθρώπων, σκυλιών και γατιών που ζούσαν μαζί... μαζική υστερία!"
+
+#: includes/admin/tools.php:1244
+msgid "This process cannot be undone."
+msgstr "Είναι μη αντιστρέψιμη διαδικασία."
+
+#: includes/admin/tools.php:1240
+msgid "Are you sure you want to do this?"
+msgstr "Είσαι σίγουρος πως θες να το κάνεις;"
+
+#: includes/admin/tools.php:1235
+msgid "Note: Resetting without this checked will delete the meta-data necessary to delete these users."
+msgstr "Σημείωση: Η διαγραφή χωρίς τσεκαρισμένο το κουτάκι αυτό θα διαγράψει τα μεταδεδομένα που είναι απαραίτητα για τη διαγραφή των χρηστών."
+
+#: includes/admin/tools.php:1234
+msgid "This option will delete all previously imported users, and cannot be undone."
+msgstr "Η επιλογή αυτή θα διαγράψει όλες τις προηγούμενες εισαγωγές χρηστών μη αντιστρεπτί."
+
+#: includes/admin/tools.php:1233 includes/admin/tools.php:1243
+msgid "Say it ain't so!"
+msgstr "Πες πως δεν είναι έτσι!"
+
+#: includes/admin/tools.php:1230
+msgid "Delete imported users?"
+msgstr "Διαγραφή εισηγμένων χρηστών;"
+
+#: includes/admin/tools.php:1226
+msgid "Importer Helper Data"
+msgstr "Εισαγόμενα δεδομένα βοηθείας"
+
+#: includes/admin/tools.php:1225
+msgid "Forum User Roles"
+msgstr "Ρόλοι χρηστών"
+
+#: includes/admin/tools.php:1224
+msgid "Forum Activity"
+msgstr "Δραστηριότητα"
+
+#: includes/admin/tools.php:1223
+msgid "Forum Settings"
+msgstr "Ρυθμίσεις"
+
+#: includes/admin/tools.php:1222
+msgid "Related Meta Data"
+msgstr "Τα σχετικά μεταδεδομένα"
+
+#: includes/admin/tools.php:1221
+msgid "All Topic Tags"
+msgstr "Όλες οι ετικέτες θεμάτων"
+
+#: includes/admin/tools.php:1220 includes/replies/functions.php:1994
+#: includes/replies/template.php:50
+msgid "All Replies"
+msgstr "Όλες οι απαντήσεις"
+
+#: includes/admin/tools.php:1219 includes/topics/functions.php:3439
+#: includes/topics/template.php:50
+msgid "All Topics"
+msgstr "Όλες οι δημοσιεύσεις"
+
+#: includes/admin/tools.php:1218 includes/forums/template.php:50
+msgid "All Forums"
+msgstr "Όλες οι συζητήσεις"
+
+#: includes/admin/tools.php:1216
+msgid "The following data will be removed:"
+msgstr "Τα ακόλουθα δεδομένα θα διαγραφούν:"
+
+#: includes/admin/tools.php:1210
+msgid "Backup your database before proceeding."
+msgstr "Κράτα εφεδρία της βάσης δεδομένων πριν προχωρήσεις."
+
+#: includes/admin/tools.php:1209
+msgid "Revert your forums back to a brand new installation. This process cannot be undone."
+msgstr "Επαναφορά των συζητήσεων σε αρχική εγκατάσταση. Δεν είναι δυνατόν να αναστραφεί."
+
+#: includes/admin/tools.php:1100
+msgid "Recalculating the topic for each post &hellip; %s"
+msgstr "Επανυπολογισμός του θέματος για κάθε δημοσίευση &hellip; %s"
+
+#: includes/admin/tools.php:1046
+msgid "Recalculating the forum for each post &hellip; %s"
+msgstr "Επανυπολογισμός της συζήτησης για κάθε δημοσίευση &hellip; %s"
+
+#: includes/admin/tools.php:1022
+msgid "Recalculating forum visibility &hellip; %s"
+msgstr "Επανυπολογισμός της ορατότητας της συζήτησης &hellip; %s"
+
+#: includes/admin/tools.php:965
+msgid "Repairing the sticky topic to the parent forum relationships&hellip; %s"
+msgstr "Επιδιορθώνει το καρφιτσωμένο θέμα στις σχέσεις στη συζήτηση-γονέα&hellip; %s"
+
+#: includes/admin/tools.php:859
+msgid "Recomputing latest post in every topic and forum&hellip; %s"
+msgstr "Επανυπολογισμός τελευταίας δημοσίευσης σε κάθε θέμα και φόρουμ&hellip; %s"
+
+#: includes/admin/tools.php:843
+msgid "Complete! %s users updated."
+msgstr "Ολοκληρώθηκε! %s χρήστες ενημερώθηκαν/αναβαθμίστηκαν."
+
+#: includes/admin/tools.php:805
+msgid "Remapping forum role for each user on this site&hellip; %s"
+msgstr "Ανάπλαση ρόλων για κάθε χρήστη του ιστοτόπου αυτού&hellip; %s"
+
+#: includes/admin/tools.php:743
+msgid "Removing trashed forums from user subscriptions&hellip; %s"
+msgstr "Απομάκρυνση διεγραμμένων συζητήσεων από τις παρακολουθήσεις του χρήστη&hellip; %s"
+
+#: includes/admin/tools.php:682
+msgid "Removing trashed topics from user subscriptions&hellip; %s"
+msgstr "Απομάκρυνση διαγραμμένων θεμάτων από τις παρακολουθήσεις του χρήστη&hellip; %s"
+
+#: includes/admin/tools.php:650 includes/admin/tools.php:711
+#: includes/admin/tools.php:772
+msgid "Nothing to remove!"
+msgstr "Τίποτα για μετακίνηση!"
+
+#: includes/admin/tools.php:620
+msgid "Removing trashed topics from user favorites&hellip; %s"
+msgstr "Απομάκρυνση διαγραμμένων θεμάτων από τα Αγαπημένα του χρήστη&hellip; %s"
+
+#: includes/admin/tools.php:575
+msgid "Counting the number of topics to which each user has replied&hellip; %s"
+msgstr "Καταμέτρηση αριθμού θεμάτων που απάντησε ο κάθε χρήστης&hellip; %s"
+
+#: includes/admin/tools.php:530
+msgid "Counting the number of topics each user has created&hellip; %s"
+msgstr "Καταμέτρηση αριθμού θεμάτων που υπέβαλλε ο κάθε χρήστης&hellip; %s"
+
+#: includes/admin/tools.php:487
+msgid "Counting the number of replies in each forum&hellip; %s"
+msgstr "Καταμέτρηση αριθμού απαντήσεων σε κάθε συζήτηση"
+
+#: includes/admin/tools.php:453
+msgid "Counting the number of topics in each forum&hellip; %s"
+msgstr "Καταμέτρηση αριθμού θεμάτων σε κάθε φόρουμ&hellip; %s"
+
+#: includes/admin/tools.php:434
+msgid "Complete! %s groups updated; %s forums updated; %s forum statuses synced."
+msgstr "Ολοκληρώθηκε! %s των ομάδων ενημερώθηκαν, %s  των συζητήσεων ενημερώθηκαν, %s  των στατιστικών συγχρονίστηκαν."
+
+#: includes/admin/tools.php:418
+msgid "group-forums"
+msgstr "συζητήσεις ομάδων"
+
+#: includes/admin/tools.php:417
+msgid "Group Forums"
+msgstr "Συζητήσεις ομάδων"
+
+#: includes/admin/tools.php:316
+msgid "Repairing BuddyPress group-forum relationships&hellip; %s"
+msgstr "Repairing BuddyPress group-forum relationships&hellip; %s"
+
+#: includes/admin/tools.php:291
+msgid "Counting the number of spammed and trashed replies in each topic&hellip; %s"
+msgstr "Καταμέτρηση αριθμού από spam και διαγραμμένες απαντήσεις σε κάθε θέμα&hellip; %s"
+
+#: includes/admin/tools.php:249
+msgid "Counting the number of voices in each topic&hellip; %s"
+msgstr "Καταμέτρηση αριθμού φωνών κάθε θέματος&hellip; %s"
+
+#: includes/admin/tools.php:233 includes/admin/tools.php:276
+#: includes/admin/tools.php:302 includes/admin/tools.php:469
+#: includes/admin/tools.php:514 includes/admin/tools.php:559
+#: includes/admin/tools.php:604 includes/admin/tools.php:666
+#: includes/admin/tools.php:727 includes/admin/tools.php:788
+#: includes/admin/tools.php:950 includes/admin/tools.php:1007
+#: includes/admin/tools.php:1030 includes/admin/tools.php:1085
+#: includes/admin/tools.php:1130 includes/admin/tools.php:1186
+msgid "Complete!"
+msgstr "Ολοκλήρωση!"
+
+#: includes/admin/tools.php:199 includes/admin/tools.php:250
+#: includes/admin/tools.php:292 includes/admin/tools.php:337
+#: includes/admin/tools.php:454 includes/admin/tools.php:488
+#: includes/admin/tools.php:531 includes/admin/tools.php:576
+#: includes/admin/tools.php:621 includes/admin/tools.php:683
+#: includes/admin/tools.php:744 includes/admin/tools.php:812
+#: includes/admin/tools.php:860 includes/admin/tools.php:966
+#: includes/admin/tools.php:1026 includes/admin/tools.php:1047
+#: includes/admin/tools.php:1101
+msgid "Failed!"
+msgstr "Αποτυχία!"
+
+#: includes/admin/tools.php:198
+msgid "Counting the number of replies in each topic&hellip; %s"
+msgstr "Καταμέτρηση αριθμού απαντήσεων σε κάθε θέμα&hellip; %s"
+
+#: includes/admin/tools.php:178
+msgid "Remap existing users to default forum roles"
+msgstr "Remap existing users to default forum roles"
+
+#: includes/admin/tools.php:177
+msgid "Remove trashed forums from user subscriptions"
+msgstr "Αφαίρεση διεγραμμένων συζητήσεων από τις παρακολουθήσεις του χρήστη"
+
+#: includes/admin/tools.php:176
+msgid "Remove trashed topics from user subscriptions"
+msgstr "Αφαίρεση διεγραμμένων θεμάτων από τις παρακολουθήσεις του χρήστη"
+
+#: includes/admin/tools.php:175
+msgid "Remove trashed topics from user favorites"
+msgstr "Αφαίρεση διαγραμμένων θεμάτων από τα \"αγαπημένα\" του χρήστη"
+
+#: includes/admin/tools.php:174
+msgid "Count replies for each user"
+msgstr "Καταμέτρηση απαντήσεων κάθε χρήστη"
+
+#: includes/admin/tools.php:173
+msgid "Count topics for each user"
+msgstr "Καταμέτρηση θεμάτων κάθε χρήστη"
+
+#: includes/admin/tools.php:172
+msgid "Count spammed & trashed replies in each topic"
+msgstr "Καταμέτρηση spam και διαγραμμένων θεμάτων"
+
+#: includes/admin/tools.php:171
+msgid "Count voices in each topic"
+msgstr "Καταμέτρηση φωνών σε κάθε θέμα"
+
+#: includes/admin/tools.php:170
+msgid "Count replies in each topic"
+msgstr "Καταμέτρηση απαντήσεων σε κάθε θέμα"
+
+#: includes/admin/tools.php:169
+msgid "Count replies in each forum"
+msgstr "Καταμέτρηση απαντήσεων σε κάθε συζήτηση"
+
+#: includes/admin/tools.php:168
+msgid "Count topics in each forum"
+msgstr "Καταμέτρηση θεμάτων σε κάθε συζήτηση"
+
+#: includes/admin/tools.php:167
+msgid "Repair BuddyPress Group Forum relationships"
+msgstr "Υπολόγισε εκ νέου τις σχέσεις στις ομαδικές συζητήσεις BuddyPress"
+
+#: includes/admin/tools.php:165
+msgid "Recalculate the sticky relationship of each topic"
+msgstr "Υπολόγισε εκ νέου την καρφιτσωμένη σχέση κάθε θέματος"
+
+#: includes/admin/tools.php:164
+msgid "Recalculate last activity in each topic and forum"
+msgstr "Υπολόγισε εκ νέου την τελευταία δραστηριότητα σε κάθε θέμα και συζήτηση"
+
+#: includes/admin/tools.php:163
+msgid "Recalculate private and hidden forums"
+msgstr "Υπολόγισε εκ νέου ιδιωτικές και κρυφές συζητήσεις"
+
+#: includes/admin/tools.php:162
+msgid "Recalculate the parent forum for each post"
+msgstr "Υπολόγισε εκ νέου τον Γονέα συζήτησης για κάθε δημοσίευση"
+
+#: includes/admin/tools.php:161
+msgid "Recalculate the parent topic for each post"
+msgstr "Υπολόγισε εκ νέου τον Γονέα του θέματος για κάθε δημοσίευση"
+
+#: includes/admin/tools.php:61
+msgid "Repair Items"
+msgstr "Επιδιορθωμένα στοιχεία"
+
+#: includes/admin/tools.php:46
+msgid "Repair"
+msgstr "Επιδιόρθωση"
+
+#: includes/admin/tools.php:43
+msgid "Relationships to Repair:"
+msgstr "Σχέσεις προς Επιδιόρθωση:"
+
+#: includes/admin/tools.php:37
+msgid "Some of these tools create substantial database overhead. Avoid running more than 1 repair job at a time."
+msgstr "Μερικά από αυτά τα εργαλεία δημιουργούν σημαντική επιβάρυνση της βάσης δεδομένων. Αποφύγετε την εκτέλεση περισσότερων από μίας εργασίας επισκευής κάθε φορά."
+
+#: includes/admin/tools.php:36
+msgid "bbPress keeps track of relationships between forums, topics, replies, and topic tags, and users. Occasionally these relationships become out of sync, most often after an import or migration. Use the tools below to manually recalculate these relationships."
+msgstr "Το bbPress παρακολουθεί τις σχέσεις μεταξύ συζητήσεων, θεμάτων, απαντήσεων, ετικετών θεμάτων και χρηστών. Μερικές φορές αυτές οι σχέσεις αποσυντονίζονται, τις περισσότερες φορές μετά από εισαγωγή ή μετατόπιση. Χρησιμοποιήστε τα παρακάτω εργαλεία για να υπολογίσετε εκ νέου με μη αυτόματο τρόπο αυτές τις σχέσεις."
+
+#: includes/admin/settings.php:1755
+msgid "Possible %1$s conflict: %2$s"
+msgstr "Πιθανή %1$s διένεξη: %2$s"
+
+#: includes/admin/settings.php:1736
+msgid "%s page"
+msgstr "%s σελίδα"
+
+#: includes/admin/settings.php:1724
+msgid "Topic tag slug"
+msgstr "Σύντομο όνομα ετικέτας θέματος"
+
+#: includes/admin/settings.php:1721
+msgid "View base"
+msgstr "Δές τη Βάση"
+
+#: includes/admin/settings.php:1718
+msgid "User base"
+msgstr "Βάση Χρηστών"
+
+#: includes/admin/settings.php:1715
+msgid "Reply slug"
+msgstr "Σύντομο όνομα απάντησης"
+
+#: includes/admin/settings.php:1712
+msgid "Topic slug"
+msgstr "Σύντομο όνομα θέματος"
+
+#: includes/admin/settings.php:1709
+msgid "Forum slug"
+msgstr "Συντομο όνομα συζήτησης"
+
+#: includes/admin/settings.php:1706
+msgid "Topics base"
+msgstr "Βάση Θεμάτων"
+
+#: includes/admin/settings.php:1703
+msgid "Forums base"
+msgstr "Βάση Συζητήσεων"
+
+#: includes/admin/settings.php:1698
+msgid "Category base"
+msgstr "Βάση Κατηγοριών"
+
+#: includes/admin/settings.php:1695
+msgid "Tag base"
+msgstr "Βάση Ετικετών"
+
+#: includes/admin/settings.php:1692
+msgid "Menus"
+msgstr "Κατάλογοι"
+
+#: includes/admin/settings.php:1691
+msgid "Attachments"
+msgstr "Επισυνάψεις"
+
+#: includes/admin/settings.php:1689
+msgid "Pages"
+msgstr "Σελίδες"
+
+#: includes/admin/settings.php:1688
+#: templates/default/bbpress/loop-forums.php:21
+#: templates/default/bbpress/loop-replies.php:24
+#: templates/default/bbpress/loop-replies.php:66
+#: templates/default/bbpress/loop-topics.php:21
+msgid "Posts"
+msgstr "Δημοσιεύσεις"
+
+#: includes/admin/settings.php:1590
+msgid "In the event of a slug collision with WordPress or BuddyPress, a warning will appear next to the problem slug(s)."
+msgstr "Κατά το συμβάν μιας σύγκρουσης σύντομων ονομάτων με το WordPress ή το BuddyPress, μια προειδοποίηση θα εμφανιστεί δίπλα στα προβληματικά σύντομα ονόματα."
+
+#: includes/admin/settings.php:1587
+msgid "The Slugs section allows you to control the permalink structure for your forums."
+msgstr "Η ενότητα Σύντομα Ονόματα σας επιτρέπει να ελέγχετε τη δομή των μόνιμων συνδέσμων για τις συζητήσεις σας."
+
+#: includes/admin/settings.php:1586
+msgid "Slugs"
+msgstr "Σύντομα ονόματα"
+
+#: includes/admin/settings.php:1580
+msgid "These are broken up into two separate groups: one for what appears in your theme, another for RSS feeds."
+msgstr "Αυτά χωρίστηκαν σε δύο ξεχωριστές ομάδες: μία για αυτό που εμφανίζεται στο θέμα σας, και μία άλλη για τις τροφοδοσίες RSS."
+
+#: includes/admin/settings.php:1579
+msgid "This is comparable to the WordPress \"Reading Settings\" page, where you can set the number of posts that should show on blog pages and in feeds."
+msgstr "Αυτό είναι συγκρίσιμο με τη σελίδα \"Ρυθμίσεις Ανάγνωσης\" του WordPress, όπου μπορείτε να ορίσετε τον αριθμό των δημοσιεύσεων που θα πρέπει να εμφανίζονται σε σελίδες ιστολογίου και στις ροές δεδομένων."
+
+#: includes/admin/settings.php:1578
+msgid "Per Page settings allow you to control the number of topics and replies appear on each page."
+msgstr "Οι Ρυθμίσεις ανά σελίδα σας επιτρέπουν να ελέγχετε τον αριθμό των θεμάτων και απαντήσεων που εμφανίζονται σε κάθε σελίδα."
+
+#: includes/admin/settings.php:1577
+msgid "Per Page"
+msgstr "Ανά σελίδα"
+
+#: includes/admin/settings.php:1571
+msgid "You must click the Save Changes button at the bottom of the screen for new settings to take effect."
+msgstr "Θα πρέπει να κάνετε κλικ στο κουμπί Αποθήκευση αλλαγών στο κάτω μέρος της οθόνης για να τεθούν σε ισχύ οι νέες ρυθμίσεις."
+
+#: includes/admin/settings.php:1568
+msgid "Auto-embed will embed the media content from a URL directly into the replies. For example: links to Flickr and YouTube."
+msgstr "Η Αυτόματη-ενσωμάτωση θα ενσωματώσει περιεχόμενο πολυμέσων από μια διεύθυνση URL απευθείας στις απαντήσεις. Για παράδειγμα: συνδέσεις με το Flickr και το YouTube."
+
+#: includes/admin/settings.php:1567
+msgid "The Fancy Editor brings the luxury of the Visual editor and HTML editor from the traditional WordPress dashboard into your theme."
+msgstr "Ο επεξεργαστής Fancy φέρνει την πολυτέλεια των Οπτικού και HTML επεξεργαστή από το παραδοσιακό πίνακα εργαλείων του WordPress στο θέμα σας."
+
+#: includes/admin/settings.php:1566
+msgid "\"Anonymous Posting\" allows guest users who do not have accounts on your site to both create topics as well as replies."
+msgstr "\"Ανώνυμη Δημοσίευση\" επιτρέπει στους επισκέπτες οι οποίοι δεν διαθέτουν λογαριασμό στην ιστοσελίδα σας να δημιουργούν θέματα καθώς και να απαντούν."
+
+#: includes/admin/settings.php:1565
+msgid "Topic-Tags allow users to filter topics between forums. This is enabled by default."
+msgstr "Οι Ετικέτες Θεμάτων επιτρέπουν στους χρήστες να φιλτράρουν τα θέματα των συζητήσεων. Είναι ενεργοποιημένο σαν προεπιλογή."
+
+#: includes/admin/settings.php:1564
+msgid "Subscriptions allow users to subscribe for notifications to topics that interest them. This is enabled by default."
+msgstr "Οι Συνδρομές επιτρέπουν στους χρήστες να εγγραφούν για τις ανακονώσεις σε θέματα που τους ενδιαφέρουν. Είναι ενεργοποιημένο σαν προεπιλογή."
+
+#: includes/admin/settings.php:1563
+msgid "Favorites are a way for users to save and later return to topics they favor. This is enabled by default."
+msgstr "Τα Αγαπημένα είναι ένας τρόπος για τους χρήστες να σώσουν και να επιστρέψουν αργότερα σε θέματα που τους αρέσουν. Είναι ενεργοποιημένο σαν προεπιλογή."
+
+#: includes/admin/settings.php:1562
+msgid "\"Throttle time\" is the amount of time required between posts from a single author. The higher the throttle time, the longer a user will need to wait between posting to the forum."
+msgstr "\"Ρύθμιση χρόνου\" είναι το χρονικό διάστημα που απαιτείται μεταξύ των δημοσιεύσεων από ένα συντάκτη. Όσο υψηλότερος είναι ο χρόνος, τόσο περισσότερο ο χρήστης θα πρέπει να περιμένει για να ξαναδημοσιεύσει στη συζήτηση."
+
+#: includes/admin/settings.php:1561
+msgid "You can choose to lock a post after a certain number of minutes. \"Locking post editing\" will prevent the author from editing some amount of time after saving a post."
+msgstr "Μπορείτε να επιλέξετε να κλειδώσετε μια δημοσίευση μετά από ένα συγκεκριμένο αριθμό λεπτών. Η \"Επεξεργασία κλειδώματος δημοσίευσης\" θα αποτρέψει τον συντάκτη από την επεξεργασία της δημοσίευσης για κάποιο χρονικό διάστημα μετά από την αποθήκευση."
+
+#: includes/admin/settings.php:1558
+msgid "In the Main Settings you have a number of options:"
+msgstr "Στις Κύριες Ρυθμίσεις έχετε τις εξής επιλογές:"
+
+#: includes/admin/settings.php:1557
+msgid "Main Settings"
+msgstr "Κύριες Ρυθμίσεις"
+
+#: includes/admin/settings.php:1551
+msgid "Please see the additional help tabs for more information on each indiviual section."
+msgstr "Παρακαλώ δείτε τις πρόσθετες καρτέλες βοήθειας για περισσότερες πληροφορίες σχετικά με κάθε τμήμα."
+
+#: includes/admin/settings.php:1550
+msgid "This screen provides access to all of the Forums settings."
+msgstr "Αυτή η οθόνη παρέχει πρόσβαση σε όλες τις ρυθμίσεις Συζητήσεων."
+
+#: includes/admin/settings.php:1519
+msgid "Stop"
+msgstr "Τερματισμός"
+
+#: includes/admin/settings.php:1518
+msgid "Start"
+msgstr "Έναρξη"
+
+#: includes/admin/settings.php:1488
+msgid "Non-bbPress passwords cannot be automatically converted. They will be converted as each user logs in."
+msgstr "Κωδικοί που δεν αντιστοιχούν σε bbPress δεν μετατρέπονται αυτόματα. Θα μετατραπούν όταν ο χρήστης συνδεθεί."
+
+#: includes/admin/settings.php:1487
+msgid "Attempt to import user accounts from previous forums"
+msgstr "Προσπάθεια εισαγωγής λογαριασμών χρηστών από προηγούμενες συζητήσεις"
+
+#: includes/admin/settings.php:1473
+msgid "Use this if an import failed and you want to remove that incomplete data."
+msgstr "Χρησιμοποιήστε το αν μια εισαγωγή αποτύχει και θέλετε να αφαιρέσετε τα ελλιπή δεδομένα."
+
+#: includes/admin/settings.php:1472
+msgid "Purge all information from a previously attempted import"
+msgstr "Καθαρίστε όλες τις πληροφορίες από προηγούμενες προσπάθειες εισαγωγής"
+
+#: includes/admin/settings.php:1458
+msgid "You should clean old conversion information before starting over."
+msgstr "Θα πρέπει να καθαρίσετε παλιές πληροφορίες μετατροπής πριν να ξεκινήσετε από την αρχή."
+
+#: includes/admin/settings.php:1457
+msgid "Start a fresh conversion from the beginning"
+msgstr "Ξεκινήστε μια νέα μετατροπή από την αρχή"
+
+#: includes/admin/settings.php:1443
+msgid "Keep this high to prevent too-many-connection issues."
+msgstr "Κρατήστε το πάνω από το κανονικό για να αποτρέψετε ζητήματα από τις πολλές συνδέσεις."
+
+#: includes/admin/settings.php:1442
+msgid "second(s) delay between each group of rows"
+msgstr "δευτερόλεπτο(α) καθυστέρησης μεταξύ κάθε ομάδας γραμμών"
+
+#: includes/admin/settings.php:1428
+msgid "Keep this low if you experience out-of-memory issues."
+msgstr "Κρατήστε το κάτω του κανονικού αν αντιμετωπίζετε θέματα μνήμης."
+
+#: includes/admin/settings.php:1427
+msgid "rows to process at a time"
+msgstr "σειρές προς επεξεργασία τη φορά"
+
+#: includes/admin/settings.php:1413
+msgid "(If converting from BuddyPress Forums, use \"wp_bb_\" or your custom prefix)"
+msgstr "(Αν μετατρέπετε συζητήσεις από BuddyPress, χρησιμοποιήστε \"wp_bb_\" ή το προσαρμοσμένο πρόθεμά σας)"
+
+#: includes/admin/settings.php:1399
+msgid "Some optional parameters to help tune the conversion process."
+msgstr "Μερικές προαιρετικές παράμετροι για να σας βοηθήσουν να συντονίσετε τη διαδικασία μετατροπής."
+
+#: includes/admin/settings.php:1386
+msgid "Name of the database with your old forum data"
+msgstr "Όνομα βάσης δεδομένων με στοιχεία παλιών συζητήσεων"
+
+#: includes/admin/settings.php:1372
+msgid "Password to access the database"
+msgstr "Κωδικός πρόσβασης στη βάση δεδομένων"
+
+#: includes/admin/settings.php:1358
+msgid "User for your database connection"
+msgstr "Χρήστης για σύνδεση στη βάση δεδομένων σας"
+
+#: includes/admin/settings.php:1344
+msgid "Use default 3306 if unsure"
+msgstr "Χρήση της προεπιλεγμένης 3306 εάν δεν είστε σίγουροι"
+
+#: includes/admin/settings.php:1330
+msgid "IP or hostname"
+msgstr "Πρωτόκολλο Διαδικτύου ή Όνομα Υπολογιστή"
+
+#: includes/admin/settings.php:1316
+msgid "is the previous forum software"
+msgstr "είναι το παλαιότερο λογισμικό για τις συζητήσεις"
+
+#: includes/admin/settings.php:1286
+msgid "Information about your previous forums database so that they can be converted. <strong>Backup your database before proceeding.</strong>"
+msgstr "Πληροφορίες για τη βάση δεδομένων προηγούμενων συζητήσεών σας, έτσι ώστε να μπορούν να μετατραπούν. <strong>Δημιουργήστε αντίγραφα ασφαλείας της βάσης δεδομένων σας πριν προχωρήσετε.</strong>"
+
+#: includes/admin/settings.php:1267
+#: templates/default/bbpress/form-user-edit.php:173
+msgid "Save Changes"
+msgstr "Αποθήκευση αλλαγών"
+
+#: includes/admin/settings.php:1258
+msgid "Forums Settings"
+msgstr "Ρυθμίσεις συζητήσεων"
+
+#: includes/admin/settings.php:1235
+msgid "Allow Akismet to actively prevent forum spam."
+msgstr "Επιτρέπεται σε Akismet να αποτρέπει ενεργά ανεπιθύμητες συζητήσεις."
+
+#: includes/admin/settings.php:1218
+msgid "Forum settings for Akismet"
+msgstr "Ρυθμίσεις συζητήσεων για Akismet"
+
+#: includes/admin/settings.php:1203
+msgid "Using the Forum Root is not recommended. Changing this does not move existing forums."
+msgstr "Η Χρησιμοποίηση της Ρίζας συζητήσεων δεν συνιστάται. Η αλλαγή αυτή δεν μετακινεί υφιστάμενες συζητήσεις."
+
+#: includes/admin/settings.php:1202
+msgid "is the parent for all group forums"
+msgstr "είναι Γονέας για όλες τις ομαδικές συζητήσεις"
+
+#: includes/admin/settings.php:1194
+msgid "&mdash; Forum root &mdash;"
+msgstr "&mdash; Ρίζα συζητήσεων &mdash;"
+
+#: includes/admin/settings.php:1177
+msgid "Allow BuddyPress Groups to have their own forums"
+msgstr "Επιτρέπεται σε ομάδες του BuddyPress να έχουν δικές τους συζητήσεις"
+
+#: includes/admin/settings.php:1161
+msgid "Forum settings for BuddyPress"
+msgstr "Ρυθμίσεις συζητήσεων για το BuddyPress"
+
+#: includes/admin/settings.php:1043
+msgid "Custom slugs for single forums, topics, replies, tags, views, and search."
+msgstr "Προσαρμοσμένα σύντομα ονόματα για απλές συζητήσεις, θέματα, απαντήσεις, ετικέτες, προβολές, και αναζήτηση."
+
+#: includes/admin/settings.php:943
+msgid "Customize your user profile slugs."
+msgstr "Προσαρμόστε τα σύντομα ονόματα του προφίλ σας χρήστη."
+
+#: includes/admin/settings.php:916
+msgid "Topics by Freshness"
+msgstr "Θέματα κατά φρεσκάδα"
+
+#: includes/admin/settings.php:913
+msgid "Forum Index"
+msgstr "Ευρετήριο Συζητήσεων"
+
+#: includes/admin/settings.php:860
+msgid "Customize your Forums root. Partner with a WordPress Page and use Shortcodes for more flexibility."
+msgstr "Προσαρμόστε τη ρίζα των συζητήσεών σας. Συνεργαστείτε με μια σελίδα WordPress και χρησιμοποιήστε συντομεύσεις κώδικα για μεγαλύτερη ευελίξία."
+
+#: includes/admin/settings.php:810
+msgid "How many topics and replies to show per RSS page"
+msgstr "Πόσα θέματα και απαντήσεις θα εμφανίζονται ανά σελίδα RSS"
+
+#: includes/admin/settings.php:779 includes/admin/settings.php:795
+#: includes/admin/settings.php:826 includes/admin/settings.php:842
+msgid "per page"
+msgstr "ανά σελίδα"
+
+#: includes/admin/settings.php:763
+msgid "How many topics and replies to show per page"
+msgstr "Πόσα θέματα και απαντήσεις θα εμφανίζονται ανά σελίδα"
+
+#: includes/admin/settings.php:748
+msgid "Embed media (YouTube, Twitter, Flickr, etc...) directly into topics and replies"
+msgstr "Ενσωματώσετε μέσα ενημέρωσης (YouTube, Twitter, Flickr, κ.τ.λ.) απευθείας σε θέματα και απαντήσεις"
+
+#: includes/admin/settings.php:732
+msgid "No template packages available."
+msgstr "Πακέτα προτύπων δεν είναι διαθέσιμα"
+
+#: includes/admin/settings.php:728
+msgid "will serve all bbPress templates"
+msgstr "Εξυπηρετούμε όλα τα πρότυπα bbPress"
+
+#: includes/admin/settings.php:722
+msgid "%1$s - %2$s"
+msgstr "%1$s - %2$s"
+
+#: includes/admin/settings.php:698
+msgid "How your forum content is displayed within your existing theme."
+msgstr "Πως εμφανίζεται το περιεχόμενο της συζήτησής σας εντός των υφιστάμενων θεμάτων σας."
+
+#: includes/admin/settings.php:685
+msgid "Add toolbar & buttons to textareas to help with HTML formatting"
+msgstr "Προσθήκη γραμμής εργαλείων και κουμπιών στην περιοχή του κειμένου, για να βοηθήσουν στην μορφοποίηση HTML"
+
+#: includes/admin/settings.php:669
+msgid "Allow topic and reply revision logging"
+msgstr "Επιτρέπεται στο θέμα και στην απάντηση, η καταγραφή αναθεώρησης"
+
+#: includes/admin/settings.php:652
+msgid "Enable threaded (nested) replies %s levels deep"
+msgstr "Ενεργοποίηση (εμφωλιασμένων) απαντήσεων νήματος σε βάθος επιπέδου %s"
+
+#: includes/admin/settings.php:613
+msgid "Allow forum wide search"
+msgstr "Επιτρέπεται ευρεία αναζήτηση στη συζήτηση"
+
+#: includes/admin/settings.php:597
+msgid "Allow topics to have tags"
+msgstr "Επιτρέπεται στα θέματα να έχουν ετικέτες"
+
+#: includes/admin/settings.php:581
+msgid "Allow users to subscribe to forums and topics"
+msgstr "Επιτρέπεται στους χρήστες να εγγραφούν σε συζητήσεις και θέματα"
+
+#: includes/admin/settings.php:565
+msgid "Allow users to mark topics as favorites"
+msgstr "Επιτρέπεται στους χρήστες να επισημαίνουν θέματα ως αγαπημένα"
+
+#: includes/admin/settings.php:549
+msgid "Forum features that can be toggled on and off"
+msgstr "Χαρακτηριστικά συζήτησης που μπορούν να ενεργοποιούνται και απενεργοποιούνται"
+
+#: includes/admin/settings.php:533
+msgid "Automatically give registered visitors the %s forum role"
+msgstr "Αυτόματη απόδοση για τους εγγεγραμμένους χρήστες %s ρόλου στη συζήτηση"
+
+#: includes/admin/settings.php:499
+msgid "Allow guest users without accounts to create topics and replies"
+msgstr "Επιτρέπεται σε επισκέπτες, χωρίς λογαριασμούς, να δημιουργούν θέματα και απαντήσεις"
+
+#: includes/admin/settings.php:483 includes/common/functions.php:124
+msgid "seconds"
+msgstr "δευτερόλεπτα"
+
+#: includes/admin/settings.php:467 includes/common/functions.php:123
+msgid "minutes"
+msgstr "λεπτά"
+
+#: includes/admin/settings.php:450
+msgid "Setting time limits and other user posting capabilities"
+msgstr "Ρύθμιση προθεσμιών και άλλες δυνατότητες δημοσίευσης"
+
+#: includes/admin/settings.php:412
+msgid "Use Akismet"
+msgstr "Χρήση Akismet"
+
+#: includes/admin/settings.php:399
+msgid "Group Forums Parent"
+msgstr "Γονέας Ομαδικών Συζητήσεων"
+
+#: includes/admin/settings.php:391
+msgid "Enable Group Forums"
+msgstr "Ενεργοποίηση Ομαδικών Συζητήσεων"
+
+#: includes/admin/settings.php:378
+msgid "Topic Subscriptions"
+msgstr "Συνδρομές Θεμάτων"
+
+#: includes/admin/settings.php:370 includes/extend/buddypress/loader.php:285
+msgid "Favorite Topics"
+msgstr "Αγαπημένα Θέματα"
+
+#: includes/admin/settings.php:362 includes/extend/buddypress/loader.php:207
+#: includes/extend/buddypress/loader.php:277
+#: templates/default/bbpress/user-details.php:41
+msgid "Replies Created"
+msgstr "Απαντήσεις που έκανε"
+
+#: includes/admin/settings.php:354 includes/extend/buddypress/loader.php:196
+#: includes/extend/buddypress/loader.php:269
+#: templates/default/bbpress/user-details.php:35
+msgid "Topics Started"
+msgstr "Θέματα που ξεκίνησε"
+
+#: includes/admin/settings.php:346
+msgid "User Base"
+msgstr "Βάση Χρηστών"
+
+#: includes/admin/settings.php:317
+msgid "Topic View"
+msgstr "Προβολή Θέματος"
+
+#: includes/admin/settings.php:280
+msgid "Forum root should show"
+msgstr "Να εμφανίζεται η Ρίζα Συζήτησης"
+
+#: includes/admin/settings.php:272
+msgid "Forum Prefix"
+msgstr "Πρόθεμα Συζήτησης"
+
+#: includes/admin/settings.php:264
+msgid "Forum Root"
+msgstr "Ρίζα Συζήτησης"
+
+#: includes/admin/settings.php:209
+msgid "Current Package"
+msgstr "Τρέχον Πακέτο"
+
+#: includes/admin/settings.php:190
+msgid "Reply Threading"
+msgstr "Απάντηση νήματος"
+
+#: includes/admin/settings.php:182
+msgid "Auto-embed links"
+msgstr "Αυτόματα ενσωματωμένοι σύνδεσμοι"
+
+#: includes/admin/settings.php:174
+msgid "Post Formatting"
+msgstr "Μορφοποίηση Δημοσίευσης"
+
+#: includes/admin/settings.php:166 includes/admin/settings.php:333
+#: includes/common/template.php:2330 includes/search/template.php:225
+#: templates/default/bbpress/form-search.php:17
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: includes/admin/settings.php:158
+msgid "Topic tags"
+msgstr "Ετικέτες θεμάτων"
+
+#: includes/admin/settings.php:150 includes/extend/buddypress/loader.php:230
+#: templates/default/bbpress/user-details.php:58
+msgid "Subscriptions"
+msgstr "Συνδρομές"
+
+#: includes/admin/settings.php:142 includes/extend/buddypress/loader.php:218
+#: templates/default/bbpress/user-details.php:48
+msgid "Favorites"
+msgstr "Αγαπημένα"
+
+#: includes/admin/settings.php:134 includes/admin/settings.php:1690
+msgid "Revisions"
+msgstr "Αναθεωρήσεις"
+
+#: includes/admin/settings.php:115
+msgid "Auto role"
+msgstr "Αυτόματοι Ρόλοι"
+
+#: includes/admin/settings.php:107
+msgid "Anonymous posting"
+msgstr "Ανώνυμη δημοσίευση"
+
+#: includes/admin/settings.php:99
+msgid "Throttle posting every"
+msgstr "Ρύθμιση δημοσιεύσεων κάθε"
+
+#: includes/admin/settings.php:91
+msgid "Disallow editing after"
+msgstr "Απαγόρευση επεξεργασίας μετά"
+
+#: includes/admin/settings.php:69
+msgid "Akismet Integration"
+msgstr "Ενσωμάτωση Akismet"
+
+#: includes/admin/settings.php:64
+msgid "BuddyPress Integration"
+msgstr "Ενσωμάτωση BuddyPress"
+
+#: includes/admin/settings.php:59
+msgid "Forum User Slugs"
+msgstr "Σύντομο Όνομα Χρήστη Συζήτησης"
+
+#: includes/admin/settings.php:54
+msgid "Single Forum Slugs"
+msgstr "Σύντομο Όνομα Απλής Συζήτησης"
+
+#: includes/admin/settings.php:49
+msgid "Forum Root Slug"
+msgstr "Σύντομο Όνομα Ρίζας Συζήτησης"
+
+#: includes/admin/settings.php:44
+msgid "Topics and Replies Per RSS Page"
+msgstr "Θέματα και Απαντήσεις ανά σελίδα RSS"
+
+#: includes/admin/settings.php:39
+msgid "Topics and Replies Per Page"
+msgstr "Θέματα και Απαντήσεις ανά σελίδα"
+
+#: includes/admin/settings.php:34
+msgid "Forum Theme Packages"
+msgstr "Πακέτα Θεμάτων Συζήτησης"
+
+#: includes/admin/settings.php:29
+msgid "Forum Features"
+msgstr "Χαρακτηριστικά Συζήτησης"
+
+#: includes/admin/settings.php:24
+msgid "Forum User Settings"
+msgstr "Ρυθμίσεις Χρηστών Συζήτησης"
+
+#: includes/admin/replies.php:883
+msgid "Reply draft updated. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
+msgstr "Το προσχέδιο της απάντησης ενημερώθηκε. <a target=\"_blank\" href=\"%s\">Προεπισκόπηση θέματος</a>"
+
+#: includes/admin/replies.php:876
+msgid "Reply scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview topic</a>"
+msgstr "Η απάντηση προγραμματίστηκε για: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Προεπισκόπηση θέματος</a>"
+
+#: includes/admin/replies.php:873
+msgid "Reply submitted. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
+msgstr "Η απάντηση υποβλήθηκε. <a target=\"_blank\" href=\"%s\">Προεπισκόπηση θέματος</a>"
+
+#: includes/admin/replies.php:870
+msgid "Reply saved."
+msgstr "Απάντησε αποθηκεύτηκε."
+
+#: includes/admin/replies.php:867
+msgid "Reply created. <a href=\"%s\">View topic</a>"
+msgstr "Απάντηση δημιουργήθηκε. <a href=\"%s\">Προβολή θέματος</a>"
+
+#. translators: %s: date and time of the revision
+#: includes/admin/replies.php:863
+msgid "Reply restored to revision from %s"
+msgstr "Απάντηση επαναφέρθηκε στην αναθεώρηση από %s"
+
+#: includes/admin/replies.php:858
+msgid "Reply updated."
+msgstr "Απάντηση ενημερώθηκε."
+
+#: includes/admin/replies.php:849
+msgid "Reply updated. <a href=\"%s\">View topic</a>"
+msgstr "Απάντηση ενημερώθηκε. <a href=\"%s\">Προβολή θέματος</a>"
+
+#: includes/admin/replies.php:789 includes/admin/topics.php:859
+msgid "In all forums"
+msgstr "Σε όλες τις συζητήσεις"
+
+#: includes/admin/replies.php:779 includes/admin/topics.php:849
+msgid "Empty Spam"
+msgstr "Άδειασμα ανεπιθύμητων"
+
+#: includes/admin/replies.php:753 includes/admin/topics.php:823
+msgid "Delete Permanently"
+msgstr "Μόνιμη διαγραφή"
+
+#: includes/admin/replies.php:753 includes/admin/topics.php:823
+#: includes/replies/template.php:2053 includes/topics/template.php:2634
+msgid "Delete this item permanently"
+msgstr "Μόνιμη διαγραφή αντικειμένου"
+
+#: includes/admin/replies.php:749 includes/admin/topics.php:819
+#: includes/replies/template.php:2034 includes/topics/template.php:2615
+msgid "Trash"
+msgstr "Διαγραφή"
+
+#: includes/admin/replies.php:749 includes/admin/topics.php:819
+#: includes/replies/template.php:2049 includes/topics/template.php:2630
+msgid "Move this item to the Trash"
+msgstr "Μετακίνηση αντικειμένου στα διαγραμμένα"
+
+#: includes/admin/replies.php:747 includes/admin/topics.php:817
+#: includes/replies/template.php:2035 includes/topics/template.php:2616
+msgid "Restore"
+msgstr "Επαναφορά"
+
+#: includes/admin/replies.php:747 includes/admin/topics.php:817
+#: includes/replies/template.php:2047 includes/topics/template.php:2628
+msgid "Restore this item from the Trash"
+msgstr "Επαναφορά από τα διαγραμμένα"
+
+#: includes/admin/replies.php:738 includes/admin/topics.php:809
+#: includes/replies/template.php:2105 includes/topics/template.php:2872
+msgid "Spam"
+msgstr "Ανεπιθύμητα"
+
+#: includes/admin/replies.php:738
+msgid "Mark this reply as spam"
+msgstr "Σημείωσε αυτή την απάντηση ως ανεπιθύμητη"
+
+#: includes/admin/replies.php:736 includes/admin/topics.php:807
+msgid "Not spam"
+msgstr "Όχι ανεπιθύμητο"
+
+#: includes/admin/replies.php:736
+msgid "Mark the reply as not spam"
+msgstr "Σημείωσε την απάντηση ως μη ανεπιθύμητη"
+
+#: includes/admin/replies.php:725 includes/admin/topics.php:776
+msgid "View"
+msgstr "Προβολή"
+
+#: includes/admin/replies.php:725 includes/admin/topics.php:776
+msgid "View &#8220;%s&#8221;"
+msgstr "Προβολή &#8220;%s&#8221;"
+
+#: includes/admin/replies.php:657
+msgid "(Mismatch)"
+msgstr "(Κακό ταίριασμα)"
+
+#: includes/admin/replies.php:651 includes/admin/replies.php:666
+#: includes/admin/topics.php:687
+msgid "No Forum"
+msgstr "Κανένας Χώρος Συζήτησης"
+
+#: includes/admin/replies.php:625 includes/admin/replies.php:633
+msgid "No Topic"
+msgstr "Κανένα θέμα"
+
+#: includes/admin/replies.php:572 includes/admin/topics.php:636
+#: templates/default/bbpress/loop-replies.php:18
+#: templates/default/bbpress/loop-replies.php:60
+#: templates/default/bbpress/loop-search.php:18
+#: templates/default/bbpress/loop-search.php:40
+msgid "Author"
+msgstr "Συντάκτης"
+
+#: includes/admin/replies.php:569
+msgid "Title"
+msgstr "Τίτλος"
+
+#: includes/admin/replies.php:536
+msgid "Reply \"%1$s\" successfully unmarked as spam."
+msgstr "Η απάντηση \"%1$s\" επισημάνθηκε επιτυχημένα ως μη ανεπιθύμητη."
+
+#: includes/admin/replies.php:536
+msgid "There was a problem unmarking the reply \"%1$s\" as spam."
+msgstr "Υπήρξε ένα πρόβλημα κατά τη σήμανση της απάντησης \"%1$s\" ως μη ανεπιθύμητης."
+
+#: includes/admin/replies.php:532
+msgid "Reply \"%1$s\" successfully marked as spam."
+msgstr "Η απάντηση \"%1$s\" επισημάνθηκε επιτυχημένα ως ανεπιθύμητη."
+
+#: includes/admin/replies.php:532
+msgid "There was a problem marking the reply \"%1$s\" as spam."
+msgstr "Υπήρξε ένα πρόβλημα κατά τη σήμανση της απάντησης \"%1$s\" ως ανεπιθύμητης."
+
+#: includes/admin/replies.php:464 includes/admin/topics.php:488
+msgid "You do not have the permission to do that!"
+msgstr "Δεν έχετε την άδεια να το κάνετε αυτό!"
+
+#: includes/admin/replies.php:461
+msgid "The reply was not found!"
+msgstr "Η απάντηση δεν βρέθηκε!"
+
+#: includes/admin/replies.php:347 includes/admin/topics.php:363
+#: templates/default/bbpress/form-anonymous.php:17
+msgid "Author Information"
+msgstr "Πληροφορίες Συντάκτη"
+
+#: includes/admin/replies.php:223
+msgid "<strong>Reply To</strong> determines the threading of the reply."
+msgstr "<strong>Απάντηση σε</strong> καθορίζει το νήμα της απάντησης."
+
+#: includes/admin/replies.php:222
+msgid "<strong>Topic</strong> determines the parent topic that the reply belongs to."
+msgstr "<strong>Θέμα</strong>καθορίζει το θέμα Γονέα στο οποίο ανήκει η απάντηση."
+
+#: includes/admin/replies.php:221
+msgid "<strong>Forum</strong> dropdown determines the parent forum that the reply belongs to. Select the forum, or leave the default (Use Forum of Topic) to post the reply in forum of the topic."
+msgstr "<strong>Χώρος Συζήτησης</strong> αναπτυσσόμενο καθορίζει τη συζήτηση Γονέα στην οποία ανήκει η απάντηση. Επιλέξτε τη συζήτηση, ή αφήστε την προεπιλογή (Χρήση Συζητήσεων Θέματος) για να δημοσιεύσετε την απάντηση στη συζήτηση του θέματος."
+
+#: includes/admin/replies.php:219
+msgid "Select the attributes that your reply should have:"
+msgstr "Επιλέξτε τις ιδιότητες που θα χαρακτηρίζουν την απάντησή σας:"
+
+#: includes/admin/replies.php:217 includes/admin/replies.php:255
+msgid "Reply Attributes"
+msgstr "Ιδιότητες απάντησης"
+
+#: includes/admin/replies.php:212
+msgid "<strong>Featured Image</strong> - This allows you to associate an image with your reply without inserting it. This is usually useful only if your theme makes use of the featured image as a reply thumbnail on the home page, a custom header, etc."
+msgstr "<strong>Επιλεγμένη Εικόνα</strong> - Αυτό σας επιτρέπει να συσχετίσετε μια εικόνα με την απάντησή σας χωρίς να την τοποθετήσετε. Αυτό είναι συνήθως χρήσιμο μόνο αν το θέμα σας κάνει χρήση της Επιλεγμένης Εικόνας ως μικρογραφία της απάντησης στην αρχική σελίδα, ως μια προσαρμοσμένη κεφαλίδα, κ.τ.λ."
+
+#: includes/admin/replies.php:209
+msgid "<strong>Publish</strong> - You can set the terms of publishing your reply in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a reply or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a reply to be published in the future or backdate a reply."
+msgstr "<strong>Δημοσίευση</strong> - Μπορείτε να ορίσετε τους όρους δημοσίευσης της απάντησής σας στο παράθυρο Δημοσίευση. Για την Κατάσταση, Ορατότητα και Δημοσίευση (άμεσα), κάντε κλικ στο σύνδεσμο Επεξεργασία για να αποκαλύψει περισσότερες επιλογές. Η Ορατότητα περιλαμβάνει επιλογές για κωδικό πρόσβασης για προστασία της απάντησης ή για να παραμείνει στην κορυφή του ιστολογίου σας για πάντα (καρφιτσωμένη). Το Δημοσίευση (άμεσα) σας επιτρέπει να ορίσετε μελλοντική ή παλαιότερη ημερομηνία και ώρα, έτσι ώστε να μπορείτε να προγραμματίσετε μια απάντηση που θα δημοσιευθεί στο μέλλον ή αν πρέπει να εμφανιστεί προχρονολογημένη."
+
+#: includes/admin/replies.php:206
+msgid "<strong>Reply Editor</strong> - Enter the text for your reply. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your reply text. You can insert media files by clicking the icons above the reply editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular reply editor."
+msgstr "<strong>Επεξεργαστής απάντησης</strong> - Εισάγετε το κείμενο της απάντησής σας. Υπάρχουν δύο τρόποι επεξεργασίας: Οπτικός και HTML. Επιλέξτε τρόπο κάνοντας κλικ στην αντίστοιχη καρτέλα. Ο οπτικός, σας δίνει ένα WYSIWYG (What You See Is What You Get) επεξεργαστή. Κάντε κλικ στο τελευταίο εικονίδιο στη γραμμή για να εμφανιστεί μια δεύτερη σειρά εργαλείων. Η λειτουργία HTML σας επιτρέπει να εισάγετε γλώσσα HTML μαζί με το κείμενο της απάντησής σας. Μπορείτε να εισάγετε αρχεία πολυμέσων κάνοντας κλικ στα εικονίδια πάνω από τον επεξεργαστή και ακολουθώντας τις οδηγίες. Μπορείτε απερίσπαστα να μεταβείτε στο πεδίο συγγραφής, μέσω του εικονιδίου Πλήρους Οθόνης (Στην Οπτική λειτουργία, το προτελευταίο στην πάνω σειρά, ενώ στην HTML, τελευταίο στη σειρά). Από εκεί, μπορείτε να κάνετε τα κουμπιά ορατά αν ακομπήσετε πάνω από την κορυφαία περιοχή. Έξοδος από Πλήρη Οθόνη επιστρέφει πίσω στον κανονικό επεξεργαστή της απάντησης."
+
+#: includes/admin/replies.php:205
+msgid "<strong>Title</strong> - Enter a title for your reply. After you enter a title, you&#8217;ll see the permalink below, which you can edit."
+msgstr "<strong>Τίτλος</strong> - Δώστε ένα τίτλο στην απάντησή σας. Αφού δώσετε τίτλο, θα δείτε την μόνιμη σύνδεση, την οποία μπορείτε να επεξεργαστείτε."
+
+#: includes/admin/replies.php:203
+msgid "Title and Reply Editor"
+msgstr "Επεξεργαστής Τίτλου και Απαντήσεων"
+
+#: includes/admin/replies.php:193
+msgid "The title field and the big reply editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "Το πεδίο του τίτλου και η μεγάλη περιοχή επεξεργασίας απαντήσεων είναι σταθερά στη θέση τους, αλλά μπορείτε να αλλάξετε όλα τα άλλα κουτιά με μεταφορά και απόθεση και να τα ελαχιστοποιήσετε ή επεκτείνετε, κάνοντας κλικ στη γραμμή τίτλου κάθε κουτιού. Χρησιμοποιήστε την καρτέλα Επιλογές Οθόνης για να εμφανίσετε περισσότερα πλαίσια (Απόσπασμα, Αποστολή Trackbacks, Προσαρμοσμένα πεδία, Συζήτηση, Περιθώρια, Συντάκτης) ή να επιλέξετε διάταξη μίας ή δύο στηλών για αυτή την οθόνη."
+
+#: includes/admin/replies.php:172
+msgid "When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected replies at once. To remove a reply from the grouping, just click the x next to its name in the Bulk Edit area that appears."
+msgstr "Όταν χρησιμοποιείτε την Μαζική Επεξεργασία, μπορείτε να αλλάξετε τα μεταδεδομένα (κατηγορίες, συντάκτης, κ.τ.λ. ) για όλες τις επιλεγμένες απαντήσεις με τη μία. Για μετακίνηση μίας απάντησης από την ομάδα, κλικάρετε το Χ δίπλα από το όνομά της στην περιοχή Μαζικής Επεξεργασίας που εμφανίζεται."
+
+#: includes/admin/replies.php:171
+msgid "You can also edit or move multiple replies to the trash at once. Select the replies you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply."
+msgstr "Μπορείτε επίσης να επεξεργαστείτε ή να μετακινήσετε πολλές απαντήσεις στα Μπάζα με τη μία. Επιλέξτε τις απαντήσεις που θέλετε χρησιμοποιώντας τα τετραγωνίδια και στη συνέχεια, επιλέξτε την ενέργεια που θέλετε από το μενού Μαζικές Ενέργειες και κλικ στο κουμπί Εφαρμογή."
+
+#: includes/admin/replies.php:162
+msgid "<strong>Preview</strong> will show you what your draft reply will look like if you publish it. View will take you to your live site to view the reply. Which link is available depends on your reply&#8217;s status."
+msgstr "<strong>Προεπισκόπηση</strong> σας εμφανίζει ένα προσχέδιο της απάντησής σας, πως δηλαδή θα εμφανιστεί μετά τη δημοσίευση. Το Εμφάνιση θα σας περάσει ζωντανά στην ιστοσελίδα.  Ποιος σύνδεσμος θα είναι διαθέσιμος εξαρτάται από την κατάσταση της απάντησής σας."
+
+#: includes/admin/replies.php:161
+msgid "<strong>Spam</strong> removes your reply from this list and places it in the spam queue, from which you can permanently delete it."
+msgstr "<strong>Ανεπιθύμητο</strong> αφαιρεί την απάντησή σας από τη λίστα και την τοποθετεί στο πεδίο Ανεπιθύμητα, από όπου μπορείτε να την διαγράψετε μόνιμα."
+
+#: includes/admin/replies.php:160
+msgid "<strong>Trash</strong> removes your reply from this list and places it in the trash, from which you can permanently delete it."
+msgstr "<strong>Διαγραφή</strong> αφαιρεί την απάντησή σας από τη λίστα και την τοποθετεί στα διαγραμμένα, από όπου μπορείτε να τη διαγράψετε μόνιμα."
+
+#: includes/admin/replies.php:158
+msgid "<strong>Edit</strong> takes you to the editing screen for that reply. You can also reach that screen by clicking on the reply title."
+msgstr "<strong>Επεξεργασία</strong> σας μεταφέρει στο πεδίο επεξεργασίας της απάντησής σας. Μπορείτε να φτασετε εκεί και κάνοντας κλικ πάνω στον τίτλο της απάντησης."
+
+#: includes/admin/replies.php:156
+msgid "Hovering over a row in the replies list will display action links that allow you to manage your reply. You can perform the following actions:"
+msgstr "Περνώντας πάνω από μια γραμμή στη λίστα απαντήσεων θα εμφανιστούν σύνδεσμοι με ενέργειες που σας επιτρέπουν να διαχειριστείτε την απάντησή σας. Μπορείτε να εκτελέσετε τις ακόλουθες ενέργειες:"
+
+#: includes/admin/replies.php:147
+msgid "You can refine the list to show only replies in a specific category or from a specific month by using the dropdown menus above the replies list. Click the Filter button after making your selection. You also can refine the list by clicking on the reply author, category or tag in the replies list."
+msgstr "Μπορείτε να βελτιώσετε τη λίστα για να δείτε μόνο απαντήσεις σε μια συγκεκριμένη κατηγορία ή από ένα συγκεκριμένο μήνα, χρησιμοποιώντας τα αναπτυσσόμενα μενού πάνω από τη λίστα απαντήσεων. Κάντε κλικ στο κουμπί Φίλτρο αφού κάνετε την επιλογή σας. Μπορείτε επίσης να βελτιώσετε τη λίστα κάνοντας κλικ στον συντάκτη της απάντησης, στην κατηγορία ή στην ετικέτα, στον κατάλογο απαντήσεων."
+
+#: includes/admin/replies.php:146
+msgid "You can view replies in a simple title list or with an excerpt. Choose the view you prefer by clicking on the icons at the top of the list on the right."
+msgstr "Μπορείτε να δείτε τις απαντήσεις σε μια απλή λίστα τίτλων ή αποσπασματικά. Επιλέξτε την προβολή που προτιμάτε κάνοντας κλικ στα εικονίδια στην κορυφή της λίστας στα δεξιά."
+
+#: includes/admin/replies.php:145
+msgid "You can filter the list of replies by reply status using the text links in the upper left to show All, Published, Draft, or Trashed replies. The default view is to show all replies."
+msgstr "Μπορείτε να φιλτράρετε τη λίστα των απαντήσεων από την κατάσταση απάντησης χρησιμοποιώντας τις συνδέσεις κειμένου στην επάνω αριστερή γωνία για να εμφανίσετε Όλα, Δημοσιευμένα, Προσχέδια, ή απαντήσεις στα Μπάζα. Η προεπιλεγμένη προβολή είναι να φαίνονται όλες οι απαντήσεις."
+
+#: includes/admin/replies.php:144
+msgid "You can hide/display columns based on your needs and decide how many replies to list per screen using the Screen Options tab."
+msgstr "Μπορείτε να αποκρύψετε/εμφανίσετε στήλες με βάση τις ανάγκες σας και να αποφασίσετε πόσες απαντήσεις θα εμφανίζονται ανά οθόνη χρησιμοποιώντας την καρτέλα Επιλογές οθόνης."
+
+#: includes/admin/replies.php:134
+msgid "This screen provides access to all of your replies. You can customize the display of this screen to suit your workflow."
+msgstr "Αυτή η οθόνη παρέχει πρόσβαση σε όλες τις απαντήσεις σας. Μπορείτε να προσαρμόσετε την εμφάνιση της οθόνης ώστε να ταιριάζει με τη ροή εργασίας σας."
+
+#: includes/admin/metaboxes.php:525
+msgid "IP Address"
+msgstr "Διεύθυνση IP:"
+
+#: includes/admin/metaboxes.php:524
+msgid "IP:"
+msgstr "IP:"
+
+#: includes/admin/metaboxes.php:517
+msgid "ID"
+msgstr "Αναγνωριστικό"
+
+#: includes/admin/metaboxes.php:516
+msgid "ID:"
+msgstr "Αναγνωριστικό:"
+
+#: includes/admin/metaboxes.php:509
+#: templates/default/bbpress/form-user-edit.php:57
+msgid "Website"
+msgstr "Δικτυακός τόπος"
+
+#: includes/admin/metaboxes.php:508
+#: templates/default/bbpress/form-anonymous.php:32
+msgid "Website:"
+msgstr "Δικτυακός τόπος:"
+
+#: includes/admin/metaboxes.php:503
+#: templates/default/bbpress/form-user-edit.php:103
+#: templates/default/bbpress/form-user-register.php:28
+msgid "Email"
+msgstr "Ηλεκτρονικό Ταχυδρομείο"
+
+#: includes/admin/metaboxes.php:502
+msgid "Email:"
+msgstr "Ηλεκτρονικό Ταχυδρομείο:"
+
+#: includes/admin/metaboxes.php:497
+#: templates/default/bbpress/form-user-edit.php:14
+#: templates/default/bbpress/form-user-edit.php:19
+msgid "Name"
+msgstr "Όνομα"
+
+#: includes/admin/metaboxes.php:496
+#: templates/default/bbpress/form-topic-tag.php:35
+msgid "Name:"
+msgstr "Όνομα:"
+
+#: includes/admin/metaboxes.php:464
+msgid "Reply To"
+msgstr "Απάντηση σε"
+
+#: includes/admin/metaboxes.php:463
+msgid "Reply To:"
+msgstr "Απάντηση σε:"
+
+#: includes/admin/metaboxes.php:457 includes/replies/template.php:61
+msgid "Topic:"
+msgstr "Θέμα:"
+
+#: includes/admin/metaboxes.php:379 includes/admin/metaboxes.php:433
+#: includes/extend/buddypress/groups.php:1042 includes/topics/template.php:61
+#: templates/default/bbpress/form-topic.php:114
+msgid "Forum:"
+msgstr "Συζήτηση:"
+
+#: includes/admin/metaboxes.php:368
+msgid "Select whether to open or close the topic."
+msgstr "Επιλέξτε αν θέλετε να ξεκλειδώσει ή να κλειδώσει το θέμα."
+
+#: includes/admin/metaboxes.php:356
+msgid "Topic Type"
+msgstr "Τύπος θέματος"
+
+#: includes/admin/metaboxes.php:322
+msgid "Forum Order"
+msgstr "Διάταξη Συζητήσεων"
+
+#: includes/admin/metaboxes.php:321
+msgid "Order:"
+msgstr "Διάταξη:"
+
+#: includes/admin/metaboxes.php:314 includes/admin/metaboxes.php:394
+#: includes/admin/metaboxes.php:448
+msgid "&mdash; No parent &mdash;"
+msgstr "&mdash; Κανένας γονέας &mdash;"
+
+#: includes/admin/metaboxes.php:300
+msgid "Forum Parent"
+msgstr "Γονέας Συζήτησης"
+
+#: includes/admin/metaboxes.php:299
+msgid "Parent:"
+msgstr "Γονέας:"
+
+#: includes/admin/metaboxes.php:285 includes/admin/metaboxes.php:286
+#: templates/default/bbpress/form-forum.php:109
+msgid "Visibility:"
+msgstr "Ορατότητα:"
+
+#: includes/admin/metaboxes.php:273 includes/admin/metaboxes.php:274
+#: includes/admin/metaboxes.php:367
+#: templates/default/bbpress/form-forum.php:100
+msgid "Status:"
+msgstr "Κατάσταση:"
+
+#: includes/admin/metaboxes.php:261 includes/admin/metaboxes.php:262
+#: includes/admin/metaboxes.php:355
+msgid "Type:"
+msgstr "Τύπος:"
+
+#: includes/admin/metaboxes.php:222
+msgid "You are using <span class=\"b\">bbPress %s</span>."
+msgstr "Χρησιμοποιείτε <span class=\"b\">bbPress %s</span>."
+
+#: includes/admin/metaboxes.php:198
+msgid "Empty Topic Tag"
+msgid_plural "Empty Topic Tags"
+msgstr[0] "Κενή ετικέτα θέματος"
+msgstr[1] "Κενές ετικέτες θέματος"
+
+#: includes/admin/metaboxes.php:176
+msgid "Hidden Reply"
+msgid_plural "Hidden Replies"
+msgstr[0] "Κρυφή απάντηση"
+msgstr[1] "Κρυφές απαντήσεις"
+
+#: includes/admin/metaboxes.php:154
+msgid "Hidden Topic"
+msgid_plural "Hidden Topics"
+msgstr[0] "Κρυφό θέμα"
+msgstr[1] "Κρυφά θέματα"
+
+#: includes/admin/metaboxes.php:135
+msgid "User"
+msgid_plural "Users"
+msgstr[0] "Χρήστης"
+msgstr[1] "Χρήστες"
+
+#: includes/admin/metaboxes.php:127
+msgid "Users &amp; Moderation"
+msgstr "Χρήστες &amp; moderators"
+
+#: includes/admin/metaboxes.php:103 includes/admin/settings.php:309
+#: includes/topics/template.php:3367
+msgid "Topic Tag"
+msgid_plural "Topic Tags"
+msgstr[0] "Ετικέτα θέματος"
+msgstr[1] "Ετικέτες θεμάτων"
+
+#: includes/admin/metaboxes.php:84 includes/admin/settings.php:325
+#: includes/replies/template.php:49 includes/replies/template.php:1621
+#: includes/topics/template.php:2921
+msgid "Reply"
+msgid_plural "Replies"
+msgstr[0] "Απάντηση"
+msgstr[1] "Απαντήσεις"
+
+#: includes/admin/metaboxes.php:67 includes/admin/metaboxes.php:458
+#: includes/admin/replies.php:571 includes/admin/settings.php:301
+#: includes/topics/template.php:49
+#: templates/default/bbpress/content-single-topic-lead.php:22
+#: templates/default/bbpress/content-single-topic-lead.php:94
+#: templates/default/bbpress/loop-topics.php:19
+msgid "Topic"
+msgid_plural "Topics"
+msgstr[0] "Θέμα"
+msgstr[1] "Θέματα"
+
+#: includes/admin/metaboxes.php:42
+msgid "Discussion"
+msgstr "Συζήτηση"
+
+#: includes/admin/forums.php:563
+msgid "Forum draft updated. <a target=\"_blank\" href=\"%s\">Preview forum</a>"
+msgstr "Το προσχέδιο της συζήτησης ενημερώθηκε. <a target=\"_blank\" href=\"%s\">Προεπισκόπηση συζήτησης</a>"
+
+#. translators: Publish box date format, see http://php.net/date
+#: includes/admin/forums.php:558 includes/admin/replies.php:878
+#: includes/admin/topics.php:948
+msgid "M j, Y @ G:i"
+msgstr "j M Y @ G:i"
+
+#: includes/admin/forums.php:556
+msgid "Forum scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview forum</a>"
+msgstr "Η συζήτηση προγραμματίζεται για: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Προεπισκόπηση συζήτησης</a>"
+
+#: includes/admin/forums.php:553
+msgid "Forum submitted. <a target=\"_blank\" href=\"%s\">Preview forum</a>"
+msgstr "Η συζήτηση υποβλήθηκε. <a target=\"_blank\" href=\"%s\">Προεπισκόπηση συζήτησης</a>"
+
+#: includes/admin/forums.php:550
+msgid "Forum saved."
+msgstr "Η συζήτηση αποθηκεύτηκε."
+
+#: includes/admin/forums.php:547
+msgid "Forum created. <a href=\"%s\">View forum</a>"
+msgstr "Η συζήτηση δημιουργήθηκε. <a href=\"%s\">Δείτε τη συζήτηση</a>"
+
+#. translators: %s: date and time of the revision
+#: includes/admin/forums.php:543
+msgid "Forum restored to revision from %s"
+msgstr "Η συζήτηση αποκαθίσταται μετά από επανεξέταση από %s"
+
+#: includes/admin/forums.php:538
+msgid "Forum updated."
+msgstr "Η Συζήτηση ενημερώθηκε"
+
+#: includes/admin/forums.php:535 includes/admin/replies.php:855
+#: includes/admin/topics.php:925
+msgid "Custom field deleted."
+msgstr "Το προσαρμοσμένο πεδίο διαγράφηκε."
+
+#: includes/admin/forums.php:532 includes/admin/replies.php:852
+#: includes/admin/topics.php:922
+msgid "Custom field updated."
+msgstr "Το προσαρμοσμένο πεδίο ενημερώθηκε."
+
+#: includes/admin/forums.php:529
+msgid "Forum updated. <a href=\"%s\">View forum</a>"
+msgstr "Η συζήτηση ενημερώθηκε. <a href=\"%s\">Δείτε τη συζήτηση</a>"
+
+#: includes/admin/forums.php:463 includes/forums/template.php:601
+msgid "No Topics"
+msgstr "Δεν υπάρχουν θέματα"
+
+#: includes/admin/forums.php:414 includes/admin/topics.php:638
+#: templates/default/bbpress/loop-forums.php:22
+#: templates/default/bbpress/loop-topics.php:22
+msgid "Freshness"
+msgstr "Φρεσκάδα"
+
+#: includes/admin/forums.php:413 includes/admin/replies.php:573
+#: includes/admin/topics.php:637
+msgid "Created"
+msgstr "Δημιουργήθηκε"
+
+#: includes/admin/forums.php:412
+#: templates/default/bbpress/content-single-topic-lead.php:18
+#: templates/default/bbpress/content-single-topic-lead.php:90
+msgid "Creator"
+msgstr "Δημιουργός"
+
+#: includes/admin/forums.php:411 includes/admin/settings.php:230
+#: includes/admin/settings.php:251 includes/admin/topics.php:634
+#: includes/core/theme-compat.php:646
+#: includes/extend/buddypress/activity.php:356
+#: includes/forums/template.php:2665 includes/replies/template.php:47
+#: includes/replies/template.php:48
+#: templates/default/bbpress/content-statistics.php:32
+#: templates/default/bbpress/loop-forums.php:21
+#: templates/default/bbpress/loop-replies.php:32
+#: templates/default/bbpress/loop-replies.php:70
+#: templates/default/bbpress/loop-topics.php:21
+msgid "Replies"
+msgstr "Απαντήσεις"
+
+#: includes/admin/forums.php:410 includes/admin/settings.php:222
+#: includes/admin/settings.php:243 includes/admin/topics.php:632
+#: includes/extend/buddypress/activity.php:355
+#: includes/forums/template.php:2601 includes/topics/template.php:47
+#: includes/topics/template.php:48
+#: templates/default/bbpress/content-statistics.php:27
+#: templates/default/bbpress/loop-forums.php:20
+msgid "Topics"
+msgstr "Θέματα"
+
+#: includes/admin/forums.php:409 includes/admin/metaboxes.php:50
+#: includes/admin/metaboxes.php:380 includes/admin/metaboxes.php:434
+#: includes/admin/replies.php:570 includes/admin/settings.php:293
+#: includes/admin/topics.php:633 includes/extend/buddypress/groups.php:52
+#: includes/extend/buddypress/groups.php:53 includes/forums/template.php:49
+#: templates/default/bbpress/loop-forums.php:19
+msgid "Forum"
+msgstr "Συζήτηση"
+
+#: includes/admin/forums.php:217 includes/admin/replies.php:229
+#: includes/admin/topics.php:229
+msgid "Publish Box"
+msgstr "Πλαίσιο Δημοσίευσης"
+
+#: includes/admin/forums.php:211
+msgid "<strong>Order</strong> allows you to order your forums numerically."
+msgstr "<strong>Ταξινόμηση</strong> σας επιτρέπει να ταξινομήσετε τις συζητήσεις σας αριθμητικά."
+
+#: includes/admin/forums.php:210
+msgid "<strong>Parent</strong> dropdown determines the parent forum. Select the forum or category from the dropdown, or leave the default (No Parent) to create the forum at the root of your forums."
+msgstr "<strong>Γονέας</strong> το κυλιόμενο μενού καθορίζει την γονική συζήτηση. Επιλέξτε συζήτηση ή κατηγορία από τη λίστα, ή αφήστε την προεπιλογή (Χωρίς Γονέα) για να δημιουργήσετε μια εξ ολοκλήρου νέα συζήτηση."
+
+#: includes/admin/forums.php:209
+msgid "<strong>Visibility</strong> lets you pick the scope of each forum and what users are allowed to access it."
+msgstr "<strong>Ορατότητα</strong> σας επιτρέπει να επιλέξετε το πεδίο δράσης κάθε συζήτησης και σε τι επιτρέπεται η πρόσβαση από τους χρήστες."
+
+#: includes/admin/forums.php:208
+msgid "<strong>Status</strong> allows you to close a forum to new topics and forums."
+msgstr "<strong>Κατάσταση</strong> σας επιτρέπει να κλείσετε μια συζήτηση σε νέα θέματα ή συζητήσεις."
+
+#: includes/admin/forums.php:207
+msgid "<strong>Type</strong> indicates if the forum is a category or forum. Categories generally contain other forums."
+msgstr "<strong>Τύπος</strong> δείχνει αν πρόκειται για Κατηγορία ή για Συζήτηση, Οι Κατηγορίες συνήθως περιέχουν Συζητήσεις."
+
+#: includes/admin/forums.php:205
+msgid "Select the attributes that your forum should have:"
+msgstr "Επιλέξτε τις ιδιότητες που θα χαρακτηρίζουν τη συζήτησή σας:"
+
+#: includes/admin/forums.php:203 includes/admin/forums.php:243
+msgid "Forum Attributes"
+msgstr "Ιδιότητες Συζήτησης"
+
+#: includes/admin/forums.php:198
+msgid "<strong>Featured Image</strong> - This allows you to associate an image with your forum without inserting it. This is usually useful only if your theme makes use of the featured image as a forum thumbnail on the home page, a custom header, etc."
+msgstr "<strong>Επιλεγμένη Εικόνα</strong> - Αυτό σας επιτρέπει να συσχετίσετε μια εικόνα με τη συζήτησή σας χωρίς να την τοποθετήσετε. Αυτό είναι συνήθως χρήσιμο μόνο αν το θέμα σας κάνει χρήση της Επιλεγμένης Εικόνας ως μικρογραφία της συζήτησης στην αρχική σελίδα, ως μια προσαρμοσμένη κεφαλίδα, κ.τ.λ."
+
+#: includes/admin/forums.php:195
+msgid "<strong>Publish</strong> - You can set the terms of publishing your forum in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a forum or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a forum to be published in the future or backdate a forum."
+msgstr "<strong>Δημοσίευση</strong> - Μπορείτε να ορίσετε τους όρους δημοσίευσης στη συζήτησή σας στο παράθυρο Δημοσίευση. Για την Κατάσταση, Ορατότητα και Δημοσίευση (άμεσα), κάντε κλικ στο σύνδεσμο Επεξεργασία για να αποκαλύψει περισσότερες επιλογές. Η Ορατότητα περιλαμβάνει επιλογές για κωδικό πρόσβασης για προστασία της συζήτησης ή για να παραμείνουν στην κορυφή του ιστολογίου σας για πάντα (καρφιτσωμένο). Το Δημοσίευση (άμεσα) σας επιτρέπει να ορίσετε μελλοντική ή παλαιότερη ημερομηνία και ώρα, έτσι ώστε να μπορείτε να προγραμματίσετε μια συζήτηση που θα δημοσιευθεί στο μέλλον ή αν πρέπει να εμφανιστεί προχρονολογημένη."
+
+#: includes/admin/forums.php:192
+msgid "<strong>Forum Editor</strong> - Enter the text for your forum. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your forum text. You can insert media files by clicking the icons above the forum editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular forum editor."
+msgstr "<strong>Επεξεργαστής συζήτησης</strong> - Εισάγετε κείμενο στη συζήτησή σας. Υπάρχουν δύο τρόποι επεξεργασίας: Οπτικός και HTML. Επιλέξτε τρόπο κάνοντας κλικ στην αντίστοιχη καρτέλα. Ο οπτικός, σας δίνει ένα WYSIWYG (What You See Is What You Get) επεξεργαστή. Κάντε κλικ στο τελευταίο εικονίδιο στη γραμμή για να εμφανιστεί μια δεύτερη σειρά εργαλείων. Η λειτουργία HTML σας επιτρέπει να εισάγετε γλώσσα HTML μαζί με το κείμενο της συζήτησής σας. Μπορείτε να εισάγετε αρχεία πολυμέσων κάνοντας κλικ στα εικονίδια πάνω από τον επεξεργαστή και ακολουθώντας τις οδηγίες. Μπορείτε απερίσπαστα να μεταβείτε στο πεδίο συγγραφής, μέσω του εικονιδίου Πλήρους Οθόνης (Στην Οπτική λειτουργία, το προτελευταίο στην πάνω σειρά, ενώ στην HTML, τελευταίο στη σειρά). Από εκεί, μπορείτε να κάνετε τα κουμπιά ορατά αν ακομπήσετε πάνω από την κορυφαία περιοχή. Έξοδος από Πλήρη Οθόνη επιστρέφει πίσω στον κανονικό επεξεργαστή της συζήτησης."
+
+#: includes/admin/forums.php:191
+msgid "<strong>Title</strong> - Enter a title for your forum. After you enter a title, you&#8217;ll see the permalink below, which you can edit."
+msgstr "<strong>Τίτλος</strong> - Δώστε ένα τίτλο στη συζήτησή σας. Αφού δώσετε τίτλο, θα δείτε την μόνιμη σύνδεση, την οποία μπορείτε να επεξεργαστείτε."
+
+#: includes/admin/forums.php:189
+msgid "Title and Forum Editor"
+msgstr "Επεξεργαστής Τίτλου και Συζήτησης"
+
+#: includes/admin/forums.php:183 includes/admin/replies.php:197
+#: includes/admin/topics.php:198
+msgid "Customizing This Display"
+msgstr "Προσαρμογή αυτής της Οθόνης"
+
+#: includes/admin/forums.php:179
+msgid "The title field and the big forum editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "Το πεδίο του τίτλου και η μεγάλη περιοχή επεξεργασίας συζητήσεων είναι σταθερά στη θέση τους, αλλά μπορείτε να αλλάξετε όλα τα άλλα κουτιά με μεταφορά και απόθεση και να τα ελαχιστοποιήσετε ή επεκτείνετε, κάνοντας κλικ στη γραμμή τίτλου κάθε κουτιού. Χρησιμοποιήστε την καρτέλα Επιλογές Οθόνης για να εμφανίσετε περισσότερα πλαίσια (Απόσπασμα, Αποστολή Trackbacks, Προσαρμοσμένα πεδία, Συζήτηση, Περιθώρια, Συντάκτης) ή να επιλέξετε διάταξη μίας ή δύο στηλών για αυτή την οθόνη."
+
+#: includes/admin/forums.php:165 includes/admin/forums.php:224
+#: includes/admin/replies.php:179 includes/admin/replies.php:236
+#: includes/admin/settings.php:1597 includes/admin/topics.php:180
+#: includes/admin/topics.php:236
+msgid "<a href=\"http://bbpress.org/forums/\" target=\"_blank\">bbPress Support Forums</a>"
+msgstr "<a href=\"http://bbpress.org/forums/\" target=\"_blank\">bbPress Συζητήσεις Υποστήριξης</a>"
+
+#: includes/admin/forums.php:164 includes/admin/forums.php:223
+#: includes/admin/replies.php:178 includes/admin/replies.php:235
+#: includes/admin/settings.php:1596 includes/admin/topics.php:179
+#: includes/admin/topics.php:235
+msgid "<a href=\"http://codex.bbpress.org\" target=\"_blank\">bbPress Documentation</a>"
+msgstr "<a href=\"http://codex.bbpress.org\" target=\"_blank\">bbPress Τεκμηρίωση</a>"
+
+#: includes/admin/forums.php:163 includes/admin/forums.php:222
+#: includes/admin/replies.php:177 includes/admin/replies.php:234
+#: includes/admin/settings.php:1595 includes/admin/topics.php:178
+#: includes/admin/topics.php:234
+msgid "For more information:"
+msgstr "Για περισσότερες πληροφορίες:"
+
+#: includes/admin/forums.php:158
+msgid "When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected forums at once. To remove a forum from the grouping, just click the x next to its name in the Bulk Edit area that appears."
+msgstr "Όταν χρησιμοποιείτε την Μαζική Επεξεργασία, μπορείτε να αλλάξετε τα μεταδεδομένα (κατηγορίες, συντάκτης, κ.τ.λ. ) για όλες τις επιλεγμένες συζητήσεις με τη μία. Για μετακίνηση μίας συζήτησης από την ομάδα, κλικάρετε το Χ δίπλα από το όνομά της στην περιοχή Μαζικής Επεξεργασίας που εμφανίζεται."
+
+#: includes/admin/forums.php:157
+msgid "You can also edit or move multiple forums to the trash at once. Select the forums you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply."
+msgstr "Μπορείτε επίσης να επεξεργαστείτε ή να μετακινήσετε πολλές συζητήσεις στα Μπάζα με τη μία. Επιλέξτε τη συζήτηση που θέλετε χρησιμοποιώντας τα τετράγωνα πλαίσια, και μετά επιλέξτε την ενέργεια που θέλετε να κάνετε από το μενού Μαζικές Ενέργειες και πατώντας Εφαρμογή."
+
+#: includes/admin/forums.php:155 includes/admin/replies.php:169
+#: includes/admin/topics.php:170
+msgid "Bulk Actions"
+msgstr "Μαζικές Ενέργειες"
+
+#: includes/admin/forums.php:148
+msgid "<strong>View</strong> will show you what your draft forum will look like if you publish it. View will take you to your live site to view the forum. Which link is available depends on your forum&#8217;s status."
+msgstr "<strong>Εμφάνιση</strong> θα σας δείξει πως θα φαίνεται η συζήτησή σας μετά τη δημοσίευση. Εμφάνιση θα σας μεταφέρει ζωντανά στον ιστοχώρο σας για να δείτε τη συζήτηση. Ο διαθέσιμος σύνδεσμος εξαρτάται από την κατάσταση της συζήτησής σας."
+
+#: includes/admin/forums.php:147
+msgid "<strong>Trash</strong> removes your forum from this list and places it in the trash, from which you can permanently delete it."
+msgstr "<strong>Μπάζα</strong> αφαιρεί τη συζήτηση από τη λίστα και την βάζει στα Μπάζα, από όπου μπορείτε να τη διαγράψετε μόνιμα."
+
+#: includes/admin/forums.php:146
+msgid "<strong>Edit</strong> takes you to the editing screen for that forum. You can also reach that screen by clicking on the forum title."
+msgstr "<strong>Επεξεργασία</strong> σας μεταφέρει στην οθόνη επεξεργασίας για αυτή τη συζήτηση. Μπορείτε επίσης να φτάσετε σε αυτή την οθόνη κάνοντας κλικ στον τίτλο της συζήτησης."
+
+#: includes/admin/forums.php:144
+msgid "Hovering over a row in the forums list will display action links that allow you to manage your forum. You can perform the following actions:"
+msgstr "Περνώντας πάνω από μια γραμμή στη λίστα συζητήσεων θα εμφανιστούν σύνδεσμοι με ενέργειες που σας επιτρέπουν να διαχειριστείτε τις συζητήσεις σας. Μπορείτε να εκτελέσετε τις ακόλουθες ενέργειες:"
+
+#: includes/admin/forums.php:142 includes/admin/replies.php:154
+#: includes/admin/topics.php:153
+msgid "Available Actions"
+msgstr "Διαθέσιμες Ενέργειες"
+
+#: includes/admin/forums.php:135
+msgid "You can refine the list to show only forums from a specific month by using the dropdown menus above the forums list. Click the Filter button after making your selection. You also can refine the list by clicking on the forum creator in the forums list."
+msgstr "Μπορείτε να βελτιώσετε τη λίστα για να δείτε μόνο συζητήσεις από ένα συγκεκριμένο μήνα, χρησιμοποιώντας τα κυλιόμενα μενού πάνω από τη λίστα συζητήσεων. Κάντε κλικ στο κουμπί Φίλτρο αφού κάνετε την επιλογή σας. Μπορείτε επίσης να βελτιώσετε τη λίστα κάνοντας κλικ στο δημιουργό συζήτησης στη λίστα συζητήσεων."
+
+#: includes/admin/forums.php:134
+msgid "You can filter the list of forums by forum status using the text links in the upper left to show All, Published, or Trashed forums. The default view is to show all forums."
+msgstr "Μπορείτε να φιλτράρετε τη λίστα των συζητήσεων με βάση την κατάσταση των συζητήσεων χρησιμοποιώντας τους συνδέσμους κειμένου στην επάνω αριστερή γωνία, για Εμφάνιση σε όλους, Δημοσίευση, ή συζητήσεις στα διαγραμμένα. Η προεπιλεγμένη προβολή είναι να Εμφανίζονται όλες οι συζητήσεις."
+
+#: includes/admin/forums.php:133
+msgid "You can hide/display columns based on your needs and decide how many forums to list per screen using the Screen Options tab."
+msgstr "Μπορείτε να αποκρύψετε/εμφανίσετε στήλες με βάση τις ανάγκες σας και να αποφασίσετε πόσες συζητήσεις θα εμφανίζονται στην οθόνη χρησιμοποιώντας την καρτέλα Επιλογές οθόνης."
+
+#: includes/admin/forums.php:131 includes/admin/replies.php:142
+#: includes/admin/topics.php:142
+msgid "You can customize the display of this screen&#8217;s contents in a number of ways:"
+msgstr "Μπορείτε να προσαρμόσετε την εμφάνιση των περιεχομένων αυτής της οθόνης με μια σειρά από τρόπους:"
+
+#: includes/admin/forums.php:129 includes/admin/replies.php:140
+#: includes/admin/topics.php:140
+msgid "Screen Content"
+msgstr "Περιεχόμενα οθόνης"
+
+#: includes/admin/forums.php:123
+msgid "This screen displays the individual forums on your site. You can customize the display of this screen to suit your workflow."
+msgstr "Αυτή η οθόνη εμφανίζει τις μεμονωμένες συζητήσεις σχετικά με τον ιστοχώρο σας. Μπορείτε να προσαρμόσετε αυτήν την εμφάνιση ώστε να ταιριάζει στη ροή εργασίας σας."
+
+#: includes/admin/forums.php:121 includes/admin/replies.php:132
+#: includes/admin/settings.php:1549 includes/admin/topics.php:132
+msgid "Overview"
+msgstr "Επισκόπηση"
+
+#: includes/admin/converters/AEF.php:688
+#: includes/admin/converters/FluxBB.php:643
+#: includes/admin/converters/Invision.php:525
+#: includes/admin/converters/Kunena1.php:543
+#: includes/admin/converters/Kunena2.php:585
+#: includes/admin/converters/Kunena3.php:812
+#: includes/admin/converters/PHPFox3.php:649
+#: includes/admin/converters/PunBB.php:677
+#: includes/admin/converters/SMF.php:656
+#: includes/admin/converters/SimplePress5.php:537
+#: includes/admin/converters/Vanilla.php:535
+#: includes/admin/converters/XMB.php:705
+#: includes/admin/converters/XenForo.php:722
+#: includes/admin/converters/bbPress1.php:636
+#: includes/admin/converters/phpBB.php:816
+#: includes/admin/converters/vBulletin.php:652
+#: includes/admin/converters/vBulletin3.php:652
+msgid "Re: "
+msgstr "Απ:"
+
+#: includes/admin/converter.php:515
+msgid "Calculating reply_to parents (%1$s - %2$s)"
+msgstr "Υπολογίζοντας απαντήσεις προς την πηγή (%1$s - %2$s)"
+
+#: includes/admin/converter.php:511
+msgid "No reply_to parents to convert"
+msgstr "Δεν υπάρχουν απαντήσεις προς την πηγή για μετατροπή"
+
+#: includes/admin/converter.php:500
+msgid "Converting replies (%1$s - %2$s)"
+msgstr "Μετατροπή απαντήσεων (%1$s - %2$s)"
+
+#: includes/admin/converter.php:496
+msgid "No replies to convert"
+msgstr "Δεν υπάρχουν απαντήσεις για μετατροπή"
+
+#: includes/admin/converter.php:485
+msgid "Converting topic tags (%1$s - %2$s)"
+msgstr "Μετατρέποντας ετικέτες θέματος (%1$s - %2$s)"
+
+#: includes/admin/converter.php:481
+msgid "No tags to convert"
+msgstr "Δεν υπάρχουν ετικέτες για μετατροπή"
+
+#: includes/admin/converter.php:470
+msgid "Calculating topic super stickies (%1$s - %2$s)"
+msgstr "Υπολογισμός υπερκαρφιτσωμένων του θέματος (%1$s - %2$s)"
+
+#: includes/admin/converter.php:466
+msgid "No super stickies to stick"
+msgstr "Δεν υπάρχουν υπερκαρφιτσωμένα για καρφίτσωμα"
+
+#: includes/admin/converter.php:455
+msgid "Calculating topic stickies (%1$s - %2$s)"
+msgstr "Υπολογισμός καρφιτσωμένων του θέματος (%1$s - %2$s)"
+
+#: includes/admin/converter.php:451
+msgid "No stickies to stick"
+msgstr "Δεν υπάρχουν καρφιτσωμένα για καρφίτσωμα"
+
+#: includes/admin/converter.php:440
+msgid "Converting topics (%1$s - %2$s)"
+msgstr "Μετατροπή θεμάτων (%1$s - %2$s)"
+
+#: includes/admin/converter.php:436
+msgid "No topics to convert"
+msgstr "Δεν υπάρχουν θέματα για μετατροπή"
+
+#: includes/admin/converter.php:425
+msgid "Calculating forum hierarchy (%1$s - %2$s)"
+msgstr "Υπολογισμός ιεραρχίας συζητήσεων (%1$s - %2$s)"
+
+#: includes/admin/converter.php:421
+msgid "No forum parents to convert"
+msgstr "Δεν υπάρχουν γονείς συζητήσεων για μετατροπή"
+
+#: includes/admin/converter.php:410
+msgid "Converting forums (%1$s - %2$s)"
+msgstr "Μετατροπή συζητήσεων (%1$s - %2$s)"
+
+#: includes/admin/converter.php:406
+msgid "No forums to convert"
+msgstr "Δεν υπάρχουν συζητήσεις προς μετατροπή"
+
+#: includes/admin/converter.php:391
+msgid "Delete users WordPress default passwords (%1$s - %2$s)"
+msgstr "Διαγραφή προεπιλεγμένων κωδικών χρηστών WordPress (%1$s - %2$s)"
+
+#: includes/admin/converter.php:387
+msgid "No passwords to clear"
+msgstr "Δεν υπάρχουν κωδικοί για εκκαθάριση"
+
+#: includes/admin/converter.php:371
+msgid "Converting users (%1$s - %2$s)"
+msgstr "Μετατροπή χρηστών (%1$s - %2$s)"
+
+#: includes/admin/converter.php:367
+msgid "No users to convert"
+msgstr "Δεν υπάρχουν χρήστες για μετατροπή"
+
+#: includes/admin/converter.php:351
+msgid "Deleting previously converted data (%1$s - %2$s)"
+msgstr "Διαγραφή πρότερα μετατροποιημένων δεδομένων (%1$s - %2$s)"
+
+#: includes/admin/converter.php:347
+msgid "No data to clean"
+msgstr "Δεν υπάρχουν δεδομένα να εκκαθαριστούν"
+
+#: includes/admin/converter.php:248 includes/admin/converter.php:525
+msgid "Conversion Complete"
+msgstr "Μετατροπή πλήρης"
+
+#: includes/admin/converter.php:223
+msgid "Starting Conversion"
+msgstr "Εκκίνηση μετατροπής"
+
+#: includes/admin/converter.php:134
+msgid "Purge Previous Import"
+msgstr "Εκκαθάριση προηγούμενης εισαγωγής"
+
+#: includes/admin/converter.php:130
+msgid "Start Over"
+msgstr "Επανεκίννηση"
+
+#: includes/admin/converter.php:126
+msgid "Convert Users"
+msgstr "Μετατροπή χρηστών"
+
+#: includes/admin/converter.php:122
+msgid "Delay Time"
+msgstr "Χρόνος καθυστέρησης"
+
+#: includes/admin/converter.php:118
+msgid "Rows Limit"
+msgstr "Περιορισμός γραμμών"
+
+#: includes/admin/converter.php:115
+msgid "Options"
+msgstr "Επιλογές"
+
+#: includes/admin/converter.php:111
+msgid "Table Prefix"
+msgstr "Προθηματικός πίνακας"
+
+#: includes/admin/converter.php:107
+msgid "Database Password"
+msgstr "Κωδικός Βάσης Δεδομένων"
+
+#: includes/admin/converter.php:103
+msgid "Database User"
+msgstr "Χρήστης Βάσης Δεδομένων"
+
+#: includes/admin/converter.php:99
+msgid "Database Name"
+msgstr "Όνομα Βάσης Δεδομένων"
+
+#: includes/admin/converter.php:95
+msgid "Database Port"
+msgstr "Θύρα Βάσης Δεδομένων"
+
+#: includes/admin/converter.php:91
+msgid "Database Server"
+msgstr "Εξυπηρετητής Βάσης Δεδομένων"
+
+#: includes/admin/converter.php:87
+msgid "Select Platform"
+msgstr "Επιλογή πλατφόρμας"
+
+#: includes/admin/converter.php:84
+msgid "Database Settings"
+msgstr "Ρυθμίσεις Βάσης Δεδομένων"
+
+#: includes/admin/admin.php:1096
+msgid "You can update all the forums on your network through this page. It works by calling the update script of each site automatically. Hit the link below to update."
+msgstr "Μπορείτε να ενημερώσετε όλες τις συζητήσεις στο δίκτυό σας μέσω αυτής της σελίδας. Λειτουργεί καλώντας την ενημερωμένη δέσμη ενεργειών κάθε ιστοσελίδας αυτόματα. Πατήστε τον παρακάτω σύνδεσμο για να ενημερώσετε."
+
+#: includes/admin/admin.php:1078
+msgid "Next Forums"
+msgstr "Επόμενες συζητήσεις"
+
+#: includes/admin/admin.php:1077
+msgid "If your browser doesn&#8217;t start loading the next page automatically, click this link:"
+msgstr "Αν το πρόγραμμα περιήγησης δεν φορτώσει την επόμενη σελίδα αυτόματα, πατήστε αυτόν το σύνδεσμο:"
+
+#: includes/admin/admin.php:1053
+msgid "Warning! Problem updating %1$s. Your server may not be able to connect to sites running on it. Error message: <em>%2$s</em>"
+msgstr "Προσοχή! Πρόβλημα ενημέρωσης %1$s. Ο διακομιστής σας μπορεί να μην είναι σε θέση να συνδεθεί με ιστοχώρους που λειτουργούν σε αυτόν. Μήνυμα σφάλματος: <em>%2$s</em>"
+
+#: includes/admin/admin.php:983
+msgid "You can update your forum through this page. Hit the link below to update."
+msgstr "Μπορείτε να ενημερώσετε τη συζήτησή σας από αυτήν τη σελίδα. Πατήστε τον παρακάτω σύνδεσμο για ενημέρωση."
+
+#: includes/admin/admin.php:974 includes/admin/admin.php:1028
+msgid "Go Back"
+msgstr "Πίσω"
+
+#: includes/admin/admin.php:973 includes/admin/admin.php:1027
+msgid "All done!"
+msgstr "Όλα έτοιμα!"
+
+#: includes/admin/admin.php:962 includes/admin/admin.php:984
+msgid "Update Forum"
+msgstr "Ενημέρωση Συζητήσεων"
+
+#: includes/admin/admin.php:905
+msgid "Core Contributors to bbPress 2.5"
+msgstr "Κύριοι συντελεστές της bbPress"
+
+#: includes/admin/admin.php:896
+msgid "Bug Testing"
+msgstr "Έλεγχος σφαλμάτων"
+
+#: includes/admin/admin.php:815
+msgid "Theme Compatibility"
+msgstr "Συμβατότητα θέματος"
+
+#: includes/admin/admin.php:257 includes/admin/admin.php:258
+#: includes/admin/admin.php:266 includes/admin/admin.php:267
+msgid "Welcome to bbPress"
+msgstr "Καλώς ορίσατε στην bbPress"
+
+#: includes/admin/admin.php:530
+msgid "Right Now in Forums"
+msgstr "Αυτήν τη στιγμή στις συζητήσεις"
+
+#: includes/admin/admin.php:545
+msgid "About bbPress"
+msgstr "Περί bbPress"
+
+#: includes/admin/admin.php:887
+msgid "Converter Specialist"
+msgstr "Ειδικός μετατροπέας"
+
+#: bbpress.php:485
+msgid "bbPress Forums"
+msgstr "Συζητήσεις bbPress"
+
+#: includes/admin/admin.php:816
+msgid "Better handling of styles and scripts in the template stack."
+msgstr "Καλύτερη διαχείριση μορφών και δεσμών ενεργειών στα πρότυπα."
+
+#: includes/admin/admin.php:515
+msgid "About"
+msgstr "Περί"
+
+#: includes/admin/admin.php:865
+msgid "bbPress is created by a worldwide swarm of busy, busy bees."
+msgstr "Το bbPress έχει δημιουργηθεί από ένα παγκόσμιο σμήνος, πολύ απασχολημένων ατόμων."
+
+#: includes/admin/admin.php:867
+msgid "Project Leaders"
+msgstr "Επικεφαλής έργου"
+
+#: bbpress.php:581
+msgctxt "post"
+msgid "Spam"
+msgstr "Aνεπιθύμητα"
+
+#: includes/admin/admin.php:208 includes/admin/functions.php:277
+#: includes/admin/settings.php:1509
+msgid "Import Forums"
+msgstr "Εισαγωγή συζητήσεων"
+
+#: bbpress.php:608
+msgctxt "post"
+msgid "Hidden <span class=\"count\">(%s)</span>"
+msgid_plural "Hidden <span class=\"count\">(%s)</span>"
+msgstr[0] "Κρυφό <span class=\"count\">(%s)</span>"
+msgstr[1] "Κρυφά <span class=\"count\">(%s)</span>"
+
+#: bbpress.php:595
+msgctxt "post"
+msgid "Orphan <span class=\"count\">(%s)</span>"
+msgid_plural "Orphans <span class=\"count\">(%s)</span>"
+msgstr[0] "Ορφανό <span class=\"count\">(%s)</span>"
+msgstr[1] "Ορφανά <span class=\"count\">(%s)</span>"
+
+#: bbpress.php:405 templates/default/bbpress-functions.php:51
+msgid "bbPress Default"
+msgstr "Προεπιλεγμένη bbPress"
+
+#: bbpress.php:510
+msgid "bbPress Topics"
+msgstr "Θέματα bbPress"
+
+#: bbpress.php:678
+msgid "Most popular topics"
+msgstr "Δημοφιλέστερα θέματα"
+
+#: bbpress.php:607
+msgctxt "post"
+msgid "Hidden"
+msgstr "Κρυφό"
+
+#: bbpress.php:571
+msgctxt "post"
+msgid "Closed <span class=\"count\">(%s)</span>"
+msgid_plural "Closed <span class=\"count\">(%s)</span>"
+msgstr[0] "Κλειστό <span class=\"count\">(%s)</span>"
+msgstr[1] "Κλειστά <span class=\"count\">(%s)</span>"
+
+#: bbpress.php:133 bbpress.php:140
+msgid "Cheatin&#8217; huh?"
+msgstr "Κλέβεις, έτσι;"
+
+#: bbpress.php:535
+msgid "bbPress Replies"
+msgstr "Απαντήσεις bbPress"
+
+#: includes/admin/admin.php:832 includes/admin/admin.php:936
+msgid "Go to Forum Settings"
+msgstr "Πήγαινε στις ρυθμίσεις Συζητήσεων"
+
+#: includes/admin/admin.php:854
+msgid "Thank you for updating! bbPress %s is waxed, polished, and ready for you to take it for a lap or two around the block!"
+msgstr "Ευχαριστούμε για την ενημέρωση! Η bbPress %s είναι έτοιμη!"
+
+#: bbpress.php:570
+msgctxt "post"
+msgid "Closed"
+msgstr "Κλειδωμένο"
+
+#: bbpress.php:582
+msgctxt "post"
+msgid "Spam <span class=\"count\">(%s)</span>"
+msgid_plural "Spam <span class=\"count\">(%s)</span>"
+msgstr[0] "Ανεπιθύμητο <span class=\"count\">(%s)</span>"
+msgstr[1] "Ανεπιθύμητα <span class=\"count\">(%s)</span>"
+
+#: bbpress.php:594
+msgctxt "post"
+msgid "Orphan"
+msgstr "Ορφανό"
+
+#: bbpress.php:690
+msgid "Topics with no replies"
+msgstr "Θέματα χωρίς απαντήσεις"
+
+#: includes/admin/admin.php:218 includes/admin/functions.php:281
+#: includes/admin/tools.php:1208
+msgid "Reset Forums"
+msgstr "Αρχικοποίηση όλων των συζητήσεων"
+
+#: includes/admin/admin.php:219
+msgid "Forum Reset"
+msgstr "Αρχικοποίηση Συζητήσεων"
+
+#: includes/admin/admin.php:233 includes/admin/admin.php:234
+#: includes/admin/admin.php:244 includes/admin/admin.php:245
+#: includes/admin/users.php:82 includes/common/widgets.php:662
+#: includes/extend/buddypress/loader.php:42
+#: includes/extend/buddypress/loader.php:175
+#: includes/extend/buddypress/loader.php:261
+#: includes/extend/buddypress/loader.php:312 includes/forums/template.php:47
+#: includes/forums/template.php:48
+#: templates/default/bbpress/content-statistics.php:22
+msgid "Forums"
+msgstr "Συζητήσεις"
+
+#: includes/admin/admin.php:280 includes/admin/admin.php:281
+#: includes/admin/admin.php:302 includes/admin/admin.php:303
+#: includes/admin/admin.php:1010 includes/admin/admin.php:1097
+msgid "Update Forums"
+msgstr "Ενημέρωση συζητήσεων"
+
+#: includes/admin/admin.php:510
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: includes/admin/admin.php:639
+msgctxt "admin color scheme"
+msgid "Evergreen"
+msgstr "Μόνιμο"
+
+#: includes/admin/admin.php:720 includes/admin/admin.php:758
+msgid "%s - %s"
+msgstr "%s - %s"
+
+#: includes/admin/admin.php:776 includes/admin/admin.php:853
+msgid "Welcome to bbPress %s"
+msgstr "Καλοσωρίσατε στην bbPress %s"
+
+#: includes/admin/admin.php:777
+msgid "Thank you for updating! bbPress %s is bundled up and ready to weather the storm of users in your community!"
+msgstr "Ευχαριστούμε για την ενημέρωση! Η bbPress %s είναι έτοιμη να αντιμετωπίση την καταιγίδα των χρηστών στην κοινότητά σας!"
+
+#: includes/admin/admin.php:778 includes/admin/admin.php:855
+msgid "Version %s"
+msgstr "Έκδοση %s"
+
+#: includes/admin/admin.php:782 includes/admin/admin.php:859
+msgid "What&#8217;s New"
+msgstr "Τι νέο υπάρχει"
+
+#: includes/admin/admin.php:784 includes/admin/admin.php:861
+msgid "Credits"
+msgstr "Πιστώσεις"
+
+#: includes/admin/admin.php:789
+msgid "Forum Subscriptions"
+msgstr "Παρακολουθήσεις συζητήσεων"
+
+#: includes/admin/admin.php:793
+msgid "Subscribe to Forums"
+msgstr "Παρακολούθηση στις συζητήσεις"
+
+#: includes/admin/admin.php:794
+msgid "Now your users can subscribe to new topics in specific forums."
+msgstr "Τώρα, οι χρήστες σας μπορούν να γίνουν συνδρομητές σε νέα θέματα σε συγκεκριμένες συζητήσεις."
+
+#: includes/admin/admin.php:798
+msgid "Manage Subscriptions"
+msgstr "Διαχείριση παρακολουθήσεων"
+
+#: includes/admin/admin.php:799
+msgid "Your users can manage all of their subscriptions in one convenient location."
+msgstr "Οι χρήστες σας μπορούν να διαχειριστούν τις συνδρομές τους από μια βολική τοποθεσία."
+
+#: includes/admin/admin.php:805
+msgid "Converters"
+msgstr "Μετατροπείς"
+
+#: includes/admin/admin.php:820
+msgid "Polyglot support"
+msgstr "Πολυγλωσσική υποστήριξη"
+
+#: includes/admin/admin.php:821
+msgid "bbPress fully supports automatic translation updates."
+msgstr "Το bbPress υποστηρίζει πλήρως την αυτόματη ενημέρωση μεταφράσεων."
+
+#: includes/admin/admin.php:825
+msgid "User capabilities"
+msgstr "Δυνατότητες χρήστη"
+
+#: includes/admin/admin.php:826
+msgid "Roles and capabilities have been swept through, cleaned up, and simplified."
+msgstr "Ρόλοι και δυνατότητες που πρέπει να ελεγχθούν, εκκαθαριστούν και απλοποιηθούν."
+
+#: includes/admin/admin.php:877
+msgid "Lead Developer"
+msgstr "Επικεφαλής προγραμματιστής"
+
+#: includes/admin/admin.php:872
+msgid "Founding Developer"
+msgstr "Αρχικός προγραμματιστής"
+
+#: includes/admin/admin.php:630
+msgctxt "admin color scheme"
+msgid "Mint"
+msgstr "Μέντα"
+
+#: includes/admin/admin.php:198 includes/admin/functions.php:273
+#: includes/admin/tools.php:34
+msgid "Repair Forums"
+msgstr "Επιδιόρθωση όλων των συζητήσεων"
+
+#: includes/admin/admin.php:891
+msgid "Contributing Developers"
+msgstr "Προγραμματιστές που συνέβαλαν"
+
+#: includes/admin/admin.php:199
+msgid "Forum Repair"
+msgstr "Επιδιόρθωση συζήτησης"
+
+#: includes/admin/admin.php:209
+msgid "Forum Import"
+msgstr "Εισαγωγή συζητήσεων"
+
+#: includes/admin/admin.php:882 includes/admin/admin.php:901
+msgid "Feature Developer"
+msgstr "Προγραμματιστής λειτουργίας"

@@ -1,0 +1,4446 @@
+# Translation of Plugins - bbPress - Stable (latest release) in Arabic
+# This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-07-18 19:27:39+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: ar\n"
+"Project-Id-Version: Plugins - bbPress - Stable (latest release)\n"
+
+#. translators: user role
+#: includes/common/locale.php:56
+msgctxt "User role"
+msgid "Blocked"
+msgstr "محظور"
+
+#. translators: user role
+#: includes/common/locale.php:53
+msgctxt "User role"
+msgid "Spectator"
+msgstr "زائر"
+
+#. translators: user role
+#: includes/common/locale.php:50
+msgctxt "User role"
+msgid "Participant"
+msgstr "عضو"
+
+#. translators: user role
+#: includes/common/locale.php:47
+msgctxt "User role"
+msgid "Moderator"
+msgstr "مشرف"
+
+#. translators: user role
+#: includes/common/locale.php:44
+msgctxt "User role"
+msgid "Keymaster"
+msgstr "مدير"
+
+#. Author of the plugin/theme
+msgid "The bbPress Community"
+msgstr "مجتمع البي بي بريس"
+
+#. Plugin Name of the plugin/theme
+msgid "bbPress"
+msgstr "بي بي بريس"
+
+#. Description of the plugin/theme
+msgid "bbPress is forum software with a twist from the creators of WordPress."
+msgstr "بي بي بريس هو برنامج منتدى يندمج مع ووردبريس."
+
+#. #-#-#-#-#  bbpress-code.pot (bbPress 2.5.13)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  bbpress-code.pot (bbPress 2.5.13)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "https://bbpress.org"
+msgstr "https://bbpress.org"
+
+#: templates/default/extras/page-topic-tags.php:22
+msgid "<p>This is a collection of tags that are currently popular on our forums.</p>"
+msgstr "<p>هذه مجموعة من الوسوم الشائعة حالياً في المنتديات.</p>"
+
+#: templates/default/extras/page-forum-statistics.php:22
+msgid "<p>Here are the statistics and popular topics of our forums.</p>"
+msgstr "<p>هذه إحصائيات وأكثر موضوعات شعبية في منتدياتنا.</p>"
+
+#: templates/default/bbpress-functions.php:426
+msgid "Please login to subscribe to this topic."
+msgstr "يرجى تسجيل الدخول للاشتراك في هذا الموضوع."
+
+#: templates/default/bbpress-functions.php:375
+#: templates/default/bbpress-functions.php:443
+msgid "The topic could not be found."
+msgstr "تعذر العثور على الموضوع."
+
+#: templates/default/bbpress-functions.php:358
+msgid "Please login to make this topic a favorite."
+msgstr "يرجى تسجيل الدخول لجعل هذا الموضوع في المفضلة."
+
+#: templates/default/bbpress-functions.php:353
+msgid "Favorites are no longer active."
+msgstr "لم تعد المفضلات نشطة."
+
+#: templates/default/bbpress-functions.php:320
+#: templates/default/bbpress-functions.php:388
+#: templates/default/bbpress-functions.php:456
+msgid "The request was unsuccessful. Please try again."
+msgstr "فشل تنفيذ الطلب، رجاءً حاول مرة أخرى."
+
+#: templates/default/bbpress-functions.php:312
+#: templates/default/bbpress-functions.php:380
+#: templates/default/bbpress-functions.php:448
+msgid "Are you sure you meant to do that?"
+msgstr "هل أنت متأكد من أنك تريد فعل هذا؟"
+
+#: templates/default/bbpress-functions.php:307
+msgid "The forum could not be found."
+msgstr "المنتدى غير موجود."
+
+#: templates/default/bbpress-functions.php:299
+#: templates/default/bbpress-functions.php:367
+#: templates/default/bbpress-functions.php:435
+msgid "You do not have permission to do this."
+msgstr "أنت لا تملك الصلاحيات الكافيه لتفعل هذا."
+
+#: templates/default/bbpress-functions.php:290
+msgid "Please login to subscribe to this forum."
+msgstr "يرجى تسجيل الدخول للإشتراك في هذا المنتدى."
+
+#: templates/default/bbpress-functions.php:285
+#: templates/default/bbpress-functions.php:421
+msgid "Subscriptions are no longer active."
+msgstr "الاشتراكات لم تعد نشطة."
+
+#: templates/default/bbpress-functions.php:248
+#: templates/default/bbpress-functions.php:257
+msgid "Something went wrong. Refresh your browser and try again."
+msgstr "حصل خطأ ما. أعد تحديث المتصفح و حاول مرة أخرى."
+
+#: templates/default/bbpress/user-topics-created.php:28
+msgid "This user has not created any topics."
+msgstr "هذا العضو لم ينشئ أي موضوعات."
+
+#: templates/default/bbpress/user-topics-created.php:28
+msgid "You have not created any topics."
+msgstr "لم تقم بإنشاء أي موضوعات."
+
+#: templates/default/bbpress/user-topics-created.php:15
+msgid "Forum Topics Started"
+msgstr "موضوعات العضو"
+
+#: templates/default/bbpress/user-subscriptions.php:47
+msgid "This user is not currently subscribed to any topics."
+msgstr "هذا العضو غير مشترك حالياً في أي موضوع."
+
+#: templates/default/bbpress/user-subscriptions.php:47
+msgid "You are not currently subscribed to any topics."
+msgstr "حالياً لا يوجد لديك موضوعات مشترك بها."
+
+#: templates/default/bbpress/user-subscriptions.php:28
+msgid "This user is not currently subscribed to any forums."
+msgstr "هذا العضو غير مشترك في أي منتدى حالياً."
+
+#: templates/default/bbpress/user-subscriptions.php:28
+msgid "You are not currently subscribed to any forums."
+msgstr "أنت لست مشترك في أي منتدى حالياً."
+
+#: templates/default/bbpress/user-subscriptions.php:19
+msgid "Subscribed Forums"
+msgstr "المنتديات المشترك بها"
+
+#: templates/default/bbpress/user-replies-created.php:28
+msgid "This user has not replied to any topics."
+msgstr "هذا العضو لم يرد على أي موضوع."
+
+#: templates/default/bbpress/user-replies-created.php:28
+msgid "You have not replied to any topics."
+msgstr "أنت لم ترد على أي موضوع."
+
+#: templates/default/bbpress/user-replies-created.php:15
+msgid "Forum Replies Created"
+msgstr "ردود العضو"
+
+#: templates/default/bbpress/user-profile.php:26
+msgid "Replies Created: %s"
+msgstr "الردود المنشأة: %s"
+
+#: templates/default/bbpress/user-profile.php:25
+msgid "Topics Started: %s"
+msgstr "الموضوعات المنشأة: %s"
+
+#: templates/default/bbpress/user-profile.php:24
+msgid "Forum Role: %s"
+msgstr "الرتبة في المنتدى: %s"
+
+#: templates/default/bbpress/user-favorites.php:28
+msgid "This user has no favorite topics."
+msgstr "هذا العضو لا يوجد لديه موضوعات في المفضّلة."
+
+#: templates/default/bbpress/user-favorites.php:28
+msgid "You currently have no favorite topics."
+msgstr "حالياًْ لا يوجد لديك موضوعات في المفضّلة."
+
+#: templates/default/bbpress/user-favorites.php:15
+msgid "Favorite Forum Topics"
+msgstr "المفضّلة"
+
+#: templates/default/bbpress/user-details.php:58
+msgid "%s's Subscriptions"
+msgstr "اشتراكات %s"
+
+#: templates/default/bbpress/user-details.php:48
+msgid "%s's Favorites"
+msgstr "مفضلات %s"
+
+#: templates/default/bbpress/user-details.php:41
+msgid "%s's Replies Created"
+msgstr "الردود التي أنشأها %s"
+
+#: templates/default/bbpress/user-details.php:35
+msgid "%s's Topics Started"
+msgstr "موضوعات بدأها %s"
+
+#: templates/default/bbpress/user-details.php:29
+#: templates/default/bbpress/user-profile.php:15
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: templates/default/bbpress/user-details.php:29
+msgid "%s's Profile"
+msgstr "ملف %s الشخصي"
+
+#: templates/default/bbpress/loop-single-topic.php:68
+msgid "in: <a href=\"%1$s\">%2$s</a>"
+msgstr "في: <a href=\"%1$s\">%2$s</a>"
+
+#: templates/default/bbpress/loop-single-topic.php:60
+msgid "Started by: %1$s"
+msgstr "الكاتب: %1$s"
+
+#: templates/default/bbpress/loop-single-reply.php:21
+msgid "in reply to: "
+msgstr "ردًا على:"
+
+#: templates/default/bbpress/loop-search.php:22
+#: templates/default/bbpress/loop-search.php:44
+msgid "Search Results"
+msgstr "نتائج البحث"
+
+#: templates/default/bbpress/loop-search-topic.php:37
+msgid "in forum "
+msgstr "في المنتدى:"
+
+#: templates/default/bbpress/loop-search-topic.php:33
+msgid "in group forum "
+msgstr "في منتدى المجموعة"
+
+#: templates/default/bbpress/loop-search-topic.php:26
+msgid "Topic: "
+msgstr "الموضوع:"
+
+#: templates/default/bbpress/loop-search-reply.php:24
+msgid "In reply to: "
+msgstr "ردًا على:"
+
+#: templates/default/bbpress/loop-search-forum.php:26
+msgid "Forum: "
+msgstr "المنتدى:"
+
+#: templates/default/bbpress/loop-search-forum.php:16
+msgid "Last updated %s"
+msgstr "آخر تحديث %s"
+
+#: templates/default/bbpress/form-user-roles.php:13
+msgid "Blog Role"
+msgstr "الرتبة في المدونة"
+
+#: templates/default/bbpress/form-user-register.php:18
+msgid "We use your email address to email you a secure password and verify your account."
+msgstr "نحن نستخدم بريدك الإلكتروني لإرسال كلمة المرور إليك وللتحقق من حسابك."
+
+#: templates/default/bbpress/form-user-register.php:17
+msgid "Your username must be unique, and cannot be changed later."
+msgstr "إسم المستخدم يجب ان يكون فريداً، و لا يمكن تغييره لاحقاً."
+
+#: templates/default/bbpress/form-user-register.php:14
+msgid "Create an Account"
+msgstr "إنشاء حساب"
+
+#: templates/default/bbpress/form-user-lost-pass.php:27
+msgid "Reset My Password"
+msgstr "استعادة كلمة المرور"
+
+#: templates/default/bbpress/form-user-lost-pass.php:18
+msgid "Username or Email"
+msgstr "اسم المستخدم أو البريد الإلكتروني"
+
+#: templates/default/bbpress/form-user-login.php:28
+msgid "Keep me signed in"
+msgstr "إبقائي متصلاً"
+
+#: templates/default/bbpress/form-user-edit.php:178
+msgid "Update User"
+msgstr "تحديث العضو"
+
+#: templates/default/bbpress/form-user-edit.php:178
+msgid "Update Profile"
+msgstr "تحديث الملف الشخصي"
+
+#: templates/default/bbpress/form-user-edit.php:156
+msgid "Grant this user super admin privileges for the Network."
+msgstr "منح هذا المستخدم صلاحيات مدير عام على الشبكة."
+
+#: templates/default/bbpress/form-user-edit.php:153
+msgid "Network Role"
+msgstr "الرتبة في الشبكة"
+
+#: templates/default/bbpress/form-user-edit.php:143
+#: templates/default/bbpress/form-user-edit.php:146
+msgid "User Role"
+msgstr "دور العضو"
+
+#: templates/default/bbpress/form-user-edit.php:133
+msgid "Your password should be at least ten characters long. Use upper and lower case letters, numbers, and symbols to make it even stronger."
+msgstr "مفضّل أن تتكوّن كلمة المرور من 10 خانات على الأقل. لجعلها أقوى، استخدم الحروف الكبيرة والصغيرة، الأرقام والرموز."
+
+#: templates/default/bbpress/form-user-edit.php:130
+msgid "Type your new password again."
+msgstr "أعد كتابة كلمة المرور الجديدة مرة أخرى."
+
+#: templates/default/bbpress/form-user-edit.php:127
+msgid "If you would like to change the password type a new one. Otherwise leave this blank."
+msgstr "أضف كلمة مرور جديدة إذا كنت ترغب في تغيير كلمة المرور. إذا كنت لا ترغب في تغيير كلمة المرور، أترك هذا الحقل فارغاً."
+
+#: templates/default/bbpress/form-user-edit.php:124
+msgid "New Password"
+msgstr "كلمة مرور جديدة"
+
+#: templates/default/bbpress/form-user-edit.php:115
+msgid "There is a pending email address change to <code>%1$s</code>. <a href=\"%2$s\">Cancel</a>"
+msgstr "هناك عنوان بريد إلكتروني في انتظار التغيير إلى <code>%1$s</code>. <a href=\"%2$s\">إلغاء</a>"
+
+#: templates/default/bbpress/form-user-edit.php:90
+#: templates/default/bbpress/form-user-edit.php:93
+msgid "Account"
+msgstr "الحساب"
+
+#: templates/default/bbpress/form-user-edit.php:82
+msgid "Biographical Info"
+msgstr "السيرة الذاتية"
+
+#: templates/default/bbpress/form-user-edit.php:74
+#: templates/default/bbpress/form-user-edit.php:77
+msgid "About the user"
+msgstr "معلومات عن العضو"
+
+#: templates/default/bbpress/form-user-edit.php:74
+#: templates/default/bbpress/form-user-edit.php:77
+msgid "About Yourself"
+msgstr "معلومات عنك"
+
+#: templates/default/bbpress/form-user-edit.php:49
+#: templates/default/bbpress/form-user-edit.php:52
+msgid "Contact Info"
+msgstr "معلومات الاتصال"
+
+#: templates/default/bbpress/form-user-edit.php:39
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#: templates/default/bbpress/form-user-edit.php:34
+msgid "Nickname"
+msgstr "الاسم المستعار"
+
+#: templates/default/bbpress/form-user-edit.php:29
+msgid "Last Name"
+msgstr "الاسم الأخير"
+
+#: templates/default/bbpress/form-user-edit.php:24
+msgid "First Name"
+msgstr "الاسم الأول"
+
+#: templates/default/bbpress/form-topic.php:234
+msgid "You must be logged in to create new topics."
+msgstr "يجب أن تقوم بتسجيل الدخول حتى تتمكّن من إضافة موضوعات جديدة."
+
+#: templates/default/bbpress/form-topic.php:234
+msgid "You cannot create new topics."
+msgstr "لا يمكنك إنشاء موضوعات جديدة."
+
+#: templates/default/bbpress/form-topic.php:145
+msgid "Topic Status:"
+msgstr "حالة الموضوع:"
+
+#: templates/default/bbpress/form-topic.php:133
+msgid "Topic Type:"
+msgstr "نوع الموضوع:"
+
+#: templates/default/bbpress/form-topic.php:101
+msgid "Topic Tags:"
+msgstr "وسوم الموضوع:"
+
+#: templates/default/bbpress/form-topic.php:75
+msgid "Topic Title (Maximum Length: %d):"
+msgstr "عنوان الموضوع (الحد الأقصى: %d حرف)."
+
+#: templates/default/bbpress/form-topic.php:53
+msgid "This forum is marked as closed to new topics, however your posting capabilities still allow you to do so."
+msgstr "هذا المنتدى مغلق، لكن تتوفّر لديك صلاحيات تسمح لك بإضافة موضوعات جديدة."
+
+#: templates/default/bbpress/form-topic.php:43
+msgid "Create New Topic in &ldquo;%s&rdquo;"
+msgstr "إنشاء موضوع جديد في قسم &ldquo;%s&rdquo;"
+
+#: templates/default/bbpress/form-topic-tag.php:101
+msgid "Are you sure you want to delete the \"%s\" tag? This is permanent and cannot be undone."
+msgstr "هل أنت متأكّد أنك تريد حذف الوسم \"%s\"؟ هذا حذف نهائي ولا يمكن التراجع عنه."
+
+#: templates/default/bbpress/form-topic-tag.php:95
+msgid "Any links to this tag will no longer function."
+msgstr "أية روابط لهذا الوسم لن تعد تعمل."
+
+#: templates/default/bbpress/form-topic-tag.php:94
+msgid "Deleting a tag cannot be undone."
+msgstr "لا يمكن التراجع بعد حذف الوسم."
+
+#: templates/default/bbpress/form-topic-tag.php:91
+msgid "This does not delete your topics. Only the tag itself is deleted."
+msgstr "لن يؤدي إلى حذف الموضوعات الخاصة بك. سيتّم حذف الوسم فقط."
+
+#: templates/default/bbpress/form-topic-tag.php:73
+msgid "Are you sure you want to merge the \"%s\" tag into the tag you specified?"
+msgstr "هل أنت متأكد من أنك تريد دمج الوسم \"%s\" مع الوسم الذي حددته؟"
+
+#: templates/default/bbpress/form-topic-tag.php:68
+msgid "Existing tag:"
+msgstr "وسم موجود مسبقاً:"
+
+#: templates/default/bbpress/form-topic-tag.php:62
+msgid "Merging tags together cannot be undone."
+msgstr "لا يمكن التراجع بعد دمج الوسوم معاً."
+
+#: templates/default/bbpress/form-topic-tag.php:45
+msgid "Update"
+msgstr "تحديث"
+
+#: templates/default/bbpress/form-topic-tag.php:40
+msgid "Slug:"
+msgstr "الاسم اللطيف :"
+
+#: templates/default/bbpress/form-topic-tag.php:29
+msgid "Changing the slug affects its permalink. Any links to the old slug will stop working."
+msgstr "تغيير الاسم اللطيف يؤثّر على رابط الوسم. أية روابط قديمة لها علاقة بهذا الاسم اللطيف ستتوقف عن العمل."
+
+#: templates/default/bbpress/form-topic-tag.php:25
+msgid "Leave the slug empty to have one automatically generated."
+msgstr "أترك خانة الاسم اللطيف فارغة ليتّم إنشاؤه تلقائيا."
+
+#: templates/default/bbpress/form-topic-tag.php:22
+msgid "Rename"
+msgstr "إعادة تسمية"
+
+#: templates/default/bbpress/form-topic-tag.php:18
+msgid "Manage Tag: \"%s\""
+msgstr "إدارة الوسم: \"%s\""
+
+#: templates/default/bbpress/form-topic-split.php:85
+msgid "Copy topic tags to the new topic"
+msgstr "نسخ وسوم الموضوع إلى الموضوع الجديد"
+
+#: templates/default/bbpress/form-topic-split.php:80
+msgid "Copy favoriters to the new topic"
+msgstr "نسخ الذين أضافوا الموضوع للمفضّلة إلى الموضوع الجديد"
+
+#: templates/default/bbpress/form-topic-split.php:75
+msgid "Copy subscribers to the new topic"
+msgstr "نسخ المشتركين إلى الموضوع الجديد"
+
+#: templates/default/bbpress/form-topic-split.php:42
+msgid "Split: %s"
+msgstr "تجزئة: %s"
+
+#: templates/default/bbpress/form-topic-split.php:37
+msgid "Split Method"
+msgstr "نوع التجزئة"
+
+#: templates/default/bbpress/form-topic-split.php:33
+msgid "If you use the existing topic option, replies within both topics will be merged chronologically. The order of the merged replies is based on the time and date they were posted."
+msgstr "إذا اخترت أن تدمج الشطر الجديد مع موضوع موجود مسبقاً، كافة الردود في الموضوعين سيتم ترتيبهما زمنياً. يستند ترتيب الردود المدمجة على تاريخ ووقت نشرها."
+
+#: templates/default/bbpress/form-topic-split.php:29
+msgid "When you split a topic, you are slicing it in half starting with the reply you just selected. Choose to use that reply as a new topic with a new title, or merge those replies into an existing topic."
+msgstr "عند تجزئة موضوع، أنت تقوم بتقسيمه إلى شطرين. الشطر الثاني يبدأ من عند الرد الذي اخترته للتو. لديك خيارين، إما أن يكون الشطر الجديد عبارة عن موضوع جديد بعنوان جديد أو أن يتم دمج الشطر الجديد مع موضوع موجود مسبقاً في نفس المنتدى."
+
+#: templates/default/bbpress/form-topic-split.php:24
+msgid "Split topic \"%s\""
+msgstr "تجزئة الموضوع \"%s\""
+
+#: templates/default/bbpress/form-topic-merge.php:106
+#: templates/default/bbpress/form-topic-split.php:110
+msgid "You cannot edit this topic."
+msgstr "لا يمكنك تحرير هذا الموضوع."
+
+#: templates/default/bbpress/form-topic-merge.php:106
+#: templates/default/bbpress/form-topic-split.php:110
+msgid "You do not have the permissions to edit this topic!"
+msgstr "لا تملك صلاحيات لتعديل هذا الموضوع!"
+
+#: templates/default/bbpress/form-topic-merge.php:81
+msgid "Merge topic tags"
+msgstr "دمج وسوم الموضوع"
+
+#: templates/default/bbpress/form-topic-merge.php:76
+msgid "Merge topic favoriters"
+msgstr "دمج الذين أضافوا الموضوع للمفضّلة"
+
+#: templates/default/bbpress/form-topic-merge.php:71
+msgid "Merge topic subscribers"
+msgstr "دمج مشتركي الموضوع"
+
+#: templates/default/bbpress/form-topic-merge.php:64
+#: templates/default/bbpress/form-topic-split.php:68
+msgid "Topic Extras"
+msgstr "إضافات للموضوع"
+
+#: templates/default/bbpress/form-topic-merge.php:56
+msgid "There are no other topics in this forum to merge with."
+msgstr "لاتوجد موضوعات أخرى بهذا المنتدى لدمجها."
+
+#: templates/default/bbpress/form-topic-merge.php:42
+msgid "Merge with this topic:"
+msgstr "دمج مع هذا الموضوع:"
+
+#: templates/default/bbpress/form-topic-merge.php:38
+msgid "Destination"
+msgstr "الوجهة"
+
+#: templates/default/bbpress/form-topic-merge.php:34
+msgid "All replies within both topics will be merged chronologically. The order of the merged replies is based on the time and date they were posted. If the destination topic was created after this one, it's post date will be updated to second earlier than this one."
+msgstr "جميع الردود في كلا الموضوعين سيتم ترتيبها زمنياً. يستند ترتيب الردود المدمجة على تاريخ ووقت نشرها. إذا تمّ إنشاء موضوع الوجهة بعد هذا الموضوع، سيتم تحديث تاريخ نشره بثانية واحدة قبل تاريخ نشر هذا الموضوع. (أي أنّ موضوع الوجهة سيكون دائماً في البداية بينما الردود سيتم ترتيبها زمنياً)."
+
+#: templates/default/bbpress/form-topic-merge.php:30
+msgid "To keep this topic as the lead, go to the other topic and use the merge tool from there instead."
+msgstr "للمحافظة على هذا الموضوع كموضوع رئيسي، انتقل إلى الموضوع الآخر واستخدم أداة الدمج من هناك بدلا من هنا."
+
+#: templates/default/bbpress/form-topic-merge.php:29
+msgid "Select the topic to merge this one into. The destination topic will remain the lead topic, and this one will change into a reply."
+msgstr "حدّد الموضوع الذي تريد أن تدمج هذا الموضوع معه. الموضوع الذي ستختاره من حقل \"الوجهة\" سيبقى الموضوع الرئيسي بينما هذا الموضوع سيتحوّل إلى رد."
+
+#: templates/default/bbpress/form-topic-merge.php:24
+msgid "Merge topic \"%s\""
+msgstr "دمج الموضوع \"%s\""
+
+#: templates/default/bbpress/form-search.php:14
+msgid "Search for:"
+msgstr "البحث عن:"
+
+#: templates/default/bbpress/form-reply.php:174
+msgid "You must be logged in to reply to this topic."
+msgstr "يجب تسجيل الدخول للرد على هذا الموضوع."
+
+#: templates/default/bbpress/form-reply.php:174
+msgid "You cannot reply to this topic."
+msgstr "لا يمكنك الرد على هذا الموضوع."
+
+#: templates/default/bbpress/form-reply.php:166
+#: templates/default/bbpress/form-topic.php:226
+msgid "The forum &#8216;%s&#8217; is closed to new topics and replies."
+msgstr "المنتدى &#8216;%s&#8217; مغلق ولا يمكن إضافة موضوعات أو ردود جديدة."
+
+#: templates/default/bbpress/form-reply.php:158
+msgid "The topic &#8216;%s&#8217; is closed to new replies."
+msgstr "الموضوع &#8216;%s&#8217; مغلق ولا يمكن الرد عليه."
+
+#: templates/default/bbpress/form-reply.php:118
+#: templates/default/bbpress/form-topic.php:188
+msgid "Optional reason for editing:"
+msgstr "سبب اختياري للتحرير:"
+
+#: templates/default/bbpress/form-reply.php:114
+#: templates/default/bbpress/form-topic.php:184
+msgid "Keep a log of this edit:"
+msgstr "الاحتفاظ بسجل لهذا التحرير:"
+
+#: templates/default/bbpress/form-reply.php:97
+#: templates/default/bbpress/form-topic.php:168
+msgid "Notify me of follow-up replies via email"
+msgstr "متابعة الردود عن طريق البريد الإلكتروني."
+
+#: templates/default/bbpress/form-reply.php:93
+#: templates/default/bbpress/form-topic.php:164
+msgid "Notify the author of follow-up replies via email"
+msgstr "تنبيه الكاتب عبر البريد الإلكتروني في حال وجود تعليقات جديدة"
+
+#: templates/default/bbpress/form-reply.php:75
+msgid "Tags:"
+msgstr "الوسوم:"
+
+#: templates/default/bbpress/form-reply.php:36
+msgid "This topic is marked as closed to new replies, however your posting capabilities still allow you to do so."
+msgstr "هذا الموضوع مغلق، لكن تتوفّر لديك صلاحيات تسمح لك بكتابة رد."
+
+#: templates/default/bbpress/form-reply-move.php:85
+msgid "You cannot edit this reply."
+msgstr "لا يمكنك تحرير هذا الرد."
+
+#: templates/default/bbpress/form-reply-move.php:85
+msgid "You do not have the permissions to edit this reply!"
+msgstr "أنت لا تملك الصلاحيات الكافية لتحرير هذه الرد!"
+
+#: templates/default/bbpress/form-reply-move.php:68
+#: templates/default/bbpress/form-topic-merge.php:89
+#: templates/default/bbpress/form-topic-split.php:93
+msgid "<strong>WARNING:</strong> This process cannot be undone."
+msgstr "<strong>تحذير:</strong> لا يمكن التراجع بعد تنفيذ هذه العملية."
+
+#: templates/default/bbpress/form-reply-move.php:49
+#: templates/default/bbpress/form-topic-split.php:49
+msgid "Use an existing topic in this forum:"
+msgstr "دمج مع موضوع موجود في هذا المنتدى:"
+
+#: templates/default/bbpress/form-reply-move.php:42
+msgid "Moved: %s"
+msgstr "منقول: %s"
+
+#: templates/default/bbpress/form-reply-move.php:41
+#: templates/default/bbpress/form-topic-split.php:41
+msgid "New topic in <strong>%s</strong> titled:"
+msgstr "موضوع جديد في <strong>%s</strong> بعنوان:"
+
+#: templates/default/bbpress/form-reply-move.php:37
+msgid "Move Method"
+msgstr "نمط النقل"
+
+#: templates/default/bbpress/form-reply-move.php:33
+msgid "If you choose an existing topic, replies will be ordered by the time and date they were created."
+msgstr "إذا اخترت موضوعا موجودا، فسيتم ترتيب الردود بحسب وقت وتاريخ إنشائها."
+
+#: templates/default/bbpress/form-reply-move.php:29
+msgid "You can either make this reply a new topic with a new title, or merge it into an existing topic."
+msgstr "بإمكانك جعل هذا الرد موضوع جديد مع عنوان جديد، أو دمجه مع موضوع موجود مسبقاً."
+
+#: templates/default/bbpress/form-reply-move.php:24
+msgid "Move reply \"%s\""
+msgstr "نقل الرد \"%s\""
+
+#: templates/default/bbpress/form-protected.php:14
+msgid "Protected"
+msgstr "محمي"
+
+#: templates/default/bbpress/form-forum.php:169
+msgid "You must be logged in to create new forums."
+msgstr "يجب أن تكون مسجلاً لتتمكن من إنشاء منتديات جديدة."
+
+#: templates/default/bbpress/form-forum.php:169
+msgid "You cannot create new forums."
+msgstr "لا يمكنك إنشاء منتديات جديدة."
+
+#: templates/default/bbpress/form-forum.php:161
+msgid "The forum &#8216;%s&#8217; is closed to new content."
+msgstr "المنتدى &#8216;%s&#8217; مغلق ولا يمكن إضافة محتوى جديد."
+
+#: templates/default/bbpress/form-forum.php:138
+#: templates/default/bbpress/form-reply-move.php:72
+#: templates/default/bbpress/form-reply.php:135
+#: templates/default/bbpress/form-topic-merge.php:93
+#: templates/default/bbpress/form-topic-split.php:97
+#: templates/default/bbpress/form-topic.php:203
+msgid "Submit"
+msgstr "إرســـال"
+
+#: templates/default/bbpress/form-forum.php:123
+msgid "(No Parent)"
+msgstr "(بدون أب)"
+
+#: templates/default/bbpress/form-forum.php:91
+msgid "Forum Type:"
+msgstr "نوع المنتدى:"
+
+#: templates/default/bbpress/form-forum.php:82
+#: templates/default/bbpress/form-reply.php:64
+#: templates/default/bbpress/form-topic.php:90
+msgid "You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags and attributes:"
+msgstr "يمكنك إستخدام وسوم <abbr title=\"HyperText Markup Language\">HTML</abbr> و الخصائص التالية:"
+
+#: templates/default/bbpress/form-forum.php:67
+msgid "Forum Name (Maximum Length: %d):"
+msgstr "اسم المنتدى (الحد الأقصى للطول: %d):"
+
+#: templates/default/bbpress/form-forum.php:55
+#: templates/default/bbpress/form-reply.php:44
+#: templates/default/bbpress/form-topic.php:61
+msgid "Your account has the ability to post unrestricted HTML content."
+msgstr "حسابك لديه القدرة على نشر محتوى HTML غير مقيد."
+
+#: templates/default/bbpress/form-forum.php:47
+msgid "This forum is closed to new content, however your account still allows you to do so."
+msgstr "هذا المنتدى مغلق أمام إضافة محتوى جديد، لكن حسابك لديه صلاحيات تسمح لك أن تفعل ذلك."
+
+#: templates/default/bbpress/form-forum.php:37
+msgid "Create New Forum in &ldquo;%s&rdquo;"
+msgstr "إنشاء منتدى جديد في &ldquo;%s&rdquo;"
+
+#: templates/default/bbpress/form-forum.php:35
+#: templates/default/bbpress/form-topic.php:41
+msgid "Now Editing &ldquo;%s&rdquo;"
+msgstr "يتّم تحرير: &ldquo;%s&rdquo;"
+
+#: templates/default/bbpress/form-anonymous.php:27
+msgid "Mail (will not be published) (required):"
+msgstr "البريد الإلكتروني (لن يتم نشره) (مطلوب):"
+
+#: templates/default/bbpress/form-anonymous.php:22
+msgid "Name (required):"
+msgstr "الاسم (مطلوب):"
+
+#: templates/default/bbpress/form-anonymous.php:17
+msgid "Your information:"
+msgstr "معلوماتك:"
+
+#: templates/default/bbpress/feedback-no-topics.php:13
+msgid "Oh bother! No topics were found here!"
+msgstr "عذراً! لا توجد هنا أي موضوعات!"
+
+#: templates/default/bbpress/feedback-no-search.php:13
+msgid "Oh bother! No search results were found here!"
+msgstr "يا للأسف! لا توجد نتائج هنا!"
+
+#: templates/default/bbpress/feedback-no-replies.php:13
+msgid "Oh bother! No replies were found here!"
+msgstr "لا توجد ردود هنا!"
+
+#: templates/default/bbpress/feedback-no-forums.php:13
+msgid "Oh bother! No forums were found here!"
+msgstr "عذراً، لا توجد منتديات هنا!"
+
+#: templates/default/bbpress/feedback-no-access.php:16
+msgid "You do not have permission to view this forum."
+msgstr "أنت لا تملك الصلاحيات اللازمة لمشاهدة هذا المنتدى."
+
+#: templates/default/bbpress/feedback-no-access.php:13
+msgid "Private"
+msgstr "خاص"
+
+#: templates/default/bbpress/feedback-logged-in.php:13
+msgid "You are already logged in."
+msgstr "أنت حالياً مسجّل الدخول."
+
+#: templates/default/bbpress/content-statistics.php:64
+msgid "Hidden Replies"
+msgstr "ردود مخفيّة"
+
+#: templates/default/bbpress/content-statistics.php:53
+msgid "Hidden Topics"
+msgstr "موضوعات مخفيّة"
+
+#: templates/default/bbpress/content-statistics.php:44
+msgid "Empty Topic Tags"
+msgstr "وسوم بدون موضوعات"
+
+#: templates/default/bbpress/content-statistics.php:17
+msgid "Registered Users"
+msgstr "الأعضاء المسجلين"
+
+#: includes/users/template.php:1476
+msgid "Registration complete. Please check your e-mail."
+msgstr "تمّ التسجيل. يرجى مراجعة بريدك الإلكترونى."
+
+#: includes/users/template.php:1471
+msgid "Check your e-mail for your new password."
+msgstr "افحص بريدك الإلكتروني لإيجاد كلمة المرور الجديدة."
+
+#: includes/users/template.php:1466
+msgid "Check your e-mail for the confirmation link."
+msgstr "يرجى مراجعة بريدك الإلكتروني لإيجاد رابط التفعيل."
+
+#: includes/users/template.php:1457
+msgid "New user registration is currently not allowed."
+msgstr "حالياً لا يُسمح بتسجيل عضويات جديدة."
+
+#: includes/users/template.php:1453
+msgid "You are now logged out."
+msgstr "تمّ الآن تسجيل خروجك."
+
+#: includes/users/template.php:1255
+msgid "&mdash; No role for this site &mdash;"
+msgstr "&mdash; بدون رتبة في هذا الموقع &mdash;"
+
+#: includes/users/template.php:1188
+msgid "This user has super admin privileges."
+msgstr "هذا العضو لديه صلاحيات مدير عام."
+
+#: includes/users/template.php:1188
+msgid "You have super admin privileges."
+msgstr "لديك صلاحيات مدير عام."
+
+#: includes/users/template.php:1163
+msgid "User updated."
+msgstr "تمّ تحديث العضو."
+
+#: includes/users/template.php:895
+msgid "Favorited"
+msgstr "في المفضّلة"
+
+#: includes/users/template.php:557
+msgid "Admin"
+msgstr "المدير"
+
+#: includes/users/template.php:517
+msgid "Member"
+msgstr "عضو"
+
+#: includes/users/template.php:507
+msgid "Inactive"
+msgstr "غير نشط"
+
+#: includes/users/template.php:503
+msgid "Guest"
+msgstr "زائر"
+
+#: includes/users/functions.php:1331
+msgid "<strong>ERROR</strong>: There was a problem subscribing to that topic!"
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في الاشتراك في هذا الموضوع!"
+
+#: includes/users/functions.php:1329
+msgid "<strong>ERROR</strong>: There was a problem unsubscribing from that topic!"
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في إلغاء الاشتراك من هذا الموضوع!"
+
+#: includes/users/functions.php:1276
+msgid "<strong>ERROR</strong>: No topic was found! Which topic are you subscribing/unsubscribing to?"
+msgstr "<strong>خطأ</strong>: لم يتم العثور على الموضوع! ما هو الموضوع الذي تريد الاشتراك/إلغاء الاشتراك منه؟"
+
+#: includes/users/functions.php:1225
+msgid "<strong>ERROR</strong>: There was a problem subscribing to that forum!"
+msgstr "<strong>خطأ</strong>: حدثت مشكلة عند الاشتراك في هذا المنتدى!"
+
+#: includes/users/functions.php:1223
+msgid "<strong>ERROR</strong>: There was a problem unsubscribing from that forum!"
+msgstr "<strong>خطأ</strong>: حدثت مشكلة عند إلغاء الاشتراك من هذا المنتدى!"
+
+#: includes/users/functions.php:1170
+msgid "<strong>ERROR</strong>: No forum was found! Which forum are you subscribing/unsubscribing to?"
+msgstr "<strong>خطأ</strong>: لم يتم العثور على المنتدى! أي منتدى تحاول الإشتراك/إلغاء الإشتراك به؟"
+
+#: includes/users/functions.php:508
+msgid "<strong>ERROR</strong>: There was a problem favoriting that topic!"
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في إضافة هذا الموضوع للمفضّلة."
+
+#: includes/users/functions.php:506
+msgid "<strong>ERROR</strong>: There was a problem removing that topic from favorites!"
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في إزالة هذا الموضوع من المفضّلة."
+
+#: includes/users/functions.php:463 includes/users/functions.php:1178
+#: includes/users/functions.php:1284
+msgid "<strong>ERROR</strong>: You don't have the permission to edit favorites of that user!"
+msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لتحرير مفضّلة هذا العضو!"
+
+#: includes/users/functions.php:455
+msgid "<strong>ERROR</strong>: No topic was found! Which topic are you marking/unmarking as favorite?"
+msgstr "<strong>خطأ</strong>: لم يتم العثور على الموضوع! ما هو الموضوع الذي تحاول إضافته/إزالته من المفضّلة؟"
+
+#: includes/topics/template.php:3375
+msgid "View Topic Tag"
+msgstr "مشاهدة وسوم الموضوع"
+
+#: includes/topics/template.php:3374
+msgid "New Tag Name"
+msgstr "اسم الوسم الجديد"
+
+#: includes/topics/template.php:3373
+msgid "Add New Tag"
+msgstr "أضف وسم جديد"
+
+#: includes/topics/template.php:3372
+msgid "Update Tag"
+msgstr "تحديث الوسم"
+
+#: includes/topics/template.php:3371
+msgid "Edit Tag"
+msgstr "تحرير الوسم"
+
+#: includes/topics/template.php:3370
+msgid "All Tags"
+msgstr "كافة الوسوم"
+
+#: includes/topics/template.php:3369
+msgid "Popular Tags"
+msgstr "الوسوم الشائعة"
+
+#: includes/topics/template.php:3368
+msgid "Search Tags"
+msgstr "بحث في الوسوم"
+
+#: includes/topics/template.php:3366
+#: templates/default/bbpress/content-statistics.php:37
+msgid "Topic Tags"
+msgstr "وسوم"
+
+#: includes/topics/template.php:3320
+msgid "This topic has no replies."
+msgstr "لا توجد ردود على هذا الموضوع."
+
+#: includes/topics/template.php:3316
+msgid "This topic contains %1$s and has %2$s."
+msgstr "هذا الموضوع يحتوي على %1$s و %2$s."
+
+#: includes/topics/template.php:3312
+msgid "This topic contains %1$s, has %2$s, and was last updated by %3$s %4$s."
+msgstr "هذا الموضوع يحتوي على %1$s  و %2$s وتمّ تحديثه آخر مرة بواسطة %3$s  %4$s."
+
+#: includes/topics/template.php:3306
+msgid "%s voice"
+msgid_plural "%s voices"
+msgstr[0] "%s مشاركون"
+msgstr[1] "مشارك واحد"
+msgstr[2] "مشاركَين"
+msgstr[3] "%s مشاركون"
+msgstr[4] "%s مشارك"
+msgstr[5] "%s مشاركون"
+
+#: includes/topics/template.php:3046
+msgid "This topic is in the trash."
+msgstr "هذا الموضوع موجود في سلة المهملات."
+
+#: includes/topics/template.php:3041
+msgid "This topic is marked as spam."
+msgstr "هذا الموضوع تمّ تحديدة كمزعج."
+
+#: includes/topics/template.php:2981
+msgid "Viewing topic %2$s (of %4$s total)"
+msgid_plural "Viewing %1$s topics - %2$s through %3$s (of %4$s total)"
+msgstr[0] "مشاهدة %2$s موضوع (من مجموع  %4$s)"
+msgstr[1] "مشاهدة موضوع واحد - %2$s إلى %3$s (من مجموع %4$s)"
+msgstr[2] "مشاهدة موضوعين - %2$s إلى %3$s (من مجموع %4$s)"
+msgstr[3] "مشاهدة %1$s موضوعات - %2$s إلى %3$s (من مجموع %4$s)"
+msgstr[4] "مشاهدة %1$s موضوع - %2$s إلى %3$s (من مجموع %4$s)"
+msgstr[5] "مشاهدة %1$s موضوع - %2$s إلى %3$s (من مجموع %4$s)"
+
+#: includes/topics/template.php:2977
+msgid "Viewing %1$s topic"
+msgid_plural "Viewing %1$s topics"
+msgstr[0] "مشاهدة 0 موضوع"
+msgstr[1] "مشاهدة موضوع واحد"
+msgstr[2] "مشاهدة موضوعين"
+msgstr[3] "مشاهدة %1$s موضوعات"
+msgstr[4] "مشاهدة %1$s موضوع"
+msgstr[5] "مشاهدة %1$s موضوع"
+
+#: includes/topics/template.php:2816
+#: templates/default/bbpress/form-topic-tag.php:59
+#: templates/default/bbpress/form-topic-tag.php:73
+msgid "Merge"
+msgstr "دمج"
+
+#: includes/topics/template.php:2686
+msgctxt "Topic Status"
+msgid "Open"
+msgstr "فتح"
+
+#: includes/topics/template.php:2685
+msgctxt "Topic Status"
+msgid "Close"
+msgstr "إغلاق"
+
+#: includes/topics/template.php:2295
+msgid "Tagged:"
+msgstr "الوسوم:"
+
+#: includes/topics/template.php:1892
+msgid "Unfavorite"
+msgstr "إلغاء من المفضّلة"
+
+#: includes/topics/template.php:1891 includes/users/template.php:894
+msgid "Favorite"
+msgstr "أضف للمفضّلة"
+
+#: includes/topics/template.php:993
+msgid "This topic was modified %1$s by %2$s."
+msgstr "هذا الموضوع تم تعديله في %1$s بواسطة %2$s."
+
+#: includes/topics/template.php:991
+msgid "This topic was modified %1$s by %2$s. Reason: %3$s"
+msgstr "هذا الموضوع قد تم تعديله %1$s بواسطة %2$s. السبب: %3$s"
+
+#: includes/topics/template.php:60
+msgid "No topics found in Trash"
+msgstr "لا توجد موضوعات في سلة المهملات"
+
+#: includes/topics/template.php:59
+msgid "No topics found"
+msgstr "لم يتم إيجاد موضوعات"
+
+#: includes/topics/template.php:58
+msgid "Search Topics"
+msgstr "بحث في الموضوعات"
+
+#: includes/topics/template.php:56 includes/topics/template.php:57
+msgid "View Topic"
+msgstr "مشاهدة الموضوع"
+
+#: includes/topics/template.php:54
+msgid "Edit Topic"
+msgstr "تحرير الموضوع"
+
+#: includes/topics/template.php:52 templates/default/bbpress/form-topic.php:43
+msgid "Create New Topic"
+msgstr "إنشاء موضوع جديد"
+
+#: includes/topics/template.php:51 includes/topics/template.php:55
+msgid "New Topic"
+msgstr "أضف موضوع جديد"
+
+#: includes/topics/functions.php:2158
+msgid "<strong>ERROR</strong>: There was a problem deleting the topic."
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في حذف الموضوع."
+
+#: includes/topics/functions.php:2150
+msgid "<strong>ERROR</strong>: There was a problem untrashing the topic."
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في إخراج الموضوع من سلّة المهملات. "
+
+#: includes/topics/functions.php:2142
+msgid "<strong>ERROR</strong>: There was a problem trashing the topic."
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في نقل الموضوع لسلة المهملات. "
+
+#: includes/topics/functions.php:2123
+msgid "<strong>ERROR</strong>: There was a problem marking the topic as spam."
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في تحديد الموضوع كمزعج."
+
+#: includes/topics/functions.php:2123
+msgid "<strong>ERROR</strong>: There was a problem unmarking the topic as spam."
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في تحديد الموضوع كغير مزعج."
+
+#: includes/topics/functions.php:2113
+msgid "<strong>ERROR</strong>: There was a problem sticking the topic."
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في تثبيت الموضوع."
+
+#: includes/topics/functions.php:2113
+msgid "<strong>ERROR</strong>: There was a problem unsticking the topic."
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في إلغاء تثبيت الموضوع."
+
+#: includes/topics/functions.php:2102
+msgid "<strong>ERROR</strong>: There was a problem opening the topic."
+msgstr "<strong>خطأ</strong>: هناك مشكلة في فتح هذا الموضوع."
+
+#: includes/topics/functions.php:2102
+msgid "<strong>ERROR</strong>: There was a problem closing the topic."
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في إغلاق الموضوع."
+
+#: includes/topics/functions.php:2089
+msgid "<strong>ERROR:</strong> You do not have the permission to do that."
+msgstr "<strong>خطأ:</strong> لا توجد لديك صلاحية لعمل ذلك."
+
+#: includes/topics/functions.php:1984
+msgctxt "Make topic super sticky"
+msgid "Super Sticky"
+msgstr "مثبّت عام"
+
+#: includes/topics/functions.php:1983
+msgctxt "Make topic sticky"
+msgid "Sticky"
+msgstr "مثبت"
+
+#: includes/topics/functions.php:1982
+msgctxt "Unstick a topic"
+msgid "Normal"
+msgstr "عادي"
+
+#: includes/topics/functions.php:1969
+msgctxt "Mark topic as pending"
+msgid "Pending"
+msgstr "بانتظار المراجعة"
+
+#: includes/topics/functions.php:1968
+msgctxt "Trash the topic"
+msgid "Trash"
+msgstr "سلة المهملات"
+
+#: includes/topics/functions.php:1967
+msgctxt "Spam the topic"
+msgid "Spam"
+msgstr "مزعج"
+
+#: includes/topics/functions.php:1966
+msgctxt "Close the topic"
+msgid "Closed"
+msgstr "مغلق"
+
+#: includes/topics/functions.php:1965
+msgctxt "Open the topic"
+msgid "Open"
+msgstr "مفتوح"
+
+#: includes/topics/functions.php:1931
+msgid "<strong>ERROR</strong>: The following problem(s) have been found while deleting the tag: %s"
+msgstr "<strong>خطأ</strong>: تمّ العثور على المشاكل التالية أثناء حذف الوسم: %s"
+
+#: includes/topics/functions.php:1922
+msgid "<strong>ERROR</strong>: You do not have the permissions to delete the topic tags."
+msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لحذف وسوم الموضوع."
+
+#: includes/topics/functions.php:1890
+msgid "<strong>ERROR</strong>: The tags which are being merged can not be the same."
+msgstr "<strong>خطأ</strong>: الوسوم التي يجري دمجها لا يمكن أن تكون هي نفسها."
+
+#: includes/topics/functions.php:1881 includes/topics/functions.php:1899
+msgid "<strong>ERROR</strong>: The following problem(s) have been found while merging the tags: %s"
+msgstr "<strong>خطأ</strong>: تمّ العثور على المشاكل التالية أثناء دمج الوسوم: %s "
+
+#: includes/topics/functions.php:1842
+msgid "<strong>ERROR</strong>: The following problem(s) have been found while updating the tag: %s"
+msgstr "<strong>خطأ</strong>: تمّ العثور على المشاكل التالية أثناء تحديث الوسم: %s "
+
+#: includes/topics/functions.php:1832 includes/topics/functions.php:1871
+msgid "<strong>ERROR</strong>: You need to enter a tag name."
+msgstr "<strong>خطأ</strong>: يجب أن تضيف اسم الوسم."
+
+#: includes/topics/functions.php:1826 includes/topics/functions.php:1865
+msgid "<strong>ERROR</strong>: You do not have the permissions to edit the topic tags."
+msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لتحرير وسوم الموضوع."
+
+#: includes/topics/functions.php:1808
+msgid "<strong>ERROR</strong>: The following problem(s) have been found while getting the tag: %s"
+msgstr "<strong>خطأ</strong>: تمّ العثور على المشاكل التالية أثناء الحصول على الوسم: %s "
+
+#: includes/topics/functions.php:1492
+msgid "<strong>ERROR</strong>: The topic you want to split to was not found!"
+msgstr "<strong>خطأ</strong>: لم يتم العثور على الموضوع الذي تريد تجزئته!"
+
+#: includes/topics/functions.php:1470
+msgid "<strong>ERROR</strong>: You need to choose a valid split option."
+msgstr "<strong>خطأ</strong>: عليك اختيار خيار تجزئة صالح."
+
+#: includes/topics/functions.php:1452
+msgid "<strong>ERROR</strong>: The topic you want to split was not found."
+msgstr "<strong>خطأ</strong>: لم يتم العثور على الموضوع الذي تريد تجزئته."
+
+#: includes/topics/functions.php:1443
+msgid "<strong>ERROR</strong>: The reply you want to split from was not found."
+msgstr "<strong>خطأ</strong>: لم يتم العثور على الرد الذي تريد تجزئته. "
+
+#: includes/topics/functions.php:1435
+msgid "<strong>ERROR</strong>: Reply ID to split the topic from not found!"
+msgstr "<strong>خطأ</strong>: الرقم المعرف للرد المطلوب فصل الموضوع منه غير موجود!"
+
+#: includes/topics/functions.php:1182
+msgid "<strong>ERROR</strong>: You do not have the permissions to edit the destination topic."
+msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لتحرير موضوع الوجهة."
+
+#: includes/topics/functions.php:1178
+msgid "<strong>ERROR</strong>: The topic you want to merge to was not found."
+msgstr "<strong>خطأ</strong>: لم يتم العثور على الموضوع الآخر الذي تريد دمجه. "
+
+#: includes/topics/functions.php:1172
+msgid "<strong>ERROR</strong>: Destination topic ID not found."
+msgstr "<strong>خطأ</strong>: رقم معرّف (ID) موضوع الوجهة غير موجود."
+
+#: includes/topics/functions.php:1158
+msgid "<strong>ERROR</strong>: The topic you want to merge was not found."
+msgstr "<strong>خطأ</strong>: لم يتم العثور على الموضوع الذي تريد دمجه."
+
+#: includes/topics/functions.php:602
+msgid "<strong>ERROR</strong>: Your topic cannot be edited at this time."
+msgstr "<strong>خطأ</strong>: لا يمكن تحرير الموضوع الخاص بك في هذا الوقت."
+
+#: includes/topics/functions.php:550
+msgid "<strong>ERROR</strong>: This forum is a category. No topics can be created in it."
+msgstr "<strong>خطأ</strong>: هذا المنتدى عبارة عن تصنيف. لا يمكن إنشاء أي موضوعات فيه."
+
+#: includes/topics/functions.php:504
+msgid "<strong>ERROR</strong>: You do not have permission to edit that topic."
+msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لتحرير هذا الموضوع."
+
+#: includes/topics/functions.php:493
+msgid "<strong>ERROR</strong>: The topic you want to edit was not found."
+msgstr "<strong>خطأ</strong>: الموضوع الذي تحاول تحريره غير موجود."
+
+#: includes/topics/functions.php:482 includes/topics/functions.php:1146
+msgid "<strong>ERROR</strong>: Topic ID not found."
+msgstr "<strong>خطأ</strong>: رقم معرّف (ID) الموضوع غير موجود."
+
+#: includes/topics/functions.php:270
+msgid "<strong>ERROR</strong>: Your topic cannot be created at this time."
+msgstr "<strong>خطأ</strong>: لا يمكن إنشاء الموضوع في الوقت الحالي."
+
+#: includes/topics/functions.php:265
+msgid "<strong>ERROR</strong>: Duplicate topic detected; it looks as though you&#8217;ve already said that!"
+msgstr "<strong>خطأ</strong>: تمّ اكتشاف موضوع مكرّر. يبدو أن سبق وكتبت نفس الموضوع!"
+
+#: includes/topics/functions.php:251 includes/topics/functions.php:569
+msgid "<strong>ERROR</strong>: This forum is hidden and you do not have the capability to read or create new topics in it."
+msgstr "<strong>خطأ</strong>: هدا المنتدى مخفي ولا تملك صلاحيات لقراءة أو إنشاء موضوعات جديدة فيه."
+
+#: includes/topics/functions.php:245 includes/topics/functions.php:563
+msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new topics in it."
+msgstr "<strong>خطأ</strong>: هدا المنتدى خاص ولا تملك صلاحيات لقراءة أو إنشاء موضوعات جديدة فيه. "
+
+#: includes/topics/functions.php:239 includes/topics/functions.php:557
+msgid "<strong>ERROR</strong>: This forum has been closed to new topics."
+msgstr "<strong>خطأ</strong>: هذا المنتدى مغلق ولا يمكن إنشاء موضوعات جديدة."
+
+#: includes/topics/functions.php:232
+msgid "<strong>ERROR</strong>: This forum is a category. No topics can be created in this forum."
+msgstr "<strong>خطأ</strong>: هذا المنتدى عبارة عن تصنيف. لا يمكن إنشاء موضوعات في هذا المنتدى."
+
+#: includes/topics/functions.php:187 includes/topics/functions.php:597
+msgid "<strong>ERROR</strong>: Your topic cannot be empty."
+msgstr "<strong>خطأ</strong>: الموضوع لا يمكن أن يكون فارغاً."
+
+#: includes/topics/functions.php:175 includes/topics/functions.php:585
+msgid "<strong>ERROR</strong>: Your topic needs a title."
+msgstr "<strong>خطأ</strong>: يرجى إضافة عنوان للموضوع."
+
+#: includes/topics/functions.php:150
+msgid "<strong>ERROR</strong>: You do not have permission to create new topics."
+msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لإنشاء موضوعات جديدة."
+
+#: includes/search/template.php:405
+msgid "Viewing %2$s results (of %4$s total)"
+msgid_plural "Viewing %1$s results - %2$s through %3$s (of %4$s total)"
+msgstr[0] "مشاهدة 0 نتيجة (من مجموع %4$s)"
+msgstr[1] "مشاهدة نتيجة واحدة (من مجموع %4$s)"
+msgstr[2] "مشاهدة نتيجتين (من مجموع %4$s)"
+msgstr[3] "مشاهدة %1$s نتائج - %2$s إلى %3$s (من مجموع %4$s)"
+msgstr[4] "مشاهدة %1$s نتيجة - %2$s إلى %3$s (من مجموع %4$s)"
+msgstr[5] "مشاهدة %1$s نتيجة - %2$s إلى %3$s (من مجموع %4$s)"
+
+#: includes/search/template.php:401
+msgid "Viewing %1$s result"
+msgid_plural "Viewing %1$s results"
+msgstr[0] "مشاهدة 0 نتيجة"
+msgstr[1] "مشاهدة نتيجة واحدة"
+msgstr[2] "مشاهدة نتيجتين"
+msgstr[3] "مشاهدة %1$s نتائج"
+msgstr[4] "مشاهدة %1$s نتيجة"
+msgstr[5] "مشاهدة %1$s نتيجة"
+
+#: includes/search/template.php:229
+msgid "Search Results for '%s'"
+msgstr "نتائج البحث عن '%s'"
+
+#: includes/replies/template.php:2366
+msgid "Viewing %2$s post (of %4$s total)"
+msgid_plural "Viewing %1$s posts - %2$s through %3$s (of %4$s total)"
+msgstr[0] "مشاهدة %2$s مشاركات (من مجموع %4$s)"
+msgstr[1] "مشاهدة مشاركة واحدة (من مجموع %4$s)"
+msgstr[2] "مشاهدة مشاركاتين - %2$s إلى %3$s (من مجموع %4$s)"
+msgstr[3] "مشاهدة %1$s مشاركات - %2$s إلى %3$s (من مجموع %4$s)"
+msgstr[4] "مشاهدة %1$s مشاركة - %2$s إلى %3$s (من مجموع %4$s)"
+msgstr[5] "مشاهدة %1$s مشاركات - %2$s إلى %3$s (من مجموع %4$s)"
+
+#: includes/replies/template.php:2362
+msgid "Viewing %1$s post"
+msgid_plural "Viewing %1$s posts"
+msgstr[0] "مشاهدة %1$s مشاركة"
+msgstr[1] "مشاهدة مشاركة واحدة"
+msgstr[2] "مشاهدة مشاركاتين"
+msgstr[3] "مشاهدة %1$s مشاركات"
+msgstr[4] "مشاهدة %1$s مشاركة"
+msgstr[5] "مشاهدة %1$s مشاركة"
+
+#: includes/replies/template.php:2354
+msgid "Viewing %2$s replies (of %4$s total)"
+msgid_plural "Viewing %1$s replies - %2$s through %3$s (of %4$s total)"
+msgstr[0] "مشاهدة 0 رد (من مجموع %4$s)"
+msgstr[1] "مشاهدة رد واحد (من مجموع %4$s)"
+msgstr[2] "مشاهدة %1$s ردود - %2$s حتى %3$s (من مجموع %4$s)"
+msgstr[3] "مشاهدة %1$s ردود - %2$s حتى %3$s (من مجموع %4$s)"
+msgstr[4] "مشاهدة %1$s رد - %2$s حتى %3$s (من مجموع %4$s)"
+msgstr[5] "مشاهدة %1$s رد - %2$s حتى %3$s (من مجموع %4$s)"
+
+#: includes/replies/template.php:2350
+msgid "Viewing %1$s reply"
+msgid_plural "Viewing %1$s replies"
+msgstr[0] "مشاهدة 0 رد"
+msgstr[1] "مشاهدة رد واحد"
+msgstr[2] "مشاهدة ردين"
+msgstr[3] "مشاهدة %1$s ردود"
+msgstr[4] "مشاهدة %1$s رد"
+msgstr[5] "مشاهدة %1$s رد"
+
+#: includes/replies/template.php:2237
+msgid "Split the topic from this reply"
+msgstr "تجزئة هذا الموضوع بدءًا بهذا الرد"
+
+#: includes/replies/template.php:2236
+msgid "Split"
+msgstr "تجزئة"
+
+#: includes/replies/template.php:2170
+msgid "Move this reply"
+msgstr "نقل هذا الرد"
+
+#: includes/replies/template.php:2169
+msgid "Move"
+msgstr "نقل"
+
+#: includes/replies/template.php:2106 includes/topics/template.php:2873
+msgid "Unspam"
+msgstr "غير مزعج"
+
+#: includes/replies/template.php:2053 includes/topics/template.php:2634
+msgid "Are you sure you want to delete that permanently?"
+msgstr "هل أنت متأكّد أنك تريد حذف هذا بشكل دائم؟"
+
+#: includes/replies/template.php:2036 includes/topics/template.php:2617
+#: templates/default/bbpress/form-topic-tag.php:88
+#: templates/default/bbpress/form-topic-tag.php:101
+msgid "Delete"
+msgstr "حذف"
+
+#: includes/replies/template.php:1695
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: includes/replies/template.php:1210 includes/topics/template.php:1481
+#: includes/users/template.php:1651
+msgid "Visit %s's website"
+msgstr "زيارة موقع %s"
+
+#: includes/replies/template.php:1210 includes/topics/template.php:1481
+#: includes/users/template.php:1651
+msgid "View %s's profile"
+msgstr "عرض ملف %s الشخصي"
+
+#: includes/replies/template.php:1098 includes/topics/template.php:1368
+#: includes/users/template.php:184
+msgid "Anonymous"
+msgstr "مجهول"
+
+#: includes/replies/template.php:806
+msgid "This reply was modified %1$s by %2$s."
+msgstr "تمّ تحرير هذا الرد قبل %1$s بواسطة %2$s."
+
+#: includes/replies/template.php:804
+msgid "This reply was modified %1$s by %2$s. Reason: %3$s"
+msgstr "تمّ تحرير هذا الرد قبل %1$s بواسطة %2$s. السبب: %3$s"
+
+#: includes/replies/template.php:706 includes/topics/template.php:809
+msgctxt "date at time"
+msgid "%1$s at %2$s"
+msgstr "%1$s الساعة %2$s"
+
+#: includes/replies/template.php:60
+msgid "No replies found in Trash"
+msgstr "لم يتم إيجاد ردود في سلّة المهملات"
+
+#: includes/replies/template.php:59
+msgid "No replies found"
+msgstr "لم يتم إيجاد ردود"
+
+#: includes/replies/template.php:58
+msgid "Search Replies"
+msgstr "بحث في الردود"
+
+#: includes/replies/template.php:56 includes/replies/template.php:57
+msgid "View Reply"
+msgstr "مشاهدة الرد"
+
+#: includes/replies/template.php:54
+msgid "Edit Reply"
+msgstr "تحرير الرد"
+
+#: includes/replies/template.php:52
+msgid "Create New Reply"
+msgstr "إنشاء رد جديد"
+
+#: includes/replies/template.php:51 includes/replies/template.php:55
+msgid "New Reply"
+msgstr "أضف رد جديد"
+
+#: includes/replies/functions.php:2034 includes/topics/functions.php:3464
+msgid "Replies: %s"
+msgstr "الردود: %s"
+
+#: includes/replies/functions.php:1992
+msgid "All Posts"
+msgstr "كافة المشاركات"
+
+#: includes/replies/functions.php:1578
+msgid "<strong>ERROR</strong>: There was a problem deleting the reply!"
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في حذف الرد!"
+
+#: includes/replies/functions.php:1570
+msgid "<strong>ERROR</strong>: There was a problem untrashing the reply!"
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في إخراج الرد من سلّة المهملات. "
+
+#: includes/replies/functions.php:1562
+msgid "<strong>ERROR</strong>: There was a problem trashing the reply!"
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في نقل الرد لسلّة المهملات."
+
+#: includes/replies/functions.php:1543
+msgid "<strong>ERROR</strong>: There was a problem marking the reply as spam!"
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في تحديد الرد كمزعج!"
+
+#: includes/replies/functions.php:1543
+msgid "<strong>ERROR</strong>: There was a problem unmarking the reply as spam!"
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في تحديد الرد كغير مزعج."
+
+#: includes/replies/functions.php:1530
+msgid "<strong>ERROR:</strong> You do not have the permission to do that!"
+msgstr "<strong>خطأ:</strong> لا توجد لديك صلاحية لعمل ذلك!"
+
+#: includes/replies/functions.php:1349 includes/topics/functions.php:1538
+msgid "<strong>ERROR</strong>: You do not have the permissions to create new topics. The reply could not be converted into a topic."
+msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لإنشاء موضوعات جديدة. لا يمكن تحويل الرد إلى موضوع."
+
+#: includes/replies/functions.php:1344 includes/topics/functions.php:1533
+msgid "<strong>ERROR</strong>: There was a problem converting the reply into the topic. Please try again."
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في تحويل الرد في داخل الموضوع. يرجى المحاولة مرة أخرى."
+
+#: includes/replies/functions.php:1299 includes/replies/template.php:571
+#: includes/topics/functions.php:1294 includes/topics/functions.php:1652
+#: templates/default/bbpress/form-reply.php:29
+msgid "Reply To: %s"
+msgstr "رداً على: %s"
+
+#: includes/replies/functions.php:1290 includes/topics/functions.php:1496
+msgid "<strong>ERROR</strong>: You do not have the permissions to edit the destination topic!"
+msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لتحرير موضوع الوجهة!"
+
+#: includes/replies/functions.php:1285
+msgid "<strong>ERROR</strong>: The topic you want to move to was not found!"
+msgstr "<strong>خطأ</strong>: تعذر العثور على الموضوع الذي تريد أن تنقل إليه!"
+
+#: includes/replies/functions.php:1275 includes/topics/functions.php:1483
+msgid "<strong>ERROR</strong>: Destination topic ID not found!"
+msgstr "<strong>خطأ</strong>: رقم معرّف (ID) موضوع الوجهة غير موجود!"
+
+#: includes/replies/functions.php:1262
+msgid "<strong>ERROR</strong>: You need to choose a valid move option."
+msgstr "<strong>خطأ</strong>: عليك اختيار خيار نقل فعّال."
+
+#: includes/replies/functions.php:1252 includes/topics/functions.php:1164
+#: includes/topics/functions.php:1462
+msgid "<strong>ERROR</strong>: You do not have the permissions to edit the source topic."
+msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لتحرير الموضوع الأصل."
+
+#: includes/replies/functions.php:1241
+msgid "<strong>ERROR</strong>: The topic you want to move from was not found."
+msgstr "<strong>خطأ</strong>: الموضوع الذي تريد النقل منه غير موجود."
+
+#: includes/replies/functions.php:1232
+msgid "<strong>ERROR</strong>: The reply you want to move was not found."
+msgstr "<strong>خطأ</strong>: الرد الذي تريد نقله غير موجود."
+
+#: includes/replies/functions.php:1223
+msgid "<strong>ERROR</strong>: Reply ID to move not found!"
+msgstr "<strong>خطأ</strong>:  المعرف (ID) للرد الذي يراد نقله غير موجود!"
+
+#: includes/replies/functions.php:616
+msgid "<strong>ERROR</strong>: Your reply cannot be edited at this time."
+msgstr "<strong>خطأ</strong>: لا يمكن تحرير الرد الخاص بك في هذا الوقت. "
+
+#: includes/replies/functions.php:533
+msgid "<strong>ERROR</strong>: You do not have permission to edit that reply."
+msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لتحرير هذا الرد."
+
+#: includes/replies/functions.php:522
+msgid "<strong>ERROR</strong>: The reply you want to edit was not found."
+msgstr "<strong>خطأ</strong>: لم يتم العثور على الرد الذي تريد تحريره."
+
+#: includes/replies/functions.php:505
+msgid "<strong>ERROR</strong>: Reply ID not found."
+msgstr "<strong>خطأ</strong>: رقم معرّف (ID) الرد غير موجود."
+
+#: includes/replies/functions.php:377 includes/replies/functions.php:702
+msgid "<strong>ERROR</strong>: There was a problem adding the tags to the topic."
+msgstr "<strong>خطأ</strong>: كانت هناك مشكلة في إضافة الوسوم لهذا الموضوع."
+
+#: includes/replies/functions.php:318
+msgid "<strong>ERROR</strong>: Topic is closed."
+msgstr "<strong>خطأ</strong>: الموضوع مغلق."
+
+#: includes/replies/functions.php:294
+msgid "<strong>ERROR</strong>: Your reply cannot be created at this time."
+msgstr "<strong>خطأ</strong>: لا يمكن إنشاء الرد الخاص بك في هذا الوقت. "
+
+#: includes/replies/functions.php:289
+msgid "<strong>ERROR</strong>: Duplicate reply detected; it looks as though you&#8217;ve already said that!"
+msgstr "<strong>خطأ</strong>: تمّ اكتشاف رد مكرّر. يبدو أن سبق وكتبت نفس الرد!"
+
+#: includes/replies/functions.php:279 includes/replies/functions.php:611
+msgid "<strong>ERROR</strong>: Your reply cannot be empty."
+msgstr "<strong>خطأ</strong>: لا يمكن أن يكون ردّك فارغاً."
+
+#: includes/replies/functions.php:246 includes/replies/functions.php:587
+msgid "<strong>ERROR</strong>: This forum is hidden and you do not have the capability to read or create new replies in it."
+msgstr "<strong>خطأ</strong>: هدا المنتدى مخفي ولا تملك صلاحيات لقراءة أو إنشاء ردود جديدة فيه."
+
+#: includes/replies/functions.php:240 includes/replies/functions.php:581
+msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new replies in it."
+msgstr "<strong>خطأ</strong>: هدا المنتدى خاص ولا تملك صلاحيات لقراءة أو إنشاء ردود جديدة فيه. "
+
+#: includes/replies/functions.php:234 includes/replies/functions.php:575
+msgid "<strong>ERROR</strong>: This forum has been closed to new replies."
+msgstr "<strong>خطأ</strong>: هذا المنتدى مغلق ولا يمكن إنشاء ردود جديدة فيه."
+
+#: includes/replies/functions.php:227 includes/replies/functions.php:568
+msgid "<strong>ERROR</strong>: This forum is a category. No replies can be created in this forum."
+msgstr "<strong>خطأ</strong>: هذا المنتدى عبارة عن تصنيف. لا يمكن إنشاء ردود فيه."
+
+#: includes/replies/functions.php:213 includes/topics/functions.php:218
+msgid "<strong>ERROR</strong>: Forum does not exist."
+msgstr "<strong>خطأ</strong>: المنتدى غير موجود."
+
+#: includes/replies/functions.php:209 includes/topics/functions.php:214
+msgid "<strong>ERROR</strong>: Forum ID cannot be a negative number."
+msgstr "<strong>خطأ</strong>: معرف المنتدى لا يمكن أن يكون رقماً سالباً."
+
+#: includes/replies/functions.php:195 includes/topics/functions.php:200
+msgid "<strong>ERROR</strong>: Forum ID must be a number."
+msgstr "<strong>خطأ</strong>: معرف المنتدى يجب أن يكون رقماً."
+
+#: includes/replies/functions.php:191 includes/replies/functions.php:205
+#: includes/topics/functions.php:196 includes/topics/functions.php:210
+#: includes/topics/functions.php:535
+msgid "<strong>ERROR</strong>: Forum ID is missing."
+msgstr "<strong>خطأ</strong>: لم تقم بإضافة رقم معرف (ID) المنتدى."
+
+#: includes/replies/functions.php:172
+msgid "<strong>ERROR</strong>: Topic does not exist."
+msgstr "<strong>خطأ</strong>: الموضوع غير موجود."
+
+#: includes/replies/functions.php:168
+msgid "<strong>ERROR</strong>: Topic ID cannot be a negative number."
+msgstr "<strong>خطأ</strong>: معرف الموضوع لا يمكن أن يكون رقماً سالباً."
+
+#: includes/replies/functions.php:158
+msgid "<strong>ERROR</strong>: Topic ID must be a number."
+msgstr "<strong>خطأ</strong>: معرف الموضوع يجب أن يكون رقماً."
+
+#: includes/replies/functions.php:154
+msgid "<strong>ERROR</strong>: Topic ID is missing."
+msgstr "<strong>خطأ</strong>: لم تقم بإضافة رقم معرف (ID) الموضوع. "
+
+#: includes/replies/functions.php:142
+msgid "<strong>ERROR</strong>: You do not have permission to reply."
+msgstr "<strong>خطأ</strong>: لاتملك صلاحيات لكتابة رد."
+
+#: includes/forums/template.php:2021
+msgid "This forum is empty."
+msgstr "هذا المنتدى فارغ."
+
+#: includes/forums/template.php:2017
+msgid "This forum contains %1$s."
+msgstr "هذا القسم يحتوي على %1$s."
+
+#: includes/forums/template.php:2015
+msgid "This category contains %1$s."
+msgstr "هذا التصنيف يحتوي على %1$s."
+
+#: includes/forums/template.php:2007
+msgid "This forum contains %1$s and %2$s."
+msgstr "هذا القسم يحتوي على %1$s و %2$s."
+
+#: includes/forums/template.php:2005
+msgid "This category contains %1$s and %2$s."
+msgstr "هذا التصنيف يحتوي على %1$s و %2$s."
+
+#: includes/forums/template.php:1995
+msgid "This forum contains %1$s, and was last updated by %2$s %3$s."
+msgstr "هذا القسم يحتوي على %1$s، آخر تحديث بواسطة %2$s %3$s."
+
+#: includes/forums/template.php:1993
+msgid "This category contains %1$s, and was last updated by %2$s %3$s."
+msgstr "هذا التصنيف يحتوي على %1$s، وتمّ تحديثه آخر مرة بواسطة %2$s %3$s."
+
+#: includes/forums/template.php:1987
+msgid "This forum contains %1$s and %2$s, and was last updated by %3$s %4$s."
+msgstr "هذا القسم يحتوي على %1$s و %2$s، آخر تحديث بواسطة %3$s %4$s."
+
+#: includes/forums/template.php:1985
+msgid "This category contains %1$s and %2$s, and was last updated by %3$s %4$s."
+msgstr "هذا التصنيف يحتوي على %1$s و %2$s، وتمّ تحديثه آخر مرة بواسطة %3$s %4$s."
+
+#: includes/forums/template.php:1965 includes/topics/template.php:2102
+msgid "%s reply"
+msgid_plural "%s replies"
+msgstr[0] "%s ردود"
+msgstr[1] "رد واحد"
+msgstr[2] "رديّن"
+msgstr[3] "%s ردود"
+msgstr[4] "%s رد"
+msgstr[5] "%s رد"
+
+#: includes/forums/template.php:1254 includes/topics/template.php:2118
+msgid " (+ %d hidden)"
+msgstr " (+ %d مخفي)"
+
+#: includes/forums/template.php:1238 includes/forums/template.php:1976
+msgid "%s topic"
+msgid_plural "%s topics"
+msgstr[0] "%s موضوع"
+msgstr[1] "موضوع واحد"
+msgstr[2] "موضوعين"
+msgstr[3] "%s موضوعات"
+msgstr[4] "%s موضوع"
+msgstr[5] "%s موضوع"
+
+#: includes/forums/template.php:841 includes/topics/template.php:1847
+#: includes/users/template.php:1059
+msgid "Unsubscribe"
+msgstr "إلغاء الاشتراك"
+
+#: includes/forums/template.php:840 includes/topics/template.php:1846
+#: includes/users/template.php:1058
+msgid "Subscribe"
+msgstr "اشتراك"
+
+#: includes/forums/template.php:61 templates/default/bbpress/form-forum.php:118
+msgid "Parent Forum:"
+msgstr "المنتدى الأب:"
+
+#: includes/forums/template.php:60
+msgid "No forums found in Trash"
+msgstr "لم يتم إيجاد منتديات في سلة المهملات"
+
+#: includes/forums/template.php:59
+msgid "No forums found"
+msgstr "لم يتم إيجاد منتديات"
+
+#: includes/forums/template.php:56 includes/forums/template.php:57
+msgid "View Forum"
+msgstr "مشاهدة المنتدى"
+
+#: includes/forums/template.php:54
+msgid "Edit Forum"
+msgstr "تحرير المنتدى"
+
+#: includes/forums/template.php:52 templates/default/bbpress/form-forum.php:37
+msgid "Create New Forum"
+msgstr "إنشاء منتدى جديد"
+
+#: includes/forums/template.php:51 includes/forums/template.php:55
+msgid "New Forum"
+msgstr "أضف منتدى جديد"
+
+#: includes/forums/functions.php:1632
+msgctxt "Make forum hidden"
+msgid "Hidden"
+msgstr "مخفي"
+
+#: includes/forums/functions.php:1631
+msgctxt "Make forum private"
+msgid "Private"
+msgstr "خاص"
+
+#: includes/forums/functions.php:1630
+msgctxt "Make forum public"
+msgid "Public"
+msgstr "عام"
+
+#: includes/forums/functions.php:1617
+msgctxt "Forum is a category"
+msgid "Category"
+msgstr "تصنيف"
+
+#: includes/forums/functions.php:1616
+msgctxt "Forum accepts new topics"
+msgid "Forum"
+msgstr "منتدى"
+
+#: includes/forums/functions.php:1603
+msgctxt "Close the forum"
+msgid "Closed"
+msgstr "مغلق"
+
+#: includes/forums/functions.php:1602
+msgctxt "Open the forum"
+msgid "Open"
+msgstr "مفتوح"
+
+#: includes/forums/functions.php:472
+msgid "<strong>ERROR</strong>: Your forum cannot be edited at this time."
+msgstr "<strong>خطأ</strong>: لا يمكن تحرير المنتدى في الوقت الحالي."
+
+#: includes/forums/functions.php:405
+msgid "<strong>ERROR</strong>: You do not have permission to edit that forum."
+msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لتحرير هذا المنتدى."
+
+#: includes/forums/functions.php:400
+msgid "<strong>ERROR</strong>: The forum you want to edit was not found."
+msgstr "<strong>خطأ</strong>: لم يتم العثور على المنتدى الذي تريد تحريره."
+
+#: includes/forums/functions.php:384
+msgid "<strong>ERROR</strong>: Forum ID not found."
+msgstr "<strong>خطأ</strong>: رقم معرّف (ID) المنتدى غير موجود."
+
+#: includes/forums/functions.php:220
+msgid "<strong>ERROR</strong>: Your forum cannot be created at this time."
+msgstr "<strong>خطأ</strong>: لا يمكن إنشاء المنتدى في الوقت الحالي."
+
+#: includes/forums/functions.php:215
+msgid "<strong>ERROR</strong>: This forum already exists."
+msgstr "<strong>خطأ</strong>: هذا المنتدى موجود مسبقًا."
+
+#: includes/forums/functions.php:210 includes/replies/functions.php:284
+#: includes/topics/functions.php:260
+msgid "<strong>ERROR</strong>: Slow down; you move too fast."
+msgstr "<strong>خطأ</strong>: تمهّل قليلاً; أنت تضيف مشاركات بشكل سريع."
+
+#: includes/forums/functions.php:203 includes/forums/functions.php:441
+msgid "<strong>ERROR</strong>: This forum is hidden and you do not have the capability to read or create new forums in it."
+msgstr "<strong>خطأ</strong>: هدا المنتدى مخفي ولا تملك صلاحيات لقراءة أو إنشاء منتديات جديدة فيه."
+
+#: includes/forums/functions.php:198 includes/forums/functions.php:436
+msgid "<strong>ERROR</strong>: This forum is private and you do not have the capability to read or create new forums in it."
+msgstr "<strong>خطأ</strong>: هدا المنتدى خاص ولا تملك صلاحيات لقراءة أو إنشاء منتديات جديدة فيه. "
+
+#: includes/forums/functions.php:193 includes/forums/functions.php:431
+msgid "<strong>ERROR</strong>: This forum has been closed to new forums."
+msgstr "<strong>خطأ</strong>: هذا المنتدى مغلق ولا يمكن إنشاء منتديات فرعية فيه."
+
+#: includes/forums/functions.php:188
+msgid "<strong>ERROR</strong>: This forum is a category. No forums can be created in this forum."
+msgstr "<strong>خطأ</strong>: هذا المنتدى عبارة عن تصنيف. لا يمكن إنشاء منتديات في هذا المنتدى."
+
+#: includes/forums/functions.php:181
+msgid "<strong>ERROR</strong>: Your forum must have a parent."
+msgstr "<strong>خطأ</strong>: المنتدى يجب أن يكون له أب."
+
+#: includes/forums/functions.php:167 includes/forums/functions.php:467
+msgid "<strong>ERROR</strong>: Your forum description cannot be empty."
+msgstr "<strong>خطأ</strong>: وصف المنتدى لا يمكن أن يكون فارغًا."
+
+#: includes/forums/functions.php:155 includes/forums/functions.php:455
+msgid "<strong>ERROR</strong>: Your forum needs a title."
+msgstr "<strong>خطأ</strong>: المنتدى يحتاج إلى عنوان."
+
+#: includes/forums/functions.php:131
+msgid "<strong>ERROR</strong>: You do not have permission to create new forums."
+msgstr "<strong>خطأ</strong>: لا تملك صلاحيات لإنشاء منتديات جديدة."
+
+#: includes/extend/buddypress/notifications.php:57
+msgid "You have %d new reply to %s"
+msgstr "لديك %d رد جديد على %s"
+
+#: includes/extend/buddypress/notifications.php:55
+msgid "You have %d new reply to %2$s from %3$s"
+msgstr "لديك %d رد جديد على %2$s من %3$s"
+
+#: includes/extend/buddypress/notifications.php:51
+msgid "You have %d new replies"
+msgstr "لديك %d رد جديد"
+
+#: includes/extend/buddypress/notifications.php:48
+msgid "Topic Replies"
+msgstr "الردود على الموضوع"
+
+#: includes/extend/buddypress/loader.php:293
+#: templates/default/bbpress/user-subscriptions.php:34
+msgid "Subscribed Topics"
+msgstr "الاشتراكات"
+
+#: includes/extend/buddypress/loader.php:105
+msgid "Search Forums..."
+msgstr "بحث في المنتديات ..."
+
+#: includes/extend/buddypress/groups.php:775
+msgid "This group does not currently have a forum."
+msgstr "هذه المجموعة لا تمتلك منتدى حالياً."
+
+#: includes/extend/buddypress/groups.php:478
+msgid "Group Forum"
+msgstr "منتدى المجموعة"
+
+#: includes/extend/buddypress/groups.php:437
+msgctxt "group admin edit screen"
+msgid "Discussion Forum"
+msgstr "منتدى النقاش"
+
+#: includes/extend/buddypress/groups.php:339
+#: includes/extend/buddypress/groups.php:498
+#: includes/extend/buddypress/notifications.php:161
+#: includes/forums/functions.php:118 includes/forums/functions.php:395
+#: includes/replies/functions.php:116 includes/replies/functions.php:516
+#: includes/replies/functions.php:1246 includes/topics/functions.php:122
+#: includes/topics/functions.php:520 includes/topics/functions.php:1153
+#: includes/topics/functions.php:1456 includes/topics/functions.php:1820
+#: includes/topics/functions.php:1859 includes/topics/functions.php:1916
+#: includes/users/functions.php:459 includes/users/functions.php:1174
+#: includes/users/functions.php:1280 includes/users/functions.php:1407
+#: includes/users/functions.php:1413
+msgid "<strong>ERROR</strong>: Are you sure you wanted to do that?"
+msgstr "<strong>خطأ</strong>: هل أنت متأكّد أنك تود فعل ذلك؟"
+
+#: includes/extend/buddypress/groups.php:304
+msgid "Save Settings"
+msgstr "حفظ الإعدادات"
+
+#: includes/extend/buddypress/groups.php:291
+msgid "Group Forum:"
+msgstr "منتدى المجموعة:"
+
+#: includes/extend/buddypress/groups.php:286
+msgid "Saying no will not delete existing forum content."
+msgstr "اختيار لا لن يؤدي إلى حذف المحتوى الحالي في المنتدى."
+
+#: includes/extend/buddypress/groups.php:283
+#: includes/extend/buddypress/groups.php:483
+msgid "Yes. I want this group to have a forum."
+msgstr "نعم. أريد هذه المجموعة أن يكون لديها منتدى."
+
+#: includes/extend/buddypress/groups.php:279
+#: includes/extend/buddypress/groups.php:480
+msgid "Create a discussion forum to allow members of this group to communicate in a structured, bulletin-board style fashion."
+msgstr "أنشئ مناقشة في منتدى للسماح لأعضاء هذه المجموعة بالتواصل بطريقة منظمة، بطريقة لوحات النشرات."
+
+#: includes/extend/buddypress/groups.php:275
+#: includes/extend/buddypress/groups.php:278
+msgid "Group Forum Settings"
+msgstr "إعدادات منتدى المجموعة"
+
+#: includes/extend/buddypress/activity.php:566
+msgid "%1$s replied to the topic %2$s in the forum %3$s"
+msgstr "قام %1$s بالرد على الموضوع %2$s في منتدى %3$s"
+
+#: includes/extend/buddypress/activity.php:421
+msgid "%1$s started the topic %2$s in the forum %3$s"
+msgstr "%1$s أنشأ الموضوع %2$s في منتدى %3$s"
+
+#: includes/extend/buddypress/activity.php:196
+msgid "New forum reply"
+msgstr "رد جديد في المنتدى"
+
+#: includes/extend/buddypress/activity.php:195
+msgid "New forum topic"
+msgstr "موضوع جديد في المنتدى"
+
+#: includes/extend/akismet.php:793
+msgid "No recorded history. Akismet has not checked this post."
+msgstr "لا يوجد سجل. أكيسميت لم تفحص هذه المشاركة."
+
+#: includes/extend/akismet.php:735 includes/extend/akismet.php:745
+msgid "Akismet History"
+msgstr "سجل أكيسميت"
+
+#: includes/extend/akismet.php:489
+msgid "Akismet was unable to check this post (response: %s), will automatically retry again later."
+msgstr "أكيسميت غير قادرة على فحص هذا الموضوع (الإستجابة: %s). ستتم إعادة المحاولة لاحقاً بشكل تلقائي."
+
+#: includes/extend/akismet.php:475
+msgid "Akismet cleared this post as not spam"
+msgstr "أكيسميت صنفت هذه المشاركة كغير مزعج"
+
+#: includes/extend/akismet.php:467 includes/extend/akismet.php:482
+msgid "Post status was changed to %s"
+msgstr "تمّ تغيير حالة المشاركة إلى %s"
+
+#: includes/extend/akismet.php:463
+msgid "Akismet caught this post as spam"
+msgstr "أمسكت أكيسميت هذه المشاركة كمشاركة مزعجة."
+
+#: includes/extend/akismet.php:405
+msgid "No response"
+msgstr "لا توجد ردود"
+
+#: includes/extend/akismet.php:316
+msgid "%1$s reported this %2$s as not spam"
+msgstr "%1$s أبلغ عن %2$s على أنه ليس بمشاركة مزعجة."
+
+#: includes/extend/akismet.php:309
+msgid "%1$s reported this %2$s as spam"
+msgstr "%1$s أبلغ عن %2$s على أنه مشاركة مزعجة."
+
+#: includes/core/update.php:191
+msgid "Oh, and this is what a reply looks like."
+msgstr "هذا ما سيبدوا عليه الرد."
+
+#: includes/core/update.php:190
+msgid "Re: Hello World!"
+msgstr "رد: أهلاً بالعالم!"
+
+#: includes/core/update.php:189
+msgid "I am the first topic in your new forums."
+msgstr "هذا أول موضوع في المنتديات."
+
+#: includes/core/update.php:188
+msgid "Hello World!"
+msgstr "أهلاً بالعالم!"
+
+#: includes/core/update.php:187
+msgid "General chit-chat"
+msgstr "دردشة عامة"
+
+#: includes/core/update.php:186
+msgid "General"
+msgstr "عام"
+
+#: includes/core/capabilities.php:531
+msgid "Editable forum roles no longer exist."
+msgstr "رتب المنتدى القابلة للتحرير لم تعد موجودة."
+
+#: includes/common/widgets.php:1252
+msgid "Recent Replies"
+msgstr "أحدث الردود"
+
+#: includes/common/widgets.php:1237
+msgid "Show reply author:"
+msgstr "عرض اسم كاتب الرد:"
+
+#: includes/common/widgets.php:1235
+msgid "Maximum replies to show:"
+msgstr "الحد الأقصى لعدد الردود:"
+
+#. translators: 1: reply link
+#: includes/common/widgets.php:1184
+msgctxt "widgets"
+msgid "%1$s"
+msgstr "%1$s"
+
+#. translators: 1: reply author, 2: reply link
+#: includes/common/widgets.php:1178
+msgctxt "widgets"
+msgid "%1$s on %2$s"
+msgstr "%1$s على %2$s"
+
+#. translators: 1: reply link, 2: reply timestamp
+#: includes/common/widgets.php:1172
+msgctxt "widgets"
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#. translators: 1: reply author, 2: reply link, 3: reply timestamp
+#: includes/common/widgets.php:1166
+msgctxt "widgets"
+msgid "%1$s on %2$s %3$s"
+msgstr "%1$s على %2$s %3$s"
+
+#: includes/common/widgets.php:1081
+msgid "(bbPress) Recent Replies"
+msgstr "(بي بي بريس) أحدث الردود"
+
+#: includes/common/widgets.php:1078
+msgid "A list of the most recent replies."
+msgstr "قائمة الردود الأخيرة."
+
+#: includes/common/widgets.php:1048
+msgid "Forum Statistics"
+msgstr "إحصائيات المنتدى"
+
+#: includes/common/widgets.php:951
+msgid "(bbPress) Statistics"
+msgstr "(بي بي بريس) إحصائيات"
+
+#: includes/common/widgets.php:948
+msgid "Some statistics from your forum."
+msgstr "بعض الإحصائيات عن المنتدى."
+
+#: includes/common/widgets.php:914
+msgid "Recent Topics"
+msgstr "أحدث الموضوعات"
+
+#: includes/common/widgets.php:897
+msgid "Topics With Recent Replies"
+msgstr "الموضوعات التي تحتوي على ردود جدبدة"
+
+#: includes/common/widgets.php:896
+#: templates/default/extras/page-forum-statistics.php:34
+msgid "Popular Topics"
+msgstr "الموضوعات الشعبية"
+
+#: includes/common/widgets.php:895
+msgid "Newest Topics"
+msgstr "أحدث الموضوعات"
+
+#: includes/common/widgets.php:893
+msgid "Order By:"
+msgstr "ترتيب حسب:"
+
+#: includes/common/widgets.php:890
+msgid "Show topic author:"
+msgstr "عرض اسم كاتب الموضوع:"
+
+#: includes/common/widgets.php:889 includes/common/widgets.php:1236
+msgid "Show post date:"
+msgstr "عرض تاريخ المشاركة:"
+
+#: includes/common/widgets.php:877
+msgid "Maximum topics to show:"
+msgstr "الحد الأقصى لعدد الموضوعات:"
+
+#: includes/common/widgets.php:815
+msgctxt "widgets"
+msgid "by %1$s"
+msgstr "بواسطة %1$s"
+
+#: includes/common/widgets.php:695
+msgid "(bbPress) Recent Topics"
+msgstr "(بي بي بريس) أحدث الموضوعات"
+
+#: includes/common/widgets.php:692
+msgid "A list of recent topics, sorted by popularity or freshness."
+msgstr "قائمة بأحدث الموضوعات، مرتبة حسب الشعبية أو تاريخ التحديث."
+
+#: includes/common/widgets.php:646 includes/common/widgets.php:886
+msgid "\"0\" to show only root - \"any\" to show all"
+msgstr "\"0\" لإظهار الجذر فقط - \"كل\" لإظهار الكل"
+
+#: includes/common/widgets.php:640 includes/common/widgets.php:880
+msgid "Parent Forum ID:"
+msgstr "رقم معرّف (ID) المنتدى:"
+
+#: includes/common/widgets.php:515
+msgid "(bbPress) Forums List"
+msgstr "(بي بي بريس) قائمة المنتديات"
+
+#: includes/common/widgets.php:512
+msgid "A list of forums with an option to set the parent."
+msgstr "قائمة بالمنتديات مع خيار لتحديد المنتدى الأب."
+
+#: includes/common/widgets.php:483 includes/forums/template.php:58
+msgid "Search Forums"
+msgstr "بحث في المنتديات"
+
+#: includes/common/widgets.php:387
+msgid "(bbPress) Forum Search Form"
+msgstr "(بي بي بريس) نموذج البحث"
+
+#: includes/common/widgets.php:384
+msgid "The bbPress forum search form."
+msgstr "نموذج البحث في بي بي بريس."
+
+#: includes/common/widgets.php:246
+msgid "(bbPress) Topic Views List"
+msgstr "(بي بي بريس) قائمة رؤى الموضوع"
+
+#: includes/common/widgets.php:243
+msgid "A list of registered optional topic views."
+msgstr "قائمة برؤى الموضوع المسجلة و الإختيارية."
+
+#: includes/common/widgets.php:195
+msgid "Lost Password URI:"
+msgstr "رابط استعادة كلمة المرور:"
+
+#: includes/common/widgets.php:190
+msgid "Register URI:"
+msgstr "رابط التسجيل:"
+
+#: includes/common/widgets.php:185 includes/common/widgets.php:337
+#: includes/common/widgets.php:465 includes/common/widgets.php:634
+#: includes/common/widgets.php:876 includes/common/widgets.php:1030
+#: includes/common/widgets.php:1234
+msgid "Title:"
+msgstr "العنوان:"
+
+#: includes/common/widgets.php:128
+#: templates/default/bbpress/form-user-lost-pass.php:14
+msgid "Lost Password"
+msgstr "فقدت كلمة المرور؟"
+
+#: includes/common/widgets.php:122
+#: templates/default/bbpress/form-user-register.php:36
+msgid "Register"
+msgstr "تسجيل"
+
+#: includes/common/widgets.php:103
+msgid "Remember Me"
+msgstr "تذكرني"
+
+#: includes/common/widgets.php:97
+#: templates/default/bbpress/form-user-login.php:22
+msgid "Password"
+msgstr "كلمـــة المــــرور"
+
+#: includes/common/widgets.php:92
+#: templates/default/bbpress/form-user-edit.php:98
+#: templates/default/bbpress/form-user-login.php:17
+#: templates/default/bbpress/form-user-register.php:23
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: includes/common/widgets.php:89 includes/common/widgets.php:110
+#: templates/default/bbpress/form-user-login.php:14
+#: templates/default/bbpress/form-user-login.php:35
+msgid "Log In"
+msgstr "دخول"
+
+#: includes/common/widgets.php:42
+msgid "(bbPress) Login Widget"
+msgstr "(بي بي بريس) تسجيل الدخول"
+
+#: includes/common/widgets.php:39
+msgid "A simple login form with optional links to sign-up and lost password pages."
+msgstr "نموذج تسجيل دخول بسيط مع روابط اختيارية لصفحات التسجيل وفقدان كلمة المرور."
+
+#: includes/common/template.php:2646
+msgid "View: %s"
+msgstr "مشاهدة: %s"
+
+#: includes/common/template.php:2638
+#: templates/default/bbpress/user-details.php:65
+msgid "Edit %s's Profile"
+msgstr "تحرير ملف %s الشخصي"
+
+#: includes/common/template.php:2633
+msgid "Edit Your Profile"
+msgstr "تحرير ملفك الشخصي"
+
+#: includes/common/template.php:2600
+msgctxt "User viewing his/her own profile"
+msgid "Your"
+msgstr "حسابك"
+
+#: includes/common/template.php:2582
+msgid "Topic: %s"
+msgstr "الموضوع: %s"
+
+#: includes/common/template.php:2577
+msgid "Forum: %s"
+msgstr "المنتدى: %s"
+
+#: includes/common/template.php:2570
+msgid "Topic Tag Edit: %s"
+msgstr "تحرير وسم الموضوع: %s"
+
+#: includes/common/template.php:2565
+msgid "Reply Edit: %s"
+msgstr "تحرير الرد: %s"
+
+#: includes/common/template.php:2560
+msgid "Topic Edit: %s"
+msgstr "تحرير الموضوع: %s"
+
+#: includes/common/template.php:2555
+msgid "Forum Edit: %s"
+msgstr "تحرير المنتدى: %s"
+
+#: includes/common/template.php:2501
+msgid "Log Out"
+msgstr "تسجيل الخروج"
+
+#: includes/common/template.php:2233
+msgid "&rsaquo;"
+msgstr "&lsaquo;"
+
+#: includes/common/template.php:2233
+msgid "&lsaquo;"
+msgstr "&rsaquo; "
+
+#: includes/common/template.php:2216 includes/forums/template.php:53
+#: includes/replies/template.php:53 includes/replies/template.php:1910
+#: includes/topics/template.php:53 includes/topics/template.php:2491
+#: templates/default/bbpress/user-details.php:65
+msgid "Edit"
+msgstr "تحرير"
+
+#: includes/common/template.php:2212 includes/common/template.php:2326
+#: includes/common/template.php:2591 includes/core/theme-compat.php:739
+#: templates/default/extras/taxonomy-topic-tag-edit.php:17
+#: templates/default/extras/taxonomy-topic-tag.php:17
+msgid "Topic Tag: %s"
+msgstr "موضوعات تحمل الوسم: %s"
+
+#: includes/common/template.php:2208
+msgid "(Edit)"
+msgstr "(تحرير)"
+
+#: includes/common/template.php:2138
+msgid "Home"
+msgstr "الرئيسية"
+
+#: includes/common/template.php:1467
+msgid "None available"
+msgstr "لا شيء متاح"
+
+#: includes/common/template.php:1462
+msgid "No forums available"
+msgstr "لا تتوفّر منتديات"
+
+#: includes/common/template.php:1457
+msgid "No topics available"
+msgstr "لا موضوعات متوفرة"
+
+#: includes/common/functions.php:1099
+msgid ""
+"%1$s wrote:\n"
+"\n"
+"%2$s\n"
+"\n"
+"Post Link: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"You are receiving this email because you subscribed to a forum topic.\n"
+"\n"
+"Login and visit the topic to unsubscribe from these emails."
+msgstr ""
+"كتب %1$s ردًا:\n"
+"\n"
+"%2$s\n"
+"\n"
+"رابط الموضوع: %3$s\n"
+"\n"
+"-----------\n"
+"\n"
+"أنت تتلقى هذا البريد الإلكتروني لأنك مشترك في هذا الموضوع..\n"
+"\n"
+"يجب عليك زيارة الموضوع لإلغاء الاشتراك من هذه الرسائل الإلكترونية."
+
+#: includes/common/functions.php:628
+msgid "<strong>ERROR</strong>: Invalid email address submitted!"
+msgstr "<strong>خطأ</strong>: قمت بإرسال عنوان بريد إلكتروني غير صالح!"
+
+#: includes/common/functions.php:624
+msgid "<strong>ERROR</strong>: Invalid author name submitted!"
+msgstr "<strong>خطأ</strong>: اسم الكاتب غير صالح!"
+
+#: includes/common/functions.php:514 includes/common/functions.php:546
+msgid "Trashed: %s"
+msgstr "في سلة المهملات: %s"
+
+#: includes/common/functions.php:513 includes/common/functions.php:545
+msgid "Spammed: %s"
+msgstr "مزعج: %s"
+
+#: includes/common/functions.php:512 includes/common/functions.php:544
+msgid "Private: %s"
+msgstr "خاص: %s"
+
+#: includes/common/functions.php:179
+msgctxt "Separator in time since"
+msgid ","
+msgstr "،"
+
+#: includes/common/functions.php:124
+msgid "second"
+msgstr "ثانية"
+
+#: includes/common/functions.php:123
+msgid "minute"
+msgstr "دقيقة"
+
+#: includes/common/functions.php:122
+msgid "hours"
+msgstr "ساعة"
+
+#: includes/common/functions.php:122
+msgid "hour"
+msgstr "ساعة"
+
+#: includes/common/functions.php:121
+msgid "days"
+msgstr "أيام"
+
+#: includes/common/functions.php:121
+msgid "day"
+msgstr "يوم"
+
+#: includes/common/functions.php:120
+msgid "weeks"
+msgstr "أسابيع"
+
+#: includes/common/functions.php:120
+msgid "week"
+msgstr "أسبوع"
+
+#: includes/common/functions.php:119
+msgid "months"
+msgstr "شهور"
+
+#: includes/common/functions.php:119
+msgid "month"
+msgstr "شهر"
+
+#: includes/common/functions.php:118
+msgid "years"
+msgstr "سنوات"
+
+#: includes/common/functions.php:118
+msgid "year"
+msgstr "سنة"
+
+#: includes/common/functions.php:114
+msgid "%s ago"
+msgstr "قبل %s"
+
+#: includes/common/functions.php:113
+msgid "right now"
+msgstr "قبل قليل"
+
+#: includes/common/functions.php:112
+msgid "sometime"
+msgstr "في وقت ما"
+
+#: includes/admin/users.php:217
+msgid "Site Role"
+msgstr "الرتبة في الموقع"
+
+#: includes/admin/users.php:144
+msgid "Change"
+msgstr "تغيير"
+
+#: includes/admin/users.php:138 includes/admin/users.php:140
+msgid "Change forum role to&hellip;"
+msgstr "تغيير الرتبة في المنتدى إلى&hellip;"
+
+#: includes/admin/users.php:96 includes/admin/users.php:100
+#: includes/users/template.php:1290
+msgid "&mdash; No role for these forums &mdash;"
+msgstr "&mdash;لا يوجد دور في هذه المنتديات&mdash;"
+
+#: includes/admin/users.php:87 includes/admin/users.php:218
+#: templates/default/bbpress/form-user-roles.php:20
+msgid "Forum Role"
+msgstr "الرتبة في المنتدى"
+
+#: includes/admin/topics.php:953
+msgid "Topic draft updated. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
+msgstr "تم تحديث مسودة الموضوع <a target=\"_blank\" href=\"%s\">معاينة الموضوع</a>"
+
+#: includes/admin/topics.php:946
+msgid "Topic scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview topic</a>"
+msgstr "تم جدولة الموضوع لـ: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">معاينة الموضوع</a>"
+
+#: includes/admin/topics.php:943
+msgid "Topic submitted. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
+msgstr "تم إرسال الموضوع. <a target=\"_blank\" href=\"%s\">معاينة الموضوع</a>"
+
+#: includes/admin/topics.php:940
+msgid "Topic saved."
+msgstr "تمّ حفظ الموضوع."
+
+#: includes/admin/topics.php:937
+msgid "Topic created. <a href=\"%s\">View topic</a>"
+msgstr "تمّ إنشاء الموضوع. <a href=\"%s\">مشاهدة الموضوع</a>"
+
+#. translators: %s: date and time of the revision
+#: includes/admin/topics.php:933
+msgid "Topic restored to revision from %s"
+msgstr "تم إستعادة الموضوع الى مراجعة بتاريخ %s"
+
+#: includes/admin/topics.php:928
+msgid "Topic updated."
+msgstr "تمّ تحديث الموضوع."
+
+#: includes/admin/topics.php:919
+msgid "Topic updated. <a href=\"%s\">View topic</a>"
+msgstr "تمّ تحديث الموضوع. <a href=\"%s\">مشاهدة الموضوع</a>"
+
+#: includes/admin/topics.php:809
+msgid "Mark this topic as spam"
+msgstr "تحديد هذا الموضوع كمزعج"
+
+#: includes/admin/topics.php:807
+msgid "Mark the topic as not spam"
+msgstr "تحديد هذا الموضوع كغير مزعج."
+
+#: includes/admin/topics.php:800 includes/topics/template.php:2747
+msgid "(to front)"
+msgstr "(في الواجهة)"
+
+#: includes/admin/topics.php:800
+msgid "Stick this topic to front"
+msgstr "تثبيت هذا الموضوع في كل الأقسام."
+
+#: includes/admin/topics.php:800 includes/topics/template.php:2745
+msgid "Stick"
+msgstr "تثبيت"
+
+#: includes/admin/topics.php:800
+msgid "Stick this topic to its forum"
+msgstr "تثبيت هذا الموضوع في منتداه."
+
+#: includes/admin/topics.php:797 includes/topics/template.php:2746
+msgid "Unstick"
+msgstr "الغاء التثبيت"
+
+#: includes/admin/topics.php:797
+msgid "Unstick this topic"
+msgstr "إلغاء تثبيت الموضوع"
+
+#: includes/admin/topics.php:788
+msgctxt "Open a Topic"
+msgid "Open"
+msgstr "فتح"
+
+#: includes/admin/topics.php:788
+msgid "Open this topic"
+msgstr "فتح هذا الموضوع"
+
+#: includes/admin/topics.php:786
+msgctxt "Close a Topic"
+msgid "Close"
+msgstr "إغلاق"
+
+#: includes/admin/topics.php:786
+msgid "Close this topic"
+msgstr "إغلاق هذا الموضوع"
+
+#: includes/admin/topics.php:729 includes/topics/template.php:2064
+msgid "No Replies"
+msgstr "لا يوجد ردود"
+
+#: includes/admin/topics.php:694 includes/extend/buddypress/groups.php:295
+#: templates/default/bbpress/form-topic.php:117
+msgid "(No Forum)"
+msgstr "(بدون منتدى)"
+
+#: includes/admin/topics.php:635 templates/default/bbpress/loop-topics.php:20
+msgid "Voices"
+msgstr "المشاركون"
+
+#: includes/admin/topics.php:599
+msgid "Topic \"%1$s\" successfully unmarked as spam."
+msgstr "تمّ بنجاح تحديد الموضوع \"%1$s\" كغير مزعج."
+
+#: includes/admin/topics.php:599
+msgid "There was a problem unmarking the topic \"%1$s\" as spam."
+msgstr "كانت هناك مشكلة في تحديد الموضوع \"%1$s\" كغير مزعج."
+
+#: includes/admin/topics.php:595
+msgid "Topic \"%1$s\" successfully marked as spam."
+msgstr "تمّ بنجاح تحديد الموضوع \"%1$s\" كمزعج."
+
+#: includes/admin/topics.php:595
+msgid "There was a problem marking the topic \"%1$s\" as spam."
+msgstr "حدثت مشكلة أثناء تحديد الموضوع  \"%1$s\" كمزعج."
+
+#: includes/admin/topics.php:591
+msgid "Topic \"%1$s\" successfully unsticked."
+msgstr "تم إلغاء تثبيت الموضوع \"%1$s\" بنجاح."
+
+#: includes/admin/topics.php:591
+msgid "There was a problem unsticking the topic \"%1$s\"."
+msgstr "كانت هناك مشكلة في إلغاء تثبيت الموضوع \"%1$s\"."
+
+#: includes/admin/topics.php:587
+msgid "Topic \"%1$s\" successfully sticked."
+msgstr "تم تثبيت الموضوع \"%1$s\" بجاح."
+
+#: includes/admin/topics.php:587
+msgid "There was a problem sticking the topic \"%1$s\"."
+msgstr "هناك مشكلة ما في تتبيت الموضوع \"%1$s\"."
+
+#: includes/admin/topics.php:583
+msgid "Topic \"%1$s\" successfully sticked to front."
+msgstr "الموضوع \"%1$s\" تم تثبيته في الواجهة بنجاح."
+
+#: includes/admin/topics.php:583
+msgid "There was a problem sticking the topic \"%1$s\" to front."
+msgstr "كانت هناك مشكلة في تثبيت الموضوع \"%1$s\" في الواجهة."
+
+#: includes/admin/topics.php:579
+msgid "Topic \"%1$s\" successfully closed."
+msgstr "تمّ إغلاق الموضوع \"%1$s\" بنجاح."
+
+#: includes/admin/topics.php:579
+msgid "There was a problem closing the topic \"%1$s\"."
+msgstr "كانت هناك مشكلة في إغلاق الموضوع \"%1$s\"."
+
+#: includes/admin/topics.php:575
+msgid "Topic \"%1$s\" successfully opened."
+msgstr "تمّ فتح الموضوع \"%1$s\" بنجاح."
+
+#: includes/admin/topics.php:575
+msgid "There was a problem opening the topic \"%1$s\"."
+msgstr "هناك مشكلة في فتح الموضوع \"%1$s\"."
+
+#: includes/admin/topics.php:485
+msgid "The topic was not found!"
+msgstr "لم يتم العثور على الموضوع!"
+
+#: includes/admin/topics.php:220
+msgid "Select the attributes that your topic should have:"
+msgstr "حدد الخصائص التي يجب أن تكون في موضوعك:"
+
+#: includes/admin/topics.php:218 includes/admin/topics.php:255
+msgid "Topic Attributes"
+msgstr "خصائص الموضوع"
+
+#: includes/admin/topics.php:206
+msgid "<strong>Title</strong> - Enter a title for your topic. After you enter a title, you&#8217;ll see the permalink below, which you can edit."
+msgstr "<strong>العنوان</strong> - أدخل عنوانا لموضوعك. بعد ذلك، سيظهر لك الرابط الدائم أدناه، الذي يمكنك تحريره."
+
+#: includes/admin/topics.php:204
+msgid "Title and Topic Editor"
+msgstr "العنوان و محرّر الموضوع"
+
+#: includes/admin/topics.php:194
+msgid "The title field and the big topic editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "حقل العنوان و مساحة تحرير الموضوع مثبثة في أماكنها، ولكن يمكنك تغيير موضع كافة الصناديق الأخرى باستخدام السحب والإفلات، ويمكن تقليصها أو تمديدها من خلال النقر على شريط عنوان كل صندوق. استخدم تبويب خيارات الشاشة لإظهار مزيد من الصناديق (المقتطف، إرسال التعقيبات، الحقول المخصصة، مناقشة، الاسم اللطيف، الكاتب) أو لإختيار عدد الأعمدة لهذه الشاشة."
+
+#: includes/admin/topics.php:173
+msgid "When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected topics at once. To remove a topic from the grouping, just click the x next to its name in the Bulk Edit area that appears."
+msgstr "يمكنك أيضاً تحرير أكثر من موضوع في نفس الوقت. اختر الموضوعات التي تريد تحريرها بوضع إشارة في مربع الاختيار، اختر تحرير من قائمة الأوامر المتعددة ثم أنقر على زر \"تطبيق\". حينها، يمكنك تغيير المعلومات الأساسية (الوسوم، الحالة ...الخ) لكل الموضوعات التي اخترتها دفعة واحدة. لإزالة موضوع من مجموعة الموضوعات التي اخترتها أنقر على إشارة x بجانب عنوان الموضوع في قائمة \"تحرير متعدّد\"."
+
+#: includes/admin/topics.php:172
+msgid "You can also edit or move multiple topics to the trash at once. Select the topics you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply."
+msgstr "يمكنك أيضاً تحرير أو نقل موضوعات متعددة إلى سلة المهملات في آن واحد. بداية حدّد الموضوعات، ثمّ حدّد الإجراء الذي تريد تنفيذه من قائمة \"تنفيذ الأمر\" ثمّ انقر على زر \"تطبيق\"."
+
+#: includes/admin/topics.php:163
+msgid "<strong>Stick <em>(to front)</em></strong> will keep the selected topic &#8217;pinned&#8217; to the top of ALL forums and be visable in any forums topics list."
+msgstr "<strong>مثبّت (في الواجهة)</strong> سوف يبقي الموضوع المحدّد &#8217;مثبّت&#8217; في كافة المنتديات."
+
+#: includes/admin/topics.php:162
+msgid "<strong>Stick</strong> will keep the selected topic &#8217;pinned&#8217; to the top the parent forum topic list."
+msgstr "<strong>تثبيت</strong> سوف يبقي الموضوع المحدّد &#8217;مثبّت&#8217; فقط في المنتدى الخاص به."
+
+#: includes/admin/topics.php:161
+msgid "<strong>Close</strong> will mark the selected topic as &#8217;closed&#8217; and disable the option to post new replies to the topic."
+msgstr "<strong>إغلاق</strong> سيجعل الموضوع المحدّد &#8217;مغلق&#8217; وسيعطّل الخيار لإضافة ردود جديدة لهذا الموضوع."
+
+#: includes/admin/topics.php:160
+msgid "<strong>Preview</strong> will show you what your draft topic will look like if you publish it. View will take you to your live site to view the topic. Which link is available depends on your topic&#8217;s status."
+msgstr "<strong>عرض</strong> سوف يعرض لك كيف سيبدو موضوعك إذا تمّ نشره، بحيث يتم نقلك لموقعك على الإنترنت لتشاهد الموضوع. نوع الرابط المتوفر سيكون بناءً على حالة الموضوع."
+
+#: includes/admin/topics.php:159
+msgid "<strong>Spam</strong> removes your topic from this list and places it in the spam queue, from which you can permanently delete it."
+msgstr "<strong>مزعج</strong> سوف ينقل الموضوع من قائمة الموضوعات إلى قائمة الانتظار الخاصة بالموضوعات المزعجة، من هناك يمكنك حذف الموضوع بشكل دائم."
+
+#: includes/admin/topics.php:158
+msgid "<strong>Trash</strong> removes your topic from this list and places it in the trash, from which you can permanently delete it."
+msgstr "<strong>سلّة المهملات</strong> سوف ينقل الموضوع من قائمة الموضوعات إلى سلة المهملات، من هناك يمكنك حذف الموضوع بشكل دائم."
+
+#: includes/admin/topics.php:157
+msgid "<strong>Edit</strong> takes you to the editing screen for that topic. You can also reach that screen by clicking on the topic title."
+msgstr "<strong>تحرير</strong> ينقلك إلى شاشة التحرير لذاك الموضوع. يمكنك أيضاً الوصول إلى تلك الشاشة بالنقر على عنوان الموضوع."
+
+#: includes/admin/topics.php:155
+msgid "Hovering over a row in the topics list will display action links that allow you to manage your topic. You can perform the following actions:"
+msgstr "بتمرير مؤشر الفأرة فوق أي صف في قائمة الموضوعات سوف يتم عرض المزيد من الروابط لتسمح لك بالتحكم في موضوعك. يمكنك القيام بما يلي:"
+
+#: includes/admin/topics.php:146
+msgid "You can refine the list to show only topics from a specific month by using the dropdown menus above the topics list. Click the Filter button after making your selection. You also can refine the list by clicking on the topic creator in the topics list."
+msgstr "بإمكانك تصفية قائمة الموضوعات حسب حالة الموضوع باستخدام الروابط النصية في الجانب العلوي الأيسر لإظهار الكل، المنشورات أو المهملات. افتراضياً يتم عرض كل الموضوعات."
+
+#: includes/admin/topics.php:145
+msgid "You can filter the list of topics by topic status using the text links in the upper left to show All, Published, or Trashed topics. The default view is to show all topics."
+msgstr "يمكنك تصفية قائمة الموضوعات حسب حالة الموضوع وذلك بواسطة النقر على الروابط النصية الموجودة في الجزء العلوي الأيمن لعرض الكل، المنشورات أو الموضوعات الموجودة في سلّة المهملات. افتراضيًا يتم عرض كل الموضوعات."
+
+#: includes/admin/topics.php:144
+msgid "You can hide/display columns based on your needs and decide how many topics to list per screen using the Screen Options tab."
+msgstr "يمكنك عرض/إخفاء الأعمدة حسب حاجتك والتحكم بعدد الموضوعات التي يتم عرضها في الصفحة من خلال زر خيارات الشاشة."
+
+#: includes/admin/topics.php:134
+msgid "This screen displays the individual topics on your site. You can customize the display of this screen to suit your workflow."
+msgstr "هذه الشاشة تعرض قائمة الموضوعات في موقعك. يمكنك تخصيص طريقة عرض هذه الشاشة لتتناسب مع العمل الخاص بك."
+
+#: includes/admin/tools.php:1370
+msgid "Deleting Roles and Capabilities&hellip; %s"
+msgstr "حذف الرتب و الصلاحيات&hellip; %s"
+
+#: includes/admin/tools.php:1364
+msgid "Deleting Settings&hellip; %s"
+msgstr "حذف الإعدادات&hellip;%s"
+
+#: includes/admin/tools.php:1352
+msgid "Deleting Conversion Table&hellip; %s"
+msgstr "حذف جدول التحويل&hellip; %s"
+
+#: includes/admin/tools.php:1336 includes/admin/tools.php:1344
+msgid "Deleting User Meta&hellip; %s"
+msgstr "حذف ميتا الاعضاء&hellip; %s"
+
+#: includes/admin/tools.php:1331
+msgid "Deleting User&hellip; %s"
+msgstr "جاري حذف العضويات&hellip; %s"
+
+#: includes/admin/tools.php:1316
+msgid "Deleting Topic Tags&hellip; %s"
+msgstr "جاري حذف وسوم الموضوع&hellip;%s"
+
+#: includes/admin/tools.php:1307
+msgid "Deleting Post Meta&hellip; %s"
+msgstr "حذف ميتا المشاركات&hellip; %s"
+
+#: includes/admin/tools.php:1294
+msgid "Deleting Posts&hellip; %s"
+msgstr "حذف الموضوعات&hellip;%s"
+
+#: includes/admin/tools.php:1287
+msgid "Success!"
+msgstr "تمّ بنجاح!"
+
+#: includes/admin/tools.php:1286
+msgid "Failed"
+msgstr "فشل"
+
+#: includes/admin/tools.php:1253
+msgid "Reset bbPress"
+msgstr "إعادة ضبط bbPress إلى الإفتراضي"
+
+#: includes/admin/tools.php:1244
+msgid "This process cannot be undone."
+msgstr "لا يمكن التراجع عن هذه الخطوة."
+
+#: includes/admin/tools.php:1240
+msgid "Are you sure you want to do this?"
+msgstr "هل أنت متأكد أنك تود فعل ذلك؟"
+
+#: includes/admin/tools.php:1235
+msgid "Note: Resetting without this checked will delete the meta-data necessary to delete these users."
+msgstr "ملاحظة: إعادة الضبط بدون تعليم هذا الخيار سيحذف معلومات الميتا الضرورية لحذف هؤلاء الأعضاء."
+
+#: includes/admin/tools.php:1234
+msgid "This option will delete all previously imported users, and cannot be undone."
+msgstr "هذا الخيار سيحذف كل العضويات المستوردة، ولايمكن التراجع عنه."
+
+#: includes/admin/tools.php:1233 includes/admin/tools.php:1243
+msgid "Say it ain't so!"
+msgstr "يقال أنه ليس كذلك!"
+
+#: includes/admin/tools.php:1230
+msgid "Delete imported users?"
+msgstr "حذف العضويات المستوردة؟"
+
+#: includes/admin/tools.php:1226
+msgid "Importer Helper Data"
+msgstr "بيانات مساعد المستورد"
+
+#: includes/admin/tools.php:1225
+msgid "Forum User Roles"
+msgstr "رتب الأعضاء في المنتدى"
+
+#: includes/admin/tools.php:1224
+msgid "Forum Activity"
+msgstr "نشاط المنتدى"
+
+#: includes/admin/tools.php:1223
+msgid "Forum Settings"
+msgstr "إعدادات المنتدى"
+
+#: includes/admin/tools.php:1222
+msgid "Related Meta Data"
+msgstr "البيانات الوصفية (Meta Data) ذات الصلة."
+
+#: includes/admin/tools.php:1221
+msgid "All Topic Tags"
+msgstr "كافة وسوم الموضوع"
+
+#: includes/admin/tools.php:1220 includes/replies/functions.php:1994
+#: includes/replies/template.php:50
+msgid "All Replies"
+msgstr "كافة الردود"
+
+#: includes/admin/tools.php:1219 includes/topics/functions.php:3439
+#: includes/topics/template.php:50
+msgid "All Topics"
+msgstr "كافة الموضوعات"
+
+#: includes/admin/tools.php:1218 includes/forums/template.php:50
+msgid "All Forums"
+msgstr "كافة المنتديات"
+
+#: includes/admin/tools.php:1216
+msgid "The following data will be removed:"
+msgstr "سيتم حذف البيانات التالية:"
+
+#: includes/admin/tools.php:1210
+msgid "Backup your database before proceeding."
+msgstr "قم بالاحتفاظ بنسخة احتياطية من قاعدة البيانات قبل التنفيذ."
+
+#: includes/admin/tools.php:1100
+msgid "Recalculating the topic for each post &hellip; %s"
+msgstr "إعادة حساب الموضوع لكل مشاركة &hellip; %s"
+
+#: includes/admin/tools.php:1046
+msgid "Recalculating the forum for each post &hellip; %s"
+msgstr "إعادة حساب المنتدى لكل مشاركة &hellip; %s"
+
+#: includes/admin/tools.php:1022
+msgid "Recalculating forum visibility &hellip; %s"
+msgstr "إعادة حساب ظهور المنتدى &hellip; %s"
+
+#: includes/admin/tools.php:965
+msgid "Repairing the sticky topic to the parent forum relationships&hellip; %s"
+msgstr "جاري إصلاح العلاقات التي تربط موضوعا مثبتا بمنتدى أب&hellip;%s"
+
+#: includes/admin/tools.php:859
+msgid "Recomputing latest post in every topic and forum&hellip; %s"
+msgstr "إعادة حساب آخر مشاركة في كل موضوع ومنتدى&hellip; %s"
+
+#: includes/admin/tools.php:843
+msgid "Complete! %s users updated."
+msgstr "تم! تمّ تحديث %s عضو."
+
+#: includes/admin/tools.php:805
+msgid "Remapping forum role for each user on this site&hellip; %s"
+msgstr "إعادة تعيين رتبة كل عضو في المنتدى على هذا الموقع&hellip; %s"
+
+#: includes/admin/tools.php:682
+msgid "Removing trashed topics from user subscriptions&hellip; %s"
+msgstr "إزالة الموضوعات المهملة من إشتراكات العضو &hellip; %s"
+
+#: includes/admin/tools.php:650 includes/admin/tools.php:711
+#: includes/admin/tools.php:772
+msgid "Nothing to remove!"
+msgstr "لا يوجد شيء لنقله!"
+
+#: includes/admin/tools.php:620
+msgid "Removing trashed topics from user favorites&hellip; %s"
+msgstr "إزالة الموضوعات المهملة من مفضلات العضو &hellip; %s"
+
+#: includes/admin/tools.php:575
+msgid "Counting the number of topics to which each user has replied&hellip; %s"
+msgstr "احتساب عدد الردود لكل عضو&hellip; %s"
+
+#: includes/admin/tools.php:530
+msgid "Counting the number of topics each user has created&hellip; %s"
+msgstr "احتساب عدد الموضوعات التي أنشأها كل عضو&hellip; %s"
+
+#: includes/admin/tools.php:487
+msgid "Counting the number of replies in each forum&hellip; %s"
+msgstr "احتساب عدد الردود في كل منتدى&hellip; %s"
+
+#: includes/admin/tools.php:453
+msgid "Counting the number of topics in each forum&hellip; %s"
+msgstr "احتساب عدد الموضوعات في كل منتدى&hellip; %s"
+
+#: includes/admin/tools.php:434
+msgid "Complete! %s groups updated; %s forums updated; %s forum statuses synced."
+msgstr "اكتمل! تم تحديث %s مجموعةّ؛ وتم تحديث %s منتدى؛ وتمت مزامنة %s حالة لمنتدى."
+
+#: includes/admin/tools.php:418
+msgid "group-forums"
+msgstr "منتديات المجموعات"
+
+#: includes/admin/tools.php:417
+msgid "Group Forums"
+msgstr "منتديات المجموعة"
+
+#: includes/admin/tools.php:316
+msgid "Repairing BuddyPress group-forum relationships&hellip; %s"
+msgstr "يجري إصلاح العلاقات مجموعة-منتدى لباديبريس&hellip;%s"
+
+#: includes/admin/tools.php:291
+msgid "Counting the number of spammed and trashed replies in each topic&hellip; %s"
+msgstr "حساب عدد الردود المزعجة و المحذوفة لكل موضوع&hellip;%s"
+
+#: includes/admin/tools.php:249
+msgid "Counting the number of voices in each topic&hellip; %s"
+msgstr "احتساب عدد المشاركين في كل موضوع&hellip; %s"
+
+#: includes/admin/tools.php:233 includes/admin/tools.php:276
+#: includes/admin/tools.php:302 includes/admin/tools.php:469
+#: includes/admin/tools.php:514 includes/admin/tools.php:559
+#: includes/admin/tools.php:604 includes/admin/tools.php:666
+#: includes/admin/tools.php:727 includes/admin/tools.php:788
+#: includes/admin/tools.php:950 includes/admin/tools.php:1007
+#: includes/admin/tools.php:1030 includes/admin/tools.php:1085
+#: includes/admin/tools.php:1130 includes/admin/tools.php:1186
+msgid "Complete!"
+msgstr "تم!"
+
+#: includes/admin/tools.php:199 includes/admin/tools.php:250
+#: includes/admin/tools.php:292 includes/admin/tools.php:337
+#: includes/admin/tools.php:454 includes/admin/tools.php:488
+#: includes/admin/tools.php:531 includes/admin/tools.php:576
+#: includes/admin/tools.php:621 includes/admin/tools.php:683
+#: includes/admin/tools.php:744 includes/admin/tools.php:812
+#: includes/admin/tools.php:860 includes/admin/tools.php:966
+#: includes/admin/tools.php:1026 includes/admin/tools.php:1047
+#: includes/admin/tools.php:1101
+msgid "Failed!"
+msgstr "فشل!"
+
+#: includes/admin/tools.php:198
+msgid "Counting the number of replies in each topic&hellip; %s"
+msgstr "احتساب عدد الردود في كل موضوع&hellip; %s"
+
+#: includes/admin/tools.php:178
+msgid "Remap existing users to default forum roles"
+msgstr "تغيير رتبة الأعضاء الموجودين إلى الرتبة الافتراضية في المنتدى"
+
+#: includes/admin/tools.php:177
+msgid "Remove trashed forums from user subscriptions"
+msgstr "إزالة المنتديات الموجودة في سلّة المهملات من إشتراكات الأعضاء."
+
+#: includes/admin/tools.php:176
+msgid "Remove trashed topics from user subscriptions"
+msgstr "إزالة الموضوعات المحذوفة من اشتراكات العضو"
+
+#: includes/admin/tools.php:175
+msgid "Remove trashed topics from user favorites"
+msgstr "إزالة الموضوعات المحذوفة من مفضّلة العضو"
+
+#: includes/admin/tools.php:174
+msgid "Count replies for each user"
+msgstr "حساب عدد الردود لكل عضو"
+
+#: includes/admin/tools.php:173
+msgid "Count topics for each user"
+msgstr "حساب عدد الردود لكل عضو"
+
+#: includes/admin/tools.php:172
+msgid "Count spammed & trashed replies in each topic"
+msgstr "حساب عدد الردود المزعجة و المحذوفة لكل موضوع"
+
+#: includes/admin/tools.php:171
+msgid "Count voices in each topic"
+msgstr "حساب عدد المشاركين في كل موضوع"
+
+#: includes/admin/tools.php:170
+msgid "Count replies in each topic"
+msgstr "حساب عدد الردود في كل موضوع"
+
+#: includes/admin/tools.php:169
+msgid "Count replies in each forum"
+msgstr "حساب عدد الردود في كل منتدى"
+
+#: includes/admin/tools.php:168
+msgid "Count topics in each forum"
+msgstr "حساب عدد الموضوعات في كل منتدى"
+
+#: includes/admin/tools.php:167
+msgid "Repair BuddyPress Group Forum relationships"
+msgstr "إصلاح ارتباطات منتديات المجموعات في باديبريس"
+
+#: includes/admin/tools.php:165
+msgid "Recalculate the sticky relationship of each topic"
+msgstr "إعادة حساب علاقات التثبيت لكل موضوع"
+
+#: includes/admin/tools.php:164
+msgid "Recalculate last activity in each topic and forum"
+msgstr "إعادة ضبط النشاط الأخير في كل موضوع و منتدى"
+
+#: includes/admin/tools.php:163
+msgid "Recalculate private and hidden forums"
+msgstr "إعادة ضبط المنتديات الخاصة و المخفيّة"
+
+#: includes/admin/tools.php:162
+msgid "Recalculate the parent forum for each post"
+msgstr "إعادة ضبط المنتدى الأب لكل مشاركة"
+
+#: includes/admin/tools.php:161
+msgid "Recalculate the parent topic for each post"
+msgstr "إعادة ضبط الموضوع الأب لكل مشاركة"
+
+#: includes/admin/tools.php:61
+msgid "Repair Items"
+msgstr "إصلاح العناصر"
+
+#: includes/admin/tools.php:46
+msgid "Repair"
+msgstr "إصلاح"
+
+#: includes/admin/tools.php:43
+msgid "Relationships to Repair:"
+msgstr "إصلاح الارتباطات التالية:"
+
+#: includes/admin/tools.php:37
+msgid "Some of these tools create substantial database overhead. Avoid running more than 1 repair job at a time."
+msgstr "بعض من هذه الأدوات تسبّب ضغط كبير على قاعدة البيانات. تجنّب تشغيل أكثر من عملية إصلاح واحدة في كل مرّة."
+
+#: includes/admin/tools.php:36
+msgid "bbPress keeps track of relationships between forums, topics, replies, and topic tags, and users. Occasionally these relationships become out of sync, most often after an import or migration. Use the tools below to manually recalculate these relationships."
+msgstr "بي بي بريس يتتبّع الارتباطات بين المنتديات، الموضوعات، الردود، وسوم الموضوعات والأعضاء. أحياناً تصبح هذه الارتباطات غير متزامنة، في معظم الأحيان يحصل ذلك بعد تنفيذ عملية استيراد أو تصدير. استخدم الأدوات أدناه لإعادة ضبط هذه الارتباطات."
+
+#: includes/admin/settings.php:1755
+msgid "Possible %1$s conflict: %2$s"
+msgstr "تعارض %1$s محتمل: %2$s"
+
+#: includes/admin/settings.php:1736
+msgid "%s page"
+msgstr "%s صفحة"
+
+#: includes/admin/settings.php:1724
+msgid "Topic tag slug"
+msgstr "الاسم اللطيف للوسم"
+
+#: includes/admin/settings.php:1721
+msgid "View base"
+msgstr "قاعدة الرؤية"
+
+#: includes/admin/settings.php:1718
+msgid "User base"
+msgstr "قاعدة العضو"
+
+#: includes/admin/settings.php:1715
+msgid "Reply slug"
+msgstr "الاسم اللطيف للرد"
+
+#: includes/admin/settings.php:1712
+msgid "Topic slug"
+msgstr "الاسم اللطيف للموضوع"
+
+#: includes/admin/settings.php:1709
+msgid "Forum slug"
+msgstr "الاسم اللطيف للمنتدى"
+
+#: includes/admin/settings.php:1706
+msgid "Topics base"
+msgstr "قاعدة الموضوعات"
+
+#: includes/admin/settings.php:1703
+msgid "Forums base"
+msgstr "قاعدة المنتديات"
+
+#: includes/admin/settings.php:1698
+msgid "Category base"
+msgstr "الإسم اللطيف للتصنيف"
+
+#: includes/admin/settings.php:1695
+msgid "Tag base"
+msgstr "قاعدة الوسم"
+
+#: includes/admin/settings.php:1692
+msgid "Menus"
+msgstr "القوائم"
+
+#: includes/admin/settings.php:1691
+msgid "Attachments"
+msgstr "المرفقات"
+
+#: includes/admin/settings.php:1689
+msgid "Pages"
+msgstr "صفحات"
+
+#: includes/admin/settings.php:1688
+#: templates/default/bbpress/loop-forums.php:21
+#: templates/default/bbpress/loop-replies.php:24
+#: templates/default/bbpress/loop-replies.php:66
+#: templates/default/bbpress/loop-topics.php:21
+msgid "Posts"
+msgstr "المشاركات"
+
+#: includes/admin/settings.php:1590
+msgid "In the event of a slug collision with WordPress or BuddyPress, a warning will appear next to the problem slug(s)."
+msgstr "في حال حصول تعارض في الأسماء اللطيفة بين ووردبريس و BuddyPress، سيظهر تحذير بجوار الأسماء اللطيفة التي تسبّب مشكلة."
+
+#: includes/admin/settings.php:1589
+msgid "\"Single Slugs\" are used as a prefix when viewing an individual forum, topic, reply, user, or view."
+msgstr "\"الأسماء اللطيفة الأخرى\" - تُستخدم كبادئة عند عرض منتدى، موضوع، رد، عضو أو مشاهدة."
+
+#: includes/admin/settings.php:1588
+msgid "\"Archive Slugs\" are used as the \"root\" for your forums and topics. If you combine these values with existing page slugs, bbPress will attempt to output the most correct title and content."
+msgstr "\"الاسم اللطيف للأرشيف\" -  يُستخدم لتحديد قاعدة المنتديات والموضوعات. في حال جمعت بين هذه القيم وبين صفحات أخرى تحمل نفس الاسم اللطيف، سيحاول بي بي بريس أن يعطي النتيجة الأفضل من حيث العنوان والمحتوى."
+
+#: includes/admin/settings.php:1587
+msgid "The Slugs section allows you to control the permalink structure for your forums."
+msgstr "الأسماء اللطيفة تسمح لك بالسيطرة على الروابط الدائمة لمنتداك."
+
+#: includes/admin/settings.php:1586
+msgid "Slugs"
+msgstr "الأسماء اللطيفة"
+
+#: includes/admin/settings.php:1579
+msgid "This is comparable to the WordPress \"Reading Settings\" page, where you can set the number of posts that should show on blog pages and in feeds."
+msgstr "هذه الخيارات مماثلة لخيارات \"إعدادات القراءة\" في ووردبريس، حيث يمكنك تحديد عدد المشاركات التي تريدها أن تظهر في الصفحة أو في الخلاصة."
+
+#: includes/admin/settings.php:1578
+msgid "Per Page settings allow you to control the number of topics and replies appear on each page."
+msgstr "إعدادات \"لكل صفحة\" تسمح لك بالسيطرة على عدد الموضوعات والردود التي تظهر في الصفحة الواحدة."
+
+#: includes/admin/settings.php:1577
+msgid "Per Page"
+msgstr "لكل صفحة"
+
+#: includes/admin/settings.php:1571
+msgid "You must click the Save Changes button at the bottom of the screen for new settings to take effect."
+msgstr "يجب النقر على زر حفظ التغييرات في الجزء السفلي من الشاشة حتى تصبح الخيارات الجديدة سارية المفعول."
+
+#: includes/admin/settings.php:1568
+msgid "Auto-embed will embed the media content from a URL directly into the replies. For example: links to Flickr and YouTube."
+msgstr "\"إدراج الروابط تلقائياً\" - إمكانية استخدام خاصيّة إدراج الروابط ليتم عرضها على شكل وسائط. على سبيل المثال: روابط من يوتيوب وفليكر."
+
+#: includes/admin/settings.php:1567
+msgid "The Fancy Editor brings the luxury of the Visual editor and HTML editor from the traditional WordPress dashboard into your theme."
+msgstr "\"محرّر ووردبريس\" - إمكانية استخدام محرر ووردبريس في المنتديات. "
+
+#: includes/admin/settings.php:1566
+msgid "\"Anonymous Posting\" allows guest users who do not have accounts on your site to both create topics as well as replies."
+msgstr "\"مشاركات مجهولة\" - تسمح لضيوف الموقع الذين ليس لديهم عضوية في موقعك بإنشاء موضوعات وردود."
+
+#: includes/admin/settings.php:1565
+msgid "Topic-Tags allow users to filter topics between forums. This is enabled by default."
+msgstr "\"وسوم الموضوع\" - تسمح للأعضاء بفرز الموضوعات بين المنتديات. هذا الخيار متاح افتراضيًا."
+
+#: includes/admin/settings.php:1564
+msgid "Subscriptions allow users to subscribe for notifications to topics that interest them. This is enabled by default."
+msgstr "\"الاشتراكات\" - تسمح للأعضاء بالاشتراك في الموضوعات التي تهمّهم لتلقي إشعارات حول الردود الجديدة. هذا الخيار متاح افتراضيًا."
+
+#: includes/admin/settings.php:1563
+msgid "Favorites are a way for users to save and later return to topics they favor. This is enabled by default."
+msgstr "\"المفضّلة\" - هي وسيلة تمنح الأعضاء إمكانية حفظ المضوعات والرجوع إليها لاحقًا. هذا الخيار متاح افتراضيًا."
+
+#: includes/admin/settings.php:1562
+msgid "\"Throttle time\" is the amount of time required between posts from a single author. The higher the throttle time, the longer a user will need to wait between posting to the forum."
+msgstr "\"فترة التأخير بين مشاركة وأخرى\" - يمكنك التحكّم بمقدار الوقت المطلوب الذي يجب على العضو أن ينتظره بين إرسال مشاركة وأخرى."
+
+#: includes/admin/settings.php:1561
+msgid "You can choose to lock a post after a certain number of minutes. \"Locking post editing\" will prevent the author from editing some amount of time after saving a post."
+msgstr "\"عدم السماح بالتحرير بعد\" - يمكنك عدم السماح بتحرير مشاركة بعد مرور وقت معيّن على إرسالها."
+
+#: includes/admin/settings.php:1558
+msgid "In the Main Settings you have a number of options:"
+msgstr "في الإعدادات الرئيسية لديك عدد من الخيارات:"
+
+#: includes/admin/settings.php:1557
+msgid "Main Settings"
+msgstr "الإعدادات الرئيسية"
+
+#: includes/admin/settings.php:1551
+msgid "Please see the additional help tabs for more information on each indiviual section."
+msgstr "يرجى الإطلاع على علامات تبويب المساعدة الإضافية لمزيد من المعلومات حول كل قسم."
+
+#: includes/admin/settings.php:1550
+msgid "This screen provides access to all of the Forums settings."
+msgstr "هذه الشاشة تتيح الوصول إلى كافة إعدادات المنتديات."
+
+#: includes/admin/settings.php:1519
+msgid "Stop"
+msgstr "توقّف"
+
+#: includes/admin/settings.php:1518
+msgid "Start"
+msgstr "ابدأ"
+
+#: includes/admin/settings.php:1488
+msgid "Non-bbPress passwords cannot be automatically converted. They will be converted as each user logs in."
+msgstr "لا يمكن تحويل كلمات المرور تلقائياً (باستثناء كلمات مرور بي بي بريس). سيتم تحويل كلمات المرور تلقائياً حينما يقوم كل مستخدم بتسجيل الدخول."
+
+#: includes/admin/settings.php:1487
+msgid "Attempt to import user accounts from previous forums"
+msgstr "محاولة استيراد حسابات الأعضاء من المنتديات السابقة"
+
+#: includes/admin/settings.php:1473
+msgid "Use this if an import failed and you want to remove that incomplete data."
+msgstr "استخدم هذا إذا فشلت عملية استيراد سابقة وكنت ترغب في إزالة هذه البيانات غير المكتملة."
+
+#: includes/admin/settings.php:1472
+msgid "Purge all information from a previously attempted import"
+msgstr "تخلّص من جميع المعلومات من محاولة الاستيراد السابقة"
+
+#: includes/admin/settings.php:1458
+msgid "You should clean old conversion information before starting over."
+msgstr "يجب عليك إزالة معلومات التحويل القديمة قبل البدء من جديد."
+
+#: includes/admin/settings.php:1457
+msgid "Start a fresh conversion from the beginning"
+msgstr "البدء بعملية تحويل جديدة من البداية"
+
+#: includes/admin/settings.php:1443
+msgid "Keep this high to prevent too-many-connection issues."
+msgstr "حافظ على قيمة عالية، لتجنّب مشاكل في الاتصال."
+
+#: includes/admin/settings.php:1442
+msgid "second(s) delay between each group of rows"
+msgstr "ثانية بين كل دورة وأخرى"
+
+#: includes/admin/settings.php:1428
+msgid "Keep this low if you experience out-of-memory issues."
+msgstr "حافظ على قيمة منخفضة إذا كنت تواجه مشاكل في الذاكرة."
+
+#: includes/admin/settings.php:1427
+msgid "rows to process at a time"
+msgstr "سطر للمعالجة في كل دورة"
+
+#: includes/admin/settings.php:1413
+msgid "(If converting from BuddyPress Forums, use \"wp_bb_\" or your custom prefix)"
+msgstr "(إذا كنت تقوم بالتحويل من منتديات BuddyPress، استخدم \"wp_bb_\" أو استخدم بادئة مخصّصة)"
+
+#: includes/admin/settings.php:1399
+msgid "Some optional parameters to help tune the conversion process."
+msgstr "بعض البارامترات الاختيارية للمساعدة في ضبط عملية التحويل."
+
+#: includes/admin/settings.php:1386
+msgid "Name of the database with your old forum data"
+msgstr "اسم قاعدة البيانات في المنتدى القديم"
+
+#: includes/admin/settings.php:1372
+msgid "Password to access the database"
+msgstr "كلمة المرور للوصول إلى قاعدة البيانات"
+
+#: includes/admin/settings.php:1358
+msgid "User for your database connection"
+msgstr "اسم المستخدم لقاعدة البيانات في المنتدى القديم"
+
+#: includes/admin/settings.php:1344
+msgid "Use default 3306 if unsure"
+msgstr "استخدم الافتراضي 3306 إذا لم تكن متأكداً "
+
+#: includes/admin/settings.php:1330
+msgid "IP or hostname"
+msgstr "الآي بي أو اسم المضيف"
+
+#: includes/admin/settings.php:1316
+msgid "is the previous forum software"
+msgstr "هو برنامج المنتدى السابق"
+
+#: includes/admin/settings.php:1286
+msgid "Information about your previous forums database so that they can be converted. <strong>Backup your database before proceeding.</strong>"
+msgstr "معلومات عن قاعدة البيانات السابقة التي تريد تحويلها. <strong>احتفظ بنسخة احتياطية من قاعدة البيانات قبل البدء.</strong>"
+
+#: includes/admin/settings.php:1267
+#: templates/default/bbpress/form-user-edit.php:173
+msgid "Save Changes"
+msgstr "حفظ التغييرات"
+
+#: includes/admin/settings.php:1258
+msgid "Forums Settings"
+msgstr "إعدادات المنتديات"
+
+#: includes/admin/settings.php:1235
+msgid "Allow Akismet to actively prevent forum spam."
+msgstr "السماح لأكيسميت بمنع المحتوى المزعج (سبام)."
+
+#: includes/admin/settings.php:1218
+msgid "Forum settings for Akismet"
+msgstr "إعدادات أكيسميت في المنتدى"
+
+#: includes/admin/settings.php:1203
+msgid "Using the Forum Root is not recommended. Changing this does not move existing forums."
+msgstr "إستخدام جذر المنتدى غير مستحسن. تغيير هذه القيمة لن ينقل المنتديات الحالية."
+
+#: includes/admin/settings.php:1194
+msgid "&mdash; Forum root &mdash;"
+msgstr "&mdash; جذر المنتدى &mdash;"
+
+#: includes/admin/settings.php:1177
+msgid "Allow BuddyPress Groups to have their own forums"
+msgstr "السماح للمجموعات في BuddyPress بإنشاء منتدياتهم الخاصة"
+
+#: includes/admin/settings.php:1161
+msgid "Forum settings for BuddyPress"
+msgstr "إعدادات المنتدى لـ BuddyPress"
+
+#: includes/admin/settings.php:1043
+msgid "Custom slugs for single forums, topics, replies, tags, views, and search."
+msgstr "عناوين لطيفة مخصصة للمنتديات، الموضوعات، الردود، الوسوم، الرؤى و البحث."
+
+#: includes/admin/settings.php:943
+msgid "Customize your user profile slugs."
+msgstr "خصص العناوين اللطيفة لملفات الأعضاء الشخصية."
+
+#: includes/admin/settings.php:916
+msgid "Topics by Freshness"
+msgstr "الموضوعات حسب التحديث"
+
+#: includes/admin/settings.php:913
+msgid "Forum Index"
+msgstr "فهرس المنتدى"
+
+#: includes/admin/settings.php:893
+msgid "Prefix all forum content with the Forum Root slug (Recommended)"
+msgstr "أضف بادئة جذر المنتدى لكل محتوى المنتدى (يُنصح بذلك)"
+
+#: includes/admin/settings.php:810
+msgid "How many topics and replies to show per RSS page"
+msgstr "عدد الموضوعات والردود المعروضة في كل صفحة خلاصات (RSS)"
+
+#: includes/admin/settings.php:779 includes/admin/settings.php:795
+#: includes/admin/settings.php:826 includes/admin/settings.php:842
+msgid "per page"
+msgstr "لكل صفحة"
+
+#: includes/admin/settings.php:763
+msgid "How many topics and replies to show per page"
+msgstr "عدد الموضوعات والردود المعروضة في كل صفحة"
+
+#: includes/admin/settings.php:748
+msgid "Embed media (YouTube, Twitter, Flickr, etc...) directly into topics and replies"
+msgstr "إدراج الوسائط (يوتيوب، تويتر، فليكر، الخ...) مباشرة في الموضوعات والردود"
+
+#: includes/admin/settings.php:732
+msgid "No template packages available."
+msgstr "لا توجد حزم قوالب متوفرة."
+
+#: includes/admin/settings.php:722
+msgid "%1$s - %2$s"
+msgstr "%1$s - %2$s"
+
+#: includes/admin/settings.php:685
+msgid "Add toolbar & buttons to textareas to help with HTML formatting"
+msgstr "إضافة شريط الأدوات والأزرار لمربع الكتابة للمساعدة في تنسيق HTML"
+
+#: includes/admin/settings.php:669
+msgid "Allow topic and reply revision logging"
+msgstr "السماح بعرض سجّل تحرير الموضوعات/الردود"
+
+#: includes/admin/settings.php:652
+msgid "Enable threaded (nested) replies %s levels deep"
+msgstr "تمكين الردود المتشعبة  للعمق %s"
+
+#: includes/admin/settings.php:613
+msgid "Allow forum wide search"
+msgstr "السماح بالبحث الموسع في المنتدى "
+
+#: includes/admin/settings.php:597
+msgid "Allow topics to have tags"
+msgstr "السماح بإضافة وسوم للموضوعات"
+
+#: includes/admin/settings.php:581
+msgid "Allow users to subscribe to forums and topics"
+msgstr "السماح للأعضاء بالإشتراك في المنتديات و الموضوعات"
+
+#: includes/admin/settings.php:565
+msgid "Allow users to mark topics as favorites"
+msgstr "السماح للأعضاء بإضافة موضوعات للمفضّلة"
+
+#: includes/admin/settings.php:549
+msgid "Forum features that can be toggled on and off"
+msgstr "ميزات المنتدى التي يمكن تفعيلها أو تعطيليها"
+
+#: includes/admin/settings.php:533
+msgid "Automatically give registered visitors the %s forum role"
+msgstr "تلقائياً قم بمنح الزوار المسجلين رتبة %s"
+
+#: includes/admin/settings.php:499
+msgid "Allow guest users without accounts to create topics and replies"
+msgstr "السماح للزوار غير المسجلين بإنشاء موضوعات وردود"
+
+#: includes/admin/settings.php:483 includes/common/functions.php:124
+msgid "seconds"
+msgstr "ثانية"
+
+#: includes/admin/settings.php:467 includes/common/functions.php:123
+msgid "minutes"
+msgstr "دقيقة"
+
+#: includes/admin/settings.php:450
+msgid "Setting time limits and other user posting capabilities"
+msgstr "ضبط حدود الوقت وصلاحيات مشاركات العضو"
+
+#: includes/admin/settings.php:412
+msgid "Use Akismet"
+msgstr "استخدام أكيسميت"
+
+#: includes/admin/settings.php:399
+msgid "Group Forums Parent"
+msgstr "أب منتديات المجموعة"
+
+#: includes/admin/settings.php:391
+msgid "Enable Group Forums"
+msgstr "تمكين المنتديات للمجموعة"
+
+#: includes/admin/settings.php:378
+msgid "Topic Subscriptions"
+msgstr "اشتراكات الموضوع"
+
+#: includes/admin/settings.php:370 includes/extend/buddypress/loader.php:285
+msgid "Favorite Topics"
+msgstr "الموضوعات المفضّلة"
+
+#: includes/admin/settings.php:362 includes/extend/buddypress/loader.php:207
+#: includes/extend/buddypress/loader.php:277
+#: templates/default/bbpress/user-details.php:41
+msgid "Replies Created"
+msgstr "ردود العضو"
+
+#: includes/admin/settings.php:354 includes/extend/buddypress/loader.php:196
+#: includes/extend/buddypress/loader.php:269
+#: templates/default/bbpress/user-details.php:35
+msgid "Topics Started"
+msgstr "موضوعات العضو"
+
+#: includes/admin/settings.php:346
+msgid "User Base"
+msgstr "قاعدة العضو"
+
+#: includes/admin/settings.php:317
+msgid "Topic View"
+msgstr "رؤى الموضوع"
+
+#: includes/admin/settings.php:280
+msgid "Forum root should show"
+msgstr "يجب ظهور جذر المنتدى"
+
+#: includes/admin/settings.php:272
+msgid "Forum Prefix"
+msgstr "بادئة المنتدى"
+
+#: includes/admin/settings.php:264
+msgid "Forum Root"
+msgstr "جذر المنتدى"
+
+#: includes/admin/settings.php:209
+msgid "Current Package"
+msgstr "الحزمة الحالية"
+
+#: includes/admin/settings.php:190
+msgid "Reply Threading"
+msgstr "رد تشعبي"
+
+#: includes/admin/settings.php:182
+msgid "Auto-embed links"
+msgstr "إدراج الروابط تلقائياً"
+
+#: includes/admin/settings.php:174
+msgid "Post Formatting"
+msgstr "تنسيق الموضوع"
+
+#: includes/admin/settings.php:166 includes/admin/settings.php:333
+#: includes/common/template.php:2330 includes/search/template.php:225
+#: templates/default/bbpress/form-search.php:17
+msgid "Search"
+msgstr "بحث"
+
+#: includes/admin/settings.php:158
+msgid "Topic tags"
+msgstr "وسوم الموضوع"
+
+#: includes/admin/settings.php:150 includes/extend/buddypress/loader.php:230
+#: templates/default/bbpress/user-details.php:58
+msgid "Subscriptions"
+msgstr "الاشتراكات"
+
+#: includes/admin/settings.php:142 includes/extend/buddypress/loader.php:218
+#: templates/default/bbpress/user-details.php:48
+msgid "Favorites"
+msgstr "المفضّلة"
+
+#: includes/admin/settings.php:134 includes/admin/settings.php:1690
+msgid "Revisions"
+msgstr "المراجعات"
+
+#: includes/admin/settings.php:115
+msgid "Auto role"
+msgstr "تعيين الرتبة تلقائياً"
+
+#: includes/admin/settings.php:107
+msgid "Anonymous posting"
+msgstr "مشاركات مجهولة"
+
+#: includes/admin/settings.php:99
+msgid "Throttle posting every"
+msgstr "فترة التأخير بين مشاركة وأخرى"
+
+#: includes/admin/settings.php:91
+msgid "Disallow editing after"
+msgstr "عدم السماح بالتحرير بعد"
+
+#: includes/admin/settings.php:69
+msgid "Akismet Integration"
+msgstr "دمج أكيسميت"
+
+#: includes/admin/settings.php:64
+msgid "BuddyPress Integration"
+msgstr "دمج BuddyPress"
+
+#: includes/admin/settings.php:44
+msgid "Topics and Replies Per RSS Page"
+msgstr "الموضوعات والردود لكل صفحة تغذية RSS"
+
+#: includes/admin/settings.php:39
+msgid "Topics and Replies Per Page"
+msgstr "الموضوعات والردود لكل صفحة"
+
+#: includes/admin/settings.php:34
+msgid "Forum Theme Packages"
+msgstr "حزم قالب المنتدى"
+
+#: includes/admin/settings.php:29
+msgid "Forum Features"
+msgstr "خصائص المنتدى"
+
+#: includes/admin/settings.php:24
+msgid "Forum User Settings"
+msgstr "اعدادات عضو المنتدى"
+
+#: includes/admin/replies.php:883
+msgid "Reply draft updated. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
+msgstr "تمّ تحديث مسودة الرد. <a target=\"_blank\" href=\"%s\">معاينة الموضوع</a>"
+
+#: includes/admin/replies.php:876
+msgid "Reply scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview topic</a>"
+msgstr "تمّ جدولة الرد لـ: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">معاينة الموضوع</a>"
+
+#: includes/admin/replies.php:873
+msgid "Reply submitted. <a target=\"_blank\" href=\"%s\">Preview topic</a>"
+msgstr "تمّ إرسال الرد. <a target=\"_blank\" href=\"%s\">معاينة الموضوع</a>"
+
+#: includes/admin/replies.php:870
+msgid "Reply saved."
+msgstr "تمّ حفظ الرد."
+
+#: includes/admin/replies.php:867
+msgid "Reply created. <a href=\"%s\">View topic</a>"
+msgstr "تمّ إنشاء الرد. <a href=\"%s\">مشاهدة الموضوع</a>"
+
+#. translators: %s: date and time of the revision
+#: includes/admin/replies.php:863
+msgid "Reply restored to revision from %s"
+msgstr "تم إستعادة الرد الى مراجعة بتاريخ %s"
+
+#: includes/admin/replies.php:858
+msgid "Reply updated."
+msgstr "تمّ تحديث الرد."
+
+#: includes/admin/replies.php:849
+msgid "Reply updated. <a href=\"%s\">View topic</a>"
+msgstr "تمّ تحديث الرد. <a href=\"%s\">مشاهدة الموضوع</a>"
+
+#: includes/admin/replies.php:789 includes/admin/topics.php:859
+msgid "In all forums"
+msgstr "في جميع المنتديات"
+
+#: includes/admin/replies.php:779 includes/admin/topics.php:849
+msgid "Empty Spam"
+msgstr "حذف كافة المشاركات المزعجة"
+
+#: includes/admin/replies.php:753 includes/admin/topics.php:823
+msgid "Delete Permanently"
+msgstr "حذف بشكل دائم"
+
+#: includes/admin/replies.php:753 includes/admin/topics.php:823
+#: includes/replies/template.php:2053 includes/topics/template.php:2634
+msgid "Delete this item permanently"
+msgstr "حذف هذا العنصر نهائياً"
+
+#: includes/admin/replies.php:749 includes/admin/topics.php:819
+#: includes/replies/template.php:2034 includes/topics/template.php:2615
+msgid "Trash"
+msgstr "سلة المهملات"
+
+#: includes/admin/replies.php:749 includes/admin/topics.php:819
+#: includes/replies/template.php:2049 includes/topics/template.php:2630
+msgid "Move this item to the Trash"
+msgstr "نقل هذا العنصر إلى سلة المهملات"
+
+#: includes/admin/replies.php:747 includes/admin/topics.php:817
+#: includes/replies/template.php:2035 includes/topics/template.php:2616
+msgid "Restore"
+msgstr "استعادة"
+
+#: includes/admin/replies.php:747 includes/admin/topics.php:817
+#: includes/replies/template.php:2047 includes/topics/template.php:2628
+msgid "Restore this item from the Trash"
+msgstr "استعادة هذا العنصر من سلة المهملات"
+
+#: includes/admin/replies.php:738 includes/admin/topics.php:809
+#: includes/replies/template.php:2105 includes/topics/template.php:2872
+msgid "Spam"
+msgstr "مزعج"
+
+#: includes/admin/replies.php:738
+msgid "Mark this reply as spam"
+msgstr "تحديد هذا الرد كرد مزعج"
+
+#: includes/admin/replies.php:736 includes/admin/topics.php:807
+msgid "Not spam"
+msgstr "غير مزعج"
+
+#: includes/admin/replies.php:736
+msgid "Mark the reply as not spam"
+msgstr "تحديد هذا الرد كرد غير مزعج"
+
+#: includes/admin/replies.php:725 includes/admin/topics.php:776
+msgid "View"
+msgstr "عرض"
+
+#: includes/admin/replies.php:725 includes/admin/topics.php:776
+msgid "View &#8220;%s&#8221;"
+msgstr "عرض &#8220;%s&#8221;"
+
+#: includes/admin/replies.php:657
+msgid "(Mismatch)"
+msgstr "(عدم تطابق)"
+
+#: includes/admin/replies.php:651 includes/admin/replies.php:666
+#: includes/admin/topics.php:687
+msgid "No Forum"
+msgstr "لا يوجد منتدى"
+
+#: includes/admin/replies.php:625 includes/admin/replies.php:633
+msgid "No Topic"
+msgstr "لا يوجد موضوع"
+
+#: includes/admin/replies.php:572 includes/admin/topics.php:636
+#: templates/default/bbpress/loop-replies.php:18
+#: templates/default/bbpress/loop-replies.php:60
+#: templates/default/bbpress/loop-search.php:18
+#: templates/default/bbpress/loop-search.php:40
+msgid "Author"
+msgstr "الكاتب"
+
+#: includes/admin/replies.php:569
+msgid "Title"
+msgstr "العنوان"
+
+#: includes/admin/replies.php:536
+msgid "Reply \"%1$s\" successfully unmarked as spam."
+msgstr "تمّ بنجاح تحديد الرد \"%1$s\" كغير مزعج."
+
+#: includes/admin/replies.php:536
+msgid "There was a problem unmarking the reply \"%1$s\" as spam."
+msgstr "كانت هناك مشكلة في تحديد الرد \"%1$s\" كغير مزعج."
+
+#: includes/admin/replies.php:532
+msgid "Reply \"%1$s\" successfully marked as spam."
+msgstr "تمّ بنجاح تحديد الرد \"%1$s\" كمزعج."
+
+#: includes/admin/replies.php:532
+msgid "There was a problem marking the reply \"%1$s\" as spam."
+msgstr "كانت هناك مشكلة في تحديد الرد \"%1$s\" كمزعج."
+
+#: includes/admin/replies.php:464 includes/admin/topics.php:488
+msgid "You do not have the permission to do that!"
+msgstr "لا تملك صلاحيات للقيام بذلك!"
+
+#: includes/admin/replies.php:461
+msgid "The reply was not found!"
+msgstr "لم يتم إيجاد الرد!"
+
+#: includes/admin/replies.php:347 includes/admin/topics.php:363
+#: templates/default/bbpress/form-anonymous.php:17
+msgid "Author Information"
+msgstr "معلومات الكاتب"
+
+#: includes/admin/replies.php:222
+msgid "<strong>Topic</strong> determines the parent topic that the reply belongs to."
+msgstr "<strong>الموضوع</strong> يحدد الموضوع الاب الذي ينتمي إليه الرد."
+
+#: includes/admin/replies.php:221
+msgid "<strong>Forum</strong> dropdown determines the parent forum that the reply belongs to. Select the forum, or leave the default (Use Forum of Topic) to post the reply in forum of the topic."
+msgstr "<strong>المنتدى</strong> قائمة منسدلة لتحديد المنتدى الأب الذي ينتمي إليه الرد. حدد المنتدى، أو إتركه على القيمة الإفتراضية (المنتدى الذي ينتمي إليه الموضوع)."
+
+#: includes/admin/replies.php:219
+msgid "Select the attributes that your reply should have:"
+msgstr "حدد الخصائص التي يجب أن تكون في ردك:"
+
+#: includes/admin/replies.php:217 includes/admin/replies.php:255
+msgid "Reply Attributes"
+msgstr "خصائص الرد"
+
+#: includes/admin/replies.php:205
+msgid "<strong>Title</strong> - Enter a title for your reply. After you enter a title, you&#8217;ll see the permalink below, which you can edit."
+msgstr "<strong>العنوان</strong> - أدخل عنوانا لردك. بعد ذلك، سيظهر لك الرابط الدائم أدناه، الذي يمكنك تحريره."
+
+#: includes/admin/replies.php:203
+msgid "Title and Reply Editor"
+msgstr "العنوان و محرّر الرد"
+
+#: includes/admin/replies.php:193
+msgid "The title field and the big reply editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "حقل العنوان و مساحة تحرير الرد مثبثة في أماكنها، ولكن يمكنك تغيير موضع كافة الصناديق الأخرى باستخدام السحب والإفلات، ويمكن تقليصها أو تمديدها من خلال النقر على شريط عنوان كل صندوق. استخدم تبويب خيارات الشاشة لإظهار مزيد من الصناديق (المقتطف، إرسال التعقيبات، الحقول المخصصة، مناقشة، الاسم اللطيف، الكاتب) أو لإختيار عدد الأعمدة لهذه الشاشة."
+
+#: includes/admin/replies.php:172
+msgid "When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected replies at once. To remove a reply from the grouping, just click the x next to its name in the Bulk Edit area that appears."
+msgstr "يمكنك أيضاً تحرير أكثر من رد في نفس الوقت. اختر الردود التي تريد تحريرها بوضع إشارة في مربع الاختيار، اختر تحرير من قائمة الأوامر المتعددة ثم أنقر على زر \"تطبيق\". حينها، يمكنك تغيير المعلومات الأساسية (الحالة ...الخ) لكل الردود التي اخترتها دفعة واحدة. لإزالة رد من مجموعة الردود التي اخترتها أنقر على إشارة x بجانب عنوان الرد في قائمة \"تحرير متعدّد\"."
+
+#: includes/admin/replies.php:171
+msgid "You can also edit or move multiple replies to the trash at once. Select the replies you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply."
+msgstr "يمكنك أيضاً تحرير أو نقل ردود متعددة إلى سلة المهملات في آن واحد. بداية حدّد الردود، ثمّ حدّد الإجراء الذي تريد تنفيذه من قائمة \"تنفيذ الأمر\" ثمّ انقر على زر \"تطبيق\"."
+
+#: includes/admin/replies.php:162
+msgid "<strong>Preview</strong> will show you what your draft reply will look like if you publish it. View will take you to your live site to view the reply. Which link is available depends on your reply&#8217;s status."
+msgstr "<strong>عرض</strong> سوف يعرض لك كيف سيبدو ردك إذا تمّ نشره، بحيث يتم نقلك لموقعك على الإنترنت لتشاهد الرد. نوع الرابط المتوفر سيكون بناءً على حالة الرد."
+
+#: includes/admin/replies.php:161
+msgid "<strong>Spam</strong> removes your reply from this list and places it in the spam queue, from which you can permanently delete it."
+msgstr "<strong>مزعج</strong> سوف ينقل الرد من قائمة الردود إلى قائمة الانتظار الخاصة بالردود المزعجة، من هناك يمكنك حذف الرد بشكل دائم."
+
+#: includes/admin/replies.php:160
+msgid "<strong>Trash</strong> removes your reply from this list and places it in the trash, from which you can permanently delete it."
+msgstr "<strong>سلّة المهملات</strong> سوف ينقل الرد من قائمة الردود إلى سلة المهملات، من هناك يمكنك حذف الرد بشكل دائم."
+
+#: includes/admin/replies.php:158
+msgid "<strong>Edit</strong> takes you to the editing screen for that reply. You can also reach that screen by clicking on the reply title."
+msgstr "<strong>تحرير</strong> ينقلك إلى شاشة التحرير لذاك الرد. يمكنك أيضاً الوصول إلى تلك الشاشة بالنقر على عنوان الرد."
+
+#: includes/admin/replies.php:156
+msgid "Hovering over a row in the replies list will display action links that allow you to manage your reply. You can perform the following actions:"
+msgstr "بتمرير مؤشر الفأرة فوق أي صف في قائمة الردود سوف يتم عرض المزيد من الروابط لتسمح لك بالتحكم في ردك. يمكنك القيام بما يلي:"
+
+#: includes/admin/replies.php:146
+msgid "You can view replies in a simple title list or with an excerpt. Choose the view you prefer by clicking on the icons at the top of the list on the right."
+msgstr "يمكنك عرض الردود من خلال عرض بسيط للعنوان أو على شكل مقتطف. اختر طريقة العرض التي تفضل بالنقر على الأيقونات الموجودة في الجزء العلوي الأيسر من القائمة."
+
+#: includes/admin/replies.php:145
+msgid "You can filter the list of replies by reply status using the text links in the upper left to show All, Published, Draft, or Trashed replies. The default view is to show all replies."
+msgstr "يمكنك تصفية قائمة الردود حسب حالة الرد وذلك بواسطة النقر على الروابط النصية الموجودة في الجزء العلوي الأيمن لعرض الكل، المنشورات أو الردود الموجودة في سلّة المهملات. افتراضيًا يتم عرض كل الردود."
+
+#: includes/admin/replies.php:144
+msgid "You can hide/display columns based on your needs and decide how many replies to list per screen using the Screen Options tab."
+msgstr "يمكنك عرض/إخفاء الأعمدة حسب حاجتك والتحكم بعدد الردود التي يتم عرضها في الصفحة من خلال زر خيارات الشاشة."
+
+#: includes/admin/replies.php:134
+msgid "This screen provides access to all of your replies. You can customize the display of this screen to suit your workflow."
+msgstr "هذه الشاشة تتيح الوصول إلى كافة ردودك. يمكنك تخصيص طريقة عرض هذه الشاشة لتتناسب مع العمل الخاص بك."
+
+#: includes/admin/metaboxes.php:525
+msgid "IP Address"
+msgstr "عنوان الآي بي (IP)"
+
+#: includes/admin/metaboxes.php:524
+msgid "IP:"
+msgstr "آي بي:"
+
+#: includes/admin/metaboxes.php:517
+msgid "ID"
+msgstr "الرقم المعرف"
+
+#: includes/admin/metaboxes.php:516
+msgid "ID:"
+msgstr "الرقم المعرف:"
+
+#: includes/admin/metaboxes.php:509
+#: templates/default/bbpress/form-user-edit.php:57
+msgid "Website"
+msgstr "الموقع"
+
+#: includes/admin/metaboxes.php:508
+#: templates/default/bbpress/form-anonymous.php:32
+msgid "Website:"
+msgstr "الموقع:"
+
+#: includes/admin/metaboxes.php:503
+#: templates/default/bbpress/form-user-edit.php:103
+#: templates/default/bbpress/form-user-register.php:28
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: includes/admin/metaboxes.php:502
+msgid "Email:"
+msgstr "البريد الإلكتروني:"
+
+#: includes/admin/metaboxes.php:497
+#: templates/default/bbpress/form-user-edit.php:14
+#: templates/default/bbpress/form-user-edit.php:19
+msgid "Name"
+msgstr "الاسم"
+
+#: includes/admin/metaboxes.php:496
+#: templates/default/bbpress/form-topic-tag.php:35
+msgid "Name:"
+msgstr "الاسم:"
+
+#: includes/admin/metaboxes.php:464
+msgid "Reply To"
+msgstr "رداً على"
+
+#: includes/admin/metaboxes.php:463
+msgid "Reply To:"
+msgstr "رداً على:"
+
+#: includes/admin/metaboxes.php:457 includes/replies/template.php:61
+msgid "Topic:"
+msgstr "الموضوع:"
+
+#: includes/admin/metaboxes.php:379 includes/admin/metaboxes.php:433
+#: includes/extend/buddypress/groups.php:1042 includes/topics/template.php:61
+#: templates/default/bbpress/form-topic.php:114
+msgid "Forum:"
+msgstr "المنتدى:"
+
+#: includes/admin/metaboxes.php:368
+msgid "Select whether to open or close the topic."
+msgstr "حدد إن كنت تريد فتح أو غلق الموضوع."
+
+#: includes/admin/metaboxes.php:356
+msgid "Topic Type"
+msgstr "نوع الموضوع"
+
+#: includes/admin/metaboxes.php:322
+msgid "Forum Order"
+msgstr "ترتيب المنتدى:"
+
+#: includes/admin/metaboxes.php:321
+msgid "Order:"
+msgstr "الترتيب:"
+
+#: includes/admin/metaboxes.php:314 includes/admin/metaboxes.php:394
+#: includes/admin/metaboxes.php:448
+msgid "&mdash; No parent &mdash;"
+msgstr "&mdash; بدون أب &mdash;"
+
+#: includes/admin/metaboxes.php:300
+msgid "Forum Parent"
+msgstr "المنتدى الأب"
+
+#: includes/admin/metaboxes.php:299
+msgid "Parent:"
+msgstr "الأب:"
+
+#: includes/admin/metaboxes.php:285 includes/admin/metaboxes.php:286
+#: templates/default/bbpress/form-forum.php:109
+msgid "Visibility:"
+msgstr "الظهور:"
+
+#: includes/admin/metaboxes.php:273 includes/admin/metaboxes.php:274
+#: includes/admin/metaboxes.php:367
+#: templates/default/bbpress/form-forum.php:100
+msgid "Status:"
+msgstr "الحالة:"
+
+#: includes/admin/metaboxes.php:261 includes/admin/metaboxes.php:262
+#: includes/admin/metaboxes.php:355
+msgid "Type:"
+msgstr "النوع:"
+
+#: includes/admin/metaboxes.php:222
+msgid "You are using <span class=\"b\">bbPress %s</span>."
+msgstr "أنت تستخدم <span class=\"b\">بي بي بريس %s</span>."
+
+#: includes/admin/metaboxes.php:198
+msgid "Empty Topic Tag"
+msgid_plural "Empty Topic Tags"
+msgstr[0] "وسم بدون موضوعات"
+msgstr[1] "وسوم بدون موضوعات"
+msgstr[2] "وسوم بدون موضوعات"
+msgstr[3] "وسوم بدون موضوعات"
+msgstr[4] "وسوم بدون موضوعات"
+msgstr[5] "وسوم بدون موضوعات"
+
+#: includes/admin/metaboxes.php:176
+msgid "Hidden Reply"
+msgid_plural "Hidden Replies"
+msgstr[0] "رد مخفي"
+msgstr[1] "رد واحد مخفي"
+msgstr[2] "ردان مخفيان"
+msgstr[3] "ردود مخفية"
+msgstr[4] "رد مخفي"
+msgstr[5] "رد مخفي"
+
+#: includes/admin/metaboxes.php:154
+msgid "Hidden Topic"
+msgid_plural "Hidden Topics"
+msgstr[0] "موضوع مخفي"
+msgstr[1] "موضوع مخفي"
+msgstr[2] "موضوعان مخفيان"
+msgstr[3] "مواضيع مخفية"
+msgstr[4] "موضوع مخفي"
+msgstr[5] "موضوع مخفي"
+
+#: includes/admin/metaboxes.php:135
+msgid "User"
+msgid_plural "Users"
+msgstr[0] "عضو"
+msgstr[1] "عضو"
+msgstr[2] "عضوان"
+msgstr[3] "أعضاء"
+msgstr[4] "عضو"
+msgstr[5] "عضو"
+
+#: includes/admin/metaboxes.php:127
+msgid "Users &amp; Moderation"
+msgstr "الأعضاء و الإدارة"
+
+#: includes/admin/metaboxes.php:103 includes/admin/settings.php:309
+#: includes/topics/template.php:3367
+msgid "Topic Tag"
+msgid_plural "Topic Tags"
+msgstr[0] "وسم الموضوع"
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: includes/admin/metaboxes.php:84 includes/admin/settings.php:325
+#: includes/replies/template.php:49 includes/replies/template.php:1621
+#: includes/topics/template.php:2921
+msgid "Reply"
+msgid_plural "Replies"
+msgstr[0] "ردّ"
+msgstr[1] "ردّ واحد"
+msgstr[2] "ردّين"
+msgstr[3] "ردود"
+msgstr[4] "ردّ"
+msgstr[5] "ردّ"
+
+#: includes/admin/metaboxes.php:67 includes/admin/metaboxes.php:458
+#: includes/admin/replies.php:571 includes/admin/settings.php:301
+#: includes/topics/template.php:49
+#: templates/default/bbpress/content-single-topic-lead.php:22
+#: templates/default/bbpress/content-single-topic-lead.php:94
+#: templates/default/bbpress/loop-topics.php:19
+msgid "Topic"
+msgid_plural "Topics"
+msgstr[0] "موضوع"
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: includes/admin/metaboxes.php:42
+msgid "Discussion"
+msgstr "مناقشة"
+
+#: includes/admin/forums.php:563
+msgid "Forum draft updated. <a target=\"_blank\" href=\"%s\">Preview forum</a>"
+msgstr "تم تحديث مسودة المنتدى. <a target=\"_blank\" href=\"%s\">معاينة المنتدى</a>"
+
+#. translators: Publish box date format, see http://php.net/date
+#: includes/admin/forums.php:558 includes/admin/replies.php:878
+#: includes/admin/topics.php:948
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: includes/admin/forums.php:556
+msgid "Forum scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview forum</a>"
+msgstr "تمّ جدولة المنتدى ليوم: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">معاينة المنتدى</a>"
+
+#: includes/admin/forums.php:553
+msgid "Forum submitted. <a target=\"_blank\" href=\"%s\">Preview forum</a>"
+msgstr "تمّ إرسال المنتدى. <a target=\"_blank\" href=\"%s\">معاينة المنتدى</a>"
+
+#: includes/admin/forums.php:550
+msgid "Forum saved."
+msgstr "تمّ حفظ المنتدى."
+
+#: includes/admin/forums.php:547
+msgid "Forum created. <a href=\"%s\">View forum</a>"
+msgstr "تمّ إنشاء المنتدى. <a href=\"%s\">مشاهدة المنتدى</a>"
+
+#. translators: %s: date and time of the revision
+#: includes/admin/forums.php:543
+msgid "Forum restored to revision from %s"
+msgstr "تم إستعادة المنتدى الى مراجعة بتاريخ %s"
+
+#: includes/admin/forums.php:538
+msgid "Forum updated."
+msgstr "تم تحديث المنتدى."
+
+#: includes/admin/forums.php:535 includes/admin/replies.php:855
+#: includes/admin/topics.php:925
+msgid "Custom field deleted."
+msgstr "تمّ حذف الحقل المخصّص. "
+
+#: includes/admin/forums.php:532 includes/admin/replies.php:852
+#: includes/admin/topics.php:922
+msgid "Custom field updated."
+msgstr "تمّ تحديث الحقل المخصّص."
+
+#: includes/admin/forums.php:529
+msgid "Forum updated. <a href=\"%s\">View forum</a>"
+msgstr "تمّ تحديث المنتدى. <a href=\"%s\">مشاهدة المنتدى</a>"
+
+#: includes/admin/forums.php:463 includes/forums/template.php:601
+msgid "No Topics"
+msgstr "لا توجد موضوعات"
+
+#: includes/admin/forums.php:414 includes/admin/topics.php:638
+#: templates/default/bbpress/loop-forums.php:22
+#: templates/default/bbpress/loop-topics.php:22
+msgid "Freshness"
+msgstr "آخر تحديث"
+
+#: includes/admin/forums.php:413 includes/admin/replies.php:573
+#: includes/admin/topics.php:637
+msgid "Created"
+msgstr "تمّ الإنشاء في"
+
+#: includes/admin/forums.php:412
+#: templates/default/bbpress/content-single-topic-lead.php:18
+#: templates/default/bbpress/content-single-topic-lead.php:90
+msgid "Creator"
+msgstr "منشئ"
+
+#: includes/admin/forums.php:411 includes/admin/settings.php:230
+#: includes/admin/settings.php:251 includes/admin/topics.php:634
+#: includes/core/theme-compat.php:646
+#: includes/extend/buddypress/activity.php:356
+#: includes/forums/template.php:2665 includes/replies/template.php:47
+#: includes/replies/template.php:48
+#: templates/default/bbpress/content-statistics.php:32
+#: templates/default/bbpress/loop-forums.php:21
+#: templates/default/bbpress/loop-replies.php:32
+#: templates/default/bbpress/loop-replies.php:70
+#: templates/default/bbpress/loop-topics.php:21
+msgid "Replies"
+msgstr "الردود"
+
+#: includes/admin/forums.php:410 includes/admin/settings.php:222
+#: includes/admin/settings.php:243 includes/admin/topics.php:632
+#: includes/extend/buddypress/activity.php:355
+#: includes/forums/template.php:2601 includes/topics/template.php:47
+#: includes/topics/template.php:48
+#: templates/default/bbpress/content-statistics.php:27
+#: templates/default/bbpress/loop-forums.php:20
+msgid "Topics"
+msgstr "الموضوعات"
+
+#: includes/admin/forums.php:409 includes/admin/metaboxes.php:50
+#: includes/admin/metaboxes.php:380 includes/admin/metaboxes.php:434
+#: includes/admin/replies.php:570 includes/admin/settings.php:293
+#: includes/admin/topics.php:633 includes/extend/buddypress/groups.php:52
+#: includes/extend/buddypress/groups.php:53 includes/forums/template.php:49
+#: templates/default/bbpress/loop-forums.php:19
+msgid "Forum"
+msgstr "المنتدى"
+
+#: includes/admin/forums.php:217 includes/admin/replies.php:229
+#: includes/admin/topics.php:229
+msgid "Publish Box"
+msgstr "صندوق النشر"
+
+#: includes/admin/forums.php:211
+msgid "<strong>Order</strong> allows you to order your forums numerically."
+msgstr "<strong>الترتيب</strong> يسمح لك بترتيب منتدياتك رقمياً."
+
+#: includes/admin/forums.php:209
+msgid "<strong>Visibility</strong> lets you pick the scope of each forum and what users are allowed to access it."
+msgstr "<strong>الظهور</strong> يسمح لك بتحديد مجال الرؤية لكل منتدى وما يسمح للأعضاء بالوصول إليه."
+
+#: includes/admin/forums.php:208
+msgid "<strong>Status</strong> allows you to close a forum to new topics and forums."
+msgstr "<strong>الحالة</strong> يسمح لك بإغلاق المنتدى أمام موضوعات ومنتديات جديدة."
+
+#: includes/admin/forums.php:207
+msgid "<strong>Type</strong> indicates if the forum is a category or forum. Categories generally contain other forums."
+msgstr "<strong>النوع</strong> تشير ما إذا كان المنتدى عبارة تصنيف أم لا. التصنيفات بشكل عام تحتوي على منتديات أخرى."
+
+#: includes/admin/forums.php:205
+msgid "Select the attributes that your forum should have:"
+msgstr "حدد الخصائص التي يجب أن تكون في منتداك:"
+
+#: includes/admin/forums.php:203 includes/admin/forums.php:243
+msgid "Forum Attributes"
+msgstr "خصائص المنتدى"
+
+#: includes/admin/forums.php:191
+msgid "<strong>Title</strong> - Enter a title for your forum. After you enter a title, you&#8217;ll see the permalink below, which you can edit."
+msgstr "<strong>العنوان</strong> - أدخل عنوانا لمنتداك. بعد ذلك، سيظهر لك الرابط الدائم أدناه، الذي يمكنك تحريره."
+
+#: includes/admin/forums.php:189
+msgid "Title and Forum Editor"
+msgstr "العنوان و محرّر المنتدى"
+
+#: includes/admin/forums.php:183 includes/admin/replies.php:197
+#: includes/admin/topics.php:198
+msgid "Customizing This Display"
+msgstr "تخصيص شاشة العرض"
+
+#: includes/admin/forums.php:179
+msgid "The title field and the big forum editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "حقل العنوان و مساحة تحرير المنتدى مثبثة في أماكنها، ولكن يمكنك تغيير موضع كافة الصناديق الأخرى باستخدام السحب والإفلات، ويمكن تقليصها أو تمديدها من خلال النقر على شريط عنوان كل صندوق. استخدم تبويب خيارات الشاشة لإظهار مزيد من الصناديق (المقتطف، إرسال التعقيبات، الحقول المخصصة، مناقشة، الاسم اللطيف، الكاتب) أو لإختيار عدد الأعمدة لهذه الشاشة."
+
+#: includes/admin/forums.php:165 includes/admin/forums.php:224
+#: includes/admin/replies.php:179 includes/admin/replies.php:236
+#: includes/admin/settings.php:1597 includes/admin/topics.php:180
+#: includes/admin/topics.php:236
+msgid "<a href=\"http://bbpress.org/forums/\" target=\"_blank\">bbPress Support Forums</a>"
+msgstr "<a href=\"http://bbpress.org/forums/\" target=\"_blank\">بي بي بريس - منتديات الدعم الفني</a>"
+
+#: includes/admin/forums.php:164 includes/admin/forums.php:223
+#: includes/admin/replies.php:178 includes/admin/replies.php:235
+#: includes/admin/settings.php:1596 includes/admin/topics.php:179
+#: includes/admin/topics.php:235
+msgid "<a href=\"http://codex.bbpress.org\" target=\"_blank\">bbPress Documentation</a>"
+msgstr "<a href=\"http://codex.bbpress.org\" target=\"_blank\">بي بي بريس - وثائق المساعدة</a>"
+
+#: includes/admin/forums.php:163 includes/admin/forums.php:222
+#: includes/admin/replies.php:177 includes/admin/replies.php:234
+#: includes/admin/settings.php:1595 includes/admin/topics.php:178
+#: includes/admin/topics.php:234
+msgid "For more information:"
+msgstr "للمزيد من المعلومات:"
+
+#: includes/admin/forums.php:158
+msgid "When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected forums at once. To remove a forum from the grouping, just click the x next to its name in the Bulk Edit area that appears."
+msgstr "يمكنك أيضاً تحرير أكثر من منتدى في نفس الوقت. اختر المنتديات التي تريد تحريرها بوضع إشارة في مربع الاختيار، اختر تحرير من قائمة الأوامر المتعددة ثم أنقر على زر \"تطبيق\". حينها، يمكنك تغيير المعلومات الأساسية (الحالة ...الخ) لكل المنتديات التي اخترتها دفعة واحدة. لإزالة منتدى من مجموعة المنتديات التي اخترتها أنقر على إشارة x بجانب عنوان المنتدى في قائمة \"تحرير متعدّد\"."
+
+#: includes/admin/forums.php:157
+msgid "You can also edit or move multiple forums to the trash at once. Select the forums you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply."
+msgstr "يمكنك أيضاً تحرير أو نقل منتديات متعدّدة لسلة المهملات في آن واحد. بداية حدّد المنتديات ثمّ حدّد الإجراء الذي تريد تنفيذه من قائمة \"تنفيذ الأمر\" ثمّ انقر على زر \"تطبيق\"."
+
+#: includes/admin/forums.php:155 includes/admin/replies.php:169
+#: includes/admin/topics.php:170
+msgid "Bulk Actions"
+msgstr "تنفيذ الأمر"
+
+#: includes/admin/forums.php:148
+msgid "<strong>View</strong> will show you what your draft forum will look like if you publish it. View will take you to your live site to view the forum. Which link is available depends on your forum&#8217;s status."
+msgstr "<strong>عرض</strong> سوف يعرض لك كيف سيبدو منتداك إذا تمّ نشره، بحيث يتم نقلك لموقعك على الإنترنت لتشاهد المنتدى. نوع الرابط المتوفر سيكون بناءً على حالة المنتدى."
+
+#: includes/admin/forums.php:147
+msgid "<strong>Trash</strong> removes your forum from this list and places it in the trash, from which you can permanently delete it."
+msgstr "<strong>سلة المهملات</strong> سوف ينقل المنتدى من قائمة المنتديات إلى سلة المهملات، من هناك يمكنك حذف المنتدى بشكل دائم."
+
+#: includes/admin/forums.php:146
+msgid "<strong>Edit</strong> takes you to the editing screen for that forum. You can also reach that screen by clicking on the forum title."
+msgstr "<strong>تحرير</strong> ينقلك إلى شاشة التحرير لذاك المنتدى. يمكنك أيضاً الوصول إلى تلك الشاشة بالنقر على عنوان المنتدى."
+
+#: includes/admin/forums.php:144
+msgid "Hovering over a row in the forums list will display action links that allow you to manage your forum. You can perform the following actions:"
+msgstr "بتمرير مؤشر الفأرة فوق أي صف في قائمة المنتديات سوف يتم عرض المزيد من الروابط لتسمح لك بالتحكم في منتداك. يمكنك القيام بما يلي:"
+
+#: includes/admin/forums.php:142 includes/admin/replies.php:154
+#: includes/admin/topics.php:153
+msgid "Available Actions"
+msgstr "الإجراءات المتاحة"
+
+#: includes/admin/forums.php:135
+msgid "You can refine the list to show only forums from a specific month by using the dropdown menus above the forums list. Click the Filter button after making your selection. You also can refine the list by clicking on the forum creator in the forums list."
+msgstr "يمكنك تصفية قائمة المنتديات لعرض منتديات من شهر محدّد فقط، باستخدام القوائم المنسدلة أعلى قائمة المنتديات. أنقر على زر (تصفية) بعد اختيارك. يمكنك أيضاً تصفية المنتديات بالنقر على اسم المنشئ في قائمة المنتديات."
+
+#: includes/admin/forums.php:134
+msgid "You can filter the list of forums by forum status using the text links in the upper left to show All, Published, or Trashed forums. The default view is to show all forums."
+msgstr "يمكنك تصفية قائمة المنتديات حسب حالة المنتدى وذلك بواسطة النقر على الروابط النصية الموجودة في الجزء العلوي الأيمن لعرض الكل، المنشورات أو المنتديات الموجودة في سلّة المهملات. افتراضيًا يتم عرض كل المنتديات."
+
+#: includes/admin/forums.php:133
+msgid "You can hide/display columns based on your needs and decide how many forums to list per screen using the Screen Options tab."
+msgstr "يمكنك عرض/إخفاء الأعمدة حسب حاجتك والتحكم بعدد المنتديات التي يتم عرضها في الصفحة من خلال زر خيارات الشاشة."
+
+#: includes/admin/forums.php:131 includes/admin/replies.php:142
+#: includes/admin/topics.php:142
+msgid "You can customize the display of this screen&#8217;s contents in a number of ways:"
+msgstr "يمكنك تخصيص عرض محتويات هذه الشاشة بأكثر من طريقة:"
+
+#: includes/admin/forums.php:129 includes/admin/replies.php:140
+#: includes/admin/topics.php:140
+msgid "Screen Content"
+msgstr "محتوى الشاشة"
+
+#: includes/admin/forums.php:123
+msgid "This screen displays the individual forums on your site. You can customize the display of this screen to suit your workflow."
+msgstr "هذه الشاشة تعرض قائمة المنتديات في موقعك. يمكنك تخصيص طريقة عرض هذه الشاشة لتتناسب مع العمل الخاص بك."
+
+#: includes/admin/forums.php:121 includes/admin/replies.php:132
+#: includes/admin/settings.php:1549 includes/admin/topics.php:132
+msgid "Overview"
+msgstr "نظرة عامة"
+
+#: includes/admin/converters/AEF.php:688
+#: includes/admin/converters/FluxBB.php:643
+#: includes/admin/converters/Invision.php:525
+#: includes/admin/converters/Kunena1.php:543
+#: includes/admin/converters/Kunena2.php:585
+#: includes/admin/converters/Kunena3.php:812
+#: includes/admin/converters/PHPFox3.php:649
+#: includes/admin/converters/PunBB.php:677
+#: includes/admin/converters/SMF.php:656
+#: includes/admin/converters/SimplePress5.php:537
+#: includes/admin/converters/Vanilla.php:535
+#: includes/admin/converters/XMB.php:705
+#: includes/admin/converters/XenForo.php:722
+#: includes/admin/converters/bbPress1.php:636
+#: includes/admin/converters/phpBB.php:816
+#: includes/admin/converters/vBulletin.php:652
+#: includes/admin/converters/vBulletin3.php:652
+msgid "Re: "
+msgstr "رد:"
+
+#: includes/admin/converter.php:500
+msgid "Converting replies (%1$s - %2$s)"
+msgstr "تحويل الردود (%1$s - %2$s)"
+
+#: includes/admin/converter.php:496
+msgid "No replies to convert"
+msgstr "لا توجد ردود لتحويلها"
+
+#: includes/admin/converter.php:485
+msgid "Converting topic tags (%1$s - %2$s)"
+msgstr "تحويل وسوم الموضوعات (%1$s - %2$s)"
+
+#: includes/admin/converter.php:481
+msgid "No tags to convert"
+msgstr "لا توجد وسوم لتحويلها"
+
+#: includes/admin/converter.php:455
+msgid "Calculating topic stickies (%1$s - %2$s)"
+msgstr "احتساب الموضوعات المثبتة (%1$s - %2$s)"
+
+#: includes/admin/converter.php:451
+msgid "No stickies to stick"
+msgstr "لا توجد موضوعات مثبتة لتثبيتها"
+
+#: includes/admin/converter.php:440
+msgid "Converting topics (%1$s - %2$s)"
+msgstr "تحويل الموضوعات (%1$s - %2$s)"
+
+#: includes/admin/converter.php:436
+msgid "No topics to convert"
+msgstr "لا توجد موضوعات لتحويلها"
+
+#: includes/admin/converter.php:425
+msgid "Calculating forum hierarchy (%1$s - %2$s)"
+msgstr "احتساب التسلسل الهرمي للمنتدى (%1$s - %2$s)"
+
+#: includes/admin/converter.php:421
+msgid "No forum parents to convert"
+msgstr "لا توجد منتديات رئيسية للتحويلها"
+
+#: includes/admin/converter.php:410
+msgid "Converting forums (%1$s - %2$s)"
+msgstr "تحويل المنتديات (%1$s - %2$s)"
+
+#: includes/admin/converter.php:406
+msgid "No forums to convert"
+msgstr "لا توجد منتديات لتحويلها"
+
+#: includes/admin/converter.php:391
+msgid "Delete users WordPress default passwords (%1$s - %2$s)"
+msgstr "حذف كلمات مرور الأعضاء الإفتراضية (%1$s - %2$s)"
+
+#: includes/admin/converter.php:387
+msgid "No passwords to clear"
+msgstr "لا توجد كلمات مرور للمسح"
+
+#: includes/admin/converter.php:371
+msgid "Converting users (%1$s - %2$s)"
+msgstr "تحويل الأعضاء (%1$s - %2$s)"
+
+#: includes/admin/converter.php:367
+msgid "No users to convert"
+msgstr "لا يوجد أعضاء لتحويلهم"
+
+#: includes/admin/converter.php:351
+msgid "Deleting previously converted data (%1$s - %2$s)"
+msgstr "حذف البيانات المحولة سابقًا (%1$s - %2$s)"
+
+#: includes/admin/converter.php:347
+msgid "No data to clean"
+msgstr "لا بيانات لمسحها"
+
+#: includes/admin/converter.php:248 includes/admin/converter.php:525
+msgid "Conversion Complete"
+msgstr "تمّ إكمال التحويل"
+
+#: includes/admin/converter.php:223
+msgid "Starting Conversion"
+msgstr "بدء التحويل"
+
+#: includes/admin/converter.php:134
+msgid "Purge Previous Import"
+msgstr "تخلّص من عملية الاستيراد السابقة"
+
+#: includes/admin/converter.php:130
+msgid "Start Over"
+msgstr "البدء من جديد"
+
+#: includes/admin/converter.php:126
+msgid "Convert Users"
+msgstr "تحويل الأعضاء"
+
+#: includes/admin/converter.php:122
+msgid "Delay Time"
+msgstr "مدّة التأخير"
+
+#: includes/admin/converter.php:118
+msgid "Rows Limit"
+msgstr "تحديد السطور"
+
+#: includes/admin/converter.php:115
+msgid "Options"
+msgstr "خيارات"
+
+#: includes/admin/converter.php:111
+msgid "Table Prefix"
+msgstr "بادئة الجدول"
+
+#: includes/admin/converter.php:107
+msgid "Database Password"
+msgstr "كلمة مرور قاعدة البيانات"
+
+#: includes/admin/converter.php:103
+msgid "Database User"
+msgstr "اسم المستخدم لقاعدة البيانات"
+
+#: includes/admin/converter.php:99
+msgid "Database Name"
+msgstr "اسم قاعدة البيانات"
+
+#: includes/admin/converter.php:95
+msgid "Database Port"
+msgstr "منفذ قاعدة البيانات"
+
+#: includes/admin/converter.php:91
+msgid "Database Server"
+msgstr "خادم قاعدة البيانات"
+
+#: includes/admin/converter.php:87
+msgid "Select Platform"
+msgstr "اختر المنصّة"
+
+#: includes/admin/converter.php:84
+msgid "Database Settings"
+msgstr "إعدادات قاعدة البيانات"
+
+#: includes/admin/admin.php:1096
+msgid "You can update all the forums on your network through this page. It works by calling the update script of each site automatically. Hit the link below to update."
+msgstr "تستطيع تحديث جميع المنتديات في شبكتك من خلال هذه الصفحة. حيث إنها تقوم بإستدعاء برمجية التحديث الخاصة بكل موقع تلقائيا. اضغط على الرابط أدناه للتحديث."
+
+#: includes/admin/admin.php:1078
+msgid "Next Forums"
+msgstr "المنتديات التالية"
+
+#: includes/admin/admin.php:1077
+msgid "If your browser doesn&#8217;t start loading the next page automatically, click this link:"
+msgstr "إذا كان متصفحك لا يبدأ التحميل تلقائيا في الصفحة التالية، انقر فوق هذا الرابط:"
+
+#: includes/admin/admin.php:1053
+msgid "Warning! Problem updating %1$s. Your server may not be able to connect to sites running on it. Error message: <em>%2$s</em>"
+msgstr ""
+"تحذير! حدثت مشكلة أثناء تحديث %1$s. الخادم قد لا يستطيع الاتصال بالمواقع التي تعمل عليه.\n"
+"رسالة الخطأ: <em>%2$s</em>"
+
+#: includes/admin/admin.php:983
+msgid "You can update your forum through this page. Hit the link below to update."
+msgstr "تستطيع تحديث منتداك من خلال هذه الصفحة. اضغط على الرابط أدناه للتحديث."
+
+#: includes/admin/admin.php:974 includes/admin/admin.php:1028
+msgid "Go Back"
+msgstr "رجوع للخلف"
+
+#: includes/admin/admin.php:973 includes/admin/admin.php:1027
+msgid "All done!"
+msgstr "تم!"
+
+#: includes/admin/admin.php:962 includes/admin/admin.php:984
+msgid "Update Forum"
+msgstr "تحديث المنتدى"
+
+#: includes/admin/admin.php:905
+msgid "Core Contributors to bbPress 2.5"
+msgstr "المساهمين في بي بي بريس 2.5"
+
+#: includes/admin/admin.php:896
+msgid "Bug Testing"
+msgstr "فحص الأخطاء"
+
+#: includes/admin/admin.php:815
+msgid "Theme Compatibility"
+msgstr "توافق القالب"
+
+#: includes/admin/admin.php:257 includes/admin/admin.php:258
+#: includes/admin/admin.php:266 includes/admin/admin.php:267
+msgid "Welcome to bbPress"
+msgstr "مرحباً بك في بي بي بريس"
+
+#: includes/admin/admin.php:530
+msgid "Right Now in Forums"
+msgstr "إحصائيات المنتدى"
+
+#: includes/admin/admin.php:545
+msgid "About bbPress"
+msgstr "حول بي بي بريس"
+
+#: includes/admin/admin.php:887
+msgid "Converter Specialist"
+msgstr "أخصائي التحويل"
+
+#: bbpress.php:485
+msgid "bbPress Forums"
+msgstr "منتديات بي بي بريس"
+
+#: includes/admin/admin.php:515
+msgid "About"
+msgstr "عن"
+
+#: includes/admin/admin.php:865
+msgid "bbPress is created by a worldwide swarm of busy, busy bees."
+msgstr "يتم إنشاء بي بي بريس بواسطة سرب مشغول من النحل من جميع أنحاء العالم :)"
+
+#: includes/admin/admin.php:867
+msgid "Project Leaders"
+msgstr "قادة المشروع"
+
+#: bbpress.php:581
+msgctxt "post"
+msgid "Spam"
+msgstr "مزعج"
+
+#: includes/admin/admin.php:208 includes/admin/functions.php:277
+#: includes/admin/settings.php:1509
+msgid "Import Forums"
+msgstr "استيراد المنتديات"
+
+#: bbpress.php:608
+msgctxt "post"
+msgid "Hidden <span class=\"count\">(%s)</span>"
+msgid_plural "Hidden <span class=\"count\">(%s)</span>"
+msgstr[0] "مخفي <span class=\"count\">(%s)</span>"
+msgstr[1] "مخفي <span class=\"count\">(%s)</span>"
+msgstr[2] "مخفي <span class=\"count\">(%s)</span>"
+msgstr[3] "مخفي <span class=\"count\">(%s)</span>"
+msgstr[4] "مخفي <span class=\"count\">(%s)</span>"
+msgstr[5] "مخفي <span class=\"count\">(%s)</span>"
+
+#: bbpress.php:595
+msgctxt "post"
+msgid "Orphan <span class=\"count\">(%s)</span>"
+msgid_plural "Orphans <span class=\"count\">(%s)</span>"
+msgstr[0] "منفرد <span class=\"count\">(%s)</span>"
+msgstr[1] "منفرد <span class=\"count\">(%s)</span>"
+msgstr[2] "منفرد <span class=\"count\">(%s)</span>"
+msgstr[3] "منفرد <span class=\"count\">(%s)</span>"
+msgstr[4] "منفرد <span class=\"count\">(%s)</span>"
+msgstr[5] "منفرد <span class=\"count\">(%s)</span>"
+
+#: bbpress.php:405 templates/default/bbpress-functions.php:51
+msgid "bbPress Default"
+msgstr "بي بي بريس الافتراضي"
+
+#: bbpress.php:510
+msgid "bbPress Topics"
+msgstr "موضوعات بي بي بريس"
+
+#: bbpress.php:678
+msgid "Most popular topics"
+msgstr "أكثر الموضوعات شعبية"
+
+#: bbpress.php:607
+msgctxt "post"
+msgid "Hidden"
+msgstr "مخفي"
+
+#: bbpress.php:571
+msgctxt "post"
+msgid "Closed <span class=\"count\">(%s)</span>"
+msgid_plural "Closed <span class=\"count\">(%s)</span>"
+msgstr[0] "مغلق <span class=\"count\">(%s)</span>"
+msgstr[1] "مغلق <span class=\"count\">(%s)</span>"
+msgstr[2] "مغلق <span class=\"count\">(%s)</span>"
+msgstr[3] "مغلق <span class=\"count\">(%s)</span>"
+msgstr[4] "مغلق <span class=\"count\">(%s)</span>"
+msgstr[5] "مغلق <span class=\"count\">(%s)</span>"
+
+#: bbpress.php:133 bbpress.php:140
+msgid "Cheatin&#8217; huh?"
+msgstr "تتحايل، ها؟"
+
+#: bbpress.php:535
+msgid "bbPress Replies"
+msgstr "ردود بي بي بريس"
+
+#: includes/admin/admin.php:832 includes/admin/admin.php:936
+msgid "Go to Forum Settings"
+msgstr "اذهب إلى إعدادات المنتدى"
+
+#: includes/admin/admin.php:854
+msgid "Thank you for updating! bbPress %s is waxed, polished, and ready for you to take it for a lap or two around the block!"
+msgstr "شكراً لك على التحديث! بي بي بريس %s جاهز ليخدم احتياجاتك."
+
+#: bbpress.php:570
+msgctxt "post"
+msgid "Closed"
+msgstr "مغلق"
+
+#: bbpress.php:582
+msgctxt "post"
+msgid "Spam <span class=\"count\">(%s)</span>"
+msgid_plural "Spam <span class=\"count\">(%s)</span>"
+msgstr[0] "مزعج <span class=\"count\">(%s)</span>"
+msgstr[1] "مزعج <span class=\"count\">(%s)</span>"
+msgstr[2] "مزعج <span class=\"count\">(%s)</span>"
+msgstr[3] "مزعج <span class=\"count\">(%s)</span>"
+msgstr[4] "مزعج <span class=\"count\">(%s)</span>"
+msgstr[5] "مزعج <span class=\"count\">(%s)</span>"
+
+#: bbpress.php:594
+msgctxt "post"
+msgid "Orphan"
+msgstr "يتيم"
+
+#: bbpress.php:690
+msgid "Topics with no replies"
+msgstr "موضوعات بدون ردود"
+
+#: includes/admin/admin.php:218 includes/admin/functions.php:281
+#: includes/admin/tools.php:1208
+msgid "Reset Forums"
+msgstr "إعادة ضبط المنتديات للوضع الإفتراضي"
+
+#: includes/admin/admin.php:219
+msgid "Forum Reset"
+msgstr "إعادة ضبط المنتدى للوضع الإفتراضي"
+
+#: includes/admin/admin.php:233 includes/admin/admin.php:234
+#: includes/admin/admin.php:244 includes/admin/admin.php:245
+#: includes/admin/users.php:82 includes/common/widgets.php:662
+#: includes/extend/buddypress/loader.php:42
+#: includes/extend/buddypress/loader.php:175
+#: includes/extend/buddypress/loader.php:261
+#: includes/extend/buddypress/loader.php:312 includes/forums/template.php:47
+#: includes/forums/template.php:48
+#: templates/default/bbpress/content-statistics.php:22
+msgid "Forums"
+msgstr "المنتديات"
+
+#: includes/admin/admin.php:280 includes/admin/admin.php:281
+#: includes/admin/admin.php:302 includes/admin/admin.php:303
+#: includes/admin/admin.php:1010 includes/admin/admin.php:1097
+msgid "Update Forums"
+msgstr "تحديث المنتديات"
+
+#: includes/admin/admin.php:510
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: includes/admin/admin.php:720 includes/admin/admin.php:758
+msgid "%s - %s"
+msgstr "%s - %s"
+
+#: includes/admin/admin.php:776 includes/admin/admin.php:853
+msgid "Welcome to bbPress %s"
+msgstr "مرحبًا في بي بي بريس %s"
+
+#: includes/admin/admin.php:777
+msgid "Thank you for updating! bbPress %s is bundled up and ready to weather the storm of users in your community!"
+msgstr "شكراً لك على التحديث! بي بي بريس %s قد جُمعت ومستعدة للصمود في عاصفة الأعضاء في مجتمعك!"
+
+#: includes/admin/admin.php:778 includes/admin/admin.php:855
+msgid "Version %s"
+msgstr "الإصدار %s"
+
+#: includes/admin/admin.php:782 includes/admin/admin.php:859
+msgid "What&#8217;s New"
+msgstr "ما الجديد؟"
+
+#: includes/admin/admin.php:784 includes/admin/admin.php:861
+msgid "Credits"
+msgstr "شكر"
+
+#: includes/admin/admin.php:789
+msgid "Forum Subscriptions"
+msgstr "إشتراكات المنتدى"
+
+#: includes/admin/admin.php:793
+msgid "Subscribe to Forums"
+msgstr "الإشتراك بالمنتديات"
+
+#: includes/admin/admin.php:794
+msgid "Now your users can subscribe to new topics in specific forums."
+msgstr "الآن يمكن للأعضاء الإشتراك في جديد منتدى معين."
+
+#: includes/admin/admin.php:798
+msgid "Manage Subscriptions"
+msgstr "إدارة الإشتراكات"
+
+#: includes/admin/admin.php:799
+msgid "Your users can manage all of their subscriptions in one convenient location."
+msgstr "يمكن للأعضاء أن تقوم بإدارة جميع الإشتراكات من مكان واحد مناسب."
+
+#: includes/admin/admin.php:805
+msgid "Converters"
+msgstr "المحولات"
+
+#: includes/admin/admin.php:809
+msgid "We&#8217;re all abuzz about the hive of new importers, AEF, Drupal, FluxBB, Kunena Forums for Joomla, MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, Xenforo and XMB. Existing importers are now sweeter than honey with improved importing stickies, topic tags, forum categories and the sting is now gone if you need to remove imported users."
+msgstr "تم إضافة مجموعة ادوات إستيراد جديدة من AEF, Drupal, FluxBB, Kunena Forums for Joomla, MyBB, Phorum, PHPFox, PHPWind, PunBB, SMF, Xenforo و XMB. و تحسين أدوات الإستيراد السابقة لتصبح أكثر تطوراً في إستيراد الموضوعات المثبتة، وسوم الموضوعات، تصنيفات المنتديات، و إزالة الإرتباك إن أردت حذف العضويات المستوردة."
+
+#: includes/admin/admin.php:821
+msgid "bbPress fully supports automatic translation updates."
+msgstr "بى بى بريس تدعم تحديث الترجمات الجديدة تلقائيا."
+
+#: includes/admin/admin.php:825
+msgid "User capabilities"
+msgstr "صلاحيات العضو"
+
+#: includes/admin/admin.php:877
+msgid "Lead Developer"
+msgstr "قائد تطوير"
+
+#: includes/admin/admin.php:872
+msgid "Founding Developer"
+msgstr "المطوّر الأساسي"
+
+#: includes/admin/admin.php:198 includes/admin/functions.php:273
+#: includes/admin/tools.php:34
+msgid "Repair Forums"
+msgstr "إصلاح المنتديات"
+
+#: includes/admin/admin.php:891
+msgid "Contributing Developers"
+msgstr "المطورون المساهمون"
+
+#: includes/admin/admin.php:199
+msgid "Forum Repair"
+msgstr "إصلاح المنتدى"
+
+#: includes/admin/admin.php:209
+msgid "Forum Import"
+msgstr "استيراد منتدى"
+
+#: includes/admin/admin.php:882 includes/admin/admin.php:901
+msgid "Feature Developer"
+msgstr "مطور ميزة"

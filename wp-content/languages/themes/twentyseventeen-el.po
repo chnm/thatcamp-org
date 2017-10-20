@@ -1,0 +1,324 @@
+# Translation of Themes - Twenty Seventeen in Greek
+# This file is distributed under the same license as the Themes - Twenty Seventeen package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-05-02 12:09:09+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: el_GR\n"
+"Project-Id-Version: Themes - Twenty Seventeen\n"
+
+#. Description of the plugin/theme
+msgid "Twenty Seventeen brings your site to life with header video and immersive featured images. With a focus on business sites, it features multiple sections on the front page as well as widgets, navigation and social menus, a logo, and more. Personalize its asymmetrical grid with a custom color scheme and showcase your multimedia content with post formats. Our default theme for 2017 works great in many languages, for any abilities, and on any device."
+msgstr "Το Twenty Seventeen ζωντανεύει τον ιστότοπό σας με video στην κεφαλίδα και εντυπωσιακές επιλεγμένες εικόνες. Εστιάζοντας σε εταιρικούς ιστότοπους, διαθέτει πολλαπλές ενότητες στην αρχική σελίδα καθώς και μικροεφαρμογές, περιήγηση και κοινωνικά μενού, λογότυπο και άλλα. Δώστε προσωπικό τόνο στο ασύμμετρο πλέγμα του με μια προσαρμοσμένη επιλογή χρωμάτων και επιδείξτε το πολυμεσικό σας περιεχόμενο με τις μορφοποιήσεις άρθρων. Το προεπιλεγμένο μας θέμα για το 2017 δουλεύει εξαιρετικά σε πολλές γλώσσες, για οποιεσδήποτε ικανότητες και σε οποιαδήποτε συσκευή."
+
+#. Theme Name of the plugin/theme
+msgid "Twenty Seventeen"
+msgstr "Twenty Seventeen"
+
+#: template-parts/header/site-branding.php:31
+#: template-parts/navigation/navigation-top.php:20
+msgid "Scroll down to content"
+msgstr "Κυλήστε προς τα κάτω στο περιεχόμενο."
+
+#: functions.php:159
+msgctxt "Theme starter content"
+msgid "Coffee"
+msgstr "Καφές"
+
+#: functions.php:155
+msgctxt "Theme starter content"
+msgid "Sandwich"
+msgstr "Σάντουιτς"
+
+#: functions.php:151
+msgctxt "Theme starter content"
+msgid "Espresso"
+msgstr "Εσπρέσσο"
+
+#: inc/custom-header.php:117
+msgid "Pause background video"
+msgstr "Παύση βίντεο παρασκηνίου"
+
+#: inc/custom-header.php:116
+msgid "Play background video"
+msgstr "Αναπαραγωγή βίντεο παρασκηνίου"
+
+#: inc/customizer.php:80
+msgid "When the two column layout is assigned, the page title is in one column and content is in the other."
+msgstr "Όταν χρησιμοποιείται η διάταξη δύο στηλών, ο τίτλος της σελίδας είναι στη μία στήλη και το περιεχόμενο στην άλλη."
+
+#: single.php:32
+msgid "Next Post"
+msgstr "Επόμενο άρθρο"
+
+#: index.php:27
+msgid "Posts"
+msgstr "Άρθρα"
+
+#: inc/template-tags.php:88
+msgid "Tags"
+msgstr "Ετικέτες"
+
+#: inc/template-tags.php:84
+msgid "Categories"
+msgstr "Κατηγορίες"
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:65
+msgid ", "
+msgstr ", "
+
+#. translators: %s: post date
+#: inc/template-tags.php:51
+msgid "<span class=\"screen-reader-text\">Posted on</span> %s"
+msgstr "<span class=\"screen-reader-text\">Δημοσιεύτηκε στισ</span> %s"
+
+#. translators: %s: post author
+#: inc/template-tags.php:21
+msgid "by %s"
+msgstr "από %s"
+
+#: inc/icon-functions.php:44
+msgid "Please define an SVG icon filename."
+msgstr "Παρακαλούμε ορίστε ένα αρχείο εικονιδίου SVG."
+
+#: inc/icon-functions.php:39
+msgid "Please define default parameters in the form of an array."
+msgstr "Παρακαλούμε ορίστε τις προεπιλεγμένες παραμέτρους με μορφή πίνακα."
+
+#: inc/customizer.php:108
+msgid "Select pages to feature in each area from the dropdowns. Add an image to a section by setting a featured image in the page editor. Empty sections will not be displayed."
+msgstr "Επιλέξτε τις σελίδες που θα εμφανίζονται σε κάθε περιοχή από τα πτυσσόμενα. Προσθέστε μια εικόνα σε μια ενότητα ορίζοντας μια επιλεγμένη εικόνα στην επεξεργασία σελίδας. Οι κενές ενότητες δεν θα εμφανιστούν."
+
+#. translators: %d is the front page section number
+#: inc/customizer.php:107
+msgid "Front Page Section %d Content"
+msgstr "Περιεχόμενο ενότητας %d της αρχικής σελίδας"
+
+#: inc/customizer.php:83 inc/customizer.php:130
+msgid "Two Column"
+msgstr "Δύο στήλες"
+
+#: inc/customizer.php:82 inc/customizer.php:129
+msgid "One Column"
+msgstr "Μία στήλη"
+
+#: inc/customizer.php:77
+msgid "Page Layout"
+msgstr "Διάταξη σελίδας"
+
+#: inc/customizer.php:66
+msgid "Theme Options"
+msgstr "Επιλογές θέματος"
+
+#: inc/customizer.php:50
+msgid "Custom"
+msgstr "Προσαρμοσμένο"
+
+#: inc/customizer.php:48
+msgid "Light"
+msgstr "Ανοιχτό"
+
+#: inc/customizer.php:46
+msgid "Color Scheme"
+msgstr "Χρωματικές επιλογές"
+
+#: inc/custom-header.php:49
+msgid "Default Header Image"
+msgstr "Προεπιλεγμένη Εικόνα Κεφαλίδας"
+
+#: functions.php:335
+msgid "Footer 2"
+msgstr "Υποσέλιδο 2"
+
+#: functions.php:327 functions.php:337
+msgid "Add widgets here to appear in your footer."
+msgstr "Προσθέστε εδώ μικροεφαρμογές για να εμφανιστούν στο υποσέλιδό σας."
+
+#: functions.php:325
+msgid "Footer 1"
+msgstr "Υποσέλιδο 1"
+
+#: functions.php:269
+msgctxt "Libre Franklin font: on or off"
+msgid "on"
+msgstr "ενεργό"
+
+#: functions.php:63 functions.php:183
+#: template-parts/navigation/navigation-top.php:12
+msgid "Top Menu"
+msgstr "Αρχικό μενού"
+
+#: comments.php:60
+msgid "Reply"
+msgstr "Απάντηση"
+
+#: template-parts/post/content-none.php:27
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Φαίνεται ότι δε βρήκαμε αυτό που ζητούσατε. Αν θέλετε, δοκιμάστε την αναζήτηση."
+
+#: search.php:50
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Λυπούμαστε, αλλά τίποτα δε βρέθηκε που ταιριάζει στους όρους αναζήτησης. Παρακαλώ προσπαθήστε ξανά με άλλες λέξεις κλειδιά."
+
+#: template-parts/post/content-none.php:23
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Έτοιμοι για την πρώτη σας δημοσίευση; <a href=\"%1$s\">Πάμε</a>!"
+
+#: search.php:21 template-parts/post/content-none.php:17
+msgid "Nothing Found"
+msgstr "Δε βρέθηκε τίποτα"
+
+#: single.php:31
+msgid "Previous Post"
+msgstr "Προηγούμενο άρθρο"
+
+#: comments.php:66 single.php:31
+msgid "Previous"
+msgstr "Προηγούμενη"
+
+#: comments.php:67 single.php:32
+msgid "Next"
+msgstr "Επόμενο"
+
+#: searchform.php:19
+msgctxt "submit button"
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: searchform.php:18
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Αναζήτηση&hellip;"
+
+#: searchform.php:16
+msgctxt "label"
+msgid "Search for:"
+msgstr "Αναζήτηση για:"
+
+#: search.php:19
+msgid "Search Results for: %s"
+msgstr "Αποτελέσματα αναζήτησης για : %s"
+
+#. translators: %s: Name of current post
+#: functions.php:362 template-parts/page/content-front-page-panels.php:43
+#: template-parts/page/content-front-page.php:44
+#: template-parts/post/content-audio.php:82
+#: template-parts/post/content-gallery.php:68
+#: template-parts/post/content-image.php:58
+#: template-parts/post/content-video.php:80 template-parts/post/content.php:56
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Συνεχίστε την ανάγνωση του<span class=\"screen-reader-text\"> \"%s\"</span>"
+
+#: inc/customizer.php:49
+msgid "Dark"
+msgstr "Σκούρο"
+
+#: inc/back-compat.php:39 inc/back-compat.php:51 inc/back-compat.php:66
+msgid "Twenty Seventeen requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again."
+msgstr "Το θέμα Twenty Seventeen απαιτεί τουλάχιστον την έκδοση 4.7 του WordPress. Χρησιμοποιείτε την έκδοση %s. Παρακαλούμε αναβαθμίστε και δοκιμάστε ξανά."
+
+#. translators: %s: Name of current post
+#: inc/template-tags.php:117
+msgid "Edit<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Επεξεργασία του<span class=\"screen-reader-text\"> \"%s\"</span>"
+
+#: template-parts/page/content-page.php:25
+#: template-parts/post/content-audio.php:87
+#: template-parts/post/content-gallery.php:73
+#: template-parts/post/content-image.php:63
+#: template-parts/post/content-video.php:85 template-parts/post/content.php:61
+msgid "Pages:"
+msgstr "Σελίδες:"
+
+#: template-parts/navigation/navigation-top.php:13
+msgid "Menu"
+msgstr "Μενού"
+
+#: header.php:27
+msgid "Skip to content"
+msgstr "Μετάβαση στο περιεχόμενο"
+
+#: functions.php:445
+msgid "Collapse child menu"
+msgstr "Σύμπτυξη υπο-μενού"
+
+#: functions.php:444
+msgid "Expand child menu"
+msgstr "Επέκταση υπό-μενού"
+
+#: functions.php:317
+msgid "Add widgets here to appear in your sidebar."
+msgstr "Προσθέστε μικροεφαρμογές εδώ ώστε να εμφανιστούν στην πλευρική στήλη."
+
+#: functions.php:315
+msgid "Sidebar"
+msgstr "Πλευρική στήλη"
+
+#: functions.php:64 functions.php:194
+msgid "Social Links Menu"
+msgstr "Μενού Συνδέσμων Κοινωνικών Δικτύων"
+
+#: template-parts/footer/site-info.php:13
+msgid "Proudly powered by %s"
+msgstr "Με την υποστήριξη του %s"
+
+#. #-#-#-#-#  twentyseventeen.pot (Twenty Seventeen 1.2)  #-#-#-#-#
+#. Author URI of the plugin/theme
+#: template-parts/footer/site-info.php:13
+msgid "https://wordpress.org/"
+msgstr "https://wordpress.org/"
+
+#: footer.php:25
+msgid "Footer Social Links Menu"
+msgstr "Μενού κοινωνικών συνδέσμων υποσέλιδου"
+
+#: comments.php:75
+msgid "Comments are closed."
+msgstr "Τα σχόλια είναι απενεργοποιημένα."
+
+#. translators: 1: number of comments, 2: post title
+#: comments.php:40
+msgctxt "comments title"
+msgid "%1$s Reply to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Replies to &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s σχόλιο στο &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s σχόλια στο &ldquo;%2$s&rdquo;"
+
+#. translators: %s: post title
+#: comments.php:36
+msgctxt "comments title"
+msgid "One Reply to &ldquo;%s&rdquo;"
+msgstr "Μια σκέψη στο &ldquo;%s&rdquo;"
+
+#: archive.php:47 index.php:52 search.php:45
+msgid "Page"
+msgstr "Σελίδα"
+
+#: 404.php:21
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Ωπα! Αυτή η σελίδα δε βρέθηκε."
+
+#: 404.php:24
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "Φαίνεται ότι δε βρέθηκε τίποτα σε αυτή την τοποθεσία. Μήπως να δοκιμάζατε μια αναζήτηση;"
+
+#: archive.php:45 index.php:50 search.php:43
+msgid "Previous page"
+msgstr "Προηγούμενη σελίδα"
+
+#: archive.php:46 index.php:51 search.php:44
+msgid "Next page"
+msgstr "Επόμενη σελίδα"
+
+#. Author of the plugin/theme
+msgid "the WordPress team"
+msgstr "Η Ομάδα του WordPress"
+
+#. Theme URI of the plugin/theme
+msgid "https://wordpress.org/themes/twentyseventeen/"
+msgstr "https://wordpress.org/themes/twentyseventeen/"

@@ -1,0 +1,209 @@
+# Translation of Stable (latest release) in Hebrew
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-05-03 16:51:39+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#. Author of the plugin/theme
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+#: wordpress-importer.php:284
+msgid "Submit"
+msgstr "שלח"
+
+#: wordpress-importer.php:1142
+msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
+msgstr "בחר קובץ  WXR (.xml) להעלות, ולאחר מכן לחץ העלאת קובץ ולייבא."
+
+#: wordpress-importer.php:311
+msgid "as a new user:"
+msgstr "כמשתמש חדש:"
+
+#: wordpress-importer.php:319
+msgid "assign posts to an existing user:"
+msgstr "שייך למשתמש קיים:"
+
+#: wordpress-importer.php:1014
+msgid "Zero size file downloaded"
+msgstr "גודל אפס להורדה"
+
+#: wordpress-importer.php:1002
+msgid "Remote server returned error response %1$d %2$s"
+msgstr "שרת מרוחק החזיר ששגיאה %1$d %2$s"
+
+#: wordpress-importer.php:238
+msgid "Failed to import author %s. Their posts will be attributed to the current user."
+msgstr "תקלה בייבוא המחבר %s. הפוסטים שלהם ייוחסו למשתמש הנוכחי."
+
+#: wordpress-importer.php:516 wordpress-importer.php:738
+msgid "Failed to import %s %s"
+msgstr "תקלה בייבוא %s %s"
+
+#: wordpress-importer.php:424
+msgid "Failed to import category %s"
+msgstr "תקלה בייבוא קטגוריה %s"
+
+#: wordpress-importer.php:467
+msgid "Failed to import post tag %s"
+msgstr "תקלה בייבוא תגית %s"
+
+#: wordpress-importer.php:642
+msgid "%s &#8220;%s&#8221; already exists."
+msgstr "%s &#8220;%s&#8221; כבר קיים."
+
+#: wordpress-importer.php:308
+msgid "or create new user with login name:"
+msgstr "או שתיצור משתמש חדש עם שם משתמש:"
+
+#: parsers.php:42 parsers.php:72 parsers.php:80
+msgid "There was an error when reading this WXR file"
+msgstr "אירעה שגיאה בעת קריאת קובץ WXR"
+
+#: wordpress-importer.php:321
+msgid "or assign posts to an existing user:"
+msgstr "או להשייך פוסטים למשתמש קיים:"
+
+#: wordpress-importer.php:704
+msgid "Failed to import %s &#8220;%s&#8221;"
+msgstr "תקלה בייבוא %s &#8220;%s&#8221;"
+
+#: wordpress-importer.php:213
+msgid "This WXR file (version %s) may not be supported by this version of the importer. Please consider updating."
+msgstr "קובץ זה WXR (גרסה %s) אינו נתמך על ידי גרסה זו של היבואן. אנא שקול לעדכן."
+
+#: wordpress-importer.php:605
+msgid "Failed to import &#8220;%s&#8221;: Invalid post type %s"
+msgstr "תקלה בייבוא ​​\"%s\": תוכן מותאם אישית %s לא חוקי"
+
+#: wordpress-importer.php:869
+msgid "Menu item skipped due to missing menu slug"
+msgstr "דילוג עם פריט תפריט בשל חוסר סלאג"
+
+#: wordpress-importer.php:876
+msgid "Menu item skipped due to invalid menu slug: %s"
+msgstr "דילוג על פריט תפריט בשל סלאג לא חוקי: %s"
+
+#: wordpress-importer.php:133
+msgid "The file does not exist, please try again."
+msgstr "הקובץ אינו קיים, אנא נסה שנית."
+
+#. Description of the plugin/theme
+msgid "Import posts, pages, comments, custom fields, categories, tags and more from a WordPress export file."
+msgstr "ייבוא ​​פוסטים, דפים, תגובות, שדות מיוחדים, קטגוריות, תגיות ועוד מתוך קובץ ייצוא וורדפרס."
+
+#: wordpress-importer.php:1126
+msgid "A new version of this importer is available. Please update to version %s to ensure compatibility with newer export files."
+msgstr "גרסה חדשה של היבואן הזה זמינה. נא לעדכן לגרסה %s כדי להבטיח תאימות עם קבצי ייצוא חדשים."
+
+#: wordpress-importer.php:372
+msgid "Failed to create new user for %s. Their posts will be attributed to the current user."
+msgstr "תקלה ביצירת משתמש חדש עבור %s. ההודעות שלהם ישוייכו למשתמש הנוכחי."
+
+#: wordpress-importer.php:939
+msgid "Fetching attachments is not enabled"
+msgstr "האפשרות ליבוא קבצים מצורפים לא מופעלת"
+
+#: parsers.php:43
+msgid "Details are shown above. The importer will now try again with a different parser..."
+msgstr "פרטים מוצגים לעיל. היבואן ינסה שוב עם מנתח תחבירי אחר..."
+
+#: wordpress-importer.php:177
+msgid "Remember to update the passwords and roles of imported users."
+msgstr "זכור לעדכן את הסיסמאות ואת התפקידים של המשתמשים המיובאים."
+
+#: parsers.php:84 parsers.php:89 parsers.php:306 parsers.php:495
+msgid "This does not appear to be a WXR file, missing/invalid WXR version number"
+msgstr "זה לא נראה כמו קובץ WXR, חסרה גרסה של WXR או שהגרסה איננה חוקית"
+
+#: wordpress-importer.php:265
+msgid "To make it easier for you to edit and save the imported content, you may want to reassign the author of the imported item to an existing user of this site. For example, you may want to import all the entries as <code>admin</code>s entries."
+msgstr "כדי להקל עליך לערוך ולשמור את התוכן המיובא, ייתכן שתרצה להקצות מחדש את המחבר של הפריט המיובא למשתמש קיים באתר זה. לדוגמה, ייתכן שתרצה לייבא את כל הערכים בתור מנהל <code>admin</code>."
+
+#: wordpress-importer.php:267
+msgid "If a new user is created by WordPress, a new password will be randomly generated and the new user&#8217;s role will be set as %s. Manually changing the new user&#8217;s details will be necessary."
+msgstr "אם משתמש חדש נוצר על ידי וורדפרס, סיסמה חדשה תיווצר באקראי למשתמש ותפקידו יוגדר כ %s. יהיה צורך בשינוי ידני של פרטי המשתמש החדש."
+
+#: wordpress-importer.php:996
+msgid "Remote server did not respond"
+msgstr "שרת חיצוני לא מגיב"
+
+#. Author URI of the plugin/theme
+msgid "http://wordpress.org/"
+msgstr "http://he.wordpress.org/"
+
+#: wordpress-importer.php:1009
+msgid "Remote file is incorrect size"
+msgstr "גודלו של הקובץ החיצוני לא תקין"
+
+#: wordpress-importer.php:280
+msgid "Download and import file attachments"
+msgstr "הורד וייבא את הקובץ המצורף"
+
+#: wordpress-importer.php:1020
+msgid "Remote file is too large, limit is %s"
+msgstr "הקובץ גדול מדי, המגבלה היא %s"
+
+#: wordpress-importer.php:176
+msgid "Have fun!"
+msgstr "תהנה!"
+
+#: wordpress-importer.php:176
+msgid "All done."
+msgstr "הושלם."
+
+#: wordpress-importer.php:952
+msgid "Invalid file type"
+msgstr "סוג קובץ לא תקין"
+
+#: wordpress-importer.php:297
+msgid "Import author:"
+msgstr "מחבר:"
+
+#: wordpress-importer.php:1141
+msgid "Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import the posts, pages, comments, custom fields, categories, and tags into this site."
+msgstr "העלה קובץ WXR על מנת לייבא פוסטים, תגובות, שדות מיוחדים, עמודים, קטגוריות ותגים."
+
+#: wordpress-importer.php:322
+msgid "- Select -"
+msgstr "- בחר -"
+
+#: wordpress-importer.php:277
+msgid "Import Attachments"
+msgstr "קבצים מצורפים"
+
+#: wordpress-importer.php:264
+msgid "Assign Authors"
+msgstr "שייך מחברים"
+
+#: wordpress-importer.php:1216
+msgid "Import <strong>posts, pages, comments, custom fields, categories, and tags</strong> from a WordPress export file."
+msgstr "ייבוא ​​<strong>פוסטים, דפים, תגובות, שדות מיוחדים, קטגוריות ותגיות</strong> מתוך קובץ הייצוא וורדפרס."
+
+#: wordpress-importer.php:132 wordpress-importer.php:141
+#: wordpress-importer.php:192 wordpress-importer.php:196
+#: wordpress-importer.php:205
+msgid "Sorry, there has been an error."
+msgstr "אירעה שגיאה."
+
+#. Plugin Name of the plugin/theme
+msgid "WordPress Importer"
+msgstr "ייבוא מוורדפרס"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/wordpress-importer/"
+msgstr "https://he.wordpress.org/plugins/wordpress-importer/"
+
+#: wordpress-importer.php:197
+msgid "The export file could not be found at <code>%s</code>. It is likely that this was caused by a permissions problem."
+msgstr "קובץ הייצוא לא נמצא ב-<code>%s</code>. כנראה שהדבר נובע מבעיות שקשורות בהרשאות."
+
+#: wordpress-importer.php:1119
+msgid "Import WordPress"
+msgstr "יבוא וורדפרס"

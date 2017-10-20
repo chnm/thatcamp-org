@@ -1,176 +1,535 @@
-# Translation of Network Admin in Greek
-# This file is distributed under the same license as the Network Admin package.
+# Translation of WordPress - 4.8.x - Administration - Network Admin in Greek
+# This file is distributed under the same license as the WordPress - 4.8.x - Administration - Network Admin package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-02-25 16:24:30+0000\n"
+"PO-Revision-Date: 2017-05-28 20:46:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.1.0-alpha\n"
-"Project-Id-Version: Network Admin\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: el_GR\n"
+"Project-Id-Version: WordPress - 4.8.x - Administration - Network Admin\n"
 
-#: wp-admin/network/settings.php:277
-msgid "Upload Settings"
-msgstr "Ρυθμίσεις μεταφορτώσεων"
+#: wp-admin/network.php:71
+msgid "Network"
+msgstr "Δίκτυο"
 
-#: wp-admin/network/settings.php:280
-msgid "Site upload space"
-msgstr "Διαθέσιμος χώρος για αρχεία"
+#: wp-admin/network.php:67 wp-admin/network.php:78
+msgid "<a href=\"https://codex.wordpress.org/Tools_Network_Screen\">Documentation on the Network Screen</a>"
+msgstr "<a href=\"https://codex.wordpress.org/Tools_Network_Screen\">Τεκμηρίωση με την οθόνη του δικτύου</a>"
 
-#: wp-admin/network/settings.php:282
-msgid "Limit total size of files uploaded to %s MB"
-msgstr "Περιορίστε το συνολικό μέγεθος των μεταφορτωμένων αρχείων σε %s MB"
+#: wp-admin/network.php:66 wp-admin/network.php:77
+msgid "<a href=\"https://codex.wordpress.org/Create_A_Network\">Documentation on Creating a Network</a>"
+msgstr "<a href=\"https://codex.wordpress.org/Create_A_Network\">Τεκμηρίωση στην δημιουργία δικτύου</a>"
 
-#: wp-admin/network/settings.php:290
-msgid "Upload file types"
-msgstr "Τύποι μεταφορτώμενων αρχείων"
+#: wp-admin/network.php:64
+msgid "The choice of subdirectory sites is disabled if this setup is more than a month old because of permalink problems with &#8220;/blog/&#8221; from the main site. This disabling will be addressed in a future version."
+msgstr "Η επιλογή subdirectory ιστοτόποπων είναι απενεργοποιημένη αν αυτή η εγκατάσταση υπάρχει για περισσότερο από ένα μήνα λόγω προβλημάτων permalink με &#8220;/blog/&#8221 από τον κύριο ιστότοπο. Αυτή η δυσλειτουργία θα επιλυθεί σε μελλοντική έκδοση."
 
-#: wp-admin/network/settings.php:294
-msgid "Allowed file types. Separate types by spaces."
-msgstr "Επιτρεπόμενοι τύποι αρχείων. Διαχωρίστε τους τύπους με κενά διαστήματα."
+#: wp-admin/network.php:63
+msgid "Once you add this code and refresh your browser, multisite should be enabled. This screen, now in the Network Admin navigation menu, will keep an archive of the added code. You can toggle between Network Admin and Site Admin by clicking on the Network Admin or an individual site name under the My Sites dropdown in the Toolbar."
+msgstr "Από τη στιγμή που θα προσθέσετε τον κώδικα και κάνετε ανανέωση στον browser σας, θα πρέπει να έχει ενεργοποιηθεί η επιλογή multisite. Αυτή η σελίδα, στο μενού πλοήγησης διαχειριστή δικτύου μπορεί να κρατάει αρχείο του κώδικα που έχει προσθεθεί. Μπορείτε να μεταπηδήσετε από την διαχείριση δικτύου στην διαχείριση ιστοτόπου κάνοντας κλικ στην επιλογή \"Διαχείριση δικτύου\" ή σε κάποιο τίτλο ιστοτόπου στο αναδιπλούμενο μενού του συνδέσμου \"Οι ιστότοποι μου\" στη γραμμή εργαλείων. "
 
-#: wp-admin/network/settings.php:300
-msgid "Max upload file size"
-msgstr "Μέγιστο μέγεθος αρχείου για μεταφόρτωση"
+#: wp-admin/network.php:62
+msgid "Add the designated lines of code to wp-config.php (just before <code>/*...stop editing...*/</code>) and <code>.htaccess</code> (replacing the existing WordPress rules)."
+msgstr "Προσθέστε τις καθορισμένες γραμμές κώδικά στο  wp-config.php (αμέσως πριν <code>/*...στο τέλος...*/</code>) και <code>.htaccess</code> (αντικαθιστώντας τους υπάρχοντες κανόνες του WordPress)"
 
-#: wp-admin/network/settings.php:302
-msgctxt "File size in kilobytes"
-msgid "%s KB"
-msgstr "%s KB"
+#: wp-admin/network.php:61
+msgid "The next screen for Network Setup will give you individually-generated lines of code to add to your wp-config.php and .htaccess files. Make sure the settings of your FTP client make files starting with a dot visible, so that you can find .htaccess; you may have to create this file if it really is not there. Make backup copies of those two files."
+msgstr "Η επόμενη οθόνη για την εγκατάσταση δικτύου θα σας δώσει μεμονωμένες δημιουργημένες γραμμές κώδικα για να τα προσθέσετε στο  wp-config.php και .htaccess αρχείο σας. Βεβαιωθείτε ότι οι ρυθμίσεις FTP του πελάτη σας, επιτρέπουν στα αρχεία να ξεκινάνε με μια τελεία ορατή, έτσι ώστε να μπορείτε να βρείτε .htaccess; ίσως χρειαστεί να δημιουργήσετε αυτό το αρχείο αν δεν είναι πραγματικά εκεί. Δημιουργήστε αντίγραφα ασφαλείας αυτών των δύο αρχείων."
 
-#: wp-admin/network/settings.php:304
-msgid "Size in kilobytes"
-msgstr "Μέγεθος σε kilobytes"
+#: wp-admin/network.php:60
+msgid "Choose subdomains or subdirectories; this can only be switched afterwards by reconfiguring your install. Fill out the network details, and click install. If this does not work, you may have to add a wildcard DNS record (for subdomains) or change to another setting in Permalinks (for subdirectories)."
+msgstr "Επιλέξτε subdomains  ή subdirectories; αυτό θα μπορούσε να ενεγοποιηθεί μόνο μετά απο μια επαναρύθμιση των παραμέτρων της εγκατάστασης.Συμπληρώστε τα στοιχεία του δικτύου σας, και κάντε κλικ στο κουμπί εγκατάσταση. Εαν αυτό δεν δουλέψει, μπορείτε να προσθέσετε μια εγγραφή wildcard DNS (για τα subdomains) ή να αλλάξετε άλλες ρυθμήσεις στα Permalinks (για τα subdirectories)"
 
-#: wp-admin/network/settings.php:315
-msgid "Language Settings"
-msgstr "Ρυθμίσεις γλώσσας"
+#: wp-admin/network.php:59
+msgid "This screen allows you to configure a network as having subdomains (<code>site1.example.com</code>) or subdirectories (<code>example.com/site1</code>). Subdomains require wildcard subdomains to be enabled in Apache and DNS records, if your host allows it."
+msgstr "Αυτή η οθόνη σας επιτρέπει να διαμορφώσετε το δίκτυο σας σαν να έχετε subdomains (<code>site1.example.com</code>) ή subdirectories <code>example.com/site1</code>). Τα Subdomains απαιτούν να γίνει ενεργοποίηση στον Apache και στα DNS records εναλλακτικών Subdomains, εάν το επιτρέψει ο παροχός σας."
 
-#: wp-admin/network/settings.php:318
-msgid "Default Language"
-msgstr "Γλώσσα προεπιλογής"
+#: wp-admin/network.php:55
+msgid "Create a Network of WordPress Sites"
+msgstr "Δημιουργήστε ένα δίκτυο ιστοτόπων WordPress"
 
-#: wp-admin/network/settings.php:345
-msgid "Enable administration menus"
-msgstr "Ενεργοποίηση διαχειριστικών μενού"
+#. translators: 1: WP_ALLOW_MULTISITE 2: wp-config.php
+#: wp-admin/network.php:44
+msgid "You must define the %1$s constant as true in your %2$s file to allow creation of a Network."
+msgstr "Θα πρέπει να καθορίσετε την σταθερή %1$s ως true στο αρχείο %2$s για επιτραπεί η δημιουργία δικτύου."
 
-#: wp-admin/network/settings.php:367
-msgid "Enable menus"
-msgstr "Ενεργοποίηση των μενού"
+#: wp-admin/network.php:29
+msgid "The Network creation panel is not for WordPress MU networks."
+msgstr "Τα πλαίσια δημιουργία δικτύου δεν είναι για τα δίκτυα WordPress MU."
 
-#: wp-admin/network/site-info.php:18 wp-admin/network/site-settings.php:17
-#: wp-admin/network/site-users.php:17
-msgid "You do not have sufficient permissions to edit this site."
-msgstr "Δεν επιτρέπεται να επεξεργάζεστε τον ιστότοπο αυτό."
+#: wp-admin/network/users.php:206
+msgid "Users deleted."
+msgstr "Τα μέλη διαγράφηκαν."
 
-#: wp-admin/network/site-info.php:25 wp-admin/network/site-settings.php:23
-#: wp-admin/network/site-themes.php:23 wp-admin/network/site-users.php:26
-msgid "The menu is for editing information specific to individual sites, particularly if the admin area of a site is unavailable."
-msgstr "Το μενού είναι για την επεξεργασία πληροφοριών συγκεκριμένα σε μεμονωμένους ιστοτόπους , ειδικά στην περίπτωση που η περιοχή διαχείρισης του ιστοτόπου δεν είναι διαθέσιμη."
+#: wp-admin/network/users.php:203
+msgid "Users removed from spam."
+msgstr "Τα μέλη αποχαρακτηρίστηκαν."
 
-#: wp-admin/network/site-info.php:26 wp-admin/network/site-settings.php:24
-#: wp-admin/network/site-themes.php:24 wp-admin/network/site-users.php:27
-msgid "<strong>Info</strong> &mdash; The site URL is rarely edited as this can cause the site to not work properly. The Registered date and Last Updated date are displayed. Network admins can mark a site as archived, spam, deleted and mature, to remove from public listings or disable."
-msgstr "<strong>Πληροφορίες</strong> Την URL ιστότοπου σπάνια το επεξεργαζόμαστε, αφού αυτό μπορεί να προκαλέσει δυσλειτουργία στον ιστότοπο. Η ημερομηνία εγγραφής και η τελευταία ενημέρωση εμφανίζονται. Οι διαχειριστές του δικτύου μπορούν να χαρακτηρίσουν ένα ιστότοπο σαν αρχειοθετημένο, ανεπιθύμητο, διαγραμμένο ή μόνο για ενήλικες, ώστε να μην εμφανίζεται δημόσια ή για να τον απενεργοποιήσουν."
+#: wp-admin/network/users.php:200
+msgid "Users marked as spam."
+msgstr "Τα μέλη σημάνθηκαν ως ανεπιθύμητα."
 
-#: wp-admin/network/site-info.php:27 wp-admin/network/site-settings.php:25
-#: wp-admin/network/site-themes.php:25 wp-admin/network/site-users.php:28
-msgid "<strong>Users</strong> &mdash; This displays the users associated with this site. You can also change their role, reset their password, or remove them from the site. Removing the user from the site does not remove the user from the network."
-msgstr "<strong>Χρήστες</strong> &mdash; Εδώ απεικονίζονται χρήστες που σχετίζονται με αυτόν τον ιστότοπο. Μπορείτε επίσης να αλλάξετε το ρόλο τους, να επαναφέρετε τον κωδικό πρόσβασής τους ή να τους αφαιρέσετε από χρήστες του ιστοτόπου. Αφαιρώντας ένα χρήστη από ένα ιστότοπο δε τον αφαιρείτε εξολοκλήρου από το δίκτυο."
+#: wp-admin/network/users.php:174
+msgid "You can make an existing user an additional super admin by going to the Edit User profile page and checking the box to grant that privilege."
+msgstr "Μπορείτε να μετατρέψετε έναν υπάρχοντα χρήστη ως επιπλέον διαχειριστή πηγαίνονται στη σελίδα Επεξεργασία Προφίλ Χρήστη και επιλέγοντας το κουτί που δίνει αυτό το προνόμιο."
 
-#: wp-admin/network/site-info.php:28 wp-admin/network/site-settings.php:26
-#: wp-admin/network/site-themes.php:26 wp-admin/network/site-users.php:29
-msgid "<strong>Themes</strong> &mdash; This area shows themes that are not already enabled across the network. Enabling a theme in this menu makes it accessible to this site. It does not activate the theme, but allows it to show in the site&#8217;s Appearance menu. To enable a theme for the entire network, see the <a href=\"%s\">Network Themes</a> screen."
-msgstr "<strong>Θέματα</strong> &mdash; Αυτή η περιοχή δείχνει θέματα που δεν έχουν ακόμη γίνει διαθέσιμα στο δίκτυο σας. Κάνοντας ένα θέμα διαθέσιμο σε αυτό το μενού το καθιστά προσπελάσιμο σε μια ιστοσελίδα. Δεν ενεργοποιείται το θέμα , αλλά επιτρέπεται πλεόν η εμφάνισή του στο μενού επεξεργασίας εμφάνισης της ιστοσελίδας. Για να γίνει ένα θέμα διαθέσιμο καθολικά θα πρέπει να δείτε τη σελίδα  <a href=\"%s\">Θέματα Δικτύου</a>."
+#: wp-admin/network/users.php:173
+msgid "The bulk action will permanently delete selected users, or mark/unmark those selected as spam. Spam users will have posts removed and will be unable to sign up again with the same email addresses."
+msgstr "Η ομαδική αλλαγή θα σβήσει τους επιλεγμένους χρήστες οριστικά ή θα μαρκάρει/ξεμαρκάρει τους επιλεγμένους σαν spam χρήστες. Όλα τα άρθρα που έχουν γράψει οι spam χρήστες θα διαγραφούν και δεν θα μπορέσουν να ξανασυνδεθούν με τον ίδιο λογαριασμό email."
 
-#: wp-admin/network/site-info.php:29 wp-admin/network/site-settings.php:27
-#: wp-admin/network/site-themes.php:27 wp-admin/network/site-users.php:30
-msgid "<strong>Settings</strong> &mdash; This page shows a list of all settings associated with this site. Some are created by WordPress and others are created by plugins you activate. Note that some fields are grayed out and say Serialized Data. You cannot modify these values due to the way the setting is stored in the database."
-msgstr ""
-"<strong>Ρυθμίσεις</strong> - Αυτή η σελίδα εμφανίζει όλες τις ρυθμίσεις που σχετίζονται με αυτό τον ιστότοπο. Μερικές έχουν δημιουργηθεί από το WordPress και άλλες από τα πρόσθετα που έχετε ενεργοποιήσει.\n"
-"Σημειώνεται ότι μερικά πεδία φαίνονται μη διαθέσιμες (γκρι) και αναφέρονται σαν \"Serialized Data\". Δε μπορείτε να αλλάξετε τις τιμές τους γιατί εξαρτώνται από τον τρόπο που έχει αποθηκευτεί η ρύθμιση στη βάση δεδομένων.  "
+#: wp-admin/network/users.php:172
+msgid "You can sort the table by clicking on any of the table headings and switch between list and excerpt views by using the icons above the users list."
+msgstr "Μπορείτε να ταξινομήσετε τον πίνακα πατώντας σε οποιαδήποτε από τις επικεφαλίδες του πίνακας και την προβολή αποσπασμάτων χρησιμοποιώντας τα εικονίδια πάνω από την λίστα χρηστών."
 
-#: wp-admin/network/site-info.php:34 wp-admin/network/site-new.php:32
-#: wp-admin/network/site-settings.php:32 wp-admin/network/site-themes.php:32
-#: wp-admin/network/site-users.php:35 wp-admin/network/sites.php:45
-msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Sites_Screen\" target=\"_blank\">Documentation on Site Management</a>"
-msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Sites_Screen\" target=\"_blank\">Documentation on Site Management</a>"
+#: wp-admin/network/users.php:171
+msgid "You can also go to the user&#8217;s profile page by clicking on the individual username."
+msgstr "Μπορείς επίσης να επισκεφθείς την σελίδα προφίλ του χρήστη πατώντας πάνω στο όνομα χρήστη του καθενός."
 
-#: wp-admin/network/site-info.php:41 wp-admin/network/site-settings.php:39
-#: wp-admin/network/site-themes.php:60 wp-admin/network/site-users.php:55
-msgid "Invalid site ID."
-msgstr "Άκυρο ID ιστοτόπου."
+#: wp-admin/network/users.php:170
+msgid "Hover over any user on the list to make the edit links appear. The Edit link on the left will take you to their Edit User profile page; the Edit link on the right by any site name goes to an Edit Site screen for that site."
+msgstr "Μεταφέρετε τον δείκτη του ποντικιού πάνω από κάθε χρήστη στη λίστα για να εμφανιστούν οι σύνδεσμοι επεξεργασίας. Ο σύνδεσμος \"Επεξεργασία\" στα αριστερά θα σας μεταφέρει στη σελίδα Επεξεργασία Προφίλ Χρήστη. Ο σύνδεσμος \"Επεξεργασία\" στα δεξιά από κάθε όνομα ιστότοπου θα σας μεταφέρει στη σελίδα \"Επεξεργασία ιστότοπου\" για το συγκεκριμένο που επιλέξατε."
 
-#: wp-admin/network/site-info.php:46 wp-admin/network/site-settings.php:43
-#: wp-admin/network/site-themes.php:66 wp-admin/network/site-users.php:59
-msgid "The requested site does not exist."
-msgstr "Ο ζητούμενος ιστότοπος δεν υπάρχει."
+#: wp-admin/network/users.php:169
+msgid "This table shows all users across the network and the sites to which they are assigned."
+msgstr "Αυτός ο πίνακας δείχνει όλους τους χρήστες του δικτύου και τους ιστότοπους στους οποίους είναι μέλη."
 
-#: wp-admin/network/site-info.php:125
-msgid "Site info updated."
-msgstr "Τα στοιχεία του ιστοχώρου ενημερώθηκαν."
+#: wp-admin/network/users.php:70
+msgid "Warning! User cannot be modified. The user %s is a network administrator."
+msgstr "Προσοχή! Αδύνατη η τροποποίηση μέλους. Το μέλος %s είναι διαχειριστής δικτύου."
 
-#: wp-admin/network/site-info.php:129 wp-admin/network/site-settings.php:86
-#: wp-admin/network/site-themes.php:142 wp-admin/network/site-users.php:182
-msgid "Edit Site: %s"
-msgstr "Επεξεργασία ιστοτόπου: %s"
+#. translators: %s: edit page url
+#: wp-admin/network/user-new.php:80
+msgid "User added. <a href=\"%s\">Edit user</a>"
+msgstr "Ο χρήστης προστέθηκε. <a href=\"%s\">Αλλαγές χρήστη</a>"
 
-#: wp-admin/network/site-info.php:144 wp-admin/network/site-settings.php:101
-#: wp-admin/network/site-themes.php:155 wp-admin/network/site-users.php:210
-msgid "Info"
-msgstr "Πληροφορίες"
+#: wp-admin/network/user-new.php:49
+msgid "Cannot add user."
+msgstr "Αδύνατη η προσθήκη μέλους."
 
-#: wp-admin/network/site-info.php:170 wp-admin/network/site-info.php:177
-msgid "Site URL"
-msgstr "URL ιστοτόπου"
+#: wp-admin/network/user-new.php:37
+msgid "Cannot create an empty user."
+msgstr "Αδύνατη η δημιουργία κενού χρήστη."
 
-#: wp-admin/network/site-info.php:203
-msgid "Set site attributes"
-msgstr "Ορισμός ιδιοτήτων ιστότοπου"
+#: wp-admin/network/user-new.php:26 wp-admin/network/users.php:179
+msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Users_Screen\">Documentation on Network Users</a>"
+msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Users_Screen\">Τεκμηρίωση σχετικά με τους χρήστες δικτύου</a>"
 
-#: wp-admin/network/site-new.php:20
-msgid "You do not have sufficient permissions to add sites to this network."
-msgstr "Δεν επιτρέπεται να προσθέτετε ιστότοπους στο δίκτυο αυτό."
+#: wp-admin/network/user-new.php:21
+msgid "Users who are signed up to the network without a site are added as subscribers to the main or primary dashboard site, giving them profile pages to manage their accounts. These users will only see Dashboard and My Sites in the main navigation until a site is created for them."
+msgstr "Οι χρήστες που έχουν εγγραφεί στο δίκτυο χωρίς ιστοτόπο προστίθενται ως συνδρομητές του κύριου ή βασικού ιστοτόπου, έτσι ώστε να έχουν σελίδες προφίλ για να διαχειρίζονται το λογαριασμό τους. Οι χρήστες αυτοί, θα έχουν πρόσβαση μόνο στον Πίνακα ελέγχου και στο Οι ιστότοποί μου στο περιβάλλον διαχείρισης, μέχρι τη στιγμή που θα δημιουργηθεί ένας ιστότοπος για αυτούς."
 
-#: wp-admin/network/site-new.php:26
-msgid "This screen is for Super Admins to add new sites to the network. This is not affected by the registration settings."
-msgstr "Αυτή η οθόνη είναι για Υπερ Διαχειριστές ώστε να προσθέτουν νέους ιστότοπους στο δίκτυο. Αυτό δεν επηρεάζεται από τις ρυθμίσεις εγγραφής ."
+#: wp-admin/network/user-new.php:20
+msgid "Add User will set up a new user account on the network and send that person an email with username and password."
+msgstr "Η προσθήκη χρήστη θα δημιουργήσει ένα νέο λογαριασμό χρήστη στο δίκτυο και θα στείλει στο εν λόγω πρόσωπο ένα email με το όνομα χρήστη και τον κωδικό πρόσβασης."
 
-#: wp-admin/network/site-new.php:27
-msgid "If the admin email for the new site does not exist in the database, a new user will also be created."
-msgstr "Αν το email του διαχειριστή του νέου ιστότοπου δεν υπάρχει στη βάση δεδομένων, τότε θα δημιουργηθεί ένας νέος χρήστης."
+#: wp-admin/network/upgrade.php:127
+msgid "WordPress has been updated! Before we send you on your way, we need to individually upgrade the sites in your network."
+msgstr "Το WordPress έχει ενημερωθεί! Πριν σας αφήσουμε, θα πρέπει να αναβαθμίσουμε ξεχωριστά τους ιστότοπους στο δίκτυό σας."
 
-#: wp-admin/network/site-new.php:40
-msgid "Can&#8217;t create an empty site."
-msgstr "Αδύνατη η δημιουργία κενού ιστοχώρου."
+#: wp-admin/network/upgrade.php:112
+msgid "Next Sites"
+msgstr "Επόμενοι ιστότοποι"
 
-#: wp-admin/network/site-new.php:52
-msgid "The following words are reserved for use by WordPress functions and cannot be used as blog names: <code>%s</code>"
-msgstr "Οι παρακάτω λέξεις είναι δεσμευμένες για χρήση από συναρτήσεις του WordPress και δε μπορούν να χρησιμοποιηθούν ως ονόματα ιστολογίου: <code>%s</code>"
+#: wp-admin/network/upgrade.php:112
+msgid "If your browser doesn&#8217;t start loading the next page automatically, click this link:"
+msgstr "Aν το πρόγραμμα περιήγησης σας δεν ξεκινήσει να φορτώνει την επόμενη σελίδα αυτόματα, κάντε κλικ στον σύνδεσμο: "
 
-#: wp-admin/network/site-new.php:71
-msgid "Missing or invalid site address."
-msgstr "Απούσα ή άκυρη διεύθυνση ιστοτόπου."
+#. translators: 1: site url, 2: server error message
+#: wp-admin/network/upgrade.php:88
+msgid "Warning! Problem updating %1$s. Your server may not be able to connect to sites running on it. Error message: %2$s"
+msgstr "Προσοχή! Πρόβλημα στην αναβάθμιση του %1$s. Ο διακομιστής σας ίσως να μην είναι σε θέση να συνδεθεί σε ιστότοπους που τρέχουν σε αυτόν. Μήνυμα λάθους: %2$s"
 
-#: wp-admin/network/site-new.php:74
-msgid "Missing email address."
-msgstr "Απούσα ηλ. διεύθυνση."
+#: wp-admin/network/upgrade.php:68
+msgid "All done!"
+msgstr "Έτοιμοι!"
 
-#: wp-admin/network/site-new.php:79
-msgid "Invalid email address."
-msgstr "Άκυρη διεύθυνση ηλ. ταχυδρομείου"
+#: wp-admin/network/upgrade.php:29
+msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Updates_Screen\">Documentation on Upgrade Network</a>"
+msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Updates_Screen\">Τεκμηρίωση στην αναβάθμιση δικτύου</a>"
 
-#: wp-admin/network/site-new.php:95
-msgid "The domain or path entered conflicts with an existing username."
-msgstr "Ο τομέας ή διαδρομή που δώσατε συμπίπτει με υπάρχων όνομα χρήστη."
+#: wp-admin/network/upgrade.php:24
+msgid "If this process fails for any reason, users logging in to their sites will force the same update."
+msgstr "Αν αυτή η διεργασία αποτύχει για οποιοδήποτε λόγο, οι χρήστες που συνδέονται στους ιστοτόπους τους θα υποχρεωθούν να κάνουν την ίδια αναβάθμιση."
 
-#: wp-admin/network/site-new.php:100
-msgid "There was an error creating the user."
-msgstr "Σφάλμα κατά τη δημιουργία χρήστη."
+#: wp-admin/network/upgrade.php:23
+msgid "If a version update to core has not happened, clicking this button won&#8217;t affect anything."
+msgstr "Αν μια προηγούμενη ανανέωση στον πυρήνα του συστήματος δεν έχει ολοκληρωθεί, τότε δε θα συμβεί τίποτα αν κάνετε κλικ σε αυτό το κουμπί."
+
+#: wp-admin/network/upgrade.php:22
+msgid "Only use this screen once you have updated to a new version of WordPress through Updates/Available Updates (via the Network Administration navigation menu or the Toolbar). Clicking the Upgrade Network button will step through each site in the network, five at a time, and make sure any database updates are applied."
+msgstr "Να χρησιμοποιείτε αυτή τη σελίδα μόνο αν έχετε ενημερωμένο το WordPress στη νέα έκδοση, από τις Ενημερώσεις/Διαθέσιμες Ενημερώσεις (μέσω του Δικτύου Διαχείρισης στο μενού πλοήγησης ή στο μενού εργαλείων). Κάνοντας κλικ στο κουμπί \"Δίκτυο Αναβάθμισης\" θα ενημερωθούν οι ιστοσελίδες που βρίσκονται στη διαχείριση σας, από πέντε κάθε φορά. Βεβαιωθείτε ότι έχουν γίνει όλες οι ενημερώσεις στις βάσεις δεδομένων.  "
+
+#: wp-admin/network/themes.php:293
+msgid "You cannot delete a theme while it is active on the main site."
+msgstr "Δεν γίνεται να διαγράψετε το θέμα που είναι ενεργό στον κύριο ιστότοπο."
+
+#: wp-admin/network/themes.php:287
+msgid "%s theme deleted."
+msgid_plural "%s themes deleted."
+msgstr[0] "Διαγράφηκε %s θέμα."
+msgstr[1] "Διαγράφηκαν %s θέματα."
+
+#: wp-admin/network/themes.php:235
+msgid "Themes list navigation"
+msgstr "Περιήγηση λίστας θεμάτων"
+
+#: wp-admin/network/themes.php:229
+msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Themes_Screen\">Documentation on Network Themes</a>"
+msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Themes_Screen\">Τεκμηρίωση στα θέματα δικτύου</a>"
+
+#: wp-admin/network/themes.php:224
+msgid "Themes can be enabled on a site by site basis by the network admin on the Edit Site screen (which has a Themes tab); get there via the Edit action link on the All Sites screen. Only network admins are able to install or edit themes."
+msgstr "Τα Θέματα μπορούν να ενεργοποιηθούν σε έναν ιστότοπο από την αρχή της δημιουργίας του από το διαχειριστή του δικτύου στην σελίδα Επεξεργασία ιστοτόπου (διαθέτει επιλογή Θέματα). Μεταφερθείτε εκεί μέσω του συνδέσμου Επεξεργασία της σελίδας \" Όλοι οι ιστότοποι\". Μόνο οι διαχειριστές του δικτύου μπορούν να εγκαταστήσουν ή να τροποποιήσουν τα θέματα.  "
+
+#: wp-admin/network/themes.php:223
+msgid "If the network admin disables a theme that is in use, it can still remain selected on that site. If another theme is chosen, the disabled theme will not appear in the site&#8217;s Appearance > Themes screen."
+msgstr "Αν ο διαχειριστής του δικτύου απενεργοποιήσει ένα θέμα που είναι σε χρήση, αυτό θα παραμείνει διαθέσιμο για επιλογή στην εν λόγω ιστοσελίδα. Αν ένα άλλο θέμα επιλεγεί, το απενεργοποιημένο θέμα δε θα εμφανίζεται στην οθόνη Εμφάνιση &gt; Θέματα του ιστότοπου αυτού."
+
+#: wp-admin/network/themes.php:222
+msgid "This screen enables and disables the inclusion of themes available to choose in the Appearance menu for each site. It does not activate or deactivate which theme a site is currently using."
+msgstr "Αυτή η οθόνη ενεργοποιεί και απενεργοποιεί το αν ένα θέμα θα συμπεριληφθεί στα διαθέσιμα θέματα στο μενού Εμφάνιση για την κάθε ιστοσελίδα. Δεν ενεργοποιεί ή απενεργοποιεί το ίδιο το χρησιμοποιούμενο θέμα της εκάστοτε ιστοσελίδας."
+
+#: wp-admin/network/themes.php:171
+msgid "No, return me to the theme list"
+msgstr "Όχι, επιστροφή στη λίστα θεμάτων"
+
+#: wp-admin/network/themes.php:163
+msgid "Yes, delete these themes"
+msgstr "Ναι, διαγραφή των θεμάτων"
+
+#: wp-admin/network/themes.php:161
+msgid "Yes, delete this theme"
+msgstr "Ναι, διαγραφή του θέματος"
+
+#: wp-admin/network/themes.php:148
+msgid "Are you sure you wish to delete these themes?"
+msgstr "Σίγουρα θέλετε να διαγράψετε αυτά τα θέματα;"
+
+#: wp-admin/network/themes.php:146
+msgid "Are you sure you wish to delete this theme?"
+msgstr "Είστε σίγουρος ότι θέλετε να διαγράψετε αυτό το θέμα;"
+
+#. translators: 1: theme name, 2: theme author
+#: wp-admin/network/themes.php:138
+msgctxt "theme"
+msgid "%1$s by %2$s"
+msgstr "%1$s από %2$s"
+
+#: wp-admin/network/themes.php:131
+msgid "You are about to remove the following themes:"
+msgstr "Πρόκειται να αφαιρέσετε τα εξής θέματα:"
+
+#: wp-admin/network/themes.php:130
+msgid "These themes may be active on other sites in the network."
+msgstr "Τα θέματα αυτά ίσως να είναι ενεργά σε άλλους ιστότοπους στο δίκτυο."
+
+#: wp-admin/network/themes.php:129
+msgid "Delete Themes"
+msgstr "Διαγραφή θεμάτων"
+
+#: wp-admin/network/themes.php:127
+msgid "You are about to remove the following theme:"
+msgstr "Πρόκειται να διαγράψετε το εξής θέμα:"
+
+#: wp-admin/network/themes.php:126
+msgid "This theme may be active on other sites in the network."
+msgstr "Το θέμα αυτό είναι ενδεχομένως ενεργό σε άλλους ιστοτόπους του δικτύου."
+
+#: wp-admin/network/themes.php:125
+msgid "Delete Theme"
+msgstr "Διαγραφή θέματος"
+
+#: wp-admin/network/themes.php:90
+msgid "Sorry, you are not allowed to delete themes for this site."
+msgstr "Λυπούμαστε, δεν σας επιτρέπεται η διαγραφή θεμάτων για αυτό τον ιστότοπο."
+
+#: wp-admin/network/themes.php:14
+msgid "Sorry, you are not allowed to manage network themes."
+msgstr "Λυπούμαστε, δεν σας επιτρέπεται να διαχειριστείτε τα θέματα του δικτύου."
+
+#: wp-admin/network/sites.php:263
+msgid "Site marked as spam."
+msgstr "Ο ιστότοπος σημάνθηκε ως ανεπιθύμητος."
+
+#: wp-admin/network/sites.php:260
+msgid "Site removed from spam."
+msgstr "Ο ιστότοπος αποχαρακτηρίστηκε."
+
+#: wp-admin/network/sites.php:257
+msgid "Site deactivated."
+msgstr "Ο ιστότοπος απενεργοποιήθηκε."
+
+#: wp-admin/network/sites.php:254
+msgid "Site activated."
+msgstr "Ο ιστότοπος ενεργοποιήθηκε."
+
+#: wp-admin/network/sites.php:251
+msgid "Site unarchived."
+msgstr "Ο ιστότοπος αποαρχειοθετήθηκε."
+
+#: wp-admin/network/sites.php:248
+msgid "Site archived."
+msgstr "Ο ιστότοπος αρχειοθετήθηκε."
+
+#: wp-admin/network/sites.php:245
+msgid "Sorry, you are not allowed to delete that site."
+msgstr "Λυπούμαστε, δεν σας επιτρέπεται να διαγράψετε αυτό τον ιστότοπο."
+
+#: wp-admin/network/sites.php:242
+msgid "Site deleted."
+msgstr "Ο ιστότοπος διαγράφηκε."
+
+#: wp-admin/network/sites.php:239
+msgid "Sites deleted."
+msgstr "Οι ιστότοποι διαγράφηκαν."
+
+#: wp-admin/network/sites.php:236
+msgid "Sites marked as spam."
+msgstr "Οι ιστότοποι σημάνθηκαν ως ανεπιθύμητοι."
+
+#: wp-admin/network/sites.php:233
+msgid "Sites removed from spam."
+msgstr "Οι ιστότοποι αποχαρακτηρίστηκαν."
+
+#: wp-admin/network/sites.php:144
+msgid "Sorry, you are not allowed to delete the site."
+msgstr "Λυπούμαστε, δεν σας επιτρέπεται να διαγράψετε αυτό τον ιστότοπο."
+
+#: wp-admin/network/sites.php:107
+msgid "Confirm"
+msgstr "Επιβεβαίωση"
+
+#: wp-admin/network/sites.php:100
+msgid "Confirm your action"
+msgstr "Επιβεβαίωση ενέργειας"
+
+#: wp-admin/network/sites.php:91 wp-admin/network/sites.php:157
+msgid "Sorry, you are not allowed to change the current site."
+msgstr "Λυπούμαστε, δεν σας επιτρέπεται να αλλάξετε τον ενεργό ιστότοπο."
+
+#: wp-admin/network/sites.php:75
+msgid "The requested action is not valid."
+msgstr "Η αιτούμενη ενέργεια δεν είναι έγκυρη."
+
+#: wp-admin/network/sites.php:67
+msgid "You are about to mark the site %s as not mature."
+msgstr "Πρόκειται να αποχαρακτηρίσετε τον ιστότοπο %s από  μόνο για ενήλικες."
+
+#: wp-admin/network/sites.php:66
+msgid "You are about to mark the site %s as mature."
+msgstr "Πρόκειται να χαρακτηρίσετε τον ιστότοπο %s ως μόνο για ενήλικες. "
+
+#: wp-admin/network/sites.php:65
+msgid "You are about to delete the site %s."
+msgstr "Πρόκειται να διαγράψετε τον ιστότοπο %s."
+
+#: wp-admin/network/sites.php:64
+msgid "You are about to mark the site %s as spam."
+msgstr "Πρόκεται να αποσημάνετε τον ιστότοπο %s."
+
+#: wp-admin/network/sites.php:63
+msgid "You are about to unspam the site %s."
+msgstr "Πρόκειται να σημάνετε τον ιστοχώρο %s ως σπαμ."
+
+#: wp-admin/network/sites.php:62
+msgid "You are about to archive the site %s."
+msgstr "Πρόκειται να αρχειοθετήσετε τον ιστότοπο %s."
+
+#: wp-admin/network/sites.php:61
+msgid "You are about to unarchive the site %s."
+msgstr "Πρόκειται να αποαρχειοθετήσετε τον ιστοχώρο %s."
+
+#: wp-admin/network/sites.php:60
+msgid "You are about to deactivate the site %s."
+msgstr "Πρόκειται να απενεργοποιήσετε τον ιστότοπο %s."
+
+#: wp-admin/network/sites.php:59
+msgid "You are about to activate the site %s."
+msgstr "Πρόκειται να ενεργοποιήσετε τον ιστότοπο %s."
+
+#: wp-admin/network/sites.php:48
+msgid "Sites list"
+msgstr "Κατάλογος ιστοτόπων"
+
+#: wp-admin/network/sites.php:47
+msgid "Sites list navigation"
+msgstr "Περιήγηση λίστας ιστότοπων"
+
+#: wp-admin/network/sites.php:37
+msgid "Clicking on bold headings can re-sort this table."
+msgstr "Κλικάρωντας στις έντονες επικεφαλίδες επανα-ταξινομείτε τον πίνακα."
+
+#: wp-admin/network/sites.php:36
+msgid "The site ID is used internally, and is not shown on the front end of the site or to users/viewers."
+msgstr "Το ID ιστοτόπου χρησιμοποιείται εσωτερικά, και δε προβάλλεται στους χρήστες/θεατές."
+
+#: wp-admin/network/sites.php:35
+msgid "Visit to go to the front-end site live."
+msgstr "Επισκεφθείτε για να δείτε την αρχική σελίδα του ιστότοπου ζωντανά."
+
+#: wp-admin/network/sites.php:34
+msgid "Delete which is a permanent action after the confirmation screens."
+msgstr "Η Διαγραφή είναι μια ενέργεια μη αναστρέψιμη αφού γίνει επιβεβαίωση στα παράθυρα που θα εμφανιστούν."
+
+#: wp-admin/network/sites.php:33
+msgid "Deactivate, Archive, and Spam which lead to confirmation screens. These actions can be reversed later."
+msgstr "Η ενεργοποίηση, αρχειοθέτηση και ανεπιθύμητα οδηγούν σε άνοιγμα παραθύρων επιβεβαίωσης. Αυτές οι ενέργειες μπορούν να αναιρεθούν αργότερα."
+
+#: wp-admin/network/sites.php:32
+msgid "Dashboard leads to the Dashboard for that site."
+msgstr "Ο πίνακας ελέγχου οδηγεί στον πίνακα ελέγχου του ιστότοπου."
+
+#: wp-admin/network/sites.php:31
+msgid "An Edit link to a separate Edit Site screen."
+msgstr "Ένα σύνδεσμος επεξεργασία να ξεχωρίσει η οθόνη επεξεργασία ιστότοπου."
+
+#: wp-admin/network/sites.php:30
+msgid "Hovering over each site reveals seven options (three for the primary site):"
+msgstr "Η μεταφορά του ποντικιού πάνω σε ένα ιστότοπο, εμφανίζει επτά επιλογές (τρεις για τον κεντρικό ιστότοπο):"
+
+#: wp-admin/network/sites.php:29
+msgid "This is the main table of all sites on this network. Switch between list and excerpt views by using the icons above the right side of the table."
+msgstr "Αυτός είναι ο κύριος πίνακας με τους ιστοτόπους του δικτύου. Μπορείτε να εναλλάσσετε την εμφάνιση του σε λίστα ή περιλήψεις, χρησιμοποιώντας τα εικονίδια πάνω δεξιά από τον πίνακα."
+
+#: wp-admin/network/sites.php:28
+msgid "Add New takes you to the Add New Site screen. You can search for a site by Name, ID number, or IP address. Screen Options allows you to choose how many sites to display on one page."
+msgstr "Πατώντας το Προσθήκη Νέου, μεταφέρεστε στην οθόνη δημιουργίας Νέου Ιστότοπου. Μπορείτε να ψάξετε για ιστότοπους που υπάρχουν στο Δίκτυο σας με βάσει το Όνομα, το ID ή την IP διεύθυνση. Από την καρτέλα Επιλογές προβολής μπορείτε να επιλέξετε το πλήθος των ιστότοπων που θα εμφανίζονται σε μία οθόνη."
+
+#: wp-admin/network/site-users.php:339 wp-admin/network/user-new.php:117
+msgid "A password reset link will be sent to the user via email."
+msgstr "Ένας σύνδεσμος επαναφοράς του κωδικού πρόσβασης θα αποσταλεί στο χρήστη μέσω ηλεκ. ταχυδρομείου"
+
+#: wp-admin/network/site-users.php:307 wp-admin/network/user-new.php:129
+msgid "Add User"
+msgstr "Προσθήκη μέλους"
+
+#: wp-admin/network/site-users.php:262
+msgid "Duplicated username or email address."
+msgstr "Διπλοεγγραφή ονόματος χρήστη ή ηλ. διεύθυνσης."
+
+#: wp-admin/network/site-users.php:259
+msgid "Enter the username and email."
+msgstr "Δώστε το όνομα χρήστη και το email."
+
+#: wp-admin/network/site-users.php:256
+msgid "User created."
+msgstr "Το μέλος εγγράφτηκε."
+
+#: wp-admin/network/site-users.php:253
+msgid "Select a user to remove."
+msgstr "Επιλέξτε μέλος για διαγραφή."
+
+#: wp-admin/network/site-users.php:247
+msgid "Select a user to change role."
+msgstr "Επιλέξτε μέλος για αλλαγή ρόλου."
+
+#: wp-admin/network/site-users.php:241
+msgid "Enter the username of an existing user."
+msgstr "Πληκτρολογήστε το όνομα χρήστη ενός υφιστάμενου μέλους."
+
+#: wp-admin/network/site-users.php:238
+msgid "User is already a member of this site."
+msgstr "Το μέλος ανήκει ήδη στον ιστότοπο αυτό."
+
+#: wp-admin/network/site-users.php:39
+msgid "Site users list"
+msgstr "Λίστα χρηστών ιστότοπου"
+
+#: wp-admin/network/site-users.php:38
+msgid "Site users list navigation"
+msgstr "Περιήγηση λίστας χρηστών ιστότοπου"
+
+#: wp-admin/network/site-users.php:37
+msgid "Filter site users list"
+msgstr "Φίλτρο λίστας χρηστών ιστότοπου"
+
+#: wp-admin/network/site-themes.php:204
+msgid "Network enabled themes are not shown on this screen."
+msgstr "Τα θέματα εμφάνισης που έχουν ενεργοποιηθεί για όλο το Δίκτυο δεν εμφανίζονται σε αυτή την οθόνη."
+
+#: wp-admin/network/site-themes.php:201 wp-admin/network/themes.php:291
+msgid "No theme selected."
+msgstr "Δεν έχει επιλεγεί θέμα."
+
+#: wp-admin/network/site-themes.php:197 wp-admin/network/themes.php:279
+msgid "%s theme disabled."
+msgid_plural "%s themes disabled."
+msgstr[0] "Απενεργοποιήθηκε %s θέμα."
+msgstr[1] "Απενεργοποιήθηκαν %s θέματα."
+
+#: wp-admin/network/site-themes.php:195 wp-admin/network/themes.php:277
+msgid "Theme disabled."
+msgstr "Το θέμα απενεργοποιήθηκε."
+
+#: wp-admin/network/site-themes.php:189 wp-admin/network/themes.php:271
+msgid "%s theme enabled."
+msgid_plural "%s themes enabled."
+msgstr[0] "Ενεργοποιήθηκε %s θέμα."
+msgstr[1] "Ενεργοποιήθηκαν %s θέματα."
+
+#: wp-admin/network/site-themes.php:187 wp-admin/network/themes.php:269
+msgid "Theme enabled."
+msgstr "Το θέμα ενεργοποιήθηκε."
+
+#: wp-admin/network/site-themes.php:36
+msgid "Site themes list"
+msgstr "Λίστα θεμάτων ιστότοπου"
+
+#: wp-admin/network/site-themes.php:35
+msgid "Site themes list navigation"
+msgstr "Περιήγηση λίστας θεμάτων ιστότοπου"
+
+#: wp-admin/network/site-themes.php:34
+msgid "Filter site themes list"
+msgstr "Φίλτρο λίστας θεμάτων ιστότοπου"
+
+#: wp-admin/network/site-themes.php:14
+msgid "Sorry, you are not allowed to manage themes for this site."
+msgstr "Λυπούμαστε, δεν σας επιτρέπεται η διαχείριση θεμάτων για αυτό τον ιστότοπο."
+
+#: wp-admin/network/site-settings.php:80
+msgid "Site options updated."
+msgstr "Οι ρυθμίσεις του ιστοτόπου ενημερώθηκαν."
+
+#: wp-admin/network/site-new.php:260
+msgid "Add Site"
+msgstr "Προσθήκη ιστοτόπου"
+
+#: wp-admin/network/site-new.php:248
+msgid "The username and password will be mailed to this email address."
+msgstr "Το όνομα χρήστη και ο κωδικός πρόσβασης θα αποσταλούν σε αυτή την email διεύθυνση."
+
+#: wp-admin/network/site-new.php:248
+msgid "A new user will be created if the above email address is not in the database."
+msgstr "Ένας νέος χρήστης θα δημιουργηθεί έαν η παραπάνω διεύθυνση ηλεκτρονικού ταχυδρομείου δεν είναι στη βάση δεδομένων."
+
+#: wp-admin/network/site-new.php:244
+msgid "Admin Email"
+msgstr "Ηλ. διεύθυνση διαχειριστή"
+
+#: wp-admin/network/site-new.php:206
+msgid "Only lowercase letters (a-z), numbers, and hyphens are allowed."
+msgstr "Επιτρέπονται μόνο πεζά λατινικά γράμματα (a-z), αριθμοί και παύλα."
+
+#: wp-admin/network/site-new.php:179 wp-admin/network/site-new.php:189
+msgid "Add New Site"
+msgstr "Προσθήκη ιστότοπου"
+
+#. translators: 1: dashboard url, 2: network admin edit url
+#: wp-admin/network/site-new.php:173
+msgid "Site added. <a href=\"%1$s\">Visit Dashboard</a> or <a href=\"%2$s\">Edit Site</a>"
+msgstr "Ο ιστότοπος προστέθηκε. <a href=\"%1$s\">Επισκεφτείτε τον Πίνακα Ελέγχου</a> η <a href=\"%2$s\">Επεξεργασία ιστότοπου</a>"
+
+#: wp-admin/network/site-new.php:156
+msgctxt "email \"From\" field"
+msgid "Site Admin"
+msgstr "Διαχείριση ιστότοπου"
 
 #. translators: 1: user login, 2: site url, 3: site name/title
-#: wp-admin/network/site-new.php:123
+#: wp-admin/network/site-new.php:146
 msgid ""
 "New site created by %1$s\n"
 "\n"
@@ -182,789 +541,851 @@ msgstr ""
 "Διεύθυνση: %2$s\n"
 "Όνομα: %3$s"
 
-#: wp-admin/network/site-new.php:131
+#. translators: %s: network name
+#: wp-admin/network/site-new.php:141
 msgid "[%s] New Site Created"
 msgstr "[%s] Εγγράφηκε νέος ιστότοπος"
 
-#. translators: 1: dashboard url, 2: network admin edit url
-#: wp-admin/network/site-new.php:145
-msgid "Site added. <a href=\"%1$s\">Visit Dashboard</a> or <a href=\"%2$s\">Edit Site</a>"
-msgstr "Ο ιστότοπος προστέθηκε. <a href=\"%1$s\">Επισκεφτείτε τον Πίνακα Ελέγχου</a> η <a href=\"%2$s\">Επεξεργασία ιστότοπου</a>"
-
-#: wp-admin/network/site-new.php:151 wp-admin/network/site-new.php:161
-msgid "Add New Site"
-msgstr "Προσθήκη ιστότοπου"
-
-#: wp-admin/network/site-new.php:171
-msgid "Site Address"
-msgstr "Διεύθυνση URL ιστοτόπου"
-
-#: wp-admin/network/site-new.php:178
-msgid "Only lowercase letters (a-z) and numbers are allowed."
-msgstr "Επιτρέπονται μόνο πεζά γράμματα (a-z) και νούμερα."
-
-#: wp-admin/network/site-new.php:216
-msgid "Admin Email"
-msgstr "Ηλ. διεύθυνση διαχειριστή"
-
-#: wp-admin/network/site-new.php:220
-msgid "A new user will be created if the above email address is not in the database."
-msgstr "Ένας νέος χρήστης θα δημιουργηθεί έαν η παραπάνω διεύθυνση ηλεκτρονικού ταχυδρομείου δεν είναι στη βάση δεδομένων."
-
-#: wp-admin/network/site-new.php:220
-msgid "The username and password will be mailed to this email address."
-msgstr "Το όνομα χρήστη και ο κωδικός πρόσβασης θα αποσταλούν σε αυτή την email διεύθυνση."
-
-#: wp-admin/network/site-new.php:223
-msgid "Add Site"
-msgstr "Προσθήκη ιστοτόπου"
-
-#: wp-admin/network/site-settings.php:83
-msgid "Site options updated."
-msgstr "Οι ρυθμίσεις του ιστοτόπου ενημερώθηκαν."
-
-#: wp-admin/network/site-themes.php:17
-msgid "You do not have sufficient permissions to manage themes for this site."
-msgstr "Δεν επιτρέπεται να διαχειρίζεστε θέματα στον ιστότοπο αυτό."
-
-#: wp-admin/network/site-themes.php:37
-msgid "Filter site themes list"
-msgstr "Φίλτρο λίστας θεμάτων ιστότοπου"
-
-#: wp-admin/network/site-themes.php:38
-msgid "Site themes list navigation"
-msgstr "Περιήγηση λίστας θεμάτων ιστότοπου"
-
-#: wp-admin/network/site-themes.php:39
-msgid "Site themes list"
-msgstr "Λίστα θεμάτων ιστότοπου"
-
-#: wp-admin/network/site-themes.php:170 wp-admin/network/themes.php:279
-msgid "Theme enabled."
-msgstr "Το θέμα ενεργοποιήθηκε."
-
-#: wp-admin/network/site-themes.php:172 wp-admin/network/themes.php:281
-msgid "%s theme enabled."
-msgid_plural "%s themes enabled."
-msgstr[0] "Ενεργοποιήθηκε %s θέμα."
-msgstr[1] "Ενεργοποιήθηκαν %s θέματα."
-
-#: wp-admin/network/site-themes.php:178 wp-admin/network/themes.php:287
-msgid "Theme disabled."
-msgstr "Το θέμα απενεργοποιήθηκε."
-
-#: wp-admin/network/site-themes.php:180 wp-admin/network/themes.php:289
-msgid "%s theme disabled."
-msgid_plural "%s themes disabled."
-msgstr[0] "Απενεργοποιήθηκε %s θέμα."
-msgstr[1] "Απενεργοποιήθηκαν %s θέματα."
-
-#: wp-admin/network/site-themes.php:184 wp-admin/network/themes.php:301
-msgid "No theme selected."
-msgstr "Δεν έχει επιλεγεί θέμα."
-
-#: wp-admin/network/site-themes.php:187
-msgid "Network enabled themes are not shown on this screen."
-msgstr "Τα θέματα εμφάνισης που έχουν ενεργοποιηθεί για όλο το Δίκτυο δεν εμφανίζονται σε αυτή την οθόνη."
-
-#: wp-admin/network/site-users.php:40
-msgid "Filter site users list"
-msgstr "Φίλτρο λίστας χρηστών ιστότοπου"
-
-#: wp-admin/network/site-users.php:41
-msgid "Site users list navigation"
-msgstr "Περιήγηση λίστας χρηστών ιστότοπου"
-
-#: wp-admin/network/site-users.php:42
-msgid "Site users list"
-msgstr "Λίστα χρηστών ιστότοπου"
-
-#: wp-admin/network/site-users.php:228
-msgid "User is already a member of this site."
-msgstr "Το μέλος ανήκει ήδη στον ιστότοπο αυτό."
-
-#: wp-admin/network/site-users.php:231
-msgid "Enter the username of an existing user."
-msgstr "Πληκτρολογήστε το όνομα χρήστη ενός υφιστάμενου μέλους."
-
-#: wp-admin/network/site-users.php:237
-msgid "Select a user to change role."
-msgstr "Επιλέξτε μέλος για αλλαγή ρόλου."
-
-#: wp-admin/network/site-users.php:243
-msgid "Select a user to remove."
-msgstr "Επιλέξτε μέλος για διαγραφή."
-
-#: wp-admin/network/site-users.php:246
-msgid "User created."
-msgstr "Το μέλος εγγράφτηκε."
-
-#: wp-admin/network/site-users.php:249
-msgid "Enter the username and email."
-msgstr "Δώστε το όνομα χρήστη και το email."
-
-#: wp-admin/network/site-users.php:252
-msgid "Duplicated username or email address."
-msgstr "Διπλοεγγραφή ονόματος χρήστη ή ηλ. διεύθυνσης."
-
-#: wp-admin/network/site-users.php:297 wp-admin/network/user-new.php:110
-msgid "Add User"
-msgstr "Προσθήκη μέλους"
-
-#: wp-admin/network/site-users.php:329 wp-admin/network/user-new.php:106
-msgid "A password reset link will be sent to the user via email."
-msgstr "Ένας σύνδεσμος επαναφοράς του κωδικού πρόσβασης θα αποσταλεί στο χρήστη μέσω ηλεκ. ταχυδρομείου"
-
-#: wp-admin/network/sites.php:31
-msgid "Add New takes you to the Add New Site screen. You can search for a site by Name, ID number, or IP address. Screen Options allows you to choose how many sites to display on one page."
-msgstr "Πατώντας το Προσθήκη Νέου, μεταφέρεστε στην οθόνη δημιουργίας Νέου Ιστότοπου. Μπορείτε να ψάξετε για ιστότοπους που υπάρχουν στο Δίκτυο σας με βάσει το Όνομα, το ID ή την IP διεύθυνση. Από την καρτέλα Επιλογές προβολής μπορείτε να επιλέξετε το πλήθος των ιστότοπων που θα εμφανίζονται σε μία οθόνη."
-
-#: wp-admin/network/sites.php:32
-msgid "This is the main table of all sites on this network. Switch between list and excerpt views by using the icons above the right side of the table."
-msgstr "Αυτός είναι ο κύριος πίνακας με τους ιστοτόπους του δικτύου. Μπορείτε να εναλλάσσετε την εμφάνιση του σε λίστα ή περιλήψεις, χρησιμοποιώντας τα εικονίδια πάνω δεξιά από τον πίνακα."
-
-#: wp-admin/network/sites.php:33
-msgid "Hovering over each site reveals seven options (three for the primary site):"
-msgstr "Η μεταφορά του ποντικιού πάνω σε ένα ιστότοπο, εμφανίζει επτά επιλογές (τρεις για τον κεντρικό ιστότοπο):"
-
-#: wp-admin/network/sites.php:34
-msgid "An Edit link to a separate Edit Site screen."
-msgstr "Ένα σύνδεσμος επεξεργασία να ξεχωρίσει η οθόνη επεξεργασία ιστότοπου."
-
-#: wp-admin/network/sites.php:35
-msgid "Dashboard leads to the Dashboard for that site."
-msgstr "Ο πίνακας ελέγχου οδηγεί στον πίνακα ελέγχου του ιστότοπου."
-
-#: wp-admin/network/sites.php:36
-msgid "Deactivate, Archive, and Spam which lead to confirmation screens. These actions can be reversed later."
-msgstr "Η ενεργοποίηση, αρχειοθέτηση και ανεπιθύμητα οδηγούν σε άνοιγμα παραθύρων επιβεβαίωσης. Αυτές οι ενέργειες μπορούν να αναιρεθούν αργότερα."
-
-#: wp-admin/network/sites.php:37
-msgid "Delete which is a permanent action after the confirmation screens."
-msgstr "Η Διαγραφή είναι μια ενέργεια μη αναστρέψιμη αφού γίνει επιβεβαίωση στα παράθυρα που θα εμφανιστούν."
-
-#: wp-admin/network/sites.php:38
-msgid "Visit to go to the frontend site live."
-msgstr "Επισκεφθείτε για να δείτε την αρχική σελίδα του ιστότοπου ζωντανά."
-
-#: wp-admin/network/sites.php:39
-msgid "The site ID is used internally, and is not shown on the front end of the site or to users/viewers."
-msgstr "Το ID ιστοτόπου χρησιμοποιείται εσωτερικά, και δε προβάλλεται στους χρήστες/θεατές."
-
-#: wp-admin/network/sites.php:40
-msgid "Clicking on bold headings can re-sort this table."
-msgstr "Κλικάρωντας στις έντονες επικεφαλίδες επανα-ταξινομείτε τον πίνακα."
-
-#: wp-admin/network/sites.php:50
-msgid "Sites list navigation"
-msgstr "Περιήγηση λίστας ιστότοπων"
-
-#: wp-admin/network/sites.php:51
-msgid "Sites list"
-msgstr "Κατάλογος ιστοτόπων"
-
-#: wp-admin/network/sites.php:62
-msgid "You are about to activate the site %s"
-msgstr "Πρόκειται να ενεργοποιήσετε τον ιστότοπο %s."
-
-#: wp-admin/network/sites.php:63
-msgid "You are about to deactivate the site %s"
-msgstr "Πρόκειται να απενεργοποιήσετε τον ιστότοπο %s."
-
-#: wp-admin/network/sites.php:64
-msgid "You are about to unarchive the site %s."
-msgstr "Πρόκειται να αποαρχειοθετήσετε τον ιστοχώρο %s."
-
-#: wp-admin/network/sites.php:65
-msgid "You are about to archive the site %s."
-msgstr "Πρόκειται να αρχειοθετήσετε τον ιστότοπο %s."
-
-#: wp-admin/network/sites.php:66
-msgid "You are about to unspam the site %s."
-msgstr "Πρόκειται να σημάνετε τον ιστοχώρο %s ως σπαμ."
-
-#: wp-admin/network/sites.php:67
-msgid "You are about to mark the site %s as spam."
-msgstr "Πρόκεται να αποσημάνετε τον ιστότοπο %s."
-
-#: wp-admin/network/sites.php:68
-msgid "You are about to delete the site %s."
-msgstr "Πρόκειται να διαγράψετε τον ιστότοπο %s."
-
-#: wp-admin/network/sites.php:69
-msgid "You are about to mark the site %s as mature."
-msgstr "Πρόκειται να χαρακτηρίσετε τον ιστότοπο %s ως μόνο για ενήλικες. "
-
-#: wp-admin/network/sites.php:70
-msgid "You are about to mark the site %s as not mature."
-msgstr "Πρόκειται να αποχαρακτηρίσετε τον ιστότοπο %s από  μόνο για ενήλικες."
-
-#: wp-admin/network/sites.php:78
-msgid "The requested action is not valid."
-msgstr "Η αιτούμενη ενέργεια δεν είναι έγκυρη."
-
-#: wp-admin/network/sites.php:94 wp-admin/network/sites.php:160
-msgid "You are not allowed to change the current site."
-msgstr "Δεν επιτρέπεται να αλλάξετε το ενεργό ιστότοπο."
-
-#: wp-admin/network/sites.php:103
-msgid "Confirm your action"
-msgstr "Επιβεβαίωση ενέργειας"
-
-#: wp-admin/network/sites.php:110
-msgid "Confirm"
-msgstr "Επιβεβαίωση"
-
-#: wp-admin/network/sites.php:147
-msgid "You are not allowed to delete the site."
-msgstr "Δεν επιτρέπεται να διαγράψετε τον ιστότοπο αυτό."
-
-#: wp-admin/network/sites.php:224
-msgid "Sites removed from spam."
-msgstr "Οι ιστότοποι αποχαρακτηρίστηκαν."
-
-#: wp-admin/network/sites.php:227
-msgid "Sites marked as spam."
-msgstr "Οι ιστότοποι σημάνθηκαν ως ανεπιθύμητοι."
-
-#: wp-admin/network/sites.php:230
-msgid "Sites deleted."
-msgstr "Οι ιστότοποι διαγράφηκαν."
-
-#: wp-admin/network/sites.php:233
-msgid "Site deleted."
-msgstr "Ο ιστότοπος διαγράφηκε."
-
-#: wp-admin/network/sites.php:236
-msgid "You do not have permission to delete that site."
-msgstr "Δεν επιτρέπεται να διαγράψετε τον ιστοχώρο αυτό."
-
-#: wp-admin/network/sites.php:239
-msgid "Site archived."
-msgstr "Ο ιστότοπος αρχειοθετήθηκε."
-
-#: wp-admin/network/sites.php:242
-msgid "Site unarchived."
-msgstr "Ο ιστότοπος αποαρχειοθετήθηκε."
-
-#: wp-admin/network/sites.php:245
-msgid "Site activated."
-msgstr "Ο ιστότοπος ενεργοποιήθηκε."
-
-#: wp-admin/network/sites.php:248
-msgid "Site deactivated."
-msgstr "Ο ιστότοπος απενεργοποιήθηκε."
-
-#: wp-admin/network/sites.php:251
-msgid "Site removed from spam."
-msgstr "Ο ιστότοπος αποχαρακτηρίστηκε."
-
-#: wp-admin/network/sites.php:254
-msgid "Site marked as spam."
-msgstr "Ο ιστότοπος σημάνθηκε ως ανεπιθύμητος."
-
-#: wp-admin/network/themes.php:17
-msgid "You do not have sufficient permissions to manage network themes."
-msgstr "Δεν έχετε επαρκή δικαιώματα για να διαχειριστείτε τα θέματα εμφάνισης του δικτύου."
-
-#: wp-admin/network/themes.php:100
-msgid "You do not have sufficient permissions to delete themes for this site."
-msgstr "Δεν έχετε επαρκή δικαιώματα για να διαγράψετε θέματα εμφάνισης του ιστότοπου."
-
-#: wp-admin/network/themes.php:153
-msgid "Delete Theme"
-msgstr "Διαγραφή θέματος"
-
-#: wp-admin/network/themes.php:154
-msgid "This theme may be active on other sites in the network."
-msgstr "Το θέμα αυτό είναι ενδεχομένως ενεργό σε άλλους ιστοτόπους του δικτύου."
-
-#: wp-admin/network/themes.php:155
-msgid "You are about to remove the following theme:"
-msgstr "Πρόκειται να διαγράψετε το εξής θέμα:"
-
-#: wp-admin/network/themes.php:157
-msgid "Delete Themes"
-msgstr "Διαγραφή θεμάτων"
-
-#: wp-admin/network/themes.php:158
-msgid "These themes may be active on other sites in the network."
-msgstr "Τα θέματα αυτά ίσως να είναι ενεργά σε άλλους ιστότοπους στο δίκτυο."
-
-#: wp-admin/network/themes.php:159
-msgid "You are about to remove the following themes:"
-msgstr "Πρόκειται να αφαιρέσετε τα εξής θέματα:"
-
-#: wp-admin/network/themes.php:170
-msgid "Are you sure you wish to delete this theme?"
-msgstr "Είστε σίγουρος ότι θέλετε να διαγράψετε αυτό το θέμα;"
-
-#: wp-admin/network/themes.php:172
-msgid "Are you sure you wish to delete these themes?"
-msgstr "Σίγουρα θέλετε να διαγράψετε αυτά τα θέματα;"
-
-#: wp-admin/network/themes.php:185
-msgid "Yes, delete this theme"
-msgstr "Ναι, διαγραφή του θέματος"
-
-#: wp-admin/network/themes.php:187
-msgid "Yes, delete these themes"
-msgstr "Ναι, διαγραφή των θεμάτων"
-
-#: wp-admin/network/themes.php:195
-msgid "No, return me to the theme list"
-msgstr "Όχι, επιστροφή στη λίστα θεμάτων"
-
-#: wp-admin/network/themes.php:243
-msgid "This screen enables and disables the inclusion of themes available to choose in the Appearance menu for each site. It does not activate or deactivate which theme a site is currently using."
-msgstr "Αυτή η οθόνη ενεργοποιεί και απενεργοποιεί το αν ένα θέμα θα συμπεριληφθεί στα διαθέσιμα θέματα στο μενού Εμφάνιση για την κάθε ιστοσελίδα. Δεν ενεργοποιεί ή απενεργοποιεί το ίδιο το χρησιμοποιούμενο θέμα της εκάστοτε ιστοσελίδας."
-
-#: wp-admin/network/themes.php:244
-msgid "If the network admin disables a theme that is in use, it can still remain selected on that site. If another theme is chosen, the disabled theme will not appear in the site&#8217;s Appearance > Themes screen."
-msgstr "Αν ο διαχειριστής του δικτύου απενεργοποιήσει ένα θέμα που είναι σε χρήση, αυτό θα παραμείνει διαθέσιμο για επιλογή στην εν λόγω ιστοσελίδα. Αν ένα άλλο θέμα επιλεγεί, το απενεργοποιημένο θέμα δε θα εμφανίζεται στην οθόνη Εμφάνιση &gt; Θέματα του ιστότοπου αυτού."
-
-#: wp-admin/network/themes.php:245
-msgid "Themes can be enabled on a site by site basis by the network admin on the Edit Site screen (which has a Themes tab); get there via the Edit action link on the All Sites screen. Only network admins are able to install or edit themes."
-msgstr "Τα Θέματα μπορούν να ενεργοποιηθούν σε μια ιστοσελίδα από την αρχή της δημιουργίας της από το διαχειριστή του δικτύου στην σελίδα Επεξεργασία Ιστοσελίδας (διαθέτει επιλογή Θέματα). Μεταφερθείτε εκεί μέσω του συνδέσμου Επεξεργασία στη σελίδα Όλες οι Σελίδες. Μόνο οι διαχειριστές του δικτύου μπορούν να εγκαταστήσουν ή να επεξεργαστούν τα θέματα.  "
-
-#: wp-admin/network/themes.php:250
-msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Themes_Screen\" target=\"_blank\">Documentation on Network Themes</a>"
-msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Themes_Screen\" target=\"_blank\">Documentation on Network Themes</a>"
-
-#: wp-admin/network/themes.php:256
-msgid "Themes list navigation"
-msgstr "Περιήγηση λίστας θεμάτων"
-
-#: wp-admin/network/themes.php:297
-msgid "%s theme deleted."
-msgid_plural "%s themes deleted."
-msgstr[0] "Διαγράφηκε %s θέμα."
-msgstr[1] "Διαγράφηκαν %s θέματα."
-
-#: wp-admin/network/themes.php:303
-msgid "You cannot delete a theme while it is active on the main site."
-msgstr "Δεν γίνεται να διαγράψετε το θέμα που είναι ενεργό στον κύριο ιστότοπο."
-
-#: wp-admin/network/upgrade.php:25
-msgid "Only use this screen once you have updated to a new version of WordPress through Updates/Available Updates (via the Network Administration navigation menu or the Toolbar). Clicking the Upgrade Network button will step through each site in the network, five at a time, and make sure any database updates are applied."
-msgstr "Να χρησιμοποιείτε αυτή τη σελίδα μόνο αν έχετε ενημερωμένο το WordPress στη νέα έκδοση, από τις Ενημερώσεις/Διαθέσιμες Ενημερώσεις (μέσω του Δικτύου Διαχείρισης στο μενού πλοήγησης ή στο μενού εργαλείων). Κάνοντας κλικ στο κουμπί \"Δίκτυο Αναβάθμισης\" θα ενημερωθούν οι ιστοσελίδες που βρίσκονται στη διαχείριση σας, από πέντε κάθε φορά. Βεβαιωθείτε ότι έχουν γίνει όλες οι ενημερώσεις στις βάσεις δεδομένων.  "
-
-#: wp-admin/network/upgrade.php:26
-msgid "If a version update to core has not happened, clicking this button won&#8217;t affect anything."
-msgstr "Αν μια προηγούμενη ανανέωση στον πυρήνα του συστήματος δεν έχει ολοκληρωθεί, τότε δε θα συμβεί τίποτα αν κάνετε κλικ σε αυτό το κουμπί."
-
-#: wp-admin/network/upgrade.php:27
-msgid "If this process fails for any reason, users logging in to their sites will force the same update."
-msgstr "Αν αυτή η διεργασία αποτύχει για οποιοδήποτε λόγο, οι χρήστες που συνδέονται στους ιστοτόπους τους θα υποχρεωθούν να κάνουν την ίδια αναβάθμιση."
-
-#: wp-admin/network/upgrade.php:32
-msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Updates_Screen\" target=\"_blank\">Documentation on Upgrade Network</a>"
-msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Updates_Screen\" target=\"_blank\">Τεκμηρίωση στην αναβάθμιση δικτύου</a>"
-
-#: wp-admin/network/upgrade.php:60
-msgid "All done!"
-msgstr "Έτοιμοι!"
-
-#. translators: 1: site url, 2: server error message
-#: wp-admin/network/upgrade.php:76
-msgid "Warning! Problem updating %1$s. Your server may not be able to connect to sites running on it. Error message: %2$s"
-msgstr "Προσοχή! Πρόβλημα στην αναβάθμιση του %1$s. Ο διακομιστής σας ίσως να μην είναι σε θέση να συνδεθεί σε ιστότοπους που τρέχουν σε αυτόν. Μήνυμα λάθους: %2$s"
-
-#: wp-admin/network/upgrade.php:100
-msgid "If your browser doesn&#8217;t start loading the next page automatically, click this link:"
-msgstr "Aν το πρόγραμμα περιήγησης σας δεν ξεκινήσει να φορτώνει την επόμενη σελίδα αυτόματα, κάντε κλικ στον σύνδεσμο: "
-
-#: wp-admin/network/upgrade.php:100
-msgid "Next Sites"
-msgstr "Επόμενοι ιστότοποι"
-
-#: wp-admin/network/upgrade.php:115
-msgid "WordPress has been updated! Before we send you on your way, we need to individually upgrade the sites in your network."
-msgstr "Το WordPress έχει ενημερωθεί! Πριν σας αφήσουμε, θα πρέπει να αναβαθμίσουμε ξεχωριστά τους ιστότοπους στο δίκτυό σας."
-
-#: wp-admin/network/user-new.php:23
-msgid "Add User will set up a new user account on the network and send that person an email with username and password."
-msgstr "Η προσθήκη χρήστη θα δημιουργήσει ένα νέο λογαριασμό χρήστη στο δίκτυο και θα στείλει στο εν λόγω πρόσωπο ένα email με το όνομα χρήστη και τον κωδικό πρόσβασης."
-
-#: wp-admin/network/user-new.php:24
-msgid "Users who are signed up to the network without a site are added as subscribers to the main or primary dashboard site, giving them profile pages to manage their accounts. These users will only see Dashboard and My Sites in the main navigation until a site is created for them."
-msgstr "Οι χρήστες που έχουν εγγραφεί στο δίκτυο χωρίς ιστοτόπο προστίθενται ως συνδρομητές του κύριου ή βασικού ιστοτόπου, έτσι ώστε να έχουν σελίδες προφίλ για να διαχειρίζονται το λογαριασμό τους. Οι χρήστες αυτοί, θα έχουν πρόσβαση μόνο στον Πίνακα ελέγχου και στο Οι ιστότοποί μου στο περιβάλλον διαχείρισης, μέχρι τη στιγμή που θα δημιουργηθεί ένας ιστότοπος για αυτούς."
-
-#: wp-admin/network/user-new.php:29 wp-admin/network/users.php:171
-msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Users_Screen\" target=\"_blank\">Documentation on Network Users</a>"
-msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Users_Screen\" target=\"_blank\">Documentation on Network Users</a>"
-
-#: wp-admin/network/user-new.php:40
-msgid "Cannot create an empty user."
-msgstr "Αδύνατη η δημιουργία κενού χρήστη."
-
-#: wp-admin/network/user-new.php:52
-msgid "Cannot add user."
-msgstr "Αδύνατη η προσθήκη μέλους."
-
-#: wp-admin/network/users.php:73
-msgid "Warning! User cannot be modified. The user %s is a network administrator."
-msgstr "Προσοχή! Αδύνατη η τροποποίηση μέλους. Το μέλος %s είναι διαχειριστής δικτύου."
-
-#: wp-admin/network/users.php:161
-msgid "This table shows all users across the network and the sites to which they are assigned."
-msgstr "Αυτός ο πίνακας δείχνει όλους τους χρήστες του δικτύου και τους ιστότοπους στους οποίους είναι μέλη."
-
-#: wp-admin/network/users.php:162
-msgid "Hover over any user on the list to make the edit links appear. The Edit link on the left will take you to their Edit User profile page; the Edit link on the right by any site name goes to an Edit Site screen for that site."
-msgstr "Μεταφέρετε τον δείκτη του ποντικιού πάνω από κάθε χρήστη στη λίστα για να εμφανιστούν οι σύνδεσμοι επεξεργασίας. Ο σύνδεσμος \"Επεξεργασία\" στα αριστερά θα σας μεταφέρει στη σελίδα Επεξεργασία Προφίλ Χρήστη. Ο σύνδεσμος \"Επεξεργασία\" στα δεξιά από κάθε όνομα ιστότοπου θα σας μεταφέρει στη σελίδα \"Επεξεργασία ιστότοπου\" για το συγκεκριμένο που επιλέξατε."
-
-#: wp-admin/network/users.php:163
-msgid "You can also go to the user&#8217;s profile page by clicking on the individual username."
-msgstr "Μπορείς επίσης να επισκεφθείς την σελίδα προφίλ του χρήστη πατώντας πάνω στο όνομα χρήστη του καθενός."
-
-#: wp-admin/network/users.php:164
-msgid "You can sort the table by clicking on any of the bold headings and switch between list and excerpt views by using the icons in the upper right."
-msgstr "Μπορείτε να ταξινομήσετε τον πινακα κάνοντας κλίκ σε οποιαδήποτε από τις κεφαλίδες με έντονα γράμματα και να μεταβείτε από την όψη λίστας στην όψη αποσπασμάτων χρησιμοποιώντας τα εικονίδια πάνω δεξιά."
-
-#: wp-admin/network/users.php:165
-msgid "The bulk action will permanently delete selected users, or mark/unmark those selected as spam. Spam users will have posts removed and will be unable to sign up again with the same email addresses."
-msgstr "Η ομαδική αλλαγή θα σβήσει τους επιλεγμένους χρήστες οριστικά ή θα μαρκάρει/ξεμαρκάρει τους επιλεγμένους σαν spam χρήστες. Όλα τα άρθρα που έχουν γράψει οι spam χρήστες θα διαγραφούν και δεν θα μπορέσουν να ξανασυνδεθούν με τον ίδιο λογαριασμό email."
-
-#: wp-admin/network/users.php:166
-msgid "You can make an existing user an additional super admin by going to the Edit User profile page and checking the box to grant that privilege."
-msgstr "Μπορείτε να μετατρέψετε έναν υπάρχοντα χρήστη ως επιπλέον διαχειριστή πηγαίνονται στη σελίδα Επεξεργασία Προφίλ Χρήστη και επιλέγοντας το κουτί που δίνει αυτό το προνόμιο."
-
-#: wp-admin/network/users.php:192
-msgid "Users marked as spam."
-msgstr "Τα μέλη σημάνθηκαν ως ανεπιθύμητα."
-
-#: wp-admin/network/users.php:195
-msgid "Users removed from spam."
-msgstr "Τα μέλη αποχαρακτηρίστηκαν."
-
-#: wp-admin/network/users.php:198
-msgid "Users deleted."
-msgstr "Τα μέλη διαγράφηκαν."
-
-#: wp-admin/network.php:29
-msgid "The Network creation panel is not for WordPress MU networks."
-msgstr "Τα πλαίσια δημιουργία δικτύου δεν είναι για τα δίκτυα WordPress MU."
-
-#. translators: 1: WP_ALLOW_MULTISITE 2: wp-config.php
-#: wp-admin/network.php:44
-msgid "You must define the %1$s constant as true in your %2$s file to allow creation of a Network."
-msgstr "Θα πρέπει να καθορίσετε την σταθερή %1$s ως true στο αρχείο %2$s για επιτραπεί η δημιουργία δικτύου."
-
-#: wp-admin/network.php:55
-msgid "Create a Network of WordPress Sites"
-msgstr "Δημιουργήστε ένα δίκτυο ιστοτόπων WordPress"
-
-#: wp-admin/network.php:59
-msgid "This screen allows you to configure a network as having subdomains (<code>site1.example.com</code>) or subdirectories (<code>example.com/site1</code>). Subdomains require wildcard subdomains to be enabled in Apache and DNS records, if your host allows it."
-msgstr "Αυτή η σελίδα σας επιτρέπει να διαμορφώσετε το δίκτυο σας σαν να έχετε subdomains (<code>site1.example.com</code>) ή subdirectories <code>example.com/site1</code>). Τα Subdomains απαιτούν να γίνει ενεργοποίηση στον Apache και στα DNS records εναλλακτικών Subdomains, εάν το επιτρέψει ο παροχέας σας."
-
-#: wp-admin/network.php:60
-msgid "Choose subdomains or subdirectories; this can only be switched afterwards by reconfiguring your install. Fill out the network details, and click install. If this does not work, you may have to add a wildcard DNS record (for subdomains) or change to another setting in Permalinks (for subdirectories)."
-msgstr "Επιλέξτε subdomains  ή subdirectories; αυτό θα μπορούσε να ενεγοποιηθεί μόνο μετά απο μια επαναρύθμιση των παραμέτρων της εγκατάστασης.Συμπληρώστε τα στοιχεία του δικτύου σας, και κάντε κλικ στο κουμπί εγκατάσταση. Εαν αυτό δεν δουλέψει, μπορείτε να προσθέσετε μια εγγραφή wildcard DNS (για τα subdomains) ή να αλλάξετε άλλες ρυθμήσεις στα Permalinks (για τα subdirectories)"
-
-#: wp-admin/network.php:61
-msgid "The next screen for Network Setup will give you individually-generated lines of code to add to your wp-config.php and .htaccess files. Make sure the settings of your FTP client make files starting with a dot visible, so that you can find .htaccess; you may have to create this file if it really is not there. Make backup copies of those two files."
-msgstr "Η επόμενη οθόνη για την εγκατάσταση δικτύου θα σας δώσει μεμονωμένες δημιουργημένες γραμμές κώδικα για να τα προσθέσετε στο  wp-config.php και .htaccess αρχείο σας. Βεβαιωθείτε ότι οι ρυθμίσεις FTP του πελάτη σας, επιτρέπουν στα αρχεία να ξεκινάνε με μια τελεία ορατή, έτσι ώστε να μπορείτε να βρείτε .htaccess; ίσως χρειαστεί να δημιουργήσετε αυτό το αρχείο αν δεν είναι πραγματικά εκεί. Δημιουργήστε αντίγραφα ασφαλείας αυτών των δύο αρχείων."
-
-#: wp-admin/network.php:62
-msgid "Add the designated lines of code to wp-config.php (just before <code>/*...stop editing...*/</code>) and <code>.htaccess</code> (replacing the existing WordPress rules)."
-msgstr "Προσθέστε τις καθορισμένες γραμμές κώδικά στο  wp-config.php (αμέσως πριν <code>/*...στο τέλος...*/</code>) και <code>.htaccess</code> (αντικαθιστώντας τους υπάρχοντες κανόνες του WordPress)"
-
-#: wp-admin/network.php:63
-msgid "Once you add this code and refresh your browser, multisite should be enabled. This screen, now in the Network Admin navigation menu, will keep an archive of the added code. You can toggle between Network Admin and Site Admin by clicking on the Network Admin or an individual site name under the My Sites dropdown in the Toolbar."
-msgstr "Από τη στιγμή που θα προσθέσετε τον κώδικα και κάνετε ανανέωση στον browser σας, θα πρέπει να έχουν ενεργοποιηθεί οι πολλαπλές σελίδες. Αυτή η σελίδα, στο μενού πλοήγησης διαχειριστή διαχειριστή μπορεί να κρατάει αρχείο του κώδικα που έχει προσθεθεί. Μπορείτε να μεταπηδήσετε από το δίκτυο του διαχειριστή στην ιστοσελίδα διαχειριστή κάνοντας κλικ στο δίκτυο διαχειριστή ή σε κάποιο όνομα ιστοσελίδας στο αναδιπλούμενο μενού που εμφανίζεται στο σύνδεσμο \"Οι σελίδες μου\" στη γραμμή εργαλείων. "
-
-#: wp-admin/network.php:64
-msgid "The choice of subdirectory sites is disabled if this setup is more than a month old because of permalink problems with &#8220;/blog/&#8221; from the main site. This disabling will be addressed in a future version."
-msgstr "Η επιλογή subdirectory ιστοτόποπων είναι απενεργοποιημένη αν αυτή η εγκατάσταση υπάρχει για περισσότερο από ένα μήνα λόγω προβλημάτων permalink με &#8220;/blog/&#8221 από τον κύριο ιστότοπο. Αυτή η δυσλειτουργία θα επιλυθεί σε μελλοντική έκδοση."
-
-#: wp-admin/network.php:66 wp-admin/network.php:77
-msgid "<a href=\"https://codex.wordpress.org/Create_A_Network\" target=\"_blank\">Documentation on Creating a Network</a>"
-msgstr "<a href=\"https://codex.wordpress.org/Create_A_Network\" target=\"_blank\">Documentation on Creating a Network</a>"
-
-#: wp-admin/network.php:67 wp-admin/network.php:78
-msgid "<a href=\"https://codex.wordpress.org/Tools_Network_Screen\" target=\"_blank\">Documentation on the Network Screen</a>"
-msgstr "<a href=\"https://codex.wordpress.org/Tools_Network_Screen\" target=\"_blank\">Documentation on the Network Screen</a>"
-
-#: wp-admin/network.php:71
-msgid "Network"
-msgstr "Δίκτυο"
-
-#: wp-admin/network/index.php:20 wp-admin/network/settings.php:20
-#: wp-admin/network/site-info.php:50 wp-admin/network/site-settings.php:47
-#: wp-admin/network/site-themes.php:70 wp-admin/network/site-users.php:63
-#: wp-admin/network/sites.php:17 wp-admin/network/sites.php:129
-#: wp-admin/network/upgrade.php:39 wp-admin/network/user-new.php:37
-#: wp-admin/network/users.php:17 wp-admin/network/users.php:26
-#: wp-admin/network/users.php:47 wp-admin/network/users.php:60
-#: wp-admin/network/users.php:109
-msgid "You do not have permission to access this page."
-msgstr "Δεν έχετε δικαιώματα πρόσβασης σε αυτή τη σελίδα."
-
-#: wp-admin/network/index.php:25
-msgid "Welcome to your Network Admin. This area of the Administration Screens is used for managing all aspects of your Multisite Network."
-msgstr "Καλώς ήρθατε στη Διαχείριση Δικτύου. Μέσω των επιλογών της μπορείτε να διαχειριστείτε οτιδήποτε αφορά το δίκτυο Multisite (πολλαπλούς ιστότοπους)."
-
-#: wp-admin/network/index.php:26
-msgid "From here you can:"
-msgstr "Από εδώ μπορείτε να:"
-
-#: wp-admin/network/index.php:27
-msgid "Add and manage sites or users"
-msgstr "Προσθέσετε και διαχειριστείτε ιστότοπους και χρήστες"
-
-#: wp-admin/network/index.php:28
-msgid "Install and activate themes or plugins"
-msgstr "Εγκαταστήσετε και ενεργοποιήσετε θέματα ή πρόσθετα"
-
-#: wp-admin/network/index.php:29
-msgid "Update your network"
-msgstr "Ενημερώσετε το δίκτυο σας"
-
-#: wp-admin/network/index.php:30
-msgid "Modify global network settings"
-msgstr "Τροποποιήσετε τις γενικές ρυθμίσεις του δικτύου"
-
-#: wp-admin/network/index.php:38
-msgid "The Right Now widget on this screen provides current user and site counts on your network."
-msgstr "Η μικροεφαρμογή Αυτή Την Στιγμή στην οθόνη παρέχει ενεργό χρήστη και αριθμό ιστότοπων στο δίκτυο."
-
-#: wp-admin/network/index.php:39
-msgid "To add a new user, <strong>click Create a New User</strong>."
-msgstr "Για να προσθέσετε ένα νέο μέλος, <strong>πατήστε Δημιουργία νέου μέλους</strong>."
-
-#: wp-admin/network/index.php:40
-msgid "To add a new site, <strong>click Create a New Site</strong>."
-msgstr "Για να προσθέσετε νέο ιστότοπο <strong>πατήστε Δημιουργία νέου ιστότοπου</strong>."
-
-#: wp-admin/network/index.php:41
-msgid "To search for a user or site, use the search boxes."
-msgstr "Για να αναζητήσετε ένα χρήστη ή ιστότοπο, χρησιμοποιήστε τα πλαίσια αναζήτησης."
-
-#: wp-admin/network/index.php:42
-msgid "To search for a user, <strong>enter an email address or username</strong>. Use a wildcard to search for a partial username, such as user&#42;."
-msgstr "Για να αναζήτησετε ένα χρήστη, <strong>πληκτρολογήστε μια διεύθυνση email ή το όνομα χρήστη</strong>. Χρησιμοποιήστε ένα μπαλαντέρ για να αναζητήσετε ένα μερικό όνομα, όπως user&#42;."
-
-#: wp-admin/network/index.php:43
-msgid "To search for a site, <strong>enter the path or domain</strong>."
-msgstr "Για να ψάξετε έναν ιστότοπο, <strong>δώστε την διαδρομή ή το domain</strong>"
-
-#: wp-admin/network/index.php:47
-msgid "Quick Tasks"
-msgstr "Γρήγορες εργασίες"
-
-#: wp-admin/network/index.php:53
-msgid "<a href=\"https://codex.wordpress.org/Network_Admin\" target=\"_blank\">Documentation on the Network Admin</a>"
-msgstr "<a href=\"https://codex.wordpress.org/Network_Admin\" target=\"_blank\">Documentation on the Network Admin</a>"
-
-#: wp-admin/network/index.php:54 wp-admin/network/site-info.php:35
-#: wp-admin/network/site-new.php:33 wp-admin/network/site-settings.php:33
-#: wp-admin/network/site-themes.php:33 wp-admin/network/site-users.php:36
-#: wp-admin/network/sites.php:46 wp-admin/network/user-new.php:30
-#: wp-admin/network/users.php:172
-msgid "<a href=\"https://wordpress.org/support/forum/multisite/\" target=\"_blank\">Support Forums</a>"
-msgstr "<a href=\"https://wordpress.org/support/forum/multisite/\" target=\"_blank\">Φόρα Υποστήριξης</a>"
-
-#: wp-admin/network/menu.php:19
-msgid "Updates"
-msgstr "Αναβαθμίσεις"
-
-#: wp-admin/network/menu.php:22 wp-admin/network/upgrade.php:18
-#: wp-admin/network/upgrade.php:42 wp-admin/network/upgrade.php:119
-msgid "Upgrade Network"
-msgstr "Αναβάθμιση δικτύου"
-
-#: wp-admin/network/menu.php:28
-msgid "All Sites"
-msgstr "Όλοι οι ιστότοποι"
-
-#: wp-admin/network/menu.php:36
-msgid "Themes %s"
-msgstr "Θέματα %s"
+#: wp-admin/network/site-new.php:116
+msgid "There was an error creating the user."
+msgstr "Σφάλμα κατά τη δημιουργία χρήστη."
+
+#: wp-admin/network/site-new.php:111
+msgid "The domain or path entered conflicts with an existing username."
+msgstr "Ο τομέας ή διαδρομή που δώσατε συμπίπτει με υπάρχων όνομα χρήστη."
+
+#: wp-admin/network/site-new.php:81
+msgid "Missing email address."
+msgstr "Απούσα ηλ. διεύθυνση."
+
+#: wp-admin/network/site-new.php:78
+msgid "Missing or invalid site address."
+msgstr "Απούσα ή άκυρη διεύθυνση ιστοτόπου."
+
+#. translators: %s: reserved names list
+#: wp-admin/network/site-new.php:52
+msgid "The following words are reserved for use by WordPress functions and cannot be used as blog names: %s"
+msgstr "Οι παρακάτω λέξεις είναι δεσμευμένες για χρήση από συναρτήσεις του WordPress και δεν μπορούν να χρησιμοποιηθούν ως ονόματα ιστολογίου: %s"
+
+#: wp-admin/network/site-new.php:38
+msgid "Can&#8217;t create an empty site."
+msgstr "Αδύνατη η δημιουργία κενού ιστοχώρου."
+
+#: wp-admin/network/site-new.php:25
+msgid "If the admin email for the new site does not exist in the database, a new user will also be created."
+msgstr "Αν το email του διαχειριστή του νέου ιστότοπου δεν υπάρχει στη βάση δεδομένων, τότε θα δημιουργηθεί ένας νέος χρήστης."
+
+#: wp-admin/network/site-new.php:24
+msgid "This screen is for Super Admins to add new sites to the network. This is not affected by the registration settings."
+msgstr "Αυτή η οθόνη είναι για Υπερ Διαχειριστές ώστε να προσθέτουν νέους ιστότοπους στο δίκτυο. Αυτό δεν επηρεάζεται από τις ρυθμίσεις εγγραφής ."
+
+#: wp-admin/network/site-new.php:17
+msgid "Sorry, you are not allowed to add sites to this network."
+msgstr "Λυπούμαστε, δεν σας επιτρέπεται η προσθήκη ιστοτόπων σε αυτό το δίκτυο."
+
+#: wp-admin/network/site-info.php:197
+msgid "Set site attributes"
+msgstr "Ορισμός ιδιοτήτων ιστότοπου"
+
+#: wp-admin/network/site-info.php:194
+msgid "Attributes"
+msgstr "Χαρακτηριστικά"
+
+#. translators: %s: site name
+#: wp-admin/network/site-info.php:131 wp-admin/network/site-settings.php:84
+#: wp-admin/network/site-themes.php:167 wp-admin/network/site-users.php:200
+msgid "Edit Site: %s"
+msgstr "Επεξεργασία ιστοτόπου: %s"
+
+#: wp-admin/network/site-info.php:126
+msgid "Site info updated."
+msgstr "Τα στοιχεία του ιστοχώρου ενημερώθηκαν."
+
+#: wp-admin/network/site-info.php:42 wp-admin/network/site-settings.php:40
+#: wp-admin/network/site-themes.php:63 wp-admin/network/site-users.php:56
+msgid "The requested site does not exist."
+msgstr "Ο ζητούμενος ιστότοπος δεν υπάρχει."
+
+#: wp-admin/network/site-info.php:37 wp-admin/network/site-settings.php:36
+#: wp-admin/network/site-themes.php:57 wp-admin/network/site-users.php:52
+msgid "Invalid site ID."
+msgstr "Άκυρο ID ιστοτόπου."
+
+#: wp-admin/network/site-info.php:30 wp-admin/network/site-new.php:30
+#: wp-admin/network/site-settings.php:29 wp-admin/network/site-themes.php:29
+#: wp-admin/network/site-users.php:32 wp-admin/network/sites.php:42
+msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Sites_Screen\">Documentation on Site Management</a>"
+msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Sites_Screen\">Τεκμηρίωση στη διαχείριση ιστότοπων</a>"
+
+#: wp-admin/network/site-info.php:25 wp-admin/network/site-settings.php:24
+#: wp-admin/network/site-themes.php:24 wp-admin/network/site-users.php:27
+msgid "<strong>Settings</strong> &mdash; This page shows a list of all settings associated with this site. Some are created by WordPress and others are created by plugins you activate. Note that some fields are grayed out and say Serialized Data. You cannot modify these values due to the way the setting is stored in the database."
+msgstr ""
+"<strong>Ρυθμίσεις</strong> - Αυτή η σελίδα εμφανίζει όλες τις ρυθμίσεις που σχετίζονται με αυτό τον ιστότοπο. Μερικές έχουν δημιουργηθεί από το WordPress και άλλες από τα πρόσθετα που έχετε ενεργοποιήσει.\n"
+"Σημειώνεται ότι μερικά πεδία φαίνονται μη διαθέσιμες (γκρι) και αναφέρονται σαν \"Serialized Data\". Δε μπορείτε να αλλάξετε τις τιμές τους γιατί εξαρτώνται από τον τρόπο που έχει αποθηκευτεί η ρύθμιση στη βάση δεδομένων.  "
+
+#: wp-admin/network/site-info.php:24 wp-admin/network/site-settings.php:23
+#: wp-admin/network/site-themes.php:23 wp-admin/network/site-users.php:26
+msgid "<strong>Themes</strong> &mdash; This area shows themes that are not already enabled across the network. Enabling a theme in this menu makes it accessible to this site. It does not activate the theme, but allows it to show in the site&#8217;s Appearance menu. To enable a theme for the entire network, see the <a href=\"%s\">Network Themes</a> screen."
+msgstr "<strong>Θέματα</strong> &mdash; Αυτή η περιοχή δείχνει θέματα που δεν έχουν ακόμη γίνει διαθέσιμα στο δίκτυο σας. Κάνοντας ένα θέμα διαθέσιμο σε αυτό το μενού το καθιστά προσπελάσιμο σε μια ιστοσελίδα. Δεν ενεργοποιείται το θέμα , αλλά επιτρέπεται πλεόν η εμφάνισή του στο μενού επεξεργασίας εμφάνισης της ιστοσελίδας. Για να γίνει ένα θέμα διαθέσιμο καθολικά θα πρέπει να δείτε τη σελίδα  <a href=\"%s\">Θέματα Δικτύου</a>."
+
+#: wp-admin/network/site-info.php:23 wp-admin/network/site-settings.php:22
+#: wp-admin/network/site-themes.php:22 wp-admin/network/site-users.php:25
+msgid "<strong>Users</strong> &mdash; This displays the users associated with this site. You can also change their role, reset their password, or remove them from the site. Removing the user from the site does not remove the user from the network."
+msgstr "<strong>Χρήστες</strong> &mdash; Εδώ απεικονίζονται χρήστες που σχετίζονται με αυτόν τον ιστότοπο. Μπορείτε επίσης να αλλάξετε το ρόλο τους, να επαναφέρετε τον κωδικό πρόσβασής τους ή να τους αφαιρέσετε από χρήστες του ιστοτόπου. Αφαιρώντας ένα χρήστη από ένα ιστότοπο δε τον αφαιρείτε εξολοκλήρου από το δίκτυο."
+
+#: wp-admin/network/site-info.php:22 wp-admin/network/site-settings.php:21
+#: wp-admin/network/site-themes.php:21 wp-admin/network/site-users.php:24
+msgid "<strong>Info</strong> &mdash; The site URL is rarely edited as this can cause the site to not work properly. The Registered date and Last Updated date are displayed. Network admins can mark a site as archived, spam, deleted and mature, to remove from public listings or disable."
+msgstr "<strong>Πληροφορίες</strong> Την URL ιστότοπου σπάνια το επεξεργαζόμαστε, αφού αυτό μπορεί να προκαλέσει δυσλειτουργία στον ιστότοπο. Η ημερομηνία εγγραφής και η τελευταία ενημέρωση εμφανίζονται. Οι διαχειριστές του δικτύου μπορούν να χαρακτηρίσουν ένα ιστότοπο σαν αρχειοθετημένο, ανεπιθύμητο, διαγραμμένο ή μόνο για ενήλικες, ώστε να μην εμφανίζεται δημόσια ή για να τον απενεργοποιήσουν."
+
+#: wp-admin/network/site-info.php:21 wp-admin/network/site-settings.php:20
+#: wp-admin/network/site-themes.php:20 wp-admin/network/site-users.php:23
+msgid "The menu is for editing information specific to individual sites, particularly if the admin area of a site is unavailable."
+msgstr "Το μενού είναι για την επεξεργασία πληροφοριών συγκεκριμένα σε μεμονωμένους ιστοτόπους , ειδικά στην περίπτωση που η περιοχή διαχείρισης του ιστοτόπου δεν είναι διαθέσιμη."
+
+#: wp-admin/network/site-info.php:14 wp-admin/network/site-settings.php:14
+#: wp-admin/network/site-users.php:14
+msgid "Sorry, you are not allowed to edit this site."
+msgstr "Λυπούμαστε, δεν σας επιτρέπεται η επεξεργασία αυτού του ιστότοπου."
+
+#: wp-admin/network/settings.php:380
+msgid "Enable menus"
+msgstr "Ενεργοποίηση των μενού"
+
+#: wp-admin/network/settings.php:358
+msgid "Enable administration menus"
+msgstr "Ενεργοποίηση διαχειριστικών μενού"
+
+#: wp-admin/network/settings.php:331
+msgid "Default Language"
+msgstr "Γλώσσα προεπιλογής"
+
+#: wp-admin/network/settings.php:328
+msgid "Language Settings"
+msgstr "Ρυθμίσεις γλώσσας"
+
+#: wp-admin/network/settings.php:317
+msgid "Size in kilobytes"
+msgstr "Μέγεθος σε kilobytes"
+
+#. translators: %s: File size in kilobytes
+#: wp-admin/network/settings.php:312
+msgid "%s KB"
+msgstr "%s KB"
+
+#: wp-admin/network/settings.php:307
+msgid "Max upload file size"
+msgstr "Μέγιστο μέγεθος αρχείου για μεταφόρτωση"
+
+#: wp-admin/network/settings.php:301
+msgid "Allowed file types. Separate types by spaces."
+msgstr "Επιτρεπόμενοι τύποι αρχείων. Διαχωρίστε τους τύπους με κενά διαστήματα."
+
+#: wp-admin/network/settings.php:297
+msgid "Upload file types"
+msgstr "Τύποι μεταφορτώμενων αρχείων"
+
+#: wp-admin/network/settings.php:289
+msgid "Limit total size of files uploaded to %s MB"
+msgstr "Περιορίστε το συνολικό μέγεθος των μεταφορτωμένων αρχείων σε %s MB"
+
+#: wp-admin/network/settings.php:287
+msgid "Site upload space"
+msgstr "Διαθέσιμος χώρος για αρχεία"
+
+#: wp-admin/network/settings.php:284
+msgid "Upload Settings"
+msgstr "Ρυθμίσεις μεταφορτώσεων"
+
+#: wp-admin/network/settings.php:279
+msgid "The URL for the first comment on a new site."
+msgstr "Το URL για το πρώτο σχόλιο ενός νέου ιστότοπου."
+
+#: wp-admin/network/settings.php:275
+msgid "First Comment URL"
+msgstr "URL πρώτου σχολίου"
+
+#: wp-admin/network/settings.php:270
+msgid "The email address of the first comment author on a new site."
+msgstr "Η διεύθυνση ηλ. ταχυδρομείου του συντάκτη του πρώτου σχολίου σε ένα καινούριο ιστότοπο."
+
+#: wp-admin/network/settings.php:266
+msgid "First Comment Email"
+msgstr "Ηλ. ταχυδρομείο Πρώτου Σχολίου"
+
+#: wp-admin/network/settings.php:261
+msgid "The author of the first comment on a new site."
+msgstr "Ο συντάκτης του πρώτου σχολίου σε νέο ιστότοπο."
+
+#: wp-admin/network/settings.php:257
+msgid "First Comment Author"
+msgstr "Συντάκτης πρώτου σχολίου"
+
+#: wp-admin/network/settings.php:252
+msgid "The first comment on a new site."
+msgstr "Πρώτο σχόλιο νέου ιστοτόπου"
+
+#: wp-admin/network/settings.php:247
+msgid "First Comment"
+msgstr "Πρώτο σχόλιο"
+
+#: wp-admin/network/settings.php:242
+msgid "The first page on a new site."
+msgstr "Πρώτη σελίδα νέου ιστοτόπου"
+
+#: wp-admin/network/settings.php:237
+msgid "First Page"
+msgstr "Πρώτη σελίδα"
+
+#: wp-admin/network/settings.php:232
+msgid "The first post on a new site."
+msgstr "Πρώτο άρθρο νέου ιστοτόπου"
+
+#: wp-admin/network/settings.php:222
+msgid "The welcome email sent to new users."
+msgstr "To ηλεκ. μήνυμα καλωσορίσματος που αποστέλλεται στα νέα μέλη."
+
+#: wp-admin/network/settings.php:217
+msgid "Welcome User Email"
+msgstr "Μήνυμα καλωσορίσματος μελών"
+
+#: wp-admin/network/settings.php:212
+msgid "The welcome email sent to new site owners."
+msgstr "Ηλεκτρονικό μήνυμα (email) καλωσορίσματος αποστέλλετε στους νέους ιδιοκτήτες του site."
+
+#: wp-admin/network/settings.php:207
+msgid "Welcome Email"
+msgstr "Μήνυμα καλωσορίσματος"
+
+#: wp-admin/network/settings.php:203
+msgid "New Site Settings"
+msgstr "Ρυθμίσεις νέων ιστοτόπων"
+
+#: wp-admin/network/settings.php:197
+msgid "If you want to ban domains from site registrations. One domain per line."
+msgstr "Αν θέλετε να απαγορέψετε τις εγγραφές σε ιστοσελίδες του δικτύου για συγκεκριμένα domains θέστε ένα domain σε κάθε γραμμή. "
+
+#: wp-admin/network/settings.php:192
+msgid "Banned Email Domains"
+msgstr "Απαγορευμένοι τομείς email."
+
+#: wp-admin/network/settings.php:186
+msgid "If you want to limit site registrations to certain domains. One domain per line."
+msgstr "Αν θέλετε να περιορίσετε τις εγγραφές μελών μόνο από συγκεκριμένα domains θέστε ένα domain σε κάθε γραμμή."
+
+#: wp-admin/network/settings.php:179
+msgid "Limited Email Registrations"
+msgstr "Περιορισμένες εγγραφές Email"
+
+#: wp-admin/network/settings.php:173
+msgid "Users are not allowed to register these sites. Separate names by spaces."
+msgstr "Οι χρήστες δεν επιτρέπεται να κάνουν εγγραφή σε αυτές τις ιστοσελίδες. Διαχωρίζονται με κενά τα ονόματα. "
+
+#: wp-admin/network/settings.php:169
+msgid "Banned Names"
+msgstr "Απαγορευμένα ονόματα"
+
+#: wp-admin/network/settings.php:164
+msgid "Allow site administrators to add new users to their site via the \"Users &rarr; Add New\" page."
+msgstr "Επιτρέπεται στους διαχειριστές ιστότοπων να προσθέτουν νέους χρήστες στους ιστότοπους τους μέσω της σελίδας \"Χρήστες &rarr; Προσθήκη Νέου\"."
+
+#: wp-admin/network/settings.php:162
+msgid "Add New Users"
+msgstr "Προσθήκη μελών"
+
+#: wp-admin/network/settings.php:157
+msgid "Send the network admin an email notification every time someone registers a site or user account."
+msgstr "Να αποστέλλεται ενημερωτικό email στο διαχειριστή του δικτύου κάθε φορά που δημιουργείται νέος ιστότοπος ή/και λογαριασμός χρήστη."
+
+#: wp-admin/network/settings.php:151
+msgid "Registration notification"
+msgstr "Ειδοποίηση εγγραφής"
+
+#. translators: 1: NOBLOGREDIRECT 2: wp-config.php
+#: wp-admin/network/settings.php:140
+msgid "If registration is disabled, please set %1$s in %2$s to a URL you will redirect visitors to if they visit a non-existent site."
+msgstr "Αν οι εγγραφές είναι απενεργοποιημένες, παρακαλώ καθορίστε %1$s στο %2$s σε ένα URL όπου οι επισκέπτες θα οδηγούνται αν επισκέπτονται ένα μην υπάρχων ιστότοπο."
+
+#: wp-admin/network/settings.php:136
+msgid "Both sites and user accounts can be registered."
+msgstr "Τόσο ιστότοποι όσο και λογαριασμοί χρηστών μπορούν να καταχωρηθούν."
+
+#: wp-admin/network/settings.php:135
+msgid "Logged in users may register new sites."
+msgstr "Επιτρέπεται η δημιουργία νέων ιστοτόπων από συνδεδεμένους χρήστες."
+
+#: wp-admin/network/settings.php:134
+msgid "User accounts may be registered."
+msgstr "Οι λογαριασμοί σας μπορούν να καταχωρηθούν."
+
+#: wp-admin/network/settings.php:133
+msgid "Registration is disabled."
+msgstr "Οι εγγραφές έχουν απενεργοποιηθεί."
+
+#: wp-admin/network/settings.php:132
+msgid "New registrations settings"
+msgstr "Ρυθμίσεις νέων εγγραφών"
+
+#: wp-admin/network/settings.php:124
+msgid "Allow new registrations"
+msgstr "Επιτρέπονται νέες εγγραφές"
+
+#: wp-admin/network/settings.php:121
+msgid "Registration Settings"
+msgstr "Ρυθμίσεις εγγραφών"
+
+#: wp-admin/network/settings.php:116
+msgid "This email address will receive notifications. Registration and support emails will also come from this address."
+msgstr "Αυτή η διεύθυνση ηλεκτρονικού ταχυδρομείου θα λαμβάνει ειδοποιήσεις. Μηνύματα για επικύρωση εγγραφής και υποστήριξης θα αποστέλλονται από αυτή τη διεύθυνση."
+
+#: wp-admin/network/settings.php:102
+msgid "Operational Settings"
+msgstr "Λειτουργικές ρυθμίσεις"
+
+#: wp-admin/network/settings.php:40
+msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Settings_Screen\">Documentation on Network Settings</a>"
+msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Settings_Screen\">Τεκμηρίωση των ρυθμίσεων δικτύου</a>"
+
+#: wp-admin/network/settings.php:35
+msgid "Super admins can no longer be added on the Options screen. You must now go to the list of existing users on Network Admin > Users and click on Username or the Edit action link below that name. This goes to an Edit User page where you can check a box to grant super admin privileges."
+msgstr "Ο καθορισμός υπερδιαχειριστών δεν είναι πλέον διαθέσιμος μέσα από την σελίδα Επιλογές. Μεταβείτε στη λίστα με τους χρήστες στην σελίδα Διαχείριση Δικτύου > Μέλη και μετά πατήστε στο Όνομα Χρήστη ή στο σύνδεσμο Επεξεργασία κάτω από το όνομα του χρήστη. Έτσι θα μεταβείτε στην σελίδα Επεξεργασία Μέλους, όπου μπορείτε να του αποδώσετε δικαιώματα υπερδιαχειριστή επιλέγοντας το αντίστοιχο πλαίσιο ελέγχου."
+
+#: wp-admin/network/settings.php:34
+msgid "Menu setting enables/disables the plugin menus from appearing for non super admins, so that only super admins, not site admins, have access to activate plugins."
+msgstr "Στην ενότητα Ρυθμίσεις μενού καθορίζετε αν το μενού Πρόσθετα θα είναι διαθέσιμα στους μη υπερδιαχειριστές, έτσι ώστε μόνο οι υπερ-διαχειριστές, και όχι οι διαχειριστές των επί μέρους ιστοτόπων, να έχουν δυνατότητα ενεργοποίησης πρόσθετων."
+
+#: wp-admin/network/settings.php:32
+msgid "Upload settings control the size of the uploaded files and the amount of available upload space for each site. You can change the default value for specific sites when you edit a particular site. Allowed file types are also listed (space separated only)."
+msgstr "Οι Ρυθμίσεις μεταφορτώσεων ορίζουν το μέγιστο μέγεθος αρχείου που μπορεί να μεταφορτωθεί και τον διαθέσιμο χώρο αρχείων για κάθε ιστότοπο. Μπορείτε να αλλάξετε τις τιμές για μεμονωμένο ιστότοπο κατά την επεξεργασία του. Επίσης εδώ καθορίζετε και τους επιτρεπόμενους τύπους αρχείων (τιμές χωρισμένες με κόμμα)."
+
+#: wp-admin/network/settings.php:31
+msgid "New site settings are defaults applied when a new site is created in the network. These include welcome email for when a new site or user account is registered, and what&#8127;s put in the first post, page, comment, comment author, and comment URL."
+msgstr "Οι Ρυθμίσεις νέων ιστοτόπων θα εφαρμόζονται σε κάθε νέο ιστότοπο που δημιουργείται στο δίκτυο. Αυτές περιλαμβάνουν το email καλωσορίσματος στο νέο ιστότοπο ή προς κάθε νέο χρήστη, καθώς και τι θα περιέχουν το πρώτο άρθρο, σελίδα, σχόλιο, ποιος θα αναγράφεται ως συντάκτης του σχολίου καθώς και η διεύθυνση URL του σχολίου."
+
+#: wp-admin/network/settings.php:30
+msgid "Registration settings can disable/enable public signups. If you let others sign up for a site, install spam plugins. Spaces, not commas, should separate names banned as sites for this network."
+msgstr "Οι Ρυθμίσεις εγγραφών ορίζουν αν θα είναι ενεργοποιημένες ή απενεργοποιημένες οι δημόσιες (ανοικτές) εγγραφές. Αν επιτρέψετε σε άλλους να εγγράφονται σε ένα ιστότοπο, παρακαλούμε εγκαταστήστε και πρόσθετα για προστασία από spam. Τα ονόματα των απαγορευμένων ιστοτόπων θα πρέπει να διαχωρίζονται με κενά, και όχι κόμματα."
+
+#: wp-admin/network/settings.php:29
+msgid "Operational settings has fields for the network&#8217;s name and admin email."
+msgstr "Στην περιοχή Λειτουργικές ρυθμίσεις υπάρχουν πεδία που αφορούν το όνομα του δικτύου και το email του διαχειριστή."
+
+#: wp-admin/network/settings.php:28
+msgid "This screen sets and changes options for the network as a whole. The first site is the main site in the network and network options are pulled from that original site&#8217;s options."
+msgstr "Στην οθόνη αυτή ορίζονται οι ρυθμίσεις για όλο το δίκτυο των ιστότοπων. Ο 1ος ιστότοπος είναι και ο κύριος ιστότοπος του δικτύου και οι αρχικές ρυθμίσεις δικτύου έχουν προκύψει από τις ρυθμίσεις που αυτός έχει."
+
+#: wp-admin/network/menu.php:55 wp-admin/network/settings.php:19
+msgid "Network Settings"
+msgstr "Ρυθμίσεις δικτύου"
+
+#: wp-admin/network/menu.php:41 wp-admin/network/themes.php:253
+msgctxt "theme"
+msgid "Add New"
+msgstr "Εγκατάσταση νέου"
 
 #: wp-admin/network/menu.php:40
 msgid "Installed Themes"
 msgstr "Εγκατεστημένα θέματα"
 
-#: wp-admin/network/menu.php:41 wp-admin/network/themes.php:270
+#: wp-admin/network/menu.php:36
+msgid "Themes %s"
+msgstr "Θέματα %s"
+
+#: wp-admin/network/menu.php:28
+msgid "All Sites"
+msgstr "Όλοι οι ιστότοποι"
+
+#: wp-admin/network/menu.php:22 wp-admin/network/upgrade.php:15
+#: wp-admin/network/upgrade.php:40 wp-admin/network/upgrade.php:131
+msgid "Upgrade Network"
+msgstr "Αναβάθμιση δικτύου"
+
+#: wp-admin/network/menu.php:19
+msgid "Updates"
+msgstr "Αναβαθμίσεις"
+
+#: wp-admin/network/index.php:51 wp-admin/network/site-info.php:31
+#: wp-admin/network/site-new.php:31 wp-admin/network/site-settings.php:30
+#: wp-admin/network/site-themes.php:30 wp-admin/network/site-users.php:33
+#: wp-admin/network/sites.php:43 wp-admin/network/user-new.php:27
+#: wp-admin/network/users.php:180
+msgid "<a href=\"https://wordpress.org/support/forum/multisite/\">Support Forums</a>"
+msgstr "<a href=\"https://wordpress.org/support/forum/multisite/\">Φόρα υποστήριξης</a>"
+
+#: wp-admin/network/index.php:50
+msgid "<a href=\"https://codex.wordpress.org/Network_Admin\">Documentation on the Network Admin</a>"
+msgstr "<a href=\"https://codex.wordpress.org/Network_Admin\">Τεκμηρίωση στην διαχείριση δικτύου</a>"
+
+#: wp-admin/network/index.php:44
+msgid "Quick Tasks"
+msgstr "Γρήγορες εργασίες"
+
+#: wp-admin/network/index.php:40
+msgid "To search for a site, <strong>enter the path or domain</strong>."
+msgstr "Για να ψάξετε έναν ιστότοπο, <strong>δώστε την διαδρομή ή το domain</strong>"
+
+#: wp-admin/network/index.php:39
+msgid "To search for a user, <strong>enter an email address or username</strong>. Use a wildcard to search for a partial username, such as user&#42;."
+msgstr "Για να αναζήτησετε ένα χρήστη, <strong>πληκτρολογήστε μια διεύθυνση email ή το όνομα χρήστη</strong>. Χρησιμοποιήστε ένα μπαλαντέρ για να αναζητήσετε ένα μερικό όνομα, όπως user&#42;."
+
+#: wp-admin/network/index.php:38
+msgid "To search for a user or site, use the search boxes."
+msgstr "Για να αναζητήσετε ένα χρήστη ή ιστότοπο, χρησιμοποιήστε τα πλαίσια αναζήτησης."
+
+#: wp-admin/network/index.php:37
+msgid "To add a new site, <strong>click Create a New Site</strong>."
+msgstr "Για να προσθέσετε νέο ιστότοπο <strong>πατήστε Δημιουργία νέου ιστότοπου</strong>."
+
+#: wp-admin/network/index.php:36
+msgid "To add a new user, <strong>click Create a New User</strong>."
+msgstr "Για να προσθέσετε ένα νέο μέλος, <strong>πατήστε Δημιουργία νέου μέλους</strong>."
+
+#: wp-admin/network/index.php:35
+msgid "The Right Now widget on this screen provides current user and site counts on your network."
+msgstr "Η μικροεφαρμογή Αυτή Την Στιγμή στην οθόνη παρέχει ενεργό χρήστη και αριθμό ιστότοπων στο δίκτυο."
+
+#: wp-admin/network/index.php:27
+msgid "Modify global network settings"
+msgstr "Τροποποιήσετε τις γενικές ρυθμίσεις του δικτύου"
+
+#: wp-admin/network/index.php:26
+msgid "Update your network"
+msgstr "Ενημερώσετε το δίκτυο σας"
+
+#: wp-admin/network/index.php:25
+msgid "Install and activate themes or plugins"
+msgstr "Εγκαταστήσετε και ενεργοποιήσετε θέματα ή πρόσθετα"
+
+#: wp-admin/network/index.php:24
+msgid "Add and manage sites or users"
+msgstr "Προσθέσετε και διαχειριστείτε ιστότοπους και χρήστες"
+
+#: wp-admin/network/index.php:23
+msgid "From here you can:"
+msgstr "Από εδώ μπορείτε να:"
+
+#: wp-admin/network/index.php:22
+msgid "Welcome to your Network Admin. This area of the Administration Screens is used for managing all aspects of your Multisite Network."
+msgstr "Καλώς ήρθατε στη Διαχείριση Δικτύου. Μέσω των επιλογών της μπορείτε να διαχειριστείτε οτιδήποτε αφορά το δίκτυο πολλαπλών ιστοτόπων."
+
+#: wp-admin/includes/network.php:594
+msgid "Once you complete these steps, your network is enabled and configured. You will have to log in again."
+msgstr "Μόλις ολοκληρώσετε αυτά τα βήματα, το δίκτυο σας θα είναι ενεργοποιημένο και ρυθμισμένο. Θα χρειαστεί να συνδεθείτε ξανά."
+
+#. translators: 1: a filename like .htaccess. 2: a file path.
+#: wp-admin/includes/network.php:539 wp-admin/includes/network.php:579
+msgid "Add the following to your %1$s file in %2$s, <strong>replacing</strong> other WordPress rules:"
+msgstr "Προσθέστε τα ακόλουθα στο αρχείο %1$s μέσα %2$s, <strong>αντικαθιστώντας</strong> άλλους κανόνες WordPress:"
+
+#: wp-admin/includes/network.php:475
+msgid "To make your installation more secure, you should also add:"
+msgstr "Για να κάνετε την εγκατάσταση πιο ασφαλής, θα πρέπει επίσης να προσθέσετε: "
+
+#. translators: 1: wp-config.php
+#: wp-admin/includes/network.php:470
+msgid "These unique authentication keys are also missing from your %s file."
+msgstr "Αυτά τα μοναδικά κλειδιά αυθεντικότητας επίσης λείπουν από το αρχείο %s."
+
+#. translators: 1: wp-config.php
+#: wp-admin/includes/network.php:464
+msgid "This unique authentication key is also missing from your %s file."
+msgstr "Αυτό το μοναδικό κλειδί αυθεντικότητας επίσης λείπει από το αρχείο %s."
+
+#. translators: This string should only be translated if wp-config-sample.php
+#. is localized. You can check the localized release package or
+#. https://i18n.svn.wordpress.org/<locale code>/branches/<wp
+#. version>/dist/wp-config-sample.php
+#: wp-admin/includes/network.php:427
+msgid "That&#8217;s all, stop editing! Happy blogging."
+msgstr "Αυτό ήταν, τέλος επεξεργασίας! Καλές δημοσιεύσεις!"
+
+#. translators: 1: wp-config.php 2: location of wp-config file, 3: translated
+#. version of "That's all, stop editing! Happy blogging."
+#: wp-admin/includes/network.php:419
+msgid "Add the following to your %1$s file in %2$s <strong>above</strong> the line reading %3$s:"
+msgstr "Προσθέστε τα ακόλουθα στο αρχείο σας %1$s στο %2$s <strong>πάνω</strong> από τη γραμμή που λέει %3$s:"
+
+#. translators: 1: wp-config.php
+#: wp-admin/includes/network.php:408
+msgid "We recommend you back up your existing %s file."
+msgstr "Σας συνιστούμε να κρατήσετε αντίγραφο backup του αρχείου %s."
+
+#. translators: 1: wp-config.php 2: .htaccess
+#. translators: 1: wp-config.php 2: web.config
+#: wp-admin/includes/network.php:392 wp-admin/includes/network.php:400
+msgid "We recommend you back up your existing %1$s and %2$s files."
+msgstr "Σας συνιστούμε να κρατήσετε αντίγραφο backup των αρχείων %1$s και %2$s."
+
+#: wp-admin/includes/network.php:386
+msgid "Complete the following steps to enable the features for creating a network of sites."
+msgstr "Ολοκληρώστε τα παρακάτω βήματα για να ενεργοποιήσετε τις δυνατότητες για τη δημιουργία ενός δικτύου ιστότοπων."
+
+#: wp-admin/includes/network.php:385
+msgid "Enabling the Network"
+msgstr "Ενεργοποίηση του δικτύου"
+
+#: wp-admin/includes/network.php:374
+msgid "Please complete the configuration steps. To create a new network, you will need to empty or remove the network database tables."
+msgstr "Παρακαλώ συμπληρώστε τα βήματα διαμόρφωσης. Για να δημιουργήσετε ένα νέο δίκτυο, θα πρέπει να αδειάσετε ή να καταργήσετε τους πίνακες της βάσης δεδομένων του δικτύου."
+
+#: wp-admin/includes/network.php:373
+msgid "An existing WordPress network was detected."
+msgstr "'Ενα υπάρχων δίκτυο WordPress εντοπίστηκε."
+
+#: wp-admin/includes/network.php:368
+msgid "The original configuration steps are shown here for reference."
+msgstr "Τα αρχικά βήματα ρυθμίσεων εμφανίζονται εδω για αναφορά."
+
+#: wp-admin/includes/network.php:317
+msgid "Your email address."
+msgstr "Η ηλεκτρονική σου διεύθυνση."
+
+#: wp-admin/includes/network.php:313 wp-admin/network/settings.php:112
+msgid "Network Admin Email"
+msgstr "Ηλ. διεύθυνση διαχειριστή δικτύου"
+
+#: wp-admin/includes/network.php:308
+msgid "What would you like to call your network?"
+msgstr "Πως θέλετε να να αποκαλείτε το δίκτυο σας;"
+
+#: wp-admin/includes/network.php:304 wp-admin/network/settings.php:105
+msgid "Network Title"
+msgstr "Τίτλος δικτύου"
+
+#: wp-admin/includes/network.php:286
+msgid "Because your install is not new, the sites in your WordPress network must use sub-domains."
+msgstr "Επειδή η εγκατάσταση σας δεν είναι καινούρια, οι ιστότοποι στο Wordpress δίκτυο σας θα πρέπει να χρησιμοποιούν υπο-τομείς."
+
+#: wp-admin/includes/network.php:285
+msgid "Sub-domain Install"
+msgstr "Εγκατάσταση Sub-domain"
+
+#: wp-admin/includes/network.php:277
+msgid "Because your install is in a directory, the sites in your WordPress network must use sub-directories."
+msgstr "Επειδή η εγκατάσταση σας είναι σε φάκελο, οι ιστότοποι στο Wordpress δίκτυο σας θα πρέπει να χρησιμοποιούν υπο-φακέλους."
+
+#: wp-admin/includes/network.php:270 wp-admin/includes/network.php:280
+#: wp-admin/includes/network.php:287
+msgid "The main site in a sub-directory install will need to use a modified permalink structure, potentially breaking existing links."
+msgstr "Για την εγκατάσταση του κυρίως ιστότοπου σε ένα υπο κατάλογο θα χρειαστεί να χρησιμοποιήσετε τροποποιημένη μορφή μονίμων συνδέσμων, που μπορεί να σπάσει τους υπάρχοντες συνδέσμους."
+
+#. translators: 1: localhost 2: localhost.localdomain
+#: wp-admin/includes/network.php:264
+msgid "Because you are using %1$s, the sites in your WordPress network must use sub-directories. Consider using %2$s if you wish to use sub-domains."
+msgstr "Επειδή χρησιμοποιείτε %1$s, οι ιστότοποι στο WordPress δίκτυό σας θα  πρέπει να χρησιμοποιουν υπο-καταλόγους. Εξετάστε τη χρήση %2$s, εάν επιθυμείτε να χρησιμοποιήσετε υπο-τομείς."
+
+#: wp-admin/includes/network.php:260 wp-admin/includes/network.php:275
+msgid "Sub-directory Install"
+msgstr " Εγκατάσταση υπο-καταλόγου"
+
+#: wp-admin/includes/network.php:256
+msgid "Network Details"
+msgstr "Στοιχεία δικτύου."
+
+#. translators: %s: host name
+#: wp-admin/includes/network.php:248 wp-admin/includes/network.php:297
+msgid "The internet address of your network will be %s."
+msgstr "Η διεύθυνση διαδικτύου του δικτύου σας θα είναι %s."
+
+#. translators: 1: site url 2: host name 3. www
+#: wp-admin/includes/network.php:237
+msgid "We recommend you change your siteurl to %1$s before enabling the network feature. It will still be possible to visit your site using the %3$s prefix with an address like %2$s but any links will not have the %3$s prefix."
+msgstr "Σας συνιστούμε να αλλάξετε το siteurl σας σε %1$s πριν ενεργοποιήσετε τη λειτουργία δικτύου. Θα εξακολουθείτε να μπορείτε να επισκεφτείτε τον ιστότοπό σας χρησιμοποιώντας το πρόθεμα %3$s με μια διεύθυνση σαν %2$s αλλά οι σύνδεσμοι δεν θα έχουν το πρόθεμα %3$s."
+
+#: wp-admin/includes/network.php:234 wp-admin/includes/network.php:244
+#: wp-admin/includes/network.php:293
+msgid "Server Address"
+msgstr "Διεύθυνση διακομιστή"
+
+#: wp-admin/includes/network.php:229 wp-admin/includes/network.php:545
+#: wp-admin/includes/network.php:585
+msgid "Subdirectory networks may not be fully compatible with custom wp-content directories."
+msgstr "Τα δίκτυα υποκαταλόγων μπορεί να μην είναι πλήρως συμβατά με τους προσαρμοσμένους καταλόγους wp-content."
+
+#. translators: 1: hostname
+#: wp-admin/includes/network.php:219
+msgctxt "subdirectory examples"
+msgid "like <code>%1$s/site1</code> and <code>%1$s/site2</code>"
+msgstr "όπως <code>%1$s/site1</code> και <code>%1$s/site2</code>"
+
+#: wp-admin/includes/network.php:216
+msgid "Sub-directories"
+msgstr "Υποκατάλογοι"
+
+#. translators: 1: hostname
+#: wp-admin/includes/network.php:211
+msgctxt "subdomain examples"
+msgid "like <code>site1.%1$s</code> and <code>site2.%1$s</code>"
+msgstr "όπως <code>site1.%1$s</code> και <code>site2.%1$s</code>"
+
+#: wp-admin/includes/network.php:208
+msgid "Sub-domains"
+msgstr "Υπο-τομείς"
+
+#: wp-admin/includes/network.php:204
+msgid "You will need a wildcard DNS record if you are going to use the virtual host (sub-domain) functionality."
+msgstr "Θα χρειαστείτε wildcard DNS record αν πρόκειται να χρησιμοποιήσετε λειτουργία εικονικό φιλοξενητή (sub-domain)."
+
+#: wp-admin/includes/network.php:203
+msgid "You cannot change this later."
+msgstr "Δεν μπορείτε να το αλλάξετε αυτό αργότερα."
+
+#: wp-admin/includes/network.php:202
+msgid "Please choose whether you would like sites in your WordPress network to use sub-domains or sub-directories."
+msgstr "Παρακαλώ επιλέξετε αν θέλετε οι ιστότοποι στο WordPress δίκτυό σας να χρησιμοποιούν υπο-τομείς ή υπο-καταλόγους."
+
+#: wp-admin/includes/network.php:201
+msgid "Addresses of Sites in your Network"
+msgstr "Διευθύνσεις των ιστότοπων του δικτύου σας"
+
+#. translators: 1: mod_rewrite, 2: mod_rewrite documentation URL, 3: Google
+#. search for mod_rewrite
+#: wp-admin/includes/network.php:191
+msgid "If %1$s is disabled, ask your administrator to enable that module, or look at the <a href=\"%2$s\">Apache documentation</a> or <a href=\"%3$s\">elsewhere</a> for help setting it up."
+msgstr "Αν το %1$s είναι απενεργοποιημένο, ζητήστε από τον διαχειριστή να το ενεργοποιήσει, ή κοιτάξτε στην <a href=\"%2$s\">τεκμηρίωση του Apache</a> ή <a href=\"%3$s\">αλλού</a> για βοήθεια για την διαμόρφωση."
+
+#. translators: %s: mod_rewrite
+#: wp-admin/includes/network.php:182
+msgid "It looks like the Apache %s module is not installed."
+msgstr "Φαίνεται ότι η μονάδα %s του Apache δεν είναι εγκατεστημένη."
+
+#: wp-admin/includes/network.php:180 wp-admin/includes/network.php:229
+#: wp-admin/includes/network.php:270 wp-admin/includes/network.php:280
+msgid "Warning!"
+msgstr "Προσοχή!"
+
+#. translators: %s: mod_rewrite
+#: wp-admin/includes/network.php:175
+msgid "Please make sure the Apache %s module is installed as it will be used at the end of this installation."
+msgstr "Παρακαλώ βεβαιωθείτε ότι η μονάδα %s του Apache είναι εγκατεστημένο μια και θα χρησιμοποιηθεί στο τέλος αυτής της εγκατάστασης."
+
+#: wp-admin/includes/network.php:161
+msgid "Fill in the information below and you&#8217;ll be on your way to creating a network of WordPress sites. We will create configuration files in the next step."
+msgstr "Συμπληρώστε τις παρακάτω πληροφορίες και θα μπορείτε να δημιουργήσετε ένα δίκτυο με WordPress ιστότοπους. Θα δημιουργήσουμε τα αρχεία ρυθμίσεων στο επόμενο βήμα."
+
+#: wp-admin/includes/network.php:160
+msgid "Welcome to the Network installation process!"
+msgstr "Καλώς ήλθατε στην διαδικασία εγκατάστασης δικτύου!"
+
+#. translators: %s: Default network name
+#: wp-admin/includes/network.php:151
+msgid "%s Sites"
+msgstr "%s Ιστότοποι"
+
+#: wp-admin/includes/network.php:140
+msgid "ERROR: The network could not be created."
+msgstr "Σφάλμα : Το δίκτυο δεν μπορεί να δημιουργηθεί."
+
+#: wp-admin/includes/network.php:128
+msgid "Return to Dashboard"
+msgstr "Επιστροφή στην διαχείριση"
+
+#. translators: %s: port number
+#: wp-admin/includes/network.php:125
+msgid "You cannot use port numbers such as %s."
+msgstr "Δε μπορείτε να χρησιμοποιήσετε αριθμό θύρας όπως %s."
+
+#: wp-admin/includes/network.php:122
+msgid "You cannot install a network of sites with your server address."
+msgstr "Δεν μπορείτε να εγκαταστήσετε δίκτυο ιστότοπων με την διεύθυνση διακομιστή σας."
+
+#: wp-admin/includes/network.php:113
+msgid "Once the network is created, you may reactivate your plugins."
+msgstr "Μόλις το δίκτυο δημιουργηθεί, μπορείτε να ενεργοποιήστε τα πρόσθετα σας."
+
+#: wp-admin/includes/network.php:113
+msgid "Please <a href=\"%s\">deactivate your plugins</a> before enabling the Network feature."
+msgstr "Παρακαλώ <a href=\"%s\">απενεργοποιήστε τα πρόσθετα σας</a> πριν ενεργοποιήσετε την δυνατότητα δικτύου."
+
+#: wp-admin/includes/network.php:113 wp-admin/includes/network.php:373
+#: wp-admin/includes/network.php:545 wp-admin/includes/network.php:585
+msgid "Warning:"
+msgstr "Προειδοποίηση: "
+
+#: wp-admin/includes/network.php:105
+msgid "The constant DO_NOT_UPGRADE_GLOBAL_TABLES cannot be defined when creating a network."
+msgstr "Η σταθερή DO_NOT_UPGRADE_GLOBAL_TABLES δεν μπορεί να καθοριστεί όταν δημιουργείτε το δίκτυο σας."
+
+#: wp-admin/includes/class-wp-ms-users-list-table.php:172
+msgctxt "user"
+msgid "Registered"
+msgstr "Εγγραφή"
+
+#: wp-admin/includes/class-wp-ms-users-list-table.php:142
+msgid "Super Admin <span class=\"count\">(%s)</span>"
+msgid_plural "Super Admins <span class=\"count\">(%s)</span>"
+msgstr[0] "Υπερδιαχειριστής <span class=\"count\">(%s)</span>"
+msgstr[1] "Υπερδιαχειριστές <span class=\"count\">(%s)</span>"
+
+#: wp-admin/includes/class-wp-ms-users-list-table.php:114
+msgctxt "user"
+msgid "Not Spam"
+msgstr "Όχι ανεπιθύμητο"
+
+#: wp-admin/includes/class-wp-ms-users-list-table.php:113
+msgctxt "user"
+msgid "Mark as Spam"
+msgstr "Ανεπιθύμητο"
+
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:573
+msgid "Visit Theme Site"
+msgstr "Επισκεφθείτε τον ιστότοπο του θέματος"
+
+#. translators: %s: theme name
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:568
+msgid "Visit %s homepage"
+msgstr "Επίσκεψη στην αρχική σελίδα του %s"
+
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:541
+msgid "Broken Theme:"
+msgstr "Προβληματικό θέμα:"
+
+#. translators: %s: theme name
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:476
 msgctxt "theme"
-msgid "Add New"
-msgstr "Εγκατάσταση νέου"
+msgid "Delete %s"
+msgstr "Διαγραφή %s"
 
-#: wp-admin/network/menu.php:55 wp-admin/network/settings.php:22
-msgid "Network Settings"
-msgstr "Ρυθμίσεις δικτύου"
+#. translators: %s: theme name
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:457
+msgid "Open %s in the Theme Editor"
+msgstr "Άνοιγμα του %s στον διορθωτή θεμάτων"
 
-#: wp-admin/network/settings.php:31
-msgid "This screen sets and changes options for the network as a whole. The first site is the main site in the network and network options are pulled from that original site&#8217;s options."
-msgstr "Στην οθόνη αυτή ορίζονται οι ρυθμίσεις για όλο το δίκτυο των ιστότοπων. Ο 1ος ιστότοπος είναι και ο κύριος ιστότοπος του δικτύου και οι αρχικές ρυθμίσεις δικτύου έχουν προκύψει από τις ρυθμίσεις που αυτός έχει."
+#. translators: %s: theme name
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:441
+msgid "Network Disable %s"
+msgstr "Απενεργοποίηση δικτύου %s"
 
-#: wp-admin/network/settings.php:32
-msgid "Operational settings has fields for the network&#8217;s name and admin email."
-msgstr "Στην περιοχή Λειτουργικές ρυθμίσεις υπάρχουν πεδία που αφορούν το όνομα του δικτύου και το email του διαχειριστή."
+#. translators: %s: theme name
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:438
+msgid "Disable %s"
+msgstr "Απενεργοποιήση %s"
 
-#: wp-admin/network/settings.php:33
-msgid "Registration settings can disable/enable public signups. If you let others sign up for a site, install spam plugins. Spaces, not commas, should separate names banned as sites for this network."
-msgstr "Οι Ρυθμίσεις εγγραφών ορίζουν αν θα είναι ενεργοποιημένες ή απενεργοποιημένες οι δημόσιες (ανοικτές) εγγραφές. Αν επιτρέψετε σε άλλους να εγγράφονται σε ένα ιστότοπο, παρακαλούμε εγκαταστήστε και πρόσθετα για προστασία από spam. Τα ονόματα των απαγορευμένων ιστοτόπων θα πρέπει να διαχωρίζονται με κενά, και όχι κόμματα."
+#. translators: %s: theme name
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:419
+msgid "Network Enable %s"
+msgstr "Ενεργοποίηση δικτύου %s"
 
-#: wp-admin/network/settings.php:34
-msgid "New site settings are defaults applied when a new site is created in the network. These include welcome email for when a new site or user account is registered, and what&#8127;s put in the first post, page, comment, comment author, and comment URL."
-msgstr "Οι Ρυθμίσεις νέων ιστοτόπων θα εφαρμόζονται σε κάθε νέο ιστότοπο που δημιουργείται στο δίκτυο. Αυτές περιλαμβάνουν το email καλωσορίσματος στο νέο ιστότοπο ή προς κάθε νέο χρήστη, καθώς και τι θα περιέχουν το πρώτο άρθρο, σελίδα, σχόλιο, ποιος θα αναγράφεται ως συντάκτης του σχολίου καθώς και η διεύθυνση URL του σχολίου."
+#. translators: %s: theme name
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:416
+msgid "Enable %s"
+msgstr "Ενεργοποίηση %s"
 
-#: wp-admin/network/settings.php:35
-msgid "Upload settings control the size of the uploaded files and the amount of available upload space for each site. You can change the default value for specific sites when you edit a particular site. Allowed file types are also listed (space separated only)."
-msgstr "Οι Ρυθμίσεις μεταφορτώσεων ορίζουν το μέγιστο μέγεθος αρχείου που μπορεί να μεταφορτωθεί και τον διαθέσιμο χώρο αρχείων για κάθε ιστότοπο. Μπορείτε να αλλάξετε τις τιμές για μεμονωμένο ιστότοπο κατά την επεξεργασία του. Επίσης εδώ καθορίζετε και τους επιτρεπόμενους τύπους αρχείων (τιμές χωρισμένες με κόμμα)."
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:335
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:447
+msgid "Network Disable"
+msgstr "Απενεργοποίηση σε δίκτυο"
 
-#: wp-admin/network/settings.php:37
-msgid "Menu setting enables/disables the plugin menus from appearing for non super admins, so that only super admins, not site admins, have access to activate plugins."
-msgstr "Στην ενότητα Ρυθμίσεις μενού καθορίζετε αν το μενού Πρόσθετα θα είναι διαθέσιμα στους μη υπερδιαχειριστές, έτσι ώστε μόνο οι υπερ-διαχειριστές, και όχι οι διαχειριστές των επί μέρους ιστοτόπων, να έχουν δυνατότητα ενεργοποίησης πρόσθετων."
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:335
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:447
+msgid "Disable"
+msgstr "Απενεργοποίηση"
 
-#: wp-admin/network/settings.php:38
-msgid "Super admins can no longer be added on the Options screen. You must now go to the list of existing users on Network Admin > Users and click on Username or the Edit action link below that name. This goes to an Edit User page where you can check a box to grant super admin privileges."
-msgstr "Ο καθορισμός υπερδιαχειριστών δεν είναι πλέον διαθέσιμος μέσα από την σελίδα Επιλογές. Μεταβείτε στη λίστα με τους χρήστες στην σελίδα Διαχείριση Δικτύου > Μέλη και μετά πατήστε στο Όνομα Χρήστη ή στο σύνδεσμο Επεξεργασία κάτω από το όνομα του χρήστη. Έτσι θα μεταβείτε στην σελίδα Επεξεργασία Μέλους, όπου μπορείτε να του αποδώσετε δικαιώματα υπερδιαχειριστή επιλέγοντας το αντίστοιχο πλαίσιο ελέγχου."
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:333
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:425
+msgid "Enable"
+msgstr "Ενεργοποίηση"
 
-#: wp-admin/network/settings.php:43
-msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Settings_Screen\" target=\"_blank\">Documentation on Network Settings</a>"
-msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Settings_Screen\" target=\"_blank\">Τεκμηρίωση των ρυθμίσεων δικτύου</a>"
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:302
+msgid "Broken <span class=\"count\">(%s)</span>"
+msgid_plural "Broken <span class=\"count\">(%s)</span>"
+msgstr[0] "Προβληματικό <span class=\"count\">(%s)</span>"
+msgstr[1] "Προβληματικά <span class=\"count\">(%s)</span>"
 
-#: wp-admin/network/settings.php:96
-msgid "Options saved."
-msgstr "Οι επιλογές αποθηκεύτηκαν."
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:296
+msgid "Disabled <span class=\"count\">(%s)</span>"
+msgid_plural "Disabled <span class=\"count\">(%s)</span>"
+msgstr[0] "Απενεργοποιημένο <span class=\"count\">(%s)</span>"
+msgstr[1] "Απενεργοποιημένα <span class=\"count\">(%s)</span>"
 
-#: wp-admin/network/settings.php:104
-msgid "Operational Settings"
-msgstr "Λειτουργικές Ρυθμίσεις"
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:293
+msgid "Enabled <span class=\"count\">(%s)</span>"
+msgid_plural "Enabled <span class=\"count\">(%s)</span>"
+msgstr[0] "Enabled <span class=\"count\">(%s)</span>"
+msgstr[1] "Ενεργοποιημένα <span class=\"count\">(%s)</span>"
 
-#: wp-admin/network/settings.php:118
-msgid "This email address will receive notifications. Registration and support emails will also come from this address."
-msgstr "Αυτή η διεύθυνση ηλεκτρονικού ταχυδρομείου θα λαμβάνει ειδοποιήσεις. Μηνύματα για επικύρωση εγγραφής και υποστήριξης θα αποστέλλονται από αυτή τη διεύθυνση."
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:290
+msgctxt "themes"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] "Όλα <span class=\"count\">(%s)</span>"
+msgstr[1] "Όλα <span class=\"count\">(%s)</span>"
 
-#: wp-admin/network/settings.php:123
-msgid "Registration Settings"
-msgstr "Ρυθμίσεις εγγραφών"
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:247
+msgid "Theme"
+msgstr "Θέμα"
 
-#: wp-admin/network/settings.php:126
-msgid "Allow new registrations"
-msgstr "Επιτρέπονται νέες εγγραφές"
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:236
+msgid "You do not appear to have any themes available at this time."
+msgstr "Φαίνεται ότι δεν υπάρχουν θέματα επί του παρόντος."
 
-#: wp-admin/network/settings.php:134
-msgid "New registrations settings"
-msgstr "Ρυθμίσεις νέων εγγραφών"
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:234
+msgid "No themes found."
+msgstr "Δεν βρέθηκαν θέματα."
 
-#: wp-admin/network/settings.php:135
-msgid "Registration is disabled."
-msgstr "Οι εγγραφές έχουν απενεργοποιηθεί."
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:538
+msgctxt "verb; site"
+msgid "Archive"
+msgstr "Αρχειοθέτηση"
 
-#: wp-admin/network/settings.php:136
-msgid "User accounts may be registered."
-msgstr "Οι λογαριασμοί σας μπορούν να καταχωρηθούν."
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:536
+msgid "Unarchive"
+msgstr "Απαρχειοθέτηση"
 
-#: wp-admin/network/settings.php:137
-msgid "Logged in users may register new sites."
-msgstr "Επιτρέπεται η δημιουργία νέων ιστοτόπων από συνδεδεμένους χρήστες."
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:365
+msgid "Never"
+msgstr "Ποτέ"
 
-#: wp-admin/network/settings.php:138
-msgid "Both sites and user accounts can be registered."
-msgstr "Τόσο ιστότοποι όσο και λογαριασμοί χρηστών μπορούν να καταχωρηθούν."
+#. translators: 1: site name, 2: site tagline.
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:337
+msgid "%1$s &#8211; %2$s"
+msgstr "%1$s &#8211; %2$s"
 
-#. translators: 1: NOBLOGREDIRECT 2: wp-config.php
-#: wp-admin/network/settings.php:142
-msgid "If registration is disabled, please set %1$s in %2$s to a URL you will redirect visitors to if they visit a non-existent site."
-msgstr "Αν οι εγγραφές είναι απενεργοποιημένες, παρακαλώ καθορίστε %1$s στο %2$s σε ένα URL όπου οι επισκεπτες θα καθοδηγούνται αν επισκέπτονται ένα μην υπάρχων ιστότοπο."
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:231
+#: wp-admin/network/site-info.php:177
+msgctxt "site"
+msgid "Registered"
+msgstr "Καταχωρήθηκε"
 
-#: wp-admin/network/settings.php:153
-msgid "Registration notification"
-msgstr "Ειδοποίηση εγγραφής"
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:230
+#: wp-admin/network/site-info.php:181
+msgid "Last Updated"
+msgstr "Τελευταία ενημέρωση"
 
-#: wp-admin/network/settings.php:159
-msgid "Send the network admin an email notification every time someone registers a site or user account."
-msgstr "Να στέλνεται ένα email ενημέρωσης στο διαχειριστή του δικτύου κάθε φορά που κάποιος εγγραφει μια νέα ιστοσελίδα ή ένα νέο λογαριασμό χρήστη."
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:204
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:542
+msgctxt "site"
+msgid "Not Spam"
+msgstr "Όχι σπαμ"
 
-#: wp-admin/network/settings.php:164
-msgid "Add New Users"
-msgstr "Προσθήκη μελών"
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:203
+msgctxt "site"
+msgid "Mark as Spam"
+msgstr "Ανεπιθύμητο"
 
-#: wp-admin/network/settings.php:166
-msgid "Allow site administrators to add new users to their site via the \"Users &rarr; Add New\" page."
-msgstr "Επιτρέπεται στους διαχειριστές ιστότοπων να προσθέτουν νέους χρήστες στους ιστότοπους τους μέσω της σελίδας \"Χρήστες &rarr; Προσθήκη Νέου\"."
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:192
+msgid "No sites found."
+msgstr "Δεν βρέθηκαν ιστότοποι."
 
-#: wp-admin/network/settings.php:171
-msgid "Banned Names"
-msgstr "Απαγορευμένα ονόματα"
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:44
+#: wp-admin/network/site-info.php:191
+msgid "Mature"
+msgstr "Ακατάλληλο"
 
-#: wp-admin/network/settings.php:175
-msgid "Users are not allowed to register these sites. Separate names by spaces."
-msgstr "Οι χρήστες δεν επιτρέπεται να κάνουν εγγραφή σε αυτές τις ιστοσελίδες. Διαχωρίζονται με κενά τα ονόματα. "
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:43
+#: wp-admin/network/site-info.php:189
+msgid "Deleted"
+msgstr "Διαγράφηκε"
 
-#: wp-admin/network/settings.php:181
-msgid "Limited Email Registrations"
-msgstr "Περιορισμένες εγγραφές Email"
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:42
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:544
+#: wp-admin/network/site-info.php:188
+msgctxt "site"
+msgid "Spam"
+msgstr "Ανεπιθύμητα"
 
-#: wp-admin/network/settings.php:188
-msgid "If you want to limit site registrations to certain domains. One domain per line."
-msgstr "Αν θέλετε να περιορίσετε τις εγγραφές μελών μόνο από συγκεκριμένα domains θέστε ένα domain σε κάθε γραμμή."
-
-#: wp-admin/network/settings.php:194
-msgid "Banned Email Domains"
-msgstr "Απαγορευμένοι τομείς email."
-
-#: wp-admin/network/settings.php:199
-msgid "If you want to ban domains from site registrations. One domain per line."
-msgstr "Αν θέλετε να απαγορέψετε τις εγγραφές σε ιστοσελίδες του δικτύου για συγκεκριμένα domains θέστε ένα domain σε κάθε γραμμή. "
-
-#: wp-admin/network/settings.php:205
-msgid "New Site Settings"
-msgstr "Ρυθμίσεις νέων ιστοτόπων"
-
-#: wp-admin/network/settings.php:209
-msgid "Welcome Email"
-msgstr "Μήνυμα καλωσορίσματος"
-
-#: wp-admin/network/settings.php:214
-msgid "The welcome email sent to new site owners."
-msgstr "Ηλεκτρονικό μήνυμα (email) καλωσορίσματος αποστέλλετε στους νέους ιδιοκτήτες του site."
-
-#: wp-admin/network/settings.php:219
-msgid "Welcome User Email"
-msgstr "Μήνυμα καλωσορίσματος μελών"
-
-#: wp-admin/network/settings.php:224
-msgid "The welcome email sent to new users."
-msgstr "To ηλεκ. μήνυμα καλωσορίσματος που αποστέλλεται στα νέα μέλη."
-
-#: wp-admin/network/settings.php:234
-msgid "The first post on a new site."
-msgstr "Πρώτο άρθρο νέου ιστοτόπου"
-
-#: wp-admin/network/settings.php:239
-msgid "First Page"
-msgstr "Πρώτη σελίδα"
-
-#: wp-admin/network/settings.php:244
-msgid "The first page on a new site."
-msgstr "Πρώτη σελίδα νέου ιστοτόπου"
-
-#: wp-admin/network/settings.php:249
-msgid "First Comment"
-msgstr "Επεξεργασία σχολίου"
-
-#: wp-admin/network/settings.php:254
-msgid "The first comment on a new site."
-msgstr "Πρώτο σχόλιο νέου ιστοτόπου"
-
-#: wp-admin/network/settings.php:259
-msgid "First Comment Author"
-msgstr "Συντάκτης πρώτου σχολίου"
-
-#: wp-admin/network/settings.php:263
-msgid "The author of the first comment on a new site."
-msgstr "Ο συντάκτης του πρώτου σχολίου σε νέο ιστότοπο."
-
-#: wp-admin/network/settings.php:268
-msgid "First Comment URL"
-msgstr "URL πρώτου σχολίου"
-
-#: wp-admin/network/settings.php:272
-msgid "The URL for the first comment on a new site."
-msgstr "Το URL για το πρώτο σχόλιο ενός νέου ιστότοπου."
+#: wp-admin/includes/class-wp-ms-sites-list-table.php:41
+#: wp-admin/network/site-info.php:187
+msgid "Archived"
+msgstr "Αρχειοθετημένα"

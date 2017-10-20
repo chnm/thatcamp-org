@@ -1,0 +1,718 @@
+# Translation of Stable (latest release) in Greek
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-05-12 18:04:39+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: views/config.php:30
+msgid "%s missed spam"
+msgid_plural "%s missed spam"
+msgstr[0] "%s χαμένο ανεπιθύμητο"
+msgstr[1] "%s χαμένα ανεπιθύμητα"
+
+#: views/config.php:32
+msgid "%s false positive"
+msgid_plural "%s false positives"
+msgstr[0] "%s εσφαλμένα θετικό"
+msgstr[1] "%s εσφαλμένα θετικά"
+
+#: views/start.php:59
+msgid "Use this option to use Akismet independently of your Jetpack connection."
+msgstr "Χρησιμοποιήστε αυτή την επιλογή για χρήση του Akismet ανεξάρτητα από τη σύνδεσή σας με το Jetpack."
+
+#: views/start.php:61
+msgid "Sign up with a different email address"
+msgstr "Εγγραφείτε με διαφορετική διεύθυνση ηλ. ταχυδρομείου."
+
+#: views/start.php:65
+msgid "Enter an API key"
+msgstr "Εισαγωγή API κλειδί"
+
+#: views/start.php:66
+msgid "Already have your key? Enter it here."
+msgstr "Έχετε ήδη κλειδί; Καταχωρήστε το εδώ."
+
+#: views/start.php:80
+msgid "Log in or sign up now."
+msgstr "Συνδεθείτε ή εγγραφείτε τώρα."
+
+#: views/start.php:19 views/start.php:34
+msgid "Akismet eliminates spam from your site."
+msgstr "Το Akismet εξαλείφει τα ανεπιθύμητα σχόλια από τον ιστότοπό σας."
+
+#: views/start.php:42 views/start.php:76
+msgid "Akismet eliminates spam from your site. To set up Akismet, select one of the options below."
+msgstr "Το Akismet εξαλείφει τα ανεπιθύμητα σχόλια από τον ιστότοπό σας. Για να ρυθμίσετε το Akismet, επιλέξτε μια από τις παρακάτω επιλογές."
+
+#: views/start.php:52
+msgid "Use this account"
+msgstr "Χρήση αυτού του λογαριασμού"
+
+#: views/start.php:58
+msgid "Sign up for a plan with a different email address"
+msgstr "Εγγραφείτε για ένα πακέτο με διαφορετική διεύθυνση ηλ. ταχυδρομείου"
+
+#: views/notice.php:90
+msgid "Akismet is now activated. Happy blogging!"
+msgstr "Το Akismet έχει ενεργοποιηθεί. Καλό blogging!"
+
+#: views/start.php:4
+msgid "Akismet eliminates spam from your site. Register below to get started."
+msgstr "Το Akismet εξαλείφει τα ανεπιθύμητα σχόλια από τον ιστότοπό σας. Εγγραφείτε παρακάτω για να ξεκινήσετε."
+
+#: views/start.php:15
+msgid "Register for Akismet"
+msgstr "Εγγραφείτε στο Akismet"
+
+#: views/notice.php:56
+msgid "Please update your payment information."
+msgstr "Παρακαλώ ενημερώστε τις πληροφορίες χρέωσης."
+
+#: views/notice.php:57
+msgid "We cannot process your payment. Please <a href=\"%s\" target=\"_blank\">update your payment details</a>."
+msgstr "Δεν μπορούμε προχωρήσουμε στην πληρωμή σας. Παρακαλούμε <a href=\"%s\" target=\"_blank\">ενημερώστε τα στοιχεία πληρωμής</a>."
+
+#: views/notice.php:61
+msgid "Your Akismet plan has been cancelled."
+msgstr "Το πακέτο σας Akismet ακυρώθηκε."
+
+#: views/notice.php:66
+msgid "Your Akismet subscription is suspended."
+msgstr "Η συνδρομή σας Akismet ανεστάλει."
+
+#: views/notice.php:81
+msgid "You don&#8217;t have an Akismet plan."
+msgstr "Δεν έχετε κάποιο πακέτο στο Akismet."
+
+#: class.akismet-admin.php:150 class.akismet-admin.php:188
+#: class.akismet-admin.php:201
+msgid "Akismet filters out spam, so you can focus on more important things."
+msgstr "Το Akismet φιλτράρει τα ανεπιθύμητα σχόλια, ώστε να επικεντρωθείτε σε πιο σημαντικά πράγματα."
+
+#: class.akismet-admin.php:900
+msgid "Akismet has saved you %s day!"
+msgid_plural "Akismet has saved you %s days!"
+msgstr[0] "Το Akismet σας γλίτωσε %s ημέρα! "
+msgstr[1] "Το Akismet σας γλίτωσε %s ημέρες!"
+
+#: class.akismet-admin.php:902
+msgid "Akismet has saved you %d hour!"
+msgid_plural "Akismet has saved you %d hours!"
+msgstr[0] "Το Akismet σας γλίτωσε %d ώρα!"
+msgstr[1] "Το Akismet σας γλίτωσε %d ώρες!"
+
+#: class.akismet-admin.php:904
+msgid "Akismet has saved you %d minute!"
+msgid_plural "Akismet has saved you %d minutes!"
+msgstr[0] "Το Akismet σας γλίτωσε %d λεπτό!"
+msgstr[1] "Το Akismet σας γλίτωσε %d λεπτά!"
+
+#: views/notice.php:11
+msgid "<strong>Almost done</strong> - activate Akismet and say goodbye to spam"
+msgstr "<strong>Σχεδόν ολοκληρώθηκε</strong> - ενεργοποιήστε Akismet και πείτε αντίο στα ανεπιθύμητα σχόλια"
+
+#: views/notice.php:110
+msgid "Your Pro subscription allows the use of Akismet on only one site. Please <a href=\"%s\" target=\"_blank\">purchase additional Pro subscriptions</a> or upgrade to an Enterprise subscription that allows the use of Akismet on unlimited sites."
+msgstr "Η Pro συνδρομή σας επιτρέπει τη χρήση του Akismet σε μόνο έναν ιστότοπο. Παρακαλούμε <a href=\"%s\" target=\"_blank\">αγοράστε επιπλέον Pro συνδρομές</a> ή αναβαθμίστε σε Εταιρική συνδρομή που επιτρέπει τη χρήση του Akismet σε απεριόριστο αριθμό ιστοτόπων."
+
+#: views/notice.php:117
+msgid "To continue your service, <a href=\"%s\" target=\"_blank\">upgrade to an Enterprise subscription</a>, which covers an unlimited number of sites."
+msgstr "Για να συνεχίσετε την υπηρεσία σας, <a href=\"%s\" target=\"_blank\">αναβαθμίστε σε Εταιρική συνδρομή</a>, η οποία καλύπτει απεριόριστο αριθμό ιστοτόπων."
+
+#: views/notice.php:83
+msgid "In 2012, Akismet began using subscription plans for all accounts (even free ones). A plan has not been assigned to your account, and we&#8217;d appreciate it if you&#8217;d <a href=\"%s\" target=\"_blank\">sign into your account</a> and choose one."
+msgstr "Από το 2012, το Akismet ξεκίνησε να χρησιμοποιεί συνδρομές για όλους τους λογαριασμούς (ακόμα και τους δωρεάν). Φαίνεται ότι δεν αντιστοιχεί κάποια συνδρομή στο λογαριασμό σας και θα το εκτιμούσαμε αν <a href=\"%s\" target=\"_blank\">συνδεόσασταν στο λογαριασμό σας</a> και επιλέγατε μία."
+
+#: views/notice.php:85 views/notice.php:112 views/notice.php:119
+msgid "Please <a href=\"%s\" target=\"_blank\">contact our support team</a> with any questions."
+msgstr "Παρακαλώ <a href=\"%s\" target=\"_blank\">επικοινωνήστε με την ομάδα υποστήριξη μας</a> με οποιαδήποτε ερώτηση."
+
+#: views/notice.php:98
+msgid "Your API key is no longer valid. Please enter a new key or contact support@akismet.com."
+msgstr "Το κλειδί API δεν πλέον έγκυρο.Παρακαλώ δώστε ένα νέο κλειδί ή επικοινωνήστε support@akismet.com"
+
+#: views/notice.php:102
+msgid "The API key you entered could not be verified."
+msgstr "Το κλειδί που δώσατε δεν μπορεί να επαληθευθεί."
+
+#: views/notice.php:103
+msgid "The connection to akismet.com could not be established. Please refer to <a href=\"%s\" target=\"_blank\">our guide about firewalls</a> and check your server configuration."
+msgstr "Η σύνδεση με το akismet.com δεν μπορεί να εδραιωθεί. Παρακαλώ δείτε την παραπομπομπή <a href=\"%s\" target=\"_blank\">ο οδηγός μας για τα firewalls</a> και ελέγξτε της ρυθμίσεις του διακομιστή σας."
+
+#: class.akismet-admin.php:568
+msgid "This comment was reported as not spam."
+msgstr "Το σχόλιο δεν αναφέρθηκε ως ανεπιθύμητο."
+
+#: views/config.php:72
+msgid "SSL Status"
+msgstr "Κατάσταση SSL"
+
+#: views/config.php:79 views/config.php:82
+msgid "Disabled."
+msgstr "Απενεργοποιημένο."
+
+#: views/config.php:82
+msgid "Your Web server cannot make SSL requests; contact your Web host and ask them to add support for SSL requests."
+msgstr "Ο διακομιστής δεν μπορεί να κάνει SSL αιτήματα, επικοινωνήστε με φιλοξενητή και ζητήστε να προσθέσει την υποστήριξη SSL αιτημάτων."
+
+#: views/config.php:88
+msgid "Temporarily disabled."
+msgstr "Προσωρινά απενεργοποιημένο."
+
+#: views/config.php:88
+msgid "Akismet encountered a problem with a previous SSL request and disabled it temporarily. It will begin using SSL for requests again shortly."
+msgstr "Το Akismet συντάντησε κάποιο πρόβλημα με κάποιο προηγούμενο αίτημα SSL και απενεργοποιήθηκε προσωρινά. Θα ξεκινήστε χρησιμοποιώντας αιτήματα SSL σύντομα."
+
+#: views/config.php:91
+msgid "Enabled."
+msgstr "Ενεργοποιημένο."
+
+#: views/config.php:91
+msgid "All systems functional."
+msgstr "Όλα τα συστήμα είναι λειτουργικά."
+
+#: class.akismet-admin.php:560
+msgid "This comment was reported as spam."
+msgstr "Το σχόλιο αναφέρθηκε ως ανεπιθύμητο."
+
+#: class.akismet-admin.php:122
+msgid "Remove this URL"
+msgstr "Αφαίρεση του URL"
+
+#. Author of the plugin/theme
+msgid "Automattic"
+msgstr "Automattic"
+
+#: views/strict.php:14
+msgid "Safe: always put spam in the Spam folder for review."
+msgstr "Ασφαλή: πάντα τοποθετησε τα ανεπιθύμητα στον φάκελο Ανεπιθυμήτων για έλεγχο."
+
+#: views/start.php:82
+msgid "Get your API key"
+msgstr "Αποκτήστε το API κλειδί σας"
+
+#: views/strict.php:8
+msgid "Strict: silently discard the worst and most pervasive spam."
+msgstr "Σφιχτή: σιωπιλά αφαιρούνται τα χειρότερα και τα πιο διαχυτικά ανεπιθύμητα."
+
+#: views/start.php:86
+msgid "Manually enter an API key"
+msgstr "Χειροκίνητα δώστε ένα API κλειδί"
+
+#: views/start.php:87
+msgid "If you already know your API key."
+msgstr "Εαν γνωρίζετε ήδη το API κλειδί σας."
+
+#: views/start.php:72 views/start.php:93
+msgid "Use this key"
+msgstr "Χρησιμοποίησε αυτό το κλειδί"
+
+#: views/start.php:79
+msgid "Activate Akismet"
+msgstr "Ενεργοποιήστε το Akismet"
+
+#: views/start.php:39
+msgid "Contact Akismet support"
+msgstr "Επικοινωνήστε με την υποστήριξη Akismet"
+
+#: views/start.php:38
+msgid "No worries! Get in touch and we&#8217;ll sort this out."
+msgstr "Όχι άγχος! Επικοινωνήστε και θα σας βοήθησουμε να τα καταφέρετε."
+
+#: views/start.php:37
+msgid "Your subscription for %s is suspended"
+msgstr "Η συνδρομή για %s έχει ανακληθεί."
+
+#: views/start.php:23
+msgid "Your subscription for %s is cancelled"
+msgstr "Η συνδρομή σας για %s είναι ακυρωμένη."
+
+#: views/start.php:30
+msgid "Reactivate Akismet"
+msgstr "Επανα-ενεργοποίηση Akismet"
+
+#: views/start.php:7 views/start.php:22 views/start.php:36 views/start.php:45
+msgid "Connected via Jetpack"
+msgstr "Συνδεδεμένο με το Jetpack"
+
+#: views/notice.php:115
+msgid "You&#8217;re using Akismet on far too many sites for your Pro subscription."
+msgstr "Χρησιμοποιείτε το Akismet σε πάρα πολλούς ιστότοπους για την Pro συνδρομή σας."
+
+#: views/notice.php:108
+msgid "You&#8217;re using your Akismet key on more sites than your Pro subscription allows."
+msgstr "Χρησιμοποιείτε το κλειδί Akismet σε περισσότερους ιστότοπους από όσους επιτρέπεται από την Pro συνδρομή επιτρέπει."
+
+#: views/notice.php:94
+msgid "The key you entered is invalid. Please double-check it."
+msgstr "Το κλειδί είναι άκυρο. Βεβαιωθείτε ότι δώσατε έγκυρο κλειδί."
+
+#: views/notice.php:76
+msgid "There is a problem with your API key."
+msgstr "Υπάρχει πρόβλημα με τον κλειδί σας."
+
+#: views/notice.php:72
+msgid "You can help us fight spam and upgrade your account by <a href=\"%s\" target=\"_blank\">contributing a token amount</a>."
+msgstr "Μπορείτε να βοηθήσετε στην μάχη ανεπιιθυμήτων και αναβαθμίστε τον λογαριασμό σας <a href=\"%s\" target=\"_blank\">συνεισφέροντας ένα συμβολικό ποσό</a>."
+
+#: views/notice.php:67 views/notice.php:77
+msgid "Please contact <a href=\"%s\" target=\"_blank\">Akismet support</a> for assistance."
+msgstr "Παρακαλώ επικοινωνήστε <a href=\"%s\" target=\"_blank\">Akismet υποστήριξη</a> για βοήθεια."
+
+#: views/notice.php:62
+msgid "Please visit your <a href=\"%s\" target=\"_blank\">Akismet account page</a> to reactivate your subscription."
+msgstr "Παρακαλώ επισκεφθείτε στην <a href=\"%s\" target=\"_blank\">Akismet σελίδα λογαριασμού</a> για επαναενεργοποίηση της συνδρομής σας. "
+
+#: views/notice.php:52
+msgid "Your firewall may be blocking Akismet. Please contact your host and refer to <a href=\"%s\" target=\"_blank\">our guide about firewalls</a>."
+msgstr "Το firewall σας μπορεί να μας μπλοκάρει. Παρακαλούμε επικοινωνήστε με τον φιλοξενητή σας και αναφέρετε τον <a href=\"%s\" target=\"_blank\">τον οδηγό μας για τα firewalls</a>."
+
+#: views/notice.php:51
+msgid "Akismet can&#8217;t connect to your site."
+msgstr "Το Akismet δεν μπορεί να συνδεθεί με τον ιστότοπο σας."
+
+#: views/notice.php:46
+msgid "Network functions are disabled."
+msgstr "Οι λειτουργίες δικτύου είναι απενεργοποιημένες."
+
+#: views/notice.php:47
+msgid "Your web host or server administrator has disabled PHP&#8217;s <code>gethostbynamel</code> function.  <strong>Akismet cannot work correctly until this is fixed.</strong>  Please contact your web host or firewall administrator and give them <a href=\"%s\" target=\"_blank\">this information about Akismet&#8217;s system requirements</a>."
+msgstr "Ο διαχειριστής του διακομιστή σας έχει απενεργοποιήσει τις PHP&#8217;s <code>gethostbynamel</code> συναρτήσεις. <strong>Το Akismet δεν μπορεί να δουλέψει σωστά μέχρι να διορθωθεί αυτό.</strong> Παρακαλούμε επικοινωνήστε με τον διαχειριστή του διακομιστή ή του τοίχους προστασίας και δώστε τους <a href=\"%s\" target=\"_blank\">αυτή την πληροφορία για τις απαιτήσεις του Akismet</a>.   "
+
+#. translators: the placeholder is a clickable URL that leads to more
+#. information regarding an error code.
+#: views/notice.php:32
+msgid "For more information: %s"
+msgstr "Για περισσότερες πληροφορίες: %s"
+
+#: views/notice.php:27
+msgid "Akismet Error Code: %s"
+msgstr "Akismet Κωδικός σφάλματος: %s"
+
+#: views/notice.php:24
+msgid "Akismet %s requires WordPress 3.0 or higher."
+msgstr "Το Akismet %s προαπαιτεί WordPress 3.0 ή νεότερο."
+
+#: views/notice.php:18
+msgid "Some comments have not yet been checked for spam by Akismet. They have been temporarily held for moderation and will automatically be rechecked later."
+msgstr "Κάποια σχόλια δεν έχουν ακόμη ελέγχθεί για ανεπιθύμητα από Akismet. Έχουν κρατηθεί προσωρινά και θα επανελέγχθουν αυτόματα αργότερα."
+
+#: views/notice.php:17
+msgid "Akismet has detected a problem."
+msgstr "Το Akismet εντόπισε πρόβλημα."
+
+#: views/notice.php:8
+msgid "Activate your Akismet account"
+msgstr "Ενεργοποιήστε τον λογαριασμό σας στο Akismet"
+
+#: views/config.php:204
+msgid "Change"
+msgstr "Αλλαγή"
+
+#: views/config.php:204
+msgid "Upgrade"
+msgstr "Αναβάθμιση"
+
+#: views/config.php:186
+msgid "Active"
+msgstr "Ενεργή"
+
+#: views/config.php:192
+msgid "Next Billing Date"
+msgstr "Επόμενη ημερομηνία χρέωσης"
+
+#: views/config.php:182
+msgid "Missing"
+msgstr "Λείπει"
+
+#: views/config.php:184
+msgid "No Subscription Found"
+msgstr "Δεν βρέθηκε συνδρομή"
+
+#: views/config.php:180
+msgid "Suspended"
+msgstr "Ανεστάλη"
+
+#: views/config.php:142
+msgid "Disconnect this account"
+msgstr "Αποσύνδεση του λογαριασμού"
+
+#: views/config.php:148
+msgid "Save Changes"
+msgstr "Αποθήκευση αλλαγών"
+
+#: views/config.php:178
+msgid "Cancelled"
+msgstr "Ακυρώθηκε"
+
+#: views/config.php:117
+msgid "Note:"
+msgstr "Σημείωση:"
+
+#: views/config.php:123
+msgid "Spam in the <a href=\"%1$s\">spam folder</a> older than 1 day is deleted automatically."
+msgid_plural "Spam in the <a href=\"%1$s\">spam folder</a> older than %2$d days is deleted automatically."
+msgstr[0] "Σπαμ παλαιότερα απο 1 ημέρα τα οποία βρίσκονται στον <a href=\"%1$s\">φάκελο σπαμ</a> διαγράφονται αυτόματα"
+msgstr[1] "Σπαμ παλαιότερα απο %2$d ημέρες τα οποία βρίσκονται στον <a href=\"%1$s\">φάκελο σπαμ</a> διαγράφονται αυτόματα"
+
+#: views/config.php:115
+msgid "Always put spam in the Spam folder for review."
+msgstr "Πάντα βάζε τα ανεπθύμητα σχόλια στο φάκελο ανεπιθυμήτων για έλεγχο."
+
+#: views/config.php:114
+msgid "Silently discard the worst and most pervasive spam so I never see it."
+msgstr "Σιωπηλά αφαίρεσε τα χειρότερα και τα πιο έντονα ανεπιθύμητα σχόλια, ώστε να μην τα βλέπω ποτέ."
+
+#: views/config.php:113 views/strict.php:3
+msgid "Akismet anti-spam strictness"
+msgstr "Αυστηρότητα στα ανεπιθύμητα του Akismet"
+
+#: views/config.php:105
+msgid "Show the number of approved comments beside each comment author"
+msgstr "Εμφάνιζε τον αριθμό των εγκεκριμένων σχολίων δίπλα σε κάθε συντάκτη σχολίων"
+
+#: views/config.php:105
+msgid "Show approved comments"
+msgstr "Προβολή εγκεκριμένων σχολίων"
+
+#: views/config.php:28
+msgid "Accuracy"
+msgstr "Ακρίβεια"
+
+#: views/config.php:23
+msgid "All time"
+msgstr "Όλο το διάστημα"
+
+#: views/config.php:12
+msgid "Summaries"
+msgstr "Σύνολα"
+
+#: views/config.php:18
+msgid "Past six months"
+msgstr "Τους τελευταίους έξι μήνες"
+
+#: views/config.php:20 views/config.php:25
+msgid "Spam blocked"
+msgid_plural "Spam blocked"
+msgstr[0] "Ανεπιθύμητο μπλοκαρίστηκε"
+msgstr[1] ""
+
+#: class.akismet.php:1096
+msgid "Akismet %s requires WordPress %s or higher."
+msgstr "Το Akismet %s απαιτεί WordPress %s ή νεώτερο."
+
+#: class.akismet.php:1096 views/notice.php:24
+msgid "Please <a href=\"%1$s\">upgrade WordPress</a> to a current version, or <a href=\"%2$s\">downgrade to version 2.4 of the Akismet plugin</a>."
+msgstr "Παρακαλώ <a href=\"%1$s\">αναβαθμίστε το WordPress</a> στην τρέχουσα έκδοση, ή <a href=\"%2$s\">υποβαθμίστε στην έκδοση 2.4 του Akismet πρόσθετου</a>."
+
+#: class.akismet-admin.php:575
+msgid "Akismet cleared this comment during an automatic retry."
+msgstr "Το Akismet καθάρισε το σχόλιο αυτό κατά τον αυτόματο επανέλεγχο."
+
+#: class.akismet-admin.php:572
+msgid "Akismet caught this comment as spam during an automatic retry."
+msgstr "Το Akismet σήμανε το σχόλιο ως ανεπιθύμητο κατά τον αυτόματο επανέλεγχο."
+
+#: class.akismet-admin.php:565
+msgid "%s reported this comment as not spam."
+msgstr "%s αναφέρθηκε αυτό το σχόλιο ως ανεπιθύμητο."
+
+#: class.akismet-admin.php:557
+msgid "%s reported this comment as spam."
+msgstr "%s ανέφερε το σχόλιο ως ανεπιθύμητο."
+
+#: class.akismet-admin.php:598
+msgid "%1$s changed the comment status to %2$s."
+msgstr "%1$s άλλαξε την κατάσταση σχολίων σε %2$s"
+
+#: class.akismet-admin.php:579
+msgid "Akismet was unable to check this comment (response: %s) but will automatically retry later."
+msgstr "Το Akismet δεν μπόρεσε να ελέγξει αυτό το σχόλιο (απάντηση: %s) αλλά θα προσπαθήσει ξανά αργότερα αυτόματα."
+
+#: class.akismet-admin.php:553
+msgid "Comment was caught by wp_blacklist_check."
+msgstr "Το σχόλια πιάστηκε από wp_blacklist_check."
+
+#: class.akismet-admin.php:550
+msgid "Akismet cleared this comment."
+msgstr "Το Akismet καθάρισε το σχόλιο αυτό."
+
+#: class.akismet-admin.php:592
+msgid "Comment status was changed to %s"
+msgstr "Νέα κατάσταση σχολίου: %s."
+
+#: class.akismet-admin.php:544
+msgid "Akismet caught this comment as spam."
+msgstr "Το Akismet έπιασε αυτό το σχόλιο ως ανεπιθύμητο."
+
+#: class.akismet-widget.php:98
+msgid "<strong class=\"count\">%1$s spam</strong> blocked by <strong>Akismet</strong>"
+msgid_plural "<strong class=\"count\">%1$s spam</strong> blocked by <strong>Akismet</strong>"
+msgstr[0] "<strong class=\"count\">%1$s ανεπιθύμητο</strong> έχει φραγεί από το <strong>Akismet</strong>"
+msgstr[1] "<strong class=\"count\">%1$s ανεπιθύμητα</strong> έχει φραγεί από το <strong>Akismet</strong>"
+
+#: class.akismet-widget.php:69
+msgid "Spam Blocked"
+msgstr "Ανεπιθύμητα"
+
+#: class.akismet-widget.php:74
+msgid "Title:"
+msgstr "Τίτλος:"
+
+#: class.akismet-widget.php:13
+msgid "Display the number of spam comments Akismet has caught"
+msgstr "Προβολή αριθμού ανεπιθύμητων σχολίων που έχει συλλάβει το Akismet"
+
+#: class.akismet-widget.php:12
+msgid "Akismet Widget"
+msgstr "Εφαρμογίδιο Akismet"
+
+#: class.akismet-admin.php:897
+msgid "Cleaning up spam takes time."
+msgstr "Ο καθαρισμός από τα ενοχλητικά σχόλια χρειάζεται χρόνο."
+
+#: class.akismet-admin.php:606
+msgid "%s ago"
+msgstr "%s πριν"
+
+#: class.akismet-admin.php:802
+msgid "Please check your <a href=\"%s\">Akismet configuration</a> and contact your web host if problems persist."
+msgstr "Παρακαλώ ελέγξτε τις <a href=\"%s\">ρυθμίσεις Akismet</a> και επικοινωνήστε με τον πάροχο σας αν το πρόβλημα παραμένει."
+
+#: class.akismet-admin.php:496 class.akismet-admin.php:504
+msgid "View comment history"
+msgstr "Ιστορικό σχολίων"
+
+#: class.akismet-admin.php:496
+msgid "History"
+msgstr "Ιστορικό"
+
+#: class.akismet-admin.php:512
+msgid "%s approved"
+msgid_plural "%s approved"
+msgstr[0] "%s εγκεκριμένο"
+msgstr[1] "%s εγκεκριμένα"
+
+#: class.akismet-admin.php:484
+msgid "Un-spammed by %s"
+msgstr "Αποσημάνθηκε από %s"
+
+#: class.akismet-admin.php:478
+msgid "Cleared by Akismet"
+msgstr "Εκκαθαρίστηκαν από το Akismet"
+
+#: class.akismet-admin.php:482
+msgid "Flagged as spam by %s"
+msgstr "Σημάνθηκε ανεπιθύμητο από %s."
+
+#: class.akismet-admin.php:472
+msgid "Awaiting spam check"
+msgstr "Εκκρεμεί έλεγχος ανεπιθύμητων"
+
+#: class.akismet-admin.php:476
+msgid "Flagged as spam by Akismet"
+msgstr "Ανεπιθύμητο κατά το Akismet"
+
+#: class.akismet-admin.php:584
+msgid "Akismet was unable to recheck this comment (response: %s)."
+msgstr "Το Akismet δεν μπόρεσε να επανελέγξει αυτό το σχόλιο (απάντηση: %s)."
+
+#: class.akismet-admin.php:352
+msgid "Check for Spam"
+msgstr "Έλεγχος για ανεπιθύμητα"
+
+#: class.akismet-admin.php:541
+msgid "Akismet re-checked and caught this comment as spam."
+msgstr "Το Akismet επανέλεγξε και καταχώρησε αυτό το σχόλιο ως spam."
+
+#: class.akismet-admin.php:547
+msgid "Akismet re-checked and cleared this comment."
+msgstr "Το Akismet επανέλεγξε και καθάρισε το σχόλιο."
+
+#: class.akismet-admin.php:332
+msgid "There&#8217;s nothing in your <a href='%s'>spam queue</a> at the moment."
+msgstr "Δεν υπάρχουν τίποτα στην <a href='%s'>σειρά ανεπιθυμήτων</a> προς στιγμή."
+
+#: class.akismet-admin.php:326
+msgid "There&#8217;s <a href=\"%2$s\">%1$s comment</a> in your spam queue right now."
+msgid_plural "There are <a href=\"%2$s\">%1$s comments</a> in your spam queue right now."
+msgstr[0] "Υπάρχει <a href=\"%2$s\">%1$s σχόλιο</a> στην σειρά ανεπιθυμήτων προς στιγμή."
+msgstr[1] "Υπάρχου <a href=\"%2$s\">%1$s σχόλια</a> στην σειρά ανεπιθυμήτων προς στιγμή."
+
+#: class.akismet-admin.php:320
+msgid "<a href=\"%s\">Akismet</a> blocks spam from getting to your blog. "
+msgstr "Το <a href=\"%s\">Akismet</a> σταματά τα ανεπιθύμητα σχόλια από το ιστολόγιο σας."
+
+#: class.akismet-admin.php:314
+msgid "<a href=\"%1$s\">Akismet</a> has protected your site from %2$s spam comment already. "
+msgid_plural "<a href=\"%1$s\">Akismet</a> has protected your site from %2$s spam comments already. "
+msgstr[0] "Το <a href=\"%1$s\">Akismet</a> έχει ανακόψει %2$s ανεπιθύμητο σχόλιο."
+msgstr[1] "Το <a href=\"%1$s\">Akismet</a> έχει ανακόψει %2$s ανεπιθύμητα σχόλια."
+
+#: class.akismet-admin.php:304
+msgid "<a href=\"%1$s\">Akismet</a> has protected your site from <a href=\"%2$s\">%3$s spam comment</a>."
+msgid_plural "<a href=\"%1$s\">Akismet</a> has protected your site from <a href=\"%2$s\">%3$s spam comments</a>."
+msgstr[0] "<a href=\"%1$s\">Akismet</a> έχει προστατέψει τον ιστότοπο σας από <a href=\"%2$s\">%3$s ενοχλητικό σχόλιο</a>."
+msgstr[1] "<a href=\"%1$s\">Akismet</a> έχει προστατέψει τον ιστότοπο σας από <a href=\"%2$s\">%3$s ενοχλητικά σχόλια</a>."
+
+#: class.akismet-admin.php:302
+msgctxt "comments"
+msgid "Spam"
+msgstr "Ανεπιθύμητα"
+
+#: class.akismet-admin.php:241
+msgid "Cheatin&#8217; uh?"
+msgstr "Κλέβεις ε;"
+
+#: class.akismet-admin.php:235
+msgid "Akismet Support"
+msgstr "Υποστήριξη Akismet"
+
+#: class.akismet-admin.php:233
+msgid "For more information:"
+msgstr "Για περισσότερα:"
+
+#: class.akismet-admin.php:234
+msgid "Akismet FAQ"
+msgstr "Συχνές Ερωτήσεις Akismet"
+
+#: class.akismet-admin.php:224
+msgid "The Akismet subscription plan"
+msgstr "Πλάνο συνδρομής του Akismet"
+
+#: class.akismet-admin.php:225 views/config.php:173
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: class.akismet-admin.php:225
+msgid "The subscription status - active, cancelled or suspended"
+msgstr "Η κατάσταση συνδρομής - ενεργή, ακυρωμένη ή σε αναστολή"
+
+#: class.akismet-admin.php:224 views/config.php:166
+msgid "Subscription Type"
+msgstr "Τύπος συνδρομής"
+
+#: class.akismet-admin.php:221 views/config.php:161
+msgid "Account"
+msgstr "Λογαριασμός"
+
+#: class.akismet-admin.php:214 views/config.php:110
+msgid "Strictness"
+msgstr "Αυστηρότητα"
+
+#: class.akismet-admin.php:214
+msgid "Choose to either discard the worst spam automatically or to always put all spam in spam folder."
+msgstr "Επιλέξτε να αφαιρούνται τα χειρότερα ανεπιθύμητα σχόλια αυτόματα ή πάντα να τοποθετούνται στο φάκελο ανεπιθυμήτων."
+
+#: class.akismet-admin.php:213
+msgid "Show the number of approved comments beside each comment author in the comments list page."
+msgstr "Εμφάνιζε τον αριθμό τον εγκεκριμένων σχολίων δίπλα σε κάθε συντάκτη στην σελίδα με την σχολίων."
+
+#: class.akismet-admin.php:213 views/config.php:101
+msgid "Comments"
+msgstr "Σχόλια"
+
+#: class.akismet-admin.php:212
+msgid "Enter/remove an API key."
+msgstr "Δώστε αφαιρέστε ένα API κλειδί."
+
+#: class.akismet-admin.php:212 views/config.php:63
+msgid "API Key"
+msgstr "Κλειδί API"
+
+#: class.akismet-admin.php:202
+msgid "On this page, you are able to enter/remove an API key, view account information and view spam stats."
+msgstr "Στην σελίδα, μπορείτε δώσετε/αφαιρέσετε κλείδι API, να δείτε τις πληροφορίες του λογαριασμού και τα στατιστικά σας."
+
+#: class.akismet-admin.php:200 class.akismet-admin.php:211
+#: class.akismet-admin.php:223
+msgid "Akismet Configuration"
+msgstr "Ρυθμίσεις Akismet"
+
+#: class.akismet-admin.php:189
+msgid "On this page, you are able to view stats on spam filtered on your site."
+msgstr "Σε αυτή την σελίδα, μπορείτε να δείτε τα στατιστικά των ανεπιθυμήτων που φιλτραρίστικαν στον ιστότοπο σας."
+
+#: class.akismet-admin.php:187 views/stats.php:2
+msgid "Akismet Stats"
+msgstr "Στατιστικά Akismet"
+
+#: class.akismet-admin.php:175
+msgid "Click the Use this Key button."
+msgstr "Κλικ εδώ να χρησιμοποιήστε το κλειδί πλήκτρο."
+
+#: class.akismet-admin.php:174
+msgid "Copy and paste the API key into the text field."
+msgstr "Αντιγραφή και επικόλληση το κλειδί API στο πεδίο κειμένου."
+
+#: class.akismet-admin.php:172
+msgid "If you already have an API key"
+msgstr "Εάν έχετε ήδη ένα API κλειδί"
+
+#: class.akismet-admin.php:162
+msgid "Sign up for an account on %s to get an API Key."
+msgstr "Εγγραφείτε για έναν λογαριασμό στο %s να αποκτήστε ένα API κλειδί."
+
+#: class.akismet-admin.php:169
+msgid "Enter an API Key"
+msgstr "Δώστε ένα API κλειδί"
+
+#: class.akismet-admin.php:161
+msgid "You need to enter an API key to activate the Akismet service on your site."
+msgstr "Θα πρέπει να δώσετε ένα API κλειδί για να ενεργοποιήσετε την υπηρεσία στον ιστότοπο σας."
+
+#: class.akismet-admin.php:158
+msgid "New to Akismet"
+msgstr "Νέος στο Akismet"
+
+#: class.akismet-admin.php:151
+msgid "On this page, you are able to set up the Akismet plugin."
+msgstr "Σε αυτή τη σελίδα, μπορείτε να ρυθμίσετε το πρόσθετο Akismet."
+
+#: class.akismet-admin.php:149 class.akismet-admin.php:160
+#: class.akismet-admin.php:171
+msgid "Akismet Setup"
+msgstr "Ρύθμιση Akismet"
+
+#: class.akismet-admin.php:147 class.akismet-admin.php:185
+#: class.akismet-admin.php:198
+msgid "Overview"
+msgstr "Επισκόπιση"
+
+#: class.akismet-admin.php:126
+msgid "Re-adding..."
+msgstr "Επαναπροσθήκη"
+
+#: class.akismet-admin.php:86 class.akismet-admin.php:209
+#: class.akismet-admin.php:618 views/config.php:56 views/stats.php:2
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#. #-#-#-#-#  tmp-akismet.pot (Akismet 3.1.11)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: class.akismet-admin.php:93 class.akismet-admin.php:95
+#: class.akismet-admin.php:859 views/config.php:3
+msgid "Akismet"
+msgstr "Akismet"
+
+#: class.akismet-admin.php:123
+msgid "Removing..."
+msgstr "Αφαιρείται..."
+
+#: class.akismet-admin.php:124
+msgid "URL removed"
+msgstr "To URL αφαιρέθηκε"
+
+#: class.akismet-admin.php:125
+msgid "(undo)"
+msgstr "(αναίρεση)"
+
+#: class.akismet-admin.php:70
+msgid "Comment History"
+msgstr "Ιστορικό σχολίων"

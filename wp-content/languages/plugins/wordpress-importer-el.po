@@ -1,0 +1,209 @@
+# Translation of Stable (latest release) in Greek
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-10-09 09:30:43+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#. Author of the plugin/theme
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+#: wordpress-importer.php:1142
+msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
+msgstr "Επιλέξτε ένα αρχείο WXR (xml) και πατήστε Φόρτωση αρχείου και εισαγωγή."
+
+#: wordpress-importer.php:311
+msgid "as a new user:"
+msgstr "Ως νέος χρήστης"
+
+#: wordpress-importer.php:133
+msgid "The file does not exist, please try again."
+msgstr "Το αρχεί δεν υπάρχει, παρακαλώ προσπαθήστε ξανά."
+
+#: wordpress-importer.php:308
+msgid "or create new user with login name:"
+msgstr "ή δημιουργήστε νέο χρήστη με ψευδώνυμο:"
+
+#: wordpress-importer.php:321
+msgid "or assign posts to an existing user:"
+msgstr "ή ορίστε τις δημοσιεύσεις σε έναν υπάρχοντα χρήστη:"
+
+#: wordpress-importer.php:516 wordpress-importer.php:738
+msgid "Failed to import %s %s"
+msgstr "Αποτυχία εισαγωγής %s %s"
+
+#: wordpress-importer.php:1014
+msgid "Zero size file downloaded"
+msgstr "Μεταφορτώθηκε αρχείο μηδενικού μεγέθους"
+
+#: wordpress-importer.php:238
+msgid "Failed to import author %s. Their posts will be attributed to the current user."
+msgstr "Απέτυχε η εισαγωγή του συντάκτη %s. Τα άρθρα του θα αποδωθούν στον τρέχοντα χρήστη."
+
+#: wordpress-importer.php:424
+msgid "Failed to import category %s"
+msgstr "Αποτυχία εισαγωγής κατηγορίας %s"
+
+#: wordpress-importer.php:467
+msgid "Failed to import post tag %s"
+msgstr "Αποτυχία εισαγωγής ετικέτας %s "
+
+#: wordpress-importer.php:1002
+msgid "Remote server returned error response %1$d %2$s"
+msgstr "Ο απομακρυσμένος διακομιστής απάντησε με το σφάλμα %1$d %2$s"
+
+#: wordpress-importer.php:605
+msgid "Failed to import &#8220;%s&#8221;: Invalid post type %s"
+msgstr "Απέτυχε να εισαχθεί &#8220;%s&#8221;: Εσφαλμένος τύπος άρθρου %s"
+
+#: wordpress-importer.php:642
+msgid "%s &#8220;%s&#8221; already exists."
+msgstr "%s &#8220;%s&#8221; υπάρχει ήδη."
+
+#: wordpress-importer.php:869
+msgid "Menu item skipped due to missing menu slug"
+msgstr "Το αντικείμενο του μενού παραλήφθηκε επειδή έλειπε η συντομογραφία του"
+
+#: wordpress-importer.php:704
+msgid "Failed to import %s &#8220;%s&#8221;"
+msgstr "Απέτειχε να εισαχθεί %s &#8220;%s&#8221;"
+
+#: wordpress-importer.php:319
+msgid "assign posts to an existing user:"
+msgstr "αντιστοίχιση των άρθρων σε μέλος:"
+
+#: wordpress-importer.php:265
+msgid "To make it easier for you to edit and save the imported content, you may want to reassign the author of the imported item to an existing user of this site. For example, you may want to import all the entries as <code>admin</code>s entries."
+msgstr "Για να μπορείτε να επεξεργαστείτε και να αποθηκεύσετε το εισαχθέν περιεχόμενο ευκολότερα, θα μπορούσατε να θέσετε ως συγγραφέα έναν υπάρχοντα χρήστη από αυτό τον ιστότοπο. Για παραδειγμα, θα μπορούσατε να εισάγετε όλες τις εγγραφές ως <code>admin</code> (διαχειριστής)."
+
+#: wordpress-importer.php:267
+msgid "If a new user is created by WordPress, a new password will be randomly generated and the new user&#8217;s role will be set as %s. Manually changing the new user&#8217;s details will be necessary."
+msgstr "Όταν ένας νέος χρήστης δημιουργείτε από το WordPress, τότε ένας νέος τυχαίος κωδικός θα παραχθεί αυτόματα για αυτόν και ο ρόλος του θα τεθεί ως %s. Θα είναι απαραίτητο να επεξεργαστείτε τις λεπτομέρειες του χρήστη στη συνέχεια."
+
+#: wordpress-importer.php:876
+msgid "Menu item skipped due to invalid menu slug: %s"
+msgstr "Η εγγραφή μενού προσπεράστηκε εξαιτίας του άκυρου σύντομου ονόματος: %s"
+
+#: wordpress-importer.php:939
+msgid "Fetching attachments is not enabled"
+msgstr "Η μεταφορά αρχείων που έχουν επισυναφθεί σε άρθρα δεν είναι ενεργοποιημένη"
+
+#: wordpress-importer.php:177
+msgid "Remember to update the passwords and roles of imported users."
+msgstr "Μην ξεχάσετε να ανανεώσετε τους κωδικούς και τους ρόλους των εισαχθέντων χρηστών."
+
+#: parsers.php:84 parsers.php:89 parsers.php:306 parsers.php:495
+msgid "This does not appear to be a WXR file, missing/invalid WXR version number"
+msgstr "Αυτό μοιάζει σαν ένα λάθος WXR αρχείο, λείπει ή είναι μη έγκυρη ο αριθμός έκδοσής του"
+
+#: parsers.php:43
+msgid "Details are shown above. The importer will now try again with a different parser..."
+msgstr "Οι λεπτομέρειες φαίνονται από πάνω. Ο Εισαγωγέας θα προσπαθήσει ξανά αλλά με ένα διαφορετικό αναλυτή."
+
+#: wordpress-importer.php:1126
+msgid "A new version of this importer is available. Please update to version %s to ensure compatibility with newer export files."
+msgstr "Μια νέα έκδοση του εισαγωγέα αυτού είναι διαθέσιμη. Παρακαλούμε αναβαθμίστε στην έκδοση %s για να βεβαιωθείτε ότι είστε συμβατοί με τα νεότερα αρχεία εξαγωγής περιεχομένου."
+
+#: parsers.php:42 parsers.php:72 parsers.php:80
+msgid "There was an error when reading this WXR file"
+msgstr "Ένα σφάλμα συνέβη κατά την ανάγνωση αυτού του αρχείου WXR"
+
+#: wordpress-importer.php:372
+msgid "Failed to create new user for %s. Their posts will be attributed to the current user."
+msgstr "Δεν ήταν δυνατό να δημιουργηθεί ένας νέος χρήστης %s. Τα άρθρα του θα μεταφερθούν στον τρέχοντα χρήστη."
+
+#: wordpress-importer.php:213
+msgid "This WXR file (version %s) may not be supported by this version of the importer. Please consider updating."
+msgstr "Αυτό το WXR (έκδοση %s) αρχείο είναι δυνατόν να μην είναι συμβατό με αυτή την έκδοση του Εισαγωγέα. Παρακαλούμε σκεφθείτε την πιθανότητα να κάνετε πρώτα μια αναβάθμιση."
+
+#. Description of the plugin/theme
+msgid "Import posts, pages, comments, custom fields, categories, tags and more from a WordPress export file."
+msgstr "Εισάγωγή άρθρών, σχολίων, ειδικών πεδίων, κατηγορίες, ετικέτες και πολλά άλλα από ένα αρχείο εξαγωγής περιεχομένου WordPress τύπου WXR."
+
+#: wordpress-importer.php:284
+msgid "Submit"
+msgstr "Υποβολή"
+
+#: wordpress-importer.php:264
+msgid "Assign Authors"
+msgstr "Ορισμός συντακτών"
+
+#: wordpress-importer.php:1119
+msgid "Import WordPress"
+msgstr "Εισαγωγή WordPress"
+
+#: wordpress-importer.php:297
+msgid "Import author:"
+msgstr "Εισαγωγή συντάκτη"
+
+#: wordpress-importer.php:277
+msgid "Import Attachments"
+msgstr "Εισαγωγή συνημμένων"
+
+#: wordpress-importer.php:280
+msgid "Download and import file attachments"
+msgstr "Μεταφόρτωση και εισαγωγή συνημμένων αρχείων"
+
+#: wordpress-importer.php:176
+msgid "All done."
+msgstr "Είστε έτοιμοι."
+
+#: wordpress-importer.php:176
+msgid "Have fun!"
+msgstr "Καλή διασκέδαση!"
+
+#: wordpress-importer.php:952
+msgid "Invalid file type"
+msgstr "Μη έγκυρος τύπος αρχείου"
+
+#: wordpress-importer.php:996
+msgid "Remote server did not respond"
+msgstr "Ο διακομιστής δεν αποκρίθηκε"
+
+#: wordpress-importer.php:1020
+msgid "Remote file is too large, limit is %s"
+msgstr "Το αρχείο είναι μεγάλο.  Το όριο είναι %s"
+
+#: wordpress-importer.php:132 wordpress-importer.php:141
+#: wordpress-importer.php:192 wordpress-importer.php:196
+#: wordpress-importer.php:205
+msgid "Sorry, there has been an error."
+msgstr "Συγγνώμη, παρουσιάστηκε σφάλμα."
+
+#: wordpress-importer.php:1216
+msgid "Import <strong>posts, pages, comments, custom fields, categories, and tags</strong> from a WordPress export file."
+msgstr "Εισάγετε <strong>άρθρα</strong>, <strong>σχόλια</strong>, <strong>προσαρμοσμένα πεδία</strong>, <strong>σελίδες</strong> και <strong>κατηγορίες</strong> από αρχείο εξαγωγής WordPress"
+
+#: wordpress-importer.php:322
+msgid "- Select -"
+msgstr "– Επιλέξτε –"
+
+#. Plugin Name of the plugin/theme
+msgid "WordPress Importer"
+msgstr "Εισαγωγέας WordPress"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/wordpress-importer/"
+msgstr "http://wordpress.org/extend/plugins/wordpress-importer/"
+
+#: wordpress-importer.php:1141
+msgid "Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import the posts, pages, comments, custom fields, categories, and tags into this site."
+msgstr "Καλώς ήρθατε!  Μεταφορτώστε ένα αρχείο WXR (WordPress eXtended RSS) για να εισάγετε άρθρα, σελίδα, σχόλια, πεδία, κατηγορίες και κατηγορίες από έναν άλλο ιστότοπο."
+
+#: wordpress-importer.php:1009
+msgid "Remote file is incorrect size"
+msgstr "Λανθασμένο μέγεθος του απομακρυσμένου αρχείου"
+
+#: wordpress-importer.php:197
+msgid "The export file could not be found at <code>%s</code>. It is likely that this was caused by a permissions problem."
+msgstr "Το αρχείο εξαγωγής δεν μπόρεσε να βρεθεί στο <code>%s</code>. Είναι πιθανό ότι αυτό προκλήθηκε από πρόβλημα με τα δικαιώματα."
