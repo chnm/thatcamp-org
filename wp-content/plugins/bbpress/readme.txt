@@ -1,11 +1,11 @@
 === bbPress ===
 Contributors: matt, johnjamesjacoby, jmdodd, netweb
 Tags: forums, discussion, support, theme, akismet, multisite
-Requires at least: 3.6
-Tested up to: 4.5
-Stable tag: 2.5.9
+Requires at least: 4.7
+Tested up to: 4.7
+Stable tag: 2.5.14
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 bbPress is forum software, made the WordPress way.
 
@@ -39,6 +39,25 @@ We're keeping things as small and light as possible while still allowing for gre
 2. Adjust the CSS of your theme as needed, to make everything pretty.
 
 == Changelog ==
+
+= 2.5.14 =
+* Improved support for PHP 7.1 and higher
+* Improved pagination for non-public post statuses
+* Fix converter row-limit boundaries
+
+= 2.5.13 =
+* Improved support for `post_parent__in` type queries
+
+= 2.5.12 =
+* Fix role initialization bug
+
+= 2.5.11 =
+* Improved support for WordPress 4.7
+* Improved localization of role names
+* Increase minimum WordPress version to 4.2
+
+= 2.5.10 =
+* Improved user display-name rendering
 
 = 2.5.9 =
 * Improved user mentions
@@ -157,7 +176,7 @@ We're keeping things as small and light as possible while still allowing for gre
 * Improved user roles and capabilities
 * Improved theme compatibility
 * Improved BuddyPress Group Forums integration
-* Improved forums convertion tool
+* Improved forums conversion tool
 * Improved forums tools and settings
 * Improved multisite support
 * Added What's New and Credits pages

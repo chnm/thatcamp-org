@@ -5,7 +5,7 @@
  *
  * bbPress is forum software with a twist from the creators of WordPress.
  *
- * $Id: bbpress.php 6018 2016-04-29 17:12:13Z johnjamesjacoby $
+ * $Id: bbpress.php 6686 2017-09-09 15:04:06Z johnjamesjacoby $
  *
  * @package bbPress
  * @subpackage Main
@@ -13,11 +13,11 @@
 
 /**
  * Plugin Name: bbPress
- * Plugin URI:  http://bbpress.org
+ * Plugin URI:  https://bbpress.org
  * Description: bbPress is forum software with a twist from the creators of WordPress.
  * Author:      The bbPress Community
- * Author URI:  http://bbpress.org
- * Version:     2.5.9
+ * Author URI:  https://bbpress.org
+ * Version:     2.5.14
  * Text Domain: bbpress
  * Domain Path: /languages/
  */
@@ -190,16 +190,16 @@ final class bbPress {
 
 		/** Versions **********************************************************/
 
-		$this->version    = '2.5.9-6017';
+		$this->version    = '2.5.14-6684';
 		$this->db_version = '250';
 
 		/** Paths *************************************************************/
 
 		// Setup some base path and URL information
 		$this->file       = __FILE__;
-		$this->basename   = apply_filters( 'bbp_plugin_basenname', plugin_basename( $this->file ) );
-		$this->plugin_dir = apply_filters( 'bbp_plugin_dir_path',  plugin_dir_path( $this->file ) );
-		$this->plugin_url = apply_filters( 'bbp_plugin_dir_url',   plugin_dir_url ( $this->file ) );
+		$this->basename   = apply_filters( 'bbp_plugin_basename', plugin_basename( $this->file ) );
+		$this->plugin_dir = apply_filters( 'bbp_plugin_dir_path', plugin_dir_path( $this->file ) );
+		$this->plugin_url = apply_filters( 'bbp_plugin_dir_url',  plugin_dir_url ( $this->file ) );
 
 		// Includes
 		$this->includes_dir = apply_filters( 'bbp_includes_dir', trailingslashit( $this->plugin_dir . 'includes'  ) );
@@ -300,6 +300,7 @@ final class bbPress {
 		require( $this->includes_dir . 'common/classes.php'       );
 		require( $this->includes_dir . 'common/functions.php'     );
 		require( $this->includes_dir . 'common/formatting.php'    );
+		require( $this->includes_dir . 'common/locale.php'        );
 		require( $this->includes_dir . 'common/template.php'      );
 		require( $this->includes_dir . 'common/widgets.php'       );
 		require( $this->includes_dir . 'common/shortcodes.php'    );
