@@ -1,7 +1,7 @@
 <?php
 
 function awaitingmoderation_action( $buffer ) {
-	$buffer = str_replace( __( 'Your comment is awaiting moderation.' ), '', $buffer );
+	$buffer = str_replace( __( 'Your comment is awaiting moderation.', 'wp-super-cache' ), '', $buffer );
 	return $buffer;
 }
 
@@ -37,9 +37,9 @@ function wp_supercache_awaitingmoderation_admin() {
 		<?php
 		if ($changed) {
 			if ( $cache_awaitingmoderation )
-				$status = __( "enabled" );
+				$status = __( "enabled", 'wp-super-cache' );
 			else
-				$status = __( "disabled" );
+				$status = __( "disabled", 'wp-super-cache' );
 			echo "<p><strong>" . sprintf( __( "Awaiting Moderation is now %s", 'wp-super-cache' ), $status ) . "</strong></p>";
 		}
 	echo '<div class="submit"><input class="button-primary" ' . SUBMITDISABLED . 'type="submit" value="' . __( 'Update', 'wp-super-cache' ) . '" /></div>';
@@ -51,4 +51,15 @@ function wp_supercache_awaitingmoderation_admin() {
 
 }
 add_cacheaction( 'cache_admin_page', 'wp_supercache_awaitingmoderation_admin' );
+
+function wpsc_awaiting_moderation_list( $list ) {
+	$list[ 'awaitingmoderation' ] = array(
+		'key'  => 'awaitingmoderation',
+		'url'  => '',
+		'title' => __( 'Awaiting Moderation', 'wp-super-cache' ),
+		'desc' => __( 'Enables or disables plugin to Remove the text "Your comment is awaiting moderation." when someone leaves a moderated comment.', 'wp-super-cache' ),
+	);
+	return $list;
+}
+add_cacheaction( 'wpsc_filter_list', 'wpsc_awaiting_moderation_list' );
 ?>

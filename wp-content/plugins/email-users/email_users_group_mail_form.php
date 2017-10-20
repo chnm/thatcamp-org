@@ -50,7 +50,7 @@
 		$group_mode = $mailusers_send_to_group_mode;
 	}
 
-	get_currentuserinfo();
+	wp_get_current_user();
 
 	$from_name = $user_identity;
 	$from_address = $user_email;
@@ -70,6 +70,7 @@
 
 	<!--<form name="SendEmail" action="admin.php?page=mailusers-send-group-mail-page" method="post">-->
 	<form name="SendEmail" action="" method="post">
+        <?php wp_nonce_field( 'mailusers_send_to_group', 'mailusers_send_to_group_nonce' ); ?>
 		<input type="hidden" name="send" value="true" />
 		<input type="hidden" name="fromName" value="<?php echo $from_name;?>" />
 		<input type="hidden" name="fromAddress" value="<?php echo $from_address;?>" />
@@ -87,6 +88,9 @@
 			<th scope="row" valign="top"><label><?php _e('Sender', MAILUSERS_I18N_DOMAIN); ?></label></th>
             <?php if (empty($override_address)) { ?>
 			<td><?php echo $from_name;?> &lt;<?php echo $from_address;?>&gt;</td>
+            <?php } elseif (mailusers_get_always_use_from_sender_address_override() == 'true') { ?>
+            
+            <td><input name="from_sender" type="radio" value="0" disabled/><?php echo $from_name;?> &lt;<?php echo $from_address;?>&gt;<br/><input name="from_sender" type="radio" value="1" checked/><?php echo $override_name;?> &lt;<?php echo $override_address;?>&gt;</td>
             <?php } else { ?>
             <td><input name="from_sender" type="radio" value="0" checked/><?php echo $from_name;?> &lt;<?php echo $from_address;?>&gt;<br/><input name="from_sender" type="radio" value="1"/><?php echo $override_name;?> &lt;<?php echo $override_address;?>&gt;</td>
             <?php }?>

@@ -34,7 +34,7 @@
 
 	// Send the email if it has been requested
 		if (array_key_exists('send', $_POST) && $_POST['send']=='true') {
-			get_currentuserinfo();
+			wp_get_current_user();
 		// Use current user info only if from name and address has not been set by the form
 		if (!isset($_POST['fromName']) || !isset($_POST['fromAddress']) || empty($_POST['fromName']) || empty($_POST['fromAddress'])) {
 			$from_name = $user_identity;
@@ -131,6 +131,17 @@
 
         if (!empty($send_users)) {
 		    $recipients = mailusers_get_recipients_from_custom_meta_filter($send_users, $exclude_id, $mailusers_mf, $mailusers_mv, $mailusers_mc);
+
+		    //  If there is more than one recipient selected, need to make sure users accepts Mass Emails
+            if (count($recipients) > 1)
+            {
+                $ids = array() ;
+
+                foreach ($recipients as $recipient)
+                    $ids[] = $recipient->ID ;
+
+		        $recipients = mailusers_get_recipients_from_ids($ids, '', MAILUSERS_ACCEPT_MASS_EMAIL_USER_META);
+            }
         }
         else if (!empty($send_roles)) {
 		    $recipients = mailusers_get_recipients_from_custom_meta_filter($send_roles, $exclude_id, $mailusers_mf, $mailusers_mv, $mailusers_mc);
@@ -144,7 +155,10 @@
 			<p><strong><?php _e('No recipients were found.', MAILUSERS_I18N_DOMAIN); ?></strong></p>
 	<?php
 		} else {
-			$num_sent = mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address);
+            $useheader = mailusers_get_header_usage() != 'notification' ;
+            $usefooter = mailusers_get_footer_usage() != 'notification' ;
+
+			$num_sent = mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address, $useheader, $usefooter);
 			if (false === $num_sent) {
 				print '<div class="error fade"><p> ' . __('There was a problem trying to send email to users.', MAILUSERS_I18N_DOMAIN) . '</p></div>';
 

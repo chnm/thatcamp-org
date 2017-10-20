@@ -3,8 +3,8 @@ Contributors: pbearne, bforchhammer
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=MZTZ5S8MGF75C&lc=CA&item_name=Wordpress%20Development%20%2f%20Paul%20Bearne&item_number=AuthorAvatarsList%20Plugin&currency_code=CAD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: Avatar, Author, BuddyPress, xprofile, Comment, Editor, Image, Multisite, Photo, Picture, Profile, Shortcode, Random, Sidebar, Thumbnail, User, Widget, Wpmu, BBPress, co-authors
 Requires at least: 3.0
-Tested up to: 4.4
-Stable tag: 1.9.6
+Tested up to: 4.7.5
+Stable tag: 1.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,7 +33,7 @@ Both the shortcode and widget can be configured to:
 *   Support users from Co-Author Plus, Ultimate Member, BBpress and BuddyPress (xprofile)
 *   Limit the number of avatars per page for large sets by adding a page_size to the shortcode e.g. "page_size=30" (shortcode only)
 
-Additionaly, single user avatars can be inserted using the [show_avatar shortcode](http://authoravatars.wordpress.com/documentation/show_avatar-shortcode/) and configured to:
+Additionally, single user avatars can be inserted using the [show_avatar shortcode](http://authoravatars.wordpress.com/documentation/show_avatar-shortcode/) and configured to:
 
 *   Adjust the size of the user avatar.
 *   Align the avatar left, centered or right.
@@ -66,6 +66,27 @@ If you have added CSS to your theme you may have to update it for this upgrade (
 5. List of users with name and biography
 
 == Changelog ==
+
+= 1.11 =
+added nonce to check_admin_referer
+
+= 1.10 =
+fixed PHP7 Deprecated constructors
+Added does class exists for BP xprofile code
+
+= 1.9.9 =
+fixed typo
+fixed filter name
+fixed advance option not showing in widget form
+
+= 1.9.8 =
+Added Filter aa_user_raw_list
+
+= 1.9.7 =
+Added filter aa_user_show_last_post_query
+Added the ability to use any URL in the profile contact section as a link
+Added the ability for user_link to accept a comma-separated list as fall through if a URL is not found in first selection
+Added contact_links to the short-code
 
 = 1.9.6 =
 readme update

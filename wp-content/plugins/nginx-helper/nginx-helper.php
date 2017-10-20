@@ -2,13 +2,13 @@
 /*
   Plugin Name: Nginx Helper
   Plugin URI: https://rtcamp.com/nginx-helper/
-  Description: Cleans nginx's fastcgi/proxy cache or redis-cache whenever a post is edited/published. Also does few more things.
-  Version: 1.9.6
+  Description: Cleans nginx's fastcgi/proxy cache or redis-cache whenever a post is edited/published. Also does a few more things.
+  Version: 1.9.10
   Author: rtCamp
   Author URI: https://rtcamp.com
   Text Domain: nginx-helper
   Requires at least: 3.0
-  Tested up to: 4.3
+  Tested up to: 4.7.3
  */
 
 namespace rtCamp\WP\Nginx {
@@ -227,15 +227,13 @@ namespace rtCamp\WP\Nginx {
 
 		function functional_asset_path()
 		{
-			$dir = wp_upload_dir();
-			$path = $dir['basedir'] . '/nginx-helper/';
+			$path = WP_CONTENT_DIR . '/uploads/nginx-helper/';
 			return apply_filters( 'nginx_asset_path', $path );
 		}
 
 		function functional_asset_url()
 		{
-			$dir = wp_upload_dir();
-			$url = $dir['baseurl'] . '/nginx-helper/';
+			$url = WP_CONTENT_URL . '/uploads/nginx-helper/';
 			return apply_filters( 'nginx_asset_url', $url );
 		}
 
@@ -270,6 +268,10 @@ namespace rtCamp\WP\Nginx {
 			}
 
 			if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
+				return;
+			if ( defined( 'DOING_CRON' ) && DOING_CRON )
+				return;
+			if ( defined( 'WP_CLI' ) && WP_CLI )
 				return;
 			$timestamps = "\n<!--" .
 					"Cached using Nginx-Helper on " . current_time( 'mysql' ) . ". " .
@@ -372,6 +374,8 @@ namespace {
 				$location = wp_sanitize_redirect( $location );
 			}
 			header( 'Location: ' . $location, true, $status );
+
+			return true;
 		}
 
 	}

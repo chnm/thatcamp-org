@@ -2,9 +2,9 @@
 /*
 Plugin Name: amr shortcode any widget
 Plugin URI: http://webdesign.anmari.com/shortcode-any-widget/
-Description: Include any widget in a page for any theme.  [do_widget widgetname ] or  [do_widget "widget name" ] [do_widget id=widgetnamedashed-n ]or include a whole widget area [do_widget_area]. Please read: <a href="https://wordpress.org/plugins/amr-shortcode-any-widget/installation/">Installation</a> and <a href="https://wordpress.org/plugins/amr-shortcode-any-widget/faq/">FAQ</a>.
+Description: Include any widget in a page for any theme.  [do_widget widgetname ] or  [do_widget "widget name" ] [do_widget id=widgetnamedashed-n ]or include a whole widget area [do_widget_area]. Please see <a href="https://wordpress.org/plugins/amr-shortcode-any-widget/faq/">FAQ</a>.
 Author: anmari
-Version: 3.3
+Version: 3.6
 Author URI: http://webdesign.anmari.com
 
 */
@@ -35,7 +35,7 @@ function amr_remove_widget_class($params) {  // remove the widget classes
 	
 	return ($params);
 }
-/*-----------------------------------*/
+
 function amr_do_widget_area($atts) {
 
 global $wp_registered_widgets, $_wp_sidebars_widgets, $wp_registered_sidebars;
@@ -83,7 +83,7 @@ global $wp_registered_widgets, $_wp_sidebars_widgets, $wp_registered_sidebars;
 			
 return ($output);
 }
-/*-----------------------------------*/
+
 function amr_do_widget($atts) {
 
 global $wp_registered_widgets, $_wp_sidebars_widgets, $wp_registered_sidebars;
@@ -321,7 +321,7 @@ function amr_shortcode_sidebar( $widget_id,
 //	}
 	return $did_one;
 }
-/* ---------------------------------------------------------------------------*/
+
 function amr_reg_sidebar() {  // this is fired late, so hopefully any theme sidebars will have been registered already.
 
 global $wp_registered_widgets, $_wp_sidebars_widgets, $wp_registered_sidebars;
@@ -351,7 +351,7 @@ if ( function_exists('register_sidebar') )  {  // maybe later, get the first mai
 	
 //else {	echo '<h1>CANNOT REGISTER widgets_for_shortcodes SIDEBAR</h1>';}
 }
-/*-----------------------------------*/
+
 include ('amr-admin-form-html.php');
 include ('amr-utilities.php');
 
@@ -379,10 +379,9 @@ add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'amr_add_action_
 
 function amr_add_action_links ( $links ) {
  $mylinks[] = 
- '<a title="Haven\'t read the instructions? Need your hand held?" href="' . admin_url( 'options-general.php?page=amr_saw' ) . '">Settings</a>';
+ '<a title="This page will also tell you if you are using the shortcodes and where" href="' . admin_url( 'options-general.php?page=amr_saw' ) . '">Where using?</a>';
   $mylinks[] =
- '<a title="Yes I know it is the same link, but some people ...." href="' . admin_url( 'options-general.php?page=amr_saw' ) . '">HELP</a>';
+ '<a title="Click for a page of tips" href="' . admin_url( 'options-general.php?page=amr_saw' ) . '">HELP</a>';
 return array_merge( $links, $mylinks );
 }
-
 ?>

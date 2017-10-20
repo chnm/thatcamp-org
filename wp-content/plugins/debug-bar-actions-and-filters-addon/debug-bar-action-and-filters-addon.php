@@ -3,7 +3,7 @@
  * Plugin Name: Debug Bar Actions and Filters Addon
  * Plugin URI: https://wordpress.org/plugins/debug-bar-actions-and-filters-addon/
  * Description: This plugin add two more tabs in the Debug Bar to display hooks(Actions and Filters) attached to the current request. Actions tab displays the actions hooked to current request. Filters tab displays the filter tags along with the functions attached to it with priority.
- * Version: 1.5.1
+ * Version: 1.5.4
  * Author: Subharanjan
  * Author Email: subharanjanmantri@gmail.com
  * Author URI: http://subharanjan.com/
@@ -14,7 +14,7 @@
  *
  * @author  subharanjan
  * @package debug-bar-actions-and-filters-addon
- * @version 1.5.1
+ * @version 1.5.4
  */
 
 // Exit if accessed directly
@@ -27,10 +27,21 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 if ( ! function_exists( 'debug_bar_action_and_filters_addon_has_parent_plugin' ) ) {
 	function debug_bar_action_and_filters_addon_has_parent_plugin() {
-		if ( is_admin() && ( ! class_exists( 'Debug_Bar' ) && current_user_can( 'activate_plugins' ) ) ) {
+		$file = plugin_basename( __FILE__ );
+
+		if ( is_admin() && ( ! class_exists( 'Debug_Bar' ) && current_user_can( 'activate_plugins' ) ) && is_plugin_active( $file ) ) {
 			add_action( 'admin_notices', create_function( null, 'echo \'<div class="error"><p>\' . sprintf( __( \'Activation failed: <strong>Debug Bar</strong> must be activated to use the <strong>Debug Bar Actions and Filters Addon</strong>. %sVisit your plugins page to install and activate.\', \'debug-bar-actions-and-filters-addon\' ), \'<a href="\' . admin_url( \'plugins.php#debug-bar\' ) . \'">\' ) . \'</a></p></div>\';' ) );
 
-			deactivate_plugins( plugin_basename( __FILE__ ) );
+			deactivate_plugins( $file, false, is_network_admin() );
+
+			// Add to recently active plugins list.
+			if ( ! is_network_admin() ) {
+				update_option( 'recently_activated', array( $file => time() ) + (array) get_option( 'recently_activated' ) );
+			} else {
+				update_site_option( 'recently_activated', array( $file => time() ) + (array) get_site_option( 'recently_activated' ) );
+			}
+
+			// Prevent trying again on page reload.
 			if ( isset( $_GET['activate'] ) ) {
 				unset( $_GET['activate'] );
 			}
@@ -49,15 +60,18 @@ add_action( 'admin_init', 'debug_bar_action_and_filters_addon_has_parent_plugin'
  */
 if ( ! function_exists( 'debug_bar_action_and_filters_addon_panel' ) ) {
 	function debug_bar_action_and_filters_addon_panel( $panels ) {
+		load_plugin_textdomain( 'debug-bar-actions-and-filters-addon' );
+
 		require_once( plugin_dir_path( __FILE__ ) . 'class-debug-bar-action-and-filters-addon.php' );
 
-		$panels[] = new Debug_Bar_Actions_Addon_Panel( 'Action Hooks', 'debug_bar_action_and_filters_addon_display_actions' );
-		$panels[] = new Debug_Bar_Filters_Addon_Panel( 'Filter Hooks', 'debug_bar_action_and_filters_addon_display_filters' );
+		$panels[] = new Debug_Bar_Actions_Addon_Panel( __( 'Action Hooks', 'debug-bar-actions-and-filters-addon' ), 'debug_bar_action_and_filters_addon_display_actions' );
+		$panels[] = new Debug_Bar_Filters_Addon_Panel( __( 'Filter Hooks', 'debug-bar-actions-and-filters-addon' ), 'debug_bar_action_and_filters_addon_display_filters' );
 
 		return $panels;
 	}
 }
 add_filter( 'debug_bar_panels', 'debug_bar_action_and_filters_addon_panel' );
+
 
 /**
  * Function to display the Actions attached to current request.
@@ -129,6 +143,10 @@ function debug_bar_action_and_filters_addon_display_filters() {
 	$hook_in_count        = 0;
 	$callbacks_registered = array();
 	foreach ( $wp_filter as $filter_key => $filter_val ) {
+		if ( $filter_val instanceof WP_Hook ) {
+			$filter_val = $filter_val->callbacks;
+		}
+
 		$filter_count = count( $filter_val );
 
 		$rowspan = '';

@@ -4,18 +4,18 @@ Author URI: https://charles.lecklider.org/
 Plugin URI: https://charles.lecklider.org/wordpress/wp-fail2ban/
 Tags: fail2ban, login, security, syslog
 Requires at least: 3.4.0
-Tested up to: 4.4.2
-Stable tag: 3.0.1
+Tested up to: 4.8.0
+Stable tag: 3.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Write all login attempts to syslog for integration with fail2ban.
+Write a myriad of WordPress events to syslog for integration with fail2ban.
 
 == Description ==
 
 [fail2ban](http://www.fail2ban.org/) is one of the simplest and most effective security measures you can implement to prevent brute-force password-guessing attacks.
 
-*WP fail2ban* logs all login attempts, whether successful or not, to syslog using LOG_AUTH. To make log parsing as simple as possible *WPf2b* uses the same format as sshd. For example:
+*WP fail2ban* logs all login attempts - including via XML-RPC, whether successful or not, to syslog using LOG_AUTH. For example:
 
     Oct 17 20:59:54 foobar wordpress(www.example.com)[1234]: Authentication failure for admin from 192.168.0.1
     Oct 17 21:00:00 foobar wordpress(www.example.com)[2345]: Accepted password for admin from 192.168.0.1
@@ -30,11 +30,19 @@ Requires PHP 5.3 or later.
 
 *WPf2b* can be configured to work with CloudFlare and other proxy servers. See `WP_FAIL2BAN_PROXIES` in the FAQ.
 
+**Comments**
+
+*WPf2b* can log comments. See `WP_FAIL2BAN_LOG_COMMENTS`.
+
 **Pingbacks**
 
 *WPf2b* logs failed pingbacks, and can log all pingbacks. See `WP_FAIL2BAN_LOG_PINGBACKS` in the FAQ.
 
-**WP_FAIL2BAN_BLOCK_USER_ENUMERATION**
+**Spam**
+
+*WPf2b* can log comments marked as spam. See `WP_FAIL2BAN_LOG_SPAM` in the FAQ.
+
+**User Enumeration**
 
 *WPf2b* can block user enumeration. See `WP_FAIL2BAN_BLOCK_USER_ENUMERATION` in the FAQ.
 
@@ -60,12 +68,14 @@ enabled = true
 filter = wordpress-hard
 logpath = /var/log/auth.log
 maxretry = 1
+port = http,https
 
 [wordpress-soft]
 enabled = true
 filter = wordpress-soft
 logpath = /var/log/auth.log
 maxretry = 3
+port = http,https
 ~~~
 5. Reload or restart `fail2ban`
 
@@ -97,7 +107,15 @@ Adding:
 
 	define('WP_FAIL2BAN_SYSLOG_SHORT_TAG',true);
 
-to `functions.php` will make *WPf2b* use `wp` as the syslog tag, rather than the normal `wordpress`. This buys you 7 characters which may be enough to work around the problem, but if it's not enough you should look at `WP_FAIL2BAN_HTTP_HOST` too.
+to `functions.php` will make *WPf2b* use `wp` as the syslog tag, rather than the normal `wordpress`. This buys you 7 characters which may be enough to work around the problem, but if it's not enough you should look at `WP_FAIL2BAN_HTTP_HOST` or `WP_FAIL2BAN_TRUNCATE_HOST` too.
+
+= WP_FAIL2BAN_TRUNCATE_HOST =
+
+If you've set `WP_FAIL2BAN_SYSLOG_SHORT_TAG` and defining `WP_FAIL2BAN_HTTP_HOST` for each virtual host isn't appropriate, you can set `WP_FAIL2BAN_TRUNCATE_HOST` to whatever value you need to make syslog happy:
+
+  define('WP_FAIL2BAN_TRUNCATE_HOST',8);
+
+This does exactly what the name suggests: truncates the host name to the length you specify. As a result there's no guarantee that what's left will be enough to identify the site.
 
 = WP_FAIL2BAN_BLOCKED_USERS – what’s it all about? =
 
@@ -112,6 +130,10 @@ For example, putting the following in `wp-config.php`:
 will block any attempt to log in as `admin` before most of the core WordPress code is run. Unless you go crazy with it, a regex is usually cheaper than a call to the database so this should help keep things running during an attack.
 
 *WPf2b* doesn't do anything to the regex other than make it case-insensitive.
+
+If you're running PHP 7, you can now specify an array of users instead:
+
+  define('WP_FAIL2BAN_BLOCKED_USERS',['admin','another','user']);
 
 = WP_FAIL2BAN_PROXIES – what’s it all about? =
 
@@ -145,21 +167,51 @@ By default, *WPf2b* uses LOG_USER for logging pingbacks. If you'd rather it used
 
 	define('WP_FAIL2BAN_PINGBACK_LOG',LOG_LOCAL3);
 
+= WP_FAIL2BAN_LOG_COMMENTS =
+
+*WPf2b* can now log comments. To enable this feature, add the following to `wp-config.php`:
+
+  define('WP_FAIL2BAN_LOG_COMMENTS',true);
+
+By default, *WPf2b* uses LOG_USER for logging comments. If you'd rather it used a different facility you can change it by adding something like the following to `wp-config.php`:
+
+	define('WP_FAIL2BAN_COMMENT_LOG',LOG_LOCAL3);
+
+= WP_FAIL2BAN_LOG_SPAM =
+
+*WPf2b* can now log spam comments. To enable this feature, add the following to `wp-config.php`:
+
+  define('WP_FAIL2BAN_LOG_SPAM',true);
+
+The comment ID and IP will be written to `WP_FAIL2BAN_AUTH_LOG` and matched by `wordpress-hard`.
+
 = WP_FAIL2BAN_AUTH_LOG – what’s it all about? =
 
 By default, *WPf2b* uses LOG_AUTH for logging authentication success or failure. However, some systems use LOG_AUTHPRIV instead, but there's no good run-time way to tell. If your system uses LOG_AUTHPRIV you should add the following to `wp-config.php`:
 
 	define('WP_FAIL2BAN_AUTH_LOG',LOG_AUTHPRIV);
 
-= Why is fail2ban complaining on my flavour of Linux? =
-
-Depending on your `fail2ban` configuration, you may need to add a line like:
-
-	port = http,https
-
-to the `[wordpress]` section in `jail.local`.
-
 == Changelog ==
+
+= 3.5.3 =
+* Bugfix for `wordpress-hard.conf`.
+
+= 3.5.1 =
+* Bugfix for `WP_FAIL2BAN_BLOCK_USER_ENUMERATION`.
+
+= 3.5.0 =
+* Add `WP_FAIL2BAN_OPENLOG_OPTIONS`.
+* Add `WP_FAIL2BAN_LOG_COMMENTS` and `WP_FAIL2BAN_COMMENT_LOG`.
+* Add `WP_FAIL2BAN_LOG_PASSWORD_REQUEST`.
+* Add `WP_FAIL2BAN_LOG_SPAM`.
+* Add `WP_FAIL2BAN_TRUNCATE_HOST`.
+* `WP_FAIL2BAN_BLOCKED_USERS` now supports an array of users with PHP 7.
+
+= 3.0.3 =
+* Fix regex in `wordpress-hard.conf`
+
+= 3.0.2 =
+* Prevent double logging in WP 4.5.x for XML-RPC authentication failure
 
 = 3.0.1 =
 * Fix regex in `wordpress-hard.conf`
@@ -211,6 +263,18 @@ to the `[wordpress]` section in `jail.local`.
 * Initial release.
 
 == Upgrade Notice ==
+
+= 3.5.3 =
+You will need up update your `fail2ban` filters.
+
+= 3.5.1 =
+Bugfix: disable `WP_FAIL2BAN_BLOCK_USER_ENUMERATION` in admin area....
+
+= 3.5.0 =
+You will need up update your `fail2ban` filters.
+
+= 3.0.3 =
+You will need up update your `fail2ban` filters.
 
 = 3.0.0 =
 BREAKING CHANGE: The `fail2ban` filters have been split into two files. You will need up update your `fail2ban` configuration.

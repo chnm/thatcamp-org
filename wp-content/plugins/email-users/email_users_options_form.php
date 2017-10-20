@@ -126,6 +126,7 @@ print $reflection->getFileName();
 
 <form name="EmailUsersOptions" action="options.php" method="post">		
 	<?php settings_fields('email_users') ;?>
+    <?php wp_nonce_field( 'mailusers_plugin_settings', 'mailusers_plugin_settings_nonce' ); ?>
 	<input type="hidden" name="mailusers_version" value="<?php echo mailusers_get_current_version(); ?>" />
 	<table class="form-table" style="clear:none;" width="100%" cellspacing="2" cellpadding="5">
 	<tr>
@@ -238,7 +239,20 @@ print $reflection->getFileName();
 		<td>
 			<input type="text" name="mailusers_from_sender_address_override" style="width: 235px;" 
 				value="<?php echo format_to_edit(mailusers_get_from_sender_address_override()); ?>" 
-                size="80" id="from_sender_address_override"/><br/><div style="width: 90%;"><i><small><?php _e('An email address that can be used in place of the logged in user\'s email address when sending email or notifications.', MAILUSERS_I18N_DOMAIN); ?><br /><b><i><?php _e('Note:  Invalid email addresses are not saved.', MAILUSERS_I18N_DOMAIN); ?></i></b></small></i></div></td>
+                size="80" id="from_sender_address_override"/><br/><div style="width: 90%;"><i><small><?php _e('An email address that can be used in place of the logged in user\'s email address when sending email or notifications.', MAILUSERS_I18N_DOMAIN); ?><br /><b><i><?php _e('Note:  Invalid email addresses are not saved.', MAILUSERS_I18N_DOMAIN); ?></i></b></small></i></div><br />
+			<input 	type="checkbox" name="mailusers_always_use_from_sender_address_override" id="mailusers_always_use_from_sender_address_override" value="true"
+                    <?php error_log(sprintf('%s::%s:  >%s<', basename(__FILE__), __LINE__, mailusers_get_always_use_from_sender_address_override())); ?>
+					<?php if (mailusers_get_always_use_from_sender_address_override()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Always use Sender Email Address Override.', MAILUSERS_I18N_DOMAIN); ?><br/>
+		</td>
+	</tr>
+	<tr>
+        <th><?php _e('From Sender<br/>Role Exclude', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<input 	type="checkbox" name="mailusers_from_sender_role_exclude" id="mailusers_from_sender_role_exclude" value="true"
+					<?php if (mailusers_get_from_sender_role_exclude()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Exclude sender\'s role from email recipient list.', MAILUSERS_I18N_DOMAIN); ?><br/>
+		</td>
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
@@ -258,10 +272,38 @@ print $reflection->getFileName();
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
-            <label for="mailusers_footer"><?php _e('Email Footer', MAILUSERS_I18N_DOMAIN); ?></th>
+			<label for="mailusers_header_usage"><?php _e('Email Header<br/>Usage', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<select class="mailusers-select" name="mailusers_header_usage" style="width: 235px;">
+				<option value="notification" <?php if (mailusers_get_header_usage()=='notification') echo 'selected="true"';?>><?php _e('Notification Email Only', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="email" <?php if (mailusers_get_header_usage()=='email') echo 'selected="true"';?>><?php _e('User and Group Email Only', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="both" <?php if (mailusers_get_header_usage()=='both') echo 'selected="true"';?>><?php _e('User, Group and Notification Email', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="none" <?php if (mailusers_get_header_usage()=='none') echo 'selected="true"';?>><?php _e('Not Used', MAILUSERS_I18N_DOMAIN); ?></option>
+			</select><br/><i><small><?php _e('Add Email Header Text', MAILUSERS_I18N_DOMAIN); ?></small></i></td>
+	</tr>
+	<tr>
+		<th scope="row" valign="top">
+            <label for="mailusers_header"><?php _e('Email Header<br/>Content', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+            <?php wp_editor(stripslashes(mailusers_get_header()), "mailusers_header", array('textarea_rows' => 4));?>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" valign="top">
+			<label for="mailusers_footer_usage"><?php _e('Email Footer<br/>Usage', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<select class="mailusers-select" name="mailusers_footer_usage" style="width: 235px;">
+				<option value="notification" <?php if (mailusers_get_footer_usage()=='notification') echo 'selected="true"';?>><?php _e('Notification Email Only', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="email" <?php if (mailusers_get_footer_usage()=='email') echo 'selected="true"';?>><?php _e('User and Group Email Only', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="both" <?php if (mailusers_get_footer_usage()=='both') echo 'selected="true"';?>><?php _e('User, Group and Notification Email', MAILUSERS_I18N_DOMAIN); ?></option>
+				<option value="none" <?php if (mailusers_get_footer_usage()=='none') echo 'selected="true"';?>><?php _e('Not Used', MAILUSERS_I18N_DOMAIN); ?></option>
+			</select><br/><i><small><?php _e('Add Email Footer Text', MAILUSERS_I18N_DOMAIN); ?></small></i></td>
+	</tr>
+	<tr>
+		<th scope="row" valign="top">
+            <label for="mailusers_footer"><?php _e('Email Footer<br/>Content', MAILUSERS_I18N_DOMAIN); ?></th>
 		<td>
             <?php wp_editor(stripslashes(mailusers_get_footer()), "mailusers_footer", array('textarea_rows' => 4));?>
-
 		</td>
 	</tr>
 	<tr>
@@ -335,7 +377,25 @@ print $reflection->getFileName();
 			<input 	type="checkbox"
 					name="mailusers_dashboard_widgets" id="mailusers_dashboard_widgets" value="true"
 					<?php if (mailusers_get_dashboard_widgets()=='true') echo 'checked="checked"';?> ></input>
-			<?php _e('Display Dashboard Widgets<br/><small><i>Note:  Email can show informational widgets on the Dashboard.</i></small>', MAILUSERS_I18N_DOMAIN); ?><br/>
+			<?php _e('Display Dashboard Widgets<br/><small><i>Note:  Email Users can show informational widgets on the Dashboard.</i></small>', MAILUSERS_I18N_DOMAIN); ?><br/>
+		</td>
+	</tr>
+	<tr>
+    <th><?php _e('Notification Widget', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<input 	type="checkbox"
+					name="mailusers_notification_widget" id="mailusers_notification_widget" value="true"
+					<?php if (mailusers_get_notification_widget()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Display Notification Widget<br/><small><i>Note:  Email Users can show a notifcation widget on the Post/Page editing screen.</i></small>', MAILUSERS_I18N_DOMAIN); ?><br/>
+		</td>
+	</tr>
+	<tr>
+    <th><?php _e('Notification Menus', MAILUSERS_I18N_DOMAIN); ?></th>
+		<td>
+			<input 	type="checkbox"
+					name="mailusers_notification_menus" id="mailusers_notification_menus" value="true"
+					<?php if (mailusers_get_notification_menus()=='true') echo 'checked="checked"';?> ></input>
+			<?php _e('Display Notification Menus<br/><small><i>Note:  Email Users can show a notifcation menu on the Post/Page sections of the Dashboard menu.</i></small>', MAILUSERS_I18N_DOMAIN); ?><br/>
 		</td>
 	</tr>
 	<tr>
@@ -395,6 +455,7 @@ print $reflection->getFileName();
 	</tbody>
 </table>
 <form name="ResetPluginSettings" action="" method="post">
+    <?php wp_nonce_field( 'mailusers_plugin_settings', 'mailusers_plugin_settings_nonce' ); ?>
 	<p class="submit">
 		<input type="hidden" name="resetpluginsettings" value="true" />
 		<input class="button-primary" type="submit" name="Submit" value="<?php _e('Apply Default Settings', MAILUSERS_I18N_DOMAIN); ?> &raquo;" />
@@ -439,7 +500,7 @@ print $reflection->getFileName();
 			
 		// Replace the template variables concerning the sender details
 		// --	
-		get_currentuserinfo();
+		wp_get_current_user();
 		global $post, $user_identity, $user_email ;
 
         $from_sender = 0;
@@ -492,6 +553,7 @@ print $reflection->getFileName();
 	</tbody>
 </table>
 <form name="SendTestEmail" action="" method="post">
+    <?php wp_nonce_field( 'mailusers_plugin_settings', 'mailusers_plugin_settings_nonce' ); ?>
 	<p class="submit">
 		<input type="hidden" name="sendtestemail" value="true" />
 		<input class="button-primary" type="submit" name="Submit" value="<?php _e('Send Test Notification to Yourself', MAILUSERS_I18N_DOMAIN); ?> &raquo;" />

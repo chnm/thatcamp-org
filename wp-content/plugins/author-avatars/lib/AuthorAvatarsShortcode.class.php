@@ -78,6 +78,8 @@ class AuthorAvatarsShortcode {
 		if ( ! empty( $atts['hiddenusers'] ) ) {
 			if ( ! is_array( $atts['hiddenusers'] ) ) {
 				$hiddenusers = array_unique ( explode( ',', $atts['hiddenusers'] ) );
+			} else{
+				$hiddenusers = $atts['hiddenusers'];
 			}
 		}
 		$this->userlist->hiddenusers = array_map( 'trim', $hiddenusers );
@@ -111,6 +113,10 @@ class AuthorAvatarsShortcode {
 
 		if ( ! empty( $atts['user_link'] ) ) {
 			$this->userlist->user_link = $atts['user_link'];
+		}
+
+		if ( ! empty( $atts['contact_links'] ) ) {
+			$this->userlist->contact_links = $atts['contact_links'];
 		}
 
 		$display = array();
@@ -147,7 +153,6 @@ class AuthorAvatarsShortcode {
 		$this->userlist->display_extra = array_diff($display, $default_display_options );
 
 		//var_dump($this->userlist->display_extra);
-
 
 		// avatar size
 		if ( ! empty( $atts['avatar_size'] ) ) {

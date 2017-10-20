@@ -6,8 +6,6 @@ if ( ! function_exists( 'is_admin' ) || ! is_admin() ) {
 }
 
 $is_html_enabled = subscribe_reloaded_get_option( 'enable_html_emails', 'no' ) == 'yes' ? true : false;
-$wp_subscribe_reloaded->stcr->utils->add_ritch_editor_textarea();
-
 // Update options
 if ( isset( $_POST['options'] ) ) {
 	$faulty_fields = '';
@@ -18,6 +16,11 @@ if ( isset( $_POST['options'] ) ) {
 	}
 	if ( isset( $_POST['options']['from_email'] ) &&
 		! subscribe_reloaded_update_option( 'from_email', $_POST['options']['from_email'], 'text' )
+	) {
+		$faulty_fields = __( 'Sender email address', 'subscribe-reloaded' ) . ', ';
+	}
+	if ( isset( $_POST['options']['reply_to'] ) &&
+		! subscribe_reloaded_update_option( 'reply_to', $_POST['options']['reply_to'], 'text' )
 	) {
 		$faulty_fields = __( 'Sender email address', 'subscribe-reloaded' ) . ', ';
 	}
@@ -63,6 +66,11 @@ if ( isset( $_POST['options'] ) ) {
 	) {
 		$faulty_fields = __( 'Management message', 'subscribe-reloaded' ) . ', ';
 	}
+	if ( isset( $_POST['options']['management_email_content'] ) &&
+		! subscribe_reloaded_update_option( 'management_email_content', $_POST['options']['management_email_content'], 'text' )
+	) {
+		$faulty_fields = __( 'Management Email message', 'subscribe-reloaded' ) . ', ';
+	}
 
 	// Display an alert in the admin interface if something went wrong
 	echo '<div class="updated fade"><p>';
@@ -75,8 +83,9 @@ if ( isset( $_POST['options'] ) ) {
 	echo "</p></div>\n";
 }
 wp_print_scripts( 'quicktags' );
+
 ?>
-<form action="admin.php?page=subscribe-to-comments-reloaded/options/index.php&subscribepanel=<?php echo $current_panel ?>" method="post">
+<form action="" method="post">
 	<h3><?php _e( 'Options', 'subscribe-reloaded' ) ?></h3>
 	<table class="form-table <?php echo $wp_locale->text_direction ?>">
 		<tbody>
@@ -107,6 +116,19 @@ wp_print_scripts( 'quicktags' );
 				</div>
 			</td>
 		</tr>
+		<tr>
+			<th scope="row">
+				<label for="reply_to"><?php _e( 'Reply To', 'subscribe-reloaded' ) ?></label>
+			</th>
+			<td>
+				<input type="text" name="options[reply_to]" id="reply_to"
+					   value="<?php echo subscribe_reloaded_get_option( 'reply_to' ); ?>" size="50">
+
+				<div class="description">
+					<?php _e( 'This will be use when the user click reply on their email agent. If not set will be the same as the Sender email address.', 'subscribe-reloaded' ); ?>
+				</div>
+			</td>
+		</tr>
 		</tbody>
 	</table>
 
@@ -128,14 +150,24 @@ wp_print_scripts( 'quicktags' );
 		</tr>
 		<tr>
 			<th scope="row">
-				<label for="notification_content"><?php _e( 'Notification message', 'subscribe-reloaded' ) ?></label>
+				<label for="notificationContent"><?php _e( 'Notification message', 'subscribe-reloaded' ) ?></label>
 			</th>
 			<td>
-				<textarea class="rte notification_content" name="options[notification_content]" id="notification_content"
-						  cols="140" rows="25"><?php echo subscribe_reloaded_get_option( 'notification_content' ); ?>
-				</textarea>
+				<?php
+					$args_notificationContent = array(
+						"media_buttons" => false,
+						"textarea_rows" => 15,
+						"teeny"         => true,
+						"textarea_name" => "options[notification_content]"
+						// "tinymce"		=> array(
+						// 						"theme_advance_buttons1" => "bold, italic, ul, min_size, max_size"
+						// 					)
+					);
+
+					wp_editor( subscribe_reloaded_get_option( 'notification_content' ), "notificationContent", $args_notificationContent );
+				?>
 				<div class="description" style="padding-top:0">
-					<?php _e( 'Content of the notification email. Allowed tags: [post_title], [comment_permalink], [comment_author], [comment_content], [post_permalink], [manager_link]', 'subscribe-reloaded' ); ?>
+					<?php _e( 'Content of the notification email. Allowed tags: [post_title], [comment_permalink], [comment_author], [comment_content], [post_permalink], [manager_link], [comment_gravatar]', 'subscribe-reloaded' ); ?>
 					<?php _e( '<p><strong>Note: To get a default template clear all the content and save the options.</strong></p>', 'subscribe-reloaded' ); ?>
 				</div>
 			</td>
@@ -158,8 +190,16 @@ wp_print_scripts( 'quicktags' );
 				<label for="double_check_content"><?php _e( 'Double check message', 'subscribe-reloaded' ) ?></label>
 			</th>
 			<td>
-				<textarea class="rte" name="options[double_check_content]" id="double_check_content" cols="70" rows="10"><?php echo subscribe_reloaded_get_option( 'double_check_content' ); ?></textarea>
-
+				<?php
+					$id_double_check_content = "double_check_content";
+					$args_notificationContent = array(
+						"media_buttons" => false,
+						"textarea_rows" => 7,
+						"teeny"         => true,
+						"textarea_name" => "options[{$id_double_check_content}]"
+					);
+					wp_editor( subscribe_reloaded_get_option( $id_double_check_content ), $id_double_check_content, $args_notificationContent );
+				?>
 				<div class="description" style="padding-top:0">
 					<?php _e( 'Content of the confirmation email. Allowed tags: [post_permalink], [confirm_link], [post_title], [manager_link]', 'subscribe-reloaded' ); ?>
 				</div>
@@ -180,13 +220,41 @@ wp_print_scripts( 'quicktags' );
 		</tr>
 		<tr>
 			<th scope="row">
-				<label for="management_content"><?php _e( 'Management message', 'subscribe-reloaded' ) ?></label>
+				<label for="management_content"><?php _e( 'Management Page message', 'subscribe-reloaded' ) ?></label>
 			</th>
 			<td>
-				<textarea class="rte" name="options[management_content]" id="management_content" cols="70" rows="5"><?php echo subscribe_reloaded_get_option( 'management_content' ); ?></textarea>
-
+				<?php
+					$id_management_content = "management_content";
+					$args_notificationContent = array(
+						"media_buttons" => false,
+						"textarea_rows" => 5,
+						"teeny"         => true,
+						"textarea_name" => "options[{$id_management_content}]"
+					);
+					wp_editor( subscribe_reloaded_get_option( $id_management_content ), $id_management_content, $args_notificationContent );
+				?>
 				<div class="description" style="padding-top:0">
-					<?php _e( 'Content of the management email. Allowed tags: [blog_name], [manager_link]', 'subscribe-reloaded' ); ?>
+					<?php _e( 'Content of the management Page message. Allowed tags: [blog_name].', 'subscribe-reloaded' ); ?>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">
+				<label for="management_email_content"><?php _e( 'Management Email message', 'subscribe-reloaded' ) ?></label>
+			</th>
+			<td>
+				<?php
+				$id_management_email_content = "management_email_content";
+				$args_notificationContent = array(
+					"media_buttons" => false,
+					"textarea_rows" => 5,
+					"teeny"         => true,
+					"textarea_name" => "options[{$id_management_email_content}]"
+				);
+				wp_editor( subscribe_reloaded_get_option( $id_management_email_content ), $id_management_email_content, $args_notificationContent );
+				?>
+				<div class="description" style="padding-top:0">
+					<?php _e( 'Content of the management email message. Allowed tags: [blog_name], [manager_link].', 'subscribe-reloaded' ); ?>
 				</div>
 			</td>
 		</tr>
@@ -195,10 +263,18 @@ wp_print_scripts( 'quicktags' );
 				<label for="oneclick_text"><?php _e( 'One Click Unsubscribe', 'subscribe-reloaded' ) ?></label>
 			</th>
 			<td>
-				<textarea class="rte" name="options[oneclick_text]" id="oneclick_text" cols="70" rows="8"><?php echo subscribe_reloaded_get_option( 'oneclick_text' ); ?></textarea>
-
+				<?php
+					$id_oneclick_text = "oneclick_text";
+					$args_notificationContent = array(
+						"media_buttons" => false,
+						"textarea_rows" => 5,
+						"teeny"         => true,
+						"textarea_name" => "options[{$id_oneclick_text}]"
+					);
+					wp_editor( subscribe_reloaded_get_option( $id_oneclick_text ), $id_oneclick_text, $args_notificationContent );
+				?>
 				<div class="description" style="padding-top:0">
-					<?php _e( 'Content of the One Click confirmation. Allowed tags: [post_title]', 'subscribe-reloaded' ); ?>
+					<?php _e( 'Content of the One Click confirmation. Allowed tags: [post_title], [blog_name]', 'subscribe-reloaded' ); ?>
 				</div>
 			</td>
 		</tr>

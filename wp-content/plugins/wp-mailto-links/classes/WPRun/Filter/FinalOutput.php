@@ -1,8 +1,8 @@
 <?php
 /**
- * Class WPRun_Filter_FinalOutput_0x5x0
+ * Class MyLib_Filter_FinalOutput_0x5x0
  *
- * @package  WPRun
+ * @package  MyLib
  * @category WordPress Plugin
  * @version  0.5.0
  * @author   Victor Villaverde Laan
@@ -16,15 +16,26 @@ final class WPRun_Filter_FinalOutput_0x5x0 extends WPRun_BaseAbstract_0x5x0
     const FILTER_NAME = 'final_output';
 
     /**
-     * Method automatically attached as callback to the action "init"
+     * Action for "init" hook
      */
     protected function actionInit()
     {
-        $filterName = self::FILTER_NAME;
+        ob_start($this->getCallback('apply'));
+    }
 
-        ob_start(function ($content) use ($filterName) {
-            return apply_filters($filterName, $content);
-        });
+    /**
+     * Apply filters
+     * @param string $content
+     * @return string
+     */
+    protected function apply($content)
+    {
+        $filteredContent = apply_filters(self::FILTER_NAME, $content);
+
+        // remove filters after applying to prevent multiple applies
+        remove_all_filters(self::FILTER_NAME);
+
+        return $filteredContent;
     }
 
 }

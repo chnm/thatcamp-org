@@ -1,15 +1,4 @@
 <?php
-
-function grunion_menu_alter() {
-	if( is_rtl() ){
-		wp_enqueue_style( 'grunion-menu-alter', plugins_url( 'css/rtl/menu-alter-rtl.css', __FILE__ ) );
-	} else {
-		wp_enqueue_style( 'grunion-menu-alter', plugins_url( 'css/menu-alter.css', __FILE__ ) );
-	}
-}
-
-add_action( 'admin_enqueue_scripts', 'grunion_menu_alter' );
-
 /**
  * Add a contact form button to the post composition screen
  */
@@ -48,7 +37,7 @@ function grunion_admin_css() {
 	if ( is_null( $current_screen ) ) {
 		return;
 	}
-	if ( ! in_array( $current_screen->id, array( 'edit-feedback', 'jetpack_page_omnisearch', 'dashboard_page_omnisearch' ) ) ) {
+	if ( 'edit-feedback' !== $current_screen->id ) {
 		return;
 	}
 
@@ -84,13 +73,6 @@ function grunion_admin_css() {
 .unspam a {
 color: #D98500;
 }
-
-#icon-edit.icon32-posts-feedback, #icon-post.icon32-posts-feedback { background: url("<?php echo GRUNION_PLUGIN_URL; ?>images/grunion-menu-big.png") no-repeat !important; }
-@media only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-	#icon-edit.icon32-posts-feedback, #icon-post.icon32-posts-feedback { background: url("<?php echo GRUNION_PLUGIN_URL; ?>images/grunion-menu-big-2x.png") no-repeat !important; background-size: 30px 31px !important; }
-}
-
-#icon-edit.icon32-posts-feedback { background-position: 2px 2px !important; }
 
 </style>
 
@@ -714,7 +696,7 @@ function grunion_ajax_spam() {
 			 */
 			$subject = apply_filters( 'contact_form_subject', $content_fields['_feedback_subject'], $content_fields['_feedback_all_fields'] );
 
-			wp_mail( $to, $subject, $message, $headers );
+			Grunion_Contact_Form::wp_mail( $to, $subject, $message, $headers );
 		}
 	} elseif( $_POST['make_it'] == 'publish' ) {
 		if ( ! current_user_can($post_type_object->cap->delete_post, $post_id) ) {
@@ -787,15 +769,6 @@ function grunion_ajax_spam() {
 
 	echo $status_html;
 	exit;
-}
-
-add_action( 'omnisearch_add_providers', 'grunion_omnisearch_add_providers' );
-function grunion_omnisearch_add_providers() {
-	// Feedback uses capability_type 'page'
-	if ( current_user_can( 'edit_pages' ) ) {
-		require_once( GRUNION_PLUGIN_DIR . '/grunion-omnisearch.php' );
-		new Jetpack_Omnisearch_Grunion;
-	}
 }
 
 /**

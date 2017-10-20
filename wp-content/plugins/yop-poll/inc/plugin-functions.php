@@ -686,7 +686,7 @@ function yop_poll_poll_default_options() {
             'br'  => array()
         );
 
-        return wp_kses( $string, $pt );
+        return wp_kses( stripslashes($string), $pt );
     }
 
     function yop_poll_base64_encode( $str ) {

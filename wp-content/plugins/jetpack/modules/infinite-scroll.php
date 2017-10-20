@@ -1,12 +1,13 @@
 <?php
 /**
  * Module Name: Infinite Scroll
- * Module Description: Add support for infinite scroll to your theme.
+ * Module Description: Automatically load new content when a visitor scrolls
  * Sort Order: 26
  * First Introduced: 2.0
  * Requires Connection: No
  * Auto Activate: No
  * Module Tags: Appearance
+ * Feature: Appearance
  * Additional Search Queries: scroll, infinite, infinite scroll
  */
 
@@ -95,7 +96,8 @@ class Jetpack_Infinite_Scroll_Extras {
 	 * @return html
 	 */
 	public function setting_google_analytics() {
-		echo '<label><input name="infinite_scroll_google_analytics" type="checkbox" value="1" ' . checked( true, (bool) get_option( $this->option_name_google_analytics, false ), false ) . ' /> ' . __( 'Track each Infinite Scroll post load as a page view in Google Analytics', 'jetpack' ) . '</br><small>' . __( 'By checking the box above, each new set of posts loaded via Infinite Scroll will be recorded as a page view in Google Analytics.', 'jetpack' ) . '</small>' . '</label>';
+		echo '<label><input name="infinite_scroll_google_analytics" type="checkbox" value="1" ' . checked( true, (bool) get_option( $this->option_name_google_analytics, false ), false ) . ' /> ' . esc_html__( 'Track each scroll load (7 posts by default) as a page view in Google Analytics', 'jetpack' )  . '</label>';
+		echo '<p class="description">' . esc_html__( 'Check the box above to record each new set of posts loaded via Infinite Scroll as a page view in Google Analytics.', 'jetpack' ) . '</p>';
 	}
 
 	/**
@@ -114,12 +116,12 @@ class Jetpack_Infinite_Scroll_Extras {
 	 *
 	 * As released in Jetpack 2.0, a child theme's parent wasn't checked for in the plugin's bundled support, hence the convoluted way the parent is checked for now.
 	 *
-	 * @uses is_admin, wp_get_theme, get_theme, get_current_theme, apply_filters
+	 * @uses is_admin, wp_get_theme, apply_filters
 	 * @action setup_theme
 	 * @return null
 	 */
 	function action_after_setup_theme() {
-		$theme = function_exists( 'wp_get_theme' ) ? wp_get_theme() : get_theme( get_current_theme() );
+		$theme = wp_get_theme();
 
 		if ( ! is_a( $theme, 'WP_Theme' ) && ! is_array( $theme ) )
 			return;
@@ -170,7 +172,7 @@ class Jetpack_Infinite_Scroll_Extras {
 		}
 
 		// Check if Google Analytics tracking is requested
-		$settings['google_analytics'] = (bool) get_option( $this->option_name_google_analytics );
+		$settings['google_analytics'] = (bool) Jetpack_Options::get_option_and_ensure_autoload( $this->option_name_google_analytics, 0 );
 
 		return $settings;
 	}

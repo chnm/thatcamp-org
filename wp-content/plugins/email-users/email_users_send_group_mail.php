@@ -32,7 +32,7 @@
     do_action('mailusers_update_custom_meta_filters') ;
 
 	$err_msg = '';
-	get_currentuserinfo();
+	wp_get_current_user();
 
 	$from_sender = 0;
     $from_address = empty($user_email) ? get_bloginfo('email') : $user_email;
@@ -41,6 +41,14 @@
 
 	// Send the email if it has been requested
 	if (array_key_exists('send', $_POST) && $_POST['send']=='true') {
+        if (! isset( $_POST['mailusers_send_to_group_nonce'] ) 
+            || ! wp_verify_nonce( $_POST['mailusers_send_to_group_nonce'], 'mailusers_send_to_group' ) ) {
+
+            wp_die(printf('<div class="error fade"><p>%s</p></div>',
+                __('WordPress nonce failed to verify, requested action terminated.', MAILUSERS_I18N_DOMAIN)));
+        }
+		// No error and nonce ok, send the mail
+
 	    // Use current user info only if from name and address has not been set by the form
 	    if (!isset($_POST['fromName']) || !isset($_POST['fromAddress']) || empty($_POST['fromName']) || empty($_POST['fromAddress'])) {
 	        $from_name = empty($user_identity) ? get_bloginfo('name') : $user_identity;
@@ -209,7 +217,10 @@
 			<p><strong><?php _e('No recipients were found.', MAILUSERS_I18N_DOMAIN); ?></strong></p>
 	<?php
 		} else {
-			$num_sent = mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address);
+            $useheader = mailusers_get_header_usage() != 'notification' ;
+            $usefooter = mailusers_get_footer_usage() != 'notification' ;
+
+			$num_sent = mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address, $useheader, $usefooter);
 			if (false === $num_sent) {
 				print '<div class="error fade"><p> ' . __('There was a problem trying to send email to users.', MAILUSERS_I18N_DOMAIN) . '</p></div>';
 			} else if (0 === $num_sent) {

@@ -83,12 +83,12 @@ class FeedWordPressFeedsPage extends FeedWordPressAdminPage {
 	 *
 	 * @param mixed $link An object of class {@link SyndicatedLink} if created for one feed's settings, NULL if created for global default settings
 	 */
-	function FeedWordPressFeedsPage ($link = -1) {
+	public function __construct( $link = -1 ) {
 		if (is_numeric($link) and -1 == $link) :
-			$link = FeedWordPressAdminPage::submitted_link();
+			$link = $this->submitted_link();
 		endif;
 
-		FeedWordPressAdminPage::FeedWordPressAdminPage('feedwordpressfeeds', $link);
+		parent::__construct('feedwordpressfeeds', $link);
 
 		$this->dispatch = 'feedwordpress_admin_page_feeds';
 		$this->pagenames = array(
@@ -139,7 +139,7 @@ class FeedWordPressFeedsPage extends FeedWordPressAdminPage {
 	} /* FeedWordPressFeedsPage::display() */
 
 	function ajax_interface_js () {
-		FeedWordPressAdminPage::ajax_interface_js();
+		parent::ajax_interface_js();
 		?>
 
 		jQuery(document).ready( function () {
@@ -194,15 +194,25 @@ class FeedWordPressFeedsPage extends FeedWordPressAdminPage {
 		</select>
 		<div id="cron-job-explanation" class="setting-description">
 		<p><?php
-		$path = `which curl`; $opts = '--silent %s';
-		if (is_null($path) or strlen(trim($path))==0) :
-			$path = `which wget`; $opts = '-q -O - %s';
-			if (is_null($path) or strlen(trim($path))==0) :
-				$path = '/usr/bin/curl'; $opts = '--silent %s';
-			endif;
+		// Do we have shell_exec() available from here, or is it disabled for security reasons?
+		// If it's available, use it to execute `which` to try to get a realistic path to curl,
+		// or to wget. If everything fails or shell_exec() isn't available, then just make
+		// up something for the sake of example.
+		$shellExecAvailable = (is_callable('shell_exec') && false === stripos(ini_get('disable_functions'), 'shell_exec'));		
+
+		if ($shellExecAvailable) :
+			$path = `which curl`; $opts = '--silent %s';
 		endif;
+
+		if ($shellExecAvailable and (is_null($path) or strlen(trim($path))==0)) :
+			$path = `which wget`; $opts = '-q -O - %s';
+		endif;
+
+		if (is_null($path) or strlen(trim($path))==0) :
+			$path = '/usr/bin/curl'; $opts = '--silent %s';
+		endif;
+
 		$path = preg_replace('/\n+$/', '', $path);
-		$crontab = `crontab -l`;
 		
 		$cmdline = $path . ' ' . sprintf($opts, get_bloginfo('url').'?update_feedwordpress=1');
 		

@@ -1,4 +1,29 @@
 <?php
+
+new WPCOM_JSON_API_Render_Embed_Endpoint( array(
+	'description' => "Get a rendered embed for a site. Note: The current user must have publishing access.",
+	'group'       => 'sites',
+	'stat'        => 'embeds:render',
+	'method'      => 'GET',
+	'path'        => '/sites/%s/embeds/render',
+	'path_labels' => array(
+		'$site'    => '(int|string) Site ID or domain',
+	),
+	'query_parameters' => array(
+		'embed_url'     => '(string) The query-string encoded embed URL to render. Required. Only accepts one at a time.',
+	),
+	'response_format' => array(
+		'embed_url' => '(string) The embed_url that was passed in for rendering.',
+		'result'    => '(html) The rendered HTML result of the embed.',
+	),
+	'example_request' => 'https://public-api.wordpress.com/rest/v1/sites/apiexamples.wordpress.com/embeds/render?embed_url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DSQEQr7c0-dw',
+	'example_request_data' => array(
+		'headers' => array(
+			'authorization' => 'Bearer YOUR_API_TOKEN'
+		),
+	)
+) );
+
 class WPCOM_JSON_API_Render_Embed_Endpoint extends WPCOM_JSON_API_Render_Endpoint {
 	// /sites/%s/embeds/render -> $blog_id
 	function callback( $path = '', $blog_id = 0 ) {
@@ -29,13 +54,6 @@ class WPCOM_JSON_API_Render_Embed_Endpoint extends WPCOM_JSON_API_Render_Endpoin
 			return new WP_Error( 'invalid_embed_url', 'The embed_url parameter must be a valid URL.', 400 );
 		}
 
-		// in order for oEmbed to fire in the `$wp_embed->shortcode` method, we need to set a post as the current post
-		$_posts = get_posts( array( 'posts_per_page' => 1, 'suppress_filters' => false ) );
-		if ( ! empty( $_posts ) ) {
-			global $post;
-			$post = array_shift( $_posts );
-		}
-
 		global $wp_embed;
 		$render = $this->process_render( array( $this, 'do_embed' ), $embed_url );
 
@@ -54,8 +72,4 @@ class WPCOM_JSON_API_Render_Embed_Endpoint extends WPCOM_JSON_API_Render_Endpoin
 		return $return;
 	}
 
-	function do_embed( $embed_url ) {
-		global $wp_embed;
-		return $wp_embed->shortcode( array(), $embed_url );
-	}
 }

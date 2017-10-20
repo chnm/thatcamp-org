@@ -29,7 +29,7 @@ class AuthorAvatars {
 	/**
 	 * Constructor
 	 */
-	function AuthorAvatars() {
+	function __construct() {
 
 		add_action( 'init', array( &$this, 'init' ), 10 );
 

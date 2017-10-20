@@ -446,7 +446,7 @@
 		}
 
 		private function insert() {
-
+			$this->question = sanitize_text_field( $this->question );
 			$GLOBALS['wpdb']->query( $GLOBALS['wpdb']->prepare( "
 					INSERT INTO " . $GLOBALS['wpdb']->yop_poll_questions . "
 					SET
@@ -486,6 +486,7 @@
 		}
 
 		private function update() {
+			$this->question = sanitize_text_field( $this->question );
 			$GLOBALS['wpdb']->query(
 				$GLOBALS['wpdb']->prepare( "
 					UPDATE " . $GLOBALS['wpdb']->yop_poll_questions . "

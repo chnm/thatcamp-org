@@ -16,8 +16,8 @@ class JetpackTracking {
 		// For tracking stuff via js/ajax
 		add_action( 'admin_enqueue_scripts',         array( __CLASS__, 'enqueue_tracks_scripts' ) );
 
-		add_action( 'jetpack_pre_activate_module',   array( __CLASS__, 'track_activate_module'), 1, 1 );
-		add_action( 'jetpack_pre_deactivate_module', array( __CLASS__, 'track_deactivate_module'), 1, 1 );
+		add_action( 'jetpack_activate_module',   array( __CLASS__, 'track_activate_module'), 1, 1 );
+		add_action( 'jetpack_deactivate_module', array( __CLASS__, 'track_deactivate_module'), 1, 1 );
 		add_action( 'jetpack_user_authorized',       array( __CLASS__, 'track_user_linked' ) );
 	}
 
@@ -45,7 +45,7 @@ class JetpackTracking {
 		$wpcom_user_data = Jetpack::get_connected_user_data( $user_id );
 		update_user_meta( $user_id, 'jetpack_tracks_wpcom_id', $wpcom_user_data['ID'] );
 
-		self::record_user_event( 'user_linked', array() );
+		self::record_user_event( 'wpa_user_linked', array() );
 	}
 
 	/* Activated module */
@@ -58,9 +58,11 @@ class JetpackTracking {
 		self::record_user_event( 'module_deactivated', array( 'module' => $module ) );
 	}
 
-	static function record_user_event( $event_type, $data ) {
+	static function record_user_event( $event_type, $data= array(), $user = null ) {
 
-		$user = wp_get_current_user();
+		if ( ! $user ) {
+			$user = wp_get_current_user();
+		}
 		$site_url = get_option( 'siteurl' );
 
 		$data['_via_ua']  = isset( $_SERVER['HTTP_USER_AGENT'] ) ? $_SERVER['HTTP_USER_AGENT'] : '';

@@ -5,8 +5,8 @@ Donate link: http://stephanieleary.com/code/wordpress/recent-posts-with-excerpts
 Text Domain: recent_posts_with_excerpts
 Domain Path: /languages
 Requires at least: 2.8
-Tested up to: 4.5
-Stable tag: 2.6
+Tested up to: 4.8
+Stable tag: 2.6.1
 
 
 A widget that lists your most recent posts with optional excerpts.   
@@ -51,6 +51,8 @@ To add something above the list, use the `recent_posts_with_excerpts_begin` acti
 
 == Changelog ==
 
+= 2.6.1 =
+* The 'recent_posts_with_excerpts_query' filter now accepts a second parameter, $instance, to give developers access to the widget's settings.
 = 2.6 =
 * Constructor update.
 = 2.5.5 =

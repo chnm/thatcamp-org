@@ -70,10 +70,16 @@ class UserList {
 	 * Flag whether to show a user's biography
 	 */
 	var $show_last_post = false;
+
 	/**
 	 * Flag whether to show a user's email
 	 */
 	var $show_email = false;
+
+	/**
+	 * Flag whether to show a user's contact links
+	 */
+	var $contact_links = false;
 
 	/**
 	 * Size of avatars.
@@ -264,7 +270,7 @@ class UserList {
 		}
 
 		$this->pagingHTML = '<div class="aa_pageList"><div><a href="?aa_page=0" id="0">' . __( '<<', 'author-avatars' ) . '</a>';
-		for ( $i = 0; $i <= count( $users ) / $page_size; $i ++ ) {
+		for ( $i = 0; $i <= ( count( $users ) -1 ) / $page_size; $i ++ ) {
 			$this->pagingHTML .= '<a href="?aa_page=' . $i . '" id="' . ( $i ) . '"';
 			if ( $i == $this->aa_page ) {
 				$this->pagingHTML .= 'class="current"';
@@ -303,6 +309,7 @@ class UserList {
 			'bio_length'              => $this->bio_length,
 			'show_last_post'          => $this->show_last_post,
 			'show_email'              => $this->show_email,
+			'contact_links'           => $this->contact_links,
 			'avatar_size'             => $this->avatar_size,
 			'limit'                   => $this->limit,
 			'min_post_count'          => $this->min_post_count,
@@ -350,100 +357,113 @@ class UserList {
 			$divcss[] = 'with-name';
 		}
 
-		$link      = false;
-		$link_type = $this->user_link;
+		$link       = false;
+		$link_types = explode( ',', $this->user_link );
 
-		// always use 'website' for commentators
-		$type = ( isset( $user->type ) ) ? $user->type : null;
+		foreach ( $link_types as $link_type ) {
+			// always use 'website' for commentators
+			$type = ( isset( $user->type ) ) ? $user->type : null;
 
-		if ( - 1 === $user->user_id && 'guest-author' != $type ) {
-			$link_type = 'website';
-			$divcss[]  = 'user-0';
-		} else {
-			if ( 'guest-author' === $type ) {
-				$divcss[] = 'guest-author-' . $user->user_id;
+			if ( - 1 === $user->user_id && 'guest-author' != $type ) {
+				$link_type = 'website';
+				$divcss[]  = 'user-0';
 			} else {
-				$divcss[] = 'user-' . $user->user_id;
-			}
-		}
-
-		switch ( $link_type ) {
-
-			case 'website':
 				if ( 'guest-author' === $type ) {
-					$link = get_the_author_meta( 'url', $user->ID );
+					$divcss[] = 'guest-author-' . $user->user_id;
 				} else {
-					$link = $user->user_url;
+					$divcss[] = 'user-' . $user->user_id;
+				}
+			}
+
+			switch ( $link_type ) {
+
+				case 'website':
+					if ( 'guest-author' === $type ) {
+						$link = get_the_author_meta( 'url', $user->ID );
+					} else {
+						$link = $user->user_url;
+						if ( empty( $link ) || 'http://' === $link ) {
+							$link = false;
+						}
+					}
+
+					break;
+				case 'blog':
+					if ( AA_is_wpmu() ) {
+						$blog = get_active_blog_for_user( $user->user_id );
+						if ( ! empty( $blog->siteurl ) ) {
+							$link = $blog->siteurl;
+						}
+					}
+					break;
+				case 'bp_memberpage':
+					if ( function_exists( 'bp_core_get_user_domain' ) ) {
+						$link = bp_core_get_user_domain( $user->user_id );
+					} elseif ( function_exists( 'bp_core_get_userurl' ) ) { // BP versions < 1.1
+						$link = bp_core_get_userurl( $user->user_id );
+					}
+					break;
+
+				case 'um_profile':
+					if ( function_exists( 'um_user_profile_url' ) ) {
+						um_fetch_user( $user->user_id );
+						$link = um_user_profile_url();
+						um_reset_user();
+					}
 					if ( empty( $link ) || 'http://' === $link ) {
 						$link = false;
 					}
-				}
-
-				break;
-			case 'blog':
-				if ( AA_is_wpmu() ) {
-					$blog = get_active_blog_for_user( $user->user_id );
-					if ( ! empty( $blog->siteurl ) ) {
-						$link = $blog->siteurl;
-					}
-				}
-				break;
-			case 'bp_memberpage':
-				if ( function_exists( 'bp_core_get_user_domain' ) ) {
-					$link = bp_core_get_user_domain( $user->user_id );
-				} elseif ( function_exists( 'bp_core_get_userurl' ) ) { // BP versions < 1.1
-					$link = bp_core_get_userurl( $user->user_id );
-				}
-				break;
-
-			case 'um_profile':
-				if ( function_exists( 'um_user_profile_url' ) ) {
-					um_fetch_user( $user->user_id );
-					$link = um_user_profile_url();
-					um_reset_user();
-				}
-				if ( empty( $link ) || 'http://' === $link ) {
-					$link = false;
-				}
-				break;
-
-
-			case 'bbpress_memberpage':
-				if ( function_exists( 'bbp_get_user_profile_url' ) ) {
-					$link = bbp_get_user_profile_url( $user->user_id );
-				}
-				if ( empty( $link ) || 'http://' === $link ) {
-					$link = false;
-				}
-				break;
-			case 'last_post':
-				$recent = get_posts( array(
-					'author'      => $user->user_id,
-					'orderby'     => 'date',
-					'order'       => 'desc',
-					'numberposts' => 1,
-				) );
-				if ( ! empty( $recent ) ) {
-					$link = get_permalink( $recent[0]->ID );
 					break;
-				}
-			// fall throught if no last post to author page
-			case 'authorpage':
-				if ( 'guest-author' === $type ) {
-					$link = get_author_posts_url( $user->user_id, $user->user_nicename );
-				} else {
-					$link = get_author_posts_url( $user->user_id );
-				}
+
+
+				case 'bbpress_memberpage':
+					if ( function_exists( 'bbp_get_user_profile_url' ) ) {
+						$link = bbp_get_user_profile_url( $user->user_id );
+					}
+					if ( empty( $link ) || 'http://' === $link ) {
+						$link = false;
+					}
+					break;
+				case 'last_post':
+					$recent = get_posts( array(
+						'author'      => $user->user_id,
+						'orderby'     => 'date',
+						'order'       => 'desc',
+						'numberposts' => 1,
+					) );
+					if ( ! empty( $recent ) ) {
+						$link = get_permalink( $recent[0]->ID );
+						break;
+					}
+				// fall throught if no last post to author page
+				case 'authorpage':
+					if ( 'guest-author' === $type ) {
+						$link = get_author_posts_url( $user->user_id, $user->user_nicename );
+					} else {
+						$link = get_author_posts_url( $user->user_id );
+					}
+					break;
+				case 'last_post_all':
+					$last_post = get_most_recent_post_of_user( $user->user_id );
+					$link      = get_permalink( $last_post['post_id'] );
+					break;
+				default:
+					$maybe_link = get_the_author_meta( $link_type, $user->user_id );
+					if ( '' !== $maybe_link && is_valid_url( $maybe_link ) ) {
+
+						$link = esc_url_raw( $maybe_link );
+					}
+			}
+
+			//exit look if we have a link
+			if ( false !== $link ) {
 				break;
-			case 'last_post_all':
-				$last_post = get_most_recent_post_of_user( $user->user_id );
-				$link      = get_permalink( $last_post['post_id'] );
-				break;
+			}
 		}
 
 		if ( $this->show_postcount ) {
 
-			if ( $user->user_id == - 1 && 'guest-author' != $type ) {
+			if ( - 1 == $user->user_id && 'guest-author' != $type ) {
 				$postcount = $this->get_comment_count( $user->user_email );
 				$title .= ' (' . sprintf( _n( '%d comment', '%d comments', $postcount, 'author-avatars' ), $postcount ) . ')';
 			} else {
@@ -463,12 +483,12 @@ class UserList {
 		}
 
 		if ( $this->show_bbpress_post_count && AA_is_bbpress() ) {
-			$BBPRESS_postcount = 0;
+			$bb_press_postcount = 0;
 			if ( function_exists( 'bbp_get_user_topic_count_raw' ) ) {
-				$BBPRESS_postcount = bbp_get_user_topic_count_raw( $user->user_id ) + bbp_get_user_reply_count_raw( $user->user_id );
-				$title .= ' (' . sprintf( _n( '%d BBPress post', '%d BBPress posts', $BBPRESS_postcount, 'author-avatars' ), $BBPRESS_postcount ) . ')';
+				$bb_press_postcount = bbp_get_user_topic_count_raw( $user->user_id ) + bbp_get_user_reply_count_raw( $user->user_id );
+				$title .= ' (' . sprintf( _n( '%d BBPress post', '%d BBPress posts', $bb_press_postcount, 'author-avatars' ), $bb_press_postcount ) . ')';
 			}
-			$name .= sprintf(  apply_filters( 'aa_BBPress_post_count', ' (%d)', $postcount, $user ), $BBPRESS_postcount );
+			$name .= sprintf( apply_filters( 'aa_BBPress_post_count', ' (%d)', $postcount, $user ), $bb_press_postcount );
 		}
 
 		$biography = false;
@@ -519,7 +539,7 @@ class UserList {
 
 		$email = false;
 		if ( $this->show_email && $user->user_email ) {
-			$userEmail = $user->user_email;
+			$user_email = $user->user_email;
 			/**
 			 * Filter the title tag content for an admin page.
 			 *
@@ -527,18 +547,171 @@ class UserList {
 			 *
 			 * @param        string
 			 *                          The mailto href for sprintf the $1$s is where the email is inserted.
-			 * @param string $userEmail The Email to be inserted.
+			 * @param string $user_email The Email to be inserted.
 			 * @param        object
 			 *                          The Current user object.
 			 */
-			$email    = sprintf( apply_filters( 'aa_user_email_url_template', '<a href="mailto:%1$s">%1$s</a>', $userEmail, $user ), $userEmail );
+			$email    = sprintf( apply_filters( 'aa_user_email_url_template', '<a href="mailto:%1$s">%1$s</a>', $user_email, $user ), $user_email );
 			$divcss[] = 'with-email';
 			if ( empty( $email ) ) {
 				$divcss[] = 'email-missing';
 			}
 		}
 
-		if ( $user->user_id == - 1 ) {
+		$contact_links = false;
+		if ( $this->contact_links ) {
+			// get all contact methods
+			$user_contacts = wp_get_user_contact_methods();
+
+
+			$user_contact_types = explode( ',', $this->contact_links );
+
+			foreach ( $user_contact_types as $user_contact_type ) {
+
+				if ( isset( $user_contacts[ $user_contact_type ] ) ) {
+
+					$user_contact_content = get_the_author_meta( $user_contact_type, $user->user_id );
+
+					// do we have a value
+					if ( empty( $user_contact_content ) ) {
+
+						continue;
+					}
+
+					/**
+					 * Filter the title tag content for an admin page.
+					 *
+					 * @since 1.9.7
+					 *
+					 *
+					 * @param string $user_contact_text The test to be wraped in URL.
+					 * @param string $user_contact_type kay used to find text
+					 */
+					$link_text = apply_filters( 'aa_user_contact_links_text', $user_contacts[ $user_contact_type ], $user_contact_type );
+					if ( is_valid_url( $user_contact_content ) ) {
+						/**
+						 * Filter the title tag content for an admin page.
+						 *
+						 * @since 1.9.7
+						 *
+						 * @param string $html
+						 *
+						 * @param string $user_contact_types The URL to be inserted.
+						 * @param string $user_contact_type kay used to find text
+						 */
+						$contact_links = sprintf(
+							apply_filters( 'aa_user_contact_links_url_template', '<li><a href="%1$s">%1$s</a></li>', $user_contact_type, $user->user_id ),
+							esc_url( $user_contact_content ),
+							esc_html( $link_text )
+						);
+					} else {
+						$divcss[] = 'with-contact-' . $user_contact_type . '-links';
+						// hand a few deafults
+						switch ( $user_contact_type ) {
+							case 'aim':
+								$contact_links .= sprintf(
+								/**
+								 * Filter the aim tag content for an admin page.
+								 *
+								 * @since 1.9.7
+								 *
+								 * @param string $html
+								 *
+								 * @param string $user_contact_types The URL to be inserted.
+								 * @param string $user_contact_type kay used to find text
+								 */
+									apply_filters( 'aa_user_contact_links_aim_template', '<li><a href="aim:goim?screenname=%s">%s</a></li>', $user_contact_type, $user->user_id ),
+									esc_url( $user_contact_content ),
+									esc_html( $link_text )
+								);
+								break;
+							case 'facebook':
+								$contact_links .= sprintf(
+								/**
+								 * Filter the facebook tag content for an admin page.
+								 *
+								 * @since 1.9.7
+								 *
+								 * @param string $html
+								 *
+								 * @param string $user_contact_types The URL to be inserted.
+								 * @param string $user_contact_type kay used to find text
+								 */
+									apply_filters( 'aa_user_contact_links_facebook_template', '<li><a href="https://www.facebook.com/=%s">%s</a></li>', $user_contact_type, $user->user_id ),
+									esc_url( $user_contact_content ),
+									esc_html( $link_text )
+								);
+								break;
+							case 'skype':
+								$contact_links .= sprintf(
+								/**
+								 * Filter the skype tag content for an admin page.
+								 *
+								 * @since 1.9.7
+								 *
+								 * @param string $html
+								 *
+								 * @param string $user_contact_types The URL to be inserted.
+								 * @param string $user_contact_type kay used to find text
+								 */
+									apply_filters( 'aa_user_contact_links_skype_template', '<li><a href="skype:%s">%s</a></li>', $user_contact_type, $user->user_id ),
+									esc_url( $user_contact_content ),
+									esc_html( $link_text )
+								);
+								break;
+							case 'twitter':
+								$contact_links .= sprintf(
+								/**
+								 * Filter the twitter tag content for an admin page.
+								 *
+								 * @since 1.9.7
+								 *
+								 * @param string $html
+								 *
+								 * @param string $user_contact_types The URL to be inserted.
+								 * @param string $user_contact_type kay used to find text
+								 */
+									apply_filters( 'aa_user_contact_links_twitter_template', '<li><a href="https://twitter.com/%s">%s</a></li>', $user_contact_type, $user->user_id ),
+									esc_url( $user_contact_content ),
+									esc_html( $link_text )
+								);
+								break;
+							case 'yim':
+								$contact_links .= sprintf(
+								/**
+								 * Filter the yim tag content for an admin page.
+								 *
+								 * @since 1.9.7
+								 *
+								 * @param string $html
+								 *
+								 * @param string $user_contact_types The URL to be inserted.
+								 * @param string $user_contact_type kay used to find text
+								 */
+									apply_filters( 'aa_user_contact_links_yim_template', '<li><a href="ymsgr:sendim?%s">%s</a></li>', $user_contact_type, $user->user_id ),
+									esc_url( $user_contact_content ),
+									esc_html( $link_text )
+								);
+								break;
+							default:
+								$contact_links .= sprintf(
+									apply_filters( 'aa_user_contact_links_' . $user_contact_type . '_template', '<li>%s: %1$s</li>', $user_contact_type, $user->user_id ),
+									esc_html( $link_text ),
+									esc_html( $user_contact_content )
+								);
+						}
+					}
+
+					if ( empty( $contact_links ) ) {
+						$divcss[] = 'contact-links-missing';
+					} else {
+						$divcss[] = 'contact-links-' . $user_contact_type;
+					}
+				}
+			}
+		}
+
+		if ( - 1 === $user->user_id ) {
 			// use email for commentators
 			$avatar = get_avatar( $user->user_email, $avatar_size );
 		} else {
@@ -583,10 +756,10 @@ class UserList {
 		/**
 		 * filter the span that holds the avatar
 		 *
-		 * @param string $html   The sprintf template.
-		 * @param string $title  The value passed to the title attr in span.
+		 * @param string $html The sprintf template.
+		 * @param string $title The value passed to the title attr in span.
 		 * @param string $avatar The HTML returned from get_avatar() etc.
-		 * @param object $user   The user object
+		 * @param object $user The user object
 		 */
 		$html .= sprintf( apply_filters( 'aa_user_avatar_template', '<span class="avatar" title="%s">%s</span>', $title, $avatar, $user ), $title, $avatar );
 
@@ -605,11 +778,11 @@ class UserList {
 			/**
 			 * filter the href that wrap's avatar and users name
 			 *
-			 * @param string $html  The sprintf template.
-			 * @param string $link  The href value.
+			 * @param string $html The sprintf template.
+			 * @param string $link The href value.
 			 * @param string $title The value for the href title
-			 * @param string $html  The HTML with avatar and name
-			 * @param object $user  The user object
+			 * @param string $html The HTML with avatar and name
+			 * @param object $user The user object
 			 */
 			$html = sprintf( apply_filters( 'aa_user_link_template', '<a href="%s" title="%s">%s</a>', $link, $title, $html, $user ), $link, $title, $html );
 		}
@@ -618,20 +791,31 @@ class UserList {
 			/**
 			 * filter that wrap's the email link in a div
 			 *
-			 * @param string $html  The sprintf template.
+			 * @param string $html The sprintf template.
 			 * @param string $email The HTML containing the mailto href and email string.
-			 * @param object $user  The user object
+			 * @param object $user The user object
 			 */
 			$html .= sprintf( apply_filters( 'aa_user_email_template', '<div class="email">%s</div>', $email, $user ), $email );
+		}
+
+		if ( $contact_links ) {
+			/**
+			 * filter that wrap's the contact links in a div
+			 *
+			 * @param string $html The sprintf template.
+			 * @param string $email The HTML containing the mailto href and email string.
+			 * @param object $user The user object
+			 */
+			$html .= sprintf( apply_filters( 'aa_user_contact_links_template', '<div class="contact-links"><ul>%s</ul></div>', $contact_links, $user ), $contact_links );
 		}
 
 		if ( $biography ) {
 			/**
 			 * filter that wrap's the BIO text in a div
 			 *
-			 * @param string $html      The sprintf template.
+			 * @param string $html The sprintf template.
 			 * @param string $biography The Bio text.
-			 * @param object $user      The user object
+			 * @param object $user The user object
 			 */
 			$html .= sprintf( apply_filters( 'aa_user_biography_template', '<div class="biography">%s</div>', $biography, $user ), $biography );
 		}
@@ -640,9 +824,9 @@ class UserList {
 			/**
 			 * filter that wrap's the last post link in a div
 			 *
-			 * @param string $html           The sprintf template.
+			 * @param string $html The sprintf template.
 			 * @param string $show_last_post The last post link.
-			 * @param object $user           The user object
+			 * @param object $user The user object
 			 */
 			$html .= sprintf( apply_filters( 'aa_user_last_post_template', '<div class="show_last_post">%s</div>', $show_last_post, $user ), $show_last_post );
 		}
@@ -652,10 +836,9 @@ class UserList {
 			 * filter the extra HTML block before its appended
 			 *
 			 * @param string $extra extra HTML / string.
-			 * @param object $user  The user object
+			 * @param object $user The user object
 			 */
-			$html .= apply_filters( '
-			aa_user_display_extra', $this->display_extra, $user );
+			$html .= apply_filters( 'aa_user_display_extra', $this->display_extra, $user );
 		}
 
 		$tpl_vars['{class}'] = implode( $divcss, ' ' );
@@ -825,7 +1008,7 @@ class UserList {
 			$users = $this->_sort( $users );
 		}
 
-		return $users;
+		return apply_filters( 'aa_user_raw_list', $users );
 	}
 
 	/**
@@ -850,7 +1033,15 @@ class UserList {
 		);
 		$my_query = null;
 		$out      = null;
-		$my_query = new WP_Query( $args );
+		/**
+		 * Filter the users last post Query
+		 *
+		 * @since 1.9.7
+		 *
+		 * @param string Query.
+		 * @param int $user_id The Current user ID.
+		 */
+		$my_query = new WP_Query( apply_filters( 'aa_user_show_last_post_query', $args, $user_id ) );
 		if ( $my_query->have_posts() ) {
 			while ( $my_query->have_posts() ) : $my_query->the_post();
 				$id = $my_query->posts[0]->ID;
@@ -859,11 +1050,11 @@ class UserList {
 				 *
 				 * @since 1.8.6.0
 				 *
-				 * @param string $permalink  The last post permalink.
+				 * @param string $permalink The last post permalink.
 				 * @param string $title_attr The last post Title attribute.
-				 * @param string $title      The last post Title.
-				 * @param int    $id         The last post ID.
-				 * @param int    $user_id    The Current user ID.
+				 * @param string $title The last post Title.
+				 * @param int $id The last post ID.
+				 * @param int $user_id The Current user ID.
 				 */
 				$out .= sprintf(
 					apply_filters( 'aa_user_show_last_post_html_filter',
@@ -925,6 +1116,7 @@ class UserList {
 			$roleQuery = ' AND(' . $roleQuery . ')';
 		}
 
+		// can't wape into pepare as thease are all table names
 		$query = "SELECT user_id, user_login, display_name, user_email, user_url, user_registered, meta_key, meta_value FROM $wpdb->users, $wpdb->usermeta" .
 		         " WHERE " . $wpdb->users . ".ID = " . $wpdb->usermeta . ".user_id AND " . $blogs_condition . " AND user_status = 0" . $roleQuery;
 
@@ -1632,10 +1824,10 @@ class UserList {
 	/**
 	 * truncateHtml can truncate a string up to a number of characters while preserving whole words and HTML tags
 	 *
-	 * @param string  $text         String to truncate.
-	 * @param integer $length       Length of returned string, including ellipsis.
-	 * @param string  $ending       Ending to be appended to the trimmed string.
-	 * @param boolean $exact        If false, $text will not be cut mid-word
+	 * @param string $text String to truncate.
+	 * @param integer $length Length of returned string, including ellipsis.
+	 * @param string $ending Ending to be appended to the trimmed string.
+	 * @param boolean $exact If false, $text will not be cut mid-word
 	 * @param boolean $considerHtml If true, HTML tags would be handled correctly
 	 *
 	 * @return string Trimmed string.

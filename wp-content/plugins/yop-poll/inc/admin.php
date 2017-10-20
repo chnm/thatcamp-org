@@ -1,6 +1,5 @@
 <?php
 class Yop_Poll_Admin extends Yop_Poll_Plugin {
-
     public function admin_loader() {
         $this->add_action( 'admin_menu', 'admin_menu', 1 );
         $this->add_action( 'admin_init', 'yop_poll_options_admin_init', 1 );
@@ -11,48 +10,35 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         $this->wp_ajax_action( 'reset_templates' );
         $this->wp_ajax_action( 'reset_templates' );
         $this->wp_ajax_action( 'add_votes' );
-
         $this->add_action( 'admin_enqueue_scripts', 'my_yop_poll_button' );
         $this->add_action( 'admin_enqueue_scripts', 'load_editor_functions' );
-
         $this->add_action( 'wp_ajax_yop_poll_editor', 'ajax_get_polls_for_editor', 1 );
         $this->add_action( 'wp_ajax_yop_poll_html_editor', 'ajax_get_polls_for_html_editor', 1 );
-
         $this->add_action( 'wp_ajax_yop_poll_show_captcha', 'ajax_show_captcha', 1 );
         $this->add_action( 'wp_ajax_nopriv_yop_poll_show_captcha', 'ajax_show_captcha', 1 );
-
         $this->add_action( 'wp_ajax_yop_poll_show_optin_box_modal', 'ajax_show_optin_box_modal', 1 );
         $this->add_action( 'wp_ajax_yop_poll_modal_option_signup', 'ajax_modal_option_signup', 1 );
         $this->add_action( 'wp_ajax_yop_poll_sidebar_option_signup', 'ajax_sidebar_option_signup', 1 );
-
         $this->add_action( 'wp_ajax_yop_poll_play_captcha', 'ajax_play_captcha', 1 );
         $this->add_action( 'wp_ajax_nopriv_yop_poll_play_captcha', 'ajax_play_captcha', 1 );
-
         $this->add_action( 'wp_ajax_nopriv_yop_poll_do_vote', 'yop_poll_do_vote', 1 );
         $this->add_action( 'wp_ajax_yop_poll_do_vote', 'yop_poll_do_vote', 1 );
-
         $this->add_action( 'wp_ajax_yop_poll_load_js', 'yop_poll_load_js', 1 );
         $this->add_action( 'wp_ajax_nopriv_yop_poll_load_js', 'yop_poll_load_js', 1 );
         register_uninstall_hook( $this->_config->plugin_file, 'yop_poll_uninstall' );
-
         $this->add_action( 'wp_ajax_nopriv_yop_poll_view_results', 'yop_poll_view_results', 1 );
         $this->add_action( 'wp_ajax_yop_poll_view_results', 'yop_poll_view_results', 1 );
-
         $this->add_action( 'wp_ajax_yop_poll_back_to_vote', 'yop_poll_back_to_vote', 1 );
         $this->add_action( 'wp_ajax_nopriv_yop_poll_back_to_vote', 'yop_poll_back_to_vote', 1 );
-
         $this->add_action( 'wp_ajax_yop_poll_is_wordpress_user', 'ajax_is_wordpress_user', 1 );
         $this->add_action( 'wp_ajax_nopriv_yop_poll_is_wordpress_user', 'ajax_is_wordpress_user', 1 );
-
         $this->add_action( 'wp_ajax_yop_poll_preview_add_edit', 'ajax_preview_add_edit', 1 );
         $this->add_action( 'wp_ajax_nopriv_yop_poll_preview_add_edit', 'ajax_preview_add_edit', 1 );
-
         $this->add_action( 'wp_ajax_yop_poll_set_wordpress_vote', 'ajax_set_wordpress_vote', 1 );
         $this->add_action( 'wp_ajax_nopriv_yop_poll_set_wordpress_vote', 'ajax_set_wordpress_vote', 1 );
-
         $this->add_action( 'wp_ajax_yop_poll_set_google_vote', 'ajax_set_google_vote', 1 );
         $this->add_action( 'wp_ajax_nopriv_yop_poll_set_google_vote', 'ajax_set_google_vote', 1 );
-
+        load_plugin_textdomain( 'yop_poll', false, YOP_POLL_PLUGIN_DIR . '/languages' );
     }
     public function db_update() {
         $main_obj=new YOP_POLL_Maintenance();
@@ -60,16 +46,13 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
 
     }
     public function admin_menu() {
-
         if( is_admin() ) {
-
             $pollAdminObj = YOP_POLL_Poll_Admin::get_instance();
             if( function_exists( 'add_menu_page' ) ) {
-
-                $page = add_object_page( __yop_poll( 'Yop Poll' ), __yop_poll( 'Yop Poll' ), 'edit_own_yop_polls', 'yop-polls', array(
+                $page = add_menu_page( __( 'Yop Poll', 'yop-poll' ), __( 'Yop Poll', 'yop-poll' ), 'edit_own_yop_polls', 'yop-polls', array(
                     $pollAdminObj,
                     'manage_polls'
-                ), YOP_POLL_URL . "images/yop-poll-admin-menu-icon16.png" );
+                ), YOP_POLL_URL . "images/yop-poll-admin-menu-icon16.png", "26.6" );
                 if( $page ) {
                     $this->add_action( "load-$page", 'manage_pages_load' );
                     add_action( "load-$page", array(
@@ -79,7 +62,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
 
                     if( function_exists( 'add_submenu_page' ) ) {
                         if( current_user_can( 'edit_own_yop_polls' ) ) {
-                            $subpage = add_submenu_page( 'yop-polls', __yop_poll( 'All Polls' ), __yop_poll( 'All Polls' ), 'edit_own_yop_polls', 'yop-polls', array(
+                            $subpage = add_submenu_page( 'yop-polls', __( 'All Polls', 'yop-poll' ), __( 'All Polls', 'yop-poll' ), 'edit_own_yop_polls', 'yop-polls', array(
                                 $pollAdminObj,
                                 'manage_polls'
                             ) );
@@ -91,7 +74,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                                 ) );
                             }
 
-                            $subpage = add_submenu_page( 'yop-polls', __yop_poll( 'Add New' ), __yop_poll( 'Add New' ), 'edit_own_yop_polls', 'yop-polls-add-new', array(
+                            $subpage = add_submenu_page( 'yop-polls', __( 'Add New', 'yop-poll' ), __( 'Add New', 'yop-poll' ), 'edit_own_yop_polls', 'yop-polls-add-new', array(
                                 &$pollAdminObj,
                                 'manage_polls'
                             ) );
@@ -106,7 +89,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                         if( current_user_can( 'manage_yop_polls_imports' ) ) {
 
                             $importObj = YOP_POLL_Imports_Admin::get_instance();
-                            $subpage   = add_submenu_page( 'yop-polls', __yop_poll( 'Import' ), __yop_poll( 'Import' ), 'view_yop_polls_imports', 'yop-polls-imports', array(
+                            $subpage   = add_submenu_page( 'yop-polls', __( 'Import', 'yop-poll' ), __( 'Import', 'yop-poll' ), 'view_yop_polls_imports', 'yop-polls-imports', array(
                                 &$importObj,
                                 "manage_imports"
                             ) );
@@ -121,7 +104,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                         }
                         if( current_user_can( 'view_yop_polls_logs' ) ) {
                             $logsObj = YOP_POLL_Logs_Admin::get_instance();
-                            $subpage = add_submenu_page( 'yop-polls', __yop_poll( 'Logs' ), __yop_poll( 'Logs' ), 'view_yop_polls_logs', 'yop-polls-logs', array(
+                            $subpage = add_submenu_page( 'yop-polls', __( 'Logs', 'yop-poll' ), __( 'Logs', 'yop-poll' ), 'view_yop_polls_logs', 'yop-polls-logs', array(
                                 &$logsObj,
                                 "manage_logs"
                             ) );
@@ -135,7 +118,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                         }
                         if( current_user_can( 'manage_yop_polls_options' ) ) {
                             $genOptObj = YOP_POLL_General_Options::get_instance();
-                            $subpage   = add_submenu_page( 'yop-polls', __yop_poll( 'Options' ), __yop_poll( 'Options' ), 'manage_yop_polls_options', 'yop-polls-options', array(
+                            $subpage   = add_submenu_page( 'yop-polls', __( 'Options', 'yop-poll' ), __( 'Options', 'yop-poll' ), 'manage_yop_polls_options', 'yop-polls-options', array(
                                 &$genOptObj,
                                 "manage_options"
                             ) );
@@ -149,7 +132,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                         }
                         if( current_user_can( 'edit_yop_polls_templates' ) ) {
                             $templatesObj = YOP_POLL_Templates_Admin::get_instance();
-                            $subpage      = add_submenu_page( 'yop-polls', __yop_poll( 'Templates' ), __yop_poll( 'Templates' ), 'edit_yop_polls_templates', 'yop-polls-templates', array(
+                            $subpage      = add_submenu_page( 'yop-polls', __( 'Templates', 'yop-poll' ), __( 'Templates', 'yop-poll' ), 'edit_yop_polls_templates', 'yop-polls-templates', array(
                                 &$templatesObj,
                                 "manage_templates"
                             ) );
@@ -165,7 +148,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
 
                         if( current_user_can( 'manage_yop_polls_bans' ) ) {
                             $bansObj = YOP_POLL_Ban_Admin::get_instance();
-                            $subpage = add_submenu_page( 'yop-polls', __yop_poll( 'Bans' ), __yop_poll( 'Bans' ), 'manage_yop_polls_bans', 'yop-polls-bans', array(
+                            $subpage = add_submenu_page( 'yop-polls', __( 'Bans', 'yop-poll' ), __( 'Bans', 'yop-poll' ), 'manage_yop_polls_bans', 'yop-polls-bans', array(
                                 &$bansObj,
                                 "manage_bans"
                             ) );
@@ -180,7 +163,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
 
                         if( current_user_can( 'help_yop_poll_page' ) ) {
                             $proObj  = YOP_POLL_Pro_Admin::get_instance();
-                            $subpage = add_submenu_page( 'yop-polls', __yop_poll( "Help" ), __yop_poll( "Help" ), 'help_yop_poll_page', 'yop-polls-help', array(
+                            $subpage = add_submenu_page( 'yop-polls', __( "Help", 'yop-poll' ), __( "Help", 'yop-poll' ), 'help_yop_poll_page', 'yop-polls-help', array(
                                 &$proObj,
                                 "yop_poll_help"
                             ) );
@@ -192,7 +175,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                         }
                         if( current_user_can( 'become_yop_poll_pro' ) ) {
                             $proObj  = YOP_POLL_Pro_Admin::get_instance();
-                            $subpage = add_submenu_page( 'yop-polls', __yop_poll( "Upgrade to Pro" ), __yop_poll( "Upgrade to Pro" ), 'become_yop_poll_pro', 'yop-polls-become-pro', array(
+                            $subpage = add_submenu_page( 'yop-polls', __( "Upgrade to Pro", 'yop-poll' ), __( "Upgrade to Pro", 'yop-poll' ), 'become_yop_poll_pro', 'yop-polls-become-pro', array(
                                 &$proObj,
                                 "manage_pages"
                             ) );
@@ -208,7 +191,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
             }
         }
     }
-
     private static function update_poll_template_in_database2( $template ) {
         global $wpdb;
         $sql = $wpdb->query( $wpdb->prepare( "
@@ -450,7 +432,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
 		update_option( 'yop_poll_optin_box_modal_options_yop', $optin_box_modal_options );
         die ();
     }
-
     public function manage_pages_load() {
         wp_reset_vars( array(
             'page',
@@ -508,19 +489,16 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         wp_localize_script( 'yop-poll-tool_tips-js', 'yop_poll_tool_tips', $yop_poll_tooltips );
         wp_enqueue_media();
     }
-
     public function get_new_poll_answer_template() {
         $pollAdminObj = YOP_POLL_Poll_Admin::get_instance();
         $pollAdminObj->get_new_answer_template( $_REQUEST );
         die();
     }
-
     public function get_new_poll_question_template() {
         $pollAdminObj = YOP_POLL_Poll_Admin::get_instance();
         $pollAdminObj->get_new_question_template( $_REQUEST );
         die();
     }
-
     public function add_edit_poll() {
         if( is_admin() ) {
             if( ! check_ajax_referer( 'yop-poll-add-edit-action', 'yop-poll-add-edit-name', false ) ) {
@@ -532,7 +510,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         }
         die();
     }
-
     public function add_edit_templates() {
         if( is_admin() ) {
             if( ! check_ajax_referer( 'yop-poll-templates-add-edit-action', 'yop-poll-templates-add-edit-name', false )
@@ -545,7 +522,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         }
         die();
     }
-
     public function reset_templates() {
         if( is_admin() ) {
             if( ! check_ajax_referer( 'yop-poll-templates-add-edit-action', 'yop-poll-templates-add-edit-name', false ) ) {
@@ -558,7 +534,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         }
         die();
     }
-
     public function yop_poll_options_admin_init() {
         $genOptObj = YOP_POLL_General_Options::get_instance();
         register_setting( 'yop_poll_options', 'yop_poll_options', array(
@@ -566,7 +541,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
             'general_options_validate'
         ) );
     }
-
     public function disable_check_for_updates_wp( $r, $url ) {
         if( 0 !== strpos( $url, 'https://api.wordpress.org/plugins/update-check' ) ) {
             return $r;
@@ -580,7 +554,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
 
         return $r;
     }
-
     public function ajax_show_captcha() {
         if( is_admin() ) {
             $poll_id   = isset ( $_REQUEST ['poll_id'] ) ? $_REQUEST ['poll_id'] : null;
@@ -609,9 +582,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         }
         die ();
     }
-
     //region AJAX SECTION
-
     public function ajax_play_captcha() {
         if( is_admin() ) {
             $poll_id   = isset ( $_REQUEST ['poll_id'] ) ? $_REQUEST ['poll_id'] : null;
@@ -638,7 +609,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         }
         die ();
     }
-
     public function yop_poll_do_vote() {
         $error   = '';
         $success = '';
@@ -683,7 +653,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
             ) ) . '[/ajax-response]';
         die ();
     }
-
     public function yop_poll_view_results() {
         $error   = '';
         $success = '';
@@ -740,7 +709,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
             ) ) . '[/ajax-response]';
         die ();
     }
-
     public function yop_poll_back_to_vote() {
         $error   = '';
         $success = '';
@@ -793,7 +761,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
             ) ) . '[/ajax-response]';
         die ();
     }
-
     public function yop_poll_load_js() {
         header( 'Content-Type: text/javascript' );
         // check_ajax_referer('yop-poll-public-js');
@@ -812,7 +779,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         }
         die ();
     }
-
     public function ajax_set_google_vote() {
         $poll_id   = xss_clean(yop_poll_base64_decode( $_GET['poll_id'] ));
         $unique_id = xss_clean(yop_poll_base64_decode( $_GET['unique_id'] ));
@@ -945,7 +911,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         $facebook->destroySession();
         die();
     }
-
     public function ajax_set_wordpress_vote() {
         $poll_id   = yop_poll_base64_decode( xss_clean($_GET['poll_id']) );
         $unique_id = yop_poll_base64_decode( xss_clean($_GET['unique_id'] ));
@@ -1002,7 +967,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         <?php
         die();
     }
-
     public function ajax_is_wordpress_user() {
         global $current_user;
         if( $current_user->ID > 0 ) {
@@ -1013,7 +977,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         }
         die();
     }
-
     public function ajax_get_polls_for_editor() {
         //check_ajax_referer( 'yop-poll-editor' );
         if( is_admin() ) {
@@ -1200,9 +1163,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         }
         die ();
     }
-
-
-
     public function ajax_get_polls_for_html_editor() {
         check_ajax_referer( 'yop-poll-html-editor' );
         if( is_admin() ) {
@@ -1344,7 +1304,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
             		</td>
             	</tr>
             </table>
-            
+
             <!--
             <p style="text-align: center;">
                 <label for="yop-poll-id-html-dialog"> <span><?php _e( 'Pollsss to Display', 'yop_poll' ); ?>:</span>
@@ -1398,7 +1358,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         }
         die ();
     }
-
     public function ajax_preview_add_edit() {
         if( is_admin() ) {
             if( ! check_ajax_referer( 'yop-poll-add-edit-action', 'yop-poll-add-edit-name', false ) ) {
@@ -1408,7 +1367,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         }
         die();
     }
-
     function load_editor_functions( $hook ) {
         global $post;
 
@@ -1428,21 +1386,16 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         }
     }
     //endregion
-
     // region TINYMCE
-
     function register_button( $buttons ) {
         array_push( $buttons, "separator", "yoppoll" );
 
         return $buttons;
     }
-
     function add_plugin( $plugin_array ) {
         $plugin_array ['yoppoll'] = YOP_POLL_URL . "tinymce/yop-poll-editor.js";
-
         return $plugin_array;
     }
-
     function my_yop_poll_button( $hook ) {
         if( $hook == 'post-new.php' || $hook == 'post.php' || $hook == 'page-new.php' || $hook == 'page.php' ) {
             if( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
@@ -1462,7 +1415,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         }
     }
     public function add_votes(){
-
         if( is_admin() ) {
 
             if( ! check_ajax_referer( 'yop-poll-results_vote_add_vote','yop-poll-results_votes_add_votes', false ) ) {
@@ -1496,7 +1448,5 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
     }
     //endregion
 }
-
-
 ;
 ?>

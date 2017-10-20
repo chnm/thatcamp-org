@@ -18,28 +18,16 @@ if (!class_exists('amr_saw_plugin_admin')) {
 		
 		function __construct() {  
 			add_action('admin_menu', array(&$this, 'register_settings_page') );
-			add_filter('plugin_action_links', array(&$this, 'add_action_link'), 10, 2 );			
 		}		
+		
 		function register_settings_page() {
 			add_options_page( $this->longname, $this->shortname, $this->accesslvl, $this->hook, array(&$this,'config_page'));
 		}		
+		
 		function plugin_options_url() {
 			return admin_url( 'options-general.php?page='.$this->hook );
 		}		
-		/**
-		 * Add a link to the settings page to the plugins list
-		 */
-		function add_action_link( $links, $file ) {
-			static $this_plugin;
-			if( empty($this_plugin) ) 
-				$this_plugin = $this->filename;
-			if ( $file == $this_plugin ) {
-				$settings_link = '<a href="' . $this->plugin_options_url() . '">' . __('Settings', 'amr-shortcode-any-widget') . '</a>';
-				array_unshift( $links, $settings_link );
-			}
-			return $links;
-		}
-
+	
 		function admin_heading($title)  {
 		echo '<div class="wrap" >
 			<div id="icon-options-general" class="icon32"><br />
@@ -55,8 +43,12 @@ if (!class_exists('amr_saw_plugin_admin')) {
 		function admin_subheading($title)  {
 			echo '<h2>'.$title.'</h2>';
 		}		
+		
 		function config_page() {
 			$this->admin_heading($this->longname); 
+			$this->where_shortcode();
+			
+			echo '<h2>Help:</h2>';
 			echo '<h3>More detailed instructions at the wordpress plugin <a target="_new" href="http://wordpress.org/plugins/amr-shortcode-any-widget/installation">installation and faq pages.</a></h3>';
 			echo '<ol>';
 			echo '<li>';
@@ -188,13 +180,10 @@ if (!class_exists('amr_saw_plugin_admin')) {
 			echo '</li>';
 			echo '</ul>';
 			echo '<br />';
+			
 
 		}		
 
-
-		/**
-		 * Info box with link to the support forums.
-		 */
 		function plugin_support() {
 			$content = '<p>'.__('If you have any problems with this plugin or good ideas for improvements or new features, please talk about them in the','amr-shortcode-any-widget').' <a href="http://wordpress.org/tags/'.$this->hook.'">'.__("Support forums",'amr-shortcode-any-widget').'</a>.</p>';
 			$this->postbox($this->hook.'support', 'Need support?', $content);
@@ -208,7 +197,50 @@ if (!class_exists('amr_saw_plugin_admin')) {
 			}
 			return $text;
 		}
+		
+		function where_shortcode() {
+			global $wpdb;
+			//$pattern = get_shortcode_regex(array('do_widget'));
+			
+			echo '<h2>'.__('This site is using do_widget shortcodes in the following:','amr-shortcode-any-widget').'</h2>';
+			$results 	= array();
+			$query  	= "SELECT * FROM $wpdb->posts WHERE post_status IN ( 'publish', 'future') and post_content LIKE '%[do_widget%]%' ORDER BY post_date DESC;" ;
+			//$query  	= "SELECT * FROM $wpdb->posts WHERE post_status IN ( 'publish', 'future') and post_content REGEXP '".$pattern."' ORDER BY post_date DESC;" ;
+			$results 	= $wpdb->get_results($query);
+
+			echo '<table class="widefat wp-list-table striped"><thead><tr><th>';
+			_e('Post');
+			echo '</th><th>';
+			_e('Published');
+			echo '</th><th>';
+			_e('Shortcodes');
+			echo '</th></tr></thead><tbody>';
+			foreach($results as $i => $result) {
+				echo '<tr><td>';
+				edit_post_link($result->post_title.' ',' ',' ',$result->ID);
+				echo '</td><td>'.substr($result->post_date,0,11);
+				if (!($result->post_status == 'publish')) _e($result->post_status);
+				echo '</td><td>';
+				
+				preg_match_all("^\[(.*)\]^",$result->post_content,$matches, PREG_PATTERN_ORDER);
+				
+				foreach ($matches[0] as $j=> $m) {
+					if (!empty($matches[1][$j])) {
+						
+						echo $m;
+						echo '<br />';
+					}						
+				};
+				echo '<td></tr>';
+				
+			}
+			echo '</tbody></table>';
+				
+
+		}
+			
+			
+		
 	}
 }
 
-?>

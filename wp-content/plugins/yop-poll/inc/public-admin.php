@@ -68,7 +68,7 @@
          *
          */
         public function load_translation_file() {
-            $plugin_path = $this->_config->plugin_dir . '/' . $this->_config->languages_dir;
+            $plugin_path = YOP_POLL_PLUGIN_DIR . '/languages';
             load_plugin_textdomain( 'yop_poll', false, $plugin_path );
         }
 
@@ -158,10 +158,17 @@
                 $per_page       = count( $archive );
             }
 
-
+            $query_arg = remove_query_arg( 'yop_poll_page', $_SERVER['REQUEST_URI'] );
+            $query_url = parse_url($query_arg, PHP_URL_QUERY);
+            if( isset($query_url) && ($query_url != "")) {
+                $query_char = "&";
+            }
+            else {
+                $query_char = "?";
+            }
             $args = array(
-                'base'      => remove_query_arg( 'yop_poll_page', $_SERVER['REQUEST_URI'] ) . '%_%',
-                'format'    => '&yop_poll_page=%#%',
+                'base'      => $query_arg . '%_%',
+                'format'    => $query_char . 'yop_poll_page=%#%',
                 'total'     => $total_per_page,
                 'current'   => max( 1, $yop_poll_page ),
                 'prev_next' => true,

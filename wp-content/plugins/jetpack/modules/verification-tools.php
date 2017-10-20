@@ -1,12 +1,13 @@
 <?php
 
 /**
- * Module Name: Site Verification
- * Module Description: Verify your site or domain with Google Search Console, Pinterest, and others.
+ * Module Name: Site verification
+ * Module Description: Establish your site's authenticity with external services.
  * First Introduced: 3.0
  * Sort Order: 33
  * Requires Connection: No
  * Auto Activate: Yes
+ * Feature: Engagement
  * Additional Search Queries: webmaster, seo, google, bing, pinterest, search, console
  */
 

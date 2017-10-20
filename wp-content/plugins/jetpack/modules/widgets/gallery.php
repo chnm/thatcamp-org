@@ -3,7 +3,7 @@
 /*
 Plugin Name: Gallery
 Description: Gallery widget
-Author: Automattic, Inc.
+Author: Automattic Inc.
 Version: 1.0
 Author URI: http://automattic.com
 */
@@ -20,7 +20,6 @@ class Jetpack_Gallery_Widget extends WP_Widget {
 			'description' => __( 'Display a photo gallery or slideshow', 'jetpack' ),
 			'customize_selective_refresh' => true,
 		);
-		$control_ops 	= array( 'width' => 250 );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 
@@ -28,8 +27,7 @@ class Jetpack_Gallery_Widget extends WP_Widget {
 			'gallery',
 			/** This filter is documented in modules/widgets/facebook-likebox.php */
 			apply_filters( 'jetpack_widget_name', __( 'Gallery', 'jetpack' ) ),
-			$widget_ops,
-			$control_ops
+			$widget_ops
 		);
 
 		if ( is_customize_preview() ) {
@@ -134,6 +132,9 @@ class Jetpack_Gallery_Widget extends WP_Widget {
 		echo "\n" . '</div>'; // .widget-gallery-$type
 
 		echo "\n" . $after_widget;
+
+		/** This action is documented in modules/widgets/gravatar-profile.php */
+		do_action( 'jetpack_stats_extra', 'widget_view', 'gallery' );
 	}
 
 	/**
@@ -253,7 +254,7 @@ class Jetpack_Gallery_Widget extends WP_Widget {
 
 		foreach ( $instance['attachments'] as $attachment ) {
 			$attachment_image_src = wp_get_attachment_image_src( $attachment->ID, 'full' );
-			$attachment_image_src = $attachment_image_src[0]; // [url, width, height]
+			$attachment_image_src = jetpack_photon_url( $attachment_image_src[0], array( 'w' => $this->_instance_width ) ); // [url, width, height]
 
 			$caption 	= wptexturize( strip_tags( $attachment->post_excerpt ) );
 
@@ -416,11 +417,8 @@ class Jetpack_Gallery_Widget extends WP_Widget {
 			);
 
 			wp_localize_script( 'gallery-widget-admin', '_wpGalleryWidgetAdminSettings', $js_settings );
-			if( is_rtl() ) {
-				wp_enqueue_style( 'gallery-widget-admin', plugins_url( '/gallery/css/rtl/admin-rtl.css', __FILE__ ) );
-			} else {
-				wp_enqueue_style( 'gallery-widget-admin', plugins_url( '/gallery/css/admin.css', __FILE__ ) );
-			}
+			wp_enqueue_style( 'gallery-widget-admin', plugins_url( '/gallery/css/admin.css', __FILE__ ) );
+			wp_style_add_data( 'gallery-widget-admin', 'rtl', 'replace' );
 		}
 	}
 }

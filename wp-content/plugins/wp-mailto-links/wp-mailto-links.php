@@ -4,19 +4,19 @@
  *
  * @package  WPML
  * @category WordPress Plugin
- * @version  2.1.2
+ * @version  2.1.6
  * @author   Victor Villaverde Laan
  * @link     http://www.freelancephp.net/wp-mailto-links-plugin
- * @license  GPLv2+ license
+ * @license  Dual licensed under the MIT and GPLv2+ licenses
  *
  * @wordpress-plugin
  * Plugin Name:    WP Mailto Links - Manage Email Links
- * Version:        2.1.2
+ * Version:        2.1.6
  * Plugin URI:     http://www.freelancephp.net/wp-mailto-links-plugin
  * Description:    Manage mailto links on your site and protect email addresses from spambots, set mail icon and more.
  * Author:         Victor Villaverde Laan
  * Author URI:     http://www.freelancephp.net
- * License:        GPLv2+ license
+ * License:        Dual licensed under the MIT and GPLv2+ licenses
  * Text Domain:    wp-mailto-links
  * Domain Path:    /languages
  */
@@ -37,14 +37,13 @@ call_user_func(function () {
     WPRun_AutoLoader_0x5x0::register();
     WPRun_AutoLoader_0x5x0::addPath(WP_MAILTO_LINKS_DIR . '/classes');
 
-    // load text domain
-    add_action('plugins_loaded', function () {
-        load_plugin_textdomain('wp-mailto-links', false, plugin_basename(WP_MAILTO_LINKS_DIR) . '/languages/');
-    });
 
     /**
      * Create plugin components
      */
+
+    // create text domain
+    WPML_TextDomain::create();
 
     // create option
     $option = WPML_Option_Settings::create();
@@ -54,13 +53,26 @@ call_user_func(function () {
     WPML_RegisterHook_Uninstall::create(WP_MAILTO_LINKS_FILE, $option);
 
     if (is_admin()) {
-        WPML_AdminPage_Settings::create($option);
+
+        // create meta boxes
+        $metaBoxes = WPML_AdminPage_Settings_MetaBoxes::create($option);
+
+        // create help tabs
+        $helpTabs = WPML_AdminPage_Settings_HelpTabs::create();
+
+        // create admin settings page
+        WPML_AdminPage_Settings::create($option, $metaBoxes, $helpTabs);
+
     } else {
+
         // create custom filters final_output and widget_output
         WPRun_Filter_FinalOutput_0x5x0::create();
         WPRun_Filter_WidgetOutput_0x5x0::create();
 
+        // create email encoder
         $emailEncoder = WPML_Front_Email::create($option);
+
+        // create front site
         WPML_Front_Site::create($option, $emailEncoder);
 
         // create shortcode
@@ -69,6 +81,7 @@ call_user_func(function () {
         // create template tags
         WPML_TemplateTag_Filter::create($option, $emailEncoder);
         WPML_TemplateTag_Mailto::create($emailEncoder);
+
     }
 
 });

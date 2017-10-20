@@ -12,7 +12,7 @@ require_once(dirname(__FILE__).'/syndicatedpostxpathquery.class.php');
  * different feed formats, which may be useful to FeedWordPress users
  * who make use of feed data in PHP add-ons and filters.
  *
- * @version 2013.0525
+ * @version 2017.1004
  */
 class SyndicatedPost {
 	var $item = null;	// MagpieRSS representation
@@ -129,6 +129,7 @@ class SyndicatedPost {
 			);
 			
 			$excerpt = apply_filters('syndicated_item_excerpt', $this->excerpt(), $this);
+
 			if (!empty($excerpt)):
 				$this->post['post_excerpt'] = $excerpt;
 			endif;
@@ -258,7 +259,6 @@ class SyndicatedPost {
 
 			$this->post['post_type'] = apply_filters('syndicated_post_type', $this->link->setting('syndicated post type', 'syndicated_post_type', 'post'), $this);
 		endif;
-		
 	} /* SyndicatedPost::__construct() */
 
 	#####################################
@@ -413,18 +413,23 @@ class SyndicatedPost {
 		$content = $this->content();
 
 		// Ignore whitespace, case, and tag cruft.
-		$theExcerpt = preg_replace('/\s+/', '', strtolower(strip_tags($excerpt)));
-		$theContent = preg_replace('/\s+/', '', strtolower(strip_tags($content)));
-
+		$theExcerpt = preg_replace('/\s+/', '', strtolower(strip_tags(html_entity_decode($excerpt))));
+		$theContent = preg_replace('/\s+/', '', strtolower(strip_tags(html_entity_decode($content))));
 		if ( empty($excerpt) or $theExcerpt == $theContent ) :
 			# If content is available, generate an excerpt.
 			if ( strlen(trim($content)) > 0 ) :
 				$excerpt = strip_tags($content);
 				if (strlen($excerpt) > 255) :
-					$excerpt = substr($excerpt,0,252).'...';
+					if (is_object($this->link) and is_object($this->link->simplepie)) :
+						$encoding = $this->link->simplepie->get_encoding();
+					else :
+						$encoding = get_option('blog_charset', 'utf8');
+					endif;
+					$excerpt = mb_substr($excerpt,0,252,$encoding).'...';
 				endif;
 			endif;
 		endif;
+
 		return $excerpt;
 	} /* SyndicatedPost::excerpt() */
 
@@ -584,9 +589,24 @@ class SyndicatedPost {
 		return $hash;
 	} /* SyndicatedPost::update_hash() */
 
+	/**
+	 * SyndicatedPost::normalize_guid_prefix(): generates a normalized URL
+	 * prefix (including scheme, authority, full path, and the beginning of
+	 * a query string) for creating guids that conform to WordPress's
+	 * internal constraints on the URL space for valid guids. To create a
+	 * normalized guid, just concatenate a valid URL query parameter value
+	 * to the returned URL.
+	 *
+	 * @return string The URL prefix generated.
+	 *
+	 * @uses trailingslashit()
+	 * @uses home_url()
+	 * @uses apply_filters()
+	 */
 	static function normalize_guid_prefix () {
-		return trailingslashit(get_bloginfo('url')).'?guid=';
-	}
+		$url = trailingslashit(home_url(/*path=*/ '', /*scheme=*/ 'http'));
+		return apply_filters('syndicated_item_guid_normalized_prefix', $url . '?guid=');
+	} /* SyndicatedPost::normalize_guid_prefix() */
 
 	static function normalize_guid ($guid) {
 		$guid = trim($guid);
@@ -596,6 +616,23 @@ class SyndicatedPost {
 			$guid = SyndicatedPost::normalize_guid_prefix().md5($guid);
 		endif;
 		$guid = trim($guid);
+		
+		return $guid;
+	} /* SyndicatedPost::normalize_guid() */
+
+	static function alternative_guid_prefix () {
+		$url = trailingslashit(home_url(/*path=*/ '', /*scheme=*/ 'https'));
+		return apply_filters('syndicated_item_guid_normalized_prefix', $url . '?guid=');
+	}
+	static function alternative_guid ($guid) {
+		$guid = trim($guid);
+		if (preg_match('/^[0-9a-z]{32}$/i', $guid)) : // MD5
+			$guid = SyndicatedPost::alternative_guid_prefix().strtolower($guid);
+		elseif ((strlen(esc_url($guid)) == 0) or (esc_url($guid) != $guid)) :
+			$guid = SyndicatedPost::alternative_guid_prefix().md5($guid);
+		endif;
+		$guid = trim($guid);
+		
 		return $guid;
 	} /* SyndicatedPost::normalize_guid() */
 
@@ -1417,7 +1454,7 @@ class SyndicatedPost {
 		return $this->_wp_id;
 	}
 
-	function store () {
+	public function store () {
 		global $wpdb;
 
 		if ($this->filtered()) : // This should never happen.
@@ -1679,6 +1716,7 @@ class SyndicatedPost {
 				
 				// Go ahead and insert the first post record to
 				// anchor the revision history.
+
 				$this->_wp_id = wp_insert_post($sdbpost, /*return wp_error=*/ true);
 				
 				$dbpost['ID'] = $this->_wp_id;
@@ -2239,6 +2277,10 @@ EOM;
 							case 'existing_user_login' :
 								// Add a random disambiguator
 								$userdata['user_login'] .= substr(md5(uniqid(microtime())), 0, 6);
+								break;
+							case 'user_nicename_too_long' :
+								// Add a limited 50 caracters user_nicename based on user_login
+                                				$userdata['user_nicename'] = mb_substr( $userdata['user_login'], 0, 50 );
 								break;
 							case 'existing_user_email' :
 								// No disassemble!

@@ -155,6 +155,20 @@ if ( ! function_exists( 'AA_is_super_admin' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'is_valid_url' ) ) :
+	/**
+	 * Is this a valid url
+	 *
+	 * @param $url
+	 * @return bool
+	 */
+
+	function is_valid_url( $maybe_url ) {
+		
+		return filter_var( $maybe_url, FILTER_VALIDATE_URL );
+	}
+endif;
+
 if ( ! function_exists( 'AA_donateButton' ) ):
 
 	/**

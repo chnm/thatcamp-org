@@ -30,7 +30,6 @@ jQuery(document).ready(function(){
         },
 
         success: function( data ) {
-
             data = yop_poll_extractApiResponse( data );
 
             data = data.split( ';' );

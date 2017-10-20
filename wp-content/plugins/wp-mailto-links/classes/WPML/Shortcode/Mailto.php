@@ -4,12 +4,12 @@
  *
  * @package  WPML
  * @category WordPress Plugins
- * @version  2.1.2
+ * @version  2.1.6
  * @author   Victor Villaverde Laan
  * @link     http://www.freelancephp.net/
  * @link     https://github.com/freelancephp/WP-Mailto-Links
  * @link     https://wordpress.org/plugins/wp-mailto-links/
- * @license  GPLv2+ license
+ * @license  Dual licensed under the MIT and GPLv2+ licenses
  */
 final class WPML_Shortcode_Mailto extends WPRun_BaseAbstract_0x5x0
 {

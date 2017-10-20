@@ -1,19 +1,24 @@
 === Email Log ===
 Contributors: sudar  
-Tags: email, log, multisite  
-Requires at least: 3.3  
-Tested up to: 4.5  
-Stable tag: 1.8.2  
+Tags: email, log, log email, resend email, multisite  
+Requires PHP: 5.3  
+Requires at least: 4.0  
+Tested up to: 4.9  
+Stable tag: 2.2.0  
 
-Logs every email sent through WordPress. Works with WordPress Multisite as well
+Log and view all outgoing emails from WordPress. Works with WordPress Multisite as well.
 
 == Description ==
 
-Logs every email sent through WordPress and provides a UI where you can view them.
+Email Log is a WordPress plugin that allows you to easily log and view all emails sent from WordPress.
+This would be very useful for debugging email related problems in your WordPress site or for storing sent emails for auditing purposes.
+
+You can perform advanced actions like re-sending email, automatically forwarding emails or export logs with our [premium add-ons](https://wpemaillog.com/store/?utm_campaign=Upsell&utm_medium=wporg&utm_source=readme&utm_content=store).
 
 ### Viewing logged emails
 
-The logged emails will be stored in a separate table and can be viewed from the admin interface. While viewing the logs, the emails can be filtered or sorted based on the date, email, subject etc.
+The logged emails will be stored in a separate table and can be viewed from the admin interface.
+While viewing the logs, the emails can be filtered or sorted based on the date, email, subject etc.
 
 ### Deleting logged emails
 
@@ -21,11 +26,14 @@ In the admin interface, all the logged emails can be delete in bulk or can also 
 
 ### Resend email (Pro addon)
 
-You can [buy the Resend email pro addon](http://sudarmuthu.com/wordpress/email-log/pro-addons#resend-email-addon), which allows you to resend the email directly from the email log. The addon allows you to modify the different fields before resending the email. The cost of the addon is $15 and you can buy it through [paypal](http://sudarmuthu.com/out/buy-email-log-resend-email-addon).
+You can [buy the Resend email pro add-on](https://wpemaillog.com/addons/resend-email/?utm_campaign=Upsell&utm_medium=wporg&utm_source=readme&utm_content=re),
+which allows you to resend the email directly from the email log.
+The add-on allows you to modify the different fields before resending the email.
 
 ### More Fields (Pro addon)
 
-You can [buy the More Fields pro addon](http://sudarmuthu.com/wordpress/email-log/pro-addons#more-fields-addon), which shows additional fields in the email log page. The following are the additional fields that are added by this addon.
+You can [buy the More Fields pro add-on](https://wpemaillog.com/addons/more-fields/?utm_campaign=Upsell&utm_medium=wporg&utm_source=readme&utm_content=mf),
+which shows additional fields in the email log page. The following are the additional fields that are added by this addon.
 
 - From
 - CC
@@ -33,11 +41,12 @@ You can [buy the More Fields pro addon](http://sudarmuthu.com/wordpress/email-lo
 - Reply To
 - Attachment
 
-The cost of the addon is $15 and you can buy it through [paypal](http://sudarmuthu.com/out/buy-email-log-more-fields-addon).
-
 ### Forward email (Pro addon)
 
-You can [buy the Forward email pro addon](http://sudarmuthu.com/wordpress/email-log/pro-addons#forward-email-addon), which allows you to send a copy of all the emails send from WordPress, to another email address. The addon allows you to choose whether you want to forward through to, cc or bcc fields. This can be extremely useful when you want to debug by analyzing the emails that are sent from WordPress. The cost of the addon is $15 and you can buy it through [paypal](http://sudarmuthu.com/out/buy-email-log-forward-email-addon).
+You can [buy the Forward email pro add-on](https://wpemaillog.com/addons/more-fields/?utm_campaign=Upsell&utm_medium=wporg&utm_source=readme&utm_content=fe),
+which allows you to send a copy of all the emails send from WordPress, to another email address.
+The addon allows you to choose whether you want to forward through to, cc or bcc fields.
+This can be extremely useful when you want to debug by analyzing the emails that are sent from WordPress.
 
 ### Cleaning up db on uninstall
 
@@ -45,42 +54,22 @@ As [recommended by Ozh][1], the Plugin has an uninstall hook which will clean up
 
  [1]: http://sudarmuthu.com/blog/2009/10/07/lessons-from-wordpress-plugin-competition.html
 
+### Documentation
+
+You can find fully searchable documentation about using the plugin in the [doc section of the Email Log](https://wpemaillog.com/docs/) website.
+
 ### Development
 
-The development of the Plugin happens over at [github](http://github.com/sudar/email-log). If you want to contribute to the Plugin, [fork the project at github](http://github.com/sudar/email-log) and send me a pull request.
+The development of the Plugin happens over at [github](http://github.com/sudar/email-log).
+If you want to contribute to the Plugin, [fork the project at github](http://github.com/sudar/email-log) and send me a pull request.
 
 If you are not familiar with either git or Github then refer to this [guide to see how fork and send pull request](http://sudarmuthu.com/blog/contributing-to-project-hosted-in-github).
 
-If you are looking for ideas, then you can start with one of the following TODO items :)
-
-### TODO for Future releases
-
-The following are the features that I am thinking of adding to the Plugin, when I get some free time. If you have any feature request or want to increase the priority of a particular feature, then let me know.
-
-- Add option to automatically delete the logs periodically
-- Add the ability to resend the emails
-- <strike>Make it MU compatible</strike>. Done in v1.7
-
 ### Support
 
-- If you have found a bug/issue or have a feature request, then post them in [github issues](https://github.com/sudar/email-log/issues)
-- If you have a question about usage or need help to troubleshoot, then post in WordPress forums or leave a comment in [Plugins's home page][1]
-- If you like the Plugin, then kindly leave a review/feedback at [WordPress repo page][7].
-- If you find this Plugin useful or and wanted to say thank you, then there are ways to [make me happy](http://sudarmuthu.com/if-you-wanna-thank-me) :) and I would really appreciate if you can do one of those.
-- If anything else, then contact me in [twitter][2].
-
-### Stay updated
-
-I would be posting updates about this Plugin in my [blog][3] and in [Twitter][2]. If you want to be informed when new version of this Plugin is released, then you can either subscribe to this [blog's RSS feed][4] or [follow me in Twitter][2].
-
-You can also checkout some of the [other Plugins that I have released][5].
-
- [1]: http://sudarmuthu.com/wordpress/email-log
- [2]: http://twitter.com/sudarmuthu
- [3]: http://sudarmuthu.com/blog
- [4]: http://sudarmuthu.com/feed
- [5]: http://sudarmuthu.com/wordpress
- [7]: http://wordpress.org/extend/plugins/email-log
+- If you have a question about usage of the free plugin or need help to troubleshoot, then post in [WordPress forums](https://wordpress.org/support/plugin/email-log).
+- If you have a question about any of the pro add-ons or have a feature request then post them in the [support section of our site](https://wpemaillog.com/support/?utm_campaign=Upsell&utm_medium=wporg&utm_source=readme&utm_content=support).
+- If you have any development related questions, then post them as [github issues](https://github.com/sudar/email-log/issues)
 
 == Translation ==
 
@@ -90,7 +79,9 @@ The Plugin currently has translations for the following languages.
 *   Lithuanian (Thanks  Vincent G)
 *   Dutch (Thanks Zjan Preijde)
 
-The pot file is available with the Plugin. If you are willing to do translation for the Plugin, use the pot file to create the .po files for your language and let me know. I will add it to the Plugin after giving credit to you.
+The pot file is available with the Plugin.
+If you are willing to do translation for the Plugin, use the pot file to create the .po files for your language and let me know.
+I will add it to the Plugin after giving credit to you.
 
 == Installation ==
 
@@ -102,7 +93,10 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 ### The content of the email is not getting logged when I am using wpmandrill plugin
 
-wpmandrill plugin has a bug that prevents this plugin from logging the content of the email. More details about the bug is available at http://wordpress.org/support/topic/mandrill-is-changing-the-names-of-args-in-the-filter?replies=1. I have asked the author of the plugin to fix it and it might get fixed it the next release. Meanwhile, I have added a hack to handle this condition in v1.7.3 of my plugin. So if the content is not getting logged, then upgrade to v1.7.3.
+wpmandrill plugin has a bug that prevents this plugin from logging the content of the email.
+More details about the bug is available at http://wordpress.org/support/topic/mandrill-is-changing-the-names-of-args-in-the-filter?replies=1.
+I have asked the author of the plugin to fix it and it might get fixed it the next release.
+Meanwhile, I have added a hack to handle this condition in v1.7.3 of my plugin. So if the content is not getting logged, then upgrade to v1.7.3.
 
 == Screenshots ==
 
@@ -110,16 +104,52 @@ wpmandrill plugin has a bug that prevents this plugin from logging the content o
 
 2. This screenshot shows how you can configure the email display screen. You can choose the fields and the number of emails per page
 
-3. This screenshot shows the additional fields that will be added by the [more fields](http://sudarmuthu.com/wordpress/email-log/pro-addons#more-fields-addon) addon
+3. The above screenshot shows the HTML version (if available) of the logged email that you choose to view
 
-4. The above screenshot shows how the logged emails will be displayed by the Plugin after you install the [more fields](http://sudarmuthu.com/wordpress/email-log/pro-addons#more-fields-addon) addon
+4. The above screenshot shows the text version of the logged email that you choose to view
 
-5. This screenshot shows the settings page of [forward email](http://sudarmuthu.com/wordpress/email-log/pro-addons#forward-email-addon) addon
+5. The above screenshot shows how you can search logged emails by date
 
 == Readme Generator ==
 
 This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/wp-readme'>wp-readme</a>, which generates readme files for WordPress Plugins.
 == Changelog ==
+
+= v2.2.0 - (2017-10-09) =
+- New: Dashboard Widget that display summary about email logs.
+- Tweak: Performance improvements in add-on license code.
+
+= v2.1.0 - (2017-09-21) =
+- New: GUI option to choose the user roles that can access email logs.
+- New: GUI option to delete email log table when the plugin is uninstalled.
+- Tweak: Performance improvements.
+- Tweak: Delete all traces of the plugin from DB if the user chooses to destroy data during uninstall.
+- Fix: Handle cases where there is a quote in front of email address.
+- Fix: Handle cases where array passed to `wp_mail` may not contain all the required fields.
+
+= v2.0.2 - (2017-08-07) =
+- Fix: Renamed include/util directory to correct case. This caused issues in some install.
+
+= v2.0.1 - (2017-08-04) =
+- Fix: Fixed a JavaScript issue in view logs page.
+- Fix: Fixed a CSS issue in view logs page.
+- Fix: Fixed a race condition between plugin and add-ons.
+
+= v2.0.0 - (2017-08-04) =
+- New: Ability to filter logs by date.
+- New: Ability to filter logs by name.
+- New: Complete rewrite for better performance.
+- Docs: Dropped support for PHP 5.2
+
+= v1.9.1 - (2016-07-02) - (Dev time: 0.5 hour) =
+- Fix: Only allow users with `manage_option` capability to view email content.
+
+= v1.9 - (2016-06-19) - (Dev time: 6 hours) =
+- Fix: Improve the performance of count query (issue #33)
+- Docs: Added access modifiers to class methods
+- Docs: Removed unused array_get() method
+- Docs: Inline documentation added
+- Tests: Added Unit tests
 
 = v1.8.2 (2016-04-20) - (Dev time: 1 hour) =
 - Tweak: Log all emails from the TO field. Earlier the plugin was logging only the first email
@@ -128,7 +158,7 @@ This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/
 = v1.8.1 (2015-12-27) - (Dev time: 0.5 hour) =
 - Fix: Fixed the "Delete All Logs" issue that was introduced in v1.8
 
-= v1.8 (2015-12-26) - (Dev time: 5 hour) =
+= v1.8 (2015-12-26) - (Dev time: 5 hours) =
 - New: Added filters and actions for addons
 - New: Added Resend Email Addon
 - Tweak: Optimize for large number of logs
@@ -243,6 +273,27 @@ This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/
 - Initial Release
 
 == Upgrade Notice ==
+
+= 2.2.0 =
+Added a Dashboard Widget that display summary information about email logs.
+
+= 2.1.0 =
+GUI option to choose who can access email logs and performance improvements.
+
+= 2.0.2 =
+Fixed the case of the Util directory. This caused issues in some install.
+
+= 2.0.1 =
+Fixed a JavaScript issue that was introduced in v2.0.0
+
+= 2.0.0 =
+Ability to search logs by date. Dropped support to PHP 5.2
+
+= 1.9.1 =
+- Fixed a minor security issue that allowed unprevilleged users to view content of logged emails
+
+= 1.9 =
+- Fixed issues with pagination.
 
 = 1.8.2 =
 Added the ability to log all emails in the TO field instead of just the first one

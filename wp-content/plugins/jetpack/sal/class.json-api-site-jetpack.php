@@ -1,6 +1,7 @@
 <?php
 
 require_once dirname( __FILE__ ) . '/class.json-api-site-jetpack-base.php';
+require_once dirname( __FILE__ ) . '/class.json-api-post-jetpack.php';
 
 // this code runs on Jetpack (.org) sites
 class Jetpack_Site extends Abstract_Jetpack_Site {
@@ -16,12 +17,61 @@ class Jetpack_Site extends Abstract_Jetpack_Site {
 		return null;
 	}
 
+	protected function main_network_site() {
+		return network_site_url();
+	}
+
+	protected function wp_version() {
+		global $wp_version;
+		return $wp_version;
+	}
+
+	protected function max_upload_size() {
+		return wp_max_upload_size();
+	}
+
+	protected function wp_memory_limit() {
+		return wp_convert_hr_to_bytes( WP_MEMORY_LIMIT );
+	}
+
+	protected function wp_max_memory_limit() {
+		return wp_convert_hr_to_bytes( WP_MAX_MEMORY_LIMIT );
+	}
+
+	protected function is_main_network() {
+		return Jetpack::is_multi_network();
+	}
+
+	public function is_multisite() {
+		return (bool) is_multisite();
+	}
+
+	public function is_single_user_site() {
+		return (bool) Jetpack::is_single_user_site();
+	}
+
+	protected function is_version_controlled() {
+		return Jetpack_Sync_Functions::is_version_controlled();
+	}
+
+	protected function file_system_write_access() {
+		return Jetpack_Sync_Functions::file_system_write_access();
+	}
+
 	protected function current_theme_supports( $feature_name ) {
 		return current_theme_supports( $feature_name );
 	}
 
 	protected function get_theme_support( $feature_name ) {
 		return get_theme_support( $feature_name );
+	}
+
+	public function get_updates() {
+		return (array) Jetpack::get_updates();
+	}
+
+	function get_id() {
+		return $this->platform->token->blog_id;
 	}
 
 	function has_videopress() {
@@ -56,6 +106,10 @@ class Jetpack_Site extends Abstract_Jetpack_Site {
 	}
 
 	function get_frame_nonce() {
+		return false;
+	}
+
+	function is_headstart_fresh() {
 		return false;
 	}
 
@@ -94,25 +148,38 @@ class Jetpack_Site extends Abstract_Jetpack_Site {
 		return get_bloginfo( 'language' );
 	}
 
-	function get_icon() {
-		if ( function_exists( 'jetpack_site_icon_url' ) && function_exists( 'jetpack_photon_url' ) ) {
-			return array(
-				'img' => (string) jetpack_photon_url( jetpack_site_icon_url( get_current_blog_id() , 80 ), array( 'w' => 80 ), 'https' ),
-				'ico' => (string) jetpack_photon_url( jetpack_site_icon_url( get_current_blog_id() , 16 ), array( 'w' => 16 ), 'https' ),
-			);
-		}
-
-		return null;
-	}
-
 	function is_jetpack() {
 		return true;
 	}
 
-	protected function get_jetpack_version() {
+	public function get_jetpack_version() {
 		return JETPACK__VERSION;
 	}
 
 	function get_ak_vp_bundle_enabled() {}
+
+	function get_jetpack_seo_front_page_description() {
+		return Jetpack_SEO_Utils::get_front_page_meta_description();
+	}
+
+	function get_jetpack_seo_title_formats() {
+		return Jetpack_SEO_Titles::get_custom_title_formats();
+	}
+
+	function get_verification_services_codes() {
+		return get_option( 'verification_services_codes', null );
+	}
+
+	function get_podcasting_archive() {
+		return null;
+	}
+
+	/**
+	 * Post functions
+	 */
+
+	function wrap_post( $post, $context ) {
+		return new Jetpack_Post( $this, $post, $context );
+	}
 
 }

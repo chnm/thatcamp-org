@@ -56,10 +56,25 @@ function mailusers_get_recipients_from_uam_group($uam_ids, $exclude_id='', $meta
     $ids = array() ;
 
     $query = $wpdb->prepare("
-		SELECT DISTINCT a.ID FROM $wpdb->users a
-		INNER JOIN {$wpdb->prefix}uam_accessgroup_to_object b ON a.id = b.object_id
-		WHERE b.object_type != 'role' AND b.group_id IN (" . $in . ")", $uam_ids) ;
+        SELECT DISTINCT a.ID FROM $wpdb->users a
+        INNER JOIN {$wpdb->prefix}uam_accessgroup_to_object b ON a.id = b.object_id
+        WHERE b.object_type != 'role' AND b.group_id IN (" . $in . ")", $uam_ids) ;
 
+    //  The following query was provided by an Email Users user who was using roles.
+    //  It is provided here simply as a reference in the event the query above isn't
+    //  returning the expected results due to role usage.
+
+    /**
+    $query = $wpdb->prepare("
+        SELECT a.ID
+        FROM {$wpdb->prefix}prefixusers a
+        LEFT JOIN {$wpdb->prefix}uam_accessgroup_to_object b ON a.id = b.object_id AND b.object_type != 'role'
+        LEFT JOIN {$wpdb->prefix}accessgroup_to_object c ON c.object_type = 'role'
+            AND EXISTS (SELECT user_id FROM {$wpdb->prefix}usermeta WHERE meta_key = 'wp_capabilities'
+            AND meta_value LIKE concat('%\"',c.object_id,'\"%') AND user_id = a.ID)
+        WHERE b.group_id IN (" . $in . ") OR c.group_id IN (" . $in . ")", $uam_ids) ;
+    **/
+    
     //  Get the IDs and put them in the proper format as
     //  the Query will return an array of Standard Objects
     foreach ($wpdb->get_results($query) as $id)

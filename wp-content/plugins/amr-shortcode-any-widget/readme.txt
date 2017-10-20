@@ -1,8 +1,8 @@
 === amr shortcode any widget ===
 Contributors: anmari
 Tags: shortcode, widget, page, templates, page template, widget_area, sidebar
-Tested up to: 4.5
-Version: 3.3
+Tested up to: 4.8.1
+Version: 3.6
 Stable tag: trunk
 
 == Description ==
@@ -12,6 +12,8 @@ Set up your widget first in a normal sidebar.  Check it works.
 THEN Drag your chosen widgets to the sidebar called "widgets for shortcode".   
 
 Add the do_widget shortcode to the page where you would like the widget to appear (or the do_widget_area)
+
+Please see detailed info on shortcodes and parameters under the installation tab (depending what the plugin directory developers have most recently done, this may be under the FAQ, or at the very least under the readme.)
 
 Using a widget more than once? 
 
@@ -44,7 +46,7 @@ PLEASE get your widgets working in a sidebar BEFORE activating this plugin, and 
 *  [do_widget id=widgetid] .     eg: [do_widget id=tag-cloud-3]
  
 *  [do_widget_area]  (will use the  "widgets in shortcodes" widget area / sidebar
-*  [do_widget_area sidebarname] or [do_widget_area widget_area=sidebarname] for another sidebar or widget area - eg: to maximise likelihood of getting your theme's widget css to apply.  
+*  [do_widget_area sidebarid] or [do_widget_area widget_area=sidebarid] for another sidebar or widget area - eg: to maximise likelihood of getting your theme's widget css to apply.  
 
 **[do_widget ...] Parameters:**
 
@@ -79,7 +81,7 @@ If you use a widget more than once for different reasons, you may need to use th
 
 == Frequently Asked Questions ==
 
-PLEASE get your widgets working in a sidebar BEFORE activating this plugin, and PLEASE read https://wordpress.org/plugins/amr-shortcode-any-widget/installation/ and the settings page before asking any questions.
+PLEASE get your widgets working in a sidebar BEFORE activating this plugin, and PLEASE read the installation instructions (?is the plugin directory showing them!?) and the settings page before asking any questions.
 
 **Widget help, the widget is doing this, when it should do that** 
 
@@ -156,18 +158,24 @@ eg: don't like the 'aside' wrapping html styling? change the wrapping html:
 If you only using widget, maybe inserting the whole sidebar or widgertarea would give an interesting effect. Sidebar background css may apply.
 
 [do_widget_area]
- 
-
 
 == Changelog ==
+= Version 3.6 =
+*  Basically forcing an update in the hope that the third party php7compatibility checker sort itself out.  It's complaining about mixed line endings, but they're not.
+*  Added indonesian translation provided by Jordan Silaen.
+
+= Version 3.5 =
+*   Adds info showing you on which pages, posts etc you are using a do_widget or do_widget_area shortcode, just in case you forget.
+
+= Version 3.4 =
+*   Retested on wordpres 4.7 and 4.8 alpha and forcing update because of plugin directory needs trigger temporarily to show the installation instructions
+
 = Version 3.3 =
 *   Retested on wordpres 4.5 and 4.5.1-alpha
 *   Re-instated the saving of widgets in the shortcode sidebar on theme switch and the reloading of these saved widgets when theme is reactivated (Was commented out for awhile back in 2014, but appears to be working well and very useful when you changing a theme but maybe forgotten about this page that has widget on it - yeah that could be bad !
 
-
 = Version 3.2 =
 *  tweaked some error messages and handle situation better where there are no widgets or possibly empty sidebars.
-
 
 = Version 3.1 =
 *  added code for the widget-id to appear in the widget settings window.
@@ -257,9 +265,6 @@ If you only using widget, maybe inserting the whole sidebar or widgertarea would
 = 1.0 =
 *  Launch of the plugin
 
-
-
-
 == Screenshots ==
 
 1.  setting up widgets in the widgets for shortcode sidebar. The widget's user interface (UI) is used to provide a UI for the do_widget shortcode.
@@ -271,6 +276,4 @@ two rss feed widgets in shortcode sidebar - both will show if just name used
 6.  After clicking on debug message - scroll down till you see the shortcodes sidebar - the widgets and their ids will be listed. Find the id of the widget you want.
 7.  Shortcode parameters to remove widget-classes in theme like the twenty-fourteen theme (avoid white text on white background) 
 8.  Example of multiple rss widgets in twenty-fourteen theme
-
-
  

@@ -8,7 +8,7 @@ class AuthorAvatarsEditorButton {
 	/**
 	 * Constructor
 	 */
-	function AuthorAvatarsEditorButton() {
+	function __construct() {
 		$this->register();
 	}
 

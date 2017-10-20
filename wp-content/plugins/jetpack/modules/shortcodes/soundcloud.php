@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: SoundCloud Shortcode
-Plugin URI: http://wordpress.org/extend/plugins/soundcloud-shortcode/
+Plugin URI: https://wordpress.org/extend/plugins/soundcloud-shortcode/
 Description: Converts SoundCloud WordPress shortcodes to a SoundCloud widget. Example: [soundcloud]http://soundcloud.com/forss/flickermood[/soundcloud]
 Version: 2.3
 Author: SoundCloud Inc., simplified for Jetpack by Automattic, Inc.
@@ -27,7 +27,9 @@ All custom modifs are annoted with "A8C" keyword in comment.
  * Register oEmbed provider
  */
 
+/* A8C: oEmbed is handled now in core; see wp-includes/class-oembed.php
 wp_oembed_add_provider( '#https?://(?:api\.)?soundcloud\.com/.*#i', 'http://soundcloud.com/oembed', true );
+*/
 
 
 /**
@@ -57,14 +59,17 @@ function soundcloud_shortcode( $atts, $content = null ) {
 	}
 	$shortcode_options['params'] = $shortcode_params;
 
+	/* A8C: The original plugin exposes options we don't. SoundCloud omits "visual" shortcode
+	        option when false, so if logic here remains, impossible to have non-visual shortcode.
 	$player_type = soundcloud_get_option( 'player_type', 'visual' );
 	$isIframe    = $player_type !== 'flash';
 	$isVisual    = ! $player_type || $player_type === 'visual' || $shortcode_options['visual'];
+	*/
 
 	// User preference options
 	$plugin_options = array_filter(
 		array(
-			'iframe' => $isIframe,
+			'iframe' => true, // A8C: See above comment; flash is not a supported option
 			'width'  => soundcloud_get_option( 'player_width' ),
 			'height' => soundcloud_url_has_tracklist( $shortcode_options['url'] ) ? soundcloud_get_option( 'player_height_multi' ) : soundcloud_get_option( 'player_height' ),
 			'params' => array_filter(
@@ -72,7 +77,7 @@ function soundcloud_shortcode( $atts, $content = null ) {
 					'auto_play'     => soundcloud_get_option( 'auto_play' ),
 					'show_comments' => soundcloud_get_option( 'show_comments' ),
 					'color'         => soundcloud_get_option( 'color' ),
-					'visual'        => ( $isVisual ? 'true' : 'false' ),
+					'visual'        => 'false', // A8C: Merged with params below at $options assignment
 				)
 			),
 		)
@@ -248,7 +253,7 @@ function soundcloud_flash_widget( $options ) {
  * @return string Parsed content.
  */
 function jetpack_soundcloud_embed_reversal( $content ) {
-	if ( false === stripos( $content, 'w.soundcloud.com/player' ) ) {
+	if ( ! is_string( $content ) || false === stripos( $content, 'w.soundcloud.com/player' ) ) {
 		return $content;
 	}
 

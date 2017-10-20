@@ -30,7 +30,7 @@
 
 	$err_msg = '';
 	
-	get_currentuserinfo();
+	wp_get_current_user();
 	$from_name = $user_identity;
 	$from_address = $user_email;
 	$mail_format = mailusers_get_default_mail_format();
@@ -44,7 +44,7 @@
 		
 	// Replace the template variables concerning the sender details
 	// --	
-	get_currentuserinfo();
+	wp_get_current_user();
 
 	$from_name = $user_identity;
 	$from_address = $user_email;
@@ -93,7 +93,9 @@
 		<p><strong><?php _e('No recipients were found.', MAILUSERS_I18N_DOMAIN); ?></strong></p>
 <?php
 	} else {
-		mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address);
+        $useheader = mailusers_get_header_usage() != 'notification' ;
+        $usefooter = mailusers_get_footer_usage() != 'notification' ;
+		mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address, $useheader, $usefooter);
 ?>
 		<div class="updated fade">
 			<p><?php echo sprintf(__("Test email sent to %s.", MAILUSERS_I18N_DOMAIN), $from_address); ?></p>

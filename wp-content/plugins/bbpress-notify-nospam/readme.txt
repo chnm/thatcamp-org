@@ -4,11 +4,11 @@ Author URI: http://www.usestrict.net/
 Plugin URI: http://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
-Tested up to: 4.5.1
+Tested up to: 4.8.2
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.11
+Stable tag: 1.15.9.1
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
 == Description ==
@@ -18,11 +18,12 @@ This plugin integrates into bbPress and sends a notification via e-mail when new
 
 = Settings include =
 
- * Notification recipients for new topics, 
- * Notification recipients for new replies, 
- * Notification e-mail's subject and body for both new topics and replies
- * Set Background Notifications (to avoid delays in loading pages for large user databases)
- * Extensible through almost 40 handy actions and filters
+ * Override bbPress' core subscription messages with your own; 
+ * Set Notification recipient roles for new topics;
+ * Set Notification recipient roles for new replies; 
+ * Set Notification e-mail's subject and body for both new topics and replies;
+ * Send Background Notifications (to avoid delays in loading pages for large user databases);
+ * Extensible through almost 40 handy actions and filters;
 
 <blockquote>
 = Premium Add-Ons =
@@ -34,6 +35,8 @@ This plugin integrates into bbPress and sends a notification via e-mail when new
     <li><a href="http://usestrict.net/product/bbpress-notify-no-spam-buddypress-bridge/" target="_new">BuddyPress Integration</a>: Notify BuddyPress Group members of new Group Forum topics and replies.</li>
 </ul>
 
+= Partnerships =
+We've made a parnership with ISIPP.com, securing their SuretyMail Email certification (to make sure the email you send gets delivered to the inbox instead of the junk folder) for a fraction of the full price, and without the need to have a dedicated IP. Learn more about it <a href="https://usestrict.net/go/suretymail4wp" target="_new">here</a>.  
 
 </blockquote>
 
@@ -46,7 +49,8 @@ This plugin integrates into bbPress and sends a notification via e-mail when new
 
 == Frequently Asked Questions ==
 = Why am I not receiving notifications of a topic/reply that I created? =
- * As of version 1.9.4, topic/reply authors no longer get notified of their own posts.
+ * As of version 1.9.4, topic/reply authors no longer get notified of their own posts by default.
+ * Version 1.12 and up have settings to decide whether authors get notified or not.
 
 = Where are the settings? =
  * All settings are under Admin -> Settings -> Forums -> Email Notifications
@@ -55,6 +59,7 @@ This plugin integrates into bbPress and sends a notification via e-mail when new
  * Originally, this plugin was developed to alert Administrators of new topics and replies. After a few iterations, users requested the ability to send
 messages to other roles, which then could be characterized as spam. To allow your users to opt-out from receiving notifications, please consider purchasing 
 the [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/).
+ * As of version 1.12, you can use this plugin with bbPress Forum/Topic subscribers, instead of- or in addition to roles. Just turn on the Override option for Forums or Topics.
 
 = Does this plugin integrate with BuddyPress Groups? =
  * Out of the box, no. However, you can get BuddyPress Group notification functionality using our premium [bbpnns/BuddyPress Bridge plugin](http://usestrict.net/product/bbpress-notify-no-spam-buddypress-bridge/).
@@ -65,6 +70,67 @@ the [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out
 
 
 == Changelog ==
+= 1.15.9.1 =
+* Fix: Removed debugging left behind in 1.15.9
+
+= 1.15.9 =
+* Decode quotes in topics and body.
+
+= 1.15.8 =
+* Refactor topic-url code in reply notifications to improve performance.
+
+= 1.15.7 =
+* Added support for topic-title, topic-author, and topic-author-email tags in the reply subject.
+
+= 1.15.6 =
+* Remove surety message.
+
+= 1.15.5 =
+* Fix: apply bbpnns_topic_url filter when processing topic_url inside a reply as well.
+
+= 1.15.4 =
+* Added: bbpnns_core_subscribers filter.
+
+= 1.15.3 =
+* Added: topic-title, topic-author, and topic-author-email tags are now available in replies.
+
+= 1.15.2 =
+* Fix: unchecked iconv function was breaking some installs.
+
+= 1.15.1 =
+* Fix: Plain text mailouts had broken UTF-8 characters.
+
+= 1.15 =
+* Added: bbpnns_is_in_effect filter to help identify if Core Overrides are on or if a user belongs to a notifiable role.
+
+= 1.14.3 =
+* Fix: Correctly handling encoded entities.
+* Fix: Check that iconv_mime_encode is available before trying to use it.
+* Added: bbpnns signature in email headers to help with troubleshooting. 
+
+= 1.14.2 =
+* Fix: Multipart messages are now working nicely with Mailgun and regular wp_mail calls.
+* Added: HTML to text converter is now handling images, replacing the html with their alt value.
+
+= 1.14.1 =
+* Fix: Mailgun is replacing our multipart/alternative header boundary, so now admins can chose whether to send HTML, Plain Text, or Multipart messages.
+
+= 1.14 =
+* New: WYSIWYG emails, complete with automatic multipart text version for non HTML clients.
+* New: Added user-name tags support.
+
+= 1.13.1 =
+* Fix: Bad copy/paste on previous commit, which replaced the body with the subject line.
+
+= 1.13 =
+* New: Added tags to get topic and reply author email.
+
+= 1.12 =
+* New: Take over notifications for bbPress' Core Subscriptions
+* New: Decide whether authors must receive their own notifications or not
+
+= 1.11.1 =
+* ISIPP/SuretyMail partnership announcement.
 
 = 1.11 =
 * Added: calling set_time_out(0) if doing cron. This should help people who are not getting all mailouts sent due to too many recipients.
@@ -234,4 +300,4 @@ This option can be overridden by using the filter 'bbpnns_handle_mandrill_nl2br'
 
 == Upgrade Notice ==
 = 1.11 =
-Added code to help stop timeouts during cron for people who have huge recipient lists.
+Added code to help stop timeouts during cron for people who have huge recipient lists. 

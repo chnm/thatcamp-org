@@ -42,14 +42,14 @@ class WPCOM_Widget_Goodreads extends WP_Widget {
 	}
 
 	function enqueue_style() {
-		if ( is_rtl() ) {
-			wp_enqueue_style( 'goodreads-widget', plugins_url( 'goodreads/css/rtl/goodreads-rtl.css', __FILE__ ) );
-		} else {
-			wp_enqueue_style( 'goodreads-widget', plugins_url( 'goodreads/css/goodreads.css', __FILE__ ) );
-		}
+		wp_enqueue_style( 'goodreads-widget', plugins_url( 'goodreads/css/goodreads.css', __FILE__ ) );
+		wp_style_add_data( 'goodreads-widget', 'rtl', 'replace' );
 	}
 
 	function widget( $args, $instance ) {
+		/** This action is documented in modules/widgets/gravatar-profile.php */
+		do_action( 'jetpack_stats_extra', 'widget_view', 'goodreads' );
+
 		/** This filter is documented in core/src/wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' );
 
@@ -85,9 +85,6 @@ class WPCOM_Widget_Goodreads extends WP_Widget {
 		echo '<script src="' . esc_url( $goodreads_url ) . '"></script>' . "\n";
 
 		echo $args['after_widget'];
-
-		/** This action is already documented in modules/widgets/gravatar-profile.php */
-		do_action( 'jetpack_stats_extra', 'widget', 'goodreads' );
 	}
 
 	function goodreads_user_id_exists( $user_id ) {

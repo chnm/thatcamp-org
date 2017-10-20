@@ -6,12 +6,12 @@
  *
  * @package  WPML
  * @category WordPress Plugins
- * @version  2.1.2
+ * @version  2.1.6
  * @author   Victor Villaverde Laan
  * @link     http://www.freelancephp.net/
  * @link     https://github.com/freelancephp/WP-Mailto-Links
  * @link     https://wordpress.org/plugins/wp-mailto-links/
- * @license  GPLv2+ license
+ * @license  Dual licensed under the MIT and GPLv2+ licenses
  */
 final class WPML_Front_Email extends WPRun_BaseAbstract_0x5x0
 {
@@ -168,11 +168,21 @@ final class WPML_Front_Email extends WPRun_BaseAbstract_0x5x0
             $replaceBy = $this->getProtectionText();
         }
 
-        if (is_callable($replaceBy)) {
-            return preg_replace_callback($this->getEmailRegExp(), $replaceBy, $content);
-        }
+        return preg_replace_callback($this->getEmailRegExp(), function ($matches) use ($replaceBy) {
+            // workaround to skip responsive image names containing @
+            $extention = strtolower($matches[4]);
+            $excludedList = array('.jpg', '.jpeg', '.png', '.gif');
 
-        return preg_replace($this->getEmailRegExp(), $replaceBy, $content);
+            if (in_array($extention, $excludedList)) {
+                return $matches[0];
+            }
+
+            if (is_callable($replaceBy)) {
+                return call_user_func($replaceBy, $matches);
+            }
+
+            return $replaceBy;
+        }, $content);
     }
 
     /**
@@ -238,6 +248,9 @@ final class WPML_Front_Email extends WPRun_BaseAbstract_0x5x0
         if (!empty($attrs['title'])) {
             $attrs['title'] = $this->filterPlainEmails($attrs['title'], '{{email}}'); // {{email}} will be replaced in javascript
         }
+
+        // set ignore to data-attribute to prevent being processed by WPEL plugin
+        $attrs['data-wpel-link'] = 'ignore';
 
         // create element code
         $link = '<a ';

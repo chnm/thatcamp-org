@@ -4,14 +4,15 @@
 abstract class WPCOM_JSON_API_Comment_Endpoint extends WPCOM_JSON_API_Endpoint {
 	public $comment_object_format = array(
 		// explicitly document and cast all output
-		'ID'        => '(int) The comment ID.',
-		'post'      => "(object>post_reference) A reference to the comment's post.",
-		'author'    => '(object>author) The author of the comment.',
-		'date'      => "(ISO 8601 datetime) The comment's creation time.",
-		'URL'       => '(URL) The full permalink URL to the comment.',
-		'short_URL' => '(URL) The wp.me short URL.',
-		'content'   => '(HTML) <code>context</code> dependent.',
-		'status'    => array(
+		'ID'          => '(int) The comment ID.',
+		'post'        => "(object>post_reference) A reference to the comment's post.",
+		'author'      => '(object>author) The author of the comment.',
+		'date'        => "(ISO 8601 datetime) The comment's creation time.",
+		'URL'         => '(URL) The full permalink URL to the comment.',
+		'short_URL'   => '(URL) The wp.me short URL.',
+		'content'     => '(HTML) <code>context</code> dependent.',
+		'raw_content' => '(string) Raw comment content.',
+		'status'      => array(
 			'approved'   => 'The comment has been approved.',
 			'unapproved' => 'The comment has been held for review in the moderation queue.',
 			'spam'       => 'The comment has been marked as spam.',
@@ -81,6 +82,8 @@ abstract class WPCOM_JSON_API_Comment_Endpoint extends WPCOM_JSON_API_Endpoint {
 				&&
 					isset( $this->api->token_details['user'] )
 				&&
+					isset( $this->api->token_details['user']['user_email'] )
+				&&
 					$this->api->token_details['user']['user_email'] === $comment->comment_author_email
 				&&
 					$this->api->token_details['user']['display_name'] === $comment->comment_author
@@ -121,11 +124,11 @@ abstract class WPCOM_JSON_API_Comment_Endpoint extends WPCOM_JSON_API_Endpoint {
 					'ID'   => (int) $post->ID,
 					'title' => (string) get_the_title( $post->ID ),
 					'type' => (string) $post->post_type,
-					'link' => (string) $this->get_post_link( $this->api->get_blog_id_for_output(), $post->ID ),
+					'link' => (string) $this->links->get_post_link( $this->api->get_blog_id_for_output(), $post->ID ),
 				);
 				break;
 			case 'author' :
-				$response[$key] = (object) $this->get_author( $comment, 'edit' === $context && current_user_can( 'edit_comment', $comment->comment_ID ) );
+				$response[$key] = (object) $this->get_author( $comment, current_user_can( 'edit_comment', $comment->comment_ID ) );
 				break;
 			case 'date' :
 				$response[$key] = (string) $this->format_date( $comment->comment_date_gmt, $comment->comment_date );
@@ -146,6 +149,9 @@ abstract class WPCOM_JSON_API_Comment_Endpoint extends WPCOM_JSON_API_Endpoint {
 					$response[$key] = (string) $comment->comment_content;
 				}
 				break;
+			case 'raw_content':
+				$response[$key] = (string) $comment->comment_content;
+				break;
 			case 'status' :
 				$response[$key] = (string) $status;
 				break;
@@ -155,7 +161,7 @@ abstract class WPCOM_JSON_API_Comment_Endpoint extends WPCOM_JSON_API_Endpoint {
 					$response[$key] = (object) array(
 						'ID'   => (int) $parent->comment_ID,
 						'type' => (string) ( $parent->comment_type ? $parent->comment_type : 'comment' ),
-						'link' => (string) $this->get_comment_link( $blog_id, $parent->comment_ID ),
+						'link' => (string) $this->links->get_comment_link( $blog_id, $parent->comment_ID ),
 					);
 				} else {
 					$response[$key] = false;
@@ -177,14 +183,12 @@ abstract class WPCOM_JSON_API_Comment_Endpoint extends WPCOM_JSON_API_Endpoint {
 			case 'meta' :
 				$response[$key] = (object) array(
 					'links' => (object) array(
-						'self'    => (string) $this->get_comment_link( $this->api->get_blog_id_for_output(), $comment->comment_ID ),
-						'help'    => (string) $this->get_comment_link( $this->api->get_blog_id_for_output(), $comment->comment_ID, 'help' ),
-						'site'    => (string) $this->get_site_link( $this->api->get_blog_id_for_output() ),
-						'post'    => (string) $this->get_post_link( $this->api->get_blog_id_for_output(), $comment->comment_post_ID ),
-						'replies' => (string) $this->get_comment_link( $this->api->get_blog_id_for_output(), $comment->comment_ID, 'replies/' ),
-//						'author'  => (string) $this->get_user_link( $comment->user_id ),
-//						'via'     => (string) $this->get_post_link( $ping_origin_blog_id, $ping_origin_post_id ), // Ping/trackbacks
-						'likes'   => (string) $this->get_comment_link( $this->api->get_blog_id_for_output(), $comment->comment_ID, 'likes/' ),
+						'self'    => (string) $this->links->get_comment_link( $this->api->get_blog_id_for_output(), $comment->comment_ID ),
+						'help'    => (string) $this->links->get_comment_link( $this->api->get_blog_id_for_output(), $comment->comment_ID, 'help' ),
+						'site'    => (string) $this->links->get_site_link( $this->api->get_blog_id_for_output() ),
+						'post'    => (string) $this->links->get_post_link( $this->api->get_blog_id_for_output(), $comment->comment_post_ID ),
+						'replies' => (string) $this->links->get_comment_link( $this->api->get_blog_id_for_output(), $comment->comment_ID, 'replies/' ),
+						'likes'   => (string) $this->links->get_comment_link( $this->api->get_blog_id_for_output(), $comment->comment_ID, 'likes/' ),
 					),
 				);
 				break;

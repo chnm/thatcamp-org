@@ -7,7 +7,7 @@ Description: A widget that lists your most recent posts with excerpts. The numbe
 for example, you could show five posts but include the excerpt for only the most recent. 
 Supports <a href="http://robsnotebook.com/the-excerpt-reloaded/">The Excerpt Reloaded</a> and 
 <a href="http://sparepencil.com/code/advanced-excerpt/">Advanced Excerpt</a>.
-Version: 2.6
+Version: 2.6.1
 Author: Stephanie Leary
 Author URI: http://stephanieleary.com
 Text Domain: recent_posts_with_excerpts
@@ -86,7 +86,7 @@ class RecentPostsWithExcerpts extends WP_Widget {
 				$q['offset'] = $instance['offset'];
 			if (!empty($instance['tag'])) 
 				$q['tag'] = $instance['tag'];
-			$q = apply_filters('recent_posts_with_excerpts_query', $q);
+			$q = apply_filters('recent_posts_with_excerpts_query', $q, $intance);
 			$rpwe = new wp_query($q);
 			$excerpts = $instance['numexcerpts'];
 			$date = apply_filters('recent_posts_with_excerpts_date_format', $instance['date']);

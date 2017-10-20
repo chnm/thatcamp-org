@@ -89,7 +89,7 @@
                     
     // Replace the template variables concerning the sender details
     // --    
-    get_currentuserinfo();
+    wp_get_current_user();
 
     $from_name = $user_identity;
     $from_address = $user_email;

@@ -2,8 +2,8 @@
 Contributors: freelancephp
 Tags: hide, email, email address, mailto, link, antispam, protect, spambot, encode, encrypt, obfuscate, email link, protection
 Requires at least: 3.6.0
-Tested up to: 4.5.1
-Stable tag: 2.1.2
+Tested up to: 4.7.3
+Stable tag: 2.1.6
 
 Protect email addresses and mailto links from spambots and spamming. Easy to use without configuration.
 
@@ -30,8 +30,9 @@ The WPML plugin works out-of-the-box. After activating the plugin all options ar
 * [FAQ](http://wordpress.org/extend/plugins/wp-mailto-links/faq/)
 * [Github](https://github.com/freelancephp/WP-Mailto-Links)
 
-= Like this plugin? =
-This plugin is free and I don't accept any donations. If you want to show your appreciation, just [send your review](http://wordpress.org/support/view/plugin-reviews/wp-mailto-links).
+> <strong>Like this plugin?</strong><br>
+> [Rate it](http://wordpress.org/support/view/plugin-reviews/wp-mailto-links) to support the development of this plugin.
+
 
 == Installation ==
 
@@ -121,6 +122,20 @@ add_filter('wpml_mailto', 'special_mailto', 10, 4);`
 Now all mailto links will be wrapped around a `<b>`-tag.
 
 == Changelog ==
+
+= 2.1.6 =
+* Fixed bug retina png or gif images
+
+= 2.1.5 =
+* Fixed bug responsive image names containing @
+
+= 2.1.4 =
+* Fixed script conflicts on other admin pages
+* Added data-attribute for WP External Links plugin to ignore WPML links
+
+= 2.1.3 =
+ * Solved CSS overwrite
+ * Solved double filtering for final output and widget output
 
 = 2.1.2 =
  * Fixed bug only effecting PHP5.3 ($this reference within a closure)

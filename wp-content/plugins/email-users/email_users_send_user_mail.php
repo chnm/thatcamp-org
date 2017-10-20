@@ -26,14 +26,15 @@
 	} 
 ?>
 
+
 <?php
-        //printf('<div class="error nag"><p>Max Input Vars:  %s</p></div>', ini_get('max_input_vars')) ;
-        //printf('<div class="updated nag" style="border-left: 4px solid #89deee;"><p>Max Input Vars:  %s</p></div>', ini_get('max_input_vars')) ;
-//error_log(print_r($_POST, true)) ;
 	global $user_identity, $user_email, $user_ID;
 
+    // Update Custom Meta Filters
+    do_action('mailusers_update_custom_meta_filters') ;
+
 	$err_msg = '';
-	get_currentuserinfo();
+	wp_get_current_user();
 
 	$from_sender = 0;
     $from_address = empty($user_email) ? get_bloginfo('email') : $user_email;
@@ -112,7 +113,14 @@
 
 	// If error, we simply show the form again
 	if (array_key_exists('send', $_POST) && ($_POST['send']=='true') && ($err_msg == '')) {
-		// No error, send the mail
+        //  Verify WordPress nonce before proceeding ...
+        if (! isset( $_POST['mailusers_send_to_user_nonce'] ) 
+            || ! wp_verify_nonce( $_POST['mailusers_send_to_user_nonce'], 'mailusers_send_to_user' ) ) {
+
+            wp_die(printf('<div class="error fade"><p>%s</p></div>',
+                __('WordPress nonce failed to verify, requested action terminated.', MAILUSERS_I18N_DOMAIN)));
+        }
+		// No error and nonce ok, send the mail
 		
 		// Do some HTML homework if needed
 		//--
@@ -144,7 +152,9 @@
 	<?php
 		    include('email_users_user_mail_form.php');
 		} else {
-			$num_sent = mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address);
+            $useheader = mailusers_get_header_usage() != 'notification' ;
+            $usefooter = mailusers_get_footer_usage() != 'notification' ;
+			$num_sent = mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address, $useheader, $usefooter);
 			if (false === $num_sent) {
                 echo '<div class="error fade"><p><strong>' . __('There was a problem trying to send email to users.', MAILUSERS_I18N_DOMAIN) . $filtered_recipients_message . '</strong></p></div>';
 			} else if (0 === $num_sent) {

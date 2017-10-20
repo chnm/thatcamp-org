@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 /*
 Plugin Name: Email Users
-Version: 4.8.1
+Version: 4.8.7
 Plugin URI: http://wordpress.org/extend/plugins/email-users/
 Description: Allows the site editors to send an e-mail to the blog users. Credits to <a href="http://www.catalinionescu.com">Catalin Ionescu</a> who gave me (Vincent Pratt) some ideas for the plugin and has made a similar plugin. Bug reports and corrections by Cyril Crua, Pokey and Mike Walsh.  Development for enhancements and bug fixes since version 4.1 primarily by <a href="http://michaelwalsh.org">Mike Walsh</a>.
 Author: Mike Walsh & MarvinLabs
@@ -27,7 +27,7 @@ Author URI: http://www.michaelwalsh.org
 */
 
 // Version of the plugin
-define( 'MAILUSERS_CURRENT_VERSION', '4.8.1');
+define( 'MAILUSERS_CURRENT_VERSION', '4.8.7');
 
 // i18n plugin domain
 define( 'MAILUSERS_I18N_DOMAIN', 'email-users' );
@@ -55,7 +55,7 @@ define( 'MAILUSERS_USERS_GROUPS_PREFIX', 'ug') ;
 //  Enable integration with User Access Manager plugin?
 //  @see http://wordpress.org/plugins/user-access-manager/
 
-define( 'MAILUSERS_USER_ACCESS_MANAGER_CLASS', 'UserAccessManager' );
+define( 'MAILUSERS_USER_ACCESS_MANAGER_CLASS', 'UserAccessManager\UserAccessManager' );
 define( 'MAILUSERS_USER_ACCESS_MANAGER_PREFIX', 'uam') ;
 
 //  Enable integration with ItThinx Groups plugin?
@@ -110,6 +110,8 @@ function mailusers_get_default_plugin_settings($option = null)
 		'mailusers_from_sender_name_override' => '',
 		// Mail User - Default setting for From Sender Address Override
 		'mailusers_from_sender_address_override' => '',
+		// Mail User - Default setting for Always Use From Sender Address Override
+		'mailusers_always_use_from_sender_address_override' => 'false',
 		// Mail User - Default setting for Send Bounces To Address Override
 		'mailusers_send_bounces_to_address_override' => '',
 		// Mail User - Maximum number of rows to show in the User Settings table
@@ -128,6 +130,8 @@ function mailusers_get_default_plugin_settings($option = null)
 		'mailusers_wpautop_processing' => 'false',
 		// Mail User - Default setting for From Sender Exclude
 		'mailusers_from_sender_exclude' => 'true',
+		// Mail User - Default setting for From Sender Role Exclude
+		'mailusers_from_sender_role_exclude' => 'true',
 		// Mail User - Default setting for Copy Sender
 		'mailusers_copy_sender' => 'false',
 		// Mail User - Default setting for Add X-Mailer header
@@ -136,14 +140,24 @@ function mailusers_get_default_plugin_settings($option = null)
 		'mailusers_enhanced_recipient_selection' => 'true',
 		// Mail User - Default setting Omit Display Names in Email Addresses
 		'mailusers_omit_display_names' => 'false',
-		// Mail User - The footer to use when using the post notification functionality
+		// Mail User - The header to use when sending email
+		'mailusers_header' => '<h3 style="border-bottom: 1px solid #eee;">%BLOG_NAME%</h3>',
+		// Mail User - Default setting for Header usage
+		'mailusers_header_usage' => 'none',
+		// Mail User - The footer to use when sending email
 		'mailusers_footer' => '<h5 style="border-top: 1px solid #eee;">' . __('Powered by', MAILUSERS_I18N_DOMAIN) . ' <a href="http://wordpress.org/plugins/email-users/">Email Users</a>.</h5>',
+		// Mail User - Default setting for Header/Footer usage
+		'mailusers_footer_usage' => 'notification',
 		// Mail User - Default setting for Debug
 		'mailusers_debug' => 'false',
 		// Mail User - Default setting for Base64 Encode
 		'mailusers_base64_encode' => 'false',
-		// Mail User - Override use of BCC header with TO header
+		// Mail User - Show Dashboard Widgets
 		'mailusers_dashboard_widgets' => 'true',
+		// Mail User - Show Notification Widget
+		'mailusers_notification_widget' => 'true',
+		// Mail User - Show Notification Menus
+		'mailusers_notification_menus' => 'true',
 	) ;
 
     if (array_key_exists($option, $default_plugin_settings))
@@ -323,7 +337,9 @@ function mailusers_user_meta_init($user_id) {
 add_action('submitpost_box', 'mailusers_post_relatedlink');
 function mailusers_post_relatedlink() {
 	global $post_ID;
-	if (isset($post_ID) && current_user_can(MAILUSERS_NOTIFY_USERS_CAP)) {
+    //  Only show widget when enabled
+    if (mailusers_get_notification_widget() === 'true') {
+	    if (isset($post_ID) && current_user_can(MAILUSERS_NOTIFY_USERS_CAP)) {
 ?>
 <div id="email-users-notify-post" class="postbox email-users-notify-postbox">
 <h3 class='hndle'><span><?php _e('Email Users', MAILUSERS_I18N_DOMAIN); ?></span></h3>
@@ -332,13 +348,16 @@ function mailusers_post_relatedlink() {
 </div>
 </div>
 <?php
+	    }
 	}
 }
 
 add_action('submitpage_box', 'mailusers_page_relatedlink');
 function mailusers_page_relatedlink() {
 	global $post_ID;
-	if (isset($post_ID) && current_user_can(MAILUSERS_NOTIFY_USERS_CAP)) {
+    //  Only show widget when enabled
+    if (mailusers_get_notification_widget() === 'true') {
+	    if (isset($post_ID) && current_user_can(MAILUSERS_NOTIFY_USERS_CAP)) {
 ?>
 <div id="email-users-notify-page" class="postbox email-users-notify-postbox">
 <h3 class='hndle'><span><?php _e('Email Users', MAILUSERS_I18N_DOMAIN); ?></span></h3>
@@ -347,6 +366,7 @@ function mailusers_page_relatedlink() {
 </div>
 </div>
 <?php
+	    }
 	}
 }
 
@@ -360,19 +380,22 @@ function mailusers_add_pages() {
 
     mailusers_init_i18n();
 
-    add_posts_page(
-	    __('Notify Users', MAILUSERS_I18N_DOMAIN),
-	    __('Notify Users', MAILUSERS_I18N_DOMAIN),
-	    MAILUSERS_NOTIFY_USERS_CAP,
-       	'mailusers-send-notify-mail-post',
-       	'mailusers_send_notify_mail') ;
+    //  Show Notify Menus only when notification menus enabled
+    if (mailusers_get_notification_menus() === 'true') {
+        add_posts_page(
+	        __('Notify Users', MAILUSERS_I18N_DOMAIN),
+	        __('Notify Users', MAILUSERS_I18N_DOMAIN),
+	        MAILUSERS_NOTIFY_USERS_CAP,
+       	    'mailusers-send-notify-mail-post',
+       	    'mailusers_send_notify_mail') ;
 
-    add_pages_page(
-	    __('Notify Users', MAILUSERS_I18N_DOMAIN),
-	    __('Notify Users', MAILUSERS_I18N_DOMAIN),
-	    MAILUSERS_NOTIFY_USERS_CAP,
-       	'mailusers-send-notify-mail-page',
-       	'mailusers_send_notify_mail') ;
+        add_pages_page(
+	        __('Notify Users', MAILUSERS_I18N_DOMAIN),
+	        __('Notify Users', MAILUSERS_I18N_DOMAIN),
+	        MAILUSERS_NOTIFY_USERS_CAP,
+       	    'mailusers-send-notify-mail-page',
+       	    'mailusers_send_notify_mail') ;
+    }
 
     $mailusers_options_page = add_options_page(
 	    __('Email Users', MAILUSERS_I18N_DOMAIN),
@@ -407,6 +430,7 @@ function mailusers_add_pages() {
 
     foreach ($mailusers_user_custom_meta_filters as $mf)
     {
+        //error_log(print_r($mf, true)) ;
         $slug = strtolower($mf['label']);
         $slug = preg_replace("/[^a-z0-9\s-]/", "", $slug);
         $slug = trim(preg_replace("/[\s-]+/", " ", $slug));
@@ -723,10 +747,12 @@ function mailusers_admin_init() {
     register_setting('email_users', 'mailusers_shortcode_processing') ;
     register_setting('email_users', 'mailusers_wpautop_processing') ;
     register_setting('email_users', 'mailusers_from_sender_exclude') ;
+    register_setting('email_users', 'mailusers_from_sender_role_exclude') ;
     register_setting('email_users', 'mailusers_enhanced_recipient_selection') ;
     register_setting('email_users', 'mailusers_omit_display_names') ;
     register_setting('email_users', 'mailusers_copy_sender') ;
     register_setting('email_users', 'mailusers_from_sender_name_override') ;
+    register_setting('email_users', 'mailusers_always_use_from_sender_address_override') ;
     register_setting('email_users', 'mailusers_group_taxonomy') ;
     register_setting('email_users',
         'mailusers_from_sender_address_override', 'mailusers_from_sender_address_override_validate') ;
@@ -734,11 +760,16 @@ function mailusers_admin_init() {
         'mailusers_send_bounces_to_address_override', 'mailusers_send_bounces_to_address_override_validate') ;
     register_setting('email_users', 'mailusers_add_x_mailer_header') ;
     register_setting('email_users', 'mailusers_add_mime_version_header') ;
+    register_setting('email_users', 'mailusers_header') ;
+    register_setting('email_users', 'mailusers_header_usage') ;
     register_setting('email_users', 'mailusers_footer') ;
+    register_setting('email_users', 'mailusers_footer_usage') ;
     register_setting('email_users', 'mailusers_debug') ;
     register_setting('email_users', 'mailusers_base64_encode') ;
     register_setting('email_users', 'mailusers_version') ;
     register_setting('email_users', 'mailusers_dashboard_widgets') ;
+    register_setting('email_users', 'mailusers_notification_widget') ;
+    register_setting('email_users', 'mailusers_notification_menus') ;
 }
 
 /**
@@ -770,6 +801,25 @@ function mailusers_update_default_body( $body ) {
 }
 
 /**
+ * Wrapper for the option 'mailusers_header'
+ */
+function mailusers_get_header() {
+    $option = get_option( 'mailusers_header' );
+
+    if ($option === false)
+        $option = mailusers_get_default_plugin_settings( 'mailusers_header' );
+
+    return stripslashes($option);
+}
+
+/**
+ * Wrapper for the option 'mailusers_header'
+ */
+function mailusers_update_header( $header ) {
+	return update_option( 'mailusers_header', stripslashes($header) );
+}
+
+/**
  * Wrapper for the option 'mailusers_footer'
  */
 function mailusers_get_footer() {
@@ -786,6 +836,44 @@ function mailusers_get_footer() {
  */
 function mailusers_update_footer( $footer ) {
 	return update_option( 'mailusers_footer', stripslashes($footer) );
+}
+
+/**
+ * Wrapper for the option 'mailusers_header_usage'
+ */
+function mailusers_get_header_usage() {
+    $option = get_option( 'mailusers_header_usage' );
+
+    if ($option === false)
+        $option = mailusers_get_default_plugin_settings( 'mailusers_header_usage' );
+
+    return stripslashes($option);
+}
+
+/**
+ * Wrapper for the option 'mailusers_header_usage'
+ */
+function mailusers_update_header_usage( $usage ) {
+	return update_option( 'mailusers_header_usage', stripslashes($usage) );
+}
+
+/**
+ * Wrapper for the option 'mailusers_footer_usage'
+ */
+function mailusers_get_footer_usage() {
+    $option = get_option( 'mailusers_footer_usage' );
+
+    if ($option === false)
+        $option = mailusers_get_default_plugin_settings( 'mailusers_footer_usage' );
+
+    return stripslashes($option);
+}
+
+/**
+ * Wrapper for the option 'mailusers_footer_usage'
+ */
+function mailusers_update_footer_usage( $usage ) {
+	return update_option( 'mailusers_footer_usage', stripslashes($usage) );
 }
 
 /**
@@ -884,6 +972,25 @@ function mailusers_update_from_sender_name_override( $from_sender_name_override 
  */
 function mailusers_get_from_sender_address_override() {
 	return get_option( 'mailusers_from_sender_address_override' );
+}
+
+/**
+ * Wrapper for the always use from sender address override option
+ */
+function mailusers_get_always_use_from_sender_address_override() {
+    $option = get_option( 'mailusers_always_use_from_sender_address_override' );
+
+    if ($option === false)
+        $option = mailusers_get_default_plugin_settings( 'mailusers_always_use_from_sender_address_override' );
+
+    return $option;
+}
+
+/**
+ * Wrapper for the always use from sender address override option
+ */
+function mailusers_update_always_use_from_sender_address_override( $always_use_from_sender_address_override ) {
+	return update_option( 'mailusers_always_use_from_sender_address_override', $always_use_from_sender_address_override );
 }
 
 /**
@@ -1092,7 +1199,26 @@ function mailusers_update_from_sender_exclude( $from_sender_exclude ) {
 }
 
 /**
- * Wrapper for the from send exclude setting
+ * Wrapper for the from send role exclude setting
+ */
+function mailusers_get_from_sender_role_exclude() {
+    $option = get_option( 'mailusers_from_sender_role_exclude' );
+
+    if ($option === false)
+        $option = mailusers_get_default_plugin_settings( 'mailusers_from_sender_role_exclude' );
+
+    return $option;
+}
+
+/**
+ * Wrapper for the from sender role exclude setting
+ */
+function mailusers_update_from_sender_role_exclude( $from_sender_role_exclude ) {
+	return update_option( 'mailusers_from_sender_role_exclude', $from_sender_role_exclude );
+}
+
+/**
+ * Wrapper for the from copy sender setting
  */
 function mailusers_get_copy_sender() {
     $option = get_option( 'mailusers_copy_sender' );
@@ -1104,7 +1230,7 @@ function mailusers_get_copy_sender() {
 }
 
 /**
- * Wrapper for the from sender exclude setting
+ * Wrapper for the from copy sender setting
  */
 function mailusers_update_copy_sender( $copy_sender ) {
 	return update_option( 'mailusers_copy_sender', $copy_sender );
@@ -1149,6 +1275,45 @@ function mailusers_update_dashboard_widgets( $dashboard_widgets ) {
 }
 
 /**
+ * Wrapper for the Notifcation Widget setting
+ */
+function mailusers_get_notification_widget() {
+    $option = get_option( 'mailusers_notification_widget' );
+
+    if ($option === false)
+        $option = mailusers_get_default_plugin_settings( 'mailusers_notification_widget' );
+
+    return $option;
+}
+
+/**
+ * Wrapper for the Notifcation Widgets setting
+ */
+function mailusers_update_notification_widget( $notification_widget ) {
+	return update_option( 'mailusers_notification_widget', $notification_widget );
+}
+
+/**
+ * Wrapper for the Notifcation Menus setting
+ */
+function mailusers_get_notification_menus() {
+    $option = get_option( 'mailusers_notification_menus' );
+
+    if ($option === false)
+        $option = mailusers_get_default_plugin_settings( 'mailusers_notification_menus' );
+
+    return $option;
+}
+
+/**
+ * Wrapper for the Notifcation Menus setting
+ */
+function mailusers_update_notification_menus( $notification_menus ) {
+	return update_option( 'mailusers_notification_menus', $notification_menus );
+}
+
+/**
+/**
  * Wrapper for the Base64 Encoding setting
  */
 function mailusers_get_base64_encode() {
@@ -1172,6 +1337,8 @@ function mailusers_update_base64_encode( $base64_encode ) {
  * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
  */
 function mailusers_get_users( $exclude_id='', $meta_filter = '', $args = array(), $sortby = null, $meta_value = 'true', $meta_compare = '=') {
+    global $wpdb;
+
     if (MAILUSERS_DEBUG) printf('<!-- %s::%s -->%s', basename(__FILE__), __LINE__, PHP_EOL);
     
 	if ($sortby == null) $sortby = mailusers_get_default_sort_users_by();
@@ -1218,7 +1385,6 @@ function mailusers_get_users( $exclude_id='', $meta_filter = '', $args = array()
                 'meta_like_escape' => true,
                 'meta_compare' => strtoupper(trim($meta_compare)))) ;
         }
-
     }
 
     //  Filter users with no role on site from list?
@@ -1265,8 +1431,12 @@ function mailusers_get_users( $exclude_id='', $meta_filter = '', $args = array()
     while ($args['offset'] < $total)
     {
         if (MAILUSERS_DEBUG) printf('<!-- %s::%s  Query #%s  Memory Usage:  %s -->%s',
-            basename(__FILE__), __LINE__, $q++, mailusers_memory_usage(true), PHP_EOL) ;
+            basename(__FILE__), __LINE__, $q, mailusers_memory_usage(true), PHP_EOL) ;
+        $qs = microtime(true);
         $users = array_merge($users, get_users($args)) ;
+        $qe = microtime(true) - $qs ;
+        if (MAILUSERS_DEBUG) printf('<!-- %s::%s  Query #%s  Execution:  %ss / %sms -->%s',
+            basename(__FILE__), __LINE__, $q++, $qe, $qe*1000, PHP_EOL) ;
         $args['offset'] += $args['number'] ;
     }
 
@@ -1365,6 +1535,10 @@ function mailusers_get_roles( $exclude_id='', $meta_filter = '') {
 
 	$wp_roles = get_editable_roles( );
 
+    //  Explicitly include the user's role?
+    if (mailusers_get_from_sender_role_exclude() != 'true')
+        $wp_roles = array_merge($wp_roles, wp_get_current_user()->roles) ;
+
 	foreach ($wp_roles as $key => $value) {
 		$users_in_role = mailusers_get_recipients_from_roles(array($key), $exclude_id, $meta_filter);
 		if (!empty($users_in_role)) {
@@ -1431,7 +1605,6 @@ function mailusers_get_recipients_from_roles($roles, $exclude_id='', $meta_filte
  * $meta_filter can be '', MAILUSERS_ACCEPT_NOTIFICATION_USER_META, or MAILUSERS_ACCEPT_MASS_EMAIL_USER_META
  */
 function mailusers_get_recipients_from_custom_meta_filter( $ids, $exclude_id='', $meta_filter='', $meta_value='', $meta_compare='=') {
-
     return mailusers_get_users($exclude_id, $meta_filter, array('include' => $ids), null, $meta_value, $meta_compare) ;
 }
 
@@ -1558,7 +1731,8 @@ function mailusers_replace_sender_templates($text, $sender_name) {
  *
  * Returns number of recipients addressed in emails or false on internal error.
  */
-function mailusers_send_mail($recipients = array(), $subject = '', $message = '', $type='plaintext', $sender_name='', $sender_email='') {
+function mailusers_send_mail($recipients = array(), $subject = '', $message = '',
+    $type='plaintext', $sender_name='', $sender_email='', $useheader = false, $usefooter = false) {
     
     $headers = array() ;
     $base64 = (mailusers_get_base64_encode() == 'true') ;
@@ -1596,7 +1770,8 @@ function mailusers_send_mail($recipients = array(), $subject = '', $message = ''
 
 	$subject = stripslashes($subject);
 	$message = stripslashes($message);
-    $footer = mailusers_get_footer() ;
+    $header = $useheader ? mailusers_replace_blog_templates(mailusers_get_header()) : '' ;
+    $footer = $usefooter ? mailusers_replace_blog_templates(mailusers_get_footer()) : '' ;
 
 	if ('html' == $type) {
         if (mailusers_get_add_mime_version_header() == 'true')
@@ -1607,7 +1782,7 @@ function mailusers_send_mail($recipients = array(), $subject = '', $message = ''
         if (has_filter('mailusers_html_wrapper'))
             $mailtext = apply_filters('mailusers_html_wrapper', $subject, $message, $footer) ;
         else
-		    $mailtext = "<html><head><title>" . $subject . "</title></head><body>" . $message . $footer . "</body></html>";
+		    $mailtext = "<html><head><title>" . $subject . "</title></head><body>" . $header . $message . $footer . "</body></html>";
 
 	} else {
         if (mailusers_get_add_mime_version_header() == 'true')
@@ -1615,7 +1790,7 @@ function mailusers_send_mail($recipients = array(), $subject = '', $message = ''
 		$headers[] = sprintf('Content-Type: text/plain; charset="%s"', get_bloginfo('charset')) ;
 		$message = preg_replace('|&[^a][^m][^p].{0,3};|', '', $message);
 		$message = preg_replace('|&amp;|', '&', $message);
-		$mailtext = wordwrap(strip_tags($message . "\n" . $footer), 80, "\n");
+		$mailtext = wordwrap(strip_tags($header . "\n" . $message . "\n" . $footer), 80, "\n");
 	}
 
     //  Base64 Encode email?
@@ -1665,8 +1840,7 @@ function mailusers_send_mail($recipients = array(), $subject = '', $message = ''
 			return $num_sent;
 		}
 		return $num_sent;
-	}
-
+	} 
     elseif ($bcc_limit != 0 && (count($recipients) > $bcc_limit))
     {
 		$count = 0;

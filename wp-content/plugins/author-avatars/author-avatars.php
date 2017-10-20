@@ -3,14 +3,14 @@
 Plugin Name: Author Avatars List
 Plugin URI: http://authoravatars.wordpress.com/
 Description: Display lists of user avatars using <a href="widgets.php">widgets</a> or <a href="https://authoravatars.wordpress.com/documentation/">shortcodes</a>.
-Version: 1.9.6
-Author: <a href="http://bearne.ca">Paul Bearne</a>, <a href="http://mind2.de">Benedikt Forchhammer</a>
+Version: 1.11
+Author: Paul Bearne
 Text Domain: author-avatars
 Domain Path: /translations
 */
 
 // The current version of the author avatars plugin. Needs to be updated every time we do a version step.
-define( 'AUTHOR_AVATARS_VERSION', '1.9.6' );
+define( 'AUTHOR_AVATARS_VERSION', '1.11' );
 
 // List of all version, used during update check. (Append new version to the end and write an update__10_11 method on AuthorAvatars class if needed)
 define( 'AUTHOR_AVATARS_VERSION_HISTORY', serialize( array(
@@ -57,6 +57,9 @@ define( 'AUTHOR_AVATARS_VERSION_HISTORY', serialize( array(
 	'1.8.6.4',
 	'1.8.7',
 	'1.8.8',
+	'1.9.6',
+	'1.10',
+	'1.11',
 ) ) );
 
 require_once( 'lib/AuthorAvatars.class.php' );
@@ -92,3 +95,30 @@ function AA_add_action_links( $links ) {
 
 	return array_merge( $links, $mylinks );
 }
+
+
+//function edit_contactmethods( $contactmethods ) {
+//	$contactmethods['facebook'] = 'Facebook';
+//	$contactmethods['twitter'] = 'Twitter';
+////	unset($contactmethods['yim']);
+////	unset($contactmethods['aim']);
+////	unset($contactmethods['jabber']);
+//	return $contactmethods; }
+//
+//add_filter( 'user_contactmethods','edit_contactmethods', 10, 1 );
+
+
+//function aa_user_raw_list( $users ){
+//	$filtered_users = array();
+//	foreach ( $users as $user ) {
+//		$user_status = get_user_meta( $user->user_id, 'pw_user_status', true );
+//		if ( 'denied' !== $user_status ) {
+//			$filtered_users[] = $user;
+//		}
+//	}
+//
+//	return $filtered_users;
+//}
+//
+//
+//add_filter( 'aa_user_raw_list','aa_user_raw_list' );

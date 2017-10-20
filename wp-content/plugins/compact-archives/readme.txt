@@ -1,9 +1,9 @@
 === Compact Archives ===
-Contributors: smub, noumaan
+Contributors: smub, noumaan, deb255
 Tags: posts, archive, archives
 Requires at least: 3.0
-Tested up to: 4.3
-Stable tag: trunk
+Tested up to: 4.8
+Stable tag: 3.0.6
 
 Displays a monthly archive of posts in a more compact form than the usual long list.
 
@@ -11,23 +11,23 @@ Displays a monthly archive of posts in a more compact form than the usual long l
 
 The built-in WordPress archives widget is great for new blogs, but it doesn't look as good for more established blogs like [WPBeginner](http://www.wpbeginner.com "WPBeginner"). Compact Archives displays the monthly archive of posts in a more compact form than the usual long list. It can be shown as a compact block suitable for the body of an archives page:
 
-`2009: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
-2008: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
+`2009: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+2008: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 2007: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec`
 
 or in an even more compact form to fit a sidebar:
 
-`2009: J F M A M J J A S O N D 
-2008: J F M A M J J A S O N D 
-2007: J F M A M J J A S O N D` 
-				
+`2009: J F M A M J J A S O N D
+2008: J F M A M J J A S O N D
+2007: J F M A M J J A S O N D`
+
 or something in between:
 
 `2009: 01 02 03 04 05 06 07 08 09 10 11 12
 2008: 01 02 03 04 05 06 07 08 09 10 11 12
 2007: 01 02 03 04 05 06 07 08 09 10 11 12`
 
-If you like this plugin, and want to learn more about WordPress, then I suggest that you visit [WPBeginner](http://www.wpbeginner.com "WPBeginner"). It is one of the largest free WordPress resource site with tons of [WordPress tutorials](http://www.wpbeginner.com/category/wp-tutorials/ "WordPress tutorials"), and I'm proud to say that I created it. 
+If you like this plugin, and want to learn more about WordPress, then I suggest that you visit [WPBeginner](http://www.wpbeginner.com "WPBeginner"). It is one of the largest free WordPress resource site with tons of [WordPress tutorials](http://www.wpbeginner.com/category/wp-tutorials/ "WordPress tutorials"), and I'm proud to say that I created it.
 
 We also have [free WordPress video tutorials](http://videos.wpbeginner.com "Checkout out WPBeginner's WordPress tutorial videos"), and numerous other guides such as [how to choose the best WordPress hosting](http://www.wpbeginner.com/wordpress-hosting/ "How to Choose the Best WordPress Web Hosting"), [how to install WordPress](http://www.wpbeginner.com/how-to-install-wordpress/ "How to install WordPress") and many more.
 
@@ -51,16 +51,16 @@ Original Author Credit: This plugin was originally created by [Rob Marsh](http:/
 
 1. Go to the **Plugins** page and activate the plugin.
 
-1. Put `<?php compact_archive(); ?>` at the place in your template 
+1. Put `<?php compact_archive(); ?>` at the place in your template
 where you want it to appear, e.g., in your sidebar:
 
 `	<ul>
 		<?php compact_archive(); ?>
 	</ul>`
 
-1. You can also use shortcode `[compact_archive]` in a page or post to display compact archives. See FAQ for shortcode parameters. 
+1. You can also use shortcode `[compact_archive]` in a page or post to display compact archives. See FAQ for shortcode parameters.
 
-1. There is also a Compact Archives Widget which can be used to display compact archives in sidebar or any widgetized area. 
+1. There is also a Compact Archives Widget which can be used to display compact archives in sidebar or any widgetized area.
 
 == Frequently Asked Questions ==
 
@@ -69,17 +69,17 @@ where you want it to appear, e.g., in your sidebar:
 The template tag, `compact_archive`, has some parameters:
 
 `	compact_archive($style='initial', $before='<li>', $after='</li>');`
-	
+
 If $style == 'initial' (the default) the display will fit into a sidebar:
 
-`	2009: J F M A M J J A S O N D 
-	2008: J F M A M J J A S O N D 
-	2007: J F M A M J J A S O N D` 
+`	2009: J F M A M J J A S O N D
+	2008: J F M A M J J A S O N D
+	2007: J F M A M J J A S O N D`
 
 If $style == 'block' the display will be wide enough to fill the main column of a page:
 
-`	2009: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
-	2008: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
+`	2009: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+	2008: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 	2007: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec`
 
 If $style == 'numeric' the display will use month numbers:
@@ -88,7 +88,7 @@ If $style == 'numeric' the display will use month numbers:
 	2008: 01 02 03 04 05 06 07 08 09 10 11 12
 	2007: 01 02 03 04 05 06 07 08 09 10 11 12`
 
-$before and $after wrap each line of output. The default values make 
+$before and $after wrap each line of output. The default values make
 each line of the archive into a list item:
 
 `	<ul>
@@ -97,15 +97,15 @@ each line of the archive into a list item:
 
 = How do I get different layouts using shortcode? =
 
-The shortcode `[compact_archive]` works just like the template tag. It accepts three parameters which are style, before, and after. 
+The shortcode `[compact_archive]` works just like the template tag. It accepts three parameters which are style, before, and after.
 
-Using shortcode `[compact_archive style="block"]` will display compact archives in block. 
+Using shortcode `[compact_archive style="block"]` will display compact archives in block.
 
-Using shortcode `[compact_archive style="numeric" before="<p>" after="</p>"]` will display compact archive in numeric form, wrapped in a paragraph tag.  
+Using shortcode `[compact_archive style="numeric" before="<p>" after="</p>"]` will display compact archive in numeric form, wrapped in a paragraph tag.
 
 = How do I get different layouts using Compact Archive Widget in Sidebar? =
 
-Compact Archive comes with a sidebar widget located Appearance -> Widgets. Drag and drop Compact Archives Widget to your sidebar. The widget has three option fields. You can provide your widget a title if you want or leave it blank. You can choose a display layout from Select the Style option. It has three layout choices to choose from which are initials, block, and numeric. Tansform text option can be left to No Transformation or you can tansform text style to UPPERCASE or Capitalize.  
+Compact Archive comes with a sidebar widget located Appearance -> Widgets. Drag and drop Compact Archives Widget to your sidebar. The widget has three option fields. You can provide your widget a title if you want or leave it blank. You can choose a display layout from Select the Style option. It has three layout choices to choose from which are initials, block, and numeric. Tansform text option can be left to No Transformation or you can tansform text style to UPPERCASE or Capitalize.
 
 = Is There Any Scope for CSS Styling? =
 
@@ -122,6 +122,10 @@ Compact Archives also honours whatever kind of permalink pattern you have set.
 1. Compact archives displayed in block layout
 
 == Changelog ==
+= 3.0.6 =
+* Code cleanups
+= 3.0.5 =
+* WordPress 4.8 compatibility
 = 3.0.4 =
 * WordPress 4.3 compat
 = 3.0.3 =
@@ -130,20 +134,20 @@ Compact Archives also honours whatever kind of permalink pattern you have set.
 * Resolved shortcode output bug.
 = 3.0.1 =
 * Resolved function naming conflict.
-* Added a check to see if compct archives widget plugin is installed. If it is installed then ask the user to deactivate it. 
+* Added a check to see if compct archives widget plugin is installed. If it is installed then ask the user to deactivate it.
 = 3.0.0 =
 * Added shortcode to be used in posts and pages
 * Added widget based on Compact Archives Widget plugin by [aldolat](http://profiles.wordpress.org/aldolat/)
 = 2.0.0 =
 * 3-10 x faster depending on number of posts
 * makes the most of [Plugin Output Cache v.4.x](http://rmarsh.com/plugins/poc-cache/)
-= 1.0.6 = 
+= 1.0.6 =
 * Introduces numeric display
-= 1.0.5 = 
+= 1.0.5 =
 * Fixes a display bug for locales with accented characters
-= 1.0.4 = 
+= 1.0.4 =
 * Makes use of the Plugin Output Cache to speed things up
 = 1.0.3 =
-* Fixes a small problem with undated posts 
-= 1.0.1 = 
-* Speeds up the plugin for WordPress 2.1+ 
+* Fixes a small problem with undated posts
+= 1.0.1 =
+* Speeds up the plugin for WordPress 2.1+

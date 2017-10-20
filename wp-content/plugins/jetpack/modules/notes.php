@@ -1,29 +1,17 @@
 <?php
 /**
  * Module Name: Notifications
- * Module Description: Receive notification of site activity via the admin toolbar and your Mobile devices.
+ * Module Description: Receive instant notifications of site comments and likes.
  * Sort Order: 13
  * First Introduced: 1.9
  * Requires Connection: Yes
  * Auto Activate: Yes
  * Module Tags: Other
+ * Feature: General
  * Additional Search Queries: notification, notifications, toolbar, adminbar, push, comments
  */
 
 if ( !defined( 'JETPACK_NOTES__CACHE_BUSTER' ) ) define( 'JETPACK_NOTES__CACHE_BUSTER', JETPACK__VERSION . '-' . gmdate( 'oW' ) );
-
-Jetpack_Sync::sync_options( __FILE__,
-	'home',
-	'blogname',
-	'siteurl',
-	'permalink_structure',
-	'category_base',
-	'tag_base',
-	'comment_moderation',
-	'default_comment_status',
-	'thread_comments',
-	'thread_comments_depth'
-);
 
 class Jetpack_Notifications {
 	public $jetpack = false;
@@ -101,16 +89,6 @@ class Jetpack_Notifications {
 			}
 		}
 
-		Jetpack_Sync::sync_posts( __FILE__, array(
-			'post_types' => $filt_post_types,
-			'post_stati' => array( 'publish' ),
-		) );
-		Jetpack_Sync::sync_comments( __FILE__, array(
-			'post_types' => $filt_post_types,
-			'post_stati' => array( 'publish' ),
-			'comment_stati' => array( 'approve', 'approved', '1', 'hold', 'unapproved', 'unapprove', '0', 'spam', 'trash' ),
-		) );
-
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
 			return;
 
@@ -126,7 +104,22 @@ class Jetpack_Notifications {
 	}
 
 	function styles_and_scripts() {
-		if ( !is_rtl() ) {
+		$is_rtl = is_rtl();
+
+		if ( Jetpack::is_module_active( 'masterbar' ) ) {
+			/**
+			 * Can be used to force Notifications to display in RTL style.
+			 *
+			 * @module notes
+			 *
+			 * @since 4.8.0
+			 *
+			 * @param bool true Should notifications be displayed in RTL style. Defaults to false.
+			 */
+			$is_rtl = apply_filters( 'a8c_wpcom_masterbar_enqueue_rtl_notification_styles', false );
+		}
+
+		if ( ! $is_rtl ) {
 			wp_enqueue_style( 'wpcom-notes-admin-bar', $this->wpcom_static_url( '/wp-content/mu-plugins/notes/admin-bar-v2.css' ), array(), JETPACK_NOTES__CACHE_BUSTER );
 		} else {
 			wp_enqueue_style( 'wpcom-notes-admin-bar', $this->wpcom_static_url( '/wp-content/mu-plugins/notes/rtl/admin-bar-v2-rtl.css' ), array(), JETPACK_NOTES__CACHE_BUSTER );
@@ -165,7 +158,7 @@ class Jetpack_Notifications {
 		}
 
 		if ( class_exists( 'GP_Locales' ) ) {
-			$wpcom_locale_object = GP_Locales::by_field( 'wp_locale', get_locale() );
+			$wpcom_locale_object = GP_Locales::by_field( 'wp_locale', $wpcom_locale );
 			if ( $wpcom_locale_object instanceof GP_Locale ) {
 				$wpcom_locale = $wpcom_locale_object->slug;
 			}

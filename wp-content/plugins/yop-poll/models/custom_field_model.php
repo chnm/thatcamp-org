@@ -92,7 +92,7 @@
             }
 
             wp_cache_add( $custom_field->ID, $custom_field, 'yop_poll_custom_field' );
-            return $custom_field;
+            return stripslashes_deep($custom_field);
         }
 
         function __isset( $key ) {
@@ -220,6 +220,7 @@
         }
 
         function insert() {
+            $this->custom_field = sanitize_text_field( $this->custom_field );
             $GLOBALS['wpdb']->insert(
                             $GLOBALS['wpdb']->yop_poll_custom_fields,
                             array(
@@ -240,6 +241,7 @@
         }
 
         function update() {
+            $this->custom_field = sanitize_text_field( $this->custom_field );
             $GLOBALS['wpdb']->update(
                             $GLOBALS['wpdb']->yop_poll_custom_fields,
                             array(

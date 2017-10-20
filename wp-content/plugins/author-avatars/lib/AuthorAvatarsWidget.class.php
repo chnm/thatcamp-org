@@ -116,7 +116,7 @@ class AuthorAvatarsWidget extends WP_Widget {
 			'limit',
 			'min_post_count',
 			'order',
-			'sort_direction'
+			'sort_direction',
 		);
 		if ( is_array( $instance['display'] ) ) {
 
@@ -137,7 +137,7 @@ class AuthorAvatarsWidget extends WP_Widget {
 				'show_biography',
 				'show_postcount',
 				'show_last_post',
-				'show_bbpress_post_count'
+				'show_bbpress_post_count',
 			);
 			// loop the old name=true settings and add them to the new array format
 			foreach ( $default_display_options as $default_display_option ) {
@@ -267,20 +267,32 @@ class AuthorAvatarsWidget extends WP_Widget {
 
 		// ADVANCED TAB
 		$adv_left = '';
+
 		if ( array_key_exists( 'order', $instance['display'] ) ) {
 			$adv_left .= $form->renderFieldOrder( $instance['display']['order'], 'display][order' );
+		} else {
+			$adv_left .= $form->renderFieldOrder( array(), 'display][order' );
 		}
+		echo($adv_left);
 		if ( array_key_exists( 'sort_direction', $instance['display'] ) ) {
 			$adv_left .= $form->renderFieldSortDirection( $instance['display']['sort_direction'], 'display][sort_direction' );
+		}else {
+			$adv_left .= $form->renderFieldSortDirection( array(), 'display][sort_direction' );
 		}
 		if ( array_key_exists( 'limit', $instance['display'] ) ) {
 			$adv_left .= $form->renderFieldLimit( $instance['display']['limit'], 'display][limit' );
+		}else {
+			$adv_left .= $form->renderFieldLimit( '', 'display][limit' );
 		}
 		if ( array_key_exists( 'bio_length', $instance['display'] ) ) {
 			$adv_left .= $form->renderFieldMaxBioLength( $instance['display']['bio_length'], 'display][bio_length' );
+		}else {
+			$adv_left .= $form->renderFieldMaxBioLength( '', 'display][bio_length' );
 		}
 		if ( array_key_exists( 'min_post_count', $instance['display'] ) ) {
 			$adv_left .= $form->renderFieldMinPostCount( $instance['display']['min_post_count'], 'display][min_post_count' );
+		}else {
+			$adv_left .= $form->renderFieldMinPostCount( '', 'display][min_post_count' );
 		}
 		if ( array_key_exists( 'hiddenusers', $instance ) ) {
 			$adv_left .= $form->render_field_hidden_users( $instance['hiddenusers'] );

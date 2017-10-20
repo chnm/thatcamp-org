@@ -2,9 +2,9 @@
 Contributors: Charles Johnson
 Donate link: http://feedwordpress.radgeek.com/
 Tags: syndication, aggregation, feed, atom, rss
-Requires at least: 3.0
-Tested up to: 4.5.2
-Stable tag: 2016.0420
+Requires at least: 4.5
+Tested up to: 4.8.2
+Stable tag: 2017.1004
 
 FeedWordPress syndicates content from feeds you choose into your WordPress weblog. 
 
@@ -23,7 +23,6 @@ developed, originally, because I needed a more flexible replacement for
 [Planet][] to use at Feminist Blogs, an aggregator site that I used to administer.
 
 [Planet]: http://www.planetplanet.org/
-[Feminist Blogs]: http://feministblogs.org/
 
 FeedWordPress is designed with flexibility, ease of use, and ease of
 configuration in mind. You'll need a working installation of WordPress (version
@@ -93,6 +92,89 @@ outs, see the documentation at the [FeedWordPress project homepage][].
   [FeedWordPress project homepage]: http://feedwordpress.radgeek.com/
 
 == Changelog ==
+
+= 2017.0913 =
+
+*	PARTIAL FIX FOR 2X DUPLICATE POSTS APPEARING ON DUAL HTTP/HTTPS SITES: Some
+	users reported an issue in which their FeedWordPress sites, which are over
+	both insecure HTTP and over HTTPS, would pick up exactly 2 copies of every
+	post or almost every post from certain feeds, and where the guids for each
+	of the pair of duplicate posts would look exactly alike, except for a
+	difference in the protocol, for example:
+
+		http://www.example.com/?guid=c1cd28da39e8d7babcf6499983aca545 
+		https://www.example.com/?guid=c1cd28da39e8d7babcf6499983aca545
+
+	... where www.example.com is the server that your own copy of FeedWordPress
+	is installed. This release of FeedWordPress normalizes post guid prefixes
+	so as to avoid or limit the scope of this problem.
+
+*	PHP 7 Compatibility: eliminate remaining sources of PHP 7 compatibility-check
+	failures -- remove the use of depreciated mysql_error() function, and make
+	sure all classes make use of __construct() convention for constructors.
+
+*	AVOID "PHP Warning: shell_exec() has been disabled for security	reasons in
+	[...]/feedwordpress/feeds-page.php on line 197": FeedWordPress uses the PHP
+	shell_exec() function in a very narrowly limited way for information gathering,
+	trying to find the real path to curl or wget on your system, so that it can
+	give as realistic as possible a recommendation for the sample crontab line
+	displayed in Syndication > Feeds & Updates. Some web hosting environments
+	disable shell_exec for security reasons (since it could in theory be used to
+	do a lot more stuff than the very limited information gathering FWP uses it
+	for); in which case, this part of the code in FeedWordPress could spit out
+	a nasty-looking and potentially worrisome-looking error message. So, now this
+	code is fenced with checks to make sure that shell_exec is available, before
+	FWP attempts to make use of it.
+
+= 2016.1213 =
+
+*	WORDPRESS BACKWARD COMPATIBILITY FOR VERSIONS [4.5, 4.7]: This change fixes
+	a fatal PHP error (on some web server configurations you'd see the message
+	"Fatal error: require_once(): Failed opening required '[...]/wp-includes/class-wp-feed-cache.php'"
+	on others, you might just see an HTTP 500 Internal Server Error or a blank
+	page) when using FeedWordPress with versions of WordPress before 4.7. A
+	change that I introduced to avoid a code module that had been deprecated in
+	version 4.7 ended up relying on code modules that were only introduced as
+	of version 4.7; so now, instead, FeedWordPress attempts to detect which
+	modules the current version of the WordPress core makes available, and load
+	the right modules depending on your WordPress version.
+
+	In theory, up to this point, FeedWordPress supported any version of
+	WordPress from version 3.0 onward. In practice, version 3.0 was released
+	over 6 years ago, and I can realistically commit only to testing out new
+	releases of FeedWordPress with a few prior versions of WordPress; so I've
+	updated the "Requires at least" field to version 4.5, the first major
+	release issued in 2016. If you've really got to use FeedWordPress with
+	older versions of WordPress, it will probably still work with any moderately
+	modern release of WordPress, but I won't promise to keep it working with
+	releases of WordPress that are more than about a year old.
+	
+= 2016.1211 =
+
+*	WORDPRESS COMPATIBILITY: Tested with new versions of WordPress up to 4.7.
+
+*	PHP WARNINGS UNDER WP 4.7: Eliminated cause of a PHP warning under WP 4.7
+	"Parameter 1 to FeedWordPressHTTPAuthenticator::set_auth_options expected to be reference"
+	Warnings were due to a change in how http_api_curl hook is sometimes called
+	in WP 4.7; so I changed the signature of the event handling method to avoid
+	the notice. Props to @cogdog, @froomkin, @gwynethllewelyn et al. for flagging
+	the issue and @garymarkfuller for suggesting a preliminary fix to the issue
+	that was fairly similar to the solution I ended up adopting.
+
+*	PHP 7 and PHP Strict Standards compatibility changes: @alexiskulash @daidais
+	and @zoul0813 all sent pull requests through Github to fix some issues from
+	a very old code base that has made its way from PHP 3.x through 5.x to the
+	roll-out of PHP 7. Class methods should now fare better under modern versions
+	of PHP and generate fewer "Deprecated" notices.
+
+*	IMPROVEMENTS TO SCHEDULED AND AUTOMATIC UPDATES:  use wp_loaded hook to check
+	for magic URL parameters and to execute updates, to do pageload-based automatic
+	updates, etc. Ensures that anything plugins or themes need to do in init to set
+	up custom post types, taxonomies, etc. will be done before the update_feedwordpress
+	updates are attempted. If you saw posts not getting put into the correct custom
+	post type or custom taxonomies or similar problems when performing scheduled updates,
+	but the problem seemed to go away when you manually performed updates through the
+	wp-admin interface, then you might be able to solve those problems with this update.
 
 = 2016.0420 =
 

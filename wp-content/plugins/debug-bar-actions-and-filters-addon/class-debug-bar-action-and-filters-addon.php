@@ -25,10 +25,6 @@ class Debug_Bar_Actions_Filters_Addon extends Debug_Bar_Panel {
 	public function init() {
 		$this->title( $this->tab );
 
-		if ( ! is_textdomain_loaded( 'debug-bar-actions-and-filters-addon' ) ) {
-			load_plugin_textdomain( 'debug-bar-actions-and-filters-addon', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-		}
-
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}

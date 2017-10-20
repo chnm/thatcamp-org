@@ -2,7 +2,7 @@
 /**
  * Class WPRun_Filter_WidgetOutput_0x5x0
  *
- * @package  WPRun
+ * @package  MyLib
  * @category WordPress Plugin
  * @version  0.5.0
  * @author   Victor Villaverde Laan
@@ -16,7 +16,7 @@ final class WPRun_Filter_WidgetOutput_0x5x0 extends WPRun_BaseAbstract_0x5x0
     const FILTER_NAME = 'widget_output';
 
     /**
-     * Method automatically attached as callback to the filter "dynamic_sidebar_params"
+     * Filter for "dynamic_sidebar_params" hook
      * @global array $wp_registered_widgets
      * @param  array $sidebarParams
      * @return array
@@ -31,7 +31,12 @@ final class WPRun_Filter_WidgetOutput_0x5x0 extends WPRun_BaseAbstract_0x5x0
 
         $widgetId = $sidebarParams[0]['widget_id'];
 
-        $wp_registered_widgets[$widgetId]['original_callback'] = $wp_registered_widgets[$widgetId]['callback'];
+        // prevent overwriting when already set by another version of the widget output class
+        if (isset($wp_registered_widgets[$widgetId]['_wo_original_callback'])) {
+            return $sidebarParams;
+        }
+
+        $wp_registered_widgets[$widgetId]['_wo_original_callback'] = $wp_registered_widgets[$widgetId]['callback'];
         $wp_registered_widgets[$widgetId]['callback'] = $this->getCallback('widgetCallback');
 
         return $sidebarParams;
@@ -48,7 +53,7 @@ final class WPRun_Filter_WidgetOutput_0x5x0 extends WPRun_BaseAbstract_0x5x0
         $originalCallbackParams = func_get_args();
         $widgetId = $originalCallbackParams[0]['widget_id'];
 
-        $originalCallback = $wp_registered_widgets[$widgetId]['original_callback'];
+        $originalCallback = $wp_registered_widgets[$widgetId]['_wo_original_callback'];
         $wp_registered_widgets[$widgetId]['callback'] = $originalCallback;
 
         $widgetIdBase = $wp_registered_widgets[$widgetId]['callback'][0]->id_base;
@@ -59,6 +64,9 @@ final class WPRun_Filter_WidgetOutput_0x5x0 extends WPRun_BaseAbstract_0x5x0
             $widgetOutput = ob_get_clean();
 
             echo apply_filters(self::FILTER_NAME, $widgetOutput, $widgetIdBase, $widgetId);
+
+            // remove filters after applying to prevent multiple applies
+            remove_all_filters(self::FILTER_NAME);
         }
     }
 

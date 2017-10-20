@@ -4,12 +4,12 @@
  *
  * @package  WPML
  * @category WordPress Plugins
- * @version  2.1.2
+ * @version  2.1.6
  * @author   Victor Villaverde Laan
  * @link     http://www.freelancephp.net/
  * @link     https://github.com/freelancephp/WP-Mailto-Links
  * @link     https://wordpress.org/plugins/wp-mailto-links/
- * @license  GPLv2+ license
+ * @license  Dual licensed under the MIT and GPLv2+ licenses
  */
 final class WPML_AdminPage_Settings_MetaBoxes extends WPRun_BaseAbstract_0x5x0
 {
@@ -32,28 +32,52 @@ final class WPML_AdminPage_Settings_MetaBoxes extends WPRun_BaseAbstract_0x5x0
      */
     public function addMetaBoxes()
     {
-        $this->addMetaBox('mail-icon', __('Mail Icon', 'wp-mailto-links'), 'normal');
-        $this->addMetaBox('admin', __('Admin', 'wp-mailto-links'), 'normal');
+        $defaults = array(
+            'id'        => '',
+            'title'     => '',
+            'callback'  => $this->getCallback('showMetaBox'),
+            'screen'    => null,
+            'context'   => 'advanced',
+            'priority'  => 'default',
+        );
 
-        // side position
-        $this->addMetaBox('additional-classes', __('Additional Classes', 'wp-mailto-links'), 'side');
-        $this->addMetaBox('support', __('Support', 'wp-mailto-links'), 'side');
+        $this->addMetaBox(wp_parse_args(array(
+            'id'        => 'mail-icon',
+            'title'     => __('Mail Icon', 'wp-mailto-links'),
+            'context'   => 'normal',
+        ), $defaults));
+
+        $this->addMetaBox(wp_parse_args(array(
+            'id'        => 'admin',
+            'title'     => __('Admin', 'wp-mailto-links'),
+            'context'   => 'normal',
+        ), $defaults));
+
+        $this->addMetaBox(wp_parse_args(array(
+            'id'        => 'additional-classes',
+            'title'     => __('Additional Classes', 'wp-mailto-links'),
+            'context'   => 'side',
+        ), $defaults));
+
+        $this->addMetaBox(wp_parse_args(array(
+            'id'        => 'support',
+            'title'     => __('Support', 'wp-mailto-links'),
+            'context'   => 'side',
+        ), $defaults));
     }
 
     /**
-     * @param string $id
-     * @param string $title
-     * @param string $context
+     * @param array $args
      */
-    protected function addMetaBox($id, $title, $context = 'advanced')
+    protected function addMetaBox(array $args)
     {
         add_meta_box(
-            $id                                 // id
-            , $title                            // title
-            , $this->getCallback('showMetaBox') // callback
-            , null                              // screen
-            , $context                          // context: 'advanced', 'normal', 'side'
-            , 'default'                         // priority
+            $args['id']
+            , $args['title']
+            , $args['callback']
+            , $args['screen']
+            , $args['context']
+            , $args['priority']
         );
     }
 
@@ -61,7 +85,7 @@ final class WPML_AdminPage_Settings_MetaBoxes extends WPRun_BaseAbstract_0x5x0
      * @param WP_Post $post
      * @param array   $args
      */
-    public function showMetaBox($post, array $args)
+    protected function showMetaBox($post, array $args)
     {
         $key = $args['id'];
         $templateFile = WP_MAILTO_LINKS_DIR . '/templates/admin-pages/settings/meta-boxes/' . $key . '.php';

@@ -142,8 +142,12 @@
 	$( document ).ready( function() {
 		var tiledGalleries = new TiledGalleryCollection();
 
-		$( 'body' ).on( 'post-load', function() {
-			tiledGalleries.findAndSetupNewGalleries();
+		$( 'body' ).on( 'post-load', function( e, maybeResize ) {
+			if ( 'string' === typeof maybeResize && 'resize' === maybeResize ) {
+				tiledGalleries.resizeAll();
+			} else {
+				tiledGalleries.findAndSetupNewGalleries();
+			}
 		} );
 		$( document ).on( 'page-rendered.wpcom-newdash', function() {
 			tiledGalleries.findAndSetupNewGalleries();
@@ -160,7 +164,7 @@
 			attachPlainResize( tiledGalleries );
 		}
 
-		if ( wp && wp.customize && wp.customizerHasPartialWidgetRefresh() ) {
+		if ( 'undefined' !== typeof wp && wp.customize && wp.customize.selectiveRefresh ) {
 			wp.customize.selectiveRefresh.bind( 'partial-content-rendered', function( placement ) {
 				if ( wp.isJetpackWidgetPlaced( placement, 'gallery' ) ) {
 					tiledGalleries.findAndSetupNewGalleries();

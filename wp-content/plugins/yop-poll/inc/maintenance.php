@@ -769,6 +769,18 @@ NOWDOC;
             global $wpdb;
             update_option("yop_poll_version", '5.7.9');
         }
+        if (version_compare($installed_version, '5.7.9', '<=')) {
+            global $wpdb;
+            update_option("yop_poll_version", '5.8.0');
+        }
+        if (version_compare($installed_version, '5.8.0', '<=')) {
+            global $wpdb;
+            update_option("yop_poll_version", '5.8.1');
+        }
+        if (version_compare($installed_version, '5.8.1', '<=')) {
+            global $wpdb;
+            update_option("yop_poll_version", '5.8.2');
+        }
     }
 
     private static function update_poll_template_in_database2($template)

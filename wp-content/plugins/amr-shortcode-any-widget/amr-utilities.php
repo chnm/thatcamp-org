@@ -24,7 +24,6 @@ global $_wp_sidebars_widgets;
 	return ($text);
 }
 
-/*-----------------------------------*/
 function amr_get_widgets_sidebar($wid) { 
 /* walk through the registered sidebars with a name and find the id - will be something like sidebar-integer.  
 take the first one that matches */
@@ -42,7 +41,7 @@ global $_wp_sidebars_widgets;
 	}
 	return (false); // widget id not in any sidebar
 }
-/*-----------------------------------*/
+
 function amr_get_sidebar_id ($name) { 
 /* walk through the registered sidebars with a name and find the id - will be something like sidebar-integer.  
 take the first one that matches */
@@ -54,7 +53,7 @@ global $wp_registered_sidebars;
 	}
 	return (false);
 }
-/*-----------------------------------*/
+
 function amr_get_sidebar_name ($id) { /* dont need anymore ? or at least temporarily */
 /* walk through the registered sidebars with a name and find the id - will be something like sidebar-integer.  take the first one */
 global $wp_registered_sidebars;	
@@ -66,7 +65,7 @@ global $wp_registered_sidebars;
 	}
 	return (false);
 }
-/*-----------------------------------*/
+
 function amr_check_if_widget_debug() {
 global $said;
 	// only do these debug if we are logged in and are the administrator
@@ -94,7 +93,7 @@ global $said;
 	else 
 		return false;
 }
-/*-----------------------------------*/
+
 function amr_show_widget_debug($type='', $name, $id, $sidebar) {
 global $wp_registered_sidebars, $wp_registered_widgets, $_wp_sidebars_widgets, $debugcount;
 // only do these debug if we are logged in and are the administrator	
@@ -113,7 +112,7 @@ global $wp_registered_sidebars, $wp_registered_widgets, $_wp_sidebars_widgets, $
 
 	return ($text);
 }
-/*-----------------------------------*/
+
 function amr_save_shortcodes_sidebar() {  // when switching a theme, save the widgets we use for the shortcodes as they are getting overwritten
 	$sidebars_widgets = wp_get_sidebars_widgets(); 
 	if (!empty($sidebars_widgets['widgets_for_shortcodes']))
@@ -122,7 +121,7 @@ function amr_save_shortcodes_sidebar() {  // when switching a theme, save the wi
 
 	}	
 }
-/*-----------------------------------*/
+
 function amr_restore_shortcodes_sidebar() {  // when switching a theme, restore the widgets we use for the shortcodes as they are getting overwritten
 global $_wp_sidebars_widgets;
 
@@ -134,7 +133,7 @@ global $_wp_sidebars_widgets;
 	}	
 	
 }
-/*-----------------------------------*/
+
 function amr_upgrade_sidebar() { // added in 2014 February for compatibility.. keep for how long. till no sites running older versions.?
 	$sidebars_widgets = wp_get_sidebars_widgets(); 
 	if (!empty($sidebars_widgets['Shortcodes']) and empty($sidebars_widgets['widgets_for_shortcodes'])) {  // we need to upgrade
@@ -152,6 +151,6 @@ function widgets_shortcode_admin_notice() {
     </div>
     <?php
 }
-/*-----------------------------------*/
+
 
 ?>

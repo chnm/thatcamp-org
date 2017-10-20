@@ -16,8 +16,8 @@ define('FWP_CANCEL_BUTTON', '× Cancel');
 define('FWP_CHECK_FOR_UPDATES', 'Update');
 
 class FeedWordPressSyndicationPage extends FeedWordPressAdminPage {
-	function FeedWordPressSyndicationPage ($filename = NULL) {
-		FeedWordPressAdminPage::FeedWordPressAdminPage('feedwordpresssyndication', /*link=*/ NULL);
+	public function __construct ($filename = NULL) {
+		parent::__construct('feedwordpresssyndication', /*link=*/ NULL);
 
 		// No over-arching form element
 		$this->dispatch = NULL;
@@ -477,7 +477,7 @@ class FeedWordPressSyndicationPage extends FeedWordPressAdminPage {
 		
 		// Hey ho, let's go...
 		?>
-		<div style="float: left; background: #F5F5F5; padding-top: 5px; padding-right: 5px;"><a href="<?php print $this->form_action(); ?>"><img src="<?php print esc_html(WP_PLUGIN_URL."/${fwp_path}/feedwordpress.png"); ?>" alt="" /></a></div>
+		<div style="float: left; background: #F5F5F5; padding-top: 5px; padding-right: 5px;"><a href="<?php print $this->form_action(); ?>"><img src="<?php print esc_html(plugins_url( "/${fwp_path}/feedwordpress.png") ); ?>" alt="" /></a></div>
 
 		<p class="info" style="margin-bottom: 0px; border-bottom: 1px dotted black;">Managed by <a href="http://feedwordpress.radgeek.com/">FeedWordPress</a>
 		<?php print FEEDWORDPRESS_VERSION; ?>.</p>
@@ -536,7 +536,7 @@ class FeedWordPressSyndicationPage extends FeedWordPressAdminPage {
 		
 		  <?php FeedWordPressSettingsUI::magic_input_tip_js('add-uri'); ?>
 		  <input type="hidden" name="action" value="<?php print FWP_SYNDICATE_NEW; ?>" />
-		  <input style="vertical-align: middle;" type="image" src="<?php print WP_PLUGIN_URL.'/'.$fwp_path; ?>/plus.png" alt="<?php print FWP_SYNDICATE_NEW; ?>" /></div>
+		  <input style="vertical-align: middle;" type="image" src="<?php print plugins_url('/'.$fwp_path .'/plus.png' ); ?>" alt="<?php print FWP_SYNDICATE_NEW; ?>" /></div>
 		  </form>
 		</div> <!-- id="add-single-uri" -->
 		
@@ -602,9 +602,9 @@ class FeedWordPressSyndicationPage extends FeedWordPressAdminPage {
 		
 		  <input type="hidden" name="action" value="feedfinder" />
 		  <input type="submit" class="button-secondary" name="action" value="<?php print FWP_SYNDICATE_NEW; ?>" />
-		  <div style="text-align: right; margin-right: 2.0em"><a id="turn-on-multiple-sources" href="#add-multiple-uri"><img style="vertical-align: middle" src="<?php print WP_PLUGIN_URL.'/'.$fwp_path; ?>/down.png" alt="" /> add multiple</a>
+		  <div style="text-align: right; margin-right: 2.0em"><a id="turn-on-multiple-sources" href="#add-multiple-uri"><img style="vertical-align: middle" src="<?php print plugins_url('/' . $fwp_path . '/down.png'); ?>" alt="" /> add multiple</a>
 		  <span class="screen-reader-text"> or </span>
-		  <a id="turn-on-opml-upload" href="#upload-opml"><img src="<?php print WP_PLUGIN_URL.'/'.$fwp_path; ?>/plus.png" alt="" style="vertical-align: middle" /> import source list</a></div>
+		  <a id="turn-on-opml-upload" href="#upload-opml"><img src="<?php print plugins_url('/' . $fwp_path . '/plus.png'); ?>" alt="" style="vertical-align: middle" /> import source list</a></div>
 		  </li>
 		  </ul>
 		  </form>
@@ -701,7 +701,7 @@ class FeedWordPressSyndicationPage extends FeedWordPressAdminPage {
         var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
         s.type = 'text/javascript';
         s.async = true;
-        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+        s.src = 'https://api.flattr.com/js/0.6/load.js?mode=auto';
         t.parentNode.insertBefore(s, t);
     })();
 /* ]]> */</script>
@@ -723,19 +723,19 @@ support, and documentation.</p>
 <div style="display: inline-block; vertical-align: middle; ">
 <a class="FlattrButton" style="display:none;"   href="http://feedwordpress.radgeek.com/"></a>
 <noscript>
-<a href="http://flattr.com/thing/1380856/FeedWordPress" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
+<a href="https://flattr.com/thing/1380856/FeedWordPress" target="_blank"><img src="https://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
 </noscript>
 <div>via Flattr</div>
 
 </div> <!-- style="display: inline-block" -->
 
 <div class="hovered-component" style="display: inline-block; vertical-align: bottom">
-<a href="bitcoin:<?php print esc_attr(FEEDWORDPRESS_BLEG_BTC); ?>"><img src="<?php print esc_url(WP_PLUGIN_URL.'/'.FeedWordPress::path('btc-qr-64px.png')); ?>" alt="Donate" /></a>
+<a href="bitcoin:<?php print esc_attr(FEEDWORDPRESS_BLEG_BTC); ?>"><img src="<?php print esc_url( plugins_url('/'.FeedWordPress::path('btc-qr-64px.png') ) ); ?>" alt="Donate" /></a>
 <div><a href="bitcoin:<?php print esc_attr(FEEDWORDPRESS_BLEG_BTC); ?>">via bitcoin<span class="hover-on pop-over" style="background-color: #ddffdd; padding: 5px; color: black; border-radius: 5px;">bitcoin:<?php print esc_html(FEEDWORDPRESS_BLEG_BTC); ?></span></a></div>
 </div>
 
 <div style="display: inline-block; vertical-align: bottom">
-<input type="image" name="submit" src="<?php print esc_url(WP_PLUGIN_URL.'/'.FeedWordPress::path('paypal-donation-64px.png')); ?>" alt="Donate through PayPal" />
+<input type="image" name="submit" src="<?php print esc_url(plugins_url('/' . FeedWordPress::path('paypal-donation-64px.png' ) ) ); ?>" alt="Donate through PayPal" />
 <input type="hidden" name="business" value="distro.to.feedback@radgeek.com"  />
 <input type="hidden" name="cmd" value="_xclick"  />
 <input type="hidden" name="item_name" value="FeedWordPress donation"  />
@@ -865,7 +865,7 @@ regular donation</a>) using an existing PayPal account or any major credit card.
 			foreach ($alter as $sql) :
 				$result = $wpdb->query($sql);
 				if (!$result):
-					$errs[] = mysql_error();
+					$errs[] = $wpdb->last_error;
 				endif;
 			endforeach;
 			
@@ -988,7 +988,7 @@ regular donation</a>) using an existing PayPal account or any major credit card.
 			foreach ($alter as $sql) :
 				$result = $wpdb->query($sql);
 				if (!$result):
-					$errs[] = mysql_error();
+					$errs[] = $wpdb->last_error;
 				endif;
 			endforeach;
 			
@@ -1218,7 +1218,7 @@ has been added as a contributing site, using the feed at
 &lt;<a href="<?php print $fwp_post['feed']; ?>"><?php print esc_html($fwp_post['feed']); ?></a>&gt;.
 | <a href="admin.php?page=<?php print $fwp_path; ?>/feeds-page.php&amp;link_id=<?php print $link_id; ?>">Configure settings</a>.</p></div>
 <?php			else: ?>
-<div class="updated"><p>There was a problem adding the feed. [SQL: <?php echo esc_html(mysql_error()); ?>]</p></div>
+<div class="updated"><p>There was a problem adding the feed. [SQL: <?php echo esc_html($wpdb->last_error); ?>]</p></div>
 <?php			endif;
 		elseif (isset($fwp_post['save_link_id'])):
 			$existingLink = new SyndicatedLink($fwp_post['save_link_id']);

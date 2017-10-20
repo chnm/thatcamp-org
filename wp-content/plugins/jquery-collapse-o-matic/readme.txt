@@ -1,19 +1,19 @@
 === Collapse-O-Matic ===
 
 Contributors: twinpictures, baden03
-Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
+Donate link: https://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more, plugin oven
-Requires at least: 4.0
-Tested up to: 4.5
-Stable tag: 1.7.1
+Requires at least: 4.4
+Tested up to: 4.8.1
+Stable tag: 1.7.6
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Remove clutter, save space: display and hide additional content in a SEO friendly way by wrapping content in an [expand] shortcode.
 
 == Description ==
 
-Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery expanding and collapsing div.  A <a href='http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/'>complete listing of shortcode options and attribute demos</a> are available, as well as <a href='http://wordpress.org/support/plugin/jquery-collapse-o-matic'>free community</a> support.
+Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery expanding and collapsing div.  A <a href='https://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/'>complete listing of shortcode options and attribute demos</a> are available, as well as <a href='https://wordpress.org/support/plugin/jquery-collapse-o-matic'>free community</a> support.
 
 == Installation ==
 
@@ -23,7 +23,7 @@ Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` 
 1. Test that the this plug-in meets your demanding needs.
 1. Tweak the CSS to match your flavour.
 1. Rate the plug-in and verify if it works at wordpress.org.
-1. Leave a comment regarding bugs, feature request, cocktail recipes at http://wordpress.org/tags/jquery-collapse-o-matic/
+1. Leave a comment regarding bugs, feature request, cocktail recipes at https://wordpress.org/tags/jquery-collapse-o-matic/
 
 == Frequently Asked Questions ==
 
@@ -31,13 +31,13 @@ Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` 
 <a href='https://translate.wordpress.org/projects/wp-plugins/jquery-collapse-o-matic'>Community translation for Collapse-O-Matic</a> is available via the WordPress Translation project.
 
 = I am a Social Netwookiee, might Twinpictures have a Facebook page? =
-Yes, yes... <a href='http://www.facebook.com/twinpictures'>Twinpictures is on Facebook</a>.
+Yes, yes... <a href='https://www.facebook.com/twinpictures'>Twinpictures is on Facebook</a>.
 
 = Does Twinpictures do the Twitter? =
-Ah yes! <a href='http://twitter.com/#!/twinpictures'>@Twinpictures</a> does the twitter tweeting around here.
+Ah yes! <a href='https://twitter.com/#!/twinpictures'>@Twinpictures</a> does the twitter tweeting around here.
 
 = How does one use the shortcode, exactly? =
-A <a href='http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/'>complete listing of shortcode options</a> has been provided to answer this exact question.
+A <a href='https://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/'>complete listing of shortcode options</a> has been provided to answer this exact question.
 
 = Is Galato the same as Ice Cream? =
 No. Not even close.
@@ -49,6 +49,27 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.7.6 =
+* integrated collapse-commander expand templates
+* fully tested with WordPress 4.8.1
+
+= 1.7.5 =
+* fully tested with WordPress 4.8
+
+= 1.7.4 =
+* fixed issue with external triggers for nested elements
+* changed links to https
+* fully tested with WordPress 4.7.3
+
+= 1.7.3 =
+* added effect and duration attributes and data-attributes
+* if duration is a number, string will be converted to integer
+* fully tested with WordPress 4.6
+
+= 1.7.2 =
+* adjusted data-findme to deal with ‘auto’ value
+* added the must-be-one class to force one highlander element to stay open
 
 = 1.7.1 =
 * integrated new collapse-commander image trigger feature
@@ -321,4 +342,5 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
-Integrated new collapse-commander image trigger feature. Added new togglegroup shortcode attribute and data-togglegroup html attribute to reference groups of expand elements with out auto-collapsing other groups, such as when using the real attribute. Added the ability to load plugin css only when shortcode is used. Removed language files in favour of WordPress language packs. Plugin has been fully tested to work with WordPress 4.5.
+* integrated collapse-commander expand templates
+* fully tested with WordPress 4.8.1

@@ -28,8 +28,8 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		parent::setUp();
 		
 		// Set up the body templates
-		$this->topic_body = "<p>This is <br> a <br /> test paragraph for topic forum [topic-forum], URL: [topic-url], and Author: [topic-author]</p>\n\n<p>And a new <br/>paragraph</p>";
-		$this->reply_body = "<p>This is <br> a <br /> test paragraph for reply forum [reply-forum], Topic URL: [topic-url], URL: [reply-url], and Author: [reply-author]</p>\n\n<p>And a new <br/>paragraph</p>";
+		$this->topic_body = "<p>This is <br> a <br /> test &#039; paragraph for topic forum [topic-forum], URL: [topic-url], and Author: [topic-author]</p>\n\n<p>And a new <br/>paragraph</p>";
+		$this->reply_body = "<p>This is <br> a <br /> test &#039; paragraph for reply forum [reply-forum], Topic URL: [topic-url], URL: [reply-url], and Author: [reply-author]</p>\n\n<p>And a new <br/>paragraph</p>";
 		
 		// Create new forum
 		$this->forum_id = bbp_insert_forum( 
@@ -75,8 +75,8 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 		
 		// Set up the expected body regexes
-		$this->topic_body_regex = "<p>This is <br> a <br \/> test paragraph for topic forum test-forum, URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, and Author: admin<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
-		$this->reply_body_regex = "<p>This is <br> a <br \/> test paragraph for reply forum test-forum, Topic URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, URL: http:\/\/wp_plugins\/\?p={$this->reply_id}, and Author: admin<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
+		$this->topic_body_regex = "<p>This is <br> a <br \/> test ' paragraph for topic forum test-forum, URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, and Author: admin<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
+		$this->reply_body_regex = "<p>This is <br> a <br \/> test ' paragraph for reply forum test-forum, Topic URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, URL: http:\/\/wp_plugins\/\?p={$this->reply_id}, and Author: admin<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
 	}
 	
 	public function tearDown()
@@ -115,19 +115,20 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	{
 		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
 		
-		$this->assertTrue( (bool ) has_filter( 'bbpress_notify_recipients_hidden_forum', array( $bbpnns, 'munge_newtopic_recipients' )), 
+		$this->assertTrue( (bool ) has_filter( 'bbpress_notify_recipients_hidden_forum', array( $bbpnns, 'munge_newpost_recipients' )), 
 				'bbpress_notify_recipients_hidden_forum filter exists' );
 		
 		$expected = array( 'foo', 'bar' );
-		$recipients = apply_filters( 'bbpress_notify_recipients_hidden_forum', $expected, $this->forum_id );
+		$recipients = apply_filters( 'bbpress_notify_recipients_hidden_forum', $expected, 'topic', $this->forum_id );
 		
 		$this->assertEquals( $expected, $recipients, 'Filter returns input array for non-hidden forum' );
 
 		//hide forum
 		bbp_hide_forum( $this->forum_id );
 		
-		$recipients = apply_filters( 'bbpress_notify_recipients_hidden_forum', $expected, $this->forum_id );
-		$this->assertEquals( 'administrator', $recipients, 'Filter returns \'administrator\' for non-hidden forum' );
+		$recipients = apply_filters( 'bbpress_notify_recipients_hidden_forum', $expected, 'topic', $this->forum_id );
+		
+		$this->assertEquals( array('administrator'), $recipients, 'Filter returns \'administrator\' array element for non-hidden forum' );
 		
 	}
 	
@@ -217,19 +218,22 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	{
 		$roles = array( 'administrator' );
 		
+		remove_all_filters('bbpnns_filter_recipients_before_send');
+		
 		// Non-hidden forum
 		update_option( 'bbpress_notify_newtopic_recipients', $roles );
 		
 		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
 		$users = get_users( array( 'role' => join(', ', $roles) ) );
-
+		
 		$recipients = array();
 		foreach ( $users as $u )
 		{
 			$recipients[ $u->ID ] = $u;
 		}
-		
+
 		list( $got_recipients, $body ) = $bbpnns->send_notification( $recipients, 'test subject', 'test_body' );
+
 		$this->assertEquals( $recipients, $got_recipients, 'Test mode got expected recipients' );
 		
 		// Hidden forum returns admins only
@@ -238,7 +242,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$roles = array( 'administrator', 'subscriber' );
 		$roles = (array) apply_filters( 'bbpress_notify_recipients_hidden_forum', $roles, $this->forum_id );
 	
-		$users = get_users( array( 'role' => join(', ', $roles) ) );
+		$users = get_users( array( 'role__in' => $roles ) );
 		
 		$recipients = array();
 		foreach ( $users as $u )
@@ -254,6 +258,23 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 		$this->assertTrue( ! empty ( $result ), 'Filtered send_notification returns users' );
 	}
+	
+	
+// 	public function test_build_email()
+// 	{
+// 		$type    = 'reply';
+// 		$subject = 'Vinny&#39;s test with quotes';
+// 		$body    = 'This is a test';
+		
+// 		update_option( "bbpress_notify_new{$type}_email_subject", $subject );
+// 		update_option( "bbpress_notify_new{$type}_email_body", $body );
+		
+// 		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+// 		list( $email_subject, $email_body ) = $bbpnns->_build_email( 'reply', $this->reply_id );
+		
+// 		var_dump($email_subject, $email_body);
+// 	}
+	
 	
 	public function test_notify_on_save()
 	{
@@ -287,6 +308,117 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 			$this->assertFalse( empty( $result ) );
 		}
 
+	public function test_convert_links()
+	{
+		$text = 'This is <a href="http://thefirstlink.com">the first link</a> and 
+				
+				then <a href="http://thescondlink.com">the second link</a> and the final stuff.';
+		
+		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+		
+		$conv = $bbpnns->convert_links( $text );
+		
+		$expected = 'This is (the first link) [http://thefirstlink.com] and 
+				
+				then (the second link) [http://thescondlink.com] and the final stuff.';
+		$this->assertEquals( $conv, $expected, 'Conversion works as expected' );
+		
+		$text = 'This is <a href="http://thefirstlink.com"><img src="foo.gif" alt="foo"></a> and then <a href="http://thescondlink.com">the second link</a> and the final stuff.';
+		
+		$expected = 'This is ([img]foo[/img]) [http://thefirstlink.com] and then (the second link) [http://thescondlink.com] and the final stuff.';
+		
+		$conv = $bbpnns->convert_links( $text );
+		
+		$this->assertEquals( $conv, $expected, 'Got an image altered');
+		
+		$text = 'This is på en forumtråd <a href="http://thefirstlink.com"><img src="foo.gif" alt="foo"> and some text and <img src="foo.gif" alt="another image"></a> <img src="foo.gif" alt="yet another image"> and then <a href="http://thescondlink.com">the second link</a> and the final stuff.';
+		
+		$conv = $bbpnns->convert_links( $text );
+		
+		$expected = 'This is på en forumtråd ([img]foo[/img] and some text and [img]another image[/img]) [http://thefirstlink.com] [img]yet another image[/img] and then (the second link) [http://thescondlink.com] and the final stuff.';
+		
+		$this->assertEquals( $conv, $expected, 'Nested and not nested images OK');
+	}
+	
+	
+	public function test_user_in_role()
+	{
+		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+		
+		delete_option( 'bbpress_notify_newtopic_recipients');
+		delete_option( 'bbpress_notify_newreply_recipients');
+		
+		// Create new user in role
+		$user = $this->factory->user->create_and_get( array( 'role' => 'administrator' ) );
+		
+		// Test no roles return false
+		$this->assertFalse( $bbpnns->user_in_ok_role( $user->ID ) );
+
+		$bbpnns->users_in_roles = array();
+		
+		// Save OK role
+		$recipients = array( 'administrator' );
+		update_option( 'bbpress_notify_newtopic_recipients', $recipients );
+		
+		// Test user IS in role
+		$this->assertTrue( $bbpnns->user_in_ok_role( $user->ID ) );
+		
+		// Create user outside role
+		$user2 = $this->factory->user->create_and_get( array( 'role' => 'subscriber' ) );
+		// Test user not in role
+		$this->assertFalse( $bbpnns->user_in_ok_role( $user2->ID ) );
+		
+		// Set current user
+		wp_set_current_user( $user->ID );
+		// Test current user returns accordingly
+		$this->assertTrue( $bbpnns->user_in_ok_role() );
+		
+		// Set current user
+		wp_set_current_user( $user2->ID );
+		// Test current user returns accordingly
+		$this->assertFalse( $bbpnns->user_in_ok_role() );
+	}
+	
+	
+	public function test_bbpnns_is_in_effect()
+	{
+		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+
+		$this->assertTrue( (bool) has_filter( 'bbpnns_is_in_effect', array( $bbpnns, 'bbpnns_is_in_effect' ) ), 'Filter found' );
+		
+		delete_option( 'bbpress_notify_newtopic_recipients' );
+		delete_option( 'bbpress_notify_newreply_recipients' );
+		delete_option( 'bbpnns_hijack_bbp_subscriptions_forum' );
+		delete_option( 'bbpnns_hijack_bbp_subscriptions_topic' );
+		
+		$user = $this->factory->user->create_and_get( array( 'role' => 'administrator' ) );
+		
+		$this->assertFalse( apply_filters( 'bbpnns_is_in_effect', false ) );
+		
+		update_option( 'bbpnns_hijack_bbp_subscriptions_forum', true );
+		unset( $bbpnns->override_forum );
+
+		$this->assertTrue( apply_filters( 'bbpnns_is_in_effect', false, $user->ID ) );
+		delete_option( 'bbpnns_hijack_bbp_subscriptions_forum' );
+		delete_option( 'bbpnns_hijack_bbp_subscriptions_topic' );
+		
+		update_option( 'bbpnns_hijack_bbp_subscriptions_topic', true );
+		unset( $bbpnns->override_forum );
+		unset( $bbpnns->override_topic );
+		
+		$this->assertTrue( apply_filters( 'bbpnns_is_in_effect', false, $user->ID ) );
+		delete_option( 'bbpnns_hijack_bbp_subscriptions_forum' );
+		delete_option( 'bbpnns_hijack_bbp_subscriptions_topic' );
+		
+		unset( $bbpnns->override_forum );
+		unset( $bbpnns->override_topic );
+		
+		$recipients = array( 'administrator' );
+		update_option( 'bbpress_notify_newtopic_recipients', $recipients );
+		
+		$this->assertTrue( apply_filters( 'bbpnns_is_in_effect', false, $user->ID ) );
+		
+	}
 	
 	
 	public function test_filters()

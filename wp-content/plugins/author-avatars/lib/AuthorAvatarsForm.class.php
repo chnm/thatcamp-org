@@ -257,7 +257,7 @@ class AuthorAvatarsForm {
 			return $roles;
 		}
 		foreach ( $roles_data as $key => $role ) {
-			$roles[ $key ] = $this->__roleStripLevel( $role['name'] );
+			$roles[ $key ] = $this->_roleStripLevel( $role['name'] );
 		}
 
 		return $roles;
@@ -272,7 +272,7 @@ class AuthorAvatarsForm {
 	 *
 	 * @return the clean role name without user level added on the end.
 	 */
-	function __roleStripLevel( $element ) {
+	function _roleStripLevel( $element ) {
 		$parts = explode( '|', $element );
 
 		return $parts[0];
@@ -311,7 +311,7 @@ class AuthorAvatarsForm {
 		$attributes = array(
 			'id'    => $this->_getFieldId( $name ),
 			'label' => '<strong>' . __( 'White List of users', 'author-avatars' ) . ':</strong><br/>',
-			'help'  => '<br/><small>(' . __( '0nly show these uses, Comma separate list of user login ids', 'author-avatars' ) . ')</small>',
+			'help'  => '<br/><small>(' . __( '0nly show these users, Comma separate list of user login ids', 'author-avatars' ) . ')</small>',
 			'rows'  => 2,
 			'style' => 'width:95%;',
 		);

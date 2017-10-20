@@ -1,4 +1,4 @@
-<?php $pluginData = get_plugin_data($file); ?>
+<?php $pluginData = get_plugin_data(WP_MAILTO_LINKS_FILE); ?>
 <h3><i class="dashicons-before dashicons-email"></i>  <?php echo get_admin_page_title() ?> - v<?php echo $pluginData['Version']; ?></h3>
 <p>
     <?php _e('The WPML plugin works out-of-the-box. All settings are default set to protect your email addresses automatically.', 'wp-mailto-links'); ?>

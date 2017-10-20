@@ -1,0 +1,118 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: amr shortcode any widget v2.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2017-04-03 07:36:42+0000\n"
+"Last-Translator: Jordan Silaen <jordan.silaen@chameleonjohn.com>\n"
+"Language-Team:ChameleonJohn.com \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Indonesian\n"
+"X-Poedit-Country: Indonesia\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: amr-admin-form-html.php:37
+#
+msgid "Settings"
+msgstr "pengaturan"
+
+#: amr-admin-form-html.php:63
+#
+msgid "Drag the widgets you want to use to the shortcodes sidebar."
+msgstr "Tarik widget yang ingin Anda gunakan ke shortcode sidebar."
+
+#: amr-admin-form-html.php:67
+#
+msgid "Set the widgets parameters if there are any."
+msgstr "Mengatur parameter widget jika ada."
+
+#: amr-admin-form-html.php:70
+#
+msgid "You could test the widgets out in a displayable widget area (sidebar/footer), then drag them to the widgets_for_shortcodes sidebar."
+msgstr "Anda bisa menguji widget di area widget dapat ditampilkan (sidebar / footer), kemudian menyeret mereka ke widgets_for_shortcodes sidebar."
+
+#: amr-admin-form-html.php:75
+#
+msgid "Go to widgets"
+msgstr "Pergi ke widget"
+
+#: amr-admin-form-html.php:81
+#
+msgid "To add a widget area - all widgets in the widget area:"
+msgstr "Untuk menambahkan area widget - widget semua di daerah widget:"
+
+#: amr-admin-form-html.php:89
+#
+msgid "Create a page with do_widget_area shortcode without the widget_area class"
+msgstr "Buat halaman dengan do_widget_area shortcode tanpa kelas widget_area"
+
+#: amr-admin-form-html.php:96
+#
+msgid "Create a page with do_widget_area shortcode"
+msgstr "Buat halaman dengan do_widget_area shortcode"
+
+#: amr-admin-form-html.php:100
+#: amr-admin-form-html.php:117
+#
+msgid "Examples:"
+msgstr "contoh:"
+
+#: amr-admin-form-html.php:103
+#
+msgid "[do_widget_area] or [do_widget_area widget_area=sidebar-1]"
+msgstr "[Do_widget_area] atau [do_widget_area widget_area = sidebar-1]"
+
+#: amr-admin-form-html.php:106
+#
+msgid "NB: Using something like the twenty-fourteen theme? you might end up with white text on a white background.  Tweak the widget classes or the html of the wrap or title. If that fails, adjust your css."
+msgstr "NB: Menggunakan sesuatu seperti 20-14 tema? Anda mungkin berakhir dengan teks putih pada latar belakang putih. Tweak kelas widget atau html dari bungkus atau judul. Jika itu gagal, menyesuaikan css Anda."
+
+#: amr-admin-form-html.php:112
+#
+msgid "To add a single widget to a page"
+msgstr "Untuk menambahkan widget tunggal ke halaman"
+
+#: amr-admin-form-html.php:116
+#
+msgid "Add the shortcode [do_widget widgetname] to a page."
+msgstr "Tambahkan shortcode [do_widget widgetname] ke halaman."
+
+#: amr-admin-form-html.php:120
+#
+msgid "[do_widget \"tag cloud\"] or [do_widget id=widgetid]"
+msgstr "[Do_widget \ "tag cloud \"] atau [do_widget id = widgetid]"
+
+#: amr-admin-form-html.php:126
+#
+msgid "Create a page with do_widget shortcode and remove widget_classes"
+msgstr "Buat halaman dengan do_widget shortcode dan menghapus widget_classes"
+
+#: amr-admin-form-html.php:133
+#
+msgid "Create a page with do_widget shortcode"
+msgstr "Buat halaman dengan do_widget shortcode"
+
+#: amr-admin-form-html.php:174
+#
+msgid "If you have any problems with this plugin or good ideas for improvements or new features, please talk about them in the"
+msgstr "Jika Anda memiliki masalah dengan plugin ini atau ide-ide yang baik untuk perbaikan atau fitur baru, silakan berbicara tentang mereka dalam"
+
+#: amr-admin-form-html.php:174
+#
+msgid "Support forums"
+msgstr "forum dukungan"
+
+#: amr-shortcode-any-widget.php:306
+#
+msgid "Sidebar to hold widgets and their settings. These widgets will be used in a shortcode.  This sidebars widgets should be saved with your theme settings now."
+msgstr "Sidebar untuk menahan widget dan pengaturan mereka. Widget ini akan digunakan dalam shortcode. Ini sidebars widget harus disimpan dengan pengaturan tema Anda sekarang."
+

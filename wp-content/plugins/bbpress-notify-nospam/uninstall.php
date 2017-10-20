@@ -44,6 +44,11 @@ class bbPress_Notify_noSpam_Uninstall extends bbPress_Notify_noSpam
 				"bbpress_notify_default_{$this->bbpress_topic_post_type}_notification",
 				"bbpress_notify_default_{$this->bbpress_reply_post_type}_notification",
 				'bbpress_notify_encode_subject',
+				'bbpnns_notify_authors_topic',
+				'bbpnns_notify_authors_reply',
+				'bbpnns_hijack_bbp_subscriptions_forum',
+				'bbpnns_hijack_bbp_subscriptions_topic',
+				'bbpress_notify_message_type',
 		);
 		
 		

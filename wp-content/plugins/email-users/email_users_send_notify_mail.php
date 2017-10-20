@@ -34,7 +34,7 @@
 	$err_msg = '';
     $from_sender = 0;
 	
-	get_currentuserinfo();
+	wp_get_current_user();
 	$from_name = $user_identity;
 	$from_address = $user_email;
     $override_name = mailusers_get_from_sender_name_override() ;
@@ -276,7 +276,9 @@
 			<p><strong><?php _e('No recipients were found.', MAILUSERS_I18N_DOMAIN); ?></strong></p>
 	<?php
 		} else {	
-			$num_sent = mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address);
+            $useheader = mailusers_get_header_usage() != 'email' ;
+            $usefooter = mailusers_get_footer_usage() != 'email' ;
+			$num_sent = mailusers_send_mail($recipients, $subject, $mail_content, $mail_format, $from_name, $from_address, $useheader, $usefooter);
 	?>
 			<div class="updated fade">
 				<p><?php echo sprintf(__("Notification sent to %s user(s).", MAILUSERS_I18N_DOMAIN), $num_sent); ?></p>

@@ -1,14 +1,14 @@
 <?php
 /**
  * Module Name: Protect
- * Module Description: Prevent brute force attacks.
+ * Module Description: Block suspicious-looking sign in activity
  * Sort Order: 1
  * Recommendation Order: 4
  * First Introduced: 3.4
  * Requires Connection: Yes
  * Auto Activate: Yes
  * Module Tags: Recommended
- * Feature: Recommended, Performance-Security
+ * Feature: Security
  * Additional Search Queries: security, secure, protection, botnet, brute force, protect, login
  */
 
@@ -49,9 +49,8 @@ class Jetpack_Protect_Module {
 	private function __construct() {
 		add_action( 'jetpack_activate_module_protect', array ( $this, 'on_activation' ) );
 		add_action( 'jetpack_deactivate_module_protect', array ( $this, 'on_deactivation' ) );
-		add_action( 'init', array ( $this, 'maybe_get_protect_key' ) );
 		add_action( 'jetpack_modules_loaded', array ( $this, 'modules_loaded' ) );
-		add_action( 'login_head', array ( $this, 'check_use_math' ) );
+		add_action( 'login_init', array ( $this, 'check_use_math' ) );
 		add_filter( 'authenticate', array ( $this, 'check_preauth' ), 10, 3 );
 		add_action( 'wp_login', array ( $this, 'log_successful_login' ), 10, 2 );
 		add_action( 'wp_login_failed', array ( $this, 'log_failed_attempt' ) );
@@ -91,9 +90,12 @@ class Jetpack_Protect_Module {
 
 	public function maybe_get_protect_key() {
 		if ( get_site_option( 'jetpack_protect_activating', false ) && ! get_site_option( 'jetpack_protect_key', false ) ) {
-			$this->get_protect_key();
+			$key = $this->get_protect_key();
 			delete_site_option( 'jetpack_protect_activating' );
+			return $key;
 		}
+
+		return get_site_option( 'jetpack_protect_key' );
 	}
 
 	/**
@@ -131,7 +133,7 @@ class Jetpack_Protect_Module {
 				require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 			}
 
-			if ( ! is_plugin_active_for_network( 'jetpack/jetpack.php' ) ) {
+			if ( ! ( is_plugin_active_for_network( 'jetpack/jetpack.php' ) || is_plugin_active_for_network( 'jetpack-dev/jetpack.php' ) ) ) {
 				add_action( 'load-index.php', array ( $this, 'prepare_jetpack_protect_multisite_notice' ) );
 			}
 		}
@@ -174,7 +176,7 @@ class Jetpack_Protect_Module {
 				<p><?php printf( __( 'Thanks for activating Protect! To start protecting your site, please network activate Jetpack on your Multisite installation and activate Protect on your primary site. Due to the way logins are handled on WordPress Multisite, Jetpack must be network-enabled in order for Protect to work properly. <a href="%s" target="_blank">Learn More</a>', 'jetpack' ), 'http://jetpack.com/support/multisite-protect' ); ?></p>
 			</div>
 			<div class="jp-banner__action-container is-opt-in">
-				<a href="<?php echo network_admin_url( 'plugins.php' ); ?>" class="jp-banner__button"
+				<a href="<?php echo esc_url( network_admin_url( 'plugins.php' ) ); ?>" class="jp-banner__button"
 				   id="wpcom-connect"><?php _e( 'View Network Admin', 'jetpack' ); ?></a>
 			</div>
 		</div>
@@ -309,7 +311,11 @@ class Jetpack_Protect_Module {
 	 * a busy IP that has a lot of good logins along with some forgotten passwords. Also saves current user's ip
 	 * to the ip address whitelist
 	 */
-	public function log_successful_login( $user_login, $user ) {
+	public function log_successful_login( $user_login, $user = null ) {
+		if ( ! $user ) { // For do_action( 'wp_login' ) calls that lacked passing the 2nd arg.
+			$user = get_user_by( 'login', $user_login );
+		}
+
 		$this->protect_call( 'successful_login', array ( 'roles' => $user->roles ) );
 	}
 
@@ -421,11 +427,38 @@ class Jetpack_Protect_Module {
 	 * @return bool Either returns true, fires $this->kill_login, or includes a math fallback and returns false
 	 */
 	function check_login_ability( $preauth = false ) {
+		$ip = jetpack_protect_get_ip();
+
+		// Server is misconfigured and we can't get an IP
+		if ( ! $ip && class_exists( 'Jetpack' ) ) {
+			Jetpack::deactivate_module( 'protect' );
+			ob_start();
+			Jetpack::state( 'message', 'protect_misconfigured_ip' );
+			ob_end_clean();
+			return true;
+		}
+
+		/**
+		 * Short-circuit check_login_ability.
+		 *
+		 * If there is an alternate way to validate the current IP such as
+		 * a hard-coded list of IP addresses, we can short-circuit the rest
+		 * of the login ability checks and return true here.
+		 *
+		 * @module protect
+		 *
+		 * @since 4.4.0
+		 *
+		 * @param bool false Should we allow all logins for the current ip? Default: false
+		 */
+		if ( apply_filters( 'jpp_allow_login', false, $ip ) ) {
+			return true;
+		}
+
 		$headers         = $this->get_headers();
 		$header_hash     = md5( json_encode( $headers ) );
 		$transient_name  = 'jpp_li_' . $header_hash;
 		$transient_value = $this->get_transient( $transient_name );
-		$ip              = jetpack_protect_get_ip();
 
 		if ( jetpack_protect_ip_is_private( $ip ) ) {
 			return true;
@@ -519,7 +552,7 @@ class Jetpack_Protect_Module {
 		 * @param string $ip IP flagged by Protect.
 		 */
 		do_action( 'jpp_kill_login', $ip );
-		$help_url = 'http://jetpack.com/support/security/';
+		$help_url = 'https://jetpack.com/support/security-features/#unblock';
 
 		$die_string = sprintf( __( 'Your IP (%1$s) has been flagged for potential security violations.  <a href="%2$s">Find out more...</a>', 'jetpack' ), str_replace( 'http://', '', esc_url( 'http://' . $ip ) ), esc_url( $help_url ) );
 
@@ -564,6 +597,7 @@ class Jetpack_Protect_Module {
 			// If it fails we need access to $this->api_key_error
 			if ( $result ) {
 				wp_safe_redirect( Jetpack::module_configuration_url( 'protect' ) );
+				exit;
 			}
 		}
 
@@ -649,7 +683,7 @@ class Jetpack_Protect_Module {
 	function protect_call( $action = 'check_ip', $request = array () ) {
 		global $wp_version, $wpdb, $current_user;
 
-		$api_key = get_site_option( 'jetpack_protect_key' );
+		$api_key = $this->maybe_get_protect_key();
 
 		$user_agent = "WordPress/{$wp_version} | Jetpack/" . constant( 'JETPACK__VERSION' );
 
@@ -666,11 +700,23 @@ class Jetpack_Protect_Module {
 			$request['multisite'] = get_blog_count();
 		}
 
+
+		/**
+		 * Filter controls maximum timeout in waiting for reponse from Protect servers.
+		 *
+		 * @module protect
+		 *
+		 * @since 4.0.4
+		 *
+		 * @param int $timeout Max time (in seconds) to wait for a response.
+		 */
+		$timeout = apply_filters( 'jetpack_protect_connect_timeout', 30 );
+
 		$args = array (
 			'body'        => $request,
 			'user-agent'  => $user_agent,
 			'httpversion' => '1.0',
-			'timeout'     => 15
+			'timeout'     => absint( $timeout )
 		);
 
 		$response_json           = wp_remote_post( $this->get_api_host(), $args );

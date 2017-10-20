@@ -102,10 +102,7 @@ namespace rtCamp\WP\Nginx {
 			$this->log( "Function purgePost BEGIN ===" );
 
 			if ( $rt_wp_nginx_helper->options[ 'purge_homepage_on_edit' ] == 1 ) {
-				$homepage_url = trailingslashit( home_url() );
-
-				$this->log( "Purging homepage '$homepage_url'" );
-				$this->purgeUrl( $homepage_url );
+				$this->_purge_homepage(); 
 			}
 
 
@@ -207,6 +204,8 @@ namespace rtCamp\WP\Nginx {
 		function purgeUrl( $url, $feed = true ) {
 
 			global $rt_wp_nginx_helper;
+			
+			$url = trailingslashit( $url );
 
 			$this->log( "- Purging URL | " . $url );
 
@@ -435,10 +434,18 @@ namespace rtCamp\WP\Nginx {
 		}
 
 		private function _purge_homepage() {
+		    //  WPML installetd?
+			if ( function_exists('icl_get_home_url') )
+			{
+				$homepage_url = trailingslashit( icl_get_home_url() );
+				$this->log( sprintf( __( "Purging homepage (WPML) '%s'", "nginx-helper" ), $homepage_url ) );
+			}
+			else
+			{
+				$homepage_url = trailingslashit( home_url() );
+				$this->log( sprintf( __( "Purging homepage '%s'", "nginx-helper" ), $homepage_url ) );
+			}
 
-			$homepage_url = trailingslashit( home_url() );
-
-			$this->log( sprintf( __( "Purging homepage '%s'", "nginx-helper" ), $homepage_url ) );
 			$this->purgeUrl( $homepage_url );
 
 			return true;
@@ -758,6 +765,10 @@ namespace rtCamp\WP\Nginx {
 		/** Source - http://stackoverflow.com/a/1360437/156336 **/		
 		
 		function unlinkRecursive( $dir, $deleteRootToo ) {
+			if ( ! is_dir( $dir ) ) {
+				return;
+			}
+			
 			if ( ! $dh = opendir( $dir ) ) {
 				return;
 			}
@@ -767,7 +778,7 @@ namespace rtCamp\WP\Nginx {
 				}
 
 				if ( ! @unlink( $dir . '/' . $obj ) ) {
-					$this->unlinkRecursive( $dir . '/' . $obj, true );
+					$this->unlinkRecursive( $dir . '/' . $obj, false );
 				}
 			}
 			
@@ -780,49 +791,54 @@ namespace rtCamp\WP\Nginx {
 			return;
 		}
         
-        function purge_urls() {
+		function purge_urls() {
 
 			global $rt_wp_nginx_helper;
 
 			$parse = parse_url( site_url() );
 
+			$purge_urls = isset( $rt_wp_nginx_helper->options['purge_url'] ) && ! empty( $rt_wp_nginx_helper->options['purge_url'] ) ?
+				explode( "\r\n", $rt_wp_nginx_helper->options['purge_url'] ) : array();
+
+                        // Allow plugins/themes to modify/extend urls. Pass urls array in first parameter, second says if wildcards are allowed
+			$purge_urls = apply_filters('rt_nginx_helper_purge_urls', $purge_urls, false);
+
 			switch ($rt_wp_nginx_helper->options['purge_method']) {
+
 				case 'unlink_files':
 					$_url_purge_base = $parse[ 'scheme' ] . '://' . $parse[ 'host' ];
 					
-                    if( isset( $rt_wp_nginx_helper->options['purge_url'] ) && ! empty( $rt_wp_nginx_helper->options['purge_url'] ) ) {
-                        $purge_urls = explode( "\r\n", $rt_wp_nginx_helper->options['purge_url'] );
-                        
-                        foreach ($purge_urls as $purge_url ) {
-                            $purge_url = trim( $purge_url );
-                            
-                            if( strpos( $purge_url, '*' ) === false ) {
-                                $purge_url = $_url_purge_base . $purge_url;
-                                $this->log( "- Purging URL | " . $url );
-                                $this->_delete_cache_file_for( $purge_url );
-                            }
-                        }
-                    }
+					if( is_array( $purge_urls ) && ! empty( $purge_urls ) ) {
+						foreach ($purge_urls as $purge_url ) {
+						    $purge_url = trim( $purge_url );
+						    
+						    if( strpos( $purge_url, '*' ) === false ) {
+						        $purge_url = $_url_purge_base . $purge_url;
+						        $this->log( "- Purging URL | " . $purge_url );
+						        $this->_delete_cache_file_for( $purge_url );
+						    }
+						}
+					}
 					break;
+
 				case 'get_request':
 					// Go to default case
 				default:
 					$_url_purge_base = $parse[ 'scheme' ] . '://' . $parse[ 'host' ] . '/purge';
 					
-                    if( isset( $rt_wp_nginx_helper->options['purge_url'] ) && ! empty( $rt_wp_nginx_helper->options['purge_url'] ) ) {
-                        $purge_urls = explode( "\r\n", $rt_wp_nginx_helper->options['purge_url'] );
-                        
-                        foreach ($purge_urls as $purge_url ) {
-                            $purge_url = trim( $purge_url );
-                            
-                            if( strpos( $purge_url, '*' ) === false ) {
-                                $purge_url = $_url_purge_base . $purge_url;
-                                $this->log( "- Purging URL | " . $url );
-                                $this->_do_remote_get( $purge_url );
-                            }
-                        }
-                    }
+					if( is_array( $purge_urls ) && ! empty( $purge_urls ) ) {
+						foreach ($purge_urls as $purge_url ) {
+						    $purge_url = trim( $purge_url );
+						    
+						    if( strpos( $purge_url, '*' ) === false ) {
+						        $purge_url = $_url_purge_base . $purge_url;
+						        $this->log( "- Purging URL | " . $purge_url );
+						        $this->_do_remote_get( $purge_url );
+						    }
+						}
+					}
 					break;
+
 			}
 
 		}
