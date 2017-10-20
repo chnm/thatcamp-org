@@ -43,3 +43,7 @@ robots.txt
 /wp-content/plugins/si-captcha-for-wordpress/captcha/cache/*
 /wp-content/plugins/multisite-maintenance-mode/*
 /wp-content/upgrade/*
+/wp-includes/js/tinymce/plugins/wptextpattern/plugin.js
+/wp-includes/js/tinymce/plugins/wptextpattern/plugin.min.js
+
+
