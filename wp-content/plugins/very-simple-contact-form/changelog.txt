@@ -1,0 +1,295 @@
+CHANGELOG
+=========
+
+= Version 7.1 =
+* new: attribute to change default mail subject prefix: prefix_subject
+* new: attribute to scroll back to form location after submit: scroll_to_form
+* for more info please check readme file
+* thanks startover909
+
+= Version 7.0 =
+* minor change in files vscf-form and vscf-widget-form
+
+= Version 6.9 =
+* form now supports bootstrap css
+* this means I have added bootstrap css classes
+* updated files vscf-form and vscf-widget-form
+* updated file vscf-style
+
+= Version 6.8 =
+* best practice: removed closing PHP tag from most files
+* best practice: added newline at end of most files
+
+= Version 6.7 =
+* new: attribute to change default mail subject: subject
+* for more info please check readme file
+* updated readme file
+
+= Version 6.6 =
+* new: sender can receive a confirmation by mail after submitting form
+* added 2 attributes: auto_reply and auto_reply_message
+* for more info please check readme file
+* updated files vscf-form and vscf-widget-form
+* added info in readme file about the use of smtp plugins
+* updated FAQ
+
+= Version 6.5 =
+* changed the "from" header again to avoid form submissions being marked as spam
+* the "from" header is now a default email that ends with your site domain
+* also added new attribute to change this email again: from_header
+* for more info please check readme file
+* updated files vscf, vscf-form and vscf-widget-form
+* updated readme file
+* thanks again Sanjay Ojha and John, much appreciated
+
+= Version 6.4 =
+* changed the "from" header to avoid form submissions being marked as spam
+* the "from" header is now email from admin
+* updated files vscf-form and vscf-widget-form
+* thanks Sanjay Ojha and John
+
+= Version 6.3 =
+* bugfix: fixed double form submission (thanks snikolictech)
+* updated files vscf-form and vscf-widget-form
+
+= Version 6.2 =
+* improvement: check to determine whether form was sent or not
+* updated files vscf-form and vscf-widget-form
+* minor textual changes
+* updated readme file
+* new screenshots on wp.org
+
+= Version 6.1 =
+* both shortcode files: removed error message above form
+* updated file vscf-style
+
+= Version 6.0 =
+* message field and widget information field: save html is allowed
+* added filter wp_kses_post
+* updated files vscf-form, vscf-widget-form and vscf-widget
+* fixed mistake in textdomain
+
+= Version 5.9 =
+* all php files: disable direct access to file
+* updated file uninstall
+
+= Version 5.8 =
+* file vscf-widget: fixed php7 error (thanks nx3d)
+
+= Version 5.7 =
+* added shortcode attribute to hide subject field
+* file vscf-style: minor changes
+
+= Version 5.6 =
+* updated files vscf-form and vscf-widget-form (css class of input fields)
+
+= Version 5.5 =
+* readme file: bunch of textual changes
+
+= Version 5.4 =
+* added file changelog
+* updated readme file
+
+= Version 5.3 =
+* updated files vscf-form and vscf-widget-form: changed prefix of input name from form_ into vscf_
+* css class of widget and info: replaced underscore with hyphen 
+* updated file vscf-style
+* vscf-widget: added widget text input to add additional information above widget form
+* updated readme file
+
+= Version 5.2 =
+* removed empty action attribute from form tag
+* updated readme file
+
+= Version 5.1 =
+* added support for plugin Contact Form DB
+* with this plugin you can list form submissions in your dashboard
+
+= Version 5.0 = 
+* changed file names: you might need to activate plugin again
+* updated readme file
+
+= Version 4.9 =
+* updated text strings
+* updated readme file
+
+= Version 4.8 =
+* files vscf_main and vscf_widget_form: simplyfied field validation
+* changed captcha label
+* relocated file vscf_style to folder css
+* updated file vscf_style
+* updated readme file
+
+= Version 4.7 =
+* added a PayPal donate link
+* updated readme file
+
+= Version 4.6 =
+* updated readme file
+* updated FAQ
+* updated file vscf_settings
+* file vscf_widget: changed label Shortcode Attributes into Attributes, to avoid confusion
+
+= Version 4.5 =
+* updated file vscf_widget: you can use all shortcode attributes for the widget now. More info about this at the Installation section.  
+* updated readme file
+
+= Version 4.4 =
+* removed translations: plugin now support WordPress language packs
+* added file uninstall.php so settings in database are removed when uninstalling plugin
+* updated files vscf_main and vscf_widget_form
+* updated readme file
+* file vscf_setting: removed function to set mail header 'Sender' because many servers ignore this
+
+= Version 4.3 =
+* bugfix
+
+= Version 4.2 =
+* updated files vscf_main and vscf_widget_form
+* renamed sum_fields: captcha_fields
+* renamed security_fields: honeypot_fields
+
+= Version 4.1 =
+* updated Data Validation and Escaping again
+* text area validation: replaced my own 'vscf_sanitize_text_area' with 'strip_tags'
+* updated FAQ
+
+= Version 4.0 =
+* updated files vscf_main and vscf_widget_form 
+* updated Data Validation and Escaping
+
+= Version 3.9 =
+* changed text domain for the wordpress.org translation system
+* updated FAQ
+
+= Version 3.8 =
+* marjor update
+* as mentioned before I have removed the custom style editor
+* fixed bug with REPLY-TO header and Cyrilic language
+* updated most php files
+* added Bulgarian translation (thanks Nikolay Nikolov)
+* added Portuguese translation (thanks Marta Ferreira)
+* updated language files
+* updated FAQ
+
+= Version 3.7 =
+* NOTE: in next version I will remove the custom style editor. More info: WordPress plugin page and readme file.
+* file vscf_widget: updated php constructor and frontend code
+
+= Version 3.6 =
+* updated language files
+
+= Version 3.5 =
+* added Finnish translation (thanks Sami Skogberg)
+* several small adjustments
+* updated language files
+
+= Version 3.4 =
+* adjusted the email headers to avoid messages directly going to junk/spam folder: added Reply-To and Return-Path
+* renamed vscf_sanitize_text_field into vscf_sanitize_text_area
+* updated language files
+
+= Version 3.3 =
+* removed 'extract' from files vscf_main and vscf_widget_form
+* adjusted code in files vscf_main and vscf_widget_form
+* added Swedish translation (thanks Bo Ahlqvist)
+
+= Version 3.2 =
+* request: changed required number of characters from 3 to 2 (name and subject field)
+* fixed bug with captcha not working properly in widget (in version 3.1)
+* added Italian translation (thanks Antonio Melcore)
+
+= Version 3.1 =
+* cleaned up code in files vscf_main and vscf_widget_form
+* added Turkish translation (thanks WordCommerce)
+
+= Version 3.0 =
+* major update
+* added Custom Style editor: you can change the layout (CSS) of your form using the custom style page in WP dashboard
+* linebreaks in textarea field are allowed now
+* updated language files with help from nice users listed below and Google Translate
+
+= Version 2.9 =
+* fixed bug in locale of Catalan, Croatian and Estonian language  
+* added Slovenian translation (thanks Maja Blejec)
+
+= Version 2.8 =
+* form will now use theme styling for input fields and submit button. If not supported in your theme you can activate plugin styling in file vscf_style.
+* added Estonian translation (thanks Villem Kuusk)
+
+= Version 2.7 =
+* added Polish translation (thanks Milosz Raczkowski)
+* replaced all divs with paragraph tags for better form display
+
+= Version 2.6 =
+* added file vscf_widget_form
+* fixed bug with widget: now you can use form and widget on same website
+* updated language files
+
+= Version 2.5 =
+* major update
+* added file vscf_widget
+* added Very Simple Contact Form widget: now you can display form in sidebar too
+* updated language files
+
+= Version 2.4 =
+* major update
+* added anti-spam: honeypot fields and a simple captcha sum
+* adjusted stylesheet
+* updated language files
+
+= Version 2.3 =
+* fixed small coding error in file vscf_main
+
+= Version 2.2 =
+* added Danish language (thanks Borge Kolding)
+* updated FAQ
+* adjusted stylesheet
+
+= Version 2.1 =
+* adjusted stylesheet
+* updated language files
+
+= Version 2.0 =
+* major update
+* removed function vscf_clean_input and replaced it with default WP function sanitize_text_field: now all UTF-8 characters are supported!
+* added Catalan translation (thanks Miquel Serrat)
+* updated FAQ
+
+= Version 1.9 =
+* added Croatian translation (thanks Dario Abram)
+* added FAQ
+
+= Version 1.8 =
+* adjusted function vscf_clean_input. Only allowed: letters (a-z), digits (0-10), space, point, hyphen and comma
+* added Brazilian Portuguese translation (thanks Gustavo Lucas)
+
+= Version 1.7 =
+* changed shortcode 'email' into 'email_to' (to avoid possible conflict with the email input field)
+* added name and email in text of message to admin
+
+= Version 1.6 =
+* updated several translation files
+* added Spanish translation (thanks Alvaro Reig Gonzalez)
+
+= Version 1.5 =
+* several small frontend adjustments
+ 
+= Version 1.4 =
+* several small adjustments
+
+= Version 1.3 =
+* removed code that wasn't necessary
+* added Hungarian translation (thanks Roman Kekesi)
+
+= Version 1.2 =
+* IMPORTANT SECURITY UPDATE > please do not use older version of plugin
+* removed jquery validation (and folder .js)
+* several small adjustments
+
+= Version 1.1 =
+* removed font-family from stylesheet
+* added French and German translation (thanks curlybracket)
+
+= Version 1.0 =
+* first stable release

@@ -1,0 +1,120 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Very Simple Contact Form\n"
+"POT-Creation-Date: 2017-09-16 23:57+0200\n"
+"PO-Revision-Date: 2015-08-14 23:18+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: vscf.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: vscf-form.php:15 vscf-widget-form.php:15
+msgid "Name"
+msgstr ""
+
+#: vscf-form.php:16 vscf-widget-form.php:16
+msgid "Email"
+msgstr ""
+
+#: vscf-form.php:17 vscf-widget-form.php:17
+msgid "Subject"
+msgstr ""
+
+#: vscf-form.php:18 vscf-widget-form.php:18
+msgid "Message"
+msgstr ""
+
+#: vscf-form.php:19 vscf-widget-form.php:19
+#, php-format
+msgid "Enter number %s"
+msgstr ""
+
+#: vscf-form.php:20 vscf-widget-form.php:20
+msgid "Submit"
+msgstr ""
+
+#: vscf-form.php:21 vscf-form.php:22 vscf-widget-form.php:21
+#: vscf-widget-form.php:22
+msgid "Please enter at least 2 characters"
+msgstr ""
+
+#: vscf-form.php:23 vscf-widget-form.php:23
+msgid "Please enter at least 10 characters"
+msgstr ""
+
+#: vscf-form.php:24 vscf-widget-form.php:24
+msgid "Please enter the correct number"
+msgstr ""
+
+#: vscf-form.php:25 vscf-widget-form.php:25
+msgid "Please enter a valid email"
+msgstr ""
+
+#: vscf-form.php:26 vscf-form.php:32 vscf-widget-form.php:26
+#: vscf-widget-form.php:32
+msgid "Thank you! You will receive a response as soon as possible."
+msgstr ""
+
+#: vscf-form.php:27 vscf-widget-form.php:27
+msgid "Error! Could not send form. This might be a server issue."
+msgstr ""
+
+#: vscf-form.php:147 vscf-form.php:152 vscf-widget-form.php:147
+#: vscf-widget-form.php:152
+#, php-format
+msgid "IP: %s"
+msgstr ""
+
+#: vscf-widget.php:10
+msgid "Display your contact form in a widget."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: vscf-widget.php:11 vscf-widget.php:21
+msgid "Very Simple Contact Form"
+msgstr ""
+
+#: vscf-widget.php:26
+msgid "Title"
+msgstr ""
+
+#: vscf-widget.php:30
+msgid "Information"
+msgstr ""
+
+#: vscf-widget.php:34
+msgid "Attributes"
+msgstr ""
+
+#: vscf-widget.php:37
+msgid "Info about attributes"
+msgstr ""
+
+#: vscf-widget.php:37
+msgid "click here"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"This is a very simple contact form. Use shortcode [contact] to display form "
+"on page or use the widget. For more info please check readme file."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Guido van der Leest"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.guidovanderleest.nl"
+msgstr ""

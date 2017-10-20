@@ -1,0 +1,27 @@
+/* Very Simple Contact Form stylesheet */
+
+/* Form */
+#vscf {width:100%; clear:both; margin:0; padding:0; border:0;}
+#vscf-anchor {clear:both;}
+
+/* Form elements */
+#vscf .form-group {clear:both; margin-bottom:15px;}
+#vscf .form-group label {margin-bottom:5px; display:block;}
+#vscf .form-group input {width:70%; font-size:1em;}
+#vscf .form-group textarea {width:90%; font-size:1em;}
+#vscf .form-group button {}
+
+/* Error */
+#vscf .error {border-color:#ff0000; color:#ff0000;}
+
+/* Hide elements */
+#vscf .hide {display:none;}
+
+/* Success or fail message */
+.vscf-info {font-style:italic; font-size:1.20em;}
+
+/* Widget */
+.vscf-sidebar {}
+
+/* Widget text above form */
+.vscf-sidebar-text {clear:both;}
