@@ -103,6 +103,7 @@ class BP_XProfile_Data_Template {
 	 *
 	 * @see BP_XProfile_Group::get() for more details about parameters.
 	 *
+	 * @since 1.5.0
 	 * @since 2.4.0 Introduced `$member_type` argument.
 	 *
 	 * @param array|string $args {
@@ -140,8 +141,7 @@ class BP_XProfile_Data_Template {
 				9 => 'update_meta_cache'
 			);
 
-			$func_args = func_get_args();
-			$args      = bp_core_parse_args_array( $old_args_keys, $func_args );
+			$args = bp_core_parse_args_array( $old_args_keys, func_get_args() );
 		}
 
 		$r = wp_parse_args( $args, array(
@@ -166,6 +166,8 @@ class BP_XProfile_Data_Template {
 	/**
 	 * Whether or not the loop has field groups.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return bool
 	 */
 	public function has_groups() {
@@ -178,6 +180,8 @@ class BP_XProfile_Data_Template {
 
 	/**
 	 * Increments to the next group of fields.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @return object
 	 */
@@ -206,6 +210,8 @@ class BP_XProfile_Data_Template {
 
 	/**
 	 * Rewinds to the start of the groups list.
+	 *
+	 * @since 1.0.0
 	 */
 	public function rewind_groups() {
 		$this->current_group = -1;
@@ -216,6 +222,8 @@ class BP_XProfile_Data_Template {
 
 	/**
 	 * Kicks off the profile groups.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @return bool
 	 */
@@ -241,6 +249,8 @@ class BP_XProfile_Data_Template {
 
 	/**
 	 * Sets up the profile group.
+	 *
+	 * @since 1.0.0
 	 */
 	public function the_profile_group() {
 		global $group;
@@ -265,6 +275,8 @@ class BP_XProfile_Data_Template {
 	/**
 	 * Increments to the next field.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return int
 	 */
 	public function next_field() {
@@ -277,6 +289,8 @@ class BP_XProfile_Data_Template {
 
 	/**
 	 * Rewinds to the start of the fields.
+	 *
+	 * @since 1.0.0
 	 */
 	public function rewind_fields() {
 		$this->current_field = -1;
@@ -287,6 +301,8 @@ class BP_XProfile_Data_Template {
 
 	/**
 	 * Whether or not the loop has fields.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @return bool
 	 */
@@ -307,6 +323,8 @@ class BP_XProfile_Data_Template {
 	/**
 	 * Kick off the profile fields.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return bool
 	 */
 	public function profile_fields() {
@@ -322,6 +340,8 @@ class BP_XProfile_Data_Template {
 
 	/**
 	 * Set up the profile fields.
+	 *
+	 * @since 1.0.0
 	 */
 	public function the_profile_field() {
 		global $field;

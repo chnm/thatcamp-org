@@ -469,7 +469,7 @@ class PHPMailer {
       $to .= $this->AddrFormat($this->to[$i]);
     }
 
-    $toArr = split(',', $to);
+    $toArr = explode(',', $to);
 
     $params = sprintf("-oi -f %s", $this->Sender);
     if ($this->Sender != '' && strlen(ini_get('safe_mode')) < 1) {
@@ -591,7 +591,7 @@ class PHPMailer {
     /* Retry while there is no connection */
     while($index < count($hosts) && $connection == false) {
       $hostinfo = array();
-      if(eregi('^(.+):([0-9]+)$', $hosts[$index], $hostinfo)) {
+      if(preg_match('/^(.+):([0-9]+)$/', $hosts[$index], $hostinfo)) {
         $host = $hostinfo[1];
         $port = $hostinfo[2];
       } else {
@@ -1217,11 +1217,23 @@ class PHPMailer {
       return '';
     }
     $magic_quotes = get_magic_quotes_runtime();
-    set_magic_quotes_runtime(0);
+    if ($magic_quotes) {
+      if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+        set_magic_quotes_runtime(0);
+      } else {
+        ini_set('magic_quotes_runtime', 0);
+      }
+    }
     $file_buffer = fread($fd, filesize($path));
     $file_buffer = $this->EncodeString($file_buffer, $encoding);
     fclose($fd);
-    set_magic_quotes_runtime($magic_quotes);
+    if ($magic_quotes) {
+      if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+        set_magic_quotes_runtime($magic_quotes);
+      } else {
+        ini_set('magic_quotes_runtime', $magic_quotes);
+      }
+    }
 
     return $file_buffer;
   }
@@ -1734,7 +1746,7 @@ class PHPMailer {
           $directory = dirname($url);
           ($directory == '.')?$directory='':'';
           $cid = 'cid:' . md5($filename);
-          $fileParts = split("\.", $filename);
+          $fileParts = explode(".", $filename);
           $ext = $fileParts[1];
           $mimeType = $this->_mime_types($ext);
           if ( strlen($basedir) > 1 && substr($basedir,-1) != '/') { $basedir .= '/'; }

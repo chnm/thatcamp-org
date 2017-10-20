@@ -238,7 +238,10 @@ function bp_dtheme_activity_template_loader() {
 			break;
 		case 'mentions':
 			$feed_url = bp_loggedin_user_domain() . bp_get_activity_slug() . '/mentions/feed/';
-			bp_activity_clear_new_mentions( bp_loggedin_user_id() );
+
+			if ( isset( $_POST['_wpnonce_activity_filter'] ) && wp_verify_nonce( wp_unslash( $_POST['_wpnonce_activity_filter'] ), 'activity_filter' ) ) {
+				bp_activity_clear_new_mentions( bp_loggedin_user_id() );
+			}
 			break;
 		default:
 			$feed_url = home_url( bp_get_activity_root_slug() . '/feed/' );
@@ -277,18 +280,21 @@ function bp_dtheme_post_update() {
 
 	$activity_id = 0;
 	if ( empty( $_POST['object'] ) && bp_is_active( 'activity' ) ) {
-		$activity_id = bp_activity_post_update( array( 'content' => $_POST['content'] ) );
+		$activity_id = bp_activity_post_update( array( 'content' => $_POST['content'], 'error_type' => 'wp_error' ) );
 
 	} elseif ( $_POST['object'] == 'groups' ) {
 		if ( ! empty( $_POST['item_id'] ) && bp_is_active( 'groups' ) )
-			$activity_id = groups_post_update( array( 'content' => $_POST['content'], 'group_id' => $_POST['item_id'] ) );
+			$activity_id = groups_post_update( array( 'content' => $_POST['content'], 'group_id' => $_POST['item_id'], 'error_type' => 'wp_error' ) );
 
 	} else {
 		$activity_id = apply_filters( 'bp_activity_custom_update', $_POST['object'], $_POST['item_id'], $_POST['content'] );
 	}
 
-	if ( empty( $activity_id ) )
+	if ( false === $activity_id ) {
 		exit( '-1<div id="message" class="error"><p>' . __( 'There was a problem posting your update, please try again.', 'buddypress' ) . '</p></div>' );
+	} elseif ( is_wp_error( $activity_id ) && $activity_id->get_error_code() ) {
+		exit( '-1<div id="message" class="error bp-ajax-message"><p>' . $activity_id->get_error_message() . '</p></div>' );
+	}
 
 	if ( bp_has_activities ( 'include=' . $activity_id ) ) {
 		while ( bp_activities() ) {
@@ -330,10 +336,14 @@ function bp_dtheme_new_activity_comment() {
 		'activity_id' => $_POST['form_id'],
 		'content'     => $_POST['content'],
 		'parent_id'   => $_POST['comment_id'],
+		'error_type'  => 'wp_error'
 	) );
 
-	if ( ! $comment_id )
+	if ( false === $comment_id ) {
 		exit( '-1<div id="message" class="error"><p>' . __( 'There was an error posting that reply, please try again.', 'buddypress' ) . '</p></div>' );
+	} elseif ( is_wp_error( $comment_id ) ) {
+		exit( '-1<div id="message" class="error bp-ajax-message"><p>' . esc_html( $comment_id->get_error_message() ) . '</p></div>' );
+	}
 
 	// Load the new activity item into the $activities_template global
 	bp_has_activities( 'display_comments=stream&hide_spam=false&show_hidden=true&include=' . $comment_id );
@@ -488,6 +498,16 @@ function bp_dtheme_mark_activity_favorite() {
 	if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
 		return;
 
+	if ( ! isset( $_POST['nonce'] ) ) {
+		return;
+	}
+
+	// Either the 'mark' or 'unmark' nonce is accepted, for backward compatibility.
+	$nonce = wp_unslash( $_POST['nonce'] );
+	if ( ! wp_verify_nonce( $nonce, 'mark_favorite' ) && ! wp_verify_nonce( $nonce, 'unmark_favorite' ) ) {
+		return;
+	}
+
 	if ( bp_activity_add_user_favorite( $_POST['id'] ) )
 		_e( 'Remove Favorite', 'buddypress' );
 	else
@@ -506,6 +526,16 @@ function bp_dtheme_unmark_activity_favorite() {
 	// Bail if not a POST action
 	if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
 		return;
+
+	if ( ! isset( $_POST['nonce'] ) ) {
+		return;
+	}
+
+	// Either the 'mark' or 'unmark' nonce is accepted, for backward compatibility.
+	$nonce = wp_unslash( $_POST['nonce'] );
+	if ( ! wp_verify_nonce( $nonce, 'mark_favorite' ) && ! wp_verify_nonce( $nonce, 'unmark_favorite' ) ) {
+		return;
+	}
 
 	if ( bp_activity_remove_user_favorite( $_POST['id'] ) )
 		_e( 'Favorite', 'buddypress' );
@@ -795,7 +825,9 @@ function bp_dtheme_ajax_close_notice() {
 	if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
 		return;
 
-	if ( ! isset( $_POST['notice_id'] ) ) {
+	$nonce_check = isset( $_POST['nonce'] ) && wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'bp_messages_close_notice' );
+
+	if ( ! $nonce_check || ! isset( $_POST['notice_id'] ) ) {
 		echo "-1<div id='message' class='error'><p>" . __( 'There was a problem closing the notice.', 'buddypress' ) . '</p></div>';
 
 	} else {
@@ -864,7 +896,9 @@ function bp_dtheme_ajax_message_markunread() {
 	if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
 		return;
 
-	if ( ! isset($_POST['thread_ids']) ) {
+	$nonce_check = isset( $_POST['nonce'] ) && wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'bp_messages_mark_messages_unread' );
+
+	if ( ! $nonce_check || ! isset( $_POST['thread_ids'] ) ) {
 		echo "-1<div id='message' class='error'><p>" . __( 'There was a problem marking messages as unread.', 'buddypress' ) . '</p></div>';
 
 	} else {
@@ -889,7 +923,9 @@ function bp_dtheme_ajax_message_markread() {
 	if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
 		return;
 
-	if ( ! isset($_POST['thread_ids']) ) {
+	$nonce_check = isset( $_POST['nonce'] ) && wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'bp_messages_mark_messages_read' );
+
+	if ( ! $nonce_check || ! isset( $_POST['thread_ids'] ) ) {
 		echo "-1<div id='message' class='error'><p>" . __('There was a problem marking messages as read.', 'buddypress' ) . '</p></div>';
 
 	} else {
@@ -914,7 +950,9 @@ function bp_dtheme_ajax_messages_delete() {
 	if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
 		return;
 
-	if ( ! isset($_POST['thread_ids']) ) {
+	$nonce_check = isset( $_POST['nonce'] ) && wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'bp_messages_delete_selected' );
+
+	if ( ! $nonce_check || ! isset($_POST['thread_ids']) ) {
 		echo "-1<div id='message' class='error'><p>" . __( 'There was a problem deleting messages.', 'buddypress' ) . '</p></div>';
 
 	} else {

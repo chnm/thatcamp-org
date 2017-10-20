@@ -10,8 +10,6 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-require dirname( __FILE__ ) . '/classes/class-bp-blogs-theme-compat.php';
-
 /**
  * Load the "My Blogs" screen.
  */

@@ -19,18 +19,23 @@ class BP_Core_Recently_Active_Widget extends WP_Widget {
 
 	/**
 	 * Constructor method.
+	 *
+	 * @since 1.5.0
 	 */
 	public function __construct() {
 		$name        = _x( '(BuddyPress) Recently Active Members', 'widget name', 'buddypress' );
 		$description = __( 'Profile photos of recently active members', 'buddypress' );
 		parent::__construct( false, $name, array(
-			'description' => $description,
-			'classname'   => 'widget_bp_core_recently_active_widget buddypress widget',
+			'description'                 => $description,
+			'classname'                   => 'widget_bp_core_recently_active_widget buddypress widget',
+			'customize_selective_refresh' => true,
 		) );
 	}
 
 	/**
 	 * Display the Recently Active widget.
+	 *
+	 * @since 1.0.3
 	 *
 	 * @see WP_Widget::widget() for description of parameters.
 	 *
@@ -56,9 +61,7 @@ class BP_Core_Recently_Active_Widget extends WP_Widget {
 		$title = apply_filters( 'widget_title', $settings['title'], $settings, $this->id_base );
 
 		echo $args['before_widget'];
-		echo $args['before_title']
-		   . $title
-		   . $args['after_title'];
+		echo $args['before_title'] . $title . $args['after_title'];
 
 		// Setup args for querying members.
 		$members_args = array(
@@ -82,7 +85,7 @@ class BP_Core_Recently_Active_Widget extends WP_Widget {
 				<?php while ( bp_members() ) : bp_the_member(); ?>
 
 					<div class="item-avatar">
-						<a href="<?php bp_member_permalink(); ?>" title="<?php bp_member_name(); ?>"><?php bp_member_avatar(); ?></a>
+						<a href="<?php bp_member_permalink(); ?>" class="bp-tooltip" data-bp-tooltip="<?php bp_member_name(); ?>"><?php bp_member_avatar(); ?></a>
 					</div>
 
 				<?php endwhile; ?>
@@ -106,6 +109,8 @@ class BP_Core_Recently_Active_Widget extends WP_Widget {
 	/**
 	 * Update the Recently Active widget options.
 	 *
+	 * @since 1.0.3
+	 *
 	 * @param array $new_instance The new instance options.
 	 * @param array $old_instance The old instance options.
 	 * @return array $instance The parsed options to be saved.
@@ -120,6 +125,8 @@ class BP_Core_Recently_Active_Widget extends WP_Widget {
 
 	/**
 	 * Output the Recently Active widget options form.
+	 *
+	 * @since 1.0.3
 	 *
 	 * @param array $instance Widget instance settings.
 	 * @return void
@@ -153,7 +160,6 @@ class BP_Core_Recently_Active_Widget extends WP_Widget {
 	 *
 	 * @since 2.3.0
 	 *
-	 * @uses bp_parse_args() To merge widget settings into defaults.
 	 *
 	 * @param array $instance Widget instance settings.
 	 * @return array

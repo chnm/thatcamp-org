@@ -10,10 +10,6 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-require dirname( __FILE__ ) . '/classes/class-bp-core-members-widget.php';
-require dirname( __FILE__ ) . '/classes/class-bp-core-whos-online-widget.php';
-require dirname( __FILE__ ) . '/classes/class-bp-core-recently-active-widget.php';
-
 /**
  * Register bp-members widgets.
  *
@@ -22,9 +18,9 @@ require dirname( __FILE__ ) . '/classes/class-bp-core-recently-active-widget.php
  * @since 2.2.0
  */
 function bp_members_register_widgets() {
-	add_action( 'widgets_init', create_function( '', 'return register_widget("BP_Core_Members_Widget");'         ) );
-	add_action( 'widgets_init', create_function( '', 'return register_widget("BP_Core_Whos_Online_Widget");'     ) );
-	add_action( 'widgets_init', create_function( '', 'return register_widget("BP_Core_Recently_Active_Widget");' ) );
+	add_action( 'widgets_init', function() { return register_widget( 'BP_Core_Members_Widget' );         } );
+	add_action( 'widgets_init', function() { return register_widget( 'BP_Core_Whos_Online_Widget' );     } );
+	add_action( 'widgets_init', function() { return register_widget( 'BP_Core_Recently_Active_Widget' ); } );
 }
 add_action( 'bp_register_widgets', 'bp_members_register_widgets' );
 
@@ -87,7 +83,7 @@ function bp_core_ajax_widget_members() {
 				</div>
 
 				<div class="item">
-					<div class="item-title fn"><a href="<?php bp_member_permalink(); ?>" title="<?php bp_member_name(); ?>"><?php bp_member_name(); ?></a></div>
+					<div class="item-title fn"><a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a></div>
 					<?php if ( 'active' === $type ) : ?>
 						<div class="item-meta"><span class="activity"><?php bp_member_last_active(); ?></span></div>
 					<?php elseif ( 'newest' === $type ) : ?>

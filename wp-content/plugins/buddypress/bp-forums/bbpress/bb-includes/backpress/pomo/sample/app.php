@@ -1,7 +1,7 @@
 <?php
 
-require_once '../translations.php';
-require_once '../mo.php';
+require_once dirname( dirname(__FILE__) ) . '/translations.php';
+require_once dirname( dirname(__FILE__) ) . '/mo.php';
 
 
 function __($text, $domain = 'default') {
@@ -60,4 +60,3 @@ printf(__n('You have one new message.', 'You have %s new messages.', $messages).
 echo __("A string with low priority!", 'side')."\n";
 
 _e("Bye\n");
-?>

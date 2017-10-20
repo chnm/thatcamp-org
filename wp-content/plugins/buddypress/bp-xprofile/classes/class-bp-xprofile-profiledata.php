@@ -20,6 +20,7 @@ class BP_XProfile_ProfileData {
 	/**
 	 * XProfile ID.
 	 *
+	 * @since 1.6.0
 	 * @var int $id
 	 */
 	public $id;
@@ -27,6 +28,7 @@ class BP_XProfile_ProfileData {
 	/**
 	 * User ID.
 	 *
+	 * @since 1.6.0
 	 * @var int $user_id
 	 */
 	public $user_id;
@@ -34,6 +36,7 @@ class BP_XProfile_ProfileData {
 	/**
 	 * XProfile field ID.
 	 *
+	 * @since 1.6.0
 	 * @var int $field_id
 	 */
 	public $field_id;
@@ -41,6 +44,7 @@ class BP_XProfile_ProfileData {
 	/**
 	 * XProfile field value.
 	 *
+	 * @since 1.6.0
 	 * @var string $value
 	 */
 	public $value;
@@ -48,6 +52,7 @@ class BP_XProfile_ProfileData {
 	/**
 	 * XProfile field last updated time.
 	 *
+	 * @since 1.6.0
 	 * @var string $last_updated
 	 */
 	public $last_updated;
@@ -55,8 +60,10 @@ class BP_XProfile_ProfileData {
 	/**
 	 * BP_XProfile_ProfileData constructor.
 	 *
-	 * @param null $field_id Field ID to instantiate.
-	 * @param null $user_id  User ID to instantiate for.
+	 * @since 1.5.0
+	 *
+	 * @param int|null $field_id Field ID to instantiate.
+	 * @param int|null $user_id  User ID to instantiate for.
 	 */
 	public function __construct( $field_id = null, $user_id = null ) {
 		if ( !empty( $field_id ) ) {
@@ -66,6 +73,8 @@ class BP_XProfile_ProfileData {
 
 	/**
 	 * Populates the XProfile profile data.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param int $field_id Field ID to populate.
 	 * @param int $user_id  User ID to populate for.
@@ -88,24 +97,27 @@ class BP_XProfile_ProfileData {
 		}
 
 		if ( $profiledata ) {
-			$this->id           = $profiledata->id;
-			$this->user_id      = $profiledata->user_id;
-			$this->field_id     = $profiledata->field_id;
+			$this->id           = (int) $profiledata->id;
+			$this->user_id      = (int) $profiledata->user_id;
+			$this->field_id     = (int) $profiledata->field_id;
 			$this->value        = stripslashes( $profiledata->value );
 			$this->last_updated = $profiledata->last_updated;
 
 		} else {
 			// When no row is found, we'll need to set these properties manually.
-			$this->field_id	    = $field_id;
-			$this->user_id	    = $user_id;
+			$this->field_id	    = (int) $field_id;
+			$this->user_id	    = (int) $user_id;
 		}
 	}
 
 	/**
 	 * Check if there is data already for the user.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @global object $wpdb
 	 * @global array $bp
+	 *
 	 * @return bool
 	 */
 	public function exists() {
@@ -136,7 +148,10 @@ class BP_XProfile_ProfileData {
 	/**
 	 * Check if this data is for a valid field.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @global object $wpdb
+	 *
 	 * @return bool
 	 */
 	public function is_valid_field() {
@@ -159,6 +174,8 @@ class BP_XProfile_ProfileData {
 
 	/**
 	 * Save the data for the XProfile field.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @return bool
 	 */
@@ -218,7 +235,10 @@ class BP_XProfile_ProfileData {
 	/**
 	 * Delete specific XProfile field data.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @global object $wpdb
+	 *
 	 * @return boolean
 	 */
 	public function delete() {
@@ -256,6 +276,8 @@ class BP_XProfile_ProfileData {
 
 	/**
 	 * Get a user's profile data for a set of fields.
+	 *
+	 * @since 2.0.0
 	 *
 	 * @param int   $user_id   ID of user whose data is being queried.
 	 * @param array $field_ids Array of field IDs to query for.
@@ -301,7 +323,7 @@ class BP_XProfile_ProfileData {
 				} else {
 					$d               = new stdClass;
 					$d->id           = '';
-					$d->user_id      = '';
+					$d->user_id      = $user_id;
 					$d->field_id     = $field_id;
 					$d->value        = '';
 					$d->last_updated = '';
@@ -317,11 +339,25 @@ class BP_XProfile_ProfileData {
 			$data[]    = wp_cache_get( $cache_key, 'bp_xprofile_data' );
 		}
 
+		// Integer casting.
+		foreach ( (array) $data as $key => $d ) {
+			if ( isset( $data[ $key ]->id ) ) {
+				$data[ $key ]->id = (int) $data[ $key ]->id;
+			}
+			if ( isset( $data[ $key ]->user_id ) ) {
+				$data[ $key ]->user_id  = (int) $data[ $key ]->user_id;
+			}
+
+			$data[ $key ]->field_id = (int) $data[ $key ]->field_id;
+		}
+
 		return $data;
 	}
 
 	/**
 	 * Get all of the profile information for a specific user.
+	 *
+	 * @since 1.2.0
 	 *
 	 * @param int $user_id ID of the user.
 	 * @return array
@@ -368,6 +404,8 @@ class BP_XProfile_ProfileData {
 	/**
 	 * Get the user's field data id by the id of the xprofile field.
 	 *
+	 * @since 1.6.0
+	 *
 	 * @param int $field_id Field ID being queried for.
 	 * @param int $user_id  User ID associated with field.
 	 * @return int $fielddata_id
@@ -390,13 +428,15 @@ class BP_XProfile_ProfileData {
 			}
 		}
 
-		return $fielddata_id;
+		return (int) $fielddata_id;
 	}
 
 	/**
 	 * Get profile field values by field ID and user IDs.
 	 *
 	 * Supports multiple user IDs.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param int            $field_id ID of the field.
 	 * @param int|array|null $user_ids ID or IDs of user(s).
@@ -410,11 +450,12 @@ class BP_XProfile_ProfileData {
 			$user_ids = bp_displayed_user_id();
 		}
 
-		$is_single = false;
+		$return_single_result = false;
 		if ( ! is_array( $user_ids ) ) {
-			$user_ids  = array( $user_ids );
-			$is_single = true;
+			$return_single_result = true;
 		}
+
+		$user_ids = wp_parse_id_list( $user_ids );
 
 		// Assemble uncached IDs.
 		$uncached_ids = array();
@@ -448,7 +489,7 @@ class BP_XProfile_ProfileData {
 					$d = new stdClass;
 					$d->id           = '';
 					$d->user_id      = $id;
-					$d->field_id     = '';
+					$d->field_id     = $field_id;
 					$d->value        = '';
 					$d->last_updated = '';
 				}
@@ -465,8 +506,20 @@ class BP_XProfile_ProfileData {
 			$data[]    = wp_cache_get( $cache_key, 'bp_xprofile_data' );
 		}
 
+		// Integer casting.
+		foreach ( (array) $data as $key => $d ) {
+			if ( isset( $data[ $key ]->id ) ) {
+				$data[ $key ]->id = (int) $data[ $key ]->id;
+			}
+			if ( isset( $data[ $key ]->user_id ) ) {
+				$data[ $key ]->user_id  = (int) $data[ $key ]->user_id;
+			}
+
+			$data[ $key ]->field_id = (int) $data[ $key ]->field_id;
+		}
+
 		// If a single ID was passed, just return the value.
-		if ( $is_single ) {
+		if ( $return_single_result ) {
 			return $data[0]->value;
 
 		// Otherwise return the whole array.
@@ -477,6 +530,8 @@ class BP_XProfile_ProfileData {
 
 	/**
 	 * Get profile field values by field name and user ID.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param array|string $fields  Field(s) to get.
 	 * @param int|null     $user_id User ID to get field data for.
@@ -540,6 +595,8 @@ class BP_XProfile_ProfileData {
 	/**
 	 * Delete field.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param int $field_id ID of the field to delete.
 	 * @return bool
 	 */
@@ -558,6 +615,8 @@ class BP_XProfile_ProfileData {
 	/**
 	 * Get time for last XProfile field data update by user.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param int $user_id User ID to get time for.
 	 * @return null|string
 	 */
@@ -574,6 +633,8 @@ class BP_XProfile_ProfileData {
 	/**
 	 * Delete all data for provided user ID.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param int $user_id User ID to remove data for.
 	 * @return false|int
 	 */
@@ -587,6 +648,8 @@ class BP_XProfile_ProfileData {
 
 	/**
 	 * Get random field type by user ID.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param int    $user_id          User ID to query for.
 	 * @param string $exclude_fullname SQL portion used to exclude by field ID.
@@ -604,6 +667,8 @@ class BP_XProfile_ProfileData {
 
 	/**
 	 * Get fullname for provided user ID.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param int $user_id ID of the user to query.
 	 * @return mixed

@@ -176,7 +176,7 @@ function &_get_term_children($term_id, $terms, $taxonomy) {
 
 function _pad_term_counts(&$terms, $taxonomy) {
 	global $wp_taxonomy_object;
-	return $wp_taxonomy_object->_pad_term_counts(&$terms, $taxonomy);
+	return $wp_taxonomy_object->_pad_term_counts($terms, $taxonomy);
 }
 
 function is_object_in_term($object_id, $taxonomy, $terms = null) {

@@ -112,7 +112,7 @@ class BP_User {
 	 * @param int $name Optional. User's username
 	 * @return BP_User
 	 */
-	function BP_User( $id, $name = '' ) {
+	function __construct( $id, $name = '' ) {
 		global $wp_users_object;
 
 		if ( empty( $id ) && empty( $name ) )
@@ -137,6 +137,10 @@ class BP_User {
 
 		$this->id = $this->ID;
 		$this->_init_caps();
+	}
+
+	function BP_User( $id, $name = '' ) {
+		$this->__construct( $id, $name );
 	}
 
 	/**

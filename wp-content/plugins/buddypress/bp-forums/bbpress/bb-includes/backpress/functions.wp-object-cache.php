@@ -105,7 +105,7 @@ function wp_cache_get($id, $flag = '') {
  * @global WP_Object_Cache $wp_object_cache WordPress Object Cache
  */
 function wp_cache_init() {
-	$GLOBALS['wp_object_cache'] =& new WP_Object_Cache();
+	$GLOBALS['wp_object_cache'] = new WP_Object_Cache();
 }
 
 /**

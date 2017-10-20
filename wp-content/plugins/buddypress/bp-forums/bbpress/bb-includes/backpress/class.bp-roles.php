@@ -4,12 +4,12 @@ class BP_Roles {
 	var $role_objects = array();
 	var $role_names = array();
 
-	function BP_Roles() {
-		$this->__construct();
-	}
-
 	function __construct() {
 		do_action_ref_array('init_roles', array(&$this) );
+	}
+
+	function BP_Roles() {
+		$this->__construct();
 	}
 
 	function add_role($role, $display_name, $capabilities = '') {
@@ -64,9 +64,13 @@ class BP_Role {
 	var $name;
 	var $capabilities;
 
-	function BP_Role($role, $capabilities) {
+	function __construct($role, $capabilities) {
 		$this->name = $role;
 		$this->capabilities = $capabilities;
+	}
+
+	function BP_Role($role, $capabilities) {
+		$this->__construct($role, $capabilities);
 	}
 
 	function add_cap($cap, $grant = true) {

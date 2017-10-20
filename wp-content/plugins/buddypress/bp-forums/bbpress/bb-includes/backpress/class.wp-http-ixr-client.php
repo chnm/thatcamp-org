@@ -8,7 +8,7 @@
  */
 class WP_HTTP_IXR_Client extends IXR_Client
 {
-    function WP_HTTP_IXR_Client($server, $path = false, $port = 80, $timeout = 15)
+    function __construct($server, $path = false, $port = 80, $timeout = 15)
     {
         if (!$path) {
             // Assume we have been given a URL instead
@@ -30,6 +30,11 @@ class WP_HTTP_IXR_Client extends IXR_Client
         }
         $this->useragent = 'The Incutio XML-RPC PHP Library';
         $this->timeout = $timeout;
+    }
+
+    function WP_HTTP_IXR_Client($server, $path = false, $port = 80, $timeout = 15)
+    {
+        $this->__construct($server, $path, $port, $timeout);
     }
 
     function query()

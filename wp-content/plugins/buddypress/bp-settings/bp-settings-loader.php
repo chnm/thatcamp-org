@@ -10,10 +10,8 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-require dirname( __FILE__ ) . '/classes/class-bp-settings-component.php';
-
 /**
- * Instantiates the settings component.
+ * Set up the bp-settings component.
  *
  * @since 1.6.0
  */

@@ -2,12 +2,12 @@
 /**
  * Contains Translation_Entry class
  *
- * @version $Id: entry.php 115 2009-05-11 18:56:15Z nbachiyski $
+ * @version $Id: entry.php 1157 2015-11-20 04:30:11Z dd32 $
  * @package pomo
  * @subpackage entry
  */
 
-
+if ( ! class_exists( 'Translation_Entry', false ) ):
 /**
  * Translation_Entry class encapsulates a translatable string
  */
@@ -40,20 +40,26 @@ class Translation_Entry {
 	 * 	- references (array) -- places in the code this strings is used, in relative_to_root_path/file.php:linenum form
 	 * 	- flags (array) -- flags like php-format
 	 */
-	function Translation_Entry($args=array()) {
+	function __construct( $args = array() ) {
 		// if no singular -- empty object
 		if (!isset($args['singular'])) {
 			return;
 		}
 		// get member variable values from args hash
-		$object_varnames = array_keys(get_object_vars($this));
 		foreach ($args as $varname => $value) {
 			$this->$varname = $value;
 		}
-		if (isset($args['plural'])) $this->is_plural = true;
+		if (isset($args['plural']) && $args['plural']) $this->is_plural = true;
 		if (!is_array($this->translations)) $this->translations = array();
 		if (!is_array($this->references)) $this->references = array();
 		if (!is_array($this->flags)) $this->flags = array();
+	}
+
+	/**
+	 * PHP4 constructor.
+	 */
+	public function Translation_Entry( $args = array() ) {
+		self::__construct( $args );
 	}
 
 	/**
@@ -62,9 +68,26 @@ class Translation_Entry {
 	 * @return string|bool the key or false if the entry is empty
 	 */
 	function key() {
-		if (is_null($this->singular)) return false;
-		// prepend context and EOT, like in MO files
-		return is_null($this->context)? $this->singular : $this->context.chr(4).$this->singular;
+		if ( null === $this->singular || '' === $this->singular ) return false;
+
+		// Prepend context and EOT, like in MO files
+		$key = !$this->context? $this->singular : $this->context.chr(4).$this->singular;
+		// Standardize on \n line endings
+		$key = str_replace( array( "\r\n", "\r" ), "\n", $key );
+
+		return $key;
+	}
+
+	/**
+	 * @param object $other
+	 */
+	function merge_with(&$other) {
+		$this->flags = array_unique( array_merge( $this->flags, $other->flags ) );
+		$this->references = array_unique( array_merge( $this->references, $other->references ) );
+		if ( $this->extracted_comments != $other->extracted_comments ) {
+			$this->extracted_comments .= $other->extracted_comments;
+		}
+
 	}
 }
-?>
+endif;

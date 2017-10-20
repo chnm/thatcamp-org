@@ -12,10 +12,8 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-require dirname( __FILE__ ) . '/classes/class-bp-activity-component.php';
-
 /**
- * Bootstrap the Activity component.
+ * Set up the bp-activity component.
  *
  * @since 1.6.0
  */

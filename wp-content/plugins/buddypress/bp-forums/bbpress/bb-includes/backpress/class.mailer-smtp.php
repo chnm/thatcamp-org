@@ -74,12 +74,16 @@ class SMTP
    * @access public
    * @return void
    */
-  function SMTP() {
+  function __construct() {
     $this->smtp_conn = 0;
     $this->error = null;
     $this->helo_rply = null;
 
     $this->do_debug = 0;
+  }
+
+  function SMTP() {
+    $this->__construct();
   }
 
   /*************************************************************

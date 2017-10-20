@@ -26,9 +26,13 @@ class WP_Ajax_Response {
 	 * @param string|array $args Optional. Will be passed to add() method.
 	 * @return WP_Ajax_Response
 	 */
-	function WP_Ajax_Response( $args = '' ) {
+	function __construct( $args = '' ) {
 		if ( !empty($args) )
 			$this->add($args);
+	}
+
+	function WP_Ajax_Response( $args = '' ) {
+		$this->__construct( $args );
 	}
 
 	/**

@@ -13,10 +13,10 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-require dirname( __FILE__ ) . '/classes/class-bp-xprofile-component.php';
-
 /**
- * Bootstrap the XProfile component.
+ * Set up the bp-xprofile component.
+ *
+ * @since 1.6.0
  */
 function bp_setup_xprofile() {
 	$bp = buddypress();

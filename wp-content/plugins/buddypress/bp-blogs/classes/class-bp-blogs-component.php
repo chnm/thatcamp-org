@@ -32,6 +32,7 @@ class BP_Blogs_Component extends BP_Component {
 			array(
 				'adminbar_myaccount_order' => 30,
 				'search_query_arg' => 'sites_search',
+				'features' => array( 'site-icon' )
 			)
 		);
 	}
@@ -65,12 +66,16 @@ class BP_Blogs_Component extends BP_Component {
 			'blog' => $bp->table_prefix . 'bp_user_blogs_blogmeta',
 		);
 
+		// Fetch the default directory title.
+		$default_directory_titles = bp_core_get_directory_page_default_titles();
+		$default_directory_title  = $default_directory_titles[$this->id];
+
 		// All globals for blogs component.
 		$args = array(
 			'slug'                  => BP_BLOGS_SLUG,
 			'root_slug'             => isset( $bp->pages->blogs->slug ) ? $bp->pages->blogs->slug : BP_BLOGS_SLUG,
 			'has_directory'         => is_multisite(), // Non-multisite installs don't need a top-level Sites directory, since there's only one site.
-			'directory_title'       => _x( 'Sites', 'component directory title', 'buddypress' ),
+			'directory_title'       => isset( $bp->pages->blogs->title ) ? $bp->pages->blogs->title : $default_directory_title,
 			'notification_callback' => 'bp_blogs_format_notifications',
 			'search_string'         => __( 'Search sites...', 'buddypress' ),
 			'autocomplete_all'      => defined( 'BP_MESSAGES_AUTOCOMPLETE_ALL' ),
@@ -122,7 +127,6 @@ class BP_Blogs_Component extends BP_Component {
 			'cache',
 			'actions',
 			'screens',
-			'classes',
 			'template',
 			'filters',
 			'functions',
@@ -176,7 +180,15 @@ class BP_Blogs_Component extends BP_Component {
 		// Add 'Sites' to the main navigation.
 		$count    = (int) bp_get_total_blog_count_for_user();
 		$class    = ( 0 === $count ) ? 'no-count' : 'count';
-		$nav_text = sprintf( __( 'Sites <span class="%s">%s</span>', 'buddypress' ), esc_attr( $class ), bp_core_number_format( $count )  );
+		$nav_text = sprintf(
+			/* translators: %s: Site count for the current user */
+			__( 'Sites %s', 'buddypress' ),
+			sprintf(
+				'<span class="%s">%s</span>',
+				esc_attr( $class ),
+				bp_core_number_format( $count )
+			)
+		);
 		$main_nav = array(
 			'name'                => $nav_text,
 			'slug'                => $slug,

@@ -583,7 +583,7 @@ class WP_Taxonomy {
 
 		foreach ( (array) $taxonomies as $taxonomy ) {
 			if ( ! $this->is_taxonomy($taxonomy) ) {
-				$error = & new WP_Error('invalid_taxonomy', __('Invalid Taxonomy'));
+				$error = new WP_Error('invalid_taxonomy', __('Invalid Taxonomy'));
 				return $error;
 			}
 		}

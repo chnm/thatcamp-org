@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Output the "options nav", the secondary-level single item navigation menu.
  *
- * Uses the $bp->bp_options_nav global to render out the sub navigation for the
+ * Uses the component's nav global to render out the sub navigation for the
  * current component. Each component adds to its sub navigation array within
  * its own setup_nav() function.
  *
@@ -26,7 +26,6 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0.0
  *
- * @uses bp_get_user_nav() Renders the navigation for a profile of a currently
  *       viewed user.
  *
  * @param string $parent_slug Options nav slug.
@@ -40,35 +39,50 @@ function bp_get_options_nav( $parent_slug = '' ) {
 	$component_index = !empty( $bp->displayed_user ) ? bp_current_component() : bp_get_root_slug( bp_current_component() );
 	$selected_item   = bp_current_action();
 
+	// Default to the Members nav.
 	if ( ! bp_is_single_item() ) {
-		if ( !isset( $bp->bp_options_nav[$component_index] ) || count( $bp->bp_options_nav[$component_index] ) < 1 ) {
-			return false;
-		} else {
-			$the_index = $component_index;
+		// Set the parent slug, if not provided.
+		if ( empty( $parent_slug ) ) {
+			$parent_slug = $component_index;
 		}
+
+		$secondary_nav_items = $bp->members->nav->get_secondary( array( 'parent_slug' => $parent_slug ) );
+
+		if ( ! $secondary_nav_items ) {
+			return false;
+		}
+
+	// For a single item, try to use the component's nav.
 	} else {
 		$current_item = bp_current_item();
+		$single_item_component = bp_current_component();
 
+		// Adjust the selected nav item for the current single item if needed.
 		if ( ! empty( $parent_slug ) ) {
 			$current_item  = $parent_slug;
 			$selected_item = bp_action_variable( 0 );
 		}
 
-		if ( !isset( $bp->bp_options_nav[$current_item] ) || count( $bp->bp_options_nav[$current_item] ) < 1 ) {
-			return false;
+		// If the nav is not defined by the parent component, look in the Members nav.
+		if ( ! isset( $bp->{$single_item_component}->nav ) ) {
+			$secondary_nav_items = $bp->members->nav->get_secondary( array( 'parent_slug' => $current_item ) );
 		} else {
-			$the_index = $current_item;
+			$secondary_nav_items = $bp->{$single_item_component}->nav->get_secondary( array( 'parent_slug' => $current_item ) );
+		}
+
+		if ( ! $secondary_nav_items ) {
+			return false;
 		}
 	}
 
 	// Loop through each navigation item.
-	foreach ( (array) $bp->bp_options_nav[$the_index] as $subnav_item ) {
-		if ( empty( $subnav_item['user_has_access'] ) ) {
+	foreach ( $secondary_nav_items as $subnav_item ) {
+		if ( empty( $subnav_item->user_has_access ) ) {
 			continue;
 		}
 
 		// If the current action or an action variable matches the nav item id, then add a highlight CSS class.
-		if ( $subnav_item['slug'] == $selected_item ) {
+		if ( $subnav_item->slug === $selected_item ) {
 			$selected = ' class="current selected"';
 		} else {
 			$selected = '';
@@ -88,7 +102,7 @@ function bp_get_options_nav( $parent_slug = '' ) {
 		 * @param array  $subnav_item   Submenu array item being displayed.
 		 * @param string $selected_item Current action.
 		 */
-		echo apply_filters( 'bp_get_options_nav_' . $subnav_item['css_id'], '<li id="' . esc_attr( $subnav_item['css_id'] . '-' . $list_type . '-li' ) . '" ' . $selected . '><a id="' . esc_attr( $subnav_item['css_id'] ) . '" href="' . esc_url( $subnav_item['link'] ) . '">' . $subnav_item['name'] . '</a></li>', $subnav_item, $selected_item );
+		echo apply_filters( 'bp_get_options_nav_' . $subnav_item->css_id, '<li id="' . esc_attr( $subnav_item->css_id . '-' . $list_type . '-li' ) . '" ' . $selected . '><a id="' . esc_attr( $subnav_item->css_id ) . '" href="' . esc_url( $subnav_item->link ) . '">' . $subnav_item->name . '</a></li>', $subnav_item, $selected_item );
 	}
 }
 
@@ -571,6 +585,71 @@ function bp_search_form_type_select() {
 }
 
 /**
+ * Output the 'name' attribute for search form input element.
+ *
+ * @since 2.7.0
+ *
+ * @param string $component See bp_get_search_input_name().
+ */
+function bp_search_input_name( $component = '' ) {
+	echo esc_attr( bp_get_search_input_name( $component ) );
+}
+
+/**
+ * Get the 'name' attribute for the search form input element.
+ *
+ * @since 2.7.0
+ *
+ * @param string $component Component name. Defaults to current component.
+ * @return string Text for the 'name' attribute.
+ */
+function bp_get_search_input_name( $component = '' ) {
+	if ( ! $component ) {
+		$component = bp_current_component();
+	}
+
+	$bp = buddypress();
+
+	$name = '';
+	if ( isset( $bp->{$component}->id ) ) {
+		$name = $bp->{$component}->id . '_search';
+	}
+
+	return $name;
+}
+
+/**
+ * Output the placeholder text for the search box for a given component.
+ *
+ * @since 2.7.0
+ *
+ * @param string $component See bp_get_search_placeholder().
+ */
+function bp_search_placeholder( $component = '' ) {
+	echo esc_attr( bp_get_search_placeholder( $component ) );
+}
+
+/**
+ * Get the placeholder text for the search box for a given component.
+ *
+ * @since 2.7.0
+ *
+ * @param string $component Component name. Defaults to current component.
+ * @return string Placeholder text for the search field.
+ */
+function bp_get_search_placeholder( $component = '' ) {
+	$query_arg = bp_core_get_component_search_query_arg( $component );
+
+	if ( $query_arg && ! empty( $_REQUEST[ $query_arg ] ) ) {
+		$placeholder = wp_unslash( $_REQUEST[ $query_arg ] );
+	} else {
+		$placeholder = bp_get_search_default_text( $component );
+	}
+
+	return $placeholder;
+}
+
+/**
  * Output the default text for the search box for a given component.
  *
  * @since 1.5.0
@@ -769,14 +848,8 @@ function bp_button( $args = '' ) {
  * This function is borrowed from CakePHP v2.0, under the MIT license. See
  * http://book.cakephp.org/view/1469/Text#truncate-1625
  *
- * ### Options:
- *
- * - `ending` Will be used as Ending and appended to the trimmed string.
- * - `exact` If false, $text will not be cut mid-word.
- * - `html` If true, HTML tags would be handled correctly.
- * - `filter_shortcodes` If true, shortcodes will be stripped before truncating.
- *
  * @since 1.0.0
+ * @since 2.6.0 Added 'strip_tags' and 'remove_links' as $options args.
  *
  * @param string $text   String to truncate.
  * @param int    $length Optional. Length of returned string, including ellipsis.
@@ -791,6 +864,10 @@ function bp_button( $args = '' ) {
  *                                     excerpt length. Default: true.
  *     @type bool   $filter_shortcodes If true, shortcodes will be stripped.
  *                                     Default: true.
+ *     @type bool   $strip_tags        If true, HTML tags will be stripped. Default: false.
+ *                                     Only applicable if $html is set to false.
+ *     @type bool   $remove_links      If true, URLs will be stripped. Default: false.
+ *                                     Only applicable if $html is set to false.
  * }
  * @return string Trimmed string.
  */
@@ -803,7 +880,9 @@ function bp_create_excerpt( $text, $length = 225, $options = array() ) {
 		'ending'            => __( ' [&hellip;]', 'buddypress' ),
 		'exact'             => false,
 		'html'              => true,
-		'filter_shortcodes' => $filter_shortcodes_default
+		'filter_shortcodes' => $filter_shortcodes_default,
+		'strip_tags'        => false,
+		'remove_links'      => false,
 	), 'create_excerpt' );
 
 	// Save the original text, to be passed along to the filter.
@@ -889,8 +968,28 @@ function bp_create_excerpt( $text, $length = 225, $options = array() ) {
 			}
 		}
 	} else {
+		// Strip HTML tags if necessary.
+		if ( ! empty( $r['strip_tags'] ) ) {
+			$text = strip_tags( $text );
+		}
+
+		// Remove links if necessary.
+		if ( ! empty( $r['remove_links'] ) ) {
+			$text = preg_replace( '#^\s*(https?://[^\s"]+)\s*$#im', '', $text );
+		}
+
 		if ( mb_strlen( $text ) <= $length ) {
-			return $text;
+			/**
+			 * Filters the final generated excerpt.
+			 *
+			 * @since 1.1.0
+			 *
+			 * @param string $truncate      Generated excerpt.
+			 * @param string $original_text Original text provided.
+			 * @param int    $length        Length of returned string, including ellipsis.
+			 * @param array  $options       Array of HTML attributes and options.
+			 */
+			return apply_filters( 'bp_create_excerpt', $text, $original_text, $length, $options );
 		} else {
 			$truncate = mb_substr( $text, 0, $length - mb_strlen( $ending ) );
 		}
@@ -971,16 +1070,7 @@ function bp_create_excerpt( $text, $length = 225, $options = array() ) {
 		}
 	}
 
-	/**
-	 * Filters the final generated excerpt.
-	 *
-	 * @since 1.1.0
-	 *
-	 * @param string $truncate      Generated excerpt.
-	 * @param string $original_text Original text provided.
-	 * @param int    $length        Length of returned string, including ellipsis.
-	 * @param array  $options       Array of HTML attributes and options.
-	 */
+	/** This filter is documented in /bp-core/bp-core-template.php */
 	return apply_filters( 'bp_create_excerpt', $truncate, $original_text, $length, $options );
 }
 add_filter( 'bp_create_excerpt', 'stripslashes_deep'  );
@@ -1468,7 +1558,6 @@ function bp_user_has_access() {
  *
  * @since 1.5.0
  *
- * @uses bp_get_search_slug()
  */
 function bp_search_slug() {
 	echo bp_get_search_slug();
@@ -1497,8 +1586,6 @@ function bp_search_slug() {
  *
  * @since 1.0.0
  *
- * @uses apply_filters() Filter 'bp_displayed_user_id' to change this value.
- *
  * @return int $id ID of the currently displayed user.
  */
 function bp_displayed_user_id() {
@@ -1521,8 +1608,6 @@ function bp_displayed_user_id() {
  * Get the ID of the currently logged-in user.
  *
  * @since 1.0.0
- *
- * @uses apply_filters() Filter 'bp_loggedin_user_id' to change this value.
  *
  * @return int ID of the logged-in user.
  */
@@ -2256,6 +2341,19 @@ function bp_is_user() {
 }
 
 /**
+ * Is the current page a user custom front page?
+ *
+ * Will return true anytime there is a custom front page for the displayed user.
+ *
+ * @since 2.6.0
+ *
+ * @return bool True if the current page is a user custom front page.
+ */
+function bp_is_user_front() {
+	return (bool) ( bp_is_user() && bp_is_current_component( 'front' ) );
+}
+
+/**
  * Is the current page a user's activity stream page?
  *
  * Eg http://example.com/members/joe/activity/ (or any subpages thereof).
@@ -2366,7 +2464,7 @@ function bp_is_user_change_avatar() {
  *
  * Eg http://example.com/members/joe/profile/change-cover-image/ (or a subpage thereof).
  *
- * @since  2.4.0
+ * @since 2.4.0
  *
  * @return bool True if the current page is a user's profile edit cover image page.
  */
@@ -2585,10 +2683,10 @@ function bp_is_user_settings_profile() {
  *
  * @since 2.0.0
  *
- * @return True if the current page is the groups directory.
+ * @return bool True if the current page is the groups directory.
  */
 function bp_is_groups_directory() {
-	if ( bp_is_groups_component() && ! bp_current_action() && ! bp_current_item() ) {
+	if ( bp_is_groups_component() && ! bp_is_group() && ( ! bp_current_action() || ( bp_action_variable() && bp_is_current_action( bp_get_groups_group_type_base() ) ) ) ) {
 		return true;
 	}
 
@@ -2687,7 +2785,7 @@ function bp_is_group_forum() {
  *
  * @since 1.2.1
  *
- * @return True if the current page is a group's activity page.
+ * @return bool True if the current page is a group's activity page.
  */
 function bp_is_group_activity() {
 	$retval = false;
@@ -2832,7 +2930,7 @@ function bp_is_create_blog() {
  *
  * @since 2.0.0
  *
- * @return True if the current page is the blogs directory.
+ * @return bool True if the current page is the blogs directory.
  */
 function bp_is_blogs_directory() {
 	if ( is_multisite() && bp_is_blogs_component() && ! bp_current_action() ) {
@@ -3010,22 +3108,34 @@ function bp_get_title_parts( $seplocation = 'right' ) {
 		// Set empty subnav name.
 		$component_subnav_name = '';
 
+		if ( ! empty( $bp->members->nav ) ) {
+			$primary_nav_item = $bp->members->nav->get_primary( array( 'slug' => $component_id ), false );
+			$primary_nav_item = reset( $primary_nav_item );
+		}
+
 		// Use the component nav name.
-		if ( ! empty( $bp->bp_nav[$component_id] ) ) {
-			$component_name = _bp_strip_spans_from_title( $bp->bp_nav[ $component_id ]['name'] );
+		if ( ! empty( $primary_nav_item->name ) ) {
+			$component_name = _bp_strip_spans_from_title( $primary_nav_item->name );
 
 		// Fall back on the component ID.
 		} elseif ( ! empty( $bp->{$component_id}->id ) ) {
 			$component_name = ucwords( $bp->{$component_id}->id );
 		}
 
-		// Append action name if we're on a member component sub-page.
-		if ( ! empty( $bp->bp_options_nav[ $component_id ] ) && ! empty( $bp->canonical_stack['action'] ) ) {
-			$component_subnav_name = wp_filter_object_list( $bp->bp_options_nav[ $component_id ], array( 'slug' => bp_current_action() ), 'and', 'name' );
+		if ( ! empty( $bp->members->nav ) ) {
+			$secondary_nav_item = $bp->members->nav->get_secondary( array(
+				'parent_slug' => $component_id,
+				'slug'        => bp_current_action()
+			), false );
 
-			if ( ! empty( $component_subnav_name ) ) {
-				$component_subnav_name = array_shift( $component_subnav_name );
+			if ( $secondary_nav_item ) {
+				$secondary_nav_item = reset( $secondary_nav_item );
 			}
+		}
+
+		// Append action name if we're on a member component sub-page.
+		if ( ! empty( $secondary_nav_item->name ) && ! empty( $bp->canonical_stack['action'] ) ) {
+			$component_subnav_name = $secondary_nav_item->name;
 		}
 
 		// If on the user profile's landing page, just use the fullname.
@@ -3045,14 +3155,28 @@ function bp_get_title_parts( $seplocation = 'right' ) {
 			}
 		}
 
-	// A single group.
-	} elseif ( bp_is_active( 'groups' ) && ! empty( $bp->groups->current_group ) && ! empty( $bp->bp_options_nav[ $bp->groups->current_group->slug ] ) ) {
-		$subnav      = isset( $bp->bp_options_nav[ $bp->groups->current_group->slug ][ bp_current_action() ]['name'] ) ? $bp->bp_options_nav[ $bp->groups->current_group->slug ][ bp_current_action() ]['name'] : '';
-		$bp_title_parts = array( $bp->bp_options_title, $subnav );
-
-	// A single item from a component other than groups.
+	// A single item from a component other than Members.
 	} elseif ( bp_is_single_item() ) {
-		$bp_title_parts = array( $bp->bp_options_title, $bp->bp_options_nav[ bp_current_item() ][ bp_current_action() ]['name'] );
+		$component_id = bp_current_component();
+
+		if ( ! empty( $bp->{$component_id}->nav ) ) {
+			$secondary_nav_item = $bp->{$component_id}->nav->get_secondary( array(
+				'parent_slug' => bp_current_item(),
+				'slug'        => bp_current_action()
+			), false );
+
+			if ( $secondary_nav_item ) {
+				$secondary_nav_item = reset( $secondary_nav_item );
+			}
+		}
+
+		$single_item_subnav = '';
+
+		if ( ! empty( $secondary_nav_item->name ) ) {
+			$single_item_subnav = $secondary_nav_item->name;
+		}
+
+		$bp_title_parts = array( $bp->bp_options_title, $single_item_subnav );
 
 	// An index or directory.
 	} elseif ( bp_is_directory() ) {
@@ -3095,7 +3219,7 @@ function bp_get_title_parts( $seplocation = 'right' ) {
 	 *
 	 * @since 2.4.3
 	 *
-	 * @param  array $bp_title_parts Current BuddyPress title parts
+	 * @param array $bp_title_parts Current BuddyPress title parts.
 	 * @return array
 	 */
 	return (array) apply_filters( 'bp_get_title_parts', $bp_title_parts );
@@ -3174,6 +3298,13 @@ function bp_the_body_class() {
 
 		if ( bp_is_user() ) {
 			$bp_classes[] = 'bp-user';
+
+			// Add current user member types.
+			if ( $member_types = bp_get_member_type( bp_displayed_user_id(), false ) ) {
+				foreach( $member_types as $member_type ) {
+					$bp_classes[] = sprintf( 'member-type-%s', esc_attr( $member_type ) );
+				}
+			}
 		}
 
 		if ( ! bp_is_directory() ) {
@@ -3187,6 +3318,10 @@ function bp_the_body_class() {
 
 			if ( bp_is_user_activity() ) {
 				$bp_classes[] = 'my-activity';
+			}
+		} else {
+			if ( bp_get_current_member_type() ) {
+				$bp_classes[] = 'type';
 			}
 		}
 
@@ -3260,6 +3395,13 @@ function bp_the_body_class() {
 
 		if ( bp_is_group() ) {
 			$bp_classes[] = 'group-' . groups_get_current_group()->slug;
+
+			// Add current group types.
+			if ( $group_types = bp_groups_get_group_type( bp_get_current_group_id(), false ) ) {
+				foreach ( $group_types as $group_type ) {
+					$bp_classes[] = sprintf( 'group-type-%s', esc_attr( $group_type ) );
+				}
+			}
 		}
 
 		if ( bp_is_group_leave() ) {
@@ -3327,6 +3469,9 @@ function bp_the_body_class() {
 		if ( ! bp_is_blog_page() ) {
 			$bp_classes[] = 'buddypress';
 		}
+
+		// Add the theme name/id to the body classes
+		$bp_classes[] = 'bp-' . bp_get_theme_compat_id();
 
 		// Merge WP classes with BuddyPress classes and remove any duplicates.
 		$classes = array_unique( array_merge( (array) $bp_classes, (array) $wp_classes ) );
@@ -3428,79 +3573,58 @@ function _bp_nav_menu_sort( $a, $b ) {
  * Get the items registered in the primary and secondary BuddyPress navigation menus.
  *
  * @since 1.7.0
+ * @since 2.6.0 Introduced the `$component` parameter.
  *
+ * @param string $component Optional. Component whose nav items are being fetched.
  * @return array A multidimensional array of all navigation items.
  */
-function bp_get_nav_menu_items() {
-	$menus = $selected_menus = array();
+function bp_get_nav_menu_items( $component = 'members' ) {
+	$bp    = buddypress();
+	$menus = array();
 
-	// Get the second level menus.
-	foreach ( (array) buddypress()->bp_options_nav as $parent_menu => $sub_menus ) {
-
-		// The root menu's ID is "xprofile", but the Profile submenus are using "profile". See BP_Core::setup_nav().
-		if ( 'profile' === $parent_menu ) {
-			$parent_menu = 'xprofile';
-		}
-
-		// Sort the items in this menu's navigation by their position property.
-		$second_level_menus = (array) $sub_menus;
-		usort( $second_level_menus, '_bp_nav_menu_sort' );
-
-		// Iterate through the second level menus.
-		foreach( $second_level_menus as $sub_nav ) {
-
-			// Skip items we don't have access to.
-			if ( empty( $sub_nav['user_has_access'] ) ) {
-				continue;
-			}
-
-			// Add this menu.
-			$menu         = new stdClass;
-			$menu->class  = array( 'menu-child' );
-			$menu->css_id = $sub_nav['css_id'];
-			$menu->link   = $sub_nav['link'];
-			$menu->name   = $sub_nav['name'];
-			$menu->parent = $parent_menu;  // Associate this sub nav with a top-level menu.
-
-			// If we're viewing this item's screen, record that we need to mark its parent menu to be selected.
-			if ( $sub_nav['slug'] == bp_current_action() ) {
-				$menu->class[]    = 'current-menu-item';
-				$selected_menus[] = $parent_menu;
-			}
-
-			$menus[] = $menu;
-		}
+	if ( ! isset( $bp->{$component}->nav ) ) {
+		return $menus;
 	}
 
-	// Get the top-level menu parts (Friends, Groups, etc) and sort by their position property.
-	$top_level_menus = (array) buddypress()->bp_nav;
-	usort( $top_level_menus, '_bp_nav_menu_sort' );
-
-	// Iterate through the top-level menus.
-	foreach ( $top_level_menus as $nav ) {
-
-		// Skip items marked as user-specific if you're not on your own profile.
-		if ( empty( $nav['show_for_displayed_user'] ) && ! bp_core_can_edit_settings()  ) {
-			continue;
-		}
-
+	// Get the item nav and build the menus.
+	foreach ( $bp->{$component}->nav->get_item_nav() as $nav_menu ) {
 		// Get the correct menu link. See https://buddypress.trac.wordpress.org/ticket/4624.
-		$link = bp_loggedin_user_domain() ? str_replace( bp_loggedin_user_domain(), bp_displayed_user_domain(), $nav['link'] ) : trailingslashit( bp_displayed_user_domain() . $nav['link'] );
+		$link = bp_loggedin_user_domain() ? str_replace( bp_loggedin_user_domain(), bp_displayed_user_domain(), $nav_menu->link ) : trailingslashit( bp_displayed_user_domain() . $nav_menu->link );
 
 		// Add this menu.
 		$menu         = new stdClass;
 		$menu->class  = array( 'menu-parent' );
-		$menu->css_id = $nav['css_id'];
+		$menu->css_id = $nav_menu->css_id;
 		$menu->link   = $link;
-		$menu->name   = $nav['name'];
+		$menu->name   = $nav_menu->name;
 		$menu->parent = 0;
 
-		// Check if we need to mark this menu as selected.
-		if ( in_array( $nav['css_id'], $selected_menus ) ) {
-			$menu->class[] = 'current-menu-parent';
+		if ( ! empty( $nav_menu->children ) ) {
+			$submenus = array();
+
+			foreach( $nav_menu->children as $sub_menu ) {
+				$submenu = new stdClass;
+				$submenu->class  = array( 'menu-child' );
+				$submenu->css_id = $sub_menu->css_id;
+				$submenu->link   = $sub_menu->link;
+				$submenu->name   = $sub_menu->name;
+				$submenu->parent = $nav_menu->slug;
+
+				// If we're viewing this item's screen, record that we need to mark its parent menu to be selected.
+				if ( bp_is_current_action( $sub_menu->slug ) && bp_is_current_component( $nav_menu->slug ) ) {
+					$menu->class[]    = 'current-menu-parent';
+					$submenu->class[] = 'current-menu-item';
+				}
+
+				$submenus[] = $submenu;
+			}
 		}
 
 		$menus[] = $menu;
+
+		if ( ! empty( $submenus ) ) {
+			$menus = array_merge( $menus, $submenus );
+		}
 	}
 
 	/**
@@ -3686,9 +3810,9 @@ function bp_nav_menu( $args = array() ) {
 /**
  * Prints the Recipient Salutation.
  *
- * @since  2.5.0
+ * @since 2.5.0
  *
- * @param  array $settings Email Settings.
+ * @param array $settings Email Settings.
  */
 function bp_email_the_salutation( $settings = array() ) {
 	echo bp_email_get_salutation( $settings );
@@ -3697,9 +3821,9 @@ function bp_email_the_salutation( $settings = array() ) {
 	/**
 	 * Gets the Recipient Salutation.
 	 *
-	 * @since  2.5.0
+	 * @since 2.5.0
 	 *
-	 * @param  array  $settings Email Settings.
+	 * @param array $settings Email Settings.
 	 * @return string The Recipient Salutation.
 	 */
 	function bp_email_get_salutation( $settings = array() ) {
@@ -3708,7 +3832,7 @@ function bp_email_the_salutation( $settings = array() ) {
 		/**
 		 * Filters The Recipient Salutation inside the Email Template.
 		 *
-		 * @since  2.5.0
+		 * @since 2.5.0
 		 *
 		 * @param string $value    The Recipient Salutation.
 		 * @param array  $settings Email Settings.

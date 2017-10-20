@@ -19,7 +19,7 @@ class WP_Object_Cache
 
 	var $default_expiration = 0;
 
-	function WP_Object_Cache()
+	function __construct()
 	{
 		global $memcached_servers;
 
@@ -37,6 +37,11 @@ class WP_Object_Cache
 				$this->mc[$bucket]->setCompressThreshold( 20000, 0.2 );
 			}
 		}
+	}
+
+	function WP_Object_Cache()
+	{
+		$this->__construct();
 	}
 
 	function &get_mc( $group )

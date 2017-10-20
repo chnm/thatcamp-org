@@ -93,25 +93,25 @@ class BP_Members_List_Table extends WP_Users_List_Table {
 	public function views() {
 		global $role;
 
-		// Used to reset the role
+		// Used to reset the role.
 		$reset_role = $role;
 
-		// Temporarly set the role to registered
+		// Temporarly set the role to registered.
 		$role = 'registered';
 
-		// Used to reset the screen id once views are displayed
+		// Used to reset the screen id once views are displayed.
 		$reset_screen_id = $this->screen->id;
 
-		// Temporarly set the screen id to the users one
+		// Temporarly set the screen id to the users one.
 		$this->screen->id = 'users';
 
-		// Use the parent function so that other plugins can safely add views
+		// Use the parent function so that other plugins can safely add views.
 		parent::views();
 
-		// Reset the role
+		// Reset the role.
 		$role = $reset_role;
 
-		// Reset the screen id
+		// Reset the screen id.
 		$this->screen->id = $reset_screen_id;
 	}
 
@@ -260,7 +260,10 @@ class BP_Members_List_Table extends WP_Users_List_Table {
 	 */
 	public function column_cb( $signup_object = null ) {
 	?>
-		<label class="screen-reader-text" for="signup_<?php echo intval( $signup_object->id ); ?>"><?php printf( esc_html__( 'Select user: %s', 'buddypress' ), $signup_object->user_login ); ?></label>
+		<label class="screen-reader-text" for="signup_<?php echo intval( $signup_object->id ); ?>"><?php
+			/* translators: accessibility text */
+			printf( esc_html__( 'Select user: %s', 'buddypress' ), $signup_object->user_login );
+		?></label>
 		<input type="checkbox" id="signup_<?php echo intval( $signup_object->id ) ?>" name="allsignups[]" value="<?php echo esc_attr( $signup_object->id ) ?>" />
 		<?php
 	}
@@ -305,7 +308,7 @@ class BP_Members_List_Table extends WP_Users_List_Table {
 			bp_get_admin_url( 'users.php' )
 		);
 
-		echo $avatar . sprintf( '<strong><a href="%1$s" class="edit" title="%2$s">%3$s</a></strong><br/>', esc_url( $activate_link ), esc_attr__( 'Activate', 'buddypress' ), $signup_object->user_login );
+		echo $avatar . sprintf( '<strong><a href="%1$s" class="edit">%2$s</a></strong><br/>', esc_url( $activate_link ), $signup_object->user_login );
 
 		$actions = array();
 
@@ -334,7 +337,7 @@ class BP_Members_List_Table extends WP_Users_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param object $signup_object The signup data object.
+	 * @param object|null $signup_object The signup data object.
 	 */
 	public function column_name( $signup_object = null ) {
 		echo esc_html( $signup_object->user_name );
