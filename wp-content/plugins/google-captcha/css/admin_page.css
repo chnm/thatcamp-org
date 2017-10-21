@@ -1,0 +1,7 @@
+/*
+ * menu sidebar
+ */
+#toplevel_page_google-captcha .wp-menu-image:before {
+    content: "\e912";
+    font-family: 'bwsicons' !important;
+}

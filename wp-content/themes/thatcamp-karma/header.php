@@ -21,7 +21,8 @@
 	<link href='http://fonts.googleapis.com/css?family=Francois+One' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
 	<?php do_action( 'bp_head' ); ?>
-	<?php wp_head(); ?>
+    <?php wp_head(); ?>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body <?php body_class() ?> id="thatcamp">
 	<?php do_action( 'bp_before_header' ); ?>

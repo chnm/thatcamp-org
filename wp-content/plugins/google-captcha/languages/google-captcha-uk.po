@@ -1,0 +1,870 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Google Сaptcha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-14 20:00+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: bestwebsoft.com <plugin@bestwebsoft.com>\n"
+"Language-Team: the BestWebSoft Team <plugin@bestwebsoft.com>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: google-captcha.php:37 google-captcha.php:39 google-captcha.php:432
+#: includes/class-gglcptch-settings-tabs.php:149
+msgid "Google Captcha Settings"
+msgstr "Налаштування Google Captcha"
+
+#: google-captcha.php:39 google-captcha.php:950 google-captcha.php:963
+#: includes/class-gglcptch-settings-tabs.php:25
+msgid "Settings"
+msgstr "Налаштування"
+
+#: google-captcha.php:41 includes/whitelist.php:44
+msgid "Google Captcha Whitelist"
+msgstr "Білий список Google Captcha"
+
+#: google-captcha.php:41
+msgid "Whitelist"
+msgstr "Білий список"
+
+#: google-captcha.php:47 includes/pro_banners.php:29
+msgid "Upgrade to Pro"
+msgstr "Оновити до Pro"
+
+#: google-captcha.php:225
+msgid "Please wait until Google reCAPTCHA is loaded."
+msgstr "Будь ласка, зачекайте, поки буде завантаженo Google reCAPTCHA."
+
+#: google-captcha.php:226
+msgid ""
+"Failed to load Google reCAPTCHA. Please check your internet connection and "
+"reload this page."
+msgstr ""
+"Не вдалося завантажити Google reCAPTCHA. Будь ласка, перевірте підключення "
+"до Інтернету та оновіть цю сторінку."
+
+#: google-captcha.php:242
+msgid "Warning"
+msgstr "Увага"
+
+#: google-captcha.php:340
+msgid "You are in the whitelist"
+msgstr "Ви знаходитесь в білому списку"
+
+#: google-captcha.php:512 google-captcha.php:983
+msgid "To use Google Captcha you must get the keys from"
+msgstr "Щоб використовувати Google Captcha, вам необхідно отримати ключі з"
+
+#: google-captcha.php:513 google-captcha.php:984
+msgid "here"
+msgstr "тут"
+
+#: google-captcha.php:514 google-captcha.php:985
+msgid "and enter them on the"
+msgstr "і вставте їх у"
+
+#: google-captcha.php:516 google-captcha.php:987
+msgid "plugin setting page"
+msgstr "сторінку налаштувань плагіну"
+
+#: google-captcha.php:763 includes/forms.php:282 includes/forms.php:313
+#: includes/forms.php:344 includes/forms.php:389 includes/forms.php:435
+#: includes/forms.php:469
+msgid "Error"
+msgstr "Помилка"
+
+#: google-captcha.php:860
+msgid "User response is missing."
+msgstr "Відповідь користувача відсутня."
+
+#: google-captcha.php:864 google-captcha.php:872
+msgid "Secret Key is invalid."
+msgstr "Секретний ключ некоректний."
+
+#: google-captcha.php:865 google-captcha.php:873
+msgid "Check your domain configurations"
+msgstr "Перевірте конфігурацію вашого домену"
+
+#: google-captcha.php:866 google-captcha.php:874
+msgid "and enter it again"
+msgstr "і введіть його знову"
+
+#: google-captcha.php:869
+msgid "Secret Key is missing."
+msgstr "Секретний ключ відсутній."
+
+#: google-captcha.php:876
+msgid "User response is invalid"
+msgstr "Некоректна відповідь користувача"
+
+#: google-captcha.php:877
+msgid "You have entered an incorrect reCAPTCHA value."
+msgstr "Ви ввели невірне значення reCAPTCHA."
+
+#: google-captcha.php:878
+msgid ""
+"More than one reCAPTCHA has been found in the current form. Please remove "
+"all unnecessary reCAPTCHA fields to make it work properly."
+msgstr ""
+"В поточній формі знайдено більш ніж один блок reCAPTCHA. Будь-ласка видаліть "
+"усі зайві блоки reCAPTCHA для коректної подальшої роботи."
+
+#: google-captcha.php:902
+msgid "Please submit \"Test verification\""
+msgstr "Будь ласка, натисніть кнопку \"Тестування перевірки\""
+
+#: google-captcha.php:904
+msgid "Please complete the captcha and submit \"Test verification\""
+msgstr ""
+"Будь ласка, заповніть капчу і натисніть кнопку \"Тестування перевірки\""
+
+#: google-captcha.php:910
+msgid "Test verification"
+msgstr "Тестування перевірки"
+
+#: google-captcha.php:931
+msgid "The verification is successfully completed."
+msgstr "Перевірка завершена успішно."
+
+#: google-captcha.php:964
+msgid "FAQ"
+msgstr "FAQ"
+
+#: google-captcha.php:965
+msgid "Support"
+msgstr "Техпідтримка"
+
+#: includes/class-gglcptch-settings-tabs.php:26
+msgid "Misc"
+msgstr "Різне"
+
+#: includes/class-gglcptch-settings-tabs.php:27
+msgid "Custom Code"
+msgstr "Користувацький код"
+
+#: includes/class-gglcptch-settings-tabs.php:28
+msgid "License Key"
+msgstr "Ліцензійний ключ"
+
+#: includes/class-gglcptch-settings-tabs.php:51
+msgid "Site Key"
+msgstr "Ключ сайту"
+
+#: includes/class-gglcptch-settings-tabs.php:56
+msgid "Secret Key"
+msgstr "Секретний ключ"
+
+#: includes/class-gglcptch-settings-tabs.php:63
+#: includes/class-gglcptch-settings-tabs.php:64
+msgid "Version"
+msgstr "Версія"
+
+#: includes/class-gglcptch-settings-tabs.php:65
+msgid "Invisible"
+msgstr "Невидима"
+
+#: includes/class-gglcptch-settings-tabs.php:94
+msgid "Enter site key"
+msgstr "Введіть ключ сайту"
+
+#: includes/class-gglcptch-settings-tabs.php:95
+#: includes/class-gglcptch-settings-tabs.php:102
+msgid "WARNING: The captcha will not be displayed until you fill key fields."
+msgstr ""
+"УВАГА: Капча не буде відображатись, поки ви не заповните поля з ключами."
+
+#: includes/class-gglcptch-settings-tabs.php:101
+msgid "Enter secret key"
+msgstr "Введіть секретний ключ"
+
+#: includes/class-gglcptch-settings-tabs.php:135
+msgid "Settings saved."
+msgstr "Налаштування збережені."
+
+#: includes/class-gglcptch-settings-tabs.php:152
+msgid "Authentication"
+msgstr "Ідентифікація"
+
+#: includes/class-gglcptch-settings-tabs.php:153
+msgid ""
+"Register your website with Google to get required API keys and enter them "
+"below."
+msgstr ""
+"Зареєструйте свій веб-сайт за допомогою Google, щоб отримати необхідні API "
+"ключі та введіть їх нижче."
+
+#: includes/class-gglcptch-settings-tabs.php:153
+msgid "Get the API Keys"
+msgstr "Отримати API ключі"
+
+#: includes/class-gglcptch-settings-tabs.php:170
+msgid "Test reCAPTCHA"
+msgstr "Тестування reCAPTCHA"
+
+#: includes/class-gglcptch-settings-tabs.php:176
+msgid "General"
+msgstr "Загальне"
+
+#: includes/class-gglcptch-settings-tabs.php:179
+msgid "Enable reCAPTCHA for"
+msgstr "Включити  reCAPTCHA для"
+
+#: includes/class-gglcptch-settings-tabs.php:224
+#: includes/class-gglcptch-settings-tabs.php:290 includes/pro_banners.php:20
+msgid "Close"
+msgstr "Закрити"
+
+#: includes/class-gglcptch-settings-tabs.php:233
+msgid "Hide reCAPTCHA for"
+msgstr "Сховати reCAPTCHA для"
+
+#: includes/class-gglcptch-settings-tabs.php:251
+msgid "reCAPTCHA Version"
+msgstr "Версія reCAPTCHA"
+
+#: includes/class-gglcptch-settings-tabs.php:265
+#: includes/class-gglcptch-settings-tabs.php:277
+msgid "Theme"
+msgstr "Тема"
+
+#: includes/class-gglcptch-settings-tabs.php:299
+msgid "Whitelist Notification"
+msgstr "Повідомлення про знаходження у білому списку"
+
+#: includes/class-gglcptch-settings-tabs.php:302
+msgid "This message will be displayed instead of the reCAPTCHA."
+msgstr "Це повідомлення буде відображатися замість reCAPTCHA."
+
+#: includes/class-gglcptch-settings-tabs.php:306
+msgid "Disabled Submit Button"
+msgstr "Відключена кнопка підтвердження"
+
+#: includes/class-gglcptch-settings-tabs.php:310
+msgid ""
+"Enable to keep submit button disabled until reCAPTCHA is loaded (do not use "
+"this option if you see \"Failed to load Google reCAPTCHA\" message)."
+msgstr ""
+"Увімкніть, щоб кнопка підтвердження залишалася відключеною до тих пір, поки "
+"не буде завантажена reCAPTCHA (Не використовуйте цю опцію, якщо ви бачите "
+"повідомлення \"Не вдалося завантажити Google reCAPTCHA\")."
+
+#: includes/class-gglcptch-settings-tabs.php:325
+msgid ""
+"Only one reCAPTCHA can be displayed on the page, it's related to reCAPTCHA "
+"version 1 features."
+msgstr ""
+"У зв'язку з особливостями роботи reCAPTCHA версії 1 на сторінці може "
+"відображатися тільки одна reCAPTCHA."
+
+#: includes/class-gglcptch-settings-tabs.php:328
+msgid ""
+"reCAPTCHA version was changed. Please submit \"Test reCAPTCHA\" and "
+"regenerate Site and Secret keys if necessary."
+msgstr ""
+"Версію reCAPTCHA було змінено. Будь ласка, натисніть \"Тестування reCAPTCHA"
+"\" та оновіть секретний ключ та ключ сайту, якщо це необхідно."
+
+#: includes/class-gglcptch-settings-tabs.php:341
+msgid "Google Captcha Shortcode"
+msgstr "Шорткод Google Captcha"
+
+#: includes/class-gglcptch-settings-tabs.php:344
+msgid ""
+"Add Google Captcha to your posts or pages using the following shortcode:"
+msgstr ""
+"Додайте Google Captcha до своїх постів або сторінок за допомогою такого "
+"шорткоду:"
+
+#: includes/forms.php:11
+msgid "Login form"
+msgstr "Форма логіну"
+
+#: includes/forms.php:12
+msgid "Registration form"
+msgstr "Форма реєстрації"
+
+#: includes/forms.php:13
+msgid "Reset password form"
+msgstr "Форма відновлення паролю"
+
+#: includes/forms.php:14
+msgid "Comments form"
+msgstr "Форма коментарів"
+
+#: includes/forms.php:37
+msgid "WordPress default"
+msgstr "Стандартних форм WordPress"
+
+#: includes/forms.php:46 includes/pro_banners.php:71
+msgid "External Plugins"
+msgstr "Зовнішні плагіни"
+
+#: includes/forms.php:55
+msgid "Custom Forms"
+msgstr "Користувацькі форми"
+
+#: includes/forms.php:75
+msgid "Google Captcha Plugin"
+msgstr "Плагін Google Captcha"
+
+#: includes/forms.php:114 includes/forms.php:139
+msgid "Activate"
+msgstr "Активувати"
+
+#: includes/forms.php:116 includes/forms.php:142 includes/forms.php:146
+msgid "Install Now"
+msgstr "Встановити зараз"
+
+#: includes/forms.php:437
+msgid "Click the BACK button on your browser and try again."
+msgstr "Натисніть кнопку НАЗАД у браузері та спробуйте ще раз."
+
+#: includes/pro_banners.php:17
+msgid "This options is available in Pro version of plugin"
+msgstr "Ця опція доступна в Pro версії плагіну"
+
+#: includes/pro_banners.php:40 includes/whitelist.php:84
+msgid "Allowed formats"
+msgstr "Доступні формати"
+
+#: includes/pro_banners.php:41
+msgid "Allowed separators for IPs: a comma"
+msgstr "Доступні роздільники для IP: кома"
+
+#: includes/pro_banners.php:41 includes/pro_banners.php:44
+msgid "semicolon"
+msgstr "крапка з комою"
+
+#: includes/pro_banners.php:41
+msgid "ordinary space, tab, new line or carriage return."
+msgstr "звичайній пробіл, табуляція, нова строка або повернення каретки."
+
+#: includes/pro_banners.php:42
+msgid "Reason"
+msgstr "Причина"
+
+#: includes/pro_banners.php:44
+msgid "Allowed separators for reasons: a comma"
+msgstr "Доступні роздільники для причин: кома"
+
+#: includes/pro_banners.php:44
+msgid "tab, new line or carriage return."
+msgstr "табуляція, нова строка або повернення каретки."
+
+#: includes/pro_banners.php:53
+msgid "Jetpack Contact Form"
+msgstr "Контактна форма Jetpack"
+
+#: includes/pro_banners.php:55
+msgid "bbPress New Topic form"
+msgstr "Форма \"Нова тема\" плагіну bbPress"
+
+#: includes/pro_banners.php:56
+msgid "bbPress Reply form"
+msgstr "Форма \"Відповісти\" плагіну bbPress"
+
+#: includes/pro_banners.php:57
+msgid "BuddyPress Registration form"
+msgstr "Форма реєстрації плагіну BuddyPress"
+
+#: includes/pro_banners.php:58
+msgid "BuddyPress Comments form"
+msgstr "Форма коментарів плагіну BuddyPress"
+
+#: includes/pro_banners.php:59
+msgid "BuddyPress Add New Group form"
+msgstr "Форма \"Додати нову групу\" плагіну BuddyPress"
+
+#: includes/pro_banners.php:60
+msgid "WooCommerce Login form"
+msgstr "Форма логіна плагіна WooCommerce"
+
+#: includes/pro_banners.php:61
+msgid "WooCommerce Registration form"
+msgstr "Форма реєстрації плагіна WooCommerce"
+
+#: includes/pro_banners.php:62
+msgid "WooCommerce Reset password form"
+msgstr "Форма відновлення пароля плагіна WooCommerce"
+
+#: includes/pro_banners.php:63
+msgid "WooCommerce Checkout form"
+msgstr "Форма оформлення замовлення плагіна WooCommerce"
+
+#: includes/pro_banners.php:64
+msgid "wpForo Login form"
+msgstr "Форма логіну плагіна wpForo"
+
+#: includes/pro_banners.php:65
+msgid "wpForo Registration form"
+msgstr "Форма реєстрації плагина wpForo"
+
+#: includes/pro_banners.php:66
+msgid "wpForo New Topic form"
+msgstr "Форма нової теми плагіна wpForo"
+
+#: includes/pro_banners.php:67
+msgid "wpForo Reply form"
+msgstr "Форма відповіді плагина wpForo"
+
+#: includes/pro_banners.php:153
+msgid "Size"
+msgstr "Розмір"
+
+#: includes/pro_banners.php:157
+msgid "Normal"
+msgstr "Нормальний"
+
+#: includes/pro_banners.php:158
+msgid "Compact"
+msgstr "Компактний"
+
+#: includes/pro_banners.php:163
+msgid "Language"
+msgstr "Мова"
+
+#: includes/pro_banners.php:171
+msgid "Multilanguage"
+msgstr "Multilanguage"
+
+#: includes/pro_banners.php:174
+msgid ""
+"Enable to switch language automatically on multilingual website using "
+"Multilanguage plugin."
+msgstr ""
+"Увімкніть, щоб перемкнути мову автоматично на багатомовному сайті, "
+"використовуючи плагін Multilanguage."
+
+#: includes/whitelist.php:47
+msgid "Add New"
+msgstr "Додати"
+
+#: includes/whitelist.php:72
+msgid "IP to whitelist"
+msgstr "IP до білого списку"
+
+#: includes/whitelist.php:79
+msgid "My IP"
+msgstr "Мій IP"
+
+#: includes/whitelist.php:86
+msgid "Allowed diapason"
+msgstr "Доступні діапазони"
+
+#: includes/whitelist.php:90
+msgid "Add IP to whitelist"
+msgstr "Додати IP до білого списку"
+
+#: includes/whitelist.php:95
+msgid "Search IP"
+msgstr "Шукати IP"
+
+#: includes/whitelist.php:149
+msgid "Nothing found"
+msgstr "Нічого не знайдено"
+
+#: includes/whitelist.php:149
+msgid "No IP in the whitelist"
+msgstr "Список IP порожній"
+
+#: includes/whitelist.php:156
+msgid "IP Address"
+msgstr "IP адреса"
+
+#: includes/whitelist.php:157
+msgid "Date Added"
+msgstr "Дата додавання"
+
+#: includes/whitelist.php:211 includes/whitelist.php:221
+msgid "Delete"
+msgstr "Видалити"
+
+#: includes/whitelist.php:307
+msgid "IP added to the whitelist successfully."
+msgstr "IP  успішно додано до білого списку."
+
+#: includes/whitelist.php:309 includes/whitelist.php:330
+#: includes/whitelist.php:340
+msgid "Some errors occurred."
+msgstr "Відбулися деякі помилки."
+
+#: includes/whitelist.php:311
+msgid "IP is already in the whitelist."
+msgstr "IP вже знаходиться в білому списку."
+
+#: includes/whitelist.php:314
+msgid "Invalid IP. See allowed formats."
+msgstr "Невірний IP. Дивіться доступні формати."
+
+#: includes/whitelist.php:336
+msgid "One IP was deleted successfully."
+msgstr "Одну IP було видалено успішно."
+
+#: includes/whitelist.php:343
+msgid "You have not entered any IP."
+msgstr "Ви не ввели жодного IP."
+
+#: includes/whitelist.php:346
+msgid "You have not entered any IP in to the search form."
+msgstr "Ви не ввели ніякого значення у форму пошуку."
+
+#: includes/whitelist.php:348
+msgid "Search results for"
+msgstr "Результати пошуку для"
+
+#~ msgid "Test ReCaptcha"
+#~ msgstr "Тестування ReCaptcha"
+
+#~ msgid "Enable ReCaptcha for"
+#~ msgstr "Включити  ReCaptcha для"
+
+#~ msgid "Hide ReCaptcha for"
+#~ msgstr "Сховати ReCaptcha для"
+
+#~ msgid "ReCaptcha Version"
+#~ msgstr "Версія ReCaptcha"
+
+#~ msgid ""
+#~ "Only one ReCaptcha can be displayed on the page, it's related to "
+#~ "ReCaptcha version 1 features."
+#~ msgstr ""
+#~ "У зв'язку з особливостями роботи ReCaptcha версії 1 на сторінці може "
+#~ "відображатися тільки одна ReCaptcha."
+
+#~ msgid "This option is available only for network or for main blog."
+#~ msgstr "Ця опція доступна тільки для мережі чи для головного блогу."
+
+#~ msgid "Enable for adding captcha to forms on their settings pages."
+#~ msgstr "Увімкніть для додавання капчи до форм на сторінках їх налаштувань."
+
+#~ msgid "Hide ReCaptcha in Comments Form for"
+#~ msgstr "Приховати ReCaptcha у формі коментарів для"
+
+#~ msgid "Create a Group form"
+#~ msgstr "Форма створення груп"
+
+#~ msgid "Lost password form"
+#~ msgstr "Форма відновлення пароля"
+
+#~ msgid "Checkout form"
+#~ msgstr "Форма оформлення замовлення"
+
+#~ msgid ""
+#~ "WARNING: The captcha will not be displayed until you don't fill key "
+#~ "fields."
+#~ msgstr ""
+#~ "УВАГА: Капча не буде відображатись, поки ви не заповните поля з ключами."
+
+#~ msgid "Check your domain configuration"
+#~ msgstr "Перевірте конфігурацію вашого домену"
+
+#~ msgid "Click the BACK button on your browser, and try again."
+#~ msgstr "Скористайтесь кнопкою НАЗАД у своєму браузері та спробуйте знов."
+
+#~ msgid ""
+#~ "WARNING: The captcha will not display while you don't fill key fields."
+#~ msgstr ""
+#~ "УВАГА: Капча не буде відображатись, поки ви не заповните необхідні поля."
+
+#~ msgid "Check off for adding captcha to forms on their settings pages"
+#~ msgstr "Увімкніть для додавання капчи до форм на сторінках їх налаштувань"
+
+#~ msgid "Settings saved"
+#~ msgstr "Налаштування збережено"
+
+#~ msgid "All plugin settings were restored"
+#~ msgstr "Налаштування плагіна були відновлені"
+
+#~ msgid "Custom code"
+#~ msgstr "Користувацький код"
+
+#~ msgid "Go PRO"
+#~ msgstr "Перейти на PRO версію"
+
+#~ msgid ""
+#~ "If you would like to add a Google Captcha (reCAPTCHA) to your page or "
+#~ "post, please use %s button"
+#~ msgstr ""
+#~ "Якщо ви хочете додати Google Captcha (reCAPTCHA) на вашу сторінку або "
+#~ "пост, то використовуйте кнопку %s"
+
+#~ msgid ""
+#~ "You can add the Google Captcha (reCAPTCHA) to your page or post by "
+#~ "clicking on %s button in the content edit block using the Visual mode. If "
+#~ "the button isn't displayed or you would like to add the Google Captcha "
+#~ "(reCAPTCHA) to your own form , please use the shortcode %s"
+#~ msgstr ""
+#~ "Ви можете додати Google Captcha (reCAPTCHA) на вашу сторінку або пост, "
+#~ "натиснувши на кнопку %s в блоці редагування контенту в режимі Visual. "
+#~ "Якщо кнопка не відображається або ви хочете додати Google Captcha "
+#~ "(reCAPTCHA) в вашу власну форму, будь ласка, використовуйте шорткод %s"
+
+#~ msgid ""
+#~ "In order to use reCAPTCHA, please enter site and secret keys. You can "
+#~ "manage your API keys %shere%s"
+#~ msgstr ""
+#~ "Для використання reCAPTCHA, будь ласка, введіть ключ сайту і секретний "
+#~ "ключ. Ви можете управляти своїми API ключами %sтут%s"
+
+#~ msgid "Test Keys"
+#~ msgstr "Тестування ключів"
+
+#~ msgid "Options"
+#~ msgstr "Опції"
+
+#~ msgid "This option is available only for network or for main blog"
+#~ msgstr "Ця опція доступна тільки для мережі або для основного блогу"
+
+#~ msgid "Plugins"
+#~ msgstr "Плагінів"
+
+#~ msgid "You should %s to use this functionality"
+#~ msgstr "Щоб використовувати цей функціонал %s"
+
+#~ msgid "activate"
+#~ msgstr "активувати"
+
+#~ msgid "for network"
+#~ msgstr "для мережі"
+
+#~ msgid "download"
+#~ msgstr "завантажити"
+
+#~ msgid ""
+#~ "If you would like to add Google Captcha (reCAPTCHA) to a custom form see "
+#~ "%s"
+#~ msgstr ""
+#~ "Якщо ви хочете додати Google Captcha (reCAPTCHA) в кастомний форму, "
+#~ "дивіться %s"
+
+#~ msgid "Hide reCAPTCHA in Comments Form for"
+#~ msgstr "Приховати reCAPTCHA у Формі коментарів для"
+
+#~ msgid ""
+#~ "This message will be displayed instead of the reCAPTCHA if the user IP is "
+#~ "added to the whitelist"
+#~ msgstr ""
+#~ "Вказане повідомлення буде відображатися замість reCAPTCHA якщо IP "
+#~ "знаходиться в білому списку"
+
+#~ msgid ""
+#~ "reCAPTCHA block won't be visible for non-suspicious users while "
+#~ "suspicious ones will have to pass the captcha"
+#~ msgstr ""
+#~ "Блок reCAPTCHA не буде відображений для користувачів, які не визивають "
+#~ "підозру, в той час як підозрілим користувачам доведеться пройти капчу"
+
+#~ msgid "reCAPTCHA Theme"
+#~ msgstr "reCAPTCHA theme"
+
+#~ msgid "for version"
+#~ msgstr "для версії"
+
+#~ msgid "Save Changes"
+#~ msgstr "Зберегти зміни"
+
+#~ msgid "Secret Key is invalid"
+#~ msgstr "Секретний ключ некоректний"
+
+#~ msgid "Please, complete the captcha and submit \"Test verification\""
+#~ msgstr ""
+#~ "Будь ласка, заповніть капчу і натисніть кнопку \"Тестування перевірки\""
+
+#~ msgid "The verification is successfully completed"
+#~ msgstr "Перевірка завершена успішно"
+
+#~ msgid "For IP addresses from the whitelist reCAPTCHA will not be displayed"
+#~ msgstr "Для IP з білого списку reCAPTCHA відображена не буде"
+
+#~ msgid "Add IP to the whitelist"
+#~ msgstr "Додати IP до білого списку"
+
+#~ msgid "Save changes"
+#~ msgstr "Зберегти зміни"
+
+#~ msgid "Save IP to the whitelist"
+#~ msgstr "Зберегти IP до білого списку"
+
+#~ msgid "IP address"
+#~ msgstr "IP-адреса"
+
+#~ msgid "Date added"
+#~ msgstr "Дата додавання"
+
+#~ msgid "Remove from the whitelist"
+#~ msgstr "Видалити IP з білого списку"
+
+#~ msgid "IP added to the whitelist successfully"
+#~ msgstr "IP успішно додано до білого списку"
+
+#~ msgid "Some errors occurred"
+#~ msgstr "Трапились деякі помилки"
+
+#~ msgid "IP is already in the whitelist"
+#~ msgstr "IP-адреса вже знаходиться в білому списку"
+
+#~ msgid "One IP was deleted successfully"
+#~ msgstr "Один IP було видалено успішно"
+
+#~ msgid "You have not entered any IP"
+#~ msgstr "Ви не ввели ніякого значення"
+
+#~ msgid "You have not entered any IP in to the search form"
+#~ msgstr "Ви не ввели ніякого значення у форму пошуку"
+
+#~ msgid "ordinary space, tab, new line or carriage return"
+#~ msgstr "звичайний пробіл, табуляція або новий рядок"
+
+#~ msgid "tab, new line or carriage return"
+#~ msgstr "табуляція, новий рядок або повернення каретки"
+
+#~ msgid "reCAPTCHA Language"
+#~ msgstr "Мова reCAPTCHA"
+
+#~ msgid "Use the current site language"
+#~ msgstr "Використовувати поточну мову сайту"
+
+#~ msgid "Using"
+#~ msgstr "Використовуючи"
+
+#~ msgid "reCAPTCHA Size"
+#~ msgstr "Розмір reCAPTCHA"
+
+#~ msgid "Unlock premium options by upgrading to Pro version"
+#~ msgstr "Активуйте преміум опції оновившись до Pro версії"
+
+#~ msgid "Learn More"
+#~ msgstr "Детальніше"
+
+#~ msgid "Error: You have entered an incorrect reCAPTCHA value"
+#~ msgstr "Помилка: Ви ввели невірне значення reCAPTCHA"
+
+#~ msgid "You have entered an incorrect reCAPTCHA value"
+#~ msgstr "Ви ввели невірне значення reCAPTCHA"
+
+#~ msgid "ERROR"
+#~ msgstr "ПОМИЛКА"
+
+#~ msgid "Before you are able to do something, you must to register %shere%s"
+#~ msgstr "Щоб виконувати якісь дії, спершу зареєструйтесь %sтут%s"
+
+#~ msgid "Enter site key and secret key, that you get after registration"
+#~ msgstr ""
+#~ "Введіть відкритий і секретний ключі, які ви отримали після реєстрації"
+
+#~ msgid ""
+#~ "Google Captcha version 2 will not work correctly, since the option "
+#~ "\"allow_url_fopen\" is disabled. Please contact your hosting support "
+#~ "service."
+#~ msgstr ""
+#~ "Google Captcha версії 2 не працюватиме коректно, тому що відключена опція "
+#~ "\"allow_url_fopen \". Будь ласка, зверніться в службу підтримки вашого "
+#~ "хостингу."
+
+#~ msgid ""
+#~ "Google Captcha version 2 will not work correctly, since the option "
+#~ "\"allow_url_fopen\" is disabled in the PHP settings of your hosting."
+#~ msgstr ""
+#~ "версія 2 плагіну Google Captcha не працюватиме коректно, тому що опція "
+#~ "\"allow_url_fopen\" заблокована в PHP налаштуваннях вашого хостінгу."
+
+#~ msgid "Read more."
+#~ msgstr "Дізнатись більше."
+
+#~ msgid "powered by"
+#~ msgstr "розроблено компанією"
+
+#~ msgid "Download"
+#~ msgstr "Завантажити"
+
+#~ msgid "You should"
+#~ msgstr "Вам слід"
+
+#~ msgid "Notice:"
+#~ msgstr "Увага:"
+
+#~ msgid ""
+#~ "The plugin's settings have been changed. In order to save them please "
+#~ "don't forget to click the 'Save Changes' button."
+#~ msgstr ""
+#~ "Налаштування плагіну змінено. Щоб зберегти їх, будь ласка, не забудьте "
+#~ "клікнути 'Зберегти зміни'."
+
+#~ msgid "Contact form"
+#~ msgstr "Контактна форма"
+
+#~ msgid "Activate contact form"
+#~ msgstr "Активувати контактну форму"
+
+#~ msgid "Download contact form"
+#~ msgstr "Завантажити контактну форму"
+
+#~ msgid "Google Captcha"
+#~ msgstr "Google Captcha"
+
+#~ msgid "Enable Google Captcha for:"
+#~ msgstr "Відображати Google Captcha для:"
+
+#~ msgid "Hide captcha for:"
+#~ msgstr "Не відображати Google Captcha для:"
+
+#~ msgid "Theme:"
+#~ msgstr "Тема:"
+
+#~ msgid ""
+#~ "An unexpected error has occurred. If this message appears again, please "
+#~ "contact the Administrator."
+#~ msgstr ""
+#~ "Сталась невідома помилка, якщо ви постійно бачите це повідомлення "
+#~ "зв'яжіться будь ласка з Адміністратором"
+
+#~ msgid "requires"
+#~ msgstr "потребує"
+
+#~ msgid ""
+#~ "or higher, that is why it has been deactivated! Please upgrade WordPress "
+#~ "and try again."
+#~ msgstr ""
+#~ "або вище, тому його було деактивовано! Оновіть WordPress та спробуйте ще "
+#~ "раз."
+
+#~ msgid "Back to the WordPress"
+#~ msgstr "Повернутися на WordPress"
+
+#~ msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+#~ msgstr ""
+#~ "Якщо вам сподобався наш плагін, будь ласка, поставте нам 5 зірочок на "
+#~ "WordPress"
+
+#~ msgid "Rate the plugin"
+#~ msgstr "Оцінити плагін"
+
+#~ msgid "If there is something wrong about it, please contact us"
+#~ msgstr "Якщо у вас виникли проблеми, будь ласка, повідомте нам"
+
+#~ msgid "Public Key"
+#~ msgstr "Відкритий ключ"
+
+#~ msgid "Private Key"
+#~ msgstr "Закритий ключ"
+
+#~ msgid "Enter public key"
+#~ msgstr "Введіть відкритий ключ"
+
+#, fuzzy
+#~ msgid "Themes"
+#~ msgstr "Тема:"
+
+#~ msgid "WARNING: The captcha will not display while you not fill key fields."
+#~ msgstr ""
+#~ "ПРЕДУПРЕЖДЕНИЕ: Google Captcha не будет отображаться пока вы не заполните "
+#~ "ключевые поля."
