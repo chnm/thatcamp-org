@@ -1,0 +1,110 @@
+# Translation of Plugins - Very Simple Contact Form - Development (trunk) in French (France)
+# This file is distributed under the same license as the Plugins - Very Simple Contact Form - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-04-29 09:02:04+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: fr\n"
+"Project-Id-Version: Plugins - Very Simple Contact Form - Development (trunk)\n"
+
+#: vscf-widget.php:37
+msgid "click here"
+msgstr "cliquez ici"
+
+#: vscf-form.php:27 vscf-widget-form.php:27
+msgid "Error! Could not send form. This might be a server issue."
+msgstr "Erreur ! Impossible d’envoyer le formulaire. C’est peut-être un problème de serveur."
+
+#: vscf-widget.php:30
+msgid "Information"
+msgstr "Informations"
+
+#: vscf-widget.php:26
+msgid "Title"
+msgstr "Titre"
+
+#: vscf-widget.php:37
+msgid "Info about attributes"
+msgstr "Informations au sujet des attributs"
+
+#: vscf-widget.php:10
+msgid "Display your contact form in a widget."
+msgstr "Afficher votre formulaire de contact dans un widget."
+
+#: vscf-form.php:26 vscf-form.php:33 vscf-widget-form.php:26
+#: vscf-widget-form.php:33
+msgid "Thank you! You will receive a response as soon as possible."
+msgstr "Merci ! Vous recevrez une réponse dans les plus bref délais."
+
+#: vscf-form.php:24 vscf-widget-form.php:24
+msgid "Please enter the correct number"
+msgstr "Veuillez saisir le nombre correct."
+
+#: vscf-form.php:19 vscf-widget-form.php:19
+msgid "Enter number %s"
+msgstr "Saisissez le nombre %s"
+
+#: vscf-widget.php:34
+msgid "Attributes"
+msgstr "Attributs"
+
+#: vscf-form.php:156 vscf-form.php:161 vscf-widget-form.php:156
+#: vscf-widget-form.php:161
+msgid "IP: %s"
+msgstr "IP : %s"
+
+#. Author URI of the plugin/theme
+msgid "http://www.guidovanderleest.nl"
+msgstr "http://www.guidovanderleest.nl"
+
+#. Author of the plugin/theme
+msgid "Guido van der Leest"
+msgstr "Guido van der Leest"
+
+#. Description of the plugin/theme
+msgid "This is a very simple contact form. Use shortcode [contact] to display form on page or use the widget. For more info please check readme file."
+msgstr "C'est un formulaire de contact très simple. Utilisez le code court [contact] afin d’afficher le formulaire sur la page ou utiliser le widget. Veuillez lire le fichier README pour plus d’informations."
+
+#. #-#-#-#-#  very-simple-contact-form-code.pot (Very Simple Contact Form 7.2) 
+#. #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: vscf-widget.php:11 vscf-widget.php:21
+msgid "Very Simple Contact Form"
+msgstr "Very Simple Contact Form"
+
+#: vscf-form.php:25 vscf-widget-form.php:25
+msgid "Please enter a valid email"
+msgstr "Veuillez saisir une adresse de messagerie valide."
+
+#: vscf-form.php:23 vscf-widget-form.php:23
+msgid "Please enter at least 10 characters"
+msgstr "Veuillez saisir au moins 10 caractères."
+
+#: vscf-form.php:21 vscf-form.php:22 vscf-widget-form.php:21
+#: vscf-widget-form.php:22
+msgid "Please enter at least 2 characters"
+msgstr "Veuillez saisir au moins 2 caractères."
+
+#: vscf-form.php:20 vscf-widget-form.php:20
+msgid "Submit"
+msgstr "Envoyer"
+
+#: vscf-form.php:18 vscf-widget-form.php:18
+msgid "Message"
+msgstr "Message"
+
+#: vscf-form.php:17 vscf-widget-form.php:17
+msgid "Subject"
+msgstr "Sujet"
+
+#: vscf-form.php:16 vscf-widget-form.php:16
+msgid "Email"
+msgstr "E-mail"
+
+#: vscf-form.php:15 vscf-widget-form.php:15
+msgid "Name"
+msgstr "Nom"

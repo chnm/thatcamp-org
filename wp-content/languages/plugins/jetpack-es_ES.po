@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-11 17:07:50+0000\n"
+"PO-Revision-Date: 2017-10-19 16:46:55+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1652,7 +1652,7 @@ msgstr "Muestra imágenes destacadas"
 
 #: _inc/jetpack-strings.php:338
 msgid "Must be enabled to use tiled galleries."
-msgstr "Debe estar activo para usar las galerías apiladas."
+msgstr "Debe estar activo para usar las galerías de mosaico."
 
 #: _inc/jetpack-strings.php:334
 msgctxt "Settings header"
@@ -3766,7 +3766,7 @@ msgid ""
 "\t\tor social icons."
 msgstr ""
 "Añade tantos widgets personalizados como quieras arrastrando y soltando, y personaliza cada uno de acuerdo a tus necesidades, \n"
-"\t \t incluyendo cronologías de Twitter, cajas de me gusta de Facebook, imágenes personalizadas, gravatares, galerías en rejilla, publicaciones recientes \n"
+"\t \t incluyendo las líneas de tiempo de Twitter, las cajas de me gusta de Facebook, imágenes personalizadas, gravatares, galerías de mosaico, publicaciones recientes \n"
 "\t \t o iconos sociales."
 
 #: modules/module-info.php:174
@@ -6780,7 +6780,7 @@ msgstr "Mostrar todas las fotos de tu galería en un mosaico moderno."
 
 #: modules/tiled-gallery/tiled-gallery.php:209
 msgid "Tiled Columns"
-msgstr "Columnas de mosaicos"
+msgstr "Mosaicos"
 
 #: modules/tiled-gallery/tiled-gallery.php:208 modules/widgets/gallery.php:366
 msgid "Circles"

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Twelve package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-04-11 08:54:59+0000\n"
+"PO-Revision-Date: 2017-10-22 18:00:39+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -263,8 +263,8 @@ msgstr "Kommentar-Navigation"
 #: comments.php:31
 msgid "One thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] "Ein Gedanke zu &bdquo;%2$s&ldquo;"
-msgstr[1] "%1$s Gedanken zu &bdquo;%2$s&ldquo;"
+msgstr[0] "Ein Gedanke zu &#8222;%2$s&#8220;"
+msgstr[1] "%1$s Gedanken zu  &#8222;%2$s&#8220;"
 
 #: category.php:21
 msgid "Category Archives: %s"
