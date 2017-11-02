@@ -1,0 +1,542 @@
+# Translation of Plugins - Nginx Helper - Stable (latest release) in Slovak
+# This file is distributed under the same license as the Plugins - Nginx Helper - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-05-29 08:34:28+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: sk\n"
+"Project-Id-Version: Plugins - Nginx Helper - Stable (latest release)\n"
+
+#: purger.php:441 redis-purger.php:339
+msgid "Purging homepage (WPML) '%s'"
+msgstr "Čistí sa domovská stránka (WPML) '%s'"
+
+#. Author URI of the plugin/theme
+msgid "https://rtcamp.com"
+msgstr "https://rtcamp.com"
+
+#. Author of the plugin/theme
+msgid "rtCamp"
+msgstr "rtCamp"
+
+#. Description of the plugin/theme
+msgid "Cleans nginx's fastcgi/proxy cache or redis-cache whenever a post is edited/published. Also does a few more things."
+msgstr "Čistí nginx's fastcgi/proxy cache alebo redis-cache zakaždým, keď je článok upravený/zverejnený. Tiež robí pár ďalších vecí."
+
+#. Plugin URI of the plugin/theme
+msgid "https://rtcamp.com/nginx-helper/"
+msgstr "https://rtcamp.com/nginx-helper/"
+
+#: wp-cli.php:31
+msgid "Purged Everything!"
+msgstr "Cache vyčistená!"
+
+#: purger.php:745 redis-purger.php:659
+msgid "Widget saved, moved or removed in a sidebar"
+msgstr "Widget uložený, presunutý alebo presunutý do bočného panelu. "
+
+#: purger.php:732 redis-purger.php:645
+msgid "A term taxonomy has been deleted from taxonomy '%s', (tt_id '%d', term_id '%d')"
+msgstr "Term taxonómia bola vymazaná z taxonómie '%s', (tt_id '%d', term_id '%d')"
+
+#: purger.php:730 redis-purger.php:643
+msgid "Term taxonomy '%s' edited, (tt_id '%d', term_id '%d', taxonomy '%s')"
+msgstr "Term taxonómia bola '%s' upravená, (tt_id '%d', term_id '%d', taxonómia '%s')"
+
+#: purger.php:727 redis-purger.php:640
+msgid "Term taxonomy edited or deleted"
+msgstr "Taxonómia bola upravená alebo vymazaná"
+
+#: purger.php:720 redis-purger.php:632
+msgid "Everthing purged!"
+msgstr "Cache vyčistemá!"
+
+#: purger.php:708 redis-purger.php:620
+msgid "Let's purge everything!"
+msgstr "Vyčistiť celú cache!"
+
+#: purger.php:702 redis-purger.php:613
+msgid "No yearly archives"
+msgstr "Žiadne ročné archívy"
+
+#: purger.php:698 redis-purger.php:609
+msgid "Purging yearly archive '%s'"
+msgstr "Čistí sa ročný archív '%s'"
+
+#: purger.php:685 redis-purger.php:596
+msgid "Purging all yearly archives."
+msgstr "Čistia sa všetky ročné archívy."
+
+#: purger.php:677 redis-purger.php:587
+msgid "No monthly archives"
+msgstr "Žiadne mesačné archívy"
+
+#: purger.php:673 redis-purger.php:583
+msgid "Purging monthly archive '%s/%s'"
+msgstr "Čistí s mesačný archív '%s/%s'"
+
+#: purger.php:660 redis-purger.php:570
+msgid "Purging all monthly archives."
+msgstr "Čistia sa všetky mesačné archívy."
+
+#: purger.php:652 redis-purger.php:561
+msgid "No daily archives"
+msgstr "ŽIadne denné archívy"
+
+#: purger.php:648 redis-purger.php:557
+msgid "Purging daily archive '%s/%s/%s'"
+msgstr "Čistí sa denný archív '%s/%s/%s'"
+
+#: purger.php:635 redis-purger.php:544
+msgid "Purging all daily archives."
+msgstr "Čistia sa všetky denné archívy."
+
+#: purger.php:620 redis-purger.php:528
+msgid "Purging all date-based archives."
+msgstr "Čistia sa všetky dátumové archívy."
+
+#: purger.php:612 redis-purger.php:519
+msgid "No posts"
+msgstr "Žiadne články"
+
+#: purger.php:608 redis-purger.php:515
+msgid "Purging post id '%d' (post type '%s')"
+msgstr "Čistí sa článok s id '%d' (typ článku '%s')"
+
+#: purger.php:598 redis-purger.php:505
+msgid "Purging all posts, pages and custom post types."
+msgstr "Čistia sa všetky články, stránky a vlastné typy obsahu."
+
+#: purger.php:562 redis-purger.php:467
+msgid "Purging all custom taxonomies"
+msgstr "Čistia sa všetky vlastné taxonómie"
+
+#: purger.php:554 redis-purger.php:458
+msgid "No tags archives"
+msgstr "Žiadne archívy značiek"
+
+#: purger.php:545 redis-purger.php:449
+msgid "Purging all tags"
+msgstr "Čistia sa všetky značky"
+
+#: purger.php:537 redis-purger.php:440
+msgid "No categories archives"
+msgstr "Žiadne archívy kategórií"
+
+#: purger.php:533 redis-purger.php:436
+msgid "Purging category '%s' (id %d)"
+msgstr "Čistí sa kategória '%s' (id %d)"
+
+#: purger.php:528 redis-purger.php:431
+msgid "Purging all categories"
+msgstr "Čistia sa všetky kategórie"
+
+#: purger.php:520 purger.php:581 redis-purger.php:422 redis-purger.php:486
+msgid "No custom taxonomies"
+msgstr "Žiadne vlastné taxonómie"
+
+#: purger.php:516 purger.php:577 redis-purger.php:418 redis-purger.php:482
+msgid "Your built-in taxonomy '%s' has param '_builtin' set to false."
+msgstr "Vaša vstavaná taxonómia '%s' má parameter '_builtin' nastavený na false."
+
+#: purger.php:506 purger.php:567 redis-purger.php:408 redis-purger.php:472
+msgid "Purging custom taxonomy '%s'"
+msgstr "Čistí sa vlastná taxonónia '%s'"
+
+#: purger.php:502 redis-purger.php:404
+msgid "Purging post custom taxonomies related"
+msgstr "Čistia sa súvisiace vlastné taxonómie článku"
+
+#: purger.php:492 purger.php:550 redis-purger.php:393 redis-purger.php:454
+msgid "Purging tag '%s' (id %d)"
+msgstr "Čistí sa značka '%s' (id %d)"
+
+#: purger.php:488 redis-purger.php:389
+msgid "Purging tags archives"
+msgstr "Čistia sa archívy značiek"
+
+#: purger.php:478 redis-purger.php:378
+msgid "Purging category '%d'"
+msgstr "Čistí sa kategória '%d'"
+
+#: purger.php:474 redis-purger.php:374
+msgid "Purging category archives"
+msgstr "Čistia sa archívy kategórií"
+
+#: purger.php:466 redis-purger.php:365
+msgid "No personal urls available"
+msgstr "Nie sú k dispozícii žiadne osobné URL adresy"
+
+#: purger.php:458 redis-purger.php:357
+msgid "Purging personal urls"
+msgstr "Čistia sa osobné URL adresy"
+
+#: purger.php:446 redis-purger.php:344
+msgid "Purging homepage '%s'"
+msgstr "Čistí sa úvodná stránka '%s'"
+
+#: nginx-helper.php:425
+msgid "Posted "
+msgstr "Publikované"
+
+#: nginx-helper.php:419
+msgid "No items"
+msgstr "Žiadne položky"
+
+#: nginx-helper.php:391
+msgid "Settings"
+msgstr "Nastavenia"
+
+#: nginx-helper.php:286
+msgid "Purge initiated"
+msgstr "Čistenie zahájené"
+
+#: admin/lib/nginx-support.php:21
+msgid "Premium Support Forum"
+msgstr "Fórum prémiovej podpory"
+
+#: admin/lib/nginx-support.php:19
+msgid "Premium Support"
+msgstr "Prémium podpora"
+
+#: admin/lib/nginx-support.php:15 admin/lib/nginx-support.php:21
+msgid "Link to forum"
+msgstr "Odkaz na fórum"
+
+#: admin/lib/nginx-support.php:15
+msgid "Free Support Forum"
+msgstr "Fórum podpory zadarmo"
+
+#: admin/lib/nginx-support.php:13
+msgid "Free Support"
+msgstr "Podpora zadarmo"
+
+#: admin/lib/nginx-support.php:8
+msgid "Support Forums"
+msgstr "Fórum podpory"
+
+#: admin/lib/nginx-sidebar.php:62
+msgid "Loading..."
+msgstr "Načítava sa..."
+
+#: admin/lib/nginx-sidebar.php:61
+msgid "Latest News"
+msgstr "Novinky"
+
+#: admin/lib/nginx-sidebar.php:60
+msgid "Click to toggle"
+msgstr "Prepnúť zobrazenie"
+
+#: admin/lib/nginx-sidebar.php:53
+msgid "easyengine (ee)"
+msgstr "easyengine (ee)"
+
+#: admin/lib/nginx-sidebar.php:50
+msgid "WordPress Consultancy"
+msgstr "WordPress poradenstvo"
+
+#: admin/lib/nginx-sidebar.php:47
+msgid "WordPress Plugin Development"
+msgstr "Vývoj WordPress pluginov"
+
+#: admin/lib/nginx-sidebar.php:44
+msgid "WordPress Theme Devleopment"
+msgstr "Vývoj WordPress tém"
+
+#: admin/lib/nginx-sidebar.php:41
+msgid "WordPress-Nginx Solutions"
+msgstr "WordPress-Nginx riešenia"
+
+#: admin/lib/nginx-sidebar.php:36
+msgid "Useful Links"
+msgstr "Užitočné odkazy"
+
+#: admin/lib/nginx-sidebar.php:30
+msgid "Subscribe to our feeds"
+msgstr "Prihlásiť sa na odber noviniek"
+
+#: admin/lib/nginx-sidebar.php:29
+msgid "Add to Circle"
+msgstr "Pridať do kruhu"
+
+#: admin/lib/nginx-sidebar.php:28
+msgid "Follow us on Twitter"
+msgstr "Sledujte nás na Twitteri"
+
+#: admin/lib/nginx-sidebar.php:27
+msgid "Become a fan on Facebook"
+msgstr "Staň sa fanúšikom na Facebooku"
+
+#: admin/lib/nginx-sidebar.php:24
+msgid "Getting Social is Good"
+msgstr "Buďme spolu v kontakte"
+
+#: admin/lib/nginx-sidebar.php:18
+msgid "Please use our <a href=\"%s\">free support forum</a>."
+msgstr "Použite naše <a href=\"%s\">bezplatné fórum podpory</a>."
+
+#: admin/lib/nginx-sidebar.php:15
+msgid "Need Help?"
+msgstr "Potrebujete pomoc?"
+
+#: admin/lib/nginx-sidebar.php:11
+msgid "Purge Entire Cache"
+msgstr "Vyčistiť celú cache"
+
+#: admin/lib/nginx-general.php:449
+msgid "Save All Changes"
+msgstr "Uložiť všetky zmeny"
+
+#: admin/lib/nginx-general.php:439
+msgid "Mb"
+msgstr "Mb"
+
+#: admin/lib/nginx-general.php:436
+msgid "Max log file size"
+msgstr "Maximálna veľkosť log súboru"
+
+#: admin/lib/nginx-general.php:431
+msgid "Error"
+msgstr "Chyba"
+
+#: admin/lib/nginx-general.php:430
+msgid "Warning"
+msgstr "Varovanie"
+
+#: admin/lib/nginx-general.php:429
+msgid "Info"
+msgstr "Info"
+
+#: admin/lib/nginx-general.php:428
+msgid "None"
+msgstr "Žiadne"
+
+#: admin/lib/nginx-general.php:425
+msgid "Log level"
+msgstr "Úroveň logovania"
+
+#: admin/lib/nginx-general.php:422
+msgid "Log"
+msgstr "Log"
+
+#: admin/lib/nginx-general.php:421
+msgid "View Log"
+msgstr "Zobraziť log"
+
+#: admin/lib/nginx-general.php:417
+msgid "Logs path"
+msgstr "Cesta k logom"
+
+#: admin/lib/nginx-general.php:411
+msgid "Can't write on log file.<br /><br />Check you have write permission on <strong>%s</strong>"
+msgstr "Nedá sa zapísať do log súboru.<br /><br />Skontrolujte, či máte práva na zapisovanie na <strong>%s</strong>"
+
+#: admin/lib/nginx-general.php:396
+msgid "Logging Options"
+msgstr "Vlastnosti logovania"
+
+#: admin/lib/nginx-general.php:384
+msgid "Or,<br />Text to manually copy and paste in nginx settings<br /><small>(if your network is small and new sites are not added frequently)</small>"
+msgstr "Alebo,<br />Text na manuálne skopírovanie a vloženie do nastavení nginx<br /><small>(ak je vaša sieť malá a nové stránky nie sú pridávane často)</small>"
+
+#: admin/lib/nginx-general.php:378
+msgid "Nginx Map path to include in nginx settings<br /><small>(recommended)</small>"
+msgstr "Cesta Nginx Map na vloženie do nastavení nginx<br /><small>(odporúčané)</small>"
+
+#: admin/lib/nginx-general.php:373
+msgid "Can't write on map file.<br /><br />Check you have write permission on <strong>%s</strong>"
+msgstr "Nedá sa zapisovať do map súboru.<br /><br />Skonrolujte, či máte práva na zapisovanie do  <strong>%s</strong>"
+
+#: admin/lib/nginx-general.php:370
+msgid "Nginx Map"
+msgstr "Nginx Map"
+
+#: admin/lib/nginx-general.php:356
+msgid "Enable Nginx Timestamp in HTML"
+msgstr "Povoliť Nginx časovú známku v HTML"
+
+#: admin/lib/nginx-general.php:350
+msgid "Enable Logging"
+msgstr "Povoliť záznam do logu"
+
+#: admin/lib/nginx-general.php:343
+msgid "Enable Nginx Map."
+msgstr "Povoliť Nginx Map."
+
+#: admin/lib/nginx-general.php:334
+msgid "Debug Options"
+msgstr "Ladiace nastavenia"
+
+#: admin/lib/nginx-general.php:316
+msgid "Custom Purge URL:"
+msgstr "Vlastná URL na čistenie:"
+
+#: admin/lib/nginx-general.php:302
+msgid "when a comment is unapproved/deleted.</span>"
+msgstr "keď je komentár neschválený/vymazaný.</span>"
+
+#: admin/lib/nginx-general.php:293
+msgid "when a comment is approved/published.</span>"
+msgstr "keď je komentár schválený/zverejnený.</span>"
+
+#: admin/lib/nginx-general.php:283
+msgid "when an existing post/page/custom post is trashed.</span>"
+msgstr "keď je existujúci článok/stránka/vlastný typ obsahu presunutý do koša.</span>"
+
+#: admin/lib/nginx-general.php:274
+msgid "when an post/page/custom post is modified or added.</span>"
+msgstr "keď článok/stránka/vlastný typ príspevku je aktualizovaný alebo pridaný.</span>"
+
+#: admin/lib/nginx-general.php:269
+msgid "(date, category, tag, author, custom taxonomies)"
+msgstr "(dátum, kategória, značka, autor, vlastné taxonómie)"
+
+#: admin/lib/nginx-general.php:268
+msgid "Purge Archives:"
+msgstr "Vyčistiť archívy:"
+
+#: admin/lib/nginx-general.php:259 admin/lib/nginx-general.php:306
+msgid "when a <strong>comment</strong> is <strong>unapproved/deleted</strong>."
+msgstr "keď <strong>komentár</strong> je <strong>neschválený/vymazaný</strong>."
+
+#: admin/lib/nginx-general.php:255
+msgid "when a comment is unapproved/deleted."
+msgstr "keď je komentár nepovolený/vymazaný."
+
+#: admin/lib/nginx-general.php:250 admin/lib/nginx-general.php:297
+msgid "when a <strong>comment</strong> is <strong>approved/published</strong>."
+msgstr "keď je <strong>komentár povolený/publikovaný</strong>."
+
+#: admin/lib/nginx-general.php:246
+msgid "when a comment is approved/published."
+msgstr "keď je komentár schválený/zverejnený."
+
+#: admin/lib/nginx-general.php:241
+msgid "when a <strong>post</strong> is <strong>published</strong>."
+msgstr "keď je <strong>článok</strong> <strong>zverejnený</strong>."
+
+#: admin/lib/nginx-general.php:232
+msgid "Purge Post/Page/Custom Post Type:"
+msgstr "Vyčistiť článok/stránku/vlastný typ obsahu:"
+
+#: admin/lib/nginx-general.php:224 admin/lib/nginx-general.php:287
+msgid "when a <strong>published post</strong> (or page/custom post) is <strong>trashed</strong>."
+msgstr "keď je <strong>publikovaný článok</strong> (alebo stránka/vlastný typ obsahu <strong>presunutý do koša</strong>."
+
+#: admin/lib/nginx-general.php:220
+msgid "when an existing post/page/custom post is modified."
+msgstr "keď je existujúci článok/stránka/vlastný typ obsahu upravený."
+
+#: admin/lib/nginx-general.php:215 admin/lib/nginx-general.php:278
+msgid "when a <strong>post</strong> (or page/custom post) is <strong>modified</strong> or <strong>added</strong>."
+msgstr "keď je <strong>článok</strong> (alebo stránka/vlastný tup obsahu) <strong>upravený</strong> alebo <strong>pridaný</strong>."
+
+#: admin/lib/nginx-general.php:211
+msgid "when a post/page/custom post is modified or added."
+msgstr "keď je upravený alebo pridaný článok/stránka/vlastný typ obsahu."
+
+#: admin/lib/nginx-general.php:207
+msgid "Purge Homepage:"
+msgstr "Vyčistiť domovskú stránku:"
+
+#: admin/lib/nginx-general.php:201
+msgid "Purging Conditions"
+msgstr "Čistia sa podmienky"
+
+#: admin/lib/nginx-general.php:190
+msgid "Prefix"
+msgstr "Prefix"
+
+#: admin/lib/nginx-general.php:184
+msgid "Port"
+msgstr "Port"
+
+#: admin/lib/nginx-general.php:178
+msgid "Hostname"
+msgstr "Názov hostiteľa"
+
+#: admin/lib/nginx-general.php:168
+msgid "Redis Settings"
+msgstr "Nastavenia Redis"
+
+#: admin/lib/nginx-general.php:157
+msgid "Checks for matching cache file in <strong>RT_WP_NGINX_HELPER_CACHE_PATH</strong>. Does not require any other modules. Requires that the cache be stored on the same server as WordPress. You must also be using the default nginx cache options (levels=1:2) and (fastcgi_cache_key \"$scheme$request_method$host$request_uri\"). "
+msgstr "Hľadá zodpovedajúci súbor v <strong>RT_WP_NGINX_HELPER_CACHE_PATH</strong>. Nepožaduje žiadne ďalšie moduly. Požaduje, aby bola cache ukladaná na tom istom serveri, ako WordPress. Tiež musíte použiť predvolené vlastnosti nginx cache (levels=1:2) a (fastcgi_cache_key \"$scheme$request_method$host$request_uri\"). "
+
+#: admin/lib/nginx-general.php:156
+msgid "Delete local server cache files"
+msgstr "Vymazať súbory cache z lokálneho serveru"
+
+#: admin/lib/nginx-general.php:152
+msgid "Uses the <strong><a href=\"https://github.com/FRiCKLE/ngx_cache_purge\">ngx_cache_purge</a></strong> module. "
+msgstr "Používa <strong><a href=\"https://github.com/FRiCKLE/ngx_cache_purge\">ngx_cache_purge</a></strong> modul. "
+
+#: admin/lib/nginx-general.php:151
+msgid "Using a GET request to <strong>PURGE/url</strong> (Default option)"
+msgstr "Použiť požiadavku GET na <strong>PURGE/url</strong> (Predvolená možnosť)"
+
+#: admin/lib/nginx-general.php:147 admin/lib/nginx-general.php:237
+msgid "when a post/page/custom post is published."
+msgstr "keď článok/stránka/vlastný typ príspevku je publikovaný."
+
+#: admin/lib/nginx-general.php:139
+msgid "Purge Method"
+msgstr "Spôsob vymazávania cache"
+
+#: admin/lib/nginx-general.php:129
+msgid "Redis cache"
+msgstr "Redis cache"
+
+#: admin/lib/nginx-general.php:121
+msgid "nginx Fastcgi cache (<a target=\"_blank\" href=\"%s\" title=\"External settings for nginx\">requires external settings for nginx</a>)"
+msgstr "nginx Fastcgi cache (<a target=\"_blank\" href=\"%s\" title=\"Externé nastavenia pre nginx\">požaduje externé nastavenia pre nginx</a>)"
+
+#: admin/lib/nginx-general.php:111
+msgid "Caching Method"
+msgstr "Spôsob použitia cache"
+
+#: admin/lib/nginx-general.php:103
+msgid "Enable Purge"
+msgstr "Povoliť čistenie cache"
+
+#: admin/lib/nginx-general.php:96
+msgid "Purging Options"
+msgstr "Možnosti čistenia"
+
+#: admin/lib/nginx-general.php:76
+msgid "Settings saved."
+msgstr "Nastavenia uložené."
+
+#: admin/lib/nginx-general.php:28
+msgid "Log file size must be a number"
+msgstr "Veľkosť log súboru musí byť číslo"
+
+#: admin/install.php:22
+msgid "Sorry, you need to be an administrator to use Nginx Helper"
+msgstr "Používať Nginx Helper môže iba administrátor"
+
+#: admin/admin.php:123
+msgid "Purge Cache"
+msgstr "Vyčistiť cache"
+
+#: admin/admin.php:78
+msgid "Nginx Settings"
+msgstr "Nastavenia Nginx"
+
+#. #-#-#-#-#  tmp-nginx-helper.pot (Nginx Helper 1.9.10)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: admin/admin.php:40 admin/admin.php:47
+msgid "Nginx Helper"
+msgstr "Nginx Helper"
+
+#: admin/admin.php:30
+msgid "Support"
+msgstr "Podpora"
+
+#: admin/admin.php:26
+msgid "General"
+msgstr "Všeobecné"
