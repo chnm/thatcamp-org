@@ -221,9 +221,9 @@ class AuthorAvatars {
 	function set_installed_version( $value ) {
 		$oldversion = $this->get_installed_version();
 		if ( empty( $oldversion ) ) {
-			add_option( 'author_avatars_version', $value );
+			add_option( 'author_avatars_version', $value, '', true );
 		} else {
-			update_option( 'author_avatars_version', $value );
+			update_option( 'author_avatars_version', $value, true );
 		}
 		$this->__version_installed = $value;
 	}

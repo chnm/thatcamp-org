@@ -56,7 +56,11 @@ class AuthorAvatarsEditorButton {
 
 	/**
 	 * Filter 'mce_external_plugins': add the authoravatars tinymce plugin
-	 */
+	 *
+	 * @param $plugin_array
+	 *
+	 * @return mixed
+	 * */
 
 	function add_tinymce_plugin( $plugin_array ) {
 		$plugin_array['authoravatars'] = plugins_url( '../tinymce/editor_plugin.js', __FILE__ );
@@ -66,6 +70,10 @@ class AuthorAvatarsEditorButton {
 
 	/**
 	 * Filter 'mce_buttons': add the authoravatars tinymce button
+	 *
+	 * @param $buttons
+	 *
+	 * @return mixed
 	 */
 	function add_tinymce_button( $buttons ) {
 		array_push( $buttons, 'separator', 'authoravatars' );
@@ -90,7 +98,6 @@ class AuthorAvatarsEditorButton {
 	 * Builds the html head for the tinymce popup
 	 *
 	 * @access private
-	 * @return string Popup head
 	 */
 
 	function render_tinymce_popup_head() {
@@ -106,14 +113,13 @@ class AuthorAvatarsEditorButton {
 	 * Builds the html body for the tinymce popup
 	 *
 	 * @access private
-	 * @return string Popup body
 	 */
 
 	function render_tinymce_popup_body() {
 		require_once( 'AuthorAvatarsForm.class.php' );
 		$form = new AuthorAvatarsForm();
 		// BASIC TAB
-		$basic_left = $form->renderFieldShortcodeType();
+		$basic_left = $form->renderFieldShortcodeType( 'authoravatars' );
 		$basic_left .= '<div class="fields_type_show_avatar">';
 		$basic_left .= $form->renderFieldUsers();
 		$basic_left .= $form->renderFieldEmail();
@@ -155,18 +161,15 @@ class AuthorAvatarsEditorButton {
 		$tabs = $basic_tab . $advanced_tab;
 		$html = '<div class="aa-tabs">' . $form->renderTabList() . $tabs . '</div>';
 		$html .= "\n\t" . '<div class="mceActionPanel"> ' . AA_donateButton();
-		$html .= "\n\t" . '<div style="float: left">';
-		$html .= "\n\t" . '<input type="button" id="cancel" name="cancel" value="' . __( "Cancel" ) . '" onclick="tinyMCEPopup.close();" />';
+		$html .= "\n\t" . '<div style="float: left; margin-left: 20px;">';
+		$html .= "\n\t" . '<input class="button button-secondary" type="button" id="cancel" name="cancel" value="' . __( "Cancel" ) . '" onclick="tinyMCEPopup.close();" />';
 		$html .= "\n\t" . '</div>';
-		$html .= "\n\t" . '<div style="float: right">';
-		$html .= "\n\t" . '<input type="submit" id="insert" name="insert" value="' . __( "Insert" ) . '" onclick="insertAuthorAvatarsCode();" />';
+		$html .= "\n\t" . '<div style="float: right; margin-right: 20px;">';
+		$html .= "\n\t" . '<input class="button button-primary"  type="submit" id="insert" name="insert" value="' . __( "Insert" ) . '" />';
 		$html .= "\n\t" . '</div>';
 		$html .= "\n\t" . '</div>';
 
 		echo '<body class="tinymce_popup">' . $html . "\n" . '</body>';
 
 	}
-
 }
-
-?>

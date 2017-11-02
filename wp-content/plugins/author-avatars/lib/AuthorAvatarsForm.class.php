@@ -577,7 +577,7 @@ class AuthorAvatarsForm {
 		$html       = '<p>' . AAFormHelper::input( 'text', $name, $value, $attributes ) . '</p>';
 		if ( $preview == true ) {
 			global $user_email;
-			get_currentuserinfo();
+			wp_get_current_user();
 			$html .= '<div class="avatar_size_preview" style="background-color: #666; border: 1px solid #eee; width: 200px; height: 200px; padding: 10px;">' . get_avatar( $user_email, $value ) . '</div>';
 		}
 
@@ -732,7 +732,7 @@ class AuthorAvatarsForm {
 
 			return;
 		}
-		$html = "\n" . '<ul>';
+		$html = "\n" . '<ul class="ui-tabs-nav">';
 		foreach ( $this->tabs as $id => $title ) {
 			$html .= "\n\t" . '<li><a href="#' . $id . '">' . $title . '</a></li>';
 		}
