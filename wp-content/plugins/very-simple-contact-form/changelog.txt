@@ -1,8 +1,14 @@
 CHANGELOG
 =========
 
+= Version 7.2 =
+* updated file vscf-style
+* files vscf-form and vscf-widget-form: added escaping to empty variables
+* removed all faqs from readme file which refer back to the description section
+* updated info about SMTP plugins in readme file
+
 = Version 7.1 =
-* new: attribute to change default mail subject prefix: prefix_subject
+* new: attribute to change default email subject prefix: prefix_subject
 * new: attribute to scroll back to form location after submit: scroll_to_form
 * for more info please check readme file
 * thanks startover909

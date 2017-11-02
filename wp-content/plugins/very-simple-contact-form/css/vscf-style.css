@@ -20,8 +20,9 @@
 /* Success or fail message */
 .vscf-info {font-style:italic; font-size:1.20em;}
 
-/* Widget */
+/* Widget wrapper */
 .vscf-sidebar {}
+.vsct-sidebar:after {content:''; display:block; height:0; clear:both;}
 
 /* Widget text above form */
 .vscf-sidebar-text {clear:both;}

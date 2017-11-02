@@ -1,7 +1,7 @@
 === Very Simple Contact Form ===
 Contributors: Guido07111975
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donation%40guidovanderleest%2enl
-Version: 7.1
+Version: 7.2
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.7
@@ -21,72 +21,61 @@ Form only contains Name, Email, Subject and Message. And a simple captcha sum.
 
 It's designed to fulfill the needs of most websites that only require a basic contact form, with no additional fields.
 
+Use a shortcode to display form on a page or use the widget.
+
+While adding the shortcode or the widget you can add several attributes to personalize your form.
+
 = How to use =
 After installation add shortcode `[contact]` on your page to display the form.
 
 Or go to Appearance > Widgets and add the widget to your sidebar.
 
-By default form submissions will be send to your site's admin email address (set in Settings > General). It's also possible to send a confirmation mail to sender.
-
-While adding the shortcode or the widget you can add several attributes to personalize your form.
-
-While adding the widget you can add some additional information above your form.
+By default form submissions will be send to your site's admin email address (set in Settings > General). It's also possible to send a confirmation email to sender.
 
 = Shortcode attributes = 
-* Change email from admin: `[contact email_to="your-email-here"]`
-* Send to multiple email: `[contact email_to="first-email-here, second-email-here"]`
+* Change admin email address: `[contact email_to="your-email-here"]`
+* Send to multiple email addresses: `[contact email_to="first-email-here, second-email-here"]`
 * Change default "From" email header: `[contact from_header="your-email-here"]`
-* Activate confirmation mail to sender: `[contact auto_reply="true"]`
-* Change default message in mail: `[contact auto_reply_message="your message here"]`
+* Change default email subject: `[contact subject="your subject here"]`
+* Change default email subject prefix: `[contact prefix_subject="your prefix here"]`
+* Activate confirmation email to sender: `[contact auto_reply="true"]`
+* Change default "thank you" message in confirmation email: `[contact auto_reply_message="your message here"]`
 * Hide subject field: `[contact hide_subject="true"]`
-* Change default mail subject: `[contact subject="your subject here"]`
-* Change default mail subject prefix: `[contact prefix_subject="your prefix here"]`
 * Scroll back to form location after submit: `[contact scroll_to_form="true"]`
 
-You can change labels and messages using an attribute.
+You can change field labels and messages using an attribute.
 
 * Labels: label_name, label_email, label_subject, label_captcha, label_message, label_submit
-* Labels in case of error: error_name, error_email, error_subject, error_captcha, error_message
-* Sending succeeded: message_success
-* Sending failed: message_error
+* Labels when validation fails: error_name, error_email, error_subject, error_captcha, error_message
+* Sending succeeded ("thank you") message: message_success
+* Sending failed message: message_error
 
 Examples:
 
 * Change Name label: `[contact label_name="Your Name"]`
-* Change Submit label: `[contact label_submit="Send"]`
 * Change captcha label: `[contact label_captcha="Please enter %s"]`
 * Change captcha label: `[contact label_captcha="Please enter %s here"]`
-* Change sending succeeded message: `[contact message_success="your message here"]`
+* Change sending succeeded ("thank you") message: `[contact message_success="your message here"]`
 
-You can also add multiple attributes.
+You can also add multiple attributes. Use a single whitespace to separate multiple attributes.
 
 * Example: `[contact email_to="your-email-here" subject="your subject here"]`
 
 = Widget attributes =
 The widget supports the same attributes. Enter them without shortcode itself and without brackets.
 
-Examples:
+Example 1:
 
-* Change email from admin: `email_to="your-email-here"`
-* Send to multiple email: `email_to="first-email-here, second-email-here"`
-* Change default "From" email header: `from_header="your-email-here"`
-* Activate confirmation mail to sender: `auto_reply="true"`
-* Change default message in mail: `auto_reply_message="your message here"`
-* Hide subject field: `hide_subject="true"`
-* Change default mail subject: `subject="your subject here"`
-* Change default mail subject prefix: `prefix_subject="your prefix here"`
-* Scroll back to form location after submit: `scroll_to_form="true"`
-* Change Name label: `label_name="Your Name"`
-* Change Submit label: `label_submit="Send"`
-* Change captcha label: `label_captcha="Please enter %s"`
-* Change captcha label: `label_captcha="Please enter %s here"`
-* Change sending succeeded message: `message_success="your message here"`
-* Multiple attributes: `email_to="your-email-here" subject="your subject here"`
+* If shortcode attribute is: `[contact email_to="your-email-here"]`
+* Widget attribute will be: `email_to="your-email-here"`
+
+Example 2:
+
+* If shortcode attribute is: `[contact label_name="Your Name"]`
+* Widget attribute will be: `label_name="Your Name"`
 
 = List form submissions in dashboard =
-With plugin [Contact Form DB](https://wordpress.org/plugins/contact-form-7-to-database-extension) you can list form submissions in your dashboard.
-
-Note: Contact Form DB is currently only available on [GitHub](https://github.com/mdsimpson/contact-form-7-to-database-extension/releases).
+With plugin [Contact Form DB](https://github.com/mdsimpson/contact-form-7-to-database-extension/releases) you can list form submissions in your dashboard.
 
 = SMTP =
 SMTP (Simple Mail Transfer Protocol) is an internet standard for sending emails. 
@@ -98,7 +87,9 @@ You must install an additional plugin for this. I have tested my plugin with the
 * [Gmail SMTP](https://wordpress.org/plugins/gmail-smtp/)
 * [Easy WP SMTP](https://wordpress.org/plugins/easy-wp-smtp/)
 * [WP mail SMTP](https://wordpress.org/plugins/wp-mail-smtp/)
-* [Postman SMTP](https://wordpress.org/plugins/postman-smtp/)
+* [Post SMTP](https://wordpress.org/plugins/post-smtp/)
+
+Note: I have removed Postman SMTP from this list because it's removed from plugin repository. Please use Post SMTP instead.
 
 = Question? =
 Please take a look at the FAQ section.
@@ -127,20 +118,12 @@ Plugin uses the WP Dashboard language, set in Settings > General.
 
 If plugin language pack is not available, language fallback will be English.
 
-= How do I add attributes? =
-You can find more info about this at the Description section.
+= What is the default email subject? =
+By default the email subject contains a prefix (name of your site) followed by the subject that sender has entered. If subject field is hidden it only contains a prefix.
 
-= Does sender receive a confirmation after submitting form? =
-Yes, this is possible.
+You can change the prefix or whole subject using an attribute. Changing whole subject means that prefix will not be part of the subject anymore.
 
-You can find more info about this at the Description section.
-
-= Can I add a personal message in the confirmation mail? =
-Yes, this is possible.
-
-You can find more info about this at the Description section.
-
-Note: the default message in the confirmation mail is the same as the default message that is displayed after submitting the form.
+Note: this subject will also be used in the confirmation email to sender (if activated).
 
 = Why is the "from" email not from sender? =
 I have used a default so called "From" email header to avoid form submissions being marked as spam.
@@ -149,31 +132,16 @@ Best practice is using a "From" email header (an email address) that ends with y
 
 That's why the default "From" email header starts with "wordpress" and ends with your site domain.
 
+You can change the "From" email header using an attribute.
+
 Your reply to sender will use another email header, called "Reply-To", which is the email address that sender has filled in.
 
-= Can I change the "From" email header? =
-Yes, this is possible.
+= What do you mean with "thank you" message? =
+A "thank you" message is displayed after submitting the form and in the confirmation email to sender (if activated). 
 
-You can find more info about this at the Description section.
+It's the (translated) message: Thank you! You will receive a response as soon as possible.
 
-= Can I hide Subject field? =
-Yes, this is possible.
-
-You can find more info about this at the Description section.
-
-= Can I change the mail subject? =
-Yes, this is possible.
-
-By default the mail subject consists of a prefix (name of your site) followed by the subject that user has entered. And if subject field is hidden it only consists of a prefix.
-
-You can change the prefix or whole subject using an attribute.
-
-You can find more info about this at the Description section.
-
-Note: this subject will also be used in the confirmation to sender (if activated).
-
-= Can user enter HTML in form? =
-Yes, save HTML is allowed in message field and widget info field.
+You can change this message using an attribute.
 
 = Can I use multiple shortcodes? =
 Do not use multiple shortcodes on the same page. This might cause a conflict.
@@ -183,9 +151,7 @@ But you can use the shortcode on a page and the widget in your sidebar.
 = Are form submissions listed in my dashboard? =
 No, my plugin only sends form submissions to the email address of your choice.
 
-With plugin [Contact Form DB](https://wordpress.org/plugins/contact-form-7-to-database-extension) you can list form submissions in your dashboard.
-
-Note: Contact Form DB is currently only available on [GitHub](https://github.com/mdsimpson/contact-form-7-to-database-extension/releases).
+With plugin [Contact Form DB](https://github.com/mdsimpson/contact-form-7-to-database-extension/releases) you can list form submissions in your dashboard.
 
 = Why does form submission fail? =
 An error message is displayed if plugin was unable to send form. This might be a server issue.
@@ -194,8 +160,6 @@ Your hosting provider might have disabled the PHP mail() function of your server
 
 They might advice you to install a SMTP plugin.
 
-You can find more info about this at the Description section.
-
 = Why am I not receiving form submissions? =
 * Look also in your junk/spam folder.
 * Check the Description section above and check shortcode (attributes) for mistakes.
@@ -203,7 +167,7 @@ You can find more info about this at the Description section.
 * In case you're using a SMTP plugin, please check their settingspage for mistakes.
 
 = Why does the captcha number not display properly? =
-The captcha (random number) uses a php session to temporary store the number and some hostingproviders have disabled the use of sessions. Ask them for more info about this.
+The captcha (random number) uses a php session to temporary store the number and some hosting providers have disabled the use of sessions. Ask them for more info about this.
 
 = Does this plugin has anti-spam features? =
 Of course, the default WordPress sanitization and escaping functions are included.
@@ -218,8 +182,14 @@ Please open a topic in plugin forum.
 
 
 == Changelog ==
+= Version 7.2 =
+* updated file vscf-style
+* files vscf-form and vscf-widget-form: added escaping to empty variables
+* removed all faqs from readme file which refer back to the description section
+* updated info about SMTP plugins in readme file
+
 = Version 7.1 =
-* new: attribute to change default mail subject prefix: prefix_subject
+* new: attribute to change default email subject prefix: prefix_subject
 * new: attribute to scroll back to form location after submit: scroll_to_form
 * for more info please check readme file
 * thanks startover909

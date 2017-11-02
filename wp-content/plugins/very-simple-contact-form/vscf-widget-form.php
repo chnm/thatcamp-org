@@ -188,9 +188,9 @@ function vscf_widget_shortcode($vscf_atts) {
 		$anchor_begin = '<div id="vscf-anchor">';
 		$anchor_end = '</div>';
 	} else {
-		$action = '';
-		$anchor_begin = '';
-		$anchor_end = '';
+		$action = esc_attr('');
+		$anchor_begin = esc_attr('');
+		$anchor_end = esc_attr('');
 	}
 
 	// Contact form
