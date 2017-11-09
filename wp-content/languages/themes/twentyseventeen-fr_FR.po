@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Seventeen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-06-26 16:46:25+0000\n"
+"PO-Revision-Date: 2017-11-08 21:02:49+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -58,6 +58,10 @@ msgstr "Lecture d’arrière-plan vidéo"
 #: inc/template-tags.php:150
 msgid "Front Page Section %1$s Placeholder"
 msgstr "Texte indicatif de la section %1$s de la page d’accueil"
+
+#: inc/customizer.php:80
+msgid "When the two-column layout is assigned, the page title is in one column and content is in the other."
+msgstr "Quand la mise en page en deux colonnes est sélectionnée, le titre de la page est sur une colonne et le contenu sur l’autre."
 
 #: single.php:32
 msgid "Next Post"
@@ -231,7 +235,7 @@ msgstr "Foncé"
 
 #: inc/back-compat.php:39 inc/back-compat.php:51 inc/back-compat.php:66
 msgid "Twenty Seventeen requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again."
-msgstr "Twenty Seventeen ne fonctionne qu'à partir de WordPress 4.7. Vous utilisez la version %s. Veuillez mettre à jour et réessayer. "
+msgstr "Twenty Seventeen ne fonctionne qu’à partir de WordPress 4.7. Vous utilisez la version %s. Veuillez mettre à niveau et réessayer."
 
 #. translators: %s: Name of current post
 #: inc/template-tags.php:116
@@ -320,7 +324,7 @@ msgstr "Page suivante"
 
 #. Author of the plugin/theme
 msgid "the WordPress team"
-msgstr "l'équipe WordPress"
+msgstr "l’équipe WordPress"
 
 #. Theme URI of the plugin/theme
 msgid "https://wordpress.org/themes/twentyseventeen/"

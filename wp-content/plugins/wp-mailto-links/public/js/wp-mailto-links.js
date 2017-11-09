@@ -57,6 +57,28 @@ jQuery(function ($) {
             window.location.href = 'mailto:' + email;
         }
     }
+    
+    // revert
+    function revert(el, rtl) {
+        var email = fetchEmail(el);
+
+        if (email) {
+           rtl.text(email);
+           rtl.removeClass('wpml-rtl');
+        }
+    }
+
+    // prepare for copying email
+    document.addEventListener('copy', function(e){
+        $('a[data-enc-email]').each(function () {
+            var rtl = $(this).find('.wpml-rtl');
+
+            if (rtl.text()) {
+                revert(this, rtl);
+            }
+        });
+        console.log('copy');
+    });
 
     // set mailto click
     $('body').on('click', 'a[data-enc-email]', function () {

@@ -4,14 +4,14 @@
  *
  * @package  WPML
  * @category WordPress Plugin
- * @version  2.1.6
+ * @version  2.1.7
  * @author   Victor Villaverde Laan
  * @link     http://www.freelancephp.net/wp-mailto-links-plugin
  * @license  Dual licensed under the MIT and GPLv2+ licenses
  *
  * @wordpress-plugin
  * Plugin Name:    WP Mailto Links - Manage Email Links
- * Version:        2.1.6
+ * Version:        2.1.7
  * Plugin URI:     http://www.freelancephp.net/wp-mailto-links-plugin
  * Description:    Manage mailto links on your site and protect email addresses from spambots, set mail icon and more.
  * Author:         Victor Villaverde Laan
