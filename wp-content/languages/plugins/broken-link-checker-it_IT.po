@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Broken Link Checker - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-05 18:06:52+0000\n"
+"PO-Revision-Date: 2017-11-12 10:55:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: it\n"
 "Project-Id-Version: Plugins - Broken Link Checker - Stable (latest release)\n"
+
+#: core/core.php:1431
+msgid "Enter the keys of acf fields you want to check (one per line). If a field contains HTML code, prefix its name with <code>html:</code>. For example, <code>html:field_586a3eaa4091b</code>."
+msgstr "Inserisci le chiavi dei campi ACF che vuoi controllare (una per riga). Se il campo contiene HTML, aggiungi al suo nome il prefisso <code>html:</code>. Per esempio, <code>html:field_586a3eaa4091b</code>."
 
 #: core/core.php:111
 msgid "Every 10 minutes"

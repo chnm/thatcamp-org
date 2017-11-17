@@ -6,7 +6,7 @@ Description: Protect WordPress website forms from spam entries with Google Captc
 Author: BestWebSoft
 Text Domain: google-captcha
 Domain Path: /languages
-Version: 1.32
+Version: 1.33
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */

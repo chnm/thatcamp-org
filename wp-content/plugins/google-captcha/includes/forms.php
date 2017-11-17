@@ -204,7 +204,7 @@ if ( ! function_exists( 'gglcptch_add_actions' ) ) {
 
 		/* Add Google Captcha to Contact Form by BestWebSoft */
 		if ( gglcptch_is_recaptcha_required( 'contact_form', $is_user_logged_in ) ) {
-			add_filter( 'cntctfrm_display_captcha', 'gglcptch_display', 10, 0 );
+			add_filter( 'cntctfrm_display_captcha', 'gglcptch_display', 10, 1 );
 			if ( ! $gglcptch_ip_in_whitelist ) {
 				add_filter( 'cntctfrm_check_form', 'gglcptch_contact_form_check' );
 			}
@@ -259,6 +259,9 @@ if ( ! function_exists( 'gglcptch_login_display' ) ) {
 /* Check google captcha in login form */
 if ( ! function_exists( 'gglcptch_login_check' ) ) {
 	function gglcptch_login_check( $user ) {
+
+		if ( is_wp_error( $user ) )
+			return $user;
 
 		$gglcptch_check = gglcptch_check();
 

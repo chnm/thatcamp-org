@@ -242,7 +242,7 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 										'gglcptch_' . $role,
 										$role,
 										checked( ! empty( $this->options[ $role ] ), true, false ),
-										$fields['name']
+										translate_user_role( $fields['name'] )
 									);
 								}
 							} ?>

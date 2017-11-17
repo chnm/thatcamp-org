@@ -3,16 +3,16 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: anti-spam security, antispam, recaptcha, captcha, captha, Invisible reCaptcha, Invisible captcha, Invisibl reCaptcha, comment, cpatcha, google catcha, Invisible re captcha
 Requires at least: 3.9
-Tested up to: 4.8.2
-Stable tag: 1.32
+Tested up to: 4.9
+Stable tag: 1.33
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Protect WordPress website forms from spam entries with Google reCaptcha.
+Protect WordPress website forms from spam entries with Google reCAPTCHA.
 
 == Description ==
 
-Google Captcha (reCaptcha) plugin is an effective security solution that protects your WordPress website forms from spam entries while letting real people pass through with ease.  It can be used for login, registration, password recovery, comments, popular contact forms, and other.
+Google Captcha (reCAPTCHA) plugin is an effective security solution that protects your WordPress website forms from spam entries while letting real people pass through with ease.  It can be used for login, registration, password recovery, comments, popular contact forms, and other.
 
 Users are required to confirm that they are not a robot before the form can be submitted. It's easy for people and hard for bots.
 
@@ -40,7 +40,7 @@ http://www.youtube.com/watch?v=qwHsW3IJ7gQ
 	* Version 2
 		* Light (default)
 		* Dark
-* Compatible with [Limit Attempts](https://bestwebsoft.com/products/wordpress/plugins/limit-attempts/?k=1b1865c556920231995b35c3ed889415) [NEW]
+* Compatible with [Limit Attempts](https://bestwebsoft.com/products/wordpress/plugins/limit-attempts/?k=1b1865c556920231995b35c3ed889415)
 * Hide Google Captcha (reCAPTCHA) in your forms for certain user roles
 * Supports Google Captcha (reCAPTCHA):
 	* Version 1
@@ -60,21 +60,21 @@ http://www.youtube.com/watch?v=qwHsW3IJ7gQ
 > 	* Contact Form 7 (since v 3.4)
 > 	* [Subscriber](https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=e6d1742fcf1806a39afac207f7920cf3)
 > 	* [Multilanguage](https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=e48e145002e4b2472e568a81d171b888)
-> 	* Jetpack Contact Form [NEW]
-> 	* Fast Secure Contact Form [NEW]
+> 	* Jetpack Contact Form
+> 	* Fast Secure Contact Form
 > * Compatible with WooCommerce:
 > 	* Login form
 > 	* Register form
 > 	* Lost password form
 > 	* Checkout billing form
-> * Compatible with bbPress: [NEW]
+> * Compatible with bbPress:
 > 	* New Topic form
 > 	* Reply form
 > * Compatible with BuddyPress:
 > 	* Registration form
 > 	* Comments form
 > 	* Create a Group form
-> * Compatible with Forums - wpForo: [NEW]
+> * Compatible with Forums - wpForo:
 > 	* Login form
 > 	* Registration form
 > 	* New Topic form
@@ -111,7 +111,7 @@ Some of these translations are not complete. We are constantly adding new featur
 = Recommended Plugins =
 
 * [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=f47f3eb3d739725d592249dbd129f7ff) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
-* [Contact Form](https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=56575444122cff9ab3ee3e640efb001a) - Allow customers to reach you using secure contact form plugin any website must have.
+* [Contact Form](https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=56575444122cff9ab3ee3e640efb001a) - Simple contact form plugin any WordPress website must have.
 * [Subscriber](https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=e6d1742fcf1806a39afac207f7920cf3) - Add email newsletter sign up form to WordPress posts, pages and widgets. Collect data and subscribe your users.
 * [Multilanguage](https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=e48e145002e4b2472e568a81d171b888) - Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
 
@@ -256,6 +256,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 9. Google Captcha (reCAPTCHA) Whitelist page.
 
 == Changelog ==
+
+= V1.33 - 15.11.2017 =
+* Bugfix : Redundant reCAPTHCA checking has been removed.
+* Update : The compatibility with Captcha by BestWebSoft and Contact Form by BestWebSoft plugins has been improved.
 
 = V1.32 - 13.10.2017 =
 * NEW : The compatibility with Limit Attempts by BestWebSoft plugin has been added.
@@ -403,6 +407,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to add Google Captcha (reCAPTCHA) into standard forms was added.
 
 == Upgrade Notice ==
+
+= V1.33 =
+* Bugs fixed.
+* Functionality improved.
 
 = V1.32 =
 * The compatibility with Limit Attempts plugin added.
