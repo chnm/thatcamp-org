@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-16 18:32:32+0000\n"
+"PO-Revision-Date: 2017-11-26 19:54:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -54,11 +54,11 @@ msgstr "CodeMirror è disponibile per l'utilizzo nei tuoi temi e plugin"
 #. https://make.wordpress.org/core/2017/11/01/improvements-to-the-customize-js-api-in-4-9/
 #: wp-admin/about.php:208
 msgid "We&#8217;ve made numerous improvements to the Customizer JS API in WordPress 4.9, eliminating many pain points and making it just as easy to work with as the PHP API. There are also new base control templates, a date/time control, and section/panel/global notifications to name a few. <a href=\"%s\">Check out the full list.</a>"
-msgstr "Abbiamo apportato molte migliorie al Personalizza JS API in WordPress 4.9, eliminando molti punti deboli e rendendolo semplice come usare le API PHP. Vi sono inoltre dei nuovi template di controllo di base, fra cui un controllo data/ora e delle notifiche per sezione/pannello/globali. <a href=\"%s\">Guarda qui la lista completa.</a>"
+msgstr "Abbiamo apportato molte migliorie alle API JS di Personalizza  in WordPress 4.9, eliminando molti punti deboli e rendendolo semplice come usare le API PHP. Vi sono inoltre dei nuovi template di controllo di base, fra cui un controllo data/ora e delle notifiche per sezione/pannello/globali. <a href=\"%s\">Guarda qui la lista completa.</a>"
 
 #: wp-admin/about.php:204
 msgid "Customizer JS API Improvements"
-msgstr "Miglioramenti a Personalizza JS API"
+msgstr "Miglioramenti alle API JS di Personalizza"
 
 #: wp-admin/privacy.php:36
 msgid "This data is used to provide general enhancements to WordPress, which includes helping to protect your site by finding and automatically installing new updates. It is also used to calculate statistics, such as those shown on the <a href=\"%s\">WordPress.org stats page</a>."
@@ -66,7 +66,7 @@ msgstr "Questi dati sono utilizzati per fornire un generale miglioramento a Word
 
 #: wp-admin/about.php:117
 msgid "When you edit themes and plugins directly, WordPress 4.9 will politely warn you that this is a dangerous practice. It will recommend that you backup your files before saving, so they don&#8217;t get overwritten by the next update. Take the safe route: your future self will thank you. Your team and customers will thank you."
-msgstr "Quando modifichi direttamente temi o plugin, WordPress 4.9 ti avviserà gentilmente che si tratta di una pratica pericolosa. Ti raccomanderà di effettuare un backup dei tuoi file prima di salvare, così che non vengano sovrascritti dal prossimo aggiornamento. Prendere la via più sicura: il tuo futuro ti ringrazia. Il tuo team ed i tuoi clienti ti ringrazieranno."
+msgstr "Quando modifichi direttamente temi o plugin, WordPress 4.9 ti avviserà gentilmente che si tratta di una pratica pericolosa. Ti raccomanderà di effettuare un backup dei tuoi file prima di salvare, così che non vengano sovrascritti dal prossimo aggiornamento. Prendi la via più sicura: il tuo futuro io ti ringrazierà. Il tuo team ed i tuoi clienti ti ringrazieranno."
 
 #. translators: %s: link to Custom CSS section in the Customizer
 #: wp-admin/theme-editor.php:195
@@ -143,7 +143,7 @@ msgstr "Inserisci qui l'indirizzo se <a href=\"%s\">vuoi che la tua pagina inizi
 #. translators: %s: smiling face with smiling eyes emoji
 #: wp-admin/about.php:197
 msgid "Developer Happiness %s"
-msgstr "Felicità dello sviluppatore %s"
+msgstr "La felicità dello sviluppatore %s"
 
 #: wp-admin/about.php:187
 msgid "https://wordpress.org/plugins/gutenberg/"
@@ -200,7 +200,7 @@ msgstr "Di tanto in tanto, il tuo sito WordPress può inviare dei dati a WordPre
 
 #: wp-admin/about.php:163
 msgid "Were you confused by the steps to create a new menu? Perhaps no longer! We&#8217;ve ironed out the UX for a smoother menu creation process. Newly updated copy will guide you."
-msgstr "Avete avuto dei problemi per i passi necessari a creare un nuovo menu? Ora forse non più! Abbiamo realizzato la nuova interfaccia utente per un processo di creazione dei menu più semplice. Questo nuovo sistema vi guiderà nei vari passaggi."
+msgstr "Hai avuto dei problemi per i passi necessari a creare un nuovo menu? Ora forse non più! Abbiamo realizzato la nuova interfaccia utente per un processo di creazione dei menu più semplice. Questo nuovo sistema ti guiderà nei vari passaggi."
 
 #: wp-admin/about.php:162
 msgid "Better Menu Instructions = Less Confusion"
@@ -208,7 +208,7 @@ msgstr "Migliori istruzioni per il menu =  meno confusione"
 
 #: wp-admin/about.php:156
 msgid "When you switch themes, widgets sometimes think they can just up and move location. Improvements in WordPress 4.9 offer more persistent menu and widget placement when you decide it&#8217;s time for a new theme. Additionally, you can preview installed themes or download, install, and preview new themes right. Nothing says handy like being able to preview before you deploy. "
-msgstr "Quando cambiate tema, qualche volta può capitare che i widget non sappiano più dove posizionarsi. I miglioramenti di WordPress 4.9 offrono una maggiore stabilità alle posizioni dei widget e dei menu quando decidete che è giunto il momento di cambiare tema. Inoltre potete vedere in anteprima i temi installati o scaricare, installare e visualizzare l'anteprima dei nuovi temi.  Nulla è più comodo di poter visualizzare l'anteprima di quello che si sta per installare. "
+msgstr "Quando cambi tema, qualche volta può capitare che i widget non sappiano più dove posizionarsi. I miglioramenti di WordPress 4.9 offrono una maggiore stabilità alle posizioni dei widget e dei menu quando decidi che è giunto il momento di cambiare tema. Inoltre puoi vedere in anteprima i temi installati o scaricare, installare e visualizzare l'anteprima dei nuovi temi. Nulla è più comodo di poter visualizzare l'anteprima di quello che si sta per installare. "
 
 #: wp-admin/about.php:140
 msgid "Want to add media to your text widget? Embed images, video, and audio directly into the widget along with your text, with our simple but useful Add Media button. Woo!"
@@ -244,11 +244,11 @@ msgstr "Evidenziazione della sintassi e controllo degli errori? Sì!"
 
 #: wp-admin/about.php:80
 msgid "Ever encounter a scenario where two designers walk into a project and designer A overrides designer B&#8217;s beautiful changes? WordPress 4.9&#8217;s design lock feature (similar to post locking) secures your draft design so that no one can make changes to it or erase all your hard work."
-msgstr "Non ti è mai capitato uno scenario nel quale due progettisti lavorano sullo stesso progetto ed il progettista A cambia le modifiche fatte dal progettista B? La funzionalità di blocco del design di WordPress 4.9 (simile al blocco degli articoli) garantisce che la bozza del tuo progetto sia sicura e che nessun altro possa effettuare modifiche o cancellare il tuo lavoro."
+msgstr "Non ti è mai capitato uno scenario nel quale due progettisti lavorano sullo stesso progetto ed il progettista A cambia le fantastiche modifiche fatte dal progettista B? La funzionalità di blocco del design di WordPress 4.9 (simile al blocco degli articoli) garantisce che la bozza del tuo progetto sia sicura e che nessun altro possa effettuare modifiche o cancellare il tuo duro lavoro."
 
 #: wp-admin/about.php:73
 msgid "Need to get some feedback on proposed site design changes? WordPress 4.9 gives you a preview link you can send to your team and customers so that you can collect and integrate feedback before you schedule the changes to go live. Can we say collaboration&#43;&#43;?"
-msgstr "Ti servono dei riscontri alle modifiche del design di un sito? WordPress 4.9 ti fornisce un link di anteprima che puoi inviare al tuo gruppo e ai clienti cosi da poter raccogliere ed integrare tutti i riscontri, prima ancora di programmare e di mandare in produzione le modifiche. Possiamo chiamarla collaborazione?"
+msgstr "Ti servono dei riscontri alle modifiche del design di un sito? WordPress 4.9 ti fornisce un link di anteprima che puoi inviare al tuo gruppo e ai clienti così da poter raccogliere ed integrare tutti i riscontri, prima ancora di programmare e di mandare in produzione le modifiche. Possiamo chiamarla collaborazione&#43;&#43;?"
 
 #: wp-admin/about.php:72
 msgid "Collaborate with Design Preview Links"
@@ -268,12 +268,12 @@ msgstr "Flusso di lavoro di Personalizza migliorato"
 
 #: wp-admin/about.php:44
 msgid "Welcome to an improved Customizer workflow with design drafts, locking, scheduling, and preview links. What&#8217;s more, code syntax highlighting and error checking will make for a clean and smooth site building experience. Finally, if all that wasn&#8217;t pretty great, we&#8217;ve got a great new Gallery widget and improvements to theme browsing and switching."
-msgstr "Benvenuti nel migliorato flusso di lavoro di Personalizza con le bozze di progetto, la protezione del progetto, la programmazione ed i link di anteprima. Ed in più l'evidenziatore di sintassi e il controllo sugli errori renderanno l'esperienza di creazione del sito semplice e lineare. E per concludere, se tutto questo non bastasse, abbiamo un nuovo grande widget per le Gallerie ed un miglioramento nello sfogliare i temi e nel cambiarli."
+msgstr "Benvenuto nel migliorato flusso di lavoro dello strumento Personalizza con le bozze di progetto, la protezione del progetto, la programmazione ed i link di anteprima. Ed in più l'evidenziatore di sintassi e il controllo sugli errori renderanno l'esperienza di creazione del sito semplice e lineare. E per concludere, se tutto questo non bastasse, abbiamo un nuovo grandioso widget per le Gallerie e miglioramenti nella ricerca e nel cambio dei temi."
 
 #. translators: %s: party popper emoji
 #: wp-admin/about.php:39
 msgid "Major Customizer Improvements, Code Error Checking, and More! %s"
-msgstr "Miglioramenti importanti per Personalizza, controllo degli errori di codice e molto altro ancora! %s"
+msgstr "Miglioramenti importanti per Personalizza, controllo degli errori nel codice e molto altro ancora! %s"
 
 #: wp-admin/about.php:23 wp-admin/credits.php:23 wp-admin/freedoms.php:22
 #: wp-admin/privacy.php:22
@@ -696,7 +696,7 @@ msgstr "Se devi reinstallare la versione %s, puoi farlo qui:"
 
 #: wp-admin/update-core.php:57
 msgid "You are using a development version of WordPress. You can update to the latest nightly build automatically:"
-msgstr "Stai usando una versione in sviluppo di WordPress. Puoi aggiornare all'ultima versione \"nightly build\" in modo automatico:"
+msgstr "Stai utilizzando una versione di sviluppo. Puoi aggiornarla all'ultima versione di sviluppo (nightly build) in modo automatico:"
 
 #: wp-admin/themes.php:268 wp-admin/themes.php:399
 msgid "New version available."
@@ -1452,7 +1452,7 @@ msgstr "Recensioni"
 
 #: wp-admin/includes/plugin-install.php:359
 msgid "You are using a development version of WordPress. These feature plugins are also under development. <a href=\"%s\">Learn more</a>."
-msgstr "Stai utilizzando una versione di sviluppo di WordPress. Inoltre questi plugin funzionali sono ancora in sviluppo. <a href=\"%s\">Maggiori informazioni</a>."
+msgstr "Stai utilizzando una versione di sviluppo di WordPress. Anche questi plugin in primo piano sono in fase di sviluppo. <a href=\"%s\">Maggiori informazioni</a>."
 
 #: wp-admin/includes/image-edit.php:150
 msgid "Thumbnail Settings Help"
@@ -2392,7 +2392,7 @@ msgstr "Mostra più dettagli"
 msgid "Your theme supports %s menu. Select which menu appears in each location."
 msgid_plural "Your theme supports %s menus. Select which menu appears in each location."
 msgstr[0] "Il tuo tema supporta %s menu. Scegli la posizione per ogni menu."
-msgstr[1] "Il tuo tema supporta %s menu. Scegli la posizione per ogni menu."
+msgstr[1] "Il tuo tema supporta %s menu. Scegli le posizioni per ogni menu."
 
 #: wp-admin/includes/class-wp-users-list-table.php:505
 msgid "%s post by this author"
@@ -2437,7 +2437,7 @@ msgstr "<a href=\"https://codex.wordpress.org/Revision_Management\">Gestione del
 
 #: wp-admin/edit-form-advanced.php:431
 msgid "You can also embed media from many popular websites including Twitter, YouTube, Flickr and others by pasting the media URL on its own line into the content of your post/page. Please refer to the Codex to <a href=\"https://codex.wordpress.org/Embeds\">learn more about embeds</a>."
-msgstr "Puoi incorporare gli oggetti multimediali da molti siti famosi come Twitter, YouTube, Flickr e altri incollando semplicemente la URL su una riga all'interno della pagina/articolo. Sul Codex troverai  <a href=\"https://codex.wordpress.org/Embeds\">maggiori informazioni sulle incorporazioni</a> (informazioni in inglese)."
+msgstr "Puoi incorporare gli oggetti multimediali da molti siti famosi come Twitter, YouTube, Flickr e altri incollando semplicemente la URL su una riga all'interno della pagina/articolo. Sul Codex troverai  <a href=\"https://codex.wordpress.org/Embeds\">maggiori informazioni sulle incorporazioni</a> (in inglese)."
 
 #: wp-admin/includes/dashboard.php:1615
 msgid "https://codex.wordpress.org/First_Steps_With_WordPress"
@@ -3413,7 +3413,7 @@ msgstr "<strong>Elimina</strong> ti porta alla pagina di conferma dell'eliminazi
 #: wp-admin/theme-install.php:260
 msgctxt "theme"
 msgid "Details &amp; Preview"
-msgstr "Dettagli &amp; anteprima"
+msgstr "Dettagli e anteprima"
 
 #: wp-admin/theme-install.php:53
 msgid "Search themes..."
@@ -4211,7 +4211,7 @@ msgstr "I plugin estendono ed espandono le funzionalità di WordPress. Puoi inst
 
 #. Plugin URI of the plugin/theme
 msgid "http://wordpress.org/plugins/hello-dolly/"
-msgstr "http://wordpress.org/plugins/hello-dolly/ "
+msgstr "https://it.wordpress.org/plugins/hello-dolly/ "
 
 #: wp-admin/includes/class-theme-upgrader.php:68
 msgid "The theme contains no files."
@@ -5193,7 +5193,7 @@ msgstr "Aggiungi commento"
 
 #. Author URI of the plugin/theme
 msgid "http://ma.tt/"
-msgstr "http://ma.tt/"
+msgstr "https://ma.tt/"
 
 #. Author of the plugin/theme
 msgid "Matt Mullenweg"
@@ -6355,7 +6355,7 @@ msgstr "Se desideri visualizzare più plugin tra cui scegliere, fai clic sul pul
 
 #: wp-admin/update-core.php:61
 msgid "Re-install Now"
-msgstr "Reinstalla adesso"
+msgstr "Reinstallare ora"
 
 #: wp-admin/includes/file.php:750
 msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form."
@@ -6765,7 +6765,7 @@ msgstr "Verifica di nuovo"
 #. translators: %1 date, %2 time.
 #: wp-admin/update-core.php:617
 msgid "Last checked on %1$s at %2$s."
-msgstr "Ultima verifica il %1$s alle %2$s."
+msgstr "Ultimo controllo il giorno %1$s alle ore %2$s."
 
 #: wp-admin/update-core.php:602
 msgid "Please select one or more themes to update."
@@ -7061,7 +7061,7 @@ msgstr "Tutti i plugin sono aggiornati."
 
 #: wp-admin/update-core.php:210
 msgid "While your site is being updated, it will be in maintenance mode. As soon as your updates are complete, your site will return to normal."
-msgstr "Mentre il sito è in aggiornamento sarà attivata la modalità di manutenzione. Appena l'aggiornamento sarà completato il sito ritornerà alla normalità."
+msgstr "Mentre il sito viene aggiornato, entrerà in modalità di manutenzione. Non appena gli aggiornamenti saranno completati, tornerà alla normalità."
 
 #: wp-admin/plugin-editor.php:162 wp-admin/theme-editor.php:158
 msgid "Function Name&hellip;"
@@ -7744,7 +7744,7 @@ msgstr "Questo indirizzo è utilizzato a scopi amministrativi. Se lo cambi ti ve
 
 #: wp-admin/includes/plugin.php:427
 msgid "Advanced caching plugin."
-msgstr "Plugin di cache avanzata."
+msgstr "Plugin avanzato di memorizzazione nella cache."
 
 #: wp-admin/includes/plugin.php:428
 msgid "Custom database class."
@@ -7773,7 +7773,7 @@ msgstr "Messaggio personalizzato di manutenzione "
 
 #: wp-admin/includes/plugin.php:432
 msgid "External object cache."
-msgstr "Oggetto di cache esterno."
+msgstr "Oggetto di memorizzazione nella cache esterno."
 
 #: wp-admin/includes/plugin.php:436
 msgid "Executed before Multisite is loaded."

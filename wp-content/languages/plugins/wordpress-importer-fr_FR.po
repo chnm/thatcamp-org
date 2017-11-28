@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WordPress Importer - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-09-22 05:50:24+0000\n"
+"PO-Revision-Date: 2017-11-03 14:17:29+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -97,10 +97,6 @@ msgstr "Le serveur distant n’a pas répondu."
 msgid "Import <strong>posts, pages, comments, custom fields, categories, and tags</strong> from a WordPress export file."
 msgstr "Importez les<strong>articles, pages, commentaires, champs personnalisés, catégories et étiquettes</strong> depuis un fichier export de WordPress."
 
-#: wordpress-importer.php:1141
-msgid "Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import the posts, pages, comments, custom fields, categories, and tags into this site."
-msgstr "Salutations ! Mettez en ligne votre fichier WordPress eXtended RSS (WXR) et nous nous chargeons d’en récupérer les articles, pages, commentaires, champs personnalisés, catégories et étiquettes pour les importer sur ce site."
-
 #: wordpress-importer.php:1002
 msgid "Remote server returned error response %1$d %2$s"
 msgstr "Le serveur distant a donné pour réponse l’erreur %1$d %2$s."
@@ -153,10 +149,6 @@ msgstr "assigner les articles à un utilisateur existant :"
 msgid "The export file could not be found at <code>%s</code>. It is likely that this was caused by a permissions problem."
 msgstr "Le fichier d’export est introuvable sur <code>%s</code>. Cela provient sans doute d’un problème d’autorisations."
 
-#: wordpress-importer.php:1142
-msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
-msgstr "Choisissez un fichier WXR (.xml) à mettre en ligne, puis cliquez sur « Envoyer le fichier et l’importer »."
-
 #: wordpress-importer.php:321
 msgid "or assign posts to an existing user:"
 msgstr "ou assigner les articles à un utilisateur existant :"
@@ -208,3 +200,11 @@ msgstr "Si un nouvel utilisateur est créé par WordPress, un nouveau mot de pas
 #: wordpress-importer.php:213
 msgid "This WXR file (version %s) may not be supported by this version of the importer. Please consider updating."
 msgstr "Ce fichier WXR (version %s) n’est peut-être pas pris en charge par cette version de l’importateur. Veuillez le mettre à jour."
+
+#: wordpress-importer.php:1142
+msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
+msgstr "Choisissez un fichier WXR (.xml) à téléverser, puis cliquez sur « Téléverser le fichier et l’importer »."
+
+#: wordpress-importer.php:1141
+msgid "Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import the posts, pages, comments, custom fields, categories, and tags into this site."
+msgstr "Salutations ! Téléversez votre fichier WordPress eXtended RSS (WXR) et nous nous chargeons d’en récupérer les articles, pages, commentaires, champs personnalisés, catégories et étiquettes pour les importer sur ce site."

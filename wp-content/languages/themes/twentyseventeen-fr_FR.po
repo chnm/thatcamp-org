@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Seventeen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-08 21:02:49+0000\n"
+"PO-Revision-Date: 2017-11-16 15:29:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,11 +19,15 @@ msgstr "Twenty Seventeen donne vie à votre site avec un en-tête vidéo et des 
 msgid "Twenty Seventeen"
 msgstr "Twenty Seventeen"
 
+#: template-parts/footer/footer-widgets.php:18
+msgid "Footer"
+msgstr "Pied de page"
+
 #: functions.php:317
 msgid "Add widgets here to appear in your sidebar on blog posts and archive pages."
 msgstr "Ajoutez ici des widgets pour les faire apparaître dans votre colonne latérale d’articles de blog ou de pages d’archives."
 
-#: functions.php:315
+#: functions.php:315 sidebar.php:18
 msgid "Blog Sidebar"
 msgstr "Colonne latérale du blog"
 
@@ -47,11 +51,11 @@ msgctxt "Theme starter content"
 msgid "Espresso"
 msgstr "Expresso"
 
-#: inc/custom-header.php:119
+#: inc/custom-header.php:120
 msgid "Pause background video"
 msgstr "Arrière plan vidéo en pause"
 
-#: inc/custom-header.php:118
+#: inc/custom-header.php:119
 msgid "Play background video"
 msgstr "Lecture d’arrière-plan vidéo"
 
@@ -221,7 +225,7 @@ msgstr "Résultats de recherche pour&nbsp;: %s"
 
 #. translators: %s: Name of current post
 #: functions.php:363 template-parts/page/content-front-page-panels.php:43
-#: template-parts/page/content-front-page.php:44
+#: template-parts/page/content-front-page.php:40
 #: template-parts/post/content-audio.php:83
 #: template-parts/post/content-gallery.php:70
 #: template-parts/post/content-image.php:59
@@ -274,7 +278,7 @@ msgstr "Menu des liens de réseaux sociaux"
 msgid "Proudly powered by %s"
 msgstr "Fièrement propulsé par %s"
 
-#. #-#-#-#-#  twentyseventeen.pot (Twenty Seventeen 1.3)  #-#-#-#-#
+#. #-#-#-#-#  twentyseventeen.pot (Twenty Seventeen 1.4)  #-#-#-#-#
 #. Author URI of the plugin/theme
 #: template-parts/footer/site-info.php:13
 msgid "https://wordpress.org/"

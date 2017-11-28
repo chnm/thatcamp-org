@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-17 11:40:02+0000\n"
+"PO-Revision-Date: 2017-11-27 06:12:15+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -326,7 +326,7 @@ msgstr "Fichiers du thème"
 msgid "folder"
 msgstr "dossier"
 
-#: wp-admin/includes/file.php:542
+#: wp-admin/includes/file.php:543
 msgid "Unable to communicate back with site to check for fatal errors, so the PHP change was reverted. You will need to upload your PHP file change by some other means, such as by using SFTP."
 msgstr "Impossible d’envoyer un message au site afin de vérifier l’absence d’erreurs fatales. Du coup, la modification PHP a été annulée. Vous allez devoir téléverser votre fichier PHP modifié par un autre moyen, par exemple en utilisant un client FTP."
 
@@ -335,7 +335,7 @@ msgid "Installation Required"
 msgstr "Installation requise"
 
 #. translators: %s: plugin filename
-#: wp-admin/includes/plugin.php:907
+#: wp-admin/includes/plugin.php:894
 msgid "Could not fully remove the plugin %s."
 msgstr "Impossible de supprimer l’extension %s."
 
@@ -490,7 +490,7 @@ msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Sites_Screen\">Docum
 msgid "Plugin Installation"
 msgstr "Installation de l'extension"
 
-#: wp-admin/includes/plugin.php:430
+#: wp-admin/includes/plugin.php:417
 msgid "Custom installation script."
 msgstr "Script personnalisé d'installation."
 
@@ -518,7 +518,7 @@ msgstr "<strong>Info</strong> &mdash; L’adresse web du site est rarement modif
 msgid "The menu is for editing information specific to individual sites, particularly if the admin area of a site is unavailable."
 msgstr "Le menu sert à modifier les informations propres à chaque site, notamment si leur interface d’administration est inaccessible."
 
-#: wp-admin/includes/file.php:485
+#: wp-admin/includes/file.php:486
 msgid "Unable to write to file."
 msgstr "Impossible d'écrire sur le fichier"
 
@@ -2706,9 +2706,9 @@ msgstr "https://codex.wordpress.org/Introduction_to_Blogging#Managing_Comments"
 
 #: wp-admin/includes/options.php:123
 msgid "The <a href=\"https://codex.wordpress.org/Glossary#Character_set\">character encoding</a> of your site (UTF-8 is recommended)"
-msgstr "Le <a href=\"http://fr.wikipedia.org/wiki/Codage_de_caract%C3%A8res\">codage de caractères</a> utilisé par votre site (UTF-8 est recommandé)"
+msgstr "Le <a href=\"https://fr.wikipedia.org/wiki/Codage_de_caract%C3%A8res\">codage de caractères</a> utilisé par votre site (UTF-8 est recommandé)"
 
-#: wp-admin/includes/file.php:1708
+#: wp-admin/includes/file.php:1709
 msgid "example: www.wordpress.org"
 msgstr "exemple&nbsp;: www.wordpress.org"
 
@@ -2762,7 +2762,7 @@ msgstr "Détacher"
 msgid "Main menu"
 msgstr "Menu principal"
 
-#: wp-admin/includes/file.php:1753
+#: wp-admin/includes/file.php:1754
 msgid "Enter the location on the server where the public and private keys are located. If a passphrase is needed, enter that in the password field above."
 msgstr "Saisissez l&rsquo;emplacement sur le serveur où se trouvent les clés publiques et privées. S&rsquo;il vous faut une passphrase, saisissez-la dans le champ de mot de passe ci-dessus."
 
@@ -2914,7 +2914,7 @@ msgstr ""
 "\n"
 "Si vous pensez que ces erreurs puissent être dues à un problème du côté de WordPress, pourriez-vous nous les signaler ?\n"
 "* Ouvrez une discussion sur le forum de support en anglais : https://wordpress.org/support/forum/alphabeta\n"
-"* Ou, si rédiger un rapport de bug ne vous fait pas peur : http://core.trac.wordpress.org/\n"
+"* Ou, si rédiger un rapport de bug ne vous fait pas peur : https://core.trac.wordpress.org/\n"
 "\n"
 "Merci ! -- L’équipe WordPress"
 
@@ -3908,7 +3908,7 @@ msgstr "Mise à jour de la traduction de %1$s (%2$s)&#8230;"
 #: wp-admin/includes/class-language-pack-upgrader-skin.php:29
 #: wp-admin/update-core.php:433 wp-admin/update-core.php:756
 msgid "Update Translations"
-msgstr "Mise à jour des traductions"
+msgstr "Mettre à jour les traductions"
 
 #: wp-admin/includes/update-core.php:1022
 msgid "There is not enough free disk space to complete the update."
@@ -3997,11 +3997,11 @@ msgstr "Copie des fichiers nécessaires&#8230;"
 msgid "Preparing to install the latest version&#8230;"
 msgstr "Préparation de l’installation de la dernière version&#8230;"
 
-#: wp-admin/includes/file.php:1720
+#: wp-admin/includes/file.php:1721
 msgid "This password will not be stored on the server."
 msgstr "Le mot de passe ne sera pas stocké sur le serveur."
 
-#: wp-admin/includes/file.php:1021
+#: wp-admin/includes/file.php:1022
 msgid "The checksum of the file (%1$s) does not match the expected checksum value (%2$s)."
 msgstr "L&rsquo;empreinte de contrôle (ou <i>checksum</i>) de votre fichier (%1$s) ne correspond pas à la valeur de l&rsquo;empreinte attendue (%2$s)."
 
@@ -4212,7 +4212,7 @@ msgstr "Les extensions étendent les fonctionnalités de WordPress, et en ajoute
 
 #. Plugin URI of the plugin/theme
 msgid "http://wordpress.org/plugins/hello-dolly/"
-msgstr "http://wordpress.org/plugins/hello-dolly/"
+msgstr "https://wordpress.org/plugins/hello-dolly/"
 
 #: wp-admin/includes/class-theme-upgrader.php:68
 msgid "The theme contains no files."
@@ -4989,8 +4989,8 @@ msgstr "Nouvel utilisateur créé. <a href=\"%s\">Modifier l&rsquo;utilisateur</
 msgid "User deleted."
 msgstr "Utilisateur supprimé."
 
-#: wp-admin/includes/class-core-upgrader.php:36 wp-admin/includes/file.php:1146
-#: wp-admin/includes/file.php:1257
+#: wp-admin/includes/class-core-upgrader.php:36 wp-admin/includes/file.php:1147
+#: wp-admin/includes/file.php:1258
 msgid "Could not copy files. You may have run out of disk space."
 msgstr "Impossible de copier les fichiers. Il se pourrait que vous manquiez de place."
 
@@ -5194,7 +5194,7 @@ msgstr "Ajouter un commentaire"
 
 #. Author URI of the plugin/theme
 msgid "http://ma.tt/"
-msgstr "http://ma.tt/"
+msgstr "https://ma.tt/"
 
 #. Author of the plugin/theme
 msgid "Matt Mullenweg"
@@ -6003,7 +6003,7 @@ msgstr "Audio, vidéo ou un autre format"
 msgid "<strong>ERROR</strong>: options page not found."
 msgstr "<strong>ERREUR</strong>&nbsp;: La page d&rsquo;options est introuvable."
 
-#: wp-admin/includes/file.php:1647
+#: wp-admin/includes/file.php:1648
 msgid "<strong>ERROR:</strong> There was an error connecting to the server, Please verify the settings are correct."
 msgstr "<strong>Erreur&nbsp;:</strong> Une erreur s&rsquo;est produite lors de la connexion au serveur, vérifiez que vos paramètres sont corrects."
 
@@ -6358,11 +6358,11 @@ msgstr "Si vous souhaitez choisir parmi plus d’extensions, cliquez sur l’ong
 msgid "Re-install Now"
 msgstr "Ré-installer maintenant"
 
-#: wp-admin/includes/file.php:750
+#: wp-admin/includes/file.php:751
 msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form."
 msgstr "La taille du fichier envoyé excède celle indiquée dans la directive <code>MAX_FILE_SIZE</code> du formulaire HTML."
 
-#: wp-admin/includes/file.php:749
+#: wp-admin/includes/file.php:750
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
 msgstr "La taille du fichier envoyé excède celle indiquée dans la directive <code>upload_max_filesize</code>, dans <code>php.ini</code>."
 
@@ -6442,7 +6442,7 @@ msgstr "Libertés"
 
 #: wp-admin/freedoms.php:52
 msgid "Don&#8217;t you wish all software came with these freedoms? So do we! For more information, check out the <a href=\"https://www.fsf.org/\">Free Software Foundation</a>."
-msgstr "Ne préféreriez-vous pas que tous vos logiciels vous donnent autant de liberté&nbsp;? Nous aussi&nbsp;! Pour obtenir plus d’informations, rendez-vous sur le site de la <a href=\"https://www.fsf.org/\">Free Software Foundation</a>, ou en français, ceux de l’<a href=\"http://www.april.org/\">April</a> et de l’<a href=\"https://aful.org/\">Aful</a>."
+msgstr "Ne préféreriez-vous pas que tous vos logiciels vous donnent autant de liberté ? Nous aussi ! Pour obtenir plus d’informations, rendez-vous sur le site de la <a href=\"https://www.fsf.org/\">Free Software Foundation</a>, ou en français, ceux de l’<a href=\"https://www.april.org/\">April</a> et de l’<a href=\"https://aful.org/\">Aful</a>."
 
 #: wp-admin/includes/dashboard.php:34
 msgid "Your browser is out of date!"
@@ -6788,7 +6788,7 @@ msgstr "Appliquer les filtres"
 msgid "Editor Style"
 msgstr "Éditeur de style"
 
-#: wp-admin/includes/file.php:1690
+#: wp-admin/includes/file.php:1691
 msgid "To perform the requested action, WordPress needs to access your web server."
 msgstr "Pour lancer la requête demandée, WordPress a besoin d&rsquo;accéder à votre serveur web."
 
@@ -6831,7 +6831,7 @@ msgstr "Chercher un site"
 
 #: wp-admin/includes/dashboard.php:1297
 msgid "http://wordpress.org/news/feed/"
-msgstr "http://feeds.feedburner.com/WordpressFrancophone"
+msgstr "https://feeds.feedburner.com/WordpressFrancophone"
 
 #: wp-admin/includes/dashboard.php:1288
 msgid "https://wordpress.org/news/"
@@ -6876,19 +6876,19 @@ msgstr "Recadrer et publier"
 msgid "XFN stands for <a href=\"http://gmpg.org/xfn/\">XHTML Friends Network</a>, which is optional. WordPress allows the generation of XFN attributes to show how you are related to the authors/owners of the site to which you are linking."
 msgstr "XFN signifie <a href=\"http://gmpg.org/xfn/\">XHTML Friends Network</a>, c’est-à-dire Réseau XHTML d’Amis. Son usage est facultatif. WordPress permet de générer les attributs XFN de vos liens, afin d’indiquer votre relation avec l’auteur ou le propriétaire de la page liée."
 
-#: wp-admin/includes/file.php:1695
+#: wp-admin/includes/file.php:1696
 msgid "FTP/SSH Username"
 msgstr "Identifiant FTP/SSH"
 
-#: wp-admin/includes/file.php:1696
+#: wp-admin/includes/file.php:1697
 msgid "FTP/SSH Password"
 msgstr "Mot de passe FTP/SSH"
 
-#: wp-admin/includes/file.php:1699
+#: wp-admin/includes/file.php:1700
 msgid "FTP Username"
 msgstr "Identifiant FTP"
 
-#: wp-admin/includes/file.php:1700
+#: wp-admin/includes/file.php:1701
 msgid "FTP Password"
 msgstr "Mot de passe FTP"
 
@@ -6932,15 +6932,15 @@ msgstr "Vous pouvez indiquer une taille maximale pour les images insérées dans
 msgid "<strong>Order</strong> &mdash; Pages are usually ordered alphabetically, but you can choose your own order by entering a number (1 for first, etc.) in this field."
 msgstr "<strong>Ordre</strong> &mdash; Les pages sont généralement affichées par ordre alphabétique, mais vous pouvez indiquer un nombre dans ce champ pour modifier l&rsquo;ordre d&rsquo;apparition : 1 pour premier, etc."
 
-#: wp-admin/includes/file.php:1704
+#: wp-admin/includes/file.php:1705
 msgid "If you do not remember your credentials, you should contact your web host."
 msgstr "Si vous ne vous souvenez pas de votre identifiant, vous devriez contacter votre hébergeur."
 
-#: wp-admin/includes/file.php:1698
+#: wp-admin/includes/file.php:1699
 msgid "Please enter your FTP credentials to proceed."
 msgstr "Veuillez saisir votre identifiant FTP pour continuer."
 
-#: wp-admin/includes/file.php:1694
+#: wp-admin/includes/file.php:1695
 msgid "Please enter your FTP or SSH credentials to proceed."
 msgstr "Veuillez saisir votre identifiant FTP ou SSH pour continuer."
 
@@ -7372,15 +7372,15 @@ msgstr "Mon site"
 msgid "Sorry, you are not allowed to create pages on this site."
 msgstr "Désolé, vous n’avez pas l’autorisation de créer des pages sur ce site."
 
-#: wp-admin/includes/plugin.php:438
+#: wp-admin/includes/plugin.php:425
 msgid "Custom site inactive message."
 msgstr "Message personnalisé de site inactif."
 
-#: wp-admin/includes/plugin.php:439
+#: wp-admin/includes/plugin.php:426
 msgid "Custom site suspended message."
 msgstr "Message personnalisé de site suspendu."
 
-#: wp-admin/includes/plugin.php:437
+#: wp-admin/includes/plugin.php:424
 msgid "Custom site deleted message."
 msgstr "Message personnalisé de site supprimé."
 
@@ -7743,11 +7743,11 @@ msgstr "Vous êtes sur le point de supprimer l&rsquo;extension suivante&nbsp;:"
 msgid "This address is used for admin purposes. If you change this we will send you an email at your new address to confirm it. <strong>The new address will not become active until confirmed.</strong>"
 msgstr "Cette adresse est utilisée à des fins d&rsquo;administration. Si vous la modifiez, nous enverrons un message à la nouvelle adresse afin de la confirmer. <strong>La nouvelle adresse ne sera pas active tant que vous ne l&rsquo;aurez pas confirmée.</strong>"
 
-#: wp-admin/includes/plugin.php:427
+#: wp-admin/includes/plugin.php:414
 msgid "Advanced caching plugin."
 msgstr "Extension de cache avancée."
 
-#: wp-admin/includes/plugin.php:428
+#: wp-admin/includes/plugin.php:415
 msgid "Custom database class."
 msgstr "Classe personnalisée de connexion à la base de données."
 
@@ -7760,23 +7760,23 @@ msgstr "Classe personnalisée de connexion à la base de données."
 msgid "Install %s"
 msgstr "Installer %s"
 
-#: wp-admin/includes/file.php:781
+#: wp-admin/includes/file.php:782
 msgid "File is empty. Please upload something more substantial."
 msgstr "Le fichier est vide. Veuillez téléverser quelque chose de plus substantiel."
 
-#: wp-admin/includes/plugin.php:429
+#: wp-admin/includes/plugin.php:416
 msgid "Custom database error message."
 msgstr "Message personnalisé pour l&rsquo;erreur de base de données."
 
-#: wp-admin/includes/plugin.php:431
+#: wp-admin/includes/plugin.php:418
 msgid "Custom maintenance message."
 msgstr "Message personnalisé pour la maintenance."
 
-#: wp-admin/includes/plugin.php:432
+#: wp-admin/includes/plugin.php:419
 msgid "External object cache."
 msgstr "Cache d&rsquo;objet externe."
 
-#: wp-admin/includes/plugin.php:436
+#: wp-admin/includes/plugin.php:423
 msgid "Executed before Multisite is loaded."
 msgstr "Exécuté avant que la fonctionnalité multisites ne soit chargée."
 
@@ -8290,11 +8290,11 @@ msgstr "Sélectionnez l&rsquo;extension à modifier&nbsp;:"
 msgid "File edited successfully."
 msgstr "Le fichier a bien été modifié."
 
-#: wp-admin/includes/file.php:467 wp-admin/plugin-editor.php:112
+#: wp-admin/includes/file.php:468 wp-admin/plugin-editor.php:112
 msgid "Files of this type are not editable."
 msgstr "Les fichiers de ce type ne sont pas éditables."
 
-#: wp-admin/includes/file.php:459 wp-admin/plugin-editor.php:105
+#: wp-admin/includes/file.php:460 wp-admin/plugin-editor.php:105
 msgid "No such file exists! Double check the name and try again."
 msgstr "Ce fichier n&rsquo;existe pas&nbsp;! Veuillez vérifier son nom et réessayer."
 
@@ -9293,28 +9293,28 @@ msgstr "Désolé, vous n’avez pas l’autorisation de modifier des articles so
 msgid "Sorry, you are not allowed to edit pages as this user."
 msgstr "Désolé, vous n’avez pas l’autorisation de modifier des pages sous cet identifiant."
 
-#: wp-admin/includes/plugin.php:975
+#: wp-admin/includes/plugin.php:962
 msgid "The plugin does not have a valid header."
 msgstr "Cette extension ne dispose pas d&rsquo;un en-tête valide."
 
-#: wp-admin/includes/plugin.php:971
+#: wp-admin/includes/plugin.php:958
 msgid "Plugin file does not exist."
 msgstr "Le fichier de l&rsquo;extension n&rsquo;existe pas."
 
-#: wp-admin/includes/plugin.php:969
+#: wp-admin/includes/plugin.php:956
 msgid "Invalid plugin path."
 msgstr "Chemin d&rsquo;extension non valide"
 
 #. translators: %s: comma-separated list of plugin filenames
-#: wp-admin/includes/plugin.php:910
+#: wp-admin/includes/plugin.php:897
 msgid "Could not fully remove the plugins %s."
 msgstr "Impossible de supprimer complètement la ou les extensions %s."
 
-#: wp-admin/includes/plugin.php:766
+#: wp-admin/includes/plugin.php:753
 msgid "One of the plugins is invalid."
 msgstr "L&rsquo;une des extensions n&rsquo;est pas valide."
 
-#: wp-admin/includes/plugin.php:631
+#: wp-admin/includes/plugin.php:618
 msgid "The plugin generated unexpected output."
 msgstr "Cette extension a produit un résultat inattendu."
 
@@ -9935,101 +9935,101 @@ msgstr "Recadrer"
 msgid "Image data does not exist. Please re-upload the image."
 msgstr "Il n’y a aucune donnée d’image. Veuillez téléverser l’image à nouveau."
 
-#: wp-admin/includes/file.php:1766
+#: wp-admin/includes/file.php:1767
 msgid "Proceed"
 msgstr "Continuer"
 
-#: wp-admin/includes/file.php:1724
+#: wp-admin/includes/file.php:1725
 msgid "Connection Type"
 msgstr "Type de connexion"
 
-#: wp-admin/includes/file.php:1750
+#: wp-admin/includes/file.php:1751
 msgid "Private Key:"
 msgstr "Clé privée&nbsp;:"
 
-#: wp-admin/includes/file.php:1746
+#: wp-admin/includes/file.php:1747
 msgid "Public Key:"
 msgstr "Clé publique&nbsp;:"
 
-#: wp-admin/includes/file.php:1744
+#: wp-admin/includes/file.php:1745
 msgid "Authentication Keys"
 msgstr "Clés d&rsquo;authentification"
 
-#: wp-admin/includes/file.php:1707
+#: wp-admin/includes/file.php:1708
 msgid "Hostname"
 msgstr "Nom de l’hôte :"
 
-#: wp-admin/includes/file.php:1685
+#: wp-admin/includes/file.php:1686
 msgid "Connection Information"
 msgstr "Informations de connexion"
 
-#: wp-admin/includes/file.php:1659
+#: wp-admin/includes/file.php:1660
 msgid "SSH2"
 msgstr "SSH2"
 
-#: wp-admin/includes/file.php:1657
+#: wp-admin/includes/file.php:1658
 msgid "FTPS (SSL)"
 msgstr "FTPS (SSL)"
 
-#: wp-admin/includes/file.php:1655
+#: wp-admin/includes/file.php:1656
 msgid "FTP"
 msgstr "FTP"
 
-#: wp-admin/includes/file.php:1235
+#: wp-admin/includes/file.php:1236
 msgid "Empty archive."
 msgstr "Archive vide."
 
-#: wp-admin/includes/file.php:1194 wp-admin/includes/file.php:1298
-#: wp-admin/includes/file.php:1333 wp-admin/includes/update-core.php:1091
+#: wp-admin/includes/file.php:1195 wp-admin/includes/file.php:1299
+#: wp-admin/includes/file.php:1334 wp-admin/includes/update-core.php:1091
 #: wp-admin/includes/update-core.php:1202
 msgid "Could not copy file."
 msgstr "Impossible de copier le fichier."
 
-#: wp-admin/includes/file.php:1191
+#: wp-admin/includes/file.php:1192
 msgid "Could not extract file from archive."
 msgstr "Impossible d&rsquo;extraire les fichiers depuis l&rsquo;archive."
 
-#: wp-admin/includes/file.php:1117 wp-admin/includes/file.php:1176
+#: wp-admin/includes/file.php:1118 wp-admin/includes/file.php:1177
 msgid "Could not retrieve file from archive."
 msgstr "Impossible de récupérer le fichier depuis l&rsquo;archive."
 
-#: wp-admin/includes/file.php:973
+#: wp-admin/includes/file.php:974
 msgid "Could not create Temporary file."
 msgstr "Impossible de créer le fichier temporaire."
 
-#: wp-admin/includes/file.php:967
+#: wp-admin/includes/file.php:968
 msgid "Invalid URL Provided."
 msgstr "L’URL fournie n’est pas valide."
 
-#: wp-admin/includes/file.php:791
+#: wp-admin/includes/file.php:792
 msgid "Specified file failed upload test."
 msgstr "Le test d&rsquo;envoi du fichier spécifié a échoué."
 
-#: wp-admin/includes/file.php:783 wp-admin/includes/import.php:84
+#: wp-admin/includes/file.php:784 wp-admin/includes/import.php:84
 msgid "File is empty. Please upload something more substantial. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini."
 msgstr "Ce fichier est vide. Veuillez téléverser quelque chose de plus substantiel. Cette erreur peut également être due à la désactivation de l’envoi de fichier dans le fichier php.ini de votre serveur, ou par une valeur de post_max_size inférieure à celle de upload_max_filesize dans ce même php.ini."
 
-#: wp-admin/includes/file.php:770
+#: wp-admin/includes/file.php:771
 msgid "Invalid form submission."
 msgstr "Envoi non valide du formulaire."
 
-#: wp-admin/includes/file.php:756
+#: wp-admin/includes/file.php:757
 msgid "File upload stopped by extension."
 msgstr "L&rsquo;envoi de fichier est arrêté par l&rsquo;extension."
 
-#: wp-admin/includes/file.php:755
+#: wp-admin/includes/file.php:756
 msgid "Failed to write file to disk."
 msgstr "Échec de l&rsquo;écriture du fichier sur le disque."
 
-#: wp-admin/includes/file.php:754
+#: wp-admin/includes/file.php:755
 msgid "Missing a temporary folder."
 msgstr "Un dossier temporaire est manquant."
 
-#: wp-admin/includes/file.php:752
+#: wp-admin/includes/file.php:753
 msgid "No file was uploaded."
 msgstr "Aucun fichier n&rsquo;a été envoyé."
 
-#: wp-admin/includes/file.php:751
+#: wp-admin/includes/file.php:752
 msgid "The uploaded file was only partially uploaded."
 msgstr "Le fichier n&rsquo;a été que partiellement envoyé."
 
@@ -10192,7 +10192,7 @@ msgstr "Autres actualités de WordPress (en français)"
 msgid "Right Now"
 msgstr "Aujourd&rsquo;hui"
 
-#: wp-admin/includes/file.php:858
+#: wp-admin/includes/file.php:859
 msgid "The uploaded file could not be moved to %s."
 msgstr "Le fichier n’a pas pu être déplacé vers %s."
 
@@ -10324,12 +10324,12 @@ msgstr "Désactivation du mode maintenance&#8230;"
 msgid "Enabling Maintenance mode&#8230;"
 msgstr "Activation du mode maintenance&#8230;"
 
-#: wp-admin/includes/file.php:1111 wp-admin/includes/file.php:1232
+#: wp-admin/includes/file.php:1112 wp-admin/includes/file.php:1233
 msgid "Incompatible Archive."
 msgstr "Archive incompatible."
 
-#: wp-admin/includes/class-wp-upgrader.php:162 wp-admin/includes/file.php:1169
-#: wp-admin/includes/file.php:1280 wp-admin/includes/file.php:1338
+#: wp-admin/includes/class-wp-upgrader.php:162 wp-admin/includes/file.php:1170
+#: wp-admin/includes/file.php:1281 wp-admin/includes/file.php:1339
 #: wp-admin/includes/update-core.php:1207
 msgid "Could not create directory."
 msgstr "Impossible de créer le dossier."
@@ -10351,7 +10351,7 @@ msgstr "Le téléchargement a échoué."
 msgid "Unable to locate needed folder (%s)."
 msgstr "Impossible de localiser le dossier nécessaire (%s)."
 
-#: wp-admin/includes/class-wp-upgrader.php:153 wp-admin/includes/plugin.php:832
+#: wp-admin/includes/class-wp-upgrader.php:153 wp-admin/includes/plugin.php:819
 msgid "Unable to locate WordPress plugin directory."
 msgstr "Impossible de localiser le répertoire d’extension de WordPress."
 
@@ -10363,14 +10363,14 @@ msgstr "Impossible de localiser le répertoire de contenu de WordPress (wp-conte
 msgid "Unable to locate WordPress root directory."
 msgstr "Impossible de localiser le répertoire racine de WordPress."
 
-#: wp-admin/includes/class-wp-upgrader.php:150 wp-admin/includes/plugin.php:827
+#: wp-admin/includes/class-wp-upgrader.php:150 wp-admin/includes/plugin.php:814
 #: wp-admin/includes/theme.php:62
 msgid "Filesystem error."
 msgstr "Erreur du système de fichier."
 
 #: wp-admin/includes/class-wp-automatic-updater.php:336
-#: wp-admin/includes/class-wp-upgrader.php:149 wp-admin/includes/file.php:1043
-#: wp-admin/includes/plugin.php:824 wp-admin/includes/theme.php:59
+#: wp-admin/includes/class-wp-upgrader.php:149 wp-admin/includes/file.php:1044
+#: wp-admin/includes/plugin.php:811 wp-admin/includes/theme.php:59
 msgid "Could not access filesystem."
 msgstr "Impossible d&rsquo;accéder au système de fichier."
 

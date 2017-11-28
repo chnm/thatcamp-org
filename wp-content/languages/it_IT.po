@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-14 15:13:40+0000\n"
+"PO-Revision-Date: 2017-11-23 13:55:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -77,7 +77,7 @@ msgstr "Più utilizzati"
 
 #: wp-includes/class-wp-customize-nav-menus.php:950
 msgid "Click &#8220;Next&#8221; to start adding links to your new menu."
-msgstr "Fai clic su &#8220;Avanti&#8221; per cominciare ad aggiungere nuovi link nel tuo nuovo menu."
+msgstr "Fai clic su &#8220;Avanti&#8221; per cominciare ad aggiungere i link al tuo nuovo menu."
 
 #. translators: %s: a list of valid video file extensions
 #: wp-includes/widgets/class-wp-widget-media-video.php:44
@@ -222,7 +222,7 @@ msgstr "Nessun tema trovato. Prova una ricerca differente."
 
 #: wp-includes/class-wp-customize-nav-menus.php:576
 msgid "Your theme can display menus in one location. Select which menu you would like to use."
-msgstr "Il tuo tema può visualizzare i menù in una sola posizione. Seleziona quale menù vuoi utilizzare."
+msgstr "Il tuo tema può visualizzare i menu in una sola posizione. Seleziona quale menu vuoi utilizzare."
 
 #. translators: %s: site name
 #: wp-login.php:362
@@ -280,7 +280,7 @@ msgstr "Il tuo indirizzo email non è stato ancora aggiornato. Per favore contro
 
 #: wp-includes/user.php:2712
 msgid "[%s] New Email Address"
-msgstr "[%s] Nuovo indirizzo e-mail"
+msgstr "[%s] Nuovo indirizzo email"
 
 #. translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL:
 #. those are placeholders.
@@ -328,7 +328,7 @@ msgstr "&larr; Torna alle categorie"
 
 #: wp-includes/taxonomy.php:123
 msgid "&larr; Back to Link Categories"
-msgstr "&larr; Torna al Link delle Categorie"
+msgstr "&larr; Torna al link delle categorie"
 
 #: wp-includes/script-loader.php:856
 msgid "Color value"
@@ -344,7 +344,7 @@ msgstr "Installazione fallita!"
 
 #: wp-includes/script-loader.php:598
 msgid "Sorry, you can&#8217;t preview new themes when you have changes scheduled or saved as a draft. Please publish your changes, or wait until they publish to preview new themes."
-msgstr "Non puoi vedere le anteprime dei nuovi temi quando ha delle modifiche programmate o salvate come bozze. Pubblica le tue modifiche o aspetta che vengano pubblicate prim di poter vedere le antepirme dei nuovi temi."
+msgstr "Non puoi vedere le anteprime dei nuovi temi quando ha delle modifiche programmate o salvate come bozze. Pubblica le tue modifiche o aspetta che vengano pubblicate prima di poter vedere le antepirme dei nuovi temi."
 
 #: wp-includes/script-loader.php:597
 msgid "Schedule your customization changes to publish (\"go live\") at a future date."
@@ -360,7 +360,7 @@ msgstr "La Homepage e la pagina degli articoli devono essere differenti."
 #: wp-includes/widgets/class-wp-widget-custom-html.php:219
 msgid "There is %d error which must be fixed before you can save."
 msgid_plural "There are %d errors which must be fixed before you can save."
-msgstr[0] "C'e %d errore che deve essere corretto prima che tu possa salvare."
+msgstr[0] "C'è %d errore che deve essere corretto prima che tu possa salvare."
 msgstr[1] "Ci sono %d errori che devono essere corretti prima che tu possa salvare."
 
 #. translators: %s: URL to the Customizer to load the autosaved version
@@ -593,11 +593,11 @@ msgstr "Croato"
 
 #: wp-includes/script-loader.php:399
 msgid "Chinese (Traditional)"
-msgstr "Chinese (Traditional)"
+msgstr "Cinese (tradizionale)"
 
 #: wp-includes/script-loader.php:398
 msgid "Chinese (Simplified)"
-msgstr "Chinese (Simplified)"
+msgstr "Cinese (semplificato)"
 
 #: wp-includes/script-loader.php:397
 msgid "Chinese"
@@ -609,11 +609,11 @@ msgstr "Catalano"
 
 #: wp-includes/script-loader.php:395
 msgid "Bulgarian"
-msgstr "Bulgarian"
+msgstr "Bulgaro"
 
 #: wp-includes/script-loader.php:394
 msgid "Belarusian"
-msgstr "Belarusian"
+msgstr "Bielorusso"
 
 #: wp-includes/script-loader.php:393
 msgid "Arabic"
@@ -633,7 +633,7 @@ msgstr "Diretta streaming"
 
 #: wp-includes/script-loader.php:389
 msgid "Speed Rate"
-msgstr "Velocità esecuzione"
+msgstr "Velocità di riproduzione"
 
 #: wp-includes/script-loader.php:388
 msgid "Stop"
@@ -843,7 +843,7 @@ msgstr "Filtra temi (%s)"
 
 #: wp-includes/customize/class-wp-customize-themes-section.php:113
 msgid "Back to theme sources"
-msgstr "Torna al sorgente del tema"
+msgstr "Torna alla sorgente del tema"
 
 #: wp-includes/customize/class-wp-customize-themes-section.php:92
 msgid "Search WordPress.org themes"
@@ -859,7 +859,7 @@ msgstr "URL non valida."
 
 #: wp-includes/customize/class-wp-customize-nav-menu-control.php:39
 msgid "Time to add some links! Click &#8220;Add menu items&#8221; to start putting pages, categories, and custom links in your menu. Add as many things as you&#8217;d like."
-msgstr "&Egrave; ora di aggiungere qualche link! Fai clic su \"Aggiungi una voce di menu\" per iniziare ad inserire pagine, categorie e link personalizzati al tuo menu. Aggiunti quanti elementi vuoi."
+msgstr "&Egrave; ora di aggiungere qualche link! Fai clic su \"Aggiungi voci\" per iniziare ad inserire pagine, categorie e link personalizzati al tuo menu. Aggiungi quanti elementi vuoi."
 
 #: wp-includes/customize/class-wp-customize-media-control.php:249
 msgid "Choose image"
@@ -946,7 +946,7 @@ msgstr "Data"
 
 #: wp-includes/class-wp-user.php:716
 msgid "Usage of user levels is deprecated. Use capabilities instead."
-msgstr "L'uso dei livelli utente è deprecato. Utilizzare invece le capacità."
+msgstr "L'uso dei livelli utente è deprecato. Utilizza invece le capacità."
 
 #. translators: %s: Template
 #: wp-includes/class-wp-theme.php:255
@@ -1014,7 +1014,7 @@ msgstr "Nell'area di modifica il tasto Tab inserisce un carattere di tabulazione
 #: wp-includes/class-wp-customize-manager.php:5238
 #: wp-includes/widgets/class-wp-widget-custom-html.php:309
 msgid "When using a keyboard to navigate:"
-msgstr "Quando si utilizza una tastiera per esplorare:"
+msgstr "Quando si utilizza la tastiera per navigare:"
 
 #: wp-includes/class-wp-customize-manager.php:5228
 msgid "Add your own CSS code here to customize the appearance and layout of your site."
@@ -1063,7 +1063,7 @@ msgstr "Link anteprima "
 
 #: wp-includes/class-wp-customize-manager.php:4156
 msgid "See how changes would look live on your website, and share the preview with people who can't access the Customizer."
-msgstr "Guarda come apparirà il tuo sito dopo questi cambiamenti, e condividi l'anteprima con chi non ha accesso al Customizer."
+msgstr "Guarda come apparirà il tuo sito dopo questi cambiamenti, e condividi l'anteprima con chi non ha accesso allo strumento Personalizza."
 
 #: wp-includes/class-wp-customize-manager.php:4154
 msgid "Share Preview Link"
@@ -1173,22 +1173,22 @@ msgstr[1] "%s elementi"
 #: wp-includes/widgets/class-wp-widget-media.php:67
 msgctxt "label for button in the media widget"
 msgid "Add Media"
-msgstr "Aggiungi Media"
+msgstr "Aggiungi media"
 
 #: wp-includes/widgets/class-wp-widget-media-video.php:32
 msgctxt "label for button in the video widget"
 msgid "Add Video"
-msgstr "Aggiungi Video"
+msgstr "Aggiungi video"
 
 #: wp-includes/widgets/class-wp-widget-media-image.php:32
 msgctxt "label for button in the image widget"
 msgid "Add Image"
-msgstr "Aggiungi Immagine "
+msgstr "Aggiungi immagine "
 
 #: wp-includes/widgets/class-wp-widget-media-audio.php:32
 msgctxt "label for button in the audio widget"
 msgid "Add Audio"
-msgstr "Aggiungi Audio"
+msgstr "Aggiungi audio"
 
 #: wp-includes/media.php:3126
 msgid "(no author)"
@@ -1266,7 +1266,7 @@ msgstr "Sembra che questo non sia il tipo di file corretto. Inserisci un link ad
 
 #: wp-includes/widgets/class-wp-widget-media.php:78
 msgid "Media Widget"
-msgstr "Widget Media"
+msgstr "Widget media"
 
 #. translators: %d: widget count
 #: wp-includes/widgets/class-wp-widget-media.php:77
@@ -1287,20 +1287,20 @@ msgstr "Aggiungi al widget"
 #: wp-includes/widgets/class-wp-widget-media.php:69
 msgctxt "label for button in the media widget; should preferably not be longer than ~13 characters long"
 msgid "Edit Media"
-msgstr "Modifica Media"
+msgstr "Modifica media"
 
 #: wp-includes/widgets/class-wp-widget-media.php:68
 msgctxt "label for button in the media widget; should preferably not be longer than ~13 characters long"
 msgid "Replace Media"
-msgstr "Cambia Media"
+msgstr "Cambia media"
 
 #: wp-includes/widgets/class-wp-widget-media.php:66
 msgid "No media selected"
-msgstr "Nessun Media selezionato"
+msgstr "Nessun media selezionato"
 
 #: wp-includes/widgets/class-wp-widget-media.php:58
 msgid "A media item."
-msgstr "Elemento Media."
+msgstr "Elemento media."
 
 #. translators: %s: video extension
 #: wp-includes/widgets/class-wp-widget-media-video.php:91
@@ -1309,14 +1309,14 @@ msgstr "URL del file sorgente per il video %s"
 
 #: wp-includes/widgets/class-wp-widget-media-video.php:42
 msgid "Video Widget"
-msgstr "Widget Video"
+msgstr "Widget video"
 
 #. translators: %d: widget count
 #: wp-includes/widgets/class-wp-widget-media-video.php:41
 msgid "Video Widget (%d)"
 msgid_plural "Video Widget (%d)"
-msgstr[0] "Widget Video  (%d)"
-msgstr[1] "Widget Video  (%d)"
+msgstr[0] "Widget video  (%d)"
+msgstr[1] "Widget video  (%d)"
 
 #. translators: %s: URL to media library
 #: wp-includes/widgets/class-wp-widget-media-video.php:37
@@ -1326,12 +1326,12 @@ msgstr "Non è possibile trovare quel video. Controlla la tua <a href=\"%s\">lib
 #: wp-includes/widgets/class-wp-widget-media-video.php:34
 msgctxt "label for button in the video widget; should preferably not be longer than ~13 characters long"
 msgid "Edit Video"
-msgstr "Modifica Video"
+msgstr "Modifica video"
 
 #: wp-includes/widgets/class-wp-widget-media-video.php:33
 msgctxt "label for button in the video widget; should preferably not be longer than ~13 characters long"
 msgid "Replace Video"
-msgstr "Sostituisci Video"
+msgstr "Sostituisci video"
 
 #: wp-includes/widgets/class-wp-widget-media-gallery.php:32
 msgctxt "label for button in the gallery widget; should not be longer than ~13 characters long"
@@ -1349,14 +1349,14 @@ msgstr "Immagine attuale: %s"
 
 #: wp-includes/widgets/class-wp-widget-media-image.php:42
 msgid "Image Widget"
-msgstr "Widget Immagine"
+msgstr "Widget immagine"
 
 #. translators: %d: widget count
 #: wp-includes/widgets/class-wp-widget-media-image.php:41
 msgid "Image Widget (%d)"
 msgid_plural "Image Widget (%d)"
-msgstr[0] "Widget Immagine (%d)"
-msgstr[1] "Widget Immagine (%d)"
+msgstr[0] "Widget immagine (%d)"
+msgstr[1] "Widget immagine (%d)"
 
 #. translators: %s: URL to media library
 #: wp-includes/widgets/class-wp-widget-media-image.php:37
@@ -1366,12 +1366,12 @@ msgstr "Non è possibile trovare quell'immagine. Controlla la tua <a href=\"%s\"
 #: wp-includes/widgets/class-wp-widget-media-image.php:34
 msgctxt "label for button in the image widget; should preferably not be longer than ~13 characters long"
 msgid "Edit Image"
-msgstr "Modifica Immagine"
+msgstr "Modifica immagine"
 
 #: wp-includes/widgets/class-wp-widget-media-image.php:33
 msgctxt "label for button in the image widget; should preferably not be longer than ~13 characters long"
 msgid "Replace Image"
-msgstr "Sostituisci Immagine"
+msgstr "Sostituisci immagine"
 
 #: wp-includes/widgets/class-wp-widget-media-gallery.php:34
 msgctxt "label for button in the gallery widget; should not be longer than ~13 characters long"
@@ -1399,14 +1399,14 @@ msgstr "Sembra che questo non sia il tipo di file corretto. Inserisci un link ad
 
 #: wp-includes/widgets/class-wp-widget-media-audio.php:42
 msgid "Audio Widget"
-msgstr "Widget Audio"
+msgstr "Widget audio"
 
 #. translators: %d: widget count
 #: wp-includes/widgets/class-wp-widget-media-audio.php:41
 msgid "Audio Widget (%d)"
 msgid_plural "Audio Widget (%d)"
-msgstr[0] "Widget Audio (%d)"
-msgstr[1] "Widget Audio (%d)"
+msgstr[0] "Widget audio (%d)"
+msgstr[1] "Widget audio (%d)"
 
 #. translators: %s: URL to media library
 #: wp-includes/widgets/class-wp-widget-media-audio.php:37
@@ -1416,12 +1416,12 @@ msgstr "Non è possibile trovare quel file audio. Controlla la tua <a href=\"%s\
 #: wp-includes/widgets/class-wp-widget-media-audio.php:34
 msgctxt "label for button in the audio widget; should preferably not be longer than ~13 characters long"
 msgid "Edit Audio"
-msgstr "Modifica Audio"
+msgstr "Modifica audio"
 
 #: wp-includes/widgets/class-wp-widget-media-audio.php:33
 msgctxt "label for button in the audio widget; should preferably not be longer than ~13 characters long"
 msgid "Replace Audio"
-msgstr "Sostituisci Audio"
+msgstr "Sostituisci audio"
 
 #: wp-includes/customize/class-wp-customize-media-control.php:237
 #: wp-includes/widgets/class-wp-widget-media-audio.php:31
