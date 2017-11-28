@@ -3,14 +3,14 @@
 Plugin Name: Author Avatars List
 Plugin URI: http://authoravatars.wordpress.com/
 Description: Display lists of user avatars using <a href="widgets.php">widgets</a> or <a href="https://authoravatars.wordpress.com/documentation/">shortcodes</a>.
-Version: 1.12
+Version: 1.13
 Author: Paul Bearne
 Text Domain: author-avatars
 Domain Path: /translations
 */
 
 // The current version of the author avatars plugin. Needs to be updated every time we do a version step.
-define( 'AUTHOR_AVATARS_VERSION', '1.12' );
+define( 'AUTHOR_AVATARS_VERSION', '1.13' );
 
 // List of all version, used during update check. (Append new version to the end and write an update__10_11 method on AuthorAvatars class if needed)
 define( 'AUTHOR_AVATARS_VERSION_HISTORY', serialize( array(
@@ -61,6 +61,7 @@ define( 'AUTHOR_AVATARS_VERSION_HISTORY', serialize( array(
 	'1.10',
 	'1.11',
 	'1.12',
+	'1.13',
 ) ) );
 
 require_once( 'lib/AuthorAvatars.class.php' );

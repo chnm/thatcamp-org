@@ -793,6 +793,9 @@ abstract class YOP_POLL_Abstract_Model
     {
 
         $poll_options = get_yop_poll_meta($this->ID, 'options', true);
+        if ( ( false == $poll_options ) || ( '' == $poll_options ) ) {
+            $poll_options = array();
+        }
 
         if ($this->options && count($this->options) > 0) {
 
@@ -1334,7 +1337,9 @@ abstract class YOP_POLL_Abstract_Model
         }
 
         $ip = yop_poll_get_ip();
-
+        if ( false === isset( $id ) ) {
+            $id = '';
+        }
         $sql = $wpdb->prepare("
 
 				SELECT id

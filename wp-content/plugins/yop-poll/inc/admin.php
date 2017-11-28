@@ -25,7 +25,7 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
         $this->add_action( 'wp_ajax_yop_poll_do_vote', 'yop_poll_do_vote', 1 );
         $this->add_action( 'wp_ajax_yop_poll_load_js', 'yop_poll_load_js', 1 );
         $this->add_action( 'wp_ajax_nopriv_yop_poll_load_js', 'yop_poll_load_js', 1 );
-        register_uninstall_hook( $this->_config->plugin_file, 'yop_poll_uninstall' );
+        register_uninstall_hook( YOP_POLL_PLUGIN_FILE, 'yop_poll_uninstall' );
         $this->add_action( 'wp_ajax_nopriv_yop_poll_view_results', 'yop_poll_view_results', 1 );
         $this->add_action( 'wp_ajax_yop_poll_view_results', 'yop_poll_view_results', 1 );
         $this->add_action( 'wp_ajax_yop_poll_back_to_vote', 'yop_poll_back_to_vote', 1 );
@@ -85,22 +85,6 @@ class Yop_Poll_Admin extends Yop_Poll_Plugin {
                                     'manage_load_polls'
                                 ) );
                             }
-                        }
-                        if( current_user_can( 'manage_yop_polls_imports' ) ) {
-
-                            $importObj = YOP_POLL_Imports_Admin::get_instance();
-                            $subpage   = add_submenu_page( 'yop-polls', __( 'Import', 'yop-poll' ), __( 'Import', 'yop-poll' ), 'view_yop_polls_imports', 'yop-polls-imports', array(
-                                &$importObj,
-                                "manage_imports"
-                            ) );
-                            if( $subpage ) {
-                                $this->add_action( "load-$subpage", "manage_pages_load" );
-                                add_action( "load-$subpage", array(
-                                    $importObj,
-                                    'manage_load_imports'
-                                ) );
-                            }
-
                         }
                         if( current_user_can( 'view_yop_polls_logs' ) ) {
                             $logsObj = YOP_POLL_Logs_Admin::get_instance();

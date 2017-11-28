@@ -4,7 +4,7 @@ Plugin Name: Collapse-O-Matic
 Text Domain: jquery-collapse-o-matic
 Plugin URI: https://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.7.6
+Version: 1.7.7
 Author: twinpictures, baden03
 Author URI: https://twinpictures.de/
 License: GPL2
@@ -29,7 +29,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.7.6';
+	var $version = '1.7.7';
 
 	/**
 	 * Used as prefix for options entry
@@ -63,6 +63,9 @@ class WP_Collapse_O_Matic {
 		'cc_download_key' => '',
 		'cc_email' => '',
 		'filter_content' => '',
+		'pauseinit' => '',
+		'cc_display_id' => '',
+		'cc_display_title' => '',
 	);
 
 	var $license_group = 'colomat_licenseing';
@@ -113,6 +116,7 @@ class WP_Collapse_O_Matic {
 		echo "<script type='text/javascript'>\n";
 		echo "var colomatduration = '".$this->options['duration']."';\n";
 		echo "var colomatslideEffect = '".$this->options['slideEffect']."';\n";
+		echo "var colomatpauseInit = '".$this->options['pauseinit']."';\n";
 		echo "</script>";
 		if( !empty( $this->options['custom_css'] ) ){
 			echo "\n<style>\n";
@@ -130,7 +134,7 @@ class WP_Collapse_O_Matic {
 		if($this->options['script_location'] == 'footer' ){
 			$load_in_footer = true;
 		}
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.6.6', $load_in_footer);
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.6.9', $load_in_footer);
 		if( empty($this->options['script_check']) ){
 			wp_enqueue_script('collapseomatic-js');
 		}
@@ -241,6 +245,8 @@ class WP_Collapse_O_Matic {
 					//content
 					$content = get_the_content();
 				}
+			}else{
+				return null;
 			}
 			wp_reset_postdata();
 		}
@@ -379,6 +385,7 @@ class WP_Collapse_O_Matic {
 			$groupatt = 'data-togglegroup="'.$togglegroup.'"';
 		}
 		$inexatt = '';
+		//var_dump($tabindex);
 		if(!empty($tabindex) || $tabindex == 0 ){
 			$inexatt = 'tabindex="'.$tabindex.'"';
 		}
@@ -601,6 +608,13 @@ class WP_Collapse_O_Matic {
 								</tr>
 
 								<tr>
+									<th><?php _e( 'Initial Pause', 'jquery-collapse-o-matic' ) ?>:</th>
+									<td><label><input type="number" id="<?php echo $this->options_name ?>[pauseinit]" name="<?php echo $this->options_name ?>[pauseinit]" value="<?php echo $options['pauseinit']; ?>" />
+										<br /><span class="description"><?php _e('Amount of time in milliseconds to pause before the initial collapse is triggered on page load.', 'jquery-collapse-o-matic'); ?></span></label>
+									</td>
+								</tr>
+
+								<tr>
 									<?php
 										if(empty($options['duration'])){
 												$options['duration'] = 'fast';
@@ -649,6 +663,25 @@ class WP_Collapse_O_Matic {
 										<br /><span class="description"><?php _e('Apply the_content filter to target content.', 'jquery-collapse-o-matic'); ?></span></label>
 									</td>
 								</tr>
+
+								<?php
+									//if collapse-commander is installed, display options for displaying id and text in shortocdes
+									if( is_plugin_active( 'collapse-commander/collapse-commander.php' ) ) :
+								?>
+								<tr>
+									<th><?php _e( 'Display ID', 'colpromat' ) ?>:</th>
+									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[cc_display_id]" name="<?php echo $this->options_name ?>[cc_display_id]" value="1"  <?php echo checked( $options['cc_display_id'], 1 ); ?> /> <?php _e('Display ID', 'colpromat'); ?>
+										<br /><span class="description"><?php _e('Display custom ID attribute in shortcodes if set for easier shortcode managment.', 'colpromat'); ?></span></label>
+									</td>
+								</tr>
+
+								<tr>
+									<th><?php _e( 'Display Title', 'colpromat' ) ?>:</th>
+									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[cc_display_title]" name="<?php echo $this->options_name ?>[cc_display_title]" value="1"  <?php echo checked( $options['cc_display_title'], 1 ); ?> /> <?php _e('Display Title', 'colpromat'); ?>
+										<br /><span class="description"><?php _e('Display custom eT attribute in shortcodes that shows expand title for easier shortcode managment.', 'colpromat'); ?></span></label>
+									</td>
+								</tr>
+								<?php endif; ?>
 
 								<tr>
 									<th><?php _e( 'Shortcode Loads Scripts', 'jquery-collapse-o-matic' ) ?>:</th>
@@ -813,11 +846,15 @@ class WP_Collapse_O_Matic {
 		if ( empty( $saved_options ) ) {
 			$saved_options = get_option( $this->domain . 'options' );
 		}
-
 		// set all options
-		if ( ! empty( $saved_options ) ) {
+		if ( !empty( $saved_options ) ) {
 			foreach ( $this->options AS $key => $option ) {
-				$this->options[ $key ] = ( empty( $saved_options[ $key ] ) ) ? '' : $saved_options[ $key ];
+				if($key == 'tabindex'){
+					$this->options[ $key ] = $saved_options[ $key ];
+				}
+				else{
+					$this->options[ $key ] = ( empty( $saved_options[ $key ] ) ) ? '' : $saved_options[ $key ];
+				}
 			}
 		}
 	}

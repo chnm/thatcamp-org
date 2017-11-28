@@ -654,7 +654,6 @@ Class YOP_POLL_Poll_Model extends YOP_POLL_Abstract_Model
                 $percentages_decimals = $this->percentages_decimals;
             }
             if (isset($this->sorting_results)) {
-                error_log('maybe here');
                 if ('as_defined' == $this->sorting_results) {
                     $question->sortAnswers('question_order', 'asc');
                 } elseif ('database' == $this->sorting_results) {
@@ -740,6 +739,10 @@ Class YOP_POLL_Poll_Model extends YOP_POLL_Abstract_Model
         $vote_type = $request['vote_type'];
         $SuperCookie = strip_tags(xss_clean($request['supercookie']));
         $tr_id = strip_tags(xss_clean($request['yop_poll_tr_id']));
+        $facebook_user_details = null;
+        $google_user_details = null;
+
+
         $votes = 0;
         $user_id = 0;
         $user_type = 'default';

@@ -26,7 +26,7 @@
         public function manage_load_bans() {
             wp_enqueue_script( 'yop-poll-admin-bans-js', YOP_POLL_URL . "js/yop-poll-admin-bans.js", array( 'jquery' ), YOP_POLL_VERSION, true );
             wp_enqueue_script( 'yop-poll-edit-ban-js', YOP_POLL_URL . "js/yop-poll-edit-ban.js", array( 'jquery' ), YOP_POLL_VERSION, true );
-            wp_enqueue_script( 'yop-poll-add-edit-ban-js', YOP_POLL_URL . 'js/polls/yop-poll-add-edit.js', array( 'jquery', 'jquery-ui-sortable', 'yop-poll-admin-js' ), YOP_POLL_VERSION, true );
+            wp_enqueue_script( 'yop-poll-add-edit-ban-js', YOP_POLL_URL . 'js/polls/yop-poll-add-edit.js', array( 'jquery', 'jquery-ui-sortable', 'jquery-ui-dialog', 'yop-poll-admin-js' ), YOP_POLL_VERSION, true );
             wp_enqueue_style( 'yop-poll-global-admin-bans-css', YOP_POLL_URL . "css/yop-poll-admin.css", array(), YOP_POLL_VERSION );
             wp_enqueue_style( 'yop-poll-timepicker', YOP_POLL_URL . "css/timepicker.css", array(), YOP_POLL_VERSION );
             wp_enqueue_style( 'yop-poll-jquery-ui', YOP_POLL_URL . "css/jquery-ui.css", array(), YOP_POLL_VERSION );

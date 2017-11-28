@@ -102,7 +102,7 @@
 
         public function yop_poll_archive_shortcode_function( $atts, $content = null ) {
             extract( shortcode_atts( array( 'results' => 0 ), $atts ) );
-            $template      = '';
+            $template      = array();
             $yop_poll_page = 1;
             $big           = 99999;
             if( isset( $_REQUEST['yop_poll_page'] ) ) {
@@ -136,14 +136,14 @@
             if( count( $archives ) > 0 ) {
                 foreach( $archives as $poll ){
 
-                    $template [] = $this->return_yop_poll( $poll['ID'], $results );
+                    $template[] = $this->return_yop_poll( $poll['ID'], $results );
                 }
             }
             }else{
                 if( count( $archives ) > 0 ) {
                     foreach( $archives as $poll ){
 
-                        $template [] = $this->return_yop_poll( $poll, $results );
+                        $template[] = $this->return_yop_poll( $poll, $results );
                     }
                 }
             }

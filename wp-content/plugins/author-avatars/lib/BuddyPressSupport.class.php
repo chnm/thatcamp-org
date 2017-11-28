@@ -78,7 +78,11 @@ class BuddyPressSupport {
 			);
 			//   $out .=   bp_get_profile_field_data( $args  );
 			$profile_field_data = bp_get_profile_field_data( $args );
-			$css                = ( false == $profile_field_data ) ? $name . ' aa_missing' : $name;
+			$css                = ( false === $profile_field_data ) ? $name . ' aa_missing' : $name;
+			if( is_array( $profile_field_data ) ) {
+				$separator = apply_filters( 'aa_user_xprofile_array_separator', ', ' );
+				$profile_field_data = implode( $separator, $profile_field_data );
+			}
 			$out .= sprintf( apply_filters( 'aa_user_display_extra_template', '<div class="extra %s">%s</div>', $args, $profile_field_data ), $css, $profile_field_data );
 			//$out .=  '<div class="extra '. $name . '">' . $profile_field_data . '</div>';
 		}

@@ -794,7 +794,15 @@ function yop_poll_poll_default_options() {
         global $wpdb;
         $response['success'] = "";
         $response['error']   = "";
-
+        if ( false == isset( $result['tr_id'] ) ) {
+            $result['tr_id'] = '';
+        }
+        if ( false == isset( $result['user_details'] ) ) {
+            $result['user_details'] = '';
+        }
+        if ( false == isset( $result['country'] ) ) {
+            $result['country'] = '';
+        }
         $sql = $wpdb->query( $wpdb->prepare( "
 				INSERT INTO {$wpdb->yop_poll_results} (
 				poll_id,

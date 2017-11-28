@@ -406,6 +406,9 @@
         function save_options() {
 
             $answer_options = get_yop_poll_answer_meta( $this->id, 'options', true );
+            if ( ( false == $answer_options ) || ( '' == $answer_options ) ) {
+                $answer_options = array();
+            }
 
             if ( $this->options && count( $this->options ) > 0 ){
 

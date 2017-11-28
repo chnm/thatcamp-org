@@ -183,12 +183,14 @@
         }
 
         function __set( $key, $value ) {
+            if ( false === is_object( $this->data ) ) {
+                $this->data = new \stdClass();
+            }
             if ( 'id' == strtolower( $key ) ){
                 $this->ID       = $value;
                 $this->data->ID = $value;
                 return;
             }
-
             if ( in_array( $key, $this->default_fields ) ){ //this is not an option
                 $this->data->$key = $value;
             }

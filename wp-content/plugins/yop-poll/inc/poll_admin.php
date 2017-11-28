@@ -2138,7 +2138,7 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
             $index=0;
             $i=0;
             $message['append_row']="";
-            $append_row="";
+            $append_row = array();
             while($ok==1){
 
                 // yop_poll_dump($answer_details);
@@ -2213,6 +2213,9 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
                     $message = insert_result_in_db( $result );
 
                     $index++;
+                    if ( false === isset( $append_row[$i] ) ) {
+                        $append_row[$i] = '';
+                    }
                     $append_row[$i].= " <tr valign=".'middle'." class=".
                         'alternate'."
                     id=".'yop-poll-log{{log.id}}'.">
@@ -2275,6 +2278,9 @@ class YOP_POLL_Poll_Admin extends YOP_POLL_Abstract_Admin {
         }
 
         //yop_poll_dump($append_row);
+        if ( false === isset( $message['append_row'] ) ) {
+            $message['append_row'] = '';
+        }
         foreach($append_row as $a){
             $message['append_row'].=$a;
         }
