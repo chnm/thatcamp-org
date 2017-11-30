@@ -4,7 +4,7 @@ Plugin Name: Collapse-O-Matic
 Text Domain: jquery-collapse-o-matic
 Plugin URI: https://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.7.7
+Version: 1.7.8
 Author: twinpictures, baden03
 Author URI: https://twinpictures.de/
 License: GPL2
@@ -29,7 +29,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.7.7';
+	var $version = '1.7.8';
 
 	/**
 	 * Used as prefix for options entry
@@ -66,6 +66,7 @@ class WP_Collapse_O_Matic {
 		'pauseinit' => '',
 		'cc_display_id' => '',
 		'cc_display_title' => '',
+		'touch_start' => '',
 	);
 
 	var $license_group = 'colomat_licenseing';
@@ -117,6 +118,7 @@ class WP_Collapse_O_Matic {
 		echo "var colomatduration = '".$this->options['duration']."';\n";
 		echo "var colomatslideEffect = '".$this->options['slideEffect']."';\n";
 		echo "var colomatpauseInit = '".$this->options['pauseinit']."';\n";
+		echo "var colomattouchstart = '".$this->options['touch_start']."';\n";
 		echo "</script>";
 		if( !empty( $this->options['custom_css'] ) ){
 			echo "\n<style>\n";
@@ -134,7 +136,7 @@ class WP_Collapse_O_Matic {
 		if($this->options['script_location'] == 'footer' ){
 			$load_in_footer = true;
 		}
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.6.9', $load_in_footer);
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.6.10', $load_in_footer);
 		if( empty($this->options['script_check']) ){
 			wp_enqueue_script('collapseomatic-js');
 		}
@@ -604,6 +606,13 @@ class WP_Collapse_O_Matic {
 									<th><?php _e( 'Targclass Attribute', 'jquery-collapse-o-matic' ) ?>:</th>
 									<td><label><input type="text" id="<?php echo $this->options_name ?>[targclass]" name="<?php echo $this->options_name ?>[targclass]" value="<?php echo $options['targclass']; ?>" />
 										<br /><span class="description"><?php printf(__('Default class assigned to the target element. See %sTargclass Attribute%s in the documentation for more info.', 'jquery-collapse-o-matic'), '<a href="https://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#targclass" target="_blank">', '</a>'); ?></span></label>
+									</td>
+								</tr>
+
+								<tr>
+									<th><?php _e( 'Add touchstart', 'jquery-collapse-o-matic' ) ?>:</th>
+									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[touch_start]" name="<?php echo $this->options_name ?>[touch_start]" value="1"  <?php echo checked( $options['touch_start'], 1 ); ?> /> <?php _e('Add touchstart', 'jquery-collapse-o-matic'); ?>
+										<br /><span class="description"><?php _e('Add jQuery touchstart binding to triggers.', 'jquery-collapse-o-matic'); ?></span></label>
 									</td>
 								</tr>
 

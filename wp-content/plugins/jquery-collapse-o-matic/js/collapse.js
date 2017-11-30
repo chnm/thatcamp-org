@@ -1,5 +1,5 @@
 /*!
- * Collapse-O-Matic JavaSctipt v1.6.9
+ * Collapse-O-Matic JavaSctipt v1.6.10
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2017, Twinpictures
@@ -328,6 +328,11 @@ function colomat_collapseall(loop_items){
 
 jQuery(document).ready(function() {
 	//console.log(colomatduration, colomatslideEffect, colomatpauseInit);
+	com_binding = 'click';
+	if(colomattouchstart){
+		com_binding = 'click touchstart';
+	}
+
 	if(colomatpauseInit){
 		init_pause = setTimeout(collapse_init, colomatpauseInit);
 	}
@@ -383,7 +388,7 @@ jQuery(document).ready(function() {
 	});
 
 	//the main collapse/expand function
-	jQuery(document).on('click touchstart', '.collapseomatic', function(event) {
+	jQuery(document).on(com_binding, '.collapseomatic', function(event) {
 		var offset_top;
 
 		//alert('phones ringin dude');
@@ -504,7 +509,7 @@ jQuery(document).ready(function() {
 	});
 
 
-	jQuery(document).on('click touchstart', '.expandall', function(event) {
+	jQuery(document).on(com_binding, '.expandall', function(event) {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
 			var loop_items = jQuery('.collapseomatic:not(.colomat-close)[rel="' + rel +'"]');
@@ -520,7 +525,7 @@ jQuery(document).ready(function() {
 		colomat_expandall(loop_items);
 	});
 
-	jQuery(document).on('click touchstart', '.collapseall', function(event) {
+	jQuery(document).on(com_binding, '.collapseall', function(event) {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
 			var loop_items = jQuery('.collapseomatic.colomat-close[rel="' + rel +'"]');
@@ -575,7 +580,7 @@ jQuery(document).ready(function() {
 	}
 
 	//handle anchor links within the same page
-	jQuery(document).on('click touchstart', 'a.expandanchor', function(event) {
+	jQuery(document).on(com_binding, 'a.expandanchor', function(event) {
 		//event.preventDefault();
 		var fullurl = jQuery(this).attr('href');
 		// the URL contains an anchor but not a hash-bang
@@ -609,7 +614,7 @@ jQuery(document).ready(function() {
 		}
 	});
 
-	jQuery(document).on('click touchstart', 'a.colomat-nolink', function(event) {
+	jQuery(document).on(com_binding, 'a.colomat-nolink', function(event) {
 		event.preventDefault();
 	});
 });

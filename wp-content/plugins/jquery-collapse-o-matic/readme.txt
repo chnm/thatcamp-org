@@ -4,8 +4,8 @@ Contributors: twinpictures, baden03
 Donate link: https://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more, plugin oven
 Requires at least: 4.5
-Tested up to: 4.9.0
-Stable tag: 1.7.7
+Tested up to: 4.9.1
+Stable tag: 1.7.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,9 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.7.8 =
+* touchstart binding now an option
 
 = 1.7.7 =
 * added check for a callback function: colomat_callback on any expand element state change
@@ -352,10 +355,4 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
-* added check for a callback function: colomat_callback on any expand element state change
-* added Initial Pause option to pause initial collapse of expand elements on page load
-* tabindex allows for a value of 0
-* if cid is provided and no cid exists, shortcode will return blank
-* added collapse-commander display id and title options for shortcodes 
-* merged is_valid_jquery_selector function from csummer on github
-* fully tested with WordPress 4.9.0
+* touchstart binding now an option
