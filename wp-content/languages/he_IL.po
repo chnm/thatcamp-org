@@ -788,13 +788,13 @@ msgstr "בדיקת הסימון נכשלה. נא לנסות שנית."
 
 #. translators: Site admin email change notification email subject. %s: Site
 #. title
-#: wp-includes/functions.php:5770
+#: wp-includes/functions.php:5771
 msgid "[%s] Notice of Admin Email Change"
 msgstr "[%s] הודעה על שינוי כתובת אימייל של מנהל האתר"
 
 #. translators: Do not translate OLD_EMAIL, NEW_EMAIL, SITENAME, SITEURL: those
 #. are placeholders.
-#: wp-includes/functions.php:5755
+#: wp-includes/functions.php:5756
 msgid ""
 "Hi,\n"
 "\n"
@@ -820,7 +820,7 @@ msgstr ""
 "צוות ###SITENAME###\n"
 "###SITEURL###"
 
-#: wp-includes/functions.php:5698
+#: wp-includes/functions.php:5699
 msgid "Only UUID V4 is supported at this time."
 msgstr "כרגע רק גרסת UUID V4 נתמכת."
 
@@ -1919,7 +1919,7 @@ msgctxt "New site notification email subject"
 msgid "[%1$s] Activate %2$s"
 msgstr "[%1$s] הפעלת %2$s"
 
-#: wp-includes/widgets.php:1395 wp-includes/widgets.php:1504
+#: wp-includes/widgets.php:1398 wp-includes/widgets.php:1507
 msgid "RSS Error:"
 msgstr "שגיאת RSS:"
 
@@ -3833,7 +3833,7 @@ msgctxt "site"
 msgid "&larr; Back to %s"
 msgstr "חזרה אל %s"
 
-#: wp-includes/wp-db.php:1849 wp-includes/wp-db.php:1855
+#: wp-includes/wp-db.php:1856 wp-includes/wp-db.php:1862
 msgid "Unable to retrieve the error message from MySQL"
 msgstr "אין אפשרות לאחזר את הודעת השגיאה מתוך MySQL"
 
@@ -4138,13 +4138,13 @@ msgstr "<strong>שגיאה</strong>: שם משתמש או אימייל שגוי�
 msgid "%1$s %2$s %3$s %4$s Feed"
 msgstr "%1$s %2$s פיד %4$s %3$s"
 
-#: wp-includes/functions.php:5311
+#: wp-includes/functions.php:5312
 msgid "Close dialog"
 msgstr "סגור חלון"
 
 #. translators: 1: PHP class name, 2: PHP parent class name, 3: version number,
 #. 4: __construct() method
-#: wp-includes/functions.php:3899
+#: wp-includes/functions.php:3900
 msgid "The called constructor method for %1$s in %2$s is <strong>deprecated</strong> since version %3$s! Use %4$s instead."
 msgstr "המתודה constructor ב-%1$s ב-%2$s <strong>לא קיימת</strong> מגרסה %3$s! השתמשו ב-%4$s במקום."
 
@@ -4282,12 +4282,12 @@ msgstr "https://codex.wordpress.org/Debugging_a_WordPress_Network"
 msgid "Read the <a href=\"%s\" target=\"_blank\">bug report</a> page. Some of the guidelines there may help you figure out what went wrong."
 msgstr "ההנחיות בעמוד <a href=\"%s\" target=\"_blank\">דיווח תקלות</a> עשויות לעזור להבין מה השתבש."
 
-#: wp-includes/functions.php:4142
+#: wp-includes/functions.php:4143
 msgid "https://codex.wordpress.org/Debugging_in_WordPress"
 msgstr "https://codex.wordpress.org/Debugging_in_WordPress"
 
 #. translators: %s: Codex URL
-#: wp-includes/functions.php:4141
+#: wp-includes/functions.php:4142
 msgid "Please see <a href=\"%s\">Debugging in WordPress</a> for more information."
 msgstr "למידע נוסף כנסו ל<a href=\"%s\">ניפוי תקלות בוורדפרס</a>."
 
@@ -4496,25 +4496,25 @@ msgstr "כותרת:"
 msgid "Author:"
 msgstr "מאת:"
 
-#: wp-includes/wp-db.php:1747
+#: wp-includes/wp-db.php:1754
 msgid "Are you sure that the database server is not under particularly heavy load?"
 msgstr "האם אתה בטוח ששרת מסד הנתונים איננו נמצא תחת עומס כבד במיוחד?"
 
 #. translators: %s: database host
-#: wp-includes/wp-db.php:1741
+#: wp-includes/wp-db.php:1748
 msgid "This means that we lost contact with the database server at %s. This could mean your host&#8217;s database server is down."
 msgstr "משמעות דבר היא כי אבד הקשר עם שרת מסד הנתונים %s. יתכן ששרת מסד הנתונים של חברת האכסון נפל."
 
-#: wp-includes/wp-db.php:1737
+#: wp-includes/wp-db.php:1744
 msgid "Error reconnecting to the database"
 msgstr "שגיאת בהתחברות למסד הנתונים"
 
 #. translators: %s: support forums URL
-#: wp-includes/wp-db.php:1601 wp-includes/wp-db.php:1752
+#: wp-includes/wp-db.php:1601 wp-includes/wp-db.php:1759
 msgid "If you&#8217;re unsure what these terms mean you should probably contact your host. If you still need help you can always visit the <a href=\"%s\">WordPress Support Forums</a>."
 msgstr "אם אינך בטוח מה משמעות המונחים הללו, סביר להניח שאתה צריך ליצור קשר עם ספק האכסון שלך. אם אתה עדיין זקוק לעזרה אתה תמיד יכול לבקר <a href=\"%s\">פורום התמיכה של וורדפרס</a>."
 
-#: wp-includes/wp-db.php:1596 wp-includes/wp-db.php:1746
+#: wp-includes/wp-db.php:1596 wp-includes/wp-db.php:1753
 msgid "Are you sure that the database server is running?"
 msgstr "האם אתה בטוח שהשרת פועל?"
 
@@ -5095,7 +5095,7 @@ msgid "The %s directory of the develop repository must be used for RTL."
 msgstr "לצורך RTL יש להשתמש בספרייה %s במאגר הפיתוח."
 
 #. translators: 1: PHP class name, 2: version number, 3: __construct() method
-#: wp-includes/functions.php:3903
+#: wp-includes/functions.php:3904
 msgid "The called constructor method for %1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "המתודה constructor ב-%1$s <strong>לא קיימת</strong> מגרסה %2$s! השתמשו ב-%3$s במקום."
 
@@ -7223,7 +7223,7 @@ msgstr "https://wordpress.org/support/forum/requests-and-feedback"
 #: wp-includes/admin-bar.php:164 wp-includes/update.php:153
 #: wp-includes/update.php:345 wp-includes/update.php:523
 #: wp-includes/wp-db.php:1069 wp-includes/wp-db.php:1602
-#: wp-includes/wp-db.php:1753 wp-login.php:882
+#: wp-includes/wp-db.php:1760 wp-login.php:882
 msgid "https://wordpress.org/support/"
 msgstr "https://wordpress.org/support/"
 
@@ -7260,22 +7260,22 @@ msgstr "קבוצת עמודות"
 msgid "Could not find the specified string."
 msgstr "לא ניתן למצוא את המחרוזת שצוינה."
 
-#: wp-includes/general-template.php:3926
+#: wp-includes/general-template.php:3928
 msgctxt "admin color scheme"
 msgid "Coffee"
 msgstr "קפה"
 
-#: wp-includes/general-template.php:3920
+#: wp-includes/general-template.php:3922
 msgctxt "admin color scheme"
 msgid "Ocean"
 msgstr "אוקיינוס"
 
-#: wp-includes/general-template.php:3914
+#: wp-includes/general-template.php:3916
 msgctxt "admin color scheme"
 msgid "Ectoplasm"
 msgstr "אקטופלסמה"
 
-#: wp-includes/general-template.php:3908
+#: wp-includes/general-template.php:3910
 msgctxt "admin color scheme"
 msgid "Sunrise"
 msgstr "זריחה"
@@ -7350,17 +7350,17 @@ msgstr "no-subset"
 msgid "Use commas instead of %s to separate excluded terms."
 msgstr "השתמש בפסיקים במקום %s כדי להפריד מונחים שלא נכללו."
 
-#: wp-includes/general-template.php:3902
+#: wp-includes/general-template.php:3904
 msgctxt "admin color scheme"
 msgid "Midnight"
 msgstr "כהה"
 
-#: wp-includes/general-template.php:3890
+#: wp-includes/general-template.php:3892
 msgctxt "admin color scheme"
 msgid "Light"
 msgstr "בהיר"
 
-#: wp-includes/general-template.php:3879
+#: wp-includes/general-template.php:3881
 msgctxt "admin color scheme"
 msgid "Default"
 msgstr "ברירת מחדל"
@@ -7547,7 +7547,7 @@ msgstr "%2$s ב%1$s, %3$s בשעה %4$s:%5$s"
 msgid "Your session has expired. You can log in again from this page or go to the login page."
 msgstr "פג תוקף ה-Session. ניתן להתחבר שוב מהעמוד הזה או לעבור לעמוד ההתחברות הראשי."
 
-#: wp-includes/functions.php:5328
+#: wp-includes/functions.php:5329
 msgid "The login page will open in a new window. After logging in you can close it and return to this page."
 msgstr "עמוד ההתחברות יפתח בחלונית חדשה. אחרי ההתחברות ניתן לסגור את החלונית ולחזור לעמוד זה."
 
@@ -7572,7 +7572,7 @@ msgctxt "placeholder"
 msgid "Search &hellip;"
 msgstr "חיפוש &hellip;"
 
-#: wp-includes/functions.php:5326 wp-includes/script-loader.php:568
+#: wp-includes/functions.php:5327 wp-includes/script-loader.php:568
 msgid "Session expired"
 msgstr "פג תוקף ה-Session"
 
@@ -8571,16 +8571,16 @@ msgstr "פורום תמיכה"
 msgid "Documentation"
 msgstr "תיעוד"
 
-#: wp-includes/formatting.php:3361 wp-includes/general-template.php:3798
+#: wp-includes/formatting.php:3361 wp-includes/general-template.php:3800
 msgid "&hellip;"
 msgstr "&hellip;"
 
-#: wp-includes/functions.php:3776 wp-includes/ms-load.php:455
+#: wp-includes/functions.php:3777 wp-includes/ms-load.php:455
 #: wp-includes/wp-db.php:1584
 msgid "Error establishing a database connection"
 msgstr "שגיאת התחברות למסד הנתונים"
 
-#: wp-includes/functions.php:3772
+#: wp-includes/functions.php:3773
 msgid "Database Error"
 msgstr "שגיאה במסד הנתונים"
 
@@ -8632,7 +8632,7 @@ msgstr "הקובץ אינו קובץ תמונה. יש לנסות אחר."
 msgid "This is larger than the maximum size. Please try another."
 msgstr "גדול מהמקסימום האפשרי. יש לנסות אחר."
 
-#: wp-includes/general-template.php:3896
+#: wp-includes/general-template.php:3898
 msgctxt "admin color scheme"
 msgid "Blue"
 msgstr "כחול"
@@ -8757,13 +8757,13 @@ msgid "The user is already active."
 msgstr "המשתמש כבר פעיל."
 
 #. translators: %s: version number
-#: wp-includes/functions.php:4138
+#: wp-includes/functions.php:4139
 msgid "(This message was added in version %s.)"
 msgstr "(הודעה זו נוספה בגרסה %s.)"
 
 #. translators: Developer debugging message. 1: PHP function name, 2:
 #. Explanatory message, 3: Version information message
-#: wp-includes/functions.php:4145
+#: wp-includes/functions.php:4146
 msgid "%1$s was called <strong>incorrectly</strong>. %2$s %3$s"
 msgstr "%1$s נקרא <strong>בצורה לא תקינה</strong>. %2$s %3$s"
 
@@ -9929,7 +9929,7 @@ msgstr "פועל על וורדפרס"
 
 #. translators: 1: WordPress version number, 2: Minimum required MySQL version
 #. number
-#: wp-includes/wp-db.php:3311
+#: wp-includes/wp-db.php:3318
 msgid "<strong>ERROR</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>שגיאה</strong>: וורדפרס %1$s זקוקה ל-MySQL %2$s או גרסה חדשה יותר"
 
@@ -9937,7 +9937,7 @@ msgstr "<strong>שגיאה</strong>: וורדפרס %1$s זקוקה ל-MySQL %2$
 msgid "Sidebar %d"
 msgstr "בר %d"
 
-#: wp-includes/functions.php:5327 wp-includes/user.php:285
+#: wp-includes/functions.php:5328 wp-includes/user.php:285
 msgid "Please log in again."
 msgstr "נא להתחבר מחדש."
 
@@ -10127,7 +10127,7 @@ msgstr "סגור תגים"
 msgid "Close all open tags"
 msgstr "סגור את כל התגים הפתוחים"
 
-#: wp-includes/rss.php:917 wp-includes/widgets.php:1410
+#: wp-includes/rss.php:917 wp-includes/widgets.php:1413
 msgid "An error has occurred, which probably means the feed is down. Try again later."
 msgstr "לא ניתן להגיע לפיד, השרת כנראה לא פעיל. יש לנסות שנית מאוחר יותר."
 
@@ -10862,11 +10862,11 @@ msgstr "המשתמש חסם את הגישה ב-HTTP"
 msgid "Gray"
 msgstr "אפור"
 
-#: wp-includes/general-template.php:3713
+#: wp-includes/general-template.php:3715
 msgid "Next &raquo;"
 msgstr "הבא &raquo;"
 
-#: wp-includes/general-template.php:3712
+#: wp-includes/general-template.php:3714
 msgid "&laquo; Previous"
 msgstr "&laquo; קודם"
 
@@ -10953,34 +10953,34 @@ msgstr "לצאת"
 msgid "Log in"
 msgstr "התחבר"
 
-#: wp-includes/functions.php:4721
+#: wp-includes/functions.php:4722
 msgid "Manual Offsets"
 msgstr "התאמות ידניות"
 
-#: wp-includes/functions.php:4713 wp-includes/functions.php:4717
+#: wp-includes/functions.php:4714 wp-includes/functions.php:4718
 msgid "UTC"
 msgstr "UTC"
 
-#: wp-includes/functions.php:4668
+#: wp-includes/functions.php:4669
 msgid "Select a city"
 msgstr "בחירת עיר"
 
 #. translators: 1: PHP function name, 2: version number
-#: wp-includes/functions.php:4032
+#: wp-includes/functions.php:4033
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "%1$s נקרא באמצעות ארגומנט שכבר <strong>לא קיים</strong> מגרסה %2$s וללא תחליף זמין."
 
 #. translators: 1: PHP function name, 2: version number, 3: optional message
 #. regarding the change
-#: wp-includes/functions.php:4029
+#: wp-includes/functions.php:4030
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s! %3$s"
 msgstr "%1$s נקרא באמצעות ארגומנט שכבר <strong>לא קיים</strong> מגרסה %2$s! %3$s"
 
 #. translators: 1: PHP function name, 2: version number
 #. translators: 1: PHP file name, 2: version number
 #. translators: 1: WordPress hook name, 2: version number
-#: wp-includes/functions.php:3840 wp-includes/functions.php:3968
-#: wp-includes/functions.php:4091
+#: wp-includes/functions.php:3841 wp-includes/functions.php:3969
+#: wp-includes/functions.php:4092
 msgid "%1$s is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "%1$s <strong>לא קיים</strong> מאז גרסה %2$s ואין תחליף חלופי."
 
@@ -10989,34 +10989,34 @@ msgstr "%1$s <strong>לא קיים</strong> מאז גרסה %2$s ואין תחל
 #. translators: 1: PHP file name, 2: version number, 3: alternative file name
 #. translators: 1: WordPress hook name, 2: version number, 3: alternative hook
 #. name
-#: wp-includes/functions.php:3837 wp-includes/functions.php:3965
-#: wp-includes/functions.php:4088
+#: wp-includes/functions.php:3838 wp-includes/functions.php:3966
+#: wp-includes/functions.php:4089
 msgid "%1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "%1$s <strong>לא קיים</strong> מאז גרסה %2$s! השתמשו ב %3$s במקום."
 
-#: wp-includes/functions.php:2747 wp-load.php:92
+#: wp-includes/functions.php:2748 wp-load.php:92
 msgid "WordPress &rsaquo; Error"
 msgstr "וורדפרס &lsaquo;שגיאה"
 
-#: wp-includes/functions.php:2735
+#: wp-includes/functions.php:2736
 msgid "&laquo; Back"
 msgstr "חזרה"
 
-#: wp-includes/functions.php:2610 wp-includes/ms-functions.php:2047
+#: wp-includes/functions.php:2611 wp-includes/ms-functions.php:2047
 msgid "Please try again."
 msgstr "יש לנסות שנית."
 
 #. translators: %s: logout URL
-#: wp-includes/functions.php:2601
+#: wp-includes/functions.php:2602
 msgid "Do you really want to <a href=\"%s\">log out</a>?"
 msgstr "באמת רצית <a href='%s'>לצאת מהמערכת</a>?"
 
-#: wp-includes/functions.php:2615
+#: wp-includes/functions.php:2616
 msgid "WordPress Failure Notice"
 msgstr "הודעת כישלון וורדפרס"
 
 #. translators: %s: site name
-#: wp-includes/functions.php:2594
+#: wp-includes/functions.php:2595
 msgid "You are attempting to log out of %s"
 msgstr "ניסית לצאת מהמערכת באתר %s"
 
@@ -11109,31 +11109,31 @@ msgstr "לולאת וורדפרס חדשה"
 msgid "Tag Cloud"
 msgstr "ענן תגיות"
 
-#: wp-includes/widgets.php:1532
+#: wp-includes/widgets.php:1535
 msgid "Display item date?"
 msgstr "להציג את התאריך?"
 
-#: wp-includes/widgets.php:1529
+#: wp-includes/widgets.php:1532
 msgid "Display item author if available?"
 msgstr "להציג את המחבר, במידת האפשר?"
 
-#: wp-includes/widgets.php:1526
+#: wp-includes/widgets.php:1529
 msgid "Display item content?"
 msgstr "להציג את התוכן?"
 
-#: wp-includes/widgets.php:1516
+#: wp-includes/widgets.php:1519
 msgid "How many items would you like to display?"
 msgstr "כמה פריטים להציג?"
 
-#: wp-includes/widgets.php:1513
+#: wp-includes/widgets.php:1516
 msgid "Give the feed a title (optional):"
 msgstr "כותרת לפיד (לא חובה):"
 
-#: wp-includes/widgets.php:1510
+#: wp-includes/widgets.php:1513
 msgid "Enter the RSS feed URL here:"
 msgstr "כתובת URL לפיד:"
 
-#: wp-includes/widgets.php:1426
+#: wp-includes/widgets.php:1429
 msgid "Untitled"
 msgstr "ללא כותרת"
 
@@ -11359,7 +11359,7 @@ msgstr "עמודים:"
 msgid "Comments (%s)"
 msgstr "תגובות (%)"
 
-#: wp-includes/category-template.php:1139
+#: wp-includes/category-template.php:1131
 msgid "Tags: "
 msgstr "תגיות: "
 
@@ -11418,7 +11418,7 @@ msgid "For some strange yet very annoying reason, this post could not be edited.
 msgstr "לא ניתן לערוך את הפוסט הזה."
 
 #: wp-includes/admin-bar.php:830 wp-includes/class-wp-customize-widgets.php:412
-#: wp-includes/functions.php:3713
+#: wp-includes/functions.php:3714
 msgid "Widgets"
 msgstr "וידג'טים"
 
@@ -12022,7 +12022,7 @@ msgstr "עריכה"
 msgid "No"
 msgstr "לא"
 
-#: wp-includes/deprecated.php:3130 wp-includes/functions.php:2605
+#: wp-includes/deprecated.php:3130 wp-includes/functions.php:2606
 msgid "Are you sure you want to do this?"
 msgstr "האם אתה בטוח שאתה רוצה לעשות זאת?"
 

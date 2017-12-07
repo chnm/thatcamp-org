@@ -4,11 +4,11 @@ Author URI: http://www.usestrict.net/
 Plugin URI: http://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
-Tested up to: 4.8.2
+Tested up to: 4.9.1
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.15.9.1
+Stable tag: 1.15.11
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
 == Description ==
@@ -70,6 +70,12 @@ the [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out
 
 
 == Changelog ==
+= 1.15.11 =
+* Adjust parameters for send_notification().
+
+= 1.15.10 =
+* Add post type, topic/reply id and forum id to send_notification() so they can be used in bbpnns_filter_email_body_for_user and bbpnns_filter_email_subject_for_user filters. 
+
 = 1.15.9.1 =
 * Fix: Removed debugging left behind in 1.15.9
 

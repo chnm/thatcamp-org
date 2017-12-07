@@ -2,7 +2,7 @@
 /*
 * Plugin Name:  bbPress Notify (No-Spam)
 * Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a>
-* Version:      1.15.9.1
+* Version:      1.15.11
 * Author:       <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:      GNU General Public License, v2 ( or newer )
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ load_plugin_textdomain( 'bbpress_notify', false, dirname( plugin_basename( __FIL
 
 class bbPress_Notify_noSpam {
 	
-	const VERSION = '1.15.9.1';
+	const VERSION = '1.15.11';
 	
 	protected $settings_section = 'bbpress_notify_options';
 	
@@ -466,7 +466,7 @@ jQuery(document).ready(function($){
 
 		list( $email_subject, $email_body ) = $this->_build_email( 'topic', $topic_id );
 
-		return $this->send_notification( $recipients, $email_subject, $email_body );
+		return $this->send_notification( $recipients, $email_subject, $email_body, $type='topic', $topic_id, $forum_id );
 	}
 	
 
@@ -587,7 +587,7 @@ jQuery(document).ready(function($){
 
 		list( $email_subject, $email_body ) = $this->_build_email( 'reply', $reply_id );
 
-		return $this->send_notification( $recipients, $email_subject, $email_body );
+		return $this->send_notification( $recipients, $email_subject, $email_body, $type='reply', $reply_id, $forum_id );
 	}
 	
 	
@@ -750,7 +750,7 @@ jQuery(document).ready(function($){
 	/**
 	 * @since 1.0
 	 */
-	public function send_notification( $recipients, $subject, $body )
+	public function send_notification( $recipients, $subject, $body, $type='', $post_id='', $forum_id='' )
 	{
 		$this->message_type = get_option( 'bbpress_notify_message_type', 'html' );
 		
@@ -799,8 +799,8 @@ jQuery(document).ready(function($){
 				 * Allow per user subject and body modifications
 				 * @since 1.6.4
 				 */
-				$filtered_body    = apply_filters( 'bbpnns_filter_email_body_for_user', $body, $user_info );
-				$filtered_subject = apply_filters( 'bbpnns_filter_email_subject_for_user', $subject, $user_info );
+				$filtered_body    = apply_filters( 'bbpnns_filter_email_body_for_user', $body, $user_info, $type, $post_id, $forum_id );
+				$filtered_subject = apply_filters( 'bbpnns_filter_email_subject_for_user', $subject, $user_info, $type, $post_id, $forum_id );
 				
 				/**
 				 * Replace user name tags

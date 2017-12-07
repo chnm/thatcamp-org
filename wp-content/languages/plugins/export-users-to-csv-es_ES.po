@@ -1,0 +1,72 @@
+# Translation of Plugins - Export Users to CSV - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Export Users to CSV - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-12-05 07:20:43+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Export Users to CSV - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "https://www.mattcromwell.com/products/export-users-to-csv"
+msgstr "https://www.mattcromwell.com/products/export-users-to-csv"
+
+#. Author of the plugin/theme
+msgid "Matt Cromwell"
+msgstr "Matt Cromwell"
+
+#. Description of the plugin/theme
+msgid "Export Users data and metadata to a csv file."
+msgstr "Exporta los datos de los usuarios a un archivo CSV."
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/export-users-to-csv/"
+msgstr "https://es.wordpress.org/extend/plugins/export-users-to-csv/"
+
+#. Plugin Name of the plugin/theme
+msgid "Export Users to CSV"
+msgstr "Export Users to CSV"
+
+#: export-users-to-csv.php:177
+msgid "Export"
+msgstr "Exportar"
+
+#: export-users-to-csv.php:169
+msgid "End Date"
+msgstr "Fecha final"
+
+#: export-users-to-csv.php:165
+msgid "Start Date"
+msgstr "Fecha inicial"
+
+#: export-users-to-csv.php:162
+msgid "Date range"
+msgstr "Rango de fechas"
+
+#: export-users-to-csv.php:152
+msgid "Every Role"
+msgstr "Cada perfil"
+
+#: export-users-to-csv.php:148
+msgid "Role"
+msgstr "Perfil"
+
+#: export-users-to-csv.php:141
+msgid "No user found."
+msgstr "No se encontró el usuario."
+
+#: export-users-to-csv.php:138
+msgid "Export users to a CSV file"
+msgstr "Exporta usuarios a un archivo CSV"
+
+#: export-users-to-csv.php:134
+msgid "You do not have sufficient permissions to access this page."
+msgstr "No tiene los suficientes permisos para acceder esta página."
+
+#: export-users-to-csv.php:54
+msgid "Export to CSV"
+msgstr "Exportar a CSV"

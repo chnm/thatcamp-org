@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Akismet Anti-Spam - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-06 06:36:08+0000\n"
+"PO-Revision-Date: 2017-11-14 20:11:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,6 +31,14 @@ msgstr "Der API-Schlüssel dieser Website ist im Quelltext festgeschrieben und k
 msgid "The time period for which to retrieve stats. Options: 60-days, 6-months, all"
 msgstr "Der Zeitraum, für den Statistiken abgerufen werden. Optionen: 60 Tage, 6 Monate, alle"
 
+#: class.akismet-rest-api.php:56
+msgid "If true, show the number of approved comments beside each comment author in the comments list page."
+msgstr "Wenn wahr, zeige die Anzahl der genehmigten Kommentare neben jedem Kommentarautor in der Kommentarliste an."
+
+#: class.akismet-rest-api.php:51
+msgid "If true, Akismet will automatically discard the worst spam automatically rather than putting it in the spam folder."
+msgstr "Wenn wahr, wird Akismet automatisch den schlimmsten Spam automatisch aussortieren, anstatt ihn in den Spam-Ordner zu legen."
+
 #: class.akismet-rest-api.php:27
 msgid "A 12-character Akismet API key. Available at akismet.com/get/"
 msgstr "Ein 12-stelliger Akismet-API-Schlüssel. Erhältlich unter akismet.com/get/"
@@ -55,6 +63,10 @@ msgstr "Manuelle Konfiguration"
 msgid "On this page, you are able to update your Akismet settings and view spam stats."
 msgstr "Auf dieser Seite kannst du deine Akismet-Einstellungen aktualisieren und Spam-Statistiken betrachten."
 
+#. Description of the plugin/theme
+msgid "Used by millions, Akismet is quite possibly the best way in the world to <strong>protect your blog from spam</strong>. It keeps your site protected even while you sleep. To get started: activate the Akismet plugin and then go to your Akismet Settings page to set up your API key."
+msgstr "Von Millionen genutzt, ist Akismet wahrscheinlich der beste Weg in der Welt, <strong>um deine Website oder deinen Blog vor Spam zu schützen</strong>. Es schützt deine Website auch während du schläfst. Um zu beginnen: Aktiviere das Akismet Plugin und gehe dann auf deine Akismet-Einstellungen Seite, um deinen API-Schlüssel einzurichten. (Hinweis: Für Nutzer in Deutschland empfehlen wir als Alternative das Plugin <strong>Antispam Bee</strong>, welches werbefrei und konform mit den europäischen Datenschutzstandards arbeitet.)"
+
 #. #-#-#-#-#  akismet-code.pot (Akismet Anti-Spam 4.0.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: class.akismet-admin.php:95 class.akismet-admin.php:98
@@ -75,7 +87,7 @@ msgstr "(Was ist ein API-Schlüssel?)"
 
 #: views/start.php:83
 msgid "Or enter an API key"
-msgstr "Oder gebe einen API-Schlüssel ein"
+msgstr "Oder gib einen API-Schlüssel ein"
 
 #: views/start.php:67
 msgid "Or sign up with a different email address"
@@ -115,7 +127,7 @@ msgstr "Akismet schützt deine Website ab sofort vor Spam. Fröhliches Bloggen!"
 
 #: views/notice.php:8
 msgid "Set up your Akismet account"
-msgstr "Richte dein Akismet-Konto ein"
+msgstr "Eröffne dein Akismet-Konto"
 
 #: views/config.php:26
 msgid "Detailed Stats"
@@ -124,6 +136,14 @@ msgstr "Detaillierte Statistiken"
 #: views/config.php:22
 msgid "Statistics"
 msgstr "Statistiken"
+
+#: class.akismet-admin.php:1111
+msgid "Used by millions, Akismet is quite possibly the best way in the world to <strong>protect your blog from spam</strong>. It keeps your site protected even while you sleep. To get started, just go to <a href=\"admin.php?page=akismet-key-config\">your Akismet Settings page</a> to set up your API key."
+msgstr "Von Millionen genutzt, ist Akismet wahrscheinlich der beste Weg in der Welt, <strong>um deine Website oder deinen Blog vor Spam zu schützen</strong>. Es schützt deine Website auch während du schläfst. Um zu beginnen: Aktiviere das Akismet Plugin und gehe dann auf  <a href=\"admin.php?page=akismet-key-config\">deine Akismet-Einstellungen</a> Seite, um deinen API-Schlüssel einzurichten."
+
+#: class.akismet-admin.php:1108
+msgid "Used by millions, Akismet is quite possibly the best way in the world to <strong>protect your blog from spam</strong>. Your site is fully configured and being protected, even while you sleep."
+msgstr "Von Millionen genutzt, ist Akismet wahrscheinlich der beste Weg in der Welt, <strong>um deine Website oder deinen Blog vor Spam zu schützen</strong>. Deine Website ist vollständig konfiguriert und geschützt, auch während du schläfst."
 
 #: class.akismet-admin.php:1007
 msgid "%s comment was caught as spam."
@@ -205,7 +225,7 @@ msgstr "Anmelden oder jetzt registrieren."
 
 #: views/start.php:84
 msgid "Already have your key? Enter it here."
-msgstr "Hast du bereits einen Schlüssel? Gib ihn hier ein."
+msgstr "Du hast bereits einen Schlüssel? Gib ihn hier ein."
 
 #: views/start.php:69
 msgid "Sign up with a different email address"
@@ -225,7 +245,7 @@ msgstr "Dein Akismet-Abonnement wurde unterbrochen."
 
 #: views/notice.php:59
 msgid "Your Akismet plan has been cancelled."
-msgstr "Dein Akismet-Tarif wurde annulliert."
+msgstr "Dein Akismet-Tarif wurde beendet."
 
 #: views/notice.php:55
 msgid "We cannot process your payment. Please <a href=\"%s\" target=\"_blank\">update your payment details</a>."
@@ -237,7 +257,7 @@ msgstr "Bitte aktualisiere deine Zahlungsinformationen."
 
 #: views/notice.php:11
 msgid "<strong>Almost done</strong> - configure Akismet and say goodbye to spam"
-msgstr "<strong>Fast fertig</strong> - konfiguriere Akismet und verabschiede dich von Spam"
+msgstr "<strong>Fast fertig</strong> - konfiguriere Akismet und verabschiede dich von Spam."
 
 #: class.akismet-admin.php:932
 msgid "Akismet has saved you %d minute!"
@@ -387,7 +407,7 @@ msgstr "Kopiere den API-Schlüssel und füge ihn in das Text-Feld ein."
 
 #: class.akismet-admin.php:186
 msgid "Click the Use this Key button."
-msgstr "Drücke die Schaltfläche Nutze diesen Schlüssel. "
+msgstr "Drücke die Schaltfläche „Nutze diesen Schlüssel“."
 
 #: class.akismet-admin.php:198
 msgid "Akismet Stats"
@@ -781,7 +801,7 @@ msgstr "Reaktiviere Akismet"
 
 #: views/start.php:43
 msgid "Your subscription for %s is cancelled."
-msgstr "Dein Abonnement für %s wurde annulliert."
+msgstr "Dein Abonnement für %s ist beendet."
 
 #: views/start.php:48
 msgid "Your subscription for %s is suspended."

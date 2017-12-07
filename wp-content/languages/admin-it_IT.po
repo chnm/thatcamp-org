@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-29 05:55:20+0000\n"
+"PO-Revision-Date: 2017-12-01 20:28:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -301,7 +301,7 @@ msgstr "Scaricando traduzione da %s&#8230;"
 #: wp-admin/includes/class-plugin-upgrader.php:50
 #: wp-admin/includes/class-theme-upgrader.php:49
 msgid "Downloading update from %s&#8230;"
-msgstr "Scaricando aggiornamento da %s&#8230;"
+msgstr "Download dell'aggiornamento da %s&#8230;"
 
 #. translators: 1: wp-admin/includes/template.php 2: add_meta_box() 3:
 #. add_meta_boxes
