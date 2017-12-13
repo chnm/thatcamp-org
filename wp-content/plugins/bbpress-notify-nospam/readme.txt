@@ -8,16 +8,18 @@ Tested up to: 4.9.1
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.15.11
+Stable tag: 1.16
+Requires PHP: 5.3
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
 == Description ==
-This is a modification of the original bbPress-Notify plugin, after several failed attempts to contact the author requesting that he add the no-spam code to it. I don't like spam. Do you?
+This is started as a fork of the original bbPress-Notify plugin, after several failed attempts to contact the author requesting that he add the no-spam code to it. I don't like spam. Do you?
 
-This plugin integrates into bbPress and sends a notification via e-mail when new topics or replies are posted. It is fully configurable in the bbPress settings.
+It integrates into bbPress and sends notifications via e-mail when new topics or replies are posted. It is fully configurable in the bbPress settings.
 
-= Settings include =
+= Features include =
 
+ * Send notifications in HTML, Plain text, or Multipart format, with full image support.
  * Override bbPress' core subscription messages with your own; 
  * Set Notification recipient roles for new topics;
  * Set Notification recipient roles for new replies; 
@@ -27,12 +29,16 @@ This plugin integrates into bbPress and sends a notification via e-mail when new
 
 <blockquote>
 = Premium Add-Ons =
+
+Take your notifications to the next level with one or more of these add-ons. 
+
 <ul>
-    <li><a href="http://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/" target="_new">Opt-out Add-on</a>: Users can choose not to receive notifications. A must-have for CAN-SPAM and CASL laws!</li>
-    <li><a href="http://usestrict.net/product/bbpress-notify-no-spam-digests/" target="_new">Digest Add-on</a>: Users can choose to receive daily, weekly, or monthly digests.</li>
-    <li><a href="http://usestrict.net/product/bbpress-moderation-plugin-add-on/" target="_new">bbPress Moderation Integration</a>: Make bbpnns work with <a href="https://wordpress.org/plugins/bbpressmoderation/" target="_new">bbPress Moderation</a>.</li>
-    <li><a href="http://usestrict.net/product/bbpress-notify-no-spam-private-groups-bridge/" target="_new">bbPress Private Groups Integration</a>: Make bbpnns respect <a href="https://wordpress.org/plugins/bbp-private-groups/" target="_new">bbPress Private Groups</a> rules.</li>
-    <li><a href="http://usestrict.net/product/bbpress-notify-no-spam-buddypress-bridge/" target="_new">BuddyPress Integration</a>: Notify BuddyPress Group members of new Group Forum topics and replies.</li>
+    <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/" target="_new">Opt-out Add-on</a>: Users can choose not to receive any notifications, or simply unsubscribe from the thread with a single click. A must-have for CAN-SPAM and CASL laws!</li>
+    <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-digests/" target="_new">Digest Add-on</a>: Users can choose to receive daily, weekly, or monthly digests.</li>
+    <li><a href="https://usestrict.net/product/bbpress-moderation-plugin-add-on/" target="_new">bbPress Moderation Integration</a>: Make bbpnns work with <a href="https://wordpress.org/plugins/bbpressmoderation/" target="_new">bbPress Moderation</a>.</li>
+    <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-private-groups-bridge/" target="_new">bbPress Private Groups Integration</a>: Make bbpnns respect <a href="https://wordpress.org/plugins/bbp-private-groups/" target="_new">bbPress Private Groups</a> rules.</li>
+    <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-buddypress-bridge/" target="_new">BuddyPress Integration</a>: Notify BuddyPress Group members of new Group Forum topics and replies. It also shows individual Opt Out and Digest settings in each user's BuddyPress profile screen.</li>
+    <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-memberpress-bridge/" target="_new">MemberPress Integration</a>: Make sure your members have access to Opt Out and Digest settings in their MemberPress profile screens.</li>
 </ul>
 
 = Partnerships =
@@ -70,6 +76,10 @@ the [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out
 
 
 == Changelog ==
+= 1.16 =
+* Add support for embedded images in notifications.
+* Capture case when topic_id does not get passed to notify_new_reply()
+
 = 1.15.11 =
 * Adjust parameters for send_notification().
 

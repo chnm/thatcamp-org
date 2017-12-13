@@ -308,7 +308,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 			$this->assertFalse( empty( $result ) );
 		}
 
-	public function test_convert_links()
+	public function test_convert_images_and_links()
 	{
 		$text = 'This is <a href="http://thefirstlink.com">the first link</a> and 
 				
@@ -316,28 +316,28 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
 		
-		$conv = $bbpnns->convert_links( $text );
+		$conv = $bbpnns->convert_images_and_links( $text );
 		
 		$expected = 'This is (the first link) [http://thefirstlink.com] and 
 				
 				then (the second link) [http://thescondlink.com] and the final stuff.';
-		$this->assertEquals( $conv, $expected, 'Conversion works as expected' );
+		$this->assertEquals( $expected, $conv, 'Conversion works as expected' );
 		
 		$text = 'This is <a href="http://thefirstlink.com"><img src="foo.gif" alt="foo"></a> and then <a href="http://thescondlink.com">the second link</a> and the final stuff.';
 		
 		$expected = 'This is ([img]foo[/img]) [http://thefirstlink.com] and then (the second link) [http://thescondlink.com] and the final stuff.';
 		
-		$conv = $bbpnns->convert_links( $text );
+		$conv = $bbpnns->convert_images_and_links( $text );
 		
 		$this->assertEquals( $conv, $expected, 'Got an image altered');
 		
 		$text = 'This is på en forumtråd <a href="http://thefirstlink.com"><img src="foo.gif" alt="foo"> and some text and <img src="foo.gif" alt="another image"></a> <img src="foo.gif" alt="yet another image"> and then <a href="http://thescondlink.com">the second link</a> and the final stuff.';
 		
-		$conv = $bbpnns->convert_links( $text );
+		$conv = $bbpnns->convert_images_and_links( $text );
 		
 		$expected = 'This is på en forumtråd ([img]foo[/img] and some text and [img]another image[/img]) [http://thefirstlink.com] [img]yet another image[/img] and then (the second link) [http://thescondlink.com] and the final stuff.';
 		
-		$this->assertEquals( $conv, $expected, 'Nested and not nested images OK');
+		$this->assertEquals( $expected, $conv, 'Nested and not nested images OK');
 	}
 	
 	

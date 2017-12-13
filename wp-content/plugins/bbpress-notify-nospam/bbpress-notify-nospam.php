@@ -2,7 +2,7 @@
 /*
 * Plugin Name:  bbPress Notify (No-Spam)
 * Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a>
-* Version:      1.15.11
+* Version:      1.16
 * Author:       <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:      GNU General Public License, v2 ( or newer )
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ load_plugin_textdomain( 'bbpress_notify', false, dirname( plugin_basename( __FIL
 
 class bbPress_Notify_noSpam {
 	
-	const VERSION = '1.15.11';
+	const VERSION = '1.16';
 	
 	protected $settings_section = 'bbpress_notify_options';
 	
@@ -555,6 +555,9 @@ jQuery(document).ready(function($){
 		if ( 0 === $forum_id )
 			$forum_id = bbp_get_reply_forum_id( $reply_id );
 		
+		if ( 0 === $topic_id )
+			$topic_id = bbp_get_reply_topic_id( $reply_id );
+		
 		if (   in_array( $status, (array) apply_filters( 'bbpnns_post_status_blacklist', array( 'spam' ), $status, $forum_id, $topic_id, $reply_id ) ) || 
 			 ! in_array( $status, (array) apply_filters( 'bbpnns_post_status_whitelist', array( 'publish' ), $status, $forum_id, $topic_id, $reply_id ) ) )
 			return -1;
@@ -635,7 +638,7 @@ jQuery(document).ready(function($){
 		
 		$content = preg_replace( '/<br\s*\/?>/is', PHP_EOL, $content );
 		$content = preg_replace( '/(?:<\/p>\s*<p>)/ism', PHP_EOL . PHP_EOL, $content );
-		$content = wp_specialchars_decode( strip_tags( $content ), ENT_QUOTES );
+		$content = wp_specialchars_decode( $content, ENT_QUOTES );
 		
 		$topic_reply = apply_filters( 'bbpnns_topic_reply', bbp_get_reply_url( $post_id ), $post_id, $title );
 		
@@ -737,7 +740,7 @@ jQuery(document).ready(function($){
 	 */
 	public function set_alt_body( $phpmailer )
 	{
-		$phpmailer->AltBody = $this->AltBody;
+		$phpmailer->AltBody = wp_strip_all_tags( $this->convert_images_and_links( $this->AltBody ) );
 	}
 	
 	public function add_signature_header( $phpmailer )
@@ -784,6 +787,9 @@ jQuery(document).ready(function($){
 			);
 		}
 		
+		// Evaluate this only once, check many
+		$is_dry_run = apply_filters( 'bbpnns_dry_run', false );
+		
 		foreach ( ( array ) $recipients as $recipient_id => $user_info )
 		{
 			/**
@@ -793,7 +799,7 @@ jQuery(document).ready(function($){
 			$email = ( $recipient_id == -1 ) ? get_bloginfo( 'admin_email' ) : ( string ) $user_info->user_email ;
 			$email = apply_filters( 'bbpnns_skip_notification', $email ); // Allow user to be skipped for some reason
 
-			if ( ! empty( $email ) && false === apply_filters( 'bbpnns_dry_run', false ) )
+			if ( ! empty( $email ) && false === $is_dry_run )
 			{
 				/**
 				 * Allow per user subject and body modifications
@@ -820,13 +826,21 @@ jQuery(document).ready(function($){
 				switch( $this->message_type )
 				{
 					case 'multipart':
-						$this->AltBody = wp_strip_all_tags( $this->convert_links( $filtered_body ) );
-						add_action( 'phpmailer_init', array( $this, 'set_alt_body' ), 1000, 1);
+						$this->AltBody = $filtered_body;
+						if ( ! has_action( 'phpmailer_init', array( $this, 'set_alt_body' ) ) )
+						{
+							add_action( 'phpmailer_init', array( $this, 'set_alt_body' ), 1001, 1);
+						}
 					case 'html':
-						$filtered_body = false === stripos( $filtered_body, '<p>' ) ? wpautop( $filtered_body ) : $filtered_body; // Handle missing p tags.
+						$filtered_body = $this->prep_image_cid( $filtered_body );
+						$filtered_body = wpautop( $filtered_body ); // Handle missing p tags.
+						if ( ! has_action( 'phpmailer_init', array( $this, 'embed_images' ) ) )
+						{
+							add_action( 'phpmailer_init', array( $this, 'embed_images' ), 1000, 1);
+						} 
 						break;
 					case 'plain':
-						$filtered_body = wp_strip_all_tags( $this->convert_links( $filtered_body ) );
+						$filtered_body = wp_strip_all_tags( $this->convert_images_and_links( $filtered_body ) );
 						break;
 					default:
 				}
@@ -885,56 +899,197 @@ jQuery(document).ready(function($){
 		return true;
 	}
 	
+	
 	/**
-	 * Make sure we keep our links instead of stripping them out along with the rest of the HTML. 
-	 * @param string $text
-	 * @return string|unknown
+	 * Embeds images into message
+	 * @param PHPMailer $phpmailer
 	 */
-	public function convert_links( $text )
+	public function embed_images( $phpmailer )
 	{
+		if ( empty( $this->cid_ary ) )
+			return;
+		
+		foreach ( $this->cid_ary as $el )
+		{
+			if ( false === $el )
+				continue;
+			
+			$filepath = $el['filepath'];
+			$name     = $el['filename'];
+			$cid      = $el['cid'];
+			
+			$phpmailer->AddEmbeddedImage( $filepath, $cid, $name );
+		}
+	}
+	
+	
+	/**
+	 * Process images to embed in the email.
+	 * @param string $text
+	 * @return string
+	 */
+	public function prep_image_cid( $text )
+	{
+		if ( ! isset( $this->cid_ary ) )
+		{
+			$this->cid_ary = array();
+		}
+		
 		$dom = new DOMDocument();
-
+		
 		$previous_value = libxml_use_internal_errors(TRUE);
 		
 		$dom->loadHTML( '<?xml encoding="utf-8" ?>' . $text );
 		
 		libxml_use_internal_errors($previous_value);
 		
-		$elements = $dom->getElementsByTagName( 'a' );
+		$local       = parse_url( get_option( 'siteurl' ) );
+		$this_domain = strtolower( $local['host'] );
 		
+		$images = $dom->getElementsByTagName('img');
+		
+		foreach ( $images as $img )
+		{
+			$src = $img->getAttribute('src');
+
+			if ( $src && ! isset( $this->cid_ary[$src] ) )
+			{
+				$parsed = parse_url( $src );
+				
+				if ( $this_domain === strtolower( $parsed['host'] ) )
+				{
+					$path     = ABSPATH . $parsed['path'];
+					$parts    = pathinfo( $path );
+					$ext      = strtolower( $parts['extension'] );
+					$filename = $parts['filename'];
+					
+					// We only allow images
+					if ( in_array( $ext, array( 'jpg', 'jpeg', 'png', 'gif' ) ) )
+					{
+						$cid = uniqid();
+						$this->cid_ary[$src] = array( 'cid' => $cid, 'filepath' => $path, 'filename' => $filename );
+					}
+					else
+					{
+						$this->cid_ary[$src] = false;
+					}
+				}
+				else 
+				{
+					// NOOP: Only embed local images for safety
+				}
+			}
+			
+			if ( false !== $this->cid_ary[$src] )
+			{
+				$img->setAttribute( 'src', 'cid:' . $this->cid_ary[$src]['cid'] );
+			}
+		}
+		
+		if ( $images )
+		{
+			$text = $dom->saveHTML($dom->documentElement->lastChild);
+			$text = preg_replace('@^<body>|</body>$@', '', $text );
+		}
+		
+		return $text;
+	}
+	
+	/**
+	 * Make sure we keep our links instead of stripping them out along with the rest of the HTML. 
+	 * @param string $text
+	 * @return string|unknown
+	 */
+	public function convert_images_and_links( $text )
+	{
+		$dom = new DOMDocument();
+	
+		$previous_value = libxml_use_internal_errors(TRUE);
+	
+		$dom->loadHTML( '<?xml encoding="utf-8" ?>' . $text );
+	
+		libxml_use_internal_errors($previous_value);
+	
+		$elements = $dom->getElementsByTagName( 'a' );
+	
 		foreach ( $elements as $el )
 		{
 			$href  = $el->getAttribute('href');
-			
+				
 			// Capture links that have only images in them.
 			foreach ( $el->getElementsByTagName('img') as $img )
 			{
 				$alt = $img->getAttribute('alt');
-				
+				$src = $img->getAttribute('src');
+	
+				$img_text = '*image*';
 				if ( $alt )
-					$img->nodeValue = sprintf('[img]%s[/img]', $alt );
+				{
+					$img_text = $alt;
+				}
+				elseif ( 'cid:' === substr( $src, 0, 4) )
+				{
+					$cid = substr( $src, 3 );
+					foreach ( $this->cid_ary as $osrc => $el )
+					{
+						if ( $osrc === $src )
+						{
+							$img_text = $el['filename'];
+							break;
+						}
+					}
+				}
+				else
+				{
+					$img_text = basename( $src );
+				}
+				
+				$img->nodeValue = sprintf( '[img]%s[/img]', $img_text );
 			}
-			
+				
 			$el->nodeValue = sprintf( '(%s) [%s]', $el->nodeValue, $href );
 		}
-		
-		
+	
+		// Unlinked images now
 		foreach ( $dom->getElementsByTagName('img') as $img )
 		{
 			$alt = $img->getAttribute('alt');
-		
+			$src = $img->getAttribute('src');
+
+			$img_text = '*image*';
 			if ( $alt )
-				$img->nodeValue = sprintf('[img]%s[/img]', $alt );
+			{
+				$img_text = $alt;
+			}
+			elseif ( 'cid:' === substr( $src, 0, 4) )
+			{
+				$cid = substr( $src, 3 );
+				foreach ( $this->cid_ary as $osrc => $el )
+				{
+					if ( $osrc === $src )
+					{
+						$img_text = $el['filename'];
+						break;
+					}
+				}
+			}
+			else
+			{
+				$img_text = basename( $src );
+			}
+			
+			$img->nodeValue = sprintf( '[img]%s[/img]', $img_text );
 		}
-		
-		
+	
+	
 		if ( $elements )
 		{
 			$text = $dom->documentElement->lastChild->nodeValue;
 		}
-		
+	
 		return $text;
-	}	
+	}
+	
 	
 	
 	/**

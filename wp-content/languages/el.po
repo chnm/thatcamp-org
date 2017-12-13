@@ -1922,7 +1922,7 @@ msgctxt "New site notification email subject"
 msgid "[%1$s] Activate %2$s"
 msgstr "[%1$s] Ενεργοποίηση %2$s"
 
-#: wp-includes/widgets.php:1395 wp-includes/widgets.php:1504
+#: wp-includes/widgets.php:1398 wp-includes/widgets.php:1507
 msgid "RSS Error:"
 msgstr "Σφάλμα RSS:"
 
@@ -9864,27 +9864,27 @@ msgstr "Επιλογή κατηγορίας"
 msgid "Show hierarchy"
 msgstr "Ιεραρχική προβολή"
 
-#: wp-includes/widgets.php:1426
+#: wp-includes/widgets.php:1429
 msgid "Untitled"
 msgstr "Χωρίς τίτλο"
 
-#: wp-includes/widgets.php:1510
+#: wp-includes/widgets.php:1513
 msgid "Enter the RSS feed URL here:"
 msgstr "Ορίστε τη διεύθυνση του καναλιού RSS:"
 
-#: wp-includes/widgets.php:1513
+#: wp-includes/widgets.php:1516
 msgid "Give the feed a title (optional):"
 msgstr "Ονομάστε το κανάλι RSS (προαιρετικό):"
 
-#: wp-includes/widgets.php:1516
+#: wp-includes/widgets.php:1519
 msgid "How many items would you like to display?"
 msgstr "Πόσα στοιχεία να εμφανίζονται;"
 
-#: wp-includes/widgets.php:1529
+#: wp-includes/widgets.php:1532
 msgid "Display item author if available?"
 msgstr "Προβολή συντάκτη αν υπάρχει;"
 
-#: wp-includes/widgets.php:1532
+#: wp-includes/widgets.php:1535
 msgid "Display item date?"
 msgstr "Προβολή ημερομηνίας;"
 
@@ -10613,7 +10613,7 @@ msgstr "Ζητήστε νέο συνθηματικό"
 msgid "Could not set that as the thumbnail image. Try a different attachment."
 msgstr "Δεν ήταν δυνατό να οριστεί η εικόνα ως μικρογραφία. Δοκιμάστε άλλο συνημμένο."
 
-#: wp-includes/rss.php:917 wp-includes/widgets.php:1410
+#: wp-includes/rss.php:917 wp-includes/widgets.php:1413
 msgid "An error has occurred, which probably means the feed is down. Try again later."
 msgstr "Παρουσιάστηκε σφάλμα. Το κανάλι ίσως είναι εκτός λειτουργίας. Ξαναδοκιμάστε αργότερα."
 
@@ -10734,7 +10734,7 @@ msgstr "διαγράφηκαν."
 msgid "Post Comment"
 msgstr "Δημοσίευση σχολίου"
 
-#: wp-includes/widgets.php:1526
+#: wp-includes/widgets.php:1529
 msgid "Display item content?"
 msgstr "Προβολή περιεχομένου στοιχείου;"
 
@@ -11564,7 +11564,7 @@ msgstr "Σχόλια (%s)"
 msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform."
 msgstr "Βασισμένο στο WordPress, την προηγμένη πλατφόρμα ιστοδημοσιεύσεων"
 
-#: wp-includes/category-template.php:1139
+#: wp-includes/category-template.php:1131
 msgid "Tags: "
 msgstr "Ετικέτες: "
 
