@@ -2,7 +2,7 @@
 /*
 * Plugin Name:  bbPress Notify (No-Spam)
 * Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a>
-* Version:      1.16
+* Version:      1.16.1
 * Author:       <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:      GNU General Public License, v2 ( or newer )
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ load_plugin_textdomain( 'bbpress_notify', false, dirname( plugin_basename( __FIL
 
 class bbPress_Notify_noSpam {
 	
-	const VERSION = '1.16';
+	const VERSION = '1.16.1';
 	
 	protected $settings_section = 'bbpress_notify_options';
 	
@@ -779,6 +779,12 @@ jQuery(document).ready(function($){
 		$do_enc = ( bool ) get_option( 'bbpress_notify_encode_subject', false );
 		$preferences = array();
 		
+		/**
+		 * We use this in prep_image_cid() and convert_links().
+		 * Load it just once.
+		 */
+		$this->charset = get_bloginfo( 'charset' );
+		
 		if ( true === $do_enc && function_exists( 'iconv_get_encoding' ) )
 		{
 			$enc         = iconv_get_encoding( 'internal_encoding' );
@@ -939,7 +945,7 @@ jQuery(document).ready(function($){
 		
 		$previous_value = libxml_use_internal_errors(TRUE);
 		
-		$dom->loadHTML( '<?xml encoding="utf-8" ?>' . $text );
+		$dom->loadHTML( '<?xml encoding="' . $this->charset . '" ?>' . $text );
 		
 		libxml_use_internal_errors($previous_value);
 		
@@ -1006,7 +1012,7 @@ jQuery(document).ready(function($){
 	
 		$previous_value = libxml_use_internal_errors(TRUE);
 	
-		$dom->loadHTML( '<?xml encoding="utf-8" ?>' . $text );
+		$dom->loadHTML( '<?xml encoding="' . $this->charset . '" ?>' . $text );
 	
 		libxml_use_internal_errors($previous_value);
 	

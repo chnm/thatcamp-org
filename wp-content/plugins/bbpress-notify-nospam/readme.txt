@@ -8,7 +8,7 @@ Tested up to: 4.9.1
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.16
+Stable tag: 1.16.1
 Requires PHP: 5.3
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
@@ -76,6 +76,9 @@ the [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out
 
 
 == Changelog ==
+= 1.16.1 =
+* Don't assume UTF-8 loading the text in DOMDocument to process image CIDs and convert links. 
+
 = 1.16 =
 * Add support for embedded images in notifications.
 * Capture case when topic_id does not get passed to notify_new_reply()
