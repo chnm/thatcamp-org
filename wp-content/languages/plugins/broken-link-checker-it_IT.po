@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Broken Link Checker - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-12 10:55:53+0000\n"
+"PO-Revision-Date: 2017-12-17 13:44:03+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -94,7 +94,7 @@ msgstr "Video incorporato YouTube"
 
 #: modules/extras/youtube-embed.php:24 modules/extras/youtube-iframe.php:25
 msgid "YouTube Video"
-msgstr "YouTube Video"
+msgstr "Video di YouTube"
 
 #: modules/extras/vimeo-embed.php:25
 msgid "Embedded Vimeo video"
@@ -102,7 +102,7 @@ msgstr "Video incorporato Vimeo"
 
 #: modules/extras/vimeo-embed.php:24
 msgid "Vimeo Video"
-msgstr "Vimeo Video"
+msgstr "Video di Vimeo"
 
 #: modules/extras/rapidshare.php:189
 msgid "RapidShare API error: %s"
@@ -143,7 +143,7 @@ msgstr "Video incorporato GoogleVideo"
 
 #: modules/extras/googlevideo-embed.php:24
 msgid "GoogleVideo Video"
-msgstr "GoogleVideo Video"
+msgstr "Video di GoogleVideo"
 
 #: modules/extras/embed-parser-base.php:197
 msgid "Embedded videos can't be edited using Broken Link Checker. Please edit or replace the video in question manually."
@@ -155,7 +155,7 @@ msgstr "Video incorporato DailyMotion"
 
 #: modules/extras/dailymotion-embed.php:23
 msgid "DailyMotion Video"
-msgstr "DailyMotion Video"
+msgstr "Video di DailyMotion"
 
 #: modules/containers/dummy.php:34 modules/containers/dummy.php:45
 msgid "I don't know how to edit a '%s' [%d]."
@@ -262,7 +262,7 @@ msgstr "Usando Snoopy"
 
 #: modules/checkers/http.php:448
 msgid "Request timed out."
-msgstr "Richiesta scaduta"
+msgstr "Richiesta scaduta."
 
 #: modules/checkers/http.php:377
 msgid "Most likely the connection timed out or the domain doesn't exist."
@@ -274,7 +274,7 @@ msgstr "(nessuna risposta)"
 
 #: modules/checkers/http.php:357 modules/checkers/http.php:439
 msgid "HTTP code : %d"
-msgstr "Codice HTTP : %d"
+msgstr "Codice HTTP: %d"
 
 #: modules/checkers/http.php:309
 msgid "Connection Failed"
@@ -350,7 +350,7 @@ msgstr "Il de-link non é implementatato nel '%s' parser"
 
 #: includes/parsers.php:117
 msgid "Editing is not implemented in the '%s' parser"
-msgstr "La modifica non é implementata nel '%s' parser"
+msgstr "La modifica non è implementata nel '%s' parser"
 
 #: includes/links.php:1050 modules/extras/rapidshare.php:145
 #: modules/extras/rapidshare.php:151 modules/extras/rapidshare.php:178
@@ -396,15 +396,15 @@ msgstr "Questo link non può essere modificato poiché non viene utilizzato in n
 
 #: includes/links.php:733 includes/links.php:835 includes/links.php:869
 msgid "Link is not valid"
-msgstr "Link non valido"
+msgstr "Il link non è valido"
 
 #: includes/links.php:504
 msgid "Link is valid."
-msgstr "Il link è valido"
+msgstr "Il link è valido."
 
 #: includes/links.php:502
 msgid "Link is broken."
-msgstr "Il link non è valido"
+msgstr "Il link non è rotto."
 
 #: includes/links.php:271
 msgid "The plugin doesn't know how to check this type of link."
@@ -444,7 +444,7 @@ msgstr "Link reindirizzati"
 
 #: includes/link-query.php:56
 msgid "Redirects"
-msgstr "Redirects"
+msgstr "Reindirizzamenti"
 
 #: includes/link-query.php:48
 msgid "No warnings found"
@@ -461,7 +461,7 @@ msgstr "Avvisi"
 
 #: includes/link-query.php:38
 msgid "No broken links found"
-msgstr "Nessun link non valido trovato"
+msgstr "Nessun link rotto trovato"
 
 #: includes/link-query.php:36
 msgid "Broken"
@@ -525,12 +525,12 @@ msgstr "API MediaFire"
 #: includes/extra-strings.php:13
 msgctxt "module name"
 msgid "HTML links"
-msgstr "HTML link"
+msgstr "Link HTML"
 
 #: includes/extra-strings.php:12
 msgctxt "module name"
 msgid "HTML images"
-msgstr "HTML immagini"
+msgstr "Immagini HTML"
 
 #: includes/extra-strings.php:11
 msgctxt "module name"
@@ -784,7 +784,7 @@ msgstr "Registro"
 
 #: includes/admin/table-printer.php:582
 msgid "This link has been broken for %s."
-msgstr "Questo link é stato rotto per %s."
+msgstr "Questo link è stato rotto per %s."
 
 #: includes/admin/table-printer.php:574
 msgid "This link has failed %d time."
