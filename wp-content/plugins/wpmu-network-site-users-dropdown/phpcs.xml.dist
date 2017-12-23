@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<ruleset name="WPMU Network Site Users Dropdown">
+	<file>.</file>
+
+	<!-- Exclude JS/CSS files. -->
+	<exclude-pattern>*.[s]?css</exclude-pattern>
+	<exclude-pattern>*.js</exclude-pattern>
+
+	<!-- Show sniff codes -->
+	<arg value="s"/>
+
+	<rule ref="WordPress">
+	<!--	<exclude name="WordPress.VIP.DirectDatabaseQuery.DirectQuery" />
+		<exclude name="WordPress.VIP.SuperGlobalInputUsage.AccessDetected" />-->
+	</rule>
+	<rule ref="WordPress-Docs" />
+
+	<rule ref="WordPress.VIP.ValidatedSanitizedInput">
+		<properties>
+			<property name="customUnslashingSanitizingFunctions" type="array" value="stripslashes" />
+		</properties>
+	</rule>
+
+	<!-- Whitelist classes for select sniffs. -->
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="custom_test_class_whitelist" type="array" value="Obenland_Wp_Plugins_V4"/>
+		</properties>
+	</rule>
+</ruleset>

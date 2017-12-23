@@ -3,8 +3,8 @@ Contributors: obenland
 Tags: admin, wpmu, network, network admin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HEXL3UM8D7R6N
 Requires at least: 3.1
-Tested up to: 4.0
-Stable tag: 1.5.0
+Tested up to: 5.0
+Stable tag: 2
 
 Replace the input field for adding existing users to a site with a more comfortable dropdown menu!
 
@@ -16,7 +16,7 @@ field with a comfortable dropdown menu, so you can choose between all existing
 users that are not yet added to the site.
 
 Don't worry about code overhead or performance issues, the plugin will only be
-loaded when a network admin sceen is requested.
+loaded when a network admin screen is requested.
 
 
 == Installation ==
@@ -38,6 +38,12 @@ None asked yet.
 
 
 == Changelog ==
+
+= 2 =
+* Maintenance release.
+* Only works if there are less than 100 registered users.
+* Updated code to adhere to WordPress Coding Standards.
+* Tested with WordPress 5.0.
 
 = 1.5.0 =
 * Maintenance release.
