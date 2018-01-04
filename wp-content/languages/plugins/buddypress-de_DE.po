@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - BuddyPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-13 17:04:59+0000\n"
+"PO-Revision-Date: 2017-12-27 21:46:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1926,7 +1926,7 @@ msgstr "Option hinzufügen"
 #. translators: accessibility text
 #: bp-xprofile/classes/class-bp-xprofile-field-type-url.php:102
 msgid "URL"
-msgstr "Webseite"
+msgstr "URL"
 
 #. translators: accessibility text
 #: bp-xprofile/classes/class-bp-xprofile-field-type-textbox.php:99
@@ -7493,7 +7493,7 @@ msgstr "Übernehmen"
 #: bp-messages/bp-messages-template.php:966
 #: bp-notifications/bp-notifications-template.php:1027
 msgid "Bulk Actions"
-msgstr "Aktion wählen"
+msgstr "Sammelaktionen"
 
 #: bp-messages/bp-messages-template.php:1203
 msgid "Deactivate"
@@ -9988,7 +9988,7 @@ msgstr "Spam"
 
 #: bp-activity/bp-activity-admin.php:755
 msgid "Approved"
-msgstr "Genehmigt"
+msgstr "Freigegeben"
 
 #: bp-activity/bp-activity-admin.php:747
 #: bp-activity/classes/class-bp-activity-list-table.php:690

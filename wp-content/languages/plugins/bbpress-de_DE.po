@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-07-13 07:59:44+0000\n"
+"PO-Revision-Date: 2017-12-27 19:36:45+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4044,7 +4044,7 @@ msgstr "Du kannst auch mehrere Foren auf einmal bearbeiten oder löschen. Wähle
 #: includes/admin/forums.php:155 includes/admin/replies.php:169
 #: includes/admin/topics.php:170
 msgid "Bulk Actions"
-msgstr "Massenaktionen"
+msgstr "Sammelaktionen"
 
 #: includes/admin/forums.php:148
 msgid "<strong>View</strong> will show you what your draft forum will look like if you publish it. View will take you to your live site to view the forum. Which link is available depends on your forum&#8217;s status."

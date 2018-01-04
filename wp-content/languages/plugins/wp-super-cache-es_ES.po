@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP Super Cache - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-12-15 17:11:07+0000\n"
+"PO-Revision-Date: 2018-01-02 16:29:15+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -201,7 +201,7 @@ msgstr "<strong>Errores:</strong> %s"
 
 #: wp-cache.php:1069
 msgid "Late init. Display cached files after WordPress has loaded."
-msgstr "Retrasar el incio. Muestra los archivos en caché después que WordPress haya cargado."
+msgstr "Retrasar el inicio. Muestra los archivos en caché después que WordPress haya cargado."
 
 #: wp-cache.php:1029
 msgid "Cache HTTP headers with page content."
@@ -612,6 +612,10 @@ msgstr "Caché de objetos en uso. No hay lista de caché disponible."
 #: wp-cache.php:2576
 msgid "Cache Contents"
 msgstr "Contenido de la caché"
+
+#: wp-cache.php:2482
+msgid "<h3>WP_CACHE constant added to wp-config.php</h3><p>If you continue to see this warning message please see point 5 of the <a href=\"https://wordpress.org/plugins/wp-super-cache/faq/\">Troubleshooting Guide</a>. The WP_CACHE line must be moved up."
+msgstr "<h3>Añadida la constante WP_CACHE a tu wp-config.php</h3><p>Si sigues viendo este mensaje de advertencia, revisa el punto 5 de la <a href=\"https://wordpress.org/plugins/wp-super-cache/faq/\">guía de resolución de problemas</a>, por favor. La línea WP_CACHE debe moverse hacia arriba."
 
 #: wp-cache.php:2478
 msgid "Edit <code>%s</code> and add the following line:<br /> <code>define('WP_CACHE', true);</code><br />Otherwise, <strong>WP-Cache will not be executed</strong> by WordPress core. "
@@ -1308,6 +1312,14 @@ msgstr "Prefijos para móviles"
 msgid "Mobile Browsers"
 msgstr "Navegadores moviles"
 
+#: wp-cache.php:1057
+msgid "Mobile device support. (External plugin or theme required. See the <a href=\"https://wordpress.org/plugins/wp-super-cache/faq/\">FAQ</a> for further details.)"
+msgstr "Compatibilidad con dispositivos móviles. (Se requiere un tema o plugin externo. Revisa la <a href=\"https://wordpress.org/plugins/wp-super-cache/faq/\">FAQ</a> para más detalles.)"
+
+#: wp-cache.php:1056
+msgid "Enable dynamic caching. (See <a href=\"https://wordpress.org/plugins/wp-super-cache/faq/\">FAQ</a> or wp-super-cache/plugins/dynamic-cache-test.php for example code.)"
+msgstr "Activar caché dinámica.  (Revisa la <a href=\"https://wordpress.org/plugins/wp-super-cache/faq/\">FAQ</a> o el archivo wp-super-cache/plugins/dynamic-cache-test.php para ver el código de ejemplo.)"
+
 #: wp-cache.php:1052 wp-cache.php:1343 wp-cache.php:2069
 msgid "Advanced"
 msgstr "Avanzado"
@@ -1657,6 +1669,10 @@ msgstr "WPTouch plugin detectado! Por favor vaya a la página de complementos de
 msgid "WPTouch support is now %s"
 msgstr "El soporte WPTouch ahora es %s"
 
+#: plugins/wptouch.php:25
+msgid "Provides support for <a href=\"https://wordpress.org/plugins/wptouch/\">WPTouch</a> mobile theme and plugin."
+msgstr "Proporciona soporte para <a href=\"https://wordpress.org/plugins/wptouch/\"> WPTouch </a> tema para móviles y plugin."
+
 #: plugins/wptouch.php:20 plugins/wptouch.php:138
 msgid "WPTouch"
 msgstr "WPTouch"
@@ -1693,6 +1709,10 @@ msgstr "Cacheado"
 msgid "Jetpack Mobile Theme support is now %s"
 msgstr "El soporte de Jetpack Mobile Theme esta ahora %s"
 
+#: plugins/jetpack.php:35
+msgid "Provides support for the <a href=\"https://wordpress.org/plugins/jetpack/\">Jetpack</a> mobile theme and plugin. PHP caching mode and mobile support will be enabled too."
+msgstr "Proporciona soporte para <a href=\"https://wordpress.org/plugins/jetpack/\">Jetpack</a> tema para móviles y  plugin. El modo de caché de PHP y el soporte móvil también estarán habilitados."
+
 #: plugins/jetpack.php:28
 msgid "Jetpack not found in %s. Install it and enable the mobile theme and this helper plugin to cache visits by mobile visitors."
 msgstr "Jetpack no se encuentra en %s. Instala y habilita el tema móvil y este complemento de ayuda para almacenar en caché las visitas de los visitantes móviles."
@@ -1708,6 +1728,10 @@ msgstr "¡Se ha detectado el plugin Domain Mapping! Por favor, ve a la página d
 #: plugins/domain-mapping.php:91
 msgid "Domain Mapping support is now %s"
 msgstr "La compatibilidad con Domain Mapping ahora es %s"
+
+#: plugins/domain-mapping.php:84
+msgid "Provides support for <a href=\"https://wordpress.org/plugins/wordpress-mu-domain-mapping/\">Domain Mapping</a> plugin to map multiple domains to a blog."
+msgstr "Proporciona soporte para el plugin <a href=\"https://wordpress.org/plugins/wordpress-mu-domain-mapping/\">Domain Mapping</a> para asignar múltiples dominios a un blog."
 
 #: plugins/domain-mapping.php:78 plugins/domain-mapping.php:127
 msgid "Domain Mapping"
@@ -1777,6 +1801,10 @@ msgstr "Esperando moderación"
 #: plugins/awaitingmoderation.php:4
 msgid "Your comment is awaiting moderation."
 msgstr "Tu comentario está esperando moderación."
+
+#: ossdl-cdn.php:242
+msgid "CDN functionality provided by <a href=\"https://wordpress.org/plugins/ossdl-cdn-off-linker/\">OSSDL CDN Off Linker</a> by <a href=\"http://mark.ossdl.de/\">Mark Kubacki</a>"
+msgstr "Funcionalidad CDN proporcionada por <a href=\"https://wordpress.org/plugins/ossdl-cdn-off-linker/\">OSSDL CDN Off Linker</a> de <a href=\"http://mark.ossdl.de/\">Mark Kubacki</a>"
 
 #: ossdl-cdn.php:240
 msgid "Save Changes"

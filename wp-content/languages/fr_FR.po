@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-12-18 10:47:47+0000\n"
+"PO-Revision-Date: 2018-01-02 12:37:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3587,11 +3587,6 @@ msgstr "Nouveau titre de page&hellip;"
 msgid "This form is not live-previewable."
 msgstr "Ce formulaire n’est pas prévisualisable en direct."
 
-#. translators: %s: current user's display name
-#: wp-includes/admin-bar.php:217
-msgid "Howdy, %s"
-msgstr "Salutations, %s"
-
 #: wp-includes/class-wp-customize-manager.php:552
 msgid "Non-existent changeset UUID."
 msgstr "UUDI inexistant pour le jeu de modifications."
@@ -3612,6 +3607,11 @@ msgstr "Ce lien ne peut pas être prévisualisé en direct."
 #: wp-includes/class-wp-customize-manager.php:525
 msgid "Invalid changeset UUID"
 msgstr "Jeu de modifications UUID non valide."
+
+#. translators: %s: current user's display name
+#: wp-includes/admin-bar.php:217
+msgid "Howdy, %s"
+msgstr "Bonjour, %s"
 
 #: wp-includes/customize/class-wp-customize-nav-menu-location-control.php:78
 msgid "Edit selected menu"

@@ -2,7 +2,7 @@
 /*
 * Plugin Name:  bbPress Notify (No-Spam)
 * Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a>
-* Version:      1.16.1
+* Version:      1.16.2
 * Author:       <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:      GNU General Public License, v2 ( or newer )
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ load_plugin_textdomain( 'bbpress_notify', false, dirname( plugin_basename( __FIL
 
 class bbPress_Notify_noSpam {
 	
-	const VERSION = '1.16.1';
+	const VERSION = '1.16.2';
 	
 	protected $settings_section = 'bbpress_notify_options';
 	
@@ -824,7 +824,6 @@ jQuery(document).ready(function($){
 					$filtered_subject = str_replace( "[recipient-{$prop}]", $user_info->{$prop}, $filtered_subject );
 				}
 			
-				
 				/**
 				 * Multipart messages
 				 * @since 1.14
@@ -942,11 +941,11 @@ jQuery(document).ready(function($){
 		}
 		
 		$dom = new DOMDocument();
-		
+
 		$previous_value = libxml_use_internal_errors(TRUE);
 		
-		$dom->loadHTML( '<?xml encoding="' . $this->charset . '" ?>' . $text );
-		
+		$dom->loadHTML(mb_convert_encoding($text, 'HTML-ENTITIES', $this->charset));
+				
 		libxml_use_internal_errors($previous_value);
 		
 		$local       = parse_url( get_option( 'siteurl' ) );
@@ -998,6 +997,7 @@ jQuery(document).ready(function($){
 			$text = preg_replace('@^<body>|</body>$@', '', $text );
 		}
 		
+		
 		return $text;
 	}
 	
@@ -1012,7 +1012,7 @@ jQuery(document).ready(function($){
 	
 		$previous_value = libxml_use_internal_errors(TRUE);
 	
-		$dom->loadHTML( '<?xml encoding="' . $this->charset . '" ?>' . $text );
+		$dom->loadHTML(mb_convert_encoding($text, 'HTML-ENTITIES', $this->charset));
 	
 		libxml_use_internal_errors($previous_value);
 	

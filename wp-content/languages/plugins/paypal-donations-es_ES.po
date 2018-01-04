@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - PayPal Donations - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-08-29 02:32:17+0000\n"
+"PO-Revision-Date: 2017-12-26 18:21:23+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,7 +21,7 @@ msgstr "Tips and Tricks HQ, Johan Steen"
 
 #. Description of the plugin/theme
 msgid "Easy and simple setup and insertion of PayPal donate buttons with a shortcode or through a sidebar Widget. Donation purpose can be set for each button. A few other customization options are available as well."
-msgstr "Fácil y simple de configurar y la inserción de botones de donar de PayPal con un shortcode o o a través de un widget en la barra lateral. El propósito de la donación se puede fijar para cada botón. Algunas otras opciones de personalización están disponibles también."
+msgstr "Fácil y simple de configurar y la inserción de botones de donar de PayPal con un shortcode o a través de un widget en la barra lateral. El propósito de la donación se puede establecer para cada botón. Algunas otras opciones de personalización están disponibles también."
 
 #. Plugin URI of the plugin/theme
 msgid "https://www.tipsandtricks-hq.com/paypal-donations-widgets-plugin"
@@ -101,7 +101,7 @@ msgstr "Activar el idioma de pago"
 
 #: src/PayPalDonations/Admin.php:346
 msgid "Enable PayPal sandbox for testing. Visit %s for more information and to register a merchant and customer testing accounts."
-msgstr "Activar Sandbox de PayPal para la prueba. Visita %s para obtener más información y para registrarse un comerciante y cuentas de prueba del cliente."
+msgstr "Activa Sandbox de PayPal para la prueba. Visita %s para obtener más información y para registrar un comerciante y cuentas de prueba del cliente."
 
 #: src/PayPalDonations/Admin.php:339
 msgid "Enable PayPal Sandbox"
@@ -109,7 +109,7 @@ msgstr "Activar sandbox de PayPal"
 
 #: src/PayPalDonations/Admin.php:331
 msgid "Enable this if your theme or a plugin adds autostyling to shortcodes/widgets."
-msgstr "Activar esta opción si su tema o un plugin añade auto estilos a shortcodes/widgets."
+msgstr "Activa esta opción si tu tema o un plugin añade auto estilos a shortcodes/widgets."
 
 #: src/PayPalDonations/Admin.php:325
 msgid "Remove Line Feeds"
@@ -121,11 +121,11 @@ msgstr "Abrir PayPal en una nueva pestaña "
 
 #: src/PayPalDonations/Admin.php:297
 msgid "Theme CSS Override: Center Button"
-msgstr "Anulación del tema CSS: Botón central"
+msgstr "Anulación del tema CSS: Centra el botón"
 
 #: src/PayPalDonations/Admin.php:286
 msgid "Disable PayPal Statistics"
-msgstr "Desactivar las estadísticas de PayPal"
+msgstr "Desactiva las estadísticas de PayPal"
 
 #: src/PayPalDonations/Admin.php:280
 msgid "Extras"
@@ -205,7 +205,7 @@ msgid ""
 "                     PayPal account profile."
 msgstr ""
 "El nombre de un estilo de página de pago personalizado que existe en el\n"
-" perfil de tu cuenta PayPal."
+" perfil de tu cuenta de PayPal."
 
 #: src/PayPalDonations/Admin.php:146
 msgid "Page Style"
@@ -213,11 +213,11 @@ msgstr "Estilo de página"
 
 #: src/PayPalDonations/Admin.php:140
 msgid "Optional Settings"
-msgstr "Ajustes opcional"
+msgstr "Ajustes opcionales"
 
 #: src/PayPalDonations/Admin.php:131
 msgid "The currency to use for the donations."
-msgstr "Moneda para utilizar para las donaciones."
+msgstr "La moneda que se usará para las donaciones."
 
 #: src/PayPalDonations/Admin.php:125
 msgid "Currency"
@@ -225,7 +225,7 @@ msgstr "Moneda"
 
 #: src/PayPalDonations/Admin.php:117
 msgid "Your PayPal Email or Secure Merchant Account ID."
-msgstr "Su correo electrónico de PayPal o identificación segura de la cuenta del comerciante."
+msgstr "Tu correo electrónico de PayPal o la ID segura de la cuenta del comerciante."
 
 #: src/PayPalDonations/Admin.php:111
 msgid "PayPal Account"
