@@ -276,6 +276,50 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 // 	}
 	
 	
+	public function test_notify_on_publish_future_post()
+	{
+		global $wpdb;
+		
+		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+		$bbpnns->set_post_types();
+		
+		$type = 'topic';
+		update_option( "bbpress_notify_default_{$type}_notification", true );
+		
+		$author_id = $this->factory->user->create( array( 'role' => 'administrator' ) );
+		
+		wp_set_current_user( $author_id );
+		
+		$post = array(
+				'post_content' => 'Test content',
+				'post_name'    => 'Test name',
+				'post_status'  => 'future',
+				'post_author'  => $author_id,
+				'post_type'    => 'topic',
+				'post_date'  => date('Y-m-d H:i:s GMT', time() - 10 )
+		);
+		
+		$topic_id = wp_insert_post( $post );
+		
+		$post = get_post( $topic_id );
+		if ( 'publish' === $post->post_status )
+		{
+			$wpdb->query( "update {$wpdb->posts} set post_status = 'future' where ID = " . $post->ID );
+			clean_post_cache( $post->ID );
+		}
+		
+		$this->got_hit = false;
+		add_filter( 'bbpress_topic_notify_recipients', function($recipients, $topic_id, $forum_id){
+			$this->got_hit = true;
+			return $recipients;
+			
+		}, 10, 3);
+		
+		$this->assertFalse( $this->got_hit, 'Initial value of got hit is false' );
+		do_action( 'publish_future_post', $post->ID );
+		$this->assertTrue( $this->got_hit, 'After action value of got hit is true' );
+	}
+	
 	public function test_notify_on_save()
 	{
 			$bbpnns = bbPress_Notify_NoSpam::bootstrap();

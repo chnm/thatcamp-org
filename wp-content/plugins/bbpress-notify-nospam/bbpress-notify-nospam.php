@@ -2,7 +2,7 @@
 /*
 * Plugin Name:  bbPress Notify (No-Spam)
 * Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a>
-* Version:      1.16.2
+* Version:      1.17
 * Author:       <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:      GNU General Public License, v2 ( or newer )
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ load_plugin_textdomain( 'bbpress_notify', false, dirname( plugin_basename( __FIL
 
 class bbPress_Notify_noSpam {
 	
-	const VERSION = '1.16.2';
+	const VERSION = '1.17';
 	
 	protected $settings_section = 'bbpress_notify_options';
 	
@@ -44,6 +44,10 @@ class bbPress_Notify_noSpam {
 	function __construct()
 	{
 		/* Register hooks, filters and actions */
+		
+		// This cannot be in is_admin() because it needs to handle future publishing, which doesn't have is_admin() status
+		add_action( 'save_post', array( $this, 'notify_on_save' ), 10, 2 );
+		
 		if ( is_admin() )
 		{
 			// Add settings to the Dashboard
@@ -59,8 +63,6 @@ class bbPress_Notify_noSpam {
 			
 			// Notification meta boxes if needed
 			add_action( 'add_meta_boxes', array( $this, 'add_notification_meta_box' ), 10 );
-			
-			add_action( 'save_post', array( $this, 'notify_on_save' ), 10, 2 );
 			
 // 			add_action( 'admin_notices', array( $this, 'maybe_show_admin_message' ) );
 
@@ -1505,7 +1507,7 @@ jQuery(document).ready(function($){
 		$checked = checked( $default, true, false );
 
 		printf( '<label><input type="checkbox" value="1" name="%s" %s> %s</label>', "bbpress_notify_default_{$this->bbpress_topic_post_type}_notification", $checked,
-		__( 'Send notifications when creating Topics in the Admin UI ( <span class="description">Can be overridden in the New/Update Topic screen</span> ).' ) );
+		__( 'Send notifications when future publishing or creating Topics in the Admin UI ( <span class="description">Can be overridden in the New/Update Topic screen</span> ).' ) );
 	}
 	
 	/**
@@ -1517,7 +1519,7 @@ jQuery(document).ready(function($){
 		$checked = checked( $default, true, false );
 
 		printf( '<label><input type="checkbox" value="1" name="%s" %s> %s</label>', "bbpress_notify_default_{$this->bbpress_reply_post_type}_notification", $checked,
-		__( 'Send notifications when creating Replies in the Admin UI ( <span class="description">Can be overridden in the New/Update Reply screen</span> ).' ) );
+		__( 'Send notifications when future publishing or creating Replies in the Admin UI ( <span class="description">Can be overridden in the New/Update Reply screen</span> ).' ) );
 	}
 	
 	
@@ -1529,21 +1531,33 @@ jQuery(document).ready(function($){
 	 */
 	function notify_on_save( $post_id, $post )
 	{
-		if ( empty( $_POST ) ) return;
+		$is_future_publish = doing_action( 'publish_future_post' );
+		
+		if ( empty( $_POST ) && ! $is_future_publish ) return;
 
 		if ( $this->bbpress_topic_post_type !== $post->post_type && $this->bbpress_reply_post_type !== $post->post_type ) return;
 		
 		if ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'edit_post', $post_id ) ) return;
 		
-		if ( wp_is_post_revision( $post_id ) ) return;
+		if ( wp_is_post_revision( $post_id ) || 'publish' !== $post->post_status ) return;
 		
-		if ( ! isset( $_POST['bbpress_notify_send_notification'] ) || ! $_POST['bbpress_notify_send_notification'] ) return;
+		if ( ! $is_future_publish && ( ! isset( $_POST['bbpress_notify_send_notification'] ) || ! $_POST['bbpress_notify_send_notification'] ) ) return;
 
 		$type = ( $post->post_type === $this->bbpress_topic_post_type ) ? 'topic' : 'reply';
-		if ( ! isset( $_POST["bbpress_send_{$type}_notification_nonce"] ) ||
-			! wp_verify_nonce( $_POST["bbpress_send_{$type}_notification_nonce"], "bbpress_send_{$type}_notification_nonce" ) )
+		
+		if (  ! $is_future_publish && 
+			( ! isset( $_POST["bbpress_send_{$type}_notification_nonce"] ) ||
+			  ! wp_verify_nonce( $_POST["bbpress_send_{$type}_notification_nonce"], "bbpress_send_{$type}_notification_nonce" ) ) )
 		{
 			return;
+		}
+		
+		// Check the default notification options
+		if ( ! isset( $_POST ) && $is_future_publish )
+		{
+			$do_notify = get_option( "bbpress_notify_default_{$type}_notification" );
+			
+			if ( ! $do_notify ) return;
 		}
 
 		// Still here, so we can notify
