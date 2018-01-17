@@ -40,7 +40,7 @@ msgstr " "
 msgid "Update anyway, even though it might break your site?"
 msgstr "Zaktualizować mimo, że może to spowodować uszkodzenie witryny?"
 
-#: wp-includes/wp-db.php:1290
+#: wp-includes/wp-db.php:1283
 msgid "The query only expected one placeholder, but an array of multiple placeholders was sent."
 msgstr "Zapytanie oczekiwało tylko jednego elementu zastępowanego, a wysłano tablicę."
 
@@ -229,7 +229,7 @@ msgstr "Wybrany motyw umożliwia wyświetlanie menu w jednym miejscu. Wybierz me
 msgid "Site Name: %s"
 msgstr "Nazwa witryny: %s"
 
-#: wp-includes/wp-db.php:1253
+#: wp-includes/wp-db.php:1246
 msgid "Unsupported value type (%s)."
 msgstr "Nieobsługiwany typ wartości (%s)."
 
@@ -245,7 +245,7 @@ msgid "Widgets need to be registered using %s, before they can be displayed."
 msgstr "Zanim będzie można wyświetlić widżety, trzeba je zarejestrować używając %s."
 
 #. translators: 1: number of placeholders, 2: number of arguments passed
-#: wp-includes/wp-db.php:1301
+#: wp-includes/wp-db.php:1294
 msgid "The query does not contain the correct number of placeholders (%1$d) for the number of arguments passed (%2$d)."
 msgstr "Wysłano inną liczbę argumentów (%2$d) niż liczba elementów zastępowalnych (%1$d)."
 
@@ -792,7 +792,7 @@ msgstr "Nie powiodło się sprawdzanie jednorazowego klucza. Proszę spróbować
 
 #. translators: Do not translate OLD_EMAIL, NEW_EMAIL, SITENAME, SITEURL: those
 #. are placeholders.
-#: wp-includes/functions.php:5756
+#: wp-includes/functions.php:5757
 msgid ""
 "Hi,\n"
 "\n"
@@ -820,7 +820,7 @@ msgstr ""
 
 #. translators: Site admin email change notification email subject. %s: Site
 #. title
-#: wp-includes/functions.php:5771
+#: wp-includes/functions.php:5772
 msgid "[%s] Notice of Admin Email Change"
 msgstr "[%s] Powiadomienie o zmianie adresu email administratora"
 
@@ -842,7 +842,7 @@ msgstr "Przeszukaj motywy na stronie WordPress.org"
 msgid "Filter themes (%s)"
 msgstr "Filtruj motywy (%s)"
 
-#: wp-includes/functions.php:5699
+#: wp-includes/functions.php:5700
 msgid "Only UUID V4 is supported at this time."
 msgstr "Aktualnie obsługiwany jest tylko UUID V4."
 
@@ -1932,7 +1932,7 @@ msgctxt "New site notification email subject"
 msgid "[%1$s] Activate %2$s"
 msgstr "[%1$s] Aktywacja %2$s"
 
-#: wp-includes/widgets.php:1395 wp-includes/widgets.php:1504
+#: wp-includes/widgets.php:1398 wp-includes/widgets.php:1507
 msgid "RSS Error:"
 msgstr "Błąd RSS:"
 
@@ -3881,7 +3881,7 @@ msgstr "Włącz w sieci"
 msgid "Edit Menu"
 msgstr "Edytuj Menu"
 
-#: wp-includes/wp-db.php:1856 wp-includes/wp-db.php:1862
+#: wp-includes/wp-db.php:1849 wp-includes/wp-db.php:1855
 msgid "Unable to retrieve the error message from MySQL"
 msgstr "Brak możliwości pokazania błędów z MySQL"
 
@@ -4161,11 +4161,11 @@ msgstr "Wybierz logo"
 
 #. translators: 1: PHP class name, 2: PHP parent class name, 3: version number,
 #. 4: __construct() method
-#: wp-includes/functions.php:3900
+#: wp-includes/functions.php:3901
 msgid "The called constructor method for %1$s in %2$s is <strong>deprecated</strong> since version %3$s! Use %4$s instead."
 msgstr "Wywołana metoda konstruktora klasy %1$s w %2$s jest <strong>przestarzała</strong> od wersji %3$s! Zamiast niej użyj %4$s."
 
-#: wp-includes/functions.php:5312
+#: wp-includes/functions.php:5313
 msgid "Close dialog"
 msgstr "Zamknij okienko dialogowe"
 
@@ -4295,12 +4295,12 @@ msgstr "Przeczytaj stronę ze <a href=\"%s\" target=\"_blank\">zgłoszeniem bł�
 msgid "https://codex.wordpress.org/Debugging_a_WordPress_Network"
 msgstr "https://codex.wordpress.org/Debugging_a_WordPress_Network"
 
-#: wp-includes/functions.php:4143
+#: wp-includes/functions.php:4144
 msgid "https://codex.wordpress.org/Debugging_in_WordPress"
 msgstr "https://codex.wordpress.org/Debugging_in_WordPress"
 
 #. translators: %s: Codex URL
-#: wp-includes/functions.php:4142
+#: wp-includes/functions.php:4143
 msgid "Please see <a href=\"%s\">Debugging in WordPress</a> for more information."
 msgstr "Dowiedz się więcej: <a href=\"%s\">Debugowanie w WordPressie</a>."
 
@@ -4509,66 +4509,66 @@ msgstr "Język witryny:"
 msgid "Author:"
 msgstr "Autor:"
 
-#: wp-includes/wp-db.php:1595
+#: wp-includes/wp-db.php:1588
 msgid "Are you sure that you have typed the correct hostname?"
 msgstr "Czy jesteś pewien, że poprawnie wpisałeś adres serwera bazy danych?"
 
-#: wp-includes/wp-db.php:1596 wp-includes/wp-db.php:1753
+#: wp-includes/wp-db.php:1589 wp-includes/wp-db.php:1746
 msgid "Are you sure that the database server is running?"
 msgstr "Czy jesteś pewien, że serwer bazy danych działa?"
 
 #. translators: %s: support forums URL
-#: wp-includes/wp-db.php:1601 wp-includes/wp-db.php:1759
+#: wp-includes/wp-db.php:1594 wp-includes/wp-db.php:1752
 msgid "If you&#8217;re unsure what these terms mean you should probably contact your host. If you still need help you can always visit the <a href=\"%s\">WordPress Support Forums</a>."
 msgstr "Jeśli nie jesteś pewien, co oznaczają te zwroty, zapewne skontaktuj się ze swoim dostawcą hostingu. Jeśli wciąż będziesz potrzebować pomocy, odwiedź <a href=\"%s\">Forum Pomocy WordPressa</a>."
 
-#: wp-includes/wp-db.php:1744
+#: wp-includes/wp-db.php:1737
 msgid "Error reconnecting to the database"
 msgstr "Wystąpił błąd podczas ponownego łączenia się z bazą danych"
 
 #. translators: %s: database host
-#: wp-includes/wp-db.php:1748
+#: wp-includes/wp-db.php:1741
 msgid "This means that we lost contact with the database server at %s. This could mean your host&#8217;s database server is down."
 msgstr "Oznacza to, że straciliśmy połączenie z bazą danych na serwerze %s. Możliwe, że serwer bazy danych przestał działać."
 
-#: wp-includes/wp-db.php:1754
+#: wp-includes/wp-db.php:1747
 msgid "Are you sure that the database server is not under particularly heavy load?"
 msgstr "Czy jesteś pewien, że serwer bazy danych nie jest obecnie wyjątkowo przeciążony?"
 
 #. translators: 1: wp-config.php. 2: database host
-#: wp-includes/wp-db.php:1588
+#: wp-includes/wp-db.php:1581
 msgid "This either means that the username and password information in your %1$s file is incorrect or we can&#8217;t contact the database server at %2$s. This could mean your host&#8217;s database server is down."
 msgstr "Oznacza to, że nazwa użytkownika lub hasło podane w pliku %1$s nie jest poprawne, bądź też nie możemy połączyć się z serwerem bazy danych pod adresem %2$s. Możliwe, że serwer bazy danych przestał działać."
 
-#: wp-includes/wp-db.php:1594
+#: wp-includes/wp-db.php:1587
 msgid "Are you sure you have the correct username and password?"
 msgstr "Czy jesteś pewien, że posiadasz poprawną nazwę użytkownika i hasło?"
 
 #. translators: %s: support forums URL
-#: wp-includes/wp-db.php:1068
+#: wp-includes/wp-db.php:1061
 msgid "If you don&#8217;t know how to set up a database you should <strong>contact your host</strong>. If all else fails you may find help at the <a href=\"%s\">WordPress Support Forums</a>."
 msgstr "Jeśli nie wiesz, jak ustawić bazę danych, <strong>skontaktuj się ze swoim dostawcą hostingu</strong>. Jeśli wszystkie próby zawiodą, spróbuj znaleźć wsparcie na <a href=\"%s\">Forum Pomocy WordPressa</a>."
 
-#: wp-includes/wp-db.php:1040
+#: wp-includes/wp-db.php:1033
 msgid "Can&#8217;t select database"
 msgstr "Nie można wybrać bazy danych"
 
 #. translators: %s: database name
-#: wp-includes/wp-db.php:1044
+#: wp-includes/wp-db.php:1037
 msgid "We were able to connect to the database server (which means your username and password is okay) but not able to select the %s database."
 msgstr "Udało nam się połączyć z serwerem bazy danych (co oznacza, że nazwa użytkownika i hasło są poprawne), ale nie mogliśmy wybrać bazy danych %s."
 
-#: wp-includes/wp-db.php:1049
+#: wp-includes/wp-db.php:1042
 msgid "Are you sure it exists?"
 msgstr "Czy jesteś pewien, że ona istnieje?"
 
 #. translators: 1: database user, 2: database name
-#: wp-includes/wp-db.php:1053
+#: wp-includes/wp-db.php:1046
 msgid "Does the user %1$s have permission to use the %2$s database?"
 msgstr "Czy użytkownik %1$s ma uprawnienia do używania bazy %2$s?"
 
 #. translators: %s: database name
-#: wp-includes/wp-db.php:1060
+#: wp-includes/wp-db.php:1053
 msgid "On some systems the name of your database is prefixed with your username, so it would be like <code>username_%1$s</code>. Could that be the problem?"
 msgstr "Na niektórych systemach nazwa bazy danych jest poprzedzana nazwą użytkownika, np. <code>nazwa_użytkownika_%1$s</code>. Może na tym polega problem?"
 
@@ -5083,7 +5083,7 @@ msgstr "Dodaj do menu: %1$s (%2$s)"
 msgid "When starting a new paragraph with one of these formatting shortcuts followed by a space, the formatting will be applied automatically. Press Backspace or Escape to undo."
 msgstr "Jeśli rozpoczniesz nowy akapit tekstu od jednego z tych skrótów formatowania, a za nim umieścisz spację i właściwy tekst, automatycznie zostanie włączone odpowiednie formatowanie. Wciśnij klawisz Backspace lub Escape, by cofnąć zmianę."
 
-#: wp-includes/wp-db.php:1386 wp-includes/wp-db.php:1403
+#: wp-includes/wp-db.php:1379 wp-includes/wp-db.php:1396
 msgid "WordPress database error:"
 msgstr "Błąd bazy danych WordPressa:"
 
@@ -5141,7 +5141,7 @@ msgid "Menus can be displayed in locations defined by your theme."
 msgstr "Menu mogą być wyświetlane w miejscach zdefiniowanych przez używany motyw."
 
 #. translators: 1: PHP class name, 2: version number, 3: __construct() method
-#: wp-includes/functions.php:3904
+#: wp-includes/functions.php:3905
 msgid "The called constructor method for %1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "Wywołany konstruktor metody dla %1$s jest <strong>przestarzały</strong> od wersji %2$s! Zamiast z niego, skorzystaj z %3$s."
 
@@ -5934,7 +5934,7 @@ msgstr "Należy przekazać tablicę typów."
 
 #. translators: %s: database access abstraction class, usually wpdb or a class
 #. extending wpdb
-#: wp-includes/wp-db.php:1117
+#: wp-includes/wp-db.php:1110
 msgid "%s must set a database connection for use with escaping."
 msgstr "%s musi mieć ustawione połączenie z bazą danych, by można było używać eskejpowania."
 
@@ -6995,7 +6995,7 @@ msgstr "Przeciągnij i upuść, aby zmienić kolejność utworów."
 msgid "Drag and drop to reorder videos."
 msgstr "Przeciągnij i upuść, aby zmienić kolejność filmów."
 
-#: wp-includes/wp-db.php:1237
+#: wp-includes/wp-db.php:1230
 msgid "The query argument of %s must have a placeholder."
 msgstr "Argument zapytania %s musi zawierać placeholder."
 
@@ -7104,8 +7104,8 @@ msgstr "https://pl.wordpress.org/"
 
 #: wp-includes/admin-bar.php:164 wp-includes/update.php:153
 #: wp-includes/update.php:345 wp-includes/update.php:523
-#: wp-includes/wp-db.php:1069 wp-includes/wp-db.php:1602
-#: wp-includes/wp-db.php:1760 wp-login.php:882
+#: wp-includes/wp-db.php:1062 wp-includes/wp-db.php:1595
+#: wp-includes/wp-db.php:1753 wp-login.php:882
 msgid "https://wordpress.org/support/"
 msgstr "http://pl.forums.wordpress.org/"
 
@@ -7572,7 +7572,7 @@ msgstr "Czy twój adres email został wpisany poprawnie? Jeśli wprowadzony adre
 msgid "%1$s %2$s, %3$s @ %4$s:%5$s"
 msgstr "%2$s-%1$s-%3$s o %4$s:%5$s"
 
-#: wp-includes/functions.php:5329
+#: wp-includes/functions.php:5330
 msgid "The login page will open in a new window. After logging in you can close it and return to this page."
 msgstr "Okno logowania zostanie otwarte w nowym oknie. Po zalogowaniu można je zamknąć i wrócić na tę stronę."
 
@@ -7597,7 +7597,7 @@ msgctxt "label"
 msgid "Search for:"
 msgstr "Szukaj:"
 
-#: wp-includes/functions.php:5327 wp-includes/script-loader.php:568
+#: wp-includes/functions.php:5328 wp-includes/script-loader.php:568
 msgid "Session expired"
 msgstr "Sesja wygasła"
 
@@ -8605,12 +8605,12 @@ msgstr "Forum pomocy"
 msgid "&hellip;"
 msgstr "&hellip;"
 
-#: wp-includes/functions.php:3773
+#: wp-includes/functions.php:3774
 msgid "Database Error"
 msgstr "Błąd połączenia z bazą danych"
 
-#: wp-includes/functions.php:3777 wp-includes/ms-load.php:455
-#: wp-includes/wp-db.php:1584
+#: wp-includes/functions.php:3778 wp-includes/ms-load.php:455
+#: wp-includes/wp-db.php:1577
 msgid "Error establishing a database connection"
 msgstr "Błąd łączenia się z bazą danych"
 
@@ -8788,13 +8788,13 @@ msgid "The user is already active."
 msgstr "To konto zostało już aktywowane."
 
 #. translators: %s: version number
-#: wp-includes/functions.php:4139
+#: wp-includes/functions.php:4140
 msgid "(This message was added in version %s.)"
 msgstr "(Ten komunikat został dodany w wersji %s.)"
 
 #. translators: Developer debugging message. 1: PHP function name, 2:
 #. Explanatory message, 3: Version information message
-#: wp-includes/functions.php:4146
+#: wp-includes/functions.php:4147
 msgid "%1$s was called <strong>incorrectly</strong>. %2$s %3$s"
 msgstr "Funkcja %1$s została wywołana <strong>nieprawidłowo</strong>. %2$s %3$s"
 
@@ -9710,12 +9710,12 @@ msgstr "Podany docelowy adres URL nie istnieje."
 
 #. translators: 1: Database error message, 2: SQL query, 3: Name of the calling
 #. function
-#: wp-includes/wp-db.php:1370
+#: wp-includes/wp-db.php:1363
 msgid "WordPress database error %1$s for query %2$s made by %3$s"
 msgstr "Błąd %1$s bazy danych WordPressa podczas wykonywania zapytania %2$s wysłanego przez %3$s"
 
 #. translators: 1: Database error message, 2: SQL query
-#: wp-includes/wp-db.php:1373
+#: wp-includes/wp-db.php:1366
 msgid "WordPress database error %1$s for query %2$s"
 msgstr "Błąd %1$s bazy danych WordPressa podczas wykonywania zapytania %2$s"
 
@@ -9942,27 +9942,27 @@ msgctxt "widgets"
 msgid "%1$s on %2$s"
 msgstr "%1$s o %2$s"
 
-#: wp-includes/widgets.php:1426
+#: wp-includes/widgets.php:1429
 msgid "Untitled"
 msgstr "Bez tytułu"
 
-#: wp-includes/widgets.php:1510
+#: wp-includes/widgets.php:1513
 msgid "Enter the RSS feed URL here:"
 msgstr "Wprowadź adres URL kanału RSS:"
 
-#: wp-includes/widgets.php:1513
+#: wp-includes/widgets.php:1516
 msgid "Give the feed a title (optional):"
 msgstr "Nadaj kanałowi tytuł (opcjonalne):"
 
-#: wp-includes/widgets.php:1526
+#: wp-includes/widgets.php:1529
 msgid "Display item content?"
 msgstr "Wyświetlać zawartość elementów?"
 
-#: wp-includes/widgets.php:1529
+#: wp-includes/widgets.php:1532
 msgid "Display item author if available?"
 msgstr "Wyświetlać autorów wpisów?"
 
-#: wp-includes/widgets.php:1532
+#: wp-includes/widgets.php:1535
 msgid "Display item date?"
 msgstr "Wyświetlać daty dodania elementów?"
 
@@ -10033,28 +10033,28 @@ msgstr ", "
 msgid "Could not write file %s"
 msgstr "Nie można było zapisać pliku %s"
 
-#: wp-includes/functions.php:2616
+#: wp-includes/functions.php:2617
 msgid "WordPress Failure Notice"
 msgstr "Informacja o niepowodzeniu WordPressa"
 
 #. translators: %s: logout URL
-#: wp-includes/functions.php:2602
+#: wp-includes/functions.php:2603
 msgid "Do you really want to <a href=\"%s\">log out</a>?"
 msgstr "Czy naprawdę chcesz się <a href='%s'>wylogować</a>?"
 
-#: wp-includes/functions.php:2611 wp-includes/ms-functions.php:2047
+#: wp-includes/functions.php:2612 wp-includes/ms-functions.php:2047
 msgid "Please try again."
 msgstr "Proszę spróbować ponownie."
 
-#: wp-includes/functions.php:2748 wp-load.php:92
+#: wp-includes/functions.php:2749 wp-load.php:92
 msgid "WordPress &rsaquo; Error"
 msgstr "WordPress &rsaquo; Błąd"
 
-#: wp-includes/functions.php:4669
+#: wp-includes/functions.php:4670
 msgid "Select a city"
 msgstr "Wybierz miasto"
 
-#: wp-includes/functions.php:4714 wp-includes/functions.php:4718
+#: wp-includes/functions.php:4715 wp-includes/functions.php:4719
 msgid "UTC"
 msgstr "UTC"
 
@@ -10643,7 +10643,7 @@ msgstr "Yahoo IM"
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: wp-includes/rss.php:917 wp-includes/widgets.php:1410
+#: wp-includes/rss.php:917 wp-includes/widgets.php:1413
 msgid "An error has occurred, which probably means the feed is down. Try again later."
 msgstr "Wystąpił błąd, co prawdopodobnie oznacza, że kanał nie działa. Spróbuj ponownie później."
 
@@ -10784,7 +10784,7 @@ msgstr "Zapisywanie szkicu&#8230;"
 msgid "Empty Term."
 msgstr "Brak terminu"
 
-#: wp-includes/functions.php:5328 wp-includes/user.php:285
+#: wp-includes/functions.php:5329 wp-includes/user.php:285
 msgid "Please log in again."
 msgstr "Proszę zalogować się ponownie."
 
@@ -10961,12 +10961,12 @@ msgstr "<strong>BŁĄD</strong>: Twoje konto zostało oznaczone jako konto spame
 
 #. translators: 1: PHP function name, 2: version number, 3: optional message
 #. regarding the change
-#: wp-includes/functions.php:4030
+#: wp-includes/functions.php:4031
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s! %3$s"
 msgstr "Funkcja %1$s została wywołana z argumentem, którego użycie jest <strong>przestarzałą praktyką</strong> od wersji %2$s! %3$s"
 
 #. translators: 1: PHP function name, 2: version number
-#: wp-includes/functions.php:4033
+#: wp-includes/functions.php:4034
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "Funkcja %1$s została wywołana z argumentem, którego użycie jest <strong>przestarzałą praktyką</strong> od wersji %2$s! Nie istnieje żadna alternatywa."
 
@@ -11006,7 +11006,7 @@ msgstr[2] "Oczekujące na przegląd <span class=\"count\">(%s)</span>"
 
 #. translators: 1: WordPress version number, 2: Minimum required MySQL version
 #. number
-#: wp-includes/wp-db.php:3318
+#: wp-includes/wp-db.php:3311
 msgid "<strong>ERROR</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>BŁĄD</strong>: WordPress %1$s wymaga MySQL-a w wersji %2$s lub nowszej"
 
@@ -11067,11 +11067,11 @@ msgid "Empty filename"
 msgstr "Nie podano nazwy pliku"
 
 #. translators: %s: site name
-#: wp-includes/functions.php:2595
+#: wp-includes/functions.php:2596
 msgid "You are attempting to log out of %s"
 msgstr "Zamierzasz wylogować się z witryny &#8222;%s&#8221;"
 
-#: wp-includes/functions.php:2736
+#: wp-includes/functions.php:2737
 msgid "&laquo; Back"
 msgstr "&laquo; Powrót"
 
@@ -11080,20 +11080,20 @@ msgstr "&laquo; Powrót"
 #. translators: 1: PHP file name, 2: version number, 3: alternative file name
 #. translators: 1: WordPress hook name, 2: version number, 3: alternative hook
 #. name
-#: wp-includes/functions.php:3838 wp-includes/functions.php:3966
-#: wp-includes/functions.php:4089
+#: wp-includes/functions.php:3839 wp-includes/functions.php:3967
+#: wp-includes/functions.php:4090
 msgid "%1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "Korzystanie z %1$s uznawane jest za <strong>przestarzałe</strong> od wersji %2$s! Zamiast tego użyj %3$s."
 
 #. translators: 1: PHP function name, 2: version number
 #. translators: 1: PHP file name, 2: version number
 #. translators: 1: WordPress hook name, 2: version number
-#: wp-includes/functions.php:3841 wp-includes/functions.php:3969
-#: wp-includes/functions.php:4092
+#: wp-includes/functions.php:3842 wp-includes/functions.php:3970
+#: wp-includes/functions.php:4093
 msgid "%1$s is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "Korzystanie z %1$s uznawane jest za <strong>przestarzałe</strong> od wersji %2$s! Nie istnieje żadna alternatywa."
 
-#: wp-includes/functions.php:4722
+#: wp-includes/functions.php:4723
 msgid "Manual Offsets"
 msgstr "Ręczny wybór różnicy"
 
@@ -11105,7 +11105,7 @@ msgstr "Przyjmowanym argumentem jest teraz tablica, aby ta funkcja zachowywała 
 msgid "Page IDs, separated by commas."
 msgstr "Oddzielone przecinkami identyfikatory stron."
 
-#: wp-includes/widgets.php:1516
+#: wp-includes/widgets.php:1519
 msgid "How many items would you like to display?"
 msgstr "Ile pozycji ma być wyświetlanych?"
 
@@ -11466,7 +11466,7 @@ msgid "Strength indicator"
 msgstr "Siłomierz"
 
 #: wp-includes/admin-bar.php:830 wp-includes/class-wp-customize-widgets.php:412
-#: wp-includes/functions.php:3714
+#: wp-includes/functions.php:3715
 msgid "Widgets"
 msgstr "Widgety"
 
@@ -11514,7 +11514,7 @@ msgstr "Edytuj"
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr "Musisz się <a href=\"%s\">zalogować</a>, aby móc dodać komentarz."
 
-#: wp-includes/category-template.php:1139
+#: wp-includes/category-template.php:1131
 msgid "Tags: "
 msgstr "Tagi: "
 
@@ -11996,7 +11996,7 @@ msgstr "Edytuj wpis"
 msgid "Number of comments to show:"
 msgstr "Liczba wyświetlanych komentarzy:"
 
-#: wp-includes/deprecated.php:3130 wp-includes/functions.php:2606
+#: wp-includes/deprecated.php:3130 wp-includes/functions.php:2607
 msgid "Are you sure you want to do this?"
 msgstr "Czy na pewno chcesz to zrobić?"
 

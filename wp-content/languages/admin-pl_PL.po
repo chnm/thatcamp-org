@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-22 18:27:30+0000\n"
+"PO-Revision-Date: 2018-01-11 12:23:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,37 +26,37 @@ msgctxt "default GMT offset or timezone string"
 msgid "0"
 msgstr "Europe/Warsaw"
 
-#: wp-admin/about.php:244
+#: wp-admin/about.php:262
 msgid "Improvements to Roles and Capabilities"
 msgstr "Ulepszenia ról i uprawnień"
 
-#: wp-admin/about.php:245
+#: wp-admin/about.php:263
 msgid "New capabilities have been introduced that allow granular management of plugins and translation files. In addition, the site switching process in multisite has been fine-tuned to update the available roles and capabilities in a more reliable and coherent way."
 msgstr "Wprowadzono nowe uprawnienia, które pozwalają na szczegółowe zarządzanie wtyczkami i plikami tłumaczeń. Ponadto proces przełączania witryn w multisite został dostosowany w celu aktualizacji dostępnych ról i uprawnień."
 
-#: wp-admin/about.php:241
+#: wp-admin/about.php:259
 msgid "WordPress 4.9 includes an upgraded version of MediaElement.js, which removes dependencies on jQuery, improves accessibility, modernizes the UI, and fixes many bugs."
 msgstr "WordPress 4.9 zawiera zaktualizowaną wersję MediaElement.js, która usuwa zależność od jQuery, poprawia dostępność, modernizuje UI oraz poprawia wiele błędów."
 
-#: wp-admin/about.php:240
+#: wp-admin/about.php:258
 msgid "MediaElement.js upgraded to 4.2.6"
 msgstr "MediaElement.js zaktualizowana do wersji 4.2.6"
 
-#: wp-admin/about.php:237
+#: wp-admin/about.php:255
 msgid "We&#8217;ve introduced a new code editing library, CodeMirror, for use within core. Use it to improve any code writing or editing experiences within your plugins, like CSS or JavaScript include fields."
 msgstr "Wprowadzono nową bibliotekę edycji kodu CodeMirror. Użyj jej, aby ulepszyć pisanie lub edytowanie kodu w swoich wtyczkach, takich jak pola zawierające CSS lub JavaScript."
 
-#: wp-admin/about.php:236
+#: wp-admin/about.php:254
 msgid "CodeMirror available for use in your themes and plugins"
 msgstr "CodeMirror jest dostępny w motywach i wtyczkach"
 
 #. translators: %s:
 #. https://make.wordpress.org/core/2017/11/01/improvements-to-the-customize-js-api-in-4-9/
-#: wp-admin/about.php:230
+#: wp-admin/about.php:248
 msgid "We&#8217;ve made numerous improvements to the Customizer JS API in WordPress 4.9, eliminating many pain points and making it just as easy to work with as the PHP API. There are also new base control templates, a date/time control, and section/panel/global notifications to name a few. <a href=\"%s\">Check out the full list.</a>"
 msgstr "Wprowadziliśmy wiele ulepszeń w CustomizerJS API w WordPressie 4.9, eliminując wiele bolesnych punktów i ułatwiając pracę z PHP API. Dostępne są również nowe podstawowe szablony kontrolne, kontrola daty/godziny oraz powiadomienia sekcji/panelu/globalne, aby wymienić tylko kilka z nich. <a href=\"%s\">Sprawdź pełną listę.</a>"
 
-#: wp-admin/about.php:226
+#: wp-admin/about.php:244
 msgid "Customizer JS API Improvements"
 msgstr "Ulepszenia JS API personalizacji"
 
@@ -64,7 +64,7 @@ msgstr "Ulepszenia JS API personalizacji"
 msgid "This data is used to provide general enhancements to WordPress, which includes helping to protect your site by finding and automatically installing new updates. It is also used to calculate statistics, such as those shown on the <a href=\"%s\">WordPress.org stats page</a>."
 msgstr "Dane są wykorzystywane do zapewniania ogólnych udoskonaleń do WordPressa, w tym pomoc w ochronie witryny za pośrednictwem wyszukiwania i automatycznego instalowania aktualizacji. Stosowane są również do obliczania statystyk, takich jak te widoczne na <a href=\"%s\">stronie statystyk WordPress.org</a>."
 
-#: wp-admin/about.php:139
+#: wp-admin/about.php:157
 msgid "When you edit themes and plugins directly, WordPress 4.9 will politely warn you that this is a dangerous practice. It will recommend that you backup your files before saving, so they don&#8217;t get overwritten by the next update. Take the safe route: your future self will thank you. Your team and customers will thank you."
 msgstr "Podczas bezpośredniej edycji motywów i wtyczek, WordPress 4.9 grzecznie przypomni ci, że takie postępowanie jest niebezpieczne. Pojawi się zalecenie dotyczące utworzenia kopii zapasowej plików przed zapisaniem, aby nie zostały nadpisane podczas kolejnej aktualizacji. Nie ryzykuj, w przyszłości będziesz sobie wdzięczny. Twój zespół i klienci ci podziękują."
 
@@ -140,53 +140,53 @@ msgstr "https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory"
 msgid "Enter the address here if you <a href=\"%s\">want your site home page to be different from your WordPress installation directory</a>."
 msgstr "Wprowadź adres, jeśli <a href=\"%s\">chcesz, aby strona główna witryny była inna niż katalog instalacyjny WordPressa</a>."
 
-#: wp-admin/about.php:209
+#: wp-admin/about.php:227
 msgid "https://wordpress.org/plugins/gutenberg/"
 msgstr "https://wordpress.org/plugins/gutenberg/"
 
 #. translators: %s: smiling face with smiling eyes emoji
-#: wp-admin/about.php:219
+#: wp-admin/about.php:237
 msgid "Developer Happiness %s"
 msgstr "Developer Happiness %s"
 
-#: wp-admin/about.php:208
+#: wp-admin/about.php:226
 msgid "WordPress is working on a new way to create and control your content and we&#8217;d love to have your help. Interested in being an <a href=\"%s\">early tester</a> or getting involved with the Gutenberg project? <a href=\"%s\">Contribute on GitHub</a>."
 msgstr "WordPress pracuje nad nowym sposobem tworzenia i kontrolowania treści i bylibyśmy wdzięczni za twoją pomoc. Jesteś masz ochotę zostać <a href=\"%s\">wczesnym testerem</a> lub zaangażujesz się w projekt Gutenberg? <a href=\"%s\">Wysyłaj na GitHubie</a>."
 
 #. translators: %s: handshake emoji
-#: wp-admin/about.php:202
+#: wp-admin/about.php:220
 msgid "Lend a Hand with Gutenberg %s"
 msgstr "Pomóż z  Gutenbergiem %s"
 
-#: wp-admin/about.php:177
+#: wp-admin/about.php:195
 msgid "More Reliable Theme Switching"
 msgstr "Bardziej niezawodne zmienianie motywu"
 
-#: wp-admin/about.php:169
+#: wp-admin/about.php:187
 msgid "Site Building Improvements"
 msgstr "Ulepszenia budowy witryny"
 
-#: wp-admin/about.php:154
+#: wp-admin/about.php:172
 msgid "The New Gallery Widget"
 msgstr "Nowy widget galerii."
 
-#: wp-admin/about.php:146
+#: wp-admin/about.php:164
 msgid "Even More Widget Updates"
 msgstr "Nawet więcej aktualizacji widżetów"
 
-#: wp-admin/about.php:116
+#: wp-admin/about.php:134
 msgid "Coding Enhancements"
 msgstr "Ulepszenia kodowania"
 
-#: wp-admin/about.php:109
+#: wp-admin/about.php:127
 msgid "Were you lured away from your desk before you saved your new draft design? Fear not, when you return, WordPress 4.9 will politely ask whether or not you&#8217;d like to save your unsaved changes."
 msgstr "Czy zostałeś odciągnięty od biurka, zanim udało się zapisać projekt? Nie obawiaj się, po powrocie WordPress 4.9 uprzejmie zapyta, czy chcesz zapisać niezapisane zmiany."
 
-#: wp-admin/about.php:108
+#: wp-admin/about.php:126
 msgid "A Prompt to Protect Your Work"
 msgstr "Ostrzeżenia do ochrony twojej pracy "
 
-#: wp-admin/about.php:101
+#: wp-admin/about.php:119
 msgid "Design Locking To Guard Your Changes"
 msgstr "Blokowanie zmian w personalizatorze witryny."
 
@@ -198,80 +198,80 @@ msgstr "Prywatność i przejrzystość traktujemy bardzo poważnie. Aby dowiedzi
 msgid "From time to time, your WordPress site may send data to WordPress.org &#8212; including, but not limited to &#8212; the version of WordPress you are using, and a list of installed plugins and themes."
 msgstr "Od czasu do czasu WordPress może wysyłać dane do WordPress.org - nie ograniczając się do - używanej wersji WordPressa, czy listy zainstalowanych wtyczek i motywów."
 
-#: wp-admin/about.php:185
+#: wp-admin/about.php:203
 msgid "Were you confused by the steps to create a new menu? Perhaps no longer! We&#8217;ve ironed out the UX for a smoother menu creation process. Newly updated copy will guide you."
 msgstr "Czy proces tworzenia nowego menu może dezorientować? Być może już nie! Poprawiliśmy UX, aby ułatwić proces tworzenia menu. Nowo zaktualizowany WordPress poprowadzi przez samouczek."
 
-#: wp-admin/about.php:184
+#: wp-admin/about.php:202
 msgid "Better Menu Instructions = Less Confusion"
 msgstr "Lepsza instrukcja menu = mniej problemów"
 
-#: wp-admin/about.php:178
+#: wp-admin/about.php:196
 msgid "When you switch themes, widgets sometimes think they can just up and move location. Improvements in WordPress 4.9 offer more persistent menu and widget placement when you decide it&#8217;s time for a new theme. Additionally, you can preview installed themes or download, install, and preview new themes right. Nothing says handy like being able to preview before you deploy. "
 msgstr "Gdy są zmieniane motywy, widżety czasami mogą po prostu zmieniać lokalizację. Ulepszenia w WordPress 4.9 oferują bardziej trwałe menu i rozmieszczenie widżetów w czasie zmiany na nowy motyw. Ponadto można wyświetlić podgląd zainstalowanych motywów lub pobrać, zainstalować i wyświetlić podgląd nowych motywów. Możliwość podglądu przed wdrożeniem jest bardzo przydatna."
 
-#: wp-admin/about.php:162
+#: wp-admin/about.php:180
 msgid "Want to add media to your text widget? Embed images, video, and audio directly into the widget along with your text, with our simple but useful Add Media button. Woo!"
 msgstr "Chcesz dodać multimedia do widżetu tekstowego? Osadzaj obrazy, wideo i audio bezpośrednio w widżecie wraz z tekstem za pomocą naszego prostego, ale przydatnego przycisku Dodaj media. Petarda!"
 
-#: wp-admin/about.php:161
+#: wp-admin/about.php:179
 msgid "Press a Button, Add Media"
 msgstr "Wciśnij przycisk, Dodaj media"
 
-#: wp-admin/about.php:155
+#: wp-admin/about.php:173
 msgid "An incremental improvement to the media changes hatched in WordPress 4.8, you can now add a gallery via widget. Yes!"
 msgstr "Zmiany w mediach wykluły się w WordPressie 4.8, ale teraz można dodać galerię poprzez widget. O tak!"
 
-#: wp-admin/about.php:138
+#: wp-admin/about.php:156
 msgid "Warning: Potential Danger Ahead!"
 msgstr "Ostrzeżenie: Potencjalne zagrożenie!"
 
-#: wp-admin/about.php:132
+#: wp-admin/about.php:150
 msgid "The dreaded white screen. You&#8217;ll avoid it when working on themes and plugin code because WordPress 4.9 will warn you about saving an error. You&#8217;ll sleep better at night."
 msgstr "Przerażający biały ekran. Unikniesz go podczas pracy nad motywami i kodem wtyczki, ponieważ WordPress 4.9 wyświetli ostrzeżenie o zapisaniu błędu. Będziesz lepiej spać w nocy."
 
-#: wp-admin/about.php:131
+#: wp-admin/about.php:149
 msgid "Sandbox for Safety"
 msgstr "Piaskownica dla bezpieczeństwa"
 
-#: wp-admin/about.php:125
+#: wp-admin/about.php:143
 msgid "You&#8217;ve got a display problem but can&#8217;t quite figure out exactly what went wrong in the CSS you lovingly wrote. With syntax highlighting and error checking for CSS editing and the Custom HTML widget introduced in WordPress 4.8.1, you&#8217;ll pinpoint coding errors quickly. Practically guaranteed to help you scan code more easily and suss out and fix code errors quickly."
 msgstr "Masz problem z wyświetlaniem, ale nie możesz dokładnie określić, co gdzie jest błąd w CSS. Dzięki podświetlaniu składni i sprawdzaniu błędów przy edycji CSS i  HTML wprowadzonemu w WordPress 4.8.1, szybko można wykryć błędy kodowania. Praktycznie gwarantuje to możliwość szybkiego wykluczenia błędów w kodzie."
 
-#: wp-admin/about.php:124
+#: wp-admin/about.php:142
 msgid "Syntax Highlighting and Error Checking? Yes, Please!"
 msgstr "Podświetlenie składni i sprawdzanie błędów? Tak, poproszę!"
 
-#: wp-admin/about.php:102
+#: wp-admin/about.php:120
 msgid "Ever encounter a scenario where two designers walk into a project and designer A overrides designer B&#8217;s beautiful changes? WordPress 4.9&#8217;s design lock feature (similar to post locking) secures your draft design so that no one can make changes to it or erase all your hard work."
 msgstr "Czy kiedykolwiek natknąłeś się na scenariusz, w którym dwóch projektantów wchodzi do projektu, a projektant A zastępuje piękne zmiany projektanta B? Blokada projektu WordPress 4.9 (podobna do blokowania wpisów) zabezpiecza projekt szkicu, aby nikt nie mógł wprowadzać w nim zmian, ani wymazać całej tej pracy."
 
-#: wp-admin/about.php:95
+#: wp-admin/about.php:113
 msgid "Need to get some feedback on proposed site design changes? WordPress 4.9 gives you a preview link you can send to your team and customers so that you can collect and integrate feedback before you schedule the changes to go live. Can we say collaboration&#43;&#43;?"
 msgstr "Chcesz uzyskać informacje zwrotne na temat proponowanych zmian w projekcie witryny? WordPress 4.9 udostępnia link podglądu, który można wysłać do swojego zespołu i klientów, dzięki czemu można zbierać i integrować opinie, zanim zostaną opublikowane zmiany. Czy można powiedzieć o ulepszeniu współpracy?"
 
-#: wp-admin/about.php:88
+#: wp-admin/about.php:106
 msgid "Yes, you read that right. Just like you can draft and revise posts and schedule them to go live on the date and time you choose, you can now tinker with your site&#8217;s design and schedule those design changes to go live as you please."
 msgstr "Tak, dobrze czytasz. Tak, jak można szkicować i poprawiać posty oraz planować ich udostępnianie w wybranym dniu i czasie, można teraz majstrować przy projektowaniu swojej witryny i planować zmiany w projekcie, tak aby spełniał wszystkie oczekiwaniami."
 
-#: wp-admin/about.php:94
+#: wp-admin/about.php:112
 msgid "Collaborate with Design Preview Links"
 msgstr "Korzystaj z linków podglądu projektu"
 
-#: wp-admin/about.php:79
+#: wp-admin/about.php:97
 msgid "Customizer Workflow Improved"
 msgstr "Usprawnienie pracy z personalizacją"
 
-#: wp-admin/about.php:87
+#: wp-admin/about.php:105
 msgid "Draft and Schedule Site Design Customizations"
 msgstr "Szkicuj i planuj modyfikacje projektu witryny"
 
-#: wp-admin/about.php:66
+#: wp-admin/about.php:84
 msgid "Welcome to an improved Customizer workflow with design drafts, locking, scheduling, and preview links. What&#8217;s more, code syntax highlighting and error checking will make for a clean and smooth site building experience. Finally, if all that wasn&#8217;t pretty great, we&#8217;ve got a great new Gallery widget and improvements to theme browsing and switching."
 msgstr "Przedstawiamy udoskonaloną wersję personalizacji, która obejmuje szkice projektu, blokowanie, planowanie i linki podglądu. Ponadto, podświetlanie składni kodu i sprawdzanie błędów oznacza, że budowa witryny będzie łatwym i przyjemnym doświadczeniem. A to jeszcze nie wszystko! Mamy nowy świetny widget galerii oraz wprowadziliśmy ulepszenia do przeglądania i zmieniania motywów. "
 
 #. translators: %s: party popper emoji
-#: wp-admin/about.php:61
+#: wp-admin/about.php:79
 msgid "Major Customizer Improvements, Code Error Checking, and More! %s"
 msgstr "Istotne ulepszenia personalizacji, sprawdzenie błędów kodu i więcej! %s"
 
@@ -1047,12 +1047,6 @@ msgstr "Portfolio"
 msgid "%s plugin successfully updated."
 msgstr "Wtyczka %s została zaktualizowana."
 
-#. translators: 1: Codex URL to release notes, 2: new WordPress version, 3: URL
-#. to network admin, 4: accessibility text
-#: wp-admin/includes/update.php:244
-msgid "<a href=\"%1$s\">WordPress %2$s</a> is available! <a href=\"%3$s\" aria-label=\"%4$s\">Please update now</a>."
-msgstr "Już jest dostępny <a href=\"%1$s\">WordPress %2$s</a>! <a href=\"%3$s\" aria-label=\"%4$s\">Zaktualizuj teraz</a>."
-
 #: wp-admin/includes/theme.php:258
 msgid "Footer Widgets"
 msgstr "Widgety Stopki"
@@ -1089,6 +1083,12 @@ msgstr "<a href=\"%1$s\">WordPress %2$s</a> jest dostępny! Proszę poinformowa�
 #: wp-admin/includes/update.php:669
 msgid "%s themes successfully updated."
 msgstr "Liczba zaktualizowanych motywów: %s."
+
+#. translators: 1: Codex URL to release notes, 2: new WordPress version, 3: URL
+#. to network admin, 4: accessibility text
+#: wp-admin/includes/update.php:244
+msgid "<a href=\"%1$s\">WordPress %2$s</a> is available! <a href=\"%3$s\" aria-label=\"%4$s\">Please update now</a>."
+msgstr "<a href=\"%1$s\">WordPress %2$s</a> jest już dostępny! <a href=\"%3$s\" aria-label=\"%4$s\">Zaktualizuj teraz</a>."
 
 #: wp-admin/includes/template.php:2102
 msgid "This will replace the current editor content with the last backup version. You can use undo and redo in the editor to get the old content back or to return to the restored version."
@@ -1704,7 +1704,7 @@ msgid "(Currently set to: %s)"
 msgstr "(Obecne ustawienie: %s)"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:372
+#: wp-admin/about.php:390
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Wersja %s</strong> naprawiła jeden problem związany z bezpieczeństwem."
 
@@ -1726,15 +1726,15 @@ msgstr "Możesz zmienić swoje zdjęcie profilowe w serwisie <a href=\"%s\">Grav
 msgid "Profile Picture"
 msgstr "Zdjęcie profilowe"
 
-#: wp-admin/about.php:363
+#: wp-admin/about.php:381
 msgid "Maintenance Releases"
 msgstr "Wydania poprawiające błędy"
 
-#: wp-admin/about.php:366
+#: wp-admin/about.php:384
 msgid "Security Releases"
 msgstr "Wydania poprawiające bezpieczeństwo"
 
-#: wp-admin/about.php:34 wp-admin/about.php:369
+#: wp-admin/about.php:34 wp-admin/about.php:387
 msgid "Maintenance and Security Releases"
 msgstr "Wydania poprawiające bezpieczeństwo i błędy"
 
@@ -3805,8 +3805,8 @@ msgstr "Używasz WordPressa %1$s z motywem %2$s."
 
 #: wp-admin/includes/class-core-upgrader.php:137
 #: wp-admin/includes/class-wp-upgrader.php:164
-#: wp-admin/includes/update-core.php:885 wp-admin/includes/update-core.php:962
-#: wp-admin/includes/update-core.php:985
+#: wp-admin/includes/update-core.php:921 wp-admin/includes/update-core.php:998
+#: wp-admin/includes/update-core.php:1021
 msgid "The update cannot be installed because we will be unable to copy some files. This is usually due to inconsistent file permissions."
 msgstr "Aktualizacja nie może zostać zainstalowana, ponieważ nie można skopiować niektórych plików. Zwykle ten problem wynika z nieprawidłowo ustawionych uprawnień do dostępu do plików."
 
@@ -3949,7 +3949,7 @@ msgstr "Aktualizacja motywu: %s"
 msgid "Updating plugin: %s"
 msgstr "Aktualizacja wtyczki: %s"
 
-#: wp-admin/includes/update-core.php:1022
+#: wp-admin/includes/update-core.php:1058
 msgid "There is not enough free disk space to complete the update."
 msgstr "Brak wystarczającej ilości wolnego miejsca na dysku do ukończenia aktualizacji."
 
@@ -4015,11 +4015,11 @@ msgstr "Suma kontrolna pliku (%1$s) nie zgadza się z oczekiwaną (%2$s)."
 msgid "This password will not be stored on the server."
 msgstr "To hasło nie zostanie zapisane na serwerze."
 
-#: wp-admin/includes/update-core.php:913
+#: wp-admin/includes/update-core.php:949
 msgid "Preparing to install the latest version&#8230;"
 msgstr "Przygotowywanie się do zainstalowania najnowszej wersji&#8230;"
 
-#: wp-admin/includes/update-core.php:975
+#: wp-admin/includes/update-core.php:1011
 msgid "Copying the required files&#8230;"
 msgstr "Kopiowanie wymaganych plików&#8230;"
 
@@ -4762,7 +4762,7 @@ msgstr "Pobierz Ulubione"
 msgid "You can also control the display of your content in RSS feeds, including the maximum number of posts to display and whether to show full text or a summary."
 msgstr "Możesz zmienić ustawienia kanału RSS, włączając takie rzeczy jak liczba wpisów oraz wybór między pełną treścią, a zajawką."
 
-#: wp-admin/includes/update-core.php:1261 wp-admin/update-core.php:511
+#: wp-admin/includes/update-core.php:1301 wp-admin/update-core.php:511
 msgid "Welcome to WordPress %1$s. You will be redirected to the About WordPress screen. If not, click <a href=\"%2$s\">here</a>."
 msgstr "Witaj w WordPressie %1$s. Zostaniesz przekierowany do strony O WordPressie. Jeżeli tak się nie stało, kliknij <a href=\"%2$s\">tutaj</a>."
 
@@ -5568,7 +5568,7 @@ msgstr "Pokazuj pasek narzędzi podczas przeglądania witryny"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:381
+#: wp-admin/about.php:399
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "W <strong>wersji %1$s</strong> naprawiono błąd w zabezpieczeniach i %2$s inny błąd."
@@ -5576,14 +5576,14 @@ msgstr[1] "W <strong>wersji %1$s</strong> naprawiono błąd w zabezpieczeniach i
 msgstr[2] "W <strong>wersji %1$s</strong> naprawiono błąd w zabezpieczeniach i %2$s innych błędów."
 
 #. translators: %s: Codex URL
-#: wp-admin/about.php:50 wp-admin/about.php:389
+#: wp-admin/about.php:50 wp-admin/about.php:68 wp-admin/about.php:407
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Aby dowiedzieć się więcej, przeczytaj <a href=\"%s\">informacje o tym wydaniu</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:39 wp-admin/about.php:385
+#: wp-admin/about.php:39 wp-admin/about.php:57 wp-admin/about.php:403
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "W <strong>wersji %1$s</strong> naprawiono pewne błędy w zabezpieczeniach i %2$s inny błąd."
@@ -5591,7 +5591,7 @@ msgstr[1] "W <strong>wersji %1$s</strong> naprawiono pewne błędy w zabezpiecze
 msgstr[2] "W <strong>wersji %1$s</strong> naprawiono pewne błędy w zabezpieczeniach i %2$s innych błędów."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:377
+#: wp-admin/about.php:395
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "W <strong>wersji %1$s</strong> naprawiono %2$s błąd."
@@ -5607,20 +5607,20 @@ msgstr "Witaj w swoim kokpicie! Ten ekran zobaczysz za każdym razem, kiedy zalo
 msgid "What&#8217;s New"
 msgstr "Co nowego"
 
-#: wp-admin/about.php:362
+#: wp-admin/about.php:380
 msgid "Maintenance Release"
 msgstr "Wydanie z poprawkami błędów"
 
-#: wp-admin/about.php:365
+#: wp-admin/about.php:383
 msgid "Security Release"
 msgstr "Wydanie z poprawkami błędów w zabezpieczeniach"
 
-#: wp-admin/about.php:368
+#: wp-admin/about.php:386
 msgid "Maintenance and Security Release"
 msgstr "Wydanie z poprawkami błędów w zabezpieczeniach i innych"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:374
+#: wp-admin/about.php:392
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "W <strong>wersji %s</strong> naprawiono pewne błędy związane z bezpieczeństwem."
 
@@ -5628,11 +5628,11 @@ msgstr "W <strong>wersji %s</strong> naprawiono pewne błędy związane z bezpie
 msgid "This screen allows you to choose your permalink structure. You can choose from common settings or create custom URL structures."
 msgstr "Na tym ekranie można wybrać format bezpośrednich odnośników. Możesz wybrać jeden z powszechnie używanych lub wymyślić swój."
 
-#: wp-admin/about.php:255
+#: wp-admin/about.php:273
 msgid "Return to Updates"
 msgstr "Powróć na stronę „Aktualizacje”"
 
-#: wp-admin/includes/update-core.php:1262 wp-admin/update-core.php:512
+#: wp-admin/includes/update-core.php:1302 wp-admin/update-core.php:512
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "Witaj w WordPressie %1$s. <a href=\"%2$s\">Dowiedz się więcej na jego temat</a>."
 
@@ -5904,11 +5904,11 @@ msgstr "Ponieważ ta kopia WordPressa obsługuje sieć witryn, do tej witryny mo
 msgid "Welcome to WordPress %s"
 msgstr "Witaj w WordPressie %s"
 
-#: wp-admin/about.php:255
+#: wp-admin/about.php:273
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Powróć na stronę „Kokpit → Aktualizacje”"
 
-#: wp-admin/about.php:258
+#: wp-admin/about.php:276
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Przejdź do kokpitu"
 
@@ -7714,7 +7714,7 @@ msgid "Update WordPress"
 msgstr "Zaktualizuj WordPressa"
 
 #: wp-admin/includes/class-wp-automatic-updater.php:349
-#: wp-admin/includes/update-core.php:1258 wp-admin/update-core.php:510
+#: wp-admin/includes/update-core.php:1298 wp-admin/update-core.php:510
 msgid "WordPress updated successfully"
 msgstr "WordPress został pomyślnie zaktualizowany"
 
@@ -7734,7 +7734,7 @@ msgstr "W tej strefie czasowej obowiązuje obecnie czas letni."
 msgid "This timezone does not observe daylight saving time."
 msgstr "W tej strefie czasowej nie obowiązuje przechodzenie na czas letni."
 
-#: wp-admin/about.php:258
+#: wp-admin/about.php:276
 msgid "Go to Dashboard"
 msgstr "Przejdź do kokpitu"
 
@@ -7937,19 +7937,19 @@ msgstr "Wersja %s"
 msgid "Unable to locate WordPress theme directory."
 msgstr "Nie udało się zlokalizować katalogu motywów WordPressa."
 
-#: wp-admin/includes/update-core.php:906
+#: wp-admin/includes/update-core.php:942
 msgid "The update cannot be installed because WordPress %1$s requires PHP version %2$s or higher and MySQL version %3$s or higher. You are running PHP version %4$s and MySQL version %5$s."
 msgstr "Aktualizacja nie może zostać zainstalowana, ponieważ WordPress %1$s wymaga PHP w wersji %2$s lub nowszej i MySQL-a w wersji %3$s lub nowszej. Aktualnie na Twoim serwerze zainstalowane jest PHP w wersji %4$s i MySQL w wersji %5$s."
 
-#: wp-admin/includes/update-core.php:908
+#: wp-admin/includes/update-core.php:944
 msgid "The update cannot be installed because WordPress %1$s requires PHP version %2$s or higher. You are running version %3$s."
 msgstr "Aktualizacja nie może zostać zainstalowana, ponieważ WordPress %1$s wymaga PHP w wersji %2$s lub nowszej. Aktualnie na Twoim serwerze zainstalowane jest PHP w wersji %3$s."
 
-#: wp-admin/includes/update-core.php:910
+#: wp-admin/includes/update-core.php:946
 msgid "The update cannot be installed because WordPress %1$s requires MySQL version %2$s or higher. You are running version %3$s."
 msgstr "Aktualizacja nie może zostać zainstalowana, ponieważ WordPress %1$s wymaga MySQL-a w wersji %2$s lub nowszej. Aktualnie na Twoim serwerze zainstalowany jest MySQL w wersji %3$s."
 
-#: wp-admin/includes/update-core.php:872
+#: wp-admin/includes/update-core.php:908
 msgid "The update could not be unpacked"
 msgstr "Aktualizacja nie mogła zostać rozpakowana"
 
@@ -8885,11 +8885,11 @@ msgstr "Nie znaleziono żadnych wtyczek."
 msgid "Visit plugin site"
 msgstr "Odwiedź witrynę wtyczki"
 
-#: wp-admin/includes/update-core.php:859
+#: wp-admin/includes/update-core.php:895
 msgid "Verifying the unpacked files&#8230;"
 msgstr "Weryfikacja rozpakowanych plików&#8230;"
 
-#: wp-admin/includes/update-core.php:1132
+#: wp-admin/includes/update-core.php:1172
 msgid "Upgrading database&#8230;"
 msgstr "Aktualizacja bazy danych&#8230;"
 
@@ -9425,7 +9425,7 @@ msgstr "Docelowy folder już istnieje."
 
 #: wp-admin/includes/class-wp-upgrader.php:162 wp-admin/includes/file.php:1170
 #: wp-admin/includes/file.php:1281 wp-admin/includes/file.php:1339
-#: wp-admin/includes/update-core.php:1207
+#: wp-admin/includes/update-core.php:1247
 msgid "Could not create directory."
 msgstr "Nie można było utworzyć katalogu."
 
@@ -10560,8 +10560,8 @@ msgid "Could not extract file from archive."
 msgstr "Nie można było rozpakować pliku z archiwum."
 
 #: wp-admin/includes/file.php:1195 wp-admin/includes/file.php:1299
-#: wp-admin/includes/file.php:1334 wp-admin/includes/update-core.php:1091
-#: wp-admin/includes/update-core.php:1202
+#: wp-admin/includes/file.php:1334 wp-admin/includes/update-core.php:1127
+#: wp-admin/includes/update-core.php:1242
 msgid "Could not copy file."
 msgstr "Nie można było skopiować pliku."
 
@@ -10626,12 +10626,12 @@ msgid "Installing the latest version&#8230;"
 msgstr "Instalacja najnowszej wersji&#8230;"
 
 #: wp-admin/includes/class-wp-upgrader.php:166
-#: wp-admin/includes/update-core.php:967
+#: wp-admin/includes/update-core.php:1003
 msgid "Enabling Maintenance mode&#8230;"
 msgstr "Włączanie trybu konserwacji&#8230;"
 
 #: wp-admin/includes/class-wp-upgrader.php:167
-#: wp-admin/includes/update-core.php:1054
+#: wp-admin/includes/update-core.php:1090
 msgid "Disabling Maintenance mode&#8230;"
 msgstr "Wyłączanie trybu konserwacji&#8230;"
 
