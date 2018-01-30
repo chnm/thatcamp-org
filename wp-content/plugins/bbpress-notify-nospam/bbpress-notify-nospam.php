@@ -2,7 +2,7 @@
 /*
 * Plugin Name:  bbPress Notify (No-Spam)
 * Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a>
-* Version:      1.17
+* Version:      1.18
 * Author:       <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:      GNU General Public License, v2 ( or newer )
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ load_plugin_textdomain( 'bbpress_notify', false, dirname( plugin_basename( __FIL
 
 class bbPress_Notify_noSpam {
 	
-	const VERSION = '1.17';
+	const VERSION = '1.18';
 	
 	protected $settings_section = 'bbpress_notify_options';
 	
@@ -40,6 +40,8 @@ class bbPress_Notify_noSpam {
 	public $options = array();
 
 	public $users_in_roles = array();
+	
+	private $bridge_warnings = array();
 	
 	function __construct()
 	{
@@ -69,6 +71,8 @@ class bbPress_Notify_noSpam {
 // 			add_action( 'admin_notices', array( $this, 'maybe_show_surety_message' ) );
 			
 			add_action( 'wp_ajax_usc_dismiss_notice', array( $this, 'handle_notice_dismissal' ) );
+			
+			add_action( 'plugins_loaded', array( $this, 'get_bridge_warnings' ), PHP_INT_MAX );
 			
 		}
 		else 
@@ -632,6 +636,21 @@ jQuery(document).ready(function($){
 			$topic_author = bbp_get_topic_author( $topic_id );
 			$topic_author_email = bbp_get_topic_author_email( $topic_id );
 			
+			$topic_content = '';
+			if ( false !== strpos( $email_body, '[topic-content]' ) )
+			{
+				$topic_content = bbp_get_topic_content( $topic_id );
+				$topic_content = preg_replace( '/<br\s*\/?>/is', PHP_EOL, $topic_content );
+				$topic_content = preg_replace( '/(?:<\/p>\s*<p>)/ism', PHP_EOL . PHP_EOL, $topic_content );
+				$topic_content = wp_specialchars_decode( $topic_content, ENT_QUOTES );
+			}
+			
+			$topic_excerpt = '';
+			if ( false !== strpos( $email_body, '[topic-excerpt]' ) )
+			{
+				$topic_excerpt = wp_specialchars_decode( strip_tags( bbp_get_topic_excerpt( $topic_id, $excerpt_size ) ), ENT_QUOTES );
+			}
+			
 		}
 		else 
 		{
@@ -679,6 +698,8 @@ jQuery(document).ready(function($){
 			$email_body = str_replace( "[topic-title]", $topic_title, $email_body );
 			$email_body = str_replace( "[topic-author]", $topic_author, $email_body );
 			$email_body = str_replace( "[topic-author-email]", $topic_author_email, $email_body );
+			$email_body = str_replace( "[topic-content]", $topic_content, $email_body );
+			$email_body = str_replace( "[topic-excerpt]", $topic_excerpt, $email_body );
 			
 			if ( strpos( $email_body, '[topic-url]' ) || strpos( $email_subject, '[topic-url]' ) )
 			{
@@ -1254,6 +1275,18 @@ jQuery(document).ready(function($){
 			if ( in_array( $value, ( array )$saved_option ) ) { $html_checked = 'checked="checked"'; }
 			printf( '<label><input type="checkbox" %s name="bbpress_notify_newtopic_recipients[]" value="%s"/> %s</label><br>', $html_checked, $value, $description );
 		}
+
+		if ( ! empty( $this->bridge_warnings ) )
+		{
+			foreach( $this->bridge_warnings as $w )
+			{
+				?>
+				<div class="notice notice-warning inline">
+					<p><?php echo $w; ?></p>
+				</div>
+				<?php
+			}
+		}
 	}
 	
 	/**
@@ -1353,6 +1386,18 @@ jQuery(document).ready(function($){
 			if ( in_array( $value, ( array )$saved_option ) ) { $html_checked = 'checked="checked"'; }
 			printf( '<label><input type="checkbox" %s name="bbpress_notify_newreply_recipients[]" value="%s"/> %s</label><br>', $html_checked, $value, $description );
 		}
+		
+		if ( ! empty( $this->bridge_warnings ) )
+		{
+			foreach( $this->bridge_warnings as $w )
+			{
+				?>
+				<div class="notice notice-warning inline">
+					<p><?php echo $w; ?></p>
+				</div>
+				<?php
+			}
+		}
 	}
 	
 	
@@ -1396,7 +1441,9 @@ jQuery(document).ready(function($){
 	 */
 	public function get_available_topic_tags( $tags='' )
 	{
-		$tags 		= '[blogname], [recipient-first_name], [recipient-last_name], [recipient-display_name], [recipient-user_nicename], [topic-title], [topic-content], [topic-excerpt], [topic-url], [topic-replyurl], [topic-author], [topic-author-email], [topic-forum]';
+		$tags 		= '[blogname], [recipient-first_name], [recipient-last_name], [recipient-display_name], ' .
+					  '[recipient-user_nicename], [topic-title], [topic-content], [topic-excerpt], [topic-url], ' . 
+					  '[topic-replyurl], [topic-author], [topic-author-email], [topic-forum]';
 		$extra_tags = apply_filters( 'bbpnns_extra_topic_tags',  null );
 		
 		if ( $extra_tags )
@@ -1412,8 +1459,10 @@ jQuery(document).ready(function($){
 	 */
 	public function get_available_reply_tags( $tags='' )
 	{
-		$tags 		= '[blogname], [recipient-first_name], [recipient-last_name], [recipient-display_name], [recipient-user_nicename], [reply-title], [reply-content], [reply-excerpt], [reply-url], [reply-replyurl], [reply-author], [reply-author-email], [reply-forum], 
-				[topic-url], [topic-title], [topic-author], [topic-author-email]';
+		$tags 		= '[blogname], [recipient-first_name], [recipient-last_name], [recipient-display_name], [recipient-user_nicename], ' .
+		              '[reply-title], [reply-content], [reply-excerpt], [reply-url], [reply-replyurl], [reply-author], [reply-author-email], ' .
+		              '[reply-forum], [topic-url], [topic-title], [topic-author], [topic-author-email], [topic-content], [topic-excerpt]';
+		
 		$extra_tags = apply_filters( 'bbpnns_extra_reply_tags',  null );
 		
 		if ( $extra_tags )
@@ -1583,6 +1632,46 @@ jQuery(document).ready(function($){
 			</p>
 		</div>
 		<?php 
+	}
+	
+	
+	/**
+	 * Checks if there are any plugins that need a bridge
+	 */
+	public function get_bridge_warnings()
+	{
+		$bridges = array(
+				array( 'bridge_name'  => 'bbPress Notify (No-Spam)/Private Groups Bridge',
+					   'bridge_class' => 'bbpnns_private_groups_bridge', 
+					   'bridge_url'   => 'https://usestrict.net/product/bbpress-notify-no-spam-private-groups-bridge/',
+					   'plays_with'   => 'Private Groups',
+					   'has_player'   => ( function_exists( 'rpg_user_profile_field' ) ),
+				),
+				array( 'bridge_name'  => 'bbPress Notify (No-Spam)/BuddyPress Bridge',
+					   'bridge_class' => 'BbpnnsBuddypressBridge',
+					   'bridge_url'   => 'https://usestrict.net/product/bbpress-notify-no-spam-buddypress-bridge/',
+					   'plays_with'   => 'BuddyPress',
+					   'has_player'   => ( function_exists( 'buddypress' ) ),
+				),
+				array( 'bridge_name'  => 'bbPress Notify (No-Spam)/MemberPress Bridge',
+					   'bridge_class' => 'bbpnns_memberpress_bridge',
+					   'bridge_url'   => 'https://usestrict.net/product/bbpress-notify-no-spam-memberpress-bridge/',
+					   'plays_with'   => 'MemberPress',
+					   'has_player'   => ( class_exists( 'bbpnns_memberpress_bridge' ) ),
+				),
+		);
+		
+		$message = __( '<strong>WARNING</strong>, you are using <strong>%s</strong> but do not have <strong>%s</strong> installed or active. ' .
+				       'Setting role-based notifications will send messages to *all* '. 
+				       'members of the selected roles. <a href="%s" target="_new">Click here</a> to get the add-on so that bbpnns and %s can play nicely.', $this->domain);
+
+		foreach( $bridges as $bridge )
+		{
+			if ( true === $bridge['has_player'] && ! class_exists( $bridge['bridge_class'] ) )
+			{
+				$this->bridge_warnings[] = sprintf( $message, $bridge['plays_with'], $bridge['bridge_name'], $bridge['bridge_url'], $bridge['plays_with'] );
+			}
+		}
 	}
 }
 

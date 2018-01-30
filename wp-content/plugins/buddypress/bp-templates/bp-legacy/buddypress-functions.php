@@ -804,15 +804,18 @@ function bp_legacy_theme_object_template_loader() {
 	if ( ! bp_current_action() )
 		bp_update_is_directory( true, bp_current_component() );
 
-	$template_part = $object . '/' . $object . '-loop';
-
 	// The template part can be overridden by the calling JS function.
-	if ( ! empty( $_POST['template'] ) ) {
-		$template_part = sanitize_option( 'upload_path', $_POST['template'] );
+	if ( ! empty( $_POST['template'] ) && 'groups/single/members' === $_POST['template'] && 'group_members' === $object ) {
+		$template_part = 'groups/single/members.php';
+	} else {
+		$template_part = $object . '/' . $object . '-loop.php';
 	}
 
-	// Locate the object template.
-	bp_get_template_part( $template_part );
+	$template_path = bp_locate_template( array( $template_part ), false );
+
+	$template_path = apply_filters( 'bp_legacy_object_template_path', $template_path );
+
+	load_template( $template_path );
 	exit();
 }
 
@@ -1611,10 +1614,10 @@ function bp_legacy_theme_ajax_messages_send_reply() {
 		bp_messages_embed();
 
 		// Add new-message css class.
-		add_filter( 'bp_get_the_thread_message_css_class', create_function( '$retval', '
-			$retval[] = "new-message";
+		add_filter( 'bp_get_the_thread_message_css_class', function( $retval ) {
+			$retval[] = 'new-message';
 			return $retval;
-		' ) );
+		} );
 
 		// Output single message template part.
 		bp_get_template_part( 'members/single/messages/message' );

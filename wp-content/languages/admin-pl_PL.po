@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-11 12:23:44+0000\n"
+"PO-Revision-Date: 2018-01-27 17:30:50+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,6 +25,10 @@ msgstr "1"
 msgctxt "default GMT offset or timezone string"
 msgid "0"
 msgstr "Europe/Warsaw"
+
+#: wp-admin/customize.php:80
+msgid "This changeset cannot be further modified."
+msgstr "Zestaw zmian nie może być dalej modyfikowany."
 
 #: wp-admin/about.php:262
 msgid "Improvements to Roles and Capabilities"
@@ -764,10 +768,6 @@ msgstr "https://pl.wordpress.org/plugins/"
 #: wp-admin/customize.php:72 wp-admin/customize.php:81
 msgid "Customize New Changes"
 msgstr "Spersonalizuj nowe zmiany"
-
-#: wp-admin/customize.php:80
-msgid "This changeset has already been published and cannot be further modified."
-msgstr "Ten zestaw zmian został już opublikowany i nie może być już modyfikowany."
 
 #: wp-admin/custom-background.php:407 wp-admin/custom-background.php:408
 msgctxt "Background Scroll"
@@ -2662,7 +2662,7 @@ msgid "<a href=\"https://codex.wordpress.org/Managing_Plugins#Plugin_Management\
 msgstr "<a href=\"https://codex.wordpress.org/Managing_Plugins#Plugin_Management\">Dokumentacja: zarządzanie wtyczkami</a>"
 
 #. translators: %s: the option/setting
-#: wp-admin/options.php:198
+#: wp-admin/options.php:200
 msgid "The %s setting is unregistered. Unregistered settings are deprecated. See https://codex.wordpress.org/Settings_API"
 msgstr "Ustawienie %s nie jest zarejestrowane. Niezarejestrowane ustawienia są przestarzałe. Patrz: https://codex.wordpress.org/Settings_API"
 
@@ -6087,7 +6087,7 @@ msgid "<strong>Drag and Drop</strong> &mdash; To rearrange the boxes, drag and d
 msgstr "<strong>Przeciąganie i upuszczanie</strong> – Aby zmienić ułożenie bloków, można przeciągnąć je w inne miejsca. Aby to zrobić, należy umieścić wskaźnik myszy nad paskiem tytułu wybranego bloku, kliknąć i przytrzymać przycisk myszy, a następnie przeciągnąć blok w docelowe miejsce. Podczas przenoszenia bloków wyświetlane jest szare pole o przerywanym obramowaniu, które wskazuje, gdzie umieszczony zostanie blok, jeśli w danej chwili puszczony zostanie przycisk myszy."
 
 #: wp-admin/my-sites.php:54 wp-admin/options-head.php:15
-#: wp-admin/options.php:233
+#: wp-admin/options.php:235
 msgid "Settings saved."
 msgstr "Ustawienia zostały zapisane."
 
@@ -8419,7 +8419,7 @@ msgstr "Nazwa użytkownika"
 msgid "Update Services"
 msgstr "Usługi aktualizacji"
 
-#: wp-admin/options.php:247
+#: wp-admin/options.php:249
 msgid "All Settings"
 msgstr "Wszystkie ustawienia"
 
@@ -9131,7 +9131,7 @@ msgid "Custom Header"
 msgstr "Własny nagłówek"
 
 #: wp-admin/includes/template.php:1994 wp-admin/nav-menus.php:659
-#: wp-admin/options.php:294
+#: wp-admin/options.php:296
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 

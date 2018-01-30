@@ -24,7 +24,7 @@ msgstr "Πρόκειται να διαγράψετε τους ακόλουθου
 msgid "User could not be added to this site."
 msgstr "Ο χρήστης δεν μπορεί να προστεθεί στον ιστότοπο."
 
-#: wp-admin/network/site-new.php:250
+#: wp-admin/network/site-new.php:252
 msgid "The username and a link to set the password will be mailed to this email address."
 msgstr "Το ψευδώνυμο και ο σύνδεσμος για καθορισμό συνθηματικού θα σας σταλεί σε αυτή την ηλεκ. διεύθυνση."
 
@@ -559,7 +559,7 @@ msgstr "Επιτρεπόμενοι τύποι αρχείων. Διαχωρίστ
 msgid "Set site attributes"
 msgstr "Ορισμός ιδιοτήτων ιστότοπου"
 
-#: wp-admin/network/settings.php:418
+#: wp-admin/network/settings.php:420
 msgid "Enable menus"
 msgstr "Ενεργοποίηση των μενού"
 
@@ -1235,7 +1235,7 @@ msgstr "Ρυθμίσεις μεταφορτώσεων"
 msgid "Operational Settings"
 msgstr "Λειτουργικές ρυθμίσεις"
 
-#: wp-admin/network/settings.php:396
+#: wp-admin/network/settings.php:398
 msgid "Enable administration menus"
 msgstr "Ενεργοποίηση διαχειριστικών μενού"
 
@@ -1276,15 +1276,15 @@ msgstr "[%s] Εγγράφηκε νέος ιστότοπος"
 msgid "Network Admin Email"
 msgstr "Ηλ. διεύθυνση διαχειριστή δικτύου"
 
-#: wp-admin/network/site-new.php:250
+#: wp-admin/network/site-new.php:252
 msgid "A new user will be created if the above email address is not in the database."
 msgstr "Ένας νέος χρήστης θα δημιουργηθεί έαν η παραπάνω διεύθυνση ηλεκτρονικού ταχυδρομείου δεν είναι στη βάση δεδομένων."
 
-#: wp-admin/network/site-new.php:246
+#: wp-admin/network/site-new.php:248
 msgid "Admin Email"
 msgstr "Ηλ. διεύθυνση διαχειριστή"
 
-#: wp-admin/network/site-new.php:262
+#: wp-admin/network/site-new.php:264
 msgid "Add Site"
 msgstr "Προσθήκη ιστοτόπου"
 

@@ -4,11 +4,11 @@ Author URI: http://www.usestrict.net/
 Plugin URI: http://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
-Tested up to: 4.9.1
+Tested up to: 4.9.2
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.17
+Stable tag: 1.18
 Requires PHP: 5.3
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
@@ -33,6 +33,7 @@ It integrates into bbPress and sends notifications via e-mail when new topics or
 Take your notifications to the next level with one or more of these add-ons. 
 
 <ul>
+    <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-reply-email/" target="_new">Reply by Email Add-on</a>: Users can reply directly from their mailbox. No need to click links or open the forums in a browser.</li>
     <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-opt-out-add-on/" target="_new">Opt-out Add-on</a>: Users can choose not to receive any notifications, or simply unsubscribe from the thread with a single click. A must-have for CAN-SPAM and CASL laws!</li>
     <li><a href="https://usestrict.net/product/bbpress-notify-no-spam-digests/" target="_new">Digest Add-on</a>: Users can choose to receive daily, weekly, or monthly digests.</li>
     <li><a href="https://usestrict.net/product/bbpress-moderation-plugin-add-on/" target="_new">bbPress Moderation Integration</a>: Make bbpnns work with <a href="https://wordpress.org/plugins/bbpressmoderation/" target="_new">bbPress Moderation</a>.</li>
@@ -76,6 +77,10 @@ the [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out
 
 
 == Changelog ==
+= 1.18 =
+* Added support for topic-content and topic-excerpt tags in replies.
+* Added check and warning of needed bridge plugins to play nicely with supported membership/permission plugins.
+
 = 1.17 =
 * Fix: notify_on_save was not handling future dated publishing at all.
 

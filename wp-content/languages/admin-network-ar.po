@@ -24,7 +24,7 @@ msgstr "أنت على وشك حذف المواقع التالية:"
 msgid "User could not be added to this site."
 msgstr "تعذرت إضافة المستخدم إلى هذا الموقع."
 
-#: wp-admin/network/site-new.php:250
+#: wp-admin/network/site-new.php:252
 msgid "The username and a link to set the password will be mailed to this email address."
 msgstr "سيتم إرسال اسم المستخدم ورابط لتعيين كلمة المرور عبر البريد الإلكتروني إلى هذا العنوان."
 
@@ -583,7 +583,7 @@ msgstr "ضبط خصائص الموقع"
 msgid "Size in kilobytes"
 msgstr "الحجم بالكيلوبايت"
 
-#: wp-admin/network/settings.php:418
+#: wp-admin/network/settings.php:420
 msgid "Enable menus"
 msgstr "تمكين القوائم"
 
@@ -1251,7 +1251,7 @@ msgstr "السماح بتسجيل كلاً من المواقع وحسابات ا
 msgid "User accounts may be registered"
 msgstr "السماح بتسجيل حسابات المستخدمين"
 
-#: wp-admin/network/settings.php:396
+#: wp-admin/network/settings.php:398
 msgid "Enable administration menus"
 msgstr "قوائم الإدارة المسموحة"
 
@@ -1308,11 +1308,11 @@ msgstr "إنشاء موقع جديد في [%s]."
 msgid "Send the network admin an email notification every time someone registers a site or user account"
 msgstr "إرسال إشعار بالبريد الإلكتروني لمدير الشبكة في كل مرة يتم فيها تسجيل موقع أو تسجيل عضو."
 
-#: wp-admin/network/site-new.php:250
+#: wp-admin/network/site-new.php:252
 msgid "A new user will be created if the above email address is not in the database."
 msgstr "سيتم إنشاء عضو جديد إذا كان عنوان البريد الإلكتروني أعلاه غير موجود في قاعدة البيانات."
 
-#: wp-admin/network/site-new.php:262
+#: wp-admin/network/site-new.php:264
 msgid "Add Site"
 msgstr "أضف موقع"
 
@@ -1388,6 +1388,6 @@ msgstr "غير قادر على إنشاء عضو فارغ."
 msgid "Confirm"
 msgstr "تأكيد"
 
-#: wp-admin/network/site-new.php:246
+#: wp-admin/network/site-new.php:248
 msgid "Admin Email"
 msgstr "البريد الإلكتروني للمدير"

@@ -24,7 +24,7 @@ msgstr "Stai per cancellare i seguenti siti:"
 msgid "User could not be added to this site."
 msgstr "L'utente non può essere aggiunto a questo sito."
 
-#: wp-admin/network/site-new.php:250
+#: wp-admin/network/site-new.php:252
 msgid "The username and a link to set the password will be mailed to this email address."
 msgstr "La username ed il link per impostare la password saranno inviati a questo indirizzo email."
 
@@ -559,7 +559,7 @@ msgstr "Tipi di file permessi. Tipologie diverse separate da spazi."
 msgid "Set site attributes"
 msgstr "Imposta attributi sito"
 
-#: wp-admin/network/settings.php:418
+#: wp-admin/network/settings.php:420
 msgid "Enable menus"
 msgstr "Abilita i menu"
 
@@ -1235,7 +1235,7 @@ msgstr "Impostazioni caricamento file"
 msgid "Operational Settings"
 msgstr "Impostazioni operative"
 
-#: wp-admin/network/settings.php:396
+#: wp-admin/network/settings.php:398
 msgid "Enable administration menus"
 msgstr "Abilita i menu di di amministrazione"
 
@@ -1276,15 +1276,15 @@ msgstr "[%s] Nuovo sito creato"
 msgid "Network Admin Email"
 msgstr "Email amministratore network"
 
-#: wp-admin/network/site-new.php:250
+#: wp-admin/network/site-new.php:252
 msgid "A new user will be created if the above email address is not in the database."
 msgstr "Verrà creato un nuovo utente se l&#8217;indirizzo email precedente non è presente nel database."
 
-#: wp-admin/network/site-new.php:246
+#: wp-admin/network/site-new.php:248
 msgid "Admin Email"
 msgstr "Email amministratore"
 
-#: wp-admin/network/site-new.php:262
+#: wp-admin/network/site-new.php:264
 msgid "Add Site"
 msgstr "Aggiungi sito"
 

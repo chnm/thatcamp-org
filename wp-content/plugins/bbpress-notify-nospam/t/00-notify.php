@@ -108,6 +108,10 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$this->assertTrue( (bool) strpos( $tags, '[reply-forum]' ), 'Once missing [reply-forum] is available.' );
 		
 		$this->assertTrue( (bool) strpos( $tags, '[topic-url]' ), '[topic-url] tag is there for replies' );
+		$this->assertTrue( (bool) strpos( $tags, '[topic-content]' ), '[topic-content] tag is there for replies' );
+		$this->assertTrue( (bool) strpos( $tags, '[topic-excerpt]' ), '[topic-excerpt] tag is there for replies' );
+		$this->assertTrue( (bool) strpos( $tags, '[topic-author]' ), '[topic-author] tag is there for replies' );
+		$this->assertTrue( (bool) strpos( $tags, '[topic-author-email]' ), '[topic-author-email] tag is there for replies' );
 	}
 	
 	

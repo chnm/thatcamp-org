@@ -24,7 +24,7 @@ msgstr "Vous allez supprimer les sites suivants :"
 msgid "User could not be added to this site."
 msgstr "L’utilisateur ne peut pas être ajouté à ce site."
 
-#: wp-admin/network/site-new.php:250
+#: wp-admin/network/site-new.php:252
 msgid "The username and a link to set the password will be mailed to this email address."
 msgstr "Le nom de l’utilisateur et un lien pour mettre en place son mot de passe seront envoyés à cette adresse de messagerie."
 
@@ -559,7 +559,7 @@ msgstr "Types de fichier autorisés. Séparez les types par une espace."
 msgid "Set site attributes"
 msgstr "Configurer les attributs du site"
 
-#: wp-admin/network/settings.php:418
+#: wp-admin/network/settings.php:420
 msgid "Enable menus"
 msgstr "Activer les menus"
 
@@ -1235,7 +1235,7 @@ msgstr "Réglages des téléversements"
 msgid "Operational Settings"
 msgstr "Réglages de fonctionnement"
 
-#: wp-admin/network/settings.php:396
+#: wp-admin/network/settings.php:398
 msgid "Enable administration menus"
 msgstr "Activer les menus d&rsquo;administration"
 
@@ -1276,15 +1276,15 @@ msgstr "[%s] Nouveau site créé"
 msgid "Network Admin Email"
 msgstr "Adresse de messagerie de l&rsquo;administrateur du réseau"
 
-#: wp-admin/network/site-new.php:250
+#: wp-admin/network/site-new.php:252
 msgid "A new user will be created if the above email address is not in the database."
 msgstr "Un nouvel utilisateur sera créé si l&rsquo;adresse de contact n&rsquo;existe pas dans la base de données."
 
-#: wp-admin/network/site-new.php:246
+#: wp-admin/network/site-new.php:248
 msgid "Admin Email"
 msgstr "Adresse de contact de l&rsquo;administrateur"
 
-#: wp-admin/network/site-new.php:262
+#: wp-admin/network/site-new.php:264
 msgid "Add Site"
 msgstr "Ajouter un site"
 
