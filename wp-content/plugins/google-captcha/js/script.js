@@ -161,7 +161,12 @@
 		}
 
 		if ( 'v2' == gglcptch_version ) {
-			var parameters = params ? params : { 'sitekey' : gglcptch.options.sitekey, 'theme' : gglcptch.options.theme },
+				if ( $( '#' + container ).parent().width() <= 300 ) {
+					var size = 'compact';
+				} else {
+					var size = 'normal';
+				}
+			var parameters = params ? params : { 'sitekey' : gglcptch.options.sitekey, 'theme' : gglcptch.options.theme, 'size' : size },
 				gglcptch_index = grecaptcha.render( container, parameters );
 			$( '#' + container ).data( 'gglcptch_index', gglcptch_index );
 		}
@@ -169,7 +174,7 @@
 		if ( 'invisible' == gglcptch_version ) {
 			var block = $( '#' + container ),
 				form = block.closest( 'form' ),
-				parameters = params ? params : { 'sitekey' : gglcptch.options.sitekey, 'size' : 'invisible' },
+				parameters = params ? params : { 'sitekey' : gglcptch.options.sitekey, 'size' : 'invisible', 'tabindex' : 9999 },
 				targetObject = false,
 				targetEvent = false;
 
@@ -260,4 +265,31 @@
 			return id;
 		}
 	}
+
+	if ( gglcptch.options.version == 'v2' ) {
+		var width = $( window ).width();
+		$( window ).on( 'resize', function( ) {
+			if( $( window ).width() != width ) {
+				width = $( window ).width();
+				if ( typeof grecaptcha != "undefined" ) {
+					$( '.gglcptch_recaptcha' ).html( '' );
+					$('script[src^="https://www.google.com/recaptcha/api.js"], script[src^="https://www.gstatic.com/recaptcha/api2"]').remove();
+					var src = "https://www.google.com/recaptcha/api.js";
+					$.getScript( {
+						url : src,
+						success : function() {
+							setTimeout( function() {
+								try {
+									gglcptch.prepare();
+								} catch ( e ) {
+									console.log( e );
+								}
+							}, 500 );
+						}
+					} );
+				}
+			}
+		} );
+	}
+
 } )( jQuery, gglcptch );

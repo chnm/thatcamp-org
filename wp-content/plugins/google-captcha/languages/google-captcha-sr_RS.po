@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Google Сaptcha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-14 20:09+0300\n"
+"POT-Creation-Date: 2018-02-06 09:50+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Team Link <teamlink@gmx.us>\n"
@@ -18,17 +18,17 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: google-captcha.php:37 google-captcha.php:39 google-captcha.php:432
-#: includes/class-gglcptch-settings-tabs.php:149
+#: google-captcha.php:37 google-captcha.php:39 google-captcha.php:445
+#: includes/class-gglcptch-settings-tabs.php:150
 msgid "Google Captcha Settings"
 msgstr "Google Captcha Подешавања"
 
-#: google-captcha.php:39 google-captcha.php:950 google-captcha.php:963
+#: google-captcha.php:39 google-captcha.php:1025 google-captcha.php:1038
 #: includes/class-gglcptch-settings-tabs.php:25
 msgid "Settings"
 msgstr "Подешавања"
 
-#: google-captcha.php:41 includes/whitelist.php:44
+#: google-captcha.php:41 includes/whitelist.php:46
 msgid "Google Captcha Whitelist"
 msgstr ""
 
@@ -40,11 +40,11 @@ msgstr "Бела листа"
 msgid "Upgrade to Pro"
 msgstr "Пређи на Про"
 
-#: google-captcha.php:225
+#: google-captcha.php:233
 msgid "Please wait until Google reCAPTCHA is loaded."
 msgstr "Молимо сачекајте док се Google reCAPTCHA учита."
 
-#: google-captcha.php:226
+#: google-captcha.php:234
 msgid ""
 "Failed to load Google reCAPTCHA. Please check your internet connection and "
 "reload this page."
@@ -52,65 +52,63 @@ msgstr ""
 "Није успело учитавање Google reCAPTCHA-e  Молимо проверите Вашу интернет "
 "конекцију и освежите страну."
 
-#: google-captcha.php:242
+#: google-captcha.php:250
 msgid "Warning"
 msgstr "Упозорење"
 
-#: google-captcha.php:340
+#: google-captcha.php:351
 msgid "You are in the whitelist"
 msgstr "Ви сте на белој листи"
 
-#: google-captcha.php:512 google-captcha.php:983
+#: google-captcha.php:532 google-captcha.php:1060
 msgid "To use Google Captcha you must get the keys from"
 msgstr "Да бисте користили Google Captcha морате узети кључеве од"
 
-#: google-captcha.php:513 google-captcha.php:984
+#: google-captcha.php:533 google-captcha.php:1061
 msgid "here"
 msgstr "овде"
 
-#: google-captcha.php:514 google-captcha.php:985
+#: google-captcha.php:534 google-captcha.php:1062
 msgid "and enter them on the"
 msgstr "и унесите их на"
 
-#: google-captcha.php:516 google-captcha.php:987
+#: google-captcha.php:536 google-captcha.php:1064
 msgid "plugin setting page"
 msgstr "страна подешавања додатка"
 
-#: google-captcha.php:763 includes/forms.php:282 includes/forms.php:313
-#: includes/forms.php:344 includes/forms.php:389 includes/forms.php:435
-#: includes/forms.php:469
+#: google-captcha.php:796 includes/forms.php:361
 msgid "Error"
 msgstr "Грешка"
 
-#: google-captcha.php:860
+#: google-captcha.php:920
 msgid "User response is missing."
 msgstr "Одговор корисника недостаје."
 
-#: google-captcha.php:864 google-captcha.php:872
+#: google-captcha.php:924 google-captcha.php:932
 msgid "Secret Key is invalid."
 msgstr ""
 
-#: google-captcha.php:865 google-captcha.php:873
+#: google-captcha.php:925 google-captcha.php:933
 msgid "Check your domain configurations"
 msgstr ""
 
-#: google-captcha.php:866 google-captcha.php:874
+#: google-captcha.php:926 google-captcha.php:934
 msgid "and enter it again"
 msgstr "и унесите поново"
 
-#: google-captcha.php:869
+#: google-captcha.php:929
 msgid "Secret Key is missing."
 msgstr "Тајни кључ недостаје."
 
-#: google-captcha.php:876
+#: google-captcha.php:936
 msgid "User response is invalid"
 msgstr "Одговор корисника није исправан"
 
-#: google-captcha.php:877
+#: google-captcha.php:937
 msgid "You have entered an incorrect reCAPTCHA value."
 msgstr "Унели сте нетачну reCAPTCHA вредност."
 
-#: google-captcha.php:878
+#: google-captcha.php:938
 msgid ""
 "More than one reCAPTCHA has been found in the current form. Please remove "
 "all unnecessary reCAPTCHA fields to make it work properly."
@@ -118,27 +116,27 @@ msgstr ""
 "Више од једне reCAPTCHA је нађено у тренутној форми. Молим вас да уклоните "
 "сва непотребна reCAPTCHA поља како би форма радила исправно."
 
-#: google-captcha.php:902
+#: google-captcha.php:975
 msgid "Please submit \"Test verification\""
 msgstr ""
 
-#: google-captcha.php:904
+#: google-captcha.php:977
 msgid "Please complete the captcha and submit \"Test verification\""
 msgstr ""
 
-#: google-captcha.php:910
+#: google-captcha.php:984
 msgid "Test verification"
 msgstr "Тестирај верификацију"
 
-#: google-captcha.php:931
+#: google-captcha.php:1005
 msgid "The verification is successfully completed."
 msgstr ""
 
-#: google-captcha.php:964
+#: google-captcha.php:1040
 msgid "FAQ"
 msgstr "ЧПП"
 
-#: google-captcha.php:965
+#: google-captcha.php:1041
 msgid "Support"
 msgstr "Подршка"
 
@@ -184,78 +182,78 @@ msgstr ""
 msgid "Enter secret key"
 msgstr "Унесите тајни кључ"
 
-#: includes/class-gglcptch-settings-tabs.php:135
+#: includes/class-gglcptch-settings-tabs.php:136
 msgid "Settings saved."
 msgstr ""
 
-#: includes/class-gglcptch-settings-tabs.php:152
+#: includes/class-gglcptch-settings-tabs.php:153
 msgid "Authentication"
 msgstr "Аутентикација"
 
-#: includes/class-gglcptch-settings-tabs.php:153
+#: includes/class-gglcptch-settings-tabs.php:154
 msgid ""
 "Register your website with Google to get required API keys and enter them "
 "below."
 msgstr ""
 
-#: includes/class-gglcptch-settings-tabs.php:153
+#: includes/class-gglcptch-settings-tabs.php:154
 msgid "Get the API Keys"
 msgstr ""
 
-#: includes/class-gglcptch-settings-tabs.php:170
+#: includes/class-gglcptch-settings-tabs.php:171
 #, fuzzy
 msgid "Test reCAPTCHA"
 msgstr "Невидљиви reCAPTCHA"
 
-#: includes/class-gglcptch-settings-tabs.php:176
+#: includes/class-gglcptch-settings-tabs.php:177
 msgid "General"
 msgstr ""
 
-#: includes/class-gglcptch-settings-tabs.php:179
+#: includes/class-gglcptch-settings-tabs.php:180
 msgid "Enable reCAPTCHA for"
 msgstr "Омогући reCAPTCHA за"
 
-#: includes/class-gglcptch-settings-tabs.php:224
-#: includes/class-gglcptch-settings-tabs.php:290 includes/pro_banners.php:20
+#: includes/class-gglcptch-settings-tabs.php:226
+#: includes/class-gglcptch-settings-tabs.php:292 includes/pro_banners.php:20
 msgid "Close"
 msgstr "Затвори"
 
-#: includes/class-gglcptch-settings-tabs.php:233
+#: includes/class-gglcptch-settings-tabs.php:235
 #, fuzzy
 msgid "Hide reCAPTCHA for"
 msgstr "Омогући reCAPTCHA за"
 
-#: includes/class-gglcptch-settings-tabs.php:251
+#: includes/class-gglcptch-settings-tabs.php:253
 msgid "reCAPTCHA Version"
 msgstr "reCAPTCHA верзија"
 
-#: includes/class-gglcptch-settings-tabs.php:265
-#: includes/class-gglcptch-settings-tabs.php:277
+#: includes/class-gglcptch-settings-tabs.php:267
+#: includes/class-gglcptch-settings-tabs.php:279
 msgid "Theme"
 msgstr ""
 
-#: includes/class-gglcptch-settings-tabs.php:299
+#: includes/class-gglcptch-settings-tabs.php:301
 msgid "Whitelist Notification"
 msgstr "Нотификација за белу листу"
 
-#: includes/class-gglcptch-settings-tabs.php:302
+#: includes/class-gglcptch-settings-tabs.php:304
 #, fuzzy
 msgid "This message will be displayed instead of the reCAPTCHA."
 msgstr ""
 "Ова порука ће бити приказана уместо reCAPTCHA уколико је кориснички IP додат "
 "у белу листу"
 
-#: includes/class-gglcptch-settings-tabs.php:306
+#: includes/class-gglcptch-settings-tabs.php:308
 msgid "Disabled Submit Button"
 msgstr ""
 
-#: includes/class-gglcptch-settings-tabs.php:310
+#: includes/class-gglcptch-settings-tabs.php:312
 msgid ""
 "Enable to keep submit button disabled until reCAPTCHA is loaded (do not use "
 "this option if you see \"Failed to load Google reCAPTCHA\" message)."
 msgstr ""
 
-#: includes/class-gglcptch-settings-tabs.php:325
+#: includes/class-gglcptch-settings-tabs.php:327
 msgid ""
 "Only one reCAPTCHA can be displayed on the page, it's related to reCAPTCHA "
 "version 1 features."
@@ -263,17 +261,17 @@ msgstr ""
 "Само један reCAPTCHA може бити приказан на страни, у вези је са могућностима "
 "reCAPTCHA верзије 1."
 
-#: includes/class-gglcptch-settings-tabs.php:328
+#: includes/class-gglcptch-settings-tabs.php:330
 msgid ""
 "reCAPTCHA version was changed. Please submit \"Test reCAPTCHA\" and "
 "regenerate Site and Secret keys if necessary."
 msgstr ""
 
-#: includes/class-gglcptch-settings-tabs.php:341
+#: includes/class-gglcptch-settings-tabs.php:343
 msgid "Google Captcha Shortcode"
 msgstr ""
 
-#: includes/class-gglcptch-settings-tabs.php:344
+#: includes/class-gglcptch-settings-tabs.php:346
 msgid ""
 "Add Google Captcha to your posts or pages using the following shortcode:"
 msgstr ""
@@ -298,7 +296,7 @@ msgstr "Форма за коментаре"
 msgid "WordPress default"
 msgstr "WordPress подразумевано"
 
-#: includes/forms.php:46 includes/pro_banners.php:71
+#: includes/forms.php:46 includes/pro_banners.php:72
 msgid "External Plugins"
 msgstr ""
 
@@ -306,19 +304,23 @@ msgstr ""
 msgid "Custom Forms"
 msgstr ""
 
-#: includes/forms.php:75
+#: includes/forms.php:76
 msgid "Google Captcha Plugin"
 msgstr ""
 
-#: includes/forms.php:114 includes/forms.php:139
+#: includes/forms.php:116 includes/forms.php:141
 msgid "Activate"
 msgstr "Активирај"
 
-#: includes/forms.php:116 includes/forms.php:142 includes/forms.php:146
+#: includes/forms.php:118 includes/forms.php:144 includes/forms.php:148
 msgid "Install Now"
 msgstr ""
 
-#: includes/forms.php:437
+#: includes/forms.php:274
+msgid "Authentication failed."
+msgstr ""
+
+#: includes/forms.php:363
 msgid "Click the BACK button on your browser and try again."
 msgstr ""
 
@@ -326,7 +328,7 @@ msgstr ""
 msgid "This options is available in Pro version of plugin"
 msgstr "Ова опција је доступна у Про верзији додатка"
 
-#: includes/pro_banners.php:40 includes/whitelist.php:84
+#: includes/pro_banners.php:40 includes/whitelist.php:86
 msgid "Allowed formats"
 msgstr "Дозвољени формати"
 
@@ -358,160 +360,160 @@ msgstr ""
 msgid "Jetpack Contact Form"
 msgstr ""
 
-#: includes/pro_banners.php:55
+#: includes/pro_banners.php:56
 msgid "bbPress New Topic form"
 msgstr ""
 
-#: includes/pro_banners.php:56
+#: includes/pro_banners.php:57
 msgid "bbPress Reply form"
 msgstr ""
 
-#: includes/pro_banners.php:57
+#: includes/pro_banners.php:58
 msgid "BuddyPress Registration form"
 msgstr ""
 
-#: includes/pro_banners.php:58
+#: includes/pro_banners.php:59
 msgid "BuddyPress Comments form"
 msgstr ""
 
-#: includes/pro_banners.php:59
+#: includes/pro_banners.php:60
 msgid "BuddyPress Add New Group form"
 msgstr ""
 
-#: includes/pro_banners.php:60
+#: includes/pro_banners.php:61
 msgid "WooCommerce Login form"
 msgstr ""
 
-#: includes/pro_banners.php:61
+#: includes/pro_banners.php:62
 msgid "WooCommerce Registration form"
 msgstr ""
 
-#: includes/pro_banners.php:62
+#: includes/pro_banners.php:63
 msgid "WooCommerce Reset password form"
 msgstr ""
 
-#: includes/pro_banners.php:63
+#: includes/pro_banners.php:64
 msgid "WooCommerce Checkout form"
 msgstr ""
 
-#: includes/pro_banners.php:64
+#: includes/pro_banners.php:65
 msgid "wpForo Login form"
 msgstr ""
 
-#: includes/pro_banners.php:65
+#: includes/pro_banners.php:66
 msgid "wpForo Registration form"
 msgstr ""
 
-#: includes/pro_banners.php:66
+#: includes/pro_banners.php:67
 msgid "wpForo New Topic form"
 msgstr ""
 
-#: includes/pro_banners.php:67
+#: includes/pro_banners.php:68
 msgid "wpForo Reply form"
 msgstr ""
 
-#: includes/pro_banners.php:153
+#: includes/pro_banners.php:156
 msgid "Size"
 msgstr ""
 
-#: includes/pro_banners.php:157
+#: includes/pro_banners.php:160
 msgid "Normal"
 msgstr "Нормално"
 
-#: includes/pro_banners.php:158
+#: includes/pro_banners.php:161
 msgid "Compact"
 msgstr "Компактно"
 
-#: includes/pro_banners.php:163
+#: includes/pro_banners.php:166
 msgid "Language"
 msgstr ""
 
-#: includes/pro_banners.php:171
+#: includes/pro_banners.php:174
 msgid "Multilanguage"
 msgstr ""
 
-#: includes/pro_banners.php:174
+#: includes/pro_banners.php:177
 msgid ""
 "Enable to switch language automatically on multilingual website using "
 "Multilanguage plugin."
 msgstr ""
 
-#: includes/whitelist.php:47
+#: includes/whitelist.php:49
 msgid "Add New"
 msgstr ""
 
-#: includes/whitelist.php:72
+#: includes/whitelist.php:74
 msgid "IP to whitelist"
 msgstr ""
 
-#: includes/whitelist.php:79
+#: includes/whitelist.php:81
 msgid "My IP"
 msgstr "Мој IP"
 
-#: includes/whitelist.php:86
+#: includes/whitelist.php:88
 msgid "Allowed diapason"
 msgstr "Дозвољени дијапазони"
 
-#: includes/whitelist.php:90
+#: includes/whitelist.php:92
 msgid "Add IP to whitelist"
 msgstr ""
 
-#: includes/whitelist.php:95
+#: includes/whitelist.php:97
 msgid "Search IP"
 msgstr "Тражи IP"
 
-#: includes/whitelist.php:149
+#: includes/whitelist.php:151
 msgid "Nothing found"
 msgstr "Ништа није нађено"
 
-#: includes/whitelist.php:149
+#: includes/whitelist.php:151
 msgid "No IP in the whitelist"
 msgstr "Нема IP у белој листи"
 
-#: includes/whitelist.php:156
+#: includes/whitelist.php:158
 msgid "IP Address"
 msgstr ""
 
-#: includes/whitelist.php:157
+#: includes/whitelist.php:159
 msgid "Date Added"
 msgstr ""
 
-#: includes/whitelist.php:211 includes/whitelist.php:221
+#: includes/whitelist.php:213 includes/whitelist.php:223
 msgid "Delete"
 msgstr ""
 
-#: includes/whitelist.php:307
+#: includes/whitelist.php:310
 msgid "IP added to the whitelist successfully."
 msgstr ""
 
-#: includes/whitelist.php:309 includes/whitelist.php:330
-#: includes/whitelist.php:340
+#: includes/whitelist.php:312 includes/whitelist.php:334
+#: includes/whitelist.php:344
 #, fuzzy
 msgid "Some errors occurred."
 msgstr "Неке грешке су се десиле"
 
-#: includes/whitelist.php:311
+#: includes/whitelist.php:315
 msgid "IP is already in the whitelist."
 msgstr ""
 
-#: includes/whitelist.php:314
+#: includes/whitelist.php:318
 msgid "Invalid IP. See allowed formats."
 msgstr "Неисправан IP. Погледајте дозвољене формате."
 
-#: includes/whitelist.php:336
+#: includes/whitelist.php:340
 #, fuzzy
 msgid "One IP was deleted successfully."
 msgstr "Један IP је успешно обрисан"
 
-#: includes/whitelist.php:343
+#: includes/whitelist.php:347
 msgid "You have not entered any IP."
 msgstr "Нисте унели ни један IP."
 
-#: includes/whitelist.php:346
+#: includes/whitelist.php:350
 msgid "You have not entered any IP in to the search form."
 msgstr ""
 
-#: includes/whitelist.php:348
+#: includes/whitelist.php:352
 msgid "Search results for"
 msgstr "Резултати претраге за"
 

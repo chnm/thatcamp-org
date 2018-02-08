@@ -259,71 +259,42 @@ if ( ! function_exists( 'gglcptch_login_display' ) ) {
 /* Check google captcha in login form */
 if ( ! function_exists( 'gglcptch_login_check' ) ) {
 	function gglcptch_login_check( $user ) {
-
-		if ( is_wp_error( $user ) )
+		global $gglcptch_check;
+		if ( gglcptch_is_woocommerce_page() )
+			return $user;
+		if ( is_wp_error( $user ) && isset( $user->errors["empty_username"] ) && isset( $user->errors["empty_password"] ) )
 			return $user;
 
-		$gglcptch_check = gglcptch_check();
+		$gglcptch_check = gglcptch_check( 'login_form' );
 
-		/* reCAPTCHA is not configured */
-		if ( ! $gglcptch_check['response'] && $gglcptch_check['reason'] == 'ERROR_NO_KEYS' ) {
-			return $user;
-		}
-
-		$la_result = gglcptch_handle_by_limit_attempts( $gglcptch_check['response'], 'login_form' );
-
-		if ( true !== $la_result ) {
-			$user = new WP_Error();
-
-			if ( is_wp_error( $la_result ) ) {
-				$user = $la_result;
-			} elseif ( is_string( $la_result ) ) {
-				$user->add( 'gglcptch_la_error', $la_result );
-			}
-
+		if ( ! $gglcptch_check['response'] ) {
 			if ( $gglcptch_check['reason'] == 'VERIFICATION_FAILED' ) {
 				wp_clear_auth_cookie();
 			}
-
-			if ( ! $gglcptch_check['response'] ) {
-				$error_message = sprintf( '<strong>%s</strong>:&nbsp;%s', __( 'Error', 'google-captcha' ), gglcptch_get_message() );
-				$user->add( 'gglcptch_error', $error_message );
+			$error_code = ( is_wp_error( $user ) ) ? $user->get_error_code() : 'incorrect_password';
+			$errors = new WP_Error( $error_code, __( 'Authentication failed.', 'google-captcha' ) );
+			$gglcptch_errors = $gglcptch_check['errors']->errors;
+			foreach ( $gglcptch_errors as $code => $messages ) {
+				foreach ( $messages as $message ) {
+					$errors->add( $code, $message );
+				}
 			}
+			$gglcptch_check['errors'] = $errors;
+			return $gglcptch_check['errors'];
 		}
-
 		return $user;
 	}
 }
 
-/* Check google captcha in lostpassword form */
+/* Check google captcha in registration form */
 if ( ! function_exists( 'gglcptch_register_check' ) ) {
 	function gglcptch_register_check( $allow ) {
-
-		$gglcptch_check = gglcptch_check();
-
-		if ( ! $gglcptch_check['response'] && $gglcptch_check['reason'] == 'ERROR_NO_KEYS' ) {
+		if ( gglcptch_is_woocommerce_page() )
 			return $allow;
+		$gglcptch_check = gglcptch_check( 'registration_form' );
+		if ( ! $gglcptch_check['response'] ) {
+			return $gglcptch_check['errors'];
 		}
-
-		$la_result = gglcptch_handle_by_limit_attempts( $gglcptch_check['response'], 'registration_form' );
-
-		if ( true !== $la_result ) {
-			if ( ! is_wp_error( $allow ) ) {
-				$allow = new WP_Error();
-			}
-
-			if ( is_wp_error( $la_result ) ) {
-				$allow = $la_result;
-			} elseif ( is_string( $la_result ) ) {
-				$allow->add( 'gglcptch_la_error', $la_result );
-			}
-
-			if ( ! $gglcptch_check['response'] ) {
-				$error_message = sprintf( '<strong>%s</strong>:&nbsp;%s', __( 'Error', 'google-captcha' ), gglcptch_get_message() );
-				$allow->add( 'gglcptch_error', $error_message );
-			}
-		}
-
 		return $allow;
 	}
 }
@@ -331,32 +302,12 @@ if ( ! function_exists( 'gglcptch_register_check' ) ) {
 /* Check google captcha in lostpassword form */
 if ( ! function_exists( 'gglcptch_lostpassword_check' ) ) {
 	function gglcptch_lostpassword_check( $allow ) {
-
-		$gglcptch_check = gglcptch_check();
-
-		if ( ! $gglcptch_check['response'] && $gglcptch_check['reason'] == 'ERROR_NO_KEYS' ) {
+		if ( gglcptch_is_woocommerce_page() )
 			return $allow;
+		$gglcptch_check = gglcptch_check( 'reset_pwd_form' );
+		if ( ! $gglcptch_check['response'] ) {
+			return $gglcptch_check['errors'];
 		}
-
-		$la_result = gglcptch_handle_by_limit_attempts( $gglcptch_check['response'], 'reset_pwd_form' );
-
-		if ( true !== $la_result ) {
-			if ( ! is_wp_error( $allow ) ) {
-				$allow = new WP_Error();
-			}
-
-			if ( is_wp_error( $la_result ) ) {
-				$allow = $la_result;
-			} elseif ( is_string( $la_result ) ) {
-				$allow->add( 'gglcptch_la_error', $la_result );
-			}
-
-			if ( ! $gglcptch_check['response'] ) {
-				$error_message = sprintf( '<strong>%s</strong>:&nbsp;%s', __( 'Error', 'google-captcha' ), gglcptch_get_message() );
-				$allow->add( 'gglcptch_error', $error_message );
-			}
-		}
-
 		return $allow;
 	}
 }
@@ -367,6 +318,9 @@ if ( ! function_exists( 'gglcptch_signup_display' ) ) {
 		if ( $error_message = $errors->get_error_message( 'gglcptch_error' ) ) {
 			printf( '<p class="error gglcptch_error">%s</p>', $error_message );
 		}
+		if ( $error_message = $errors->get_error_message( 'lmttmpts_error' ) ) {
+			printf( '<p class="error lmttmpts_error">%s</p>', $error_message );
+		}
 		echo gglcptch_display();
 	}
 }
@@ -375,37 +329,13 @@ if ( ! function_exists( 'gglcptch_signup_display' ) ) {
 if ( ! function_exists( 'gglcptch_signup_check' ) ) {
 	function gglcptch_signup_check( $result ) {
 		global $current_user;
-
-		if ( is_admin() && ! defined( 'DOING_AJAX' ) && ! empty( $current_user->data->ID ) ) {
+		if ( is_admin() && ! defined( 'DOING_AJAX' ) && ! empty( $current_user->data->ID ) )
+			return $result;
+		$gglcptch_check = gglcptch_check( 'registration_form' );
+		if ( ! $gglcptch_check['response'] ) {
+			$result['errors'] = $gglcptch_check['errors'];
 			return $result;
 		}
-
-		$gglcptch_check = gglcptch_check();
-
-		if ( ! $gglcptch_check['response'] && $gglcptch_check['reason'] == 'ERROR_NO_KEYS' ) {
-			return $result;
-		}
-
-		$errors = $result['errors'];
-
-		$la_result = gglcptch_handle_by_limit_attempts( $gglcptch_check['response'], 'registration_form' );
-
-		if ( true !== $la_result ) {
-			if ( is_wp_error( $la_result ) ) {
-				$la_result = $la_result->get_error_message();
-				$errors->add( 'gglcptch_la_error', $la_result );
-			} elseif ( is_string( $la_result ) ) {
-				$errors->add( 'gglcptch_la_error', $la_result );
-			}
-
-			if ( ! $gglcptch_check['response'] ) {
-				$error_message = sprintf( '<strong>%s</strong>:&nbsp;%s', __( 'Error', 'google-captcha' ), gglcptch_get_message() );
-				$errors->add( 'gglcptch_error', $error_message );
-			}
-
-			$result['errors'] = $errors;
-		}
-
 		return $result;
 	}
 }
@@ -424,32 +354,13 @@ if ( ! function_exists( 'gglcptch_commentform_display' ) ) {
 /* Check JS enabled for comment form  */
 if ( ! function_exists( 'gglcptch_commentform_check' ) ) {
 	function gglcptch_commentform_check() {
-
-		$gglcptch_check = gglcptch_check();
-
-		if ( ! $gglcptch_check['response'] && $gglcptch_check['reason'] == 'ERROR_NO_KEYS' ) {
-			return;
-		}
-
-		$la_result = gglcptch_handle_by_limit_attempts( $gglcptch_check['response'], 'comments_form' );
-
-		if ( true !== $la_result ) {
-			$error_message = '';
-			if ( is_wp_error( $la_result ) ) {
-				$la_result = $la_result->get_error_message();
-				$error_message .= $la_result . "<br />";
-			} elseif ( is_string( $la_result ) ) {
-				$error_message .= $la_result . "<br />";
-			}
-
-			if ( ! $gglcptch_check['response'] ) {
-				$error_message .= gglcptch_get_message() . "<br />";
-			}
-
+		$gglcptch_check = gglcptch_check( 'comments_form' );
+		if ( ! $gglcptch_check['response'] ) {
+			$message = gglcptch_get_message() . "<br />";
 			$error_message = sprintf(
 				'<strong>%s</strong>:&nbsp;%s&nbsp;%s',
 				__( 'Error', 'google-captcha' ),
-				$error_message,
+				$message,
 				__( 'Click the BACK button on your browser and try again.', 'google-captcha' )
 			);
 			wp_die( $error_message );
@@ -464,32 +375,10 @@ if ( ! function_exists( 'gglcptch_contact_form_check' ) ) {
 		if ( ! $allow || is_string( $allow ) || is_wp_error( $allow ) ) {
 			return $allow;
 		}
-
-		$gglcptch_check = gglcptch_check();
-
-		if ( ! $gglcptch_check['response'] && $gglcptch_check['reason'] == 'ERROR_NO_KEYS' ) {
-			return true;
+		$gglcptch_check = gglcptch_check( 'contact_form' );
+		if ( ! $gglcptch_check['response'] ) {
+			return $gglcptch_check['errors'];
 		}
-
-		$la_result = gglcptch_handle_by_limit_attempts( $gglcptch_check['response'], 'contact_form' );
-
-		if ( true !== $la_result ) {
-			$allow = new WP_Error();
-
-			if ( is_wp_error( $la_result ) ) {
-				$allow = $la_result;
-			} elseif ( is_string( $la_result ) ) {
-				$allow->add( 'gglcptch_la_error', $la_result );
-			}
-
-			if ( ! $gglcptch_check['response'] ) {
-				$error_message = sprintf( '<strong>%s</strong>:&nbsp;%s', __( 'Error', 'google-captcha' ), gglcptch_get_message() );
-				$allow->add( 'gglcptch_error', $error_message );
-			}
-
-			return $allow;
-		} else {
-			return true;
-		}
+		return $allow;
 	}
 }

@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: anti-spam security, antispam, recaptcha, captcha, captha, Invisible reCaptcha, Invisible captcha, Invisibl reCaptcha, comment, cpatcha, google catcha, Invisible re captcha
 Requires at least: 3.9
-Tested up to: 4.9
-Stable tag: 1.33
+Tested up to: 4.9.4
+Stable tag: 1.35
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,7 +16,7 @@ Google Captcha (reCAPTCHA) plugin is an effective security solution that protect
 
 Users are required to confirm that they are not a robot before the form can be submitted. It's easy for people and hard for bots.
 
-[View Demo](https://bestwebsoft.com/demo-for-google-captcha/)
+[View Demo](https://bestwebsoft.com/demo-for-google-captcha/?ref=readme)
 
 http://www.youtube.com/watch?v=qwHsW3IJ7gQ
 
@@ -60,8 +60,9 @@ http://www.youtube.com/watch?v=qwHsW3IJ7gQ
 > 	* Contact Form 7 (since v 3.4)
 > 	* [Subscriber](https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=e6d1742fcf1806a39afac207f7920cf3)
 > 	* [Multilanguage](https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=e48e145002e4b2472e568a81d171b888)
-> 	* Jetpack Contact Form
+> 	* Jetpack contact form
 > 	* Fast Secure Contact Form
+> 	* MailChimp for WordPress
 > * Compatible with WooCommerce:
 > 	* Login form
 > 	* Register form
@@ -92,6 +93,7 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 * [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 * [[Doc] Purchase](https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/)
+* [[Doc] How to Use](https://docs.google.com/document/d/1yTDdMSLqvgATbo5lPzuNn4QRF0EyEPFuLoFB15beMww/)
 * [[Video] Installation Instruction](http://www.youtube.com/watch?v=RUJ9VwZLFSY)
 * [[Video] Purchase, Installation & Configuration](https://www.youtube.com/watch?v=X-ccRdEFcM0)
 
@@ -123,7 +125,7 @@ Some of these translations are not complete. We are constantly adding new featur
 
 1. Upload the `google-captcha` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin via the 'Plugins' menu in WordPress.
-3. Plugin settings are located in "Admin Panel" > "Google Captcha".
+3. Plugin settings are located in Google Captcha" menu.
 4. Create a form in post and insert the shortcode [bws_google_captcha] into the form.
 
 [View a Step-by-step Instruction on Google Captcha (reCAPTCHA) Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
@@ -257,8 +259,18 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.35 - 08.02.2018 =
+* Update : The Czech language file has been updated.
+* Bugfix : Google Captcha responsive styles have been fixed.
+* Bugfix : Potential bruteforce vulnerability has been fixed.
+
+= V1.34 - 06.02.2018 =
+* NEW : The compatibility with Wordfence option "Immediately block the IP of users who try to sign in as these usernames" has been added.
+* Update : reCAPTCHA output functionality in forms has been optimized.
+* Update : The compatibility with Limit Attempts by BestWebSoft has been improved.
+
 = V1.33 - 15.11.2017 =
-* Bugfix : Redundant reCAPTHCA checking has been removed.
+* Bugfix : Redundant reCAPTCHA checking has been removed.
 * Update : The compatibility with Captcha by BestWebSoft and Contact Form by BestWebSoft plugins has been improved.
 
 = V1.32 - 13.10.2017 =
@@ -407,6 +419,15 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to add Google Captcha (reCAPTCHA) into standard forms was added.
 
 == Upgrade Notice ==
+
+= V1.35 =
+* Languages updated.
+* Bugs fixed.
+
+= V1.34 =
+* The compatibility with new WordPress version updated.
+* Functionality expanded.
+* Functionality improved.
 
 = V1.33 =
 * Bugs fixed.

@@ -52,6 +52,7 @@ if ( ! function_exists( 'gglcptch_supported_plugins_banner' ) ) {
 			'si_contact_form'			=> array( 'form_name' => 'Fast Secure Contact Form' ),
 			'jetpack_contact_form'		=> array( 'form_name' => __( 'Jetpack Contact Form', 'google-captcha' ) ),
 			'sbscrbr'					=> array( 'form_name' => 'Subscriber' ),
+			'mailchimp'					=> array( 'form_name' => 'MailChimp for Wordpress' ),
 			'bbpress_new_topic_form'	=> array( 'form_name' => __( 'bbPress New Topic form', 'google-captcha' ) ),
 			'bbpress_reply_form'		=> array( 'form_name' => __( 'bbPress Reply form', 'google-captcha' ) ),
 			'buddypress_register'		=> array( 'form_name' => __( 'BuddyPress Registration form', 'google-captcha' ) ),
@@ -73,7 +74,8 @@ if ( ! function_exists( 'gglcptch_supported_plugins_banner' ) ) {
 					'cf7',
 					'si_contact_form',
 					'jetpack_contact_form',
-					'sbscrbr'
+					'sbscrbr',
+					'mailchimp'
 				)
 			),
 			'bbpress' => array(
