@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-02-06 16:42:59+0000\n"
+"PO-Revision-Date: 2018-02-09 12:39:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6766,11 +6766,6 @@ msgstr[1] "<span class=\"count\">(%s)</span> fijas"
 msgid "Please select one or more plugins to update."
 msgstr "Por favor, elige uno o más plugins a actualizar."
 
-#. translators: %1 date, %2 time.
-#: wp-admin/update-core.php:617
-msgid "Last checked on %1$s at %2$s."
-msgstr "Última revisión el %1$s a las %2$s."
-
 #: wp-admin/update-core.php:602
 msgid "Please select one or more themes to update."
 msgstr "Por favor, elige uno o más temas para actualizarlos."
@@ -6778,6 +6773,11 @@ msgstr "Por favor, elige uno o más temas para actualizarlos."
 #: wp-admin/update-core.php:618
 msgid "Check Again"
 msgstr "Comprobar de nuevo"
+
+#. translators: %1 date, %2 time.
+#: wp-admin/update-core.php:617
+msgid "Last checked on %1$s at %2$s."
+msgstr "Última comprobación el %1$s a las %2$s."
 
 #: wp-admin/includes/class-bulk-upgrader-skin.php:39
 msgid "The update process is starting. This process may take a while on some hosts, so please be patient."
@@ -8878,10 +8878,6 @@ msgstr "Tamaño de las imágenes"
 msgid "Default Mail Category"
 msgstr "Categoría predeterminada para publicar por correo electrónico"
 
-#: wp-admin/update-core.php:110
-msgid "This localized version contains both the translation and various other localization fixes. You can skip upgrading if you want to keep your current translation."
-msgstr "Esta versión traducida contiene tanto la traducción como otros ajustes de traducción. Puedes saltarte la actualización si quieres mantener la traducción actual."
-
 #: wp-admin/widgets.php:117
 msgid "Drag widgets here to remove them from the sidebar but keep their settings."
 msgstr "Arrastra los widgets aquí para eliminarlos de la barra lateral pero manteniendo su configuración."
@@ -9058,6 +9054,10 @@ msgstr "Archivo editado con éxito."
 #: wp-admin/options-media.php:15
 msgid "Media Settings"
 msgstr "Ajustes de medios"
+
+#: wp-admin/update-core.php:110
+msgid "This localized version contains both the translation and various other localization fixes. You can skip upgrading if you want to keep your current translation."
+msgstr "Esta versión local contiene tanto la traducción como otros ajustes locales. Puedes saltarte la actualización si quieres mantener la traducción actual."
 
 #: wp-admin/includes/class-wp-media-list-table.php:433
 #: wp-admin/includes/class-wp-posts-list-table.php:975

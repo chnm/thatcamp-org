@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-02-06 14:56:41+0000\n"
+"PO-Revision-Date: 2018-02-10 10:10:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -286,9 +286,29 @@ msgstr "Esta versión de Jetpack ofrece nuevas características mayores y grande
 msgid "Speed up your site and its content"
 msgstr "Acelera tu sitio y su contenido"
 
+#: _inc/jetpack-strings.php:606
+msgid "Sites with large numbers of images can now activate the Lazy Loading Images feature, which significantly speeds up loading times for visitors. Instead of waiting for the entire page to load, Jetpack will instead show pages instantly, and only download additional images when they are about to come into view."
+msgstr "Los sitios con gran cantidad de imágenes pueden ahora activar la característica de carga perezosa de imágenes, que acelera significativamente los tiempos de carga a los visitantes. En vez de esperar a que cargue toda la página, Jetpack mostrará las páginas al instante, y solo descarga las imágenes adicionales cuando están a punto de verse."
+
+#: _inc/jetpack-strings.php:605
+msgid "If this sounds like a great improvement (and it is) you can enable it now by clicking the toggle below."
+msgstr "Suena como si fuese una gran mejora (y lo es) y puedes activarlo ahora haciendo clic en el selector de abajo."
+
+#: _inc/jetpack-strings.php:604
+msgid "We have also upgraded all our Premium plan customers to unlimited high-speed video storage (up from 13GB), and significantly reduced the CSS and JavaScript assets that Jetpack downloads when using features like infinite scroll and embedding rich content."
+msgstr "También hemos actualizado los planes premium para nuestros clientes a almacenamiento de vídeo (hasta 13Gb) a alta velocidad ilimitada y reducidos significativamente los recursos CSS y JavaScript que Jetpack descarga al usar características como el scroll infinito y la incrustación de contenido enriquecido con shortcodes."
+
+#: _inc/jetpack-strings.php:603
+msgid "Faster, more relevant search results"
+msgstr "Resultados de búsqueda rápidos y relevantes"
+
 #: _inc/jetpack-strings.php:602
 msgid "Elasticsearch"
 msgstr "Elasticsearch"
+
+#: _inc/jetpack-strings.php:601
+msgid "Our faster site search is now available to all Professional plan customers. This replaces the default WordPress search with an Elasticsearch-powered infrastructure that returns faster, more relevant results to users."
+msgstr "Nuestra búsqueda en el sitio más rápida ahora está disponible en los planes profesionales de los clientes. Reemplaza la búsqueda por defecto de WordPress por una infraestructura de Elasticsearch que devuelve resultados de búsqueda más rápidos y relevantes a los usuarios."
 
 #: _inc/jetpack-strings.php:600
 msgid "Read the full announcement!"
@@ -612,6 +632,10 @@ msgstr "Tu sitio está siendo respaldado en tiempo real y escaneado regularmente
 #: _inc/jetpack-strings.php:190
 msgid "Daily backup of all your site data with unlimited space and one-click restores"
 msgstr "Copias de seguridad diarias de todos los datos de tu sitio con espacio ilimitado y restauraciones con un solo clic"
+
+#: _inc/jetpack-strings.php:188
+msgid "Real-time backup of all your site data with unlimited space, one-click restores, automated security scanning, and priority support"
+msgstr "Copia de seguridad en tiempo real de todos los datos de tu sitio con espacio ilimitado, restauraciones con un solo clic, escaneo automático de seguridad y soporte prioritario."
 
 #: _inc/jetpack-strings.php:185
 msgid "View your security activity"
@@ -961,6 +985,14 @@ msgstr "El proceso de incorporación fallo en su proceso: %s"
 msgid "Not valid onboarding data."
 msgstr "Datos de incorporación no válidos."
 
+#: _inc/jetpack-strings.php:643
+msgid "Thanks for choosing Jetpack Professional. Jetpack is now backing up your content in real-time, scanning for security threats, and granting access to premium themes."
+msgstr "Gracias por elegir un plan de Jetpack Profesional. Jetpack está ahora realizando copias de seguridad de tu contenido, escaneando las amenazas de seguridad y te da acceso a temas premium."
+
+#: _inc/jetpack-strings.php:641
+msgid "With Jetpack Professional, you can create the perfect site with one of over 300 professionally-designed WordPress themes, including more than 200 premium themes. Customize your content with a variety of widgets, or add unlimited videos to your posts and pages -- displayed free of ads or watermarks."
+msgstr "Con Jetpack Professional, puedes crear el sitio perfecto con uno de los más de 300 temas de WordPress diseñados profesionalmente, incluidos más de 200 temas premium. Personaliza tu contenido con una gran variedad de widgets o añade videos ilimitados a tus entradas y páginas, que se muestran sin anuncios ni marcas de agua."
+
 #: _inc/jetpack-strings.php:639
 msgid "Growing your following is easy with your Professional plan, thanks to content sharing and scheduling, SEO tools, and built-in subscription options. You can monetize your site with a simple payment button and in-line ads, and monitor the success of your efforts by integrating with Google Analytics."
 msgstr "Hacer crecer tus seguidores es fácil con el plan profesional, gracias a programar y compartir contenido, las herramientas SEO y las opciones de suscripción incluidas. Puedes ganar dinero con tu sitio con un sencillo botón de pago y anuncios incrustados, y vigilar el éxito de tus esfuerzos integrándolo con Google Analytics."
@@ -985,6 +1017,14 @@ msgstr "Revisar las características de SEO"
 msgid "Welcome Professional"
 msgstr "Bienvenido a Profesional"
 
+#: _inc/jetpack-strings.php:630
+msgid "Thanks for choosing Jetpack Premium. Jetpack is now backing up your site, scanning for  security threats, and enabling monetization features."
+msgstr "Gracias por elegir un plan Premium de Jetpack. Jetpack está ahora realizando copias de seguridad de tu sitio, escaneando las amenazas de seguridad y habilitando funciones de monetización."
+
+#: _inc/jetpack-strings.php:628
+msgid "With Jetpack Premium, you can create the perfect site, no matter its purpose. Customize your site’s appearance with one of more than 100 free themes, or enhance your content with unlimited HD video -- all hosted free of ads or watermarks."
+msgstr "Con Jetpack Premium, puedes crear el sitio perfecto, no importa su propósito. Personaliza la apariencia de tu sitio con uno de los más de 100 temas gratuitos o mejora tu contenido con video HD ilimitado — todo alojado sin anuncios ni marcas de agua."
+
 #: _inc/jetpack-strings.php:626
 msgid "Using Jetpack’s powerful sharing tools, you can automatically share your newest posts on social media, or schedule your content to be re-shared at any date or time you choose. And along with growing your following, you can grow your business with tools like payment buttons and ads."
 msgstr "Utilizando las poderosas herramientas de uso compartido de Jetpack, puedes compartir automáticamente tus publicaciones más recientes en las redes sociales o programar tu contenido para que se vuelva a compartir en cualquier fecha o hora que te venga bien. Y además de aumentar tus seguidores, puedes hacer que crezca crecer tu negocio con herramientas como botones de pago y publicidad."
@@ -1008,6 +1048,10 @@ msgstr "Monetiza tu sitio con anuncios"
 #: _inc/jetpack-strings.php:620
 msgid "Welcome Premium"
 msgstr "Bienvenido a Premium"
+
+#: _inc/jetpack-strings.php:618
+msgid "Thanks for choosing Jetpack Personal. Jetpack is now backing up your site and scanning for security threats."
+msgstr "Gracias por elegir un plan personal de Jetpack. Jetpack está ahora realizando copias de seguridad de tu sitio y buscando amenazas de seguridad."
 
 #: _inc/jetpack-strings.php:616
 msgid "With Jetpack Personal, you have access to more than 100 free, professionally-designed WordPress themes. Choose the theme that best fits your site and customize colors, images, or add a variety of new widgets."
@@ -2905,7 +2949,7 @@ msgstr "Hace seguimiento de cada scroll (7 entradas por defecto) como una págin
 
 #: _inc/jetpack-strings.php:498
 msgid "Currently in {{a}}Development Mode{{/a}} (some features are disabled) because: {{reasons/}}"
-msgstr "Actualmente en {{a}}modo de desarrollo{{/a}} (algunas características están desactivadas) porque:{{reasons/}}"
+msgstr "Actualmente en {{a}}Modo de desarrollo{{/a}} (algunas características están desactivadas) porque: {{reasons/}}"
 
 #: _inc/jetpack-strings.php:501
 msgid "{{li}}The jetpack_development_mode filter is active{{/li}}"
@@ -4207,7 +4251,7 @@ msgstr "Por menos de lo que vale un café al mes puedes descansar sabiendo que t
 
 #: _inc/jetpack-strings.php:189
 msgid "Daily backup of all your site data with unlimited space, one-click restores, automated security scanning, and priority support"
-msgstr "Copias de seguridad diarias de todos los datos de tu sitio con espacio ilimitado, restauraciones con un solo clic, análisis de seguridad automático y servicio de ayuda prioritario"
+msgstr "Copia de seguridad en tiempo real de todos los datos de tu sitio con espacio ilimitado, restauraciones con un solo clic, escaneo automático de seguridad y soporte prioritario"
 
 #: _inc/jetpack-strings.php:157
 msgid "SEO Tools"
@@ -5157,7 +5201,7 @@ msgstr "Añade una frase"
 
 #: _inc/jetpack-strings.php:529
 msgid "Activate recommended features"
-msgstr "Activa las funcionalidades recomendadas"
+msgstr "Activa las características recomendadas"
 
 #: _inc/jetpack-strings.php:523
 msgid "Jetpack's recommended features include:"
@@ -5234,6 +5278,10 @@ msgstr "Monitor"
 #: _inc/jetpack-strings.php:426
 msgid "Join the millions of users who rely on Jetpack to enhance and secure their sites. We're passionate about WordPress and here to make your life easier."
 msgstr "Únete a los millones de usuarios que confían en Jetpack para mejorar y securizar sus sitios. Nos apasiona WordPress y aquí te hacemos la vida más fácil."
+
+#: _inc/jetpack-strings.php:425 _inc/jetpack-strings.php:465
+msgid "No account? Create one for free."
+msgstr "¿No tienes cuenta? Crea una gratis."
 
 #: _inc/jetpack-strings.php:421
 msgctxt "Navigation item."
@@ -5541,7 +5589,7 @@ msgstr "Para hacer automáticamente una copia de seguridad de tu sitio completo,
 
 #: _inc/jetpack-strings.php:58
 msgid "To automatically back up your entire site, please {{a}}upgrade your account{{/a}}."
-msgstr "Para realizar copias de seguridad automáticas de ti sitio completo, por favor {{a}}amplía tu cuenta{{/a}}."
+msgstr "Para realizar copias de seguridad automáticas de tu sitio completo, por favor {{a}}amplía tu cuenta{{/a}}."
 
 #: _inc/jetpack-strings.php:45 _inc/jetpack-strings.php:56
 #: _inc/jetpack-strings.php:76 _inc/jetpack-strings.php:94
