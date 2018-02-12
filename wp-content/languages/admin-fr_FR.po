@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-22 11:08:11+0000\n"
+"PO-Revision-Date: 2018-02-05 09:23:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -453,19 +453,19 @@ msgid "%s (already used in permalink structure)"
 msgstr "%s (déjà utilisé dans la structure de permalien)"
 
 #. translators: %s: permalink structure tag
+#: wp-admin/options-permalink.php:234
+msgid "%s (Category slug. Nested sub-categories appear as nested directories in the URL.)"
+msgstr "%s (identifiant de catégorie. les sous-catégories imbriquées apparaissent sous la forme de sous-répertoires dans l’adresse web)"
+
+#. translators: %s: permalink structure tag
 #: wp-admin/options-permalink.php:236
 msgid "%s (A sanitized version of the author name.)"
-msgstr "%s (Une version sanitisée du nom de l’auteur)"
+msgstr "%s (Une version normalisée du nom de l’auteur)"
 
 #. translators: %s: permalink structure tag
 #: wp-admin/options-permalink.php:232
 msgid "%s (The sanitized post title (slug).)"
-msgstr "%s (Le titre sanitisé de l’article (identifiant).)"
-
-#. translators: %s: permalink structure tag
-#: wp-admin/options-permalink.php:234
-msgid "%s (Category slug. Nested sub-categories appear as nested directories in the URL.)"
-msgstr "%s (identifiant de catégorie. les sous-catégories imbriquées apparaissent sous la forme de sous-répertoires dans l’adresse web)"
+msgstr "%s (Le titre normalisé de l’article (identifiant).)"
 
 #. translators: %s: permalink structure tag
 #: wp-admin/options-permalink.php:218
@@ -4944,13 +4944,13 @@ msgstr "Vous utilisez l’outil de téléversement du navigateur. Le nouvel outi
 msgid "Preview %s"
 msgstr "Aperçu de %s"
 
-#: wp-admin/tools.php:18
-msgid "The Categories and Tags Converter link on this screen will take you to the Import screen, where that Converter is one of the plugins you can install. Once that plugin is installed, the Activate Plugin &amp; Run Importer link will take you to a screen where you can choose to convert tags into categories or vice versa."
-msgstr "Le lien &laquo;&nbsp;convertisseur de catégories et étiquettes&nbsp;&raquo; vous mènera à la page d&rsquo;import, où ledit convertisseur est l&rsquo;une des extensions que vous pouvez installer. Une fois installée, le lien &laquo;&nbsp;Activer l&rsquo;extension & lancer l&rsquo;importateur&nbsp;&raquo; vous mènera à l&rsquo;écran d&rsquo;où vous pourrez choisir de lancer une conversion dans un sens ou dans l&rsquo;autre."
-
 #: wp-admin/tools.php:17
 msgid "Categories have hierarchy, meaning that you can nest sub-categories. Tags do not have hierarchy and cannot be nested. Sometimes people start out using one on their posts, then later realize that the other would work better for their content."
 msgstr "Les catégories disposent d&rsquo;une hiérarchie, ce qui signifie que vous pouvez leur donner des sous-catégories. Les étiquettes n&rsquo;ont pas de hiérarchie et ne peuvent être imbriqués. Parfois, des auteurs commencent par utiliser une sorte de caractérisation, pour se rendre compte par la suite qu&rsquo;ils préfèrent l&rsquo;autre."
+
+#: wp-admin/tools.php:18
+msgid "The Categories and Tags Converter link on this screen will take you to the Import screen, where that Converter is one of the plugins you can install. Once that plugin is installed, the Activate Plugin &amp; Run Importer link will take you to a screen where you can choose to convert tags into categories or vice versa."
+msgstr "Le lien &laquo;&nbsp;convertisseur de catégories et étiquettes&nbsp;&raquo; vous mènera à la page d&rsquo;import, où ledit convertisseur est l&rsquo;une des extensions que vous pouvez installer. Une fois installée, le lien &laquo;&nbsp;Activer l&rsquo;extension & lancer l&rsquo;importateur&nbsp;&raquo; vous mènera à l&rsquo;écran d&rsquo;où vous pourrez choisir de lancer une conversion dans un sens ou dans l&rsquo;autre."
 
 #: wp-admin/custom-header.php:107
 msgid "Some themes come with additional header images bundled. If you see multiple images displayed, select the one you&#8217;d like and click the &#8220;Save Changes&#8221; button."

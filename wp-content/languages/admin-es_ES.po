@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-26 15:17:29+0000\n"
+"PO-Revision-Date: 2018-02-06 16:42:59+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3508,13 +3508,13 @@ msgstr "<strong>Traducciones</strong> &mdash; Los archivos que traducen WordPres
 msgid "If an update is available, you&#8127;ll see a notification appear in the Toolbar and navigation menu."
 msgstr "Si hay una actualización disponible aparecerá una notificación en la barra de herramientas y en el menú de navegación."
 
-#: wp-admin/update-core.php:571
-msgid "<strong>Themes and Plugins</strong> &mdash; To update individual themes or plugins from this screen, use the checkboxes to make your selection, then <strong>click on the appropriate &#8220;Update&#8221; button</strong>. To update all of your themes or plugins at once, you can check the box at the top of the section to select all before clicking the update button."
-msgstr "<strong>Temas y Plugins</strong> &mdash; Para actualizar temas o plugins uno a uno desde esta pantalla usa las casillas de selección para hacer tu elección, luego <strong>haz clic en el botón &#8220;Actualizar&#8221; correspondiente</strong>. Para actualizar todos tus temas o plugins de una vez puedes marcar la casilla de la parte superior de la sección para elegirlos todos antes de hacer clic en el botón de actualizar."
-
 #: wp-admin/update-core.php:561
 msgid "On this screen, you can update to the latest version of WordPress, as well as update your themes, plugins, and translations from the WordPress.org repositories."
 msgstr "En esta pantalla puedes actualizar a la última versión de WordPress así como actualizar tus temas, plugins y traducciones desde los repositorios de WordPress.org. "
+
+#: wp-admin/update-core.php:571
+msgid "<strong>Themes and Plugins</strong> &mdash; To update individual themes or plugins from this screen, use the checkboxes to make your selection, then <strong>click on the appropriate &#8220;Update&#8221; button</strong>. To update all of your themes or plugins at once, you can check the box at the top of the section to select all before clicking the update button."
+msgstr "<strong>Temas y Plugins</strong> &mdash; Para actualizar temas o plugins uno a uno desde esta pantalla usa las casillas de selección para hacer tu elección, luego <strong>haz clic en el botón &#8220;Actualizar&#8221; correspondiente</strong>. Para actualizar todos tus temas o plugins de una vez puedes seleccionar la casilla de la parte superior de la sección para elegirlos todos antes de hacer clic en el botón de actualizar."
 
 #: wp-admin/about.php:21
 msgid "Welcome to WordPress&nbsp;%s"
@@ -4697,10 +4697,6 @@ msgstr "Añade una página Sobre mí"
 msgid "View your site"
 msgstr "Ver tu sitio"
 
-#: wp-admin/includes/plugin-install.php:325
-msgid "If you have marked plugins as favorites on WordPress.org, you can browse them here."
-msgstr "Si has marcado un plugin cómo favorito en WordPress.org, los puedes ver desde aquí."
-
 #: wp-admin/includes/plugin-install.php:329 wp-admin/theme-install.php:188
 msgid "Your WordPress.org username:"
 msgstr "Tu nombre de usuario en WordPress.org"
@@ -4779,6 +4775,10 @@ msgstr "Después de hacer esto haz clic en &#8220;Ejecutar la instalación.&#822
 #: wp-admin/includes/dashboard.php:1567
 msgid "We&#8217;ve assembled some links to get you started:"
 msgstr "Hemos creado algunos enlaces para que puedas comenzar:"
+
+#: wp-admin/includes/plugin-install.php:325
+msgid "If you have marked plugins as favorites on WordPress.org, you can browse them here."
+msgstr "Si has marcado plugins cómo favoritos en WordPress.org, puedes verlos aquí."
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:112
 msgctxt "Plugin Installer"
@@ -5551,20 +5551,20 @@ msgid_plural "<strong>Version %1$s</strong> addressed some security issues and f
 msgstr[0] "La <strong>versión %1$s</strong> soluciona algunos problemas de seguridad y soluciona %2$s fallo."
 msgstr[1] "La <strong>versión %1$s</strong> soluciona algunos problemas de seguridad y soluciona %2$s fallos."
 
+#. translators: 1: WordPress version number, 2: plural number of bugs.
+#: wp-admin/about.php:395
+msgid "<strong>Version %1$s</strong> addressed %2$s bug."
+msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
+msgstr[0] "<strong>Versión %1$s</strong> soluciona %2$s fallo."
+msgstr[1] "<strong>Versión %1$s</strong> soluciona %2$s fallos."
+
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
 #: wp-admin/about.php:399
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
-msgstr[0] "La <strong>versión %1$s</strong> soluciona un problema de seguridad y soluciona el fallo %2$s."
+msgstr[0] "La <strong>versión %1$s</strong> soluciona un problema de seguridad y soluciona %2$s fallo."
 msgstr[1] "La <strong>versión %1$s</strong> soluciona un problema de seguridad y soluciona %2$s fallos."
-
-#. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:395
-msgid "<strong>Version %1$s</strong> addressed %2$s bug."
-msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
-msgstr[0] "<strong>Versión %1$s</strong> soluciona el fallo %2$s."
-msgstr[1] "<strong>Versión %1$s</strong> soluciona %2$s fallos."
 
 #: wp-admin/index.php:33
 msgid "Welcome to your WordPress Dashboard! This is the screen you will see when you log in to your site, and gives you access to all the site management features of WordPress. You can get help for any screen by clicking the Help tab above the screen title."
@@ -6386,13 +6386,13 @@ msgctxt "Translate this to be the equivalent of English Translators in your lang
 msgid "Translators"
 msgstr "Traductores"
 
-#: wp-admin/freedoms.php:43
-msgid "WordPress grows when people like you tell their friends about it, and the thousands of businesses and services that are built on and around WordPress share that fact with their users. We&#8217;re flattered every time someone spreads the good word, just make sure to <a href=\"%s\">check out our trademark guidelines</a> first."
-msgstr "WordPress crece cuando la gente habla a sus amigos sobre él y los miles de negocios y servicios que se construyen en y alrededor de WordPress lo comparten con sus usuarios. Nos enorgullece cada vez que alguien difunde la buena nueva, simplemente asegúrate de <a href=\"%s\">echar un vistazo a nuestras guías de marca</a>."
-
 #: wp-admin/freedoms.php:50
 msgid "Every plugin and theme in WordPress.org&#8217;s directory is 100%% GPL or a similarly free and compatible license, so you can feel safe finding <a href=\"%1$s\">plugins</a> and <a href=\"%2$s\">themes</a> there. If you get a plugin or theme from another source, make sure to <a href=\"%3$s\">ask them if it&#8217;s GPL</a> first. If they don&#8217;t respect the WordPress license, we don&#8217;t recommend them."
 msgstr "Cada plugin y tema del directorio de WordPress.org es 100%% GPL o con una licencia libre similar y compatible, así que puedes sentirte seguro buscando <a href=\"%1$s\">plugins</a> y <a href=\"%2$s\">temas</a> aquí. Si obtienes un plugin o tema desde otra fuente asegúrate de preguntar primero si <a href=\"%3$s\">es GPL</a>. Si no respeta la licencia de WordPress no lo recomedamos."
+
+#: wp-admin/freedoms.php:43
+msgid "WordPress grows when people like you tell their friends about it, and the thousands of businesses and services that are built on and around WordPress share that fact with their users. We&#8217;re flattered every time someone spreads the good word, just make sure to <a href=\"%s\">check out our trademark guidelines</a> first."
+msgstr "WordPress crece cuando la gente habla a sus amigos sobre él y los miles de negocios y servicios que se construyen en y alrededor de WordPress lo comparten con sus usuarios. Nos enorgullece cada vez que alguien difunde la buena nueva, simplemente asegúrate de <a href=\"%s\">echar un vistazo a nuestras directrices de marca</a>."
 
 #: wp-admin/freedoms.php:34
 msgid "WordPress is Free and open source software, built by a distributed community of mostly volunteer developers from around the world. WordPress comes with some awesome, worldview-changing rights courtesy of its <a href=\"%s\">license</a>, the GPL."
@@ -6507,7 +6507,7 @@ msgstr "Diseño de pantalla"
 
 #: wp-admin/users.php:240
 msgid "You have specified this user for deletion:"
-msgstr "Ha marcado a este usuario para su eliminación:"
+msgstr "Has marcado a este usuario para su eliminación:"
 
 #: wp-admin/user-edit.php:192
 msgid "&larr; Back to Users"
@@ -7512,7 +7512,7 @@ msgstr "Lo siento, no tienes permisos para mover este elemento a la papelera."
 
 #: wp-admin/update-core.php:357
 msgid "The following themes have new versions available. Check the ones you want to update and then click &#8220;Update Themes&#8221;."
-msgstr "Los siguientes temas tienen versiones nuevas disponibles. Marca aquellas que quieras actualizar y haz clic en &#8220;Actualizar Temas&#8221;."
+msgstr "Los siguientes temas tienen versiones nuevas disponibles. Selecciona los que quieras actualizar y haz clic en &#8220;Actualizar Temas&#8221;."
 
 #: wp-admin/user-new.php:262
 msgid "User has been added to your site."
@@ -7528,7 +7528,7 @@ msgstr "Invitación enviada por correo electrónico al usuario. Debe hacer clic 
 
 #: wp-admin/update-core.php:238
 msgid "The following plugins have new versions available. Check the ones you want to update and then click &#8220;Update Plugins&#8221;."
-msgstr "Hay nuevas versiones de los siguientes plugins. Marca aquellos que quieras actualizar y haz clic en &#8220;Actualizar plugins&#8221;."
+msgstr "Los siguientes plugins tienen nuevas versiones disponibles. Selecciona los que quieras actualizar y haz clic en &#8220;Actualizar plugins&#8221;."
 
 #: wp-admin/custom-background.php:292
 msgid "This will remove the background image. You will not be able to restore any customizations."
@@ -9032,13 +9032,13 @@ msgstr "Publicar por correo electrónico"
 msgid "<strong><em>Note that password</em></strong> carefully! It is a <em>random</em> password that was generated just for you."
 msgstr "¡<strong><em>Anota la contraseña</em></strong> cuidadosamente! Es una contraseña <em>aleatoria</em> que ha sido generada solo para ti."
 
-#: wp-admin/options-discussion.php:160
-msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
-msgstr "Cuando un comentario contiene alguna de estas palabras en su contenido, nombre, URL, correo electrónico o IP se mantendrá en la <a href=\"edit-comments.php?comment_status=moderated\">cola de moderación</a>. Pon una palabra o dirección IP por línea. También afectará a las palabras contenidas dentro de otras, como &#8220;press&#8221;, que está dentro de  &#8220;WordPress&#8221;"
-
 #: wp-admin/options-discussion.php:169
 msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be put in the trash. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
 msgstr "Cuando un comentario contiene alguna de las siguientes palabras en su contenido, nombre, URL o IP, se mandará a la papelera. Pon solo una palabra o IP por línea. También afectará las palabras contenidas dentro de otras, como &#8220;press&#8221; que está dentro de &#8220;WordPress&#8221;."
+
+#: wp-admin/options-discussion.php:160
+msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
+msgstr "Cuando un comentario contiene alguna de estas palabras en su contenido, nombre, URL, correo electrónico o IP se mantendrá en la <a href=\"edit-comments.php?comment_status=moderated\">cola de moderación</a>. Pon una palabra o dirección IP por línea. También afectará a las palabras contenidas dentro de otras, como &#8220;press&#8221;, que está dentro de  &#8220;WordPress&#8221;"
 
 #. translators: %s: web.config
 #: wp-admin/options-permalink.php:322

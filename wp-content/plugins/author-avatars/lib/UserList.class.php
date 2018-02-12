@@ -48,6 +48,11 @@ class UserList {
 	var $show_name = false;
 
 	/**
+	 * Flag whether to show the username underneith their avatar.
+	 */
+	var $show_nickname = false;
+
+	/**
 	 * Flag wether to show the post count for each user after the username.
 	 */
 	var $show_postcount = false;
@@ -303,6 +308,7 @@ class UserList {
 			'group_by'                => $this->group_by,
 			'user_link'               => $this->user_link,
 			'show_name'               => $this->show_name,
+			'show_name'               => $this->show_nickname,
 			'show_postcount'          => $this->show_postcount,
 			'show_bbpress_post_count' => $this->show_bbpress_post_count,
 			'show_biography'          => $this->show_biography,
@@ -345,16 +351,31 @@ class UserList {
 			$avatar_size = false;
 		}
 
+
 		$name = '';
 		if ( $this->show_name ) {
 			$name = $user->display_name;
 		}
 
-		$alt = $title = $name;
-
 		$divcss = array( 'user' );
 		if ( $this->show_name ) {
 			$divcss[] = 'with-name';
+		}
+
+
+		if ( $this->show_nickname ) {
+			$nickname = get_the_author_meta( 'nickname', $user->user_id );
+
+			if( $this->show_name ) {
+				$nickname = sprintf( apply_filters( 'AA_nickname_with_name_wrap', ' (%s)' ),  $nickname );
+			}
+
+			$name .= $nickname;
+		}
+
+		$alt = $title = $name;
+		if ( $this->show_nickname) {
+			$divcss[] = 'with-nickname';
 		}
 
 		$link       = false;
@@ -379,7 +400,7 @@ class UserList {
 
 				case 'website':
 					if ( 'guest-author' === $type ) {
-						$link = get_the_author_meta( 'url', $user->ID );
+						$link = get_the_author_meta( 'url', $user->user_id );
 					} else {
 						$link = $user->user_url;
 						if ( empty( $link ) || 'http://' === $link ) {
@@ -763,7 +784,7 @@ class UserList {
 		 */
 		$html .= sprintf( apply_filters( 'aa_user_avatar_template', '<span class="avatar" title="%s">%s</span>', $title, $avatar, $user ), $title, $avatar );
 
-		if ( $this->show_name || $this->show_bbpress_post_count || $this->show_postcount ) {
+		if ( $this->show_name || $this->show_nickname ||$this->show_name || $this->show_bbpress_post_count || $this->show_postcount ) {
 			/**
 			 * filter the span that contains the users name
 			 *
@@ -1116,8 +1137,8 @@ class UserList {
 			$roleQuery = ' AND(' . $roleQuery . ')';
 		}
 
-		// can't wape into pepare as thease are all table names
-		$query = "SELECT user_id, user_login, display_name, user_email, user_url, user_registered, meta_key, meta_value FROM $wpdb->users, $wpdb->usermeta" .
+		// can't wrape into pepare as these are all table names
+		$query = "SELECT user_id, user_login, display_name, user_email, user_url, user_registered, meta_key, meta_value FROM $wpdb->users, $wpdb->usermeta " .
 		         " WHERE " . $wpdb->users . ".ID = " . $wpdb->usermeta . ".user_id AND " . $blogs_condition . " AND user_status = 0" . $roleQuery;
 
 		$users = $wpdb->get_results( $query );
@@ -1312,6 +1333,9 @@ class UserList {
 			case 'display_name':
 				usort( $users, array( $this, '_users_cmp_name' ) );
 				break;
+			case 'nickname':
+				usort( $users, array( $this, '_users_cmp_nickname' ) );
+				break;
 			case 'first_name':
 				usort( $users, array( $this, '_users_cmp_first_name' ) );
 				break;
@@ -1410,6 +1434,36 @@ class UserList {
 	 */
 	function _users_cmp_name( $a, $b ) {
 		return $this->_sort_direction() * strcasecmp( remove_accents( $a->display_name ), remove_accents( $b->display_name ) );
+	}
+
+	/**
+
+	/**
+	 * Given two users, this function compares the user's display names.
+	 *
+	 * @access private
+	 *
+	 * @param $a object WP_User
+	 * @param $b object WP_User
+	 *
+	 * @return int result of a string compare of the user first names.
+	 */
+	function _users_cmp_nickname( $a, $b ) {
+		$an = remove_accents( $this->get_user_nickname( $a->user_id ) );
+		$bn = remove_accents( $this->get_user_nickname( $b->user_id ) );
+
+		return $this->_sort_direction() * strcasecmp( $an, $bn );
+	}
+
+	/**
+	 * Given a user id returns the first name of the respective user.
+	 *
+	 * @param int $user_id
+	 *
+	 * @return string first name of user
+	 */
+	function get_user_nickname( $user_id ) {
+		return get_user_meta( $user_id, 'nickname', true );
 	}
 
 	/**

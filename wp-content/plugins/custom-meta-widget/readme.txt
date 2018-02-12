@@ -4,15 +4,15 @@ Contributors: bitacre
 Donate link: http://shinraholdings.com/donate
 Tags: meta,hide,link,admin,simple,widget,default,wordpress.org,change,rss,remove,login
 Requires at least: 2.8
-Tested up to: 4.5
-Stable tag: 1.4.8
+Tested up to: 4.9.4
+Stable tag: 1.5.1
 
 Clone of the standard Meta widget plus options to hide log in/out, admin, feed and WordPress.org/custom links.
 
 == Description ==
 This plugin acts in exactly the same way as the standard Meta widget except that it adds options which allow you control which of the 5 standard Meta widget links should be displayed, with the additional option to add your own custom link.
 
-The standard Meta widget that comes with WordPress offers no customization and requires you to show all 5 of the standard links (register, login, entries RSS, comments RSS, and WordPress.org).
+The standard Meta widget that comes with WordPress offers no customization and requires you to show all 5 of the standard links (register, login, entries RSS, comments RSS, and WordPress.org, as well as any links added by themes or other plugins).
 
 == Installation ==
 1. Download the latest zip file and extract the `custom-meta-widget` directory.
@@ -23,7 +23,6 @@ The standard Meta widget that comes with WordPress offers no customization and r
 == Frequently Asked Questions ==
 = Why does my Meta widget look the same? =
 This plugin does not modify the standard WordPress Meta widget. It is a completely separate widget titled 'Custom Meta.' If you are currently using the standard Meta widget, you will have to remove it from your sidebar and replace it with the Custom Meta widget using the Appearance > Widgets menu.
-
 
 It also looks identical to the standard Meta Widget unless you opt to change which links are shown/hidden in the Appearance > Widgets menu, under the expanded 'Custom Meta' widget.
 
@@ -48,6 +47,15 @@ Most people, myself included, are understandably reluctant to donate real curren
 3. Comparison of options between the standard and Custom Meta Widget.
 
 == Changelog ==
+= 1.5.1 =
+* Fixed the "show custom link" functionality. My bad.
+
+= 1.5.0 =
+* Some formatting changes to bring closer alignment with the current vanilla WordPress Meta Widget.
+* Added ability for links added to the meta widget by other themes/plugins as introduced in 4.4 via `wp_meta()`.
+* Added compatibility with some new filters introduced since the last major update.
+* General code clean-up and modernization.
+
 = 1.4.8 =
 * Updated deprecated __construct() method
 * Thank you to [dsmiller](https://wordpress.org/support/topic/updated-constructor?replies=4#post-8147479)
@@ -75,7 +83,7 @@ Most people, myself included, are understandably reluctant to donate real curren
 * Small correction to the ru_RU (Russian) translation
 
 = 1.4.2 =
-* Wordpress 3.5 update
+* WordPress 3.5 update
 * Added translations for ru_RU
 
 = 1.4.1 =
@@ -132,11 +140,17 @@ Most people, myself included, are understandably reluctant to donate real curren
 * There may still be bugs, but I can't find any. 
 
 == Upgrade Notice ==
+= 1.5.1 =
+Restores the "show custom link" functionality.
+
+= 1.5.0 =
+This update implements new functionality implemented after WordPress 4.4. If you are, amazingly, somehow, still using a version of WordPress older than 4.4, this may cause problems. (But if your install is *that* old, you already have problems :D)
+
 = 1.4.8 =
-* Replaces deprecated function throwing debug error message
+Replaces deprecated function throwing debug error message
 
 = 1.4.7 =
-* Purely cosmetic update for WordPress 4.4
+Purely cosmetic update for WordPress 4.4
 
 = 1.4.6 =
 Optional upgrade, new translations pl_PL (Polish), fr_FR (French), sr_RS (Serbian), and nl_NL (Dutch).
@@ -151,7 +165,7 @@ Recommended upgrade, new languages and performance improvement.
 Small correction to ru_RU (Russian) language translation files, recommended upgrade.
 
 = 1.4.2 =
-Russian language files and WordPress 3.5 compatability update, not a critical upgrade.
+Russian language files and WordPress 3.5 compatibility update, not a critical upgrade.
 
 = 1.4.1 =
 Fixes some i18n issues and adds additional languages, recommended upgrade.
@@ -163,7 +177,7 @@ Improves code efficiency, new features, recommended upgrade.
 Updated metadata, not an essential upgrade.
 
 = 1.3.5_a =
-Fixes one textdomain missed in the internationalization update and update for Wordpress 3.3.2.
+Fixes one textdomain missed in the internationalization update and update for WordPress 3.3.2.
 
 = 1.3.5 =
 Adds translations for several languages.
@@ -172,7 +186,7 @@ Adds translations for several languages.
 Minor improvements to i18n for translators.
 
 = 1.3.3 =
-Adds internationalization, helpful for non-english users.
+Adds internationalization, helpful for non-English users.
 
 = 1.3.2 =
 Adds some more error handling, small cosmetic tweaks, and shameless self-promotion.
@@ -210,4 +224,4 @@ If you would like to help make this plugin available in your native language, pl
 * [plugins@shinraholdings.com](mailto:plugins@shinraholdings.com)
 
 == Donations ==
-[Donations](http://shinraholdings.com/donate) are graciously accepted to support the continued development and maintenance of this and other plugins. We currently accept Paypal, link backs, and kind words. Also, checking the 'show plugin link' option on the widget helps us out greatly!
+[Donations](http://shinraholdings.com/donate) are graciously accepted to support the continued development and maintenance of this and other plugins. We currently accept PayPal, link backs, and kind words. Also, checking the 'show plugin link' option on the widget helps us out greatly!

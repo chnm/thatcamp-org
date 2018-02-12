@@ -148,7 +148,7 @@ class AuthorAvatarsShortcode {
 		$display = apply_filters('aa_shortcode_display_list', $display );
 
 		// support for all style shortcode
-		$default_display_options = array('show_name','show_postcount','show_email','show_biography','show_last_post','show_bbpress_post_count');
+		$default_display_options = array('show_name','show_postcount','show_email', 'show_nickname','show_biography','show_last_post','show_bbpress_post_count');
 		// loop the old name=true settings and add them to the new array format
 		foreach( $default_display_options as $default_display_option ){
 			if ( isset( $atts[$default_display_option] ) && ( strlen( $atts[$default_display_option] ) > 0 ) ) {

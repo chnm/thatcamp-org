@@ -5,13 +5,12 @@
  */
 class ShowAvatarShortcode {
 	var $userlist = null;
+
 	/**
 	 * Constructor
 	 */
 	function __construct() {
 		$this->register();
-		require_once( 'UserList.class.php' );
-		$this->userlist = new UserList();
 	}
 
 	/**
@@ -27,15 +26,17 @@ class ShowAvatarShortcode {
 	 * Example: [show_avatar id=pbearne@tycoelectronics.com avatar_size=30 align=right]
 	 */
 	function shortcode_handler( $atts, $content = null ) {
-		$extraClass 	= '';
-		$hrefStart 		= '';
-		$name 			= '';
-		$bio 			= '';
-		$last_post 		= '';
-		$style 			= '';
-		$email 			= '';
-		$link 			= '';
-		$id 			= ''; // get id or email
+		require_once( 'UserList.class.php' );
+		$this->userlist = new UserList();
+		$extraClass     = '';
+		$hrefStart      = '';
+		$name           = '';
+		$bio            = '';
+		$last_post      = '';
+		$style          = '';
+		$email          = '';
+		$link           = '';
+		$id             = ''; // get id or email
 
 		if ( ! empty( $atts['id'] ) ) {
 			$id = preg_replace( '[^\w\.\@\-]', '', $atts['id'] );
@@ -43,9 +44,8 @@ class ShowAvatarShortcode {
 		if ( empty( $id ) && ! empty( $atts['email'] ) ) {
 			$id = preg_replace( '[^\w\.\@\-]', '', $atts['email'] );
 		}
-
 		// get avatar size
-		$bio_length = -1;
+		$bio_length = - 1;
 		if ( ! empty( $atts['max_bio_length'] ) ) {
 			$bio_length = intval( $atts['max_bio_length'] );
 		}
@@ -80,11 +80,13 @@ class ShowAvatarShortcode {
 		}
 		// is there an user link request
 
+
 		if ( ! empty( $atts['user_link'] )
 		     || ! empty( $atts['show_biography'] )
 		     || ! empty( $atts['show_postcount'] )
 		     || ! empty( $atts['show_name'] )
 		     || ! empty( $atts['show_email'] )
+		     || ! empty( $atts['show_nickname'] )
 		) {
 
 			// try to fetch user profile
@@ -98,6 +100,8 @@ class ShowAvatarShortcode {
 					$isUser = false;
 				}
 			}
+
+
 			if ( $isUser ) {
 				$all_meta_for_user = get_user_meta( $id );
 				if ( count( $all_meta_for_user ) == 0 ) {
@@ -152,28 +156,28 @@ class ShowAvatarShortcode {
 							}
 							break;
 						case 'last_post':
-							$recent = get_posts(array(
-								'author' => $id,
-								'orderby' => 'date',
-								'order' => 'desc',
+							$recent = get_posts( array(
+								'author'      => $id,
+								'orderby'     => 'date',
+								'order'       => 'desc',
 								'numberposts' => 1,
-							));
-							$link = get_permalink( $recent[0]->ID );
+							) );
+							$link   = get_permalink( $recent[0]->ID );
 							break;
 
 						case 'last_post_filtered':
-							$recent = get_posts(array(
-								'author' => $id,
-								'orderby' => 'date',
-								'order' => 'desc',
+							$recent = get_posts( array(
+								'author'      => $id,
+								'orderby'     => 'date',
+								'order'       => 'desc',
 								'numberposts' => 1,
-							));
-							$link = get_permalink( $recent[0]->ID );
+							) );
+							$link   = get_permalink( $recent[0]->ID );
 							break;
 
 						case 'last_post_all':
 							$last_post = get_most_recent_post_of_user( $id );
-							$link = get_permalink( $last_post['post_id'] );
+							$link      = get_permalink( $last_post['post_id'] );
 							break;
 					}
 					if ( $link ) {
@@ -183,63 +187,96 @@ class ShowAvatarShortcode {
 					$extraClass .= ' user-' . $id;
 				}
 
-				if ( ! empty( $atts['show_name'] ) ) {
-					$name = '<br />' . get_the_author_meta( 'display_name', $id );
-					$extraClass .= ' with-name';
-				}
 
-				if ( ! empty( $atts['show_email'] ) ) {
-					$userEmail = get_the_author_meta( 'user_email', $id );
-					$email     = "<div class='email'><a href='mailto:" . $userEmail . "''>" . $userEmail . "</a></div>";
-					if ( empty( $email ) ) {
-						$extraClass .= 'email-missing';
+				$display = array();
+				if ( ! empty( $atts['display'] ) ) {
+					if ( ! is_array( $atts['display'] ) ) {
+						$display = explode( ',', $atts['display'] );
 					} else {
-						$extraClass .= ' with-email';
+						$display = $atts['display'];
 					}
 				}
 
-				if ( ! empty( $atts['show_postcount'] ) ) {
-					$name .= ' (' . $postcount = $this->userlist->get_user_postcount( $id ) . ')';
+				$display = apply_filters( 'aa_shortcode_display_list', $display );
+
+				// support for all style shortcode
+				$default_display_options = array( 'show_name', 'show_postcount', 'show_email', 'show_nickname', 'show_biography', 'show_last_post', 'show_bbpress_post_count' );
+				// loop the old name=true settings and add them to the new array format
+				foreach ( $default_display_options as $default_display_option ) {
+					if ( isset( $atts[ $default_display_option ] ) && ( strlen( $atts[ $default_display_option ] ) > 0 ) ) {
+						if ( true == $atts[ $default_display_option ] && ! in_array( $default_display_option, $display ) ) {
+							$display[] = $default_display_option;
+						}
+					}
+
 				}
 
-				if ( ! empty( $atts['show_bbpress_post_count'] ) ) {
-					if ( function_exists( 'bbp_get_user_topic_count_raw' ) ) {
-						$BBPRESS_postcount = bbp_get_user_topic_count_raw( $id ) + bbp_get_user_reply_count_raw( $id );
-						$name .= ' (' . $postcount = $BBPRESS_postcount . ')';
+				foreach ( $display as $show ) {
+					switch ( $show ) {
+						case 'show_name';
+							$name       .= '<br />' . get_the_author_meta( 'display_name', $id );
+							$extraClass .= ' with-name';
+							break;
+
+						case 'show_nickname':
+							$name       = '<br />' . get_the_author_meta( 'nickname', $id );
+							$extraClass .= ' with-nickname';
+							break;
+
+						case 'show_email':
+							$userEmail = get_the_author_meta( 'user_email', $id );
+							$email     = "<div class='email'><a href='mailto:" . $userEmail . "''>" . $userEmail . "</a></div>";
+							if ( empty( $email ) ) {
+								$extraClass .= 'email-missing';
+							} else {
+								$extraClass .= ' with-email';
+							}
+							break;
+
+						case 'show_postcount':
+							$name .= ' (' . $postcount = $this->userlist->get_user_postcount( $id ) . ')';
+
+							break;
+
+						case 'show_bbpress_post_count':
+							if ( function_exists( 'bbp_get_user_topic_count_raw' ) ) {
+								$BBPRESS_postcount = bbp_get_user_topic_count_raw( $id ) + bbp_get_user_reply_count_raw( $id );
+								$name              .= ' (' . $postcount = $BBPRESS_postcount . ')';
+							}
+							break;
+
+						case 'show_biography':
+
+							$biography = get_the_author_meta( 'description', $id );
+
+							if ( 0 < $bio_length ) {
+								$biography = $this->userlist->truncate_html( wpautop( $biography, true ), apply_filters( 'aa_user_bio_length', $bio_length ) );
+							} else {
+								$biography = wpautop( $biography, true );
+							}
+
+							$max_bio_length = ( isset( $atts['max_bio_length'] ) ) ? $atts['max_bio_length'] : 0;
+							$bio            = '<div class="bio bio-length-' . $max_bio_length . '">' . $biography . '</div>';
+
+							break;
+
+						case    'show_last_post':
+
+							$last_post = '<div class="last_post">' . $this->userlist->aa_get_last_post( $id ) . '</div>';
+							if ( empty( $last_post ) ) {
+								$extraClass .= ' last-post-missing';
+							} else {
+								$extraClass .= ' with-last-post';
+							}
+							break;
 					}
 				}
+			}
 
-				if ( ! empty( $atts['show_biography'] ) ) {
-
-					$biography = get_the_author_meta( 'description', $id );
-
-					if( 0 < $bio_length ){
-						$biography = $this->userlist->truncate_html( wpautop( $biography, true ) , apply_filters( 'aa_user_bio_length', $bio_length ) );
-					}else{
-						$biography = wpautop( $biography, true ) ;
-					}
-
-					if ( ! empty( $atts['show_name'] ) ) {
-						$max_bio_length = ( isset( $atts['max_bio_length'] ) ) ? $atts['max_bio_length'] : 0;
-							$bio = '<div class="bio bio-length-'. $max_bio_length .'">' . $biography . '</div>';
-					}
-					if ( empty( $bio ) ) {
-						$extraClass .= ' biography-missing';
-					} else {
-						$extraClass .= ' with-biography bio-length-'.$bio_length;
-					}
-				}
-
-				// show last_post?
-				if ( isset( $atts['show_last_post'] ) && ( strlen( $atts['show_last_post'] ) > 0 ) ) {
-
-					$last_post = '<div class="last_post">' .$this->userlist->aa_get_last_post( $id ). '</div>';
-					if ( empty( $last_post ) ) {
-						$extraClass .= ' last-post-missing';
-					} else {
-						$extraClass .= ' with-last-post';
-					}
-				}
+			if ( empty( $bio ) ) {
+				$extraClass .= ' biography-missing';
+			} else {
+				$extraClass .= ' with-biography bio-length-' . $bio_length;
 			}
 
 		}
@@ -247,10 +284,12 @@ class ShowAvatarShortcode {
 		if ( ! empty( $hrefStart ) ) {
 			$hrefend = '</a>';
 		}
+
 		if ( ! empty( $style ) ) {
 			$style = ' style="' . $style . '"';
 		}
 
 		return '<div class="shortcode-show-avatar ' . $extraClass . '"' . $style . '>' . $hrefStart . $avatar . $name . $last_post . $hrefend . $bio . $email . '</div>' . $content;
 	}
+
 }

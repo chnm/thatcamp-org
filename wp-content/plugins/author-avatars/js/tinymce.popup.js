@@ -7,8 +7,8 @@ jQuery(function () {
         AA_Tabs.tabs('disable', 1);
 
 // hide or show fields & bind change event handler
-        jQuery('#shortcode_type label').on('click', AA_updateFieldVisibility );
-        jQuery('#insert').on('click', insertAuthorAvatarsCode );
+        jQuery('#shortcode_type label').on('click', AA_updateFieldVisibility);
+        jQuery('#insert').on('click', insertAuthorAvatarsCode);
 
         jQuery('select#user_id').change(function () {
             if (jQuery(this).val() > 0) {
@@ -72,10 +72,11 @@ jQuery(function () {
         else {
             jQuery('#shortcode_type').removeClass('aa-form-error');
         }
-
+        
+        var display = [];
         var tagtext = "[" + type;
 
-        if (type === 'authoravatars') {
+        if ('authoravatars' === type) {
 
             // blogs
             var blogs = jQuery(".fields_type_authoravatars #blogs").val() || [];
@@ -117,7 +118,7 @@ jQuery(function () {
                 tagtext += " user_link=" + user_link;
             }
 
-            var display = [];
+
             jQuery('.fields_type_authoravatars #display :checked').each(function (i, el) {
                 display.push(jQuery(el).val());
 
@@ -222,37 +223,42 @@ jQuery(function () {
             }
 
             jQuery('.fields_type_show_avatar #display :checked').each(function (i, el) {
-                // show_name
-                if ('show_name' === jQuery(el).val()) {
-                    tagtext += " show_name=true";
-                }
-
-                // show_email
-                if ('show_email' === jQuery(el).val()) {
-                    tagtext += " show_email=true";
-                }
-
-                // show_postcount
-                if ('show_postcount' === jQuery(el).val()) {
-                    tagtext += " show_postcount=true";
-                }
-
-                // show_biography
-                if ('show_biography' === jQuery(el).val()) {
-                    tagtext += " show_biography=true";
-                }
-
-                // show_last_post
-                if ('show_last_post' === jQuery(el).val()) {
-                    tagtext += " show_last_post=true";
-                }
-
-                // BBPRESS_post_count
-                if ('show_bbpress_post_count' === jQuery(el).val()) {
-                    tagtext += " show_bbpress_post_count=true";
-                }
+                display.push(jQuery(el).val());
+                
+                // // show_name
+                // if ('show_name' === jQuery(el).val()) {
+                //     tagtext += " show_name=true";
+                // }
+                //
+                // // show_email
+                // if ('show_email' === jQuery(el).val()) {
+                //     tagtext += " show_email=true";
+                // }
+                //
+                // // show_postcount
+                // if ('show_postcount' === jQuery(el).val()) {
+                //     tagtext += " show_postcount=true";
+                // }
+                //
+                // // show_biography
+                // if ('show_biography' === jQuery(el).val()) {
+                //     tagtext += " show_biography=true";
+                // }
+                //
+                // // show_last_post
+                // if ('show_last_post' === jQuery(el).val()) {
+                //     tagtext += " show_last_post=true";
+                // }
+                //
+                // // BBPRESS_post_count
+                // if ('show_bbpress_post_count' === jQuery(el).val()) {
+                //     tagtext += " show_bbpress_post_count=true";
+                // }
 
             });
+            if (display.length > 0) {
+                tagtext += " display=" + display.join(',');
+            }
 
 
         }

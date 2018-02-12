@@ -134,6 +134,7 @@ class AuthorAvatarsWidget extends WP_Widget {
 			$default_display_options = array(
 				'show_name',
 				'show_email',
+				'show_nickname',
 				'show_biography',
 				'show_postcount',
 				'show_last_post',
