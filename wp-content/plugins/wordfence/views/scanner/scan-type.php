@@ -12,7 +12,7 @@ $limitedOptions = array_filter(wfScanner::limitedScanTypeOptions(), '_wfAllowOnl
 $standardOptions = array_filter(wfScanner::standardScanTypeOptions(), '_wfAllowOnlyBoolean');
 $highSensitivityOptions = array_filter(wfScanner::highSensitivityScanTypeOptions(), '_wfAllowOnlyBoolean');
 ?>
-<ul class="wf-scan-type-controls">
+<ul id="wf-option-scanType" class="wf-scan-type-controls">
 	<li class="wf-scan-type-selector wf-overflow-x-auto-xs">
 		<ul class="wf-scan-type" data-option-name="scanType" data-original-value="<?php echo esc_attr($scanner->scanType()); ?>">
 			<li>

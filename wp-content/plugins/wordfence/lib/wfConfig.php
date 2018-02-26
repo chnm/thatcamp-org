@@ -18,6 +18,7 @@ class wfConfig {
 	const OPTIONS_TYPE_LIVE_TRAFFIC = 'livetraffic';
 	const OPTIONS_TYPE_COMMENT_SPAM = 'commentspam';
 	const OPTIONS_TYPE_DIAGNOSTICS = 'diagnostics';
+	const OPTIONS_TYPE_ALL = 'all';
 	
 	public static $diskCache = array();
 	private static $diskCacheDisabled = false; //enables if we detect a write fail so we don't keep calling stat()
@@ -119,6 +120,7 @@ class wfConfig {
 			'wafAlertOnAttacks' => array('value' => true, 'autoload' => self::AUTOLOAD),
 			'disableWAFIPBlocking' => array('value' => false, 'autoload' => self::AUTOLOAD),
 			'showAdminBarMenu' => array('value' => true, 'autoload' => self::AUTOLOAD),
+			'displayTopLevelOptions' => array('value' => true, 'autoload' => self::AUTOLOAD),
 			'displayTopLevelBlocking' => array('value' => false, 'autoload' => self::AUTOLOAD),
 			'displayTopLevelLiveTraffic' => array('value' => false, 'autoload' => self::AUTOLOAD),
 			'displayAutomaticBlocks' => array('value' => true, 'autoload' => self::AUTOLOAD),
@@ -423,7 +425,7 @@ SQL
 		self::removeCachedOption($key);
 		
 		if (!WFWAF_SUBDIRECTORY_INSTALL && class_exists('wfWAFIPBlocksController') && (substr($key, 0, 4) == 'cbl_' || $key == 'blockedTime' || $key == 'disableWAFIPBlocking')) {
-			wfWAFIPBlocksController::synchronizeConfigSettings();
+			wfWAFIPBlocksController::setNeedsSynchronizeConfigSettings();
 		}
 	}
 	public static function set($key, $val, $autoload = self::AUTOLOAD) {
@@ -457,7 +459,7 @@ SQL
 		}
 		
 		if (!WFWAF_SUBDIRECTORY_INSTALL && class_exists('wfWAFIPBlocksController') && (substr($key, 0, 4) == 'cbl_' || $key == 'blockedTime' || $key == 'disableWAFIPBlocking')) {
-			wfWAFIPBlocksController::synchronizeConfigSettings();
+			wfWAFIPBlocksController::setNeedsSynchronizeConfigSettings();
 		} 
 	}
 	public static function get($key, $default = false, $allowCached = true) {
@@ -1629,6 +1631,7 @@ Options -ExecCGI
 					'email_summary_interval',
 					'email_summary_excluded_directories',
 					'howGetIPs_trusted_proxies',
+					'displayTopLevelOptions',
 				);
 				break;
 			case self::OPTIONS_TYPE_FIREWALL:
@@ -1762,6 +1765,144 @@ Options -ExecCGI
 					'startScansRemotely',
 					'ssl_verify',
 					'betaThreatDefenseFeed',
+				);
+				break;
+			case self::OPTIONS_TYPE_ALL:
+				$options = array(
+					'alertOn_critical',
+					'alertOn_update',
+					'alertOn_warnings',
+					'alertOn_throttle',
+					'alertOn_block',
+					'alertOn_loginLockout',
+					'alertOn_lostPasswdForm',
+					'alertOn_adminLogin',
+					'alertOn_firstAdminLoginOnly',
+					'alertOn_nonAdminLogin',
+					'alertOn_firstNonAdminLoginOnly',
+					'alertOn_wordfenceDeactivated',
+					'liveActivityPauseEnabled',
+					'notification_updatesNeeded',
+					'notification_securityAlerts',
+					'notification_promotions',
+					'notification_blogHighlights',
+					'notification_productUpdates',
+					'notification_scanStatus',
+					'other_hideWPVersion',
+					'other_bypassLitespeedNoabort',
+					'deleteTablesOnDeact',
+					'autoUpdate',
+					'disableCookies',
+					'disableCodeExecutionUploads',
+					'email_summary_enabled',
+					'email_summary_dashboard_widget_enabled',
+					'howGetIPs',
+					'actUpdateInterval',
+					'alert_maxHourly',
+					'email_summary_interval',
+					'email_summary_excluded_directories',
+					'howGetIPs_trusted_proxies',
+					'firewallEnabled',
+					'blockFakeBots',
+					'autoBlockScanners',
+					'loginSecurityEnabled',
+					'loginSec_strongPasswds_enabled',
+					'loginSec_lockInvalidUsers',
+					'loginSec_maskLoginErrors',
+					'loginSec_blockAdminReg',
+					'loginSec_disableAuthorScan',
+					'loginSec_disableOEmbedAuthor',
+					'other_blockBadPOST',
+					'other_pwStrengthOnUpdate',
+					'other_WFNet',
+					'ajaxWatcherDisabled_front',
+					'ajaxWatcherDisabled_admin',
+					'wafAlertOnAttacks',
+					'disableWAFIPBlocking',
+					'whitelisted',
+					'bannedURLs',
+					'loginSec_userBlacklist',
+					'neverBlockBG',
+					'loginSec_countFailMins',
+					'loginSec_lockoutMins',
+					'loginSec_strongPasswds',
+					'loginSec_maxFailures',
+					'loginSec_maxForgotPasswd',
+					'maxGlobalRequests',
+					'maxGlobalRequests_action',
+					'maxRequestsCrawlers',
+					'maxRequestsCrawlers_action',
+					'maxRequestsHumans',
+					'maxRequestsHumans_action',
+					'max404Crawlers',
+					'max404Crawlers_action',
+					'max404Humans',
+					'max404Humans_action',
+					'maxScanHits',
+					'maxScanHits_action',
+					'blockedTime',
+					'allowed404s',
+					'wafAlertWhitelist',
+					'wafAlertInterval',
+					'wafAlertThreshold',
+					'dismissAutoPrependNotice',
+					'displayTopLevelBlocking',
+					'cbl_loggedInBlocked',
+					'cbl_action',
+					'cbl_redirURL',
+					'cbl_bypassRedirURL',
+					'cbl_bypassRedirDest',
+					'cbl_bypassViewURL',
+					'checkSpamIP',
+					'spamvertizeCheck',
+					'scheduledScansEnabled',
+					'lowResourceScansEnabled',
+					'scansEnabled_checkGSB',
+					'scansEnabled_checkHowGetIPs',
+					'scansEnabled_core',
+					'scansEnabled_themes',
+					'scansEnabled_plugins',
+					'scansEnabled_coreUnknown',
+					'scansEnabled_malware',
+					'scansEnabled_fileContents',
+					'scansEnabled_fileContentsGSB',
+					'scansEnabled_checkReadableConfig',
+					'scansEnabled_suspectedFiles',
+					'scansEnabled_posts',
+					'scansEnabled_comments',
+					'scansEnabled_suspiciousOptions',
+					'scansEnabled_passwds',
+					'scansEnabled_diskSpace',
+					'scansEnabled_options',
+					'scansEnabled_wpscan_fullPathDisclosure',
+					'scansEnabled_wpscan_directoryListingEnabled',
+					'scansEnabled_dns',
+					'scansEnabled_scanImages',
+					'scansEnabled_highSense',
+					'scansEnabled_oldVersions',
+					'scansEnabled_suspiciousAdminUsers',
+					'scan_include_extra',
+					'maxMem',
+					'scan_exclude',
+					'scan_maxIssues',
+					'scan_maxDuration',
+					'maxExecutionTime',
+					'scanType',
+					'manualScanType',
+					'schedMode',
+					'loginSec_requireAdminTwoFactor',
+					'loginSec_enableSeparateTwoFactor',
+					'liveTrafficEnabled',
+					'liveTraf_ignorePublishers',
+					'liveTraf_displayExpandedRecords',
+					'liveTraf_ignoreUsers',
+					'liveTraf_ignoreIPs',
+					'liveTraf_ignoreUA',
+					'liveTraf_maxRows',
+					'displayTopLevelLiveTraffic',
+					'other_noAnonMemberComments',
+					'other_scanComments',
+					'advancedCommentScanning',
 				);
 				break;
 		}

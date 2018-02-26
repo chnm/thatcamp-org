@@ -11,8 +11,10 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
  * @var string $helpLink If defined, the link to the corresponding external help page.
  * @var bool $premium If defined, the option will be tagged as premium only and not allow its value to change for free users.
  */
+
+$id = 'wf-option-' . preg_replace('/[^a-z0-9]/i', '-', $tokenOptionName);
 ?>
-<ul class="wf-option wf-option-token<?php if (!wfConfig::p() && isset($premium) && $premium) { echo ' wf-option-premium'; } ?>" data-token-option="<?php echo esc_attr($tokenOptionName); ?>" data-original-token-value="<?php echo esc_attr(json_encode($tokenValue)); ?>">
+<ul id="<?php echo esc_attr($id); ?>" class="wf-option wf-option-token<?php if (!wfConfig::p() && isset($premium) && $premium) { echo ' wf-option-premium'; } ?>" data-token-option="<?php echo esc_attr($tokenOptionName); ?>" data-original-token-value="<?php echo esc_attr(json_encode($tokenValue)); ?>">
 	<li class="wf-option-spacer"></li>
 	<li class="wf-flex-vertical wf-flex-align-left">
 		<div class="wf-option-title">

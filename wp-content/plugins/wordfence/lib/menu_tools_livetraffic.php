@@ -28,127 +28,12 @@ $w = new wfConfig();
 
 <div class="wordfenceModeElem" id="wordfenceMode_liveTraffic"></div>
 
-<div id="wf-live-traffic-options" class="wf-row">
-	<div class="wf-col-xs-12">
-		<div class="wf-block<?php echo(wfPersistenceController::shared()->isActive('live-traffic-options') ? ' wf-active' : '') ?>" data-persistence-key="live-traffic-options">
-			<div class="wf-block-header">
-				<div class="wf-block-header-content">
-					<div class="wf-block-title">
-						<strong><?php _e('Live Traffic Options', 'wordfence'); ?></strong>
-					</div>
-					<div class="wf-block-header-action">
-						<div class="wf-block-header-action-disclosure"></div>
-					</div>
-				</div>
-			</div>
-			<div class="wf-block-content wf-clearfix">
-
-				<p>
-					<?php _e('These options let you ignore certain types of visitors, based on their level of access, usernames, IP address or browser type. If you run a very high traffic website where it is not feasible to see your visitors in real-time, simply un-check the live traffic option and nothing will be written to the Wordfence tracking tables.', 'wordfence') ?>
-				</p>
-
-				<div class="wf-row">
-					<div class="wf-col-xs-12">
-						<?php
-						echo wfView::create('options/block-controls', array(
-							'suppressLogo' => true,
-							'restoreDefaultsSection' => wfConfig::OPTIONS_TYPE_LIVE_TRAFFIC,
-							'restoreDefaultsMessage' => __('Are you sure you want to restore the default Live Traffic settings? This will undo any custom changes you have made to the options on this page.', 'wordfence'),
-						))->render();
-						?>
-					</div>
-				</div>
-
-				<ul class="wf-block-list">
-					<li>
-						<?php
-						echo wfView::create('options/option-switch', array(
-							'optionName' => 'liveTrafficEnabled',
-							'value' => wfConfig::get('liveTrafficEnabled') ? '1': '0',
-							'title' => __('Enable live traffic logging', 'wordfence'),
-							'states' => array(
-								array('value' => '0', 'label' => __('Off', 'wordfence')),
-								array('value' => '1', 'label' => __('On', 'wordfence')),
-							),
-							'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_TOOLS_LIVE_TRAFFIC_OPTION_ENABLE),
-							'alignment' => 'wf-right',
-						))->render();
-						?>
-					</li>
-					<li>
-						<?php
-						echo wfView::create('options/option-toggled', array(
-							'optionName'    => 'liveTraf_ignorePublishers',
-							'enabledValue'  => 1,
-							'disabledValue' => 0,
-							'value'         => wfConfig::get('liveTraf_ignorePublishers') ? 1 : 0,
-							'title'         => __("Don't log signed-in users with publishing access.", 'wordfence'),
-						))->render();
-						?>
-					</li>
-					<li>
-						<?php
-						echo wfView::create('options/option-toggled', array(
-							'optionName'    => 'liveTraf_displayExpandedRecords',
-							'enabledValue'  => 1,
-							'disabledValue' => 0,
-							'value'         => wfConfig::get('liveTraf_displayExpandedRecords') ? 1 : 0,
-							'title'         => __("Always display expanded Live Traffic records.", 'wordfence'),
-						))->render();
-						?>
-					</li>
-					<li>
-						<?php
-						echo wfView::create('options/option-text', array(
-							'textOptionName' => 'liveTraf_ignoreUsers',
-							'textValue'      => wfConfig::get('liveTraf_ignoreUsers'),
-							'title'          => __('List of comma separated usernames to ignore.', 'wordfence'),
-						))->render();
-						?>
-					</li>
-					<li>
-						<?php
-						echo wfView::create('options/option-text', array(
-							'textOptionName' => 'liveTraf_ignoreIPs',
-							'textValue'      => wfConfig::get('liveTraf_ignoreIPs'),
-							'title'          => __('List of comma separated IP addresses to ignore.', 'wordfence'),
-						))->render();
-						?>
-					</li>
-					<li>
-						<?php
-						echo wfView::create('options/option-text', array(
-							'textOptionName' => 'liveTraf_ignoreUA',
-							'textValue'      => wfConfig::get('liveTraf_ignoreUA'),
-							'title'          => __('Browser user-agent to ignore.', 'wordfence'),
-						))->render();
-						?>
-					</li>
-					<li>
-						<?php
-						echo wfView::create('options/option-text', array(
-							'textOptionName' => 'liveTraf_maxRows',
-							'textValue'      => wfConfig::get('liveTraf_maxRows'),
-							'title'          => __('Amount of Live Traffic data to store (number of rows).', 'wordfence'),
-						))->render();
-						?>
-					</li>
-					<li>
-						<?php
-						echo wfView::create('options/option-toggled', array(
-							'optionName' => 'displayTopLevelLiveTraffic',
-							'enabledValue' => 1,
-							'disabledValue' => 0,
-							'value' => wfConfig::get('displayTopLevelLiveTraffic') ? 1 : 0,
-							'title' => __('Display top level Live Traffic menu option', 'wordfence'),
-						))->render();
-						?>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
+<?php
+echo wfView::create('tools/options-group-live-traffic', array(
+	'stateKey' => 'live-traffic-options',
+	'showControls' => true,
+))->render();
+?>
 <div id="wf-live-traffic" class="wf-row<?php echo wfConfig::get('liveTraf_displayExpandedRecords') ? ' wf-live-traffic-display-expanded' : '' ?>">
 	<div class="wf-col-xs-12">
 		<div class="wf-block wf-active">
@@ -171,32 +56,37 @@ $w = new wfConfig();
 											} ?>.</strong> <?php _e('Login and firewall activity will still appear below.', 'wordfence') ?></p>
 								</div>
 							<?php endif ?>
+							<div id="wf-live-traffic-legend">
+								<ul>
+									<li class="wfHuman"><?php _e('Human', 'wordfence') ?></li>
+									<li class="wfBot"><?php _e('Bot', 'wordfence') ?></li>
+									<li class="wfNotice"><?php _e('Warning', 'wordfence') ?></li>
+									<li class="wfBlocked"><?php _e('Blocked', 'wordfence') ?></li>
+								</ul>
+							</div>
 							<div class="wf-row wf-add-bottom-small">
 								<div class="wf-col-xs-12" id="wf-live-traffic-legend-wrapper">
 
 									<form data-bind="submit: reloadListings">
 
-										<div class="wf-clearfix">
-											<div id="wf-live-traffic-legend-placeholder"></div>
-											<div id="wf-live-traffic-legend">
-												<ul>
-													<li class="wfHuman"><?php _e('Human', 'wordfence') ?></li>
-													<li class="wfBot"><?php _e('Bot', 'wordfence') ?></li>
-													<li class="wfNotice"><?php _e('Warning', 'wordfence') ?></li>
-													<li class="wfBlocked"><?php _e('Blocked', 'wordfence') ?></li>
-												</ul>
-											</div>
-
-											<div class="wfActEvent wf-live-traffic-filter">
-												<select id="wf-lt-preset-filters" data-bind="options: presetFiltersOptions, optionsText: presetFiltersOptionsText, value: selectedPresetFilter">
-												</select>
+										<ul class="wf-live-traffic-controls">
+											<li class="wf-live-traffic-filter">
+												<div class="wf-padding-no-left"><select id="wf-lt-preset-filters" data-bind="options: presetFiltersOptions, optionsText: presetFiltersOptionsText, value: selectedPresetFilter"></select></div>
 												&nbsp;&nbsp;
 												<input id="wf-live-traffic-filter-show-advanced" class="wf-option-checkbox" data-bind="checked: showAdvancedFilters" type="checkbox">
 												<label for="wf-live-traffic-filter-show-advanced">
 													<?php _e('Show Advanced Filters', 'wordfence') ?>
 												</label>
-											</div>
-										</div>
+											</li>
+											<li class="wf-live-traffic-show-expanded">
+												<ul class="wf-option wf-option-toggled-boolean-switch wf-option-no-spacing" data-option="liveTraf_displayExpandedRecords" data-enabled-value="1" data-disabled-value="0" data-original-value="<?php echo wfConfig::get('liveTraf_displayExpandedRecords') ? 1 : 0; ?>">
+													<li class="wf-boolean-switch<?php echo wfConfig::get('liveTraf_displayExpandedRecords') ? ' wf-active' : ''; ?>"><a href="#" class="wf-boolean-switch-handle"></a></li>
+													<li class="wf-option-title wf-padding-add-left wf-no-right wf-padding-no-right">
+														<?php echo __('Expand All Results', 'wordfence'); ?>
+													</li>
+												</ul>
+											</li>
+										</ul>
 
 										<div data-bind="visible: showAdvancedFilters" id="wf-lt-advanced-filters">
 											<div class="wf-live-traffic-filter-detail">
@@ -289,15 +179,6 @@ $w = new wfConfig();
 													<div>
 														<strong>IP:</strong>
 														<span data-bind="text: IP" target="_blank" rel="noopener noreferrer"></span>
-														<span data-bind="if: blocked()">
-														[<a data-bind="click: $root.unblockIP">unblock</a>]
-													</span>
-														<span data-bind="if: rangeBlocked()">
-														[<a data-bind="click: $root.unblockNetwork">unblock this range</a>]
-													</span>
-														<span data-bind="if: !blocked() && !rangeBlocked()">
-														[<a data-bind="click: $root.blockIP">block</a>]
-													</span>
 													</div>
 													<div>
 														<span class="wfReverseLookup"><span data-bind="text: IP" style="display:none;"></span></span>
@@ -339,6 +220,19 @@ $w = new wfConfig();
 																data-bind="attr: { 'data-timestamp': ctime, text: 'Last hit was ' + ctime() + ' ago.' }"
 																class="wfTimeAgo wfTimeAgo-timestamp"></span>
 													</div>
+													<!-- ko if: $root.groupBy().param() == 'ip' -->
+													<div class="wf-add-top-small">
+														<span data-bind="if: blocked()">
+															<a href="#" class="wf-btn wf-btn-default wf-btn-sm" data-bind="click: unblockIP">Unblock IP</a>
+														</span>
+														<span data-bind="if: rangeBlocked()">
+															<a href="#" class="wf-btn wf-btn-default wf-btn-sm" data-bind="click: unblockNetwork">Unblock range</a>
+														</span>
+														<span data-bind="if: !blocked() && !rangeBlocked()">
+															<a class="wf-btn wf-btn-default wf-btn-sm" data-bind="click: blockIP">Block IP</a>
+														</span>
+													</div>
+													<!-- /ko -->
 												</div>
 												<div class="wf-flex-row-0 wf-padding-add-left">
 													<span class="wf-filtered-traffic-hits" data-bind="text: hitCount"></span> hits
@@ -575,6 +469,20 @@ $w = new wfConfig();
 	</div>
 </div>
 
+<script type="application/javascript">
+	(function($) {
+		$(function() {
+			$('.wf-option.wf-option-toggled-boolean-switch[data-option="liveTraf_displayExpandedRecords"]').on('change', function() {
+				delete WFAD.pendingChanges['liveTraf_displayExpandedRecords'];
+				var isOn = $(this).find('.wf-boolean-switch').hasClass('wf-active');
+				WFAD.setOption($(this).data('option'), (isOn ? $(this).data('enabledValue') : $(this).data('disabledValue')), function() {
+					$('#wf-live-traffic').toggleClass('wf-live-traffic-display-expanded', isOn);
+				});
+			});
+		});
+	})(jQuery);
+</script>
+
 <div id="wf-live-traffic-util-overlay-wrapper" style="display: none">
 	<div class="wf-live-traffic-util-overlay">
 		<div class="wf-live-traffic-util-overlay-header"></div>
@@ -608,7 +516,7 @@ $w = new wfConfig();
 	<script type="text/x-jquery-template" id="wfNewTour1">
 		<div>
 			<h3><?php _e('Live Traffic', 'wordfence'); ?></h3>
-			<p><?php _e('Live traffic defaults to a summary view. Details are viewable by clicking anywhere within the summary record. To switch to expanded view, simply enable the setting labeled <strong>Always display expanded Live Traffic records</strong> in the <strong>Live Traffic Options</strong> section at the top of the page.', 'wordfence'); ?></p>
+			<p><?php _e('Live traffic defaults to a summary view. Details are viewable by clicking anywhere within the summary record. To switch to the expanded view, click the <strong>Expand All Records</strong> switch.', 'wordfence'); ?></p>
 			<div class="wf-pointer-footer">
 				<ul class="wf-tour-pagination">
 					<li class="wf-active">&bullet;</li>
@@ -639,7 +547,7 @@ $w = new wfConfig();
 	<script type="text/x-jquery-template" id="wfUpgradeTour1">
 		<div>
 			<h3><?php _e('Live Traffic', 'wordfence'); ?></h3>
-			<p><?php _e('Live traffic now defaults to a summary view. Details are viewable by clicking anywhere within the summary record. To switch to expanded view, simply enable the setting labeled <strong>Always display expanded Live Traffic records</strong> in the <strong>Live Traffic Options</strong> section at the top of the page.', 'wordfence'); ?></p>
+			<p><?php _e('Live traffic now defaults to a summary view. Details are viewable by clicking anywhere within the summary record. To switch to the expanded view, click the <strong>Expand All Records</strong> switch.', 'wordfence'); ?></p>
 			<div class="wf-pointer-footer">
 				<ul class="wf-tour-pagination">
 					<li class="wf-active">&bullet;</li>

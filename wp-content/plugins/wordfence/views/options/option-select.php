@@ -12,8 +12,10 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
  * @var string $helpLink If defined, the link to the corresponding external help page.
  * @var bool $premium If defined, the option will be tagged as premium only and not allow its value to change for free users.
  */
+
+$id = 'wf-option-' . preg_replace('/[^a-z0-9]/i', '-', $selectOptionName);
 ?>
-<ul class="wf-option wf-option-select<?php if (!wfConfig::p() && isset($premium) && $premium) { echo ' wf-option-premium'; } ?>" data-select-option="<?php echo esc_attr($selectOptionName); ?>" data-original-select-value="<?php echo esc_attr($selectValue); ?>">
+<ul id="<?php echo esc_attr($id); ?>" class="wf-option wf-option-select<?php if (!wfConfig::p() && isset($premium) && $premium) { echo ' wf-option-premium'; } ?>" data-select-option="<?php echo esc_attr($selectOptionName); ?>" data-original-select-value="<?php echo esc_attr($selectValue); ?>">
 	<li class="wf-option-spacer"></li>
 	<li class="wf-option-content">
 		<ul>

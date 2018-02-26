@@ -16,8 +16,10 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 if (!isset($subtitleHTML) && isset($subtitle)) {
 	$subtitleHTML = esc_html($subtitle);
 }
+
+$id = 'wf-option-' . preg_replace('/[^a-z0-9]/i', '-', $textOptionName);
 ?>
-<ul class="wf-option wf-option-textarea<?php if (!wfConfig::p() && isset($premium) && $premium) { echo ' wf-option-premium'; } ?>" data-text-option="<?php echo esc_attr($textOptionName); ?>" data-original-text-value="<?php echo esc_attr($textValue); ?>">
+<ul id="<?php echo esc_attr($id); ?>" class="wf-option wf-option-textarea<?php if (!wfConfig::p() && isset($premium) && $premium) { echo ' wf-option-premium'; } ?>" data-text-option="<?php echo esc_attr($textOptionName); ?>" data-original-text-value="<?php echo esc_attr($textValue); ?>">
 	<?php if (!isset($noSpacer) || !$noSpacer): ?>
 	<li class="wf-option-spacer"></li>
 	<?php endif; ?>

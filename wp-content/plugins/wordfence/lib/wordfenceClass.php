@@ -984,6 +984,13 @@ SQL
 			wfConfig::set('blocks702Migration', 1);
 		}
 		
+		//7.0.3
+		/*if (!wfConfig::get('generateAllOptionsNotification')) {
+			new wfNotification(null, wfNotification::PRIORITY_HIGH_WARNING, '<p>Developers: If you prefer to edit all Wordfence options on one page, you can enable the "All Options" page here:</p>
+<p><a href="javascript:WFAD.enableAllOptionsPage();" class="wf-btn wf-btn-primary wf-btn-callout-subtle">Enable "All Options" Page</a></p>', 'wfplugin_devalloptions');
+			wfConfig::set('generateAllOptionsNotification', 1);
+		}*/
+		
 		//Check the How does Wordfence get IPs setting
 		wfUtils::requestDetectProxyCallback();
 		
@@ -1314,7 +1321,7 @@ SQL
 		$func = (isset($_POST['action']) && $_POST['action']) ? $_POST['action'] : $_GET['action'];
 		$nonce = (isset($_POST['nonce']) && $_POST['nonce']) ? $_POST['nonce'] : $_GET['nonce'];
 		if(! wp_verify_nonce($nonce, 'wp-ajax')){
-			die(json_encode(array('errorMsg' => "Your browser sent an invalid security token to Wordfence. Please try reloading this page or signing out and in again.")));
+			die(json_encode(array('errorMsg' => "Your browser sent an invalid security token to Wordfence. Please try reloading this page or signing out and in again.", 'tokenInvalid' => 1)));
 		}
 		//func is e.g. wordfence_ticker so need to munge it
 		$func = str_replace('wordfence_', '', $func);
@@ -1508,14 +1515,14 @@ SQL
 			
 			if($_GET['func'] == 'unlockMyIP'){
 				wfBlock::unblockIP(wfUtils::getIP());
-				if (class_exists('wfWAFIPBlocksController')) { wfWAFIPBlocksController::synchronizeConfigSettings(); }
+				if (class_exists('wfWAFIPBlocksController')) { wfWAFIPBlocksController::setNeedsSynchronizeConfigSettings(); }
 				delete_transient('wflginfl_' . bin2hex(wfUtils::inet_pton(wfUtils::getIP()))); //Reset login failure counter
 				header('Location: ' . wp_login_url());
 				exit();
 			} else if($_GET['func'] == 'unlockAllIPs'){
 				wordfence::status(1, 'info', "Request received via unlock email link to unblock all IPs.");
 				wfBlock::removeAllIPBlocks();
-				if (class_exists('wfWAFIPBlocksController')) { wfWAFIPBlocksController::synchronizeConfigSettings(); }
+				if (class_exists('wfWAFIPBlocksController')) { wfWAFIPBlocksController::setNeedsSynchronizeConfigSettings(); }
 				delete_transient('wflginfl_' . bin2hex(wfUtils::inet_pton(wfUtils::getIP()))); //Reset login failure counter
 				header('Location: ' . wp_login_url());
 				exit();
@@ -1525,7 +1532,7 @@ SQL
 				wordfence::status(1, 'info', "Request received via unlock email link to unblock all IPs via disabling firewall rules.");
 				wfBlock::removeAllIPBlocks();
 				wfBlock::removeAllCountryBlocks();
-				if (class_exists('wfWAFIPBlocksController')) { wfWAFIPBlocksController::synchronizeConfigSettings(); }
+				if (class_exists('wfWAFIPBlocksController')) { wfWAFIPBlocksController::setNeedsSynchronizeConfigSettings(); }
 				delete_transient('wflginfl_' . bin2hex(wfUtils::inet_pton(wfUtils::getIP()))); //Reset login failure counter
 				header('Location: ' . wp_login_url());
 				exit();
@@ -1575,7 +1582,7 @@ SQL
 				}
 				
 				if (class_exists('wfWAFIPBlocksController')) {
-					wfWAFIPBlocksController::synchronizeConfigSettings();
+					wfWAFIPBlocksController::setNeedsSynchronizeConfigSettings();
 				}
 
 				if (empty($_GET['wordfence_syncAttackData'])) {
@@ -3064,24 +3071,11 @@ SQL
 					if ($countries == array_keys($wfBulkCountries)) {
 						$entry['detailDisplay'] = __('All Countries', 'wordfence');
 					}
-					else if (count($countries) > 3) {
-						foreach($countries as $c) {
-							if (!empty($entry['detailDisplay'])) {
-								$entry['detailDisplay'] .= ', ';
-							}
-							$entry['detailDisplay'] .= esc_html($wfBulkCountries[$c]);
-						}
-						
-						$entry['detailDisplay'] .= ', ' . sprintf(count($countries) - 3 == 1 ? __('and %d other country', 'wordfence') : __(' and %d other countries', 'wordfence'), count($countries) - 3);
-					}
-					else if (count($countries) == 3) {
-						$entry['detailDisplay'] = esc_html($wfBulkCountries[$countries[0]]) . ', ' . esc_html($wfBulkCountries[$countries[1]]) . __(', and ', 'wordfence') . esc_html($wfBulkCountries[$countries[2]]);
-					}
-					else if (count($countries) == 2) {
-						$entry['detailDisplay'] = esc_html($wfBulkCountries[$countries[0]]) . __(' and ', 'wordfence') . esc_html($wfBulkCountries[$countries[1]]);
+					else if (count($countries) == 1) {
+						$entry['detailDisplay'] = __('1 Country', 'wordfence');
 					}
 					else {
-						$entry['detailDisplay'] = esc_html($wfBulkCountries[$countries[0]]);
+						$entry['detailDisplay'] = sprintf(__('%d Countries', 'wordfence'), count($countries));
 					}
 					
 					if ($b->blockLogin && $b->blockSite) {
@@ -3132,7 +3126,6 @@ SQL
 			$offset = (int) $_POST['offset'];
 		}
 		
-		//TODO: support pagination
 		$hasCountryBlock = false;
 		$blocks = self::_blocksAJAXReponse($hasCountryBlock, $offset);
 		return array('blocks' => $blocks, 'hasCountryBlock' => $hasCountryBlock);
@@ -3243,6 +3236,23 @@ SQL
 			'error' => __('No license was provided to install.', 'wordfence'),
 		);
 	}
+	public static function ajax_enableAllOptionsPage_callback() {
+		wfConfig::set('displayTopLevelOptions', 1);
+		$n = wfNotification::getNotificationForCategory('wfplugin_devalloptions');
+		if ($n !== null) {
+			$n->markAsRead();
+		}
+		
+		$response = array('success' => true);
+		if (function_exists('network_admin_url') && is_multisite()) {
+			$response['redirect'] = network_admin_url('admin.php?page=WordfenceOptions');
+		}
+		else {
+			$response['redirect'] = admin_url('admin.php?page=WordfenceOptions');
+		}
+		
+		return $response;
+	}
 	public static function ajax_restoreDefaults_callback() {
 		if (!empty($_POST['section'])) {
 			if (wfConfig::restoreDefaults($_POST['section'])) {
@@ -3287,7 +3297,20 @@ SQL
 				}
 				
 				wfConfig::save($changes);
-				return array('success' => true);
+				
+				$response = array('success' => true);
+				if (!empty($_POST['page']) && preg_match('/^Wordfence/i', $_POST['page'])) {
+					if ($_POST['page'] == 'WordfenceOptions' && isset($changes['displayTopLevelOptions']) && !wfUtils::truthyToBoolean($changes['displayTopLevelOptions'])) {
+						if (function_exists('network_admin_url') && is_multisite()) {
+							$response['redirect'] = network_admin_url('admin.php?page=Wordfence');
+						}
+						else {
+							$response['redirect'] = admin_url('admin.php?page=Wordfence');
+						}
+					}
+				}
+				
+				return $response;
 			}
 			catch (wfWAFStorageFileException $e) {
 				return array(
@@ -4811,7 +4834,7 @@ HTML;
 			'hideFileHtaccess', 'saveDebuggingConfig',
 			'whitelistBulkDelete', 'whitelistBulkEnable', 'whitelistBulkDisable',
 			'dismissNotification', 'utilityScanForBlacklisted', 'dashboardShowMore',
-			'saveOptions', 'restoreDefaults', 'createBlock', 'deleteBlocks', 'makePermanentBlocks', 'getBlocks',
+			'saveOptions', 'restoreDefaults', 'enableAllOptionsPage', 'createBlock', 'deleteBlocks', 'makePermanentBlocks', 'getBlocks',
 			'installAutoPrepend', 'uninstallAutoPrepend',
 			'installLicense',
 		) as $func){
@@ -4900,6 +4923,7 @@ HTML;
 			'allowsPausing' => wfConfig::get('liveActivityPauseEnabled'),
 			'scanRunning' => wfScanner::shared()->isRunning() ? '1' : '0',
 			'modalTemplate' => wfView::create('common/modal-prompt', array('title' => '${title}', 'message' => '${message}', 'primaryButton' => array('id' => 'wf-generic-modal-close', 'label' => __('Close', 'wordfence'), 'link' => '#')))->render(),
+			'tokenInvalidTemplate' => wfView::create('common/modal-prompt', array('title' => '${title}', 'message' => '${message}', 'primaryButton' => array('id' => 'wf-token-invalid-modal-reload', 'label' => __('Reload', 'wordfence'), 'link' => '#')))->render(),
 			'modalHTMLTemplate' => wfView::create('common/modal-prompt', array('title' => '${title}', 'message' => '{{html message}}', 'primaryButton' => array('id' => 'wf-generic-modal-close', 'label' => __('Close', 'wordfence'), 'link' => '#')))->render(),
 			));
 	}
@@ -5075,6 +5099,9 @@ HTML;
 		if (wfConfig::get('displayTopLevelLiveTraffic')) {
 			add_submenu_page("Wordfence", "Live Traffic", "Live Traffic", "activate_plugins", "WordfenceLiveTraffic", 'wordfence::menu_tools');
 		}
+		if (wfConfig::get('displayTopLevelOptions')) {
+			add_submenu_page("Wordfence", "All Options", "All Options", "activate_plugins", "WordfenceOptions", 'wordfence::menu_options');
+		}
 		add_submenu_page('Wordfence', 'Help', 'Help', 'activate_plugins', 'WordfenceSupport', 'wordfence::menu_support');
 		
 		if (wfConfig::get('isPaid')) { 
@@ -5205,6 +5232,43 @@ JQUERY;
 				break;
 		}
 		require 'menu_tools.php';
+	}
+	
+	public static function menu_options() {
+		wp_enqueue_style('wordfence-jquery-ui-css', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/jquery-ui.min.css'), array(), WORDFENCE_VERSION);
+		wp_enqueue_style('wordfence-jquery-ui-structure-css', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/jquery-ui.structure.min.css'), array(), WORDFENCE_VERSION);
+		wp_enqueue_style('wordfence-jquery-ui-theme-css', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/jquery-ui.theme.min.css'), array(), WORDFENCE_VERSION);
+		wp_enqueue_style('wordfence-jquery-ui-timepicker-css', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/jquery-ui-timepicker-addon.css'), array(), WORDFENCE_VERSION);
+		wp_enqueue_style('wordfence-select2-css', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/select2.min.css'), array(), WORDFENCE_VERSION);
+		
+		wp_enqueue_script('wordfence-timepicker-js', wfUtils::getBaseURL() . wfUtils::versionedAsset('js/jquery-ui-timepicker-addon.js'), array('jquery', 'jquery-ui-datepicker', 'jquery-ui-slider'), WORDFENCE_VERSION);
+		wp_enqueue_script('wordfence-select2-js', wfUtils::getBaseURL() . wfUtils::versionedAsset('js/select2.min.js'), array('jquery', 'jquery-ui-tooltip'), WORDFENCE_VERSION);
+		
+		try {
+			$wafData = self::_getWAFData();
+		}
+		catch (wfWAFStorageFileConfigException $e) {
+			// We don't have anywhere to write files in this scenario. Let's notify the user to update the permissions.
+			$wafData = array();
+			$logPath = str_replace(ABSPATH, '~/', WFWAF_LOG_PATH);
+			if (function_exists('network_admin_url') && is_multisite()) {
+				$wafMenuURL = network_admin_url('admin.php?page=WordfenceWAF&wafconfigrebuild=1');
+			} else {
+				$wafMenuURL = admin_url('admin.php?page=WordfenceWAF&wafconfigrebuild=1');
+			}
+			$wafMenuURL = add_query_arg(array(
+				'waf-nonce' => wp_create_nonce('wafconfigrebuild'),
+			), $wafMenuURL);
+			$storageExceptionMessage = $e->getMessage() . ' <a href="' . esc_url($wafMenuURL) . '">Click here</a> to rebuild the configuration file.';
+		} catch (wfWAFStorageFileException $e) {
+			// We don't have anywhere to write files in this scenario. Let's notify the user to update the permissions.
+			$wafData = array();
+			$logPath = str_replace(ABSPATH, '~/', WFWAF_LOG_PATH);
+			$storageExceptionMessage = 'We were unable to write to ' . $logPath . ' which the WAF uses for storage. Please
+			update permissions on the parent directory so the web server can write to it.';
+		}
+		
+		require 'menu_options.php';
 	}
 	
 	public static function menu_blocking() {
@@ -5789,6 +5853,28 @@ to your httpd.conf if using Apache, or find documentation on how to disable dire
 				$disclosureStates[$name] = $state;
 				wfConfig::set_ser('disclosureStates', $disclosureStates);
 				return array('ok' => 1);
+			}
+		}
+		else if (isset($_POST['names']) && isset($_POST['state'])) {
+			$rawNames = $_POST['names'];
+			if (is_array($rawNames)) {
+				$filteredNames = array();
+				foreach ($rawNames as $name) {
+					$name = preg_replace('/[^a-zA-Z0-9_\-]/', '', $name);
+					if (!empty($name)) {
+						$filteredNames[] = $name;
+					}
+				}
+				
+				$state = wfUtils::truthyToBoolean($_POST['state']);
+				if (!empty($filteredNames)) {
+					$disclosureStates = wfConfig::get_ser('disclosureStates', array());
+					foreach ($filteredNames as $name) {
+						$disclosureStates[$name] = $state;
+					}
+					wfConfig::set_ser('disclosureStates', $disclosureStates);
+					return array('ok' => 1);
+				}
 			}
 		}
 		

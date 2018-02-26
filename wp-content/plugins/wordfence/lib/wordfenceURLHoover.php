@@ -123,6 +123,8 @@ class wordfenceURLHoover {
 			return;
 		}
 		
+		$this->_foundSome++;
+		
 		$host = (isset($components['host']) ? $components['host'] : '');
 		$path = (isset($components['path']) && !empty($components['path']) ? $components['path'] : '/');
 		$hashes = $this->_generateHashes($url);
@@ -138,7 +140,6 @@ class wordfenceURLHoover {
 		if ($this->useDB) {
 			$sql = "INSERT INTO " . $this->table . " (owner, host, path, hostKey) VALUES ";
 			while ($elem = $this->hostsToAdd->shift()) {
-				$this->_foundSome++;
 				//This may be an issue for hyperDB or other abstraction layers, but leaving it for now.
 				$sql .= sprintf("('%s', '%s', '%s', '%s'),", 
 						$this->db->realEscape($elem['owner']),
@@ -153,7 +154,6 @@ class wordfenceURLHoover {
 		}
 		else {
 			while ($elem = $this->hostsToAdd->shift()) {
-				$this->_foundSome++;
 				$keys = str_split($elem['hostKey'], 4);
 				foreach ($keys as $k) {
 					$this->hostKeys[] = $k;

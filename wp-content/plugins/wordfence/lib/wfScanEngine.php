@@ -46,6 +46,8 @@ class wfScanEngine {
 	private $pluginRepoStatus = array();
 	private $malwarePrefixesHash;
 	private $scanMode = wfScanner::SCAN_TYPE_STANDARD;
+	private $pluginsCounted = false;
+	private $themesCounted = false;
 	
 	/**
 	 * @var wfScanner
@@ -128,7 +130,7 @@ class wfScanEngine {
 	}
 
 	public function __sleep(){ //Same order here as above for properties that are included in serialization
-		return array('hasher', 'jobList', 'i', 'wp_version', 'apiKey', 'startTime', 'maxExecTime', 'publicScanEnabled', 'fileContentsResults', 'scanner', 'scanQueue', 'hoover', 'scanData', 'statusIDX', 'userPasswdQueue', 'passwdHasIssues', 'suspectedFiles', 'dbScanner', 'knownFilesLoader', 'metrics', 'checkHowGetIPsRequestTime', 'gsbMultisiteBlogOffset', 'updateCheck', 'pluginRepoStatus', 'malwarePrefixesHash', 'scanMode');
+		return array('hasher', 'jobList', 'i', 'wp_version', 'apiKey', 'startTime', 'maxExecTime', 'publicScanEnabled', 'fileContentsResults', 'scanner', 'scanQueue', 'hoover', 'scanData', 'statusIDX', 'userPasswdQueue', 'passwdHasIssues', 'suspectedFiles', 'dbScanner', 'knownFilesLoader', 'metrics', 'checkHowGetIPsRequestTime', 'gsbMultisiteBlogOffset', 'updateCheck', 'pluginRepoStatus', 'malwarePrefixesHash', 'scanMode', 'pluginsCounted', 'themesCounted');
 	}
 	public function __construct($malwarePrefixesHash = '', $scanMode = wfScanner::SCAN_TYPE_STANDARD) {
 		$this->startTime = time();
@@ -1591,8 +1593,8 @@ class wfScanEngine {
 					}
 				}
 				$key = 'wfPluginUpgrade' . ' ' . $plugin['pluginFile'] . ' ' . $plugin['newVersion'] . ' ' . $plugin['Version'];
-				$shortMsg = "The Plugin \"" . $plugin['Name'] . "\" needs an upgrade (" . $plugin['Version'] . " -> " . $plugin['newVersion'] . ").";
-				$added = $this->addIssue('wfPluginUpgrade', $severity, $key, $key, $shortMsg, "You need to upgrade \"" . $plugin['Name'] . "\" to the newest version to ensure you have any security fixes the developer has released.", $plugin);
+				$shortMsg = "The Plugin \"" . (empty($plugin['Name']) ? $plugin['pluginFile'] : $plugin['Name']) . "\" needs an upgrade (" . $plugin['Version'] . " -> " . $plugin['newVersion'] . ").";
+				$added = $this->addIssue('wfPluginUpgrade', $severity, $key, $key, $shortMsg, "You need to upgrade \"" . (empty($plugin['Name']) ? $plugin['pluginFile'] : $plugin['Name']) . "\" to the newest version to ensure you have any security fixes the developer has released.", $plugin);
 				if ($added == wfIssues::ISSUE_ADDED || $added == wfIssues::ISSUE_UPDATED) { $haveIssues = wfIssues::STATUS_PROBLEM; }
 				else if ($haveIssues != wfIssues::STATUS_PROBLEM && ($added == wfIssues::ISSUE_IGNOREP || $added == wfIssues::ISSUE_IGNOREC)) { $haveIssues = wfIssues::STATUS_IGNORED; }
 				
@@ -1651,7 +1653,7 @@ class wfScanEngine {
 						}
 						
 						$key = "wfPluginAbandoned {$slug} {$statusArray['version']}";
-						$shortMsg = 'The Plugin "' . $statusArray['name'] . '" appears to be abandoned (updated ' . wfUtils::formatLocalTime(get_option('date_format'), $lastUpdateTimestamp) . "{$testedShort}).";
+						$shortMsg = 'The Plugin "' . (empty($statusArray['name']) ? $slug : $statusArray['name']) . '" appears to be abandoned (updated ' . wfUtils::formatLocalTime(get_option('date_format'), $lastUpdateTimestamp) . "{$testedShort}).";
 						$longMsg = 'It was last updated ' . wfUtils::makeTimeAgo(time() - $lastUpdateTimestamp) . " ago{$testedLong}.";
 						if ($statusArray['vulnerable']) {
 							$longMsg .= ' It has unpatched security issues and may have compatibility problems with the current version of WordPress.';
@@ -1686,7 +1688,7 @@ class wfScanEngine {
 							}
 							
 							$key = "wfPluginRemoved {$slug} {$pluginData['Version']}";
-							$shortMsg = 'The Plugin "' . $pluginData['Name'] . '" has been removed from wordpress.org.';
+							$shortMsg = 'The Plugin "' . (empty($pluginData['Name']) ? $slug : $pluginData['Name']) . '" has been removed from wordpress.org.';
 							if ($pluginData['vulnerable']) {
 								$longMsg = 'It has unpatched security issues and may have compatibility problems with the current version of WordPress.';
 							}
@@ -2011,8 +2013,10 @@ class wfScanEngine {
 					'FullDir'  => $pluginFullDir
 				);
 			}
-			$this->scanController->incrementSummaryItem(wfScanner::SUMMARY_SCANNED_PLUGINS);
+			if (!$this->pluginsCounted) { $this->scanController->incrementSummaryItem(wfScanner::SUMMARY_SCANNED_PLUGINS); }
 		}
+		
+		$this->pluginsCounted = true;
 		return $plugins;
 	}
 
@@ -2041,8 +2045,10 @@ class wfScanEngine {
 					'FullDir'  => $fullDir
 				);
 			}
-			$this->scanController->incrementSummaryItem(wfScanner::SUMMARY_SCANNED_THEMES);
+			if (!$this->themesCounted) { $this->scanController->incrementSummaryItem(wfScanner::SUMMARY_SCANNED_THEMES); }
 		}
+		
+		$this->themesCounted = true;
 		return $themes;
 	}
 	

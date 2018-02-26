@@ -114,6 +114,7 @@ if (0):
     $post_content = explode( '<!--more-->', $post->post_content, 2 );
     $post_excerpt = get_the_excerpt() ;
     $post_author = get_userdata( $post->post_author )->display_name;
+    $post_thumbnail = get_the_post_thumbnail( $post_id );            
 
     if (empty($post_excerpt)) $post_excerpt = $post_content[0];
 
@@ -136,7 +137,8 @@ if (0):
         $subject = mailusers_get_default_subject();
         $subject = mailusers_replace_blog_templates($subject);
         $subject = mailusers_replace_sender_templates($subject, $from_name);
-        $subject = mailusers_replace_post_templates($subject, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+        $subject = mailusers_replace_post_templates($subject, $post_title,
+            $post_author, $post_excerpt, $post_content, $post_url, $post_thumbnail);
 	}
 
     // Replace the template variables concerning the blog details
@@ -147,9 +149,11 @@ if (0):
         $mail_content = mailusers_replace_blog_templates($mail_content);
         $mail_content = mailusers_replace_sender_templates($mail_content, $from_name);
         if (mailusers_get_wpautop_processing()=='true')
-            $mail_content = wpautop(mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url));
+            $mail_content = wpautop(mailusers_replace_post_templates($mail_content,
+                $post_title, $post_author, $post_excerpt, $post_content, $post_url, $post_thumbnail));
         else
-            $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+            $mail_content = mailusers_replace_post_templates($mail_content,
+                $post_title, $post_author, $post_excerpt, $post_content, $post_url, $post_thumbnail);
 	}
 endif;
 

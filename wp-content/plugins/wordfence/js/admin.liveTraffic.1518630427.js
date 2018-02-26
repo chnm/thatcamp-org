@@ -145,6 +145,10 @@
 				var groupBy = '';
 				if (groupByKO) {
 					groupBy = groupByKO.param();
+					WFAD.mode = 'liveTraffic_paused';
+				}
+				else {
+					WFAD.mode = 'liveTraffic';
 				}
 
 				var newListings = [];
@@ -833,6 +837,7 @@
 		var legend = $('#wf-live-traffic-legend');
 		var adminBar = $('#wpadminbar');
 		var liveTrafficListings = $('#wf-lt-listings');
+		var groupedListings = $('div#wf-live-traffic-group-by'); 
 
 		var hasScrolled = false;
 		var loadingListings = false;
@@ -856,8 +861,9 @@
 				placeholder.removeClass('sticky');
 			}
 
-			var firstRow = liveTrafficListings.children().filter(':visible').first();
-			if (firstRow.length > 0 && firstRow.offset().top + firstRow.height() < win.scrollTop() + adminBar.outerHeight() + 20) {
+			var firstLTRow = liveTrafficListings.children().filter(':visible').first();
+			if ((firstLTRow.length > 0 && firstLTRow.offset().top + firstLTRow.height() < win.scrollTop() + adminBar.outerHeight() + 20) ||
+				(groupedListings.filter(':visible').length > 0)) {
 				if (WFAD.mode != 'liveTraffic_paused') {
 					WFAD.mode = 'liveTraffic_paused';
 				}

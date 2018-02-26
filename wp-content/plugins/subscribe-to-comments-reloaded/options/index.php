@@ -11,29 +11,39 @@ function subscribe_reloaded_update_option( $_option = '', $_value = '', $_type =
 	}
 
 	// Prevent XSS/CSRF attacks
-	$_value = stripslashes( $_value );
-	$_value = esc_attr( $_value ); // esc_attr Will encode all the text.
+	$_value = trim( stripslashes( $_value ) );
 
 	switch ( $_type ) {
 		case 'yesno':
 			if ( $_value == 'yes' || $_value == 'no' ) {
-				update_option( 'subscribe_reloaded_' . $_option, $_value );
+				update_option( 'subscribe_reloaded_' . $_option, esc_attr( $_value ) );
 
 				return true;
 			}
 			break;
 		case 'integer':
-			update_option( 'subscribe_reloaded_' . $_option, abs( intval( $_value ) ) );
+			update_option( 'subscribe_reloaded_' . $_option, abs( intval( esc_attr( $_value ) ) ) );
 
 			return true;
 			break;
-		case 'text-html-encode':
-			update_option( 'subscribe_reloaded_' . $_option, htmlentities( $_value, ENT_QUOTES, 'UTF-8' ) );
+        case 'text':
+            update_option( 'subscribe_reloaded_' . $_option, sanitize_text_field( $_value ) );
 
-			return true;
-			break;
+            return true;
+        case 'text-html':
+            update_option( 'subscribe_reloaded_' . $_option, esc_html( $_value ) );
+
+            return true;
+        case 'email':
+            update_option( 'subscribe_reloaded_' . $_option, sanitize_email( esc_attr( $_value ) ) );
+
+            return true;
+        case 'url':
+            update_option( 'subscribe_reloaded_' . $_option, esc_url( $_value ) );
+
+            return true;
 		default:
-			update_option( 'subscribe_reloaded_' . $_option, $_value );
+			update_option( 'subscribe_reloaded_' . $_option, esc_attr( $_value ) );
 
 			return true;
 			break;
@@ -62,7 +72,7 @@ $array_pages = array(
 	"stcr_notifications"        => __( 'Notifications', 'subscribe-reloaded' ),
 	"stcr_options"              => __( 'Options', 'subscribe-reloaded' ),
 	// "stcr_subscribers_emails"   => __( 'Subscribers Emails', 'subscribe-reloaded' ),
-	"stcr_you_can_help"         => __( 'You can help', 'subscribe-reloaded' ),
+//	"stcr_you_can_help"         => __( 'You can help', 'subscribe-reloaded' ),
 	"stcr_support"              => __( 'Support', 'subscribe-reloaded' ),
 	"stcr_donate"               => __( 'Donate', 'subscribe-reloaded' )
 );

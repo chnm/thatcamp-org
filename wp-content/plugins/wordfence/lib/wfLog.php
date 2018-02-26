@@ -1323,6 +1323,15 @@ class wfRequestModel extends wfModel {
 	public function hasColumn($column) {
 		return in_array($column, $this->columns);
 	}
+	
+	public function save() {
+		$sapi = @php_sapi_name();
+		if ($sapi == "cli") {
+			return false;
+		}
+		
+		return parent::save();
+	}
 }
 
 

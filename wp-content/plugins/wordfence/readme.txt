@@ -2,8 +2,8 @@
 Contributors: mmaunder 
 Tags: security, firewall, malware scanner, web application firewall, antivirus, block hackers, country blocking, clean hacked site, blacklist, waf, login security
 Requires at least: 3.9
-Tested up to: 4.9.3
-Stable tag: 7.0.2
+Tested up to: 4.9.4
+Stable tag: 7.0.5
 
 Secure your website with the most comprehensive WordPress security plugin. Firewall, malware scan, blocking, live traffic, login security & more.
 
@@ -168,6 +168,29 @@ Secure your website with Wordfence.
 
 
 == Changelog ==
+
+= 7.0.5 =
+* Change: Live Traffic records are no longer created for hits initiated by WP-CLI (e.g., manually running cron).
+* Fix: Fixed an issue where the human/bot detection wasn't functioning.
+
+= 7.0.4 =
+* Fix: Re-added missing file to fix commit excluding it.
+
+= 7.0.3 =
+* Improvement: Added an "All Options" page to enable developers and others to more rapidly configure Wordfence.
+* Improvement: Improved messaging for when a page has been open for more than a day and the security token expires.
+* Improvement: Relocated the "Always display expanded Live Traffic records" option to be more accessible.
+* Improvement: Improved appearance and behavior of option checkboxes.
+* Improvement: For plugins with incomplete header information, they're now shown with a fallback title in scan results as appropriate.
+* Improvement: The country block rule in the blocks table now shows a count rather than a potentially large list of countries.
+* Change: Modified behavior of the advanced country blocking options to always show.
+* Fix: Fixed the "Make Permanent" button behavior for blocks created from Live Traffic.
+* Fix: Better synchronization of block records to the WAF config to avoid duplicate queries.
+* Fix: The diff viewer now forces wrapping to prevent long lines of text from stretching the layout.
+* Fix: Fixed an issue where the scanned plugin count could be inaccurate due to forking during the plugin scan.
+* Fix: Adjusted sizing on the country blocking options to prevent placeholder text from being cut off at some screen sizes.
+* Fix: Block/Unblock now works correctly when viewing Live Traffic with it grouped by IP.
+* Fix: Fixed an issue where the count of URLs checked was incorrect.
 
 = 7.0.2 =
 * Improvement: Added CSS/JS filename versioning to address caching plugins not refreshing for plugin updates.

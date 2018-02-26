@@ -33,6 +33,11 @@ body {
 	font-size: 13px;
 }
 
+.DifferencesSideBySide td.Left, .DifferencesSideBySide td.Right {
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
 .DifferencesSideBySide .ChangeInsert td.Left {
 	background: #dfd;
 }

@@ -19,8 +19,10 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 if (isset($subtitle) && !isset($subtitleHTML)) {
 	$subtitleHTML = esc_html($subtitle);
 }
+
+$id = 'wf-option-' . preg_replace('/[^a-z0-9]/i', '-', $optionName);
 ?>
-<ul class="wf-option wf-option-toggled<?php if (!wfConfig::p() && isset($premium) && $premium) { echo ' wf-option-premium'; } ?><?php if (isset($disabled) && $disabled) { echo ' wf-disabled'; } ?>" data-option="<?php echo esc_attr($optionName); ?>" data-enabled-value="<?php echo esc_attr($enabledValue); ?>" data-disabled-value="<?php echo esc_attr($disabledValue); ?>" data-original-value="<?php echo esc_attr($value == $enabledValue ? $enabledValue : $disabledValue); ?>">
+<ul id="<?php echo esc_attr($id); ?>" class="wf-option wf-option-toggled<?php if (!wfConfig::p() && isset($premium) && $premium) { echo ' wf-option-premium'; } ?><?php if (isset($disabled) && $disabled) { echo ' wf-disabled'; } ?>" data-option="<?php echo esc_attr($optionName); ?>" data-enabled-value="<?php echo esc_attr($enabledValue); ?>" data-disabled-value="<?php echo esc_attr($disabledValue); ?>" data-original-value="<?php echo esc_attr($value == $enabledValue ? $enabledValue : $disabledValue); ?>">
 	<?php if (!wfConfig::p() && isset($premium) && $premium): ?>
 	<li class="wf-option-premium-lock"></li>
 	<?php else: ?>

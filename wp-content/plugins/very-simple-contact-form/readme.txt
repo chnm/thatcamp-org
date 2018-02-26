@@ -1,11 +1,11 @@
 === Very Simple Contact Form ===
 Contributors: Guido07111975
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donation%40guidovanderleest%2enl
-Version: 7.2
+Version: 7.4
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.7
-Tested up to: 4.8
+Tested up to: 4.9
 Stable tag: trunk
 Tags: simple, contact, form, contact form, email
 
@@ -17,7 +17,7 @@ This is a very simple contact form. Use shortcode [contact] to display form on p
 = About =
 This is a very simple responsive translatable contact form.
 
-Form only contains Name, Email, Subject and Message. And a simple captcha sum.
+Form only contains fields for Name, Email, Subject and Message. And a simple captcha sum.
 
 It's designed to fulfill the needs of most websites that only require a basic contact form, with no additional fields.
 
@@ -37,7 +37,6 @@ By default form submissions will be send to your site's admin email address (set
 * Send to multiple email addresses: `[contact email_to="first-email-here, second-email-here"]`
 * Change default "From" email header: `[contact from_header="your-email-here"]`
 * Change default email subject: `[contact subject="your subject here"]`
-* Change default email subject prefix: `[contact prefix_subject="your prefix here"]`
 * Activate confirmation email to sender: `[contact auto_reply="true"]`
 * Change default "thank you" message in confirmation email: `[contact auto_reply_message="your message here"]`
 * Hide subject field: `[contact hide_subject="true"]`
@@ -89,8 +88,6 @@ You must install an additional plugin for this. I have tested my plugin with the
 * [WP mail SMTP](https://wordpress.org/plugins/wp-mail-smtp/)
 * [Post SMTP](https://wordpress.org/plugins/post-smtp/)
 
-Note: I have removed Postman SMTP from this list because it's removed from plugin repository. Please use Post SMTP instead.
-
 = Question? =
 Please take a look at the FAQ section.
 
@@ -114,14 +111,14 @@ Please check Description section for installation info.
 Plugin has no settingspage, use a shortcode with attributes or the widget with attributes to make it work.
 
 = How do I set plugin language? =
-Plugin uses the WP Dashboard language, set in Settings > General.
+Plugin will use the site language, set in Settings > General.
 
-If plugin language pack is not available, language fallback will be English.
+If plugin isn't translated into this language, language fallback will be English.
 
 = What is the default email subject? =
-By default the email subject contains a prefix (name of your site) followed by the subject that sender has entered. If subject field is hidden it only contains a prefix.
+By default the email subject contains the name of your site, followed by the subject that sender has filled in. If subject field is hidden it only contains the name of your site.
 
-You can change the prefix or whole subject using an attribute. Changing whole subject means that prefix will not be part of the subject anymore.
+You can change this subject using an attribute. 
 
 Note: this subject will also be used in the confirmation email to sender (if activated).
 
@@ -182,6 +179,14 @@ Please open a topic in plugin forum.
 
 
 == Changelog ==
+= Version 7.4 =
+* file vscf-widget-form: fixed mistake in resetting captcha (thanks malae) 
+
+= Version 7.3 =
+* removed attribute to change default email subject prefix: prefix_subject
+* from now on you can only change whole email subject using attribute: subject
+* have removed this to avoid confusion while setting up a custom email subject
+
 = Version 7.2 =
 * updated file vscf-style
 * files vscf-form and vscf-widget-form: added escaping to empty variables
@@ -196,16 +201,6 @@ Please open a topic in plugin forum.
 
 = Version 7.0 =
 * minor change in files vscf-form and vscf-widget-form
-
-= Version 6.9 =
-* form now supports bootstrap css
-* this means I have added bootstrap css classes
-* updated files vscf-form and vscf-widget-form
-* updated file vscf-style
-
-= Version 6.8 =
-* best practice: removed closing PHP tag from most files
-* best practice: added newline at end of most files
 
 For all versions please check file changelog.
 

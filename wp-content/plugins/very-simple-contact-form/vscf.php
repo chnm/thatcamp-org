@@ -2,11 +2,11 @@
 /*
  * Plugin Name: Very Simple Contact Form
  * Description: This is a very simple contact form. Use shortcode [contact] to display form on page or use the widget. For more info please check readme file.
- * Version: 7.2
+ * Version: 7.4
  * Author: Guido van der Leest
- * Author URI: http://www.guidovanderleest.nl
+ * Author URI: https://www.guidovanderleest.nl
  * License: GNU General Public License v3 or later
- * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: very-simple-contact-form
  * Domain Path: /translation
  */

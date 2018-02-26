@@ -26,6 +26,11 @@ if( ! class_exists('\\'.__NAMESPACE__.'\\stcr_upgrade') ) {
             $this->_db_collate    = "DEFAULT CHARSET={$this->_stcr_charset} COLLATE={$this->_stcr_collate}";
         }
 
+        public function apply_patches()
+        {
+            $this->patch_collation();
+        }
+
         public function _create_subscriber_table( $_fresh_install ) {
 			global $wpdb;
 			$errorMsg        = '';
@@ -178,7 +183,9 @@ if( ! class_exists('\\'.__NAMESPACE__.'\\stcr_upgrade') ) {
 		}
 		// end _import_stc_data
 		/**
-		 * Imports subscription data created with the Comment Reply Notification plugin
+		 * Imports subscription data created with the Comment Reply Notification plugin. This function is deprecated is not in use anymore.
+         *
+         * @deprecated
 		 * @since 13-May-2014
 		 */
 		public function _import_crn_data() {
@@ -205,7 +212,7 @@ if( ! class_exists('\\'.__NAMESPACE__.'\\stcr_upgrade') ) {
 				);
 				$stcr_data            = $wpdb->get_results(
 					" SELECT post_id, SUBSTRING(meta_key,8) AS email"
-					. "FROM wp_postmeta WHERE meta_key LIKE '_stcr@_%'"
+					. " FROM wp_postmeta WHERE meta_key LIKE '_stcr@_%'"
 					, ARRAY_N
 				);
 				$sctr_data_array_size = sizeof( $stcr_data );
@@ -405,8 +412,8 @@ if( ! class_exists('\\'.__NAMESPACE__.'\\stcr_upgrade') ) {
 					'unread',
 					'<p>' . __('<strong>Thank you for installing Subscribe to Comments Reloaded!</strong>.', 'subscribe-reloaded') . '</p>' .
 					'<p>' . __('If you find a bug or an issue you can report it <a href="https://github.com/stcr/subscribe-to-comments-reloaded/issues" target="_blank">here</a>.', 'subscribe-reloaded') . '</p>' .
-					'<p>' . __('Please consider to make a donation to support the plugin, you can donate via <a href="
-https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XF86X93FDCGYA&lc=US&item_name=Datasoft%20Engineering&item_number=DI%2dSTCR&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted" target="_blank">PayPal</a>.', 'subscribe-reloaded') . '</p>' .
+                    '<h2>' . __('Please consider to make a donation to support the plugin. You can donate via <i class="fa fa-paypal" aria-hidden="true"></i> <a href="
+https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XF86X93FDCGYA&lc=US&item_name=Datasoft%20Engineering&item_number=DI%2dSTCR&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted" target="_blank">PayPal</a>.', 'subscribe-reloaded') . '</h2>' .
 					'<p>' . __('Please visit the <a href="https://wordpress.org/plugins/subscribe-to-comments-reloaded/changelog/" target="_blank">Changelog</a> for detailed information on plugin changes.'
 						. '<a class="dismiss" href="#">Dismiss.  </a>'
 						. '<img class="stcr-loading-animation" src="' . esc_url(admin_url() . '/images/loading.gif') . '" alt="Working...">', 'subscribe-reloaded') . '</p>',
@@ -565,8 +572,121 @@ https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XF86X93FDCGYA&lc=U
                         update_option( 'subscribe_reloaded_htmlify_message_links', 'no' );
                         update_option( 'subscribe_reloaded_enable_html_emails', 'yes' );
                         break;
+                    case '180212':
+                        $options_link = sprintf( '<a href="%s"> %s </a>', admin_url( 'admin.php?page=stcr_system' ), __( 'Log Settings', 'subscribe-reloaded' ) );
+                        $this->stcr_create_admin_notice(
+                            'notify_update_' . $_version,
+                            'unread',
+                            '<p>' . __('<strong>Subscribe to Comments Reloaded</strong> has been updated to version ' . $_version, 'subscribe-reloaded') . '</p>' .
+                            '<p>' . __('This version includes fixes and improvements, ', 'subscribe-reloaded') . '</p>' .
+
+                            '<ul>' .
+                                '<li>' . __("<strong>Security Patch</strong> This version add a patch for some security issues.", 'subscribe-reloaded') . '</li>'.
+                                '<li>' . __("<strong>Add</strong> Option to reset all the plugin options", 'subscribe-reloaded') . '</li>'.
+                                '<li>' . __("<strong>Fix</strong> issue regarding database collations", 'subscribe-reloaded') . '</li>'.
+                            '</ul>' .
+
+                            '<p>' . __('If you find a bug or an issue you can report it <a href="https://github.com/stcr/subscribe-to-comments-reloaded/issues" target="_blank">here</a>.', 'subscribe-reloaded') . '</p>' .
+                            '<h2>' . __('The support of this plugin is given thanks to your donations.', 'subscribe-reloaded') . '</h2>'.
+                            '<h2>' . __('Help to keep the support alive. You can donate via <i class="fa fa-paypal" aria-hidden="true"></i> <a href="
+    https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XF86X93FDCGYA&lc=US&item_name=Datasoft%20Engineering&item_number=DI%2dSTCR&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted" target="_blank">PayPal</a>. A big Thanks for all the users that have supported the plugin development.', 'subscribe-reloaded') . '</h2>' .
+
+                            '<p>' . __('Please visit the <a href="https://wordpress.org/plugins/subscribe-to-comments-reloaded/changelog/" target="_blank">Changelog</a> for a complete list of changes.'
+                                . '<a class="dismiss" href="#">Dismiss.  </a>'
+                                . '<img class="stcr-loading-animation" src="' . esc_url(admin_url() . '/images/loading.gif') . '" alt="Dismissing Message">', 'subscribe-reloaded') . '</p>',
+                            'updated'
+                        );
+                        // Update the HTML emails option
+                        update_option( 'subscribe_reloaded_htmlify_message_links', 'no' );
+                        update_option( 'subscribe_reloaded_enable_html_emails', 'yes' );
+                        break;
+                    case '180225':
+                        $options_link = sprintf( '<a href="%s"> %s </a>', admin_url( 'admin.php?page=stcr_system' ), __( 'Log Settings', 'subscribe-reloaded' ) );
+                        $this->stcr_create_admin_notice(
+                            'notify_update_' . $_version,
+                            'unread',
+                            '<p>' . __('<strong>Subscribe to Comments Reloaded</strong> has been updated to version ' . $_version, 'subscribe-reloaded') . '</p>' .
+                            '<p>' . __('This version includes fixes and improvements, ', 'subscribe-reloaded') . '</p>' .
+                            '<p>' . __('If you find a bug or an issue you can report it <a href="https://github.com/stcr/subscribe-to-comments-reloaded/issues" target="_blank">here</a>.', 'subscribe-reloaded') . '</p>' .
+                            '<h2>' . __('The support of this plugin is given thanks to your donations.', 'subscribe-reloaded') . '</h2>'.
+                            '<h2>' . __('Help to keep the support alive. You can donate via <i class="fa fa-paypal" aria-hidden="true"></i> <a href="
+    https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=XF86X93FDCGYA&lc=US&item_name=Datasoft%20Engineering&item_number=DI%2dSTCR&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted" target="_blank">PayPal</a>. A big Thanks for all the users that have supported the plugin development.', 'subscribe-reloaded') . '</h2>' .
+
+                            '<p>' . __('Please visit the <a href="https://wordpress.org/plugins/subscribe-to-comments-reloaded/changelog/" target="_blank">Changelog</a> for a complete list of changes.'
+                                . '<a class="dismiss" href="#">Dismiss.  </a>'
+                                . '<img class="stcr-loading-animation" src="' . esc_url(admin_url() . '/images/loading.gif') . '" alt="Dismissing Message">', 'subscribe-reloaded') . '</p>',
+                            'updated'
+                        );
+                        // Update the HTML emails option
+                        update_option( 'subscribe_reloaded_htmlify_message_links', 'no' );
+                        update_option( 'subscribe_reloaded_enable_html_emails', 'yes' );
+                        break;
 				}
 			}
 		}
+
+		private function patch_collation()
+        {
+            global $wpdb;
+            $wp_postmeta_table_data     = $wpdb->get_results( 'SHOW TABLE STATUS LIKE \''. $wpdb->prefix .'postmeta\'' );
+            $wp_stcr_subs_table_data    = $wpdb->get_results( 'SHOW TABLE STATUS LIKE \''. $wpdb->prefix .'subscribe_reloaded_subscribers\'' );
+            $wp_postmeta_collation_data = $wpdb->get_results( 'SHOW COLLATION' );
+
+            $wp_postmeta_collation  = $wp_postmeta_table_data[0]->Collation;
+            $wp_stcr_subs_collation = $wp_stcr_subs_table_data[0]->Collation;
+            // Check Collation
+            if( $wp_postmeta_collation !== $wp_stcr_subs_collation )
+            {
+                // Get database collations
+                $database_collations = $wpdb->get_results( 'SHOW COLLATION' );
+                $collations = array();
+
+                if( ! empty($database_collations))
+                {
+                    foreach ( $database_collations as $collation)
+                    {
+                        $collations[$collation->Collation] = $collation->Charset;
+                    }
+                    //$collations = array_unique($collations, SORT_STRING);
+                }
+                // Update subscribe_reloaded_subscribers table collation
+                $new_charset = $collations[$wp_postmeta_collation];
+                $new_collation = $wp_postmeta_collation;
+                $sql = 'ALTER TABLE '. $wpdb->prefix .'subscribe_reloaded_subscribers CONVERT TO CHARACTER SET '. $new_charset .' COLLATE '. $new_collation;
+                $result = $wpdb->query( $sql );
+
+                if( $result !== false ) // Query executed without any error.
+                {
+                    // Update subscribe_reloaded_subscribers columns collation
+                    $sql = 'ALTER TABLE '. $wpdb->prefix .'subscribe_reloaded_subscribers CHANGE subscriber_email subscriber_email VARCHAR(100) CHARACTER SET '. $new_charset .' COLLATE '. $new_collation .' NOT NULL';
+                    $result = $wpdb->query( $sql );
+
+                    if( $result !== false ) // Query executed without any error.
+                    {
+                        $sql = 'ALTER TABLE '. $wpdb->prefix .'subscribe_reloaded_subscribers CHANGE subscriber_unique_id subscriber_unique_id VARCHAR(50) CHARACTER SET '. $new_charset .' COLLATE '. $new_collation .' NOT NULL';
+                        $result = $wpdb->query( $sql );
+
+                        if( $result === false ) // Query executed without any error.
+                        {
+                            // Log query execution.
+                            $this->stcr_logger("Error while updating the collation for the subscribe_reloaded_subscribers COLUMN subscriber_unique_id.");
+                            $this->stcr_logger("\nDatabase Error: \" $wpdb->last_error \"\n");
+                        }
+                    }
+                    else
+                    {
+                        // Log query execution.
+                        $this->stcr_logger("Error while updating the collation for the subscribe_reloaded_subscribers table COLUMN subscriber_email");
+                        $this->stcr_logger("\nDatabase Error: \" $wpdb->last_error \"\n");
+                    }
+                }
+                else
+                {
+                    // Log query execution.
+                    $this->stcr_logger("Error while updating the collation for the subscribe_reloaded_subscribers table");
+                    $this->stcr_logger("\nDatabase Error: \" $wpdb->last_error \"\n");
+                }
+            }
+        }
 	}
 }

@@ -89,9 +89,12 @@ if ( is_array( $subscriptions ) && ! empty( $subscriptions ) ) {
         $t_status  = $a_subscription->status;
         $permalink = get_permalink( $a_subscription->post_id );
         $title     = get_the_title( $a_subscription->post_id );
+        $date      = strtotime( $a_subscription->dt );
+        $formatted_date = date( get_option( "subscribe_reloaded_date_format" ), $date );
+        $date_translated = $wp_subscribe_reloaded->stcr->utils->stcr_translate_month( $formatted_date );
 
         echo "<tr>";
-        echo "<td style='text-align: center;'><input type='checkbox' name='post_list[]' value='{$a_subscription->post_id}' id='e_$i'/><label for='e_$i'>$a_subscription->dt</td>";
+        echo "<td style='text-align: center;'><input type='checkbox' name='post_list[]' value='{$a_subscription->post_id}' id='e_$i'/><label for='e_$i'>  $date_translated</td>";
         echo "<td><a href='$permalink' target='_blank'>$title</a> </td>";
         echo "<td style='text-align: center;'>$legend_translate[$t_status]</td>";
         echo "</tr>";
@@ -130,6 +133,44 @@ if ( is_array( $subscriptions ) && ! empty( $subscriptions ) ) {
 ?>
 		</fieldset>
 	</form>
+    <script type="text/javascript">
+        ( function($){
+            /**
+             * Select all subscriptions
+             *
+             * @since 18-Apr-2017
+             * @author reedyseth
+             */
+            $('form[name="post_list_form"]').on('click','.stcr-subs-select-all', function(event) {
+                var checkbox = $('form[name="post_list_form"] table input[type="checkbox"] ');
+
+                checkbox.each(function(index,  element){
+                    $(this).attr('checked','checked');
+                });
+
+                event.preventDefault();
+
+                return false;
+            });
+            /**
+             * Deselect all subscriptions
+             *
+             * @since 18-Apr-2017
+             * @author reedyseth
+             */
+            $('form[name="post_list_form"]').on('click','.stcr-subs-select-none', function(event) {
+                var checkbox = $('form[name="post_list_form"] table input[type="checkbox"] ');
+
+                checkbox.each(function(index,  element){
+                    $(this).removeAttr('checked');
+                });
+
+                event.preventDefault();
+
+                return false;
+            });
+        } )( jQuery );
+    </script>
 <?php
 $output = ob_get_contents();
 ob_end_clean();

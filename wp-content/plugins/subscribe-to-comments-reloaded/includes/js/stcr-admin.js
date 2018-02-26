@@ -39,24 +39,16 @@
 				}
 			}); //close jQuery.ajax
 		});
-		// More info action
-		$('a.more-info').on("click", function( event ) {
-			event.preventDefault();
-			var info_panel = $( this ).data( "infopanel" );
-			info_panel = "." + info_panel;
 
-			$( ".postbox-mass").css("overflow","hidden");
+        /**
+         * Control the execution of the options restore process.
+         * @author reedyseth
+         * @since 08-February-2018
+         */
+		$('input.reset_all_options').on("click", function ( event ) {
+			var confirmation = confirm("If you proceed this action cannot be undone, all settings will be wipe out");
 
-			if( $( info_panel ).hasClass( "hidden") )
-			{
-				$( info_panel ).slideDown( "fast" );
-				$( info_panel).removeClass( "hidden" );
-			}
-			else
-			{
-				$( info_panel ).slideUp( "fast" );
-				$( info_panel).addClass( "hidden" );
-			}
-		});
+			return confirmation;
+        });
 	});
 } )( jQuery );

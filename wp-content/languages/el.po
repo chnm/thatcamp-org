@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-02-11 11:21:13+0000\n"
+"PO-Revision-Date: 2018-02-21 11:11:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -902,7 +902,7 @@ msgstr "Κάντε κλικ στο &#8220;Προσθήκη νέας εικόνα
 #. translators: %s: header size in pixels
 #: wp-includes/customize/class-wp-customize-header-image-control.php:177
 msgid "Click &#8220;Add new image&#8221; to upload an image file from your computer. Your theme works best with an image with a header size of %s pixels &#8212; you&#8217;ll be able to crop your image once you upload it for a perfect fit."
-msgstr "Πατήστε &#8220;Προσθήκε νέας εικόνας&#8221; για να μεταφορτώσετε ένα αρχείο εικόνας από τον υπολογιστή σας. Το θέμα σας δουλεύει καλύτερα με εικόνα κεφαλίδας μεγέθους %s pixels &#8212; Θα μπορείτε να περικόψετε την εικόνα όταν μεταφορτωθεί για άριστη προσαρμογή."
+msgstr "Πατήστε &#8220;Προσθήκη νέας εικόνας&#8221; για να μεταφορτώσετε ένα αρχείο εικόνας από τον υπολογιστή σας. Το θέμα σας δουλεύει καλύτερα με εικόνα κεφαλίδας μεγέθους %s pixels &#8212; Θα μπορείτε να περικόψετε την εικόνα όταν μεταφορτωθεί για άριστη προσαρμογή."
 
 #: wp-includes/customize/class-wp-customize-header-image-control.php:174
 msgid "Click &#8220;Add new image&#8221; to upload an image file from your computer. Your theme works best with an image that matches the size of your video &#8212; you&#8217;ll be able to crop your image once you upload it for a perfect fit."
@@ -6392,8 +6392,8 @@ msgstr "<strong>ΣΦΑΛΜΑ</strong>: Το σχόλιο δεν μπορεί ν�
 msgid "Widgets are independent sections of content that can be placed into widgetized areas provided by your theme (commonly called sidebars)."
 msgstr "Οι μικροεφαρμογές είναι ανεξάρτητες περιοχές περιεχομένου που μπορούν να τοποθετηθούν στις περιοχές μικροεφαρμογών που παρέχονται από το θέμα σας (συχνά ονομάζονται πλευρικές στήλες)"
 
-#: wp-includes/update.php:154 wp-includes/update.php:356
-#: wp-includes/update.php:538
+#: wp-includes/update.php:154 wp-includes/update.php:346
+#: wp-includes/update.php:528
 msgid "(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)"
 msgstr "(Το WordPress δεν κατάφερε να δημιουργήσει μια ασφαλή σύνδεση με το WordPress.org. Παρακαλώ επικοινωνήστε με το διαχειριστή του διακομιστή σας.)"
 
@@ -7228,7 +7228,7 @@ msgid "https://wordpress.org/"
 msgstr "https://wordpress.org/"
 
 #: wp-includes/admin-bar.php:164 wp-includes/update.php:153
-#: wp-includes/update.php:355 wp-includes/update.php:537
+#: wp-includes/update.php:345 wp-includes/update.php:527
 #: wp-includes/wp-db.php:1062 wp-includes/wp-db.php:1595
 #: wp-includes/wp-db.php:1753 wp-login.php:882
 msgid "https://wordpress.org/support/"
@@ -7381,8 +7381,8 @@ msgid "no-subset"
 msgstr "greek"
 
 #. translators: %s: support forums URL
-#: wp-includes/update.php:152 wp-includes/update.php:354
-#: wp-includes/update.php:536
+#: wp-includes/update.php:152 wp-includes/update.php:344
+#: wp-includes/update.php:526
 msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"%s\">support forums</a>."
 msgstr "Ένα αναπάντεχο σφάλμα παρουσιάστηκε. Κάτι μπορει να είναι λάθος με το WordPress.org ή με τις ρυθμίσεις του διακομιστή. Αν συνεχίστε να έχετε προβλήματα, δοκιμάστε τα <a href=\"%s\">φόρα υποστήριξης</a>"
 
@@ -7390,7 +7390,7 @@ msgstr "Ένα αναπάντεχο σφάλμα παρουσιάστηκε. Κ�
 msgid "Menu"
 msgstr "Μενού"
 
-#: wp-includes/update.php:643
+#: wp-includes/update.php:633
 msgid "Translation Updates"
 msgstr "Ενημερώσεις μετάφρασης"
 
@@ -9439,19 +9439,19 @@ msgid "This is the short link."
 msgstr "Αυτός είναι ο μικροσύνδεσμος."
 
 #. translators: 1: Number of updates available to WordPress
-#: wp-includes/update.php:632
+#: wp-includes/update.php:622
 msgid "%d WordPress Update"
 msgstr "%d ενημέρωση WordPress"
 
 #. translators: 1: Number of updates available to themes
-#: wp-includes/update.php:640
+#: wp-includes/update.php:630
 msgid "%d Theme Update"
 msgid_plural "%d Theme Updates"
 msgstr[0] "%d ενημέρωση θέματος"
 msgstr[1] "%d ενημερώσεις θεμάτων"
 
 #. translators: 1: Number of updates available to plugins
-#: wp-includes/update.php:636
+#: wp-includes/update.php:626
 msgid "%d Plugin Update"
 msgid_plural "%d Plugin Updates"
 msgstr[0] "%d ενημέρωση πρόσθετου"

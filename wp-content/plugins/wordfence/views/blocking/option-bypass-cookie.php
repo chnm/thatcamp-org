@@ -1,7 +1,7 @@
 <?php
 if (!defined('WORDFENCE_VERSION')) { exit; }
 ?>
-<ul class="wf-option wf-option-bypass-cookie">
+<ul id="wf-option-cbl-bypassViewURL" class="wf-option wf-option-bypass-cookie">
 	<li class="wf-option-spacer"></li>
 	<li class="wf-option-content">
 		<ul>

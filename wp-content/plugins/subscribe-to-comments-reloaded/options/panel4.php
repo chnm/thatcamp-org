@@ -15,12 +15,12 @@ if ( isset( $_POST['options'] ) ) {
 		$faulty_fields = __( 'Sender name', 'subscribe-reloaded' ) . ', ';
 	}
 	if ( isset( $_POST['options']['from_email'] ) &&
-		! subscribe_reloaded_update_option( 'from_email', $_POST['options']['from_email'], 'text' )
+		! subscribe_reloaded_update_option( 'from_email', $_POST['options']['from_email'], 'email' )
 	) {
 		$faulty_fields = __( 'Sender email address', 'subscribe-reloaded' ) . ', ';
 	}
 	if ( isset( $_POST['options']['reply_to'] ) &&
-		! subscribe_reloaded_update_option( 'reply_to', $_POST['options']['reply_to'], 'text' )
+		! subscribe_reloaded_update_option( 'reply_to', $_POST['options']['reply_to'], 'email' )
 	) {
 		$faulty_fields = __( 'Sender email address', 'subscribe-reloaded' ) . ', ';
 	}
@@ -31,13 +31,13 @@ if ( isset( $_POST['options'] ) ) {
 	}
 	if ( isset( $_POST['options']['notification_content'] ) &&
 		trim( $_POST['options']['notification_content'] ) == false &&
-		! subscribe_reloaded_update_option( 'notification_content', "<h1>There is a new comment on [post_title].</h1><hr><p><strong>Comment link:</strong>&nbsp;<a href=\"[comment_permalink]\" data-mce-href=\"[comment_permalink]\">[comment_permalink]</a>&nbsp;<br><strong>Author:</strong>&nbsp;[comment_author]</p><p><strong>Comment:</strong><br>[comment_content]</p><div style=\"font-size: 0.8em\" data-mce-style=\"font-size: 0.8em;\"><strong>Permalink:</strong>&nbsp;<a href=\"[post_permalink]\" data-mce-href=\"[post_permalink]\">[post_permalink]</a><br><a href=\"[manager_link]\" data-mce-href=\"[manager_link]\">Manage your subscriptions</a>&nbsp;|&nbsp;<a href=\"[oneclick_link]\" data-mce-href=\"[oneclick_link]\">One click unsubscribe</a></div>", 'text-no-encode' )
+		! subscribe_reloaded_update_option( 'notification_content', "<h1>There is a new comment on [post_title].</h1><hr><p><strong>Comment link:</strong>&nbsp;<a href=\"[comment_permalink]\" data-mce-href=\"[comment_permalink]\">[comment_permalink]</a>&nbsp;<br><strong>Author:</strong>&nbsp;[comment_author]</p><p><strong>Comment:</strong><br>[comment_content]</p><div style=\"font-size: 0.8em\" data-mce-style=\"font-size: 0.8em;\"><strong>Permalink:</strong>&nbsp;<a href=\"[post_permalink]\" data-mce-href=\"[post_permalink]\">[post_permalink]</a><br><a href=\"[manager_link]\" data-mce-href=\"[manager_link]\">Manage your subscriptions</a>&nbsp;|&nbsp;<a href=\"[oneclick_link]\" data-mce-href=\"[oneclick_link]\">One click unsubscribe</a></div>", 'text-html' )
 	) {
 		$faulty_fields = __( 'Notification message', 'subscribe-reloaded' ) . ', ';
 	}
 	if ( isset( $_POST['options']['notification_content'] ) &&
 		trim( $_POST['options']['notification_content'] )  &&
-		! subscribe_reloaded_update_option( 'notification_content', $_POST['options']['notification_content'], 'text-no-encode' )
+		! subscribe_reloaded_update_option( 'notification_content', $_POST['options']['notification_content'], 'text-html' )
 	) {
 		$faulty_fields = __( 'Notification message', 'subscribe-reloaded' ) . ', ';
 	}
@@ -47,7 +47,7 @@ if ( isset( $_POST['options'] ) ) {
 		$faulty_fields = __( 'Double check subject', 'subscribe-reloaded' ) . ', ';
 	}
 	if ( isset( $_POST['options']['double_check_content'] ) &&
-		! subscribe_reloaded_update_option( 'double_check_content', $_POST['options']['double_check_content'], 'text' )
+		! subscribe_reloaded_update_option( 'double_check_content', $_POST['options']['double_check_content'], 'text-html' )
 	) {
 		$faulty_fields = __( 'Double check message', 'subscribe-reloaded' ) . ', ';
 	}
@@ -57,17 +57,17 @@ if ( isset( $_POST['options'] ) ) {
 		$faulty_fields = __( 'Management subject', 'subscribe-reloaded' ) . ', ';
 	}
 	if ( isset( $_POST['options']['management_content'] ) &&
-		! subscribe_reloaded_update_option( 'management_content', $_POST['options']['management_content'], 'text' )
+		! subscribe_reloaded_update_option( 'management_content', $_POST['options']['management_content'], 'text-html' )
 	) {
 		$faulty_fields = __( 'Management message', 'subscribe-reloaded' ) . ', ';
 	}
 	if ( isset( $_POST['options']['oneclick_text'] ) &&
-		! subscribe_reloaded_update_option( 'oneclick_text', $_POST['options']['oneclick_text'], 'text' )
+		! subscribe_reloaded_update_option( 'oneclick_text', $_POST['options']['oneclick_text'], 'text-html' )
 	) {
 		$faulty_fields = __( 'Management message', 'subscribe-reloaded' ) . ', ';
 	}
 	if ( isset( $_POST['options']['management_email_content'] ) &&
-		! subscribe_reloaded_update_option( 'management_email_content', $_POST['options']['management_email_content'], 'text' )
+		! subscribe_reloaded_update_option( 'management_email_content', $_POST['options']['management_email_content'], 'text-html' )
 	) {
 		$faulty_fields = __( 'Management Email message', 'subscribe-reloaded' ) . ', ';
 	}
@@ -125,7 +125,7 @@ wp_print_scripts( 'quicktags' );
 					   value="<?php echo subscribe_reloaded_get_option( 'reply_to' ); ?>" size="50">
 
 				<div class="description">
-					<?php _e( 'This will be use when the user click reply on their email agent. If not set will be the same as the Sender email address.', 'subscribe-reloaded' ); ?>
+					<?php _e( 'This will be use when the user click reply on their email agent. If not set it will be the same as the Sender email address.', 'subscribe-reloaded' ); ?>
 				</div>
 			</td>
 		</tr>
@@ -168,7 +168,7 @@ wp_print_scripts( 'quicktags' );
 				?>
 				<div class="description" style="padding-top:0">
 					<?php _e( 'Content of the notification email. Allowed tags: [post_title], [comment_permalink], [comment_author], [comment_content], [post_permalink], [manager_link], [comment_gravatar]', 'subscribe-reloaded' ); ?>
-					<?php _e( '<p><strong>Note: To get a default template clear all the content and save the options.</strong></p>', 'subscribe-reloaded' ); ?>
+					<?php _e( '<p style="color: #156dc7;"><strong>Note: To get a default template clear all the content and save the options.</strong></p>', 'subscribe-reloaded' ); ?>
 				</div>
 			</td>
 		</tr>

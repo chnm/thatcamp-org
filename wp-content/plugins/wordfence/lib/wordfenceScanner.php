@@ -442,7 +442,8 @@ class wordfenceScanner {
 					}
 					
 					if (!$dontScanForURLs && $options['scansEnabled_fileContentsGSB']) {
-						$this->urlHoover->hoover($file, $data, $hooverExclusions);
+						$found = $this->urlHoover->hoover($file, $data, $hooverExclusions);
+						$this->scanEngine->scanController()->incrementSummaryItem(wfScanner::SUMMARY_SCANNED_URLS, $found);
 					}
 					
 					if ($totalRead > 2 * 1024 * 1024) {

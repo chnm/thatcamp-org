@@ -11,7 +11,7 @@ if (isset($pd_options['new_tab'])) {
     <div class="paypal-donations">
         <input type="hidden" name="cmd" value="_donations" />
         <input type="hidden" name="bn" value="TipsandTricks_SP" />
-        <input type="hidden" name="business" value="<?php echo $pd_options['paypal_account']; ?>" />
+        <input type="hidden" name="business" value="<?php echo apply_filters('paypal_donations_merchant_email', $pd_options['paypal_account']); ?>" />
 <?php
         # Build the button
         $paypal_btn = '';
@@ -56,7 +56,7 @@ if (isset($pd_options['new_tab'])) {
             $button_localized = apply_filters('pd_button_localized_value', $button_localized);
             $button_url = str_replace('en_US', $button_localized, $donate_buttons[$pd_options['button']]);
         }        
-        $paypal_btn .=  $indent.'<input type="image" src="' .esc_url($button_url). '" name="submit" alt="PayPal - The safer, easier way to pay online." />'.PHP_EOL;
+        $paypal_btn .=  $indent.'<input type="image" style="cursor: pointer;" src="' .esc_url($button_url). '" name="submit" alt="PayPal - The safer, easier way to pay online." />'.PHP_EOL;
 
         // PayPal stats tracking
         if (!isset($pd_options['disable_stats']) or $pd_options['disable_stats'] != true)

@@ -65,6 +65,21 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(40);
+} else {
+  module.exports = __webpack_require__(41);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -254,22 +269,26 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(57);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connectAdvanced", function() { return __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connect", function() { return __WEBPACK_IMPORTED_MODULE_2__connect_connect__["a"]; });
 
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(40);
-} else {
-  module.exports = __webpack_require__(41);
-}
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+
+
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -311,25 +330,6 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(57);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connectAdvanced", function() { return __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connect", function() { return __WEBPACK_IMPORTED_MODULE_2__connect_connect__["a"]; });
-
-
-
-
-
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -337,7 +337,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var actions_1 = __webpack_require__(10);
-var WordPressCommentExporter_1 = __webpack_require__(86);
+var WordPressCommentExporter_1 = __webpack_require__(84);
 var WordPressRestApi_1 = __webpack_require__(18);
 var UPDATABLE_FIELDS = [
     'disqus_forum_url',
@@ -347,6 +347,7 @@ var UPDATABLE_FIELDS = [
     'disqus_sso_button',
     'disqus_sso_enabled',
     'disqus_sync_token',
+    'disqus_render_js',
 ];
 exports.UPDATABLE_FIELDS = UPDATABLE_FIELDS;
 var valueFromInput = function (element) {
@@ -621,7 +622,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 8 */
@@ -645,7 +646,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = emptyObject;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 9 */
@@ -662,7 +663,7 @@ module.exports = emptyObject;
 
 
 
-var emptyFunction = __webpack_require__(2);
+var emptyFunction = __webpack_require__(3);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -714,7 +715,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = warning;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 10 */
@@ -821,8 +822,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var immutable_1 = __webpack_require__(17);
-var AdminOptions_1 = __webpack_require__(84);
-var SyncStatus_1 = __webpack_require__(85);
+var AdminOptions_1 = __webpack_require__(85);
+var SyncStatus_1 = __webpack_require__(86);
 var InstallationState;
 (function (InstallationState) {
     InstallationState[InstallationState["none"] = 0] = "none";
@@ -938,7 +939,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
 module.exports = checkPropTypes;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 13 */
@@ -6178,7 +6179,7 @@ module.exports = ExecutionEnvironment;
  * @typechecks
  */
 
-var emptyFunction = __webpack_require__(2);
+var emptyFunction = __webpack_require__(3);
 
 /**
  * Upstream version of event listener. Does not take into account specific
@@ -6241,7 +6242,7 @@ var EventListener = {
 };
 
 module.exports = EventListener;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 21 */
@@ -6462,7 +6463,7 @@ if (process.env.NODE_ENV !== 'production') {
   module.exports = __webpack_require__(53)();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 26 */
@@ -6498,7 +6499,7 @@ var storeShape = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.shape({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_Subscription__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_PropTypes__ = __webpack_require__(26);
@@ -6791,7 +6792,7 @@ selectorFactory) {
     return __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics___default()(Connect, WrappedComponent);
   };
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 /* 28 */
@@ -6828,7 +6829,7 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 }
 
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 /* 29 */
@@ -7273,7 +7274,7 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
     return proxy;
   };
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 /* 35 */
@@ -7389,14 +7390,14 @@ __webpack_require__(39);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(42);
-var ReactRedux = __webpack_require__(3);
+var ReactRedux = __webpack_require__(2);
 var Redux = __webpack_require__(28);
 var actions_1 = __webpack_require__(10);
 var MainContainer_1 = __webpack_require__(79);
 var DisqusApi_1 = __webpack_require__(36);
-var adminApp_1 = __webpack_require__(102);
+var adminApp_1 = __webpack_require__(104);
 var WordPressRestApi_1 = __webpack_require__(18);
 var store = Redux.createStore(adminApp_1.default);
 var element = document.getElementById('disqus-admin');
@@ -7462,7 +7463,7 @@ ReactDOM.render(React.createElement(ReactRedux.Provider, { store: store },
  * LICENSE file in the root directory of this source tree.
  */
 
-var m=__webpack_require__(6),n=__webpack_require__(8),p=__webpack_require__(2),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.call"):60104,u=q?Symbol["for"]("react.return"):60105,v=q?Symbol["for"]("react.portal"):60106,w=q?Symbol["for"]("react.fragment"):60107,x="function"===typeof Symbol&&Symbol.iterator;
+var m=__webpack_require__(6),n=__webpack_require__(8),p=__webpack_require__(3),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.call"):60104,u=q?Symbol["for"]("react.return"):60105,v=q?Symbol["for"]("react.portal"):60106,w=q?Symbol["for"]("react.fragment"):60107,x="function"===typeof Symbol&&Symbol.iterator;
 function y(a){for(var b=arguments.length-1,e="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,c=0;c<b;c++)e+="\x26args[]\x3d"+encodeURIComponent(arguments[c+1]);b=Error(e+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var z={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function A(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}A.prototype.isReactComponent={};A.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?y("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};A.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function B(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}function C(){}C.prototype=A.prototype;var D=B.prototype=new C;D.constructor=B;m(D,A.prototype);D.isPureReactComponent=!0;function E(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}var F=E.prototype=new C;F.constructor=E;m(F,A.prototype);F.unstable_isAsyncReactComponent=!0;F.render=function(){return this.props.children};var G={current:null},H=Object.prototype.hasOwnProperty,I={key:!0,ref:!0,__self:!0,__source:!0};
@@ -7502,7 +7503,7 @@ var _assign = __webpack_require__(6);
 var emptyObject = __webpack_require__(8);
 var invariant = __webpack_require__(7);
 var warning = __webpack_require__(9);
-var emptyFunction = __webpack_require__(2);
+var emptyFunction = __webpack_require__(3);
 var checkPropTypes = __webpack_require__(12);
 
 // TODO: this is special because it gets imported during build.
@@ -8839,7 +8840,7 @@ module.exports = react;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 42 */
@@ -8885,7 +8886,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = __webpack_require__(46);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 43 */
@@ -8904,7 +8905,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(1),l=__webpack_require__(19),B=__webpack_require__(6),C=__webpack_require__(2),ba=__webpack_require__(20),da=__webpack_require__(21),ea=__webpack_require__(22),fa=__webpack_require__(23),ia=__webpack_require__(24),D=__webpack_require__(8);
+var aa=__webpack_require__(0),l=__webpack_require__(19),B=__webpack_require__(6),C=__webpack_require__(3),ba=__webpack_require__(20),da=__webpack_require__(21),ea=__webpack_require__(22),fa=__webpack_require__(23),ia=__webpack_require__(24),D=__webpack_require__(8);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -9201,12 +9202,12 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var invariant = __webpack_require__(7);
 var warning = __webpack_require__(9);
 var ExecutionEnvironment = __webpack_require__(19);
 var _assign = __webpack_require__(6);
-var emptyFunction = __webpack_require__(2);
+var emptyFunction = __webpack_require__(3);
 var EventListener = __webpack_require__(20);
 var getActiveElement = __webpack_require__(21);
 var shallowEqual = __webpack_require__(22);
@@ -24579,7 +24580,7 @@ module.exports = reactDom;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 47 */
@@ -24743,7 +24744,7 @@ module.exports = camelize;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = createProvider;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
@@ -24821,7 +24822,7 @@ function createProvider() {
 }
 
 /* harmony default export */ __webpack_exports__["b"] = (createProvider());
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 /* 52 */
@@ -24837,7 +24838,7 @@ function createProvider() {
 
 
 
-var emptyFunction = __webpack_require__(2);
+var emptyFunction = __webpack_require__(3);
 var invariant = __webpack_require__(7);
 var warning = __webpack_require__(9);
 var assign = __webpack_require__(6);
@@ -25371,7 +25372,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   return ReactPropTypes;
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 53 */
@@ -25387,7 +25388,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 
-var emptyFunction = __webpack_require__(2);
+var emptyFunction = __webpack_require__(3);
 var invariant = __webpack_require__(7);
 var ReactPropTypesSecret = __webpack_require__(13);
 
@@ -25567,7 +25568,7 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 56 */
@@ -26313,7 +26314,7 @@ function combineReducers(reducers) {
     return hasChanged ? nextState : state;
   };
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 /* 73 */
@@ -26502,7 +26503,7 @@ function whenMergePropsIsOmitted(mergeProps) {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = ([whenMergePropsIsFunction, whenMergePropsIsOmitted]);
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 /* 77 */
@@ -26615,7 +26616,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 
   return selectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch, options);
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 /* 78 */
@@ -26649,7 +26650,7 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var ReactRedux = __webpack_require__(3);
+var ReactRedux = __webpack_require__(2);
 var Main_1 = __webpack_require__(80);
 var mapDispatchToProps_1 = __webpack_require__(4);
 var mapStateToProps_1 = __webpack_require__(5);
@@ -26672,11 +26673,11 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var utils_1 = __webpack_require__(16);
 var Admin_1 = __webpack_require__(81);
-var Loading_1 = __webpack_require__(100);
-var Message_1 = __webpack_require__(101);
+var Loading_1 = __webpack_require__(102);
+var Message_1 = __webpack_require__(103);
 var PRE_RELEASE_TYPES = Object.freeze({
     alpha: 'alpha',
     beta: 'beta',
@@ -26732,17 +26733,18 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
-var ExportCommentsContainer_1 = __webpack_require__(82);
-var InstallContainer_1 = __webpack_require__(87);
-var SiteConfigContainer_1 = __webpack_require__(89);
-var SSOConfigContainer_1 = __webpack_require__(91);
-var SupportDiagnosticsContainer_1 = __webpack_require__(93);
-var SyncConfigContainer_1 = __webpack_require__(95);
+var React = __webpack_require__(0);
+var AdvancedConfigContainer_1 = __webpack_require__(82);
+var ExportCommentsContainer_1 = __webpack_require__(87);
+var InstallContainer_1 = __webpack_require__(89);
+var SiteConfigContainer_1 = __webpack_require__(91);
+var SSOConfigContainer_1 = __webpack_require__(93);
+var SupportDiagnosticsContainer_1 = __webpack_require__(95);
+var SyncConfigContainer_1 = __webpack_require__(97);
 var utils_1 = __webpack_require__(16);
-var HelpResources_1 = __webpack_require__(97);
-var SupportLinks_1 = __webpack_require__(98);
-var WelcomePanel_1 = __webpack_require__(99);
+var HelpResources_1 = __webpack_require__(99);
+var SupportLinks_1 = __webpack_require__(100);
+var WelcomePanel_1 = __webpack_require__(101);
 var getSSOContainer = function (props) {
     var adminOptions = props.data.adminOptions;
     if (!adminOptions.disqus_public_key || !adminOptions.disqus_secret_key || !adminOptions.disqus_installed) {
@@ -26786,6 +26788,7 @@ var AdminTabBar = function (props) { return (React.createElement("div", { classN
     React.createElement("a", { href: '#siteConfiguration', className: getTabClassName(props, 'siteConfiguration') }, "Site Configuration"),
     React.createElement("a", { href: '#syncing', className: getTabClassName(props, 'syncing') }, "Syncing"),
     React.createElement("a", { href: '#singleSignOn', className: getTabClassName(props, 'singleSignOn') }, "Single Sign-on"),
+    React.createElement("a", { href: '#advanced', className: getTabClassName(props, 'advanced') }, "Advanced"),
     React.createElement("a", { href: '#support', className: getTabClassName(props, 'support') }, "Support"))); };
 /* tslint:disable:max-line-length */
 var getActiveTabView = function (props) {
@@ -26802,7 +26805,10 @@ var getActiveTabView = function (props) {
                         "View WordPress Comments")),
                 React.createElement("hr", null),
                 React.createElement("h3", null, "Sync"),
-                React.createElement("p", { className: 'description' }, "Copy comments created and edited in Disqus to your local WordPress database for backup purposes."),
+                React.createElement("p", { className: 'description' },
+                    "Copy comments created and edited in Disqus to your local WordPress database for backup purposes.",
+                    ' ',
+                    React.createElement("a", { href: 'https://help.disqus.com/customer/portal/articles/960360', target: '_blank' }, "Learn More")),
                 getSyncContainer(props),
                 React.createElement("hr", null),
                 React.createElement("h3", null, "Import"),
@@ -26819,6 +26825,10 @@ var getActiveTabView = function (props) {
                     ' ',
                     React.createElement("a", { href: 'https://help.disqus.com/customer/portal/articles/1148635', target: '_blank' }, "Learn More")),
                 getSSOContainer(props)));
+        case 'advanced':
+            return (React.createElement("div", null,
+                React.createElement("h3", null, "Advanced Settings"),
+                React.createElement(AdvancedConfigContainer_1.default, null)));
         case 'support':
             return (React.createElement("div", null,
                 React.createElement("h3", null, "How to Get Support"),
@@ -26859,12 +26869,12 @@ exports.default = Admin;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var ReactRedux = __webpack_require__(3);
-var ExportComments_1 = __webpack_require__(83);
+var ReactRedux = __webpack_require__(2);
+var AdvancedConfigForm_1 = __webpack_require__(83);
 var mapDispatchToProps_1 = __webpack_require__(4);
 var mapStateToProps_1 = __webpack_require__(5);
-var ExportCommentsContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(ExportComments_1.default);
-exports.default = ExportCommentsContainer;
+var AdvancedConfigContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(AdvancedConfigForm_1.default);
+exports.default = AdvancedConfigContainer;
 
 
 /***/ }),
@@ -26873,162 +26883,26 @@ exports.default = ExportCommentsContainer;
 
 "use strict";
 
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
-var AdminState_1 = __webpack_require__(11);
-var getStatusMessage = function (props) {
-    if (props.data.isExportRunning)
-        return React.createElement("h4", null, "Sending to Disqus" + '…');
-    return (React.createElement("h4", null,
-        React.createElement("span", null,
-            "Done!",
-            ' ',
-            React.createElement("a", { href: "https://import.disqus.com/" + props.data.adminOptions.disqus_forum_url + "/", target: '_blank' }, "Check your import status"))));
-};
-var LogMessages = function (props) {
-    var logArray = props.data.exportLogs.toArray();
-    var logElements = logArray.map(function (log) {
-        var statusColor;
-        var statusText;
-        switch (log.status) {
-            case AdminState_1.ExportLogStaus.failed:
-                statusColor = 'red';
-                statusText = React.createElement("abbr", { title: log.error }, "Failed");
-                break;
-            case AdminState_1.ExportLogStaus.complete:
-                statusColor = 'green';
-                statusText = "Complete";
-                break;
-            case AdminState_1.ExportLogStaus.pending:
-            default:
-                statusColor = 'gray';
-                statusText = "Pending";
-                break;
-        }
-        return (React.createElement("tr", { key: log.id },
-            React.createElement("td", null, log.id),
-            React.createElement("td", null,
-                React.createElement("a", { href: log.link }, log.title)),
-            React.createElement("td", null,
-                React.createElement("strong", { style: { color: statusColor } }, statusText)),
-            React.createElement("td", null, log.numComments)));
-    });
-    return (React.createElement("div", null,
-        getStatusMessage(props),
-        React.createElement("table", { className: 'wp-list-table widefat striped' },
-            React.createElement("thead", null,
-                React.createElement("tr", null,
-                    React.createElement("th", { scope: 'col' }, "ID"),
-                    React.createElement("th", { scope: 'col' }, "Title"),
-                    React.createElement("th", { scope: 'col' }, "Status"),
-                    React.createElement("th", { scope: 'col' }, "# Imported"))),
-            React.createElement("tbody", null, logElements))));
-};
-var ExportComments = function (props) { return (React.createElement("form", { name: 'export', method: 'POST', onSubmit: props.onSubmitExportCommentsForm },
+var React = __webpack_require__(0);
+/* tslint:disable:max-line-length */
+var AdvancedConfigForm = function (props) { return (React.createElement("form", { name: 'advanced', action: '', method: 'POST', onSubmit: props.onSubmitSiteForm },
+    React.createElement("table", { className: 'form-table' },
+        React.createElement("tbody", null,
+            React.createElement("tr", null,
+                React.createElement("th", { scope: 'row' },
+                    React.createElement("label", { htmlFor: 'disqus_render_js' }, "Render Comments JavaScript")),
+                React.createElement("td", null,
+                    React.createElement("input", { type: 'checkbox', id: 'disqus_render_js', name: 'disqus_render_js', checked: Boolean(props.data.localAdminOptions.get('disqus_render_js')), onChange: props.onInputChange.bind(null, 'disqus_render_js') }),
+                    React.createElement("p", { className: 'description' }, "This will render the Disqus comments javascript directly into the page markup, rather than use the wp_enqueue_script() function. Enable this if Disqus doesn't load on your posts."))))),
     React.createElement("p", { className: 'submit' },
-        React.createElement("button", { type: 'submit', className: 'button button-large', disabled: props.data.isExportRunning },
-            React.createElement("span", { className: 'dashicons dashicons-upload' }),
-            ' ',
-            "Import Comments")),
-    props.data.exportLogs.size ? React.createElement(LogMessages, __assign({}, props)) : null)); };
-exports.default = ExportComments;
+        React.createElement("input", { type: 'submit', name: 'submit-application-form', className: 'button button-primary', value: "Save" })))); };
+/* tslint:enable:max-line-length */
+exports.default = AdvancedConfigForm;
 
 
 /***/ }),
 /* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var immutable_1 = __webpack_require__(17);
-var AdminOptions = /** @class */ (function (_super) {
-    __extends(AdminOptions, _super);
-    /* tslint:enable:variable-name */
-    function AdminOptions(options) {
-        return _super.call(this, options) || this;
-    }
-    AdminOptions.prototype.set = function (key, value) {
-        return _super.prototype.set.call(this, key, value);
-    };
-    AdminOptions.prototype.with = function (values) {
-        return this.merge(values);
-    };
-    return AdminOptions;
-}(immutable_1.Record({
-    disqus_admin_access_token: null,
-    disqus_forum_url: null,
-    disqus_installed: null,
-    disqus_public_key: null,
-    disqus_secret_key: null,
-    disqus_sso_button: null,
-    disqus_sso_enabled: null,
-    disqus_sync_token: null,
-})));
-exports.default = AdminOptions;
-
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var immutable_1 = __webpack_require__(17);
-var SyncStatus = /** @class */ (function (_super) {
-    __extends(SyncStatus, _super);
-    /* tslint:enable:variable-name */
-    function SyncStatus(options) {
-        return _super.call(this, options) || this;
-    }
-    SyncStatus.prototype.set = function (key, value) {
-        return _super.prototype.set.call(this, key, value);
-    };
-    SyncStatus.prototype.with = function (values) {
-        return this.merge(values);
-    };
-    return SyncStatus;
-}(immutable_1.Record({
-    enabled: null,
-    last_message: null,
-    requires_update: null,
-    subscribed: null,
-    subscription: null,
-})));
-exports.default = SyncStatus;
-
-
-/***/ }),
-/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27127,22 +27001,7 @@ exports.default = WordPressCommentExporter;
 
 
 /***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var ReactRedux = __webpack_require__(3);
-var Install_1 = __webpack_require__(88);
-var mapDispatchToProps_1 = __webpack_require__(4);
-var mapStateToProps_1 = __webpack_require__(5);
-var InstallContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(Install_1.default);
-exports.default = InstallContainer;
-
-
-/***/ }),
-/* 88 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27158,7 +27017,198 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var immutable_1 = __webpack_require__(17);
+var AdminOptions = /** @class */ (function (_super) {
+    __extends(AdminOptions, _super);
+    /* tslint:enable:variable-name */
+    function AdminOptions(options) {
+        return _super.call(this, options) || this;
+    }
+    AdminOptions.prototype.set = function (key, value) {
+        return _super.prototype.set.call(this, key, value);
+    };
+    AdminOptions.prototype.with = function (values) {
+        return this.merge(values);
+    };
+    return AdminOptions;
+}(immutable_1.Record({
+    disqus_admin_access_token: null,
+    disqus_forum_url: null,
+    disqus_installed: null,
+    disqus_public_key: null,
+    disqus_render_js: null,
+    disqus_secret_key: null,
+    disqus_sso_button: null,
+    disqus_sso_enabled: null,
+    disqus_sync_token: null,
+})));
+exports.default = AdminOptions;
+
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var immutable_1 = __webpack_require__(17);
+var SyncStatus = /** @class */ (function (_super) {
+    __extends(SyncStatus, _super);
+    /* tslint:enable:variable-name */
+    function SyncStatus(options) {
+        return _super.call(this, options) || this;
+    }
+    SyncStatus.prototype.set = function (key, value) {
+        return _super.prototype.set.call(this, key, value);
+    };
+    SyncStatus.prototype.with = function (values) {
+        return this.merge(values);
+    };
+    return SyncStatus;
+}(immutable_1.Record({
+    enabled: null,
+    last_message: null,
+    requires_update: null,
+    subscribed: null,
+    subscription: null,
+})));
+exports.default = SyncStatus;
+
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var ReactRedux = __webpack_require__(2);
+var ExportComments_1 = __webpack_require__(88);
+var mapDispatchToProps_1 = __webpack_require__(4);
+var mapStateToProps_1 = __webpack_require__(5);
+var ExportCommentsContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(ExportComments_1.default);
+exports.default = ExportCommentsContainer;
+
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var AdminState_1 = __webpack_require__(11);
+var getStatusMessage = function (props) {
+    if (props.data.isExportRunning)
+        return React.createElement("h4", null, "Sending to Disqus" + '…');
+    return (React.createElement("h4", null,
+        React.createElement("span", null,
+            "Done!",
+            ' ',
+            React.createElement("a", { href: "https://import.disqus.com/" + props.data.adminOptions.disqus_forum_url + "/", target: '_blank' }, "Check your import status"))));
+};
+var LogMessages = function (props) {
+    var logArray = props.data.exportLogs.toArray();
+    var logElements = logArray.map(function (log) {
+        var statusColor;
+        var statusText;
+        switch (log.status) {
+            case AdminState_1.ExportLogStaus.failed:
+                statusColor = 'red';
+                statusText = React.createElement("abbr", { title: log.error }, "Failed");
+                break;
+            case AdminState_1.ExportLogStaus.complete:
+                statusColor = 'green';
+                statusText = "Complete";
+                break;
+            case AdminState_1.ExportLogStaus.pending:
+            default:
+                statusColor = 'gray';
+                statusText = "Pending";
+                break;
+        }
+        return (React.createElement("tr", { key: log.id },
+            React.createElement("td", null, log.id),
+            React.createElement("td", null,
+                React.createElement("a", { href: log.link }, log.title)),
+            React.createElement("td", null,
+                React.createElement("strong", { style: { color: statusColor } }, statusText)),
+            React.createElement("td", null, log.numComments)));
+    });
+    return (React.createElement("div", null,
+        getStatusMessage(props),
+        React.createElement("table", { className: 'wp-list-table widefat striped' },
+            React.createElement("thead", null,
+                React.createElement("tr", null,
+                    React.createElement("th", { scope: 'col' }, "ID"),
+                    React.createElement("th", { scope: 'col' }, "Title"),
+                    React.createElement("th", { scope: 'col' }, "Status"),
+                    React.createElement("th", { scope: 'col' }, "# Imported"))),
+            React.createElement("tbody", null, logElements))));
+};
+var ExportComments = function (props) { return (React.createElement("form", { name: 'export', method: 'POST', onSubmit: props.onSubmitExportCommentsForm },
+    React.createElement("p", { className: 'submit' },
+        React.createElement("button", { type: 'submit', className: 'button button-large', disabled: props.data.isExportRunning },
+            React.createElement("span", { className: 'dashicons dashicons-upload' }),
+            ' ',
+            "Import Comments")),
+    props.data.exportLogs.size ? React.createElement(LogMessages, __assign({}, props)) : null)); };
+exports.default = ExportComments;
+
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var ReactRedux = __webpack_require__(2);
+var Install_1 = __webpack_require__(90);
+var mapDispatchToProps_1 = __webpack_require__(4);
+var mapStateToProps_1 = __webpack_require__(5);
+var InstallContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(Install_1.default);
+exports.default = InstallContainer;
+
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
 var AdminState_1 = __webpack_require__(11);
 var REST_OPTIONS_1 = __webpack_require__(37);
 var DISQUS_URL_BASE = 'https://disqus.com/';
@@ -27278,14 +27328,14 @@ exports.default = Install;
 
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var ReactRedux = __webpack_require__(3);
-var SiteConfigForm_1 = __webpack_require__(90);
+var ReactRedux = __webpack_require__(2);
+var SiteConfigForm_1 = __webpack_require__(92);
 var mapDispatchToProps_1 = __webpack_require__(4);
 var mapStateToProps_1 = __webpack_require__(5);
 var SiteConfigContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(SiteConfigForm_1.default);
@@ -27293,13 +27343,13 @@ exports.default = SiteConfigContainer;
 
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var getSubmitButton = function (props) {
     return props.data.isSiteFormLocked ? (React.createElement("button", { className: 'button button-link', onClick: props.onToggleState.bind(null, 'isSiteFormLocked') },
         React.createElement("span", { className: 'dashicons dashicons-lock' }),
@@ -27343,14 +27393,14 @@ exports.default = SiteConfigForm;
 
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var ReactRedux = __webpack_require__(3);
-var SSOConfigForm_1 = __webpack_require__(92);
+var ReactRedux = __webpack_require__(2);
+var SSOConfigForm_1 = __webpack_require__(94);
 var mapDispatchToProps_1 = __webpack_require__(4);
 var mapStateToProps_1 = __webpack_require__(5);
 var SSOConfigContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(SSOConfigForm_1.default);
@@ -27358,13 +27408,13 @@ exports.default = SSOConfigContainer;
 
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 /* tslint:disable:max-line-length */
 var SSOConfigForm = function (props) { return (React.createElement("form", { name: 'sso', action: '', method: 'POST', onSubmit: props.onSubmitSiteForm },
     React.createElement("table", { className: 'form-table' },
@@ -27391,14 +27441,14 @@ exports.default = SSOConfigForm;
 
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var ReactRedux = __webpack_require__(3);
-var SupportDiagnostics_1 = __webpack_require__(94);
+var ReactRedux = __webpack_require__(2);
+var SupportDiagnostics_1 = __webpack_require__(96);
 var mapDispatchToProps_1 = __webpack_require__(4);
 var mapStateToProps_1 = __webpack_require__(5);
 var SupportDiagnosticsContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(SupportDiagnostics_1.default);
@@ -27406,13 +27456,13 @@ exports.default = SupportDiagnosticsContainer;
 
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var DIAGNOSTICS_TEXTAREA_ID = 'diagnostics-textarea';
 var SupportDiagnostics = function (props) { return (React.createElement("div", null,
     React.createElement("div", null,
@@ -27423,14 +27473,14 @@ exports.default = SupportDiagnostics;
 
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var ReactRedux = __webpack_require__(3);
-var SyncConfigForm_1 = __webpack_require__(96);
+var ReactRedux = __webpack_require__(2);
+var SyncConfigForm_1 = __webpack_require__(98);
 var mapDispatchToProps_1 = __webpack_require__(4);
 var mapStateToProps_1 = __webpack_require__(5);
 var SyncConfigContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(SyncConfigForm_1.default);
@@ -27438,13 +27488,13 @@ exports.default = SyncConfigContainer;
 
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var getSyncStatus = function (syncStatus) {
     if (!syncStatus.subscribed) {
         return {
@@ -27498,13 +27548,13 @@ exports.default = SyncConfigForm;
 
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var HelpResources = function () { return (React.createElement("ul", null,
     React.createElement("li", null,
         React.createElement("a", { href: 'https://status.disqus.com/', target: '_blank' }, "Disqus System Status")),
@@ -27516,13 +27566,13 @@ exports.default = HelpResources;
 
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var SupportLinks = function () { return (React.createElement("ul", { className: 'dsq-support-list-container' },
     React.createElement("li", { className: 'dsq-support-list-item' },
         React.createElement("div", null,
@@ -27543,17 +27593,17 @@ exports.default = SupportLinks;
 
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var utils_1 = __webpack_require__(16);
 var WelcomePanel = function (props) { return (React.createElement("div", { className: 'welcome-panel' },
     React.createElement("div", { className: 'welcome-panel-content' },
-        React.createElement("p", { className: 'about-description' }, "Check out what's new"),
+        React.createElement("p", { className: 'about-description' }, "Manage Community"),
         React.createElement("div", { className: 'welcome-panel-column-container' },
             React.createElement("div", { className: 'welcome-panel-column' },
                 React.createElement("h3", null, "Comments"),
@@ -27587,26 +27637,26 @@ exports.default = WelcomePanel;
 
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var Loading = function () { return (React.createElement("div", { className: 'dsq-loading-container' },
     React.createElement("div", { className: 'dsq-spinner' }))); };
 exports.default = Loading;
 
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(1);
+var React = __webpack_require__(0);
 var getDismissButton = function (props) {
     if (!props.onDismiss)
         return null;
@@ -27620,7 +27670,7 @@ exports.default = Message;
 
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27691,4 +27741,4 @@ exports.default = adminApp;
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=en.disqus-admin.bundle.3.0.12.js.map
+//# sourceMappingURL=en.disqus-admin.bundle.3.0.13.js.map

@@ -829,6 +829,14 @@ END AS `sortOrder` FROM `{$blocksTable}` WHERE ";
 		$blockIDs = array_map('intval', $blockIDs);
 		$query = $wpdb->prepare("UPDATE `{$blocksTable}` SET `expiration` = %d, `type` = %d WHERE `id` IN (" . implode(', ', $blockIDs) . ") AND `type` IN (" . implode(', ', $supportedTypes) . ") AND (`expiration` > UNIX_TIMESTAMP())", self::DURATION_FOREVER, self::TYPE_IP_AUTOMATIC_PERMANENT);
 		$wpdb->query($query);
+		
+		$supportedTypes = array(
+			self::TYPE_IP_MANUAL,
+		);
+		
+		$blockIDs = array_map('intval', $blockIDs);
+		$query = $wpdb->prepare("UPDATE `{$blocksTable}` SET `expiration` = %d, `type` = %d WHERE `id` IN (" . implode(', ', $blockIDs) . ") AND `type` IN (" . implode(', ', $supportedTypes) . ") AND (`expiration` > UNIX_TIMESTAMP())", self::DURATION_FOREVER, self::TYPE_IP_MANUAL);
+		$wpdb->query($query);
 	}
 	
 	/**

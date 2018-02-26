@@ -866,7 +866,12 @@
 			showLoading: function() {
 				this.loadingCount++;
 				if (this.loadingCount == 1) {
-					jQuery('<div id="wordfenceWorking">Wordfence is working...</div>').appendTo('body');
+					var offset = 0;
+					if ($('#wf-live-traffic-legend:visible').length > 0) {
+						offset = $('#wf-live-traffic-legend').height() + parseInt($('#wf-live-traffic-legend').css('padding-top')) + parseInt($('#wf-live-traffic-legend').css('padding-bottom'));
+					}
+					
+					$('<div id="wordfenceWorking">Wordfence is working...</div>').css('bottom', offset + 'px').appendTo('body');
 				}
 			},
 			removeLoading: function() {
@@ -1545,7 +1550,7 @@
 									WFAD.colorboxModal((WFAD.isSmallScreen ? '300px' : '400px'), "Success deleting file", "The file " + res.file + " was successfully deleted.");
 								}
 								else if (res.errorMsg) {
-									WFAD.colorboxModal((WFAD.isSmallScreen ? '300px' : '400px'), 'An error occurred', res.errorMsg);
+									WFAD.colorboxError(res.errorMsg, res.tokenInvalid);
 								}
 							});
 						});
@@ -1569,7 +1574,7 @@
 									WFAD.colorboxModal((WFAD.isSmallScreen ? '300px' : '400px'), "Success restoring file", "The file " + res.file + " was successfully restored.");
 								}
 								else if (res.errorMsg) {
-									WFAD.colorboxModal((WFAD.isSmallScreen ? '300px' : '400px'), 'An error occurred', res.errorMsg);
+									WFAD.colorboxError(res.errorMsg, res.tokenInvalid);
 								}
 							});
 						});
@@ -1593,7 +1598,7 @@
 									WFAD.colorboxModal((WFAD.isSmallScreen ? '300px' : '400px'), "File hidden successfully", "The file " + res.file + " was successfully hidden from public view.");
 								}
 								else if (res.errorMsg) {
-									WFAD.colorboxModal((WFAD.isSmallScreen ? '300px' : '400px'), 'An error occurred', res.errorMsg);
+									WFAD.colorboxError(res.errorMsg, res.tokenInvalid);
 								}
 							});
 						});
@@ -1763,7 +1768,7 @@
 							self.nonce = json.nonce;
 						}
 						if (json && json.errorMsg) {
-							self.colorboxModal((self.isSmallScreen ? '300px' : '400px'), 'An error occurred', json.errorMsg);
+							WFAD.colorboxError(json.errorMsg, json.tokenInvalid);
 						}
 						cb(json);
 					},
@@ -1828,6 +1833,40 @@
 				};
 				this.colorboxHTML(width, promptHTML, settings)
 			},
+			colorboxError: function(errorMsg, isTokenError) {
+				var callback = false;
+				if (isTokenError) {
+					if (WFAD.tokenErrorShowing) {
+						return;
+					}
+					
+					callback = function() {
+						setTimeout(function() {
+							WFAD.tokenErrorShowing = false;
+						}, 30000);
+					};
+					
+					WFAD.tokenErrorShowing = true;
+				}
+
+				var prompt = $.tmpl(WordfenceAdminVars.tokenInvalidTemplate, {title: 'An error occurred', message: errorMsg});
+				var promptHTML = $("<div />").append(prompt).html();
+				var settings = {};
+				settings.overlayClose = false;
+				settings.closeButton = false;
+				settings.className = 'wf-modal';
+				settings.onComplete = function() {
+					$('#wf-token-invalid-modal-reload').on('click', function(e) {
+						e.preventDefault();
+						e.stopPropagation();
+
+						window.location.reload(true);
+					});
+
+					typeof callback === 'function' && callback();
+				};
+				WFAD.colorboxHTML((WFAD.isSmallScreen ? '300px' : '400px'), promptHTML, settings);
+			},
 			colorboxHTML: function(width, html, settings) {
 				if (typeof settings === 'undefined') {
 					settings = {};
@@ -1860,9 +1899,6 @@
 			colorboxClose: function() {
 				this.colorboxIsOpen = false;
 				jQuery.wfcolorbox.close();
-			},
-			errorMsg: function(msg) {
-				this.colorboxModal((this.isSmallScreen ? '300px' : '400px'), "An error occurred:", msg);
 			},
 			bulkOperationConfirmed: function(op) {
 				WFAD.colorboxClose();
@@ -1911,7 +1947,7 @@
 					});
 				} else if (res.cerrorMsg) {
 					this.loadIssues(function() {
-						self.colorboxModal((self.isSmallScreen ? '300px' : '400px'), 'An error occurred', res.cerrorMsg);
+						WFAD.colorboxError(res.cerrorMsg, res.tokenInvalid);
 					});
 				}
 			},
@@ -1929,7 +1965,7 @@
 						});
 					} else if (res.cerrorMsg) {
 						self.loadIssues(function() {
-							self.colorboxModal((self.isSmallScreen ? '300px' : '400px'), 'An error occurred', res.cerrorMsg);
+							WFAD.colorboxError(res.cerrorMsg, res.tokenInvalid);
 						}); 
 					}
 				});	
@@ -1963,7 +1999,7 @@
 						});
 					} else {
 						self.loadIssues(function() {
-							self.colorboxModal((self.isSmallScreen ? '300px' : '400px'), 'An error occurred', res.cerrorMsg);
+							WFAD.colorboxError(res.cerrorMsg, res.tokenInvalid);
 						});
 					}
 				});
@@ -2985,7 +3021,7 @@
 						});
 					} else if (res.errorMsg) {
 						self.loadIssues(function() {
-							self.colorboxModal((self.isSmallScreen ? '300px' : '400px'), 'An error occurred', res.errorMsg);
+							WFAD.colorboxError(res.errorMsg, res.tokenInvalid);
 						});
 					}
 				});
@@ -3002,7 +3038,7 @@
 						});
 					} else if (res.errorMsg) {
 						self.loadIssues(function() {
-							self.colorboxModal((self.isSmallScreen ? '300px' : '400px'), 'An error occurred', res.errorMsg);
+							WFAD.colorboxError(res.errorMsg, res.tokenInvalid);
 						});
 					}
 				});
@@ -3153,15 +3189,15 @@
 			},
 
 			wafConfigPageRender: function() {
-				this.wafData.ruleCount = 0;
-				if (this.wafData.rules) {
-					this.wafData.ruleCount = Object.keys(this.wafData.rules).length;
+				WFAD.wafData.ruleCount = 0;
+				if (WFAD.wafData.rules) {
+					WFAD.wafData.ruleCount = Object.keys(WFAD.wafData.rules).length;
 				}
 				
-				var whitelistedIPsEl = $('#waf-whitelisted-urls-tmpl').tmpl(this.wafData);
+				var whitelistedIPsEl = $('#waf-whitelisted-urls-tmpl').tmpl(WFAD.wafData);
 				$('#waf-whitelisted-urls-wrapper').html(whitelistedIPsEl);
 
-				var rulesEl = $('#waf-rules-tmpl').tmpl(this.wafData);
+				var rulesEl = $('#waf-rules-tmpl').tmpl(WFAD.wafData);
 				$('#waf-rules-wrapper').html(rulesEl);
 				
 				$('#waf-show-all-rules-button').on('click', function(e) {
@@ -3171,9 +3207,9 @@
 					$('#waf-rules-wrapper').addClass('wf-show-all');
 				});
 
-				if (this.wafData['rulesLastUpdated']) {
-					var date = new Date(this.wafData['rulesLastUpdated'] * 1000);
-					this.renderWAFRulesLastUpdated(date);
+				if (WFAD.wafData['rulesLastUpdated']) {
+					var date = new Date(WFAD.wafData['rulesLastUpdated'] * 1000);
+					WFAD.renderWAFRulesLastUpdated(date);
 				}
 				$(window).trigger('wordfenceWAFConfigPageRender');
 			},
@@ -3276,7 +3312,7 @@
 			setOption: function(key, value, successCallback, failureCallback) {
 				var changes = {};
 				changes[key] = value;
-				this.ajax('wordfence_saveOptions', {changes: JSON.stringify(changes)}, function(res) {
+				this.ajax('wordfence_saveOptions', {changes: JSON.stringify(changes), page: WFAD.getParameterByName('page')}, function(res) {
 					if (res.success) {
 						typeof successCallback == 'function' && successCallback(res);
 					}
@@ -3293,7 +3329,7 @@
 				}
 				var self = this;
 
-				this.ajax('wordfence_saveOptions', {changes: JSON.stringify(WFAD.pendingChanges)}, function(res) {
+				this.ajax('wordfence_saveOptions', {changes: JSON.stringify(WFAD.pendingChanges), page: WFAD.getParameterByName('page')}, function(res) {
 					if (res.success) {
 						typeof successCallback == 'function' && successCallback(res); 
 					}
@@ -3302,6 +3338,27 @@
 						typeof failureCallback == 'function' && failureCallback
 					}
 				});
+			},
+			
+			enableAllOptionsPage: function() {
+				this.ajax('wordfence_enableAllOptionsPage', {}, function(res) {
+					if (res.redirect) {
+						window.location.href = res.redirect;
+					}
+					else {
+						WFAD.colorboxModal((self.isSmallScreen ? '300px' : '400px'), 'Error Enabling All Options Page', res.error);
+					}
+				});
+			},
+
+			getParameterByName: function(name, url) {
+				if (!url) url = window.location.href;
+				name = name.replace(/[\[\]]/g, "\\$&");
+				var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+					results = regex.exec(url);
+				if (!results) return null;
+				if (!results[2]) return '';
+				return decodeURIComponent(results[2].replace(/\+/g, " "));
 			},
 
 			base64_decode: function(s) {
@@ -3415,11 +3472,16 @@
 			e.preventDefault();
 			e.stopPropagation();
 
-			WFAD.saveOptions(function() {
+			WFAD.saveOptions(function(res) {
 				WFAD.pendingChanges = {}; 
 				WFAD.updatePendingChanges();
 
-				window.location.reload(true);
+				if (res.redirect) {
+					window.location.href = res.redirect;
+				}
+				else {
+					window.location.reload(true);
+				}
 			});
 		});
 

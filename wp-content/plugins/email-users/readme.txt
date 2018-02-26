@@ -2,9 +2,9 @@
 Contributors: vprat, mpwalsh8, marvinlabs
 Donate link: http://michaelwalsh.org/wordpress/wordpress-plugins/email-users/
 Tags: email, users, list, admin
-Requires at least: 4.4
-Tested up to: 4.8
-Stable tag: 4.8.7
+Requires at least: 4.9
+Tested up to: 4.9.4
+Stable tag: 4.8.8
 License: GPL
 
 == Description ==
@@ -233,6 +233,9 @@ function update_publicworks_meta_filter()
 `
 
 == Changelog ==
+
+= Version 4.8.8 =
+* Added new substitution keyword %POST_FEATURED_IMAGE% to allow inclusion of a post's featured image.
 
 = Version 4.8.7 =
 * Added new option to force usage of sender override address when defined and option enabled.

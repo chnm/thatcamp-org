@@ -529,15 +529,20 @@ print $reflection->getFileName();
 		$post_content = explode( '<!--more-->', $post->post_content, 2 );
 		$post_excerpt = get_the_excerpt();
         $post_author = get_userdata( $post->post_author )->display_name;
+        $post_thumbnail = get_the_post_thumbnail( $post_id );            
 		
         //  Deal with post content in array form
         if (is_array($post_content)) $post_content = $post_content[0] ;
 
-		$subject = mailusers_replace_post_templates($subject, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+		$subject = mailusers_replace_post_templates($subject, $post_title,
+            $post_author, $post_excerpt, $post_content, $post_url, $post_thumbnail);
+
         if (mailusers_get_wpautop_processing()=='true')
-		    $mail_content = wpautop(mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url));
+		    $mail_content = wpautop(mailusers_replace_post_templates($mail_content,
+                $post_title, $post_author, $post_excerpt, $post_content, $post_url, $post_thumbnail));
         else
-		    $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+            $mail_content = mailusers_replace_post_templates($mail_content,
+                $post_title, $post_author, $post_excerpt, $post_content, $post_url, $post_thumbnail);
 ?>
 	<tr>
 		<td><b><?php _e('Subject', MAILUSERS_I18N_DOMAIN); ?></b></td>
@@ -608,6 +613,10 @@ print $reflection->getFileName();
 	<tr>
 		<td><b>%POST_URL%</b></td>
 		<td><?php _e('the link to the post you want to highlight', MAILUSERS_I18N_DOMAIN); ?></td>
+	</tr>
+	<tr>
+		<td><b>%POST_FEATURED_IMAGE%</b></td>
+		<td><?php _e('the featured image from the post you want to highlight', MAILUSERS_I18N_DOMAIN); ?></td>
 	</tr>
 	</tbody>
 </table>

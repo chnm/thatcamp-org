@@ -69,15 +69,20 @@
 		$post_content = explode( '<!--more-->', $post->post_content, 2 );
 		$post_excerpt = $post_content[0];
         $post_author = get_userdata( $post->post_author )->display_name;
+        $post_thumbnail = get_the_post_thumbnail( $post_id );            
 	
         //  Deal with post content in array form
         if (is_array($post_content)) $post_content = $post_content[0] ;
 
-		$subject = mailusers_replace_post_templates($subject, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+		$subject = mailusers_replace_post_templates($subject, $post_title,
+            $post_author, $post_excerpt, $post_content, $post_url, $post_thumbnail);
+
         if (mailusers_get_wpautop_processing()=='true')
-		    $mail_content = wpautop(mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url));
+		    $mail_content = wpautop(mailusers_replace_post_templates($mail_content,
+                $post_title, $post_author, $post_excerpt, $post_content, $post_url, $post_thumbnail));
         else
-		    $mail_content = mailusers_replace_post_templates($mail_content, $post_title, $post_author, $post_excerpt, $post_content, $post_url);
+            $mail_content = mailusers_replace_post_templates($mail_content,
+                $post_title, $post_author, $post_excerpt, $post_content, $post_url, $post_thumbnail);
 	}
 	
 ?>

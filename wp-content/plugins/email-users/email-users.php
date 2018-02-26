@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 /*
 Plugin Name: Email Users
-Version: 4.8.7
+Version: 4.8.8
 Plugin URI: http://wordpress.org/extend/plugins/email-users/
 Description: Allows the site editors to send an e-mail to the blog users. Credits to <a href="http://www.catalinionescu.com">Catalin Ionescu</a> who gave me (Vincent Pratt) some ideas for the plugin and has made a similar plugin. Bug reports and corrections by Cyril Crua, Pokey and Mike Walsh.  Development for enhancements and bug fixes since version 4.1 primarily by <a href="http://michaelwalsh.org">Mike Walsh</a>.
 Author: Mike Walsh & MarvinLabs
@@ -27,7 +27,7 @@ Author URI: http://www.michaelwalsh.org
 */
 
 // Version of the plugin
-define( 'MAILUSERS_CURRENT_VERSION', '4.8.7');
+define( 'MAILUSERS_CURRENT_VERSION', '4.8.8');
 
 // i18n plugin domain
 define( 'MAILUSERS_I18N_DOMAIN', 'email-users' );
@@ -99,7 +99,7 @@ function mailusers_get_default_plugin_settings($option = null)
 		// The default title to use when using the post notification functionality
 		'mailusers_default_subject' => '[%BLOG_NAME%] ' . __('A post of interest:', MAILUSERS_I18N_DOMAIN) . ' "%POST_TITLE%"',
 		// Mail User - The default body to use when using the post notification functionality
-		'mailusers_default_body' => __('<p>Hello, </p><p>I would like to bring your attention on a new post published on the blog. Details of the post follow; I hope you will find it interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr><p><strong>%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><ul><li>Link to the post: <a href="%POST_URL%">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href="%BLOG_URL%">%BLOG_URL%</a></li></ul>', MAILUSERS_I18N_DOMAIN),
+		'mailusers_default_body' => __('<p>Hello, </p><p>I would like to bring your attention on a new post published on the blog. Details of the post follow; I hope you will find it interesting.</p><p>Best regards, </p><p>%FROM_NAME%</p><hr><p><strong>%POST_TITLE%</strong></p><p>%POST_EXCERPT%</p><p>%POST_FEATURED_IMAGE%</p><ul><li>Link to the post: <a href="%POST_URL%">%POST_URL%</a></li><li>Link to %BLOG_NAME%: <a href="%BLOG_URL%">%BLOG_URL%</a></li></ul>', MAILUSERS_I18N_DOMAIN),
 		// Mail User - Default mail format (html or plain text)
 		'mailusers_default_mail_format' => 'html',
 		// Mail User - Default sort users by (none, display name, last name or first name)
@@ -1697,12 +1697,14 @@ function mailusers_preg_quote($str) {
 /**
  * Replace the template variables in a given text.
  */
-function mailusers_replace_post_templates($text, $post_title, $post_author, $post_excerpt, $post_content, $post_url) {
+function mailusers_replace_post_templates($text, $post_title, $post_author, $post_excerpt, $post_content, $post_url, $post_thumbnail) {
 	$text = preg_replace( '/%POST_TITLE%/', mailusers_preg_quote($post_title), $text );
 	$text = preg_replace( '/%POST_AUTHOR%/', mailusers_preg_quote($post_author), $text );
 	$text = preg_replace( '/%POST_EXCERPT%/', mailusers_preg_quote($post_excerpt), $text );
 	$text = preg_replace( '/%POST_CONTENT%/', mailusers_preg_quote($post_content), $text );
 	$text = preg_replace( '/%POST_URL%/', mailusers_preg_quote($post_url), $text );
+    error_log(sprintf("%s::%s:  %s", basename(__FILE__), __LINE__, $post_thumbnail));
+	$text = preg_replace( '/%POST_FEATURED_IMAGE%/', mailusers_preg_quote($post_thumbnail), $text );
 	return $text;
 }
 

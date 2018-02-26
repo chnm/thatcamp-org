@@ -14,7 +14,7 @@ $selectOptions = array(
 ?>
 <ul class="wf-flex-vertical wf-flex-full-width">
 	<li>
-		<ul class="wf-option wf-option-select wf-option-howgetips" data-select-option="howGetIPs" data-original-select-value="<?php echo esc_attr(wfConfig::get('howGetIPs')); ?>" data-text-area-option="howGetIPs_trusted_proxies" data-original-text-area-value="<?php echo esc_attr(wfConfig::get('howGetIPs_trusted_proxies')); ?>">
+		<ul id="wf-option-howGetIPs" class="wf-option wf-option-select wf-option-howgetips" data-select-option="howGetIPs" data-original-select-value="<?php echo esc_attr(wfConfig::get('howGetIPs')); ?>" data-text-area-option="howGetIPs_trusted_proxies" data-original-text-area-value="<?php echo esc_attr(wfConfig::get('howGetIPs_trusted_proxies')); ?>">
 			<li class="wf-option-spacer"></li>
 			<li class="wf-option-content">
 				<ul>
@@ -41,7 +41,7 @@ $selectOptions = array(
 		</ul>
 	</li>
 	<li id="howGetIPs-trusted-proxies">
-		<ul class="wf-option wf-option-textarea" data-text-option="howGetIPs_trusted_proxies" data-original-text-value="<?php echo esc_attr(wfConfig::get('howGetIPs_trusted_proxies')); ?>">
+		<ul id="wf-option-howGetIPs-trusted-proxies" class="wf-option wf-option-textarea" data-text-option="howGetIPs_trusted_proxies" data-original-text-value="<?php echo esc_attr(wfConfig::get('howGetIPs_trusted_proxies')); ?>">
 			<li class="wf-option-spacer"></li>
 			<li class="wf-option-content">
 				<ul>

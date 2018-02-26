@@ -27,7 +27,6 @@ function vscf_widget_shortcode($vscf_atts) {
 		"message_error" => __('Error! Could not send form. This might be a server issue.', 'very-simple-contact-form'),
 		"from_header" => '',
 		"subject" => '',
-		"prefix_subject" => '',
 		"hide_subject" => '',
 		"auto_reply" => '',
 		"auto_reply_message" => __('Thank you! You will receive a response as soon as possible.', 'very-simple-contact-form'),
@@ -125,26 +124,12 @@ function vscf_widget_shortcode($vscf_atts) {
 			$to = $vscf_atts['email_to'];
 			$auto_reply_to = $form_data['form_email'];
 			// Subject
-			if ($vscf_atts['hide_subject'] != "true") {
-				if (!empty($vscf_atts['subject'])) {		
-					$subject = $vscf_atts['subject'];
-				} else {
-					if (!empty($vscf_atts['prefix_subject'])) {	
-						$subject = "(".$vscf_atts['prefix_subject'].") " . $form_data['form_subject'];
-					} else {
-						$subject = "(".get_bloginfo('name').") " . $form_data['form_subject'];
-					}
-				}
+			if (!empty($vscf_atts['subject'])) {	
+				$subject = $vscf_atts['subject'];
+			} elseif ($vscf_atts['hide_subject'] != "true") {
+				$subject = "(".get_bloginfo('name').") " . $form_data['form_subject'];
 			} else {
-				if (!empty($vscf_atts['subject'])) {		
-					$subject = $vscf_atts['subject'];
-				} else {
-					if (!empty($vscf_atts['prefix_subject'])) {
-						$subject = $vscf_atts['prefix_subject'];
-					} else {
-						$subject = get_bloginfo('name');
-					}
-				}
+				$subject = get_bloginfo('name');
 			}
 			// From email header
 			if (empty($vscf_atts['from_header'])) {
@@ -228,7 +213,7 @@ function vscf_widget_shortcode($vscf_atts) {
 	
 	// After form validation
 	if ($sent == true) {
-		unset($_SESSION['vscf-rand']);
+		unset($_SESSION['vscf-widget-rand']);
 		return $anchor_begin . '<p class="vscf-info">'.esc_attr($result).'</p>' . $anchor_end;
 	} elseif ($fail == true) {
 		return $anchor_begin . '<p class="vscf-info">'.esc_attr($result).'</p>' . $anchor_end;

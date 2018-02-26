@@ -1,7 +1,7 @@
 <?php
 if (!defined('WORDFENCE_VERSION')) { exit; }
 ?>
-<ul class="wf-option wf-flex-vertical wf-flex-full-width">
+<ul id="wf-option-wafWhitelist" class="wf-option wf-flex-vertical wf-flex-full-width">
 	<li><strong>Add Whitelisted URL/Param</strong> <a href="<?php echo wfSupportController::esc_supportURL(wfSupportController::ITEM_FIREWALL_WAF_WHITELIST); ?>"  target="_blank" rel="noopener noreferrer" class="wf-inline-help"><i class="wf-fa wf-fa-question-circle-o" aria-hidden="true"></i></a> The URL/parameters in this table will not be tested by the firewall. They are typically added while the firewall is in Learning Mode or by an admin who identifies a particular action/request is a false positive.</li>
 	<li id="whitelist-form"> 
 		<div class="wf-form-inline">

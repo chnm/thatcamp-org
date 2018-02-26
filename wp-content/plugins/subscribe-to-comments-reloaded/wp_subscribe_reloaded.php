@@ -244,6 +244,9 @@ if(!class_exists('\\'.__NAMESPACE__.'\\wp_subscribe_reloaded'))	{
 		// end new_comment_posted
 
 		public function isDoubleCheckinEnabled( $info ) {
+
+		    $is_subscribe_to_post = false;
+
 			$approved_subscriptions = $this->get_subscriptions(
 				array(
 					'status',
@@ -256,7 +259,17 @@ if(!class_exists('\\'.__NAMESPACE__.'\\wp_subscribe_reloaded'))	{
 					$info->comment_author_email
 				)
 			);
-			if ( ( get_option( 'subscribe_reloaded_enable_double_check', 'no' ) == 'yes' ) && ! is_user_logged_in() && empty( $approved_subscriptions ) ) {
+
+			// Check if the user is already subscribe to the requested Post ID
+            foreach ( $approved_subscriptions as $subscription )
+            {
+                if ( $info->comment_post_ID == $subscription->post_id )
+                {
+                    $is_subscribe_to_post = true;
+                }
+            }
+
+			if ( ( get_option( 'subscribe_reloaded_enable_double_check', 'no' ) == 'yes' ) && ! is_user_logged_in() && ( ! $is_subscribe_to_post || empty( $approved_subscriptions ) ) ) {
 				return true;
 			} else {
 				return false;
@@ -571,11 +584,6 @@ if(!class_exists('\\'.__NAMESPACE__.'\\wp_subscribe_reloaded'))	{
 			return $posts;
 		}
 		// end subscribe_reloaded_manage
-
-
-
-
-
 		/**
 		 * Checks if current logged in user is the author of this post
 		 */
@@ -625,7 +633,6 @@ if(!class_exists('\\'.__NAMESPACE__.'\\wp_subscribe_reloaded'))	{
 			return false;
 		}
 		// end is_user_subscribed
-
 		/**
 		 * Adds a new subscription
 		 */
@@ -664,11 +671,10 @@ if(!class_exists('\\'.__NAMESPACE__.'\\wp_subscribe_reloaded'))	{
 
 			$OK = $this->utils->add_user_subscriber_table( $clean_email );
 			if ( ! $OK) {
-				// Catch the error
+				// TODO: Catch the error and add it to the log file.
 			}
 		}
 		// end add_subscription
-
 		/**
 		 * Deletes one or more subscriptions from the database
 		 */
@@ -717,7 +723,6 @@ if(!class_exists('\\'.__NAMESPACE__.'\\wp_subscribe_reloaded'))	{
 			}
 		}
 		// end delete_subscriptions
-
 		/**
 		 * The function must search for subscription by a given post id.
 		 *
@@ -756,7 +761,6 @@ if(!class_exists('\\'.__NAMESPACE__.'\\wp_subscribe_reloaded'))	{
 
 			return $result === false || $result == 0 || empty( $result ) ? false : $result;
 		}
-
 		/**
 		 * Updates the status of an existing subscription
 		 */
@@ -805,7 +809,6 @@ if(!class_exists('\\'.__NAMESPACE__.'\\wp_subscribe_reloaded'))	{
 			);
 		}
 		// end update_subscription_status
-
 		/**
 		 * Updates the email address of an existing subscription
 		 */
@@ -844,7 +847,6 @@ if(!class_exists('\\'.__NAMESPACE__.'\\wp_subscribe_reloaded'))	{
 			return false;
 		}
 		// end update_subscription_email
-
 		/**
 		 * Retrieves a list of emails subscribed to this post
 		 */
@@ -956,7 +958,6 @@ if(!class_exists('\\'.__NAMESPACE__.'\\wp_subscribe_reloaded'))	{
 			}
 		}
 		// end get_subscriptions
-
 		/**
 		 * Sends the notification message to a given user
 		 */
@@ -1030,11 +1031,6 @@ if(!class_exists('\\'.__NAMESPACE__.'\\wp_subscribe_reloaded'))	{
 			$this->utils->send_email( $email_settings );
 		}
 		// end notify_user
-
-
-
-
-
 		/**
 		 * Displays the checkbox to allow visitors to subscribe
 		 */
@@ -1135,12 +1131,15 @@ if(!class_exists('\\'.__NAMESPACE__.'\\wp_subscribe_reloaded'))	{
 			$output = '';
 			// Check for the Comment Form location
 			if( get_option('subscribe_reloaded_stcr_position') == 'yes' ) {
-				$output .= "<div class='stcr-form hidden'>";
+				$output .= "<style type='text/css'>.stcr-hidden{display: none !important;}</style>";
+				$output .= "<div class='stcr-form stcr-hidden'>";
                 $output .= "<!-- Subscribe to Comments Reloaded version ". $wp_subscribe_reloaded->stcr->current_version . " -->";
                 $output .= "<!-- BEGIN: subscribe to comments reloaded -->" . $html_to_show . "<!-- END: subscribe to comments reloaded -->";
-				$output .= "</div>";
-			} else {
+                $output .= "<!-- Subscribe to comments Reloaded MP: '" . get_option( "subscribe_reloaded_manager_page" ) . "' -->";
+                $output .= "</div>";
+            } else {
                 $output .= "<!-- Subscribe to Comments Reloaded version ". $wp_subscribe_reloaded->stcr->current_version . " -->";
+                $output .= "<!-- Subscribe to comments Reloaded MP: '" . get_option( "subscribe_reloaded_manager_page" ) . "' -->";
                 $output .= "<!-- BEGIN: subscribe to comments reloaded -->" . $html_to_show . "<!-- END: subscribe to comments reloaded -->";
 			}
 

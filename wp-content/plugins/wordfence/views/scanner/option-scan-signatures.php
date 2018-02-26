@@ -17,7 +17,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 ?>
 <ul class="wf-flex-vertical wf-flex-full-width">
 	<li>
-		<ul class="wf-option wf-option-scan-signatures" data-toggle-option="scansEnabled_fileContents" data-enabled-toggle-value="1" data-disabled-toggle-value="0" data-original-toggle-value="<?php echo wfConfig::get('scansEnabled_fileContents') ? 1 : 0; ?>" data-text-area-option="scan_include_extra" data-original-text-area-value="<?php echo esc_attr(wfConfig::get('scan_include_extra')); ?>">
+		<ul id="wf-option-scansEnabled-fileContents" class="wf-option wf-option-scan-signatures" data-toggle-option="scansEnabled_fileContents" data-enabled-toggle-value="1" data-disabled-toggle-value="0" data-original-toggle-value="<?php echo wfConfig::get('scansEnabled_fileContents') ? 1 : 0; ?>" data-text-area-option="scan_include_extra" data-original-text-area-value="<?php echo esc_attr(wfConfig::get('scan_include_extra')); ?>">
 			<li class="wf-option-checkbox<?php echo (wfConfig::get('scansEnabled_fileContents') ? ' wf-checked' : ''); ?>"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></li>
 			<li class="wf-option-title"><?php echo esc_html($title); ?> <a href="<?php echo wfSupportController::esc_supportURL(wfSupportController::ITEM_SCAN_OPTION_MALWARE_SIGNATURES); ?>"  target="_blank" rel="noopener noreferrer" class="wf-inline-help"><i class="wf-fa wf-fa-question-circle-o" aria-hidden="true"></i></a></li>
 			<li class="wf-option-disclosure"><svg width="12px" height="12px" viewBox="0 0 12 12"><path id="disclosure-closed" d="M 6 0 l 6 6 -6 6 0 -12" fill="#777"/></svg></li>
@@ -25,7 +25,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 	</li>
 	<li id="wf-scan-additional-signatures">
 		<h4>Add Additional Signatures</h4>
-		<textarea spellcheck="false" autocapitalize="none" autocomplete="off"><?php echo esc_html(wfConfig::get('scan_include_extra')); ?></textarea>
+		<textarea id="wf-option-scan-include-extra" spellcheck="false" autocapitalize="none" autocomplete="off"><?php echo esc_html(wfConfig::get('scan_include_extra')); ?></textarea>
 	</li>
 </ul>
 <script type="application/javascript">

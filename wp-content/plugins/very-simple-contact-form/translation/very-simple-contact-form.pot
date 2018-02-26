@@ -2,14 +2,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Very Simple Contact Form\n"
-"POT-Creation-Date: 2017-09-16 23:57+0200\n"
+"POT-Creation-Date: 2018-02-18 13:16+0100\n"
 "PO-Revision-Date: 2015-08-14 23:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: vscf.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -70,8 +70,8 @@ msgstr ""
 msgid "Error! Could not send form. This might be a server issue."
 msgstr ""
 
-#: vscf-form.php:147 vscf-form.php:152 vscf-widget-form.php:147
-#: vscf-widget-form.php:152
+#: vscf-form.php:141 vscf-form.php:146 vscf-widget-form.php:141
+#: vscf-widget-form.php:146
 #, php-format
 msgid "IP: %s"
 msgstr ""
@@ -116,5 +116,5 @@ msgid "Guido van der Leest"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://www.guidovanderleest.nl"
+msgid "https://www.guidovanderleest.nl"
 msgstr ""

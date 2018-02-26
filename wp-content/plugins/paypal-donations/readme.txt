@@ -3,8 +3,8 @@ Contributors: Tips and Tricks HQ, artstorm
 Donate link: https://www.tipsandtricks-hq.com/paypal-donations-widgets-plugin
 Tags: paypal, donation, donations, shortcode, widget, donate, button, sidebar, paypal donation, payment
 Requires at least: 3.0
-Tested up to: 4.5
-Stable tag: 1.9.3
+Tested up to: 4.9
+Stable tag: 1.9.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,6 +87,9 @@ for questions, answers, support and feature requests.
 
 
 == Changelog ==
+
+= version 1.9.4 =
+* Added a new filter that allows overriding of the paypal email address dynamically.
 
 = version 1.9.3 =
 * Added sanitization and escaping where appropriate.
