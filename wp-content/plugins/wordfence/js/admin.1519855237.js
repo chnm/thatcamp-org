@@ -37,7 +37,6 @@
 			countryCodesToSave: "",
 			performanceScale: 3,
 			performanceMinWidth: 20,
-			passwdAuditUpdateInt: false,
 			_windowHasFocus: true,
 			serverTimestampOffset: 0,
 			serverMicrotime: 0,
@@ -619,40 +618,6 @@
 					this.mode = 'dashboard';
 				} else if (jQuery('#wordfenceMode_scan:visible').length > 0) {
 					this.mode = 'scan';
-					jQuery('#wfALogViewLink').prop('href', WordfenceAdminVars.siteBaseURL + '?_wfsf=viewActivityLog&nonce=' + this.nonce);
-					jQuery('#consoleActivity').scrollTop(jQuery('#consoleActivity').prop('scrollHeight'));
-					jQuery('#consoleSummary').scrollTop(jQuery('#consoleSummary').prop('scrollHeight'));
-					this.noScanHTML = jQuery('#wfNoScanYetTmpl').tmpl().html();
-
-
-					var loadingIssues = true;
-
-					this.loadIssues(function() {
-						loadingIssues = false;
-					});
-					this.startActivityLogUpdates();
-
-					var issuesWrapper = $('#wfScanIssuesWrapper');
-					var hasScrolled = false;
-					$(window).on('scroll', function() {
-						var win = $(this);
-						// console.log(win.scrollTop() + window.innerHeight, liveTrafficWrapper.outerHeight() + liveTrafficWrapper.offset().top);
-						var currentScrollBottom = win.scrollTop() + window.innerHeight;
-						var scrollThreshold = issuesWrapper.outerHeight() + issuesWrapper.offset().top;
-						if (hasScrolled && !loadingIssues && currentScrollBottom >= scrollThreshold) {
-							// console.log('infinite scroll');
-
-							loadingIssues = true;
-							hasScrolled = false;
-							var offset = $('div.wfIssue').length;
-							WFAD.loadMoreIssues(function() {
-								loadingIssues = false;
-							}, offset);
-						} else if (currentScrollBottom < scrollThreshold) {
-							hasScrolled = true;
-							// console.log('no infinite scroll');
-						}
-					});
 				} else if (jQuery('#wordfenceMode_waf:visible').length > 0) {
 					this.mode = 'waf';
 					startTicker = true;
@@ -715,10 +680,6 @@
 							// console.log('no infinite scroll');
 						}
 					});
-				} else if (jQuery('#wordfenceMode_passwd:visible').length > 0) {
-					this.mode = 'passwd';
-					startTicker = true;
-					this.doPasswdAuditUpdate();
 				} else if (jQuery('#wordfenceMode_twoFactor:visible').length > 0) {
 					this.mode = 'twoFactor';
 					startTicker = true;
@@ -896,6 +857,7 @@
 				if (jQuery('body').hasClass('wordfenceLiveActivityPaused')) {
 					jQuery('body').removeClass('wordfenceLiveActivityPaused');
 				}
+				WFAD.loadingIssues = true;
 				this.activityLogUpdatePending = true;
 				var self = this;
 				this.ajax('wordfence_activityLogUpdate', {
@@ -941,6 +903,8 @@
 					if (res.issueCounts) {
 						WFAD.updateIssueCounts(res.issueCounts);
 					}
+					
+					WFAD.loadingIssues = false;
 
 					if (res.scanStats) {
 						var keys = Object.keys(res.scanStats);
@@ -1320,12 +1284,19 @@
 					self.displayIssues(res, callback);
 				});
 			},
-			loadMoreIssues: function(callback, offset, limit) {
+			loadMoreIssues: function(callback, offset, limit, ignoredOffset, ignoredLimit) {
 				offset = offset || 0;
 				limit = limit || WordfenceAdminVars.scanIssuesPerPage;
-				var self = this;
-				this.ajax('wordfence_loadIssues', {offset: offset, limit: limit}, function(res) {
-					self.appendIssues(res.issuesLists, callback);
+				ignoredOffset = ignoredOffset || 0;
+				ignoredLimit = ignoredLimit || WordfenceAdminVars.scanIssuesPerPage;
+				
+				if (offset >= WFAD.scanIssuesNewCount && ignoredOffset >= WFAD.scanIssuesIgnoredCount) {
+					return;
+				}
+				
+				WFAD.ajax('wordfence_loadIssues', {offset: offset, limit: limit, ignoredOffset: ignoredOffset, ignoredLimit: ignoredLimit}, function(res) {
+					WFAD.updateIssueCounts(res.issueCounts);
+					WFAD.appendIssues(res.issues, callback);
 				});
 			},
 			sev2num: function(str) {
@@ -1364,7 +1335,7 @@
 					$('#' + containerID).empty();
 				}
 				
-				this.appendIssues(res.issues, callback);
+				WFAD.appendIssues(res.issues, callback);
 				
 				return true;
 			},
@@ -1383,14 +1354,7 @@
 				}
 				
 				WFAD.sortIssues();
-
-				/*if (callback) {
-					jQuery('#wfIssues_' + this.visibleIssuesPanel).fadeIn(500, function() {
-						callback();
-					});
-				} else {
-					jQuery('#wfIssues_' + this.visibleIssuesPanel).fadeIn(500);
-				}*/
+				WFAD.updateBulkButtons();
 			},
 			appendIssue: function(issueObject, container) {
 				var issueType = issueObject.type;
@@ -1402,14 +1366,6 @@
 					issue.data('templateName', tmplName);
 					if (this.isIssueExpanded(issueObject.id)) {
 						issue.addClass('wf-active');
-					}
-					
-					if (issueObject.data.canDelete) {
-						$('#wf-scan-bulk-buttons-delete').removeClass('wf-disabled');
-					}
-
-					if (issueObject.data.canFix) {
-						$('#wf-scan-bulk-buttons-repair').removeClass('wf-disabled');
 					}
 
 					//Hook up Details button
@@ -1460,6 +1416,7 @@
 										WFAD.sortIssues();
 										WFAD.updateIssueCounts(res.issueCounts);
 										WFAD.repositionSiteCleaningCallout();
+										WFAD.updateBulkButtons();
 									}
 								});
 							}
@@ -1484,6 +1441,7 @@
 									WFAD.sortIssues();
 									WFAD.updateIssueCounts(res.issueCounts);
 									WFAD.repositionSiteCleaningCallout();
+									WFAD.updateBulkButtons();
 								}
 							});
 						});
@@ -1507,6 +1465,7 @@
 									WFAD.sortIssues();
 									WFAD.updateIssueCounts(res.issueCounts);
 									WFAD.repositionSiteCleaningCallout();
+									WFAD.updateBulkButtons();
 								}
 							});
 						});
@@ -1527,6 +1486,7 @@
 									issueElement.remove();
 									WFAD.updateIssueCounts(res.issueCounts);
 									WFAD.repositionSiteCleaningCallout();
+									WFAD.updateBulkButtons();
 								}
 							});
 						});
@@ -1547,6 +1507,7 @@
 									issueElement.remove();
 									WFAD.updateIssueCounts(res.issueCounts);
 									WFAD.repositionSiteCleaningCallout();
+									WFAD.updateBulkButtons();
 									WFAD.colorboxModal((WFAD.isSmallScreen ? '300px' : '400px'), "Success deleting file", "The file " + res.file + " was successfully deleted.");
 								}
 								else if (res.errorMsg) {
@@ -1571,6 +1532,7 @@
 									issueElement.remove();
 									WFAD.updateIssueCounts(res.issueCounts);
 									WFAD.repositionSiteCleaningCallout();
+									WFAD.updateBulkButtons();
 									WFAD.colorboxModal((WFAD.isSmallScreen ? '300px' : '400px'), "Success restoring file", "The file " + res.file + " was successfully restored.");
 								}
 								else if (res.errorMsg) {
@@ -1595,6 +1557,7 @@
 									issueElement.remove();
 									WFAD.updateIssueCounts(res.issueCounts);
 									WFAD.repositionSiteCleaningCallout();
+									WFAD.updateBulkButtons();
 									WFAD.colorboxModal((WFAD.isSmallScreen ? '300px' : '400px'), "File hidden successfully", "The file " + res.file + " was successfully hidden from public view.");
 								}
 								else if (res.errorMsg) {
@@ -1681,10 +1644,44 @@
 				}
 
 				WFAD.repositionSiteCleaningCallout();
+				WFAD.scanIssuesOffset = $('#wf-scan-results-new .wf-issue').length;
+				WFAD.scanIssuesIgnoredOffset = $('#wf-scan-results-ignored .wf-issue').length;
+			},
+			updateBulkButtons: function() {
+				var containerID = 'wf-scan-results-new';
+				if ($('#' + containerID).length < 1) {
+					return;
+				}
+
+				var hasDeleteable = false;
+				var hasRepairable = false;
+				
+				var container = $('#' + containerID);
+				var issuesDOM = container.find('.wf-issue');
+				for (var i = 0; i < issuesDOM.length; i++) {
+					var sourceData = $(issuesDOM[i]).data('sourceData');
+					if (sourceData.data.canDelete) {
+						hasDeleteable = true;
+					}
+					
+					if (sourceData.data.canFix) {
+						hasRepairable = true;
+					}
+					
+					if (hasDeleteable && hasRepairable) {
+						break;
+					}
+				}
+
+				$('#wf-scan-bulk-buttons-delete').toggleClass('wf-disabled', !hasDeleteable);
+				$('#wf-scan-bulk-buttons-repair').toggleClass('wf-disabled', !hasRepairable);
 			},
 			updateIssueCounts: function(issueCounts) {
 				var newCount = (typeof issueCounts['new'] === 'undefined' ? 0 : parseInt(issueCounts['new']));
 				var ignoredCount = (typeof issueCounts['ignoreC'] === 'undefined' ? 0 : parseInt(issueCounts['ignoreC'])) + (typeof issueCounts['ignoreP'] === 'undefined' ? 0 : parseInt(issueCounts['ignoreP']));
+				WFAD.scanIssuesNewCount = newCount;
+				WFAD.scanIssuesIgnoredCount = ignoredCount;
+				WFAD.scanIssuesTotalCount = newCount + ignoredCount;
 				
 				$('#wf-scan-tab-new a').html($('#wf-scan-tab-new').data('tabTitle') + ' (' + newCount + ')');
 				$('#wf-scan-tab-ignored a').html($('#wf-scan-tab-ignored').data('tabTitle') + ' (' + ignoredCount + ')'); 
@@ -1912,6 +1909,7 @@
 
 						WFAD.updateIssueCounts(res.issueCounts);
 						WFAD.repositionSiteCleaningCallout();
+						WFAD.updateBulkButtons();
 						setTimeout(function() {
 							WFAD.colorboxModal((WFAD.isSmallScreen ? '300px' : '400px'), res.bulkHeading, res.bulkBody);
 						}, 500);
@@ -2203,103 +2201,6 @@
 				jQuery('#wfActivity_' + this.activityMode).html('<div class="wfLoadingWhite32"></div>');
 				this.newestActivityTime = 0;
 				this.updateTicker(true);
-			},
-			loadPasswdAuditResults: function() {
-				var self = this;
-				this.ajax('wordfence_passwdLoadResults', {}, function(res) {
-					self.displayPWAuditResults(res);
-				});
-			},
-			doPasswdAuditUpdate: function(freq) {
-				this.loadPasswdAuditJobs();
-			},
-			stopPasswdAuditUpdate: function() {
-				clearInterval(this.passwdAuditUpdateInt);
-			},
-			killPasswdAudit: function(jobID) {
-				var self = this;
-				this.ajax('wordfence_killPasswdAudit', {jobID: jobID}, function(res) {
-					if (res.ok) {
-						self.colorboxModal('300px', "Stop Requested", "We have sent a request to stop the password audit in progress. It may take a few minutes before results stop appearing. You can immediately start another audit if you'd like.");
-					}
-				});
-			},
-			displayPWAuditJobs: function(res) {
-				if (res && res.results && res.results.length > 0) {
-					var wfAuditJobs = $('#wfAuditJobs');
-					jQuery('#wfAuditJobs').empty();
-					jQuery('#wfAuditJobsTable').tmpl().appendTo(wfAuditJobs);
-					var wfAuditJobsBody = wfAuditJobs.find('.wf-pw-audit-tbody');
-					for (var i = 0; i < res.results.length; i++) {
-						jQuery('#wfAuditJobsInProg').tmpl(res.results[i]).appendTo(wfAuditJobsBody);
-					}
-				} else {
-					// jQuery('#wfAuditJobs').empty().html("<p>You don't have any password auditing jobs in progress or completed yet.</p>");
-				}
-			},
-			displayPWAuditResults: function(res) {
-				var wfAuditResults;
-				if (res && res.results && res.results.length > 0) {
-					wfAuditResults = $('#wfAuditResults').empty();
-					jQuery('#wfAuditResultsTable').tmpl().appendTo(wfAuditResults);
-					var wfAuditResultsBody = wfAuditResults.find('.wf-pw-audit-tbody');
-					for (var i = 0; i < res.results.length; i++) {
-						jQuery('#wfAuditResultsRow').tmpl(res.results[i]).appendTo(wfAuditResultsBody);
-					}
-					if ($.fn.select2) {
-						wfAuditResults.find('.wf-select2').select2({
-							minimumResultsForSearch: 5
-						});
-					}
-				} else {
-					wfAuditResults = $('#wfAuditResults').empty();
-					$('#wfAuditResultsNoWeakPasswords').tmpl().appendTo(wfAuditResults);
-				}
-			},
-			loadPasswdAuditJobs: function() {
-				var self = this;
-				this.ajax('wordfence_passwdLoadJobs', {}, function(res) {
-					console.log(res);
-					if (res && res.results && res.results.length > 0) {
-						var stat = res.results[0].jobStatus;
-						if (stat == 'running' || stat == 'queued') {
-							setTimeout(function() {
-								self.doPasswdAuditUpdate()
-							}, 10000);
-							$(window).trigger('wf-passwd-audit-running', [res.results[0].id]);
-						} else {
-							$(window).trigger('wf-passwd-audit-not-running');
-							self.loadPasswdAuditResults();
-						}
-					}
-
-					self.displayPWAuditJobs(res);
-				});
-			},
-			deletePasswdAudit: function(jobID) {
-				var self = this;
-				this.ajax('wordfence_deletePasswdAudit', {jobID: jobID}, function(res) {
-					self.loadPasswdAuditJobs(res);
-				});
-			},
-			doFixWeakPasswords: function() {
-				var self = this;
-				var mode = jQuery('#wfPasswdFixAction').val();
-				var ids = jQuery('input.wfUserCheck:checked').map(function() {
-					return jQuery(this).val();
-				}).get();
-				if (ids.length < 1) {
-					self.colorboxModal('300px', "Please select users", "You did not select any users from the list. Select which site members you want to email or to change their passwords.");
-					return;
-				}
-				this.ajax('wordfence_weakPasswordsFix', {
-					mode: mode,
-					ids: ids.join(',')
-				}, function(res) {
-					if (res.ok && res.title && res.msg) {
-						self.colorboxModal('300px', res.title, res.msg);
-					}
-				});
 			},
 			ucfirst: function(str) {
 				str = "" + str;
@@ -2994,20 +2895,6 @@
 				} else { // Invalid length
 					return false;
 				}
-			},
-			startPasswdAudit: function(auditType, emailAddr) {
-				var self = this;
-				this.ajax('wordfence_startPasswdAudit', {auditType: auditType, emailAddr: emailAddr}, function(res) {
-					self.loadPasswdAuditJobs();
-					if (res.ok) {
-						// self.colorboxModal((self.isSmallScreen ? '300px' : '400px'), "Password Audit Started", "Your password audit started successfully. The results will appear here once it is complete. You will also receive an email letting you know the results are ready at: " + emailAddr);
-						$('#wfAuditResults').html($('#wfAuditResultsStarted').tmpl({
-							emailAddr: emailAddr
-						}));
-					} else if (!res.errorMsg) { //error displayed
-						self.colorboxModal((self.isSmallScreen ? '300px' : '400px'), "Error Starting Audit", "An unknown error occurred when trying to start your password audit.");
-					}
-				});
 			},
 
 			deleteAdminUser: function(issueID) {

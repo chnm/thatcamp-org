@@ -36,6 +36,14 @@
 					function(){ jQuery('#wordfenceMisconfiguredHowGetIPsNotice').fadeOut(); }
 				);
 			},
+			dismissAdminNotice: function(nid) {
+				this.ajax('wordfence_dismissAdminNotice', {
+						id: nid
+					},
+					function(res){ jQuery('.wf-admin-notice[data-notice-id="' + nid + '"]').fadeOut(); },
+					function(){ jQuery('.wf-admin-notice[data-notice-id="' + nid + '"]').fadeOut(); }
+				);
+			},
 			setOption: function(key, value, successCallback) {
 				var changes = {};
 				changes[key] = value;

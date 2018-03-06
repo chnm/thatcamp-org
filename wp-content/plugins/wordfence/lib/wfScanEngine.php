@@ -1240,7 +1240,7 @@ class wfScanEngine {
 			$result = $dbh->query($query);
 			if (!is_object($result)) {
 				return array(
-					'errorMsg' => "We were unable to generate the user list for your password audit.",
+					'errorMsg' => "We were unable to generate the user list for your password check.",
 				);
 			}
 			while ($rec = $result->fetch_assoc()) {
@@ -1350,33 +1350,43 @@ class wfScanEngine {
 		}
 	}
 	*/
-	private function scan_diskSpace(){
-		$this->statusIDX['diskSpace'] = wfIssues::statusStart("Scanning to check available disk space");
+	private function scan_diskSpace() {
+		$this->statusIDX['diskSpace'] = wfIssues::statusStart(__('Scanning to check available disk space', 'wordfence'));
 		$this->scanController->startStage(wfScanner::STAGE_SERVER_STATE);
 		wfUtils::errorsOff();
 		$total = @disk_total_space('.');
 		$free = @disk_free_space('.');
 		wfUtils::errorsOn();
-		if( (! $total) || (! $free )){ //If we get zeros it's probably not reading right. If free is zero then we're out of space and already in trouble.
-			wfIssues::statusEnd($this->statusIDX['diskSpace'], wfIssues::STATUS_FAILED);
-			$this->scanController->completeStage(wfScanner::STAGE_SERVER_STATE, wfIssues::STATUS_FAILED);
+		if ($free === false || !$total) {
+			$this->status(2, 'info', __('Unable to access available disk space information', 'wordfence'));
+			wfIssues::statusEnd($this->statusIDX['diskSpace'], wfIssues::STATUS_SECURE);
+			$this->scanController->completeStage(wfScanner::STAGE_SERVER_STATE, wfIssues::STATUS_SECURE);
 			return;
 		}
-		$this->status(2, 'info', "Total disk space: " . sprintf('%.4f', ($total / 1024 / 1024 / 1024)) . "GB -- Free disk space: " . sprintf('%.4f', ($free / 1024 / 1024 / 1024)) . "GB");
-		$freeMegs = sprintf('%.2f', $free / 1024 / 1024);
-		$this->status(2, 'info', "The disk has $freeMegs MB space available");
-		if($freeMegs < 5){
+		
+		$this->status(2, 'info', sprintf(__('Total disk space: %s -- Free disk space: %s', 'wordfence'), wfUtils::formatBytes($total), wfUtils::formatBytes($free)));
+		$freeMegs = round($free / 1024 / 1024, 2);
+		$this->status(2, 'info', sprintf(__('The disk has %s MB available', 'wordfence'), $freeMegs));
+		if ($freeMegs < 5) {
 			$level = 1;
-		} else if($freeMegs < 20){
+		}
+		else if ($freeMegs < 20) {
 			$level = 2;
-		} else {
+		}
+		else {
 			wfIssues::statusEnd($this->statusIDX['diskSpace'], wfIssues::STATUS_SECURE);
 			$this->scanController->completeStage(wfScanner::STAGE_SERVER_STATE, wfIssues::STATUS_SECURE);
 			return;
 		}
 		$haveIssues = wfIssues::STATUS_SECURE;
-		$added = $this->addIssue('diskSpace', $level, 'diskSpace', 'diskSpace' . $level, "You have $freeMegs" . "MB disk space remaining", "You only have $freeMegs" . " Megabytes of your disk space remaining. Please free up disk space or your website may stop serving requests.", array(
-			'spaceLeft' => $freeMegs . "MB" ));
+		$added = $this->addIssue('diskSpace', 
+			$level, 
+			'diskSpace', 
+			'diskSpace' . $level, 
+			sprintf(__('You have %s disk space remaining', 'wordfence'), wfUtils::formatBytes($free)), 
+			sprintf(__('You only have %s of your disk space remaining. Please free up disk space or your website may stop serving requests.', 'wordfence'), wfUtils::formatBytes($free)), 
+			array('spaceLeft' => wfUtils::formatBytes($free))
+		);
 		if ($added == wfIssues::ISSUE_ADDED || $added == wfIssues::ISSUE_UPDATED) { $haveIssues = wfIssues::STATUS_PROBLEM; }
 		else if ($haveIssues != wfIssues::STATUS_SECURE && ($added == wfIssues::ISSUE_IGNOREP || $added == wfIssues::ISSUE_IGNOREC)) { $haveIssues = wfIssues::STATUS_IGNORED; }
 		wfIssues::statusEnd($this->statusIDX['diskSpace'], $haveIssues);
@@ -1624,10 +1634,10 @@ class wfScanEngine {
 		if ($this->isFullScan()) {
 			//Abandoned plugins
 			foreach ($this->pluginRepoStatus as $slug => $status) {
-				if ($status !== false && !is_wp_error($status) && property_exists($status, 'last_updated')) {
-					$lastUpdateTimestamp = strtotime($status->last_updated);
+				if ($status !== false && !is_wp_error($status) && ((is_object($status) && property_exists($status, 'last_updated')) || (is_array($status) && array_key_exists('last_updated', $status)))) {
+					$statusArray = (array) $status;
+					$lastUpdateTimestamp = strtotime($statusArray['last_updated']);
 					if ($lastUpdateTimestamp > 0 && (time() - $lastUpdateTimestamp) > 63072000 /* ~2 years */) {
-						$statusArray = (array) $status;
 						$statusArray['dateUpdated'] = wfUtils::formatLocalTime(get_option('date_format'), $lastUpdateTimestamp);
 						$severity = 2; //Warning
 						$statusArray['abandoned'] = true;
@@ -1868,6 +1878,30 @@ class wfScanEngine {
 		
 		wfIssues::statusEnd($this->statusIDX['suspiciousOptions'], $haveIssues);
 		$this->scanController->completeStage(wfScanner::STAGE_OPTIONS_AUDIT, $haveIssues);
+	}
+	
+	public function scan_geoipSupport() {
+		$this->statusIDX['geoipSupport'] = wfIssues::statusStart("Checking for future GeoIP support");
+		$this->scanController->startStage(wfScanner::STAGE_SERVER_STATE);
+		$haveIssues = wfIssues::STATUS_SECURE;
+		
+		if (version_compare(phpversion(), '5.4') < 0 && wfConfig::get('isPaid') && wfBlock::hasCountryBlock()) {
+			$shortMsg = __('PHP Update Needed for Country Blocking', 'wordfence');
+			$longMsg = sprintf(__('The GeoIP database that is required for country blocking is being updated to a new format in April 2018. This new format requires sites to run PHP 5.4 or newer, and this site is on PHP %s. To ensure country blocking continues functioning, please update PHP prior to that date.', 'wordfence'), wfUtils::cleanPHPVersion());
+			
+			$longMsg .= ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_SCAN_RESULT_GEOIP_UPDATE) . '" target="_blank" rel="noopener noreferrer">Get more information.</a>';
+			
+			$this->status(2, 'info', "Adding issue: {$shortMsg}");
+			
+			$ignoreP = 'geoIPPHPDiscontinuing';
+			$ignoreC = $ignoreP;
+			$added = $this->addIssue('geoipSupport', 1, $ignoreP, $ignoreC, $shortMsg, $longMsg, array());
+			if ($added == wfIssues::ISSUE_ADDED || $added == wfIssues::ISSUE_UPDATED) { $haveIssues = wfIssues::STATUS_PROBLEM; }
+			else if ($haveIssues != wfIssues::STATUS_PROBLEM && ($added == wfIssues::ISSUE_IGNOREP || $added == wfIssues::ISSUE_IGNOREC)) { $haveIssues = wfIssues::STATUS_IGNORED; }
+		}
+		
+		wfIssues::statusEnd($this->statusIDX['geoipSupport'], $haveIssues);
+		$this->scanController->completeStage(wfScanner::STAGE_SERVER_STATE, $haveIssues);
 	}
 
 	public function status($level, $type, $msg){

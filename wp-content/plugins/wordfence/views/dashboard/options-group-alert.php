@@ -96,6 +96,17 @@ if (!isset($collapseable)) {
 					<li>
 						<?php
 						echo wfView::create('options/option-toggled', array(
+							'optionName' => 'alertOn_breachLogin',
+							'enabledValue' => 1,
+							'disabledValue' => 0,
+							'value' => wfConfig::get('alertOn_breachLogin') ? 1 : 0,
+							'title' => __('Alert when someone is blocked from logging in for using a password found in a breach', 'wordfence'),
+						))->render();
+						?>
+					</li>
+					<li>
+						<?php
+						echo wfView::create('options/option-toggled', array(
 							'optionName' => 'alertOn_lostPasswdForm',
 							'enabledValue' => 1,
 							'disabledValue' => 0,

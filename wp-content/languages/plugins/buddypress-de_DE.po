@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - BuddyPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-12-27 21:46:01+0000\n"
+"PO-Revision-Date: 2018-02-27 20:21:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4649,7 +4649,7 @@ msgstr "Als gelesen markieren"
 #: bp-messages/bp-messages-template.php:963
 #: bp-notifications/bp-notifications-template.php:1024
 msgid "Select Bulk Action"
-msgstr "Mehrfachauswahl"
+msgstr "Sammelaktion auswählen"
 
 #: bp-messages/bp-messages-template.php:950
 msgid "Delete Selected"
@@ -8009,7 +8009,7 @@ msgstr "%s Verzeichnis"
 #: bp-core/admin/bp-core-admin-settings.php:271
 #: bp-core/bp-core-template.php:120
 msgid "Options"
-msgstr "Einstellungen"
+msgstr "Optionen"
 
 #: bp-core/bp-core-functions.php:2641
 #: bp-core/classes/class-bp-core-login-widget.php:116
@@ -9106,7 +9106,7 @@ msgstr "Erweiterte Profile"
 #: bp-templates/bp-legacy/buddypress/members/single/settings/profile.php:67
 #: bp-themes/bp-default/members/single/settings/profile.php:92
 msgid "Save Settings"
-msgstr "Einstellungen übernehmen"
+msgstr "Einstellungen speichern"
 
 #: bp-core/admin/bp-core-admin-components.php:26
 #: bp-core/admin/bp-core-admin-functions.php:431

@@ -66,9 +66,9 @@ if (isset($_GET['source']) && wfPage::isValidPage($_GET['source'])) {
 			<?php
 			$indexOptions = array(
 				'wf-option-apiKey' => __('License Key', 'wordfence'),
-				'wf-option-displayTopLevelOptions' => __('Display All Options menu option', 'wordfence'),
-				'wf-option-displayTopLevelBlocking' => __('Display Blocking menu option', 'wordfence'),
-				'wf-option-displayTopLevelLiveTraffic' => __('Display Live Traffic menu option', 'wordfence'),
+				'wf-option-displayTopLevelOptions' => __('Display All Options menu item', 'wordfence'),
+				'wf-option-displayTopLevelBlocking' => __('Display Blocking menu item', 'wordfence'),
+				'wf-option-displayTopLevelLiveTraffic' => __('Display Live Traffic menu item', 'wordfence'),
 				'wf-option-autoUpdate' => __('Update Wordfence automatically when a new version is released?', 'wordfence'),
 				'wf-option-alertEmails' => __('Where to email alerts', 'wordfence'),
 				'wf-option-howGetIPs' => __('How does Wordfence get IPs', 'wordfence'),
@@ -120,6 +120,7 @@ if (isset($_GET['source']) && wfPage::isValidPage($_GET['source'])) {
 				'wf-option-loginSec-lockInvalidUsers' => __('Immediately lock out invalid usernames', 'wordfence'),
 				'wf-option-loginSec-userBlacklist' => __('Immediately block the IP of users who try to sign in as these usernames', 'wordfence'),
 				'wf-option-loginSec-strongPasswds-enabled' => __('Enforce strong passwords', 'wordfence'),
+				'wf-option-loginSec-breachPasswds-enabled' => __('Prevent the use of passwords leaked in data breaches', 'wordfence'),
 				'wf-option-loginSec-maskLoginErrors' => __('Don\'t let WordPress reveal valid users in login errors', 'wordfence'),
 				'wf-option-loginSec-blockAdminReg' => __('Prevent users registering "admin" username if it doesn\'t exist', 'wordfence'),
 				'wf-option-loginSec-disableAuthorScan' => __('Prevent discovery of usernames through "/?author=N" scans, the oEmbed API, and the WordPress REST API', 'wordfence'),

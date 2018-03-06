@@ -147,7 +147,9 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 			//Add row(s)
 			$('#wf-blocks-loading').remove();
 			if (!append && payload['blocks'].length == 0) {
-				table.find('tbody').append($('#wf-no-blocks-tmpl').tmpl());
+				if (!payload['loading']) {
+					table.find('tbody').append($('#wf-no-blocks-tmpl').tmpl());
+				}
 			}
 			else {
 				$('#wf-no-blocks').remove();
@@ -254,12 +256,17 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 				var totalCount = $('.wf-blocks-table-bulk-checkbox.wf-option-checkbox:visible').length;
 				var checked = $('.wf-blocks-table-bulk-checkbox.wf-option-checkbox.wf-checked:visible');
 				var checkedCount = checked.length;
+				var removingCountryBlock = false;
 				var blockIDs = [];
 				var rows = [];
 				for (var i = 0; i < checked.length; i++) {
 					var tr = $(checked[i]).closest('tr');
 					rows.push(tr);
 					blockIDs.push(tr.data('id'));
+					
+					if (tr.find('td[data-column="type"]').data('sort') == <?php echo (int) wfBlock::TYPE_COUNTRY; ?>) {
+						removingCountryBlock = true;
+					}
 				}
 
 				var prompt = $('#wfTmpl_unblockPrompt').tmpl({count: checkedCount});
@@ -286,6 +293,11 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 								for (var i = 0; i < rows.length; i++) {
 									$(rows[i]).remove();
 								}
+								
+								if (removingCountryBlock) {
+									$('#wf-blocks-wrapper').data('hasCountryBlock', '');
+								}
+								
 								$(window).trigger('wordfenceUpdateBulkSelect');
 								$(window).trigger('wordfenceUpdateBlockButtons');
 							}

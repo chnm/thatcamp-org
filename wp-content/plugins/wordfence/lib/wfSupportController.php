@@ -13,6 +13,7 @@ class wfSupportController {
 	
 	const ITEM_LOCKED_OUT = 'locked-out';
 	const ITEM_AJAX_BLOCKED = 'ajax-blocked';
+	const ITEM_USING_BREACH_PASSWORD = 'using-breach-password';
 	
 	const ITEM_WIDGET_LOCAL_ATTACKS = 'widget-local-attacks';
 	
@@ -58,6 +59,7 @@ class wfSupportController {
 	const ITEM_FIREWALL_WAF_OPTION_IMMEDIATELY_LOCK_OUT_INVALID_USERS = 'firewall-waf-option-immediately-lock-out-invalid-users';
 	const ITEM_FIREWALL_WAF_OPTION_IMMEDIATELY_BLOCK_USERS = 'firewall-waf-option-immediately-block-users';
 	const ITEM_FIREWALL_WAF_OPTION_ENFORCE_STRONG_PASSWORDS = 'firewall-waf-option-enforce-strong-passwords';
+	const ITEM_FIREWALL_WAF_OPTION_PREVENT_BREACH_PASSWORDS = 'firewall-waf-option-prevent-breach-passwords';
 	const ITEM_FIREWALL_WAF_OPTION_MASK_LOGIN_ERRORS = 'firewall-waf-option-mask-login-errors';
 	const ITEM_FIREWALL_WAF_OPTION_PREVENT_ADMIN_REGISTRATION = 'firewall-waf-option-prevent-admin-registration';
 	const ITEM_FIREWALL_WAF_OPTION_PREVENT_AUTHOR_SCAN = 'firewall-waf-option-prevent-author-scan';
@@ -83,6 +85,7 @@ class wfSupportController {
 	const ITEM_FIREWALL_BLOCKING_OPTION_BLOCK_LOGGED_IN = 'firewall-blocking-option-block-logged-in';
 	const ITEM_FIREWALL_BLOCKING_BYPASS_COOKIE = 'firewall-blocking-bypass-cookie';
 	const ITEM_FIREWALL_BLOCKING_BYPASS_REDIRECT = 'firewall-blocking-bypass-redirect';
+	const ITEM_FIREWALL_BLOCKING_FULL_SITE = 'firewall-blocking-full-site';
 	
 	const ITEM_SCAN = 'scan';
 	const ITEM_SCAN_STATUS_OVERALL = 'scan-status-overall';
@@ -127,11 +130,11 @@ class wfSupportController {
 	const ITEM_SCAN_RESULT_PLUGIN_ABANDONED = 'scan-result-plugin-abandoned';
 	const ITEM_SCAN_RESULT_PLUGIN_REMOVED = 'scan-result-plugin-removed';
 	const ITEM_SCAN_RESULT_OPTION_MALWARE_URL = 'scan-result-option-malware-url';
+	const ITEM_SCAN_RESULT_GEOIP_UPDATE = 'scan-result-geoip-update';
 	
 	const ITEM_TOOLS_TWO_FACTOR = 'tools-two-factor';
 	const ITEM_TOOLS_LIVE_TRAFFIC = 'tools-live-traffic';
 	const ITEM_TOOLS_LIVE_TRAFFIC_OPTION_ENABLE = 'tools-live-traffic-option-enable';
-	const ITEM_TOOLS_PASSWD_AUDIT = 'tools-passwd-audit';
 	const ITEM_TOOLS_COMMENT_SPAM = 'tools-comment-spam';
 	const ITEM_TOOLS_COMMENT_SPAM_OPTION_HOLD_ANONYMOUS = 'tools-comment-spam-option-hold-anonymous';
 	const ITEM_TOOLS_COMMENT_SPAM_OPTION_SCAN = 'tools-comment-spam-option-scan';
@@ -169,6 +172,7 @@ class wfSupportController {
 				
 			case self::ITEM_LOCKED_OUT:
 			case self::ITEM_AJAX_BLOCKED:
+			case self::ITEM_USING_BREACH_PASSWORD:
 				
 			case self::ITEM_WIDGET_LOCAL_ATTACKS:
 				
@@ -214,6 +218,7 @@ class wfSupportController {
 			case self::ITEM_FIREWALL_WAF_OPTION_IMMEDIATELY_LOCK_OUT_INVALID_USERS:
 			case self::ITEM_FIREWALL_WAF_OPTION_IMMEDIATELY_BLOCK_USERS:
 			case self::ITEM_FIREWALL_WAF_OPTION_ENFORCE_STRONG_PASSWORDS:
+			case self::ITEM_FIREWALL_WAF_OPTION_PREVENT_BREACH_PASSWORDS:
 			case self::ITEM_FIREWALL_WAF_OPTION_MASK_LOGIN_ERRORS:
 			case self::ITEM_FIREWALL_WAF_OPTION_PREVENT_ADMIN_REGISTRATION:
 			case self::ITEM_FIREWALL_WAF_OPTION_PREVENT_AUTHOR_SCAN:
@@ -239,6 +244,7 @@ class wfSupportController {
 			case self::ITEM_FIREWALL_BLOCKING_OPTION_BLOCK_LOGGED_IN:
 			case self::ITEM_FIREWALL_BLOCKING_BYPASS_COOKIE:
 			case self::ITEM_FIREWALL_BLOCKING_BYPASS_REDIRECT:
+			case self::ITEM_FIREWALL_BLOCKING_FULL_SITE:
 				
 			case self::ITEM_SCAN:
 			case self::ITEM_SCAN_STATUS_OVERALL:
@@ -283,11 +289,11 @@ class wfSupportController {
 			case self::ITEM_SCAN_RESULT_PLUGIN_ABANDONED:
 			case self::ITEM_SCAN_RESULT_PLUGIN_REMOVED:
 			case self::ITEM_SCAN_RESULT_OPTION_MALWARE_URL:
+			case self::ITEM_SCAN_RESULT_GEOIP_UPDATE:
 				
 			case self::ITEM_TOOLS_TWO_FACTOR:
 			case self::ITEM_TOOLS_LIVE_TRAFFIC:
 			case self::ITEM_TOOLS_LIVE_TRAFFIC_OPTION_ENABLE:
-			case self::ITEM_TOOLS_PASSWD_AUDIT:
 			case self::ITEM_TOOLS_COMMENT_SPAM:
 			case self::ITEM_TOOLS_COMMENT_SPAM_OPTION_HOLD_ANONYMOUS:
 			case self::ITEM_TOOLS_COMMENT_SPAM_OPTION_SCAN:

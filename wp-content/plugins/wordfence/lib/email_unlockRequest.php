@@ -9,7 +9,7 @@ These instructions <b>will be valid for 30 minutes</b>
 from the time they were sent.
 <ul>
 <li>
-<a href="<?php echo $unlockHref; ?>&func=unlockMyIP">Click here to unlock your ability to sign-in and to access to the site.</a> Do this if you simply need to regain access because you were accidentally locked out.
+	<a href="<?php echo $unlockHref; ?>&func=unlockMyIP">Click here to unlock your ability to sign-in and to access to the site.</a> Do this if you simply need to regain access because you were accidentally locked out. If you received an "Insecure Password" message before getting locked out, you may also need to reset your password. <a href="<?php echo wfSupportController::esc_supportURL(wfSupportController::ITEM_USING_BREACH_PASSWORD); ?>">Learn More</a>
 </li>
 <li>
 <a href="<?php echo $unlockHref; ?>&func=unlockAllIPs">Click here to unblock all IP addresses.</a> Do this if you still can't regain access using the link above. It causes everyone who is blocked or locked out to be able to access your site again.

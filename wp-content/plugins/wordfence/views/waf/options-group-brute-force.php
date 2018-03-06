@@ -144,6 +144,21 @@ if (!isset($collapseable)) {
 					</li>
 					<li>
 						<?php
+						echo wfView::create('options/option-toggled-select', array(
+							'toggleOptionName' => 'loginSec_breachPasswds_enabled',
+							'enabledToggleValue' => 1,
+							'disabledToggleValue' => 0,
+							'toggleValue' => !!wfConfig::get('loginSec_breachPasswds_enabled') ? 1 : 0,
+							'selectOptionName' => 'loginSec_breachPasswds',
+							'selectOptions' => array(array('value' => 'admins', 'label' => __('For admins only', 'wordfence')), array('value' => 'pubs', 'label' => __('For all users with "publish posts" capability', 'wordfence'))),
+							'selectValue' => wfConfig::get('loginSec_breachPasswds'),
+							'title' => __('Prevent the use of passwords leaked in data breaches', 'wordfence'),
+							'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_FIREWALL_WAF_OPTION_PREVENT_BREACH_PASSWORDS),
+						))->render();
+						?>
+					</li>
+					<li>
+						<?php
 						echo wfView::create('options/option-label', array(
 							'titleHTML' => '<strong>' . __('Additional Options', 'wordfence') . '</strong>',
 							'noSpacer' => true,

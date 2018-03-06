@@ -15,7 +15,6 @@ if (wfOnboardingController::shouldShowAttempt3()) {
 		$tabsArray = array(
 			array('twofactor', __('Two Factor Authentication')),
 			array('livetraffic', __('Live Traffic')),
-			array('pwaudit', __('Password Audit')),
 			array('commentspam', __('Comment Spam Filter')),
 			array('whois', __('Whois Lookup')),
 			array('diagnostics', __('Diagnostics')),

@@ -81,7 +81,11 @@ if (!isset($collapseable)) {
 											}).val(<?php echo json_encode($wafStatus) ?>).triggerHandler('change');
 
 											$('#waf-learning-mode-grace-period .wf-datetime').datetimepicker({
-												timeFormat: 'hh:mmtt z'
+												dateFormat: 'yy-mm-dd',
+												timezone: <?php echo (int) wfUtils::timeZoneMinutes($config->getConfig('learningModeGracePeriod') ? (int) $config->getConfig('learningModeGracePeriod') : false); ?>,
+												showTime: false,
+												showTimepicker: false,
+												showMonthAfterYear: true
 											}).each(function() {
 												var el = $(this);
 												if (el.attr('data-value')) {
@@ -190,6 +194,7 @@ if (!isset($collapseable)) {
 										}
 
 										$('#wf-waf-install-continue, #wf-waf-uninstall-continue').toggleClass('wf-disabled', matchCount != backupsAvailable.length);
+										$('#wf-waf-install-continue, #wf-waf-uninstall-continue').text($('.wf-manual-waf-config').is(':visible') ? 'Close' : 'Continue');
 									};
 
 									var installUninstallResponseHandler = function(action, res) {
@@ -293,7 +298,10 @@ if (!isset($collapseable)) {
 												}
 											});
 
-											$('#wf-waf-server-config').select2();
+											$('#wf-waf-server-config').select2({
+												minimumResultsForSearch: -1,
+												width: WFAD.isSmallScreen ? '300px' : '500px'
+											});
 
 											$('#wf-waf-include-prepend > li').each(function(index, element) {
 												$(element).on('click', function(e) {
@@ -308,10 +316,29 @@ if (!isset($collapseable)) {
 													});
 												});
 											});
-
+											
 											var nginxNotice = $('.wf-nginx-waf-config');
+											var manualNotice = $('.wf-manual-waf-config');
 											$('#wf-waf-server-config').on('change', function() {
 												var el = $(this);
+												if (manualNotice.length) {
+													if (el.val() == 'manual') {
+														$('.wf-waf-automatic-only').hide();
+														manualNotice.fadeIn(400, function () {
+															$.wfcolorbox.resize();
+														});
+													}
+													else {
+														$('.wf-waf-automatic-only').show();
+														manualNotice.fadeOut(400, function () {
+															$.wfcolorbox.resize();
+														});
+													}
+												}
+												else {
+													$('.wf-waf-automatic-only').show();
+												}
+												
 												$('.wf-waf-backups').hide();
 												$('.wf-waf-backups-' + el.val().replace(/[^a-z0-9\-]/i, '')).show();
 
@@ -326,17 +353,23 @@ if (!isset($collapseable)) {
 															$.wfcolorbox.resize();
 														});
 													}
-												}
-												else {
-													$.wfcolorbox.resize();
+
+													validateContinue();
+													return;
 												}
 
+												$.wfcolorbox.resize();
 												validateContinue();
 											}).triggerHandler('change');
 
 											$('#wf-waf-install-continue').on('click', function(e) {
 												e.preventDefault();
 												e.stopPropagation();
+
+												if ($('.wf-manual-waf-config').is(':visible')) {
+													WFAD.colorboxClose();
+													return;
+												}
 
 												var serverConfiguration = $('#wf-waf-server-config').val();
 												var currentAutoPrepend = $('#wf-waf-include-prepend .wf-active').data('optionValue');
@@ -349,6 +382,11 @@ if (!isset($collapseable)) {
 											$('#wf-waf-uninstall-continue').on('click', function(e) {
 												e.preventDefault();
 												e.stopPropagation();
+
+												if ($('.wf-manual-waf-config').is(':visible')) {
+													WFAD.colorboxClose();
+													return;
+												}
 
 												var serverConfiguration = $('#wf-waf-server-config').val();
 

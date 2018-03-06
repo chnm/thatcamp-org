@@ -716,6 +716,16 @@ END AS `sortOrder` FROM `{$blocksTable}` WHERE ";
 	}
 	
 	/**
+	 * Returns whether or not there is a country block rule.
+	 * 
+	 * @return bool
+	 */
+	public static function hasCountryBlock() {
+		$countryBlocks = self::countryBlocks();
+		return !empty($countryBlocks);
+	}
+	
+	/**
 	 * Returns the value for the country blocking bypass cookie.
 	 *
 	 * @return string

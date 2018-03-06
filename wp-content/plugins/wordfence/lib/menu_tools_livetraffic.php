@@ -307,8 +307,8 @@ echo wfView::create('tools/options-group-live-traffic', array(
 															<h2>Activity Detail</h2>
 															<div>
 																<span data-bind="if: action() != 'loginOK' && action() != 'loginFailValidUsername' && action() != 'loginFailInvalidUsername' && user()">
-																	<span data-bind="html: user.avatar" class="wfAvatar"></span>
-																	<a data-bind="attr: { href: user.editLink }, text: user().display_name"
+																	<span data-bind="html: user().avatar" class="wfAvatar"></span>
+																	<a data-bind="attr: { href: user().editLink }, text: user().display_name"
 																			target="_blank" rel="noopener noreferrer"></a>
 																</span>
 																<span data-bind="if: loc()">
@@ -432,7 +432,7 @@ echo wfView::create('tools/options-group-live-traffic', array(
 																attr: { href: 'admin.php?page=WordfenceTools&whoisval=' + IP() + '#top#whois' }"
 																		target="_blank" rel="noopener noreferrer">Run Whois</a>
 																<a class="wf-btn wf-btn-default wf-btn-sm"
-																		data-bind="click: showRecentTraffic, attr: { href: WFAD.makeIPTrafLink(IP()) }" target="_blank" rel="noopener noreferrer">
+																		data-bind="click: showRecentTraffic" target="_blank" rel="noopener noreferrer">
 																	<span class="wf-hidden-xs"><?php _e('See recent traffic', 'wordfence'); ?></span><span class="wf-visible-xs"><?php _e('Recent', 'wordfence'); ?></span>
 																</a>
 																<span data-bind="if: action() == 'blocked:waf'">

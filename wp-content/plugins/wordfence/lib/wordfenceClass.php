@@ -35,7 +35,9 @@ require_once(dirname(__FILE__) . '/wfPersistenceController.php');
 require_once(dirname(__FILE__) . '/wfImportExportController.php');
 require_once(dirname(__FILE__) . '/wfOnboardingController.php');
 require_once(dirname(__FILE__) . '/wfSupportController.php');
+require_once(dirname(__FILE__) . '/wfCredentialsController.php');
 require_once(dirname(__FILE__) . '/wfDateLocalization.php');
+require_once(dirname(__FILE__) . '/wfAdminNoticeQueue.php');
 
 if (class_exists('WP_REST_Users_Controller')) { //WP 4.7+
 	require_once('wfRESTAPI.php');
@@ -1127,8 +1129,9 @@ SQL
 		if(wfUtils::hasLoginCookie()){
 			add_action('user_profile_update_errors', 'wordfence::validateProfileUpdate', 0, 3 );
 			add_action('profile_update', 'wordfence::profileUpdateAction', '99', 2);
-			add_action('validate_password_reset', 'wordfence::validatePassword', 10, 2 );
 		}
+		
+		add_action('validate_password_reset', 'wordfence::validatePassword', 10, 2);
 
 		// Add actions for the email summary
 		add_action('wordfence_email_activity_report', array('wfActivityReport', 'executeCronJob'));
@@ -1343,34 +1346,54 @@ SQL
 	public static function validateProfileUpdate($errors, $update, $userData){
 		wordfence::validatePassword($errors, $userData);
 	}
-	public static function validatePassword($errors, $userData){
-		$password = ( isset( $_POST[ 'pass1' ] ) && trim( $_POST[ 'pass1' ] ) ) ? $_POST[ 'pass1' ] : false;
-		$user_id = isset( $userData->ID ) ? $userData->ID : false;
-		$username = isset( $_POST["user_login"] ) ? $_POST["user_login"] : $userData->user_login;
-		if($password == false){ return $errors; }
-		if($errors->get_error_data("pass") ){ return $errors; }
-		$enforce = false;
+	public static function validatePassword($errors, $userData) {
+		$password = (isset($_POST['pass1']) && trim($_POST['pass1'])) ? $_POST['pass1'] : false;
+		$user_id = isset($userData->ID) ? $userData->ID : false;
+		$username = isset($_POST["user_login"]) ? $_POST["user_login"] : $userData->user_login;
+		if ($password == false) { return $errors; }
+		if ($errors->get_error_data("pass")) { return $errors; }
+		
+		$enforceStrongPasswds = false;
 		if (wfConfig::get('loginSec_strongPasswds_enabled')) {
 			if (wfConfig::get('loginSec_strongPasswds') == 'pubs') {
 				if (user_can($user_id, 'publish_posts')) {
-					$enforce = true;
+					$enforceStrongPasswds = true;
 				}
 			}
-			else if (wfConfig::get('loginSec_strongPasswds')  == 'all') {
-				$enforce = true;
+			else if (wfConfig::get('loginSec_strongPasswds') == 'all') {
+				$enforceStrongPasswds = true;
 			}
 		}
-		if($enforce){
-			if(! wordfence::isStrongPasswd($password, $username)){
-				$errors->add('pass', "Please choose a stronger password. Try including numbers, symbols and a mix of upper and lower case letters and remove common words.");
-				return $errors;
-			}
-		}
-		$twoFactorUsers = wfConfig::get_ser('twoFactorUsers', array());
-		if(preg_match(self::$passwordCodePattern, $password) && isset($twoFactorUsers) && is_array($twoFactorUsers) && sizeof($twoFactorUsers) > 0){
-			$errors->add('pass', "Passwords containing a space followed by 'wf' without quotes are not allowed.");
+		
+		if ($enforceStrongPasswds && !wordfence::isStrongPasswd($password, $username)) {
+			$errors->add('pass', __('Please choose a stronger password. Try including numbers, symbols, and a mix of upper and lowercase letters and remove common words.', 'wordfence'));
 			return $errors;
 		}
+		
+		$twoFactorUsers = wfConfig::get_ser('twoFactorUsers', array());
+		if (preg_match(self::$passwordCodePattern, $password) && is_array($twoFactorUsers) && count($twoFactorUsers) > 0) {
+			$errors->add('pass', __('Passwords containing a space followed by "wf" without quotes are not allowed.', 'wordfence'));
+			return $errors;
+		}
+		
+		$enforceBreachedPasswds = false;
+		if (wfConfig::get('loginSec_breachPasswds_enabled')) {
+			if ($user_id !== false && wfConfig::get('loginSec_breachPasswds') == 'admins' && wfUtils::isAdmin($user_id)) {
+				$enforceBreachedPasswds = true;
+			}
+			else if ($user_id !== false && wfConfig::get('loginSec_breachPasswds') == 'pubs' && user_can($user_id, 'publish_posts')) {
+				$enforceBreachedPasswds = true;
+			}
+		}
+		
+		if ($enforceBreachedPasswds && wfCredentialsController::isLeakedPassword($username, $password)) {
+			$errors->add('pass', sprintf(__('Please choose a different password. The password you are using exists on lists of passwords leaked in data breaches. Attackers use such lists to break into sites and install malicious code. <a href="%s">Learn More</a>', 'wordfence'), wfSupportController::esc_supportURL(wfSupportController::ITEM_USING_BREACH_PASSWORD)));
+			return $errors;
+		}
+		else if ($user_id !== false) {
+			wfAdminNoticeQueue::removeAdminNotice(false, '2faBreachPassword', array($user_id));
+		}
+		
 		return $errors;
 	}
 	public static function isStrongPasswd($passwd, $username ) {
@@ -1843,6 +1866,21 @@ SQL
 		
 		$twoFactorUsers = wfConfig::get_ser('twoFactorUsers', array());
 		$userDat = (isset($_POST['wordfence_userDat']) ? $_POST['wordfence_userDat'] : false);
+		
+		$checkBreachList = $secEnabled &&
+			!wfBlock::isWhitelisted($IP) &&
+			wfConfig::get('loginSec_breachPasswds_enabled') &&
+			is_object($authUser) &&
+			get_class($authUser) == 'WP_User' &&
+			((wfConfig::get('loginSec_breachPasswds') == 'admins' && wfUtils::isAdmin($authUser)) || (wfConfig::get('loginSec_breachPasswds') == 'pubs' && user_can($authUser, 'publish_posts')));
+		
+		$usingBreachedPassword = false;
+		if ($checkBreachList) {
+			if (wfCredentialsController::isLeakedPassword($authUser->username, $passwd)) {
+				$usingBreachedPassword = true;
+			}
+		}
+		
 		$checkTwoFactor = $secEnabled &&
 			!wfBlock::isWhitelisted($IP) &&
 			wfConfig::get('isPaid') &&
@@ -1851,6 +1889,7 @@ SQL
 			sizeof($twoFactorUsers) > 0 &&
 			is_object($userDat) &&
 			get_class($userDat) == 'WP_User';
+		
 		if ($checkTwoFactor) {
 			$twoFactorRecord = false;
 			$hasActivatedTwoFactorUser = false;
@@ -1888,6 +1927,10 @@ SQL
 					}
 					
 					return self::processBruteForceAttempt(self::$authError, $username, $passwd);
+				}
+				
+				if ($usingBreachedPassword) {
+					wfAdminNoticeQueue::addAdminNotice(wfAdminNotice::SEVERITY_CRITICAL, sprintf(__('<strong>WARNING: </strong>The password you are using exists on lists of passwords leaked in data breaches. Attackers use such lists to break into sites and install malicious code. Please <a href="%s">change your password</a>. <a href="%s">Learn More</a>', 'wordfence'), self_admin_url('profile.php'), wfSupportController::esc_supportURL(wfSupportController::ITEM_USING_BREACH_PASSWORD)), '2faBreachPassword', array($authUser->ID));
 				}
 				
 				if (isset($twoFactorRecord[5])) { //New method TOTP
@@ -2007,6 +2050,10 @@ SQL
 				
 				if ($twoFactorRecord) {
 					if ($twoFactorRecord[0] == $userDat->ID && $twoFactorRecord[3] == 'activated') { //Yup, enabled, so require the code
+						if ($usingBreachedPassword) {
+							wfAdminNoticeQueue::addAdminNotice(wfAdminNotice::SEVERITY_CRITICAL, sprintf(__('<strong>WARNING: </strong>The password you are using exists on lists of passwords leaked in data breaches. Attackers use such lists to break into sites and install malicious code. Please <a href="%s">change your password</a>. <a href="%s">Learn More</a>', 'wordfence'), self_admin_url('profile.php'), wfSupportController::esc_supportURL(wfSupportController::ITEM_USING_BREACH_PASSWORD)), '2faBreachPassword', array($authUser->ID));
+						}
+						
 						$loginNonce = wfWAFUtils::random_bytes(20);
 						if ($loginNonce === false) { //Should never happen but is technically possible, allow login
 							$requireAdminTwoFactor = false;
@@ -2150,6 +2197,17 @@ SQL
 						}
 					}
 				}
+				else if ($usingBreachedPassword) {
+					$username = $authUser->user_login;
+					self::getLog()->logLogin('loginFailValidUsername', 1, $username);
+					if (wfConfig::get('alertOn_breachLogin')) {
+						wordfence::alert(__('User login blocked for insecure password', 'wordfence'), sprintf(__('A user with username "%s" tried to sign in to your WordPress site. Access was denied because the password being used exists on lists of passwords leaked in data breaches. Attackers use such lists to break into sites and install malicious code. Please change or reset the password (%s) to reactivate this account. Learn More: %s', 'wordfence'), $username, wp_lostpassword_url(), wfSupportController::esc_supportURL(wfSupportController::ITEM_USING_BREACH_PASSWORD)), wfUtils::getIP());
+					}
+					
+					remove_action('login_errors', 'limit_login_fixup_error_messages'); //We're forced to do this because limit-login-attempts does not have any allowances for legitimate error messages
+					self::$authError = new WP_Error('breached_password', sprintf(__('<strong>INSECURE PASSWORD:</strong> Your login attempt has been blocked because the password you are using exists on lists of passwords leaked in data breaches. Attackers use such lists to break into sites and install malicious code. Please <a href="%s">reset your password</a> to reactivate your account. <a href="%s">Learn More</a>'), wp_lostpassword_url(), wfSupportController::esc_supportURL(wfSupportController::ITEM_USING_BREACH_PASSWORD)));
+					return self::$authError;
+				}
 				
 				if ($requireAdminTwoFactor && wfUtils::isAdmin($authUser)) {
 					$username = $authUser->user_login;
@@ -2162,6 +2220,17 @@ SQL
 				//User is not configured for two factor. Sign in without two factor.
 			}
 		} //End: if ($checkTwoFactor)
+		else if ($usingBreachedPassword) {
+			$username = $authUser->user_login;
+			self::getLog()->logLogin('loginFailValidUsername', 1, $username);
+			if (wfConfig::get('alertOn_breachLogin')) {
+				wordfence::alert(__('User login blocked for insecure password', 'wordfence'), sprintf(__('A user with username "%s" tried to sign in to your WordPress site. Access was denied because the password being used exists on lists of passwords leaked in data breaches. Attackers use such lists to break into sites and install malicious code. Please change or reset the password (%s) to reactivate this account. Learn More: %s', 'wordfence'), $username, wp_lostpassword_url(), wfSupportController::esc_supportURL(wfSupportController::ITEM_USING_BREACH_PASSWORD)), wfUtils::getIP());
+			}
+			
+			remove_action('login_errors', 'limit_login_fixup_error_messages'); //We're forced to do this because limit-login-attempts does not have any allowances for legitimate error messages
+			self::$authError = new WP_Error('breached_password', sprintf(__('<strong>INSECURE PASSWORD:</strong> Your login attempt has been blocked because the password you are using exists on lists of passwords leaked in data breaches. Attackers use such lists to break into sites and install malicious code. Please <a href="%s">reset your password</a> to reactivate your account. <a href="%s">Learn More</a>'), wp_lostpassword_url(), wfSupportController::esc_supportURL(wfSupportController::ITEM_USING_BREACH_PASSWORD)));
+			return self::$authError;
+		}
 		
 		return self::processBruteForceAttempt($authUser, $username, $passwd);
 	}
@@ -2977,6 +3046,12 @@ SQL
 		}
 		return array('ok' => 1);
 	}
+	public static function ajax_dismissAdminNotice_callback() {
+		if (isset($_POST['id'])) {
+			wfAdminNoticeQueue::removeAdminNotice($_POST['id']);
+		}
+		return array('ok' => 1);
+	}
 	public static function ajax_updateConfig_callback(){
 		$key = $_POST['key'];
 		$val = $_POST['val'];
@@ -3110,7 +3185,7 @@ SQL
 			$entry['reasonDisplay'] = esc_html($b->reason);
 			$entry['expiration'] = $b->expiration;
 			$entry['expirationSort'] = $b->expiration;
-			$entry['expirationDisplay'] = ($b->expiration == wfBlock::DURATION_FOREVER ? __('Indefinite', 'wordfence') : esc_html(wfUtils::formatLocalTime($dateFormat, $b->expiration)));
+			$entry['expirationDisplay'] = ($b->expiration == wfBlock::DURATION_FOREVER ? __('Permanent', 'wordfence') : esc_html(wfUtils::formatLocalTime($dateFormat, $b->expiration)));
 			$entry['blockCountSort'] = $b->blockedHits;
 			$entry['blockCountDisplay'] = $b->blockedHits;
 			$entry['lastAttemptSort'] = $b->lastAttempt;
@@ -3544,14 +3619,15 @@ HTACCESS;
 	public static function ajax_loadIssues_callback(){
 		$offset = isset($_POST['offset']) ? intval($_POST['offset']) : 0;
 		$limit = isset($_POST['limit']) ? intval($_POST['limit']) : WORDFENCE_SCAN_ISSUES_PER_PAGE;
+		$ignoredOffset = isset($_POST['ignoredOffset']) ? intval($_POST['ignoredOffset']) : 0;
+		$ignoredLimit = isset($_POST['ignoredLimit']) ? intval($_POST['ignoredLimit']) : WORDFENCE_SCAN_ISSUES_PER_PAGE;
 		
-		$i = new wfIssues();
-		$iss = $i->getIssues($offset, $limit);
-		$counts = $i->getIssueCounts();
+		$issues = wfIssues::shared()->getIssues($offset, $limit, $ignoredOffset, $ignoredLimit);
+		$issueCounts = array_merge(array('new' => 0, 'ignoreP' => 0, 'ignoreC' => 0), wfIssues::shared()->getIssueCounts());
+		
 		return array(
-			'issuesLists' => $iss,
-			'issueCounts' => $counts,
-			'lastScanCompleted' => wfConfig::get('lastScanCompleted')
+			'issues' => $issues,
+			'issueCounts' => $issueCounts,
 			);
 	}
 	public static function ajax_ticker_callback() {
@@ -3679,7 +3755,7 @@ HTACCESS;
 		$issues = 0;
 		$issueCounts = array_merge(array('new' => 0, 'ignoreP' => 0, 'ignoreC' => 0), wfIssues::shared()->getIssueCounts());
 		if ($lastIssueUpdateTimestamp > $_POST['lastissuetime']) {
-			$issues = wfIssues::shared()->getIssues();
+			$issues = wfIssues::shared()->getIssues(0, WORDFENCE_SCAN_ISSUES_PER_PAGE, 0, WORDFENCE_SCAN_ISSUES_PER_PAGE);
 		}
 		
 		wfUtils::doNotCache();
@@ -3715,8 +3791,8 @@ HTACCESS;
 			$errors = array();
 			$wfIssues = new wfIssues();
 			$issueCount = $wfIssues->getIssueCount();
-			for ($offset = 0; $offset < $issueCount; $offset += 100) {
-				$issues = $wfIssues->getIssues($offset, 100);
+			for ($offset = floor($issueCount / 100) * 100; $offset >= 0; $offset -= 100) {
+				$issues = $wfIssues->getIssues($offset, 100, 0, 0);
 				foreach ($issues['new'] as $i) {
 					if ($op == 'del' && @$i['data']['canDelete']) {
 						$file = $i['data']['file'];
@@ -3747,14 +3823,17 @@ HTACCESS;
 							continue;
 						}
 						
-						$dat = $i['data'];
-						$result = self::getWPFileContent($dat['file'], $dat['cType'], $dat['cName'], $dat['cVersion']);
-						if ($result['errorMsg']) {
+						$result = array();
+						if (isset($i['data']) && is_array($i['data']) && isset($i['data']['file']) && isset($i['data']['cType']) && isset($i['data']['cName']) && isset($i['data']['cVersion'])) {
+							$result = self::getWPFileContent($i['data']['file'], $i['data']['cType'], $i['data']['cName'], $i['data']['cVersion']);
+						}
+						
+						if (is_array($result) && isset($result['errorMsg'])) {
 							$errors[] = $result['errorMsg'];
 							continue;
 						}
-						else if (!$result['fileContent']) {
-							$errors[] = sprintf(__('We could not get the original file of %s to do a repair.', 'wordfence'), wp_kses($file, array()));
+						else if (!is_array($result) || !isset($result['fileContent'])) {
+							$errors[] = sprintf(__('We could not retrieve the original file of %s to do a repair.', 'wordfence'), wp_kses($file, array()));
 							continue;
 						}
 						
@@ -3792,7 +3871,7 @@ HTACCESS;
 				}
 			}
 			
-			if ($filesWorkedOn > 0 && sizeof($errors) > 0) {
+			if ($filesWorkedOn > 0 && count($errors) > 0) {
 				$headMsg = ($op == 'del' ? __('Deleted some files with errors', 'wordfence') : __('Repaired some files with errors', 'wordfence'));
 				$bodyMsg = sprintf(($op == 'del' ? __('Deleted %d files but we encountered the following errors with other files: %s', 'wordfence') : __('Repaired %d files but we encountered the following errors with other files: %s', 'wordfence')), $filesWorkedOn, implode('<br>', $errors));
 			}
@@ -3800,7 +3879,7 @@ HTACCESS;
 				$headMsg = sprintf(($op == 'del' ? __('Deleted %d files successfully', 'wordfence') : __('Repaired %d files successfully', 'wordfence')), $filesWorkedOn);
 				$bodyMsg = sprintf(($op == 'del' ? __('Deleted %d files successfully. No errors were encountered.', 'wordfence') : __('Repaired %d files successfully. No errors were encountered.', 'wordfence')), $filesWorkedOn);
 			}
-			else if(sizeof($errors) > 0) {
+			else if (count($errors) > 0) {
 				$headMsg = ($op == 'del' ? __('Could not delete files', 'wordfence') : __('Could not repair files', 'wordfence'));
 				$bodyMsg = sprintf(($op == 'del' ? __('We could not delete any of the files you selected. We encountered the following errors: %s', 'wordfence') : __('We could not repair any of the files you selected. We encountered the following errors: %s', 'wordfence')),  implode('<br>', $errors));
 			}
@@ -4008,229 +4087,6 @@ HTACCESS;
 	}
 	public static function importSettings($token) { //Documented call for external interfacing.
 		return wfImportExportController::shared()->import($token);
-	}
-	public static function ajax_startPasswdAudit_callback(){
-		if(! wfAPI::SSLEnabled()){
-			return array('errorMsg' => "Your server does not support SSL via cURL. To use this feature you need to make sure you have the PHP cURL library installed and enabled and have openSSL enabled so that you can communicate securely with our servers. This ensures that your password hashes remain secure and are double-encrypted when this feature is used. To fix this, please contact your hosting provider or site admin and ask him or her to install and enable cURL and openssl.");
-		}
-		if(! function_exists('openssl_public_encrypt')){
-			return array('errorMsg' => "Your server does not have openssl installed. Specifically we require the openssl_public_encrypt() function to use this feature. Please ask your site admin or hosting provider to install 'openssl' and the openssl PHP libraries. We use these for public key encryption to securely send your password hashes to our server for auditing.");
-		}
-		global $wpdb;
-		$email = $_POST['emailAddr'];
-		if(!wfUtils::isValidEmail($email)){
-			return array(
-				'errorMsg' => "Please enter a valid email address.",
-				);
-		}
-		$suspended = wp_suspend_cache_addition();
-		wp_suspend_cache_addition(true);
-		$auditType = $_POST['auditType'];
-		$symKey = wfCrypt::makeSymHexKey(32); //hex digits, so 128 bit -- 256 bit is supported in MySQL 5.7.4 but many are using older
-		$admins = "";
-		$users = "";
-		$query = $wpdb->prepare("SELECT ID, AES_ENCRYPT(user_pass, %s) AS crypt_pass FROM " . $wpdb->users, $symKey);
-		$dbh = $wpdb->dbh;
-		$useMySQLi = (is_object($dbh) && $wpdb->use_mysqli);
-		if ($useMySQLi) { //If direct-access MySQLi is available, we use it to minimize the memory footprint instead of letting it fetch everything into an array first
-			$result = $dbh->query($query);
-			if (!is_object($result)) {
-				return array(
-					'errorMsg' => "We were unable to generate the user list for your password audit.",
-				);
-			}
-			while ($rec = $result->fetch_assoc()) {
-				$isAdmin = wfUtils::isAdmin($rec['ID']);
-				if ($isAdmin && ($auditType == 'admin' || $auditType == 'both')) {
-					$admins .= $rec['ID'] . ':' . base64_encode($rec['crypt_pass']) . '|';
-				}
-				else if($auditType == 'user' || $auditType == 'both') {
-					$users .= $rec['ID'] . ':' . base64_encode($rec['crypt_pass']) . '|';
-				}
-			}
-		}
-		else {
-			$q1 = $wpdb->get_results($query, ARRAY_A);
-			foreach($q1 as $rec) {
-				$isAdmin = wfUtils::isAdmin($rec['ID']);
-				if($isAdmin && ($auditType == 'admin' || $auditType == 'both') ) {
-					$admins .= $rec['ID'] . ':' . base64_encode($rec['crypt_pass']) . '|';
-				} else if($auditType == 'user' || $auditType == 'both') {
-					$users .= $rec['ID'] . ':' . base64_encode($rec['crypt_pass']) . '|';
-				}
-			}
-		}
-		
-		$admins = rtrim($admins,'|');
-		$users = rtrim($users,'|');
-		//error_log($admins);
-		//error_log($users);
-		wp_suspend_cache_addition($suspended);
-
-		$api = new wfAPI(wfConfig::get('apiKey'), wfUtils::getWPVersion());
-		try {
-			$res = $api->call('password_audit', array(), array(
-				'auditType' => $auditType,
-				'email' => $email,
-				'pubCryptSymKey' => wfCrypt::pubCrypt($symKey),
-				'users' => $users,
-				'admins' => $admins,
-				'type' => 2,
-				), true); //Force SSL
-			if(is_array($res)){
-				if(isset($res['ok']) && $res['ok'] == '1'){
-					return array(
-						'ok' => 1
-					);
-				} else if(isset($res['notPaid']) && $res['notPaid'] == '1'){
-					return array(
-						'errorMsg' => "You are not using a Premium version of Wordfence. This feature is available to Premium Wordfence members only.",
-						);
-				} else if(isset($res['tooManyJobs']) && $res['tooManyJobs'] == '1'){
-					return array(
-						'errorMsg' => "You already have a password audit running. Please wait until it finishes before starting another.",
-						);
-				} else {
-					throw new Exception("An unrecognized response was received from the Wordfence servers.");
-				}
-			} else {
-				return array(
-					'errorMsg' => "We received an invalid response when trying to submit your password audit.",
-					);
-			}
-		} catch(Exception $e){
-			return array(
-				'errMsg' => "We could not submit your password audit: " . $e,
-				);
-		}
-	}
-	public static function ajax_weakPasswordsFix_callback(){
-		$mode = $_POST['mode'];
-		$ids = explode(',', $_POST['ids']);
-		$homeURL = home_url();
-		$count = 0;
-		if($mode == 'fix'){
-			foreach($ids as $userID){
-				$user = get_user_by('id', $userID);
-				if($user){
-					$passwd = wp_generate_password();
-					$count++;
-					wp_set_password($passwd, $userID);
-					wp_mail($user->user_email, "Your Password on $homeURL Has Been Changed.", wfUtils::tmpl('email_passwdChanged.php', array(
-						'siteURL' => site_url(),
-						'homeURL' => home_url(),
-						'loginURL' => wp_login_url(),
-						'username' => $user->user_login,
-						'passwd' => $passwd,
-						)));
-				}
-			}
-			return array(
-				'ok' => 1,
-				'title' => "Fixed $count Weak Passwords",
-				'msg' => "We created new passwords for $count site members and emailed them the new password with instructions."
-				);
-
-		} else if($mode == 'email'){
-			foreach($ids as $userID){
-				$user = get_user_by('id', $userID);
-				if($user){
-					$count++;
-					wp_mail($user->user_email, "Please Change Your Password on $homeURL", wfUtils::tmpl('email_pleaseChangePasswd.php', array(
-						'siteURL' => site_url(),
-						'homeURL' => home_url(),
-						'username' => $user->user_login,
-						'loginURL' => wp_login_url()
-						)));
-				}
-			}
-			return array(
-				'ok' => 1,
-				'title' => "Notified $count Users",
-				'msg' => "We sent an email to $count site members letting them know that they have a weak password and suggesting that they sign in and change their password to a stronger one."
-				);
-		}
-	}
-	public static function ajax_passwdLoadResults_callback(){
-		if(! wfAPI::SSLEnabled()){ return array('ok' => 1); } //If user hits start passwd audit they will get a helpful message. We don't want an error popping up for every ajax call if SSL is not supported.
-		$api = new wfAPI(wfConfig::get('apiKey'), wfUtils::getWPVersion());
-		try {
-			$res = $api->call('password_load_results', array(), array(), true);
-		} catch(Exception $e){
-			return array('errorMsg' => "Could not load password audit results: " . $e);
-		}
-		$finalResults = array();
-		if(is_array($res) && isset($res['ok']) && $res['ok']){
-			if(is_array($res['results'])){
-				for($i = 0; $i < sizeof($res['results']); $i++){
-					//$meta = get_user_meta($res['results'][$i]['userID'], 'wp_capabilities', true);
-					//$res['results'][$i]['isAdmin'] = (isset($meta['administrator']) && $meta['administrator']) ? '1' : '';
-					$user = new WP_User($res['results'][$i]['wpUserID']);
-					if(is_object($user)){
-						$passMD5 = strtoupper(md5($user->user_pass));
-						if($passMD5 != $res['results'][$i]['hashMD5']){ //Password has changed, so exclude this result
-							continue;
-						}
-						$item =  $res['results'][$i];
-						$item['username'] = $user->user_login;
-						$item['email'] = $user->user_email;
-						$item['firstName'] = $user->first_name;
-						$item['lastName'] = $user->last_name;
-						$item['starredPassword'] = $res['results'][$i]['pwFirstLetter'] . str_repeat('*', $res['results'][$i]['pwLength'] - 1);
-						//crackTime and crackDifficulty are fields too.
-						$finalResults[] = $item;
-					}
-				}
-			}
-
-			return array(
-				'ok' => 1,
-				'results' => $finalResults,
-				);
-		} else {
-			return array('ok' => 1); //fail silently
-		}
-	}
-	public static function ajax_passwdLoadJobs_callback(){
-		if(! wfAPI::SSLEnabled()){ return array('ok' => 1); } //If user hits start passwd audit they will get a helpful message. We don't want an error popping up for every ajax call if SSL is not supported.
-		$api = new wfAPI(wfConfig::get('apiKey'), wfUtils::getWPVersion());
-		try {
-			$res = $api->call('password_load_jobs', array(), array(), true);
-		} catch(Exception $e){
-			return array('errorMsg' => "Could not load password audit jobs: " . $e);
-		}
-		if(is_array($res) && isset($res['ok']) && $res['ok']){
-			return array(
-				'ok' => 1,
-				'results' => $res['results'],
-				);
-		} else {
-			return array('ok' => 1); //fail silently
-		}
-	}
-	public static function ajax_killPasswdAudit_callback(){
-		$api = new wfAPI(wfConfig::get('apiKey'), wfUtils::getWPVersion());
-		try {
-			$res = $api->call('password_kill_job', array(), array( 'jobID' => $_POST['jobID'] ), true);
-		} catch(Exception $e){
-			return array('errorMsg' => "Could not stop requested audit: " . $e);
-		}
-		if(is_array($res) && isset($res['ok']) && $res['ok']){
-			return array(
-				'ok' => 1,
-				);
-		} else {
-			return array('errorMsg' => "We could not stop the requested password audit."); //fail silently
-		}
-	}
-	public static function ajax_deletePasswdAudit_callback(){
-		$api = new wfAPI(wfConfig::get('apiKey'), wfUtils::getWPVersion());
-		try {
-			$res = $api->call('password_delete_job', array(), array( 'jobID' => $_POST['jobID']));
-		} catch(Exception $e){
-			return array('errorMsg' => "Could not delete the job you specified: " . $e);
-		}
-		return array('ok' => 1);
 	}
 	public static function ajax_dismissNotification_callback() {
 		$id = $_POST['id'];
@@ -4818,13 +4674,12 @@ HTML;
 		wfOnboardingController::initialize();
 		
 		foreach(array(
-			'activate', 'scan', 'updateAlertEmail', 'sendActivityLog', 'restoreFile', 'startPasswdAudit',
-			'deletePasswdAudit', 'weakPasswordsFix', 'passwdLoadResults', 'killPasswdAudit', 'passwdLoadJobs',
+			'activate', 'scan', 'updateAlertEmail', 'sendActivityLog', 'restoreFile',
 			'exportSettings', 'importSettings', 'bulkOperation', 'deleteFile', 'deleteDatabaseOption', 'removeExclusion',
 			'activityLogUpdate', 'ticker', 'loadIssues', 'updateIssueStatus', 'deleteIssue', 'updateAllIssues',
 			'reverseLookup', 'unlockOutIP', 'unblockRange', 'whois', 'recentTraffic', 'unblockIP',
 			'blockIP', 'permBlockIP', 'loadStaticPanel', 'updateIPPreview', 'downloadHtaccess', 'downloadLogFile', 'checkHtaccess',
-			'updateConfig', 'autoUpdateChoice', 'misconfiguredHowGetIPsChoice',
+			'updateConfig', 'autoUpdateChoice', 'misconfiguredHowGetIPsChoice', 'dismissAdminNotice',
 			'killScan', 'saveCountryBlocking', 'tourClosed',
 			'downgradeLicense', 'addTwoFactor', 'twoFacActivate', 'twoFacDel',
 			'loadTwoFactor', 'sendTestEmail',
@@ -5029,6 +4884,10 @@ HTML;
 			$warningAdded = true;
 		}
 		
+		if (wfAdminNoticeQueue::enqueueAdminNotices()) {
+			$warningAdded = true;
+		}
+		
 		$existing = wfConfig::get('howGetIPs', '');
 		$recommendation = wfConfig::get('detectProxyRecommendation', '');
 		$canDisplayMisconfiguredHowGetIPs = true;
@@ -5193,12 +5052,6 @@ JQUERY;
 
 				ob_start();
 				require 'menu_tools_livetraffic.php';
-				$content = ob_get_clean();
-				break;
-
-			case 'pwaudit':
-				ob_start();
-				require 'menu_tools_passwd.php';
 				$content = ob_get_clean();
 				break;
 
@@ -6871,7 +6724,11 @@ LIMIT %d", sprintf('%.6f', $lastSendTime), $limit));
 						continue;
 					}
 
-					list($logTimeMicroseconds, $requestTime, $ip, $learningMode, $paramKey, $paramValue, $failedRules, $ssl, $requestString, $metadata) = $request;
+					list($logTimeMicroseconds, $requestTime, $ip, $learningMode, $paramKey, $paramValue, $failedRules, $ssl, $requestString) = $request;
+					$metadata = null;
+					if (count($request) == 10) {
+						$metadata = $request[9];
+					}
 
 					// Skip old entries and hits in learning mode, since they'll get picked up anyways.
 					if ($logTimeMicroseconds <= $lastAttackMicroseconds || $learningMode) {
@@ -7006,7 +6863,7 @@ LIMIT %d", sprintf('%.6f', $lastSendTime), $limit));
 							$statusCode = 503;
 							$hit->actionDescription = $actionDescription;
 						}
-						else if ($failedRules == 'logged') {
+						else if (preg_match('/\blogged\b/i', $failedRules)) {
 							$statusCode = 200;
 							$hit->action = 'logged:waf';
 						}
@@ -7016,7 +6873,7 @@ LIMIT %d", sprintf('%.6f', $lastSendTime), $limit));
 						}
 					}
 					else {
-						if ($failedRules == 'logged') {
+						if (preg_match('/\blogged\b/i', $failedRules)) {
 							$statusCode = 200;
 							$hit->action = 'logged:waf';
 						}
@@ -7046,6 +6903,12 @@ LIMIT %d", sprintf('%.6f', $lastSendTime), $limit));
 					if ($ruleIDs && $ruleIDs[0]) {
 						$rule = $waf->getRule($ruleIDs[0]);
 						if ($rule) {
+							if ($hit->action == 'logged:waf' || $hit->action == 'blocked:waf') { $hit->actionDescription = $rule->getDescription(); }
+							$actionData['category'] = $rule->getCategory();
+							$actionData['ssl'] = $ssl;
+							$actionData['fullRequest'] = base64_encode($requestString);
+						}
+						else if ($ruleIDs[0] == 'logged' && isset($ruleIDs[1]) && ($rule = $waf->getRule($ruleIDs[1]))) {
 							if ($hit->action == 'logged:waf' || $hit->action == 'blocked:waf') { $hit->actionDescription = $rule->getDescription(); }
 							$actionData['category'] = $rule->getCategory();
 							$actionData['ssl'] = $ssl;

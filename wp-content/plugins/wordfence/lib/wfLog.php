@@ -301,7 +301,7 @@ class wfLog {
 	
 	public function tagRequestForLockout($reason) {
 		if ($this->currentRequest !== null) {
-			$this->currentRequest->statusCode = 403;
+			$this->currentRequest->statusCode = 503;
 			$this->currentRequest->action = 'lockedOut';
 			$this->currentRequest->actionDescription = $reason;
 		}

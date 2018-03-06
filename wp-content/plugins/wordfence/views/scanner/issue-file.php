@@ -10,10 +10,10 @@ echo wfView::create('scanner/issue-base', array(
 	'summaryControls' => array(wfView::create('scanner/issue-control-repair'), wfView::create('scanner/issue-control-ignore', array('ignoreP' => __('Always Ignore', 'wordfence'), 'ignoreC' => __('Ignore Until File Changes', 'wordfence'))), wfView::create('scanner/issue-control-show-details')),
 	'detailPairs' => array(
 		__('Filename', 'wordfence') => '<span class="wf-split-word-xs">${data.file}</span>',
-		__('File Type', 'wordfence') => '{{if data.cType}}${WFAD.ucfirst(data.cType)}{{else}}' . __('Not a core, theme or plugin file', 'wordfence') . '.{{/if}}',
+		__('File Type', 'wordfence') => '{{if data.cType}}${WFAD.ucfirst(data.cType)}{{else data.wpconfig}}' . __('WordPress Configuration File', 'wordfence') . '{{else}}' . __('Not a core, theme, or plugin file from wordpress.org', 'wordfence') . '.{{/if}}',
 		__('Bad URL', 'wordfence') => array('(typeof data.badURL !== \'undefined\') && data.badURL', '${data.badURL}'),
 		null,
-		__('Details', 'wordfence') => '{{html longMsg}}',
+		__('Details', 'wordfence') => '{{html longMsg}}<br><br>{{if data.wpconfig}}<strong>' . __('This is your main configuration file and cannot be deleted. It must be cleaned manually.', 'wordfence') . '</strong>{{/if}}',
 	),
 	'detailControls' => array(
 		'{{if data.fileExists}}<a target="_blank" class="wf-btn wf-btn-default wf-btn-callout-subtle" rel="noopener noreferrer" href="${WFAD.makeViewFileLink(data.file)}">' . __('View File', 'wordfence') . '</a>{{/if}}',

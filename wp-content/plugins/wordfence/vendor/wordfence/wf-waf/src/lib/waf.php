@@ -900,6 +900,32 @@ HTML
 	}
 
 	/**
+	 * @param wfWAFRule $rule
+	 * @param wfWAFRuleComparisonFailure $failedComparison
+	 * @param bool $updateFailedRules
+	 * @throws wfWAFLogException
+	 */
+	public function log($rule, $failedComparison, $updateFailedRules = true) {
+		$paramKey = $failedComparison->getParamKey();
+		$category = $rule->getCategory();
+
+		if ($updateFailedRules) {
+			$this->failedRules[$paramKey][$category][] = array(
+				'rule'             => $rule,
+				'failedComparison' => $failedComparison,
+				'action'           => 'log',
+			);
+		}
+
+		$e = new wfWAFLogException();
+		$e->setFailedRules(array($rule));
+		$e->setParamKey($failedComparison->getParamKey());
+		$e->setParamValue($failedComparison->getParamValue());
+		$e->setRequest($this->getRequest());
+		throw $e;
+	}
+
+	/**
 	 * @todo Hook up $httpCode
 	 * @param wfWAFBlockException $e
 	 * @param int $httpCode
@@ -952,7 +978,11 @@ HTML
 	}
 	
 	public function logAction($e) {
-		$this->getStorageEngine()->logAttack(array('logged'), $e->getParamKey(), $e->getParamValue(), $this->getRequest());
+		$failedRules = array('logged');
+		if (is_array($e->getFailedRules())) {
+			$failedRules = array_merge($failedRules, $e->getFailedRules());
+		}
+		$this->getStorageEngine()->logAttack($failedRules, $e->getParamKey(), $e->getParamValue(), $this->getRequest());
 	}
 
 	/**
@@ -1190,7 +1220,7 @@ HTML
 	 * @return array
 	 */
 	public function getAllowedActions() {
-		return array('fail', 'allow', 'block', 'failXSS', 'blockXSS', 'failSQLi', 'blockSQLi');
+		return array('fail', 'allow', 'block', 'failXSS', 'blockXSS', 'failSQLi', 'blockSQLi', 'log');
 	}
 
 	/**

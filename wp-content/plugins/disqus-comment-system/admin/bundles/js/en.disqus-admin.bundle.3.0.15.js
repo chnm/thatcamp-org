@@ -293,51 +293,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-function makeEmptyFunction(arg) {
-  return function () {
-    return arg;
-  };
-}
-
-/**
- * This function accepts and discards inputs; it has no side effects. This is
- * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
- */
-var emptyFunction = function emptyFunction() {};
-
-emptyFunction.thatReturns = makeEmptyFunction;
-emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-emptyFunction.thatReturnsThis = function () {
-  return this;
-};
-emptyFunction.thatReturnsArgument = function (arg) {
-  return arg;
-};
-
-module.exports = emptyFunction;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
 Object.defineProperty(exports, "__esModule", { value: true });
-var actions_1 = __webpack_require__(10);
-var WordPressCommentExporter_1 = __webpack_require__(84);
+var actions_1 = __webpack_require__(11);
+var utils_1 = __webpack_require__(12);
+var WordPressCommentExporter_1 = __webpack_require__(83);
 var WordPressRestApi_1 = __webpack_require__(18);
 var UPDATABLE_FIELDS = [
     'disqus_forum_url',
@@ -375,6 +334,11 @@ var mapDispatchToProps = function (dispatch) {
             catch (err) {
                 // Continue
             }
+        },
+        onGenerateRandomSyncToken: function (event) {
+            event.preventDefault();
+            var newToken = utils_1.createRandomToken();
+            dispatch(actions_1.updateLocalOptionAction('disqus_sync_token', newToken));
         },
         onInputChange: function (key, event) {
             var value = valueFromInput(event.currentTarget);
@@ -453,7 +417,7 @@ exports.default = mapDispatchToProps;
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -466,6 +430,48 @@ var mapStateToProps = function (state) {
 };
 exports.default = mapStateToProps;
 
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+function makeEmptyFunction(arg) {
+  return function () {
+    return arg;
+  };
+}
+
+/**
+ * This function accepts and discards inputs; it has no side effects. This is
+ * primarily useful idiomatically for overridable function endpoints which
+ * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+ */
+var emptyFunction = function emptyFunction() {};
+
+emptyFunction.thatReturns = makeEmptyFunction;
+emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+emptyFunction.thatReturnsThis = function () {
+  return this;
+};
+emptyFunction.thatReturnsArgument = function (arg) {
+  return arg;
+};
+
+module.exports = emptyFunction;
 
 /***/ }),
 /* 6 */
@@ -629,6 +635,77 @@ module.exports = invariant;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var immutable_1 = __webpack_require__(17);
+var AdminOptions_1 = __webpack_require__(84);
+var SyncStatus_1 = __webpack_require__(85);
+var InstallationState;
+(function (InstallationState) {
+    InstallationState[InstallationState["none"] = 0] = "none";
+    InstallationState[InstallationState["noAccount"] = 1] = "noAccount";
+    InstallationState[InstallationState["hasAccount"] = 2] = "hasAccount";
+    InstallationState[InstallationState["noSite"] = 3] = "noSite";
+    InstallationState[InstallationState["hasSite"] = 4] = "hasSite";
+    InstallationState[InstallationState["installed"] = 5] = "installed";
+    InstallationState[InstallationState["reinstallSite"] = 6] = "reinstallSite";
+})(InstallationState = exports.InstallationState || (exports.InstallationState = {}));
+var ExportLogStaus;
+(function (ExportLogStaus) {
+    ExportLogStaus[ExportLogStaus["pending"] = 0] = "pending";
+    ExportLogStaus[ExportLogStaus["complete"] = 1] = "complete";
+    ExportLogStaus[ExportLogStaus["failed"] = 2] = "failed";
+})(ExportLogStaus = exports.ExportLogStaus || (exports.ExportLogStaus = {}));
+var AdminState = /** @class */ (function (_super) {
+    __extends(AdminState, _super);
+    function AdminState(config) {
+        return _super.call(this, {
+            adminOptions: new AdminOptions_1.default(),
+            config: config,
+            exportLogs: immutable_1.Map(),
+            localAdminOptions: new AdminOptions_1.default(),
+            syncStatus: new SyncStatus_1.default(),
+        }) || this;
+    }
+    AdminState.prototype.set = function (key, value) {
+        return _super.prototype.set.call(this, key, value);
+    };
+    AdminState.prototype.with = function (values) {
+        return this.merge(values);
+    };
+    return AdminState;
+}(immutable_1.Record({
+    activeTab: null,
+    adminOptions: null,
+    config: null,
+    exportLogs: null,
+    installationState: InstallationState.none,
+    isExportRunning: false,
+    isFetchingAdminOptions: false,
+    isFetchingSyncStatus: false,
+    isSiteFormLocked: true,
+    localAdminOptions: null,
+    message: null,
+    syncStatus: null,
+})));
+exports.default = AdminState;
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -649,7 +726,7 @@ module.exports = emptyObject;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -663,7 +740,7 @@ module.exports = emptyObject;
 
 
 
-var emptyFunction = __webpack_require__(3);
+var emptyFunction = __webpack_require__(5);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -718,7 +795,7 @@ module.exports = warning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -805,77 +882,33 @@ exports.updateExportPostLogAction = updateExportPostLogAction;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var immutable_1 = __webpack_require__(17);
-var AdminOptions_1 = __webpack_require__(85);
-var SyncStatus_1 = __webpack_require__(86);
-var InstallationState;
-(function (InstallationState) {
-    InstallationState[InstallationState["none"] = 0] = "none";
-    InstallationState[InstallationState["noAccount"] = 1] = "noAccount";
-    InstallationState[InstallationState["hasAccount"] = 2] = "hasAccount";
-    InstallationState[InstallationState["noSite"] = 3] = "noSite";
-    InstallationState[InstallationState["hasSite"] = 4] = "hasSite";
-    InstallationState[InstallationState["installed"] = 5] = "installed";
-})(InstallationState = exports.InstallationState || (exports.InstallationState = {}));
-var ExportLogStaus;
-(function (ExportLogStaus) {
-    ExportLogStaus[ExportLogStaus["pending"] = 0] = "pending";
-    ExportLogStaus[ExportLogStaus["complete"] = 1] = "complete";
-    ExportLogStaus[ExportLogStaus["failed"] = 2] = "failed";
-})(ExportLogStaus = exports.ExportLogStaus || (exports.ExportLogStaus = {}));
-var AdminState = /** @class */ (function (_super) {
-    __extends(AdminState, _super);
-    function AdminState(config) {
-        return _super.call(this, {
-            adminOptions: new AdminOptions_1.default(),
-            config: config,
-            exportLogs: immutable_1.Map(),
-            localAdminOptions: new AdminOptions_1.default(),
-            syncStatus: new SyncStatus_1.default(),
-        }) || this;
-    }
-    AdminState.prototype.set = function (key, value) {
-        return _super.prototype.set.call(this, key, value);
-    };
-    AdminState.prototype.with = function (values) {
-        return this.merge(values);
-    };
-    return AdminState;
-}(immutable_1.Record({
-    activeTab: null,
-    adminOptions: null,
-    config: null,
-    exportLogs: null,
-    installationState: InstallationState.none,
-    isExportRunning: false,
-    isFetchingAdminOptions: false,
-    isFetchingSyncStatus: false,
-    isSiteFormLocked: true,
-    localAdminOptions: null,
-    message: null,
-    syncStatus: null,
-})));
-exports.default = AdminState;
+function getWordpressAdminUrl(name) {
+    return window.DISQUS_WP.adminUrls[name];
+}
+exports.getWordpressAdminUrl = getWordpressAdminUrl;
+function getForumAdminUrl(shortname, path) {
+    return "https://" + shortname + ".disqus.com/admin/" + path + "/";
+}
+exports.getForumAdminUrl = getForumAdminUrl;
+function createRandomToken(length) {
+    if (length === void 0) { length = 32; }
+    var token = '';
+    var possibleChars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    for (var i = 0; i < length; i++)
+        token += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
+    return token;
+}
+exports.createRandomToken = createRandomToken;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -890,8 +923,8 @@ exports.default = AdminState;
 
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(7);
-  var warning = __webpack_require__(9);
-  var ReactPropTypesSecret = __webpack_require__(13);
+  var warning = __webpack_require__(10);
+  var ReactPropTypesSecret = __webpack_require__(14);
   var loggedTypeFailures = {};
 }
 
@@ -942,7 +975,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -961,7 +994,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -989,7 +1022,7 @@ function warning(message) {
 }
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1058,23 +1091,6 @@ function isPlainObject(value) {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (isPlainObject);
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-function getWordpressAdminUrl(name) {
-    return window.DISQUS_WP.adminUrls[name];
-}
-exports.getWordpressAdminUrl = getWordpressAdminUrl;
-function getForumAdminUrl(shortname, path) {
-    return "https://" + shortname + ".disqus.com/admin/" + path + "/";
-}
-exports.getForumAdminUrl = getForumAdminUrl;
 
 
 /***/ }),
@@ -6179,7 +6195,7 @@ module.exports = ExecutionEnvironment;
  * @typechecks
  */
 
-var emptyFunction = __webpack_require__(3);
+var emptyFunction = __webpack_require__(5);
 
 /**
  * Upstream version of event listener. Does not take into account specific
@@ -6838,7 +6854,7 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActionTypes; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = createStore;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_symbol_observable__);
 
@@ -7282,8 +7298,8 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = verifyPlainObject;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__warning__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__warning__ = __webpack_require__(15);
 
 
 
@@ -7394,10 +7410,11 @@ var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(42);
 var ReactRedux = __webpack_require__(2);
 var Redux = __webpack_require__(28);
-var actions_1 = __webpack_require__(10);
+var actions_1 = __webpack_require__(11);
 var MainContainer_1 = __webpack_require__(79);
 var DisqusApi_1 = __webpack_require__(36);
-var adminApp_1 = __webpack_require__(104);
+var adminApp_1 = __webpack_require__(106);
+var AdminState_1 = __webpack_require__(8);
 var WordPressRestApi_1 = __webpack_require__(18);
 var store = Redux.createStore(adminApp_1.default);
 var element = document.getElementById('disqus-admin');
@@ -7438,6 +7455,8 @@ ReactDOM.render(React.createElement(ReactRedux.Provider, { store: store },
         var data = response.data;
         DisqusApi_1.DisqusApi.instance.configure(data.disqus_public_key, data.disqus_admin_access_token, data.disqus_forum_url);
         store.dispatch(actions_1.updateAdminOptionsAction(response.data));
+        if (response.data.disqus_installed)
+            store.dispatch(actions_1.changeInstallStateAction(AdminState_1.InstallationState.installed));
     });
     // Fetch the sync status
     WordPressRestApi_1.WordPressRestApi.instance.pluginRestGet('sync/status', function (response) {
@@ -7463,7 +7482,7 @@ ReactDOM.render(React.createElement(ReactRedux.Provider, { store: store },
  * LICENSE file in the root directory of this source tree.
  */
 
-var m=__webpack_require__(6),n=__webpack_require__(8),p=__webpack_require__(3),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.call"):60104,u=q?Symbol["for"]("react.return"):60105,v=q?Symbol["for"]("react.portal"):60106,w=q?Symbol["for"]("react.fragment"):60107,x="function"===typeof Symbol&&Symbol.iterator;
+var m=__webpack_require__(6),n=__webpack_require__(9),p=__webpack_require__(5),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.call"):60104,u=q?Symbol["for"]("react.return"):60105,v=q?Symbol["for"]("react.portal"):60106,w=q?Symbol["for"]("react.fragment"):60107,x="function"===typeof Symbol&&Symbol.iterator;
 function y(a){for(var b=arguments.length-1,e="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,c=0;c<b;c++)e+="\x26args[]\x3d"+encodeURIComponent(arguments[c+1]);b=Error(e+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var z={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function A(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}A.prototype.isReactComponent={};A.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?y("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};A.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function B(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}function C(){}C.prototype=A.prototype;var D=B.prototype=new C;D.constructor=B;m(D,A.prototype);D.isPureReactComponent=!0;function E(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}var F=E.prototype=new C;F.constructor=E;m(F,A.prototype);F.unstable_isAsyncReactComponent=!0;F.render=function(){return this.props.children};var G={current:null},H=Object.prototype.hasOwnProperty,I={key:!0,ref:!0,__self:!0,__source:!0};
@@ -7500,11 +7519,11 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var _assign = __webpack_require__(6);
-var emptyObject = __webpack_require__(8);
+var emptyObject = __webpack_require__(9);
 var invariant = __webpack_require__(7);
-var warning = __webpack_require__(9);
-var emptyFunction = __webpack_require__(3);
-var checkPropTypes = __webpack_require__(12);
+var warning = __webpack_require__(10);
+var emptyFunction = __webpack_require__(5);
+var checkPropTypes = __webpack_require__(13);
 
 // TODO: this is special because it gets imported during build.
 
@@ -8905,7 +8924,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),l=__webpack_require__(19),B=__webpack_require__(6),C=__webpack_require__(3),ba=__webpack_require__(20),da=__webpack_require__(21),ea=__webpack_require__(22),fa=__webpack_require__(23),ia=__webpack_require__(24),D=__webpack_require__(8);
+var aa=__webpack_require__(0),l=__webpack_require__(19),B=__webpack_require__(6),C=__webpack_require__(5),ba=__webpack_require__(20),da=__webpack_require__(21),ea=__webpack_require__(22),fa=__webpack_require__(23),ia=__webpack_require__(24),D=__webpack_require__(9);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -9204,17 +9223,17 @@ if (process.env.NODE_ENV !== "production") {
 
 var React = __webpack_require__(0);
 var invariant = __webpack_require__(7);
-var warning = __webpack_require__(9);
+var warning = __webpack_require__(10);
 var ExecutionEnvironment = __webpack_require__(19);
 var _assign = __webpack_require__(6);
-var emptyFunction = __webpack_require__(3);
+var emptyFunction = __webpack_require__(5);
 var EventListener = __webpack_require__(20);
 var getActiveElement = __webpack_require__(21);
 var shallowEqual = __webpack_require__(22);
 var containsNode = __webpack_require__(23);
 var focusNode = __webpack_require__(24);
-var emptyObject = __webpack_require__(8);
-var checkPropTypes = __webpack_require__(12);
+var emptyObject = __webpack_require__(9);
+var checkPropTypes = __webpack_require__(13);
 var hyphenateStyleName = __webpack_require__(47);
 var camelizeStyleName = __webpack_require__(49);
 
@@ -24749,7 +24768,7 @@ module.exports = camelize;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_PropTypes__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_warning__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_warning__ = __webpack_require__(15);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -24838,13 +24857,13 @@ function createProvider() {
 
 
 
-var emptyFunction = __webpack_require__(3);
+var emptyFunction = __webpack_require__(5);
 var invariant = __webpack_require__(7);
-var warning = __webpack_require__(9);
+var warning = __webpack_require__(10);
 var assign = __webpack_require__(6);
 
-var ReactPropTypesSecret = __webpack_require__(13);
-var checkPropTypes = __webpack_require__(12);
+var ReactPropTypesSecret = __webpack_require__(14);
+var checkPropTypes = __webpack_require__(13);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -25388,9 +25407,9 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 
-var emptyFunction = __webpack_require__(3);
+var emptyFunction = __webpack_require__(5);
 var invariant = __webpack_require__(7);
-var ReactPropTypesSecret = __webpack_require__(13);
+var ReactPropTypesSecret = __webpack_require__(14);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -26182,7 +26201,7 @@ function symbolObservablePonyfill(root) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = combineReducers;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_warning__ = __webpack_require__(32);
 
 
@@ -26624,7 +26643,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = verifySubselectors;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_warning__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_warning__ = __webpack_require__(15);
 
 
 function verify(selector, methodName, displayName) {
@@ -26652,8 +26671,8 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 Object.defineProperty(exports, "__esModule", { value: true });
 var ReactRedux = __webpack_require__(2);
 var Main_1 = __webpack_require__(80);
-var mapDispatchToProps_1 = __webpack_require__(4);
-var mapStateToProps_1 = __webpack_require__(5);
+var mapDispatchToProps_1 = __webpack_require__(3);
+var mapStateToProps_1 = __webpack_require__(4);
 var MainContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(Main_1.default);
 exports.default = MainContainer;
 
@@ -26674,10 +26693,11 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var utils_1 = __webpack_require__(16);
-var Admin_1 = __webpack_require__(81);
-var Loading_1 = __webpack_require__(102);
-var Message_1 = __webpack_require__(103);
+var SyncTokenContainer_1 = __webpack_require__(81);
+var utils_1 = __webpack_require__(12);
+var Admin_1 = __webpack_require__(86);
+var Loading_1 = __webpack_require__(104);
+var Message_1 = __webpack_require__(105);
 var PRE_RELEASE_TYPES = Object.freeze({
     alpha: 'alpha',
     beta: 'beta',
@@ -26688,6 +26708,11 @@ var getMainView = function (props) {
         return "You don't have permission to make any changes here. Please contact the site administrator to get access.";
     else if (props.data.isFetchingAdminOptions || props.data.isFetchingSyncStatus)
         return React.createElement(Loading_1.default, null);
+    else if (!props.data.adminOptions.disqus_sync_token)
+        return (React.createElement("div", null,
+            React.createElement("div", { className: "notice notice-info inline" },
+                React.createElement("p", null, "The plugin was unable to generate a secret key for your site. You will have to create one below in order for installation and syncing to work.")),
+            React.createElement(SyncTokenContainer_1.default, __assign({}, props))));
     return React.createElement(Admin_1.default, __assign({}, props));
 };
 var getPreReleaseNotice = function (pluginVersion) {
@@ -26724,6 +26749,236 @@ exports.default = Main;
 
 "use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
+var ReactRedux = __webpack_require__(2);
+var SyncTokenForm_1 = __webpack_require__(82);
+var mapDispatchToProps_1 = __webpack_require__(3);
+var mapStateToProps_1 = __webpack_require__(4);
+var SyncTokenContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(SyncTokenForm_1.default);
+exports.default = SyncTokenContainer;
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var SyncTokenForm = function (props) {
+    return (React.createElement("form", { name: 'site', action: '', method: 'POST', onSubmit: props.onSubmitSiteForm, autoComplete: 'off' },
+        React.createElement("table", { className: 'form-table' },
+            React.createElement("tbody", null,
+                React.createElement("tr", null,
+                    React.createElement("th", { scope: 'row' },
+                        React.createElement("label", { htmlFor: 'disqus_sync_token' }, "Site Secret Key")),
+                    React.createElement("td", null,
+                        React.createElement("input", { type: 'text', id: 'disqus_sync_token', name: 'disqus_sync_token', className: 'regular-text', value: props.data.localAdminOptions.get('disqus_sync_token') || '', onChange: props.onInputChange.bind(null, 'disqus_sync_token') }),
+                        React.createElement("p", { className: 'description' },
+                            "Enter any combination of letters and numbers, at least 32 characters.",
+                            React.createElement("br", null),
+                            React.createElement("a", { href: '#', onClick: props.onGenerateRandomSyncToken }, "Generate a key")))))),
+        React.createElement("p", { className: 'submit' },
+            React.createElement("input", { type: 'submit', name: 'submit-site-form', className: 'button button-primary', value: "Save" }))));
+};
+exports.default = SyncTokenForm;
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var actions_1 = __webpack_require__(11);
+var DisqusApi_1 = __webpack_require__(36);
+var AdminState_1 = __webpack_require__(8);
+var WordPressRestApi_1 = __webpack_require__(18);
+var POSTS_PER_PAGE = 10;
+exports.POSTS_PER_PAGE = POSTS_PER_PAGE;
+var WordPressCommentExporter = /** @class */ (function () {
+    function WordPressCommentExporter(dispatch) {
+        this.dispatch = dispatch;
+        this.currentPage = 1;
+        this.handleDisqusImportResponse = this.handleDisqusImportResponse.bind(this);
+        this.handleExportPostResponse = this.handleExportPostResponse.bind(this);
+        this.handlePostsResponse = this.handlePostsResponse.bind(this);
+    }
+    WordPressCommentExporter.prototype.startExportPosts = function () {
+        return WordPressRestApi_1.WordPressRestApi.instance.wordpressRestGet('posts', "per_page=" + POSTS_PER_PAGE + "&page=" + this.currentPage, this.handlePostsResponse);
+    };
+    WordPressCommentExporter.prototype.exportPost = function (post) {
+        WordPressRestApi_1.WordPressRestApi.instance.pluginRestPost('export/post', { postId: post.id }, this.handleExportPostResponse.bind(null, post));
+    };
+    WordPressCommentExporter.prototype.dispatchComplete = function (post, numComments) {
+        this.dispatch(actions_1.updateExportPostLogAction({
+            error: null,
+            id: post.id,
+            link: post.link,
+            numComments: numComments,
+            status: AdminState_1.ExportLogStaus.complete,
+            title: post.title.rendered,
+        }));
+    };
+    WordPressCommentExporter.prototype.dispatchError = function (post, error) {
+        this.dispatch(actions_1.updateExportPostLogAction({
+            error: error,
+            id: post.id,
+            link: post.link,
+            numComments: null,
+            status: AdminState_1.ExportLogStaus.failed,
+            title: post.title.rendered,
+        }));
+    };
+    WordPressCommentExporter.prototype.handleDisqusImportResponse = function (post, exportPostResponse, xhr) {
+        var jsonObject = null;
+        try {
+            jsonObject = JSON.parse(xhr.target.responseText);
+        }
+        catch (error) {
+            // Continue
+        }
+        if (!jsonObject) {
+            this.dispatchError(post, "Unknown error uploading to the Disqus servers");
+            return;
+        }
+        if (jsonObject.code !== 0) {
+            this.dispatchError(post, jsonObject.response);
+            return;
+        }
+        this.dispatchComplete(post, exportPostResponse.data.comments.length);
+    };
+    WordPressCommentExporter.prototype.handleExportPostResponse = function (post, response) {
+        if (!response || response.code !== 'OK') {
+            this.dispatchError(post, response.message);
+            return;
+        }
+        if (!response.data.comments.length) {
+            this.dispatchComplete(post, response.data.comments.length);
+            return;
+        }
+        var wxr = response.data.wxr;
+        DisqusApi_1.DisqusApi.instance.createImport(wxr.xmlContent, wxr.filename, this.handleDisqusImportResponse.bind(null, post, response));
+    };
+    WordPressCommentExporter.prototype.handlePostsResponse = function (response) {
+        var _this = this;
+        if (Array.isArray(response)) {
+            response.forEach(function (post) {
+                _this.dispatch(actions_1.updateExportPostLogAction({
+                    error: null,
+                    id: post.id,
+                    link: post.link,
+                    numComments: null,
+                    status: AdminState_1.ExportLogStaus.pending,
+                    title: post.title.rendered,
+                }));
+                _this.exportPost(post);
+            });
+            if (response.length === POSTS_PER_PAGE) {
+                this.currentPage += 1;
+                this.startExportPosts();
+            }
+        }
+    };
+    return WordPressCommentExporter;
+}());
+exports.default = WordPressCommentExporter;
+
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var immutable_1 = __webpack_require__(17);
+var AdminOptions = /** @class */ (function (_super) {
+    __extends(AdminOptions, _super);
+    /* tslint:enable:variable-name */
+    function AdminOptions(options) {
+        return _super.call(this, options) || this;
+    }
+    AdminOptions.prototype.set = function (key, value) {
+        return _super.prototype.set.call(this, key, value);
+    };
+    AdminOptions.prototype.with = function (values) {
+        return this.merge(values);
+    };
+    return AdminOptions;
+}(immutable_1.Record({
+    disqus_admin_access_token: null,
+    disqus_forum_url: null,
+    disqus_installed: null,
+    disqus_public_key: null,
+    disqus_render_js: null,
+    disqus_secret_key: null,
+    disqus_sso_button: null,
+    disqus_sso_enabled: null,
+    disqus_sync_token: null,
+})));
+exports.default = AdminOptions;
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var immutable_1 = __webpack_require__(17);
+var SyncStatus = /** @class */ (function (_super) {
+    __extends(SyncStatus, _super);
+    /* tslint:enable:variable-name */
+    function SyncStatus(options) {
+        return _super.call(this, options) || this;
+    }
+    SyncStatus.prototype.set = function (key, value) {
+        return _super.prototype.set.call(this, key, value);
+    };
+    SyncStatus.prototype.with = function (values) {
+        return this.merge(values);
+    };
+    return SyncStatus;
+}(immutable_1.Record({
+    enabled: null,
+    last_message: null,
+    requires_update: null,
+    subscribed: null,
+    subscription: null,
+})));
+exports.default = SyncStatus;
+
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -26734,17 +26989,17 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var AdvancedConfigContainer_1 = __webpack_require__(82);
-var ExportCommentsContainer_1 = __webpack_require__(87);
-var InstallContainer_1 = __webpack_require__(89);
-var SiteConfigContainer_1 = __webpack_require__(91);
-var SSOConfigContainer_1 = __webpack_require__(93);
-var SupportDiagnosticsContainer_1 = __webpack_require__(95);
-var SyncConfigContainer_1 = __webpack_require__(97);
-var utils_1 = __webpack_require__(16);
-var HelpResources_1 = __webpack_require__(99);
-var SupportLinks_1 = __webpack_require__(100);
-var WelcomePanel_1 = __webpack_require__(101);
+var AdvancedConfigContainer_1 = __webpack_require__(87);
+var ExportCommentsContainer_1 = __webpack_require__(89);
+var InstallContainer_1 = __webpack_require__(91);
+var SiteConfigContainer_1 = __webpack_require__(93);
+var SSOConfigContainer_1 = __webpack_require__(95);
+var SupportDiagnosticsContainer_1 = __webpack_require__(97);
+var SyncConfigContainer_1 = __webpack_require__(99);
+var utils_1 = __webpack_require__(12);
+var HelpResources_1 = __webpack_require__(101);
+var SupportLinks_1 = __webpack_require__(102);
+var WelcomePanel_1 = __webpack_require__(103);
 var getSSOContainer = function (props) {
     var adminOptions = props.data.adminOptions;
     if (!adminOptions.disqus_public_key || !adminOptions.disqus_secret_key || !adminOptions.disqus_installed) {
@@ -26863,22 +27118,22 @@ exports.default = Admin;
 
 
 /***/ }),
-/* 82 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var ReactRedux = __webpack_require__(2);
-var AdvancedConfigForm_1 = __webpack_require__(83);
-var mapDispatchToProps_1 = __webpack_require__(4);
-var mapStateToProps_1 = __webpack_require__(5);
+var AdvancedConfigForm_1 = __webpack_require__(88);
+var mapDispatchToProps_1 = __webpack_require__(3);
+var mapStateToProps_1 = __webpack_require__(4);
 var AdvancedConfigContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(AdvancedConfigForm_1.default);
 exports.default = AdvancedConfigContainer;
 
 
 /***/ }),
-/* 83 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26902,207 +27157,22 @@ exports.default = AdvancedConfigForm;
 
 
 /***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var actions_1 = __webpack_require__(10);
-var DisqusApi_1 = __webpack_require__(36);
-var AdminState_1 = __webpack_require__(11);
-var WordPressRestApi_1 = __webpack_require__(18);
-var POSTS_PER_PAGE = 10;
-exports.POSTS_PER_PAGE = POSTS_PER_PAGE;
-var WordPressCommentExporter = /** @class */ (function () {
-    function WordPressCommentExporter(dispatch) {
-        this.dispatch = dispatch;
-        this.currentPage = 1;
-    }
-    WordPressCommentExporter.prototype.startExportPosts = function () {
-        return WordPressRestApi_1.WordPressRestApi.instance.wordpressRestGet('posts', "per_page=" + POSTS_PER_PAGE + "&page=" + this.currentPage, this.handlePostsResponse);
-    };
-    WordPressCommentExporter.prototype.exportPost = function (post) {
-        WordPressRestApi_1.WordPressRestApi.instance.pluginRestPost('export/post', { postId: post.id }, this.handleExportPostResponse.bind(null, post));
-    };
-    WordPressCommentExporter.prototype.dispatchComplete = function (post, numComments) {
-        this.dispatch(actions_1.updateExportPostLogAction({
-            error: null,
-            id: post.id,
-            link: post.link,
-            numComments: numComments,
-            status: AdminState_1.ExportLogStaus.complete,
-            title: post.title.rendered,
-        }));
-    };
-    WordPressCommentExporter.prototype.dispatchError = function (post, error) {
-        this.dispatch(actions_1.updateExportPostLogAction({
-            error: error,
-            id: post.id,
-            link: post.link,
-            numComments: null,
-            status: AdminState_1.ExportLogStaus.failed,
-            title: post.title.rendered,
-        }));
-    };
-    WordPressCommentExporter.prototype.handleDisqusImportResponse = function (post, exportPostResponse, xhr) {
-        var jsonObject = null;
-        try {
-            jsonObject = JSON.parse(xhr.target.responseText);
-        }
-        catch (error) {
-            // Continue
-        }
-        if (!jsonObject) {
-            this.dispatchError(post, "Unknown error uploading to the Disqus servers");
-            return;
-        }
-        if (jsonObject.code !== 0) {
-            this.dispatchError(post, jsonObject.response);
-            return;
-        }
-        this.dispatchComplete(post, exportPostResponse.data.comments.length);
-    };
-    WordPressCommentExporter.prototype.handleExportPostResponse = function (post, response) {
-        if (!response || response.code !== 'OK') {
-            this.dispatchError(post, response.message);
-            return;
-        }
-        if (!response.data.comments.length) {
-            this.dispatchComplete(post, response.data.comments.length);
-            return;
-        }
-        var wxr = response.data.wxr;
-        DisqusApi_1.DisqusApi.instance.createImport(wxr.xmlContent, wxr.filename, this.handleDisqusImportResponse.bind(null, post, response));
-    };
-    WordPressCommentExporter.prototype.handlePostsResponse = function (response) {
-        var _this = this;
-        if (Array.isArray(response)) {
-            response.forEach(function (post) {
-                _this.dispatch(actions_1.updateExportPostLogAction({
-                    error: null,
-                    id: post.id,
-                    link: post.link,
-                    numComments: null,
-                    status: AdminState_1.ExportLogStaus.pending,
-                    title: post.title.rendered,
-                }));
-                _this.exportPost(post);
-            });
-            if (response.length === POSTS_PER_PAGE) {
-                this.currentPage += 1;
-                this.startExportPosts();
-            }
-        }
-    };
-    return WordPressCommentExporter;
-}());
-exports.default = WordPressCommentExporter;
-
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var immutable_1 = __webpack_require__(17);
-var AdminOptions = /** @class */ (function (_super) {
-    __extends(AdminOptions, _super);
-    /* tslint:enable:variable-name */
-    function AdminOptions(options) {
-        return _super.call(this, options) || this;
-    }
-    AdminOptions.prototype.set = function (key, value) {
-        return _super.prototype.set.call(this, key, value);
-    };
-    AdminOptions.prototype.with = function (values) {
-        return this.merge(values);
-    };
-    return AdminOptions;
-}(immutable_1.Record({
-    disqus_admin_access_token: null,
-    disqus_forum_url: null,
-    disqus_installed: null,
-    disqus_public_key: null,
-    disqus_render_js: null,
-    disqus_secret_key: null,
-    disqus_sso_button: null,
-    disqus_sso_enabled: null,
-    disqus_sync_token: null,
-})));
-exports.default = AdminOptions;
-
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var immutable_1 = __webpack_require__(17);
-var SyncStatus = /** @class */ (function (_super) {
-    __extends(SyncStatus, _super);
-    /* tslint:enable:variable-name */
-    function SyncStatus(options) {
-        return _super.call(this, options) || this;
-    }
-    SyncStatus.prototype.set = function (key, value) {
-        return _super.prototype.set.call(this, key, value);
-    };
-    SyncStatus.prototype.with = function (values) {
-        return this.merge(values);
-    };
-    return SyncStatus;
-}(immutable_1.Record({
-    enabled: null,
-    last_message: null,
-    requires_update: null,
-    subscribed: null,
-    subscription: null,
-})));
-exports.default = SyncStatus;
-
-
-/***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var ReactRedux = __webpack_require__(2);
-var ExportComments_1 = __webpack_require__(88);
-var mapDispatchToProps_1 = __webpack_require__(4);
-var mapStateToProps_1 = __webpack_require__(5);
+var ExportComments_1 = __webpack_require__(90);
+var mapDispatchToProps_1 = __webpack_require__(3);
+var mapStateToProps_1 = __webpack_require__(4);
 var ExportCommentsContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(ExportComments_1.default);
 exports.default = ExportCommentsContainer;
 
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27117,7 +27187,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var AdminState_1 = __webpack_require__(11);
+var AdminState_1 = __webpack_require__(8);
 var getStatusMessage = function (props) {
     if (props.data.isExportRunning)
         return React.createElement("h4", null, "Sending to Disqus" + '…');
@@ -27177,22 +27247,22 @@ exports.default = ExportComments;
 
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var ReactRedux = __webpack_require__(2);
-var Install_1 = __webpack_require__(90);
-var mapDispatchToProps_1 = __webpack_require__(4);
-var mapStateToProps_1 = __webpack_require__(5);
+var Install_1 = __webpack_require__(92);
+var mapDispatchToProps_1 = __webpack_require__(3);
+var mapStateToProps_1 = __webpack_require__(4);
 var InstallContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(Install_1.default);
 exports.default = InstallContainer;
 
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27209,7 +27279,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var AdminState_1 = __webpack_require__(11);
+var AdminState_1 = __webpack_require__(8);
 var REST_OPTIONS_1 = __webpack_require__(37);
 var DISQUS_URL_BASE = 'https://disqus.com/';
 var DISQUS_SIGNUP_URL = DISQUS_URL_BASE + "profile/signup/";
@@ -27265,12 +27335,17 @@ var Install = /** @class */ (function (_super) {
                         React.createElement("button", { className: 'button', onClick: this.props.onCopyText.bind(null, SYNCTOKEN_INPUT_ID) }, "Copy")),
                     React.createElement("li", null, "Click the Install button and finish configuring your Disqus settings")));
             case AdminState_1.InstallationState.hasSite:
+            case AdminState_1.InstallationState.reinstallSite:
+                var installUrl = DISQUS_WORDPRESS_URL;
+                var useExistingSite = this.props.data.installationState === AdminState_1.InstallationState.reinstallSite;
+                if (useExistingSite)
+                    installUrl = installUrl.replace('//disqus.com', "//" + this.props.data.adminOptions.disqus_forum_url + ".disqus.com");
                 return (React.createElement("ol", { className: 'dsq-installation__instruction-list' },
                     React.createElement("li", null,
                         "Go to the WordPress installation page",
                         React.createElement("br", null),
-                        React.createElement("button", { className: 'button button-primary button-large', onClick: this.openDisqusPage.bind(this, syncToken, DISQUS_LOGIN_URL + "?next=" + encodeURIComponent(DISQUS_WORDPRESS_URL)) }, "WordPress installation page")),
-                    React.createElement("li", null, "When prompted, choose the Disqus site you want to use"),
+                        React.createElement("button", { className: 'button button-primary button-large', onClick: this.openDisqusPage.bind(this, syncToken, DISQUS_LOGIN_URL + "?next=" + encodeURIComponent(installUrl)) }, "WordPress installation page")),
+                    useExistingSite ? null : (React.createElement("li", null, "When prompted, choose the Disqus site you want to use")),
                     React.createElement("li", null,
                         "If needed, copy the sync token below and paste it to the input field in the installation page",
                         React.createElement("br", null),
@@ -27293,6 +27368,17 @@ var Install = /** @class */ (function (_super) {
                         React.createElement("input", { id: SYNCTOKEN_INPUT_ID, type: 'text', value: syncToken, className: 'regular-text', readOnly: true }),
                         React.createElement("button", { className: 'button', onClick: this.props.onCopyText.bind(null, SYNCTOKEN_INPUT_ID) }, "Copy")),
                     React.createElement("li", null, "Click the Install button and finish configuring your Disqus settings")));
+            case AdminState_1.InstallationState.installed:
+                return (React.createElement("div", null,
+                    React.createElement("p", { className: 'submit' },
+                        React.createElement("strong", null, "Do you want to reinstall this site or a different site?")),
+                    React.createElement("p", null,
+                        React.createElement("button", { className: 'button button-primary button-large', onClick: this.props.onUpdateInstallationState.bind(null, AdminState_1.InstallationState.reinstallSite) },
+                            "Reinstall",
+                            ' ',
+                            React.createElement("em", null, this.props.data.adminOptions.disqus_forum_url)),
+                        ' ',
+                        React.createElement("button", { className: 'button button-large', onClick: this.props.onUpdateInstallationState.bind(null, AdminState_1.InstallationState.hasSite) }, "Choose a new site"))));
             default:
                 return null;
         }
@@ -27328,22 +27414,22 @@ exports.default = Install;
 
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var ReactRedux = __webpack_require__(2);
-var SiteConfigForm_1 = __webpack_require__(92);
-var mapDispatchToProps_1 = __webpack_require__(4);
-var mapStateToProps_1 = __webpack_require__(5);
+var SiteConfigForm_1 = __webpack_require__(94);
+var mapDispatchToProps_1 = __webpack_require__(3);
+var mapStateToProps_1 = __webpack_require__(4);
 var SiteConfigContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(SiteConfigForm_1.default);
 exports.default = SiteConfigContainer;
 
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27374,41 +27460,55 @@ var SiteConfigForm = function (props) { return (React.createElement("form", { na
                 React.createElement("th", { scope: 'row' },
                     React.createElement("label", { htmlFor: 'disqus_public_key' }, "API Public Key")),
                 React.createElement("td", null,
-                    React.createElement("input", { type: props.data.isSiteFormLocked ? 'password' : 'text', id: 'disqus_public_key', name: 'disqus_public_key', className: 'regular-text', value: props.data.localAdminOptions.get('disqus_public_key') || '', onChange: props.onInputChange.bind(null, 'disqus_public_key'), readOnly: Boolean(props.data.isSiteFormLocked), disabled: Boolean(props.data.isSiteFormLocked) }),
+                    React.createElement("input", { type: 'text', id: 'disqus_public_key', name: 'disqus_public_key', className: 'regular-text', value: props.data.localAdminOptions.get('disqus_public_key') || '', onChange: props.onInputChange.bind(null, 'disqus_public_key'), readOnly: Boolean(props.data.isSiteFormLocked), disabled: Boolean(props.data.isSiteFormLocked) }),
                     React.createElement("p", { className: 'description' }, "The public key of your application (optional)."))),
             React.createElement("tr", null,
                 React.createElement("th", { scope: 'row' },
                     React.createElement("label", { htmlFor: 'disqus_secret_key' }, "API Secret Key")),
                 React.createElement("td", null,
-                    React.createElement("input", { type: props.data.isSiteFormLocked ? 'password' : 'text', id: 'disqus_secret_key', name: 'disqus_secret_key', className: 'regular-text', value: props.data.localAdminOptions.get('disqus_secret_key') || '', onChange: props.onInputChange.bind(null, 'disqus_secret_key'), readOnly: Boolean(props.data.isSiteFormLocked), disabled: Boolean(props.data.isSiteFormLocked) }),
+                    React.createElement("input", { type: 'text', id: 'disqus_secret_key', name: 'disqus_secret_key', className: 'regular-text', value: props.data.localAdminOptions.get('disqus_secret_key') || '', onChange: props.onInputChange.bind(null, 'disqus_secret_key'), readOnly: Boolean(props.data.isSiteFormLocked), disabled: Boolean(props.data.isSiteFormLocked) }),
                     React.createElement("p", { className: 'description' }, "The secret key of your application (optional)."))),
             React.createElement("tr", null,
                 React.createElement("th", { scope: 'row' },
                     React.createElement("label", { htmlFor: 'disqus_admin_access_token' }, "API Access Token")),
                 React.createElement("td", null,
-                    React.createElement("input", { type: props.data.isSiteFormLocked ? 'password' : 'text', id: 'disqus_admin_access_token', name: 'disqus_admin_access_token', className: 'regular-text', value: props.data.localAdminOptions.get('disqus_admin_access_token') || '', onChange: props.onInputChange.bind(null, 'disqus_admin_access_token'), readOnly: Boolean(props.data.isSiteFormLocked), disabled: Boolean(props.data.isSiteFormLocked) }),
-                    React.createElement("p", { className: 'description' }, "The admin access token of your application (optional)."))))),
+                    React.createElement("input", { type: 'text', id: 'disqus_admin_access_token', name: 'disqus_admin_access_token', className: 'regular-text', value: props.data.localAdminOptions.get('disqus_admin_access_token') || '', onChange: props.onInputChange.bind(null, 'disqus_admin_access_token'), readOnly: Boolean(props.data.isSiteFormLocked), disabled: Boolean(props.data.isSiteFormLocked) }),
+                    React.createElement("p", { className: 'description' }, "The admin access token of your application (optional)."))),
+            React.createElement("tr", null,
+                React.createElement("th", { scope: 'row' },
+                    React.createElement("label", { htmlFor: 'disqus_sync_token' }, "Site Secret Key")),
+                React.createElement("td", null,
+                    React.createElement("input", { type: 'text', id: 'disqus_sync_token', name: 'disqus_sync_token', className: 'regular-text', value: props.data.localAdminOptions.get('disqus_sync_token') || '', onChange: props.onInputChange.bind(null, 'disqus_sync_token'), readOnly: Boolean(props.data.isSiteFormLocked), disabled: Boolean(props.data.isSiteFormLocked) }),
+                    React.createElement("p", { className: 'description' },
+                        "The secret key for your site which allows Disqus to sync comments.",
+                        React.createElement("br", null),
+                        React.createElement("br", null),
+                        React.createElement("strong", null,
+                            "Important",
+                            ":"),
+                        ' ',
+                        "If you change this you will need to re-enable syncing to use the new key."))))),
     React.createElement("p", { className: 'submit' }, getSubmitButton(props)))); };
 exports.default = SiteConfigForm;
 
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var ReactRedux = __webpack_require__(2);
-var SSOConfigForm_1 = __webpack_require__(94);
-var mapDispatchToProps_1 = __webpack_require__(4);
-var mapStateToProps_1 = __webpack_require__(5);
+var SSOConfigForm_1 = __webpack_require__(96);
+var mapDispatchToProps_1 = __webpack_require__(3);
+var mapStateToProps_1 = __webpack_require__(4);
 var SSOConfigContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(SSOConfigForm_1.default);
 exports.default = SSOConfigContainer;
 
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27441,22 +27541,22 @@ exports.default = SSOConfigForm;
 
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var ReactRedux = __webpack_require__(2);
-var SupportDiagnostics_1 = __webpack_require__(96);
-var mapDispatchToProps_1 = __webpack_require__(4);
-var mapStateToProps_1 = __webpack_require__(5);
+var SupportDiagnostics_1 = __webpack_require__(98);
+var mapDispatchToProps_1 = __webpack_require__(3);
+var mapStateToProps_1 = __webpack_require__(4);
 var SupportDiagnosticsContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(SupportDiagnostics_1.default);
 exports.default = SupportDiagnosticsContainer;
 
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27473,22 +27573,22 @@ exports.default = SupportDiagnostics;
 
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var ReactRedux = __webpack_require__(2);
-var SyncConfigForm_1 = __webpack_require__(98);
-var mapDispatchToProps_1 = __webpack_require__(4);
-var mapStateToProps_1 = __webpack_require__(5);
+var SyncConfigForm_1 = __webpack_require__(100);
+var mapDispatchToProps_1 = __webpack_require__(3);
+var mapStateToProps_1 = __webpack_require__(4);
 var SyncConfigContainer = ReactRedux.connect(mapStateToProps_1.default, mapDispatchToProps_1.default)(SyncConfigForm_1.default);
 exports.default = SyncConfigContainer;
 
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27548,7 +27648,7 @@ exports.default = SyncConfigForm;
 
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27566,7 +27666,7 @@ exports.default = HelpResources;
 
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27586,21 +27686,21 @@ var SupportLinks = function () { return (React.createElement("ul", { className: 
                 "Community Forum"))),
     React.createElement("li", { className: 'dsq-support-list-item' },
         React.createElement("div", null,
-            React.createElement("a", { href: 'https://disqus.com/support/?article=contact_wordpress', target: '_blank' },
+            React.createElement("a", { href: 'http://wp-plugin.disqus.net/', target: '_blank' },
                 React.createElement("div", { className: 'dashicons dashicons-email-alt dsq-icon-support' }),
                 "Contact Support"))))); };
 exports.default = SupportLinks;
 
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var utils_1 = __webpack_require__(16);
+var utils_1 = __webpack_require__(12);
 var WelcomePanel = function (props) { return (React.createElement("div", { className: 'welcome-panel' },
     React.createElement("div", { className: 'welcome-panel-content' },
         React.createElement("p", { className: 'about-description' }, "Manage Community"),
@@ -27637,7 +27737,7 @@ exports.default = WelcomePanel;
 
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27650,7 +27750,7 @@ exports.default = Loading;
 
 
 /***/ }),
-/* 103 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27670,14 +27770,14 @@ exports.default = Message;
 
 
 /***/ }),
-/* 104 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var actions = __webpack_require__(10);
-var AdminState_1 = __webpack_require__(11);
+var actions = __webpack_require__(11);
+var AdminState_1 = __webpack_require__(8);
 var adminConfigData = window.DISQUS_WP;
 var initialState = new AdminState_1.default(adminConfigData);
 var adminApp = function (state, action) {
@@ -27719,6 +27819,9 @@ var adminApp = function (state, action) {
         case actions.CHANGE_TAB_STATE:
             state = state.with({
                 activeTab: action.data,
+                installationState: state.adminOptions.disqus_installed ?
+                    AdminState_1.InstallationState.installed :
+                    AdminState_1.InstallationState.none,
             });
             break;
         case actions.UPDATE_EXPORT_POST_LOG:
@@ -27741,4 +27844,4 @@ exports.default = adminApp;
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=en.disqus-admin.bundle.3.0.13.js.map
+//# sourceMappingURL=en.disqus-admin.bundle.3.0.15.js.map

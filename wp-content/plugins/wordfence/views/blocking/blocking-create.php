@@ -62,6 +62,8 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 									else if (active == 'country') {
 										$('.wf-block-add-ip, .wf-block-add-pattern').hide(); 
 										$('.wf-block-add-country').show();
+
+										$('#wf-block-reason').val('<?php esc_attr_e('Country Blocking', 'wordfence'); ?>');
 										
 										if (!!$('#wf-blocks-wrapper').data('hasCountryBlock')) {
 											title = $('#wf-block-parameters-title').data('editTitle');
@@ -73,6 +75,11 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 											$('#wf-block-country-login .wf-option-checkbox').toggleClass('wf-checked', !!editValues.blockLogin);
 											$('#wf-block-country-site .wf-option-checkbox').toggleClass('wf-checked', !!editValues.blockSite);
 											$('#wf-block-country-countries').val(editValues.countries).trigger('change');
+										}
+										else {
+											$('#wf-block-country-login .wf-option-checkbox').toggleClass('wf-checked', true);
+											$('#wf-block-country-site .wf-option-checkbox').toggleClass('wf-checked', true);
+											$('#wf-block-country-countries').val([]).trigger('change');
 										}
 									}
 									else if (active == 'custom-pattern') {
@@ -135,6 +142,12 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 				</td>
 			</tr>
 			<tr class="wf-block-add-country" style="display: none;">
+				<th class="wf-right wf-padding-add-right wf-padding-add-top-small"></th>
+				<td class="wf-padding-add-top-small wf-form-field">
+					<em><?php printf(__('If you use Google Adwords, blocking countries from accessing the entire site is not recommended. <a href="%s" target="_blank" rel="noopener noreferrer">Learn More</a>', 'wordfence'), wfSupportController::supportURL(wfSupportController::ITEM_FIREWALL_BLOCKING_FULL_SITE)); ?></em>
+				</td>
+			</tr>
+			<tr class="wf-block-add-country" style="display: none;">
 				<th class="wf-right wf-padding-add-right wf-padding-add-top-small"><?php _e('Countries<span class="wf-hidden-xs"> to Block</span>', 'wordfence'); ?><br><a href="#" id="wf-block-country-countries-popup"><?php _e('Pick<span class="wf-hidden-xs"> from List</span>', 'wordfence'); ?></a></th>
 				<td class="wf-option-text wf-padding-add-top-small">
 					<select id="wf-block-country-countries" multiple>
@@ -186,14 +199,14 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 				<th class="wf-right wf-padding-add-right wf-padding-add-top-small"><?php _e('Referrer', 'wordfence'); ?></th>
 				<td class="wf-option-text wf-padding-add-top-small"><input id="wf-block-referrer" type="text" placeholder="<?php esc_attr_e('e.g., *badwebsite.example.com*', 'wordfence'); ?>"></td>
 			</tr>
-			<tr class="<?php echo (wfConfig::get('isPaid') ? 'wf-block-add-common' : 'wf-block-add-ip wf-block-add-pattern'); ?>" style="display: none;">
+			<tr class="wf-block-add-ip wf-block-add-pattern" style="display: none;">
 				<th class="wf-right wf-padding-add-right wf-padding-add-top-small"><?php _e('<span class="wf-hidden-xs">Block </span>Reason', 'wordfence'); ?><span class="wf-red-dark">*</span></th> 
 				<td class="wf-option-text wf-padding-add-top-small"><input id="wf-block-reason" type="text" placeholder="<?php esc_attr_e('Enter a reason', 'wordfence'); ?>"></td>
 			</tr>
 		</table>
 	</li>
 	<li class="<?php echo (wfConfig::get('isPaid') ? 'wf-block-add-common' : 'wf-block-add-ip wf-block-add-pattern'); ?>" style="display: none;">
-		<div class="wf-right wf-padding-add-top-small wf-padding-add-bottom-small">
+		<div class="wf-right wf-padding-add-top wf-padding-add-bottom">
 			<a id="wf-block-add-cancel" class="wf-btn wf-btn-default wf-btn-callout-subtle" href="#"><?php esc_html_e('Cancel', 'wordfence'); ?></a>&nbsp;&nbsp;<a id="wf-block-add-save" class="wf-btn wf-btn-primary wf-btn-callout-subtle wf-disabled" href="#"><?php _e('Block<span class="wf-hidden-xs"> Visitors Matching this</span> Pattern', 'wordfence'); ?></a>
 			<script type="application/javascript">
 				(function($) {
@@ -284,19 +297,22 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 							e.preventDefault();
 							e.stopPropagation();
 							
+							var content = $('#wfTmpl_countrySelector').tmpl();
+							$(content).find('#wf-country-selector-confirm').text($('#wf-block-add-save').text());
+
+							var modal = $(content);
+							var countries = {};
+							var currentSelection = $('#wf-block-country-countries').val() || [];
+							for (var i = 0; i < currentSelection.length; i++) {
+								countries[currentSelection[i]] = 1;
+								modal.find('li[data-country="' + currentSelection[i] + '"]').addClass('wf-active');
+							}
+							modal.data('countries', countries);
+							
 							$.wfDrawer({
 								width: WFAD.isSmallScreen ? '320px' : '800px',
-								content: $('#wfTmpl_countrySelector').tmpl(),
+								content: content,
 								onComplete: function() {
-									var modal = $('#wf-country-selector');
-									var countries = {};
-									var currentSelection = $('#wf-block-country-countries').val() || [];
-									for (var i = 0; i < currentSelection.length; i++) {
-										countries[currentSelection[i]] = 1;
-										modal.find('li[data-country="' + currentSelection[i] + '"]').addClass('wf-active');
-									}
-									modal.data('countries', countries);
-									
 									var updateCount = function() {
 										var count = $('.wf-blocked-countries li.wf-active').length;
 										$('#wf-country-selector-count').text(count + (count == 1 ? ' Country Selected' : ' Countries Selected'));	
@@ -371,14 +387,26 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 											scrollTop: $('.wf-country-selector-inner-wrapper').scrollTop() + scrollTarget.offset().top - $('.wf-country-selector-inner-wrapper').offset().top
 										}, 500);
 									});
+									
+									$('#wf-country-selector-cancel').on('click', function(e) { //Commits but doesn't save
+										e.preventDefault();
+										e.stopPropagation();
+
+										var modal = $('#wf-country-selector');
+										var countries = Object.keys(modal.data('countries')) || [];
+										$('#wf-block-country-countries').val(countries).trigger('change');
+
+										$.wfDrawer.close()
+									});
 	
-									$('#wf-country-selector-confirm').on('click', function(e) {
+									$('#wf-country-selector-confirm').on('click', function(e) { //Commits and saves
 										e.preventDefault();
 										e.stopPropagation();
 	
 										var modal = $('#wf-country-selector');
 										var countries = Object.keys(modal.data('countries')) || [];
 										$('#wf-block-country-countries').val(countries).trigger('change');
+										$('#wf-block-add-save').trigger('click');
 	
 										$.wfDrawer.close()
 									});

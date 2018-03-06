@@ -1,8 +1,8 @@
 /*!
- * Collapse-O-Matic JavaSctipt v1.6.10
+ * Collapse-O-Matic JavaSctipt v1.6.14
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
- * Copyright 2017, Twinpictures
+ * Copyright 2018, Twinpictures
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -99,7 +99,8 @@ function toggleState (obj, id, maptastic, trig_id) {
 
 	//slideToggle
 	if(com_effect == 'slideToggle'){
-		jQuery('[id^=target][id$='+id+']').slideToggle(com_duration, function() {
+		//jQuery('[id^=target][id$='+id+']').slideToggle(com_duration, function() {
+		jQuery('#target-'+id).slideToggle(com_duration, function() {
 			// Animation complete.
 			if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
 				jQuery(this).css('display', 'inline');
@@ -120,7 +121,7 @@ function toggleState (obj, id, maptastic, trig_id) {
 	}
 	//slideFade
 	else if(com_effect == 'slideFade'){
-		jQuery('[id^=target][id$='+id+']').animate({
+		jQuery('#target-'+id).animate({
 			height: "toggle",
 			opacity: "toggle"
 		}, com_duration, function (){
@@ -340,16 +341,6 @@ jQuery(document).ready(function() {
 		collapse_init();
 	}
 
-	function is_valid_jquery_selector(sel) {
-		try {
-			jQuery(sel);
-			return true;
-		}
-		catch(ex) {
-			return false;
-		}
-	}
-
 	//jetpack infinite scroll catch-all
 	jQuery( document.body ).on( 'post-load', function () {
 		collapse_init();
@@ -543,46 +534,21 @@ jQuery(document).ready(function() {
 
 	//handle new page loads with anchor
 	var fullurl = document.location.toString();
-	// the URL contains an anchor, but not a hash-bang (#!)
-	if (fullurl.match('#(?!\!)')) {
-		// click the navigation item corresponding to the anchor
-		var anchor_arr = fullurl.split(/#(?!\!)/);
-		if(anchor_arr.length > 1){
-			junk = anchor_arr.splice(0, 1);
-			anchor = anchor_arr.join('#');
-		}
-		else{
-			anchor = anchor_arr[0];
-		}
+	hashmaster(fullurl);
 
-		//if the element exists
-		if( is_valid_jquery_selector('#' + anchor) && jQuery('#' + anchor).length ){
+	//handle no-link triggers within the same page
+	jQuery(document).on('click', 'a.colomat-nolink', function(event) {
+		event.preventDefault();
+	});
 
-			//if the element isn't already expanded, expand it
-			if(!jQuery('#' + anchor).hasClass('colomat-close')){
-				jQuery('#' + anchor).click();
-			}
+	//manual hashtag changes in url
+	jQuery(window).on('hashchange', function (e) {
+		fullurl = document.location.toString();
+		hashmaster(fullurl);
+	});
 
-			//expand any nested parents
-			jQuery('#' + anchor).parents('.collapseomatic_content').each(function(index) {
-				parent_arr = jQuery(this).attr('id').split('-');
-				junk = parent_arr.splice(0, 1);
-				parent = parent_arr.join('-');
-				jQuery('#' + parent).click();
-			})
-
-			if(typeof colomatoffset !== 'undefined'){
-				var anchor_offset = jQuery('#' + anchor).offset();
-				colomatoffset = colomatoffset + anchor_offset.top;
-				jQuery('html, body').animate({scrollTop:colomatoffset}, 50);
-			}
-		}
-	}
-
-	//handle anchor links within the same page
-	jQuery(document).on(com_binding, 'a.expandanchor', function(event) {
-		//event.preventDefault();
-		var fullurl = jQuery(this).attr('href');
+	//master url hash funciton
+	function hashmaster(fullurl){
 		// the URL contains an anchor but not a hash-bang
 		if (fullurl.match('#(?!\!)')) {
 			// click the navigation item corresponding to the anchor
@@ -596,7 +562,7 @@ jQuery(document).ready(function() {
 				anchor = anchor_arr[0];
 			}
 
-			if( is_valid_jquery_selector('#' + anchor) && jQuery('#' + anchor).length ){
+			if( jQuery('#' + anchor).length ){
 				//expand any nested parents
 				jQuery('#' + anchor).parents('.collapseomatic_content').each(function(index) {
 					parent_arr = jQuery(this).attr('id').split('-');
@@ -611,10 +577,13 @@ jQuery(document).ready(function() {
 					jQuery('#' + anchor).click();
 				}
 			}
-		}
-	});
 
-	jQuery(document).on(com_binding, 'a.colomat-nolink', function(event) {
-		event.preventDefault();
-	});
+			if(typeof colomatoffset !== 'undefined'){
+				var anchor_offset = jQuery('#' + anchor).offset();
+				colomatoffset = colomatoffset + anchor_offset.top;
+				jQuery('html, body').animate({scrollTop:colomatoffset}, 50);
+			}
+
+		}
+	}
 });

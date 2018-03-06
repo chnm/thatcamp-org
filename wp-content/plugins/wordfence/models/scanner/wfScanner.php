@@ -180,6 +180,7 @@ class wfScanner {
 			'lowResourceScansEnabled' => true,
 			'scan_exclude' => wfConfig::get('scan_exclude', ''),
 			'scan_include_extra' => wfConfig::get('scan_include_extra', ''),
+			'scansEnabled_geoipSupport' => true,
 		));
 	}
 	
@@ -211,6 +212,7 @@ class wfScanner {
 			'scansEnabled_dns' => true,
 			'scan_exclude' => wfConfig::get('scan_exclude', ''),
 			'scan_include_extra' => wfConfig::get('scan_include_extra', ''),
+			'scansEnabled_geoipSupport' => true,
 		));
 	}
 	
@@ -247,6 +249,7 @@ class wfScanner {
 			'scansEnabled_highSense' => true,
 			'scan_exclude' => wfConfig::get('scan_exclude', ''),
 			'scan_include_extra' => wfConfig::get('scan_include_extra', ''),
+			'scansEnabled_geoipSupport' => true,
 		));
 	}
 	
@@ -260,6 +263,9 @@ class wfScanner {
 		foreach ($allOptions as $key => &$value) {
 			$value = wfConfig::get($key);
 		}
+		
+		$allOptions['scansEnabled_geoipSupport'] = true;
+		
 		return $allOptions;
 	}
 	
@@ -298,7 +304,17 @@ class wfScanner {
 			'scansEnabled_highSense' => false,
 			'lowResourceScansEnabled' => false,
 			'scan_exclude' => '',
+			'scansEnabled_geoipSupport' => false,
 		);
+	}
+	
+	/**
+	 * Returns the scan options only available to premium users.
+	 *
+	 * @return array
+	 */
+	protected static function _premiumScanOptions() {
+		return array('spamvertizeCheck', 'checkSpamIP', 'scansEnabled_checkGSB');
 	}
 	
 	/**
@@ -335,6 +351,7 @@ class wfScanner {
 			'scansEnabled_highSense' => 0,
 			'lowResourceScansEnabled' => 0,
 			'scan_exclude' => 0,
+			'scansEnabled_geoipSupport' => 0,
 		);
 	}
 	
@@ -480,6 +497,7 @@ class wfScanner {
 					'scansEnabled_checkHowGetIPs',
 					'scansEnabled_diskSpace',
 					'scansEnabled_dns',
+					'scansEnabled_geoipSupport',
 				);
 				break;
 			case self::STAGE_FILE_CHANGES:
@@ -678,10 +696,16 @@ class wfScanner {
 	 * @return float
 	 */
 	public function scanTypeStatus() {
+		$isFree = !wfConfig::get('isPaid');
 		$weights = self::_scanOptionWeights();
 		$options = $this->scanOptions();
 		$score = 0.0;
+		$premiumOptions = self::_premiumScanOptions();
 		foreach ($options as $key => $value) {
+			if ($isFree && array_search($key, $premiumOptions) !== false) {
+				continue;
+			}
+			
 			if ($value) {
 				$score += $weights[$key];
 			}
@@ -690,27 +714,50 @@ class wfScanner {
 	}
 
 	public function scanTypeStatusList() {
+		$isFree = !wfConfig::get('isPaid');
 		$weights = self::_scanOptionWeights();
 		$options = $this->scanOptions();
 		$disabledOptionCount = 0;
+		$premiumDisabledOptionCount = 0;
 		$percentage = 0.0;
+		$premiumPercentage = 0.0;
+		$premiumOptions = self::_premiumScanOptions();
 		$statusList = array();
 		foreach ($options as $key => $value) {
+			if ($isFree && array_search($key, $premiumOptions) !== false) {
+				$premiumPercentage += $weights[$key];
+				$premiumDisabledOptionCount++;
+				continue;
+			}
+			
 			if (!$value && $weights[$key] > 0) {
 				$percentage += $weights[$key];
 				$disabledOptionCount++;
 			}
 		}
-		if (!wfConfig::get('isPaid')) {
+		
+		$remainingPercentage = 1 - $this->scanTypeStatus();
+		if ($isFree) {
+			$remainingPercentage -= 0.30;
 			$statusList[] = array(
 				'percentage' => 0.30,
 				'title'      => __('Enable Premium Scan Signatures.', 'wordfence'),
 			);
 		}
+		
+		if ($premiumPercentage > 0) {
+			$subtraction = min($this->_normalizedPercentageToDisplay($premiumPercentage), $remainingPercentage);
+			$remainingPercentage -= $subtraction;
+			$statusList[] = array(
+				'percentage' => $subtraction,
+				'title'      => __('Enable Premium Reputation Checks.', 'wordfence'),
+			);
+		}
 
 		if ($percentage > 0) {
+			$subtraction = min($this->_normalizedPercentageToDisplay($percentage), $remainingPercentage);
 			$statusList[] = array(
-				'percentage' => $this->_normalizedPercentageToDisplay($percentage),
+				'percentage' => $subtraction,
 				'title' => sprintf(_nx('Enable %d scan option.', 'Enable %d scan options.', $disabledOptionCount,'wordfence'), number_format_i18n($disabledOptionCount)),
 			);
 		}
@@ -803,6 +850,7 @@ class wfScanner {
 			'checkHowGetIPs' => array('scansEnabled_checkHowGetIPs'),
 			'dns' => array('scansEnabled_dns'),
 			'diskSpace' => array('scansEnabled_diskSpace'),
+			'geoipSupport' => array('scansEnabled_geoipSupport'),
 			'knownFiles' => ($this->scanType() != self::SCAN_TYPE_QUICK), //Always runs except for quick, options are scansEnabled_core, scansEnabled_themes, scansEnabled_plugins, scansEnabled_coreUnknown, scansEnabled_malware
 			'checkReadableConfig' => array('scansEnabled_checkReadableConfig'),
 			'fileContents' => ($this->scanType() != self::SCAN_TYPE_QUICK), //Always runs except for quick, options are scansEnabled_fileContents and scansEnabled_fileContentsGSB

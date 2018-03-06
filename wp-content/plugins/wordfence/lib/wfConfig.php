@@ -38,6 +38,7 @@ class wfConfig {
 			"alertOn_throttle" => array('value' => false, 'autoload' => self::AUTOLOAD),
 			"alertOn_block" => array('value' => true, 'autoload' => self::AUTOLOAD),
 			"alertOn_loginLockout" => array('value' => true, 'autoload' => self::AUTOLOAD),
+			'alertOn_breachLogin' => array('value' => true, 'autoload' => self::AUTOLOAD),
 			"alertOn_lostPasswdForm" => array('value' => true, 'autoload' => self::AUTOLOAD),
 			"alertOn_adminLogin" => array('value' => true, 'autoload' => self::AUTOLOAD),
 			"alertOn_firstAdminLoginOnly" => array('value' => false, 'autoload' => self::AUTOLOAD),
@@ -83,6 +84,7 @@ class wfConfig {
 			"autoBlockScanners" => array('value' => true, 'autoload' => self::AUTOLOAD),
 			"loginSecurityEnabled" => array('value' => true, 'autoload' => self::AUTOLOAD),
 			"loginSec_strongPasswds_enabled" => array('value' => true, 'autoload' => self::AUTOLOAD),
+			"loginSec_breachPasswds_enabled" => array('value' => true, 'autoload' => self::AUTOLOAD),
 			"loginSec_lockInvalidUsers" => array('value' => false, 'autoload' => self::AUTOLOAD),
 			"loginSec_maskLoginErrors" => array('value' => true, 'autoload' => self::AUTOLOAD),
 			"loginSec_blockAdminReg" => array('value' => true, 'autoload' => self::AUTOLOAD),
@@ -148,6 +150,7 @@ class wfConfig {
 			"loginSec_countFailMins" => array('value' => 240, 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_INT)),
 			"loginSec_lockoutMins" => array('value' => 240, 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_INT)),
 			'loginSec_strongPasswds' => array('value' => 'pubs', 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_STRING)),
+			'loginSec_breachPasswds' => array('value' => 'admins', 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_STRING)),
 			'loginSec_maxFailures' => array('value' => 20, 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_INT)),
 			'loginSec_maxForgotPasswd' => array('value' => 20, 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_INT)),
 			'maxGlobalRequests' => array('value' => 'DISABLED', 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_STRING)),
@@ -211,7 +214,7 @@ class wfConfig {
 			'supportHash' => array('value' => '', 'autoload' => self::DONT_AUTOLOAD, 'validation' => array('type' => self::TYPE_STRING)),
 		),
 	);
-	public static $serializedOptions = array('lastAdminLogin', 'scanSched', 'emailedIssuesList', 'wf_summaryItems', 'adminUserList', 'twoFactorUsers', 'alertFreqTrack', 'wfStatusStartMsgs', 'vulnerabilities_plugin', 'vulnerabilities_theme', 'dashboardData', 'malwarePrefixes', 'noc1ScanSchedule', 'allScansScheduled', 'disclosureStates', 'scanStageStatuses');
+	public static $serializedOptions = array('lastAdminLogin', 'scanSched', 'emailedIssuesList', 'wf_summaryItems', 'adminUserList', 'twoFactorUsers', 'alertFreqTrack', 'wfStatusStartMsgs', 'vulnerabilities_plugin', 'vulnerabilities_theme', 'dashboardData', 'malwarePrefixes', 'noc1ScanSchedule', 'allScansScheduled', 'disclosureStates', 'scanStageStatuses', 'adminNoticeQueue');
 	public static function setDefaults() {
 		foreach (self::$defaultConfig['checkboxes'] as $key => $config) {
 			$val = $config['value'];
@@ -1192,7 +1195,8 @@ Options -ExecCGI
 				{
 					$wafStatus = (isset($changes['wafStatus']) ? $changes['wafStatus'] : $wafConfig->getConfig('wafStatus'));
 					if ($wafStatus == wfFirewall::FIREWALL_MODE_LEARNING) {
-						$gracePeriodEnd = strtotime($value);
+						$dt = wfUtils::parseLocalTime($value);
+						$gracePeriodEnd = $dt->format('U');
 						$wafConfig->setConfig($key, $gracePeriodEnd);
 					}
 					
@@ -1604,6 +1608,7 @@ Options -ExecCGI
 					'alertOn_throttle',
 					'alertOn_block',
 					'alertOn_loginLockout',
+					'alertOn_breachLogin',
 					'alertOn_lostPasswdForm',
 					'alertOn_adminLogin',
 					'alertOn_firstAdminLoginOnly',
@@ -1641,6 +1646,7 @@ Options -ExecCGI
 					'autoBlockScanners',
 					'loginSecurityEnabled',
 					'loginSec_strongPasswds_enabled',
+					'loginSec_breachPasswds_enabled',
 					'loginSec_lockInvalidUsers',
 					'loginSec_maskLoginErrors',
 					'loginSec_blockAdminReg',
@@ -1660,6 +1666,7 @@ Options -ExecCGI
 					'loginSec_countFailMins',
 					'loginSec_lockoutMins',
 					'loginSec_strongPasswds',
+					'loginSec_breachPasswds',
 					'loginSec_maxFailures',
 					'loginSec_maxForgotPasswd',
 					'maxGlobalRequests',
@@ -1775,6 +1782,7 @@ Options -ExecCGI
 					'alertOn_throttle',
 					'alertOn_block',
 					'alertOn_loginLockout',
+					'alertOn_breachLogin',
 					'alertOn_lostPasswdForm',
 					'alertOn_adminLogin',
 					'alertOn_firstAdminLoginOnly',
@@ -1807,6 +1815,7 @@ Options -ExecCGI
 					'autoBlockScanners',
 					'loginSecurityEnabled',
 					'loginSec_strongPasswds_enabled',
+					'loginSec_breachPasswds_enabled',
 					'loginSec_lockInvalidUsers',
 					'loginSec_maskLoginErrors',
 					'loginSec_blockAdminReg',
@@ -1826,6 +1835,7 @@ Options -ExecCGI
 					'loginSec_countFailMins',
 					'loginSec_lockoutMins',
 					'loginSec_strongPasswds',
+					'loginSec_breachPasswds',
 					'loginSec_maxFailures',
 					'loginSec_maxForgotPasswd',
 					'maxGlobalRequests',

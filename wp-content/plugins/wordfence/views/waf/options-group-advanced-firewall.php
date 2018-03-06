@@ -50,7 +50,9 @@ if (!isset($collapseable)) {
 							'textOptionName' => 'whitelisted',
 							'textValue' => wfUtils::cleanupOneEntryPerLine(wfConfig::get('whitelisted')),
 							'title' => __('Whitelisted IP addresses that bypass all rules', 'wordfence'),
+							'alignTitle' => 'top',
 							'subtitleHTML' => __('Whitelisted IPs must be separated by commas or placed on separate lines. You can specify ranges using the following formats: 127.0.0.1/24, 127.0.0.[1-100], or 127.0.0.1 - 127.0.1.100<br/>Wordfence automatically whitelists <a href="http://en.wikipedia.org/wiki/Private_network" target="_blank" rel="noopener noreferrer">private networks</a> because these are not routable on the public Internet.', 'wordfence'),
+							'subtitlePosition' => 'value',
 							'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_FIREWALL_WAF_OPTION_WHITELISTED_IPS),
 						))->render();
 						?>
@@ -61,7 +63,9 @@ if (!isset($collapseable)) {
 							'textOptionName' => 'bannedURLs',
 							'textValue' => wfUtils::cleanupOneEntryPerLine(wfConfig::get('bannedURLs')),
 							'title' => __('Immediately block IPs that access these URLs', 'wordfence'),
+							'alignTitle' => 'top',
 							'subtitle' => __('Separate multiple URLs with commas or place them on separate lines. Asterisks are wildcards, but use with care. If you see an attacker repeatedly probing your site for a known vulnerability you can use this to immediately block them. All URLs must start with a "/" without quotes and must be relative. e.g. /badURLone/, /bannedPage.html, /dont-access/this/URL/, /starts/with-*', 'wordfence'),
+							'subtitlePosition' => 'value',
 							'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_FIREWALL_WAF_OPTION_IMMEDIATELY_BLOCK_URLS),
 						))->render();
 						?>
@@ -72,7 +76,9 @@ if (!isset($collapseable)) {
 							'textOptionName' => 'wafAlertWhitelist',
 							'textValue' => wfUtils::cleanupOneEntryPerLine(wfConfig::get('wafAlertWhitelist')),
 							'title' => __('Ignored IP addresses for Wordfence Web Application Firewall alerting', 'wordfence'),
+							'alignTitle' => 'top',
 							'subtitle' => __('Ignored IPs must be separated by commas or placed on separate lines. These addresses will be ignored from any alerts about increased attacks and can be used to ignore things like standalone website security scanners.', 'wordfence'),
+							'subtitlePosition' => 'value',
 							'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_FIREWALL_WAF_IGNORED_ALERT_IPS),
 						))->render();
 						?>

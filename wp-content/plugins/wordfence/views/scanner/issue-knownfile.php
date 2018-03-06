@@ -10,7 +10,7 @@ echo wfView::create('scanner/issue-base', array(
 	'summaryControls' => array(wfView::create('scanner/issue-control-repair'), wfView::create('scanner/issue-control-ignore', array('ignoreP' => __('Always Ignore', 'wordfence'), 'ignoreC' => __('Ignore Until File Changes', 'wordfence'))), wfView::create('scanner/issue-control-show-details')),
 	'detailPairs' => array(
 		__('Filename', 'wordfence') => '<span class="wf-split-word-xs">${data.file}</span>',
-		__('File Type', 'wordfence') => '{{if data.cType}}${WFAD.ucfirst(data.cType)}{{else}}' . __('Not a core, theme or plugin file', 'wordfence') . '.{{/if}}',
+		__('File Type', 'wordfence') => '{{if data.cType}}${WFAD.ucfirst(data.cType)}{{else}}' . __('Not a core, theme, or plugin file from wordpress.org', 'wordfence') . '.{{/if}}',
 		__('Bad URL', 'wordfence') => array('(typeof data.badURL !== \'undefined\') && data.badURL', '${data.badURL}'),
 		null,
 		__('Details', 'wordfence') => '{{html longMsg}}',

@@ -345,16 +345,26 @@ class wfIssues {
 		}
 		return $result;
 	}
-	public function getIssues($offset = 0, $limit = 100){
+	public function getIssues($offset = 0, $limit = 100, $ignoredOffset = 0, $ignoredLimit = 100) {
 		/** @var wpdb $wpdb */
 		global $wpdb;
+		
+		$siteCleaningTypes = array('file', 'checkGSB', 'checkSpamIP', 'commentBadURL', 'dnsChange', 'knownfile', 'optionBadURL', 'postBadTitle', 'postBadURL', 'spamvertizeCheck', 'suspiciousAdminUsers');
+		$sortTagging = 'CASE';
+		foreach ($siteCleaningTypes as $index => $t) {
+			$sortTagging .= ' WHEN type = \'' . esc_sql($t) . '\' THEN ' . ((int) $index);
+		}
+		$sortTagging .= ' ELSE 999 END';
+		
 		$ret = array(
 			'new' => array(),
 			'ignored' => array()
 			);
 		$userIni = ini_get('user_ini.filename');
-		$q1 = $this->getDB()->querySelect("select * from " . $this->issuesTable . " order by time desc LIMIT %d,%d", $offset, $limit);
-		foreach($q1 as $i){
+		$q1 = $this->getDB()->querySelect("SELECT *, {$sortTagging} AS sortTag FROM " . $this->issuesTable . " WHERE status = 'new' ORDER BY severity ASC, sortTag ASC, type ASC, time DESC LIMIT %d,%d", $offset, $limit);
+		$q2 = $this->getDB()->querySelect("SELECT *, {$sortTagging} AS sortTag FROM " . $this->issuesTable . " WHERE status = 'ignoreP' OR status = 'ignoreC' ORDER BY severity ASC, sortTag ASC, type ASC, time DESC LIMIT %d,%d", $ignoredOffset, $ignoredLimit);
+		$q = array_merge($q1, $q2);
+		foreach($q as $i){
 			$i['data'] = unserialize($i['data']);
 			$i['timeAgo'] = wfUtils::makeTimeAgo(time() - $i['time']);
 			$i['displayTime'] = wfUtils::formatLocalTime(get_option('date_format') . ' ' . get_option('time_format'), $i['time']);
@@ -405,6 +415,30 @@ class wfIssues {
 			$i['data'] = unserialize($i['data']);
 		}
 		return $issues;
+	}
+	public function getFixableIssueCount() {
+		global $wpdb;
+		$issues = $this->getDB()->querySelect("SELECT * FROM {$this->issuesTable} WHERE data LIKE '%s:6:\"canFix\";b:1;%'");
+		$count = 0;
+		foreach ($issues as $i) {
+			$i['data'] = unserialize($i['data']);
+			if (isset($i['data']['canFix']) && $i['data']['canFix']) {
+				$count++;
+			}
+		}
+		return $count;
+	}
+	public function getDeleteableIssueCount() {
+		global $wpdb;
+		$issues = $this->getDB()->querySelect("SELECT * FROM {$this->issuesTable} WHERE data LIKE '%s:9:\"canDelete\";b:1;%'");
+		$count = 0;
+		foreach ($issues as $i) {
+			$i['data'] = unserialize($i['data']);
+			if (isset($i['data']['canDelete']) && $i['data']['canDelete']) {
+				$count++;
+			}
+		}
+		return $count;
 	}
 	public function getIssueCount() {
 		return (int) $this->getDB()->querySingle("select COUNT(*) from " . $this->issuesTable . " WHERE status = 'new'");
