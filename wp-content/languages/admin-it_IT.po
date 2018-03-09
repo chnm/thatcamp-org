@@ -555,7 +555,7 @@ msgstr "%s Installazioni attive"
 msgid "View posts by %s"
 msgstr "Visualizza articoli di %s"
 
-#: wp-admin/includes/class-wp-users-list-table.php:492
+#: wp-admin/includes/class-wp-users-list-table.php:496
 msgctxt "name"
 msgid "Unknown"
 msgstr "Sconosciuto"
@@ -2068,7 +2068,7 @@ msgstr "C'è stato un errore durante l'aggiornamento di %1$s:  %2$s"
 msgid "No role"
 msgstr "Nessun ruolo"
 
-#: wp-admin/includes/class-wp-users-list-table.php:566
+#: wp-admin/includes/class-wp-users-list-table.php:570
 msgctxt "no user roles"
 msgid "None"
 msgstr "Nessuno"
@@ -2394,7 +2394,7 @@ msgid_plural "Your theme supports %s menus. Select which menu appears in each lo
 msgstr[0] "Il tuo tema supporta %s menu. Scegli la posizione per ogni menu."
 msgstr[1] "Il tuo tema supporta %s menu. Scegli le posizioni per ogni menu."
 
-#: wp-admin/includes/class-wp-users-list-table.php:505
+#: wp-admin/includes/class-wp-users-list-table.php:509
 msgid "%s post by this author"
 msgid_plural "%s posts by this author"
 msgstr[0] "%s articolo di questo autore"

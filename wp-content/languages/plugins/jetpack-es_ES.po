@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-06 20:10:26+0000\n"
+"PO-Revision-Date: 2018-03-07 07:49:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -246,7 +246,7 @@ msgstr "Sirve imágenes desde nuestros servidores"
 #: modules/module-headings.php:85
 msgctxt "Module Description"
 msgid "Lazy load images"
-msgstr "Carga perezosa de imágenes"
+msgstr "Carga diferida de imágenes"
 
 #: _inc/lib/plugins.php:61
 msgid "You are not allowed to install plugins on this site."
@@ -404,7 +404,7 @@ msgstr "Acelera tu sitio y su contenido"
 
 #: _inc/jetpack-strings.php:595
 msgid "Sites with large numbers of images can now activate the Lazy Loading Images feature, which significantly speeds up loading times for visitors. Instead of waiting for the entire page to load, Jetpack will instead show pages instantly, and only download additional images when they are about to come into view."
-msgstr "Los sitios con gran cantidad de imágenes pueden ahora activar la característica de carga perezosa de imágenes, que acelera significativamente los tiempos de carga a los visitantes. En vez de esperar a que cargue toda la página, Jetpack mostrará las páginas al instante, y solo descarga las imágenes adicionales cuando están a punto de verse."
+msgstr "Los sitios con gran cantidad de imágenes pueden ahora activar la característica de carga diferida de imágenes, que acelera significativamente los tiempos de carga a los visitantes. En vez de esperar a que cargue toda la página, Jetpack mostrará las páginas al instante, y solo descarga las imágenes adicionales cuando están a punto de verse."
 
 #: _inc/jetpack-strings.php:596
 msgid "If this sounds like a great improvement (and it is) you can enable it now by clicking the toggle below."
@@ -816,7 +816,7 @@ msgstr "Aplicaciones web progresivas"
 #: modules/module-headings.php:84
 msgctxt "Module Name"
 msgid "Lazy Images"
-msgstr "Imágenes perezosas"
+msgstr "Imágenes diferidas"
 
 #: class.jetpack-debugger.php:370
 msgid "I have a problem restoring my site."

@@ -555,7 +555,7 @@ msgstr "Zobacz wpisy utworzone przez %s"
 msgid "%s Active Installations"
 msgstr "%s aktywnych instalacji"
 
-#: wp-admin/includes/class-wp-users-list-table.php:492
+#: wp-admin/includes/class-wp-users-list-table.php:496
 msgctxt "name"
 msgid "Unknown"
 msgstr "Nieznany"
@@ -2079,7 +2079,7 @@ msgstr "Sposób wyświetlania"
 msgid "View all drafts"
 msgstr "Wyświetlanie wszystkich szkiców"
 
-#: wp-admin/includes/class-wp-users-list-table.php:566
+#: wp-admin/includes/class-wp-users-list-table.php:570
 msgctxt "no user roles"
 msgid "None"
 msgstr "Brak"
@@ -2416,7 +2416,7 @@ msgstr[2] "Twój motyw posiada %s miejsc na menu. Wybierz, w którym miejscu wy�
 msgid "Live Preview &#8220;%s&#8221;"
 msgstr "Podgląd na żywo &#8220;%s&#8221;"
 
-#: wp-admin/includes/class-wp-users-list-table.php:505
+#: wp-admin/includes/class-wp-users-list-table.php:509
 msgid "%s post by this author"
 msgid_plural "%s posts by this author"
 msgstr[0] "%s wpis tego autora"
