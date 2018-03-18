@@ -808,10 +808,6 @@ msgstr "تم إضافة الموقع. <a href=\"%1$s\">زيارة لوحة ال�
 msgid "Add New Site"
 msgstr "أضف موقع جديد"
 
-#: wp-admin/network/sites.php:28
-msgid "Add New takes you to the Add New Site screen. You can search for a site by Name, ID number, or IP address. Screen Options allows you to choose how many sites to display on one page."
-msgstr "النقر على زر \\\"أضف جديد\\\" سينقلك إلى صفحة جديدة حيث يمكنك ملء الحقول بالبيانات اللازمة لإضافة موقع جديد. يمكنك البحث عن موقع حسب اسم الموقع، أو حسب رقم ال ID، أو حسب عنوان الآي بي. يمكنك النقر على زر \\\"خيارات الشاشة\\\" الموجود في أعلى اليسار لتحديد عدد المواقع التي تريدها أن تظهر في هذه الصفحة."
-
 #: wp-admin/network/sites.php:31
 msgid "An Edit link to a separate Edit Site screen."
 msgstr "تحرير: سيقوم بنقلك إلى شاشة جديدة يمكنك من خلالها تحرير إعدادات وخيارات الموقع."
@@ -819,6 +815,10 @@ msgstr "تحرير: سيقوم بنقلك إلى شاشة جديدة يمكنك 
 #: wp-admin/network/sites.php:32
 msgid "Dashboard leads to the Dashboard for that site."
 msgstr "الصفحة الرئيسية: سيؤدي إلى نقلك إلى لوحة تحكّم الموقع."
+
+#: wp-admin/network/sites.php:28
+msgid "Add New takes you to the Add New Site screen. You can search for a site by Name, ID number, or IP address. Screen Options allows you to choose how many sites to display on one page."
+msgstr "النقر على زر \\\"أضف جديد\\\" سينقلك إلى صفحة جديدة حيث يمكنك ملء الحقول بالبيانات اللازمة لإضافة موقع جديد. يمكنك البحث عن موقع حسب اسم الموقع، أو حسب رقم ال ID، أو حسب عنوان الآي بي. يمكنك النقر على زر \\\"خيارات الشاشة\\\" الموجود في أعلى اليسار لتحديد عدد المواقع التي تريدها أن تظهر في هذه الصفحة."
 
 #: wp-admin/network/sites.php:34
 msgid "Delete which is a permanent action after the confirmation screens."
@@ -907,14 +907,6 @@ msgstr "إنشاء شبكة مواقع ووردبريس"
 msgid "This screen allows you to configure a network as having subdomains (<code>site1.example.com</code>) or subdirectories (<code>example.com/site1</code>). Subdomains require wildcard subdomains to be enabled in Apache and DNS records, if your host allows it."
 msgstr "في هذه الشاشة يمكنك إعداد شبكة مواقع. هذه المواقع ممكن أن تكون على نطاقات فرعية (<code>site1.example.com</code>) وممكن أن تكون في مجلدات فرعية (<code>example.com/site1</code>). حتى تكون المواقع على نطاقات فرعية يجب تمكين ال (wildcard subdomains) في خادم الأباتشي (Apache) وفي سجلات نظام اسم النطاق (DNS records). إذا لم تكن أنت صاحب الخادم تواصل مع مستضيفك لفحص ما إذا كان الأمر متاحاً لإجراء هذه التعديلات."
 
-#: wp-admin/network.php:61
-msgid "The next screen for Network Setup will give you individually-generated lines of code to add to your wp-config.php and .htaccess files. Make sure the settings of your FTP client make files starting with a dot visible, so that you can find .htaccess; you may have to create this file if it really is not there. Make backup copies of those two files."
-msgstr "بعد النقر على زر (تنصيب) سيتم نقلك إلى شاشة جديدة تحتوي على بعض الأكواد التي يجب عليك إضافتها إلى ملفي wp-config.php و htaccess. انتبه فقط أن ملف (htaccess.) توجد قبله نقطة. أحياناً تحتاج أن تقوم  بإنشاء ملف htaccess.  يدوياً إذا كان غير موجوداً."
-
-#: wp-admin/network.php:63
-msgid "Once you add this code and refresh your browser, multisite should be enabled. This screen, now in the Network Admin navigation menu, will keep an archive of the added code. You can toggle between Network Admin and Site Admin by clicking on the Network Admin or an individual site name under the My Sites dropdown in the Toolbar."
-msgstr "بعد أن تقوم بإضافة الأكواد التي ذُكرت سابقاً، ثمّ تقوم بإعادة تحميل الصفحة سيتّم تهيئة الشبكة. هذه الشاشة (لوحة تحكم الشبكة > إعدادات > تهيئة الشبكة) ستبقى تحتوي على الأكواد. يمكنك التنقّل بين \"إدارة الشبكة\" و \"إدارة الموقع\" عن طريق النقر على السهم الموجود بجانب اسمك في لوحة التحكم (في الطرف الأيسر من الجزء العلوي من الشاشة، بجانب كلمة \"مرحباً\")."
-
 #: wp-admin/network.php:64
 msgid "The choice of subdirectory sites is disabled if this setup is more than a month old because of permalink problems with &#8220;/blog/&#8221; from the main site. This disabling will be addressed in a future version."
 msgstr "في حال كان عمر هذا الموقع أكثر من شهر فهناك احتمال كبير أنك لن تكون قادراً على إنشاء مواقع في مجلدات فرعية على الشبكة وسبب المشكلة له علاقة بالروابط الدائمة. سيتم العمل على حل هذه المشكلة في الإصدارات الجديدة القادمة."
@@ -922,6 +914,14 @@ msgstr "في حال كان عمر هذا الموقع أكثر من شهر فه�
 #: wp-admin/network.php:71
 msgid "Network"
 msgstr "الشبكة"
+
+#: wp-admin/network.php:61
+msgid "The next screen for Network Setup will give you individually-generated lines of code to add to your wp-config.php and .htaccess files. Make sure the settings of your FTP client make files starting with a dot visible, so that you can find .htaccess; you may have to create this file if it really is not there. Make backup copies of those two files."
+msgstr "بعد النقر على زر (تنصيب) سيتم نقلك إلى شاشة جديدة تحتوي على بعض الأكواد التي يجب عليك إضافتها إلى ملفي wp-config.php و htaccess. انتبه فقط أن ملف (htaccess.) توجد قبله نقطة. أحياناً تحتاج أن تقوم  بإنشاء ملف htaccess.  يدوياً إذا كان غير موجوداً."
+
+#: wp-admin/network.php:63
+msgid "Once you add this code and refresh your browser, multisite should be enabled. This screen, now in the Network Admin navigation menu, will keep an archive of the added code. You can toggle between Network Admin and Site Admin by clicking on the Network Admin or an individual site name under the My Sites dropdown in the Toolbar."
+msgstr "بعد أن تقوم بإضافة الأكواد التي ذُكرت سابقاً، ثمّ تقوم بإعادة تحميل الصفحة سيتّم تهيئة الشبكة. هذه الشاشة (لوحة تحكم الشبكة > إعدادات > تهيئة الشبكة) ستبقى تحتوي على الأكواد. يمكنك التنقّل بين \"إدارة الشبكة\" و \"إدارة الموقع\" عن طريق النقر على السهم الموجود بجانب اسمك في لوحة التحكم (في الطرف الأيسر من الجزء العلوي من الشاشة، بجانب كلمة \"مرحباً\")."
 
 #: wp-admin/includes/network.php:395
 msgid "Complete the following steps to enable the features for creating a network of sites."

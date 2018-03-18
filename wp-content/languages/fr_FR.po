@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-02-06 06:52:56+0000\n"
+"PO-Revision-Date: 2018-03-10 09:52:11+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,6 +35,22 @@ msgstr " "
 #: wp-includes/class-wp-locale.php:220
 msgid "number_format_decimal_point"
 msgstr ","
+
+#: wp-includes/functions.php:2607
+msgid "The link you followed has expired."
+msgstr "Le lien suivi est expiré."
+
+#: wp-includes/class-wp-customize-manager.php:515
+#: wp-includes/script-loader.php:566
+msgid "You need a higher level of permission."
+msgstr "Vous devez avoir des droits supérieures."
+
+#: wp-includes/class-wp-customize-manager.php:450
+#: wp-includes/class-wp-xmlrpc-server.php:3689 wp-includes/functions.php:2617
+#: wp-includes/script-loader.php:133 wp-includes/script-loader.php:565
+#: wp-includes/script-loader.php:645 wp-includes/script-loader.php:839
+msgid "Something went wrong."
+msgstr "Une mauvaise manipulation ?"
 
 #. translators: %s: User who is customizing the changeset in customizer.
 #: wp-includes/class-wp-customize-manager.php:3970
@@ -70,7 +86,7 @@ msgid "%1$s is not a valid property of Object."
 msgstr "%1$s n’est pas une propriété valide de l’objet."
 
 #. translators: %s: URL to Add Themes admin screen
-#: wp-includes/script-loader.php:601
+#: wp-includes/script-loader.php:602
 msgid "You won&#8217;t be able to install new themes from here yet since your install requires SFTP credentials. For now, please <a href=\"%s\">add themes in the admin</a>."
 msgstr "Vous ne pourrez avoir la possibilité d’installer de nouveaux thèmes à partir d’ici car votre installation nécessite des identifiants SFTP. Pour l’instant, veuillez <a href=\"%s\">ajouter vos thèmes en passant par l’administration</a>."
 
@@ -94,7 +110,7 @@ msgstr "Cliquez sur « Suivant » pour commencer à ajouter des liens à votre
 msgid "Sorry, we can&#8217;t load the video at the supplied URL. Please check that the URL is for a supported video file (%s) or stream (e.g. YouTube and Vimeo)."
 msgstr "Désolé, nous ne pouvons pas charger la vidéo de l’url fournie. Veuillez vérifier que l’url est celle d’un fichier vidéo supporté (%s)  ou diffusé (ex : YouTube et Vimeo)."
 
-#: wp-includes/script-loader.php:690
+#: wp-includes/script-loader.php:691
 msgctxt "post action/button label"
 msgid "Schedule"
 msgstr "Planifier"
@@ -125,11 +141,11 @@ msgstr "Ajoutez un menu de navigation pour votre colonne latérale."
 
 #. translators: %s: Display name of the user who has taken over the changeset
 #. in customizer.
-#: wp-includes/script-loader.php:578
+#: wp-includes/script-loader.php:579
 msgid "%s has taken over and is currently customizing."
 msgstr "%s a pris la main et personnalise actuellement."
 
-#: wp-includes/script-loader.php:572
+#: wp-includes/script-loader.php:573
 msgid "Looks like something&#8217;s gone wrong. Wait a couple seconds, and then try again."
 msgstr "Il semble que quelque chose se passe mal. Attendez deux secondes puis essayez à nouveau."
 
@@ -340,32 +356,32 @@ msgstr "&larr; Revenir aux catégories"
 msgid "&larr; Back to Link Categories"
 msgstr "&larr; Revenir aux catégories de liens"
 
-#: wp-includes/script-loader.php:856
+#: wp-includes/script-loader.php:857
 msgid "Color value"
 msgstr "Valeur de couleur"
 
-#: wp-includes/script-loader.php:852
+#: wp-includes/script-loader.php:853
 msgid "Clear color"
 msgstr "Effacer la couleur"
 
-#: wp-includes/script-loader.php:798
+#: wp-includes/script-loader.php:799
 msgid "Installation Failed!"
 msgstr "L’installation a échoué !"
 
-#: wp-includes/script-loader.php:598
+#: wp-includes/script-loader.php:599
 msgid "Sorry, you can&#8217;t preview new themes when you have changes scheduled or saved as a draft. Please publish your changes, or wait until they publish to preview new themes."
 msgstr "Désolé, vous ne pouvez pas prévisualiser les nouveaux thèmes lorsque vous avez des modifications programmées ou enregistrées en brouillon. Veuillez publier vos modifications, ou attendre qu’elles soient publiées pour prévisualiser les nouveaux thèmes."
 
-#: wp-includes/script-loader.php:597
+#: wp-includes/script-loader.php:598
 msgid "Schedule your customization changes to publish (\"go live\") at a future date."
 msgstr "Planifier les modifications de vos personnalisations pour être publiées à une date ultérieure."
 
-#: wp-includes/script-loader.php:590
+#: wp-includes/script-loader.php:591
 msgid "Homepage and posts page must be different."
 msgstr "La page d’accueil et la page des articles doivent être différentes."
 
 #. translators: %d: error count
-#: wp-includes/script-loader.php:586 wp-includes/script-loader.php:588
+#: wp-includes/script-loader.php:587 wp-includes/script-loader.php:589
 #: wp-includes/widgets/class-wp-widget-custom-html.php:217
 #: wp-includes/widgets/class-wp-widget-custom-html.php:219
 msgid "There is %d error which must be fixed before you can save."
@@ -374,23 +390,23 @@ msgstr[0] "Il y a %d erreur que vous devriez corriger avant de sauvegarder."
 msgstr[1] "Il y a %d erreurs que vous devriez corriger avant de sauvegarder."
 
 #. translators: %s: URL to the Customizer to load the autosaved version
-#: wp-includes/script-loader.php:580
+#: wp-includes/script-loader.php:581
 msgid "There is a more recent autosave of your changes than the one you are previewing. <a href=\"%s\">Restore the autosave</a>"
 msgstr "Il existe une sauvegarde automatique de vos modification plus récente que celle que vous en êtes en train de parcourir. <a href=\"%s\">Restaurer la sauvegarde</a>"
 
-#: wp-includes/script-loader.php:576
+#: wp-includes/script-loader.php:577
 msgid "Are you sure you&#8217;d like to discard your unpublished changes?"
 msgstr "Confirmez-vous l’annulation de vos modifications non publiées ?"
 
-#: wp-includes/script-loader.php:575
+#: wp-includes/script-loader.php:576
 msgid "Reverting unpublished changes&hellip;"
 msgstr "Rétablissement des changements non publiés…"
 
-#: wp-includes/script-loader.php:574
+#: wp-includes/script-loader.php:575
 msgid "Setting up your live preview. This may take a bit."
 msgstr "Mise en place de votre Prévisualisation en direct. Cela peut prendre un moment."
 
-#: wp-includes/script-loader.php:573
+#: wp-includes/script-loader.php:574
 msgid "Downloading your new theme&hellip;"
 msgstr "Nouveau thème en cours de téléchargement…"
 
@@ -1058,7 +1074,7 @@ msgstr "Thèmes WordPress.org"
 msgid "Installed themes"
 msgstr "Thèmes installés"
 
-#: wp-includes/script-loader.php:604
+#: wp-includes/script-loader.php:605
 msgid "Publish Settings"
 msgstr "Publier les réglages"
 
@@ -1101,7 +1117,7 @@ msgstr "Il y a eu un problème d’authentification. Veuillez recharger et essay
 
 #. translators: %s: number of invalid settings
 #: wp-includes/class-wp-customize-manager.php:2707
-#: wp-includes/script-loader.php:593 wp-includes/script-loader.php:595
+#: wp-includes/script-loader.php:594 wp-includes/script-loader.php:596
 msgid "Unable to save due to %s invalid setting."
 msgid_plural "Unable to save due to %s invalid settings."
 msgstr[0] "Impossible d’enregistrer suite à %s réglage non valide."
@@ -1204,7 +1220,7 @@ msgid "(no author)"
 msgstr "(aucun auteur)"
 
 #. translators: %s: the name of a city
-#: wp-includes/script-loader.php:1201
+#: wp-includes/script-loader.php:1202
 msgid "City updated. Listing events near %s."
 msgstr "Ville mise à jour. Liste des évènements proche de %s."
 
@@ -1215,19 +1231,19 @@ msgstr "Ville mise à jour. Liste des évènements proche de %s."
 #. locale that would be recognizable to most users. Use only the city name
 #. itself, without any region or country. Use the endonym (native locale name)
 #. instead of the English name if possible.
-#: wp-includes/script-loader.php:1197
+#: wp-includes/script-loader.php:1198
 msgid "We couldn&#8217;t locate %s. Please try another nearby city. For example: Kansas City; Springfield; Portland."
 msgstr "Nous ne localisons pas %s. Veuillez essayer une autre ville proche. Par exemple : Paris, Lyon, Bordeaux."
 
-#: wp-includes/script-loader.php:1180
+#: wp-includes/script-loader.php:1181
 msgid "Attend an upcoming event near you."
 msgstr "Assister à un évènement  à venir proche de chez vous."
 
-#: wp-includes/script-loader.php:1179
+#: wp-includes/script-loader.php:1180
 msgid "An error occurred. Please try again."
 msgstr "Une erreur est survenue. Veuillez essayer à nouveau."
 
-#: wp-includes/script-loader.php:1178
+#: wp-includes/script-loader.php:1179
 msgid "Enter your closest city to find nearby events."
 msgstr "Saisissez la ville la plus proche afin de trouver des évènements à proximité."
 
@@ -1441,62 +1457,62 @@ msgstr "Aucun fichier audio sélectionné"
 msgid "Displays an audio player."
 msgstr "Affichage d’un lecteur audio."
 
-#: wp-includes/script-loader.php:827
+#: wp-includes/script-loader.php:828
 msgctxt "theme"
 msgid "Deleted!"
 msgstr "Supprimé !"
 
-#: wp-includes/script-loader.php:826
+#: wp-includes/script-loader.php:827
 msgctxt "plugin"
 msgid "Deleted!"
 msgstr "Supprimée !"
 
-#: wp-includes/script-loader.php:797
+#: wp-includes/script-loader.php:798
 msgctxt "theme"
 msgid "Installed!"
 msgstr "Installé !"
 
-#: wp-includes/script-loader.php:796
+#: wp-includes/script-loader.php:797
 msgctxt "plugin"
 msgid "Installed!"
 msgstr "Installée"
 
 #. translators: %s: Plugin name
-#: wp-includes/script-loader.php:794
+#: wp-includes/script-loader.php:795
 msgctxt "plugin"
 msgid "Install %s now"
 msgstr "Installer %s"
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:784
+#: wp-includes/script-loader.php:785
 msgctxt "plugin"
 msgid "%s update failed"
 msgstr "Erreur de mise à jour pour %s"
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:782
+#: wp-includes/script-loader.php:783
 msgctxt "plugin"
 msgid "%s updated!"
 msgstr "%s est à jour !"
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:780
+#: wp-includes/script-loader.php:781
 msgctxt "plugin"
 msgid "Updating %s..."
 msgstr "Mise à jour de %s..."
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:775
+#: wp-includes/script-loader.php:776
 msgctxt "plugin"
 msgid "Update %s now"
 msgstr "Mettre %s à jour"
 
-#: wp-includes/script-loader.php:771
+#: wp-includes/script-loader.php:772
 msgctxt "theme"
 msgid "Updated!"
 msgstr "Mis à jour !"
 
-#: wp-includes/script-loader.php:770
+#: wp-includes/script-loader.php:771
 msgctxt "plugin"
 msgid "Updated!"
 msgstr "Mise à jour !"
@@ -1962,7 +1978,7 @@ msgid "Invalid page template."
 msgstr "Modèle de page non valide."
 
 #: wp-includes/post.php:3207 wp-includes/rest-api.php:1151
-#: wp-includes/script-loader.php:605
+#: wp-includes/script-loader.php:606
 msgid "Invalid date."
 msgstr "Date non valide."
 
@@ -2143,7 +2159,7 @@ msgstr "Désolé, vous n’avez pas l’autorisation d’épingler cet article."
 msgid "Reassign the deleted user's posts and links to this user ID."
 msgstr "Réaffectez les articles et les liens de l’utilisateur supprimé à cet ID d’utilisateur."
 
-#: wp-includes/script-loader.php:581
+#: wp-includes/script-loader.php:582
 msgid "This theme doesn&#8217;t support video headers on this page. Navigate to the front page or another page that supports video headers."
 msgstr "Ce thème ne prend pas en charge les en-têtes vidéos dans cette page. Allez à la page d’accueil ou une autre page qui prend en charge les en-têtes vidéos."
 
@@ -2277,12 +2293,12 @@ msgstr "Le nom d’utilisateur contient des caractères non valides."
 msgid "Invalid user parameter(s)."
 msgstr "Paramètre(s) utilisateur non valide(s)."
 
-#: wp-includes/script-loader.php:570
+#: wp-includes/script-loader.php:571
 msgctxt "label for hide controls button without length constraints"
 msgid "Show Controls"
 msgstr "Afficher les contrôles"
 
-#: wp-includes/script-loader.php:569
+#: wp-includes/script-loader.php:570
 msgctxt "label for hide controls button without length constraints"
 msgid "Hide Controls"
 msgstr "Masquer les contrôles"
@@ -2420,19 +2436,19 @@ msgstr "J’ai vraiment besoin d’un identifiant pour que cela fonctionne."
 msgid "Homepage"
 msgstr "Accueil"
 
-#: wp-includes/script-loader.php:675
+#: wp-includes/script-loader.php:676
 msgid "Term removed."
 msgstr "Terme retiré."
 
-#: wp-includes/script-loader.php:674
+#: wp-includes/script-loader.php:675
 msgid "Term added."
 msgstr "Terme ajouté."
 
-#: wp-includes/script-loader.php:673
+#: wp-includes/script-loader.php:674
 msgid "Term selected."
 msgstr "Terme sélectionné."
 
-#: wp-includes/script-loader.php:672
+#: wp-includes/script-loader.php:673
 msgid "Remove term:"
 msgstr "Retirer un terme :"
 
@@ -3632,7 +3648,7 @@ msgstr "Modifier le menu sélectionné"
 msgid "Warning: the link has been inserted but may have errors. Please test it."
 msgstr "Attention : le lien a bien été inséré mais peut contenir des erreurs. Veuillez le tester."
 
-#: wp-includes/script-loader.php:766
+#: wp-includes/script-loader.php:767
 msgid "Search Results"
 msgstr "Résultats de recherche"
 
@@ -3689,73 +3705,73 @@ msgid "Inexistent terms."
 msgstr "Termes inexistants."
 
 #. translators: %s: Importer name
-#: wp-includes/script-loader.php:837
+#: wp-includes/script-loader.php:838
 msgid "Run %s"
 msgstr "Lancer %s"
 
-#: wp-includes/script-loader.php:835
+#: wp-includes/script-loader.php:836
 msgid "Run Importer"
 msgstr "Lancer l’importateur"
 
 #. translators: %s: Activation URL
-#: wp-includes/script-loader.php:816
+#: wp-includes/script-loader.php:817
 msgid "Importer installed successfully. <a href=\"%s\">Run importer</a>"
 msgstr "L’importateur a bien été installé. <a href=\"%s\">Lancer l’importateur></a>"
 
-#: wp-includes/script-loader.php:834
+#: wp-includes/script-loader.php:835
 msgctxt "theme"
 msgid "Activate %s"
 msgstr "Activation de %s"
 
 #. translators: %s: Theme name
-#: wp-includes/script-loader.php:834
+#: wp-includes/script-loader.php:835
 msgctxt "theme"
 msgid "Network Activate %s"
 msgstr "Activation réseau de %s"
 
-#: wp-includes/script-loader.php:832
+#: wp-includes/script-loader.php:833
 msgctxt "plugin"
 msgid "Activate %s"
 msgstr "Activation de %s"
 
 #. translators: %s: Plugin name
-#: wp-includes/script-loader.php:832
+#: wp-includes/script-loader.php:833
 msgctxt "plugin"
 msgid "Network Activate %s"
 msgstr "Activation réseau de %s"
 
 #. translators: %s: Theme name and version
-#: wp-includes/script-loader.php:812
+#: wp-includes/script-loader.php:813
 msgctxt "theme"
 msgid "%s installation failed"
 msgstr "L’installation de %s a échoué"
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:810
+#: wp-includes/script-loader.php:811
 msgctxt "plugin"
 msgid "%s installation failed"
 msgstr "L’installation pour %s a échoué"
 
 #. translators: %s: Theme name and version
-#: wp-includes/script-loader.php:808
+#: wp-includes/script-loader.php:809
 msgctxt "theme"
 msgid "%s installed!"
 msgstr "%s installé !"
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:806
+#: wp-includes/script-loader.php:807
 msgctxt "plugin"
 msgid "%s installed!"
 msgstr "%s installé !"
 
 #. translators: %s: Theme name and version
-#: wp-includes/script-loader.php:804
+#: wp-includes/script-loader.php:805
 msgctxt "theme"
 msgid "Installing %s..."
 msgstr "Installation de %s..."
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:802
+#: wp-includes/script-loader.php:803
 msgctxt "plugin"
 msgid "Installing %s..."
 msgstr "Installation de %s..."
@@ -3764,7 +3780,7 @@ msgstr "Installation de %s..."
 msgid "Sorry, you are not allowed to access user data on this site."
 msgstr "Désolé, vous n’avez pas l’autorisation d’accéder aux données utilisateurs de ce site."
 
-#: wp-includes/script-loader.php:841
+#: wp-includes/script-loader.php:842
 msgid "Number of plugins found: %d"
 msgstr "Nombre d’extensions trouvées : %d"
 
@@ -3819,7 +3835,7 @@ msgid "Tan"
 msgstr "Ocre"
 
 #. translators: %s: Error string for a failed installation
-#: wp-includes/script-loader.php:800
+#: wp-includes/script-loader.php:801
 msgid "Installation failed: %s"
 msgstr "Échec d’installation : %s"
 
@@ -3854,59 +3870,59 @@ msgstr "Impossible de retrouver le message d’erreur depuis MYSQL"
 msgid "Edit Menu"
 msgstr "Modifier le menu"
 
-#: wp-includes/script-loader.php:1126
+#: wp-includes/script-loader.php:1127
 msgid "Today"
 msgstr "Aujourd’hui"
 
-#: wp-includes/script-loader.php:829
+#: wp-includes/script-loader.php:830
 msgid "Network Activate"
 msgstr "Activer sur le réseau"
 
 #. translators: %s: Error string for a failed deletion
-#: wp-includes/script-loader.php:825
+#: wp-includes/script-loader.php:826
 msgid "Deletion failed: %s"
 msgstr "Échec de suppression : %s"
 
-#: wp-includes/script-loader.php:823
+#: wp-includes/script-loader.php:824
 msgid "Deleting..."
 msgstr "Suppression…"
 
-#: wp-includes/script-loader.php:822
+#: wp-includes/script-loader.php:823
 msgid "Caution: These themes may be active on other sites in the network. Are you sure you want to proceed?"
 msgstr "Attention : Ces thèmes peuvent être actifs sur d’autres sites dans le réseau. Confirmez-vous la suppression ?"
 
-#: wp-includes/script-loader.php:821
+#: wp-includes/script-loader.php:822
 msgid "Are you sure you want to delete the selected plugins and their data?"
 msgstr "Confirmez-vous la suppression des extensions sélectionnées et de leurs données ?"
 
 #. translators: %s: Plugin name
-#: wp-includes/script-loader.php:820
+#: wp-includes/script-loader.php:821
 msgid "Are you sure you want to delete %s and its data?"
 msgstr "Confirmez-vous la suppression de %s et de ses données ?"
 
 #. translators: %s: Theme name
-#: wp-includes/script-loader.php:818
+#: wp-includes/script-loader.php:819
 msgid "Are you sure you want to delete %s?"
 msgstr "Confirmez-vous la suppression de %s ?"
 
-#: wp-includes/script-loader.php:773
+#: wp-includes/script-loader.php:774
 msgid "Update Now"
 msgstr "Mettre à jour maintenant"
 
-#: wp-includes/script-loader.php:768
+#: wp-includes/script-loader.php:769
 msgid "Please select at least one item to perform this action on."
 msgstr "Veuillez sélectionner au moins un élément pour effectuer cette action."
 
-#: wp-includes/script-loader.php:767
+#: wp-includes/script-loader.php:768
 msgid "You do not appear to have any plugins available at this time."
 msgstr "Vous ne semblez pas avoir d’extensions disponibles actuellement."
 
 #. translators: %s: Search string
-#: wp-includes/script-loader.php:765
+#: wp-includes/script-loader.php:766
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "Résultats de recherche pour « %s »"
 
-#: wp-includes/script-loader.php:654
+#: wp-includes/script-loader.php:655
 msgid ""
 "Are you sure you want to do this?\n"
 "The comment changes you made will be lost."
@@ -3924,7 +3940,7 @@ msgid "Password strength unknown"
 msgstr "Force du mot de passe inconnue."
 
 #: wp-includes/rest-api/class-wp-rest-server.php:911
-#: wp-includes/script-loader.php:132 wp-includes/script-loader.php:643
+#: wp-includes/script-loader.php:132 wp-includes/script-loader.php:644
 msgid "Sorry, you are not allowed to do that."
 msgstr "Désolé, vous n’avez pas l’autorisation de faire cela."
 
@@ -3974,12 +3990,12 @@ msgstr "Désolé, vous n’avez pas l’autorisation de lister les utilisateurs.
 
 #: wp-includes/class-wp-customize-manager.php:2300
 #: wp-includes/class-wp-customize-setting.php:579
-#: wp-includes/script-loader.php:606
+#: wp-includes/script-loader.php:607
 msgid "Invalid value."
 msgstr "Valeur non valide."
 
 #: wp-includes/class-wp-customize-manager.php:516
-#: wp-includes/script-loader.php:566
+#: wp-includes/script-loader.php:567
 msgid "Sorry, you are not allowed to customize this site."
 msgstr "Désolé, vous n’avez pas l’autorisation de personnaliser ce site."
 
@@ -4008,7 +4024,7 @@ msgstr "Lien sélectionné."
 msgid "%s is required to strip image meta."
 msgstr "%s est nécessaire pour supprimer les métadonnées de l’image."
 
-#: wp-includes/script-loader.php:756
+#: wp-includes/script-loader.php:757
 msgid "Plugin details"
 msgstr "Détails de l’extension"
 
@@ -4085,11 +4101,11 @@ msgstr "<strong>ERREUR</strong> : le champ e-mail est vide."
 msgid "Unregistering a built-in taxonomy is not allowed."
 msgstr "Vous ne pouvez supprimer une taxonomie interne"
 
-#: wp-includes/script-loader.php:664
+#: wp-includes/script-loader.php:665
 msgid "Drag boxes here"
 msgstr "Glissez les blocs ici"
 
-#: wp-includes/script-loader.php:571
+#: wp-includes/script-loader.php:572
 msgid "(Untitled)"
 msgstr "(Sans titre)"
 
@@ -4308,7 +4324,7 @@ msgstr "Veuillez lire <a href=\"%s\">Débogage dans WordPress</a> (en) pour plus
 msgid "<strong>ERROR</strong>: %1$s in %2$s can only contain numbers, letters, and underscores."
 msgstr "<strong>ERREUR</strong> : la variable %1$s du fichier %2$s ne peut contenir que des chiffres, des lettres et des tirets bas ( _ )."
 
-#: wp-includes/script-loader.php:744 wp-includes/script-loader.php:750
+#: wp-includes/script-loader.php:745 wp-includes/script-loader.php:751
 msgid "Changes saved."
 msgstr "Changements sauvegardés."
 
@@ -4618,7 +4634,7 @@ msgstr "Nom de code court non valide : %1$s. N’utilisez pas d’espace ou de 
 msgid "Invalid shortcode name: Empty name given."
 msgstr "Nom de code court non valide : aucun nom donné."
 
-#: wp-includes/script-loader.php:702
+#: wp-includes/script-loader.php:703
 msgid "Permalink saved"
 msgstr "Permalien enregistré"
 
@@ -4959,7 +4975,7 @@ msgstr "Ouvrir/fermer la section : %s"
 #. Asian characters), enter 'characters_excluding_spaces' or
 #. 'characters_including_spaces'. Otherwise, enter 'words'. Do not translate
 #. into your own language.
-#: wp-includes/formatting.php:3372 wp-includes/script-loader.php:1088
+#: wp-includes/formatting.php:3372 wp-includes/script-loader.php:1089
 msgctxt "Word count type. Do not translate!"
 msgid "words"
 msgstr "words"
@@ -5251,11 +5267,11 @@ msgid "Attempting to parse a shortcode without a valid callback: %s"
 msgstr "Tentative d’analyse d’un code court sans fonction de rappel valide : %s"
 
 #. translators: %s: Error string for a failed update
-#: wp-includes/script-loader.php:778
+#: wp-includes/script-loader.php:779
 msgid "Update Failed: %s"
 msgstr "La mise à jour a échoué : %s"
 
-#: wp-includes/script-loader.php:653
+#: wp-includes/script-loader.php:654
 msgid ""
 "Are you sure you want to edit this comment?\n"
 "The changes you made will be lost."
@@ -5629,20 +5645,20 @@ msgstr "https://codex.wordpress.org/"
 msgid "No %1$s was set in the arguments array for the \"%2$s\" sidebar. Defaulting to \"%3$s\". Manually set the %1$s to \"%3$s\" to silence this notice and keep existing sidebar content."
 msgstr "Aucun %1$s n’a été configuré dans le tableau d’arguments de la colonne latérale « %2$s ». « %3$s » sera utilisé par défaut. Configurez manuellement %1$s avec « %3$s » pour faire disparaître cette notification et conserver le contenu actuel de la colonne latérale."
 
-#: wp-includes/script-loader.php:839
+#: wp-includes/script-loader.php:840
 msgid "Connection lost or the server is busy. Please try again later."
 msgstr "Connexion perdue ou serveur occupé. Veuillez réessayer plus tard."
 
-#: wp-includes/script-loader.php:791
+#: wp-includes/script-loader.php:792
 msgid "Updates may not complete if you navigate away from this page."
 msgstr "Les mises à jour peuvent ne pas se terminer si vous quittez cette page."
 
-#: wp-includes/script-loader.php:776
+#: wp-includes/script-loader.php:777
 msgid "Update Failed!"
 msgstr "Échec de la mise à jour !"
 
 #. translators: Accessibility text
-#: wp-includes/script-loader.php:790
+#: wp-includes/script-loader.php:791
 msgid "Update canceled."
 msgstr "Mise à jour annulée."
 
@@ -5667,37 +5683,37 @@ msgstr[1] "%1$s réponses à %2$s"
 msgid "<span>Previewing:</span> %s"
 msgstr "<span>Prévisualisation :</span> %s"
 
-#: wp-includes/script-loader.php:567
+#: wp-includes/script-loader.php:568
 msgid "Site Preview"
 msgstr "Aperçu du site"
 
-#: wp-includes/script-loader.php:769
+#: wp-includes/script-loader.php:770
 msgid "Updating..."
 msgstr "Mise à jour en cours..."
 
-#: wp-includes/script-loader.php:792
+#: wp-includes/script-loader.php:793
 msgid "Install Now"
 msgstr "Installer"
 
-#: wp-includes/script-loader.php:795
+#: wp-includes/script-loader.php:796
 msgid "Installing..."
 msgstr "Installation…"
 
-#: wp-includes/script-loader.php:813
+#: wp-includes/script-loader.php:814
 msgid "Installing... please wait."
 msgstr "Installation… Veuillez patienter."
 
 #. translators: Accessibility text
-#: wp-includes/script-loader.php:786
+#: wp-includes/script-loader.php:787
 msgid "Updating... please wait."
 msgstr "Mise à jour en cours... veuillez patienter."
 
 #. translators: Accessibility text
-#: wp-includes/script-loader.php:788
+#: wp-includes/script-loader.php:789
 msgid "Update completed successfully."
 msgstr "Mise à jour réussie."
 
-#: wp-includes/script-loader.php:814
+#: wp-includes/script-loader.php:815
 msgid "Installation completed successfully."
 msgstr "L’installation a bien été terminée."
 
@@ -5869,7 +5885,7 @@ msgid "Theme Details"
 msgstr "Détails du thème"
 
 #: wp-includes/customize/class-wp-customize-theme-control.php:118
-#: wp-includes/script-loader.php:828
+#: wp-includes/script-loader.php:829
 msgid "Live Preview"
 msgstr "Prévisualisation en direct"
 
@@ -5960,7 +5976,7 @@ msgstr "Navigation des articles"
 msgid "Newer posts"
 msgstr "Articles plus récents"
 
-#: wp-includes/script-loader.php:1130
+#: wp-includes/script-loader.php:1131
 msgid "Previous"
 msgstr "Précédent"
 
@@ -6253,7 +6269,7 @@ msgid "%s: %l."
 msgstr "%s : %l."
 
 #: wp-includes/class-wp-customize-nav-menus.php:427
-#: wp-includes/script-loader.php:888
+#: wp-includes/script-loader.php:889
 msgctxt "missing menu item navigation label"
 msgid "(no label)"
 msgstr "(sans libellé)"
@@ -6262,7 +6278,7 @@ msgstr "(sans libellé)"
 msgid "This site is no longer available."
 msgstr "Ce site n’est plus disponible."
 
-#: wp-includes/script-loader.php:842
+#: wp-includes/script-loader.php:843
 msgid "No plugins found. Try a different search."
 msgstr "Aucune extension trouvée. Veuillez essayer une recherche différente."
 
@@ -6388,8 +6404,8 @@ msgstr "Vous personnalisez %s"
 msgid "<strong>ERROR</strong>: The comment could not be saved. Please try again later."
 msgstr "<strong>ERREUR</strong> : le commentaire n’a pas pu être enregistré. Veuillez réessayer plus tard."
 
-#: wp-includes/update.php:154 wp-includes/update.php:356
-#: wp-includes/update.php:538
+#: wp-includes/update.php:154 wp-includes/update.php:346
+#: wp-includes/update.php:528
 msgid "(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)"
 msgstr "(WordPress n’a pas pu établir de connexion sécurisée vers WordPress.org. Veuillez contacter l’administrateur de votre serveur.)"
 
@@ -7171,7 +7187,7 @@ msgid "Align right"
 msgstr "Aligner à droite"
 
 #: wp-includes/class-wp-customize-widgets.php:755
-#: wp-includes/script-loader.php:840 wp-includes/script-loader.php:866
+#: wp-includes/script-loader.php:841 wp-includes/script-loader.php:867
 msgid "An error has occurred. Please reload the page and try again."
 msgstr "Une erreur est survenue. Veuillez recharger la page et réessayer."
 
@@ -7238,7 +7254,7 @@ msgid "https://wordpress.org/support/forum/requests-and-feedback"
 msgstr "https://wordpress.org/support/forum/requests-and-feedback"
 
 #: wp-includes/admin-bar.php:164 wp-includes/update.php:153
-#: wp-includes/update.php:355 wp-includes/update.php:537
+#: wp-includes/update.php:345 wp-includes/update.php:527
 #: wp-includes/wp-db.php:1062 wp-includes/wp-db.php:1595
 #: wp-includes/wp-db.php:1753 wp-login.php:882
 msgid "https://wordpress.org/support/"
@@ -7344,21 +7360,21 @@ msgstr "Une liste des pages de votre site."
 #. translators: If there are characters in your language that are not supported
 #. by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: wp-includes/script-loader.php:935
+#: wp-includes/script-loader.php:936
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr "on"
 
 #. translators: %s: support forums URL
-#: wp-includes/update.php:152 wp-includes/update.php:354
-#: wp-includes/update.php:536
+#: wp-includes/update.php:152 wp-includes/update.php:344
+#: wp-includes/update.php:526
 msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"%s\">support forums</a>."
 msgstr "Une erreur imprévue est survenue. Il pourrait y avoir un problème avec WordPress.org ou la configuration de ce serveur. Si vous continuez à rencontrer ce problème, veuillez vous rendre sur les <a href=\"%s\">forums de support</a>."
 
 #. translators: To add an additional Open Sans character subset specific to
 #. your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not
 #. translate into your own language.
-#: wp-includes/script-loader.php:941
+#: wp-includes/script-loader.php:942
 msgctxt "Open Sans font: add new subset (greek, cyrillic, vietnamese)"
 msgid "no-subset"
 msgstr "no-subset"
@@ -7386,7 +7402,7 @@ msgstr "Par défaut"
 msgid "Menu"
 msgstr "Menu"
 
-#: wp-includes/update.php:643
+#: wp-includes/update.php:633
 msgid "Translation Updates"
 msgstr "Mettre à jour les traductions"
 
@@ -7556,7 +7572,7 @@ msgid "Have you entered your email correctly? You have entered %s, if it&#8217;s
 msgstr "Avez-vous correctement saisi votre adresse de messagerie ? Vous aviez saisi %s, mais si ce n’est pas correct, vous ne recevrez pas de message."
 
 #. translators: 1: month, 2: day, 3: year, 4: hour, 5: minute
-#: wp-includes/script-loader.php:686 wp-includes/script-loader.php:714
+#: wp-includes/script-loader.php:687 wp-includes/script-loader.php:715
 msgid "%1$s %2$s, %3$s @ %4$s:%5$s"
 msgstr "%2$s %1$s %3$s à %4$s h %5$s min"
 
@@ -7589,7 +7605,7 @@ msgctxt "placeholder"
 msgid "Search &hellip;"
 msgstr "Recherche&hellip;"
 
-#: wp-includes/functions.php:5328 wp-includes/script-loader.php:568
+#: wp-includes/functions.php:5328 wp-includes/script-loader.php:569
 msgid "Session expired"
 msgstr "La session a expiré"
 
@@ -7962,11 +7978,11 @@ msgstr "%1$s %2$s"
 msgid "Could not insert term relationship into the database."
 msgstr "Impossible d’insérer le terme associé dans la base de données."
 
-#: wp-includes/script-loader.php:855
+#: wp-includes/script-loader.php:856
 msgid "Select Color"
 msgstr "Sélectionner une couleur"
 
-#: wp-includes/media-template.php:601 wp-includes/script-loader.php:851
+#: wp-includes/media-template.php:601 wp-includes/script-loader.php:852
 msgid "Clear"
 msgstr "Effacer"
 
@@ -8058,7 +8074,7 @@ msgstr "Couleur du texte d’en-tête"
 msgid "Colors"
 msgstr "Couleurs"
 
-#: wp-includes/script-loader.php:560 wp-includes/script-loader.php:722
+#: wp-includes/script-loader.php:560 wp-includes/script-loader.php:723
 msgid "Saved"
 msgstr "Enregistré"
 
@@ -8161,7 +8177,7 @@ msgstr "Désolé, vous n’avez pas l’autorisation de modifier ce commentaire.
 msgid "Posts page"
 msgstr "Page des articles"
 
-#: wp-includes/script-loader.php:583
+#: wp-includes/script-loader.php:584
 msgid "Allowed Files"
 msgstr "Fichiers autorisés"
 
@@ -8339,8 +8355,8 @@ msgstr "Désolé, vous n’avez pas l’autorisation de modifier cet article."
 msgid "Edit Site"
 msgstr "Modifier le site"
 
-#: wp-includes/post.php:3952 wp-includes/script-loader.php:671
-#: wp-includes/script-loader.php:743
+#: wp-includes/post.php:3952 wp-includes/script-loader.php:672
+#: wp-includes/script-loader.php:744
 msgctxt "tag delimiter"
 msgid ","
 msgstr ", "
@@ -8568,7 +8584,7 @@ msgstr "<strong>ERREUR</strong> : veuillez saisir une adresse de messagerie val
 msgid "<strong>ERROR</strong>: please type a comment."
 msgstr "<strong>ERREUR</strong> : veuillez saisir un commentaire."
 
-#: wp-includes/script-loader.php:871
+#: wp-includes/script-loader.php:872
 msgid "Could not load the preview image. Please reload the page and try again."
 msgstr "Impossible de charger l’image de prévisualisation. Veuillez recharger la page et réessayer. "
 
@@ -8702,7 +8718,7 @@ msgstr "Tous les articles"
 msgid "Link"
 msgstr "Lien"
 
-#: wp-includes/script-loader.php:651
+#: wp-includes/script-loader.php:652
 msgid "Approve and Reply"
 msgstr "Approuver et répondre"
 
@@ -8876,7 +8892,7 @@ msgstr "Aucune page trouvée."
 msgid "No pages found in Trash."
 msgstr "Aucune page trouvée dans la corbeille."
 
-#: wp-includes/script-loader.php:830
+#: wp-includes/script-loader.php:831
 msgid "Network Enable"
 msgstr "Activer sur le réseau"
 
@@ -9381,11 +9397,11 @@ msgstr "Vous devez d’abord <a href=\"%s\">vous connecter</a> avant de pouvoir 
 msgid "Must be at least 4 characters, letters and numbers only. It cannot be changed, so choose carefully!"
 msgstr "Doit contenir au moins 4 caractères, avec uniquement des lettres et  des chiffres. Vous ne pourrez pas en changer, donc choisissez bien !"
 
-#: wp-includes/script-loader.php:757
+#: wp-includes/script-loader.php:758
 msgid "Are you sure you want to install this plugin?"
 msgstr "Voulez-vous vraiment installer cette extension ?"
 
-#: wp-includes/script-loader.php:876
+#: wp-includes/script-loader.php:877
 msgid "Use as featured image"
 msgstr "Utiliser comme image mise en avant"
 
@@ -9422,7 +9438,7 @@ msgstr "Liens pour %s"
 msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
 msgstr "Aucun menu n’a été créé pour le moment. <a href=\"%s\">En créer un</a>."
 
-#: wp-includes/script-loader.php:886
+#: wp-includes/script-loader.php:887
 msgid ""
 "You are about to permanently delete this menu. \n"
 " 'Cancel' to stop, 'OK' to delete."
@@ -9435,21 +9451,21 @@ msgid "This is the short link."
 msgstr "Ceci est un lien court."
 
 #. translators: 1: Number of updates available to plugins
-#: wp-includes/update.php:636
+#: wp-includes/update.php:626
 msgid "%d Plugin Update"
 msgid_plural "%d Plugin Updates"
 msgstr[0] "%d mise à jour d’extension"
 msgstr[1] "%d mises à jour d’extensions"
 
 #. translators: 1: Number of updates available to themes
-#: wp-includes/update.php:640
+#: wp-includes/update.php:630
 msgid "%d Theme Update"
 msgid_plural "%d Theme Updates"
 msgstr[0] "%d mise à jour de thème"
 msgstr[1] "%d mises à jour de thèmes"
 
 #. translators: 1: Number of updates available to WordPress
-#: wp-includes/update.php:632
+#: wp-includes/update.php:622
 msgid "%d WordPress Update"
 msgstr "%d mise à jour de WordPress"
 
@@ -9803,7 +9819,7 @@ msgid "%s is your new username"
 msgstr "Votre nouvel identifiant est %s"
 
 #: wp-includes/class-wp-customize-nav-menus.php:967
-#: wp-includes/script-loader.php:1129 wp-signup.php:562
+#: wp-includes/script-loader.php:1130 wp-signup.php:562
 msgid "Next"
 msgstr "Suivant"
 
@@ -9995,51 +10011,51 @@ msgstr "Impossible d’insérer le terme dans la base de données"
 msgid "Empty Term."
 msgstr "Terme vide."
 
-#: wp-includes/script-loader.php:701
+#: wp-includes/script-loader.php:702
 msgid "Saving Draft&#8230;"
 msgstr "Enregistrement du brouillon&#8230;"
 
-#: wp-includes/script-loader.php:878
+#: wp-includes/script-loader.php:879
 msgid "Could not set that as the thumbnail image. Try a different attachment."
 msgstr "Impossible de s’en servir comme miniature. Essayez un autre fichier joint."
 
-#: wp-includes/script-loader.php:877
+#: wp-includes/script-loader.php:878
 msgid "Saving..."
 msgstr "Enregistrement..."
 
-#: wp-includes/script-loader.php:741
+#: wp-includes/script-loader.php:742
 msgid "Remove From Bulk Edit"
 msgstr "Enlever des modifications groupées"
 
-#: wp-includes/script-loader.php:740 wp-includes/script-loader.php:749
+#: wp-includes/script-loader.php:741 wp-includes/script-loader.php:750
 msgid "Error while saving the changes."
 msgstr "Erreur lors de la sauvegarde des modifications."
 
-#: wp-includes/script-loader.php:712
+#: wp-includes/script-loader.php:713
 msgid "Submitted on:"
 msgstr "Envoyé le :"
 
-#: wp-includes/script-loader.php:697
+#: wp-includes/script-loader.php:698
 msgid "Password Protected"
 msgstr "Protégé par un mot de passe"
 
-#: wp-includes/script-loader.php:688
+#: wp-includes/script-loader.php:689
 msgid "No more comments found."
 msgstr "Il n’y a pas d’autres commentaires."
 
-#: wp-includes/script-loader.php:687
+#: wp-includes/script-loader.php:688
 msgid "Show more comments"
 msgstr "Afficher plus de commentaires"
 
-#: wp-includes/script-loader.php:684
+#: wp-includes/script-loader.php:685
 msgid "Published on:"
 msgstr "Publié le :"
 
-#: wp-includes/script-loader.php:683
+#: wp-includes/script-loader.php:684
 msgid "Schedule for:"
 msgstr "Planifier pour le :"
 
-#: wp-includes/script-loader.php:682
+#: wp-includes/script-loader.php:683
 msgid "Publish on:"
 msgstr "Publié le :"
 
@@ -10116,12 +10132,6 @@ msgstr "&lt; Préc."
 #: wp-includes/script-loader.php:273
 msgid "Next &gt;"
 msgstr "Suiv. &gt;"
-
-#: wp-includes/class-wp-xmlrpc-server.php:3689
-#: wp-includes/script-loader.php:133 wp-includes/script-loader.php:644
-#: wp-includes/script-loader.php:838
-msgid "An unidentified error has occurred."
-msgstr "Une erreur non identifiée est survenue."
 
 #: wp-includes/script-loader.php:96
 msgid "Enter a description of the image"
@@ -10647,8 +10657,8 @@ msgid "Document properties"
 msgstr "Propriétés du document"
 
 #: wp-includes/class-wp-editor.php:1238 wp-includes/script-loader.php:477
-#: wp-includes/script-loader.php:559 wp-includes/script-loader.php:700
-#: wp-includes/script-loader.php:723 wp-includes/script-loader.php:887
+#: wp-includes/script-loader.php:559 wp-includes/script-loader.php:701
+#: wp-includes/script-loader.php:724 wp-includes/script-loader.php:888
 #: wp-includes/theme.php:2961
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr "Les modifications que vous avez faites seront perdues si vous changez de page."
@@ -11025,10 +11035,6 @@ msgstr "Veuillez réessayer."
 msgid "Do you really want to <a href=\"%s\">log out</a>?"
 msgstr "Voulez-vous réellement <a href=\"%s\">vous déconnecter</a> ?"
 
-#: wp-includes/functions.php:2617
-msgid "WordPress Failure Notice"
-msgstr "Avertissement d’échec de WordPress"
-
 #. translators: %s: site name
 #: wp-includes/functions.php:2596
 msgid "You are attempting to log out of %s"
@@ -11356,7 +11362,7 @@ msgstr "Votre commentaire est en attente de modération."
 msgid "Comments are closed."
 msgstr "Les commentaires sont fermés."
 
-#: wp-includes/script-loader.php:854
+#: wp-includes/script-loader.php:855
 msgid "Select default color"
 msgstr "Sélectionner la couleur par défaut"
 
@@ -11369,7 +11375,7 @@ msgid "Pages:"
 msgstr "Pages :"
 
 #. translators: %s: comments count
-#: wp-includes/script-loader.php:657
+#: wp-includes/script-loader.php:658
 msgid "Comments (%s)"
 msgstr "Commentaires (%s)"
 
@@ -11410,7 +11416,7 @@ msgstr "Commentaires sur %s"
 
 #: wp-includes/class-wp-customize-nav-menus.php:276
 #: wp-includes/script-loader.php:242 wp-includes/script-loader.php:527
-#: wp-includes/script-loader.php:885
+#: wp-includes/script-loader.php:886
 msgid "No results found."
 msgstr "Aucun résultat."
 
@@ -11461,7 +11467,7 @@ msgstr "Séparez les étiquettes par des virgules"
 msgid "Title:"
 msgstr "Titre :"
 
-#: wp-includes/script-loader.php:755
+#: wp-includes/script-loader.php:756
 msgid "Plugin:"
 msgstr "Extension :"
 
@@ -11471,7 +11477,7 @@ msgstr "Extension :"
 #: wp-includes/customize/class-wp-customize-media-control.php:235
 #: wp-includes/customize/class-wp-customize-media-control.php:245
 #: wp-includes/customize/class-wp-customize-media-control.php:255
-#: wp-includes/script-loader.php:853
+#: wp-includes/script-loader.php:854
 msgid "Default"
 msgstr "Valeur par défaut"
 
@@ -11622,7 +11628,7 @@ msgid "Help"
 msgstr "Aide"
 
 #: wp-includes/media.php:3143 wp-includes/script-loader.php:526
-#: wp-includes/script-loader.php:742
+#: wp-includes/script-loader.php:743
 #: wp-includes/widgets/class-wp-widget-recent-posts.php:91
 msgid "(no title)"
 msgstr "(pas de titre)"
@@ -11646,7 +11652,7 @@ msgstr "Sélectionner"
 #: wp-includes/class-wp-customize-manager.php:5301
 #: wp-includes/class-wp-editor.php:1053 wp-includes/class-wp-editor.php:1695
 #: wp-includes/script-loader.php:277 wp-includes/script-loader.php:371
-#: wp-includes/script-loader.php:562 wp-includes/script-loader.php:1125
+#: wp-includes/script-loader.php:562 wp-includes/script-loader.php:1126
 msgid "Close"
 msgstr "Fermer"
 
@@ -11705,32 +11711,32 @@ msgid "Add or remove tags"
 msgstr "Ajouter ou retirer des étiquettes"
 
 #: wp-includes/media.php:3499 wp-includes/script-loader.php:524
-#: wp-includes/script-loader.php:691 wp-includes/script-loader.php:772
+#: wp-includes/script-loader.php:692 wp-includes/script-loader.php:773
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: wp-includes/script-loader.php:695
+#: wp-includes/script-loader.php:696
 msgid "Public"
 msgstr "Public"
 
-#: wp-includes/script-loader.php:696
+#: wp-includes/script-loader.php:697
 msgid "Public, Sticky"
 msgstr "Public, mis en avant"
 
 #: wp-includes/post.php:705 wp-includes/post.php:725
-#: wp-includes/script-loader.php:694
+#: wp-includes/script-loader.php:695
 msgid "Private"
 msgstr "Privé"
 
-#: wp-includes/class-wp-editor.php:1051 wp-includes/script-loader.php:680
+#: wp-includes/class-wp-editor.php:1051 wp-includes/script-loader.php:681
 msgid "OK"
 msgstr "OK"
 
-#: wp-includes/script-loader.php:698
+#: wp-includes/script-loader.php:699
 msgid "Privately Published"
 msgstr "Publié en privé"
 
-#: wp-includes/script-loader.php:692
+#: wp-includes/script-loader.php:693
 msgid "Save as Pending"
 msgstr "Mettre à relire"
 
@@ -11865,12 +11871,12 @@ msgstr "Rétrolien"
 msgid "Pingback"
 msgstr "Ping"
 
-#: wp-includes/comment-template.php:1597 wp-includes/script-loader.php:652
+#: wp-includes/comment-template.php:1597 wp-includes/script-loader.php:653
 msgid "Reply"
 msgstr "Répondre"
 
 #: wp-includes/class-wp-customize-manager.php:4622
-#: wp-includes/script-loader.php:551 wp-includes/script-loader.php:693
+#: wp-includes/script-loader.php:551 wp-includes/script-loader.php:694
 msgid "Save Draft"
 msgstr "Enregistrer le brouillon"
 
@@ -11884,7 +11890,7 @@ msgstr "Contenu"
 
 #: wp-includes/class-wp-editor.php:1052 wp-includes/class-wp-editor.php:1741
 #: wp-includes/media.php:3498 wp-includes/script-loader.php:510
-#: wp-includes/script-loader.php:561 wp-includes/script-loader.php:681
+#: wp-includes/script-loader.php:561 wp-includes/script-loader.php:682
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -11912,7 +11918,7 @@ msgstr "Anonyme"
 
 #: wp-includes/customize/class-wp-customize-nav-menu-control.php:55
 #: wp-includes/customize/class-wp-widget-area-customize-control.php:61
-#: wp-includes/script-loader.php:879
+#: wp-includes/script-loader.php:880
 msgid "Done"
 msgstr "Terminé"
 
@@ -11971,7 +11977,7 @@ msgstr "Cible"
 msgid "Categories"
 msgstr "Catégories"
 
-#: wp-includes/class-wp-editor.php:1121 wp-includes/script-loader.php:721
+#: wp-includes/class-wp-editor.php:1121 wp-includes/script-loader.php:722
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -12004,11 +12010,11 @@ msgid "Excerpt"
 msgstr "Extrait"
 
 #: wp-includes/class-wp-customize-manager.php:4617
-#: wp-includes/script-loader.php:549 wp-includes/script-loader.php:689
+#: wp-includes/script-loader.php:549 wp-includes/script-loader.php:690
 msgid "Publish"
 msgstr "Publier"
 
-#: wp-includes/script-loader.php:655
+#: wp-includes/script-loader.php:656
 msgid "Comments"
 msgstr "Commentaires"
 
@@ -12036,7 +12042,7 @@ msgstr "Modifier"
 msgid "No"
 msgstr "Non"
 
-#: wp-includes/deprecated.php:3130 wp-includes/functions.php:2607
+#: wp-includes/deprecated.php:3130
 msgid "Are you sure you want to do this?"
 msgstr "Voulez-vous vraiment faire cela ?"
 
@@ -12080,7 +12086,7 @@ msgid "Pending Review"
 msgstr "En attente de relecture"
 
 #: wp-includes/post.php:706 wp-includes/post.php:726
-#: wp-includes/script-loader.php:550 wp-includes/script-loader.php:699
+#: wp-includes/script-loader.php:550 wp-includes/script-loader.php:700
 msgid "Published"
 msgstr "Publié"
 
@@ -12092,12 +12098,6 @@ msgstr "Titre"
 #: wp-includes/post.php:1394
 msgid "No posts found."
 msgstr "Aucun article trouvé."
-
-#: wp-includes/class-wp-customize-manager.php:450
-#: wp-includes/class-wp-customize-manager.php:515
-#: wp-includes/script-loader.php:565
-msgid "Cheatin&#8217; uh?"
-msgstr "Une mauvaise manipulation ?"
 
 #: wp-activate.php:134 wp-includes/post-template.php:1611
 msgid "Password:"
@@ -12115,8 +12115,8 @@ msgstr "Une erreur est survenue lors de l’activation"
 msgid "Your account is now active!"
 msgstr "Votre compte est maintenant activé !"
 
-#: wp-activate.php:85 wp-includes/script-loader.php:829
-#: wp-includes/script-loader.php:830
+#: wp-activate.php:85 wp-includes/script-loader.php:830
+#: wp-includes/script-loader.php:831
 msgid "Activate"
 msgstr "Activer"
 

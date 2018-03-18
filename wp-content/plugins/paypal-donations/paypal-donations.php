@@ -5,7 +5,7 @@ Plugin URI: https://www.tipsandtricks-hq.com/paypal-donations-widgets-plugin
 Description: Easy and simple setup and insertion of PayPal donate buttons with a shortcode or through a sidebar Widget. Donation purpose can be set for each button. A few other customization options are available as well.
 Author: Tips and Tricks HQ, Johan Steen
 Author URI: https://www.tipsandtricks-hq.com/
-Version: 1.9.4
+Version: 1.9.5
 License: GPLv2 or later
 Text Domain: paypal-donations
 */
@@ -145,13 +145,13 @@ class PayPalDonations
         add_filter('widget_text', 'do_shortcode');
         add_shortcode('paypal-donation', array(&$this,'paypalShortcode'));
         add_action('wp_head', array($this, 'addCss'), 999);
-
-        add_action(
-            'widgets_init',
-            create_function('', 'register_widget("PayPalDonations_Widget");')
-        );
+        add_action('widgets_init', array($this, 'handle_widgets_init'));
     }
 
+    public function handle_widgets_init(){
+        register_widget("PayPalDonations_Widget");
+    }
+    
     /**
      * PSR-0 compliant autoloader to load classes as needed.
      *

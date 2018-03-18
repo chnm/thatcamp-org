@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-23 21:23:48+0000\n"
+"PO-Revision-Date: 2018-03-09 18:16:41+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,17 +36,33 @@ msgstr "٬"
 msgid "number_format_decimal_point"
 msgstr "."
 
+#: wp-includes/class-wp-customize-manager.php:450
+#: wp-includes/class-wp-xmlrpc-server.php:3689 wp-includes/functions.php:2617
+#: wp-includes/script-loader.php:133 wp-includes/script-loader.php:565
+#: wp-includes/script-loader.php:645 wp-includes/script-loader.php:839
+msgid "Something went wrong."
+msgstr "حدث خطأ ما."
+
+#: wp-includes/class-wp-customize-manager.php:515
+#: wp-includes/script-loader.php:566
+msgid "You need a higher level of permission."
+msgstr "أنت بحاجة إلى مستوى أعلى من الصلاحية."
+
+#: wp-includes/functions.php:2607
+msgid "The link you followed has expired."
+msgstr "انتهت صلاحية الرابط الذي اتبعته."
+
 #. translators: %s: User who is customizing the changeset in customizer.
-#: wp-includes/class-wp-customize-manager.php:3950
+#: wp-includes/class-wp-customize-manager.php:3968
 msgid "%s is already customizing this changeset. Please wait until they are done to try customizing. Your latest changes have been autosaved."
 msgstr "%s يقوم بعدّة تغييرات على تخصيص الموقع بالوقت الحالي. يرجى الانتظار إلى حين الانتهاء من محاولة التخصيص. لقد تم حفظ أحدث التغييرات التي قمت بها تلقائيًا."
 
 #. translators: %s: User who is customizing the changeset in customizer.
-#: wp-includes/class-wp-customize-manager.php:3952
+#: wp-includes/class-wp-customize-manager.php:3970
 msgid "%s is already customizing this changeset. Do you want to take over?"
 msgstr "%s يقوم بعدّة تغييرات على تخصيص الموقع بالوقت الحالي. هل تريد الاستيلاء؟"
 
-#: wp-includes/class-wp-customize-manager.php:4154
+#: wp-includes/class-wp-customize-manager.php:4172
 msgid "Update anyway, even though it might break your site?"
 msgstr "تحديث على أية حال، على الرغم من أنه قد يؤدي إلى تعطيل موقعك؟"
 
@@ -70,7 +86,7 @@ msgid "%1$s is not a valid property of Object."
 msgstr "%1$s خاصية غير صالحة للكائن."
 
 #. translators: %s: URL to Add Themes admin screen
-#: wp-includes/script-loader.php:601
+#: wp-includes/script-loader.php:602
 msgid "You won&#8217;t be able to install new themes from here yet since your install requires SFTP credentials. For now, please <a href=\"%s\">add themes in the admin</a>."
 msgstr "لن تتمكن من تنصيب قوالب جديدة من هنا لأن التنصيب يتطلب شهادات SFTP. في الوقت الراهن، يرجى <a href=\"%s\"> إضافة القوالب من لوحة التحكم </a>."
 
@@ -85,7 +101,7 @@ msgctxt "tags"
 msgid "Most Used"
 msgstr "الأكثر استخداماً"
 
-#: wp-includes/class-wp-customize-nav-menus.php:950
+#: wp-includes/class-wp-customize-nav-menus.php:966
 msgid "Click &#8220;Next&#8221; to start adding links to your new menu."
 msgstr "أنقر&#8220;التالي&#8221; للبدء في إضافة روابط للقائمة الجديدة."
 
@@ -94,12 +110,12 @@ msgstr "أنقر&#8220;التالي&#8221; للبدء في إضافة روابط
 msgid "Sorry, we can&#8217;t load the video at the supplied URL. Please check that the URL is for a supported video file (%s) or stream (e.g. YouTube and Vimeo)."
 msgstr "عذرًا, تعذر تحميل الفيديو من الرابط المرفق. يرجى فحص ما إن كان الرابط لفيديو مدعوم  (%s) أو بث (مثلا YouTube وVimeo)."
 
-#: wp-includes/script-loader.php:690
+#: wp-includes/script-loader.php:691
 msgctxt "post action/button label"
 msgid "Schedule"
 msgstr "جدولة"
 
-#: wp-includes/class-wp-customize-manager.php:4607
+#: wp-includes/class-wp-customize-manager.php:4627
 #: wp-includes/script-loader.php:554
 msgctxt "customizer changeset action/button label"
 msgid "Schedule"
@@ -125,23 +141,23 @@ msgstr "أضف قائمة تصفح إلى الشريط الجانبي."
 
 #. translators: %s: Display name of the user who has taken over the changeset
 #. in customizer.
-#: wp-includes/script-loader.php:578
+#: wp-includes/script-loader.php:579
 msgid "%s has taken over and is currently customizing."
 msgstr "%s قام بالاستيلاء ويقوم بالتخصيص الآن."
 
-#: wp-includes/class-wp-customize-manager.php:4136
+#: wp-includes/class-wp-customize-manager.php:4154
 msgid "Go back"
 msgstr "العودة للخلف"
 
-#: wp-includes/class-wp-customize-manager.php:4140
+#: wp-includes/class-wp-customize-manager.php:4158
 msgid "Take over"
 msgstr "إستيلاء"
 
-#: wp-includes/class-wp-customize-manager.php:3215
+#: wp-includes/class-wp-customize-manager.php:3228
 msgid "Sorry, you are not allowed to take over."
 msgstr "عذرًا، غير مسموح لك بالاستيلاء."
 
-#: wp-includes/class-wp-customize-manager.php:3208
+#: wp-includes/class-wp-customize-manager.php:3221
 msgid "No changeset found to take over"
 msgstr "لم يتم العثور على مجموعة تغييرات لكي يتم الاستيلاء"
 
@@ -150,20 +166,20 @@ msgid "Changeset is being edited by other user."
 msgstr "يتم تحرير مجموعة التغييرات بواسطة مستخدم آخر."
 
 #. translators: %s: User who is customizing the changeset in customizer.
-#: wp-includes/class-wp-customize-manager.php:3957
+#: wp-includes/class-wp-customize-manager.php:3975
 msgid "%s is already customizing this site. Please wait until they are done to try customizing. Your latest changes have been autosaved."
 msgstr "%s يقوم بالفعل بتخصيص هذا الموقع. يرجى الانتظار حتى ينتهي لمحاولة التخصيص. تم حفظ أحدث التغييرات التي قمت بها تلقائيا."
 
-#: wp-includes/class-wp-customize-manager.php:3199
+#: wp-includes/class-wp-customize-manager.php:3212
 msgid "Security check failed."
 msgstr "فشل التحقق الأمني."
 
 #. translators: %s: User who is customizing the changeset in customizer.
-#: wp-includes/class-wp-customize-manager.php:3959
+#: wp-includes/class-wp-customize-manager.php:3977
 msgid "%s is already customizing this site. Do you want to take over?"
 msgstr "%s يقوم بتخصيص الموقع الآن. هل تريد الاستيلاء؟"
 
-#: wp-includes/script-loader.php:572
+#: wp-includes/script-loader.php:573
 msgid "Looks like something&#8217;s gone wrong. Wait a couple seconds, and then try again."
 msgstr "يبدو أنه حدث خطأ ما. انتظر بضع ثواني، ومن ثم حاول مرة أخرى."
 
@@ -188,24 +204,24 @@ msgctxt "menu locations"
 msgid "(If you plan to use a menu <a href=\"%1$s\" %2$s>widget%3$s</a>, skip this step.)"
 msgstr "(إذا كنت تخطط لاستخدام قائمة <a href=\"%1$s\" %2$s>widget%3$s</a>، تخطى هذه الخطوة.)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:964
+#: wp-includes/class-wp-customize-nav-menus.php:980
 msgid "You&#8217;ll create a menu, assign it a location, and add menu items like links to pages and categories. If your theme has multiple menu areas, you might need to create more than one."
 msgstr "سوف تقوم بإنشاء قائمة، وتعيين مكان لها، وإضافة عناصر للقائمة مثل روابط للصفحات والتصنيفات. إذا كان قالبك يملك عدة أماكن للقوائم، فقد تحتاج إلى إنشاء أكثر من قائمة."
 
-#: wp-includes/class-wp-customize-nav-menus.php:961
+#: wp-includes/class-wp-customize-nav-menus.php:977
 msgid "It doesn&#8217;t look like your site has any menus yet. Want to build one? Click the button to start."
 msgstr "يبدو أن موقعك لا يحتوي على أي قوائم حتى الآن. هل تريد إنشاء واحدة؟ أنقر على الزر للبدء."
 
-#: wp-includes/class-wp-customize-nav-menus.php:588
+#: wp-includes/class-wp-customize-nav-menus.php:604
 msgctxt "menu locations"
 msgid "View All Locations"
 msgstr "مشاهدة كل الأماكن"
 
-#: wp-includes/class-wp-customize-manager.php:4808
+#: wp-includes/class-wp-customize-manager.php:4828
 msgid "While previewing a new theme, you can continue to tailor things like widgets and menus, and explore theme-specific options."
 msgstr "أثناء معاينة قالب جديد، يمكنك متابعة تخصيص الأشياء مثل الودجات والقوائم، واستكشاف خيارات خاصة بالقالب."
 
-#: wp-includes/class-wp-customize-manager.php:4807
+#: wp-includes/class-wp-customize-manager.php:4827
 msgid "Looking for a theme? You can search or browse the WordPress.org theme directory, install and preview themes, then activate them right here."
 msgstr "تبحث عن قالب؟ يمكنك البحث أو تصفح دليل قوالب WordPress.org، قم بتنزيل ومعاينة القوالب، ثم تفعيلها من هنا."
 
@@ -213,11 +229,11 @@ msgstr "تبحث عن قالب؟ يمكنك البحث أو تصفح دليل ق
 msgid "Something went wrong. Your change may not have been saved. Please try again. There is also a chance that you may need to manually fix and upload the file over FTP."
 msgstr "هناك خطأ ما. ربما لم يتم حفظ تعديلك. يرجى المحاولة مرة أخرى. هناك أيضاً فرصة قد تحتاج إلى الإصلاح اليدوي ورفع الملف عبر FTP."
 
-#: wp-includes/class-wp-customize-manager.php:5262
+#: wp-includes/class-wp-customize-manager.php:5282
 msgid "Screen reader users: when in forms mode, you may need to press the escape key twice."
 msgstr "مستخدمي قارئ الشاشة: عندنا تكون في وضع النماذج، قد تحتاج إلى الضغط على مفتاح Esc مرتين."
 
-#: wp-includes/class-wp-customize-nav-menus.php:588
+#: wp-includes/class-wp-customize-nav-menus.php:604
 msgctxt "menu locations"
 msgid "View Location"
 msgstr "مشاهدة المكان"
@@ -226,7 +242,7 @@ msgstr "مشاهدة المكان"
 msgid "Jump forward %1 seconds"
 msgstr "القفز %1 ثانية إلى الأمام"
 
-#: wp-includes/class-wp-customize-nav-menus.php:576
+#: wp-includes/class-wp-customize-nav-menus.php:592
 msgid "Your theme can display menus in one location. Select which menu you would like to use."
 msgstr "يمكن لقالبك عرض القوائم في مكان واحد. اختر القائمة التي تريد استخدامها."
 
@@ -335,7 +351,7 @@ msgstr "<strong>خطأ</strong>: عنوان البريد الإلكتروني م
 msgid "&larr; Back to Categories"
 msgstr "&rarr; العودة إلى التصنيفات"
 
-#: wp-includes/script-loader.php:856
+#: wp-includes/script-loader.php:857
 msgid "Color value"
 msgstr "قيمة اللون"
 
@@ -343,16 +359,16 @@ msgstr "قيمة اللون"
 msgid "&larr; Back to Link Categories"
 msgstr "&rarr; العودة إلى روابط التصنيفات"
 
-#: wp-includes/script-loader.php:590
+#: wp-includes/script-loader.php:591
 msgid "Homepage and posts page must be different."
 msgstr "يجب أن تكون الصفحة الرئيسية وصفحة المقالات مختلفتين."
 
-#: wp-includes/script-loader.php:852
+#: wp-includes/script-loader.php:853
 msgid "Clear color"
 msgstr "مسح اللون"
 
 #. translators: %d: error count
-#: wp-includes/script-loader.php:586 wp-includes/script-loader.php:588
+#: wp-includes/script-loader.php:587 wp-includes/script-loader.php:589
 #: wp-includes/widgets/class-wp-widget-custom-html.php:217
 #: wp-includes/widgets/class-wp-widget-custom-html.php:219
 msgid "There is %d error which must be fixed before you can save."
@@ -364,19 +380,19 @@ msgstr[3] "هناك %d أخطاء يجب تصحيحها قبل أن تتمكن �
 msgstr[4] "هناك %d خطأ يجب تصحيحه قبل أن تتمكن من الحفظ."
 msgstr[5] "هناك %d خطأ يجب تصحيحه قبل أن تتمكن من الحفظ."
 
-#: wp-includes/script-loader.php:798
+#: wp-includes/script-loader.php:799
 msgid "Installation Failed!"
 msgstr "فشل التنصيب!"
 
-#: wp-includes/script-loader.php:597
+#: wp-includes/script-loader.php:598
 msgid "Schedule your customization changes to publish (\"go live\") at a future date."
 msgstr "جدول تخصيصاتك لتُنشر (\"تعرض مباشرة\") في تاريخ مستقبلي."
 
-#: wp-includes/script-loader.php:598
+#: wp-includes/script-loader.php:599
 msgid "Sorry, you can&#8217;t preview new themes when you have changes scheduled or saved as a draft. Please publish your changes, or wait until they publish to preview new themes."
 msgstr "عذراً، لا يمكنك معاينة القوالب الجديدة عند إجراء تغييرات مجدولة أو محفوظة كمسودات. يرجى نشر تغييراتك، أو الانتظار حتى يتم نشرها لمعاينة القوالب الجديدة."
 
-#: wp-includes/script-loader.php:573
+#: wp-includes/script-loader.php:574
 msgid "Downloading your new theme&hellip;"
 msgstr "جاري تحميل قالبك الجديد&hellip;"
 
@@ -456,7 +472,7 @@ msgstr "مكدونية"
 msgid "Latvian"
 msgstr "اللاتفية"
 
-#: wp-includes/script-loader.php:574
+#: wp-includes/script-loader.php:575
 msgid "Setting up your live preview. This may take a bit."
 msgstr "إعداد المعاينة المباشرة الخاصة بك. قد يستغرق ذلك قليلاً."
 
@@ -504,11 +520,11 @@ msgstr "المالطية"
 msgid "Malay"
 msgstr "المالية"
 
-#: wp-includes/script-loader.php:576
+#: wp-includes/script-loader.php:577
 msgid "Are you sure you&#8217;d like to discard your unpublished changes?"
 msgstr "هل أنت متأكد من رغبتك بتجاهل التغييرات الغير منشورة؟"
 
-#: wp-includes/script-loader.php:575
+#: wp-includes/script-loader.php:576
 msgid "Reverting unpublished changes&hellip;"
 msgstr "العودة إلى تغييرات غير منشورة&hellip;"
 
@@ -536,7 +552,7 @@ msgstr[4] "هناك %d خطأ يجب إصلاحهم قبل أن تتمكن من 
 msgstr[5] "هناك %d خطأ يجب إصلاحهم قبل أن تتمكن من تحديث هذا الملف."
 
 #. translators: %s: URL to the Customizer to load the autosaved version
-#: wp-includes/script-loader.php:580
+#: wp-includes/script-loader.php:581
 msgid "There is a more recent autosave of your changes than the one you are previewing. <a href=\"%s\">Restore the autosave</a>"
 msgstr "هناك أكثر من سجل حفظ تلقائي للتغييرات التي تجريها أحدث من الذي تقوم بمعاينته الآن. <a href=\"%s\">استعادة الحفظ التلقائي</a>"
 
@@ -929,11 +945,11 @@ msgstr "المنطقة الزمنية"
 msgid "Timezone is %s."
 msgstr "المنطقة الزمنية هي %s."
 
-#: wp-includes/class-wp-customize-nav-menus.php:693
+#: wp-includes/class-wp-customize-nav-menus.php:709
 msgid "New Menu"
 msgstr "قائمة جديدة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:968
+#: wp-includes/class-wp-customize-nav-menus.php:984
 msgid "Create New Menu"
 msgstr "إنشاء قائمة جديدة"
 
@@ -985,33 +1001,33 @@ msgid "The theme defines itself as its parent theme. Please check the %s header.
 msgstr "القالب يُعرّف نفسه باعتباره القالب الرئيسي. يرجى فحص ترويسة %s."
 
 #. translators: URL to the widgets panel of the customizer
-#: wp-includes/class-wp-customize-nav-menus.php:584
+#: wp-includes/class-wp-customize-nav-menus.php:600
 msgid "If your theme has widget areas, you can also add menus there. Visit the <a href=\"%s\">Widgets panel</a> and add a &#8220;Navigation Menu widget&#8221; to display a menu in a sidebar or footer."
 msgstr "إذا كان قالبك يحتوي على مناطق ودجات، يمكنك أيضاً إضافة قوائم هناك. انتقل إلى <a href=\"%s\">لوحة الودجات</a> وإضافة &#8221;ودجت قائمة تصفّح&#8220; لعرض قائمة في الشريط الجانبي أو التذييل."
 
-#: wp-includes/class-wp-customize-nav-menus.php:400
+#: wp-includes/class-wp-customize-nav-menus.php:416
 msgid "Your theme can display menus in one location."
 msgstr "يمكن لقالبك عرض القوائم في مكان واحد."
 
-#: wp-includes/class-wp-customize-manager.php:5298
+#: wp-includes/class-wp-customize-manager.php:5318
 msgid "CSS code"
 msgstr "شفرة CSS"
 
-#: wp-includes/class-wp-customize-manager.php:5258
+#: wp-includes/class-wp-customize-manager.php:5278
 #: wp-includes/widgets/class-wp-widget-custom-html.php:309
 msgid "When using a keyboard to navigate:"
 msgstr "عند استخدام لوحة المفاتيح للتنقل:"
 
-#: wp-includes/class-wp-customize-manager.php:5248
+#: wp-includes/class-wp-customize-manager.php:5268
 msgid "Add your own CSS code here to customize the appearance and layout of your site."
 msgstr "أضف تنسيقات الـ CSS الخاصة بك هنا لضبط وتخصيص مظهر وتصميم موقعك."
 
-#: wp-includes/class-wp-customize-manager.php:5261
+#: wp-includes/class-wp-customize-manager.php:5281
 #: wp-includes/widgets/class-wp-widget-custom-html.php:312
 msgid "To move away from this area, press the Esc key followed by the Tab key."
 msgstr "للخروج من هذه المنطقة، اضغط على  مفتاح الخروج (Esc) متبوعاً بمفتاح التبديل (Tab)."
 
-#: wp-includes/class-wp-customize-manager.php:5260
+#: wp-includes/class-wp-customize-manager.php:5280
 #: wp-includes/widgets/class-wp-widget-custom-html.php:311
 msgid "In the editing area, the Tab key enters a tab character."
 msgstr "في منطقة التحرير، مفتاح Tab يدرج رمز المسافة البادئة."
@@ -1020,12 +1036,12 @@ msgstr "في منطقة التحرير، مفتاح Tab يدرج رمز المس
 msgid "Screen reader users: when in forms mode, you may need to press the Esc key twice."
 msgstr "مستخدمي قارئ الشاشة: عندنا تكون في وضع النماذج، قد تحتاج إلى الضغط على مفتاح Esc مرتين."
 
-#: wp-includes/class-wp-customize-nav-menus.php:420
+#: wp-includes/class-wp-customize-nav-menus.php:436
 msgid "If your theme has multiple menus, giving them clear names will help you manage them."
 msgstr "إذا كان قالبك يحتوي على عدة قوائم، فإن منهم أسماء واضحة سيساعدك على إدارتها."
 
 #. translators: %s: number of menu locations
-#: wp-includes/class-wp-customize-nav-menus.php:403
+#: wp-includes/class-wp-customize-nav-menus.php:419
 msgid "Your theme can display menus in %s location."
 msgid_plural "Your theme can display menus in %s locations."
 msgstr[0] "يُمكن لقالبك إظهار القوائم في %s أماكن."
@@ -1035,48 +1051,48 @@ msgstr[3] "يُمكن لقالبك إظهار القوائم في %s أماكن.
 msgstr[4] "يُمكن لقالبك إظهار القوائم في %s مكان."
 msgstr[5] "يُمكن لقالبك إظهار القوائم في %s مكان."
 
-#: wp-includes/class-wp-customize-manager.php:5202
+#: wp-includes/class-wp-customize-manager.php:5222
 msgid "You can choose what&#8217;s displayed on the homepage of your site. It can be posts in reverse chronological order (classic blog), or a fixed/static page. To set a static homepage, you first need to create two Pages. One will become the homepage, and the other will be where your posts are displayed."
 msgstr "يمكنك اختيار ما يتم عرضه على الصفحة الرئيسية لموقعك. يمكنك عرض آخر المقالات بحيث تكون مرتّبة بشكل زمني من الأحدث للأقدم (مدونة تقليدية)، أو أن تختار صفحة ثابتة لعرضها في الصفحة الرئيسية لموقعك. لتعيين صفحة رئيسية ثابتة، يجب عليك أولاً إنشاء صفحتين. إحداهما ستصبح الصفحة الرئيسية، أما الصفحة الثانية الأخرى ستظهر فيها المقالات التي ستكتبها."
 
 #. translators: 1: link to user profile, 2: additional link attributes, 3:
 #. accessibility text
-#: wp-includes/class-wp-customize-manager.php:5269
+#: wp-includes/class-wp-customize-manager.php:5289
 #: wp-includes/widgets/class-wp-widget-custom-html.php:299
 msgid "The edit field automatically highlights code syntax. You can disable this in your <a href=\"%1$s\" %2$s>user profile%3$s</a> to work in plain text mode."
 msgstr "حقل التحرير يسلط الضوء تلقائياً على بنية وصيغة الشفرة. يمكنك تعطيل هذا في <a href=\"%1$s\" %2$s>الملف الشخصي%3$s</a> الخاص بك للعمل في وضع النص العادي."
 
-#: wp-includes/class-wp-customize-manager.php:5213
+#: wp-includes/class-wp-customize-manager.php:5233
 msgid "Your homepage displays"
 msgstr "تعرض صفحتك الرئيسية"
 
-#: wp-includes/class-wp-customize-manager.php:5200
+#: wp-includes/class-wp-customize-manager.php:5220
 msgid "Homepage Settings"
 msgstr "إعدادات الصفحة الرئيسية"
 
-#: wp-includes/class-wp-customize-manager.php:4178
+#: wp-includes/class-wp-customize-manager.php:4196
 msgid "Preview Link"
 msgstr "رابط المعاينة"
 
-#: wp-includes/script-loader.php:604
+#: wp-includes/script-loader.php:605
 msgid "Publish Settings"
 msgstr "نشر الإعدادات"
 
-#: wp-includes/class-wp-customize-manager.php:4824
+#: wp-includes/class-wp-customize-manager.php:4844
 msgid "WordPress.org themes"
 msgstr "قوالب WordPress.org "
 
-#: wp-includes/class-wp-customize-manager.php:4173
+#: wp-includes/class-wp-customize-manager.php:4191
 msgid "Share Preview Link"
 msgstr "مشاركة رابط المعاينة"
 
-#: wp-includes/class-wp-customize-manager.php:3002
+#: wp-includes/class-wp-customize-manager.php:3004
 msgid "There was an authentication problem. Please reload and try again."
 msgstr "حدثت مشكلة في المصادقة. الرجاء إعادة التحميل والمحاولة مرة أخرى."
 
 #. translators: %s: number of invalid settings
 #: wp-includes/class-wp-customize-manager.php:2707
-#: wp-includes/script-loader.php:593 wp-includes/script-loader.php:595
+#: wp-includes/script-loader.php:594 wp-includes/script-loader.php:596
 msgid "Unable to save due to %s invalid setting."
 msgid_plural "Unable to save due to %s invalid settings."
 msgstr[0] "تعذر الحفظ بسبب %s إعداد غير صالح."
@@ -1092,41 +1108,41 @@ msgstr[5] "تعذر الحفظ بسبب %s إعداد غير صالح."
 msgid "You must supply a future date to schedule."
 msgstr "عليك توفير تاريخ في المستقبل من أجل الجدولة."
 
-#: wp-includes/class-wp-customize-manager.php:3040
+#: wp-includes/class-wp-customize-manager.php:3042
 msgid "Changes trashed successfully."
 msgstr "تم نقل التغييرات إلى سلة المهملات بنجاح."
 
-#: wp-includes/class-wp-customize-manager.php:3010
+#: wp-includes/class-wp-customize-manager.php:3012
 msgid "No changes saved yet, so there is nothing to trash."
 msgstr "لم يتم حفظ أي تغييرات بعد، لذا ليس هناك شيء للحذف."
 
-#: wp-includes/class-wp-customize-manager.php:3019
-#: wp-includes/class-wp-customize-manager.php:3035
+#: wp-includes/class-wp-customize-manager.php:3021
+#: wp-includes/class-wp-customize-manager.php:3037
 msgid "Unable to trash changes."
 msgstr "غير قادر على حذف التغييرات."
 
-#: wp-includes/class-wp-customize-manager.php:3025
+#: wp-includes/class-wp-customize-manager.php:3027
 msgid "Changes have already been trashed."
 msgstr "تم وضع التغييرات في سلة المهملات بالفعل."
 
 #. translators: %s: site icon size in pixels
-#: wp-includes/class-wp-customize-manager.php:4894
+#: wp-includes/class-wp-customize-manager.php:4914
 msgid "Site Icons should be square and at least %s pixels."
 msgstr "أيقونات الموقع يجب أن تكون مربعة وعلى الأقل %s بيكسل."
 
-#: wp-includes/class-wp-customize-manager.php:4184
+#: wp-includes/class-wp-customize-manager.php:4202
 msgid "Copied"
 msgstr "تم النسخ"
 
-#: wp-includes/class-wp-customize-manager.php:4815
+#: wp-includes/class-wp-customize-manager.php:4835
 msgid "Installed themes"
 msgstr "القوالب المنصّبة"
 
-#: wp-includes/class-wp-customize-manager.php:4175
+#: wp-includes/class-wp-customize-manager.php:4193
 msgid "See how changes would look live on your website, and share the preview with people who can't access the Customizer."
 msgstr "شاهد كيف ستبدو التعديلات على موقعك، و شارك هذه المعاينة مع أناس ليس لديهم صلاحية وصول لـ المخصّص."
 
-#: wp-includes/class-wp-customize-manager.php:4892
+#: wp-includes/class-wp-customize-manager.php:4912
 msgid "Site Icons are what you see in browser tabs, bookmark bars, and within the WordPress mobile apps. Upload one here!"
 msgstr "أيقونات الموقع هي الأيقونة التي تراها على تبويبات متصفحك، وشريط الإشارات المرجعية، وضمن تطبيقات ووردبريس للأجهزة المحمولة. قم برفع أيقونة هنا!"
 
@@ -1142,27 +1158,27 @@ msgstr "عرض المستخدم"
 msgid "The previous set of changes has already been published. Please try saving your current set of changes again."
 msgstr "تم نشر التغييرات السابقة بالفعل. الرجاء محاولة حفظ التغييرات الحالية مجدداً."
 
-#: wp-includes/widgets/class-wp-widget-text.php:461
+#: wp-includes/widgets/class-wp-widget-text.php:481
 msgid "This widget may have contained code that may work better in the &#8220;Custom HTML&#8221; widget. If you haven&#8217;t yet, how about trying that widget instead?"
 msgstr "قد يكون هذا الودجت محتوياً على شفرة قد تعمل بشكل أفضل في الودجت &#8221;HTML مخصص&#8220;. إذا لم يكن لديك بعد، ماذا عن المحاولة في تجربة هذا الودجت بدلاً عنه؟"
 
-#: wp-includes/widgets/class-wp-widget-text.php:514
+#: wp-includes/widgets/class-wp-widget-text.php:534
 msgid "Hey there, looks like you just pasted HTML into the &#8220;Visual&#8221; tab of the Text widget. You may want to paste your code into the &#8220;Text&#8221; tab instead. Alternately, try out the new &#8220;Custom HTML&#8221; widget!"
 msgstr "مرحبا، كما هو الحال عندما تقوم بلصق كود HTML في التبويب &#8221;مرئي&#8220; في الودجت من نوع \"نص\". قد ترغب بلصق الأكواد الخاصة بك في التبويب &#8221;نص&#8220; بدلاً من ذلك. قم بتجربة ودجت &#8221;HTML مخصص&#8220; الجديد عوضاً عن ذلك."
 
-#: wp-includes/widgets/class-wp-widget-text.php:513
+#: wp-includes/widgets/class-wp-widget-text.php:533
 msgid "Did you just paste HTML?"
 msgstr "هل قمت بلصق HTML فقط؟"
 
-#: wp-includes/widgets/class-wp-widget-text.php:498
+#: wp-includes/widgets/class-wp-widget-text.php:518
 msgid "Did you know there is a &#8220;Custom HTML&#8221; widget now? You can find it by scanning the list of available widgets on this screen. Check it out to add some custom code to your site!"
 msgstr "مرحبا، هل علمت أن هناك &#8221;HTML مخصص&#8220; الآن؟ يمكنك العثور عليه بفحص قائمة الودجات المتوفرة على هذه الشاشة. قم بتجربته لإضافة بعض الأكواد المخصصة إلى موقعك!"
 
-#: wp-includes/widgets/class-wp-widget-text.php:496
+#: wp-includes/widgets/class-wp-widget-text.php:516
 msgid "Did you know there is a &#8220;Custom HTML&#8221; widget now? You can find it by pressing the &#8220;<a class=\"add-widget\" href=\"#\">Add a Widget</a>&#8221; button and searching for &#8220;HTML&#8221;. Check it out to add some custom code to your site!"
 msgstr "مرحبا، هل علمت أن هناك ودجت &#8221;HTML مخصص&#8220; الآن؟ يمكنك العثور عليه بالضغط على زر &#8221;<a class=\"add-widget\" href=\"#\">أضف ودجت</a>&#8220; والبحث عن &#8221;HTML&#8220;. قم بتجربته لإضافة بعض الأكواد المخصصة إلى موقعك!"
 
-#: wp-includes/widgets/class-wp-widget-text.php:494
+#: wp-includes/widgets/class-wp-widget-text.php:514
 msgid "New Custom HTML Widget"
 msgstr "ودجت HTML مخصص جديد"
 
@@ -1170,7 +1186,7 @@ msgstr "ودجت HTML مخصص جديد"
 msgid "Arbitrary text."
 msgstr "نص اختياري."
 
-#: wp-includes/widgets/class-wp-widget-text.php:459
+#: wp-includes/widgets/class-wp-widget-text.php:479
 msgid "This widget may contain code that may work better in the &#8220;Custom HTML&#8221; widget. How about trying that widget instead?"
 msgstr "قد يحتوي هذا الودجت على شفرة قد تعمل بشكل أفضل في الودجت &#8221;HTML مخصص&#8220;. ماذا عن المحاولة في تجربة هذا الودجت بدلاً عنه؟"
 
@@ -1224,9 +1240,13 @@ msgstr "أضف ملف صوتي"
 msgid "(no author)"
 msgstr "(لا مؤلف)"
 
-#: wp-includes/script-loader.php:1180
+#: wp-includes/script-loader.php:1181
 msgid "Attend an upcoming event near you."
 msgstr "حضور حدث قادم بالقرب منك."
+
+#: wp-includes/script-loader.php:1180
+msgid "An error occurred. Please try again."
+msgstr "حدث خطأ. يرجى المحاولة مرة أخرى."
 
 #. translators: %s is the name of the city we couldn't locate. Replace the
 #. examples with cities related to your locale. Test that they match the
@@ -1235,20 +1255,16 @@ msgstr "حضور حدث قادم بالقرب منك."
 #. locale that would be recognizable to most users. Use only the city name
 #. itself, without any region or country. Use the endonym (native locale name)
 #. instead of the English name if possible.
-#: wp-includes/script-loader.php:1197
+#: wp-includes/script-loader.php:1198
 msgid "We couldn&#8217;t locate %s. Please try another nearby city. For example: Kansas City; Springfield; Portland."
 msgstr "تعذر تحديد موقع %s. يرجى تجربة مدينة مجاورة أخرى. على سبيل المثال: كانساس سيتي؛ سبرينغفيلد. بورتلاند."
 
-#: wp-includes/script-loader.php:1179
-msgid "An error occurred. Please try again."
-msgstr "حدث خطأ. يرجى المحاولة مرة أخرى."
-
 #. translators: %s: the name of a city
-#: wp-includes/script-loader.php:1201
+#: wp-includes/script-loader.php:1202
 msgid "City updated. Listing events near %s."
 msgstr "تم تحديث المدينة. قائمة بالأحداث التي بالقرب من %s."
 
-#: wp-includes/script-loader.php:1178
+#: wp-includes/script-loader.php:1179
 msgid "Enter your closest city to find nearby events."
 msgstr "ادخل أقرب مدينة للعثور على الأحداث القريبة."
 
@@ -1361,7 +1377,7 @@ msgstr "الرابط إلى ملف مصدر الفيديو %s"
 msgid "Looks like this isn&#8217;t the correct kind of file. Please link to an appropriate file instead."
 msgstr "يبدو أن هذا النوع من الملفات غير مدعوم. فضلاً اختر ملف آخر ومناسب."
 
-#: wp-includes/script-loader.php:771
+#: wp-includes/script-loader.php:772
 msgctxt "theme"
 msgid "Updated!"
 msgstr "تم التحديث!"
@@ -1372,13 +1388,13 @@ msgid "Edit Image"
 msgstr "تحرير الصورة"
 
 #. translators: %s: Plugin name
-#: wp-includes/script-loader.php:794
+#: wp-includes/script-loader.php:795
 msgctxt "plugin"
 msgid "Install %s now"
 msgstr "تنصيب %s الآن"
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:775
+#: wp-includes/script-loader.php:776
 msgctxt "plugin"
 msgid "Update %s now"
 msgstr "تحديث %s الآن"
@@ -1393,12 +1409,12 @@ msgctxt "label for button in the audio widget; should preferably not be longer t
 msgid "Replace Audio"
 msgstr "استبدال الصوت"
 
-#: wp-includes/script-loader.php:827
+#: wp-includes/script-loader.php:828
 msgctxt "theme"
 msgid "Deleted!"
 msgstr "محذوف!"
 
-#: wp-includes/script-loader.php:797
+#: wp-includes/script-loader.php:798
 msgctxt "theme"
 msgid "Installed!"
 msgstr "منصّب!"
@@ -1450,19 +1466,19 @@ msgid "Displays an audio player."
 msgstr "عرض مشغل الصوت."
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:784
+#: wp-includes/script-loader.php:785
 msgctxt "plugin"
 msgid "%s update failed"
 msgstr "فشل تحديث %s"
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:780
+#: wp-includes/script-loader.php:781
 msgctxt "plugin"
 msgid "Updating %s..."
 msgstr "جاري تحديث %s..."
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:782
+#: wp-includes/script-loader.php:783
 msgctxt "plugin"
 msgid "%s updated!"
 msgstr "تم تحديث %s!"
@@ -1489,12 +1505,12 @@ msgstr "ودجت الصورة"
 msgid "Displays an image."
 msgstr "لعرض صورة من مكتبة الوسائط الخاصة بك."
 
-#: wp-includes/script-loader.php:826
+#: wp-includes/script-loader.php:827
 msgctxt "plugin"
 msgid "Deleted!"
 msgstr "محذوفة!"
 
-#: wp-includes/script-loader.php:796
+#: wp-includes/script-loader.php:797
 msgctxt "plugin"
 msgid "Installed!"
 msgstr "منصّبة!"
@@ -1533,7 +1549,7 @@ msgctxt "label for button in the gallery widget; should not be longer than ~13 c
 msgid "Add Images"
 msgstr "إضافة صور"
 
-#: wp-includes/script-loader.php:770
+#: wp-includes/script-loader.php:771
 msgctxt "plugin"
 msgid "Updated!"
 msgstr "تم التحديث!"
@@ -1716,6 +1732,14 @@ msgstr "إدراج/تعديل ملف الوسائط"
 msgid "You can navigate to other pages on your site while using the Customizer to view and edit the widgets displayed on those pages."
 msgstr "يمكنك التنقل الى الصفحات الأخرى في موقعك خلال استخدام التخصيص لمشاهدة وتحرير الودجات المعروضة على هذه الصفحات."
 
+#: wp-includes/class-wp-editor.php:1101
+msgid "Insert/edit code sample"
+msgstr "إدراج/تحرير عينة كود"
+
+#: wp-includes/class-wp-editor.php:1073
+msgid "Id should start with a letter, followed only by letters, numbers, dashes, dots, colons or underscores."
+msgstr "المُعرف يجب أن يبدأ بحرف، متبوعاً فقط بأحرف، أرقام,،شرطات، نقاط، فواصل منقوطة أو خطوط سفلية."
+
 #. translators: %s: the total number of widget areas registered
 #: wp-includes/class-wp-customize-widgets.php:737
 msgid "Your theme has %s widget area, but this particular page doesn&#8217;t display it."
@@ -1726,14 +1750,6 @@ msgstr[2] "قالبك يحتوي على منطقتان ودجت، ولكن هذ�
 msgstr[3] "قالبك يحتوي على %s مناطق ودجت، ولكن هذه الصفحة تحديدًا لا تقوم بعرضهم."
 msgstr[4] "قالبك يحتوي على %s منطقة ودجت، ولكن هذه الصفحة تحديدًا لا تقوم بعرضهم."
 msgstr[5] "قالبك يحتوي على %s منطقة ودجت، ولكن هذه الصفحة تحديدًا لا تقوم بعرضهم."
-
-#: wp-includes/class-wp-editor.php:1101
-msgid "Insert/edit code sample"
-msgstr "إدراج/تحرير عينة كود"
-
-#: wp-includes/class-wp-editor.php:1073
-msgid "Id should start with a letter, followed only by letters, numbers, dashes, dots, colons or underscores."
-msgstr "المُعرف يجب أن يبدأ بحرف، متبوعاً فقط بأحرف، أرقام,،شرطات، نقاط، فواصل منقوطة أو خطوط سفلية."
 
 #: wp-includes/class-wp-editor.php:1074
 msgctxt "Id for link anchor (TinyMCE)"
@@ -1994,7 +2010,7 @@ msgid "Invalid email address."
 msgstr "عنوان بريد إلكتروني غير صالح."
 
 #: wp-includes/post.php:3207 wp-includes/rest-api.php:1151
-#: wp-includes/script-loader.php:605
+#: wp-includes/script-loader.php:606
 msgid "Invalid date."
 msgstr "تاريخ غير صالح."
 
@@ -2188,7 +2204,7 @@ msgstr "قد يكون هذا مكانًا جيدًا لتقديم نفسك وم�
 msgid "Reassign the deleted user's posts and links to this user ID."
 msgstr "إعادة إسناد مقالات المستخدم المحذوف وربطها بهذا المستخدم."
 
-#: wp-includes/script-loader.php:581
+#: wp-includes/script-loader.php:582
 msgid "This theme doesn&#8217;t support video headers on this page. Navigate to the front page or another page that supports video headers."
 msgstr "هذا القالب لا يدعم استخدام الفيديو في ترويسة هذه الصفحة. انتقل للصفحة الرئيسية أو أي صفحة آخرى تدعم الفيديو في الترويسة."
 
@@ -2322,12 +2338,12 @@ msgstr "كلمات المرور لا يمكن أن تكون فارغة."
 msgid "Invalid user parameter(s)."
 msgstr "مُعامل (أو أكثر) غير صالح للمستخدم."
 
-#: wp-includes/script-loader.php:569
+#: wp-includes/script-loader.php:570
 msgctxt "label for hide controls button without length constraints"
 msgid "Hide Controls"
 msgstr "إخفاء عناصر التحكم."
 
-#: wp-includes/script-loader.php:570
+#: wp-includes/script-loader.php:571
 msgctxt "label for hide controls button without length constraints"
 msgid "Show Controls"
 msgstr "عرض عناصر التحكم."
@@ -2336,7 +2352,7 @@ msgstr "عرض عناصر التحكم."
 msgid "Document Preview"
 msgstr "معاينة المستند"
 
-#: wp-includes/class-wp-customize-manager.php:4983
+#: wp-includes/class-wp-customize-manager.php:5003
 msgid "Header Media"
 msgstr "وسائط الترويسة"
 
@@ -2370,7 +2386,7 @@ msgstr "كلمات توضيحية (HTML) للمرفق، مُعدة للعرض."
 msgid "Caption for the attachment, as it exists in the database."
 msgstr "الكلمات التوضيحية للمرفق، كما هي في قاعدة البيانات."
 
-#: wp-includes/class-wp-customize-manager.php:5645
+#: wp-includes/class-wp-customize-manager.php:5665
 msgid "Please enter a valid YouTube URL."
 msgstr "من فضلك أدخل رابط يوتيوب صالح."
 
@@ -2382,7 +2398,7 @@ msgstr "توسيع القائمة الرئيسية"
 msgid "Collapse Main menu"
 msgstr "طي القائمة الرئيسية"
 
-#: wp-includes/class-wp-customize-manager.php:5068
+#: wp-includes/class-wp-customize-manager.php:5088
 msgid "Or, enter a YouTube URL:"
 msgstr "أو, أدخل رابط يوتيوب:"
 
@@ -2441,11 +2457,11 @@ msgstr "حصر النتيجة على مقالات مع اسم أو عدة أسم
 msgid "Comment is required."
 msgstr "التعليق مطلوب."
 
-#: wp-includes/class-wp-customize-nav-menus.php:792
+#: wp-includes/class-wp-customize-nav-menus.php:808
 msgid "Empty title"
 msgstr "عنوان فارغ"
 
-#: wp-includes/class-wp-customize-nav-menus.php:795
+#: wp-includes/class-wp-customize-nav-menus.php:811
 msgid "Status is forbidden"
 msgstr "الحالة ممنوعة"
 
@@ -2461,23 +2477,23 @@ msgstr "عذرًا، التعقيبات مغلقة لهذا العنصر."
 msgid "I really need an ID for this to work."
 msgstr "أريد حقاً مُعرف (ID) لعمل هذا."
 
-#: wp-includes/class-wp-customize-manager.php:5228
+#: wp-includes/class-wp-customize-manager.php:5248
 msgid "Homepage"
 msgstr "الصفحة الرئيسية"
 
-#: wp-includes/script-loader.php:675
+#: wp-includes/script-loader.php:676
 msgid "Term removed."
 msgstr "تم إزالة العنصر."
 
-#: wp-includes/script-loader.php:674
+#: wp-includes/script-loader.php:675
 msgid "Term added."
 msgstr "تم إضافة العنصر."
 
-#: wp-includes/script-loader.php:673
+#: wp-includes/script-loader.php:674
 msgid "Term selected."
 msgstr "تم تحديد العنصر."
 
-#: wp-includes/script-loader.php:672
+#: wp-includes/script-loader.php:673
 msgid "Remove term:"
 msgstr "إزالة العنصر:"
 
@@ -3466,132 +3482,132 @@ msgstr "لم يتم العثور على ودجات."
 msgid "Number of widgets found: %d"
 msgstr "عدد الودجات التي تمّ العثور عليها: %d"
 
-#: wp-includes/class-wp-customize-nav-menus.php:881
+#: wp-includes/class-wp-customize-nav-menus.php:897
 msgid "Post"
 msgstr "مقالة"
 
 #. translators: %1$s is the post type name and %2$s is the error message.
-#: wp-includes/class-wp-customize-nav-menus.php:886
+#: wp-includes/class-wp-customize-nav-menus.php:902
 msgid "%1$s could not be created: %2$s"
 msgstr "تعذر إنشاء %1$s: %2$s"
 
 #. translators: 1: .mp4, 2: .mov
-#: wp-includes/class-wp-customize-manager.php:5621
+#: wp-includes/class-wp-customize-manager.php:5641
 msgid "Only %1$s or %2$s files may be used for header video. Please convert your video file and try again, or, upload your video to YouTube and link it with the option below."
 msgstr "فقط ملفات %1$s أو %2$s يمكن استخدامها كفيديو في الترويسة. فضلاً قم بتحويل ملف الفيديو وحاول مجددًا، أو، قم برفع الفيديو على اليوتيوب واربطه بالخيار أدناه."
 
-#: wp-includes/class-wp-customize-manager.php:5615
+#: wp-includes/class-wp-customize-manager.php:5635
 msgid "This video file is too large to use as a header video. Try a shorter video or optimize the compression settings and re-upload a file that is less than 8MB. Or, upload your video to YouTube and link it with the option below."
 msgstr "ملف الفيديو هذا كبير جدًا ليتم استخدامه كفيديو في الترويسة. جرب فيديو أقصر أو حسن إعدادات الضغط وأعد رفع الملف مجددًا بحجم أقل من 8 ميجابايت. أو، ارفع الفيديو الخاص بك إلى اليوتيوب واربطه باستخدام الخيار أدناه."
 
-#: wp-includes/class-wp-customize-manager.php:5575
+#: wp-includes/class-wp-customize-manager.php:5595
 msgid "Unrecognized background setting."
 msgstr "إعداد غير معروف للخلفية."
 
-#: wp-includes/class-wp-customize-manager.php:5285
+#: wp-includes/class-wp-customize-manager.php:5305
 msgid "Additional CSS"
 msgstr "تنسيقات (CSS) إضافية"
 
-#: wp-includes/class-wp-customize-manager.php:5252
+#: wp-includes/class-wp-customize-manager.php:5272
 msgid "Learn more about CSS"
 msgstr "أعرف المزيد حول الـ CSS"
 
 #. translators: accessibility text
-#: wp-includes/class-wp-customize-manager.php:4181
-#: wp-includes/class-wp-customize-manager.php:5254
+#: wp-includes/class-wp-customize-manager.php:4199
 #: wp-includes/class-wp-customize-manager.php:5274
+#: wp-includes/class-wp-customize-manager.php:5294
 #: wp-includes/customize/class-wp-customize-nav-menu-locations-control.php:56
 #: wp-includes/widgets/class-wp-widget-custom-html.php:304
 msgid "(opens in a new window)"
 msgstr "(رابط يُفتح في نافذة جديدة)"
 
-#: wp-includes/class-wp-customize-manager.php:5566
-#: wp-includes/class-wp-customize-manager.php:5570
+#: wp-includes/class-wp-customize-manager.php:5586
+#: wp-includes/class-wp-customize-manager.php:5590
 msgid "Invalid value for background size."
 msgstr "قيمة غير صالحة لحجم الخلفية."
 
-#: wp-includes/class-wp-customize-manager.php:5562
+#: wp-includes/class-wp-customize-manager.php:5582
 msgid "Invalid value for background position Y."
 msgstr "قيمة غير صالحة لموضع الخلفية في المحور Y."
 
-#: wp-includes/class-wp-customize-manager.php:5558
+#: wp-includes/class-wp-customize-manager.php:5578
 msgid "Invalid value for background position X."
 msgstr "قيمة غير صالحة لموضع الخلفية في المحور X."
 
-#: wp-includes/class-wp-customize-manager.php:5550
+#: wp-includes/class-wp-customize-manager.php:5570
 msgid "Invalid value for background repeat."
 msgstr "قيمة غير صالحة لتكرار الخلفية."
 
-#: wp-includes/class-wp-customize-manager.php:5554
+#: wp-includes/class-wp-customize-manager.php:5574
 msgid "Invalid value for background attachment."
 msgstr "قيمة غير صالحة لخاصية تثبيت الخلفية."
 
-#: wp-includes/class-wp-customize-manager.php:5150
+#: wp-includes/class-wp-customize-manager.php:5170
 msgid "Image Size"
 msgstr "حجم الصورة"
 
-#: wp-includes/class-wp-customize-manager.php:5118
+#: wp-includes/class-wp-customize-manager.php:5138
 msgctxt "Custom Preset"
 msgid "Custom"
 msgstr "تخصيص"
 
-#: wp-includes/class-wp-customize-manager.php:5117
+#: wp-includes/class-wp-customize-manager.php:5137
 msgctxt "Repeat Image"
 msgid "Repeat"
 msgstr "تكرار"
 
-#: wp-includes/class-wp-customize-manager.php:5135
+#: wp-includes/class-wp-customize-manager.php:5155
 #: wp-includes/customize/class-wp-customize-background-position-control.php:66
 msgid "Image Position"
 msgstr "موضع الصورة"
 
-#: wp-includes/class-wp-customize-manager.php:5154
+#: wp-includes/class-wp-customize-manager.php:5174
 msgid "Original"
 msgstr "الأصلي"
 
-#: wp-includes/class-wp-customize-manager.php:5167
+#: wp-includes/class-wp-customize-manager.php:5187
 msgid "Repeat Background Image"
 msgstr "تكرار صورة الخلفية"
 
-#: wp-includes/class-wp-customize-manager.php:5116
-#: wp-includes/class-wp-customize-manager.php:5155
+#: wp-includes/class-wp-customize-manager.php:5136
+#: wp-includes/class-wp-customize-manager.php:5175
 msgid "Fit to Screen"
 msgstr "ملائمة للشاشة"
 
-#: wp-includes/class-wp-customize-manager.php:5179
+#: wp-includes/class-wp-customize-manager.php:5199
 msgid "Scroll with Page"
 msgstr "تمرير مع الصفحة"
 
-#: wp-includes/class-wp-customize-manager.php:5114
+#: wp-includes/class-wp-customize-manager.php:5134
 msgctxt "Default Preset"
 msgid "Default"
 msgstr "افتراضي"
 
-#: wp-includes/class-wp-customize-manager.php:5058
+#: wp-includes/class-wp-customize-manager.php:5078
 msgid "Header Video"
 msgstr "فيديو الترويسة"
 
-#: wp-includes/class-wp-customize-manager.php:5110
+#: wp-includes/class-wp-customize-manager.php:5130
 msgctxt "Background Preset"
 msgid "Preset"
 msgstr "الضبط"
 
 #. translators: 1: .mp4, 2: header height in pixels
-#: wp-includes/class-wp-customize-manager.php:5005
+#: wp-includes/class-wp-customize-manager.php:5025
 msgid "Upload your video in %1$s format and minimize its file size for best results. Your theme recommends a height of %2$s pixels."
 msgstr "ارفع الفيديو الخاص بك بصيغة %1$s وقلص حجم الملف للحصول على أفضل النتائج. قالبك يستحسن ارتفاع قدره %2$s بيكسل."
 
 #. translators: 1: .mp4, 2: header width in pixels
-#: wp-includes/class-wp-customize-manager.php:4998
+#: wp-includes/class-wp-customize-manager.php:5018
 msgid "Upload your video in %1$s format and minimize its file size for best results. Your theme recommends a width of %2$s pixels."
 msgstr "ارفع الفيديو الخاص بك بصيغة %1$s وقلص حجم الملف للحصول على أفضل النتائج. قالبك يستحسن عرض قدره %2$s بيكسل."
 
 #. translators: 1: .mp4, 2: header size in pixels
-#: wp-includes/class-wp-customize-manager.php:4991
+#: wp-includes/class-wp-customize-manager.php:5011
 msgid "Upload your video in %1$s format and minimize its file size for best results. Your theme recommends dimensions of %2$s pixels."
 msgstr "ارفع الفيديو الخاص بك بصيغة %1$s وقلص حجم الملف للحصول على أفضل النتائج. قالبك يستحسن أبعاد قدرها %2$s بيكسل."
 
-#: wp-includes/class-wp-customize-manager.php:4984
+#: wp-includes/class-wp-customize-manager.php:5004
 msgid "If you add a video, the image will be used as a fallback while the video loads."
 msgstr "إذا أضفت فيديو، الصورة سيتم استخدامها بينما يتم تحميل الفيديو."
 
@@ -3612,22 +3628,22 @@ msgstr "الإعداد غير موجود أو غير معروف."
 
 #. translators: %d: number of theme search results, which cannot currently
 #. consider singular vs. plural forms
-#: wp-includes/class-wp-customize-manager.php:4686
+#: wp-includes/class-wp-customize-manager.php:4706
 msgid "%d themes found"
 msgstr "تم العثور على %d قالب"
 
 #. translators: %d: number of themes being displayed, which cannot currently
 #. consider singular vs. plural forms
-#: wp-includes/class-wp-customize-manager.php:4688
+#: wp-includes/class-wp-customize-manager.php:4708
 msgid "Displaying %d themes"
 msgstr "عرض %d قالب"
 
-#: wp-includes/class-wp-customize-manager.php:4684
+#: wp-includes/class-wp-customize-manager.php:4704
 msgid "Are you sure you want to delete this theme?"
 msgstr "هل أنت متأكد أنك تريد حذف هذا القالب؟"
 
 #. translators: %s: theme name
-#: wp-includes/class-wp-customize-manager.php:4690
+#: wp-includes/class-wp-customize-manager.php:4710
 msgid "Showing details for theme: %s"
 msgstr "عرض تفاصيل قالب: %s"
 
@@ -3677,7 +3693,7 @@ msgstr "تحرير القائمة المُحددة"
 msgid "Warning: the link has been inserted but may have errors. Please test it."
 msgstr "تحذير: الرابط الذي تمّ إدراجه قد يحتوي على أخطاء، يرجى اختباره."
 
-#: wp-includes/script-loader.php:766
+#: wp-includes/script-loader.php:767
 msgid "Search Results"
 msgstr "نتائج البحث"
 
@@ -3734,73 +3750,73 @@ msgid "A name is required for this term."
 msgstr "الاسم مطلوب لهذا العنصر."
 
 #. translators: %s: Importer name
-#: wp-includes/script-loader.php:837
+#: wp-includes/script-loader.php:838
 msgid "Run %s"
 msgstr "تشغيل %s"
 
-#: wp-includes/script-loader.php:835
+#: wp-includes/script-loader.php:836
 msgid "Run Importer"
 msgstr "تشغيل المستورد"
 
 #. translators: %s: Activation URL
-#: wp-includes/script-loader.php:816
+#: wp-includes/script-loader.php:817
 msgid "Importer installed successfully. <a href=\"%s\">Run importer</a>"
 msgstr "تم تنصيب أداة الاستيراد بنجاح. <a href=\"%s\">تشغيل المُستورد</a>"
 
-#: wp-includes/script-loader.php:834
+#: wp-includes/script-loader.php:835
 msgctxt "theme"
 msgid "Activate %s"
 msgstr "تفعيل %s"
 
 #. translators: %s: Theme name and version
-#: wp-includes/script-loader.php:804
+#: wp-includes/script-loader.php:805
 msgctxt "theme"
 msgid "Installing %s..."
 msgstr "جاري تنصيب %s..."
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:802
+#: wp-includes/script-loader.php:803
 msgctxt "plugin"
 msgid "Installing %s..."
 msgstr "جاري تنصيب %s..."
 
-#: wp-includes/script-loader.php:832
+#: wp-includes/script-loader.php:833
 msgctxt "plugin"
 msgid "Activate %s"
 msgstr "تفعيل %s"
 
 #. translators: %s: Theme name and version
-#: wp-includes/script-loader.php:808
+#: wp-includes/script-loader.php:809
 msgctxt "theme"
 msgid "%s installed!"
 msgstr "تم تنصيب قالب %s بنجاح!"
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:806
+#: wp-includes/script-loader.php:807
 msgctxt "plugin"
 msgid "%s installed!"
 msgstr "تم تنصيب إضافة %s بنجاح!"
 
 #. translators: %s: Plugin name and version
-#: wp-includes/script-loader.php:810
+#: wp-includes/script-loader.php:811
 msgctxt "plugin"
 msgid "%s installation failed"
 msgstr "فشل في تنصيب إضافة %s"
 
 #. translators: %s: Theme name and version
-#: wp-includes/script-loader.php:812
+#: wp-includes/script-loader.php:813
 msgctxt "theme"
 msgid "%s installation failed"
 msgstr "فشل في تنصيب قالب %s"
 
 #. translators: %s: Plugin name
-#: wp-includes/script-loader.php:832
+#: wp-includes/script-loader.php:833
 msgctxt "plugin"
 msgid "Network Activate %s"
 msgstr "تفعيل %s على الشبكة"
 
 #. translators: %s: Theme name
-#: wp-includes/script-loader.php:834
+#: wp-includes/script-loader.php:835
 msgctxt "theme"
 msgid "Network Activate %s"
 msgstr "تفعيل %s على الشبكة"
@@ -3809,7 +3825,7 @@ msgstr "تفعيل %s على الشبكة"
 msgid "Sorry, you are not allowed to access user data on this site."
 msgstr "عذرًا، لا يُسمح لك بالوصول لبيانات المستخدم على هذا الموقع. "
 
-#: wp-includes/script-loader.php:841
+#: wp-includes/script-loader.php:842
 msgid "Number of plugins found: %d"
 msgstr "عدد الإضافات الموجودة: %d"
 
@@ -3864,7 +3880,7 @@ msgid "Photoblogging"
 msgstr "التدوين المُصور"
 
 #. translators: %s: Error string for a failed installation
-#: wp-includes/script-loader.php:800
+#: wp-includes/script-loader.php:801
 msgid "Installation failed: %s"
 msgstr "فشل التنصيب: %s"
 
@@ -3884,12 +3900,12 @@ msgstr "عفوًا، غير مسموح لك بحذف هذه المقالة."
 msgid "Sorry, you are not allowed to delete this page."
 msgstr "عذرًا، غير مسموح لك حذف هذه الصفحة."
 
-#: wp-includes/script-loader.php:1126
+#: wp-includes/script-loader.php:1127
 msgid "Today"
 msgstr "اليوم"
 
 #. translators: %s: Error string for a failed deletion
-#: wp-includes/script-loader.php:825
+#: wp-includes/script-loader.php:826
 msgid "Deletion failed: %s"
 msgstr "فشل الحذف: %s"
 
@@ -3897,7 +3913,7 @@ msgstr "فشل الحذف: %s"
 msgid "Unable to retrieve the error message from MySQL"
 msgstr "غير قادر على استرداد رسالة الخطأ من MySQL"
 
-#: wp-includes/script-loader.php:823
+#: wp-includes/script-loader.php:824
 msgid "Deleting..."
 msgstr "جاري الحذف..."
 
@@ -3906,7 +3922,7 @@ msgstr "جاري الحذف..."
 msgid "Edit Menu"
 msgstr "تحرير القائمة"
 
-#: wp-includes/script-loader.php:829
+#: wp-includes/script-loader.php:830
 msgid "Network Activate"
 msgstr "تفعيل على الشبكة"
 
@@ -3917,20 +3933,20 @@ msgid "&larr; Back to %s"
 msgstr "&rarr; العودة إلى %s"
 
 #. translators: %s: Plugin name
-#: wp-includes/script-loader.php:820
+#: wp-includes/script-loader.php:821
 msgid "Are you sure you want to delete %s and its data?"
 msgstr "هل أنت متأكد بأنك تريد حذف %s والبيانات الخاصة به؟"
 
-#: wp-includes/script-loader.php:821
+#: wp-includes/script-loader.php:822
 msgid "Are you sure you want to delete the selected plugins and their data?"
 msgstr "هل أنت متأكد بأنك تريد حذف الإضافات المُحددة مع البيانات الخاصة بها؟"
 
-#: wp-includes/script-loader.php:822
+#: wp-includes/script-loader.php:823
 msgid "Caution: These themes may be active on other sites in the network. Are you sure you want to proceed?"
 msgstr "تحذير: هذه القوالب يمكن أن تكون مفعلة على مواقع أخرى في الشبكة. هل أنت متأكد بأنك تريد المتابعة؟"
 
 #. translators: %s: Theme name
-#: wp-includes/script-loader.php:818
+#: wp-includes/script-loader.php:819
 msgid "Are you sure you want to delete %s?"
 msgstr "هل أنت متأكد بأنك تريد حذف %s؟"
 
@@ -3940,11 +3956,11 @@ msgid "Password strength unknown"
 msgstr "قوة كلمة المرور غير معروفة"
 
 #. translators: %s: Search string
-#: wp-includes/script-loader.php:765
+#: wp-includes/script-loader.php:766
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "نتائج البحث عن &#8220;%s&#8221;"
 
-#: wp-includes/script-loader.php:773
+#: wp-includes/script-loader.php:774
 msgid "Update Now"
 msgstr "تحديث الآن"
 
@@ -3953,7 +3969,7 @@ msgid "Sorry, you are not allowed to preview drafts."
 msgstr "عذرًا، لا يسمح لك بمعاينة المسودات."
 
 #: wp-includes/rest-api/class-wp-rest-server.php:911
-#: wp-includes/script-loader.php:132 wp-includes/script-loader.php:643
+#: wp-includes/script-loader.php:132 wp-includes/script-loader.php:644
 msgid "Sorry, you are not allowed to do that."
 msgstr "عذرًا، لا يُسمح لك بفعل هذا."
 
@@ -3962,7 +3978,7 @@ msgstr "عذرًا، لا يُسمح لك بفعل هذا."
 msgid "Password changed for user: %s"
 msgstr "تغيرت كلمة مرور المستخدم: %s"
 
-#: wp-includes/script-loader.php:654
+#: wp-includes/script-loader.php:655
 msgid ""
 "Are you sure you want to do this?\n"
 "The comment changes you made will be lost."
@@ -3975,11 +3991,11 @@ msgstr ""
 msgid "[%s] Password Changed"
 msgstr "[%s] تم تغيير كلمة المرور"
 
-#: wp-includes/script-loader.php:768
+#: wp-includes/script-loader.php:769
 msgid "Please select at least one item to perform this action on."
 msgstr "يرجى تحديد عنصر واحد على الأقل لتنفيذ هذا الإجراء عليه."
 
-#: wp-includes/script-loader.php:767
+#: wp-includes/script-loader.php:768
 msgid "You do not appear to have any plugins available at this time."
 msgstr "لا يبدو بأنك تملك أي إضافات في هذا الوقت."
 
@@ -4019,12 +4035,12 @@ msgstr "عذرًا، لا يُسمح لك بتصفح المستخدمين."
 
 #: wp-includes/class-wp-customize-manager.php:2300
 #: wp-includes/class-wp-customize-setting.php:579
-#: wp-includes/script-loader.php:606
+#: wp-includes/script-loader.php:607
 msgid "Invalid value."
 msgstr "قيمة غير صالحة."
 
 #: wp-includes/class-wp-customize-manager.php:516
-#: wp-includes/script-loader.php:566
+#: wp-includes/script-loader.php:567
 msgid "Sorry, you are not allowed to customize this site."
 msgstr "عذرًا، لا يُسمح لك بتخصيص هذا الموقع."
 
@@ -4053,7 +4069,7 @@ msgstr "تم إدراج الرابط."
 msgid "%s is required to strip image meta."
 msgstr "الطريقة %s مطلوبة لإزالة معلومات الميتا للصورة."
 
-#: wp-includes/script-loader.php:756
+#: wp-includes/script-loader.php:757
 msgid "Plugin details"
 msgstr "تفاصيل الإضافة"
 
@@ -4095,7 +4111,7 @@ msgstr "الثابت %1$s <strong>مهجور</strong>. استخدم الثابت
 
 #. translators: 1: panel id, 2: link to 'customize_loaded_components' filter
 #. reference
-#: wp-includes/class-wp-customize-manager.php:3742
+#: wp-includes/class-wp-customize-manager.php:3760
 msgid "Removing %1$s manually will cause PHP warnings. Use the %2$s filter instead."
 msgstr "إزالة %1$s يدويًا سوف يسبب ظهور تحذيرات PHP. استخدم المرشح %2$s بدلاً من ذلك."
 
@@ -4135,7 +4151,7 @@ msgctxt "post status"
 msgid "Trash"
 msgstr "سلة المهملات"
 
-#: wp-includes/script-loader.php:571
+#: wp-includes/script-loader.php:572
 msgid "(Untitled)"
 msgstr "(بدون عنوان)"
 
@@ -4151,7 +4167,7 @@ msgstr "إلغاء تسجيل نوع محتوى مدمج غير مسموح"
 msgid "Routes must be namespaced with plugin or theme name and version."
 msgstr "المسارات (Routes) يجب أن تمتلك بادئة فريدة كاسم ونسخة الإضافة أو القالب."
 
-#: wp-includes/script-loader.php:664
+#: wp-includes/script-loader.php:665
 msgid "Drag boxes here"
 msgstr "اسحب الصناديق هنا"
 
@@ -4195,11 +4211,11 @@ msgctxt "post status"
 msgid "Published"
 msgstr "منشور"
 
-#: wp-includes/class-wp-customize-manager.php:4924
+#: wp-includes/class-wp-customize-manager.php:4944
 msgid "Choose logo"
 msgstr "اختر الشعار"
 
-#: wp-includes/class-wp-customize-manager.php:4922
+#: wp-includes/class-wp-customize-manager.php:4942
 msgid "No logo selected"
 msgstr "لم يتم تحديد الشعار"
 
@@ -4213,12 +4229,12 @@ msgstr "إغلاق مربع الحوار"
 msgid "The called constructor method for %1$s in %2$s is <strong>deprecated</strong> since version %3$s! Use %4$s instead."
 msgstr "طريقة البناء المُستدعاة لـ %1$s في %2$s أصبحت <strong>مهجورة</strong> منذ النسخة %3$s! استخدم %4$s بدلاً عنها."
 
-#: wp-includes/class-wp-customize-manager.php:4919
+#: wp-includes/class-wp-customize-manager.php:4939
 msgid "Change logo"
 msgstr "تغير الشعار"
 
-#: wp-includes/class-wp-customize-manager.php:4918
-#: wp-includes/class-wp-customize-manager.php:4923
+#: wp-includes/class-wp-customize-manager.php:4938
+#: wp-includes/class-wp-customize-manager.php:4943
 msgid "Select logo"
 msgstr "تحديد الشعار"
 
@@ -4266,7 +4282,7 @@ msgstr "<strong>خطأ</strong>: تعليقك طويل جداً."
 msgid "https://codex.wordpress.org/Child_Themes"
 msgstr "https://codex.wordpress.org/Child_Themes"
 
-#: wp-includes/class-wp-customize-manager.php:4910
+#: wp-includes/class-wp-customize-manager.php:4930
 msgid "Logo"
 msgstr "الشعار"
 
@@ -4284,16 +4300,16 @@ msgstr "نوع الكائن غير صالح"
 msgid "Template is missing. Standalone themes need to have a %1$s template file. <a href=\"%2$s\">Child themes</a> need to have a Template header in the %3$s stylesheet."
 msgstr "أحد ملفات القالب مفقود. القوالب القائمة بذاتها يجب أن تحتوي على الملف %1$s. <a href=\"%2$s\">القوالب الفرعية</a> يجب أن تحتوي على ترويسة Template في ملف التنسيق %3$s."
 
-#: wp-includes/class-wp-customize-manager.php:4876
-#: wp-includes/class-wp-customize-manager.php:4954
+#: wp-includes/class-wp-customize-manager.php:4896
+#: wp-includes/class-wp-customize-manager.php:4974
 msgid "Display Site Title and Tagline"
 msgstr "عرض عنوان وسطر وصف الموقع"
 
-#: wp-includes/class-wp-customize-manager.php:4774
+#: wp-includes/class-wp-customize-manager.php:4794
 msgid "Enter tablet preview mode"
 msgstr "ادخل وضع المعاينة اللوحية"
 
-#: wp-includes/class-wp-customize-manager.php:4777
+#: wp-includes/class-wp-customize-manager.php:4797
 msgid "Enter mobile preview mode"
 msgstr "ادخل وضع معاينة الجوال"
 
@@ -4302,7 +4318,7 @@ msgstr "ادخل وضع معاينة الجوال"
 msgid "Shift-click to edit this element."
 msgstr "انقر على زر Shift لتحرير هذا العنصر. "
 
-#: wp-includes/class-wp-customize-manager.php:4770
+#: wp-includes/class-wp-customize-manager.php:4790
 msgid "Enter desktop preview mode"
 msgstr "ادخل وضع معاينة سطح المكتب"
 
@@ -4325,7 +4341,7 @@ msgid "(Current: %s)"
 msgstr "(القائمة الحالية: %s)"
 
 #. translators: %s:      menu location
-#: wp-includes/class-wp-customize-nav-menus.php:416
+#: wp-includes/class-wp-customize-nav-menus.php:432
 msgctxt "menu"
 msgid "(Currently set to: %s)"
 msgstr "(مُعينة حاليًا في: %s)"
@@ -4353,7 +4369,7 @@ msgstr "من فضلك اطلع على <a href=\"%s\">تنقيح الأخطاء �
 msgid "<strong>ERROR</strong>: %1$s in %2$s can only contain numbers, letters, and underscores."
 msgstr "<strong>خطأ</strong>: %1$s في %2$s يمكن أن يحتوي فقط على أرقام، حروف وشرطات سُفلية."
 
-#: wp-includes/script-loader.php:744 wp-includes/script-loader.php:750
+#: wp-includes/script-loader.php:745 wp-includes/script-loader.php:751
 msgid "Changes saved."
 msgstr "تمّ حفظ التغييرات."
 
@@ -4653,7 +4669,7 @@ msgstr "تصفّح قائمة الوسوم"
 msgid "<strong>ERROR</strong>: Invalid username."
 msgstr "<strong>خطأ</strong>: اسم المستخدم غير صالح."
 
-#: wp-includes/script-loader.php:702
+#: wp-includes/script-loader.php:703
 msgid "Permalink saved"
 msgstr "تم حفظ الرابط الدائم"
 
@@ -4965,7 +4981,7 @@ msgid "Press return or enter to open this section"
 msgstr "اضغط زر الإدخال (Enter) لفتح هذا القسم"
 
 #. translators: %s: document title from the preview
-#: wp-includes/class-wp-customize-manager.php:4354
+#: wp-includes/class-wp-customize-manager.php:4372
 msgid "Live Preview: %s"
 msgstr "معاينة حيّة: %s"
 
@@ -4990,7 +5006,7 @@ msgstr "%1$s قد تم هجره. استخدم %2$s كبديل."
 msgid "Sorry, you are not allowed to edit theme options on this site."
 msgstr "عذرًا، لا يُسمح لك بتحرير خيارات القالب على هذا الموقع."
 
-#: wp-includes/class-wp-customize-nav-menus.php:1005
+#: wp-includes/class-wp-customize-nav-menus.php:1021
 #: wp-includes/class-wp-customize-widgets.php:811
 msgid "Clear Results"
 msgstr "حذف النتائج"
@@ -5000,7 +5016,7 @@ msgid "The following formatting shortcuts are replaced when pressing Enter. Pres
 msgstr "اختصارات التنسيق التالية سيتم استبدالها عند الضغط على زر الإدخال Enter. للتراجع اضغط على زر الهروب Escape أو زر التراجع Undo."
 
 #. translators: %s: Title of a section with menu items
-#: wp-includes/class-wp-customize-nav-menus.php:1054
+#: wp-includes/class-wp-customize-nav-menus.php:1070
 msgid "Toggle section: %s"
 msgstr "تبديل قسم: %s"
 
@@ -5008,7 +5024,7 @@ msgstr "تبديل قسم: %s"
 #. Asian characters), enter 'characters_excluding_spaces' or
 #. 'characters_including_spaces'. Otherwise, enter 'words'. Do not translate
 #. into your own language.
-#: wp-includes/formatting.php:3372 wp-includes/script-loader.php:1088
+#: wp-includes/formatting.php:3372 wp-includes/script-loader.php:1089
 msgctxt "Word count type. Do not translate!"
 msgid "words"
 msgstr "words"
@@ -5027,7 +5043,7 @@ msgstr "إزالة عنصر القائمة: %1$s (%2$s)"
 msgid "Your new password has not been saved."
 msgstr "كلمة المرور الجديدة الخاصة بك لم يتمّ حفظها."
 
-#: wp-includes/class-wp-customize-nav-menus.php:1088
+#: wp-includes/class-wp-customize-nav-menus.php:1104
 msgid "Toggle section: Custom Links"
 msgstr "تبديل قسم: روابط مخصصة"
 
@@ -5039,7 +5055,7 @@ msgstr "إخفاء كلمة المرور"
 msgid "Show password"
 msgstr "عرض كلمة المرور"
 
-#: wp-includes/class-wp-customize-nav-menus.php:419
+#: wp-includes/class-wp-customize-nav-menus.php:435
 msgid "Menu Name"
 msgstr "اسم القائمة"
 
@@ -5061,7 +5077,7 @@ msgstr "كأيقونة متصفح"
 msgid "Preview as a browser icon"
 msgstr "معاينة كأيقونة متصفح"
 
-#: wp-includes/class-wp-customize-nav-menus.php:1050
+#: wp-includes/class-wp-customize-nav-menus.php:1066
 msgid "No items"
 msgstr "لا توجد عناصر"
 
@@ -5113,16 +5129,16 @@ msgstr "أضف صورة جديدة"
 msgid "Hide image"
 msgstr "إخفاء الصورة"
 
-#: wp-includes/class-wp-customize-manager.php:4890
+#: wp-includes/class-wp-customize-manager.php:4910
 msgid "Site Icon"
 msgstr "أيقونة الموقع"
 
-#: wp-includes/class-wp-customize-manager.php:4841
+#: wp-includes/class-wp-customize-manager.php:4861
 msgid "Site Identity"
 msgstr "هوية الموقع"
 
 #. translators: 1: Title of a menu item, 2: Type of a menu item
-#: wp-includes/class-wp-customize-nav-menus.php:919
+#: wp-includes/class-wp-customize-nav-menus.php:935
 msgid "Add to menu: %1$s (%2$s)"
 msgstr "أضف للقائمة: %1$s (%2$s)"
 
@@ -5158,7 +5174,7 @@ msgstr "إضافة أو إزالة عناصر من القائمة"
 msgid "Previewing theme"
 msgstr "معاينة قالب"
 
-#: wp-includes/class-wp-customize-nav-menus.php:440
+#: wp-includes/class-wp-customize-nav-menus.php:456
 #: wp-includes/customize/class-wp-customize-nav-menu-control.php:53
 msgid "Reorder menu items"
 msgstr "أعد ترتيب عناصر القائمة"
@@ -5167,18 +5183,18 @@ msgstr "أعد ترتيب عناصر القائمة"
 msgid "Active theme"
 msgstr "القالب المفعّل"
 
-#: wp-includes/class-wp-customize-nav-menus.php:412
+#: wp-includes/class-wp-customize-nav-menus.php:428
 #: wp-includes/customize/class-wp-customize-nav-menu-setting.php:430
 msgctxt "Missing menu name."
 msgid "(unnamed)"
 msgstr "(غير مسمى)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:439
+#: wp-includes/class-wp-customize-nav-menus.php:455
 #: wp-includes/class-wp-customize-widgets.php:762
 msgid "Reorder mode closed"
 msgstr "تم إغلاق وضع إعادة الترتيب"
 
-#: wp-includes/class-wp-customize-nav-menus.php:441
+#: wp-includes/class-wp-customize-nav-menus.php:457
 msgid "Close reorder mode"
 msgstr "إغلاق وضع إعادة الترتيب"
 
@@ -5192,7 +5208,7 @@ msgctxt "HTML tag"
 msgid "Preformatted"
 msgstr "مهيأ مسبقًا"
 
-#: wp-includes/class-wp-customize-nav-menus.php:438
+#: wp-includes/class-wp-customize-nav-menus.php:454
 #: wp-includes/class-wp-customize-widgets.php:761
 msgid "Reorder mode enabled"
 msgstr "تم تمكين وضع إعادة الترتيب"
@@ -5202,7 +5218,7 @@ msgstr "تم تمكين وضع إعادة الترتيب"
 msgid "The %s directory of the develop repository must be used for RTL."
 msgstr "دليل الـ %s لمستودع التطوير يجب أن يُستخدم لـ RTL."
 
-#: wp-includes/class-wp-customize-nav-menus.php:562
+#: wp-includes/class-wp-customize-nav-menus.php:578
 msgid "Menus can be displayed in locations defined by your theme."
 msgstr "القوائم يمكن أن يتم عرضها في المواقع المعرفة بواسطة القالب."
 
@@ -5216,7 +5232,7 @@ msgid "When in reorder mode, additional controls to reorder menu items will be a
 msgstr "عندما تكون في وضع إعادة ترتيب العناصر للقائمة، فإنّ العناصر الإضافية ستكون متوفرة في القائمة بالأعلى."
 
 #. translators: URL to the widgets panel of the customizer
-#: wp-includes/class-wp-customize-nav-menus.php:560
+#: wp-includes/class-wp-customize-nav-menus.php:576
 msgid "Menus can be displayed in locations defined by your theme or in <a href=\"%s\">widget areas</a> by adding a &#8220;Navigation Menu&#8221; widget."
 msgstr "يمكنك عرض القوائم في الأماكن المعرّفة بالقالب أو عبر <a href=\"%s\">منطقة الودجات</a> من خلال إضافة ودجت قائمة مخصصة."
 
@@ -5304,7 +5320,7 @@ msgid "List item"
 msgstr "عنصر القائمة"
 
 #. translators: %s: Error string for a failed update
-#: wp-includes/script-loader.php:778
+#: wp-includes/script-loader.php:779
 msgid "Update Failed: %s"
 msgstr "فشل التحديث: %s"
 
@@ -5325,7 +5341,7 @@ msgstr "نص مدرج"
 msgid "Close code tag"
 msgstr "إغلاق وسم الشفرة"
 
-#: wp-includes/script-loader.php:653
+#: wp-includes/script-loader.php:654
 msgid ""
 "Are you sure you want to edit this comment?\n"
 "The changes you made will be lost."
@@ -5397,8 +5413,8 @@ msgid "Default shortcuts,"
 msgstr "الاختصارات الافتراضية،"
 
 #: wp-includes/widgets/class-wp-widget-custom-html.php:258
-#: wp-includes/widgets/class-wp-widget-text.php:465
-#: wp-includes/widgets/class-wp-widget-text.php:526
+#: wp-includes/widgets/class-wp-widget-text.php:485
+#: wp-includes/widgets/class-wp-widget-text.php:546
 msgid "Content:"
 msgstr "المحتوى"
 
@@ -5439,60 +5455,60 @@ msgstr "تخصيص"
 msgid "Menu Options"
 msgstr "خيارات القائمة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:1104
+#: wp-includes/class-wp-customize-nav-menus.php:1120
 msgid "Add to Menu"
 msgstr "أضف للقائمة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:1086
+#: wp-includes/class-wp-customize-nav-menus.php:1102
 msgid "Custom Links"
 msgstr "روابط مخصصة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:1001
+#: wp-includes/class-wp-customize-nav-menus.php:1017
 #: wp-includes/class-wp-customize-widgets.php:812
 #: wp-includes/customize/class-wp-customize-themes-section.php:119
 #: wp-includes/customize/class-wp-customize-themes-section.php:134
 msgid "The search results will be updated as you type."
 msgstr "سيتم تحديث نتائج البحث أثناء الكتابة."
 
-#: wp-includes/class-wp-customize-nav-menus.php:1000
+#: wp-includes/class-wp-customize-nav-menus.php:1016
 msgid "Search menu items&hellip;"
 msgstr "بحث فى عناصر القائمة&hellip;"
 
-#: wp-includes/class-wp-customize-nav-menus.php:417
+#: wp-includes/class-wp-customize-nav-menus.php:433
 msgid "Menu Locations"
 msgstr "أماكن القائمة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:994
+#: wp-includes/class-wp-customize-nav-menus.php:1010
 msgid "Add Menu Items"
 msgstr "أضف عناصر القائمة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:934
+#: wp-includes/class-wp-customize-nav-menus.php:950
 msgid "Move one level up"
 msgstr "نقل مستوى واحد للأعلى"
 
-#: wp-includes/class-wp-customize-nav-menus.php:935
+#: wp-includes/class-wp-customize-nav-menus.php:951
 msgid "Move one level down"
 msgstr "نقل مستوى واحد للأسفل"
 
 #. translators: &#9656; is the unicode right-pointing triangle, and %s is the
 #. section title in the Customizer
-#: wp-includes/class-wp-customize-nav-menus.php:430
-#: wp-includes/class-wp-customize-nav-menus.php:991
+#: wp-includes/class-wp-customize-nav-menus.php:446
+#: wp-includes/class-wp-customize-nav-menus.php:1007
 #: wp-includes/class-wp-customize-section.php:230
 #: wp-includes/class-wp-customize-widgets.php:802
 msgid "Customizing &#9656; %s"
 msgstr "تخصيص &#9666; %s"
 
-#: wp-includes/class-wp-customize-nav-menus.php:999
+#: wp-includes/class-wp-customize-nav-menus.php:1015
 msgid "Search Menu Items"
 msgstr "بحث في عناصر القائمة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:557
+#: wp-includes/class-wp-customize-nav-menus.php:573
 msgid "This panel is used for managing navigation menus for content you have already published on your site. You can create menus and add items for existing content such as pages, posts, categories, tags, formats, or custom links."
 msgstr "هذه اللوحة تستعمل لادارة قوائم المحتوى الذي قمت بنشره على موقعك. يمكنك إنشاء قوائم وإضافة عناصر لمحتوى موجود مثل صفحات، مقالات،  تصنيفات، وسوم، التنسيقات، أو رابط مخصص."
 
 #. translators: %s: number of menu locations
-#: wp-includes/class-wp-customize-nav-menus.php:579
+#: wp-includes/class-wp-customize-nav-menus.php:595
 msgid "Your theme can display menus in %s location. Select which menu you would like to use."
 msgid_plural "Your theme can display menus in %s locations. Select which menu appears in each location."
 msgstr[0] "القالب الخاص بك لا يحتوي على قوائم (%s)."
@@ -5503,102 +5519,103 @@ msgstr[4] "القالب الخاص بك يدعم %s قائمة. حدّد مكا�
 msgstr[5] "القالب الخاص بك يدعم %s قائمة. حدّد مكان ظهور كل قائمة."
 
 #. translators: 1: item name, 2: item position, 3: parent item name
-#: wp-includes/class-wp-customize-nav-menus.php:472
+#: wp-includes/class-wp-customize-nav-menus.php:488
 msgid "%1$s. Sub item number %2$d under %3$s."
 msgstr "%1$s. عنصر فرعي رقم %2$d تحت %3$s."
 
 #. translators: 1: item name, 2: item position, 3: total number of items
-#: wp-includes/class-wp-customize-nav-menus.php:470
+#: wp-includes/class-wp-customize-nav-menus.php:486
 msgid "%1$s. Menu item %2$d of %3$d."
 msgstr "%1$s. عنصر %2$d من %3$d."
 
 #. translators: %s: previous item name
-#: wp-includes/class-wp-customize-nav-menus.php:468
+#: wp-includes/class-wp-customize-nav-menus.php:484
 msgid "Out from under %s"
 msgstr "إخراج من %s"
 
 #. translators: %s: previous item name
-#: wp-includes/class-wp-customize-nav-menus.php:466
+#: wp-includes/class-wp-customize-nav-menus.php:482
 msgid "Under %s"
 msgstr "فرعي تحت %s"
 
 #. translators: %s: previous item name
-#: wp-includes/class-wp-customize-nav-menus.php:464
+#: wp-includes/class-wp-customize-nav-menus.php:480
 msgid "Move out from under %s"
 msgstr "إخراج من %s"
 
 #. translators: %s: previous item name
-#: wp-includes/class-wp-customize-nav-menus.php:462
+#: wp-includes/class-wp-customize-nav-menus.php:478
 msgid "Move under %s"
 msgstr "نقل إلى تحت %s"
 
-#: wp-includes/class-wp-customize-nav-menus.php:460
+#: wp-includes/class-wp-customize-nav-menus.php:476
 msgid "Move to the top"
 msgstr "لأعلى القائمة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:459
+#: wp-includes/class-wp-customize-nav-menus.php:475
 msgid "Move down one"
 msgstr "نقل درجة واحدة للأسفل"
 
-#: wp-includes/class-wp-customize-nav-menus.php:458
+#: wp-includes/class-wp-customize-nav-menus.php:474
 msgid "Move up one"
 msgstr "نقل درجة واحدة لفوق"
 
-#: wp-includes/class-wp-customize-nav-menus.php:437
+#: wp-includes/class-wp-customize-nav-menus.php:453
 msgid "Loading more results... please wait."
 msgstr "تحميل المزيد من النتائج... يرجى الانتظار."
 
-#: wp-includes/class-wp-customize-nav-menus.php:436
+#: wp-includes/class-wp-customize-nav-menus.php:452
 msgid "Additional items found: %d"
 msgstr "العناصر الإضافية التى وجدت: %d"
 
-#: wp-includes/class-wp-customize-nav-menus.php:435
+#: wp-includes/class-wp-customize-nav-menus.php:451
 msgid "Number of items found: %d"
 msgstr "عدد العناصر التى وجدت: %d"
 
 #. translators: %s: title of menu item in draft status
-#: wp-includes/class-wp-customize-nav-menus.php:434
+#: wp-includes/class-wp-customize-nav-menus.php:450
 msgid "%s (Pending)"
 msgstr "%s (بانتظار المراجعة)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:423
+#: wp-includes/class-wp-customize-nav-menus.php:439
 msgid "Menu created"
 msgstr "تمّ إنشاء القائمة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:424
+#: wp-includes/class-wp-customize-nav-menus.php:440
 msgid "Menu deleted"
 msgstr "تمّ حذف القائمة"
 
 #. translators: %s: title of menu item which is invalid
-#: wp-includes/class-wp-customize-nav-menus.php:432
+#: wp-includes/class-wp-customize-nav-menus.php:448
 msgid "%s (Invalid)"
 msgstr "%s (غير صالح)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:425
+#: wp-includes/class-wp-customize-nav-menus.php:441
 msgid "Menu item moved up"
 msgstr "تم نقل عنصر القائمة للأعلى"
 
-#: wp-includes/class-wp-customize-nav-menus.php:426
+#: wp-includes/class-wp-customize-nav-menus.php:442
 msgid "Menu item moved down"
 msgstr "تم نقل عنصر القائمة للأسفل"
 
-#: wp-includes/class-wp-customize-nav-menus.php:427
+#: wp-includes/class-wp-customize-nav-menus.php:443
 msgid "Menu item moved out of submenu"
 msgstr "تم نقل عنصر القائمة من القائمة الفرعية"
 
-#: wp-includes/class-wp-customize-nav-menus.php:422
+#: wp-includes/class-wp-customize-nav-menus.php:438
 msgid "Menu item deleted"
 msgstr "تم حذف عنصر القائمة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:421
+#: wp-includes/class-wp-customize-nav-menus.php:437
 msgid "Menu item added"
 msgstr "تم إضافة عنصر القائمة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:428
+#: wp-includes/class-wp-customize-nav-menus.php:444
 msgid "Menu item is now a sub-item"
 msgstr "عنصر القائمة الآن هو عنصر فرعى"
 
 #: wp-includes/class-wp-customize-nav-menus.php:153
+#: wp-includes/class-wp-customize-nav-menus.php:375
 msgctxt "nav menu home label"
 msgid "Home"
 msgstr "الرئيسية"
@@ -5639,7 +5656,7 @@ msgstr "خصائص العنوان"
 msgid "Navigation Label"
 msgstr "النص في القائمة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:417
+#: wp-includes/class-wp-customize-nav-menus.php:433
 msgid "Menu Location"
 msgstr "أماكن القائمة"
 
@@ -5647,7 +5664,7 @@ msgstr "أماكن القائمة"
 msgid "Automatically add new top-level pages to this menu"
 msgstr "تلقائيًا أضف الصفحات الجديدة ذات المستوى الأعلى إلى هذه القائمة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:944
+#: wp-includes/class-wp-customize-nav-menus.php:960
 msgid "Delete Menu"
 msgstr "حذف القائمة"
 
@@ -5682,20 +5699,20 @@ msgstr "https://codex.wordpress.org/"
 msgid "No %1$s was set in the arguments array for the \"%2$s\" sidebar. Defaulting to \"%3$s\". Manually set the %1$s to \"%3$s\" to silence this notice and keep existing sidebar content."
 msgstr "لم يتم تعيين %1$s في مجموعة المتغيرات التابعة للشريط الجانبي \"%2$s\". تمّ التعيين افتراضيًا لـ \"%3$s\". قم يدويًا بتعيين %1$s إلى \"%3$s\" لإسكات هذا الإشعار والحفاظ على محتوى القائمة الجانبية."
 
-#: wp-includes/script-loader.php:839
+#: wp-includes/script-loader.php:840
 msgid "Connection lost or the server is busy. Please try again later."
 msgstr "فُقد الاتصال أو أنّ الخادم مشغول. يرجى المحاولة مرة أخرى في وقت لاحق."
 
-#: wp-includes/script-loader.php:791
+#: wp-includes/script-loader.php:792
 msgid "Updates may not complete if you navigate away from this page."
 msgstr "قد لا تكتمل التحديثات إذا قمت بمغادرة هذه الصفحة."
 
 #. translators: Accessibility text
-#: wp-includes/script-loader.php:790
+#: wp-includes/script-loader.php:791
 msgid "Update canceled."
 msgstr "تمّ إلغاء التحديث."
 
-#: wp-includes/script-loader.php:776
+#: wp-includes/script-loader.php:777
 msgid "Update Failed!"
 msgstr "فشل التحديث!"
 
@@ -5736,37 +5753,37 @@ msgstr "أسماء الفئة يجب أن يكون طولها بين 1 و 32 ح�
 msgid "Could not split shared term."
 msgstr "غير قادر على تقسيم الفئة المشتركة."
 
-#: wp-includes/script-loader.php:769
+#: wp-includes/script-loader.php:770
 msgid "Updating..."
 msgstr "جاري التحديث..."
 
 #. translators: Accessibility text
-#: wp-includes/script-loader.php:786
+#: wp-includes/script-loader.php:787
 msgid "Updating... please wait."
 msgstr "جاري التحديث... يرجى الانتظار."
 
 #. translators: Accessibility text
-#: wp-includes/script-loader.php:788
+#: wp-includes/script-loader.php:789
 msgid "Update completed successfully."
 msgstr "تمّ التحديث بنجاح."
 
-#: wp-includes/script-loader.php:567
+#: wp-includes/script-loader.php:568
 msgid "Site Preview"
 msgstr "معاينة الموقع"
 
-#: wp-includes/script-loader.php:813
+#: wp-includes/script-loader.php:814
 msgid "Installing... please wait."
 msgstr "جاري التنصيب... يرجى الانتظار."
 
-#: wp-includes/script-loader.php:795
+#: wp-includes/script-loader.php:796
 msgid "Installing..."
 msgstr "جاري التنصيب..."
 
-#: wp-includes/script-loader.php:792
+#: wp-includes/script-loader.php:793
 msgid "Install Now"
 msgstr "التنصيب الآن"
 
-#: wp-includes/script-loader.php:814
+#: wp-includes/script-loader.php:815
 msgid "Installation completed successfully."
 msgstr "أكتمل التنصيب بنجاح."
 
@@ -5775,7 +5792,8 @@ msgid "Post type names must be between 1 and 20 characters in length."
 msgstr "تسمية نوع المحتوى يجب أن تكون بين 1 و 20 حرفًا من حيث الطول."
 
 #: wp-includes/class-wp-customize-nav-menus.php:155
-#: wp-includes/class-wp-customize-nav-menus.php:413
+#: wp-includes/class-wp-customize-nav-menus.php:382
+#: wp-includes/class-wp-customize-nav-menus.php:429
 #: wp-includes/customize/class-wp-customize-nav-menu-item-setting.php:322
 #: wp-includes/nav-menu.php:821
 msgid "Custom Link"
@@ -5821,6 +5839,10 @@ msgstr ""
 msgid "<strong>Could not find site %1$s.</strong> Searched for table %2$s in database %3$s. Is that right?"
 msgstr "<strong>غير قادر على إيجاد الموقع %1$s.</strong> تمّ البحث عن الجدول %2$s في قاعدة البيانات %3$s. هل هذا صحيح؟"
 
+#: wp-includes/media.php:3508
+msgid "Drag and drop to reorder media files."
+msgstr "إسحب وأفلت لإعادة ترتيب ملفات الوسائط."
+
 #. translators: Do not translate USERNAME, SITE_NAME, BLOG_URL, PASSWORD: those
 #. are placeholders.
 #: wp-includes/ms-functions.php:1556
@@ -5855,17 +5877,13 @@ msgstr ""
 "\n"
 "--فريق العمل @ SITE_NAME"
 
-#: wp-includes/media.php:3508
-msgid "Drag and drop to reorder media files."
-msgstr "إسحب وأفلت لإعادة ترتيب ملفات الوسائط."
-
 #. translators: revision date format, see https://secure.php.net/date
 #: wp-includes/post-template.php:1709 wp-includes/post-template.php:1745
 msgctxt "revision date format"
 msgid "F j, Y @ H:i:s"
 msgstr "j F, Y @ H:i:s"
 
-#: wp-includes/class-wp-customize-nav-menus.php:1099
+#: wp-includes/class-wp-customize-nav-menus.php:1115
 #: wp-includes/class-wp-editor.php:1704 wp-includes/media-template.php:820
 msgid "Link Text"
 msgstr "نص الرابط"
@@ -5925,7 +5943,7 @@ msgid "The %1$s option is deprecated for the family of %2$s functions. Use the %
 msgstr "الخيار %1$s أصبح مهجورًا في عائلة دوال %2$s. استخدم الدالة %3$s بدلًا من ذلك."
 
 #: wp-includes/customize/class-wp-customize-theme-control.php:118
-#: wp-includes/script-loader.php:828
+#: wp-includes/script-loader.php:829
 msgid "Live Preview"
 msgstr "معاينة حيّة"
 
@@ -6060,7 +6078,7 @@ msgctxt "noun"
 msgid "Trash"
 msgstr "سلة المهملات"
 
-#: wp-includes/script-loader.php:1130
+#: wp-includes/script-loader.php:1131
 msgid "Previous"
 msgstr "السابق"
 
@@ -6307,8 +6325,8 @@ msgstr "إلغاء التحديد"
 msgid "Delete Selected"
 msgstr "حذف المحدد"
 
-#: wp-includes/class-wp-customize-nav-menus.php:411
-#: wp-includes/script-loader.php:888
+#: wp-includes/class-wp-customize-nav-menus.php:427
+#: wp-includes/script-loader.php:889
 msgctxt "missing menu item navigation label"
 msgid "(no label)"
 msgstr "(بدون تسمية)"
@@ -6431,7 +6449,7 @@ msgstr "نوع الملف:"
 msgid "Read more..."
 msgstr "قراءة المزيد..."
 
-#: wp-includes/script-loader.php:842
+#: wp-includes/script-loader.php:843
 msgid "No plugins found. Try a different search."
 msgstr "ﻻ توجد إضافات. جرب البحث بطريقة أخرى."
 
@@ -6449,8 +6467,8 @@ msgstr "أنت الآن تقوم بتخصيص %s"
 msgid "<strong>ERROR</strong>: The comment could not be saved. Please try again later."
 msgstr "<strong>خطأ</strong>: تعذّر حفظ التعليق. يُرجى المحاولة لاحقاً."
 
-#: wp-includes/update.php:154 wp-includes/update.php:356
-#: wp-includes/update.php:538
+#: wp-includes/update.php:154 wp-includes/update.php:346
+#: wp-includes/update.php:528
 msgid "(WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.)"
 msgstr "(تعذّر على ووردبريس تأسيس اتصال آمن مع WordPress.org. يرجى الاتصال بمسؤول الخادم الخاص بك.)"
 
@@ -7040,7 +7058,7 @@ msgstr "عرض اسم الفنان في قائمة المسارات"
 msgid "Image Details"
 msgstr "تفاصيل الصورة"
 
-#: wp-includes/class-wp-customize-nav-menus.php:985
+#: wp-includes/class-wp-customize-nav-menus.php:1001
 #: wp-includes/class-wp-customize-panel.php:359
 #: wp-includes/class-wp-customize-section.php:350
 #: wp-includes/class-wp-customize-widgets.php:797
@@ -7129,7 +7147,7 @@ msgstr "أيقونات تعبيرية"
 msgid "Show invisible characters"
 msgstr "عرض الحروف غير المرئية"
 
-#: wp-includes/class-wp-customize-nav-menus.php:932
+#: wp-includes/class-wp-customize-nav-menus.php:948
 #: wp-includes/class-wp-customize-widgets.php:685
 msgid "Move up"
 msgstr "تحريك للأعلى"
@@ -7138,7 +7156,7 @@ msgstr "تحريك للأعلى"
 msgid "Insert date/time"
 msgstr "إدراج التاريخ/الوقت"
 
-#: wp-includes/class-wp-customize-nav-menus.php:933
+#: wp-includes/class-wp-customize-nav-menus.php:949
 #: wp-includes/class-wp-customize-widgets.php:684
 msgid "Move down"
 msgstr "تحريك للأسفل"
@@ -7242,7 +7260,7 @@ msgid "https://wordpress.org/"
 msgstr "http://ar.wordpress.org/"
 
 #: wp-includes/class-wp-customize-widgets.php:755
-#: wp-includes/script-loader.php:840 wp-includes/script-loader.php:866
+#: wp-includes/script-loader.php:841 wp-includes/script-loader.php:867
 msgid "An error has occurred. Please reload the page and try again."
 msgstr "حدث خطأ. يرجى إعادة تحميل الصفحة والمحاولة مرة أخرى."
 
@@ -7315,7 +7333,7 @@ msgid "Increase indent"
 msgstr "زيادة المسافة البادئة"
 
 #: wp-includes/admin-bar.php:164 wp-includes/update.php:153
-#: wp-includes/update.php:355 wp-includes/update.php:537
+#: wp-includes/update.php:345 wp-includes/update.php:527
 #: wp-includes/wp-db.php:1062 wp-includes/wp-db.php:1595
 #: wp-includes/wp-db.php:1753 wp-login.php:882
 msgid "https://wordpress.org/support/"
@@ -7338,22 +7356,22 @@ msgstr "إعادة الترتيب"
 msgid "Finnish"
 msgstr "الفنلندية"
 
-#: wp-includes/general-template.php:3916
+#: wp-includes/general-template.php:3918
 msgctxt "admin color scheme"
 msgid "Ectoplasm"
 msgstr "أكتوبلازما"
 
-#: wp-includes/general-template.php:3928
+#: wp-includes/general-template.php:3930
 msgctxt "admin color scheme"
 msgid "Coffee"
 msgstr "القهوة"
 
-#: wp-includes/general-template.php:3910
+#: wp-includes/general-template.php:3912
 msgctxt "admin color scheme"
 msgid "Sunrise"
 msgstr "شروق الشمس"
 
-#: wp-includes/general-template.php:3922
+#: wp-includes/general-template.php:3924
 msgctxt "admin color scheme"
 msgid "Ocean"
 msgstr "المحيط"
@@ -7405,12 +7423,12 @@ msgstr "نموذج بحث لموقعك."
 #. translators: If there are characters in your language that are not supported
 #. by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: wp-includes/script-loader.php:935
+#: wp-includes/script-loader.php:936
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr "on"
 
-#: wp-includes/general-template.php:3892
+#: wp-includes/general-template.php:3894
 msgctxt "admin color scheme"
 msgid "Light"
 msgstr "الفاتح"
@@ -7418,12 +7436,12 @@ msgstr "الفاتح"
 #. translators: To add an additional Open Sans character subset specific to
 #. your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not
 #. translate into your own language.
-#: wp-includes/script-loader.php:941
+#: wp-includes/script-loader.php:942
 msgctxt "Open Sans font: add new subset (greek, cyrillic, vietnamese)"
 msgid "no-subset"
 msgstr "no-subset"
 
-#: wp-includes/general-template.php:3881
+#: wp-includes/general-template.php:3883
 msgctxt "admin color scheme"
 msgid "Default"
 msgstr "الافتراضي"
@@ -7432,14 +7450,14 @@ msgstr "الافتراضي"
 msgid "Use commas instead of %s to separate excluded terms."
 msgstr "استخدم الفواصل بدلاً من %s لفصل العناصر المستثناة."
 
-#: wp-includes/general-template.php:3904
+#: wp-includes/general-template.php:3906
 msgctxt "admin color scheme"
 msgid "Midnight"
 msgstr "منتصف الليل"
 
 #. translators: %s: support forums URL
-#: wp-includes/update.php:152 wp-includes/update.php:354
-#: wp-includes/update.php:536
+#: wp-includes/update.php:152 wp-includes/update.php:344
+#: wp-includes/update.php:526
 msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"%s\">support forums</a>."
 msgstr "حدث خطأ غير متوقع. هناك شئ خاطئ مع موقع WordPress.org أو إعدادات هذا الخادم. إذا استمرت هذه المشاكل، رجاء جرب <a href=\"%s\">منتديات الدعم الفني</a>."
 
@@ -7447,7 +7465,7 @@ msgstr "حدث خطأ غير متوقع. هناك شئ خاطئ مع موقع Wo
 msgid "Menu"
 msgstr "القائمة"
 
-#: wp-includes/update.php:643
+#: wp-includes/update.php:633
 msgid "Translation Updates"
 msgstr "تحديثات الترجمة"
 
@@ -7619,7 +7637,7 @@ msgid "(more&hellip;)"
 msgstr "(المزيد&hellip;)"
 
 #. translators: 1: month, 2: day, 3: year, 4: hour, 5: minute
-#: wp-includes/script-loader.php:686 wp-includes/script-loader.php:714
+#: wp-includes/script-loader.php:687 wp-includes/script-loader.php:715
 msgid "%1$s %2$s, %3$s @ %4$s:%5$s"
 msgstr "%1$s %2$s, %3$s @ %4$s : %5$s"
 
@@ -7662,7 +7680,7 @@ msgctxt "submit button"
 msgid "Search"
 msgstr "بحث"
 
-#: wp-includes/functions.php:5328 wp-includes/script-loader.php:568
+#: wp-includes/functions.php:5328 wp-includes/script-loader.php:569
 msgid "Session expired"
 msgstr "انتهت صلاحية الجلسة"
 
@@ -8047,7 +8065,7 @@ msgstr "إنشاء معرض جديد"
 msgid "View Attachment Page"
 msgstr "مشاهدة صفحة المرفق"
 
-#: wp-includes/media-template.php:601 wp-includes/script-loader.php:851
+#: wp-includes/media-template.php:601 wp-includes/script-loader.php:852
 msgid "Clear"
 msgstr "مسح"
 
@@ -8057,7 +8075,7 @@ msgctxt "Display name based on first name and last name"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
 
-#: wp-includes/script-loader.php:855
+#: wp-includes/script-loader.php:856
 msgid "Select Color"
 msgstr "إختر لونا"
 
@@ -8133,15 +8151,15 @@ msgctxt "Name for the Text editor tab (formerly HTML)"
 msgid "Text"
 msgstr "نص"
 
-#: wp-includes/class-wp-customize-manager.php:4961
+#: wp-includes/class-wp-customize-manager.php:4981
 msgid "Header Text Color"
 msgstr "لون خط الترويسة"
 
-#: wp-includes/class-wp-customize-manager.php:4938
+#: wp-includes/class-wp-customize-manager.php:4958
 msgid "Colors"
 msgstr "الألوان"
 
-#: wp-includes/script-loader.php:560 wp-includes/script-loader.php:722
+#: wp-includes/script-loader.php:560 wp-includes/script-loader.php:723
 msgid "Saved"
 msgstr "تم الحفظ"
 
@@ -8171,7 +8189,7 @@ msgstr "عذراً، لا يمكنك تثبيت مقالة خاصة."
 msgid "Sorry, you are not allowed to publish this page."
 msgstr "عذرًا، لا يسمح لك بنشر هذه الصفحة."
 
-#: wp-includes/class-wp-customize-manager.php:5011
+#: wp-includes/class-wp-customize-manager.php:5031
 #: wp-includes/customize/class-wp-customize-header-image-control.php:31
 msgid "Header Image"
 msgstr "صورة الترويسة"
@@ -8219,16 +8237,16 @@ msgstr[3] "يجب أن يتكون اسم الموقع من %s أحرف على ا
 msgstr[4] "يجب أن يتكون اسم الموقع من %s حرف على الأقل."
 msgstr[5] "يجب أن يتكون اسم الموقع من %s حرف على الأقل."
 
-#: wp-includes/class-wp-customize-manager.php:5218
+#: wp-includes/class-wp-customize-manager.php:5238
 msgid "A static page"
 msgstr "صفحة ثابتة"
 
-#: wp-includes/class-wp-customize-manager.php:5085
+#: wp-includes/class-wp-customize-manager.php:5105
 #: wp-includes/customize/class-wp-customize-background-image-control.php:30
 msgid "Background Image"
 msgstr "صورة الخلفية"
 
-#: wp-includes/class-wp-customize-manager.php:4976
+#: wp-includes/class-wp-customize-manager.php:4996
 msgid "Background Color"
 msgstr "لون الخلفية"
 
@@ -8244,11 +8262,11 @@ msgstr "إزالة الصورة"
 msgid "Sorry, you are not allowed to edit this comment."
 msgstr "عذراً، لا يُسمح لك بتحرير هذا التعليق."
 
-#: wp-includes/class-wp-customize-manager.php:5240
+#: wp-includes/class-wp-customize-manager.php:5260
 msgid "Posts page"
 msgstr "صفحة المقالات"
 
-#: wp-includes/class-wp-customize-manager.php:4920
+#: wp-includes/class-wp-customize-manager.php:4940
 #: wp-includes/class-wp-customize-widgets.php:753
 #: wp-includes/class-wp-editor.php:1258
 #: wp-includes/customize/class-wp-customize-media-control.php:226
@@ -8260,7 +8278,7 @@ msgstr "صفحة المقالات"
 msgid "Remove"
 msgstr "إزالة"
 
-#: wp-includes/script-loader.php:583
+#: wp-includes/script-loader.php:584
 msgid "Allowed Files"
 msgstr "الملفات المسموح بها"
 
@@ -8371,22 +8389,22 @@ msgstr "القالب \"%s\" ليس بقالب رئيسي (أب) صالح."
 msgid "ERROR: The themes directory is either empty or doesn&#8217;t exist. Please check your installation."
 msgstr "خطأ: مجلد القوالب فارغ أو غير موجود. الرجاء التحقّق من التنصيب."
 
-#: wp-includes/class-wp-customize-manager.php:5217
+#: wp-includes/class-wp-customize-manager.php:5237
 msgid "Your latest posts"
 msgstr "آخر مقالاتك"
 
 #: wp-includes/class-wp-customize-control.php:586
-#: wp-includes/class-wp-customize-nav-menus.php:594
+#: wp-includes/class-wp-customize-nav-menus.php:610
 #: wp-includes/widgets/class-wp-nav-menu-widget.php:143
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; اختيار &mdash;"
 
 #. translators: %s: document title from the preview
-#: wp-includes/class-wp-customize-manager.php:4351
+#: wp-includes/class-wp-customize-manager.php:4369
 msgid "Customize: %s"
 msgstr "تخصيص: %s"
 
-#: wp-includes/class-wp-customize-manager.php:4863
+#: wp-includes/class-wp-customize-manager.php:4883
 msgid "Tagline"
 msgstr "سطر الوصف"
 
@@ -8426,8 +8444,8 @@ msgstr "عذراً، لا يُسمح لك بتحرير هذه المقالة."
 msgid "Edit Site"
 msgstr "تحرير الموقع"
 
-#: wp-includes/post.php:3952 wp-includes/script-loader.php:671
-#: wp-includes/script-loader.php:743
+#: wp-includes/post.php:3952 wp-includes/script-loader.php:672
+#: wp-includes/script-loader.php:744
 msgctxt "tag delimiter"
 msgid ","
 msgstr "،"
@@ -8557,7 +8575,7 @@ msgstr "إنشاء ملف الإعدادات"
 msgid "You can create a %s file through a web interface, but this doesn't work for all server setups. The safest way is to manually create the file."
 msgstr "يمكنك إنشاء الملف %s مباشرةً من خلال واجهة ويب، لكن هذه الطريقة لا تعمل مع جميع إعدادات الخوادم، الطريقة الأكثر أماناُ هي إنشاء الملف يدوياً."
 
-#: wp-includes/class-wp-customize-manager.php:5251
+#: wp-includes/class-wp-customize-manager.php:5271
 msgid "https://codex.wordpress.org/CSS"
 msgstr "https://codex.wordpress.org/CSS"
 
@@ -8659,7 +8677,7 @@ msgstr "<strong>خطأ</strong>: يرجى ملء الحقول المطلوبة (
 msgid "<strong>ERROR</strong>: please enter a valid email address."
 msgstr "<strong>خطأ</strong>: رجاءاً تأكد من البريد الإلكتروني."
 
-#: wp-includes/script-loader.php:871
+#: wp-includes/script-loader.php:872
 msgid "Could not load the preview image. Please reload the page and try again."
 msgstr "لا يمكن تحميل صورة المعاينة. يرجى تحديث الصفحة والمحاولة من جديد."
 
@@ -8679,7 +8697,7 @@ msgstr "وثائق المساعدة"
 msgid "Support Forums"
 msgstr "منتديات الدعم الفني"
 
-#: wp-includes/formatting.php:3361 wp-includes/general-template.php:3800
+#: wp-includes/formatting.php:3361 wp-includes/general-template.php:3802
 msgid "&hellip;"
 msgstr "&hellip;"
 
@@ -8744,7 +8762,7 @@ msgstr "الحجم تجاوز الحد الأقصى المسموح. يرجى ا�
 msgid "This file is not an image. Please try another."
 msgstr "هذا الملف ليس بصورة. الرجاء المحاولة مرة أخرى."
 
-#: wp-includes/general-template.php:3898
+#: wp-includes/general-template.php:3900
 msgctxt "admin color scheme"
 msgid "Blue"
 msgstr "الأزرق"
@@ -8793,7 +8811,7 @@ msgstr "كل الصفحات"
 msgid "All Posts"
 msgstr "كل المقالات"
 
-#: wp-includes/script-loader.php:651
+#: wp-includes/script-loader.php:652
 msgid "Approve and Reply"
 msgstr "موافقة ورد"
 
@@ -8971,7 +8989,7 @@ msgstr "لا توجد صفحات."
 msgid "No pages found in Trash."
 msgstr "لا توجد صفحات في سلة المهملات"
 
-#: wp-includes/script-loader.php:830
+#: wp-includes/script-loader.php:831
 msgid "Network Enable"
 msgstr "تمكين الشبكة"
 
@@ -9476,11 +9494,11 @@ msgstr "أنت متصّل! لا توجد حاجة للتسجيل مرة أخرى
 msgid "If you&#8217;re still stuck with this message, then check that your database contains the following tables:"
 msgstr "إن كنت لا تزال تعاني من هذه الرسالة، إذاً عليك التحقّق أنّ قاعدة البيانات تحتوي على الجداول التالية:"
 
-#: wp-includes/script-loader.php:757
+#: wp-includes/script-loader.php:758
 msgid "Are you sure you want to install this plugin?"
 msgstr "هل أنت متأكد من رغبتك بتنصيب هذه الإضافة؟"
 
-#: wp-includes/script-loader.php:876
+#: wp-includes/script-loader.php:877
 msgid "Use as featured image"
 msgstr "استخدامها كصورة بارزة"
 
@@ -9517,7 +9535,7 @@ msgstr "روابط %s"
 msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
 msgstr "حتى الآن لم تقم بانشاء قوائم. <a href=\"%s\">إنشاء</a>."
 
-#: wp-includes/script-loader.php:886
+#: wp-includes/script-loader.php:887
 msgid ""
 "You are about to permanently delete this menu. \n"
 " 'Cancel' to stop, 'OK' to delete."
@@ -9531,7 +9549,7 @@ msgid "This is the short link."
 msgstr "هذا هو الرابط المختصر."
 
 #. translators: 1: Number of updates available to themes
-#: wp-includes/update.php:640
+#: wp-includes/update.php:630
 msgid "%d Theme Update"
 msgid_plural "%d Theme Updates"
 msgstr[0] "%d قالب يحتاج تحديث"
@@ -9542,7 +9560,7 @@ msgstr[4] "%d قوالب تحتاج تحديث"
 msgstr[5] "%d قوالب تحتاج تحديث"
 
 #. translators: 1: Number of updates available to plugins
-#: wp-includes/update.php:636
+#: wp-includes/update.php:626
 msgid "%d Plugin Update"
 msgid_plural "%d Plugin Updates"
 msgstr[0] "%d إضافات تحتاج تحديث"
@@ -9553,7 +9571,7 @@ msgstr[4] "%d إضافة تحتاج تحديث"
 msgstr[5] "%d إضافة تحتاج تحديث"
 
 #. translators: 1: Number of updates available to WordPress
-#: wp-includes/update.php:632
+#: wp-includes/update.php:622
 msgid "%d WordPress Update"
 msgstr "%d تحديث ووردبريس."
 
@@ -9675,7 +9693,7 @@ msgid "One response to %s"
 msgstr "رد واحد على %s"
 
 #: wp-includes/admin-bar.php:836
-#: wp-includes/class-wp-customize-nav-menus.php:565
+#: wp-includes/class-wp-customize-nav-menus.php:581
 #: wp-includes/customize/class-wp-customize-nav-menus-panel.php:98
 msgid "Menus"
 msgstr "قوائم"
@@ -9812,7 +9830,7 @@ msgstr "عذراً ، فشل التصنيف الجديد."
 msgid "Allow new users to sign up"
 msgstr "السماح للمستخدمين الجدد بالتسجيل"
 
-#: wp-includes/class-wp-customize-nav-menus.php:789
+#: wp-includes/class-wp-customize-nav-menus.php:805
 #: wp-includes/class-wp-xmlrpc-server.php:1377
 #: wp-includes/class-wp-xmlrpc-server.php:1861
 #: wp-includes/class-wp-xmlrpc-server.php:3381
@@ -10206,7 +10224,7 @@ msgstr "مستند جديد"
 msgid "Paste"
 msgstr "لصق"
 
-#: wp-includes/class-wp-customize-manager.php:4184
+#: wp-includes/class-wp-customize-manager.php:4202
 #: wp-includes/class-wp-editor.php:1045
 msgid "Copy"
 msgstr "نسخ"
@@ -10280,8 +10298,8 @@ msgid "Row"
 msgstr "صف"
 
 #: wp-includes/class-wp-editor.php:1238 wp-includes/script-loader.php:477
-#: wp-includes/script-loader.php:559 wp-includes/script-loader.php:700
-#: wp-includes/script-loader.php:723 wp-includes/script-loader.php:887
+#: wp-includes/script-loader.php:559 wp-includes/script-loader.php:701
+#: wp-includes/script-loader.php:724 wp-includes/script-loader.php:888
 #: wp-includes/theme.php:2961
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr "التغييرات التي أحدثتها ستفقد إذا غادرت هذه الصفحة"
@@ -10406,10 +10424,6 @@ msgstr "اختر مدينة"
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "%1$s أستدعيت بواسطة مُعطى <strong>مهجور</strong> منذ النسخة %2$s ولا يوجد بديل متوفّر حالياً."
 
-#: wp-includes/functions.php:2617
-msgid "WordPress Failure Notice"
-msgstr "ملاحظة عن فشل ووردبريس"
-
 #. translators: used between list items, there is a space after the comma
 #: wp-includes/class-wp-theme.php:739
 msgid ", "
@@ -10443,7 +10457,7 @@ msgstr "عرض تاريخ العنصر؟"
 msgid "Display item content?"
 msgstr "عرض محتوى العنصر؟"
 
-#: wp-includes/widgets/class-wp-widget-text.php:469
+#: wp-includes/widgets/class-wp-widget-text.php:489
 msgid "Automatically add paragraphs"
 msgstr "إضافة الفقرات آلياً."
 
@@ -10548,7 +10562,7 @@ msgstr "<strong>خطأ</strong>: ووردبريس %1$s يحتاج MySQL %2$s أ�
 msgid "<strong>ERROR</strong>: Your account has been marked as a spammer."
 msgstr "<strong>خطأ</strong>: موقعك مشتبه بكونه موقع مزعج (spammer)."
 
-#: wp-includes/script-loader.php:701
+#: wp-includes/script-loader.php:702
 msgid "Saving Draft&#8230;"
 msgstr "جاري حفظ المسودة&#8230;"
 
@@ -10556,39 +10570,39 @@ msgstr "جاري حفظ المسودة&#8230;"
 msgid "The parent theme is missing. Please install the \"%s\" parent theme."
 msgstr "القالب الرئيسي (الأب) غير موجود. من فضلك قم بتنصيب قالب \"%s\" الرئيسي."
 
-#: wp-includes/script-loader.php:877
+#: wp-includes/script-loader.php:878
 msgid "Saving..."
 msgstr "جاري الحفظ..."
 
-#: wp-includes/script-loader.php:878
+#: wp-includes/script-loader.php:879
 msgid "Could not set that as the thumbnail image. Try a different attachment."
 msgstr "لا يمكن وضعها كصورة مصغرة . حاول مع ارتباط آخر ."
 
-#: wp-includes/script-loader.php:712
+#: wp-includes/script-loader.php:713
 msgid "Submitted on:"
 msgstr "تاريخ الإرسال:"
 
-#: wp-includes/script-loader.php:740 wp-includes/script-loader.php:749
+#: wp-includes/script-loader.php:741 wp-includes/script-loader.php:750
 msgid "Error while saving the changes."
 msgstr "حصل خلل أثناء حفظ التغييرات."
 
-#: wp-includes/script-loader.php:687
+#: wp-includes/script-loader.php:688
 msgid "Show more comments"
 msgstr "عرض المزيد من التعليقات"
 
-#: wp-includes/script-loader.php:688
+#: wp-includes/script-loader.php:689
 msgid "No more comments found."
 msgstr "لم يتم العثور على تعليقات إضافية."
 
-#: wp-includes/script-loader.php:697
+#: wp-includes/script-loader.php:698
 msgid "Password Protected"
 msgstr "محمي بكلمة مرور"
 
-#: wp-includes/script-loader.php:683
+#: wp-includes/script-loader.php:684
 msgid "Schedule for:"
 msgstr "مجدول ليوم:"
 
-#: wp-includes/script-loader.php:684
+#: wp-includes/script-loader.php:685
 msgid "Published on:"
 msgstr "تاريخ النشر:"
 
@@ -10597,7 +10611,7 @@ msgctxt "password strength"
 msgid "Medium"
 msgstr "متوسط"
 
-#: wp-includes/script-loader.php:682
+#: wp-includes/script-loader.php:683
 msgid "Publish on:"
 msgstr "تاريخ النشر:"
 
@@ -10660,12 +10674,6 @@ msgstr "من"
 #: wp-includes/script-loader.php:278
 msgid "This feature requires inline frames. You have iframes disabled or your browser does not support them."
 msgstr "هذه الميزة تتطلب خاصية الإطارات المضمنة (inline frames). إما أن الخاصية معطلة أو أن المتصفح لا يدعم هذه الخاصية."
-
-#: wp-includes/class-wp-xmlrpc-server.php:3689
-#: wp-includes/script-loader.php:133 wp-includes/script-loader.php:644
-#: wp-includes/script-loader.php:838
-msgid "An unidentified error has occurred."
-msgstr "حصل خطأ غير معروف"
 
 #: wp-includes/user.php:2070
 msgid "Jabber / Google Talk"
@@ -10791,8 +10799,8 @@ msgstr "حصل خطأ ما، فضلاً قم بتصحيح البيانات با�
 msgid "Just a username, please."
 msgstr "فقط اسم مستخدم. (بدون موقع)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:951
-#: wp-includes/script-loader.php:1129 wp-signup.php:562
+#: wp-includes/class-wp-customize-nav-menus.php:967
+#: wp-includes/script-loader.php:1130 wp-signup.php:562
 msgid "Next"
 msgstr "التالي"
 
@@ -11149,7 +11157,7 @@ msgstr "يتوسطه خط"
 msgid "Calendar"
 msgstr "تقويم"
 
-#: wp-includes/general-template.php:3714
+#: wp-includes/general-template.php:3716
 msgid "&laquo; Previous"
 msgstr "&laquo; الصفحة السابقة"
 
@@ -11236,7 +11244,7 @@ msgstr "كل ساعة"
 msgid "Once Daily"
 msgstr "مرة واحدة يومياُ"
 
-#: wp-includes/general-template.php:3715
+#: wp-includes/general-template.php:3717
 msgid "Next &raquo;"
 msgstr "التالي &raquo;"
 
@@ -11274,7 +11282,7 @@ msgstr "هذا المستخدم غير موجود."
 msgid "Could not create user"
 msgstr "غير قادر على إنشاء مستخدم"
 
-#: wp-includes/script-loader.php:741
+#: wp-includes/script-loader.php:742
 msgid "Remove From Bulk Edit"
 msgstr "إزالة من التحرير الشامل"
 
@@ -11354,8 +11362,8 @@ msgstr "أعلى اليمين"
 msgid "Top Left"
 msgstr "أعلى اليسار"
 
-#: wp-includes/class-wp-customize-manager.php:5115
-#: wp-includes/class-wp-customize-manager.php:5156
+#: wp-includes/class-wp-customize-manager.php:5135
+#: wp-includes/class-wp-customize-manager.php:5176
 msgid "Fill Screen"
 msgstr "املأ الشاشة"
 
@@ -11546,7 +11554,7 @@ msgstr "مؤشر القوة"
 msgid "Log In"
 msgstr "دخول"
 
-#: wp-includes/class-wp-customize-manager.php:4852
+#: wp-includes/class-wp-customize-manager.php:4872
 #: wp-includes/class-wp-xmlrpc-server.php:540
 msgid "Site Title"
 msgstr "اسم الموقع"
@@ -11630,8 +11638,8 @@ msgstr "أكتب كلمة المرور لمشاهدة التعليقات."
 #: wp-includes/widgets/class-wp-widget-recent-posts.php:135
 #: wp-includes/widgets/class-wp-widget-search.php:70
 #: wp-includes/widgets/class-wp-widget-tag-cloud.php:126
-#: wp-includes/widgets/class-wp-widget-text.php:454
-#: wp-includes/widgets/class-wp-widget-text.php:487
+#: wp-includes/widgets/class-wp-widget-text.php:474
+#: wp-includes/widgets/class-wp-widget-text.php:507
 msgid "Title:"
 msgstr "العنوان:"
 
@@ -11648,13 +11656,13 @@ msgstr "<strong>خطأ</strong>: يرجى التأكد من كتابة اسم ا
 msgid "Comments on %s"
 msgstr "التعليقات على %s"
 
-#: wp-includes/class-wp-customize-manager.php:4921
+#: wp-includes/class-wp-customize-manager.php:4941
 #: wp-includes/customize/class-wp-customize-color-control.php:51
 #: wp-includes/customize/class-wp-customize-media-control.php:225
 #: wp-includes/customize/class-wp-customize-media-control.php:235
 #: wp-includes/customize/class-wp-customize-media-control.php:245
 #: wp-includes/customize/class-wp-customize-media-control.php:255
-#: wp-includes/script-loader.php:853
+#: wp-includes/script-loader.php:854
 msgid "Default"
 msgstr "افتراضي"
 
@@ -11664,7 +11672,7 @@ msgstr "تحرير التصنيف"
 
 #: wp-includes/class-wp-customize-nav-menus.php:276
 #: wp-includes/script-loader.php:242 wp-includes/script-loader.php:527
-#: wp-includes/script-loader.php:885
+#: wp-includes/script-loader.php:886
 msgid "No results found."
 msgstr "لا توجد نتائج."
 
@@ -11697,11 +11705,11 @@ msgid "Settings"
 msgstr "الإعدادات"
 
 #. translators: %s: comments count
-#: wp-includes/script-loader.php:657
+#: wp-includes/script-loader.php:658
 msgid "Comments (%s)"
 msgstr "التعليقات (%s)"
 
-#: wp-includes/script-loader.php:755
+#: wp-includes/script-loader.php:756
 msgid "Plugin:"
 msgstr "الإضافة:"
 
@@ -11761,7 +11769,7 @@ msgstr "مُشغل بواسطة ووردبريس، منصة دلالية للن�
 msgid "Leave a Reply"
 msgstr "اترك تعليقاً"
 
-#: wp-includes/script-loader.php:854
+#: wp-includes/script-loader.php:855
 msgid "Select default color"
 msgstr "حدد اللون الافتراضي"
 
@@ -11781,10 +11789,10 @@ msgstr "مقالة جديدة"
 msgid "Sidebar"
 msgstr "الشريط الجانبي"
 
-#: wp-includes/class-wp-customize-manager.php:4111
+#: wp-includes/class-wp-customize-manager.php:4129
 #: wp-includes/script-loader.php:146 wp-includes/script-loader.php:307
-#: wp-includes/widgets/class-wp-widget-text.php:501
-#: wp-includes/widgets/class-wp-widget-text.php:516
+#: wp-includes/widgets/class-wp-widget-text.php:521
+#: wp-includes/widgets/class-wp-widget-text.php:536
 msgid "Dismiss"
 msgstr "تجاهل"
 
@@ -11815,7 +11823,7 @@ msgstr "تحرير تصنيف الرابط"
 msgid "Author"
 msgstr "كاتب"
 
-#: wp-includes/script-loader.php:695
+#: wp-includes/script-loader.php:696
 msgid "Public"
 msgstr "عام"
 
@@ -11828,8 +11836,8 @@ msgctxt "noun"
 msgid "Comment"
 msgstr "التعليق"
 
-#: wp-includes/class-wp-customize-manager.php:4602
-#: wp-includes/script-loader.php:551 wp-includes/script-loader.php:693
+#: wp-includes/class-wp-customize-manager.php:4622
+#: wp-includes/script-loader.php:551 wp-includes/script-loader.php:694
 msgid "Save Draft"
 msgstr "حفظ المسودة"
 
@@ -11837,7 +11845,7 @@ msgstr "حفظ المسودة"
 msgid "RSS"
 msgstr "RSS"
 
-#: wp-includes/script-loader.php:692
+#: wp-includes/script-loader.php:693
 msgid "Save as Pending"
 msgstr "حفظ بانتظار المراجعة"
 
@@ -11850,11 +11858,11 @@ msgid "Images"
 msgstr "صور"
 
 #: wp-includes/post.php:705 wp-includes/post.php:725
-#: wp-includes/script-loader.php:694
+#: wp-includes/script-loader.php:695
 msgid "Private"
 msgstr "خاص"
 
-#: wp-includes/script-loader.php:696
+#: wp-includes/script-loader.php:697
 msgid "Public, Sticky"
 msgstr "عام، مثبّت"
 
@@ -11878,12 +11886,12 @@ msgid "Caption"
 msgstr "كلمات توضيحية"
 
 #: wp-includes/media.php:3143 wp-includes/script-loader.php:526
-#: wp-includes/script-loader.php:742
+#: wp-includes/script-loader.php:743
 #: wp-includes/widgets/class-wp-widget-recent-posts.php:91
 msgid "(no title)"
 msgstr "(بدون عنوان)"
 
-#: wp-includes/class-wp-customize-manager.php:4138
+#: wp-includes/class-wp-customize-manager.php:4156
 #: wp-includes/class-wp-editor.php:1119 wp-includes/media-template.php:1247
 msgid "Preview"
 msgstr "معاينة"
@@ -11939,7 +11947,7 @@ msgstr "تحرير الصورة"
 msgid "Image URL"
 msgstr "رابط الصورة"
 
-#: wp-includes/script-loader.php:698
+#: wp-includes/script-loader.php:699
 msgid "Privately Published"
 msgstr "نشر خاص (يظهر للمدير فقط)"
 
@@ -11947,10 +11955,10 @@ msgstr "نشر خاص (يظهر للمدير فقط)"
 msgid "All Categories"
 msgstr "كل التصنيفات"
 
-#: wp-includes/class-wp-customize-manager.php:5281
+#: wp-includes/class-wp-customize-manager.php:5301
 #: wp-includes/class-wp-editor.php:1053 wp-includes/class-wp-editor.php:1695
 #: wp-includes/script-loader.php:277 wp-includes/script-loader.php:371
-#: wp-includes/script-loader.php:562 wp-includes/script-loader.php:1125
+#: wp-includes/script-loader.php:562 wp-includes/script-loader.php:1126
 msgid "Close"
 msgstr "إغلاق"
 
@@ -11986,13 +11994,13 @@ msgstr "الحجم الكامل"
 msgid "Content"
 msgstr "المحتوى "
 
-#: wp-includes/comment-template.php:1597 wp-includes/script-loader.php:652
+#: wp-includes/comment-template.php:1597 wp-includes/script-loader.php:653
 msgid "Reply"
 msgstr "رد"
 
 #: wp-includes/class-wp-editor.php:1052 wp-includes/class-wp-editor.php:1741
 #: wp-includes/media.php:3498 wp-includes/script-loader.php:510
-#: wp-includes/script-loader.php:561 wp-includes/script-loader.php:681
+#: wp-includes/script-loader.php:561 wp-includes/script-loader.php:682
 msgid "Cancel"
 msgstr "إلغاء "
 
@@ -12042,7 +12050,7 @@ msgstr "التنبيهات \"Pingback\""
 msgid "Anonymous"
 msgstr "غير معروف"
 
-#: wp-includes/deprecated.php:3130 wp-includes/functions.php:2607
+#: wp-includes/deprecated.php:3130
 msgid "Are you sure you want to do this?"
 msgstr "هل أنت متأكد من رغبتك بفعل هذا؟"
 
@@ -12065,7 +12073,7 @@ msgstr "الأرشيف"
 msgid "The GD image library is not installed."
 msgstr "مكتبة GD لتحرير الصور غير مثبتة."
 
-#: wp-includes/class-wp-customize-nav-menus.php:1095
+#: wp-includes/class-wp-customize-nav-menus.php:1111
 #: wp-includes/class-wp-editor.php:1136 wp-includes/class-wp-editor.php:1700
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:86
 #: wp-includes/media-template.php:376 wp-includes/media-template.php:557
@@ -12100,12 +12108,12 @@ msgstr "التعقيبات \"TrackBack\""
 msgid "Edit"
 msgstr "تحرير"
 
-#: wp-includes/class-wp-editor.php:1121 wp-includes/script-loader.php:721
+#: wp-includes/class-wp-editor.php:1121 wp-includes/script-loader.php:722
 msgid "Save"
 msgstr "حفظ"
 
-#: wp-includes/class-wp-customize-manager.php:4597
-#: wp-includes/script-loader.php:549 wp-includes/script-loader.php:689
+#: wp-includes/class-wp-customize-manager.php:4617
+#: wp-includes/script-loader.php:549 wp-includes/script-loader.php:690
 msgid "Publish"
 msgstr "نشر"
 
@@ -12123,13 +12131,13 @@ msgstr "صفحات"
 msgid "Users"
 msgstr "أعضاء"
 
-#: wp-includes/class-wp-editor.php:1051 wp-includes/script-loader.php:680
+#: wp-includes/class-wp-editor.php:1051 wp-includes/script-loader.php:681
 msgid "OK"
 msgstr "موافق"
 
 #: wp-includes/customize/class-wp-customize-nav-menu-control.php:55
 #: wp-includes/customize/class-wp-widget-area-customize-control.php:61
-#: wp-includes/script-loader.php:879
+#: wp-includes/script-loader.php:880
 msgid "Done"
 msgstr "انتهى"
 
@@ -12138,7 +12146,7 @@ msgstr "انتهى"
 msgid "Search"
 msgstr "بحث"
 
-#: wp-includes/script-loader.php:655
+#: wp-includes/script-loader.php:656
 msgid "Comments"
 msgstr "تعليقات"
 
@@ -12167,7 +12175,7 @@ msgid "Categories"
 msgstr "تصنيفات"
 
 #: wp-includes/media.php:3499 wp-includes/script-loader.php:524
-#: wp-includes/script-loader.php:691 wp-includes/script-loader.php:772
+#: wp-includes/script-loader.php:692 wp-includes/script-loader.php:773
 msgid "Update"
 msgstr "تحديث"
 
@@ -12190,7 +12198,7 @@ msgid "Search Results for &#8220;%s&#8221;"
 msgstr "نتائج البحث عن &#8220;%s&#8221;"
 
 #: wp-includes/class-wp-customize-control.php:634
-#: wp-includes/class-wp-customize-nav-menus.php:1065
+#: wp-includes/class-wp-customize-nav-menus.php:1081
 msgid "Add"
 msgstr "أضف"
 
@@ -12203,7 +12211,7 @@ msgid "Target"
 msgstr "الهدف"
 
 #: wp-includes/post.php:706 wp-includes/post.php:726
-#: wp-includes/script-loader.php:550 wp-includes/script-loader.php:699
+#: wp-includes/script-loader.php:550 wp-includes/script-loader.php:700
 msgid "Published"
 msgstr "منشور"
 
@@ -12216,8 +12224,8 @@ msgstr "مسودة"
 msgid "Title"
 msgstr "العنوان"
 
-#: wp-activate.php:85 wp-includes/script-loader.php:829
-#: wp-includes/script-loader.php:830
+#: wp-activate.php:85 wp-includes/script-loader.php:830
+#: wp-includes/script-loader.php:831
 msgid "Activate"
 msgstr "تفعيل"
 
@@ -12257,12 +12265,6 @@ msgstr "بانتظار المراجعة"
 #: wp-activate.php:134 wp-includes/post-template.php:1611
 msgid "Password:"
 msgstr "كلمة المرور:"
-
-#: wp-includes/class-wp-customize-manager.php:450
-#: wp-includes/class-wp-customize-manager.php:515
-#: wp-includes/script-loader.php:565
-msgid "Cheatin&#8217; uh?"
-msgstr "تتحايل، ها؟"
 
 #: wp-includes/post.php:1394
 msgid "No posts found."
