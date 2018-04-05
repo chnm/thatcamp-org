@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-12 12:56:02+0000\n"
+"PO-Revision-Date: 2018-04-05 12:41:56+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4426,12 +4426,6 @@ msgid "February"
 msgstr "Φεβρουαρίου"
 
 #. translators: month name, genitive
-#: wp-includes/class-wp-locale.php:172
-msgctxt "genitive"
-msgid "March"
-msgstr "Μαρτίου"
-
-#. translators: month name, genitive
 #: wp-includes/class-wp-locale.php:173
 msgctxt "genitive"
 msgid "April"
@@ -4441,7 +4435,13 @@ msgstr "Απριλίου"
 #: wp-includes/class-wp-locale.php:174
 msgctxt "genitive"
 msgid "May"
-msgstr "Μαΐου"
+msgstr "Μάϊου"
+
+#. translators: month name, genitive
+#: wp-includes/class-wp-locale.php:172
+msgctxt "genitive"
+msgid "March"
+msgstr "Μαρτίου"
 
 #: wp-includes/embed.php:998
 msgid "Sharing options"
