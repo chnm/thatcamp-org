@@ -90,6 +90,11 @@ class wfScan {
 			} else {
 				self::status(2, 'error', "Scan can't continue - stored data not found after a fork. Got type: " . gettype($scan));
 				wfConfig::set('wfsd_engine', '', wfConfig::DONT_AUTOLOAD);
+				wfConfig::set('lastScanCompleted', __('Scan can\'t continue - stored data not found after a fork.', 'wordfence'));
+				wfConfig::set('lastScanFailureType', wfIssues::SCAN_FAILED_FORK_FAILED);
+				wfUtils::clearScanLock();
+				self::status(2, 'error', "Scan terminated with error: " . __('Scan can\'t continue - stored data not found after a fork.', 'wordfence'));
+				self::status(10, 'info', "SUM_KILLED:Previous scan terminated with an error. See below.");
 				exit();
 			}
 		} else {
@@ -135,13 +140,14 @@ class wfScan {
 				}
 				
 				$malwarePrefixesHash = (isset($response['malwarePrefixes']) ? $response['malwarePrefixes'] : '');
+				$coreHashesHash = (isset($response['coreHashes']) ? $response['coreHashes'] : '');
 				
-				$scan = new wfScanEngine($malwarePrefixesHash, $scanMode);
+				$scan = new wfScanEngine($malwarePrefixesHash, $coreHashesHash, $scanMode);
 				$scan->deleteNewIssues();
 			}
 			else {
 				wordfence::status(1, 'info', "Initiating quick scan");
-				$scan = new wfScanEngine('', $scanMode);
+				$scan = new wfScanEngine('', '', $scanMode);
 			}
 		}
 		try {

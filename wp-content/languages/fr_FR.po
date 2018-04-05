@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-10 09:52:11+0000\n"
+"PO-Revision-Date: 2018-03-21 22:04:16+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -108,7 +108,7 @@ msgstr "Cliquez sur « Suivant » pour commencer à ajouter des liens à votre
 #. translators: %s: a list of valid video file extensions
 #: wp-includes/widgets/class-wp-widget-media-video.php:44
 msgid "Sorry, we can&#8217;t load the video at the supplied URL. Please check that the URL is for a supported video file (%s) or stream (e.g. YouTube and Vimeo)."
-msgstr "Désolé, nous ne pouvons pas charger la vidéo de l’url fournie. Veuillez vérifier que l’url est celle d’un fichier vidéo supporté (%s)  ou diffusé (ex : YouTube et Vimeo)."
+msgstr "Désolé, nous ne pouvons pas charger la vidéo depuis l’URL fournie. Veuillez vérifier que l’URL est celle d’un fichier vidéo supporté (%s) ou diffusé (ex : YouTube et Vimeo)."
 
 #: wp-includes/script-loader.php:691
 msgctxt "post action/button label"
@@ -4048,13 +4048,13 @@ msgid "1 result found. Use up and down arrow keys to navigate."
 msgstr "Un résultat trouvé. Utilisez les flèches haut et bas du clavier pour les parcourir. "
 
 #. translators: %s: user name
-#: wp-includes/comment-template.php:2232
+#: wp-includes/comment-template.php:2231
 msgid "Logged in as %s. Edit your profile."
 msgstr "Connexion en tant que %s. Modifier votre profil."
 
 #. translators: 1: edit user link, 2: accessibility text, 3: user name, 4:
 #. logout URL
-#: wp-includes/comment-template.php:2229
+#: wp-includes/comment-template.php:2228
 msgid "<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s\">Log out?</a>"
 msgstr "<a href=\"%1$s\" aria-label=\"%2$s\">Connecté en tant que %3$s</a>. <a href=\"%4$s\">Déconnexion ?</a>"
 
@@ -9192,7 +9192,7 @@ msgstr "<strong>Les valeurs des constantes VHOST et SUBDOMAIN_INSTALL ne corresp
 msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr "<strong>ERREUR</strong> : cet identifiant n’est pas valide, car il utilise des caractères non autorisés. Merci d’utiliser un identifiant valide."
 
-#: wp-includes/comment-template.php:2207
+#: wp-includes/comment-template.php:2206
 msgid "Required fields are marked %s"
 msgstr "Les champs obligatoires sont indiqués avec %s"
 
@@ -9354,7 +9354,7 @@ msgstr "Une erreur est survenue lors de votre ajout à ce site. Retournez à l�
 msgid "This file is too big. Files must be less than %d KB in size."
 msgstr "Ce fichier est trop gros. La taille des fichiers doit être inférieure %d Ko."
 
-#: wp-includes/comment-template.php:2236
+#: wp-includes/comment-template.php:2235
 msgid "Your email address will not be published."
 msgstr "Votre adresse de messagerie ne sera pas publiée."
 
@@ -11279,19 +11279,19 @@ msgstr "Détection d’un doublon : il semble que vous avez déjà envoyé ce c
 msgid "Unapproved"
 msgstr "Désapprouvé"
 
-#: wp-includes/comment-template.php:2251
+#: wp-includes/comment-template.php:2250
 msgid "Post Comment"
 msgstr "Laisser un commentaire"
 
-#: wp-includes/comment-template.php:2250
+#: wp-includes/comment-template.php:2249
 msgid "Cancel reply"
 msgstr "Annuler la réponse."
 
-#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2245
+#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2244
 msgid "Leave a Reply to %s"
 msgstr "Répondre à %s"
 
-#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2244
+#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2243
 msgid "Leave a Reply"
 msgstr "Laisser un commentaire"
 
@@ -11384,7 +11384,7 @@ msgid "Tags: "
 msgstr "Étiquettes : "
 
 #. translators: %s: login URL
-#: wp-includes/comment-template.php:2223
+#: wp-includes/comment-template.php:2222
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr "Vous devez <a href=\"%s\">être connecté</a> pour publier un commentaire."
 
@@ -11442,7 +11442,7 @@ msgstr "Pour une étrange et très ennuyeuse raison, cet article n’a pas pu ê
 msgid "Widgets"
 msgstr "Widgets"
 
-#: wp-includes/comment-template.php:2203
+#: wp-includes/comment-template.php:2202
 msgid "Website"
 msgstr "Site web"
 
@@ -11498,7 +11498,7 @@ msgstr "Format de date"
 msgid "Allow people to post comments on new articles"
 msgstr "Autoriser les lecteurs à publier des commentaires sur les nouveaux articles"
 
-#: wp-includes/comment-template.php:2201 wp-login.php:809
+#: wp-includes/comment-template.php:2200 wp-login.php:809
 msgid "Email"
 msgstr "Adresse de messagerie"
 
@@ -11958,7 +11958,7 @@ msgstr "Aucun"
 msgid "Description"
 msgstr "Description"
 
-#: wp-includes/comment-template.php:2199
+#: wp-includes/comment-template.php:2198
 msgid "Name"
 msgstr "Nom"
 
@@ -12046,7 +12046,7 @@ msgstr "Non"
 msgid "Are you sure you want to do this?"
 msgstr "Voulez-vous vraiment faire cela ?"
 
-#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2219
+#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2218
 msgctxt "noun"
 msgid "Comment"
 msgstr "Commentaire"

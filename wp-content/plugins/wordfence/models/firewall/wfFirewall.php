@@ -494,7 +494,7 @@ class wfFirewall
 			if (!$networkBruteForceEnabled) {
 				$status[] = array(
 					'percentage' => 0.5,
-					'title' => __('Enable Real-Time WordPress Security Network.', 'wordfence'),
+					'title' => __('Enable Real-Time Wordfence Security Network.', 'wordfence'),
 				);
 			}
 			if (!wfConfig::get('loginSec_strongPasswds_enabled')) {

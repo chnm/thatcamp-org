@@ -450,6 +450,9 @@
 						if (desc) {
 							return 'blocked by firewall for ' + desc;
 						}
+						if (data.failedRules == 'blocked') {
+							return 'blocked by real-time IP blacklist';
+						}
 						return 'blocked by firewall';
 					}
 					return 'blocked by firewall for ' + self.actionDescription();
@@ -794,7 +797,7 @@
 	$(function() {
 
 		var liveTrafficWrapper = $('#wf-live-traffic');
-		$('#wf-lt-preset-filters').select2({
+		$('#wf-lt-preset-filters').wfselect2({
 			templateSelection: function(value) {
 				return $('<span><em>Filter Traffic</em>: ' + value.text + '</span>');
 			}
@@ -823,7 +826,7 @@
 			return false;
 		});
 
-		// liveTrafficWrapper.find('#wf-lt-advanced-filters select').select2({
+		// liveTrafficWrapper.find('#wf-lt-advanced-filters select').wfselect2({
 		//
 		// });
 

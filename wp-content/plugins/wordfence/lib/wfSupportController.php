@@ -80,6 +80,7 @@ class wfSupportController {
 	const ITEM_FIREWALL_WAF_OPTION_MONITOR_AJAX = 'firewall-waf-option-monitor-ajax';
 	
 	const ITEM_FIREWALL_BLOCKING = 'firewall-blocking';
+	const ITEM_FIREWALL_BLOCKING_FILTER = 'firewall-blocking-filter';
 	const ITEM_FIREWALL_BLOCKING_OPTION_WHAT_TO_DO = 'firewall-blocking-option-what-to-do';
 	const ITEM_FIREWALL_BLOCKING_OPTION_REDIRECT = 'firewall-blocking-option-redirect';
 	const ITEM_FIREWALL_BLOCKING_OPTION_BLOCK_LOGGED_IN = 'firewall-blocking-option-block-logged-in';
@@ -239,6 +240,7 @@ class wfSupportController {
 			case self::ITEM_FIREWALL_WAF_OPTION_MONITOR_AJAX:
 				
 			case self::ITEM_FIREWALL_BLOCKING:
+			case self::ITEM_FIREWALL_BLOCKING_FILTER:
 			case self::ITEM_FIREWALL_BLOCKING_OPTION_WHAT_TO_DO:
 			case self::ITEM_FIREWALL_BLOCKING_OPTION_REDIRECT:
 			case self::ITEM_FIREWALL_BLOCKING_OPTION_BLOCK_LOGGED_IN:

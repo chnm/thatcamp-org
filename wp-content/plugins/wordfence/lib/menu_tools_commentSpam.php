@@ -3,16 +3,17 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 
 global $wpdb;
 
+$table_wfBlockedCommentLog = wfDB::networkTable('wfBlockedCommentLog');
 $blockedToday = (int) $wpdb->get_var("SELECT SUM(blockCount) 
-FROM {$wpdb->base_prefix}wfBlockedCommentLog
+FROM {$table_wfBlockedCommentLog}
 WHERE unixday >= FLOOR(UNIX_TIMESTAMP() / 86400)");
 
 $blockedThisWeek = (int) $wpdb->get_var("SELECT SUM(blockCount) 
-FROM {$wpdb->base_prefix}wfBlockedCommentLog
+FROM {$table_wfBlockedCommentLog}
 WHERE unixday >= FLOOR(UNIX_TIMESTAMP() / 86400) - 7");
 
 $blockedThisMonth = (int) $wpdb->get_var("SELECT SUM(blockCount)
-FROM {$wpdb->base_prefix}wfBlockedCommentLog
+FROM {$table_wfBlockedCommentLog}
 WHERE unixday >= FLOOR(UNIX_TIMESTAMP() / 86400) - 31");
 
 ?>

@@ -1,6 +1,39 @@
 CHANGELOG
 =========
 
+= Version 8.0 =
+* name and email column on submissions page are now sortable
+* updated the changelog of last versions (hopefully more clear now)
+* did this because of the many changes in last versions
+
+= Version 7.9 =
+* fix: email label validation on settingspage (thanks gerard1964)
+* new: added name and email column on submissions page
+* updated privacy consent notification in email to admin and in dashboard (again)
+
+= Version 7.8 =
+* updated privacy consent notification in email to admin and in dashboard 
+
+= Version 7.7 =
+* new: activate a privacy checkbox so that your form complies with the GDPR
+* if activated, user must consent to the collection of name, email and IP address
+* you can set this via the settingspage
+* added a privacy consent notification in email to admin and in dashboard
+* thanks nimrod54 for informing me about this
+
+= Version 7.6 =
+* textual change in widget (forgot to add this in previous update)
+* updated file vscf-widget
+
+= Version 7.5 =
+* major update
+* new: you can now list form submissions in your dashboard
+* new: added settingspage with all general settings and labels
+* removed all field label (shortcode) attributes
+* all field labels can be changed via the settingspage
+* all other (shortcode) attributes still work as before
+* updated most files
+
 = Version 7.4 =
 * file vscf-widget-form: fixed mistake in resetting captcha (thanks malae) 
 

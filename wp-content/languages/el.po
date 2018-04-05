@@ -4050,13 +4050,13 @@ msgid "1 result found. Use up and down arrow keys to navigate."
 msgstr "Βρέθηκε 1 αποτέλεσμα. Χρησιμοποιήστε τα βέλη πάνω και κάτω στο πληκτρολόγιο για να περιηγηθείτε."
 
 #. translators: %s: user name
-#: wp-includes/comment-template.php:2232
+#: wp-includes/comment-template.php:2231
 msgid "Logged in as %s. Edit your profile."
 msgstr "Συνδεθήκατε ως %s. Επεξεργασία του προφίλ σας."
 
 #. translators: 1: edit user link, 2: accessibility text, 3: user name, 4:
 #. logout URL
-#: wp-includes/comment-template.php:2229
+#: wp-includes/comment-template.php:2228
 msgid "<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s\">Log out?</a>"
 msgstr "<a href=\"%1$s\" aria-label=\"%2$s\">Συνδεθήκατε ως %3$s</a>. <a href=\"%4$s\">Αποσύνδεση;</a>"
 
@@ -9196,7 +9196,7 @@ msgstr "<strong>Οι τιμές των σταθερών VHOST και SUBDOMAIN_I
 msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr "<strong>ΣΦΑΛΜΑ</strong>: To όνομα χρήστη περιέχει μη επιτρεπτούς χαρακτήρες. Παρακαλώ πληκτρολογήστε ένα έγκυρο όνομα χρήστη."
 
-#: wp-includes/comment-template.php:2207
+#: wp-includes/comment-template.php:2206
 msgid "Required fields are marked %s"
 msgstr "Τα υποχρεωτικά πεδία σημειώνονται με %s"
 
@@ -9358,7 +9358,7 @@ msgstr "Υπήρξε σφάλμα κατά την προσθήκη σας σε �
 msgid "This file is too big. Files must be less than %d KB in size."
 msgstr "Το αρχείο υπερβαίνει το ανώτατο όριο, που είναι %d KB."
 
-#: wp-includes/comment-template.php:2236
+#: wp-includes/comment-template.php:2235
 msgid "Your email address will not be published."
 msgstr "Η ηλ. διεύθυνση σας δεν δημοσιεύεται."
 
@@ -10564,7 +10564,7 @@ msgstr "Δεν υπάρχουν νέα μηνύματα ηλ. ταχυδρομε
 msgid "Oops: %s"
 msgstr "Ωπ! %s"
 
-#: wp-includes/comment-template.php:2250
+#: wp-includes/comment-template.php:2249
 msgid "Cancel reply"
 msgstr "Ακύρωση απάντησης"
 
@@ -10757,7 +10757,7 @@ msgstr "Επόμενη σελίδα"
 msgid "moved to the trash."
 msgstr "διαγράφηκαν."
 
-#: wp-includes/comment-template.php:2251
+#: wp-includes/comment-template.php:2250
 msgid "Post Comment"
 msgstr "Δημοσίευση σχολίου"
 
@@ -11446,7 +11446,7 @@ msgid "1 Comment"
 msgstr "1 σχόλιο"
 
 #. translators: %s: login URL
-#: wp-includes/comment-template.php:2223
+#: wp-includes/comment-template.php:2222
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr "Για να σχολιάσετε πρέπει να <a href=\"%s\">συνδεθείτε</a>."
 
@@ -11487,7 +11487,7 @@ msgstr "Συνδεθείτε για να απαντήσετε"
 msgid "Log in to leave a Comment"
 msgstr "Συνδεθείτε για να σχολιάσετε"
 
-#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2245
+#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2244
 msgid "Leave a Reply to %s"
 msgstr "Γράψτε απάντηση στο %s"
 
@@ -11501,7 +11501,7 @@ msgstr "Μεταστοιχεία"
 msgid "First Post"
 msgstr "Πρώτο άρθρο"
 
-#: wp-includes/comment-template.php:2201 wp-login.php:809
+#: wp-includes/comment-template.php:2200 wp-login.php:809
 msgid "Email"
 msgstr "Ηλ. διεύθυνση"
 
@@ -11527,7 +11527,7 @@ msgstr "Επιτρέπονται σχόλια σε άρθρα"
 msgid "Visit %s&#8217;s website"
 msgstr "Δείτε τον ιστότοπο του/της %s"
 
-#: wp-includes/comment-template.php:2203
+#: wp-includes/comment-template.php:2202
 msgid "Website"
 msgstr "Ιστότοπος"
 
@@ -11610,7 +11610,7 @@ msgstr "Πατήστε εδώ για να ακυρώσετε το σχόλιο."
 msgid "<strong>ERROR</strong>: This email is already registered, please choose another one."
 msgstr "<strong>ΣΦΑΛΜΑ</strong>: Αυτή η ηλ. διεύθυνση ανήκει σε άλλον χρήστη, παρακαλώ επιλέξτε μια άλλη."
 
-#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2244
+#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2243
 msgid "Leave a Reply"
 msgstr "Αφήστε μια απάντηση"
 
@@ -11659,7 +11659,7 @@ msgstr "Συντάκτης"
 msgid "URL"
 msgstr "URL"
 
-#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2219
+#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2218
 msgctxt "noun"
 msgid "Comment"
 msgstr "Σχόλιο"
@@ -11705,7 +11705,7 @@ msgstr "Στόχος"
 msgid "Advanced"
 msgstr "Περισσότερα"
 
-#: wp-includes/comment-template.php:2199
+#: wp-includes/comment-template.php:2198
 msgid "Name"
 msgstr "Όνομα"
 

@@ -22,6 +22,13 @@ class wfIssues {
 	
 	const STATUS_PAIDONLY = 'x';
 	
+	//Possible scan failure types
+	const SCAN_FAILED_GENERAL = 'general';
+	const SCAN_FAILED_TIMEOUT = 'timeout';
+	const SCAN_FAILED_DURATION_REACHED = 'duration';
+	const SCAN_FAILED_VERSION_CHANGE = 'versionchange';
+	const SCAN_FAILED_FORK_FAILED = 'forkfailed';
+	
 	private $db = false;
 
 	//Properties that are serialized on sleep:
@@ -105,11 +112,37 @@ class wfIssues {
 	}
 	
 	/**
-	 * Returns false if the scan has not been detected as failing. If it has, it returns the timestamp of the last status update.
+	 * Returns false if the scan has not been detected as failed. If it has, returns a constant corresponding to the reason.
 	 * 
-	 * @return bool|int
+	 * @return bool|string
 	 */
 	public static function hasScanFailed() {
+		$lastStatusUpdate = self::lastScanStatusUpdate();
+		if ($lastStatusUpdate !== false && wfScanner::shared()->isRunning()) {
+			$threshold = WORDFENCE_SCAN_FAILURE_THRESHOLD;
+			if (time() - $lastStatusUpdate > $threshold) {
+				return self::SCAN_FAILED_TIMEOUT;
+			}
+		}
+		
+		$recordedFailure = wfConfig::get('lastScanFailureType');
+		switch ($recordedFailure) {
+			case self::SCAN_FAILED_GENERAL:
+			case self::SCAN_FAILED_DURATION_REACHED:
+			case self::SCAN_FAILED_VERSION_CHANGE:
+			case self::SCAN_FAILED_FORK_FAILED:
+				return $recordedFailure;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Returns false if the scan has not been detected as timed out. If it has, it returns the timestamp of the last status update.
+	 *
+	 * @return bool|int
+	 */
+	public static function lastScanStatusUpdate() {
 		if (wfConfig::get('wf_scanLastStatusTime', 0) === 0) {
 			return false;
 		}
@@ -135,9 +168,8 @@ class wfIssues {
 		return array('updateCalled', 'issuesTable', 'pendingIssuesTable', 'maxIssues', 'newIssues', 'totalIssues', 'totalCriticalIssues', 'totalWarningIssues', 'totalIgnoredIssues');
 	}
 	public function __construct(){
-		global $wpdb;
-		$this->issuesTable = $wpdb->base_prefix . 'wfIssues';
-		$this->pendingIssuesTable = $wpdb->base_prefix . 'wfPendingIssues';
+		$this->issuesTable = wfDB::networkTable('wfIssues');
+		$this->pendingIssuesTable = wfDB::networkTable('wfPendingIssues');
 		$this->maxIssues = wfConfig::get('scan_maxIssues', 0);
 	}
 	public function __wakeup(){
@@ -319,7 +351,9 @@ class wfIssues {
 			'timeLimitReached' => $timeLimitReached,
 			));
 		
-		wp_mail(implode(',', $emails), $subject, $content, 'Content-type: text/html');
+		if (count($emails)) {
+			wp_mail(implode(',', $emails), $subject, $content, 'Content-type: text/html');
+		}
 	}
 	public function deleteIssue($id){ 
 		$this->getDB()->queryWrite("delete from " . $this->issuesTable . " where id=%d", $id);
@@ -398,8 +432,8 @@ class wfIssues {
 				if ($issueList[$i]['type'] == 'database') {
 					$issueList[$i]['data']['optionExists'] = false;
 					if (!empty($issueList[$i]['data']['site_id'])) {
-						$prefix = $wpdb->get_blog_prefix($issueList[$i]['data']['site_id']);
-						$issueList[$i]['data']['optionExists'] = $wpdb->get_var($wpdb->prepare("SELECT count(*) FROM {$prefix}options WHERE option_name = %s", $issueList[$i]['data']['option_name'])) > 0;
+						$table_options = wfDB::blogTable('options', $issueList[$i]['data']['site_id']);
+						$issueList[$i]['data']['optionExists'] = $wpdb->get_var($wpdb->prepare("SELECT count(*) FROM {$table_options} WHERE option_name = %s", $issueList[$i]['data']['option_name'])) > 0;
 					}
 				}
 				$issueList[$i]['issueIDX'] = $i;

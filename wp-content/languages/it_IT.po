@@ -4047,13 +4047,13 @@ msgid "1 result found. Use up and down arrow keys to navigate."
 msgstr "Trovato 1 risultato. Usa i tasti freccia su e giù per esplorarlo."
 
 #. translators: %s: user name
-#: wp-includes/comment-template.php:2232
+#: wp-includes/comment-template.php:2231
 msgid "Logged in as %s. Edit your profile."
 msgstr "Autenticato come %s. Modifica il tuo profilo."
 
 #. translators: 1: edit user link, 2: accessibility text, 3: user name, 4:
 #. logout URL
-#: wp-includes/comment-template.php:2229
+#: wp-includes/comment-template.php:2228
 msgid "<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s\">Log out?</a>"
 msgstr "<a href=\"%1$s\" aria-label=\"%2$s\">Autenticato come %3$s</a>. <a href=\"%4$s\">Uscire?</a>"
 
@@ -9203,7 +9203,7 @@ msgstr "<strong>Conflitto fra i valori per le costanti VHOST e SUBDOMAIN_INSTALL
 msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr "<strong>ERRORE</strong>: questo nome utente non è valido perché utilizza dei caratteri non ammessi. Inserisci un nome utente valido."
 
-#: wp-includes/comment-template.php:2207
+#: wp-includes/comment-template.php:2206
 msgid "Required fields are marked %s"
 msgstr "I campi obbligatori sono contrassegnati %s"
 
@@ -9363,7 +9363,7 @@ msgstr "Si è verificato un errore nell'aggiunta del proprio sito. Tornare alla 
 msgid "This file is too big. Files must be less than %d KB in size."
 msgstr "Il file è troppo grande. I file devono avere una dimensione inferiore a %d KB."
 
-#: wp-includes/comment-template.php:2236
+#: wp-includes/comment-template.php:2235
 msgid "Your email address will not be published."
 msgstr "Il tuo indirizzo email non sarà pubblicato."
 
@@ -11288,19 +11288,19 @@ msgstr "Identificato un commento duplicato; sembra che tu abbia già scritto que
 msgid "Unapproved"
 msgstr "Non approvato"
 
-#: wp-includes/comment-template.php:2251
+#: wp-includes/comment-template.php:2250
 msgid "Post Comment"
 msgstr "Commento all'articolo"
 
-#: wp-includes/comment-template.php:2250
+#: wp-includes/comment-template.php:2249
 msgid "Cancel reply"
 msgstr "Annulla risposta"
 
-#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2245
+#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2244
 msgid "Leave a Reply to %s"
 msgstr "Rispondi a %s"
 
-#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2244
+#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2243
 msgid "Leave a Reply"
 msgstr "Lascia un commento"
 
@@ -11393,7 +11393,7 @@ msgid "Tags: "
 msgstr "Tag:"
 
 #. translators: %s: login URL
-#: wp-includes/comment-template.php:2223
+#: wp-includes/comment-template.php:2222
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr "Devi essere <a href=\"%s\">connesso</a> per inviare un commento."
 
@@ -11451,7 +11451,7 @@ msgstr "Per qualche strano motivo, non è possibile modificare questo articolo."
 msgid "Widgets"
 msgstr "Widget"
 
-#: wp-includes/comment-template.php:2203
+#: wp-includes/comment-template.php:2202
 msgid "Website"
 msgstr "Sito web"
 
@@ -11507,7 +11507,7 @@ msgstr "Formato data"
 msgid "Allow people to post comments on new articles"
 msgstr "Consenti la scrittura di commenti per i nuovi articoli"
 
-#: wp-includes/comment-template.php:2201 wp-login.php:809
+#: wp-includes/comment-template.php:2200 wp-login.php:809
 msgid "Email"
 msgstr "Email"
 
@@ -11967,7 +11967,7 @@ msgstr "Nessuna"
 msgid "Description"
 msgstr "Descrizione"
 
-#: wp-includes/comment-template.php:2199
+#: wp-includes/comment-template.php:2198
 msgid "Name"
 msgstr "Nome"
 
@@ -12055,7 +12055,7 @@ msgstr "No"
 msgid "Are you sure you want to do this?"
 msgstr "Sei sicuro di voler fare questo?"
 
-#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2219
+#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2218
 msgctxt "noun"
 msgid "Comment"
 msgstr "Commento"

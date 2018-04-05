@@ -7,8 +7,9 @@
 /* Form elements */
 #vscf .form-group {clear:both; margin-bottom:15px;}
 #vscf .form-group label {margin-bottom:5px; display:block;}
-#vscf .form-group input {width:70%; font-size:1em;}
+#vscf .form-group input[type="text"], #vscf .form-group input[type="email"] {width:70%; font-size:1em;}
 #vscf .form-group textarea {width:90%; font-size:1em;}
+#vscf .form-group input[type="checkbox"] {}
 #vscf .form-group button {}
 
 /* Error */

@@ -20,7 +20,7 @@ class wfCrawl {
 		return false;
 	}
 	public static function verifyCrawlerPTR($hostPattern, $IP){
-		global $wpdb; $table = $wpdb->base_prefix . 'wfCrawlers';
+		$table = wfDB::networkTable('wfCrawlers');
 		$db = new wfDB();
 		$IPn = wfUtils::inet_pton($IP);
 		$status = $db->querySingle("select status from $table where IP=%s and patternSig=UNHEX(MD5('%s')) and lastUpdate > unix_timestamp() - %d", $IPn, $hostPattern, WORDFENCE_CRAWLER_VERIFY_CACHE_TIME);
@@ -147,8 +147,7 @@ class wfCrawl {
 	 * @return string
 	 */
 	public static function verifyGooglebotViaNOC1($ip = null) {
-		global $wpdb;
-		$table = $wpdb->base_prefix . 'wfCrawlers';
+		$table = wfDB::networkTable('wfCrawlers');
 		if ($ip === null) {
 			$ip = wfUtils::getIP();
 		}

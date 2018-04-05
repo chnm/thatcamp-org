@@ -132,14 +132,14 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 <script type="application/javascript">
 	(function($) {
 		$(function() {
-			$('#whitelistParam').select2({
+			$('#whitelistParam').wfselect2({
 				minimumResultsForSearch: -1,
 				templateSelection: function(item) {
 					return 'Param Type: ' + item.text;
 				}
 			});
 			
-			$('#whitelist-table-controls select').select2({
+			$('#whitelist-table-controls select').wfselect2({
 				minimumResultsForSearch: -1,
 				placeholder: "Filter By",
 				width: '200px',

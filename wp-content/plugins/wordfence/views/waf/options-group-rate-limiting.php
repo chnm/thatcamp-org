@@ -224,7 +224,7 @@ if (!isset($collapseable)) {
 				<script type="application/javascript">
 					(function($) {
 						$(function() {
-							$('.wf-option.wf-option-rate-limit > .wf-option-content > ul > li.wf-option-select select').select2({
+							$('.wf-option.wf-option-rate-limit > .wf-option-content > ul > li.wf-option-select select').wfselect2({
 								minimumResultsForSearch: -1
 							}).on('change', function () {
 								var optionElement = $(this).closest('.wf-option');
@@ -255,6 +255,15 @@ if (!isset($collapseable)) {
 
 								WFAD.updatePendingChanges();
 							}).triggerHandler('change');
+
+							$(window).on('wfOptionsReset', function() {
+								$('.wf-option.wf-option-rate-limit').each(function() {
+									var originalRateValue = $(this).data('originalRateValue');
+									$(this).find('.wf-rate-limit-rate').val(originalRateValue).trigger('change');
+									var originalActionValue = $(this).data('originalActionValue');
+									$(this).find('.wf-rate-limit-action').val(originalActionValue).trigger('change');
+								});
+							});
 						});
 					})(jQuery);
 				</script>

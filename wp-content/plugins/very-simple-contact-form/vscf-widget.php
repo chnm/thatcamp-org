@@ -35,6 +35,7 @@ class vscf_widget extends WP_Widget {
 		<input class="widefat" id="<?php echo $this->get_field_id( 'attributes' ); ?>" name="<?php echo $this->get_field_name( 'attributes' ); ?>" type="text" maxlength='200' value="<?php echo esc_attr( $attributes ); ?>">
  		</p> 
 		<p><?php _e( 'Info about attributes', 'very-simple-contact-form' ); ?>: <a href="https://wordpress.org/plugins/very-simple-contact-form" target="_blank"><?php _e( 'click here', 'very-simple-contact-form' ); ?></a></p>
+		<p><?php _e( 'Settings', 'very-simple-contact-form' ); ?>: <a href="<?php echo admin_url( 'options-general.php?page=vscf' ); ?>"><?php _e( 'click here', 'very-simple-contact-form' ); ?></a></p>
 		<?php 
 	}
 

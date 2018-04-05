@@ -1,0 +1,385 @@
+# Translation of Plugins - YOP Poll - Development (trunk) in Greek
+# This file is distributed under the same license as the Plugins - YOP Poll - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-03-30 08:10:46+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: el_GR\n"
+"Project-Id-Version: Plugins - YOP Poll - Development (trunk)\n"
+
+#: inc/options_admin.php:52 inc/poll_admin.php:160
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: inc/admin.php:1114
+msgid "No"
+msgstr "Όχι"
+
+#: inc/admin.php:1115
+msgid "Yes"
+msgstr "Ναι"
+
+#: inc/admin.php:1190
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: inc/poll_admin.php:1839 inc/poll_admin.php:1979
+msgid "Filter"
+msgstr "Φίλτρο"
+
+#: inc/logs_admin.php:157
+msgid "User"
+msgstr "Χρήστης"
+
+#: inc/options_admin.php:50 inc/poll_admin.php:158
+msgid "Next"
+msgstr "Επόμενο"
+
+#: inc/yop_poll_auto_update.php:150
+msgid "An unknown error occurred"
+msgstr "Προέκυψε άγνωστο λάθος"
+
+#. Author of the plugin/theme
+msgid "yourownprogrammer"
+msgstr "yourownprogrammer"
+
+#. #-#-#-#-#  tmp-yop-poll.pot (YOP Poll 5.7.7)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  tmp-yop-poll.pot (YOP Poll 5.7.7)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://www.yop-poll.com"
+msgstr "http://www.yop-poll.com"
+
+#: yop_poll.php:166
+msgid "YOP POLL!"
+msgstr "YOP POLL!"
+
+#: inc/admin.php:404
+msgid "Need Help?"
+msgstr "Θέλετε βοήθεια;"
+
+#: inc/admin.php:412
+msgid "Email"
+msgstr "Email"
+
+#: inc/admin.php:421
+msgid "Send me the FREE guide!"
+msgstr "Στείλτε μου τον ΔΩΡΕΑΝ οδηγό!"
+
+#: inc/admin.php:428
+msgid "Incorrect please try again"
+msgstr "Λανθασμένο παρακαλώ προσπαθήστε ξανά"
+
+#: inc/admin.php:404
+msgid "Download<br /> YOP Poll User Guide"
+msgstr "Λήψη<br /> YOP Poll Οδηγού Χρήστη"
+
+#: inc/admin.php:429
+msgid "Enter the numbers you hear:"
+msgstr "Εισάγετε τους αριθμούς που ακούτε:"
+
+#: inc/admin.php:430
+msgid "Enter the words above:"
+msgstr "Εισάγετε τις παραπάνω λέξεις:"
+
+#: inc/admin.php:648 inc/admin.php:693 inc/admin.php:750
+msgid "Bad Request! Try later!"
+msgstr "Λάθος Αίτημα! Δοκιμάστε αργότερα!"
+
+#: inc/admin.php:677 inc/admin.php:729 inc/admin.php:785
+msgid "Invalid Request! Try later!"
+msgstr "Μη ορθό αίτημα! Δοκιμάστε ξανά αργότερα"
+
+#: inc/admin.php:1086 inc/admin.php:1148 inc/widget.php:145
+msgid "Display Random Poll"
+msgstr "Εμφάνιση Τυχαίας Δημοσκόπησης"
+
+#: inc/admin.php:1083 inc/admin.php:1146
+msgid "Poll to Display"
+msgstr "Δημοσκόπηση για εμφάνιση"
+
+#: inc/admin.php:1056
+msgid "Error: Invalid Yop Poll!\\n\\nPlease choose the poll again:\\n\\n"
+msgstr "Λάθος: Μη ορθή Yop Poll!\\n\\nΠαρακαλώ επιλέξτε ξανά τη δημοσκόπηση:\\n\\n"
+
+#: inc/admin.php:1047 inc/admin.php:1124 inc/admin.php:1186 inc/admin.php:1217
+msgid "Insert Poll"
+msgstr "Εισάγετε Δημοσκόπηση"
+
+#: inc/admin.php:941 inc/admin.php:999 inc/widget.php:97
+msgid "Loading"
+msgstr "Φορτώνει"
+
+#: inc/admin.php:788
+msgid "Bad Request!Try again later"
+msgstr "Λάθος Αίτημα!Δοκιμάστε ξανά αργότερα"
+
+#: inc/admin.php:734
+msgid "Bad request!Try again later"
+msgstr "Λάθος αίτημα!Δοκιμάστε ξανά αργότερα"
+
+#: inc/logs_admin.php:157 inc/poll_admin.php:691 inc/poll_admin.php:773
+#: inc/poll_admin.php:1997
+msgid "#"
+msgstr "#"
+
+#: inc/import_admin.php:743 inc/templates_admin.php:173
+msgid "&raquo;"
+msgstr "&raquo;"
+
+#: inc/import_admin.php:741 inc/templates_admin.php:171
+msgid "&laquo;"
+msgstr "&laquo;"
+
+#: inc/bans_admin.php:89 inc/logs_admin.php:307 inc/poll_admin.php:369
+#: inc/poll_admin.php:600 inc/poll_admin.php:1709 inc/poll_admin.php:1776
+#: inc/poll_admin.php:1795 inc/public-admin.php:167
+msgid "Next &raquo;"
+msgstr "Επόμενο &raquo;"
+
+#: inc/bans_admin.php:89 inc/logs_admin.php:307 inc/poll_admin.php:368
+#: inc/poll_admin.php:600 inc/poll_admin.php:1709 inc/poll_admin.php:1776
+#: inc/poll_admin.php:1795 inc/public-admin.php:166
+msgid "&laquo; Previous"
+msgstr "&laquo; Προηγούμενο"
+
+#: inc/admin.php:1219
+msgid "Error: Poll Id must be numeric!\\n\\nPlease insert the poll ID Again:\\n\\n"
+msgstr "Λάθος: Το ID της Δημοσκόπησης πρέπει να είναι αριθμήτικό!\\n\\nΠαρακαλώ εισάγετε ξανά ID δημοσκόπησης:\\n\\n"
+
+#: inc/admin.php:1218
+msgid "Please insert the poll ID:\\n\\n"
+msgstr "Παρακαλώ εισάγετε ID δημοσκόπησης:\\n\\n"
+
+#: inc/admin.php:1216
+msgid "Yop Poll"
+msgstr "Yop Poll"
+
+#: inc/admin.php:1108 inc/admin.php:1172
+msgid "Display results only"
+msgstr "Εμφάνιση μόνο αποτελεσμάτων"
+
+#: inc/admin.php:1102 inc/admin.php:1164 inc/logs_admin.php:157
+#: inc/poll_admin.php:2009
+msgid "Tracking ID"
+msgstr "ID Ίχνους"
+
+#: inc/admin.php:1088 inc/admin.php:1150 inc/widget.php:147
+msgid "Display Current Active Poll"
+msgstr "Εμφάνιση Τρέχουσας Ενεργούς Δημοσκόπησης"
+
+#: inc/admin.php:1087 inc/admin.php:1149 inc/widget.php:146
+msgid "Display Latest Poll"
+msgstr "Εμφάνιση Τελευταίας Δημοσκόπησης"
+
+#: inc/options_admin.php:750
+msgid "Option \"Send Email Notifications\" Updated!"
+msgstr "Επιλογή \"Αποστολή Ειδοποίησης Email\" Ενημερώθηκε!"
+
+#: inc/options_admin.php:547
+msgid "Option \"Blocking Voters\" Updated!"
+msgstr "Επιλογή \"Φραγή Ψηφοφόρων\" Ενημερώθηκε!"
+
+#: inc/logs_admin.php:176 inc/poll_admin.php:736 inc/poll_admin.php:813
+#: inc/poll_admin.php:2430
+msgid "Can't close php://output!"
+msgstr "Αδυναμία κλεισίματος php://output!"
+
+#: inc/logs_admin.php:165 inc/logs_admin.php:171 inc/poll_admin.php:704
+#: inc/poll_admin.php:788 inc/poll_admin.php:2331 inc/poll_admin.php:2378
+#: inc/poll_admin.php:2423
+msgid "Can't write header!"
+msgstr "Αδυναμία εγγραφής επικεφαλίδας!"
+
+#: inc/logs_admin.php:163 inc/poll_admin.php:700 inc/poll_admin.php:784
+#: inc/poll_admin.php:2323
+msgid "Can't open php://output!"
+msgstr "Αδυναμία ανοίγματος php://output!"
+
+#: inc/logs_admin.php:157 inc/poll_admin.php:778 inc/poll_admin.php:2011
+msgid "Vote Date"
+msgstr "Ημερομηνία ψήφου"
+
+#: inc/logs_admin.php:157
+msgid "IP"
+msgstr "IP"
+
+#: inc/logs_admin.php:157
+msgid "User Email"
+msgstr "Email Χρήστη"
+
+#: inc/logs_admin.php:157
+msgid "User Type"
+msgstr "Τύπος Χρήστη"
+
+#: inc/logs_admin.php:157 inc/poll_admin.php:1848
+msgid "Answer"
+msgstr "Απάντηση"
+
+#: inc/logs_admin.php:157
+msgid "POLL Name"
+msgstr "Όνομα ΔΗΜΟΣΚΟΠΗΣΗΣ"
+
+#: inc/poll_admin.php:1850
+msgid "Percent"
+msgstr "Ποσοστό"
+
+#: inc/poll_admin.php:1833
+msgid "DESC"
+msgstr "ΦΘΗΝ"
+
+#: inc/poll_admin.php:1837
+msgid "Show Other Answers Values"
+msgstr "Εμφάνιση Άλλων Απαντήσεων"
+
+#: inc/poll_admin.php:1832
+msgid "ASC"
+msgstr "ΑΥΞ"
+
+#: inc/poll_admin.php:1829 inc/poll_admin.php:1849 inc/poll_admin.php:1912
+msgid "Votes"
+msgstr "Ψήφοι"
+
+#: inc/poll_admin.php:1828
+msgid "Answer Value"
+msgstr "Τιμή Απάντησης"
+
+#: inc/poll_admin.php:1827
+msgid "Answer ID"
+msgstr "ID Απάντησης"
+
+#: inc/poll_admin.php:1825
+msgid "Order By"
+msgstr "Εμφάνιση Κατά"
+
+#: inc/poll_admin.php:1805 models/yop_poll_model.php:468
+msgid "All Polls"
+msgstr "Όλες οι Δημοσκοπήσεις"
+
+#: inc/poll_admin.php:1804
+msgid "Yop Poll Results"
+msgstr "Αποτελέσματα Yop Poll"
+
+#: inc/poll_admin.php:1754
+msgid "You are not allowed to view results for this item."
+msgstr "Δεν επιτρέπεται να δείτε τα αποτελέσματα γι' αυτό το θέμα."
+
+#: inc/poll_admin.php:717 inc/poll_admin.php:728 inc/poll_admin.php:808
+msgid "Can't write record!"
+msgstr "Δεν μπορεί να γίνει εγγραφή!"
+
+#: inc/poll_admin.php:638
+msgid "View Votes"
+msgstr "Εμφάνιση Ψήφων"
+
+#: inc/poll_admin.php:521 inc/poll_admin.php:1630
+msgid "Results"
+msgstr "Αποτελέσματα"
+
+#: inc/poll_admin.php:2313
+msgid "Ip"
+msgstr "Ip"
+
+#: inc/poll_admin.php:2312
+msgid "Vote details"
+msgstr "Λεπτομέρειες ψήφου"
+
+#: inc/poll_admin.php:2062
+msgid "Your poll doesn`t exist!"
+msgstr "Η δημοσκόπηση δεν υπάρχει!"
+
+#: inc/poll_admin.php:1975
+msgid "End Date"
+msgstr "Ημερομηνία Λήξης"
+
+#: inc/poll_admin.php:1971
+msgid "Start Date"
+msgstr "Ημερομηνία Αρχής"
+
+#: inc/poll_admin.php:1968
+msgid "Export"
+msgstr "Εξαγωγή"
+
+#: inc/poll_admin.php:1966
+msgid "All Pages"
+msgstr "Όλες οι Σελίδες"
+
+#: inc/poll_admin.php:1965
+msgid "This Page"
+msgstr "Αυτή η Σελίδα"
+
+#: inc/poll_admin.php:1946
+msgid "Custom Fields"
+msgstr "Προσαρμοσμένα Πεδία"
+
+#: inc/poll_admin.php:1930
+msgid "No other answers defined!"
+msgstr "Δεν έχουν οριστεί άλλες απαντήσεις!"
+
+#: inc/poll_admin.php:1911
+msgid "Other Answers"
+msgstr "Άλλες Απαντήσεις"
+
+#: inc/poll_admin.php:1901 inc/poll_admin.php:1987
+msgid "Set"
+msgstr "Ορισμός"
+
+#. Plugin Name of the plugin/theme
+msgid "YOP Poll"
+msgstr "YOP Poll"
+
+#. Description of the plugin/theme
+msgid "Use a full option polling functionality to get the answers you need. YOP Poll is the perfect, easy to use poll plugin for your WordPress website."
+msgstr "Χρησιμοποιήστε λειτουργία πλήρους δημοσκόπησης για να λάβετε τις απαντήσεις που θέλετε. Το YOP Poll είναι το τέλειο και εύκολο στη χρήση πρόσθετο για τον WordPress ιστότοπό σας."
+
+#: yop_poll.php:167
+msgid "Php version isn't high enough! Yop Poll will be automatically downgraded!Please upgrade your Php version!"
+msgstr "Η έκδοση της PHP δεν είναι επαρκής! Το Yop Poll αυτόματα υποβαθμίζεται! Παρακαλώ αναβαθμίστε την έκδοση PHP!"
+
+#: models/yop_poll_model.php:334
+msgid "Option \"Show Poll in Archive\" NOT Updated! Please choose between 'yes' or 'no'!"
+msgstr "Η Επιλογή \"Εμφάνιση Δημοσκόπησης στο Αρχείο\" ΔΕΝ Ενημερώθηκε! Παρακαλώ επιλέξτε μεταξύ 'ναι' ή 'όχι'!"
+
+#: models/yop_poll_model.php:322
+msgid "Option \"Poll Archive Order\" NOT Updated! You must fill in with a numeric value!"
+msgstr "Η Επιλογή \"Σειρά Αρχείου Δημοσκοπήσεων\" ΔΕΝ Ενημερώθηκε! Πρέπει να δώσετε αριθμητική τιμή!"
+
+#: inc/yop_poll_auto_update.php:138
+msgid "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Try again</a>"
+msgstr "Προέκυψε απροσδόκητο HTTP Λάθος κατά την αίτηση API.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Try again</a>"
+
+#: inc/widget.php:144
+msgid "Do NOT Display Poll (Disable)"
+msgstr "Να ΜΗΝ Εμφανιστεί Δημοσκόπηση (Απενεργοποίηση)"
+
+#: inc/widget.php:124
+msgid "Yop Polls"
+msgstr "Yop Polls"
+
+#: inc/pro_admin.php:262
+msgid "Invalid Response From Api Server!"
+msgstr "Μη έγκυρη Απάντηση από τον Εξυπηρετητή API!"
+
+#: inc/poll_admin.php:2314
+msgid "Vote date"
+msgstr "Ημερομηνία Ψήφου"
+
+#: models/poll_model.php:1526
+msgid "Reload"
+msgstr "Επαναφόρτωση"
+
+#: inc/poll_admin.php:1897 inc/poll_admin.php:1983
+msgid "Items Per Page"
+msgstr "Στοιχεία Ανά Σελίδα"
+
+#: inc/poll_admin.php:1881
+msgid "Poll Other Answers"
+msgstr "Λοιπές Απαντήσεις Δημοσκόπησης"
+
+#: inc/poll_admin.php:1872
+msgid "No answers defined!"
+msgstr "Δεν έχουν οριστεί απαντήσεις!"

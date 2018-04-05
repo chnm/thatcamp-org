@@ -4,7 +4,7 @@ Donate link: https://bestwebsoft.com/donate/
 Tags: anti-spam security, antispam, recaptcha, captcha, captha, Invisible reCaptcha, Invisible captcha, Invisibl reCaptcha, comment, cpatcha, google catcha, Invisible re captcha
 Requires at least: 3.9
 Tested up to: 4.9.4
-Stable tag: 1.35
+Stable tag: 1.36
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -259,6 +259,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.36 - 19.03.2018 =
+* PRO : The bug related to BuddyPress registration form has been fixed.
+
 = V1.35 - 08.02.2018 =
 * Update : The Czech language file has been updated.
 * Bugfix : Google Captcha responsive styles have been fixed.
@@ -419,6 +422,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to add Google Captcha (reCAPTCHA) into standard forms was added.
 
 == Upgrade Notice ==
+
+= V1.36 =
+* Bugs fixed.
 
 = V1.35 =
 * Languages updated.

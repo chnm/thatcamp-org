@@ -1,6 +1,17 @@
 <?php
 
 class wfCredentialsController {
+	const UNCACHED = 'uncached';
+	const NOT_LEAKED = 'not-leaked';
+	const LEAKED = 'leaked';
+	
+	/**
+	 * Queries the API and returns whether or not the password exists in the breach database.
+	 * 
+	 * @param string $login
+	 * @param string $password
+	 * @return bool
+	 */
 	public static function isLeakedPassword($login, $password) {
 		$sha1 = strtoupper(hash('sha1', $password));
 		$prefix = substr($sha1, 0, 5);
@@ -29,6 +40,78 @@ class wfCredentialsController {
 					return true;
 				}
 			}
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Returns the transient key for the given user.
+	 * 
+	 * @param WP_User $user
+	 * @return string
+	 */
+	protected static function _cachedCredentialStatusKey($user) {
+		$key = 'wfcredentialstatus_' . $user->ID;
+		return $key;
+	}
+	
+	/**
+	 * Returns the cached credential status for the given user: self::UNCACHED, self::NOT_LEAKED, or self::LEAKED.
+	 * 
+	 * @param WP_User $user
+	 * @return string
+	 */
+	public static function cachedCredentialStatus($user) {
+		$key = self::_cachedCredentialStatusKey($user);
+		$value = get_transient($key);
+		if ($value === false) {
+			return self::UNCACHED;
+		}
+		else if ($value) {
+			return self::LEAKED;
+		}
+		return self::NOT_LEAKED;
+	}
+	
+	/**
+	 * Stores a cached leak value for the given user.
+	 * 
+	 * @param WP_User $user
+	 * @param bool $isLeaked
+	 */
+	public static function setCachedCredentialStatus($user, $isLeaked) {
+		$key = self::_cachedCredentialStatusKey($user);
+		set_transient($key, $isLeaked ? 1 : 0, 3600);
+	}
+	
+	/**
+	 * Clears the cache for the given user.
+	 * 
+	 * @param WP_User $user
+	 */
+	public static function clearCachedCredentialStatus($user) {
+		$key = self::_cachedCredentialStatusKey($user);
+		delete_transient($key);
+	}
+	
+	public static function hasPreviousLoginFromIP($user, $ip) {
+		global $wpdb;
+		$table_wfLogins = wfDB::networkTable('wfLogins');
+		
+		$id = property_exists($user, 'ID') ? $user->ID : 0;
+		if ($id == 0) {
+			return false;
+		}
+		
+		$result = $wpdb->get_row($wpdb->prepare("SELECT id FROM {$table_wfLogins} WHERE action = 'loginOK' AND userID = %d AND IP = %s", $id, wfUtils::inet_pton($ip)), ARRAY_A);
+		if (is_array($result)) {
+			return true;
+		}
+		
+		$lastAdminLogin = wfConfig::get_ser('lastAdminLogin');
+		if (is_array($lastAdminLogin) && isset($lastAdminLogin['userID']) && $lastAdminLogin['userID'] == $id && isset($lastAdminLogin['IP']) && wfUtils::inet_pton($lastAdminLogin['IP']) == wfUtils::inet_pton($ip)) {
+			return true;
 		}
 		
 		return false;

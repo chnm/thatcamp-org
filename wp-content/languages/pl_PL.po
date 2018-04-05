@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-09 08:32:20+0000\n"
+"PO-Revision-Date: 2018-03-30 07:37:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4060,13 +4060,13 @@ msgid "1 result found. Use up and down arrow keys to navigate."
 msgstr "Znaleziono jeden wynik. Użyj strzałek góra/dół do nawigacji."
 
 #. translators: %s: user name
-#: wp-includes/comment-template.php:2232
+#: wp-includes/comment-template.php:2231
 msgid "Logged in as %s. Edit your profile."
 msgstr "Zalogowano jako %s. Edytuj swój profil."
 
 #. translators: 1: edit user link, 2: accessibility text, 3: user name, 4:
 #. logout URL
-#: wp-includes/comment-template.php:2229
+#: wp-includes/comment-template.php:2228
 msgid "<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s\">Log out?</a>"
 msgstr "<a href=\"%1$s\" aria-label=\"%2$s\">Zalogowano jako %3$s</a>. <a href=\"%4$s\">Wylogować?</a>"
 
@@ -5259,15 +5259,15 @@ msgid ""
 msgstr ""
 "Witaj ###USERNAME###,\n"
 "\n"
-"Ten email potwierdza zmianę hasła na stronie ###SITENAME###.\n"
+"Email potwierdza zmianę hasła na witrynie ###SITENAME###.\n"
 "\n"
-" Jeśli nie zmieniałeś swojego adresu email, prosimy o kontakt z Administratorem:\n"
+"Jeśli nie próbowano zmieniać hasła, prosimy o kontakt z Administratorem:\n"
 "###ADMIN_EMAIL###\n"
 "\n"
 "Ten email został wysłany do ###EMAIL###\n"
 "\n"
 "Pozdrawiamy,\n"
-"Zespół strony ###SITENAME###\n"
+"Zespół witryny ###SITENAME###\n"
 "###SITEURL###"
 
 #: wp-includes/script-loader.php:109
@@ -9219,7 +9219,7 @@ msgstr "<strong>Konflikt między wartościami stałych VHOST oraz SUBDOMAIN_INST
 msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr "<strong>BŁĄD</strong>: Podana nazwa użytkownika jest nieprawidłowa, ponieważ zawiera niedozwolone znaki. Proszę wprowadzić prawidłową nazwę użytkownika."
 
-#: wp-includes/comment-template.php:2207
+#: wp-includes/comment-template.php:2206
 msgid "Required fields are marked %s"
 msgstr "Pola, których wypełnienie jest wymagane, są oznaczone symbolem %s"
 
@@ -9381,7 +9381,7 @@ msgstr "Wystąpił błąd podczas dodawania Twojego konta do tej witryny. Powró
 msgid "This file is too big. Files must be less than %d KB in size."
 msgstr "Ten plik jest zbyt wielki. Wysyłane pliki muszą być mniejsze niż %d KB."
 
-#: wp-includes/comment-template.php:2236
+#: wp-includes/comment-template.php:2235
 msgid "Your email address will not be published."
 msgstr "Twój adres email nie zostanie opublikowany."
 
@@ -10958,11 +10958,11 @@ msgstr "Możliwość rejestracji kont została wyłączona."
 msgid "Last updated"
 msgstr "Ostatnia aktualizacja"
 
-#: wp-includes/comment-template.php:2250
+#: wp-includes/comment-template.php:2249
 msgid "Cancel reply"
 msgstr "Anuluj pisanie odpowiedzi"
 
-#: wp-includes/comment-template.php:2251
+#: wp-includes/comment-template.php:2250
 msgid "Post Comment"
 msgstr "Opublikuj komentarz"
 
@@ -11529,7 +11529,7 @@ msgid "Edit This"
 msgstr "Edytuj"
 
 #. translators: %s: login URL
-#: wp-includes/comment-template.php:2223
+#: wp-includes/comment-template.php:2222
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr "Musisz się <a href=\"%s\">zalogować</a>, aby móc dodać komentarz."
 
@@ -11583,7 +11583,7 @@ msgstr "Zaloguj się, aby dodać komentarz"
 msgid "Click here to cancel reply."
 msgstr "Kliknij tutaj, aby anulować odpowiadanie."
 
-#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2244
+#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2243
 msgid "Leave a Reply"
 msgstr "Dodaj komentarz"
 
@@ -11612,7 +11612,7 @@ msgstr "Meta"
 msgid "First Post"
 msgstr "Pierwszy wpis"
 
-#: wp-includes/comment-template.php:2203
+#: wp-includes/comment-template.php:2202
 msgid "Website"
 msgstr "Witryna internetowa"
 
@@ -11633,7 +11633,7 @@ msgstr "Witryny"
 msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform."
 msgstr "Ta strona jest oparta na WordPressie &mdash; nowoczesnej, semantycznej, osobistej platformie publikacyjnej."
 
-#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2245
+#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2244
 msgid "Leave a Reply to %s"
 msgstr "Odpowiedz na &#8222;%s&#8221;"
 
@@ -11654,7 +11654,7 @@ msgstr "Możliwość komentowania jest wyłączona."
 msgid "<strong>ERROR</strong>: This email is already registered, please choose another one."
 msgstr "<strong>BŁĄD</strong>: Ten adres email jest już zarejestrowany, proszę skorzystać z innego."
 
-#: wp-includes/comment-template.php:2201 wp-login.php:809
+#: wp-includes/comment-template.php:2200 wp-login.php:809
 msgid "Email"
 msgstr "Email"
 
@@ -11710,7 +11710,7 @@ msgstr "Autor"
 msgid "URL"
 msgstr "Adres URL"
 
-#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2219
+#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2218
 msgctxt "noun"
 msgid "Comment"
 msgstr "Komentarz"
@@ -12053,7 +12053,7 @@ msgstr "Wyniki wyszukiwania dla zapytania &#8222;%s&#8221;"
 msgid "Update"
 msgstr "Zaktualizuj"
 
-#: wp-includes/comment-template.php:2199
+#: wp-includes/comment-template.php:2198
 msgid "Name"
 msgstr "Podpis"
 

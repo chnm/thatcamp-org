@@ -14,7 +14,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
  */
 ?>
 <script type="text/x-jquery-template" id="issueTmpl_<?php echo $internalType; ?>">
-<ul class="wf-issue wf-issue-<?php echo $internalType; ?> {{if severity == '1'}}wf-issue-severity-critical{{else}}wf-issue-severity-warning{{/if}}" data-issue-id="${id}" data-issue-type="<?php echo $internalType; ?>" data-issue-severity="${severity}" data-high-sensitivity="{{if (data.highSense == '1')}}1{{else}}0{{/if}}">
+<ul class="wf-issue wf-issue-<?php echo $internalType; ?> {{if severity == '1'}}wf-issue-severity-critical{{else}}wf-issue-severity-warning{{/if}}" data-issue-id="${id}" data-issue-type="<?php echo $internalType; ?>" data-issue-severity="${severity}" data-high-sensitivity="{{if (data.highSense == '1')}}1{{else}}0{{/if}}" data-beta-signatures="{{if (data.betaSigs == '1')}}1{{else}}0{{/if}}">
 	<li class="wf-issue-summary">
 		<ul>
 			<li class="wf-issue-icon"><?php echo $iconSVG; ?></li>

@@ -30,37 +30,37 @@ msgstr "0"
 msgid "This changeset cannot be further modified."
 msgstr "לא ניתן לערוך יותר שינוי זה."
 
-#: wp-admin/about.php:262
+#: wp-admin/about.php:316
 msgid "Improvements to Roles and Capabilities"
 msgstr "שיפורים ביכולות ותפקידים"
 
-#: wp-admin/about.php:263
+#: wp-admin/about.php:317
 msgid "New capabilities have been introduced that allow granular management of plugins and translation files. In addition, the site switching process in multisite has been fine-tuned to update the available roles and capabilities in a more reliable and coherent way."
 msgstr "נוספו יכולות חדשות המאפשרות ניהול פרטני של תוספים וקבצי תרגום. כמו כן, תהליך החלפת האתר ב- multisite שופר והוא יעדכן את התפקידים והיכולות (capabilities) בצורה אמינה וקוהרנטית יותר."
 
-#: wp-admin/about.php:259
+#: wp-admin/about.php:313
 msgid "WordPress 4.9 includes an upgraded version of MediaElement.js, which removes dependencies on jQuery, improves accessibility, modernizes the UI, and fixes many bugs."
 msgstr "וורדפרס 4.9 כוללת גרסה משודרגת של MediaElement.js שאינה תלויה יותר ב-jQuery, עם נגישות משופרת, ממשק מודרני, והרבה פחות באגים."
 
-#: wp-admin/about.php:258
+#: wp-admin/about.php:312
 msgid "MediaElement.js upgraded to 4.2.6"
 msgstr "MediaElement.js עודכן לגרסה 4.2.6"
 
-#: wp-admin/about.php:255
+#: wp-admin/about.php:309
 msgid "We&#8217;ve introduced a new code editing library, CodeMirror, for use within core. Use it to improve any code writing or editing experiences within your plugins, like CSS or JavaScript include fields."
 msgstr "הוספנו ספרייה חדשה לעריכת קוד, CodeMirror, לשימוש ברחבי וורדפרס. ניתן להשתמש בה למשל כדי לשפר את אפשרויות הכתיבה או העריכת של קטעי קוד JavaScript או CSS בתוך התוספים שלכם."
 
 #. translators: %s:
 #. https://make.wordpress.org/core/2017/11/01/improvements-to-the-customize-js-api-in-4-9/
-#: wp-admin/about.php:248
+#: wp-admin/about.php:302
 msgid "We&#8217;ve made numerous improvements to the Customizer JS API in WordPress 4.9, eliminating many pain points and making it just as easy to work with as the PHP API. There are also new base control templates, a date/time control, and section/panel/global notifications to name a few. <a href=\"%s\">Check out the full list.</a>"
 msgstr "עשינו שיפורים רבים ב-Customizer JS API ב- וורדפרס 4.9, כדי להפוך אותו קל לשימוש, בדיוק כמו ה-PHP API. נוספו גם תבניות שליטה חדשות, כמו פקד תאריך/זמן, והודעות ברמות שונות. <a href=\"%s\"> הרשימה המלאה נמצאת כאן. </a>"
 
-#: wp-admin/about.php:254
+#: wp-admin/about.php:308
 msgid "CodeMirror available for use in your themes and plugins"
 msgstr "CodeMirror זמין לשימוש בתבניות ובתוספים שלכם"
 
-#: wp-admin/about.php:244
+#: wp-admin/about.php:298
 msgid "Customizer JS API Improvements"
 msgstr "שיפורים ב-Customizer JS API"
 
@@ -68,7 +68,7 @@ msgstr "שיפורים ב-Customizer JS API"
 msgid "This data is used to provide general enhancements to WordPress, which includes helping to protect your site by finding and automatically installing new updates. It is also used to calculate statistics, such as those shown on the <a href=\"%s\">WordPress.org stats page</a>."
 msgstr "המידע נועד לאפשר שיפורים כללים לוודפרס, כולל הגנה על האתר שלכם באמצעות גילוי והתקנת עדכונים חשובים. הוא גם נועד לאפשר חישוב סטטיסטיקות, כגון אלו המוצגות <a href=\"%s\">בעמוד הסטטיסטיקות של WordPress.org</a>"
 
-#: wp-admin/about.php:157
+#: wp-admin/about.php:211
 msgid "When you edit themes and plugins directly, WordPress 4.9 will politely warn you that this is a dangerous practice. It will recommend that you backup your files before saving, so they don&#8217;t get overwritten by the next update. Take the safe route: your future self will thank you. Your team and customers will thank you."
 msgstr "בעת עריכה ישירה של תבניות ותוספים, וורדפרס 4.9 תעדכן אתכם בנימוס שמדובר בפעולה מסוכנת, ותמליץ על גיבוי הקבצים כדי שהשינויים לא יבוטלו בעדכון הבא. בחרו בדרך הבטוחה - עוד תודו לעצמכם בעתיד. גם הלקוחות והצוות שלכם יודו לכם."
 
@@ -144,53 +144,53 @@ msgstr "https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory"
 msgid "Enter the address here if you <a href=\"%s\">want your site home page to be different from your WordPress installation directory</a>."
 msgstr "יש להכניס את הכתובת כאן אם <a href=\"%s\">מעוניינים שדף הבית של האתר יהיה שונה מכתובת ההתקנה (הספרייה בה נמצאים הקבצים של וורדפרס)</a>."
 
-#: wp-admin/about.php:227
+#: wp-admin/about.php:281
 msgid "https://wordpress.org/plugins/gutenberg/"
 msgstr "https://wordpress.org/plugins/gutenberg/"
 
 #. translators: %s: smiling face with smiling eyes emoji
-#: wp-admin/about.php:237
+#: wp-admin/about.php:291
 msgid "Developer Happiness %s"
 msgstr "לשמח מפתחים %s"
 
-#: wp-admin/about.php:226
+#: wp-admin/about.php:280
 msgid "WordPress is working on a new way to create and control your content and we&#8217;d love to have your help. Interested in being an <a href=\"%s\">early tester</a> or getting involved with the Gutenberg project? <a href=\"%s\">Contribute on GitHub</a>."
 msgstr "וורדפרס מפתחת דרך חדשה ליצור ולנהל תוכן, אנחנו נשמח לקבל את עזרתכם. מעונינים להיות <a href=\"%s\">בודקים מוקדמים</a> או להיות מעורבים בפרויקט גוטנברג? <a href=\"%s\">תרמו בגיטהאב</a>."
 
 #. translators: %s: handshake emoji
-#: wp-admin/about.php:220
+#: wp-admin/about.php:274
 msgid "Lend a Hand with Gutenberg %s"
 msgstr "הושיטו יד לעזרה עם גוטנברג %s"
 
-#: wp-admin/about.php:195
+#: wp-admin/about.php:249
 msgid "More Reliable Theme Switching"
 msgstr "החלפת תבניות אמינה יותר"
 
-#: wp-admin/about.php:187
+#: wp-admin/about.php:241
 msgid "Site Building Improvements"
 msgstr "שיפורים בבניית אתר"
 
-#: wp-admin/about.php:172
+#: wp-admin/about.php:226
 msgid "The New Gallery Widget"
 msgstr "וידג'ט גלריות חדש"
 
-#: wp-admin/about.php:164
+#: wp-admin/about.php:218
 msgid "Even More Widget Updates"
 msgstr "עוד עדכוני וידג'טים"
 
-#: wp-admin/about.php:134
+#: wp-admin/about.php:188
 msgid "Coding Enhancements"
 msgstr "שיפורים בכתיבת קוד"
 
-#: wp-admin/about.php:127
+#: wp-admin/about.php:181
 msgid "Were you lured away from your desk before you saved your new draft design? Fear not, when you return, WordPress 4.9 will politely ask whether or not you&#8217;d like to save your unsaved changes."
 msgstr "יצא לכם לקום מהמחשב לפני שזכרתם לשמור שינויים בעיצוב? אל תדאגו, אם שכחתם, מהיום וורדפרס 4.9 יזכיר לכם בנימוס לשמור (או לבטל) את השינויים שלכם."
 
-#: wp-admin/about.php:126
+#: wp-admin/about.php:180
 msgid "A Prompt to Protect Your Work"
 msgstr "להגן על העבודה שלכם"
 
-#: wp-admin/about.php:119
+#: wp-admin/about.php:173
 msgid "Design Locking To Guard Your Changes"
 msgstr "נעילת עיצוב לשמירת השינויים"
 
@@ -202,75 +202,75 @@ msgstr "אנחנו מתייחסים במלוא הרצינות לפרטיות ו�
 msgid "From time to time, your WordPress site may send data to WordPress.org &#8212; including, but not limited to &#8212; the version of WordPress you are using, and a list of installed plugins and themes."
 msgstr "מפעם לפעם אתר הוורדפרס יצטרך לשלוח אל שרתי WordPress.org מידע שיכלול (בין היתר) את גרסת הוורדפרס, רשימת התוספים המותקנים ורשימת התבניות המותקנות."
 
-#: wp-admin/about.php:203
+#: wp-admin/about.php:257
 msgid "Were you confused by the steps to create a new menu? Perhaps no longer! We&#8217;ve ironed out the UX for a smoother menu creation process. Newly updated copy will guide you."
 msgstr "האם יצירת תפריט חדש הייתה מבלבלת מדי? לא עוד! שיפרנו את הממשק, והוספנו הודעות והוראות חדשות שילוו אתכם בתהליך."
 
-#: wp-admin/about.php:202
+#: wp-admin/about.php:256
 msgid "Better Menu Instructions = Less Confusion"
 msgstr "תפריט הוראות טוב יותר = פחות בלבול"
 
-#: wp-admin/about.php:196
+#: wp-admin/about.php:250
 msgid "When you switch themes, widgets sometimes think they can just up and move location. Improvements in WordPress 4.9 offer more persistent menu and widget placement when you decide it&#8217;s time for a new theme. Additionally, you can preview installed themes or download, install, and preview new themes right. Nothing says handy like being able to preview before you deploy. "
 msgstr "כאשר מחליפים תבנית, ווידג׳טים לפעמים חושבים שהם יכולים פשוט לשנות מיקום. שיפורים בוורדפרס 4.9 ידאגו לשמירה על המיקום של התפריטים והווידג׳טים בעת החלפת תבנית. בנוסף, אפשר להפעיל תצוגה מקדימה של תבניות מותקנות ותבניות חדשות. הכי נכון לבצע תצוגה מקדימה לפני שמפעילים תבנית חדשה, לא?"
 
-#: wp-admin/about.php:180
+#: wp-admin/about.php:234
 msgid "Want to add media to your text widget? Embed images, video, and audio directly into the widget along with your text, with our simple but useful Add Media button. Woo!"
 msgstr "רוצים להוסיף מדיה לוידג׳ט הטקסט שלכם? ניתן להוסיף תמונות, וידאו, ואודיו ישירות לוידג׳ט באמצעות כפתור ״הוספת מדיה״ החדש. הידד!"
 
-#: wp-admin/about.php:179
+#: wp-admin/about.php:233
 msgid "Press a Button, Add Media"
 msgstr "לחץ על כפתור, הוסף מדיה"
 
-#: wp-admin/about.php:173
+#: wp-admin/about.php:227
 msgid "An incremental improvement to the media changes hatched in WordPress 4.8, you can now add a gallery via widget. Yes!"
 msgstr "שיפורים נוספים בתחום המדיה לאלו שנוספו בוורדפרס 4.8. ניתן כעת להוסיף גלריה בתור וידג׳ט!"
 
-#: wp-admin/about.php:156
+#: wp-admin/about.php:210
 msgid "Warning: Potential Danger Ahead!"
 msgstr "אזהרה: סכנה פוטנציאלית לפנייך!"
 
-#: wp-admin/about.php:150
+#: wp-admin/about.php:204
 msgid "The dreaded white screen. You&#8217;ll avoid it when working on themes and plugin code because WordPress 4.9 will warn you about saving an error. You&#8217;ll sleep better at night."
 msgstr "המסך הלבן הארור. ניתן כעת להימנע ממנו בעת עבודה על קוד של תבניות ותוספים: וורדפרס 4.9 יזהיר לפני שמירת שגיאה בקוד. מתכון בטוח לשינה טובה יותר."
 
-#: wp-admin/about.php:149
+#: wp-admin/about.php:203
 msgid "Sandbox for Safety"
 msgstr "ארגז חול לבטיחות"
 
-#: wp-admin/about.php:143
+#: wp-admin/about.php:197
 msgid "You&#8217;ve got a display problem but can&#8217;t quite figure out exactly what went wrong in the CSS you lovingly wrote. With syntax highlighting and error checking for CSS editing and the Custom HTML widget introduced in WordPress 4.8.1, you&#8217;ll pinpoint coding errors quickly. Practically guaranteed to help you scan code more easily and suss out and fix code errors quickly."
 msgstr "נתקלתם בבעיה ויזואלית, אבל אתם לא מצליחים לזהות מה השתבש בקוד ה-CSS שלכם. עם הדגשת התחביר החדשה ובדיקת השגיאות האוטומטית, עריכת קוד-CSS ועדכון הווידגט HTML החדש מגרסה 4.8.1, ניתן יהיה לזהות את הטעות ולתקן את הבעיה במהירות."
 
-#: wp-admin/about.php:142
+#: wp-admin/about.php:196
 msgid "Syntax Highlighting and Error Checking? Yes, Please!"
 msgstr "הדגשת תחביר ובדיקת שגיאות? כן, בבקשה!"
 
-#: wp-admin/about.php:120
+#: wp-admin/about.php:174
 msgid "Ever encounter a scenario where two designers walk into a project and designer A overrides designer B&#8217;s beautiful changes? WordPress 4.9&#8217;s design lock feature (similar to post locking) secures your draft design so that no one can make changes to it or erase all your hard work."
 msgstr "יצא לכם ששני מעצבים עבדו על אותו פרוייקט ומחקו בטעות את השינויים אחד של השני? ובכן לא עוד! בוורדפרס 4.9 שינויים עיצוביים ננעלים באופן כזה שלא מאפשרים שכתוב בטעות, בדיוק כמו בפוסטים."
 
-#: wp-admin/about.php:113
+#: wp-admin/about.php:167
 msgid "Need to get some feedback on proposed site design changes? WordPress 4.9 gives you a preview link you can send to your team and customers so that you can collect and integrate feedback before you schedule the changes to go live. Can we say collaboration&#43;&#43;?"
 msgstr "רוצים לקבל פידבק על שינויים בעיצוב באתר? וורדפרס 4.9 מאפשר לכם לקבל קישור לצפייה מוקדמת שתוכלו לשלוח לצוות שלכם וללקוחות כדי לקבל פידבק לפני שהשינויים מופעלים. שיתוף פעולה&#43;&#43;!"
 
-#: wp-admin/about.php:112
+#: wp-admin/about.php:166
 msgid "Collaborate with Design Preview Links"
 msgstr "שיתוף קישורי תצוגה מקדימה של עיצובים"
 
-#: wp-admin/about.php:106
+#: wp-admin/about.php:160
 msgid "Yes, you read that right. Just like you can draft and revise posts and schedule them to go live on the date and time you choose, you can now tinker with your site&#8217;s design and schedule those design changes to go live as you please."
 msgstr "נכון מאוד, בדיוק כמו שניתן ליצור טויוטת ולתזמן שינויים בפוסטים כדי שיפורסמו בזמן מסוים, אפשר מהיום לעשות זאת גם עם שינויים בעיצוב האתר דרך מסך ההתאמה האישית, ולתזמן שינויים בעיצוב כדי שיופעלו מתי שמתאים לכם."
 
-#: wp-admin/about.php:97
+#: wp-admin/about.php:151
 msgid "Customizer Workflow Improved"
 msgstr "שיפורים בעבודה עם מסך ההתאמה האישית"
 
-#: wp-admin/about.php:105
+#: wp-admin/about.php:159
 msgid "Draft and Schedule Site Design Customizations"
 msgstr "תזמונים וטיוטות לשינויים עיצוביים באתר"
 
-#: wp-admin/about.php:84
+#: wp-admin/about.php:138
 msgid "Welcome to an improved Customizer workflow with design drafts, locking, scheduling, and preview links. What&#8217;s more, code syntax highlighting and error checking will make for a clean and smooth site building experience. Finally, if all that wasn&#8217;t pretty great, we&#8217;ve got a great new Gallery widget and improvements to theme browsing and switching."
 msgstr "ברוכים הבאים למסך ההתאמה האישית המשופר, עם טיוטות לשינויים, נעילה, תזמון, וקישורים לצפייה מוקדמת. בנוסף, הדגשת תחביר ובדיקת שגיאות בעת עריכת הקוד ישפרו את חווית השימוש בבניה ועיצוב האתר. וגם זה לא הכל, יש לנו וידג׳ט גלריה חדש ונהדר, ושיפורים במנגנון הבחירה וההחלפה של התבניות."
 
@@ -280,7 +280,7 @@ msgid "Thank you for updating to the latest version! WordPress %s will smooth yo
 msgstr "תודה שעדכנתם לגרסה האחרונה! וורדפרס %s ישדרג את תהליכי העבודה בתחום העיצוב, ויגן עליכם מפני שגיאות קוד."
 
 #. translators: %s: party popper emoji
-#: wp-admin/about.php:79
+#: wp-admin/about.php:133
 msgid "Major Customizer Improvements, Code Error Checking, and More! %s"
 msgstr "שינויים משמעותיים במסך ההתאמה האישית, בדיקת שגיאות בקוד, ועוד! %s"
 
@@ -542,7 +542,7 @@ msgstr "https://he.wordpress.org/news/"
 msgid "Your PHP code changes were rolled back due to an error on line %1$s of file %2$s. Please fix and try saving again."
 msgstr "השינויים בקוד PHP שוחזרו בגלל שגיאה בשורה %1$s בקובץ %2$s. נא לתקן ולשמור שנית."
 
-#: wp-admin/includes/class-wp-users-list-table.php:492
+#: wp-admin/includes/class-wp-users-list-table.php:496
 msgctxt "name"
 msgid "Unknown"
 msgstr "לא ידוע"
@@ -1702,7 +1702,7 @@ msgid "Welcome to %s. This is your first post. Edit or delete it, then start blo
 msgstr "ברוכים הבאים אל %s. זה הפוסט הראשון באתר. אפשר למחוק או לערוך אותו, ולהתחיל לכתוב."
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:390
+#: wp-admin/about.php:444
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>גרסה %s</strong> מטפלת בסוגיית אבטחה אחת."
 
@@ -1719,15 +1719,15 @@ msgstr "ניתן לשנות את צלמית המשתמש ב<a href=\"%s\">גרב
 msgid "Profile Picture"
 msgstr "צלמית משתמש"
 
-#: wp-admin/about.php:34 wp-admin/about.php:387
+#: wp-admin/about.php:34 wp-admin/about.php:441
 msgid "Maintenance and Security Releases"
 msgstr "גרסת אבטחה ותחזוקה"
 
-#: wp-admin/about.php:384
+#: wp-admin/about.php:438
 msgid "Security Releases"
 msgstr "גרסת אבטחה"
 
-#: wp-admin/about.php:381
+#: wp-admin/about.php:435
 msgid "Maintenance Releases"
 msgstr "גרסת תחזוקה"
 
@@ -1775,7 +1775,7 @@ msgid "We&#8217;re going to use this information to create a %s file."
 msgstr "אנחנו עומדים להשתמש במידע הזה על מנת ליצור קובץ %s."
 
 #. translators: %s: wp-content/uploads
-#: wp-admin/options-media.php:112
+#: wp-admin/options-media.php:114
 msgid "Default is %s"
 msgstr "ברירת המחדל היא %s"
 
@@ -2059,7 +2059,7 @@ msgstr "הכתובת של התמונה לא תקינה"
 msgid "No role"
 msgstr "אין תפקיד"
 
-#: wp-admin/includes/class-wp-users-list-table.php:566
+#: wp-admin/includes/class-wp-users-list-table.php:570
 msgctxt "no user roles"
 msgid "None"
 msgstr "ללא"
@@ -2399,7 +2399,7 @@ msgstr[1] "התבנית תומכת ב-%s תפריטים. בחר אילו תפר�
 msgid "Live Preview &#8220;%s&#8221;"
 msgstr "תצוגה מקדימה: %s"
 
-#: wp-admin/includes/class-wp-users-list-table.php:505
+#: wp-admin/includes/class-wp-users-list-table.php:509
 msgid "%s post by this author"
 msgid_plural "%s posts by this author"
 msgstr[0] "פוסט %s מאת מחבר זה"
@@ -2910,7 +2910,7 @@ msgstr ""
 
 #. translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL:
 #. those are placeholders.
-#: wp-admin/includes/misc.php:1161
+#: wp-admin/includes/misc.php:1163
 msgid ""
 "Howdy ###USERNAME###,\n"
 "\n"
@@ -5255,7 +5255,7 @@ msgstr "מחיקת אתר"
 msgid "Delete My Site Permanently"
 msgstr "מחיקת האתר לצמיתות"
 
-#: wp-admin/includes/misc.php:1208
+#: wp-admin/includes/misc.php:1210
 msgid "[%s] New Admin Email Address"
 msgstr "[%s] כתובת אימייל חדשה למנהל"
 
@@ -5536,12 +5536,13 @@ msgid "Show Toolbar when viewing site"
 msgstr "הצג סרגל כלים כשצופים באתר"
 
 #. translators: %s: Codex URL
-#: wp-admin/about.php:50 wp-admin/about.php:68 wp-admin/about.php:407
+#: wp-admin/about.php:50 wp-admin/about.php:68 wp-admin/about.php:86
+#: wp-admin/about.php:104 wp-admin/about.php:122 wp-admin/about.php:461
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "למידע נוסף, ראו <a href=\"%s\">הודעת שחרור</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:395
+#: wp-admin/about.php:57 wp-admin/about.php:75 wp-admin/about.php:449
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>גרסה %1$s</strong> מטפלת בתקלה %2$s."
@@ -5550,7 +5551,8 @@ msgstr[1] "<strong>גרסה %1$s</strong> מטפלת ב-%2$s תקלות."
 #. translators: 1: WordPress version number, 2: plural number of bugs.
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:39 wp-admin/about.php:57 wp-admin/about.php:403
+#: wp-admin/about.php:39 wp-admin/about.php:93 wp-admin/about.php:111
+#: wp-admin/about.php:457
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>גרסה %1$s</strong> מטפלת במספר סוגיות אבטחה ובתקלה %2$s."
@@ -5558,7 +5560,7 @@ msgstr[1] "<strong>גרסה %1$s</strong> מטפלת במספר סוגיות א�
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:399
+#: wp-admin/about.php:453
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>גרסה %1$s</strong> מטפלת בסוגיית אבטחה ובתקלה %2$s."
@@ -5573,20 +5575,20 @@ msgstr "ברוכים הבאים ללוח הבקרה של וורדפרס! מסך 
 msgid "What&#8217;s New"
 msgstr "מה חדש"
 
-#: wp-admin/about.php:383
+#: wp-admin/about.php:437
 msgid "Security Release"
 msgstr "גרסת אבטחה"
 
-#: wp-admin/about.php:380
+#: wp-admin/about.php:434
 msgid "Maintenance Release"
 msgstr "גרסת תחזוקה"
 
-#: wp-admin/about.php:386
+#: wp-admin/about.php:440
 msgid "Maintenance and Security Release"
 msgstr "גרסת אבטחה ותחזוקה"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:392
+#: wp-admin/about.php:446
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>גרסה %s</strong> מטפלת במספר סוגיות אבטחה."
 
@@ -5594,7 +5596,7 @@ msgstr "<strong>גרסה %s</strong> מטפלת במספר סוגיות אבטח
 msgid "This screen allows you to choose your permalink structure. You can choose from common settings or create custom URL structures."
 msgstr "מסך זה מאפשר להגדיר מבנה קישורים רצוי. ניתן לבחור מבין ההגדרות הנפוצות או ליצור מבנה מותאם אישית."
 
-#: wp-admin/about.php:273
+#: wp-admin/about.php:327
 msgid "Return to Updates"
 msgstr "חזרה לשדרוגים"
 
@@ -5870,11 +5872,11 @@ msgstr "מכיוון שזוהי התקנה של רשת אתרים, ניתן לה
 msgid "Welcome to WordPress %s"
 msgstr "ברוכים הבאים לוורדפרס %s"
 
-#: wp-admin/about.php:273
+#: wp-admin/about.php:327
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "חזרה לשדרוגים"
 
-#: wp-admin/about.php:276
+#: wp-admin/about.php:330
 msgid "Go to Dashboard &rarr; Home"
 msgstr "חזרה ללוח הבקרה"
 
@@ -7700,7 +7702,7 @@ msgstr "באזור הזמן הזה אין שעון קיץ."
 msgid "Inactive:"
 msgstr "לא פעיל:"
 
-#: wp-admin/about.php:276
+#: wp-admin/about.php:330
 msgid "Go to Dashboard"
 msgstr "חזרה ללוח הבקרה"
 
@@ -8009,31 +8011,31 @@ msgstr "מותאם אישית:"
 msgid "Week Starts On"
 msgstr "היום הראשון בשבוע"
 
-#: wp-admin/options-media.php:53
+#: wp-admin/options-media.php:53 wp-admin/options-media.php:54
 msgid "Thumbnail size"
 msgstr "תמונה מוקטנת"
 
-#: wp-admin/options-media.php:65 wp-admin/options-media.php:66
+#: wp-admin/options-media.php:67 wp-admin/options-media.php:68
 msgid "Medium size"
 msgstr "בינוני"
 
-#: wp-admin/options-media.php:67 wp-admin/options-media.php:78
+#: wp-admin/options-media.php:69 wp-admin/options-media.php:80
 msgid "Max Width"
 msgstr "רוחב מרבי"
 
-#: wp-admin/options-media.php:70 wp-admin/options-media.php:81
+#: wp-admin/options-media.php:72 wp-admin/options-media.php:83
 msgid "Max Height"
 msgstr "גובה מרבי"
 
-#: wp-admin/options-media.php:76 wp-admin/options-media.php:77
+#: wp-admin/options-media.php:78 wp-admin/options-media.php:79
 msgid "Large size"
 msgstr "גדול"
 
-#: wp-admin/options-media.php:94
+#: wp-admin/options-media.php:96
 msgid "Embeds"
 msgstr "סרטונים מוטמעים"
 
-#: wp-admin/options-media.php:118
+#: wp-admin/options-media.php:120
 msgid "Full URL path to files"
 msgstr "נתיב מלא לקבצים (לא חובה)"
 
@@ -8409,7 +8411,7 @@ msgstr "אל האתר"
 msgid "Appearance"
 msgstr "עיצוב"
 
-#: wp-admin/options-media.php:120
+#: wp-admin/options-media.php:122
 msgid "Configuring this is optional. By default, it should be blank."
 msgstr "הגדרה זו אופציונלית וכברירת מחדל היא אמורה להיות ריקה."
 
@@ -8623,7 +8625,7 @@ msgstr "האם אתה בטוח שאתה רוצה למחוק קבצים אלה?"
 msgid "No such file exists! Double check the name and try again."
 msgstr "אין כזה קובץ. כדאי לבדוק את השם ולנסות שוב."
 
-#: wp-admin/options-media.php:60
+#: wp-admin/options-media.php:62
 msgid "Crop thumbnail to exact dimensions (normally thumbnails are proportional)"
 msgstr "חיתוך התמונה המוקטנת למידות מדויקות"
 
@@ -8713,7 +8715,7 @@ msgstr "סיסמה חדשה"
 msgid "Type your new password again."
 msgstr "אישור סיסמה."
 
-#: wp-admin/options-media.php:101
+#: wp-admin/options-media.php:103
 msgid "Uploading Files"
 msgstr "ארגון קבצים"
 
@@ -8730,11 +8732,11 @@ msgstr "כתובת בסיס לקטגוריות"
 msgid "Tag base"
 msgstr "כתובת בסיס לתגיות"
 
-#: wp-admin/options-media.php:131
+#: wp-admin/options-media.php:133
 msgid "Organize my uploads into month- and year-based folders"
 msgstr "לארגן את הקבצים שיועלו בספריות לפי חודשים ושנים"
 
-#: wp-admin/options-media.php:108
+#: wp-admin/options-media.php:110
 msgid "Store uploads in this folder"
 msgstr "הספרייה בה יישמרו הקבצים שיועלו"
 

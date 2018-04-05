@@ -1,10 +1,48 @@
 <?php
 class wfDB {
 	public $errorMsg = false;
+  
+  /**
+   * Returns the table prefix for the main site on multisites and the site itself on single site installations.
+   *
+   * @return string
+   */
 	public static function networkPrefix() {
 		global $wpdb;
-		return $wpdb->get_blog_prefix(0);
+		return $wpdb->base_prefix;
 	}
+  
+  /**
+   * Returns the table with the site (single site installations) or network (multisite) prefix added.
+   *
+   * @param string $table
+   * @return string
+   */
+	public static function networkTable($table) {
+	  return self::networkPrefix() . $table;
+	}
+  
+  /**
+   * Returns the table prefix for the given blog ID. On single site installations, this will be equivalent to wfDB::networkPrefix().
+   *
+   * @param int $blogID
+   * @return string
+   */
+	public static function blogPrefix($blogID) {
+	  global $wpdb;
+	  return $wpdb->get_blog_prefix($blogID);
+	}
+  
+  /**
+   * Returns the table with the site (single site installations) or blog-specific (multisite) prefix added.
+   *
+   * @param string $table
+   * @return string
+   */
+	public static function blogTable($table, $blogID) {
+	  return self::blogPrefix($blogID) . $table;
+	}
+	
 	public function __construct(){
 	}
 	public function querySingle(){
@@ -55,8 +93,7 @@ class wfDB {
 		$wpdb->suppress_errors($oldSuppress);
 	}
 	public function columnExists($table, $col){
-		global $wpdb; $prefix = $wpdb->base_prefix;
-		$table = $prefix . $table;
+		$table = wfDB::networkTable($table);
 		$q = $this->querySelect("desc $table");
 		foreach($q as $row){
 			if($row['Field'] == $col){
@@ -66,12 +103,11 @@ class wfDB {
 		return false;
 	}
 	public function dropColumn($table, $col){
-		global $wpdb; $prefix = $wpdb->base_prefix;
-		$table = $prefix . $table;
+		$table = wfDB::networkTable($table);
 		$this->queryWrite("alter table $table drop column $col");
 	}
 	public function createKeyIfNotExists($table, $col, $keyName){
-		$table = $this->prefix() . $table;
+		$table = wfDB::networkTable($table);
 		
 		$exists = $this->querySingle(<<<SQL
 SELECT TABLE_NAME FROM information_schema.TABLES
@@ -99,10 +135,6 @@ SQL
 	public function getMaxLongDataSizeBytes() {
 		$rec = $this->querySingleRec("show variables like 'max_long_data_size'");
 		return $rec['Value'];
-	}
-	public function prefix(){
-		global $wpdb;
-		return $wpdb->base_prefix;
 	}
 	public function truncate($table){ //Ensures everything is deleted if user is using MySQL >= 5.1.16 and does not have "drop" privileges
 		$this->queryWrite("truncate table $table");

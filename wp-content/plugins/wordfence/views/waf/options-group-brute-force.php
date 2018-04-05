@@ -247,7 +247,7 @@ if (!isset($collapseable)) {
 							'enabledValue' => 1,
 							'disabledValue' => 0,
 							'value' => wfConfig::get('other_WFNet') ? 1 : 0,
-							'title' => __('Participate in the Real-Time WordPress Security Network', 'wordfence'),
+							'title' => __('Participate in the Real-Time Wordfence Security Network', 'wordfence'),
 							'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_FIREWALL_WAF_OPTION_PARTICIPATE_WFSN),
 						))->render();
 						?>

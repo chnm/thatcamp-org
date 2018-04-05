@@ -3,7 +3,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 /**
  * @var wfActivityReportView $this
  */
-$title = 'Wordfence Activity for the week of ' . wfUtils::formatLocalTime(get_option('date_format'));
+$title = sprintf(__('Wordfence Activity for the week of %s', 'wordfence'), wfUtils::formatLocalTime(get_option('date_format')));
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -294,20 +294,24 @@ $title = 'Wordfence Activity for the week of ' . wfUtils::formatLocalTime(get_op
 		<td valign="top">
 			<div class="wrapper wp-core-ui">
 				<div style="float: right;text-align: right;line-height:1.1;color: #666666;margin:20px 0 0;">
-					Activity for week of<br> <strong><?php echo wfUtils::formatLocalTime(get_option('date_format')) ?></strong>
+					<?php printf(__('Activity for week of<br> <strong>%s</strong>', 'wordfence'), wfUtils::formatLocalTime(get_option('date_format'))); ?>
 				</div>
 				<a href="http://www.wordfence.com/zz7/"><img src="<?php echo wfUtils::getBaseURL(); ?>images/logo.png" alt=""/></a>
 
-				<h2>Top 10 IPs Blocked</h2>
+				<p style="font-size: 100%; vertical-align: baseline; margin: 1em 0; padding: 0; border: 0;">
+					<?php printf(__('This email was sent from your website <a href="%s">%s</a> and is a summary of security related activity that Wordfence monitors for the period %s to %s.', 'wordfence'), network_site_url(), network_site_url(), $report_start, $report_end); ?> <?php if (!wfConfig::get('isPaid')): ?><?php _e('NOTE: You are using the free version of Wordfence and are missing out on features like cellphone sign-in, country blocking and detecting if your site IP is sending spam. <a href="http://www.wordfence.com/zz6/">Click here to upgrade to Wordfence Premium now</a>.', 'wordfence'); ?><?php endif ?>
+				</p>
+
+				<h2><?php _e('Top 10 IPs Blocked', 'wordfence'); ?></h2>
 
 				<?php wfHelperString::cycle(); ?>
 
 				<table class="wf-striped-table">
 					<thead>
 						<tr>
-							<th>IP</th>
-							<th>Country</th>
-							<th>Block Count</th>
+							<th><?php _e('IP', 'wordfence'); ?></th>
+							<th><?php _e('Country', 'wordfence'); ?></th>
+							<th><?php _e('Block Count', 'wordfence'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -320,7 +324,7 @@ $title = 'Wordfence Activity for the week of ' . wfUtils::formatLocalTime(get_op
 										&nbsp;
 										<?php echo esc_html($row->countryCode) ?>
 									<?php else: ?>
-										(Unknown)
+										<?php _e('(Unknown)', 'wordfence'); ?>
 									<?php endif ?>
 								</td>
 								<td><?php echo (int)$row->blockCount ?></td>
@@ -330,19 +334,19 @@ $title = 'Wordfence Activity for the week of ' . wfUtils::formatLocalTime(get_op
 				</table>
 
 				<p>
-					<a class="button" href="<?php echo network_admin_url('admin.php?page=WordfenceWAF#top#blocking') ?>">Update Blocked IPs</a>
+					<a class="button" href="<?php echo network_admin_url('admin.php?page=WordfenceWAF#top#blocking') ?>"><?php _e('Update Blocked IPs', 'wordfence'); ?></a>
 				</p>
 
 				<?php wfHelperString::cycle(); ?>
 
-				<h2>Top 10 Countries Blocked</h2>
+				<h2><?php _e('Top 10 Countries Blocked', 'wordfence'); ?></h2>
 
 				<table class="wf-striped-table">
 					<thead>
 						<tr>
-							<th>Country</th>
-							<th>Total IPs Blocked</th>
-							<th>Block Count</th>
+							<th><?php _e('Country', 'wordfence'); ?></th>
+							<th><?php _e('Total IPs Blocked', 'wordfence'); ?></th>
+							<th><?php _e('Block Count', 'wordfence'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -354,7 +358,7 @@ $title = 'Wordfence Activity for the week of ' . wfUtils::formatLocalTime(get_op
 										&nbsp;
 										<?php echo esc_html($row->countryCode) ?>
 									<?php else: ?>
-										(Unknown)
+										<?php _e('(Unknown)', 'wordfence'); ?>
 									<?php endif ?>
 								</td>
 								<td><?php echo esc_html($row->totalIPs) ?></td>
@@ -365,19 +369,19 @@ $title = 'Wordfence Activity for the week of ' . wfUtils::formatLocalTime(get_op
 				</table>
 
 				<p>
-					<a class="button" href="<?php echo network_admin_url('admin.php?page=WordfenceWAF#top#blocking') ?>">Update Blocked Countries</a>
+					<a class="button" href="<?php echo network_admin_url('admin.php?page=WordfenceWAF#top#blocking') ?>"><?php _e('Update Blocked Countries', 'wordfence'); ?></a>
 				</p>
 
 				<?php wfHelperString::cycle(); ?>
 
-				<h2>Top 10 Failed Logins</h2>
+				<h2><?php _e('Top 10 Failed Logins', 'wordfence'); ?></h2>
 
 				<table class="wf-striped-table">
 					<thead>
 						<tr>
-							<th>Username</th>
-							<th>Login Attempts</th>
-							<th>Existing User</th>
+							<th><?php _e('Username', 'wordfence'); ?></th>
+							<th><?php _e('Login Attempts', 'wordfence'); ?></th>
+							<th><?php _e('Existing User', 'wordfence'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -385,25 +389,25 @@ $title = 'Wordfence Activity for the week of ' . wfUtils::formatLocalTime(get_op
 							<tr class="<?php echo wfHelperString::cycle('odd', 'even') ?>">
 								<td><?php echo esc_html($row->username) ?></td>
 								<td><?php echo esc_html($row->fail_count) ?></td>
-								<td class="<?php echo sanitize_html_class($row->is_valid_user ? 'loginFailValidUsername' : 'loginFailInvalidUsername') ?>"><?php echo $row->is_valid_user ? 'Yes' : 'No' ?></td>
+								<td class="<?php echo sanitize_html_class($row->is_valid_user ? 'loginFailValidUsername' : 'loginFailInvalidUsername') ?>"><?php echo $row->is_valid_user ? __('Yes', 'wordfence') : __('No', 'wordfence') ?></td>
 							</tr>
 						<?php endforeach ?>
 					</tbody>
 				</table>
 
 				<p>
-					<a class="button" href="<?php echo network_admin_url('admin.php?page=WordfenceWAF&subpage=waf_options#waf-options-bruteforce') ?>">Update Login Security Options</a>
+					<a class="button" href="<?php echo network_admin_url('admin.php?page=WordfenceWAF&subpage=waf_options#waf-options-bruteforce') ?>"><?php _e('Update Login Security Options', 'wordfence'); ?></a>
 				</p>
 
 				<?php wfHelperString::cycle(); ?>
 
-				<h2>Recently Modified Files</h2>
+				<h2><?php _e('Recently Modified Files', 'wordfence'); ?></h2>
 
 				<table class="wf-striped-table">
 					<thead>
 						<tr>
-							<th>Modified</th>
-							<th>File</th>
+							<th><?php _e('Modified', 'wordfence'); ?></th>
+							<th><?php _e('File', 'wordfence'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -422,43 +426,43 @@ $title = 'Wordfence Activity for the week of ' . wfUtils::formatLocalTime(get_op
 
 				<?php wfHelperString::cycle(); ?>
 
-				<h2>Updates Needed</h2>
+				<h2><?php _e('Updates Needed', 'wordfence'); ?></h2>
 
 				<?php if ($updates_needed['core']): ?>
 					<h4>Core</h4>
 					<ul>
-						<li>A new version of WordPress (v<?php echo esc_html($updates_needed['core']) ?>) is available.</li>
+						<li><?php printf(__('A new version of WordPress (v%s) is available.', 'wordfence'), esc_html($updates_needed['core'])); ?></li>
 					</ul>
 				<?php endif ?>
 				<?php if ($updates_needed['plugins']): ?>
-					<h4>Plugins</h4>
+					<h4><?php _e('Plugins', 'wordfence'); ?></h4>
 					<ul>
 						<?php
 						foreach ($updates_needed['plugins'] as $plugin):
 							$newVersion = ($plugin['newVersion'] == 'Unknown' ? $plugin['newVersion'] : "v{$plugin['newVersion']}");
 						?>
 							<li>
-								A new version of the plugin "<?php echo esc_html("{$plugin['Name']} ({$newVersion})") ?>" is available.
+								<?php printf(__('A new version of the plugin "%s" is available.', 'wordfence'), esc_html("{$plugin['Name']} ({$newVersion})")); ?>
 							</li>
 						<?php endforeach ?>
 					</ul>
 				<?php endif ?>
 				<?php if ($updates_needed['themes']): ?>
-					<h4>Themes</h4>
+					<h4><?php _e('Themes', 'wordfence'); ?></h4>
 					<ul>
 						<?php
 						foreach ($updates_needed['themes'] as $theme):
 							$newVersion = ($theme['newVersion'] == 'Unknown' ? $theme['newVersion'] : "v{$theme['newVersion']}");
 						?>
 							<li>
-								A new version of the theme "<?php echo esc_html("{$theme['name']} ({$newVersion})") ?>" is available.
+								<?php printf(__('A new version of the theme "%s" is available.', 'wordfence'), esc_html("{$theme['name']} ({$newVersion})")); ?>
 							</li>
 						<?php endforeach ?>
 					</ul>
 				<?php endif ?>
 				
 				<?php if ($updates_needed['core'] || $updates_needed['plugins'] || $updates_needed['themes']): ?>
-					<p><a class="button" href="<?php echo esc_attr(admin_url('update-core.php')) ?>">Update Now</a></p>
+					<p><a class="button" href="<?php echo esc_attr(admin_url('update-core.php')) ?>"><?php _e('Update Now', 'wordfence'); ?></a></p>
 				<?php endif ?>
 
 <!--			<p>Generated in --><?php //printf('%.4f seconds', $microseconds) ?><!--</p>-->

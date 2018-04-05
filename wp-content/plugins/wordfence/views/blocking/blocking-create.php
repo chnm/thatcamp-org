@@ -69,7 +69,7 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 											title = $('#wf-block-parameters-title').data('editTitle');
 											saveButton = $('#wf-block-type > li.wf-active a').data('editButton');
 											
-											var editValues = $('.wf-block-edit').first().data('editValues');
+											var editValues = $('#wf-blocks-wrapper').data('hasCountryBlock');
 											$('.wf-block-edit').first().closest('tr').addClass('wf-editing');
 											$('#wf-block-reason').val(editValues.reason);
 											$('#wf-block-country-login .wf-option-checkbox').toggleClass('wf-checked', !!editValues.blockLogin);
@@ -201,7 +201,7 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 			</tr>
 			<tr class="wf-block-add-ip wf-block-add-pattern" style="display: none;">
 				<th class="wf-right wf-padding-add-right wf-padding-add-top-small"><?php _e('<span class="wf-hidden-xs">Block </span>Reason', 'wordfence'); ?><span class="wf-red-dark">*</span></th> 
-				<td class="wf-option-text wf-padding-add-top-small"><input id="wf-block-reason" type="text" placeholder="<?php esc_attr_e('Enter a reason', 'wordfence'); ?>"></td>
+				<td class="wf-option-text wf-padding-add-top-small"><input id="wf-block-reason" type="text" placeholder="<?php esc_attr_e('Enter a reason', 'wordfence'); ?>" maxlength="50"></td>
 			</tr>
 		</table>
 	</li>
@@ -221,7 +221,7 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 							});
 						});
 						
-						$('#wf-block-country-countries').select2({
+						$('#wf-block-country-countries').wfselect2({
 							tags: true,
 							tokenSeparators: [',', ' '],
 							placeholder: "Hit enter to add",
@@ -233,7 +233,7 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 								return null; //No custom tags
 							},
 							sorter: function(results) {
-								var term = $('#wf-block-country-countries').data('select2').$container.find('.select2-search__field').val();
+								var term = $('#wf-block-country-countries').data('wfselect2').$container.find('.wfselect2-search__field').val();
 								if (term) {
 									var escapedTerm = term.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 									var termRegex = new RegExp('^' + escapedTerm, 'i');
@@ -255,12 +255,12 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 							selected.each(function(index, value) {
 								var li = $('<li class="wf-tag-selected' + (index > 4 && !container.data('expanded') ? ' wf-hidden' : '') + '"><a class="wf-destroy-tag-selected">×</a>' + $(value).text() + '</li>');
 								li.children('a.wf-destroy-tag-selected')
-									.off('click.select2-copy')
-									.on('click.select2-copy', function(e) {
-										var opt = $(this).data('select2-opt');
+									.off('click.wfselect2-copy')
+									.on('click.wfselect2-copy', function(e) {
+										var opt = $(this).data('wfselect2-opt');
 										opt.attr('selected', false);
 										opt.parents('select').trigger('change');
-									}).data('select2-opt', $(value));
+									}).data('wfselect2-opt', $(value));
 								list.append(li);
 							});
 							
@@ -290,7 +290,7 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 						}).triggerHandler('change');
 
 						if ($('#wf-block-country-countries').length > 0) {
-							$('#wf-block-country-countries').data('select2').$container.addClass('wf-select2-placeholder-fix wf-select2-hide-tags');
+							$('#wf-block-country-countries').data('wfselect2').$container.addClass('wf-select2-placeholder-fix wf-select2-hide-tags');
 						}
 						
 						$('#wf-block-country-countries-popup').on('click', function(e) {
@@ -456,7 +456,7 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 							}
 
 							WFAD.loadingBlocks = true;
-							WFAD.ajax('wordfence_createBlock', {payload: JSON.stringify(payload)}, function(res) {
+							WFAD.ajax('wordfence_createBlock', {payload: JSON.stringify(payload), sortColumn: WFAD.sortColumn, sortDirection: WFAD.sortDirection, blocksFilter: WFAD.blocksFilter}, function(res) {
 								WFAD.loadingBlocks = false;
 								if (res.success) {
 									$(window).trigger('wordfenceRefreshBlockList', [res, false]);
