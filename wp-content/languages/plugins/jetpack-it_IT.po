@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-21 17:58:29+0000\n"
+"PO-Revision-Date: 2018-04-13 13:45:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -610,7 +610,7 @@ msgstr "Backup in tempo reale di tutti i dati del tuo sito con spazio illimitato
 #: 3rd-party/debug-bar/class.jetpack-search-debug-bar.php:150
 msgctxt "label for formatting JSON"
 msgid "Minify"
-msgstr "Riduci"
+msgstr "Minificare"
 
 #: 3rd-party/debug-bar/class.jetpack-search-debug-bar.php:149
 msgctxt "label for formatting JSON"
@@ -6209,11 +6209,6 @@ msgstr "Ritratto"
 msgid "Landscape"
 msgstr "Paesaggio"
 
-#: modules/related-posts/class.related-posts-customize.php:217
-#: modules/widgets/googleplus-badge.php:258
-msgid "Layout"
-msgstr "Impaginazione"
-
 #: modules/widgets/googleplus-badge.php:251
 msgid "Width"
 msgstr "Larghezza:"
@@ -7026,10 +7021,6 @@ msgstr "Orario e informazioni"
 msgid "Display a map with your location, hours, and contact information."
 msgstr "Mostra la posizione, l'orario e le informazioni di contatto."
 
-#: modules/widget-visibility/widget-conditions.php:284
-msgid "Delete"
-msgstr "Cancella"
-
 #: modules/widget-visibility/widget-conditions.php:278
 msgctxt "Shown between widget visibility conditions."
 msgid "or"
@@ -7159,10 +7150,6 @@ msgstr "Pagine di tutte le tag"
 #: modules/widget-visibility/widget-conditions.php:57
 msgid "All author pages"
 msgstr "Pagine di tutti gli autori"
-
-#: modules/widget-visibility/widget-conditions.php:54
-msgid "Logged Out"
-msgstr "Disconnesso"
 
 #: modules/widget-visibility/widget-conditions.php:53
 msgid "Logged In"
@@ -10421,11 +10408,6 @@ msgstr "Radio"
 msgid "Drop down"
 msgstr "A tendina"
 
-#: modules/contact-form/grunion-editor-view.php:219
-#: modules/contact-form/grunion-form-view.php:194
-msgid "Checkbox"
-msgstr "Casella di controllo"
-
 #: modules/contact-form/grunion-form-view.php:192
 msgid "Field type"
 msgstr "Tipo di campo"
@@ -12223,12 +12205,6 @@ msgstr "Errore, modulo sbagliato."
 msgctxt "The menu item label"
 msgid "Jetpack"
 msgstr "Jetpack"
-
-#: modules/contact-form/grunion-contact-form.php:129
-#: modules/contact-form/grunion-contact-form.php:130
-#: modules/contact-form/grunion-form-view.php:175
-msgid "Feedback"
-msgstr "Riscontro"
 
 #: _inc/jetpack-strings.php:403 _inc/jetpack-strings.php:528
 #: _inc/lib/admin-pages/class.jetpack-react-page.php:67

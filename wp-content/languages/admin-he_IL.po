@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-02-03 01:06:10+0000\n"
+"PO-Revision-Date: 2018-04-15 08:49:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5477,10 +5477,6 @@ msgstr "תוסף זה יצר %d תווים של <strong>פלט בלתי צפוי
 msgid "You can filter the list of users by User Role using the text links above the users list to show All, Administrator, Editor, Author, Contributor, or Subscriber. The default view is to show all users. Unused User Roles are not listed."
 msgstr "ניתן לסנן את רשימת המשתמשים לפי תפקידים. במצב ברירת המחדל מוצגים כל המשתמשים."
 
-#: wp-admin/includes/image-edit.php:227
-msgid "There are unsaved changes that will be lost. 'OK' to continue, 'Cancel' to return to the Image Editor."
-msgstr "ישנם שינויים שלא נשמרו והם יכלו לאיבוד. 'OK' כדי לבטל, או 'Cancel' כדי לחזור לעורך התמונות."
-
 #: wp-admin/import.php:24
 msgid "In previous versions of WordPress, all importers were built-in. They have been turned into plugins since most people only use them once or infrequently."
 msgstr "בגרסאות קודמות של וורדפרס, כלי היבוא היו מובנים במערכת. מאחר מרבית המשתמשים לא עשו בהם שימוש תקוף, כלי היבוא הופרדו מהמערכת והפכו לתוספים חיצוניים הניתנים להורדה מספריית התוספים."
@@ -5488,6 +5484,10 @@ msgstr "בגרסאות קודמות של וורדפרס, כלי היבוא הי�
 #: wp-admin/options-writing.php:30
 msgid "Post via email settings allow you to send your WordPress installation an email with the content of your post. You must set up a secret email account with POP3 access to use this, and any mail received at this address will be posted, so it&#8217;s a good idea to keep this address very secret."
 msgstr "הגדרות עבור פרסום באמצעות אימייל מאפשרות לשלוח מיילים עם התוכן לפרסום. יש להגדיר חשבון אימייל עם גישת POP3, וכל הודעה המתקבלת לתיבה זו תפורסם באתר, כך שיהיה זה רעיון טוב לשמור את כתובת האימייל בסוד כדי שאנשים לא מורשים לא יוכלו לפרסם תכנים באתר."
+
+#: wp-admin/includes/image-edit.php:227
+msgid "There are unsaved changes that will be lost. 'OK' to continue, 'Cancel' to return to the Image Editor."
+msgstr "ישנם שינויים שלא נשמרו והם ילכו לאיבוד. 'OK' כדי לבטל, או 'Cancel' כדי לחזור לעורך התמונות."
 
 #: wp-admin/custom-header.php:783 wp-admin/custom-header.php:919
 #: wp-admin/custom-header.php:1248

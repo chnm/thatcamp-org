@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-02-19 09:57:32+0000\n"
+"PO-Revision-Date: 2018-04-05 17:01:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1488,6 +1488,10 @@ msgstr "Jetpack simplifie le processus de configuration. Parcourez des centaines
 #: class.jetpack-connection-banner.php:407
 msgid "Choosing a design for your site is essential. It defines your brand, your layout, and your visitors’ reading experience."
 msgstr "Choisir un design pour votre site est essentiel. Il définit votre marque, votre mise en page, et l’expérience de lecture de vos visiteurs."
+
+#: class.jetpack-connection-banner.php:399
+msgid "Choosing a design for your site is essential. It defines your brand, your layout, and your visitors’ reading experience"
+msgstr "Choisir un design pour votre site est essentiel. Il définit votre marque, votre mise en page et l’expérience de lecture de vos visiteurs."
 
 #: class.jetpack-cli.php:843 class.jetpack-cli.php:934
 msgid "Missing or invalid access token"
@@ -12351,3 +12355,7 @@ msgstr "%s n&rsquo;a pas pu être déconnecté. Etes-vous certain que cet utilis
 #: class.jetpack-cli.php:208
 msgid "User has been successfully disconnected."
 msgstr "%s a été déconnecté."
+
+#: class.jetpack-cli.php:201
+msgid "Jetpack has been successfully disconnected for %s."
+msgstr "Jetpack a bien été déconnecté de %s."

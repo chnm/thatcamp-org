@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-30 07:37:06+0000\n"
+"PO-Revision-Date: 2018-04-11 18:05:33+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6328,10 +6328,6 @@ msgstr "Filtruj po rodzaju"
 msgid "Bitrate:"
 msgstr "Bitrate:"
 
-#: wp-includes/media-template.php:412
-msgid "Uploaded By"
-msgstr "Zaktualizowane przez:"
-
 #: wp-includes/class-wp-editor.php:1240
 msgid "Your browser does not support direct access to the clipboard. Please use keyboard shortcuts or your browser&#8217;s edit menu instead."
 msgstr "Twoja przeglądarka nie posiada bezpośredniego dostępu do systemowego schowka. Proszę użyć skrótu klawiaturowego lub menu &bdquo;Edycja&rdquo; przeglądarki."
@@ -6407,6 +6403,10 @@ msgstr "Szukaj mediów"
 #: wp-includes/script-loader.php:843
 msgid "No plugins found. Try a different search."
 msgstr "Nie znaleziono żadnej wtyczki. Spróbuj poszukać inaczej."
+
+#: wp-includes/media-template.php:412
+msgid "Uploaded By"
+msgstr "Wysłane przez:"
 
 #: wp-includes/comment.php:3143
 msgid "<strong>ERROR</strong>: The comment could not be saved. Please try again later."

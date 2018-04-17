@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-07 07:49:30+0000\n"
+"PO-Revision-Date: 2018-04-15 09:30:24+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: es\n"
 "Project-Id-Version: Plugins - Jetpack by WordPress.com - Stable (latest release)\n"
+
+#: modules/widgets/search.php:67
+msgid "Replaces the default search with an Elasticsearch-powered search interface and filters."
+msgstr "Reemplaza la búsqueda por defecto con una interfaz y filtros de búsqueda creados por Elasticsearch."
 
 #: modules/module-info.php:680
 msgid "Enhanced analytics for WooCommerce and Jetpack users."
@@ -2322,7 +2326,7 @@ msgstr "Copias de seguridad en tiempo real y resolución automática de amenazas
 
 #: _inc/jetpack-strings.php:573
 msgid "Protect against data loss, malware, and malicious attacks."
-msgstr "Protege contra pérdidas de datos, malware y ataques maliciosos."
+msgstr "Protégete contra pérdidas de datos, malware y ataques maliciosos."
 
 #: _inc/jetpack-strings.php:574
 msgid "Integrate easily with Google Analytics."
@@ -2441,7 +2445,7 @@ msgstr "Actualizaciones necesarias"
 #: _inc/jetpack-strings.php:404
 msgctxt "Short label appearing near a paid feature configuration block."
 msgid "Paid"
-msgstr "Pagado"
+msgstr "De pago"
 
 #: _inc/jetpack-strings.php:398
 msgid "Manage site connection"
@@ -2506,11 +2510,11 @@ msgstr "Añade, organiza y muestra {{testimonialLink}}testimonios{{/testimonialL
 
 #: _inc/jetpack-strings.php:336
 msgid "Portfolios"
-msgstr "Portafolios"
+msgstr "Porfolios"
 
 #: _inc/jetpack-strings.php:337
 msgid "Add, organize, and display {{portfolioLink}}portfolios{{/portfolioLink}}. If your theme doesn’t support portfolios yet, you can display them using the shortcode ( [portfolio] )."
-msgstr "Añade, organiza y muestra {{portfolioLink}}portafolios{{/portfolioLink}}. Si tu tema aún o es compatible con portafolios puedes mostrarlos usando el shortcode ( [portfolio] )"
+msgstr "Añade, organiza y muestra {{portfolioLink}}porfolios{{/portfolioLink}}. Si tu tema aún o es compatible con portafolios puedes mostrarlos usando el shortcode ( [portfolio] )"
 
 #: _inc/jetpack-strings.php:333
 msgctxt "Settings header"
@@ -2548,7 +2552,7 @@ msgstr "Estadísticas del sitio"
 
 #: _inc/jetpack-strings.php:296
 msgid "Collecting valuable traffic stats and insights"
-msgstr "Recogiendo valiosas estadísticas e informes de tráfico"
+msgstr "Recopilación de valiosas estadísticas e informes de tráfico"
 
 #: _inc/jetpack-strings.php:299
 msgid "The image helps collect stats, but should work when hidden."
@@ -2619,7 +2623,7 @@ msgstr "Escribe un término de búsqueda para encontrar opciones o cierra la bú
 #: _inc/jetpack-strings.php:238
 msgctxt "Settings header"
 msgid "WordPress.com log in"
-msgstr "Acceso de WordPress.com"
+msgstr "Acceso WordPress.com"
 
 #: _inc/jetpack-strings.php:239
 msgid "Match accounts using email addresses"
@@ -3648,7 +3652,7 @@ msgstr "Mostrar un bloque de anuncios en la parte superior de su sitio."
 
 #: _inc/jetpack-strings.php:516
 msgid "Your server is misconfigured, which means that Jetpack Protect is unable to effectively protect your site."
-msgstr "Tu servidor está mal configurado, lo que significa que Jetpack Protect no puede proteger tu sitio con efectividad."
+msgstr "Tu servidor está mal configurado, lo que significa que la protección de Jetpack no puede proteger tu sitio con efectividad."
 
 #: _inc/jetpack-strings.php:134
 msgid "Ads"
@@ -4339,8 +4343,8 @@ msgid ""
 "Add and organize content that doesn’t necessarily fit into a post or static page such as portfolios\n"
 "\t\tor testimonials. Custom\tcontent can be visible at specific URLs, or you may add them with shortcodes."
 msgstr ""
-"Añadir y organizar el contenido que no se ajusta necesariamente a una entrada o una página estática como portafolios\n"
-"→\t→\to testimonios. El contenido→\tpersonalizado puede ser visible en unas URLs específicas o podrías añadirlas con shortcodes."
+"Añadir y organizar el contenido que no se ajusta necesariamente a una entrada o una página estática como porfolios\n"
+"\t\to testimonios. El contenido\tpersonalizado puede ser visible en unas URLs específicas o podrías añadirlas con shortcodes."
 
 #: modules/module-info.php:568
 msgid ""
@@ -4897,7 +4901,7 @@ msgstr "Los servicios que están activos y los que están ocultos tras un botón
 
 #: _inc/lib/class.core-rest-api-endpoints.php:1502
 msgid "Protect global whitelist"
-msgstr "Lista blanca global de Proteger"
+msgstr "Lista blanca global de Protección"
 
 #: _inc/lib/class.core-rest-api-endpoints.php:1495
 msgid "Protect API key"
@@ -5503,7 +5507,7 @@ msgstr "Total de ataques maliciosos bloqueados en tu sitio."
 
 #: _inc/jetpack-strings.php:92
 msgid "{{a}}Activate Protect{{/a}} to keep your site protected from malicious sign in attempts."
-msgstr "{{a}}Activa Proteger{{/a}} para mantener tu sitio protegido de intentos de acceso malintencionados."
+msgstr "{{a}}Activa Protección{{/a}} para mantener tu sitio protegido de intentos de acceso malintencionados."
 
 #: _inc/jetpack-strings.php:83
 msgid "Plugin Updates"
@@ -5602,7 +5606,7 @@ msgstr "Para una defensa contra el spam de calidad profesional por favor {{a}}in
 
 #: _inc/jetpack-strings.php:51
 msgid "For state-of-the-art spam defense, please {{a}}activate Akismet{{/a}}."
-msgstr "Si quieres un protector contra el spam que esté a la última, {{a}}activa Akismet{{a}}."
+msgstr "Si quieres un protector contra el spam de calidad empresarial, {{a}}activa Akismet{{/a}}."
 
 #: _inc/jetpack-strings.php:52
 msgid "Invalid key"
@@ -6544,7 +6548,7 @@ msgstr "https://jetpack.com"
 
 #: views/admin/network-settings.php:36
 msgid "Protect whitelist"
-msgstr "Lista blanca de Protect"
+msgstr "Lista blanca de Protección"
 
 #: views/admin/network-settings.php:31
 msgid "Allow individual site administrators to manage their own connections (connect and disconnect) to <a href=\"//wordpress.com\">WordPress.com</a>"
@@ -6651,7 +6655,7 @@ msgstr "Despliega un listado de las entradas recientes de otro blog de WordPress
 
 #: modules/widgets/wordpress-post-widget.php:145
 msgid "Display WordPress Posts"
-msgstr "Muestra entadas de WordPress"
+msgstr "Muestra entradas de WordPress"
 
 #: modules/widgets/twitter-timeline.php:490
 msgid "Timeline Theme:"
@@ -8472,7 +8476,7 @@ msgstr "Ver administrador de la red"
 
 #: modules/protect.php:176
 msgid "Thanks for activating Protect! To start protecting your site, please network activate Jetpack on your Multisite installation and activate Protect on your primary site. Due to the way logins are handled on WordPress Multisite, Jetpack must be network-enabled in order for Protect to work properly. <a href=\"%s\" target=\"_blank\">Learn More</a>"
-msgstr "¡Gracias por activar Protect! Para comenzar a proteger tu sitio, activa Jetpack por red en tu instalación multisitio y activa Protect en tu sitio principal. Dada la forma en que se gestionan los accesos en WordPress Multisite, es necesario activar Jetpack por red para que Protect funcione correctamente. <a href=\"%s\" target=\"_blank\">Más información</a>"
+msgstr "¡Gracias por activar Protección! Para comenzar a proteger tu sitio, activa Jetpack por red en tu instalación multisitio y activa Protección en tu sitio principal. Dada la forma en que se gestionan los accesos en WordPress Multisite, es necesario activar Jetpack por red para que Protección funcione correctamente. <a href=\"%s\" target=\"_blank\">Más información</a>"
 
 #: modules/protect.php:174
 msgid "Protect cannot keep your site secure."
@@ -8691,7 +8695,7 @@ msgstr ""
 #: modules/masterbar/masterbar.php:485 modules/monitor.php:67
 #: modules/notes.php:174
 msgid "Notifications"
-msgstr "Notificaciones"
+msgstr "Avisos"
 
 #: modules/publicize/ui.php:152
 msgid "More information on using Publicize."

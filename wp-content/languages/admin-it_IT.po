@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-29 06:31:41+0000\n"
+"PO-Revision-Date: 2018-04-12 07:00:24+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6208,6 +6208,10 @@ msgstr "Impostazioni salvate."
 msgid "Confirm Deletion"
 msgstr "Conferma eliminazione"
 
+#: wp-admin/menu.php:248 wp-admin/ms-delete-site.php:30
+msgid "Delete Site"
+msgstr "Elimina sito"
+
 #: wp-admin/edit-tag-form.php:264
 #: wp-admin/includes/class-wp-links-list-table.php:82
 #: wp-admin/includes/class-wp-links-list-table.php:318
@@ -6225,10 +6229,6 @@ msgstr "Conferma eliminazione"
 #: wp-admin/themes.php:499 wp-admin/widgets.php:320
 msgid "Delete"
 msgstr "Elimina"
-
-#: wp-admin/menu.php:248 wp-admin/ms-delete-site.php:30
-msgid "Delete Site"
-msgstr "Elimina sito"
 
 #: wp-admin/edit-form-advanced.php:371
 msgid "Customizing This Display"
@@ -6462,13 +6462,13 @@ msgstr "Hai la libertà di ridistribuire copie del programma originale in modo d
 msgid "You have the freedom to distribute copies of your modified versions to others. By doing this you can give the whole community a chance to benefit from your changes."
 msgstr "Hai la libertà di distribuire copie delle versioni da te modificate ad altre persone. In questo modo puoi dare a tutta la comunità la possibilità di beneficiare di tali modifiche."
 
-#: wp-admin/freedoms.php:52
-msgid "Don&#8217;t you wish all software came with these freedoms? So do we! For more information, check out the <a href=\"https://www.fsf.org/\">Free Software Foundation</a>."
-msgstr "Non vorresti che tutto il software venisse distribuito con queste libertà? Noi sì! Per ulteriori informazioni, visita la <a href=\"http://www.fsf.org/\">Free Software Foundation</a>."
-
 #: wp-admin/includes/dashboard.php:34
 msgid "Your browser is out of date!"
 msgstr "Il browser che stai utilizzando non è aggiornato!"
+
+#: wp-admin/freedoms.php:52
+msgid "Don&#8217;t you wish all software came with these freedoms? So do we! For more information, check out the <a href=\"https://www.fsf.org/\">Free Software Foundation</a>."
+msgstr "Non vorresti che tutto il software venisse distribuito con queste libertà? Noi sì! Per ulteriori informazioni, visita la <a href=\"https://www.fsf.org/\">Free Software Foundation</a>."
 
 #: wp-admin/custom-header.php:618
 msgid "If you don&lsquo;t want to upload your own image, you can use one of these cool headers, or show a random one."
@@ -6876,7 +6876,7 @@ msgstr "Ritaglia e pubblica"
 
 #: wp-admin/edit-link-form.php:60
 msgid "XFN stands for <a href=\"http://gmpg.org/xfn/\">XHTML Friends Network</a>, which is optional. WordPress allows the generation of XFN attributes to show how you are related to the authors/owners of the site to which you are linking."
-msgstr "XFN significa <a href=\"http://gmpg.org/xfn/\">rete di amici in XHTML</a>, ed è facoltativo. WordPress permette la generazione di attributi  XFN per mostrare la relazione con gli autori/proprietari del sito che si sta linkando. "
+msgstr "XFN significa <a href=\"https://gmpg.org/xfn/\">rete di amici in XHTML</a>, ed è facoltativo. WordPress permette la generazione di attributi  XFN per mostrare la relazione con gli autori/proprietari del sito che si sta linkando."
 
 #: wp-admin/includes/file.php:1700
 msgid "FTP Username"
@@ -10529,10 +10529,6 @@ msgstr "Stai gi&agrave; usando la versione pi&ugrave; recente"
 msgid "Compatible up to:"
 msgstr "Compatibile fino alla versione:"
 
-#: wp-admin/includes/meta-boxes.php:1205
-msgid "If the link is to a person, you can specify your relationship with them using the above form. If you would like to learn more about the idea check out <a href=\"http://gmpg.org/xfn/\">XFN</a>."
-msgstr "Se il link &egrave; per una persona, puoi indicare il tipo di relazione usando il modulo qui sopra. Se vuoi saperne di pi&ugrave; su questa idea, dai un'occhiata a <a href=\"http://gmpg.org/xfn/\">XFN</a>."
-
 #: wp-admin/includes/class-wp-links-list-table.php:131
 #: wp-admin/includes/meta-boxes.php:1232
 msgid "Rating"
@@ -10874,6 +10870,10 @@ msgstr "Disabilita la modalit&agrave; accessibile"
 #: wp-admin/includes/class-wp-screen.php:901
 msgid "Enable accessibility mode"
 msgstr "Abilita la modalit&agrave; accessibile"
+
+#: wp-admin/includes/meta-boxes.php:1205
+msgid "If the link is to a person, you can specify your relationship with them using the above form. If you would like to learn more about the idea check out <a href=\"http://gmpg.org/xfn/\">XFN</a>."
+msgstr "Se il link &egrave; ad una persona, puoi indicare il tipo di relazione usando il modulo qui sopra. Se vuoi saperne di pi&ugrave; su questa idea, dai un'occhiata a <a href=\"http://gmpg.org/xfn/\">XFN</a>."
 
 #: wp-admin/includes/media.php:2456 wp-admin/includes/nav-menu.php:361
 #: wp-admin/includes/nav-menu.php:649

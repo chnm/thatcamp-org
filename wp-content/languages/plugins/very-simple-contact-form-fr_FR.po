@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Very Simple Contact Form - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-30 16:42:26+0000\n"
+"PO-Revision-Date: 2018-04-13 09:02:50+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - Very Simple Contact Form - Development (trunk)\n"
+
+#: vscf-options.php:202
+msgid "More customizations can be made using (shortcode) attributes."
+msgstr "D’autres personnalisations sont possibles via les attributs (avec un code court)."
 
 #: vscf-form.php:238 vscf-widget-form.php:238
 msgid "No"
@@ -40,17 +44,9 @@ msgstr "J’accepte que ce site web collecte mon nom, mon e-mail et mon adresse 
 msgid "Do not delete form submissions and settings."
 msgstr "Ne pas supprimer les formulaires reçus et les réglages."
 
-#: vscf-widget.php:38 vscf.php:122
+#: vscf-widget.php:38 vscf.php:120
 msgid "Settings"
 msgstr "Réglages"
-
-#: vscf-options.php:203
-msgid "Values marked with * can be overwritten using the relevant (shortcode) attribute."
-msgstr "Les valeurs marquées d’un * peuvent être modifiées à l'aide de l'attribut (code court) approprié."
-
-#: vscf-options.php:202
-msgid "Only general settings and labels are listed here. More customizations can be made using (shortcode) attributes."
-msgstr "Seuls les réglages et libellés généraux sont mentionnés ici. D’autres personnalisations sont possibles via les attributs (codes courts)."
 
 #: vscf-options.php:95
 msgid "Activate confirmation email to sender."
@@ -108,10 +104,6 @@ msgstr "Général"
 msgid "VSCF"
 msgstr "VSCF"
 
-#: vscf.php:45
-msgid "Submission"
-msgstr "Formulaire reçu"
-
 #: vscf-options.php:87
 msgid "List form submissions in dashboard."
 msgstr "Lister les formulaires reçus dans le Tableau de bord."
@@ -120,7 +112,7 @@ msgstr "Lister les formulaires reçus dans le Tableau de bord."
 msgid "Submissions"
 msgstr "Formulaires reçus"
 
-#: vscf-widget.php:37 vscf-widget.php:38
+#: vscf-options.php:203 vscf-widget.php:37 vscf-widget.php:38
 msgid "click here"
 msgstr "cliquez ici"
 
@@ -145,7 +137,7 @@ msgstr "Afficher votre formulaire de contact dans un widget."
 msgid "Thank you! You will receive a response as soon as possible."
 msgstr "Merci ! Vous recevrez une réponse dans les plus bref délais."
 
-#: vscf-widget.php:37
+#: vscf-options.php:203 vscf-widget.php:37
 msgid "Info about attributes"
 msgstr "Informations au sujet des attributs"
 
@@ -167,7 +159,7 @@ msgid "IP: %s"
 msgstr "IP : %s"
 
 #: vscf-form.php:49 vscf-options.php:31 vscf-options.php:108
-#: vscf-widget-form.php:49 vscf.php:64
+#: vscf-widget-form.php:49 vscf.php:62
 msgid "Name"
 msgstr "Nom"
 
@@ -186,7 +178,7 @@ msgstr "Message"
 msgid "Submit"
 msgstr "Envoyer"
 
-#. #-#-#-#-#  very-simple-contact-form-code.pot (Very Simple Contact Form 8.0) 
+#. #-#-#-#-#  very-simple-contact-form-code.pot (Very Simple Contact Form 8.2) 
 #. #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: vscf-options.php:196 vscf-widget.php:11 vscf-widget.php:21
@@ -202,7 +194,7 @@ msgid "This is a very simple contact form. Use shortcode [contact] to display fo
 msgstr "C'est un formulaire de contact très simple. Utilisez le code court [contact] afin d’afficher le formulaire sur la page ou utiliser le widget. Veuillez lire le fichier README pour plus d’informations."
 
 #: vscf-form.php:52 vscf-options.php:34 vscf-options.php:114
-#: vscf-widget-form.php:52 vscf.php:65
+#: vscf-widget-form.php:52 vscf.php:63
 msgid "Email"
 msgstr "E-mail"
 

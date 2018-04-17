@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-04 23:17:21+0000\n"
+"PO-Revision-Date: 2018-04-10 19:42:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -408,7 +408,7 @@ msgstr "Diese Version von Jetpack enthält wichtige neue Funktionen und umfangre
 
 #: _inc/jetpack-strings.php:594
 msgid "Speed up your site and its content"
-msgstr "Beschleunige deine Website und deren Inhalte"
+msgstr "Verkürze die Ladezeit deiner Website und deren Inhalte"
 
 #: _inc/jetpack-strings.php:596
 msgid "If this sounds like a great improvement (and it is) you can enable it now by clicking the toggle below."
@@ -584,10 +584,6 @@ msgstr "Backups und Wiederherstellungen"
 msgid "Automatic, real-time backups mean your entire site is always ready to be restored."
 msgstr "Automatische Backups in Echtzeit bedeuten, dass deine komplette Website immer zur Wiederherstellung bereit ist."
 
-#: _inc/jetpack-strings.php:353 _inc/jetpack-strings.php:435
-msgid "Speed up your site"
-msgstr "Erhöhe die Geschwindigkeit deiner Website"
-
 #: _inc/jetpack-strings.php:399 class.jetpack-connection-banner.php:271
 #: class.jetpack-connection-banner.php:331
 #: class.jetpack-connection-banner.php:385
@@ -602,6 +598,10 @@ msgstr "Erhöhe die Geschwindigkeit deiner Website"
 #: class.jetpack-connection-banner.php:878
 msgid "Set up Jetpack"
 msgstr "Jetpack einrichten"
+
+#: _inc/jetpack-strings.php:353 _inc/jetpack-strings.php:435
+msgid "Speed up your site"
+msgstr "Verkürze die Ladezeit deiner Website"
 
 #: _inc/jetpack-strings.php:121
 msgid "Real-time backup of all your site data with unlimited space, one-click restores, and automated security scanning."
@@ -2514,7 +2514,7 @@ msgstr "Portfolios"
 
 #: _inc/jetpack-strings.php:337
 msgid "Add, organize, and display {{portfolioLink}}portfolios{{/portfolioLink}}. If your theme doesn’t support portfolios yet, you can display them using the shortcode ( [portfolio] )."
-msgstr "Du kannst {{portfolioLink}}Portfolios{{/portfolioLink}} hinzufügen, organisieren und anzeigen. Wenn dein Theme noch keine Portfolios unterstützt, kannst du sie mithilfe des Shortcodes ([portfolios]) hinzufügen."
+msgstr "Du kannst {{portfolioLink}}Portfolios{{/portfolioLink}} hinzufügen, verwalten und anzeigen. Wenn dein Theme noch keine Portfolios unterstützt, kannst du sie mithilfe des Shortcodes [portfolios] anzeigen."
 
 #: _inc/jetpack-strings.php:333
 msgctxt "Settings header"
@@ -2835,10 +2835,6 @@ msgstr "„Per E-Mail bloggen“-Adresse wird aktualisiert …"
 msgid "Your site is connected to WordPress.com."
 msgstr "Deine Website ist mit WordPress.com verbunden."
 
-#: _inc/jetpack-strings.php:64
-msgid "You are the Jetpack owner."
-msgstr "Die bist der Jetpack-Besitzer."
-
 #. translators: %(username) is the WordPress user login name.
 #: _inc/jetpack-strings.php:67
 msgid "Connected as {{span}}%(username)s{{/span}}"
@@ -2869,6 +2865,14 @@ msgstr "Fehler beim Neuerstellen der „Per E-Mail bloggen“-Adresse. %(error)s
 #: _inc/jetpack-strings.php:42
 msgid "Updated settings. Refreshing page…"
 msgstr "Einstellungen aktualisiert. Seite wird aktualisiert …"
+
+#: _inc/jetpack-strings.php:64
+msgid "You are the Jetpack owner."
+msgstr "Du bist der Jetpack-Besitzer."
+
+#: _inc/jetpack-strings.php:38
+msgid "Error updating settings. %(error)s"
+msgstr "Fehler beim Aktualisieren der Einstellungen. %(error)s"
 
 #: _inc/jetpack-strings.php:7
 msgctxt "Navigation item."
@@ -3670,6 +3674,10 @@ msgstr "Video-Hosting"
 msgid "Earn income by allowing Jetpack to display high quality ads (powered by WordAds)."
 msgstr "Erziele Einkünfte, indem du Jetpack erlaubst, hochwertige Werbeanzeigen anzuzeigen (bereitgestellt von WordAds)."
 
+#: _inc/jetpack-strings.php:174
+msgid "We support all Jetpack users, regardless of plan. But customers on a paid subscription enjoy priority support so that security issues are identified and fixed for you as soon as possible."
+msgstr "Wir bieten allen Jetpack-Benutzern Support, egal, welchen Tarif sie haben. Kunden mit kostenpflichtigem Abonnement erhalten jedoch vorrangigen Support, sodass Sicherheitsprobleme bei ihnen schnellstmöglich erkannt und behoben werden. "
+
 #: _inc/jetpack-strings.php:136 _inc/jetpack-strings.php:266
 msgid "View your earnings"
 msgstr "Deine Einkünfte anzeigen"
@@ -3802,10 +3810,6 @@ msgctxt "A header for the short description display"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: modules/widgets/my-community.php:39
-msgid "Display members of your site's community."
-msgstr "Zeige Mitglieder deiner Website-Community an."
-
 #: modules/videopress/class.videopress-edit-attachment.php:219
 msgctxt "A header for the video sharing options area"
 msgid "Share"
@@ -3892,6 +3896,10 @@ msgid "Found %d available cron job."
 msgid_plural "Found %d available cron jobs."
 msgstr[0] "%d verfügbarer Cronjob gefunden."
 msgstr[1] "%d verfügbare Cronjobs gefunden."
+
+#: modules/widgets/my-community.php:39
+msgid "Display members of your site's community."
+msgstr "Zeige Mitglieder der Community deiner Website."
 
 #: modules/sso/class.jetpack-sso-notices.php:194
 msgid "Logging in with WordPress.com is disabled for sites that are in staging mode."
@@ -5408,6 +5416,10 @@ msgctxt "Navigation item. Noun. Links to a debugger tool for Jetpack."
 msgid "Debug"
 msgstr "Fehlersuche"
 
+#: _inc/jetpack-strings.php:373
+msgid "{{button}}View detailed stats{{/button}}"
+msgstr "{{button}}Ausführliche Statistiken ansehen{{/button}}"
+
 #: _inc/jetpack-strings.php:191
 msgid "Your site is on Development Mode"
 msgstr "Deine Website befindet sich im Entwicklungsmodus"
@@ -5528,7 +5540,7 @@ msgstr "{{a}}Protect aktivieren{{/a}}, um deine Website vor böswilligen Anmelde
 
 #: _inc/jetpack-strings.php:82
 msgid "{{a}}Activate{{/a}} to enhance the performance and speed of your images."
-msgstr "{{a}}Aktivieren{{/a}}, um die Leistungsfähigkeit deiner Bildwiedergabe zu verbessern."
+msgstr "{{a}}Aktivieren{{/a}}, um die Performance und Geschwindigkeit deiner Bilder zu verbessern."
 
 #: _inc/jetpack-strings.php:51
 msgid "For state-of-the-art spam defense, please {{a}}activate Akismet{{/a}}."
@@ -6076,6 +6088,18 @@ msgstr "Ungültiger Video-GUID!"
 msgid "VideoPress Shortcode"
 msgstr "VideoPress-Shortcode"
 
+#: modules/sitemaps/sitemap-stylist.php:579
+msgid "This is an XML News Sitemap generated by <a href=\"%1$s\" target=\"_blank\">Jetpack</a>, meant to be consumed by search engines like <a href=\"%2$s\" target=\"_blank\">Google</a> or <a href=\"%3$s\" target=\"_blank\">Bing</a>."
+msgstr "Dies ist eine XML News Sitemap, die von <a href=\"%1$s\" target=\"_blank\">Jetpack</a> erzeugt wurde und für Suchmaschinen wie <a href=\"%2$s\" target=\"_blank\">Google</a> oder <a href=\"%3$s\" target=\"_blank\">Bing</a> gedacht ist."
+
+#: modules/sitemaps/sitemap-stylist.php:94
+#: modules/sitemaps/sitemap-stylist.php:206
+#: modules/sitemaps/sitemap-stylist.php:321
+#: modules/sitemaps/sitemap-stylist.php:461
+#: modules/sitemaps/sitemap-stylist.php:601
+msgid "Generated by <a href=\"%s\" target=\"_blank\">Jetpack for WordPress</a>"
+msgstr "Erzeugt von <a href=\"%s\" target=\"_blank\">Jetpack für WordPress</a>"
+
 #: modules/shortcodes/wufoo.php:71
 msgid "Fill out my Wufoo form!"
 msgstr "Fülle mein Wufoo-Formular aus!"
@@ -6178,6 +6202,14 @@ msgstr "Verwende das Facebook-Seiten-Plugin, um Besucher zu deiner Facebook-Seit
 #: modules/sitemaps/sitemap-stylist.php:67
 msgid "XML Sitemap"
 msgstr "XML Sitemap"
+
+#: modules/sitemaps/sitemap-stylist.php:84
+#: modules/sitemaps/sitemap-stylist.php:196
+#: modules/sitemaps/sitemap-stylist.php:311
+#: modules/sitemaps/sitemap-stylist.php:451
+#: modules/sitemaps/sitemap-stylist.php:591
+msgid "You can find more information on XML sitemaps at <a href=\"%1$s\" target=\"_blank\">sitemaps.org</a>"
+msgstr "Du kannst mehr Informationen zu XML Sitemaps auf <a href=\"%1$s\" target=\"_blank\">sitemaps.org</a> finden."
 
 #: modules/module-headings.php:185
 msgctxt "Module Name"
@@ -8942,6 +8974,26 @@ msgctxt "Module Name"
 msgid "Site verification"
 msgstr "Website-Verifizierung"
 
+#: modules/module-headings.php:202
+msgctxt "Module Description"
+msgid "Allow users to subscribe to your posts and comments and receive notifications via email"
+msgstr "Erlaube es Benutzern, deine Beiträge und Kommentare zu abonnieren und Benachrichtigungen per E-Mail zu erhalten."
+
+#: modules/module-headings.php:102
+msgctxt "Module Description"
+msgid "Write posts or pages in plain-text Markdown syntax"
+msgstr "Schreibe Beiträge oder Seiten in Markdown-Syntax."
+
+#: modules/module-headings.php:43
+msgctxt "Module Name"
+msgid "Custom content types"
+msgstr "Individuelle Inhaltstypen"
+
+#: modules/module-headings.php:133
+msgctxt "Module Name"
+msgid "Post by email"
+msgstr "Per E-Mail veröffentlichen"
+
 #: _inc/lib/class.core-rest-api-endpoints.php:1456 modules/minileven.php:92
 msgid "Show a promo for the WordPress mobile apps in the footer of the mobile theme."
 msgstr "Eine Werbung für die WordPress Mobil-Apps in der Fußzeile des mobilen Themes anzeigen."
@@ -9444,6 +9496,12 @@ msgstr "Wird geladen..."
 #: modules/minileven/theme/pub/minileven/footer.php:59
 msgid "https://wordpress.org/"
 msgstr "https://de.wordpress.org/"
+
+#: modules/infinite-scroll/infinity.php:386
+msgid "Shows %s post on each load."
+msgid_plural "Shows %s posts on each load."
+msgstr[0] "Zeigt %s Beitrag bei jedem Laden."
+msgstr[1] "Zeigt %s Beiträge bei jedem Laden."
 
 #: modules/custom-post-types/nova.php:333
 #: modules/custom-post-types/nova.php:338
@@ -10418,6 +10476,12 @@ msgstr "Wähle aus den meistgenutzten Schlagwörtern"
 #: modules/sitemaps/sitemap-stylist.php:433 modules/widgets/flickr/form.php:67
 msgid "Thumbnail"
 msgstr "Vorschaubild"
+
+#: modules/custom-css/custom-css.php:1081
+msgid "The default content width for the %s theme is %d pixel."
+msgid_plural "The default content width for the %s theme is %d pixels."
+msgstr[0] "Die Standard-Inhaltsbreite für das Theme %s ist %d Pixel."
+msgstr[1] "Die Standard-Inhaltsbreite für das Theme %s ist %d Pixel."
 
 #: modules/contact-form/grunion-contact-form.php:1337
 msgctxt "%1$s = blog name"
@@ -12323,3 +12387,16 @@ msgstr "Teste, ob deine Website mit Jetpack kompatibel ist."
 #: views/admin/network-admin-footer.php:21
 msgid "Debug"
 msgstr "Fehlersuche"
+
+#: class.jetpack-cli.php:208
+msgid "User has been successfully disconnected."
+msgstr "Benutzer wurde erfolgreich getrennt."
+
+#: class.jetpack-cli.php:201
+msgid "Jetpack has been successfully disconnected for %s."
+msgstr "Die Jetpack-Verbindung für %s wurde erfolgreich getrennt. "
+
+#. translators: %s is a username
+#: class.jetpack-cli.php:211
+msgid "User %s could not be disconnected. Are you sure they're connected currently?"
+msgstr "Benutzer %s konnte nicht getrennt werden. Bist du sicher, dass sie momentan verbunden sind?"
