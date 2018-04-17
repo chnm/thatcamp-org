@@ -92,7 +92,7 @@ function vscf_field_callback_3() {
 	$value = esc_attr( get_option( 'vscf-setting-3' ) );
 	?>
 	<input type='hidden' name='vscf-setting-3' value='no'>
-	<label><input type='checkbox' name='vscf-setting-3' <?php checked( $value, 'yes' ); ?> value='yes'> <?php _e( 'Activate confirmation email to sender.', 'very-simple-contact-form' ); ?> *</label>
+	<label><input type='checkbox' name='vscf-setting-3' <?php checked( $value, 'yes' ); ?> value='yes'> <?php _e( 'Activate confirmation email to sender.', 'very-simple-contact-form' ); ?></label>
 	<?php
 }
 
@@ -179,13 +179,13 @@ function vscf_field_callback_15() {
 function vscf_field_callback_16() {
 	$vscf_placeholder = esc_attr__( 'Thank you! You will receive a response as soon as possible.', 'very-simple-contact-form' ); 
 	$vscf_setting = esc_attr( get_option( 'vscf-setting-16' ) );
-	echo "<input type='text' size='40' maxlength='200' name='vscf-setting-16' placeholder='$vscf_placeholder' value='$vscf_setting' /> *";
+	echo "<input type='text' size='40' maxlength='200' name='vscf-setting-16' placeholder='$vscf_placeholder' value='$vscf_setting' />";
 }
 
 function vscf_field_callback_17() {
 	$vscf_placeholder = esc_attr__( 'Thank you! You will receive a response as soon as possible.', 'very-simple-contact-form' ); 
 	$vscf_setting = esc_attr( get_option( 'vscf-setting-17' ) );
-	echo "<input type='text' size='40' maxlength='200' name='vscf-setting-17' placeholder='$vscf_placeholder' value='$vscf_setting' /> *";
+	echo "<input type='text' size='40' maxlength='200' name='vscf-setting-17' placeholder='$vscf_placeholder' value='$vscf_setting' />";
 }
 
 // display admin options page
@@ -199,9 +199,8 @@ function vscf_options_page() {
 	<?php do_settings_sections( 'vscf' ); ?>
 	<?php submit_button(); ?>
 	</form>
-	<p><?php _e( 'Only general settings and labels are listed here. More customizations can be made using (shortcode) attributes.', 'very-simple-contact-form' ); ?></p>
-	<p><?php _e( 'Values marked with * can be overwritten using the relevant (shortcode) attribute.', 'very-simple-contact-form' ); ?></p>
-
+	<p><?php _e( 'More customizations can be made using (shortcode) attributes.', 'very-simple-contact-form' ); ?></p>
+	<p><?php _e( 'Info about attributes', 'very-simple-contact-form' ); ?>: <a href="https://wordpress.org/plugins/very-simple-contact-form" target="_blank"><?php _e( 'click here', 'very-simple-contact-form' ); ?></a></p>
 </div>
 <?php
 }

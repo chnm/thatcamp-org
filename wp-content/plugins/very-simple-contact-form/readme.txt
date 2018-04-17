@@ -1,7 +1,7 @@
 === Very Simple Contact Form ===
 Contributors: Guido07111975
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donation%40guidovanderleest%2enl
-Version: 8.0
+Version: 8.2
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.7
@@ -38,6 +38,8 @@ Via Settings > VSCF you can:
 * Activate confirmation email to sender
 * Activate a privacy checkbox so that your form complies with the GDPR
 * Change form labels and messages
+
+Several settings can be overwritten when using the relevant (shortcode) attributes below.
 
 = Shortcode attributes = 
 * Change admin email address: `[contact email_to="your-email-here"]`
@@ -113,7 +115,7 @@ By default the email subject contains the name of your site, followed by the sub
 
 You can change this subject using an attribute.
 
-Note: this subject will also be used in the confirmation email to sender (if activated).
+This subject will also be used in the confirmation email to sender (if activated).
 
 = Why is the "from" email not from sender? =
 I have used a default so called "From" email header to avoid form submissions being marked as spam.
@@ -170,6 +172,14 @@ Please open a topic in plugin forum.
 
 
 == Changelog ==
+= Version 8.2 =
+* removed the capability to create new submission in dashboard
+* changed the id of custom admin columns
+* updated file vscf
+
+= Version 8.1 =
+* some textual changes on settingspage
+
 = Version 8.0 =
 * name and email column on submissions page are now sortable
 * updated the changelog of last versions (hopefully more clear now)
@@ -182,26 +192,6 @@ Please open a topic in plugin forum.
 
 = Version 7.8 =
 * updated privacy consent notification in email to admin and in dashboard 
-
-= Version 7.7 =
-* new: activate a privacy checkbox so that your form complies with the GDPR
-* if activated, user must consent to the collection of name, email and IP address
-* you can set this via the settingspage
-* added a privacy consent notification in email to admin and in dashboard
-* thanks nimrod54 for informing me about this
-
-= Version 7.6 =
-* textual change in widget (forgot to add this in previous update)
-* updated file vscf-widget
-
-= Version 7.5 =
-* major update
-* new: you can now list form submissions in your dashboard
-* new: added settingspage with all general settings and labels
-* removed all field label (shortcode) attributes
-* all field labels can be changed via the settingspage
-* all other (shortcode) attributes still work as before
-* updated most files
 
 For all versions please check file changelog.
 

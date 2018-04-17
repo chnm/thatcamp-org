@@ -4,18 +4,17 @@ Author URI: http://www.usestrict.net/
 Plugin URI: http://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
-Tested up to: 4.9.2
+Tested up to: 4.9.5
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.18
+Stable tag: 1.18.1
 Requires PHP: 5.3
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
 == Description ==
-This is started as a fork of the original bbPress-Notify plugin, after several failed attempts to contact the author requesting that he add the no-spam code to it. I don't like spam. Do you?
-
-It integrates into bbPress and sends notifications via e-mail when new topics or replies are posted. It is fully configurable in the bbPress settings.
+This plugin extends bbPress to send notifications via e-mail to selected roles  when new topics or replies are posted. It also has options to override the
+core bbPress notification templates, and is fully configurable in the bbPress settings.
 
 = Features include =
 
@@ -77,6 +76,10 @@ the [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out
 
 
 == Changelog ==
+= 1.18.1 =
+* Updated Tested up to
+* Added improved admin notice code and bbpnns-rbe April/2018 promo.
+
 = 1.18 =
 * Added support for topic-content and topic-excerpt tags in replies.
 * Added check and warning of needed bridge plugins to play nicely with supported membership/permission plugins.

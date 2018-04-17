@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Very Simple Contact Form\n"
-"POT-Creation-Date: 2018-03-30 13:51+0200\n"
+"POT-Creation-Date: 2018-04-14 16:40+0200\n"
 "PO-Revision-Date: 2015-08-14 23:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -20,12 +20,12 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: vscf-form.php:49 vscf-options.php:31 vscf-options.php:108
-#: vscf-widget-form.php:49 vscf.php:64
+#: vscf-widget-form.php:49 vscf.php:62
 msgid "Name"
 msgstr ""
 
 #: vscf-form.php:52 vscf-options.php:34 vscf-options.php:114
-#: vscf-widget-form.php:52 vscf.php:65
+#: vscf-widget-form.php:52 vscf.php:63
 msgid "Email"
 msgstr ""
 
@@ -75,27 +75,27 @@ msgstr ""
 msgid "Error! Could not send form. This might be a server issue."
 msgstr ""
 
-#: vscf-form.php:90 vscf-form.php:101 vscf-options.php:180
-#: vscf-options.php:186 vscf-widget-form.php:90 vscf-widget-form.php:101
+#: vscf-form.php:91 vscf-form.php:103 vscf-options.php:180
+#: vscf-options.php:186 vscf-widget-form.php:91 vscf-widget-form.php:103
 msgid "Thank you! You will receive a response as soon as possible."
 msgstr ""
 
-#: vscf-form.php:233 vscf-widget-form.php:233
+#: vscf-form.php:236 vscf-widget-form.php:236
 msgid "Yes"
 msgstr ""
 
-#: vscf-form.php:235 vscf-widget-form.php:235
+#: vscf-form.php:238 vscf-widget-form.php:238
 msgid "No"
 msgstr ""
 
-#: vscf-form.php:241 vscf-form.php:249 vscf-widget-form.php:241
-#: vscf-widget-form.php:249
+#: vscf-form.php:244 vscf-form.php:252 vscf-widget-form.php:244
+#: vscf-widget-form.php:252
 #, php-format
 msgid "Privacy consent: %s"
 msgstr ""
 
-#: vscf-form.php:241 vscf-form.php:249 vscf-form.php:254
-#: vscf-widget-form.php:241 vscf-widget-form.php:249 vscf-widget-form.php:254
+#: vscf-form.php:244 vscf-form.php:252 vscf-form.php:257
+#: vscf-widget-form.php:244 vscf-widget-form.php:252 vscf-widget-form.php:257
 #, php-format
 msgid "IP: %s"
 msgstr ""
@@ -182,15 +182,15 @@ msgid "Very Simple Contact Form"
 msgstr ""
 
 #: vscf-options.php:202
-msgid ""
-"Only general settings and labels are listed here. More customizations can "
-"be made using (shortcode) attributes."
+msgid "More customizations can be made using (shortcode) attributes."
 msgstr ""
 
-#: vscf-options.php:203
-msgid ""
-"Values marked with * can be overwritten using the relevant (shortcode) "
-"attribute."
+#: vscf-options.php:203 vscf-widget.php:37
+msgid "Info about attributes"
+msgstr ""
+
+#: vscf-options.php:203 vscf-widget.php:37 vscf-widget.php:38
+msgid "click here"
 msgstr ""
 
 #: vscf-widget.php:10
@@ -209,20 +209,8 @@ msgstr ""
 msgid "Attributes"
 msgstr ""
 
-#: vscf-widget.php:37
-msgid "Info about attributes"
-msgstr ""
-
-#: vscf-widget.php:37 vscf-widget.php:38
-msgid "click here"
-msgstr ""
-
-#: vscf-widget.php:38 vscf.php:89
+#: vscf-widget.php:38 vscf.php:120
 msgid "Settings"
-msgstr ""
-
-#: vscf.php:45
-msgid "Submission"
 msgstr ""
 
 #. Description of the plugin/theme

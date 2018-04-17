@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+= Version 8.2 =
+* removed the capability to create new submission in dashboard
+* changed the id of custom admin columns
+* updated file vscf
+
+= Version 8.1 =
+* some textual changes on settingspage
+
 = Version 8.0 =
 * name and email column on submissions page are now sortable
 * updated the changelog of last versions (hopefully more clear now)

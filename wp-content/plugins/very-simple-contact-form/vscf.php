@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Very Simple Contact Form
  * Description: This is a very simple contact form. Use shortcode [contact] to display form on page or use the widget. For more info please check readme file.
- * Version: 8.0
+ * Version: 8.2
  * Author: Guido van der Leest
  * Author URI: https://www.guidovanderleest.nl
  * License: GNU General Public License v3 or later
@@ -40,18 +40,16 @@ add_action( 'widgets_init', 'register_vscf_widget' );
 $list_submissions_setting = esc_attr(get_option('vscf-setting-2'));
 if ($list_submissions_setting == "yes") {
 	function vscf_custom_postype() { 
-		$vscf_labels = array( 
-			'name' => __( 'Submissions', 'very-simple-contact-form' ), 
-			'singular_name' => __( 'Submission', 'very-simple-contact-form' ), 
-		); 
 		$vscf_args = array( 
-			'labels' => $vscf_labels, 
+			'labels' => array('name' => __( 'Submissions', 'very-simple-contact-form' )), 
 			'public' => false, 
 			'can_export' => true, 
 			'show_in_nav_menus' => false, 
 			'show_ui' => true, 
 			'show_in_rest' => true, 
 			'capability_type' => 'post', 
+			'capabilities' => array('create_posts' => 'do_not_allow'), 
+			'map_meta_cap' => true, 
  			'supports' => array('title', 'editor'), 
 		); 
 		register_post_type( 'submission', $vscf_args); 
@@ -61,9 +59,9 @@ if ($list_submissions_setting == "yes") {
 
 // dashboard submission columns
 function vscf_custom_columns( $columns ) { 
-	$columns['name_sub'] = __( 'Name', 'very-simple-contact-form' ); 
-	$columns['email_sub'] = __( 'Email', 'very-simple-contact-form' ); 
-	$custom_order = array('cb', 'title', 'name_sub', 'email_sub', 'date');
+	$columns['name_column'] = __( 'Name', 'very-simple-contact-form' ); 
+	$columns['email_column'] = __( 'Email', 'very-simple-contact-form' ); 
+	$custom_order = array('cb', 'title', 'name_column', 'email_column', 'date');
 	foreach ($custom_order as $colname) {
 		$new[$colname] = $columns[$colname];
 	}
@@ -72,11 +70,11 @@ function vscf_custom_columns( $columns ) {
 add_filter( 'manage_submission_posts_columns', 'vscf_custom_columns', 10 );
 
 function vscf_custom_columns_content( $column_name, $post_id ) { 
-	if ( 'name_sub' == $column_name ) { 
+	if ( 'name_column' == $column_name ) { 
 		$name = get_post_meta( $post_id, 'name_sub', true ); 
 		echo $name; 
 	} 
-	if ( 'email_sub' == $column_name ) { 
+	if ( 'email_column' == $column_name ) { 
 		$email = get_post_meta( $post_id, 'email_sub', true ); 
 		echo $email; 
 	} 
@@ -85,8 +83,8 @@ add_action( 'manage_submission_posts_custom_column', 'vscf_custom_columns_conten
 
 // make name and email column sortable
 function vscf_column_register_sortable( $columns ) {
-	$columns['name_sub'] = 'name_sub';
-	$columns['email_sub'] = 'email_sub';
+	$columns['name_column'] = 'name_sub';
+	$columns['email_column'] = 'email_sub';
 	return $columns;
 }
 add_filter( 'manage_edit-submission_sortable_columns', 'vscf_column_register_sortable' );

@@ -2,7 +2,7 @@
 /*
 * Plugin Name:  bbPress Notify (No-Spam)
 * Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a>
-* Version:      1.18
+* Version:      1.18.1
 * Author:       <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:      GNU General Public License, v2 ( or newer )
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ load_plugin_textdomain( 'bbpress_notify', false, dirname( plugin_basename( __FIL
 
 class bbPress_Notify_noSpam {
 	
-	const VERSION = '1.18';
+	const VERSION = '1.18.1';
 	
 	protected $settings_section = 'bbpress_notify_options';
 	
@@ -42,6 +42,8 @@ class bbPress_Notify_noSpam {
 	public $users_in_roles = array();
 	
 	private $bridge_warnings = array();
+	
+	private $notices = array( 'bbpnns_rbe_notice_042018_01' => 'bbpnns_rbe_notice_042018_01' );
 	
 	function __construct()
 	{
@@ -66,19 +68,20 @@ class bbPress_Notify_noSpam {
 			// Notification meta boxes if needed
 			add_action( 'add_meta_boxes', array( $this, 'add_notification_meta_box' ), 10 );
 			
-// 			add_action( 'admin_notices', array( $this, 'maybe_show_admin_message' ) );
+			add_action( 'admin_notices', array( $this, 'maybe_show_admin_message' ) );
 
 // 			add_action( 'admin_notices', array( $this, 'maybe_show_surety_message' ) );
 			
-			add_action( 'wp_ajax_usc_dismiss_notice', array( $this, 'handle_notice_dismissal' ) );
-			
 			add_action( 'plugins_loaded', array( $this, 'get_bridge_warnings' ), PHP_INT_MAX );
+			
+			// Dismiss notice
+			add_action('wp_ajax_' . 'bbpnns-notice-handler', array( $this, 'handle_notice_dismissal' ) );
 			
 		}
 		else 
 		{
 			// Stop timeouts if doing cron.
-			if ( defined('DOING_CRON') && DOING_CRON)
+			if ( defined('DOING_CRON') && DOING_CRON )
 			{
 				set_time_limit(0);
 			}
@@ -149,6 +152,35 @@ class bbPress_Notify_noSpam {
 		add_filter( 'bbpnns_is_in_effect', array( $this, 'bbpnns_is_in_effect' ), 10, 2 );
 	}
 	
+	
+	/**
+	 * Dismiss a notice
+	 */
+	public function handle_notice_dismissal()
+	{
+		if ( isset( $_POST['notice_id'] ) )
+		{
+			$notice_id = sanitize_text_field( $_POST['notice_id'] );
+		}
+		
+		if ( ! $notice_id || ! isset( $this->notices[$notice_id] ) )
+		{
+			wp_die( 'I don\'t recognize that notice!' );
+		}
+		
+		if ( check_ajax_referer( 'bbpnns-notice-nonce_' . $notice_id, 'nonce' ) )
+		{
+			$dismissed = get_option( 'bbpnns_dismissed_admin_notices', array() );
+			$dismissed[$notice_id] = true;
+			
+			update_option( 'bbpnns_dismissed_admin_notices', $dismissed );
+		}
+		
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
+		{
+			exit(0);
+		}
+	}
 	
 	/**
 	 * Check if bbpnns is in effect (whether because of selected roles or of bbpress core notification Overrides.
@@ -284,31 +316,52 @@ class bbPress_Notify_noSpam {
 	}
 	
 	/**
-	 * Deprecated, the project did not get backing.
+	 * Show dismissable admin notices 
 	 */
 	function maybe_show_admin_message()
 	{
-		$old_key     = 'bbpnns-dismissed-1_7_1';
-		$dismiss_key = 'bbpnns-opt-out-msg';
+		$dismissed = get_option( 'bbpnns_dismissed_admin_notices', array() );
 		
-		if ( isset( $_GET[$dismiss_key] )  )
+		$notices   = $this->notices;
+		$has_notice = false;
+		foreach ( $notices as $notice => $method )
 		{
-			delete_option( 'bbpress-notify-pro-dismissed' );
-			update_option( $dismiss_key, true );
+			if ( ! isset( $dismissed[$notice] ) && method_exists( $this, $method ) )
+			{
+				$has_notice = call_user_func( array( $this, $method )  );
+			}
 		}
-		elseif ( ! get_option( $old_key ) || ! get_option( $dismiss_key ) )
+		
+		if ( true === $has_notice )
 		{
-			$add_on_url  = 'http://usestrict.net/2015/03/bbpress-notify-no-spam-opt-out-add-on/'; 
-			$dismiss_url = esc_url( add_query_arg( array( $dismiss_key => 1 ), $_SERVER['REQUEST_URI'] ) );
-            ?>
-				<div class="updated">
-                <p><?php _e( sprintf( '<div style="display:inline">Users asked and we delivered! Allow your subscribers to opt-out 
-									   from receiving your notifications with <a href="%s" target="_new"><strong>bbPress Notify ( No Spam ) Opt Out Add On</strong></a>.</div> 
-									   <div style="float:right"><a href="%s">Dismiss</a></div>', $add_on_url, $dismiss_url ), $this->domain ); ?></p>
-				</div>
-			<?php
+			wp_enqueue_script( $this->domain . '-admin-notice-handler', plugin_dir_url( __FILE__ ) . '/assets/js/notice-handler.js', array( 'jquery' ), self::VERSION );
 		}
 	}
+	
+	
+	/**
+	 * The notice about Reply By Email
+	 */
+	public function bbpnns_rbe_notice_042018_01()
+	{
+		if ( '04/2018' !== date( 'm/Y' ) ) 
+		{
+			return false;
+		}
+		
+		?>
+		 <div id="bbpnns_rbe_notice_042018_01" class="bbpnns-admin-notice notice notice-info is-dismissible">
+        	<p><?php _e( '<strong>Thanks for using bbPress Notify (No-Spam)!</strong><br>
+Did you know that we now have an add-on that allows your forum participants to send their replies by email? <br>
+<a href="https://usestrict.net/product/bbpress-notify-no-spam-reply-email/" target="_new">Click here</a> to get yours now with 15% off on your subscription using Promo Code <strong>RBE15APR18</strong>. But hurry! This promotion is only valid until April 30 2018.', $this->domain ); ?></p>
+        	<form>
+        	<?php wp_nonce_field( 'bbpnns-notice-nonce_bbpnns_rbe_notice_042018_01', 'bbpnns-notice-nonce_bbpnns_rbe_notice_042018_01' ); ?>
+        	</form>
+    	</div>
+		<?php 
+		
+		return true;
+	} 
 	
 	
 	/**
@@ -344,23 +397,6 @@ jQuery(document).ready(function($){
 });
 		</script>
 		<?php 
-	}
-	
-	/**
-	 * Handles Ajax notice dismissal calls  
-	 */
-	function handle_notice_dismissal()
-	{
-		$notice = null;
-		if ( isset( $_POST['notice'] ) )
-		{
-			$notice = sanitize_text_field( $_POST['notice'] );
-		}
-		
-		if ( $notice && check_ajax_referer( "usc_dismiss_{$notice}_nonce", 'usc_nonce' ) )
-		{
-			update_site_option( "{$notice}_dismissed", true );
-		}
 	}
 	
 	
