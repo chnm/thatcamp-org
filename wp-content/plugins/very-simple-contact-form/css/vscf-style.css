@@ -10,7 +10,7 @@
 #vscf .form-group input[type="text"], #vscf .form-group input[type="email"] {width:70%; font-size:1em;}
 #vscf .form-group textarea {width:90%; font-size:1em;}
 #vscf .form-group input[type="checkbox"] {}
-#vscf .form-group button {}
+#vscf .form-group button {font-size:1em;}
 
 /* Error */
 #vscf .error {border-color:#ff0000; color:#ff0000;}

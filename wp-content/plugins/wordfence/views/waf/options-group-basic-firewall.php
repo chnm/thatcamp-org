@@ -333,8 +333,15 @@ if (!isset($collapseable)) {
 													}
 												}
 												
+												var identifier = '.wf-waf-backups-' + el.val().replace(/[^a-z0-9\-]/i, '');
 												$('.wf-waf-backups').hide();
-												$('.wf-waf-backups-' + el.val().replace(/[^a-z0-9\-]/i, '')).show();
+												$(identifier).show();
+												if ($(identifier).find('.wf-waf-backup-file-list').children().length > 0) {
+													$('.wf-waf-download-instructions').show();
+												}
+												else {
+													$('.wf-waf-download-instructions').hide();
+												}
 
 												if (nginxNotice.length) { //Install only
 													if (el.val() == 'nginx') {
@@ -405,7 +412,7 @@ if (!isset($collapseable)) {
 									});
 
 									if (window.location.hash) {
-										var hashes = window.location.hash.split('#');
+										var hashes = WFAD.parseHashes();
 										for (var i = 0; i < hashes.length; i++) {
 											if (hashes[i] == 'configureAutoPrepend') {
 												$('#wf-waf-install').trigger('click');
@@ -419,7 +426,7 @@ if (!isset($collapseable)) {
 									}
 
 									$(window).on('hashchange', function () {
-										var hashes = window.location.hash.split('#');
+										var hashes = WFAD.parseHashes();
 										for (var i = 0; i < hashes.length; i++) {
 											if (hashes[i] == 'configureAutoPrepend') {
 												$('#wf-waf-install').trigger('click');

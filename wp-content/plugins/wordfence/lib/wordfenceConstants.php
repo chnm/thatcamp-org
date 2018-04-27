@@ -7,6 +7,7 @@ define('WORDFENCE_API_URL_BASE_NONSEC', WORDFENCE_API_URL_NONSEC . 'v' . WORDFEN
 define('WORDFENCE_BREACH_URL_BASE_SEC', WORDFENCE_API_URL_SEC . 'passwords/');
 define('WORDFENCE_BREACH_URL_BASE_NONSEC', WORDFENCE_API_URL_NONSEC . 'passwords/');
 define('WORDFENCE_HACKATTEMPT_URL', 'http://noc3.wordfence.com/');
+define('WORDFENCE_HACKATTEMPT_URL_SEC', 'https://noc3.wordfence.com/');
 define('WORDFENCE_MAX_SCAN_LOCK_TIME', 86400); //Increased this from 10 mins to 1 day because very big scans run for a long time. Users can use kill.
 define('WORDFENCE_DEFAULT_MAX_SCAN_TIME', 10800);
 define('WORDFENCE_TRANSIENTS_TIMEOUT', 3600); //how long are items cached in seconds e.g. files downloaded for diffing
@@ -21,5 +22,6 @@ if (!defined('WORDFENCE_SCAN_ISSUES_PER_PAGE')) { define('WORDFENCE_SCAN_ISSUES_
 if (!defined('WORDFENCE_BLOCKED_IPS_PER_PAGE')) { define('WORDFENCE_BLOCKED_IPS_PER_PAGE', 100); }
 if (!defined('WORDFENCE_DISABLE_FILE_VIEWER')) { define('WORDFENCE_DISABLE_FILE_VIEWER', false); }
 if (!defined('WORDFENCE_SCAN_FAILURE_THRESHOLD')) { define('WORDFENCE_SCAN_FAILURE_THRESHOLD', 300); }
+if (!defined('WORDFENCE_SCAN_START_FAILURE_THRESHOLD')) { define('WORDFENCE_SCAN_START_FAILURE_THRESHOLD', 15); }
 if (!defined('WORDFENCE_PREFER_WP_HOME_FOR_WPML')) { define('WORDFENCE_PREFER_WP_HOME_FOR_WPML', false); } //When determining the unfiltered `home` and `siteurl` with WPML installed, use WP_HOME and WP_SITEURL if set instead of the database values
 if (!defined('WORDFENCE_SCAN_MIN_EXECUTION_TIME')) { define('WORDFENCE_SCAN_MIN_EXECUTION_TIME', 8); }

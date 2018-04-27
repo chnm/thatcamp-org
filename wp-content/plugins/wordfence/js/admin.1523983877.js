@@ -128,7 +128,7 @@
 						$(window).trigger('wfTabChange', [tab.data('target')]);
 					});
 					if (window.location.hash) {
-						var hashes = window.location.hash.split('#');
+						var hashes = WFAD.parseHashes();
 						var hash = hashes[hashes.length - 1];
 						for (var i = 0; i < tabs.length; i++) {
 							if (hash == jQuery(tabs[i]).closest('.wf-tab').data('target')) {
@@ -140,7 +140,7 @@
 						jQuery(tabs[0]).trigger('click');
 					}
 					jQuery(window).on('hashchange', function () {
-						var hashes = window.location.hash.split('#');
+						var hashes = WFAD.parseHashes();
 						var hash = hashes[hashes.length - 1];
 						for (var i = 0; i < tabs.length; i++) {
 							if (hash == jQuery(tabs[i]).closest('.wf-tab').data('target')) {
@@ -2225,6 +2225,17 @@
 			},
 			makeViewOptionLink: function(option, siteID) {
 				return WordfenceAdminVars.siteBaseURL + '?_wfsf=viewOption&nonce=' + this.nonce + '&option=' + encodeURIComponent(option) + '&site_id=' + encodeURIComponent(siteID);
+			},
+			parseHashes: function() {
+				var hashes = window.location.hash.replace('%23', '#');
+				var splitHashes = hashes.split('#');
+				var result = [];
+				for (var i = 0; i < splitHashes.length; i++) {
+					if (splitHashes[i].length > 0) {
+						result.push(splitHashes[i]);
+					}
+				}
+				return result;
 			},
 			makeTimeAgo: function(t) {
 				var months = Math.floor(t / (86400 * 30));

@@ -27,7 +27,7 @@ class wfAPI {
 		//Sanity check. Developer should call wfAPI::SSLEnabled() to check if SSL is enabled before forcing SSL and return a user friendly msg if it's not.
 		if ($forceSSL && (!preg_match('/^https:/i', $apiURL))) {
 			//User's should never see this message unless we aren't calling SSLEnabled() to check if SSL is enabled before using call() with forceSSL
-			throw new Exception("SSL is not supported by your web server and is required to use this function. Please ask your hosting provider or site admin to install cURL with openSSL to use this feature.");
+			throw new wfAPICallSSLUnavailableException("SSL is not supported by your web server and is required to use this function. Please ask your hosting provider or site admin to install cURL with openSSL to use this feature.");
 		}
 		$json = $this->getURL(rtrim($apiURL, '/') . '/v' . WORDFENCE_API_VERSION . '/?' . $this->makeAPIQueryString() . '&' . self::buildQuery(
 				array_merge(
@@ -35,7 +35,7 @@ class wfAPI {
 					$getParams
 				)), $postParams, $timeout);
 		if (!$json) {
-			throw new Exception("We received an empty data response from the Wordfence scanning servers when calling the '$action' function.");
+			throw new wfAPICallInvalidResponseException("We received an empty data response from the Wordfence scanning servers when calling the '$action' function.");
 		}
 
 		$dat = json_decode($json, true);
@@ -84,10 +84,10 @@ class wfAPI {
 		}
 
 		if (!is_array($dat)) {
-			throw new Exception("We received a data structure that is not the expected array when contacting the Wordfence scanning servers and calling the '$action' function.");
+			throw new wfAPICallInvalidResponseException("We received a data structure that is not the expected array when contacting the Wordfence scanning servers and calling the '$action' function.");
 		}
 		if (is_array($dat) && isset($dat['errorMsg'])) {
-			throw new Exception($dat['errorMsg']);
+			throw new wfAPICallErrorResponseException($dat['errorMsg']);
 		}
 		return $dat;
 	}
@@ -118,7 +118,7 @@ class wfAPI {
 
 		if (is_wp_error($response)) {
 			$error_message = $response->get_error_message();
-			throw new Exception("There was an " . ($error_message ? '' : 'unknown ') . "error connecting to the Wordfence scanning servers" . ($error_message ? ": $error_message" : '.'));
+			throw new wfAPICallFailedException("There was an " . ($error_message ? '' : 'unknown ') . "error connecting to the Wordfence scanning servers" . ($error_message ? ": $error_message" : '.'));
 		}
 		
 		$dateHeader = @$response['headers']['date'];
@@ -140,7 +140,7 @@ class wfAPI {
 		}
 
 		if (200 != $this->lastHTTPStatus) {
-			throw new Exception("The Wordfence scanning servers are currently unavailable. This may be for maintenance or a temporary outage. If this still occurs in an hour, please contact support. [$this->lastHTTPStatus]");
+			throw new wfAPICallFailedException("The Wordfence scanning servers are currently unavailable. This may be for maintenance or a temporary outage. If this still occurs in an hour, please contact support. [$this->lastHTTPStatus]");
 		}
 
 		$content = wp_remote_retrieve_body($response);
@@ -192,4 +192,16 @@ class wfAPI {
 		}
 		return wp_http_supports(array('ssl'));
 	}
+}
+
+class wfAPICallSSLUnavailableException extends Exception {
+}
+
+class wfAPICallFailedException extends Exception {
+}
+
+class wfAPICallInvalidResponseException extends Exception {
+}
+
+class wfAPICallErrorResponseException extends Exception {
 }

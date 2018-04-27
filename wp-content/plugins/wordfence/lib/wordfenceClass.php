@@ -36,6 +36,7 @@ require_once(dirname(__FILE__) . '/wfImportExportController.php');
 require_once(dirname(__FILE__) . '/wfOnboardingController.php');
 require_once(dirname(__FILE__) . '/wfSupportController.php');
 require_once(dirname(__FILE__) . '/wfCredentialsController.php');
+require_once(dirname(__FILE__) . '/wfVersionCheckController.php');
 require_once(dirname(__FILE__) . '/wfDateLocalization.php');
 require_once(dirname(__FILE__) . '/wfAdminNoticeQueue.php');
 
@@ -65,6 +66,11 @@ class wordfence {
 	public static $commentSpamItems = array();
 	public static function installPlugin(){
 		self::runInstall();
+		
+		if (get_current_user_id() > 0) {
+			wfConfig::set('activatingIP', wfUtils::getIP());
+		}
+		
 		//Used by MU code below
 		update_option('wordfenceActivated', 1);
 	}
@@ -102,9 +108,9 @@ class wordfence {
 		}
 
 		if(wfConfig::get('deleteTablesOnDeact')){
+			wfConfig::updateTableExists(false);
 			$schema = new wfSchema();
 			$schema->dropAll();
-			wfConfig::updateTableExists();
 			foreach(array('wordfence_version', 'wordfenceActivated') as $opt){
 				if (is_multisite() && function_exists('delete_network_option')) {
 					delete_network_option(null, $opt);
@@ -171,6 +177,8 @@ class wordfence {
 				}
 			}
 		}
+		
+		wfVersionCheckController::shared()->checkVersionsAndWarn();
 	}
 	private static function keyAlert($msg){
 		self::alert($msg, $msg . " To ensure uninterrupted Premium Wordfence protection on your site,\nplease renew your API key by visiting http://www.wordfence.com/ Sign in, go to your dashboard,\nselect the key about to expire and click the button to renew that API key.", false);
@@ -187,6 +195,7 @@ class wordfence {
 		try {
 			$keyType = wfAPI::KEY_TYPE_FREE;
 			$keyData = $api->call('ping_api_key', array(), array('supportHash' => wfConfig::get('supportHash', '')));
+			wfConfig::set('useNoc3Secure', isset($keyData['n3']) ? wfUtils::truthyToBoolean($keyData['n3']) : false);
 			if (isset($keyData['_isPaidKey'])) {
 				$keyType = wfConfig::get('keyType');
 			}
@@ -248,6 +257,7 @@ class wordfence {
 		}
 		catch(Exception $e){
 			wordfence::status(4, 'error', "Could not verify Wordfence API Key: " . $e->getMessage());
+			wfConfig::set('useNoc3Secure', false);
 		}
 
 		$wfdb = new wfDB();
@@ -403,6 +413,8 @@ class wordfence {
 	public static function _completeCoreUpdateNotification() {
 		//This approach is here because WP Core updates run in a different sequence than plugin/theme updates, so we have to defer the running of the notification update sequence by an extra page load
 		delete_site_transient('wordfence_updating_notifications');
+		
+		wfVersionCheckController::shared()->checkVersionsAndWarn();
 	}
 	public static function runInstall(){
 		if(self::$runInstallCalled){ return; }
@@ -428,6 +440,7 @@ class wordfence {
 
 		$schema = new wfSchema();
 		$schema->createAll(); //if not exists
+		wfConfig::updateTableExists(true);
 		
 		/** @var wpdb $wpdb */
 		global $wpdb;
@@ -1014,6 +1027,11 @@ SQL
 		
 		//Install new schedule. If schedule config is blank it will install the default 'auto' schedule.
 		wfScanner::shared()->scheduleScans();
+		
+		//Check our minimum versions and generate the necessary warnings
+		if (!wp_next_scheduled('wordfence_version_check')) {
+			wp_schedule_single_event(time(), 'wordfence_version_check');
+		}
 
 		//Must be the final line
 	}
@@ -1104,6 +1122,7 @@ SQL
 		add_action('wordfence_daily_cron', 'wordfence::dailyCron');
 		add_action('wordfence_daily_autoUpdate', 'wfConfig::autoUpdate');
 		add_action('wordfence_hourly_cron', 'wordfence::hourlyCron');
+		add_action('wordfence_version_check', array(wfVersionCheckController::shared(), 'checkVersionsAndWarn'));
 		add_action('plugins_loaded', 'wordfence::veryFirstAction');
 		add_action('init', 'wordfence::initAction');
 		//add_action('admin_bar_menu', 'wordfence::admin_bar_menu', 99);
@@ -1485,7 +1504,11 @@ SQL
 		wfBlock::createLockout($reason, $IP, wfBlock::lockoutDuration(), time(), time(), 1);
 		self::getLog()->tagRequestForLockout($reason);
 		if (wfConfig::get('alertOn_loginLockout')) {
-			wordfence::alert("User locked out from signing in", "A user with IP address {$IP} has been locked out from signing in or using the password recovery form for the following reason: {$reason}", $IP);
+			$message = sprintf(__('A user with IP addr %s has been locked out from signing in or using the password recovery form for the following reason: %s.', 'wordfence'), $IP, $reason);
+			if (wfBlock::lockoutDuration() > 0) {
+				$message .= "\n" . sprintf(__('The duration of the lockout is %s.', 'wordfence'), wfUtils::makeDuration(wfBlock::lockoutDuration(), true));
+			}
+			wordfence::alert(__('User locked out from signing in', 'wordfence'), $message, $IP);
 		}
 	}
 
@@ -1936,7 +1959,7 @@ SQL
 			if (isset($_POST['wordfence_authFactor']) && $_POST['wordfence_authFactor'] && $twoFactorRecord) { //User authenticated with name and password, 2FA code ready to check
 				$userID = $userDat->ID;
 				
-				if (get_class($authUser) == 'WP_User' && $authUser->ID == $userID) {
+				if (is_object($authUser) && get_class($authUser) == 'WP_User' && $authUser->ID == $userID) {
 					//Do nothing. This is the code path the old method of including the code in the password field will take -- since we already have a valid $authUser, skip the nonce verification portion
 				}
 				else if (isset($_POST['wordfence_twoFactorNonce'])) {
@@ -1976,7 +1999,7 @@ SQL
 							//Everything's good, let the sign in continue
 						} 
 						else {
-							if (get_class($authUser) == 'WP_User' && $authUser->ID == $userID) { //Using the old method of appending the code to the password
+							if (is_object($authUser) && get_class($authUser) == 'WP_User' && $authUser->ID == $userID) { //Using the old method of appending the code to the password
 								if ($mode == 'authenticator') {
 									remove_action('login_errors', 'limit_login_fixup_error_messages'); //We're forced to do this because limit-login-attempts does not have any allowances for legitimate error messages
 									self::$authError = new WP_Error('twofactor_invalid', __('<strong>INVALID CODE</strong>: Please sign in again and add a space, the letters <code>wf</code>, and the code from your authenticator app to the end of your password (e.g., <code>wf123456</code>).'));
@@ -2081,7 +2104,7 @@ SQL
 				delete_user_meta($userDat->ID, '_wf_twoFactorNonceTime');
 				$authUser = $userDat; //Log in as the user we saved in the wp_authenticate action
 			}
-			else if (get_class($authUser) == 'WP_User') { //User authenticated with name and password, prompt for the 2FA code
+			else if (is_object($authUser) && get_class($authUser) == 'WP_User') { //User authenticated with name and password, prompt for the 2FA code
 				//Verify at least one administrator has 2FA enabled
 				$requireAdminTwoFactor = $hasActivatedTwoFactorUser && wfConfig::get('loginSec_requireAdminTwoFactor');
 				
@@ -2346,7 +2369,7 @@ SQL
 					require('wfLockedOut.php');
 				}
 				set_transient($tKey, $tries, wfConfig::get('loginSec_countFailMins') * 60);
-			} else if(get_class($authUser) == 'WP_User'){
+			} else if(is_object($authUser) && get_class($authUser) == 'WP_User'){
 				delete_transient($tKey); //reset counter on success
 			}
 		}
@@ -2404,7 +2427,7 @@ SQL
 		}
 		
 		try {
-			$response = wp_remote_post(WORDFENCE_HACKATTEMPT_URL . 'multipleHackAttempts/?k=' . rawurlencode(wfConfig::get('apiKey')) . '&t=brute', array(
+			$response = wp_remote_post((wfConfig::get('useNoc3Secure') ? WORDFENCE_HACKATTEMPT_URL_SEC : WORDFENCE_HACKATTEMPT_URL) . 'multipleHackAttempts/?k=' . rawurlencode(wfConfig::get('apiKey')) . '&t=brute', array(
 				'timeout' => 1,
 				'user-agent' => "Wordfence.com UA " . (defined('WORDFENCE_VERSION') ? WORDFENCE_VERSION : '[Unknown version]'),
 				'body' => 'IPs=' . rawurlencode(json_encode($toSend)),
@@ -2476,7 +2499,7 @@ SQL
 			$toSend = array_values($toSend);
 			
 			try {
-				$response = wp_remote_post(WORDFENCE_HACKATTEMPT_URL . 'multipleHackAttempts/?k=' . rawurlencode(wfConfig::get('apiKey')) . '&t=brute', array(
+				$response = wp_remote_post((wfConfig::get('useNoc3Secure') ? WORDFENCE_HACKATTEMPT_URL_SEC : WORDFENCE_HACKATTEMPT_URL) . 'multipleHackAttempts/?k=' . rawurlencode(wfConfig::get('apiKey')) . '&t=brute', array(
 					'timeout' => 1,
 					'user-agent' => "Wordfence.com UA " . (defined('WORDFENCE_VERSION') ? WORDFENCE_VERSION : '[Unknown version]'),
 					'body' => 'IPs=' . rawurlencode(json_encode($toSend)),
@@ -2532,7 +2555,7 @@ SQL
 		}
 		
 		try {
-			$result = wp_remote_get(WORDFENCE_HACKATTEMPT_URL . 'hackAttempt/?k=' . rawurlencode(wfConfig::get('apiKey')) . 
+			$result = wp_remote_get((wfConfig::get('useNoc3Secure') ? WORDFENCE_HACKATTEMPT_URL_SEC : WORDFENCE_HACKATTEMPT_URL) . 'hackAttempt/?k=' . rawurlencode(wfConfig::get('apiKey')) . 
 																			'&IP=' . rawurlencode(filter_var($IP, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) ? wfUtils::inet_aton($IP) : wfUtils::inet_pton($IP)) . 
 																			'&t=' . rawurlencode($hitType) .
 																			'&type=' . $endpointType, 
@@ -3007,7 +3030,20 @@ SQL
 		//This  ensures that if the scan crashes for some reason, the schedule will hold.
 		wfScanner::shared()->scheduleScans();
 
-		wfScanEngine::startScan();
+		try {
+			wfScanEngine::startScan();
+		}
+		catch (wfScanEngineTestCallbackFailedException $e) {
+			wfConfig::set('lastScanCompleted', $e->getMessage());
+			wfConfig::set('lastScanFailureType', wfIssues::SCAN_FAILED_CALLBACK_TEST_FAILED);
+			wfUtils::clearScanLock();
+		}
+		catch (Exception $e) {
+			if ($e->getCode() != wfScanEngine::SCAN_MANUALLY_KILLED) {
+				wfConfig::set('lastScanCompleted', $e->getMessage());
+				wfConfig::set('lastScanFailureType', wfIssues::SCAN_FAILED_GENERAL);
+			}
+		}
 	}
 	public static function ajax_saveCountryBlocking_callback(){
 		if(! wfConfig::get('isPaid')){
@@ -3036,6 +3072,67 @@ SQL
 			}
 			$content .= date(DATE_RFC822, $r['ctime'] + $timeOffset) . '::' . sprintf('%.4f', $r['ctime']) . ':' . $r['level'] . ':' . $r['type'] . '::' . wp_kses_data( (string) $r['msg']) . "\n";
 		}
+		$content .= "\n\n";
+		$content .= str_repeat('-', 80);
+		$content .= "\n\n";
+		
+		$content .= __('# Scan Issues', 'wordfence') . "\n\n";
+		$issues = wfIssues::shared()->getIssues(0, 50, 0, 50);
+		$issueCounts = array_merge(array('new' => 0, 'ignoreP' => 0, 'ignoreC' => 0), wfIssues::shared()->getIssueCounts());
+		$issueTypes = wfIssues::validIssueTypes();
+		
+		$content .= sprintf(__('## New Issues (%d total)', 'wordfence'), $issueCounts['new']) . "\n\n";
+		if (isset($issues['new']) && count($issues['new'])) {
+			foreach ($issues['new'] as $i) {
+				if (!in_array($i['type'], $issueTypes)) {
+					continue;
+				}
+				
+				$viewContent = '';
+				try {
+					$viewContent = wfView::create('scanner/issue-' . $i['type'], array('textOutput' => $i))->render();
+				}
+				catch (wfViewNotFoundException $e) {
+					//Ignore -- should never happen since we validate the type
+				}
+				
+				if (!empty($viewContent)) {
+					$content .= $viewContent . "\n\n";
+				}
+			}
+		}
+		else {
+			$content .= __('No New Issues', 'wordfence') . "\n\n";
+		}
+		
+		$content .= str_repeat('-', 10);
+		$content .= "\n\n";
+		
+		$content .= sprintf(__('## Ignored Issues (%d total)', 'wordfence'), $issueCounts['ignoreP'] + $issueCounts['ignoreC']) . "\n\n";
+		if (isset($issues['new']) && count($issues['new'])) {
+			foreach ($issues['ignored'] as $i) {
+				if (!in_array($i['type'], $issueTypes)) {
+					continue;
+				}
+				
+				$viewContent = '';
+				try {
+					$viewContent = wfView::create('scanner/issue-' . $i['type'], array('textOutput' => $i))->render();
+				}
+				catch (wfViewNotFoundException $e) {
+					//Ignore -- should never happen since we validate the type
+				}
+				
+				if (!empty($viewContent)) {
+					$content .= $viewContent . "\n\n";
+				}
+			}
+		}
+		else {
+			$content .= __('No Ignored Issues', 'wordfence') . "\n\n";
+		}
+		
+		$content .= str_repeat('-', 80);
 		$content .= "\n\n";
 
 		ob_start();
@@ -3782,6 +3879,7 @@ HTACCESS;
 		wordfence::status(10, 'info', "SUM_KILLED:A request was received to stop the previous scan.");
 		wfUtils::clearScanLock(); //Clear the lock now because there may not be a scan running to pick up the kill request and clear the lock
 		wfScanEngine::requestKill();
+		wfConfig::remove('scanStartAttempt');
 		wfConfig::set('lastScanFailureType', false);
 		return array(
 			'ok' => 1,
@@ -3957,6 +4055,32 @@ HTACCESS;
 					'buttonTitle' => __('Close', 'wordfence'),
 				))->render();
 				break;
+			case wfIssues::SCAN_FAILED_START_TIMEOUT:
+			case wfIssues::SCAN_FAILED_CALLBACK_TEST_FAILED:
+				$scanFailedHTML = wfView::create('scanner/scan-failed', array(
+					'messageHTML' => __('The scan has failed to start. This is often because the site either cannot make outbound requests or is blocked from connecting to itself.', 'wordfence') . ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_SCAN_FAILED_START) . '" target="_blank" rel="noopener noreferrer">' . __('Click here for steps you can try.', 'wordfence') . '</a>',
+					'buttonTitle' => __('Close', 'wordfence'),
+				))->render();
+				break;
+			case wfIssues::SCAN_FAILED_API_SSL_UNAVAILABLE:
+				$scanFailedHTML = wfView::create('scanner/scan-failed', array(
+					'messageHTML' => __('Scans are not functional because SSL is unavailable.', 'wordfence'),
+					'buttonTitle' => __('Close', 'wordfence'),
+				))->render();
+				break;
+			case wfIssues::SCAN_FAILED_API_CALL_FAILED:
+				$scanFailedHTML = wfView::create('scanner/scan-failed', array(
+					'messageHTML' => __('The scan has failed because we were unable to contact the Wordfence servers. Some sites may need adjustments to run scans reliably.', 'wordfence') . ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_SCAN_FAILS) . '" target="_blank" rel="noopener noreferrer">' . __('Click here for steps you can try.', 'wordfence') . '</a>',
+					'buttonTitle' => __('Close', 'wordfence'),
+				))->render();
+				break;
+			case wfIssues::SCAN_FAILED_API_INVALID_RESPONSE:
+			case wfIssues::SCAN_FAILED_API_ERROR_RESPONSE:
+				$scanFailedHTML = wfView::create('scanner/scan-failed', array(
+					'messageHTML' => __('The scan has failed because we received an unexpected response from the Wordfence servers. This may be a temporary error, though some sites may need adjustments to run scans reliably.', 'wordfence') . ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_SCAN_FAILS) . '" target="_blank" rel="noopener noreferrer">' . __('Click here for steps you can try.', 'wordfence') . '</a>',
+					'buttonTitle' => __('Close', 'wordfence'),
+				))->render();
+				break;
 		}
 		
 		wfUtils::doNotCache();
@@ -3967,7 +4091,7 @@ HTACCESS;
 			'currentScanID'       => wfScanner::shared()->lastScanTime(),
 			'signatureUpdateTime' => wfConfig::get('signatureUpdateTime'),
 			'scanFailedHTML' 	  => $scanFailedHTML,
-			'scanStalled'		  => ($scanFailed == wfIssues::SCAN_FAILED_TIMEOUT ? 1 : 0),
+			'scanStalled'		  => ($scanFailed == wfIssues::SCAN_FAILED_TIMEOUT || $scanFailed == wfIssues::SCAN_FAILED_START_TIMEOUT ? 1 : 0),
 			'scanRunning'		  => wfScanner::shared()->isRunning() ? 1 : 0,
 			'scanStages'		  => $stages,
 			'scanStats'			  => $stats,

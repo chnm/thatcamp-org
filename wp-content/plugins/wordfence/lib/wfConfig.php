@@ -1,5 +1,7 @@
 <?php
 class wfConfig {
+	const TABLE_EXISTS_OPTION = 'wordfence_installed';
+	
 	const AUTOLOAD = 'yes';
 	const DONT_AUTOLOAD = 'no';
 	
@@ -290,14 +292,28 @@ class wfConfig {
 		
 		return $options;
 	}
-	public static function updateTableExists() {
-		global $wpdb;
-		self::$tableExists = $wpdb->get_col($wpdb->prepare(<<<SQL
-SELECT TABLE_NAME FROM information_schema.TABLES
-WHERE TABLE_SCHEMA=DATABASE()
-AND TABLE_NAME=%s
-SQL
-			, self::table()));
+	
+	/**
+	 * Bases the table's existence on the option specified by wfConfig::TABLE_EXISTS_OPTION for performance. We only
+	 * set that option just prior to deletion in the uninstall handler and after table creation in the install handler.
+	 */
+	public static function updateTableExists($change = null) {
+		if ($change !== null) {
+			self::$tableExists = !!$change;
+			update_option(wfConfig::TABLE_EXISTS_OPTION, self::$tableExists);
+			return;
+		}
+		
+		self::$tableExists = true;
+		$optionValue = get_option(wfConfig::TABLE_EXISTS_OPTION, null);
+		if ($optionValue === null) { //No value, set an initial one
+			global $wpdb;
+			self::updateTableExists(!!$wpdb->get_col($wpdb->prepare('SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME=%s', self::table())));
+			return;
+		}
+		if (!$optionValue) {
+			self::$tableExists = false;
+		}
 	}
 	private static function updateCachedOption($name, $val) {
 		$options = self::loadAllOptions();

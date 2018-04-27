@@ -54,6 +54,7 @@ class wfScan {
 		}
 		$scanController = new wfScanner($scanMode);
 
+		wfConfig::remove('scanStartAttempt');
 		$isFork = ($_GET['isFork'] == '1' ? true : false);
 
 		if(! $isFork){
@@ -82,85 +83,88 @@ class wfScan {
 		@error_reporting(E_ALL);
 		wfUtils::iniSet('display_errors','On');
 		self::status(4, 'info', "Setting up scanRunning and starting scan");
-		if($isFork){
-			$scan = wfConfig::get_ser('wfsd_engine', false, false);
-			if($scan){
-				self::status(4, 'info', "Got a true deserialized value back from 'wfsd_engine' with type: " . gettype($scan));
-				wfConfig::set('wfsd_engine', '', wfConfig::DONT_AUTOLOAD);
-			} else {
-				self::status(2, 'error', "Scan can't continue - stored data not found after a fork. Got type: " . gettype($scan));
-				wfConfig::set('wfsd_engine', '', wfConfig::DONT_AUTOLOAD);
-				wfConfig::set('lastScanCompleted', __('Scan can\'t continue - stored data not found after a fork.', 'wordfence'));
-				wfConfig::set('lastScanFailureType', wfIssues::SCAN_FAILED_FORK_FAILED);
-				wfUtils::clearScanLock();
-				self::status(2, 'error', "Scan terminated with error: " . __('Scan can\'t continue - stored data not found after a fork.', 'wordfence'));
-				self::status(10, 'info', "SUM_KILLED:Previous scan terminated with an error. See below.");
-				exit();
-			}
-		} else {
-			$delay = -1;
-			$isScheduled = false;
-			$originalScanStart = wfConfig::get('originalScheduledScanStart', 0);
-			$lastScanStart = wfConfig::get('lastScheduledScanStart', 0);
-			$minimumFrequency = ($scanController->schedulingMode() == wfScanner::SCAN_SCHEDULING_MODE_MANUAL ? 1800 : 43200);
-			if ($lastScanStart && (time() - $lastScanStart) < $minimumFrequency) {
-				$isScheduled = true;
-				
-				if ($originalScanStart > 0) {
-					$delay = max($lastScanStart - $originalScanStart, 0);
+		try {
+			if ($isFork) {
+				$scan = wfConfig::get_ser('wfsd_engine', false, false);
+				if ($scan) {
+					self::status(4, 'info', "Got a true deserialized value back from 'wfsd_engine' with type: " . gettype($scan));
+					wfConfig::set('wfsd_engine', '', wfConfig::DONT_AUTOLOAD);
+				}
+				else {
+					self::status(2, 'error', "Scan can't continue - stored data not found after a fork. Got type: " . gettype($scan));
+					wfConfig::set('wfsd_engine', '', wfConfig::DONT_AUTOLOAD);
+					wfConfig::set('lastScanCompleted', __('Scan can\'t continue - stored data not found after a fork.', 'wordfence'));
+					wfConfig::set('lastScanFailureType', wfIssues::SCAN_FAILED_FORK_FAILED);
+					wfUtils::clearScanLock();
+					self::status(2, 'error', "Scan terminated with error: " . __('Scan can\'t continue - stored data not found after a fork.', 'wordfence'));
+					self::status(10, 'info', "SUM_KILLED:Previous scan terminated with an error. See below.");
+					exit();
 				}
 			}
-			
-			wfIssues::statusPrep(); //Re-initializes all status counters
-			$scanController->resetStages();
-			$scanController->resetSummaryItems();
-			
-			if ($scanMode != wfScanner::SCAN_TYPE_QUICK) {
-				wordfence::status(1, 'info', "Contacting Wordfence to initiate scan");
-				$wp_version = wfUtils::getWPVersion();
-				$apiKey = wfConfig::get('apiKey');
-				$api = new wfAPI($apiKey, $wp_version);
-				$response = $api->call('log_scan', array(), array('delay' => $delay, 'scheduled' => (int) $isScheduled, 'mode' => wfConfig::get('schedMode')/*, 'forcedefer' => 1*/));
-				
-				if ($scanController->schedulingMode() == wfScanner::SCAN_SCHEDULING_MODE_AUTOMATIC && $isScheduled) {
-					if (isset($response['defer'])) {
-						$defer = (int) $response['defer'];
-						wordfence::status(2, 'info', "Deferring scheduled scan by " . wfUtils::makeDuration($defer));
-						wfConfig::set('lastScheduledScanStart', 0);
-						wfConfig::set('lastScanCompleted', 'ok');
-						wfConfig::set('lastScanFailureType', false);
-						wfConfig::set_ser('wfStatusStartMsgs', array());
-						$scanController->recordLastScanTime();
-						$i = new wfIssues();
-						wfScanEngine::refreshScanNotification($i);
-						wfScanner::shared()->scheduleSingleScan(time() + $defer, $originalScanStart);
-						wfUtils::clearScanLock();
-						exit();
+			else {
+				$delay = -1;
+				$isScheduled = false;
+				$originalScanStart = wfConfig::get('originalScheduledScanStart', 0);
+				$lastScanStart = wfConfig::get('lastScheduledScanStart', 0);
+				$minimumFrequency = ($scanController->schedulingMode() == wfScanner::SCAN_SCHEDULING_MODE_MANUAL ? 1800 : 43200);
+				if ($lastScanStart && (time() - $lastScanStart) < $minimumFrequency) {
+					$isScheduled = true;
+					
+					if ($originalScanStart > 0) {
+						$delay = max($lastScanStart - $originalScanStart, 0);
 					}
 				}
 				
-				$malwarePrefixesHash = (isset($response['malwarePrefixes']) ? $response['malwarePrefixes'] : '');
-				$coreHashesHash = (isset($response['coreHashes']) ? $response['coreHashes'] : '');
+				wfIssues::statusPrep(); //Re-initializes all status counters
+				$scanController->resetStages();
+				$scanController->resetSummaryItems();
 				
-				$scan = new wfScanEngine($malwarePrefixesHash, $coreHashesHash, $scanMode);
-				$scan->deleteNewIssues();
+				if ($scanMode != wfScanner::SCAN_TYPE_QUICK) {
+					wordfence::status(1, 'info', "Contacting Wordfence to initiate scan");
+					$wp_version = wfUtils::getWPVersion();
+					$apiKey = wfConfig::get('apiKey');
+					$api = new wfAPI($apiKey, $wp_version);
+					$response = $api->call('log_scan', array(), array('delay' => $delay, 'scheduled' => (int) $isScheduled, 'mode' => wfConfig::get('schedMode')/*, 'forcedefer' => 1*/));
+					
+					if ($scanController->schedulingMode() == wfScanner::SCAN_SCHEDULING_MODE_AUTOMATIC && $isScheduled) {
+						if (isset($response['defer'])) {
+							$defer = (int) $response['defer'];
+							wordfence::status(2, 'info', "Deferring scheduled scan by " . wfUtils::makeDuration($defer));
+							wfConfig::set('lastScheduledScanStart', 0);
+							wfConfig::set('lastScanCompleted', 'ok');
+							wfConfig::set('lastScanFailureType', false);
+							wfConfig::set_ser('wfStatusStartMsgs', array());
+							$scanController->recordLastScanTime();
+							$i = new wfIssues();
+							wfScanEngine::refreshScanNotification($i);
+							wfScanner::shared()->scheduleSingleScan(time() + $defer, $originalScanStart);
+							wfUtils::clearScanLock();
+							exit();
+						}
+					}
+					
+					$malwarePrefixesHash = (isset($response['malwarePrefixes']) ? $response['malwarePrefixes'] : '');
+					$coreHashesHash = (isset($response['coreHashes']) ? $response['coreHashes'] : '');
+					
+					$scan = new wfScanEngine($malwarePrefixesHash, $coreHashesHash, $scanMode);
+					$scan->deleteNewIssues();
+				}
+				else {
+					wordfence::status(1, 'info', "Initiating quick scan");
+					$scan = new wfScanEngine('', '', $scanMode);
+				}
 			}
-			else {
-				wordfence::status(1, 'info', "Initiating quick scan");
-				$scan = new wfScanEngine('', '', $scanMode);
-			}
-		}
-		try {
+			
 			$scan->go();
 		}
-		catch (wfScanEngineDurationLimitException $e) {
+		catch (wfScanEngineDurationLimitException $e) { //User error set in wfScanEngine
 			wfUtils::clearScanLock();
 			$peakMemory = self::logPeakMemory();
 			self::status(2, 'info', "Wordfence used " . wfUtils::formatBytes($peakMemory - self::$peakMemAtStart) . " of memory for scan. Server peak memory usage was: " . wfUtils::formatBytes($peakMemory));
 			self::status(2, 'error', "Scan terminated with error: " . $e->getMessage());
 			exit();
 		}
-		catch (wfScanEngineCoreVersionChangeException $e) {
+		catch (wfScanEngineCoreVersionChangeException $e) { //User error set in wfScanEngine
 			wfUtils::clearScanLock();
 			$peakMemory = self::logPeakMemory();
 			self::status(2, 'info', "Wordfence used " . wfUtils::formatBytes($peakMemory - self::$peakMemAtStart) . " of memory for scan. Server peak memory usage was: " . wfUtils::formatBytes($peakMemory));
@@ -175,7 +179,47 @@ class wfScan {
 			
 			exit();
 		}
-		catch (Exception $e){
+		catch (wfAPICallSSLUnavailableException $e) {
+			wfConfig::set('lastScanCompleted', $e->getMessage());
+			wfConfig::set('lastScanFailureType', wfIssues::SCAN_FAILED_API_SSL_UNAVAILABLE);
+			
+			wfUtils::clearScanLock();
+			$peakMemory = self::logPeakMemory();
+			self::status(2, 'info', "Wordfence used " . wfUtils::formatBytes($peakMemory - self::$peakMemAtStart) . " of memory for scan. Server peak memory usage was: " . wfUtils::formatBytes($peakMemory));
+			self::status(2, 'error', "Scan terminated with error: " . $e->getMessage());
+			exit();
+		}
+		catch (wfAPICallFailedException $e) {
+			wfConfig::set('lastScanCompleted', $e->getMessage());
+			wfConfig::set('lastScanFailureType', wfIssues::SCAN_FAILED_API_CALL_FAILED);
+			
+			wfUtils::clearScanLock();
+			$peakMemory = self::logPeakMemory();
+			self::status(2, 'info', "Wordfence used " . wfUtils::formatBytes($peakMemory - self::$peakMemAtStart) . " of memory for scan. Server peak memory usage was: " . wfUtils::formatBytes($peakMemory));
+			self::status(2, 'error', "Scan terminated with error: " . $e->getMessage());
+			exit();
+		}
+		catch (wfAPICallInvalidResponseException $e) {
+			wfConfig::set('lastScanCompleted', $e->getMessage());
+			wfConfig::set('lastScanFailureType', wfIssues::SCAN_FAILED_API_INVALID_RESPONSE);
+			
+			wfUtils::clearScanLock();
+			$peakMemory = self::logPeakMemory();
+			self::status(2, 'info', "Wordfence used " . wfUtils::formatBytes($peakMemory - self::$peakMemAtStart) . " of memory for scan. Server peak memory usage was: " . wfUtils::formatBytes($peakMemory));
+			self::status(2, 'error', "Scan terminated with error: " . $e->getMessage());
+			exit();
+		}
+		catch (wfAPICallErrorResponseException $e) {
+			wfConfig::set('lastScanCompleted', $e->getMessage());
+			wfConfig::set('lastScanFailureType', wfIssues::SCAN_FAILED_API_ERROR_RESPONSE);
+			
+			wfUtils::clearScanLock();
+			$peakMemory = self::logPeakMemory();
+			self::status(2, 'info', "Wordfence used " . wfUtils::formatBytes($peakMemory - self::$peakMemAtStart) . " of memory for scan. Server peak memory usage was: " . wfUtils::formatBytes($peakMemory));
+			self::status(2, 'error', "Scan terminated with error: " . $e->getMessage());
+			exit();
+		}
+		catch (Exception $e) {
 			wfUtils::clearScanLock();
 			self::status(2, 'error', "Scan terminated with error: " . $e->getMessage());
 			self::status(10, 'info', "SUM_KILLED:Previous scan terminated with an error. See below.");

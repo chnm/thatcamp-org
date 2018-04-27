@@ -26,6 +26,7 @@ if ( $keep != 'yes' ) {
 	delete_option( 'vscf-setting-16' );
 	delete_option( 'vscf-setting-17' );
 	delete_option( 'vscf-setting-18' );
+	delete_option( 'vscf-setting-19' );
 
 	// For site options in Multisite
 	delete_site_option( 'widget_vscf-widget' );
@@ -47,6 +48,7 @@ if ( $keep != 'yes' ) {
 	delete_site_option( 'vscf-setting-16' );
 	delete_site_option( 'vscf-setting-17' );
 	delete_site_option( 'vscf-setting-18' );
+	delete_site_option( 'vscf-setting-19' );
 
 	// Set global
 	global $wpdb;

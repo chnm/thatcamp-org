@@ -686,16 +686,21 @@ class wfLog {
 				$this->tagRequestForBlock($reason);
 				
 				if (wfConfig::get('alertOn_block')) {
-					wordfence::alert("Blocking IP {$IP}", "Wordfence has blocked IP address {$IP}.\nThe reason is: \"{$reason}\".", $IP);
+					$message = sprintf(__('Wordfence has blocked IP address %s.', 'wordfence'), $IP) . "\n";
+					$message .= sprintf(__('The reason is: "%s".', 'wordfence'), $reason);
+					if ($secsToGo > 0) {
+						$message .= "\n" . sprintf(__('The duration of the block is %s.', 'wordfence'), wfUtils::makeDuration($secsToGo, true));
+					}
+					wordfence::alert(sprintf(__('Blocking IP %s', 'wordfence'), $IP), $message, $IP);
 				}
-				wordfence::status(2, 'info', "Blocking IP {$IP}. {$reason}");
+				wordfence::status(2, 'info', sprintf(__('Blocking IP %s. %s', 'wordfence'), $IP, $reason));
 			}
 			else if ($action == 'throttle') { //Rate limited - throttle
 				$secsToGo = wfBlock::rateLimitThrottleDuration();
 				wfBlock::createRateThrottle($reason, $IP, $secsToGo);
 				wfActivityReport::logBlockedIP($IP, null, 'throttle');
 				
-				wordfence::status(2, 'info', "Throttling IP {$IP}. {$reason}");
+				wordfence::status(2, 'info', sprintf(__('Throttling IP %s. %s', 'wordfence'), $IP, $reason));
 				wfConfig::inc('totalIPsThrottled');
 			}
 			$this->do503($secsToGo, $reason);

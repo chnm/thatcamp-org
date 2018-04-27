@@ -1,9 +1,18 @@
 CHANGELOG
 =========
 
+= Version 8.4 =
+* added bootstrap css class to privacy checkbox
+* minor change in file vscf-style
+* updated readme file
+
+= Version 8.3 =
+* new: disable the collection of ip address (thanks marie)
+* updated most files
+
 = Version 8.2 =
 * removed the capability to create new submission in dashboard
-* changed the id of custom admin columns
+* changed the id of name and email column on submissions page
 * updated file vscf
 
 = Version 8.1 =
@@ -23,7 +32,7 @@ CHANGELOG
 * updated privacy consent notification in email to admin and in dashboard 
 
 = Version 7.7 =
-* new: activate a privacy checkbox so that your form complies with the GDPR
+* new: activate a privacy checkbox on form (because of the GDPR)
 * if activated, user must consent to the collection of name, email and IP address
 * you can set this via the settingspage
 * added a privacy consent notification in email to admin and in dashboard

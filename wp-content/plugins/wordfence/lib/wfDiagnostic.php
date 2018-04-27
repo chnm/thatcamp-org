@@ -377,9 +377,9 @@ class wfDiagnostic
 		if (!function_exists('openssl_verify') || !defined('OPENSSL_VERSION_NUMBER') || !defined('OPENSSL_VERSION_TEXT')) {
 			return false;
 		}
-		$compare = wfUtils::openssl_version_compare('1.0.1');
+		$compare = wfVersionCheckController::shared()->checkOpenSSLVersion();
 		return array(
-			'test' => $compare < 0,
+			'test' => $compare == wfVersionCheckController::VERSION_COMPATIBLE,
 			'message'  => OPENSSL_VERSION_TEXT,
 		);
 	}

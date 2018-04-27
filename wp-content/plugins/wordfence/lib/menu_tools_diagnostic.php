@@ -17,6 +17,7 @@ if (!isset($sendingDiagnosticEmail)) {
 	$sendingDiagnosticEmail = false;
 }
 ?>
+<?php if (!$sendingDiagnosticEmail): ?>
 <script type="application/javascript">
 	(function($) {
 		$(function() {
@@ -24,6 +25,7 @@ if (!isset($sendingDiagnosticEmail)) {
 		});
 	})(jQuery);
 </script>
+<?php endif; ?>
 <div id="wf-diagnostics">
 	<?php if (!$sendingDiagnosticEmail): ?>
 		<div class="wf-diagnostics-wrapper">

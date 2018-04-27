@@ -26,6 +26,9 @@ function vscf_admin_init() {
 	add_settings_field( 'vscf-field-4', __( 'Privacy', 'very-simple-contact-form' ), 'vscf_field_callback_4', 'vscf', 'vscf-section' );
 	register_setting( 'vscf-options', 'vscf-setting-4', 'esc_attr' );
 
+	add_settings_field( 'vscf-field-19', __( 'Privacy', 'very-simple-contact-form' ), 'vscf_field_callback_19', 'vscf', 'vscf-section' );
+	register_setting( 'vscf-options', 'vscf-setting-19', 'esc_attr' );
+
 	add_settings_section( 'vscf-section-2', __( 'Labels', 'very-simple-contact-form' ), '', 'vscf' );
 
 	add_settings_field( 'vscf-field-5', __( 'Name', 'very-simple-contact-form' ), 'vscf_field_callback_5', 'vscf', 'vscf-section-2' );
@@ -104,6 +107,14 @@ function vscf_field_callback_4() {
 	<?php
 }
 
+function vscf_field_callback_19() {
+	$value = esc_attr( get_option( 'vscf-setting-19' ) );
+	?>
+	<input type='hidden' name='vscf-setting-19' value='no'>
+	<label><input type='checkbox' name='vscf-setting-19' <?php checked( $value, 'yes' ); ?> value='yes'> <?php _e( 'Disable collection of IP address.', 'very-simple-contact-form' ); ?></label>
+	<?php
+}
+
 function vscf_field_callback_5() {
 	$vscf_placeholder = esc_attr__( 'Name', 'very-simple-contact-form' ); 
 	$vscf_setting = esc_attr( get_option( 'vscf-setting-5' ) );
@@ -135,7 +146,7 @@ function vscf_field_callback_9() {
 }
 
 function vscf_field_callback_18() {
-	$vscf_placeholder = esc_attr__( 'I consent to having this website collect my name, email and IP via this form.', 'very-simple-contact-form' ); 
+	$vscf_placeholder = esc_attr__( 'I consent to having this website collect my personal data via this form.', 'very-simple-contact-form' ); 
 	$vscf_setting = esc_attr( get_option( 'vscf-setting-18' ) );
 	echo "<input type='text' size='40' maxlength='200' name='vscf-setting-18' placeholder='$vscf_placeholder' value='$vscf_setting' />";
 }

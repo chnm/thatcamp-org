@@ -95,6 +95,13 @@ class wfCredentialsController {
 		delete_transient($key);
 	}
 	
+	/**
+	 * Returns whether or not we've seen a successful login from $ip for the given user.
+	 * 
+	 * @param WP_User $user
+	 * @param string $ip
+	 * @return bool
+	 */
 	public static function hasPreviousLoginFromIP($user, $ip) {
 		global $wpdb;
 		$table_wfLogins = wfDB::networkTable('wfLogins');
@@ -110,8 +117,19 @@ class wfCredentialsController {
 		}
 		
 		$lastAdminLogin = wfConfig::get_ser('lastAdminLogin');
-		if (is_array($lastAdminLogin) && isset($lastAdminLogin['userID']) && $lastAdminLogin['userID'] == $id && isset($lastAdminLogin['IP']) && wfUtils::inet_pton($lastAdminLogin['IP']) == wfUtils::inet_pton($ip)) {
-			return true;
+		if (is_array($lastAdminLogin) && isset($lastAdminLogin['userID']) && isset($lastAdminLogin['IP'])) {
+			if ($lastAdminLogin['userID'] == $id && wfUtils::inet_pton($lastAdminLogin['IP']) == wfUtils::inet_pton($ip)) {
+				return true;
+			}
+			return false;
+		}
+		
+		//Final check -- if the IP recorded at plugin activation matches, let it through. This is __only__ checked when we don't have any other record of an admin login.
+		$activatingIP = wfConfig::get('activatingIP');
+		if (wfUtils::isValidIP($activatingIP)) {
+			if (wfUtils::inet_pton($activatingIP) == wfUtils::inet_pton($ip)) {
+				return true;
+			}
 		}
 		
 		return false;

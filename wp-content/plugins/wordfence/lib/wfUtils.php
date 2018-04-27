@@ -2411,45 +2411,6 @@ class wfUtils {
 		}
 		return new DateTime($timestring);
 	}
-	
-	/**
-	 * Returns whether or not the OpenSSL version is before, after, or equal to the equivalent text version string.
-	 * 
-	 * @param string $compareVersion
-	 * @param int $openSSLVersion A version number in the format OpenSSL uses.
-	 * @return bool|int Returns -1 if $compareVersion is earlier, 0 if equal, 1 if later, and false if not a valid version string.
-	 */
-	public static function openssl_version_compare($compareVersion, $openSSLVersion = OPENSSL_VERSION_NUMBER) {
-		if (preg_match('/^(\d+)\.(\d+)\.(\d+)([a-z]?)/i', $compareVersion, $matches)) {
-			$primary = 0; $major = 0; $minor = 0; $fixLetterIndex = 0;
-			if (isset($matches[1])) { $primary = (int) $matches[1]; }
-			if (isset($matches[2])) { $major = (int) $matches[2]; }
-			if (isset($matches[3])) { $minor = (int) $matches[3]; }
-			if (isset($matches[4])) { $fixLetterIndex = strpos('abcdefghijklmnopqrstuvwxyz', strtolower($matches[1])) + 1; }
-			
-			$compareOpenSSLVersion = self::openssl_make_version($primary, $major, $minor, $fixLetterIndex, 0);
-			if ($compareOpenSSLVersion < $openSSLVersion) { return -1; }
-			else if ($compareOpenSSLVersion == $openSSLVersion) { return 0; }
-			return 1;
-		}
-		
-		return false;
-	}
-	
-	/**
-	 * Builds a number that can be compared to OPENSSL_VERSION_NUMBER from the parameters given. This is a modified
-	 * version of the macro in the OpenSSL source.
-	 * 
-	 * @param int $primary The '1' in 1.0.2g.
-	 * @param int $major The '0' in 1.0.2g.
-	 * @param int $minor The '2' in 1.0.2g.
-	 * @param int $fixLetterIndex The 'g' in 1.0.2g.
-	 * @param int $patch
-	 * @return int
-	 */
-	public static function openssl_make_version($primary, $major, $minor, $fixLetterIndex = 0, $patch = 0) {
-		return ((($primary & 0xff) << 28) + (($major & 0xff) << 20) + (($minor & 0xff) << 12) + (($fixLetterIndex & 0xff) << 4) + $patch);
-	}
 }
 
 // GeoIP lib uses these as well
