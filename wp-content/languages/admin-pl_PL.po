@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-27 13:43:19+0000\n"
+"PO-Revision-Date: 2018-04-19 19:39:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4240,7 +4240,7 @@ msgstr "Wtyczki rozszerzają możliwości WordPressa. Można je zainstalować ko
 
 #. Plugin URI of the plugin/theme
 msgid "http://wordpress.org/plugins/hello-dolly/"
-msgstr "http://wordpress.org/plugins/hello-dolly/"
+msgstr "https://pl.wordpress.org/plugins/hello-dolly/"
 
 #: wp-admin/includes/class-wp-upgrader.php:160
 msgid "The package contains no files."
@@ -5228,13 +5228,13 @@ msgstr "Hello Dolly"
 msgid "Matt Mullenweg"
 msgstr "Matt Mullenweg"
 
-#. Author URI of the plugin/theme
-msgid "http://ma.tt/"
-msgstr "http://ma.tt/"
-
 #. Description of the plugin/theme
 msgid "This is not just a plugin, it symbolizes the hope and enthusiasm of an entire generation summed up in two words sung most famously by Louis Armstrong: Hello, Dolly. When activated you will randomly see a lyric from <cite>Hello, Dolly</cite> in the upper right of your admin screen on every page."
 msgstr "To nie jest zwykła wtyczka – symbolizuje ona nadzieję i entuzjazm całego pokolenia, podsumowane w dwóch słowach piosenki, której najpopularniejszym wykonawcą jest Louis Armstrong: „Hello, Dolly”. Po włączeniu tej wtyczki, w prawym górnym rogu każdego ekranu kokpitu będzie wyświetlany losowy wers <cite>Hello, Dolly</cite>."
+
+#. Author URI of the plugin/theme
+msgid "http://ma.tt/"
+msgstr "https://ma.tt/"
 
 #: wp-admin/index.php:84
 msgid "<strong>Welcome</strong> &mdash; Shows links for some of the most common tasks when setting up a new site."
@@ -6913,7 +6913,7 @@ msgstr "Przytnij i opublikuj"
 
 #: wp-admin/edit-link-form.php:60
 msgid "XFN stands for <a href=\"http://gmpg.org/xfn/\">XHTML Friends Network</a>, which is optional. WordPress allows the generation of XFN attributes to show how you are related to the authors/owners of the site to which you are linking."
-msgstr "XFN to skrót od <a href=\"http://gmpg.org/xfn/\">XHTML Friends Network</a> (&#8222;XHTML-owa sieć przyjaciół&#8221;). Wypełnienie tych pól jest opcjonalne. WordPress obsługuje atrybuty XFN, które informują o więziach łączących ciebie z autorami/właścicielami witryn, do których odnośniki umieszczasz na swojej witrynie."
+msgstr "XFN to skrót od <a href=\"https://gmpg.org/xfn/\">XHTML Friends Network</a> (&#8222;XHTML-owa sieć przyjaciół&#8221;). Wypełnienie tych pól jest opcjonalne. WordPress obsługuje atrybuty XFN, które informują o więziach łączących ciebie z autorami/właścicielami witryn, do których odnośniki umieszczasz na swojej witrynie."
 
 #: wp-admin/includes/file.php:1696
 msgid "FTP/SSH Username"
@@ -9308,10 +9308,6 @@ msgstr "Przykład: Czadowe oprogramowanie blogowe"
 msgid "Web Address"
 msgstr "Adres URL"
 
-#: wp-admin/edit-link-form.php:111
-msgid "Example: <code>http://wordpress.org/</code> &#8212; don&#8217;t forget the <code>http://</code>"
-msgstr "Przykład: <code>http://wordpress.org/</code> &#8212; nie zapomnij o <code>http://</code>"
-
 #: wp-admin/edit-link-form.php:119
 msgid "This will be shown when someone hovers over the link in the blogroll, or optionally below the link."
 msgstr "Ten tekst zostanie wyświetlony, kiedy ktoś najedzie kursorem myszy na odnośnik w blogrollu lub opcjonalnie pod nim."
@@ -10054,10 +10050,6 @@ msgstr "randka"
 #: wp-admin/includes/meta-boxes.php:1199
 msgid "sweetheart"
 msgstr "kochanie"
-
-#: wp-admin/includes/meta-boxes.php:1205
-msgid "If the link is to a person, you can specify your relationship with them using the above form. If you would like to learn more about the idea check out <a href=\"http://gmpg.org/xfn/\">XFN</a>."
-msgstr "Jeżeli odnośnik prowadzi do prywatnej strony jakiejś osoby, możesz określić swoje relacje z nią korzystając z powyższego formularza. Jeśli chcesz dowiedzieć się więcej o idei tego systemu, zerknij na stronę o <a href=\"http://gmpg.org/xfn/\">XFN</a>."
 
 #: wp-admin/includes/meta-boxes.php:1220
 msgid "Image Address"
@@ -10928,6 +10920,14 @@ msgstr "Podano nieprawidłowe dane."
 #: wp-admin/includes/plugin-install.php:585
 msgid "Requires WordPress Version:"
 msgstr "Wymaga WordPressa w wersji:"
+
+#: wp-admin/includes/meta-boxes.php:1205
+msgid "If the link is to a person, you can specify your relationship with them using the above form. If you would like to learn more about the idea check out <a href=\"http://gmpg.org/xfn/\">XFN</a>."
+msgstr "Jeżeli odnośnik prowadzi do prywatnej strony jakiejś osoby, możesz określić swoje relacje z nią korzystając z powyższego formularza. Jeśli chcesz dowiedzieć się więcej o idei tego systemu, zerknij na stronę o <a href=\"https://gmpg.org/xfn/\">XFN</a>."
+
+#: wp-admin/edit-link-form.php:111
+msgid "Example: <code>http://wordpress.org/</code> &#8212; don&#8217;t forget the <code>http://</code>"
+msgstr "Przykład: <code>https://pl.wordpress.org/</code> &#8212; nie zapomnij o <code>https://</code>"
 
 #: wp-admin/includes/media.php:2456 wp-admin/includes/nav-menu.php:361
 #: wp-admin/includes/nav-menu.php:649

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-26 19:32:51+0000\n"
+"PO-Revision-Date: 2018-04-23 17:53:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3323,7 +3323,7 @@ msgstr "Anteriores"
 
 #: wp-includes/general-template.php:396 wp-login.php:588 wp-login.php:988
 msgid "Username or Email Address"
-msgstr "Nombre de usuario o dirección de correo electrónico"
+msgstr "Nombre de usuario o dirección de correo"
 
 #. translators: %s: "Search WordPress.org themes" button
 #: wp-includes/customize/class-wp-customize-themes-section.php:91

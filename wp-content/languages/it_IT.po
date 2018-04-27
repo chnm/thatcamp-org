@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-09 08:18:46+0000\n"
+"PO-Revision-Date: 2018-04-26 14:34:48+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5833,7 +5833,7 @@ msgstr "I nomi dei tipi di contenuto (post type) devono essere compresi fra 1 e 
 #: wp-includes/post-template.php:1709 wp-includes/post-template.php:1745
 msgctxt "revision date format"
 msgid "F j, Y @ H:i:s"
-msgstr "j F Y alle G:i:s"
+msgstr "j F Y, G:i:s"
 
 #: wp-includes/class-wp-customize-nav-menus.php:1115
 #: wp-includes/class-wp-editor.php:1704 wp-includes/media-template.php:820
@@ -7262,14 +7262,14 @@ msgstr "Rendi casuali le testate caricate"
 
 #: wp-includes/admin-bar.php:172
 msgid "https://wordpress.org/support/forum/requests-and-feedback"
-msgstr "https://wordpress.org/support/forum/requests-and-feedback"
+msgstr "https://it.wordpress.org/support/forums/"
 
 #: wp-includes/admin-bar.php:164 wp-includes/update.php:153
 #: wp-includes/update.php:345 wp-includes/update.php:527
 #: wp-includes/wp-db.php:1062 wp-includes/wp-db.php:1595
 #: wp-includes/wp-db.php:1753 wp-login.php:882
 msgid "https://wordpress.org/support/"
-msgstr "https://wordpress.org/support/ "
+msgstr "https://it.wordpress.org/support/"
 
 #: wp-includes/admin-bar.php:148
 #: wp-includes/widgets/class-wp-widget-meta.php:72 wp-login.php:116

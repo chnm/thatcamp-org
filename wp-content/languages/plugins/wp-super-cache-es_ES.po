@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP Super Cache - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-02 16:29:15+0000\n"
+"PO-Revision-Date: 2018-04-23 17:59:03+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1358,7 +1358,7 @@ msgstr "La compresión está desactivada de forma predeterminada porque algunos 
 
 #: wp-cache.php:1024
 msgid "Compress pages so they&#8217;re served more quickly to visitors."
-msgstr "Comprimir las páginas para que ello&#8217 se sirva más rápido a los visitantes."
+msgstr "Comprimir las páginas para que se sirvan más rápidamente a los visitantes."
 
 #: wp-cache.php:1022
 msgid "Warning! Compression is disabled as gzencode() function was not found."

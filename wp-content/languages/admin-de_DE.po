@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-04-16 14:21:36+0000\n"
+"PO-Revision-Date: 2018-04-18 15:23:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1744,7 +1744,7 @@ msgstr "WordPress bietet die Möglichkeit, individuelle URL-Strukturen für dein
 
 #: wp-admin/options-permalink.php:29
 msgid "Permalinks can contain useful information, such as the post date, title, or other elements. You can choose from any of the suggested permalink formats, or you can craft your own if you select Custom Structure."
-msgstr "Permalinks können hilfreiche Informationen wie z. B. das Beitragsdatum, den Beitragstitel oder  weitere Eigenschaften enthalten. Du kannst eins der vorgegebenen Permalink-Formate nutzen oder erstelle eine Permalink-Struktur nach deinen Wünschen."
+msgstr "Permalinks können hilfreiche Informationen wie z.&nbsp;B. das Beitragsdatum, den Beitragstitel oder  weitere Eigenschaften enthalten. Du kannst eins der vorgegebenen Permalink-Formate nutzen oder erstelle eine Permalink-Struktur nach deinen Wünschen."
 
 #. translators: %s: wp-config.php
 #: wp-admin/setup-config.php:374
@@ -2439,7 +2439,7 @@ msgstr "<a href=\"https://codex.wordpress.org/Revision_Management\">Revisions-Ma
 
 #: wp-admin/edit-form-advanced.php:431
 msgid "You can also embed media from many popular websites including Twitter, YouTube, Flickr and others by pasting the media URL on its own line into the content of your post/page. Please refer to the Codex to <a href=\"https://codex.wordpress.org/Embeds\">learn more about embeds</a>."
-msgstr "Du kannst auch Medien von populären Websites wie z. B. Twitter, YouTube, Flickr und anderen Portalen einbinden, indem du die URL der Medien in einer einzelnen Zeile innerhalb des Textinhaltes einfügst. Bitte schau auch in den Codex, um zu <a href=\"https://codex.wordpress.org/Embeds\">lernen, wie externe Medien eingebettet werden</a>."
+msgstr "Du kannst auch Medien von populären Websites wie z.&nbsp;B. Twitter, YouTube, Flickr und anderen Portalen einbinden, indem du die URL der Medien in einer einzelnen Zeile innerhalb des Textinhaltes einfügst. Bitte schau auch in den Codex, um zu <a href=\"https://codex.wordpress.org/Embeds\">lernen, wie externe Medien eingebettet werden</a>."
 
 #: wp-admin/includes/dashboard.php:1615
 msgid "https://codex.wordpress.org/First_Steps_With_WordPress"
@@ -3353,7 +3353,7 @@ msgstr "Nachdem du deine Auswahl getroffen hast, kannst du diese durch Eingabe d
 
 #: wp-admin/includes/image-edit.php:108
 msgid "The aspect ratio is the relationship between the width and height. You can preserve the aspect ratio by holding down the shift key while resizing your selection. Use the input box to specify the aspect ratio, e.g. 1:1 (square), 4:3, 16:9, etc."
-msgstr "Das Seitenverhältnis ist die Bildhöhe in Relation zur Bildbreite. Du kannst das Seitenverhältnis beibehalten, indem du die Steuerungstaste gedrückt hältst wenn du eine Größenänderung vornimmst. Verwende das Eingabefeld, um ein Seitenverhältnis festzulegen, z. B. 1:1 (quadratisch), 4:3, 16:9 usw."
+msgstr "Das Seitenverhältnis ist die Bildhöhe in Relation zur Bildbreite. Du kannst das Seitenverhältnis beibehalten, indem du die Steuerungstaste gedrückt hältst wenn du eine Größenänderung vornimmst. Verwende das Eingabefeld, um ein Seitenverhältnis festzulegen, z.&nbsp;B. 1:1 (quadratisch), 4:3, 16:9 usw."
 
 #: wp-admin/edit-form-advanced.php:381
 msgid "Keyboard users: When you&#8217;re working in the visual editor, you can use <kbd>Alt + F10</kbd> to access the toolbar."
@@ -4622,7 +4622,7 @@ msgstr "Du kannst wählen, ob du den Header-Text anzeigen lassen möchtest oder 
 
 #: wp-admin/custom-background.php:91
 msgid "You can also choose a background color by clicking the Select Color button and either typing in a legitimate HTML hex value, e.g. &#8220;#ff0000&#8221; for red, or by choosing a color using the color picker."
-msgstr "Du kannst auch eine Hintergrundfarbe auswählen, indem du auf den Button &#8222;Farbe wählen&#8220; klickst und dann einen gültigen HTML Hex-Wert eingibst, wie z.B. &#8222;#ff0000&#8220; für Rot; oder wähle eine Farbe aus der Palette des Farbmischers."
+msgstr "Du kannst auch eine Hintergrundfarbe auswählen, indem du auf den Button &#8222;Farbe wählen&#8220; klickst und dann einen gültigen HTML Hex-Wert eingibst, wie z.&nbsp;B. &#8222;#ff0000&#8220; für Rot; oder wähle eine Farbe aus der Palette des Farbmischers."
 
 #: wp-admin/options-reading.php:32
 msgid "You can choose whether or not your site will be crawled by robots, ping services, and spiders. If you want those services to ignore your site, click the checkbox next to &#8220;Discourage search engines from indexing this site&#8221; and click the Save Changes button at the bottom of the screen. Note that your privacy is not complete; your site is still visible on the web."
@@ -5465,7 +5465,7 @@ msgstr "Reparieren der %1$s Tabelle fehlgeschlagen. Fehler: %2$s"
 
 #: wp-admin/export.php:48
 msgid "You can export a file of your site&#8217;s content in order to import it into another installation or platform. The export file will be an XML file format called WXR. Posts, pages, comments, custom fields, categories, and tags can be included. You can choose for the WXR file to include only certain posts or pages by setting the dropdown filters to limit the export by category, author, date range by month, or publishing status."
-msgstr "Die Inhalte deiner Website können in eine Datei exportiert werden, um diese wieder in eine andere Installation zu importieren. Das Format der Export-Datei ist ein spezielles XML-Format, auch WXR (WordPress eXtended Rss) genannt. Beim Export können Beiträge, Seiten, Kommentare, benutzerdefinierte Felder, Kategorien und Schlagwörter inkludiert werden. Du kannst die Inhalte der WXR-Datei vorab auch filtern, indem du die Export-Daten z.B. auf Seiten, Beiträge und/oder Medien beschränkst und diese wiederum per Kategorie, Autor, Zeitraum oder Status weiter eingrenzt."
+msgstr "Die Inhalte deiner Website können in eine Datei exportiert werden, um diese wieder in eine andere Installation zu importieren. Das Format der Export-Datei ist ein spezielles XML-Format, auch WXR (WordPress eXtended Rss) genannt. Beim Export können Beiträge, Seiten, Kommentare, benutzerdefinierte Felder, Kategorien und Schlagwörter inkludiert werden. Du kannst die Inhalte der WXR-Datei vorab auch filtern, indem du die Export-Daten z.&nbsp;B. auf Seiten, Beiträge und/oder Medien beschränkst und diese wiederum per Kategorie, Autor, Zeitraum oder Status weiter eingrenzt."
 
 #: wp-admin/user-new.php:190
 msgid "New users will receive an email letting them know they&#8217;ve been added as a user for your site. This email will also contain their password. Check the box if you don&#8217;t want the user to receive a welcome email."
@@ -5660,7 +5660,7 @@ msgstr "Verfügbare Aktionen"
 
 #: wp-admin/edit.php:223
 msgid "When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected posts at once. To remove a post from the grouping, just click the x next to its name in the Bulk Edit area that appears."
-msgstr "Beim Massenbearbeiten von Beiträgen kannst du für mehrere Beiträge auf einmal z. B. die Kategoriezuordnung, Schlagwörter, Autor, Veröffentlichungsstatus und mehr verändern. Um einen Beitrag nachträglich von der Massenbearbeitung zu entfernen, klicke auf das kleine X-Symbol neben dem Titel."
+msgstr "Beim Massenbearbeiten von Beiträgen kannst du für mehrere Beiträge auf einmal z.&nbsp;B. die Kategoriezuordnung, Schlagwörter, Autor, Veröffentlichungsstatus und mehr verändern. Um einen Beitrag nachträglich von der Massenbearbeitung zu entfernen, klicke auf das kleine X-Symbol neben dem Titel."
 
 #: wp-admin/import.php:197
 msgid "If the importer you need is not listed, <a href=\"%s\">search the plugin directory</a> to see if an importer is available."
@@ -5796,7 +5796,7 @@ msgstr "Falls eine Datei in keinem Beitrag oder Seite verwendet wird, so wird di
 
 #: wp-admin/edit.php:244
 msgid "You can also perform the same types of actions, including narrowing the list by using the filters, acting on a page using the action links that appear when you hover over a row, or using the Bulk Actions menu to edit the metadata for multiple pages at once."
-msgstr "Du kannst auch die gleichen Arten von Aktionen ausführen, z.B. die Liste einschränken, indem du die Filter verwendest, auf einer Seite mit den Aktionslinks arbeiten, die angezeigt werden, wenn du mit der Maus über eine Zeile fährst, oder das Sammelaktionen-Menü verwenden, um die Metadaten für mehrere Seiten gleichzeitig zu bearbeiten."
+msgstr "Du kannst auch die gleichen Arten von Aktionen ausführen, z.&nbsp;B. die Liste einschränken, indem du die Filter verwendest, auf einer Seite mit den Aktionslinks arbeiten, die angezeigt werden, wenn du mit der Maus über eine Zeile fährst, oder das Sammelaktionen-Menü verwenden, um die Metadaten für mehrere Seiten gleichzeitig zu bearbeiten."
 
 #: wp-admin/edit.php:243
 msgid "Managing pages is very similar to managing posts, and the screens can be customized in the same way."
@@ -9687,7 +9687,7 @@ msgstr "Vorschau der Änderungen"
 
 #: wp-admin/includes/media.php:2588
 msgid "Link text, e.g. &#8220;Ransom Demands (PDF)&#8221;"
-msgstr "Link-Text, z. B. &#8222;Rotkäppchen II – Der Wolf schlägt zurück (PDF)&#8220;"
+msgstr "Link-Text, z.&nbsp;B. &#8222;Rotkäppchen II – Der Wolf schlägt zurück (PDF)&#8220;"
 
 #: wp-admin/includes/media.php:2619
 msgid "Link to image"
@@ -9795,7 +9795,7 @@ msgstr "Wenn kein Titel angegeben wird, wird der Dateiname eingesetzt."
 
 #: wp-admin/includes/media.php:1287 wp-admin/includes/media.php:2595
 msgid "Alt text for the image, e.g. &#8220;The Mona Lisa&#8221;"
-msgstr "Beschreibung des Bildes, z.Bsp. &#8222;Die Mona Lisa&#8220;"
+msgstr "Beschreibung des Bildes, z.&nbsp;B. &#8222;Die Mona Lisa&#8220;"
 
 #: wp-admin/includes/media.php:1085 wp-admin/includes/media.php:1242
 msgid "File URL"
@@ -10575,7 +10575,7 @@ msgstr "Element hinzufügt."
 
 #: wp-admin/edit-tag-form.php:167 wp-admin/edit-tags.php:442
 msgid "Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have children categories for Bebop and Big Band. Totally optional."
-msgstr "Kategorien können, im Gegensatz zu Schlagwörtern, hierarchisch angeordnet werden. Du kannst z.B. eine Kategorie Musik anlegen, welche die Unterkategorien Schlager und Jazz enthält."
+msgstr "Kategorien können, im Gegensatz zu Schlagwörtern, hierarchisch angeordnet werden. Du kannst z.&nbsp;B. eine Kategorie Musik anlegen, welche die Unterkategorien Schlager und Jazz enthält."
 
 #: wp-admin/edit-tag-form.php:121 wp-admin/edit-tags.php:393
 msgid "The name is how it appears on your site."

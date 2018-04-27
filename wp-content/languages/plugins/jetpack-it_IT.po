@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-04-13 13:45:58+0000\n"
+"PO-Revision-Date: 2018-04-17 12:54:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6209,6 +6209,11 @@ msgstr "Ritratto"
 msgid "Landscape"
 msgstr "Paesaggio"
 
+#: modules/related-posts/class.related-posts-customize.php:217
+#: modules/widgets/googleplus-badge.php:258
+msgid "Layout"
+msgstr "Disposizione"
+
 #: modules/widgets/googleplus-badge.php:251
 msgid "Width"
 msgstr "Larghezza:"
@@ -7021,6 +7026,10 @@ msgstr "Orario e informazioni"
 msgid "Display a map with your location, hours, and contact information."
 msgstr "Mostra la posizione, l'orario e le informazioni di contatto."
 
+#: modules/widget-visibility/widget-conditions.php:284
+msgid "Delete"
+msgstr "Elimina"
+
 #: modules/widget-visibility/widget-conditions.php:278
 msgctxt "Shown between widget visibility conditions."
 msgid "or"
@@ -7150,6 +7159,10 @@ msgstr "Pagine di tutte le tag"
 #: modules/widget-visibility/widget-conditions.php:57
 msgid "All author pages"
 msgstr "Pagine di tutti gli autori"
+
+#: modules/widget-visibility/widget-conditions.php:54
+msgid "Logged Out"
+msgstr "Disconnesso"
 
 #: modules/widget-visibility/widget-conditions.php:53
 msgid "Logged In"
@@ -9302,10 +9315,6 @@ msgstr "Utilizza Google Analytics con lo Scorrimento Infinito"
 msgid "Theme: %1$s."
 msgstr "Tema: %1$s."
 
-#: modules/infinite-scroll/infinity.php:1512
-msgid "Proudly powered by WordPress"
-msgstr "Realizzato con tecnologia WordPress"
-
 #: modules/infinite-scroll/infinity.php:822
 msgid "Scroll back to top"
 msgstr "Scorri in alto"
@@ -10407,6 +10416,11 @@ msgstr "Radio"
 #: modules/contact-form/grunion-form-view.php:196
 msgid "Drop down"
 msgstr "A tendina"
+
+#: modules/contact-form/grunion-editor-view.php:219
+#: modules/contact-form/grunion-form-view.php:194
+msgid "Checkbox"
+msgstr "Casella di controllo"
 
 #: modules/contact-form/grunion-form-view.php:192
 msgid "Field type"
@@ -12205,6 +12219,12 @@ msgstr "Errore, modulo sbagliato."
 msgctxt "The menu item label"
 msgid "Jetpack"
 msgstr "Jetpack"
+
+#: modules/contact-form/grunion-contact-form.php:129
+#: modules/contact-form/grunion-contact-form.php:130
+#: modules/contact-form/grunion-form-view.php:175
+msgid "Feedback"
+msgstr "Riscontro"
 
 #: _inc/jetpack-strings.php:403 _inc/jetpack-strings.php:528
 #: _inc/lib/admin-pages/class.jetpack-react-page.php:67

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-04-12 07:00:24+0000\n"
+"PO-Revision-Date: 2018-04-27 09:48:26+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -144,10 +144,6 @@ msgstr "https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory"
 msgid "Enter the address here if you <a href=\"%s\">want your site home page to be different from your WordPress installation directory</a>."
 msgstr "Inserisci qui l'indirizzo se <a href=\"%s\">vuoi che la tua pagina iniziale sia differente dalla directory di installazione di WordPress</a>."
 
-#: wp-admin/about.php:281
-msgid "https://wordpress.org/plugins/gutenberg/"
-msgstr "https://wordpress.org/plugins/gutenberg/"
-
 #: wp-admin/about.php:280
 msgid "WordPress is working on a new way to create and control your content and we&#8217;d love to have your help. Interested in being an <a href=\"%s\">early tester</a> or getting involved with the Gutenberg project? <a href=\"%s\">Contribute on GitHub</a>."
 msgstr "WordPress sta lavorando ad un nuovo modo per creare e controllare i tuoi contenuti e ci piacerebbe avere il tuo aiuto. Sei interessato ad essere un <a href=\"%s\">early tester</a> o ad essere coinvolto nel progetto Gutenberg? <a href=\"%s\">Contribuisci su GitHub</a>."
@@ -156,6 +152,10 @@ msgstr "WordPress sta lavorando ad un nuovo modo per creare e controllare i tuoi
 #: wp-admin/about.php:291
 msgid "Developer Happiness %s"
 msgstr "La felicità dello sviluppatore %s"
+
+#: wp-admin/about.php:281
+msgid "https://wordpress.org/plugins/gutenberg/"
+msgstr "https://it.wordpress.org/plugins/gutenberg/"
 
 #. translators: %s: handshake emoji
 #: wp-admin/about.php:274
@@ -526,13 +526,6 @@ msgstr "Impossibile scrivere sul file."
 msgid "The menu is for editing information specific to individual sites, particularly if the admin area of a site is unavailable."
 msgstr "Questo menu serve per modificare informazioni relative ad singoli siti, specialmente quando l'area di amministrazione di un sito non è disponibile."
 
-#. translators: If a Rosetta site exists (e.g. https://es.wordpress.org/news/),
-#. then use that. Otherwise, leave untranslated.
-#: wp-admin/includes/dashboard.php:1117
-msgctxt "Events and News dashboard widget"
-msgid "https://wordpress.org/news/"
-msgstr "https://wordpress.org/news/"
-
 #: wp-admin/includes/dashboard.php:51 wp-admin/includes/dashboard.php:570
 msgid "Your Recent Drafts"
 msgstr "Le tue bozze recenti"
@@ -541,6 +534,13 @@ msgstr "Le tue bozze recenti"
 #: wp-admin/includes/file.php:303
 msgid "Your PHP code changes were rolled back due to an error on line %1$s of file %2$s. Please fix and try saving again."
 msgstr "Le tue modifiche al codice PHP sono state annullate a causa di un errore alla linea %1$s del  file %2$s. Correggi e prova a salvare nuovamente."
+
+#. translators: If a Rosetta site exists (e.g. https://es.wordpress.org/news/),
+#. then use that. Otherwise, leave untranslated.
+#: wp-admin/includes/dashboard.php:1117
+msgctxt "Events and News dashboard widget"
+msgid "https://wordpress.org/news/"
+msgstr "https://it.wordpress.org/news/"
 
 #: wp-admin/includes/class-wp-terms-list-table.php:501
 msgid "No description"
@@ -998,7 +998,7 @@ msgid ""
 msgstr ""
 "Ciao, questo è un commento.\n"
 "Per iniziare a moderare, modificare ed eliminare commenti, visita la schermata commenti nella bacheca.\n"
-"Gli avatar di chi lascia un commento sono forniti da <a href=\"https://gravatar.com\">Gravatar</a>."
+"Gli avatar di chi lascia un commento sono forniti da <a href=\"https://it.gravatar.com\">Gravatar</a>."
 
 #. translators: %s: Theme name
 #: wp-admin/includes/update.php:755
@@ -1370,11 +1370,6 @@ msgstr "Il tuo nome utente del database."
 msgid "Your database password."
 msgstr "La tua password del database."
 
-#: wp-admin/freedoms.php:48 wp-admin/theme-install.php:92
-#: wp-admin/themes.php:92
-msgid "https://wordpress.org/themes/"
-msgstr "https://wordpress.org/themes/"
-
 #: wp-admin/setup-config.php:199
 msgid "The name of the database you want to use with WordPress."
 msgstr "Il nome del database che vuoi utilizzare con WordPress."
@@ -1382,6 +1377,11 @@ msgstr "Il nome del database che vuoi utilizzare con WordPress."
 #: wp-admin/users.php:174
 msgid "Sorry, you are not allowed to delete that user."
 msgstr "Non hai il permesso per eliminare questo utente."
+
+#: wp-admin/freedoms.php:48 wp-admin/theme-install.php:92
+#: wp-admin/themes.php:92
+msgid "https://wordpress.org/themes/"
+msgstr "https://it.wordpress.org/themes/"
 
 #. translators: 1: plugin name, 2: plugin author
 #: wp-admin/plugins.php:336
@@ -1706,14 +1706,14 @@ msgstr "La <strong>versione %s</strong> corregge un problema di sicurezza."
 msgid "Welcome to %s. This is your first post. Edit or delete it, then start blogging!"
 msgstr "Benvenuto in %s. Questo è il tuo primo articolo. Modificalo o eliminalo, poi inizia a scrivere il tuo blog!"
 
-#: wp-admin/user-edit.php:533
-msgid "https://en.gravatar.com/"
-msgstr "https://en.gravatar.com/"
-
 #. translators: %s: Gravatar URL
 #: wp-admin/user-edit.php:532
 msgid "You can change your profile picture on <a href=\"%s\">Gravatar</a>."
 msgstr "Puoi cambiare la tua immagine profilo su <a href=\"%s\">Gravatar</a>."
+
+#: wp-admin/user-edit.php:533
+msgid "https://en.gravatar.com/"
+msgstr "https://it.gravatar.com/"
 
 #: wp-admin/user-edit.php:526
 msgid "Profile Picture"
@@ -2969,10 +2969,6 @@ msgstr ""
 "\n"
 "Grazie! -- Il team di WordPress"
 
-#: wp-admin/includes/class-wp-posts-list-table.php:978
-msgid "Y/m/d g:i:s a"
-msgstr "d/m/Y g:i:s"
-
 #. translators: Publish box date format, see https://secure.php.net/date
 #: wp-admin/edit-form-advanced.php:144 wp-admin/edit-form-comment.php:93
 #: wp-admin/includes/meta-boxes.php:181 wp-admin/includes/meta-boxes.php:340
@@ -2988,6 +2984,10 @@ msgstr "j M, Y @ H:i"
 #: wp-admin/includes/ajax-actions.php:3889
 msgid "Unable to connect to the filesystem. Please confirm your credentials."
 msgstr "Impossibilitato al collegamento al filesystem. Controlla le tue credenziali."
+
+#: wp-admin/includes/class-wp-posts-list-table.php:978
+msgid "Y/m/d g:i:s a"
+msgstr "d/m/Y G:i:s"
 
 #: wp-admin/comment.php:195
 msgid "Submitted on"
@@ -3052,7 +3052,7 @@ msgstr ""
 "Ti auguriamo buon divertimento con il tuo nuovo sito. Grazie!\n"
 "\n"
 "--Il Team di WordPress\n"
-"https://wordpress.org/\n"
+"https://it.wordpress.org/\n"
 
 #: wp-admin/install.php:130
 msgid "Usernames can have only alphanumeric characters, spaces, underscores, hyphens, periods, and the @ symbol."
@@ -3402,10 +3402,6 @@ msgstr "Cerca temi"
 msgid "Search themes..."
 msgstr "Cerca temi..."
 
-#: wp-admin/maint/repair.php:147
-msgid "https://wordpress.org/support/forum/how-to-and-troubleshooting"
-msgstr "https://wordpress.org/support/forum/how-to-and-troubleshooting"
-
 #: wp-admin/revision.php:79
 msgid "&larr; Return to editor"
 msgstr "&larr; Torna all'editor"
@@ -3446,6 +3442,10 @@ msgstr "<strong>Rimuovi</strong> ti permette di eliminare un utente dal tuo sito
 msgctxt "theme"
 msgid "Details &amp; Preview"
 msgstr "Dettagli e anteprima"
+
+#: wp-admin/maint/repair.php:147
+msgid "https://wordpress.org/support/forum/how-to-and-troubleshooting"
+msgstr "https://it.wordpress.org/support/forum/guide-e-soluzioni/"
 
 #: wp-admin/includes/ajax-actions.php:1833
 msgid "Type"
@@ -6208,10 +6208,6 @@ msgstr "Impostazioni salvate."
 msgid "Confirm Deletion"
 msgstr "Conferma eliminazione"
 
-#: wp-admin/menu.php:248 wp-admin/ms-delete-site.php:30
-msgid "Delete Site"
-msgstr "Elimina sito"
-
 #: wp-admin/edit-tag-form.php:264
 #: wp-admin/includes/class-wp-links-list-table.php:82
 #: wp-admin/includes/class-wp-links-list-table.php:318
@@ -6229,6 +6225,10 @@ msgstr "Elimina sito"
 #: wp-admin/themes.php:499 wp-admin/widgets.php:320
 msgid "Delete"
 msgstr "Elimina"
+
+#: wp-admin/menu.php:248 wp-admin/ms-delete-site.php:30
+msgid "Delete Site"
+msgstr "Elimina sito"
 
 #: wp-admin/edit-form-advanced.php:371
 msgid "Customizing This Display"
@@ -9269,10 +9269,6 @@ msgstr "Link aggiunto."
 msgid "Example: Nifty blogging software"
 msgstr "Esempio: Un software di blogging carino"
 
-#: wp-admin/edit-link-form.php:111
-msgid "Example: <code>http://wordpress.org/</code> &#8212; don&#8217;t forget the <code>http://</code>"
-msgstr "Esempio: <code>http://wordpress.org/</code> &#8212; non dimenticare l'<code>http://</code>"
-
 #: wp-admin/edit-link-form.php:119
 msgid "This will be shown when someone hovers over the link in the blogroll, or optionally below the link."
 msgstr "Questa descrizione viene visualizzata quando si passa sopra il link nel blogroll oppure opzionalmente sotto il link."
@@ -10873,7 +10869,11 @@ msgstr "Abilita la modalit&agrave; accessibile"
 
 #: wp-admin/includes/meta-boxes.php:1205
 msgid "If the link is to a person, you can specify your relationship with them using the above form. If you would like to learn more about the idea check out <a href=\"http://gmpg.org/xfn/\">XFN</a>."
-msgstr "Se il link &egrave; ad una persona, puoi indicare il tipo di relazione usando il modulo qui sopra. Se vuoi saperne di pi&ugrave; su questa idea, dai un'occhiata a <a href=\"http://gmpg.org/xfn/\">XFN</a>."
+msgstr "Se il link &egrave; ad una persona, puoi indicare il tipo di relazione usando il modulo qui sopra. Se vuoi saperne di pi&ugrave; su questa idea, dai un'occhiata a <a href=\"https://gmpg.org/xfn/\">XFN</a>."
+
+#: wp-admin/edit-link-form.php:111
+msgid "Example: <code>http://wordpress.org/</code> &#8212; don&#8217;t forget the <code>http://</code>"
+msgstr "Esempio: <code>https://it.wordpress.org/</code> &#8212; non dimenticare l'<code>https://</code>"
 
 #: wp-admin/includes/media.php:2456 wp-admin/includes/nav-menu.php:361
 #: wp-admin/includes/nav-menu.php:649
