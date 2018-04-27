@@ -20,6 +20,7 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<link href='http://fonts.googleapis.com/css?family=Francois+One' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<?php do_action( 'bp_head' ); ?>
     <?php wp_head(); ?>
 </head>

@@ -237,6 +237,8 @@
 				<?php endif; ?>
 				
 				<?php do_action( 'bp_before_registration_submit_buttons' ); ?>
+				
+				<div class="g-recaptcha" data-sitekey="6LdNAlYUAAAAAM9YT5umDOnnQO9g48HieHB7AaxZ"></div>
 
 				<div class="submit">
 					<input type="submit" name="signup_submit" id="signup_submit" value="<?php _e( 'Sign up', 'thatcamp' ); ?>" />
