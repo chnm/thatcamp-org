@@ -235,7 +235,7 @@
 					<?php do_action( 'bp_after_blog_details_fields' ); ?>
 
 				<?php endif; ?>
-
+				
 				<?php do_action( 'bp_before_registration_submit_buttons' ); ?>
 
 				<div class="submit">

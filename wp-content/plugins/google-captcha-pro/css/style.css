@@ -1,0 +1,40 @@
+/*
+* styles for settings page
+*/
+body.no-js .gglcptch_section_forms:last-of-type hr,
+body.js .gglcptch-settings-accordion .gglcptch_section_forms > hr {
+	display: none;
+}
+.ui-widget-content .gglcptch_section_header.ui-state-default {
+	background: initial;
+}
+.bws_tab .gglcptch-settings-accordion a,
+.bws_tab .gglcptch-settings-accordion .ui-state-default a {
+	color: #0073aa;
+}
+.bws_tab .gglcptch-settings-accordion a:hover {
+	color: #00a0d2;
+}
+.gglcptch-settings-accordion .ui-accordion-content {
+	padding: 1em;
+}
+.gglcptch_whitelist_form td {
+	vertical-align: top;
+}
+.gglcptch_verified {
+	color: #03AA03;
+}
+.gglcptch_error_msg {
+	color: #dc3232;
+}
+.gglcptch-add-reason-textarea {
+	width: 100%;
+	display:block;
+}
+.button.gglcptch-add-reason-button {
+	margin: 5px;
+	float: right;
+}
+.rtl .button.gglcptch-add-reason-button {
+	float: left;
+}
