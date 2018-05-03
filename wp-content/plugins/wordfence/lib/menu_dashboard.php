@@ -8,6 +8,9 @@ $d = new wfDashboard();
 if (wfOnboardingController::shouldShowAttempt3()) {
 	echo wfView::create('onboarding/banner')->render();
 }
+else if (wfConfig::get('touppPromptNeeded')) {
+	echo wfView::create('gdpr/banner')->render();
+}
 ?>
 <div class="wrap wordfence" id="wf-dashboard">
 	<div class="wf-container-fluid">
@@ -261,9 +264,13 @@ if (wfOnboardingController::shouldShowAttempt3()) {
 			var prompt = $('#wfTmpl_onboardingFinal').tmpl();
 			var promptHTML = $("<div />").append(prompt).html();
 			WFAD.colorboxHTML('800px', promptHTML, {overlayClose: false, closeButton: false, className: 'wf-modal', onComplete: function() {
+				$('#wf-onboarding-agree').on('change', function() {
+					$('#wf-onboarding-continue').toggleClass('wf-disabled', wordfenceExt.parseEmails($('#wf-onboarding-alerts').val()).length == 0 || !($('#wf-onboarding-agree').is(':checked')));
+				});
+				
 				$('#wf-onboarding-alerts').on('change paste keyup', function() {
 					setTimeout(function() {
-						$('#wf-onboarding-continue').toggleClass('wf-disabled', wordfenceExt.parseEmails($('#wf-onboarding-alerts').val()).length == 0);
+						$('#wf-onboarding-continue').toggleClass('wf-disabled', wordfenceExt.parseEmails($('#wf-onboarding-alerts').val()).length == 0 || !($('#wf-onboarding-agree').is(':checked')));
 					}, 100);
 				}).trigger('change');
 
@@ -271,10 +278,15 @@ if (wfOnboardingController::shouldShowAttempt3()) {
 					e.preventDefault();
 					e.stopPropagation();
 
+					var touppAgreed = !!$('#wf-onboarding-agree').is(':checked');
+					if (!touppAgreed) {
+						return;
+					}
+
 					var emails = wordfenceExt.parseEmails($('#wf-onboarding-alerts').val());
 					if (emails.length > 0) {
 						var subscribe = !!$('#wf-onboarding-email-list').is(':checked');
-						wordfenceExt.onboardingProcessEmails(emails, subscribe);
+						wordfenceExt.onboardingProcessEmails(emails, subscribe, touppAgreed);
 						
 					<?php if (wfConfig::get('isPaid')): ?>
 						wordfenceExt.setOption('onboardingAttempt3', '<?php echo esc_attr(wfOnboardingController::ONBOARDING_THIRD_LICENSE); ?>');

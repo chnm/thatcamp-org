@@ -40,6 +40,11 @@ Licensed under the terms of CC0
 
 == CHANGELOG ==
 
+04/25/2018 v1.0.6
+* Update author, copyright to new owner info
+* Remove html5 shiv
+* Add smooth-scrolling for anchor links
+
 03/16/2016 v1.0.5
 * Fixed H1 tag issue
 * Added screen-reader-text CSS

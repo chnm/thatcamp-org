@@ -4,6 +4,37 @@ class wfScan {
 	public static $errorHandlingOn = true;
 	public static $peakMemAtStart = 0;
 	
+	/**
+	 * Returns the stored cronkey or false if not set. If $expired is provided, will set to <timestamp>/false based
+	 * on whether or not the cronkey is expired.
+	 * 
+	 * @param null $expired
+	 * @return bool|string
+	 */
+	private static function storedCronKey(&$expired = null) {
+		$currentCronKey = wfConfig::get('currentCronKey', false);
+		if (empty($currentCronKey))
+		{
+			if ($expired !== null) {
+				$expired = false;
+			}
+			return false;
+		}
+		
+		$savedKey = explode(',',$currentCronKey);
+		if (time() - $savedKey[0] > 86400) {
+			if ($expired !== null) {
+				$expired = $savedKey[0];
+			}
+			return $savedKey[1];
+		}
+		
+		if ($expired !== null) {
+			$expired = false;
+		}
+		return $savedKey[1];
+	}
+	
 	public static function wfScanMain(){
 		self::$peakMemAtStart = memory_get_peak_usage(true);
 		$db = new wfDB();
@@ -20,26 +51,31 @@ class wfScan {
 		}
 		/* ----------Starting cronkey check -------- */
 		self::status(4, 'info', "Scan engine received request.");
-		self::status(4, 'info', "Checking cronkey");
-		if(! $_GET['cronKey']){ 
+		
+		self::status(4, 'info', "Fetching stored cronkey for comparison.");
+		$expired = false;
+		$storedCronKey = self::storedCronKey($expired);
+		$displayCronKey_received = (isset($_GET['cronKey']) ? (preg_match('/^[a-f0-9]+$/i', $_GET['cronKey']) && strlen($_GET['cronKey']) == 32 ? $_GET['cronKey'] : __('[invalid]', 'wordfence')) : __('[none]', 'wordfence'));
+		$displayCronKey_stored = (!empty($storedCronKey) && !$expired ? $storedCronKey : __('[none]', 'wordfence'));
+		self::status(4, 'info', sprintf(__('Checking cronkey: %s (expecting %s)', 'wordfence'), $displayCronKey_received, $displayCronKey_stored));
+		if (empty($_GET['cronKey'])) { 
 			self::status(4, 'error', "Wordfence scan script accessed directly, or WF did not receive a cronkey.");
 			echo "If you see this message it means Wordfence is working correctly. You should not access this URL directly. It is part of the Wordfence security plugin and is designed for internal use only.";
 			exit();
 		}
-		self::status(4, 'info', "Fetching stored cronkey for comparison.");
-		$currentCronKey = wfConfig::get('currentCronKey', false);
-		if(! $currentCronKey){
+		
+		if ($expired) {
+			self::errorExit("The key used to start a scan expired. The value is: " . $expired . " and split is: " . $storedCronKey . " and time is: " . time());
+		} //keys only last 60 seconds and are used within milliseconds of creation
+		
+		if (!$storedCronKey) {
 			wordfence::status(4, 'error', "Wordfence could not find a saved cron key to start the scan so assuming it started and exiting.");
 			exit();
-		}
-		self::status(4, 'info', "Exploding stored cronkey"); 
-		$savedKey = explode(',',$currentCronKey);
-		if(time() - $savedKey[0] > 86400){ 
-			self::errorExit("The key used to start a scan expired. The value is: " . $savedKey[0] . " and split is: " . $currentCronKey . " and time is: " . time());
-		} //keys only last 60 seconds and are used within milliseconds of creation
+		} 
+		
 		self::status(4, 'info', "Checking saved cronkey against cronkey param");
-		if($savedKey[1] != $_GET['cronKey']){ 
-			self::errorExit("Wordfence could not start a scan because the cron key does not match the saved key. Saved: " . $savedKey[1] . " Sent: " . $_GET['cronKey'] . " Current unexploded: " . $currentCronKey);
+		if (!hash_equals($storedCronKey, $_GET['cronKey'])) { 
+			self::errorExit("Wordfence could not start a scan because the cron key does not match the saved key. Saved: " . $storedCronKey . " Sent: " . $_GET['cronKey'] . " Current unexploded: " . wfConfig::get('currentCronKey', false));
 		}
 		wfConfig::set('currentCronKey', '');
 		/* --------- end cronkey check ---------- */

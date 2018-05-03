@@ -4,7 +4,7 @@ Tags: security, firewall, malware scanner, web application firewall, antivirus, 
 Requires at least: 3.9
 Requires PHP: 5.2
 Tested up to: 4.9.5
-Stable tag: 7.1.3
+Stable tag: 7.1.4
 
 Secure your website with the most comprehensive WordPress security plugin. Firewall, malware scan, blocking, live traffic, login security & more.
 
@@ -167,6 +167,18 @@ Secure your website with Wordfence.
 
 
 == Changelog ==
+
+= 7.1.4 =
+* Improvement: Added additional XSS detection capabilities.
+* Change: Initial preparation for GDPR compliance. Additional changes will be included in an upcoming release to meet the GDPR deadline.
+* Change: Reworked Live Traffic/Rate Limiting human and bot detection to function without cookies.
+* Change: Removed the wfvt_ cookie as it was no longer necessary.
+* Change: Better debug messaging for scan forking.
+* Fix: PHP deprecation notices no longer suppress those of old OpenSSL or WordPress.
+* Fix: Fixes to the deprecated OpenSSL version detection and alerting to handle non-patch version numbers.
+* Fix: Added detection for and fixed a very large pcre.backtrack_limit setting that could cause scans to fail, when modified by other plugins.
+* Fix: Scan issue alert emails no longer incorrectly show high sensitivity was enabled.
+* Fix: Fixed wrapping of long strings on the Diagnostics page.
 
 = 7.1.3 =
 * Improvement: Improved the performance of our config table status check.

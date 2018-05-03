@@ -44,7 +44,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 	</div>
 	<div id="wf-onboarding-plugin-header-footer">
 		<ul id="wf-onboarding-plugin-header-footer-1"<?php if (wfConfig::get('onboardingAttempt2') == wfOnboardingController::ONBOARDING_FIRST_EMAILS) { echo ' style="display: none;"'; } ?>>
-			<li><?php _e('By clicking continue you are agreeing to our <a href="https://www.wordfence.com/terms-of-use/" target="_blank" rel="noopener noreferrer">terms</a> and <a href="https://www.wordfence.com/privacy-policy/" target="_blank" rel="noopener noreferrer">privacy policy</a>', 'wordfence'); ?></li>
+			<li><input type="checkbox" class="wf-option-checkbox wf-small" id="wf-onboarding2-agree" checked> <label for="wf-onboarding2-agree"><?php _e('I agree to the Wordfence <a href="https://www.wordfence.com/terms-of-use/" target="_blank" rel="noopener noreferrer">terms</a> and <a href="https://www.wordfence.com/privacy-policy/" target="_blank" rel="noopener noreferrer">privacy policy</a>', 'wordfence'); ?></label></li>
 			<li><a href="#" class="wf-onboarding-btn wf-onboarding-btn-default wf-disabled" id="wf-onboarding2-continue"><?php _e('Continue', 'wordfence'); ?></a></li>
 		</ul>
 		<ul id="wf-onboarding-plugin-header-footer-2"<?php if (wfConfig::get('onboardingAttempt2') != wfOnboardingController::ONBOARDING_FIRST_EMAILS) { echo ' style="display: none;"'; } ?>>
@@ -75,9 +75,13 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 				}
 			});
 
+			$('#wf-onboarding2-agree').on('change', function() {
+				$('#wf-onboarding2-continue').toggleClass('wf-disabled', wordfenceExt.parseEmails($('#wf-onboarding2-alerts').val()).length == 0 || !($('#wf-onboarding2-agree').is(':checked')));
+			});
+
 			$('#wf-onboarding2-alerts').on('change paste keyup', function() {
 				setTimeout(function() {
-					$('#wf-onboarding2-continue').toggleClass('wf-disabled', wordfenceExt.parseEmails($('#wf-onboarding2-alerts').val()).length == 0);
+					$('#wf-onboarding2-continue').toggleClass('wf-disabled', wordfenceExt.parseEmails($('#wf-onboarding2-alerts').val()).length == 0 || !($('#wf-onboarding2-agree').is(':checked')));
 				}, 100);
 			}).trigger('change');
 
@@ -85,10 +89,15 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 				e.preventDefault();
 				e.stopPropagation();
 
+				var touppAgreed = !!$('#wf-onboarding2-agree').is(':checked');
+				if (!touppAgreed) {
+					return;
+				}
+
 				var emails = wordfenceExt.parseEmails($('#wf-onboarding2-alerts').val());
 				if (emails.length > 0) {
 					var subscribe = !!$('#wf-onboarding2-email-list').is(':checked');
-					wordfenceExt.onboardingProcessEmails(emails, subscribe);
+					wordfenceExt.onboardingProcessEmails(emails, subscribe, touppAgreed);
 					
 					<?php if (wfConfig::get('isPaid')): ?>
 					$('#wf-onboarding-plugin-header').slideUp();

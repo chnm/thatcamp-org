@@ -1,4 +1,5 @@
 <?php if (!defined('WORDFENCE_VERSION')) { exit; } ?>
+<?php $scanOptions = $scanController->scanOptions(); ?>
 <p><?php printf(__('This email was sent from your website "%s" by the Wordfence plugin.', 'wordfence'), esc_html(get_bloginfo('name', 'raw'))); ?></p>
 
 <p><?php printf(__('Wordfence found the following new issues on "%s".', 'wordfence'), esc_html(get_bloginfo('name', 'raw'))); ?></p>
@@ -9,7 +10,7 @@
 
 <p><?php printf(__('See the details of these scan results on your site at: %s', 'wordfence'), network_admin_url('admin.php?page=WordfenceScan')); ?></p>
 
-<?php if (wfConfig::get('scansEnabled_highSense')): ?>
+<?php if ($scanOptions['scansEnabled_highSense']): ?>
 	<div style="margin: 12px 0;padding: 8px; background-color: #ffffe0; border: 1px solid #ffd975; border-width: 1px 1px 1px 10px;">
 		<em><?php _e('HIGH SENSITIVITY scanning is enabled, it may produce false positives', 'wordfence'); ?></em>
 	</div>

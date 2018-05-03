@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - BuddyPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-04-16 11:26:47+0000\n"
+"PO-Revision-Date: 2018-05-03 11:12:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,63 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - BuddyPress - Stable (latest release)\n"
+
+#. Description of the plugin/theme
+msgid "BuddyPress adds community features to WordPress. Member Profiles, Activity Streams, Direct Messaging, Notifications, and more!"
+msgstr "BuddyPress ajoute des fonctionnalités communautaires à WordPress. Profils des membres, flux d'activités, messagerie, notifications et plus encore !"
+
+#: bp-templates/bp-legacy/buddypress/members/single/messages/single.php:38
+msgid "Conversation between %s."
+msgstr "Conversation entre %s."
+
+#: bp-messages/bp-messages-template.php:2078
+msgid "[deleted]"
+msgstr "[supprimé]"
+
+#: bp-messages/bp-messages-template.php:1708
+msgid "you"
+msgstr "vous"
+
+#: bp-messages/bp-messages-template.php:1340
+msgid "Dismiss this notice"
+msgstr "Retirer cette notification"
+
+#: bp-messages/bp-messages-screens.php:140
+msgid "You do not have access to that conversation."
+msgstr "Vous n'avez pas accès à cette conversation."
+
+#: bp-messages/bp-messages-screens.php:125
+msgid "The conversation you tried to access is no longer available"
+msgstr "La conversation à laquelle vous avez essayé d'accéder n'est plus disponible."
+
+#: bp-groups/bp-groups-screens.php:844
+msgid "Groups must have a name and a description. Please try again."
+msgstr "Les groupes doivent avoir un nom et une description. Veuillez réessayer."
+
+#: bp-groups/bp-groups-screens.php:88
+msgid "Group invite accepted. Visit %s."
+msgstr "L'invitation au groupe est acceptée. Visitez %s."
+
+#: bp-groups/bp-groups-notifications.php:50
+msgctxt "Group update email text"
+msgid "* Permalink changed from \"%s\" to \"%s\"."
+msgstr "* Le permalien a été modifié de \"%s\" à \"%s\"."
+
+#: bp-groups/bp-groups-admin.php:532
+msgid "Group name, slug, and description are all required fields."
+msgstr "Le nom du groupe, l’identifiant et la description sont des champs nécessaires."
+
+#: bp-groups/bp-groups-activity.php:194
+msgid "%1$s changed the permalink of the group %2$s."
+msgstr "%1$s a changé le permalien du groupe %2$s."
+
+#: bp-core/classes/class-bp-admin.php:903
+msgid "Thank you for installing BuddyPress! BuddyPress adds community features to WordPress. Member Profiles, Activity Streams, Direct Messaging, Notifications, and more!"
+msgstr "Merci d'avoir installé BuddyPress ! BuddyPress ajoute des fonctionnalités communautaires à WordPress. Profils des membres, flux d'activités, messagerie, notifications et plus encore !"
+
+#: bp-core/classes/class-bp-admin.php:627
+msgid "Improve accessibility of Extended Profile Fields"
+msgstr "Améliorer l'accessibilité des champs de profil étendu"
 
 #: bp-core/classes/class-bp-admin.php:399
 msgid "Template Pack"
@@ -462,6 +519,10 @@ msgstr "(Non disponible sur le frontend)"
 #: bp-core/classes/class-bp-admin.php:786
 msgid "Community Support"
 msgstr "Support communautaire"
+
+#: bp-core/classes/class-bp-admin.php:746
+msgid "2.9 Release Lead"
+msgstr "Développeur en chef de la version 2.9"
 
 #: bp-core/classes/class-bp-admin.php:741
 msgid "BuddyPress Team"
@@ -3192,6 +3253,10 @@ msgstr "Modifier"
 #: bp-themes/bp-default/members/single/profile/edit.php:10
 msgid "Editing '%s' Profile Group"
 msgstr "Modification des champs du groupe : %s"
+
+#: bp-templates/bp-legacy/buddypress/members/single/profile/change-avatar.php:84
+msgid "Your profile photo will be used on your profile and throughout the site. To change your profile photo, please create an account with <a href=\"https://gravatar.com\">Gravatar</a> using the same email address as you used to register with this site."
+msgstr "Votre photo de profil sera utilisée sur votre profil et l'ensemble du site.  Pour modifier votre photo, veuillez créer un compte chez <a href=\"https://gravatar.com\">Gravatar</a> en indiquant la même adresse e-mail que celle utilisée lors de votre inscription sur ce site."
 
 #: bp-templates/bp-legacy/buddypress/members/single/profile/change-avatar.php:52
 msgid "Crop Your New Profile Photo"

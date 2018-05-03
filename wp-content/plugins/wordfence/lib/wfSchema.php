@@ -237,7 +237,14 @@ class wfSchema {
   `html` text NOT NULL,
   `links` text NOT NULL,
   PRIMARY KEY (`id`)
-) DEFAULT CHARSET=utf8;"
+) DEFAULT CHARSET=utf8;",
+'wfLiveTrafficHuman' => "(
+  `IP` binary(16) NOT NULL DEFAULT '\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0',
+  `identifier` binary(32) NOT NULL DEFAULT '\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0',
+  `expiration` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`IP`,`identifier`),
+  KEY `expiration` (`expiration`)
+) DEFAULT CHARSET=utf8;",
 /*
 'wfPerfLog' => "(
 	id int UNSIGNED NOT NULL auto_increment PRIMARY KEY,

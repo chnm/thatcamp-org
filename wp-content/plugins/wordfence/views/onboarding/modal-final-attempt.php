@@ -43,7 +43,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 	</div>
 	<div class="wf-modal-footer"<?php if (wfConfig::get('onboardingAttempt3') == wfOnboardingController::ONBOARDING_THIRD_EMAILS) { echo ' style="display: none;"'; } ?>>
 		<ul class="wf-flex-horizontal wf-full-width wf-flex-align-right">
-			<li class="wf-padding-add-right"><?php _e('By clicking continue you are agreeing to our <a href="https://www.wordfence.com/terms-of-use/" target="_blank" rel="noopener noreferrer">terms</a> and <a href="https://www.wordfence.com/privacy-policy/" target="_blank" rel="noopener noreferrer">privacy policy</a>', 'wordfence'); ?></li>
+			<li class="wf-padding-add-right"><input type="checkbox" class="wf-option-checkbox wf-small" id="wf-onboarding-agree" checked> <label for="wf-onboarding-agree"><?php _e('I agree to the Wordfence <a href="https://www.wordfence.com/terms-of-use/" target="_blank" rel="noopener noreferrer">terms</a> and <a href="https://www.wordfence.com/privacy-policy/" target="_blank" rel="noopener noreferrer">privacy policy</a>', 'wordfence'); ?></label></li>
 			<li><a href="#" class="wf-onboarding-btn wf-onboarding-btn-primary wf-disabled" id="wf-onboarding-continue"><?php _e('Continue', 'wordfence'); ?></a></li>
 		</ul>
 	</div>

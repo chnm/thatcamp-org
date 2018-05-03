@@ -312,7 +312,7 @@ class wfIssues {
 	public function ignoreAllNew(){
 		$this->getDB()->queryWrite("update " . $this->issuesTable . " set status='ignoreC' where status='new'");
 	}
-	public function emailNewIssues($timeLimitReached = false){
+	public function emailNewIssues($timeLimitReached = false, $scanController = false){
 		$level = wfConfig::getAlertLevel();
 		$emails = wfConfig::getAlertEmails();
 		$shortSiteURL = preg_replace('/^https?:\/\//i', '', site_url());
@@ -370,6 +370,7 @@ class wfIssues {
 			'issuesNotShown' => $overflowCount,
 			'adminURL' => get_admin_url(),
 			'timeLimitReached' => $timeLimitReached,
+			'scanController' => ($scanController ? $scanController : wfScanner::shared()),
 			));
 		
 		if (count($emails)) {

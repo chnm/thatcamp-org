@@ -14,6 +14,10 @@ class wfVersionCheckController {
 	const WORDPRESS_DEPRECATING = '3.9.0';
 	const WORDPRESS_MINIMUM = '3.9.0';
 	
+	const OPENSSL_DEV = 0;
+	//Betas are 1-14
+	const OPENSSL_RELEASE = 15;
+	
 	public static function shared() {
 		static $_shared = false;
 		if ($_shared === false) {
@@ -51,8 +55,6 @@ class wfVersionCheckController {
 				'phpVersionCheck',
 				sprintf(__('<strong>WARNING: </strong> Your site is using a PHP version (%s) that will no longer be supported by Wordfence in an upcoming release and needs to be updated. We recommend using the newest version of PHP 7.x or 5.6 but will currently support PHP versions as old as %s. Version checks are run regularly, so if you have successfully updated, you can dismiss this notice or check that the update has taken effect later.', 'wordfence'), phpversion(), self::PHP_DEPRECATING) . ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_VERSION_PHP) . '" target="_blank" rel="noopener noreferrer">' . __('Learn More', 'wordfence') . '</a>'
 			);
-			
-			return false;
 		}
 		else if ($php == self::VERSION_UNSUPPORTED) {
 			$this->_alertEmail(
@@ -66,11 +68,13 @@ class wfVersionCheckController {
 				'phpVersionCheck',
 				sprintf(__('<strong>WARNING: </strong> Your site is using a PHP version (%s) that is no longer supported by Wordfence and needs to be updated. We recommend using the newest version of PHP 7.x or 5.6 but will currently support PHP versions as old as %s. Version checks are run regularly, so if you have successfully updated, you can dismiss this notice or check that the update has taken effect later.', 'wordfence'), phpversion(), self::PHP_DEPRECATING) . ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_VERSION_PHP) . '" target="_blank" rel="noopener noreferrer">' . __('Learn More', 'wordfence') . '</a>'
 			);
-			
-			return false;
 		}
 		else {
 			wfAdminNoticeQueue::removeAdminNotice(false, 'phpVersionCheck');
+		}
+		
+		if (wfAdminNoticeQueue::hasNotice('phpVersionCheck')) {
+			return false;
 		}
 		
 		//OpenSSL
@@ -92,13 +96,13 @@ class wfVersionCheckController {
 		}
 		else if ($openssl == self::VERSION_UNSUPPORTED) {
 			$this->_alertEmail(
-				'opensslVersionCheckUnsupportedEmail_' . self::PHP_MINIMUM,
+				'opensslVersionCheckUnsupportedEmail_' . self::OPENSSL_MINIMUM,
 				__('OpenSSL version too old', 'wordfence'),
 				sprintf(__('Your site is using an OpenSSL version (%s) that is no longer supported by Wordfence and needs to be updated. We recommend using the newest version of OpenSSL but will currently support OpenSSL versions as old as %s. Version checks are run regularly, so if you have successfully updated, you can dismiss this notice or check that the update has taken effect later.', 'wordfence'), self::openssl_make_text_version(), self::OPENSSL_DEPRECATING) . ' ' . sprintf(__('Learn More: %s', 'wordfence'), wfSupportController::esc_supportURL(wfSupportController::ITEM_VERSION_OPENSSL))
 			);
 			
 			$this->_adminNotice(
-				'opensslVersionCheckUnsupportedNotice_' . self::PHP_MINIMUM,
+				'opensslVersionCheckUnsupportedNotice_' . self::OPENSSL_MINIMUM,
 				'opensslVersionCheck',
 				sprintf(__('<strong>WARNING: </strong> Your site is using an OpenSSL version (%s) that is no longer supported by Wordfence and needs to be updated. We recommend using the newest version of OpenSSL but will currently support OpenSSL versions as old as %s. Version checks are run regularly, so if you have successfully updated, you can dismiss this notice or check that the update has taken effect later.', 'wordfence'), self::openssl_make_text_version(), self::OPENSSL_DEPRECATING) . ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_VERSION_OPENSSL) . '" target="_blank" rel="noopener noreferrer">' . __('Learn More', 'wordfence') . '</a>'
 			);
@@ -107,6 +111,10 @@ class wfVersionCheckController {
 		}
 		else {
 			wfAdminNoticeQueue::removeAdminNotice(false, 'opensslVersionCheck');
+		}
+		
+		if (wfAdminNoticeQueue::hasNotice('opensslVersionCheck')) {
+			return false;
 		}
 		
 		//WordPress
@@ -125,8 +133,6 @@ class wfVersionCheckController {
 				'wordpressVersionCheck',
 				sprintf(__('<strong>WARNING: </strong> Your site is using a WordPress version (%s) that will no longer be supported by Wordfence in an upcoming release and needs to be updated. We recommend using the newest version of WordPress but will currently support WordPress versions as old as %s. Version checks are run regularly, so if you have successfully updated, you can dismiss this notice or check that the update has taken effect later.', 'wordfence'), $wp_version, self::WORDPRESS_DEPRECATING) . ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_VERSION_WORDPRESS) . '" target="_blank" rel="noopener noreferrer">' . __('Learn More', 'wordfence') . '</a>'
 			);
-			
-			return false;
 		}
 		else if ($wordpress == self::VERSION_UNSUPPORTED) {
 			require(ABSPATH . 'wp-includes/version.php'); /** @var string $wp_version */
@@ -142,11 +148,13 @@ class wfVersionCheckController {
 				'wordpressVersionCheck',
 				sprintf(__('<strong>WARNING: </strong> Your site is using a WordPress version (%s) that is no longer supported by Wordfence and needs to be updated. We recommend using the newest version of WordPress but will currently support WordPress versions as old as %s. Version checks are run regularly, so if you have successfully updated, you can dismiss this notice or check that the update has taken effect later.', 'wordfence'), $wp_version, self::WORDPRESS_DEPRECATING) . ' <a href="' . wfSupportController::esc_supportURL(wfSupportController::ITEM_VERSION_WORDPRESS) . '" target="_blank" rel="noopener noreferrer">' . __('Learn More', 'wordfence') . '</a>'
 			);
-			
-			return false;
 		}
 		else {
 			wfAdminNoticeQueue::removeAdminNotice(false, 'wordpressVersionCheck');
+		}
+		
+		if (wfAdminNoticeQueue::hasNotice('wordpressVersionCheck')) {
+			return false;
 		}
 		
 		return true;
@@ -228,17 +236,36 @@ class wfVersionCheckController {
 	 *
 	 * @param string $compareVersion
 	 * @param int $openSSLVersion A version number in the format OpenSSL uses.
+	 * @param bool $allowDevBeta If true, dev and beta versions of $compareVersion are treated as equivalent to release versions despite having a lower version number.
 	 * @return bool|int Returns -1 if $compareVersion is earlier, 0 if equal, 1 if later, and false if not a valid version string.
 	 */
-	public static function openssl_version_compare($compareVersion, $openSSLVersion = OPENSSL_VERSION_NUMBER) {
-		if (preg_match('/^(\d+)\.(\d+)\.(\d+)([a-z]?)/i', $compareVersion, $matches)) {
-			$primary = 0; $major = 0; $minor = 0; $fixLetterIndex = 0;
+	public static function openssl_version_compare($compareVersion, $openSSLVersion = OPENSSL_VERSION_NUMBER, $allowDevBeta = true) {
+		if (preg_match('/^(\d+)\.(\d+)\.(\d+)([a-z]*)((?:-dev|-beta\d\d?)?)/i', $compareVersion, $matches)) {
+			$primary = 0; $major = 0; $minor = 0; $fixLetterIndexes = 0; $patch = self::OPENSSL_RELEASE;
 			if (isset($matches[1])) { $primary = (int) $matches[1]; }
 			if (isset($matches[2])) { $major = (int) $matches[2]; }
 			if (isset($matches[3])) { $minor = (int) $matches[3]; }
-			if (isset($matches[4])) { $fixLetterIndex = strpos('abcdefghijklmnopqrstuvwxyz', strtolower($matches[1])) + 1; }
+			if (isset($matches[4]) && !empty($matches[4])) {
+				$letters = str_split($matches[4]);
+				foreach ($letters as $l) {
+					$fixLetterIndexes += strpos('abcdefghijklmnopqrstuvwxyz', strtolower($l)) + 1;
+				}
+			}
+			if (isset($matches[5]) && !empty($matches[5])) {
+				if (preg_match('/^-beta(\d+)$/i', $matches[5], $betaMatches)) {
+					$patch = (int) $betaMatches[1];
+				}
+				else {
+					$patch = self::OPENSSL_DEV;
+				}
+			}
 			
-			$compareOpenSSLVersion = self::openssl_make_number_version($primary, $major, $minor, $fixLetterIndex, 0);
+			$compareOpenSSLVersion = self::openssl_make_number_version($primary, $major, $minor, $fixLetterIndexes, $patch);
+			if ($allowDevBeta) {
+				$compareOpenSSLVersion = $compareOpenSSLVersion >> 4;
+				$openSSLVersion = $openSSLVersion >> 4;
+			}
+			
 			if ($compareOpenSSLVersion < $openSSLVersion) { return -1; }
 			else if ($compareOpenSSLVersion == $openSSLVersion) { return 0; }
 			return 1;
@@ -254,12 +281,12 @@ class wfVersionCheckController {
 	 * @param int $primary The '1' in 1.0.2g.
 	 * @param int $major The '0' in 1.0.2g.
 	 * @param int $minor The '2' in 1.0.2g.
-	 * @param int $fixLetterIndex The 'g' in 1.0.2g.
+	 * @param int $fixLetterIndexes The 'g' in 1.0.2g. This can potentially be multiple letters, in which case, all of the indexes are added.
 	 * @param int $patch
 	 * @return int
 	 */
-	public static function openssl_make_number_version($primary, $major, $minor, $fixLetterIndex = 0, $patch = 0) {
-		return ((($primary & 0xff) << 28) + (($major & 0xff) << 20) + (($minor & 0xff) << 12) + (($fixLetterIndex & 0xff) << 4) + $patch);
+	public static function openssl_make_number_version($primary, $major, $minor, $fixLetterIndexes = 0, $patch = 0) {
+		return ((($primary & 0xff) << 28) + (($major & 0xff) << 20) + (($minor & 0xff) << 12) + (($fixLetterIndexes & 0xff) << 4) + $patch);
 	}
 	
 	/**
@@ -273,7 +300,7 @@ class wfVersionCheckController {
 		$major = (($number >> 20) & 0xff);
 		$minor = (($number >> 12) & 0xff);
 		$fix = (($number >> 4) & 0xff);
-		$patch = ($number & 0xf); //Not currently handled -- would be values like alpha, beta, rc1
+		$patch = ($number & 0xf); //0 is dev, 1-14 are betas, 15 is release
 		
 		$alphabet = str_split('abcdefghijklmnopqrstuvwxyz');
 		$fixLetters = '';
@@ -286,6 +313,17 @@ class wfVersionCheckController {
 		}
 		
 		$version = "{$primary}.{$major}.{$minor}{$fixLetters}";
+		
+		if ($patch == self::OPENSSL_DEV) {
+			$version .= '-dev';
+		}
+		else if ($patch == self::OPENSSL_RELEASE) {
+			//Do nothing
+		}
+		else {
+			$version .= '-beta' . $patch;
+		}
+		
 		return $version;
 	}
 }

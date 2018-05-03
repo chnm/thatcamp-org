@@ -886,7 +886,7 @@ class wfUtils {
 		return ob_get_contents() . (ob_end_clean() ? "" : "");
 	}
 	public static function bigRandomHex(){
-		return dechex(rand(0, 2147483647)) . dechex(rand(0, 2147483647)) . dechex(rand(0, 2147483647));
+		return bin2hex(wfWAFUtils::random_bytes(16));
 	}
 	public static function encrypt($str){
 		$key = wfConfig::get('encKey');

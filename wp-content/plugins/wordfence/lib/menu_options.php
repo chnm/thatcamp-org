@@ -207,6 +207,9 @@ wf-option-cbl-bypassViewURL' => __('If user who is allowed to access the site vi
 if (wfOnboardingController::shouldShowAttempt3()) {
 	echo wfView::create('onboarding/banner')->render();
 }
+else if (wfConfig::get('touppPromptNeeded')) {
+	echo wfView::create('gdpr/banner')->render();
+}
 ?>
 <div class="wrap wordfence">
 	<div class="wf-container-fluid">

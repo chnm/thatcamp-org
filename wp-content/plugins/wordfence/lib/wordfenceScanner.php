@@ -197,6 +197,18 @@ class wordfenceScanner {
 			$hooverExclusions = wordfenceURLHoover::standardExcludedHosts();
 		}
 		
+		$backtrackLimit = ini_get('pcre.backtrack_limit');
+		if (is_numeric($backtrackLimit)) {
+			$backtrackLimit = (int) $backtrackLimit;
+			if ($backtrackLimit > 10000000) {
+				ini_set('pcre.backtrack_limit', 1000000);
+				wordfence::status(4, 'info', sprintf(__('Backtrack limit is %d, reducing to 1000000', 'wordfence'), $backtrackLimit));
+			}
+		}
+		else {
+			$backtrackLimit = false;
+		}
+		
 		$lastCount = 'whatever';
 		$excludePattern = self::getExcludeFilePattern(self::EXCLUSION_PATTERNS_USER | self::EXCLUSION_PATTERNS_MALWARE); 
 		while (true) {
@@ -466,6 +478,7 @@ class wordfenceScanner {
 			$hooverResults = $this->urlHoover->getBaddies();
 			if($this->urlHoover->errorMsg){
 				$this->errorMsg = $this->urlHoover->errorMsg;
+				if ($backtrackLimit !== false) { ini_set('pcre.backtrack_limit', $backtrackLimit); }
 				return false;
 			}
 			$this->urlHoover->cleanup();
@@ -556,7 +569,8 @@ class wordfenceScanner {
 				}
 			}
 		}
-
+		
+		if ($backtrackLimit !== false) { ini_set('pcre.backtrack_limit', $backtrackLimit); }
 		return $this->results;
 	}
 

@@ -58,7 +58,6 @@ class wordfence {
 	protected static $hasher = '';
 	protected static $itoa64 = './0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 	protected static $ignoreList = false;
-	public static $newVisit = false;
 	private static $wfLog = false;
 	private static $hitID = 0;
 	private static $debugOn = null;
@@ -177,6 +176,8 @@ class wordfence {
 				}
 			}
 		}
+		
+		wfLog::trimHumanCache();
 		
 		wfVersionCheckController::shared()->checkVersionsAndWarn();
 	}
@@ -1337,8 +1338,8 @@ SQL
 			header("Connection: close");
 			header("Content-Length: 0");
 			header("X-Robots-Tag: noindex");
-			if (!$isCrawler && !wfConfig::get('disableCookies')) {
-				setcookie('wordfence_verifiedHuman', self::getLog()->getVerifiedHumanCookieValue($UA, wfUtils::getIP()), time() + 86400, '/', null, wfUtils::isFullSSL());
+			if (!$isCrawler) {
+				wfLog::cacheHumanRequester(wfUtils::getIP(), $UA);
 			}
 		}
 		flush();
@@ -3158,7 +3159,7 @@ SQL
 	public static function ajax_downgradeLicense_callback(){
 		$api = new wfAPI('', wfUtils::getWPVersion());
 		try {
-			$keyData = $api->call('get_anon_api_key');
+			$keyData = $api->call('get_anon_api_key', array(), array('previousLicense' => wfConfig::get('apiKey')));
 			if($keyData['ok'] && $keyData['apiKey']){
 				wfConfig::set('apiKey', $keyData['apiKey']);
 				wfConfig::set('isPaid', 0);
@@ -3535,7 +3536,7 @@ SQL
 			if ($existingLicense != $license) { //Key changed, try activating
 				$api = new wfAPI($license, wfUtils::getWPVersion());
 				try {
-					$res = $api->call('check_api_key', array(), array());
+					$res = $api->call('check_api_key', array(), array('previousLicense' => $existingLicense));
 					if ($res['ok'] && isset($res['isPaid'])) {
 						$isPaid = wfUtils::truthyToBoolean($res['isPaid']);
 						wfConfig::set('apiKey', $license);
@@ -3576,6 +3577,15 @@ SQL
 		
 		return array(
 			'error' => __('No license was provided to install.', 'wordfence'),
+		);
+	}
+	public static function ajax_recordTOUPP_callback() {
+		$api = new wfAPI(wfConfig::get('apiKey'), wfUtils::getWPVersion());
+		$result = $api->call('record_toupp', array(), array());
+		wfConfig::set('touppBypassNextCheck', 1); //In case this call kicks off the cron that checks, this avoids the race condition of that setting the prompt as being needed at the same time we've just recorded it as accepted
+		wfConfig::set('touppPromptNeeded', 0);
+		return array(
+			'success' => 1,
 		);
 	}
 	public static function ajax_enableAllOptionsPage_callback() {
@@ -4904,17 +4914,6 @@ HTML;
 	}
 
 	public static function initAction(){
-		if(wfConfig::liveTrafficEnabled() && (! wfConfig::get('disableCookies', false)) ){
-			self::setCookie();
-		}
-		// This is more of a hurdle, but might stop an automated process.
-		// if (current_user_can('administrator')) {
-		// 	$adminUsers = new wfAdminUserMonitor();
-		// 	if ($adminUsers->isEnabled() && !$adminUsers->isAdminUserLogged(get_current_user_id())) {
-		// 		define('DISALLOW_FILE_MODS', true);
-		// 	}
-		// }
-
 		$currentUserID = get_current_user_id();
 		$role = wordfence::getCurrentUserRole();
 		if (!WFWAF_SUBDIRECTORY_INSTALL) {
@@ -4970,16 +4969,6 @@ HTML;
 			}
 		}
 	}
-	private static function setCookie(){
-		$cookieName = 'wfvt_' . crc32(site_url());
-		$c = isset($_COOKIE[$cookieName]) ? isset($_COOKIE[$cookieName]) : false;
-		if($c){
-			self::$newVisit = false;
-		} else {
-			self::$newVisit = true;
-		}
-		wfUtils::setcookie($cookieName, uniqid(), time() + 1800, '/', null, wfUtils::isFullSSL(), true);
-	}
 	public static function admin_init(){
 		if(! wfUtils::isAdmin()){ return; }
 		
@@ -4996,6 +4985,11 @@ HTML;
 		}
 		
 		wfOnboardingController::initialize();
+		
+		if (wfConfig::get('touppBypassNextCheck')) {
+			wfConfig::set('touppBypassNextCheck', 0);
+			wfConfig::set('touppPromptNeeded', 0);
+		}
 		
 		foreach(array(
 			'activate', 'scan', 'updateAlertEmail', 'sendActivityLog', 'restoreFile',
@@ -5015,7 +5009,7 @@ HTML;
 			'dismissNotification', 'utilityScanForBlacklisted', 'dashboardShowMore',
 			'saveOptions', 'restoreDefaults', 'enableAllOptionsPage', 'createBlock', 'deleteBlocks', 'makePermanentBlocks', 'getBlocks',
 			'installAutoPrepend', 'uninstallAutoPrepend',
-			'installLicense',
+			'installLicense', 'recordTOUPP',
 		) as $func){
 			add_action('wp_ajax_wordfence_' . $func, 'wordfence::ajaxReceiver');
 		}
@@ -5054,7 +5048,7 @@ HTML;
 		}
 		
 		//Early WAF configuration actions
-		if ((!WFWAF_AUTO_PREPEND || WFWAF_SUBDIRECTORY_INSTALL) && empty($_GET['wafAction']) && !wfConfig::get('dismissAutoPrependNotice') && !wfOnboardingController::shouldShowAttempt3()) {
+		if ((!WFWAF_AUTO_PREPEND || WFWAF_SUBDIRECTORY_INSTALL) && empty($_GET['wafAction']) && !wfConfig::get('dismissAutoPrependNotice') && !wfOnboardingController::shouldShowAttempt3() && !wfConfig::get('touppPromptNeeded')) {
 			if (is_multisite()) {
 				add_action('network_admin_notices', 'wordfence::wafAutoPrependNotice');
 			} else {
@@ -5204,7 +5198,7 @@ HTML;
 			}
 		}
 		
-		if (wfOnboardingController::shouldShowAttempt3()) {
+		if (wfOnboardingController::shouldShowAttempt3() || wfConfig::get('touppPromptNeeded')) { //Both top banners
 			$warningAdded = true;
 		}
 		
@@ -7094,16 +7088,11 @@ LIMIT %d", sprintf('%.6f', $lastSendTime), $limit));
 					if (preg_match('/^[a-z]+\s+(.*?)\s+/i', $requestString, $uriMatches) && preg_match('/Host:(.*?)\n/i', $requestString, $hostMatches)) {
 						$hit->URL = 'http' . ($ssl ? 's' : '') . '://' . trim($hostMatches[1]) . trim($uriMatches[1]);
 					}
-
-					$isHuman = false;
+					
+					$hit->jsRun = (int) wfLog::isHumanRequest($ip, $hit->UA);
+					$isHuman = !!$hit->jsRun;
+					
 					if (preg_match('/cookie:(.*?)\n/i', $requestString, $matches)) {
-						$hit->newVisit = strpos($matches[1], 'wfvt_' . crc32(site_url())) !== false ? 1 : 0;
-						$hasVerifiedHumanCookie = strpos($matches[1], 'wordfence_verifiedHuman') !== false;
-						if ($hasVerifiedHumanCookie && preg_match('/wordfence_verifiedHuman=(.*?);/', $matches[1], $cookieMatches)) {
-							$hit->jsRun = (int) $log->validateVerifiedHumanCookie($cookieMatches[1], $hit->UA, $ip);
-							$isHuman = !!$hit->jsRun;
-						}
-
 						$authCookieName = $waf->getAuthCookieName();
 						$hasLoginCookie = strpos($matches[1], $authCookieName) !== false;
 						if ($hasLoginCookie && preg_match('/' . preg_quote($authCookieName) . '=(.*?);/', $matches[1], $cookieMatches)) {

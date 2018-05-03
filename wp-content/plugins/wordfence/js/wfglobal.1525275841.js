@@ -107,9 +107,15 @@
 				}
 				return emails;
 			},
-			onboardingProcessEmails: function(emails, subscribe) {
+			onboardingProcessEmails: function(emails, subscribe, touppAgreed) {
 				var subscribe = !!subscribe;
 				wordfenceExt.setOption('alertEmails', emails.join(', '));
+				
+				if (touppAgreed) {
+					this.ajax('wordfence_recordTOUPP', {}, function(res) {
+						//Do nothing
+					});
+				}
 
 				if (subscribe) {
 					for (var i = 0; i < emails.length; i++) {

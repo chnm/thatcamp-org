@@ -308,7 +308,6 @@
 		self.statusCode = ko.observable(200);
 		self.isGoogle = ko.observable(0);
 		self.userID = ko.observable(0);
-		self.newVisit = ko.observable(0);
 		self.URL = ko.observable('');
 		self.referer = ko.observable('');
 		self.UA = ko.observable('');

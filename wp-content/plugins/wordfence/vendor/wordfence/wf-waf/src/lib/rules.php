@@ -721,6 +721,17 @@ class wfWAFRuleComparison implements wfWAFRuleInterface {
 			return false;
 		}
 		
+		$backtrackLimit = ini_get('pcre.backtrack_limit');
+		if (is_numeric($backtrackLimit)) {
+			$backtrackLimit = (int) $backtrackLimit;
+			if ($backtrackLimit > 10000000) {
+				ini_set('pcre.backtrack_limit', 1000000);
+			}
+		}
+		else {
+			$backtrackLimit = false;
+		}
+		
 		foreach ($files as $file) {
 			if ($file['name'] == (string) $subject) {
 				$fh = @fopen($file['tmp_name'], 'r');
@@ -756,6 +767,7 @@ class wfWAFRuleComparison implements wfWAFRuleInterface {
 						}
 						
 						if (preg_match('/(' . $rule . ')/iS', $data, $matches)) {
+							if ($backtrackLimit !== false) { ini_set('pcre.backtrack_limit', $backtrackLimit); }
 							return true;
 						}
 					}
@@ -763,6 +775,7 @@ class wfWAFRuleComparison implements wfWAFRuleInterface {
 			}
 		}
 		
+		if ($backtrackLimit !== false) { ini_set('pcre.backtrack_limit', $backtrackLimit); }
 		return false;
 	}
 	

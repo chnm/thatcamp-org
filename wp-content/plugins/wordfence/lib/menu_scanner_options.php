@@ -61,6 +61,9 @@ if (isset($_GET['source']) && wfPage::isValidPage($_GET['source'])) {
 if (wfOnboardingController::shouldShowAttempt3()) {
 	echo wfView::create('onboarding/banner')->render();
 }
+else if (wfConfig::get('touppPromptNeeded')) {
+	echo wfView::create('gdpr/banner')->render();
+}
 ?>
 <div class="wrap wordfence">
 	<div class="wf-container-fluid">

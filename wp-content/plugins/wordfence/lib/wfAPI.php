@@ -82,6 +82,10 @@ class wfAPI {
 				$n->markAsRead();
 			}
 		}
+		
+		if (isset($dat['_touppChanged'])) {
+			wfConfig::set('touppPromptNeeded', wfUtils::truthyToBoolean($dat['_touppChanged']));
+		}
 
 		if (!is_array($dat)) {
 			throw new wfAPICallInvalidResponseException("We received a data structure that is not the expected array when contacting the Wordfence scanning servers and calling the '$action' function.");

@@ -327,7 +327,7 @@ class wfScanEngine {
 		exit(0);
 	}
 	public function emailNewIssues($timeLimitReached = false){
-		$this->i->emailNewIssues($timeLimitReached);
+		$this->i->emailNewIssues($timeLimitReached, $this->scanController);
 	}
 	public function submitMetrics() {
 		if (wfConfig::get('other_WFNet', true)) {

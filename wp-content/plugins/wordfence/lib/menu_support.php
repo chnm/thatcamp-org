@@ -3,6 +3,9 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 if (wfOnboardingController::shouldShowAttempt3()) {
 	echo wfView::create('onboarding/banner')->render();
 }
+else if (wfConfig::get('touppPromptNeeded')) {
+	echo wfView::create('gdpr/banner')->render();
+}
 
 $support = @json_decode(wfConfig::get('supportContent'), true);
 ?>

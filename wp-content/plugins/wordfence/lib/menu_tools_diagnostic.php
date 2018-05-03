@@ -155,7 +155,7 @@ if (!isset($sendingDiagnosticEmail)) {
 											'em'     => array(),
 											'a'      => array('href' => true),
 										)) ?></div>
-									<div>
+									<div class="wf-right">
 									<?php if ($infoOnly): ?>
 										<div class="wf-result-info"><?php echo nl2br(esc_html($result['message'])); ?></div>
 									<?php elseif ($result['test']): ?>

@@ -9,9 +9,8 @@ class wfCrawl {
 		$browscap = new wfBrowscap();
 		$b = $browscap->getBrowser($UA);
 		if (!$b || $b['Parent'] == 'DefaultProperties') {
-			$log = wfLog::shared();
 			$IP = wfUtils::getIP(); 
-			return !(isset($_COOKIE['wordfence_verifiedHuman']) && $log->validateVerifiedHumanCookie($_COOKIE['wordfence_verifiedHuman'], $UA, $IP));
+			return !wfLog::isHumanRequest($IP, $UA);
 		}
 		else if (isset($b['Crawler']) && $b['Crawler']) {
 			return true;

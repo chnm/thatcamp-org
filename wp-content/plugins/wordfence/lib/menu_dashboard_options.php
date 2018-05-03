@@ -58,6 +58,9 @@ $d = new wfDashboard();
 if (wfOnboardingController::shouldShowAttempt3()) {
 	echo wfView::create('onboarding/banner')->render();
 }
+else if (wfConfig::get('touppPromptNeeded')) {
+	echo wfView::create('gdpr/banner')->render();
+}
 ?>
 <div class="wrap wordfence" id="wf-global-options">
 	<div class="wf-container-fluid">

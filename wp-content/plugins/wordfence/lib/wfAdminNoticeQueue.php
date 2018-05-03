@@ -55,14 +55,53 @@ class wfAdminNoticeQueue {
 		self::_setNotices($notices);
 	}
 	
+	/**
+	 * Removes an admin notice using one of three possible search methods:
+	 * 
+	 * 	1. If $id matches. $category and $users are ignored
+	 * 	2. If $category matches. $users must be false for this.
+	 * 	3. If $category matches and the notice's user IDs matches $users.
+	 * 
+	 * @param bool|int $id
+	 * @param bool|string $category
+	 * @param bool|int[] $users
+	 */
 	public static function removeAdminNotice($id = false, $category = false, $users = false) {
+		if ($id === false && $category === false && $users === false) {
+			return;
+		}
+		else if ($id !== false) {
+			$category = false;
+			$users = false;
+		}
+		
 		$notices = self::_notices();
 		foreach ($notices as $nid => $n) {
-			$idMatches = false;
-			if ($id === false || $id == $nid) { //Match any ID if not looking for a specific one
-				$idMatches = true;
+			if ($id == $nid) { //ID match
+				unset($notices[$nid]);
+				break;
+			}
+			else if ($id !== false) {
+				continue;
 			}
 			
+			if ($category !== false && isset($n['category']) && $category == $n['category']) {
+				if ($users !== false) {
+					if (isset($n['users']) && wfUtils::sets_equal($users, $n['users'])) {
+						unset($notices[$nid]);
+					}
+				}
+				else {
+					unset($notices[$nid]);
+				}
+			}
+		}
+		self::_setNotices($notices);
+	}
+	
+	public static function hasNotice($category = false, $users = false) {
+		$notices = self::_notices();
+		foreach ($notices as $nid => $n) {
 			$categoryMatches = false;
 			if (($category === false && !isset($n['category'])) || ($category !== false && isset($n['category']) && $category == $n['category'])) {
 				$categoryMatches = true;
@@ -73,11 +112,11 @@ class wfAdminNoticeQueue {
 				$usersMatches = true;
 			}
 			
-			if ($idMatches || ($categoryMatches && $usersMatches)) {
-				unset($notices[$nid]);
+			if ($categoryMatches && $usersMatches) {
+				return true;
 			}
 		}
-		self::_setNotices($notices);
+		return false;
 	}
 	
 	public static function enqueueAdminNotices() {
