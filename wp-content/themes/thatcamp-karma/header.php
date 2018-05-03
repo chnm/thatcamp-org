@@ -22,7 +22,6 @@
 	<link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
 	<?php do_action( 'bp_head' ); ?>
     <?php wp_head(); ?>
-<!--    <script src='https://www.google.com/recaptcha/api.js'></script> -->
 
 </head>
 <body <?php body_class() ?> id="thatcamp">
