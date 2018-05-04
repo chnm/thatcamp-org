@@ -87,7 +87,11 @@ class WP_Super_Cache_Rest_Update_Settings extends WP_REST_Controller {
 
 			$set_method = method_exists( $this, 'set_' . $map['global'] ) ?
 				'set_' . $map['global'] : 'set_global';
-			$has_error  = call_user_func( array( $this, $set_method ), $value );
+			if ( $set_method == 'set_global' ) {
+				$has_error  = call_user_func( array( $this, $set_method ), $key, $value );
+			} else {
+				$has_error  = call_user_func( array( $this, $set_method ), $value );
+			}
 		}
 
 		if ( ! empty( $has_error ) ) {
@@ -604,7 +608,7 @@ class WP_Super_Cache_Rest_Update_Settings extends WP_REST_Controller {
 			wp_cache_setting( 'cache_page_secret', $cache_page_secret );
 
 			if ( function_exists( "opcache_invalidate" ) ) {
-				opcache_invalidate( $wp_cache_config_file );
+				@opcache_invalidate( $wp_cache_config_file );
 			}
 		}
 		wpsc_set_default_gc( true );
@@ -637,6 +641,9 @@ class WP_Super_Cache_Rest_Update_Settings extends WP_REST_Controller {
 				}
 				$_POST[ 'wp_cache_debug' ] = 1;
 			} else {
+				if ( ! isset( $GLOBALS[ $setting ] ) ) {
+					$GLOBALS[ $setting ] = 0;
+				}
 				$_POST[ $setting ] = $GLOBALS[ $setting ];
 			}
 		}
