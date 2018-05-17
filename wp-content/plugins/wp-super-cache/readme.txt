@@ -2,7 +2,7 @@
 * Contributors: donncha, automattic, kraftbj
 * Tags: performance, caching, wp-cache, wp-super-cache, cache
 * Tested up to: 4.9.5
-* Stable tag: 1.6.0
+* Stable tag: 1.6.1
 * Requires at least: 3.0
 * Requires PHP: 5.2.4
 * License: GPLv2 or later
@@ -261,6 +261,10 @@ Your theme is probably responsive which means it resizes the page to suit whatev
 
 ## Changelog ##
 
+### 1.6.1 ###
+* Fix the name of the WP Crontrol plugin. (#549)
+* Handle errors during deactivation/uninstall by email rather than exiting. (#551)
+* Add a notice when settings can't be updated. (#552 and #553)
 
 ### 1.6.0 ###
 * Fix issues in multisite plugin (#501)
@@ -280,7 +284,7 @@ Your theme is probably responsive which means it resizes the page to suit whatev
 * Add ipad to mobile list (#525)
 * Hide opcache_invalidate() warnings since it's disabled some places. (#543)
 * Check that HTTP_REFERER exists before checking it. (#544)
-* Replace Cron View" with WP Control because it's still updated. (#546)
+* Replace Cron View" with WP Crontrol because it's still updated. (#546)
 * adding hook (wp_cache_cleared) for full cache purges (#537)
 
 

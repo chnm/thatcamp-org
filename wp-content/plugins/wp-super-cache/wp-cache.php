@@ -3,7 +3,7 @@
 Plugin Name: WP Super Cache
 Plugin URI: https://wordpress.org/plugins/wp-super-cache/
 Description: Very fast caching plugin for WordPress.
-Version: 1.6.0
+Version: 1.6.1
 Author: Automattic
 Author URI: https://automattic.com/
 License: GPL2+
@@ -1276,7 +1276,7 @@ table.wpsc-settings-table {
 			<li><?php printf( __( '<a href="%s">Yahoo! Yslow</a> analyzes web pages and suggests ways to improve their performance based on a set of rules for high performance web pages. Also try the performance tools online at <a href="%s">GTMetrix</a>.', 'wp-super-cache' ), 'http://yslow.org/', 'https://gtmetrix.com/' ); ?></li>
 			<li><?php printf( __( '<a href="%s">Use Google Libraries</a> allows you to load some commonly used Javascript libraries from Google webservers. Ironically, it may reduce your Yslow score.', 'wp-super-cache' ), 'https://wordpress.org/plugins/use-google-libraries/' ); ?></li>
 			<li><?php printf( __( '<strong>Advanced users only:</strong> Install an object cache. Choose from <a href="%s">Memcached</a>, <a href="%s">XCache</a>, <a href="%s">eAcccelerator</a> and others.', 'wp-super-cache' ), 'https://wordpress.org/plugins/memcached/', 'https://neosmart.net/WP/XCache/', 'https://neosmart.net/WP/eAccelerator/' ); ?></li>
-			<li><?php printf( __( '<a href="%s">WP Control</a> is a useful plugin to use when trying to debug garbage collection and preload problems.', 'wp-super-cache' ), 'https://wordpress.org/plugins/wp-crontrol/' ); ?></li>
+			<li><?php printf( __( '<a href="%s">WP Crontrol</a> is a useful plugin to use when trying to debug garbage collection and preload problems.', 'wp-super-cache' ), 'https://wordpress.org/plugins/wp-crontrol/' ); ?></li>
 			</ul>
 
 			<?php
@@ -2291,6 +2291,37 @@ function wp_cache_index_notice() {
 	}
 }
 add_action( 'admin_notices', 'wp_cache_index_notice' );
+
+function wpsc_config_file_notices() {
+	global $wp_cache_config_file;
+	if ( ! isset( $_GET['page'] ) || $_GET['page'] != 'wpsupercache' ) {
+		return false;
+	}
+	$notice = get_transient( 'wpsc_config_error' );
+	if ( ! $notice ) {
+		return false;
+	}
+	switch( $notice ) {
+		case 'error_move_tmp_config_file':
+			$msg = sprintf( __( 'Error: Could not rename temporary file to configuration file. Please make sure %s is writeable by the webserver.' ), $wp_cache_config_file );
+			break;
+		case 'config_file_ro':
+			$msg = sprintf( __( 'Error: Configuration file is read only. Please make sure %s is writeable by the webserver.' ), $wp_cache_config_file );
+			break;
+		case 'tmp_file_ro':
+			$msg = sprintf( __( 'Error: The directory containing the configuration file %s is read only. Please make sure it is writeable by the webserver.' ), $wp_cache_config_file );
+			break;
+		case 'config_file_not_loaded':
+			$msg = sprintf( __( 'Error: Configuration file %s could not be loaded. Please reload the page.' ), $wp_cache_config_file );
+			break;
+		case 'config_file_missing':
+			$msg = sprintf( __( 'Error: Configuration file %s s missing. Please reload the page.' ), $wp_cache_config_file );
+			break;
+
+	}
+	echo '<div class="error"><p><strong>' . $msg . '</strong></p></div>';
+}
+add_action( 'admin_notices', 'wpsc_config_file_notices' );
 
 function wpsc_dismiss_indexhtml_warning() {
 		check_ajax_referer( "wpsc-index-dismiss" );
@@ -3601,16 +3632,16 @@ function wp_cache_disable_plugin( $delete_config_file = true ) {
 			$file_not_deleted[] = 'wp-cache-config.php';
 	}
 	if ( $file_not_deleted ) {
-		$msg = "<p>One or more files could not be deleted. These files and directories must be made writeable:</p>\n <ol><li>" . WP_CONTENT_DIR . "</li>\n";
-		$code = "<ul>\n";
+		$msg = __( "Dear User,\n\nWP Super Cache was removed from your blog or deactivated but some files could\nnot be deleted.\n\n", 'wp-super-cache' );
 		foreach( (array)$file_not_deleted as $filename ) {
-			$msg .= "<li>" . WP_CONTENT_DIR . "/{$filename}</li>";
-			$code .= "<li><code>chmod 666 " . WP_CONTENT_DIR . "/{$filename}</code></li>\n";
+			$msg .=  WP_CONTENT_DIR . "/{$filename}\n";
 		}
-		$code .= "</ul>\n";
+		$msg .= "\n";
+		$msg .= sprintf( __( "You should delete these files manually.\nYou may need to change the permissions of the files or parent directory.\nYou can read more about this in the Codex at\n%s\n\nThank you.", 'wp-super-cache' ), 'https://codex.wordpress.org/Changing_File_Permissions#About_Chmod' );
 
-		$msg .= "</ol>\n<p>First try fixing the directory permissions with this command and refresh this page:<br /><br /><code>chmod 777 " . WP_CONTENT_DIR . "</code><br /><br />If you still see this error, you have to fix the permissions on the files themselves and refresh this page again:</p> {$code}\n<p>Don't forget to fix things later:<br /><code>chmod 755 " . WP_CONTENT_DIR . "</code></p><p>If you don't know what <strong>chmod</strong> is read all about it <a href='https://codex.wordpress.org/Changing_File_Permissions#About_Chmod'>here</a> and note the warning about using 777 permission.</p><p>Please refresh this page when the permissions have been modified.</p>";
-		wp_die( $msg );
+		if ( apply_filters( 'wpsc_send_uninstall_errors', 1 ) ) {
+			wp_mail( get_option( 'admin_email' ), __( 'WP Super Cache: could not delete files', 'wp-super-cache' ), $msg );
+		}
 	}
 	extract( wpsc_get_htaccess_info() ); // $document_root, $apache_root, $home_path, $home_root, $home_root_lc, $inst_root, $wprules, $scrules, $condition_rules, $rules, $gziprules
 	if ( $scrules != '' && insert_with_markers( $home_path.'.htaccess', 'WPSuperCache', array() ) ) {
