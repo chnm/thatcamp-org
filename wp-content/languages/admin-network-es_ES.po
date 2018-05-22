@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration - Network Admin package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-18 23:58:07+0000\n"
+"PO-Revision-Date: 2018-05-09 16:50:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -437,7 +437,7 @@ msgstr "Estás a punto de marcar el sitio %s como para todos los públicos."
 
 #: wp-admin/network/sites.php:66
 msgid "You are about to mark the site %s as mature."
-msgstr "Estás a punto de marcar el sitio %s como de adultos."
+msgstr "Estás a punto de marcar el sitio %s como para adultos."
 
 #: wp-admin/network/sites.php:65
 msgid "You are about to delete the site %s."
@@ -786,7 +786,7 @@ msgstr "Estás a punto de eliminar el siguiente tema:"
 
 #: wp-admin/network/themes.php:161
 msgid "Yes, delete this theme"
-msgstr "Si, elimina este tema"
+msgstr "Sí, elimina este tema"
 
 #: wp-admin/network/themes.php:148
 msgid "Are you sure you wish to delete these themes?"
@@ -838,7 +838,7 @@ msgstr "Elige un usuario para cambiar su perfil."
 
 #: wp-admin/network/site-users.php:258
 msgid "Enter the username and email."
-msgstr "Introduce el nombre de usuario y email."
+msgstr "Introduce el nombre de usuario y correo electrónico."
 
 #: wp-admin/network.php:63
 msgid "Once you add this code and refresh your browser, multisite should be enabled. This screen, now in the Network Admin navigation menu, will keep an archive of the added code. You can toggle between Network Admin and Site Admin by clicking on the Network Admin or an individual site name under the My Sites dropdown in the Toolbar."
@@ -1278,7 +1278,7 @@ msgstr "Correo electrónico del administrador de la red"
 
 #: wp-admin/network/site-new.php:252
 msgid "A new user will be created if the above email address is not in the database."
-msgstr "Se creará un usuario nuevo si el correo electrónico no está en la base de datos"
+msgstr "Se creará un nuevo usuario si la dirección de correo electrónico anterior no está en la base de datos."
 
 #: wp-admin/network/site-new.php:248
 msgid "Admin Email"
@@ -1290,7 +1290,7 @@ msgstr "Añadir sitio"
 
 #: wp-admin/network/settings.php:369
 msgid "Default Language"
-msgstr "Idioma predeterminado."
+msgstr "Idioma predeterminado"
 
 #: wp-admin/network/settings.php:345
 msgid "Max upload file size"
@@ -1354,7 +1354,7 @@ msgstr "Nombre de usuario o correo electrónico duplicado."
 
 #: wp-admin/network/user-new.php:37
 msgid "Cannot create an empty user."
-msgstr "No se puede crear un usuario vacio"
+msgstr "No se puede crear un usuario vacío."
 
 #: wp-admin/network/sites.php:107 wp-admin/network/sites.php:185
 msgid "Confirm"
