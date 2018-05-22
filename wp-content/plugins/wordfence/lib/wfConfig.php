@@ -1312,6 +1312,12 @@ Options -ExecCGI
 					$saved = true;
 					break;
 				}
+				case 'avoid_php_input':
+				{
+					$wafConfig->setConfig($key, wfUtils::truthyToInt($value));
+					$saved = true;
+					break;
+				}
 				
 				//============ Plugin (specialty treatment)
 				case 'alertEmails':

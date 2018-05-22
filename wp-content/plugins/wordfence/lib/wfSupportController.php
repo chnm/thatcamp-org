@@ -21,6 +21,9 @@ class wfSupportController {
 	const ITEM_VERSION_PHP = 'version-php';
 	const ITEM_VERSION_OPENSSL = 'version-ssl';
 	
+	const ITEM_GDPR = 'gdpr';
+	const ITEM_GDPR_DPA = 'gdpr-dpa';
+	
 	const ITEM_DASHBOARD = 'dashboard';
 	const ITEM_DASHBOARD_STATUS_FIREWALL = 'dashboard-status-firewall';
 	const ITEM_DASHBOARD_STATUS_SCAN = 'dashboard-status-scan';
@@ -154,6 +157,7 @@ class wfSupportController {
 	const ITEM_DIAGNOSTICS_OPTION_DEBUGGING_MODE = 'diagnostics-option-debugging-mode';
 	const ITEM_DIAGNOSTICS_OPTION_REMOTE_SCANS = 'diagnostics-option-remote-scans';
 	const ITEM_DIAGNOSTICS_OPTION_SSL_VERIFICATION = 'diagnostics-option-ssl-verification';
+	const ITEM_DIAGNOSTICS_OPTION_DISABLE_PHP_INPUT = 'diagnostics-option-disable-php-input';
 	const ITEM_DIAGNOSTICS_OPTION_BETA_TDF = 'diagnostics-option-beta-tdf';
 	
 	public static function esc_supportURL($item = self::ITEM_INDEX) {
@@ -185,6 +189,9 @@ class wfSupportController {
 			case self::ITEM_VERSION_WORDPRESS:
 			case self::ITEM_VERSION_PHP:
 			case self::ITEM_VERSION_OPENSSL:
+				
+			case self::ITEM_GDPR:
+			case self::ITEM_GDPR_DPA:
 				
 			case self::ITEM_DASHBOARD:
 			case self::ITEM_DASHBOARD_STATUS_FIREWALL:
@@ -319,6 +326,7 @@ class wfSupportController {
 			case self::ITEM_DIAGNOSTICS_OPTION_DEBUGGING_MODE:
 			case self::ITEM_DIAGNOSTICS_OPTION_REMOTE_SCANS:
 			case self::ITEM_DIAGNOSTICS_OPTION_SSL_VERIFICATION:
+			case self::ITEM_DIAGNOSTICS_OPTION_DISABLE_PHP_INPUT:
 			case self::ITEM_DIAGNOSTICS_OPTION_BETA_TDF:
 				return $base . '?query=' . $item;
 		}

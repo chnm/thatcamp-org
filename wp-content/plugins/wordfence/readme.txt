@@ -3,8 +3,8 @@ Contributors: mmaunder
 Tags: security, firewall, malware scanner, web application firewall, antivirus, block hackers, country blocking, clean hacked site, blacklist, waf, login security
 Requires at least: 3.9
 Requires PHP: 5.2
-Tested up to: 4.9.5
-Stable tag: 7.1.4
+Tested up to: 4.9.6
+Stable tag: 7.1.5
 
 Secure your website with the most comprehensive WordPress security plugin. Firewall, malware scan, blocking, live traffic, login security & more.
 
@@ -152,6 +152,10 @@ Providing excellent customer service is very important to us.  We offer help to 
 
 Designed for every skill level, [The WordPress Security Learning Center](https://www.wordfence.com/learn/) is dedicated to deepening users’ understanding of security best practices by providing free access to entry-level articles, in-depth articles, videos, industry survey results, graphics and more.
 
+= Where can I find the Wordfence Terms of Use and Privacy Policy? =
+
+These are available on our website: [Terms of Use](https://www.wordfence.com/terms-of-use/) and [Privacy Policy](https://www.wordfence.com/privacy-policy/)
+
 == Screenshots ==
 
 Secure your website with Wordfence. 
@@ -167,6 +171,17 @@ Secure your website with Wordfence.
 
 
 == Changelog ==
+
+= 7.1.5 =
+* Improvement: GDPR compliance updates.
+* Improvement: The list of blocks now shows the most recently-added blocks at the top by default.
+* Improvement: Added better table status display to Diagnostics to help with debugging.
+* Improvement: Added deferred loading to Live Traffic avatars to improve performance with some plugins.
+* Improvement: The server's own IP is now automatically whitelisted for known safe requests.
+* Fix: Added a workaround to Live Traffic human/bot detection to compensate for other scripts that modify our event handlers.
+* Fix: Fixed an error with Live Traffic human/bot detection when plugins change the load order.
+* Fix: Fixed auto-enabling of some controls when pasting values.
+* Fix: Fixed an instance where http links could be generated for emails rather than https.
 
 = 7.1.4 =
 * Improvement: Added additional XSS detection capabilities.

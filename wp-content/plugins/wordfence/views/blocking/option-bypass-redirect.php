@@ -24,19 +24,23 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 				<script type="application/javascript">
 					(function($) {
 						$(function() {
-							$('#wf-bypass-redir-url, #wf-bypass-redir-dest').on('keyup', function() {
-								var option = $(this).data('option');
-								var value = $(this).val();
-		
-								var originalValue = $(this).data('originalValue');
-								if (originalValue == value) {
-									delete WFAD.pendingChanges[option];
-								}
-								else {
-									WFAD.pendingChanges[option] = value;
-								}
-		
-								WFAD.updatePendingChanges();
+							$('#wf-bypass-redir-url, #wf-bypass-redir-dest').on('change paste keyup', function() {
+								var e = this;
+								
+								setTimeout(function() {
+									var option = $(e).data('option');
+									var value = $(e).val();
+			
+									var originalValue = $(e).data('originalValue');
+									if (originalValue == value) {
+										delete WFAD.pendingChanges[option];
+									}
+									else {
+										WFAD.pendingChanges[option] = value;
+									}
+			
+									WFAD.updatePendingChanges();
+								}, 4);
 							});
 							
 							$(window).on('wfOptionsReset', function() {

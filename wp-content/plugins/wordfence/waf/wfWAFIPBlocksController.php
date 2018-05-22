@@ -429,6 +429,28 @@ class wfWAFIPBlocksController
 	}
 	
 	protected function checkForWhitelisted($ip) {
+		try {
+			$pluginABSPATH = wfWAF::getInstance()->getStorageEngine()->getConfig('pluginABSPATH');
+			$serverIPsJSON = wfWAF::getInstance()->getStorageEngine()->getConfig('serverIPs');
+		}
+		catch (Exception $e) {
+			// Do nothing
+		}
+		
+		$serverIPs = @wfWAFUtils::json_decode($serverIPsJSON);
+		if (is_array($serverIPs)) {
+			if (
+				(isset($_SERVER['SCRIPT_FILENAME']) && $_SERVER['SCRIPT_FILENAME'] == realpath($pluginABSPATH . DIRECTORY_SEPARATOR . 'wp-cron.php')) || //Safe -- plugin will do a final check to make sure the cron constant is defined
+				(!empty($_GET['wordfence_syncAttackData'])) //Safe but plugin will do a final check to make sure it runs
+			) {
+				foreach ($serverIPs as $testIP) {
+					if (wfWAFUtils::inet_pton($ip) == wfWAFUtils::inet_pton($testIP)) {
+						return true;
+					}
+				}
+			}
+		}
+		
 		$wordfenceLib = realpath(dirname(__FILE__) . '/../lib');
 		include($wordfenceLib . '/wfIPWhitelist.php'); /** @var $wfIPWhitelist */
 		foreach ($wfIPWhitelist as $group) {

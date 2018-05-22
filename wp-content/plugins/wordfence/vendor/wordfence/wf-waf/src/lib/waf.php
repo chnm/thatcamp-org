@@ -25,6 +25,25 @@ class wfWAF {
 	public static function setInstance($instance) {
 		self::$instance = $instance;
 	}
+	
+	/**
+	 * @var wfWAFStorageInterface
+	 */
+	private static $sharedStorageEngine;
+	
+	/**
+	 * @return wfWAFStorageInterface
+	 */
+	public static function getSharedStorageEngine() {
+		return self::$sharedStorageEngine;
+	}
+	
+	/**
+	 * @param wfWAFStorageInterface $instance
+	 */
+	public static function setSharedStorageEngine($sharedStorageEngine) {
+		self::$sharedStorageEngine = $sharedStorageEngine;
+	}
 
 	protected $rulesFile;
 	protected $trippedRules = array();

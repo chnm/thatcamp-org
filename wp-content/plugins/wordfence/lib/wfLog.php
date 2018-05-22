@@ -113,12 +113,7 @@ class wfLog {
 			$this->currentRequest->UA = (isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '');
 			$this->currentRequest->jsRun = 0;
 			
-			if (!function_exists('wp_verify_nonce')) {
-				add_action('plugins_loaded', array($this, 'actionSetRequestJSEnabled'));
-			} else {
-				$this->actionSetRequestJSEnabled();
-			}
-
+			add_action('wp_loaded', array($this, 'actionSetRequestJSEnabled'));
 			add_action('init', array($this, 'actionSetRequestOnInit'), 9999);
 
 			if (function_exists('register_shutdown_function')) {
@@ -387,7 +382,6 @@ class wfLog {
 						'display_name' => $ud->display_name,
 						'ID' => $res['userID']
 						);
-					$res['user']['avatar'] = get_avatar($res['userID'], 16);
 				}
 			} else {
 				$res['user'] = false;
@@ -550,7 +544,6 @@ class wfLog {
 						'display_name' => $res['display_name'],
 						'ID' => $res['userID']
 					);
-					$res['user']['avatar'] = get_avatar($res['userID'], 16);
 				}
 			} else {
 				$res['user'] = false;

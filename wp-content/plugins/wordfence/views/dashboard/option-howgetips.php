@@ -93,23 +93,27 @@ $selectOptions = array(
 			});
 
 			var coalescingUpdateTimer;
-			$('#howGetIPs-trusted-proxies textarea').on('keyup', function() {
-				clearTimeout(coalescingUpdateTimer);
-				coalescingUpdateTimer = setTimeout(updateIPPreview, 1000);
-
-				var optionElement = $(this).closest('.wf-option.wf-option-textarea');
-				var option = optionElement.data('textOption');
-				var value = $(this).val();
-
-				var originalValue = optionElement.data('originalTextValue');
-				if (originalValue == value) {
-					delete WFAD.pendingChanges[option];
-				}
-				else {
-					WFAD.pendingChanges[option] = value;
-				}
-
-				WFAD.updatePendingChanges();
+			$('#howGetIPs-trusted-proxies textarea').on('change paste keyup', function() {
+				var e = this;
+				
+				setTimeout(function() {
+					clearTimeout(coalescingUpdateTimer);
+					coalescingUpdateTimer = setTimeout(updateIPPreview, 1000);
+	
+					var optionElement = $(e).closest('.wf-option.wf-option-textarea');
+					var option = optionElement.data('textOption');
+					var value = $(e).val();
+	
+					var originalValue = optionElement.data('originalTextValue');
+					if (originalValue == value) {
+						delete WFAD.pendingChanges[option];
+					}
+					else {
+						WFAD.pendingChanges[option] = value;
+					}
+	
+					WFAD.updatePendingChanges();
+				}, 4);
 			});
 
 			$(window).on('wfOptionsReset', function() {

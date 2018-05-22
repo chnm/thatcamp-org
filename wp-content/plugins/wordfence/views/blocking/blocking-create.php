@@ -99,8 +99,10 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 								$('#wf-block-ip-range').val('<?php echo esc_attr($wfBlockRange); ?>');
 								<?php endif; ?>
 								
-								$('#wf-block-reason, #wf-block-ip, #wf-block-ip-range, #wf-block-hostname, #wf-block-user-agent, #wf-block-referrer').on('keyup', function() {
-									WFAD.updateCreateBlockPattern();
+								$('#wf-block-reason, #wf-block-ip, #wf-block-ip-range, #wf-block-hostname, #wf-block-user-agent, #wf-block-referrer').on('change paste keyup', function() {
+									setTimeout(function() {
+										WFAD.updateCreateBlockPattern();
+									}, 4);
 								});
 							});
 						})(jQuery);

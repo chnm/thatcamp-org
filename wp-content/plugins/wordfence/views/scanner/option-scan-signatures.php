@@ -61,20 +61,24 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 				});
 			});
 
-			$('#wf-scan-additional-signatures textarea').on('keyup', function() {
-				var optionElement = $(this).closest('ul').find('.wf-option.wf-option-scan-signatures');
-				var option = optionElement.data('textAreaOption');
-				var value = $(this).val();
-
-				var originalValue = optionElement.data('originalTextAreaValue');
-				if (originalValue == value) {
-					delete WFAD.pendingChanges[option];
-				}
-				else {
-					WFAD.pendingChanges[option] = value;
-				}
-
-				WFAD.updatePendingChanges();
+			$('#wf-scan-additional-signatures textarea').on('change paste keyup', function() {
+				var e = this;
+				
+				setTimeout(function() {
+					var optionElement = $(e).closest('ul').find('.wf-option.wf-option-scan-signatures');
+					var option = optionElement.data('textAreaOption');
+					var value = $(e).val();
+	
+					var originalValue = optionElement.data('originalTextAreaValue');
+					if (originalValue == value) {
+						delete WFAD.pendingChanges[option];
+					}
+					else {
+						WFAD.pendingChanges[option] = value;
+					}
+	
+					WFAD.updatePendingChanges();
+				}, 4);
 			});
 
 			$(window).on('wfOptionsReset', function() {

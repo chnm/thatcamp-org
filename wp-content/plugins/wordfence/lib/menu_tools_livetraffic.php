@@ -307,7 +307,7 @@ echo wfView::create('tools/options-group-live-traffic', array(
 															<h2>Activity Detail</h2>
 															<div>
 																<span data-bind="if: action() != 'loginOK' && action() != 'loginFailValidUsername' && action() != 'loginFailInvalidUsername' && user()">
-																	<span data-bind="html: user().avatar" class="wfAvatar"></span>
+																	<span data-bind="attr: {'data-userid': user().ID}" class="wfAvatar"></span>
 																	<a data-bind="attr: { href: user().editLink }, text: user().display_name"
 																			target="_blank" rel="noopener noreferrer"></a>
 																</span>

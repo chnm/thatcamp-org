@@ -841,11 +841,17 @@ class wfWAFUtils {
 	public static function rawPOSTBody() {
 		global $HTTP_RAW_POST_DATA;
 		if (empty($HTTP_RAW_POST_DATA)) { //Defined if always_populate_raw_post_data is on, PHP < 7, and the encoding type is not multipart/form-data
-			$data = file_get_contents('php://input'); //Available if the encoding type is not multipart/form-data; it can only be read once prior to PHP 5.6 so we save it in $HTTP_RAW_POST_DATA for WP Core and others
-			
-			//For our purposes, we don't currently need the raw POST body if it's multipart/form-data since the data will be in $_POST/$_FILES. If we did, we could reconstruct the body here.
-			
-			$HTTP_RAW_POST_DATA = $data;
+			if (wfWAF::getSharedStorageEngine()->getConfig('avoid_php_input', false)) { //Some custom PHP builds break reading from php://input
+				//Reconstruct the best possible approximation of it from $_POST if populated -- won't help JSON or other raw payloads
+				$data = http_build_query($_POST, '', '&');
+			}
+			else {
+				$data = file_get_contents('php://input'); //Available if the encoding type is not multipart/form-data; it can only be read once prior to PHP 5.6 so we save it in $HTTP_RAW_POST_DATA for WP Core and others
+				
+				//For our purposes, we don't currently need the raw POST body if it's multipart/form-data since the data will be in $_POST/$_FILES. If we did, we could reconstruct the body here.
+				
+				$HTTP_RAW_POST_DATA = $data;
+			}
 		}
 		else {
 			$data =& $HTTP_RAW_POST_DATA;

@@ -18,7 +18,7 @@
 							<?php foreach ($n->links as $l): ?>
 								<div class="wf-dashboard-item-list-action"><a href="<?php echo esc_html($l['link']); ?>"<?php if (preg_match('/^https?:\/\//i', $l['link'])) { echo ' target="_blank" rel="noopener noreferrer"'; } ?>><?php echo esc_html($l['label']); ?></a></div>
 							<?php endforeach; ?>
-							<div class="wf-dashboard-item-list-dismiss"><a href="#" class="wf-dismiss-notification"><i class="fa fa-times-circle" aria-hidden="true"></i></a></div>
+							<div class="wf-dashboard-item-list-dismiss"><a href="#" class="wf-dismiss-notification"><i class="wf-fa wf-fa-times-circle" aria-hidden="true"></i></a></div>
 						</li>
 					<?php endforeach; ?>
 					<?php if (count($d->notifications) == 0): ?>

@@ -78,8 +78,7 @@ if (!isset($sendingDiagnosticEmail)) {
 			</div>
 		</div>
 	<?php endif; ?>
-
-	<form id="wfConfigForm" style="overflow-x: auto;">
+	<div class="wf-diagnostics-wrapper">
 		<?php foreach ($diagnostic->getResults() as $title => $tests):
 			$key = sanitize_key('wf-diagnostics-' . $title);
 			$hasFailingTest = false;
@@ -645,14 +644,55 @@ if (!isset($sendingDiagnosticEmail)) {
 					</div>
 				</div>
 				<div class="wf-block-content wf-clearfix wf-padding-no-left wf-padding-no-right">
-					<div style="max-width: 100%; overflow: auto; padding: 1px;">
+					<ul class="wf-block-list wf-padding-add-left-large wf-padding-add-right-large">
+						<li style="border-bottom: 1px solid #e2e2e2;">
+							<div style="width: 75%; min-width: 300px;" colspan="<?php echo $cols - 1 ?>"><?php _e('Wordfence Table Check', 'wordfence'); ?></div>
+							<div class="wf-right">
+								<?php if ($total > 250): ?>
+									<div class="wf-result-info"><?php _e('Unable to verify - table count too high', 'wordfence'); ?></div>
+								<?php else:
+									$hasAll = true;
+									$schemaTables = wfSchema::tableList();
+									$existingTables = wfUtils::array_column($q, 'Name');
+									$missingTables = array();
+									foreach ($schemaTables as $t) {
+										$table = wfDB::networkTable($t);
+										if (!in_array($table, $existingTables)) {
+											$hasAll = false;
+											$missingTables[] = $t;
+										}
+									}
+									
+									if ($hasAll): ?>
+									<div class="wf-result-success"><?php _e('All Tables Exist', 'wordfence'); ?></div>
+									<?php else: ?>
+									<div class="wf-result-error"><?php printf(__('Tables missing (prefix %s): %s', 'wordfence'), wfDB::networkPrefix(), implode(', ', $missingTables)); ?></div>
+									<?php endif; ?>
+								<?php endif; ?>
+							</div>
+						</li>
+					</ul>
+					<div class="wf-add-top-large" style="max-width: 100%; overflow: auto; padding: 1px;">
 						<table class="wf-striped-table"<?php echo !empty($inEmail) ? ' border=1' : '' ?>>
 							<tbody class="thead thead-subhead" style="font-size: 85%">
 							<?php
 							$val = wfUtils::array_first($q);
+							$actualKeyOrder = array_keys($val);
+							$preferredKeyOrder = array('Name', 'Comment', 'Engine', 'Rows', 'Avg_row_length', 'Data_length', 'Index_length', 'Auto_increment', 'Create_time', 'Row_format', 'Collation', 'Version', 'Max_data_length', 'Data_free', 'Update_time', 'Check_time', 'Checksum', 'Create_options');
+							$leftoverKeys = array();
+							$displayKeyOrder = array();
+							foreach ($preferredKeyOrder as $k) {
+								if (in_array($k, $actualKeyOrder)) {
+									$displayKeyOrder[] = $k;
+								}
+							}
+							
+							$diff = array_diff($actualKeyOrder, $preferredKeyOrder);
+							$displayKeyOrder = array_merge($displayKeyOrder, $diff);
+							
 							?>
 							<tr>
-								<?php foreach ($val as $tkey => $tval): ?>
+								<?php foreach ($displayKeyOrder as $tkey): ?>
 									<th><?php echo esc_html($tkey) ?></th>
 								<?php endforeach; ?>
 							</tr>
@@ -663,13 +703,13 @@ if (!isset($sendingDiagnosticEmail)) {
 							foreach ($q as $val) {
 								?>
 								<tr>
-									<?php foreach ($val as $tkey => $tval): ?>
-										<td><?php echo esc_html($tval) ?></td>
-									<?php endforeach; ?>
+								<?php foreach ($displayKeyOrder as $tkey): ?>
+									<td><?php if (isset($val[$tkey])) { echo esc_html($val[$tkey]); } ?></td>
+								<?php endforeach; ?>
 								</tr>
 								<?php
 								$count++;
-								if ($count >= 250) {
+								if ($count >= 250 && $total > $count) {
 									?>
 									<tr>
 										<td colspan="<?php echo $databaseCols; ?>"><?php printf(__('and %d more', 'wordfence'), $total - $count); ?></td>
@@ -754,7 +794,7 @@ if (!isset($sendingDiagnosticEmail)) {
 				</div>
 			</div>
 		</div>
-	</form>
+	</div>
 
 	<?php if (!empty($inEmail)): ?>
 		<?php phpinfo(); ?>
@@ -854,6 +894,18 @@ if (!isset($sendingDiagnosticEmail)) {
 									'value'         => $w->get('ssl_verify') ? 1 : 0,
 									'title'         => __('Enable SSL Verification (Disable this if you are consistently unable to connect to the Wordfence servers.)', 'wordfence'),
 									'helpLink'      => wfSupportController::supportURL(wfSupportController::ITEM_DIAGNOSTICS_OPTION_SSL_VERIFICATION),
+								))->render();
+								?>
+							</li>
+							<li>
+								<?php
+								echo wfView::create('options/option-toggled', array(
+									'optionName'    => 'avoid_php_input',
+									'enabledValue'  => 1,
+									'disabledValue' => 0,
+									'value'         => wfWAF::getInstance()->getStorageEngine()->getConfig('avoid_php_input', false) ? 1 : 0,
+									'title'         => __('Disable reading of php://input', 'wordfence'),
+									'helpLink'      => wfSupportController::supportURL(wfSupportController::ITEM_DIAGNOSTICS_OPTION_DISABLE_PHP_INPUT),
 								))->render();
 								?>
 							</li>

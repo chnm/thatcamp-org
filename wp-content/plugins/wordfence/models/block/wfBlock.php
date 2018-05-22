@@ -132,6 +132,22 @@ class wfBlock {
 			$forcedWhitelistEntry = false;
 		}
 		
+		if (
+			(defined('DOING_CRON') && DOING_CRON) || //Safe
+			(defined('WORDFENCE_SYNCING_ATTACK_DATA') && WORDFENCE_SYNCING_ATTACK_DATA) //Safe as long as it will actually run since it then exits
+		) {
+			$serverIPs = wfUtils::serverIPs();
+			foreach ($serverIPs as $testIP) {
+				if (wfUtils::inet_pton($IP) == wfUtils::inet_pton($testIP)) {
+					if ($forcedWhitelistEntry !== null) {
+						$forcedWhitelistEntry = true;
+					}
+					
+					return true;
+				}
+			}
+		}
+		
 		foreach (wfUtils::getIPWhitelist() as $subnet) {
 			if ($subnet instanceof wfUserIPRange) {
 				if ($subnet->isIPInRange($IP)) {

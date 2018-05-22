@@ -456,13 +456,39 @@
 				}).triggerHandler('change');
 				
 				//Text field option
-				$('.wf-option.wf-option-text > .wf-option-content > ul > li.wf-option-text input').on('keyup', function() {
-					var optionElement = $(this).closest('.wf-option');
-					var option = optionElement.data('textOption');
+				$('.wf-option.wf-option-text > .wf-option-content > ul > li.wf-option-text input').on('change paste keyup', function() {
+					var e = this;
 					
-					if (typeof option !== 'undefined') {
-						var value = $(this).val();
+					setTimeout(function() {
+						var optionElement = $(e).closest('.wf-option');
+						var option = optionElement.data('textOption');
+						
+						if (typeof option !== 'undefined') {
+							var value = $(e).val();
+	
+							var originalValue = optionElement.data('originalTextValue');
+							if (originalValue == value) {
+								delete WFAD.pendingChanges[option];
+							}
+							else {
+								WFAD.pendingChanges[option] = value;
+							}
+	
+							$(optionElement).trigger('change', [false]);
+							WFAD.updatePendingChanges();
+						}
+					}, 4);
+				});
 
+				//Text area option
+				$('.wf-option.wf-option-textarea > .wf-option-content > ul > li.wf-option-textarea textarea').on('change paste keyup', function() {
+					var e = this;
+					
+					setTimeout(function() {
+						var optionElement = $(e).closest('.wf-option');
+						var option = optionElement.data('textOption');
+						var value = $(e).val();
+	
 						var originalValue = optionElement.data('originalTextValue');
 						if (originalValue == value) {
 							delete WFAD.pendingChanges[option];
@@ -470,28 +496,10 @@
 						else {
 							WFAD.pendingChanges[option] = value;
 						}
-
+	
 						$(optionElement).trigger('change', [false]);
 						WFAD.updatePendingChanges();
-					}
-				});
-
-				//Text area option
-				$('.wf-option.wf-option-textarea > .wf-option-content > ul > li.wf-option-textarea textarea').on('keyup', function() {
-					var optionElement = $(this).closest('.wf-option');
-					var option = optionElement.data('textOption');
-					var value = $(this).val();
-
-					var originalValue = optionElement.data('originalTextValue');
-					if (originalValue == value) {
-						delete WFAD.pendingChanges[option];
-					}
-					else {
-						WFAD.pendingChanges[option] = value;
-					}
-
-					$(optionElement).trigger('change', [false]);
-					WFAD.updatePendingChanges();
+					}, 4);
 				});
 
 				//Value entry token option
@@ -1191,9 +1199,46 @@
 					if (typeof WFAD.wfLiveTraffic !== undefined) {
 						WFAD.wfLiveTraffic.prependListings(res.events, res);
 						this.reverseLookupIPs();
+						this.avatarLookup();
 						this.updateTimeAgo();
 					}
 				}
+			},
+			avatarLookup: function() {
+				var ids = [];
+				$('.wfAvatar').each(function(idx, elem) {
+					var userID = Number.parseInt($(elem).data('userid'));
+					if (!Number.isNaN(userID) && !$(elem).data('wfAvatarDone')) {
+						$(elem).data('wfAvatarDone', true);
+						ids.push(userID);
+					}
+				});
+				
+				if (ids.length < 1) { return; }
+				
+				var uni = {};
+				var uniqueIDs = [];
+				for (var i = 0; i < ids.length; i++) {
+					if (!uni[ids[i]]) {
+						uni[ids[i]] = true;
+						uniqueIDs.push(ids[i]);
+					}
+				}
+				this.ajax('wordfence_avatarLookup', {
+						ids: uniqueIDs.join(',')
+					},
+					function(res) {
+						if (res.ok) {
+							$('.wfAvatar').each(function(idx, elem) {
+								var userID = Number.parseInt($(elem).data('userid'));
+								if (!Number.isNaN(userID)) {
+									if (res.avatars[userID]) {
+										$(elem).html(res.avatars[userID]);
+									}
+								}
+							});
+						}
+					}, false, false);
 			},
 			reverseLookupIPs: function() {
 				var self = this;

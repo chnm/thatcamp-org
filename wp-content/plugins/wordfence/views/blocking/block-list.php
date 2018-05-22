@@ -295,7 +295,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 			}
 			
 			if (table.find('.wf-blocks-columns > .wf-sortable.wf-sorted-ascending, .wf-blocks-columns > .wf-sortable.wf-sorted-descending').length == 0) {
-				table.find('thead > .wf-blocks-columns > .wf-sortable[data-column="type"]').trigger('click', [true]);
+				table.find('thead > .wf-blocks-columns > .wf-sortable[data-column="ruleAdded"]').addClass('wf-sorted-ascending').trigger('click', [true]);
 			}
 
 			$(window).trigger('wordfenceUpdateBlockButtons');
@@ -338,8 +338,9 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 		});
 		
 		$(function() {
-			WFAD.sortColumn = 'type';
-			WFAD.sortDirection = 'ascending';
+			WFAD.sortColumn = 'ruleAdded';
+			WFAD.sortDirection = 'descending';
+			
 			$(window).trigger('wordfenceRefreshBlockList', [{blocks: [], loading: true}, false]);
 			$(window).trigger('wordfenceLoadBlocks', [true]);
 
@@ -363,17 +364,19 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 					$('#wf-blocks-apply-filter').trigger('click');
 					return false;
 				}
-			}).on('keyup', function(e) {
-				var currentValue = $('#wf-blocks-filter-field').val() || '';
-				if (!WFAD.blocksFilter) {
-					$('#wf-blocks-apply-filter').text('<?php _e('Filter', 'wordfence'); ?>').data('filterMode', '');
-				}
-				else if (currentValue == '' || currentValue == WFAD.blocksFilter) {
-					$('#wf-blocks-apply-filter').text('<?php _e('Clear Filter', 'wordfence'); ?>').data('filterMode', 'filtered');
-				}
-				else {
-					$('#wf-blocks-apply-filter').text('<?php _e('Change Filter', 'wordfence'); ?>').data('filterMode', 'pendingChange');
-				}
+			}).on('change paste keyup', function() {
+				setTimeout(function() {
+					var currentValue = $('#wf-blocks-filter-field').val() || '';
+					if (!WFAD.blocksFilter) {
+						$('#wf-blocks-apply-filter').text('<?php _e('Filter', 'wordfence'); ?>').data('filterMode', '');
+					}
+					else if (currentValue == '' || currentValue == WFAD.blocksFilter) {
+						$('#wf-blocks-apply-filter').text('<?php _e('Clear Filter', 'wordfence'); ?>').data('filterMode', 'filtered');
+					}
+					else {
+						$('#wf-blocks-apply-filter').text('<?php _e('Change Filter', 'wordfence'); ?>').data('filterMode', 'pendingChange');
+					}
+				}, 4);
 			});
 			
 			$('#wf-blocks-apply-filter').on('click', function(e) {

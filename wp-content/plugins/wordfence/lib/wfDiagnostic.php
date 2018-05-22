@@ -121,6 +121,7 @@ class wfDiagnostic
 					'connectToServer1' => __('Connecting to Wordfence servers (http)', 'wordfence'),
 					'connectToServer2' => __('Connecting to Wordfence servers (https)', 'wordfence'),
 					'connectToSelf' => __('Connecting back to this site', 'wordfence'),
+					'serverIP' => __('IP(s) used by this server', 'wordfence'),
 				)
 			),
 		);
@@ -550,6 +551,15 @@ class wfDiagnostic
 			'test' => false,
 			'message' => $message,
 			'detail' => $detail,
+		);
+	}
+	
+	public function serverIP() {
+		$serverIPs = wfUtils::serverIPs();
+		return array(
+			'test' => true,
+			'infoOnly' => true,
+			'message' => implode(',', $serverIPs),
 		);
 	}
 

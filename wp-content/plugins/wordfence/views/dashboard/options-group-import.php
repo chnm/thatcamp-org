@@ -95,8 +95,10 @@ if (!isset($collapseable)) {
 								});
 							});
 
-							$('#wf-import-token').on('keyup', function() {
-								$('#wf-import-options').toggleClass('wf-disabled', $(this).val() == '');
+							$('#wf-import-token').on('change paste keyup', function() {
+								setTimeout(function() {
+									$('#wf-import-options').toggleClass('wf-disabled', $('#wf-import-token').val() == '');
+								}, 4);
 							});
 
 							$('#wf-import-options').on('click', function(e) {

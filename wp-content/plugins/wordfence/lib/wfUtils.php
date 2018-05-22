@@ -744,6 +744,81 @@ class wfUtils {
 			return false;
 		}
 	}
+	
+	/**
+	 * Returns the known server IPs, ordered by those as the best match for outgoing requests.
+	 * 
+	 * @param bool $refreshCache
+	 * @return string[]
+	 */
+	public static function serverIPs($refreshCache = false) {
+		static $cachedServerIPs = null;
+		if (isset($cachedServerIPs) && !$refreshCache) {
+			return $cachedServerIPs;
+		}
+		
+		$serverIPs = array();
+		$storedIP = wfConfig::get('serverIP');
+		if (preg_match('/^(\d+);(.+)$/', $storedIP, $matches)) { //Format is 'timestamp;ip'
+			$serverIPs[] = $matches[2];
+		}
+		
+		if (function_exists('dns_get_record')) {
+			$storedDNS = wfConfig::get('serverDNS');
+			$usingCache = false;
+			if (preg_match('/^(\d+);(\d+);(.+)$/', $storedDNS, $matches)) { //Format is 'timestamp;ttl;ip'
+				$timestamp = $matches[1];
+				$ttl = $matches[2];
+				if ($timestamp + max($ttl, 86400) > time()) {
+					$serverIPs[] = $matches[3];
+					$usingCache = true;
+				}
+			}
+			
+			if (!$usingCache) {
+				$home = get_home_url();
+				if (preg_match('/^https?:\/\/([^\/]+)/i', $home, $matches)) {
+					$host = strtolower($matches[1]);
+					$cnameRaw = @dns_get_record($host, DNS_CNAME);
+					$cnames = array();
+					$cnamesTargets = array();
+					if ($cnameRaw) {
+						foreach ($cnameRaw as $elem) {
+							if ($elem['host'] == $host) {
+								$cnames[] = $elem;
+								$cnamesTargets[] = $elem['target'];
+							}
+						}
+					}
+					
+					$aRaw = @dns_get_record($host, DNS_A);
+					$a = array();
+					if ($aRaw) {
+						foreach ($aRaw as $elem) {
+							if ($elem['host'] == $host || in_array($elem['host'], $cnamesTargets)) {
+								$a[] = $elem;
+							}
+						}
+					}
+					
+					$firstA = wfUtils::array_first($a);
+					if ($firstA !== null) {
+						$serverIPs[] = $firstA['ip'];
+						wfConfig::set('serverDNS', time() . ';' . $firstA['ttl'] . ';' . $firstA['ip']);
+					}
+				}
+			}
+		}
+		
+		if (isset($_SERVER['SERVER_ADDR']) && wfUtils::isValidIP($_SERVER['SERVER_ADDR'])) {
+			$serverIPs[] = $_SERVER['SERVER_ADDR'];
+		}
+		
+		$serverIPs = array_unique($serverIPs);
+		$cachedServerIPs = $serverIPs;
+		return $serverIPs;
+	}
+	
 	public static function getIP($refreshCache = false) {
 		static $theIP = null;
 		if (isset($theIP) && !$refreshCache) {
@@ -1669,7 +1744,7 @@ class wfUtils {
 		return $output;
 	}
 	
-	public static function requestDetectProxyCallback($timeout = 0.01, $blocking = false, $forceCheck = false) {
+	public static function requestDetectProxyCallback($timeout = 2, $blocking = true, $forceCheck = false) {
 		$currentRecommendation = wfConfig::get('detectProxyRecommendation', '');
 		if (!$forceCheck) {
 			$detectProxyNextCheck = wfConfig::get('detectProxyNextCheck', false);
@@ -1730,24 +1805,35 @@ class wfUtils {
 		$homeurl = wfUtils::wpHomeURL();
 		$siteurl = wfUtils::wpSiteURL();
 		
-		wp_remote_post(WFWAF_API_URL_SEC . "?" . http_build_query(array(
-				'action' => 'detect_proxy',
-				'k'      => wfConfig::get('apiKey'),
-				's'      => $siteurl,
-				'h'		 => $homeurl,
-				't'		 => microtime(true),
-			), null, '&'),
-			array(
-				'body'    => json_encode($payload),
-				'headers' => array(
-					'Content-Type' => 'application/json',
-					'Referer' => false,
-				),
-				'timeout' => $timeout,
-				'blocking' => $blocking,
-			));
+		try {
+			$response = wp_remote_post(WFWAF_API_URL_SEC . "?" . http_build_query(array(
+					'action' => 'detect_proxy',
+					'k'      => wfConfig::get('apiKey'),
+					's'      => $siteurl,
+					'h'		 => $homeurl,
+					't'		 => microtime(true),
+				), null, '&'),
+				array(
+					'body'    => json_encode($payload),
+					'headers' => array(
+						'Content-Type' => 'application/json',
+						'Referer' => false,
+					),
+					'timeout' => $timeout,
+					'blocking' => $blocking,
+				));
 		
-		//Asynchronous so we don't care about a response at this point.
+			if (!is_wp_error($response)) {
+				$jsonResponse = wp_remote_retrieve_body($response);
+				$decoded = @json_decode($jsonResponse, true);
+				if (is_array($decoded) && isset($decoded['data']) && is_array($decoded['data']) && isset($decoded['data']['ip']) && wfUtils::isValidIP($decoded['data']['ip'])) {
+					wfConfig::set('serverIP', time() . ';' . $decoded['data']['ip']);
+				}
+			}
+		}
+		catch (Exception $e) {
+			return;
+		}
 	}
 	
 	/**
@@ -2275,6 +2361,75 @@ class wfUtils {
 		
 		$values = array_values($array);
 		return $values[count($values) - 1];
+	}
+	
+	public static function array_column($input = null, $columnKey = null, $indexKey = null) { //Polyfill from https://github.com/ramsey/array_column/blob/master/src/array_column.php
+		$argc = func_num_args();
+		$params = func_get_args();
+		if ($argc < 2) {
+			trigger_error("array_column() expects at least 2 parameters, {$argc} given", E_USER_WARNING);
+			return null;
+		}
+		
+		if (!is_array($params[0])) {
+			trigger_error(
+				'array_column() expects parameter 1 to be array, ' . gettype($params[0]) . ' given',
+				E_USER_WARNING
+			);
+			return null;
+		}
+		
+		if (!is_int($params[1]) && !is_float($params[1]) && !is_string($params[1]) && $params[1] !== null && !(is_object($params[1]) && method_exists($params[1], '__toString'))) {
+			trigger_error('array_column(): The column key should be either a string or an integer', E_USER_WARNING);
+			return false;
+		}
+		
+		if (isset($params[2]) && !is_int($params[2]) && !is_float($params[2]) && !is_string($params[2]) && !(is_object($params[2]) && method_exists($params[2], '__toString'))) {
+			trigger_error('array_column(): The index key should be either a string or an integer', E_USER_WARNING);
+			return false;
+		}
+		
+		$paramsInput = $params[0];
+		$paramsColumnKey = ($params[1] !== null) ? (string) $params[1] : null;
+		$paramsIndexKey = null;
+		if (isset($params[2])) {
+			if (is_float($params[2]) || is_int($params[2])) {
+				$paramsIndexKey = (int) $params[2];
+			}
+			else {
+				$paramsIndexKey = (string) $params[2];
+			}
+		}
+		
+		$resultArray = array();
+		foreach ($paramsInput as $row) {
+			$key = $value = null;
+			$keySet = $valueSet = false;
+			if ($paramsIndexKey !== null && array_key_exists($paramsIndexKey, $row)) {
+				$keySet = true;
+				$key = (string) $row[$paramsIndexKey];
+			}
+			
+			if ($paramsColumnKey === null) {
+				$valueSet = true;
+				$value = $row;
+			}
+			elseif (is_array($row) && array_key_exists($paramsColumnKey, $row)) {
+				$valueSet = true;
+				$value = $row[$paramsColumnKey];
+			}
+			
+			if ($valueSet) {
+				if ($keySet) {
+					$resultArray[$key] = $value;
+				}
+				else {
+					$resultArray[] = $value;
+				}
+			}
+		}
+		
+		return $resultArray;
 	}
 	
 	/**

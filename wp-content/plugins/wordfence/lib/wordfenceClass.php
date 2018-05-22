@@ -1235,7 +1235,7 @@ SQL
 			wfConfig::set_ser('adminUserList', false);
 		}
 
-		if (!self::getLog()->getCurrentRequest()->jsRun && wfConfig::liveTrafficEnabled()) {
+		if (wfConfig::liveTrafficEnabled()) {
 			add_action('wp_head', 'wordfence::wfLogHumanHeader');
 			add_action('login_head', 'wordfence::wfLogHumanHeader');
 		}
@@ -1245,6 +1245,7 @@ SQL
 			ignore_user_abort(true);
 			update_site_option('wordfence_syncingAttackData', time());
 			header('Content-Type: text/javascript');
+			define('WORDFENCE_SYNCING_ATTACK_DATA', true);
 			add_action('init', 'wordfence::syncAttackData', 10, 0);
 			add_filter('woocommerce_unforce_ssl_checkout', '__return_false');
 		}
@@ -1634,6 +1635,7 @@ SQL
 					'howGetIPs_trusted_proxies' => wfConfig::get('howGetIPs_trusted_proxies', ''),
 					'other_WFNet'    => !!wfConfig::get('other_WFNet', true), 
 					'pluginABSPATH'	 => ABSPATH,
+					'serverIPs'		 => json_encode(wfUtils::serverIPs()),
 				);
 				foreach ($configDefaults as $key => $value) {
 					$waf->getStorageEngine()->setConfig($key, $value);
@@ -3838,6 +3840,17 @@ HTACCESS;
 		wfActivityReport::logBlockedIP($IP, null, 'manual');
 		return array('ok' => 1);
 	}
+	public static function ajax_avatarLookup_callback() {
+		$ids = explode(',', $_POST['ids']);
+		$res = array();
+		foreach ($ids as $id) {
+			$avatar = get_avatar($id, 16);
+			if ($avatar) {
+				$res[$id] = $avatar;
+			}
+		}
+		return array('ok' => 1, 'avatars' => $res);
+	}
 	public static function ajax_reverseLookup_callback(){
 		$ips = explode(',', $_POST['ips']);
 		$res = array();
@@ -4700,6 +4713,8 @@ EOL;
 	};
 	var evts = 'contextmenu dblclick drag dragend dragenter dragleave dragover dragstart drop keydown keypress keyup mousedown mousemove mouseout mouseover mouseup mousewheel scroll'.split(' ');
 	var logHuman = function() {
+		if (window.wfLogHumanRan) { return; }
+		window.wfLogHumanRan = true;
 		var wfscr = document.createElement('script');
 		wfscr.type = 'text/javascript';
 		wfscr.async = true;
@@ -4995,7 +5010,7 @@ HTML;
 			'activate', 'scan', 'updateAlertEmail', 'sendActivityLog', 'restoreFile',
 			'exportSettings', 'importSettings', 'bulkOperation', 'deleteFile', 'deleteDatabaseOption', 'removeExclusion',
 			'activityLogUpdate', 'ticker', 'loadIssues', 'updateIssueStatus', 'deleteIssue', 'updateAllIssues',
-			'reverseLookup', 'unlockOutIP', 'unblockRange', 'whois', 'recentTraffic', 'unblockIP',
+			'avatarLookup', 'reverseLookup', 'unlockOutIP', 'unblockRange', 'whois', 'recentTraffic', 'unblockIP',
 			'blockIP', 'permBlockIP', 'loadStaticPanel', 'updateIPPreview', 'downloadHtaccess', 'downloadLogFile', 'checkHtaccess',
 			'updateConfig', 'autoUpdateChoice', 'misconfiguredHowGetIPsChoice', 'dismissAdminNotice',
 			'killScan', 'saveCountryBlocking', 'tourClosed',
@@ -5035,6 +5050,10 @@ HTML;
 			wp_enqueue_script('wordfenceAdminExtjs', wfUtils::getBaseURL() . wfUtils::versionedAsset('js/wfglobal.js'), array('jquery'), WORDFENCE_VERSION);
 			wp_enqueue_script('wordfenceDropdownjs', wfUtils::getBaseURL() . wfUtils::versionedAsset('js/wfdropdown.js'), array('jquery'), WORDFENCE_VERSION);
 			self::setupAdminVars();
+			
+			if (wfConfig::get('touppPromptNeeded')) {
+				add_filter('admin_body_class', 'wordfence::showTOUPPOverlay', 99, 1);
+			}
 		} else {
 			wp_enqueue_style('wp-pointer');
 			wp_enqueue_script('wp-pointer');
@@ -5099,6 +5118,9 @@ HTML;
 			'tokenInvalidTemplate' => wfView::create('common/modal-prompt', array('title' => '${title}', 'message' => '${message}', 'primaryButton' => array('id' => 'wf-token-invalid-modal-reload', 'label' => __('Reload', 'wordfence'), 'link' => '#')))->render(),
 			'modalHTMLTemplate' => wfView::create('common/modal-prompt', array('title' => '${title}', 'message' => '{{html message}}', 'primaryButton' => array('id' => 'wf-generic-modal-close', 'label' => __('Close', 'wordfence'), 'link' => '#')))->render(),
 			));
+	}
+	public static function showTOUPPOverlay($classList) {
+		return trim($classList . ' wf-toupp-required');
 	}
 	public static function activation_warning(){
 		$activationError = get_option('wf_plugin_act_error', '');
@@ -5691,10 +5713,10 @@ HTML
 		return $approved;
 	}
 	public static function getMyHomeURL(){
-		return network_admin_url('admin.php?page=Wordfence', 'http');
+		return network_admin_url('admin.php?page=Wordfence');
 	}
 	public static function getMyOptionsURL(){
-		return network_admin_url('admin.php?page=Wordfence&subpage=global_options', 'http');
+		return network_admin_url('admin.php?page=Wordfence&subpage=global_options');
 	}
 
 	public static function alert($subject, $alertMsg, $IP){

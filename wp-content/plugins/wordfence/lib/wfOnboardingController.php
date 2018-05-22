@@ -160,7 +160,7 @@ class wfOnboardingController {
 	
 	public static function shouldShowNewTour($page) {
 		$key = 'needsNewTour_' . $page;
-		return (!self::shouldShowAttempt3Automatically() && wfConfig::get($key));
+		return (!self::shouldShowAttempt3Automatically() && !wfConfig::get('touppPromptNeeded') && wfConfig::get($key));
 	}
 	
 	public static function willShowUpgradeTour($page) {
@@ -170,6 +170,6 @@ class wfOnboardingController {
 	
 	public static function shouldShowUpgradeTour($page) {
 		$key = 'needsUpgradeTour_' . $page;
-		return (!self::shouldShowAttempt3Automatically() && wfConfig::get($key));
+		return (!self::shouldShowAttempt3Automatically() && !wfConfig::get('touppPromptNeeded') && wfConfig::get($key));
 	}
 }

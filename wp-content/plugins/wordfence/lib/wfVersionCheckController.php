@@ -78,7 +78,8 @@ class wfVersionCheckController {
 		}
 		
 		//OpenSSL
-		$openssl = $this->checkOpenSSLVersion();
+		wfAdminNoticeQueue::removeAdminNotice(false, 'opensslVersionCheck');
+		/*$openssl = $this->checkOpenSSLVersion();
 		if ($openssl == self::VERSION_DEPRECATED) {
 			$this->_alertEmail(
 				'opensslVersionCheckDeprecationEmail_' . self::OPENSSL_DEPRECATING,
@@ -115,7 +116,7 @@ class wfVersionCheckController {
 		
 		if (wfAdminNoticeQueue::hasNotice('opensslVersionCheck')) {
 			return false;
-		}
+		}*/
 		
 		//WordPress
 		$wordpress = $this->checkWordPressVersion();

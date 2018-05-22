@@ -886,6 +886,7 @@
 				WFAD.wfLiveTraffic.loadNextListings(function() {
 					loadingListings = false;
 					WFAD.reverseLookupIPs();
+					WFAD.avatarLookup();
 				});
 			} else if (currentScrollBottom < scrollThreshold) {
 				hasScrolled = true;

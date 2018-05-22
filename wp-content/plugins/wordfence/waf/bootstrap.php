@@ -548,10 +548,10 @@ APACHE
 	@chmod(rtrim(WFWAF_LOG_PATH . '/') . '/.htaccess', 0664);
 }
 
-
+wfWAF::setSharedStorageEngine(new wfWAFStorageFile(WFWAF_LOG_PATH . 'attack-data.php', WFWAF_LOG_PATH . 'ips.php', WFWAF_LOG_PATH . 'config.php', WFWAF_LOG_PATH . 'wafRules.rules'));
 wfWAF::setInstance(new wfWAFWordPress(
 	wfWAFWordPressRequest::createFromGlobals(),
-	new wfWAFStorageFile(WFWAF_LOG_PATH . 'attack-data.php', WFWAF_LOG_PATH . 'ips.php', WFWAF_LOG_PATH . 'config.php', WFWAF_LOG_PATH . 'wafRules.rules')
+	wfWAF::getSharedStorageEngine()
 ));
 wfWAF::getInstance()->getEventBus()->attach(new wfWAFWordPressObserver);
 
