@@ -1,7 +1,7 @@
 === Very Simple Contact Form ===
 Contributors: Guido07111975
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donation%40guidovanderleest%2enl
-Version: 8.4
+Version: 8.5
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.7
@@ -73,7 +73,7 @@ Example 2:
 = List form submissions in dashboard =
 Via Settings > VSCF you can activate the listing of form submissions in your dashboard.
 
-After activation you will notice a new (translated) menu item called "Submissions".
+After activation you will notice a new menu item called "Submissions".
 
 Plugin [Contact Form DB](https://github.com/mdsimpson/contact-form-7-to-database-extension/releases) is also supported.
 
@@ -134,7 +134,7 @@ Your reply to sender will use another email header, called "Reply-To", which is 
 = What do you mean with "thank you" message? =
 A "thank you" message is displayed after submitting the form and in the confirmation email to sender (if activated).
 
-It's the (translated) message: Thank you! You will receive a response as soon as possible.
+It's the message: Thank you! You will receive a response as soon as possible.
 
 You can change this message via Settings > VSCF or using an attribute.
 
@@ -175,7 +175,7 @@ I did my best to meet the conditions of the GDPR:
 
 * You can activate a privacy checkbox on form
 * You can disable the collection of IP address
-* The cookie (used for the captcha number) does not store personal data
+* The cookie (used for the captcha) does not store personal data
 * Form submissions are safely stored in database, similar to how the native posts and pages are stored
 * You can easily delete form submissions from database
 
@@ -187,13 +187,19 @@ Please open a topic in plugin forum.
 
 
 == Changelog ==
+= Version 8.5 =
+fix: added CSS to make privacy checkbox visible when using Bootstrap (thanks Marie)
+fix: nonce was outputted twice (thanks malae and Felipe)
+fix: duplicate ID of privacy checkbox (thanks malae)
+credits in changelog: removed all full names (because of the GDPR)
+
 = Version 8.4 =
 * added bootstrap css class to privacy checkbox
 * minor change in file vscf-style
 * updated readme file
 
 = Version 8.3 =
-* new: disable the collection of ip address (thanks marie)
+* new: disable the collection of ip address (thanks Marie)
 * updated most files
 
 = Version 8.2 =
@@ -203,11 +209,6 @@ Please open a topic in plugin forum.
 
 = Version 8.1 =
 * some textual changes on settingspage
-
-= Version 8.0 =
-* name and email column on submissions page are now sortable
-* updated the changelog of last versions (hopefully more clear now)
-* did this because of the many changes in last versions
 
 For all versions please check file changelog.
 

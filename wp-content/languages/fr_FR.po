@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-22 11:25:49+0000\n"
+"PO-Revision-Date: 2018-05-25 10:48:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -131,7 +131,7 @@ msgid ""
 msgstr ""
 "Bonjour,\n"
 "\n"
-"Une demande de données utilisateur à été confirmée sur ###SITENAME### :\n"
+"Une demande de données utilisateur a été confirmée sur ###SITENAME### :\n"
 "\n"
 "Utilisateur : ###USER_EMAIL###\n"
 "Demande : ###DESCRIPTION###\n"
@@ -580,7 +580,7 @@ msgstr "Aucun jeu de modification trouvé sur lequel prendre prendre la main."
 
 #: wp-includes/class-wp-customize-manager.php:3212
 msgid "Security check failed."
-msgstr "Erreur de vérification de sécurité"
+msgstr "Erreur de vérification de sécurité."
 
 #: wp-includes/class-wp-customize-manager.php:2456
 msgid "Changeset is being edited by other user."
@@ -789,8 +789,8 @@ msgstr "La page d’accueil et la page des articles doivent être différentes."
 #: wp-includes/widgets/class-wp-widget-custom-html.php:219
 msgid "There is %d error which must be fixed before you can save."
 msgid_plural "There are %d errors which must be fixed before you can save."
-msgstr[0] "Il y a %d erreur que vous devriez corriger avant de sauvegarder."
-msgstr[1] "Il y a %d erreurs que vous devriez corriger avant de sauvegarder."
+msgstr[0] "Il y a %d erreur que vous devriez corriger avant d’enregistrer."
+msgstr[1] "Il y a %d erreurs que vous devriez corriger avant d’enregistrer."
 
 #. translators: %s: URL to the Customizer to load the autosaved version
 #: wp-includes/script-loader.php:581
@@ -9601,7 +9601,7 @@ msgstr "<strong>Les valeurs des constantes VHOST et SUBDOMAIN_INSTALL ne corresp
 
 #: wp-includes/user.php:2351
 msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
-msgstr "<strong>ERREUR</strong> : cet identifiant n’est pas valide, car il utilise des caractères non autorisés. Merci d’utiliser un identifiant valide."
+msgstr "<strong>ERREUR</strong> : cet identifiant n’est pas valide, car il utilise des caractères non autorisés. Veuillez utiliser un identifiant valide."
 
 #: wp-includes/comment-template.php:2211
 msgid "Required fields are marked %s"
@@ -10109,7 +10109,7 @@ msgstr "Désolé, vous n’avez pas l’autorisation de publier sur cet article.
 #: wp-includes/class-wp-xmlrpc-server.php:4621
 #: wp-includes/class-wp-xmlrpc-server.php:6003
 msgid "Either there are no posts, or something went wrong."
-msgstr "Soit il n’y a pas d’articles, soit une erreur s’est produite."
+msgstr "Soit il n’y a aucun article, soit une erreur s’est produite."
 
 #: wp-includes/class-wp-xmlrpc-server.php:3969
 msgid "Sorry, you are not allowed to update options."
@@ -10395,7 +10395,7 @@ msgstr "<strong>ERREUR</strong> : le champ du mot de passe est vide."
 
 #: wp-includes/user.php:135
 msgid "<strong>ERROR</strong>: The username field is empty."
-msgstr "<strong>ERREUR</strong> : le champ de l’identifiant est vide."
+msgstr "<strong>ERREUR</strong> : le champ du nom d’utilisateur est vide."
 
 #: wp-includes/class-wp-theme.php:231
 msgid "Stylesheet is missing."
@@ -11973,7 +11973,7 @@ msgstr "Il n’y a pas d’options pour ce widget."
 
 #: wp-includes/user.php:2371
 msgid "<strong>ERROR</strong>: This email is already registered, please choose another one."
-msgstr "<strong>ERREUR</strong> : cette adresse de messagerie est déjà utilisée. Merci d’en choisir une autre."
+msgstr "<strong>ERREUR</strong> : cette adresse de messagerie est déjà utilisée. Veuillez en choisir une autre."
 
 #: wp-includes/user.php:2349
 msgid "<strong>ERROR</strong>: Please enter a username."
@@ -12522,7 +12522,7 @@ msgstr "Identifiant :"
 
 #: wp-activate.php:124
 msgid "An error occurred during the activation"
-msgstr "Une erreur est survenue lors de l’activation"
+msgstr "Une erreur est survenue lors de l’activation."
 
 #: wp-activate.php:99 wp-activate.php:132
 msgid "Your account is now active!"

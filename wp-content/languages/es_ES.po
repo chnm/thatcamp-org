@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-14 19:20:24+0000\n"
+"PO-Revision-Date: 2018-05-29 11:43:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -368,7 +368,7 @@ msgstr "Pendientes"
 #: wp-includes/post.php:306
 msgctxt "request status"
 msgid "Completed"
-msgstr "Completada"
+msgstr "Completadas"
 
 #: wp-includes/post.php:299
 msgctxt "request status"
@@ -3711,7 +3711,7 @@ msgstr "Título del sitio."
 
 #: wp-includes/media.php:3542
 msgid "Search media items..."
-msgstr "Busca medios..."
+msgstr "Buscar medios..."
 
 #: wp-includes/link-template.php:2537
 msgctxt "next set of posts"

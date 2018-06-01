@@ -27,3 +27,6 @@
 
 /* Widget text above form */
 .vscf-sidebar-text {clear:both;}
+
+/* Fix for privacy checkbox when using Bootstrap */
+#vscf .form-group .custom-control-input {position:static; z-index:auto; opacity:1;}

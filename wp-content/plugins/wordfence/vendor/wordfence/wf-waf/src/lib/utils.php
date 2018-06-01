@@ -841,7 +841,15 @@ class wfWAFUtils {
 	public static function rawPOSTBody() {
 		global $HTTP_RAW_POST_DATA;
 		if (empty($HTTP_RAW_POST_DATA)) { //Defined if always_populate_raw_post_data is on, PHP < 7, and the encoding type is not multipart/form-data
-			if (wfWAF::getSharedStorageEngine()->getConfig('avoid_php_input', false)) { //Some custom PHP builds break reading from php://input
+			$avoidPHPInput = false;
+			try {
+				$avoidPHPInput = wfWAF::getSharedStorageEngine()->getConfig('avoid_php_input', false);
+			}
+			catch (Exception $e) {
+				//Ignore
+			}
+			
+			if ($avoidPHPInput) { //Some custom PHP builds break reading from php://input
 				//Reconstruct the best possible approximation of it from $_POST if populated -- won't help JSON or other raw payloads
 				$data = http_build_query($_POST, '', '&');
 			}

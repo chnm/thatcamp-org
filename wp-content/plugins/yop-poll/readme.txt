@@ -1,6 +1,6 @@
 === YOP Poll ===
 Contributors: yourownprogrammer
-Donate Link: http://www.yop-poll.com
+Donate Link: https://www.yop-poll.com
 Tags: booth, create poll, poll plugin, poll, polls, wordpress poll, vote, voting, survey, polling, yop poll, yop
 Requires at least: 3.3
 Tested up to: 4.9
@@ -36,15 +36,13 @@ Current poll features:
 
    *  Poll results - offers a great flexibility when displaying the results: before/after vote, after poll's end date, on a custom date or never. The results can also be displayed by vote numbers, percentages or both. You can choose to include a view results link, view number of votes or number of voters.
 
-   *  Add new custom fields - is a complex option that you can use to ask for additional information from your voters, information that you can then export and use for.
+   *  Add custom fields - is a complex option that you can use to ask for additional information from your voters, information that you can then export and use for.
 
    *  Reset stats - proves useful when you wish to restart a poll.
 
    *  Vote permissions: - limits the voting accessibility to guests, registered users or both, or blocks user access by cookie, IP and username.
 
    *  Archive options - allows the users of the website to access former polls statistics. You can choose which polls to display according to their start/end date.
-
-   *  Edit/delete/clone templates - allows you to customize the poll using either the html or the visual modes. You can also customize the result bar.
 
    *  Display Options - displays answers and results tabulated, vertically or horizontally.
 
@@ -88,45 +86,16 @@ Yes, you can run multiple polls at the same time or you can schedule them to beg
 Yes, you can customize your poll to request additional information. Eg. name, email, age, profession.
 To include this, when you create your poll using the "Add New" form, expand "Custom Fields" section and include as many requests as you need.
 
-= How can I create/modify a template? =
-
-Access the "Templates" menu.
-If you want to create a new template use the "Add new" option and include the corresponding HTML/visual code.
-If you want to modify an existing template, select it from the Templates list and choose "Edit". You will access the HTML/visual code you want to edit.
-
 = How do I check the results? =
 
 Locate the poll you want to evaluate by accessing "All Polls".
 Below the name of the poll you have several options.
-Use the "View Votes" link to track the results of the poll,
+Use the "View Results" option to track the results of the poll,
 or access the "Logs" for a more detailed evaluation.
-
-= What is the difference between Options and Poll Options for each poll? =
-
-Options (located under plugin menu) is the way to specifify general settings for all your polls.
-If you want to go further and customize each poll, these settings will take precedence over Options settings.
-
-= How can I edit access to YOP Poll for administrators, editors, authors? =
-
-To do this, in your wordpress go to Plugins->Editor.
-On the right choose Yop Poll as the plugin to be edited.
-The file you need to edit is yop-poll/inc/admin.php.
-The file you need to edit is yop-poll/inc/admin.php.
-Once you open the file, do a search for function current_user_can.
-In that function you can find the options you need to edit.
 
 = How can I see the results after the poll ends? =
 
 Edit your poll and in "View Results:" choose "After Poll End Date" and save.
-
-= How can I add a Poll Archive page on my website? =
-
-From your WordPress menu create a new page that contains [yop_poll_archive] and has the permalink http://www.yourwebsite.com/polls/
-
-= How can I add a hyperlink in the poll question or add a photo as an answer? =
-
-To add a link to your question you can use <a href="[your link]" target="_blank">[link text]</a>
-To add a photo as an answer you can use <img src=[photo_url] title="[photo_title]" alt="[photo_description]"/>
 
 = Can I add more than one question to a poll? =
 
@@ -141,6 +110,10 @@ You can have only one question per poll. If you want to ask more than one questi
 5. YOP Poll on a page with a custom field defined
 
 == Changelog ==
+
+= 6.0.0 =
+* complete re-write
+* add GDPR compliance
 
 = 5.8.3 =
 * fixed php7 issues

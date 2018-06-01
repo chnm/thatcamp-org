@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-22 05:58:32+0000\n"
+"PO-Revision-Date: 2018-05-28 15:53:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -504,10 +504,6 @@ msgstr "W odpowiedzi od eksportera o indeksie: %s, oczekiwano tablicy."
 msgid "An exporter has improperly used the registration filter."
 msgstr "Eksporter nieprawidłowo użył filtra rejestracyjnego."
 
-#: wp-admin/privacy.php:202
-msgid "Use This Page"
-msgstr "Użyj strony:"
-
 #: wp-admin/privacy.php:221
 msgid "Create New Page"
 msgstr "Utwórz nową stronę"
@@ -528,6 +524,10 @@ msgstr "<a href=\"%1$s\">Edytuj</a> lub <a href=\"%2$s\">zobacz</a> treść stro
 #: wp-admin/privacy.php:120
 msgid "We would also suggest reviewing your privacy policy from time to time, especially after installing or updating any themes or plugins. There may be changes or new suggested information for you to consider adding to your policy."
 msgstr "Warto od czasu do czasu przejrzeć swoją politykę prywatności, zwłaszcza po zainstalowaniu lub zaktualizowaniu motywów lub wtyczek. Być może należy rozważyć wprowadzenie zmian lub dodanie nowych informacji. "
+
+#: wp-admin/privacy.php:202
+msgid "Use This Page"
+msgstr "Użyj tej strony"
 
 #: wp-admin/privacy.php:116
 msgid "However, it is your responsibility to use those resources correctly, to provide the information that your privacy policy requires, and to keep that information current and accurate."

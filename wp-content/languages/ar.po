@@ -158,7 +158,7 @@ msgstr "[%1$s] تأكيد الإجراء: %2$s"
 msgid "Erase Personal Data"
 msgstr "مسح البيانات الشخصية"
 
-#: wp-includes/comment-template.php:2206
+#: wp-includes/comment-template.php:2208
 msgid "Save my name, email, and website in this browser for the next time I comment."
 msgstr "احفظ اسمي، بريدي الإلكتروني، والموقع الإلكتروني في هذا المتصفح لاستخدامها المرة المقبلة في تعليقي."
 
@@ -674,7 +674,7 @@ msgid "Unsupported value type (%s)."
 msgstr "نوع القيمة (%s) غير مدعوم."
 
 #. translators: %s: register_widget()
-#: wp-includes/widgets.php:1053
+#: wp-includes/widgets.php:1054
 msgid "Widgets need to be registered using %s, before they can be displayed."
 msgstr "الودجات تحتاج إلى أن تكون مسجلة باستخدام %s، قبل أن يمكن عرضها."
 
@@ -2395,7 +2395,7 @@ msgctxt "New site notification email subject"
 msgid "[%1$s] Activate %2$s"
 msgstr "[%1$s] تفعيل %2$s"
 
-#: wp-includes/widgets.php:1398 wp-includes/widgets.php:1507
+#: wp-includes/widgets.php:1399 wp-includes/widgets.php:1508
 msgid "RSS Error:"
 msgstr "خطأ RSS:"
 
@@ -4496,13 +4496,13 @@ msgid "1 result found. Use up and down arrow keys to navigate."
 msgstr "نتيجة واحدة تم العثور عليها، استخدم مفاتيح الأسهم للأعلى والأسفل للتصفح."
 
 #. translators: %s: user name
-#: wp-includes/comment-template.php:2234
+#: wp-includes/comment-template.php:2236
 msgid "Logged in as %s. Edit your profile."
 msgstr "متّصل بالاسم %s. تحرير ملفك الشخصي."
 
 #. translators: 1: edit user link, 2: accessibility text, 3: user name, 4:
 #. logout URL
-#: wp-includes/comment-template.php:2231
+#: wp-includes/comment-template.php:2233
 msgid "<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s\">Log out?</a>"
 msgstr "<a href=\"%1$s\" aria-label=\"%2$s\">متّصل بالاسم %3$s</a>. <a href=\"%4$s\">تسجيل الخروج؟</a>"
 
@@ -9700,7 +9700,7 @@ msgstr "<strong>هناك تعارض بين المتغيّرات VHOST و SUBDOMA
 msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr "<strong>خطأ</strong>: اسم المستخدم غير صحيح لأنه يحتوي على رموز أو حروف ممنوعة. يرجى اختيار اسم مستخدم آخر."
 
-#: wp-includes/comment-template.php:2209
+#: wp-includes/comment-template.php:2211
 msgid "Required fields are marked %s"
 msgstr "الحقول الإلزامية مشار إليها بـ %s"
 
@@ -9862,7 +9862,7 @@ msgstr "حدث خطأ في إضافتك إلى هذا الموقع. الرجوع
 msgid "This file is too big. Files must be less than %d KB in size."
 msgstr "هذا الملف كبير جداً. يجب على الملفات أن يكون حجمها أقل من %d كيلوبايت."
 
-#: wp-includes/comment-template.php:2238
+#: wp-includes/comment-template.php:2240
 msgid "Your email address will not be published."
 msgstr "لن يتم نشر عنوان بريدك الإلكتروني."
 
@@ -10671,7 +10671,7 @@ msgstr "إغلاق الوسوم"
 msgid "Close all open tags"
 msgstr "إغلاق جميع الوسوم المفتوحة"
 
-#: wp-includes/rss.php:917 wp-includes/widgets.php:1413
+#: wp-includes/rss.php:917 wp-includes/widgets.php:1414
 msgid "An error has occurred, which probably means the feed is down. Try again later."
 msgstr "لقد حصل خطأ، من المحتمل وجود خطأ في ملف الخلاصة، حاول مجدداً لاحقاً."
 
@@ -11687,31 +11687,31 @@ msgstr "حلقة ووردبريس الجديدة"
 msgid "Tag Cloud"
 msgstr "معرض الوسوم"
 
-#: wp-includes/widgets.php:1535
+#: wp-includes/widgets.php:1536
 msgid "Display item date?"
 msgstr "عرض تاريخ العنصر؟"
 
-#: wp-includes/widgets.php:1532
+#: wp-includes/widgets.php:1533
 msgid "Display item author if available?"
 msgstr "عرض كاتب العنصر إذا كان متوفرا؟"
 
-#: wp-includes/widgets.php:1529
+#: wp-includes/widgets.php:1530
 msgid "Display item content?"
 msgstr "عرض محتوى العنصر؟"
 
-#: wp-includes/widgets.php:1519
+#: wp-includes/widgets.php:1520
 msgid "How many items would you like to display?"
 msgstr "كم عدد العناصر التي ترغب في عرضها؟"
 
-#: wp-includes/widgets.php:1516
+#: wp-includes/widgets.php:1517
 msgid "Give the feed a title (optional):"
 msgstr "اسم الخلاصة (اختياري):"
 
-#: wp-includes/widgets.php:1513
+#: wp-includes/widgets.php:1514
 msgid "Enter the RSS feed URL here:"
 msgstr "أدخل رابط خلاصة RSS هنا:"
 
-#: wp-includes/widgets.php:1429
+#: wp-includes/widgets.php:1430
 msgid "Untitled"
 msgstr "بدون عنوان"
 
@@ -11837,19 +11837,19 @@ msgstr "تم اكتشاف وجود تعليق مكرر، يبدو أنك قد س
 msgid "Unapproved"
 msgstr "لم تتم الموافقة عليها"
 
-#: wp-includes/comment-template.php:2253
+#: wp-includes/comment-template.php:2255
 msgid "Post Comment"
 msgstr "إرســال التعليق"
 
-#: wp-includes/comment-template.php:2252
+#: wp-includes/comment-template.php:2254
 msgid "Cancel reply"
 msgstr "إلغاء الرد"
 
-#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2247
+#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2249
 msgid "Leave a Reply to %s"
 msgstr "اترك رداً على %s"
 
-#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2246
+#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2248
 msgid "Leave a Reply"
 msgstr "اترك تعليقاً"
 
@@ -11942,7 +11942,7 @@ msgid "Tags: "
 msgstr "الوسوم:"
 
 #. translators: %s: login URL
-#: wp-includes/comment-template.php:2225
+#: wp-includes/comment-template.php:2227
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr "يجب أنت تكون <a href=\"%s\">مسجل الدخول</a> لتضيف تعليقاً."
 
@@ -12000,7 +12000,7 @@ msgstr "لسبب ما غريب، لا يمكن تحرير هذه المقالة.
 msgid "Widgets"
 msgstr "ودجات"
 
-#: wp-includes/comment-template.php:2203
+#: wp-includes/comment-template.php:2205
 msgid "Website"
 msgstr "الموقع الإلكتروني"
 
@@ -12056,7 +12056,7 @@ msgstr "صيغة التاريخ "
 msgid "Allow people to post comments on new articles"
 msgstr "السماح للزوار بإدراج التعليقات على المقالات الجديدة."
 
-#: wp-includes/comment-template.php:2201 wp-login.php:810
+#: wp-includes/comment-template.php:2203 wp-login.php:810
 msgid "Email"
 msgstr "البريد الإلكتروني"
 
@@ -12517,7 +12517,7 @@ msgstr "بدون"
 msgid "Description"
 msgstr "الوصف"
 
-#: wp-includes/comment-template.php:2199
+#: wp-includes/comment-template.php:2201
 msgid "Name"
 msgstr "الاسم"
 
@@ -12605,7 +12605,7 @@ msgstr "لا"
 msgid "Are you sure you want to do this?"
 msgstr "هل أنت متأكد من رغبتك بفعل هذا؟"
 
-#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2221
+#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2223
 msgctxt "noun"
 msgid "Comment"
 msgstr "التعليق"

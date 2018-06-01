@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-21 17:29:36+0000\n"
+"PO-Revision-Date: 2018-05-31 11:12:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -98,7 +98,7 @@ msgstr "En esta subsección deberías anotar qué información se captura en los
 
 #: wp-admin/includes/misc.php:1668
 msgid "In this section you should note what personal data you collect from users and site visitors. This may include personal data, such as name, email address, personal account preferences; transactional data, such as purchase information; and technical data, such as information about cookies."
-msgstr "En esta sección deberías anotar qué datos personales recopilas de los usuarios y de los visitantes del sitio. Esto podría incluir datos personales tales como el nombre, dirección de correo electrónico, preferencias personales de la cuenta; datos transacionales, como información de compras; y datos técnicos, como la información sobre las cookies."
+msgstr "En esta sección deberías anotar qué datos personales recopilas de los usuarios y de los visitantes del sitio. Esto podría incluir datos personales tales como el nombre, dirección de correo electrónico, preferencias personales de la cuenta; datos transaccionales, como información de compras; y datos técnicos, como la información sobre las cookies."
 
 #: wp-admin/includes/misc.php:1651
 msgid "Suggested text:"
@@ -106,7 +106,7 @@ msgstr "Texto sugerido:"
 
 #: wp-admin/includes/misc.php:1630
 msgid "We have suggested the sections you will need. Under each section heading you will find a short summary of what information you should provide, which will help you to get started. Some sections include suggested policy content, others will have to be completed with information from your theme and plugins."
-msgstr "Hemos sugerido las secciones que necesitarás. Bajo el encabezado de cada sección encontrarás un breve resumen de qué información deberías facilitar, lo que te ayudará a empezar. Alguna secciones incluyen contenido sugerido para la política, otras estarán completos con información de tu tema y plugins."
+msgstr "Hemos sugerido las secciones que necesitarás. Bajo el encabezado de cada sección encontrarás un breve resumen de qué información deberías facilitar, lo que te ayudará a empezar. Algunas secciones incluyen contenido sugerido para la política, otras tendrán que ser completadas con información de tu tema y plugins."
 
 #. translators: %s: plugin name
 #: wp-admin/includes/misc.php:1594
@@ -531,7 +531,7 @@ msgstr "También te sugerimos que revises tu política de privacidad de vez en c
 
 #: wp-admin/privacy.php:116
 msgid "However, it is your responsibility to use those resources correctly, to provide the information that your privacy policy requires, and to keep that information current and accurate."
-msgstr "Sin embargo, es tu responsabilidad usar estos recursos correctamente, para ofrecer la información que requiera tu política de privacidad, y para asegurar que la información es actual y precisa."
+msgstr "Sin embargo, es tu responsabilidad usar estos recursos correctamente, para ofrecer la información que requiera tu política de privacidad, y mantener esa información actualizada y precisa."
 
 #: wp-admin/privacy.php:109
 msgid "Privacy Policy page"
@@ -838,7 +838,7 @@ msgstr "Nombre de usuario o dirección de correo electrónico"
 
 #: wp-admin/includes/plugin-install.php:595
 msgid "Requires PHP Version:"
-msgstr "Necesita la versión de PHP:"
+msgstr "Requiere la versión de PHP:"
 
 #: wp-admin/customize.php:80
 msgid "This changeset cannot be further modified."
@@ -2243,17 +2243,9 @@ msgstr "Tu archivo %s tiene vacío el prefijo de la tabla de la base de datos, y
 msgid "You are using a development version of WordPress. These feature plugins are also under development. <a href=\"%s\">Learn more</a>."
 msgstr "Estás utilizando una versión de desarrollo de WordPress. Estos plugins destacados también están en desarrollo. <a href=\"%s\">Saber más</a>."
 
-#: wp-admin/includes/plugin-install.php:627
-msgid "Read all reviews on WordPress.org or write your own!"
-msgstr "¡Lee todas las reseñas en WordPress.org o escribe la tuya!"
-
 #: wp-admin/includes/template.php:1536
 msgid "Attach to existing content"
 msgstr "Adjuntar al contenido existente"
-
-#: wp-admin/includes/plugin-install.php:626
-msgid "Reviews"
-msgstr "Reseñas"
 
 #: wp-admin/includes/post.php:1430
 msgid "Click the image to edit or update"
@@ -2263,13 +2255,21 @@ msgstr "Haz clic en la imagen para editarla o actualizarla"
 msgid "Theme zip file"
 msgstr "Archivo zip del tema"
 
+#: wp-admin/includes/plugin-install.php:627
+msgid "Read all reviews on WordPress.org or write your own!"
+msgstr "¡Lee todas las valoraciones en WordPress.org o escribe la tuya!"
+
+#: wp-admin/includes/plugin-install.php:626
+msgid "Reviews"
+msgstr "Valoraciones"
+
 #. translators: 1: number of stars (used to determine singular/plural), 2:
 #. number of reviews
 #: wp-admin/includes/plugin-install.php:633
 msgid "Reviews with %1$d star: %2$s. Opens in a new window."
 msgid_plural "Reviews with %1$d stars: %2$s. Opens in a new window."
-msgstr[0] "Reseñas con %1$d estrella: %2$s. Abre en una nueva ventana."
-msgstr[1] "Reseñas con %1$d estrellas: %2$s. Abre en una nueva ventana."
+msgstr[0] "Valoraciones con %1$d estrella: %2$s. Abre en una nueva ventana."
+msgstr[1] "Valoraciones con %1$d estrellas: %2$s. Abre en una nueva ventana."
 
 #: wp-admin/includes/image-edit.php:150
 msgid "Thumbnail Settings Help"
@@ -3203,7 +3203,7 @@ msgstr "Mientras editas tu archivo %1$s tómate un momento para asegurarte de qu
 #: wp-admin/includes/class-wp-list-table.php:1272
 #: wp-admin/includes/update.php:687
 msgid "Show more details"
-msgstr "Muestra más detalles"
+msgstr "Mostrar más detalles"
 
 #: wp-admin/nav-menus.php:614
 msgid "Your theme supports %s menu. Select which menu appears in each location."
@@ -3836,7 +3836,7 @@ msgstr "Desconectar todo"
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:111
 msgctxt "Plugin Installer"
 msgid "Recommended"
-msgstr "Recomendado"
+msgstr "Recomendados"
 
 #. translators: New site notification email. 1: New site URL, 2: User login, 3:
 #. User password or password reset link, 4: Login URL
@@ -5433,17 +5433,17 @@ msgstr "Elige una imagen de fondo"
 msgid "Choose a Custom Header"
 msgstr "Elige una cabecera personalizada"
 
-#: wp-admin/custom-header.php:117
-msgid "In the Header Text section of this page, you can choose whether to display this text or hide it. You can also choose a color for the text by clicking the Select Color button and either typing in a legitimate HTML hex value, e.g. &#8220;#ff0000&#8221; for red, or by choosing a color using the color picker."
-msgstr "En la sección del texto de la cabecera puedes elegir entre mostrarlo u ocultarlo. También puedes elegir el color del texto haciendo click en el botón de selección del color o escribiendo un valor hexadecimal HTML válido. Por ejemplo &#8220;#ff0000&#8221 para rojo o utilizando el selector de color."
-
 #: wp-admin/custom-background.php:91
 msgid "You can also choose a background color by clicking the Select Color button and either typing in a legitimate HTML hex value, e.g. &#8220;#ff0000&#8221; for red, or by choosing a color using the color picker."
 msgstr "Puedes elegir un color de fondo haciendo click en el botón de selección del color o escribiendo un valor hexadecimal HTML válido. Por ejemplo &#8220;#ff0000&#8221 para rojo o utilizando el selector de color."
 
+#: wp-admin/custom-header.php:117
+msgid "In the Header Text section of this page, you can choose whether to display this text or hide it. You can also choose a color for the text by clicking the Select Color button and either typing in a legitimate HTML hex value, e.g. &#8220;#ff0000&#8221; for red, or by choosing a color using the color picker."
+msgstr "En la sección del texto de la cabecera de esta página puedes elegir si mostrarlo u ocultarlo. También puedes elegir el color del texto haciendo clic en el botón de selección del color o escribiendo un valor hexadecimal HTML válido. Por ejemplo &#8220;#ff0000&#8221 para rojo, o utilizando el selector de color."
+
 #: wp-admin/options-reading.php:32
 msgid "You can choose whether or not your site will be crawled by robots, ping services, and spiders. If you want those services to ignore your site, click the checkbox next to &#8220;Discourage search engines from indexing this site&#8221; and click the Save Changes button at the bottom of the screen. Note that your privacy is not complete; your site is still visible on the web."
-msgstr "Puedes elegir si quieres (o no) que tu sitio sea rastreado por robots, servicios de notificación o arañas. Si quieres que esos servicios ignoren tu sitio, haz click en la casilla de verificación que están junto a &#8220;No permitir a los motores de búsqueda indexar este sitio&#8221;y hacer clic en el botón de Guardar cambios que hay en la parte inferior de la pantalla. Ten en cuenta que la privacidad no es completa, el sitio sigue siendo visible y público en la web."
+msgstr "Puedes elegir si quieres (o no) que tu sitio sea rastreado por robots, servicios de notificación o arañas. Si quieres que esos servicios ignoren tu sitio, haz clic en la casilla de verificación que está junto a &#8220;No permitir a los motores de búsqueda indexar este sitio&#8221; y hacer clic en el botón de Guardar cambios que está en la parte inferior de la pantalla. Ten en cuenta que la privacidad no es completa, el sitio sigue siendo visible y público en la web."
 
 #: wp-admin/includes/dashboard.php:1598
 msgid "More Actions"
@@ -5563,13 +5563,13 @@ msgstr "A continuación deberás introducir los detalles de conexión a tu base 
 msgid "You can also browse a user&#8217;s favorite plugins, by using the Favorites link above the plugins list and entering their WordPress.org username."
 msgstr "También puedes navegar por los plugins favoritos de un usuario usando el enlace Favoritos de la parte superior derecha de la pantalla e introduciendo su nombre de usuario en WordPress.org."
 
-#: wp-admin/plugin-install.php:90
-msgid "If you know what you&#8217;re looking for, Search is your best bet. The Search screen has options to search the WordPress Plugin Directory for a particular Term, Author, or Tag. You can also search the directory by selecting popular tags. Tags in larger type mean more plugins have been labeled with that tag."
-msgstr "Si sabes lo que estás buscando Buscar es tu mejor apuesta. La pantalla de búsqueda tiene opciones para buscar en el directorio de plugins de WordPress.org para un término, autor o etiqueta concretos. También puedes buscar en el directorio eligiendo las etiquetas más populares. Un tamaño de letra más grande indica un número mayor de plugins con esa etiqueta."
-
 #: wp-admin/plugin-install.php:93
 msgid "If you want to install a plugin that you&#8217;ve downloaded elsewhere, click the Upload Plugin button above the plugins list. You will be prompted to upload the .zip package, and once uploaded, you can activate the new plugin."
 msgstr "Si quieres instalar un plugin que hayas descargado por ahí haz clic en el enlace Subir de la parte superior izquierda. Se te pedirá que subas el paquete .zip, y una vez subido podrás activar el nuevo plugin."
+
+#: wp-admin/plugin-install.php:90
+msgid "If you know what you&#8217;re looking for, Search is your best bet. The Search screen has options to search the WordPress Plugin Directory for a particular Term, Author, or Tag. You can also search the directory by selecting popular tags. Tags in larger type mean more plugins have been labeled with that tag."
+msgstr "Si sabes lo que estás buscando Buscar es tu mejor apuesta. La pantalla de búsqueda tiene opciones para buscar en el directorio de plugins de WordPress.org para un término, autor o etiqueta concretos. También puedes buscar en el directorio eligiendo las etiquetas más populares. Un tamaño de letra más grande indica un número mayor de plugins con esa etiqueta."
 
 #: wp-admin/install.php:184 wp-admin/install.php:187
 #: wp-admin/options-reading.php:31 wp-admin/options-reading.php:111
@@ -6564,7 +6564,7 @@ msgstr "Si lo deseas, WordPress puede alertar automáticamente a varios servicio
 
 #: wp-admin/options-discussion.php:22
 msgid "This screen provides many options for controlling the management and display of comments and links to your posts/pages. So many, in fact, they won&#8217;t all fit here! :) Use the documentation links to get information on what each discussion setting does."
-msgstr "Esta pantalla ofrece muchas opciones para controlar la gestión y la visualización de los comentarios y enlaces de tus páginas y entradas. Hay tantas que no todas caben aquí :). Puedes consultar en los enlaces de la documentación para saber qué hace cada opción de comentarios."
+msgstr "Esta pantalla ofrece muchas opciones para controlar la gestión y la visualización de los comentarios y enlaces de tus páginas y entradas. ¡Hay tantas que no todas caben aquí! :) Utiliza los enlaces a la documentación para obtener información sobre qué hace cada ajuste de comentarios."
 
 #: wp-admin/user-edit.php:46
 msgid "You can change your password, turn on keyboard shortcuts, change the color scheme of your WordPress administration screens, and turn off the WYSIWYG (Visual) editor, among other things. You can hide the Toolbar (formerly called the Admin Bar) from the front end of your site, however it cannot be disabled on the admin screens."
@@ -6710,7 +6710,7 @@ msgstr "Ve a Escritorio &rarr; Inicio"
 
 #: wp-admin/credits.php:53
 msgid "WordPress is created by a worldwide team of passionate individuals."
-msgstr "WordPress está creado por un equipo mundial de personas apasionadas de forma individual."
+msgstr "WordPress está creado por un equipo de personas apasionadas que están alrededor del todo el planeta."
 
 #: wp-admin/includes/dashboard.php:1572 wp-admin/includes/dashboard.php:1574
 msgid "Customize Your Site"
@@ -7825,10 +7825,6 @@ msgstr "<strong>Slug</strong> &mdash; El &#8220;slug&#8221; es la versión amiga
 msgid "Your username cannot be changed, but you can use other fields to enter your real name or a nickname, and change which name to display on your posts."
 msgstr "Tu nombre de usuario no puede cambiarse, pero puedes usar los otros campos para introducir tu nombre real o tu alias y utilizarlo para que se muestre en tus entradas."
 
-#: wp-admin/user-edit.php:51
-msgid "Remember to click the Update Profile button when you are finished."
-msgstr "Recuerda hacer click en el botón actualizar Perfil cuando acabes."
-
 #: wp-admin/user-new.php:213
 msgid "Editors can publish posts, manage posts as well as manage other people&#8217;s posts, etc."
 msgstr "Los Editores pueden publicar entradas, gestionar sus entradas y entradas de otras personas, etc."
@@ -7836,6 +7832,10 @@ msgstr "Los Editores pueden publicar entradas, gestionar sus entradas y entradas
 #: wp-admin/user-edit.php:50
 msgid "Required fields are indicated; the rest are optional. Profile information will only be displayed if your theme is set up to do so."
 msgstr "Los campos necesarios están marcados; el resto son opcionales. El perfil solo se mostrará si tu tema está configurado para ello."
+
+#: wp-admin/user-edit.php:51
+msgid "Remember to click the Update Profile button when you are finished."
+msgstr "Recuerda hacer clic en el botón Actualizar perfil cuando termines."
 
 #: wp-admin/comment.php:45
 msgid "You can edit the information left in a comment if needed. This is often useful when you notice that a commenter has made a typographical error."
@@ -9852,13 +9852,13 @@ msgstr "Publicar por correo electrónico"
 msgid "<strong><em>Note that password</em></strong> carefully! It is a <em>random</em> password that was generated just for you."
 msgstr "¡<strong><em>Anota la contraseña</em></strong> cuidadosamente! Es una contraseña <em>aleatoria</em> que ha sido generada solo para ti."
 
-#: wp-admin/options-discussion.php:160
-msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
-msgstr "Cuando un comentario contiene alguna de estas palabras en su contenido, nombre, URL, correo electrónico o IP se mantendrá en la <a href=\"edit-comments.php?comment_status=moderated\">cola de moderación</a>. Pon una palabra o dirección IP por línea. También afectará a las palabras contenidas dentro de otras, como &#8220;press&#8221;, que está dentro de  &#8220;WordPress&#8221;"
-
 #: wp-admin/options-discussion.php:169
 msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be put in the trash. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
 msgstr "Cuando un comentario contiene alguna de las siguientes palabras en su contenido, nombre, URL o IP, se mandará a la papelera. Pon solo una palabra o IP por línea. También afectará las palabras contenidas dentro de otras, como &#8220;press&#8221; que está dentro de &#8220;WordPress&#8221;."
+
+#: wp-admin/options-discussion.php:160
+msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
+msgstr "Cuando un comentario contiene alguna de estas palabras en su contenido, nombre, URL, correo electrónico o IP se mantendrá en la <a href=\"edit-comments.php?comment_status=moderated\">cola de moderación</a>. Pon una palabra o dirección IP por línea. También afectará a las palabras contenidas dentro de otras, como &#8220;press&#8221;, que está dentro de  &#8220;WordPress&#8221;"
 
 #. translators: %s: web.config
 #: wp-admin/options-permalink.php:322
@@ -11674,10 +11674,6 @@ msgstr "Ejemplo: <code>https://es.wordpress.org/</code> &#8212;no olvides poner 
 msgid "my-hacks.php (legacy hacks support)"
 msgstr "my-hacks.php (compatibilidad con trucos heredados)"
 
-#: wp-admin/includes/plugin-install.php:585
-msgid "Requires WordPress Version:"
-msgstr "Necesita la versión de WordPress:"
-
 #: wp-admin/includes/class-theme-upgrader.php:51
 msgid "Removing the old version of the theme&#8230;"
 msgstr "Eliminando la versión antigua del tema&#8230;"
@@ -11709,6 +11705,10 @@ msgstr "WordPress está en la última versión."
 #: wp-admin/includes/user.php:789 wp-admin/includes/user.php:862
 msgid "Search Requests"
 msgstr "Buscar solicitudes"
+
+#: wp-admin/includes/plugin-install.php:585
+msgid "Requires WordPress Version:"
+msgstr "Requiere la versión de WordPress:"
 
 #: wp-admin/includes/ajax-actions.php:1680
 msgid "Someone"

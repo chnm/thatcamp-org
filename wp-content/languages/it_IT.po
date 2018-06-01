@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-19 19:25:43+0000\n"
+"PO-Revision-Date: 2018-05-28 07:55:20+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11689,7 +11689,7 @@ msgstr "Non approvato"
 
 #: wp-includes/comment-template.php:2255
 msgid "Post Comment"
-msgstr "Commento all'articolo"
+msgstr "Pubblica il commento"
 
 #: wp-includes/comment-template.php:2254
 msgid "Cancel reply"

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-21 15:39:58+0000\n"
+"PO-Revision-Date: 2018-05-25 14:56:25+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -187,7 +187,7 @@ msgstr "Procédures mises en œuvre en cas de fuite de données"
 
 #: wp-admin/includes/misc.php:1750
 msgid "In this section you should explain what measures you have taken to protect your users&#8217; data. This could include technical measures such as encryption; security measures such as two factor authentication; and measures such as staff training in data protection. If you have carried out a Privacy Impact Assessment, you can mention it here too."
-msgstr "Dans cette section, indiquez les mesures que vous avez prises pour protéger les données de vos utilisateurs. Cela peut inclure des mesures techniques comme le cryptage, des mesures de sécurité comme l’identification à deux facteurs ou des mesures humaines comme la mise en place d’une équipe formée à la protection des données. Si vous avez mené une analyse d’impact liée à la fuite de données privées, vous pouvez également l’indiquer ici."
+msgstr "Dans cette section, indiquez les mesures que vous avez prises pour protéger les données de vos utilisateurs. Cela peut inclure des mesures techniques comme le chiffrement, des mesures de sécurité comme l’authentification à deux facteurs ou des mesures humaines comme la mise en place d’une équipe formée à la protection des données. Si vous avez mené une analyse d’impact liée à la fuite de données privées, vous pouvez également l’indiquer ici."
 
 #: wp-admin/includes/misc.php:1748
 msgid "How we protect your data"
@@ -593,7 +593,7 @@ msgid ""
 msgstr ""
 "Bonjour,\n"
 "\n"
-"Votre demande d’export de données personnelles a été réalisé. Vous pouvez télécharger vos données personnelles en cliquant sur le lien ci-dessous. Par sécurité et afin de respecter vos données privées, ce fichier sera automatiquement supprimé le ###EXPIRATION###, alors veuillez le télécharger d’ici là.\n"
+"Votre demande d’export de données personnelles a été traitée. Vous pouvez télécharger vos données personnelles en cliquant sur le lien ci-dessous. Par sécurité et afin de respecter vos données privées, ce fichier sera automatiquement supprimé le ###EXPIRATION###, alors veuillez le télécharger d’ici là.\n"
 "\n"
 "###LINK###\n"
 "\n"
@@ -625,7 +625,7 @@ msgstr "Télécharger à nouveau les données personnelles"
 
 #: wp-admin/includes/file.php:2169
 msgid "Invalid request ID when merging exporter data."
-msgstr "ID non valide lors de la fusion des données d’export"
+msgstr "ID non valide lors de la fusion des données d’export."
 
 #: wp-admin/includes/file.php:2124
 msgid "Unable to send personal data export email."
@@ -641,7 +641,7 @@ msgstr "ID non valide lors de l’envoi par e-mail des données d’export."
 
 #: wp-admin/includes/file.php:2037
 msgid "Unable to open export file (archive) for writing."
-msgstr "Impossible d’ouvrir le fichier (archive) d’export en écriture"
+msgstr "Impossible d’ouvrir le fichier (archive) d’export en écriture."
 
 #: wp-admin/includes/file.php:1947
 msgid "Personal Data Export"
@@ -658,7 +658,7 @@ msgstr "Impossible d’ouvrir le fichier d’export (rapport HTML) en écriture.
 
 #: wp-admin/includes/file.php:1901
 msgid "Unable to protect export folder from browsing."
-msgstr "Impossible de protéger le dossier d’export contre l’affichage public"
+msgstr "Impossible de protéger le dossier d’export contre l’affichage public."
 
 #: wp-admin/includes/file.php:1885
 msgid "Invalid email address when generating export file."
@@ -666,7 +666,7 @@ msgstr "Adresse de messagerie non valide lors de la génération du fichier d’
 
 #: wp-admin/includes/file.php:1879
 msgid "Invalid request ID when generating export file."
-msgstr "ID non valide lors de la génération du fichier d’export"
+msgstr "ID non valide lors de la génération du fichier d’export."
 
 #: wp-admin/includes/file.php:1872
 msgid "Unable to generate export file. ZipArchive not available."
@@ -2072,7 +2072,7 @@ msgstr "Le mode visuel vous donne accès à un éditeur comparable à un traitem
 
 #: wp-admin/upload.php:306
 msgid "Error saving media file."
-msgstr "Une erreur est survenue pendant la sauvegarde du fichier média."
+msgstr "Une erreur est survenue lors de la sauvegarde du fichier média."
 
 #. translators: %s: number of media files
 #: wp-admin/upload.php:298
@@ -2158,7 +2158,7 @@ msgstr "Il y a une modification en cours de votre adresse de messagerie, en fave
 
 #: wp-admin/user-edit.php:199
 msgid "Error while saving the new email address. Please try again."
-msgstr "Une erreur est survenue durant l’enregistrement de votre adresse de messagerie. Veuillez réessayer."
+msgstr "Une erreur est survenue lors de l’enregistrement de votre adresse de messagerie. Veuillez réessayer."
 
 #: wp-admin/upload.php:194
 msgid "You can narrow the list by file type/status or by date using the dropdown menus above the media table."
@@ -2896,7 +2896,7 @@ msgstr "Aucun rôle"
 #. translators: 1: Title of an update, 2: Error message
 #: wp-admin/includes/class-bulk-upgrader-skin.php:41
 msgid "An error occurred while updating %1$s: %2$s"
-msgstr "Une erreur est survenue lors de la mise à jour de %1$s&nbsp; %2$s"
+msgstr "Une erreur est survenue lors de la mise à jour de %1$s : %2$s"
 
 #: wp-admin/includes/class-wp-screen.php:1214
 msgid "View Mode"
@@ -6326,7 +6326,7 @@ msgstr "Pour inviter un utilisateur de ce réseau sur ce site, saisissez son adr
 
 #: wp-admin/maint/repair.php:165
 msgid "WordPress can also attempt to optimize the database. This improves performance in some situations. Repairing and optimizing the database can take a long time and the database will be locked while optimizing."
-msgstr "WordPress peut également tenter d&rsquo;optimiser la base de données. Cela peut améliorer ses performances dans certains cas. La réparation et l&rsquo;optimisation peuvent prendre longtemps, et la base de données sera verrouillée durant l&rsquo;optimisation."
+msgstr "WordPress peut également tenter d’optimiser la base de données. Cela peut améliorer ses performances dans certains cas. La réparation et l’optimisation peuvent prendre longtemps, et la base de données sera verrouillée durant l’optimisation."
 
 #: wp-admin/maint/repair.php:162
 msgid "WordPress can automatically look for some common database problems and repair them. Repairing can take a while, so please be patient."
@@ -7662,7 +7662,7 @@ msgstr "https://wpfr.net/"
 
 #: wp-admin/options-discussion.php:68
 msgid "(Signup has been disabled. Only members of this site can comment.)"
-msgstr " (L&rsquo;inscription a été désactivée. Seuls les membres de ce site peuvent laisser un commentaire.)"
+msgstr " (L’inscription a été désactivée. Seuls les membres de ce site peuvent laisser un commentaire.)"
 
 #. translators: 1: theme name, 2: theme details URL, 3: additional link
 #. attributes, 4: version number
@@ -8222,7 +8222,7 @@ msgstr "Aucune entrée."
 #. translators: %s: host name
 #: wp-admin/includes/schema.php:1081
 msgid "The installer attempted to contact a random hostname (%s) on your domain."
-msgstr "L&rsquo;installateur a tenté de contacter un nom d&rsquo;hôte aléatoire (%s) sur votre domaine."
+msgstr " L’installateur a tenté de contacter un nom d’hôte au hasard (<code>%1$s</code>) sur votre domaine."
 
 #. translators: %s: asterisk symbol (*)
 #: wp-admin/includes/schema.php:1092
@@ -8649,7 +8649,7 @@ msgstr "Widgets disponibles"
 
 #: wp-admin/widgets.php:343
 msgid "Error in displaying the widget settings form."
-msgstr "Une erreur est survenue durant l&rsquo;affichage du formulaire de paramétrage du widget."
+msgstr "Une erreur est survenue lors de l’affichage du formulaire de réglage du widget."
 
 #: wp-admin/includes/misc.php:1056 wp-admin/includes/post.php:1805
 #: wp-admin/widgets.php:342
@@ -10652,7 +10652,7 @@ msgstr "Rien à enregistrer, l&rsquo;image n&rsquo;a pas été modifiée."
 
 #: wp-admin/includes/image-edit.php:741
 msgid "Error while saving the scaled image. Please reload the page and try again."
-msgstr "Une erreur est survenue pendant la modification de l&rsquo;échelle de l&rsquo;image. Veuillez recharger la page pour faire une nouvelle tentative."
+msgstr "Une erreur est survenue lors de la modification de l’échelle de l’image. Veuillez recharger la page et réessayer."
 
 #: wp-admin/includes/image-edit.php:718
 msgid "Unable to create new image."

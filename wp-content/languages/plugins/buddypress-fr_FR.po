@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - BuddyPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-20 11:57:35+0000\n"
+"PO-Revision-Date: 2018-05-28 14:39:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,7 +51,7 @@ msgstr "(nécessaire)"
 
 #: bp-templates/bp-nouveau/includes/notifications/template-tags.php:86
 msgid "Older First"
-msgstr "Les plus anciennes en premier"
+msgstr "Décroissant"
 
 #: bp-templates/bp-nouveau/includes/notifications/functions.php:219
 msgid "Mark Read"
@@ -167,7 +167,7 @@ msgstr "Message(s) supprimé(s)"
 
 #: bp-templates/bp-nouveau/includes/messages/ajax.php:438
 msgid "There was a problem deleting your message(s). Please try again."
-msgstr "Il y a eu un problème lors de la suppression de l’avatar. Veuillez réessayer."
+msgstr "Il y a eu un problème lors de la suppression de(s) message(s). Veuillez réessayer."
 
 #: bp-templates/bp-nouveau/includes/messages/ajax.php:203
 #: bp-templates/bp-nouveau/includes/messages/ajax.php:345
@@ -1616,7 +1616,7 @@ msgstr "Notices à tout le site"
 #. translators: accessibility text
 #: bp-templates/bp-legacy/buddypress/members/single/messages.php:49
 msgid "Sent Messages"
-msgstr "Messages envoy&eacute;s"
+msgstr "Messages envoyés"
 
 #. translators: accessibility text
 #: bp-templates/bp-legacy/buddypress/members/single/messages.php:44
@@ -1900,7 +1900,7 @@ msgstr "Quelque chose s'est mal passé."
 
 #: bp-core/bp-core-functions.php:3615 bp-core/bp-core-functions.php:3623
 msgid "You will no longer receive emails when your request to join a group has been accepted or denied."
-msgstr "Vous ne recevrez plus d'email quand vos demandes d'adhésions à un groupe seront acceptées ou rejetées."
+msgstr "Vous ne recevrez plus d’e-mail quand vos demandes d’adhésions à un groupe seront acceptées ou rejetées."
 
 #: bp-core/bp-core-functions.php:3602
 msgid "You will no longer receive emails when someone sends you a message."
@@ -2210,7 +2210,7 @@ msgstr "Items commentés"
 
 #: bp-xprofile/classes/class-bp-xprofile-field.php:1557
 msgid "Enabled"
-msgstr "Activ&eacute;"
+msgstr "Activé"
 
 #. translators: accessibility text
 #: bp-xprofile/classes/class-bp-xprofile-field.php:1554
@@ -2626,7 +2626,7 @@ msgid ""
 "\n"
 "To request membership again, visit: {{{group.url}}}"
 msgstr ""
-"Votre demande d'adhésion au groupe \"{{group.name}}\" a été rejetée.\n"
+"Votre demande d’adhésion au groupe \"{{group.name}}\" a été rejetée.\n"
 "\n"
 "Pour solliciter une nouvelle demande, cliquez ici: {{{group.url}}}"
 
@@ -2638,7 +2638,7 @@ msgstr "Votre demande d'adhésion au groupe &quot;<a href=\"{{{group.url}}}\">{{
 #. translators: do not remove {} brackets or translate its contents.
 #: bp-core/bp-core-functions.php:3480
 msgid "[{{{site.name}}}] Membership request for group \"{{group.name}}\" rejected"
-msgstr "[{{{site.name}}}] votre demande d'adhésion au groupe \"{{group.name}}\" a été rejetée"
+msgstr "[{{{site.name}}}] votre demande d’adhésion au groupe \"{{group.name}}\" a été rejetée"
 
 #. translators: do not remove {} brackets or translate its contents.
 #: bp-core/bp-core-functions.php:3476
@@ -3603,7 +3603,7 @@ msgstr "Résultats de la recherche"
 
 #: bp-themes/bp-default/members/single/profile/change-avatar.php:55
 msgid "Your avatar will be used on your profile and throughout the site. To change your avatar, please create an account with <a href=\"http://gravatar.com\">Gravatar</a> using the same email address as you used to register with this site."
-msgstr "Votre avatar sera utilisé pour votre profil et sur la totalité du site. Pour changer d'avatar, vous pouvez créer un compte chez <a href=\"http://gravatar.com\">Gravatar</a> en utilisant me même mail que celui vous avez indiqué lors de votre inscription sur ce site."
+msgstr "Votre image de profil sera utilisé pour votre profil et sur la totalité du site. Pour changer d’image de profil, vous pouvez créer un compte chez <a href=\"https://fr.gravatar.com\">Gravatar</a> en utilisant le même compte e-mail que celui vous avez indiqué lors de votre inscription sur ce site."
 
 #: bp-themes/bp-default/members/single/settings/notifications.php:49
 msgid "Email Notification"
@@ -3623,7 +3623,7 @@ msgstr "Modifier"
 
 #: bp-themes/bp-default/registration/register.php:27
 msgid "Registering for this site is easy, just fill in the fields below and we'll get a new account set up for you in no time."
-msgstr "L'inscription est simple et rapide. Remplissez le formulaire ci-dessous et votre compte sera immédiatement cr&eacute;&eacute;."
+msgstr "L’inscription est simple et rapide. Remplissez le formulaire ci-dessous et votre compte sera immédiatement créé."
 
 #: bp-themes/bp-default/search.php:10
 msgid "Site"
@@ -3631,7 +3631,7 @@ msgstr "Site"
 
 #: bp-themes/bp-default/search.php:51
 msgid "No posts found. Try a different search?"
-msgstr "Aucun article trouv&eacute;. Essayez avec d'autres critères..."
+msgstr "Aucun article trouvé. Essayez de rechercher différemment..."
 
 #: bp-themes/bp-default/sidebar.php:37
 msgid "Please <a href=\"%s\" title=\"Create an account\">create an account</a> to get started."
@@ -3657,7 +3657,7 @@ msgstr "Aucun message ne correspond à vos critères de recherche. "
 
 #: bp-themes/bp-default/members/single/profile/change-avatar.php:7
 msgid "Your avatar will be used on your profile and throughout the site. If there is a <a href=\"http://gravatar.com\">Gravatar</a> associated with your account email we will use that, or you can upload an image from your computer."
-msgstr "L'avatar est affiché sur votre profil et à travers le site. Si vous utilisez un <a href=\"http://gravatar.com\">Gravatar</a> associé au mail que vous avez indiqué lors de votre inscription, il sera affich&eacute;. Sinon vous pouvez télécharger une image de votre choix depuis votre ordinateur."
+msgstr "La photo de profil est affichée sur votre profil et à travers le site. Si vous utilisez un <a href=\"https://fr.gravatar.com\">Gravatar</a> associé au compte e-mail que vous avez indiqué lors de votre inscription, elle sera affichée. Sinon vous pouvez téléverser une image de votre choix depuis votre ordinateur."
 
 #: bp-themes/bp-default/members/single/profile/change-avatar.php:23
 msgid "If you'd like to delete your current avatar but not upload a new one, please use the delete avatar button."
@@ -3772,7 +3772,7 @@ msgstr "Grand format en %s pixels"
 
 #: bp-themes/bp-default/attachment.php:43
 msgid "Link to full size image"
-msgstr "Lien vers  l&#39;image en grand format"
+msgstr "Lien vers  l’image en grand format"
 
 #: bp-themes/bp-default/attachment.php:62
 msgid "Sorry, no attachments matched your criteria."
@@ -3870,11 +3870,11 @@ msgstr "Modifier le commentaire"
 
 #: bp-themes/bp-default/functions.php:594
 msgid "Theme activated! This theme contains <a href=\"%s\">custom header image</a> support and <a href=\"%s\">sidebar widgets</a>."
-msgstr "Thème activé ! Ce thème contient une <a href=\"%s\">image d&#39;en-tête</a> ainsi que des <a href=\"%s\">widgets</a> dans la barre latérale."
+msgstr "Thème activé ! Ce thème contient une <a href=\"%s\">image d’en-tête</a> ainsi que des <a href=\"%s\">widgets</a> dans la barre latérale."
 
 #: bp-themes/bp-default/functions.php:670
 msgid "You must be <a href=\"%1$s\">logged in</a> to post a comment."
-msgstr "Vous devez être <a href=\"%1$s\">connect&eacute;</a> pour commenter."
+msgstr "Vous devez être <a href=\"%1$s\">connecté</a> pour commenter."
 
 #: bp-themes/bp-default/archive.php:10
 msgid "You are browsing the archive for %1$s."
@@ -4346,7 +4346,7 @@ msgstr "Gestion des champs de profil"
 
 #: bp-xprofile/bp-xprofile-activity.php:63 cli/components/activity.php:960
 msgid "%s changed their profile picture"
-msgstr "%s a modifié l&#39;image de son profil"
+msgstr "%s a modifié l’image de son profil"
 
 #: bp-xprofile/bp-xprofile-activity.php:39
 #: bp-xprofile/bp-xprofile-activity.php:339
@@ -4482,7 +4482,7 @@ msgstr "Tout afficher"
 #: bp-templates/bp-nouveau/buddypress-functions.php:418
 #: bp-themes/bp-default/functions.php:175
 msgid "Rejected"
-msgstr "Rejet&eacute;"
+msgstr "Rejeté"
 
 #: bp-templates/bp-legacy/buddypress-functions.php:298
 #: bp-templates/bp-nouveau/buddypress-functions.php:417
@@ -4507,7 +4507,7 @@ msgstr "commentaires"
 #: bp-templates/bp-nouveau/buddypress-functions.php:412
 #: bp-themes/bp-default/functions.php:174
 msgid "Accepted"
-msgstr "Accept&eacute;"
+msgstr "Accepté"
 
 #: bp-templates/bp-legacy/buddypress-functions.php:61 class-buddypress.php:740
 msgid "BuddyPress Legacy"
@@ -4550,7 +4550,7 @@ msgstr "Mot de passe perdu et trouvé"
 #: bp-templates/bp-nouveau/buddypress/members/single/settings/general.php:23
 #: bp-themes/bp-default/members/single/settings/general.php:57
 msgid "Current Password <span>(required to update email or change current password)</span>"
-msgstr "Mot de passe actuel <span>(obligatoire pour changer d&#39;adresse mail ou modifier votre mot de passe)</span>"
+msgstr "Mot de passe actuel <span>(obligatoire pour changer d’adresse e-mail ou modifier votre mot de passe)</span>"
 
 #: bp-templates/bp-legacy/buddypress/members/single/settings/delete-account.php:40
 #: bp-templates/bp-nouveau/buddypress/members/single/settings/delete-account.php:21
@@ -4599,7 +4599,7 @@ msgstr "Modification des champs du groupe : %s"
 #: bp-templates/bp-legacy/buddypress/members/single/profile/change-avatar.php:85
 #: bp-templates/bp-nouveau/buddypress/members/single/profile/change-avatar.php:77
 msgid "Your profile photo will be used on your profile and throughout the site. To change your profile photo, please create an account with <a href=\"https://gravatar.com\">Gravatar</a> using the same email address as you used to register with this site."
-msgstr "Votre photo de profil sera utilisée sur votre profil et l'ensemble du site.  Pour modifier votre photo, veuillez créer un compte chez <a href=\"https://gravatar.com\">Gravatar</a> en indiquant la même adresse e-mail que celle utilisée lors de votre inscription sur ce site."
+msgstr "Votre photo de profil sera utilisée sur votre profil et l'ensemble du site.  Pour modifier votre photo, veuillez créer un compte chez <a href=\"https://fr.gravatar.com\">Gravatar</a> en indiquant la même adresse e-mail que celle utilisée lors de votre inscription sur ce site."
 
 #: bp-templates/bp-legacy/buddypress/members/single/profile/change-avatar.php:53
 #: bp-templates/bp-nouveau/buddypress/members/single/profile/change-avatar.php:44
@@ -4614,7 +4614,7 @@ msgstr "Sélectionnez une photo au format JPG, GIF ou PNG sur votre ordinateur p
 
 #: bp-templates/bp-legacy/buddypress/members/single/profile/change-avatar.php:25
 msgid "Your profile photo will be used on your profile and throughout the site. If there is a <a href=\"http://gravatar.com\">Gravatar</a> associated with your account email we will use that, or you can upload an image from your computer."
-msgstr "La photo est affichée sur votre profil et l'ensemble le site. Si vous utilisez <a href=\"http://gravatar.com\">Gravatar</a> avec le mail que vous avez indiqué lors de votre inscription, il sera affich&eacute;. Sinon vous pouvez télécharger une image de votre choix depuis votre ordinateur."
+msgstr "La photo est affichée sur votre profil et l'ensemble le site. Si vous utilisez <a href=\"https://fr.gravatar.com\">Gravatar</a> avec le compte e-mail que vous avez indiqué lors de votre inscription, elle sera affichée. Sinon vous pouvez téléverser une image de votre choix depuis votre ordinateur."
 
 #: bp-templates/bp-legacy/buddypress/members/single/profile/change-avatar.php:12
 #: bp-templates/bp-nouveau/buddypress/members/single/profile/change-avatar.php:10
@@ -4637,7 +4637,7 @@ msgstr "Notification"
 #: bp-templates/bp-nouveau/includes/functions.php:1025
 #: bp-themes/bp-default/members/single/notifications/feedback-no-notifications.php:23
 msgid "This member has no notifications."
-msgstr "Ce membre n&#39;a pas de notifications"
+msgstr "Ce membre n’a pas de notifications"
 
 #: bp-templates/bp-legacy/buddypress/members/single/notifications/feedback-no-notifications.php:29
 #: bp-templates/bp-nouveau/includes/functions.php:1084
@@ -4649,7 +4649,7 @@ msgstr "Vous n'avez aucune notification."
 #: bp-templates/bp-nouveau/includes/functions.php:1078
 #: bp-themes/bp-default/members/single/notifications/feedback-no-notifications.php:11
 msgid "This member has no unread notifications."
-msgstr "Ce membre n&#39;a aucune notification non lue."
+msgstr "Ce membre n’a aucune notification non lue."
 
 #: bp-templates/bp-legacy/buddypress/members/single/notifications/feedback-no-notifications.php:17
 #: bp-templates/bp-nouveau/includes/functions.php:1081
@@ -4692,7 +4692,7 @@ msgstr "Vous êtes seul dans cette conversation"
 #: bp-templates/bp-legacy/buddypress/members/single/messages/notices-loop.php:96
 #: bp-themes/bp-default/members/single/messages/notices-loop.php:54
 msgid "Sorry, no notices were found."
-msgstr "Désol&eacute;, aucune alerte n'a été trouvée !"
+msgstr "Désolé, aucune alerte n’a été trouvée."
 
 #: bp-templates/bp-legacy/buddypress/members/single/messages/notices-loop.php:78
 #: bp-themes/bp-default/members/single/messages/messages-loop.php:51
@@ -4711,7 +4711,7 @@ msgstr "Envoi:"
 #: bp-templates/bp-nouveau/includes/messages/ajax.php:351
 #: bp-themes/bp-default/members/single/messages/messages-loop.php:69
 msgid "Sorry, no messages were found."
-msgstr "Désol&eacute;, aucun message n'a été trouvé !"
+msgstr "Désolé, aucun message n’a été trouvé."
 
 #: bp-notifications/bp-notifications-template.php:650
 #: bp-templates/bp-legacy/buddypress/members/single/messages/messages-loop.php:145
@@ -4798,7 +4798,7 @@ msgstr "Aucune demande de contact en attente"
 #: bp-templates/bp-nouveau/includes/functions.php:935
 #: bp-themes/bp-default/registration/register.php:274
 msgid "You have successfully created your account! Please log in using the username and password you have just created."
-msgstr "Votre compte est activ&eacute;. Vous pouvez vous connecter en utilisant les identifiants que vous avez indiqué lors de votre inscription."
+msgstr "Votre compte est bien activé. Vous pouvez vous connecter en utilisant le nom d’utilisateur et le mot de passe que vous avez indiqués lors de votre inscription."
 
 #: bp-templates/bp-legacy/buddypress/members/register.php:393
 #: bp-templates/bp-nouveau/includes/functions.php:1073
@@ -4918,7 +4918,7 @@ msgstr "Informations du compte"
 #: bp-templates/bp-legacy/buddypress/members/register.php:68
 #: bp-templates/bp-nouveau/includes/functions.php:929
 msgid "Registering for this site is easy. Just fill in the fields below, and we'll get a new account set up for you in no time."
-msgstr "L'inscription est simple et rapide. Remplissez le formulaire ci-dessous et votre compte sera immédiatement cr&eacute;&eacute;."
+msgstr "L’inscription est simple et rapide. Remplissez le formulaire ci-dessous et votre compte sera immédiatement créé. "
 
 #: bp-templates/bp-legacy/buddypress/members/register.php:46
 #: bp-templates/bp-nouveau/includes/functions.php:923
@@ -4950,13 +4950,13 @@ msgstr "Veuillez indiquer une clé d'activation valide"
 #: bp-templates/bp-nouveau/buddypress/members/activate.php:22
 #: bp-themes/bp-default/registration/activate.php:25
 msgid "Your account was activated successfully! You can now <a href=\"%s\">log in</a> with the username and password you provided when you signed up."
-msgstr "Votre compte est activ&eacute;. Vous pouvez <a href=\"%s\">vous connecter</a> en utilisant les identifiants que vous avez indiqué lors de votre inscription"
+msgstr "Votre compte est activé. Vous pouvez <a href=\"%s\">vous connecter</a> en utilisant le nom d’utilisateur et le mot de passe que vous avez indiqués lors de votre inscription."
 
 #: bp-templates/bp-legacy/buddypress/members/activate.php:45
 #: bp-templates/bp-nouveau/buddypress/members/activate.php:20
 #: bp-themes/bp-default/registration/activate.php:23
 msgid "Your account was activated successfully! Your account details have been sent to you in a separate email."
-msgstr "Votre compte est activ&eacute;. Un mail contenant les détails de votre compte vous a été envoy&eacute;."
+msgstr "Votre compte est activé. Un e-mail contenant les détails de votre compte vous a été envoyé."
 
 #: bp-templates/bp-legacy/buddypress/groups/single/send-invites.php:55
 msgid "All of your friends already belong to this group."
@@ -4992,7 +4992,7 @@ msgstr "Pas de demande d'adhésion en attente."
 #: bp-themes/bp-default/members/single/friends/requests.php:38
 #: bp-themes/bp-default/members/single/groups/invites.php:24
 msgid "Reject"
-msgstr "Rejet&eacute;"
+msgstr "Rejeter"
 
 #: bp-templates/bp-legacy/buddypress/groups/single/requests-loop.php:58
 #: bp-templates/bp-legacy/buddypress/members/single/friends/requests.php:63
@@ -5210,7 +5210,7 @@ msgstr "Créer le groupe et poursuivre"
 #: bp-templates/bp-nouveau/includes/groups/template-tags.php:385
 #: bp-themes/bp-default/groups/create.php:275
 msgid "Next Step"
-msgstr "&Eacute;tape suivante"
+msgstr "Étape suivante"
 
 #: bp-templates/bp-legacy/buddypress/groups/create.php:441
 #: bp-templates/bp-nouveau/includes/groups/template-tags.php:377
@@ -5402,7 +5402,7 @@ msgstr "Ce groupe est public"
 #: bp-themes/bp-default/groups/create.php:58
 #: bp-themes/bp-default/groups/single/admin.php:56
 msgid "Privacy Options"
-msgstr "Options de confidentialit&eacute;"
+msgstr "Options de confidentialité"
 
 #: bp-templates/bp-legacy/buddypress/groups/create.php:80
 #: bp-templates/bp-legacy/buddypress/groups/single/admin/edit-details.php:26
@@ -5422,7 +5422,7 @@ msgstr "Nom du Groupe (obligatoire)"
 
 #: bp-themes/bp-default/forums/index.php:145
 msgid "You are not a member of any groups so you don't have any group forums you can post in. To start posting, first find a group that matches the topic subject you'd like to start. If this group does not exist, why not <a href='%s'>create a new group</a>? Once you have joined or created the group you can post your topic in that group's forum."
-msgstr "Vous n&#39;&ecirc;tes membre d&#39;aucun groupe et vous n&#39;avez donc aucun forum o&ugrave; poster. Pour pouvoir le faire, choisissez d&#39;abord un groupe auquel vous affilier. Si ce groupe n&#39;existe pas vous pouvez le <a href='%s'>créer</a>. Une fois que vous ferez partie d&#39;un groupe, vous pourrez poster sur le forum de ce groupe."
+msgstr "Vous n’êtes membre d’aucun groupe et vous n’avez donc aucun forum où poster. Pour pouvoir le faire, choisissez d’abord un groupe auquel vous affilier. Si ce groupe n’existe pas vous pouvez le <a href='%s'>créer</a>. Une fois que vous ferez partie d’un groupe, vous pourrez poster sur le forum de ce groupe."
 
 #: bp-themes/bp-default/forums/index.php:133
 #: bp-themes/bp-default/groups/single/forum.php:87
@@ -5459,7 +5459,7 @@ msgstr "Sans réponses"
 #: bp-themes/bp-default/groups/single/forum.php:39
 #: bp-themes/bp-default/members/single/forums.php:21
 msgid "Most Posts"
-msgstr "Le plus d&#39;articles"
+msgstr "Le plus d’articles"
 
 #: bp-themes/bp-default/forums/index.php:44
 msgid "My Topics <span>%s</span>"
@@ -5471,7 +5471,7 @@ msgstr "Tous les sujets <span>%s</span>"
 
 #: bp-themes/bp-default/forums/forums-loop.php:122
 msgid "Sorry, there were no forum topics found."
-msgstr "Aucun sujet trouv&eacute;."
+msgstr "Aucun sujet de forum trouvé."
 
 #. translators: "started by [poster] in [forum]"
 #: bp-themes/bp-default/forums/forums-loop.php:72
@@ -5520,7 +5520,7 @@ msgstr "Tous les sites <span>%s</span>"
 #: bp-templates/bp-legacy/buddypress/blogs/create.php:41
 #: bp-themes/bp-default/blogs/create.php:32
 msgid "Site registration is currently disabled"
-msgstr "L&#39;enregistrement de blog est actuellement désactivé"
+msgstr "L’enregistrement de blog est actuellement désactivé"
 
 #: bp-templates/bp-legacy/buddypress/blogs/blogs-loop.php:121
 #: bp-templates/bp-nouveau/includes/functions.php:953
@@ -5600,7 +5600,7 @@ msgstr "Pour définitivement supprimer une photo existante, mais ne pas en tél�
 #: bp-themes/bp-default/groups/single/admin.php:157
 #: bp-themes/bp-default/members/single/profile/change-avatar.php:39
 msgid "Crop Image"
-msgstr "Retailler l&#39;avatar"
+msgstr "Retailler l’image"
 
 #: bp-templates/bp-legacy/buddypress/assets/_attachments/avatars/camera.php:26
 #: bp-templates/bp-legacy/buddypress/members/single/settings/capabilities.php:30
@@ -5808,7 +5808,7 @@ msgstr "Permissions"
 
 #: bp-settings/actions/general.php:304
 msgid "You have successfully dismissed your pending email change."
-msgstr "La demande de changement de mail que vous aviez en attente a été rejetée avec succès."
+msgstr "La demande de changement d’adresse e-mail que vous aviez en attente a été rejetée avec succès."
 
 #: bp-settings/actions/general.php:292
 msgid "There was a problem verifying your new email address. Please try again."
@@ -5876,7 +5876,7 @@ msgstr "Cette adresse mail est invalide. Révisez son formattage et essayez à n
 
 #: bp-notifications/bp-notifications-template.php:1008
 msgid "Go"
-msgstr "C&#39;est parti"
+msgstr "C’est parti"
 
 #: bp-notifications/bp-notifications-template.php:1004
 msgid "Oldest First"
@@ -6438,7 +6438,7 @@ msgstr "&larr; "
 #: bp-members/classes/class-bp-registration-theme-compat.php:111
 #: bp-themes/bp-default/registration/activate.php:11
 msgid "Account Activated"
-msgstr "Compte activ&eacute;"
+msgstr "Compte activé"
 
 #: bp-members/classes/class-bp-registration-theme-compat.php:103
 #: bp-themes/bp-default/registration/register.php:266
@@ -6625,7 +6625,7 @@ msgstr "Vous êtes sur le point de réexpédier un mail d'activation au compte s
 
 #: bp-members/classes/class-bp-members-admin.php:2064
 msgid "Resend Activation Emails"
-msgstr "Réexpédier les mails d&#39;activation"
+msgstr "Réexpédier les mails d’activation"
 
 #: bp-members/classes/class-bp-members-admin.php:2059
 msgid "You are about to activate the following accounts:"
@@ -6685,8 +6685,8 @@ msgstr[1] "%s inscriptions ont été correctement effacées !"
 msgctxt "signup notsent"
 msgid "%s account was not activated."
 msgid_plural "%s accounts were not activated."
-msgstr[0] "%s compte n&#39;a pas été activé."
-msgstr[1] "%s comptes n&#39;ont pas été activés."
+msgstr[0] "%s compte n’a pas été activé."
+msgstr[1] "%s comptes n’ont pas été activés."
 
 #: bp-members/classes/class-bp-members-admin.php:1745
 msgctxt "signup resent"
@@ -6700,22 +6700,22 @@ msgctxt "signup notsent"
 msgid "%s activation email was not sent."
 msgid_plural "%s activation emails were not sent."
 msgstr[0] "%s mail d&#39;activation n&#39;a pas été envoyé."
-msgstr[1] "%s mails d&#39;activation n&#39;ont pas été envoyés."
+msgstr[1] "%s mails d’activation n’ont pas été envoyés."
 
 #: bp-members/classes/class-bp-members-admin.php:1711
 msgctxt "signup resent"
 msgid "%s activation email successfully sent! "
 msgid_plural "%s activation emails successfully sent! "
 msgstr[0] "%s mail d&#39;activation a été correctement envoyé !"
-msgstr[1] "%s mails d&#39;activations ont été correctement envoyés !"
+msgstr[1] "%s mails d’activations ont été correctement envoyés !"
 
 #: bp-members/classes/class-bp-members-admin.php:1537
 msgid "Bulk actions allow you to perform these 3 actions for the selected rows."
-msgstr "L&#39;action groupée vous permet de réaliser ces 3 actions sur la rangée sélectionnée."
+msgstr "L’action groupée vous permet de réaliser ces 3 actions sur la rangée sélectionnée."
 
 #: bp-members/classes/class-bp-members-admin.php:1536
 msgid "By clicking on a Username you will be able to activate a pending account from the confirmation screen."
-msgstr "En cliquant sur le pseudonyme, vous pouvez activer un compte en attente depuis l&#39;écran de confirmation."
+msgstr "En cliquant sur le pseudonyme, vous pouvez activer un compte en attente depuis l’écran de confirmation."
 
 #: bp-members/classes/class-bp-members-admin.php:1535
 msgid "\"Delete\" allows you to delete a pending account from your site. You will be asked to confirm this deletion."
@@ -6723,11 +6723,11 @@ msgstr "\"Supprimer\"  vous permet de supprimer un compte en attente sur votre s
 
 #: bp-members/classes/class-bp-members-admin.php:1534
 msgid "\"Email\" takes you to the confirmation screen before being able to send the activation link to the desired pending account. You can only send the activation email once per day."
-msgstr "\"Email\" vous dirigera sur l&#39;écran de confirmation d&#39;expédition du lien d&#39;activation au détenteur du compte en attente. Vous ne pouvez envoyer ce mail qu'une fois par jour."
+msgstr "\"E-mail\" vous dirigera sur l’écran de confirmation d’expédition du lien d’activation du détenteur du compte en attente. Vous ne pouvez envoyer cet e-mail qu’une fois par jour."
 
 #: bp-members/classes/class-bp-members-admin.php:1533
 msgid "Hovering over a row in the pending accounts list will display action links that allow you to manage pending accounts. You can perform the following actions:"
-msgstr "Les actions que vous pouvez effectuer sur les comptes en attente apparaissent lors du survol de la liste à l&#39;aide de votre souris. Vous pouvez mener les actions suivantes:"
+msgstr "Les actions que vous pouvez effectuer sur les comptes en attente apparaissent lors du survol de la liste à l’aide de votre souris. Vous pouvez mener les actions suivantes :"
 
 #: bp-members/classes/class-bp-members-admin.php:1526
 msgid "Using the search form, you can find pending accounts more easily. The Username and Email fields will be included in the search."
@@ -6735,11 +6735,11 @@ msgstr "Utilisez le formulaire de recherche pour retrouver plus facilement les c
 
 #: bp-members/classes/class-bp-members-admin.php:1525
 msgid "You can reorder the list of your pending accounts by clicking on the Username, Email or Registered column headers."
-msgstr "En cliquant sur le pseudonyme, l&#39;adresse mail ou la date d&#39;inscription vous pouvez réorganiser la liste des comptes placés en attente."
+msgstr "En cliquant sur le pseudonyme, l’adresse e-mail ou la date d’inscription vous pouvez réorganiser la liste des comptes placés en attente."
 
 #: bp-members/classes/class-bp-members-admin.php:1524
 msgid "From the screen options, you can customize the displayed columns and the pagination of this screen."
-msgstr "Depuis les options d&#39;écran, vous pouvez personnaliser l&#39;affichage des colonnes et la pagination des résultats sur cet écran."
+msgstr "Depuis les options d’écran, vous pouvez personnaliser l’affichage des colonnes et la pagination des résultats sur cet écran."
 
 #: bp-members/classes/class-bp-members-admin.php:1523
 msgid "This is the administration screen for pending accounts on your site."
@@ -6843,7 +6843,7 @@ msgstr "Depuis la colonne principale, vous pouvez modifier les champs des profil
 
 #: bp-members/classes/class-bp-members-admin.php:776
 msgid "This is the admin view of a user&#39;s profile."
-msgstr "Aperçu d&#39;administration d&#39;un profil utilisateur"
+msgstr "Aperçu d’administration d’un profil utilisateur"
 
 #: bp-members/classes/class-bp-members-admin.php:734
 msgid "You cannot edit the requested user."
@@ -6898,7 +6898,7 @@ msgstr "Nouveaux membres"
 
 #: bp-members/bp-members-activity.php:24
 msgid "New member registered"
-msgstr "Nouveau membre enregistr&eacute;."
+msgstr "Nouveau membre inscrit."
 
 #: bp-core/deprecated/3.0.php:176
 msgid "There was an error deleting %s from the system. Please try again."
@@ -6922,7 +6922,7 @@ msgstr "Utilisateur sélectionné: %s"
 #: bp-members/classes/class-bp-members-list-table.php:198
 #: bp-members/classes/class-bp-members-ms-list-table.php:181
 msgid "Registration is disabled. %s"
-msgstr "L&#39;enregistrement est désactivé. %s"
+msgstr "L’enregistrement est désactivé. %s"
 
 #: bp-members/classes/class-bp-members-list-table.php:193
 #: bp-members/classes/class-bp-members-list-table.php:195
@@ -7133,7 +7133,7 @@ msgstr "Vous devez accepter l'invitation en attente avant de pouvoir accéder à
 
 #: bp-groups/bp-groups-template.php:3491
 msgid "This group is not currently accessible."
-msgstr "Ce groupe n&#39;est pas accessible pour le moment."
+msgstr "Ce groupe n’est pas accessible pour le moment."
 
 #: bp-groups/bp-groups-template.php:3346
 #: bp-templates/bp-legacy/buddypress-functions.php:1557
@@ -7148,7 +7148,7 @@ msgstr "Demande envoyée"
 
 #: bp-groups/bp-groups-template.php:3316
 msgid "Accept Invitation"
-msgstr "Accepter l&#39;invitation"
+msgstr "Accepter l’invitation"
 
 #: bp-groups/bp-groups-template.php:3298
 #: bp-templates/bp-legacy/buddypress-functions.php:1555
@@ -7400,12 +7400,12 @@ msgstr "Les invitations à rejoindre le groupe ont été envoyées."
 #: bp-groups/screens/user/invites.php:53
 #: bp-templates/bp-nouveau/includes/groups/ajax.php:146
 msgid "Group invite rejected"
-msgstr "L'invitation à rejoindre le groupe a été rejetée."
+msgstr "L’invitation à rejoindre le groupe a été rejetée."
 
 #: bp-groups/screens/user/invites.php:51
 #: bp-templates/bp-nouveau/includes/groups/ajax.php:138
 msgid "Group invite could not be rejected"
-msgstr "Le forum n&#39;a pu être créé !"
+msgstr "Le forum n’a pu être créé !"
 
 #: bp-groups/screens/single/request-membership.php:28
 msgid "Group invite accepted"
@@ -7417,7 +7417,7 @@ msgstr "L'invitation à joindre le groupe n'a pu être acceptée"
 
 #: bp-groups/bp-groups-notifications.php:852
 msgid "You have an invitation to the group: %s"
-msgstr "Vous &ecirc;tes invit&eacute;(e) par le groupe %s"
+msgstr "Vous êtes invité·e par le groupe %s"
 
 #. translators: accessibility text
 #: bp-templates/bp-legacy/buddypress/groups/create.php:332
@@ -7452,7 +7452,7 @@ msgstr "Adhésion au groupe \"%s\" rejetée"
 
 #: bp-groups/bp-groups-notifications.php:565
 msgid "%d rejected group membership requests"
-msgstr "%d demandes d&#39;adhésion rejetées"
+msgstr "%d demandes d’adhésion rejetées"
 
 #: bp-groups/bp-groups-notifications.php:515
 msgid "Membership for group \"%s\" accepted"
@@ -7460,7 +7460,7 @@ msgstr "Adhésion au groupe \"%s\" acceptée."
 
 #: bp-groups/bp-groups-notifications.php:476
 msgid "%d accepted group membership requests"
-msgstr "%d demandes d&#39;adhésion acceptées"
+msgstr "%d demandes d’adhésion acceptées"
 
 #: bp-groups/bp-groups-notifications.php:421
 msgid "%s requests group membership"
@@ -7468,7 +7468,7 @@ msgstr "%s demande son adhésion au groupe"
 
 #: bp-groups/bp-groups-notifications.php:375
 msgid "%1$d new membership requests for the group \"%2$s\""
-msgstr "%1$d nouvelles demandes d&#39;adhésion au groupe \"%2$s\""
+msgstr "%1$d nouvelles demandes d’adhésion au groupe \"%2$s\""
 
 #: bp-groups/bp-groups-notifications.php:247
 msgid "a moderator"
@@ -7814,7 +7814,7 @@ msgstr "Public"
 
 #: bp-groups/bp-groups-admin.php:835
 msgid "Privacy"
-msgstr "Confidentialit&eacute;"
+msgstr "Confidentialité"
 
 #: bp-groups/bp-groups-admin.php:829 bp-themes/bp-default/groups/create.php:119
 #: bp-themes/bp-default/groups/single/admin.php:47
@@ -8111,7 +8111,7 @@ msgstr "Onglet à afficher par défaut:"
 
 #: bp-friends/classes/class-bp-core-friends-widget.php:192
 msgid "Max friends to show:"
-msgstr "Nombre maxi. d&#39;amis à afficher: "
+msgstr "Nombre maxi. d’amis à afficher : "
 
 #: bp-friends/classes/class-bp-core-friends-widget.php:190
 #: bp-members/classes/class-bp-core-members-widget.php:215
@@ -8199,7 +8199,7 @@ msgstr "Il n'y a pas encore assez de membres pour afficher une liste aléatoire.
 
 #: bp-friends/bp-friends-template.php:104
 msgid "%s hasn't created any friend connections yet."
-msgstr "%s n&#39;a pas encore noué de contact"
+msgstr "%s n’a pas encore noué de contact"
 
 #: bp-friends/bp-friends-template.php:104
 msgid "You haven't added any friend connections yet."
@@ -8246,7 +8246,7 @@ msgstr "Mise en relation retirée"
 
 #: bp-friends/screens/requests.php:34
 msgid "Friendship could not be rejected"
-msgstr "La mise en relation n&#39;a pu &ecirc;tre rejetée."
+msgstr "La mise en relation n’a pu être rejetée."
 
 #: bp-friends/screens/requests.php:32
 msgid "Friendship rejected"
@@ -8412,7 +8412,7 @@ msgstr "Page suivante"
 #: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:143
 #: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:145
 msgid "Previous page"
-msgstr "Page pr&eacute;c&eacute;dente"
+msgstr "Page précédente"
 
 #: bp-groups/bp-groups-admin.php:979
 #: bp-members/classes/class-bp-members-admin.php:819
@@ -8481,7 +8481,7 @@ msgstr "Janvier"
 
 #: bp-xprofile/classes/class-bp-xprofile-field.php:1558
 msgid "Disabled"
-msgstr "D&eacute;sactiv&eacute;"
+msgstr "Désactivé"
 
 #: bp-themes/bp-default/forums/forums-loop.php:41
 msgid "Freshness"
@@ -8866,7 +8866,7 @@ msgstr "Aucun fichier n'a été téléchargé."
 
 #: bp-core/classes/class-bp-attachment.php:163
 msgid "The uploaded file was only partially uploaded."
-msgstr "Le fichier n&#39;a pu être que partiellement chargé."
+msgstr "Le fichier n’a pu être que partiellement chargé."
 
 #: bp-core/classes/class-bp-attachment.php:162
 msgid "The uploaded file exceeds the maximum allowed file size of: %s"
@@ -9045,7 +9045,7 @@ msgstr "Déconnexion"
 
 #: bp-core/bp-core-functions.php:1581
 msgid "Not recently active"
-msgstr "Pas d&#39;activité récente"
+msgstr "Pas d’activité récente"
 
 #: bp-core/bp-core-functions.php:1298
 msgctxt "Separator in time since"
@@ -9210,7 +9210,7 @@ msgstr "Vous avez sélectionné une image plus petite que la dimension recommand
 
 #: bp-core/bp-core-avatars.php:930
 msgid "Upload failed! Error was: %s"
-msgstr "Le téléchargement a échoué. L&#39;erreur indique: %s"
+msgstr "Le téléversement a échoué. L’erreur indique: %s"
 
 #: bp-core/bp-core-attachments.php:1342 bp-core/bp-core-avatars.php:902
 msgid "Upload Failed! Error was: %s"
@@ -9571,7 +9571,7 @@ msgstr "Complété !"
 #: bp-core/admin/bp-core-admin-tools.php:235
 #: bp-core/admin/bp-core-admin-tools.php:280
 msgid "Failed!"
-msgstr "&Eacute;chec !"
+msgstr "Échec !"
 
 #: bp-core/admin/bp-core-admin-tools.php:176
 msgid "Counting the number of friends for each user&hellip; %s"
@@ -9579,7 +9579,7 @@ msgstr "Comptage du nombre d&#39;amis de chaque utilisateur&hellip; %s"
 
 #: bp-core/admin/bp-core-admin-tools.php:108
 msgid "Repair member \"last activity\" data."
-msgstr "Réparer les données des \"dernières activités\" de l&#39;utilisateur"
+msgstr "Réparer les données des \"dernières activités\" de l’utilisateur"
 
 #: bp-core/admin/bp-core-admin-tools.php:41
 msgid "Repair Items"
@@ -9701,12 +9701,12 @@ msgstr "Les liens de <em>connexion</em> sont relatifs à l'utilisateur connecté
 #: bp-core/admin/bp-core-admin-functions.php:765
 #: bp-core/admin/bp-core-admin-functions.php:780
 msgid "Logged-Out"
-msgstr "D&eacute;connect&eacute;"
+msgstr "Déconnecté"
 
 #: bp-core/admin/bp-core-admin-functions.php:762
 #: bp-core/admin/bp-core-admin-functions.php:771
 msgid "Logged-In"
-msgstr "Connect&eacute;"
+msgstr "Connecté"
 
 #. #-#-#-#-#  buddypress-code.pot (BuddyPress 3.0.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
@@ -9761,7 +9761,7 @@ msgstr "Pages"
 
 #: bp-core/admin/bp-core-admin-functions.php:326
 msgid "Each BuddyPress Component needs its own WordPress page. The following WordPress Pages have more than one component associated with them: %s."
-msgstr "Chaque composant BuddyPress nécessite <strong>sa</strong> propre page WordPress. Les pages suivantes ont actuellement plus d&#39;un composant associé: %2$s.  <a href=\"%1$s\">Réparer</a>"
+msgstr "Chaque composant BuddyPress nécessite sa propre page WordPress. Les pages suivantes ont actuellement plus d’un composant associé: %s."
 
 #: bp-core/admin/bp-core-admin-functions.php:275
 #: bp-core/admin/bp-core-admin-slugs.php:90
@@ -9874,8 +9874,8 @@ msgstr "Composant"
 #: bp-core/admin/bp-core-admin-components.php:157
 msgid "Retired <span class=\"count\">(%s)</span>"
 msgid_plural "Retired <span class=\"count\">(%s)</span>"
-msgstr[0] "<span class=\"count\">%s</span> retir&eacute;"
-msgstr[1] "<span class=\"count\">%s</span> retir&eacute;s"
+msgstr[0] "<span class=\"count\">%s</span> retiré"
+msgstr[1] "<span class=\"count\">%s</span> retirés"
 
 #: bp-core/admin/bp-core-admin-components.php:156
 msgid "Must-Use <span class=\"count\">(%s)</span>"
@@ -10171,11 +10171,11 @@ msgstr "Répertoire du site"
 
 #: bp-blogs/bp-blogs-activity.php:367 cli/components/activity.php:871
 msgid "%1$s commented on the post, %2$s"
-msgstr "%1$s a commenté l&#39;article %2$s"
+msgstr "%1$s a commenté l’article %2$s"
 
 #: bp-blogs/bp-blogs-activity.php:365
 msgid "%1$s commented on the post, %2$s, on the site %3$s"
-msgstr "%1$s a commenté l&#39;article %2$s sur le blog %3$s"
+msgstr "%1$s a commenté l’article %2$s sur le blog %3$s"
 
 #: bp-blogs/bp-blogs-activity.php:241 cli/components/activity.php:842
 msgid "%1$s wrote a new post, %2$s"
@@ -10744,7 +10744,7 @@ msgstr "Activité relative à l&#39;ID #%s"
 
 #: bp-activity/bp-activity-admin.php:992
 msgid "The activity item has been updated successfully."
-msgstr "L&#39;activité a été modifiée avec succès !"
+msgstr "L’activité a été modifiée avec succès !"
 
 #: bp-activity/bp-activity-admin.php:989
 msgid "%s activity item has been successfully unspammed."
@@ -10769,7 +10769,7 @@ msgstr "Des erreurs se sont produites pendant la mise à jour de ces activités:
 
 #: bp-activity/bp-activity-admin.php:968
 msgid "An error occurred when trying to update activity ID #%s."
-msgstr "Une erreur s&#39;est produite pendant la mise à jour de l&#39;activité ID #%s."
+msgstr "Une erreur s’est produite pendant la mise à jour de l’activité ID #%s."
 
 #: bp-activity/bp-activity-admin.php:964
 msgid "%s activity item has been permanently deleted."
@@ -10779,7 +10779,7 @@ msgstr[1] "%s activités ont été définitivement supprimées."
 
 #: bp-activity/bp-activity-admin.php:925
 msgid "These identify the object that created this activity. For example, the fields could reference a pair of site and comment IDs."
-msgstr "Ceci identifie l&#39;objet à l&#39;origine de l&#39;activité. Par exemple, ce champ peut référencer une paire ID site - ID commentaire."
+msgstr "Ceci identifie l’objet à l’origine de l’activité. Par exemple, ce champ peut référencer une paire ID site - ID commentaire."
 
 #: bp-activity/bp-activity-admin.php:922
 msgid "Secondary Item ID"
@@ -10934,11 +10934,11 @@ msgstr "Pour plus d&#39;informations:"
 
 #: bp-activity/bp-activity-admin.php:237
 msgid "For information about when and how BuddyPress uses all of these settings, see the Managing Activity link in the panel to the side."
-msgstr "Pour savoir quand et comment utiliser ces paramètres, consultez le Gestionnaire d&#39;activités du site."
+msgstr "Pour savoir quand et comment utiliser ces paramètres, consultez le Gestionnaire d’activités du site."
 
 #: bp-activity/bp-activity-admin.php:236
 msgid "<strong>Type</strong> - Each distinct kind of activity has its own type. For example, <code>created_group</code> is used when a group is created and <code>joined_group</code> is used when a user joins a group."
-msgstr "<strong>Type</strong> - Chaque sorte d&#39;activité a son propre type. Par exemple, <code>created_group</code> est utilisé quand un groupe est créé et <code>joined_group</code> est utilisé quand un utilisateur rejoint le groupe."
+msgstr "<strong>Type</strong> - Chaque activité est typée. Par exemple, <code>created_group</code> est utilisé quand un groupe est créé et <code>joined_group</code> est utilisé quand un utilisateur rejoint le groupe."
 
 #: bp-activity/bp-activity-admin.php:234
 msgid "<strong>Primary Item/Secondary Item</strong> - These identify the object that created the activity. For example, the fields could reference a comment left on a specific site. Some types of activity may only use one, or none, of these fields."
@@ -10954,11 +10954,11 @@ msgstr "Vous pouvez aussi gérer les activités depuis cet écran à l&#39;aide 
 
 #: bp-activity/bp-activity-admin.php:226
 msgid "The two big editing areas for the activity title and content are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Primary Item/Secondary Item, Link, Type, Author ID) or to choose a 1- or 2-column layout for this screen."
-msgstr "Les deux zones d&#39;éditions que sont le titre et le contenu de l&#39;activité sont figées, mais vous pouvez déplacer les autres boîtes de saisies par drag'n'drop; vous pouvez aussi les réduire ou les agrandir en cliquant sur la barre de titre de chaque boîte. Utilisez l&#39;onglet Options Ecran du coin supérieur droit pour afficher des boîtes supplémentaires (item primaire, secondaire, liens, type, ID auteur) ou pour sélectionner un affichage écran sur une ou plusieurs colonnes."
+msgstr "Les deux zones d’édition que sont le titre et le contenu de l’activité sont figées, mais vous pouvez déplacer les autres boîtes de saisies par glisser/déposer ; vous pouvez aussi les réduire ou les agrandir en cliquant sur la barre de titre de chaque boîte. Utilisez l’onglet Options Ecran du coin supérieur droit pour afficher des boîtes supplémentaires (item primaire, secondaire, liens, type, ID auteur) ou pour sélectionner un affichage écran sur une ou plusieurs colonnes."
 
 #: bp-activity/bp-activity-admin.php:225
 msgid "You edit activities made on your site similar to the way you edit a comment. This is useful if you need to change which page the activity links to, or when you notice that the author has made a typographical error."
-msgstr "Vous modifiez les activités de votre site de la même manière que vous modifiez un commentaire. Ceci est utile si vous voulez modifier la manière dont une activité est liée à une page, ou si vous détectez une faute d&#39;orthographe commise par un auteur."
+msgstr "Vous modifiez les activités de votre site de la même manière que vous modifiez un commentaire. Ceci est utile si vous voulez modifier la manière dont une activité est liée à une page, ou si vous détectez une faute d’orthographe commise par un auteur."
 
 #: bp-activity/bp-activity-admin.php:223 bp-activity/bp-activity-admin.php:277
 #: bp-core/admin/bp-core-admin-functions.php:470

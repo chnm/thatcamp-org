@@ -290,7 +290,7 @@ function vscf_shortcode($vscf_atts) {
 	}
 
 	// set nonce field
-	$nonce = wp_nonce_field( 'vscf_nonce_action', 'vscf_nonce' ); 
+	$nonce = wp_nonce_field( 'vscf_nonce_action', 'vscf_nonce', true, false ); 
 
 	// scroll back to form location after submit
 	if ($vscf_atts['scroll_to_form'] == "true") {
@@ -332,7 +332,7 @@ function vscf_shortcode($vscf_atts) {
 			<textarea name="vscf_message" id="vscf_message" rows="10" '.(isset($error_class['form_message']) ? ' class="form-control error"' : ' class="form-control"').'>'.wp_kses_post($form_data['form_message']).'</textarea>
 		</div>
 		<div'.(isset($hide_privacy) ? ' class="hide"' : ' class="form-group"').'>
-			<input type="hidden" name="vscf_privacy" id="vscf_privacy" value="no">
+			<input type="hidden" name="vscf_privacy" id="vscf_privacy_hidden" value="no">
 			<label><input type="checkbox" name="vscf_privacy" id="vscf_privacy" class="custom-control-input" value="yes" '.checked( esc_attr($form_data['form_privacy']), "yes", false ).' /> <span class="'.(isset($error_class['form_privacy']) ? "error" : "").'" >'.esc_attr($privacy_label).'</span></label>
 		</div>
 		<div class="form-group hide">

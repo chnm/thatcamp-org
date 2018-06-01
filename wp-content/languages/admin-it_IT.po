@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-22 18:40:01+0000\n"
+"PO-Revision-Date: 2018-05-26 18:36:23+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -74,7 +74,7 @@ msgstr "(si apre in una nuova scheda)"
 #. accessibility text
 #: wp-admin/includes/misc.php:1536 wp-admin/privacy.php:149
 msgid "Need help putting together your new Privacy Policy page? <a href=\"%1$s\" %2$s>Check out our guide%3$s</a> for recommendations on what content to include, along with policies suggested by your plugins and theme."
-msgstr "Hai bisogno di aiuto per realizzare la tua nuova pagina per la privacy policy? <a href=\"%1$s\" %2$s>Dai un'occhiata alla nostra guida%3$s</a> per suggerimenti su quali contenuti includere, oltre alle policy suggerite dal tuo tema o dai tuoi plugin."
+msgstr "Hai bisogno di aiuto per realizzare la tua nuova pagina sulla privacy policy? <a href=\"%1$s\" %2$s>Consulta la nostra guida%3$s</a> per le raccomandazioni su quali contenuti includere, oltre a quelli suggeriti dai tuoi plugin o dal tuo tema."
 
 #: wp-admin/tools.php:15
 msgid "Privacy Policy Guide"
@@ -106,7 +106,7 @@ msgstr "Testo suggerito:"
 
 #: wp-admin/includes/misc.php:1630
 msgid "We have suggested the sections you will need. Under each section heading you will find a short summary of what information you should provide, which will help you to get started. Some sections include suggested policy content, others will have to be completed with information from your theme and plugins."
-msgstr "Abbiamo suggerito le sezioni di cui avrai bisogno. Sotto ogni intestazione della sezione troverai un breve riassunto di quali informazioni dovresti fornire, che ti aiuterà a iniziare. Alcune sezioni includono i contenuti delle politiche suggeriti, altri dovranno essere completati con informazioni dal tuo tema e plugins."
+msgstr "Ti abbiamo suggerito le sezioni di cui avrai bisogno. Sotto ad ogni intestazione di ciascuna sezione troverai un breve riassunto sulle informazioni che dovresti fornire, le quali ti aiuteranno ad iniziare. Alcune sezioni includono i contenuti suggeriti, altre dovranno essere completate con le informazioni fornite dal tema o dai  plugin."
 
 #. translators: %s: plugin name
 #: wp-admin/includes/misc.php:1594
@@ -131,7 +131,7 @@ msgstr "Introduzione"
 
 #: wp-admin/includes/user.php:930
 msgid "Invalid request ID when processing eraser data."
-msgstr "ID della richiesta non valido durante l'elaborazione dei dati da cancellare."
+msgstr "ID richiesta non valido durante l'elaborazione dei dati da cancellare."
 
 #: wp-admin/includes/user.php:1510 wp-admin/includes/user.php:1553
 msgid "Erasing Data..."
@@ -358,17 +358,17 @@ msgstr "La quantità di informazioni che potrebbe essere obbligatoria per la pre
 msgid "Who we are"
 msgstr "Chi siamo"
 
-#: wp-admin/includes/misc.php:1632
-msgid "It is your responsibility to write a comprehensive privacy policy, to make sure it reflects all national and international legal requirements on privacy, and to keep your policy current and accurate."
-msgstr "È tua responsabilità scrivere una privacy policy comprensiva, per assicurarsi che rifletta tutti i requisiti legali nazionali e internazionali sulla privacy, e per mantenere la vostra policy attuale e accurata."
-
 #: wp-admin/includes/misc.php:1660
 msgid "In this section you should note your site URL, as well as the name of the company, organization, or individual behind it, and some accurate contact information."
 msgstr "In questa sezione è necessario riportare l'URL del sito, nonché il nome dell'azienda, dell'organizzazione o dell'individuo dietro di esso e alcune informazioni di contatto accurate."
 
+#: wp-admin/includes/misc.php:1632
+msgid "It is your responsibility to write a comprehensive privacy policy, to make sure it reflects all national and international legal requirements on privacy, and to keep your policy current and accurate."
+msgstr "È tua responsabilità scrivere una privacy policy completa, assicurandoti che rifletta tutti i requisiti legali nazionali e internazionali sulla privacy, mantenendola attuale ed accurata."
+
 #: wp-admin/includes/misc.php:1631
 msgid "Please edit your privacy policy content, making sure to delete the summaries, and adding any information from your theme and plugins. Once you publish your policy page, remember to add it to your navigation menu."
-msgstr "Modifica il contenuto della tua privacy policy, assicurandoti di eliminare i riepiloghi e aggiungere qualsiasi informazione dal tema e dai plugin. Una volta pubblicata la pagina della policy, ricordati di aggiungerla al tuo menu di navigazione."
+msgstr "Modifica il contenuto della tua privacy policy, assicurandoti di eliminare i riepiloghi e di aggiungere qualsiasi informazione fornita dal tema e dai plugin. Una volta pubblicata la tua pagina della privacy policy, ricordati anche di aggiungerla al tuo menu di navigazione."
 
 #: wp-admin/includes/misc.php:1628
 msgid "Hello,"
@@ -636,7 +636,7 @@ msgstr "Impossibile inviare l'email di esportazione dei dati personali."
 
 #: wp-admin/includes/file.php:2169
 msgid "Invalid request ID when merging exporter data."
-msgstr "ID richiesto non valido durante l'unione dei dati dell'esportatore."
+msgstr "ID richiesta non valido durante l'unione dei dati dell'esportatore."
 
 #: wp-admin/includes/file.php:1947
 msgid "Personal Data Export"
@@ -654,10 +654,6 @@ msgstr "È necessario fornire un indirizzo email valido."
 #: wp-admin/includes/file.php:1872
 msgid "Unable to generate export file. ZipArchive not available."
 msgstr "Impossibile generare il file di esportazione. ZipArchive non disponibile."
-
-#: wp-admin/includes/file.php:1879
-msgid "Invalid request ID when generating export file."
-msgstr "ID di richiesta non valido durante la generazione del file di esportazione."
 
 #: wp-admin/includes/file.php:1885
 msgid "Invalid email address when generating export file."
@@ -677,7 +673,11 @@ msgstr "Impossibile proteggere la cartella di esportazione dalla navigazione."
 
 #: wp-admin/includes/file.php:2061
 msgid "Invalid request ID when sending personal data export email."
-msgstr "ID richiesto non valido durante l'invio della email di esportazione dei dati personali."
+msgstr "ID richiesta non valido durante l'invio della email di esportazione dei dati personali."
+
+#: wp-admin/includes/file.php:1879
+msgid "Invalid request ID when generating export file."
+msgstr "ID richiesta non valido durante la generazione del file di esportazione."
 
 #: wp-admin/includes/user.php:1010
 msgid "Requester"
@@ -826,15 +826,15 @@ msgstr "&Egrave; prevista una chiave degli oggetti conservati in risposta a un a
 msgid "Expected items_removed key in response array from %1$s eraser (index %2$d)."
 msgstr "&Egrave; prevista una chiave degli oggetti rimossi in risposta a un array dai %1$s da cancellare (indice %2$d)."
 
+#: wp-admin/includes/user.php:660
+msgid "Unable to add this request. A valid email address or username must be supplied."
+msgstr "Impossibile aggiungere questa richiesta. Devi fornire un indirizzo email o nome utente validi."
+
 #: wp-admin/includes/ajax-actions.php:4034
 #: wp-admin/includes/ajax-actions.php:4215
 #: wp-admin/includes/ajax-actions.php:4229
 msgid "Invalid request ID."
-msgstr "L'ID della richiesta non è valido."
-
-#: wp-admin/includes/user.php:660
-msgid "Unable to add this request. A valid email address or username must be supplied."
-msgstr "Impossibile aggiungere questa richiesta. Devi fornire un indirizzo email o nome utente validi."
+msgstr "ID richiesta non valido."
 
 #: wp-admin/includes/plugin-install.php:595
 msgid "Requires PHP Version:"
