@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Broken Link Checker - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-22 11:20:56+0000\n"
+"PO-Revision-Date: 2018-06-16 15:34:13+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,10 +67,6 @@ msgctxt "module name"
 msgid "Pages"
 msgstr "Pages"
 
-#: includes/instances.php:114 includes/instances.php:170
-msgid "Parser '%s' not found."
-msgstr "Parser '%s' non trouv&eacute;."
-
 #: includes/link-query.php:46
 msgctxt "filter name"
 msgid "Warnings"
@@ -91,10 +87,6 @@ msgstr "Le lien est valide."
 #: includes/links.php:733 includes/links.php:835 includes/links.php:869
 msgid "Link is not valid"
 msgstr "Lien non valide"
-
-#: includes/links.php:896 includes/links.php:933
-msgid "Couldn't delete the link's database record"
-msgstr "Impossible de supprimer l'enregistrement pour la lien dans la base de donn&eacute;es"
 
 #: includes/links.php:1007
 msgctxt "link status"
@@ -117,10 +109,6 @@ msgstr "Faux positif"
 msgctxt "link status"
 msgid "OK"
 msgstr "Ok"
-
-#: includes/parsers.php:132
-msgid "Unlinking is not implemented in the '%s' parser"
-msgstr "D&eacute;lier n'est pas disponible dans le parser '%s'"
 
 #: includes/utility-class.php:246
 msgid "%d second"
@@ -176,10 +164,6 @@ msgid_plural "%d months ago"
 msgstr[0] "%d mois"
 msgstr[1] "%d mois"
 
-#: modules/checkers/http.php:448
-msgid "Request timed out."
-msgstr "Timeout de la requête."
-
 #: modules/checkers/http.php:466
 msgid "Using Snoopy"
 msgstr "Utilise Snoopy"
@@ -207,10 +191,6 @@ msgstr "Commentaire"
 #: modules/containers/acf_field.php:234 modules/containers/custom_field.php:216
 msgid "Edit this post"
 msgstr "Modifier cet article"
-
-#: modules/containers/dummy.php:34 modules/containers/dummy.php:45
-msgid "I don't know how to edit a '%s' [%d]."
-msgstr "Pas de m&eacute;thode pour modifier '%s' [%d]"
 
 #: modules/extras/googlevideo-embed.php:24
 msgid "GoogleVideo Video"
@@ -589,10 +569,6 @@ msgstr "Impossible de mettre l’article « %s » (%d)  à la corbeille car ce
 msgid "Container type '%s' not recognized"
 msgstr "Le type de contenu « %s » n’est pas reconnu."
 
-#: modules/containers/comment.php:166
-msgid "Delete Permanently"
-msgstr "Supprimer définitivement "
-
 #: includes/links.php:224
 msgid "The plugin script was terminated while trying to check the link."
 msgstr "Le script de l’extension a été interrompue lors de la vérification du lien."
@@ -638,6 +614,30 @@ msgstr "Déplacer ce commentaire dans la corbeille"
 msgid "Failed to move post \"%s\" (%d) to the trash"
 msgstr "Le déplacement de l’article « %s » (%d) dans la corbeille a échoué."
 
+#: modules/containers/comment.php:166
+msgid "Delete Permanently"
+msgstr "Supprimer définitivement"
+
+#: modules/checkers/http.php:448
+msgid "Request timed out."
+msgstr "Temps dépassé pour la requête."
+
+#: includes/instances.php:114 includes/instances.php:170
+msgid "Parser '%s' not found."
+msgstr "Analyseur « %s » non trouvé."
+
+#: includes/links.php:896 includes/links.php:933
+msgid "Couldn't delete the link's database record"
+msgstr "Impossible de supprimer l’enregistrement pour le lien dans la base de données."
+
+#: includes/parsers.php:132
+msgid "Unlinking is not implemented in the '%s' parser"
+msgstr "Délier n’est pas disponible dans l’analyseur « %s »."
+
+#: modules/containers/dummy.php:34 modules/containers/dummy.php:45
+msgid "I don't know how to edit a '%s' [%d]."
+msgstr "Pas de méthode pour modifier « %s » [%d]."
+
 #: core/core.php:2837
 msgctxt "for the \"Detected X unique URLs in Y links\" message"
 msgid "%d unique URL"
@@ -648,10 +648,6 @@ msgstr[1] "%d URL uniques détectées"
 #: core/core.php:351
 msgid "Go to Broken Links"
 msgstr "Aller aux liens cassés"
-
-#: core/core.php:644
-msgid "Settings saved."
-msgstr "R&eacute;glages enregistr&eacute;s"
 
 #: core/core.php:681
 msgid "Look For Links In"
@@ -786,10 +782,6 @@ msgstr "Appliquer"
 msgid "Misc"
 msgstr "Divers"
 
-#: core/core.php:2831
-msgid "No URLs in the work queue."
-msgstr "Aucune URL dans la file d'attente."
-
 #: core/core.php:2841
 msgctxt "for the \"Detected X unique URLs in Y links\" message"
 msgid "%d link"
@@ -805,19 +797,6 @@ msgstr "Aucun lien détecté."
 msgctxt "current load"
 msgid "Unknown"
 msgstr "Inconnu"
-
-#: core/core.php:2971 core/core.php:3009 core/core.php:3158 core/core.php:3172
-#: core/core.php:3234
-msgid "Error : link_id not specified"
-msgstr "Erreur : link_id non spécifié"
-
-#: core/core.php:3027
-msgid "Error : link_id or new_url not specified"
-msgstr "Erreur : link_id ou new_url non spécifié !"
-
-#: core/core.php:3284
-msgid "Error : link ID not specified"
-msgstr "Erreur : link ID non spécifié"
 
 #. #-#-#-#-#  broken-link-checker-code.pot (Broken Link Checker 1.11.5) 
 #. #-#-#-#-#
@@ -912,11 +891,6 @@ msgctxt "link text"
 msgid "(Multiple links)"
 msgstr "(Liens multiples)"
 
-#: includes/admin/links-page-js.php:429
-msgctxt "link suggestions"
-msgid "Searching..."
-msgstr "Rechercher..."
-
 #: includes/admin/links-page-js.php:938
 msgid "Select one or more links to edit."
 msgstr "S&eacute;lectionner un ou plusieurs liens &agrave; modifier"
@@ -974,10 +948,6 @@ msgstr "Redirections"
 msgid "Bulk Actions"
 msgstr "Actions en masse"
 
-#: includes/admin/table-printer.php:298
-msgid "Delete sources"
-msgstr "Supprimer ces sources"
-
 #: includes/admin/table-printer.php:313
 msgid "&laquo;"
 msgstr "&laquo;"
@@ -1021,10 +991,6 @@ msgstr "URL finale"
 #: includes/admin/table-printer.php:560
 msgid "Redirect count"
 msgstr "Nombre de redirections"
-
-#: includes/admin/table-printer.php:565
-msgid "Instance count"
-msgstr "Nombre d'instances"
 
 #: includes/admin/table-printer.php:593
 msgid "Log"
@@ -1095,10 +1061,6 @@ msgstr "Erreur : l’URL du lien ne doit pas être vide."
 #: core/core.php:2821
 msgid "No broken links found."
 msgstr "Aucun lien cassé trouvé."
-
-#: core/core.php:2853
-msgid "Detected %1$s in %2$s."
-msgstr "%1$s parmi %2$s."
 
 #: core/core.php:938
 msgid "Turning off this option will make the plugin report all problems as broken links."
@@ -1704,10 +1666,6 @@ msgstr "Veuillez activer l’extension séparément sur chaque site. L’activat
 msgid "Link checking will be suspended if the average <a href=\"%s\">server load</a> rises above this number. Leave this field blank to disable load limiting."
 msgstr "La vérification des liens sera suspendue si la <a href=\"%s\">charge moyenne du serveur</a>  dépasse ce taux. Laissez ce champ vide pour ne pas utiliser de limite de charge."
 
-#: core/core.php:825
-msgid "Leave empty to use the e-mail address specified in Settings &rarr; General."
-msgstr "Laissez vide pour utiliser l‘adresse e-mail spécifiée dans les réglages généraux."
-
 #: includes/admin/db-upgrade.php:97
 msgid "Failed to delete old DB tables. Database error : %s"
 msgstr "La suppression des anciennes tables dans la base de données a échoué. Erreur : %s"
@@ -1761,17 +1719,9 @@ msgstr "Voir « %s »"
 msgid "Preview &#8220;%s&#8221;"
 msgstr "Prévisualiser « %s »"
 
-#: core/core.php:2860
-msgid "Searching your blog for links..."
-msgstr "Recherche des liens de votre blog…"
-
 #: includes/admin/links-page-js.php:64 includes/admin/links-page-js.php:653
 msgid "Wait..."
 msgstr "Attendez…"
-
-#: core/core.php:2847
-msgid "Detected %1$s in %2$s and still searching..."
-msgstr "%1$s parmi %2$s. Recherche toujours en cours…"
 
 #: core/core.php:172 includes/admin/links-page-js.php:45
 msgid "Loading..."
@@ -1781,3 +1731,53 @@ msgstr "Chargement…"
 #: includes/admin/table-printer.php:702
 msgid "Dismiss"
 msgstr "Ignorer"
+
+#: core/core.php:825
+msgid "Leave empty to use the e-mail address specified in Settings &rarr; General."
+msgstr "Laissez vide pour utiliser l’adresse e-mail spécifiée dans Réglages \t Général."
+
+#: core/core.php:644
+msgid "Settings saved."
+msgstr "Réglages enregistrés"
+
+#: core/core.php:2847
+msgid "Detected %1$s in %2$s and still searching..."
+msgstr "%1$s détectés parmi %2$s. Recherche toujours en cours…"
+
+#: core/core.php:2831
+msgid "No URLs in the work queue."
+msgstr "Aucune URL dans la file d’attente."
+
+#: core/core.php:3027
+msgid "Error : link_id or new_url not specified"
+msgstr "Erreur : link_id ou new_url non spécifié !"
+
+#: core/core.php:2971 core/core.php:3009 core/core.php:3158 core/core.php:3172
+#: core/core.php:3234
+msgid "Error : link_id not specified"
+msgstr "Erreur : link_id non spécifié"
+
+#: core/core.php:2860
+msgid "Searching your blog for links..."
+msgstr "Recherche des liens de votre site…"
+
+#: core/core.php:2853
+msgid "Detected %1$s in %2$s."
+msgstr "%1$s détectés parmi %2$s."
+
+#: core/core.php:3284
+msgid "Error : link ID not specified"
+msgstr "Erreur : ID du lien non spécifié"
+
+#: includes/admin/links-page-js.php:429
+msgctxt "link suggestions"
+msgid "Searching..."
+msgstr "Rechercher…"
+
+#: includes/admin/table-printer.php:298
+msgid "Delete sources"
+msgstr "Supprimer les sources"
+
+#: includes/admin/table-printer.php:565
+msgid "Instance count"
+msgstr "Nombre d’instances"

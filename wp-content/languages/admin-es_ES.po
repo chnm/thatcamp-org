@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-31 11:12:52+0000\n"
+"PO-Revision-Date: 2018-07-03 08:04:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2221,10 +2221,6 @@ msgstr "La hora universal (%1$s) es %2$s."
 msgid "There is a pending change of the admin email to %s."
 msgstr "Hay un cambio pendiente del correo electrónico del administrador a %s."
 
-#: wp-admin/install.php:378
-msgid "WordPress has been installed. Thank you, and enjoy!"
-msgstr "WordPress ya está instalado. ¡Gracias y disfrútalo!"
-
 #. translators: %s: DO_NOT_UPGRADE_GLOBAL_TABLES
 #: wp-admin/install.php:272
 msgid "The constant %s cannot be defined when installing WordPress."
@@ -2238,6 +2234,10 @@ msgstr "Descartar el panel de bienvenida"
 #: wp-admin/install.php:259
 msgid "Your %s file has an empty database table prefix, which is not supported."
 msgstr "Tu archivo %s tiene vacío el prefijo de la tabla de la base de datos, y es obligatorio."
+
+#: wp-admin/install.php:378
+msgid "WordPress has been installed. Thank you, and enjoy!"
+msgstr "WordPress ya está instalado. ¡Gracias, y que lo disfrutes!"
 
 #: wp-admin/includes/plugin-install.php:359
 msgid "You are using a development version of WordPress. These feature plugins are also under development. <a href=\"%s\">Learn more</a>."
@@ -3630,10 +3630,6 @@ msgctxt "timezone date format"
 msgid "Y-m-d H:i:s"
 msgstr "d-m-Y H:i:s"
 
-#: wp-admin/includes/theme.php:639 wp-admin/themes.php:446
-msgid "Close details dialog"
-msgstr "Cerrar detalles del dialogo"
-
 #: wp-admin/nav-menus.php:547
 msgid "To add a custom link, <strong>expand the Custom Links section, enter a URL and link text, and click Add to Menu</strong>"
 msgstr "Para añadir un enlace personalizado, <strong>expande la sección Enlaces personalizados, e introduce una URL y un texto para el enlace, y aprieta Añadir al menú</strong>"
@@ -3703,6 +3699,10 @@ msgstr ""
 "Gracias por utilizar el sitio,\n"
 "El Webmaster\n"
 "###SITE_NAME###"
+
+#: wp-admin/includes/theme.php:639 wp-admin/themes.php:446
+msgid "Close details dialog"
+msgstr "Cerrar ventana con los detalles"
 
 #: wp-admin/includes/revision.php:208 wp-admin/includes/revision.php:250
 msgctxt "revision date short format"
@@ -4583,11 +4583,6 @@ msgstr "Gestionar subidas"
 msgid "Recently Published"
 msgstr "Publicaciones recientes"
 
-#. translators: 1: version number, 2: theme name
-#: wp-admin/includes/update.php:286
-msgid "WordPress %1$s running %2$s theme."
-msgstr "WordPress %1$s funciona con el tema %2$s."
-
 #: wp-admin/includes/dashboard.php:768
 msgid "Publishing Soon"
 msgstr "Próximas publicaciones"
@@ -4599,6 +4594,11 @@ msgstr "FALLÓ: %s"
 #: wp-admin/includes/dashboard.php:515
 msgid "What&#8217;s on your mind?"
 msgstr "¿En qué estás pensando?"
+
+#. translators: 1: version number, 2: theme name
+#: wp-admin/includes/update.php:286
+msgid "WordPress %1$s running %2$s theme."
+msgstr "WordPress %1$s está funcionando con el tema %2$s."
 
 #: wp-admin/includes/class-wp-automatic-updater.php:643
 msgid "WordPress %s is also now available."
@@ -5372,10 +5372,6 @@ msgstr "Si quieres usar el gestor de enlaces, por favor, instala el plugin <a hr
 msgid "Manage <a href=\"%1$s\">widgets</a> or <a href=\"%2$s\">menus</a>"
 msgstr "Gestiona <a href=\"%1$s\">widgets</a> o <a href=\"%2$s\">menús</a>"
 
-#: wp-admin/custom-header.php:118
-msgid "Don&#8217;t forget to click &#8220;Save Changes&#8221; when you&#8217;re done!"
-msgstr "No olvides presionar &#8220;Guardar cambios&#8221; cuando esté listo."
-
 #: wp-admin/edit-form-advanced.php:441
 msgid "Several boxes on this screen contain settings for how your content will be published, including:"
 msgstr "Muchos apartados en esta pantalla contienen configuraciones para cómo se publicará tu contenido, incluyendo:"
@@ -5399,6 +5395,10 @@ msgstr "Insertando medios"
 #: wp-admin/widgets.php:71
 msgid "When changing themes, there is often some variation in the number and setup of widget areas/sidebars and sometimes these conflicts make the transition a bit less smooth. If you changed themes and seem to be missing widgets, scroll down on this screen to the Inactive Widgets area, where all of your widgets and their settings will have been saved."
 msgstr "Al cambiar de tema, a menudo hay algunos cambios en el número y configuración de las áreas y barras laterales de los widgets, y a veces estos conflictos hacen que el cambio sea un poco menos fácil. Si has cambiado de tema y parece que se hubiesen perdido widgets, ve al final de esta página al área de Widgets inactivos, donde se guardan todos tus widgets inactivos, con sus ajustes."
+
+#: wp-admin/custom-header.php:118
+msgid "Don&#8217;t forget to click &#8220;Save Changes&#8221; when you&#8217;re done!"
+msgstr "¡No olvides hacer clic en &#8220;Guardar cambios&#8221; cuando termines!"
 
 #: wp-admin/includes/media.php:2656
 msgid "You are using the multi-file uploader. Problems? Try the <a href=\"%1$s\" target=\"%2$s\">browser uploader</a> instead."
@@ -5459,17 +5459,11 @@ msgstr "Aprende más de cómo comenzar"
 
 #: wp-admin/includes/media.php:2865
 msgid "File URL:"
-msgstr "URL archivo:"
+msgstr "URL del archivo:"
 
 #: wp-admin/edit-comments.php:178
 msgid "In the <strong>In Response To</strong> column, there are three elements. The text is the name of the post that inspired the comment, and links to the post editor for that entry. The View Post link leads to that post on your live site. The small bubble with the number in it shows the number of approved comments that post has received. If there are pending comments, a red notification circle with the number of pending comments is displayed. Clicking the notification circle will filter the comments screen to show only pending comments on that post."
 msgstr "En la columna <strong>En respuesta a</strong>  hay tres elementos. El texto es el nombre de la entrada que inspiró el comentario, y los enlaces al editor para esa entrada. El enlace de Ver entrada te lleva a esa entrada en tu sitio. La pequeña burbuja con números muestra la cantidad de comentarios aprobados que ha recibido esa entrada. Si la burbuja es gris has aprobado todos los comentarios de esa entrada. Si es azul hay comentarios pendientes. Haciendo clic en la burbuja filtrará la pantalla de comentarios para mostrar solo los comentarios de esa entrada."
-
-#. translators: Storage space that's been used. 1: Percentage of used space, 2:
-#. Total space allowed in megabytes or gigabytes
-#: wp-admin/includes/ms.php:318
-msgid "Used: %1$s%% of %2$s"
-msgstr "Usado %1$s%% de %2$s"
 
 #. translators: 1: user id, 2: user login
 #: wp-admin/users.php:252
@@ -5480,6 +5474,12 @@ msgstr "ID #%1$s: %2$s <strong>El usuario actual no será eliminado.</strong>"
 #: wp-admin/users.php:255 wp-admin/users.php:381
 msgid "ID #%1$s: %2$s"
 msgstr "ID #%1$s: %2$s"
+
+#. translators: Storage space that's been used. 1: Percentage of used space, 2:
+#. Total space allowed in megabytes or gigabytes
+#: wp-admin/includes/ms.php:318
+msgid "Used: %1$s%% of %2$s"
+msgstr "En uso: %1$s%% de %2$s"
 
 #: wp-admin/users.php:235
 msgid "Please select an option."
@@ -5526,10 +5526,6 @@ msgstr "Obtener favoritos"
 msgid "Welcome to WordPress %1$s. You will be redirected to the About WordPress screen. If not, click <a href=\"%2$s\">here</a>."
 msgstr "Bienvenido a WordPress %1$s. Serás redirigido a la pantalla Sobre WordPress. Si no es así, haz clic <a href=\"%2$s\">aquí</a>."
 
-#: wp-admin/install.php:191 wp-admin/options-reading.php:115
-msgid "Allow search engines to index this site"
-msgstr "Permitir a los buscadores que indexen el sitio"
-
 #: wp-admin/includes/dashboard.php:1571
 msgid "Get Started"
 msgstr "Comienza"
@@ -5555,21 +5551,17 @@ msgstr "Siguientes pasos"
 msgid "or, <a href=\"%s\">change your theme completely</a>"
 msgstr "o, <a href=\"%s\">cambia tu tema por completo</a>"
 
-#: wp-admin/setup-config.php:194
-msgid "Below you should enter your database connection details. If you&#8217;re not sure about these, contact your host."
-msgstr "A continuación deberás introducir los detalles de conexión a tu base de datos. Si no estás seguro de esta información contacta con tu proveedor de alojamiento web."
-
 #: wp-admin/plugin-install.php:92
 msgid "You can also browse a user&#8217;s favorite plugins, by using the Favorites link above the plugins list and entering their WordPress.org username."
 msgstr "También puedes navegar por los plugins favoritos de un usuario usando el enlace Favoritos de la parte superior derecha de la pantalla e introduciendo su nombre de usuario en WordPress.org."
 
-#: wp-admin/plugin-install.php:93
-msgid "If you want to install a plugin that you&#8217;ve downloaded elsewhere, click the Upload Plugin button above the plugins list. You will be prompted to upload the .zip package, and once uploaded, you can activate the new plugin."
-msgstr "Si quieres instalar un plugin que hayas descargado por ahí haz clic en el enlace Subir de la parte superior izquierda. Se te pedirá que subas el paquete .zip, y una vez subido podrás activar el nuevo plugin."
-
 #: wp-admin/plugin-install.php:90
 msgid "If you know what you&#8217;re looking for, Search is your best bet. The Search screen has options to search the WordPress Plugin Directory for a particular Term, Author, or Tag. You can also search the directory by selecting popular tags. Tags in larger type mean more plugins have been labeled with that tag."
 msgstr "Si sabes lo que estás buscando Buscar es tu mejor apuesta. La pantalla de búsqueda tiene opciones para buscar en el directorio de plugins de WordPress.org para un término, autor o etiqueta concretos. También puedes buscar en el directorio eligiendo las etiquetas más populares. Un tamaño de letra más grande indica un número mayor de plugins con esa etiqueta."
+
+#: wp-admin/plugin-install.php:93
+msgid "If you want to install a plugin that you&#8217;ve downloaded elsewhere, click the Upload Plugin button above the plugins list. You will be prompted to upload the .zip package, and once uploaded, you can activate the new plugin."
+msgstr "Si quieres instalar un plugin que hayas descargado por ahí haz clic en el enlace Subir de la parte superior izquierda. Se te pedirá que subas el paquete .zip, y una vez subido podrás activar el nuevo plugin."
 
 #: wp-admin/install.php:184 wp-admin/install.php:187
 #: wp-admin/options-reading.php:31 wp-admin/options-reading.php:111
@@ -5596,6 +5588,14 @@ msgstr "Hemos creado algunos enlaces para que puedas comenzar:"
 #: wp-admin/includes/plugin-install.php:325
 msgid "If you have marked plugins as favorites on WordPress.org, you can browse them here."
 msgstr "Si has marcado plugins cómo favoritos en WordPress.org, puedes verlos aquí."
+
+#: wp-admin/install.php:191 wp-admin/options-reading.php:115
+msgid "Allow search engines to index this site"
+msgstr "Permitir a los buscadores indexar este sitio"
+
+#: wp-admin/setup-config.php:194
+msgid "Below you should enter your database connection details. If you&#8217;re not sure about these, contact your host."
+msgstr "A continuación debes introducir los detalles de conexión de tu base de datos. Si no estás seguro de esta información contacta con tu proveedor de alojamiento web."
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:112
 msgctxt "Plugin Installer"
@@ -9852,13 +9852,13 @@ msgstr "Publicar por correo electrónico"
 msgid "<strong><em>Note that password</em></strong> carefully! It is a <em>random</em> password that was generated just for you."
 msgstr "¡<strong><em>Anota la contraseña</em></strong> cuidadosamente! Es una contraseña <em>aleatoria</em> que ha sido generada solo para ti."
 
-#: wp-admin/options-discussion.php:169
-msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be put in the trash. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
-msgstr "Cuando un comentario contiene alguna de las siguientes palabras en su contenido, nombre, URL o IP, se mandará a la papelera. Pon solo una palabra o IP por línea. También afectará las palabras contenidas dentro de otras, como &#8220;press&#8221; que está dentro de &#8220;WordPress&#8221;."
-
 #: wp-admin/options-discussion.php:160
 msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
 msgstr "Cuando un comentario contiene alguna de estas palabras en su contenido, nombre, URL, correo electrónico o IP se mantendrá en la <a href=\"edit-comments.php?comment_status=moderated\">cola de moderación</a>. Pon una palabra o dirección IP por línea. También afectará a las palabras contenidas dentro de otras, como &#8220;press&#8221;, que está dentro de  &#8220;WordPress&#8221;"
+
+#: wp-admin/options-discussion.php:169
+msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be put in the trash. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
+msgstr "Cuando un comentario contiene alguna de las siguientes palabras en su contenido, nombre, URL o IP, se mandará a la papelera. Pon solo una palabra o IP por línea. También afectará las palabras contenidas dentro de otras, como &#8220;press&#8221; que está dentro de &#8220;WordPress&#8221;."
 
 #. translators: %s: web.config
 #: wp-admin/options-permalink.php:322

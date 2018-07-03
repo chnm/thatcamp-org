@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-29 11:43:21+0000\n"
+"PO-Revision-Date: 2018-06-20 11:55:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -789,7 +789,7 @@ msgstr "La página de inicio y la página de entradas tienen que ser diferentes.
 msgid "There is %d error which must be fixed before you can save."
 msgid_plural "There are %d errors which must be fixed before you can save."
 msgstr[0] "Hay un error %d  que tienes que arreglar antes de guardar."
-msgstr[1] "Hay unos errores %d que tienes que arreglar antes de guardar."
+msgstr[1] "Hay %d errores que tienes que arreglar antes de guardar."
 
 #. translators: %s: URL to the Customizer to load the autosaved version
 #: wp-includes/script-loader.php:581
@@ -6022,7 +6022,7 @@ msgstr "Borrar menú"
 
 #: wp-includes/customize/class-wp-customize-nav-menu-control.php:38
 msgid "Add Items"
-msgstr "Añadir ítems"
+msgstr "Añadir elementos"
 
 #. translators: 1: error message, 2: line number
 #: wp-includes/atomlib.php:175

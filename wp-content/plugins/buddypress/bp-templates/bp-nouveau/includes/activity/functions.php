@@ -3,7 +3,7 @@
  * Activity functions
  *
  * @since 3.0.0
- * @version 3.0.0
+ * @version 3.1.0
  */
 
 // Exit if accessed directly.
@@ -84,8 +84,12 @@ function bp_nouveau_activity_localize_scripts( $params = array() ) {
 			) ),
 			'avatar_width'  => $width,
 			'avatar_height' => $height,
-			'avatar_alt'    => sprintf( __( 'Profile photo of %s', 'buddypress' ), $user_displayname ),
-			'user_domain'   => bp_loggedin_user_domain()
+			'user_domain'   => bp_loggedin_user_domain(),
+			'avatar_alt'    => sprintf(
+				/* translators: %s = member name */
+				__( 'Profile photo of %s', 'buddypress' ),
+				$user_displayname
+			),
 		) );
 	}
 
@@ -159,6 +163,8 @@ function bp_nouveau_activity_localize_scripts( $params = array() ) {
 		'whatsnewPlaceholder' => sprintf( __( "What's new, %s?", 'buddypress' ), bp_get_user_firstname( $user_displayname ) ),
 		'whatsnewLabel'       => __( 'Post what\'s new', 'buddypress' ),
 		'whatsnewpostinLabel' => __( 'Post in', 'buddypress' ),
+		'postUpdateButton'    => __( 'Post Update', 'buddypress' ),
+		'cancelButton'        => __( 'Cancel', 'buddypress' ),
 	);
 
 	if ( bp_is_group() ) {

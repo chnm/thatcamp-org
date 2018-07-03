@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP Super Cache - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-28 11:25:33+0000\n"
+"PO-Revision-Date: 2018-06-19 10:00:29+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,11 +11,11 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: Plugins - WP Super Cache - Stable (latest release)\n"
 
-#: wp-cache.php:3643
+#: wp-cache.php:3666
 msgid "WP Super Cache: could not delete files"
 msgstr "WP Super Cache: no se pudieron borrar los archivos"
 
-#: wp-cache.php:3640
+#: wp-cache.php:3663
 msgid ""
 "You should delete these files manually.\n"
 "You may need to change the permissions of the files or parent directory.\n"
@@ -31,7 +31,7 @@ msgstr ""
 "\n"
 "Gracias."
 
-#: wp-cache.php:3635
+#: wp-cache.php:3658
 msgid ""
 "Dear User,\n"
 "\n"
@@ -46,7 +46,7 @@ msgstr ""
 "\n"
 
 #: wp-cache.php:2318
-msgid "Error: Configuration file %s s missing. Please reload the page."
+msgid "Error: Configuration file %s is missing. Please reload the page."
 msgstr "Error: El archivo de configuración %s no está disponible. Por favor, recarga la página."
 
 #: wp-cache.php:2315
@@ -77,7 +77,7 @@ msgstr "Guardar ajustes"
 msgid "disable"
 msgstr "desactivar"
 
-#: wp-cache.php:3600
+#: wp-cache.php:3623
 msgid "Warning! WP Super Cache preload was interrupted but has been restarted."
 msgstr "¡Advertencia! La precarga de WP Super Cache se interrumpió pero se ha reiniciado."
 
@@ -413,11 +413,11 @@ msgstr "https://es.wordpress.org/plugins/wp-super-cache/"
 msgid "WP Super Cache"
 msgstr "WP Super Cache"
 
-#: wp-cache.php:3687
+#: wp-cache.php:3710
 msgid "Delete cache of the current page"
-msgstr "Borrar la cache de la página actual"
+msgstr "Borrar la caché de la página actual"
 
-#: wp-cache.php:3650
+#: wp-cache.php:3673
 msgid ""
 "Dear User,\n"
 "\n"
@@ -447,11 +447,11 @@ msgstr ""
 "WP Super Cache Plugin\n"
 "https://es.wordpress.org/plugins/wp-super-cache/"
 
-#: wp-cache.php:3650
+#: wp-cache.php:3673
 msgid "Supercache Uninstall Problems"
 msgstr "Problemas con la desinstalación de Supercache"
 
-#: wp-cache.php:3584
+#: wp-cache.php:3607
 msgid ""
 "Preload has been restarted.\n"
 "%s"
@@ -459,43 +459,43 @@ msgstr ""
 "La precarga ha sido reiniciada.\n"
 "%s"
 
-#: wp-cache.php:3584
+#: wp-cache.php:3607
 msgid "[%s] Preload may have stalled."
 msgstr "[%s] La precarga ha podido bloquearse."
 
-#: wp-cache.php:3541
+#: wp-cache.php:3564
 msgid "Cleaning up old supercache files."
 msgstr "Limpiando los viejos archivos de Super Cache."
 
-#: wp-cache.php:3541
+#: wp-cache.php:3564
 msgid "[%s] Cache Preload Completed"
 msgstr "[%s] Completada la precarga de caché"
 
-#: wp-cache.php:3530
+#: wp-cache.php:3553
 msgid "Scheduling next preload refresh in %d minutes."
 msgstr "Programación de la próxima actualización de precarga en %d minutos."
 
-#: wp-cache.php:3520
+#: wp-cache.php:3543
 msgid "Refreshed the following posts:"
 msgstr "Se refrescaron las siguientes publicaciones:"
 
-#: wp-cache.php:3520
+#: wp-cache.php:3543
 msgid "[%1$s] %2$d posts refreshed"
 msgstr "[%1$s] %2$d publicaciones refrescadas"
 
-#: wp-cache.php:3451 wp-cache.php:3510
+#: wp-cache.php:3474 wp-cache.php:3533
 msgid "[%1$s] Cache Preload Stopped"
 msgstr "[%1$s] Detenina la precarga de caché"
 
-#: wp-cache.php:3484
+#: wp-cache.php:3507
 msgid "[%1$s] Refreshing posts from %2$d to %3$d"
 msgstr "[%1$s] Refrescando publicaciones de %2$d a %3$d"
 
-#: wp-cache.php:3427
+#: wp-cache.php:3450
 msgid "[%1$s] Refreshing %2$s taxonomy from %3$d to %4$d"
 msgstr "[%1$s] Refrescando la taxonomía %2$s de %3$d a %4$d"
 
-#: wp-cache.php:3397
+#: wp-cache.php:3420
 msgid "[%1$s] Cache Preload Started"
 msgstr "[%1$s] Ha empezado la precarga de la caché "
 
@@ -1200,7 +1200,7 @@ msgid "Delete Cache On All Blogs"
 msgstr "Borrar la caché de todos los blogs"
 
 #: wp-cache.php:1260 wp-cache.php:2836 wp-cache.php:2855 wp-cache.php:3091
-#: wp-cache.php:3686
+#: wp-cache.php:3709
 msgid "Delete Cache"
 msgstr "Borrar caché"
 
@@ -1475,7 +1475,7 @@ msgstr "todas"
 
 #: wp-cache.php:930
 msgid "Refresh preloaded cache files every %s minutes. (0 to disable, minimum %d minutes.)"
-msgstr "Refrescar la precarga de la cache cada %s minutes. (0 para desactivar, mínimo %d minutos.)"
+msgstr "Refrescar la precarga de la caché cada %s minutos. (0 para desactivar, mínimo %d minutos.)"
 
 #: wp-cache.php:925
 msgid "Preloading creates lots of files however. Caching is done from the newest post to the oldest so please consider only caching the newest if you have lots (10,000+) of posts. This is especially important on shared hosting."
@@ -1487,19 +1487,19 @@ msgstr "Esta opción cacheará todas las entradas y páginas publicadas en tu si
 
 #: wp-cache.php:989
 msgid "Preload Cache Now"
-msgstr "Precargar la cache ahora"
+msgstr "Precargar la caché ahora"
 
-#: wp-cache.php:3779
+#: wp-cache.php:3802
 msgid "Scheduled preloading of cache cancelled."
 msgstr "Cancelada la programación de la precarga de cache."
 
-#: wp-cache.php:3754
+#: wp-cache.php:3777
 msgid "Scheduled preloading of cache almost cancelled. It may take up to a minute for it to cancel completely."
 msgstr "La cancelación de la programación de la precarga de cache está casi acabada. Puede tomar más de un minuto para que se cancele completamente."
 
 #: wp-cache.php:865 wp-cache.php:991
 msgid "Cancel Cache Preload"
-msgstr "Cancelar la precarga de la cache"
+msgstr "Cancelar la precarga de la caché"
 
 #: wp-cache.php:921
 msgid "Caching must be enabled to use this feature"
@@ -1701,15 +1701,15 @@ msgstr "¡Atención, modo PHP Safe activo!"
 msgid "Please create %s /wp-cache-config.php from wp-super-cache/wp-cache-config-sample.php"
 msgstr "Por favor, crea %s /wp-cache-config.php desde wp-super-cache/wp-cache-config-sample.php"
 
-#: wp-cache-phase2.php:2929
+#: wp-cache-phase2.php:2978
 msgid "[%1$s] WP Super Cache GC Report"
 msgstr "[%1$s] WP Super Cache GC Informe"
 
-#: wp-cache-phase2.php:2920
+#: wp-cache-phase2.php:2969
 msgid "Cache expiry cron job took more than 30 seconds. You should probably run the garbage collector more often."
 msgstr "La tarea del cron de caducidad de caché tardó más de 30 segundos. Probablemente deberías ejecutar el recolector de basura más a menudo."
 
-#: wp-cache-phase2.php:2916
+#: wp-cache-phase2.php:2965
 msgid "Cache expiry cron job failed. Job will run again in 10 seconds."
 msgstr "Error en la tarea del cron de caducidad de la caché. La tarea se ejecutará de nuevo en 10 segundos."
 

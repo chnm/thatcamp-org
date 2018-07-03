@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-28 15:53:31+0000\n"
+"PO-Revision-Date: 2018-06-06 10:44:07+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -157,13 +157,13 @@ msgstr "Dodaliśmy nowe <strong>Narzędzia</strong>, pomagające przy żądaniac
 msgid "Industry regulatory disclosure requirements"
 msgstr "Branżowe wymogi regulacyjne dotyczące ujawniania informacji"
 
-#: wp-admin/includes/misc.php:1765
-msgid "If your web site provides a service which includes automated decision making - for example, allowing customers to apply for credit, or aggregating their data into an advertising profile - you must note that this is taking place, and include information about how that information is used, what decisions are made with that aggregated data, and what rights users have over decisions made without human intervention."
-msgstr "Jeśli twoja witryna internetowa zapewnia usługi obejmujące automatyczne podejmowanie decyzji, na przykład umożliwiające klientom składanie wniosków o kredyt lub gromadzące dane użytkowników w celu opracowania profilu reklamowego, musisz o tym poinformować i zawrzeć informacje o tym jak te informacje są wykorzystywane, jakie decyzje są podejmowane korzystając z tych danych oraz jakie są prawa użytkownika odnoszące się do decyzji podejmowanych bez ingerencji ludzi."
-
 #: wp-admin/includes/misc.php:1770
 msgid "If you are a member of a regulated industry, or if you are subject to additional privacy laws, you may be required to disclose that information here."
 msgstr "Jeżeli jesteś członkiem regulowanej branży lub obowiązują cię dodatkowe przepisy dotyczące prywatności, to być może masz obowiązek ujawnienia tych informacji."
+
+#: wp-admin/includes/misc.php:1765
+msgid "If your web site provides a service which includes automated decision making - for example, allowing customers to apply for credit, or aggregating their data into an advertising profile - you must note that this is taking place, and include information about how that information is used, what decisions are made with that aggregated data, and what rights users have over decisions made without human intervention."
+msgstr "Jeśli twoja witryna internetowa zapewnia usługi obejmujące automatyczne podejmowanie decyzji, na przykład umożliwiające klientom składanie wniosków o kredyt lub gromadzące dane użytkowników w celu opracowania profilu reklamowego, musisz o tym poinformować i zawrzeć informacje o tym jak te informacje są wykorzystywane, jakie decyzje są podejmowane korzystając z tych danych oraz jakie są prawa użytkownika odnoszące się do decyzji podejmowanych bez ingerencji ludzi."
 
 #: wp-admin/includes/misc.php:1760
 msgid "If your web site receives data about users from third parties, including advertisers, this information must be included within the section of your privacy policy dealing with third party data."
@@ -271,7 +271,7 @@ msgstr "Analiza statystyk"
 
 #: wp-admin/includes/misc.php:1704
 msgid "These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracing your interaction with the embedded content if you have an account and are logged in to that website."
-msgstr "Te witryny mogą zbierać informację o tobie, używać ciasteczek, dołączać dodatkowe, zewnętrzne systemy śledzenia i monitorować twoje interakcje z osadzonym materiałem, włączając w to śledzenie twoich interakcji z osadzonym materiałem jeśli posiadasz konto i jesteś zalogowany w tamtej witrynie."
+msgstr "Witryny mogą zbierać informacje o tobie, używać ciasteczek, dołączać dodatkowe, zewnętrzne systemy śledzenia i monitorować twoje interakcje z osadzonym materiałem, włączając w to śledzenie twoich interakcji z osadzonym materiałem jeśli posiadasz konto i jesteś zalogowany w tamtej witrynie."
 
 #: wp-admin/includes/misc.php:1703
 msgid "Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website."
@@ -376,7 +376,7 @@ msgstr "Ten szablon tekstowy pomoże ci w stworzeniu polityki prywatności dla s
 
 #: wp-admin/includes/misc.php:1628
 msgid "Hello,"
-msgstr "Siema."
+msgstr "Witaj,"
 
 #: wp-admin/privacy.php:111
 msgid "As a website owner, you may need to follow national or international privacy laws. For example, you may need to create and display a privacy policy."
@@ -555,10 +555,6 @@ msgstr "polityka-prywatnosci"
 msgid "Privacy policy page updated successfully. Remember to <a href=\"%s\">update your menus</a>!"
 msgstr "Zaktualizowano stronę polityki prywatności. Proszę pamiętać, aby <a href=\"%s\">zaktualizować menu</a>!"
 
-#: wp-admin/privacy.php:112
-msgid "If you already have a privacy policy page, please select it below. If not, please create one."
-msgstr "Jeśli jest już stronę polityki prywatności, należy ją wybrać poniżej. Jeśli nie, proszę ją utworzyć."
-
 #. translators: URL to Pages Trash
 #: wp-admin/privacy.php:90
 msgid "The currently selected privacy policy page is in the trash. Please create or select new privacy policy page or <a href=\"%s\">restore the current page</a>."
@@ -567,6 +563,10 @@ msgstr "Obecnie wybrana strona polityki prywatności znajduje się w koszu. Pros
 #: wp-admin/privacy.php:80
 msgid "The currently selected privacy policy page does not exist. Please create or select new page."
 msgstr "Aktualnie wybrana strona polityki prywatności nie istnieje. Proszę utworzyć lub wybrać nową stronę."
+
+#: wp-admin/privacy.php:112
+msgid "If you already have a privacy policy page, please select it below. If not, please create one."
+msgstr "Jeśli istnieje już stronę polityki prywatności, należy ją wybrać poniżej. Jeśli nie, proszę ją utworzyć."
 
 #: wp-admin/includes/misc.php:1604
 msgid "Copy suggested policy text from %s."
@@ -1022,13 +1022,13 @@ msgstr "Od czasu do czasu WordPress może wysyłać dane do WordPress.org - nie 
 msgid "Were you confused by the steps to create a new menu? Perhaps no longer! We&#8217;ve ironed out the UX for a smoother menu creation process. Newly updated copy will guide you."
 msgstr "Czy proces tworzenia nowego menu może dezorientować? Być może już nie! Poprawiliśmy UX, aby ułatwić proces tworzenia menu. Nowo zaktualizowany WordPress poprowadzi przez samouczek."
 
-#: wp-admin/about.php:274
-msgid "Better Menu Instructions = Less Confusion"
-msgstr "Lepsza instrukcja menu = mniej problemów"
-
 #: wp-admin/about.php:268
 msgid "When you switch themes, widgets sometimes think they can just up and move location. Improvements in WordPress 4.9 offer more persistent menu and widget placement when you decide it&#8217;s time for a new theme. Additionally, you can preview installed themes or download, install, and preview new themes right. Nothing says handy like being able to preview before you deploy. "
 msgstr "Gdy są zmieniane motywy, widżety czasami mogą po prostu zmieniać lokalizację. Ulepszenia w WordPress 4.9 oferują bardziej trwałe menu i rozmieszczenie widżetów w czasie zmiany na nowy motyw. Ponadto można wyświetlić podgląd zainstalowanych motywów lub pobrać, zainstalować i wyświetlić podgląd nowych motywów. Możliwość podglądu przed wdrożeniem jest bardzo przydatna."
+
+#: wp-admin/about.php:274
+msgid "Better Menu Instructions = Less Confusion"
+msgstr "Lepsza instrukcja menu = mniej zamieszania"
 
 #: wp-admin/about.php:252
 msgid "Want to add media to your text widget? Embed images, video, and audio directly into the widget along with your text, with our simple but useful Add Media button. Woo!"
@@ -1060,7 +1060,7 @@ msgstr "Masz problem z wyświetlaniem, ale nie możesz dokładnie określić, co
 
 #: wp-admin/about.php:214
 msgid "Syntax Highlighting and Error Checking? Yes, Please!"
-msgstr "Podświetlenie składni i sprawdzanie błędów? Tak, poproszę!"
+msgstr "Podświetlenie składni i sprawdzanie błędów? Tak, proszę!"
 
 #: wp-admin/about.php:192
 msgid "Ever encounter a scenario where two designers walk into a project and designer A overrides designer B&#8217;s beautiful changes? WordPress 4.9&#8217;s design lock feature (similar to post locking) secures your draft design so that no one can make changes to it or erase all your hard work."
@@ -1105,12 +1105,6 @@ msgid "Uploaded on: %s"
 msgstr "Załaduj do: %s"
 
 #. translators: %s: package URL
-#: wp-admin/includes/class-plugin-upgrader.php:67
-#: wp-admin/includes/class-theme-upgrader.php:65
-msgid "Downloading installation package from %s&#8230;"
-msgstr "Pobieranie paczki instalacyjnej z %s&#8230;"
-
-#. translators: %s: package URL
 #: wp-admin/includes/class-language-pack-upgrader.php:116
 msgid "Downloading translation from %s&#8230;"
 msgstr "Pobieranie tłumaczenia z %s&#8230;"
@@ -1121,6 +1115,12 @@ msgstr "Pobieranie tłumaczenia z %s&#8230;"
 #: wp-admin/includes/class-theme-upgrader.php:49
 msgid "Downloading update from %s&#8230;"
 msgstr "Pobieranie aktualizacji z %s&#8230;"
+
+#. translators: %s: package URL
+#: wp-admin/includes/class-plugin-upgrader.php:67
+#: wp-admin/includes/class-theme-upgrader.php:65
+msgid "Downloading installation package from %s&#8230;"
+msgstr "Pobieranie pakietu instalacyjnego z %s&#8230;"
 
 #. translators: 1: wp-admin/includes/template.php 2: add_meta_box() 3:
 #. add_meta_boxes
@@ -1151,7 +1151,7 @@ msgstr "Nie udało się połączyć z witryną, aby sprawdzić ją pod kątem kr
 
 #: wp-admin/press-this.php:63 wp-admin/press-this.php:69
 msgid "Installation Required"
-msgstr "Wymaga instalacji "
+msgstr "Wymagana instalacja "
 
 #. translators: %s: plugin filename
 #: wp-admin/includes/plugin.php:894
@@ -1172,7 +1172,7 @@ msgstr "Podświetlanie składni"
 
 #: wp-admin/user-edit.php:266
 msgid "Disable syntax highlighting when editing code"
-msgstr "W czasie edycji kodu wyłącz podświetlanie składni."
+msgstr "Wyłącz podświetlanie składni podczas edycji kodu"
 
 #: wp-admin/setup-config.php:382 wp-admin/setup-config.php:414
 msgid "Run the installation"
@@ -1211,13 +1211,13 @@ msgstr "Głowa do góry!"
 msgid "<strong>Warning:</strong> Making changes to active plugins is not recommended."
 msgstr "<strong>Ostrzeżenie:</strong> Dokonywanie zmian w aktywnych wtyczkach nie jest zalecane."
 
-#: wp-admin/plugin-editor.php:254 wp-admin/theme-editor.php:260
-msgid "Selected file content:"
-msgstr "Wybierz zawartość pliku:"
-
 #: wp-admin/plugin-editor.php:181 wp-admin/theme-editor.php:184
 msgid "There was an error while trying to update the file. You may need to fix something and try updating again."
 msgstr "Wystąpił błąd podczas próby zaktualizowania pliku. Być może będzie trzeba coś poprawić i spróbować ponownie."
+
+#: wp-admin/plugin-editor.php:254 wp-admin/theme-editor.php:260
+msgid "Selected file content:"
+msgstr "Zawartość wybranego pliku:"
 
 #: wp-admin/options-reading.php:83
 msgid "Homepage: %s"

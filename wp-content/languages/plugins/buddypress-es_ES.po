@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - BuddyPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-24 16:54:16+0000\n"
+"PO-Revision-Date: 2018-06-07 06:09:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,7 +11,396 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: Plugins - BuddyPress - Stable (latest release)\n"
 
-#: cli/components/activity.php:968
+#. translators: Do not translate placeholders. 2 = form field name, 3 =
+#. "(required)".
+#: bp-templates/bp-nouveau/includes/template-tags.php:2253
+msgid "<label for=\"%1$s\">%2$s %3$s</label>"
+msgstr "<label for=\"%1$s\">%2$s %3$s</label>"
+
+#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:112
+msgctxt "button"
+msgid "Mark unread"
+msgstr "Marcar como no leído"
+
+#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:110
+msgctxt "button"
+msgid "Mark read"
+msgstr "Marcar como leído"
+
+#: bp-templates/bp-nouveau/includes/notifications/functions.php:227
+msgctxt "link"
+msgid "Mark Read"
+msgstr "Marcar como leído"
+
+#: bp-templates/bp-nouveau/includes/notifications/functions.php:210
+msgctxt "link"
+msgid "Mark Unread"
+msgstr "Marcar como no leído"
+
+#: bp-templates/bp-nouveau/includes/members/template-tags.php:305
+msgctxt "button"
+msgid "Reject"
+msgstr "Rechazar"
+
+#: bp-templates/bp-nouveau/includes/members/template-tags.php:289
+msgctxt "button"
+msgid "Accept"
+msgstr "Aceptar"
+
+#: bp-templates/bp-nouveau/includes/groups/functions.php:1199
+msgid "Group Administrator promotions"
+msgstr "Promociones a administrador de grupo"
+
+#: bp-templates/bp-nouveau/includes/groups/functions.php:845
+msgctxt "Customizer control label"
+msgid "Groups"
+msgstr "Grupos"
+
+#: bp-templates/bp-nouveau/includes/groups/functions.php:826
+msgid "Use tab styling for secondary navigation."
+msgstr "Utilizar pestañas para navegación secundaria."
+
+#: bp-templates/bp-nouveau/includes/groups/functions.php:820
+msgid "Use tab styling for primary navigation."
+msgstr "Utilizar pestañas para navegación primaria."
+
+#: bp-templates/bp-nouveau/includes/groups/functions.php:414
+#: bp-templates/bp-nouveau/includes/groups/functions.php:442
+msgctxt "Group invitations main menu title"
+msgid "Group Invites"
+msgstr "Invitaciones a grupos"
+
+#: bp-templates/bp-nouveau/includes/groups/functions.php:301
+#: bp-templates/bp-nouveau/includes/groups/functions.php:307
+#: bp-templates/bp-nouveau/includes/groups/functions.php:327
+#: bp-templates/bp-nouveau/includes/groups/functions.php:338
+msgctxt "Group invitations menu title"
+msgid "Invite"
+msgstr "Invitar"
+
+#: bp-templates/bp-nouveau/includes/groups/functions.php:154
+msgid "Cancel invitation %s"
+msgstr "Cancelar la invitación %s"
+
+#: bp-templates/bp-nouveau/includes/groups/functions.php:153
+msgid "Sending group invitations. Please wait."
+msgstr "Enviando invitaciones de grupo. Espera por favor."
+
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:476
+msgid "There are no more pending invitations for the group."
+msgstr "No hay más invitaciones pendientes para el grupo."
+
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:456
+msgid "The member is already a member of the group."
+msgstr "El miembro ya es miembro del grupo."
+
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:447
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:467
+msgid "Group invitation could not be removed."
+msgstr "La invitación al grupo no puede ser eliminada."
+
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:430
+msgid "Invitations sent."
+msgstr "Invitaciones enviadas."
+
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:299
+msgid "No pending group invitations found."
+msgstr "No se han encontrado invitaciones pendientes de grupo."
+
+#: bp-templates/bp-nouveau/includes/functions.php:1331
+msgctxt "button"
+msgid "Post"
+msgstr "Publicar"
+
+#: bp-templates/bp-nouveau/includes/functions.php:923
+msgid "Member registration is currently not allowed."
+msgstr "Actualmente no esta permitido el registro de miembros."
+
+#: bp-templates/bp-nouveau/includes/customizer.php:52
+msgid "Member navigation"
+msgstr "Navegación de miembros."
+
+#: bp-templates/bp-nouveau/includes/customizer.php:46
+msgid "Member front page"
+msgstr "Página de inicio para miembros"
+
+#: bp-templates/bp-nouveau/includes/classes.php:195
+msgid "(BuddyPress) Primary navigation"
+msgstr "(BuddyPress) Navegación primaria"
+
+#: bp-templates/bp-nouveau/includes/blogs/functions.php:168
+msgid "Sites loop:"
+msgstr "Bucle de sitios:"
+
+#: bp-templates/bp-nouveau/includes/activity/template-tags.php:831
+msgctxt "link"
+msgid "Spam"
+msgstr "Spam"
+
+#: bp-templates/bp-nouveau/includes/activity/template-tags.php:804
+#: bp-templates/bp-nouveau/includes/notifications/functions.php:244
+msgctxt "link"
+msgid "Delete"
+msgstr "Eliminar"
+
+#: bp-templates/bp-nouveau/includes/activity/template-tags.php:790
+msgctxt "link"
+msgid "Reply"
+msgstr "Responder"
+
+#: bp-templates/bp-nouveau/includes/activity/template-tags.php:502
+#: bp-templates/bp-nouveau/includes/activity/template-tags.php:507
+msgctxt "button"
+msgid "Spam"
+msgstr "Spam"
+
+#: bp-templates/bp-nouveau/includes/activity/template-tags.php:456
+#: bp-templates/bp-nouveau/includes/activity/template-tags.php:457
+#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:114
+msgctxt "button"
+msgid "Delete"
+msgstr "Eliminar"
+
+#: bp-templates/bp-nouveau/includes/activity/template-tags.php:347
+msgctxt "link"
+msgid "Comment"
+msgstr "Comentar"
+
+#: bp-templates/bp-nouveau/includes/activity/template-tags.php:342
+msgctxt "button"
+msgid "Comment"
+msgstr "Comentar"
+
+#: bp-templates/bp-nouveau/includes/activity/ajax.php:631
+msgid "This activity has been marked as spam and is no longer visible."
+msgstr "Esta actividad ha sido marcada como spam y no estará visible."
+
+#: bp-templates/bp-nouveau/includes/activity/ajax.php:582
+msgid "There was a problem marking this activity as spam. Please try again."
+msgstr "Hubo un problema al marcar esta actividad como Spam. Inténtalo de nuevo por favor."
+
+#: bp-templates/bp-nouveau/includes/activity/ajax.php:455
+msgid "No activites were found."
+msgstr "No se encontraron actividades."
+
+#: bp-templates/bp-nouveau/buddypress/members/single/settings/capabilities.php:19
+msgid "This member is a spammer."
+msgstr "Este miembro es un Spammer."
+
+#. translators: %s = profile field group name
+#: bp-templates/bp-nouveau/buddypress/members/single/profile/edit.php:34
+msgid "Editing \"%s\" Profile Group"
+msgstr "Editando el perfil del grupo \"%s\""
+
+#: bp-templates/bp-nouveau/buddypress/members/single/profile/change-avatar.php:77
+msgid "Your profile photo will be used on your profile and throughout the site. To change your profile photo, create an account with <a href=\"https://gravatar.com\">Gravatar</a> using the same email address as you used to register with this site."
+msgstr "Tu fotografía del perfil será usada en tu perfil y en todo el sitio. Para cambiar tu fotografía de perfil, crea una cuenta con <a href=\"https://gravatar.com\">Gravatar</a> usando el mismo correo electrónico que usaste para registrarte en este sitio."
+
+#: bp-templates/bp-nouveau/buddypress/members/single/parts/profile-visibility.php:25
+msgctxt "button"
+msgid "Change"
+msgstr "Cambiar"
+
+#: bp-templates/bp-nouveau/buddypress/members/single/parts/item-nav.php:10
+msgid "Member menu"
+msgstr "Menú de miembros"
+
+#: bp-templates/bp-nouveau/buddypress/members/register.php:91
+msgid "Yes, i'd like to create a new site"
+msgstr "Sí, me gustaría crear un nuevo sitio"
+
+#: bp-templates/bp-nouveau/buddypress/members/register.php:89
+msgid "Site Details"
+msgstr "Detalles del sitio"
+
+#: bp-templates/bp-nouveau/buddypress/members/activate.php:45
+msgctxt "button"
+msgid "Activate"
+msgstr "Activar"
+
+#: bp-templates/bp-nouveau/buddypress/groups/single/parts/header-item-actions.php:16
+msgid "Group Administrators"
+msgstr "Administradores del grupo"
+
+#: bp-templates/bp-nouveau/buddypress/groups/single/parts/header-item-actions.php:13
+msgid "Group Leadership"
+msgstr "Lideres de grupo"
+
+#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:54
+msgid "Only people who are invited can join the group."
+msgstr "Solo las personas invitadas pueden unirse al grupo."
+
+#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:44
+msgid "Only people who request membership and are accepted can join the group."
+msgstr "Solo las personas que han solicitado ser miembros y son aceptados puede unirse al grupo."
+
+#: bp-templates/bp-nouveau/buddypress/common/notices/template-notices.php:15
+#: bp-templates/bp-nouveau/buddypress/members/single/default-front.php:16
+#: bp-templates/bp-nouveau/buddypress/members/single/parts/profile-visibility.php:36
+msgctxt "button"
+msgid "Close"
+msgstr "Cerrar"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:349
+msgctxt "button"
+msgid "Send Reply"
+msgstr "Enviar respuesta"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:126
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:128
+#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:121
+msgctxt "button"
+msgid "Apply"
+msgstr "Aplicar"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:48
+msgctxt "form reset button"
+msgid "Reset"
+msgstr "Restablecer"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:150
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:151
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:88
+msgctxt "link"
+msgid "Next page"
+msgstr "Página siguiente"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:143
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:145
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:81
+msgctxt "link"
+msgid "Previous page"
+msgstr "Página anterior"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:134
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:103
+#: bp-templates/bp-nouveau/buddypress/common/search/search-form.php:19
+#: bp-templates/bp-nouveau/includes/messages/functions.php:149
+msgctxt "button"
+msgid "Search"
+msgstr "Buscar"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:130
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:100
+msgctxt "search placeholder text"
+msgid "Search"
+msgstr "Buscar"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:129
+msgctxt "heading"
+msgid "Search Members"
+msgstr "Buscar miembros"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:121
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:47
+msgctxt "button"
+msgid "Send"
+msgstr "Enviar"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:90
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:99
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:101
+msgctxt "button"
+msgid "Cancel invitation"
+msgstr "Cancelar invitación"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:86
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:92
+msgctxt "button"
+msgid "Invite"
+msgstr "Invitar"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:86
+msgid "Cancel invitation"
+msgstr "Cancelar invitación"
+
+#: bp-templates/bp-legacy/buddypress/groups/single/request-membership.php:45
+#: bp-templates/bp-nouveau/buddypress/groups/single/request-membership.php:30
+msgctxt "button"
+msgid "Send Request"
+msgstr "Enviar solicitud"
+
+#: bp-templates/bp-nouveau/buddypress/activity/comment-form.php:19
+msgctxt "heading"
+msgid "Comment"
+msgstr "Comentario"
+
+#: bp-templates/bp-nouveau/buddypress/activity/activity-loop.php:28
+msgctxt "button"
+msgid "Load More"
+msgstr "Cargar más"
+
+#: bp-templates/bp-legacy/buddypress/groups/single/request-membership.php:18
+msgid "Group membership request form"
+msgstr "Formulario de petición para unirse al grupo"
+
+#. translators:  %s =group name
+#. translators: %s = group name
+#: bp-templates/bp-legacy/buddypress/groups/single/request-membership.php:25
+#: bp-templates/bp-nouveau/buddypress/groups/single/request-membership.php:17
+msgid "You are requesting to become a member of the group \"%s\"."
+msgstr "Estas solicitando convertirte en miembro del grupo \"%s\"."
+
+#: bp-templates/bp-nouveau/buddypress/activity/comment-form.php:29
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:120
+msgctxt "button"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: bp-templates/bp-nouveau/buddypress/activity/post-form.php:17
+msgctxt "heading"
+msgid "Post Update"
+msgstr "Actualizar publicación"
+
+#: bp-templates/bp-nouveau/buddypress/assets/_attachments/avatars/camera.php:22
+msgctxt "button"
+msgid "Capture"
+msgstr "Capturar"
+
+#: bp-templates/bp-nouveau/buddypress/assets/_attachments/avatars/camera.php:23
+msgctxt "button"
+msgid "Save"
+msgstr "Guardar"
+
+#: bp-templates/bp-nouveau/buddypress/assets/_attachments/avatars/crop.php:21
+msgctxt "button"
+msgid "Crop Image"
+msgstr "Recortar imagen"
+
+#: bp-templates/bp-nouveau/buddypress/assets/_attachments/avatars/index.php:35
+#: bp-templates/bp-nouveau/buddypress/members/single/profile/change-avatar.php:36
+msgid "If you'd like to delete your current profile photo, use the delete profile photo button."
+msgstr "Si quieres borrar tu fotografía actual de perfil, usa el botón de borrar foto del perfil."
+
+#: bp-templates/bp-nouveau/buddypress/assets/_attachments/cover-images/index.php:24
+msgid "If you'd like to delete your current cover image, use the delete Cover Image button."
+msgstr "Si quieres borrar tu actual imagen de portada utiliza el botón de borrar imagen de portada."
+
+#: bp-templates/bp-nouveau/buddypress/assets/_attachments/cover-images/index.php:27
+msgctxt "button"
+msgid "Delete My Cover Image"
+msgstr "Borrar mi imagen de portada"
+
+#: bp-templates/bp-nouveau/buddypress/assets/_attachments/cover-images/index.php:34
+msgctxt "button"
+msgid "Delete Group Cover Image"
+msgstr "Borrar imagen de portada del grupo"
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/activity/form.php:42
+msgctxt "button"
+msgid "Remove item"
+msgstr "Eliminar elemento"
+
+#: bp-templates/bp-nouveau/buddypress/assets/_attachments/uploader.php:25
+msgid "Select your file"
+msgstr "Elige tu archivo"
+
+#: bp-templates/bp-nouveau/buddypress/assets/_attachments/uploader.php:27
+msgctxt "button"
+msgid "Select your file"
+msgstr "Elige tu archivo"
+
+#: cli/components/activity.php:970
 msgid "%s updated their profile"
 msgstr "%s actualizó su perfil"
 
@@ -44,28 +433,11 @@ msgstr "Mes"
 msgid "Day"
 msgstr "Día"
 
-#: bp-templates/bp-nouveau/includes/template-tags.php:2249
-msgctxt "signup required field"
-msgid "(required)"
-msgstr "(obligatorio)"
-
-#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:86
-msgid "Older First"
-msgstr "Más antiguos primero"
-
-#: bp-templates/bp-nouveau/includes/notifications/functions.php:219
-msgid "Mark Read"
-msgstr "Marcar como leído"
-
-#: bp-templates/bp-nouveau/includes/notifications/functions.php:207
-msgid "Mark Unread"
-msgstr "Marcar como no leído"
-
-#: bp-templates/bp-nouveau/includes/messages/functions.php:442
+#: bp-templates/bp-nouveau/includes/messages/functions.php:436
 msgid "New private messages"
 msgstr "Nuevos mensajes privados"
 
-#: bp-templates/bp-nouveau/includes/messages/functions.php:263
+#: bp-templates/bp-nouveau/includes/messages/functions.php:257
 msgid "New sitewide notice"
 msgstr "Nuevo aviso global"
 
@@ -86,24 +458,24 @@ msgid "Click on the message title to preview it in the Active conversation box b
 msgstr "Haz clic en el título del mensaje para ver una vista previa en la caja inferior de la conversación activa."
 
 #: bp-templates/bp-nouveau/includes/messages/functions.php:108
-msgid "Unstarring message(s). Please wait."
-msgstr "Quitando estrellas de el/los mensaje(s). Por favor, espera."
+msgid "Unstarring messages. Please wait."
+msgstr "Quitando estrellas de los mensajes. Por favor, espera."
 
 #: bp-templates/bp-nouveau/includes/messages/functions.php:107
-msgid "Starring message(s). Please wait."
-msgstr "Añadiendo estrellas al/los mensaje(s). Por favor, espera."
+msgid "Starring messages. Please wait."
+msgstr "Añadiendo estrellas a los mensajes. Por favor, espera."
 
 #: bp-templates/bp-nouveau/includes/messages/functions.php:106
-msgid "Deleting message(s). Please wait."
-msgstr "Borrando mensaje(s). Por favor, espera."
+msgid "Deleting messages. Please wait."
+msgstr "Borrando mensajes. Por favor, espera."
 
 #: bp-templates/bp-nouveau/includes/messages/functions.php:105
-msgid "Marking message(s) as unread. Please wait."
-msgstr "Marcando mensaje(s) como no leído(s). Por favor, espera."
+msgid "Marking messages as unread. Please wait."
+msgstr "Marcando mensajes como no leídos. Por favor, espera."
 
 #: bp-templates/bp-nouveau/includes/messages/functions.php:104
-msgid "Marking message(s) as read. Please wait."
-msgstr "Marcando mensaje(s) como leído(s). Por favor, espera."
+msgid "Marking messages as read. Please wait."
+msgstr "Marcando mensajes como leídos. Por favor, espera."
 
 #: bp-templates/bp-nouveau/includes/messages/functions.php:102
 msgid "Loading messages. Please wait."
@@ -121,48 +493,52 @@ msgstr "Por favor, agrega un tema a tu mensaje."
 msgid "Please add at least one recipient."
 msgstr "Por favor, agrega al menos un destinatario."
 
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:671
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:746
 msgid "Sitewide notice dismissed"
 msgstr "Aviso global descartado"
 
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:637
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:712
 msgid "There was a problem dismissing the notice. Please try again."
 msgstr "Hubo un problema al descartar el aviso. Por favor, inténtalo de nuevo."
 
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:602
-msgid "Message(s) marked as read."
-msgstr "Mensaje(s) marcado(s) como leído(s)."
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:677
+msgid "Messages marked as read."
+msgstr "Mensajes marcados como leídos."
 
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:600
-msgid "Message(s) marked as unread."
-msgstr "Mensaje(s) marcado(s) como no leído(s)."
-
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:582
-msgid "There was a problem marking your message(s) as unread. Please try again."
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:657
+msgid "There was a problem marking your messages as unread. Please try again."
 msgstr "Hubo un problema al marcar tu mensaje(s) como no leído. Por favor, inténtalo de nuevo."
 
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:576
-msgid "There was a problem marking your message(s) as read. Please try again."
-msgstr "Hubo un problema al marcar tus mensaje(s) como leído. Por favor, inténtalo de nuevo."
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:651
+msgid "There was a problem marking your messages as read. Please try again."
+msgstr "Hubo un problema al marcar tus mensajes como leídos. Por favor, inténtalo de nuevo."
 
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:479
-msgid "There was a problem unstarring your message(s). Please try agian."
-msgstr "Hubo un problema al quitar las estrellas de tu(s) mensaje(s). Por favor, inténtalo de nuevo."
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:630
+msgid "Messages successfully unstarred."
+msgstr "Mensajes eliminados de favoritos con éxito."
 
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:477
-msgid "There was a problem starring your message(s). Please try again."
-msgstr "Hubo un problema a marcar con estrellas tu(s) mensaje(s). Por favor, inténtalo de nuevo."
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:628
+msgid "Messages successfully starred."
+msgstr "Mensajes añadidos a favoritos con éxito."
 
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:461
-msgid "Message(s) deleted"
-msgstr "Mensaje(s) eliminado(s)"
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:554
+msgid "There was a problem unstarring your messages. Please try agian."
+msgstr "Hubo un problema al quitar las estrellas de tus mensajes. Por favor, inténtalo de nuevo."
 
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:438
-msgid "There was a problem deleting your message(s). Please try again."
-msgstr "Ha habido un problema borrando tu mensaje(s). Por favor, inténtalo de nuevo."
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:552
+msgid "There was a problem starring your messages. Please try again."
+msgstr "Hubo un problema a marcar con estrellas tus mensajes. Por favor, inténtalo de nuevo."
 
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:203
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:345
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:536
+msgid "Messages deleted"
+msgstr "Mensajes eliminados"
+
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:513
+msgid "There was a problem deleting your messages. Please try again."
+msgstr "Ha habido un problema borrando tus mensajes. Por favor, inténtalo de nuevo."
+
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:223
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:398
 msgid "Unauthorized request."
 msgstr "Solicitud no autorizada."
 
@@ -195,104 +571,88 @@ msgstr "(BuddyPress) Widgets"
 msgid "Groups default front page"
 msgstr "Página de inicio por defecto de grupos"
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:1210
-msgid "Group invites"
-msgstr "Invitaciones de grupo"
-
-#: bp-templates/bp-nouveau/includes/groups/functions.php:1205
+#: bp-templates/bp-nouveau/includes/groups/functions.php:1204
 msgid "Group Moderator promotions"
 msgstr "Promociones a moderador de grupo"
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:1200
-msgid "Group Admin promotions"
-msgstr "Promociones de administrador de grupo"
-
-#: bp-templates/bp-nouveau/includes/groups/functions.php:1195
+#: bp-templates/bp-nouveau/includes/groups/functions.php:1194
 msgid "Rejected Group membership requests"
 msgstr "Rechazada solicitudes de membresía grupal"
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:1190
+#: bp-templates/bp-nouveau/includes/groups/functions.php:1189
 msgid "Accepted Group membership requests"
 msgstr "Solicitudes de membresía del grupo aceptadas"
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:1185
+#: bp-templates/bp-nouveau/includes/groups/functions.php:1184
 msgid "Pending Group membership requests"
 msgstr "Solicitudes de membresía de grupo pendientes"
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:860
+#: bp-templates/bp-nouveau/includes/groups/functions.php:865
+msgid "Use tab styling for Groups directory navigation."
+msgstr "Utilizar pestañas para la navegación por el directorio de Grupos."
+
+#: bp-templates/bp-nouveau/includes/groups/functions.php:859
 msgid "Use column navigation for the Groups directory."
 msgstr "Usa la navegación de columna para el directorio de grupos."
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:853
+#: bp-templates/bp-nouveau/includes/groups/functions.php:852
 msgid "Group > Members"
 msgstr "Grupo > Miembros"
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:840
+#: bp-templates/bp-nouveau/includes/groups/functions.php:839
 msgid "Reorder the primary navigation for a group."
 msgstr "Reordenar la navegación principal para un grupo."
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:815
+#: bp-templates/bp-nouveau/includes/groups/functions.php:832
+msgid "Use tab styling for the group creation process."
+msgstr "Utilizar pestañas para el proceso de creación de Grupos."
+
+#: bp-templates/bp-nouveau/includes/groups/functions.php:814
 msgid "Display the group navigation vertically."
 msgstr "Muestra la navegación de grupo verticalmente."
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:809
+#: bp-templates/bp-nouveau/includes/groups/functions.php:808
 msgid "Display the group description in the body of the group's front page."
 msgstr "Muestra la descripción del grupo en el cuerpo de la página de inicio del grupo."
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:797
+#: bp-templates/bp-nouveau/includes/groups/functions.php:802
+msgid "Enable widget region for group homepages. When enabled, the site admin can add widgets to group pages via the Widgets panel."
+msgstr "Activar zona de widgets para las páginas de inicio de los grupos. Al activarlo, el administrador puede añadir widgets a las páginas de grupo via la página de Widgets."
+
+#: bp-templates/bp-nouveau/includes/groups/functions.php:796
 msgid "Enable custom front pages for groups."
 msgstr "Activar página de inicio por defecto para grupos."
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:693
+#: bp-templates/bp-nouveau/includes/groups/functions.php:695
+msgid "Customize the navigation menu for groups. See your changes by navigating to a group in the live-preview window."
+msgstr "Personalizar el menú de navegación para grupos. Comprueba tus cambios navegando a un grupo en la ventana de vista previa."
+
+#: bp-templates/bp-nouveau/includes/groups/functions.php:692
 msgid "Group navigation"
 msgstr "Navegación del grupo"
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:690
+#: bp-templates/bp-nouveau/includes/groups/functions.php:689
 msgid "Configure the default front page for groups."
 msgstr "Configura la página de inicio por defecto para grupos."
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:687
+#: bp-templates/bp-nouveau/includes/groups/functions.php:686
 msgid "Group front page"
 msgstr "Página de inicio del grupo"
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:502
+#: bp-templates/bp-nouveau/includes/groups/functions.php:501
 msgid "All Groups"
 msgstr "Todos los grupos"
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:475
+#: bp-templates/bp-nouveau/includes/groups/functions.php:474
 msgid "You are not allowed to perform this action."
 msgstr "No tienes permisos para realizar esta acción."
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:473
+#: bp-templates/bp-nouveau/includes/groups/functions.php:472
 msgid "Group invites preferences saved."
 msgstr "Preferencias de invitación del grupo guardadas."
 
-#: bp-templates/bp-nouveau/includes/groups/functions.php:443
-msgctxt "My Account Settings sub nav"
-msgid "Group Invites"
-msgstr "Invitaciones del grupo"
-
-#: bp-templates/bp-nouveau/includes/groups/functions.php:415
-msgctxt "My Group Invites settings screen nav"
-msgid "Group Invites"
-msgstr "Invitaciones del grupo"
-
-#: bp-templates/bp-nouveau/includes/groups/functions.php:302
-#: bp-templates/bp-nouveau/includes/groups/functions.php:308
-msgctxt "Group screen nav"
-msgid "Invite"
-msgstr "Invitar"
-
-#: bp-templates/bp-nouveau/includes/groups/functions.php:154
-msgid "Disinvite %s"
-msgstr "Anular invitación %s"
-
-#: bp-templates/bp-nouveau/includes/groups/functions.php:153
-msgid "Sending the invites. Please wait."
-msgstr "Enviando invitaciones. Por favor, espera."
-
 #: bp-templates/bp-nouveau/includes/groups/functions.php:152
-msgid "Invites cleared. Please use one of the available tabs to select members to invite."
+msgid "Group invitations cleared. Please use one of the available tabs to select members to invite."
 msgstr "Invitaciones vaciadas, por favor utiliza una de las pestañas disponibles para seleccionar a los miembros a invitar."
 
 #: bp-templates/bp-nouveau/includes/groups/functions.php:151
@@ -323,78 +683,67 @@ msgid "Home (Activity)"
 msgstr "Inicio (Actividad)"
 
 #: bp-templates/bp-nouveau/includes/groups/classes.php:242
-#: bp-templates/bp-nouveau/includes/groups/functions.php:328
-#: bp-templates/bp-nouveau/includes/groups/functions.php:339
 msgctxt "My Group screen nav"
 msgid "Invite"
 msgstr "Invitar"
 
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:466
-msgid "No more pending invites for the group."
-msgstr "No más invitaciones pendientes para el grupo."
+#. translators: count of users affected
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:411
+msgid "Invitation failed for %s user."
+msgid_plural "Invitation failed for %s users."
+msgstr[0] "Ha fallado la invitación al usuario %s."
+msgstr[1] "Han fallado las invitaciones a los usuarios %s."
 
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:457
-msgid "Invite could not be removed successfully."
-msgstr "La invitación no se pudo eliminar con éxito."
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:370
+msgid "You are not allowed to send invitations for this group."
+msgstr "No tienes permisos para enviar invitaciones a este grupo."
 
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:446
-msgid "Too late! The user is already a member of the group."
-msgstr "¡Demasiado tarde! El usuario ya es un miembro del grupo."
-
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:437
-msgid "Invites could not be removed. Please try again."
-msgstr "Las invitaciones no se pudieron eliminar. Por favor, inténtalo de nuevo."
-
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:420
-msgid "Invites sent."
-msgstr "Invitaciones enviadas."
-
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:368
-msgid "You are not allowed to send invites for this group."
-msgstr "No tienes permisos para enviar invitaciones para este grupo."
-
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:352
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:354
 msgid "Invites could not be sent. Please try again."
 msgstr "No se pudieron enviar las invitaciones. Por favor, inténtalo de nuevo."
 
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:323
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:325
 msgid "You have no friends!"
 msgstr "¡No tienes amigos!"
 
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:317
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:319
 msgid "All your friends are already members of this group, or have already received an invite to join this group, or have requested to join it."
 msgstr "Todos tus amigos ya son miembros de este grupo o ya recibieron una invitación para unirse a este grupo o solicitaron unirse a él."
 
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:311
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:313
 msgid "No members were found. Try another filter."
 msgstr "No se encontraron miembros. Prueba con otro filtro."
 
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:304
-msgid "You can view all the group's pending invites from this screen."
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:306
+msgid "You can view the group's pending invitations from this screen."
 msgstr "Puedes ver todas las invitaciones pendientes del grupo desde esta pantalla."
 
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:297
-msgid "No pending invites found."
-msgstr "No se encontraron invitaciones pendientes."
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:292
+msgid "Select friends to invite by clicking the + button. Once you've made your selection, use the \"Send Invites\" navigation item to continue."
+msgstr "Selecciona los amigos a invitar haciendo click en el botón de +. Una vez hayas hecho tu selección, utiliza la opción de 'Enviar Invitaciones' para continuar."
 
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:211
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:287
+msgid "Select members to invite by clicking the + button. Once you've made your selection, use the \"Send Invites\" navigation item to continue."
+msgstr "Al hacer clic en el botón + selecciona los miembros a invitar. Una vez hecha tu selección, utiliza el elemento de navegación \"Enviar invitaciones\" para continuar."
+
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:213
 msgid "Error leaving group."
 msgstr "Error al salir del grupo."
 
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:190
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:192
 msgid "Error requesting membership."
 msgstr "Error al solicitar membresía."
 
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:169
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:171
 msgid "Error joining this group."
 msgstr "Error al unirse a este grupo."
 
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:123
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:125
 msgid "Group invite accepted."
 msgstr "Invitación grupal aceptada."
 
 #: bp-templates/bp-nouveau/includes/groups/ajax.php:104
-msgid "Group invite could not be accepted."
+msgid "Group invitation could not be accepted."
 msgstr "La invitación del grupo no pudo ser aceptada."
 
 #: bp-templates/bp-nouveau/includes/groups/ajax.php:80
@@ -404,36 +753,6 @@ msgstr "Ya eres un miembro del grupo."
 #: bp-templates/bp-nouveau/includes/groups/ajax.php:79
 msgid "You cannot join this group."
 msgstr "No puedes unirte a este grupo."
-
-#: bp-templates/bp-nouveau/includes/functions.php:1179
-msgctxt "signup field label"
-msgid "Site Title%s"
-msgstr "Título del sitio%s"
-
-#: bp-templates/bp-nouveau/includes/functions.php:1171
-msgctxt "signup field label"
-msgid "Site URL%s"
-msgstr "URL del sitio%s"
-
-#: bp-templates/bp-nouveau/includes/functions.php:1161
-msgctxt "signup field label"
-msgid "Confirm Password%s"
-msgstr "Confirmar la contraseña%s"
-
-#: bp-templates/bp-nouveau/includes/functions.php:1153
-msgctxt "signup field label"
-msgid "Choose a Password%s"
-msgstr "Escribe una contraseña%s"
-
-#: bp-templates/bp-nouveau/includes/functions.php:1145
-msgctxt "signup field label"
-msgid "Email Address%s"
-msgstr "Dirección de correo electrónivo%s"
-
-#: bp-templates/bp-nouveau/includes/functions.php:1137
-msgctxt "signup field label"
-msgid "Username%s"
-msgstr "Nombre de usuario%s"
 
 #: bp-templates/bp-nouveau/includes/functions.php:1097
 msgid "Loading your groups. Please wait."
@@ -464,20 +783,20 @@ msgid "Loading notifications. Please wait."
 msgstr "Cargando avisos. Por favor espera."
 
 #: bp-templates/bp-nouveau/includes/functions.php:1049
-msgid "Loading the user's groups. Please wait."
-msgstr "Cargando los grupos del usuario. Por favor, espera."
+msgid "Loading the member's groups. Please wait."
+msgstr "Cargando los grupos del miembro. Por favor, espera."
 
 #: bp-templates/bp-nouveau/includes/functions.php:1045
-msgid "Loading the user's friends. Please wait."
-msgstr "Cargando los amigos del usuario. Por favor, espera."
+msgid "Loading the member's friends. Please wait."
+msgstr "Cargando los amigos del miembro. Por favor, espera."
 
 #: bp-templates/bp-nouveau/includes/functions.php:1041
-msgid "Loading the user's blogs. Please wait."
-msgstr "Cargando los blogs del usuario. Por favor, espera."
+msgid "Loading the member's blogs. Please wait."
+msgstr "Cargando los blogs del miembro. Por favor, espera."
 
 #: bp-templates/bp-nouveau/includes/functions.php:1037
-msgid "Loading the user's updates. Please wait."
-msgstr "Cargando las actualizaciones del usuario. Por favor, espera."
+msgid "Loading the member's updates. Please wait."
+msgstr "Cargando las actualizaciones del miembro. Por favor, espera."
 
 #: bp-templates/bp-nouveau/includes/functions.php:1033
 msgid "Deleting this account will delete all of the content it has created. It will be completely unrecoverable."
@@ -568,8 +887,8 @@ msgid "Add widgets here to appear in the front page of each member of your commu
 msgstr "Agrega widgets aquí para que aparezcan en la página de inicio de cada miembro de tu comunidad."
 
 #: bp-templates/bp-nouveau/includes/functions.php:319
-msgid "BuddyPress User's Home"
-msgstr "Página de inicio del usuario de BuddyPress"
+msgid "BuddyPress Member's Home"
+msgstr "Página de inicio del miembro de BuddyPress"
 
 #: bp-templates/bp-nouveau/includes/friends/loader.php:106
 msgid "Pending friendship requests"
@@ -597,9 +916,13 @@ msgstr "Amistad aceptada."
 
 #: bp-templates/bp-nouveau/includes/friends/ajax.php:68
 #: bp-templates/bp-nouveau/includes/groups/ajax.php:47
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:257
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:259
 msgid "There was a problem performing this action. Please try again."
 msgstr "Hubo un problema al realizar esta acción. Por favor, inténtalo de nuevo."
+
+#: bp-templates/bp-nouveau/includes/customizer.php:283
+msgid "Use tab styling for Members directory navigation."
+msgstr "Utilizar pestañas para la navegación por el directorio de Miembros."
 
 #: bp-templates/bp-nouveau/includes/customizer.php:277
 msgid "Use column navigation for the Members directory."
@@ -613,17 +936,33 @@ msgstr "Miembro > Amigos"
 msgid "Reorder the primary navigation for a user."
 msgstr "Reordenar la navegación principal para un usuario."
 
+#: bp-templates/bp-nouveau/includes/customizer.php:250
+msgid "Use tab styling for secondary nav."
+msgstr "Utilizar pestañas para la navegación secundaria."
+
+#: bp-templates/bp-nouveau/includes/customizer.php:244
+msgid "Use tab styling for primary nav."
+msgstr "Utilizar pestañas para la navegación primaria."
+
 #: bp-templates/bp-nouveau/includes/customizer.php:238
-msgid "Display the user navigation vertically."
-msgstr "Muestra la navegación del usuario verticalmente."
+msgid "Display the member navigation vertically."
+msgstr "Muestra la navegación del miembro verticalmente."
 
 #: bp-templates/bp-nouveau/includes/customizer.php:232
-msgid "Display the biographical info from the user's WordPress profile."
-msgstr "Muestra la información biográfica del perfil de WordPress del usuario."
+msgid "Display the biographical info from the member's WordPress profile."
+msgstr "Muestra la información biográfica del perfil de WordPress del miembro."
 
 #: bp-templates/bp-nouveau/includes/customizer.php:226
 msgid "Enable default front page for member profiles."
 msgstr "Activar página de inicio por defecto para perfiles de usuario."
+
+#: bp-templates/bp-nouveau/includes/customizer.php:220
+msgid "Use the round style for member and group avatars."
+msgstr "Utilizar bordes redondeados para los avatares de miembros y grupos."
+
+#: bp-templates/bp-nouveau/includes/customizer.php:67
+msgid "Select the layout style for directory content &amp; navigation."
+msgstr "Selecciona el estilo para el contenido y la navegación del directorio."
 
 #: bp-templates/bp-nouveau/includes/customizer.php:64
 msgid "Directory layouts"
@@ -637,17 +976,13 @@ msgstr "Establece el número de columnas a usar para los loops de BuddyPress."
 msgid "Loop layouts"
 msgstr "Diseños de loops."
 
-#: bp-templates/bp-nouveau/includes/customizer.php:52
-msgid "User navigation"
-msgstr "Navegación del usuario"
+#: bp-templates/bp-nouveau/includes/customizer.php:55
+msgid "Customize the navigation menu for members. In the preview window, navigate to a user to preview your changes."
+msgstr "Personaliza el menú de navegación para miembros. En la ventana de vista previa, dirigete hasta un usuario para previsualizar tus cambios."
 
 #: bp-templates/bp-nouveau/includes/customizer.php:49
-msgid "Configure the default front page for users."
-msgstr "Configura la página de inicio por defecto para los usuarios."
-
-#: bp-templates/bp-nouveau/includes/customizer.php:46
-msgid "User front page"
-msgstr "Página de inicio del usuario"
+msgid "Configure the default front page for members."
+msgstr "Configura la página de inicio por defecto para los miembros."
 
 #: bp-templates/bp-nouveau/includes/customizer.php:43
 msgid "Configure general BuddyPress appearance options."
@@ -662,25 +997,37 @@ msgctxt "Customizer Panel"
 msgid "BuddyPress Nouveau"
 msgstr "BuddyPress Nouveau"
 
-#: bp-templates/bp-nouveau/includes/classes.php:318
+#: bp-templates/bp-nouveau/includes/customizer.php:26
+msgid "Customize the appearance of BuddyPress Nouveau Template pack."
+msgstr "Personalizar la apariencia del pack de plantillas Nouveau de BuddyPress."
+
+#: bp-templates/bp-nouveau/includes/customizer-controls.php:65
+msgid "Drag each possible member navigation items that are listed below into the order you prefer."
+msgstr "Arrastra los elementos de navegación de cada posible miembro que están listados a continuación en el orden que prefieras."
+
+#: bp-templates/bp-nouveau/includes/customizer-controls.php:58
+msgid "Drag each possible group navigation items that are listed below into the order you prefer, in some groups some of these navigation items might not be active."
+msgstr "Arrastra los elementos de navegación de cada posible grupo que están listados a continuación en el orden que prefieras, en algunos grupos, algunos de estos elementos de navegación pueden no estar activados."
+
+#: bp-templates/bp-nouveau/includes/customizer-controls.php:40
+msgid "Customizing the Groups navigation order needs you create at least one group first."
+msgstr "Personalizar el orden de navegación de los grupos requiere que antes crees por lo menos un grupo."
+
+#: bp-templates/bp-nouveau/includes/classes.php:313
 msgid "Include navigation title"
 msgstr "Incluir titulo de navegación"
 
-#: bp-templates/bp-nouveau/includes/classes.php:200
-msgid "(BuddyPress) Primary nav"
-msgstr "(BuddyPress) Navegación principal"
+#: bp-templates/bp-nouveau/includes/classes.php:189
+msgid "Displays BuddyPress primary nav in the sidebar of your site. Make sure to use it as the first widget of the sidebar and only once."
+msgstr "Muestra la barra de navegación principal de BuddyPress en la barra lateral de tu sitio. Asegúrate de usarla como primer widget en la barra lateral y sólo una vez."
 
-#: bp-templates/bp-nouveau/includes/classes.php:47
-msgid "You need to use an array containing arrays of parameters."
-msgstr "Necesitas usar un array que contenga arrays de parámetros."
+#: bp-templates/bp-nouveau/includes/blogs/functions.php:181
+msgid "Use tab styling for Sites directory navigation."
+msgstr "Utilizar pestañas para la navegación por el directorio de sitios."
 
 #: bp-templates/bp-nouveau/includes/blogs/functions.php:175
 msgid "Use column navigation for the Sites directory."
 msgstr "Usa la navegación de columna para el directorio de sitios."
-
-#: bp-templates/bp-nouveau/includes/blogs/functions.php:168
-msgid "Blogs loop:"
-msgstr "Loop de los blogs:"
 
 #: bp-templates/bp-nouveau/includes/blogs/functions.php:23
 msgid "All Sites"
@@ -691,7 +1038,7 @@ msgid "Type:"
 msgstr "Tipo:"
 
 #: bp-templates/bp-nouveau/includes/activity/widgets.php:188
-msgid "Max amount to display:"
+msgid "Maximum amount to display:"
 msgstr "Cantidad máxima a mostrar:"
 
 #: bp-templates/bp-nouveau/includes/activity/widgets.php:62
@@ -704,8 +1051,8 @@ msgid "(BuddyPress) Latest Activities"
 msgstr "(BuddyPress) Últimas actividades"
 
 #: bp-templates/bp-nouveau/includes/activity/widgets.php:35
-msgid "Display the latest updates of your community having the type(s) of your choice."
-msgstr "Muestra las últimas actualizaciones de tu comunidad de el/los tipo/s de tu elección."
+msgid "Display the latest updates of your community having the types of your choice."
+msgstr "Muestra las últimas actualizaciones de tu comunidad de los tipos de tu elección."
 
 #. translators: 1: user profile link, 2: user name, 3: activity permalink, 4:
 #. activity recorded date, 5: activity timestamp, 6: activity human time since
@@ -713,56 +1060,56 @@ msgstr "Muestra las últimas actualizaciones de tu comunidad de el/los tipo/s de
 msgid "<a href=\"%1$s\">%2$s</a> replied <a href=\"%3$s\" class=\"activity-time-since\"><time class=\"time-since\" datetime=\"%4$s\" data-bp-timestamp=\"%5$d\">%6$s</time></a>"
 msgstr "<a href=\"%1$s\">%2$s</a> respondió <a href=\"%3$s\" class=\"activity-time-since\"><time class=\"time-since\" datetime=\"%4$s\" data-bp-timestamp=\"%5$d\">%6$s</time></a>"
 
-#: bp-templates/bp-nouveau/includes/activity/functions.php:516
+#: bp-templates/bp-nouveau/includes/activity/functions.php:528
+msgid "Use tab styling for Activity directory navigation."
+msgstr "Utilizar pestañas para la navegación por el directorio de Actividad."
+
+#: bp-templates/bp-nouveau/includes/activity/functions.php:522
 msgid "Use column navigation for the Activity directory."
 msgstr "Usa la navegación de columna para el directorio de actividad."
 
-#: bp-templates/bp-nouveau/includes/activity/functions.php:494
+#: bp-templates/bp-nouveau/includes/activity/functions.php:500
 msgid "New update comment replies"
 msgstr "Nuevas respuestas de comentario de actualización"
 
-#: bp-templates/bp-nouveau/includes/activity/functions.php:489
+#: bp-templates/bp-nouveau/includes/activity/functions.php:495
 msgid "New update replies"
 msgstr "Nuevas respuestas de actualización"
 
-#: bp-templates/bp-nouveau/includes/activity/functions.php:484
+#: bp-templates/bp-nouveau/includes/activity/functions.php:490
 msgid "New mentions"
 msgstr "Nuevas menciones"
 
-#: bp-templates/bp-nouveau/includes/activity/functions.php:247
-#: bp-templates/bp-nouveau/includes/groups/functions.php:518
+#: bp-templates/bp-nouveau/includes/activity/functions.php:253
+#: bp-templates/bp-nouveau/includes/groups/functions.php:517
 msgid "My Groups"
 msgstr "Mis grupos"
 
-#: bp-templates/bp-nouveau/includes/activity/functions.php:193
+#: bp-templates/bp-nouveau/includes/activity/functions.php:199
 #: bp-templates/bp-nouveau/includes/groups/functions.php:118
 #: bp-templates/bp-nouveau/includes/members/functions.php:49
 msgid "All Members"
 msgstr "Todos los miembros"
 
-#: bp-templates/bp-nouveau/includes/activity/functions.php:143
+#: bp-templates/bp-nouveau/includes/activity/functions.php:147
 msgid "Start typing the group name..."
 msgstr "Empieza escribiendo el nombre del grupo..."
 
-#: bp-templates/bp-nouveau/includes/activity/functions.php:142
+#: bp-templates/bp-nouveau/includes/activity/functions.php:146
 msgid "Post in: Group"
 msgstr "Publicar en: Grupo"
 
-#: bp-templates/bp-nouveau/includes/activity/functions.php:133
+#: bp-templates/bp-nouveau/includes/activity/functions.php:137
 msgid "Post in: Profile"
 msgstr "Publicar en: Perfil"
-
-#: bp-templates/bp-nouveau/includes/activity/ajax.php:582
-msgid "There was a problem spamming this item. Please try again."
-msgstr "Hubo un problema al marcar como spam este elemento. Por favor, inténtalo de nuevo."
 
 #: bp-templates/bp-nouveau/includes/activity/ajax.php:554
 msgid "View activity."
 msgstr "Ver actividad."
 
-#: bp-templates/bp-nouveau/includes/activity/ajax.php:455
-msgid "No items were found."
-msgstr "No se encontraron elementos"
+#: bp-templates/bp-nouveau/includes/activity/ajax.php:554
+msgid "Update posted."
+msgstr "Actualización publicada."
 
 #: bp-templates/bp-nouveau/includes/activity/ajax.php:267
 msgid "There was a problem displaying the content. Please try again."
@@ -824,18 +1171,15 @@ msgstr "Menú de perfil"
 msgid "Your profile photo will be used on your profile and throughout the site. If there is a <a href=\"https://gravatar.com\">Gravatar</a> associated with your account email we will use that, or you can upload an image from your computer."
 msgstr "Tu foto de perfil se utilizará en tu perfil y en todo el sitio. Si hay un <a href=\"https://gravatar.com\">Gravatar</a> asociado con tu cuenta de correo electrónico lo usaremos, o puedes subir una imagen desde tu ordenador."
 
-#: bp-templates/bp-nouveau/buddypress/members/single/parts/profile-visibility.php:30
+#: bp-templates/bp-nouveau/buddypress/members/single/parts/profile-visibility.php:31
 msgid "Who is allowed to see this field?"
 msgstr "¿Quién tiene permitido ver este campo?"
 
-#: bp-templates/bp-nouveau/buddypress/members/single/parts/profile-visibility.php:20
-#: bp-templates/bp-nouveau/buddypress/members/single/parts/profile-visibility.php:43
+#. translators: field visibility level, e.g. "...seen by: everyone".
+#: bp-templates/bp-nouveau/buddypress/members/single/parts/profile-visibility.php:21
+#: bp-templates/bp-nouveau/buddypress/members/single/parts/profile-visibility.php:44
 msgid "This field may be seen by: %s"
 msgstr "Este campo puede ser visto por: %s"
-
-#: bp-templates/bp-nouveau/buddypress/members/single/parts/item-nav.php:10
-msgid "User menu"
-msgstr "Menu de usuario"
 
 #: bp-templates/bp-nouveau/buddypress/members/single/notifications.php:10
 msgid "Notifications menu"
@@ -881,10 +1225,6 @@ msgstr "Menú de actividad"
 msgid "Group menu"
 msgstr "Menú de grupo"
 
-#: bp-templates/bp-nouveau/buddypress/groups/single/parts/header-item-actions.php:13
-msgid "Leadership"
-msgstr "Liderazgo"
-
 #: bp-templates/bp-nouveau/buddypress/groups/single/parts/admin-subnav.php:10
 msgid "Group administration menu"
 msgstr "Menú de administración de grupos"
@@ -893,9 +1233,17 @@ msgstr "Menú de administración de grupos"
 msgid "Membership List"
 msgstr "Lista de miembros"
 
+#: bp-templates/bp-nouveau/buddypress/groups/single/default-front.php:21
+msgid "You can set your preferences for the %1$s or add %2$s to it."
+msgstr "Puedes establecer las preferencias para %1$s o añadirle %2$s "
+
 #: bp-templates/bp-nouveau/buddypress/groups/single/default-front.php:16
 msgid "Manage the Groups default front page"
 msgstr "Gestionar la página de inicio por defecto de grupos"
+
+#: bp-templates/bp-nouveau/buddypress/groups/single/admin/manage-members.php:14
+msgid "Manage your group members; promote to moderators, admins or demote or ban."
+msgstr "Gestiona los miembros de tu grupo; promociona moderadores, administradores o degrada o veta."
 
 #: bp-templates/bp-nouveau/buddypress/groups/single/admin/manage-members.php:11
 msgid "Manage Group Members"
@@ -933,6 +1281,10 @@ msgstr "Subir avatar del grupo"
 msgid "Edit Group Name &amp; Description"
 msgstr "Editar nombre de grupo y descripción"
 
+#: bp-templates/bp-nouveau/buddypress/groups/single/admin/edit-details.php:13
+msgid "Enter Group Name &amp; Description"
+msgstr "Introduce el nombre del grupo y su descripción."
+
 #: bp-templates/bp-nouveau/buddypress/groups/single/admin/delete-group.php:11
 msgid "Delete this group"
 msgstr "Eliminar este grupo"
@@ -941,11 +1293,11 @@ msgstr "Eliminar este grupo"
 msgid "Group Activities"
 msgstr "Actividades de grupo"
 
-#: bp-templates/bp-nouveau/buddypress/groups/create.php:26
+#: bp-templates/bp-nouveau/buddypress/groups/create.php:27
 msgid "Group creation menu"
 msgstr "Menú de creación de grupo"
 
-#: bp-templates/bp-nouveau/buddypress/groups/create.php:10
+#: bp-templates/bp-nouveau/buddypress/groups/create.php:11
 msgid "Create A New Group"
 msgstr "Crear un grupo nuevo"
 
@@ -958,77 +1310,59 @@ msgstr "Cerrar este aviso"
 msgid "Directory menu"
 msgstr "Menú de directorio"
 
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:205
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:206
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:286
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:287
+msgid "Star Message"
+msgstr "Marcar Mensaje como favorito."
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:282
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:283
+msgid "Unstar Message"
+msgstr "Marcar Mensaje como no favorito."
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:215
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:216
 msgid "View full conversation and reply."
 msgstr "Ver conversación completa y respuesta."
 
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:174
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:223
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:208
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:209
+msgid "Star Conversation"
+msgstr "Marcar conversación como favorita."
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:204
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:205
+msgid "Unstar Conversation"
+msgstr "Marcar Conversación como no favorita."
+
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:184
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:247
 msgid "Participants:"
 msgstr "Participantes:"
 
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:168
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:178
 msgid "Active conversation:"
 msgstr "Conversación activa:"
 
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:126
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:136
 msgid "Select message:"
 msgstr "Selecciona mensaje:"
 
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:107
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:117
 msgid "Select bulk action"
 msgstr "Seleccionar acción en lote"
 
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:103
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:113
 msgid "All Messages"
 msgstr "Todos los mensajes"
 
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:78
-msgid "Next"
-msgstr "Siguiente"
-
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:71
-msgid "Prev"
-msgstr "Anterior"
-
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:39
-msgid "Reset"
-msgstr "Restablecer"
-
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:38
-msgid "Send"
-msgstr "Enviar"
-
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:27
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:36
 msgid "Send @Username"
 msgstr "Enviar @Username"
-
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:121
-msgctxt "Send invitation"
-msgid "Send"
-msgstr "Enviar"
-
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:120
-msgctxt "Cancel invitation"
-msgid "Cancel"
-msgstr "Cancelar"
 
 #: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:116
 msgid "Optional: add a message to your invite."
 msgstr "Opcional: agrega un mensaje a tu invitación."
-
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:86
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:92
-msgid "Invite"
-msgstr "Invitar"
-
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:86
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:90
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:99
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:101
-msgid "Disinvite"
-msgstr "Anular invitación"
 
 #: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:76
 msgid "The invite has been sent."
@@ -1050,10 +1384,6 @@ msgstr "Menú de invitaciones de grupo"
 #: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:22
 msgid "Invite Members"
 msgstr "Invitar miembros"
-
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/activity/form.php:42
-msgid "Remove item"
-msgstr "Borrar elemento"
 
 #: bp-templates/bp-legacy/buddypress-functions.php:1412
 #: bp-templates/bp-nouveau/includes/friends/ajax.php:107
@@ -1137,43 +1467,79 @@ msgstr "Avisos del sitio"
 msgid "Your changes have not been saved. Please fill in all required fields, and save your changes again."
 msgstr "Tus cambios no han sido guardados. Completa todos los campos obligatorios y guarda los cambios de nuevo."
 
-#: bp-core/classes/class-bp-admin.php:917
+#: bp-core/classes/class-bp-admin.php:935
 msgid "Project Founder"
 msgstr "Fundador del proyecto"
 
-#: bp-core/classes/class-bp-admin.php:912
+#: bp-core/classes/class-bp-admin.php:930
 msgid "Contributor Emeriti"
 msgstr "Colaborador emérito"
 
-#: bp-core/classes/class-bp-admin.php:735
+#: bp-core/classes/class-bp-admin.php:916
+msgid "With our thanks to these Open Source projects"
+msgstr "Con nuestro agradecimiento a estos proyectos de Software Libre"
+
+#: bp-core/classes/class-bp-admin.php:753
 msgid "Release Lead"
 msgstr "Líder de la versión"
 
-#: bp-core/classes/class-bp-admin.php:718
+#: bp-core/classes/class-bp-admin.php:736
 msgid "Meet the contributors behind BuddyPress:"
 msgstr "Conoce a los colaboradores detrás de BuddyPress:"
 
-#: bp-core/classes/class-bp-admin.php:662
+#: bp-core/classes/class-bp-admin.php:680
 msgid "Built by <a href=\"%s\">%s volunteer</a>."
 msgid_plural "Built by <a href=\"%s\">%s volunteers</a>."
 msgstr[0] "Creado por <a href=\"%s\">%s voluntario</a>."
 msgstr[1] "Creado por <a href=\"%s\">%s voluntarios</a>."
 
-#: bp-core/classes/class-bp-admin.php:652
+#: bp-core/classes/class-bp-admin.php:670
 msgid "Thank you for using BuddyPress! 😊"
 msgstr "¡Gracias por usar BuddyPress! 😊"
 
-#: bp-core/classes/class-bp-admin.php:647
+#: bp-core/classes/class-bp-admin.php:665
 msgid " How are you using BuddyPress? Receiving your feedback and suggestions for future versions of BuddyPress genuinely motivates and encourages our contributors. Please <a href=\"%s\">share your feedback</a> about this version of BuddyPress on our website. "
 msgstr "¿Cómo estás usando BuddyPress? Recibir tus comentarios y sugerencias para futuras versiones de BuddyPress realmente motiva y anima a nuestros colaboradores. Por favor <a href=\"%s\">comparte tus comentarios</a> acerca de esta versión de BuddyPress en nuestra web."
 
-#: bp-core/classes/class-bp-admin.php:623
+#: bp-core/classes/class-bp-admin.php:655
+msgid "To read the full list of features, fixes, and changes in this version of BuddyPress, <a href=\"%s\">visit Trac</a>."
+msgstr "Para leer la lista completa de características, reparaciones, y cambios en esta versión de BuddyPress, <a href=\"%s\">visita Trac</a>."
+
+#: bp-core/classes/class-bp-admin.php:645
+msgid "Most notably, the <a href=\"%s\">Legacy Forums component has been removed</a> after 9 years of service. If your site was using Legacy Forums, you need to <a href=\"%s\">migrate to the bbPress plugin</a>."
+msgstr "Particularmente, el <a href=\"%s\">componente de Foros Heredados ha sido eliminado</a> después de 9 años de servicio. Si tu sitio estaba usando Foros Heredados necesitas <a href=\"%s\">migrar al plugin bbPress</a>."
+
+#: bp-core/classes/class-bp-admin.php:641
 msgid "With every BuddyPress version, we strive to make performance improvements alongside new features and fixes; this version is no exception. Memory use has been optimised &mdash; within active components, we now only load each individual code file when it's needed, not before."
 msgstr "Con cada versión de BuddyPress, nos esforzamos por mejorar el rendimiento junto con nuevas características y soluciones; esta versión no es una excepción. El uso de memoria se ha optimizado &mdash; dentro de los componentes activos, ahora solo cargamos cada archivo de código individual cuando es necesario, no antes."
 
-#: bp-core/classes/class-bp-admin.php:599
+#: bp-core/classes/class-bp-admin.php:638
+msgid "A new telephone number field type has been added to the Extended Profiles component, with support for all international number formats. With a modern web browser, your members can use this field type to touch-to-dial a number directly."
+msgstr "Se ha añadido un nuevo tipo de campo número de teléfono al componente de perfiles extendidos, es compatible con todos los formatos de números internacionales. Con un nuevo navegador web, tus miembros pueden utilizar este tipo de campo para marcar un número directamente"
+
+#: bp-core/classes/class-bp-admin.php:630
+msgid "Explore the new management interface at <a href=\"%s\">Users &gt; Site Notices</a>."
+msgstr "Explora la nueva interfaz de gestión en <a href=\"%s\">Users &gt; Avisos del sitio</a>."
+
+#: bp-core/classes/class-bp-admin.php:624
+msgid "Site Notices are a feature within the Private Messaging component that allows community managers to share important messages with all members of their community. With Nouveau, the management interface for Site Notices has been removed from the front-end theme templates."
+msgstr "Los avisos del sitio son una característica interna del componente de mensajería privada que permite a los gestores de medios compartir mensajes con todos los miembros de su comunidad. Con Nouveau, el interfaz de gestión para los avisos del sitio han sido quitados de la plantilla del tema de la parte frontal."
+
+#: bp-core/classes/class-bp-admin.php:617
 msgid "<a href=\"%s\">WP-CLI</a> is the command-line interface for WordPress. You can update plugins, configure multisite installs, and much more, without using a web browser. With this version of BuddyPress, you can now manage your BuddyPress content from WP-CLI."
 msgstr "<a href=\"%s\">WP-CLI</a> es la interfaz de línea de comandos para WordPress. Puedes actualizar plugins, configurar instalaciones de varios sitios y mucho más, sin usar un navegador web. Con esta versión de BuddyPress, ahora puedes gestionar tu contenido de BuddyPress desde WP-CLI."
+
+#: bp-core/classes/class-bp-admin.php:605
+msgid "Nouveau is fully compatible with WordPress. Existing BuddyPress themes have been written for our legacy template pack, and until they are updated, resolve any compatibility issues by choosing the legacy template pack option in <a href=\"%s\">Settings &gt; BuddyPress</a>."
+msgstr "Nouveau es completamente compatible con WordPress. El tema BuddyPress ha sido escrito para nuestro pack de plantilla heredado, y hasta que sea actualizado, resolver cualquier problema de compatibilidad escogiendo la opción de pack de plantilla heredado en <a href=\"%s\">Settings &gt; BuddyPress</a>."
+
+#: bp-core/classes/class-bp-admin.php:601
+msgid "Nouveau provides vertical and horizontal layout options for BuddyPress navigation, and for the component directories, you can choose between a grid layout, and a classic flat list."
+msgstr "Nouveau proporciona opciones de diseño vertical y horizontal para la navegación en BuddyPress, y para el directorio de componentes, puedes escoger entre un diseño de cuadrícula y una lista plana clásica."
+
+#: bp-core/classes/class-bp-admin.php:596
+msgid "A bold reimagining of our legacy templates, Nouveau is our celebration of <a href=\"%s\">10 years of BuddyPress</a>! Nouveau delivers modern markup with fresh JavaScript-powered templates, and full integration with WordPress' Customizer, allowing more out-of-the-box control of your BuddyPress content than ever before."
+msgstr "Como atrevido resquicio de nuestras plantillas heredadas, ¡Nouveau es nuestra celebración de <a href=\"%s\">10 años de BuddyPress</a>! Nouveau ofrece un marcado moderno con plantillas frescas potenciadas con JavaScript y una integración completa con el personalizador de WordPress, permitiendo más control por defecto que nunca en tu contenido BuddyPress."
 
 #: bp-activity/bp-activity-admin.php:235
 msgid "<strong>Link</strong> - Used by some types of activity (blog posts and comments) to store a link back to the original content."
@@ -1188,6 +1554,14 @@ msgstr "La actividad generada por entradas y comentarios usa el campo de enlace 
 #: bp-core/admin/bp-core-admin-components.php:234
 msgid "Enable or disable all optional components in bulk"
 msgstr "Activar o desactivar todos los componentes opcionales a granel"
+
+#: bp-core/admin/bp-core-admin-functions.php:848
+msgid "Are these emails not written in your site's language? Go to <a href=\"%s\">BuddyPress Tools and try the \"reinstall emails\"</a> tool."
+msgstr "¿No están estos correos electrónicos en el idioma de tu sitio? Ve a <a href=\"%s\">Herramientas de BuddyPress e intenta la herramienta \"reinstalar correos electrónicos\"</a>."
+
+#: bp-core/admin/bp-core-admin-settings.php:115
+msgid "Allow activity stream commenting on posts and comments"
+msgstr "Permitir la actividad en streaming para los comentarios en en publicaciones y comentarios"
 
 #: bp-core/bp-core-buddybar.php:680 bp-core/bp-core-buddybar.php:696
 msgid "You do not have access to that page."
@@ -1477,6 +1851,7 @@ msgstr "Mis Grupos"
 
 #. translators: accessibility text
 #: bp-templates/bp-legacy/buddypress/members/single/groups/invites.php:21
+#: bp-templates/bp-nouveau/includes/groups/functions.php:1209
 msgid "Group invitations"
 msgstr "Invitaciones a grupos"
 
@@ -1527,11 +1902,6 @@ msgstr "Navegación principal de miembros del directorio"
 #: bp-templates/bp-legacy/buddypress/groups/single/send-invites.php:21
 msgid "Send invites"
 msgstr "Enviar invitaciones "
-
-#. translators: accessibility text
-#: bp-templates/bp-legacy/buddypress/groups/single/request-membership.php:20
-msgid "Request form"
-msgstr "Formulario de solicitud"
 
 #: bp-templates/bp-legacy/buddypress/groups/single/home.php:40
 msgid "Group primary navigation"
@@ -1589,13 +1959,13 @@ msgstr "&ndash; %s"
 
 #: bp-templates/bp-legacy/buddypress/groups/create.php:155
 #: bp-templates/bp-legacy/buddypress/groups/single/admin/group-settings.php:63
-#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:67
+#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:69
 msgid "Select the types this group should be a part of."
 msgstr "Selecciona los tipos del que este grupo debe ser parte."
 
 #: bp-templates/bp-legacy/buddypress/groups/create.php:153
 #: bp-templates/bp-legacy/buddypress/groups/single/admin/group-settings.php:61
-#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:65
+#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:67
 msgid "Group Types"
 msgstr "Tipos de grupo"
 
@@ -1698,71 +2068,71 @@ msgstr "Hubo un error mientras se cambiaba el tipo de grupo. Por favor, inténta
 msgid "(Not available on the front end)"
 msgstr "(No disponible en portada)"
 
-#: bp-core/classes/class-bp-admin.php:774
-#: bp-core/classes/class-bp-admin.php:779
-#: bp-core/classes/class-bp-admin.php:784
-#: bp-core/classes/class-bp-admin.php:809
+#: bp-core/classes/class-bp-admin.php:792
+#: bp-core/classes/class-bp-admin.php:797
+#: bp-core/classes/class-bp-admin.php:802
+#: bp-core/classes/class-bp-admin.php:827
 msgid "Community Support"
 msgstr "Apoyo de la comunidad"
 
-#: bp-core/classes/class-bp-admin.php:739
+#: bp-core/classes/class-bp-admin.php:757
 msgid "BuddyPress Team"
 msgstr "El equipo de BuddyPress"
 
-#: bp-core/bp-core-functions.php:3708
+#: bp-core/bp-core-functions.php:3705
 msgid "You can change this or any other email notification preferences in your email settings."
 msgstr "Puedes cambiar esta u otras preferencias de notificación de correos electrónicos en tus ajustes de correo."
 
-#: bp-core/bp-core-functions.php:3680
+#: bp-core/bp-core-functions.php:3677
 msgid "Please go to your notifications settings to unsubscribe from emails."
 msgstr "Por favor ve a los ajustes de notificaciones para cancelar la suscripción de correos electrónicos."
 
-#: bp-core/bp-core-functions.php:3669 bp-core/bp-core-functions.php:3675
+#: bp-core/bp-core-functions.php:3666 bp-core/bp-core-functions.php:3672
 msgid "Please log in and go to your settings to unsubscribe from notification emails."
 msgstr "Por favor, accede y ve a tus ajustes para anular la suscripción a los avisos por correo electrónico."
 
-#: bp-core/bp-core-functions.php:3668 bp-core/bp-core-functions.php:3674
-#: bp-core/bp-core-functions.php:3679
+#: bp-core/bp-core-functions.php:3665 bp-core/bp-core-functions.php:3671
+#: bp-core/bp-core-functions.php:3676
 msgid "Something has gone wrong."
 msgstr "Algo ha ido mal"
 
-#: bp-core/bp-core-functions.php:3615 bp-core/bp-core-functions.php:3623
+#: bp-core/bp-core-functions.php:3612 bp-core/bp-core-functions.php:3620
 msgid "You will no longer receive emails when your request to join a group has been accepted or denied."
 msgstr "No recibirás correos electrónicos cuando tu petición de entrada a un grupo sea aceptada o denegada."
 
-#: bp-core/bp-core-functions.php:3602
+#: bp-core/bp-core-functions.php:3599
 msgid "You will no longer receive emails when someone sends you a message."
 msgstr "No recibirás correos electrónicos cuando te envíe alguien un mensaje."
 
-#: bp-core/bp-core-functions.php:3594
+#: bp-core/bp-core-functions.php:3591
 msgid "You will no longer receive emails when someone requests to be a member of your group."
 msgstr "No recibirás correos electrónicos cuando alguien te pida ser miembro de tu grupo."
 
-#: bp-core/bp-core-functions.php:3586
+#: bp-core/bp-core-functions.php:3583
 msgid "You will no longer receive emails when you have been promoted in a group."
 msgstr "Ya no recibirás correos electrónicos cuando se te acepte en un grupo."
 
-#: bp-core/bp-core-functions.php:3578
+#: bp-core/bp-core-functions.php:3575
 msgid "You will no longer receive emails when you are invited to join a group."
 msgstr "No recibirás correos electrónicos cuando seas invitado a entrar en un grupo."
 
-#: bp-core/bp-core-functions.php:3570
+#: bp-core/bp-core-functions.php:3567
 msgid "You will no longer receive emails when one of your groups is updated."
 msgstr "No recibirás correos electrónicos cuando alguno de tus grupos se actualice."
 
-#: bp-core/bp-core-functions.php:3562
+#: bp-core/bp-core-functions.php:3559
 msgid "You will no longer receive emails when someone accepts your friendship request."
 msgstr "No recibirás correos electrónicos cuando alguien acepte tu petición de amistad."
 
-#: bp-core/bp-core-functions.php:3554
+#: bp-core/bp-core-functions.php:3551
 msgid "You will no longer receive emails when someone sends you a friend request."
 msgstr "No recibirás correos electrónicos cuando alguien te envíe una petición de amistad."
 
-#: bp-core/bp-core-functions.php:3528 bp-core/bp-core-functions.php:3536
+#: bp-core/bp-core-functions.php:3525 bp-core/bp-core-functions.php:3533
 msgid "You will no longer receive emails when someone mentions you in an update."
 msgstr "No recibirás correos electrónicos cuando alguien te mencione en una actualización."
 
-#: bp-core/bp-core-functions.php:3512 bp-core/bp-core-functions.php:3520
+#: bp-core/bp-core-functions.php:3509 bp-core/bp-core-functions.php:3517
 msgid "You will no longer receive emails when someone replies to an update or comment you posted."
 msgstr "No recibirás correos electrónicos cuando alguien conteste a una actualización o comentario que hayas publicado."
 
@@ -1873,11 +2243,11 @@ msgctxt "group settings on notification settings page"
 msgid "Your request to join a group has been approved or denied"
 msgstr "Tu petición de unirse al grupo ha sido aceptada o denegada"
 
-#: bp-groups/bp-groups-functions.php:2309
+#: bp-groups/bp-groups-functions.php:2336
 msgid "You may not register a group type with this name."
 msgstr "No deberías registrar un tipo de grupo con este nombre."
 
-#: bp-groups/bp-groups-functions.php:2282
+#: bp-groups/bp-groups-functions.php:2309
 msgid "Group type already exists."
 msgstr "El tipo de grupo ya existe."
 
@@ -1924,7 +2294,7 @@ msgstr "Estas globales no deben usarse directamente ya que son obsoletas. Por fa
 msgid "The bp_nav and bp_options_nav globals should not be used directly and are deprecated. Please use the BuddyPress nav functions instead."
 msgstr "Las globales bp_nav y bp_options_nav no deberían usarse directamente ya que son obsoletas. Por favor, usa en su lugar las funciones nav de BuddyPress."
 
-#: bp-core/classes/class-bp-admin.php:953
+#: bp-core/classes/class-bp-admin.php:971
 msgctxt "Email post type"
 msgid "Situations"
 msgstr "Situaciones"
@@ -2383,72 +2753,72 @@ msgstr "Herramientas de reparación"
 msgid "BuddyPress keeps track of various relationships between members, groups, and activity items. Occasionally these relationships become out of sync, most often after an import, update, or migration."
 msgstr "BuddyPress realiza un seguimiento de varias relaciones entre los miembros, grupos y elementos de actividad. En ocasiones, estas relaciones pierden la sincronía, por lo general después de una importación, actualización o migración."
 
-#: bp-core/bp-core-functions.php:3620
+#: bp-core/bp-core-functions.php:3617
 msgid "Recipient had requested to join a group, which was rejected."
 msgstr "Destinatario ha solicitado formar parte de un grupo, que fue rechazada."
 
-#: bp-core/bp-core-functions.php:3612
+#: bp-core/bp-core-functions.php:3609
 msgid "Recipient had requested to join a group, which was accepted."
 msgstr "Destinatario ha solicitado formar parte de un grupo, que fue aceptada."
 
-#: bp-core/bp-core-functions.php:3607
+#: bp-core/bp-core-functions.php:3604
 msgid "Recipient has changed their email address."
 msgstr "El destinatario ha cambiado su dirección de correo electrónico."
 
-#: bp-core/bp-core-functions.php:3599
+#: bp-core/bp-core-functions.php:3596
 msgid "Recipient has received a private message."
 msgstr "El destinatario ha recibido un mensaje privado."
 
-#: bp-core/bp-core-functions.php:3591
+#: bp-core/bp-core-functions.php:3588
 msgid "A member has requested permission to join a group."
 msgstr "Un miembro ha solicitado permiso para unirse al grupo."
 
-#: bp-core/bp-core-functions.php:3583
+#: bp-core/bp-core-functions.php:3580
 msgid "Recipient's status within a group has changed."
 msgstr "El estado del receptor dentro de un grupo ha cambiado."
 
-#: bp-core/bp-core-functions.php:3575
+#: bp-core/bp-core-functions.php:3572
 msgid "A member has sent a group invitation to the recipient."
 msgstr "Un miembro ha enviado una invitación al grupo al destinatario."
 
-#: bp-core/bp-core-functions.php:3567
+#: bp-core/bp-core-functions.php:3564
 msgid "A group's details were updated."
 msgstr "Los detalles del grupo se han actualizado."
 
-#: bp-core/bp-core-functions.php:3559
+#: bp-core/bp-core-functions.php:3556
 msgid "Recipient has had a friend request accepted by a member."
 msgstr "El destinatario ha tenido una solicitud aceptada por un miembro."
 
-#: bp-core/bp-core-functions.php:3551
+#: bp-core/bp-core-functions.php:3548
 msgid "A member has sent a friend request to the recipient."
 msgstr "Un miembro ha enviado una petición de amistad al destinatario."
 
-#: bp-core/bp-core-functions.php:3546
+#: bp-core/bp-core-functions.php:3543
 msgid "Recipient has registered for an account and site."
 msgstr "El destinatario ha registrado una cuenta y el sitio."
 
-#: bp-core/bp-core-functions.php:3541
+#: bp-core/bp-core-functions.php:3538
 msgid "Recipient has registered for an account."
 msgstr "El destinatario ha registrado una cuenta."
 
-#: bp-core/bp-core-functions.php:3533
+#: bp-core/bp-core-functions.php:3530
 msgid "Recipient was mentioned in a group activity update."
 msgstr "El destinatario fue mencionado en una actualización de un grupo."
 
-#: bp-core/bp-core-functions.php:3525
+#: bp-core/bp-core-functions.php:3522
 msgid "Recipient was mentioned in an activity update."
 msgstr "El destinatario fue mencionado en una actualización."
 
-#: bp-core/bp-core-functions.php:3517
+#: bp-core/bp-core-functions.php:3514
 msgid "A member has replied to a comment on an activity update that the recipient posted."
 msgstr "Un miembro ha respondido aun comentario en una actualización que el destinatario publicado."
 
-#: bp-core/bp-core-functions.php:3509
+#: bp-core/bp-core-functions.php:3506
 msgid "A member has replied to an activity update that the recipient posted."
 msgstr "Un miembro ha respondido a una actualización que el destinatario publicado."
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3484
+#: bp-core/bp-core-functions.php:3481
 msgid ""
 "Your membership request for the group \"{{group.name}}\" has been rejected.\n"
 "\n"
@@ -2459,17 +2829,17 @@ msgstr ""
 "Para solicitar de nuevo la membresía visita: {{{group.url}}}"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3482
+#: bp-core/bp-core-functions.php:3479
 msgid "Your membership request for the group &quot;<a href=\"{{{group.url}}}\">{{group.name}}</a>&quot; has been rejected."
 msgstr "Tu solicitud de membresía para el grupo&quot;<a href=\"{{{group.url}}}\">{{group.name}}</a>&quot; ha sido rechazada."
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3480
+#: bp-core/bp-core-functions.php:3477
 msgid "[{{{site.name}}}] Membership request for group \"{{group.name}}\" rejected"
 msgstr "[{{{site.name}}}] Solicitud de membresía para el grupo \"{{group.name}}\" rechazada"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3476
+#: bp-core/bp-core-functions.php:3473
 msgid ""
 "Your membership request for the group \"{{group.name}}\" has been accepted.\n"
 "\n"
@@ -2480,17 +2850,17 @@ msgstr ""
 "Para ver el grupo, visite: {{{group.url}}}"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3474
+#: bp-core/bp-core-functions.php:3471
 msgid "Your membership request for the group &quot;<a href=\"{{{group.url}}}\">{{group.name}}</a>&quot; has been accepted."
 msgstr "Su solicitud de membresía para el grupo &quot;<a href=\"{{{group.url}}}\">{{group.name}}</a>&quot; ha sido aceptada."
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3472
+#: bp-core/bp-core-functions.php:3469
 msgid "[{{{site.name}}}] Membership request for group \"{{group.name}}\" accepted"
 msgstr "[{{{site.name}}}] Solicitud de membresía para el grupo \"{{group.name}}\" aceptada"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3468
+#: bp-core/bp-core-functions.php:3465
 msgid ""
 "You recently changed the email address associated with your account on {{site.name}} to {{user.email}}. If this is correct, go to the following link to confirm the change: {{{verify.url}}}\n"
 "\n"
@@ -2501,7 +2871,7 @@ msgstr ""
 "De lo contrario, puede ignorar y eliminar este mensaje si ha cambiado de opinión, o si piensa que ha recibido este mensaje por error."
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3466
+#: bp-core/bp-core-functions.php:3463
 msgid ""
 "You recently changed the email address associated with your account on {{site.name}} to {{user.email}}. If this is correct, <a href=\"{{{verify.url}}}\">go here to confirm the change</a>.\n"
 "\n"
@@ -2512,12 +2882,12 @@ msgstr ""
 "De lo contrario, puedes prescindir de este correo electrónico y eliminarlo si has cambiado de idea, o si piensas que has recibido este correo electrónico por error."
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3464
+#: bp-core/bp-core-functions.php:3461
 msgid "[{{{site.name}}}] Verify your new email address"
 msgstr "[{{{site.name}}}] Verifica tu nuevo correo electrónico"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3460
+#: bp-core/bp-core-functions.php:3457
 msgid ""
 "{{sender.name}} sent you a new message: \"{{usersubject}}\"\n"
 "\n"
@@ -2532,7 +2902,7 @@ msgstr ""
 "Ve al debate para responder o ver la conversación: {{{message.url}}}"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3458
+#: bp-core/bp-core-functions.php:3455
 msgid ""
 "{{sender.name}} sent you a new message: &quot;{{usersubject}}&quot;\n"
 "\n"
@@ -2547,12 +2917,12 @@ msgstr ""
 "<a href=\"{{{message.url}}}\">Ve al debate</a> para responder o unirte a la conversación."
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3456
+#: bp-core/bp-core-functions.php:3453
 msgid "[{{{site.name}}}] New message from {{sender.name}}"
 msgstr "[{{{site.name}}}] Nuevo mensaje de {{sender.name}}"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3452
+#: bp-core/bp-core-functions.php:3449
 msgid ""
 "{{requesting-user.name}} wants to join the group \"{{group.name}}\". As you are the administrator of this group, you must either accept or reject the membership request.\n"
 "\n"
@@ -2567,7 +2937,7 @@ msgstr ""
 "Para ver el perfil de {{requesting-user.name}} visita: {{{profile.url}}}"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3450
+#: bp-core/bp-core-functions.php:3447
 msgid ""
 "<a href=\"{{{profile.url}}}\">{{requesting-user.name}}</a> wants to join the group &quot;{{group.name}}&quot;. As you are an administrator of this group, you must either accept or reject the membership request.\n"
 "\n"
@@ -2578,12 +2948,12 @@ msgstr ""
 "<a href=\"{{{group-requests.url}}}\">Entra aquí para administrar esta</a> y otras peticiones pendientes."
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3448
+#: bp-core/bp-core-functions.php:3445
 msgid "[{{{site.name}}}] Membership request for group: {{group.name}}"
 msgstr "[{{{site.name}}}]Solicitud de membresía para el grupo: {{group.name}}"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3444
+#: bp-core/bp-core-functions.php:3441
 msgid ""
 "You have been promoted to {{promoted_to}} in the group: \"{{group.name}}\".\n"
 "\n"
@@ -2594,17 +2964,17 @@ msgstr ""
 "Para visitar el grupo ve a: {{{group.url}}}"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3442
+#: bp-core/bp-core-functions.php:3439
 msgid "You have been promoted to <b>{{promoted_to}}</b> in the group &quot;<a href=\"{{{group.url}}}\">{{group.name}}</a>&quot;."
 msgstr "Has sido nombrado para <b>{{promoted_to}}</b> en el grupo &quot;<a href=\"{{{group.url}}}\">{{group.name}}</a>&quot;."
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3440
+#: bp-core/bp-core-functions.php:3437
 msgid "[{{{site.name}}}] You have been promoted in the group: \"{{group.name}}\""
 msgstr "[{{{site.name}}}] Has sido nombrado en el grupo: \"{{group.name}}\""
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3436
+#: bp-core/bp-core-functions.php:3433
 msgid ""
 "{{inviter.name}} has invited you to join the group: \"{{group.name}}\".\n"
 "\n"
@@ -2621,7 +2991,7 @@ msgstr ""
 "Para ver el perfil de {{inviter.name}} visita: {{{inviter.url}}}"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3434
+#: bp-core/bp-core-functions.php:3431
 msgid ""
 "<a href=\"{{{inviter.url}}}\">{{inviter.name}}</a> has invited you to join the group: &quot;{{group.name}}&quot;.\n"
 "<a href=\"{{{invites.url}}}\">Go here to accept your invitation</a> or <a href=\"{{{group.url}}}\">visit the group</a> to learn more."
@@ -2630,12 +3000,12 @@ msgstr ""
 "<a href=\"{{{invites.url}}}\">Ir aquí para aceptar la invitación</a> o <a href=\"{{{group.url}}}\">visitar el grupo</a> para aprender más."
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3432
+#: bp-core/bp-core-functions.php:3429
 msgid "[{{{site.name}}}] You have an invitation to the group: \"{{group.name}}\""
 msgstr "[{{{site.name}}}] Tienes una invitación del grupo: \"{{group.name}}\""
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3428
+#: bp-core/bp-core-functions.php:3425
 msgid ""
 "Group details for the group \"{{group.name}}\" were updated:\n"
 "\n"
@@ -2650,7 +3020,7 @@ msgstr ""
 "Para ver el grupo, visita: {{{group.url}}}"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3426
+#: bp-core/bp-core-functions.php:3423
 msgid ""
 "Group details for the group &quot;<a href=\"{{{group.url}}}\">{{group.name}}</a>&quot; were updated:\n"
 "<blockquote>{{changed_text}}</blockquote>"
@@ -2659,12 +3029,12 @@ msgstr ""
 "<blockquote>{{changed_text}}</blockquote>"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3424
+#: bp-core/bp-core-functions.php:3421
 msgid "[{{{site.name}}}] Group details updated"
 msgstr "[{{{site.name}}}] Detalles del grupo actualizados"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3420
+#: bp-core/bp-core-functions.php:3417
 msgid ""
 "{{friend.name}} accepted your friend request.\n"
 "\n"
@@ -2675,17 +3045,17 @@ msgstr ""
 "Para saber mas, viste su perfil: {{{friendship.url}}}"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3418
+#: bp-core/bp-core-functions.php:3415
 msgid "<a href=\"{{{friendship.url}}}\">{{friend.name}}</a> accepted your friend request."
 msgstr "<a href=\"{{{friendship.url}}}\">{{friend.name}}</a> aceptó tu petición de amistad."
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3416
+#: bp-core/bp-core-functions.php:3413
 msgid "[{{{site.name}}}] {{friend.name}} accepted your friendship request"
 msgstr "[{{{site.name}}}] {{friend.name}} ha aceptado tu solicitud de amistad"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3412
+#: bp-core/bp-core-functions.php:3409
 msgid ""
 "{{initiator.name}} wants to add you as a friend.\n"
 "\n"
@@ -2700,7 +3070,7 @@ msgstr ""
 "Para ver el perfil de {{initiator.name}} visita: {{{initiator.url}}}"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3410
+#: bp-core/bp-core-functions.php:3407
 msgid ""
 "<a href=\"{{{initiator.url}}}\">{{initiator.name}}</a> wants to add you as a friend.\n"
 "\n"
@@ -2711,12 +3081,12 @@ msgstr ""
 ".Para aceptar esta solicitud y gestionar todas sus peticiones pendientes, visite: <a href=\"{{{friend-requests.url}}}\">{{{friend-requests.url}}}</a>"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3408
+#: bp-core/bp-core-functions.php:3405
 msgid "[{{{site.name}}}] New friendship request from {{initiator.name}}"
 msgstr "[{{{site.name}}}] Nueva solicitud de amistad de {{initiator.name}}"
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3401
+#: bp-core/bp-core-functions.php:3398
 msgid ""
 "Thanks for registering!\n"
 "\n"
@@ -2731,7 +3101,7 @@ msgstr ""
 "Después de activar, puede visitar su sitio en {{{user-site.url}}}."
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3399
+#: bp-core/bp-core-functions.php:3396
 msgid ""
 "Thanks for registering!\n"
 "\n"
@@ -2746,7 +3116,7 @@ msgstr ""
 "Después de activar, puede visitar su sitio en <a href=\"{{{user-site.url}}}\">{{{user-site.url}}}</a>."
 
 #. translators: do not remove {} brackets or translate its contents.
-#: bp-core/bp-core-functions.php:3397
+#: bp-core/bp-core-functions.php:3394
 msgid "[{{{site.name}}}] Activate {{{user-site.url}}}"
 msgstr "[{{{site.name}}}] Activado {{{user-site.url}}}"
 
@@ -3068,7 +3438,7 @@ msgstr "Seleccionar esta notificación"
 
 #. translators: accessibility text
 #: bp-templates/bp-legacy/buddypress/members/single/messages/single.php:125
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:315
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:343
 msgid "Reply to Message"
 msgstr "Responder al mensaje"
 
@@ -3119,28 +3489,25 @@ msgid "All Sites %s"
 msgstr "Todos los sitios (%s)"
 
 #: bp-templates/bp-legacy/buddypress/assets/_attachments/cover-images/index.php:31
-#: bp-templates/bp-nouveau/buddypress/assets/_attachments/cover-images/index.php:28
 msgid "Delete Group Cover Image"
 msgstr "Eliminar imagen de portada del grupo"
 
 #: bp-templates/bp-legacy/buddypress/assets/_attachments/cover-images/index.php:30
-#: bp-templates/bp-nouveau/buddypress/assets/_attachments/cover-images/index.php:27
+#: bp-templates/bp-nouveau/buddypress/assets/_attachments/cover-images/index.php:31
 msgid "If you'd like to remove the existing group cover image but not upload a new one, please use the delete group cover image button."
 msgstr "Si quieres eliminar una imagen de portada del grupo existente pero no quieres subir otra, por favor, utiliza el botón eliminar imagen de portada del grupo."
 
 #: bp-templates/bp-legacy/buddypress/assets/_attachments/cover-images/index.php:28
-#: bp-templates/bp-nouveau/buddypress/assets/_attachments/cover-images/index.php:25
 msgid "Delete My Cover Image"
 msgstr "Eliminar mi imagen de portada"
 
 #: bp-templates/bp-legacy/buddypress/assets/_attachments/cover-images/index.php:27
-#: bp-templates/bp-nouveau/buddypress/assets/_attachments/cover-images/index.php:24
 msgid "If you'd like to delete your current cover image but not upload a new one, please use the delete Cover Image button."
 msgstr "Si quieres eliminar la imagen de portada del grupo, pero no quieres usar otra, por favor, utiliza el botón eliminar imagen de portada del grupo."
 
 #. translators: accessibility text
 #: bp-templates/bp-legacy/buddypress/activity/post-form.php:39
-#: bp-templates/bp-nouveau/includes/activity/functions.php:160
+#: bp-templates/bp-nouveau/includes/activity/functions.php:164
 msgid "Post what's new"
 msgstr "Publica qué es nuevo"
 
@@ -3166,9 +3533,6 @@ msgstr "Todos los usuarios (%s)"
 
 #. translators: accessibility text
 #: bp-templates/bp-legacy/buddypress/activity/entry.php:126
-#: bp-templates/bp-nouveau/buddypress/activity/comment-form.php:18
-#: bp-templates/bp-nouveau/includes/activity/template-tags.php:342
-#: bp-templates/bp-nouveau/includes/activity/template-tags.php:347
 msgid "Comment"
 msgstr "Comentario"
 
@@ -3788,9 +4152,9 @@ msgstr "Hubo un error enviado la respuesta, por favor, prueba de nuevo."
 msgid "The BuddyPress Community"
 msgstr "La Comunidad de BuddyPress"
 
-#. #-#-#-#-#  buddypress-code.pot (BuddyPress 3.0.0)  #-#-#-#-#
+#. #-#-#-#-#  buddypress-code.pot (BuddyPress 3.1.0)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  buddypress-code.pot (BuddyPress 3.0.0)  #-#-#-#-#
+#. #-#-#-#-#  buddypress-code.pot (BuddyPress 3.1.0)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://buddypress.org/"
 msgstr "https://buddypress.org/"
@@ -4172,7 +4536,7 @@ msgctxt "xProfile admin page title"
 msgid "Profile Fields"
 msgstr "Campos de perfil"
 
-#: bp-xprofile/bp-xprofile-activity.php:63 cli/components/activity.php:960
+#: bp-xprofile/bp-xprofile-activity.php:63 cli/components/activity.php:962
 msgid "%s changed their profile picture"
 msgstr "%s ha cambiado su imagen de perfil."
 
@@ -4315,7 +4679,7 @@ msgstr "Rechazado"
 #: bp-templates/bp-legacy/buddypress-functions.php:298
 #: bp-templates/bp-nouveau/buddypress-functions.php:417
 #: bp-templates/bp-nouveau/includes/activity/ajax.php:113
-#: bp-templates/bp-nouveau/includes/activity/functions.php:221
+#: bp-templates/bp-nouveau/includes/activity/functions.php:227
 #: bp-themes/bp-default/functions.php:173
 msgid "My Favorites"
 msgstr "Mis favoritos"
@@ -4398,7 +4762,6 @@ msgid "Deleting your account will delete all of the content you have created. It
 msgstr "Eliminando tu cuenta se borrará todo el contenido que has creado. Esto será irrecuperable."
 
 #: bp-templates/bp-legacy/buddypress/members/single/settings/capabilities.php:26
-#: bp-templates/bp-nouveau/buddypress/members/single/settings/capabilities.php:19
 #: bp-themes/bp-default/members/single/settings/capabilities.php:57
 msgid "This user is a spammer."
 msgstr "Este usuario es un spammer."
@@ -4412,20 +4775,17 @@ msgstr "Perfil de %s"
 
 #: bp-groups/classes/class-bp-groups-list-table.php:788
 #: bp-members/classes/class-bp-members-admin.php:2236
-#: bp-templates/bp-nouveau/buddypress/members/single/parts/profile-visibility.php:24
 #: bp-themes/bp-default/members/single/profile/edit.php:127
 #: bp-xprofile/classes/class-bp-xprofile-user-admin.php:388
 msgid "Change"
 msgstr "Cambiar"
 
 #: bp-templates/bp-legacy/buddypress/members/single/profile/edit.php:27
-#: bp-templates/bp-nouveau/buddypress/members/single/profile/edit.php:30
 #: bp-themes/bp-default/members/single/profile/edit.php:10
 msgid "Editing '%s' Profile Group"
 msgstr "Editando el perfil del grupo '%s'"
 
 #: bp-templates/bp-legacy/buddypress/members/single/profile/change-avatar.php:85
-#: bp-templates/bp-nouveau/buddypress/members/single/profile/change-avatar.php:77
 msgid "Your profile photo will be used on your profile and throughout the site. To change your profile photo, please create an account with <a href=\"https://gravatar.com\">Gravatar</a> using the same email address as you used to register with this site."
 msgstr "Tu imagen de perfil se usará en tu perfil en todo el sitio. Para cambiar tu foto del perfil, por favor, crea una cuenta en <a href=\"https://gravatar.com\">Gravatar</a> usando el mismo correo electrónico que usaste para registrarte en este sitio."
 
@@ -4486,21 +4846,20 @@ msgid "You have no unread notifications."
 msgstr "No tienes notificaciones sin leer."
 
 #: bp-templates/bp-legacy/buddypress/members/single/messages/single.php:139
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:321
 #: bp-themes/bp-default/members/single/messages/single.php:91
 msgid "Send Reply"
 msgstr "Enviar respuesta"
 
 #: bp-templates/bp-legacy/buddypress/members/single/messages/single.php:102
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:304
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:332
 #: bp-themes/bp-default/members/single/messages/single.php:75
 msgid "Send a Reply"
 msgstr "Enviar respuesta"
 
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:187
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:188
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:236
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:237
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:197
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:198
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:259
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:260
 msgid "Delete conversation."
 msgstr "Eliminar conversación."
 
@@ -4535,8 +4894,8 @@ msgid "Sent:"
 msgstr "Enviado:"
 
 #: bp-templates/bp-legacy/buddypress/members/single/messages/messages-loop.php:195
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:218
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:351
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:247
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:404
 #: bp-themes/bp-default/members/single/messages/messages-loop.php:69
 msgid "Sorry, no messages were found."
 msgstr "No hemos encontrado mensajes."
@@ -4552,13 +4911,13 @@ msgid "View Message"
 msgstr "Ver mensajes"
 
 #: bp-templates/bp-legacy/buddypress/members/single/messages/messages-loop.php:112
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:143
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:153
 #: bp-themes/bp-default/members/single/messages/messages-loop.php:37
 msgid "To:"
 msgstr "A:"
 
 #: bp-templates/bp-legacy/buddypress/members/single/messages/messages-loop.php:105
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:133
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:143
 #: bp-themes/bp-default/members/single/messages/messages-loop.php:32
 msgid "From:"
 msgstr "De:"
@@ -4587,7 +4946,7 @@ msgstr "Mensaje"
 #: bp-messages/classes/class-bp-messages-notices-admin.php:206
 #: bp-templates/bp-legacy/buddypress/members/single/messages/compose.php:39
 #: bp-templates/bp-legacy/buddypress/members/single/messages/messages-loop.php:65
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:30
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:39
 #: bp-themes/bp-default/members/single/messages/compose.php:17
 msgid "Subject"
 msgstr "Título"
@@ -4609,7 +4968,6 @@ msgid "You have no outstanding group invites."
 msgstr "No tienes ninguna invitación de grupo pendiente."
 
 #: bp-templates/bp-legacy/buddypress/members/single/groups/invites.php:35
-#: bp-templates/bp-nouveau/buddypress/members/single/groups/invites.php:36
 msgctxt "Group member count"
 msgid "%d member"
 msgid_plural "%d members"
@@ -4641,6 +4999,7 @@ msgid "Complete Sign Up"
 msgstr "Completar registro"
 
 #: bp-templates/bp-legacy/buddypress/members/register.php:296
+#: bp-templates/bp-nouveau/includes/functions.php:1179
 #: bp-themes/bp-default/registration/register.php:232
 msgid "Site Title"
 msgstr "Título del sitio"
@@ -4651,13 +5010,11 @@ msgid "Blog URL"
 msgstr "URL del sitio"
 
 #: bp-templates/bp-legacy/buddypress/members/register.php:276
-#: bp-templates/bp-nouveau/buddypress/members/register.php:91
 #: bp-themes/bp-default/registration/register.php:219
 msgid "Yes, I'd like to create a new site"
 msgstr "Si, quiero crear un nuevo sitio"
 
 #: bp-templates/bp-legacy/buddypress/members/register.php:274
-#: bp-templates/bp-nouveau/buddypress/members/register.php:89
 #: bp-themes/bp-default/registration/register.php:217
 msgid "Blog Details"
 msgstr "Detalles del sitio"
@@ -4691,16 +5048,19 @@ msgid "Profile Details"
 msgstr "Detalles del perfil"
 
 #: bp-templates/bp-legacy/buddypress/members/register.php:119
+#: bp-templates/bp-nouveau/includes/functions.php:1161
 #: bp-themes/bp-default/registration/register.php:49
 msgid "Confirm Password"
 msgstr "Confirma la contraseña"
 
 #: bp-templates/bp-legacy/buddypress/members/register.php:107
+#: bp-templates/bp-nouveau/includes/functions.php:1153
 #: bp-themes/bp-default/registration/register.php:45
 msgid "Choose a Password"
 msgstr "Escribe una contraseña"
 
 #: bp-templates/bp-legacy/buddypress/members/register.php:96
+#: bp-templates/bp-nouveau/includes/functions.php:1145
 #: bp-themes/bp-default/registration/register.php:41
 msgid "Email Address"
 msgstr "Dirección de correo electrónico"
@@ -4711,6 +5071,7 @@ msgstr "Dirección de correo electrónico"
 #: bp-templates/bp-legacy/buddypress/members/register.php:119
 #: bp-templates/bp-legacy/buddypress/members/register.php:280
 #: bp-templates/bp-legacy/buddypress/members/register.php:296
+#: bp-templates/bp-nouveau/includes/template-tags.php:2259
 #: bp-themes/bp-default/members/single/profile/edit.php:26
 #: bp-themes/bp-default/members/single/profile/edit.php:33
 #: bp-themes/bp-default/members/single/profile/edit.php:40
@@ -4749,7 +5110,6 @@ msgid "Registering for this site is easy. Just fill in the fields below, and we'
 msgstr "Registrarte en este sitio es fácil. Simplemente rellena los siguientes campos y tendrás una nueva cuenta creada para ti al instante."
 
 #: bp-templates/bp-legacy/buddypress/members/register.php:46
-#: bp-templates/bp-nouveau/includes/functions.php:923
 #: bp-themes/bp-default/registration/register.php:16
 msgid "User registration is currently not allowed."
 msgstr "El registro de usuarios no está permitido actualmente."
@@ -4763,25 +5123,25 @@ msgid "Newest Registered"
 msgstr "Últimos registrados"
 
 #: bp-templates/bp-legacy/buddypress/members/activate.php:56
-#: bp-templates/bp-nouveau/buddypress/members/activate.php:31
+#: bp-templates/bp-nouveau/buddypress/members/activate.php:41
 #: bp-themes/bp-default/registration/activate.php:34
 msgid "Activation Key:"
 msgstr "Llave de activación:"
 
 #: bp-templates/bp-legacy/buddypress/members/activate.php:52
-#: bp-templates/bp-nouveau/buddypress/members/activate.php:27
+#: bp-templates/bp-nouveau/buddypress/members/activate.php:37
 #: bp-themes/bp-default/registration/activate.php:30
 msgid "Please provide a valid activation key."
 msgstr "Por favor, facilítanos un Código de Activación correcto."
 
 #: bp-templates/bp-legacy/buddypress/members/activate.php:47
-#: bp-templates/bp-nouveau/buddypress/members/activate.php:22
+#: bp-templates/bp-nouveau/buddypress/members/activate.php:27
 #: bp-themes/bp-default/registration/activate.php:25
 msgid "Your account was activated successfully! You can now <a href=\"%s\">log in</a> with the username and password you provided when you signed up."
 msgstr "Tu cuenta ha sido activada correctamente. Ahora podrás <a href=\"%s\">acceder</a> con el nombre de usuario y la contraseña provista en el proceso de registro."
 
 #: bp-templates/bp-legacy/buddypress/members/activate.php:45
-#: bp-templates/bp-nouveau/buddypress/members/activate.php:20
+#: bp-templates/bp-nouveau/buddypress/members/activate.php:21
 #: bp-themes/bp-default/registration/activate.php:23
 msgid "Your account was activated successfully! Your account details have been sent to you in a separate email."
 msgstr "Tu cuenta ha sido activada correctamente. Los datos de tu cuenta te han sido enviados en otro correo electrónico."
@@ -4815,7 +5175,6 @@ msgstr "No hay solicitudes de adhesión en espera."
 #: bp-templates/bp-legacy/buddypress/members/single/groups/invites.php:52
 #: bp-templates/bp-nouveau/includes/groups/template-tags.php:737
 #: bp-templates/bp-nouveau/includes/groups/template-tags.php:793
-#: bp-templates/bp-nouveau/includes/members/template-tags.php:305
 #: bp-themes/bp-default/groups/single/admin.php:322
 #: bp-themes/bp-default/members/single/friends/requests.php:38
 #: bp-themes/bp-default/members/single/groups/invites.php:24
@@ -4827,27 +5186,21 @@ msgstr "Rechazar"
 #: bp-templates/bp-legacy/buddypress/members/single/groups/invites.php:51
 #: bp-templates/bp-nouveau/includes/groups/template-tags.php:710
 #: bp-templates/bp-nouveau/includes/groups/template-tags.php:766
-#: bp-templates/bp-nouveau/includes/members/template-tags.php:289
 #: bp-themes/bp-default/groups/single/admin.php:320
 #: bp-themes/bp-default/members/single/friends/requests.php:37
 #: bp-themes/bp-default/members/single/groups/invites.php:23
 msgid "Accept"
 msgstr "Aceptar"
 
-#: bp-templates/bp-legacy/buddypress/groups/single/request-membership.php:38
-#: bp-templates/bp-nouveau/buddypress/groups/single/request-membership.php:20
 #: bp-themes/bp-default/groups/single/request-membership.php:12
 msgid "Send Request"
 msgstr "Enviar solicitud"
 
-#: bp-templates/bp-legacy/buddypress/groups/single/request-membership.php:26
-#: bp-templates/bp-nouveau/buddypress/groups/single/request-membership.php:15
+#: bp-templates/bp-legacy/buddypress/groups/single/request-membership.php:33
 #: bp-themes/bp-default/groups/single/request-membership.php:7
 msgid "Comments (optional)"
 msgstr "Comentarios (opcional)"
 
-#: bp-templates/bp-legacy/buddypress/groups/single/request-membership.php:23
-#: bp-templates/bp-nouveau/buddypress/groups/single/request-membership.php:12
 #: bp-themes/bp-default/groups/single/request-membership.php:4
 msgid "You are requesting to become a member of the group '%s'."
 msgstr "Estás pidiendo ser miembro del grupo '%s'."
@@ -4869,7 +5222,6 @@ msgstr "Moderadores del Grupo"
 
 #: bp-templates/bp-legacy/buddypress/groups/single/cover-image-header.php:75
 #: bp-templates/bp-legacy/buddypress/groups/single/group-header.php:23
-#: bp-templates/bp-nouveau/buddypress/groups/single/parts/header-item-actions.php:16
 #: bp-themes/bp-default/groups/single/group-header.php:11
 msgid "Group Admins"
 msgstr "Administradores de grupo"
@@ -4981,8 +5333,9 @@ msgstr "Borrar baneo"
 msgid "Unban this member"
 msgstr "Quitar baneo al usuario"
 
+#. translators: indicates a user is banned from a group, e.g. "Mike (banned)".
 #: bp-templates/bp-legacy/buddypress/groups/single/admin/manage-members.php:248
-#: bp-templates/bp-nouveau/buddypress/groups/single/admin/manage-members.php:98
+#: bp-templates/bp-nouveau/buddypress/groups/single/admin/manage-members.php:102
 #: bp-themes/bp-default/groups/single/admin.php:260
 msgid "(banned)"
 msgstr "(baneado)"
@@ -4999,7 +5352,7 @@ msgstr "Notificar a los miembros del grupo sobre estos cambios vía correo elect
 
 #: bp-templates/bp-legacy/buddypress/groups/index.php:98
 #: bp-templates/bp-legacy/buddypress/members/single/groups.php:24
-#: bp-templates/bp-nouveau/includes/groups/functions.php:588
+#: bp-templates/bp-nouveau/includes/groups/functions.php:587
 #: bp-themes/bp-default/groups/index.php:59
 #: bp-themes/bp-default/members/single/groups.php:24
 msgid "Newly Created"
@@ -5007,7 +5360,7 @@ msgstr "Creado recientemente"
 
 #: bp-templates/bp-legacy/buddypress/groups/index.php:97
 #: bp-templates/bp-legacy/buddypress/members/single/groups.php:23
-#: bp-templates/bp-nouveau/includes/groups/functions.php:587
+#: bp-templates/bp-nouveau/includes/groups/functions.php:586
 #: bp-themes/bp-default/groups/index.php:58
 #: bp-themes/bp-default/members/single/groups.php:23
 msgid "Most Members"
@@ -5120,7 +5473,7 @@ msgstr "¿Este grupo debe tener un foro?"
 
 #: bp-templates/bp-legacy/buddypress/groups/create.php:179
 #: bp-templates/bp-legacy/buddypress/groups/single/admin/group-settings.php:87
-#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:90
+#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:92
 #: bp-themes/bp-default/groups/create.php:91
 #: bp-themes/bp-default/groups/single/admin.php:94
 msgid "Which members of this group are allowed to invite others?"
@@ -5128,7 +5481,7 @@ msgstr "¿Qué usuarios de este grupo pueden invitar a otros?"
 
 #: bp-templates/bp-legacy/buddypress/groups/create.php:177
 #: bp-templates/bp-legacy/buddypress/groups/single/admin/group-settings.php:85
-#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:88
+#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:90
 #: bp-themes/bp-default/groups/create.php:89
 #: bp-themes/bp-default/groups/single/admin.php:92
 msgid "Group Invitations"
@@ -5144,7 +5497,6 @@ msgstr "Este grupo no saldrá en el directorio ni en la búsqueda de grupos."
 
 #: bp-templates/bp-legacy/buddypress/groups/create.php:140
 #: bp-templates/bp-legacy/buddypress/groups/single/admin/group-settings.php:48
-#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:54
 #: bp-themes/bp-default/groups/create.php:82
 #: bp-themes/bp-default/groups/single/admin.php:83
 msgid "Only users who are invited can join the group."
@@ -5173,7 +5525,6 @@ msgstr "El contenido y la actividad, solo será visible para los integrantes del
 
 #: bp-templates/bp-legacy/buddypress/groups/create.php:132
 #: bp-templates/bp-legacy/buddypress/groups/single/admin/group-settings.php:40
-#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:44
 #: bp-themes/bp-default/groups/create.php:73
 #: bp-themes/bp-default/groups/single/admin.php:73
 msgid "Only users who request membership and are accepted can join the group."
@@ -5323,7 +5674,7 @@ msgstr "Enlace permanente a esta entrada"
 #: bp-templates/bp-legacy/buddypress/members/single/friends.php:22
 #: bp-templates/bp-legacy/buddypress/members/single/groups.php:22
 #: bp-templates/bp-nouveau/includes/blogs/functions.php:106
-#: bp-templates/bp-nouveau/includes/groups/functions.php:586
+#: bp-templates/bp-nouveau/includes/groups/functions.php:585
 #: bp-templates/bp-nouveau/includes/members/functions.php:97
 #: bp-themes/bp-default/blogs/index.php:55
 #: bp-themes/bp-default/forums/index.php:62
@@ -5359,12 +5710,10 @@ msgstr "Lo sentimos, no hemos encontrado sitios."
 #. translators: accessibility text
 #: bp-templates/bp-legacy/buddypress/assets/_attachments/uploader.php:28
 #: bp-templates/bp-legacy/buddypress/assets/_attachments/uploader.php:29
-#: bp-templates/bp-nouveau/buddypress/assets/_attachments/uploader.php:23
 msgid "Select your File"
 msgstr "Selecciona tu archivo"
 
 #: bp-templates/bp-legacy/buddypress/assets/_attachments/uploader.php:25
-#: bp-templates/bp-nouveau/buddypress/assets/_attachments/uploader.php:22
 msgctxt "Uploader: Drop your file here - or - Select your File"
 msgid "or"
 msgstr "o"
@@ -5412,8 +5761,6 @@ msgstr "Eliminar imagen de perfil"
 
 #: bp-templates/bp-legacy/buddypress/assets/_attachments/avatars/index.php:38
 #: bp-templates/bp-legacy/buddypress/members/single/profile/change-avatar.php:45
-#: bp-templates/bp-nouveau/buddypress/assets/_attachments/avatars/index.php:35
-#: bp-templates/bp-nouveau/buddypress/members/single/profile/change-avatar.php:36
 msgid "If you'd like to delete your current profile photo but not upload a new one, please use the delete profile photo button."
 msgstr "Si quieres eliminar tu imagen de perfil actual sin subir una nueva, por favor usa el botón eliminar imagen de perfil"
 
@@ -5421,7 +5768,6 @@ msgstr "Si quieres eliminar tu imagen de perfil actual sin subir una nueva, por 
 #: bp-templates/bp-legacy/buddypress/groups/create.php:267
 #: bp-templates/bp-legacy/buddypress/groups/single/admin/group-avatar.php:58
 #: bp-templates/bp-legacy/buddypress/members/single/profile/change-avatar.php:61
-#: bp-templates/bp-nouveau/buddypress/assets/_attachments/avatars/crop.php:21
 #: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-avatar.php:106
 #: bp-templates/bp-nouveau/buddypress/members/single/profile/change-avatar.php:52
 #: bp-themes/bp-default/groups/create.php:172
@@ -5432,7 +5778,6 @@ msgstr "Ajustar imagen"
 
 #: bp-templates/bp-legacy/buddypress/assets/_attachments/avatars/camera.php:26
 #: bp-templates/bp-legacy/buddypress/members/single/settings/capabilities.php:30
-#: bp-templates/bp-nouveau/buddypress/assets/_attachments/avatars/camera.php:23
 #: bp-templates/bp-nouveau/includes/functions.php:1268
 #: bp-templates/bp-nouveau/includes/functions.php:1320
 #: bp-themes/bp-default/members/single/settings/capabilities.php:61
@@ -5442,7 +5787,6 @@ msgid "Save"
 msgstr "Salvar"
 
 #: bp-templates/bp-legacy/buddypress/assets/_attachments/avatars/camera.php:25
-#: bp-templates/bp-nouveau/buddypress/assets/_attachments/avatars/camera.php:22
 msgid "Capture"
 msgstr "Captura"
 
@@ -5454,19 +5798,19 @@ msgstr "Tu navegador no soporta esta característica."
 #. translators: accessibility text
 #: bp-templates/bp-legacy/buddypress/activity/post-form.php:55
 #: bp-templates/bp-legacy/buddypress/activity/post-form.php:59
-#: bp-templates/bp-nouveau/includes/activity/functions.php:161
+#: bp-templates/bp-nouveau/includes/activity/functions.php:165
 #: bp-themes/bp-default/activity/post-form.php:42
 msgid "Post in"
 msgstr "Publicar en"
 
 #: bp-templates/bp-legacy/buddypress/activity/post-form.php:48
-#: bp-templates/bp-nouveau/buddypress/activity/post-form.php:18
+#: bp-templates/bp-nouveau/includes/activity/functions.php:166
 #: bp-themes/bp-default/activity/post-form.php:35
 msgid "Post Update"
 msgstr "Enviar actualización"
 
 #: bp-templates/bp-legacy/buddypress/activity/post-form.php:32
-#: bp-templates/bp-nouveau/includes/activity/functions.php:159
+#: bp-templates/bp-nouveau/includes/activity/functions.php:163
 #: bp-themes/bp-default/activity/post-form.php:25
 msgid "What's new, %s?"
 msgstr "¿Qué hay de nuevo %s?"
@@ -5524,7 +5868,7 @@ msgstr[0] "%s nueva"
 msgstr[1] "%s nuevas"
 
 #: bp-templates/bp-legacy/buddypress/activity/index.php:137
-#: bp-templates/bp-nouveau/includes/activity/functions.php:267
+#: bp-templates/bp-nouveau/includes/activity/functions.php:273
 #: bp-themes/bp-default/activity/index.php:79
 msgid "Mentions"
 msgstr "Menciones"
@@ -5624,7 +5968,6 @@ msgid "Sorry, there was no activity found. Please try a different filter."
 msgstr "Lo sentimos, no hemos encontrado actividad. Por favor, prueba un filtro diferente."
 
 #: bp-templates/bp-legacy/buddypress/activity/activity-loop.php:34
-#: bp-templates/bp-nouveau/buddypress/activity/activity-loop.php:28
 #: bp-themes/bp-default/activity/activity-loop.php:41
 msgid "Load More"
 msgstr "Cargar más"
@@ -5707,6 +6050,7 @@ msgid "Go"
 msgstr "Ir"
 
 #: bp-notifications/bp-notifications-template.php:1004
+#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:86
 msgid "Oldest First"
 msgstr "Más antiguos primero"
 
@@ -5854,20 +6198,18 @@ msgstr "Actualmente activo"
 
 #: bp-messages/bp-messages-template.php:1038
 #: bp-notifications/bp-notifications-template.php:1032
-#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:113
 msgid "Mark unread"
 msgstr "Marcar como no leido"
 
 #: bp-messages/bp-messages-template.php:1037
 #: bp-notifications/bp-notifications-template.php:1030
-#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:111
 msgid "Mark read"
 msgstr "Marcar como leído"
 
 #. translators: accessibility text
 #: bp-messages/bp-messages-template.php:1033
 #: bp-notifications/bp-notifications-template.php:1024
-#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:104
+#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:103
 msgid "Select Bulk Action"
 msgstr "Selecciona acción en bloque"
 
@@ -5914,7 +6256,7 @@ msgstr "Seleccionar:"
 
 #. translators: accessibility text
 #: bp-messages/bp-messages-template.php:856
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:88
+#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:98
 msgid "Search Messages"
 msgstr "Buscar mensajes"
 
@@ -5968,19 +6310,19 @@ msgstr[1] "%s mensajes se les pusieron estrella"
 
 #: bp-messages/bp-messages-star.php:112
 #: bp-templates/bp-legacy/buddypress-functions.php:337
-#: bp-templates/bp-nouveau/includes/messages/functions.php:128
+#: bp-templates/bp-nouveau/includes/messages/functions.php:129
 msgid "Star the first message in this thread"
 msgstr "Poner estrella al primer mensaje del hilo"
 
 #: bp-messages/bp-messages-star.php:111
 #: bp-templates/bp-legacy/buddypress-functions.php:336
-#: bp-templates/bp-nouveau/includes/messages/functions.php:127
+#: bp-templates/bp-nouveau/includes/messages/functions.php:128
 msgid "Remove all starred messages in this thread"
 msgstr "Eliminar todos los mensajes con estrella de este hilo"
 
 #: bp-messages/bp-messages-star.php:110
 #: bp-templates/bp-legacy/buddypress-functions.php:335
-#: bp-templates/bp-nouveau/includes/messages/functions.php:126
+#: bp-templates/bp-nouveau/includes/messages/functions.php:127
 msgid "Not starred"
 msgstr "Sin estrella"
 
@@ -5988,13 +6330,13 @@ msgstr "Sin estrella"
 #: bp-messages/bp-messages-star.php:108
 #: bp-templates/bp-legacy/buddypress/members/single/messages/messages-loop.php:82
 #: bp-templates/bp-legacy/buddypress-functions.php:333
-#: bp-templates/bp-nouveau/includes/messages/functions.php:124
+#: bp-templates/bp-nouveau/includes/messages/functions.php:125
 msgid "Star"
 msgstr "Estrella"
 
 #: bp-messages/bp-messages-star.php:107
 #: bp-templates/bp-legacy/buddypress-functions.php:332
-#: bp-templates/bp-nouveau/includes/messages/functions.php:123
+#: bp-templates/bp-nouveau/includes/messages/functions.php:124
 msgid "Unstar"
 msgstr "Quitar estrella"
 
@@ -6050,7 +6392,7 @@ msgstr "Enviados"
 #: bp-messages/classes/class-bp-messages-component.php:250
 #: bp-messages/classes/class-bp-messages-component.php:357
 #: bp-templates/bp-legacy/buddypress-functions.php:334
-#: bp-templates/bp-nouveau/includes/messages/functions.php:125
+#: bp-templates/bp-nouveau/includes/messages/functions.php:126
 msgid "Starred"
 msgstr "Con estrella"
 
@@ -6091,6 +6433,7 @@ msgid "There was an error deleting messages."
 msgstr "Hubo un error borrando los mensajes."
 
 #: bp-messages/actions/bulk-manage.php:68
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:675
 msgid "Messages marked as unread."
 msgstr "Mensajes marcados como no leídos."
 
@@ -6134,7 +6477,7 @@ msgid "There was a problem sending your reply. Please try again."
 msgstr "Ha habido un problema al mandar tu respuesta. Por favor, vuelve a intentarlo."
 
 #: bp-messages/actions/view.php:41
-#: bp-templates/bp-nouveau/includes/messages/ajax.php:190
+#: bp-templates/bp-nouveau/includes/messages/ajax.php:210
 msgid "Your reply was sent successfully"
 msgstr "Tu respuesta se envió sin problemas"
 
@@ -6277,7 +6620,7 @@ msgstr "Comprueba tu correo para activar tu cuenta"
 msgid "Your account is now active!"
 msgstr "Tú cuenta está activada"
 
-#: bp-members/screens/register.php:98
+#: bp-members/screens/register.php:103
 msgid "This is a required field"
 msgstr "Este es un campo obligatorio"
 
@@ -6715,7 +7058,7 @@ msgstr "Perfil actualizado."
 msgid "Profile photo was deleted."
 msgstr "La imagen de perfil ha sido borrada."
 
-#: bp-members/bp-members-activity.php:50 cli/components/activity.php:964
+#: bp-members/bp-members-activity.php:50 cli/components/activity.php:966
 msgid "%s became a registered member"
 msgstr "%s ahora es un usuario registrado"
 
@@ -6896,7 +7239,7 @@ msgstr "Avatar de grupo"
 #: bp-templates/bp-legacy/buddypress/members/single/friends.php:24
 #: bp-templates/bp-legacy/buddypress/members/single/groups.php:25
 #: bp-templates/bp-nouveau/includes/blogs/functions.php:108
-#: bp-templates/bp-nouveau/includes/groups/functions.php:589
+#: bp-templates/bp-nouveau/includes/groups/functions.php:588
 #: bp-templates/bp-nouveau/includes/members/functions.php:102
 #: bp-templates/bp-nouveau/includes/members/functions.php:120
 #: bp-themes/bp-default/blogs/index.php:57
@@ -7029,7 +7372,9 @@ msgstr "se ha unido a %s"
 msgid "Demote to Member"
 msgstr "Degradar usuario"
 
+#. translators: %s = number of members
 #: bp-groups/bp-groups-template.php:2014
+#: bp-templates/bp-nouveau/buddypress/members/single/groups/invites.php:40
 msgid "%s member"
 msgid_plural "%s members"
 msgstr[0] "%s usuario"
@@ -7225,13 +7570,13 @@ msgstr "No puedes enviar o eliminar invitaciones"
 msgid "Group invites sent."
 msgstr "Enviada invitación de Grupo"
 
-#: bp-groups/screens/user/invites.php:53
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:146
+#: bp-groups/screens/user/invites.php:55
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:148
 msgid "Group invite rejected"
 msgstr "Invitación de Grupo Declinada "
 
-#: bp-groups/screens/user/invites.php:51
-#: bp-templates/bp-nouveau/includes/groups/ajax.php:138
+#: bp-groups/screens/user/invites.php:53
+#: bp-templates/bp-nouveau/includes/groups/ajax.php:140
 msgid "Group invite could not be rejected"
 msgstr "La invitación de grupo no se puede declinar"
 
@@ -7429,7 +7774,7 @@ msgctxt "Group screen page <title>"
 msgid "User Groups"
 msgstr "Grupos del usuario"
 
-#: bp-groups/bp-groups-functions.php:1288 cli/components/activity.php:752
+#: bp-groups/bp-groups-functions.php:1315 cli/components/activity.php:752
 msgid "%1$s posted an update in the group %2$s"
 msgstr "%1$s ha actualizado una entrada en el grupo %2$s"
 
@@ -7597,7 +7942,7 @@ msgstr "Introduce una lista de nombres de usuarios separada por comas."
 #: bp-groups/bp-groups-admin.php:849
 #: bp-templates/bp-legacy/buddypress/groups/create.php:187
 #: bp-templates/bp-legacy/buddypress/groups/single/admin/group-settings.php:95
-#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:104
+#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:106
 #: bp-themes/bp-default/groups/create.php:106
 #: bp-themes/bp-default/groups/single/admin.php:109
 msgid "Group admins only"
@@ -7606,7 +7951,7 @@ msgstr "Solo admins de grupos"
 #: bp-groups/bp-groups-admin.php:848
 #: bp-templates/bp-legacy/buddypress/groups/create.php:185
 #: bp-templates/bp-legacy/buddypress/groups/single/admin/group-settings.php:93
-#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:99
+#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:101
 #: bp-themes/bp-default/groups/create.php:101
 #: bp-themes/bp-default/groups/single/admin.php:104
 msgid "Group admins and mods only"
@@ -7615,7 +7960,7 @@ msgstr "Solo admin de grupos y mod"
 #: bp-groups/bp-groups-admin.php:847
 #: bp-templates/bp-legacy/buddypress/groups/create.php:183
 #: bp-templates/bp-legacy/buddypress/groups/single/admin/group-settings.php:91
-#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:94
+#: bp-templates/bp-nouveau/buddypress/groups/single/admin/group-settings.php:96
 #: bp-themes/bp-default/groups/create.php:96
 #: bp-themes/bp-default/groups/single/admin.php:99
 msgid "All group members"
@@ -7656,7 +8001,6 @@ msgstr "Buscar en todos los grupos"
 #: bp-groups/bp-groups-admin.php:769 bp-groups/bp-groups-admin.php:784
 #: bp-groups/classes/class-bp-groups-widget.php:75
 #: bp-groups/classes/class-bp-groups-widget.php:204
-#: bp-templates/bp-nouveau/includes/groups/functions.php:846
 msgid "Groups"
 msgstr "Grupos"
 
@@ -7815,12 +8159,12 @@ msgstr "%1$s cambió el nombre y la descripción del grupo %2$s"
 msgid "%1$s updated details for the group %2$s"
 msgstr "%1$s actualizó los detalles del grupo %2$s"
 
-#: bp-groups/bp-groups-activity.php:109 bp-groups/bp-groups-activity.php:482
-#: cli/components/activity.php:940
+#: bp-groups/bp-groups-activity.php:109 bp-groups/bp-groups-activity.php:457
+#: cli/components/activity.php:942
 msgid "%1$s joined the group %2$s"
 msgstr "%1$s ahora pertenece al grupo %2$s"
 
-#: bp-groups/bp-groups-activity.php:81 cli/components/activity.php:917
+#: bp-groups/bp-groups-activity.php:81 cli/components/activity.php:918
 msgid "%1$s created the group %2$s"
 msgstr "%1$s ha creado el grupo %2$s"
 
@@ -7890,16 +8234,16 @@ msgstr "&iexcl;Te has unido al grupo!"
 msgid "There was an error joining the group."
 msgstr "Hubo un error al unirse al grupo."
 
-#: bp-groups/actions/create.php:272
+#: bp-groups/actions/create.php:274
 msgid "There was an error saving the group profile photo, please try uploading again."
 msgstr "Hubo un error guardando la imagen de perfil del grupo, por favor inténtalo de nuevo."
 
-#: bp-groups/actions/create.php:231
+#: bp-groups/actions/create.php:233
 #: bp-groups/screens/single/send-invites.php:97
 msgid "There was an error removing the invite"
 msgstr "Hubo un error mientras eliminábamos la invitación"
 
-#: bp-groups/actions/create.php:227
+#: bp-groups/actions/create.php:229
 #: bp-groups/screens/single/send-invites.php:86
 msgid "Invite successfully removed"
 msgstr "Invitación eliminada con éxito"
@@ -8043,7 +8387,7 @@ msgid "%s's Friends"
 msgstr "Amigos de %s"
 
 #: bp-friends/bp-friends-template.php:84
-#: bp-templates/bp-nouveau/includes/activity/functions.php:234
+#: bp-templates/bp-nouveau/includes/activity/functions.php:240
 #: bp-templates/bp-nouveau/includes/groups/functions.php:139
 #: bp-templates/bp-nouveau/includes/members/functions.php:62
 msgid "My Friends"
@@ -8209,6 +8553,10 @@ msgstr "Usuario Eliminado"
 msgid "New Topic"
 msgstr "Nuevo hilo"
 
+#: bp-templates/bp-nouveau/includes/functions.php:1171
+msgid "Site URL"
+msgstr "URL del Sitio"
+
 #: bp-themes/bp-default/archive.php:37 bp-themes/bp-default/index.php:41
 #: bp-themes/bp-default/search.php:38 bp-themes/bp-default/single.php:33
 msgid "Tags: "
@@ -8231,16 +8579,6 @@ msgstr "Iniciar sesión"
 #: bp-groups/bp-groups-admin.php:985
 msgid "Remove"
 msgstr "Borrar"
-
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:150
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:151
-msgid "Next page"
-msgstr "Página siguiente"
-
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:143
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:145
-msgid "Previous page"
-msgstr "Página anterior"
 
 #: bp-groups/bp-groups-admin.php:979
 #: bp-members/classes/class-bp-members-admin.php:819
@@ -8318,9 +8656,6 @@ msgstr "Actualizado..."
 #: bp-templates/bp-legacy/buddypress/members/register.php:205
 #: bp-templates/bp-legacy/buddypress/members/single/profile/edit.php:75
 #: bp-templates/bp-legacy/buddypress-functions.php:294
-#: bp-templates/bp-nouveau/buddypress/common/notices/template-notices.php:15
-#: bp-templates/bp-nouveau/buddypress/members/single/default-front.php:16
-#: bp-templates/bp-nouveau/buddypress/members/single/parts/profile-visibility.php:35
 #: bp-templates/bp-nouveau/buddypress-functions.php:413
 #: bp-themes/bp-default/functions.php:180
 #: bp-themes/bp-default/members/single/profile/edit.php:137
@@ -8339,14 +8674,11 @@ msgstr "&laquo;"
 
 #: bp-messages/bp-messages-template.php:1049
 #: bp-notifications/bp-notifications-template.php:1036
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:118
-#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:122
 msgid "Apply"
 msgstr "Aplicar cambios"
 
 #: bp-messages/bp-messages-template.php:1036
 #: bp-notifications/bp-notifications-template.php:1027
-#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:108
 msgid "Bulk Actions"
 msgstr "Acciones en bloque"
 
@@ -8373,7 +8705,6 @@ msgid "Topic"
 msgstr "Hilo"
 
 #: bp-templates/bp-legacy/buddypress/activity/entry.php:130
-#: bp-templates/bp-nouveau/buddypress/activity/comment-form.php:21
 #: bp-themes/bp-default/activity/entry.php:104
 msgid "Post"
 msgstr "Mensaje"
@@ -8719,7 +9050,7 @@ msgid "There was a problem deleting the group profile photo. Please try again."
 msgstr "Ha habido un problema al borrar la foto de perfil del grupo. Por favor, vuelve a intentarlo."
 
 #: bp-core/classes/class-bp-attachment-avatar.php:397
-#: bp-groups/actions/create.php:285
+#: bp-groups/actions/create.php:287
 msgid "The group profile photo was uploaded successfully."
 msgstr "La foto de perfil del grupo se ha subido con éxito."
 
@@ -8791,6 +9122,7 @@ msgstr "Contraseña"
 #: bp-members/classes/class-bp-members-list-table.php:150
 #: bp-members/classes/class-bp-members-ms-list-table.php:137
 #: bp-templates/bp-legacy/buddypress/members/register.php:85
+#: bp-templates/bp-nouveau/includes/functions.php:1137
 #: bp-themes/bp-default/registration/register.php:37
 #: bp-themes/bp-default/sidebar.php:44
 msgid "Username"
@@ -8969,7 +9301,7 @@ msgid "Page %s"
 msgstr "Página %s"
 
 #: bp-core/bp-core-template.php:3127 bp-groups/bp-groups-template.php:3394
-#: bp-templates/bp-nouveau/includes/groups/functions.php:531
+#: bp-templates/bp-nouveau/includes/groups/functions.php:530
 #: bp-themes/bp-default/groups/create.php:18
 #: bp-themes/bp-default/groups/index.php:21
 msgid "Create a Group"
@@ -9021,6 +9353,7 @@ msgstr "Los roles de comunidad especiales ya no existen. Utilice en su lugar las
 msgid "You do not have access to this page."
 msgstr "No tienes acceso a esta página"
 
+#. translators: %s = member name
 #: bp-core/bp-core-template.php:199 bp-core/bp-core-template.php:218
 #: bp-core/classes/class-bp-core-user.php:169
 #: bp-core/classes/class-bp-core-user.php:170
@@ -9028,7 +9361,7 @@ msgstr "No tienes acceso a esta página"
 #: bp-groups/classes/class-bp-groups-invite-template.php:234
 #: bp-groups/classes/class-bp-groups-invite-template.php:235
 #: bp-groups/classes/class-bp-groups-invite-template.php:236
-#: bp-templates/bp-nouveau/includes/activity/functions.php:87
+#: bp-templates/bp-nouveau/includes/activity/functions.php:90
 msgid "Profile photo of %s"
 msgstr "Imagen de perfil de %s"
 
@@ -9209,7 +9542,7 @@ msgstr[0] "<strong>Version %1$s</strong> solucionó un problema de seguridad y a
 msgstr[1] "<strong>Version %1$s</strong> solucionó un problema de seguridad y arregló %2$s rrores."
 
 #. translators: 1: BuddyPress version number, 2: plural number of bugs.
-#: bp-core/bp-core-admin.php:37
+#: bp-core/bp-core-admin.php:37 bp-core/classes/class-bp-admin.php:579
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> arregló %2$s error."
@@ -9234,50 +9567,50 @@ msgid_plural "Security Releases"
 msgstr[0] "Versión de seguridad"
 msgstr[1] "Versión de seguridad"
 
-#: bp-core/bp-core-admin.php:25
+#: bp-core/bp-core-admin.php:25 bp-core/classes/class-bp-admin.php:574
 msgid "Maintenance Release"
 msgid_plural "Maintenance Releases"
 msgstr[0] "Versión de mantenimiento"
 msgstr[1] "Versiones de mantenimiento"
 
 #: bp-core/admin/bp-core-admin-functions.php:434
-#: bp-core/classes/class-bp-admin.php:716
+#: bp-core/classes/class-bp-admin.php:734
 msgid "Credits"
 msgstr "Créditos"
 
-#: bp-core/classes/class-bp-admin.php:837
+#: bp-core/classes/class-bp-admin.php:855
 msgid "Contributors to BuddyPress %s"
 msgstr "Colaboradores de BuddyPress %s"
 
-#: bp-core/classes/class-bp-admin.php:813
+#: bp-core/classes/class-bp-admin.php:831
 msgid "Recent Rockstars"
 msgstr "Estrellas de rock recientes"
 
-#: bp-core/classes/class-bp-admin.php:759
+#: bp-core/classes/class-bp-admin.php:777
 msgid "Navigator"
 msgstr "Navegador"
 
-#: bp-core/classes/class-bp-admin.php:744
-#: bp-core/classes/class-bp-admin.php:749
-#: bp-core/classes/class-bp-admin.php:754
-#: bp-core/classes/class-bp-admin.php:764
-#: bp-core/classes/class-bp-admin.php:769
-#: bp-core/classes/class-bp-admin.php:789
-#: bp-core/classes/class-bp-admin.php:794
-#: bp-core/classes/class-bp-admin.php:799
-#: bp-core/classes/class-bp-admin.php:804
+#: bp-core/classes/class-bp-admin.php:762
+#: bp-core/classes/class-bp-admin.php:767
+#: bp-core/classes/class-bp-admin.php:772
+#: bp-core/classes/class-bp-admin.php:782
+#: bp-core/classes/class-bp-admin.php:787
+#: bp-core/classes/class-bp-admin.php:807
+#: bp-core/classes/class-bp-admin.php:812
+#: bp-core/classes/class-bp-admin.php:817
+#: bp-core/classes/class-bp-admin.php:822
 msgid "Core Developer"
 msgstr "Desarrollador del núcleo (Core)"
 
-#: bp-core/classes/class-bp-admin.php:730
+#: bp-core/classes/class-bp-admin.php:748
 msgid "Lead Developer"
 msgstr "Desarrollador principal"
 
-#: bp-core/classes/class-bp-admin.php:725
+#: bp-core/classes/class-bp-admin.php:743
 msgid "Project Lead"
 msgstr "Líder del proyecto"
 
-#: bp-core/classes/class-bp-admin.php:720
+#: bp-core/classes/class-bp-admin.php:738
 msgid "Project Leaders"
 msgstr "Líderes de Proyecto"
 
@@ -9339,7 +9672,7 @@ msgstr "Herramientas disponibles"
 #: bp-core/admin/bp-core-admin-components.php:24
 #: bp-core/admin/bp-core-admin-settings.php:267
 #: bp-core/admin/bp-core-admin-slugs.php:24
-#: bp-core/classes/class-bp-admin.php:714
+#: bp-core/classes/class-bp-admin.php:732
 msgid "BuddyPress Settings"
 msgstr "Configuración Buddypress"
 
@@ -9536,7 +9869,7 @@ msgstr "Desconectado"
 msgid "Logged-In"
 msgstr "Conectado"
 
-#. #-#-#-#-#  buddypress-code.pot (BuddyPress 3.0.0)  #-#-#-#-#
+#. #-#-#-#-#  buddypress-code.pot (BuddyPress 3.1.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: bp-core/admin/bp-core-admin-functions.php:740
 #: bp-core/classes/class-bp-admin.php:207
@@ -9604,7 +9937,6 @@ msgstr "Registrarse"
 #: bp-members/classes/class-bp-members-ms-list-table.php:308
 #: bp-messages/bp-messages-template.php:1276
 #: bp-templates/bp-legacy/buddypress/members/activate.php:60
-#: bp-templates/bp-nouveau/buddypress/members/activate.php:35
 #: bp-themes/bp-default/registration/activate.php:38
 msgid "Activate"
 msgstr "Activar"
@@ -9822,12 +10154,6 @@ msgstr "Visitar sitio"
 #: bp-members/bp-members-template.php:1273
 #: bp-messages/bp-messages-template.php:859
 #: bp-templates/bp-legacy/buddypress/common/search/dir-search-form.php:15
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:130
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/invites/index.php:134
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:90
-#: bp-templates/bp-nouveau/buddypress/common/js-templates/messages/index.php:93
-#: bp-templates/bp-nouveau/buddypress/common/search/search-form.php:19
-#: bp-templates/bp-nouveau/includes/messages/functions.php:148
 #: bp-themes/bp-default/header.php:30 bp-themes/bp-default/searchform.php:5
 msgid "Search"
 msgstr "Buscar"
@@ -9848,7 +10174,7 @@ msgstr "Sitios de %s"
 msgid "Congratulations! You have successfully registered a new site."
 msgstr "¡Felicidades! has creado un nuevo sitio de forma correcta."
 
-#: bp-templates/bp-nouveau/includes/template-tags.php:2268
+#: bp-templates/bp-nouveau/includes/template-tags.php:2272
 #: bp-themes/bp-default/registration/register.php:236
 msgid "I would like my site to appear in search engines, and in public listings around this network."
 msgstr "Quiero que mi sitio parezca en los buscadores y en los listados públicos de toda esta red."
@@ -9905,6 +10231,7 @@ msgstr "Última entrada: %s"
 msgid "Never active"
 msgstr "Nunca con actividad"
 
+#. translators: %s = last activity timestamp (e.g. "active 1 hour ago")
 #: bp-blogs/bp-blogs-template.php:624
 #: bp-core/classes/class-bp-core-user.php:172
 #: bp-groups/bp-groups-widgets.php:72
@@ -9915,9 +10242,9 @@ msgstr "Nunca con actividad"
 #: bp-templates/bp-legacy/buddypress/groups/groups-loop.php:67
 #: bp-templates/bp-legacy/buddypress/groups/single/cover-image-header.php:63
 #: bp-templates/bp-legacy/buddypress/groups/single/group-header.php:72
-#: bp-templates/bp-nouveau/buddypress/groups/groups-loop.php:47
-#: bp-templates/bp-nouveau/buddypress/groups/single/cover-image-header.php:30
-#: bp-templates/bp-nouveau/buddypress/groups/single/group-header.php:26
+#: bp-templates/bp-nouveau/buddypress/groups/groups-loop.php:51
+#: bp-templates/bp-nouveau/buddypress/groups/single/cover-image-header.php:31
+#: bp-templates/bp-nouveau/buddypress/groups/single/group-header.php:31
 #: bp-themes/bp-default/groups/groups-loop.php:47
 #: bp-themes/bp-default/groups/single/group-header.php:42
 msgid "active %s"
@@ -10091,11 +10418,6 @@ msgstr "Ver"
 #: bp-templates/bp-legacy/buddypress/activity/comment.php:46
 #: bp-templates/bp-legacy/buddypress/members/single/messages/messages-loop.php:148
 #: bp-templates/bp-legacy/buddypress/members/single/messages/single.php:45
-#: bp-templates/bp-nouveau/includes/activity/template-tags.php:456
-#: bp-templates/bp-nouveau/includes/activity/template-tags.php:457
-#: bp-templates/bp-nouveau/includes/activity/template-tags.php:811
-#: bp-templates/bp-nouveau/includes/notifications/functions.php:231
-#: bp-templates/bp-nouveau/includes/notifications/template-tags.php:115
 #: bp-themes/bp-default/activity/comment.php:46
 #: bp-themes/bp-default/members/single/messages/messages-loop.php:51
 #: bp-themes/bp-default/members/single/messages/single.php:24
@@ -10151,7 +10473,7 @@ msgstr "&larr;"
 
 #: bp-activity/classes/class-bp-activity-activity.php:365
 #: bp-activity/classes/class-bp-activity-template.php:144
-#: bp-groups/bp-groups-functions.php:245 bp-groups/bp-groups-functions.php:668
+#: bp-groups/bp-groups-functions.php:245 bp-groups/bp-groups-functions.php:695
 #: bp-groups/classes/class-bp-groups-group-members-template.php:99
 #: bp-groups/classes/class-bp-groups-group.php:1051
 #: bp-groups/classes/class-bp-groups-invite-template.php:84
@@ -10337,7 +10659,7 @@ msgstr "Actividad global"
 msgid "Activity Streams"
 msgstr "Cronologías de actividad"
 
-#: bp-activity/bp-activity-functions.php:3218
+#: bp-activity/bp-activity-functions.php:3227
 msgid "Thumbnail"
 msgstr "Miniatura"
 
@@ -10530,7 +10852,6 @@ msgstr "No se han encontrado actividades."
 #: bp-activity/bp-activity-admin.php:1049
 #: bp-activity/classes/class-bp-activity-list-table.php:593
 #: bp-templates/bp-legacy/buddypress/activity/comment.php:40
-#: bp-templates/bp-nouveau/includes/activity/template-tags.php:797
 #: bp-themes/bp-default/activity/comment.php:40
 #: bp-themes/bp-default/groups/single/forum/edit.php:10
 msgid "Reply"
@@ -10539,7 +10860,7 @@ msgstr "Responder"
 #: bp-activity/bp-activity-admin.php:1048 bp-groups/bp-groups-admin.php:722
 #: bp-members/classes/class-bp-members-admin.php:2188
 #: bp-templates/bp-legacy/buddypress/activity/entry.php:130
-#: bp-templates/bp-nouveau/buddypress/activity/comment-form.php:21
+#: bp-templates/bp-nouveau/includes/activity/functions.php:167
 #: bp-themes/bp-default/forums/index.php:134
 #: bp-xprofile/classes/class-bp-xprofile-field.php:1355
 #: bp-xprofile/classes/class-bp-xprofile-group.php:831
@@ -10656,9 +10977,6 @@ msgstr "j M  Y @ G:i"
 #: bp-activity/classes/class-bp-akismet.php:205
 #: bp-activity/classes/class-bp-akismet.php:234
 #: bp-core/admin/bp-core-admin-functions.php:1015
-#: bp-templates/bp-nouveau/includes/activity/template-tags.php:502
-#: bp-templates/bp-nouveau/includes/activity/template-tags.php:507
-#: bp-templates/bp-nouveau/includes/activity/template-tags.php:838
 msgid "Spam"
 msgstr "Spam"
 
@@ -10926,7 +11244,6 @@ msgid "Please enter some content to post."
 msgstr "Por favor, introduce algo a enviar."
 
 #: bp-activity/actions/spam.php:59
-#: bp-templates/bp-nouveau/includes/activity/ajax.php:631
 msgid "The activity item has been marked as spam and is no longer visible."
 msgstr "Esta actividad ha sido marcada como spam y ya no es visible."
 

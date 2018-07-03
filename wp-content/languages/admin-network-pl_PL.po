@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration - Network Admin package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-24 20:40:19+0000\n"
+"PO-Revision-Date: 2018-06-12 12:14:24+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -479,7 +479,7 @@ msgstr "Wybrana witryna nie istnieje."
 
 #: wp-admin/network/upgrade.php:29
 msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Updates_Screen\">Documentation on Upgrade Network</a>"
-msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Updates_Screen\" target=\"_blank\">Dokumentacja dotycząca aktualizacji sieci witryn</a>"
+msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Updates_Screen\">Dokumentacja dotycząca aktualizacji sieci witryn</a>"
 
 #: wp-admin/network/user-new.php:26 wp-admin/network/users.php:179
 msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Users_Screen\">Documentation on Network Users</a>"
@@ -1334,7 +1334,7 @@ msgstr "Email witający administratora witryny"
 
 #: wp-admin/network/settings.php:230
 msgid "Banned Email Domains"
-msgstr "Zabronione domeny adresów email"
+msgstr "Zablokowane domeny adresów email"
 
 #: wp-admin/network/settings.php:217
 msgid "Limited Email Registrations"
@@ -1342,7 +1342,7 @@ msgstr "Dozwolone domeny adresów email"
 
 #: wp-admin/network/settings.php:207
 msgid "Banned Names"
-msgstr "Zabronione nazwy"
+msgstr "Zablokowane nazwy"
 
 #: wp-admin/network/settings.php:200
 msgid "Add New Users"
@@ -1358,7 +1358,7 @@ msgstr "Możliwość rejestracji"
 
 #: wp-admin/network/site-users.php:261
 msgid "Duplicated username or email address."
-msgstr "Używana już nazwa użytkownika lub adres email."
+msgstr "Nazwa użytkownika lub email już istnieje."
 
 #: wp-admin/network/user-new.php:37
 msgid "Cannot create an empty user."

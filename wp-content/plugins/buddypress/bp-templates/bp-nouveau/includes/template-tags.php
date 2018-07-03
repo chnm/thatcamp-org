@@ -3,7 +3,7 @@
  * Common template tags
  *
  * @since 3.0.0
- * @version 3.0.0
+ * @version 3.1.0
  */
 
 // Exit if accessed directly.
@@ -2177,11 +2177,11 @@ function bp_nouveau_get_customizer_link( $args = array() ) {
 function bp_nouveau_signup_hook( $when = '', $prefix = '' ) {
 	$hook = array( 'bp' );
 
-	if ( ! $when ) {
+	if ( $when ) {
 		$hook[] = $when;
 	}
 
-	if ( ! $prefix ) {
+	if ( $prefix ) {
 		if ( 'page' === $prefix ) {
 			$hook[] = 'register';
 		} elseif ( 'steps' === $prefix ) {
@@ -2241,21 +2241,25 @@ function bp_nouveau_signup_form( $section = 'account_details' ) {
 	}
 
 	foreach ( $fields as $name => $attributes ) {
-		$classes = '';
-
 		list( $label, $required, $value, $attribute_type, $type, $class ) = array_values( $attributes );
-
-		if ( $required ) {
-			$required = ' ' . _x( '(required)', 'signup required field', 'buddypress' );
-		}
 
 		// Text fields are using strings, radios are using their inputs
 		$label_output = '<label for="%1$s">%2$s</label>';
 		$id           = $name;
+		$classes      = '';
+
+		if ( $required ) {
+			/* translators: Do not translate placeholders. 2 = form field name, 3 = "(required)". */
+			$label_output = __( '<label for="%1$s">%2$s %3$s</label>', 'buddypress' );
+		}
 
 		// Output the label for regular fields
 		if ( 'radio' !== $type ) {
-			printf( $label_output, esc_attr( $name ), esc_html( sprintf( $label, $required ) ) );
+			if ( $required ) {
+				printf( $label_output, esc_attr( $name ), esc_html( $label ), __( '(required)', 'buddypress' ) );
+			} else {
+				printf( $label_output, esc_attr( $name ), esc_html( $label ) );
+			}
 
 			if ( ! empty( $value ) && is_callable( $value ) ) {
 				$value = call_user_func( $value );
@@ -2415,15 +2419,24 @@ function bp_nouveau_submit_button( $action ) {
 		do_action( $submit_data['before'] );
 	}
 
-	// Output the submit button.
-	printf(
-		'<div class="submit">
-			<input type="submit" %s/>
-		</div>',
+	$submit_input = sprintf( '<input type="submit" %s/>',
 		bp_get_form_field_attributes( 'submit', $submit_data['attributes'] )  // Safe.
 	);
 
-	wp_nonce_field( $submit_data['nonce'] );
+	// Output the submit button.
+	if ( isset( $submit_data['wrapper'] ) && false === $submit_data['wrapper'] ) {
+		echo $submit_input;
+
+	// Output the submit button into a wrapper.
+	} else {
+		printf( '<div class="submit">%s</div>', $submit_input );
+	}
+
+	if ( empty( $submit_data['nonce_key'] ) ) {
+		wp_nonce_field( $submit_data['nonce'] );
+	} else {
+		wp_nonce_field( $submit_data['nonce'], $submit_data['nonce_key'] );
+	}
 
 	if ( ! empty( $submit_data['after'] ) ) {
 
