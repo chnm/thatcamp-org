@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.3
+ * Transposh v1.0.1
  * http://transposh.org/
  *
- * Copyright 2013, Team Transposh
+ * Copyright 2018, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 06 May 2013 02:15:55 +0300
+ * Date: Wed, 27 Jun 2018 14:41:10 +0300
  */
 
 /*
@@ -27,7 +27,7 @@ class transposh_base_widget {
     /**
      * Function that performs the actual subwidget rendering
      */
-    static function tp_widget_do( $args ) {
+    static function tp_widget_do($args) {
         echo "you should override this function in your widget";
     }
 
@@ -35,7 +35,7 @@ class transposh_base_widget {
      * Attempts inclusion of css needed for the subwidget
      * @param string $file
      * @param string $plugin_dir
-     * @param string $plugin_url
+     * @param string $plugin_url 
      */
     static function tp_widget_css($file, $plugin_dir, $plugin_url) {
         tp_logger('looking for css:' . $file, 4);
@@ -50,7 +50,7 @@ class transposh_base_widget {
      * Attempts inclusion of javascript needed for the subwidget
      * @param string $file
      * @param string $plugin_dir
-     * @param string $plugin_url
+     * @param string $plugin_url 
      */
     static function tp_widget_js($file, $plugin_dir, $plugin_url) {
         tp_logger('looking for js:' . $file, 4);
@@ -143,7 +143,13 @@ class transposh_plugin_widget extends WP_Widget {
      */
     function load_widget($file) {
         tp_logger("widget loaded: $file", 4);
-        $widget_src = $this->transposh->transposh_plugin_dir . TRANSPOSH_DIR_WIDGETS . '/' . $file;
+        if ($file[0] == '*') {
+            $upload = wp_upload_dir();
+            $upload_dir = $upload['basedir'] . '/' . TRANSPOSH_DIR_UPLOAD . '/' . TRANSPOSH_DIR_WIDGETS;
+            $widget_src = $upload_dir . '/' . substr($file, 1);
+        } else {
+            $widget_src = $this->transposh->transposh_plugin_dir . TRANSPOSH_DIR_WIDGETS . '/' . $file;
+        }
         if ($file && file_exists($widget_src)) {
             include_once $widget_src;
         } else {
@@ -171,7 +177,12 @@ class transposh_plugin_widget extends WP_Widget {
             $class = $this->load_widget($key);
             if (class_exists($class)) {
                 $tmpclass = new $class;
-                $tmpclass->tp_widget_css($key, $this->transposh->transposh_plugin_dir, $this->transposh->transposh_plugin_url);
+                if ($key[0] == '*') {
+                    $upload = wp_upload_dir();
+                    $tmpclass->tp_widget_css(substr($key, 1), $upload['basedir'] . '/' . TRANSPOSH_DIR_UPLOAD . '/', $upload['baseurl'] . '/' . TRANSPOSH_DIR_UPLOAD);
+                } else {
+                    $tmpclass->tp_widget_css($key, $this->transposh->transposh_plugin_dir, $this->transposh->transposh_plugin_url);
+                }
             }
         }
         tp_logger('Added transposh_widget_css', 4);
@@ -194,7 +205,12 @@ class transposh_plugin_widget extends WP_Widget {
             $class = $this->load_widget($key);
             if (class_exists($class)) {
                 $tmpclass = new $class;
-                $tmpclass->tp_widget_js($key, $this->transposh->transposh_plugin_dir, $this->transposh->transposh_plugin_url);
+                if ($key[0] == '*') {
+                    $upload = wp_upload_dir();
+                    $tmpclass->tp_widget_js(substr($key, 1), $upload['basedir'] . '/' . TRANSPOSH_DIR_UPLOAD . '/', $upload['baseurl'] . '/' . TRANSPOSH_DIR_UPLOAD);
+                } else {
+                    $tmpclass->tp_widget_js($key, $this->transposh->transposh_plugin_dir, $this->transposh->transposh_plugin_url);
+                }
             }
         }
         tp_logger('Added transposh_widget_js', 4);
@@ -208,7 +224,8 @@ class transposh_plugin_widget extends WP_Widget {
     function create_widget_args($clean_page_url) {
         // only calculate urls once even for multiple instances
         static $widget_args;
-        if (is_array($widget_args)) return $widget_args;
+        if (is_array($widget_args))
+            return $widget_args;
         $widget_args = array();
         $page_url = '';
         if (is_404()) {
@@ -267,7 +284,8 @@ class transposh_plugin_widget extends WP_Widget {
 
         // widget default title
         //echo $before_widget . $before_title . __('Translation', TRANSPOSH_TEXT_DOMAIN) . $after_title; - hmm? po/mo?
-        if (isset($before_widget)) echo $before_widget;
+        if (isset($before_widget))
+            echo $before_widget;
         if ($instance['title']) {
             /* TRANSLATORS: no need to translate this string */
             echo $before_title . __($instance['title'], TRANSPOSH_TEXT_DOMAIN) . $after_title;
@@ -280,10 +298,11 @@ class transposh_plugin_widget extends WP_Widget {
         $tmpclass = new $class;
         $tmpclass->tp_widget_do($widget_args);
         if ($extcall) {
-            $tmpclass->tp_widget_css($instance['widget_file'],$this->transposh->transposh_plugin_dir, $this->transposh->transposh_plugin_url);
-            $tmpclass->tp_widget_js($instance['widget_file'],$this->transposh->transposh_plugin_dir, $this->transposh->transposh_plugin_url);
+            $tmpclass->tp_widget_css($instance['widget_file'], $this->transposh->transposh_plugin_dir, $this->transposh->transposh_plugin_url);
+            $tmpclass->tp_widget_js($instance['widget_file'], $this->transposh->transposh_plugin_dir, $this->transposh->transposh_plugin_url);
             // don't display edit and other things for shortcode embedding
-            if (isset($after_widget)) echo $after_widget;
+            if (isset($after_widget))
+                echo $after_widget;
             // increase the number of calls for unique IDs
             self::$draw_calls++;
             return;
@@ -309,20 +328,12 @@ class transposh_plugin_widget extends WP_Widget {
             echo '<p>No languages available for display. Check the Transposh settings (Admin).</p>';
         }
 
-        // Now this is a comment for those wishing to remove our logo (tplogo.png) and link (transposh.org) from the widget
-        // first - according to the gpl, you may do so - but since the code has changed - please make in available under the gpl
-        // second - we did invest a lot of time and effort into this, and the link is a way to help us grow and show your appreciation, if it
-        // upsets you, feel more than free to move this link somewhere else on your page, such as the footer etc.
-        // third - feel free to write your own widget, the translation core will work
-        // forth - you can ask for permission, with a good reason, if you contributed to the code - it's a good enough reason :)
-        // fifth - if you just delete the following line, it means that you have little respect to the whole copyright thing, which as far as we
-        // understand means that by doing so - you are giving everybody else the right to do the same and use your work without any attribution
-        // last - you can now remove the logo in exchange to a few percentage of ad and affiliate revenues on your pages, isn't that better?
-        $plugpath = parse_url($this->transposh->transposh_plugin_url, PHP_URL_PATH);
+        $plugpath = @parse_url($this->transposh->transposh_plugin_url, PHP_URL_PATH);
 
         echo '<div id="' . SPAN_PREFIX . 'credit' . self::$draw_calls . '">';
         echo '</div>';
-        if (isset($after_widget)) echo $after_widget;
+        if (isset($after_widget))
+            echo $after_widget;
         // increase the number of calls for unique IDs
         self::$draw_calls++;
     }
@@ -335,26 +346,29 @@ class transposh_plugin_widget extends WP_Widget {
 
         $tp_widgets = array();
         $widget_root = $this->transposh->transposh_plugin_dir . "widgets";
-        if (!empty($widget_folder)) $widget_root .= $widget_folder;
+        if (!empty($widget_folder))
+            $widget_root = $widget_folder;
 
         // Files in wp-content/widgets directory
         $widgets_dir = @opendir($widget_root);
         $widget_files = array();
         if ($widgets_dir) {
             while (($file = readdir($widgets_dir) ) !== false) {
-                if (substr($file, 0, 1) == '.') continue;
+                if (substr($file, 0, 1) == '.')
+                    continue;
                 if (is_dir($widget_root . '/' . $file)) {
                     $widgets_subdir = @ opendir($widget_root . '/' . $file);
                     if ($widgets_subdir) {
                         while (($subfile = readdir($widgets_subdir) ) !== false) {
-                            if (substr($subfile, 0, 1) == '.') continue;
+                            if (substr($subfile, 0, 1) == '.')
+                                continue;
                             if (substr($subfile, 0, 4) == TRANSPOSH_WIDGET_PREFIX && substr($subfile, -4) == '.php')
-                                    $widget_files[] = "$file/$subfile";
+                                $widget_files[] = "$file/$subfile";
                         }
                     }
                 }
                 if (substr($file, 0, 4) == TRANSPOSH_WIDGET_PREFIX && substr($file, -4) == '.php')
-                        $widget_files[] = $file;
+                    $widget_files[] = $file;
             }
         } else {
             return $tp_widgets;
@@ -363,14 +377,17 @@ class transposh_plugin_widget extends WP_Widget {
         @closedir($widgets_dir);
         @closedir($widgets_subdir);
 
-        if (empty($widget_files)) return $tp_widgets;
+        if (empty($widget_files))
+            return $tp_widgets;
 
         foreach ($widget_files as $widget_file) {
-            if (!is_readable("$widget_root/$widget_file")) continue;
+            if (!is_readable("$widget_root/$widget_file"))
+                continue;
 
             $widget_data = get_plugin_data("$widget_root/$widget_file", false, false); //Do not apply markup/translate as it'll be cached.
 
-            if (empty($widget_data['Name'])) continue;
+            if (empty($widget_data['Name']))
+                continue;
 
             $tp_widgets[plugin_basename($widget_file)] = $widget_data;
         }

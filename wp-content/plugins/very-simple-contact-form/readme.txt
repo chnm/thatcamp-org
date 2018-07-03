@@ -1,7 +1,6 @@
 === Very Simple Contact Form ===
 Contributors: Guido07111975
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donation%40guidovanderleest%2enl
-Version: 8.5
+Version: 8.6
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.7
@@ -164,7 +163,7 @@ Your hosting provider might have disabled the use of sessions. Ask them for more
 Or your browser blocks cookies. You should enable cookies.
 
 = Does this plugin has anti-spam features? =
-Of course, the default WordPress sanitization and escaping functions are included.
+Of course, the native WordPress sanitization and escaping functions are included.
 
 It also contains 2 (invisible) honeypot fields (firstname and lastname) and a simple captcha (random number).
 
@@ -180,18 +179,22 @@ I did my best to meet the conditions of the GDPR:
 * You can easily delete form submissions from database
 
 = How can I make a donation? =
-You like my plugin and you're willing to make a donation? Nice! There's a PayPal donate link on the WordPress plugin page and my website.
+You like my plugin and you're willing to make a donation? Nice! There's a PayPal donate link at my website.
 
 = Other question or comment? =
 Please open a topic in plugin forum.
 
 
 == Changelog ==
+= Version 8.6 =
+* readme file: removed donate link
+* updated theme author info
+
 = Version 8.5 =
-fix: added CSS to make privacy checkbox visible when using Bootstrap (thanks Marie)
-fix: nonce was outputted twice (thanks malae and Felipe)
-fix: duplicate ID of privacy checkbox (thanks malae)
-credits in changelog: removed all full names (because of the GDPR)
+* fix: added CSS to make privacy checkbox visible when using Bootstrap (thanks Marie)
+* fix: nonce was outputted twice (thanks malae and Felipe)
+* fix: duplicate ID of privacy checkbox (thanks malae)
+* credits in changelog: removed all full names (because of the GDPR)
 
 = Version 8.4 =
 * added bootstrap css class to privacy checkbox
@@ -206,9 +209,6 @@ credits in changelog: removed all full names (because of the GDPR)
 * removed the capability to create new submission in dashboard
 * changed the id of name and email column on submissions page
 * updated file vscf
-
-= Version 8.1 =
-* some textual changes on settingspage
 
 For all versions please check file changelog.
 

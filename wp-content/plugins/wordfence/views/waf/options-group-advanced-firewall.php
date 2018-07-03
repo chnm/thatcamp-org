@@ -25,7 +25,7 @@ if (!isset($collapseable)) {
 					<div class="wf-block-title">
 						<strong><?php _e('Advanced Firewall Options', 'wordfence'); ?></strong>
 					</div>
-					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure"></div></div><?php endif; ?>
+					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive($stateKey) ? 'true' : 'false'); ?>" tabindex="0"></div></div><?php endif; ?>
 				</div>
 			</div>
 			<div class="wf-block-content">
@@ -137,11 +137,29 @@ if (!isset($collapseable)) {
 
 			//Add event handler to rule checkboxes
 			$('.wf-rule-toggle.wf-boolean-switch').each(function() {
+				$(this).on('keydown', function(e) {
+					if (e.keyCode == 32) {
+						e.preventDefault();
+						e.stopPropagation();
+
+						$(this).find('.wf-boolean-switch-handle').trigger('click');
+					}
+				});
+				
 				$(this).on('click', function(e) {
 					e.preventDefault();
 					e.stopPropagation();
 
 					$(this).find('.wf-boolean-switch-handle').trigger('click');
+				});
+
+				$(this).find('.wf-boolean-switch-handle').on('keydown', function(e) {
+					if (e.keyCode == 32) {
+						e.preventDefault();
+						e.stopPropagation();
+
+						$(this).trigger('click');
+					}
 				});
 
 				$(this).find('.wf-boolean-switch-handle').on('click', function(e) {
@@ -153,11 +171,11 @@ if (!isset($collapseable)) {
 					var ruleID = row.data('ruleId');
 					var value = control.hasClass('wf-active') ? 1 : 0;
 					if (value) {
-						control.removeClass('wf-active');
+						control.removeClass('wf-active').attr('aria-checked', 'false');
 						value = 0;
 					}
 					else {
-						control.addClass('wf-active');
+						control.addClass('wf-active').attr('aria-checked', 'false');
 						value = 1;
 					}
 

@@ -2,11 +2,11 @@
 Contributors: oferwald
 Donate link: http://transposh.org/donate/
 Tags: translation, translate, i18n, widget, filter, buddypress, bilingual, multilingual, transposh, language, crowdsourcing, google translate, bing translate, context, wiki, RTL, Hebrew, Spanish, French, Russian, English, Arabic, Portuguese
-Requires at least: 3.3
-Tested up to: 4.1
-Stable tag: 0.9.6
+Requires at least: 3.8
+Tested up to: 4.9.6
+Stable tag: 1.0.1
 
-Transposh adds best of breed translation support to wordpress, 92 languages are automatically translated and can be manually corrected with ease.
+Transposh adds best of breed translation support to wordpress, 117 languages are automatically translated and can be manually corrected with ease.
 
 == Description ==
 Transposh translation filter for WordPress offers a unique approach to blog translation. It allows your blog to combine automatic translation with human translation aided by your users with an easy to use in-context interface.
@@ -23,7 +23,7 @@ You can watch the video above, made by Fabrice Meuwissen of obviousidea.com whic
 * Translation of external plugins without a need for .po/.mo files
 * Automatic translation mode for all content (including comments!)
 * Professional translation bt [One Hour Translation](http://transposh.org/redir/oht)
-* Use either Google Translate,MS Translate or Apertium backends - 92 languages supported!
+* Use either Google, Bing, Yandex or Apertium translation backends - 117 languages supported!
 * Automatic translation can be triggered on demand by the readers or on the server side
 * RSS feeds are translated too
 * Takes care of hidden elements, link tags, meta contents and titles
@@ -69,12 +69,8 @@ You can find them on our site [here](http://transposh.org/faq)
 5. Widget style selection box, with three basic appearances, flags below (in Hebrew), language selection on the top right and language list on the bottom right.
 
 == Upgrade Notice ==
-= 0.9.5 =
-Fix hiding of upgrades
-= 0.9.4 =
-Fix broken update, Fix Google proxy
-= 0.9.3 =
-Really, no need to upgrade here, please read how to keep your widgets on our site
+= 0.9.7 =
+Must upgrade if you are using Google as your translation Engine or you have upgraded to wordpress 4.2.x
 = 0.9.2 =
 Update for some bugs in parsing
 = 0.8.0 =
@@ -113,35 +109,109 @@ This version allows sorting of languages within the widget
 
 == Credits ==
 = Translation credits =
- * Dutch translation by [Roland Nieuwendijk](http://blog.imagitect.nl/)
- * Russian translation by Romans Matusevics
- * Hebrew translation by [Amir](http://colnect.com/he)
- * Frontend Spanish translation by [Ignacio](http://colnect.com/es/collectors/collector/iflvico)
- * Italian translation by [MacItaly](http://profiles.wordpress.org/macitaly)
- * Persian translation by [Sushyant Zavarzadeh](http://sushyant.com)
- * Spanish translation by [Angel Torregrosa](http://wordp.relatividad.org)
- * German translation by [Jenny Beelens](http://www.professionaltranslation.com)
- * Turkish translation by [Ömer Faruk Karabulut](http://yakalasam.com/) and [Semih Yeşilyurt](http://kingdroid.net)
- * Portuguese (Brazil) translation by [Amilton Junior](http://www.dicasemgeral.com)
+ * Dutch  - [Roland Nieuwendijk](http://blog.imagitect.nl/)
+ * German - [Jenny Beelens](http://www.professionaltranslation.com)
+ * Hebrew - [Amir](http://colnect.com/he)
+ * Italian - [MacItaly](http://profiles.wordpress.org/macitaly)
+ * Persian - [Sushyant Zavarzadeh](http://sushyant.com)
+ * Portuguese (Brazil) - [Amilton Junior](http://www.dicasemgeral.com)
+ * Russian - Romans Matusevics
+ * Serbian - [Borisa Djuraskovic]
+ * Spanish - [Angel Torregrosa](http://wordp.relatividad.org), [Ignacio](http://colnect.com/es/collectors/collector/iflvico)
+ * Turkish - [Ömer Faruk Karabulut](http://yakalasam.com/) and [Semih Yeşilyurt](http://kingdroid.net)
+ * French - [Michel Chaussée](tajimoko.com)
 
 == Changelog ==
-= 2014/12/27 - 0.9.6 =
- * Added 10 new google languages
- * edit parameter renamed to tpedit to reduce collisions with other plugins
- * Pay attention, no bug fixes and new features here, please upgrade to the full and free version
-= 2014/02/05 - 0.9.5 =
- * Added 9 new google languages
-= 2013/10/31 - 0.9.4 =
- * Fix broken Google translate internal Proxy
- * Fix update mechanism to support 3.7+
+= 2018/06/27 - 1.0.1 =
+ * Allow generating of google compatible rel=alternate, check the advanced options
+ * widgets may be loaded from uploads dir (uploads/transposh/widgets) - full version feature
+ * Some more cleanups of wordpress.org version for unused stuff
+= 2018/06/16 - 1.0.0 =
+ * PHP 7 stuff
+ * Source map support for javascript files will make them easier to debug
+ * Switch from google compiler to uglify.js
+ * FirePHP is dead, long live Chromelogger
+ * Full/WPOrg version support - We will now release a limited version for wordpress and a full one which will have a .1 in the end, so we are releasing 1.0.0 and 1.0.0.1 at about the same time
+ * More languages supported by engined
+ * If you are migrating from the old wordpress version and encounter any issues, contact us
+= 2017/10/05 - 0.9.9.2 =
+ * More languages by Bing, Yandex, Baidu
+ * Fix the ui suggestions on next and prev 
+ * Changing the parser class names to avoid conflicts
+ * Fix the jQueryUI conflict post wp 4.7
+= 2016/05/15 - 0.9.9.1 =
+ * Google proxy fix
+= 2016/05/01 - 0.9.9.0 =
+ * Add support for Baidu translation
+ * Support Cantonese thanks to Baidu - Support up to 96 Languages!
+ * Add new Google method for working after the change
+ * Fix for Yandex key issues
+ * Support for more UTF8 breaking chars (mostly Chinese)
+ * Minor additions for 3rd party support
+ * Support for apcu (advanced php cache user)
+ * New languages added by Google (13 in total) - Support up to 107 Languages!
+ * Support new filters on constants, allowing to change flags without modifying the code
+= 2015/10/27 - 0.9.8.1 =
+ * Better matching of languages in rewrite mode (will no longer accept any two random chars)
+ * Fix a critical bug in the locale filter code
+= 2015/10/27 - 0.9.8 =
+ * Yandex translator support added
+ * Added the option to choose preferred translators order via drag and drop
+ * Fix critical bug in translate post and translate on publish
+ * Fixes in language selection UI (long language names)
+ * Fix translation dialog not loading on first click
+ * No longer expose Google keys externally
+ * Fix the clean automatic translations in the utils tab
+ * Support Bashkir, Kyrghiz and Tatar thanks to Yandex - Now supporting 95 Languages!
+ * Added Swahili support to Bing
+ * Reduced wait time between posts in translate all to 2 seconds
+ * Fix shortcodes when wrapping a <p> tag
+ * New Google icon
+ * Fix WP_Widget deprecation call for wordpress 4.3
+ * Minor fix for buddypress search integration
+ * Fix some cases when https urls would not be rewritten
+ * Fix rewrite support for three letter languages (currently only ceb)
+= 2015/07/29 - 0.9.7.2 =
+ * Shortcode revision following wordpress 4.2.3 release
+ * Update to the Google proxy code, so it works again for now
+= 2015/07/21 - 0.9.7.1 =
+ * Minor bug fixes
+= 2015/06/04 - 0.9.7 =
+ * SuperProxy allows you to sell some traffic and make money see [Site](http://superproxy.transposh.net)
+ * Backend Editor allows deleting of unwanted edits quickly
+ * Google proxy update fixes non working automatic google translate
+ * Database updated and will reduce the log table usage dramatically, saves up to 50% of the database site
+ * Wordpress 4.2 compatability supports new database table format to allow more complicated characters - making a backup is a good idea
+ * Woo integration fixes
+ * Ditch the base64 encoding and reduce size of translatable pages
+ * Widget fixes makes flags show correctly when wrong box sizing was used
+ * Removal of front end progress bar, it was rarely seen or used and caused more trouble than it was worth
+ * 3 new languages supported by bing
+ * locale shortcode [tp locale=y]
+ * avoid translation of non text/json content fixes issues with some download addon plugins
+ * Support the placeholder attribute, thanks Mark Serellis 
+ * Some support for the business directory plugin
+= 2014/12/21 - 0.9.6 =
+ * Added new 10 Google languages
+ * Support for Yoast SEO sitemaps (patch required, instructions inside)
+ * Fixed transposh blocking upgrades with newer wordpress api
+ * Many warnings suppressed, including strict standards
+ * Added Serbian translation by Borisa Djuraskovic
+ * Lots of fixes for the google proxy
+ * Allow to remove useless auto translations (where string == translation)
+= 2014/01/25 - 0.9.5 =
+ * Added new 8 Google languages
+ * retired deprecated $wpdb->escape
+ * Fixed transposh blocking upgrades with newer wordpress api
+= 2013/10/29 - 0.9.4 =
+ * Fixed update mechanism with Wordpress 3.7
+ * Fix for the builtin google translation proxy
+ * This version is HTTPS tolerant
+ * Allow to update to complete version from transposh.org
 = 2013/05/06 - 0.9.3 =
- * Removed any linking to Transposh and ad sharing mechnism
  * Added Khmer
- * Removed all widgets except the default version
  * Allow to remove the rel=alternate language marking
  * Allow to update to complete version from transposh.org
- * All widgets except the default are no longer included, you may choose to upgrade or get them from our site
- * This version, while fully functional, has a limit of 5 languages selection
 = 2013/03/11 - 0.9.2 =
  * Basic Woocommerce support 
  * Override the case when other plugins or themes cause the process_page to be called prematurely

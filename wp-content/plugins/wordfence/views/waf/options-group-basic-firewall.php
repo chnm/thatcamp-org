@@ -25,7 +25,7 @@ if (!isset($collapseable)) {
 					<div class="wf-block-title">
 						<strong><?php _e('Basic Firewall Options', 'wordfence'); ?></strong>
 					</div>
-					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure"></div></div><?php endif; ?>
+					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive($stateKey) ? 'true' : 'false'); ?>" tabindex="0"></div></div><?php endif; ?>
 				</div>
 			</div>
 			<div class="wf-block-content">
@@ -232,6 +232,24 @@ if (!isset($collapseable)) {
 												WFAD.colorboxClose();
 											});
 											$.wfcolorbox.resize();
+
+											var payload = {serverConfiguration: res.serverConfiguration, iniModified: 1};
+											if (res.credentials) {
+												payload['credentials'] = res.credentials;
+												payload['credentialsSignature'] = res.credentialsSignature;
+											}
+											
+											$('.wf-waf-uninstall-try-again').on('click', function(e) {
+												e.preventDefault();
+												e.stopPropagation();
+												
+												$(this).text('Retrying');
+												payload['retryAttempted'] = 1;
+
+												WFAD.ajax(action, payload, function(res) {
+													installUninstallResponseHandler(action, res);
+												});
+											});
 										}
 										else if (res.uninstallationWaiting) {
 											var replacement = $(res.html);
@@ -452,7 +470,7 @@ if (!isset($collapseable)) {
 						<?php else: ?>
 							<p class="wf-no-top"><?php _e('This feature blocks all traffic from IPs with a high volume of recent malicious activity using Wordfence\'s real-time blacklist.', 'wordfence'); ?></p>
 							<div class="wf-option wf-option-switch wf-padding-add-bottom" data-option-name="disableWAFBlacklistBlocking" data-original-value="<?php echo $config->getConfig('disableWAFBlacklistBlocking') ? '1': '0'; ?>">
-								<ul class="wf-switch">
+								<ul class="wf-switch" role="radiogroup">
 									<?php
 									$states = array(
 										array('value' => '1', 'label' => __('Disabled', 'wordfence')),
@@ -461,7 +479,7 @@ if (!isset($collapseable)) {
 									
 									foreach ($states as $s):
 										?>
-										<li<?php if ($s['value'] == ($config->getConfig('disableWAFBlacklistBlocking') ? '1': '0')) { echo ' class="wf-active"'; } ?> data-option-value="<?php echo esc_attr($s['value']); ?>"><?php echo esc_html($s['label']); ?></li>
+										<li<?php if ($s['value'] == ($config->getConfig('disableWAFBlacklistBlocking') ? '1': '0')) { echo ' class="wf-active"'; } ?> data-option-value="<?php echo esc_attr($s['value']); ?>" role="radio" aria-checked="<?php echo (($s['value'] == ($config->getConfig('disableWAFBlacklistBlocking') ? '1': '0')) ? 'true' : 'false'); ?>" tabindex="0"><?php echo esc_html($s['label']); ?></li>
 									<?php endforeach; ?>
 								</ul>
 							</div>

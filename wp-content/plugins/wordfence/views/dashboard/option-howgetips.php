@@ -22,7 +22,7 @@ $selectOptions = array(
 					<li>
 						<ul class="wf-flex-vertical wf-flex-align-left">
 							<li class="wf-padding-add-left">
-								<ul class="wf-flex-vertical wf-flex-align-left">
+								<ul class="wf-flex-vertical wf-flex-align-left" role="radiogroup">
 								<?php foreach ($selectOptions as $o): ?>
 									<li class="wf-padding-add-top-small"><input type="radio" class="wf-option-radio" name="wf-howgetIPs" value="<?php echo esc_attr($o['value']); ?>" id="wf-howgetIPs-<?php echo esc_attr(preg_replace('/[^a-z0-9]/i', '-', $o['value'])); ?>"<?php if ($o['value'] == wfConfig::get('howGetIPs')) { echo ' checked'; } ?>><label for="wf-howgetIPs-<?php echo esc_attr(preg_replace('/[^a-z0-9]/i', '-', $o['value'])); ?>">&nbsp;&nbsp;</label><?php echo $o['label']; ?></li>
 								<?php endforeach; ?>
@@ -135,6 +135,15 @@ $selectOptions = array(
 			});
 
 			$('#howGetIPs-trusted-proxies-show').each(function() {
+				$(this).on('keydown', function(e) {
+					if (e.keyCode == 32) {
+						e.preventDefault();
+						e.stopPropagation();
+
+						$(this).trigger('click');
+					}
+				});
+				
 				$(this).on('click', function(e) {
 					e.preventDefault();
 					e.stopPropagation();

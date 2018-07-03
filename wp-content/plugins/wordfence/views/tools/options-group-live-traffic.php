@@ -31,7 +31,7 @@ if (!isset($hideShowMenuItem)) {
 					<div class="wf-block-title">
 						<strong><?php _e('Live Traffic Options', 'wordfence'); ?></strong>
 					</div>
-					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure"></div></div><?php endif; ?>
+					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive($stateKey) ? 'true' : 'false'); ?>" tabindex="0"></div></div><?php endif; ?>
 				</div>
 			</div>
 			<div class="wf-block-content wf-clearfix">
@@ -75,7 +75,7 @@ if (!isset($hideShowMenuItem)) {
 							'enabledValue'  => 1,
 							'disabledValue' => 0,
 							'value'         => wfConfig::get('liveTraf_ignorePublishers') ? 1 : 0,
-							'title'         => __("Don't log signed-in users with publishing access.", 'wordfence'),
+							'title'         => __("Don't log signed-in users with publishing access", 'wordfence'),
 						))->render();
 						?>
 					</li>
@@ -84,7 +84,7 @@ if (!isset($hideShowMenuItem)) {
 						echo wfView::create('options/option-text', array(
 							'textOptionName' => 'liveTraf_ignoreUsers',
 							'textValue'      => wfConfig::get('liveTraf_ignoreUsers'),
-							'title'          => __('List of comma separated usernames to ignore.', 'wordfence'),
+							'title'          => __('List of comma separated usernames to ignore', 'wordfence'),
 						))->render();
 						?>
 					</li>
@@ -93,7 +93,7 @@ if (!isset($hideShowMenuItem)) {
 						echo wfView::create('options/option-text', array(
 							'textOptionName' => 'liveTraf_ignoreIPs',
 							'textValue'      => wfConfig::get('liveTraf_ignoreIPs'),
-							'title'          => __('List of comma separated IP addresses to ignore.', 'wordfence'),
+							'title'          => __('List of comma separated IP addresses to ignore', 'wordfence'),
 						))->render();
 						?>
 					</li>
@@ -102,7 +102,7 @@ if (!isset($hideShowMenuItem)) {
 						echo wfView::create('options/option-text', array(
 							'textOptionName' => 'liveTraf_ignoreUA',
 							'textValue'      => wfConfig::get('liveTraf_ignoreUA'),
-							'title'          => __('Browser user-agent to ignore.', 'wordfence'),
+							'title'          => __('Browser user-agent to ignore', 'wordfence'),
 						))->render();
 						?>
 					</li>
@@ -111,7 +111,16 @@ if (!isset($hideShowMenuItem)) {
 						echo wfView::create('options/option-text', array(
 							'textOptionName' => 'liveTraf_maxRows',
 							'textValue'      => wfConfig::get('liveTraf_maxRows'),
-							'title'          => __('Amount of Live Traffic data to store (number of rows).', 'wordfence'),
+							'title'          => __('Amount of Live Traffic data to store (number of rows)', 'wordfence'),
+						))->render();
+						?>
+					</li>
+					<li>
+						<?php
+						echo wfView::create('options/option-text', array(
+							'textOptionName' => 'liveTraf_maxAge',
+							'textValue'      => wfConfig::get('liveTraf_maxAge'),
+							'title'          => __('Maximum days to keep Live Traffic data (minimum: 1)', 'wordfence'),
 						))->render();
 						?>
 					</li>

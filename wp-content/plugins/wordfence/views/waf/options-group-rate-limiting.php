@@ -25,7 +25,7 @@ if (!isset($collapseable)) {
 					<div class="wf-block-title">
 						<strong><?php _e('Rate Limiting', 'wordfence'); ?></strong>
 					</div>
-					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure"></div></div><?php endif; ?>
+					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive($stateKey) ? 'true' : 'false'); ?>" tabindex="0"></div></div><?php endif; ?>
 				</div>
 			</div>
 			<div class="wf-block-content">

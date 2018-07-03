@@ -48,10 +48,11 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 <div class="wf-modal" id="wf-toupp-changed-modal">
 	<div class="wf-modal-content">
 		<p><?php _e('We have updated our Terms of Use and Privacy Policy. To continue using Wordfence, you will need to review and accept the updated <a href="https://www.wordfence.com/terms-of-use/" target="_blank" rel="noopener noreferrer">Terms of Use</a> and <a href="https://www.wordfence.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.', 'wordfence'); ?></p>
+		<?php if (wfConfig::get('isPaid')): ?><p><?php _e('You can log in to <a href="https://www.wordfence.com/" target="_blank" rel="noopener noreferrer">wordfence.com</a> to accept the updated terms and privacy policy for all of your premium license keys at once.', 'wordfence'); ?></p><?php endif; ?>
 	</div>
 	<div class="wf-modal-footer">
 		<ul class="wf-flex-horizontal wf-full-width wf-flex-align-right">
-			<li class="wf-padding-add-right"><a href="#" class="wf-btn wf-btn-default" id="wf-toupp-changed-cancel"><?php _e('Don\'t Agree', 'wordfence'); ?></a></li>
+			<li class="wf-padding-add-right"><a href="https://www.wordfence.com/help/general-data-protection-regulation/#agreement-to-new-terms-and-privacy-policies" class="wf-btn wf-btn-default" target="_blank" rel="noopener noreferrer"><?php _e('Get More Info', 'wordfence'); ?></a></li>
 			<li><a href="#" class="wf-btn wf-btn-primary" id="wf-toupp-changed-agree"><?php _e('Agree', 'wordfence'); ?></a></li>
 		</ul>
 	</div>

@@ -5,7 +5,8 @@ class wfSchema {
 		'wfBlocks',
 		'wfBlocksAdv',
 		'wfLockedOut',
-		'wfThrottleLog',	
+		'wfThrottleLog',
+		'wfNet404s',
 	);
 	
 	private static $tables = array(
@@ -166,13 +167,6 @@ class wfSchema {
   PRIMARY KEY (`id`),
   KEY `k1` (`ctime`),
   KEY `k2` (`type`)
-) DEFAULT CHARSET=utf8",
-'wfNet404s' => "(
-  `sig` binary(16) NOT NULL,
-  `ctime` int(10) unsigned NOT NULL,
-  `URI` varchar(1000) NOT NULL,
-  PRIMARY KEY (`sig`),
-  KEY `k1` (`ctime`)
 ) DEFAULT CHARSET=utf8",
 'wfHoover' => "(
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,

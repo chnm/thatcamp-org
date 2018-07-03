@@ -4,16 +4,16 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: links, link, URLs, url, auto-link, hyperlink, make_clickable, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Requires at least: 4.1
-Tested up to: 4.5
-Stable tag: 5.0
+Requires at least: 4.7
+Tested up to: 4.9
+Stable tag: 5.2
 
-Automatically hyperlink text URLs and email addresses originally written only as plaintext.
+Automatically turns plaintext URLs and email addresses into links.
 
 
 == Description ==
 
-Automatically hyperlink text URLs and email addresses originally written only as plaintext.
+Automatically turns plaintext URLs and email addresses into links.
 
 This plugin seeks to replace and extend WordPress's default auto-hyperlinking function. This plugin uses different pattern matching expressions than the WordPress default in order to prevent inappropriate adjacent characters from becoming part of the link (as WordPress has improved over the years, nowadays this is just a few edge cases like text links that are braced or bracketed) and it prevents invalid URIs (i.e. http://blah) from becoming links.
 
@@ -34,7 +34,7 @@ The following domain extensions (aka TLDs, Top-Level Domains) are recognized by 
 
 This plugin also activates auto-hyperlinking of text links within post/page content.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/auto-hyperlink-urls/) | [Plugin Directory Page](https://wordpress.org/plugins/auto-hyperlink-urls/) | [Author Homepage](http://coffee2code.com/)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/auto-hyperlink-urls/) | [Plugin Directory Page](https://wordpress.org/plugins/auto-hyperlink-urls/) | [GitHub](https://github.com/coffee2code/auto-hyperlink-urls/) | [Author Homepage](http://coffee2code.com/)
 
 
 == Installation ==
@@ -87,7 +87,7 @@ And unless explicitly stated, the results are using default values (nofollow is 
 
 The plugin exposes seven filters for hooking. Typically, customizations utilizing these hooks would be put into your active theme's functions.php file, or used by another plugin.
 
-= c2c_autohyperlink_urls_filters (filter) =
+**c2c_autohyperlink_urls_filters (filter)**
 
 This hook allows you to customize which filters get processed by the plugin.
 
@@ -112,7 +112,7 @@ function my_c2c_autohyperlink_urls_filters( $filters ) {
 add_filter( 'c2c_autohyperlink_urls_filters', 'my_c2c_autohyperlink_urls_filters' );
 `
 
-= autohyperlink_urls_class (filter) =
+**autohyperlink_urls_class (filter)**
 
 This hook allows you to customize the class added to links created by the plugin.
 
@@ -127,7 +127,7 @@ Example:
 add_filter( 'autohyperlink_urls_class', function ( $class ) { return 'myclass'; } );
 `
 
-= autohyperlink_urls_link_attributes (filter) =
+**autohyperlink_urls_link_attributes (filter)**
 
 This hook allows you to add custom attributes to links created by the plugin.
 
@@ -155,10 +155,10 @@ function add_title_attribute_for_autohyperlink_urls( $attributes, $context = 'ur
 
 	return $attributes;
 }
-add_filter( 'autohyperlink_urls_link_attributes', 'add_title_attribute_for_autohyperlink_urls' );
+add_filter( 'autohyperlink_urls_link_attributes', 'add_title_attribute_for_autohyperlink_urls', 10, 3 );
 `
 
-= autohyperlink_urls_tlds (filter) =
+**autohyperlink_urls_tlds (filter)**
 
 This hook allows you to custom the list of supported TLDs for non-URI scheme link auto-hyperlinking. Note that the value sent to the hook includes the default TLDs plus those added via the 'more_extensions' setting. Also note that the TLDs are defined as a '|'-separated string.
 
@@ -173,7 +173,7 @@ Example:
 add_filter( 'autohyperlink_urls_tlds', function ( $tlds ) { return $tlds . '|in|io|tt'; } );
 `
 
-= autohyperlink_urls_truncate_link (filter) =
+**autohyperlink_urls_truncate_link (filter)**
 
 This hook allows you to custom how truncated links are displayed.
 
@@ -183,7 +183,7 @@ Arguments:
 * $original_url (string): The full, original URL.
 * $context (string): The context for the link. Either 'url' or 'email'. Default 'url'.
 
-= autohyperlink_urls_custom_exclusions (filter) =
+**autohyperlink_urls_custom_exclusions (filter)**
 
 This hook allows you to define custom logic to determine if a link should be hyperlinked.
 
@@ -214,7 +214,7 @@ function my_autohyperlink_urls_custom_exclusions( $should, $url, $domain ) {
 add_filter( 'autohyperlink_urls_custom_exclusions', 'my_autohyperlink_urls_custom_exclusions' );
 `
 
-= autohyperlink_urls_exclude_domains (filter) =
+**autohyperlink_urls_exclude_domains (filter)**
 
 This hook allows you to specify domains that should not get auto-hyperlinked. Note that the value sent to the hook includes the value of the 'exclude_domains' setting. Note that only the domain (without URI scheme or trailing slash) should be specified.
 
@@ -241,10 +241,73 @@ add_filter( 'autohyperlink_urls_exclude_domains', 'my_autohyperlink_urls_exclude
 
 == Changelog ==
 
+= 5.2 (2018-05-03) =
+Highlights:
+
+* This release consists of fixes for some minor bugs, improved handling of URLs containing parentheses, drops compatibility with versions of WordPress older than 4.7, and some behind-the-scenes changes.
+
+Details:
+
+* Fix: Fix and improve handling of parentheses in URLs
+* Fix: Prevent error when `can_do_hyperlink()` is passed an invalid URL
+* Change: Reformat code (minor) for `hyperlink_urls()` to sync with core coding standards
+* Change: Update plugin framework to 047
+    * 047:
+    * Don't save default setting values to database on install
+    * Change "Cheatin', huh?" error messages to "Something went wrong.", consistent with WP core
+    * Note compatibility through WP 4.9+
+    * Drop compatibility with version of WP older than 4.7
+    * 046:
+    * Fix `reset_options()` to reference instance variable `$options`
+    * Note compatibility through WP 4.7+
+    * Update copyright date (2017)
+    * 045:
+    * Ensure `reset_options()` resets values saved in the database
+* New: Add README.md
+* Change: Store setting name in constant
+* Change: Unit tests:
+    * Sync changes to `Tests_Formatting_MakeClickable` with core's version (largely code formatting changes)
+    * Revamp handling and testing of settings
+    * Simplify implementations of `set_option()`
+    * Add explicit tests for 'strip_protocol' set as true
+    * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
+    * Enable more error output for unit tests
+* Change: Tweak plugin description
+* Change: Add GitHub link to readme
+* Change: Fix code example in readme
+* Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
+* Change: Note compatibility through WP 4.9+
+* Change: Drop compatibility with versions of WP older than 4.7
+* Change: Update copyright date (2018)
+
+= 5.1 (2016-06-19) =
+* New: Add setting 'require_scheme' to allow preventing plugin from auto-linking URIs without explicit schemes (i.e. 'http://').
+* Change: Make the comparison for domains against the exclude list case insensitive. Props mqudsi.
+* Change: Update plugin framework to 044:
+    * 044
+    * Add `reset_caches()` to clear caches and memoized data. Use it in `reset_options()` and `verify_config()`.
+    * Add `verify_options()` with logic extracted from `verify_config()` for initializing default option attributes.
+    * Add  `add_option()` to add a new option to the plugin's configuration.
+    * Add filter 'sanitized_option_names' to allow modifying the list of whitelisted option names.
+    * Change: Refactor `get_option_names()`.
+    * 043
+    * Disregard invalid lines supplied as part of hash option value.
+    * 042
+    * Update `disable_update_check()` to check for HTTP and HTTPS for plugin update check API URL.
+    * Translate "Donate" in footer message.
+    * Note compatibility through WP 4.5.
+* Change: Construct strings in a cleaner way with `sprintf()` rather than piecing strings and variables together.
+* Change: Minor code reformatting.
+* Change: Prevent web invocation of unit test bootstrap.php.
+* Change: Note compatibility through WP 4.5+.
+* Bugfix: Add appropriate spacing so v5.0's changelog entry gets properly parsed.
+
 = 5.0 (2016-01-26) =
 Highlights:
+
 This release revives active development of the plugin after many years and includes many, many changes. Backwards compatilibility has been maintained; it just handles things better and introduces a number of new features. Some notable changes:
-* Introduced setting and filter to support for preventing specified domains from getting auto-linked.
+
+* Introduced setting and filter to add support for preventing specified domains from getting auto-linked.
 * Introduced filter to support custom handlers to determine if and when text links should get auto-linked.
 * Improved text link detection and handling.
 * Links within `<code>`, `<pre>`, `<script>`, and `<style>` tags are no longer hyperlinked.
@@ -255,6 +318,7 @@ This release revives active development of the plugin after many years and inclu
 * Changed to no longer output the 'title' attribute.
 
 Details:
+
 * New: Introduce setting to allow specifying domains that should not be automatically hyperlinked.
 * New: Add filter 'autohyperlink_urls_exclude_domains' for specifying domains to exclude domains from hyperlinking.
 * New: Add filter 'autohyperlink_urls_custom_exclusions' to support custom logic to determine if a link should be hyperlinked.
@@ -301,7 +365,7 @@ Details:
 * New: Add link to plugin directory page to readme.txt
 * Change: Tweak installation instructions in readme.txt
 * New: Create empty index.php to prevent files from being listed if web server has enabled directory listings.
-* Change: Note compatibility through WP 4.5+.
+* Change: Note compatibility through WP 4.4+.
 * Change: Remove support for versions of WordPress older than 4.1.
 * Change: Update copyright date (2016).
 * Change: Update donate link.
@@ -423,6 +487,12 @@ Details:
 
 
 == Upgrade Notice ==
+
+= 5.2 =
+Recommended update: improved handling of parentheses in URLs; fixed some minor bugs; updated plugin framework to version 047; added README.md; compatibility is now with WP 4.7-4.9+; updated copyright date (2018).
+
+= 5.1 =
+Feature release: added setting to require explicit URI scheme (e.g. "http://") for text to be auto-linked; made comparison for domains against the exclude list be case insensitive; verified compatibility through WP 4.5+.
 
 = 5.0 =
 Recommended major update: new features; improved handling; hardening; minor bug fixes; added unit tests; improved localization; verified compatibility through WP 4.4; minimum WP support now 4.1; updated copyright date (2016); and more.

@@ -30,7 +30,6 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 				<li><a href="#" class="wf-onboarding-btn wf-onboarding-btn-primary wf-disabled" id="wf-onboarding-continue"><?php _e('Continue', 'wordfence'); ?></a></li>
 			</ul>
 		</div>
-		<div style="display: none;"><img src="https://forms.aweber.com/form/displays.htm?id=jCxMHAzMLAzsjA==" alt="" /></div>
 	</div>
 	<div id="wf-onboarding-fresh-install-2" class="wf-onboarding-modal-content"<?php if (wfConfig::get('onboardingAttempt1') != wfOnboardingController::ONBOARDING_FIRST_EMAILS) { echo ' style="display: none;"'; } ?>>
 		<div class="wf-onboarding-logo"><img src="<?php echo esc_attr(wfUtils::getBaseURL() . 'images/logo.png'); ?>" alt="<?php _e('Wordfence - Securing your WordPress Website', 'wordfence'); ?>"></div>

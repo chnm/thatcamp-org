@@ -956,6 +956,8 @@ class YOP_Poll_Basic {
 										. 'border-color:' . esc_attr( $poll->meta_data['style']['errors']['borderColor'] ) . ';'
 										. 'border-radius:' . esc_attr( $poll->meta_data['style']['errors']['borderRadius'] ) . 'px;'
 										. 'padding:' . esc_attr( $poll->meta_data['style']['errors']['padding'] ) . 'px;'
+										. 'color:' . esc_attr( $poll->meta_data['style']['errors']['textColor'] ) . ';'
+										. 'font-size:' . esc_attr( $poll->meta_data['style']['errors']['textSize'] ) . ';"'
 										. '">'
 											. '<p>' . __( 'This poll is no longer accepting votes', 'yop-poll' ) . '</p>'
 										. '</div>'
@@ -980,6 +982,8 @@ class YOP_Poll_Basic {
 										. 'border-color:' . esc_html( $poll->meta_data['style']['errors']['borderColor'] ) . ';'
 										. 'border-radius:' . esc_html( $poll->meta_data['style']['errors']['borderRadius'] ) . 'px;'
 										. 'padding:' . esc_html( $poll->meta_data['style']['errors']['padding'] ) . 'px;'
+										. 'color:' . esc_attr( $poll->meta_data['style']['errors']['textColor'] ) . ';'
+										. 'font-size:' . esc_attr( $poll->meta_data['style']['errors']['textSize'] ) . ';"'
 										. '">'
 											. '<p>' . __( 'This poll is not accepting votes yet', 'yop-poll' ) . '</p>'
 										. '</div>'
@@ -1067,6 +1071,8 @@ class YOP_Poll_Basic {
 										. 'border-color:' . esc_attr( $poll->meta_data['style']['errors']['borderColor'] ) . ';'
 										. 'border-radius:' . esc_attr( $poll->meta_data['style']['errors']['borderRadius'] ) . 'px;'
 										. 'padding:' . esc_attr( $poll->meta_data['style']['errors']['padding'] ) . 'px;'
+										. 'color:' . esc_attr( $poll->meta_data['style']['errors']['textColor'] ) . ';'
+										. 'font-size:' . esc_attr( $poll->meta_data['style']['errors']['textSize'] ) . ';"'
 										. '">'
 											. '<p></p>'
 										. '</div>'
@@ -1142,6 +1148,8 @@ class YOP_Poll_Basic {
 										. 'border-color:' . esc_html( $poll->meta_data['style']['errors']['borderColor'] ) . ';'
 										. 'border-radius:' . esc_html( $poll->meta_data['style']['errors']['borderRadius'] ) . 'px;'
 										. 'padding:' . esc_html( $poll->meta_data['style']['errors']['padding'] ) . 'px;'
+										. 'color:' . esc_attr( $poll->meta_data['style']['errors']['textColor'] ) . ';'
+										. 'font-size:' . esc_attr( $poll->meta_data['style']['errors']['textSize'] ) . ';"'
 										. '">'
 											. '<p>' . __( 'Thank you for your vote(s)', 'yop-poll' ) . '</p>'
 										. '</div>'
@@ -1196,7 +1204,7 @@ class YOP_Poll_Basic {
 				$vote->user = new \stdClass();
 				$vote->user->id = ( $current_user->ID != 0 ) ? $current_user->ID : '';
 				$vote->user->c_data = YOP_Poll_Votes::get_voter_cookie( $poll->id );
-				$vote->user->ipaddress = YOP_Poll_Votes::get_voter_ip();
+				$vote->user->ipaddress = YOP_Poll_Votes::get_voter_ip( $poll );
 				if ( true === YOP_Poll_Votes::validate_voter_against_blocks( $vote, $poll ) ) {
 					if ( true === self::should_display_results( $poll ) ) {
 						$params['show_results'] = '1';

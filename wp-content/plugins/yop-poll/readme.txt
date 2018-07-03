@@ -103,13 +103,30 @@ You can have only one question per poll. If you want to ask more than one questi
 
 == Screenshots ==
 
-1. Add New
-2. Templates
-3. View All
-4. YOP Poll as a widget with a custom field defined
-5. YOP Poll on a page with a custom field defined
+1. Choose Template
+2. Template Styling
+3. Add Question and Answers
+4. Define Poll Settings
+5. Define Poll Access Settings
+6. Define Poll Results Settings
+7. Poll on Live Page
+8. View All Polls
+9. View Results
 
 == Changelog ==
+
+= 6.0.1 =
+* css cleanout
+* fixed issue with css for custom fields
+* fixed issue with the gridline
+* fixed issue with results after vote
+* fixed issue with displaying number of votes and percentages
+* fixed issue with spacing between answers
+* fixed issue with export
+* fixed issue with redirect after vote time
+* fixed issue with reset votes
+* fixed issue with results set to Never
+* fixed issue with deleted polls
 
 = 6.0.0 =
 * complete re-write

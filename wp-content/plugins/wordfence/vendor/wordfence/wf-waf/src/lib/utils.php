@@ -843,7 +843,7 @@ class wfWAFUtils {
 		if (empty($HTTP_RAW_POST_DATA)) { //Defined if always_populate_raw_post_data is on, PHP < 7, and the encoding type is not multipart/form-data
 			$avoidPHPInput = false;
 			try {
-				$avoidPHPInput = wfWAF::getSharedStorageEngine()->getConfig('avoid_php_input', false);
+				$avoidPHPInput = wfWAF::getSharedStorageEngine() && wfWAF::getSharedStorageEngine()->getConfig('avoid_php_input', false);
 			}
 			catch (Exception $e) {
 				//Ignore

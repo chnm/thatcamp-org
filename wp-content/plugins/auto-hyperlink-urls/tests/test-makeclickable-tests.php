@@ -14,10 +14,10 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 	}
 
 	public function set_option( $settings = array() ) {
-		c2c_AutoHyperlinkURLs::get_instance()->load_config();
-		c2c_AutoHyperlinkURLs::get_instance()->verify_config();
-		$settings = wp_parse_args( $settings, c2c_AutoHyperlinkURLs::get_instance()->get_options() );
-		c2c_AutoHyperlinkURLs::get_instance()->update_option( $settings, true );
+		$obj = c2c_AutoHyperlinkURLs::get_instance();
+		$defaults = $obj->get_options();
+		$settings = wp_parse_args( (array) $settings, $defaults );
+		$obj->update_option( $settings, true );
 	}
 
 	public function remove_class_attribute_for_autohyperlink_urls( $attributes ) {
@@ -37,15 +37,24 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			$text = $email;
 		}
 
-
 		$expected =  $before . '<a href="mailto:' . esc_attr( $email ) . '">' . $text . '</a>' . $after;
 
 		return $expected;
 	}
 
+	/*
+	 * Everything that follows is copied from WP's tests/formatting/MakeClickable.php
+	 * but with c2c_autohyperlink_link_urls() instead of make_clickable().
+	 * Changes from original tests:
+	 * - test_strip_trailing_with_protocol() expected output should omit protocol
+	 * - test_strip_trailing_without_protocol_nothing_afterwards() expected output should omit protocol
+	 * - test_wrapped_in_angles() should be commented out
+	 * - test_real_world_examples()'s first two expected outputs should also hyperlink the plaintext domain name
+	 */
+
 	function test_mailto_xss() {
 		$in = 'testzzz@"STYLE="behavior:url(\'#default#time2\')"onBegin="alert(\'refresh-XSS\')"';
-		$this->assertEquals($in, c2c_autohyperlink_link_urls($in));
+		$this->assertEquals( $in, c2c_autohyperlink_link_urls( $in ) );
 	}
 
 	function test_valid_mailto() {
@@ -55,9 +64,9 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			'Foo.Bar@a.b.c.d.example.com',
 			'0@example.com',
 			'foo@example-example.com',
-			);
-		foreach ($valid_emails as $email) {
-			$this->assertEquals( $this->expect_email( $email ), c2c_autohyperlink_link_urls( $email ));
+		);
+		foreach ( $valid_emails as $email ) {
+			$this->assertEquals( '<a href="mailto:' . $email . '">' . $email . '</a>', c2c_autohyperlink_link_urls( $email ) );
 		}
 	}
 
@@ -69,41 +78,41 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			'@example.com',
 			'foo @example.com',
 			'foo@example',
-			);
-		foreach ($invalid_emails as $email) {
-			$this->assertEquals($email, c2c_autohyperlink_link_urls($email));
+		);
+		foreach ( $invalid_emails as $email ) {
+			$this->assertEquals( $email, c2c_autohyperlink_link_urls( $email ) );
 		}
 	}
 
-	// tests that make_clickable will not link trailing periods, commas and
+	// tests that c2c_autohyperlink_link_urls will not link trailing periods, commas and
 	// (semi-)colons in URLs with protocol (i.e. http://wordpress.org)
 	function test_strip_trailing_with_protocol() {
-		$urls_before = array(
+		$urls_before   = array(
 			'http://wordpress.org/hello.html',
 			'There was a spoon named http://wordpress.org. Alice!',
 			'There was a spoon named http://wordpress.org, said Alice.',
 			'There was a spoon named http://wordpress.org; said Alice.',
 			'There was a spoon named http://wordpress.org: said Alice.',
-			'There was a spoon named (http://wordpress.org) said Alice.'
-			);
+			'There was a spoon named (http://wordpress.org) said Alice.',
+		);
 		$urls_expected = array(
 			'<a href="http://wordpress.org/hello.html" rel="nofollow">http://wordpress.org/hello.html</a>',
 			'There was a spoon named <a href="http://wordpress.org" rel="nofollow">http://wordpress.org</a>. Alice!',
 			'There was a spoon named <a href="http://wordpress.org" rel="nofollow">http://wordpress.org</a>, said Alice.',
 			'There was a spoon named <a href="http://wordpress.org" rel="nofollow">http://wordpress.org</a>; said Alice.',
 			'There was a spoon named <a href="http://wordpress.org" rel="nofollow">http://wordpress.org</a>: said Alice.',
-			'There was a spoon named (<a href="http://wordpress.org" rel="nofollow">http://wordpress.org</a>) said Alice.'
-			);
+			'There was a spoon named (<a href="http://wordpress.org" rel="nofollow">http://wordpress.org</a>) said Alice.',
+		);
 
-		foreach ($urls_before as $key => $url) {
-			$this->assertEquals($urls_expected[$key], c2c_autohyperlink_link_urls($url));
+		foreach ( $urls_before as $key => $url ) {
+			$this->assertEquals( $urls_expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
 		}
 	}
 
-	// tests that make_clickable will not link trailing periods, commas and
+	// tests that c2c_autohyperlink_link_urls will not link trailing periods, commas and
 	// (semi-)colons in URLs with protocol (i.e. http://wordpress.org)
 	function test_strip_trailing_with_protocol_nothing_afterwards() {
-		$urls_before = array(
+		$urls_before   = array(
 			'http://wordpress.org/hello.html',
 			'There was a spoon named http://wordpress.org.',
 			'There was a spoon named http://wordpress.org,',
@@ -111,7 +120,7 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			'There was a spoon named http://wordpress.org:',
 			'There was a spoon named (http://wordpress.org)',
 			'There was a spoon named (http://wordpress.org)x',
-			);
+		);
 		$urls_expected = array(
 			'<a href="http://wordpress.org/hello.html" rel="nofollow">http://wordpress.org/hello.html</a>',
 			'There was a spoon named <a href="http://wordpress.org" rel="nofollow">http://wordpress.org</a>.',
@@ -120,66 +129,66 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			'There was a spoon named <a href="http://wordpress.org" rel="nofollow">http://wordpress.org</a>:',
 			'There was a spoon named (<a href="http://wordpress.org" rel="nofollow">http://wordpress.org</a>)',
 			'There was a spoon named (<a href="http://wordpress.org" rel="nofollow">http://wordpress.org</a>)x',
-			);
+		);
 
-		foreach ($urls_before as $key => $url) {
-			$this->assertEquals($urls_expected[$key], c2c_autohyperlink_link_urls($url));
+		foreach ( $urls_before as $key => $url ) {
+			$this->assertEquals( $urls_expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
 		}
 	}
 
-	// tests that make_clickable will not link trailing periods, commas and
+	// tests that c2c_autohyperlink_link_urls will not link trailing periods, commas and
 	// (semi-)colons in URLs without protocol (i.e. www.wordpress.org)
 	function test_strip_trailing_without_protocol() {
-		$urls_before = array(
+		$urls_before   = array(
 			'www.wordpress.org',
 			'There was a spoon named www.wordpress.org. Alice!',
 			'There was a spoon named www.wordpress.org, said Alice.',
 			'There was a spoon named www.wordpress.org; said Alice.',
 			'There was a spoon named www.wordpress.org: said Alice.',
-			'There was a spoon named www.wordpress.org) said Alice.'
-			);
+			'There was a spoon named www.wordpress.org) said Alice.',
+		);
 		$urls_expected = array(
 			'<a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>',
 			'There was a spoon named <a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>. Alice!',
 			'There was a spoon named <a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>, said Alice.',
 			'There was a spoon named <a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>; said Alice.',
 			'There was a spoon named <a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>: said Alice.',
-			'There was a spoon named <a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>) said Alice.'
-			);
+			'There was a spoon named <a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>) said Alice.',
+		);
 
-		foreach ($urls_before as $key => $url) {
-			$this->assertEquals($urls_expected[$key], c2c_autohyperlink_link_urls($url));
+		foreach ( $urls_before as $key => $url ) {
+			$this->assertEquals( $urls_expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
 		}
 	}
 
-	// tests that make_clickable will not link trailing periods, commas and
+	// tests that c2c_autohyperlink_link_urls will not link trailing periods, commas and
 	// (semi-)colons in URLs without protocol (i.e. www.wordpress.org)
 	function test_strip_trailing_without_protocol_nothing_afterwards() {
-		$urls_before = array(
+		$urls_before   = array(
 			'www.wordpress.org',
 			'There was a spoon named www.wordpress.org.',
 			'There was a spoon named www.wordpress.org,',
 			'There was a spoon named www.wordpress.org;',
 			'There was a spoon named www.wordpress.org:',
-			'There was a spoon named www.wordpress.org)'
-			);
+			'There was a spoon named www.wordpress.org)',
+		);
 		$urls_expected = array(
 			'<a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>',
 			'There was a spoon named <a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>.',
 			'There was a spoon named <a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>,',
 			'There was a spoon named <a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>;',
 			'There was a spoon named <a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>:',
-			'There was a spoon named <a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>)'
-			);
+			'There was a spoon named <a href="http://www.wordpress.org" rel="nofollow">www.wordpress.org</a>)',
+		);
 
-		foreach ($urls_before as $key => $url) {
-			$this->assertEquals($urls_expected[$key], c2c_autohyperlink_link_urls($url));
+		foreach ( $urls_before as $key => $url ) {
+			$this->assertEquals( $urls_expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
 		}
 	}
 
 	// #4570
 	function test_iri() {
-		$urls_before = array(
+		$urls_before   = array(
 			'http://www.詹姆斯.com/',
 			'http://bg.wikipedia.org/Баба',
 			'http://example.com/?a=баба&b=дядо',
@@ -189,14 +198,14 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			'<a href="http://bg.wikipedia.org/Баба" rel="nofollow">http://bg.wikipedia.org/Баба</a>',
 			'<a href="http://example.com/?a=баба&#038;b=дядо" rel="nofollow">http://example.com/?a=баба&#038;b=дядо</a>',
 		);
-		foreach ($urls_before as $key => $url) {
-			$this->assertEquals($urls_expected[$key], c2c_autohyperlink_link_urls($url));
+		foreach ( $urls_before as $key => $url ) {
+			$this->assertEquals( $urls_expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
 		}
 	}
 
 	// #10990
 	function test_brackets_in_urls() {
-		$urls_before = array(
+		$urls_before   = array(
 			'http://en.wikipedia.org/wiki/PC_Tools_(Central_Point_Software)',
 			'(http://en.wikipedia.org/wiki/PC_Tools_(Central_Point_Software))',
 			'blah http://en.wikipedia.org/wiki/PC_Tools_(Central_Point_Software) blah',
@@ -224,33 +233,33 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			<a href="http://www.cs.virginia.edu/~robins/YouAndYourResearch.html" rel="nofollow">http://www.cs.virginia.edu/~robins/YouAndYourResearch.html</a>)
 			Richard Hamming wrote about people getting more done with their doors closed, but',
 		);
-		foreach ($urls_before as $key => $url) {
-			$this->assertEquals($urls_expected[$key], c2c_autohyperlink_link_urls($url));
+		foreach ( $urls_before as $key => $url ) {
+			$this->assertEquals( $urls_expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
 		}
 	}
 
 	// Based on a real comments which were incorrectly linked. #11211
 	function test_real_world_examples() {
-		$urls_before = array(
-//			'Example: WordPress, test (some text), I love example.com (http://example.org), it is brilliant',
-//			'Example: WordPress, test (some text), I love example.com (http://example.com), it is brilliant',
+		$urls_before   = array(
+			'Example: WordPress, test (some text), I love example.com (http://example.org), it is brilliant',
+			'Example: WordPress, test (some text), I love example.com (http://example.com), it is brilliant',
 			'Some text followed by a bracketed link with a trailing elipsis (http://example.com)...',
 			'In his famous speech “You and Your research” (here: http://www.cs.virginia.edu/~robins/YouAndYourResearch.html) Richard Hamming wrote about people getting more done with their doors closed...',
 		);
 		$urls_expected = array(
-//			'Example: WordPress, test (some text), I love example.com (<a href="http://example.org" rel="nofollow">http://example.org</a>), it is brilliant',
-//			'Example: WordPress, test (some text), I love example.com (<a href="http://example.com" rel="nofollow">http://example.com</a>), it is brilliant',
+			'Example: WordPress, test (some text), I love <a href="http://example.com" rel="nofollow">example.com</a> (<a href="http://example.org" rel="nofollow">http://example.org</a>), it is brilliant',
+			'Example: WordPress, test (some text), I love <a href="http://example.com" rel="nofollow">example.com</a> (<a href="http://example.com" rel="nofollow">http://example.com</a>), it is brilliant',
 			'Some text followed by a bracketed link with a trailing elipsis (<a href="http://example.com" rel="nofollow">http://example.com</a>)...',
 			'In his famous speech “You and Your research” (here: <a href="http://www.cs.virginia.edu/~robins/YouAndYourResearch.html" rel="nofollow">http://www.cs.virginia.edu/~robins/YouAndYourResearch.html</a>) Richard Hamming wrote about people getting more done with their doors closed...',
 		);
-		foreach ($urls_before as $key => $url) {
-			$this->assertEquals($urls_expected[$key], c2c_autohyperlink_link_urls($url));
+		foreach ( $urls_before as $key => $url ) {
+			$this->assertEquals( $urls_expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
 		}
 	}
 
 	// #14993
 	function test_twitter_hash_bang() {
-		$urls_before = array(
+		$urls_before   = array(
 			'http://twitter.com/#!/wordpress/status/25907440233',
 			'This is a really good tweet http://twitter.com/#!/wordpress/status/25907440233 !',
 			'This is a really good tweet http://twitter.com/#!/wordpress/status/25907440233!',
@@ -260,14 +269,14 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			'This is a really good tweet <a href="http://twitter.com/#!/wordpress/status/25907440233" rel="nofollow">http://twitter.com/#!/wordpress/status/25907440233</a> !',
 			'This is a really good tweet <a href="http://twitter.com/#!/wordpress/status/25907440233" rel="nofollow">http://twitter.com/#!/wordpress/status/25907440233</a>!',
 		);
-		foreach ($urls_before as $key => $url) {
-			$this->assertEquals($urls_expected[$key], c2c_autohyperlink_link_urls($url));
+		foreach ( $urls_before as $key => $url ) {
+			$this->assertEquals( $urls_expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
 		}
 	}
 
 /* Auto-hyperlink URLs does link links wrapped in angle brackets.
 	function test_wrapped_in_angles() {
-		$before = array(
+		$before   = array(
 			'URL wrapped in angle brackets <http://example.com/>',
 			'URL wrapped in angle brackets with padding < http://example.com/ >',
 			'mailto wrapped in angle brackets <foo@example.com>',
@@ -277,14 +286,14 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			'URL wrapped in angle brackets with padding < <a href="http://example.com/" rel="nofollow">http://example.com/</a> >',
 			'mailto wrapped in angle brackets <foo@example.com>',
 		);
-		foreach ($before as $key => $url) {
-			$this->assertEquals($expected[$key], c2c_autohyperlink_link_urls($url));
+		foreach ( $before as $key => $url ) {
+			$this->assertEquals( $expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
 		}
 	}
 */
 
 	function test_preceded_by_punctuation() {
-		$before = array(
+		$before   = array(
 			'Comma then URL,http://example.com/',
 			'Period then URL.http://example.com/',
 			'Semi-colon then URL;http://example.com/',
@@ -300,13 +309,13 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			'Exclamation mark then URL!<a href="http://example.com/" rel="nofollow">http://example.com/</a>',
 			'Question mark then URL?<a href="http://example.com/" rel="nofollow">http://example.com/</a>',
 		);
-		foreach ($before as $key => $url) {
-			$this->assertEquals($expected[$key], c2c_autohyperlink_link_urls($url));
+		foreach ( $before as $key => $url ) {
+			$this->assertEquals( $expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
 		}
 	}
 
 	function test_dont_break_attributes() {
-		$urls_before = array(
+		$urls_before   = array(
 			"<img src='http://trunk.domain/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley'>",
 			"(<img src='http://trunk.domain/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley'>)",
 			"http://trunk.domain/testing#something (<img src='http://trunk.domain/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley'>)",
@@ -324,8 +333,8 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			"<span style='text-align:center; display: block;'><object width='425' height='350'><param name='movie' value='http://www.youtube.com/v/nd_BdvG43rE&rel=1&fs=1&showsearch=0&showinfo=1&iv_load_policy=1' /> <param name='allowfullscreen' value='true' /> <param name='wmode' value='opaque' /> <embed src='http://www.youtube.com/v/nd_BdvG43rE&rel=1&fs=1&showsearch=0&showinfo=1&iv_load_policy=1' type='application/x-shockwave-flash' allowfullscreen='true' width='425' height='350' wmode='opaque'></embed> </object></span>",
 			'<a href="http://example.com/example.gif" title="Image from http://example.com">Look at this image!</a>',
 		);
-		foreach ($urls_before as $key => $url) {
-			$this->assertEquals($urls_expected[$key], c2c_autohyperlink_link_urls($url));
+		foreach ( $urls_before as $key => $url ) {
+			$this->assertEquals( $urls_expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
 		}
 	}
 
@@ -365,15 +374,16 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			'code inside pre <pre>http://wordpress.org <code>http://wordpress.org</code> http://wordpress.org</pre>',
 		);
 
-		foreach ( $before as $key => $url )
+		foreach ( $before as $key => $url ) {
 			$this->assertEquals( $expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
+		}
 	}
 
 	/**
 	 * @ticket 16892
 	 */
 	function test_click_inside_html() {
-		$urls_before = array(
+		$urls_before   = array(
 			'<span>http://example.com</span>',
 			'<p>http://example.com/</p>',
 		);
@@ -381,8 +391,8 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 			'<span><a href="http://example.com" rel="nofollow">http://example.com</a></span>',
 			'<p><a href="http://example.com/" rel="nofollow">http://example.com/</a></p>',
 		);
-		foreach ($urls_before as $key => $url) {
-			$this->assertEquals( $urls_expected[$key], c2c_autohyperlink_link_urls( $url ) );
+		foreach ( $urls_before as $key => $url ) {
+			$this->assertEquals( $urls_expected[ $key ], c2c_autohyperlink_link_urls( $url ) );
 		}
 	}
 
@@ -400,7 +410,7 @@ class Tests_Formatting_MakeClickable extends WP_UnitTestCase {
 	 * @ticket 16892
 	 */
 	function test_no_segfault() {
-		$in = str_repeat( 'http://example.com/2011/03/18/post-title/', 256 );
+		$in  = str_repeat( 'http://example.com/2011/03/18/post-title/', 256 );
 		$out = c2c_autohyperlink_link_urls( $in );
 		$this->assertEquals( $in, $out );
 	}

@@ -59,12 +59,21 @@ class wfOnboardingController {
 	 * Enqueues the scripts and styles we need globally on the backend for onboarding.
 	 */
 	public static function _enqueue_scripts() {
-		wp_enqueue_style('wordfence-font', 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i', '', WORDFENCE_VERSION);
-		wp_enqueue_style('wordfence-ionicons-style', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-ionicons.css'), '', WORDFENCE_VERSION);
-		wp_enqueue_style('wordfenceOnboardingCSS', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-onboarding.css'), '', WORDFENCE_VERSION);
-		wp_enqueue_style('wordfence-colorbox-style', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-colorbox.css'), '', WORDFENCE_VERSION);
+		$willShowAnyPluginOnboarding = (self::shouldShowAttempt1() || self::shouldShowAttempt2());
+		$willShowAnyTour = (self::shouldShowNewTour(self::TOUR_DASHBOARD) || self::shouldShowUpgradeTour(self::TOUR_DASHBOARD) ||
+			self::shouldShowNewTour(self::TOUR_FIREWALL) || self::shouldShowUpgradeTour(self::TOUR_FIREWALL) ||
+			self::shouldShowNewTour(self::TOUR_SCAN) || self::shouldShowUpgradeTour(self::TOUR_SCAN) ||
+			self::shouldShowNewTour(self::TOUR_BLOCKING) || self::shouldShowUpgradeTour(self::TOUR_BLOCKING) ||
+			self::shouldShowNewTour(self::TOUR_LIVE_TRAFFIC) || self::shouldShowUpgradeTour(self::TOUR_LIVE_TRAFFIC));
 		
-		wp_enqueue_script('jquery.wfcolorbox', wfUtils::getBaseURL() . wfUtils::versionedAsset('js/jquery.colorbox-min.js'), array('jquery'), WORDFENCE_VERSION);
+		if (wfUtils::isAdmin() && (($willShowAnyPluginOnboarding && strpos($_SERVER['REQUEST_URI'], 'wp-admin/plugins.php') !== false) || (isset($_GET['page']) && preg_match('/^Wordfence/', @$_GET['page'])))) {
+			wp_enqueue_style('wordfence-font', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-roboto-font.css'), '', WORDFENCE_VERSION);
+			wp_enqueue_style('wordfence-ionicons-style', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-ionicons.css'), '', WORDFENCE_VERSION);
+			wp_enqueue_style('wordfenceOnboardingCSS', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-onboarding.css'), '', WORDFENCE_VERSION);
+			wp_enqueue_style('wordfence-colorbox-style', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-colorbox.css'), '', WORDFENCE_VERSION);
+			
+			wp_enqueue_script('jquery.wfcolorbox', wfUtils::getBaseURL() . wfUtils::versionedAsset('js/jquery.colorbox-min.js'), array('jquery'), WORDFENCE_VERSION);
+		}
 	}
 	
 	/**

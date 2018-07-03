@@ -603,6 +603,24 @@ class YOP_Poll_Polls {
 			'error' => self::$error_text
 		);
 	}
+	public static function reset_poll( $poll_id ) {
+		$data = array(
+			'total_submits' => '0',
+			'total_submited_answers' => '0',
+			'modified_date' => current_time( 'mysql' )
+		);
+		if ( false !== $GLOBALS['wpdb']->update( $GLOBALS['wpdb']->yop_poll_polls, $data, array( 'id' => $poll_id ) ) ) {
+			YOP_Poll_SubElements::reset_submits_for_poll( $poll_id );
+			YOP_Poll_Votes::delete_votes_for_poll( $poll_id );
+		} else {
+			self::$errors_present = true;
+			self::$error_text = __( 'Error resetting votes', 'yop-poll' );
+		}
+		return array(
+			'success' => !self::$errors_present,
+			'error' => self::$error_text
+		);
+	}
 	public static function create_meta_data( stdClass $poll ) {
 		return array(
 			'style' => array(
@@ -1668,7 +1686,7 @@ class YOP_Poll_Polls {
 			$sub_elements_sort_rule = 'ASC'
 		) {
 		$query = $GLOBALS['wpdb']->prepare(
-			"SELECT * FROM {$GLOBALS['wpdb']->yop_poll_polls} WHERE `id` = %s", $poll_id
+			"SELECT * FROM {$GLOBALS['wpdb']->yop_poll_polls} WHERE `id` = %s AND `status` != 'deleted'", $poll_id
 		);
 		$poll = $GLOBALS['wpdb']->get_row( $query, OBJECT );
 		if( null !== $poll ){

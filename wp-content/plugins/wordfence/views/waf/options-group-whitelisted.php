@@ -25,7 +25,7 @@ if (!isset($collapseable)) {
 					<div class="wf-block-title">
 						<strong><?php _e('Whitelisted URLs', 'wordfence'); ?></strong>
 					</div>
-					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure"></div></div><?php endif; ?>
+					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive($stateKey) ? 'true' : 'false'); ?>" tabindex="0"></div></div><?php endif; ?>
 				</div>
 			</div>
 			<div class="wf-block-content">
@@ -76,7 +76,7 @@ if (!isset($collapseable)) {
 		<table class="wf-striped-table whitelist-table">
 			<thead>
 			<tr>
-				<th style="width: 2%;text-align: center"><div class="wf-whitelist-bulk-select wf-option-checkbox"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></div></th>
+				<th style="width: 2%;text-align: center"><div class="wf-whitelist-bulk-select wf-option-checkbox" role="checkbox" aria-checked="false" tabindex="0" aria-label="<?php esc_attr_e('Select/deselect all', 'wordfence'); ?>"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></div></th>
 				<th style="width: 5%;"><?php _e('Enabled', 'wordfence'); ?></th>
 				<th><?php _e('URL', 'wordfence'); ?></th>
 				<th><?php _e('Param', 'wordfence'); ?></th>
@@ -89,7 +89,7 @@ if (!isset($collapseable)) {
 			{{if whitelistedURLParams.length > 5}}
 			<tfoot>
 			<tr>
-				<th style="width: 2%;text-align: center"><div class="wf-whitelist-bulk-select wf-option-checkbox"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></div></th>
+				<th style="width: 2%;text-align: center"><div class="wf-whitelist-bulk-select wf-option-checkbox" role="checkbox" aria-checked="false" tabindex="0" aria-label="<?php esc_attr_e('Select/deselect all', 'wordfence'); ?>"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></div></th>
 				<th style="width: 5%;"><?php _e('Enabled', 'wordfence'); ?></th>
 				<th><?php _e('URL', 'wordfence'); ?></th>
 				<th><?php _e('Param', 'wordfence'); ?></th>
@@ -103,8 +103,8 @@ if (!isset($collapseable)) {
 			<tbody>
 			{{each(idx, whitelistedURLParam) whitelistedURLParams}}
 			<tr data-index="${idx}" data-adding="{{if (whitelistedURLParam.adding)}}1{{else}}0{{/if}}" data-key="${whitelistedURLParam.path}|${whitelistedURLParam.paramKey}">
-				<td style="text-align: center;"><div class="wf-whitelist-table-bulk-checkbox wf-option-checkbox"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></div></td>
-				<td style="text-align: center;"><div class="wf-whitelist-item-enabled wf-option-checkbox{{if (!whitelistedURLParam.data.disabled)}} wf-checked{{/if}}" data-original-value="{{if (!whitelistedURLParam.data.disabled)}}1{{else}}0{{/if}}"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></div></td>
+				<td style="text-align: center;"><div class="wf-whitelist-table-bulk-checkbox wf-option-checkbox" role="checkbox" aria-checked="false" tabindex="0" aria-label="<?php esc_attr_e('Select row ${idx}', 'wordfence'); ?>"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></div></td>
+				<td style="text-align: center;"><div class="wf-whitelist-item-enabled wf-option-checkbox{{if (!whitelistedURLParam.data.disabled)}} wf-checked{{/if}}" data-original-value="{{if (!whitelistedURLParam.data.disabled)}}1{{else}}0{{/if}}" role="checkbox" aria-checked="{{if (!whitelistedURLParam.data.disabled)}}true{{else}}false{{/if}}" tabindex="0" aria-label="<?php esc_attr_e('Toggle row ${idx}', 'wordfence'); ?>"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></div></td>
 				<td data-column="url">
 					<input name="replaceWhitelistedPath" type="hidden" value="${whitelistedURLParam.path}">
 					<span class="whitelist-display">${WFAD.htmlEscape(WFAD.base64_decode(whitelistedURLParam.path))}</span>
@@ -163,20 +163,29 @@ if (!isset($collapseable)) {
 <script type="application/javascript">
 	(function($) {
 		function whitelistCheckAllVisible() {
-			$('.wf-whitelist-bulk-select.wf-option-checkbox').toggleClass('wf-checked', true);
+			$('.wf-whitelist-bulk-select.wf-option-checkbox').toggleClass('wf-checked', true).attr('aria-checked', 'true');
 			$('.wf-whitelist-table-bulk-checkbox.wf-option-checkbox').each(function() {
-				$(this).toggleClass('wf-checked', $(this).closest('tr').is(':visible'));
+				$(this).toggleClass('wf-checked', $(this).closest('tr').is(':visible')).attr('aria-checked', $(this).closest('tr').is(':visible') ? 'true' : 'false');
 			});
 		}
 
 		function whitelistUncheckAll() {
-			$('.wf-whitelist-bulk-select.wf-option-checkbox').toggleClass('wf-checked', false);
-			$('.wf-whitelist-table-bulk-checkbox.wf-option-checkbox').toggleClass('wf-checked', false);
+			$('.wf-whitelist-bulk-select.wf-option-checkbox').toggleClass('wf-checked', false).attr('aria-checked', 'false');
+			$('.wf-whitelist-table-bulk-checkbox.wf-option-checkbox').toggleClass('wf-checked', false).attr('aria-checked', 'false');
 		}
 
 		$(window).on('wordfenceWAFInstallWhitelistEventHandlers', function() {
 			//Enabled/Disabled
 			$('.wf-whitelist-item-enabled.wf-option-checkbox').each(function() {
+				$(this).on('keydown', function(e) {
+					if (e.keyCode == 32) {
+						e.preventDefault();
+						e.stopPropagation();
+
+						$(this).trigger('click');
+					}
+				});
+				
 				$(this).on('click', function(e) {
 					e.preventDefault();
 					e.stopPropagation();
@@ -185,11 +194,11 @@ if (!isset($collapseable)) {
 					var key = row.data('key');
 					var value = $(this).hasClass('wf-checked') ? 1 : 0;
 					if (value) {
-						$(this).removeClass('wf-checked');
+						$(this).removeClass('wf-checked').attr('aria-checked', 'false');
 						value = 0;
 					}
 					else {
-						$(this).addClass('wf-checked');
+						$(this).addClass('wf-checked').attr('aria-checked', 'true');
 						value = 1;
 					}
 
@@ -200,23 +209,41 @@ if (!isset($collapseable)) {
 
 			//Header/Footer Bulk Action
 			$('.wf-whitelist-bulk-select.wf-option-checkbox').each(function() {
+				$(this).on('keydown', function(e) {
+					if (e.keyCode == 32) {
+						e.preventDefault();
+						e.stopPropagation();
+
+						$(this).trigger('click');
+					}
+				});
+				
 				$(this).on('click', function(e) {
 					e.preventDefault();
 					e.stopPropagation();
 
 					if ($(this).hasClass('wf-checked')) {
-						$(this).removeClass('wf-checked');
+						$(this).removeClass('wf-checked').attr('aria-checked', 'false');
 						whitelistUncheckAll();
 					}
 					else {
 						$(this).addClass('wf-checked');
-						whitelistCheckAllVisible();
+						whitelistCheckAllVisible().attr('aria-checked', 'true');
 					}
 				});
 			});
 
 			//Row Bulk Action
 			$('.wf-whitelist-table-bulk-checkbox.wf-option-checkbox').each(function() {
+				$(this).on('keydown', function(e) {
+					if (e.keyCode == 32) {
+						e.preventDefault();
+						e.stopPropagation();
+
+						$(this).trigger('click');
+					}
+				});
+				
 				$(this).on('click', function(e) {
 					e.preventDefault();
 					e.stopPropagation();
@@ -225,19 +252,19 @@ if (!isset($collapseable)) {
 					var key = row.data('key');
 					var value = $(this).hasClass('wf-checked') ? 1 : 0;
 					if (value) {
-						$(this).removeClass('wf-checked');
+						$(this).removeClass('wf-checked').attr('aria-checked', 'false');
 					}
 					else {
-						$(this).addClass('wf-checked');
+						$(this).addClass('wf-checked').attr('aria-checked', 'true');
 					}
 
 					var totalCount = $('.wf-whitelist-table-bulk-checkbox.wf-option-checkbox:visible').length;
 					var checkedCount = $('.wf-whitelist-table-bulk-checkbox.wf-option-checkbox.wf-checked:visible').length;
 					if (totalCount == 0 || (checkedCount != totalCount)) {
-						$('.wf-whitelist-bulk-select.wf-option-checkbox').removeClass('wf-checked');
+						$('.wf-whitelist-bulk-select.wf-option-checkbox').removeClass('wf-checked').attr('aria-checked', 'false');
 					}
 					else {
-						$('.wf-whitelist-bulk-select.wf-option-checkbox').addClass('wf-checked');
+						$('.wf-whitelist-bulk-select.wf-option-checkbox').addClass('wf-checked').attr('aria-checked', 'true');
 					}
 				});
 			});

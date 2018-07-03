@@ -750,10 +750,11 @@ class wfActivityReportView extends wfView {
 	 * @return string
 	 */
 	public function displayFile($file) {
-		if (stripos($file, ABSPATH) === 0) {
-			return substr($file, strlen(ABSPATH));
+		$realPath = realpath($file);
+		if (stripos($realPath, ABSPATH) === 0) {
+			return substr($realPath, strlen(ABSPATH));
 		}
-		return $file;
+		return $realPath;
 	}
 
 	/**

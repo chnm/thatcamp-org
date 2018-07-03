@@ -4,9 +4,12 @@ defined( 'ABSPATH' ) or die();
 
 class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 
+	public static function setUpBeforeClass() {
+		c2c_AutoHyperlinkURLs::get_instance()->install();
+	}
+
 	public function setUp() {
 		parent::setUp();
-		$this->set_option();
 	}
 
 	public function tearDown() {
@@ -150,10 +153,10 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 
 
 	public function set_option( $settings = array() ) {
-		c2c_AutoHyperlinkURLs::get_instance()->load_config();
-		c2c_AutoHyperlinkURLs::get_instance()->verify_config();
-		$settings = wp_parse_args( $settings, c2c_AutoHyperlinkURLs::get_instance()->get_options() );
-		c2c_AutoHyperlinkURLs::get_instance()->update_option( $settings, true );
+		$obj = c2c_AutoHyperlinkURLs::get_instance();
+		$defaults = $obj->get_options();
+		$settings = wp_parse_args( (array) $settings, $defaults );
+		$obj->update_option( $settings, true );
 	}
 
 	public function autolink_text( $text, $args = array() ) {
@@ -187,6 +190,7 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 		return ! ( 'e' ===  $domain[0] );
 	}
 
+
 	//
 	//
 	// TESTS
@@ -199,15 +203,15 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 	}
 
 	public function test_plugin_framework_class_name() {
-		$this->assertTrue( class_exists( 'c2c_AutoHyperlinkURLs_Plugin_041' ) );
+		$this->assertTrue( class_exists( 'c2c_AutoHyperlinkURLs_Plugin_047' ) );
 	}
 
 	public function test_plugin_framework_version() {
-		$this->assertEquals( '041', c2c_AutoHyperlinkURLs::get_instance()->c2c_plugin_version() );
+		$this->assertEquals( '047', c2c_AutoHyperlinkURLs::get_instance()->c2c_plugin_version() );
 	}
 
 	public function test_get_version() {
-		$this->assertEquals( '5.0', c2c_AutoHyperlinkURLs::get_instance()->version() );
+		$this->assertEquals( '5.2', c2c_AutoHyperlinkURLs::get_instance()->version() );
 	}
 
 	public function test_instance_object_is_returned() {
@@ -241,6 +245,11 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 	public function test_default_value_of_nofollow() {
 		$options = c2c_AutoHyperlinkURLs::get_instance()->get_options();
 		$this->assertFalse( $options['nofollow'] );
+	}
+
+	public function test_default_value_of_require_scheme() {
+		$options = c2c_AutoHyperlinkURLs::get_instance()->get_options();
+		$this->assertFalse( $options['require_scheme'] );
 	}
 
 	public function test_default_value_of_hyperlink_mode() {
@@ -588,6 +597,26 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 		);
 	}
 
+	public function test_strip_protocol_true() {
+		$this->set_option( array( 'strip_protocol' => true ) );
+
+		$expected = '<a href="http://coffee2code.com/" class="autohyperlink">coffee2code.com/</a>';
+
+		$this->assertEquals(
+			$expected,
+			c2c_autohyperlink_link_urls( 'http://coffee2code.com/' )
+		);
+	}
+
+	public function test_strip_protocol_true_via_args() {
+		$expected = '<a href="http://coffee2code.com/" class="autohyperlink">coffee2code.com/</a>';
+
+		$this->assertEquals(
+			$expected,
+			c2c_autohyperlink_link_urls( 'http://coffee2code.com/', array( 'strip_protocol' => true ) )
+		);
+	}
+
 	/*
 	 * Setting: open_in_new_window
 	 */
@@ -654,6 +683,24 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 			$expected,
 			c2c_autohyperlink_link_urls( 'http://coffee2code.com/', array( 'nofollow' => true ) )
 		);
+	}
+
+	/*
+	 * Setting: require_scheme
+	 */
+
+	public function test_require_scheme_true() {
+		$this->set_option( array( 'require_scheme' => true ) );
+
+		$string = 'Visit coffee2code.com now!';
+
+		$this->assertEquals( $string, c2c_autohyperlink_link_urls( $string ) );
+	}
+
+	public function test_require_scheme_true_via_args() {
+		$string = 'Visit coffee2code.com now!';
+
+		$this->assertEquals( $string, c2c_autohyperlink_link_urls( $string, array( 'require_scheme' => true ) ) );
 	}
 
 	/*
@@ -874,12 +921,19 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 	public function test_exclude_domains() {
 		$this->set_option( array( 'exclude_domains' => array( 'example.com') ) );
 
-		$text = 'example.com';
-
-		$this->assertEquals(
-			$text,
-			c2c_autohyperlink_link_urls( $text )
+		$texts = array(
+			'example.com',
+			'Visit example.com soon.',
+			'Visit Example.com soon.',
+			'Visit exAMPle.com soon.',
 		);
+
+		foreach ( $texts as $text ) {
+			$this->assertEquals(
+				$text,
+				c2c_autohyperlink_link_urls( $text )
+			);
+		}
 	}
 
 	/*
@@ -926,12 +980,18 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 	public function test_filter_autohyperlink_urls_exclude_domains() {
 		add_filter( 'autohyperlink_urls_exclude_domains', array( $this, 'autohyperlink_urls_exclude_domains' ) );
 
-		$text = 'Visit example.com soon.';
-
-		$this->assertEquals(
-			$text,
-			c2c_autohyperlink_link_urls( $text )
+		$texts = array(
+			'Visit example.com soon.',
+			'Visit Example.com soon.',
+			'Visit exAMPle.com soon.',
 		);
+
+		foreach ( $texts as $text ) {
+			$this->assertEquals(
+				$text,
+				c2c_autohyperlink_link_urls( $text )
+			);
+		}
 	}
 
 	public function test_filter_autohyperlink_urls_custom_exclusions_recognizes_false() {
@@ -940,6 +1000,7 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 		$texts = array(
 			'Visit example.com soon.',
 			'Visit http://example.com soon.',
+			'Visit exAMPle.com soon.',
 		);
 
 		foreach ( $texts as $text ) {
@@ -956,11 +1017,13 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 		$before = array(
 			'Visit coffee2code.com soon.',
 			'Visit http://coffee2code.com soon.',
+			'Visit http://Coffee2Code.com soon.',
 		);
 
 		$expected = array(
 			'Visit <a href="http://coffee2code.com" class="autohyperlink">coffee2code.com</a> soon.',
 			'Visit <a href="http://coffee2code.com" class="autohyperlink">coffee2code.com</a> soon.',
+			'Visit <a href="http://Coffee2Code.com" class="autohyperlink">Coffee2Code.com</a> soon.',
 		);
 
 		foreach ( $before as $key => $text ) {
@@ -972,18 +1035,30 @@ class Autohyperlink_URLs_Test extends WP_UnitTestCase {
 	}
 
 	/*
-	 * Misc
+	 * Setting handling
 	 */
 
-	public function test_uninstall_deletes_option() {
-		$option = 'c2c_autohyperlink_urls';
-		c2c_AutoHyperlinkURLs::get_instance()->get_options();
+	public function test_does_not_immediately_store_default_settings_in_db() {
+		$option_name = c2c_AutoHyperlinkURLs::SETTING_NAME;
+		// Get the options just to see if they may get saved.
+		$options     = c2c_AutoHyperlinkURLs::get_instance()->get_options();
 
-		$this->assertNotFalse( get_option( $option ) );
+		$this->assertFalse( get_option( $option_name ) );
+	}
+
+	public function test_uninstall_deletes_option() {
+		$option_name = c2c_AutoHyperlinkURLs::SETTING_NAME;
+		$options     = c2c_AutoHyperlinkURLs::get_instance()->get_options();
+
+		// Explicitly set an option to ensure options get saved to the database.
+		$this->set_option( array( 'hyperlink_comments' => true ) );
+
+		$this->assertNotEmpty( $options );
+		$this->assertNotFalse( get_option( $option_name ) );
 
 		c2c_AutoHyperlinkURLs::uninstall();
 
-		$this->assertFalse( get_option( $option ) );
+		$this->assertFalse( get_option( $option_name ) );
 	}
 
 }

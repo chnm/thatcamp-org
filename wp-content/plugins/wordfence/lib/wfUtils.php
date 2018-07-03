@@ -1338,39 +1338,43 @@ class wfUtils {
 		return $URL;
 	}
 	public static function IP2Country($IP){
-		require_once('wfGeoIP.php');
-		
-		if (filter_var($IP, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) !== false) {
-			$gi = geoip_open(dirname(__FILE__) . "/GeoIPv6.dat", WF_GEOIP_STANDARD);
-			$country = geoip_country_code_by_addr_v6($gi, $IP);
-		} else {
-			$gi = geoip_open(dirname(__FILE__) . "/GeoIP.dat", WF_GEOIP_STANDARD);
-			$country = geoip_country_code_by_addr($gi, $IP);
+		if (version_compare(phpversion(), '5.4.0', '<')) {
+			return '';
 		}
-		geoip_close($gi);
-		return $country ? $country : '';
+		
+		if (!class_exists('wfGeoIP2')) {
+			require_once(dirname(__FILE__) . '/../models/common/wfGeoIP2.php');
+		}
+		
+		try {
+			$geoip = wfGeoIP2::shared();
+			$code = $geoip->countryCode($IP);
+			return is_string($code) ? $code : '';
+		}
+		catch (Exception $e) {
+			//Ignore
+		}
+		
+		return '';
 	}
 	public static function geoIPVersion() {
-		require_once('wfGeoIP.php');
-		$version = array();
-		
-		$gi = geoip_open(dirname(__FILE__) . "/GeoIP.dat", WF_GEOIP_STANDARD);
-		$v = @geoip_database_info($gi);
-		if ($v !== null) {
-			$version[] = $v;
-		}
-		geoip_close($gi);
-		
-		if (self::hasIPv6Support()) {
-			$gi = geoip_open(dirname(__FILE__) . "/GeoIPv6.dat", WF_GEOIP_STANDARD);
-			$v = @geoip_database_info($gi);
-			if ($v !== null) {
-				$version[] = $v;
-			}
-			geoip_close($gi);
+		if (version_compare(phpversion(), '5.4.0', '<')) {
+			return 0;
 		}
 		
-		return $version;
+		if (!class_exists('wfGeoIP2')) {
+			require_once(dirname(__FILE__) . '/../models/common/wfGeoIP2.php');
+		}
+		
+		try {
+			$geoip = wfGeoIP2::shared();
+			return $geoip->version();
+		}
+		catch (Exception $e) {
+			//Ignore
+		}
+		
+		return 0;
 	}
 	public static function siteURLRelative(){
 		if(is_multisite()){

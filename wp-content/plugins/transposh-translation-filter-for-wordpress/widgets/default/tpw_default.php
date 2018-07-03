@@ -11,14 +11,14 @@
  */
 
 /*
- * Transposh v0.9.3
+ * Transposh v1.0.1
  * http://transposh.org/
  *
- * Copyright 2013, Team Transposh
+ * Copyright 2018, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 06 May 2013 02:15:55 +0300
+ * Date: Wed, 27 Jun 2018 14:41:10 +0300
  */
 
 /*

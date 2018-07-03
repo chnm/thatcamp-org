@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.3
+ * Transposh v1.0.1
  * http://transposh.org/
  *
- * Copyright 2013, Team Transposh
+ * Copyright 2018, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 06 May 2013 02:15:55 +0300
+ * Date: Wed, 27 Jun 2018 14:41:10 +0300
  */
 
 // This magic value will cause the option to be set from post
@@ -76,7 +76,6 @@ class transposh_option {
  * @property transposh_option $sorted_languages_o 
  * 
  * Settings
- * 
  * @property boolean          $allow_full_version_upgrade    Option to allow to upgrade to full version
  * @property transposh_option $allow_full_version_upgrade_o 
  * @property boolean          $allow_anonymous_translation   Option defining whether anonymous translation is allowed
@@ -103,30 +102,6 @@ class transposh_option {
  * @property transposh_option $transposh_backup_schedule_o  
  * @property string           $transposh_key                 Stores the site key to transposh services (backup @since 0.5.0)
  * @property transposh_option $transposh_key_o
- * 
- * Engines
- * 
- * @property boolean          $enable_autotranslate          Option to enable/disable auto translation
- * @property transposh_option $enable_autotranslate_o
- * @property boolean          $enable_autoposttranslate      Option to enable/disable auto translation of posts
- * @property transposh_option $enable_autoposttranslate_o
- * @property string           $msn_key                       Option to store the msn API key
- * @property transposh_option $msn_key_o
- * @property string           $google_key                    Option to store the msn Google key
- * @property transposh_option $google_key_o
- * @property int              $preferred_translator          Option to store translator preference @since 0.4.2
- * @property transposh_option $preferred_translator_o
- * @property string           $oht_id                        Option to store the oht ID
- * @property transposh_option $oht_id_o
- * @property string           $oht_key                       Option to store the oht key;
- * @property transposh_option $oht_key_o
- * 
- * Widget
- * 
- * @property boolean          $widget_progressbar            Option allowing progress bar display
- * @property transposh_option $widget_progressbar_o
- * @property boolean          $widget_allow_set_deflang      Allows user to set his default language per #63 @since 0.3.8
- * @property transposh_option $widget_allow_set_deflang_o
  * @property string           $widget_theme                  Allows theming of the progressbar and edit window @since 0.7.0
  * @property transposh_option $widget_theme_o
  * 
@@ -168,21 +143,22 @@ class transposh_plugin_options {
     private $vars = array();
 
     function set_default_option_value($option, $value = '') {
-        if (!isset($this->options[$option])) $this->options[$option] = $value;
+        if (!isset($this->options[$option]))
+            $this->options[$option] = $value;
     }
 
     // private $vars array() = (1,2,3);
 
     function register_option($name, $type, $default_value = '') {
         if (!isset($this->options[$name]))
-                $this->options[$name] = $default_value;
+            $this->options[$name] = $default_value;
         // can't log...     tp_logger($name . ' ' . $this->options[$name]);
         $this->vars[$name] = new transposh_option($name, $this->options[$name], $type);
     }
 
     function __get($name) {
         if (substr($name, -2) === "_o")
-                return $this->vars[substr($name, 0, -2)];
+            return $this->vars[substr($name, 0, -2)];
         // can't!? tp_logger($this->vars[$name]->get_value(), 5);
         return $this->vars[$name]->get_value();
     }
@@ -237,7 +213,9 @@ class transposh_plugin_options {
         $this->register_option('enable_autoposttranslate', TP_OPT_BOOLEAN, 1);
         $this->register_option('msn_key', TP_OPT_STRING);
         $this->register_option('google_key', TP_OPT_STRING);
-        $this->register_option('preferred_translator', TP_OPT_OTHER, 1); // 1 is Google, 2 is MSN
+        $this->register_option('yandex_key', TP_OPT_STRING);
+        $this->register_option('baidu_key', TP_OPT_STRING);
+        $this->register_option('preferred_translators', TP_OPT_STRING, 'g,b,y,a,u');
         $this->register_option('oht_id', TP_OPT_STRING);
         $this->register_option('oht_key', TP_OPT_STRING);
 
@@ -245,7 +223,6 @@ class transposh_plugin_options {
         $this->register_option('widget_progressbar', TP_OPT_BOOLEAN, 0);
         $this->register_option('widget_allow_set_deflang', TP_OPT_BOOLEAN, 0);
         $this->register_option('widget_theme', TP_OPT_STRING, 'ui-lightness');
-
         $this->register_option('enable_url_translate', TP_OPT_BOOLEAN, 0);
         $this->register_option('jqueryui_override', TP_OPT_STRING);
         $this->register_option('dont_add_rel_alternate', TP_OPT_BOOLEAN, 0);
@@ -286,6 +263,19 @@ class transposh_plugin_options {
             return array_merge(array_flip(explode(",", $this->sorted_languages)), transposh_consts::$languages);
         }
         return transposh_consts::$languages;
+    }
+
+    /**
+     * Get a user sorted translation engines list
+     * @since 0.9.8
+     * @return array sorted list of translation engines
+     */
+    function get_sorted_engines() {
+        if ($this->preferred_translators) {
+            tp_logger($this->preferred_translators, 3);
+            return array_merge(array_flip(explode(",", $this->preferred_translators)), transposh_consts::$engines);
+        }
+        return transposh_consts::$engines;
     }
 
     function get_transposh_admin_hide_warning($id) {
@@ -338,10 +328,9 @@ class transposh_plugin_options {
      * @return boolean Is this language viewable?
      */
     function is_active_language($language) {
-        if ($this->is_default_language($language)) return true;
+        if ($this->is_default_language($language))
+            return true;
         return (strpos($this->viewable_languages . ',', $language . ',') !== false);
     }
 
 }
-
-?>

@@ -17,6 +17,10 @@ class YOP_POLL_Maintenance {
 				} elseif ( false !== strpos( $installed_version, '5.' ) ) {
 					$this->importer = new ClassYopPollImporter5x( 1000, 100 );
 				}
+			} else {
+				if ( true === version_compare( $installed_version, '6.0.0', '==' ) ) {
+					update_option( 'yop_poll_version', YOP_POLL_VERSION );
+				}
 			}
 		}
 		$this->dbschema->create_tables();

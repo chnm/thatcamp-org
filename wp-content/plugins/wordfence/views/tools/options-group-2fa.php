@@ -23,7 +23,7 @@ $helpLink = wfSupportController::supportURL(wfSupportController::ITEM_TOOLS_TWO_
 					<div class="wf-block-title">
 						<strong><?php _e('Two Factor Authentication Options', 'wordfence') ?></strong>
 					</div>
-					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure"></div></div><?php endif; ?>
+					<?php if ($collapseable): ?><div class="wf-block-header-action"><div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive($stateKey) ? 'true' : 'false'); ?>" tabindex="0"></div></div><?php endif; ?>
 				</div>
 			</div>
 			<div class="wf-block-content">

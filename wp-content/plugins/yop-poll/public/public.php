@@ -53,7 +53,8 @@ class YOP_Poll_Public {
 					'noAnswerForOther' => esc_html__( 'No other answer entered', 'yop-poll' ),
 					'noValueForCustomField' => esc_html__( '{custom_field_name} is required', 'yop-poll' ),
 					'consentNotChecked' => esc_html__( 'You must agree to our terms and conditions', 'yop-poll' ),
-					'noCaptchaSelected' => esc_html__( 'Captcha is required', 'yop-poll' )
+					'noCaptchaSelected' => esc_html__( 'Captcha is required', 'yop-poll' ),
+					'thankYou' => esc_html__( 'Thank you for your vote', 'yop-poll' )
 				),
 				'resultsParams'=> array(
 					'singleVote' => esc_html__( 'vote', 'yop-poll' ),

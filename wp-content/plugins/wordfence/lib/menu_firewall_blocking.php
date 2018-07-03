@@ -28,7 +28,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 			<?php endif; ?>
 			<?php if (version_compare(phpversion(), '5.4') < 0 && wfConfig::get('isPaid') && wfBlock::hasCountryBlock()): ?>
 				<ul class="wf-block-banner">
-					<li><?php printf(__('<strong>Note:</strong> The GeoIP database that is required for country blocking is being updated to a new format in April 2018. This new format requires sites to run PHP 5.4 or newer, and this site is on PHP %s. To ensure country blocking continues functioning, please update PHP prior to that date.', 'wordfence'), wfUtils::cleanPHPVersion()); ?></li>
+					<li><?php printf(__('<strong>Note:</strong> The GeoIP database that is required for country blocking has been updated to a new format. This new format requires sites to run PHP 5.4 or newer, and this site is on PHP %s. To ensure country blocking continues functioning, please update PHP.', 'wordfence'), wfUtils::cleanPHPVersion()); ?></li>
 					<li><a href="<?php echo wfSupportController::esc_supportURL(wfSupportController::ITEM_SCAN_RESULT_GEOIP_UPDATE); ?>" class="wf-btn wf-btn-default" target="_blank" rel="noopener noreferrer"><?php _e('More Information', 'wordfence'); ?></a></li>
 				</ul>
 			<?php endif; ?>

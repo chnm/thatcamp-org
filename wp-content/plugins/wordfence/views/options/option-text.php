@@ -27,7 +27,7 @@ $id = 'wf-option-' . preg_replace('/[^a-z0-9]/i', '-', $textOptionName);
 				<ul class="wf-flex-vertical wf-flex-align-left">
 					<li>
 						<?php endif; ?>
-						<?php echo esc_html($title); ?><?php if (!wfConfig::p() && isset($premium) && $premium) { echo ' <a href="https://www.wordfence.com/gnl1optionUpgrade/wordfence-signup/" target="_blank" rel="noopener noreferrer" class="wf-premium-link">' . __('Premium Feature', 'wordfence') . '</a>'; } ?><?php if (isset($helpLink)) { echo ' <a href="' . esc_attr($helpLink) . '"  target="_blank" rel="noopener noreferrer" class="wf-inline-help"><i class="wf-fa wf-fa-question-circle-o" aria-hidden="true"></i></a>'; } ?>
+						<span id="<?php echo esc_attr($id); ?>-label"><?php echo esc_html($title); ?></span><?php if (!wfConfig::p() && isset($premium) && $premium) { echo ' <a href="https://www.wordfence.com/gnl1optionUpgrade/wordfence-signup/" target="_blank" rel="noopener noreferrer" class="wf-premium-link">' . __('Premium Feature', 'wordfence') . '</a>'; } ?><?php if (isset($helpLink)) { echo ' <a href="' . esc_attr($helpLink) . '"  target="_blank" rel="noopener noreferrer" class="wf-inline-help"><i class="wf-fa wf-fa-question-circle-o" aria-hidden="true"></i></a>'; } ?>
 						<?php if (isset($subtitle)): ?>
 					</li>
 					<li class="wf-option-subtitle"><?php echo esc_html($subtitle); ?></li>
@@ -35,7 +35,7 @@ $id = 'wf-option-' . preg_replace('/[^a-z0-9]/i', '-', $textOptionName);
 			<?php endif; ?>
 			</li>
 			<li class="wf-option-text">
-				<input type="text" value="<?php echo esc_attr($textValue); ?>" placeholder="<?php echo esc_attr($placeholder); ?>"<?php echo (!(!wfConfig::p() && isset($premium) && $premium) ? '' : ' disabled'); ?>>
+				<input type="text" value="<?php echo esc_attr($textValue); ?>" placeholder="<?php echo esc_attr($placeholder); ?>"<?php echo (!(!wfConfig::p() && isset($premium) && $premium) ? '' : ' disabled'); ?> aria-labelledby="<?php echo esc_attr($id); ?>-label">
 			</li>
 		</ul>
 	</li>

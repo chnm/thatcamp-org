@@ -136,7 +136,7 @@ if (!isset($sendingDiagnosticEmail)) {
 								<span class="wf-text-small"><?php echo esc_html($tests['description']) ?></span>
 							</div>
 							<div class="wf-block-header-action">
-								<div class="wf-block-header-action-disclosure"></div>
+								<div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive($key) ? 'true' : 'false'); ?>" tabindex="0"></div>
 							</div>
 						</div>
 					</div>
@@ -199,7 +199,7 @@ if (!isset($sendingDiagnosticEmail)) {
 						<span class="wf-text-small"><?php _e('Methods of detecting a visitor\'s IP address.', 'wordfence') ?></span>
 					</div>
 					<div class="wf-block-header-action">
-						<div class="wf-block-header-action-disclosure"></div>
+						<div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive('wf-diagnostics-client-ip') ? 'true' : 'false'); ?>" tabindex="0"></div>
 					</div>
 				</div>
 			</div>
@@ -287,7 +287,7 @@ if (!isset($sendingDiagnosticEmail)) {
 						<span class="wf-text-small"><?php _e('WordPress version and internal settings/constants.', 'wordfence') ?></span>
 					</div>
 					<div class="wf-block-header-action">
-						<div class="wf-block-header-action-disclosure"></div>
+						<div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive('wf-diagnostics-wordpress-constants') ? 'true' : 'false'); ?>" tabindex="0"></div>
 					</div>
 				</div>
 			</div>
@@ -394,7 +394,7 @@ if (!isset($sendingDiagnosticEmail)) {
 						<span class="wf-text-small"><?php _e('Status of installed plugins.', 'wordfence') ?></span>
 					</div>
 					<div class="wf-block-header-action">
-						<div class="wf-block-header-action-disclosure"></div>
+						<div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive('wf-diagnostics-wordpress-plugins') ? 'true' : 'false'); ?>" tabindex="0"></div>
 					</div>
 				</div>
 			</div>
@@ -439,7 +439,7 @@ if (!isset($sendingDiagnosticEmail)) {
 						<span class="wf-text-small"><?php _e('WordPress "mu-plugins" that are always active, including those provided by hosts.', 'wordfence') ?></span>
 					</div>
 					<div class="wf-block-header-action">
-						<div class="wf-block-header-action-disclosure"></div>
+						<div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive('wf-diagnostics-mu-wordpress-plugins') ? 'true' : 'false'); ?>" tabindex="0"></div>
 					</div>
 				</div>
 			</div>
@@ -487,7 +487,7 @@ if (!isset($sendingDiagnosticEmail)) {
 						<span class="wf-text-small"><?php _e('WordPress "drop-in" plugins that are active.', 'wordfence') ?></span>
 					</div>
 					<div class="wf-block-header-action">
-						<div class="wf-block-header-action-disclosure"></div>
+						<div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive('wf-diagnostics-dropin-wordpress-plugins') ? 'true' : 'false'); ?>" tabindex="0"></div>
 					</div>
 				</div>
 			</div>
@@ -536,7 +536,7 @@ if (!isset($sendingDiagnosticEmail)) {
 						<span class="wf-text-small"><?php _e('Status of installed themes.', 'wordfence') ?></span>
 					</div>
 					<div class="wf-block-header-action">
-						<div class="wf-block-header-action-disclosure"></div>
+						<div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive('wf-diagnostics-wordpress-themes') ? 'true' : 'false'); ?>" tabindex="0"></div>
 					</div>
 				</div>
 			</div>
@@ -587,7 +587,7 @@ if (!isset($sendingDiagnosticEmail)) {
 						<span class="wf-text-small"><?php _e('List of WordPress cron jobs scheduled by WordPress, plugins, or themes.', 'wordfence') ?></span>
 					</div>
 					<div class="wf-block-header-action">
-						<div class="wf-block-header-action-disclosure"></div>
+						<div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive('wf-diagnostics-wordpress-cron-jobs') ? 'true' : 'false'); ?>" tabindex="0"></div>
 					</div>
 				</div>
 			</div>
@@ -639,7 +639,7 @@ if (!isset($sendingDiagnosticEmail)) {
 							<span class="wf-text-small"><?php _e('Database table names, sizes, timestamps, and other metadata.', 'wordfence') ?></span>
 						</div>
 						<div class="wf-block-header-action">
-							<div class="wf-block-header-action-disclosure"></div>
+							<div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive('wf-diagnostics-database-tables') ? 'true' : 'false'); ?>" tabindex="0"></div>
 						</div>
 					</div>
 				</div>
@@ -735,7 +735,7 @@ if (!isset($sendingDiagnosticEmail)) {
 						<span class="wf-text-small"><?php _e('PHP error logs generated by your site, if enabled by your host.', 'wordfence') ?></span>
 					</div>
 					<div class="wf-block-header-action">
-						<div class="wf-block-header-action-disclosure"></div>
+						<div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive('wf-diagnostics-log-files') ? 'true' : 'false'); ?>" tabindex="0"></div>
 					</div>
 				</div>
 			</div>
@@ -810,7 +810,7 @@ if (!isset($sendingDiagnosticEmail)) {
 							<span class="wf-text-small"><?php _e('System configuration, memory test, send test email from this server.', 'wordfence') ?></span>
 						</div>
 						<div class="wf-block-header-action">
-							<div class="wf-block-header-action-disclosure"></div>
+							<div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive('wf-diagnostics-other-tests') ? 'true' : 'false'); ?>" tabindex="0"></div>
 						</div>
 					</div>
 				</div>
@@ -854,7 +854,7 @@ if (!isset($sendingDiagnosticEmail)) {
 							<strong><?php _e('Debugging Options', 'wordfence') ?></strong>
 						</div>
 						<div class="wf-block-header-action">
-							<div class="wf-block-header-action-disclosure"></div>
+							<div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive('wf-diagnostics-debugging-options') ? 'true' : 'false'); ?>" tabindex="0"></div>
 						</div>
 					</div>
 				</div>

@@ -2,17 +2,17 @@
 /**
  * @package C2C_Plugins
  * @author  Scott Reilly
- * @version 041
+ * @version 047
  */
 /*
 Basis for other plugins.
 
-Compatible with WordPress 3.6+ through 4.4+.
+Compatible with WordPress 4.7 through 4.9+.
 
 */
 
 /*
-	Copyright (c) 2010-2016 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2010-2018 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -31,9 +31,9 @@ Compatible with WordPress 3.6+ through 4.4+.
 
 defined( 'ABSPATH' ) or die();
 
-if ( ! class_exists( 'c2c_AutoHyperlinkURLs_Plugin_041' ) ) :
+if ( ! class_exists( 'c2c_AutoHyperlinkURLs_Plugin_047' ) ) :
 
-abstract class c2c_AutoHyperlinkURLs_Plugin_041 {
+abstract class c2c_AutoHyperlinkURLs_Plugin_047 {
 	protected $plugin_css_version = '009';
 	protected $options            = array();
 	protected $options_from_db    = '';
@@ -65,7 +65,7 @@ abstract class c2c_AutoHyperlinkURLs_Plugin_041 {
 	 * @since 040
 	 */
 	public function c2c_plugin_version() {
-		return '041';
+		return '047';
 	}
 
 	/**
@@ -133,14 +133,14 @@ abstract class c2c_AutoHyperlinkURLs_Plugin_041 {
 	 *
 	 * @since 036
 	 */
-	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'auto-hyperlink-urls' ), '036' ); }
+	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Something went wrong.', 'auto-hyperlink-urls' ), '036' ); }
 
 	/**
 	 * A dummy magic method to prevent object from being unserialized
 	 *
 	 * @since 036
 	 */
-	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'auto-hyperlink-urls' ), '036' ); }
+	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Something went wrong.', 'auto-hyperlink-urls' ), '036' ); }
 
 	/**
 	 * Returns the plugin's version.
@@ -152,13 +152,11 @@ abstract class c2c_AutoHyperlinkURLs_Plugin_041 {
 	}
 
 	/**
-	 * Handles installation tasks, such as ensuring plugin options are instantiated and saved to options table.
+	 * Handles installation tasks.
 	 *
 	 * This can be overridden.
 	 */
 	public function install() {
-		$this->options = $this->get_options();
-		update_option( $this->admin_options_name, $this->options );
 	}
 
 	/**
@@ -269,9 +267,12 @@ abstract class c2c_AutoHyperlinkURLs_Plugin_041 {
 	 * @return array The response array with this plugin removed, if present.
 	 */
 	public function disable_update_check( $r, $url ) {
-		if ( 0 !== strpos( $url, 'http://api.wordpress.org/plugins/update-check' ) ) {
-			return $r; // Not a plugin update request. Bail immediately.
+		// Bail immediately if not a plugin update request.
+		$plugin_update_check_strpos = strpos( $url, '://api.wordpress.org/plugins/update-check' );
+		if ( 4 !== $plugin_update_check_strpos && 5 !== $plugin_update_check_strpos ) {
+			return $r;
 		}
+
 		$plugins = unserialize( $r['body']['plugins'] );
 		unset( $plugins->plugins[ $this->plugin_basename ] );
 		unset( $plugins->active[ array_search( $this->plugin_basename, $plugins->active ) ] );
@@ -348,8 +349,31 @@ abstract class c2c_AutoHyperlinkURLs_Plugin_041 {
 	 * @return array
 	 */
 	public function reset_options() {
+		$this->reset_caches();
+
+		// If a setting has been saved to the database.
+		if ( $option = get_option( $this->admin_options_name ) ) {
+			// Unset the options (so that in get_options() the defaults are used).
+			foreach ( $this->get_option_names() as $opt ) {
+				unset( $this->options[ $opt ] );
+			}
+			update_option( $this->admin_options_name, $this->options );
+		}
+
 		$this->options = $this->get_options( false );
+
 		return $this->options;
+	}
+
+	/**
+	 * Resets caches and data memoization.
+	 *
+	 * @since 044
+	 */
+	public function reset_caches() {
+		$this->options         = array();
+		$this->option_names    = array();
+		$this->options_from_db = '';
 	}
 
 	/**
@@ -365,6 +389,7 @@ abstract class c2c_AutoHyperlinkURLs_Plugin_041 {
 			// unscrupulous addition of fields by the user)
 			$options = $this->get_options();
 			$option_names = $this->get_option_names();
+			$option_names = (array) apply_filters( $this->get_hook( 'sanitized_option_names' ), $option_names, $inputs );
 			foreach ( $option_names as $opt ) {
 				if ( !isset( $inputs[ $opt ] ) ) {
 					if ( $this->config[ $opt ]['input'] == 'checkbox' ) {
@@ -406,8 +431,14 @@ abstract class c2c_AutoHyperlinkURLs_Plugin_041 {
 								if ( ! empty( $val ) && $input != 'select' && !is_array( $val ) ) {
 									$new_values = array();
 									foreach ( explode( "\n", $val ) AS $line ) {
+										// TODO: It's possible to allow multi-line replacement text, in which case
+										// instead of skipping invalid looking lines, simply append them to the
+										// previous line, joined with "\n".
+										if ( false === strpos( $line, '=>' ) ) {
+											continue;
+										}
 										list( $shortcut, $text ) = array_map( 'trim', explode( "=>", $line, 2 ) );
-										if ( ! empty( $shortcut ) ) {
+										if ( $shortcut && $text ) {
 											$new_values[str_replace( '\\', '', $shortcut )] = str_replace( '\\', '', $text );
 										}
 									}
@@ -434,6 +465,30 @@ abstract class c2c_AutoHyperlinkURLs_Plugin_041 {
 	abstract protected function load_config();
 
 	/**
+	 * Adds a new option to the plugin's configuration.
+	 *
+	 * Intended to be used for dynamically adding a new option after the config
+	 * is initially created via load_config(), but it can be called earlier.
+	 *
+	 * @since 044
+	 *
+	 * @param string $option_name The option name.
+	 * @param array  $args        The configuration for the setting.
+	 * @return array The fully initialized option.
+	 */
+	public function add_option( $option_name, $args ) {
+		$this->config[ $option_name ] = $args;
+
+		// This function may be running after the config array has already been
+		// processed by the plugin, thus this new option won't be automatically
+		// verified, which includes setting defaults for setting attributes that
+		// weren't explicitly specified.
+		$this->verify_options( array( $option_name ) );
+
+		return $this->config[ $option_name ];
+	}
+
+	/**
 	 * Verify that the necessary configuration files were set in the inheriting class.
 	 */
 	public function verify_config() {
@@ -448,20 +503,37 @@ abstract class c2c_AutoHyperlinkURLs_Plugin_041 {
 		if ( empty( $this->config ) ) {
 			$this->show_admin = false;
 		} else {
-			// Initialize any option attributes that weren't specified by the plugin
-			foreach ( $this->get_option_names( true ) as $opt ) {
-				foreach ( $this->config_attributes as $attrib => $default) {
-					if ( ! isset( $this->config[ $opt ][ $attrib ] ) ) {
-						$this->config[ $opt ][ $attrib ] = $default;
-					}
-				}
-				if ( 'array' === $this->config[ $opt ]['datatype'] && ! is_array( $this->config[ $opt ]['default'] ) ) {
-					$this->config[ $opt ]['default'] = $this->config[ $opt ]['default'] ?
-						array( $this->config[ $opt ]['default'] ) :
-						array();
+			$this->verify_options();
+		}
+	}
+
+	/**
+	 * Initializes any option attributes that weren't specified by the plugin.
+	 *
+	 * @since 044
+	 *
+	 * @param array $options Array of all the option names to verify. Leave empty
+	 *                       to verify them all. Default empty array.
+	 */
+	public function verify_options( $options = array() ) {
+		// If no options specified, assume them all.
+		if ( ! $options ) {
+			$options = $this->get_option_names( true );
+		}
+
+		foreach ( $options as $opt ) {
+			foreach ( $this->config_attributes as $attrib => $default) {
+				if ( ! isset( $this->config[ $opt ][ $attrib ] ) ) {
+					$this->config[ $opt ][ $attrib ] = $default;
 				}
 			}
+			if ( 'array' === $this->config[ $opt ]['datatype'] && ! is_array( $this->config[ $opt ]['default'] ) ) {
+				$this->config[ $opt ]['default'] = $this->config[ $opt ]['default'] ?
+					array( $this->config[ $opt ]['default'] ) :
+					array();
+			}
 		}
+		$this->reset_caches();
 	}
 
 	/**
@@ -638,7 +710,7 @@ HTML;
 			$donation_url  = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6ARCFJ9TX3522';
 			$donation_url .= urlencode( sprintf( __( 'Donation for coffee2code plugin: %s', 'auto-hyperlink-urls' ), $this->name ) );
 			$title         = __( 'Coffee fuels my coding.', 'auto-hyperlink-urls' );
-			$links[] = '<a href="' . esc_url( $donation_url ) . '" title="' . esc_attr( $title ) . '">Donate</a>';
+			$links[] = '<a href="' . esc_url( $donation_url ) . '" title="' . esc_attr( $title ) . '">' . __( 'Donate', 'auto-hyperlink-urls' ) . '</a>';
 		}
 		return $links;
 	}
@@ -675,19 +747,23 @@ HTML;
 	 * @return array Array of option names.
 	 */
 	protected function get_option_names( $include_non_options = false ) {
-		if ( ! $include_non_options && ! empty( $this->option_names ) ) {
-			return $this->option_names;
-		}
+		$option_names = array();
+
 		if ( $include_non_options ) {
-			return array_keys( $this->config );
-		}
-		$this->option_names = array();
-		foreach ( array_keys( $this->config ) as $opt ) {
-			if ( isset( $this->config[ $opt ]['input'] ) && $this->config[ $opt ]['input'] != '' && $this->config[ $opt ]['input'] != 'none' && $this->is_option_valid( $opt ) ) {
-				$this->option_names[] = $opt;
+			$option_names = array_keys( $this->config );
+		} else {
+			if ( ! $this->option_names ) {
+				$this->option_names = array();
+				foreach ( array_keys( $this->config ) as $opt ) {
+					if ( isset( $this->config[ $opt ]['input'] ) && $this->config[ $opt ]['input'] != '' && $this->config[ $opt ]['input'] != 'none' && $this->is_option_valid( $opt ) ) {
+						$this->option_names[] = $opt;
+					}
+				}
 			}
+			$option_names = $this->option_names;
 		}
-		return $this->option_names;
+
+		return $option_names;
 	}
 
 	/**

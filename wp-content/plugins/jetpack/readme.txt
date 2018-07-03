@@ -1,7 +1,7 @@
 === Jetpack by WordPress.com ===
 Contributors: automattic, adamkheckler, aduth, akirk, allendav, alternatekev, andy, annezazu, apeatling, azaozz, batmoo, barry, beaulebens, blobaugh, cainm, cena, cfinke, chaselivingston, chellycat, clickysteve, csonnek, danielbachhuber, davoraltman, daniloercoli, designsimply, dllh, drawmyface, dsmart, dzver, ebinnion, eliorivero, enej, eoigal, erania-pinnera, ethitter, gcorne, georgestephanis, gibrown, goldsounds, hew, hugobaeta, hypertextranch, iammattthomas, iandunn, jblz, jeherve, jenhooks, jenia, jgs, jkudish, jmdodd, Joen, johnjamesjacoby, jshreve, koke, kraftbj, lancewillett, lschuyler, macmanx, martinremy, matt, matveb, mattwiebe, maverick3x6, mcsf, mdawaffe, michael-arestad, migueluy, mikeyarce, mkaz, nancythanki, nickmomrik, obenland, oskosk, pento, professor44, rachelsquirrel, rdcoll, ryancowles, richardmuscat, richardmtl, roccotripaldi, samhotchkiss, scarstocea, sdquirk, stephdau, tmoorewp, tyxla, Viper007Bond, westi, yoavf, zinigor
 Tags: Jetpack, WordPress.com, backup, security, related posts, CDN, speed, anti-spam, social sharing, SEO, video, stats
-Stable tag: 6.1.1
+Stable tag: 6.2.1
 Requires at least: 4.7
 Tested up to: 4.9
 
@@ -21,7 +21,7 @@ Create and customize your WordPress site from start to finish. Jetpack helps you
 * Integration with the official WordPress mobile apps
 
 = Marketing Services =
-Measure, promote, and earn moment from your site. Jetpack helps you with:
+Measure, promote, and earn money from your site. Jetpack helps you with:
 
 * Site stats and analytics
 * Automated social media posting and scheduling in advance
@@ -98,25 +98,13 @@ There are opportunities for developers at all levels to contribute. [Learn more 
 
 == Changelog ==
 
-= 6.1.1 =
+= 6.2.1 =
 
-* Release date: May 22, 2018
-* Release post: https://wp.me/p1moTy-85t
+* Release date: June 8, 2018
+* Release post: https://wp.me/p1moTy-8am
 
-**Enhancements**
-
-* Ads: Added new setting for Banner consent expiration. Added new filter jetpack_disable_eu_cookie_law_widget, which can be used to disable the banner.
-* Ads: Added a new personalized-ads-consent cookie for ads-enabled sites.
-* Ads: Added requirement and notice, and button-click opt-in for ads module users.
-* Ads: When a user site has a Privacy Policy page set (introduced in 4.9.6), we now default to using that privacy policy as a custom policy URL.
-* GDPR: A new warning is displayed while configuring an instance of the EU Cookie Law widget: "Caution: The default policy URL only covers cookies set by Jetpack. If you're running other plugins, custom cookies, or third-party tracking technologies, you should create and link to your own cookie statement."
-* GDPR: Added Feedback data (i.e., Contact Form Submissions) to the Personal Data exported and/or erased by the latest version of WordPress core.
 
 **Bug fixes**
 
-* Ads: We updated Ads behaviour to not show unless the visitor is on the main query within the loop.
-* General: We fixed a bug that resulted in an alert box showing for sites set to languages deriving from main ones.
-* Lazy Images: Fixed a bug where images would disappear when scrolling.
-* Sharing: make sure JS files can be loaded on development sites.
-* Sharing: Added check for validating Akismet key before allowing sharing by email.
-* WooCommerce Analytics: Fixed PHP warning when attemping to get a list of plugins.
+* AMP: We fixed the rendering of the stats pixel for legacy, non-paired, non-canonical AMP pages.
+* Shortcodes: Fixed a fatal coming form the VR shortcode when using the Gutenberg editor in the frontend.

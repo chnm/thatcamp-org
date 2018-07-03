@@ -1,11 +1,15 @@
 CHANGELOG
 =========
 
+= Version 8.6 =
+* readme file: removed donate link
+* updated theme author info
+
 = Version 8.5 =
-fix: added CSS to make privacy checkbox visible when using Bootstrap (thanks Marie)
-fix: nonce was outputted twice (thanks malae and Felipe)
-fix: duplicate ID of privacy checkbox (thanks malae)
-credits in changelog: removed all full names (because of the GDPR)
+* fix: added CSS to make privacy checkbox visible when using Bootstrap (thanks Marie)
+* fix: nonce was outputted twice (thanks malae and Felipe)
+* fix: duplicate ID of privacy checkbox (thanks malae)
+* credits in changelog: removed all full names (because of the GDPR)
 
 = Version 8.4 =
 * added bootstrap css class to privacy checkbox

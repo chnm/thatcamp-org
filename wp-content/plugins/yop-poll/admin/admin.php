@@ -11,12 +11,14 @@ class YOP_Poll_Admin {
 			add_action( 'admin_menu', array( &$this, 'build_admin_menu' ) );
 			add_action( 'plugins_loaded', array( &$this, 'verify_update' ) );
 			add_action( 'admin_enqueue_scripts', array( &$this, 'load_dependencies' ) );
+			add_action( 'upgrader_process_complete', array( &$this, 'upgrade_complete' ) );
 			add_action( 'wp_ajax_create_yop_poll', array( &$this, 'create_poll' ) );
 			add_action( 'wp_ajax_update_yop_poll', array( &$this, 'update_poll' ) );
 			add_action( 'wp_ajax_delete_single_yop_poll', array( &$this, 'delete_single_poll' ) );
 			add_action( 'wp_ajax_delete_bulk_yop_poll', array( &$this, 'delete_bulk_poll' ) );
 			add_action( 'wp_ajax_clone_single_yop_poll', array( &$this, 'clone_single_poll' ) );
 			add_action( 'wp_ajax_clone_bulk_yop_poll', array( &$this, 'clone_bulk_poll' ) );
+			add_action( 'wp_ajax_reset_bulk_yop_poll', array( &$this, 'reset_bulk_poll' ) );
 			add_action( 'wp_ajax_create_yop_poll_ban', array( &$this, 'create_ban' ) );
 			add_action( 'wp_ajax_delete_yop_poll_ban', array( &$this, 'delete_single_ban' ) );
 			add_action( 'wp_ajax_update_yop_poll_ban', array( &$this, 'update_ban' ) );
@@ -50,7 +52,12 @@ class YOP_Poll_Admin {
 				$maintenance = new YOP_POLL_Maintenance();
 				$maintenance->activate();
 			}
+			if ( true === version_compare( $installed_version, '6.0.0', '==' ) ) {
+				update_option( 'yop_poll_version', '6.0.1' );
+			}
 		}
+	}
+	public function upgrade_complete() {
 	}
 	public function is_user_logged_in() {
 		if ( true === is_user_logged_in() ) {
@@ -182,7 +189,6 @@ class YOP_Poll_Admin {
 			'jquery-ui-dialog',
 			'jquery-ui-datepicker' )
 		);
-		//wp_localize_script( 'yop', 'yop_app_url', YOP_POLL_URL );
 		wp_localize_script( 'yop', 'objectL10n', array(
 			'yopPollParams' => array(
 				'appUrl' => YOP_POLL_URL,
@@ -199,6 +205,9 @@ class YOP_Poll_Admin {
 				'clonePollMessage' => esc_html__( 'Are you sure you want to clone this poll?', 'yop-poll' ),
 				'cloneBulkPollsSingleMessage' => esc_html__( 'Are you sure you want to clone this poll?', 'yop-poll' ),
 				'cloneBulkPollsMultiMessage' => esc_html__( 'Are you sure you want to clone these polls?', 'yop-poll' ),
+				'resetPollMessage' => esc_html__( 'Are you sure you want to reset votes for this poll?', 'yop-poll' ),
+				'resetBulkPollsSingleMessage' => esc_html__( 'Are you sure you want to reset votes for this poll?', 'yop-poll' ),
+				'resetBulkPollsMultiMessage' => esc_html__( 'Are you sure you want to reset votes for these polls?', 'yop-poll' ),
 				'noBulkActionSelected' => esc_html__( 'No bulk action selected', 'yop-poll' ),
 				'noPollsSelectedForBulk' => esc_html__( 'No polls selected', 'yop-poll' ),
 				'noBansSelectedForBulk' => esc_html__( 'No bans selected', 'yop-poll' ),
@@ -595,6 +604,31 @@ class YOP_Poll_Admin {
 					count( $polls ),
 					'yop-poll' )
 				);
+			}
+		} else {
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'yop-poll' ) );
+		}
+	}
+	public function reset_bulk_poll() {
+		if ( check_ajax_referer( 'yop-poll-bulk-polls', '_token', false ) ) {
+			$polls = json_decode( wp_unslash( $_POST['polls'] ) );
+			$success = 0;
+			foreach ( $polls as $poll ) {
+				if ( current_user_can( 'yop_poll_add' ) ) {
+					$result = YOP_Poll_Polls::reset_poll( $poll );
+					if ( true === $result['success'] ) {
+						$success++;
+					} else {
+						$success--;
+					}
+				} else {
+					$success--;
+				}
+			}
+			if ( $success === intval( count( $polls ) ) ) {
+				wp_send_json_success( __( 'Votes successfully reset', 'yop-poll' ) );
+			} else {
+				wp_send_json_error( __( 'Error resetting votes', 'yop-poll' ) );
 			}
 		} else {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'yop-poll' ) );

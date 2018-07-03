@@ -139,9 +139,6 @@ class wordfence {
 		$wfdb = new wfDB();
 
 		if(wfConfig::get('other_WFNet')){
-			$table_wfNet404s = wfDB::networkTable('wfNet404s');
-			$wfdb->truncate($table_wfNet404s);
-			
 			$table_wfVulnScanners = wfDB::networkTable('wfVulnScanners');
 			$q2 = $wfdb->querySelect("select IP from {$table_wfVulnScanners} where ctime > unix_timestamp() - 3600");
 			$scanCont = "";
@@ -182,7 +179,7 @@ class wordfence {
 		wfVersionCheckController::shared()->checkVersionsAndWarn();
 	}
 	private static function keyAlert($msg){
-		self::alert($msg, $msg . " To ensure uninterrupted Premium Wordfence protection on your site,\nplease renew your API key by visiting http://www.wordfence.com/ Sign in, go to your dashboard,\nselect the key about to expire and click the button to renew that API key.", false);
+		self::alert($msg, $msg . " To ensure uninterrupted Premium Wordfence protection on your site,\nplease renew your license by visiting http://www.wordfence.com/ Sign in, go to your dashboard,\nselect the license about to expire and click the button to renew that license.", false);
 	}
 	public static function dailyCron() {
 		$lastDailyCron = (int) wfConfig::get('lastDailyCron', 0);
@@ -209,8 +206,8 @@ class wordfence {
 						wfConfig::set('keyAutoRenew10Sent', '');
 					} else if ($keyExpDays <= 12 && $keyExpDays > 0 && !wfConfig::get('keyAutoRenew10Sent')) {
 						wfConfig::set('keyAutoRenew10Sent', 1);
-						$email = "Your Premium Wordfence API Key is set to auto-renew in 10 days.";
-						self::alert($email, "$email To update your API key settings please visit http://www.wordfence.com/zz9/dashboard", false);
+						$email = "Your Premium Wordfence License is set to auto-renew in 10 days.";
+						self::alert($email, "$email To update your license settings please visit http://www.wordfence.com/zz9/dashboard", false);
 					}
 				} else {
 					if($keyExpDays > 15){
@@ -222,20 +219,20 @@ class wordfence {
 					} else if($keyExpDays <= 15 && $keyExpDays > 0){
 						if($keyExpDays <= 15 && $keyExpDays >= 11 && (! wfConfig::get('keyExp15Sent'))){
 							wfConfig::set('keyExp15Sent', 1);
-							self::keyAlert("Your Premium Wordfence API Key expires in less than 2 weeks.");
+							self::keyAlert("Your Premium Wordfence License expires in less than 2 weeks.");
 						} else if($keyExpDays <= 7 && $keyExpDays >= 4 && (! wfConfig::get('keyExp7Sent'))){
 							wfConfig::set('keyExp7Sent', 1);
-							self::keyAlert("Your Premium Wordfence API Key expires in less than a week.");
+							self::keyAlert("Your Premium Wordfence License expires in less than a week.");
 						} else if($keyExpDays == 2 && (! wfConfig::get('keyExp2Sent'))){
 							wfConfig::set('keyExp2Sent', 1);
-							self::keyAlert("Your Premium Wordfence API Key expires in 2 days.");
+							self::keyAlert("Your Premium Wordfence License expires in 2 days.");
 						} else if($keyExpDays == 1 && (! wfConfig::get('keyExp1Sent'))){
 							wfConfig::set('keyExp1Sent', 1);
-							self::keyAlert("Your Premium Wordfence API Key expires in 1 day.");
+							self::keyAlert("Your Premium Wordfence License expires in 1 day.");
 						}
 					} else if($keyIsExpired && (! wfConfig::get('keyExpFinalSent')) ){
 						wfConfig::set('keyExpFinalSent', 1);
-						self::keyAlert("Your Wordfence Premium API Key has Expired!");
+						self::keyAlert("Your Wordfence Premium License has Expired!");
 					}
 				}
 			}
@@ -257,7 +254,7 @@ class wordfence {
 			wfConfig::set('keyType', $keyType);
 		}
 		catch(Exception $e){
-			wordfence::status(4, 'error', "Could not verify Wordfence API Key: " . $e->getMessage());
+			wordfence::status(4, 'error', "Could not verify Wordfence License: " . $e->getMessage());
 			wfConfig::set('useNoc3Secure', false);
 		}
 
@@ -481,10 +478,10 @@ SQL
 					wfConfig::set('keyType', wfAPI::KEY_TYPE_FREE);
 					$freshAPIKey = true;
 				} else {
-					throw new Exception("Could not understand the response we received from the Wordfence servers when applying for a free API key.");
+					throw new Exception("Could not understand the response we received from the Wordfence servers when applying for a free license key.");
 				}
 			} catch(Exception $e){
-				error_log("Could not fetch free API key from Wordfence: " . $e->getMessage());
+				error_log("Could not fetch free license key from Wordfence: " . $e->getMessage());
 				return;
 			}
 		}
@@ -551,8 +548,11 @@ SQL
 		// Fix the data in the country column.
 		$previousVersionHash = wfConfig::get('geoIPVersionHash', '');
 		$geoIPVersion = wfUtils::geoIPVersion();
-		$geoIPVersionHash = hash('sha256', implode(',', $geoIPVersion));
-		if ($previousVersionHash != $geoIPVersionHash) {
+		if (is_array($geoIPVersion)) {
+			$geoIPVersion = implode(',', $geoIPVersion);
+		}
+		$geoIPVersionHash = hash('sha256', $geoIPVersion);
+		if ($geoIPVersion !== null && $previousVersionHash != $geoIPVersionHash) {
 			$table_wfBlockedIPLog = wfDB::networkTable('wfBlockedIPLog');
 			$ip_results = $wpdb->get_results("SELECT countryCode, IP FROM `{$table_wfBlockedIPLog}` GROUP BY IP");
 			if ($ip_results) {
@@ -3064,7 +3064,7 @@ SQL
 		return array('ok' => 1);
 	}
 	public static function ajax_sendActivityLog_callback(){
-		$content = "SITE: " . site_url() . "\nPLUGIN VERSION: " . WORDFENCE_VERSION . "\nWP VERSION: " . wfUtils::getWPVersion() . "\nAPI KEY: " . wfConfig::get('apiKey') . "\nADMIN EMAIL: " . get_option('admin_email') . "\nLOG:\n\n";
+		$content = "SITE: " . site_url() . "\nPLUGIN VERSION: " . WORDFENCE_VERSION . "\nWP VERSION: " . wfUtils::getWPVersion() . "\nLICENSE KEY: " . wfConfig::get('apiKey') . "\nADMIN EMAIL: " . get_option('admin_email') . "\nLOG:\n\n";
 		$wfdb = new wfDB();
 		$table_wfStatus = wfDB::networkTable('wfStatus');
 		$q = $wfdb->querySelect("select ctime, level, type, msg from {$table_wfStatus} order by ctime desc limit 10000");
@@ -3168,15 +3168,21 @@ SQL
 				wfConfig::set('keyType', wfAPI::KEY_TYPE_FREE);
 				//When downgrading we must disable all two factor authentication because it can lock an admin out if we don't.
 				wfConfig::set_ser('twoFactorUsers', array());
+				wfConfig::remove('premiumAutoRenew');
+				wfConfig::remove('premiumNextRenew');
+				wfConfig::remove('premiumPaymentExpiring');
+				wfConfig::remove('premiumPaymentExpired');
+				wfConfig::remove('premiumPaymentMissing');
+				wfConfig::remove('premiumPaymentHold');
 				self::licenseStatusChanged();
 				if (method_exists(wfWAF::getInstance()->getStorageEngine(), 'purgeIPBlocks')) {
 					wfWAF::getInstance()->getStorageEngine()->purgeIPBlocks(wfWAFStorageInterface::IP_BLOCKS_BLACKLIST);
 				}
 			} else {
-				throw new Exception("Could not understand the response we received from the Wordfence servers when applying for a free API key.");
+				throw new Exception("Could not understand the response we received from the Wordfence servers when applying for a free license key.");
 			}
 		} catch(Exception $e){
-			return array('errorMsg' => "Could not fetch free API key from Wordfence: " . wp_kses($e->getMessage(), array()));
+			return array('errorMsg' => "Could not fetch free license key from Wordfence: " . wp_kses($e->getMessage(), array()));
 		}
 		return array('ok' => 1);
 	}
@@ -3586,6 +3592,19 @@ SQL
 		$result = $api->call('record_toupp', array(), array());
 		wfConfig::set('touppBypassNextCheck', 1); //In case this call kicks off the cron that checks, this avoids the race condition of that setting the prompt as being needed at the same time we've just recorded it as accepted
 		wfConfig::set('touppPromptNeeded', 0);
+		return array(
+			'success' => 1,
+		);
+	}
+	public static function ajax_mailingSignup_callback() {
+		if (isset($_POST['emails'])) {
+			$emails = @json_decode(stripslashes($_POST['emails']), true);
+			if (is_array($emails) && count($emails)) {
+				$api = new wfAPI(wfConfig::get('apiKey'), wfUtils::getWPVersion());
+				$result = $api->call('mailing_signup', array(), array('signup' => json_encode(array('emails' => $emails))));
+			}
+		}
+		
 		return array(
 			'success' => 1,
 		);
@@ -5024,7 +5043,7 @@ HTML;
 			'dismissNotification', 'utilityScanForBlacklisted', 'dashboardShowMore',
 			'saveOptions', 'restoreDefaults', 'enableAllOptionsPage', 'createBlock', 'deleteBlocks', 'makePermanentBlocks', 'getBlocks',
 			'installAutoPrepend', 'uninstallAutoPrepend',
-			'installLicense', 'recordTOUPP',
+			'installLicense', 'recordTOUPP', 'mailingSignup',
 		) as $func){
 			add_action('wp_ajax_wordfence_' . $func, 'wordfence::ajaxReceiver');
 		}
@@ -5032,7 +5051,7 @@ HTML;
 		if(isset($_GET['page']) && preg_match('/^Wordfence/', @$_GET['page']) ){
 			wp_enqueue_style('wp-pointer');
 			wp_enqueue_script('wp-pointer');
-			wp_enqueue_style('wordfence-font', 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i', '', WORDFENCE_VERSION);
+			wp_enqueue_style('wordfence-font', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-roboto-font.css'), '', WORDFENCE_VERSION);
 			wp_enqueue_style('wordfence-font-awesome-style', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-font-awesome.css'), '', WORDFENCE_VERSION); 
 			wp_enqueue_style('wordfence-main-style', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/main.css'), '', WORDFENCE_VERSION);
 			wp_enqueue_style('wordfence-ionicons-style', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-ionicons.css'), '', WORDFENCE_VERSION);
@@ -6692,12 +6711,15 @@ to your httpd.conf if using Apache, or find documentation on how to disable dire
 		}
 		
 		try {
-			if ($helper->usesUserIni() && (!isset($_POST['iniModified']) || (isset($_POST['iniModified']) && !$_POST['iniModified']))) { //Uses .user.ini but not yet modified
+			if ((!isset($_POST['iniModified']) || (isset($_POST['iniModified']) && !$_POST['iniModified']))) { //Uses .user.ini but not yet modified
 				$hasPreviousAutoPrepend = $helper->performIniRemoval($wp_filesystem);
 				
 				$iniTTL = intval(ini_get('user_ini.cache_ttl'));
 				if ($iniTTL == 0) {
 					$iniTTL = 300; //The PHP default
+				}
+				if (!$helper->usesUserIni()) {
+					$iniTTL = 0; //.htaccess
 				}
 				$timeout = max(30, $iniTTL);
 				$timeoutString = wfUtils::makeDuration($timeout);
@@ -6729,19 +6751,33 @@ to your httpd.conf if using Apache, or find documentation on how to disable dire
 				}
 				return $response;
 			}
-			else { //.user.ini modified if applicable and waiting period elapsed or otherwise ready to advance to next step
-				if ($helper->usesUserIni() && WFWAF_AUTO_PREPEND) { //.user.ini modified, but the WAF is still enabled
-					$userIniError = '<p class="wf-error">' . __('Extended Protection Mode has not been disabled. This may be because <code>auto_prepend_file</code> is configured somewhere else or the value is still cached by PHP.', 'wordfence') . '</p>';
+			else { //.user.ini and .htaccess modified if applicable and waiting period elapsed or otherwise ready to advance to next step
+				if (WFWAF_AUTO_PREPEND && !WFWAF_SUBDIRECTORY_INSTALL) { //.user.ini modified, but the WAF is still enabled
+					$retryAttempted = (isset($_POST['retryAttempted']) && $_POST['retryAttempted']);
+					$userIniError = '<p class="wf-error">';
+					$userIniError .= __('Extended Protection Mode has not been disabled. This may be because <code>auto_prepend_file</code> is configured somewhere else or the value is still cached by PHP.', 'wordfence');
+					if ($retryAttempted) {
+						$userIniError .= ' <strong>' . __('Retrying Failed.', 'wordfence') . '</strong>';
+					}
+					$userIniError .= ' <a href="#" class="wf-waf-uninstall-try-again">' . __('Try Again', 'wordfence') . '</a>';
+					$userIniError .= '</p>';
 					$html = wfView::create('waf/waf-modal-wrapper', array(
 						'title' => __('Unable to Uninstall', 'wordfence'),
 						'html' => $userIniError,
 						'helpHTML' => sprintf(__('If you cannot complete the uninstall process, <a target="_blank" rel="noopener noreferrer" href="%s">click here for help</a>', 'wordfence'), wfSupportController::esc_supportURL(wfSupportController::ITEM_FIREWALL_WAF_REMOVE_MANUALLY)),
 						'footerButtonTitle' => __('Cancel', 'wordfence'),
 					))->render();
-					return array('uninstallationFailed' => 1, 'html' => $html);
-				}
-				else if (!$helper->usesUserIni()) {
-					$helper->performIniRemoval($wp_filesystem); //Do .htaccess here
+					
+					$response = array('uninstallationFailed' => 1, 'html' => $html, 'serverConfiguration' => $_POST['serverConfiguration']);
+					if (isset($credentials) && is_array($credentials)) {
+						$salt = wp_salt('logged_in');
+						$json = json_encode($credentials);
+						$encrypted = wfUtils::encrypt($json);
+						$signature = hash_hmac('sha256', $encrypted, $salt);
+						$response['credentials'] = $encrypted;
+						$response['credentialsSignature'] = $signature;
+					}
+					return $response;
 				}
 				
 				$helper->performAutoPrependFileRemoval($wp_filesystem);
@@ -6814,6 +6850,12 @@ to your httpd.conf if using Apache, or find documentation on how to disable dire
 		else if ($lastAggregation < (time() - 86400)) {
 			self::_aggregateBlockStats($lastAggregation);
 		}
+		
+		$maxAge = wfConfig::get('liveTraf_maxAge', 30);
+		if ($maxAge <= 0 || $maxAge > 30) {
+			$maxAge = 30;
+		}
+		$wfdb->queryWrite("DELETE FROM {$table_wfHits} WHERE ctime < %d", time() - ($maxAge * 86400));
 	}
 	
 	private static function _aggregateBlockStats($since = false) {

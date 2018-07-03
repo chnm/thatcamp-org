@@ -148,6 +148,7 @@ class wfConfig {
 			'alert_maxHourly' => array('value' => 0, 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_INT)), 
 			'loginSec_userBlacklist' => array('value' => '', 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_STRING)),
 			'liveTraf_maxRows' => array('value' => 2000, 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_INT)),
+			'liveTraf_maxAge' => array('value' => 30, 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_INT)),
 			"neverBlockBG" => array('value' => "neverBlockVerified", 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_STRING)),
 			"loginSec_countFailMins" => array('value' => 240, 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_INT)),
 			"loginSec_lockoutMins" => array('value' => 240, 'autoload' => self::AUTOLOAD, 'validation' => array('type' => self::TYPE_INT)),
@@ -1502,6 +1503,11 @@ Options -ExecCGI
 					$saved = true;
 					break;
 				}
+				case 'liveTraf_maxAge':
+				{
+					$value = max(1, $value);
+					break;
+				}
 				
 				//Scan scheduling
 				case 'scanSched':
@@ -1563,7 +1569,7 @@ Options -ExecCGI
 					}
 				}
 				catch (Exception $e) {
-					throw new wfConfigException(__('Your options have been saved, but you left your API key blank, so we tried to get you a free API key from the Wordfence servers. There was a problem fetching the free key: ', 'wordfence') . wp_kses($e->getMessage(), array()));
+					throw new wfConfigException(__('Your options have been saved, but you left your license key blank, so we tried to get you a free license key from the Wordfence servers. There was a problem fetching the free key: ', 'wordfence') . wp_kses($e->getMessage(), array()));
 				}
 			}
 			else if ($existingAPIKey != $apiKey) { //Key changed, try activating
@@ -1584,7 +1590,7 @@ Options -ExecCGI
 					}
 				}
 				catch (Exception $e) {
-					throw new wfConfigException(__('Your options have been saved. However we noticed you changed your API key, and we tried to verify it with the Wordfence servers but received an error: ', 'wordfence') . wp_kses($e->getMessage(), array()));
+					throw new wfConfigException(__('Your options have been saved. However we noticed you changed your license key, and we tried to verify it with the Wordfence servers but received an error: ', 'wordfence') . wp_kses($e->getMessage(), array()));
 				}
 			}
 			else { //Key unchanged, just ping it
@@ -1613,7 +1619,7 @@ Options -ExecCGI
 					wfConfig::set('keyType', $keyType);
 				}
 				catch (Exception $e){
-					throw new wfConfigException(__('Your options have been saved. However we tried to verify your API key with the Wordfence servers and received an error: ', 'wordfence') . wp_kses($e->getMessage(), array()));
+					throw new wfConfigException(__('Your options have been saved. However we tried to verify your license key with the Wordfence servers and received an error: ', 'wordfence') . wp_kses($e->getMessage(), array()));
 				}
 			}
 		}
@@ -1779,6 +1785,7 @@ Options -ExecCGI
 					'liveTraf_ignoreIPs',
 					'liveTraf_ignoreUA',
 					'liveTraf_maxRows',
+					'liveTraf_maxAge',
 					'displayTopLevelLiveTraffic',
 				);
 				break;
@@ -1932,6 +1939,7 @@ Options -ExecCGI
 					'liveTraf_ignoreIPs',
 					'liveTraf_ignoreUA',
 					'liveTraf_maxRows',
+					'liveTraf_maxAge',
 					'displayTopLevelLiveTraffic',
 					'other_noAnonMemberComments',
 					'other_scanComments',

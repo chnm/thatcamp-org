@@ -272,10 +272,6 @@ class wfLog {
 				$this->takeBlockingAction('maxGlobalRequests', "Exceeded the maximum global requests per minute for crawlers or humans.");
 			}
 			if($type == '404'){
-				if(wfConfig::get('other_WFNet')){
-					$table_wfNet404s = wfDB::networkTable('wfNet404s');
-					$this->getDB()->queryWrite("insert IGNORE into {$table_wfNet404s} (sig, ctime, URI) values (UNHEX(MD5('%s')), unix_timestamp(), '%s')", $_SERVER['REQUEST_URI'], $_SERVER['REQUEST_URI']);
-				}
 				$pat = wfConfig::get('vulnRegex');
 				if($pat){
 					$URL = wfUtils::getRequestedURL();

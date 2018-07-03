@@ -1,14 +1,3 @@
-/*
- * Transposh v0.9.3
- * http://transposh.org/
- *
- * Copyright 2013, Team Transposh
- * Licensed under the GPL Version 2 or higher.
- * http://transposh.org/license
- *
- * Date: Mon, 06 May 2013 02:15:55 +0300
- */
-t_jp.l={"Close without saving?":"\u05dc\u05e1\u05d2\u05d5\u05e8 \u05d1\u05dc\u05d9 \u05dc\u05e9\u05de\u05d5\u05e8?","You have made a change to the translation. Are you sure you want to discard it?":"\u05d1\u05d9\u05e6\u05e2\u05ea \u05e9\u05d9\u05e0\u05d5\u05d9 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd, \u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7 \u05e9\u05d0\u05ea\u05d4 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05d5\u05d5\u05ea\u05e8 \u05e2\u05dc\u05d9\u05d5?",History:"\u05d4\u05d9\u05e1\u05d8\u05d5\u05e8\u05d9\u05d4",
-"Loading...":"\u05d8\u05d5\u05e2\u05df...",Translated:"\u05ea\u05d5\u05e8\u05d2\u05dd",By:"\u05e2\u05dc \u05d9\u05d3\u05d9",At:"\u05d1",google:"\u05d2\u05d5\u05d2\u05dc",bing:"\u05d1\u05d9\u05e0\u05d2",apertium:"\u05d0\u05e4\u05e8\u05d8\u05d9\u05d5\u05dd","manual translation":"\u05ea\u05e8\u05d2\u05d5\u05dd \u05d9\u05d3\u05e0\u05d9","bing suggest":"\u05d4\u05e6\u05e2\u05d5\u05ea \u05d1\u05d9\u05e0\u05d2","google suggest":"\u05d4\u05e6\u05e2\u05d5\u05ea \u05d2\u05d5\u05d2\u05dc","apertium suggest":"\u05d4\u05e6\u05e2\u05d5\u05ea \u05d0\u05e4\u05e8\u05d8\u05d9\u05d5\u05dd",
-"Edit Translation":"\u05e2\u05e8\u05d9\u05db\u05ea \u05ea\u05e8\u05d2\u05d5\u05dd","Original text":"\u05d8\u05e7\u05e1\u05d8 \u05de\u05e7\u05d5\u05e8\u05d9","read alternate translations":"\u05e7\u05e8\u05d0 \u05ea\u05e8\u05d2\u05d5\u05de\u05d9\u05dd \u05d0\u05dc\u05d8\u05e8\u05e0\u05d8\u05d9\u05d1\u05d9\u05d9\u05dd","previous translation":"\u05ea\u05e8\u05d2\u05d5\u05dd \u05e7\u05d5\u05d3\u05dd","find on page":"\u05de\u05e6\u05d0 \u05d1\u05d3\u05e3","next translation":"\u05ea\u05e8\u05d2\u05d5\u05dd \u05d4\u05d1\u05d0",
-"Translate to":"\u05ea\u05e8\u05d2\u05dd \u05dc","view translation log":"\u05d4\u05e6\u05d2 \u05dc\u05d5\u05d2 \u05ea\u05e8\u05d2\u05d5\u05dd","virtual keyboard":"\u05de\u05e7\u05dc\u05d3\u05ea \u05d5\u05d9\u05e8\u05d8\u05d5\u05d0\u05dc\u05d9\u05ea","approve translation":"\u05d0\u05e9\u05e8 \u05ea\u05e8\u05d2\u05d5\u05dd","delete":"\u05de\u05d7\u05e7",Discard:"\u05d5\u05d5\u05ea\u05e8",Cancel:"\u05d1\u05d8\u05dc"};
+t_jp.l={"Close without saving?":"לסגור בלי לשמור?","You have made a change to the translation. Are you sure you want to discard it?":"ביצעת שינוי בתרגום, האם אתה בטוח שאתה רוצה לוותר עליו?",History:"היסטוריה","Loading...":"טוען...",Translated:"תורגם",By:"על ידי",At:"ב",google:"גוגל",bing:"בינג",apertium:"אפרטיום","manual translation":"תרגום ידני","bing suggest":"הצעות בינג","google suggest":"הצעות גוגל","apertium suggest":"הצעות אפרטיום","Edit Translation":"עריכת תרגום","Original text":"טקסט מקורי","read alternate translations":"קרא תרגומים אלטרנטיביים","previous translation":"תרגום קודם","find on page":"מצא בדף","next translation":"תרגום הבא","Translate to":"תרגם ל","view translation log":"הצג לוג תרגום","virtual keyboard":"מקלדת וירטואלית","approve translation":"אשר תרגום",delete:"מחק",Discard:"וותר",Cancel:"בטל"};
+//# sourceMappingURL=he.js.map
+//# sourceURL=/wp-content/plugins/transposh-translation-filter-for-wordpress/js/l/he.js

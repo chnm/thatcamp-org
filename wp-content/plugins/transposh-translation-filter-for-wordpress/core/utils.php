@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v0.9.3
+ * Transposh v1.0.1
  * http://transposh.org/
  *
- * Copyright 2013, Team Transposh
+ * Copyright 2018, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Mon, 06 May 2013 02:15:55 +0300
+ * Date: Wed, 27 Jun 2018 14:41:10 +0300
  */
 
 /**
@@ -59,8 +59,8 @@ class transposh_utils {
         //cleanup lang identifier in permalinks
         //remove the language from the url permalink (if in start of path, and is a defined language)
         $home_path = rtrim(@parse_url($home_url, PHP_URL_PATH), "/");
-        tp_logger("home: $home_path " . $parsedurl['path'], 5);
-        if ($home_path && strpos($parsedurl['path'], $home_path) === 0) {
+        tp_logger("home: $home_path " . @$parsedurl['path'], 5);
+        if ($home_path && @strpos($parsedurl['path'], $home_path) === 0) {
             tp_logger("homein!: $home_path", 5);
             $parsedurl['path'] = substr($parsedurl['path'], strlen($home_path));
             $gluebackhome = true;
@@ -120,13 +120,13 @@ class transposh_utils {
         // remove the language from the url permalink (if in start of path, and is a defined language)
         $gluebackhome = false;
         $home_path = rtrim(@parse_url($home_url, PHP_URL_PATH), "/");
-        tp_logger("home: $home_path " . $parsedurl['path'], 5);
+        if (isset($parsedurl['path'])) {tp_logger("home: $home_path " . $parsedurl['path'], 5);}
         if ($home_path && strpos($parsedurl['path'], $home_path) === 0) {
             tp_logger("homein!: $home_path", 5);
             $parsedurl['path'] = substr($parsedurl['path'], strlen($home_path));
             $gluebackhome = true;
         }
-        if (strlen($parsedurl['path']) > 2) {
+        if (isset($parsedurl['path']) && strlen($parsedurl['path']) > 2) {
             $secondslashpos = strpos($parsedurl['path'], "/", 1);
             if (!$secondslashpos) $secondslashpos = strlen($parsedurl['path']);
             $prevlang = substr($parsedurl['path'], 1, $secondslashpos - 1);
@@ -150,7 +150,7 @@ class transposh_utils {
             $params['lang'] = LANG_PARAM . "=$lang";
         } else {
             if ($lang) {
-                if (!$parsedurl['path']) $parsedurl['path'] = "/";
+                if (!isset($parsedurl['path'])) $parsedurl['path'] = "/"; //wait for it
                 $parsedurl['path'] = "/" . $lang . $parsedurl['path'];
             }
         }
@@ -354,6 +354,7 @@ class transposh_utils {
      * @return boolean if this is rewritable 
      */
     public static function is_rewriteable_url($url, $home_url) {
+        if (strpos($home_url,':')) {$home_url = substr($home_url,strpos($home_url,':'));}
         return (stripos($url, $home_url) !== FALSE);
     }
 

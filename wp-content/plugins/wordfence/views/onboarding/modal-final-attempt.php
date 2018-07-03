@@ -28,7 +28,6 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 					<p><?php _e('(Choose One)', 'wordfence'); ?></p>
 				</div>
 			</div>
-			<div style="display: none;"><img src="https://forms.aweber.com/form/displays.htm?id=jCxMHAzMLAzsjA==" alt="" /></div>
 		</div>
 		<div id="wf-onboarding-final-attempt-2" class="wf-onboarding-modal-content"<?php if (wfConfig::get('onboardingAttempt3') != wfOnboardingController::ONBOARDING_THIRD_EMAILS) { echo ' style="display: none;"'; } ?>>
 			<h3><?php _e('Activate Premium', 'wordfence'); ?></h3>

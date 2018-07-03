@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name: Auto-hyperlink URLs
- * Version:     5.0
+ * Version:     5.2
  * Plugin URI:  http://coffee2code.com/wp-plugins/auto-hyperlink-urls/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
  * Text Domain: auto-hyperlink-urls
- * Description: Automatically hyperlink text URLs and email addresses originally written only as plaintext.
+ * Description: Automatically turns plaintext URLs and email addresses into links.
  *
- * Compatible with WordPress 4.1 through 4.5+.
+ * Compatible with WordPress 4.7 through 4.9+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
@@ -16,7 +16,7 @@
  *
  * @package Auto_Hyperlink_URLs
  * @author  Scott Reilly
- * @version 5.0
+ * @version 5.2
  */
 
 /*
@@ -29,7 +29,7 @@
  */
 
 /*
-	Copyright (c) 2004-2016 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2004-2018 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -52,7 +52,14 @@ if ( ! class_exists( 'c2c_AutoHyperlinkURLs' ) ) :
 
 require_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'c2c-plugin.php' );
 
-final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
+final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_047 {
+
+	/**
+	 * Name of plugin's setting.
+	 *
+	 * @var string
+	 */
+	const SETTING_NAME = 'c2c_autohyperlink_urls';
 
 	/**
 	 * The one true instance.
@@ -86,7 +93,7 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
 	 * Constructor.
 	 */
 	protected function __construct() {
-		parent::__construct( '5.0', 'autohyperlink-urls', 'c2c', __FILE__, array() );
+		parent::__construct( '5.2', 'autohyperlink-urls', 'c2c', __FILE__, array() );
 		register_activation_hook( __FILE__, array( __CLASS__, 'activation' ) );
 
 		return self::$instance = $this;
@@ -107,7 +114,7 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
 	 * @since 4.0
 	 */
 	public static function uninstall() {
-		delete_option( 'c2c_autohyperlink_urls' );
+		delete_option( self::SETTING_NAME );
 	}
 
 	/**
@@ -128,44 +135,69 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
 		$this->menu_name = __( 'Auto-hyperlink', 'auto-hyperlink-urls' );
 
 		$this->config = array(
-			'hyperlink_comments' => array( 'input' => 'checkbox', 'default' => true,
-				'label' => __( 'Auto-hyperlink comments?', 'auto-hyperlink-urls' ),
-				'help'  => __( 'Note that if disabled WordPress&#8217;s built-in hyperlinking function will still be performed, which links email addresses and text URLs with explicit URI schemes.', 'auto-hyperlink-urls' ),
+			'hyperlink_comments' => array(
+				'input'    => 'checkbox',
+				'default'  => true,
+				'label'    => __( 'Auto-hyperlink comments?', 'auto-hyperlink-urls' ),
+				'help'     => __( 'Note that if disabled WordPress&#8217;s built-in hyperlinking function will still be performed, which links email addresses and text URLs with explicit URI schemes.', 'auto-hyperlink-urls' ),
 			),
-			'hyperlink_emails' => array( 'input' => 'checkbox', 'default' => true,
-				'label' => __( 'Hyperlink email addresses?', 'auto-hyperlink-urls' )
+			'hyperlink_emails' => array(
+				'input'    => 'checkbox',
+				'default'  => true,
+				'label'    => __( 'Hyperlink email addresses?', 'auto-hyperlink-urls' ),
 			),
-			'strip_protocol' => array( 'input' => 'checkbox', 'default' => true,
-				'label' => __( 'Strip URI scheme?', 'auto-hyperlink-urls' ),
-				'help'  => sprintf(
-					__( 'Remove the <a href="%s">URI scheme</a> (i.e. \'http://\') from the displayed auto-hyperlinked link?', 'auto-hyperlink-urls' ),
+			'strip_protocol' => array(
+				'input'    => 'checkbox',
+				'default'  => true,
+				'label'    => __( 'Strip URI scheme?', 'auto-hyperlink-urls' ),
+				'help'     => sprintf(
+					__( 'Remove the <a href="%s">URI scheme</a> (i.e. "http://") from the displayed auto-hyperlinked link?', 'auto-hyperlink-urls' ),
 					'https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Conceptual_distinctions'
 				),
 			),
-			'open_in_new_window' => array( 'input' => 'checkbox', 'default' => false,
-				'label' => __( 'Open auto-hyperlinked links in new window?', 'auto-hyperlink-urls' )
+			'open_in_new_window' => array(
+				'input'    => 'checkbox',
+				'default'  => false,
+				'label'    => __( 'Open auto-hyperlinked links in new window?', 'auto-hyperlink-urls' ),
 			),
-			'nofollow' => array( 'input' => 'checkbox', 'default' => false,
-				'label' => sprintf( __( 'Enable <a href="%s">nofollow</a>?', 'auto-hyperlink-urls' ), 'http://en.wikipedia.org/wiki/Nofollow' ),
+			'nofollow' => array(
+				'input'    => 'checkbox',
+				'default'  => false,
+				'label'    => sprintf( __( 'Enable <a href="%s">nofollow</a>?', 'auto-hyperlink-urls' ), 'http://en.wikipedia.org/wiki/Nofollow' ),
 			),
-			'hyperlink_mode' => array( 'input' => 'shorttext', 'default' => 0,
-				'label' => __( 'Hyperlink Mode/Truncation', 'auto-hyperlink-urls' ),
-				'help' => __( 'This determines what text should appear as the link.  Use <code>0</code> to show the full URL, use <code>1</code> to show just the hostname, or use a value greater than <code>10</code> to indicate how many characters of the URL you want shown before it gets truncated.  <em>If</em> text gets truncated, the truncation before/after text values below will be used.', 'auto-hyperlink-urls' )
+			'require_scheme' => array(
+				'input'    => 'checkbox',
+				'default'  => false,
+				'label'    => __( 'Require explicit URI scheme?', 'auto-hyperlink-urls' ),
+				'help'     => __( 'Only links with an explicit URI scheme (e.g. "http://", "https://") will be auto-hyperlinked.', 'auto-hyperlink-urls' ),
 			),
-			'truncation_before_text' => array( 'input' => 'text', 'default' => '',
-				'label' => __( 'Text to show before link truncation', 'auto-hyperlink-urls' )
+			'hyperlink_mode' => array(
+				'input'    => 'shorttext',
+				'default'  => 0,
+				'label'    => __( 'Hyperlink Mode/Truncation', 'auto-hyperlink-urls' ),
+				'help'     => __( 'This determines what text should appear as the link.  Use <code>0</code> to show the full URL, use <code>1</code> to show just the hostname, or use a value greater than <code>10</code> to indicate how many characters of the URL you want shown before it gets truncated.  <em>If</em> text gets truncated, the truncation before/after text values below will be used.', 'auto-hyperlink-urls' ),
 			),
-			'truncation_after_text' => array( 'input' => 'text', 'default' => '...',
-				'label' => __( 'Text to show after link truncation', 'auto-hyperlink-urls' )
+			'truncation_before_text' => array(
+				'input'    => 'text',
+				'default'  => '',
+				'label'    => __( 'Text to show before link truncation', 'auto-hyperlink-urls' ),
 			),
-			'more_extensions' => array( 'input' => 'text', 'default' => '',
-				'label' => __( 'Extra domain extensions', 'auto-hyperlink-urls' ),
-				'help'  => __( 'Space and/or comma-separated list of extensions/<acronym title="Top-Level Domains">TLDs</acronym>.<br />These are already built-in: com, org, net, gov, edu, mil, us, info, biz, ws, name, mobi, cc, tv', 'auto-hyperlink-urls' )
+			'truncation_after_text' => array(
+				'input'    => 'text',
+				'default'  => '...',
+				'label'    => __( 'Text to show after link truncation', 'auto-hyperlink-urls' ),
 			),
-			'exclude_domains' => array( 'input' => 'inline_textarea', 'datatype' => 'array',
-				'no_wrap' => true, 'input_attributes' => 'rows="6"',
-				'label' => __( 'Exclude domains', 'auto-hyperlink-urls' ),
-				'help' => __( 'List domains that should NOT get automatically hyperlinked. One domain per line. Do not include URI scheme (e.g. "http://") or trailing slash.', 'auto-hyperlink-urls' ),
+			'more_extensions' => array( 'input' => 'text',
+				'default'  => '',
+				'label'    => __( 'Extra domain extensions', 'auto-hyperlink-urls' ),
+				'help'     => __( 'Space and/or comma-separated list of extensions/<acronym title="Top-Level Domains">TLDs</acronym>.<br />These are already built-in: com, org, net, gov, edu, mil, us, info, biz, ws, name, mobi, cc, tv', 'auto-hyperlink-urls' ),
+			),
+			'exclude_domains' => array(
+				'input'    => 'inline_textarea',
+				'datatype' => 'array',
+				'no_wrap'  => true, 'input_attributes' => 'rows="6"',
+				'label'    => __( 'Exclude domains', 'auto-hyperlink-urls' ),
+				'help'     => __( 'List domains that should NOT get automatically hyperlinked. One domain per line. Do not include URI scheme (e.g. "http://") or trailing slash.', 'auto-hyperlink-urls' ),
 			),
 		);
 	}
@@ -333,20 +365,23 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
 	/**
 	 * Hyperlinks plaintext links within text.
 	 *
+	 * @see make_clickable() in core, parts of which were adapted here.
+	 *
 	 * @param  string $text The text to have its plaintext links hyperlinked.
 	 * @param  array  $args An array of configuration options, each element of which will override the plugin's corresponding default setting.
 	 * @return string The hyperlinked version of the text.
 	 */
 	public function hyperlink_urls( $text, $args = array() ) {
-		$r = '';
-		$textarr = preg_split( '/(<[^<>]+>)/', $text, -1, PREG_SPLIT_DELIM_CAPTURE ); // split out HTML tags
+		$r               = '';
+		$textarr         = preg_split( '/(<[^<>]+>)/', $text, -1, PREG_SPLIT_DELIM_CAPTURE ); // split out HTML tags
 		$nested_code_pre = 0; // Keep track of how many levels link is nested inside <pre> or <code>
 		foreach ( $textarr as $piece ) {
 
-			if ( preg_match( '|^<code[\s>]|i', $piece ) || preg_match( '|^<pre[\s>]|i', $piece ) || preg_match( '|^<script[\s>]|i', $piece ) || preg_match( '|^<style[\s>]|i', $piece ) )
+			if ( preg_match( '|^<code[\s>]|i', $piece ) || preg_match( '|^<pre[\s>]|i', $piece ) || preg_match( '|^<script[\s>]|i', $piece ) || preg_match( '|^<style[\s>]|i', $piece ) ) {
 				$nested_code_pre++;
-			elseif ( $nested_code_pre && ( '</code>' === strtolower( $piece ) || '</pre>' === strtolower( $piece ) || '</script>' === strtolower( $piece ) || '</style>' === strtolower( $piece ) ) )
+			} elseif ( $nested_code_pre && ( '</code>' === strtolower( $piece ) || '</pre>' === strtolower( $piece ) || '</script>' === strtolower( $piece ) || '</style>' === strtolower( $piece ) ) ) {
 				$nested_code_pre--;
+			}
 
 			if ( $nested_code_pre || empty( $piece ) || ( $piece[0] === '<' && ! preg_match( '|^<\s*[\w]{1,20}+://|', $piece ) ) ) {
 				$r .= $piece;
@@ -377,17 +412,19 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
 				$extensions = $this->get_tlds();
 
 				// Link links that don't have a URI scheme.
-				$ret = preg_replace_callback(
-					"#(?!<.*?)([\s{}\(\)\[\]>,\'\";:])([a-z0-9]+[a-z0-9\-\.]*)\.($extensions)((?:[/\#?][^\s<{}\(\)\[\]]*[^\.,\s<{}\(\)\[\]]?)?)(?![^<>]*?>)#is",
-					array( $this, 'do_hyperlink_url_no_uri_scheme' ),
-					$ret
-				);
+				if ( ! $options['require_scheme'] ) {
+					$ret = preg_replace_callback(
+						"#(?!<.*?)([\s{}\(\)\[\]>,\'\";:])([a-z0-9]+[a-z0-9\-\.]*)\.($extensions)((?:[/\#?][^\s<{}\(\)\[\]]*[^\.,\s<{}\(\)\[\]]?)?)(?![^<>]*?>)#is",
+						array( $this, 'do_hyperlink_url_no_uri_scheme' ),
+						$ret
+					);
+				}
 
 				// Link links that have an explicit URI scheme.
 				$scheme_regex =  '~
 					(?!<.*?)                                           # Non-capturing check to ensure not matching what looks like the inside of an HTML tag.
-					(?<=[\s>.,:;!?])                                   # 1: Leading whitespace or character.
-					(\(?)                                              # Maybe an open parenthesis?
+					(?<=[\s>.,:;!?])                                   # Leading whitespace or character.
+					(\(?)                                              # 1: Maybe an open parenthesis?
 					(                                                  # 2: Full URL
 						([\w]{1,20}?://)                               # 3: Scheme and hier-part prefix
 						(                                              # 4: URL minus URI scheme
@@ -395,12 +432,12 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
 							[\\w\\x80-\\xff#%\\~/@\\[\\]*(+=&$-]*+     # Non-punctuation URL character
 							(?:                                        # Unroll the Loop: Only allow puctuation URL character if followed by a non-punctuation URL character
 								[\'.,;:!?)]                            # Punctuation URL character
-								[\\w\\x80-\\xff#%\\~/@\\[\\]*(+=&$-]++ # Non-punctuation URL character
+								[\\w\\x80-\\xff#%\\~/@\\[\\]*()+=&$-]++ # Non-punctuation URL character
 							)*
 						)
 					)
 					(\)?)                                              # 5: Trailing closing parenthesis (for parethesis balancing post processing)
-					(?![^<>]*?>) # Check to ensure not within what looks like an HTML tag.
+					(?![^<>]*?>)                                       # Check to ensure not within what looks like an HTML tag.
 				~ixS';
 
 				$ret = preg_replace_callback(
@@ -449,6 +486,9 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
 		// If domain wasn't provided, figure it out.
 		if ( ! $domain ) {
 			$parts = parse_url( $url );
+			if ( ! $parts || empty( $parts['host'] ) ) {
+				return false;
+			}
 			$domain = $parts['host'];
 		}
 
@@ -460,7 +500,7 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
 		// Don't link domains explicitly excluded.
 		$exclude_domains = (array) apply_filters( 'autohyperlink_urls_exclude_domains', $options['exclude_domains'] );
 		foreach ( $exclude_domains as $exclude ) {
-			if ( $domain === $exclude ) {
+			if ( strcasecmp( $domain, $exclude ) == 0 ) {
 				return false;
 			}
 		}
@@ -476,27 +516,39 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
 	 */
 	public function do_hyperlink_url( $matches ) {
 		$options = $this->get_options();
+
+		$url = $matches[2];
+
 		// Check to see if the link should actually be hyperlinked.
-		if ( ! $this->can_do_hyperlink( $matches[0] ) ) {
+		if ( ! $this->can_do_hyperlink( $url ) ) {
 			return $matches[0];
 		}
 
-		// Handle parentheses balancing.
-		$url = $matches[2];
-
-		if ( ')' == $matches[5] && strpos( $url, '(' ) ) {
-			// If the trailing character is a closing parethesis, and the URL has an opening parenthesis in it, add the closing parenthesis to the URL.
-			// Then we can let the parenthesis balancer do its thing below.
-			$url .= $matches[5];
-			$suffix = '';
-		} else {
-			$suffix = $matches[5];
+		// If an opening parenthesis was captured, but not a closing one, then check
+		// if the closing parenthesis is included as part of URL. If so, it and
+		// anything after should not be part of the URL.
+		if ( '(' === $matches[1] && empty( $matches[5] ) ) {
+			if ( false !== ( $pos = strrpos( $url, ')' ) ) ) {
+				$matches[5] = substr( $url, $pos );
+				$url = substr( $url, 0, $pos );
+			}
 		}
 
-		// Include parentheses in the URL only if paired
-		while ( substr_count( $url, '(' ) < substr_count( $url, ')' ) ) {
-			$suffix = strrchr( $url, ')' ) . $suffix;
-			$url = substr( $url, 0, strrpos( $url, ')' ) );
+		// If the URL has more closing parentheses than opening, then an extra
+		// parenthesis got errantly included as part of the URL, so exclude it.
+		// Note: This is most likely case, though edge cases definitely exist.
+		if ( substr_count( $url, '(' ) < substr_count( $url, ')' ) ) {
+			$pos = strrpos( $url, ')' );
+			$matches[5] = substr( $url, $pos ) . $matches[5];
+			$url = substr( $url, 0, $pos );
+		}
+
+		// If the link ends with punctuation, assume it wasn't meant to be part of
+		// the URL.
+		$last_char = substr( $url, -1 );
+		if ( in_array( $last_char, array( "'", '.', ',', ';', ':', '!', '?' ) ) ) {
+			$matches[5] = $last_char . $matches[5];
+			$url = substr( $url, 0, -1 );
 		}
 
 		$url = esc_url( $url );
@@ -511,12 +563,8 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
 		}
 
 		return $matches[1]
-			. '<a href="' . $url . '"'
-			. rtrim( ' ' . $this->get_link_attributes( $url ) )
-			. '>'
-			. $this->truncate_link( $link_text )
-			. '</a>'
-			. $suffix;
+			. sprintf( '<a href="%s"%s>%s</a>', esc_url( $url ), rtrim( ' ' . $this->get_link_attributes( $url ) ), $this->truncate_link( $link_text ) )
+			. $matches[5];
 	}
 
 	/**
@@ -543,11 +591,7 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
 			$after = '';
 		}
 		return $matches[1]
-			. '<a href="' . esc_url( 'http://' . $dest ) . '"'
-			. rtrim( ' ' . $this->get_link_attributes( "http://$dest" ) )
-			. '>'
-			. $this->truncate_link( $dest )
-			. '</a>'
+			. sprintf( '<a href="%s"%s>%s</a>', esc_url( "http://$dest" ), rtrim( ' ' . $this->get_link_attributes( "http://$dest" ) ), $this->truncate_link( $dest ) )
 			. $after;
 	}
 
@@ -560,12 +604,12 @@ final class c2c_AutoHyperlinkURLs extends c2c_AutoHyperlinkURLs_Plugin_041 {
 	public function do_hyperlink_email( $matches ) {
 		$email = $matches[1] . '@' . $matches[2];
 
-		return '<a '
-			. 'href="mailto:' . esc_attr( $email ) . '"'
-			. rtrim( ' ' . $this->get_link_attributes( $email, 'email' ) )
-			. '>'
-			. $this->truncate_link( $email, 'email' )
-			. '</a>';
+		return sprintf(
+			'<a href="mailto:%s"%s>%s</a>',
+			esc_attr( $email ),
+			rtrim( ' ' . $this->get_link_attributes( $email, 'email' ) ),
+			$this->truncate_link( $email, 'email' )
+		);
 	}
 } // end c2c_AutoHyperlinkURLs
 

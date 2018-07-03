@@ -16,6 +16,7 @@ define('WFWAF_IS_WINDOWS', strtoupper(substr(PHP_OS, 0, 3)) === 'WIN');
 
 require_once WFWAF_LIB_PATH . 'waf.php';
 require_once WFWAF_LIB_PATH . 'utils.php';
+require_once WFWAF_LIB_PATH . 'xmlrpc.php';
 
 require_once WFWAF_LIB_PATH . 'storage.php';
 require_once WFWAF_LIB_PATH . 'storage/file.php';

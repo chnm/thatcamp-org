@@ -605,7 +605,7 @@ class YOP_Poll_Votes {
 		}
 		if ( 'yes' === $poll->meta_data['options']['poll']['redirectAfterVote'] ) {
 			$redirect_to = $poll->meta_data['options']['poll']['redirectUrl'];
-			$redirect_after = '10';
+			$redirect_after = '2';
 		} else {
 			$redirect_to = '';
 			$redirect_after = '';

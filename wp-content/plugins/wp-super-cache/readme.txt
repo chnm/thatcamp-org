@@ -1,8 +1,8 @@
 # WP Super Cache #
 * Contributors: donncha, automattic, kraftbj
 * Tags: performance, caching, wp-cache, wp-super-cache, cache
-* Tested up to: 4.9.5
-* Stable tag: 1.6.1
+* Tested up to: 4.9.6
+* Stable tag: 1.6.2
 * Requires at least: 3.0
 * Requires PHP: 5.2.4
 * License: GPLv2 or later
@@ -89,7 +89,7 @@ There is one regular WordPress filter too. Use the "do_createsupercache" filter
 to customize the checks made before caching. The filter accepts one parameter.
 The output of WP-Cache's wp_cache_get_cookies_values() function.
 
-See plugins/searchengine.php as an example I use for my [No Adverts for Friends](https://odd.blog/no-adverts-for-friends/) plugin.
+See [plugins/searchengine.php](https://github.com/Automattic/wp-super-cache/blob/4cda5c0f2218e40e118232b5bf22d227fb3206b7/plugins/searchengine.php) as an example I use for my [No Adverts for Friends](https://odd.blog/no-adverts-for-friends/) plugin.
 
 ### Troubleshooting ###
 If things don't work when you installed the plugin here are a few things to check:
@@ -260,6 +260,14 @@ Your theme is probably responsive which means it resizes the page to suit whatev
 
 
 ## Changelog ##
+
+### 1.6.2 ###
+* Fixed serving expired supercache files (#562)
+* Write directly to the config file to avoid permission problems with wp-content. (#563)
+* Correctly set the .htaccess rules on the main site of a multisite. (#557)
+* Check if set_transient() exists before using it. (#565)
+* Removed searchengine.php example plugin as it sets a cookie to track users. Still available [here](https://github.com/Automattic/wp-super-cache/blob/4cda5c0f2218e40e118232b5bf22d227fb3206b7/plugins/searchengine.php). (#567)
+* For advanced users only. Change the vary and cache control headers. See https://github.com/Automattic/wp-super-cache/pull/555 (#555)
 
 ### 1.6.1 ###
 * Fix the name of the WP Crontrol plugin. (#549)
@@ -655,4 +663,4 @@ Your theme is probably responsive which means it resizes the page to suit whatev
 
 
 ## Upgrade Notice ##
-Bug fix release
+Fix problems writing to the config file for some users.

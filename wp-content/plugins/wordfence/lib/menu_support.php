@@ -58,7 +58,7 @@ $support = @json_decode(wfConfig::get('supportContent'), true);
 								<div class="wf-block-title">
 									<strong><?php _e('GDPR Information', 'wordfence'); ?></strong>
 								</div>
-								<div class="wf-block-header-action"><div class="wf-block-header-action-disclosure"></div></div>
+								<div class="wf-block-header-action"><div class="wf-block-header-action-disclosure" role="checkbox" aria-checked="<?php echo (wfPersistenceController::shared()->isActive('support-gdpr') ? 'true' : 'false'); ?>" tabindex="0"></div></div>
 							</div>
 						</div>
 						<div class="wf-block-content">

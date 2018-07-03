@@ -26,14 +26,14 @@ $id = 'wf-option-' . preg_replace('/[^a-z0-9]/i', '-', $optionName);
 	<?php if (!wfConfig::p() && isset($premium) && $premium): ?>
 	<li class="wf-option-premium-lock"></li>
 	<?php else: ?>
-	<li class="wf-option-checkbox<?php echo ($value == $enabledValue ? ' wf-checked' : ''); ?>"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></li>
+	<li class="wf-option-checkbox<?php echo ($value == $enabledValue ? ' wf-checked' : ''); ?>" role="checkbox" aria-checked="<?php echo ($value == $enabledValue ? 'true' : 'false'); ?>" tabindex="0" aria-labelledby="<?php echo esc_attr($id); ?>-label"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></li>
 	<?php endif; ?>
 	<li class="wf-option-title">
 	<?php if (isset($subtitleHTML)): ?>
 		<ul class="wf-flex-vertical wf-flex-align-left">
 			<li>
 	<?php endif; ?>
-				<?php echo (!empty($title)) ? esc_html($title) : ''; echo (!empty($htmlTitle)) ? wp_kses($htmlTitle, 'post') : ''; ?><?php if (!wfConfig::p() && isset($premium) && $premium) { echo ' <a href="https://www.wordfence.com/gnl1optionUpgrade/wordfence-signup/" target="_blank" rel="noopener noreferrer" class="wf-premium-link">' . __('Premium Feature', 'wordfence') . '</a>'; } ?><?php if (isset($helpLink)) { echo ' <a href="' . esc_attr($helpLink) . '"  target="_blank" rel="noopener noreferrer" class="wf-inline-help"><i class="wf-fa wf-fa-question-circle-o" aria-hidden="true"></i></a>'; } ?>
+				<span id="<?php echo esc_attr($id); ?>-label"><?php echo (!empty($title)) ? esc_html($title) : ''; echo (!empty($htmlTitle)) ? wp_kses($htmlTitle, 'post') : ''; ?></span><?php if (!wfConfig::p() && isset($premium) && $premium) { echo ' <a href="https://www.wordfence.com/gnl1optionUpgrade/wordfence-signup/" target="_blank" rel="noopener noreferrer" class="wf-premium-link">' . __('Premium Feature', 'wordfence') . '</a>'; } ?><?php if (isset($helpLink)) { echo ' <a href="' . esc_attr($helpLink) . '"  target="_blank" rel="noopener noreferrer" class="wf-inline-help"><i class="wf-fa wf-fa-question-circle-o" aria-hidden="true"></i></a>'; } ?>
 	<?php if (isset($subtitleHTML)): ?>
 			</li>
 			<li class="wf-option-subtitle"><?php echo $subtitleHTML; ?></li>
