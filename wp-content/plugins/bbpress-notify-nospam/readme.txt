@@ -4,11 +4,11 @@ Author URI: http://www.usestrict.net/
 Plugin URI: http://usestrict.net/2013/02/bbpress-notify-nospam/
 Tags: bbpress, email notification, no spam
 Requires at least: 3.1
-Tested up to: 4.9.5
+Tested up to: 4.9.6
 Text Domain: bbpress_notify
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.18.1
+Stable tag: 1.18.2
 Requires PHP: 5.3
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VLQU2MMXKB6S2
 
@@ -76,6 +76,11 @@ the [Opt-out Add-on](http://usestrict.net/product/bbpress-notify-no-spam-opt-out
 
 
 == Changelog ==
+= 1.18.2 =
+* Fix: Future Publish was not working.
+* Fix: Better handling of blocking bbPress core notifications if Overrides is on, to make sure we don't send out multiple messages (ours plus the default one).
+* Cleanup: Commented out some notifications code that are no longer relevant. 
+
 = 1.18.1 =
 * Updated Tested up to
 * Added improved admin notice code and bbpnns-rbe April/2018 promo.

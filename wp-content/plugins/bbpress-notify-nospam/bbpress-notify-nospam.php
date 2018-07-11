@@ -2,7 +2,7 @@
 /*
 * Plugin Name:  bbPress Notify (No-Spam)
 * Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a>
-* Version:      1.18.1
+* Version:      1.18.2
 * Author:       <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:      GNU General Public License, v2 ( or newer )
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -17,7 +17,7 @@
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 * GNU General Public License for more details.
 *
-* Copyright (C) 2012-2016 www.usestrict.net, released under the GNU General Public License.
+* Copyright (C) 2012-2018 www.usestrict.net, released under the GNU General Public License.
 */
 
 /* Search for translations */
@@ -25,7 +25,7 @@ load_plugin_textdomain( 'bbpress_notify', false, dirname( plugin_basename( __FIL
 
 class bbPress_Notify_noSpam {
 	
-	const VERSION = '1.18.1';
+	const VERSION = '1.18.2';
 	
 	protected $settings_section = 'bbpress_notify_options';
 	
@@ -68,10 +68,8 @@ class bbPress_Notify_noSpam {
 			// Notification meta boxes if needed
 			add_action( 'add_meta_boxes', array( $this, 'add_notification_meta_box' ), 10 );
 			
-			add_action( 'admin_notices', array( $this, 'maybe_show_admin_message' ) );
+// 			add_action( 'admin_notices', array( $this, 'maybe_show_admin_message' ) );
 
-// 			add_action( 'admin_notices', array( $this, 'maybe_show_surety_message' ) );
-			
 			add_action( 'plugins_loaded', array( $this, 'get_bridge_warnings' ), PHP_INT_MAX );
 			
 			// Dismiss notice
@@ -130,13 +128,13 @@ class bbPress_Notify_noSpam {
 		if ( $this->options['subscrp_forum'] )
 		{
 			// Stop core subscriptions in its tracks
-			add_filter( 'bbp_forum_subscription_mail_message', '__return_false' );
+			add_action( 'plugins_loaded', array( $this, 'remove_core_forum_notification' ), 10 );
 		}
 		
 		if ( $this->options['subscrp_topic'] )
 		{
 			// Stop core subscriptions in its tracks
-			add_filter( 'bbp_subscription_mail_message', '__return_false' );
+			add_action( 'plugins_loaded', array( $this, 'remove_core_topic_notification' ), 10 );
 		}
 		
 		// Munge bbpress_notify_newpost_recipients if forum is hidden
@@ -150,6 +148,24 @@ class bbPress_Notify_noSpam {
 		add_filter( 'bbpnns_available_reply_tags', array( $this, 'get_available_reply_tags' ), 10, 1 );
 		
 		add_filter( 'bbpnns_is_in_effect', array( $this, 'bbpnns_is_in_effect' ), 10, 2 );
+	}
+	
+	
+	/**
+	 * Remove the core forum notifications if Override Subscriptions to Forums is on.
+	 */
+	public function remove_core_forum_notification()
+	{
+		remove_action( 'bbp_new_topic', 'bbp_notify_forum_subscribers', 11 );
+	}
+	
+	
+	/**
+	 * Remove the core topic notification if Override Subscriptions to Topics is on.
+	 */
+	public function remove_core_topic_notification()
+	{
+		remove_action( 'bbp_new_reply', 'bbp_notify_topic_subscribers', 11 );
 	}
 	
 	
@@ -362,42 +378,6 @@ Did you know that we now have an add-on that allows your forum participants to s
 		
 		return true;
 	} 
-	
-	
-	/**
-	 * Maybe Show the Surety Mail notice
-	 */
-	function maybe_show_surety_message()
-	{
-		$notice    = sanitize_text_field( 'surety' );
-		$dismissed = (bool) get_site_option( "{$notice}_dismissed", $default=false );  
-		
-		if ( true === $dismissed )
-			return;
-		
-		?>
-		<div id="usc_surety_notice" class="updated notice is-dismissible">
-                <p><?php _e( sprintf( 'Is the email you send getting hung up by spam filters?
-Losing sales and traffic to the junk folder? Because you are using <strong>bbPress Notify (No-Spam)</strong>, you may qualify for <a href="%s" target="_new">SuretyMail for Wordpress inbox delivery optimization!
-Learn more here!</a>', 'https://usestrict.net/go/suretymail4wp'), $this->domain ); ?></p>
-		</div>
-		<script>
-jQuery(document).ready(function($){
-	$(document).on('click', '#usc_surety_notice .notice-dismiss', function(){
-		$.ajax({
-			method: 'POST',
-			url: ajaxurl,
-			data: {
-				action: 'usc_dismiss_notice',
-				usc_nonce: '<?php echo wp_create_nonce( "usc_dismiss_{$notice}_nonce" ); ?>',
-				notice: '<?php echo $notice; ?>'
-			}
-		});
-	});
-});
-		</script>
-		<?php 
-	}
 	
 	
 	/* Checks whether bbPress is active because we need it. If bbPress isn't active, we are going to disable ourself */
@@ -931,7 +911,7 @@ jQuery(document).ready(function($){
 				do_action( 'bbpnns_before_wp_mail', $user_info, $filtered_subject, $filtered_body, $recipient_headers );
 				
 				// For debugging
-// 				add_action( 'phpmailer_init', function($pm){  $pm->preSend(); error_log(__LINE__ . ' message: ' . print_r($pm->getSentMIMEMessage(),1), 3, dirname(__FILE__) . '/out.log' ); });
+//				add_action( 'phpmailer_init', function($pm){  $pm->postSend(); error_log(__LINE__ . ' message: ' . print_r($pm->getSentMIMEMessage(),1) /* , 3, dirname(__FILE__) . '/out.log' */ ); });
 				
 				// Turn on nl2br for wpMandrill
 				add_filter( 'mandrill_nl2br', array( $this, 'handle_mandrill_nl2br' ), 10, 2 );
@@ -981,8 +961,8 @@ jQuery(document).ready(function($){
 			$filepath = $el['filepath'];
 			$name     = $el['filename'];
 			$cid      = $el['cid'];
-			
-			$phpmailer->AddEmbeddedImage( $filepath, $cid, $name );
+
+			$phpmailer->addEmbeddedImage( $filepath, $cid, $name );
 		}
 	}
 	
@@ -1056,7 +1036,7 @@ jQuery(document).ready(function($){
 			$text = preg_replace('@^<body>|</body>$@', '', $text );
 		}
 		
-		
+
 		return $text;
 	}
 	
@@ -1622,7 +1602,7 @@ jQuery(document).ready(function($){
 
 		if ( $this->bbpress_topic_post_type !== $post->post_type && $this->bbpress_reply_post_type !== $post->post_type ) return;
 		
-		if ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'edit_post', $post_id ) ) return;
+		if ( ! $is_future_publish && ! current_user_can( 'manage_options' ) && ! current_user_can( 'edit_post', $post_id ) ) return;
 		
 		if ( wp_is_post_revision( $post_id ) || 'publish' !== $post->post_status ) return;
 		

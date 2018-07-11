@@ -31,6 +31,8 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$this->topic_body = "<p>This is <br> a <br /> test &#039; paragraph for topic forum [topic-forum], URL: [topic-url], and Author: [topic-author]</p>\n\n<p>And a new <br/>paragraph</p>";
 		$this->reply_body = "<p>This is <br> a <br /> test &#039; paragraph for reply forum [reply-forum], Topic URL: [topic-url], URL: [reply-url], and Author: [reply-author]</p>\n\n<p>And a new <br/>paragraph</p>";
 		
+		$user = $this->factory->user->create_and_get( array( 'role' => 'administrator', 'user_login' => 'admin' ) );
+		
 		// Create new forum
 		$this->forum_id = bbp_insert_forum( 
 			array( 
@@ -45,7 +47,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 				'post_parent'  => $this->forum_id,
 				'post_title'   => 'test-topic',
 				'post_content' => $this->topic_body,
-				'post_author'  => 1,
+				'post_author'  => $user->ID,
 			 ),
 			array( 
 				'forum_id' => $this->forum_id		
@@ -58,7 +60,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 				'post_parent'  => $this->topic_id,
 				'post_title'   => 'test-reply',
 				'post_content' => $this->reply_body,
-				'post_author'  => 1,
+				'post_author'  => $user->ID,
 			 ),
 			array( 
 				'forum_id' => $this->forum_id,
