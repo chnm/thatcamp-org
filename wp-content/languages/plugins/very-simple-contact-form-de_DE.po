@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Very Simple Contact Form - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-04-21 17:13:56+0000\n"
+"PO-Revision-Date: 2018-07-08 14:41:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,14 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - Very Simple Contact Form - Development (trunk)\n"
+
+#. Author URI of the plugin/theme
+msgid "https://www.guido.site"
+msgstr "https://www.guido.site"
+
+#. Author of the plugin/theme
+msgid "Guido"
+msgstr "Guido"
 
 #: vscf-options.php:114
 msgid "Disable collection of IP address."
@@ -186,11 +194,7 @@ msgstr "Nachricht"
 msgid "Submit"
 msgstr "Senden"
 
-#. Author of the plugin/theme
-msgid "Guido van der Leest"
-msgstr "Guido van der Leest"
-
-#. #-#-#-#-#  very-simple-contact-form-code.pot (Very Simple Contact Form 8.4) 
+#. #-#-#-#-#  very-simple-contact-form-code.pot (Very Simple Contact Form 8.6) 
 #. #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: vscf-options.php:207 vscf-widget.php:11 vscf-widget.php:21
@@ -212,7 +216,3 @@ msgstr "Dies ist ein sehr einfaches Kontaktformular. Verwende den Shortcode [con
 #: vscf-form.php:74 vscf-options.php:167 vscf-widget-form.php:74
 msgid "Please enter at least 10 characters"
 msgstr "Gib bitte mindestens zehn Zeichen ein"
-
-#. Author URI of the plugin/theme
-msgid "https://www.guidovanderleest.nl"
-msgstr "https://www.guidovanderleest.nl"
