@@ -1,0 +1,299 @@
+# Translation of Plugins - Debug Bar - Stable (latest release) in Polish
+# This file is distributed under the same license as the Plugins - Debug Bar - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-11-27 00:47:54+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: pl\n"
+"Project-Id-Version: Plugins - Debug Bar - Stable (latest release)\n"
+
+#. translators: %s = duration in milliseconds.
+#: panels/class-debug-bar-queries.php:54 panels/class-debug-bar-queries.php:84
+msgid "%s ms"
+msgstr "%s ms"
+
+#. Author of the plugin
+msgid "wordpressdotorg"
+msgstr "wordpressdotorg"
+
+#: panels/class-debug-bar-wp-query.php:48
+msgid "Date"
+msgstr "Data"
+
+#: panels/class-debug-bar-wp-query.php:46
+msgid "Author"
+msgstr "Autor"
+
+#: panels/class-debug-bar-wp-query.php:44
+msgid "Tag"
+msgstr "Tag"
+
+#: panels/class-debug-bar-wp-query.php:42
+msgid "Category"
+msgstr "Kategoria"
+
+#: panels/class-debug-bar-wp-query.php:40
+msgid "Page"
+msgstr "Strona"
+
+#: panels/class-debug-bar-wp-query.php:36
+msgid "Attachment"
+msgstr "Załącznik"
+
+#: panels/class-debug-bar-wp-query.php:30
+msgid "Taxonomy"
+msgstr "Taksonomia"
+
+#: panels/class-debug-bar-wp-query.php:26
+msgid "404"
+msgstr "404"
+
+#: panels/class-debug-bar-wp-query.php:5
+msgid "WP Query"
+msgstr "WP Query"
+
+#: panels/class-debug-bar-request.php:5
+msgid "Request"
+msgstr "Zapytanie"
+
+#: panels/class-debug-bar-queries.php:66
+msgid "Database Errors"
+msgstr "Błędy bazy danych"
+
+#: panels/class-debug-bar-queries.php:6
+msgid "Queries"
+msgstr "Zapytania"
+
+#: panels/class-debug-bar-js.php:7
+msgid "JavaScript"
+msgstr "JavaScript"
+
+#: panels/class-debug-bar-deprecated.php:11
+msgid "Deprecated"
+msgstr "Przestarzałe"
+
+#. translators: %s is a formatted number representing the memory usage.
+#: debug-bar.php:253
+msgid "%s bytes"
+msgstr "%s bajtów"
+
+#: debug-bar.php:243
+msgid "MySQL"
+msgstr "MySQL"
+
+#: debug-bar.php:240
+msgid "PHP"
+msgstr "PHP"
+
+#. translators: %d is the site id number in a multi-site setting.
+#: debug-bar.php:236
+msgid "#%d"
+msgstr "#%d"
+
+#: panels/class-debug-bar-wp-query.php:89
+msgid "Query SQL:"
+msgstr "Zapytanie SQL:"
+
+#: panels/class-debug-bar-wp-query.php:32
+msgid "Front Page"
+msgstr "Strona główna"
+
+#. Author URI of the plugin
+msgid "https://wordpress.org/"
+msgstr "https://pl.wordpress.org/"
+
+#: panels/class-debug-bar-wp-query.php:34
+msgid "Home"
+msgstr "Strona główna"
+
+#: panels/class-debug-bar-deprecated.php:134
+msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s with no alternative available."
+msgstr "Funkcja %1$s została wywołana z argumentem, którego użycie jest <strong>przestarzałą praktyką</strong> od wersji %2$s! Nie istnieje żadna alternatywa."
+
+#: panels/class-debug-bar-deprecated.php:132
+msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s! %3$s"
+msgstr "Funkcja %1$s została wywołana z argumentem, którego użycie jest <strong>przestarzałą praktyką</strong> od wersji %2$s! %3$s"
+
+#. translators: %1$s is a function or file name, %2$s a version number.
+#: panels/class-debug-bar-deprecated.php:91
+#: panels/class-debug-bar-deprecated.php:109
+msgid "%1$s is <strong>deprecated</strong> since version %2$s with no alternative available."
+msgstr "Korzystanie z %1$s uznawane jest za <strong>przestarzałe</strong> od wersji %2$s! Nie istnieje żadna alternatywa."
+
+#. translators: %1$s is a function or file name, %2$s a version number, %3$s an
+#. alternative function or file to use.
+#: panels/class-debug-bar-deprecated.php:88
+#: panels/class-debug-bar-deprecated.php:106
+msgid "%1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
+msgstr "Korzystanie z %1$s uznawane jest za <strong>przestarzałe</strong> od wersji %2$s! Zamiast tego użyj %3$s."
+
+#: panels/class-debug-bar-wp-query.php:28
+msgid "Search"
+msgstr "Szukaj"
+
+#: panels/class-debug-bar-request.php:18 panels/class-debug-bar-request.php:27
+#: panels/class-debug-bar-request.php:36 panels/class-debug-bar-request.php:45
+#: panels/class-debug-bar-wp-query.php:80
+msgid "None"
+msgstr "Brak"
+
+#: panels/class-debug-bar-wp-query.php:38
+msgid "Single"
+msgstr "Pojedyncze"
+
+#: debug-bar.php:163
+msgid "Debug"
+msgstr "Debug"
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/debug-bar/"
+msgstr "https://pl.wordpress.org/plugins/debug-bar/"
+
+#. Plugin Name of the plugin
+msgid "Debug Bar"
+msgstr "Debug Bar"
+
+#: panels/class-debug-bar-wp-query.php:94
+msgid "Queried Object:"
+msgstr "Odpytany obiekt:"
+
+#: panels/class-debug-bar-wp-query.php:85
+msgid "Query Arguments:"
+msgstr "Argumenty zapytania:"
+
+#: panels/class-debug-bar-wp-query.php:74
+msgid "Post Type:"
+msgstr "Typ treści:"
+
+#: panels/class-debug-bar-wp-query.php:70
+msgid "Page on Front:"
+msgstr "Strona na froncie:"
+
+#: panels/class-debug-bar-wp-query.php:69
+msgid "Page for Posts:"
+msgstr "Strona wpisów:"
+
+#: panels/class-debug-bar-wp-query.php:67
+msgid "Show on Front:"
+msgstr "Pokaż na froncie:"
+
+#: panels/class-debug-bar-wp-query.php:60
+msgid "Query Template:"
+msgstr "Szablon zapytania:"
+
+#. Description of the plugin
+msgid "Adds a debug menu to the admin bar that shows query, cache, and other helpful debugging information."
+msgstr "Dodaje menu debugowania do paska administratora, które pokazuje zapytania, pamięć podręczną i inne pomocne informacje."
+
+#: panels/class-debug-bar-wp-query.php:56
+msgid "Query Type:"
+msgstr "Typ zapytania:"
+
+#: panels/class-debug-bar-wp-query.php:52
+msgid "Paged"
+msgstr "Stronicowanie"
+
+#: panels/class-debug-bar-wp-query.php:50
+msgid "Archive"
+msgstr "Archiwum"
+
+#: panels/class-debug-bar-wp-query.php:21
+msgid "Queried Object ID:"
+msgstr "Identyfikator obiektu zapytania:"
+
+#: panels/class-debug-bar-request.php:50
+msgid "Matched Rewrite Query:"
+msgstr "Pasujące zapytanie rewriteów:"
+
+#: panels/class-debug-bar-request.php:41
+msgid "Matched Rewrite Rule:"
+msgstr "Pasujące zapytanie reguł:"
+
+#: panels/class-debug-bar-request.php:32
+msgid "Query String:"
+msgstr "Ciąg zapytania:"
+
+#: panels/class-debug-bar-request.php:23
+msgid "Request:"
+msgstr "Zapytanie:"
+
+#: panels/class-debug-bar-queries.php:87
+msgid "Total DB Errors:"
+msgstr "Wszystkich błędów bazy:"
+
+#: panels/class-debug-bar-queries.php:82
+msgid "Total query time:"
+msgstr "Całkowity czas zapytania:"
+
+#: panels/class-debug-bar-queries.php:79
+msgid "Total Queries:"
+msgstr "Wszystkich zapytań:"
+
+#: panels/class-debug-bar-queries.php:62
+msgid "SAVEQUERIES must be defined to show the query log."
+msgstr "Należy zdefiniować SAVEQUERIES w celu lgowania zapytań."
+
+#: panels/class-debug-bar-queries.php:60
+msgid "There are no queries on this page."
+msgstr "Brak zapytań na stronie."
+
+#. translators: %s = a url.
+#: panels/class-debug-bar-queries.php:32
+msgid "There are too many queries to show easily! <a href=\"%s\">Show them anyway</a>"
+msgstr "Za dużo zapytań, żeby je łatwo pokazać! <a href=\"%s\">Pokaż je tak, czy inaczej</a>"
+
+#: panels/class-debug-bar-php.php:87
+msgid "WARNING:"
+msgstr "OSTRZEŻENIA:"
+
+#: panels/class-debug-bar-php.php:81
+msgid "Total Notices:"
+msgstr "Wszystkich powiadomień:"
+
+#: panels/class-debug-bar-php.php:100
+msgid "NOTICE:"
+msgstr "POWIADOMIENIA:"
+
+#: panels/class-debug-bar-php.php:80
+msgid "Total Warnings:"
+msgstr "Wszystkich ostrzeżeń:"
+
+#: panels/class-debug-bar-php.php:13
+msgid "Notices / Warnings"
+msgstr "Powiadomienia / Ostrzeżenia"
+
+#: panels/class-debug-bar-deprecated.php:35
+msgid "Total Files:"
+msgstr "Wszystkich plików:"
+
+#: panels/class-debug-bar-object-cache.php:5
+msgid "Object Cache"
+msgstr "Obiekt pamięci podręcznej"
+
+#: panels/class-debug-bar-js.php:19
+msgid "Total Errors:"
+msgstr "Wszystkich błędów:"
+
+#: panels/class-debug-bar-deprecated.php:34
+msgid "Total Arguments:"
+msgstr "Wszystkich argumentów:"
+
+#: panels/class-debug-bar-deprecated.php:33
+msgid "Total Functions:"
+msgstr "Wszystkich funkcji:"
+
+#: debug-bar.php:259
+msgid "Please Enable"
+msgstr "Proszę włączyć"
+
+#: debug-bar.php:251
+msgid "Memory Usage"
+msgstr "Użycie pamięci"
+
+#: debug-bar.php:243
+msgid "DB"
+msgstr "Baza danych"
