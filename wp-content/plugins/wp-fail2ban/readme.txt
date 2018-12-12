@@ -1,13 +1,15 @@
 === WP fail2ban ===
 Contributors: invisnet
 Author URI: https://charles.lecklider.org/
-Plugin URI: https://charles.lecklider.org/wordpress/wp-fail2ban/
+Plugin URI: https://github.com/invisnet/wp-fail2ban
 Tags: fail2ban, login, security, syslog
-Requires at least: 3.4.0
-Tested up to: 4.8.0
-Stable tag: 3.5.3
+Requires at least: 3.4
+Tested up to: 4.9
+Stable tag: 3.6.0
+Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Provides: FAIL2BAN
 
 Write a myriad of WordPress events to syslog for integration with fail2ban.
 
@@ -22,233 +24,115 @@ Write a myriad of WordPress events to syslog for integration with fail2ban.
 
 *WPf2b* comes with two `fail2ban` filters, `wordpress-hard.conf` and `wordpress-soft.conf`, designed to allow a split between immediate banning and the traditional more graceful approach.
 
-Requires PHP 5.3 or later.
-
-= Other Features =
+= Features =
 
 **CloudFlare and Proxy Servers**
 
-*WPf2b* can be configured to work with CloudFlare and other proxy servers. See `WP_FAIL2BAN_PROXIES` in the FAQ.
+*WPf2b* can be configured to work with CloudFlare and other proxy servers. For an overview see [`WP_FAIL2BAN_PROXIES`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-proxies).
 
 **Comments**
 
-*WPf2b* can log comments. See `WP_FAIL2BAN_LOG_COMMENTS`.
+*WPf2b* can log comments. See [`WP_FAIL2BAN_LOG_COMMENTS`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-log-comments).
 
 **Pingbacks**
 
-*WPf2b* logs failed pingbacks, and can log all pingbacks. See `WP_FAIL2BAN_LOG_PINGBACKS` in the FAQ.
+*WPf2b* logs failed pingbacks, and can log all pingbacks. For an overview see [`WP_FAIL2BAN_LOG_PINGBACKS`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-log-pingbacks).
 
 **Spam**
 
-*WPf2b* can log comments marked as spam. See `WP_FAIL2BAN_LOG_SPAM` in the FAQ.
+*WPf2b* can log comments marked as spam. See [`WP_FAIL2BAN_LOG_SPAM`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-log-spam).
 
 **User Enumeration**
 
-*WPf2b* can block user enumeration. See `WP_FAIL2BAN_BLOCK_USER_ENUMERATION` in the FAQ.
+*WPf2b* can block user enumeration. See [`WP_FAIL2BAN_BLOCK_USER_ENUMERATION`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-block-user-enumeration).
 
 **Work-Arounds for Broken syslogd**
 
-*WPf2b* can be configured to work around most syslogd weirdness. See `WP_FAIL2BAN_SYSLOG_SHORT_TAG` and `WP_FAIL2BAN_HTTP_HOST` in the FAQ.
+*WPf2b* can be configured to work around most syslogd weirdness. For an overview see [`WP_FAIL2BAN_SYSLOG_SHORT_TAG`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-syslog-short-tag) and [`WP_FAIL2BAN_HTTP_HOST`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-http-host).
 
 **Blocking Users**
 
-*WPf2b* can be configured to short-cut the login process when the username matches a regex. See `WP_FAIL2BAN_BLOCKED_USERS` in the FAQ.
+*WPf2b* can be configured to short-cut the login process when the username matches a regex. For an overview see [`WP_FAIL2BAN_BLOCKED_USERS`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-blocked-users).
+
+**`mu-plugins` Support**
+
+*WPf2b* can easily be configured as a must-use plugin - see [Configuration](https://wp-fail2ban.readthedocs.io/en/3.6/configuration.html#mu-plugins-support).
 
 
 
 == Installation ==
 
-1. Upload the plugin to your plugins directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Copy `wordpress-hard.conf` and `wordpress-soft.conf` to your `fail2ban/filters.d` directory
-1. Edit `jail.local` to include something like:
-~~~
-[wordpress-hard]
-enabled = true
-filter = wordpress-hard
-logpath = /var/log/auth.log
-maxretry = 1
-port = http,https
-
-[wordpress-soft]
-enabled = true
-filter = wordpress-soft
-logpath = /var/log/auth.log
-maxretry = 3
-port = http,https
-~~~
-5. Reload or restart `fail2ban`
-
-You may want to set `WP_FAIL2BAN_BLOCK_USER_ENUMERATION`, `WP_FAIL2BAN_PROXIES` and/or `WP_FAIL2BAN_BLOCKED_USERS`; see the FAQ for details.
-
-== Frequently Asked Questions ==
-
-= wordpress-hard.conf vs wordpress-soft.conf =
-
-There are some things that are almost always malicious, e.g. blocked users and pingbacks with errors. `wordpress-hard.conf` is designed to catch these so that you can ban the IP immediately.
-
-Other things are relatively benign, like a failed login. You can't let people try forever, but banning the IP immediately would be wrong too. `wordpress-soft.conf` is designed to catch these so that you can set a higher retry limit before banning the IP.
-
-For the avoidance of doubt: you should be using *both* filters.
-
-= WP_FAIL2BAN_HTTP_HOST – what’s it for? =
-
-This is for some flavours of Linux where `WP_FAIL2BAN_SYSLOG_SHORT_TAG` isn't enough.
-
-If you configure your web server to set an environment variable named `WP_FAIL2BAN_SYSLOG_SHORT_TAG` on a per-virtual host basis, *WPf2b* will use that in the syslog tag. This allows you to configure a unique tag per site in a way that makes sense for your configuration, rather than some arbitrary truncation or hashing within the plugin.
-
-**NB:** This feature has not been tested as extensively as others. While I'm confident it works, FreeBSD doesn't have this problem so this feature will always be second-tier.
-
-= WP_FAIL2BAN_SYSLOG_SHORT_TAG – what’s it for? =
-
-Some flavours of Linux come with a `syslogd` that can't cope with the normal message format *WPf2b* uses; basically, they assume that the first part of the message (the tag) won't exceed some (small) number of characters, and mangle the message if it does. This breaks the regex in the *fail2ban* filter and so nothing gets blocked.
-
-Adding:
-
-	define('WP_FAIL2BAN_SYSLOG_SHORT_TAG',true);
-
-to `functions.php` will make *WPf2b* use `wp` as the syslog tag, rather than the normal `wordpress`. This buys you 7 characters which may be enough to work around the problem, but if it's not enough you should look at `WP_FAIL2BAN_HTTP_HOST` or `WP_FAIL2BAN_TRUNCATE_HOST` too.
-
-= WP_FAIL2BAN_TRUNCATE_HOST =
-
-If you've set `WP_FAIL2BAN_SYSLOG_SHORT_TAG` and defining `WP_FAIL2BAN_HTTP_HOST` for each virtual host isn't appropriate, you can set `WP_FAIL2BAN_TRUNCATE_HOST` to whatever value you need to make syslog happy:
-
-  define('WP_FAIL2BAN_TRUNCATE_HOST',8);
-
-This does exactly what the name suggests: truncates the host name to the length you specify. As a result there's no guarantee that what's left will be enough to identify the site.
-
-= WP_FAIL2BAN_BLOCKED_USERS – what’s it all about? =
-
-The bots that try to brute-force WordPress logins aren't that clever (no doubt that will change), but they may only make one request per IP every few hours in an attempt to avoid things like `fail2ban`. With large botnets this can still create significant load.
-
-Based on a suggestion from *jmadea*, *WPf2b* now allows you to specify a regex that will shortcut the login process if the requested username matches.
-
-For example, putting the following in `wp-config.php`:
-
-	define('WP_FAIL2BAN_BLOCKED_USERS','^admin$');
-
-will block any attempt to log in as `admin` before most of the core WordPress code is run. Unless you go crazy with it, a regex is usually cheaper than a call to the database so this should help keep things running during an attack.
-
-*WPf2b* doesn't do anything to the regex other than make it case-insensitive.
-
-If you're running PHP 7, you can now specify an array of users instead:
-
-  define('WP_FAIL2BAN_BLOCKED_USERS',['admin','another','user']);
-
-= WP_FAIL2BAN_PROXIES – what’s it all about? =
-
-The idea here is to list the IP addresses of the trusted proxies that will appear as the remote IP for the request. When defined:
-
-* If the remote address appears in the `WP_FAIL2BAN_PROXIES` list, *WPf2b* will log the IP address from the `X-Forwarded-For` header
-* If the remote address does not appear in the `WP_FAIL2BAN_PROXIES` list, *WPf2b* will return a 403 error
-* If there's no X-Forwarded-For header, *WPf2b* will behave as if `WP_FAIL2BAN_PROXIES` isn't defined
-
-To set `WP_FAIL2BAN_PROXIES`, add something like the following to `wp-config.php`:
-
-	define('WP_FAIL2BAN_PROXIES','192.168.0.42,192.168.42.0/24');
-
-*WPf2b* doesn't do anything clever with the list - beware of typos!
-
-= WP_FAIL2BAN_BLOCK_USER_ENUMERATION – what’s it all about? =
-
-Brute-forcing WP requires knowing a valid username. Unfortunately, WP makes this all but trivial.
-
-Based on a suggestion from *geeklol* and a plugin by *ROIBOT*, *WPf2b* can now block user enumeration attempts. Just add the following to `wp-config.php`:
-
-	define('WP_FAIL2BAN_BLOCK_USER_ENUMERATION',true);
-
-= WP_FAIL2BAN_LOG_PINGBACKS – what’s it all about? =
-
-Based on a suggestion from *maghe*, *WPf2b* can now log pingbacks. To enable this feature, add the following to `wp-config.php`:
-
-	define('WP_FAIL2BAN_LOG_PINGBACKS',true);
-
-By default, *WPf2b* uses LOG_USER for logging pingbacks. If you'd rather it used a different facility you can change it by adding something like the following to `wp-config.php`:
-
-	define('WP_FAIL2BAN_PINGBACK_LOG',LOG_LOCAL3);
-
-= WP_FAIL2BAN_LOG_COMMENTS =
-
-*WPf2b* can now log comments. To enable this feature, add the following to `wp-config.php`:
-
-  define('WP_FAIL2BAN_LOG_COMMENTS',true);
-
-By default, *WPf2b* uses LOG_USER for logging comments. If you'd rather it used a different facility you can change it by adding something like the following to `wp-config.php`:
-
-	define('WP_FAIL2BAN_COMMENT_LOG',LOG_LOCAL3);
-
-= WP_FAIL2BAN_LOG_SPAM =
-
-*WPf2b* can now log spam comments. To enable this feature, add the following to `wp-config.php`:
-
-  define('WP_FAIL2BAN_LOG_SPAM',true);
-
-The comment ID and IP will be written to `WP_FAIL2BAN_AUTH_LOG` and matched by `wordpress-hard`.
-
-= WP_FAIL2BAN_AUTH_LOG – what’s it all about? =
-
-By default, *WPf2b* uses LOG_AUTH for logging authentication success or failure. However, some systems use LOG_AUTHPRIV instead, but there's no good run-time way to tell. If your system uses LOG_AUTHPRIV you should add the following to `wp-config.php`:
-
-	define('WP_FAIL2BAN_AUTH_LOG',LOG_AUTHPRIV);
+1. Install via the Plugin Directory, or upload to your plugins directory.
+1. Activate the plugin through the 'Plugins' menu in WordPress.
+1. Edit `wp-config.php` to suit your needs - see [Configuration](https://wp-fail2ban.readthedocs.io/en/3.6/configuration.html).
 
 == Changelog ==
 
+= 3.6.0 =
+* The [filter files](https://wp-fail2ban.readthedocs.io/en/3.6/filters.html) are now generated from PHPDoc in the code. There were too many times when the filters were out of sync with the code (programmer error) - this should resolve that by bringing the patterns closer to the code that emits them.
+* Added [PHPUnit tests](https://wp-fail2ban.readthedocs.io/en/3.6/tests.html). Almost 100% code coverage, with the exception of [`WP_FAIL2BAN_PROXIES`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-proxies) which is quite hard to test properly.
+* Bugfix for [`wordpress-soft.conf`](https://wp-fail2ban.readthedocs.io/en/3.6/filters.html#wordpress-soft-conf).
+* Add [`WP_FAIL2BAN_XMLRPC_LOG`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-xmlrpc-log).
+* Add [`WP_FAIL2BAN_REMOTE_ADDR`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-remote-addr).
+* [`WP_FAIL2BAN_PROXIES`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-proxies) now supports an array of IPs with PHP 7.
+* Moved all documentation to [https://wp-fail2ban.readthedocs.io/](https://wp-fail2ban.readthedocs.io/).
+
 = 3.5.3 =
-* Bugfix for `wordpress-hard.conf`.
+* Bugfix for [`wordpress-hard.conf`](https://wp-fail2ban.readthedocs.io/en/3.6/filters.html#wordpress-hard-conf).
 
 = 3.5.1 =
-* Bugfix for `WP_FAIL2BAN_BLOCK_USER_ENUMERATION`.
+* Bugfix for [`WP_FAIL2BAN_BLOCK_USER_ENUMERATION`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-block-user-enumeration).
 
 = 3.5.0 =
-* Add `WP_FAIL2BAN_OPENLOG_OPTIONS`.
-* Add `WP_FAIL2BAN_LOG_COMMENTS` and `WP_FAIL2BAN_COMMENT_LOG`.
-* Add `WP_FAIL2BAN_LOG_PASSWORD_REQUEST`.
-* Add `WP_FAIL2BAN_LOG_SPAM`.
-* Add `WP_FAIL2BAN_TRUNCATE_HOST`.
-* `WP_FAIL2BAN_BLOCKED_USERS` now supports an array of users with PHP 7.
+* Add [`WP_FAIL2BAN_OPENLOG_OPTIONS`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-openlog-options).
+* Add [`WP_FAIL2BAN_LOG_COMMENTS`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-log-comments) and [`WP_FAIL2BAN_COMMENT_LOG`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-comment-log).
+* Add [`WP_FAIL2BAN_LOG_PASSWORD_REQUEST`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-log-password-request).
+* Add [`WP_FAIL2BAN_LOG_SPAM`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-log-spam).
+* Add [`WP_FAIL2BAN_TRUNCATE_HOST`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-truncate-host).
+* [`WP_FAIL2BAN_BLOCKED_USERS`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-blocked-users) now supports an array of users with PHP 7.
 
 = 3.0.3 =
-* Fix regex in `wordpress-hard.conf`
+* Fix regex in [`wordpress-hard.conf`](https://wp-fail2ban.readthedocs.io/en/3.6/filters.html#wordpress-hard-conf).
 
 = 3.0.2 =
 * Prevent double logging in WP 4.5.x for XML-RPC authentication failure
 
 = 3.0.1 =
-* Fix regex in `wordpress-hard.conf`
+* Fix regex in [`wordpress-hard.conf`](https://wp-fail2ban.readthedocs.io/en/3.6/filters.html#wordpress-hard-conf).
 
 = 3.0.0 =
-* Add `WP_FAIL2BAN_SYSLOG_SHORT_TAG`.
-* Add `WP_FAIL2BAN_HTTP_HOST`.
+* Add [`WP_FAIL2BAN_SYSLOG_SHORT_TAG`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-syslog-short-tag).
+* Add [`WP_FAIL2BAN_HTTP_HOST`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-http-host).
 * Log XML-RPC authentication failure.
 * Add better support for MU deployment.
 
 = 2.3.2 =
-* Bugfix `WP_FAIL2BAN_BLOCKED_USERS`.
+* Bugfix [`WP_FAIL2BAN_BLOCKED_USERS`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-blocked-users).
 
 = 2.3.0 =
-* Bugfix in *experimental* `WP_FAIL2BAN_PROXIES` code (thanks to KyleCartmell).
+* Bugfix in *experimental* [`WP_FAIL2BAN_PROXIES`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-proxies) code (thanks to KyleCartmell).
 
 = 2.2.1 =
-* Fix stupid mistake with `WP_FAIL2BAN_BLOCKED_USERS`.
+* Fix stupid mistake with [`WP_FAIL2BAN_BLOCKED_USERS`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-blocked-users).
 
 = 2.2.0 =
-* Custom authentication log is now called `WP_FAIL2BAN_AUTH_LOG`
-* Add logging for pingbacks
-* Custom pingback log is called `WP_FAIL2BAN_PINGBACK_LOG`
+* Custom authentication log is now called [`WP_FAIL2BAN_AUTH_LOG`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-auth-log).
+* Add logging for pingbacks; see [`WP_FAIL2BAN_LOG_PINGBACKS`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-log-pingbacks).
+* Custom pingback log is called [`WP_FAIL2BAN_PINGBACK_LOG`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-pingback-log).
 
 = 2.1.1 =
 * Minor bugfix.
 
 = 2.1.0 =
-* Add support for blocking user enumeration; see `WP_FAIL2BAN_BLOCK_USER_ENUMERATION`
-* Add support for CIDR notation in `WP_FAIL2BAN_PROXIES`.
+* Add support for blocking user enumeration; see [`WP_FAIL2BAN_BLOCK_USER_ENUMERATION`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-block-user-enumeration).
+* Add support for CIDR notation in [`WP_FAIL2BAN_PROXIES`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-proxies).
 
 = 2.0.1 =
-* Bugfix in *experimental* `WP_FAIL2BAN_PROXIES` code.
+* Bugfix in *experimental* [`WP_FAIL2BAN_PROXIES`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-proxies) code.
 
 = 2.0.0 =
-* Add *experimental* support for X-Forwarded-For header; see `WP_FAIL2BAN_PROXIES`
-* Add *experimental* support for regex-based login blocking; see `WP_FAIL2BAN_BLOCKED_USERS`
+* Add *experimental* support for X-Forwarded-For header; see [`WP_FAIL2BAN_PROXIES`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-proxies).
+* Add *experimental* support for regex-based login blocking; see [`WP_FAIL2BAN_BLOCKED_USERS`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-blocked-users).
 
 = 1.2.1 =
 * Update FAQ.
@@ -264,11 +148,14 @@ By default, *WPf2b* uses LOG_AUTH for logging authentication success or failure.
 
 == Upgrade Notice ==
 
+= 3.6.0 =
+You will need up update your `fail2ban` filters.
+
 = 3.5.3 =
 You will need up update your `fail2ban` filters.
 
 = 3.5.1 =
-Bugfix: disable `WP_FAIL2BAN_BLOCK_USER_ENUMERATION` in admin area....
+Bugfix: disable [`WP_FAIL2BAN_BLOCK_USER_ENUMERATION`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-block-user-enumeration) in admin area....
 
 = 3.5.0 =
 You will need up update your `fail2ban` filters.
@@ -280,13 +167,13 @@ You will need up update your `fail2ban` filters.
 BREAKING CHANGE: The `fail2ban` filters have been split into two files. You will need up update your `fail2ban` configuration.
 
 = 2.3.0 =
-Fix for `WP_FAIL2BAN_PROXIES`; if you're not using it you can safely skip this release.
+Fix for [`WP_FAIL2BAN_PROXIES`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-proxies); if you're not using it you can safely skip this release.
 
 = 2.2.1 =
 Bugfix.
 
 = 2.2.0 =
-BREAKING CHANGE:  `WP_FAIL2BAN_LOG` has been renamed to `WP_FAIL2BAN_AUTH_LOG`
+BREAKING CHANGE:  `WP_FAIL2BAN_LOG` has been renamed to [`WP_FAIL2BAN_AUTH_LOG`](https://wp-fail2ban.readthedocs.io/en/3.6/defines.html#wp-fail2ban-auth-log).
 
 Pingbacks are getting a lot of attention recently, so *WPf2b* can now log them.
 The `wordpress.conf` filter has been updated; you will need to update your `fail2ban` configuration.
@@ -299,3 +186,4 @@ Bugfix in experimental code; still an experimental release.
 
 = 2.0.0 =
 This is an experimental release. If your current version is working and you're not interested in the new features, skip this version - wait for 2.1.0. For those that do want to test this release, note that `wordpress.conf` has changed - you'll need to copy it to `fail2ban/filters.d` again.
+

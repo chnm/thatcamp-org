@@ -1,4 +1,5 @@
 <?php
+if (defined('WFWAF_VERSION') && !defined('WFWAF_RUN_COMPLETE')) {
 
 interface wfWAFRequestInterface {
 
@@ -1082,4 +1083,4 @@ FORM;
 		$this->metadata = $metadata;
 	}
 }
-
+}

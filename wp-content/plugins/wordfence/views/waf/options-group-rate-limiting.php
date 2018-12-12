@@ -179,22 +179,6 @@ if (!isset($collapseable)) {
 					</li>
 					<li>
 						<?php
-						echo wfView::create('waf/option-rate-limit', array(
-							'toggleOptionName' => 'maxScanHits_enabled',
-							'toggleValue' => !!wfConfig::get('maxScanHits_enabled') ? 1 : 0,
-							'rateOptionName' => 'maxScanHits',
-							'rateOptions' => $rateOptions,
-							'rateValue' => wfConfig::get('maxScanHits'),
-							'actionOptionName' => 'maxScanHits_action',
-							'actionOptions' => $actionOptions,
-							'actionValue' => wfConfig::get('maxScanHits_action'),
-							'title' => __('If 404s for known vulnerable URLs exceed', 'wordfence'),
-							'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_FIREWALL_WAF_OPTION_RATE_LIMIT_ANY_404),
-						))->render();
-						?>
-					</li>
-					<li>
-						<?php
 						$breakpoints = array(60, 300, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 432000, 864000, 2592000);
 						$options = array();
 						foreach ($breakpoints as $b) {

@@ -1,7 +1,7 @@
 <?php if (!defined('WORDFENCE_VERSION')) { exit; } ?>
 <?php printf(__('This email was sent from your website "%s" by the Wordfence plugin at %s', 'wordfence'), $blogName, $date); ?>
 
-<?php printf(__('The Wordfence administrative URL for this site is: %s', 'wordfence'), network_admin_url('admin.php?page=Wordfence')); ?>
+<?php printf(__('The Wordfence administrative URL for this site is: %s', 'wordfence'), wfUtils::wpAdminURL('admin.php?page=Wordfence')); ?>
 
 <?php echo $alertMsg; ?>
 <?php if($IPMsg){ echo "\n$IPMsg\n"; } ?>
@@ -13,10 +13,9 @@
  - Country blocking
  - Two factor authentication
  - IP reputation monitoring
- - Advanced comment spam filter
  - Schedule scans to run more frequently and at optimal times
  - Access to Premium Support
- - Discounts for multi-license purchases
+ - Discounts for multi-year and multi-license purchases
 
 Click here to upgrade to Wordfence Premium:
 https://www.wordfence.com/zz1/wordfence-signup/', 'wordfence'); ?>

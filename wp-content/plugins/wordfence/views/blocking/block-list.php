@@ -101,7 +101,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 		<td data-column="type" data-sort="${typeSort}">${typeDisplay}</td>
 		<td data-column="detail" data-sort="${detailSort}">${detailDisplay}{{if (editable)}}&nbsp;<a href="#" class="wf-block-edit" data-edit-type="${editType}" data-edit-values="${editValues}"><i class="wf-ion-edit" aria-hidden="true"></i></a>{{/if}}</td>
 		<td data-column="ruleAdded" data-sort="${ruleAddedSort}">${ruleAddedDisplay}</td>
-		<td data-column="reason" data-sort="${reasonSort}" class="wf-split-word">${reasonDisplay}</td>
+		<td data-column="reason" data-sort="${reasonSort}">${reasonDisplay}</td>
 		<td data-column="expiration" data-sort="${expirationSort}">${expirationDisplay}</td>
 		<td data-column="blockCount" data-sort="${blockCountSort}">${blockCountDisplay}</td>
 		<td data-column="lastAttempt" data-sort="${lastAttemptSort}">${lastAttemptDisplay}</td>
@@ -276,6 +276,14 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 							}, 800);
 						}
 					});
+					
+					var reasonDisplayChunks = payload['blocks'][i]['reasonDisplay'].split(/\s+/);
+					for (var n = 0; n < reasonDisplayChunks.length; n++) {
+						if (reasonDisplayChunks[n].length >= 50) {
+							row.find('[data-column="reason"]').addClass('wf-split-word');
+							break;
+						}
+					}
 					
 					var existing = table.find('tbody tr[data-id="' + payload['blocks'][i]['id'] + '"]');
 					if (existing.length > 0) {

@@ -351,20 +351,22 @@ class Jetpack_Connection_Banner {
 						<p>
 							<?php
 							esc_html_e(
-								'Jetpack protects your site against brute force attacks and unauthorized logins. We also monitor your site for downtime and keep your plugins updated.',
+								'Jetpack protects your site against brute force attacks and unauthorized logins. We also monitor your site for downtime and keep your plugins updated. You can view a chronological list of these activities.',
 								'jetpack'
 							);
 							?>
 						</p>
 
-						<p>
-							<?php
-							esc_html_e(
-								'Customers on paid plans also benefit from unlimited backups of your entire site, spam protection, malware scanning, and automated fixes.',
-								'jetpack'
-							);
-							?>
-						</p>
+						<?php if ( Jetpack::show_backups_ui() ): ?>
+							<p>
+								<?php
+								esc_html_e(
+									'Customers on paid plans also benefit from unlimited backups of your entire site, spam protection, malware scanning, and automated fixes.',
+									'jetpack'
+								);
+								?>
+							</p>
+						<?php endif; ?>
 
 						<p>
 							<?php
@@ -447,29 +449,21 @@ class Jetpack_Connection_Banner {
 
 					<!-- slide 4: Performance -->
 					<div class="jp-wpcom-connect__slide jp-wpcom-connect__slide-four">
-						<h2><?php esc_html_e( 'Faster site speeds through the WordPress.com CDN', 'jetpack' ) ?></h2>
+						<h2><?php esc_html_e( 'Faster performance and site speeds', 'jetpack' ); ?></h2>
 
 						<div class="jp-wpcom-connect__content-icon jp-connect-illo">
-							<img src="<?php echo plugins_url( 'images/cloud-based.svg', JETPACK__PLUGIN_FILE ); ?>" alt="<?php
-									esc_attr_e(
-										'Jetpack automatically optimizes and speeds up images using the global WordPress.com Content Delivery Network (CDN)',
+							<img src="<?php echo esc_url( plugins_url( 'images/cloud-based.svg', JETPACK__PLUGIN_FILE ) ); ?>" alt="<?php
+								esc_attr_e(
+									'Activate Jetpack’s site accelerator to load pages faster, optimize your images, and serve your images and static files (like CSS and JavaScript) from our global network of servers. You’ll also reduce bandwidth usage, which may lead to lower hosting costs.',
 									'jetpack'
-								); ?>" height="auto" width="225" />
+								);
+							?>" height="auto" width="225" />
 						</div>
 
 						<p>
 							<?php
 							esc_html_e(
-								'Jetpack automatically optimizes and speeds up images using the global WordPress.com Content Delivery Network (CDN). Let us do the heavy lifting for you by reducing bandwidth usage which could potentially lower your hosting costs.',
-								'jetpack'
-							);
-							?>
-						</p>
-
-						<p>
-							<?php
-							esc_html_e(
-								'Use of our CDN is unlimited and scales with your site for free. You can also use it for your theme images to further speed up your site.',
+								'Activate Jetpack’s site accelerator to load pages faster, optimize your images, and serve your images and static files (like CSS and JavaScript) from our global network of servers. You’ll also reduce bandwidth usage, which may lead to lower hosting costs.',
 								'jetpack'
 							);
 							?>
@@ -802,13 +796,15 @@ class Jetpack_Connection_Banner {
 							?>
 						</p>
 
-						<p>
-							<?php
-							esc_html_e(  'Paying customers also benefit from automated backups, malware scans, and priority support.',
-								'jetpack'
-							);
-							?>
-						</p>
+						<?php if ( Jetpack::show_backups_ui() ): ?>
+							<p>
+								<?php
+								esc_html_e(  'Paying customers also benefit from automated backups, malware scans, and priority support.',
+									'jetpack'
+								);
+								?>
+							</p>
+						<?php endif; ?>
 
 						<p class="jp-banner__button-container">
 							<span class="jp-banner__tos-blurb">
@@ -871,19 +867,19 @@ class Jetpack_Connection_Banner {
 					<h4><?php esc_html_e( 'Design & Customization', 'jetpack' ); ?></h4>
 					<p><?php
 						esc_html_e(
-							'Design: Choose from hundreds of website theme designs and customize your site further with feature-rich widgets.',
+							'Design: Choose from hundreds of website theme designs and customize your site.',
 							'jetpack'
 						);
 					?></p>
-					<p><?php
+                    <p><?php
 						esc_html_e(
-							'Optimize: Upload images and videos directly to our powerful servers that present your media with lightning speed.',
+							'Customize: Jetpack features have been completely redesigned for the new WordPress content creation and editing experience, Gutenberg. Get more customization options for Jetpack features right in the new editor.',
 							'jetpack'
 						);
-					?></p>
+						?></p>
 					<p><?php
 						esc_html_e(
-							'Publish: Post on the go from any device using the WordPress apps for iOS, Android, Windows, Linux, and OSX.',
+							'Optimize: Jetpack’s site accelerator uploads images, videos, and static files like CSS to our powerful servers and delivers them at lightning-fast speeds to your visitors. You’ll also save precious bandwidth.',
 							'jetpack'
 						);
 					?></p>
@@ -918,7 +914,7 @@ class Jetpack_Connection_Banner {
 					?></p>
 					<p><?php
 						esc_html_e(
-							'Earn: Generate revenue with the WordPress.com ad program and accept payment for goods and services via PayPal.',
+							'Earn: Generate revenue with the WordPress.com ad program and accept payment for goods and services with our simple payments button.',
 							'jetpack'
 						);
 					?></p>
@@ -939,12 +935,14 @@ class Jetpack_Connection_Banner {
 							'jetpack'
 						);
 					?></p>
-					<p><?php
-						esc_html_e(
-							'Backup & Restore: Rest assured with real-time site backups and easy roll-back site restores.',
-							'jetpack'
-						);
-					?></p>
+					<?php if ( Jetpack::show_backups_ui() ) : ?>
+						<p><?php
+							esc_html_e(
+								'Backup & Restore: Rest assured with real-time site backups and easy roll-back site restores.',
+								'jetpack'
+							);
+						?></p>
+					<?php endif; ?>
 				</div>
 				<div class="jp-connect-full__slide-card illustration">
 					<img
@@ -954,7 +952,7 @@ class Jetpack_Connection_Banner {
 				</div>
 			</div>
 
-			
+
 			<img
 				class="support-characters"
 				src="<?php echo plugins_url( 'images/characters.svg', JETPACK__PLUGIN_FILE ); ?>"
@@ -973,7 +971,7 @@ class Jetpack_Connection_Banner {
 
 			<p class="jp-connect-full__button-container">
 				<a href="https://jetpack.com/contact-support/" class="dops-button">
-					<?php esc_html_e( 'Chat with us', 'jetpack' ); ?>
+					<?php esc_html_e( 'Get in touch with us', 'jetpack' ); ?>
 				</a>
 				<a href="https://jetpack.com/support" class="dops-button">
 					<?php esc_html_e( 'Search our support site', 'jetpack' ); ?>

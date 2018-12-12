@@ -654,9 +654,11 @@ if (!isset($sendingDiagnosticEmail)) {
 									$hasAll = true;
 									$schemaTables = wfSchema::tableList();
 									$existingTables = wfUtils::array_column($q, 'Name');
+									if (WFWAF_IS_WINDOWS) { $existingTables = wfUtils::array_strtolower($existingTables); } //Windows MySQL installations are case-insensitive
 									$missingTables = array();
 									foreach ($schemaTables as $t) {
 										$table = wfDB::networkTable($t);
+										if (WFWAF_IS_WINDOWS) { $table = strtolower($table); }
 										if (!in_array($table, $existingTables)) {
 											$hasAll = false;
 											$missingTables[] = $t;
@@ -666,7 +668,7 @@ if (!isset($sendingDiagnosticEmail)) {
 									if ($hasAll): ?>
 									<div class="wf-result-success"><?php _e('All Tables Exist', 'wordfence'); ?></div>
 									<?php else: ?>
-									<div class="wf-result-error"><?php printf(__('Tables missing (prefix %s): %s', 'wordfence'), wfDB::networkPrefix(), implode(', ', $missingTables)); ?></div>
+									<div class="wf-result-error"><?php printf(__('Tables missing (prefix %s, %s): %s', 'wordfence'), wfDB::networkPrefix(), wfSchema::usingLowercase() ? __('lowercase', 'wordfence') : __('regular case', 'wordfence'), implode(', ', $missingTables)); ?></div>
 									<?php endif; ?>
 								<?php endif; ?>
 							</div>
@@ -795,6 +797,39 @@ if (!isset($sendingDiagnosticEmail)) {
 			</div>
 		</div>
 	</div>
+	
+	<?php
+	if (!empty($inEmail)) {
+		echo '<h1>' . __('Scan Issues', 'wordfence') . "</h1>\n";
+		$issues = wfIssues::shared()->getIssues(0, 50, 0, 50);
+		$issueCounts = array_merge(array('new' => 0, 'ignoreP' => 0, 'ignoreC' => 0), wfIssues::shared()->getIssueCounts());
+		$issueTypes = wfIssues::validIssueTypes();
+		
+		echo '<h2>' . sprintf(__('New Issues (%d total)', 'wordfence'), $issueCounts['new']) . "</h2>\n";
+		if (isset($issues['new']) && count($issues['new'])) {
+			foreach ($issues['new'] as $i) {
+				if (!in_array($i['type'], $issueTypes)) {
+					continue;
+				}
+				
+				$viewContent = '';
+				try {
+					$viewContent = wfView::create('scanner/issue-' . $i['type'], array('textOutput' => $i))->render();
+				}
+				catch (wfViewNotFoundException $e) {
+					//Ignore -- should never happen since we validate the type
+				}
+				
+				if (!empty($viewContent)) {
+					echo nl2br($viewContent) . "<br><br>\n";
+				}
+			}
+		}
+		else {
+			echo '<h1>' . __('No New Issues', 'wordfence') . "</h1>\n";
+		}
+	}
+	?>
 
 	<?php if (!empty($inEmail)): ?>
 		<?php phpinfo(); ?>

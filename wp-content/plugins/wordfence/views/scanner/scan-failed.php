@@ -17,6 +17,10 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 	<li>
 		<h4><?php _e('Scan Failed', 'wordfence'); ?></h4>
 		<p><?php echo $messageHTML; ?></p>
+		<?php if (isset($rawErrorHTML) && !empty($rawErrorHTML)): ?>
+		<p class="wf-add-top"><?php _e('The error returned was:', 'wordfence'); ?></p>
+		<pre><?php echo $rawErrorHTML; ?></pre>
+		<?php endif; ?>
 	</li>
 	<li class="wf-right wf-padding-add-left">
 		<a href="#" class="wf-btn wf-btn-default wf-btn-callout-subtle" onclick="WFAD.killScan(); return false;"><?php echo $buttonTitle; ?></a>

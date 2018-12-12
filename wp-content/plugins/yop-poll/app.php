@@ -6,7 +6,6 @@ session_cache_limiter( false );
 if ( '' === session_id() ) {
     session_start();
 }
-header( 'Access-Control-Allow-Origin', '*' );
 if ( isset( $_GET['namespace'] ) && ( '' !== $_GET['namespace'] ) ) {
     $session = new \visualCaptcha\Session('visualcaptcha_' . $_GET['namespace'] );
 } else {

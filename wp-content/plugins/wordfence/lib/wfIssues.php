@@ -315,6 +315,10 @@ class wfIssues {
 	public function emailNewIssues($timeLimitReached = false, $scanController = false){
 		$level = wfConfig::getAlertLevel();
 		$emails = wfConfig::getAlertEmails();
+		if (!count($emails)) {
+			return;
+		}
+		
 		$shortSiteURL = preg_replace('/^https?:\/\//i', '', site_url());
 		$subject = "[Wordfence Alert] Problems found on $shortSiteURL";
 
@@ -373,8 +377,9 @@ class wfIssues {
 			'scanController' => ($scanController ? $scanController : wfScanner::shared()),
 			));
 		
-		if (count($emails)) {
-			wp_mail(implode(',', $emails), $subject, $content, 'Content-type: text/html');
+		foreach ($emails as $email) {
+			$uniqueContent = str_replace('<!-- ##UNSUBSCRIBE## -->', sprintf(__('No longer an administrator for this site? <a href="%s" target="_blank">Click here</a> to stop receiving security alerts.', 'wordfence'), wfUtils::getSiteBaseURL() . '?_wfsf=removeAlertEmail&jwt=' . wfUtils::generateJWT(array('email' => $email))), $content);
+			wp_mail($email, $subject, $uniqueContent, 'Content-type: text/html');
 		}
 	}
 	public function deleteIssue($id){ 

@@ -2,7 +2,7 @@
 /*
 * Plugin Name:  bbPress Notify (No-Spam)
 * Description:  Sends email notifications upon topic/reply creation, as long as it's not flagged as spam. If you like this plugin, <a href="https://wordpress.org/support/view/plugin-reviews/bbpress-notify-nospam#postform" target="_new">help share the trust and rate it!</a>
-* Version:      1.18.2
+* Version:      1.18.6
 * Author:       <a href="http://usestrict.net" target="_new">Vinny Alves (UseStrict Consulting)</a>
 * License:      GNU General Public License, v2 ( or newer )
 * License URI:  http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ load_plugin_textdomain( 'bbpress_notify', false, dirname( plugin_basename( __FIL
 
 class bbPress_Notify_noSpam {
 	
-	const VERSION = '1.18.2';
+	const VERSION = '1.18.6';
 	
 	protected $settings_section = 'bbpress_notify_options';
 	
@@ -44,6 +44,12 @@ class bbPress_Notify_noSpam {
 	private $bridge_warnings = array();
 	
 	private $notices = array( 'bbpnns_rbe_notice_042018_01' => 'bbpnns_rbe_notice_042018_01' );
+	
+	private $supports_node;
+	
+	private $site_url;
+	
+	private $wp_mail_error = 'Unknown Error';
 	
 	function __construct()
 	{
@@ -128,12 +134,14 @@ class bbPress_Notify_noSpam {
 		if ( $this->options['subscrp_forum'] )
 		{
 			// Stop core subscriptions in its tracks
+			add_filter( 'bbp_forum_subscription_mail_message', '__return_false' );
 			add_action( 'plugins_loaded', array( $this, 'remove_core_forum_notification' ), 10 );
 		}
 		
 		if ( $this->options['subscrp_topic'] )
 		{
 			// Stop core subscriptions in its tracks
+			add_filter( 'bbp_subscription_mail_message', '__return_false' );
 			add_action( 'plugins_loaded', array( $this, 'remove_core_topic_notification' ), 10 );
 		}
 		
@@ -148,6 +156,14 @@ class bbPress_Notify_noSpam {
 		add_filter( 'bbpnns_available_reply_tags', array( $this, 'get_available_reply_tags' ), 10, 1 );
 		
 		add_filter( 'bbpnns_is_in_effect', array( $this, 'bbpnns_is_in_effect' ), 10, 2 );
+		
+		/**
+		 * Whether DOMDocument supports node as parameter.
+		 */
+		$this->supports_node = version_compare( PHP_VERSION, '5.3.6', '>=' );
+		
+		// Get it just once
+		$this->site_url = get_option( 'siteurl' );
 	}
 	
 	
@@ -979,15 +995,22 @@ Did you know that we now have an add-on that allows your forum participants to s
 			$this->cid_ary = array();
 		}
 		
-		$dom = new DOMDocument();
-
+		$dom            = new DOMDocument();
 		$previous_value = libxml_use_internal_errors(TRUE);
 		
-		$dom->loadHTML(mb_convert_encoding($text, 'HTML-ENTITIES', $this->charset));
-				
-		libxml_use_internal_errors($previous_value);
+		// Some environments don't have mb_convert_encoding.
+		if ( function_exists( 'mb_convert_encoding' ) )
+		{
+			$dom->loadHTML( mb_convert_encoding($text, 'HTML-ENTITIES', $this->charset ) );
+		}
+		else
+		{
+			$dom->loadHTML( htmlspecialchars_decode(utf8_decode(htmlentities($text, ENT_COMPAT, $this->charset, false))) );
+		}
 		
-		$local       = parse_url( get_option( 'siteurl' ) );
+		libxml_use_internal_errors( $previous_value );
+		
+		$local       = parse_url( $this->site_url );
 		$this_domain = strtolower( $local['host'] );
 		
 		$images = $dom->getElementsByTagName('img');
@@ -1030,10 +1053,22 @@ Did you know that we now have an add-on that allows your forum participants to s
 			}
 		}
 		
-		if ( $images )
+		if ( $images->length )
 		{
-			$text = $dom->saveHTML($dom->documentElement->lastChild);
-			$text = preg_replace('@^<body>|</body>$@', '', $text );
+			if ( $this->supports_node )
+			{
+				$text = $dom->saveHTML($dom->documentElement->lastChild);
+				$text = preg_replace('@^<body>|</body>$@i', '', $text );
+			}
+			else
+			{
+				$text = $dom->saveHTML();
+				preg_match('@<body>(.*)?</body>@ims', $text, $matches );
+				if ( isset( $matches[1] ) )
+				{
+					$text = $matches[1];
+				}
+			}
 		}
 		
 
@@ -1051,7 +1086,15 @@ Did you know that we now have an add-on that allows your forum participants to s
 	
 		$previous_value = libxml_use_internal_errors(TRUE);
 	
-		$dom->loadHTML(mb_convert_encoding($text, 'HTML-ENTITIES', $this->charset));
+		// Some environments don't have mb_convert_encoding.
+		if ( function_exists( 'mb_convert_encoding' ) )
+		{
+			$dom->loadHTML(mb_convert_encoding($text, 'HTML-ENTITIES', $this->charset));
+		}
+		else 
+		{
+			$dom->loadHTML( htmlspecialchars_decode(utf8_decode(htmlentities($text, ENT_COMPAT, $this->charset, false))) );
+		}
 	
 		libxml_use_internal_errors($previous_value);
 	

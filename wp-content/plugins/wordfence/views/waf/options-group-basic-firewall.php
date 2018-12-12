@@ -82,7 +82,7 @@ if (!isset($collapseable)) {
 
 											$('#waf-learning-mode-grace-period .wf-datetime').datetimepicker({
 												dateFormat: 'yy-mm-dd',
-												timezone: <?php echo (int) wfUtils::timeZoneMinutes($config->getConfig('learningModeGracePeriod') ? (int) $config->getConfig('learningModeGracePeriod') : false); ?>,
+												timezone: <?php try { echo (int) wfUtils::timeZoneMinutes($config->getConfig('learningModeGracePeriod') ? (int) $config->getConfig('learningModeGracePeriod') : false); } catch (Exception $e) { echo 0; }; ?>,
 												showTime: false,
 												showTimepicker: false,
 												showMonthAfterYear: true
@@ -158,7 +158,7 @@ if (!isset($collapseable)) {
 									})(jQuery);
 								</script>
 							</p>
-							<div id="waf-learning-mode-grace-period" class="wf-add-bottom" style="display: none;"><div class="waf-learning-mode wf-option-checkbox<?php echo $config->getConfig('learningModeGracePeriodEnabled') ? ' wf-checked' : ''; ?>" data-original-value="<?php echo $config->getConfig('learningModeGracePeriodEnabled') ? 1 : 0; ?>"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></div><span> <?php _e('Automatically enable on', 'wordfence'); ?> </span><input type="text" name="learningModeGracePeriod" id="input-learningModeGracePeriod" class="wf-datetime wf-form-control" placeholder="Enabled until..." data-value="<?php echo esc_attr($config->getConfig('learningModeGracePeriod') ? (int) $config->getConfig('learningModeGracePeriod') : '') ?>" data-original-value="<?php echo esc_attr($config->getConfig('learningModeGracePeriod') ? (int) $config->getConfig('learningModeGracePeriod') : '') ?>"<?php echo $config->getConfig('learningModeGracePeriodEnabled') ? '' : ' disabled'; ?>></div>
+							<div id="waf-learning-mode-grace-period" class="wf-add-bottom" style="display: none;"><div class="waf-learning-mode wf-option-checkbox<?php try { echo $config->getConfig('learningModeGracePeriodEnabled') ? ' wf-checked' : ''; } catch (Exception $e) { /* Do nothing */ } ?>" data-original-value="<?php try { echo $config->getConfig('learningModeGracePeriodEnabled') ? 1 : 0; } catch (Exception $e) { echo 0; } ?>"><i class="wf-ion-ios-checkmark-empty" aria-hidden="true"></i></div><span> <?php _e('Automatically enable on', 'wordfence'); ?> </span><input type="text" name="learningModeGracePeriod" id="input-learningModeGracePeriod" class="wf-datetime wf-form-control" placeholder="Enabled until..." data-value="<?php try { echo esc_attr($config->getConfig('learningModeGracePeriod') ? (int) $config->getConfig('learningModeGracePeriod') : ''); } catch (Exception $e) { /* Do nothing */ } ?>" data-original-value="<?php try { echo esc_attr($config->getConfig('learningModeGracePeriod') ? (int) $config->getConfig('learningModeGracePeriod') : ''); } catch (Exception $e) { /* Do nothing */ } ?>"<?php try { echo $config->getConfig('learningModeGracePeriodEnabled') ? '' : ' disabled'; } catch (Exception $e) { echo ' disabled'; } ?>></div>
 						<?php endif; ?>
 					</li>
 					<li id="wf-option-protectionMode" class="wf-flex-vertical wf-flex-align-left">
@@ -469,7 +469,7 @@ if (!isset($collapseable)) {
 							<p class="wf-no-top"><?php printf(__('You are currently running the Wordfence Web Application Firewall from another WordPress installation. Please <a href="%s">click here</a> to configure the Firewall to run correctly on this site.', 'wordfence'), esc_attr(network_admin_url('admin.php?page=WordfenceWAF&subpage=waf_options#configureAutoPrepend'))); ?></p>
 						<?php else: ?>
 							<p class="wf-no-top"><?php _e('This feature blocks all traffic from IPs with a high volume of recent malicious activity using Wordfence\'s real-time blacklist.', 'wordfence'); ?></p>
-							<div class="wf-option wf-option-switch wf-padding-add-bottom" data-option-name="disableWAFBlacklistBlocking" data-original-value="<?php echo $config->getConfig('disableWAFBlacklistBlocking') ? '1': '0'; ?>">
+							<div class="wf-option wf-option-switch wf-padding-add-bottom" data-option-name="disableWAFBlacklistBlocking" data-original-value="<?php try { echo $config->getConfig('disableWAFBlacklistBlocking') ? '1': '0'; } catch (Exception $e) { echo 0; } ?>">
 								<ul class="wf-switch" role="radiogroup">
 									<?php
 									$states = array(
@@ -478,8 +478,13 @@ if (!isset($collapseable)) {
 									);
 									
 									foreach ($states as $s):
+										$disableBlacklist = false;
+										try {
+											$disableBlacklist = !!$config->getConfig('disableWAFBlacklistBlocking');
+										}
+										catch (Exception $e) { }
 										?>
-										<li<?php if ($s['value'] == ($config->getConfig('disableWAFBlacklistBlocking') ? '1': '0')) { echo ' class="wf-active"'; } ?> data-option-value="<?php echo esc_attr($s['value']); ?>" role="radio" aria-checked="<?php echo (($s['value'] == ($config->getConfig('disableWAFBlacklistBlocking') ? '1': '0')) ? 'true' : 'false'); ?>" tabindex="0"><?php echo esc_html($s['label']); ?></li>
+										<li<?php if ($s['value'] == ($disableBlacklist ? '1': '0')) { echo ' class="wf-active"'; } ?> data-option-value="<?php echo esc_attr($s['value']); ?>" role="radio" aria-checked="<?php echo (($s['value'] == ($disableBlacklist ? '1': '0')) ? 'true' : 'false'); ?>" tabindex="0"><?php echo esc_html($s['label']); ?></li>
 									<?php endforeach; ?>
 								</ul>
 							</div>

@@ -2,9 +2,9 @@
 Contributors: mmaunder 
 Tags: security, firewall, malware scanner, web application firewall, antivirus, block hackers, country blocking, clean hacked site, blacklist, waf, login security
 Requires at least: 3.9
-Requires PHP: 5.2
-Tested up to: 4.9.6
-Stable tag: 7.1.8
+Requires PHP: 5.3
+Tested up to: 5.0
+Stable tag: 7.1.18
 
 Secure your website with the most comprehensive WordPress security plugin. Firewall, malware scan, blocking, live traffic, login security & more.
 
@@ -34,7 +34,6 @@ Wordfence includes an endpoint firewall and malware scanner that were built from
 #### SECURITY TOOLS
 * With Live Traffic, monitor visits and hack attempts not shown in other analytics packages in real time; including origin, their IP address, the time of day and time spent on your site.
 * [Premium] Stop brute force attacks permanently by using two factor authentication, one of the most secure forms of remote system authentication available.
-* The free version of Wordfence includes an excellent comment spam filter. [Premium] An advanced comment spam filter is automatically enabled for premium customers.
 * Block attackers by IP or build advanced rules based on IP Range, Hostname, User Agent and Referrer. [Premium] Country blocking available with Wordfence Premium.
 
 == Installation ==
@@ -172,14 +171,106 @@ Secure your website with Wordfence.
 
 == Changelog ==
 
-= 7.1.8 =
+= 7.1.18 - December 4, 2018 =
+* Improvement: Removed unused font glyph ranges to reduce file count and size.
+* Improvement: Switched flags to use a CSS sprite to reduce file count and size.
+* Improvement: Added dates to each release in the changelog.
+* Change: Live Traffic now defaults to only logging security events on new installations.
+* Change: Added an upper limit to the maximum scan stage execution time if not explicitly overridden.
+* Fix: Changed WAF file handling to skip some file actions if running via the CLI.
+* Fix: Fixed an issue that could prevent files beginning with a period from working with the file restore function.
+* Fix: Improved layout of options page controls on small screens.
+* Fix: Fixed a typo in the htaccess update panel.
+* Fix: Added compensation for Windows path separators in the WAF config handling.
+* Fix: Fixed handling of case-insensitive tables in the Diagnostics table check.
+* Fix: Better messaging by the status circles when the WAF config is inaccessible or corrupt.
+* Fix: REST API hits now correctly follow the "Don't log signed-in users with publishing access" option.
+
+= 7.1.17 - November 6, 2018 =
+* Improvement: Increased frequency of filesystem permission check and update of the WAF config files.
+* Improvement: More complete data removal when deactivating with remove tables and files checked.
+* Improvement: Better diagnostics logging for GeoIP conflicts.
+* Fix: Text fix in invalid username lockout message.
+* Fix: PHP 7.3 syntax compatibility fixes.
+
+= 7.1.16 - October 16, 2018 =
+* Improvement: Service whitelisting can now be selectively toggled on or off per service.
+* Improvement: Updated bundled GeoIP database.
+* Change: Removed the "Disable Wordfence Cookies" option as we've removed all cookies it affected.
+* Change: Updates that refresh country statistics are more efficient and now only affect the most recent records.
+* Change: Changed the title of the Wordfence Dashboard so it's easier to identify when many tabs are open.
+* Fix: Fixed an issue with country blocking and XML-RPC requests containing credentials.
+
+= 7.1.15 - October 1, 2018 =
+* Fix: Addressed a plugin conflict with the composer autoloader.
+
+= 7.1.14 - October 1, 2018 =
+* Improvement: Reduced queries and potential table size for rate limiting-related data.
+* Improvement: Updated the internal browscap database.
+* Improvement: Better error reporting for scan failures due to connectivity issues.
+* Improvement: WAF-related file permissions will now lock down further when possible.
+* Improvement: Hardening for sites on servers with insecure configuration, which should not be enabled on publicly accessible servers. Thanks Janek Vind.
+* Change: Switched the minimum PHP version to 5.3.
+* Fix: Prevent bypass of author enumeration prevention by using invalid parameters. Thanks Janek Vind.
+* Fix: Wordfence crons will now automatically reschedule if missing for any reason.
+* Fix: Fixed an issue where the block counts and total IPs blocked values on the dashboard might not agree.
+* Fix: Corrected the message shown on Live Traffic when a country blocking bypass URL is used.
+* Fix: Removed extra spacing in the example ranges for "Whitelisted IP addresses that bypass all rules"
+
+= 7.1.12 - September 12, 2018 =
+* Improvement: Updated bundled GeoIP database.
+* Improvement: Restructured the WAF configuration storage to be more resilient on hosts with no file locking support.
+* Change: Moved the settings import/export to the Tools page.
+* Change: New installations will now use lowercase table names to avoid issues with some backup plugins and Windows-based sites.
+* Fix: The notice and repair link for an unreadable WAF configuration now work correctly.
+* Fix: Improved appearance of some stat components on smaller screens.
+* Fix: Fixed duplicate entries with different status codes appearing in detailed live traffic.
+* Fix: Added better caching for the breached password check to compensate for sites that prevent the cache from expiring correctly.
+* Fix: Changing the frequency of the activity summary email now reschedules it.
+
+= 7.1.11 - August 21, 2018 =
+* Improvement: Added a custom message field that will show on all block pages.
+* Improvement: Improved the standard appearance for block pages.
+* Improvement: Live Traffic now better displays failed logins.
+* Improvement: Added a constant to prevent direct MySQLi use for hosts with unsupported DB configurations.
+* Improvement: Malware scan results have been modified to include both a public identifier and description.
+* Change: Description updated on the Live Traffic page.
+* Fix: Removed an empty file hash from the old Wordpress core file detection.
+* Fix: Update locking now works on multisites that have removed the original site.
+
+= 7.1.10 - July 31, 2018 =
+* Improvement: Better labeling in Live Traffic for 301 and 302 redirects.
+* Improvement: Login timestamps are now displayed in the site's configured time zone rather than UTC.
+* Improvement: Added detection and a workaround for hosts with a non-functional MySQLi interface.
+* Improvement: The prevent admin registration setting now works with WooCommerce's registration flow.
+* Improvement: For hosts with varying URL values (e.g., AWS instances), notification and alert links now correctly use the canonical admin URL.
+* Fix: Fixed a layout problem with the live traffic disabled notice.
+* Fix: The scan stage that checks "How does Wordfence get IPs?" no longer shows a warning if the call fails.
+
+= 7.1.9 - July 12, 2018 =
+* Improvement: Added an "unsubscribe" link to plugin-generated alerts.
+* Improvement: Added some additional flags.
+* Change: Removed some unnecessary files from the bundled GeoIP library.
+* Change: Updated wording in the Terms of Use/Privacy Policy agreement UI.
+* Change: The minimum "Lock out after how many login failures" is now 2.
+* Change: The diagnostics report now includes the scan issues for easier debugging.
+* Fix: Multiple improvements to automatic updating to avoid broken updates on sites with low resources or slow file systems.
+* Fix: Better text wrapping in the top failed logins widget.
+* Fix: Onboarding CSS/JS is now correctly enqueued for multisite installations.
+* Fix: Fixed a missing asset with the bundled jQueryUI library.
+* Fix: Fixed memory calculation when using PHP's supported shorthand syntax.
+* Fix: Better wrapping behavior on the reason column in the blocks table.
+* Fix: Fixed an issue with an internal data structure to prevent error log entries when using mbstring functions.
+* Fix: Improved bot detection when no user agent is sent.
+
+= 7.1.8 - June 26, 2018 =
 * Improvement: Better detection of removal status when uninstalling the WAF's auto-prepend file.
 * Improvement: Switched optional mailing list signup to go directly through our servers rather than a third party.
 * Fix: Fixed the dashboard erroneously showing the payment method as missing for some payment methods.
 * Fix: If a premium license is deleted from wordfence.com, the plugin will now automatically downgrade rather than get stuck in an intermediate state.
 * Fix: Changed some wording to consistently use "License" or "License Key".
 
-= 7.1.7 =
+= 7.1.7 - June 5, 2018 =
 * Improvement: Added better support for keyboard navigation of options.
 * Improvement: staging. and dev. subdomains are now supported for sharing premium licenses.
 * Improvement: Bundled our interface font to avoid loading from a remote source and reduced the pages some assets were loaded on.
@@ -190,10 +281,10 @@ Secure your website with Wordfence.
 * Fix: Fixed a few options that couldn't be searched for on the all options page.
 * Fix: Activity Report emails now detect and avoid symlink loops.
 
-= 7.1.6 =
+= 7.1.6 - May 22, 2018 =
 * Fix: Added a workaround for sites with inaccessible WAF config files when reading php://input
 
-= 7.1.5 =
+= 7.1.5 - May 22, 2018 =
 * Improvement: GDPR compliance updates.
 * Improvement: The list of blocks now shows the most recently-added blocks at the top by default.
 * Improvement: Added better table status display to Diagnostics to help with debugging.
@@ -204,7 +295,7 @@ Secure your website with Wordfence.
 * Fix: Fixed auto-enabling of some controls when pasting values.
 * Fix: Fixed an instance where http links could be generated for emails rather than https.
 
-= 7.1.4 =
+= 7.1.4 - May 2, 2018 =
 * Improvement: Added additional XSS detection capabilities.
 * Change: Initial preparation for GDPR compliance. Additional changes will be included in an upcoming release to meet the GDPR deadline.
 * Change: Reworked Live Traffic/Rate Limiting human and bot detection to function without cookies.
@@ -216,7 +307,7 @@ Secure your website with Wordfence.
 * Fix: Scan issue alert emails no longer incorrectly show high sensitivity was enabled.
 * Fix: Fixed wrapping of long strings on the Diagnostics page.
 
-= 7.1.3 =
+= 7.1.3 - April 18, 2018 =
 * Improvement: Improved the performance of our config table status check.
 * Improvement: The IP address of the user activating Wordfence is now used by the breached password check until an admin successfully logs in.
 * Improvement: Added several new error displays for scan failures to help diagnose and fix issues.
@@ -230,7 +321,7 @@ Secure your website with Wordfence.
 * Fix: Fixed an issue where plugins that use non-standard version formatting could end up with a inaccurate vulnerability status.
 * Fix: Added a workaround for web email clients that erroneously encode some URL characters (e.g., #).
 
-= 7.1.2 =
+= 7.1.2 - April 4, 2018 =
 * Improvement: Added support for filtering the blocks list.
 * Improvement: Added a flow for generating the WAF autoprepend file and retrieving the path for manual installations.
 * Improvement: Added a variety of new data values to the Diagnostics page to aid in debugging issues.
@@ -252,7 +343,7 @@ Secure your website with Wordfence.
 * Fix: We now verify that there's a valid email address defined before attempting to send an alert and filter out any invalid ones.
 * Fix: Added a workaround for GoDaddy/Limit Login Attempts suppressing the 2FA prompting.
 
-= 7.1.1 =
+= 7.1.1 - March 20, 2018 =
 * Improvement: Added the ability to sort the blocks table.
 * Improvement: Added short-term caching of breach check results.
 * Improvement: The check for passwords leaked in breaches now allows a login if the user has previously logged in from the same IP successfully and displays an admin notice suggesting changing the password.
@@ -266,7 +357,7 @@ Secure your website with Wordfence.
 * Fix: Added a secondary check to the email summary cron to avoid repeated sending if the cron list is corrupted.
 * Fix: Fixed a typo on the Advanced Comment Spam Filter page.
 
-= 7.1.0 =
+= 7.1.0 - March 1, 2018 =
 * Improvement: Added a new feature to prevent attackers from successfully logging in to admin accounts whose passwords have been in data breaches.
 * Improvement: Added pagination support to the scan issues.
 * Improvement: Improved time zone handling for the WAF's learning mode.
@@ -290,14 +381,14 @@ Secure your website with Wordfence.
 * Fix: Updated some wording in the All Options search box.
 * Fix: Removed an old link for "See Recent Traffic" on Live Traffic that went nowhere.
 
-= 7.0.5 =
+= 7.0.4 - February 12, 2018 =
 * Change: Live Traffic records are no longer created for hits initiated by WP-CLI (e.g., manually running cron).
 * Fix: Fixed an issue where the human/bot detection wasn't functioning.
 
 = 7.0.4 =
 * Fix: Re-added missing file to fix commit excluding it.
 
-= 7.0.3 =
+= 7.0.3 - February 12, 2018 =
 * Improvement: Added an "All Options" page to enable developers and others to more rapidly configure Wordfence.
 * Improvement: Improved messaging for when a page has been open for more than a day and the security token expires.
 * Improvement: Relocated the "Always display expanded Live Traffic records" option to be more accessible.
@@ -313,7 +404,7 @@ Secure your website with Wordfence.
 * Fix: Block/Unblock now works correctly when viewing Live Traffic with it grouped by IP.
 * Fix: Fixed an issue where the count of URLs checked was incorrect.
 
-= 7.0.2 =
+= 7.0.2 - January 31, 2018 =
 * Improvement: Added CSS/JS filename versioning to address caching plugins not refreshing for plugin updates.
 * Improvement: The premium key is no longer prompted for during installation if already present from an earlier version.
 * Improvement: Added a check and corresponding notice if the WAF config is unreadable or invalid.
@@ -335,40 +426,40 @@ Secure your website with Wordfence.
 * Fix: Suppressed warnings on IP conversion functions when processing potentially incomplete data.
 * Fix: Added a check in REST API hooks to avoid defining a constant twice.
 
-= 7.0.1 =
+= 7.0.1 - January 24, 2018 =
 * Comprehensive UI refresh.
 * Improvement: Updated bundled GeoIP database.
 
-= 6.3.22 =
+= 6.3.22 - November 30, 2017 =
 * Fix: Addressed a warning that could occur on PHP 7.1 when reading php.ini size values.
 * Fix: Fixed a warning by adjusting a query to remove old-style variable references.
 
-= 6.3.21 =
+= 6.3.21 - November 1, 2017 =
 * Improvement: Updated bundled GeoIP database.
 * Fix: Fixed a log warning that could occur during the scan for plugins not in the wordpress.org repository.
 
-= 6.3.20 =
+= 6.3.20 - October 12, 2017 =
 * Improvement: The scan will now alert for a publicly visible .user.ini file.
 * Fix: Fixed status code and human/bot tagging of block hit entries for live traffic and the Wordfence Security Network.
 * Fix: Added internal throttling to ensure the daily cron does not run too frequently on some hosts.
 
-= 6.3.19 =
+= 6.3.19 - September 20, 2017 =
 * Emergency Fix: Updated wpdb::prepare calls using %.6f since it is no longer supported.
 
-= 6.3.18 =
+= 6.3.18 - September 7, 2017 =
 * Improvement: Reduced size of some JavaScript for faster loading.
 * Improvement: Better block counting for advanced comment filtering.
 * Improvement: Increased logging in debug mode for plugin updates to help resolve issues.
 * Fix: Reduced the minimum duration of a scan stage to improve reliability on some hosts.
 
-= 6.3.17 =
+= 6.3.17 - August 24, 2017 =
 * Improvement: Prepared code for upcoming scan improvement which will greatly increase scan performance by optimizing malware signatures.
 * Improvement: Updated the bundled GeoIP database.
 * Improvement: Better scan messaging when a publicly-reachable searchreplacedb2.php utility is found.
 * Improvement: The no-cache constant for database caching is now set for W3TC for plugin updates and scans.
 * Improvement: Added an additional home/siteurl resolution check for WPML installations.
 
-= 6.3.16 =
+= 6.3.16 - August 8, 2017 =
 * Improvement: Introduced a new scan stage to check for malicious URLs and content within WordPress core, plugin, and theme options.
 * Improvement: New scan stage includes a new check for TrafficTrade malware.
 * Improvement: Reduced net memory usage during forked scan stages by up to 50%.
@@ -378,14 +469,14 @@ Secure your website with Wordfence.
 * Fix: Fixed CSS positioning issue for dashboard metabox with IPv6.
 * Fix: Fixed a compatibility issue with determining the site's home_url when WPML is installed.
 
-= 6.3.15 =
+= 6.3.15 - July 24, 2017 =
 * Improvement: Reduced memory usage on scan forking and during the known files scan stage.
 * Improvement: Added additional scan options to allow for disabling the blacklist checks while still allowing malware scanning to be enabled.
 * Improvement: Added a Wordfence Application Firewall code block for the lsapi variant of LiteSpeed.
 * Improvement: Updated the bundled GeoIP database.
 * Fix: Added a validation check to IP range whitelisting to avoid log warnings if they're malformed.
 
-= 6.3.14 =
+= 6.3.14 - July 17, 2017 =
 * Improvement: Introduced smart scan distribution. Scan times are now distributed intelligently across servers to provide consistent server performance. 
 * Improvement: Introduced light-weight scan that runs frequently to perform checks that do not use any server resources. 
 * Improvement: If unable to successfully look up the status of an IP claiming to be Googlebot, the hit is now allowed.
@@ -396,7 +487,7 @@ Secure your website with Wordfence.
 * Fix: Fixed PHP notice in the diff renderer.
 * Fix: Fixed typo in lockout alert.
 
-= 6.3.12 =
+= 6.3.12 - June 28, 2017 =
 * Improvement: Adjusted the password audit to use a better cryptographic padding option.
 * Improvement: Improved the option value entry process for the modified files exclusion list.
 * Improvement: Added rel="noopener noreferrer" to all external links from the plugin for better interoperability with other scanners.
@@ -406,7 +497,7 @@ Secure your website with Wordfence.
 * Fix: Added an option to allow automatic updates to function on Litespeed servers that have the global noabort set rather than site-local.
 * Fix: Fixed a PHP notice that could occur when running a scan immediately after removing a plugin.
 
-= 6.3.11 =
+= 6.3.11 - June 15, 2017 =
 * Improvement: The scan will alert for plugins that have not been updated in 2+ years or have been removed from the wordpress.org directory. It will also indicate if there is a known vulnerability.
 * Improvement: Added a self-check to the scan to detect if it has stalled.
 * Improvement: If WordPress auto-updates while a scan is running, the scan will self-abort and reschedule itself to try again later.
@@ -419,7 +510,7 @@ Secure your website with Wordfence.
 * Fix: Addressed a performance issue on databases with tens of thousands of tables when trying to load the diagnostics page.
 * Fix: All dashboard and activity report email times are now displayed in the time zone configured for the WordPress installation.
 
-= 6.3.10 =
+= 6.3.10 - June 1, 2017 =
 * Improvement: Reduction in overall memory usage and peak memory usage for the scanner.
 * Improvement: Support for exporting a list of all blocked and locked out IP addresses.
 * Improvement: Updated the WAF's CA certificate bundle.
@@ -438,7 +529,7 @@ Secure your website with Wordfence.
 * Fix: Fixed an issue with the dashboard where it could show the last scan failed when one has never ran.
 * Fix: Brute force records are now coalesced when possible prior to sending.
 
-= 6.3.9 =
+= 6.3.9 - May 17, 2017 =
 * Improvement: Malware signature checking has been better optimized to improve overall speed.
 * Improvement: Updated the bundled GeoIP database.
 * Improvement: The memory tester now tests up to the configured scan limit rather than a fixed value.
@@ -455,10 +546,10 @@ Secure your website with Wordfence.
 * Fix: Fixed some incorrect documentation links on the diagnostics page.
 * Fix: Fixed a typo in a constant on the diagnostics page.
 
-= 6.3.8 =
+= 6.3.8 - May 2, 2017 =
 * Fix: Addressed an issue that could cause scans to time out on sites with tens of thousands of potential URLs in files, comments, and posts.
 
-= 6.3.7 =
+= 6.3.7 - April 25, 2017 =
 * Improvement: All URLs are now checked against the Wordfence Domain Blacklist in addition to Google's.
 * Improvement: Better page load performance for multisite installations with thousands of tables.
 * Improvement: Updated the bundled GeoIP database.
@@ -467,7 +558,7 @@ Secure your website with Wordfence.
 * Fix: Fixed an activation error on multisite installations on very old WordPress versions.
 * Fix: Adjusted the behavior of the blacklist toggle for Free users.
 
-= 6.3.6 =
+= 6.3.6 - April 5, 2017 =
 * Improvement: Optimized the malware signature scan to reduce memory usage.
 * Improvement: Optimized the overall scan to make fewer network calls.
 * Improvement: Running an update now automatically dismisses the corresponding scan issue if present.
@@ -480,7 +571,7 @@ Secure your website with Wordfence.
 * Fix: Corrected a typo in the unlock email template.
 * Fix: Fixed the target of a label on the options page.
 
-= 6.3.5 =
+= 6.3.5 - March 23, 2017 =
 * Improvement: Sites can now specify a list of trusted proxies when using X-Forwarded-For for IP resolution.
 * Improvement: Added options to customize which dashboard notifications are shown.
 * Improvement: Improvements to the scanner's malware stage to avoid timing out on larger files.
@@ -495,10 +586,10 @@ Secure your website with Wordfence.
 * Fix: Updated the copyright date on several pages.
 * Fix: Fixed incorrect wrapping of the Group by field on the live traffic page.
 
-= 6.3.4 =
+= 6.3.4 - March 13, 2017 =
 * Improvement: Added a path for people blocked by the IP blacklist (Premium Feature) to report false positives.
 
-= 6.3.3 =
+= 6.3.3 - March 9, 2017 =
 * New: Malicious IPs are now preemptively blocked by a regularly-updated blacklist. [Premium Feature]
 * Improvement: Better layout and display for mobile screen sizes.
 * Improvement: Dashboard chart data is now updated more frequently.
@@ -508,7 +599,7 @@ Secure your website with Wordfence.
 * Fix: Increased the z-index of the AJAX error watcher alert.
 * Fix: Addressed an additional way to enumerate authors with the REST JSON API.
 
-= 6.3.2 =
+= 6.3.2 - February 23, 2017 =
 * Improvement: Improved the WAF's ability to inspect POST bodies.
 * Improvement: Dashboard now shows up to 100 each of failed/successful logins.
 * Improvement: Updated internal GeoIP database.
@@ -519,7 +610,7 @@ Secure your website with Wordfence.
 * Fix: Fixed a few links that didn't open the correct configuration pages.
 * Fix: Unknown countries in the dashboard now show "Unknown" rather than empty.
 
-= 6.3.1 =
+= 6.3.1 - February 7, 2017 =
 * Improvement: Locked out IPs are now enforced at the WAF level to reduce server load.
 * Improvement: Added a "Show more" link to the IP block list and login attempts list.
 * Improvement: Added network data for the top countries blocked list.
@@ -531,13 +622,13 @@ Secure your website with Wordfence.
 * Fix: The updates available notification is refreshed after updates are installed.
 * Fix: The scan notification is refreshed when issues are resolved or ignored.
 
-= 6.3.0 =
+= 6.3.0 - January 26, 2017 =
 * Enhancement: Added Wordfence Dashboard for quick overview of security activity.
 * Improvement: Simplified the UI by revamping menu structure and styling.
 * Fix: Fixed minor issue with REST API user enumeration blocking.
 * Fix: Fixed undefined index notices on password audit page.
 
-= 6.2.10 =
+= 6.2.10 - January 12, 2017 =
 * Improvement: Better reporting for failed brute force login attempts.
 * Change: Reworded setting for ignored IPs in the WAF alert email.
 * Change: Updated support link on scan page.
@@ -545,13 +636,13 @@ Secure your website with Wordfence.
 * Fix: Addressed an issue where the increased attack rate emails would send repeatedly if the threshold value was missing.
 * Fix: Typo fix in firewall rule 11 name.
 
-= 6.2.9 =
+= 6.2.9 - December 27, 2016 =
 * Improvement: Updated internal GeoIP database.
 * Improvement: Better error handling when a site is unreachable publicly.
 * Fix: Fixed a URL in alert emails that did not correctly detect when sent from a multisite installation.
 * Fix: Addressed an issue where the scan did not alert about a new WordPress version.
 
-= 6.2.8 =
+= 6.2.8 - December 12, 2016 =
 * Improvement: Added support for hiding the username information revealed by the WordPress 4.7 REST API. Thanks Vladimir Smitka.
 * Improvement: Added vulnerability scanning for themes.
 * Improvement: Reduced memory usage by up to 90% when scanning comments.
@@ -568,7 +659,7 @@ Secure your website with Wordfence.
 * Fix: Restricted caching of responses from the Wordfence Security Network.
 * Fix: Fixed a recording issue with Wordfence Security Network statistics.
 
-= 6.2.7 =
+= 6.2.7 - December 1, 2016 =
 * Improvement: WordPress 4.7 improvements for the Web Application Firewall.
 * Improvement: Updated signatures for hash-based malware detection.
 * Improvement: Automatically attempt to detect when a site is behind a proxy and has IP information in a different field.
@@ -581,17 +672,17 @@ Secure your website with Wordfence.
 * Fix: Fixed warning that could be logged when following an unlock email link.
 * Fix: Tour popups on options page now scroll into view correctly.
 
-= 6.2.6 =
+= 6.2.6 - November 17, 2016 =
 * Improvement: Improved formatting of attack data when it contains binary characters.
 * Improvement: Updated internal GeoIP database.
 * Improvement: Improved the ordering of rules in the malware scan so more specific rules are checked first.
 * Fix: Country blocking redirects are no longer allowed to be cached.
 * Fix: Fixed an issue with 2FA on multisite where the site could report URLs with different schemes depending on the state of plugin loading.
 
-= 6.2.5 =
+= 6.2.5 - November 9, 2016 =
 * Fix: Fixed an issue that could occur on older WordPress versions when processing login attempts
 
-= 6.2.4 =
+= 6.2.4 - November 9, 2016 =
 * Improvement: Scan times for very large sites with huge numbers of files are greatly improved.
 * Improvement: Added a configurable time limit for scans to help reduce overall server load and identify configuration problems.
 * Improvement: Email-based logins are now covered by "Don't let WordPress reveal valid users in login errors".
@@ -605,7 +696,7 @@ Secure your website with Wordfence.
 * Fix: Suppressed errors if a file is removed between the start of a scan and later scan stages.
 * Fix: Addressed a problem where the scan exclusions list was not checked correctly in some situations.
 
-= 6.2.3 =
+= 6.2.3 - October 26, 2016 =
 * Improvement: Reworked blocking for IP ranges, country blocking, and direct IP blocking to minimize server impact when under attack.
 * Improvement: Live traffic better indicates the action taken by country blocking when it redirects a visitor.
 * Improvement: Added support for finding server logs to the Diagnostics page to help with troubleshooting.
@@ -620,10 +711,10 @@ Secure your website with Wordfence.
 * Fix: Changes to the default plugin hello.php are now detected correctly in scans.
 * Fix: Fixed IPv6 warning in the dashboard widget.
 
-= 6.2.2 =
+= 6.2.2 - October 12, 2016 =
 * Fix: Replaced a slow query in the dashboard widget that could affect sites with very large numbers of users.
 
-= 6.2.1 =
+= 6.2.1 - October 11, 2016 =
 * Improvement: Now performing scanning for PHP code in all uploaded files in real-time.
 * Improvement: Improved handling of bad characters and IPv6 ranges in Advanced Blocking.
 * Improvement: Live traffic and scanning activity now display a paused notice when real-time updates are suspended while in the background.
@@ -638,7 +729,7 @@ Secure your website with Wordfence.
 * Fix: Fixed file inclusion error with themes lacking a 404 page.
 * Fix: CSS fixes for activity report email.
 
-= 6.2.0 =
+= 6.2.0 - September 27, 2016 =
 * Improvement: Massive performance boost in file system scan.
 * Improvement: Added low resource usage scan option for shared hosts.
 * Improvement: Aggregated login attempts when checking the Wordfence Security Network for brute force attackers to reduce total requests.
@@ -652,10 +743,10 @@ Secure your website with Wordfence.
 * Fix: Fixed infinite loop in scan caused by symlinks.
 * Fix: Remove extra slash from "File restored OK" message in scan results.
 
-= 6.1.17 =
+= 6.1.17 - September 9, 2016 =
 * Fix: Replaced calls to json_decode with our own implentation for hosts without the JSON extension enabled.
 
-= 6.1.16 =
+= 6.1.16 - September 8, 2016 =
 * Improvement: Now performing malware scanning on all uploaded files in real-time.
 * Improvement: Added Web Application Firewall activity to Wordfence summary email.
 * Fix: Now using 503 response code in the page displayed when an IP is locked out.
@@ -665,7 +756,7 @@ Secure your website with Wordfence.
 * Improvement: Improved performance of the Live Traffic page in Firefox.
 * Improvement: Updated GeoIP database.
 
-= 6.1.15 =
+= 6.1.15 - August 25, 2016 =
 * Improvement: Removed file-based config caching, added support for caching via WordPress's object cache.
 * Improvement: Whitelisted Uptime Robot's IP range.
 * Fix: Notify users if suPHP_ConfigPath is in their WAF setup, and prompt to update Extended Protection.
@@ -674,18 +765,18 @@ Secure your website with Wordfence.
 * Fix: Fixed PHP notice from `Undefined index: url` with custom/premium plugins.
 * Improvement: Converted the banned URLs input to a textarea.
 
-= 6.1.14 =
+= 6.1.14 - August 11, 2016 =
 * Improvement: Support downloading a file of 2FA recovery codes.
 * Fix: Fixed PHP Notice: Undefined index: coreUnknown during scans.
 * Improvement: Add note to options page that login security is necessary for 2FA to work.
 * Fix: Fixed WAF false positives introduced with WordPress 4.6.
 * Improvement: Update Geo IP database.
 
-= 6.1.12 =
+= 6.1.12 - July 26, 2016 =
 * Fix: Fixed fatal error on sites running Wordfence 6.1.11 in subdirectory and 6.1.10 or lower in parent directory.
 * Fix: Added a few common files to be excluded from unknown WordPress core file scan.
 
-= 6.1.11 =
+= 6.1.11 - July 25, 2016 =
 * Improvement: Alert on added files to wp-admin, wp-includes.
 * Improvement: 2FA is now available via any authenticator program that accepts TOTP secrets.
 * Fix: Fixed bug with specific Advanced Blocking user-agent patterns causing 500 errors.
@@ -698,10 +789,10 @@ Secure your website with Wordfence.
 * Improvement: Added browser-based malware signatures for .js, .html files in the malware scan.
 * Fix: Added error suppression to `dns_get_record`.
 
-= 6.1.10 =
+= 6.1.10 - June 22, 2016 =
 * Fix: Fixed fatal error in the event wflogs is not writable.
 
-= 6.1.9 =
+= 6.1.9 - June 21, 2016 =
 * Fix: Using WP-CLI causes error Undefined index: SERVER_NAME.
 * Improvement: Hooked up restore/delete file scan tools to Filesystem API.
 * Fix: Reworked country blocking authentication check for access to XMLRPC.
@@ -715,7 +806,7 @@ Secure your website with Wordfence.
 * Improvement: Removed security levels from Options page.
 * Improvement: Added option to disable ajaxwatcher (for whitelisting only for Admins) on the front end.
 
-= 6.1.8 =
+= 6.1.8 - May 26, 2016 =
 * Fix: Change wfConfig::set_ser to split large objects into multiple queries.
 * Fix: Fixed bug in multisite with "You do not have sufficient permissions to access this page" error after logging in.
 * Improvement: Update Geo IP database.
@@ -733,10 +824,10 @@ Secure your website with Wordfence.
 * Fix: Scheduled update for WAF rules doesn't decrease from 7 days, to 12 hours, when upgrading to a premium account.
 * Improvement: Better message for dashboard widget when no failed logins.
 
-= 6.1.7 =
+= 6.1.7 - May 10, 2016 =
 * Security Fix: Fixed reflected XSS vulnerability: CVSS 6.1 (Medium). Thanks Kacper Szurek.
 
-= 6.1.6 =
+= 6.1.6 - May 9, 2016 =
 * Fix: Fixed bug with 2FA not properly handling email address login.
 * Fix: Show logins/logouts when Live Traffic is disabled.
 * Fix: Fixed bug with PCRE versions < 7.0 (repeated subpattern is too long).
@@ -746,7 +837,7 @@ Secure your website with Wordfence.
 * Improvement: Adjusted permissions on Firewall log/config files to be 0640.
 * Fix: Fixed false positive from Maldet in the wfConfig table during the scan.
 
-= 6.1.5 =
+= 6.1.5 - April 28, 2016 = 
 * Fix: WordPress language files no longer flagged as changed.
 * Improvement: Accept wildcards in "Immediately block IP's that access these URLs."
 * Fix: Fixed bug when multiple authors have published posts, /?author=N scans show an author archive page.
@@ -756,7 +847,7 @@ Secure your website with Wordfence.
 * Improvement: Include option for IIS on Windows in Firewall config process, and recommend manual php.ini change only.
 * Fix: Made the 'administrator email address' admin notice dismissable.
 
-= 6.1.4 =
+= 6.1.4 - April 20, 2016 =
 * Fix: Fixed potential bug with 'stored data not found after a fork. Got type: boolean'.
 * Improvement: Added bulk actions and filters to WAF whitelist table.
 * Improvement: Added a check while in learning mode to verify the response is not 404 before whitelising.
@@ -773,7 +864,7 @@ Secure your website with Wordfence.
 * Improvement: Move "Permanently block all temporarily blocked IP addresses" button to top of blocked IP list.
 * Fix: Added JSON fallback for PHP installations that don't have JSON enabled.
 
-= 6.1.3 =
+= 6.1.3 - April 14, 2016 =
 * Improvement: Added dismiss button to the Wordfence WAF setup admin notice.
 * Fix: Removed .htaccess and .user.ini from publicly accessible config and backup file scan.
 * Fix: Removed the disallow file mods for admins created outside of WordPress.
@@ -781,10 +872,10 @@ Secure your website with Wordfence.
 * Improvement: Added instructions for NGINX users to restrict access to .user.ini during Firewall configuration.
 * Fix: Fixed bug with multiple API calls to 'get_known_files'.
 
-= 6.1.2 =
+= 6.1.2 - April 12, 2016 =
 * Fix: Fixed fatal error when using a whitelisted IPv6 range and connecting with an IPv6 address.
 
-= 6.1.1 =
+= 6.1.1 - April 12, 2016 =
 * Enhancement: Added Web Application Firewall
 * Enhancement: Added Diagnostics page
 * Enhancement: Added new scans:

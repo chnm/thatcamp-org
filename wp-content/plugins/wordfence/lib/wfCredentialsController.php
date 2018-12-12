@@ -68,7 +68,15 @@ class wfCredentialsController {
 		if ($value === false) {
 			return self::UNCACHED;
 		}
-		else if ($value) {
+		
+		$status = substr($value, 0, 1);
+		if (strlen($value) > 1) {
+			if (!hash_equals(substr($value, 1), hash('sha256', $user->user_pass))) { //Different hash but our clear function wasn't called so treat it as uncached
+				return self::UNCACHED;
+			}
+		}
+		
+		if ($status) {
 			return self::LEAKED;
 		}
 		return self::NOT_LEAKED;
@@ -82,7 +90,7 @@ class wfCredentialsController {
 	 */
 	public static function setCachedCredentialStatus($user, $isLeaked) {
 		$key = self::_cachedCredentialStatusKey($user);
-		set_transient($key, $isLeaked ? 1 : 0, 3600);
+		set_transient($key, ($isLeaked ? '1' : '0') . hash('sha256', $user->user_pass), 3600);
 	}
 	
 	/**

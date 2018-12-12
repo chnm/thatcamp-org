@@ -257,6 +257,7 @@ class ClassYopPollImporter4x {
 						$poll_end_date_option = 'never';
 						$poll_end_date = '';
                     }
+                    $adminUser = wp_get_current_user();
 					$pollArray         = [
 						'ID'                     => $poll->id,
 						'name'                   => $poll->name,
@@ -295,7 +296,8 @@ class ClassYopPollImporter4x {
 								'emailNotificationsFromName'  =>
 									isset( $unserialized_meta['email_notifications_from_name'] ) ? $unserialized_meta['email_notifications_from_name'] : 'Voting Alerts',
 								'emailNotificationsFromEmail' =>
-									isset( $unserialized_meta['email_notifications_from_email'] ) ? $unserialized_meta['email_notifications_from_email'] : 'noreply@???',
+									isset( $unserialized_meta['email_notifications_from_email'] ) ? $unserialized_meta['email_notifications_from_email'] : '',
+                               'emailNotificationsRecipients' => isset( $unserialized_meta['email_notifications_recipients'] ) && '' !== $unserialized_meta['email_notifications_recipients'] ? $unserialized_meta['email_notifications_recipients'] : $adminUser->user_email,
 								'emailNotificationsSubject'   =>
 									isset( $unserialized_meta['email_notifications_subject'] ) ? $unserialized_meta['email_notifications_subject'] : 'New Vote',
 								'emailNotificationsMessage'   =>
@@ -384,7 +386,7 @@ class ClassYopPollImporter4x {
 								isset( $unserialized_meta['allow_multiple_answers'] ) ? $unserialized_meta['allow_multiple_answers'] : 'no',
 							'multipleAnswersMinim'         =>
 								isset( $unserialized_meta['allow_multiple_answers_min_number'] ) ? $unserialized_meta['allow_multiple_answers_min_number'] : 1,
-							'multipleAnswersMaxim'         => isset( $unserialized_meta['allow_multiple_answers_number'] ) ? $unserialized_meta['allow_multiple_answers_number'] : 3,
+							'multipleAnswersMaxim'         => isset( $unserialized_meta['allow_multiple_answers_number'] ) && '' !== $unserialized_meta['allow_multiple_answers_number'] ? $unserialized_meta['allow_multiple_answers_number'] : 3,
 							'answersDisplay'               => $answers_display,
 							'answersColumns'               =>
 								isset( $unserialized_meta['display_answers_tabulated_cols'] ) ? $unserialized_meta['display_answers_tabulated_cols'] : 2

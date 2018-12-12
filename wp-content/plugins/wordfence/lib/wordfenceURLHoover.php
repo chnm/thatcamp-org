@@ -174,7 +174,7 @@ class wordfenceURLHoover {
 		if ($this->useDB) {
 			global $wpdb;
 			$dbh = $wpdb->dbh;
-			$useMySQLi = (is_object($dbh) && $wpdb->use_mysqli);
+			$useMySQLi = (is_object($dbh) && $wpdb->use_mysqli && wfConfig::get('allowMySQLi', true) && WORDFENCE_ALLOW_DIRECT_MYSQLI);
 			if ($useMySQLi) { //If direct-access MySQLi is available, we use it to minimize the memory footprint instead of letting it fetch everything into an array first
 				wordfence::status(4, 'info', "Using MySQLi directly.");
 				$result = $dbh->query("SELECT DISTINCT hostKey FROM {$this->table} ORDER BY hostKey ASC LIMIT 100000"); /* We limit to 100,000 prefixes since more than that cannot be reliably checked within the default max_execution_time */

@@ -99,13 +99,15 @@ class YopPollUpgrade {
                     'page'   => 'yop-poll-upgrade-pro',
                     'action' => 'after-buy'
                 ), admin_url( 'admin.php' ) ) );
-                $custom = urlencode( $huid . ';' . $rand_number. ';1;' .$email );
-                $paypalUrl = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=Z6EYUMUYXG9QW&lc=GB&item_name=YOP%20Poll%20Pro&amount=17%2e00&currency_code=USD&button_subtype=services&no_note=0&cn=VAT%20ID%20%28if%20any%29&no_shipping=2&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted&notify_url=https%3A%2F%2Fadmin.yoppoll.com%2Fipn&return=' .
-                    "$redirect_url&rm=2&custom=" . $custom;
+                $domain = $_SERVER['HTTP_HOST'];
+                $custom = urlencode( $huid . ';' . $rand_number. ';' .$domain );
+                $notify_url = urlencode('https://admin.yoppoll.com/ipn');
+	            $paypalUrl = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&hosted_button_id=7WVAJPRJZ7KHN' .
+	                         '&amount=17%2e00&currency_code=USD&item_name=YOP%20Poll%20Pro&landing_page=Billing&business=office.ebiz@gmail.com&notify_url='.$notify_url.'&return=' . "{$redirect_url}&rm=2&custom={$custom}";
                 echo '<p>' . __( '
                     Please wait while you are being redirected to PayPal<br>If you are not redirected within 10 seconds, please click ', 'yop-poll' ) .
                     "<a href='{$paypalUrl}'>" . __( 'here', 'yop-poll' ) . '</a></p>';
-                echo "<script> window.location = '$paypalUrl'; </script>";
+	            echo "<script> window.location.href = '$paypalUrl'; </script>";
             }
         }
     }
@@ -121,7 +123,7 @@ class YopPollUpgrade {
         $ch            = curl_init( $url );
         curl_setopt( $ch, CURLOPT_HEADER, 0 );
         curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, TRUE );
         $result = curl_exec( $ch );
         curl_close( $ch );
         $result = json_decode( $result, true );

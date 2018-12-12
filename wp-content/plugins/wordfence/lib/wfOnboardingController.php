@@ -66,7 +66,7 @@ class wfOnboardingController {
 			self::shouldShowNewTour(self::TOUR_BLOCKING) || self::shouldShowUpgradeTour(self::TOUR_BLOCKING) ||
 			self::shouldShowNewTour(self::TOUR_LIVE_TRAFFIC) || self::shouldShowUpgradeTour(self::TOUR_LIVE_TRAFFIC));
 		
-		if (wfUtils::isAdmin() && (($willShowAnyPluginOnboarding && strpos($_SERVER['REQUEST_URI'], 'wp-admin/plugins.php') !== false) || (isset($_GET['page']) && preg_match('/^Wordfence/', @$_GET['page'])))) {
+		if (wfUtils::isAdmin() && (($willShowAnyPluginOnboarding && preg_match('~(?:^|/)wp-admin(?:/network)?/plugins\.php~i', $_SERVER['REQUEST_URI'])) || (isset($_GET['page']) && preg_match('/^Wordfence/', @$_GET['page'])))) {
 			wp_enqueue_style('wordfence-font', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-roboto-font.css'), '', WORDFENCE_VERSION);
 			wp_enqueue_style('wordfence-ionicons-style', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-ionicons.css'), '', WORDFENCE_VERSION);
 			wp_enqueue_style('wordfenceOnboardingCSS', wfUtils::getBaseURL() . wfUtils::versionedAsset('css/wf-onboarding.css'), '', WORDFENCE_VERSION);

@@ -1,4 +1,5 @@
 <?php
+if (!defined('WFWAF_VIEW_RENDERING')) { exit; }
 
 /** @var wfWAF $waf */
 /** @var wfWAFView $this */
@@ -37,7 +38,7 @@ if (is_array($request->getHeaders())) {
 	}
 }
 
-$payload = array('ip' => $request->getIP(), 'timestamp' => $request->getTimestamp(), 'headers' => $headerString, 'url' => $request->getProtocol() . '://' . $request->getHost() . $request->getPath(), 'home_url' => $waf->getStorageEngine()->getConfig('homeURL', ''));
+$payload = array('ip' => $request->getIP(), 'timestamp' => $request->getTimestamp(), 'headers' => $headerString, 'url' => $request->getProtocol() . '://' . $request->getHost() . $request->getPath(), 'home_url' => $waf->getStorageEngine()->getConfig('homeURL', '', 'synced'));
 $payloadJSON = wfWAFUtils::json_encode($payload);
 $shouldEncrypt = false;
 if (function_exists('openssl_get_publickey') && function_exists('openssl_get_cipher_methods')) {

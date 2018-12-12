@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v1.0.1
+ * Transposh v1.0.3
  * http://transposh.org/
  *
  * Copyright 2018, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Wed, 27 Jun 2018 14:41:10 +0300
+ * Date: Sat, 11 Aug 2018 02:00:05 +0300
  */
 
 /*
@@ -182,7 +182,7 @@ class transposh_3rdparty {
         // just got this from buddypress, changed action and content
         $values = array(
             'user_id' => $bp->loggedin_user->id,
-            'action' => sprintf(__('%s translated a phrase to %s with transposh:', 'buddypress'), bp_core_get_userlink($bp->loggedin_user->id), substr(transposh_consts::$languages[$lang], 0, strpos(transposh_consts::$languages[$lang], ','))),
+            'action' => sprintf(__('%s translated a phrase to %s with transposh:', TRANSPOSH_TEXT_DOMAIN), bp_core_get_userlink($bp->loggedin_user->id), substr(transposh_consts::$languages[$lang], 0, strpos(transposh_consts::$languages[$lang], ','))),
             'content' => "Original: <span class=\"no_translate\">$original</span>\nTranslation: <span class=\"no_translate\">$translation</span>",
             'primary_link' => '',
             'component' => $bp->blogs->id,

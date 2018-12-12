@@ -90,19 +90,6 @@ if (!isset($collapseable)) {
 					<li>
 						<?php
 						echo wfView::create('options/option-toggled', array(
-							'optionName' => 'disableCookies',
-							'enabledValue' => 1,
-							'disabledValue' => 0,
-							'value' => wfConfig::get('disableCookies') ? 1 : 0,
-							'title' => __('Disable Wordfence Cookies', 'wordfence'),
-							'subtitle' => __('When enabled, all visits in live traffic will appear to be new visits.', 'wordfence'),
-							'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_DASHBOARD_OPTION_DISABLE_COOKIES),
-						))->render();
-						?>
-					</li>
-					<li>
-						<?php
-						echo wfView::create('options/option-toggled', array(
 							'optionName' => 'liveActivityPauseEnabled',
 							'enabledValue' => 1,
 							'disabledValue' => 0,

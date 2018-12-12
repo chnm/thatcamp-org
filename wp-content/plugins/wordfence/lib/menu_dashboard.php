@@ -241,12 +241,12 @@ else if (wfConfig::get('touppPromptNeeded')) {
 			</div>
 		</div>
 		<div class="wf-row">
-			<div class="wf-col-xs-12 wf-col-sm-6 wf-col-sm-half-padding-right">
+			<div class="wf-col-xs-12 wf-col-lg-6 wf-col-lg-half-padding-right">
 				<!-- begin firewall summary site -->
 				<?php include(dirname(__FILE__) . '/dashboard/widget_localattacks.php'); ?>
 				<!-- end firewall summary site -->
 			</div> <!-- end content block -->
-			<div class="wf-col-xs-12 wf-col-sm-6 wf-col-sm-half-padding-left">
+			<div class="wf-col-xs-12 wf-col-lg-6 wf-col-lg-half-padding-left">
 				<!-- begin total attacks blocked network -->
 				<?php include(dirname(__FILE__) . '/dashboard/widget_networkattacks.php'); ?>
 				<!-- end total attacks blocked network -->

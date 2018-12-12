@@ -1,12 +1,12 @@
 <?php
-// If uninstall is not called from WordPress, exit
+// exit if uninstall is not called
 if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit();
 }
 
 $keep = get_option( 'vscf-setting' );
 if ( $keep != 'yes' ) {
-	// Delete option
+	// delete options
 	delete_option( 'widget_vscf-widget');
 	delete_option( 'vscf-setting' );
 	delete_option( 'vscf-setting-2' );
@@ -27,8 +27,11 @@ if ( $keep != 'yes' ) {
 	delete_option( 'vscf-setting-17' );
 	delete_option( 'vscf-setting-18' );
 	delete_option( 'vscf-setting-19' );
+	delete_option( 'vscf-setting-20' );
+	delete_option( 'vscf-setting-21' );
+	delete_option( 'vscf-setting-22' );
 
-	// For site options in Multisite
+	// delete site options in multisite
 	delete_site_option( 'widget_vscf-widget' );
 	delete_site_option( 'vscf-setting' );
 	delete_site_option( 'vscf-setting-2' );
@@ -49,10 +52,13 @@ if ( $keep != 'yes' ) {
 	delete_site_option( 'vscf-setting-17' );
 	delete_site_option( 'vscf-setting-18' );
 	delete_site_option( 'vscf-setting-19' );
+	delete_site_option( 'vscf-setting-20' );
+	delete_site_option( 'vscf-setting-21' );
+	delete_site_option( 'vscf-setting-22' );
 
-	// Set global
+	// set global
 	global $wpdb;
 
-	// Delete submissions
-	$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type = 'submission'" ); 
+	// delete submissions
+	$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type = 'submission'" );
 }

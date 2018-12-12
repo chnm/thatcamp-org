@@ -19,15 +19,16 @@
             </ul>
         </div>
     </div>
-    <br>
     <form style="text-align: center" action="" method="post">
         <p style="text-align:center; font-weight: bold; font-size: 16px">
             <?php wp_nonce_field('yop-poll-before-buy' ); ?>
             <input type="hidden" name="action" value="do-buy">
             <input type="hidden" name="upgrade" value="yes">
 			<button class="btn btn-primary btn-lg" type="submit">
-				Upgrade to Pro for <u>Only</u> $17
+				<b>Upgrade to Pro for <u>Only</u> $17</b>
 			</button>
+			<br>
+			One Time Payment. Lifetime Updates
 			<br>
 			60 days money back guarantee
         </p>

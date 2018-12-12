@@ -7,33 +7,34 @@ class YOP_Poll_Admin {
 		self::$time_format = get_option( 'time_format' );
 		self::$old_version = get_option( 'yop_poll_old_version' );
 		if ( true === is_admin() ) {
-			add_filter( 'admin_title', array( &$this, 'change_page_title' ) );
-			add_action( 'admin_menu', array( &$this, 'build_admin_menu' ) );
-			add_action( 'plugins_loaded', array( &$this, 'verify_update' ) );
-			add_action( 'admin_enqueue_scripts', array( &$this, 'load_dependencies' ) );
-			add_action( 'upgrader_process_complete', array( &$this, 'upgrade_complete' ) );
-			add_action( 'wp_ajax_create_yop_poll', array( &$this, 'create_poll' ) );
-			add_action( 'wp_ajax_update_yop_poll', array( &$this, 'update_poll' ) );
-			add_action( 'wp_ajax_delete_single_yop_poll', array( &$this, 'delete_single_poll' ) );
-			add_action( 'wp_ajax_delete_bulk_yop_poll', array( &$this, 'delete_bulk_poll' ) );
-			add_action( 'wp_ajax_clone_single_yop_poll', array( &$this, 'clone_single_poll' ) );
-			add_action( 'wp_ajax_clone_bulk_yop_poll', array( &$this, 'clone_bulk_poll' ) );
-			add_action( 'wp_ajax_reset_bulk_yop_poll', array( &$this, 'reset_bulk_poll' ) );
-			add_action( 'wp_ajax_create_yop_poll_ban', array( &$this, 'create_ban' ) );
-			add_action( 'wp_ajax_delete_yop_poll_ban', array( &$this, 'delete_single_ban' ) );
-			add_action( 'wp_ajax_update_yop_poll_ban', array( &$this, 'update_ban' ) );
-			add_action( 'wp_ajax_delete_bulk_yop_poll_ban', array( &$this, 'delete_bulk_ban' ) );
+            add_filter( 'admin_title', array( &$this, 'change_page_title' ) );
+			add_filter( 'clean_url', array( &$this, 'clean_recaptcha_url' ) );
+            add_action( 'admin_menu', array( &$this, 'build_admin_menu' ) );
+            add_action( 'plugins_loaded', array( &$this, 'verify_update' ) );
+            add_action( 'admin_enqueue_scripts', array( &$this, 'load_dependencies' ) );
+            add_action( 'upgrader_process_complete', array( &$this, 'upgrade_complete' ) );
+            add_action( 'wp_ajax_create_yop_poll', array( &$this, 'create_poll' ) );
+            add_action( 'wp_ajax_update_yop_poll', array( &$this, 'update_poll' ) );
+            add_action( 'wp_ajax_delete_single_yop_poll', array( &$this, 'delete_single_poll' ) );
+            add_action( 'wp_ajax_delete_bulk_yop_poll', array( &$this, 'delete_bulk_poll' ) );
+            add_action( 'wp_ajax_clone_single_yop_poll', array( &$this, 'clone_single_poll' ) );
+            add_action( 'wp_ajax_clone_bulk_yop_poll', array( &$this, 'clone_bulk_poll' ) );
+            add_action( 'wp_ajax_reset_bulk_yop_poll', array( &$this, 'reset_bulk_poll' ) );
+            add_action( 'wp_ajax_create_yop_poll_ban', array( &$this, 'create_ban' ) );
+            add_action( 'wp_ajax_delete_yop_poll_ban', array( &$this, 'delete_single_ban' ) );
+            add_action( 'wp_ajax_update_yop_poll_ban', array( &$this, 'update_ban' ) );
+            add_action( 'wp_ajax_delete_bulk_yop_poll_ban', array( &$this, 'delete_bulk_ban' ) );
             add_action( 'wp_ajax_delete_yop_poll_log', array( &$this, 'delete_single_log' ) );
             add_action( 'wp_ajax_get_yop_poll_log_details', array( &$this, 'get_log_details' ) );
             add_action( 'wp_ajax_delete_bulk_yop_poll_log', array( &$this, 'delete_bulk_log' ) );
-			add_action( 'wp_ajax_yop_poll_is_user_logged_in', array( &$this, 'is_user_logged_in' ) );
-			add_action( 'wp_ajax_nopriv_yop_poll_is_user_logged_in', array( &$this, 'is_user_logged_in' ) );
-			add_action( 'wp_ajax_yop_poll_record_vote', array( &$this, 'record_vote' ) );
-			add_action( 'wp_ajax_nopriv_yop_poll_record_vote', array( &$this, 'record_vote' ) );
-			add_action( 'wp_ajax_yop_poll_record_wordpress_vote', array( &$this, 'record_wordpress_vote' ) );
+            add_action( 'wp_ajax_yop_poll_is_user_logged_in', array( &$this, 'is_user_logged_in' ) );
+            add_action( 'wp_ajax_nopriv_yop_poll_is_user_logged_in', array( &$this, 'is_user_logged_in' ) );
+            add_action( 'wp_ajax_yop_poll_record_vote', array( &$this, 'record_vote' ) );
+            add_action( 'wp_ajax_nopriv_yop_poll_record_vote', array( &$this, 'record_vote' ) );
+            add_action( 'wp_ajax_yop_poll_record_wordpress_vote', array( &$this, 'record_wordpress_vote' ) );
             add_action( 'wp_ajax_get_yop_poll_votes_customs', array( &$this, 'get_yop_poll_votes_customs' ) );
             add_action( 'wp_ajax_yop-poll-get-vote-details', array( &$this, 'get_vote_details' ) );
-			add_action( 'wp_ajax_nopriv_yop_poll_record_wordpress_vote', array( &$this, 'record_wordpress_vote' ) );
+            add_action( 'wp_ajax_nopriv_yop_poll_record_wordpress_vote', array( &$this, 'record_wordpress_vote' ) );
             add_action( 'wp_ajax_yop_poll_save_settings', array( &$this, 'save_settings' ) );
 			if ( self::$old_version ) {
 				if ( false !== strpos( self::$old_version, '4.' ) ) {
@@ -45,6 +46,12 @@ class YOP_Poll_Admin {
 		}
 		Yop_Poll_DbSchema::initialize_tables_names();
 	}
+	public function clean_recaptcha_url( $url ) {
+		if ( false !== strstr( $url, "recaptcha/api.js" ) ) {
+			$url = str_replace( "&#038;", "&", $url );
+		}
+		return $url;
+	}
 	public function verify_update() {
 		$installed_version = get_option( 'yop_poll_version' );
 		if ( $installed_version ) {
@@ -52,8 +59,8 @@ class YOP_Poll_Admin {
 				$maintenance = new YOP_POLL_Maintenance();
 				$maintenance->activate();
 			}
-			if ( true === version_compare( $installed_version, '6.0.0', '==' ) ) {
-				update_option( 'yop_poll_version', '6.0.1' );
+			if ( true === version_compare( $installed_version, '6.0.3', '<' ) ) {
+				update_option( 'yop_poll_version', '6.0.3' );
 			}
 		}
 	}
@@ -172,8 +179,19 @@ class YOP_Poll_Admin {
 		}
 	}
 	public function load_dependencies() {
-		$this->load_styles();
-		$this->load_scripts();
+	    $yop_poll_pages = [
+	        'yop-polls',
+            'yop-poll-add-poll',
+            'yop-poll-bans',
+            'yop-poll-logs',
+            'yop-poll-settings',
+            'yop-poll-upgrade-pro',
+		    'yop-poll-migrate'
+        ];
+	    if ( isset( $_REQUEST['page'] ) && in_array( $_REQUEST['page'], $yop_poll_pages ) ) {
+            $this->load_styles();
+            $this->load_scripts();
+        }
 	}
 	public function load_scripts() {
 		//include jquery by default
@@ -189,133 +207,139 @@ class YOP_Poll_Admin {
 			'jquery-ui-dialog',
 			'jquery-ui-datepicker' )
 		);
+		/* add reCaptcha if enabled */
+		$args = array(
+			'render' => 'explicit'
+		);
+		wp_register_script( 'yop-reCaptcha', add_query_arg ( $args, 'https://www.google.com/recaptcha/api.js' ), '', null );
+		wp_enqueue_script( 'yop-reCaptcha' );
+		/* done adding reCaptcha */
 		wp_localize_script( 'yop', 'objectL10n', array(
 			'yopPollParams' => array(
-				'appUrl' => YOP_POLL_URL,
-				'dateFormat' => self::$date_format,
-				'timeFormat' => self::$time_format,
-				'timeNow' => time(),
-				'votingEnded' => esc_html__( 'This poll is no longer accepting votes', 'yop-poll' ),
-				'votingNotStarted' => esc_html__( 'This poll is not accepting votes yet', 'yop-poll' ),
-				'newCustomFieldText' => esc_html__( 'New Custom Field', 'yop-poll' ),
-				'deleteTitle'  => esc_html__( 'Warning', 'yop-poll' ),
-				'deletePollMessage' => esc_html__( 'Are you sure you want to delete this poll?', 'yop-poll' ),
-				'deleteBulkPollsSingleMessage' => esc_html__( 'Are you sure you want to delete this poll?', 'yop-poll' ),
-				'deleteBulkPollsMultiMessage' => esc_html__( 'Are you sure you want to delete these polls?', 'yop-poll' ),
-				'clonePollMessage' => esc_html__( 'Are you sure you want to clone this poll?', 'yop-poll' ),
-				'cloneBulkPollsSingleMessage' => esc_html__( 'Are you sure you want to clone this poll?', 'yop-poll' ),
-				'cloneBulkPollsMultiMessage' => esc_html__( 'Are you sure you want to clone these polls?', 'yop-poll' ),
-				'resetPollMessage' => esc_html__( 'Are you sure you want to reset votes for this poll?', 'yop-poll' ),
-				'resetBulkPollsSingleMessage' => esc_html__( 'Are you sure you want to reset votes for this poll?', 'yop-poll' ),
-				'resetBulkPollsMultiMessage' => esc_html__( 'Are you sure you want to reset votes for these polls?', 'yop-poll' ),
-				'noBulkActionSelected' => esc_html__( 'No bulk action selected', 'yop-poll' ),
-				'noPollsSelectedForBulk' => esc_html__( 'No polls selected', 'yop-poll' ),
-				'noBansSelectedForBulk' => esc_html__( 'No bans selected', 'yop-poll' ),
+                'appUrl' => YOP_POLL_URL,
+                'dateFormat' => self::$date_format,
+                'timeFormat' => self::$time_format,
+                'timeNow' => time(),
+                'votingEnded' => esc_html__( 'This poll is no longer accepting votes', 'yop-poll' ),
+                'votingNotStarted' => esc_html__( 'This poll is not accepting votes yet', 'yop-poll' ),
+                'newCustomFieldText' => esc_html__( 'New Custom Field', 'yop-poll' ),
+                'deleteTitle'  => esc_html__( 'Warning', 'yop-poll' ),
+                'deletePollMessage' => esc_html__( 'Are you sure you want to delete this poll?', 'yop-poll' ),
+                'deleteBulkPollsSingleMessage' => esc_html__( 'Are you sure you want to delete this poll?', 'yop-poll' ),
+                'deleteBulkPollsMultiMessage' => esc_html__( 'Are you sure you want to delete these polls?', 'yop-poll' ),
+                'clonePollMessage' => esc_html__( 'Are you sure you want to clone this poll?', 'yop-poll' ),
+                'cloneBulkPollsSingleMessage' => esc_html__( 'Are you sure you want to clone this poll?', 'yop-poll' ),
+                'cloneBulkPollsMultiMessage' => esc_html__( 'Are you sure you want to clone these polls?', 'yop-poll' ),
+                'resetPollMessage' => esc_html__( 'Are you sure you want to reset votes for this poll?', 'yop-poll' ),
+                'resetBulkPollsSingleMessage' => esc_html__( 'Are you sure you want to reset votes for this poll?', 'yop-poll' ),
+                'resetBulkPollsMultiMessage' => esc_html__( 'Are you sure you want to reset votes for these polls?', 'yop-poll' ),
+                'noBulkActionSelected' => esc_html__( 'No bulk action selected', 'yop-poll' ),
+                'noPollsSelectedForBulk' => esc_html__( 'No polls selected', 'yop-poll' ),
+                'noBansSelectedForBulk' => esc_html__( 'No bans selected', 'yop-poll' ),
                 'noLogsSelectedForBulk' => esc_html__( 'No logs selected', 'yop-poll' ),
-				'deleteBulkBansSingleMessage' => esc_html__( 'Are you sure you want to delete this ban?', 'yop-poll' ),
-				'deleteBulkBansMultiMessage' => esc_html__( 'Are you sure you want to delete these bans?', 'yop-poll' ),
+                'deleteBulkBansSingleMessage' => esc_html__( 'Are you sure you want to delete this ban?', 'yop-poll' ),
+                'deleteBulkBansMultiMessage' => esc_html__( 'Are you sure you want to delete these bans?', 'yop-poll' ),
                 'deleteBulkLogsSingleMessage' => esc_html__( 'Are you sure you want to delete this log?', 'yop-poll' ),
                 'deleteBulkLogsMultiMessage' => esc_html__( 'Are you sure you want to delete these logs?', 'yop-poll' ),
-				/* PRO */
-				'deleteCustomFieldMessage' => esc_html__( 'Are you sure you want to delete this field?', 'yop-poll' ),
-				'deleteQuestionMessage' => esc_html__( 'Are you sure you want to delete this question?', 'yop-poll' ),
-				'deleteSpaceSeparatorMessage' => esc_html__( 'Are you sure you want to delete this space separator?', 'yop-poll' ),
-				'deleteTextBlockMessage' => esc_html__( 'Are you sure you want to delete this text block?', 'yop-poll' ),
-				/* END PRO */
-				'deleteAnswerMessage' => esc_html__( 'Are you sure you want to delete this answer?', 'yop-poll' ),
-				'deleteAnswerNotAllowedMessage' => esc_html__( 'Answer can\'t be deleted. At least one answer is required!', 'yop-poll' ),
-				'deleteCustomFieldMessage' => esc_html__( 'Are you sure you want to delete this custom field?', 'yop-poll' ),
-				'deleteCancelLabel' => esc_html__( 'Cancel', 'yop-poll' ),
-				'deleteOkLabel' => esc_html__( 'Ok', 'yop-poll' ),
-				'noTemplateSelectedLabel' => esc_html__( 'Before generating the preview a template is required', 'yop-poll' ),
-				'noNumberOfColumnsDefined' => esc_html__( 'Number of columns is missing', 'yop-poll' ),
-				'numberOfColumnsTooBig' => esc_html__( 'Too many columns. Max 12 allowed', 'yop-poll' ),
-				'selectHelperText' => esc_html__( 'Click to select', 'yop-poll' ),
-				'publishDateImmediately' => esc_html__( 'Publish immediately', 'yop-poll' ),
-				'publishDateSchedule' => esc_html__( 'Schedule for', 'yop-poll' ),
-				'copyToClipboardSuccess' => esc_html__( 'Code Copied To Clipboard', 'yop-poll' ),
-				'copyToClipboardError' => array(
-					'press' => esc_html__( 'Press', 'yop-poll' ),
-					'copy' => esc_html__( ' to copy', 'yop-poll' ),
-					'noSupport' => esc_html__( 'No Support', 'yop-poll' )
-				),
-				'captchaParams' => array(
-					'imgPath' => YOP_POLL_URL . 'public/assets/img/',
-					'url' => YOP_POLL_URL . 'app.php',
-					'accessibilityAlt' => esc_html__( 'Sound icon', 'yop-poll' ),
-					'accessibilityTitle' => esc_html__( 'Accessibility option: listen to a question and answer it!', 'yop-poll' ),
-					'accessibilityDescription' => __( 'Type below the <strong>answer</strong> to what you hear. Numbers or words:', 'yop-poll' ),
-					'explanation' => __( "Click or touch the <strong>ANSWER</strong>", 'yop-poll' ),
-					'refreshAlt' => esc_html__( 'Refresh/reload icon', 'yop-poll' ),
-					'refreshTitle' => esc_html__( 'Refresh/reload: get new images and accessibility option!', 'yop-poll' )
-				),
-				'previewParams' => array(
-					'pollPreviewTitle' => esc_html__( 'Poll Preview', 'yop-poll' ),
-					'choosePreviewText' => esc_html__( 'Show preview for', 'yop-poll' ),
-					'votingText' => esc_html__( 'Voting', 'yop-poll' ),
-					'resultsText' => esc_html__( 'Results', 'yop-poll' ),
-					'numberOfVotesSingular' => esc_html__( 'vote', 'yop-poll' ),
-					'numberOfVotesPlural' => esc_html__( 'votes', 'yop-poll' ),
-					'numberOfAnswerSingular' => esc_html__( 'answer', 'yop-poll' ),
-					'numberOfAnswersPlural' => esc_html__( 'answers', 'yop-poll' ),
-					'annonymousVoteText' => esc_html__( 'Anonymous Vote', 'yop-poll' ),
-					'wordpressVoteText' => esc_html__( 'Sign in with Wordpress', 'yop-poll' ),
-					'facebookVoteText' => esc_html__( 'Sign in with Facebook', 'yop-poll' ),
-					'googleVoteText' => esc_html__( 'Sign in with Google', 'yop-poll' )
-				),
-				'saveParams' => array(
-					'noTemplateSelected' => esc_html__( 'Template is missing', 'yop-poll' ),
-					'generalErrorMessage' => esc_html__( ' is missing', 'yop-poll' ),
-					'noPollName' => esc_html__( 'Poll name is missing', 'yop-poll' ),
-					'noQuestion' => esc_html__( 'Question Text is missing', 'yop-poll' ),
-					'noAnswerText' => esc_html__( 'Answer Text is missing', 'yop-poll' ),
-					'noAnswerLink' => esc_html__( 'Answer Link is missing', 'yop-poll' ),
-					'noAnswerEmbed' => esc_html__( 'Answer Embed is missing', 'yop-poll' ),
-					'noOtherLabel' => esc_html__( 'Label for Other is missing', 'yop-poll' ),
-					'noMinAnswers' => esc_html__( 'Minimum answers is missing', 'yop-poll' ),
-					'noMaxAnswers' => esc_html__( 'Maximum answers is missing', 'yop-poll' ),
-					'noCustomFieldName' => esc_html__( 'Custom Field Name is missing', 'yop-poll' ),
-					'noStartDate' => esc_html__( 'Poll Start Date is missing', 'yop-poll' ),
-					'noEndDate' => esc_html__( 'Poll End Date is missing', 'yop-poll' ),
-					'noCustomDate' => esc_html__( 'Custom Date for displaying results is missing', 'yop-poll' ),
-					'noShowResultsMoment' => esc_html__( 'Show Results Time is missing', 'yop-poll' ),
-					'noShowResultsTo' => esc_html__( 'Show Results To is missing', 'yop-poll' ),
-					'noVoteAsWordpress' => esc_html__( 'Vote As Wordpress User is missing', 'yop-poll' )
-				),
-				'saveBanParams' => array(
-					'noBanFor' => esc_html__( 'Ban For is missing', 'yop-poll' ),
-					'noBanValue' => esc_html__( 'Ban Value is missing', 'yop-poll' )
-				),
-				'deleteBanMessage' => esc_html__( 'Are you sure you want to delete this ban?', 'yop-poll' ),
+                /* PRO */
+                'deleteCustomFieldMessage' => esc_html__( 'Are you sure you want to delete this field?', 'yop-poll' ),
+                'deleteQuestionMessage' => esc_html__( 'Are you sure you want to delete this question?', 'yop-poll' ),
+                'deleteSpaceSeparatorMessage' => esc_html__( 'Are you sure you want to delete this space separator?', 'yop-poll' ),
+                'deleteTextBlockMessage' => esc_html__( 'Are you sure you want to delete this text block?', 'yop-poll' ),
+                /* END PRO */
+                'deleteAnswerMessage' => esc_html__( 'Are you sure you want to delete this answer?', 'yop-poll' ),
+                'deleteAnswerNotAllowedMessage' => esc_html__( 'Answer can\'t be deleted. At least one answer is required!', 'yop-poll' ),
+                'deleteCustomFieldMessage' => esc_html__( 'Are you sure you want to delete this custom field?', 'yop-poll' ),
+                'deleteCancelLabel' => esc_html__( 'Cancel', 'yop-poll' ),
+                'deleteOkLabel' => esc_html__( 'Ok', 'yop-poll' ),
+                'noTemplateSelectedLabel' => esc_html__( 'Before generating the preview a template is required', 'yop-poll' ),
+                'noNumberOfColumnsDefined' => esc_html__( 'Number of columns is missing', 'yop-poll' ),
+                'numberOfColumnsTooBig' => esc_html__( 'Too many columns. Max 12 allowed', 'yop-poll' ),
+                'selectHelperText' => esc_html__( 'Click to select', 'yop-poll' ),
+                'publishDateImmediately' => esc_html__( 'Publish immediately', 'yop-poll' ),
+                'publishDateSchedule' => esc_html__( 'Schedule for', 'yop-poll' ),
+                'copyToClipboardSuccess' => esc_html__( 'Code Copied To Clipboard', 'yop-poll' ),
+                'copyToClipboardError' => array(
+                    'press' => esc_html__( 'Press', 'yop-poll' ),
+                    'copy' => esc_html__( ' to copy', 'yop-poll' ),
+                    'noSupport' => esc_html__( 'No Support', 'yop-poll' )
+                ),
+                'captchaParams' => array(
+                    'imgPath' => YOP_POLL_URL . 'public/assets/img/',
+                    'url' => YOP_POLL_URL . 'app.php',
+                    'accessibilityAlt' => esc_html__( 'Sound icon', 'yop-poll' ),
+                    'accessibilityTitle' => esc_html__( 'Accessibility option: listen to a question and answer it!', 'yop-poll' ),
+                    'accessibilityDescription' => __( 'Type below the <strong>answer</strong> to what you hear. Numbers or words:', 'yop-poll' ),
+                    'explanation' => __( "Click or touch the <strong>ANSWER</strong>", 'yop-poll' ),
+                    'refreshAlt' => esc_html__( 'Refresh/reload icon', 'yop-poll' ),
+                    'refreshTitle' => esc_html__( 'Refresh/reload: get new images and accessibility option!', 'yop-poll' )
+                ),
+                'previewParams' => array(
+                    'pollPreviewTitle' => esc_html__( 'Poll Preview', 'yop-poll' ),
+                    'choosePreviewText' => esc_html__( 'Show preview for', 'yop-poll' ),
+                    'votingText' => esc_html__( 'Voting', 'yop-poll' ),
+                    'resultsText' => esc_html__( 'Results', 'yop-poll' ),
+                    'numberOfVotesSingular' => esc_html__( 'vote', 'yop-poll' ),
+                    'numberOfVotesPlural' => esc_html__( 'votes', 'yop-poll' ),
+                    'numberOfAnswerSingular' => esc_html__( 'answer', 'yop-poll' ),
+                    'numberOfAnswersPlural' => esc_html__( 'answers', 'yop-poll' ),
+                    'annonymousVoteText' => esc_html__( 'Anonymous Vote', 'yop-poll' ),
+                    'wordpressVoteText' => esc_html__( 'Sign in with Wordpress', 'yop-poll' ),
+                    'facebookVoteText' => esc_html__( 'Sign in with Facebook', 'yop-poll' ),
+                    'googleVoteText' => esc_html__( 'Sign in with Google', 'yop-poll' )
+                ),
+                'saveParams' => array(
+                    'noTemplateSelected' => esc_html__( 'Template is missing', 'yop-poll' ),
+                    'generalErrorMessage' => esc_html__( ' is missing', 'yop-poll' ),
+                    'noPollName' => esc_html__( 'Poll name is missing', 'yop-poll' ),
+                    'noQuestion' => esc_html__( 'Question Text is missing', 'yop-poll' ),
+                    'noAnswerText' => esc_html__( 'Answer Text is missing', 'yop-poll' ),
+                    'noAnswerLink' => esc_html__( 'Answer Link is missing', 'yop-poll' ),
+                    'noAnswerEmbed' => esc_html__( 'Answer Embed is missing', 'yop-poll' ),
+                    'noOtherLabel' => esc_html__( 'Label for Other is missing', 'yop-poll' ),
+                    'noMinAnswers' => esc_html__( 'Minimum answers is missing', 'yop-poll' ),
+                    'noMaxAnswers' => esc_html__( 'Maximum answers is missing', 'yop-poll' ),
+                    'noCustomFieldName' => esc_html__( 'Custom Field Name is missing', 'yop-poll' ),
+                    'noStartDate' => esc_html__( 'Poll Start Date is missing', 'yop-poll' ),
+                    'noEndDate' => esc_html__( 'Poll End Date is missing', 'yop-poll' ),
+                    'noCustomDate' => esc_html__( 'Custom Date for displaying results is missing', 'yop-poll' ),
+                    'noShowResultsMoment' => esc_html__( 'Show Results Time is missing', 'yop-poll' ),
+                    'noShowResultsTo' => esc_html__( 'Show Results To is missing', 'yop-poll' ),
+                    'noVoteAsWordpress' => esc_html__( 'Vote As Wordpress User is missing', 'yop-poll' )
+                ),
+                'saveBanParams' => array(
+                    'noBanFor' => esc_html__( 'Ban For is missing', 'yop-poll' ),
+                    'noBanValue' => esc_html__( 'Ban Value is missing', 'yop-poll' )
+                ),
+                'deleteBanMessage' => esc_html__( 'Are you sure you want to delete this ban?', 'yop-poll' ),
                 'deleteLogMessage' => esc_html__( 'Are you sure you want to delete this log?', 'yop-poll' ),
                 'viewLogDetailsQuestionText' => esc_html__( 'Question', 'yop-poll' ),
                 'viewLogDetailsAnswerText' => esc_html__( 'Answer', 'yop-poll' ),
                 'showLogDetailsLinkText' => esc_html__( 'Answer', 'yop-poll' ),
                 'showLogDetailsLinkText' => esc_html__( 'View Details', 'yop-poll' ),
                 'hideLogDetailsLinkText' => esc_html__( 'Hide Details', 'yop-poll' ),
-				'numberOfVotesText'      => esc_html__( 'Number of Votes', 'yop-poll' ),
-				'resultsParams'=> array(
-					'singleVote' => esc_html__( 'vote', 'yop-poll' ),
-					'multipleVotes' => esc_html__( 'votes', 'yop-poll' )
-				),
-				'importOld' => array(
-					'gdprEnabledContinue' => esc_html__( 'Got It. Continue with the migration', 'yop-poll' ),
-					'gdprEnabledStop' => esc_html__( 'Hold On. I want to change settings', 'yop-poll' ),
-					'gdprEnabledGeneral' => esc_html__( 'Please review your settings before continue', 'yop-poll' ),
-					'gdprEnabledChoice' => esc_html__( 'Your selection', 'yop-poll' ),
-					'gdprEnabledMigrateAsIs' => esc_html__( 'This setting will migrate all data from previous version without any anonymization', 'yop-poll' ),
-					'gdprEnabledAnonymizeIp' => esc_html__( 'This setting will migrate all data from previous version but ips will be anonymized', 'yop-poll' ),
-					'gdprEnabledNoStore' => esc_html__( 'This setting will migrate everything except ip addresses. ', 'yop-poll' ),
-					'response' => esc_html__( 'Response:', 'yop-poll' ),
-					'allDone' => esc_html__( 'All done.', 'yop-poll' ),
-					'importStarted' => esc_html__( 'Migration started', 'yop-poll' ),
-				)
+                'numberOfVotesText'      => esc_html__( 'Number of Votes', 'yop-poll' ),
+                'resultsParams'=> array(
+                    'singleVote' => esc_html__( 'vote', 'yop-poll' ),
+                    'multipleVotes' => esc_html__( 'votes', 'yop-poll' )
+                ),
+                'importOld' => array(
+                    'gdprEnabledContinue' => esc_html__( 'Got It. Continue with the migration', 'yop-poll' ),
+                    'gdprEnabledStop' => esc_html__( 'Hold On. I want to change settings', 'yop-poll' ),
+                    'gdprEnabledGeneral' => esc_html__( 'Please review your settings before continue', 'yop-poll' ),
+                    'gdprEnabledChoice' => esc_html__( 'Your selection', 'yop-poll' ),
+                    'gdprEnabledMigrateAsIs' => esc_html__( 'This setting will migrate all data from previous version without any anonymization', 'yop-poll' ),
+                    'gdprEnabledAnonymizeIp' => esc_html__( 'This setting will migrate all data from previous version but ips will be anonymized', 'yop-poll' ),
+                    'gdprEnabledNoStore' => esc_html__( 'This setting will migrate everything except ip addresses. ', 'yop-poll' ),
+                    'response' => esc_html__( 'Response:', 'yop-poll' ),
+                    'allDone' => esc_html__( 'All done.', 'yop-poll' ),
+                    'importStarted' => esc_html__( 'Migration started', 'yop-poll' ),
+                )
 			)
 		) );
 	}
 	public function load_styles() {
 		wp_enqueue_style( 'yop-admin', YOP_POLL_URL . 'admin/assets/css/admin.css' );
-		wp_enqueue_style( 'yop-public', YOP_POLL_URL . 'public/assets/css/yop-poll-public.css' );
 	}
 	public function change_page_title( $title ) {
 		$_page = isset( $_GET['page'] ) ? $_GET['page'] : '';
@@ -402,6 +426,7 @@ class YOP_Poll_Admin {
 			$params['order_by'] = isset( $_GET['order_by'] ) ? $_GET['order_by'] : '';
 			$params['sort_order'] = isset( $_GET['sort_order'] ) ? $_GET['sort_order'] : 'desc';
 			$params['page_no'] = isset( $_GET['page_no'] ) ? $_GET['page_no'] : '1';
+			$params['perpage'] = isset( $_GET['perpage'] ) && is_numeric( $_GET['perpage'] ) && $_GET['perpage'] > 0 ? $_GET['perpage'] : 10;
 			$polls = YOP_Poll_Polls::get_polls( $params );
 			$template = YOP_POLL_PATH . 'admin/views/viewpolls.php';
 			echo YOP_Poll_View::render(
@@ -424,10 +449,10 @@ class YOP_Poll_Admin {
 		if ( current_user_can( 'yop_poll_add' ) ) {
 			$template = YOP_POLL_PATH . 'admin/views/addnewpoll.php';
 			$templates = YOP_Poll_Templates::get_templates();
-			$email_settings = YOP_Poll_Settings::get_email_settings();
 			echo YOP_Poll_View::render( $template, array(
 				'templates' => $templates,
-				'email_settings' => $email_settings,
+				'email_settings' => YOP_Poll_Settings::get_email_settings(),
+				'integrations' => YOP_Poll_Settings::get_integrations(),
 				'date_format' => self::$date_format
 			) );
 		}
@@ -447,6 +472,7 @@ class YOP_Poll_Admin {
 					echo YOP_Poll_View::render( $template, array(
 						'poll' => $poll,
 						'templates' => $templates,
+						'integrations' => YOP_Poll_Settings::get_integrations(),
 						'date_format' => self::$date_format ) );
 				} else {
 					echo __( 'You don\'t have sufficient permissions to access this page', 'yop-poll');
@@ -1169,7 +1195,7 @@ class YOP_Poll_Admin {
             wp_send_json_error( __( 'You are not allowed to perform this action', 'yop-poll' ) );
         }
     }
-    public function manage_settings() {
+	public function manage_settings() {
         if ( current_user_can( 'yop_poll_add' ) ) {
             $template = YOP_POLL_PATH . 'admin/views/viewsettings.php';
             $yop_poll_notification_from_name                = '';
@@ -1191,9 +1217,14 @@ class YOP_Poll_Admin {
                 $yop_poll_notification_subject = ( isset( $unserialized['email'] ) && isset( $unserialized['email']['subject'] ) ) ? $unserialized['email']['subject'] : '';
                 $yop_poll_notification_body = ( isset( $unserialized['email'] ) && isset( $unserialized['email']['message'] ) ) ? $unserialized['email']['message'] : '';
 
-                $yop_poll_media_facebook_integration            = ( isset( $unserialized['integrations'] ) && isset( $unserialized['integrations']['facebook'] ) && isset( $unserialized['integrations']['facebook']['integration'] ) ) ? $unserialized['integrations']['facebook']['integration'] : '';
+				$yop_poll_integrations_reCaptcha            = ( isset( $unserialized['integrations'] ) && isset( $unserialized['integrations']['reCaptcha'] ) && isset( $unserialized['integrations']['reCaptcha']['integration'] ) ) ? $unserialized['integrations']['reCaptcha']['integration'] : '';
+                $yop_poll_integrations_reCaptcha_site_key     = ( isset( $unserialized['integrations'] ) && isset( $unserialized['integrations']['reCaptcha'] ) && isset( $unserialized['integrations']['reCaptcha']['site_key'] ) ) ? $unserialized['integrations']['reCaptcha']['site_key'] : '';
+				$yop_poll_integrations_reCaptcha_secret_key     = ( isset( $unserialized['integrations'] ) && isset( $unserialized['integrations']['reCaptcha'] ) && isset( $unserialized['integrations']['reCaptcha']['secret_key'] ) ) ? $unserialized['integrations']['reCaptcha']['secret_key'] : '';
+
+				$yop_poll_media_facebook_integration            = ( isset( $unserialized['integrations'] ) && isset( $unserialized['integrations']['facebook'] ) && isset( $unserialized['integrations']['facebook']['integration'] ) ) ? $unserialized['integrations']['facebook']['integration'] : '';
                 $yop_poll_media_facebook_integration_app_id     = ( isset( $unserialized['integrations'] ) && isset( $unserialized['integrations']['facebook'] ) && isset( $unserialized['integrations']['facebook']['app_id'] ) ) ? $unserialized['integrations']['facebook']['app_id'] : '';
-                $yop_poll_media_google_integration              = ( isset( $unserialized['integrations'] ) && isset( $unserialized['integrations']['google'] ) && isset( $unserialized['integrations']['google']['integration'] ) ) ? $unserialized['integrations']['google']['integration'] : '';
+
+				$yop_poll_media_google_integration              = ( isset( $unserialized['integrations'] ) && isset( $unserialized['integrations']['google'] ) && isset( $unserialized['integrations']['google']['integration'] ) ) ? $unserialized['integrations']['google']['integration'] : '';
                 $yop_poll_media_google_integration_app_id       = ( isset( $unserialized['integrations'] ) && isset( $unserialized['integrations']['google'] ) && isset( $unserialized['integrations']['google']['app_id'] ) ) ? $unserialized['integrations']['google']['app_id'] : '';
                 $yop_poll_media_google_integration_app_secret   = ( isset( $unserialized['integrations'] ) && isset( $unserialized['integrations']['google'] ) && isset( $unserialized['integrations']['google']['app_secret'] ) ) ? $unserialized['integrations']['google']['app_secret'] : '';
             }
@@ -1203,7 +1234,10 @@ class YOP_Poll_Admin {
                 'yop_poll_notification_recipients' => $yop_poll_notification_recipients,
                 'yop_poll_notification_subject' => $yop_poll_notification_subject,
                 'yop_poll_notification_body' => $yop_poll_notification_body,
-                'yop_poll_media_facebook_integration' => $yop_poll_media_facebook_integration,
+				'yop_poll_integrations_reCaptcha' => $yop_poll_integrations_reCaptcha,
+                'yop_poll_integrations_reCaptcha_site_key' => $yop_poll_integrations_reCaptcha_site_key,
+                'yop_poll_integrations_reCaptcha_secret_key' => $yop_poll_integrations_reCaptcha_secret_key,
+				'yop_poll_media_facebook_integration' => $yop_poll_media_facebook_integration,
                 'yop_poll_media_facebook_integration_app_id' => $yop_poll_media_facebook_integration_app_id,
                 'yop_poll_media_google_integration' => $yop_poll_media_google_integration,
                 'yop_poll_media_google_integration_app_id' => $yop_poll_media_google_integration_app_id,
@@ -1212,7 +1246,7 @@ class YOP_Poll_Admin {
             echo YOP_Poll_View::render( $template, $render_array );
         }
     }
-    public function save_settings () {
+	public function save_settings () {
         if ( current_user_can( 'yop_poll_add' ) ) {
             if ( check_ajax_referer( 'yop-poll-update-settings', '_token', false ) ) {
                 $from_name = sanitize_text_field( wp_unslash( $_POST['from_name'] ) );
@@ -1220,12 +1254,15 @@ class YOP_Poll_Admin {
                 $recipients = sanitize_text_field( wp_unslash( $_POST['recipients'] ) );
                 $subject = sanitize_text_field( wp_unslash( $_POST['subject'] ) );
                 $body = sanitize_text_field( wp_unslash( $_POST['body'] ) );
+				$reCaptcha_integration = sanitize_text_field( wp_unslash( $_POST['reCaptcha_integration'] ) );
+				$reCaptcha_integration_site_key = sanitize_text_field( wp_unslash( $_POST['reCaptcha_integration_site_key'] ) );
+				$reCaptcha_integration_secret_key = sanitize_text_field( wp_unslash( $_POST['reCaptcha_integration_secret_key'] ) );
                 $facebook_integration = sanitize_text_field( wp_unslash( $_POST['facebook_integration'] ) );
                 $facebook_integration_app_id = sanitize_text_field( wp_unslash( $_POST['facebook_integration_app_id'] ) );
                 $google_integration = sanitize_text_field( wp_unslash( $_POST['google_integration'] ) );
                 $google_integration_app_id = sanitize_text_field( wp_unslash( $_POST['google_integration_app_id'] ) );
                 $google_integration_app_secret = sanitize_text_field( wp_unslash( $_POST['google_integration_app_secret'] ) );
-                if( !$from_name || !$from_email || !$recipients || !$subject || !$body || !$facebook_integration  || !$google_integration  ) {
+                if( !$from_name || !$from_email || !$recipients || !$subject || !$body || !$reCaptcha_integration || !$facebook_integration  || !$google_integration  ) {
                     wp_send_json_error( __( 'All fields are required', 'yop-poll' ) );
                 } else {
                     $yop_poll_settings = array(
@@ -1237,9 +1274,14 @@ class YOP_Poll_Admin {
                             'message'    => $body
                         ),
                         'integrations' => array(
+							'reCaptcha' => array(
+								'integration' => $reCaptcha_integration,
+								'site_key' => $reCaptcha_integration_site_key,
+								'secret_key' => $reCaptcha_integration_secret_key
+							),
                             'facebook' => array(
                                 'integration' => $facebook_integration,
-                                'app_id'      => $facebook_integration_app_id,
+                                'app_id'      => $facebook_integration_app_id
                             ),
                             'google'   => array(
                                 'integration' => $google_integration,
@@ -1253,7 +1295,7 @@ class YOP_Poll_Admin {
                     } else {
                         add_option( 'yop_poll_settings', serialize( $yop_poll_settings ) );
                     }
-                    wp_send_json_success( [ 'message' => __( 'Settings updated' ) ] );
+                    wp_send_json_success( [ 'message' => __( 'Settings updated', 'yop-poll' ) ] );
                 }
             } else {
                 wp_send_json_error( __( 'You are not allowed to perform this action', 'yop-poll' ) );

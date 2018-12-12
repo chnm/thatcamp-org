@@ -22,10 +22,10 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 			})(jQuery);
 		<?php
 		try {
-			$lastUpdated = wfWAF::getInstance()->getStorageEngine()->getConfig('rulesLastUpdated');
+			$lastUpdated = wfWAF::getInstance()->getStorageEngine()->getConfig('rulesLastUpdated', null, 'transient');
 			
 			$nextUpdate = PHP_INT_MAX;
-			$cron = wfWAF::getInstance()->getStorageEngine()->getConfig('cron');
+			$cron = (array) wfWAF::getInstance()->getStorageEngine()->getConfig('cron', null, 'livewaf');
 			if (is_array($cron)) {
 				/** @var wfWAFCronEvent $event */
 				foreach ($cron as $index => $event) {

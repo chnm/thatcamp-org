@@ -17,15 +17,10 @@ class YOP_POLL_Maintenance {
 				} elseif ( false !== strpos( $installed_version, '5.' ) ) {
 					$this->importer = new ClassYopPollImporter5x( 1000, 100 );
 				}
-			} else {
-				if ( true === version_compare( $installed_version, '6.0.0', '==' ) ) {
-					update_option( 'yop_poll_version', YOP_POLL_VERSION );
-				}
 			}
 		}
 		$this->dbschema->create_tables();
 		$this->capabilities->install();
-		//$this->create_archive_page();
 		if ( $this->importer ) {
 			$this->importer->initialise();
 		}
@@ -33,6 +28,7 @@ class YOP_POLL_Maintenance {
 		if ( ! wp_next_scheduled ( 'yop_poll_hourly_event', array() ) ) {
 			wp_schedule_event( time(), 'hourly', 'yop_poll_hourly_event', array() );
 		}
+        //$this->create_archive_page();
 	}
 	public function create_archive_page() {
 		$poll_archive_page = get_page_by_path( 'yop-poll-archive', ARRAY_A );
@@ -49,6 +45,10 @@ class YOP_POLL_Maintenance {
 		} else {
 			$poll_archive_page_id = $poll_archive_page['ID'];
 		}
+        $default_options = get_option( 'yop_poll_options' );
+        $default_options['archive_url'] = get_permalink( $poll_archive_page_id );
+        $default_options['yop_poll_archive_page_id'] = $poll_archive_page_id;
+        update_option( 'yop_poll_options', $default_options );
 	}
 	public function create_options() {
 		update_option( 'yop_poll_version', YOP_POLL_VERSION );
@@ -86,6 +86,11 @@ class YOP_POLL_Maintenance {
 				'message'    => 'Your Message Here'
 			),
 			'integrations' => array(
+				'reCaptcha' => array(
+					'enabled' => 'no',
+					'site_key' => '',
+					'secret_key' => ''
+				),
 				'facebook' => array(
 				    'integration' => 'no',
 					'app_id'      => '',
@@ -112,6 +117,11 @@ class YOP_POLL_Maintenance {
                 'message'    => isset( $old_settings['email_notifications_body'] ) ? $old_settings['email_notifications_body'] : 'Your Message Here'
             ),
             'integrations' => array(
+				'reCaptcha' => array(
+					'enabled' => 'no',
+					'site_key' => '',
+					'secret_key' => ''
+				),
                 'facebook' => array(
                     'integration'  => isset( $old_settings['facebook_integration'] ) ? $old_settings['facebook_integration'] : 'no',
                     'app_id'     => isset( $old_settings['facebook_appID'] ) ? $old_settings['facebook_appID'] : '',

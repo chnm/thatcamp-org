@@ -153,6 +153,11 @@ class UserList {
 	 */
 	var $user_template = '<div class="{class}">{user}</div>';
 
+
+	function __construct() {
+		add_filter( 'aa_show_name_css', array( $this, 'group_name' ), 10, 2 );
+	}
+
 	/**
 	 * Changes the template strings so the user is rendered in a html list.
 	 *
@@ -212,7 +217,7 @@ class UserList {
 	/**
 	 * Formats a grouped list of users
 	 *
-	 * @param Array $groups Array of an array of users. The array keys are used to retrieve the group name (see _group_name())
+	 * @param array $groups Array of an array of users. The array keys are used to retrieve the group name (see _group_name())
 	 *
 	 * @uses apply_filters() Calls 'aa_userlist_group_wrapper_template' hook
 	 * @uses apply_filters() Calls 'aa_userlist_group_template' hook
@@ -235,7 +240,7 @@ class UserList {
 	/**
 	 * Formats a list of users
 	 *
-	 * @param $users Array An array of users.
+	 * @param $users array An array of users.
 	 *
 	 * @uses apply_filters() Calls 'aa_userlist_template' hook
 	 * @return  mixed | String the html formatted list of users
@@ -252,9 +257,9 @@ class UserList {
 	/**
 	 * pages the list of users
 	 *
-	 * @param $users Array $groups An array of users.
+	 * @param $users array $groups An array of users.
 	 *
-	 * @return Array list of users
+	 * @return array list of users
 	 */
 	function page_users( $users ) {
 		if ( empty( $this->page_size ) ) {
@@ -308,7 +313,7 @@ class UserList {
 			'group_by'                => $this->group_by,
 			'user_link'               => $this->user_link,
 			'show_name'               => $this->show_name,
-			'show_name'               => $this->show_nickname,
+			'show_nickname'           => $this->show_nickname,
 			'show_postcount'          => $this->show_postcount,
 			'show_bbpress_post_count' => $this->show_bbpress_post_count,
 			'show_biography'          => $this->show_biography,
@@ -353,30 +358,27 @@ class UserList {
 
 
 		$name = '';
-		if ( $this->show_name ) {
-			$name = $user->display_name;
-		}
-
 		$divcss = array( 'user' );
 		if ( $this->show_name ) {
+			$name = $user->display_name;
 			$divcss[] = 'with-name';
+			$divcss = apply_filters( 'aa_show_name_css', $divcss, $user->display_name );
 		}
 
 
 		if ( $this->show_nickname ) {
 			$nickname = get_the_author_meta( 'nickname', $user->user_id );
+			$divcss[] = 'nickname-group-' . strtolower( substr( $nickname, 0, 1 ) );
 
 			if( $this->show_name ) {
 				$nickname = sprintf( apply_filters( 'AA_nickname_with_name_wrap', ' (%s)' ),  $nickname );
 			}
 
 			$name .= $nickname;
+			$divcss[] = 'with-nickname';
 		}
 
 		$alt = $title = $name;
-		if ( $this->show_nickname) {
-			$divcss[] = 'with-nickname';
-		}
 
 		$link       = false;
 		$link_types = explode( ',', $this->user_link );
@@ -500,7 +502,7 @@ class UserList {
 
 				$title .= ' (' . sprintf( _n( '%d post', '%d posts', $postcount, 'author-avatars' ), $postcount ) . ')';
 			}
-			$name .= sprintf( apply_filters( 'aa_post_count', ' (%d)', $postcount, $user ), $postcount );
+			$name .= sprintf( apply_filters( 'aa_post_count', ' <span class="aa-post-count-wrap-start">(</span>%d<span class="aa-post-count-wrap-end">)</span>', $postcount, $user ), $postcount );
 		}
 
 		if ( $this->show_bbpress_post_count && AA_is_bbpress() ) {
@@ -861,8 +863,13 @@ class UserList {
 			 */
 			$html .= apply_filters( 'aa_user_display_extra', $this->display_extra, $user );
 		}
-
-		$tpl_vars['{class}'] = implode( $divcss, ' ' );
+		/**
+		 * filter the array used to create the css for the user
+		 *
+		 * @param array $CSS The array of string used to create classes on user DIV.
+		 * @param object $user the user object
+		 */
+		$tpl_vars['{class}'] = implode( apply_filters( 'aa_user_final_css', $divcss, $user ), ' ' );
 		/**
 		 * filter on the complete HTML for the user
 		 *
@@ -881,10 +888,26 @@ class UserList {
 		return str_replace( array_keys( $tpl_vars ), $tpl_vars, apply_filters( 'aa_user_template', $this->user_template, $user ) );
 	}
 
+
+	function group_name( $divcss, $name_string ){
+
+		$names = explode( ' ', $name_string );
+		foreach ( $names as $key => $name ){
+
+			$keys = array_keys( $names );
+			if( $key === end( $keys ) ){
+				$key = 'last';
+			}
+			$divcss[] = 'name-group-' . $key . '-' . strtolower( substr( $name, 0, 1 ) );
+		}
+
+	    return $divcss;
+	}
+
 	/**
 	 * Returns a filtered and sorted list of users
 	 *
-	 * @return Array of users (WP_User objects), filtered, sorted and limited to the maximum number.
+	 * @return array of users (WP_User objects), filtered, sorted and limited to the maximum number.
 	 */
 	function get_users() {
 
@@ -1176,7 +1199,7 @@ class UserList {
 	 *
 	 * @access private
 	 *
-	 * @param $users Array of users (WP_User objects).
+	 * @param $users array of users (WP_User objects).
 	 *
 	 * @return mixed $users Array of users
 	 */
@@ -1307,10 +1330,10 @@ class UserList {
 	 *
 	 * @access private
 	 *
-	 * @param Array $users Array of users (WP_User objects).
+	 * @param array $users Array of users (WP_User objects).
 	 * @param       $order String|bool The key to sort by. Can be one of the following: random, user_id, user_login, display_name.
 	 *
-	 * @return Array $users Array of users (WP_User objects)
+	 * @return array $users Array of users (WP_User objects)
 	 */
 	function _sort( $users, $order = false ) {
 		if ( ! $order ) {
@@ -1370,6 +1393,9 @@ class UserList {
 	 * Returns a sorted users array by the white list order
 	 *
 	 * @access private
+	 *
+	 * @param $users
+	 *
 	 * @return array $users WP_user
 	 */
 	function _users_whitelist( $users ) {
@@ -1785,7 +1811,7 @@ class UserList {
 	 *
 	 * @param int $user_id
 	 *
-	 * @return Array of blog ids
+	 * @return array of blog ids
 	 */
 	function get_user_blogs( $user_id ) {
 		global $wpdb;
@@ -1811,10 +1837,10 @@ class UserList {
 	/**
 	 * Group the given set of users if set in field "group_by"
 	 *
-	 * @param $users Array of WP_User objects, by reference
+	 * @param $users array of WP_User objects, by reference
 	 *
 	 * @access private
-	 * @return Array of WP_User objects
+	 * @return array of WP_User objects
 	 */
 	function _group( $users ) {
 		if ( empty( $this->group_by ) ) {

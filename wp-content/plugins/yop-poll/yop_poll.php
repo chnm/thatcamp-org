@@ -3,7 +3,7 @@
 Plugin Name: YOP Poll
 Plugin URI:  https://yop-poll.com
 Description: Use a full option polling functionality to get the answers you need. YOP Poll is the perfect, easy to use poll plugin for your WordPress website.
-Version:     6.0.1
+Version:     6.0.3
 Author:      yourownprogrammer
 Author URI:  https://yop-poll.com
 License:     GPL2
@@ -11,7 +11,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Domain Path: /languages
 Text Domain: yop-poll
 */
-define ( 'YOP_POLL_VERSION', '6.0.1' );
+define ( 'YOP_POLL_VERSION', '6.0.3' );
 define ( 'YOP_POLL_URL', plugin_dir_url( __FILE__ ) );
 define ( 'YOP_POLL_PATH', plugin_dir_path( __FILE__ ) );
 require_once( 'admin/inc/dbschema.php' );

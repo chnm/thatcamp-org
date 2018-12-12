@@ -109,6 +109,9 @@ else if (wfConfig::get('touppPromptNeeded')) {
 		<div class="wf-row">
 			<div class="wf-col-xs-12">
 				<div class="wp-header-end"></div>
+				<?php if (isset($storageExceptionMessage)): ?>
+				<div class="notice notice-error"><p><?php echo $storageExceptionMessage; ?></p></div>
+				<?php endif; ?>
 			</div>
 		</div>
 		<div class="wf-row">

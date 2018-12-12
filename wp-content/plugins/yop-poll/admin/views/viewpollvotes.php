@@ -33,9 +33,9 @@ if( isset( $params['order_by'] ) && $params['order_by'] === 'added_date' ) {
         <form method="get">
             <div class="alignleft actions">
                 <input type="hidden" name="_votes_token" value="<?php echo wp_create_nonce( 'yop-poll-votes' ); ?>">
-                <input type="hidden" name="page" value="<?php echo $_REQUEST['page']; ?>">
-                <input type="hidden" name="action" value="<?php echo $_REQUEST['action']; ?>">
-                <input type="hidden" name="poll_id" value="<?php echo $_REQUEST['poll_id']; ?>">
+                <input type="hidden" name="page" value="<?php echo esc_attr( $_REQUEST['page'] ); ?>">
+                <input type="hidden" name="action" value="<?php echo esc_attr( $_REQUEST['action'] ); ?>">
+                <input type="hidden" name="poll_id" value="<?php echo esc_attr( $_REQUEST['poll_id'] ); ?>">
                 <select name="order_by" class="order_by">
                     <option value=""><?php _e( 'Order by', 'yop-poll' ); ?></option>
                     <option value="date" <?php if ( isset( $_REQUEST['order_by'] ) && 'date' === $_REQUEST['order_by'] )  echo 'selected'; ?> class="hide-if-no-js">
@@ -52,7 +52,7 @@ if( isset( $params['order_by'] ) && $params['order_by'] === 'added_date' ) {
         <div class="alignleft">
             <form method="get" action="" id="searchForm">
                 <input type="hidden" name="page" value="yop-polls">
-                <input type="hidden" name="poll_id" value="<?php echo $_REQUEST['poll_id']; ?>">
+                <input type="hidden" name="poll_id" value="<?php echo esc_attr( $_REQUEST['poll_id'] ); ?>">
                 <button class="export-logs-button button" id="doaction" type="button" name="export"><?php _e( 'Export', 'yop-poll' ); ?></button>
                 <input type="hidden" name="doExport" id="doExport" value="true">
             </form>

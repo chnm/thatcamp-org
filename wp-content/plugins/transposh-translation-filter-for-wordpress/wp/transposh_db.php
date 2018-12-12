@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v1.0.1
+ * Transposh v1.0.3
  * http://transposh.org/
  *
  * Copyright 2018, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Wed, 27 Jun 2018 14:41:10 +0300
+ * Date: Sat, 11 Aug 2018 02:00:05 +0300
  */
 
 /**
@@ -381,19 +381,13 @@ class transposh_database {
         //add our own custom header - so we will know that we got here
         header("Transposh: v-" . TRANSPOSH_PLUGIN_VER . " db_version-" . DB_VERSION);
 
-        // translation log stuff
-        if ($by) {
-            $user_ID = $by;
-        } else {
-            global $user_ID;
-            get_currentuserinfo();
+        // translation log stuff, log either by param, user id, or ip
+        $loguser = $by;
+        if (!$loguser) {
+            $loguser = get_current_user_id();
         }
-
-        // log either the user ID or his IP
-        if ('' == $user_ID) {
+        if (!$loguser) {
             $loguser = $_SERVER['REMOTE_ADDR'];
-        } else {
-            $loguser = $user_ID;
         }
 
         // reset values (for good code style)
@@ -503,7 +497,7 @@ class transposh_database {
         // if its a human translation we will call the action, this takes the assumption of a single human translation in
         // a function call, which should probably be verified (FIXME move up?)
         if ($source == 0) {
-            do_action('transposh_human_translation', $translation, $original, $lang);
+            do_action('transposh_human_translation', $translation, $original, $lang, $loguser);
         }
 
         // TODO: move this to an action
@@ -650,11 +644,10 @@ class transposh_database {
                 tp_logger($removelastfromlog, 3);
                 $GLOBALS['wpdb']->query($removelastfromlog);
             }
-            echo json_encode(true);
+            return true;
         } else {
-            echo json_encode(false);
+            return false;
         }
-        exit;
     }
 
     /**
@@ -717,6 +710,10 @@ class transposh_database {
         $query = "SELECT original, lang, translated, translated_by, UNIX_TIMESTAMP(timestamp) as timestamp " .
                 "FROM {$this->translation_log_table} " .
                 "WHERE source= 0 $dateterm " .
+                "UNION " .
+                "SELECT original, lang, translated, translated_by, UNIX_TIMESTAMP(timestamp) as timestamp " .
+                "FROM {$this->translation_table} " .
+                "WHERE source= 0 $dateterm " .
                 "ORDER BY timestamp ASC $limitterm";
         tp_logger("query is $query");
 
@@ -727,21 +724,34 @@ class transposh_database {
     /**
      * 
      * @param type $source
+     * @param type $date
      * @param type $limit
-     * @param type $by
+     * @param type $orderby
      * @param type $order
+     * @param type $filter
      * @return type
      */
-    function get_filtered_translations($source = '0', $date = 'null', $limit = '', $orderby = 'timestamp', $order = 'DESC') {
+    function get_filtered_translations($source = '0', $date = 'null', $limit = '', $orderby = 'timestamp', $order = 'DESC', $filter = '') {
         $limitterm = '';
         $dateterm = '';
-        if ($date != "null")
-            $dateterm = "and UNIX_TIMESTAMP(timestamp) > $date";
+        if ($source != '') {
+            $sourceterm = "source=$source";
+        }
+        if ($date != "null") {
+            $dateterm = "";
+            if ($sourceterm) {
+                $dateterm = "AND ";
+            }
+            $dateterm .= "UNIX_TIMESTAMP(timestamp) > $date";
+        }
+        if (($sourceterm || $dateterm) && $filter) {
+            $filter = "AND " . $filter;
+        }
         if ($limit)
             $limitterm = "LIMIT $limit";
         $query = "SELECT * " . //original, lang, translated, translated_by, UNIX_TIMESTAMP(timestamp) as timestamp " .
                 "FROM {$this->translation_table} " .
-                "WHERE source= 0 $dateterm " .
+                "WHERE $sourceterm $dateterm $filter " .
                 "ORDER BY $orderby $order $limitterm";
         tp_logger("query is $query");
 
@@ -752,21 +762,31 @@ class transposh_database {
     /**
      * 
      * @param type $source
+     * @param type $date
      * @param type $limit
      * @param type $by
      * @param type $order
+     * @param type $filter
      * @return type
      */
-    function get_filtered_translations_count($source = '0', $date = 'null', $limit = '', $by = '', $order = 'DESC') {
+    function get_filtered_translations_count($source = '0', $date = 'null', $filter = '') {
         $dateterm = '';
-        if ($date != "null")
-            $dateterm = "and UNIX_TIMESTAMP(timestamp) > $date";
-        if ($limit)
-            $limitterm = "LIMIT $limit";
+        if ($source != '') {
+            $sourceterm = "source=$source";
+        }
+        if ($date != "null") {
+            $dateterm = "";
+            if ($sourceterm) {
+                $dateterm = "AND ";
+            }
+            $dateterm .= "UNIX_TIMESTAMP(timestamp) > $date";
+        }
+        if (($sourceterm || $dateterm) && $filter) {
+            $filter = "AND " . $filter;
+        }
         $query = "SELECT count(*) " . //original, lang, translated, translated_by, UNIX_TIMESTAMP(timestamp) as timestamp " .
                 "FROM {$this->translation_table} " .
-                "WHERE source= 0 $dateterm ";
-        ;
+                "WHERE $sourceterm $dateterm $filter";
         tp_logger("query is $query");
 
         $count = $GLOBALS['wpdb']->get_var($query);
@@ -1057,12 +1077,12 @@ class transposh_database {
         $removebase64baddies = "DELETE FROM {$this->translation_table} WHERE `original` LIKE '%,' AND `source` != 0";
         tp_logger($removebase64baddies, 3);
         $GLOBALS['wpdb']->query($removebase64baddies);
-        
+
         $removetranslationsofnothing = "DELETE FROM {$this->translation_table} WHERE `original` = '' AND `source` != 0";
         tp_logger($removetranslationsofnothing, 3);
         $GLOBALS['wpdb']->query($removetranslationsofnothing);
-            
-        
+
+
         // optimize it
         $optimizesql = "OPTIMIZE TABLE {$this->translation_table}, {$this->translation_log_table}";
         tp_logger($optimizesql, 3);

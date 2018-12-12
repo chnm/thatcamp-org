@@ -1,5 +1,5 @@
 <?php
-define('WORDFENCE_API_VERSION', '2.24'); 
+define('WORDFENCE_API_VERSION', '2.25'); 
 define('WORDFENCE_API_URL_SEC', 'https://noc1.wordfence.com/');
 define('WORDFENCE_API_URL_NONSEC', 'http://noc1.wordfence.com/');
 define('WORDFENCE_API_URL_BASE_SEC', WORDFENCE_API_URL_SEC . 'v' . WORDFENCE_API_VERSION . '/');
@@ -25,3 +25,5 @@ if (!defined('WORDFENCE_SCAN_FAILURE_THRESHOLD')) { define('WORDFENCE_SCAN_FAILU
 if (!defined('WORDFENCE_SCAN_START_FAILURE_THRESHOLD')) { define('WORDFENCE_SCAN_START_FAILURE_THRESHOLD', 15); }
 if (!defined('WORDFENCE_PREFER_WP_HOME_FOR_WPML')) { define('WORDFENCE_PREFER_WP_HOME_FOR_WPML', false); } //When determining the unfiltered `home` and `siteurl` with WPML installed, use WP_HOME and WP_SITEURL if set instead of the database values
 if (!defined('WORDFENCE_SCAN_MIN_EXECUTION_TIME')) { define('WORDFENCE_SCAN_MIN_EXECUTION_TIME', 8); }
+if (!defined('WORDFENCE_SCAN_MAX_INI_EXECUTION_TIME')) { define('WORDFENCE_SCAN_MAX_INI_EXECUTION_TIME', 90); }
+if (!defined('WORDFENCE_ALLOW_DIRECT_MYSQLI')) { define('WORDFENCE_ALLOW_DIRECT_MYSQLI', true); }

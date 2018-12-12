@@ -1,4 +1,5 @@
 <?php
+if (defined('WFWAF_VERSION') && !defined('WFWAF_RUN_COMPLETE')) {
 
 interface wfWAFLexerInterface {
 
@@ -675,5 +676,4 @@ class wfWAFStringScanner {
 		$this->captures = $captures;
 	}
 }
-
-
+}

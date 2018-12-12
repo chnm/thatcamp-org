@@ -1,4 +1,6 @@
 <?php
+if (!defined('WORDFENCE_VERSION')) { exit; }
+
 $wfBulkCountries = array(
 "AD" => __("Andorra", 'wordfence'),
 "AE" => __("United Arab Emirates", 'wordfence'),

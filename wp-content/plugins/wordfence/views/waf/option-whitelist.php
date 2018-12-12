@@ -58,6 +58,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 							var entry = {
 								data: {
 									description: "<?php esc_attr_e('Whitelisted via Firewall Options page', 'wordfence'); ?>",
+									source: 'waf-options',
 									disabled: false,
 									ip: "<?php echo esc_attr(wfUtils::getIP()); ?>",
 									timestamp: Math.round(Date.now() / 1000),

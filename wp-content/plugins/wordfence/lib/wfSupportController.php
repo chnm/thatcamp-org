@@ -56,6 +56,7 @@ class wfSupportController {
 	const ITEM_FIREWALL_WAF_WHITELIST = 'firewall-waf-whitelist';
 	const ITEM_FIREWALL_WAF_OPTION_DELAY_BLOCKING = 'firewall-waf-option-delay-blocking';
 	const ITEM_FIREWALL_WAF_OPTION_WHITELISTED_IPS = 'firewall-waf-option-whitelisted-ips';
+	const ITEM_FIREWALL_WAF_OPTION_WHITELISTED_SERVICES = 'firewall-waf-option-whitelisted-services';
 	const ITEM_FIREWALL_WAF_IGNORED_ALERT_IPS = 'firewall-waf-option-ignored-alert-ips';
 	const ITEM_FIREWALL_WAF_OPTION_IMMEDIATELY_BLOCK_URLS = 'firewall-waf-option-immediately-block-urls';
 	const ITEM_FIREWALL_WAF_OPTION_ENABLE_LOGIN_SECURITY = 'firewall-waf-option-enable-login-security';
@@ -71,6 +72,7 @@ class wfSupportController {
 	const ITEM_FIREWALL_WAF_OPTION_PREVENT_ADMIN_REGISTRATION = 'firewall-waf-option-prevent-admin-registration';
 	const ITEM_FIREWALL_WAF_OPTION_PREVENT_AUTHOR_SCAN = 'firewall-waf-option-prevent-author-scan';
 	const ITEM_FIREWALL_WAF_OPTION_BLOCK_BAD_POST = 'firewall-waf-option-block-bad-post';
+	const ITEM_FIREWALL_WAF_OPTION_CUSTOM_BLOCK_TEXT = 'firewall-waf-option-custom-block-text';
 	const ITEM_FIREWALL_WAF_OPTION_CHECK_PASSWORD = 'firewall-waf-option-check-password';
 	const ITEM_FIREWALL_WAF_OPTION_PARTICIPATE_WFSN = 'firewall-waf-option-participate-wfsn';
 	const ITEM_FIREWALL_WAF_OPTION_ENABLE_ADVANCED_BLOCKING = 'firewall-waf-option-enable-advanced-blocking';
@@ -144,11 +146,8 @@ class wfSupportController {
 	const ITEM_TOOLS_TWO_FACTOR = 'tools-two-factor';
 	const ITEM_TOOLS_LIVE_TRAFFIC = 'tools-live-traffic';
 	const ITEM_TOOLS_LIVE_TRAFFIC_OPTION_ENABLE = 'tools-live-traffic-option-enable';
-	const ITEM_TOOLS_COMMENT_SPAM = 'tools-comment-spam';
-	const ITEM_TOOLS_COMMENT_SPAM_OPTION_HOLD_ANONYMOUS = 'tools-comment-spam-option-hold-anonymous';
-	const ITEM_TOOLS_COMMENT_SPAM_OPTION_SCAN = 'tools-comment-spam-option-scan';
-	const ITEM_TOOLS_COMMENT_SPAM_OPTION_ADVANCED = 'tools-comment-spam-option-advanced';
 	const ITEM_TOOLS_WHOIS_LOOKUP = 'tools-whois-lookup';
+	const ITEM_TOOLS_IMPORT_EXPORT = 'tools-import-export';
 	
 	const ITEM_DIAGNOSTICS_SYSTEM_CONFIGURATION = 'diagnostics-system-configuration';
 	const ITEM_DIAGNOSTICS_TEST_MEMORY = 'diagnostics-test-memory';
@@ -225,6 +224,7 @@ class wfSupportController {
 			case self::ITEM_FIREWALL_WAF_WHITELIST:
 			case self::ITEM_FIREWALL_WAF_OPTION_DELAY_BLOCKING:
 			case self::ITEM_FIREWALL_WAF_OPTION_WHITELISTED_IPS:
+			case self::ITEM_FIREWALL_WAF_OPTION_WHITELISTED_SERVICES:
 			case self::ITEM_FIREWALL_WAF_IGNORED_ALERT_IPS:
 			case self::ITEM_FIREWALL_WAF_OPTION_IMMEDIATELY_BLOCK_URLS:
 			case self::ITEM_FIREWALL_WAF_OPTION_ENABLE_LOGIN_SECURITY:
@@ -240,6 +240,7 @@ class wfSupportController {
 			case self::ITEM_FIREWALL_WAF_OPTION_PREVENT_ADMIN_REGISTRATION:
 			case self::ITEM_FIREWALL_WAF_OPTION_PREVENT_AUTHOR_SCAN:
 			case self::ITEM_FIREWALL_WAF_OPTION_BLOCK_BAD_POST:
+			case self::ITEM_FIREWALL_WAF_OPTION_CUSTOM_BLOCK_TEXT:
 			case self::ITEM_FIREWALL_WAF_OPTION_CHECK_PASSWORD:
 			case self::ITEM_FIREWALL_WAF_OPTION_PARTICIPATE_WFSN:
 			case self::ITEM_FIREWALL_WAF_OPTION_ENABLE_ADVANCED_BLOCKING:
@@ -313,11 +314,8 @@ class wfSupportController {
 			case self::ITEM_TOOLS_TWO_FACTOR:
 			case self::ITEM_TOOLS_LIVE_TRAFFIC:
 			case self::ITEM_TOOLS_LIVE_TRAFFIC_OPTION_ENABLE:
-			case self::ITEM_TOOLS_COMMENT_SPAM:
-			case self::ITEM_TOOLS_COMMENT_SPAM_OPTION_HOLD_ANONYMOUS:
-			case self::ITEM_TOOLS_COMMENT_SPAM_OPTION_SCAN:
-			case self::ITEM_TOOLS_COMMENT_SPAM_OPTION_ADVANCED:
 			case self::ITEM_TOOLS_WHOIS_LOOKUP:
+			case self::ITEM_TOOLS_IMPORT_EXPORT:
 				
 			case self::ITEM_DIAGNOSTICS_SYSTEM_CONFIGURATION:
 			case self::ITEM_DIAGNOSTICS_TEST_MEMORY:

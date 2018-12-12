@@ -31,7 +31,9 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$this->topic_body = "<p>This is <br> a <br /> test &#039; paragraph for topic forum [topic-forum], URL: [topic-url], and Author: [topic-author]</p>\n\n<p>And a new <br/>paragraph</p>";
 		$this->reply_body = "<p>This is <br> a <br /> test &#039; paragraph for reply forum [reply-forum], Topic URL: [topic-url], URL: [reply-url], and Author: [reply-author]</p>\n\n<p>And a new <br/>paragraph</p>";
 		
-		$user = $this->factory->user->create_and_get( array( 'role' => 'administrator', 'user_login' => 'admin' ) );
+		$user = $this->factory->user->create_and_get( array( 'role' => 'administrator' ) );
+		
+		$this->user = $user;
 		
 		// Create new forum
 		$this->forum_id = bbp_insert_forum( 
@@ -77,8 +79,8 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 		
 		// Set up the expected body regexes
-		$this->topic_body_regex = "<p>This is <br> a <br \/> test ' paragraph for topic forum test-forum, URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, and Author: admin<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
-		$this->reply_body_regex = "<p>This is <br> a <br \/> test ' paragraph for reply forum test-forum, Topic URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, URL: http:\/\/wp_plugins\/\?p={$this->reply_id}, and Author: admin<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
+		$this->topic_body_regex = "<p>This is <br> a <br \/> test ' paragraph for topic forum test-forum, URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, and Author: {$this->user->user_login}<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
+		$this->reply_body_regex = "<p>This is <br> a <br \/> test ' paragraph for reply forum test-forum, Topic URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, URL: http:\/\/wp_plugins\/\?p={$this->reply_id}, and Author: {$this->user->user_login}<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
 	}
 	
 	public function tearDown()

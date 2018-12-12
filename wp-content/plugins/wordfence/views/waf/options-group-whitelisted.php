@@ -60,7 +60,8 @@ if (!isset($collapseable)) {
 										'title' => __('Admin Panel', 'wordfence'),
 									),
 								),
-								'title' => __('Monitor background requests from an administrator\'s web browser for false positives', 'wordfence'),
+								'noSpacer' => true,
+								'htmlTitle' => '<strong>' . __('Monitor background requests from an administrator\'s web browser for false positives', 'wordfence') . '</strong>',
 								'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_FIREWALL_WAF_OPTION_MONITOR_AJAX),
 							))->render();
 							?>

@@ -190,6 +190,10 @@ class wfFirewall
 		catch (Exception $e) {
 			//Ignore, return 0%
 		}
+		
+		if (!WFWAF_OPERATIONAL) {
+			return array(array('percentage' => 1.0, 'title' => __('Repair the Wordfence Firewall configuration.', 'wordfence')));
+		}
 
 		return array();
 	}

@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v1.0.1
+ * Transposh v1.0.3
  * http://transposh.org/
  *
  * Copyright 2018, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Wed, 27 Jun 2018 14:41:10 +0300
+ * Date: Sat, 11 Aug 2018 02:00:05 +0300
  */
 
 // This magic value will cause the option to be set from post
@@ -95,13 +95,46 @@ class transposh_option {
  * @property transposh_option $enable_footer_scripts_o
  * @property boolean          $enable_detect_redirect        Option to enable detect and redirect language @since 0.3.8
  * @property transposh_option $enable_detect_redirect_o
+ * @property boolean          $enable_geoip_redirect         Option to enable language redirection based on geoip detection @since 1.0.2
+ * @property transposh_option $enable_geoip_redirect_o
  * @property boolean          $transposh_collect_stats       Should I allow collecting of anonymous stats (@since 0.7.6)
  * @property transposh_option $transposh_collect_stats_o
+
+ * @property string           $mail_to                    Option defining recipient (Admin if empty) (@since 1.0.3)
+ * @property transposh_option $mail_to_o 
+ * @property boolean          $mail_ontranslate           Should I send mail immediately on human translation (@since 1.0.3)
+ * @property transposh_option $mail_ontranslate_o
  * 
  * @property int              $transposh_backup_schedule     Stores the schedule for the backup service, 0-none, 1-daily, 2-live (backup @since 0.5.0)
  * @property transposh_option $transposh_backup_schedule_o  
  * @property string           $transposh_key                 Stores the site key to transposh services (backup @since 0.5.0)
  * @property transposh_option $transposh_key_o
+ * 
+ *  Engines
+ * 
+ * @property boolean          $enable_autotranslate          Option to enable/disable auto translation
+ * @property transposh_option $enable_autotranslate_o
+ * @property boolean          $enable_autoposttranslate      Option to enable/disable auto translation of posts
+ * @property transposh_option $enable_autoposttranslate_o
+ * @property string           $msn_key                       Option to store the msn API key
+ * @property transposh_option $msn_key_o
+ * @property string           $google_key                    Option to store the Google API key
+ * @property transposh_option $google_key_o
+ * @property string           $yandex_key                    Option to store the Yandex API key
+ * @property transposh_option $yandex_key_o
+ * @property string           $preferred_translators         Option to store translator preference @since 0.4.2 (changed to string and plural @since 0.9.8)
+ * @property transposh_option $preferred_translators_o
+ * @property string           $oht_id                        Option to store the oht ID
+ * @property transposh_option $oht_id_o
+ * @property string           $oht_key                       Option to store the oht key;
+ * @property transposh_option $oht_key_o
+ * 
+ * Widget
+ * 
+ * @property boolean          $widget_progressbar            Option allowing progress bar display
+ * @property transposh_option $widget_progressbar_o
+ * @property boolean          $widget_allow_set_deflang      Allows user to set his default language per #63 @since 0.3.8
+ * @property transposh_option $widget_allow_set_deflang_o
  * @property string           $widget_theme                  Allows theming of the progressbar and edit window @since 0.7.0
  * @property transposh_option $widget_theme_o
  * 
@@ -194,7 +227,7 @@ class transposh_plugin_options {
         $this->register_option('viewable_languages', TP_OPT_STRING);
         $this->register_option('sorted_languages', TP_OPT_STRING);
 
-        $this->register_option('allow_full_version_upgrade', TP_OPT_BOOLEAN, 0);
+            $this->register_option('allow_full_version_upgrade', TP_OPT_BOOLEAN, 0);
         $this->register_option('allow_anonymous_translation', TP_OPT_BOOLEAN, 1);
         $this->register_option('enable_default_translate', TP_OPT_BOOLEAN, 0);
         $this->register_option('enable_search_translate', TP_OPT_BOOLEAN, 1);
@@ -204,7 +237,11 @@ class transposh_plugin_options {
         $this->register_option('enable_permalinks', TP_OPT_BOOLEAN, 0);
         $this->register_option('enable_footer_scripts', TP_OPT_BOOLEAN, 0);
         $this->register_option('enable_detect_redirect', TP_OPT_BOOLEAN, 0);
+        $this->register_option('enable_geoip_redirect', TP_OPT_BOOLEAN, 0);
         $this->register_option('transposh_collect_stats', TP_OPT_BOOLEAN, 1);
+
+        $this->register_option('mail_to', TP_OPT_STRING);
+        $this->register_option('mail_ontranslate', TP_OPT_BOOLEAN, 0);
 
         $this->register_option('transposh_backup_schedule', TP_OPT_OTHER, 2);
         $this->register_option('transposh_key', TP_OPT_STRING);

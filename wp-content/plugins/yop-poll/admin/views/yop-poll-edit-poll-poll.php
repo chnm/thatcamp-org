@@ -73,7 +73,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-md-3">
-					<?php _e( 'Show Total Answers', 'yop-poll' );?>
+					<?php _e( 'Show Total Answers', 'yop-poll' ); ?>
 				</div>
 				<div class="col-md-9">
 					<?php
@@ -86,8 +86,8 @@
 			        }
 			        ?>
 			        <select class="show-total-answers" style="width:100%">
-			            <option value="yes" <?php echo $show_total_votes_yes;?>><?php _e( 'Yes', 'yop-poll' );?></option>
-			            <option value="no" <?php echo $show_total_votes_no;?>><?php _e( 'No', 'yop-poll' );?></option>
+			            <option value="yes" <?php echo $show_total_answers_yes; ?>><?php _e( 'Yes', 'yop-poll' ) ;?></option>
+			            <option value="no" <?php echo $show_total_answers_no; ?>><?php _e( 'No', 'yop-poll' ); ?></option>
 			        </select>
 				</div>
 			</div>
@@ -285,16 +285,27 @@
 				</div>
 				<div class="col-md-9">
 					<?php
-			        if ( 'yes' === $poll->meta_data['options']['poll']['useCaptcha'] ) {
-			            $use_captcha_yes = 'selected';
-			            $use_captcha_no = '';
-			        } else {
-			            $use_captcha_yes = '';
-			            $use_captcha_no = 'selected';
-			        }
+					$use_captcha_yes = '';
+					$use_reCaptcha_yes = '';
+					$use_captcha_no = '';
+					switch ( $poll->meta_data['options']['poll']['useCaptcha'] ) {
+						case 'yes': {
+							$use_captcha_yes = 'selected';
+							break;
+						}
+						case 'yes-recaptcha': {
+							$use_reCaptcha_yes = 'selected';
+							break;
+						}
+						case 'no': {
+							$use_captcha_no = 'selected';
+							break;
+						}
+					}
 			        ?>
 			        <select class="use-captcha" style="width:100%">
-			            <option value="yes" <?php echo $use_captcha_yes;?>><?php _e( 'Yes', 'yop-poll' );?></option>
+			            <option value="yes" <?php echo $use_captcha_yes;?>><?php _e( 'Yes, use built in Captcha', 'yop-poll' );?></option>
+						<option value="yes-recaptcha"  <?php echo $use_reCaptcha_yes;?>><?php _e( 'Yes, use reCaptcha', 'yop-poll' );?></option>
 			            <option value="no" <?php echo $use_captcha_no;?>><?php _e( 'No', 'yop-poll' );?></option>
 			        </select>
 				</div>
@@ -346,6 +357,15 @@
 					<input type="text" class="form-control email-notifications-from-email" value="<?php echo esc_html( $poll->meta_data['options']['poll']['emailNotificationsFromEmail'] );?>"/>
 				</div>
 			</div>
+            <div class="form-group send-email-notifications-section <?php echo $send_email_notifications_class;?>">
+                <div class="col-md-3 field-caption">
+                    <?php _e( 'Recipients', 'yop-poll' ); ?>
+                </div>
+                <div class="col-md-9">
+                    <?php _e( 'Use comma separated email addresses: email@xmail.com,email2@ymail.com', 'yop_poll' ); ?>
+                    <input class="form-control email-notifications-recipients" value="<?php echo esc_html(  isset( $poll->meta_data['options']['poll']['emailNotificationsRecipients'] ) ? $poll->meta_data['options']['poll']['emailNotificationsRecipients'] : '' );?>">
+                </div>
+            </div>
 			<div class="form-group send-email-notifications-section <?php echo $send_email_notifications_class;?>">
 				<div class="col-md-3 field-caption">
 					<?php _e( 'Subject', 'yop-poll' );?>

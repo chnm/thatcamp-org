@@ -1,10 +1,16 @@
 <?php
 class YOP_Poll_Public {
 	public function __construct() {
+		add_filter( 'script_loader_tag', array( $this, 'clean_recaptcha_url' ), 10, 2 );
 		add_action( 'yop_poll_hourly_event', array( $this, 'cron' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_dependencies' ) );
 		add_action( 'init', array( $this, 'load_translation' ) );
 		add_action( 'init', array( $this, 'create_shortcodes' ) );
+	}
+	public function clean_recaptcha_url( $tag, $handle ) {
+		if ( 'yop-reCaptcha' !== $handle )
+        	return $tag;
+		return str_replace( "&#038;", "&", str_replace( ' src', ' async defer src', $tag ) );
 	}
 	public function load_dependencies() {
 		$this->load_styles();
@@ -19,6 +25,14 @@ class YOP_Poll_Public {
 			$plugin_settings_decoded = unserialize( $plugin_settings);
 		}
 		wp_enqueue_script( 'yop-public', YOP_POLL_URL . 'public/assets/js/yop-poll-public.min.js', array( 'jquery' ) );
+		/* add reCaptcha if enabled */
+		$args = array(
+			'render' => 'explicit',
+			'onload' => 'YOPPollOnLoadRecaptcha'
+		);
+		wp_register_script( 'yop-reCaptcha', add_query_arg ( $args, 'https://www.google.com/recaptcha/api.js' ), '', null );
+		wp_enqueue_script( 'yop-reCaptcha' );
+		/* done adding reCaptcha */
 		wp_enqueue_script( 'google-api', 'https://apis.google.com/js/platform.js', array( 'yop-public' ), null );
 		wp_localize_script( 'yop-public', 'objectL10n', array(
 			'yopPollParams' => array(
@@ -27,6 +41,9 @@ class YOP_Poll_Public {
 					'wpLogin' => wp_login_url( admin_url( 'admin-ajax.php?action=yop_poll_record_wordpress_vote' ) )
 				),
 				'apiParams' => array(
+					'reCaptcha' => array(
+						'siteKey' => ( isset( $plugin_settings_decoded['integrations'] ) && isset( $plugin_settings_decoded['integrations']['reCaptcha'] ) && isset( $plugin_settings_decoded['integrations']['reCaptcha']['site_key'] ) ) ? $plugin_settings_decoded['integrations']['reCaptcha']['site_key'] : ''
+					),
 					'facebook' => array(
 						'appId' => isset( $plugin_settings_decoded['integrations']['facebook']['app_id'] )? $plugin_settings_decoded['integrations']['facebook']['app_id'] : ''
 					),
@@ -67,7 +84,8 @@ class YOP_Poll_Public {
 		load_plugin_textdomain( 'yop-poll', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	}
 	public function create_shortcodes()  {
-		add_shortcode( 'yop_poll', array( $this, 'parse_regular_shortcode' ) );
+        add_shortcode( 'yop_poll', array( $this, 'parse_regular_shortcode' ) );
+        add_shortcode( 'yop_poll_archive', array( $this, 'parse_archive_shortcode' ) );
 	}
 	public function parse_regular_shortcode( $atts ) {
 		$params = shortcode_atts(
@@ -80,6 +98,25 @@ class YOP_Poll_Public {
 			$atts, 'yop_poll' );
 		return $this->generate_poll( $params );
 	}
+    public function parse_archive_shortcode( $atts ) {
+	    $content = '';
+        $sql = 'SELECT `id` FROM ' . $GLOBALS['wpdb']->yop_poll_polls;
+        $polls = $GLOBALS['wpdb']->get_results( $sql, ARRAY_A );
+        if ( count( $polls ) > 0 ) {
+            foreach ( $polls as $p ) {
+	            $params = shortcode_atts(
+		            array(
+			            'id'      => $p['id'],
+			            'results' => 0,
+			            'tid'   => '',
+			            'show_results' => ''
+		            ),
+		            $atts, 'yop_poll' );
+                $content .= $this->generate_poll( $params );
+            }
+        }
+        return $content;
+    }
 	public function generate_poll( $params ){
 		if ( isset( $params['id'] ) && ( '' !== $params['id'] ) ) {
 			$poll = '';

@@ -37,7 +37,7 @@ if (!isset($hideShowMenuItem)) {
 			<div class="wf-block-content wf-clearfix">
 				<?php if ($showControls): ?>
 				<p>
-					<?php _e('These options let you ignore certain types of visitors, based on their level of access, usernames, IP address or browser type. If you run a very high traffic website where it is not feasible to see your visitors in real-time, simply un-check the live traffic option and nothing will be written to the Wordfence tracking tables.', 'wordfence') ?>
+					<?php _e('These options let you choose which traffic to log and to ignore certain types of visitors, based on their level of access, usernames, IP address, or browser type. If you run a high-traffic website where it is not feasible to see your visitors in real-time, simply change the <strong>Traffic logging mode</strong> to "Security Only."', 'wordfence') ?>
 				</p>
 				
 				<div class="wf-row">
@@ -58,10 +58,10 @@ if (!isset($hideShowMenuItem)) {
 						echo wfView::create('options/option-switch', array(
 							'optionName' => 'liveTrafficEnabled',
 							'value' => wfConfig::get('liveTrafficEnabled') ? '1': '0',
-							'title' => __('Enable live traffic logging', 'wordfence'),
+							'title' => __('Traffic logging mode', 'wordfence'),
 							'states' => array(
-								array('value' => '0', 'label' => __('Off', 'wordfence')),
-								array('value' => '1', 'label' => __('On', 'wordfence')),
+								array('value' => '0', 'label' => __('Security Only', 'wordfence')),
+								array('value' => '1', 'label' => __('All Traffic', 'wordfence')),
 							),
 							'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_TOOLS_LIVE_TRAFFIC_OPTION_ENABLE),
 							'alignment' => 'wf-right',

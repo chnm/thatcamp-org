@@ -9,6 +9,9 @@ else if (wfConfig::get('touppPromptNeeded')) {
 	echo wfView::create('gdpr/banner')->render();
 }
 ?>
+<?php if (isset($storageExceptionMessage)): ?>
+	<div class="notice notice-error"><p><?php echo $storageExceptionMessage; ?></p></div>
+<?php endif; ?>
 <div class="wrap wordfence">
 	<div class="wf-container-fluid">
 		<?php

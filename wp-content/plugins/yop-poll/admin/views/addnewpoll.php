@@ -1,4 +1,4 @@
-<div id="yop-main-area" class="bootstrap-yop wrap add-edit-poll">
+<div id="yop-main-area" class="bootstrap-yop wrap add-edit-poll" data-reCaptcha-enabled="<?php echo $integrations['reCaptcha']['enabled'];?>" data-reCaptcha-site-key="<?php echo $integrations['reCaptcha']['site_key'];?>">
     <h1>
         <?php _e( 'Create Poll', 'yop-poll' );?>
     </h1>
@@ -261,11 +261,13 @@
                             <?php wp_nonce_field('yop-poll-before-buy' ); ?>
                             <input type="hidden" name="action" value="do-buy">
                             <input type="hidden" name="upgrade" value="yes">
-                            <button class="btn btn-primary btn-lg" type="submit">
-								Upgrade to Pro for <u>Only</u> $17
+							<button class="btn btn-primary btn-lg" type="submit">
+								<b>Upgrade to Pro for <u>Only</u> $17</b>
 							</button>
-                            <br>
-                            60 days money back guarantee
+							<br>
+							One Time Payment. Lifetime Updates
+							<br>
+							60 days money back guarantee
                         </p>
                     </form>
                     <div class="yop_testimonials" style="border: 2px solid; border-radius: 15px; padding: 10px;">

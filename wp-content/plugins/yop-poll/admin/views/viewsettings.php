@@ -22,7 +22,7 @@
                                     </li>
                                     <li role="presentation" id="media-tab">
                                         <a href="#settings-media" aria-controls="media" role="tab" data-toggle="tab">
-                                            <?php _e( 'Media', 'yop-poll' );?>
+                                            <?php _e( 'Integrations', 'yop-poll' );?>
                                         </a>
                                     </li>
                                 </ul>
@@ -66,6 +66,48 @@
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="settings-media">
                                         <br><br>
+										<div class="row submenu" style="padding-top: 20px;">
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <?php _e( 'Use Google reCaptcha:', 'yop-poll' ); ?>
+                                            </div>
+											<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+												<?php
+												$reCaptcha_integration_yes = '';
+												$reCaptcha_integration_no = '';
+												$reCaptcha_data_section = '';
+												if ( 'yes' === $yop_poll_integrations_reCaptcha ) {
+													$reCaptcha_integration_yes = 'selected';
+												} else {
+													$reCaptcha_integration_no = 'selected';
+													$reCaptcha_data_section = 'hide';
+												}
+												?>
+												<select name="reCaptcha_integration" class="reCaptcha-integration-settings" style="width:100%">
+										            <option value="yes" <?php echo $reCaptcha_integration_yes;?>><?php _e( 'Yes', 'yop-poll' );?></option>
+										            <option value="no" <?php echo $reCaptcha_integration_no;?>><?php _e( 'No', 'yop-poll' );?></option>
+										        </select>
+											</div>
+										</div>
+										<div class="row submenu reCaptcha-data-section <?php echo $reCaptcha_data_section;?>" style="padding-top: 20px; margin-left: 20px;">
+											<div class="col-md-12">
+												<div class="row">
+													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+	                                                    <?php _e( '- Site Key:', 'yop-poll' ); ?>
+	                                                </div>
+	                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+	                                                    <input name="reCaptcha_integration_site_key" id="reCaptcha_integration_site_key" class="form-control" value="<?php echo esc_html( $yop_poll_integrations_reCaptcha_site_key ); ?>">
+	                                                </div>
+												</div>
+												<div class="row" style="padding-top: 10px;">
+													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+	                                                    <?php _e( '- Secret Key:', 'yop-poll' ); ?>
+	                                                </div>
+	                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+	                                                    <input name="reCaptcha_integration_secret_key" id="reCaptcha_integration_secret_key" class="form-control" value="<?php echo esc_html( $yop_poll_integrations_reCaptcha_secret_key ); ?>">
+	                                                </div>
+												</div>
+											</div>
+										</div>
                                         <div class="row submenu">
                                             <div class="row submenu" style="padding-top: 20px;">
                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -156,7 +198,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+								</div>
                             </div>
                         </div> <!-- /.container -->
                     </div>
@@ -221,8 +263,10 @@
 									<input type="hidden" name="action" value="do-buy">
 									<input type="hidden" name="upgrade" value="yes">
 									<button class="btn btn-primary btn-lg" type="submit">
-										Upgrade to Pro for <u>Only</u> $17
+										<b>Upgrade to Pro for <u>Only</u> $17</b>
 									</button>
+									<br>
+									One Time Payment. Lifetime Updates
 									<br>
 									60 days money back guarantee
 								</p>

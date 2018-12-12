@@ -20,8 +20,8 @@ else if (wfConfig::get('touppPromptNeeded')) {
 		$tabsArray = array(
 			array('twofactor', __('Two Factor Authentication')),
 			array('livetraffic', __('Live Traffic')),
-			array('commentspam', __('Comment Spam Filter')),
 			array('whois', __('Whois Lookup')),
+			array('importexport', __('Import/Export Options')),
 			array('diagnostics', __('Diagnostics')),
 		);
 

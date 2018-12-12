@@ -192,7 +192,8 @@
 				</div>
 				<div class="col-md-9">
 					<select class="use-captcha" style="width:100%">
-			            <option value="yes"><?php _e( 'Yes', 'yop-poll' );?></option>
+			            <option value="yes"><?php _e( 'Yes, use built in Captcha', 'yop-poll' );?></option>
+						<option value="yes-recaptcha"><?php _e( 'Yes, use reCaptcha', 'yop-poll' );?></option>
 			            <option value="no" selected><?php _e( 'No', 'yop-poll' );?></option>
 			        </select>
 				</div>
@@ -227,12 +228,21 @@
 			</div>
 			<div class="form-group send-email-notifications-section hide">
 				<div class="col-md-3 field-caption">
-					<?php _e( 'From Email', 'yop-poll' );?>
+					<?php _e( 'From Email', 'yop-poll' ); ?>
 				</div>
 				<div class="col-md-9">
 					<input type="text" class="form-control email-notifications-from-email" value="<?php echo $email_settings['from_email'];?>"/>
 				</div>
 			</div>
+            <div class="form-group send-email-notifications-section hide">
+                <div class="col-md-3 field-caption">
+                    <?php _e( 'Recipients', 'yop-poll' ); ?>
+                </div>
+                <div class="col-md-9">
+                    <?php _e( 'Use comma separated email addresses: email@xmail.com,email2@ymail.com', 'yop_poll' ); ?>
+                    <input class="form-control email-notifications-recipients" value="<?php echo $email_settings['recipients'] ?>">
+                </div>
+            </div>
 			<div class="form-group send-email-notifications-section hide">
 				<div class="col-md-3 field-caption">
 					<?php _e( 'Subject', 'yop-poll' );?>

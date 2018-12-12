@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v1.0.1
+ * Transposh v1.0.3
  * http://transposh.org/
  *
  * Copyright 2018, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Wed, 27 Jun 2018 14:41:10 +0300
+ * Date: Sat, 11 Aug 2018 02:00:05 +0300
  */
 
 require_once("shd/simple_html_dom.php");

@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('WORDFENCE_VERSION')) { exit; }
+
 /** @var wfRequestModel $hit */
 /** @var stdClass $hitData */
 

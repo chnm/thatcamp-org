@@ -4,6 +4,7 @@ class YOP_Poll_Polls {
 			$error_text,
 			$text_size_allowed = array( 'small', 'medium', 'large' ),
 			$yes_no_allowed = array( 'yes', 'no' ),
+			$captcha_allowed = array( 'yes', 'yes-recaptcha', 'no' ),
 			$answers_display_allowed = array( 'vertical', 'horizontal', 'columns' ),
 			$date_values_allowed = array( 'now', 'custom', 'never', 'custom-date' ),
 			$reset_stats_allowed = array( 'hours', 'days' ),
@@ -56,6 +57,7 @@ class YOP_Poll_Polls {
 		if ( '' !== $query ) {
 			$total_polls = $GLOBALS['wpdb']->get_var( $query );
 		}
+        self::$polls_per_page = $params['perpage'];
 		if ( 0 < $total_polls ) {
 			if ( $total_polls <= self::$polls_per_page ) {
 				$data['pagination'] = '';
@@ -445,25 +447,44 @@ class YOP_Poll_Polls {
 	}
 	public static function update( stdClass $poll ) {
 		$poll_id = $poll->id;
-		if ( 0 < intval( $poll_id ) ) {
+		if ( intval( $poll_id ) > 0 ) {
 			$elements_result = array();
 			self::validate_data( $poll );
 			if ( false === self::$errors_present ) {
 				$poll_meta_data = self::create_meta_data( $poll );
+				$db_poll_meta = unserialize( $GLOBALS['wpdb']->get_var( $GLOBALS['wpdb']->prepare( "SELECT `meta_data` FROM {$GLOBALS['wpdb']->yop_poll_polls} WHERE `id` = %d", $poll->id ) ) );
 				if ( 'yes' === $poll->options->poll->autoGeneratePollPage ) {
-					$page_id = wp_insert_post( array(
-						'ID' => ( isset( $poll->options->poll->pageId ) && ( 0 < $poll->options->poll->pageId ) ) ? $poll->options->poll->pageId : 0,
-						'post_title' => $poll->name,
-						'post_content' => "[yop_poll id='{$poll_id}']",
-						'post_status' => 'publish',
-						'post_type' => 'page',
-						'comment_status' => 'open',
-						'ping_status' => 'open',
-						'post_category' => array( 1 )
-					) );
+                    $has_page = true;
+                    if ( isset( $db_poll_meta['options']['poll']['pageId'] ) && ( $db_poll_meta['options']['poll']['pageId'] > 0 ) ){
+                        $poll_page_count = $GLOBALS['wpdb']->get_var( $GLOBALS['wpdb']->prepare( "SELECT COUNT(*) FROM {$GLOBALS['wpdb']->posts} WHERE `ID` = %d AND `post_status` = 'publish'", $db_poll_meta['options']['poll']['pageId'] ) );
+                        if ( 0 === (int)$poll_page_count ) {
+                            $has_page = false;
+                        }
+                    } else {
+                        $has_page = false;
+                    }
+                    if ( false === $has_page ) {
+                        $page_id = wp_insert_post( array(
+                            'post_title' => $poll->name,
+                            'post_content' => "[yop_poll id='{$poll_id}']",
+                            'post_status' => 'publish',
+                            'post_type' => 'page',
+                            'comment_status' => 'open',
+                            'ping_status' => 'open',
+                            'post_category' => array( 1 )
+                        ) );
+                    } else {
+                        wp_update_post( array(
+                            'ID' => $db_poll_meta['options']['poll']['pageId'],
+                            'post_title' => $poll->name
+                        ) );
+                        $page_id = $db_poll_meta['options']['poll']['pageId'];
+                    }
+
 					if ( 0 !== $page_id ) {
 						$poll_meta_data['options']['poll']['pageId'] = $page_id;
 						$poll_meta_data['options']['poll']['pageLink'] = get_permalink( $page_id );
+
 					}
 				} else {
 					if ( '' !== $poll->options->poll->pageId ) {
@@ -697,6 +718,7 @@ class YOP_Poll_Polls {
 					'sendEmailNotifications' => $poll->options->poll->sendEmailNotifications,
 					'emailNotificationsFromName' => $poll->options->poll->emailNotificationsFromName,
 					'emailNotificationsFromEmail' => $poll->options->poll->emailNotificationsFromEmail,
+                    'emailNotificationsRecipients' => $poll->options->poll->emailNotificationsRecipients,
 					'emailNotificationsSubject' => $poll->options->poll->emailNotificationsSubject,
 					'emailNotificationsMessage' => $poll->options->poll->emailNotificationsMessage,
 					'enableGdpr' => $poll->options->poll->enableGdpr,
@@ -1452,8 +1474,7 @@ class YOP_Poll_Polls {
 				( false === self::$errors_present ) &&
 				( 'yes' === $poll->options->poll->redirectAfterVote ) &&
 				( !isset( $poll->options->poll->redirectUrl ) ||
-				( '' === trim( $poll->options->poll->redirectUrl ) ) ||
-				( !filter_var( $poll->options->poll->redirectUrl, FILTER_VALIDATE_URL ) ) )
+				( '' === trim( $poll->options->poll->redirectUrl ) ) )
 			 ) {
 				 self::$errors_present = true;
 				 self::$error_text = __( 'Data for "Redirect Url" is invalid', 'yop-poll' );
@@ -1481,7 +1502,7 @@ class YOP_Poll_Polls {
 			}
 			if (
 				( false === self::$errors_present ) &&
-				( !in_array( $poll->options->poll->useCaptcha, self::$yes_no_allowed ) )
+				( !in_array( $poll->options->poll->useCaptcha, self::$captcha_allowed ) )
 			){
 				self::$errors_present = true;
 				self::$error_text = __( 'Data for "Use Captcha" is invalid', 'yop-poll' );
@@ -1511,6 +1532,15 @@ class YOP_Poll_Polls {
 				 self::$errors_present = true;
 				 self::$error_text = __( 'Data for "From Email" is invalid', 'yop-poll' );
 			}
+            if (
+                ( false === self::$errors_present ) &&
+                ( 'yes' === $poll->options->poll->sendEmailNotifications ) &&
+                ( !isset( $poll->options->poll->emailNotificationsRecipients ) ||
+                    ( '' === trim( $poll->options->poll->emailNotificationsRecipients ) ) )
+            ) {
+                self::$errors_present = true;
+                self::$error_text = __( 'Data for "Recipients" is invalid', 'yop-poll' );
+            }
 			if (
 				( false === self::$errors_present ) &&
 				( 'yes' === $poll->options->poll->sendEmailNotifications ) &&
@@ -1549,7 +1579,7 @@ class YOP_Poll_Polls {
 			}
 			if (
 				( false === self::$errors_present ) &&
-				( 0 < count( $poll->options->results->showResultsMoment ) ) &&
+				( 0 < count( $poll->options->results->showResultsMoment ) ) && !in_array('never', $poll->options->results->showResultsMoment ) &&
 				( ( 0 === count( $poll->options->results->showResultsTo )) ||
 				( 0 === count( array_intersect( $poll->options->results->showResultsTo, self::$show_results_to_allowed ) ) ) )
 			){
@@ -1647,36 +1677,45 @@ class YOP_Poll_Polls {
 			}
 		}
 	}
-	public static function is_ended( $poll, $is_serialized ) {
-		$today = new DateTime( current_time( 'mysql' ) );
-		if ( false === $is_serialized ) {
-			$poll_meta_data = unserialize( $poll['meta_data'] );
-		} else {
-			$poll_meta_data = $poll->meta_data;
-		}
-		if ( 'custom' === $poll_meta_data['options']['poll']['endDateOption'] ) {
-			$end_date = new DateTime( $poll_meta_data['options']['poll']['endDateCustom'] );
-			if ( $today > $end_date ) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
-	public static function ends_soon( $poll ) {
-		$ends_soon_date = new DateTime( current_time( 'mysql' ) );
-		$ends_soon_date->add( new DateInterval( 'P' . self::$ends_soon_interval . 'D' ) );
+    public static function is_ended( $poll, $is_serialized ) {
+        $today = date( 'Y-m-d H:i:s', strtotime( current_time( 'mysql' ) ) );
+        if ( false === $is_serialized ) {
+            $poll_meta_data = unserialize( $poll['meta_data'] );
+        } else {
+            $poll_meta_data = $poll->meta_data;
+        }
+        if ( 'custom' === $poll_meta_data['options']['poll']['endDateOption'] ) {
+            $end_date = date( 'Y-m-d H:i:s', strtotime( $poll_meta_data['options']['poll']['endDateCustom'] ) );
+            if ( false !== $end_date ) {
+                if ( $today > $end_date ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    public static function ends_soon( $poll ) {
+        $ends_soon_date = date( 'Y-m-d H:i:s', strtotime( current_time( 'mysql' ) . ' + ' . self::$ends_soon_interval. ' days' ) );
 		$poll_meta_data = unserialize( $poll['meta_data'] );
 		if ( 'custom' === $poll_meta_data['options']['poll']['endDateOption'] ) {
-			$end_date = new DateTime( $poll_meta_data['options']['poll']['endDateCustom'] );
-			if ( $ends_soon_date >= $end_date ) {
-				return true;
-			} else {
-				return false;
-			}
-		}
+            $end_date = date( 'Y-m-d H:i:s', strtotime( $poll_meta_data['options']['poll']['endDateCustom'] ) );
+            if ( false !== $end_date ) {
+                if ( $ends_soon_date >= $end_date ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+		} else {
+		    return false;
+        }
 	}
 	public static function get_poll(
 			$poll_id,
@@ -1733,27 +1772,35 @@ class YOP_Poll_Polls {
 		}
 	}
 	public static function is_ended_frontend( $poll ) {
-		$today = new DateTime( current_time( 'mysql' ) );
+        $today = date( 'Y-m-d H:i:s', strtotime( current_time( 'mysql' ) ) );
 		if ( 'custom' === $poll->meta_data['options']['poll']['endDateOption'] ) {
-			$end_date = new DateTime( $poll->meta_data['options']['poll']['endDateCustom'] );
-			if ( $today > $end_date ) {
-				return true;
-			} else {
-				return false;
-			}
+            $end_date = date( 'Y-m-d H:i:s', strtotime( $poll->meta_data['options']['poll']['endDateCustom'] ) );
+            if ( $end_date ) {
+                if ( $today > $end_date ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
 		} else {
 			return false;
 		}
 	}
 	public static function has_started_frontend( $poll ) {
-		$today = new DateTime( current_time( 'mysql' ) );
+        $today = date( 'Y-m-d H:i:s', strtotime( current_time( 'mysql' ) ) );
 		if ( 'custom' === $poll->meta_data['options']['poll']['startDateOption'] ) {
-			$end_date = new DateTime( $poll->meta_data['options']['poll']['startDateCustom'] );
-			if ( $today < $end_date ) {
-				return false;
-			} else {
-				return true;
-			}
+            $end_date = date( 'Y-m-d H:i:s', strtotime( $poll->meta_data['options']['poll']['startDateCustom'] ) );
+            if ( $end_date ) {
+                if ( $today < $end_date ) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return false;
+            }
 		} else {
 			return true;
 		}
@@ -1968,7 +2015,7 @@ class YOP_Poll_Polls {
 		}
 		if ( ( 'yes' === $poll->meta_data['options']['access']['limitVotesPerUser'] ) && ( $poll->meta_data['options']['access']['votesPerUserAllowed'] > 0 ) ) {
 			$query = $GLOBALS['wpdb']->prepare(
-				"SELECT COUNT(*) FROM {$GLOBALS['wpdb']->yop_poll_votes} WHERE `" . $search_field . "` = %s", $user
+				"SELECT COUNT(*) FROM {$GLOBALS['wpdb']->yop_poll_votes} WHERE `" . $search_field . "` = %s AND `poll_id` = %d AND `status` = 'active'", $user, $poll->id
 			);
 			$total_votes_for_user = $GLOBALS['wpdb']->get_var( $query );
 			if ( $total_votes_for_user >= $poll->meta_data['options']['access']['votesPerUserAllowed'] ) {

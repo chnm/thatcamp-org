@@ -58,6 +58,7 @@ class wfDiagnostic
 				'description' => __('General information about the Wordfence installation.', 'wordfence'),
 				'tests' => array(
 					'wfVersion' => __('Wordfence Version', 'wordfence'),
+					'geoIPVersion' => __('GeoIP Version', 'wordfence'),
 				),
 			),
 			'Filesystem' => array(
@@ -83,6 +84,8 @@ class wfDiagnostic
 					'wafLogPath' => __('WAF log path', 'wordfence'),
 					'wafSubdirectoryInstall' => __('WAF subdirectory installation', 'wordfence'),
 					'wafAutoPrependFilePath' => __('wordfence-waf.php path', 'wordfence'),
+					'wafFilePermissions' => __('WAF File Permissions', 'wordfence'),
+					'wafRecentlyRemoved' => __('Recently removed wflogs files', 'wordfence'),
 				),
 			),
 			'MySQL' => array(
@@ -160,6 +163,15 @@ class wfDiagnostic
 	public function wfVersion() {
 		return array('test' => true, 'message' => WORDFENCE_VERSION . ' (' . WORDFENCE_BUILD_NUMBER . ')');
 	}
+	
+	public function geoIPVersion() {
+		return array('test' => true, 'infoOnly' => true, 'message' => wfUtils::geoIPVersion());
+	}
+	
+	public function geoIPError() {
+		$error = wfUtils::last_error('geoip');
+		return array('test' => true, 'infoOnly' => true, 'message' => $error ? $error : __('None', 'wordfence'));
+	}
 
 	public function isPluginReadable() {
 		return is_readable(WORDFENCE_PATH);
@@ -179,7 +191,6 @@ class wfDiagnostic
 			WFWAF_LOG_PATH . 'ips.php', 
 			WFWAF_LOG_PATH . 'config.php',
 			WFWAF_LOG_PATH . 'rules.php',
-			WFWAF_LOG_PATH . 'wafRules.rules',
 		);
 		$unreadable = array();
 		foreach ($files as $f) {
@@ -208,7 +219,6 @@ class wfDiagnostic
 			WFWAF_LOG_PATH . 'ips.php',
 			WFWAF_LOG_PATH . 'config.php',
 			WFWAF_LOG_PATH . 'rules.php',
-			WFWAF_LOG_PATH . 'wafRules.rules',
 		);
 		$unwritable = array();
 		foreach ($files as $f) {
@@ -323,6 +333,52 @@ class wfDiagnostic
 			$path = '';
 		}
 		return array('test' => true, 'infoOnly' => true, 'message' => $path);
+	}
+	
+	public function wafFilePermissions() {
+		if (defined('WFWAF_LOG_FILE_MODE')) {
+			return array('test' => true, 'infoOnly' => true, 'message' => sprintf(__('%s - using constant', 'wordfence'), str_pad(decoct(WFWAF_LOG_FILE_MODE), 4, '0', STR_PAD_LEFT)));
+		}
+		
+		if (defined('WFWAF_LOG_PATH')) {
+			$template = rtrim(WFWAF_LOG_PATH, '/') . '/template.php';
+			if (file_exists($template)) {
+				$stat = @stat($template);
+				if ($stat !== false) {
+					$mode = $stat[2];
+					$updatedMode = 0600;
+					if (($mode & 0020) == 0020) {
+						$updatedMode = $updatedMode | 0060;
+					}
+					return array('test' => true, 'infoOnly' => true, 'message' => sprintf(__('%s - using template', 'wordfence'), str_pad(decoct($updatedMode), 4, '0', STR_PAD_LEFT)));
+				}
+			}
+		}
+		return array('test' => true, 'infoOnly' => true, 'message' => __('0660 - using default', 'wordfence'));
+	}
+	
+	public function wafRecentlyRemoved() {
+		$removalHistory = wfConfig::getJSON('diagnosticsWflogsRemovalHistory', array());
+		if (empty($removalHistory)) {
+			return array('test' => true, 'infoOnly' => true, 'message' => __('None', 'wordfence'));
+		}
+		
+		$message = array();
+		foreach ($removalHistory as $r) {
+			$m = wfUtils::formatLocalTime('M j, Y', $r[0]) . ': (' . count($r[1]) . ')';
+			$r[1] = array_filter($r[1], array($this, '_filterOutNestedEntries'));
+			$m .= ' ' . implode(', ', array_slice($r[1], 0, 5));
+			if (count($r[1]) > 5) {
+				$m .= ', ...';
+			}
+			$message[] = $m;
+		}
+		
+		return array('test' => true, 'infoOnly' => true, 'message' => implode("\n", $message));
+	}
+	
+	private function _filterOutNestedEntries($a) {
+		return !is_array($a);
 	}
 
 	public function processOwner() {

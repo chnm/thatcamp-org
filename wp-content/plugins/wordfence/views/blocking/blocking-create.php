@@ -470,7 +470,7 @@ $wfBlockRange = filter_input(INPUT_GET, 'wfBlockRange', FILTER_DEFAULT, FILTER_R
 									$('#wf-block-duration, #wf-block-reason, #wf-block-ip, #wf-block-ip-range, #wf-block-hostname, #wf-block-user-agent, #wf-block-referrer').val('');
 								}
 								else {
-									WFAD.colorboxModal((WFAD.isSmallScreen ? '300px' : '400px'), 'Error Saving Block', res.error);
+									WFAD.colorboxModalHTML((WFAD.isSmallScreen ? '300px' : '400px'), 'Error Saving Block', res.error);
 								}
 							});
 						});

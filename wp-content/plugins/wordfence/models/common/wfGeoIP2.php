@@ -6,22 +6,67 @@ require_once(dirname(__FILE__) . '/../../vendor/autoload.php');
 use GeoIp2\Database\Reader;
 
 class wfGeoIP2 {
+	const DB_WFLOGS = 'wflogs';
+	const DB_BUNDLED = 'bundled';
+	
+	static $_shared = array();
+	
 	private $_reader;
 	
 	/**
-	 * Returns the singleton wfGeoIP2.
+	 * Returns the singleton wfGeoIP2, optionally forcing use of a specific database.
 	 *
-	 * @return wfScanner
+	 * @return wfGeoIP2|bool
 	 */
-	public static function shared() {
-		static $_geoip = null;
-		if ($_geoip === null) {
-			$_geoip = new wfGeoIP2();
+	public static function shared($whichDB = false) {
+		try {
+			if (file_exists(WFWAF_LOG_PATH . '/GeoLite2-Country.mmdb') && ($whichDB === false || $whichDB == self::DB_WFLOGS)) {
+				if (isset(self::$_shared[self::DB_WFLOGS])) {
+					return self::$_shared[self::DB_WFLOGS];
+				}
+				
+				$reader = new Reader(WFWAF_LOG_PATH . '/GeoLite2-Country.mmdb');
+				self::$_shared[self::DB_WFLOGS] = new wfGeoIP2($reader);
+				return self::$_shared[self::DB_WFLOGS];
+			}
 		}
-		return $_geoip;
+		catch (Exception $e) {
+			//Fall through to bundled copy
+		}
+		
+		if ($whichDB == self::DB_WFLOGS) {
+			return false;
+		}
+		
+		if (isset(self::$_shared[self::DB_BUNDLED])) {
+			return self::$_shared[self::DB_BUNDLED];
+		}
+		$reader = new Reader(__DIR__ . '/../../lib/GeoLite2-Country.mmdb'); //Can throw, but we don't catch it here
+		self::$_shared[self::DB_BUNDLED] = new wfGeoIP2($reader);
+		return self::$_shared[self::DB_BUNDLED];
 	}
 	
-	public function __construct() {
+	/**
+	 * Automatically uses the wflogs version of the DB if present, otherwise uses the bundled one.
+	 * 
+	 * @param \GeoIp2\Database\Reader $reader If provided, uses the reader passed instead.
+	 */
+	public function __construct($reader = false) {
+		if ($reader !== false) {
+			$this->_reader = $reader;
+			return;
+		}
+		
+		try {
+			if (file_exists(WFWAF_LOG_PATH . '/GeoLite2-Country.mmdb')) {
+				$this->_reader = new Reader(WFWAF_LOG_PATH . '/GeoLite2-Country.mmdb');
+				return;
+			}
+		}
+		catch (Exception $e) {
+			//Fall through to bundled copy
+		}
+		
 		$this->_reader = new Reader(__DIR__ . '/../../lib/GeoLite2-Country.mmdb'); //Can throw, but we don't catch it because it means the installation is likely corrupt and needs fixed anyway
 	}
 	

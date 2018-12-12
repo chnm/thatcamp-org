@@ -11,7 +11,7 @@
 				userProfile.firstName = '';
 				userProfile.lastName = '';
 				userProfile.email = '';
-				puid = '<?php echo $_REQUEST['puid']; ?>';
+				puid = '<?php echo esc_attr( $_REQUEST['puid'] ); ?>';
 				pollObject = window.opener.document.querySelectorAll( "[data-uid='" + puid + "']" );
 				var result = window.opener.YOPPollSendBasicVote( pollObject, 'wordpress', userProfile );
 				if( 1 === result ) {

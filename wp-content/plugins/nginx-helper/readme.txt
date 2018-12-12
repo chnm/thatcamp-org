@@ -1,12 +1,12 @@
 === Nginx Helper ===
-Contributors: rtcamp, rahul286, saurabhshukla, manishsongirkar36, faishal, desaiuditd, darren-slatten, jk3us, daankortenbach, telofy, pjv, llonchj, jinnko, weskoop, bcole808, gungeekatx, rohanveer, chandrapatel, gagan0123, ravanh, michaelbeil, samedwards, niwreg, entr, nuvoPoint
+Contributors: rtcamp, rahul286, saurabhshukla, manishsongirkar36, faishal, desaiuditd, darren-slatten, jk3us, daankortenbach, telofy, pjv, llonchj, jinnko, weskoop, bcole808, gungeekatx, rohanveer, chandrapatel, gagan0123, ravanh, michaelbeil, samedwards, niwreg, entr, nuvoPoint, iam404, rittesh.patel, vishalkakadiya, BhargavBhandari90, vincent-lu, murrayjbrown, bryant1410, 1gor, matt-h, pySilver, johan-chassaing, dotsam, sanketio, petenelson, nathanielks, rigagoogoo, dslatten, jinschoi, kelin1003, vaishuagola27, rahulsprajapati, Joel-James, utkarshpatel
 Donate Link: http://rtcamp.com/donate/
 Tags: nginx, cache, purge, nginx map, nginx cache, maps, fastcgi, proxy, redis, redis-cache, rewrite, permalinks
 License: GPLv2 or later (of-course)
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.0
-Tested up to: 4.9.5
-Stable tag: 1.9.11
+Tested up to: 4.9.8
+Stable tag: 2.0.1
 
 Cleans nginx's fastcgi/proxy cache or redis-cache whenever a post is edited/published. Also does a few more things.
 
@@ -92,6 +92,19 @@ To purge a page immediately, follow these instructions:
 * Just open this in a browser and the page will be purged instantly.
 * Needless to say, this won't work, if you have a page or taxonomy called 'purge'.
 
+= FAQ - Nginx Redis Cache =
+
+**Q. Can I override the redis hostname, port and prefix?**
+
+Yes, you can force override the redis hostname, port or prefix by defining constant in wp-config.php. For example:
+
+```
+define('RT_WP_NGINX_HELPER_REDIS_HOSTNAME', '10.0.0.1');
+
+define('RT_WP_NGINX_HELPER_REDIS_PORT', '6000');
+
+define('RT_WP_NGINX_HELPER_REDIS_PREFIX', 'page-cache:');
+```
 
 = FAQ - Nginx Map =
 
@@ -113,6 +126,19 @@ Please post your problem in [our free support forum](http://community.rtcamp.com
 2. Remaining settings
 
 == Changelog ==
+
+= 2.0.1 =
+* Fix settings url for multisite: use network_admin_url to get network correct settings url. [#163](https://github.com/rtCamp/nginx-helper/pull/163) - by [Joel-James](https://github.com/Joel-James)
+* Fix php error with arbitrary statement in empty - Prior to PHP 5.5. [#165](https://github.com/rtCamp/nginx-helper/pull/165) - by [PatelUtkarsh](https://github.com/PatelUtkarsh)
+
+= 2.0.0 =
+* Fix typo causing failure to purge on trashed comment. [#159](https://github.com/rtCamp/nginx-helper/pull/159) - by [jinschoi](https://github.com/jinschoi)
+* Refactor Plugin structure and remove unused code. Initial code by [chandrapatel](https://github.com/chandrapatel), [#153](https://github.com/rtCamp/nginx-helper/pull/153) - by [jinschoi](https://github.com/kelin1003),
+* Run phpcs and fix warning. [#158](https://github.com/rtCamp/nginx-helper/pull/158)
+* Make compatible with EasyEngine v4.
+
+= 1.9.12 =
+* Allow override Redis host/port/prefix by defining constant in wp-config.php [#152](https://github.com/rtCamp/nginx-helper/pull/152) - by [vincent-lu](https://github.com/vincent-lu)
 
 = 1.9.11 =
 * Fixed issue where permalinks without trailing slash does not purging [#124](https://github.com/rtCamp/nginx-helper/issues/124) - by Patrick
@@ -344,6 +370,5 @@ Fix url escaping [#82](https://github.com/rtCamp/nginx-helper/pull/82) - by
 
 == Upgrade Notice ==
 
-= 1.9.11 =
-* Fixed issue where permalinks without trailing slash does not purging [#124](https://github.com/rtCamp/nginx-helper/issues/124) - by Patrick
-* Check whether role exist or not before removing capability. [#134](https://github.com/rtCamp/nginx-helper/pull/134) - by [1gor](https://github.com/1gor)
+= 1.9.12 =
+* Allow override Redis host/port/prefix by defining constant in wp-config.php [#152](https://github.com/rtCamp/nginx-helper/pull/152) - by [vincent-lu](https://github.com/vincent-lu)

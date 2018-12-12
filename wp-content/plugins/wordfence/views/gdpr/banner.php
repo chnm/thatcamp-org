@@ -52,7 +52,7 @@ if (!defined('WORDFENCE_VERSION')) { exit; }
 	</div>
 	<div class="wf-modal-footer">
 		<ul class="wf-flex-horizontal wf-full-width wf-flex-align-right">
-			<li class="wf-padding-add-right"><a href="https://www.wordfence.com/help/general-data-protection-regulation/#agreement-to-new-terms-and-privacy-policies" class="wf-btn wf-btn-default" target="_blank" rel="noopener noreferrer"><?php _e('Get More Info', 'wordfence'); ?></a></li>
+			<li class="wf-padding-add-right"><a href="https://www.wordfence.com/help/general-data-protection-regulation/#agreement-to-new-terms-and-privacy-policies" class="wf-btn wf-btn-default" target="_blank" rel="noopener noreferrer"><?php _e('Learn More', 'wordfence'); ?></a></li>
 			<li><a href="#" class="wf-btn wf-btn-primary" id="wf-toupp-changed-agree"><?php _e('Agree', 'wordfence'); ?></a></li>
 		</ul>
 	</div>

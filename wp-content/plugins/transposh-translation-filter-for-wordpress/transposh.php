@@ -5,7 +5,7 @@
   Plugin URI: http://transposh.org/
   Description: Translation filter for WordPress, After enabling please set languages at the <a href="admin.php?page=tp_main">the options page</a> Want to help? visit our development site at <a href="http://trac.transposh.org/">trac.transposh.org</a>.
   Author: Team Transposh
-  Version: 1.0.1
+  Version: 1.0.3
   Author URI: http://transposh.org/
   License: GPL (http://www.gnu.org/licenses/gpl.txt)
   Text Domain: transposh
@@ -13,14 +13,14 @@
  */
 
 /*
- * Transposh v1.0.1
+ * Transposh v1.0.3
  * http://transposh.org/
  *
  * Copyright 2018, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Wed, 27 Jun 2018 14:41:10 +0300
+ * Date: Sat, 11 Aug 2018 02:00:05 +0300
  */
 
 //avoid direct calls to this file where wp core files not present
@@ -42,6 +42,7 @@ require_once("wp/transposh_options.php");
 require_once("wp/transposh_postpublish.php");
 require_once("wp/transposh_backup.php");
 require_once("wp/transposh_3rdparty.php");
+require_once("wp/transposh_mail.php");
 //require_once("wp/transposh_wpmenu.php");
 
 /**
@@ -127,6 +128,7 @@ class transposh_plugin {
         $this->widget = new transposh_plugin_widget($this);
         $this->postpublish = new transposh_postpublish($this);
         $this->third_party = new transposh_3rdparty($this);
+        $this->mail = new transposh_mail($this);
 
         // initialize logger
         if ($this->options->debug_enable) {
@@ -206,7 +208,6 @@ class transposh_plugin {
         add_action('wp_ajax_tp_cookie_bck', array(&$this, 'on_ajax_nopriv_tp_cookie_bck'));
         add_action('wp_ajax_nopriv_tp_cookie_bck', array(&$this, 'on_ajax_nopriv_tp_cookie_bck'));
 
-        
         // comment_moderation_text - future filter TODO
         // full post wrapping (should happen late)
         add_filter('the_content', array(&$this, 'post_content_wrap'), 9999);
@@ -227,10 +228,12 @@ class transposh_plugin {
             add_filter('locale', array(&$this, 'transposh_locale_filter'));
         }
 
-        // internal update mechnism
-        add_filter('pre_set_site_transient_update_plugins', array(&$this, 'check_for_plugin_update'));
-        add_filter('plugins_api', array(&$this, 'plugin_api_call'), 10, 3);
-
+        // internal update mechnism - is disabled in wporg version unless user enabled this
+        if (!defined('FULL_VERSION') && $this->options->allow_full_version_upgrade) {
+            add_filter('http_request_args', array(&$this, 'filter_wordpress_org_update'), 10, 2);
+            add_filter('pre_set_site_transient_update_plugins', array(&$this, 'check_for_plugin_update'));
+            add_filter('plugins_api', array(&$this, 'plugin_api_call'), 10, 3);
+        }
         // debug function for bad redirects
         add_filter('wp_redirect', array(&$this, 'on_wp_redirect'), 10, 2);
         add_filter('redirect_canonical', array(&$this, 'on_redirect_canonical'), 10, 2);
@@ -355,7 +358,7 @@ class transposh_plugin {
         foreach (headers_list() as $header) {
             if (stripos($header, 'Content-Type:') !== false) {
                 tp_logger($header);
-                if (stripos($header, 'text') === false && stripos($header, 'json') === false) {
+                if (stripos($header, 'text') === false && stripos($header, 'json') === false && stripos($header, 'rss') === false) {
                     tp_logger("won't do that - $header");
                     $bad_content = true;
                 }
@@ -608,7 +611,7 @@ class transposh_plugin {
         // we'll go into this code of redirection only if we have options that need it (and no bot is involved, for the non-cookie)
         //  and this is not a special page or one that is refered by our site
         // bots can skip this altogether
-        if (($this->options->enable_detect_redirect || $this->options->widget_allow_set_deflang) &&
+        if (($this->options->enable_detect_redirect || $this->options->widget_allow_set_deflang || $this->options->enable_geoip_redirect) &&
                 !($this->is_special_page($_SERVER['REQUEST_URI']) || (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], $this->home_url) !== false)) &&
                 !(transposh_utils::is_bot())) {
             // we are starting a session if needed
@@ -627,19 +630,25 @@ class transposh_plugin {
                         if ($this->options->is_default_language($_COOKIE['TR_LNG']))
                         //TODO - fix wrt translation
                             $url = transposh_utils::cleanup_url($_SERVER["REQUEST_URI"], $this->home_url);
-                        tp_logger("redirected to $url because of cookie", 4);
+                        tp_logger("redirected to $url because of cookie", 2);
                         $this->tp_redirect($url);
                         exit;
                     }
                 } else {
-                    $bestlang = transposh_utils::prefered_language(explode(',', $this->options->viewable_languages), $this->options->default_language);
-                    // we won't redirect if we should not, or this is a presumable bot
-                    if ($bestlang && $bestlang != $this->target_language && $this->options->enable_detect_redirect) {
+                    //**
+                    if ($this->options->enable_detect_redirect) {
+                        $bestlang = transposh_utils::prefered_language(explode(',', $this->options->viewable_languages), $this->options->default_language);
+                        // we won't redirect if we should not, or this is a presumable bot
+                    } elseif ($this->options->enable_geoip_redirect) {
+                        $country = geoip_detect2_get_info_from_current_ip()->country->isoCode;
+                        $bestlang = transposh_utils::language_from_country(explode(',', $this->options->viewable_languages), $country, $this->options->default_language);
+                    }
+                    if ($bestlang && $bestlang != $this->target_language) {
                         $url = transposh_utils::rewrite_url_lang_param($_SERVER['REQUEST_URI'], $this->home_url, $this->enable_permalinks_rewrite, $bestlang, $this->edit_mode);
                         if ($this->options->is_default_language($bestlang))
                         //TODO - fix wrt translation
                             $url = transposh_utils::cleanup_url($_SERVER['REQUEST_URI'], $this->home_url);
-                        tp_logger("redirected to $url because of bestlang", 4);
+                        tp_logger("redirected to $url because of bestlang", 2);
                         $this->tp_redirect($url);
                         exit;
                     }
@@ -899,7 +908,7 @@ class transposh_plugin {
         foreach ($widget_args as $lang) {
             if (!$lang['active']) {
                 echo '<link rel="alternate" hreflang="' . $lang['isocode'] . '" href="';
-                    echo $lang['url'];                    
+                    echo $lang['url'];
 
                 echo '"/>';
             }
@@ -998,7 +1007,7 @@ class transposh_plugin {
         tp_logger("got: $href", 5);
         ////$href = str_replace('&#038;', '&', $href);
         // fix what might be messed up -- TODO
-        $href = str_replace(array(TP_GTXT_BRK, TP_GTXT_IBRK, TP_GTXT_BRK_CLOSER, TP_GTXT_IBRK_CLOSER), '', $href);
+        $href = transposh_utils::clean_breakers($href);
 
         // Ignore urls not from this site
         if (!transposh_utils::is_rewriteable_url($href, $this->home_url)) {
@@ -1923,9 +1932,11 @@ class transposh_plugin {
         // deleting
         transposh_utils::allow_cors();
         if (isset($_POST['timestamp'])) {
-            $this->database->del_translation_history(stripslashes($_POST['token']), $_POST['lang'], $_POST['timestamp']);
+            $result = $this->database->del_translation_history(stripslashes($_POST['token']), $_POST['lang'], $_POST['timestamp']);
+            echo json_encode($result);
+            die();
         }
-        $this->database->get_translation_history(stripslashes($_POST['token']), $_POST['lang']);
+        $this->database->get_translation_history(stripslashes($_POST['token']), $_POST['lang']);       
         die();
     }
 
@@ -1983,6 +1994,15 @@ class transposh_plugin {
         die();
     }
 
+    // Catch the wordpress.org update post
+    function filter_wordpress_org_update($arr, $url) {
+        tp_logger($url, 5);
+        if (strpos($url, "api.wordpress.org/plugins/update-check/") !== false) {
+            $this->do_update_check = true;
+        }
+        return $arr;
+    }
+
     function check_for_plugin_update($checked_data) {
         global $wp_version;
         tp_logger('should we check for upgrades?', 4);
@@ -1994,7 +2014,7 @@ class transposh_plugin {
 
         $args = array(
             'slug' => $this->transposh_plugin_basename,
-            'version' => '1.0.1', //$checked_data->checked[$this->transposh_file_location],
+            'version' => '1.0.3', //$checked_data->checked[$this->transposh_file_location],
         );
         $request_string = array(
             'body' => array(
@@ -2043,12 +2063,12 @@ class transposh_plugin {
         $request = wp_remote_post(TRANSPOSH_UPDATE_SERVICE_URL, $request_string);
 
         if (is_wp_error($request)) {
-            $res = new WP_Error('plugins_api_failed', __('An Unexpected HTTP Error occurred during the API request.</p> <p><a href="?" onclick="document.location.reload(); return false;">Try again</a>'), $request->get_error_message());
+            $res = new WP_Error('plugins_api_failed', __('An Unexpected HTTP Error occurred during the API request.</p> <p><a href="?" onclick="document.location.reload(); return false;">Try again</a>', TRANSPOSH_TEXT_DOMAIN), $request->get_error_message());
         } else {
             $res = unserialize($request['body']);
 
             if ($res === false)
-                $res = new WP_Error('plugins_api_failed', __('An unknown error occurred'), $request['body']);
+                $res = new WP_Error('plugins_api_failed', __('An unknown error occurred', TRANSPOSH_TEXT_DOMAIN), $request['body']);
         }
 
         return $res;

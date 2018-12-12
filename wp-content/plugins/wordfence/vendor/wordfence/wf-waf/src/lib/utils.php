@@ -1,4 +1,5 @@
 <?php
+if (defined('WFWAF_VERSION') && !defined('WFWAF_RUN_COMPLETE')) {
 
 class wfWAFUtils {
 
@@ -876,9 +877,9 @@ class wfWAFUtils {
 	public static function normalizedTime() {
 		$offset = 0;
 		try {
-			$offset = wfWAF::getInstance()->getStorageEngine()->getConfig('timeoffset_ntp', false);
+			$offset = wfWAF::getInstance()->getStorageEngine()->getConfig('timeoffset_ntp', false, 'synced');
 			if ($offset === false) {
-				$offset = wfWAF::getInstance()->getStorageEngine()->getConfig('timeoffset_wf', false);
+				$offset = wfWAF::getInstance()->getStorageEngine()->getConfig('timeoffset_wf', false, 'synced');
 				if ($offset === false) { $offset = 0; }
 			}
 		}
@@ -887,4 +888,5 @@ class wfWAFUtils {
 		}
 		return time() + $offset;
 	}
+}
 }

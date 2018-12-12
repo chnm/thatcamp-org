@@ -1,9 +1,9 @@
 # WP Super Cache #
 * Contributors: donncha, automattic, kraftbj
 * Tags: performance, caching, wp-cache, wp-super-cache, cache
-* Tested up to: 4.9.6
-* Stable tag: 1.6.2
-* Requires at least: 3.0
+* Tested up to: 4.9.8
+* Stable tag: 1.6.4
+* Requires at least: 3.1
 * Requires PHP: 5.2.4
 * License: GPLv2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -88,6 +88,11 @@ Three hooks are available:
 There is one regular WordPress filter too. Use the "do_createsupercache" filter
 to customize the checks made before caching. The filter accepts one parameter.
 The output of WP-Cache's wp_cache_get_cookies_values() function.
+
+WP Super Cache has it's own plugin system. This code is loaded when WP Super Cache loads and can be used to change how caching is done. This is before most of WordPress loads so some functionality will not be available. Plugins can be located anywhere that PHP can load them. Add your own plugin by calling wpsc_add_plugin( $name ) where $name is the full filename and path to the plugin. You only need to call that function once to add it. Use wpsc_delete_plugin( $name ) to remove it from the list of loaded plugins.
+
+The cookies WP Super Cache uses to identify "known users" can be modified now by adding the names of those cookies to a list in the plugin configuration. Use wpsc_add_cookie( $name ) to add a new cookie, and wpsc_delete_cookie( $name ) to remove it. The cookie names also modify the mod_rewrite rules used by the plugin but I recommend using Simple mode caching to avoid complications with updating the .htaccess file.
+The cookie name and value are used to differenciate users so you can have one cookie, but different values for each type of user on your site for example. They'll be served different cache files.
 
 See [plugins/searchengine.php](https://github.com/Automattic/wp-super-cache/blob/4cda5c0f2218e40e118232b5bf22d227fb3206b7/plugins/searchengine.php) as an example I use for my [No Adverts for Friends](https://odd.blog/no-adverts-for-friends/) plugin.
 
@@ -200,7 +205,7 @@ Cached files are served before almost all of WordPress is loaded. While that's g
 This plugin caches entire pages but some plugins think they can run PHP code every time a page loads. To fix this, the plugin needs to use Javascript/AJAX methods or the wpsc_cachedata filter described in the previous answer to update or display dynamic information.
 
 ### Why do my WP Super Cache plugins disappear when I upgrade the plugin? ###
-WordPress deletes the plugin folder when it updates a plugin. This is the same with WP Super Cache so any modified files in wp-super-cache/plugins/ will be deleted. You can define the variable $wp_cache_plugins_dir in wp-config.php or wp-content/wp-cache-config.php and point it at a directory outside of the wp-super-cache folder. The plugin will look there for it's plugins.
+WordPress deletes the plugin folder when it updates a plugin. This is the same with WP Super Cache so any modified files in wp-super-cache/plugins/ will be deleted. You can put your custom plugins in a different directory in a number of ways. You can define the variable $wp_cache_plugins_dir in wp-config.php or wp-content/wp-cache-config.php and point it at a directory outside of the wp-super-cache folder. The plugin will look there for it's plugins. Or if you distribute a plugin that needs to load early you can use the function `wpsc_add_plugin( $filename )` to add a new plugin wherever it may be. Use `wpsc_delete_plugin( $filename )` to remove the plugin file. See [#574](https://github.com/Automattic/wp-super-cache/pull/574/) or [this post](https://odd.blog/2017/10/25/writing-wp-super-cache-plugins/) on writing WP Super Cache plugins.
 
 ### What does the Cache Rebuild feature do? ###
 When a visitor leaves a comment the cached file for that page is deleted and the next visitor recreates the cached page. A page takes time to load so what happens if it receives 100 visitors during this time? There won't be a cached page so WordPress will serve a fresh page for each user and the plugin will try to create a cached page for each of those 100 visitors causing a huge load on your server. This feature stops this happening. The cached page is not cleared when a comment is left. It is marked for rebuilding instead. The next visitor within the next 10 seconds will regenerate the cached page while the old page is served to the other 99 visitors. The page is eventually loaded by the first visitor and the cached page updated. See [this post](https://odd.blog/2009/01/23/wp-super-cache-089/) for more.
@@ -260,6 +265,29 @@ Your theme is probably responsive which means it resizes the page to suit whatev
 
 
 ## Changelog ##
+
+### 1.6.4 ###
+* Changes between [1.6.3 and 1.6.4](https://github.com/Automattic/wp-super-cache/compare/1.6.3...1.6.4)
+* Fixes for WP-CLI (#587) (#592)
+* Bumped the minimum WordPress version to 3.1 to use functions introduced then. (#591)
+* Fixes to wpsc_post_transition to avoid a fatal error using get_sample_permalink. (#595)
+* Fixed the admin bar "Delete Cache" link. (#589)
+* Fixed the headings used in the settings page. (#597)
+
+### 1.6.3 ###
+* Changes between [1.6.2 and 1.6.3](https://github.com/Automattic/wp-super-cache/compare/1.6.2...1.6.3)
+* Added cookie helper functions (#580)
+* Added plugin helper functions (#574)
+* Added actions to modify cookie and plugin lists. (#582)
+* Really disable garbage collection when timeout = 0 (#571)
+* Added warnings about DISABLE_WP_CRON (#575)
+* Don't clean expired cache files after preload if garbage collection is disabled (#572)
+* On preload, if deleting a post don't delete the sub directories if it's the homepage. (#573)
+* Fix generation of semaphores when using WP CLI (#576)
+* Fix deleting from the admin bar (#578)
+* Avoid a strpos() warning. (#579)
+* Improve deleting of cache in edit/delete/publish actions (#577)
+* Fixes to headers code (#496)
 
 ### 1.6.2 ###
 * Fixed serving expired supercache files (#562)
@@ -663,4 +691,4 @@ Your theme is probably responsive which means it resizes the page to suit whatev
 
 
 ## Upgrade Notice ##
-Fix problems writing to the config file for some users.
+Bug fixes

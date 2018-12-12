@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v1.0.1
+ * Transposh v1.0.3
  * http://transposh.org/
  *
  * Copyright 2018, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Wed, 27 Jun 2018 14:41:10 +0300
+ * Date: Sat, 11 Aug 2018 02:00:05 +0300
  */
 
 /*
@@ -39,7 +39,8 @@ class transposh_plugin_admin {
     function __construct(&$transposh) {
         $this->transposh = &$transposh;
         // add our notices
-        add_action('admin_notices', array(&$this, 'notices'));
+        add_action('admin_notices', array(&$this, 'tp_notices'));
+        add_action('admin_head', array(&$this, 'remove_other_admin_notices'));
         // register callback for admin menu setup
         add_action('admin_menu', array(&$this, 'admin_menu'));
         // register the callback been used if options of page been submitted and needs to be processed
@@ -100,7 +101,7 @@ class transposh_plugin_admin {
                     list ($langcode, $viewable) = explode(",", $lang);
                     // clean possible wrong data
                     if (transposh_consts::get_language_name($langcode) === '') {
-                        continue;                        
+                        continue;
                     }
                     $sorted_langs[$langcode] = $langcode;
                     if ($viewable) {
@@ -108,7 +109,7 @@ class transposh_plugin_admin {
                     }
                 }
 
-                $viewable_langs = array_slice($viewable_langs, 0, 5);
+                    $viewable_langs = array_slice($viewable_langs, 0, 5);
                 $this->transposh->options->viewable_languages = implode(',', $viewable_langs);
                 $this->transposh->options->sorted_languages = implode(',', $sorted_langs);
                 $GLOBALS['wp_rewrite']->flush_rules();
@@ -123,7 +124,7 @@ class transposh_plugin_admin {
                         $role->remove_cap(TRANSLATOR);
                 }
 
-                $this->transposh->options->allow_full_version_upgrade = TP_FROM_POST;
+                    $this->transposh->options->allow_full_version_upgrade = TP_FROM_POST;
                 // anonymous needs to be handled differently as it does not have a role
                 tp_logger($_POST['anonymous']);
                 $this->transposh->options->allow_anonymous_translation = $_POST['anonymous'];
@@ -142,7 +143,11 @@ class transposh_plugin_admin {
 
                 $this->transposh->options->enable_footer_scripts = TP_FROM_POST;
                 $this->transposh->options->enable_detect_redirect = TP_FROM_POST;
+                $this->transposh->options->enable_geoip_redirect = TP_FROM_POST;
                 $this->transposh->options->transposh_collect_stats = TP_FROM_POST;
+
+                $this->transposh->options->mail_to = TP_FROM_POST;
+                $this->transposh->options->mail_ontranslate = TP_FROM_POST;
 
                 $this->transposh->options->transposh_backup_schedule = TP_FROM_POST;
 
@@ -432,7 +437,7 @@ class transposh_plugin_admin {
         // list of languages
         echo '<div style="overflow:auto; clear: both;">';
         $this->header(__('Available Languages (Click to toggle language state - Drag to sort in the widget)', TRANSPOSH_TEXT_DOMAIN));
-        $this->header(__('Only first five will be saved! Upgrade to full free version by choosing the option at the settings', TRANSPOSH_TEXT_DOMAIN));
+            $this->header(__('Only first five will be saved! Upgrade to full free version by choosing the option at the settings', TRANSPOSH_TEXT_DOMAIN));
         echo '<ul id="sortable">';
         foreach ($this->transposh->options->get_sorted_langs() as $langcode => $langrecord) {
             tp_logger($langcode, 5);
@@ -445,7 +450,7 @@ class transposh_plugin_admin {
             . '&nbsp;<span class="langname">' . $langorigname . '</span><span class="langname hidden">' . $langname . '</span></div>';
             foreach (transposh_consts::$engines as $enginecode => $enginerecord) {
                 if (in_array($langcode, $enginerecord['langs'])) {
-                    echo '<img width="16" height="16" alt="' . $enginecode . '" class="logoicon" title="' . esc_attr(sprintf(__('Language supported by %s translate', TRANSPOSH_TEXT_DOMAIN),$enginerecord['name'])) . '" src="' . $this->transposh->transposh_plugin_url . '/' . TRANSPOSH_DIR_IMG . '/' . $enginerecord['icon'] . '"/>';
+                    echo '<img width="16" height="16" alt="' . $enginecode . '" class="logoicon" title="' . esc_attr(sprintf(__('Language supported by %s translate', TRANSPOSH_TEXT_DOMAIN), $enginerecord['name'])) . '" src="' . $this->transposh->transposh_plugin_url . '/' . TRANSPOSH_DIR_IMG . '/' . $enginerecord['icon'] . '"/>';
                 } else {
                     echo '<img width="16" height="16" class="logoicon"/>';
                 }
@@ -485,10 +490,11 @@ class transposh_plugin_admin {
 
     // Show normal settings
     function tp_settings() {
-        $this->section(__('Upgrade to full version', TRANSPOSH_TEXT_DOMAIN));
-        $this->checkbox($this->transposh->options->allow_full_version_upgrade_o, __('Allow upgrading to full version', TRANSPOSH_TEXT_DOMAIN)
-                , __('Allow upgrading to full version from http://transposh.org, which has no limit on languages used and includes a full set of widgets', TRANSPOSH_TEXT_DOMAIN));
-        $this->sectionstop();
+            $this->section(__('Upgrade to full version', TRANSPOSH_TEXT_DOMAIN));
+            $this->checkbox($this->transposh->options->allow_full_version_upgrade_o
+                    , __('Allow upgrading to full version', TRANSPOSH_TEXT_DOMAIN)
+                    , __('Allow upgrading to full version from http://transposh.org, which has no limit on languages used and includes a full set of widgets', TRANSPOSH_TEXT_DOMAIN));
+            $this->sectionstop();
 
         $this->section(__('Translation related settings', TRANSPOSH_TEXT_DOMAIN));
 
@@ -504,14 +510,18 @@ class transposh_plugin_admin {
         //Add our own custom role
         echo '<input id="tr_anon" type="checkbox" value="1" name="anonymous" ' . checked($this->can_translate('anonymous'), true, false) . '/> ' . __('Anonymous', TRANSPOSH_TEXT_DOMAIN);
 
-        $this->checkbox($this->transposh->options->enable_default_translate_o, __('Enable default language translation', TRANSPOSH_TEXT_DOMAIN)
+        $this->checkbox($this->transposh->options->enable_default_translate_o
+                , __('Enable default language translation', TRANSPOSH_TEXT_DOMAIN)
                 , __('Allow translation of default language - useful for sites with more than one major language', TRANSPOSH_TEXT_DOMAIN));
-        $this->checkbox($this->transposh->options->enable_search_translate_o, __('Enable search in translated languages', TRANSPOSH_TEXT_DOMAIN)
+        $this->checkbox($this->transposh->options->enable_search_translate_o
+                , __('Enable search in translated languages', TRANSPOSH_TEXT_DOMAIN)
                 , __('Allow search of translated languages (and the original language)', TRANSPOSH_TEXT_DOMAIN));
-        $this->checkbox($this->transposh->options->transposh_gettext_integration_o, __('Enable gettext integration', TRANSPOSH_TEXT_DOMAIN)
+        $this->checkbox($this->transposh->options->transposh_gettext_integration_o
+                , __('Enable gettext integration', TRANSPOSH_TEXT_DOMAIN)
                 , __('Enable integration of Transposh with existing gettext interface (.po/.mo files)', TRANSPOSH_TEXT_DOMAIN));
 
-        $this->checkbox($this->transposh->options->transposh_locale_override_o, __('Enable override for default locale', TRANSPOSH_TEXT_DOMAIN)
+        $this->checkbox($this->transposh->options->transposh_locale_override_o
+                , __('Enable override for default locale', TRANSPOSH_TEXT_DOMAIN)
                 , __('Enable overriding the default locale that is set in WP_LANG on default languages pages (such as untranslated pages and admin pages)', TRANSPOSH_TEXT_DOMAIN));
         $this->sectionstop();
 
@@ -520,24 +530,56 @@ class transposh_plugin_admin {
                 , __('Rewrite URLs to be search engine friendly, ' .
                         'e.g.  (http://transposh.org/<strong>en</strong>). ' .
                         'Requires that permalinks will be enabled.', TRANSPOSH_TEXT_DOMAIN));
-        $this->checkbox($this->transposh->options->enable_footer_scripts_o, __('Add scripts to footer', TRANSPOSH_TEXT_DOMAIN)
+        $this->checkbox($this->transposh->options->enable_footer_scripts_o
+                , __('Add scripts to footer', TRANSPOSH_TEXT_DOMAIN)
                 , __('Push transposh scripts to footer of page instead of header, makes pages load faster. ' .
                         'Requires that your theme should have proper footer support.', TRANSPOSH_TEXT_DOMAIN));
-        $this->checkbox($this->transposh->options->enable_detect_redirect_o, __('Auto detect language for users', TRANSPOSH_TEXT_DOMAIN)
+        $this->checkbox($this->transposh->options->enable_detect_redirect_o
+                , __('Detect language based on the ACCEPT_LANGUAGES http header', TRANSPOSH_TEXT_DOMAIN)
                 , __('This enables auto detection of language used by the user as defined in the ACCEPT_LANGUAGES they send. ' .
                         'This will redirect the first page accessed in the session to the same page with the detected language.', TRANSPOSH_TEXT_DOMAIN));
-        $this->checkbox($this->transposh->options->transposh_collect_stats_o, __('Allow collecting usage statistics', TRANSPOSH_TEXT_DOMAIN)
+        $bestlang = transposh_utils::prefered_language(explode(',', $this->transposh->options->viewable_languages), $this->transposh->options->default_language);
+        $this->normaltext(__('Based on your current ACCEPT_LANGUAGES headers', TRANSPOSH_TEXT_DOMAIN) . ' - ' . __('the language will be redirected to the language', TRANSPOSH_TEXT_DOMAIN) . ' <b>' . $bestlang . '</b>');
+
+        if (function_exists('geoip_detect2_get_info_from_ip')) {
+            $this->checkbox($this->transposh->options->enable_geoip_redirect_o
+                    , __('Detect language based on IP', TRANSPOSH_TEXT_DOMAIN)
+                    , __('This enables auto detection of language based on IP Geo detection. ' .
+                            'This will redirect the first page accessed in the session to the same page with the detected language.', TRANSPOSH_TEXT_DOMAIN));
+            $isocode = geoip_detect2_get_info_from_current_ip()->country->isoCode;
+            $bestlang = transposh_utils::language_from_country(explode(',', $this->transposh->options->viewable_languages), $isocode, $this->transposh->options->default_language);
+            $this->normaltext(__('The detection assumes that your current country is', TRANSPOSH_TEXT_DOMAIN) . ' <b>' . $isocode . '</b>');
+            $this->normaltext(__('Based on that detection and your current language selections', TRANSPOSH_TEXT_DOMAIN) . ' - ' . __('the language will be redirected to the language', TRANSPOSH_TEXT_DOMAIN) . ' <b>' . $bestlang . '</b>');
+        } else {
+            $this->normaltext('** ' . __('You may enable geo IP based detection by installing and activating the GeoIP Detection plugin by yellowtree.de', TRANSPOSH_TEXT_DOMAIN) . ' **');
+        }
+        $this->checkbox($this->transposh->options->transposh_collect_stats_o
+                , __('Allow collecting usage statistics', TRANSPOSH_TEXT_DOMAIN)
                 , __('This option enables collection of statistics by transposh that will be used to improve the product.', TRANSPOSH_TEXT_DOMAIN));
 
         /* WIP2
           echo '<a href="http://transposh.org/services/index.php?flags='.$flags.'">Gen sprites</a>'; */
         $this->sectionstop();
 
+        $this->section(__('Mail settings', TRANSPOSH_TEXT_DOMAIN));
+        $this->textinput($this->transposh->options->mail_to_o
+                , __('Email address to send messages to', TRANSPOSH_TEXT_DOMAIN)
+                , __('Email', TRANSPOSH_TEXT_DOMAIN));
+        echo __('Whom should we mail? leave blank for admin', TRANSPOSH_TEXT_DOMAIN) . '<br/>';
+        $this->checkbox($this->transposh->options->mail_ontranslate_o
+                , __('Send mails immediately', TRANSPOSH_TEXT_DOMAIN)
+                , __('Enabling this will send a message as soon as a human translation is submitted.', TRANSPOSH_TEXT_DOMAIN));
+        echo '<br>';
+        $this->sectionstop();
+
         $this->section(__('Backup service settings', TRANSPOSH_TEXT_DOMAIN));
         echo '<input type="radio" value="1" name="' . $this->transposh->options->transposh_backup_schedule_o->get_name() . '" ' . checked($this->transposh->options->transposh_backup_schedule, 1, false) . '/>' . __('Enable daily backup', TRANSPOSH_TEXT_DOMAIN) . '<br/>';
         echo '<input type="radio" value="2" name="' . $this->transposh->options->transposh_backup_schedule_o->get_name() . '" ' . checked($this->transposh->options->transposh_backup_schedule, 2, false) . '/>' . __('Enable live backup', TRANSPOSH_TEXT_DOMAIN) . '<br/>';
-        echo '<input type="radio" value="0" name="' . $this->transposh->options->transposh_backup_schedule_o->get_name() . '" ' . checked($this->transposh->options->transposh_backup_schedule, 0, false) . '/>' . __('Disable backup (Can be run manually by clicking the button below)', TRANSPOSH_TEXT_DOMAIN) . '<br/>';
-        echo __('Service Key:', TRANSPOSH_TEXT_DOMAIN) . ' <input type="text" size="32" class="regular-text" ' . $this->transposh->options->transposh_key_o->post_value_id_name() . '/><a target="_blank" href="http://transposh.org/faq/#restore">' . __('How to restore?', TRANSPOSH_TEXT_DOMAIN) . '</a><br/>';
+        echo '<input type="radio" value="0" name="' . $this->transposh->options->transposh_backup_schedule_o->get_name() . '" ' . checked($this->transposh->options->transposh_backup_schedule, 0, false) . '/>' . __('Disable backup (Can be run manually by clicking the button on the utilities tab)', TRANSPOSH_TEXT_DOMAIN) . '<br/>';
+        $this->textinput($this->transposh->options->transposh_key_o
+                , ''
+                , __('Service key', TRANSPOSH_TEXT_DOMAIN));
+        echo '<a target="_blank" href="http://transposh.org/faq/#restore">' . __('How to restore?', TRANSPOSH_TEXT_DOMAIN) . '</a><br/>';
         $this->sectionstop();
 
     }
@@ -616,11 +658,12 @@ class transposh_plugin_admin {
     function tp_widget() {
         //       $this->checkbox($this->transposh->options->widget_progressbar_o, __('Show progress bar', TRANSPOSH_TEXT_DOMAIN)
         //               , __('Show progress bar when a client triggers automatic translation', TRANSPOSH_TEXT_DOMAIN));
-
+        $this->section(__('Widget settings', TRANSPOSH_TEXT_DOMAIN));
         $this->checkbox($this->transposh->options->widget_allow_set_deflang_o, __('Allow user to set current language as default', TRANSPOSH_TEXT_DOMAIN)
                 , __('Widget will allow setting this language as user default', TRANSPOSH_TEXT_DOMAIN));
 
         $this->select($this->transposh->options->widget_theme_o, __('Edit interface theme:', TRANSPOSH_TEXT_DOMAIN), __('Edit interface (and progress bar) theme:', TRANSPOSH_TEXT_DOMAIN), transposh_consts::$jqueryui_themes, false);
+        $this->sectionstop();
     }
 
     function tp_advanced() {
@@ -717,7 +760,6 @@ class transposh_plugin_admin {
                 , __('Have you encountered any problem with our plugin and need our help?', TRANSPOSH_TEXT_DOMAIN) . '<br>' .
                 __('Do you need to ask us any question?', TRANSPOSH_TEXT_DOMAIN) . '<br>' .
                 __('You have two options:', TRANSPOSH_TEXT_DOMAIN) . '<br>');
-        $this->sectionstop();
         $this->header(__('Our free support', TRANSPOSH_TEXT_DOMAIN));
         echo '<div class="col-wrap">';
         echo __('There are many channels to reach us and we do try to help as fast as we can', TRANSPOSH_TEXT_DOMAIN) . '<br>';
@@ -768,6 +810,7 @@ class transposh_plugin_admin {
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>';
         echo '</div>';
+        $this->sectionstop();
     }
 
     // executed if the post arrives initiated by pressing the submit button of form
@@ -800,14 +843,15 @@ class transposh_plugin_admin {
 
     /** UTILITY FUNCTIONS * */
     private function section($head, $text = '') {
-        echo '<h2>' . $head . '</h2>';
-        echo '<div class="col-wrap">';
+        echo '<div class="postbox">';
+        echo '<h2 class="transposh_section_top">' . $head . '</h2>';
+        echo '<div class="inside">';
         if ($text)
             echo '<p>' . $text . '</p>';
     }
 
     private function sectionstop() {
-        echo '</div>';
+        echo '</div></div>';
     }
 
     private function header($head, $help = '') {
@@ -819,8 +863,14 @@ class transposh_plugin_admin {
         if (is_array($head)) {
             echo "<h3><img width=\"16\" height=\"16\" src=\"{$this->transposh->transposh_plugin_url}/img/{$head[0]}\"> {$head[1]}$help</h3>";
         } else {
-            echo "<h3> $head $help</h3>";
+            echo "<h3>$head $help</h3>";
         }
+    }
+
+    private function normaltext($head, $help = '') {
+        if (!isset($head))
+            return;
+        echo "<p>$head</p>";
     }
 
     /**
@@ -853,18 +903,45 @@ class transposh_plugin_admin {
     }
 
     private function textinput($tpo, $head, $label, $length = 35, $help = '') {
-        $this->header($head, $help);
+        if ($head) {
+            $this->header($head, $help);
+        }
         echo $label . ': <input type="text" size="' . $length . '" class="regular-text" ' . $tpo->post_value_id_name() . '/>';
     }
 
     /** UTILITY FUNCTIONS  END * */
-    function notices() {
+    function tp_notices() {
         if ((int) ini_get('memory_limit') < 64) {
             $this->add_warning('tp_mem_warning', sprintf(__('Your current PHP memory limit of %s is quite low, if you experience blank pages please consider increasing it.', TRANSPOSH_TEXT_DOMAIN), ini_get('memory_limit')) . ' <a href="http://transposh.org/faq#blankpages">' . __('Check Transposh FAQs', TRANSPOSH_TEXT_DOMAIN) . '</a>');
         }
 
         if ($this->page && !(class_exists('Memcache') /* !!&& $this->memcache->connect(TP_MEMCACHED_SRV, TP_MEMCACHED_PORT) */) && !function_exists('apc_fetch') && !function_exists('xcache_get') && !function_exists('eaccelerator_get')) {
             $this->add_warning('tp_cache_warning', __('We were not able to find a supported in-memory caching engine, installing one can improve performance.', TRANSPOSH_TEXT_DOMAIN) . ' <a href="http://transposh.org/faq#performance">' . __('Check Transposh FAQs', TRANSPOSH_TEXT_DOMAIN) . '</a>', 'updated');
+        }
+    }
+
+    /**
+     * this function will remove any notices that are not ours from our administration pages
+     * @global type $wp_filter
+     */
+    function remove_other_admin_notices() {
+        if ($this->page) {
+            global $wp_filter;
+            $actions = $wp_filter;
+            // I don't know why I need to run this more than once, but what the heck
+            for ($i = 0; $i < 5; $i++) {
+                foreach ($actions as $key => $value) {
+                    if (strpos($key, 'notices') !== false) {
+                        foreach ($value as $key2 => $value2) {
+                            foreach ($value2 as $key3 => $value3) {
+                                if (strpos($key3, 'tp_notices') === false) {
+                                    remove_action($key, $key3, $key2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

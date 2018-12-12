@@ -69,7 +69,7 @@ class wfAPI {
 		if (isset($dat['_hasKeyConflict'])) {
 			$hasKeyConflict = ($dat['_hasKeyConflict'] == 1);
 			if ($hasKeyConflict) {
-				new wfNotification(null, wfNotification::PRIORITY_HIGH_CRITICAL, '<a href="' . network_admin_url('admin.php?page=Wordfence&subpage=global_options') . '">The Wordfence license you\'re using does not match this site\'s address. Premium features are disabled.</a>', 'wfplugin_keyconflict', null, array(array('link' => 'https://www.wordfence.com/manage-wordfence-api-keys/', 'label' => 'Manage Keys')));
+				new wfNotification(null, wfNotification::PRIORITY_HIGH_CRITICAL, '<a href="' . wfUtils::wpAdminURL('admin.php?page=Wordfence&subpage=global_options') . '">The Wordfence license you\'re using does not match this site\'s address. Premium features are disabled.</a>', 'wfplugin_keyconflict', null, array(array('link' => 'https://www.wordfence.com/manage-wordfence-api-keys/', 'label' => 'Manage Keys')));
 				wfConfig::set('hasKeyConflict', 1);
 			}
 		}
@@ -174,15 +174,32 @@ class wfAPI {
 	}
 
 	public function makeAPIQueryString() {
-		$homeurl = wfUtils::wpHomeURL();
+		$cv = null;
+		$cs = null;
+		if (function_exists('curl_version')) {
+			$curl = curl_version();
+			$cv = $curl['version'];
+			$cs = $curl['ssl_version'];
+		}
+		
+		$values = array(
+			'wp' => $this->wordpressVersion,
+			'wf' => WORDFENCE_VERSION,
+			'ms' => (is_multisite() ? get_blog_count() : false),
+			'h' => wfUtils::wpHomeURL(),
+			'sslv' => function_exists('openssl_verify') && defined('OPENSSL_VERSION_NUMBER') ? OPENSSL_VERSION_NUMBER : null,
+			'pv' => phpversion(),
+			'pt' => php_sapi_name(),
+			'cv' => $cv,
+			'cs' => $cs,
+			'sv' => (isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : null),
+			'dv' => wfConfig::get('dbVersion', null),
+		);
+		
 		return self::buildQuery(array(
-			'v'         => $this->wordpressVersion,
-			's'         => $homeurl,
-			'k'         => $this->APIKey,
-			'openssl'   => function_exists('openssl_verify') && defined('OPENSSL_VERSION_NUMBER') ? OPENSSL_VERSION_NUMBER : '0.0.0',
-			'phpv'      => phpversion(),
+			'k' => $this->APIKey,
+			's' => wfUtils::base64url_encode(json_encode($values)),
 			'betaFeed'  => (int) wfConfig::get('betaThreatDefenseFeed'),
-			'cacheType' => wfConfig::get('cacheType'),
 		));
 	}
 

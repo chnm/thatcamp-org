@@ -79,10 +79,6 @@ class wfScan {
 		}
 		wfConfig::set('currentCronKey', '');
 		/* --------- end cronkey check ---------- */
-
-		self::status(4, 'info', "Becoming admin for scan");
-		self::becomeAdmin();
-		self::status(4, 'info', "Done become admin");
 		
 		$scanMode = wfScanner::SCAN_TYPE_STANDARD;
 		if (isset($_GET['scanMode']) && wfScanner::isValidScanType($_GET['scanMode'])) {
@@ -297,70 +293,6 @@ class wfScan {
 	private static function errorExit($msg){
 		wordfence::status(1, 'error', "Scan Engine Error: $msg");
 		exit();	
-	}
-	public static function becomeAdmin(){
-		$db = new wfDB();
-		global $wpdb;
-		$userSource = '';
-		if(is_multisite()){
-			$users = get_users('role=super&fields=ID');
-			if(sizeof($users) < 1){
-				$supers = get_super_admins();
-				if(sizeof($supers) > 0){
-					foreach($supers as $superLogin){
-						$superDat = get_user_by('login', $superLogin);
-						if($superDat){
-							$users = array($superDat->ID);
-							$userSource = 'multisite get_super_admins() function';
-							break;
-						}
-					}
-				}
-			} else {
-				$userSource = 'multisite get_users() function';
-			}
-		} else {
-			$users = get_users('role=administrator&fields=ID');
-			if(sizeof($users) < 1){
-				$supers = get_super_admins();
-				if(sizeof($supers) > 0){
-					foreach($supers as $superLogin){
-						$superDat = get_user_by('login', $superLogin);
-						if($superDat){
-							$users = array($superDat->ID);
-							$userSource = 'singlesite get_super_admins() function';
-							break;
-						}
-					}
-				}
-			} else {
-				$userSource = 'singlesite get_users() function';
-			}
-		}
-		if(sizeof($users) > 0){
-			sort($users, SORT_NUMERIC);
-			$adminUserID = $users[0];
-		} else {
-			//Last ditch attempt
-			$adminUserID = $db->querySingle("select user_id from " . $wpdb->usermeta . " where meta_key='" . $wpdb->base_prefix . "user_level' order by meta_value desc, user_id asc limit 1");
-			if(! $adminUserID){
-				//One final attempt for those who have changed their table prefixes but the meta_key is still wp_ prefixed...
-				$adminUserID = $db->querySingle("select user_id from " . $wpdb->usermeta . " where meta_key='wp_user_level' order by meta_value desc, user_id asc limit 1");
-				if(! $adminUserID){
-					self::status(1, 'error', "Could not get the administrator's user ID. Scan can't continue.");
-					exit();
-				}
-			}
-			$userSource = 'manual DB query';
-		}
-		$adminUsername = $db->querySingle("select user_login from " . $wpdb->users . " where ID=%d", $adminUserID);
-		self::status(4, 'info', "Scan will run as admin user '$adminUsername' with ID '$adminUserID' sourced from: $userSource");
-		wp_set_current_user($adminUserID);
-		if(! is_user_logged_in()){
-			self::status(1, 'error', "Scan could not sign in as user '$adminUsername' with ID '$adminUserID' from source '$userSource'. Scan can't continue.");
-			exit();
-		}
-		self::status(4, 'info', "Scan authentication complete.");
 	}
 	private static function status($level, $type, $msg){
 		wordfence::status($level, $type, $msg);
