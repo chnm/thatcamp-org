@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Seventeen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-16 15:29:10+0000\n"
+"PO-Revision-Date: 2018-12-08 12:26:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,11 +11,11 @@ msgstr ""
 "Language: fr\n"
 "Project-Id-Version: Themes - Twenty Seventeen\n"
 
-#. Description of the plugin/theme
+#. Description of the theme
 msgid "Twenty Seventeen brings your site to life with header video and immersive featured images. With a focus on business sites, it features multiple sections on the front page as well as widgets, navigation and social menus, a logo, and more. Personalize its asymmetrical grid with a custom color scheme and showcase your multimedia content with post formats. Our default theme for 2017 works great in many languages, for any abilities, and on any device."
 msgstr "Twenty Seventeen donne vie à votre site avec un en-tête vidéo et des images mises en avant immersives. En mettant l’accent sur les sites d’entreprises, il offre de multiples sections sur la page d’accueil comme sur les widgets, les menus de navigation et sociaux, un logo et bien plus encore. Personnalisez sa grille asymétrique avec votre propre jeu de couleurs et mettez en valeur vos contenus multimédias avec les formats d’articles. Notre thème par défaut pour 2017 fonctionne dans de nombreuses langues, dans tous les domaines et sur n’importe quel type d’appareils."
 
-#. Theme Name of the plugin/theme
+#. Theme Name of the theme
 msgid "Twenty Seventeen"
 msgstr "Twenty Seventeen"
 
@@ -23,30 +23,30 @@ msgstr "Twenty Seventeen"
 msgid "Footer"
 msgstr "Pied de page"
 
-#: functions.php:317
+#: functions.php:326
 msgid "Add widgets here to appear in your sidebar on blog posts and archive pages."
 msgstr "Ajoutez ici des widgets pour les faire apparaître dans votre colonne latérale d’articles de blog ou de pages d’archives."
 
-#: functions.php:315 sidebar.php:18
+#: functions.php:324 sidebar.php:18
 msgid "Blog Sidebar"
 msgstr "Colonne latérale du blog"
 
-#: template-parts/header/site-branding.php:34
 #: template-parts/navigation/navigation-top.php:27
+#: template-parts/header/site-branding.php:34
 msgid "Scroll down to content"
 msgstr "Descendre au contenu"
 
-#: functions.php:159
+#: functions.php:168
 msgctxt "Theme starter content"
 msgid "Coffee"
 msgstr "Café"
 
-#: functions.php:155
+#: functions.php:164
 msgctxt "Theme starter content"
 msgid "Sandwich"
 msgstr "Sandwich"
 
-#: functions.php:151
+#: functions.php:160
 msgctxt "Theme starter content"
 msgid "Espresso"
 msgstr "Expresso"
@@ -147,27 +147,24 @@ msgstr "Jeu de couleurs"
 msgid "Default Header Image"
 msgstr "Image d’en-tête par défaut"
 
-#: functions.php:335
+#: functions.php:344
 msgid "Footer 2"
 msgstr "Pied de page 2"
 
-#: functions.php:327 functions.php:337
+#: functions.php:336 functions.php:346
 msgid "Add widgets here to appear in your footer."
 msgstr "Ajoutez ici des widgets qui apparaîtront dans votre pied de page."
 
-#: functions.php:325
+#: functions.php:334
 msgid "Footer 1"
 msgstr "Pied de page 1"
 
-#. Translators: If there are characters in your language that are not supported
-#. by Libre Franklin, translate this to 'off'. Do not translate into your own
-#. language.
-#: functions.php:269
+#: functions.php:278
 msgctxt "Libre Franklin font: on or off"
 msgid "on"
 msgstr "on"
 
-#: functions.php:63 functions.php:183
+#: functions.php:63 functions.php:192
 #: template-parts/navigation/navigation-top.php:12
 msgid "Top Menu"
 msgstr "Menu supérieur"
@@ -188,7 +185,7 @@ msgstr "Désolé, mais rien ne correspond à votre recherche. Veuillez réessaye
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr "Prêt(e) à publier votre premier article&nbsp;? <a href=\"%1$s\">Lancez-vous ici</a>."
 
-#: search.php:21 template-parts/post/content-none.php:17
+#: template-parts/post/content-none.php:17 search.php:21
 msgid "Nothing Found"
 msgstr "Aucun résultat"
 
@@ -196,11 +193,11 @@ msgstr "Aucun résultat"
 msgid "Previous Post"
 msgstr "Article précédent"
 
-#: comments.php:66 single.php:31
+#: single.php:31 comments.php:66
 msgid "Previous"
 msgstr "Précédent"
 
-#: comments.php:67 single.php:32
+#: single.php:32 comments.php:67
 msgid "Next"
 msgstr "Suivant"
 
@@ -221,15 +218,15 @@ msgstr "Recherche pour :"
 
 #: search.php:19
 msgid "Search Results for: %s"
-msgstr "Résultats de recherche pour&nbsp;: %s"
+msgstr "Résultats de recherche pour : %s"
 
 #. translators: %s: Name of current post
-#: functions.php:363 template-parts/page/content-front-page-panels.php:43
-#: template-parts/page/content-front-page.php:40
-#: template-parts/post/content-audio.php:83
-#: template-parts/post/content-gallery.php:70
+#: functions.php:372 template-parts/page/content-front-page.php:40
+#: template-parts/page/content-front-page-panels.php:43
 #: template-parts/post/content-image.php:59
-#: template-parts/post/content-video.php:82 template-parts/post/content.php:56
+#: template-parts/post/content-gallery.php:70
+#: template-parts/post/content.php:56 template-parts/post/content-video.php:82
+#: template-parts/post/content-audio.php:83
 msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr "Continuer la lecture<span class=\"screen-reader-text\"> de &laquo;&nbsp;%s&nbsp;&raquo;</span>"
 
@@ -247,10 +244,10 @@ msgid "Edit<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr "Modifier<span class=\"screen-reader-text\"> \"%s\"</span>"
 
 #: template-parts/page/content-page.php:25
-#: template-parts/post/content-audio.php:88
-#: template-parts/post/content-gallery.php:75
 #: template-parts/post/content-image.php:64
-#: template-parts/post/content-video.php:87 template-parts/post/content.php:61
+#: template-parts/post/content-gallery.php:75
+#: template-parts/post/content.php:61 template-parts/post/content-video.php:87
+#: template-parts/post/content-audio.php:88
 msgid "Pages:"
 msgstr "Pages&nbsp;:"
 
@@ -262,27 +259,21 @@ msgstr "Menu"
 msgid "Skip to content"
 msgstr "Aller au contenu principal"
 
-#: functions.php:446
+#: functions.php:458
 msgid "Collapse child menu"
 msgstr "Fermer le sous-menu"
 
-#: functions.php:445
+#: functions.php:457
 msgid "Expand child menu"
 msgstr "Ouvrir le sous-menu"
 
-#: functions.php:64 functions.php:194
+#: functions.php:64 functions.php:203
 msgid "Social Links Menu"
 msgstr "Menu des liens de réseaux sociaux"
 
-#: template-parts/footer/site-info.php:13
+#: template-parts/footer/site-info.php:19
 msgid "Proudly powered by %s"
 msgstr "Fièrement propulsé par %s"
-
-#. #-#-#-#-#  twentyseventeen.pot (Twenty Seventeen 1.4)  #-#-#-#-#
-#. Author URI of the plugin/theme
-#: template-parts/footer/site-info.php:13
-msgid "https://wordpress.org/"
-msgstr "https://wordpress.org/"
 
 #: footer.php:25
 msgid "Footer Social Links Menu"
@@ -304,9 +295,9 @@ msgstr[1] "%1$s réponses sur &ldquo;%2$s&rdquo;"
 #: comments.php:36
 msgctxt "comments title"
 msgid "One Reply to &ldquo;%s&rdquo;"
-msgstr "Une pensée sur &ldquo;%s&rdquo;"
+msgstr "Une réponse sur &ldquo;%s&rdquo;"
 
-#: archive.php:47 index.php:52 search.php:45
+#: search.php:45 archive.php:47 index.php:52
 msgid "Page"
 msgstr "Page"
 
@@ -318,18 +309,23 @@ msgstr "Aie&nbsp;! Cette page est introuvable."
 msgid "It looks like nothing was found at this location. Maybe try a search?"
 msgstr "Apparemment, rien n&rsquo;a été trouvé à cette adresse. Essayez avec une recherche&nbsp;?"
 
-#: archive.php:45 index.php:50 search.php:43
+#: search.php:43 archive.php:45 index.php:50
 msgid "Previous page"
 msgstr "Page précédente"
 
-#: archive.php:46 index.php:51 search.php:44
+#: search.php:44 archive.php:46 index.php:51
 msgid "Next page"
 msgstr "Page suivante"
 
-#. Author of the plugin/theme
+#. Author of the theme
 msgid "the WordPress team"
 msgstr "l’équipe WordPress"
 
-#. Theme URI of the plugin/theme
+#. Theme URI of the theme
 msgid "https://wordpress.org/themes/twentyseventeen/"
 msgstr "https://wordpress.org/themes/twentyseventeen/"
+
+#. Author URI of the theme
+#: template-parts/footer/site-info.php:18
+msgid "https://wordpress.org/"
+msgstr "https://wordpress.org/"

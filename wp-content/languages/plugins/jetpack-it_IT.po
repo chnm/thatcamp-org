@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-07-10 09:54:08+0000\n"
+"PO-Revision-Date: 2018-12-11 21:29:02+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,26 +11,70 @@ msgstr ""
 "Language: it\n"
 "Project-Id-Version: Plugins - Jetpack by WordPress.com - Stable (latest release)\n"
 
+#: modules/widgets/simple-payments.php:274
+msgid "Invalid parameters."
+msgstr "Parametri non validi."
+
+#: modules/simple-payments/simple-payments.php:169
+#: modules/widgets/simple-payments/admin-warning.php:9
+msgid "Your plan doesn't include Simple Payments. <a href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">Learn more and upgrade</a>."
+msgstr "Il tuo piano non include i Pagamenti facili. <a href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">Scopri di più e aggiorna</a>."
+
+#: modules/publicize/ui.php:490
+msgid "Update Your Sharing Settings"
+msgstr "Aggiorna le impostazioni di condivisione"
+
+#: modules/publicize/publicize.php:578
+msgid "Facebook no longer supports Publicize connections to Facebook Profiles, but you can still connect Facebook Pages. Please select a Facebook Page to publish updates to."
+msgstr "Facebook non supporta più le connessioni di Pubblicizza ai profili Facebook, ma puoi ancora connettere le pagine di Facebook. Seleziona una pagina Facebook su cui pubblicare gli aggiornamenti."
+
+#: modules/publicize/publicize.php:189
+msgid "Connecting..."
+msgstr "Connessione in corso..."
+
+#: modules/publicize/publicize-jetpack.php:617
+msgid "<a class=\"button\" href=\"%s\" target=\"%s\">Create a Facebook page</a> to get started."
+msgstr "<a class=\"button\" href=\"%s\" target=\"%s\">Crea una pagina Facebook</a> per iniziare."
+
+#: modules/publicize/publicize-jetpack.php:572
+msgid "Facebook supports Publicize connections to Facebook Pages, but not to Facebook Profiles. <a href=\"%s\">Learn More about Publicize for Facebook</a>"
+msgstr "Facebook supporta le connessioni di Pubblicizza alle pagine di Facebook, ma non ai profili di Facebook. <a href=\"%s\">Scopri di più su Pubblicizza per Facebook</a>"
+
+#: class.jetpack-connection-banner.php:976
+msgid "Get in touch with us"
+msgstr "Resta in contatto con noi"
+
+#: class.jetpack-cli.php:1452
+msgctxt "\"yes\" is a command - do not translate."
+msgid "Are you sure? Modifying this option may disrupt your Jetpack connection.  Type \"yes\" to continue."
+msgstr "Sei sicuro? La modifica di questa opzione potrebbe interrompere la connessione di Jetpack. Digita \"yes\" per continuare."
+
+#: class.jetpack-cli.php:1450
+msgctxt "\"yes\" is a command - do not translate."
+msgid "Are you sure? This cannot be undone. Type \"yes\" to continue:"
+msgstr "Sei sicuro? Questa operazione non può essere annullata. Digita \"yes\" per continuare:"
+
 #: modules/widgets/twitter-timeline.php:112
 msgid "As of July 27, 2018, the Twitter Timeline widget will no longer display tweets based on searches or hashtags. To display a simple list of tweets instead, change the Widget ID to a Twitter username."
 msgstr "A partire dal 27 luglio 2018, il widget Twitter Timeline non visualizzerà più i tweet sulla base di ricerche e hashtag. Invece, per visualizzare un semplice elenco di tweet, modificare l’ID widget con un nome utente Twitter."
 
-#: modules/widgets/simple-payments.php:278
+#: modules/widgets/simple-payments.php:286
 msgid "We want to make sure payments reach you, so please add an email address."
 msgstr "Vogliamo avere la certezza che riceverai i pagamenti, quindi aggiungi un indirizzo e-mail."
 
-#: modules/widgets/simple-payments.php:274
+#: modules/widgets/simple-payments.php:282
 msgid "Everything comes with a price tag these days. Please add a your product price."
 msgstr "In questi giorni tutto viene fornito con un cartellino prezzi. Aggiungi un prezzo al tuo prodotto."
 
-#: modules/widgets/simple-payments.php:270
+#: modules/widgets/simple-payments.php:278
 msgid "People need to know what they're paying for! Please add a brief title."
 msgstr "Le persone devono conoscere ciò per cui stanno pagando. Aggiungi un breve titolo."
 
-#: modules/widgets/simple-payments.php:121
+#: modules/widgets/simple-payments.php:129
 msgid "Are you sure you want to delete this item? It will be disabled and removed from all locations where it currently appears."
 msgstr "Desideri eliminare questo elemento? Sarà disabilitato e rimosso da tutte le posizioni in cui appare al momento."
 
+#: modules/simple-payments/simple-payments.php:181
 #: modules/widgets/twitter-timeline.php:93
 #: modules/widgets/twitter-timeline.php:113
 msgid "(Only administrators will see this message.)"
@@ -48,55 +92,55 @@ msgstr "Aggiungi un semplice pulsante di pagamento come widget."
 msgid "Simple Payments"
 msgstr "Pagamenti facili"
 
-#: modules/widgets/simple-payments/form.php:148
+#: modules/widgets/simple-payments/form.php:179
 msgid "This widget adds a payment button of your choice to your sidebar. To create or edit the payment buttons themselves, <a href=\"%s\">use the Customizer</a>."
 msgstr "Questo widget aggiunge un pulsante di pagamento a tua scelta alla barra laterale. Per creare o modificare i pulsanti di pagamento <a href=\"%s\">utilizza l'utilità di personalizzazione</a>."
 
-#: modules/widgets/simple-payments/form.php:133
+#: modules/widgets/simple-payments/form.php:163
 msgid "Delete Product"
 msgstr "Elimina prodotto"
 
-#: modules/widgets/simple-payments/form.php:129
-msgid "This is where PayPal will send your money. To claim a payment, you'll need a %1$sPayPal account%2$s connected to a bank account."
+#: modules/widgets/simple-payments/form.php:151
+msgid "This is where PayPal will send your money. To claim a payment, you'll need a <a href=\"%s\" %s>PayPal account</a> connected to a bank account."
 msgstr "È qui che PayPal invierà il tuo denaro. Per rivendicare un pagamento, ti servirà un %1$saccount PayPal%2$s collegato a un conto bancario."
 
-#: modules/widgets/simple-payments/form.php:119
+#: modules/widgets/simple-payments/form.php:134
 msgid "Allow people to buy more than one item at a time."
 msgstr "Consenti alle persone di acquistare più di un articolo alla volta."
 
-#: modules/widgets/simple-payments/form.php:80
+#: modules/widgets/simple-payments/form.php:90
 msgid "Remove image"
 msgstr "Rimuovi immagine"
 
-#: modules/widgets/simple-payments/form.php:77
+#: modules/widgets/simple-payments/form.php:86
 msgid "Select an image"
 msgstr "Selezionare un'immagine"
 
-#: modules/widgets/simple-payments/form.php:76
+#: modules/widgets/simple-payments/form.php:84
 msgid "Product image"
 msgstr "Immagine prodotto"
 
-#: modules/widgets/simple-payments/form.php:73
+#: modules/widgets/simple-payments/form.php:80
 msgid "For example: event tickets, charitable donations, training courses, coaching fees, etc."
 msgstr "Ad esempio: biglietti per eventi, donazioni caritatevoli, corsi di formazione, coaching e così via."
 
-#: modules/widgets/simple-payments/form.php:65
+#: modules/widgets/simple-payments/form.php:70
 msgid "What is this payment for?"
 msgstr "A cosa è dovuto questo pagamento?"
 
-#: modules/widgets/simple-payments/form.php:30
+#: modules/widgets/simple-payments/form.php:34
 msgid "Edit Selected"
 msgstr "Modifica selezionata"
 
-#: modules/widgets/simple-payments/form.php:25
+#: modules/widgets/simple-payments/form.php:29
 msgid "Looks like you don't have any products. You can create one using the Add New button below."
 msgstr "Sembra che tu non abbia prodotti. Puoi crearne uno usando il pulsante Aggiungi nuovo di seguito."
 
-#: modules/widgets/simple-payments/form.php:11
+#: modules/widgets/simple-payments/form.php:14
 msgid "Select a Simple Payment Button:"
 msgstr "Seleziona un semplice pulsante di pagamento"
 
-#: modules/widgets/simple-payments/form.php:2
+#: modules/widgets/simple-payments/form.php:3
 msgid "Widget Title"
 msgstr "Titolo del widget"
 
@@ -175,7 +219,7 @@ msgstr "Puoi scoprire di più sulle sitemap XML su <a href=\"%1$s\" rel=\"noopen
 msgid "This is an XML Sitemap generated by <a href=\"%1$s\" rel=\"noopener noreferrer\" target=\"_blank\">Jetpack</a>, meant to be consumed by search engines like <a href=\"%2$s\" rel=\"noopener noreferrer\" target=\"_blank\">Google</a> or <a href=\"%3$s\" rel=\"noopener noreferrer\" target=\"_blank\">Bing</a>."
 msgstr "Questa è una sitemap XML generata da <a href=\"%1$s\" rel=\"noopener noreferrer\" target=\"_blank\">Jetpack</a> per essere utilizzata dai motori di ricerca come <a href=\"%2$s\" rel=\"noopener noreferrer\" target=\"_blank\">Google</a> o <a href=\"%3$s\" rel=\"noopener noreferrer\" target=\"_blank\">Bing</a>."
 
-#: modules/simple-payments/simple-payments.php:255
+#: modules/simple-payments/simple-payments.php:284
 msgctxt "noun: a quantity of goods or items purchased or sold"
 msgid "Order"
 msgstr "Ordine"
@@ -219,10 +263,6 @@ msgstr "<a href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">Scopri di p
 msgid "Get started today"
 msgstr "Inizia oggi"
 
-#: class.jetpack-connection-banner.php:976
-msgid "Chat with us"
-msgstr "Avvia una chat con noi"
-
 #: class.jetpack-connection-banner.php:970
 msgid "If you need help at any step of the way we’re happy to chat with you!"
 msgstr "Se hai bisogno di aiuto per qualsiasi passaggio, saremo lieti di avviare una chat con te."
@@ -265,10 +305,6 @@ msgstr "Promozione: Spargi la voce per il tuo sito web collegandoti a tutti i pr
 msgid "Marketing & Performance"
 msgstr "Marketing e prestazioni"
 
-#: class.jetpack-connection-banner.php:885
-msgid "Publish: Post on the go from any device using the WordPress apps for iOS, Android, Windows, Linux, and OSX."
-msgstr "Pubblicazioni: Pubblica mentre sei in movimento da qualsiasi dispositivo utilizzando le app WordPress iOS, Android, Windows, Linux e OSX."
-
 #: class.jetpack-connection-banner.php:879
 msgid "Optimize: Upload images and videos directly to our powerful servers that present your media with lightning speed."
 msgstr "Ottimizzazione: Carica immagini e video direttamente sui nostri potenti server che presentano i tuoi contenuti multimediali alla velocità della luce."
@@ -290,6 +326,10 @@ msgstr "non ora"
 #: class.jetpack-connection-banner.php:853
 msgid "Hassle-free design, marketing, and security — all in one place."
 msgstr "Progettazione, marketing e sicurezza senza problemi, tutto in un unico posto."
+
+#: class.jetpack-connection-banner.php:885
+msgid "Publish: Post on the go from any device using the WordPress apps for iOS, Android, Windows, Linux, and macOS."
+msgstr "Pubblicazioni: pubblica mentre sei in movimento da qualsiasi dispositivo utilizzando le app WordPress iOS, Android, Windows, Linux e OSX."
 
 #: class.jetpack-connection-banner.php:852
 msgid "The ideal way to experience WordPress"
@@ -350,7 +390,7 @@ msgstr "La connessione Jetpack è stata interrotta."
 msgid "Jetpack connection status unknown."
 msgstr "Lo stato della connessione Jetpack è sconosciuto."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:894
+#: _inc/lib/class.core-rest-api-endpoints.php:905
 msgid "Could not confirm new owner."
 msgstr "Impossibile confermare il nuovo proprietario."
 
@@ -467,7 +507,7 @@ msgid "Configure related posts in the Customizer"
 msgstr "Configura gli articoli correlati nell'utilità di personalizzazione"
 
 #: _inc/jetpack-strings.php:331 _inc/jetpack-strings.php:619
-#: _inc/lib/class.core-rest-api-endpoints.php:1720
+#: _inc/lib/class.core-rest-api-endpoints.php:1731
 #: modules/related-posts/jetpack-related-posts.php:387
 msgid "Highlight related content with a heading"
 msgstr "Evidenzia il contenuto correlato con un'intestazione"
@@ -481,7 +521,7 @@ msgid "View backup history"
 msgstr "Visualizzare la cronologia del backup"
 
 #: _inc/jetpack-strings.php:332 _inc/jetpack-strings.php:620
-#: _inc/lib/class.core-rest-api-endpoints.php:1727
+#: _inc/lib/class.core-rest-api-endpoints.php:1738
 #: modules/related-posts/jetpack-related-posts.php:389
 msgid "Show a thumbnail image where available"
 msgstr "Visualizza un'immagine in miniatura se disponibile"
@@ -546,7 +586,8 @@ msgid "Privacy Policy Link"
 msgstr "Link all’informativa sulla privacy."
 
 #. translators: %d: Post ID.
-#: modules/contact-form/grunion-contact-form.php:859
+#: modules/contact-form/grunion-contact-form.php:870
+#: modules/contact-form/grunion-contact-form.php:886
 msgid "Feedback ID %d could not be removed at this time."
 msgstr "L’ID feedback %d non può essere rimosso al momento."
 
@@ -642,32 +683,32 @@ msgstr "Clicca per condividere su Skype"
 
 #. translators: %1$s is a comma-separated list of services and accounts. Ex.
 #. Facebook (@jetpack), Twitter (@jetpack)
-#: modules/publicize/publicize.php:476
+#: modules/publicize/publicize.php:485
 msgid "Project published and sharing project on %1$s."
 msgstr "Progetto pubblicato. Condivisione del progetto su %1$s."
 
 #. translators: %1$s is a comma-separated list of services and accounts. Ex.
 #. Facebook (@jetpack), Twitter (@jetpack)
-#: modules/publicize/publicize.php:468
+#: modules/publicize/publicize.php:477
 msgid "Post published, sending emails to subscribers and sharing post on %1$s."
 msgstr "Articolo pubblicato. Invio delle e-mail agli abbonati e condivisione dell'articolo su %1$s."
 
 #. translators: %1$s is a comma-separated list of services and accounts. Ex.
 #. Facebook (@jetpack), Twitter (@jetpack)
-#: modules/publicize/publicize.php:459
+#: modules/publicize/publicize.php:468
 msgid "Post published and sharing on %1$s."
 msgstr "Articolo pubblicato e condivisione su %1$s."
 
 #. translators: Service name is %1$s, and account name is %2$s.
-#: modules/publicize/publicize.php:451
+#: modules/publicize/publicize.php:460
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: modules/publicize/publicize.php:433
+#: modules/publicize/publicize.php:442
 msgid "View project"
 msgstr "Visualizza progetto"
 
-#: modules/publicize/publicize.php:430 modules/subscriptions.php:196
+#: modules/publicize/publicize.php:439 modules/subscriptions.php:196
 msgid "View post"
 msgstr "Visualizza articolo"
 
@@ -679,10 +720,6 @@ msgstr "Altri %s"
 #: modules/comments/comments.php:317
 msgid "Comment Form"
 msgstr "modulo dei commenti"
-
-#: functions.global.php:121
-msgid "By clicking the <strong>Set up Jetpack</strong> button, you agree to our fascinating <a href=\"%s\" target=\"_blank\">Terms of Service</a> and to <a href=\"%s\" target=\"_blank\">share details</a> with WordPress.com"
-msgstr "Facendo clic sul pulsante <strong>Configura Jetpack</strong>, accetti i nostri interessanti <a href=\"%s\" target=\"_blank\">Termini di servizio</a> e la <a href=\"%s\" target=\"_blank\">condivisione delle informazioni</a> con WordPress.com"
 
 #: json-endpoints/class.wpcom-json-api-render-embed-endpoint.php:63
 msgid "The requested URL is not an embed."
@@ -701,7 +738,11 @@ msgstr "Il parametro embed_url deve essere un URL valido."
 msgid "Your token must have permission to post on this blog."
 msgstr "Il token deve essere autorizzato a pubblicare articoli su questo blog."
 
-#: class.jetpack.php:4145
+#: functions.global.php:121
+msgid "By clicking the <strong>Set up Jetpack</strong> button, you agree to our <a href=\"%s\" target=\"_blank\">Terms of Service</a> and to <a href=\"%s\" target=\"_blank\">share details</a> with WordPress.com."
+msgstr "Facendo clic sul pulsante <strong>Configura Jetpack</strong>, accetti i nostri <a href=\"%s\" target=\"_blank\">Termini di servizio</a> e la <a href=\"%s\" target=\"_blank\">condivisione delle informazioni</a> con WordPress.com"
+
+#: class.jetpack.php:4150
 msgid "Could not activate %s"
 msgstr "Impossibile attivare %s"
 
@@ -825,6 +866,11 @@ msgstr "Questa caratteristica è stata abilitata da un amministratore del sito. 
 #: _inc/jetpack-strings.php:610
 msgid "%(moduleName)s has been disabled by a site administrator. {{link}}Learn more{{/link}}."
 msgstr "Il modulo %(moduleName)s è stato disabilitato da un amministratore del sito. {{link}}Scopri di più{{/link}}."
+
+#: _inc/jetpack-strings.php:229
+msgctxt "Search term."
+msgid "tos"
+msgstr "ToS (Termini di Servizio)"
 
 #: _inc/jetpack-strings.php:400
 msgid "Allows you to compose content with links, lists, and other styles using the Markdown syntax."
@@ -1399,7 +1445,7 @@ msgstr "Sito web: %1$s (indirizzo IP: %2$s, %3$s)"
 msgid "New trackback on your post \"%s\""
 msgstr "Nuovo trackback all'articolo \"%s\""
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2023
+#: _inc/lib/class.core-rest-api-endpoints.php:2034
 msgid "Primary language for the site."
 msgstr "Lingua primaria per il sito."
 
@@ -1626,6 +1672,11 @@ msgstr "Informazioni sull'ultima query:"
 msgctxt "label for formatting JSON"
 msgid "Minify"
 msgstr "Minificare"
+
+#: 3rd-party/debug-bar/class.jetpack-search-debug-bar.php:116
+msgctxt "Text displayed when there is no information"
+msgid "None"
+msgstr "Nessuna informazione."
 
 #: 3rd-party/debug-bar/class.jetpack-search-debug-bar.php:26
 #: _inc/jetpack-strings.php:690
@@ -2094,13 +2145,25 @@ msgstr "Il token di onboarding non può essere cancellato."
 msgid "Onboarding failed to process: %s"
 msgstr "Processo di onboarding fallito: %s"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2117
+#: _inc/lib/class.core-rest-api-endpoints.php:2128
 msgid "Not valid onboarding data."
 msgstr "Dati di onboarding non validi."
+
+#: _inc/jetpack-strings.php:709
+msgid "Thanks for choosing Jetpack Professional. Jetpack is now backing up your content in real-time, indexing your content for search, scanning for security threats, and granting access to premium themes."
+msgstr "Grazie per aver scelto il piano Professional. Jetpack sta facendo il backup del tuoi contenuti, facendo la scansione alla ricerca di potenziali minacce alla sicurezza del sito, e assicurando l'accesso ai temi premium. "
+
+#: _inc/jetpack-strings.php:711
+msgid "With Jetpack Professional, you can create the perfect site with one of over 300 professionally-designed WordPress themes, including more than 200 premium themes. Customize your content with a variety of widgets, or add unlimited videos to your posts and pages -- displayed free of ads or watermarks."
+msgstr "Con il piano Professional di Jetpack puoi creare il sito perfetto per le tue necessità, scegliendo uno tra gli oltre 300 temi per WordPress, inclusi più di 200 temi premium. Personalizza i tuoi contenuti con i widget, o aggiungi un numero illimitato di video alle tue pagine e ai tuoi articoli - è tutto mostrato e disponibile senza ads o watermark. "
 
 #: _inc/jetpack-strings.php:714 _inc/jetpack-strings.php:723
 msgid "Growing your following is easy with your Professional plan, thanks to content sharing and scheduling, SEO tools, and built-in subscription options. You can monetize your site with a simple payment button and in-line ads, and monitor the success of your efforts by integrating with Google Analytics."
 msgstr "Far crescere il seguito dei tuoi follower è facile con il piano Professional, grazie alle opzioni di condivisione e programmazione dei contenuti, agli strumenti per la SEO e le opzioni di sottoscrizione. Puoi anche monetizzare il tuo sito semplicemente aggiungendo un pulsante per il pagamento e ads. Puoi anche gestire e controllare il successo dei tuoi sforzi integrando Google Analytics. "
+
+#: _inc/jetpack-strings.php:693
+msgid "Your Jetpack plan gives you everything you need to keep your hard work safe, including on-demand backups and malware scans with one-click restores and issue resolution. Your site will be fully protected against spam, malicious code, and brute force login attempts."
+msgstr "Il piano Professional di Jetpack ti offre tutto ciò che ti serve per mantenere il tuo lavoro al sicuro. Nel piano è inclusa anche l'opzione di backup on-demand e scansione malware, oltre all'opzione per ristabilire il sito con un backup. Il tuo sito sarà inoltre protetto contro lo spam, codice malevolo o potenzialmente pericoloso, e tentativi di login brute force."
 
 #: _inc/jetpack-strings.php:715
 msgid "Start exploring Jetpack Professional now to see all the benefits of your new plan."
@@ -2118,6 +2181,14 @@ msgstr "Rivedi le opzioni SEO"
 msgid "Welcome Professional"
 msgstr "Benvenuto su Professional"
 
+#: _inc/jetpack-strings.php:700
+msgid "Thanks for choosing Jetpack Premium. Jetpack is now backing up your site, scanning for  security threats, and enabling monetization features."
+msgstr "Grazie per aver scelto il piano Premium. Jetpack sta facendo il backup del tuoi contenuti, facendo la scansione alla ricerca di potenziali minacce alla sicurezza del sito, e assicurando l'accesso ai temi premium."
+
+#: _inc/jetpack-strings.php:702
+msgid "With Jetpack Premium, you can create the perfect site, no matter its purpose. Customize your site’s appearance with one of more than 100 free themes, or enhance your content with unlimited HD video -- all hosted free of ads or watermarks."
+msgstr "Con Jetpack Premium puoi creare il tuo sito perfetto, non importa quale sia il suo scopo finale. Personalizza l'aspetto del tuo sito scegliendo uno tra più di 100 temi gratuiti, o esalta i tuoi contenuti con spazio illimitato di storaggio per video in HD - tutto è offerto gratuitamente senza ads o watermark."
+
 #: _inc/jetpack-strings.php:704
 msgid "Using Jetpack’s powerful sharing tools, you can automatically share your newest posts on social media, or schedule your content to be re-shared at any date or time you choose. And along with growing your following, you can grow your business with tools like payment buttons and ads."
 msgstr "Usando i potenti strumenti di condivisione di Jetpack, puoi automaticamente condividere i tuoi articoli più recenti sui social media, oppure programmarli per essere ricondivisi il giorno che vuoi, all'ora che vuoi. E mentre fai crescere il seguito dei tuoi follower, puoi anche far crescere la tua attività con un pulsante per il pagamento e gli ads."
@@ -2134,6 +2205,10 @@ msgstr "Monetizza il tuo sito con gli ads"
 msgid "Welcome Premium"
 msgstr "benvenuto su Premium"
 
+#: _inc/jetpack-strings.php:694
+msgid "Thanks for choosing Jetpack Personal. Jetpack is now backing up your site and scanning for security threats."
+msgstr "Grazie per aver scelto li piano Personal. Jetpack sta ora facendo il backup del tuo sito e facendo la scansione alla ricerca di potenziali minacce alla sicurezza del sito."
+
 #: _inc/jetpack-strings.php:696
 msgid "With Jetpack Personal, you have access to more than 100 free, professionally-designed WordPress themes. Choose the theme that best fits your site and customize colors, images, or add a variety of new widgets."
 msgstr "Con Jetpack Personal hai accesso a oltre 100 temi gratuiti per WordPress. Scegli il tema che si adatta meglio alle necessità del tuo sito, e personalizza i colori, le immagini e aggiungi tutti i widget che vuoi. "
@@ -2146,7 +2221,7 @@ msgstr "Fatto!"
 msgid "Welcome personal"
 msgstr "Benvenuto su Personal"
 
-#: modules/simple-payments/simple-payments.php:298
+#: modules/simple-payments/simple-payments.php:327
 msgid "Product"
 msgstr "Prodotto"
 
@@ -2166,11 +2241,11 @@ msgstr "Scopri di più sulle Immagini in Evidenza"
 msgid "Display comment link"
 msgstr "Mostra link al commento"
 
-#: modules/simple-payments/simple-payments.php:299
+#: modules/simple-payments/simple-payments.php:328
 msgid "Simple Payments products"
 msgstr "Simple Payment - prodotti"
 
-#: modules/simple-payments/simple-payments.php:256
+#: modules/simple-payments/simple-payments.php:285
 msgid "Simple Payments orders"
 msgstr "Simple Payments - ordini"
 
@@ -2502,23 +2577,23 @@ msgstr "Token per accesso mancante o non valido"
 msgid "Unable to fetch the requested data."
 msgstr "Impossibile recuperare i dati richiesti."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1913
+#: _inc/lib/class.core-rest-api-endpoints.php:1924
 msgid "Display ads on archive pages?"
 msgstr "Visualizzare pubblicità o pagine di archivio?"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1906
+#: _inc/lib/class.core-rest-api-endpoints.php:1917
 msgid "Display ads on pages?"
 msgstr "Visualizzare pubblicità sulle pagine?"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1899
+#: _inc/lib/class.core-rest-api-endpoints.php:1910
 msgid "Display ads on posts?"
 msgstr "Visualizzare pubblicità sugli articoli?"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1892
+#: _inc/lib/class.core-rest-api-endpoints.php:1903
 msgid "Display ads on the front page?"
 msgstr "Visualizzare pubblicità sulla pagina principale?"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1885
+#: _inc/lib/class.core-rest-api-endpoints.php:1896
 msgid "Display second ad below post?"
 msgstr "Visualizzare una seconda pubblicità sotto gli articoli?"
 
@@ -2581,6 +2656,10 @@ msgstr "Concedici del tempo per raccogliere tutti i dati in modo tale da visuali
 #: _inc/jetpack-strings.php:467
 msgid "Okay, got it!"
 msgstr "Ok, fatto!"
+
+#: _inc/jetpack-strings.php:486
+msgid "By clicking the button below, you agree to our {{tosLink}}Terms of Service{{/tosLink}} and to {{shareDetailsLink}}share details{{/shareDetailsLink}} with WordPress.com."
+msgstr "Cliccando qui sotto, accetti i nostri {{tosLink}}Termini di servizio{{/tosLink}} e la {{shareDetailsLink}}condivisione delle informazioni{{/shareDetailsLink}} con WordPress.com"
 
 #: _inc/jetpack-strings.php:320
 msgid "Archives"
@@ -2736,6 +2815,10 @@ msgstr "Quante foto vuoi che siano visualizzate?"
 #: modules/widgets/flickr/form.php:32
 msgid "Leave the Flickr RSS URL field blank to display <a target=\"_blank\" href=\"%s\">interesting</a> Flickr photos."
 msgstr "Lascia vuoto il campo relativo all'URL del feed RSS di Flickr per mostrare <a target=\"_blank\" href=\"%s\">foto interessanti</a> prese da Flickr"
+
+#: modules/widgets/flickr/form.php:26
+msgid "To find your Flickr RSS URL, go to your photostream, add \"?details=1\" to the URL, and hit enter. Scroll down until you see the RSS icon or the \"Latest\" link. Right-click on either options and copy the URL. Paste into the box above."
+msgstr "Per trovare il tuo URL del feed RSS di Flickr, vai al tuo flusso di foto, apri il menu \"Altro\" e fai clic su \"Modifica\". Scorri la pagina verso il basso fino a quando non visualizzi l'icona RSS o il link \"più recente\". Fai clic con il pulsante destro del mouse su entrambi e copia l'URL. Incollalo nella casella sopra."
 
 #: modules/widgets/flickr.php:151
 msgid "(Only admins can see this message)"
@@ -3087,6 +3170,14 @@ msgstr "Siti seguiti"
 msgid "Something Else"
 msgstr "Altro"
 
+#: class.jetpack-debugger.php:379
+msgid "I have security concerns / my site is hacked."
+msgstr "Ho problemi di sicurezza / Il mio sito è stato vittima di un hacker"
+
+#: class.jetpack-debugger.php:374
+msgid "I'm having trouble connecting Jetpack to WordPress.com."
+msgstr "Sto riscontrando problemi con il collegamento di Jetpack a WordPress.com"
+
 #: modules/masterbar/masterbar.php:270
 msgctxt "Title for Reader sub-menu that contains followed sites, likes, and recommendations"
 msgid "Streams"
@@ -3095,6 +3186,15 @@ msgstr "Stream"
 #: modules/masterbar/masterbar.php:260
 msgid "Reader"
 msgstr "Reader"
+
+#: class.jetpack-debugger.php:380
+msgid "My site is down / I can't access my site."
+msgstr "Il mio sito è offline / Non riesco ad accedere al mio sito"
+
+#: modules/masterbar/masterbar.php:686
+msgctxt "admin bar menu group label"
+msgid "Manage"
+msgstr "Gestisci"
 
 #: class.jetpack-debugger.php:222
 msgid "Go to connection screen."
@@ -3108,7 +3208,7 @@ msgstr "Un problema di connessione con WordPress.com."
 msgid "This site was successfully disconnected."
 msgstr "La disconnessione da questo sito è stata effettuata correttamente."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2257
+#: _inc/lib/class.core-rest-api-endpoints.php:2268
 msgid "%s must be an alphanumeric string or a verification tag."
 msgstr "%s deve essere una stringa alfanumerica o un tag di verifica."
 
@@ -3116,7 +3216,7 @@ msgstr "%s deve essere una stringa alfanumerica o un tag di verifica."
 msgid "Invalid Akismet key"
 msgstr "Chiave Akismet non valida"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1373
+#: _inc/lib/class.core-rest-api-endpoints.php:1384
 msgid "Color scheme."
 msgstr "Schema colori."
 
@@ -3177,6 +3277,11 @@ msgstr "Ottieni una risoluzione più veloce alle tue domande al supporto."
 #: _inc/jetpack-strings.php:662
 msgid "Protect your site from spam."
 msgstr "Proteggi il tuo sito dallo spam."
+
+#: _inc/jetpack-strings.php:617
+msgctxt "A heading for a block of related posts."
+msgid "Related"
+msgstr "Correlati"
 
 #: _inc/jetpack-strings.php:657
 msgid "Real-time site backups and automatic threat resolution."
@@ -3337,6 +3442,10 @@ msgstr "Gestisci connessione sito"
 #: _inc/jetpack-strings.php:437
 msgid "Theme enhancements"
 msgstr "Miglioramento dei temi"
+
+#: _inc/jetpack-strings.php:562
+msgid "Brute force attack protection and downtime monitoring"
+msgstr "Protezione da attacchi di forza bruta e monitoraggio del downtime"
 
 #: _inc/jetpack-strings.php:410
 msgctxt "Settings header"
@@ -3644,7 +3753,7 @@ msgstr "Controlla i tuoi Email Follower "
 msgid "Connect your user account to WordPress.com to view your email followers"
 msgstr "Connetti il tuo account a WordPress.com per vedere i tuoi email follower"
 
-#: _inc/jetpack-strings.php:131 _inc/lib/class.core-rest-api-endpoints.php:1404
+#: _inc/jetpack-strings.php:131 _inc/lib/class.core-rest-api-endpoints.php:1415
 #: modules/widgets/eu-cookie-law/form.php:210
 msgid "Color scheme"
 msgstr "Schema di colori"
@@ -3687,6 +3796,10 @@ msgstr "Sito connesso"
 #: _inc/jetpack-strings.php:37
 msgid "Updated settings."
 msgstr "Impostazioni aggiornate. "
+
+#: _inc/jetpack-strings.php:38
+msgid "Error updating settings. %(error)s"
+msgstr "Errore nell'aggiornamento delle impostazioni. %(error)s"
 
 #: _inc/jetpack-strings.php:40
 msgid "Regenerated Post by Email address."
@@ -3750,7 +3863,7 @@ msgstr "Nessuna statistica"
 msgid "Export CSV"
 msgstr "Esporta CSV"
 
-#: class.jetpack.php:5310
+#: class.jetpack.php:5315
 msgid "Unknown error registering your Jetpack site"
 msgstr "Errore sconosciuto nella registrazione del tuo sito Jetpack"
 
@@ -3768,17 +3881,13 @@ msgstr "Definisci i parametri di default sotto forma di array"
 msgid "View stats for this post in WordPress.com"
 msgstr "Guarda le statistiche dei post su WordPress.com"
 
-#: modules/publicize/publicize-jetpack.php:731
+#: modules/publicize/publicize-jetpack.php:691
 msgid "Publicize to my <strong>Tumblr blog</strong>:"
 msgstr "Publicize sul mio <strong>Tumblr blog</strong>:"
 
-#: modules/publicize/publicize-jetpack.php:600
+#: modules/publicize/publicize-jetpack.php:577
 msgid "Publicize to my <strong>Facebook Page</strong>:"
 msgstr "Publicize sulla mia <strong>Pagina Facebook</strong>:"
-
-#: modules/publicize/publicize-jetpack.php:580
-msgid "Publicize to my <strong>Facebook Wall</strong>:"
-msgstr "Publicize sulla mia <strong>Bacheca Facebook</strong>:"
 
 #: class.jetpack-network.php:342
 msgid "Site ID must be provided to disconnect a sub-site."
@@ -3819,17 +3928,13 @@ msgstr[1] "Cleaned up a total of %d videos."
 msgid "Sorry, you are not allowed to preview drafts."
 msgstr "Non hai i permessi per vedere l'anteprima delle bozze."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1526
+#: _inc/lib/class.core-rest-api-endpoints.php:1537
 msgid "Use Markdown for posts."
 msgstr "Usa il Markdown per i post"
 
 #: modules/infinite-scroll.php:99
 msgid "Track each scroll load (7 posts by default) as a page view in Google Analytics"
 msgstr "Traccia ogni scaricamento di scroll (7 post di default) come un'unica page view su Google Analytics"
-
-#: _inc/jetpack-strings.php:580
-msgid "Currently in {{a}}Development Mode{{/a}} (some features are disabled) because: {{reasons/}}"
-msgstr "Al momento in {{a}}Modalità Sviluppo{{/a}} (alcune funzionalità sono disabilitate) perché: {{reasons/}}"
 
 #: _inc/jetpack-strings.php:577
 msgid "{{li}}The jetpack_development_mode filter is active{{/li}}"
@@ -3842,6 +3947,10 @@ msgstr "{{li}}La costante JETPACK_DEV_DEBUG è definita{{/li}}"
 #: _inc/jetpack-strings.php:579
 msgid "{{li}}Your site URL lacks a dot (e.g. http://localhost){{/li}}"
 msgstr "{{li}}All'URL del tuo sito manca un punto (es. http://localhost){{/li}}"
+
+#: _inc/jetpack-strings.php:580
+msgid "Currently in {{a}}Development Mode{{/a}} (some features are disabled) because: {{reasons/}}"
+msgstr "Attualmente in {{a}}Modalità di sviluppo{{/a}} (alcune funzioni sono disabilitate) perché: {{reasons/}}"
 
 #: modules/widgets/twitter-timeline.php:363
 msgid "# of Tweets Shown (1 to 20):"
@@ -3860,7 +3969,7 @@ msgstr "Google Analytics"
 msgid "Advertisements"
 msgstr "Annunci"
 
-#: modules/publicize/publicize-jetpack.php:189
+#: modules/publicize/publicize-jetpack.php:193
 msgid "Jetpack is not connected. Please connect Jetpack by visiting <a href='%s'>Settings</a>."
 msgstr "Jetpack non è collegato. Si prega di collegarsi a Jetpack visitando le <a href='%s'>Impostazioni</a>."
 
@@ -3882,7 +3991,7 @@ msgstr "La coda è vuota: %s"
 msgid "Google Analytics is a free service that complements our {{a}}built-in stats{{/a}} with different insights into your traffic. WordPress.com stats and Google Analytics use different methods to identify and track activity on your site, so they will normally show slightly different totals for your visits, views, etc."
 msgstr "Google Analytics è un servizio gratuito che completa la nostra {{a}}built-in stats{{/a}} con diversi approfondimenti sul tuo traffico. Le statistiche di WordPress.com e Google Analytics usano metodi diversi per identificare e tracciare l'attività sul tuo sito, i quali di norma mostrano numeri totali delle visite leggermente diversi, come anche delle visualizzazioni, ecc."
 
-#: _inc/jetpack-strings.php:182 _inc/lib/class.core-rest-api-endpoints.php:1922
+#: _inc/jetpack-strings.php:182 _inc/lib/class.core-rest-api-endpoints.php:1933
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
@@ -4381,23 +4490,23 @@ msgctxt "Module Description"
 msgid "Check your spelling, style, and grammar"
 msgstr "Controlla i refusi, lo stile e la grammatica"
 
-#: class.jetpack.php:5642
+#: class.jetpack.php:5647
 msgid "The request is not signed correctly."
 msgstr "La richiesta non è stata mandata correttamente."
 
-#: class.jetpack.php:5615
+#: class.jetpack.php:5620
 msgid "This Content-Type is not supported."
 msgstr "Questo Content-Type non è supportato."
 
-#: class.jetpack.php:5596
+#: class.jetpack.php:5601
 msgid "This request method does not support body parameters."
 msgstr "Questo request method non è supportato dai body parameters."
 
-#: class.jetpack.php:5588
+#: class.jetpack.php:5593
 msgid "This request method is not supported."
 msgstr "Questo request method non è supportato."
 
-#: class.jetpack.php:5226
+#: class.jetpack.php:5231
 msgid "PHP's XML extension is not available. Jetpack requires the XML extension to communicate with WordPress.com. Please contact your hosting provider to enable PHP's XML extension."
 msgstr "L'estensione PHP XML non è disponibile. Jetpack richiede l'estensione XML per comunicare con WordPress.com. Contatta il tuo host per attivare l'estensione PHP XML."
 
@@ -4446,11 +4555,11 @@ msgstr "Quando"
 msgid "Location"
 msgstr "Luogo"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1878
+#: _inc/lib/class.core-rest-api-endpoints.php:1889
 msgid "Is site approved for WordAds?"
 msgstr "Questo sito è stato approvato per WordAds?"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1871
+#: _inc/lib/class.core-rest-api-endpoints.php:1882
 msgid "Display an ad unit at the top of each page."
 msgstr "Mostra una pubblicità all'inizio di ogni pagina. "
 
@@ -4501,6 +4610,10 @@ msgstr "Attiva Ads"
 #: _inc/jetpack-strings.php:174
 msgid "Video Hosting"
 msgstr "Video Hosting"
+
+#: _inc/jetpack-strings.php:202
+msgid "We support all Jetpack users, regardless of plan. But customers on a paid subscription enjoy priority support so that security issues are identified and fixed for you as soon as possible."
+msgstr "Prestiamo supporto a tutti gli utenti Jetpack, non importa quale piano abbiano. Tuttavia, i clienti con un piano a pagamento posso usufruire del supporto prioritario, di modo che possiamo identificare e risolvere al più presto possibile i problemi legati alla sicurezza."
 
 #: _inc/jetpack-strings.php:164 _inc/jetpack-strings.php:325
 msgid "View your earnings"
@@ -4777,7 +4890,7 @@ msgstr "Questo tema non esiste"
 msgid "Invalid SEO meta description value."
 msgstr "Valore della SEO meta description non valida."
 
-#: class.jetpack.php:6349
+#: class.jetpack.php:6354
 msgid "Cannot parse URL %s"
 msgstr "Impossible analizzare l'URL %s"
 
@@ -4812,6 +4925,15 @@ msgstr "Strumenti SEO"
 msgid "Sorry, you cannot view this resource."
 msgstr "Mi dispiace, non puoi vedere questa risorsa!"
 
+#: class.jetpack-idc.php:606
+msgid ""
+"No. <a href=\"%1$s\">%2$s</a> is a new and different website that's separate from\n"
+"\t\t\t\t\t<a href=\"%3$s\">%4$s</a>. It requires  a new connection to WordPress.com for new stats and subscribers."
+msgstr ""
+"No. <a href=\"%1$s\">%2$s</a> è un sito nuovo e diverso che è separato da\n"
+"\n"
+"\t\t\t\t\t<a href=\"%3$s\">%4$s</a>. Questo richiede una nuova connessione a WordPress.com per nuove statistiche e sottoscrizioni."
+
 #: class.jetpack-idc.php:591
 msgid "Migrate Stats &amp; Subscribers"
 msgstr "Migra Statistiche &amp; Sottoscrizioni"
@@ -4835,6 +4957,22 @@ msgstr "Aggiusta la connessione di Jetpack"
 #: class.jetpack-idc.php:495
 msgid "Confirm Safe Mode"
 msgstr "Conferma la Safe Mode"
+
+#: class.jetpack-idc.php:510
+msgid ""
+"If this is a separate and new website, or the new home of <a href=\"%1$s\">%2$s</a>,\n"
+"\t\t\t\t\twe recommend turning Safe Mode off, and re-establishing your connection to WordPress.com."
+msgstr ""
+"Se questo è un sito nuovo e/o diverso, o se è la nuova destinazione di <a href=\"%1$s\">%2$s</a>,\n"
+"\t\t\t\t\tnoi raccomandiamo di disabilitare il Safe Mode, e ristabilire la connessione con WordPress.com."
+
+#: class.jetpack-idc.php:473
+msgid ""
+"Is this website a temporary duplicate of <a href=\"%1$s\">%2$s</a> for the purposes\n"
+"\t\t\t\t\tof testing, staging or development? If so, we recommend keeping it in Safe Mode."
+msgstr ""
+"Questo sito è un duplicato temporaneo di <a href=\"%1$s\">%2$s</a> creato con il fine di\n"
+"\t\t\t\t\ttest, staging o sviluppo? Se la risposta è sì, ti raccomandiamo di mantenerlo in Safe Mode."
 
 #: class.jetpack-connection-banner.php:561
 msgid "or visit our site for the full feature list."
@@ -4871,6 +5009,14 @@ msgstr "Connettiti a WordPress.com per iniziare"
 #: class.jetpack-connection-banner.php:548
 msgid "Jetpack includes other features that help you customize your site including Custom CSS, Contact Forms, Galleries and Carousels, Notifications and Subscriptions, Configurable Widgets, and many more."
 msgstr "Jetpack include altre funzionalità che ti aiuta a personalizzare il tuo sito, includendo CSS aggiuntivo, Form di contatto, Gallerie e Caroselli, Notifiche e Sottoscrizioni, Widget configurabili e molto altro ancora."
+
+#: class.jetpack-idc.php:450
+msgid ""
+"Please confirm Safe Mode or fix the Jetpack connection. Select one of the options below or <a href=\"%1$s\">learn\n"
+"\t\t\t\t\tmore about Safe Mode</a>."
+msgstr ""
+"Conferma lo stato di Safe Mode o risolvi la connessione con Jetpack. Seleziona una delle opzioni di qui sotto o <a href=\"%1$s\">leggi\n"
+"\t\t\t\t\tdi più riguardo la modalità Safe Mode</a>."
 
 #: class.jetpack-connection-banner.php:514
 msgid "When Jetpack is connected to WordPress.com, head over to the Apps tab within Jetpack for direct links to the mobile and desktop apps."
@@ -4998,7 +5144,7 @@ msgid_plural "Invalid options: %s."
 msgstr[0] "Impostazione non valida %s."
 msgstr[1] "Impostazioni non valide %s."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2297
+#: _inc/lib/class.core-rest-api-endpoints.php:2308
 msgid "%s must be an array of post types."
 msgstr "%s deve essere un array di post types."
 
@@ -5022,19 +5168,19 @@ msgstr "Quanto vale il tuo sito?"
 msgid "The requested Jetpack data updates were successful."
 msgstr "La richiesta di aggiornamento dei dati Jetpack è stata di successo."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1864
+#: _inc/lib/class.core-rest-api-endpoints.php:1875
 msgid "Yandex Site Verification"
 msgstr "Verifica sito con Yandex "
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1106
+#: _inc/lib/class.core-rest-api-endpoints.php:1117
 msgid "Could not confirm migration."
 msgstr "Migrazione non confermata."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1092
+#: _inc/lib/class.core-rest-api-endpoints.php:1103
 msgid "Could not delete sync error option."
 msgstr "Impossibile cancellare l'opzione di sync error"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1076
+#: _inc/lib/class.core-rest-api-endpoints.php:1087
 msgid "Could not confirm safe mode."
 msgstr "Impossible confermare il safe mode."
 
@@ -5378,21 +5524,21 @@ msgstr "Tutti i moduli attivati."
 msgid "Please install Akismet."
 msgstr "Installa Akismet."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2798
+#: _inc/lib/class.core-rest-api-endpoints.php:2809
 msgid "%s plugin need updating."
 msgid_plural "%s plugins need updating."
 msgstr[0] "%s plugin deve essere aggiornato."
 msgstr[1] "%s plugin devono essere aggiornati."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2805
+#: _inc/lib/class.core-rest-api-endpoints.php:2816
 msgid "Could not check updates for plugins on this site."
 msgstr "Impossibile controllare gli aggiornamenti per i plugin su questo sito."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2891
+#: _inc/lib/class.core-rest-api-endpoints.php:2902
 msgid "Plugin %s is not installed."
 msgstr "Il plugin %s non è installato."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2900
+#: _inc/lib/class.core-rest-api-endpoints.php:2911
 msgid "Plugin found."
 msgstr "Il plugin è stato trovato."
 
@@ -5417,7 +5563,7 @@ msgstr "Il back-up del tuo sito è stato eseguito con successo %s fa."
 msgid "You need to register for VaultPress."
 msgstr "Devi registrarti su VaultPress."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2792
+#: _inc/lib/class.core-rest-api-endpoints.php:2803
 msgid "All plugins are up-to-date. Keep up the good work!"
 msgstr "Tutti i plugin sono aggiornati.  Vai così!"
 
@@ -5425,11 +5571,11 @@ msgstr "Tutti i plugin sono aggiornati.  Vai così!"
 msgid "The requested Jetpack module was activated."
 msgstr "Il modulo Jetpack richiesto è stato attivato."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2885
+#: _inc/lib/class.core-rest-api-endpoints.php:2896
 msgid "This site has no plugins."
 msgstr "Questo sito non ha plugin."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2864
+#: _inc/lib/class.core-rest-api-endpoints.php:2875
 msgid "Unable to list plugins."
 msgstr "Impossibile elencare i plugin."
 
@@ -5438,23 +5584,23 @@ msgstr "Impossibile elencare i plugin."
 msgid "Please activate Akismet."
 msgstr "Attiva Akismet."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2446
+#: _inc/lib/class.core-rest-api-endpoints.php:2457
 msgid "%s must be a string."
 msgstr "%s deve essere una stringa."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2326
+#: _inc/lib/class.core-rest-api-endpoints.php:2337
 msgid "%s must be an array with visible and hidden items."
 msgstr "%s deve essere un'array con elementi visibili e nascosti. "
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2335
-#: _inc/lib/class.core-rest-api-endpoints.php:2375
-#: _inc/lib/class.core-rest-api-endpoints.php:2403
+#: _inc/lib/class.core-rest-api-endpoints.php:2346
+#: _inc/lib/class.core-rest-api-endpoints.php:2386
+#: _inc/lib/class.core-rest-api-endpoints.php:2414
 msgid "Failed loading required dependency Sharing_Service."
 msgstr "Fallito il caricamento di una dipendenza obbligatoria per il servizio di condivisione."
 
 #. Translators: placeholder 1 is a parameter holding the services passed to
 #. endpoint, placeholder 2 is a list of all Jetpack Sharing services
-#: _inc/lib/class.core-rest-api-endpoints.php:2347
+#: _inc/lib/class.core-rest-api-endpoints.php:2358
 msgid "%1$s visible and hidden items must be a list of %2$s."
 msgstr "%1$s gli elementi visibili e nascosti devono essere una lista di %2$s.                                                                                                                                                                           "
 
@@ -5510,23 +5656,23 @@ msgstr "Chiave Akismet non valida. Contatta il supporto."
 msgid "Site not verified with any service."
 msgstr "Il sito non è verificato con nessun servizio."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2381
+#: _inc/lib/class.core-rest-api-endpoints.php:2392
 msgid "%s needs sharing name, url and icon."
 msgstr "%s deve avere un nome per la condivisione, un URL e un'icona."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2399
+#: _inc/lib/class.core-rest-api-endpoints.php:2410
 msgid "%s must be a string prefixed with 'custom-' and followed by a numeric ID."
 msgstr "%s deve essere una stringa con prefisso 'custom-' e seguito da un ID numerico."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2366
+#: _inc/lib/class.core-rest-api-endpoints.php:2377
 msgid "%s must be an array with sharing name, url and icon."
 msgstr "%s deve essere un array con un nome per la condivisione, un URL e un'icona."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2409
+#: _inc/lib/class.core-rest-api-endpoints.php:2420
 msgid "%s is not a registered custom sharing service."
 msgstr "%s non è un servizio di condivisione personalizzato registrato."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2428
+#: _inc/lib/class.core-rest-api-endpoints.php:2439
 msgid "%s must be a Twitter username."
 msgstr "%s deve essere un nome utente di Twitter."
 
@@ -5567,48 +5713,48 @@ msgstr "Il tuo sito è verificato con %s"
 #. Translators: first variable is the name of a parameter passed to endpoint
 #. holding the post type where Sharing will be displayed, the second is a list
 #. of post types where Sharing can be displayed
-#: _inc/lib/class.core-rest-api-endpoints.php:2277
-#: _inc/lib/class.core-rest-api-endpoints.php:2302
+#: _inc/lib/class.core-rest-api-endpoints.php:2288
+#: _inc/lib/class.core-rest-api-endpoints.php:2313
 msgid "%1$s must be %2$s."
 msgstr "%1$s deve essere %2$s."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1188
+#: _inc/lib/class.core-rest-api-endpoints.php:1199
 msgid "Missing parameter \"type\"."
 msgstr "Parametro \"type\" mancante."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1966
+#: _inc/lib/class.core-rest-api-endpoints.php:1977
 msgid "Do not track."
 msgstr "Non tracciare."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2147
+#: _inc/lib/class.core-rest-api-endpoints.php:2158
 msgid "%s must be true, false, 0 or 1."
 msgstr "%s deve essere vero, falso, 0 o 1."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2165
+#: _inc/lib/class.core-rest-api-endpoints.php:2176
 msgid "%s must be a positive integer."
 msgstr "%s deve essere un intero positivo."
 
 #: _inc/lib/class.core-rest-api-endpoints.php:790
 #: _inc/lib/class.core-rest-api-endpoints.php:854
-#: _inc/lib/class.core-rest-api-endpoints.php:912
-#: _inc/lib/class.core-rest-api-endpoints.php:1143
-#: _inc/lib/class.core-rest-api-endpoints.php:1184
+#: _inc/lib/class.core-rest-api-endpoints.php:923
+#: _inc/lib/class.core-rest-api-endpoints.php:1154
+#: _inc/lib/class.core-rest-api-endpoints.php:1195
 msgid "Invalid Parameter"
 msgstr "Parametro non valido"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1470
+#: _inc/lib/class.core-rest-api-endpoints.php:1481
 msgid "Enabled"
 msgstr "Abilitato"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1471
+#: _inc/lib/class.core-rest-api-endpoints.php:1482
 msgid "Disabled"
 msgstr "Disabilitato"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1843
+#: _inc/lib/class.core-rest-api-endpoints.php:1854
 msgid "Google Search Console"
 msgstr "Google Search Console"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1634
+#: _inc/lib/class.core-rest-api-endpoints.php:1645
 msgid "Sharing Label"
 msgstr "Etichetta di condivisione"
 
@@ -5623,68 +5769,68 @@ msgstr "Bacheca"
 msgid "You have JavaScript disabled"
 msgstr "Hai JavaScript disabilitato"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1615
+#: _inc/lib/class.core-rest-api-endpoints.php:1626
 msgid "Button Style"
 msgstr "Stile del pulsante"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1588
+#: _inc/lib/class.core-rest-api-endpoints.php:1599
 msgid "Protect API key"
 msgstr "Proteggi la chiave API"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2239
+#: _inc/lib/class.core-rest-api-endpoints.php:2250
 msgid "%s must be an alphanumeric string."
 msgstr "%s deve essere una stringa alfanumerica."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2220
+#: _inc/lib/class.core-rest-api-endpoints.php:2231
 msgid "%s must be a list of valid modules"
 msgstr "%s deve essere una lista di moduli validi."
 
 #. Translators: first variable is the parameter passed to endpoint that holds
 #. the list item, the second is a list of admitted values.
-#: _inc/lib/class.core-rest-api-endpoints.php:2194
+#: _inc/lib/class.core-rest-api-endpoints.php:2205
 msgid "%1$s must be one of %2$s"
 msgstr "%1$s deve essere uno di %2$s"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2184
+#: _inc/lib/class.core-rest-api-endpoints.php:2195
 msgid "%s not recognized"
 msgstr "%s non riconosciuto"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1980
+#: _inc/lib/class.core-rest-api-endpoints.php:1991
 msgid "Version."
 msgstr "Versione."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1827
+#: _inc/lib/class.core-rest-api-endpoints.php:1838
 msgid "Add Phrase to be ignored"
 msgstr "Aggiungi Phrase da ignorare"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1834
+#: _inc/lib/class.core-rest-api-endpoints.php:1845
 msgid "Remove Phrase from being ignored"
 msgstr "Rimuovi Phrase da ignorare"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1323
+#: _inc/lib/class.core-rest-api-endpoints.php:1334
 msgid "Jumpstart could not be dismissed."
 msgstr "La configurazione rapida non può essere ignorata."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1320
+#: _inc/lib/class.core-rest-api-endpoints.php:1331
 msgid "Jumpstart dismissed."
 msgstr "Configurazione rapida ignorata."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1301
+#: _inc/lib/class.core-rest-api-endpoints.php:1312
 msgid "Jumpstart failed activating this module: %s."
 msgid_plural "Jumpstart failed activating these modules: %s."
 msgstr[0] "La configurazione rapida non è riuscita ad attivare questo modulo: %s."
 msgstr[1] "La configurazione rapida non è riuscita ad attivare questi moduli: %s."
 
 #: _inc/lib/class.core-rest-api-endpoints.php:767
-#: _inc/lib/class.core-rest-api-endpoints.php:1054
+#: _inc/lib/class.core-rest-api-endpoints.php:1065
 msgid "The ID of this site does not exist."
 msgstr "L'ID di questo sito non esiste."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1050
+#: _inc/lib/class.core-rest-api-endpoints.php:1061
 msgid "Failed fetching site data. Try again later."
 msgstr "I dati del sito non sono stati riportati. Riprova più tardi."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:923
+#: _inc/lib/class.core-rest-api-endpoints.php:934
 msgid "Was not able to unlink the user.  Please try again."
 msgstr "Non è stato possibile rimuovere il link dell'utente. Riprova più tardi."
 
@@ -5700,19 +5846,19 @@ msgstr "Parametro \"notice\" mancante."
 msgid "Update your browser to unlock Jetpack's full potential!"
 msgstr "Aggiorna il tuo browser per sbloccare tutte le potenzialità di Jetpack!"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1857
+#: _inc/lib/class.core-rest-api-endpoints.php:1868
 msgid "Pinterest Site Verification"
 msgstr "Verifica del sito da Pinterest"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1296
+#: _inc/lib/class.core-rest-api-endpoints.php:1307
 msgid "Jumpstart done."
 msgstr "Configurazione rapida avvenuta."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1170
+#: _inc/lib/class.core-rest-api-endpoints.php:1181
 msgid "Jetpack options reset."
 msgstr "Reset opzioni Jetpack."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1044
+#: _inc/lib/class.core-rest-api-endpoints.php:1055
 msgid "Site data correctly received."
 msgstr "I dati del sito sono stati ricevuti correttamente."
 
@@ -5724,27 +5870,27 @@ msgstr "Parametro \"notice\" non valido."
 msgid "Unable to build the connect URL.  Please reload the page and try again."
 msgstr "Impossibile costruire l'URL di connessione. Ricarica la pagina e riprova."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2214
+#: _inc/lib/class.core-rest-api-endpoints.php:2225
 msgid "%s must be an array"
 msgstr "%s deve essere un array."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1959
+#: _inc/lib/class.core-rest-api-endpoints.php:1970
 msgid "Blog ID."
 msgstr "ID del Blog."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1850
+#: _inc/lib/class.core-rest-api-endpoints.php:1861
 msgid "Bing Webmaster Center"
 msgstr "Centro Webmaster Bing"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1743
+#: _inc/lib/class.core-rest-api-endpoints.php:1754
 msgid "Proofread when a post or page is updated."
 msgstr "Revisiona quando un post o una pagina vengono aggiornati."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1736
+#: _inc/lib/class.core-rest-api-endpoints.php:1747
 msgid "Proofread when a post or page is first published."
 msgstr "Revisiona quando un post o una pagina vengono pubblicati per la prima volta."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1679
+#: _inc/lib/class.core-rest-api-endpoints.php:1690
 msgid "Delete custom sharing service."
 msgstr "Elimina il servizio personalizzato di condivisione."
 
@@ -5764,55 +5910,55 @@ msgstr "Attiva JavaScript per sbloccare tutto il potenziale di Jetpack!"
 msgid "You are using an outdated version of WordPress"
 msgstr "Stai usando una versione di WordPress obsoleta"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1642
+#: _inc/lib/class.core-rest-api-endpoints.php:1653
 msgid "Views where buttons are shown"
 msgstr "Mostra dove i bottoni sono visualizzati"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1423
+#: _inc/lib/class.core-rest-api-endpoints.php:1434
 msgid "Enable or disable Jetpack portfolio post type."
 msgstr "Abilita o disabilita il tipo di contenuto \"portfolio\" di Jetpack."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1437
+#: _inc/lib/class.core-rest-api-endpoints.php:1448
 msgid "Enable or disable Jetpack testimonial post type."
 msgstr "Abilita o disabilita il post type testimonial di Jetpack."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1667
+#: _inc/lib/class.core-rest-api-endpoints.php:1678
 msgid "Custom sharing services added by user."
 msgstr "Servizi di condivisione personalizzati sono stati aggiunti dall'utente."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1605
+#: _inc/lib/class.core-rest-api-endpoints.php:1616
 msgid "Enabled Services and those hidden behind a button"
 msgstr "Servizi attivi e quelli nascosti dietro un pulsante"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1595
+#: _inc/lib/class.core-rest-api-endpoints.php:1606
 msgid "Protect global whitelist"
 msgstr "Protezione whitelist globale"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1580
+#: _inc/lib/class.core-rest-api-endpoints.php:1591
 msgid "Delete Post by Email address"
 msgstr "Cancella il post dall'indirizzo email"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1579
+#: _inc/lib/class.core-rest-api-endpoints.php:1590
 msgid "Regenerate Post by Email address"
 msgstr "Rigenera il post dall'indirizzo email "
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1578
+#: _inc/lib/class.core-rest-api-endpoints.php:1589
 msgid "Create Post by Email address"
 msgstr "Crea Post dall'indirizzo email"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1510
+#: _inc/lib/class.core-rest-api-endpoints.php:1521
 msgid "Send email notification when someone likes a post"
 msgstr "Invia una notifica email quando qualcuno fa like a un post"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1444
+#: _inc/lib/class.core-rest-api-endpoints.php:1455
 msgid "Number of entries to show at most in Testimonial pages."
 msgstr "Numero di entrate da mostrare nelle pagine Testimonianze."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1430
+#: _inc/lib/class.core-rest-api-endpoints.php:1441
 msgid "Number of entries to show at most in Portfolio pages."
 msgstr "Numero di entrate da mostrare nelle pagine del Portfolio."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1330
+#: _inc/lib/class.core-rest-api-endpoints.php:1341
 msgid "Nothing to dismiss. This was not a new connection."
 msgstr "Niente da annullare. Questa non era una nuova connessione."
 
@@ -5928,7 +6074,7 @@ msgstr "Abilita il correttore di bozze per le seguenti regole di grammatica e st
 msgid "The proofreader supports English, French, German, Portuguese and Spanish."
 msgstr "Il correttore di bozze supporta Inglese, Francese, Tedesco, Portoghese e Spagnolo."
 
-#: _inc/jetpack-strings.php:388 _inc/lib/class.core-rest-api-endpoints.php:1757
+#: _inc/jetpack-strings.php:388 _inc/lib/class.core-rest-api-endpoints.php:1768
 msgid "Clichés"
 msgstr "Cliché"
 
@@ -5971,6 +6117,10 @@ msgstr "Le funzionalità possono essere attivate o disattivate in qualsiasi mome
 #: _inc/jetpack-strings.php:604
 msgid "Jetpack's recommended features include:"
 msgstr "Le funzionalità consigliate di Jetpack includono:"
+
+#: _inc/jetpack-strings.php:602
+msgid "Activate recommended features"
+msgstr "Attiva le funzionalità consigliate"
 
 #: _inc/jetpack-strings.php:585
 msgid "Cheatin' uh?"
@@ -6021,6 +6171,10 @@ msgstr "Ci diresti perché? Rispondendo a {{a}}due semplici domande{{/a}} ci aiu
 #: _inc/jetpack-strings.php:571
 msgid "What would you like to see on your Jetpack Dashboard?"
 msgstr "Che cosa ti piacerebbe vedere nella tua bacheca Jetpack?"
+
+#: class.jetpack-connection-banner.php:985
+msgid "Connect to, or create, a WordPress.com account to start using Jetpack, and activate our powerful security, traffic and customization services."
+msgstr "Connettiti con il tuo account WordPress.com o creane uno nuovo per iniziare a usare Jetpack. Questo ti permetterà di accedere alle funzionalità di sicurezza, traffico e personalizzazione. "
 
 #: _inc/jetpack-strings.php:542
 msgctxt "Header. Noun: Protect is a module of Jetpack."
@@ -6219,6 +6373,10 @@ msgstr "{{a}}Contatta il supporto{{/a}}"
 msgid "Jetpack is monitoring your site. If we think your site is down, you will receive an email."
 msgstr "Jetpack sta monitorando il tuo sito. Se pensiamo che il tuo sito non sia raggiungibile, riceverai una mail."
 
+#: _inc/jetpack-strings.php:97
+msgid "{{a}}Turn on plugin autoupdates{{/a}}"
+msgstr "{{a}}Attiva gli aggiornamenti automatici del plugin{{/a}}"
+
 #: _inc/jetpack-strings.php:109
 msgid "{{a}}View details at VaultPress.com{{/a}}"
 msgstr "{{a}}Visualizza dettagli su VaultPress.com{{/a}}"
@@ -6265,6 +6423,14 @@ msgstr "Aggiornamenti plugin"
 msgid "Jetpack is improving and optimizing your image speed."
 msgstr "Jetpack sta migliorando e ottimizzando la velocità della tua immagine."
 
+#: _inc/jetpack-strings.php:82
+msgid "Downtime monitoring"
+msgstr "Controllo di downtime"
+
+#: _inc/jetpack-strings.php:91
+msgid "{{a}}Activate{{/a}} to enhance the performance and speed of your images."
+msgstr "{{a}}Attiva{{/a}} per migliorare la performance e la velocità delle tue immagini."
+
 #: _inc/jetpack-strings.php:62
 msgid "{{a}}View backup details{{/a}}."
 msgstr "{{a}}Visualizza i dettagli del backup{{/a}}."
@@ -6310,6 +6476,10 @@ msgstr "Chiave non valida"
 #: _inc/jetpack-strings.php:51 _inc/jetpack-strings.php:158
 msgid "Spam Protection"
 msgstr "Protezione dallo spam"
+
+#: _inc/jetpack-strings.php:86
+msgid "{{a}}Activate Monitor{{/a}} to receive email notifications if your site goes down."
+msgstr "{{a}}Attiva Monitor{{/a}} per ricevere notifiche se il tuo sito va offline."
 
 #: _inc/jetpack-strings.php:60 _inc/jetpack-strings.php:148
 #: _inc/jetpack-strings.php:151
@@ -6374,10 +6544,6 @@ msgstr "Impostazioni per %(slug)s attive."
 msgid "To automatically back up your entire site, please {{a}}install and activate{{/a}} VaultPress."
 msgstr "Per fare il backup automatico di tutto il tuo sito {{a}}installa e attiva{{/a}} VaultPress."
 
-#: _inc/jetpack-strings.php:64
-msgid "To automatically back up your entire site, please {{a}}upgrade your account{{/a}}."
-msgstr "Per fare il backup automatico di tutto il tuo sito {{a}}aggiorna il tuo account{{/a}}."
-
 #: _inc/jetpack-strings.php:50 _inc/jetpack-strings.php:66
 #: _inc/jetpack-strings.php:85 _inc/jetpack-strings.php:115
 #: _inc/jetpack-strings.php:264 _inc/jetpack-strings.php:268
@@ -6389,6 +6555,10 @@ msgstr "Non disponibile in Dev Mode."
 #: _inc/jetpack-strings.php:112
 msgid "Loading…"
 msgstr "Caricando..."
+
+#: _inc/jetpack-strings.php:64
+msgid "To automatically back up your entire site, please {{a}}upgrade your account{{/a}}."
+msgstr "Per effettuare il backup automatico dell’intero sito, {{a}}aggiorna il tuo account{{/a}}."
 
 #: _inc/jetpack-strings.php:11 _inc/jetpack-strings.php:647
 #: _inc/jetpack-strings.php:653
@@ -6565,7 +6735,7 @@ msgid "View Advanced Debug Results"
 msgstr "Visualizza i risultati del debug avanzato"
 
 #: class.jetpack-connection-banner.php:174
-#: class.jetpack-connection-banner.php:592 class.jetpack.php:3943
+#: class.jetpack-connection-banner.php:592 class.jetpack.php:3948
 msgid "Dismiss this notice"
 msgstr "Non mostrare questo messaggio"
 
@@ -6645,31 +6815,31 @@ msgstr "Accedi inserendo nome utente e password"
 msgid "Your site did not get a response from our debugging service in the expected timeframe. If you are not experiencing other issues, this could be due to a slow connection between your site and our server."
 msgstr "Il tuo sito non ha ottenuto una risposta dal nostro servizio di debug nell'arco di tempo previsto. Se non si verificano altri problemi, questo potrebbe essere dovuto a una connessione lenta tra il tuo sito e il nostro server."
 
-#: class.jetpack.php:3945
+#: class.jetpack.php:3950
 msgid "Jetpack Centralized Site Management"
 msgstr "Jetpack Centralized Site Management"
 
-#: class.jetpack.php:3948
+#: class.jetpack.php:3953
 msgid "Activate Jetpack Manage"
 msgstr "Attiva Jetpack Manage"
 
-#: class.jetpack.php:3949
+#: class.jetpack.php:3954
 msgid "Learn more about Jetpack Manage on Jetpack.com"
 msgstr "Maggiori informazioni relative a Jetpack Manage su Jetpack.com"
 
-#: class.jetpack.php:4997
+#: class.jetpack.php:5002
 msgid "JETPACK_CLIENT__HTTPS is set to NEVER"
 msgstr "JETPACK_CLIENT__HTTPS è impostato su MAI"
 
-#: class.jetpack.php:5018
+#: class.jetpack.php:5023
 msgid "Response was not OK: "
 msgstr "La risposta non era OK:"
 
-#: class.jetpack.php:5046 class.jetpack.php:5072
+#: class.jetpack.php:5051 class.jetpack.php:5077
 msgid "Try again"
 msgstr "Prova di nuovo"
 
-#: class.jetpack.php:5063
+#: class.jetpack.php:5068
 msgid "Checking"
 msgstr "Controllo in corso"
 
@@ -6677,7 +6847,7 @@ msgstr "Controllo in corso"
 msgid "Testimonial Archive Title"
 msgstr "Titolo dell'archivio Testimonianze"
 
-#: class.jetpack.php:5050
+#: class.jetpack.php:5055
 msgid "For more help, try our <a href=\"%1$s\">connection debugger</a> or <a href=\"%2$s\" target=\"_blank\">troubleshooting tips</a>."
 msgstr "Per maggiore aiuto, prova il nostro <a href=\"%1$s\">connection debugger</a> o il <a href=\"%2$s\" target=\"_blank\">troubleshooting tips</a>."
 
@@ -6698,27 +6868,27 @@ msgstr "Seleziona per caricare gli articoli quando scorri. Deseleziona per mostr
 msgid "Check the box above to record each new set of posts loaded via Infinite Scroll as a page view in Google Analytics."
 msgstr "Seleziona la casella sopra per registrare ogni nuova serie di articoli attraverso Infinite Scroll come una pagina visualizzata in Google Analytics."
 
-#: class.jetpack.php:5045
+#: class.jetpack.php:5050
 msgid "Jetpack will re-test for HTTPS support once a day, but you can click here to try again immediately: "
 msgstr "Jetpack effettuerà il re-test per il supporto HTTPS una volta al giorno, ma facendo clic qui puoi rifarlo immediatamente:"
 
-#: class.jetpack.php:5043
+#: class.jetpack.php:5048
 msgid "Your site could not connect to WordPress.com via HTTPS. This could be due to any number of reasons, including faulty SSL certificates, misconfigured or missing SSL libraries, or network issues."
 msgstr "Il tuo sito non è collegato a WordPress via HTTPS. Questo problema potrebbe essere dovuto a diversi motivi, compreso un certificato SSL irregolare, librerie SSL non configurate in modo corretto o mancanti, o problemi di collegamento alla rete."
 
-#: class.jetpack.php:3946
+#: class.jetpack.php:3951
 msgid "Manage multiple Jetpack enabled sites from one single dashboard at wordpress.com. Allows all existing, connected Administrators to modify your site."
 msgstr "Gestisci molti siti abilitati Jetpack da una sola bacheca su wordpress.com. Permette a tutti gli Amministratori collegati di modificare il tuo sito."
 
-#: class.jetpack.php:5042
+#: class.jetpack.php:5047
 msgid "Outbound HTTPS not working"
 msgstr "Il traffico HTTPS in uscita non funziona"
 
-#: class.jetpack.php:5010 class.jetpack.php:5015
+#: class.jetpack.php:5015 class.jetpack.php:5020
 msgid "WordPress reports no SSL support"
 msgstr "WordPress segnala che non c'è nessun supporto per il SSL "
 
-#: class.jetpack.php:7075
+#: class.jetpack.php:7080
 msgid "This user is linked and ready to fly with Jetpack."
 msgstr "Questo utente è collegato e pronto a volare con Jetpack"
 
@@ -6833,7 +7003,7 @@ msgid "Order Top Posts &amp; Pages By:"
 msgstr "Ordina gli articoli e le pagine più importanti per:"
 
 #. translators: %s is a URL
-#: class.jetpack.php:1663
+#: class.jetpack.php:1668
 msgid "You are running Jetpack on a <a href=\"%s\" target=\"_blank\">staging server</a>."
 msgstr "Jetpack è in esecuzione su un <a href=\"%s\" target=\"_blank\">server di staging</a>."
 
@@ -6947,7 +7117,7 @@ msgid "If this solves the problem, something in your theme is probably broken �
 msgstr "Se in questo modo il problema si risolve, probabilmente il tema è danneggiato. Informane l'autore."
 
 #. translators: %s is the name of a form field
-#: modules/contact-form/grunion-contact-form.php:2726
+#: modules/contact-form/grunion-contact-form.php:2753
 msgid "%s requires at least one selection"
 msgstr "%s richiede almeno una selezione"
 
@@ -6976,7 +7146,7 @@ msgstr "Devi specificare una option_value"
 msgid "All pages"
 msgstr "Tutte le pagine"
 
-#: modules/comments/comments.php:481
+#: modules/comments/comments.php:483
 msgid "Comments are not allowed."
 msgstr "I commenti non sono consentiti."
 
@@ -7238,7 +7408,7 @@ msgstr "La rete di Jetpack è attiva e gli avvisi non possono essere ignorati."
 #: _inc/jetpack-strings.php:132 _inc/jetpack-strings.php:135
 #: _inc/jetpack-strings.php:137 _inc/jetpack-strings.php:213
 #: _inc/jetpack-strings.php:444 _inc/jetpack-strings.php:672
-#: _inc/jetpack-strings.php:673 class.jetpack.php:3949
+#: _inc/jetpack-strings.php:673 class.jetpack.php:3954
 msgid "Learn more"
 msgstr "Per saperne di più"
 
@@ -7281,6 +7451,13 @@ msgstr "Hai un feedback su Jetpack?"
 #: views/admin/network-admin-footer.php:19
 msgid "An <span>Automattic</span> Airline"
 msgstr "Una compagnia aerea di proprietà di <span>Automattic</span>"
+
+#. #-#-#-#-#  jetpack-code.pot (Jetpack by WordPress.com 6.4.1)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  jetpack-code.pot (Jetpack by WordPress.com 6.4.1)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "https://jetpack.com"
+msgstr "https://jetpack.com"
 
 #: modules/module-extras.php:62
 msgid "%s (Jetpack)"
@@ -7785,7 +7962,7 @@ msgid "Title:"
 msgstr "Titolo: "
 
 #: modules/widgets/top-posts.php:36 modules/widgets/top-posts.php:43
-#: modules/widgets/top-posts.php:466
+#: modules/widgets/top-posts.php:484
 msgid "Top Posts &amp; Pages"
 msgstr "Classifica Articoli e Pagine"
 
@@ -7976,7 +8153,7 @@ msgstr "Scegli logo"
 msgid "Circles"
 msgstr "Griglia Circolare"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1949 modules/stats.php:905
+#: _inc/lib/class.core-rest-api-endpoints.php:1960 modules/stats.php:905
 msgid "Count the page views of registered users who are logged in."
 msgstr "Conta le visualizzazioni di pagina degli utenti registrati collegati."
 
@@ -7984,11 +8161,11 @@ msgstr "Conta le visualizzazioni di pagina degli utenti registrati collegati."
 msgid "Daily archives"
 msgstr "Archivi giornalieri"
 
-#: modules/theme-tools/site-logo/inc/class-site-logo.php:94
+#: modules/theme-tools/site-logo/inc/class-site-logo.php:91
 msgid "Display Header Text"
 msgstr "Visualizza il testo della testata"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1453
+#: _inc/lib/class.core-rest-api-endpoints.php:1464
 #: modules/tiled-gallery/tiled-gallery.php:251
 msgid "Display all your gallery pictures in a cool mosaic."
 msgstr "Mostra tutte le immagini della galleria in un fantastico mosaico."
@@ -8039,7 +8216,7 @@ msgstr "Impostazioni follower"
 msgid "Front page"
 msgstr "Pagina iniziale"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1973 modules/stats.php:916
+#: _inc/lib/class.core-rest-api-endpoints.php:1984 modules/stats.php:916
 msgid "Hide the stats smiley face image."
 msgstr "Nascondi le immagini smile nelle statistiche."
 
@@ -8077,7 +8254,7 @@ msgstr "Caricamento&hellip;"
 msgid "Location of the Ogg video file."
 msgstr "Ubicazione del file video OGG."
 
-#: modules/theme-tools/site-logo/inc/class-site-logo.php:116
+#: modules/theme-tools/site-logo/inc/class-site-logo.php:113
 msgid "Logo"
 msgstr "Logo"
 
@@ -8122,7 +8299,7 @@ msgstr "Pagina articoli"
 msgid "Publisher limits playback of video embeds."
 msgstr "L'editore limita la riproduzione del video incorporato."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1931 modules/stats.php:902
+#: _inc/lib/class.core-rest-api-endpoints.php:1942 modules/stats.php:902
 msgid "Put a chart showing 48 hours of views in the admin bar."
 msgstr "Inserisci un grafico che mostra 48 ore di visualizzazioni nella Barra di Amministrazione"
 
@@ -8134,11 +8311,7 @@ msgstr "Utenti registrati"
 msgid "Remove logo"
 msgstr "Rimuovi logo"
 
-#: modules/widget-visibility/widget-conditions.php:100
-msgid "Search results"
-msgstr "Risultati di ricerca"
-
-#: _inc/lib/class.core-rest-api-endpoints.php:1938 modules/stats.php:919
+#: _inc/lib/class.core-rest-api-endpoints.php:1949 modules/stats.php:919
 msgid "Select the roles that will be able to view stats reports."
 msgstr "Seleziona i ruoli che potranno visualizzare i prospetti statistici."
 
@@ -8146,12 +8319,12 @@ msgstr "Seleziona i ruoli che potranno visualizzare i prospetti statistici."
 msgid "Set as logo"
 msgstr "Imposta come logo"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1704
+#: _inc/lib/class.core-rest-api-endpoints.php:1715
 #: modules/subscriptions.php:358
 msgid "Show a <em>'follow blog'</em> option in the comment form"
 msgstr "Mostra un'opzione <em>'segui il blog'</em> nel modulo per i commenti"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1711
+#: _inc/lib/class.core-rest-api-endpoints.php:1722
 #: modules/subscriptions.php:373
 msgid "Show a <em>'follow comments'</em> option in the comment form"
 msgstr "Mostra un'opzione <em>'segui i commenti'</em> nel modulo per i commenti"
@@ -8166,13 +8339,9 @@ msgid_plural "Show total number of subscribers? (%s subscribers)"
 msgstr[0] "Mostra il numero complessivo di iscritti? (%s iscritto)"
 msgstr[1] "Mostra il numero complessivo di iscritti? (%s iscritti)"
 
-#: modules/theme-tools/site-logo/inc/class-site-logo.php:256
+#: modules/theme-tools/site-logo/inc/class-site-logo.php:253
 msgid "Site Logo"
 msgstr "Logo del sito"
-
-#: modules/theme-tools/site-logo/inc/class-site-logo.php:83
-msgid "Site Title, Tagline, and Logo"
-msgstr "Titolo, motto e logo del sito"
 
 #: modules/stats.php:915
 msgid "Smiley"
@@ -8441,6 +8610,14 @@ msgstr "Fatto! È stata appena inviata un'e-mail per confermare l'abbonamento. P
 msgid "Logged Out"
 msgstr "Disconnesso"
 
+#: modules/videopress/class.videopress-player.php:344
+msgid "You do not have sufficient <a rel=\"nofollow\" href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">freedom levels</a> to view this video. Support free software and upgrade."
+msgstr "Non hai un sufficiente <a rel=\"nofollow\" href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">livello di libertà</a> per visualizzare questo video. Sostieni il software libero e passa alla versione successiva."
+
+#: modules/widget-visibility/widget-conditions.php:100
+msgid "Search results"
+msgstr "Risultati di ricerca"
+
 #: modules/sharedaddy/sharing-sources.php:95
 msgid " (Opens in new window)"
 msgstr " (Si apre in una nuova finestra)"
@@ -8491,7 +8668,7 @@ msgstr "Chiudi"
 msgid "Create Share Button"
 msgstr "Crea Pulsante di Condivisione"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1660
+#: _inc/lib/class.core-rest-api-endpoints.php:1671
 #: modules/sharedaddy/sharedaddy.php:246
 msgid "Disable CSS and JS"
 msgstr "Disabilita CSS e JS"
@@ -8528,7 +8705,7 @@ msgstr "Google"
 msgid "Icon"
 msgstr "Icona"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1625
+#: _inc/lib/class.core-rest-api-endpoints.php:1636
 #: modules/sharedaddy/sharing.php:358
 msgid "Icon + text"
 msgstr "Icona + testo"
@@ -8537,7 +8714,7 @@ msgstr "Icona + testo"
 msgid "Icon URL"
 msgstr "URL icona"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1626
+#: _inc/lib/class.core-rest-api-endpoints.php:1637
 #: modules/sharedaddy/sharing.php:359
 msgid "Icon only"
 msgstr "Solo icona"
@@ -8562,7 +8739,7 @@ msgstr "Anteprima Live"
 msgid "Log in with WordPress.com"
 msgstr "Accedi con WordPress.com"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1695 modules/sso.php:293
+#: _inc/lib/class.core-rest-api-endpoints.php:1706 modules/sso.php:293
 msgid "Match by Email"
 msgstr "Confronto con Mail"
 
@@ -8571,7 +8748,7 @@ msgstr "Confronto con Mail"
 msgid "More"
 msgstr "Altro"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1628
+#: _inc/lib/class.core-rest-api-endpoints.php:1639
 #: modules/sharedaddy/sharing.php:361
 msgid "Official buttons"
 msgstr "Pulsanti ufficiali"
@@ -8609,7 +8786,7 @@ msgstr "Reddit"
 msgid "Remove Service"
 msgstr "Rimuovere il servizio"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1688 modules/sso.php:263
+#: _inc/lib/class.core-rest-api-endpoints.php:1699 modules/sso.php:263
 msgid "Require Two-Step Authentication"
 msgstr "Richiede Autenticazione a 2 fattori (Two-Step)"
 
@@ -8690,7 +8867,7 @@ msgstr "Ci dispiace, il tuo blog non consente di condividere articoli tramite e-
 msgid "Take Our Survey"
 msgstr "Partecipa al nostro sondaggio"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1627
+#: _inc/lib/class.core-rest-api-endpoints.php:1638
 #: modules/sharedaddy/sharing.php:360
 msgid "Text only"
 msgstr "Solo testo"
@@ -8900,6 +9077,10 @@ msgstr "Fai clic qui per vedere lo slideshow."
 msgid "Tweets by @%s"
 msgstr "Tweets da @%s"
 
+#: modules/sharedaddy/sharing.php:186
+msgid "This plugin will work without it, but multibyte support is used <a href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">if available</a>. You may see minor problems with Tweets and other sharing services."
+msgstr "Il plugin funzionerà anche senza questo, ma verrà utilizzato il supporto a multibyte, <a href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">se disponibile</a>. Potresti riscontrare dei problemi secondari con i tweet e altri servizi di condivisione."
+
 #: modules/protect/math-fallback.php:53
 msgid "<strong>You failed to correctly answer the math problem.</strong>  This is used to combat spam when the Protect API is unavailable.  Please use your browser's back button to return to the login form, press the \"refresh\" button to generate a new math problem, and try to log in again."
 msgstr "<strong>Non hai risposto correttamente al problema di matematica.</strong> Questo metodo viene utilizzato per contrastare lo spam quando l'API di Protect non è disponibile. Per ritornare al modulo di accesso, utilizza il pulsante \"Indietro\" del browser, fai clic sul pulsante \"Aggiorna\" per generare un nuovo problema di matematica e prova di nuovo ad accedere."
@@ -8908,15 +9089,15 @@ msgstr "<strong>Non hai risposto correttamente al problema di matematica.</stron
 msgid "An API key is needed for Protect."
 msgstr "Protect richiede una chiave API."
 
-#: modules/publicize/publicize-jetpack.php:258
+#: modules/publicize/publicize-jetpack.php:262
 msgid "An invalid request was made. This normally means that something intercepted or corrupted the request from your server to the Jetpack Server. Try again and see if it works this time."
 msgstr "E' stata effettuata una richiesta non valida. Questo di solito significa che qualcosa ha ostacolato o corrotto la richiesta dal tuo server al server di Jetpack. Prova ancora, questa volta dovrebbe funzionare."
 
-#: modules/publicize/ui.php:251
+#: modules/publicize/ui.php:252
 msgid "Are you sure you want to stop Publicizing posts to this connection?"
 msgstr "Pubblicizza non sarà più attivo su questa connessione, sei sicuro?"
 
-#: modules/publicize/ui.php:461
+#: modules/publicize/ui.php:464
 msgid "Before you hit Publish, please refresh the following connection(s) to make sure we can Publicize your post:"
 msgstr "Prima di premere Pubblica, aggiorna le seguenti connessioni per essere sicuro che Pubblicizza possa promuovere i tuoi articoli:"
 
@@ -8925,24 +9106,24 @@ msgid "Cannot use global flag on non-multisites"
 msgstr "Il flag globale è utilizzabile solo su multisiti"
 
 #: class.jetpack-network-sites-list-table.php:108
-#: class.jetpack-network-sites-list-table.php:113 modules/publicize/ui.php:241
+#: class.jetpack-network-sites-list-table.php:113 modules/publicize/ui.php:242
 #: modules/theme-tools/social-links.php:121
 msgid "Connect"
 msgstr "Connetti"
 
-#: modules/publicize/ui.php:774
+#: modules/publicize/ui.php:814
 msgid "Connect and share your posts on %s"
 msgstr "Collegati e condividi gli articoli su %s"
 
-#: modules/publicize/ui.php:769
+#: modules/publicize/ui.php:809
 msgid "Connect to"
 msgstr "Connetti a"
 
-#: modules/publicize/ui.php:140
+#: modules/publicize/ui.php:141
 msgid "Connect your blog to popular social networking sites and automatically share new posts with your friends."
 msgstr "Connetti il blog ai più popolari social network e condividi automaticamente gli articoli con gli amici."
 
-#: modules/publicize/ui.php:203
+#: modules/publicize/ui.php:204
 msgid "Connected as:"
 msgstr "Connesso come: "
 
@@ -8950,7 +9131,7 @@ msgstr "Connesso come: "
 msgid "Continue &rarr;"
 msgstr "Continua →"
 
-#: modules/publicize/ui.php:746
+#: modules/publicize/ui.php:786
 msgid "Custom Message:"
 msgstr "Messaggio personalizzato:"
 
@@ -8963,8 +9144,8 @@ msgid "Disable Post By Email"
 msgstr "Disabilita Post via Email"
 
 #: class.jetpack-network-sites-list-table.php:99
-#: class.jetpack-network-sites-list-table.php:114 modules/publicize/ui.php:218
-#: modules/publicize/ui.php:222
+#: class.jetpack-network-sites-list-table.php:114 modules/publicize/ui.php:219
+#: modules/publicize/ui.php:223
 msgid "Disconnect"
 msgstr "Disconnetti"
 
@@ -8972,7 +9153,7 @@ msgstr "Disconnetti"
 msgid "Dismiss this notice."
 msgstr "Ignora questo avviso."
 
-#: _inc/jetpack-strings.php:425 _inc/lib/class.core-rest-api-endpoints.php:1567
+#: _inc/jetpack-strings.php:425 _inc/lib/class.core-rest-api-endpoints.php:1578
 #: modules/post-by-email.php:89 modules/subscriptions.php:1039
 msgid "Email Address"
 msgstr "Indirizzo e-mail"
@@ -8985,7 +9166,7 @@ msgstr "Le mail saranno inviate a %s (<a href=\"%s\">Edit</a>)"
 msgid "Enable Post By Email"
 msgstr "Abilita Post via Email"
 
-#: modules/publicize/publicize-jetpack.php:288
+#: modules/publicize/publicize-jetpack.php:292
 msgid "Error code: %s"
 msgstr "Codice di errore: %s"
 
@@ -9028,7 +9209,7 @@ msgstr "Accesso bloccato da Jetpack"
 msgid "Make sure to add your most frequently used IP addresses as they can change between your home, office or other locations. Removing an IP address from the list below will remove it from your whitelist."
 msgstr "Aggiungere gli indirizzi IP usati più di frequente, poiché possono cambiare tra casa, ufficio e altre ubicazioni. La rimozione di un indirizzo IP dall'elenco riportato di seguito ne comporta la rimozione anche dalla lista bianca."
 
-#: modules/publicize/ui.php:273
+#: modules/publicize/ui.php:274
 msgid "Make this connection available to all users of this blog?"
 msgstr "Vuoi rendere disponibile questa connessione a tutti gli utenti del blog?"
 
@@ -9045,7 +9226,7 @@ msgstr "Ulteriori informazioni"
 msgid "No API key"
 msgstr "Nessuna chiave API"
 
-#: modules/publicize/publicize-jetpack.php:264
+#: modules/publicize/publicize-jetpack.php:268
 msgid "No blog_id was included in your request. Please try disconnecting Jetpack from WordPress.com and then reconnecting it. Once you have done that, try connecting Publicize again."
 msgstr "La tua richiesta non contiene nessun blog_id. Prova a disconnettere Jetpack da WordPress.com e a riconnetterlo. Fatto questo, prova nuovamente a connettere Pubblicizza."
 
@@ -9053,11 +9234,11 @@ msgstr "La tua richiesta non contiene nessun blog_id. Prova a disconnettere Jetp
 msgid "No reply from Jetpack servers"
 msgstr "Nessuna risposta dai server Jetpack"
 
-#: modules/publicize/publicize-jetpack.php:267
+#: modules/publicize/publicize-jetpack.php:271
 msgid "No user information was included in your request. Please make sure that your user account has connected to Jetpack. Connect your user account by going to the <a href=\"%s\">Jetpack page</a> within wp-admin."
 msgstr "La tua richiesta non contiene nessuna informazione utente. Verifica che il tuo account utente sia connesso a Jetpack. Connetti il tuo account utente recandoti nella <a href=\"%s\">pagina Jetpack page</a> nella tua Bacheca."
 
-#: modules/publicize/ui.php:568
+#: modules/publicize/ui.php:595
 msgid "Not Connected"
 msgstr "Non collegato"
 
@@ -9094,11 +9275,11 @@ msgstr "Protect non può proteggere il tuo sito."
 msgid "Prove your humanity:"
 msgstr "Dimostra che sei un essere umano:"
 
-#: modules/publicize/ui.php:557
+#: modules/publicize/ui.php:584
 msgid "Publicize:"
 msgstr "Pubblicizza:"
 
-#: modules/publicize/publicize-jetpack.php:470
+#: modules/publicize/publicize-jetpack.php:468
 msgctxt "Refresh connection with {social media service}"
 msgid "Refresh connection with %s"
 msgstr "Aggiorna la connessione con %s"
@@ -9116,45 +9297,45 @@ msgid "Related"
 msgstr "Correlati"
 
 #: modules/protect/config-ui.php:64 modules/sharedaddy/sharing-sources.php:1339
-#: modules/widgets/simple-payments/form.php:136
+#: modules/widgets/simple-payments/form.php:167
 msgid "Save"
 msgstr "Salva"
 
-#: modules/publicize/ui.php:710
+#: modules/publicize/ui.php:737
 msgctxt "Service: Account connected as"
 msgid "%1$s: %2$s"
 msgstr "%1$: %2$s"
 
-#: modules/publicize/ui.php:215
+#: modules/publicize/ui.php:216
 msgid "Shared"
 msgstr "Condiviso"
 
-#: modules/publicize/publicize-jetpack.php:270
+#: modules/publicize/publicize-jetpack.php:274
 msgid "Something which should never happen, happened. Sorry about that. If you try again, maybe it will work."
 msgstr "E' successo qualcosa che non sarebbe mai dovuto succedere. Siamo spiacenti. Prova ancora, dovrebbe funzionare."
+
+#: modules/publicize/publicize-jetpack.php:301
+msgid "That connection has been removed."
+msgstr "Quella connessione è stata rimossa."
 
 #: modules/protect.php:176
 msgid "Thanks for activating Protect! To start protecting your site, please network activate Jetpack on your Multisite installation and activate Protect on your primary site. Due to the way logins are handled on WordPress Multisite, Jetpack must be network-enabled in order for Protect to work properly. <a href=\"%s\" target=\"_blank\">Learn More</a>"
 msgstr "Grazie per avere attivato Protect! Per avviare la protezione del sito, devi attivare Jetpack a livello di rete sull'installazione multisito, quindi devi impostare la protezione sul sito principale. La modalità di gestione degli accessi su WordPress multisito richiede l'attivazione di Jetpack a livello di rete. Diversamente Protect non funziona correttamente. <a href=\"%s\" target=\"_blank\">Per saperne di più</a>"
-
-#: modules/publicize/publicize-jetpack.php:297
-msgid "That connection has been removed."
-msgstr "Quella connessione è stata rimossa."
 
 #: _inc/jetpack-strings.php:695 _inc/jetpack-strings.php:701
 #: _inc/jetpack-strings.php:710 modules/masterbar/masterbar.php:873
 msgid "Themes"
 msgstr "Temi"
 
-#: modules/publicize/publicize-jetpack.php:252
+#: modules/publicize/publicize-jetpack.php:256
 msgid "There was a problem connecting to %s to create an authorized connection. Please try again in a moment."
 msgstr "Si è verificato un problema durante la connessione a %s per stabilire una connessione autorizzata. Riprova tra un attimo."
 
-#: modules/publicize/ui.php:281
+#: modules/publicize/ui.php:282
 msgid "There was a problem connecting to %s. Please disconnect and try again."
 msgstr "Si è verificato un problema durante la connessione a %s. Disconnettilo e riprova, grazie."
 
-#: modules/publicize/publicize-jetpack.php:274
+#: modules/publicize/publicize-jetpack.php:278
 msgid "There was a problem connecting with Publicize. Please try again in a moment."
 msgstr "Si è verificato un problema nel connettersi a Pubblicizza. Prova di nuovo tra un momento."
 
@@ -9162,7 +9343,7 @@ msgstr "Si è verificato un problema nel connettersi a Pubblicizza. Prova di nuo
 msgid "There was an error contacting Jetpack servers."
 msgstr "si è verificato un errore durante il tentativo di connessione con i server Jetpack."
 
-#: modules/publicize/publicize.php:534
+#: modules/publicize/publicize.php:554
 msgid "This connection is working correctly."
 msgstr "Questa connessione funziona correttamente."
 
@@ -9213,7 +9394,7 @@ msgstr "Video su %s"
 msgid "View Network Admin"
 msgstr "Visualizza amministratore di rete"
 
-#: modules/publicize/publicize-jetpack.php:261
+#: modules/publicize/publicize-jetpack.php:265
 msgid "We could not verify that your server is making an authorized request. Please try again, and make sure there is nothing interfering with requests from your server to the Jetpack Server."
 msgstr "Impossibile verificare che il tuo server stà effettuando una richiesta autorizzata. Prova ancora, assicurandoti che nulla interferisca con le richieste da tuo server al server di Jetpack."
 
@@ -9229,7 +9410,7 @@ msgstr "Lista bianca salvata."
 msgid "Whitelisting an IP address prevents it from ever being blocked by Jetpack. "
 msgstr "L'inclusione di un indirizzo IP in una lista bianca ne impedisce sempre il blocco da parte di Jetpack. "
 
-#: modules/publicize/ui.php:141
+#: modules/publicize/ui.php:142
 msgid "You can make a connection for just yourself or for all users on your blog. Shared connections are marked with the (Shared) text."
 msgstr "Puoi creare un collegamento solo per te o per tutti gli utenti del blog. I collegamenti condivisi sono contrassegnati dal testo (Condiviso)."
 
@@ -9237,7 +9418,7 @@ msgstr "Puoi creare un collegamento solo per te o per tutti gli utenti del blog.
 msgid "You can manage your network-wide whitelist via the network admin."
 msgstr "È possibile gestire la lista bianca a livello di rete tramite l'amministratore di rete."
 
-#: modules/publicize/ui.php:109
+#: modules/publicize/ui.php:110
 msgid "You have successfully connected your %1$s account with %2$s."
 msgstr "Hai collegato correttamente il tuo account %1$s a %2$s."
 
@@ -9257,15 +9438,15 @@ msgstr "Il tuo IP attuale: %s"
 msgid "Your main blog is not connected to WordPress.com. Please connect to get an API key."
 msgstr "Il tuo blog principale non è connesso a WordPress.com. Collegati per ottenere una chiave API."
 
-#: modules/publicize/ui.php:103
+#: modules/publicize/ui.php:104
 msgid "WordPress.com"
 msgstr "WordPress.com"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1558 modules/monitor.php:72
+#: _inc/lib/class.core-rest-api-endpoints.php:1569 modules/monitor.php:72
 msgid "Receive Monitor Email Notifications."
 msgstr "Ricevi le notifiche via email dal modulo Monitor"
 
-#: modules/publicize/ui.php:118
+#: modules/publicize/ui.php:119
 msgid "You have chosen not to connect your blog. Please click 'accept' when prompted if you wish to connect your accounts."
 msgstr "Hai scelto di non connettere il tuo blog. Fai clic su 'accetta' quando ti viene chiesto se desideri connettere i tuoi account."
 
@@ -9290,6 +9471,10 @@ msgid ""
 "With Carousel active, any standard WordPress galleries or single images you have embedded in posts or pages will\n"
 "\t\tlaunch a full-screen photo browsing experience with comments and EXIF metadata."
 msgstr "Attivando Carousel, ogni galleria standard di WordPress che hai inserito in articoli o pagine apparirà come una presentazione di immagini a schermo intero con commenti e metadata EXIF."
+
+#: modules/monitor.php:55
+msgid "Nobody likes downtime, and that's why Downtime Monitor is on the job, keeping tabs on your site by checking it every five minutes. As soon as any downtime is detected, you will receive an email notification alerting you to the issue. That way you can act quickly, to get your site back online again!"
+msgstr "A nessuno piacciono i tempi di inattivitàed è per questo che Jetpack Monitor è al lavoro e gestisce le schede sul tuo sito controllandolo ogni cinque minuti. Non appena verranno rilevati tempi di inattività, riceverai una notifica e-mail che ti segnalerà il problema. In questo modo potrai agire rapidamente per rimettere online il sito."
 
 #: modules/module-headings.php:39
 msgctxt "Jumpstart Description"
@@ -9546,7 +9731,7 @@ msgctxt "Module Tag"
 msgid "Writing"
 msgstr "Scrittura"
 
-#: modules/publicize/ui.php:152
+#: modules/publicize/ui.php:153
 msgid "More information on using Publicize."
 msgstr "Ulteriori informazioni riguardanti l'utilizzo di Pubblicizza."
 
@@ -9556,12 +9741,12 @@ msgstr "Ulteriori informazioni riguardanti l'utilizzo di Pubblicizza."
 msgid "Notifications"
 msgstr "Notifiche"
 
-#: modules/publicize/ui.php:131
+#: modules/publicize/ui.php:132
 msgid "Publicize"
 msgstr "Pubblicizza"
 
 #: _inc/jetpack-strings.php:476 _inc/jetpack-strings.php:477
-#: class.jetpack.php:6959 modules/stats.php:439 modules/stats.php:594
+#: class.jetpack.php:6964 modules/stats.php:439 modules/stats.php:594
 #: modules/stats.php:1106
 msgid "Site Stats"
 msgstr "Statistiche Sito"
@@ -9704,7 +9889,7 @@ msgstr "Inviami una e-mail ogni volta che"
 msgid "Enable excerpts on front page and on archive pages"
 msgstr "Abilita gli stralci sulla tua pagina iniziale e sulle pagine archivi"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1535 modules/minileven.php:60
+#: _inc/lib/class.core-rest-api-endpoints.php:1546 modules/minileven.php:60
 msgid "Excerpts"
 msgstr "Stralci"
 
@@ -9712,7 +9897,7 @@ msgstr "Stralci"
 msgid "Featured"
 msgstr "In evidenza"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1542 modules/minileven.php:74
+#: _inc/lib/class.core-rest-api-endpoints.php:1553 modules/minileven.php:74
 #: modules/theme-tools/content-options/customizer.php:230
 msgid "Featured Images"
 msgstr "Immagini in primo piano"
@@ -9956,7 +10141,7 @@ msgstr "Pulsanti di condivisione"
 msgid "Sharing Settings"
 msgstr "Impostazioni di condivisione"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1549 modules/minileven.php:92
+#: _inc/lib/class.core-rest-api-endpoints.php:1560 modules/minileven.php:92
 msgid "Show a promo for the WordPress mobile apps in the footer of the mobile theme."
 msgstr "Mostra una promozione delle applicazioni WordPress per dispositivi mobili nel piè di pagina del tema mobile."
 
@@ -10013,16 +10198,16 @@ msgstr[1] "Questa galleria contiene <a %1$s>%2$s immagini</a>."
 msgid "This post is password protected. Enter the password to view any comments."
 msgstr "Questo post è protetto da password. Inserire la password corretta per visualizzare i commenti."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1479
+#: _inc/lib/class.core-rest-api-endpoints.php:1490
 msgid "To infinity and beyond"
 msgstr "Verso l'infinito e oltre"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1486
+#: _inc/lib/class.core-rest-api-endpoints.php:1497
 #: modules/infinite-scroll.php:88
 msgid "Use Google Analytics with Infinite Scroll"
 msgstr "Utilizza Google Analytics con lo Scorrimento Infinito"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1519
+#: _inc/lib/class.core-rest-api-endpoints.php:1530
 #: modules/markdown/easy-markdown.php:290
 msgid "Use Markdown for comments."
 msgstr "Usa Markdown per i commenti."
@@ -10039,7 +10224,7 @@ msgstr "Visualizza sito intero"
 msgid "View Mobile Site"
 msgstr "Visita sito mobile"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1461
+#: _inc/lib/class.core-rest-api-endpoints.php:1472
 #: modules/gravatar-hovercards.php:63
 msgid "View people's profiles when you mouse over their Gravatars"
 msgstr "Visualizza i profili quando il cursore passa sui loro Gravatar"
@@ -10048,7 +10233,7 @@ msgstr "Visualizza i profili quando il cursore passa sui loro Gravatar"
 msgid "We&rsquo;ve changed this option to a click-to-scroll version for you since you have footer widgets in Appearance &rarr; Widgets, or your theme uses click-to-scroll as the default behavior."
 msgstr "Abbiamo modificato questa opzione passando a una versione click-to-scoll, poiché disponi di widget a piè di pagina in Aspetto → Widget oppure il tuo tema utilizza la funzione click-to-scroll come comportamento predefinito."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1495
+#: _inc/lib/class.core-rest-api-endpoints.php:1506
 #: modules/likes/jetpack-likes-settings.php:476
 msgid "WordPress.com Likes are"
 msgstr "I Mi piace su WordPress.com sono"
@@ -10079,12 +10264,12 @@ msgstr "Navigazione con immagini"
 msgid "<span>%d</span> bloggers like this:"
 msgstr "<span>%d</span> blogger hanno fatto clic su Mi Piace per questo: "
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1503
+#: _inc/lib/class.core-rest-api-endpoints.php:1514
 #: modules/likes/jetpack-likes-settings.php:482
 msgid "On for all posts"
 msgstr "Attivi per tutti gli articoli"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1504
+#: _inc/lib/class.core-rest-api-endpoints.php:1515
 #: modules/likes/jetpack-likes-settings.php:488
 msgid "Turned on per post"
 msgstr "Attivabili per singolo articolo"
@@ -10138,8 +10323,8 @@ msgstr "Aggiungi Elemento al Menu'"
 
 #: modules/custom-post-types/comics.php:224
 #: modules/custom-post-types/portfolios.php:270
-#: modules/custom-post-types/testimonial.php:299 modules/publicize/ui.php:243
-#: modules/widgets/simple-payments/form.php:34
+#: modules/custom-post-types/testimonial.php:299 modules/publicize/ui.php:244
+#: modules/widgets/simple-payments/form.php:38
 msgid "Add New"
 msgstr "Aggiungi Nuova"
 
@@ -10253,7 +10438,7 @@ msgstr "Editor foglio di stile CSS"
 #: modules/custom-css/custom-css.php:1178
 #: modules/custom-css/custom-css.php:1219 modules/minileven/minileven.php:288
 #: modules/sharedaddy/sharing-sources.php:535
-#: modules/widgets/simple-payments/form.php:137
+#: modules/widgets/simple-payments/form.php:168
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -10360,7 +10545,7 @@ msgstr "Predefinito"
 #: _inc/lib/icalendar-reader.php:790 modules/custom-post-types/nova.php:954
 #: modules/sitemaps/sitemap-stylist.php:436
 #: modules/widgets/milestone/milestone.php:591
-#: modules/widgets/simple-payments/form.php:84
+#: modules/widgets/simple-payments/form.php:95
 msgid "Description"
 msgstr "Descrizione"
 
@@ -10655,9 +10840,9 @@ msgstr ","
 #: modules/custom-css/custom-css.php:1086
 #: modules/custom-css/custom-css.php:1177
 #: modules/custom-css/custom-css.php:1218 modules/minileven/minileven.php:287
-#: modules/publicize/publicize-jetpack.php:634
-#: modules/publicize/publicize-jetpack.php:751 modules/publicize/ui.php:302
-#: modules/publicize/ui.php:751 modules/publicize/ui.php:780
+#: modules/publicize/publicize-jetpack.php:608
+#: modules/publicize/publicize-jetpack.php:711 modules/publicize/ui.php:303
+#: modules/publicize/ui.php:791 modules/publicize/ui.php:820
 msgid "OK"
 msgstr "OK"
 
@@ -10737,7 +10922,7 @@ msgstr "Anteprima: le modifiche devono essere salvate, altrimenti andranno perse
 #: modules/custom-post-types/nova.php:952
 #: modules/custom-post-types/nova.php:997
 #: modules/custom-post-types/nova.php:1003
-#: modules/widgets/simple-payments/form.php:92
+#: modules/widgets/simple-payments/form.php:105
 msgid "Price"
 msgstr "Prezzo"
 
@@ -11022,10 +11207,6 @@ msgstr "Visualizza tag di progetto"
 msgid "View Project Type"
 msgstr "Visualizza tipo di progetto"
 
-#: modules/custom-post-types/testimonial.php:303
-msgid "View Testimonial"
-msgstr "Visualizza la Testimoninza"
-
 #: modules/custom-css/custom-css.php:634
 msgid ""
 "Welcome to Custom CSS!\n"
@@ -11090,17 +11271,29 @@ msgstr ""
 "Buon divertimento,\n"
 "il Team di WordPress.com "
 
+#: modules/custom-css/custom-css.php:1007
+msgid ""
+"New to CSS? Start with a <a href=\"http://www.htmldog.com/guides/cssbeginner/\" rel=\"noopener noreferrer\" target=\"_blank\">beginner tutorial</a>. Questions?\n"
+"\t\tAsk in the <a href=\"https://wordpress.org/support/forum/themes-and-templates\" rel=\"noopener noreferrer\" target=\"_blank\">Themes and Templates forum</a>."
+msgstr ""
+"Sei agli inizi con il CSS? Vai al <a href=\"http://www.htmldog.com/guides/cssbeginner/\" rel=\"noopener noreferrer\" target=\"_blank\">tutorial per principianti</a>. Domande?\n"
+"\t\tChiedi nel <a href=\"https://wordpress.org/support/forum/themes-and-templates\" rel=\"noopener noreferrer\" target=\"_blank\">forum di Temi e Modelli</a>."
+
+#: modules/custom-post-types/testimonial.php:303
+msgid "View Testimonial"
+msgstr "Visualizza la Testimonianza"
+
 #: modules/contact-form/grunion-form-view.php:169
 msgctxt "%1$s = \"Click here\" in an HTML link"
 msgid "Sure thing. %1$s to add a new text box, textarea, radio, checkbox, or dropdown field."
 msgstr "Certo. %1$s per aggiungere un nuovo campo casella di testo, area di testo, di selezione, di spunta o a tendina."
 
-#: modules/contact-form/grunion-contact-form.php:1551
+#: modules/contact-form/grunion-contact-form.php:1578
 msgctxt "%1$s = blog name"
 msgid "%1$s Sidebar"
 msgstr "Barra laterale %1$s"
 
-#: modules/contact-form/grunion-contact-form.php:1554
+#: modules/contact-form/grunion-contact-form.php:1581
 msgctxt "%1$s = blog name, %2$s = post title"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
@@ -11110,11 +11303,11 @@ msgid "%s (Required)"
 msgstr "%s (Obbligatorio)"
 
 #. translators: %s is the name of a form field
-#: modules/contact-form/grunion-contact-form.php:2733
+#: modules/contact-form/grunion-contact-form.php:2760
 msgid "%s is required"
 msgstr "%s è obbligatorio"
 
-#: modules/contact-form/grunion-contact-form.php:2827
+#: modules/contact-form/grunion-contact-form.php:2854
 #: modules/contact-form/grunion-editor-view.php:91
 msgid "(required)"
 msgstr "(obbligatorio)"
@@ -11174,12 +11367,12 @@ msgstr "Revisione automatica del contenuto quando: "
 msgid "Background color"
 msgstr "Colore di sfondo"
 
-#: _inc/jetpack-strings.php:387 _inc/lib/class.core-rest-api-endpoints.php:1750
+#: _inc/jetpack-strings.php:387 _inc/lib/class.core-rest-api-endpoints.php:1761
 #: modules/after-the-deadline/config-options.php:63
 msgid "Bias Language"
 msgstr "Linguaggio fazioso"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1381
+#: _inc/lib/class.core-rest-api-endpoints.php:1392
 #: modules/carousel/jetpack-carousel.php:726
 #: modules/shortcodes/slideshow.php:78
 msgid "Black"
@@ -11239,22 +11432,22 @@ msgstr "Commenti"
 msgid "Comments on this post are closed."
 msgstr "I commenti su questo articolo sono disattivati."
 
-#: _inc/jetpack-strings.php:389 _inc/lib/class.core-rest-api-endpoints.php:1764
+#: _inc/jetpack-strings.php:389 _inc/lib/class.core-rest-api-endpoints.php:1775
 #: modules/after-the-deadline/config-options.php:67
 msgid "Complex Phrases"
 msgstr "Frasi complesse"
 
 #: modules/contact-form/grunion-contact-form.php:723
-#: modules/contact-form/grunion-contact-form.php:1311
+#: modules/contact-form/grunion-contact-form.php:1338
 #: modules/contact-form/grunion-form-view.php:51
 msgid "Contact Form"
 msgstr "Modulo di contatto"
 
-#: modules/contact-form/grunion-contact-form.php:2331
+#: modules/contact-form/grunion-contact-form.php:2358
 msgid "Contact Form URL:"
 msgstr "URL modulo di contatto: "
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1414
+#: _inc/lib/class.core-rest-api-endpoints.php:1425
 #: modules/comments/admin.php:55 modules/widgets/eu-cookie-law/form.php:232
 #: modules/widgets/googleplus-badge.php:271
 #: modules/widgets/twitter-timeline.php:483
@@ -11287,7 +11480,7 @@ msgstr "Cancella definitivamente"
 msgid "Delete this item permanently"
 msgstr "Elimina definitivamente questo elemento"
 
-#: _inc/jetpack-strings.php:390 _inc/lib/class.core-rest-api-endpoints.php:1771
+#: _inc/jetpack-strings.php:390 _inc/lib/class.core-rest-api-endpoints.php:1782
 #: modules/after-the-deadline/config-options.php:69
 msgid "Diacritical Marks"
 msgstr "Segni diacritici"
@@ -11300,7 +11493,7 @@ msgstr "Mostra le immagini a grandezza intera in uno slideshow carosello."
 msgid "Do I need to fill this out?"
 msgstr "Devo compilarlo?"
 
-#: _inc/jetpack-strings.php:391 _inc/lib/class.core-rest-api-endpoints.php:1778
+#: _inc/jetpack-strings.php:391 _inc/lib/class.core-rest-api-endpoints.php:1789
 #: modules/after-the-deadline/config-options.php:71
 msgid "Double Negatives"
 msgstr "Doppie negazioni"
@@ -11367,7 +11560,7 @@ msgstr "Errore durante lo spostamento nel cestino."
 msgid "Error in restoring from Trash."
 msgstr "Errore nel ripristino dal cestino."
 
-#: modules/contact-form/grunion-contact-form.php:1696
+#: modules/contact-form/grunion-contact-form.php:1723
 msgid "Error!"
 msgstr "Errore!"
 
@@ -11416,7 +11609,7 @@ msgstr "Costruttore di moduli"
 msgid "From"
 msgstr "Da"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1397
+#: _inc/lib/class.core-rest-api-endpoints.php:1408
 #: modules/comments/admin.php:81
 msgid "Greeting Text"
 msgstr "Scrivi un Saluto"
@@ -11425,7 +11618,7 @@ msgstr "Scrivi un Saluto"
 msgid "Here&#8217;s what your form will look like"
 msgstr "Ecco come apparirà il tuo modulo"
 
-#: _inc/jetpack-strings.php:392 _inc/lib/class.core-rest-api-endpoints.php:1785
+#: _inc/jetpack-strings.php:392 _inc/lib/class.core-rest-api-endpoints.php:1796
 #: modules/after-the-deadline/config-options.php:73
 msgid "Hidden Verbs"
 msgstr "Verbi nascosti"
@@ -11434,7 +11627,7 @@ msgstr "Verbi nascosti"
 msgid "How does this work?"
 msgstr "Come funziona?"
 
-#: modules/contact-form/grunion-contact-form.php:2330
+#: modules/contact-form/grunion-contact-form.php:2357
 msgid "IP Address:"
 msgstr "Indirizzo IP: "
 
@@ -11467,11 +11660,11 @@ msgstr "Carosello galleria immagini"
 msgid "Invalid request"
 msgstr "Richiesta non valida"
 
-#: modules/comments/comments.php:473
+#: modules/comments/comments.php:475
 msgid "Invalid security token."
 msgstr "Token di sicurezza non valido."
 
-#: _inc/jetpack-strings.php:393 _inc/lib/class.core-rest-api-endpoints.php:1792
+#: _inc/jetpack-strings.php:393 _inc/lib/class.core-rest-api-endpoints.php:1803
 #: modules/after-the-deadline/config-options.php:75
 msgid "Jargon"
 msgstr "Gergo"
@@ -11520,7 +11713,7 @@ msgstr "sposta"
 msgid "Language"
 msgstr "Lingua"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1399
+#: _inc/lib/class.core-rest-api-endpoints.php:1410
 #: modules/comments/admin.php:50 modules/comments/comments.php:246
 #: modules/minileven/theme/pub/minileven/content-gallery.php:76
 msgid "Leave a Reply"
@@ -11530,7 +11723,7 @@ msgstr "Rispondi"
 msgid "Leave a Reply to %s"
 msgstr "Rispondi a %s"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1413
+#: _inc/lib/class.core-rest-api-endpoints.php:1424
 #: modules/comments/admin.php:54 modules/widgets/eu-cookie-law/form.php:221
 #: modules/widgets/googleplus-badge.php:270
 #: modules/widgets/twitter-timeline.php:480
@@ -11560,13 +11753,13 @@ msgstr "Contrassegna il messaggio come spam"
 
 #: _inc/lib/core-api/class.jetpack-core-api-module-endpoints.php:1117
 #: modules/contact-form/admin.php:263
-#: modules/contact-form/grunion-contact-form.php:1592
+#: modules/contact-form/grunion-contact-form.php:1619
 #: modules/contact-form/grunion-editor-view.php:87
 msgid "Message"
 msgstr "Messaggio"
 
 #: modules/contact-form/grunion-contact-form.php:379
-#: modules/contact-form/grunion-contact-form.php:1713
+#: modules/contact-form/grunion-contact-form.php:1740
 msgid "Message Sent"
 msgstr "Messaggio inviato"
 
@@ -11624,12 +11817,12 @@ msgstr "No. Però puoi modificare l'oggetto e la destinazione del riscontro. Se 
 msgid "Options"
 msgstr "Impostazioni"
 
-#: _inc/jetpack-strings.php:394 _inc/lib/class.core-rest-api-endpoints.php:1799
+#: _inc/jetpack-strings.php:394 _inc/lib/class.core-rest-api-endpoints.php:1810
 #: modules/after-the-deadline/config-options.php:77
 msgid "Passive Voice"
 msgstr "Forma passiva"
 
-#: _inc/jetpack-strings.php:395 _inc/lib/class.core-rest-api-endpoints.php:1806
+#: _inc/jetpack-strings.php:395 _inc/lib/class.core-rest-api-endpoints.php:1817
 #: modules/after-the-deadline/config-options.php:79
 msgid "Phrases to Avoid"
 msgstr "Frasi da evitare"
@@ -11672,7 +11865,7 @@ msgstr "Correttore di bozze"
 msgid "Radio"
 msgstr "Radio"
 
-#: _inc/jetpack-strings.php:396 _inc/lib/class.core-rest-api-endpoints.php:1813
+#: _inc/jetpack-strings.php:396 _inc/lib/class.core-rest-api-endpoints.php:1824
 #: modules/after-the-deadline/config-options.php:81
 msgid "Redundant Phrases"
 msgstr "Frasi Ridondanti"
@@ -11714,11 +11907,11 @@ msgstr "Cerca riscontro"
 msgid "Select feedback to download"
 msgstr "Seleziona il riscontro da scaricare"
 
-#: modules/contact-form/grunion-contact-form.php:2338
+#: modules/contact-form/grunion-contact-form.php:2365
 msgid "Sent by a verified %s user."
 msgstr "Inviato da un utente verificato di %s."
 
-#: modules/contact-form/grunion-contact-form.php:2344
+#: modules/contact-form/grunion-contact-form.php:2371
 msgid "Sent by an unverified visitor to your site."
 msgstr "Inviato da un visitatore non verificato sul tuo sito."
 
@@ -11726,7 +11919,7 @@ msgstr "Inviato da un visitatore non verificato sul tuo sito."
 msgid "Show map of photo location in carousel, when available."
 msgstr "Se disponibile, mostra la mappa del luogo della foto nel carosello."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1388
+#: _inc/lib/class.core-rest-api-endpoints.php:1399
 msgid "Show photo metadata (<a href=\"http://en.wikipedia.org/wiki/Exchangeable_image_file_format\" target=\"_blank\">Exif</a>) in carousel, when available."
 msgstr "Se disponibili, mostra i metadati della foto (<a href=\"http://en.wikipedia.org/wiki/Exchangeable_image_file_format\" target=\"_blank\">Exif</a>) nel carosello."
 
@@ -11756,11 +11949,11 @@ msgstr[1] "Spam <span class=\"count\">(%s)</span>"
 msgid "Spelling"
 msgstr "Ortografia"
 
-#: modules/contact-form/grunion-contact-form.php:1588
+#: modules/contact-form/grunion-contact-form.php:1615
 msgid "Subject"
 msgstr "Oggetto"
 
-#: modules/comments/comments.php:547 modules/comments/comments.php:598
+#: modules/comments/comments.php:549 modules/comments/comments.php:600
 msgid "Submitting Comment%s"
 msgstr "Sto inviando i(l) commenti(o) \" \"%s"
 
@@ -11811,11 +12004,11 @@ msgctxt "This HTML form field is marked as required by the user in contact form 
 msgid "(required)"
 msgstr "(obbligatorio)"
 
-#: modules/contact-form/grunion-contact-form.php:2329
+#: modules/contact-form/grunion-contact-form.php:2356
 msgid "Time:"
 msgstr "Ora: "
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1415
+#: _inc/lib/class.core-rest-api-endpoints.php:1426
 #: modules/comments/admin.php:56
 msgid "Transparent"
 msgstr "Trasparente"
@@ -11825,7 +12018,7 @@ msgstr "Trasparente"
 msgid "Trash"
 msgstr "Cestina"
 
-#: _inc/jetpack-strings.php:384 _inc/lib/class.core-rest-api-endpoints.php:1820
+#: _inc/jetpack-strings.php:384 _inc/lib/class.core-rest-api-endpoints.php:1831
 #: modules/after-the-deadline/config-options.php:93
 msgid "Use automatically detected language to proofread posts and pages"
 msgstr "Usa il rilevamento automatico del linguaggio per la revisione di articoli e pagine"
@@ -11836,14 +12029,14 @@ msgstr "Vedi immagine a grandezza originale<span class=\"photo-size\">%1$s<span 
 
 #: _inc/lib/core-api/class.jetpack-core-api-module-endpoints.php:1117
 #: modules/carousel/jetpack-carousel.php:267
-#: modules/contact-form/grunion-contact-form.php:1584
+#: modules/contact-form/grunion-contact-form.php:1611
 #: modules/contact-form/grunion-editor-view.php:86
 #: modules/contact-form/grunion-editor-view.php:217
 #: modules/contact-form/grunion-form-view.php:202
 msgid "Website"
 msgstr "Sito web"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1382
+#: _inc/lib/class.core-rest-api-endpoints.php:1393
 #: modules/carousel/jetpack-carousel.php:726
 #: modules/shortcodes/slideshow.php:79
 msgid "White"
@@ -11856,12 +12049,6 @@ msgstr "Scrivi un Commento..."
 #: modules/contact-form/grunion-form-view.php:183
 msgid "Yep. You can enter multiple email addresses in the Email address field, and separate them with commas. A notification email will then be sent to each email address."
 msgstr "Certamente. Puoi inserire più di un indirizzo e-mail nel campo Indirizzo E-mail, separandoli con una virgola. In questo modo verrà inviata una mail di notifica ad ogni indirizzo e-mail."
-
-#: modules/contact-form/grunion-contact-form.php:2867
-#: modules/contact-form/grunion-editor-view.php:152
-#: modules/minileven/minileven.php:278
-msgid "Yes"
-msgstr "Si"
 
 #: modules/contact-form/admin.php:192 modules/contact-form/admin.php:622
 msgid "You are not allowed to manage this item."
@@ -11912,7 +12099,7 @@ msgctxt "error message in contact form builder"
 msgid "Oops, there was a problem generating your form.  You'll likely need to try again."
 msgstr "Oops, c'è stato un problema nel generare il tuo modulo. Dovrai riprovare, è probabile che funzioni."
 
-#: modules/contact-form/grunion-contact-form.php:1714
+#: modules/contact-form/grunion-contact-form.php:1741
 msgid "go back"
 msgstr "torna indietro"
 
@@ -11932,7 +12119,7 @@ msgid "proofread"
 msgstr "bozza"
 
 #: modules/contact-form/admin.php:483
-#: modules/contact-form/grunion-contact-form.php:2268
+#: modules/contact-form/grunion-contact-form.php:2295
 msgctxt "{$date_format} \\a\\t {$time_format}"
 msgid "%1$s \\a\\t %2$s"
 msgstr "%1$s \\alle\\ore %2$s"
@@ -11952,17 +12139,17 @@ msgstr "Assicurati di fare clic su \"Aggiorna Profilo\" sul fondo della schermat
 
 #: _inc/lib/core-api/class.jetpack-core-api-module-endpoints.php:1117
 #: class.jetpack-debugger.php:412 modules/carousel/jetpack-carousel.php:263
-#: modules/contact-form/grunion-contact-form.php:1583
+#: modules/contact-form/grunion-contact-form.php:1610
 #: modules/contact-form/grunion-editor-view.php:85
 #: modules/contact-form/grunion-editor-view.php:216
 #: modules/contact-form/grunion-form-view.php:197
-#: modules/widgets/simple-payments/form.php:122
+#: modules/widgets/simple-payments/form.php:139
 #: modules/widgets/social-icons.php:551
 msgid "Email"
 msgstr "Email"
 
 #. translators: %s is the name of a form field
-#: modules/contact-form/grunion-contact-form.php:2719
+#: modules/contact-form/grunion-contact-form.php:2746
 msgid "%s requires a valid email address"
 msgstr "%s richiede un indirizzo email valido"
 
@@ -11975,26 +12162,32 @@ msgstr "Pubblica un commento"
 msgid "Checkbox"
 msgstr "Casella di controllo"
 
-#: class.jetpack.php:4386
+#: modules/contact-form/grunion-contact-form.php:2894
+#: modules/contact-form/grunion-editor-view.php:152
+#: modules/minileven/minileven.php:278
+msgid "Yes"
+msgstr "Sì"
+
+#: class.jetpack.php:4391
 msgctxt "%1$s = deactivation URL, %2$s = \"Deactivate {list of Jetpack module/feature names}"
 msgid "If your site is not publicly accessible, consider <a href=\"%1$s\" title=\"%2$s\">deactivating this feature</a>."
 msgid_plural "If your site is not publicly accessible, consider <a href=\"%1$s\" title=\"%2$s\">deactivating these features</a>."
 msgstr[0] "Se il tuo sito non è pubblicamente accessibile, considera di<a href=\"%1$s\" title=\"%2$s\">disattivare questa funzione</a>."
 msgstr[1] "Se il tuo sito non è pubblicamente accessibile, considera di<a href=\"%1$s\" title=\"%2$s\">disattivare queste funzioni</a>."
 
-#: class.jetpack.php:4403
+#: class.jetpack.php:4408
 msgctxt "%l = list of Jetpack module/feature names"
 msgid "Deactivate %l"
 msgstr "Disattiva  %l"
 
-#: class.jetpack.php:4369
+#: class.jetpack.php:4374
 msgctxt "%l = list of Jetpack module/feature names"
 msgid "Like your site's RSS feeds, %l allows access to your posts and other content to third parties."
 msgid_plural "Like your site's RSS feeds, %l allow access to your posts and other content to third parties."
 msgstr[0] "Come i tuoi feed RSS, %l consente l'accesso ai tuoi articoli ed altri contenuti a terze parti."
 msgstr[1] "Come i tuoi feed RSS, %l consente l'accesso ai tuoi articoli ed altri contenuti a terze parti."
 
-#: class.jetpack.php:6158
+#: class.jetpack.php:6163
 msgid "%s wants to access your site&#8217;s data.  Log in to authorize that access."
 msgstr "%s vorrebbe avere accesso ai dati del tuo sito. Collegati per autorizzare l'accesso a questi dati."
 
@@ -12002,15 +12195,15 @@ msgstr "%s vorrebbe avere accesso ai dati del tuo sito. Collegati per autorizzar
 msgid "(no title)"
 msgstr "(senza titolo)"
 
-#: class.jetpack.php:4876
+#: class.jetpack.php:4881
 msgid "<a class=\"button-primary\" href=\"%s\">Activate Now</a>"
 msgstr "<a class=\"button-primary\" href=\"%s\">Attiva ora</a>"
 
-#: class.jetpack.php:4874
+#: class.jetpack.php:4879
 msgid "<a class=\"button-primary\" href=\"%s\">Activate Now</a> or <a href=\"%s\" >return to previous page</a>."
 msgstr "<a class=\"button-primary\" href=\"%s\">Attiva ora</a> oppure <a href=\"%s\" >ritorna alla pagina precedente</a>."
 
-#: class.jetpack.php:3976
+#: class.jetpack.php:3981
 msgid "<p><a href=\"%1$s\" title=\"Opt in to WordPress.com Site Management\" >Activate Site Management</a> to manage multiple sites from our centralized dashboard at wordpress.com/sites. <a href=\"%2$s\" target=\"_blank\">Learn more</a>.</p><a href=\"%1$s\" class=\"jp-button\">Activate Now</a>"
 msgstr "<p><a href=\"%1$s\" title=\"Aderisci alla Gestione del sito WordPress.com\" >Attiva la Gestione del sito</a> per gestire più siti attraverso la nostra bacheca centralizzata su wordpress.com/sites. <a href=\"%2$s\" target=\"_blank\">Maggiori informazioni</a>.</p><a href=\"%1$s\" class=\"jp-button\">Attiva ora</a>"
 
@@ -12018,19 +12211,19 @@ msgstr "<p><a href=\"%1$s\" title=\"Aderisci alla Gestione del sito WordPress.co
 msgid "<strong>Jetpack is activated!</strong> Each site on your network must be connected individually by an admin on that site."
 msgstr "<strong>Hai attivato Jetpack!</strong> Ogni sito della tua rete deve essere connesso individualmente da un amministratore collegato a quel sito."
 
-#: class.jetpack.php:7038
+#: class.jetpack.php:7043
 msgid "Activate Akismet"
 msgstr "Attivare Akismet"
 
-#: class.jetpack.php:7025
+#: class.jetpack.php:7030
 msgid "Activate Protect"
 msgstr "Attiva Protect"
 
-#: class.jetpack.php:4856
+#: class.jetpack.php:4861
 msgid "Activate Site Management and JSON API"
 msgstr "Attiva la Gestione del sito e l'API JSON"
 
-#: class.jetpack.php:7041
+#: class.jetpack.php:7046
 msgid "Akismet can help to keep your blog safe from spam!"
 msgstr "Akismet ti aiuta a proteggere il tuo blog dallo spam."
 
@@ -12061,7 +12254,7 @@ msgstr "Si è verificato un errore imprevisto durante il salvataggio automatico"
 msgid "Comment cache problem?"
 msgstr "Problemi con la cache dei commenti?"
 
-#: class.jetpack.php:4806
+#: class.jetpack.php:4811
 msgid "Configure %s"
 msgstr "Configura %s"
 
@@ -12069,27 +12262,27 @@ msgstr "Configura %s"
 msgid "Connect to WordPress.com"
 msgstr "Connettere a WordPress.com"
 
-#: class.jetpack.php:3826
+#: class.jetpack.php:3831
 msgid "Each module has an Activate or Deactivate link so you can toggle one individually."
 msgstr "Ciascun modulo presenta un link di attivazione o disattivazione, in modo da poterlo attivare/disattivare singolarmente."
 
-#: class.jetpack.php:5242
+#: class.jetpack.php:5247
 msgid "Error Details: Jetpack ID begins with a numeral. Do not publicly post this error message! %s"
 msgstr "Dettagli sull'Errore: l'ID di Jetpack inizia con un valore numerico. Non postare pubblicamente questo messaggio d'errore! %s"
 
-#: class.jetpack.php:5238
+#: class.jetpack.php:5243
 msgid "Error Details: Jetpack ID is empty. Do not publicly post this error message! %s"
 msgstr "Dettagli sull'Errore: Nessun ID di Jetpack. Non postare pubblicamente questo messaggio d'errore! %s"
 
-#: class.jetpack.php:5240
+#: class.jetpack.php:5245
 msgid "Error Details: Jetpack ID is not a scalar. Do not publicly post this error message! %s"
 msgstr "Dettagli sull'Errore: l'ID di Jetpack non è scalare. Non postare pubblicamente questo messaggio d'errore! %s"
 
-#: class.jetpack.php:3396
+#: class.jetpack.php:3401
 msgid "First param must be string or empty"
 msgstr "Il primo parametro deve essere una stringa oppure vuoto"
 
-#: class.jetpack.php:3836
+#: class.jetpack.php:3841
 msgid "For more information:"
 msgstr "Per maggiori informazioni:"
 
@@ -12097,63 +12290,63 @@ msgstr "Per maggiori informazioni:"
 msgid "Full management mode is off for this site."
 msgstr "La modalità di gestione completa è disattivata per questo sito."
 
-#: class.jetpack.php:3808 modules/theme-tools/site-breadcrumbs.php:48
+#: class.jetpack.php:3813 modules/theme-tools/site-breadcrumbs.php:48
 msgid "Home"
 msgstr "Home"
 
 #. translators: %s is a URL
-#: class.jetpack.php:1639
+#: class.jetpack.php:1644
 msgid "In <a href=\"%s\" target=\"_blank\">Development Mode</a>, via site URL lacking a dot (e.g. http://localhost)."
 msgstr "In <a href=\"%s\" target=\"_blank\">Modalità di sviluppo</a>, attraverso l'URL del sito senza punto (ad esempio http://localhost)."
 
 #. translators: %s is a URL
-#: class.jetpack.php:1633
+#: class.jetpack.php:1638
 msgid "In <a href=\"%s\" target=\"_blank\">Development Mode</a>, via the JETPACK_DEV_DEBUG constant being defined in wp-config.php or elsewhere."
 msgstr "In <a href=\"%s\" target=\"_blank\">Modalità di sviluppo</a>, attraverso la costante JETPACK_DEV_DEBUG definita in wp-config.php o altrove."
 
 #. translators: %s is a URL
-#: class.jetpack.php:1645
+#: class.jetpack.php:1650
 msgid "In <a href=\"%s\" target=\"_blank\">Development Mode</a>, via the jetpack_development_mode filter."
 msgstr "In <a href=\"%s\" target=\"_blank\">Modalità di sviluppo</a>, attraverso il filtro jetpack_development_mode."
 
-#: class.jetpack.php:4364
+#: class.jetpack.php:4369
 msgid "Is this site private?"
 msgstr "Questo sito è privato?"
 
-#: class.jetpack.php:3837
+#: class.jetpack.php:3842
 msgid "Jetpack FAQ"
 msgstr "FAQ di Jetpack"
 
-#: class.jetpack.php:5763
+#: class.jetpack.php:5768
 msgid "Jetpack Plugin Version"
 msgstr "Versione del Plugin di Jetpack"
 
-#: class.jetpack.php:3838
+#: class.jetpack.php:3843
 msgid "Jetpack Support"
 msgstr "Sezione Supporto di Jetpack"
 
-#. #-#-#-#-#  jetpack-code.pot (Jetpack by WordPress.com 6.3.2)  #-#-#-#-#
+#. #-#-#-#-#  jetpack-code.pot (Jetpack by WordPress.com 6.4.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: class.jetpack.php:3810 class.jetpack.php:3823 class.jetpack.php:4805
+#: class.jetpack.php:3815 class.jetpack.php:3828 class.jetpack.php:4810
 #: views/admin/network-admin-header.php:5
 msgid "Jetpack by WordPress.com"
 msgstr "Jetpack by WordPress.com"
 
-#: class.jetpack.php:4281
+#: class.jetpack.php:4286
 msgid "Jetpack contains the most recent version of the old %l plugin."
 msgid_plural "Jetpack contains the most recent versions of the old %l plugins."
 msgstr[0] "Jetpack contiene la versione più recente del vecchio plugin di %l."
 msgstr[1] "Jetpack contiene le versioni più recenti dei vecchi plugin di %l."
 
-#: class.jetpack.php:3596 class.jetpack.php:3612
+#: class.jetpack.php:3601 class.jetpack.php:3617
 msgid "Jetpack contains the most recent version of the old &#8220;%1$s&#8221; plugin."
 msgstr "Jetpack contiene la versione più recente del vecchio plugin &#8220;%1$s&#8221;"
 
-#: class.jetpack.php:3092
+#: class.jetpack.php:3097
 msgid "Jetpack requires WordPress version %s or later."
 msgstr "Jetpack necessita della versione di WordPress %s o successiva."
 
-#: class.jetpack.php:3811
+#: class.jetpack.php:3816
 msgid "Jetpack supercharges your self-hosted WordPress site with the awesome cloud power of WordPress.com."
 msgstr "Jetpack dà la carica al tuo sito WordPress ospitato da terzi grazie all'eccezionale potenza della nuvola informatica di WordPress.com."
 
@@ -12161,11 +12354,11 @@ msgstr "Jetpack dà la carica al tuo sito WordPress ospitato da terzi grazie all
 msgid "Limit must be greater than or equal to 0."
 msgstr "Il limite deve essere superiore o pari a 0."
 
-#: class.jetpack.php:4256
+#: class.jetpack.php:4261
 msgid "Manage has been activated for you!"
 msgstr "La funzione di gestione è stata attivata."
 
-#: class.jetpack.php:4860
+#: class.jetpack.php:4865
 msgid "Manage your multiple Jetpack sites from our centralized dashboard at wordpress.com/sites. <a href=\"%s\" target=\"_blank\">Learn more</a>."
 msgstr "Gestisci più siti Jetpack attraverso la nostra bacheca centralizzata su wordpress.com/sites. <a href=\"%s\" target=\"_blank\">Maggiori informazioni</a>."
 
@@ -12192,7 +12385,7 @@ msgstr "Nessun aggiornamento necessario"
 msgid "Offset must be greater than or equal to 0."
 msgstr "Il parametro Offset deve essere superiore o pari a 0."
 
-#: class.jetpack.php:3812
+#: class.jetpack.php:3817
 msgid "On this page, you are able to view the modules available within Jetpack, learn more about them, and activate or deactivate them as needed."
 msgstr "In questa pagina puoi vedere i moduli resi disponibili da Jetpack, impara a che cosa servono, ed attivali o disattivali a seconda delle tue necessità."
 
@@ -12216,23 +12409,23 @@ msgstr "Plugin disattivato."
 msgid "Post by %s."
 msgstr "Bericht van %s."
 
-#: class.jetpack.php:7024
+#: class.jetpack.php:7029
 msgid "Protect helps to keep you secure from brute-force login attacks."
 msgstr "Protect aiuta a proteggerti dai tentativi di accesso mediante attacchi di forza bruta."
 
-#: class.jetpack.php:7028
+#: class.jetpack.php:7033
 msgid "Protect is inactive."
 msgstr "Protect non è attivo."
 
-#: class.jetpack.php:3400
+#: class.jetpack.php:3405
 msgid "Second param must be numeric or empty"
 msgstr "Il secondo parametro deve essere numerico oppure vuoto"
 
-#: class.jetpack.php:6075
+#: class.jetpack.php:6080
 msgid "Someone may be trying to trick you into giving them access to your site.  Or it could be you just encountered a bug :).  Either way, please close this window."
 msgstr "Qualcuno stà cercando di farsi concedere l'accesso al tuo sito con l'inganno. Oppure può essere che hai solo riscontrato un bug:). In entrambi i casi, chiudi questa finestra."
 
-#: class.jetpack.php:5769
+#: class.jetpack.php:5774
 msgid "The Client ID/WP.com Blog ID of this site"
 msgstr "L'ID Client o l'ID di Blog WP.com di questo sito"
 
@@ -12252,27 +12445,27 @@ msgstr "Il plugin è già attivo."
 msgid "The Plugin is already deactivated."
 msgstr "Il plugin è già disattivato."
 
-#: class.jetpack.php:5732
+#: class.jetpack.php:5737
 msgid "The WP.com user ID of the connected user"
 msgstr "L'ID utente WP.com dell'utente connesso"
 
-#: class.jetpack.php:5742
+#: class.jetpack.php:5747
 msgid "The WP.com user email of the connected user"
 msgstr "L'e-mail utente WP.com dell'utente connesso"
 
-#: class.jetpack.php:5737
+#: class.jetpack.php:5742
 msgid "The WP.com username of the connected user"
 msgstr "Il nome utente WP.com dell'utente connesso"
 
-#: class.jetpack.php:6118
+#: class.jetpack.php:6123
 msgid "The authorization process expired.  Please go back and try again."
 msgstr "Il processo per l'autorizzazione è scaduto. Torna indietro e riprova."
 
-#: class.jetpack.php:5747
+#: class.jetpack.php:5752
 msgid "The number of sites of the connected WP.com user"
 msgstr "Il numero di siti dell'utente WP.com connesso"
 
-#: class.jetpack.php:4292
+#: class.jetpack.php:4297
 msgid "The old version has been deactivated and can be removed from your site."
 msgid_plural "The old versions have been deactivated and can be removed from your site."
 msgstr[0] "La vecchia versione è stata disattivata e può essere rimossa dal sito."
@@ -12355,11 +12548,11 @@ msgstr "Tipo"
 msgid "Unknown post type requested."
 msgstr "È stato richiesto un tipo di articolo sconosciuto."
 
-#: class.jetpack.php:3827
+#: class.jetpack.php:3832
 msgid "Using the checkboxes next to each module, you can select multiple modules to toggle via the Bulk Actions menu at the top of the list."
 msgstr "Utilizzando le caselle di controllo accanto a ciascun modulo, puoi selezionare più moduli da attivare/disattivare tramite il menu Azioni in blocco nella parte superiore dell'elenco."
 
-#: class.jetpack.php:3829
+#: class.jetpack.php:3834
 msgid "Using the tools on the right, you can search for specific modules, filter by module categories or which are active, or change the sorting order."
 msgstr "Utilizzando gli strumenti sulla destra, puoi ricercare moduli specifici, filtrare per categorie di moduli o per quelli attivi oppure modificare l'ordinamento."
 
@@ -12367,12 +12560,12 @@ msgstr "Utilizzando gli strumenti sulla destra, puoi ricercare moduli specifici,
 msgid "WordPress.com is currently having problems and is unable to fuel up your Jetpack.  Please try again later."
 msgstr "Al momento WordPress.com ha dei problemi e non può alimentare il tuo Jetpack.  Riprova più tardi."
 
-#: class.jetpack.php:4254
+#: class.jetpack.php:4259
 msgid "You are all set! Your site can now be managed from <a href=\"%s\" target=\"_blank\">wordpress.com/sites</a>."
 msgstr "Sei pronto! È ora possibile gestire il sito con <a href=\"%s\" target=\"_blank\">wordpress.com/sites</a>."
 
 #. translators: %s is a URL
-#: class.jetpack.php:1656
+#: class.jetpack.php:1661
 msgid "You are currently running a development version of Jetpack. <a href=\"%s\" target=\"_blank\">Submit your feedback</a>"
 msgstr "Al momento stai eseguendo una versione di sviluppo di Jetpack. <a href=\"%s\" target=\"_blank\">Invia il feedback</a>"
 
@@ -12404,11 +12597,11 @@ msgstr "Devi specificare un tema a cui passare."
 msgid "You are required to specify a theme to update."
 msgstr "Devi specificare un tema da aggiornare."
 
-#: class.jetpack.php:3824
+#: class.jetpack.php:3829
 msgid "You can activate or deactivate individual Jetpack modules to suit your needs."
 msgstr "Puoi attivare o disattivare individualmente ogni modulo di Jetpack a seconda delle tue necessità."
 
-#: class.jetpack.php:6072
+#: class.jetpack.php:6077
 msgid "You must connect your Jetpack plugin to WordPress.com to use this feature."
 msgstr "Devi connettere il plugin di Jetpack a WordPress.com per utilizzare questa funzionalità."
 
@@ -12416,17 +12609,17 @@ msgstr "Devi connettere il plugin di Jetpack a WordPress.com per utilizzare ques
 msgid "You must specify a valid action"
 msgstr "È necessario specificare un'azione valida"
 
-#: class.jetpack.php:7022
+#: class.jetpack.php:7027
 msgctxt "{#} Blocked malicious login attempts -- number is on a prior line, text is a caption."
 msgid "Blocked malicious login attempts"
 msgstr "Tentativi di accesso dannosi bloccati"
 
-#: class.jetpack.php:7035
+#: class.jetpack.php:7040
 msgctxt "{#} Spam comments blocked by Akismet -- number is on a prior line, text is a caption."
 msgid "Spam comments blocked by Akismet."
 msgstr "Commenti di spam bloccati da Akismet"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1652
+#: _inc/lib/class.core-rest-api-endpoints.php:1663
 #: class.jetpack-twitter-cards.php:228
 msgid "The Twitter username of the owner of this site's domain."
 msgstr "Il nome utente su Twitter del proprietario del dominio di questo sito."
@@ -12569,15 +12762,6 @@ msgstr "Un amministratore di questo blog deve impostare la connessione di Jetpac
 msgid "An incompatible plugin."
 msgstr "Un plugin incompatibile."
 
-#. translators: Don't translate the word yes here.
-#: class.jetpack-cli.php:1453
-msgid "Are you sure? Modifying this option may disrupt your Jetpack connection.  Type \"yes\" to continue."
-msgstr "Sei sicuro? La modifica di questa opzione potrebbe interrompere la connessione di Jetpack. Digita \"yes\" per continuare."
-
-#: class.jetpack-cli.php:1450
-msgid "Are you sure? This cannot be undone. Type \"yes\" to continue:"
-msgstr "Sei sicuro? Questa operazione non può essere annullata. Digita \"yes\" per continuare:"
-
 #: class.jetpack-cli.php:510
 msgid "Cleared all whitelisted IPs"
 msgstr "Tutti gli IP della lista bianca sono stati eliminati"
@@ -12636,12 +12820,12 @@ msgstr "La verifica is_usable_domain sul dominio `%1$s` non è riuscita poiché 
 #: modules/minileven/theme/pub/minileven/content.php:51
 #: modules/minileven/theme/pub/minileven/image.php:92
 #: modules/minileven/theme/pub/minileven/page.php:36
-#: modules/publicize/ui.php:565 modules/publicize/ui.php:569
+#: modules/publicize/ui.php:592 modules/publicize/ui.php:596
 msgid "Edit"
 msgstr "Modifica"
 
-#: class.jetpack-client-server.php:239 class.jetpack.php:5221
-#: class.jetpack.php:5223 class.jetpack.php:5228 class.jetpack.php:5233
+#: class.jetpack-client-server.php:239 class.jetpack.php:5226
+#: class.jetpack.php:5228 class.jetpack.php:5233 class.jetpack.php:5238
 msgid "Error Details: %s"
 msgstr "Dettagli sull'Errore: %s"
 
@@ -12688,13 +12872,13 @@ msgid "It may be caused by one of these issues, which you can diagnose yourself:
 msgstr "Può essere stato causato da uno di questi problemi, che puoi diagnosticare autonomamente: "
 
 #: _inc/jetpack-strings.php:499 class.jetpack-network.php:204
-#: class.jetpack-network.php:270 class.jetpack.php:3904
-#: modules/publicize/ui.php:105
+#: class.jetpack-network.php:270 class.jetpack.php:3909
+#: modules/publicize/ui.php:106
 msgid "Jetpack"
 msgstr "Jetpack"
 
 #: class.jetpack-admin.php:255 class.jetpack-debugger.php:220
-#: class.jetpack.php:3839
+#: class.jetpack.php:3844
 msgid "Jetpack Debugging Center"
 msgstr "Centro di Debug di Jetpack"
 
@@ -12731,7 +12915,7 @@ msgstr "Dicci il tuo nome."
 msgid "Load your <a href=\"%s\">XMLRPC file</a>. It should say “XML-RPC server accepts POST requests only.” on a line by itself."
 msgstr "Carica il tuo <a href=\"%s\">file XMLRPC</a>. Dovresti trovare “XML-RPC server accepts POST requests only.” su un rigo dedicato."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1179 class.jetpack-cli.php:288
+#: _inc/lib/class.core-rest-api-endpoints.php:1190 class.jetpack-cli.php:288
 #: class.jetpack-cli.php:297
 msgid "Modules reset to default."
 msgstr "Moduli ripristinati alle impostazioni predefinite."
@@ -12739,7 +12923,7 @@ msgstr "Moduli ripristinati alle impostazioni predefinite."
 #: _inc/lib/core-api/class.jetpack-core-api-module-endpoints.php:1117
 #: class.jetpack-debugger.php:406 class.jetpack-modules-list-table.php:204
 #: modules/carousel/jetpack-carousel.php:265
-#: modules/contact-form/grunion-contact-form.php:1582
+#: modules/contact-form/grunion-contact-form.php:1609
 #: modules/contact-form/grunion-editor-view.php:84
 #: modules/contact-form/grunion-editor-view.php:215
 #: modules/contact-form/grunion-form-view.php:198
@@ -12829,8 +13013,8 @@ msgstr "Cerca Moduli..."
 #: _inc/jetpack-strings.php:609
 #: _inc/lib/admin-pages/class.jetpack-react-page.php:67
 #: _inc/lib/admin-pages/class.jetpack-settings-page.php:15
-#: class.jetpack-network.php:272 class.jetpack.php:3821 class.jetpack.php:3909
-#: modules/masterbar/masterbar.php:990 modules/publicize/ui.php:565
+#: class.jetpack-network.php:272 class.jetpack.php:3826 class.jetpack.php:3914
+#: modules/masterbar/masterbar.php:990 modules/publicize/ui.php:592
 #: modules/sharedaddy/sharedaddy.php:217 modules/sharedaddy/sharedaddy.php:224
 #: modules/stats.php:589
 msgid "Settings"
@@ -12861,11 +13045,11 @@ msgid "Sort by:"
 msgstr "Ordinato per:"
 
 #: class.jetpack-debugger.php:430
-#: modules/contact-form/grunion-contact-form.php:1568
+#: modules/contact-form/grunion-contact-form.php:1595
 msgid "Submit &#187;"
 msgstr "Invia &#187;"
 
-#: class.jetpack.php:3910 modules/sharedaddy/sharedaddy.php:225
+#: class.jetpack.php:3915 modules/sharedaddy/sharedaddy.php:225
 #: views/admin/network-admin-footer.php:27
 msgid "Support"
 msgstr "Supporto"
@@ -13004,3 +13188,7 @@ msgstr "L‛utente è stato disconnesso con successo."
 #: modules/contact-form/grunion-form-view.php:175
 msgid "Feedback"
 msgstr "Riscontro"
+
+#: class.jetpack-cli.php:206
+msgid "Jetpack has been successfully disconnected for %s."
+msgstr "Jetpack è stato disconnesso con successo da %s."

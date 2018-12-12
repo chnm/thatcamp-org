@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-07-09 18:54:07+0000\n"
+"PO-Revision-Date: 2018-11-07 21:54:07+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,26 +11,70 @@ msgstr ""
 "Language: he_IL\n"
 "Project-Id-Version: Plugins - Jetpack by WordPress.com - Stable (latest release)\n"
 
+#: modules/widgets/simple-payments.php:274
+msgid "Invalid parameters."
+msgstr "פרמטרים לא תקפים."
+
+#: modules/simple-payments/simple-payments.php:169
+#: modules/widgets/simple-payments/admin-warning.php:9
+msgid "Your plan doesn't include Simple Payments. <a href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">Learn more and upgrade</a>."
+msgstr "התוכנית שלך לא כוללת את האפשרות לתשלומים פשוטים. <a href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">מידע נוסף ושדרוג</a>."
+
+#: modules/publicize/ui.php:490
+msgid "Update Your Sharing Settings"
+msgstr "עדכון הגדרות השיתוף שלך"
+
+#: modules/publicize/publicize.php:578
+msgid "Facebook no longer supports Publicize connections to Facebook Profiles, but you can still connect Facebook Pages. Please select a Facebook Page to publish updates to."
+msgstr "פלטפורמת פייסבוק לא תומכת יותר בשיתוף אוטומטי של חשבונות שמקושרים לפרופילים בפייסבוק, אבל עדיין אפשר להתחבר לעמודי פייסבוק. יש לבחור עמוד פייסבוק שבו יתפרסמו העדכונים."
+
+#: modules/publicize/publicize.php:189
+msgid "Connecting..."
+msgstr "מתחבר..."
+
+#: modules/publicize/publicize-jetpack.php:617
+msgid "<a class=\"button\" href=\"%s\" target=\"%s\">Create a Facebook page</a> to get started."
+msgstr "יש <a class=\"button\" href=\"%s\" target=\"%s\">ליצור עמוד פייסבוק</a> כדי להתחיל."
+
+#: modules/publicize/publicize-jetpack.php:572
+msgid "Facebook supports Publicize connections to Facebook Pages, but not to Facebook Profiles. <a href=\"%s\">Learn More about Publicize for Facebook</a>"
+msgstr "פלטפורמת פייסבוק תומכת בשיתוף אוטומטי של חשבונות שמקושרים לעמודים בפייסבוק בלבד, לא לפרופילים בפייסבוק. <a href=\"%s\">למידע נוסף בנושא שיתוף אוטומטי בפייסבוק</a>"
+
+#: class.jetpack-connection-banner.php:976
+msgid "Get in touch with us"
+msgstr "יצירת קשר עימנו"
+
+#: class.jetpack-cli.php:1452
+msgctxt "\"yes\" is a command - do not translate."
+msgid "Are you sure? Modifying this option may disrupt your Jetpack connection.  Type \"yes\" to continue."
+msgstr "האם ההחלטה סופית? שינוי אפשרות זו עלול לשבש את חיבור ה-Jetpack שלך. יש להקליד yes כדי להמשיך."
+
+#: class.jetpack-cli.php:1450
+msgctxt "\"yes\" is a command - do not translate."
+msgid "Are you sure? This cannot be undone. Type \"yes\" to continue:"
+msgstr "האם ההחלטה סופית? לא ניתן לבטל את הפעולה. יש להקליד yes כדי להמשיך:"
+
 #: modules/widgets/twitter-timeline.php:112
 msgid "As of July 27, 2018, the Twitter Timeline widget will no longer display tweets based on searches or hashtags. To display a simple list of tweets instead, change the Widget ID to a Twitter username."
 msgstr "החל מתאריך 27 ביולי, 2018, הווידג'ט Twitter Timeline לא יציג עוד ציוצים לפי חיפוש או האשטאגים. כדי להציג רשימה פשוטה של ציוצים במקום, יש לשנות את זהות הווידג'ט לשם המשתמש בטוויטר."
 
-#: modules/widgets/simple-payments.php:278
+#: modules/widgets/simple-payments.php:286
 msgid "We want to make sure payments reach you, so please add an email address."
 msgstr "אנחנו רוצים להבטיח שהתשלום יגיע אליך ולכן, יש להוסיף כתובת אימייל."
 
-#: modules/widgets/simple-payments.php:274
+#: modules/widgets/simple-payments.php:282
 msgid "Everything comes with a price tag these days. Please add a your product price."
 msgstr "היום, לכל דבר יש מחיר. יש להוסיף את המחיר של המוצר שלך."
 
-#: modules/widgets/simple-payments.php:270
+#: modules/widgets/simple-payments.php:278
 msgid "People need to know what they're paying for! Please add a brief title."
 msgstr "אנשים אוהבים לדעת עבור מה הם משלמים! יש להוסיף כותרת קצרה."
 
-#: modules/widgets/simple-payments.php:121
+#: modules/widgets/simple-payments.php:129
 msgid "Are you sure you want to delete this item? It will be disabled and removed from all locations where it currently appears."
 msgstr "האם ברצונך למחוק פריט זה? בעקבות כך, פעולת הפריט תושבת והוא יוסר מכל המיקומים בהם הוא מופיע כעת."
 
+#: modules/simple-payments/simple-payments.php:181
 #: modules/widgets/twitter-timeline.php:93
 #: modules/widgets/twitter-timeline.php:113
 msgid "(Only administrators will see this message.)"
@@ -48,55 +92,51 @@ msgstr "הוספה של כפתור תשלום פשוט כווידג'ט."
 msgid "Simple Payments"
 msgstr "תשלום פשוט"
 
-#: modules/widgets/simple-payments/form.php:148
+#: modules/widgets/simple-payments/form.php:179
 msgid "This widget adds a payment button of your choice to your sidebar. To create or edit the payment buttons themselves, <a href=\"%s\">use the Customizer</a>."
 msgstr "הווידג'ט מוסיף את כפתור התשלום שבחרת לסרגל הצדי. כדי ליצור או לערוך את כפתורי התשלום, <a href=\"%s\">יש להתשמש בכלי ההתאמה האישית</a>."
 
-#: modules/widgets/simple-payments/form.php:133
+#: modules/widgets/simple-payments/form.php:163
 msgid "Delete Product"
 msgstr "מחיקת מוצר"
 
-#: modules/widgets/simple-payments/form.php:129
-msgid "This is where PayPal will send your money. To claim a payment, you'll need a %1$sPayPal account%2$s connected to a bank account."
-msgstr "לכאן יתקבלו התשלומים מ-PayPal. לקבלת התשלום, חייב להיות ברשותך %1$sחשבון PayPal%2$s שמחובר לחשבון בנק."
-
-#: modules/widgets/simple-payments/form.php:119
+#: modules/widgets/simple-payments/form.php:134
 msgid "Allow people to buy more than one item at a time."
 msgstr "ניתן לאפשר לאנשים לרכוש יותר מפריט אחד כל פעם."
 
-#: modules/widgets/simple-payments/form.php:80
+#: modules/widgets/simple-payments/form.php:90
 msgid "Remove image"
 msgstr "הסרת התמונה"
 
-#: modules/widgets/simple-payments/form.php:77
+#: modules/widgets/simple-payments/form.php:86
 msgid "Select an image"
 msgstr "בחירת תמונה"
 
-#: modules/widgets/simple-payments/form.php:76
+#: modules/widgets/simple-payments/form.php:84
 msgid "Product image"
 msgstr "תמונת מוצר"
 
-#: modules/widgets/simple-payments/form.php:73
+#: modules/widgets/simple-payments/form.php:80
 msgid "For example: event tickets, charitable donations, training courses, coaching fees, etc."
 msgstr "לדוגמה: כרטיסים לאירועים, תרומות לצדקה, קורסי למידה, עמלות הדרכה וכו'."
 
-#: modules/widgets/simple-payments/form.php:65
+#: modules/widgets/simple-payments/form.php:70
 msgid "What is this payment for?"
 msgstr "מדוע נדרש התשלום?"
 
-#: modules/widgets/simple-payments/form.php:30
+#: modules/widgets/simple-payments/form.php:34
 msgid "Edit Selected"
 msgstr "עריכת הפריטים הנבחרו"
 
-#: modules/widgets/simple-payments/form.php:25
+#: modules/widgets/simple-payments/form.php:29
 msgid "Looks like you don't have any products. You can create one using the Add New button below."
 msgstr "נראה שטרם הוספת מוצרים. אפשר ליצור מוצר באמצעות הכפתור 'הוספת חדש' למטה."
 
-#: modules/widgets/simple-payments/form.php:11
+#: modules/widgets/simple-payments/form.php:14
 msgid "Select a Simple Payment Button:"
 msgstr "בחר כפתור לתשלום פשוט:"
 
-#: modules/widgets/simple-payments/form.php:2
+#: modules/widgets/simple-payments/form.php:3
 msgid "Widget Title"
 msgstr "כותרת הווידג׳ט"
 
@@ -175,7 +215,7 @@ msgstr "אפשר למצוא מידע נוסף על מפות אתר מסוג XML 
 msgid "This is an XML Sitemap generated by <a href=\"%1$s\" rel=\"noopener noreferrer\" target=\"_blank\">Jetpack</a>, meant to be consumed by search engines like <a href=\"%2$s\" rel=\"noopener noreferrer\" target=\"_blank\">Google</a> or <a href=\"%3$s\" rel=\"noopener noreferrer\" target=\"_blank\">Bing</a>."
 msgstr "זוהי מפת אתר מסוג XML שנוצרה על ידי <a href=\"%1$s\" rel=\"noopener noreferrer\" target=\"_blank\">Jetpack</a>, והיא משמשת מנועי חיפוש כגון <a href=\"%2$s\" rel=\"noopener noreferrer\" target=\"_blank\">Google</a> או <a href=\"%3$s\" rel=\"noopener noreferrer\" target=\"_blank\">Bing</a>."
 
-#: modules/simple-payments/simple-payments.php:255
+#: modules/simple-payments/simple-payments.php:284
 msgctxt "noun: a quantity of goods or items purchased or sold"
 msgid "Order"
 msgstr "סדר"
@@ -219,10 +259,6 @@ msgstr "<a href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">מידע נ
 msgid "Get started today"
 msgstr "להתחיל עוד היום"
 
-#: class.jetpack-connection-banner.php:976
-msgid "Chat with us"
-msgstr "הצטרפות לצ'אט איתנו"
-
 #: class.jetpack-connection-banner.php:970
 msgid "If you need help at any step of the way we’re happy to chat with you!"
 msgstr "אם נדרשת לך עזרה בכל שלב, נשמח לשוחח!"
@@ -265,10 +301,6 @@ msgstr "קידום: פרסום האתר שלך בעזרת חיבורו לכל ה
 msgid "Marketing & Performance"
 msgstr "שיווק וביצועים"
 
-#: class.jetpack-connection-banner.php:885
-msgid "Publish: Post on the go from any device using the WordPress apps for iOS, Android, Windows, Linux, and OSX."
-msgstr "פרסום: פרסום מכל מקום ומכל מכשיר באמצעות האפליקציה של WordPress למערכות iOS, ‏Android, ‏Windows, ‏Linux ו-OSX."
-
 #: class.jetpack-connection-banner.php:879
 msgid "Optimize: Upload images and videos directly to our powerful servers that present your media with lightning speed."
 msgstr "שיפור: העלאת תמונות וסרטוני וידאו לשרתים העוצמתיים שלנו, שיציגו את המדיה שלך במהירות מרשימה."
@@ -290,6 +322,10 @@ msgstr "לא עכשיו"
 #: class.jetpack-connection-banner.php:853
 msgid "Hassle-free design, marketing, and security — all in one place."
 msgstr "עיצוב לא מסובך, שיווק ואבטחה - במקום אחד."
+
+#: class.jetpack-connection-banner.php:885
+msgid "Publish: Post on the go from any device using the WordPress apps for iOS, Android, Windows, Linux, and macOS."
+msgstr "פרסום: פרסום מכל מקום ומכל מכשיר באמצעות האפליקציה של WordPress למערכות iOS, ‏Android, ‏Windows, ‏Linux ו-macOS."
 
 #: class.jetpack-connection-banner.php:852
 msgid "The ideal way to experience WordPress"
@@ -350,7 +386,7 @@ msgstr "החיבור ל-Jetpack לא תקין."
 msgid "Jetpack connection status unknown."
 msgstr "מצב החיבור ל-Jetpack לא ידוע."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:894
+#: _inc/lib/class.core-rest-api-endpoints.php:905
 msgid "Could not confirm new owner."
 msgstr "לא ניתן לאשר את הבעלים החדש."
 
@@ -467,7 +503,7 @@ msgid "Configure related posts in the Customizer"
 msgstr "הגדרת הפוסטים הקשורים בכלי ההתאמה האישית"
 
 #: _inc/jetpack-strings.php:331 _inc/jetpack-strings.php:619
-#: _inc/lib/class.core-rest-api-endpoints.php:1720
+#: _inc/lib/class.core-rest-api-endpoints.php:1731
 #: modules/related-posts/jetpack-related-posts.php:387
 msgid "Highlight related content with a heading"
 msgstr "הדגשה של תוכן קשור באמצעות כותרת"
@@ -481,7 +517,7 @@ msgid "View backup history"
 msgstr "הצגה של היסטוריית הגיבויים"
 
 #: _inc/jetpack-strings.php:332 _inc/jetpack-strings.php:620
-#: _inc/lib/class.core-rest-api-endpoints.php:1727
+#: _inc/lib/class.core-rest-api-endpoints.php:1738
 #: modules/related-posts/jetpack-related-posts.php:389
 msgid "Show a thumbnail image where available"
 msgstr "הצגה של תמונה ממוזערת כשאפשר"
@@ -546,7 +582,8 @@ msgid "Privacy Policy Link"
 msgstr "קישור למדיניות הפרטיות"
 
 #. translators: %d: Post ID.
-#: modules/contact-form/grunion-contact-form.php:859
+#: modules/contact-form/grunion-contact-form.php:870
+#: modules/contact-form/grunion-contact-form.php:886
 msgid "Feedback ID %d could not be removed at this time."
 msgstr "לא ניתן להסיר את זיהוי המשוב %d כעת."
 
@@ -638,32 +675,32 @@ msgstr "לחיצה לשיתוף ב-Skype"
 
 #. translators: %1$s is a comma-separated list of services and accounts. Ex.
 #. Facebook (@jetpack), Twitter (@jetpack)
-#: modules/publicize/publicize.php:476
+#: modules/publicize/publicize.php:485
 msgid "Project published and sharing project on %1$s."
 msgstr "הפרויקט פורסם והוא משותף באמצעות %1$s."
 
 #. translators: %1$s is a comma-separated list of services and accounts. Ex.
 #. Facebook (@jetpack), Twitter (@jetpack)
-#: modules/publicize/publicize.php:468
+#: modules/publicize/publicize.php:477
 msgid "Post published, sending emails to subscribers and sharing post on %1$s."
 msgstr "הפוסט פורסם, הודעת האימייל נשלחת למנויים לעדכונים והפוסט משותף באמצעות %1$s."
 
 #. translators: %1$s is a comma-separated list of services and accounts. Ex.
 #. Facebook (@jetpack), Twitter (@jetpack)
-#: modules/publicize/publicize.php:459
+#: modules/publicize/publicize.php:468
 msgid "Post published and sharing on %1$s."
 msgstr "הפוסט פורסם והוא משותף באמצעות -%1$s."
 
 #. translators: Service name is %1$s, and account name is %2$s.
-#: modules/publicize/publicize.php:451
+#: modules/publicize/publicize.php:460
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: modules/publicize/publicize.php:433
+#: modules/publicize/publicize.php:442
 msgid "View project"
 msgstr "הצגת פרויקט"
 
-#: modules/publicize/publicize.php:430 modules/subscriptions.php:196
+#: modules/publicize/publicize.php:439 modules/subscriptions.php:196
 msgid "View post"
 msgstr "הצגגת פוסט"
 
@@ -698,8 +735,8 @@ msgid "Comment Form"
 msgstr "טופס תגובה"
 
 #: functions.global.php:121
-msgid "By clicking the <strong>Set up Jetpack</strong> button, you agree to our fascinating <a href=\"%s\" target=\"_blank\">Terms of Service</a> and to <a href=\"%s\" target=\"_blank\">share details</a> with WordPress.com"
-msgstr "לחיצה על הכפתור <strong>הגדרת Jetpack</strong> מהווה את הסכמתך <a href=\"%s\" target=\"_blank\">לתנאי השימוש</a> המרתקים שלנו <a href=\"%s\" target=\"_blank\">ולשיתוף המידע</a> עם WordPress.com"
+msgid "By clicking the <strong>Set up Jetpack</strong> button, you agree to our <a href=\"%s\" target=\"_blank\">Terms of Service</a> and to <a href=\"%s\" target=\"_blank\">share details</a> with WordPress.com."
+msgstr "לחיצה על הכפתור <strong>הגדרת Jetpack</strong> מהווה את הסכמתך <a href=\"%s\" target=\"_blank\">לתנאי השימוש</a> שלנו <a href=\"%s\" target=\"_blank\">ולשיתוף המידע</a> עם WordPress.com."
 
 #: class.jetpack-xmlrpc-server.php:289
 msgid "The required \"local_user\" parameter is missing."
@@ -735,7 +772,7 @@ msgstr "ארגומנט של אסימון שאינו ריק חייב לעבור."
 msgid "Please select a user to authorize via the --user global argument."
 msgstr "יש לבחור משתמש כדי לאשר באמצעות --הארגומנט הגלובלי למשתמשים."
 
-#: class.jetpack.php:4145
+#: class.jetpack.php:4150
 msgid "Could not activate %s"
 msgstr "לא ניתן היה להפעיל את %s"
 
@@ -1404,7 +1441,7 @@ msgstr "אתר אינטרנט: %1$s (כתובת IP: %2$s, %3$s)"
 msgid "New trackback on your post \"%s\""
 msgstr "הפניית טראקבק חדשה בפוסט \"%s\""
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2023
+#: _inc/lib/class.core-rest-api-endpoints.php:2034
 msgid "Primary language for the site."
 msgstr "השפה העיקרית של האתר."
 
@@ -2104,7 +2141,7 @@ msgstr "עמוד הבית"
 msgid "Onboarding failed to process: %s"
 msgstr "עיבוד ההקמה נכשל: %s"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2117
+#: _inc/lib/class.core-rest-api-endpoints.php:2128
 msgid "Not valid onboarding data."
 msgstr "לא נמצאו נתוני הקמה תקפים."
 
@@ -2112,9 +2149,17 @@ msgstr "לא נמצאו נתוני הקמה תקפים."
 msgid "With Jetpack Professional, you can create the perfect site with one of over 300 professionally-designed WordPress themes, including more than 200 premium themes. Customize your content with a variety of widgets, or add unlimited videos to your posts and pages -- displayed free of ads or watermarks."
 msgstr "בזכות התכנית המקצועית של Jetpack, אפשר ליצור את האתר המושלם עם מעל ל-300 ערכות עיצוב של WordPress שעוצבו על ידי אנשי מקצוע, כולל יותר ממאה ערכות פרימיום. באפשרותך להתאים אישית את התוכן שלך עם מגוון וידג'טים או להוסיף סרטוני וידאו ללא הגבלה לפוסטים ולעמודים שלך -- התוכן יוצר ללא פרסומות או סמני מים."
 
+#: _inc/jetpack-strings.php:709
+msgid "Thanks for choosing Jetpack Professional. Jetpack is now backing up your content in real-time, indexing your content for search, scanning for security threats, and granting access to premium themes."
+msgstr "תודה שבחרת בתוכנית המקצועית של Jetpack. כעת, השירות של Jetpack מגבה את התוכן שלך בזמן אמת, מוסיף את התוכן לאינדקס לצורך חיפוש, סורק את האתר לאיתור איומי אבטחה ומאפשר לך גישה לערכות פרימיום."
+
 #: _inc/jetpack-strings.php:714 _inc/jetpack-strings.php:723
 msgid "Growing your following is easy with your Professional plan, thanks to content sharing and scheduling, SEO tools, and built-in subscription options. You can monetize your site with a simple payment button and in-line ads, and monitor the success of your efforts by integrating with Google Analytics."
 msgstr "קל להגדיל את הקהל שעוקב אחריך בעזרת התוכנית המקצועית - בזכות אפשרויות לשיתוף תוכן, לתזמון, לכלי SEO ולמינויים מובנים. באפשרותך להרוויח כסף מאתר שלך בעזרת כפתור תשלומים פשוט ופרסומות שמשתלבות בפריסת העמוד ולעקוב אחרי ההצלחה שלך בעזרת שילוב עם הפילוח של Google Analytics."
+
+#: _inc/jetpack-strings.php:693
+msgid "Your Jetpack plan gives you everything you need to keep your hard work safe, including on-demand backups and malware scans with one-click restores and issue resolution. Your site will be fully protected against spam, malicious code, and brute force login attempts."
+msgstr "התכנית של Jetpack מעניק לך את כל שנדרש לאבטחת העבודה הקשה שלך, כולל גיבויים לפי דרישה וסריקות לאיתור תוכנות זדוניות, כמו גם שחזור בלחיצה אחת ומציאת פתרונות. האתר שלך מאובטח לגמרי מתגובות זבל, קודים זדוניים וניסיונות כניסה באמצעות ניחוש סיסמה."
 
 #: _inc/jetpack-strings.php:719
 msgid "Review SEO features"
@@ -2185,15 +2230,15 @@ msgstr "הצגה בפרויקטים יחידים"
 msgid "Learn more about Featured Images"
 msgstr "מידע נוסף על תמונות מרכזיות"
 
-#: modules/simple-payments/simple-payments.php:299
+#: modules/simple-payments/simple-payments.php:328
 msgid "Simple Payments products"
 msgstr "מוצרים בתשלום פשוט"
 
-#: modules/simple-payments/simple-payments.php:298
+#: modules/simple-payments/simple-payments.php:327
 msgid "Product"
 msgstr "מוצר"
 
-#: modules/simple-payments/simple-payments.php:256
+#: modules/simple-payments/simple-payments.php:285
 msgid "Simple Payments orders"
 msgstr "הזמנות בתשלום פשוט"
 
@@ -2523,23 +2568,23 @@ msgstr "אסימון הגישה חסר או שאינו תקף"
 msgid "Invalid token JSON: %s"
 msgstr "JSON האסימון לא תקף: %s"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1913
+#: _inc/lib/class.core-rest-api-endpoints.php:1924
 msgid "Display ads on archive pages?"
 msgstr "להציג פרסומות בעמוד הארכיון?"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1906
+#: _inc/lib/class.core-rest-api-endpoints.php:1917
 msgid "Display ads on pages?"
 msgstr "להציג פרסומות בעמודים?"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1899
+#: _inc/lib/class.core-rest-api-endpoints.php:1910
 msgid "Display ads on posts?"
 msgstr "להציג פרסומות בפוסטים?"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1892
+#: _inc/lib/class.core-rest-api-endpoints.php:1903
 msgid "Display ads on the front page?"
 msgstr "להציג פרסומות בעמוד הראשי?"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1885
+#: _inc/lib/class.core-rest-api-endpoints.php:1896
 msgid "Display second ad below post?"
 msgstr "להציג פרסומת שנייה מתחת לפוסט?"
 
@@ -2607,6 +2652,10 @@ msgstr "כוכבים"
 #: _inc/jetpack-strings.php:548
 msgid "Jupiter"
 msgstr "צדק"
+
+#: _inc/jetpack-strings.php:486
+msgid "By clicking the button below, you agree to our {{tosLink}}Terms of Service{{/tosLink}} and to {{shareDetailsLink}}share details{{/shareDetailsLink}} with WordPress.com."
+msgstr "לחיצה על הכפתור למטה מהווה את הסכמתך {{tosLink}}לתנאי השימוש{{/tosLink}} שלנו {{shareDetailsLink}}ולשיתוף המידע{{/shareDetailsLink}} עם WordPress.com."
 
 #: _inc/jetpack-strings.php:316
 msgid "Display ads below posts on"
@@ -3169,11 +3218,11 @@ msgstr "משתמש Akismet לא תקף"
 msgid "Akismet user status doesn't allow to update the key"
 msgstr "המצב של משתמש Akismet אינו מאפשר את עדכון המפתח"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2257
+#: _inc/lib/class.core-rest-api-endpoints.php:2268
 msgid "%s must be an alphanumeric string or a verification tag."
 msgstr "%s חייב להיות מחרוזת אלפא-נומרית או תגית אימות."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1373
+#: _inc/lib/class.core-rest-api-endpoints.php:1384
 msgid "Color scheme."
 msgstr "ערכת צבעים."
 
@@ -3249,6 +3298,11 @@ msgstr "שמירת הגדרות"
 msgctxt "Noun, a header for a preview block in a configuration screen."
 msgid "Preview"
 msgstr "תצוגה מקדימה"
+
+#: _inc/jetpack-strings.php:617
+msgctxt "A heading for a block of related posts."
+msgid "Related"
+msgstr "קשור"
 
 #: _inc/jetpack-strings.php:550 _inc/jetpack-strings.php:554
 #: _inc/jetpack-strings.php:558
@@ -3679,7 +3733,7 @@ msgstr "הצגת העוקבים שלך באימייל"
 msgid "Connect your user account to WordPress.com to view your email followers"
 msgstr "יש לחבר את חשבון המשתמש שלך ל-WordPress.com כדי להציג את המשתמשים שעוקבים אחר האתר שלך באמצעות אימייל"
 
-#: _inc/jetpack-strings.php:131 _inc/lib/class.core-rest-api-endpoints.php:1404
+#: _inc/jetpack-strings.php:131 _inc/lib/class.core-rest-api-endpoints.php:1415
 #: modules/widgets/eu-cookie-law/form.php:210
 msgid "Color scheme"
 msgstr "בחירת צבעים"
@@ -3806,17 +3860,13 @@ msgstr "אין נתונים סטטיסטיים"
 msgid "This field is for validation and should not be changed"
 msgstr "יש לאמת שדה זה ולא לשנותו"
 
-#: modules/publicize/publicize-jetpack.php:731
+#: modules/publicize/publicize-jetpack.php:691
 msgid "Publicize to my <strong>Tumblr blog</strong>:"
 msgstr "שיתוף אוטומטי ב<strong>בלוג שלי ב-Tumblr</strong>:"
 
-#: modules/publicize/publicize-jetpack.php:600
+#: modules/publicize/publicize-jetpack.php:577
 msgid "Publicize to my <strong>Facebook Page</strong>:"
 msgstr "שיתוף אוטומטי ב<strong>עמוד</strong>שלי בפייסבוק:"
-
-#: modules/publicize/publicize-jetpack.php:580
-msgid "Publicize to my <strong>Facebook Wall</strong>:"
-msgstr "שיתוף אוטומטי ב<strong>קיר </strong>שלי בפייסבוק:"
 
 #: modules/contact-form/grunion-contact-form.php:228
 msgid "Export CSV"
@@ -3826,7 +3876,7 @@ msgstr "ייצוא קובץ CSV"
 msgid "Copyright"
 msgstr "זכויות יוצרים"
 
-#: class.jetpack.php:5310
+#: class.jetpack.php:5315
 msgid "Unknown error registering your Jetpack site"
 msgstr "שגיאה לא ידועה אירעה במהלך ההרשמה לאתר Jetpack שלך"
 
@@ -3850,10 +3900,6 @@ msgstr "שירות חדש בחינם: הצגת תעריפי המשלוחים ש�
 msgid "New free service: Show USPS shipping rates on your store! Added bonus: print shipping labels without leaving WooCommerce."
 msgstr "שירות חדש בחינם: הצגת תעריפי המשלוחים של USPS עבור החנות שלך! הטבה נוספת: הדפסת תוויות משלוח ישירות ב-WooCommerce."
 
-#: _inc/jetpack-strings.php:580
-msgid "Currently in {{a}}Development Mode{{/a}} (some features are disabled) because: {{reasons/}}"
-msgstr "הפריט נמצא כרגע ב{{a}}מצב פיתוח{{/a}} (חלק מהתוכנות מושבתות) בגלל:"
-
 #: _inc/jetpack-strings.php:577
 msgid "{{li}}The jetpack_development_mode filter is active{{/li}}"
 msgstr "המסנן{{li}}jetpack_development_mode פעיל{{/li}}"
@@ -3870,13 +3916,17 @@ msgstr "{{li}}חסרה נקודה בכתובת URL של האתר שלך (לדו�
 msgid "Sorry, you are not allowed to preview drafts."
 msgstr "אין לך הרשאות לראות טיוטות."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1526
+#: _inc/lib/class.core-rest-api-endpoints.php:1537
 msgid "Use Markdown for posts."
 msgstr "הפעלת Markdown לפוסטים."
 
 #: modules/infinite-scroll.php:99
 msgid "Track each scroll load (7 posts by default) as a page view in Google Analytics"
 msgstr "מעקב אחר כל טעינת גלילה (עד 7 פוסטים כברירת מחדל) כצפיית עמוד ב-Google Analytics"
+
+#: _inc/jetpack-strings.php:580
+msgid "Currently in {{a}}Development Mode{{/a}} (some features are disabled) because: {{reasons/}}"
+msgstr "הפריט נמצא כרגע ב{{a}}מצב פיתוח{{/a}} (חלק מהתוכנות מושבתות) בגלל: {{reasons/}}"
 
 #: modules/module-headings.php:59
 msgctxt "Module Description"
@@ -3905,7 +3955,7 @@ msgstr "הפוסט לא נמצא"
 msgid "# of Tweets Shown (1 to 20):"
 msgstr "מספר הציוצים שהוצגו (1 עד 20):"
 
-#: modules/publicize/publicize-jetpack.php:189
+#: modules/publicize/publicize-jetpack.php:193
 msgid "Jetpack is not connected. Please connect Jetpack by visiting <a href='%s'>Settings</a>."
 msgstr "שירות Jetpack לא מחובר. לחיבור Jetpack, יש לגשת לאזור <a href='%s'>הגדרות</a>."
 
@@ -3941,7 +3991,7 @@ msgstr "הגדרת Google Analytics"
 msgid "Track website statistics with Google Analytics for a deeper understanding of your website visitors and customers."
 msgstr "מעקב אחר נתוני האתר בעזרת Google Analytics לצורך הבנה מעמיקה יותר של נושא המבקרים והלקוחות באתר."
 
-#: _inc/jetpack-strings.php:182 _inc/lib/class.core-rest-api-endpoints.php:1922
+#: _inc/jetpack-strings.php:182 _inc/lib/class.core-rest-api-endpoints.php:1933
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
@@ -4403,11 +4453,11 @@ msgctxt "Module Description"
 msgid "Display images and galleries in a gorgeous, full-screen browsing experience"
 msgstr "הצגת תמונות וגלריות במסך מלא לחוויית גלישה יפהפייה"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1871
+#: _inc/lib/class.core-rest-api-endpoints.php:1882
 msgid "Display an ad unit at the top of each page."
 msgstr "הצגה של יחידת פרסומת בחלק העליון של כל עמוד."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1878
+#: _inc/lib/class.core-rest-api-endpoints.php:1889
 msgid "Is site approved for WordAds?"
 msgstr "האם אתר מאושר ל-WordAds?"
 
@@ -4423,23 +4473,23 @@ msgstr "כדי להתחיל, יש ללחוץ על 'הוספת מדיה' בעור
 msgid "Professional Plan customers get access to advanced SEO tools."
 msgstr "לקוחות של תוכנית מקצועית מקבלים גישה לכלי SEO מתקדמים."
 
-#: class.jetpack.php:5642
+#: class.jetpack.php:5647
 msgid "The request is not signed correctly."
 msgstr "הבקשה נחתמה באופן שגוי."
 
-#: class.jetpack.php:5615
+#: class.jetpack.php:5620
 msgid "This Content-Type is not supported."
 msgstr "סוג תוכן זה אינו נתמך."
 
-#: class.jetpack.php:5596
+#: class.jetpack.php:5601
 msgid "This request method does not support body parameters."
 msgstr "שיטת בקשה זו אינה תומכת בפרמטרי גוף."
 
-#: class.jetpack.php:5588
+#: class.jetpack.php:5593
 msgid "This request method is not supported."
 msgstr "שיטת בקשה זו אינה נתמכת."
 
-#: class.jetpack.php:5226
+#: class.jetpack.php:5231
 msgid "PHP's XML extension is not available. Jetpack requires the XML extension to communicate with WordPress.com. Please contact your hosting provider to enable PHP's XML extension."
 msgstr "סיומת XML של PHP אינה זמינה. לפי Jetpack, נדרשת סיומת XML כדי ליצור תקשורת עם WordPress.com. יש לפנות לספקית האחסון שלך כדי לאפשר סיומות XML של PHP."
 
@@ -4536,6 +4586,10 @@ msgstr "אחסון סרטוני וידאו"
 #: _inc/jetpack-strings.php:163
 msgid "Earn income by allowing Jetpack to display high quality ads (powered by WordAds)."
 msgstr "ליצירת רווחים, מומלץ לאפשר ל-Jetpack להציג הודעות באיכות גבוהה (מופעל באמצעות WordAds)."
+
+#: _inc/jetpack-strings.php:202
+msgid "We support all Jetpack users, regardless of plan. But customers on a paid subscription enjoy priority support so that security issues are identified and fixed for you as soon as possible."
+msgstr "אנחנו תומכים בכל המשתמשים ב-Jetpack, ללא קשר לתוכנית. לקוחות עם רישום בתשלום לעדכונים נהנים מעדיפות בקבלת תמיכה, כך שאפשר לזהות ולתקן את בעיות האבטחה שלהם בהקדם האפשרי."
 
 #: _inc/jetpack-strings.php:164 _inc/jetpack-strings.php:325
 msgid "View your earnings"
@@ -4817,7 +4871,7 @@ msgstr "ערך לא תקף במטא-תיאור של SEO."
 msgid "SEO tools are not enabled for this site."
 msgstr "כלי SEO לא הופעלו עבור אתר זה."
 
-#: class.jetpack.php:6349
+#: class.jetpack.php:6354
 msgid "Cannot parse URL %s"
 msgstr "לא ניתן לזהות את כתובת ה-URL %s"
 
@@ -4847,6 +4901,14 @@ msgctxt "Module Name"
 msgid "SEO Tools"
 msgstr "כלי SEO"
 
+#: class.jetpack-idc.php:606
+msgid ""
+"No. <a href=\"%1$s\">%2$s</a> is a new and different website that's separate from\n"
+"\t\t\t\t\t<a href=\"%3$s\">%4$s</a>. It requires  a new connection to WordPress.com for new stats and subscribers."
+msgstr ""
+"לא. <a href=\"%1$s\">%2$s</a> הוא אתר חדש ושונה. הוא אינו קשור אל\n"
+"\t\t\t\t\t<a href=\"%3$s\">%4$s</a>. השימוש כרוך בחיבור חדש אל WordPress.com כדי לקבל נתונים סטטיסטיים ומנויים חדשים."
+
 #: class.jetpack-idc.php:591
 msgid "Migrate Stats &amp; Subscribers"
 msgstr "העברת נתונים סטטיסטיים ומנויים"
@@ -4870,6 +4932,22 @@ msgstr "טיפול בבעיה בחיבור Jetpack"
 #: class.jetpack-idc.php:495
 msgid "Confirm Safe Mode"
 msgstr "אישור 'מצב בטוח'"
+
+#: class.jetpack-idc.php:510
+msgid ""
+"If this is a separate and new website, or the new home of <a href=\"%1$s\">%2$s</a>,\n"
+"\t\t\t\t\twe recommend turning Safe Mode off, and re-establishing your connection to WordPress.com."
+msgstr ""
+"אם מדובר באתר אינטרנט חדש ונפרד או שמדובר בבית החדש של <a href=\"%1$s\">%2$s</a>,\n"
+"\t\t\t\t\tמומלץ לבטל 'מצב בטוח' וליצור מחדש את החיבור אל WordPress.com."
+
+#: class.jetpack-idc.php:473
+msgid ""
+"Is this website a temporary duplicate of <a href=\"%1$s\">%2$s</a> for the purposes\n"
+"\t\t\t\t\tof testing, staging or development? If so, we recommend keeping it in Safe Mode."
+msgstr ""
+"האם אתר אינטרנט זה הוא כפיל זמני של <a href=\"%1$s\">%2$s</a> לצורך\n"
+"\t\t\t\t\tבדיקה, הכנה או פיתוח? אם כן, אנו ממליצים להשאיר אותו ב'מצב בטוח'."
 
 #: class.jetpack-idc.php:426
 msgid "Jetpack has been placed into <a href=\"%1$s\">Safe mode</a> because we noticed this is an exact copy of <a href=\"%2$s\">%3$s</a>."
@@ -4906,6 +4984,14 @@ msgstr "יש להתחבר ל-WordPress.com כדי לצאת לדרך"
 #: class.jetpack-connection-banner.php:548
 msgid "Jetpack includes other features that help you customize your site including Custom CSS, Contact Forms, Galleries and Carousels, Notifications and Subscriptions, Configurable Widgets, and many more."
 msgstr "Jetpack כולל תכונות אחרות שיסייעו לך להתאים אישית את האתר, כולל CSS מותאם אישית, טופסי יצירת קשר, גלריות וקרוסלות, הודעות ורישומים לעדכונים, וידג'טים ניתנים להגדרה ועוד רבות אחרות."
+
+#: class.jetpack-idc.php:450
+msgid ""
+"Please confirm Safe Mode or fix the Jetpack connection. Select one of the options below or <a href=\"%1$s\">learn\n"
+"\t\t\t\t\tmore about Safe Mode</a>."
+msgstr ""
+"נא לאשר 'מצב בטוח' או לטפל בחיבור של Jetpack. יש לבחור באחת מהאפשרויות הבאות או <a href=\"%1$s\">לברר\n"
+"\t\t\t\t\tפרטים נוספים על 'מצב בטוח'</a>"
 
 #: class.jetpack-connection-banner.php:536
 msgid "More Jetpack features our users love"
@@ -5025,7 +5111,7 @@ msgstr "נתונים סטטיסטיים וכלי הפניית תעבורה"
 msgid "Site Security"
 msgstr "אבטחת אתרים"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2297
+#: _inc/lib/class.core-rest-api-endpoints.php:2308
 msgid "%s must be an array of post types."
 msgstr "%s חייב להיות מערך של סוגי פוסטים."
 
@@ -5057,19 +5143,19 @@ msgstr[1] "אפשרויות לא תקפות: %s."
 msgid "The requested Jetpack data updates were successful."
 msgstr "בוצעו בהצלחה עדכוני נתוני Jetpack המבוקשים."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1864
+#: _inc/lib/class.core-rest-api-endpoints.php:1875
 msgid "Yandex Site Verification"
 msgstr "אימות אתר באמצעות Yandex"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1106
+#: _inc/lib/class.core-rest-api-endpoints.php:1117
 msgid "Could not confirm migration."
 msgstr "לא ניתן לאשר את ההעברה."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1092
+#: _inc/lib/class.core-rest-api-endpoints.php:1103
 msgid "Could not delete sync error option."
 msgstr "לא ניתן למחוק אפשרות 'שגיאת סינכרון'."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1076
+#: _inc/lib/class.core-rest-api-endpoints.php:1087
 msgid "Could not confirm safe mode."
 msgstr "אי אפשר לאשר 'מצב בטוח'."
 
@@ -5520,63 +5606,63 @@ msgstr "האתר גובה בהצלחה לפני%s."
 msgid "Feature Info"
 msgstr "מידע על תכונות"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2326
+#: _inc/lib/class.core-rest-api-endpoints.php:2337
 msgid "%s must be an array with visible and hidden items."
 msgstr "%s חייב להיות מערך עם פריטים גלויים ונסתרים."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2335
-#: _inc/lib/class.core-rest-api-endpoints.php:2375
-#: _inc/lib/class.core-rest-api-endpoints.php:2403
+#: _inc/lib/class.core-rest-api-endpoints.php:2346
+#: _inc/lib/class.core-rest-api-endpoints.php:2386
+#: _inc/lib/class.core-rest-api-endpoints.php:2414
 msgid "Failed loading required dependency Sharing_Service."
 msgstr "נכשלה טעינת התלות הדרושה Sharing_Service."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2366
+#: _inc/lib/class.core-rest-api-endpoints.php:2377
 msgid "%s must be an array with sharing name, url and icon."
 msgstr "%s חייב להיות מערך עם שם שיתוף, כתובת אתר וסמל."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2381
+#: _inc/lib/class.core-rest-api-endpoints.php:2392
 msgid "%s needs sharing name, url and icon."
 msgstr "%s זקוק לשם שיתוף, כתובת אתר וסמל."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2399
+#: _inc/lib/class.core-rest-api-endpoints.php:2410
 msgid "%s must be a string prefixed with 'custom-' and followed by a numeric ID."
 msgstr "%s חייב להיות מחרוזת שלפניה מופיע 'cusom-' ואחריה זיהוי מספרי."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2409
+#: _inc/lib/class.core-rest-api-endpoints.php:2420
 msgid "%s is not a registered custom sharing service."
 msgstr "%s אינו שירות שיתוף מותאם אישית רשום."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2428
+#: _inc/lib/class.core-rest-api-endpoints.php:2439
 msgid "%s must be a Twitter username."
 msgstr "%s חייב להיות שם משתמש בטוויטר."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2446
+#: _inc/lib/class.core-rest-api-endpoints.php:2457
 msgid "%s must be a string."
 msgstr "%s חייב להיות מחרוזת."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2798
+#: _inc/lib/class.core-rest-api-endpoints.php:2809
 msgid "%s plugin need updating."
 msgid_plural "%s plugins need updating."
 msgstr[0] "תוסף %s זקוק לעדכון."
 msgstr[1] "התוספים %s זקוקים לעדכון."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2805
+#: _inc/lib/class.core-rest-api-endpoints.php:2816
 msgid "Could not check updates for plugins on this site."
 msgstr "אי אפשר לבדוק עדכונים לתוספים באתר זה."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2864
+#: _inc/lib/class.core-rest-api-endpoints.php:2875
 msgid "Unable to list plugins."
 msgstr "אין אפשרות לפרט תוספים."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2885
+#: _inc/lib/class.core-rest-api-endpoints.php:2896
 msgid "This site has no plugins."
 msgstr "לאתר זה אין תוספים."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2891
+#: _inc/lib/class.core-rest-api-endpoints.php:2902
 msgid "Plugin %s is not installed."
 msgstr "התוסף %s אינו מותקן."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2900
+#: _inc/lib/class.core-rest-api-endpoints.php:2911
 msgid "Plugin found."
 msgstr "נמצא תוסף."
 
@@ -5601,7 +5687,7 @@ msgstr "לא ניתן היה להפעיל את מודול Jetpack שביקשת."
 msgid "The requested Jetpack module was already inactive."
 msgstr "מודול Jetpack שביקשת כבר היה לא פעיל."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2792
+#: _inc/lib/class.core-rest-api-endpoints.php:2803
 msgid "All plugins are up-to-date. Keep up the good work!"
 msgstr "כל התוספים מעודכנים. כל הכבוד, אנחנו רוצים עוד!"
 
@@ -5614,7 +5700,7 @@ msgstr "%1$s ו-%2$s"
 
 #. Translators: placeholder 1 is a parameter holding the services passed to
 #. endpoint, placeholder 2 is a list of all Jetpack Sharing services
-#: _inc/lib/class.core-rest-api-endpoints.php:2347
+#: _inc/lib/class.core-rest-api-endpoints.php:2358
 msgid "%1$s visible and hidden items must be a list of %2$s."
 msgstr "%1$s פריטים גלויים ונסתרים חייבים להיות רשימה של %2$s"
 
@@ -5673,190 +5759,190 @@ msgstr "אין אפשרות לנתק את האתר. יש לנסות שנית."
 msgid "Unable to build the connect URL.  Please reload the page and try again."
 msgstr "אין אפשרות לבנות את כתובת ה-URL להתחברות. יש לטעון מחדש את העמוד ולנסות שוב."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:923
+#: _inc/lib/class.core-rest-api-endpoints.php:934
 msgid "Was not able to unlink the user.  Please try again."
 msgstr "אין אפשרות לבטל את קישור המשתמש. יש לנסות שנית."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1050
+#: _inc/lib/class.core-rest-api-endpoints.php:1061
 msgid "Failed fetching site data. Try again later."
 msgstr "נכשלה השגת נתוני האתר. יש לנסות שוב מאוחר יותר."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1044
+#: _inc/lib/class.core-rest-api-endpoints.php:1055
 msgid "Site data correctly received."
 msgstr "נתוני האתר התקבלו בהצלחה."
 
 #: _inc/lib/class.core-rest-api-endpoints.php:767
-#: _inc/lib/class.core-rest-api-endpoints.php:1054
+#: _inc/lib/class.core-rest-api-endpoints.php:1065
 msgid "The ID of this site does not exist."
 msgstr "זיהוי האתר אינו קיים."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1170
+#: _inc/lib/class.core-rest-api-endpoints.php:1181
 msgid "Jetpack options reset."
 msgstr "איפוס אפשרויות Jetpack."
 
 #: _inc/lib/class.core-rest-api-endpoints.php:790
 #: _inc/lib/class.core-rest-api-endpoints.php:854
-#: _inc/lib/class.core-rest-api-endpoints.php:912
-#: _inc/lib/class.core-rest-api-endpoints.php:1143
-#: _inc/lib/class.core-rest-api-endpoints.php:1184
+#: _inc/lib/class.core-rest-api-endpoints.php:923
+#: _inc/lib/class.core-rest-api-endpoints.php:1154
+#: _inc/lib/class.core-rest-api-endpoints.php:1195
 msgid "Invalid Parameter"
 msgstr "פרמטר לא תקף"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1188
+#: _inc/lib/class.core-rest-api-endpoints.php:1199
 msgid "Missing parameter \"type\"."
 msgstr "חסר פרמטר \"סוג\"."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1296
+#: _inc/lib/class.core-rest-api-endpoints.php:1307
 msgid "Jumpstart done."
 msgstr "בוצעה זריקת מרץ (Jumpstart)."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1301
+#: _inc/lib/class.core-rest-api-endpoints.php:1312
 msgid "Jumpstart failed activating this module: %s."
 msgid_plural "Jumpstart failed activating these modules: %s."
 msgstr[0] "'זריקת המרץ' נכשלה בהפעלת מודול זה: %s."
 msgstr[1] "'זריקת מרץ' נכשלה בהפעלת המודולים הבאים: %s."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1320
+#: _inc/lib/class.core-rest-api-endpoints.php:1331
 msgid "Jumpstart dismissed."
 msgstr "זריקת מרץ בוטלה."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1323
+#: _inc/lib/class.core-rest-api-endpoints.php:1334
 msgid "Jumpstart could not be dismissed."
 msgstr "לא ניתן לבטל את זריקת המרץ."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1330
+#: _inc/lib/class.core-rest-api-endpoints.php:1341
 msgid "Nothing to dismiss. This was not a new connection."
 msgstr "אין מה לבטל. זו לא הייתה התחברות חדשה."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1423
+#: _inc/lib/class.core-rest-api-endpoints.php:1434
 msgid "Enable or disable Jetpack portfolio post type."
 msgstr "הפעלה או השבתה של סוג תוכן תיק העבודות של Jetpack."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1430
+#: _inc/lib/class.core-rest-api-endpoints.php:1441
 msgid "Number of entries to show at most in Portfolio pages."
 msgstr "מספר רשומות המרבי שיוצג בעמודי תיקי עבודות."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1437
+#: _inc/lib/class.core-rest-api-endpoints.php:1448
 msgid "Enable or disable Jetpack testimonial post type."
 msgstr "הפעלה או השבתה של סוג תוכן של המלצת Jetpack."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1444
+#: _inc/lib/class.core-rest-api-endpoints.php:1455
 msgid "Number of entries to show at most in Testimonial pages."
 msgstr "מספר הרשומות המרבי שיוצג בעמודי המלצות."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1470
+#: _inc/lib/class.core-rest-api-endpoints.php:1481
 msgid "Enabled"
 msgstr "מופעל"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1471
+#: _inc/lib/class.core-rest-api-endpoints.php:1482
 msgid "Disabled"
 msgstr "לא מופעל"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1578
+#: _inc/lib/class.core-rest-api-endpoints.php:1589
 msgid "Create Post by Email address"
 msgstr "יצירת פוסט לפי כתובת אימייל"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1579
+#: _inc/lib/class.core-rest-api-endpoints.php:1590
 msgid "Regenerate Post by Email address"
 msgstr "יצירה מחדש של פוסט לפי כתובת אימייל"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1580
+#: _inc/lib/class.core-rest-api-endpoints.php:1591
 msgid "Delete Post by Email address"
 msgstr "מחיקת פוסט לפי כתובת אימייל"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1588
+#: _inc/lib/class.core-rest-api-endpoints.php:1599
 msgid "Protect API key"
 msgstr "הגנה על מפתח API"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1595
+#: _inc/lib/class.core-rest-api-endpoints.php:1606
 msgid "Protect global whitelist"
 msgstr "הגנה על רשימת היתרים כללית"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1605
+#: _inc/lib/class.core-rest-api-endpoints.php:1616
 msgid "Enabled Services and those hidden behind a button"
 msgstr "שירותים פעילים ואלה שמוסתרים מאחורי כפתור"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1615
+#: _inc/lib/class.core-rest-api-endpoints.php:1626
 msgid "Button Style"
 msgstr "סגנון הכפתור"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1634
+#: _inc/lib/class.core-rest-api-endpoints.php:1645
 msgid "Sharing Label"
 msgstr "תווית שיתוף"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1642
+#: _inc/lib/class.core-rest-api-endpoints.php:1653
 msgid "Views where buttons are shown"
 msgstr "צפיות כאשר מוצגים כפתורים"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1667
+#: _inc/lib/class.core-rest-api-endpoints.php:1678
 msgid "Custom sharing services added by user."
 msgstr "שירותי שיתוף מותאמים אישית שנוספו על ידי המשתמש."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1679
+#: _inc/lib/class.core-rest-api-endpoints.php:1690
 msgid "Delete custom sharing service."
 msgstr "מחיקת שירות שיתוף מותאם אישית."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1736
+#: _inc/lib/class.core-rest-api-endpoints.php:1747
 msgid "Proofread when a post or page is first published."
 msgstr "הגהה כאשר פוסט או עמוד מתפרסמים לראשונה."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1743
+#: _inc/lib/class.core-rest-api-endpoints.php:1754
 msgid "Proofread when a post or page is updated."
 msgstr "הגהה כאשר פוסט או עמוד מתעדכנים."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1827
+#: _inc/lib/class.core-rest-api-endpoints.php:1838
 msgid "Add Phrase to be ignored"
 msgstr "הוספת צירוף מילים שיש להתעלם ממנו"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1834
+#: _inc/lib/class.core-rest-api-endpoints.php:1845
 msgid "Remove Phrase from being ignored"
 msgstr "הסרת צירוף מילים מרשימה שיש להתעלם ממנה"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1843
+#: _inc/lib/class.core-rest-api-endpoints.php:1854
 msgid "Google Search Console"
 msgstr "Google Search Console"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1850
+#: _inc/lib/class.core-rest-api-endpoints.php:1861
 msgid "Bing Webmaster Center"
 msgstr "Bing Webmaster Center"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1857
+#: _inc/lib/class.core-rest-api-endpoints.php:1868
 msgid "Pinterest Site Verification"
 msgstr "Pinterest Site Verification"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1959
+#: _inc/lib/class.core-rest-api-endpoints.php:1970
 msgid "Blog ID."
 msgstr "Blog ID."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1966
+#: _inc/lib/class.core-rest-api-endpoints.php:1977
 msgid "Do not track."
 msgstr "לא למעקב."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1980
+#: _inc/lib/class.core-rest-api-endpoints.php:1991
 msgid "Version."
 msgstr "גרסה."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2147
+#: _inc/lib/class.core-rest-api-endpoints.php:2158
 msgid "%s must be true, false, 0 or 1."
 msgstr "%s חייב להיות true, ‏false, ‏0 או 1."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2165
+#: _inc/lib/class.core-rest-api-endpoints.php:2176
 msgid "%s must be a positive integer."
 msgstr "%s חייב להיות מספר שלם חיובי."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2184
+#: _inc/lib/class.core-rest-api-endpoints.php:2195
 msgid "%s not recognized"
 msgstr "%s לא מוכר"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2214
+#: _inc/lib/class.core-rest-api-endpoints.php:2225
 msgid "%s must be an array"
 msgstr "%s חייב להיות מערך"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2220
+#: _inc/lib/class.core-rest-api-endpoints.php:2231
 msgid "%s must be a list of valid modules"
 msgstr "%s חייב להיות רשימה של מודולים תקפים"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:2239
+#: _inc/lib/class.core-rest-api-endpoints.php:2250
 msgid "%s must be an alphanumeric string."
 msgstr "%s חייב להיות מחרוזת אלפא-נומרית."
 
@@ -5866,18 +5952,18 @@ msgstr "%s חייב להיות מחרוזת אלפא-נומרית."
 #. Translators: first variable is the name of a parameter passed to endpoint
 #. holding the post type where Sharing will be displayed, the second is a list
 #. of post types where Sharing can be displayed
-#: _inc/lib/class.core-rest-api-endpoints.php:2277
-#: _inc/lib/class.core-rest-api-endpoints.php:2302
+#: _inc/lib/class.core-rest-api-endpoints.php:2288
+#: _inc/lib/class.core-rest-api-endpoints.php:2313
 msgid "%1$s must be %2$s."
 msgstr "%1$s חייב להיות %2$s."
 
 #. Translators: first variable is the parameter passed to endpoint that holds
 #. the list item, the second is a list of admitted values.
-#: _inc/lib/class.core-rest-api-endpoints.php:2194
+#: _inc/lib/class.core-rest-api-endpoints.php:2205
 msgid "%1$s must be one of %2$s"
 msgstr "%1$s חייבים להיות אחד מתוך %2$s"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1510
+#: _inc/lib/class.core-rest-api-endpoints.php:1521
 msgid "Send email notification when someone likes a post"
 msgstr "שליחת הודעה באימייל כאשר מישהו מסמן לייק על פוסט"
 
@@ -6021,7 +6107,7 @@ msgctxt "verb"
 msgid "Copy"
 msgstr "העתק"
 
-#: _inc/jetpack-strings.php:388 _inc/lib/class.core-rest-api-endpoints.php:1757
+#: _inc/jetpack-strings.php:388 _inc/lib/class.core-rest-api-endpoints.php:1768
 msgid "Clichés"
 msgstr "קלישאות"
 
@@ -6324,7 +6410,7 @@ msgstr "{{a}}יש להפעיל את Protect{{/a}} כדי לשמור את האת�
 
 #: _inc/jetpack-strings.php:91
 msgid "{{a}}Activate{{/a}} to enhance the performance and speed of your images."
-msgstr "{{a}}הפעלתPhoton{{/a}} לשיפור הביצועים והמהירות של התמונות שלך."
+msgstr "{{a}}הפעלה{{/a}} לשיפור הביצועים והמהירות של התמונות שלך."
 
 #: _inc/jetpack-strings.php:55
 msgid "For state-of-the-art spam defense, please {{a}}activate Akismet{{/a}}."
@@ -6450,6 +6536,10 @@ msgstr "כדי לגבות את האתר שלך כולו באופן אוטומט�
 #: _inc/jetpack-strings.php:56
 msgid "Invalid key"
 msgstr "מפתח לא תקף"
+
+#: _inc/jetpack-strings.php:86
+msgid "{{a}}Activate Monitor{{/a}} to receive email notifications if your site goes down."
+msgstr "{{a}}יש להפעיל מוניטור{{/a}} כדי לקבל הודעות אימייל אם האתר שלך קורס."
 
 #: _inc/jetpack-strings.php:11 _inc/jetpack-strings.php:647
 #: _inc/jetpack-strings.php:653
@@ -6630,63 +6720,63 @@ msgid "View Advanced Debug Results"
 msgstr "הצגת תוצאות איתור באגים מתקדמות"
 
 #: class.jetpack-connection-banner.php:174
-#: class.jetpack-connection-banner.php:592 class.jetpack.php:3943
+#: class.jetpack-connection-banner.php:592 class.jetpack.php:3948
 msgid "Dismiss this notice"
 msgstr "התעלמות מהודעה זו"
 
-#: class.jetpack.php:3945
+#: class.jetpack.php:3950
 msgid "Jetpack Centralized Site Management"
 msgstr "ניהול אתרים מרכזי של Jetpack"
 
-#: class.jetpack.php:3946
+#: class.jetpack.php:3951
 msgid "Manage multiple Jetpack enabled sites from one single dashboard at wordpress.com. Allows all existing, connected Administrators to modify your site."
 msgstr "ניתן לנהל אתרים מרובים המותאמים ל-Jetpack מלוח בקרה יחיד ב-WordPress.com. מאפשר למנהלי מערכת קיימים ומחוברים לשנות את האתר שלך."
 
-#: class.jetpack.php:3948
+#: class.jetpack.php:3953
 msgid "Activate Jetpack Manage"
 msgstr "הפעלת Jetpack Manage"
 
-#: class.jetpack.php:3949
+#: class.jetpack.php:3954
 msgid "Learn more about Jetpack Manage on Jetpack.com"
 msgstr "מידע נוסף על Jetpack Manage ב-Jetpack.com"
 
-#: class.jetpack.php:4997
+#: class.jetpack.php:5002
 msgid "JETPACK_CLIENT__HTTPS is set to NEVER"
 msgstr "JETPACK_CLIENT__HTTPS מוגדר ל-NEVER (לעולם לא)"
 
-#: class.jetpack.php:5010 class.jetpack.php:5015
+#: class.jetpack.php:5015 class.jetpack.php:5020
 msgid "WordPress reports no SSL support"
 msgstr "WordPress מדווח שאין תמיכה של SSL"
 
-#: class.jetpack.php:5018
+#: class.jetpack.php:5023
 msgid "Response was not OK: "
 msgstr "התשובה לא הייתה OK (אישור): "
 
-#: class.jetpack.php:5042
+#: class.jetpack.php:5047
 msgid "Outbound HTTPS not working"
 msgstr "HTTPS יוצא לא פועל"
 
-#: class.jetpack.php:5043
+#: class.jetpack.php:5048
 msgid "Your site could not connect to WordPress.com via HTTPS. This could be due to any number of reasons, including faulty SSL certificates, misconfigured or missing SSL libraries, or network issues."
 msgstr "האתר שלך לא הצליח להתחבר אל WordPress.com דרך HTTPS. הבעיה עשויה לנבוע בשל מספר סיבות, כולל אישורי SSL לא תקינים, ספריות SSL חסרות או בעלות תצורה פגומה, או בעיות ברשת."
 
-#: class.jetpack.php:5045
+#: class.jetpack.php:5050
 msgid "Jetpack will re-test for HTTPS support once a day, but you can click here to try again immediately: "
 msgstr "Jetpack יבדוק מחדש את תמיכת HTTPS פעם ביום, אך אפשר ללחוץ כאן כדי לנסות שוב באופן מיידי: "
 
-#: class.jetpack.php:5046 class.jetpack.php:5072
+#: class.jetpack.php:5051 class.jetpack.php:5077
 msgid "Try again"
 msgstr "לנסות שוב"
 
-#: class.jetpack.php:5050
+#: class.jetpack.php:5055
 msgid "For more help, try our <a href=\"%1$s\">connection debugger</a> or <a href=\"%2$s\" target=\"_blank\">troubleshooting tips</a>."
 msgstr "לקבלת עזרה נוספת, יש לנסות את <a href=\"%1$s\">מאתר בעיות החיבור</a> או<a href=\"%2$s\" target=\"_blank\">את העצות לפתרון בעיות</a> שלנו."
 
-#: class.jetpack.php:5063
+#: class.jetpack.php:5068
 msgid "Checking"
 msgstr "בודק"
 
-#: class.jetpack.php:7075
+#: class.jetpack.php:7080
 msgid "This user is linked and ready to fly with Jetpack."
 msgstr "משתמש זה מקושר ומוכן לעוף עם Jetpack."
 
@@ -6861,10 +6951,6 @@ msgstr "פקודת מקרו ל-VideoPress"
 msgid "Fill out my Wufoo form!"
 msgstr "מילוי טופס ה-Wufoo שלי!"
 
-#: class.jetpack-debugger.php:267
-msgid "Some themes and plugins have <a href=\"%1$s\" target=\"_blank\">known conflicts</a> with Jetpack – check the <a href=\"%2$s\" target=\"_blank\">list</a>. (You can also browse the <a href=\"%3$s\" target=\"_blank\">Jetpack support pages</a> or <a href=\"%4$s\" target=\"_blank\">Jetpack support forum</a> to see if others have experienced and solved the problem.)"
-msgstr "לחלק מערכות העיצוב והתוספים יש <a href=\"%1$s\" target=\"_blank\">התנגשויות ידועות</a> עם Jetpack – ניתן לעיין ב<a href=\"%2$s\" target=\"_blank\">רשימה</a>. (אפשר גם לעיין ב<a href=\"%3$s\" target=\"_blank\">עמודי התמיכה של Jetpack</a> או ב<a href=\"%4$s\" target=\"_blank\">פורום התמיכה של Jetpack</a> כדי לבדוק אם אנשים אחרים נתקלו בבעיה הזו ופתרו אותה)."
-
 #: _inc/jetpack-strings.php:587
 msgid "You need to stay logged in to your WordPress blog while you authorize Jetpack."
 msgstr "בלוג WordPress צריך להישאר מחובר בזמן אישור Jetpack."
@@ -6876,6 +6962,10 @@ msgstr "הייתה לנו בעיה בחיבור Jetpack; יש לכבות ולה�
 #: _inc/jetpack-strings.php:589
 msgid "There was an issue connecting your Jetpack. Please click \"Connect to WordPress.com\" again."
 msgstr "אירעה בעיה בחיבור Jetpack עבורך. יש ללחוץ שוב על 'התחברות ל-WordPress.com'."
+
+#: class.jetpack-debugger.php:267
+msgid "Some themes and plugins have <a href=\"%1$s\" target=\"_blank\">known conflicts</a> with Jetpack – check the <a href=\"%2$s\" target=\"_blank\">list</a>. (You can also browse the <a href=\"%3$s\" target=\"_blank\">Jetpack support pages</a> or <a href=\"%4$s\" target=\"_blank\">Jetpack support forum</a> to see if others have experienced and solved the problem.)"
+msgstr "לחלק מערכות העיצוב והתוספים יש <a href=\"%1$s\" target=\"_blank\">התנגשויות ידועות</a> עם Jetpack – ניתן לעיין ב<a href=\"%2$s\" target=\"_blank\">רשימה</a>. (אפשר גם לעיין ב<a href=\"%3$s\" target=\"_blank\">עמודי התמיכה של Jetpack</a> או ב<a href=\"%4$s\" target=\"_blank\">פורום התמיכה של Jetpack</a> כדי לבדוק אם אנשים אחרים נתקלו בבעיה הזו ופתרו אותה)."
 
 #: _inc/jetpack-strings.php:414
 msgid "Images"
@@ -6894,7 +6984,7 @@ msgid "Order Top Posts &amp; Pages By:"
 msgstr "סידור פוסטים ועמודים מובילים לפי:"
 
 #. translators: %s is a URL
-#: class.jetpack.php:1663
+#: class.jetpack.php:1668
 msgid "You are running Jetpack on a <a href=\"%s\" target=\"_blank\">staging server</a>."
 msgstr "מופעל אצלך Jetpack ב<a href=\"%s\" target=\"_blank\">שרת לאחסון זמני</a>."
 
@@ -7008,7 +7098,7 @@ msgid "If this solves the problem, something in your theme is probably broken �
 msgstr "אם הבעיה נפתרה, כנראה שיש בעיה בערכת העיצוב שלך - כדאי לעדכן את יוצר ערכת העיצוב."
 
 #. translators: %s is the name of a form field
-#: modules/contact-form/grunion-contact-form.php:2726
+#: modules/contact-form/grunion-contact-form.php:2753
 msgid "%s requires at least one selection"
 msgstr "%s דורש לפחות בחירה אחת"
 
@@ -7037,7 +7127,7 @@ msgstr "<span>מחבר:</span> <a href=\"%1$s\">%2$s</a>"
 msgid "All pages"
 msgstr "כל העמודים"
 
-#: modules/comments/comments.php:481
+#: modules/comments/comments.php:483
 msgid "Comments are not allowed."
 msgstr "תגובות אינן מותרות."
 
@@ -7291,7 +7381,7 @@ msgstr "ג'טפק הופעל רשתית והודעות לא יכולות להי�
 #: _inc/jetpack-strings.php:132 _inc/jetpack-strings.php:135
 #: _inc/jetpack-strings.php:137 _inc/jetpack-strings.php:213
 #: _inc/jetpack-strings.php:444 _inc/jetpack-strings.php:672
-#: _inc/jetpack-strings.php:673 class.jetpack.php:3949
+#: _inc/jetpack-strings.php:673 class.jetpack.php:3954
 msgid "Learn more"
 msgstr "למד עוד"
 
@@ -7343,9 +7433,9 @@ msgstr "התחל לעבוד עם רשת אתרים של Jetpack"
 msgid "Have feedback on Jetpack?"
 msgstr "יש לך משוב על Jetpack?"
 
-#. #-#-#-#-#  jetpack-code.pot (Jetpack by WordPress.com 6.3.2)  #-#-#-#-#
+#. #-#-#-#-#  jetpack-code.pot (Jetpack by WordPress.com 6.4.1)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  jetpack-code.pot (Jetpack by WordPress.com 6.3.2)  #-#-#-#-#
+#. #-#-#-#-#  jetpack-code.pot (Jetpack by WordPress.com 6.4.1)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://jetpack.com"
 msgstr "https://jetpack.com"
@@ -7862,7 +7952,7 @@ msgid "Title:"
 msgstr "כותרת:"
 
 #: modules/widgets/top-posts.php:36 modules/widgets/top-posts.php:43
-#: modules/widgets/top-posts.php:466
+#: modules/widgets/top-posts.php:484
 msgid "Top Posts &amp; Pages"
 msgstr "הרשומות והעמודים הנצפים ביותר"
 
@@ -8065,7 +8155,7 @@ msgstr "טקסט לקבלת דוא\"ל על תגובות"
 msgid "Could not obtain a VideoPress upload token. Please try again later."
 msgstr "לא הצלחתי לקבל טוקן העלאה של VideoPress. נסו שוב מאוחר יותר."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1949 modules/stats.php:905
+#: _inc/lib/class.core-rest-api-endpoints.php:1960 modules/stats.php:905
 msgid "Count the page views of registered users who are logged in."
 msgstr "מנה את הצפיות באתר של משתמשים רשומים ומחוברים."
 
@@ -8073,11 +8163,11 @@ msgstr "מנה את הצפיות באתר של משתמשים רשומים ומ�
 msgid "Daily archives"
 msgstr "ארכיונים יומיים"
 
-#: modules/theme-tools/site-logo/inc/class-site-logo.php:94
+#: modules/theme-tools/site-logo/inc/class-site-logo.php:91
 msgid "Display Header Text"
 msgstr "הצג טקסט כותרת"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1453
+#: _inc/lib/class.core-rest-api-endpoints.php:1464
 #: modules/tiled-gallery/tiled-gallery.php:251
 msgid "Display all your gallery pictures in a cool mosaic."
 msgstr "הצג את כל תמונות הגלריה שלך בפסיפס מגניב."
@@ -8132,7 +8222,7 @@ msgstr "הגדרות עוקב"
 msgid "Front page"
 msgstr "עמוד ראשי"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1973 modules/stats.php:916
+#: _inc/lib/class.core-rest-api-endpoints.php:1984 modules/stats.php:916
 msgid "Hide the stats smiley face image."
 msgstr "הסתר את תמונת הסמיילי של הסטטיסטיקה."
 
@@ -8188,7 +8278,7 @@ msgstr "מחובר למערכת"
 msgid "Logged Out"
 msgstr "לא מחובר"
 
-#: modules/theme-tools/site-logo/inc/class-site-logo.php:116
+#: modules/theme-tools/site-logo/inc/class-site-logo.php:113
 msgid "Logo"
 msgstr "לוגו"
 
@@ -8241,7 +8331,7 @@ msgstr "עמוד רשומות"
 msgid "Publisher limits playback of video embeds."
 msgstr "היוצר מגביל את ההפעלה של הטמעות וידאו."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1931 modules/stats.php:902
+#: _inc/lib/class.core-rest-api-endpoints.php:1942 modules/stats.php:902
 msgid "Put a chart showing 48 hours of views in the admin bar."
 msgstr "הצג בסרגל הניהול תרשים המציג 48 שעות של צפיות."
 
@@ -8261,7 +8351,7 @@ msgstr "נראות הדוחות"
 msgid "Search results"
 msgstr "תוצאות חיפוש"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1938 modules/stats.php:919
+#: _inc/lib/class.core-rest-api-endpoints.php:1949 modules/stats.php:919
 msgid "Select the roles that will be able to view stats reports."
 msgstr "בחר את התפקידים שיוכלו לצפות בדוחות הסטטיסטיקה."
 
@@ -8269,12 +8359,12 @@ msgstr "בחר את התפקידים שיוכלו לצפות בדוחות הסט
 msgid "Set as logo"
 msgstr "הגדרה כלוגו"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1704
+#: _inc/lib/class.core-rest-api-endpoints.php:1715
 #: modules/subscriptions.php:358
 msgid "Show a <em>'follow blog'</em> option in the comment form"
 msgstr "הצג אפשרות <em>'עקוב אחר הבלוג'</em> בטופס התגובה"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1711
+#: _inc/lib/class.core-rest-api-endpoints.php:1722
 #: modules/subscriptions.php:373
 msgid "Show a <em>'follow comments'</em> option in the comment form"
 msgstr "הצג <em> עקבו אחר התגובות </em> בטופס התגובות"
@@ -8293,13 +8383,9 @@ msgid_plural "Show total number of subscribers? (%s subscribers)"
 msgstr[0] "האם להציג את מספר המנויים? (מנוי אחד)"
 msgstr[1] "האם להציג את מספר המנויים? (%s מנויים)"
 
-#: modules/theme-tools/site-logo/inc/class-site-logo.php:256
+#: modules/theme-tools/site-logo/inc/class-site-logo.php:253
 msgid "Site Logo"
 msgstr "לוגו האתר"
-
-#: modules/theme-tools/site-logo/inc/class-site-logo.php:83
-msgid "Site Title, Tagline, and Logo"
-msgstr "שם האתר, תיאור קצר ולוגו"
 
 #: modules/stats.php:915
 msgid "Smiley"
@@ -8599,7 +8685,7 @@ msgstr "סגור"
 msgid "Create Share Button"
 msgstr "צור לחצן שיתוף"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1660
+#: _inc/lib/class.core-rest-api-endpoints.php:1671
 #: modules/sharedaddy/sharedaddy.php:246
 msgid "Disable CSS and JS"
 msgstr "ביטול CSS וג'אווה-סקריפט"
@@ -8636,7 +8722,7 @@ msgstr "Google"
 msgid "Icon"
 msgstr "צלמית (אייקון)"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1625
+#: _inc/lib/class.core-rest-api-endpoints.php:1636
 #: modules/sharedaddy/sharing.php:358
 msgid "Icon + text"
 msgstr "צלמית (אייקון) + טקסט"
@@ -8645,7 +8731,7 @@ msgstr "צלמית (אייקון) + טקסט"
 msgid "Icon URL"
 msgstr "צלמית (אייקון) URL"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1626
+#: _inc/lib/class.core-rest-api-endpoints.php:1637
 #: modules/sharedaddy/sharing.php:359
 msgid "Icon only"
 msgstr "צלמית (אייקון) בלבד"
@@ -8666,7 +8752,7 @@ msgstr "LinkedIn"
 msgid "Live Preview"
 msgstr "תצוגה מקדימה"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1695 modules/sso.php:293
+#: _inc/lib/class.core-rest-api-endpoints.php:1706 modules/sso.php:293
 msgid "Match by Email"
 msgstr "התאמה דרך דואר אלקטרוני"
 
@@ -8675,7 +8761,7 @@ msgstr "התאמה דרך דואר אלקטרוני"
 msgid "More"
 msgstr "עוד"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1628
+#: _inc/lib/class.core-rest-api-endpoints.php:1639
 #: modules/sharedaddy/sharing.php:361
 msgid "Official buttons"
 msgstr "לחצנים רשמיים"
@@ -8709,7 +8795,7 @@ msgstr "Reddit"
 msgid "Remove Service"
 msgstr "הסר שירות"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1688 modules/sso.php:263
+#: _inc/lib/class.core-rest-api-endpoints.php:1699 modules/sso.php:263
 msgid "Require Two-Step Authentication"
 msgstr "דרשו זיהוי בשני שלבים"
 
@@ -8778,7 +8864,7 @@ msgstr "מצטערים, הבלוג שלך אינו יכול לשתף רשומו�
 msgid "Take Our Survey"
 msgstr "השתתפות בסקר שלנו"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1627
+#: _inc/lib/class.core-rest-api-endpoints.php:1638
 #: modules/sharedaddy/sharing.php:360
 msgid "Text only"
 msgstr "טקסט בלבד"
@@ -8960,6 +9046,10 @@ msgstr "שיתפת את הרשומה הזו עם %s"
 msgid "Share this:"
 msgstr "שתף"
 
+#: modules/sharedaddy/sharing.php:186
+msgid "This plugin will work without it, but multibyte support is used <a href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">if available</a>. You may see minor problems with Tweets and other sharing services."
+msgstr "התוסף יעבוד גם ללא זה, אבל ייעשה שימוש בתמיכה בריבוי בתים, <a href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">אם זמינה</a>. ייתכנו בעיות קלות בציוצים ובשירותי שיתוף אחרים."
+
 #: modules/protect/math-fallback.php:53
 msgid "<strong>You failed to correctly answer the math problem.</strong>  This is used to combat spam when the Protect API is unavailable.  Please use your browser's back button to return to the login form, press the \"refresh\" button to generate a new math problem, and try to log in again."
 msgstr "<strong>נתת תשובה שגויה לבעיית החשבון.</strong> הדבר משמש ללחימה בתגובות זבל כאשר ה-API של Protect אינו זמין. יש להשתמש בלחצן 'אחורה' בדפדפן כדי לחזור לעמוד הכניסה, ללחוץ על הלחצן 'רענון' כדי ליצור בעיית חשבון חדשה, ולנסות להתחבר שוב."
@@ -8968,15 +9058,15 @@ msgstr "<strong>נתת תשובה שגויה לבעיית החשבון.</strong>
 msgid "An API key is needed for Protect."
 msgstr "נדרש מפתח API עבור Protect."
 
-#: modules/publicize/publicize-jetpack.php:258
+#: modules/publicize/publicize-jetpack.php:262
 msgid "An invalid request was made. This normally means that something intercepted or corrupted the request from your server to the Jetpack Server. Try again and see if it works this time."
 msgstr "בוצעה בקשה לא תקינה. בדרך כלל הכוונה היא שמשהו הפריע לבקשה או שיבש אותה בדרך מהשרת שלכם לשרת של ג'טפק. נסו שוב וראו אם זה יעבוד הפעם."
 
-#: modules/publicize/ui.php:251
+#: modules/publicize/ui.php:252
 msgid "Are you sure you want to stop Publicizing posts to this connection?"
 msgstr "אתם בטוחים שאתם רוצים להפסיק לפרסם פוסטים לקשר(חיבור) הזה?"
 
-#: modules/publicize/ui.php:461
+#: modules/publicize/ui.php:464
 msgid "Before you hit Publish, please refresh the following connection(s) to make sure we can Publicize your post:"
 msgstr "לפני שתלחצו על \"הפצה\" רעננו בבקשה את החיבור/ים הבאים על מנת לוודא שנוכל לפרסם את הפוסט שלכם:"
 
@@ -8985,24 +9075,24 @@ msgid "Cannot use global flag on non-multisites"
 msgstr "לא ניתן להשתמש בסימון גלובלי באתרים שאינם חלק מרשת"
 
 #: class.jetpack-network-sites-list-table.php:108
-#: class.jetpack-network-sites-list-table.php:113 modules/publicize/ui.php:241
+#: class.jetpack-network-sites-list-table.php:113 modules/publicize/ui.php:242
 #: modules/theme-tools/social-links.php:121
 msgid "Connect"
 msgstr "להתחבר"
 
-#: modules/publicize/ui.php:774
+#: modules/publicize/ui.php:814
 msgid "Connect and share your posts on %s"
 msgstr "התחבר ושתף את הרשומות שלך ב-%s"
 
-#: modules/publicize/ui.php:769
+#: modules/publicize/ui.php:809
 msgid "Connect to"
 msgstr "התחבר אל"
 
-#: modules/publicize/ui.php:140
+#: modules/publicize/ui.php:141
 msgid "Connect your blog to popular social networking sites and automatically share new posts with your friends."
 msgstr "חבר את הבלוג שלך לאתרי רשתות חברתיות פופולריות ושתף פוסטים עם החברים שלך באופן אוטומטי."
 
-#: modules/publicize/ui.php:203
+#: modules/publicize/ui.php:204
 msgid "Connected as:"
 msgstr "מחובר כ:"
 
@@ -9014,7 +9104,7 @@ msgstr "המשך &larr;"
 msgid "Custom CSS"
 msgstr "CSS מותאם אישית"
 
-#: modules/publicize/ui.php:746
+#: modules/publicize/ui.php:786
 msgid "Custom Message:"
 msgstr "הודעה מותאמת אישית:"
 
@@ -9023,8 +9113,8 @@ msgid "Disable Post By Email"
 msgstr "בטל אפשרות פוסט באימייל"
 
 #: class.jetpack-network-sites-list-table.php:99
-#: class.jetpack-network-sites-list-table.php:114 modules/publicize/ui.php:218
-#: modules/publicize/ui.php:222
+#: class.jetpack-network-sites-list-table.php:114 modules/publicize/ui.php:219
+#: modules/publicize/ui.php:223
 msgid "Disconnect"
 msgstr "התנתק"
 
@@ -9032,7 +9122,7 @@ msgstr "התנתק"
 msgid "Dismiss this notice."
 msgstr "דחה הודעה זו."
 
-#: _inc/jetpack-strings.php:425 _inc/lib/class.core-rest-api-endpoints.php:1567
+#: _inc/jetpack-strings.php:425 _inc/lib/class.core-rest-api-endpoints.php:1578
 #: modules/post-by-email.php:89 modules/subscriptions.php:1039
 msgid "Email Address"
 msgstr "כתובת דואר אלקטרוני"
@@ -9045,7 +9135,7 @@ msgstr "האימיילים ישלוח אל %s  (<a href=\"%s\">עריכה</a>)"
 msgid "Enable Post By Email"
 msgstr "אפשר פוסטים באימייל"
 
-#: modules/publicize/publicize-jetpack.php:288
+#: modules/publicize/publicize-jetpack.php:292
 msgid "Error code: %s"
 msgstr "שגיאת קוד: %s"
 
@@ -9084,7 +9174,7 @@ msgstr "קשרו את החשבון עם WordPress.com"
 msgid "Make sure to add your most frequently used IP addresses as they can change between your home, office or other locations. Removing an IP address from the list below will remove it from your whitelist."
 msgstr "כדאי להוסיף את כתובות ה-IP הנפוצות ביותר בשימוש מאחר שהן עשויות להשתנות לפי המיקום שלך - בית, משרד ועוד. הסרת כתובת IP מהרשימה להלן תסיר אותה מרשימת ההיתרים שלך."
 
-#: modules/publicize/ui.php:273
+#: modules/publicize/ui.php:274
 msgid "Make this connection available to all users of this blog?"
 msgstr "האם להפוך את החיבור הזה זמין לכל משתמשי הבלוג?"
 
@@ -9101,11 +9191,11 @@ msgstr "מידע נוסף"
 msgid "No API key"
 msgstr "אין מפתח API"
 
-#: modules/publicize/publicize-jetpack.php:267
+#: modules/publicize/publicize-jetpack.php:271
 msgid "No user information was included in your request. Please make sure that your user account has connected to Jetpack. Connect your user account by going to the <a href=\"%s\">Jetpack page</a> within wp-admin."
 msgstr "לא נכלל מידע משתמש בבקשתך. ודא שחשבון המשתמש שלך מחובר ל-Jetpack. חבר את חשבון המשתמש שלך על-ידי מעבר ל<a href=\"%s\">עמוד Jetpack</a> ב-wp-admin."
 
-#: modules/publicize/ui.php:568
+#: modules/publicize/ui.php:595
 msgid "Not Connected"
 msgstr "לא מחובר"
 
@@ -9138,15 +9228,15 @@ msgstr "תצוגה מקדימה:"
 msgid "Prove your humanity:"
 msgstr "הוכחה שאינך רובוט:"
 
-#: modules/publicize/ui.php:557
+#: modules/publicize/ui.php:584
 msgid "Publicize:"
 msgstr "הפצה:"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1558 modules/monitor.php:72
+#: _inc/lib/class.core-rest-api-endpoints.php:1569 modules/monitor.php:72
 msgid "Receive Monitor Email Notifications."
 msgstr "קבלו התראות ניטור באימייל."
 
-#: modules/publicize/publicize-jetpack.php:470
+#: modules/publicize/publicize-jetpack.php:468
 msgctxt "Refresh connection with {social media service}"
 msgid "Refresh connection with %s"
 msgstr "רענן חיבור עם %s"
@@ -9172,24 +9262,24 @@ msgid "Related posts"
 msgstr "פוסטים קשורים"
 
 #: modules/protect/config-ui.php:64 modules/sharedaddy/sharing-sources.php:1339
-#: modules/widgets/simple-payments/form.php:136
+#: modules/widgets/simple-payments/form.php:167
 msgid "Save"
 msgstr "שמירה"
 
-#: modules/publicize/ui.php:710
+#: modules/publicize/ui.php:737
 msgctxt "Service: Account connected as"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: modules/publicize/ui.php:215
+#: modules/publicize/ui.php:216
 msgid "Shared"
 msgstr "משותף"
 
-#: modules/publicize/publicize-jetpack.php:270
+#: modules/publicize/publicize-jetpack.php:274
 msgid "Something which should never happen, happened. Sorry about that. If you try again, maybe it will work."
 msgstr "משהו שלא היה צריך לקרות אף פעם קרה. מצערים על זה. אם תנסו שוב אולי זה יעבוד."
 
-#: modules/publicize/publicize-jetpack.php:297
+#: modules/publicize/publicize-jetpack.php:301
 msgid "That connection has been removed."
 msgstr "החיבור הוסר."
 
@@ -9198,19 +9288,19 @@ msgstr "החיבור הוסר."
 msgid "Themes"
 msgstr "ערכות עיצוב"
 
-#: modules/publicize/publicize-jetpack.php:252
+#: modules/publicize/publicize-jetpack.php:256
 msgid "There was a problem connecting to %s to create an authorized connection. Please try again in a moment."
 msgstr "אירעה בעיה בחיבור ל-%s כדי ליצור חיבור מורשה. נסה שוב עוד מעט."
 
-#: modules/publicize/ui.php:281
+#: modules/publicize/ui.php:282
 msgid "There was a problem connecting to %s. Please disconnect and try again."
 msgstr "אירעה בעיה בחיבור ל-%s. התנתק ונסה שוב."
 
-#: modules/publicize/publicize-jetpack.php:274
+#: modules/publicize/publicize-jetpack.php:278
 msgid "There was a problem connecting with Publicize. Please try again in a moment."
 msgstr "הייתה בעיה בהתחברות לשיתוף אוטומטי. נסה שוב בעוד רגע."
 
-#: modules/publicize/publicize.php:534
+#: modules/publicize/publicize.php:554
 msgid "This connection is working correctly."
 msgstr "החיבור פעיל כראוי."
 
@@ -9273,7 +9363,7 @@ msgstr "ניהול רשימה לבנה (רשימת שולחים בטוחים)"
 msgid "Whitelist saved."
 msgstr "רשימה לבנה נשמרה."
 
-#: modules/publicize/ui.php:141
+#: modules/publicize/ui.php:142
 msgid "You can make a connection for just yourself or for all users on your blog. Shared connections are marked with the (Shared) text."
 msgstr "ניתן לבצע חיבור עבור עצמך או עבור כל המשתמשים בבלוג. חיבורים משותפים מסומנים בטקסט (משותף)."
 
@@ -9281,11 +9371,11 @@ msgstr "ניתן לבצע חיבור עבור עצמך או עבור כל המש
 msgid "You can manage your network-wide whitelist via the network admin."
 msgstr "באפשרותך לנהל את רשימת ההיתרים ברשת באמצעות מנהל הרשת."
 
-#: modules/publicize/ui.php:118
+#: modules/publicize/ui.php:119
 msgid "You have chosen not to connect your blog. Please click 'accept' when prompted if you wish to connect your accounts."
 msgstr "בחרתם לא לחבר את הבלוג שלכם. הקליקו בבקשה על \"אשר\" כאשר תתבקשו אם תרצו לחבר את חשבונותיכם."
 
-#: modules/publicize/ui.php:109
+#: modules/publicize/ui.php:110
 msgid "You have successfully connected your %1$s account with %2$s."
 msgstr "חיברת בהצלחה את חשבון %1$s שלך עם %2$s."
 
@@ -9305,7 +9395,7 @@ msgstr "כתובת ה-IP הנוכחית שלך: %s"
 msgid "Your main blog is not connected to WordPress.com. Please connect to get an API key."
 msgstr "הבלוג הראשי שלך לא מחובר אל WordPress.com. יש להתחבר כדי לקבל מפתח API."
 
-#: modules/publicize/ui.php:103
+#: modules/publicize/ui.php:104
 msgid "WordPress.com"
 msgstr "WordPress.com"
 
@@ -9317,7 +9407,7 @@ msgstr "איתור באגים ב-Jetpack לקבלת מידע נוסף."
 msgid "Login Blocked by Jetpack"
 msgstr "ההתחברות נחסמה על-ידי Jetpack"
 
-#: modules/publicize/publicize-jetpack.php:264
+#: modules/publicize/publicize-jetpack.php:268
 msgid "No blog_id was included in your request. Please try disconnecting Jetpack from WordPress.com and then reconnecting it. Once you have done that, try connecting Publicize again."
 msgstr "לא נכלל blog_id בבקשתך. נסה לנתק את Jetpack מ-WordPress.com ולחבר אותו שוב. אחרי זה נסה שוב להתחבר לשיתוף אוטומטי."
 
@@ -9329,21 +9419,21 @@ msgstr "אין תשובה משרתי Jetpack"
 msgid "Protect cannot keep your site secure."
 msgstr "Jetpack Protect לא יכול לשמור על האתר שלך מאובטח."
 
+#: modules/protect.php:176
+msgid "Thanks for activating Protect! To start protecting your site, please network activate Jetpack on your Multisite installation and activate Protect on your primary site. Due to the way logins are handled on WordPress Multisite, Jetpack must be network-enabled in order for Protect to work properly. <a href=\"%s\" target=\"_blank\">Learn More</a>"
+msgstr "אנו מודים לך על הפעלת Protect! כדי להתחיל להגן על האתר שלך, יש להפעיל את Jetpack כחלק מהתקנת רשת האתרים שלך ולהפעיל את Protect באתר הראשי שלך. בשל אופן הטיפול בהתחברויות ברשת אתרים של WordPress, יש להפעיל את Jetpack ברשת כדי ש-Protect יעבוד כהלכה. <a href=\"%s\" target=\"_blank\">מידע נוסף</a>"
+
 #: modules/protect.php:712
 msgid "There was an error contacting Jetpack servers."
 msgstr "אירעה שגיאה ביצירת הקשר עם שרתי Jetpack."
 
-#: modules/publicize/publicize-jetpack.php:261
+#: modules/publicize/publicize-jetpack.php:265
 msgid "We could not verify that your server is making an authorized request. Please try again, and make sure there is nothing interfering with requests from your server to the Jetpack Server."
 msgstr "לא הצלחנו לוודא שהשרת שלכם מייצר בקשת הרשאה. נסו שוב בבקשה וודאו ששום דבר לא מפריע לבקשות מהשרת שלכם להגיע לשרת של Jetpack."
 
 #: modules/protect/config-ui.php:41
 msgid "Whitelisting an IP address prevents it from ever being blocked by Jetpack. "
 msgstr "הכנסת כתובת IP לרשימת ההיתרים מבטיחה שהיא לא תיחסם לעולם על-ידי Jetpack. "
-
-#: modules/protect.php:176
-msgid "Thanks for activating Protect! To start protecting your site, please network activate Jetpack on your Multisite installation and activate Protect on your primary site. Due to the way logins are handled on WordPress Multisite, Jetpack must be network-enabled in order for Protect to work properly. <a href=\"%s\" target=\"_blank\">Learn More</a>"
-msgstr "אנו מודים לך על הפעלת Protect! כדי להתחיל להגן על האתר שלך, יש להפעיל את Jetpack כחלק מהתקנת רשת האתרים שלך ולהפעיל את Protect באתר הראשי שלך. בשל אופן הטיפול בהתחברויות ברשת אתרים של WordPress, יש להפעיל את Jetpack ברשת כדי ש-Protect יעבוד כהלכה. <a href=\"%s\" target=\"_blank\">מידע נוסף</a>"
 
 #: modules/module-info.php:308
 msgid ""
@@ -9352,6 +9442,10 @@ msgid ""
 msgstr ""
 "כשקרוסלה פעילה, כל גלריה סטנדרטית של WordPress ששיבצת בפוסטים או בעמודים\n"
 "\t\tתפעיל חווית גלישה בתצלומים בגודל מסך מלא עם תגובות ומטא-נתונים של EXIF."
+
+#: modules/monitor.php:55
+msgid "Nobody likes downtime, and that's why Downtime Monitor is on the job, keeping tabs on your site by checking it every five minutes. As soon as any downtime is detected, you will receive an email notification alerting you to the issue. That way you can act quickly, to get your site back online again!"
+msgstr "גם אנחנו לא אוהבים אתרים מושבתים ולכן, אנחנו מפעילים את השירות של Downtime Monitor כדי לעקוב אחר האתר שלך ולוודא שהוא פעיל כל חמש דקות. כאשר אנחנו מזהים שהאתר הושבת, אנחנו נשלח אליך הודעה באימייל ונודיע לך על הבעיה. כך תהיה לך אפשרות לפעול במהירות ולהחזיר את האתר שלך לפעולה."
 
 #: modules/module-headings.php:39
 msgctxt "Jumpstart Description"
@@ -9578,7 +9672,7 @@ msgctxt "Module Tag"
 msgid "Writing"
 msgstr "כותב"
 
-#: modules/publicize/ui.php:152
+#: modules/publicize/ui.php:153
 msgid "More information on using Publicize."
 msgstr "מידע נוסף על שימוש ב- Publicize."
 
@@ -9588,12 +9682,12 @@ msgstr "מידע נוסף על שימוש ב- Publicize."
 msgid "Notifications"
 msgstr "עדכונים"
 
-#: modules/publicize/ui.php:131
+#: modules/publicize/ui.php:132
 msgid "Publicize"
 msgstr "הפצה"
 
 #: _inc/jetpack-strings.php:476 _inc/jetpack-strings.php:477
-#: class.jetpack.php:6959 modules/stats.php:439 modules/stats.php:594
+#: class.jetpack.php:6964 modules/stats.php:439 modules/stats.php:594
 #: modules/stats.php:1106
 msgid "Site Stats"
 msgstr "סטטיסטיקת אתר"
@@ -9769,11 +9863,11 @@ msgstr "שלחו לי אימייל כאשר"
 msgid "Enable excerpts on front page and on archive pages"
 msgstr "אפשר תקצירים העמוד ראשי ובעמודי ארכיון"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1535 modules/minileven.php:60
+#: _inc/lib/class.core-rest-api-endpoints.php:1546 modules/minileven.php:60
 msgid "Excerpts"
 msgstr "תקצירים"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1542 modules/minileven.php:74
+#: _inc/lib/class.core-rest-api-endpoints.php:1553 modules/minileven.php:74
 #: modules/theme-tools/content-options/customizer.php:230
 msgid "Featured Images"
 msgstr "תמונות מרכזיות"
@@ -9902,7 +9996,7 @@ msgstr "לא מצאתי כלום"
 msgid "Older posts"
 msgstr "רשומות קודמות"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1503
+#: _inc/lib/class.core-rest-api-endpoints.php:1514
 #: modules/likes/jetpack-likes-settings.php:482
 msgid "On for all posts"
 msgstr "מופעל עבור כל הפוסטים"
@@ -10021,7 +10115,7 @@ msgstr "לחצני שיתוף"
 msgid "Sharing Settings"
 msgstr "הגדרות שיתוף"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1549 modules/minileven.php:92
+#: _inc/lib/class.core-rest-api-endpoints.php:1560 modules/minileven.php:92
 msgid "Show a promo for the WordPress mobile apps in the footer of the mobile theme."
 msgstr "הצג פרומו לאפליקציות המובייל של וורדפרס בתחתית תבנית המובייל."
 
@@ -10074,21 +10168,21 @@ msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
 msgstr[0] "גלריה זו מכילה <a %1$s>תמונה אחת</a>"
 msgstr[1] "גלריה זו מכילה <a %1$s>%2$s תמונות</a>"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1479
+#: _inc/lib/class.core-rest-api-endpoints.php:1490
 msgid "To infinity and beyond"
 msgstr "לאינסוף ומעבר"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1504
+#: _inc/lib/class.core-rest-api-endpoints.php:1515
 #: modules/likes/jetpack-likes-settings.php:488
 msgid "Turned on per post"
 msgstr "מופעל לפי פוסט"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1486
+#: _inc/lib/class.core-rest-api-endpoints.php:1497
 #: modules/infinite-scroll.php:88
 msgid "Use Google Analytics with Infinite Scroll"
 msgstr "התשמשו בגוגל אנאליטיקס עם גלילה אינסופית"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1519
+#: _inc/lib/class.core-rest-api-endpoints.php:1530
 #: modules/markdown/easy-markdown.php:290
 msgid "Use Markdown for comments."
 msgstr "להפעיל Markdown בתגובות."
@@ -10105,7 +10199,7 @@ msgstr "הצג אתר מלא"
 msgid "View Mobile Site"
 msgstr "הצג את האתר לנייד"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1461
+#: _inc/lib/class.core-rest-api-endpoints.php:1472
 #: modules/gravatar-hovercards.php:63
 msgid "View people's profiles when you mouse over their Gravatars"
 msgstr "צפה בפרופיל המשתמש כאשר העכבר מרחף מעל לגרבטאר שלו"
@@ -10114,7 +10208,7 @@ msgstr "צפה בפרופיל המשתמש כאשר העכבר מרחף מעל �
 msgid "We&rsquo;ve changed this option to a click-to-scroll version for you since you have footer widgets in Appearance &rarr; Widgets, or your theme uses click-to-scroll as the default behavior."
 msgstr "שינינו אפשרות זו לגרסת הקלק-לגלילה כיוון שיש לך ווידגטים בחלק התחתון במראה  &rarr; ווידג'טים, או שערכת העיצוב שלך משתמשת בהקלק-לגלילה כהתנהגות ברירת המחדל."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1495
+#: _inc/lib/class.core-rest-api-endpoints.php:1506
 #: modules/likes/jetpack-likes-settings.php:476
 msgid "WordPress.com Likes are"
 msgstr "הלייקים של WordPress.com הם"
@@ -10202,8 +10296,8 @@ msgstr "הוסף פריט תפריט"
 
 #: modules/custom-post-types/comics.php:224
 #: modules/custom-post-types/portfolios.php:270
-#: modules/custom-post-types/testimonial.php:299 modules/publicize/ui.php:243
-#: modules/widgets/simple-payments/form.php:34
+#: modules/custom-post-types/testimonial.php:299 modules/publicize/ui.php:244
+#: modules/widgets/simple-payments/form.php:38
 msgid "Add New"
 msgstr "הוסף חדש"
 
@@ -10317,7 +10411,7 @@ msgstr "עורך CSS"
 #: modules/custom-css/custom-css.php:1178
 #: modules/custom-css/custom-css.php:1219 modules/minileven/minileven.php:288
 #: modules/sharedaddy/sharing-sources.php:535
-#: modules/widgets/simple-payments/form.php:137
+#: modules/widgets/simple-payments/form.php:168
 msgid "Cancel"
 msgstr "בטל"
 
@@ -10424,7 +10518,7 @@ msgstr "ברירת מחדל"
 #: _inc/lib/icalendar-reader.php:790 modules/custom-post-types/nova.php:954
 #: modules/sitemaps/sitemap-stylist.php:436
 #: modules/widgets/milestone/milestone.php:591
-#: modules/widgets/simple-payments/form.php:84
+#: modules/widgets/simple-payments/form.php:95
 msgid "Description"
 msgstr "תיאור"
 
@@ -10719,9 +10813,9 @@ msgstr ","
 #: modules/custom-css/custom-css.php:1086
 #: modules/custom-css/custom-css.php:1177
 #: modules/custom-css/custom-css.php:1218 modules/minileven/minileven.php:287
-#: modules/publicize/publicize-jetpack.php:634
-#: modules/publicize/publicize-jetpack.php:751 modules/publicize/ui.php:302
-#: modules/publicize/ui.php:751 modules/publicize/ui.php:780
+#: modules/publicize/publicize-jetpack.php:608
+#: modules/publicize/publicize-jetpack.php:711 modules/publicize/ui.php:303
+#: modules/publicize/ui.php:791 modules/publicize/ui.php:820
 msgid "OK"
 msgstr "אישור"
 
@@ -10801,7 +10895,7 @@ msgstr "תצוגה מקדימה: יש לשמור את השינויים, או ש�
 #: modules/custom-post-types/nova.php:952
 #: modules/custom-post-types/nova.php:997
 #: modules/custom-post-types/nova.php:1003
-#: modules/widgets/simple-payments/form.php:92
+#: modules/widgets/simple-payments/form.php:105
 msgid "Price"
 msgstr "מחיר"
 
@@ -11154,6 +11248,14 @@ msgid_plural "The default content width for the %s theme is %d pixels."
 msgstr[0] "ברירת המחדל לרוחב התוכן עבור ערכת העיצוב %s היא %d פיקסלים."
 msgstr[1] "ברירת המחדל לרוחב התוכן עבור ערכת העיצוב %s היא %d פיקסלים."
 
+#: modules/custom-css/custom-css.php:1007
+msgid ""
+"New to CSS? Start with a <a href=\"http://www.htmldog.com/guides/cssbeginner/\" rel=\"noopener noreferrer\" target=\"_blank\">beginner tutorial</a>. Questions?\n"
+"\t\tAsk in the <a href=\"https://wordpress.org/support/forum/themes-and-templates\" rel=\"noopener noreferrer\" target=\"_blank\">Themes and Templates forum</a>."
+msgstr ""
+"פעם ראשונה ב-CSS? <a href=\"http://www.htmldog.com/guides/cssbeginner/\" rel=\"noopener noreferrer\" target=\"_blank\">המדריך למתחילים</a> הוא התחנה הראשונה שלך. שאלות?\n"
+"\t\t<a href=\"https://wordpress.org/support/forum/themes-and-templates\" rel=\"noopener noreferrer\" target=\"_blank\">פורום ערכות עיצוב ותבניות</a> הוא המקום לשאול."
+
 #: modules/contact-form/grunion-form-view.php:169
 msgctxt "%1$s = \"Click here\" in an HTML link"
 msgid "Sure thing. %1$s to add a new text box, textarea, radio, checkbox, or dropdown field."
@@ -11164,12 +11266,12 @@ msgctxt "%1$s = \"Feedback\" in an HTML link"
 msgid "Yep, you can read your feedback at any time by clicking the \"%1$s\" link in the admin menu."
 msgstr "כן, אתה יכול לקרוא את המשוב שלך בכל עת על-ידי לחיצה על הקישור \"%1$s\" בתפריט הניהול."
 
-#: modules/contact-form/grunion-contact-form.php:1551
+#: modules/contact-form/grunion-contact-form.php:1578
 msgctxt "%1$s = blog name"
 msgid "%1$s Sidebar"
 msgstr "סרגל צד %1$s "
 
-#: modules/contact-form/grunion-contact-form.php:1554
+#: modules/contact-form/grunion-contact-form.php:1581
 msgctxt "%1$s = blog name, %2$s = post title"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
@@ -11179,16 +11281,16 @@ msgid "%s (Required)"
 msgstr "%s (דרוש)"
 
 #. translators: %s is the name of a form field
-#: modules/contact-form/grunion-contact-form.php:2733
+#: modules/contact-form/grunion-contact-form.php:2760
 msgid "%s is required"
 msgstr "נדרש %s"
 
 #. translators: %s is the name of a form field
-#: modules/contact-form/grunion-contact-form.php:2719
+#: modules/contact-form/grunion-contact-form.php:2746
 msgid "%s requires a valid email address"
 msgstr "%s דורש כתובת אימייל תקינה"
 
-#: modules/contact-form/grunion-contact-form.php:2827
+#: modules/contact-form/grunion-contact-form.php:2854
 #: modules/contact-form/grunion-editor-view.php:91
 msgid "(required)"
 msgstr "(חובה)"
@@ -11252,12 +11354,12 @@ msgstr "צבע רקע"
 msgid "Be sure to click \"Update Profile\" at the bottom of the screen to save your changes."
 msgstr "ודא שלחצת על \"עדכון פרופיל\" בתחתית המסך כדי לשמור את השינויים שלך."
 
-#: _inc/jetpack-strings.php:387 _inc/lib/class.core-rest-api-endpoints.php:1750
+#: _inc/jetpack-strings.php:387 _inc/lib/class.core-rest-api-endpoints.php:1761
 #: modules/after-the-deadline/config-options.php:63
 msgid "Bias Language"
 msgstr "הטיות שפה"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1381
+#: _inc/lib/class.core-rest-api-endpoints.php:1392
 #: modules/carousel/jetpack-carousel.php:726
 #: modules/shortcodes/slideshow.php:78
 msgid "Black"
@@ -11326,22 +11428,22 @@ msgstr "תגובות"
 msgid "Comments on this post are closed."
 msgstr "התגובות לפוסט הזה סגורות."
 
-#: _inc/jetpack-strings.php:389 _inc/lib/class.core-rest-api-endpoints.php:1764
+#: _inc/jetpack-strings.php:389 _inc/lib/class.core-rest-api-endpoints.php:1775
 #: modules/after-the-deadline/config-options.php:67
 msgid "Complex Phrases"
 msgstr "ביטויים מורכבים"
 
 #: modules/contact-form/grunion-contact-form.php:723
-#: modules/contact-form/grunion-contact-form.php:1311
+#: modules/contact-form/grunion-contact-form.php:1338
 #: modules/contact-form/grunion-form-view.php:51
 msgid "Contact Form"
 msgstr "טופס יצירת קשר"
 
-#: modules/contact-form/grunion-contact-form.php:2331
+#: modules/contact-form/grunion-contact-form.php:2358
 msgid "Contact Form URL:"
 msgstr "כתובת טופס יצירת הקשר:"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1414
+#: _inc/lib/class.core-rest-api-endpoints.php:1425
 #: modules/comments/admin.php:55 modules/widgets/eu-cookie-law/form.php:232
 #: modules/widgets/googleplus-badge.php:271
 #: modules/widgets/twitter-timeline.php:483
@@ -11374,7 +11476,7 @@ msgstr "מחק לצמיתות"
 msgid "Delete this item permanently"
 msgstr "מחיקה"
 
-#: _inc/jetpack-strings.php:390 _inc/lib/class.core-rest-api-endpoints.php:1771
+#: _inc/jetpack-strings.php:390 _inc/lib/class.core-rest-api-endpoints.php:1782
 #: modules/after-the-deadline/config-options.php:69
 msgid "Diacritical Marks"
 msgstr "סימני ניקוד"
@@ -11387,7 +11489,7 @@ msgstr "הצג את התמונות במצגת קרוסלה בגודל מלא."
 msgid "Do I need to fill this out?"
 msgstr "האם אני צריך למלא את זה?"
 
-#: _inc/jetpack-strings.php:391 _inc/lib/class.core-rest-api-endpoints.php:1778
+#: _inc/jetpack-strings.php:391 _inc/lib/class.core-rest-api-endpoints.php:1789
 #: modules/after-the-deadline/config-options.php:71
 msgid "Double Negatives"
 msgstr "שלילה כפולה (דאבל נגטיב)"
@@ -11419,11 +11521,11 @@ msgstr "ערוך שדה חדש זה"
 
 #: _inc/lib/core-api/class.jetpack-core-api-module-endpoints.php:1117
 #: class.jetpack-debugger.php:412 modules/carousel/jetpack-carousel.php:263
-#: modules/contact-form/grunion-contact-form.php:1583
+#: modules/contact-form/grunion-contact-form.php:1610
 #: modules/contact-form/grunion-editor-view.php:85
 #: modules/contact-form/grunion-editor-view.php:216
 #: modules/contact-form/grunion-form-view.php:197
-#: modules/widgets/simple-payments/form.php:122
+#: modules/widgets/simple-payments/form.php:139
 #: modules/widgets/social-icons.php:551
 msgid "Email"
 msgstr "אימייל"
@@ -11465,7 +11567,7 @@ msgstr "ארעה שגיאה בהעברה לפח."
 msgid "Error in restoring from Trash."
 msgstr "ארעה שגיאה בשחזור מהפח."
 
-#: modules/contact-form/grunion-contact-form.php:1696
+#: modules/contact-form/grunion-contact-form.php:1723
 msgid "Error!"
 msgstr "שגיאה!"
 
@@ -11514,7 +11616,7 @@ msgstr "בונה טפסים"
 msgid "From"
 msgstr "מאת"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1397
+#: _inc/lib/class.core-rest-api-endpoints.php:1408
 #: modules/comments/admin.php:81
 msgid "Greeting Text"
 msgstr "טקסט ברכה"
@@ -11523,7 +11625,7 @@ msgstr "טקסט ברכה"
 msgid "Here&#8217;s what your form will look like"
 msgstr "כך יראה הטופס שלך"
 
-#: _inc/jetpack-strings.php:392 _inc/lib/class.core-rest-api-endpoints.php:1785
+#: _inc/jetpack-strings.php:392 _inc/lib/class.core-rest-api-endpoints.php:1796
 #: modules/after-the-deadline/config-options.php:73
 msgid "Hidden Verbs"
 msgstr "פעלים חבויים"
@@ -11532,7 +11634,7 @@ msgstr "פעלים חבויים"
 msgid "How does this work?"
 msgstr "כיצד זה עובד?"
 
-#: modules/contact-form/grunion-contact-form.php:2330
+#: modules/contact-form/grunion-contact-form.php:2357
 msgid "IP Address:"
 msgstr "כתובת IP:"
 
@@ -11565,11 +11667,11 @@ msgstr "קרוסלת גלריית התמונות"
 msgid "Invalid request"
 msgstr "בקשה לא חוקית"
 
-#: modules/comments/comments.php:473
+#: modules/comments/comments.php:475
 msgid "Invalid security token."
 msgstr "מפתח אבטחה שגוי"
 
-#: _inc/jetpack-strings.php:393 _inc/lib/class.core-rest-api-endpoints.php:1792
+#: _inc/jetpack-strings.php:393 _inc/lib/class.core-rest-api-endpoints.php:1803
 #: modules/after-the-deadline/config-options.php:75
 msgid "Jargon"
 msgstr "לשון עילגת (ז'ארגון)"
@@ -11618,7 +11720,7 @@ msgstr "שפה"
 msgid "Leave a Reply to %s"
 msgstr "להגיב על %s"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1413
+#: _inc/lib/class.core-rest-api-endpoints.php:1424
 #: modules/comments/admin.php:54 modules/widgets/eu-cookie-law/form.php:221
 #: modules/widgets/googleplus-badge.php:270
 #: modules/widgets/twitter-timeline.php:480
@@ -11648,13 +11750,13 @@ msgstr "לסמן הודעה זו כספאם"
 
 #: _inc/lib/core-api/class.jetpack-core-api-module-endpoints.php:1117
 #: modules/contact-form/admin.php:263
-#: modules/contact-form/grunion-contact-form.php:1592
+#: modules/contact-form/grunion-contact-form.php:1619
 #: modules/contact-form/grunion-editor-view.php:87
 msgid "Message"
 msgstr "הודעה"
 
 #: modules/contact-form/grunion-contact-form.php:379
-#: modules/contact-form/grunion-contact-form.php:1713
+#: modules/contact-form/grunion-contact-form.php:1740
 msgid "Message Sent"
 msgstr "הודעה נשלחה"
 
@@ -11712,12 +11814,12 @@ msgstr "לא. אולם אם תרצה תוכל לשנות את הכתובת שא�
 msgid "Options"
 msgstr "אפשרויות"
 
-#: _inc/jetpack-strings.php:394 _inc/lib/class.core-rest-api-endpoints.php:1799
+#: _inc/jetpack-strings.php:394 _inc/lib/class.core-rest-api-endpoints.php:1810
 #: modules/after-the-deadline/config-options.php:77
 msgid "Passive Voice"
 msgstr "אפן סביל"
 
-#: _inc/jetpack-strings.php:395 _inc/lib/class.core-rest-api-endpoints.php:1806
+#: _inc/jetpack-strings.php:395 _inc/lib/class.core-rest-api-endpoints.php:1817
 #: modules/after-the-deadline/config-options.php:79
 msgid "Phrases to Avoid"
 msgstr "להימנע מביטויים"
@@ -11760,7 +11862,7 @@ msgstr "הגהה"
 msgid "Radio"
 msgstr "רדיו"
 
-#: _inc/jetpack-strings.php:396 _inc/lib/class.core-rest-api-endpoints.php:1813
+#: _inc/jetpack-strings.php:396 _inc/lib/class.core-rest-api-endpoints.php:1824
 #: modules/after-the-deadline/config-options.php:81
 msgid "Redundant Phrases"
 msgstr "ביטויים מיותרים"
@@ -11802,11 +11904,11 @@ msgstr "חיפוש משובים"
 msgid "Select feedback to download"
 msgstr "בחרו תגובה כדי להורידה"
 
-#: modules/contact-form/grunion-contact-form.php:2338
+#: modules/contact-form/grunion-contact-form.php:2365
 msgid "Sent by a verified %s user."
 msgstr "נשלח על-ידי משתמש %s מאומת."
 
-#: modules/contact-form/grunion-contact-form.php:2344
+#: modules/contact-form/grunion-contact-form.php:2371
 msgid "Sent by an unverified visitor to your site."
 msgstr "נשלח לאתרך ע\"י מבקר לא מאומת"
 
@@ -11814,7 +11916,7 @@ msgstr "נשלח לאתרך ע\"י מבקר לא מאומת"
 msgid "Show map of photo location in carousel, when available."
 msgstr "הצג מפה של מיקום התמונה בקרוסלה, כשזמין"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1388
+#: _inc/lib/class.core-rest-api-endpoints.php:1399
 msgid "Show photo metadata (<a href=\"http://en.wikipedia.org/wiki/Exchangeable_image_file_format\" target=\"_blank\">Exif</a>) in carousel, when available."
 msgstr "הצג מטא-נתונים של התמונה (<a href=\"http://en.wikipedia.org/wiki/Exchangeable_image_file_format\" target=\"_blank\">Exif</a>) בקרוסלה, כשהם זמינים."
 
@@ -11844,11 +11946,11 @@ msgstr[1] "ספאם <span class=\"count\">(%s)</span>"
 msgid "Spelling"
 msgstr "איות"
 
-#: modules/contact-form/grunion-contact-form.php:1588
+#: modules/contact-form/grunion-contact-form.php:1615
 msgid "Subject"
 msgstr "נושא"
 
-#: modules/comments/comments.php:547 modules/comments/comments.php:598
+#: modules/comments/comments.php:549 modules/comments/comments.php:600
 msgid "Submitting Comment%s"
 msgstr "שולח תגובה %s"
 
@@ -11899,11 +12001,11 @@ msgctxt "This HTML form field is marked as required by the user in contact form 
 msgid "(required)"
 msgstr "(דרוש)"
 
-#: modules/contact-form/grunion-contact-form.php:2329
+#: modules/contact-form/grunion-contact-form.php:2356
 msgid "Time:"
 msgstr "שעה:"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1415
+#: _inc/lib/class.core-rest-api-endpoints.php:1426
 #: modules/comments/admin.php:56
 msgid "Transparent"
 msgstr "שקוף"
@@ -11913,7 +12015,7 @@ msgstr "שקוף"
 msgid "Trash"
 msgstr "העבר לפח"
 
-#: _inc/jetpack-strings.php:384 _inc/lib/class.core-rest-api-endpoints.php:1820
+#: _inc/jetpack-strings.php:384 _inc/lib/class.core-rest-api-endpoints.php:1831
 #: modules/after-the-deadline/config-options.php:93
 msgid "Use automatically detected language to proofread posts and pages"
 msgstr "השתמש בזיהוי שפה אוטומטי להגהת רשומות ועמודים."
@@ -11924,14 +12026,14 @@ msgstr "הצג בגודל מלא <span class=\"photo-size\">%1$s<span class=\"ph
 
 #: _inc/lib/core-api/class.jetpack-core-api-module-endpoints.php:1117
 #: modules/carousel/jetpack-carousel.php:267
-#: modules/contact-form/grunion-contact-form.php:1584
+#: modules/contact-form/grunion-contact-form.php:1611
 #: modules/contact-form/grunion-editor-view.php:86
 #: modules/contact-form/grunion-editor-view.php:217
 #: modules/contact-form/grunion-form-view.php:202
 msgid "Website"
 msgstr "אתר"
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1382
+#: _inc/lib/class.core-rest-api-endpoints.php:1393
 #: modules/carousel/jetpack-carousel.php:726
 #: modules/shortcodes/slideshow.php:79
 msgid "White"
@@ -11945,7 +12047,7 @@ msgstr "לכתוב תגובה..."
 msgid "Yep. You can enter multiple email addresses in the Email address field, and separate them with commas. A notification email will then be sent to each email address."
 msgstr "כן. אתה יכול להזין כמה כתובות דוא\"ל בשדה כתובת דוא\"ל ולהפריד אותן בפסיקים. לאחר מכן דוא\"ל עם התראה יישלח לכל אחת מכתובות הדוא\"ל שציינת."
 
-#: modules/contact-form/grunion-contact-form.php:2867
+#: modules/contact-form/grunion-contact-form.php:2894
 #: modules/contact-form/grunion-editor-view.php:152
 #: modules/minileven/minileven.php:278
 msgid "Yes"
@@ -11996,7 +12098,7 @@ msgctxt "error message in contact form builder"
 msgid "Oops, there was a problem generating your form.  You'll likely need to try again."
 msgstr "אופס, נוצרה בעייה ביצירת הטופס שלכם. תצטרכו לנסות זאת שוב."
 
-#: modules/contact-form/grunion-contact-form.php:1714
+#: modules/contact-form/grunion-contact-form.php:1741
 msgid "go back"
 msgstr "חזור"
 
@@ -12011,7 +12113,7 @@ msgid "proofread"
 msgstr "להגהה"
 
 #: modules/contact-form/admin.php:483
-#: modules/contact-form/grunion-contact-form.php:2268
+#: modules/contact-form/grunion-contact-form.php:2295
 msgctxt "{$date_format} \\a\\t {$time_format}"
 msgid "%1$s \\a\\t %2$s"
 msgstr "%1$s \\a\\t %2$s"
@@ -12024,7 +12126,7 @@ msgstr "התוסף Carousel של Jetpack הושבת מכיוון שתוסף אח
 msgid "a post or page is updated"
 msgstr "רשומה או עמוד מתעדכנים."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1399
+#: _inc/lib/class.core-rest-api-endpoints.php:1410
 #: modules/comments/admin.php:50 modules/comments/comments.php:246
 #: modules/minileven/theme/pub/minileven/content-gallery.php:76
 msgid "Leave a Reply"
@@ -12039,26 +12141,26 @@ msgstr "תגובה"
 msgid "Please be sure to submit some text with your comment."
 msgstr "נא ודאו שאתם מכניסים קצת טקסט לתגובה שלכם."
 
-#: class.jetpack.php:4386
+#: class.jetpack.php:4391
 msgctxt "%1$s = deactivation URL, %2$s = \"Deactivate {list of Jetpack module/feature names}"
 msgid "If your site is not publicly accessible, consider <a href=\"%1$s\" title=\"%2$s\">deactivating this feature</a>."
 msgid_plural "If your site is not publicly accessible, consider <a href=\"%1$s\" title=\"%2$s\">deactivating these features</a>."
 msgstr[0] "אם האתר שלך אינו נגיש לציבור, מומלץ <a href=\"%1$s\" title=\"%2$s\">לבטל תכונה זו</a>."
 msgstr[1] "אם האתר שלך אינו נגיש לציבור, מומלץ <a href=\"%1$s\" title=\"%2$s\">לבטל תכונות אלו</a>."
 
-#: class.jetpack.php:4403
+#: class.jetpack.php:4408
 msgctxt "%l = list of Jetpack module/feature names"
 msgid "Deactivate %l"
 msgstr "השבת %l"
 
-#: class.jetpack.php:4369
+#: class.jetpack.php:4374
 msgctxt "%l = list of Jetpack module/feature names"
 msgid "Like your site's RSS feeds, %l allows access to your posts and other content to third parties."
 msgid_plural "Like your site's RSS feeds, %l allow access to your posts and other content to third parties."
 msgstr[0] "כמו פיד ה-RSS של האתר שלך, %l מאפשר גישה לפוסטים שלך לאתרים ושירותים אחרים."
 msgstr[1] "כמו פיד ה-RSS של האתר שלך, %l מאפשרים גישה לפוסטים שלך לאתרים ושירותים אחרים."
 
-#: class.jetpack.php:6158
+#: class.jetpack.php:6163
 msgid "%s wants to access your site&#8217;s data.  Log in to authorize that access."
 msgstr "%s רוצה לקבל גישה לנתוני האתר&#8217; שלך. התחבר למערכת כדי לאשר גישה זו."
 
@@ -12066,31 +12168,31 @@ msgstr "%s רוצה לקבל גישה לנתוני האתר&#8217; שלך. הת�
 msgid "(no title)"
 msgstr "(אין כותרת)"
 
-#: class.jetpack.php:4876
+#: class.jetpack.php:4881
 msgid "<a class=\"button-primary\" href=\"%s\">Activate Now</a>"
 msgstr "<a class=\"button-primary\" href=\"%s\">להפעיל עכשיו</a>"
 
-#: class.jetpack.php:4874
+#: class.jetpack.php:4879
 msgid "<a class=\"button-primary\" href=\"%s\">Activate Now</a> or <a href=\"%s\" >return to previous page</a>."
 msgstr "<a class=\"button-primary\" href=\"%s\">להפעיל עכשיו</a> או <a href=\"%s\" >לחזור לעמוד הקודם</a>."
 
-#: class.jetpack.php:3976
+#: class.jetpack.php:3981
 msgid "<p><a href=\"%1$s\" title=\"Opt in to WordPress.com Site Management\" >Activate Site Management</a> to manage multiple sites from our centralized dashboard at wordpress.com/sites. <a href=\"%2$s\" target=\"_blank\">Learn more</a>.</p><a href=\"%1$s\" class=\"jp-button\">Activate Now</a>"
 msgstr "<p><a href=\"%1$s\" title=\"הצטרפות לניהול אתרים של WordPress.com\" >להפעיל ניהול אתר</a> כדי לנהל אתרים מרובים מלוח הבקרה המרכזי שלנו ב-WordPress.com/sites. <a href=\"%2$s\" target=\"_blank\">מידע נוסף</a>.</p><a href=\"%1$s\" class=\"jp-button\">להפעיל עכשיו</a>"
 
-#: class.jetpack.php:7038
+#: class.jetpack.php:7043
 msgid "Activate Akismet"
 msgstr "הפעלת Akismet"
 
-#: class.jetpack.php:7025
+#: class.jetpack.php:7030
 msgid "Activate Protect"
 msgstr "הפעלת Protect"
 
-#: class.jetpack.php:4856
+#: class.jetpack.php:4861
 msgid "Activate Site Management and JSON API"
 msgstr "הפעלת ניהול אתרים ו-JSON API"
 
-#: class.jetpack.php:7041
+#: class.jetpack.php:7046
 msgid "Akismet can help to keep your blog safe from spam!"
 msgstr "Akismet יכול לסייע בשמירה על הבלוג שלך מפני תגובות זבל!"
 
@@ -12121,7 +12223,7 @@ msgstr "אירעה שגיאה בלתי צפויה בעת שמירה אוטומט
 msgid "Comment cache problem?"
 msgstr "האם יש בעיה במטמון התגובות?"
 
-#: class.jetpack.php:4806
+#: class.jetpack.php:4811
 msgid "Configure %s"
 msgstr "הגדרת %s"
 
@@ -12129,15 +12231,15 @@ msgstr "הגדרת %s"
 msgid "Connect to WordPress.com"
 msgstr "התחבר אל WordPress.com"
 
-#: class.jetpack.php:3826
+#: class.jetpack.php:3831
 msgid "Each module has an Activate or Deactivate link so you can toggle one individually."
 msgstr "לכל מודול יש קישור להפעלה או כיבוי אינדיבידואלי"
 
-#: class.jetpack.php:3396
+#: class.jetpack.php:3401
 msgid "First param must be string or empty"
 msgstr "הפרמטר הראשון חייב להיות מחרוזת או ריק"
 
-#: class.jetpack.php:3836
+#: class.jetpack.php:3841
 msgid "For more information:"
 msgstr "למידע נוסף"
 
@@ -12145,26 +12247,26 @@ msgstr "למידע נוסף"
 msgid "Full management mode is off for this site."
 msgstr "ניהול מלא מושבת עבור אתר זה."
 
-#: class.jetpack.php:3808 modules/theme-tools/site-breadcrumbs.php:48
+#: class.jetpack.php:3813 modules/theme-tools/site-breadcrumbs.php:48
 msgid "Home"
 msgstr "ראשי"
 
 #. translators: %s is a URL
-#: class.jetpack.php:1639
+#: class.jetpack.php:1644
 msgid "In <a href=\"%s\" target=\"_blank\">Development Mode</a>, via site URL lacking a dot (e.g. http://localhost)."
 msgstr "ב<a href=\"%s\" target=\"_blank\">מצב פיתוח</a>, דרך כתובת URL של אתר שחסרה בה נקודה (לדוגמה, http://localhost)."
 
 #. translators: %s is a URL
-#: class.jetpack.php:1633
+#: class.jetpack.php:1638
 msgid "In <a href=\"%s\" target=\"_blank\">Development Mode</a>, via the JETPACK_DEV_DEBUG constant being defined in wp-config.php or elsewhere."
 msgstr "ב<a href=\"%s\" target=\"_blank\">מצב פיתוח</a>, דרך הקבוע JETPACK_DEV_DEBUG שמוגדר ב-wp-config.php או בכל מקום אחר."
 
 #. translators: %s is a URL
-#: class.jetpack.php:1645
+#: class.jetpack.php:1650
 msgid "In <a href=\"%s\" target=\"_blank\">Development Mode</a>, via the jetpack_development_mode filter."
 msgstr "ב<a href=\"%s\" target=\"_blank\">מצב פיתוח</a>, דרך המסנן jetpack_development_mode."
 
-#: class.jetpack.php:4364
+#: class.jetpack.php:4369
 msgid "Is this site private?"
 msgstr "האם האתר הזה פרטי?"
 
@@ -12172,7 +12274,7 @@ msgstr "האם האתר הזה פרטי?"
 msgid "Limit must be greater than or equal to 0."
 msgstr "התחום חייב להיות גדול או שווה ל-0."
 
-#: class.jetpack.php:4256
+#: class.jetpack.php:4261
 msgid "Manage has been activated for you!"
 msgstr "ניהול הופעל בשבילך!"
 
@@ -12219,23 +12321,23 @@ msgstr "התוסף כובה."
 msgid "Post by %s."
 msgstr "נכתב על ידי %s."
 
-#: class.jetpack.php:7024
+#: class.jetpack.php:7029
 msgid "Protect helps to keep you secure from brute-force login attacks."
 msgstr "Protect מסייע לך בהגנה מפני התקפות ניחוש סיסמה."
 
-#: class.jetpack.php:7028
+#: class.jetpack.php:7033
 msgid "Protect is inactive."
 msgstr "ההגנה אינה פעילה."
 
-#: class.jetpack.php:3400
+#: class.jetpack.php:3405
 msgid "Second param must be numeric or empty"
 msgstr "הפרמטר השני חייב להיות מספר או ריק"
 
-#: class.jetpack.php:6075
+#: class.jetpack.php:6080
 msgid "Someone may be trying to trick you into giving them access to your site.  Or it could be you just encountered a bug :).  Either way, please close this window."
 msgstr "ייתכן שמישהו מנסה לגרום לך לתת להם גישה לאתר שלך בדרך מרמה. או יכול להיות שפשוט נתקלת בבאג :) בכל אופן, סגור חלון זה."
 
-#: class.jetpack.php:5769
+#: class.jetpack.php:5774
 msgid "The Client ID/WP.com Blog ID of this site"
 msgstr "מזהה בלוג ID/WP.com של סביבת אתר זה"
 
@@ -12251,32 +12353,32 @@ msgstr "התוסף כבר פעיל."
 msgid "The Plugin is already deactivated."
 msgstr "התוסף כבר כובה."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1652
+#: _inc/lib/class.core-rest-api-endpoints.php:1663
 #: class.jetpack-twitter-cards.php:228
 msgid "The Twitter username of the owner of this site's domain."
 msgstr "שם משתמש ב-Twitter של בעל הדומיין של אתר זה."
 
-#: class.jetpack.php:5732
+#: class.jetpack.php:5737
 msgid "The WP.com user ID of the connected user"
 msgstr "זיהוי משתמש WP.com של המשתמש המחובר"
 
-#: class.jetpack.php:5742
+#: class.jetpack.php:5747
 msgid "The WP.com user email of the connected user"
 msgstr "האימייל של משתמש WP.com של המשתמש המחובר"
 
-#: class.jetpack.php:5737
+#: class.jetpack.php:5742
 msgid "The WP.com username of the connected user"
 msgstr "שם משתמש WP.com של המשתמש המחובר"
 
-#: class.jetpack.php:6118
+#: class.jetpack.php:6123
 msgid "The authorization process expired.  Please go back and try again."
 msgstr "תהליך ההרשאה פג. חזרו חזרה ונסו שוב."
 
-#: class.jetpack.php:5747
+#: class.jetpack.php:5752
 msgid "The number of sites of the connected WP.com user"
 msgstr "מספר האתרים של משתמש WP.com המחובר"
 
-#: class.jetpack.php:4292
+#: class.jetpack.php:4297
 msgid "The old version has been deactivated and can be removed from your site."
 msgid_plural "The old versions have been deactivated and can be removed from your site."
 msgstr[0] "הגרסה הקודמת הושבתה ואפשר להסירה מן האתר."
@@ -12358,15 +12460,15 @@ msgstr "סוג"
 msgid "Unknown post type requested."
 msgstr "בוצעה בקשה לסוג תוכן לא ידוע."
 
-#: class.jetpack.php:3827
+#: class.jetpack.php:3832
 msgid "Using the checkboxes next to each module, you can select multiple modules to toggle via the Bulk Actions menu at the top of the list."
 msgstr "באמצעות תיבות הסימון שעל יד כל מודול, ניתן לבחור במספר מודולים ולהפעיל או לכבות אותם בפעולה גורפת דרך התפריט שבראש הרשימה "
 
-#: class.jetpack.php:3829
+#: class.jetpack.php:3834
 msgid "Using the tools on the right, you can search for specific modules, filter by module categories or which are active, or change the sorting order."
 msgstr "באמצעות הכלים מימין ניתן לחפש מודולים ספציפיים, לסנן אותם לפי קטגוריות או לפי מצב ההפעלה (מופעל/ כבוי), ולשנות את סדר המיון שלהם. "
 
-#: class.jetpack.php:4254
+#: class.jetpack.php:4259
 msgid "You are all set! Your site can now be managed from <a href=\"%s\" target=\"_blank\">wordpress.com/sites</a>."
 msgstr "הכול מוכן! עכשיו אפשר לנהל את האתר שלך מ-<a href=\"%s\" target=\"_blank\">WordPress.com/sites</a>."
 
@@ -12398,7 +12500,7 @@ msgstr "אתם צריכים להגדיר תבנית עיצוב על מנת לע�
 msgid "You are required to specify a theme to update."
 msgstr "יש לציין ערכת עיצוב לעדכון."
 
-#: class.jetpack.php:6072
+#: class.jetpack.php:6077
 msgid "You must connect your Jetpack plugin to WordPress.com to use this feature."
 msgstr "אתם צריכים לחבר את תוסף הג'טפק ל- WordPress.com על מנת להשתמש בתכונה זו."
 
@@ -12406,12 +12508,12 @@ msgstr "אתם צריכים לחבר את תוסף הג'טפק ל- WordPress.com
 msgid "You must specify a valid action"
 msgstr "עליך לציין פעולה תקפה"
 
-#: class.jetpack.php:7022
+#: class.jetpack.php:7027
 msgctxt "{#} Blocked malicious login attempts -- number is on a prior line, text is a caption."
 msgid "Blocked malicious login attempts"
 msgstr "ניסיונות התחברות זדוניים שנחסמו"
 
-#: class.jetpack.php:7035
+#: class.jetpack.php:7040
 msgctxt "{#} Spam comments blocked by Akismet -- number is on a prior line, text is a caption."
 msgid "Spam comments blocked by Akismet."
 msgstr "תגובות זבל שנחסמו על ידי Akismet."
@@ -12420,60 +12522,60 @@ msgstr "תגובות זבל שנחסמו על ידי Akismet."
 msgid "<strong>Jetpack is activated!</strong> Each site on your network must be connected individually by an admin on that site."
 msgstr "<strong>Jetpack הופעל בהצלחה</strong> כל אתר ברשת שלך יצטרך להתחבר באופן עצמאי על ידי המנהל של אותו אתר."
 
-#: class.jetpack.php:5242
+#: class.jetpack.php:5247
 msgid "Error Details: Jetpack ID begins with a numeral. Do not publicly post this error message! %s"
 msgstr "פרטי שגיאה: מזהה Jetpack מתחיל במספר. אין לפרסם בפומבי הודעת שגיאה זו! %s"
 
-#: class.jetpack.php:5238
+#: class.jetpack.php:5243
 msgid "Error Details: Jetpack ID is empty. Do not publicly post this error message! %s"
 msgstr "פרטי השגיאה: מזהה Jetpack ריק. אין לפרסם ברבים הודעת שגיאה זו! %s"
 
-#: class.jetpack.php:5240
+#: class.jetpack.php:5245
 msgid "Error Details: Jetpack ID is not a scalar. Do not publicly post this error message! %s"
 msgstr "פרטי שגיאה: מזהה Jetpack אינו סקלרי. אין לפרסם בפומבי הודעת שגיאה זו! %s"
 
-#: class.jetpack.php:3837
+#: class.jetpack.php:3842
 msgid "Jetpack FAQ"
 msgstr "שאלות נפוצות על Jetpack"
 
-#: class.jetpack.php:5763
+#: class.jetpack.php:5768
 msgid "Jetpack Plugin Version"
 msgstr "גירסת התוסף Jetpack"
 
-#: class.jetpack.php:3838
+#: class.jetpack.php:3843
 msgid "Jetpack Support"
 msgstr "תמיכה של Jetpack"
 
-#. #-#-#-#-#  jetpack-code.pot (Jetpack by WordPress.com 6.3.2)  #-#-#-#-#
+#. #-#-#-#-#  jetpack-code.pot (Jetpack by WordPress.com 6.4.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: class.jetpack.php:3810 class.jetpack.php:3823 class.jetpack.php:4805
+#: class.jetpack.php:3815 class.jetpack.php:3828 class.jetpack.php:4810
 #: views/admin/network-admin-header.php:5
 msgid "Jetpack by WordPress.com"
 msgstr "Jetpack של וורדפרס.קום"
 
-#: class.jetpack.php:4281
+#: class.jetpack.php:4286
 msgid "Jetpack contains the most recent version of the old %l plugin."
 msgid_plural "Jetpack contains the most recent versions of the old %l plugins."
 msgstr[0] "Jetpack מכיל את הגרסה האחרונה של התוסף %l ."
 msgstr[1] "Jetpack כבר מכיל את הגרסאות האחרונות של התוספים %l הישנים."
 
-#: class.jetpack.php:3596 class.jetpack.php:3612
+#: class.jetpack.php:3601 class.jetpack.php:3617
 msgid "Jetpack contains the most recent version of the old &#8220;%1$s&#8221; plugin."
 msgstr "Jetpack מכיל את הגירסה העדכנית ביותר של התוסף הישן \\\"% 1 $ s\\\"."
 
-#: class.jetpack.php:3092
+#: class.jetpack.php:3097
 msgid "Jetpack requires WordPress version %s or later."
 msgstr "תוסף Jetpack עובד רק עם וורדפרס בגרסה %s ומעלה."
 
-#: class.jetpack.php:3811
+#: class.jetpack.php:3816
 msgid "Jetpack supercharges your self-hosted WordPress site with the awesome cloud power of WordPress.com."
 msgstr "Jetpack מעצים את האתר שלך בכח הענן של וורדפרס.קום"
 
-#: class.jetpack.php:4860
+#: class.jetpack.php:4865
 msgid "Manage your multiple Jetpack sites from our centralized dashboard at wordpress.com/sites. <a href=\"%s\" target=\"_blank\">Learn more</a>."
 msgstr "ניהול אתרי Jetpack המרובים שלך מלוח הבקרה המרכזי שלנו ב-WordPress.com/sites. <a href=\"%s\" target=\"_blank\">מידע נוסף</a>."
 
-#: class.jetpack.php:3812
+#: class.jetpack.php:3817
 msgid "On this page, you are able to view the modules available within Jetpack, learn more about them, and activate or deactivate them as needed."
 msgstr "בדף זה, אתה יכול לראות את הרכיבים הזמינים של Jetpack FAQ, ללמוד עליהם עוד, ולהפעיל או להשבית אותם על פי צרכיך."
 
@@ -12486,11 +12588,11 @@ msgid "WordPress.com is currently having problems and is unable to fuel up your 
 msgstr "לוורדפרס.קום יש בעיות כרגע ואינה יכולה לתדלק את ה Jetpack שלך. בבקשה נסה שוב מאוחר יותר."
 
 #. translators: %s is a URL
-#: class.jetpack.php:1656
+#: class.jetpack.php:1661
 msgid "You are currently running a development version of Jetpack. <a href=\"%s\" target=\"_blank\">Submit your feedback</a>"
 msgstr "נראה שנעשה כאן שימוש בגרסת פיתוח של Jetpack. <a href=\"%s\" target=\"_blank\">שליחת המשוב שלך</a>"
 
-#: class.jetpack.php:3824
+#: class.jetpack.php:3829
 msgid "You can activate or deactivate individual Jetpack modules to suit your needs."
 msgstr "אפשר להפעיל או לבטל רכיבים שונים של Jetpack לפי הצורך."
 
@@ -12629,10 +12731,6 @@ msgstr "שם"
 msgid "An incompatible plugin."
 msgstr "תוסף שאינו תואם."
 
-#: class.jetpack-cli.php:1450
-msgid "Are you sure? This cannot be undone. Type \"yes\" to continue:"
-msgstr "ההחלטה סופית? לא ניתן לבטל אותה. יש להקליד 'yes' כדי להמשיך:"
-
 #: class.jetpack-cli.php:510
 msgid "Cleared all whitelisted IPs"
 msgstr "כל כתובות ה-IP נוקו מרשימת ההיתרים"
@@ -12693,12 +12791,12 @@ msgstr "הדומיין `%1$s` נכשל בבדיקה is_usable_domain מכיוו�
 #: modules/minileven/theme/pub/minileven/content.php:51
 #: modules/minileven/theme/pub/minileven/image.php:92
 #: modules/minileven/theme/pub/minileven/page.php:36
-#: modules/publicize/ui.php:565 modules/publicize/ui.php:569
+#: modules/publicize/ui.php:592 modules/publicize/ui.php:596
 msgid "Edit"
 msgstr "עריכה"
 
-#: class.jetpack-client-server.php:239 class.jetpack.php:5221
-#: class.jetpack.php:5223 class.jetpack.php:5228 class.jetpack.php:5233
+#: class.jetpack-client-server.php:239 class.jetpack.php:5226
+#: class.jetpack.php:5228 class.jetpack.php:5233 class.jetpack.php:5238
 msgid "Error Details: %s"
 msgstr "פרטים שגויים: %s"
 
@@ -12754,7 +12852,7 @@ msgid "It may be caused by one of these issues, which you can diagnose yourself:
 msgstr "זה יכול היה להגרם ע\"י אחד מהנושאים הבאים. תוכלו לאבחן זאת בעצמכם:"
 
 #: class.jetpack-admin.php:255 class.jetpack-debugger.php:220
-#: class.jetpack.php:3839
+#: class.jetpack.php:3844
 msgid "Jetpack Debugging Center"
 msgstr "מרכז מציאת הבאגים של ג'טפק"
 
@@ -12787,7 +12885,7 @@ msgstr "תן לנו לדעת מה שמך"
 msgid "Load your <a href=\"%s\">XMLRPC file</a>. It should say “XML-RPC server accepts POST requests only.” on a line by itself."
 msgstr "טען את <a href=\"%s\">קובץ XMLRPC</a> שלך. הוא אמור להגיד “שרת XML-RPC מקבל בקשות POST בלבד.” בשורה בעצמו."
 
-#: _inc/lib/class.core-rest-api-endpoints.php:1179 class.jetpack-cli.php:288
+#: _inc/lib/class.core-rest-api-endpoints.php:1190 class.jetpack-cli.php:288
 #: class.jetpack-cli.php:297
 msgid "Modules reset to default."
 msgstr "מודולים יאופסו לברירת מחדל."
@@ -12795,7 +12893,7 @@ msgstr "מודולים יאופסו לברירת מחדל."
 #: _inc/lib/core-api/class.jetpack-core-api-module-endpoints.php:1117
 #: class.jetpack-debugger.php:406 class.jetpack-modules-list-table.php:204
 #: modules/carousel/jetpack-carousel.php:265
-#: modules/contact-form/grunion-contact-form.php:1582
+#: modules/contact-form/grunion-contact-form.php:1609
 #: modules/contact-form/grunion-editor-view.php:84
 #: modules/contact-form/grunion-editor-view.php:215
 #: modules/contact-form/grunion-form-view.php:198
@@ -12881,8 +12979,8 @@ msgstr "חפש מודולים..."
 #: _inc/jetpack-strings.php:609
 #: _inc/lib/admin-pages/class.jetpack-react-page.php:67
 #: _inc/lib/admin-pages/class.jetpack-settings-page.php:15
-#: class.jetpack-network.php:272 class.jetpack.php:3821 class.jetpack.php:3909
-#: modules/masterbar/masterbar.php:990 modules/publicize/ui.php:565
+#: class.jetpack-network.php:272 class.jetpack.php:3826 class.jetpack.php:3914
+#: modules/masterbar/masterbar.php:990 modules/publicize/ui.php:592
 #: modules/sharedaddy/sharedaddy.php:217 modules/sharedaddy/sharedaddy.php:224
 #: modules/stats.php:589
 msgid "Settings"
@@ -12913,11 +13011,11 @@ msgid "Sort by:"
 msgstr "איך למיין את הרשימה?"
 
 #: class.jetpack-debugger.php:430
-#: modules/contact-form/grunion-contact-form.php:1568
+#: modules/contact-form/grunion-contact-form.php:1595
 msgid "Submit &#187;"
 msgstr "&laquo; לשלוח"
 
-#: class.jetpack.php:3910 modules/sharedaddy/sharedaddy.php:225
+#: class.jetpack.php:3915 modules/sharedaddy/sharedaddy.php:225
 #: views/admin/network-admin-footer.php:27
 msgid "Support"
 msgstr "תמיכה"
@@ -13019,18 +13117,13 @@ msgstr "ערך"
 msgid "An administrator for this blog must set up the Jetpack connection."
 msgstr "מנהל הבלוג חייב להגדיר את החיבור ל-Jetpack."
 
-#. translators: Don't translate the word yes here.
-#: class.jetpack-cli.php:1453
-msgid "Are you sure? Modifying this option may disrupt your Jetpack connection.  Type \"yes\" to continue."
-msgstr "ההחלטה סופית? שינוי אפשרות זו עלול לשבש את חיבור ה-Jetpack שלך. יש להקליד 'yes' כדי להמשיך."
-
 #: _inc/jetpack-strings.php:564
 msgid "Disconnect Jetpack"
 msgstr "נתק את Jetpack"
 
 #: _inc/jetpack-strings.php:499 class.jetpack-network.php:204
-#: class.jetpack-network.php:270 class.jetpack.php:3904
-#: modules/publicize/ui.php:105
+#: class.jetpack-network.php:270 class.jetpack.php:3909
+#: modules/publicize/ui.php:106
 msgid "Jetpack"
 msgstr "Jetpack"
 

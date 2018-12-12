@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Broken Link Checker - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-27 13:34:16+0000\n"
+"PO-Revision-Date: 2018-09-10 12:45:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1126,7 +1126,7 @@ msgstr "Datenbank-Zeichensatz"
 
 #: core/core.php:3451
 msgid "Redirects may be detected as broken links when open_basedir is on."
-msgstr "Umleitungen werden unter Umständen als fehlerhafte Links erkannt, falls <em>open_basedir</em> aktiviert ist."
+msgstr "Umleitungen werden unter Umständen als fehlerhafte Links erkannt, falls open_basedir aktiviert ist."
 
 #: core/core.php:3450
 msgid "On ( %s )"

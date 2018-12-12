@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Very Simple Contact Form - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-07-08 14:41:00+0000\n"
+"PO-Revision-Date: 2018-09-14 10:50:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,38 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - Very Simple Contact Form - Development (trunk)\n"
+
+#: vscf-widget.php:30
+msgid "Text above form"
+msgstr "Text über dem Formular"
+
+#: vscf-options.php:212
+msgid "Displayed in the confirmation email to sender."
+msgstr "Erscheint in der Bestätigungs-E-Mail, die an den Absender des Formulars geht."
+
+#: vscf-options.php:67
+msgid "Message error"
+msgstr "Fehler in der Mitteilung"
+
+#: vscf-options.php:70 vscf-options.php:228
+msgid "Messages"
+msgstr "Mitteilungen"
+
+#: vscf-options.php:64
+msgid "Captcha error"
+msgstr "Fehler im Captcha"
+
+#: vscf-options.php:61
+msgid "Subject error"
+msgstr "Fehler im Betreff"
+
+#: vscf-options.php:58
+msgid "Email error"
+msgstr "Fehler in der E-Mail-Adresse"
+
+#: vscf-options.php:55
+msgid "Name error"
+msgstr "Fehler im Namen"
 
 #. Author URI of the plugin/theme
 msgid "https://www.guido.site"
@@ -19,82 +51,65 @@ msgstr "https://www.guido.site"
 msgid "Guido"
 msgstr "Guido"
 
-#: vscf-options.php:114
+#: vscf-options.php:119
 msgid "Disable collection of IP address."
 msgstr "Sammeln von IP-Adressen abschalten"
 
-#: vscf-options.php:213
+#: vscf-options.php:243
 msgid "More customizations can be made using (shortcode) attributes."
-msgstr "Weitere Anpassungen können mittels Shortcode-Attribute gemacht werden."
+msgstr "Weitere Anpassungen können mithilfe von Shortcode-Attributen vorgenommen werden."
 
-#: vscf-form.php:238 vscf-widget-form.php:238
+#: vscf-submission.php:42
 msgid "No"
 msgstr "Nein"
 
-#: vscf-form.php:236 vscf-widget-form.php:236
+#: vscf-submission.php:40
 msgid "Yes"
 msgstr "Ja"
-
-#: vscf-options.php:106
-msgid "Activate privacy checkbox on form."
-msgstr "Datenschutz-Checkbox im Formular aktivieren."
 
 #: vscf-options.php:26 vscf-options.php:29 vscf-options.php:49
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: vscf-form.php:250 vscf-form.php:258 vscf-widget-form.php:250
-#: vscf-widget-form.php:258
+#: vscf-submission.php:54 vscf-submission.php:62
 msgid "Privacy consent: %s"
 msgstr "Datenschutz-Einverständnis: %s"
 
-#: vscf-form.php:65 vscf-options.php:149 vscf-widget-form.php:65
+#: vscf-labels.php:90 vscf-options.php:154
 msgid "I consent to having this website collect my personal data via this form."
 msgstr "Ich bin damit einverstanden, dass diese Web-Site meine persönlichen Daten mit diesem Formular sammelt."
 
-#: vscf-widget.php:38 vscf.php:121
+#: vscf-options.php:111
+msgid "Activate privacy checkbox on form."
+msgstr "Datenschutz-Kontrollkästchen im Formular anhaken."
+
+#: vscf.php:122
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: vscf-options.php:98
+#: vscf-options.php:103
 msgid "Activate confirmation email to sender."
 msgstr "Bestätigungs-E-Mail an den Absender aktivieren."
 
-#: vscf-options.php:90
+#: vscf-options.php:95
 msgid "List form submissions in dashboard."
 msgstr "Abgesendete Formulare im Dashboard anzeigen."
 
-#: vscf-options.php:82
+#: vscf-options.php:87
 msgid "Do not delete form submissions and settings."
 msgstr "Abgesendete Formulare und Einstellungen behalten."
 
-#: vscf-options.php:73
+#: vscf-options.php:78
 msgid "Reply message"
 msgstr "Antwort-Text"
 
-#: vscf-options.php:70
+#: vscf-options.php:75
 msgid "Thank you message"
 msgstr "Danke-Text"
 
-#: vscf-options.php:67
+#: vscf-options.php:72
 msgid "Server error message"
 msgstr "Server-Fehler-Text"
-
-#: vscf-options.php:64
-msgid "Error captcha"
-msgstr "Captcha-Fehler"
-
-#: vscf-options.php:61
-msgid "Error email"
-msgstr "E-Mail-Fehler"
-
-#: vscf-options.php:58
-msgid "Error textarea"
-msgstr "Textfeld-Fehler"
-
-#: vscf-options.php:55
-msgid "Error input field"
-msgstr "Eingabefeld-Fehler"
 
 #: vscf-options.php:43
 msgid "Captcha"
@@ -112,7 +127,7 @@ msgstr "Absendungen"
 msgid "Uninstall"
 msgstr "Deinstallieren"
 
-#: vscf-options.php:15
+#: vscf-options.php:15 vscf-options.php:226
 msgid "General"
 msgstr "Allgemein"
 
@@ -120,15 +135,15 @@ msgstr "Allgemein"
 msgid "VSCF"
 msgstr "VSCF"
 
-#: vscf-options.php:32
+#: vscf-options.php:32 vscf-options.php:227
 msgid "Labels"
-msgstr "Labels und Textbausteine"
+msgstr "Labels"
 
-#: vscf-options.php:214 vscf-widget.php:37 vscf-widget.php:38
+#: vscf-options.php:244 vscf-widget.php:37
 msgid "click here"
 msgstr "hier klicken"
 
-#: vscf-form.php:85 vscf-options.php:185 vscf-widget-form.php:85
+#: vscf-labels.php:174 vscf-options.php:196
 msgid "Error! Could not send form. This might be a server issue."
 msgstr "Fehler! Das Formular konnte nicht gesendet werden. Möglicherweise ein Server-Problem."
 
@@ -136,28 +151,20 @@ msgstr "Fehler! Das Formular konnte nicht gesendet werden. Möglicherweise ein S
 msgid "Title"
 msgstr "Titel"
 
-#: vscf-widget.php:30
-msgid "Information"
-msgstr "Information"
-
-#: vscf-form.php:92 vscf-form.php:104 vscf-options.php:191 vscf-options.php:197
-#: vscf-widget-form.php:92 vscf-widget-form.php:104
+#: vscf-labels.php:186 vscf-labels.php:198 vscf-options.php:202
+#: vscf-options.php:208
 msgid "Thank you! You will receive a response as soon as possible."
 msgstr "Vielen Dank! Du erhältst so schnell wie möglich eine Antwort."
-
-#: vscf-options.php:214 vscf-widget.php:37
-msgid "Info about attributes"
-msgstr "Über Attribute"
 
 #: vscf-widget.php:10
 msgid "Display your contact form in a widget."
 msgstr "Dein Kontaktformular als Widget."
 
-#: vscf-form.php:80 vscf-options.php:179 vscf-widget-form.php:80
+#: vscf-labels.php:150 vscf-options.php:184
 msgid "Please enter the correct number"
 msgstr "Bitte die angezeigte Zahl eingeben"
 
-#: vscf-form.php:59 vscf-options.php:137 vscf-widget-form.php:59
+#: vscf-labels.php:66 vscf-options.php:142
 msgid "Enter number %s"
 msgstr "Bitte %s eingeben"
 
@@ -165,54 +172,50 @@ msgstr "Bitte %s eingeben"
 msgid "Attributes"
 msgstr "Attribute"
 
-#: vscf-form.php:244 vscf-widget-form.php:244
+#: vscf-submission.php:48
 msgid "IP: %s"
 msgstr "IP-Adresse: %s"
 
-#: vscf-form.php:50 vscf-options.php:34 vscf-options.php:119
-#: vscf-widget-form.php:50 vscf.php:62
+#: vscf-labels.php:30 vscf-options.php:34 vscf-options.php:124 vscf.php:63
 msgid "Name"
 msgstr "Name"
 
-#: vscf-form.php:53 vscf-options.php:37 vscf-options.php:125
-#: vscf-widget-form.php:53 vscf.php:63
+#: vscf-labels.php:42 vscf-options.php:37 vscf-options.php:130 vscf.php:64
 msgid "Email"
 msgstr "E-Mail-Adresse"
 
-#: vscf-form.php:56 vscf-options.php:40 vscf-options.php:131
-#: vscf-widget-form.php:56
+#: vscf-labels.php:54 vscf-options.php:40 vscf-options.php:136
 msgid "Subject"
 msgstr "Betreff"
 
-#: vscf-form.php:62 vscf-options.php:46 vscf-options.php:143
-#: vscf-widget-form.php:62
-msgid "Message"
-msgstr "Nachricht"
-
-#: vscf-form.php:68 vscf-options.php:52 vscf-options.php:155
-#: vscf-widget-form.php:68
+#: vscf-labels.php:102 vscf-options.php:52 vscf-options.php:160
 msgid "Submit"
 msgstr "Senden"
 
-#. #-#-#-#-#  very-simple-contact-form-code.pot (Very Simple Contact Form 8.6) 
+#. #-#-#-#-#  very-simple-contact-form-code.pot (Very Simple Contact Form 9.1) 
 #. #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: vscf-options.php:207 vscf-widget.php:11 vscf-widget.php:21
+#: vscf-options.php:221 vscf-widget.php:11 vscf-widget.php:21
 msgid "Very Simple Contact Form"
 msgstr "Very Simple Contact Form"
-
-#: vscf-form.php:71 vscf-options.php:161 vscf-widget-form.php:71
-msgid "Please enter at least 2 characters"
-msgstr "Gib bitte mindestens zwei Zeichen ein"
-
-#: vscf-form.php:77 vscf-options.php:173 vscf-widget-form.php:77
-msgid "Please enter a valid email"
-msgstr "Bitte gib eine gültige E-Mail-Adresse ein"
 
 #. Description of the plugin/theme
 msgid "This is a very simple contact form. Use shortcode [contact] to display form on page or use the widget. For more info please check readme file."
 msgstr "Dies ist ein sehr einfaches Kontaktformular. Verwende den Shortcode [contact], um das Formular auf einer Seite anzuzeigen, oder verwende das Widget. Weitere Informationen findest du im Readme."
 
-#: vscf-form.php:74 vscf-options.php:167 vscf-widget-form.php:74
+#: vscf-labels.php:126 vscf-options.php:172
+msgid "Please enter a valid email"
+msgstr "Bitte eine gültige E-Mail-Adresse eingeben"
+
+#: vscf-labels.php:162 vscf-options.php:190
 msgid "Please enter at least 10 characters"
-msgstr "Gib bitte mindestens zehn Zeichen ein"
+msgstr "Bitte mindestens zehn Zeichen eingeben"
+
+#: vscf-labels.php:114 vscf-labels.php:138 vscf-options.php:166
+#: vscf-options.php:178
+msgid "Please enter at least 2 characters"
+msgstr "Bitte mindestens zwei Zeichen eingeben"
+
+#: vscf-labels.php:78 vscf-options.php:46 vscf-options.php:148
+msgid "Message"
+msgstr "Mitteilung"

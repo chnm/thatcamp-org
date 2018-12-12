@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Broken Link Checker - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-20 14:11:33+0000\n"
+"PO-Revision-Date: 2018-11-24 18:34:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,7 +21,7 @@ msgstr "Inserisci le chiavi dei campi ACF che vuoi controllare (una per riga). S
 
 #. Plugin URI of the plugin/theme
 msgid "https://wordpress.org/plugins/broken-link-checker/"
-msgstr "https://wordpress.org/plugins/broken-link-checker/"
+msgstr "https://it.wordpress.org/plugins/broken-link-checker/"
 
 #. Author of the plugin/theme
 msgid "Janis Elsts, Vladimir Prelovac"
@@ -745,16 +745,6 @@ msgstr "Mostra %s&#8211;%s di <span class=\"current-link-count\">%s</span>"
 msgid "Edit"
 msgstr "Modifica"
 
-#: includes/any-post.php:443 modules/containers/acf_field.php:254
-#: modules/containers/blogroll.php:47 modules/containers/custom_field.php:245
-msgid "Delete"
-msgstr "Cancella"
-
-#: includes/any-post.php:465 modules/containers/acf_field.php:258
-#: modules/containers/comment.php:172 modules/containers/custom_field.php:250
-msgid "View"
-msgstr "Mostra"
-
 #: includes/admin/table-printer.php:782
 msgid "[An orphaned link! This is a bug.]"
 msgstr "[An orphaned link! This is a bug.]"
@@ -1452,11 +1442,6 @@ msgstr "Aggiorna"
 msgid "Log"
 msgstr "Registro"
 
-#: includes/admin/table-printer.php:636
-msgctxt "checked how long ago"
-msgid "Checked"
-msgstr "Verificato"
-
 #: includes/admin/table-printer.php:652
 msgid "Broken for"
 msgstr "Rotto per"
@@ -1524,11 +1509,6 @@ msgstr "Si è verificato un errore imprevisto!"
 msgctxt "link suggestions"
 msgid "No suggestions available."
 msgstr "Nessun suggerimento disponibile."
-
-#: core/core.php:401 includes/admin/table-printer.php:292
-#: includes/admin/table-printer.php:702
-msgid "Dismiss"
-msgstr "Chiudi"
 
 #: core/core.php:2149 core/core.php:2208
 msgid "Couldn't modify link %d"
@@ -1781,3 +1761,23 @@ msgstr "Sposta nel cestino"
 #: includes/admin/table-printer.php:290
 msgid "Fix redirects"
 msgstr "Correggi reindirizzamenti"
+
+#: includes/any-post.php:465 modules/containers/acf_field.php:258
+#: modules/containers/comment.php:172 modules/containers/custom_field.php:250
+msgid "View"
+msgstr "Visualizza"
+
+#: includes/any-post.php:443 modules/containers/acf_field.php:254
+#: modules/containers/blogroll.php:47 modules/containers/custom_field.php:245
+msgid "Delete"
+msgstr "Elimina"
+
+#: core/core.php:401 includes/admin/table-printer.php:292
+#: includes/admin/table-printer.php:702
+msgid "Dismiss"
+msgstr "Ignora"
+
+#: includes/admin/table-printer.php:636
+msgctxt "checked how long ago"
+msgid "Checked"
+msgstr "Selezionato"

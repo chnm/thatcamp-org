@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-07-10 07:22:03+0000\n"
+"PO-Revision-Date: 2018-07-17 05:54:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5467,7 +5467,7 @@ msgstr "Activa o desactiva los comentarios"
 
 #: wp-admin/includes/dashboard.php:1615
 msgid "Learn more about getting started"
-msgstr "Aprende más de cómo comenzar"
+msgstr "Aprende más sobre cómo comenzar"
 
 #: wp-admin/includes/media.php:2865
 msgid "File URL:"
@@ -5593,10 +5593,6 @@ msgstr "¡Bienvenido a WordPress!"
 msgid "After you&#8217;ve done that, click &#8220;Run the installation.&#8221;"
 msgstr "Después de hacer esto haz clic en &#8220;Ejecutar la instalación.&#8221;"
 
-#: wp-admin/includes/dashboard.php:1567
-msgid "We&#8217;ve assembled some links to get you started:"
-msgstr "Hemos creado algunos enlaces para que puedas comenzar:"
-
 #: wp-admin/includes/plugin-install.php:325
 msgid "If you have marked plugins as favorites on WordPress.org, you can browse them here."
 msgstr "Si has marcado plugins cómo favoritos en WordPress.org, puedes verlos aquí."
@@ -5608,6 +5604,10 @@ msgstr "Permitir a los buscadores indexar este sitio"
 #: wp-admin/setup-config.php:194
 msgid "Below you should enter your database connection details. If you&#8217;re not sure about these, contact your host."
 msgstr "A continuación debes introducir los detalles de conexión de tu base de datos. Si no estás seguro de esta información contacta con tu proveedor de alojamiento web."
+
+#: wp-admin/includes/dashboard.php:1567
+msgid "We&#8217;ve assembled some links to get you started:"
+msgstr "Hemos recopilado algunos enlaces para que puedas comenzar:"
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:112
 msgctxt "Plugin Installer"
@@ -7770,7 +7770,7 @@ msgstr "Puedes establecer los tamaños máximos para las imágenes insertadas en
 
 #: wp-admin/edit-form-advanced.php:474
 msgid "<strong>Order</strong> &mdash; Pages are usually ordered alphabetically, but you can choose your own order by entering a number (1 for first, etc.) in this field."
-msgstr "<strong>Orden</strong> &mdash; Las paginas normalmente se ordenan alfabéticamente, pero puedes elegir tu propio orden introduciendo un número (1 para la primera, etc.) en este campo."
+msgstr "<strong>Orden</strong> &mdash; Las páginas normalmente se ordenan alfabéticamente, pero puedes elegir tu propio orden introduciendo un número (1 para la primera, etc.) en este campo."
 
 #: wp-admin/includes/file.php:1695
 msgid "Please enter your FTP or SSH credentials to proceed."

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-11 10:54:14+0000\n"
+"PO-Revision-Date: 2018-11-09 10:00:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -576,11 +576,6 @@ msgstr "nel forum del gruppo"
 #: templates/default/bbpress/loop-search-topic.php:37
 msgid "in forum "
 msgstr "nel forum"
-
-#: templates/default/bbpress/loop-search.php:22
-#: templates/default/bbpress/loop-search.php:44
-msgid "Search Results"
-msgstr "Risultati ricerca"
 
 #: templates/default/bbpress-functions.php:248
 #: templates/default/bbpress-functions.php:257
@@ -2857,6 +2852,11 @@ msgstr "Accesso"
 msgctxt "Make topic sticky"
 msgid "Sticky"
 msgstr "In evidenza"
+
+#: templates/default/bbpress/loop-search.php:22
+#: templates/default/bbpress/loop-search.php:44
+msgid "Search Results"
+msgstr "Risultati della ricerca"
 
 #: includes/admin/admin.php:630
 msgctxt "admin color scheme"

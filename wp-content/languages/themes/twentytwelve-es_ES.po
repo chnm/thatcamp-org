@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Twelve package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-10-21 19:36:21+0000\n"
+"PO-Revision-Date: 2018-12-07 01:00:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,19 +11,39 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: Themes - Twenty Twelve\n"
 
-#. Description of the plugin/theme
+#. Description of the theme
 msgid "The 2012 theme for WordPress is a fully responsive theme that looks great on any device. Features include a front page template with its own widgets, an optional display font, styling for post formats on both index and single views, and an optional no-sidebar page template. Make it yours with a custom menu, header image, and background."
 msgstr "El tema 2012 para WordPress es un tema totalmente adaptable que se ve genial en cualquier dispositivo. Entra sus características encontrarás una plantilla de página principal con sus propios widgets, una fuente opcional, estilos para formatos de entrada tanto en portada como en entradas, y una plantilla de página opcional sin barra lateral. Ponlo a tu gusto con un menú personalizado, la cabecera de imagen o el fondo."
 
-#. Theme Name of the plugin/theme
+#. Theme Name of the theme
 msgid "Twenty Twelve"
 msgstr "Twenty Twelve"
 
-#. Template Name of the plugin/theme
+#: functions.php:89
+msgid "White"
+msgstr "Blanco"
+
+#: functions.php:84
+msgid "Light Gray"
+msgstr "Gris claro"
+
+#: functions.php:79
+msgid "Medium Gray"
+msgstr "Gris medio"
+
+#: functions.php:74
+msgid "Dark Gray"
+msgstr "Gris oscuro"
+
+#: functions.php:69
+msgid "Blue"
+msgstr "Azul"
+
+#. Template Name of the theme
 msgid "Full-width Page Template, No Sidebar"
 msgstr "Página a tamaño completo, sin barras laterales"
 
-#. Template Name of the plugin/theme
+#. Template Name of the theme
 msgid "Front Page Template"
 msgstr "Plantilla de página de portada"
 
@@ -77,115 +97,115 @@ msgstr "Saltar al contenido"
 msgid "Menu"
 msgstr "Menú"
 
-#: functions.php:419
+#: functions.php:473
 msgid "This entry was posted on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Esta entrada fue publicada el %3$s<span class=\"by-author\"> por %4$s</span>."
 
-#: functions.php:417
+#: functions.php:471
 msgid "This entry was posted in %1$s on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Esta entrada fue publicada en %1$s el %3$s<span class=\"by-author\"> por %4$s</span>."
 
 #. Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's
 #. name.
-#: functions.php:415
+#: functions.php:469
 msgid "This entry was posted in %1$s and tagged %2$s on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Esta entrada se publicó en %1$s y está etiquetada con %2$s en %3$s<span class=\"by-author\"> por %4$s</span>."
 
-#: functions.php:409
+#: functions.php:463
 msgid "View all posts by %s"
 msgstr "Ver todas las entradas de %s"
 
 #. Translators: used between list items, there is a space after the comma.
-#: functions.php:395 functions.php:398
+#: functions.php:449 functions.php:452
 msgid ", "
 msgstr ", "
 
-#: functions.php:374
+#: functions.php:428
 msgid "Reply"
 msgstr "Responder"
 
-#: functions.php:365
+#: functions.php:419
 msgid "Your comment is awaiting moderation."
 msgstr "Tu comentario está pendiente de moderación."
 
 #. translators: 1: date, 2: time
-#: functions.php:359
+#: functions.php:413
 msgid "%1$s at %2$s"
 msgstr "%1$s a las %2$s"
 
-#: functions.php:353
+#: functions.php:407
 msgid "Post author"
 msgstr "Autor"
 
-#: functions.php:338
+#: functions.php:392
 msgid "(Edit)"
 msgstr "(Editar)"
 
-#: functions.php:338
+#: functions.php:392
 msgid "Pingback:"
 msgstr "Pingback: "
 
-#: functions.php:313
+#: functions.php:367
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Entradas más nuevas <span class=\"meta-nav\">&rarr;</span>"
 
-#: functions.php:312
+#: functions.php:366
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Entradas más antiguas"
 
-#: functions.php:311 single.php:20
+#: single.php:20 functions.php:365
 msgid "Post navigation"
 msgstr "Navegación de entradas"
 
-#: functions.php:289
+#: functions.php:343
 msgid "Second Front Page Widget Area"
 msgstr "Segunda area de widgets de página principal"
 
-#: functions.php:281 functions.php:291
+#: functions.php:335 functions.php:345
 msgid "Appears when using the optional Front Page template with a page set as Static Front Page"
 msgstr "Aparece al usar la plantilla opcional de página principal con una página establecida como página principal estática"
 
-#: functions.php:279
+#: functions.php:333
 msgid "First Front Page Widget Area"
 msgstr "Primer area de widgets de página principal"
 
-#: functions.php:271
+#: functions.php:325
 msgid "Appears on posts and pages except the optional Front Page template, which has its own widgets"
 msgstr "Aparece en entradas y páginas excepto en la plantilla opcional de página principal, que tiene sus propios widgets "
 
-#: functions.php:269
+#: functions.php:323
 msgid "Main Sidebar"
 msgstr "Barra lateral principal"
 
-#: functions.php:240
+#: functions.php:294
 msgid "Page %s"
 msgstr "Página %s"
 
 #. translators: To add an additional Open Sans character subset specific to
-#. your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not
-#. translate into your own language.
-#: functions.php:110
+#. your language, * translate this to 'greek', 'cyrillic' or 'vietnamese'. Do
+#. not translate into your own language.
+#: functions.php:148
 msgctxt "Open Sans font: add new subset (greek, cyrillic, vietnamese)"
 msgid "no-subset"
 msgstr "sin subconjunto"
 
 #. translators: If there are characters in your language that are not supported
-#. by Open Sans, translate this to 'off'. Do not translate into your own
+#. * by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:104
+#: functions.php:142
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr "activada"
 
-#: functions.php:64
+#: functions.php:102
 msgid "Primary Menu"
 msgstr "Menú principal"
 
-#: footer.php:16
+#: footer.php:22
 msgid "Proudly powered by %s"
 msgstr "Creado con %s"
 
-#: footer.php:16
+#: footer.php:21
 msgid "Semantic Personal Publishing Platform"
 msgstr "Plataforma semántica de publicación personal"
 
@@ -197,15 +217,15 @@ msgstr "Ver todas las entradas por %s <span class=\"meta-nav\">&rarr;</span>"
 msgid "Featured post"
 msgstr "Entrada destacada"
 
-#: content-page.php:21 content.php:45 image.php:102
+#: content-page.php:21 image.php:102 content.php:45
 msgid "Pages:"
 msgstr "Páginas:"
 
-#: content-none.php:17 index.php:53
+#: index.php:53 content-none.php:17
 msgid "Apologies, but no results were found. Perhaps searching will help find a related post."
 msgstr "Disculpas, pero no se han encontrado resultados. Quizás pueda buscar una entrada relacionada."
 
-#: content-none.php:13 index.php:49 search.php:34
+#: index.php:49 search.php:34 content-none.php:13
 msgid "Nothing Found"
 msgstr "No se ha encontrado nada"
 
@@ -213,34 +233,34 @@ msgstr "No se ha encontrado nada"
 msgid "Link"
 msgstr "Enlace"
 
-#: content-aside.php:26 content-image.php:26 content-link.php:24
-#: content-page.php:24 content-quote.php:23 content-status.php:40
-#: content.php:51 functions.php:370 image.php:37
+#: content-aside.php:26 content-status.php:40 content-image.php:26
+#: content-link.php:24 content-page.php:24 content-quote.php:23 image.php:37
+#: functions.php:424 content.php:51
 msgid "Edit"
 msgstr "Editar"
 
-#: content-aside.php:23 content-image.php:23 content-link.php:21
-#: content-quote.php:20 content-status.php:37 content.php:33
+#: content-aside.php:23 content-status.php:37 content-image.php:23
+#: content-link.php:21 content-quote.php:20 content.php:33
 msgid "% Replies"
 msgstr "% respuestas"
 
-#: content-aside.php:23 content-image.php:23 content-link.php:21
-#: content-quote.php:20 content-status.php:37 content.php:33
+#: content-aside.php:23 content-status.php:37 content-image.php:23
+#: content-link.php:21 content-quote.php:20 content.php:33
 msgid "1 Reply"
 msgstr "1 respuesta"
 
-#: content-aside.php:23 content-image.php:23 content-link.php:21
-#: content-quote.php:20 content-status.php:37 content.php:33
+#: content-aside.php:23 content-status.php:37 content-image.php:23
+#: content-link.php:21 content-quote.php:20 content.php:33
 msgid "Leave a reply"
 msgstr "Deja un comentario"
 
-#: content-aside.php:20 content-link.php:18 content-quote.php:17
-#: content-status.php:15
+#: content-aside.php:20 content-status.php:15 content-link.php:18
+#: content-quote.php:17
 msgid "Permalink to %s"
 msgstr "Enlace permanente a %s"
 
-#: content-aside.php:15 content-image.php:13 content-link.php:14
-#: content-quote.php:13 content-status.php:31 content.php:44
+#: content-aside.php:15 content-status.php:31 content-image.php:13
+#: content-link.php:14 content-quote.php:13 content.php:44
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Sigue leyendo <span class=\"meta-nav\">&rarr;</span>"
 
@@ -270,7 +290,7 @@ msgstr[1] "%1$s pensamientos en &ldquo;%2$s&rdquo;"
 msgid "Category Archives: %s"
 msgstr "Archivo de la categoría: %s"
 
-#: author.php:63 content.php:62
+#: content.php:62 author.php:63
 msgid "About %s"
 msgstr "Acerca de %s"
 
@@ -312,16 +332,15 @@ msgstr "Parece que no encontramos lo que estás intentando localizar. Es posible
 msgid "This is somewhat embarrassing, isn&rsquo;t it?"
 msgstr "Esto es algo embarazoso, ¿verdad?"
 
-#. #-#-#-#-#  twentytwelve.pot (Twenty Twelve 2.3)  #-#-#-#-#
-#. Author URI of the plugin/theme
-#: footer.php:16
+#. Author URI of the theme
+#: footer.php:21
 msgid "https://wordpress.org/"
 msgstr "https://es.wordpress.org/"
 
-#. Author of the plugin/theme
+#. Author of the theme
 msgid "the WordPress team"
 msgstr "el equipo de WordPress"
 
-#. Theme URI of the plugin/theme
+#. Theme URI of the theme
 msgid "https://wordpress.org/themes/twentytwelve/"
 msgstr "https://es.wordpress.org/themes/twentytwelve/"
