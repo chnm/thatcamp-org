@@ -1,0 +1,479 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Multi-Level Navigation Plugin 2.1.4 po polsku\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-19 02:19+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Michał Maciejewski <admin@inwit.pl>\n"
+"Language-Team: Galareta 1 Man Band <admin@inwit.pl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: POLAND\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-KeywordsList: __;_e;_c;__ngettext:1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin_page.php:97
+#: admin_page.php:350
+#: admin_page.php:395
+msgid "Home"
+msgstr "Start"
+
+#: admin_page.php:103
+msgid "Introduction"
+msgstr "Wprowadzenie"
+
+#: admin_page.php:108
+msgid "Thanks for using our plugin :)"
+msgstr "Dziękujemy za użycie naszej wtyczki :)"
+
+#: admin_page.php:114
+msgid "The Multi-level Navigation Plugin creates a dropdown, flyout or slider menu for your WordPress site based on the <a href=\"http://www.htmldog.com/articles/suckerfish/ target=\"_blank\">Son of Suckerfish technique</a>. If you have any comments, questions or suggestions about this plugin, please visit the <a href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">PixoPoint multi-level navigation forum</a>."
+msgstr "Wtyczka Multi-level Navigation służy do tworzenia na stronach w systemie WordPress wielopoziomowego menu (typu dropdown, flyout lub slider) w oparciu o <a href=\"http://www.htmldog.com/articles/suckerfish/\" target=\"_blank\">technikę Son of Suckerfish</a>. Jeżeli masz jakieś komentarze, pytania lub sugestie, prosimy odwiedź <a href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">forum PixoPoint Multi-level Navigation Plugin</a>."
+
+#: admin_page.php:115
+msgid "Installation"
+msgstr "Instalacja"
+
+#: admin_page.php:116
+msgid "Add the following code wherever you want the dropdown to appear in your theme (usually header.php)"
+msgstr "Wstaw poniższy kod gdziekolwiek chcesz, aby pojawiło się Twoje wielopoziomowe, rozwijalne menu (zazwyczaj w pliku header.php):"
+
+#: admin_page.php:117
+msgid "&lt;?php if (function_exists('pixopoint_menu')) {pixopoint_menu();} ?&gt;"
+msgstr "&lt;?php if (function_exists('pixopoint_menu')) {pixopoint_menu();} ?&gt;"
+
+#: admin_page.php:118
+msgid "To style your menu, please visit the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">Multi-level Navigation CSS Generator</a> page to obtain your CSS and enter it into the \"Appearance\" tab."
+msgstr "Aby odpowiednio \"ostylować\" swoje menu, odwiedź stronę <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">Multi-level Navigation CSS Generator</a>. Uzyskany tam kod CSS wkleisz tutaj po przejściu do zakładki \"Wygląd\"."
+
+#: admin_page.php:128
+msgid "Help"
+msgstr "Pomoc"
+
+#: admin_page.php:133
+msgid "Please do not email us directly or via our <a href=\"http://geek.ryanhellyer.net/contact/\">contact form</a> for unpaid support. We prefer to offer support in our <a href=\"http://geek.ryanhellyer.net/forum/\">forum</a> so that others may learn from the advice"
+msgstr "Prosimy: po bezpłatną pomoc nie pisz do nas ani bezpośrednio ani wykorzystując <a href=\"http://geek.ryanhellyer.net/contact/\">formularz kontaktowy</a>. Wolimy zaoferować naszą pomoc poprzez <a href=\"http://geek.ryanhellyer.net/forum/\">forum</a>, po to, aby inni również mogli skorzystać ze wskazówek dla Ciebie."
+
+#: admin_page.php:142
+msgid "The easy way ... "
+msgstr "Prosta droga..."
+
+#: admin_page.php:143
+msgid "The easiest way to setup the PixoPoint Multi-level Navigation Plugin is to use it with a theme specifically designed to support the plugin. All themes exported from the <a href=\"http://geek.ryanhellyer.net/generator/\">PixoPoint Template Generator</a> (which have dropdown menus) support this by default. Simply activate your theme, then activate the plugin and the new menu will appear instantly. Visit the <a href=\"http://geek.ryanhellyer.net/generator/\">PixoPoint Template Generator</a> to get your own pre-supported theme."
+msgstr "Najprostszy sposób użycia wtyczki PixoPoint Multi-level Navigation to użycie jej przy wykorzystaniu motywu specjalnie przygotowanego na jej wsparcie. Wszystkie motywy eksportowane z <a href=\"http://geek.ryanhellyer.net/generator/\">PixoPoint Template Generator</a> (które zawierają opadające menu) domyślnie wspierają wtyczkę. Po prostu aktywuj motyw, następnie aktywuj wtyczkę i nowe menu natychmiast się pojawi. Zajrzyj na <a href=\"http://geek.ryanhellyer.net/generator/\">PixoPoint Template Generator</a> aby uzyskać swój motyw ze wsparciem dla wtyczki PixoPoint Multi-level Navigation."
+
+#: admin_page.php:144
+msgid "If you don't take this route then read on for simple instructions on how to integrate it into other themes ..."
+msgstr "Jeśli nie chcesz iść tą drogą, przeczytaj dalej proste instrukcje, jak zintegrować wtyczkę z innymi motywami..."
+
+#: admin_page.php:146
+msgid "Paid support"
+msgstr "Płatne wsparcie"
+
+#: admin_page.php:147
+msgid "For direct help via the plugin (and CSS generator) author, please sign up for our Premium Support service ... <strong><a href=\"http://geek.ryanhellyer.net/premium-support/\">http://geek.ryanhellyer.net/premium-support/</a></strong>"
+msgstr "Aby uzyskać bezpośrednią pomoc od autora wtyczki (i generatora CSS), prosimy zapisz się do naszej usługi Premium Support: <strong><a href=\"http://geek.ryanhellyer.net/premium-support/\">http://geek.ryanhellyer.net/premium-support/</a></strong>."
+
+#: admin_page.php:148
+msgid "Our Premium Support option is ideal if you have insufficient time to fix any problems you may have or simply don't know much about coding, we not only offer techinical support and access to our latest betas but we will also install the plugin and set it up on your site if needed. We also do customisations of the plugin for some premium members, although we recommend contacting us via our <a href=\"http://geek.ryanhellyer.net/contact/\">contact form</a> for such requests as some customisations may require extra payment depending on their complexity."
+msgstr "Usługa Premium Support jest idealnym rozwiązaniem, jeżeli nie masz czasu na rozwiązywanie problemów, które mogą przed Tobą stanąć lub po prostu nie wiesz zbyt wiele o kodowaniu. Oferujemy nie tylko wsparcie techniczne i dostęp do najnowszych beta-wersji, ale także instalujemy wtyczkę i ustawiamy jej opcje na Twojej stronie w miarę potrzeb. Wykonujemy również dostosowanie wtyczki do specyficznych potrzeb członków Premium Support, aczkolwiek zalecamy w tego typu sprawach uprzednie skontaktowanie się z nami poprzez nasz <a href=\"http://geek.ryanhellyer.net/contact/\">formularz kontaktowy</a>, ponieważ dostosowanie takie może wiązać się z dodatkowymi kosztami, zależnie od złożoności zadania."
+
+#: admin_page.php:149
+msgid "If you have any questions about our premium services or are looking for other help with other WordPress or (X)HTML/CSS projects including theme development please do not hesitate to contact us via our <a href=\"http://geek.ryanhellyer.net/contact/\">contact form</a>. More information about our premium services is available on our site ... <strong><a href=\"http://geek.ryanhellyer.net/premium-support/\">http://geek.ryanhellyer.net/premium-support/</a></strong>"
+msgstr "Jeśli masz pytania odnośnie naszych usług specjalnych lub szukasz innej pomocy, związanej z innymi projektami na bazie WordPressa lub (X)HTML/CSS, obejmującej tworzenie szablonów stron, prosimy nie wahaj się skontaktować z nami przez  <a href=\"http://geek.ryanhellyer.net/contact/\">formularz kontaktowy</a>. Więcej informacji o naszych usługach specjalnych znajdziesz na naszej stronie  <strong><a href=\"http://geek.ryanhellyer.net/premium-support/\">http://geek.ryanhellyer.net/premium-support/</a></strong>."
+
+#: admin_page.php:150
+msgid "FAQ"
+msgstr "FAQ (najczęściej zadawane pytania)"
+
+#: admin_page.php:151
+msgid "<strong>Q:</strong><em> Your plugin doesn't work in IE, why don't you fix it?</em> <br /><strong>A:</strong> The plugin does work with IE, you just haven't integrated it correctly. See 'Free support' below for some tips on how to get it working with IE."
+msgstr "<strong>P:</strong> <em>Wtyczka nie działa pod Internet Explorerem, dlaczego nie poprawicie tego?</em> <br /><strong>O:</strong> Wtyczka działa pod IE; po prostu została przez Ciebie źle zintegrowana ze stroną. Przeczytaj dział 'Darmowe wsparcie' poniżej, żeby zapoznać się z kilkoma wskazówkami na temat działania wtyczki pod IE."
+
+#: admin_page.php:152
+msgid "<strong>Q:</strong><em> How do I change the menu contents?</em> <br /><strong>A:</strong> See the big tab at the top of the screen right now which says \"Menu Contents\"? Click that ..."
+msgstr "<strong>P:</strong> <em>Wtyczka nie działa pod Internet Explorerem, dlaczego nie poprawicie tego?</em> <br /><strong>O:</strong> Wtyczka działa pod IE; po prostu została przez Ciebie źle zintegrowana ze stroną. Przeczytaj dział 'Darmowe wsparcie' poniżej, żeby zapoznać się z kilkoma wskazówkami na temat działania wtyczki pod IE."
+
+#: admin_page.php:153
+msgid "<strong>Q:</strong><em> How do I change the colour/font/whatever in my menu?</em> <br /><strong>A:</strong> Visit the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS generator</a>."
+msgstr "<strong>P:</strong> <em>Jak zmienić kolor/font/cokolwiek w wyglądzie mojego menu?</em> <br /><strong>O:</strong> Odwiedź <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">Generator CSS</a>."
+
+#: admin_page.php:154
+msgid "<strong>Q:</strong><em> How do I get a fully customised version?</em> <br /><strong>A:</strong> Leave a message on the PixoPoint <a href=\"http://geek.ryanhellyer.net/contact/\">Contact Page</a> with your requirements and we will get back to you ASAP with pricing information. Alternatively you can sign up for our <a href=\"http://geek.ryanhellyer.net/premium-support/\">Premium Support</a> option which gives you access to our new dropdown, flyout and slider menu CSS generator, plus access to our premium support forum."
+msgstr "<strong>P:</strong> <em>Jak zdobyć w pełni dostosowaną wersję?</em> <br /><strong>O:</strong> Korzystając z <a href=\"http://geek.ryanhellyer.net/contact/\">formularza kontaktowego</a> zostaw wiadomość zawierającą opis Twoich wymagań, a my odpiszemy najszybciej, jak to będzie możliwe, podając informację o cenie. Możesz również zapisać się do naszej usługi <a href=\"http://geek.ryanhellyer.net/premium-support/\">Premium Support</a>, co da Ci dostęp do rozbudowanej wersji generatora CSS (obsługującej wszystkie typy menu: dropdown, flyout i slider) oraz do Premium Support Forum."
+
+#: admin_page.php:155
+msgid "<strong>Q:</strong><em> Why can't the plugin do X, Y or Z?</em> <br /><strong>A:</strong> It probably can, we just haven't supplied instructions on how to do it. If you have any requests, then please leave them in the <a href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">PixoPoint dropdown menu support board</a>. We often update the plugin with new functionality and we're far more likely to include the functionality you want if we know there is a demand for it already."
+msgstr "<strong>P:</strong> <em>Dlaczego wtyczka nie może zrobić X, Y lub Z?</em> <br /><strong>O:</strong> Niewykluczone, że może; po prostu nie dostarczyliśmy instrukcji jak to zrobić. Jeżeli potrzebujesz jakichś wyjaśnień, jeśli uważasz, że brakuje czegoś we wtyczce, prosimy napisz na <a href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">forum PixoPoint Multi-level Navigation Plugin</a>. Często rozbudowujemy wtyczkę o nowe funkcjonalności, ale daleko bardziej prawdopodobne będzie, że dołączymy potrzebną Ci funkcję, jeśli powiadomisz nas, że jest na nią zapotrzebowanie."
+
+#: admin_page.php:156
+msgid "Free support"
+msgstr "Darmowe wsparcie"
+
+#: admin_page.php:157
+msgid "If you follow all of the instructions here, activate the plugin and find the menu is appearing on your site but looks all messed up, then the problem is probably caused by a clash between your themes CSS and plugins CSS. These problems can usually be remedied by removing the wrapper tags which surround the menu in your theme. For example, most themes will have some HTML such as <code>&lt;div id=\"nav\"&gt;&lt;?php wp_list_pages(); ?&gt;&lt;/div&gt;</code> which contains the existing themes menu. By placing the <code>pixopoint_menu()</code> function between those DIV tags, the menu will often interact with that DIV tag. The solution is to either remove the DIV tag or to alter it's CSS so that it doesn't interact with the menu."
+msgstr "Jeżeli, zgodnie ze wszystkimi zawartymi tutaj instrukcjami, wtyczka została aktywowana i menu jest widoczne na stronie ale wygląda lub zachowuje się nie tak, jak powinno, to problem stanowi prawdopodobnie kolizja kodu CSS używanego przez Ciebie motywu WordPressa z kodem CSS wtyczki. Zwykle problem tego typu można rozwiązać usuwając tagi otaczające menu w Twoim motywie. Na przykład - wiele motywów zawiera taki lub podobny kawałek kodu: <code>&lt;div id=\"nav\"&gt;&lt;?php wp_list_pages(); ?&gt;&lt;/div&gt;</code> odpowiedzialny za wyświetlanie menu motywu. Umieszczając kod <code>pixopoint_menu()</code> między znacznikami DIV powodujemy, że styl CSS elementu <code>&lt;div id=\"nav\"&gt;</code> będzie oddziaływać na styl CSS wtyczki. Rozwiązania są dwa: usunąć DIV otaczający menu wtyczki lub przerobić jego styl tak, żeby nie kolidował ze stylem menu."
+
+#: admin_page.php:158
+msgid "If you require further help with the plugin, please visit the <a href=\"http://geek.ryanhellyer.net/multi-level-navigation/\">Multi-level Navigation Plugin page</a> or the PixoPoint <a href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">multi-level navigation support board</a>."
+msgstr "Jeżeli potrzebujesz dalszej pomocy na temat wtyczki, prosimy wejdź na <a href=\"http://geek.ryanhellyer.net/multi-level-navigation/\">stronę Multi-level Navigation Plugin</a> lub na <a href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">forum PixoPoint Multi-level Navigation Plugin</a>."
+
+#: admin_page.php:159
+msgid "We are happy to answer questions but we've been noticing lately that more time is being spent teaching people what to ask rather than actually answering anything. So before posting questions on the PixoPoint support forum, please read the following tips to help us answer your questions faster."
+msgstr "Jesteśmy bardzo radzi, że możemy odpowiadać na pytania, ale potem często uświadamiamy sobie, że więcej czasu niż na odpowiedzi poświęcamy na uczenie ludzi jak zadawać pytania. Dlatego prosimy: zanim zadasz pytanie na forum PixoPoint, przeczytaj poniższe wskazówki, aby pomóc nam szybciej odpowiadać."
+
+#: admin_page.php:161
+msgid "Where is your CSS?"
+msgstr "Gdzie jest Twój CSS?"
+
+#: admin_page.php:162
+msgid "What modifications have you made to the CSS?"
+msgstr "Jakie zmiany zostały wprowadzone przez Ciebie do CSS?"
+
+#: admin_page.php:163
+msgid "What browsers are you having problems with?"
+msgstr "Z którymi przeglądarkami występuje problem?"
+
+#: admin_page.php:164
+msgid "What is the URL for your site?"
+msgstr "Jaki jest URL Twojej strony?"
+
+#: admin_page.php:165
+msgid "Provide a link to the problem. Most problems can not be answered without actually seeing your site. If you don't want to install the plugin on your live site and don't have a test site to show us, then view the source code in your browser when you do have the plugin installed, save it to an HTML file and upload that somewhere so that we can see what the page looks like."
+msgstr "Zamieść link do problemu. Wielu problemów nie można rozwiązać bez możliwości obejrzenia strony. Jeżeli nie chcesz instalować wtyczki na stronie dostępnej publicznie i nie dysponujesz stroną testową, na której możnaby zaprezentować problem, zainstaluj wtyczkę na chwilę, podejrzyj kod źródłowy strony z wtyczką w przeglądarce, zapisz go w pliku HTML i wyślij gdzieś, gdzie będziemy mogli go obejrzeć."
+
+#: admin_page.php:166
+msgid "Do not bother providing us with HTML and/or CSS code snippets (without a link). There is very little we can do without seeing the entire page as most problems are caused by an obscure piece of CSS somewhere else on the page."
+msgstr "Nie dręcz nas prezentowaniem kawałków kodu HTML i/lub CSS (bez podania linka do całości). Nie widząc strony możemy bardzo niewiele zrobić, ponieważ często problemy są spowodowane przez jakiś mętny kawałek CSS gdzieś daleko na stronie."
+
+#: admin_page.php:167
+msgid "Let us know if you have modified the CSS. If it is modified beyond what is available in the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS generator</a> we are unlikely to offer support for free. Rummaging through other peoples code is too time consuming sorry."
+msgstr "Jeżeli kod CSS został przez Ciebie zmodyfikowany, poinformuj nas o tym. Jeżeli modyfikacja wykracza poza to, co oferuje <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">Generator CSS</a>, to prawdopodobnie nie będziemy w stanie zaoferować pomocy bepłatnej. Przykro nam - przeszukiwanie cudzego kodu jest zbyt czasochłonne."
+
+#: admin_page.php:168
+msgid "If you didn't paste your CSS into the WP plugins settings page, let us know which <strong>exact</strong> file it is in. Searching through a dozen CSS files in your theme trying to find your menu code is not fun."
+msgstr "Jeśli kod CSS nie został wklejony w okienku zakładki \"Wygląd\", poinformuj nas, gdzie <strong> dokładnie</strong> ten kod się znajduje. Przekopywanie się przez stertę plików CSS Twojego motywu w poszukiwaniu kodu menu nie bawi nas."
+
+#: admin_page.php:170
+msgid "Other plugins we recommend"
+msgstr "Inne rekomendowane przez nas wtyczki"
+
+#: admin_page.php:171
+msgid "The <a href=\"http://wordpress.org/extend/plugins/my-page-order/\">My Page Order plugin</a>  by <a href=\"http://www.geekyweekly.com/\">froman118</a> allows you to set the order of 'WordPress Pages' through a drag and drop interface. This replaces the need to use the clumsy default method of setting page orders built into WordPress. Another plugin recommended for this purpose is the <a href=\"http://joelstarnes.co.uk/blog/pagemash/\">Page Mash Plugin</a> by Joel Starnes."
+msgstr "Wtyczka <a href=\"http://wordpress.org/extend/plugins/my-page-order/\">My Page Order</a> autorstwa <a href=\"http://www.geekyweekly.com/\">froman118</a> umożliwia poukładanie stron w menu w odpowiedniej kolejności przy użyciu wygodnego interfejsu typu drag'n'drop. Pozwala ona zrezygnować z niewygodnej wbudowanej w WordPress standardowej metody ustawiania. Inna wtyczka rekomendowana do tego celu to <a href=\"http://joelstarnes.co.uk/blog/pagemash/\">Page Mash Plugin</a> autorstwa Joela Starnesa."
+
+#: admin_page.php:172
+msgid "If you know of any other plugins which work well with the 'Multi-level Navigation plugin' then please us know about them."
+msgstr "Jeśli wiesz o jakiejś wtyczce, która współpracuje dobrze z 'Multi-level Navigation plugin', powiadom nas o tym."
+
+#: admin_page.php:183
+msgid "Appearance"
+msgstr "Wygląd"
+
+#: admin_page.php:193
+msgid "Built in theme CSS?"
+msgstr "CSS wbudowany w motyw?"
+
+#: admin_page.php:194
+msgid "You are currently using a theme designed to integrate directly with the Multi-level Navigation Plugin. You can either keep the existing menu design by using the themes CSS, or change to the plugins CSS to override the theme styling. To use the second menu option the ID of each CSS option will need to be manually changed from <code>suckerfishnav</code> to <code>suckerfishnav_2</code>."
+msgstr "Używasz obecnie motyw zaprojektowany do bezpośredniej integracji z wtyczką Multi-level Navigation. Możesz albo zachować zawarty w motywie styl CSS menu albo zastąpić go stylem CSS wtyczki. Aby skorzystać z drugiego menu, identyfikatory ID każdego elementu muszą być ręcznie zmienione z <code>suckerfishnav</code> na <code>suckerfishnav_2</code>."
+
+#: admin_page.php:208
+msgid "To change the appearance of your menu, please visit the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">PixoPoint Multi-level CSS Generator</a> to obtain CSS. Paste your new CSS into the main menu box below."
+msgstr "Aby zmienić wygląd menu, proszę odwiedź <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">PixoPoint Multi-level CSS Generator</a> w celu uzyskania kodu CSS. Następnie wklej swój nowy kod CSS w oknie poniżej."
+
+#: admin_page.php:213
+msgid "Enter the CSS for your main menu here"
+msgstr "Wklej kod CSS swojego głównego menu tutaj:"
+
+#: admin_page.php:218
+msgid "To obtain new CSS, please visit the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">PixoPoint CSS generator</a>"
+msgstr "Aby uzyskać nowy wygląd menu, proszę odwiedź <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">PixoPoint Multi-level CSS Generator</a>"
+
+#: admin_page.php:233
+msgid "Enter the CSS for your second menu here. Note: the ID of these menu items must be suckerfishnav_2"
+msgstr "Tutaj wklej kod CSS swojego drugiego menu. Uwaga: ID elementów tego menu musi być inne, niż pierwszego, na przykład: suckerfish_2"
+
+#: admin_page.php:238
+msgid "As this is the second menu, the CSS ID's must be different from the first. The ID of these menu items must be suckerfishnav_2 which is not the default format from the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS generator</a> so if you want to use the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS generator</a> for this option you will need to 'search and replace' (in a text editor) <strong>suckerfishnav</strong> to <strong>suckerfishnav_2</strong>."
+msgstr "Jako że jest to drugie menu, identyfikator jego elementów musi być inny niż pierwszego. Jeżeli do tworzenia CSS dla drugiego menu wykorzystasz <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">Generator CSS</a>, musisz pamiętać, żeby potem w jakimś edytorze tekstu użyć na wynikowym kodzie funkcji 'znajdź i zamień' celem zamiany wszystkich  <strong>suckerfishnav</strong> na <strong>suckerfishnav_2</strong>."
+
+#: admin_page.php:255
+msgid "Menu contents"
+msgstr "Zawartość menu"
+
+#: admin_page.php:260
+msgid "Main menu contents"
+msgstr "Zawartość głównego menu"
+
+#: admin_page.php:265
+msgid "Modify the contents of your main menu via the options above."
+msgstr "Modyfikuj zawartość głównego menu używając powyższych opcji."
+
+#: admin_page.php:299
+msgid "Second menu contents"
+msgstr "Zawartość drugiego menu"
+
+#: admin_page.php:304
+msgid "Modify the contents of your second menu via the options above."
+msgstr "Modyfikuj zawartość drugiego menu używając powyższych opcji."
+
+#: admin_page.php:336
+msgid "Modifications"
+msgstr "Modyfikacje"
+
+#: admin_page.php:341
+msgid "To change the text displayed in the top level menu items for Pages, Categories etc. or to exclude or include specific Pages or Categories modify the above options."
+msgstr "Aby zmienić teksty na najwyższym poziomie menu dla stron, kategorii itp. lub aby dołączyć/wykluczyć z menu konkretne strony lub kategorie, modyfikuj powyższe opcje."
+
+#: admin_page.php:347
+msgid "Titles"
+msgstr "Tytuły"
+
+#: admin_page.php:356
+#: admin_page.php:401
+msgid "Pages"
+msgstr "Strony"
+
+#: admin_page.php:362
+#: admin_page.php:407
+msgid "Categories"
+msgstr "Kategorie"
+
+#: admin_page.php:368
+#: admin_page.php:413
+msgid "Archives"
+msgstr "Archiwa"
+
+#: admin_page.php:374
+#: admin_page.php:419
+msgid "Links"
+msgstr "Odnośniki"
+
+#: admin_page.php:380
+#: admin_page.php:425
+msgid "Recent Comments"
+msgstr "Świeże komentarze"
+
+#: admin_page.php:386
+#: admin_page.php:431
+msgid "Recent Posts"
+msgstr "Świeże wpisy"
+
+#: admin_page.php:391
+msgid "Title URL's"
+msgstr "URL-e tytułów"
+
+#: admin_page.php:392
+msgid "If a URL is not specified, then a default option will be used."
+msgstr "Jeśli nie podasz URL, przyjęta zostanie wartość domyślna."
+
+#: admin_page.php:436
+msgid "Pages/categories to exclude"
+msgstr "Strony/kategorie do wykluczenia"
+
+#: admin_page.php:437
+msgid "If no pages or categories are specified then all of them will be included"
+msgstr "Jeśli żadne strony i kategorie nie są określone, to wszystkie będą widoczne."
+
+#: admin_page.php:440
+msgid "Pages to include or exclude in the main menu"
+msgstr "Strony do włączenia/wykluczenia w głównym menu"
+
+#: admin_page.php:456
+msgid "Categories to include or exclude"
+msgstr "Kategorie do włączenia/wykluczenia"
+
+#: admin_page.php:471
+msgid "Pages/categories depth"
+msgstr "Głębokość stron/kategorii"
+
+#: admin_page.php:472
+msgid "Controls the depth of the menu. 'No nesting' means that all the available menu items will be displayed in a flat list with no children."
+msgstr "Kontroluje głębokość menu. 'No nesting' oznacza, że wszystkie dostępne pozycje menu będą wyświetlane na płaskiej liście, bez wyodrębniania rodziców i potomków."
+
+#: admin_page.php:475
+msgid "Pages depth"
+msgstr "Głębokość stron"
+
+#: admin_page.php:493
+msgid "Categories depth"
+msgstr "Głębokość kategorii"
+
+#: admin_page.php:510
+msgid "Categories settings"
+msgstr "Ustawienia kategorii"
+
+#: admin_page.php:511
+msgid "You may order your categories by Ascending ID #, Descending ID # or alphabetically, Ascending Name or Descending Name."
+msgstr "Możesz uszeregować swoje kategorie według numerów ID lub alfabetycznie, rosnąco (ascending) lub malejąco (descending)."
+
+#: admin_page.php:514
+msgid "Category order"
+msgstr "Kolejność kategorii"
+
+#: admin_page.php:531
+msgid "Show empty categories"
+msgstr "Pokaż puste kategorie"
+
+#: admin_page.php:539
+msgid "Number of recent posts and comments"
+msgstr "Liczba świeżych wpisów i komentarzy"
+
+#: admin_page.php:540
+msgid "Controls the number of recent posts and comments shown when using the 'Recent Posts' or 'Recent Comments' menu option."
+msgstr "Określa ile najświeższych wpisów i komentarzy będzie pokazywanych po użyciu opcji menu 'Recent Posts' i 'Recent Comments'"
+
+#: admin_page.php:543
+msgid "Number of recent posts"
+msgstr "Liczba najświeższych wpisów"
+
+#: admin_page.php:549
+msgid "Number of recent comments"
+msgstr "Liczba najświeższych komentarzy"
+
+#: admin_page.php:586
+msgid "Custom HTML code"
+msgstr "Własny kod HTML"
+
+#: admin_page.php:586
+msgid "example"
+msgstr "przykład"
+
+#: admin_page.php:587
+msgid "Note: You can have multiple top level menu items in one custom code entry. The following example will display a menu with links to 'Home', 'Categories' and 'Pages', the 'Categories' and 'Pages' links would have dropdowns and the 'Page 1' link in the 'Pages' dropdown would contain another further level."
+msgstr "Uwaga: wpisując jeden kawałek kodu możesz otrzymać wiele pozycji w menu. Poniższy przykład wyświetla menu z odnośnikami: 'Home', 'Categories' i 'Pages'. 'Categories' i 'Pages' posiadają rozwijalne podmenu, a odnośnik 'Page 1' zawiera kolejne poziomy podmenu. "
+
+#: admin_page.php:623
+msgid "Enter the HTML for the 'Custom code 1' and 'Custom code 2' menu options above, add your code to the appropriate box above. <strong>Note:</strong> The menu uses an unordered list to format the menu. You will need to know some HTML to use this option. The menu is already wrapped in UL tags."
+msgstr "Wpisz w odpowiednie pola powyżej swój kod HTML dla pozycji menu 'Custom 1' - 'Custom 4'. <strong>Uwaga:</strong> menu musi być sformatowane jako lista nieuporządkowana. Aby skorzystać z tej opcji, musisz mieć choćby minimalną wiedzę z zakresu HTML. Menu jest już otoczone tagami UL."
+
+#: admin_page.php:630
+msgid "Custom code 1"
+msgstr "Custom 1"
+
+#: admin_page.php:634
+msgid "Custom code 2"
+msgstr "Custom 2"
+
+#: admin_page.php:638
+msgid "Custom code 3"
+msgstr "Custom 3"
+
+#: admin_page.php:642
+msgid "Custom code 4"
+msgstr "Custom 4"
+
+#: admin_page.php:657
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: admin_page.php:663
+msgid "Setting"
+msgstr "Opcja"
+
+#: admin_page.php:664
+msgid "Description"
+msgstr "Opis"
+
+#: admin_page.php:669
+msgid "Use the various options above to control some of the advanced settings of the plugin"
+msgstr "Użyj powyższych opcji do kontrolowania różnych zaawansowanych ustawień wtyczki."
+
+#: admin_page.php:688
+msgid "Speed of fade-in effect"
+msgstr "Prędkość efektu animacji menu"
+
+#: admin_page.php:690
+msgid "This option enhances the behaviour of the dropdown by creating an animated fade-in effect. The script which powers this part of the plugin is called <a href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'Superfish'</a> and was created by Joel Birch. This option utilizes <a href=\"http://jquery.com/\">jQuery</a>."
+msgstr "Rozszerza zachowanie menu o efekt animowanego pojawiania się. Skrypt odpowiedzialny za tę część wtyczki nazywa się <a href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'Superfish'</a>, a jego autorem jest Joel Birch. Opcja wykorzystuje <a href=\"http://jquery.com/\">jQuery</a>."
+
+#: admin_page.php:697
+msgid "Mouseover delay (milliseconds)"
+msgstr "Opóźnienie reakcji na mysz (milisekundy)"
+
+#: admin_page.php:699
+msgid "This option adds a delay time before the dropdown/flyout appears. This option is controlled by the <a href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'Superfish plugin'</a> for jQuery."
+msgstr "Wprowadza opóźnienie przed rozwinięciem się opadającego menu. Opcja jest kontrolowana przez <a href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'Superfish plugin'</a> przy wykorzystaniu <a href=\"http://jquery.com/\">jQuery</a>."
+
+#: admin_page.php:706
+msgid "Hide delay time (milliseconds)"
+msgstr "Czas opóźnienia zniknięcia (milisekundy)"
+
+#: admin_page.php:708
+msgid "This option adds a delay before the dropdown disappears. This option is particularly suitable for small menus where users may accidentally hover off of the menu. The script is powered by the <a href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'Superfish plugin'</a> for <a href=\"http://jquery.com/\">jQuery</a>"
+msgstr "Wprowadza opóźnienie przed zniknięciem opadającego menu. Opjca jest użyteczna przy małej powierzchni menu, kiedy użytkownik może przypadkowo \"wyjechać\" kursorem poza obszar aktywny. Wykorzystuje <a href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'Superfish plugin'</a> i <a href=\"http://jquery.com/\">jQuery</a>."
+
+#: admin_page.php:725
+msgid "Sensitivity"
+msgstr "Czułość"
+
+#: admin_page.php:727
+msgid "When this option is enabled, the menu will attempt to determine the user's intent. On low sensitivity, instead of immediately displaying the dropdown/flyout menu on mouseover, the menu will wait until the user's mouse slows down before displaying it."
+msgstr "Przy wykorzystaniu tej opcji menu będzie usiłowało określić intencje użytkownika. Przy niskiej czułości menu, zamiast niezwłocznie pojawiać się po najechaniu kursorem, będzie czekało na spowolnienie kursora, zanim się rozwinie."
+
+#: admin_page.php:737
+msgid "Enable keyboard accessible menu?"
+msgstr "Włączyć dostęp do menu przez klawiaturę?"
+
+#: admin_page.php:739
+msgid "This option may not work correctly as it contains bugs."
+msgstr "Opcja może nie działać poprawnie. Zawiera błędy."
+
+#: admin_page.php:740
+msgid "This option enables users to access your menu via the tab key on their keyboard rather than the mouse. Thanks to <a href=\"http://www.transientmonkey.com/\">malcalevak</a> for writing the script. This option utilizes <a href=\"http://jquery.com/\">jQuery</a>."
+msgstr "Pozwala użytkownikom na dostęp do menu za pomocą klawisza [Tab]. Podziękowania dla <a href=\"http://www.transientmonkey.com/\">malcalevak</a> za napisanie skryptu. Opcja korzysta z <a href=\"http://jquery.com/\">jQuery</a>."
+
+#: admin_page.php:768
+msgid "Enable arrow mark-up?"
+msgstr "Włączyć wskazanie podmenu strzałką?"
+
+#: admin_page.php:770
+msgid "This option adds a small arrow to any menu option which contains children. Thanks to <a href=\"http://transientmonkey.com/\">malcalevak</a> for help with implementing this feature. This option utilizes <a href=\"http://jquery.com/\">jQuery</a>."
+msgstr "Dodaje małą strzałkę do tych pozycji w menu, które posiadają podmenu. Podziękowania dla <a href=\"http://transientmonkey.com/\">malcalevak</a> za pomoc w zaimplementowaniu tej opcji. Wykorzystuje <a href=\"http://jquery.com/\">jQuery</a>."
+
+#: admin_page.php:804
+msgid "Add a second menu?"
+msgstr "Dodać drugie menu?"
+
+#: admin_page.php:809
+msgid "Note: You can not turn this option off as your theme has been indicated that it has a second menu."
+msgstr "Uwaga: nie możesz wyłączyć tej opcji, ponieważ motyw, którego używasz, posiada drugie menu."
+
+#: admin_page.php:811
+msgid "You may add a second menu to your site. This is particularly common with magazine style layouts. For a second menu, add the following code to your theme <code>&lt;?php if (function_exists('pixopoint_menu')) {pixopoint_menu(2);} ?&gt;</code>. The <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">PixoPoint CSS generator</a> does not currently support a second menu by default, but if you do a search and replace (in a text editor) for <code>suckerfishnav</code> to <code>suckerfishnav_2</code> in the CSS you will be able to adapt the standard CSS for the second menu."
+msgstr "Możesz dodać drugie menu do swojej strony. Jest to wykorzystywane szczególnie przy użyciu układu strony w stylu czasopisma. Wstaw do swojego motywu kod <code>&lt;?php if (function_exists('pixopoint_menu')) {pixopoint_menu(2);} ?&gt;</code>. Obecnie <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">Generator CSS</a> nie wspiera domyślnie drugiego menu, ale jeśli przeprowadzisz w edytorze tekstu oprację 'znajdź i zamień' na łańcuchach <code>suckerfishnav</code> i <code>suckerfishnav_2</code> w kodzie CSS, będziesz mógł zaadaptować standardowy CSS dla drugiego menu."
+
+#: admin_page.php:821
+msgid "Remove title attribute?"
+msgstr "Usunąć atrybut <code>title</code>?"
+
+#: admin_page.php:823
+msgid "This removes the title attributes from the links in the menu. The title attributes display in most browsers as a small tool tip on hover over the links."
+msgstr "Usuwa atrybuty <code>title</code> z linków w menu. Większość przeglądarek wyświetla zawartość tego atrybutu jako mały \"dymek\" z tekstem po najechaniu kursorem na link."
+
+#: admin_page.php:833
+msgid "Maintenance mode?"
+msgstr "Tryb konserwacji?"
+
+#: admin_page.php:835
+msgid "When in maintenance mode, the plugin can only be seen when the user adds ?mln=on to the site URL (ie: <a href=\"http://geek.ryanhellyer.net/?mln=on\">http://geek.ryanhellyer.net/?mln=on</a>). This is useful for when testing the menu. If the menu does not look correct on your site, you may place the menu into maintenance mode so that your regular site visitors can not see it."
+msgstr "W trybie konserwacji działanie wtyczki widoczne jest tylko po dodaniu w przeglądarce na końcu URL ?mln=on (na przykład <a href=\"http://mojastrona.com/?mln=on\">http://mojastrona.com/?mln=on</a>). Może się to przydać podczas testowania menu. Jeśli menu nie jest jeszcze w pełni gotowe, możesz włączyć tryb konserwacji, dzięki czemu zwykli użykownicy strony nie będą w ogóle widzieli działania wtyczki."
+
+#: admin_page.php:852
+msgid "Style sheet"
+msgstr "Arkusz stylu"
+
+#: admin_page.php:854
+msgid "The plugin includes it's own built in stylesheet. However many site owners wish to use their themes built in stylesheet (good idea if you want to reduce the HTML in your page) or wish to specify their CSS inline between their head tags (not recommended)."
+msgstr "Wtyczka zawiera własny, wbudowany arkusz stylu. Jednak wielu właścicieli stron woli używać arkusze wbudowane w motywy (dobre, jeżeli chcemy zredukować objętość kodu HTML na stronie) lub woli zapisywać style CSS w sekcji HEAD strony (nie polecane)."
+
+#: admin_page.php:867
+msgid "Update Options"
+msgstr "Zapisz zmiany"
+

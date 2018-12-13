@@ -1,0 +1,470 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Multi-level Navigation Plugin v1.7.5 po Hebrew\n"
+"PO-Revision-Date: 2009-11-04 22:40+0200\n"
+"Last-Translator: Asaf Chertkoff <asaf@freeallweb.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Hebrew\n"
+"X-Poedit-Country: ISRAEL\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;__ngettext_noop:1,2;_c\n"
+"POT-Creation-Date: \n"
+"Language-Team: FreeAllWeb GUILD <support@freeallweb.org>\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin_page.php:6
+msgid "Uninstall"
+msgstr "הסר"
+
+#: admin_page.php:95
+#: admin_page.php:348
+#: admin_page.php:393
+msgid "Home"
+msgstr "התחלה"
+
+#: admin_page.php:101
+msgid "Introduction"
+msgstr "פתיחה"
+
+#: admin_page.php:106
+msgid "Thanks for using our plugin :)"
+msgstr "תודה על השימוש בתוסף (-:"
+
+#: admin_page.php:112
+msgid "The Multi-level Navigation Plugin creates a dropdown, flyout or slider menu for your WordPress site based on the <a href=\"http://www.htmldog.com/articles/suckerfish/ target=\"_blank\">Son of Suckerfish technique</a>. If you have any comments, questions or suggestions about this plugin, please visit the <a href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">PixoPoint multi-level navigation forum</a>."
+msgstr "התוסף Multi-Level Navigation יוצר תפריט רב-רמות בכמה סגנונות עיצוב לשימוש באתרי וורדפרס ומבוסס על <a href=\"http://www.htmldog.com/articles/suckerfish/ target=\"_blank\">הטכניקה של Son of Suckerfish</a>. לכל תגובה, הצעה או שאלה לגבי תוסף זה, בקר ב<a href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">פורום שלנו</a>."
+
+#: admin_page.php:113
+msgid "Installation"
+msgstr "התקנה"
+
+#: admin_page.php:114
+msgid "Add the following code wherever you want the dropdown to appear in your theme (usually header.php)"
+msgstr "הוסף את הקוד הבא בכל מקום שאתה מעוניין שהתפריט הנפתח יופיע בתבנית שלך (בד\"כ בקובץ header.php)"
+
+#: admin_page.php:115
+msgid "&lt;?php if (function_exists('pixopoint_menu')) {pixopoint_menu();} ?&gt;"
+msgstr "&lt;?php if (function_exists('pixopoint_menu')) {pixopoint_menu();} ?&gt;"
+
+#: admin_page.php:116
+msgid "To style your menu, please visit the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">Multi-level Navigation CSS Generator</a> page to obtain your CSS and enter it into the \"Appearance\" tab."
+msgstr "על מנת לעצב את התפריט שלך, בקר ב<a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">Multi-level Navigation CSS Generator</a> על מנת ליצור קובץ CSS ולהטמיע אותו בתוך תגית ה \"Appearance\"."
+
+#: admin_page.php:126
+msgid "Help"
+msgstr "עזרה"
+
+#: admin_page.php:131
+msgid "Please do not email us directly or via our <a href=\"http://geek.ryanhellyer.net/contact/\">contact form</a> for unpaid support. We prefer to offer support in our <a href=\"http://geek.ryanhellyer.net/forum/\">forum</a> so that others may learn from the advice"
+msgstr "בבקשה לא לשלוח לנו דוא\"ל ישירות או דרך <a href=\"http://geek.ryanhellyer.net/contact/\">טופס יצירת הקשר</a> לתמיכה שאינה בתשלום. אנו מעדיפים להציע תמיכה ב<a href=\"http://geek.ryanhellyer.net/forum/\">פורום</a> שלנו כך שאחרים יוכלו גם ללמוד מן העצה "
+
+#: admin_page.php:140
+msgid "The easy way ... "
+msgstr "הדרך הקלה..."
+
+#: admin_page.php:141
+msgid "The easiest way to setup the PixoPoint Multi-level Navigation Plugin is to use it with a theme specifically designed to support the plugin. All themes exported from the <a href=\"http://geek.ryanhellyer.net/generator/\">PixoPoint Template Generator</a> (which have dropdown menus) support this by default. Simply activate your theme, then activate the plugin and the new menu will appear instantly. Visit the <a href=\"http://geek.ryanhellyer.net/generator/\">PixoPoint Template Generator</a> to get your own pre-supported theme."
+msgstr "הדרך הקלה ביותר להגדיר את התוסף PixoPoint Multi-level Navigation היא להשתמש בתבנית שהותאמה באופן מדויק לתמוך בתוסף. כל התבניות נוצרו בעזרת <a href=\"http://geek.ryanhellyer.net/generator/\">PixoPoint Template Generator</a> תומכות בתוסף זה כברירת מחדל. רק הפעל את התבנית, ואז הפעל את התוסף, והתפריט החדש יופיע ישר. בקר ב<a href=\"http://geek.ryanhellyer.net/generator/\">PixoPoint Template Generator</a> על מנת ליצור לעצמך תבנית שתומכת בתוסף מבעוד מועד."
+
+#: admin_page.php:142
+msgid "If you don't take this route then read on for simple instructions on how to integrate it into other themes ..."
+msgstr "אם אינך מעוניין בדרך זו, בבקשה קרא את ההוראות הפשוטות על כיצד לשלב את התוסף בתבניות אחרות..."
+
+#: admin_page.php:144
+msgid "Paid support"
+msgstr "תמיכה בתשלום."
+
+#: admin_page.php:145
+msgid "For direct help via the plugin (and CSS generator) author, please sign up for our Premium Support service ... <strong><a href=\"http://geek.ryanhellyer.net/premium-support/\">http://geek.ryanhellyer.net/premium-support/</a></strong>"
+msgstr "לעזרה ישירות מכותב התוסף, בבקשה הרשם לשירות התמיכה המשופר שלנו... <strong><a href=\"http://geek.ryanhellyer.net/premium-support/\">http://geek.ryanhellyer.net/premium-support/</a></strong>"
+
+#: admin_page.php:146
+msgid "Our Premium Support option is ideal if you have insufficient time to fix any problems you may have or simply don't know much about coding, we not only offer techinical support and access to our latest betas but we will also install the plugin and set it up on your site if needed. We also do customisations of the plugin for some premium members, although we recommend contacting us via our <a href=\"http://geek.ryanhellyer.net/contact/\">contact form</a> for such requests as some customisations may require extra payment depending on their complexity."
+msgstr "שירות התמיכה המשופר שלנו הוא אידיאלי עבורך אם אין ברשותך מספיק זמן או ידע על מנת לתקן בעיות בתוסף. איננו מציעים רק עזרה טכנית וגישה אל העידכונים החדשים ביותר, אלא גם מתקינים את התוסף ומגדירים אותו באתרך אם יש צורך בכך. אנו גם עושים התאמות לתוסף עבור לקוחות הרשומים לשירות התמיכה המשופר, אם כי אנו ממליצים ליצור איתנו קשר דרך <a href=\"http://geek.ryanhellyer.net/contact/\">contact form</a> עבור בקשות מסוג זה, כיוון שייתכן כי אחדות מן ההתאמות דורשות תשלום נוסף, עניין התלוי במורכבות הנדרשת."
+
+#: admin_page.php:147
+msgid "If you have any questions about our premium services or are looking for other help with other WordPress or (X)HTML/CSS projects including theme development please do not hesitate to contact us via our <a href=\"http://geek.ryanhellyer.net/contact/\">contact form</a>. More information about our premium services is available on our site ... <strong><a href=\"http://geek.ryanhellyer.net/premium-support/\">http://geek.ryanhellyer.net/premium-support/</a></strong>"
+msgstr "אם יש לך איזה שהן שאלות על שירות התמיכה המשופר שלנו, או שהנך מחפש עזרה עם פרויקטים אחרים ב-WordPress, Css או XHTML, כולל פיתוח תבניות, בבקשה אל תהסס ליצור איתנו קשר דרך <a href=\"http://geek.ryanhellyer.net/contact/\">contact form</a>. מידע נוסף על השירותים המשופרים תוכל למצוא באתרינו ... <strong><a href=\"http://geek.ryanhellyer.net/premium-support/\">http://geek.ryanhellyer.net/premium-support/</a></strong>"
+
+#: admin_page.php:148
+msgid "FAQ"
+msgstr "שאלות שנשאלות לעיתים תכופות"
+
+#: admin_page.php:149
+msgid "<strong>Q:</strong><em> Your plugin doesn't work in IE, why don't you fix it?</em> <br /><strong>A:</strong> The plugin does work with IE, you just haven't integrated it correctly. See 'Free support' below for some tips on how to get it working with IE."
+msgstr "<strong>שאלה:</strong><em>התוסף שלך אינו עובד תחת אינטרנט אקספלורר, מדוע אינך מתקן זאת?</em> <br /><strong>תשובה:</strong>התוסף כן עובד עם אינטרנט אקספלורר, פשוט לא הטמעת אותו בצורה נכונה. ראה 'תמיכה חינמית' למטה כדי ללמוד כיצד להטמיע את התוסף נכונה עם אינטרנט אקספלורר."
+
+#: admin_page.php:150
+msgid "<strong>Q:</strong><em> How do I change the menu contents?</em> <br /><strong>A:</strong> See the big tab at the top of the screen right now which says \"Menu Contents\"? Click that ..."
+msgstr "<strong>שאלה:</strong><em>איך אני יכול לשנות את תוכן התפריט?</em> <br /><strong>תשובה:</strong>רואה את התג הגדול בקצה העליון של המסך שאומר \"תכני התפריט\"? לחץ עליו..."
+
+#: admin_page.php:151
+msgid "<strong>Q:</strong><em> How do I change the colour/font/whatever in my menu?</em> <br /><strong>A:</strong> Visit the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS generator</a>."
+msgstr "<strong>שאלה:</strong><em>איך אני משנה את הצבע/ פונט/ מה שלא יהיה בתפריט שלי?</em> <br /><strong>תשובה:</strong>בקר ב<a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">מייצר ה-CSS</a>."
+
+#: admin_page.php:152
+msgid "<strong>Q:</strong><em> How do I get a fully customised version?</em> <br /><strong>A:</strong> Leave a message on the PixoPoint <a href=\"http://geek.ryanhellyer.net/contact/\">Contact Page</a> with your requirements and we will get back to you ASAP with pricing information. Alternatively you can sign up for our <a href=\"http://geek.ryanhellyer.net/premium-support/\">Premium Support</a> option which gives you access to our new dropdown, flyout and slider menu CSS generator, plus access to our premium support forum."
+msgstr "<strong>שאלה:</strong><em>איך אני משיג גרסה שבה כל האפשרויות פתוחות?</em> <br /><strong>תשובה:</strong>השאר הודעה ב <a href=\"http://geek.ryanhellyer.net/contact/\">דף צור קשר</a> עם הצרכים והדרישות שלך ואנו נחזור אלייך בהקדם עם תמחור הבקשה. לחלופין אתה יכול להירשם ל: <a href=\"http://geek.ryanhellyer.net/premium-support/\">שירות התמיכה המשופר</a> אשר מעניק לך גישה לתפריטים החדשים ביותר, כולל מייצר ה-CSS ובנוסף, גישה לפורום התמיכה המשופרת שלנו."
+
+#: admin_page.php:153
+msgid "<strong>Q:</strong><em> Why can't the plugin do X, Y or Z?</em> <br /><strong>A:</strong> It probably can, we just haven't supplied instructions on how to do it. If you have any requests, then please leave them in the <a href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">PixoPoint dropdown menu support board</a>. We often update the plugin with new functionality and we're far more likely to include the functionality you want if we know there is a demand for it already."
+msgstr "<strong>שאלה:</strong><em>מדוע התוסף לא יכול לעשות דבר זה או אחר?</em> <br /><strong>R:&nbsp;</strong> כנראה שהוא כן יכול, אנחנו רק לא סיפקנו הוראות כיצד לעשות את זה. אם יש לך אילו שהן בקשות, בבקשה כתוב אותן ב <a href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">PixoPoint פורום התמיכה בתפריט</a>. אנו בד\"כ מעדכנים את התוסף בפונקציות חדשות כל הזמן, והרבה יותר סביר שנכלול את הפונקציה שאתה צריך, אם אנחנו יודעים כבר שיש לזה דרישה."
+
+#: admin_page.php:154
+msgid "Free support"
+msgstr "תמיכה חינמית"
+
+#: admin_page.php:155
+msgid "If you follow all of the instructions here, activate the plugin and find the menu is appearing on your site but looks all messed up, then the problem is probably caused by a clash between your themes CSS and plugins CSS. These problems can usually be remedied by removing the wrapper tags which surround the menu in your theme. For example, most themes will have some HTML such as <code>&lt;div id=\"nav\"&gt;&lt;?php wp_list_pages(); ?&gt;&lt;/div&gt;</code> which contains the existing themes menu. By placing the <code>pixopoint_menu()</code> function between those DIV tags, the menu will often interact with that DIV tag. The solution is to either remove the DIV tag or to alter it's CSS so that it doesn't interact with the menu."
+msgstr "אם תעקוב אחרי ההוראות הרשומות כאן, תפעיל את התוסף ותמצא שהתפריט מופיע באתר שלך אבל נראה כולו מבולגן, הבעיה כנראה נגרמת מהתנגשות בין העיצוב (CSS) של התבנית שלך לבין העיצוב של התוסף. בעיה זו אפשר בד\"כ לעקוף בעזרת הסרת התגים של המעטפת (Wrapper) שבתוכם נמצא התפריט בתבנית שלך. לדוגמה, ברוב התבניות יהיו תגים כמו <code>&lt;div id=\"nav\"&gt;&lt;?php wp_list_pages(); ?&gt;&lt;/div&gt;</code> אשר מכילים את התפריט הנוכחית. ע\"י הכנסת הפונקציה <code>pixopoint_menu()</code> בין תגי ה-DIV הללו, התפריט בד\"כ יגיב עם תגית ה-DIV הנ\"ל. הפתרונות האפשריים הם להסיר את תגית ה-DIV או לשנות את העיצוב (CSS) שלה כך שהוא לא יגיב עם התפריט."
+
+#: admin_page.php:156
+msgid "If you require further help with the plugin, please visit the <a href=\"http://geek.ryanhellyer.net/multi-level-navigation/\">Multi-level Navigation Plugin page</a> or the PixoPoint <a href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">multi-level navigation support board</a>."
+msgstr "אם אתה נדרש בעזרה נוספת עם התוסף, בקר ב-<a href=\"http://geek.ryanhellyer.net/multi-level-navigation/\">Multi-level Navigation Plugin page</a> או ב-<a href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">פורום התמיכה</a>."
+
+#: admin_page.php:157
+msgid "We are happy to answer questions but we've been noticing lately that more time is being spent teaching people what to ask rather than actually answering anything. So before posting questions on the PixoPoint support forum, please read the following tips to help us answer your questions faster."
+msgstr "אנחנו שמחים לענות על שאלות, אך גילינו לאחרונה שיותר זמן מנוצל בללמד אנשים מה לשאול, מאשר באמת לענות על משהו. על כן, לפני שאתם שואלים שאלה בפורום, קראו בבקשה את הטיפים הבאים על מנת לעזור לנו לענות לכם מהר יותר."
+
+#: admin_page.php:159
+msgid "Where is your CSS?"
+msgstr "איפה נמצא קובץ העיצוב (CSS) שלך?"
+
+#: admin_page.php:160
+msgid "What modifications have you made to the CSS?"
+msgstr "אילו שינויים עשית בקובץ העיצוב שלך?"
+
+#: admin_page.php:161
+msgid "What browsers are you having problems with?"
+msgstr "באילו דפדפנים אתה חווה את הבעיות האמורות?"
+
+#: admin_page.php:162
+msgid "What is the URL for your site?"
+msgstr "מה היא כתובת ה-URL של האתר שלך?"
+
+#: admin_page.php:163
+msgid "Provide a link to the problem. Most problems can not be answered without actually seeing your site. If you don't want to install the plugin on your live site and don't have a test site to show us, then view the source code in your browser when you do have the plugin installed, save it to an HTML file and upload that somewhere so that we can see what the page looks like."
+msgstr "הכנס קישור שיציג את הבעיה עצמה. אי אפשר לפתור את רוב הבעיות בלי ממש לראות את האתר שלך. אם אינך מעוניין להתקין את התוסף על האתר הפעיל שלך ואין לך אתר ניסיון להראות לנו, הבט בקוד המקור של האתר בדפדפן שלך כשהתוסף פעיל באתר, שמור אותו בקובץ HTML והעלה אותו להיכן שהוא שנוכל לראות איך הדף נראה."
+
+#: admin_page.php:164
+msgid "Do not bother providing us with HTML and/or CSS code snippets (without a link). There is very little we can do without seeing the entire page as most problems are caused by an obscure piece of CSS somewhere else on the page."
+msgstr "אל תטרח לספר לנו קטעי HTML ו/או CSS ללא קישור. יש מעט מאוד דברים שאנחנו יכולים לעשות בלי לראות את הדף השלם, מכיוון שרוב הבעיות נגרמות על ידי קטע CSS במקום אחר כלשהו באתר."
+
+#: admin_page.php:165
+msgid "Let us know if you have modified the CSS. If it is modified beyond what is available in the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS generator</a> we are unlikely to offer support for free. Rummaging through other peoples code is too time consuming sorry."
+msgstr "ידע אותנו אם שינית את קובץ העיצוב. אם הוא שונה מעבר למה שאפשרי ב<a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">מייצר ה-CSS</a> יש סיכוי נמוך שנציע עזרה בחינם. שיטוט בקוד של אחרים הוא בדרך כלל עיסוק שצורך זמן. מצטערים."
+
+#: admin_page.php:166
+msgid "If you didn't paste your CSS into the WP plugins settings page, let us know which <strong>exact</strong> file it is in. Searching through a dozen CSS files in your theme trying to find your menu code is not fun."
+msgstr "אם לא העתקת את ה-CSS לתוך דף הגדרת התוסף, אמור לנו <strong>בדיוק</strong> איזה קובץ מוטמע בו. חיפוש בין תריסר קבצי עיצוב בתבנית שלך, במטרה למצוא את העיצוב של התפריט זה לא כיף."
+
+#: admin_page.php:168
+msgid "Other plugins we recommend"
+msgstr "תוספים אחרים עליהם אנחנו ממליצים"
+
+#: admin_page.php:169
+msgid "The <a href=\"http://wordpress.org/extend/plugins/my-page-order/\">My Page Order plugin</a>  by <a href=\"http://www.geekyweekly.com/\">froman118</a> allows you to set the order of 'WordPress Pages' through a drag and drop interface. This replaces the need to use the clumsy default method of setting page orders built into WordPress."
+msgstr "התוסף <a href=\"http://wordpress.org/extend/plugins/my-page-order/\">My Page Order plugin</a> מאת <a href=\"http://www.geekyweekly.com/\">froman118</a> מאפשר לך לסדר את עמודי הוורדפרס באתר בעזרת ממשק גרור וזרוק (Drag & Drop). תוסף זה מחליף את הצורך בשימוש בברירת המחדל המגושמת להחלפת סדר הדפים המצויה במערכת."
+
+#: admin_page.php:170
+msgid "If you know of any other plugins which work well with the 'Multi-level Navigation plugin' then please us know about them."
+msgstr "אם אתה יודע על תוספים נוספים שעובדים טוב או תומכים בעבודה של 'Multi-level Navigation plugin', ידע אותנו בבקשה."
+
+#: admin_page.php:181
+msgid "Appearance"
+msgstr "מראה"
+
+#: admin_page.php:191
+msgid "Built in theme CSS?"
+msgstr "עיצוב CSS מובנה?"
+
+#: admin_page.php:192
+msgid "You are currently using a theme designed to integrate directly with the Multi-level Navigation Plugin. You can either keep the existing menu design by using the themes CSS, or change to the plugins CSS to override the theme styling. To use the second menu option the ID of each CSS option will need to be manually changed from <code>suckerfishnav</code> to <code>suckerfishnav_2</code>."
+msgstr "אתה משתמש בתבנית שתוכננה להתאים לשימוש בתוסף זה. אתה יכול לשמור את עיצוב התפריט הנוכחי על ידי שימוש בתבניות CSS או לשנות לעיצוב התוסף שידרוס את העיצוב בתבנית. על מנת להשתמש באפשרות השנייה הID של כל אפשרות CSS תאלץ להשתנות ידנית מ-<code>suckerfishnav</code> ל-<code>suckerfishnav_2</code>."
+
+#: admin_page.php:206
+msgid "To change the appearance of your menu, please visit the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">PixoPoint Multi-level CSS Generator</a> to obtain CSS. Paste your new CSS into the main menu box below."
+msgstr "על מנת לשנות את מראה התפריט שלך, בקר בבקשה ב<a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">מייצר ה-CSS עבור PixoPoint Multi-level</a> על מנת לייצר עיצוב CSS. הדבק את קוד ה-CSS החדש לתוך איזור הטקסט למטה."
+
+#: admin_page.php:211
+msgid "Enter the CSS for your main menu here"
+msgstr "הכנס את קוד ה-CSS עבור התפריט הראשי שלך כאן"
+
+#: admin_page.php:216
+msgid "To obtain new CSS, please visit the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">PixoPoint CSS generator</a>"
+msgstr "על מנת להשיג קוד CSS חדש, בקר בבקשה ב<a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">PixoPoint - מייצר CSS </a>"
+
+#: admin_page.php:231
+msgid "Enter the CSS for your second menu here. Note: the ID of these menu items must be suckerfishnav_2"
+msgstr "הכנס את קוד ה-CSS עבור התפריט השני שלך כאן. הערה: ה-ID של האובייקטים של תפריט זה חייבים להיות suckerfishnav_2"
+
+#: admin_page.php:236
+msgid "As this is the second menu, the CSS ID's must be different from the first. The ID of these menu items must be suckerfishnav_2 which is not the default format from the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS generator</a> so if you want to use the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS generator</a> for this option you will need to 'search and replace' (in a text editor) <strong>suckerfishnav</strong> to <strong>suckerfishnav_2</strong>."
+msgstr "מכיוון שזה התפריט השני, כל ה-ID-ים של האובייקטים ב-CSS חייבים להיות שונים מאילו של התפריט הראשון. ה-ID של האובייקטים של התפריט השני חייבים להיות suckerfishnav_2 שהוא אינו ברירת המחדל ב-<a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS מייצר ה-</a> כך שאם ברצונך להשתמש ב<a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS מייצר ה-</a> לתפריט השני, תצטרך \"לחפש ולהחליף\" (בעורך טקסט) את <strong>suckerfishnav</strong> ל-<strong>suckerfishnav_2</strong>"
+
+#: admin_page.php:253
+msgid "Menu contents"
+msgstr "תכני התפריט"
+
+#: admin_page.php:258
+msgid "Main menu contents"
+msgstr "תכני התפריט הראשי"
+
+#: admin_page.php:263
+msgid "Modify the contents of your main menu via the options above."
+msgstr "ערוך את התוכן של התפריט הראשי שלך דרך האפשרויות שלמעלה."
+
+#: admin_page.php:297
+msgid "Second menu contents"
+msgstr "תכני התפריט השני"
+
+#: admin_page.php:302
+msgid "Modify the contents of your second menu via the options above."
+msgstr "ערוך את התוכן של התפריט השני שלך דרך האפשרויות שלמעלה."
+
+#: admin_page.php:334
+msgid "Modifications"
+msgstr "התאמות"
+
+#: admin_page.php:339
+msgid "To change the text displayed in the top level menu items for Pages, Categories etc. or to exclude or include specific Pages or Categories modify the above options."
+msgstr "על מנת לשנות את הטקסט המופיע ברמה הראשונה בתפריט, או אם ברצונך להוציא או לכלול דפים או קטגוריות מסוימות ערוך את האפשרויות שלמעלה."
+
+#: admin_page.php:345
+msgid "Titles"
+msgstr "כותרות"
+
+#: admin_page.php:354
+#: admin_page.php:399
+msgid "Pages"
+msgstr "דפים"
+
+#: admin_page.php:360
+#: admin_page.php:405
+msgid "Categories"
+msgstr "קטגוריות"
+
+#: admin_page.php:366
+#: admin_page.php:411
+msgid "Archives"
+msgstr "ארכיונים"
+
+#: admin_page.php:372
+#: admin_page.php:417
+msgid "Links"
+msgstr "קישורים"
+
+#: admin_page.php:378
+#: admin_page.php:423
+msgid "Recent Comments"
+msgstr "תגובות אחרונות"
+
+#: admin_page.php:384
+#: admin_page.php:429
+msgid "Recent Posts"
+msgstr "רשומות אחרונות"
+
+#: admin_page.php:434
+msgid "Pages/categories to exclude"
+msgstr "דפים/ קטגוריות להוציא"
+
+#: admin_page.php:435
+msgid "If no pages or categories are specified then all of them will be included"
+msgstr "אם שום דף או קטגוריה אינם מצוינים כאן, כולם יוצגו"
+
+#: admin_page.php:438
+msgid "Pages to include or exclude in the main menu"
+msgstr "דפים להוציא או לכלול בתפריט הראשי"
+
+#: admin_page.php:454
+msgid "Categories to include or exclude"
+msgstr "קטגוריות להוציא או לכלול"
+
+#: admin_page.php:509
+msgid "You may order your categories by Ascending ID #, Descending ID # or alphabetically, Ascending Name or Descending Name."
+msgstr "באפשרותך לסדר את הקטגוריות שלך על ידי מס' ID בסדר יורד, מס' ID בסדר עולה, או בסדר האלפבית לפי שמות, סדר יורד או עולה."
+
+#: admin_page.php:512
+msgid "Category order"
+msgstr "סדר קטגוריות"
+
+#: admin_page.php:567
+msgid "Custom HTML code"
+msgstr "התאמה אישית של קוד HTML "
+
+#: admin_page.php:567
+msgid "example"
+msgstr "דוגמה"
+
+#: admin_page.php:568
+msgid "Note: You can have multiple top level menu items in one custom code entry. The following example will display a menu with links to 'Home', 'Categories' and 'Pages', the 'Categories' and 'Pages' links would have dropdowns and the 'Page 1' link in the 'Pages' dropdown would contain another further level."
+msgstr "הערה: יש באפשרותך לפתוח מספר רב של תפריטים בהכנסת קטע קוד אחד. הדוגמה הבאה מראה תפריט עם קישורים ל\"דף הבית\", \"קטגוריות\", ו\"דפים\". לקישורים ל\"קטגוריות\" ול\"דפים\" יהיו תת תפריטים נפתחים והקישור \"דף 1\" תחת תפריט ה\"דפים\" יכיל עוד רמה נוספת של תפריט."
+
+#: admin_page.php:604
+msgid "Enter the HTML for the 'Custom code 1' and 'Custom code 2' menu options above, add your code to the appropriate box above. <strong>Note:</strong> The menu uses an unordered list to format the menu. You will need to know some HTML to use this option. The menu is already wrapped in UL tags."
+msgstr "הכנס את קוד ה-HTML לאפשרויות התפריט 'קוד להתאמה אישית 1' ו'קוד להתאמה אישית 2'  שלמעלה. הוסף את הקוד שלך לתיבה המתאימה לכך. <strong>הערה:</strong> התפריט משתמש ברשימה לא מסודרת על מנת לייצר את התפריט. תצטרך לדעת קצת HTML על מנת להשתמש באפשרות זו. התפריט כבר \"עטוף\" בתגי <UL>."
+
+#: admin_page.php:611
+msgid "Custom code 1"
+msgstr "קוד להתאמה אישית 1"
+
+#: admin_page.php:615
+msgid "Custom code 2"
+msgstr "קוד להתאמה אישית 2"
+
+#: admin_page.php:619
+msgid "Custom code 3"
+msgstr "קוד להתאמה אישית 3"
+
+#: admin_page.php:623
+msgid "Custom code 4"
+msgstr "קוד להתאמה אישית 4"
+
+#: admin_page.php:638
+msgid "Settings"
+msgstr "הגדרות"
+
+#: admin_page.php:644
+msgid "Setting"
+msgstr "הגדרה"
+
+#: admin_page.php:645
+msgid "Description"
+msgstr "תיאור"
+
+#: admin_page.php:650
+msgid "Use the various options above to control some of the advanced settings of the plugin"
+msgstr "השתמש באפשרויות המרובות שלמעלה על מנת לשלות בחלק מההגדרות המתקדמות של התוסף"
+
+#: admin_page.php:669
+msgid "Speed of fade-in effect"
+msgstr "מהירות אפקט הדעיכה (Fade-in)"
+
+#: admin_page.php:671
+msgid "This option enhances the behaviour of the dropdown by creating an animated fade-in effect. The script which powers this part of the plugin is called <a href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'Superfish'</a> and was created by Joel Birch. This option utilizes <a href=\"http://jquery.com/\">jQuery</a>."
+msgstr "האפשרות הזו משפרת את הנראות של תתי התפריט הנפתחים בכך שהיא יוצרת אפקט דעיכה (Fade-in). הסקריפט שמפעיל את החלק הזה של התוסף נקרא <a href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'Superfish'</a> והוא נוצר על ידי Joel Birch. האפשרות הזו עושה שימוש ב<a href=\"http://jquery.com/\">jQuery</a>."
+
+#: admin_page.php:678
+msgid "Mouseover delay (milliseconds)"
+msgstr "השהייה של מעבר עכבר (במילישניות - אלפיות השנייה)"
+
+#: admin_page.php:706
+msgid "Sensitivity"
+msgstr "רגישות"
+
+#: admin_page.php:708
+msgid "When this option is enabled, the menu will attempt to determine the user's intent. On low sensitivity, instead of immediately displaying the dropdown/flyout menu on mouseover, the menu will wait until the user's mouse slows down before displaying it."
+msgstr "כשאפשרות זו מופעלת, התפריט ינסה לזהות את כוונת המשתמש. כאשר הרגישות מוגדרת כרגישות נמוכה, במקום ישירות להציג או לפתוח את תת-התפריט במעבר העכבר, התפריט יחכה עד שמהירות העכבר של המשתמש מאיטה לפני שהוא מפעיל את הצגת האובייקטים."
+
+#: admin_page.php:718
+msgid "Enable keyboard accessible menu?"
+msgstr "הפעל \"קיצורי מקלדת לתפריט\"?"
+
+#: admin_page.php:720
+msgid "This option may not work correctly as it contains bugs."
+msgstr "אפשרות זו עלולה לפעול שלא כשורה, מכיוון שהיא מכילה באגים מסויימים."
+
+#: admin_page.php:721
+msgid "This option enables users to access your menu via the tab key on their keyboard rather than the mouse. Thanks to <a href=\"http://www.transientmonkey.com/\">malcalevak</a> for writing the script. This option utilizes <a href=\"http://jquery.com/\">jQuery</a>."
+msgstr "האפשרות הזו מאפשרת למשתמשים לגשת לתפריט שלך דרך כפתור ה-tab במקלדת שלהם, במקום רק עם העכבר. תודה ל<a href=\"http://www.transientmonkey.com/\">malcalevak</a על כתיבת הסקריפט. אפשרות זו עושה שימוש ב<a href=\"http://jquery.com/\">jQuery</a>."
+
+#: admin_page.php:749
+msgid "Enable arrow mark-up?"
+msgstr "הפעל חץ לסימון תת-תפריטים?"
+
+#: admin_page.php:751
+msgid "This option adds a small arrow to any menu option which contains children. Thanks to <a href=\"http://transientmonkey.com/\">malcalevak</a> for help with implementing this feature. This option utilizes <a href=\"http://jquery.com/\">jQuery</a>."
+msgstr "אפשרות זו מוסיפה חץ קטן לכל שלב בתפריט שמכיל תת-תפריטים. תודה ל<a href=\"http://transientmonkey.com/\">malcalevak</a> על העזרה בהטמעת האפשרות הזו. אפשרות זו עושה שימוש ב<a href=\"http://jquery.com/\">jQuery</a>."
+
+#: admin_page.php:785
+msgid "Add a second menu?"
+msgstr "הוסף תפריט שני?"
+
+#: admin_page.php:790
+msgid "Note: You can not turn this option off as your theme has been indicated that it has a second menu."
+msgstr "הערה: אינך יכול לכבות אפשרות זו מאחר והתבנית שלך מדווחת כי יש לך תפריט שני."
+
+#: admin_page.php:792
+msgid "You may add a second menu to your site. This is particularly common with magazine style layouts. For a second menu, add the following code to your theme <code>&lt;?php if (function_exists('pixopoint_menu')) {pixopoint_menu(2);} ?&gt;</code>. The <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">PixoPoint CSS generator</a> does not currently support a second menu by default, but if you do a search and replace (in a text editor) for <code>suckerfishnav</code> to <code>suckerfishnav_2</code> in the CSS you will be able to adapt the standard CSS for the second menu."
+msgstr "באפשרותך להוסיף תפריט שני לאתר שלך. בחירה באפשרות זו נפוצה בייחוד בעיצוב מגזיני. לתפריט שני, הוסף את הקוד הבא בתבנית שלך - <code>&lt;?php if (function_exists('pixopoint_menu')) {pixopoint_menu(2);} ?&gt;</code>. <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">מייצר ה- CSS</a> כרגע לא תומך בתפריט שני כברירת מחדל, אך אם אתה מבצע \"חיפוש והחלפה\" (בעורך טקסט) של <code>suckerfishnav</code> ב-<code>suckerfishnav_2</code> בקוד ה-CSS שלך, יתאפשר לך להתאים את הCSS הסטנדרטי שמוגדר עבור תפריט ראשון, גם לגבי התפריט השני."
+
+#: admin_page.php:814
+msgid "Maintenance mode?"
+msgstr "מצב תחזוקה?"
+
+#: admin_page.php:816
+msgid "When in maintenance mode, the plugin can only be seen when the user adds ?mln=on to the site URL (ie: <a href=\"http://geek.ryanhellyer.net/?mln=on\">http://geek.ryanhellyer.net/?mln=on</a>). This is useful for when testing the menu. If the menu does not look correct on your site, you may place the menu into maintenance mode so that your regular site visitors can not see it."
+msgstr "כאשר נמצא במצב תחזוקה, התוסף יכול רק להראות על ידי המשתמש רק כאשר הוא מוסיף ?mln=on לשורת הכתובת URL בדפדפן (לדוגמה: <a href=\"http://geek.ryanhellyer.net/?mln=on\">http://geek.ryanhellyer.net/?mln=on</a>). אפשרות זו עוזרת כאשר אתה מעוניין לבדוק את התפריט, לפני הפעלתו הסופית. אם התפריט אינו מופיע בצורה טובה באתר שלך, אתה יכול להכניס את התפריט למצב תחזוקה כך שהמבקרים הרגילים באתר שלך לא יוכלו לראות אותו בינתיים."
+
+#: admin_page.php:833
+msgid "Fixing CSS bug"
+msgstr " תיקון באג ב-CSS"
+
+#: admin_page.php:835
+msgid "There is a known bug in this plugin which causes the CSS file (style.php) to not work on <strong>some</strong> web hosts. You can either choose to display the CSS in your HTML (easiest) or disable the plugin CSS file so that you can manually copy the CSS to your theme (usually the style.css file). If you find that you need to use this option to correct the bug in the style sheet, please leave a message in the PixoPoint multi-level navigation forums so we can take a look as we are actively working to fix this bug and need more examples of the problem in action (we can't replicate it)."
+msgstr "קיים באג ידוע בתוסף זה שגורם לקובץ הCSS לא לעבוד על <strong>כמה</strong> שרתי web. אתה יכול לבחור האם להציג CSS ב-HTML שלך (הכי פשוט) או לנטרל את קובץ ה-CSS של התוסף ולהוסיף באופן ידני את קוד הCSS של התוסף לקובץ העיצוב הראשי של האתר שלך. (בדרך כלל style.css). אם תמצא כי יש לך צורך לתקן את הבאג בצורה זו, בבקשה השאר לנו הודעה בפורום כדי שנוכל להציץ באתרך, ולהעזר בו לצורך התיקון בו אנו עוסקים ממש כעת. דוגמאות נוספות של הבאג יעזרו לנו בפעולת התיקון שלו."
+
+#: admin_page.php:848
+msgid "Update Options"
+msgstr "אפשרויות עדכון"
+
+#: admin_page.php:389
+msgid "Title URL's"
+msgstr "כתובת URL של הכותרות"
+
+#: admin_page.php:469
+msgid "Pages/categories depth"
+msgstr "עומק עמודים/קטגוריות"
+
+#: admin_page.php:470
+msgid "Controls the depth of the menu. 'No nesting' means that all the available menu items will be displayed in a flat list with no children."
+msgstr "שולט בעומק של התפריט. 'No nesting' משמעו שכל הקישורים בכל רמות התפריט האפשריות יופיעו ברשימה שטוחה ללא תת-רמות. "
+
+#: admin_page.php:473
+msgid "Pages depth"
+msgstr "עומק דפים"
+
+#: admin_page.php:491
+msgid "Categories depth"
+msgstr "עומק קטגוריות"
+
+#: admin_page.php:508
+msgid "Categories settings"
+msgstr "הגדרות של הקטגוריות"
+
+#: admin_page.php:529
+msgid "Show empty categories"
+msgstr "הראה קטגוריות ריקות"
+
+#: admin_page.php:537
+msgid "The number of posts in each category may be displayed alongside the category name."
+msgstr "מספר הרשומות בכל קטגוריה שעל התוסף להראות לצד שם הקטגוריה."
+
+#: admin_page.php:540
+msgid "Show post counts"
+msgstr "הראה ספירת כמות רשומות"
+
+#: admin_page.php:680
+msgid "This option adds a delay time before the dropdown/flyout appears. This option is controlled by the <a href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'Superfish plugin'</a> for jQuery."
+msgstr "אפשרות זו מוסיפה זמן השהיה לפני שתת-התפריט מופיע. אפשרות זו נשלטת על ידי <a href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'Superfish plugin'</a>לצורך jQuery."
+
+#: admin_page.php:687
+msgid "Hide delay time (milliseconds)"
+msgstr "הסתר זמן השהייה (מילישניות)"
+
+#: admin_page.php:689
+msgid "This option adds a delay before the dropdown disappears. This option is particularly suitable for small menus where users may accidentally hover off of the menu. The script is powered by the <a href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'Superfish plugin'</a> for <a href=\"http://jquery.com/\">jQuery</a>"
+msgstr "אפשרות זו מוסיפה השהיה לפני שתת-התפריט מופיע. אפשרות זו מתאימה בעיקר לתפריטים קטנים (בגובה השורה למשל) שמשתמשים יכולים בטעות לרחף מעל התפריט. הסקריפט מופעל על ידי <a href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'תוסף Superfish'</a> לצורך <a href=\"http://jquery.com/\">jQuery</a>"
+
+#: admin_page.php:802
+msgid "Remove title attribute?"
+msgstr "הסר תכונות כותרת (title=\"...\") בתגי הקישורים?"
+
+#: admin_page.php:804
+msgid "This removes the title attributes from the links in the menu. The title attributes display in most browsers as a small tool tip on hover over the links."
+msgstr "אפשרות זו מסירה את תכונת הכותרת מהקישורים בתפריט. תכונת הכותרת מופיעה ברוב הדפדפנים כטקסט מרחף במעבר עכבר מעל הקישור."
+

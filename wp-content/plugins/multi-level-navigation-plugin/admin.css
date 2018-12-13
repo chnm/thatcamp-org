@@ -1,0 +1,204 @@
+/* This is legacy code and needs reformatting and optimization */
+/* CSS code for admin page */
+
+h4 {font-family:serif;font-style:italic;display: block;font-size:1.6em;font-weight: normal;margin: .83em 0;}
+h5 {font-family:serif;font-style:italic;display: block;font-size:1.2em;font-weight: normal;margin: .83em 0;}
+tfoot tr th {font-weight:normal}
+#options label { width: 200px; float: left; margin-right: 25px; font-weight: bold; }
+#options ul {list-style:disc;padding-left:30px;}
+#options li {padding-left:0px;}
+#options input { float: left; }
+#options p { clear: both; }
+.includeexclude {overflow:auto;float:left;width:500px;height:70px}
+
+.menuitems {float:left;width:24em;height:4.5em;margin-right: 10px;}
+
+.menuitems2 {float:left;width:16em;height:4.5em;margin-right: 10px;}
+
+.includeexclude {overflow:auto;float:left;width:500px;height:70px}
+.suckerfish_chunk {float:left;overflow:auto;margin-bottom:20px;border-bottom:1px dotted #cccccc;}
+.widefat {margin-top:20px}
+
+.desc p {margin:0 0 12px 0;}
+.desc li {font-size:0.9em}
+
+.includeexclude select {position:relative;top:-0.9em}
+
+
+
+.widget_more {float:right;width:16px;height:14px;background:#aaa url('images/down.gif');position:relative;top:-23px;left:-7px}
+.widget_more:hover {background-position:0 -14px}
+.animatedwidgetdrop {z-index:10000;float:left;position:relative;top:-15px;background:#eee;padding:0 10px;}
+
+.animatedwidgetdrop_customcode {width:450px;height:250px;z-index:10000;float:left;position:relative;top:-15px;background:#eee;padding:0 10px;}
+.animatedwidgetdrop_customcode p {font-size:0.8em;color:#666;margin:10px 0 0 0;text-indent:0}
+
+.animatedwidgetdrop p {font-size:0.8em;color:#666;margin:10px 0 0 0;text-indent:0}
+.animatedwidgetdrop label {font-size:1em;color:#666}
+.animatedwidgetdrop input {font-size:1em;border:1px solid #ddd;color:#666;margin-bottom:20px}
+
+
+.pixopoint_widgets {width:250px}
+#top_menu_list {width:270px;height:500px;border:1px solid #ccc}
+
+#top_menu_list li,.pixopoint_widgets li {
+	clear:right;
+	list-style:none;
+	width:250px;
+	height:35px;
+	line-height:35px;
+	margin:10px 0;
+	text-indent:10px;
+	float:left;
+	background:#DDE url('images/widget.png') repeat-x;
+	background-position:0 -35px;
+	height:31px;
+	line-height:31px;
+	color:#ffffff;
+	}
+#top_menu_list li:hover,.pixopoint_widgets li:hover {
+	background-position:0 -70px;
+	}
+#top_menu_list li,.pixopoint_widgets li {
+	background-position:0 -35px;
+	}
+
+
+/* $Id: example.css,v 1.5 2006/03/27 02:44:36 pat Exp $ */
+
+/*--------------------------------------------------
+  REQUIRED to hide the non-active tab content.
+  But do not hide them in the print stylesheet!
+  --------------------------------------------------*/
+.tabberlive .tabbertabhide {
+ display:none;
+}
+
+/*--------------------------------------------------
+  .tabber = before the tabber interface is set up
+  .tabberlive = after the tabber interface is set up
+  --------------------------------------------------*/
+.tabber {
+}
+.tabberlive {
+ margin-top:1em;
+}
+
+/*--------------------------------------------------
+  ul.tabbernav = the tab navigation list
+  li.tabberactive = the active tab
+  --------------------------------------------------*/
+ul.tabbernav
+{
+ margin:0;
+ padding: 3px 0 1px 0;
+ border-bottom:none;
+ font: bold 12px Verdana, sans-serif;
+}
+
+ul.tabbernav li
+{
+ list-style: none;
+ margin: 0 4px;
+ padding: 0;
+ float:left;
+ background: #DDE url('images/adminheading_left.png');
+ background-position:0 -50px;
+ height:41px;
+ line-height:41px;
+}
+ul.tabbernav li:hover {
+ background-position:0 0;
+ }
+
+ul.tabbernav li a
+{
+ display:block;
+ padding: 0 15px;
+ height:41px;
+ line-height:41px;
+ color:#464646;
+ margin-left: 3px;
+ border:none;
+ border-bottom: none;
+ background: url('images/adminheading_right.png') no-repeat;
+ background-position:100% -50px;
+ text-decoration: none;
+}
+
+ul.tabbernav li a:link { color: #464646; }
+ul.tabbernav li a:visited { color: #464646; }
+
+ul.tabbernav li a:hover {
+ background-position:100% 0;
+ border-color: #227;
+ color:#D54E21;
+}
+
+ul.tabbernav li.tabberactive:hover {
+ background:url('images/adminheading_left.png');
+ background-position:0 0;
+}
+ul.tabbernav li.tabberactive {
+ background:url('images/adminheading_left.png');
+ background-position:0 0;
+}
+ul.tabbernav li.tabberactive a
+{
+ background: url('images/adminheading_right.png') no-repeat;
+ background-position:100% 0;
+ border-bottom: 1px solid #fff;
+}
+
+ul.tabbernav li.tabberactive a:hover
+{
+ color:#D54E21;
+ background: url('images/adminheading_right.png') no-repeat;
+ background-position:100% 0;
+ border-bottom: none;
+}
+
+/*--------------------------------------------------
+  .tabbertab = the tab content
+  Add style only after the tabber interface is set up (.tabberlive)
+  --------------------------------------------------*/
+.tabberlive .tabbertab {
+ padding:0;
+ border:none;
+ border-top:0;
+
+ /* If you don't want the tab size changing whenever a tab is changed
+    you can set a fixed height */
+
+ /* height:200px; */
+
+ /* If you set a fix height set overflow to auto and you will get a
+    scrollbar when necessary */
+
+ /* overflow:auto; */
+}
+
+/* If desired, hide the heading since a heading is provided by the tab */
+.tabberlive .tabbertab h2 {
+ display:none;
+}
+.tabberlive .tabbertab h3 {
+ display:none;
+}
+
+/* Example of using an ID to set different styles for the tabs on the page */
+.tabberlive#tab1 {
+}
+.tabberlive#tab2 {
+}
+.tabberlive#tab2 .tabbertab {
+ height:200px;
+ overflow:auto;
+}
+
+.csstooltip {display:inline-block}
+.csstooltip div {display:none}
+.csstooltip:hover div {width:55em;display:block;position:absolute;margin:-12em 0 0 0em;border:1px solid #ccc;background:#fff;font-family:sans-serif;color:#666;font-weight:normal;padding:10px 15px;font-size:12px}
+.csstooltip:hover div code {background:#fff}
+.csstooltip:hover div li,	.csstooltip:hover div li li,	.csstooltip:hover div li li li,	.csstooltip:hover div li li li li {font-size:12px;}
+.csstooltip:hover div a {color:#666}

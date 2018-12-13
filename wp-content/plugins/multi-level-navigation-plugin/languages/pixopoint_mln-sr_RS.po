@@ -1,0 +1,865 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Multi-Level Navigation Plugin 2.1.4 po polsku\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-19 02:19+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Michał Maciejewski <admin@inwit.pl>\n"
+"Language-Team: Galareta 1 Man Band <admin@inwit.pl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-KeywordsList: __;_e;_c;__ngettext:1,2;__ngettext_noop:1,2\n"
+"Language: pl_PL\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin_page.php:97 admin_page.php:350 admin_page.php:395
+msgid "Home"
+msgstr "Početna"
+
+#: admin_page.php:103
+msgid "Introduction"
+msgstr "Upustvo"
+
+#: admin_page.php:108
+msgid "Thanks for using our plugin :)"
+msgstr "Hvala što koristite ovaj plugin :)"
+
+#: admin_page.php:114
+msgid ""
+"The Multi-level Navigation Plugin creates a dropdown, flyout or slider menu "
+"for your WordPress site based on the <a href=\"http://www.htmldog.com/"
+"articles/suckerfish/ target=\"_blank\">Son of Suckerfish technique</a>. If "
+"you have any comments, questions or suggestions about this plugin, please "
+"visit the <a href=\"http://geek.ryanhellyer.net/forum/index.php?"
+"board=4.0\">PixoPoint multi-level navigation forum</a>."
+msgstr ""
+"Multi-level Navigation Plugin stvara dropdown, flyout ili slider meni vašeg "
+"WordPress sajta baziranog na<a href=\"http://www.htmldog.com/articles/"
+"suckerfish/ target=\"_blank\"> Son of Suckerfish tehnici</a>. Ako imate bilo "
+"kakve komentare, pitanja ili sugestije u vezi ovog plugina posetite <a href="
+"\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\"> PixoPoint multi-"
+"level navigation forum</a>."
+
+#: admin_page.php:115
+msgid "Installation"
+msgstr "Instalacija"
+
+#: admin_page.php:116
+msgid ""
+"Add the following code wherever you want the dropdown to appear in your "
+"theme (usually header.php)"
+msgstr ""
+"Dodajte sledećo kod gde god želite da se dropdown pojavi u vašoj temi "
+"(uglavnom header.php)"
+
+#: admin_page.php:117
+msgid ""
+"&lt;?php if (function_exists('pixopoint_menu')) {pixopoint_menu();} ?&gt;"
+msgstr ""
+"&lt;?php if (function_exists('pixopoint_menu')) {pixopoint_menu();} ?&gt;"
+
+#: admin_page.php:118
+msgid ""
+"To style your menu, please visit the <a href=\"http://geek.ryanhellyer.net/"
+"suckerfish_css/\">Multi-level Navigation CSS Generator</a> page to obtain "
+"your CSS and enter it into the \"Appearance\" tab."
+msgstr ""
+"Za stilizovanje vašeg menija molim vas posetite<a href=\"http://geek."
+"ryanhellyer.net/suckerfish_css/\"> Multi-level Navigation CSS Generator </"
+"a>page za očuvanje vašeg CSS-a i unesite ga u \"Appearance\" tab."
+
+#: admin_page.php:128
+msgid "Help"
+msgstr "Pomoć"
+
+#: admin_page.php:133
+msgid ""
+"Please do not email us directly or via our <a href=\"http://geek.ryanhellyer."
+"net/contact/\">contact form</a> for unpaid support. We prefer to offer "
+"support in our <a href=\"http://geek.ryanhellyer.net/forum/\">forum</a> so "
+"that others may learn from the advice"
+msgstr ""
+"Molimo vas da nam ne šaljete mailove direktno ili via naše<a href=\"http://"
+"geek.ryanhellyer.net/contact/\"> kontakt forme</a> za neplaćenu podršku. Mi "
+"preferiramo da nudimo podršku u našem<a href=\"http://geek.ryanhellyer.net/"
+"forum/\"> forumu</a> tako da drugi mogu učiti od saveta"
+
+#: admin_page.php:142
+msgid "The easy way ... "
+msgstr "Lak način..."
+
+#: admin_page.php:143
+msgid ""
+"The easiest way to setup the PixoPoint Multi-level Navigation Plugin is to "
+"use it with a theme specifically designed to support the plugin. All themes "
+"exported from the <a href=\"http://geek.ryanhellyer.net/generator/"
+"\">PixoPoint Template Generator</a> (which have dropdown menus) support this "
+"by default. Simply activate your theme, then activate the plugin and the new "
+"menu will appear instantly. Visit the <a href=\"http://geek.ryanhellyer.net/"
+"generator/\">PixoPoint Template Generator</a> to get your own pre-supported "
+"theme."
+msgstr ""
+"Najlakši način za pristup PixoPoint Multi-level Navigation Plugin je da ga "
+"koristite sa temom posebno dizajniranom za podršku plugina. Sve teme su "
+"eksportovane iz <a href=\"http://geek.ryanhellyer.net/generator/\">PixoPoint "
+"Template Generator-a</a> (koji imaju dropdown menije) podrške po defaultu. "
+"Jednostavno aktivirajte vašu temu  zatim aktivirajte plugin i novi meni će "
+"se pojaviti odmah. Posetite<a href=\"http://geek.ryanhellyer.net/generator/"
+"\"> PixoPoint Template Generator</a>  da biste dobili vašu temu pre podrške."
+
+#: admin_page.php:144
+msgid ""
+"If you don't take this route then read on for simple instructions on how to "
+"integrate it into other themes ..."
+msgstr ""
+"Ako ne iskoristite ovu rutu onda pročitajte jednostavne instrukcije o tome "
+"kako da integrišete u druge teme..."
+
+#: admin_page.php:146
+msgid "Paid support"
+msgstr "Plaćena podrška"
+
+#: admin_page.php:147
+msgid ""
+"For direct help via the plugin (and CSS generator) author, please sign up "
+"for our Premium Support service ... <strong><a href=\"http://geek."
+"ryanhellyer.net/premium-support/\">http://geek.ryanhellyer.net/premium-"
+"support/</a></strong>"
+msgstr ""
+"Za direktnu pomoć via plugina (i CSS generatora) autora, molim vas prijavite "
+"se za našu Premium Support uslugu ...  <strong><a href=\"http://geek."
+"ryanhellyer.net/premium-support/\">http://geek.ryanhellyer.net/premium-"
+"support/</a></strong>"
+
+#: admin_page.php:148
+msgid ""
+"Our Premium Support option is ideal if you have insufficient time to fix any "
+"problems you may have or simply don't know much about coding, we not only "
+"offer techinical support and access to our latest betas but we will also "
+"install the plugin and set it up on your site if needed. We also do "
+"customisations of the plugin for some premium members, although we recommend "
+"contacting us via our <a href=\"http://geek.ryanhellyer.net/contact/"
+"\">contact form</a> for such requests as some customisations may require "
+"extra payment depending on their complexity."
+msgstr ""
+"Naša Premium Support opcija je idealna ako nemate dovoljno vremena da "
+"popravite probleme koje imate ili jednostavno ne znate mnogo o kodiranju, mi "
+"ne nudimo samo tehničku podršku i pristup našim poslednjim bttama već i "
+"instaliramo plugin i nameštamo ga na vašem sajtu ako je to potrebno. Takodje "
+"radimo custom-izaciju plugina za neke premium članove, iako prporučujemo da "
+"nas kontaktirate via<a href=\"http://geek.ryanhellyer.net/contact/\"> "
+"kontakt forme</a> za takve zahteve jer su neke custom-izacije kompleksnije."
+
+#: admin_page.php:149
+msgid ""
+"If you have any questions about our premium services or are looking for "
+"other help with other WordPress or (X)HTML/CSS projects including theme "
+"development please do not hesitate to contact us via our <a href=\"http://"
+"geek.ryanhellyer.net/contact/\">contact form</a>. More information about our "
+"premium services is available on our site ... <strong><a href=\"http://geek."
+"ryanhellyer.net/premium-support/\">http://geek.ryanhellyer.net/premium-"
+"support/</a></strong>"
+msgstr ""
+"Ako imate bilo kakavo pitanje o našoj premium uslugama ili tražite pomoć sa "
+"drugim  WordPress ili (X)HTML/CSS projektima uključujući programniranje teme "
+"molim vas nemojte da oklevate da nas kontaktrate via naše<a href=\"http://"
+"geek.ryanhellyer.net/contact/\"> kontakt forme</a>. Više informacija o našim "
+"premium uslugama je dostupno na našm sajtu...<strong><a href=\"http://geek."
+"ryanhellyer.net/premium-support/\">http://geek.ryanhellyer.net/premium-"
+"support/</a></strong>"
+
+#: admin_page.php:150
+msgid "FAQ"
+msgstr "FAQ"
+
+#: admin_page.php:151
+msgid ""
+"<strong>Q:</strong><em> Your plugin doesn't work in IE, why don't you fix it?"
+"</em> <br /><strong>A:</strong> The plugin does work with IE, you just "
+"haven't integrated it correctly. See 'Free support' below for some tips on "
+"how to get it working with IE."
+msgstr ""
+"<strong>Q:</strong><em>Vaša plugin ne radi sa IE  zašto je ne popravite?</"
+"em> <br /><strong>A:</strong> Plugin radi sa IE samo je niste intgrisali "
+"ispravno. Pogledajte besplatnu podršku ispod za neke savete o tome kako da "
+"radi sa IE."
+
+#: admin_page.php:152
+msgid ""
+"<strong>Q:</strong><em> How do I change the menu contents?</em> <br /"
+"><strong>A:</strong> See the big tab at the top of the screen right now "
+"which says \"Menu Contents\"? Click that ..."
+msgstr ""
+"<strong>Q:</strong><em>Kako da promenite sadržaj menija?</em> <br /"
+"><strong>A:</strong> Vidite veliki tab na vrhu ekrana gde piše \"Menu "
+"Contents\"? Kliknite na to..."
+
+#: admin_page.php:153
+msgid ""
+"<strong>Q:</strong><em> How do I change the colour/font/whatever in my menu?"
+"</em> <br /><strong>A:</strong> Visit the <a href=\"http://geek.ryanhellyer."
+"net/suckerfish_css/\">CSS generator</a>."
+msgstr ""
+"<strong>Q:</strong><em>Kako da promenite boju/font/štagof u meniju?</em> "
+"<br /><strong>A:</strong> Postite<a href=\"http://geek.ryanhellyer.net/"
+"suckerfish_css/\">CSS generator</a>."
+
+#: admin_page.php:154
+msgid ""
+"<strong>Q:</strong><em> How do I get a fully customised version?</em> <br /"
+"><strong>A:</strong> Leave a message on the PixoPoint <a href=\"http://geek."
+"ryanhellyer.net/contact/\">Contact Page</a> with your requirements and we "
+"will get back to you ASAP with pricing information. Alternatively you can "
+"sign up for our <a href=\"http://geek.ryanhellyer.net/premium-support/"
+"\">Premium Support</a> option which gives you access to our new dropdown, "
+"flyout and slider menu CSS generator, plus access to our premium support "
+"forum."
+msgstr ""
+"<strong>Q:</strong><em>Kako da dobijete custom verziju ?</em> <br /"
+"><strong>A:</strong> Ostavite poruku na PixoPoint<a href=\"http://geek."
+"ryanhellyer.net/contact/\"> Contact Page</a> sa vašim zahtevima i mi "
+"ćemoćemo vam što pre odgovoriti.  Alternativno možete da se prijavite za "
+"našu<a href=\"http://geek.ryanhellyer.net/premium-support/\"> Premium Suppor "
+"</a>opciju koja vam daje pristup našem novom dropdown, flyout i slider "
+"meniju CSS generatora , plus pristup našem f premium support podršku ."
+
+#: admin_page.php:155
+msgid ""
+"<strong>Q:</strong><em> Why can't the plugin do X, Y or Z?</em> <br /"
+"><strong>A:</strong> It probably can, we just haven't supplied instructions "
+"on how to do it. If you have any requests, then please leave them in the <a "
+"href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">PixoPoint "
+"dropdown menu support board</a>. We often update the plugin with new "
+"functionality and we're far more likely to include the functionality you "
+"want if we know there is a demand for it already."
+msgstr ""
+"Zašto plugin ne može da uradi  X , Y ili Z ?</em> <br /><strong>A:</strong> "
+"Verovatno mož , samo nemate instrukcije o tome kako da to uradite . "
+"<strong>Q:</strong><em> Ukoliko imate bilo kakve zahteve ostavite ih u  <a "
+"href=\"http://geek.ryanhellyer.net/forum/index.php?board=4.0\">PixoPoint "
+"dropdown meniju odbora za podršku</a>. Mi često ažuriramo plugin sa novim "
+"funkcijama , i verovatno ćemo uključiti  funkcionalnost koju želite , ako "
+"već postoji potražnja za njom ."
+
+#: admin_page.php:156
+msgid "Free support"
+msgstr "Besplatna podrška"
+
+#: admin_page.php:157
+msgid ""
+"If you follow all of the instructions here, activate the plugin and find the "
+"menu is appearing on your site but looks all messed up, then the problem is "
+"probably caused by a clash between your themes CSS and plugins CSS. These "
+"problems can usually be remedied by removing the wrapper tags which surround "
+"the menu in your theme. For example, most themes will have some HTML such as "
+"<code>&lt;div id=\"nav\"&gt;&lt;?php wp_list_pages(); ?&gt;&lt;/div&gt;</"
+"code> which contains the existing themes menu. By placing the "
+"<code>pixopoint_menu()</code> function between those DIV tags, the menu will "
+"often interact with that DIV tag. The solution is to either remove the DIV "
+"tag or to alter it's CSS so that it doesn't interact with the menu."
+msgstr ""
+"Ako pratite sva uputstva ovde , aktiviranje plugina i pronadji  meni se "
+"pojavljuje na vašem sajtu , ali izgleda izbrkano, onda je problem verovatno "
+"izazvan sukob između vaše  CSS tema i CSS plugina. Ovi problemi se obično "
+"može popraviti uklanjanjem wrapper tags koje okružuju meni u temi . Na "
+"primer , većina teme će imati HTML koji sadrži<code>&lt;div id=\"nav\"&gt;"
+"&lt;?php wp_list_pages(); ?&gt;&lt;/div&gt;</code> postojeći meni teme. "
+"Postavljanjem <code>pixopoint_menu()</code> funkcije između tih DIV tagova ,"
+"meni će često komunicirati sa DIV tagom . Rešenje je ili uklonili oznaku "
+"DIV , ili da menja CSS , tako da ne komuniciraju sa menijem ."
+
+#: admin_page.php:158
+msgid ""
+"If you require further help with the plugin, please visit the <a href="
+"\"http://geek.ryanhellyer.net/multi-level-navigation/\">Multi-level "
+"Navigation Plugin page</a> or the PixoPoint <a href=\"http://geek."
+"ryanhellyer.net/forum/index.php?board=4.0\">multi-level navigation support "
+"board</a>."
+msgstr ""
+"Ako zahtevate dalju pomoć sa pluginom molim vas posetite<a href=\"http://"
+"geek.ryanhellyer.net/multi-level-navigation/\"> Multi-level Navigation "
+"Plugin stranicu</a> ili  PixoPoint<a href=\"http://geek.ryanhellyer.net/"
+"forum/index.php?board=4.0\"> multi-level navigation support tabelu</a>."
+
+#: admin_page.php:159
+msgid ""
+"We are happy to answer questions but we've been noticing lately that more "
+"time is being spent teaching people what to ask rather than actually "
+"answering anything. So before posting questions on the PixoPoint support "
+"forum, please read the following tips to help us answer your questions "
+"faster."
+msgstr ""
+"Mi smo srećni da odgovorimo na pitanja , ali smo u poslednje vreme primetili "
+"da više vremena trošimo učeći ljude šta da pitaju, a ne odgovara ništa "
+"stvarno . Dakle, pre postavljanja pitanja u PixoPoint Forumu, pročitajte "
+"sledeće savete koji će vam pomoći da odgovorimo na vaša pitanja brže ."
+
+#: admin_page.php:161
+msgid "Where is your CSS?"
+msgstr "Gde je vaš CSS?"
+
+#: admin_page.php:162
+msgid "What modifications have you made to the CSS?"
+msgstr "Kakve modifikacije ste napravili u CSS?"
+
+#: admin_page.php:163
+msgid "What browsers are you having problems with?"
+msgstr "Sa kojim pretraživačima imate probleme?"
+
+#: admin_page.php:164
+msgid "What is the URL for your site?"
+msgstr "Koji jeURL vašg sajta?"
+
+#: admin_page.php:165
+msgid ""
+"Provide a link to the problem. Most problems can not be answered without "
+"actually seeing your site. If you don't want to install the plugin on your "
+"live site and don't have a test site to show us, then view the source code "
+"in your browser when you do have the plugin installed, save it to an HTML "
+"file and upload that somewhere so that we can see what the page looks like."
+msgstr ""
+"Postavite link do problema . Većina problema se ne može odgovoriti bez da "
+"vidi vaš sajt . Ako ne želite da instalirate plugin na vašem sajtu uživo i "
+"nemate sajt test da nam pokaže , onda vidite source kod u vašem pretraživaču "
+"kada imate instaliran plugin , sačuvajte ga u HTML fajlu ii stavite da negde "
+"tako da možemo da vidimo kako izgleda prva strana ."
+
+#: admin_page.php:166
+msgid ""
+"Do not bother providing us with HTML and/or CSS code snippets (without a "
+"link). There is very little we can do without seeing the entire page as most "
+"problems are caused by an obscure piece of CSS somewhere else on the page."
+msgstr ""
+"Ne trudite se da nas obezbedite sa HTML i / ili CSS kodom i ( bez inka ) . "
+"Vrlo malo možemo učiniti ako ne vidimo celu stranu jer  većinu problema  "
+"izaziva opskurni komad CSS negde drugde na stranici ."
+
+#: admin_page.php:167
+msgid ""
+"Let us know if you have modified the CSS. If it is modified beyond what is "
+"available in the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS "
+"generator</a> we are unlikely to offer support for free. Rummaging through "
+"other peoples code is too time consuming sorry."
+msgstr ""
+"Obavestite nas da li ste modifikovali CSS . Ako je modifikovano više od "
+"onoga što je dostupno u<a href=\"http://geek.ryanhellyer.net/suckerfish_css/"
+"\">CSS generator</a>  verovatno ne možemo da vam ponudimo besplatnu "
+"podršku . Preturanje po tudjim kodovima traži mnogo vremena, žao nam je."
+
+#: admin_page.php:168
+msgid ""
+"If you didn't paste your CSS into the WP plugins settings page, let us know "
+"which <strong>exact</strong> file it is in. Searching through a dozen CSS "
+"files in your theme trying to find your menu code is not fun."
+msgstr ""
+"Ako niste paste-ovali  CSS u WP  plugin stranici podešavanja , obavestite "
+"nas koji je tačan <strong>exact</strong> fajl unutra. Traženje kroz desetak "
+"CSS fajlova u temi pokušavajući da pronađemo vaš kod menija nije zabavno ."
+
+#: admin_page.php:170
+msgid "Other plugins we recommend"
+msgstr "Drugi pluginovi koje preporučujemo"
+
+#: admin_page.php:171
+msgid ""
+"The <a href=\"http://wordpress.org/extend/plugins/my-page-order/\">My Page "
+"Order plugin</a>  by <a href=\"http://www.geekyweekly.com/\">froman118</a> "
+"allows you to set the order of 'WordPress Pages' through a drag and drop "
+"interface. This replaces the need to use the clumsy default method of "
+"setting page orders built into WordPress. Another plugin recommended for "
+"this purpose is the <a href=\"http://joelstarnes.co.uk/blog/pagemash/\">Page "
+"Mash Plugin</a> by Joel Starnes."
+msgstr ""
+"The <a href=\"http://wordpress.org/extend/plugins/my-page-order/\">My Page "
+"Order plugin</a> bi vam omogućila<a href=\"http://www.geekyweekly.com/"
+"\">froman118</a> da podesite redosled \" WordPress stranica \" preko drag "
+"and drop interfejsa . Ovo zamenjuje potrebu za korišćenjem nespretnog "
+"default načina postavljanja naručenih stranicai ugrađenih u WordPress . Još "
+"jedan plugin preporučen za ovu namenu je <a href=\"http://joelstarnes.co.uk/"
+"blog/pagemash/\">Page Mash Plugin </a> by Joel Starnes."
+
+#: admin_page.php:172
+msgid ""
+"If you know of any other plugins which work well with the 'Multi-level "
+"Navigation plugin' then please us know about them."
+msgstr ""
+"Ako znate za neke druge pluginove koje rade dobro sa 'Multi-level Navigation "
+"plugin' molimo vas da nas obavestite o njima ."
+
+#: admin_page.php:183
+msgid "Appearance"
+msgstr "Izgled"
+
+#: admin_page.php:193
+msgid "Built in theme CSS?"
+msgstr "Praviti u temi CSS?"
+
+#: admin_page.php:194
+msgid ""
+"You are currently using a theme designed to integrate directly with the "
+"Multi-level Navigation Plugin. You can either keep the existing menu design "
+"by using the themes CSS, or change to the plugins CSS to override the theme "
+"styling. To use the second menu option the ID of each CSS option will need "
+"to be manually changed from <code>suckerfishnav</code> to "
+"<code>suckerfishnav_2</code>."
+msgstr ""
+"Trenutno koristite temu dizajniranu da se direktno integrišesa Multi-level "
+"Navigation Plugin . Možete da zadrži postojeći dizajn menija pomoću CSS "
+"tema  , ili da promenite pluginov CSS da zaobiđete stil teme. Da biste "
+"koristili drugu opciju menija ID svaka CSS opcija će morati da se ručno "
+"menja iz <code> suckerfishnav < / code > u <code> suckerfishnav_2 < / code "
+"> ."
+
+#: admin_page.php:208
+msgid ""
+"To change the appearance of your menu, please visit the <a href=\"http://"
+"geek.ryanhellyer.net/suckerfish_css/\">PixoPoint Multi-level CSS Generator</"
+"a> to obtain CSS. Paste your new CSS into the main menu box below."
+msgstr ""
+"Da biste promenili izgled vašeg menija , posetite <a href=\"http://geek."
+"ryanhellyer.net/suckerfish_css/\"> PixoPoint Multi-level CSS Generator</a> "
+"za dobijanje CSS . Paste vaš novi CSS u kvadrat glavnog menija ispod."
+
+#: admin_page.php:213
+msgid "Enter the CSS for your main menu here"
+msgstr "Unesite CSS za svoj glavni meni ovde"
+
+#: admin_page.php:218
+msgid ""
+"To obtain new CSS, please visit the <a href=\"http://geek.ryanhellyer.net/"
+"suckerfish_css/\">PixoPoint CSS generator</a>"
+msgstr ""
+"Da biste dobili nove CSS , posetite<a href=\"http://geek.ryanhellyer.net/"
+"suckerfish_css/\">PixoPoint CSS generator</a>"
+
+#: admin_page.php:233
+msgid ""
+"Enter the CSS for your second menu here. Note: the ID of these menu items "
+"must be suckerfishnav_2"
+msgstr ""
+"Unesite CSS za drugi meni ovde . Napomena :broj ovih stavki menija mora biti "
+"suckerfishnav_2"
+
+#: admin_page.php:238
+msgid ""
+"As this is the second menu, the CSS ID's must be different from the first. "
+"The ID of these menu items must be suckerfishnav_2 which is not the default "
+"format from the <a href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS "
+"generator</a> so if you want to use the <a href=\"http://geek.ryanhellyer."
+"net/suckerfish_css/\">CSS generator</a> for this option you will need to "
+"'search and replace' (in a text editor) <strong>suckerfishnav</strong> to "
+"<strong>suckerfishnav_2</strong>."
+msgstr ""
+"Pošto je ovo drugi meni ,CSS ID- mora da se razlikuje od prvog . Broj ovih "
+"stavki menija mora biti suckerfishnav_2 koji nije podrazumevani format<a "
+"href=\"http://geek.ryanhellyer.net/suckerfish_css/\">CSS generator</a>  tako "
+"da ako želite da koristite <a href=\"http://geek.ryanhellyer.net/"
+"suckerfish_css/\">CSS generator</a> ovu opciju potrebno je da \" tražite i "
+"zamenite \" ( u tekst editoru )<strong> suckerfishnav</strong> za<strong> "
+"suckerfishnav_2</strong>."
+
+#: admin_page.php:255
+msgid "Menu contents"
+msgstr "Sadaržaj menija"
+
+#: admin_page.php:260
+msgid "Main menu contents"
+msgstr "Sadržaj glavnog menija"
+
+#: admin_page.php:265
+msgid "Modify the contents of your main menu via the options above."
+msgstr "Modifikuj saržaj glavnog menija via opcijama iznad"
+
+#: admin_page.php:299
+msgid "Second menu contents"
+msgstr "Sadržaj drugog menija"
+
+#: admin_page.php:304
+msgid "Modify the contents of your second menu via the options above."
+msgstr "Modifikujte sadržaj vašeg drugog menija via opcijama iznad"
+
+#: admin_page.php:336
+msgid "Modifications"
+msgstr "Modifikacije"
+
+#: admin_page.php:341
+msgid ""
+"To change the text displayed in the top level menu items for Pages, "
+"Categories etc. or to exclude or include specific Pages or Categories modify "
+"the above options."
+msgstr ""
+"Da biste promenili prikaz teksta u gornjem nivou za stranice, kategorije "
+"itd. ili da isključite ili uključite odredjene stranice ili kategorije "
+"modifikujte opciju iznad."
+
+#: admin_page.php:347
+msgid "Titles"
+msgstr "Naslovi"
+
+#: admin_page.php:356 admin_page.php:401
+msgid "Pages"
+msgstr "Stranice"
+
+#: admin_page.php:362 admin_page.php:407
+msgid "Categories"
+msgstr "Kategorije"
+
+#: admin_page.php:368 admin_page.php:413
+msgid "Archives"
+msgstr "Arhive"
+
+#: admin_page.php:374 admin_page.php:419
+msgid "Links"
+msgstr "Linkovi"
+
+#: admin_page.php:380 admin_page.php:425
+msgid "Recent Comments"
+msgstr "Trenutni komentari"
+
+#: admin_page.php:386 admin_page.php:431
+msgid "Recent Posts"
+msgstr "Trenutni postovi"
+
+#: admin_page.php:391
+msgid "Title URL's"
+msgstr "Naslov URLa"
+
+#: admin_page.php:392
+msgid "If a URL is not specified, then a default option will be used."
+msgstr "Ako URL nije odredjen onda se koristi  default opcija"
+
+#: admin_page.php:436
+msgid "Pages/categories to exclude"
+msgstr "Stranicae/kategorije da budu isključene"
+
+#: admin_page.php:437
+msgid ""
+"If no pages or categories are specified then all of them will be included"
+msgstr ""
+"Ako nikakva stranica ili kategorija nije odredjena onda će sve biti uključene"
+
+#: admin_page.php:440
+msgid "Pages to include or exclude in the main menu"
+msgstr "Stranice za uključiti ili isključiti u glavnom meniju"
+
+#: admin_page.php:456
+msgid "Categories to include or exclude"
+msgstr "Kategorije za uključiti ili isključiti"
+
+#: admin_page.php:471
+msgid "Pages/categories depth"
+msgstr "Dubina stranica/kategorija"
+
+#: admin_page.php:472
+msgid ""
+"Controls the depth of the menu. 'No nesting' means that all the available "
+"menu items will be displayed in a flat list with no children."
+msgstr ""
+"Kontrolišite dubinu menija. 'No nesting' znači da će sve stavke na meniju "
+"biti prikazane na ravnoj listi bez bez dece."
+
+#: admin_page.php:475
+msgid "Pages depth"
+msgstr "Dubina stranica"
+
+#: admin_page.php:493
+msgid "Categories depth"
+msgstr "Dubina kategorija"
+
+#: admin_page.php:510
+msgid "Categories settings"
+msgstr "Postavke kategorija"
+
+#: admin_page.php:511
+msgid ""
+"You may order your categories by Ascending ID #, Descending ID # or "
+"alphabetically, Ascending Name or Descending Name."
+msgstr ""
+"Možete da poručite vaše kategorije Ascending ID #, Descending ID ili  ili "
+"alfabetski, Ascending ime ili Descending ime."
+
+#: admin_page.php:514
+msgid "Category order"
+msgstr "Naručivanje kategorije"
+
+#: admin_page.php:531
+msgid "Show empty categories"
+msgstr "Prikaži prazne kategorije"
+
+#: admin_page.php:539
+msgid "Number of recent posts and comments"
+msgstr "Broj trenutnih postova i komentara"
+
+#: admin_page.php:540
+msgid ""
+"Controls the number of recent posts and comments shown when using the "
+"'Recent Posts' or 'Recent Comments' menu option."
+msgstr ""
+"Kontroliše broj trenutnih postova i komentara prikazanih kada se koristi "
+"Trenutni postovi ili Trenutni komentari meni opcija."
+
+#: admin_page.php:543
+msgid "Number of recent posts"
+msgstr "Broj skorijih postova"
+
+#: admin_page.php:549
+msgid "Number of recent comments"
+msgstr "Broj skorijih komentara"
+
+#: admin_page.php:586
+msgid "Custom HTML code"
+msgstr "Custom HTML code"
+
+#: admin_page.php:586
+msgid "example"
+msgstr "primer"
+
+#: admin_page.php:587
+msgid ""
+"Note: You can have multiple top level menu items in one custom code entry. "
+"The following example will display a menu with links to 'Home', 'Categories' "
+"and 'Pages', the 'Categories' and 'Pages' links would have dropdowns and the "
+"'Page 1' link in the 'Pages' dropdown would contain another further level."
+msgstr ""
+"Beleška: Možete imati više nivoa stavki menija u custome code unosu.Sledeći "
+"primer će prikazati meni sa linkovima na 'Home' ,, 'Categories i 'Pages',  "
+"Categories' i 'Pages linkovi  bi imali  dropdowns a  \" Page 1 \" link u "
+"Pages dropdown bi sadržao još jedan stepen ."
+
+#: admin_page.php:623
+msgid ""
+"Enter the HTML for the 'Custom code 1' and 'Custom code 2' menu options "
+"above, add your code to the appropriate box above. <strong>Note:</strong> "
+"The menu uses an unordered list to format the menu. You will need to know "
+"some HTML to use this option. The menu is already wrapped in UL tags."
+msgstr ""
+"Unesite HTML za 'Custom code 1' i 'Custom code 2' mopcije menija iznad "
+"dodajte vaš kod u odgovarajući kvadrat iznad. <strong>Note:</strong>  Meni "
+"koristi nenaručeni listu za formatiranje minija. Morate da znate nešto HTMLa "
+"da biste koristili ovu opciju. Ovaj meni je već uvijen u URL tagove."
+
+#: admin_page.php:630
+msgid "Custom code 1"
+msgstr "Custom code 1"
+
+#: admin_page.php:634
+msgid "Custom code 2"
+msgstr "Custom code 2"
+
+#: admin_page.php:638
+msgid "Custom code 3"
+msgstr "Custom code 3"
+
+#: admin_page.php:642
+msgid "Custom code 4"
+msgstr "Custom code 4"
+
+#: admin_page.php:657
+msgid "Settings"
+msgstr "Postavke"
+
+#: admin_page.php:663
+msgid "Setting"
+msgstr "Postavka"
+
+#: admin_page.php:664
+msgid "Description"
+msgstr "Opis"
+
+#: admin_page.php:669
+msgid ""
+"Use the various options above to control some of the advanced settings of "
+"the plugin"
+msgstr ""
+"Koristit razne opcije iznad da bist kontrolisali nekee od naprednih postavki "
+"plugina"
+
+#: admin_page.php:688
+msgid "Speed of fade-in effect"
+msgstr "Brzina fade in efekta"
+
+#: admin_page.php:690
+msgid ""
+"This option enhances the behaviour of the dropdown by creating an animated "
+"fade-in effect. The script which powers this part of the plugin is called <a "
+"href=\"http://users.tpg.com.au/j_birch/plugins/superfish/\">'Superfish'</a> "
+"and was created by Joel Birch. This option utilizes <a href=\"http://jquery."
+"com/\">jQuery</a>."
+msgstr ""
+"Ova opcija poboljšava ponašanje dropdown-a stvaranjem animiranog fade-in "
+"efekta . Script  koji napaja ovaj deo se zove plugin<a href=\"http://users."
+"tpg.com.au/j_birch/plugins/superfish/\">'Superfish'</a>  i kreirao je Joel "
+"Birch . Ova opcija koristi<a href=\"http://jquery.com/\">jQuery</a>."
+
+#: admin_page.php:697
+msgid "Mouseover delay (milliseconds)"
+msgstr "Mouseover zadržavanje (milliseconds)"
+
+#: admin_page.php:699
+msgid ""
+"This option adds a delay time before the dropdown/flyout appears. This "
+"option is controlled by the <a href=\"http://users.tpg.com.au/j_birch/"
+"plugins/superfish/\">'Superfish plugin'</a> for jQuery."
+msgstr ""
+"Ova opcija dodaje vreme zadržavanja pre nego što se dropdown/flyout pojavi. "
+"Ovu opciju kontroliše<a href=\"http://users.tpg.com.au/j_birch/plugins/"
+"superfish/\">'Superfish plugin'</a>  jQuery."
+
+#: admin_page.php:706
+msgid "Hide delay time (milliseconds)"
+msgstr "Sakriti vreme zadržavanja  (milliseconds)"
+
+#: admin_page.php:708
+msgid ""
+"This option adds a delay before the dropdown disappears. This option is "
+"particularly suitable for small menus where users may accidentally hover off "
+"of the menu. The script is powered by the <a href=\"http://users.tpg.com.au/"
+"j_birch/plugins/superfish/\">'Superfish plugin'</a> for <a href=\"http://"
+"jquery.com/\">jQuery</a>"
+msgstr ""
+"Ova opcija dodaje kašnjenje pre nego što dropdown nestane. Ova opcija je "
+"posebno pogodna za male menije gde korisnici mogu slučajno da odlebde iz "
+"menija . Script je obezbedjen od strane  <a href=\"http://users.tpg.com.au/"
+"j_birch/plugins/superfish/\">'Superfish plugin'</a> for <a href=\"http://"
+"jquery.com/\">jQuery</a>"
+
+#: admin_page.php:725
+msgid "Sensitivity"
+msgstr "Osetljivost"
+
+#: admin_page.php:727
+msgid ""
+"When this option is enabled, the menu will attempt to determine the user's "
+"intent. On low sensitivity, instead of immediately displaying the dropdown/"
+"flyout menu on mouseover, the menu will wait until the user's mouse slows "
+"down before displaying it."
+msgstr ""
+"Kada je ova opcija omogućena ,meni će pokušati da utvrdi nameru korisnika. "
+"Na slabe osetljivosti , umesto da odmah prikazuje dropdown/flyout meni na "
+"mouseover ,meni će čekati dok miš korisnika ne uspori pre prikazivanja ."
+
+#: admin_page.php:737
+msgid "Enable keyboard accessible menu?"
+msgstr "Omogući meni pristupan tastaturom?"
+
+#: admin_page.php:739
+msgid "This option may not work correctly as it contains bugs."
+msgstr "Ovo možda neć ispravno raditi jr sadrži dosta bugova"
+
+#: admin_page.php:740
+msgid ""
+"This option enables users to access your menu via the tab key on their "
+"keyboard rather than the mouse. Thanks to <a href=\"http://www."
+"transientmonkey.com/\">malcalevak</a> for writing the script. This option "
+"utilizes <a href=\"http://jquery.com/\">jQuery</a>."
+msgstr ""
+"Ova opcija omogućava korisnicima da pristup vašem meniju via tab ključa na "
+"njihovoj tastaturi. Hvala<a href=\"http://www.transientmonkey.com/"
+"\">malcalevak</a>  što j napisao ovaj script. Ova opcija koristi<a href="
+"\"http://jquery.com/\">jQuery</a>."
+
+#: admin_page.php:768
+msgid "Enable arrow mark-up?"
+msgstr "Omogući markiranj strelicom?"
+
+#: admin_page.php:770
+msgid ""
+"This option adds a small arrow to any menu option which contains children. "
+"Thanks to <a href=\"http://transientmonkey.com/\">malcalevak</a> for help "
+"with implementing this feature. This option utilizes <a href=\"http://jquery."
+"com/\">jQuery</a>."
+msgstr ""
+"Ova opcija dodaje malu strelicu na bilo koju opciju menija koja sadrži dcu. "
+"Zahvaljujući<a href=\"http://transientmonkey.com/\">malcalevak</a> pomoći sa "
+"implmentiranjem ove karaktristike. Ova opcija koristi<a href=\"http://jquery."
+"com/\">jQuery</a>."
+
+#: admin_page.php:804
+msgid "Add a second menu?"
+msgstr "Dodaj drugi meni?"
+
+#: admin_page.php:809
+msgid ""
+"Note: You can not turn this option off as your theme has been indicated that "
+"it has a second menu."
+msgstr ""
+"Beleška: Ovu opciju n možzt da ugasite jer vaša tema ukazuje na to da postoi "
+"drugi meni."
+
+#: admin_page.php:811
+msgid ""
+"You may add a second menu to your site. This is particularly common with "
+"magazine style layouts. For a second menu, add the following code to your "
+"theme <code>&lt;?php if (function_exists('pixopoint_menu')) {pixopoint_menu"
+"(2);} ?&gt;</code>. The <a href=\"http://geek.ryanhellyer.net/suckerfish_css/"
+"\">PixoPoint CSS generator</a> does not currently support a second menu by "
+"default, but if you do a search and replace (in a text editor) for "
+"<code>suckerfishnav</code> to <code>suckerfishnav_2</code> in the CSS you "
+"will be able to adapt the standard CSS for the second menu."
+msgstr ""
+"Možete da dodate drugi meni na vaš sajt . Ovo je posebno zajedničko sa "
+"rasporedima magazina stilu . Na drugom meniju , dodajte sledeći kod na svoju "
+"temu<code>&lt;?php if (function_exists('pixopoint_menu')) {pixopoint_menu"
+"(2);} ?&gt;</code>. The <a href=\"http://geek.ryanhellyer.net/suckerfish_css/"
+"\">PixoPoint CSS generator</a> trenutno ne podržava drugi meni po defaultu , "
+"ali ako uradite pretragu i zameniti ( u tekst editoru ) za <code> "
+"suckerfishnav < / code > u <code> suckerfishnav_2 < / code > u CSS-u ćete "
+"moći da prilagodite standardnu CSS za drugi meni ."
+
+#: admin_page.php:821
+msgid "Remove title attribute?"
+msgstr "Ukloniti glavne atribute?"
+
+#: admin_page.php:823
+msgid ""
+"This removes the title attributes from the links in the menu. The title "
+"attributes display in most browsers as a small tool tip on hover over the "
+"links."
+msgstr ""
+"Ovo uklanja glavne atribute iz linkova u meniju. Glavni atributisu prikazani "
+"u većini pretraživača kao mali tool tip koji lebdi iznad veze ."
+
+#: admin_page.php:833
+msgid "Maintenance mode?"
+msgstr "Režim održavanja?"
+
+#: admin_page.php:835
+msgid ""
+"When in maintenance mode, the plugin can only be seen when the user adds ?"
+"mln=on to the site URL (ie: <a href=\"http://geek.ryanhellyer.net/?mln=on"
+"\">http://geek.ryanhellyer.net/?mln=on</a>). This is useful for when testing "
+"the menu. If the menu does not look correct on your site, you may place the "
+"menu into maintenance mode so that your regular site visitors can not see it."
+msgstr ""
+"Kada je u režimu održavanja ,plugin može da se vidi samo kada korisnik "
+"dodaje ?mln= na URL sajta(ie: <a href=\"http://geek.ryanhellyer.net/?mln=on"
+"\">http://geek.ryanhellyer.net/?mln=on</a>). Ovo je korisno za testiranje "
+"menija. Ako meni ne izgleda ispravno na vašem sajtu , možete da postavite "
+"meni u režimu održavanja , tako da vaši redovni posetioci ne mogu da ga "
+"vide ."
+
+#: admin_page.php:852
+msgid "Style sheet"
+msgstr "Style sheet"
+
+#: admin_page.php:854
+msgid ""
+"The plugin includes it's own built in stylesheet. However many site owners "
+"wish to use their themes built in stylesheet (good idea if you want to "
+"reduce the HTML in your page) or wish to specify their CSS inline between "
+"their head tags (not recommended)."
+msgstr ""
+"Plugin uključuje sopstvenistylesheet . Međutim, mnogi vlasnici žele da "
+"koriste svoje teme ugradjne u stylesheea ( dobra ideja, ako želite da "
+"smanjite HTML u vašoj strani) , ili želite da navedete svoju CSS inline "
+"između njihovih glavnih tagova (ne preporučuje se ) ."
+
+#: admin_page.php:867
+msgid "Update Options"
+msgstr "Opcije update-a"

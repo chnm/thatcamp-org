@@ -1,0 +1,6 @@
+This file just contains information about what hasn't been localized yet
+
+All languages:
+<?php _e('Categories order','pixopoint_mln'); ?>
+				<p><?php _e('You may order your categories by Ascending ID #, Descending ID # or alphabeticall, Ascending Name or Descending Name.','pixopoint_mln'); ?></p>
+
