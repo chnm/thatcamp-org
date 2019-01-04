@@ -55,6 +55,8 @@
 
 			<?php /* Round two */ ?>
 
+<!-- Removing code that shows camps with no date on home page because something is wrong and I am not sure what -AF
+
 			<?php
 
 			$all_group_args = array(
@@ -77,7 +79,7 @@
 				</article>
 			<?php endwhile; endif ?>
 
-
+-->
 			<a href="<?php echo site_url(); ?>/camps" class="button campbutton offset">
 				<span class="button-inner"><?php _e( 'View all THATCamps', 'thatcamp' ); ?></span>
 			</a>
