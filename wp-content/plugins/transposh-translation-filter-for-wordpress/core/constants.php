@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v1.0.3
+ * Transposh v1.0.4
  * http://transposh.org/
  *
  * Copyright 2018, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Sat, 11 Aug 2018 02:00:05 +0300
+ * Date: Mon, 31 Dec 2018 13:56:12 +0200
  */
 
 //Language indicator in URL. i.e. lang=en
@@ -440,10 +440,11 @@ class transposh_consts {
             // @updated 2017-Sep-27 (fa, mt, otq, yua)
             // @updated 2017-Oct-26 (ta)
             // @updated 2018-May-12 (is)
+            // @updated 2018-Sep-05 (te)
             'langs' => array(
                 'af', 'ar', 'bg', 'bn', 'bs', 'ca', 'cs', 'cy', 'da', 'de', 'el', 'en', 'es', 'et', 'fa', 'fi', 'fil', 'fj', 'fr', 'he', 'hi', 'hr', 'ht',
                 'hu', 'id', 'is', 'it', 'ja', 'ko', 'lt', 'lv', 'mg', 'ms', 'mt', 'mw', 'nl', 'no', 'otq', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sm', 'sr',
-                'sv', 'sw', 'ta', 'th', 'tlh', 'tlh-qaak', 'to', 'tr', 'ty', 'uk', 'ur', 'vi', 'yua', 'yue', 'zh', 'zh-tw'),
+                'sv', 'sw', 'ta', 'te', 'th', 'tlh', 'tlh-qaak', 'to', 'tr', 'ty', 'uk', 'ur', 'vi', 'yua', 'yue', 'zh', 'zh-tw'),
             // check about bs-latn , sr-latn/cyr, (tlh) (klingon?)
             'langconv' => array('zh' => 'zh-chs', 'zh-tw' => 'zh-cht', 'mw' => 'mww')
         ),
@@ -544,7 +545,7 @@ class transposh_consts {
 define('TRANSLATOR', 'translator');
 
 //Define for transposh plugin version
-define('TRANSPOSH_PLUGIN_VER', '1.0.3');
+define('TRANSPOSH_PLUGIN_VER', '1.0.4');
 
 //Current jQuery UI
 define('JQUERYUI_VER', '1.10.4');

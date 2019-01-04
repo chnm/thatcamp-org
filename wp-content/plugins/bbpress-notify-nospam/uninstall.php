@@ -1,14 +1,14 @@
 <?php
 /**
- * bbPress Notify (No Spam) Uninstall
+ * bbPress Notify (No-Spam) Uninstall
  *
  * Uninstall methods
  *
  */
-if( ! defined('Bbpnns_TEST_UNINSTALL') && ! defined( 'WP_UNINSTALL_PLUGIN' ) ) 
+if( ! defined('bbPress_Notify_noSpam_TEST_UNINSTALL') && ! defined( 'WP_UNINSTALL_PLUGIN' ) ) 
 	exit();
 
-require_once( 'bbpress-notify-nospam.php' );
+require_once('bbpress-notify-nospam.php');
 
 class bbPress_Notify_noSpam_Uninstall extends bbPress_Notify_noSpam
 {
@@ -17,15 +17,14 @@ class bbPress_Notify_noSpam_Uninstall extends bbPress_Notify_noSpam
 		// Defer removal as we need bbPress to be loaded first
 		add_action( 'plugins_loaded', array( $this, 'do_stuff' ) );
 	}
-	
+
 	public function do_stuff()
 	{
 		$this->bbpress_topic_post_type = bbp_get_topic_post_type();
 		$this->bbpress_reply_post_type = bbp_get_reply_post_type();
-		
+
 		$this->delete_options();
 	}
-	
 	
 	public function delete_options()
 	{
@@ -50,17 +49,14 @@ class bbPress_Notify_noSpam_Uninstall extends bbPress_Notify_noSpam
 				'bbpnns_hijack_bbp_subscriptions_topic',
 				'bbpress_notify_message_type',
 				'bbpnns_dismissed_admin_notices',
+				'bbPress_Notify_noSpam'
 		);
-		
-		
+	
 		foreach ( $options as $option )
 		{
 			delete_option( $option );
 		}
-		
 	}
-	
-	
 }
 
 

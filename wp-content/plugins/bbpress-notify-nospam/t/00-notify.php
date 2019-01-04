@@ -27,13 +27,11 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	{
 		parent::setUp();
 		
+		$user = $this->factory->user->create_and_get( array( 'role' => 'administrator' ) );
+		
 		// Set up the body templates
 		$this->topic_body = "<p>This is <br> a <br /> test &#039; paragraph for topic forum [topic-forum], URL: [topic-url], and Author: [topic-author]</p>\n\n<p>And a new <br/>paragraph</p>";
 		$this->reply_body = "<p>This is <br> a <br /> test &#039; paragraph for reply forum [reply-forum], Topic URL: [topic-url], URL: [reply-url], and Author: [reply-author]</p>\n\n<p>And a new <br/>paragraph</p>";
-		
-		$user = $this->factory->user->create_and_get( array( 'role' => 'administrator' ) );
-		
-		$this->user = $user;
 		
 		// Create new forum
 		$this->forum_id = bbp_insert_forum( 
@@ -79,8 +77,10 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 		
 		// Set up the expected body regexes
-		$this->topic_body_regex = "<p>This is <br> a <br \/> test ' paragraph for topic forum test-forum, URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, and Author: {$this->user->user_login}<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
-		$this->reply_body_regex = "<p>This is <br> a <br \/> test ' paragraph for reply forum test-forum, Topic URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, URL: http:\/\/wp_plugins\/\?p={$this->reply_id}, and Author: {$this->user->user_login}<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
+		$this->topic_body_regex = "<p>This is <br> a <br \/> test ' paragraph for topic forum test-forum, URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, and Author: {$user->user_login}<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
+		$this->reply_body_regex = "<p>This is <br> a <br \/> test ' paragraph for reply forum test-forum, Topic URL: http:\/\/wp_plugins\/\?p={$this->topic_id}, URL: http:\/\/wp_plugins\/\?p={$this->reply_id}, and Author: {$user->user_login}<\/p>\n\n<p>And a new <br\/>paragraph<\/p>";
+		
+		$this->child = new bbPress_Notify_noSpam_Child();
 	}
 	
 	public function tearDown()
@@ -94,7 +94,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	
 	public function test_available_tags()
 	{
-		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
 		
 		$this->assertTrue( (bool) has_filter( 'bbpnns_available_tags', array( $bbpnns, 'get_available_tags' ) ), 'Filter found' );
 		
@@ -121,7 +121,13 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	
 	public function test_topic_recipient_filter()
 	{
-		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+		$dao = $this->child->load_lib('dal/settings_dao');
+		$settings = $dao->load();
+		
+		$settings->hidden_forum_topic_override = true;
+		$dao->save($settings);
+		
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
 		
 		$this->assertTrue( (bool ) has_filter( 'bbpress_notify_recipients_hidden_forum', array( $bbpnns, 'munge_newpost_recipients' )), 
 				'bbpress_notify_recipients_hidden_forum filter exists' );
@@ -129,21 +135,24 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		$expected = array( 'foo', 'bar' );
 		$recipients = apply_filters( 'bbpress_notify_recipients_hidden_forum', $expected, 'topic', $this->forum_id );
 		
-		$this->assertEquals( $expected, $recipients, 'Filter returns input array for non-hidden forum' );
+		$this->assertEquals( $recipients, $expected, 'Filter returns input array for non-hidden forum' );
 
 		//hide forum
 		bbp_hide_forum( $this->forum_id );
 		
 		$recipients = apply_filters( 'bbpress_notify_recipients_hidden_forum', $expected, 'topic', $this->forum_id );
 		
-		$this->assertEquals( array('administrator'), $recipients, 'Filter returns \'administrator\' array element for non-hidden forum' );
+		$this->assertEquals( $recipients, array('administrator'), 'Filter returns \'administrator\' array element for non-hidden forum' );
 		
 	}
 	
 	
 	public function test_notify_topic()
 	{
-		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+		$dao = $this->child->load_lib( 'dal/settings_dao' );
+		$settings = $dao->load();
+		
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
 		
 		// Spam, returns -1
 		bbp_spam_topic( $this->topic_id );
@@ -152,15 +161,28 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 		// Non-spam, empty recipients returns -2
 		bbp_unspam_topic( $this->topic_id );
-		delete_option( 'bbpress_notify_newtopic_recipients' );
+		
+// 		delete_option( 'bbpress_notify_newtopic_recipients' );
+		$settings->newtopic_recipients = array();
+		$dao->save( $settings );
+		$bbpnns = $this->child->load_lib( 'controller/common_core', null, $force=true );
+		
 		$status = $bbpnns->notify_new_topic( $this->topic_id, $this->forum_id );
 		$this->assertEquals( -2, $status, 'Empty Recipients -2' );
 		
-		update_option( 'bbpress_notify_newtopic_email_body', $this->topic_body );
+// 		update_option( 'bbpress_notify_newtopic_email_body', $this->topic_body );
+		$settings->newtopic_email_body = $this->topic_body;
+		$dao->save($settings);
+		$bbpnns = $this->child->load_lib( 'controller/common_core', null, $force=true );
 		
 		// Non-spam, non-empty recipents
 		$recipients = array( 'administrator', 'subscriber' );
-		update_option( 'bbpress_notify_newtopic_recipients', $recipients );
+		
+// 		update_option( 'bbpress_notify_newtopic_recipients', $recipients );
+		$settings->newtopic_recipients = $recipients;
+		$dao->save( $settings );
+		$bbpnns = $this->child->load_lib( 'controller/common_core', null, $force=true );
+		
 		$arry = $bbpnns->notify_new_topic( $this->topic_id, $this->forum_id );
 		$this->assertTrue( is_array( $arry ), 'Good notify returns array in test mode' );
 
@@ -182,7 +204,9 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	
 	public function test_notify_reply()
 	{
-		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+		$dao = $this->child->load_lib( 'dal/settings_dao' );
+		$settings = $dao->load();
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
 		
 		// Spam, returns -1
 		bbp_spam_reply( $this->reply_id );
@@ -191,17 +215,27 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 		// Clear recipients
 		$expected_recipients = array();
-		update_option( 'bbpress_notify_newreply_recipients', $recipients );
+// 		update_option( 'bbpress_notify_newreply_recipients', $expected_recipients );
+		$settings->newreply_recipients = $expected_recipients;
+		$dao->save( $settings );
+		$bbpnns = $this->child->load_lib( 'controller/common_core', null, $force=true );
 		
 		// Non-spam, empty recipients returns -2
 		bbp_unspam_reply( $this->reply_id );
 		$status = $bbpnns->notify_new_reply( $this->reply_id, $this->topic_id, $this->forum_id );
 		$this->assertEquals( -2, $status, 'Empty Recipients -2' );
 		
-		update_option( 'bbpress_notify_newreply_email_body', $this->reply_body );
+// 		update_option( 'bbpress_notify_newreply_email_body', $this->reply_body );
+		$settings->newreply_email_body = $this->reply_body;
+		$dao->save( $settings );
+		$bbpnns = $this->child->load_lib( 'controller/common_core', null, $force=true );
 		
 		// Non-spam, non-empty recipents
-		update_option( 'bbpress_notify_newreply_recipients', array( 'administrator', 'subscriber' ));
+// 		update_option( 'bbpress_notify_newreply_recipients', array( 'administrator', 'subscriber' ));
+		$settings->newreply_recipients = array( 'administrator', 'subscriber' );
+		$dao->save( $settings );
+		$bbpnns = $this->child->load_lib( 'controller/common_core', null, $force=true );
+		
 		$arry = $bbpnns->notify_new_reply( $this->reply_id, $this->topic_id, $this->forum_id );
 		
 		$this->assertTrue( is_array( $arry ), 'Good notify returns array in test mode' );
@@ -231,7 +265,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		// Non-hidden forum
 		update_option( 'bbpress_notify_newtopic_recipients', $roles );
 		
-		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
 		$users = get_users( array( 'role' => join(', ', $roles) ) );
 		
 		$recipients = array();
@@ -277,7 +311,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 // 		update_option( "bbpress_notify_new{$type}_email_subject", $subject );
 // 		update_option( "bbpress_notify_new{$type}_email_body", $body );
 		
-// 		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+// 		$bbpnns = $this->child->load_lib( 'controller/common_core' );
 // 		list( $email_subject, $email_body ) = $bbpnns->_build_email( 'reply', $this->reply_id );
 		
 // 		var_dump($email_subject, $email_body);
@@ -288,11 +322,14 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	{
 		global $wpdb;
 		
-		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
-		$bbpnns->set_post_types();
+		$dao = $this->child->load_lib( 'dal/settings_dao' );
+		$settings = $dao->load();
 		
 		$type = 'topic';
-		update_option( "bbpress_notify_default_{$type}_notification", true );
+// 		update_option( "bbpress_notify_default_{$type}_notification", true );
+		$settings->{"default_{$type}_notification_checkbox"} = true;
+		
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
 		
 		$author_id = $this->factory->user->create( array( 'role' => 'administrator' ) );
 		
@@ -330,35 +367,35 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	
 	public function test_notify_on_save()
 	{
-			$bbpnns = bbPress_Notify_NoSpam::bootstrap();
-			$bbpnns->set_post_types();
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
+// 		$bbpnns->set_post_types();
 	
-			$author_id = $this->factory->user->create( array( 'role' => 'administrator' ) );
+		$author_id = $this->factory->user->create( array( 'role' => 'administrator' ) );
 	
-			wp_set_current_user( $author_id );
+		wp_set_current_user( $author_id );
 	
-			$nonce_id = wp_create_nonce( 'bbpress_send_topic_notification_nonce' );
+		$nonce_id = wp_create_nonce( 'bbpress_send_topic_notification_nonce' );
 	
-			$_POST = array( 'bbpress_notify_send_notification'       => true,
-							'bbpress_send_topic_notification_nonce'  => $nonce_id
-					 );
+		$_POST = array( 'bbpress_notify_send_notification'       => true,
+						'bbpress_send_topic_notification_nonce'  => $nonce_id
+				 );
 	
-			$post = array( 
-							'post_content' => 'Test content',
-							'post_name'    => 'Test name',
-							'post_status'  => 'publish',
-							'post_author'  => $author_id,
-							'post_type'    => 'topic',
-					 );
+		$post = array( 
+						'post_content' => 'Test content',
+						'post_name'    => 'Test name',
+						'post_status'  => 'publish',
+						'post_author'  => $author_id,
+						'post_type'    => 'topic',
+				 );
 
-			$topic_id = wp_insert_post( $post );
-	
-			$post = get_post( $topic_id );
-	
-			$result = $bbpnns->notify_on_save( $topic_id, $post );
-	
-			$this->assertFalse( empty( $result ) );
-		}
+		$topic_id = wp_insert_post( $post );
+
+		$post = get_post( $topic_id );
+
+		$result = $bbpnns->notify_on_save( $topic_id, $post );
+
+		$this->assertFalse( empty( $result ) );
+	}
 
 	public function test_convert_images_and_links()
 	{
@@ -366,7 +403,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 				
 				then <a href="http://thescondlink.com">the second link</a> and the final stuff.';
 		
-		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
 		
 		$conv = $bbpnns->convert_images_and_links( $text );
 		
@@ -395,10 +432,13 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	
 	public function test_user_in_role()
 	{
-		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+		$dao = $this->child->load_lib( 'dal/settings_dao' );
+		$settings = $dao->load();
 		
-		delete_option( 'bbpress_notify_newtopic_recipients');
-		delete_option( 'bbpress_notify_newreply_recipients');
+		$settings->newtopic_recipients = $settings->newreply_recipients = array();
+		$dao->save( $settings );
+
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
 		
 		// Create new user in role
 		$user = $this->factory->user->create_and_get( array( 'role' => 'administrator' ) );
@@ -410,7 +450,11 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 		
 		// Save OK role
 		$recipients = array( 'administrator' );
-		update_option( 'bbpress_notify_newtopic_recipients', $recipients );
+// 		update_option( 'bbpress_notify_newtopic_recipients', $recipients );
+		$settings->newtopic_recipients = $recipients;
+		$dao->save( $settings );
+		
+		$bbpnns = $this->child->load_lib( 'controller/common_core', null, array() );
 		
 		// Test user IS in role
 		$this->assertTrue( $bbpnns->user_in_ok_role( $user->ID ) );
@@ -434,7 +478,7 @@ class Tests_bbPress_notify_no_spam_notify_new extends WP_UnitTestCase
 	
 	public function test_bbpnns_is_in_effect()
 	{
-		$bbpnns = bbPress_Notify_NoSpam::bootstrap();
+		$bbpnns = $this->child->load_lib( 'controller/common_core' );
 
 		$this->assertTrue( (bool) has_filter( 'bbpnns_is_in_effect', array( $bbpnns, 'bbpnns_is_in_effect' ) ), 'Filter found' );
 		

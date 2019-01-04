@@ -13,7 +13,7 @@ jQuery(document).ready(function($){
 			data: {
 				action: 'bbpnns-notice-handler',
 				notice_id: notice_id,
-				nonce: $(this).parents('div.bbpnns-admin-notice').find("input[id^=bbpnns-notice-nonce]").val()
+				nonce: $(this).parents('div.bbpnns-admin-notice').data('nonce')
 			}
 		});
 	});

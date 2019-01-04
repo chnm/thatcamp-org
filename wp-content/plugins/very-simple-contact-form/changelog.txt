@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+= Version 9.6 =
+* fix: undefined error form anchor (thanks Sebastiaan)
+
 = Version 9.5 =
 * fix: mistake in query string parameters (thanks Marie)
 * removed both CSS classes mentioned in last update

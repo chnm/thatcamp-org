@@ -1,14 +1,14 @@
 <?php
 
 /*
- * Transposh v1.0.3
+ * Transposh v1.0.4
  * http://transposh.org/
  *
  * Copyright 2018, Team Transposh
  * Licensed under the GPL Version 2 or higher.
  * http://transposh.org/license
  *
- * Date: Sat, 11 Aug 2018 02:00:05 +0300
+ * Date: Mon, 31 Dec 2018 13:56:12 +0200
  */
 
 /*
@@ -161,6 +161,7 @@ class transposh_plugin_admin {
                 break;
             case "tp_engines":
                 delete_option(TRANSPOSH_OPTIONS_GOOGLEPROXY);
+                delete_option(TRANSPOSH_OPTIONS_YANDEXPROXY);
                 $this->transposh->options->enable_autotranslate = TP_FROM_POST;
                 $this->transposh->options->enable_autoposttranslate = TP_FROM_POST;
                 $this->transposh->options->msn_key = TP_FROM_POST;

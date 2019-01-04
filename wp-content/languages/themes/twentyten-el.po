@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Ten package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-12-07 08:10:49+0000\n"
+"PO-Revision-Date: 2019-01-02 11:00:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -145,12 +145,12 @@ msgctxt "Previous post link"
 msgid "&larr;"
 msgstr "&larr;"
 
-#: loop-attachment.php:120 loop.php:145 loop-page.php:29 loop-single.php:34
+#: loop.php:145 loop-attachment.php:120 loop-single.php:34 loop-page.php:29
 msgid "Pages:"
 msgstr "Σελίδες:"
 
-#: loop-attachment.php:63 loop-attachment.php:126 loop.php:101 loop.php:124
-#: loop.php:166 loop-page.php:30 loop-single.php:59
+#: loop.php:101 loop.php:124 loop.php:166 loop-attachment.php:63
+#: loop-attachment.php:126 loop-single.php:59 loop-page.php:30
 msgid "Edit"
 msgstr "Αλλαγή"
 
@@ -217,7 +217,7 @@ msgstr "3η περιοχή μικροεφαρμογών υποσέλιδου"
 
 #: functions.php:491
 msgid "Second Footer Widget Area"
-msgstr "2η περιοχή μικροεφαρμογών στο υποσέλιδο"
+msgstr "2η περιοχή μικροεφαρμογών υποσέλιδου"
 
 #: functions.php:482 functions.php:493 functions.php:504 functions.php:515
 msgid "An optional widget area for your site footer."
@@ -265,7 +265,7 @@ msgstr "Το σχόλιό σας αναμένει έγκριση."
 msgid "%s <span class=\"says\">says:</span>"
 msgstr "Ο/Η %s <span class=\"says\">λέει:</span>"
 
-#: loop-attachment.php:119 loop.php:116 loop.php:144 functions.php:315
+#: loop.php:116 loop.php:144 loop-attachment.php:119 functions.php:315
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Συνέχεια <span class=\"meta-nav\">&rarr;</span>"
 
@@ -385,7 +385,7 @@ msgstr "Αρχεία ανά ημέρα: <span>%s</span>"
 msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
 msgstr "Λυπούμαστε, η σελίδα που ζητήσατε δεν ήταν δυνατό να βρεθεί. Ίσως η αναζήτηση θα μπορούσε να σας φανεί χρήσιμη."
 
-#: loop.php:33 404.php:16
+#: 404.php:16 loop.php:33
 msgid "Not Found"
 msgstr "Δεν βρέθηκε"
 

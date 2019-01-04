@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-12-11 21:29:02+0000\n"
+"PO-Revision-Date: 2018-12-28 14:23:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6734,11 +6734,6 @@ msgstr "Nello shortcode untappd-menu non è fornito nessun ID per la collocazion
 msgid "View Advanced Debug Results"
 msgstr "Visualizza i risultati del debug avanzato"
 
-#: class.jetpack-connection-banner.php:174
-#: class.jetpack-connection-banner.php:592 class.jetpack.php:3948
-msgid "Dismiss this notice"
-msgstr "Non mostrare questo messaggio"
-
 #: modules/sharedaddy/sharing-sources.php:1685
 msgid "Telegram"
 msgstr "Telegram"
@@ -6895,6 +6890,11 @@ msgstr "Questo utente è collegato e pronto a volare con Jetpack"
 #: modules/sso.php:501
 msgid "You can now save time spent logging in by connecting your WordPress.com account to %s."
 msgstr "Ora puoi risparmiare il tempo del collegamento connettendo il tuo account WordPress.com a %s."
+
+#: class.jetpack-connection-banner.php:174
+#: class.jetpack-connection-banner.php:592 class.jetpack.php:3948
+msgid "Dismiss this notice"
+msgstr "Ignora questo avviso"
 
 #: class.jetpack-network-sites-list-table.php:83
 msgid "Jetpack is not active on this site."
@@ -8527,10 +8527,6 @@ msgstr "Queste impostazioni modificano le email inviate a chi segue il tuo blog.
 msgid "Notify me of follow-up comments by email."
 msgstr "Avvertimi via email in caso di risposte al mio commento."
 
-#: modules/subscriptions.php:657
-msgid "Notify me of new posts by email."
-msgstr "Avvertimi via email alla pubblicazione di un nuovo articolo"
-
 #: modules/subscriptions.php:799
 msgid "Add an email signup form to allow people to subscribe to your blog."
 msgstr "Aggiungi un modulo di registrazione tramite email per chi vuole iscriversi al tuo blog"
@@ -8617,6 +8613,10 @@ msgstr "Non hai un sufficiente <a rel=\"nofollow\" href=\"%s\" rel=\"noopener no
 #: modules/widget-visibility/widget-conditions.php:100
 msgid "Search results"
 msgstr "Risultati di ricerca"
+
+#: modules/subscriptions.php:657
+msgid "Notify me of new posts by email."
+msgstr "Avvertimi via email alla pubblicazione di un nuovo articolo."
 
 #: modules/sharedaddy/sharing-sources.php:95
 msgid " (Opens in new window)"
@@ -9474,7 +9474,7 @@ msgstr "Attivando Carousel, ogni galleria standard di WordPress che hai inserito
 
 #: modules/monitor.php:55
 msgid "Nobody likes downtime, and that's why Downtime Monitor is on the job, keeping tabs on your site by checking it every five minutes. As soon as any downtime is detected, you will receive an email notification alerting you to the issue. That way you can act quickly, to get your site back online again!"
-msgstr "A nessuno piacciono i tempi di inattivitàed è per questo che Jetpack Monitor è al lavoro e gestisce le schede sul tuo sito controllandolo ogni cinque minuti. Non appena verranno rilevati tempi di inattività, riceverai una notifica e-mail che ti segnalerà il problema. In questo modo potrai agire rapidamente per rimettere online il sito."
+msgstr "A nessuno piacciono i tempi di inattività ed è per questo che Jetpack Monitor è al lavoro e gestisce le schede sul tuo sito controllandolo ogni cinque minuti. Non appena verranno rilevati tempi di inattività, riceverai una notifica e-mail che ti segnalerà il problema. In questo modo potrai agire rapidamente per rimettere online il sito."
 
 #: modules/module-headings.php:39
 msgctxt "Jumpstart Description"

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-12-13 09:39:27+0000\n"
+"PO-Revision-Date: 2019-01-03 13:11:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1367,10 +1367,6 @@ msgstr "Značky:"
 msgid "This topic is marked as closed to new replies, however your posting capabilities still allow you to do so."
 msgstr "Táto téma je označená ako uzavretá pre nové odpovede, avšak vaše príspevkové možnosti vám aj napriek tomu odpoveď dovoľujú pridať."
 
-#: templates/default/bbpress/form-topic.php:234
-msgid "You must be logged in to create new topics."
-msgstr "Musíte sa prihlásiť aby ste mohli vytvoriť novú tému."
-
 #: templates/default/bbpress/form-anonymous.php:27
 msgid "Mail (will not be published) (required):"
 msgstr "Mail (nebude zverejnený) (povinné):"
@@ -1473,12 +1469,6 @@ msgstr "Žiadne dostupné fóra"
 #: includes/common/template.php:1467
 msgid "None available"
 msgstr "Nie je k dispozícii"
-
-#: includes/replies/functions.php:1299 includes/replies/template.php:571
-#: includes/topics/functions.php:1294 includes/topics/functions.php:1652
-#: templates/default/bbpress/form-reply.php:29
-msgid "Reply To: %s"
-msgstr "Odpoveď na:%s"
 
 #: includes/common/template.php:2501
 msgid "Log Out"
@@ -1951,10 +1941,6 @@ msgstr "<strong>CHYBA</strong>: Musíte vybrať platnú možnosť presunu."
 msgid "<strong>ERROR</strong>: No forum was found! Which forum are you subscribing/unsubscribing to?"
 msgstr "<strong>CHYBA</strong>: Žiadne fórum nebolo nájdené! Z ktorého fóra chcete odoberať/neodoberať novinky?"
 
-#: templates/default/bbpress/user-subscriptions.php:28
-msgid "You are not currently subscribed to any forums."
-msgstr "Momentálne nie ste prihlásený ku žiadnemu oderu noviniek z fór."
-
 #: templates/default/bbpress-functions.php:312
 #: templates/default/bbpress-functions.php:380
 #: templates/default/bbpress-functions.php:448
@@ -2235,10 +2221,6 @@ msgstr "Hotovo! %s skupín aktualizovaných; %s fór pridaných; %s stavov fór 
 #: includes/admin/tools.php:743
 msgid "Removing trashed forums from user subscriptions&hellip; %s"
 msgstr "Odstaňovanie zmazaných fór z odberov používateľov&hellip; %s"
-
-#: includes/admin/tools.php:965
-msgid "Repairing the sticky topic to the parent forum relationships&hellip; %s"
-msgstr "Opravovanie vzťahov pripnutých tém k nadradeným fóram&hellip; %s"
 
 #: includes/admin/tools.php:1209
 msgid "Revert your forums back to a brand new installation. This process cannot be undone."
@@ -2541,6 +2523,10 @@ msgstr "<strong>Kôš</strong> odstráni vašu tému z tohto zoznamu a presunie 
 msgid "<strong>Spam</strong> removes your topic from this list and places it in the spam queue, from which you can permanently delete it."
 msgstr "<strong>Spam</strong> odstráni vašu tému zo zoznamu a vloží ju do spamu, z ktorého ho ju môžete natrvalo odstrániť. "
 
+#: includes/admin/topics.php:194
+msgid "The title field and the big topic editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
+msgstr "Pole nadpisu a oblasť pre úpravu veľkej témy sú umiestnené napevno, ale ostatné karty môžete presúvať prostredníctvom myši a tiež ich môžete minimalizvoať alebo zväčšovať kliknutím na lištu názvu každej z kariet. Pre odokrytie viacerých kariet (Výpis, Odoslať spätné odkazy, Vlastné polia, Diskusia, Slug, Autor) použite lištu Možnosti obrazovky alebo vyberte 1- alebo 2- odstavcové rozloženie pre túto obrazovku. "
+
 #: includes/admin/topics.php:213
 msgid "<strong>Featured Image</strong> - This allows you to associate an image with your topic without inserting it. This is usually useful only if your theme makes use of the featured image as a topic thumbnail on the home page, a custom header, etc."
 msgstr "<strong>Hlavný obrázok</strong> - Povolí vám asociovať obrázok s vašou témou bez jeho vloženia. Táto funkcia je obyčajne užitočná iba ak vaša téma používa hlavný obrázok ako miniatúru fóra na hlavnej stránke, vo vlastnej hlavičke, atď. "
@@ -2561,10 +2547,6 @@ msgstr "Jednoduchá prihlasovacia forma s voliteľnými odkazmi na stránky pre 
 #: includes/common/widgets.php:512
 msgid "A list of forums with an option to set the parent."
 msgstr "Zoznam fór s možnosťou nastaviť ich nadradené fóra."
-
-#: includes/admin/topics.php:194
-msgid "The title field and the big topic editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen."
-msgstr "Pole nadpisu a oblasť pre úpravu veľkej témy sú umiestnené napevno, ale ostatné karty môžete presúvať prostredníctvom myši a tiež ich môžete minimalizvoať alebo zväčšovať kliknutím na lištu názvu každej z kariet. Pre odokrytie viacerých kariet (Výpis, Odoslať spätné odkazy, Vlastné polia, Diskusia, Slug, Autor) použite lištu Možnosti obrazovky alebo vyberte 1- alebo 2- odstavcové rozloženie pre túto obrazovku. "
 
 #: includes/common/widgets.php:515
 msgid "(bbPress) Forums List"
@@ -2857,12 +2839,30 @@ msgstr "Nemáte oprávnenie na to aby ste toto urobili."
 msgid "New forum reply"
 msgstr "Nová odpoveď fóra"
 
+#: templates/default/bbpress/user-subscriptions.php:28
+msgid "You are not currently subscribed to any forums."
+msgstr "Momentálne nie ste prihlásený ku žiadnemu odberu noviniek z fór."
+
+#: includes/admin/tools.php:965
+msgid "Repairing the sticky topic to the parent forum relationships&hellip; %s"
+msgstr "Opravovanie vzťahov Dôležitých (sticky) tém k nadradeným fóram&hellip; %s"
+
 #: includes/search/template.php:405
 msgid "Viewing %2$s results (of %4$s total)"
 msgid_plural "Viewing %1$s results - %2$s through %3$s (of %4$s total)"
 msgstr[0] "Zobrazený %2$s výsledok (z celkového počtu %4$s)"
 msgstr[1] "Zobrazené %1$s výsledky - %2$s až %3$s (z celkového počtu %4$s)"
 msgstr[2] "Zobrazených %1$s výsledkov - %2$s až %3$s (z celkového počtu %4$s)"
+
+#: includes/replies/functions.php:1299 includes/replies/template.php:571
+#: includes/topics/functions.php:1294 includes/topics/functions.php:1652
+#: templates/default/bbpress/form-reply.php:29
+msgid "Reply To: %s"
+msgstr "Odpoveď na: %s"
+
+#: templates/default/bbpress/form-topic.php:234
+msgid "You must be logged in to create new topics."
+msgstr "Musíte sa prihlásiť, aby ste mohli vytvoriť novú tému."
 
 #: templates/default/bbpress/form-topic-split.php:33
 msgid "If you use the existing topic option, replies within both topics will be merged chronologically. The order of the merged replies is based on the time and date they were posted."
@@ -4349,10 +4349,6 @@ msgstr "Slugy samostatného fóra"
 msgid "Topic Subscriptions"
 msgstr "Odber noviniek témy"
 
-#: includes/admin/admin.php:777
-msgid "Thank you for updating! bbPress %s is bundled up and ready to weather the storm of users in your community!"
-msgstr "Ďakujem vám za aktualizáciu! bbPress % s je uviazaný a pripravený k prečkať búrku užívateľov vo vašej komunite!"
-
 #: includes/admin/admin.php:799
 msgid "Your users can manage all of their subscriptions in one convenient location."
 msgstr "Vaši užívatelia môžu spravovať všetky svoje odbery na jednom mieste."
@@ -4588,6 +4584,10 @@ msgstr "Pridať panel nástrojov & tlačidlá k textovému oknu pre zrýchlenie 
 #: includes/admin/settings.php:317
 msgid "Topic View"
 msgstr "Náhľad témy"
+
+#: includes/admin/admin.php:777
+msgid "Thank you for updating! bbPress %s is bundled up and ready to weather the storm of users in your community!"
+msgstr "Ďakujem vám za aktualizáciu! bbPress %s je vystrojený na zvládnutie náporu používateľov vo vašej komunite!"
 
 #: includes/admin/converter.php:455
 msgid "Calculating topic stickies (%1$s - %2$s)"

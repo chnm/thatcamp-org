@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-07-18 19:27:39+0000\n"
+"PO-Revision-Date: 2018-12-19 22:18:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2081,6 +2081,14 @@ msgstr "تحرير ملف %s الشخصي"
 msgid "Edit Your Profile"
 msgstr "تحرير ملفك الشخصي"
 
+#: includes/common/template.php:2625
+msgid "%s Profile"
+msgstr "الملف الشخصي لـ %s"
+
+#: includes/common/template.php:2609
+msgid "%s Topics"
+msgstr "مواضيع %s"
+
 #: includes/common/template.php:2600
 msgctxt "User viewing his/her own profile"
 msgid "Your"
@@ -2551,7 +2559,7 @@ msgstr "حذف ميتا المشاركات&hellip; %s"
 
 #: includes/admin/tools.php:1294
 msgid "Deleting Posts&hellip; %s"
-msgstr "حذف الموضوعات&hellip;%s"
+msgstr "حذف المواضيع&hellip; %s"
 
 #: includes/admin/tools.php:1287
 msgid "Success!"

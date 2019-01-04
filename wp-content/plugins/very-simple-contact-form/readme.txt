@@ -1,6 +1,6 @@
 === Very Simple Contact Form ===
 Contributors: Guido07111975
-Version: 9.5
+Version: 9.6
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 4.7
@@ -224,6 +224,9 @@ Please open a topic in plugin forum.
 
 
 == Changelog ==
+= Version 9.6 =
+* fix: undefined error form anchor (thanks Sebastiaan)
+
 = Version 9.5 =
 * fix: mistake in query string parameters (thanks Marie)
 * removed both CSS classes mentioned in last update
@@ -262,19 +265,13 @@ Please open a topic in plugin forum.
 * added minified css file in folder css (kept the original css file for reference)
 * removed unnecessary whitespaces from most files
 
-= Version 9.1 =
-* file vscf-style: removed reset CSS from the #vscf wrapper
-* did this to avoid a conflict with Twenty Nineteen theme
-* added new icon for form submissions in dashboard
-* some textual changes
-
 For all versions please check file changelog.
 
 
 == Screenshots == 
-1. Very Simple Contact Form (Twenty Seventeen theme).
-2. Very Simple Contact Form (Twenty Seventeen theme).
-3. Very Simple Contact Form widget (Twenty Seventeen theme).
+1. Very Simple Contact Form (Twenty Nineteen theme).
+2. Very Simple Contact Form (Twenty Nineteen theme).
+3. Very Simple Contact Form widget (Twenty Nineteen theme).
 4. Very Simple Contact Form widget (dashboard).
 5. Very Simple Contact Form settingspage (dashboard).
 6. Very Simple Contact Form settingspage (dashboard).

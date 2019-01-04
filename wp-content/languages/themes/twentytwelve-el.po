@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Twelve package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-07-20 00:12:35+0000\n"
+"PO-Revision-Date: 2019-01-03 15:31:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,19 +11,39 @@ msgstr ""
 "Language: el_GR\n"
 "Project-Id-Version: Themes - Twenty Twelve\n"
 
-#. Description of the plugin/theme
+#. Description of the theme
 msgid "The 2012 theme for WordPress is a fully responsive theme that looks great on any device. Features include a front page template with its own widgets, an optional display font, styling for post formats on both index and single views, and an optional no-sidebar page template. Make it yours with a custom menu, header image, and background."
 msgstr "Το θέμα 2012 έχει σχεδιαστεί με την προσαρμοστικότητα κατά νου και δουλεύει όμορφα σε όλες τις συσκευές. Περιλαμβάνει πρότυπο αρχικής σελίδας με δικές του μονάδες, μια σύγχρονη γραμματοσειρά, ειδική διαρρύθμιση άρθρων για προβολή ευρετηρίου και ένα προαιρετικό πρότυπο σελίδας χωρίς πλευρική στήλη. Και, όπως πάντως, σας επιτρέπει να το φέρετε στα μέτρα σας προσαρμόζοντας το μενού, την κεφαλίδα και το φόντο του."
 
-#. Theme Name of the plugin/theme
+#. Theme Name of the theme
 msgid "Twenty Twelve"
 msgstr "Twenty Twelve"
 
-#. Template Name of the plugin/theme
+#: functions.php:89
+msgid "White"
+msgstr "Λευκό"
+
+#: functions.php:84
+msgid "Light Gray"
+msgstr "Ανοικτό γκρι"
+
+#: functions.php:79
+msgid "Medium Gray"
+msgstr "Μεσαίο γκρι"
+
+#: functions.php:74
+msgid "Dark Gray"
+msgstr "Σκούρο γκρι"
+
+#: functions.php:69
+msgid "Blue"
+msgstr "Μπλε"
+
+#. Template Name of the theme
 msgid "Full-width Page Template, No Sidebar"
 msgstr "Πλήρες πλάτος, χωρίς πλευρική στήλη"
 
-#. Template Name of the plugin/theme
+#. Template Name of the theme
 msgid "Front Page Template"
 msgstr "Πρότυπο αρχικής σελίδας"
 
@@ -77,115 +97,115 @@ msgstr "Μετάβαση σε περιεχόμενο"
 msgid "Menu"
 msgstr "Μενού"
 
-#: functions.php:419
+#: functions.php:473
 msgid "This entry was posted on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Δημοσιεύτηκε στις %3$s από την/τον <span class=\"by-author\">%4$s</span>."
 
-#: functions.php:417
+#: functions.php:471
 msgid "This entry was posted in %1$s on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Δημοσιεύστηκε στην κατηγορία %1$s στις %3$s από την/τον <span class=\"by-author\">%4$s</span>."
 
 #. Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's
 #. name.
-#: functions.php:415
+#: functions.php:469
 msgid "This entry was posted in %1$s and tagged %2$s on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Δημοσιεύτηκε στην κατηγορία %1$s, με ετικέτες %2$s, στις %3$s από την/τον <span class=\"by-author\">%4$s</span>."
 
-#: functions.php:409
+#: functions.php:463
 msgid "View all posts by %s"
 msgstr "Δείτε όλα τα άρθρα του/της %s"
 
 #. Translators: used between list items, there is a space after the comma.
-#: functions.php:395 functions.php:398
+#: functions.php:449 functions.php:452
 msgid ", "
 msgstr ","
 
-#: functions.php:374
+#: functions.php:428
 msgid "Reply"
 msgstr "Απάντηση"
 
-#: functions.php:365
+#: functions.php:419
 msgid "Your comment is awaiting moderation."
 msgstr "Το σχόλιό σας αναμένει έγκριση."
 
 #. translators: 1: date, 2: time
-#: functions.php:359
+#: functions.php:413
 msgid "%1$s at %2$s"
 msgstr "%1$s στο %2$s"
 
-#: functions.php:353
+#: functions.php:407
 msgid "Post author"
 msgstr "Συντάκτης άρθρου"
 
-#: functions.php:338
+#: functions.php:392
 msgid "(Edit)"
 msgstr "(Διόρθωση)"
 
-#: functions.php:338
+#: functions.php:392
 msgid "Pingback:"
 msgstr "Πίνγκμπακ:"
 
-#: functions.php:313
+#: functions.php:367
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Επόμενα άρθρα <span class=\"meta-nav\">&rarr;</span>"
 
-#: functions.php:312
+#: functions.php:366
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Προηγούμενα άρθρα"
 
-#: functions.php:311 single.php:20
+#: functions.php:365 single.php:20
 msgid "Post navigation"
 msgstr "Πλοήγηση άρθρων"
 
-#: functions.php:289
+#: functions.php:343
 msgid "Second Front Page Widget Area"
 msgstr "2η περιοχή μονάδων αρχικής σελίδας"
 
-#: functions.php:281 functions.php:291
+#: functions.php:335 functions.php:345
 msgid "Appears when using the optional Front Page template with a page set as Static Front Page"
 msgstr "Εμφανίζεται όταν χρησιμοποιείται το πρότυπο αρχικής σελίδας"
 
-#: functions.php:279
+#: functions.php:333
 msgid "First Front Page Widget Area"
 msgstr "1η περιοχή μονάδων αρχικής σελίδας"
 
-#: functions.php:271
+#: functions.php:325
 msgid "Appears on posts and pages except the optional Front Page template, which has its own widgets"
 msgstr "Εμφανίζεται σε σελίδες και άρθρα εκτός από το προαιρετικό πρότυπο αρχικής σελίδες, που έχει τις δικές του μονάδες"
 
-#: functions.php:269
+#: functions.php:323
 msgid "Main Sidebar"
 msgstr "Πλευρική στήλη"
 
-#: functions.php:240
+#: functions.php:294
 msgid "Page %s"
 msgstr "Σελίδα %s"
 
 #. translators: To add an additional Open Sans character subset specific to
-#. your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not
-#. translate into your own language.
-#: functions.php:110
+#. your language, * translate this to 'greek', 'cyrillic' or 'vietnamese'. Do
+#. not translate into your own language.
+#: functions.php:148
 msgctxt "Open Sans font: add new subset (greek, cyrillic, vietnamese)"
 msgid "no-subset"
 msgstr "χωρίς-υποσύνολο"
 
 #. translators: If there are characters in your language that are not supported
-#. by Open Sans, translate this to 'off'. Do not translate into your own
+#. * by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:104
+#: functions.php:142
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr "on"
 
-#: functions.php:64
+#: functions.php:102
 msgid "Primary Menu"
 msgstr "Κύριο μενού"
 
-#: footer.php:16
+#: footer.php:22
 msgid "Proudly powered by %s"
 msgstr "Κατασκευασμένο με %s"
 
-#: footer.php:16
+#: footer.php:21
 msgid "Semantic Personal Publishing Platform"
 msgstr "Σημασιολογικό σύστημα ιστοδημοσιεύσεων"
 
@@ -197,15 +217,15 @@ msgstr "Δείτε όλα τα άρθρα του/της %s <span class=\"meta-na
 msgid "Featured post"
 msgstr "Επιλεγμένο άρθρο"
 
-#: content-page.php:21 content.php:45 image.php:102
+#: content.php:45 image.php:102 content-page.php:21
 msgid "Pages:"
 msgstr "Σελίδες:"
 
-#: content-none.php:17 index.php:53
+#: index.php:53 content-none.php:17
 msgid "Apologies, but no results were found. Perhaps searching will help find a related post."
 msgstr "Δεν βρέθηκε κανένα αποτέλεσμα. Ίσως η αναζήτηση αποδώσει κάτι σχετικό."
 
-#: content-none.php:13 index.php:49 search.php:34
+#: index.php:49 search.php:34 content-none.php:13
 msgid "Nothing Found"
 msgstr "Κανένα αποτέλεσμα"
 
@@ -213,34 +233,34 @@ msgstr "Κανένα αποτέλεσμα"
 msgid "Link"
 msgstr "Σύνδεσμός"
 
-#: content-aside.php:26 content-image.php:26 content-link.php:24
-#: content-page.php:24 content-quote.php:23 content-status.php:40
-#: content.php:51 functions.php:370 image.php:37
+#: content-link.php:24 content.php:51 functions.php:424 content-image.php:26
+#: content-quote.php:23 content-status.php:40 image.php:37 content-aside.php:26
+#: content-page.php:24
 msgid "Edit"
 msgstr "Αλλαγή"
 
-#: content-aside.php:23 content-image.php:23 content-link.php:21
-#: content-quote.php:20 content-status.php:37 content.php:33
+#: content-link.php:21 content.php:33 content-image.php:23 content-quote.php:20
+#: content-status.php:37 content-aside.php:23
 msgid "% Replies"
 msgstr "% απαντήσεις"
 
-#: content-aside.php:23 content-image.php:23 content-link.php:21
-#: content-quote.php:20 content-status.php:37 content.php:33
+#: content-link.php:21 content.php:33 content-image.php:23 content-quote.php:20
+#: content-status.php:37 content-aside.php:23
 msgid "1 Reply"
 msgstr "1 σχόλιο"
 
-#: content-aside.php:23 content-image.php:23 content-link.php:21
-#: content-quote.php:20 content-status.php:37 content.php:33
+#: content-link.php:21 content.php:33 content-image.php:23 content-quote.php:20
+#: content-status.php:37 content-aside.php:23
 msgid "Leave a reply"
 msgstr "Σχολιάστε"
 
-#: content-aside.php:20 content-link.php:18 content-quote.php:17
-#: content-status.php:15
+#: content-link.php:18 content-quote.php:17 content-status.php:15
+#: content-aside.php:20
 msgid "Permalink to %s"
 msgstr "Μόνιμος σύνδεσμος του %s"
 
-#: content-aside.php:15 content-image.php:13 content-link.php:14
-#: content-quote.php:13 content-status.php:31 content.php:44
+#: content-link.php:14 content.php:44 content-image.php:13 content-quote.php:13
+#: content-status.php:31 content-aside.php:15
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Συνέχεια <span class=\"meta-nav\">&rarr;</span>"
 
@@ -312,16 +332,15 @@ msgstr "Φαίνεται ότι δεν βρήκαμε αυτό που ζητού
 msgid "This is somewhat embarrassing, isn&rsquo;t it?"
 msgstr "Συγγνώμη!"
 
-#. #-#-#-#-#  twentytwelve.pot (Twenty Twelve 2.3)  #-#-#-#-#
-#. Author URI of the plugin/theme
-#: footer.php:16
+#. Author URI of the theme
+#: footer.php:21
 msgid "https://wordpress.org/"
 msgstr "https://wordpress.org/"
 
-#. Author of the plugin/theme
+#. Author of the theme
 msgid "the WordPress team"
 msgstr "ομάδα WordPress"
 
-#. Theme URI of the plugin/theme
+#. Theme URI of the theme
 msgid "https://wordpress.org/themes/twentytwelve/"
 msgstr "https://wordpress.org/themes/twentytwelve/"

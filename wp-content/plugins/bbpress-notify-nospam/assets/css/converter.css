@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+.bbpnns_spinner {
+	background: url('/wp-admin/images/wpspin_light.gif') no-repeat;
+	background-size: 16px 16px;
+	display: none;
+	float: right;
+	opacity: .7;
+	filter: alpha(opacity=70);
+	width: 16px;
+	height: 16px;
+	margin: 5px 5px 0;
+}
+
+#bbpnns-convert-v1-to-v2 {
+	float:right;
+}

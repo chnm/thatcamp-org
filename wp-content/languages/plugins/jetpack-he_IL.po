@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Jetpack by WordPress.com - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-11-07 21:54:07+0000\n"
+"PO-Revision-Date: 2018-12-30 17:17:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -99,6 +99,10 @@ msgstr "הווידג'ט מוסיף את כפתור התשלום שבחרת לס�
 #: modules/widgets/simple-payments/form.php:163
 msgid "Delete Product"
 msgstr "מחיקת מוצר"
+
+#: modules/widgets/simple-payments/form.php:151
+msgid "This is where PayPal will send your money. To claim a payment, you'll need a <a href=\"%s\" %s>PayPal account</a> connected to a bank account."
+msgstr "לכאן יתקבלו התשלומים מ-PayPal. לקבלת התשלום, חייב להיות ברשותך %1$sחשבון PayPal%2$s שמחובר לחשבון בנק."
 
 #: modules/widgets/simple-payments/form.php:134
 msgid "Allow people to buy more than one item at a time."
@@ -3159,6 +3163,18 @@ msgstr "Reader"
 msgid "Something Else"
 msgstr "משהו אחר"
 
+#: class.jetpack-debugger.php:380
+msgid "My site is down / I can't access my site."
+msgstr "האתר שלי לא פעיל / אין אפשרות גישה לאתר שלי"
+
+#: class.jetpack-debugger.php:379
+msgid "I have security concerns / my site is hacked."
+msgstr "יש לי חששות בנוגע לאבטחה / האתר שלי נפרץ"
+
+#: class.jetpack-debugger.php:374
+msgid "I'm having trouble connecting Jetpack to WordPress.com."
+msgstr "יש לי בעיה בחיבור של Jetpack ל-WordPress.com"
+
 #: class.jetpack-debugger.php:366
 msgid "What do you need help with?"
 msgstr "לגבי איזה נושא דרושה לך עזרה?"
@@ -3426,6 +3442,10 @@ msgstr "שימוש בתקצירים במקום בפוסטים מלאים בעמ�
 #: _inc/jetpack-strings.php:447
 msgid "Show featured images"
 msgstr "הצג תמונות מרכזיות"
+
+#: _inc/jetpack-strings.php:562
+msgid "Brute force attack protection and downtime monitoring"
+msgstr "הגנה מפני התקפות של ניחוש סיסמה ומעקב אחר זמינות השרת"
 
 #: _inc/jetpack-strings.php:410
 msgctxt "Settings header"
@@ -3788,6 +3808,10 @@ msgstr "שגיאה במהלך יצירה מחדש של פוסט לפי כתוב�
 #: _inc/jetpack-strings.php:42
 msgid "Updated settings. Refreshing page…"
 msgstr "עודכנו הגדרות. ריענון העמוד..."
+
+#: _inc/jetpack-strings.php:38
+msgid "Error updating settings. %(error)s"
+msgstr "שגיאה בעדכון הגדרות. %(error)s"
 
 #: _inc/jetpack-strings.php:7
 msgctxt "Navigation item."
@@ -5231,6 +5255,14 @@ msgstr "כרטיסייה זו מכילה הגדרות שלא נשמרו; ביצ�
 msgid "Invalid parameter \"dismissed\"."
 msgstr "פרמטר לא תקף 'נמחק'."
 
+#: modules/module-info.php:632
+msgid ""
+"Automatically create two sitemap files that list the URLs of posts and pages in your site.\n"
+"\t\tThis makes it easier for search engines (like Google) to include your site in relevant search results."
+msgstr ""
+"באפשרותך ליצור באופן אוטומטי שני קבצים של מפות אתרים שמפרטים את כתובות האתרים של פוסטים ועמודים באתר שלך.\n"
+"\t\tהדבר מקל על מנועי חיפוש (כמו Google) לכלול את האתר שלך בתוצאות חיפוש רלוונטיות."
+
 #: modules/module-info.php:616
 msgid ""
 "Manage and update this and other WordPress sites from one simple dashboard on WordPress.com. You can update\n"
@@ -5242,14 +5274,6 @@ msgstr ""
 "\t\tתוספים, להגדיר להם עדכון אוטומטי ולהפעיל או להשבית אותם בכל אתר בפני עצמו, או באופן גורף בכתובת\n"
 "\t\twordpress.com/plugins. אפשר גם להשתמש בעורך הפוסטים החדש והידידותי לנייד ב-WordPress.com\n"
 "\t\tוכן להציג ולהפעיל ערכות עיצוב מותקנות וליצור או לערוך תפריטי אתרים."
-
-#: modules/module-info.php:632
-msgid ""
-"Automatically create two sitemap files that list the URLs of posts and pages in your site.\n"
-"\t\tThis makes it easier for search engines (like Google) to include your site in relevant search results."
-msgstr ""
-"באפשרותך ליצור באופן אוטומטי שני קבצים של מפות אתרים שמפרטים את כתובות האתרים של פוסטים ועמודים באתר שלך.\n"
-"\t\tהדבר מקל על מנועי חיפוש (כמו Google) לכלול את האתר שלך בתוצאות חיפוש רלוונטיות."
 
 #: modules/module-info.php:599
 msgid ""
@@ -6123,6 +6147,10 @@ msgstr "אפשר להפעיל או להשבית את התכונות בכל עת.
 msgid "Show an ad for the WordPress mobile apps in the footer of the mobile theme"
 msgstr "הצגת קישור לאפליקציות לנייד של WordPress בכותרת התחתונה של ערכת העיצוב לנייד"
 
+#: _inc/jetpack-strings.php:602
+msgid "Activate recommended features"
+msgstr "הפעלת התכונות המומלצות"
+
 #: _inc/jetpack-strings.php:573
 msgid "You are currently running a development version of Jetpack."
 msgstr "נראה שנעשה כאן שימוש בגרסת פיתוח של Jetpack."
@@ -6164,6 +6192,10 @@ msgstr "מה היית רוצה לראות בלוח הבקרה של Jetpack?"
 #: _inc/jetpack-strings.php:570
 msgid "Would you tell us why? Just {{a}}answering two simple questions{{/a}} would help us improve Jetpack."
 msgstr "נשמח לדעת מדוע. נשמח לקבל {{a}}תשובות לשתי שאלות קצרות{{/a}} כדי שנדע כיצד לשפר את Jetpack."
+
+#: class.jetpack-connection-banner.php:985
+msgid "Connect to, or create, a WordPress.com account to start using Jetpack, and activate our powerful security, traffic and customization services."
+msgstr "כדי להתחיל להשתמש ב-Jetpack, יש להתחבר לחשבון WordPress.com או ליצור חשבון כזה. פעולה זו תאפשר את הפעלת השירותים והכלים המיוחדים שלנו."
 
 #: _inc/jetpack-strings.php:542
 msgctxt "Header. Noun: Protect is a module of Jetpack."
@@ -6412,6 +6444,14 @@ msgstr "{{a}}יש להפעיל את Protect{{/a}} כדי לשמור את האת�
 msgid "{{a}}Activate{{/a}} to enhance the performance and speed of your images."
 msgstr "{{a}}הפעלה{{/a}} לשיפור הביצועים והמהירות של התמונות שלך."
 
+#: _inc/jetpack-strings.php:82
+msgid "Downtime monitoring"
+msgstr "ניטור זמינות השרת"
+
+#: _inc/jetpack-strings.php:97
+msgid "{{a}}Turn on plugin autoupdates{{/a}}"
+msgstr "{{a}}להפעיל עדכונים אוטומטיים של תוספים{{/a}}"
+
 #: _inc/jetpack-strings.php:55
 msgid "For state-of-the-art spam defense, please {{a}}activate Akismet{{/a}}."
 msgstr "להגנה חדשנית מפני תגובות זבל, {{a}}יש להפעיל את Akismet{{/a}}."
@@ -6529,10 +6569,6 @@ msgstr "הכיבוי של %(slug)s נכשל. %(error)s"
 msgid "Recommended features failed to activate. %(error)s"
 msgstr "הפעלת התכונות המומלצות נכשלה. %(error)s"
 
-#: _inc/jetpack-strings.php:64
-msgid "To automatically back up your entire site, please {{a}}upgrade your account{{/a}}."
-msgstr "כדי לגבות את האתר שלך כולו באופן אוטומטי, יש {{a}}לשדרג את החשבון שלך{{/a}}."
-
 #: _inc/jetpack-strings.php:56
 msgid "Invalid key"
 msgstr "מפתח לא תקף"
@@ -6540,6 +6576,10 @@ msgstr "מפתח לא תקף"
 #: _inc/jetpack-strings.php:86
 msgid "{{a}}Activate Monitor{{/a}} to receive email notifications if your site goes down."
 msgstr "{{a}}יש להפעיל מוניטור{{/a}} כדי לקבל הודעות אימייל אם האתר שלך קורס."
+
+#: _inc/jetpack-strings.php:64
+msgid "To automatically back up your entire site, please {{a}}upgrade your account{{/a}}."
+msgstr "כדי לגבות באופן אוטומטי את כל האתר שלך, יש {{a}}לשדרג את החשבון{{/a}}."
 
 #: _inc/jetpack-strings.php:11 _inc/jetpack-strings.php:647
 #: _inc/jetpack-strings.php:653
@@ -6951,6 +6991,10 @@ msgstr "פקודת מקרו ל-VideoPress"
 msgid "Fill out my Wufoo form!"
 msgstr "מילוי טופס ה-Wufoo שלי!"
 
+#: class.jetpack-debugger.php:267
+msgid "Some themes and plugins have <a href=\"%1$s\" target=\"_blank\">known conflicts</a> with Jetpack – check the <a href=\"%2$s\" target=\"_blank\">list</a>. (You can also browse the <a href=\"%3$s\" target=\"_blank\">Jetpack support pages</a> or <a href=\"%4$s\" target=\"_blank\">Jetpack support forum</a> to see if others have experienced and solved the problem.)"
+msgstr "לחלק מערכות העיצוב והתוספים יש <a href=\"%1$s\" target=\"_blank\">התנגשויות ידועות</a> עם Jetpack – ניתן לעיין ב<a href=\"%2$s\" target=\"_blank\">רשימה</a>. (אפשר גם לעיין ב<a href=\"%3$s\" target=\"_blank\">עמודי התמיכה של Jetpack</a> או ב<a href=\"%4$s\" target=\"_blank\">פורום התמיכה של Jetpack</a> כדי לבדוק אם אנשים אחרים נתקלו בבעיה הזו ופתרו אותה)."
+
 #: _inc/jetpack-strings.php:587
 msgid "You need to stay logged in to your WordPress blog while you authorize Jetpack."
 msgstr "בלוג WordPress צריך להישאר מחובר בזמן אישור Jetpack."
@@ -6962,10 +7006,6 @@ msgstr "הייתה לנו בעיה בחיבור Jetpack; יש לכבות ולה�
 #: _inc/jetpack-strings.php:589
 msgid "There was an issue connecting your Jetpack. Please click \"Connect to WordPress.com\" again."
 msgstr "אירעה בעיה בחיבור Jetpack עבורך. יש ללחוץ שוב על 'התחברות ל-WordPress.com'."
-
-#: class.jetpack-debugger.php:267
-msgid "Some themes and plugins have <a href=\"%1$s\" target=\"_blank\">known conflicts</a> with Jetpack – check the <a href=\"%2$s\" target=\"_blank\">list</a>. (You can also browse the <a href=\"%3$s\" target=\"_blank\">Jetpack support pages</a> or <a href=\"%4$s\" target=\"_blank\">Jetpack support forum</a> to see if others have experienced and solved the problem.)"
-msgstr "לחלק מערכות העיצוב והתוספים יש <a href=\"%1$s\" target=\"_blank\">התנגשויות ידועות</a> עם Jetpack – ניתן לעיין ב<a href=\"%2$s\" target=\"_blank\">רשימה</a>. (אפשר גם לעיין ב<a href=\"%3$s\" target=\"_blank\">עמודי התמיכה של Jetpack</a> או ב<a href=\"%4$s\" target=\"_blank\">פורום התמיכה של Jetpack</a> כדי לבדוק אם אנשים אחרים נתקלו בבעיה הזו ופתרו אותה)."
 
 #: _inc/jetpack-strings.php:414
 msgid "Images"
@@ -8294,14 +8334,6 @@ msgstr "לא נמצאו נתונים עבור מזהה VideoPress: <strong>%s</s
 msgid "No logo set"
 msgstr "לא הוגדר לוגו"
 
-#: modules/subscriptions.php:638
-msgid "Notify me of follow-up comments by email."
-msgstr "הודע לי על תגובות נוספות באמצעות המייל."
-
-#: modules/subscriptions.php:657
-msgid "Notify me of new posts by email."
-msgstr "הודע לי על פוסטים חדשים באמצעות המייל."
-
 #: modules/videopress/class.videopress-edit-attachment.php:192
 msgid "Ogg File URL"
 msgstr "כתובת URL של קובץ Ogg"
@@ -8586,6 +8618,18 @@ msgstr "לא הצלחנו לגשת לנתונים הסטטיסטיים שלך כ
 #: modules/subscriptions.php:1041
 msgid "Success! An email was just sent to confirm your subscription. Please find the email now and click 'Confirm Follow' to start subscribing."
 msgstr "הצלחתם! אימייל נשלח כרגע כדי לאשר את המינוי שלכם. מיצאו את האימייל בתיבה שלכם ולחצו על 'אישור מעקב' על מנת להפעיל את המינוי."
+
+#: modules/videopress/class.videopress-player.php:344
+msgid "You do not have sufficient <a rel=\"nofollow\" href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">freedom levels</a> to view this video. Support free software and upgrade."
+msgstr "הדפדפן אינו תומך <a rel=\"nofollow\" href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">בדרגת החופש</a> הנחוצה כדי להציג סרטון זה. תמכו בתוכנה חופשית ושדרגו אותו."
+
+#: modules/subscriptions.php:657
+msgid "Notify me of new posts by email."
+msgstr "הודע לי על פוסטים חדשים באמצעות האימייל."
+
+#: modules/subscriptions.php:638
+msgid "Notify me of follow-up comments by email."
+msgstr "הודע לי על תגובות נוספות באמצעות האימייל."
 
 #: modules/sharedaddy/sharing-sources.php:95
 msgid " (Opens in new window)"
@@ -10261,16 +10305,16 @@ msgstr "https://he.wordpress.org/"
 msgid "Testimonial Archive Featured Image"
 msgstr "תמונה מרכזית של ארכיון המלצות"
 
-#: modules/minileven/theme/pub/minileven/content.php:49
-#: modules/minileven/theme/pub/minileven/image.php:90
-msgid "Leave a reply"
-msgstr "השאר תגובה"
-
 #: modules/infinite-scroll/infinity.php:412
 msgid "Shows %s post on each load."
 msgid_plural "Shows %s posts on each load."
 msgstr[0] "מציג פוסט אחד בכל טעינה."
 msgstr[1] "מציג %s פוסטים בכל טעינה."
+
+#: modules/minileven/theme/pub/minileven/content.php:49
+#: modules/minileven/theme/pub/minileven/image.php:90
+msgid "Leave a reply"
+msgstr "להגיב"
 
 #: modules/custom-post-types/nova.php:328
 #: modules/custom-post-types/nova.php:333
@@ -11575,10 +11619,6 @@ msgstr "שגיאה!"
 msgid "Error: please enter a valid email address."
 msgstr "בעיה: לא כתבת כתובת אימייל תקינה.?"
 
-#: modules/comments/base.php:230
-msgid "Error: please fill the required fields (name, email)."
-msgstr "בעיה: השארת שם כמה שדות ריקים (השם או הסיסמה)"
-
 #: modules/after-the-deadline.php:244
 msgid "Explain..."
 msgstr "הסבר..."
@@ -12140,6 +12180,10 @@ msgstr "תגובה"
 #: modules/carousel/jetpack-carousel.php:233
 msgid "Please be sure to submit some text with your comment."
 msgstr "נא ודאו שאתם מכניסים קצת טקסט לתגובה שלכם."
+
+#: modules/comments/base.php:230
+msgid "Error: please fill the required fields (name, email)."
+msgstr "בעיה: נא השלימו את השדות הדרושים (שם, אימייל)"
 
 #: class.jetpack.php:4391
 msgctxt "%1$s = deactivation URL, %2$s = \"Deactivate {list of Jetpack module/feature names}"

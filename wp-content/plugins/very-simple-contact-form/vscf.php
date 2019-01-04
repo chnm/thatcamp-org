@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Very Simple Contact Form
  * Description: This is a lightweight plugin to create a customized contact form. Add shortcode [contact] on a page or use the widget to display your form.
- * Version: 9.5
+ * Version: 9.6
  * Author: Guido
  * Author URI: https://www.guido.site
  * License: GNU General Public License v3 or later
@@ -265,7 +265,9 @@ function vscf_anchor_footer() {
 	$anchor_setting = esc_attr(get_option('vscf-setting-21'));
 	if ($anchor_setting == "yes") {
 		echo '<script type="text/javascript">';
+		echo 'if(document.getElementById("vscf-anchor")) {';
 		echo 'document.getElementById("vscf-anchor").scrollIntoView({behavior:"smooth", block:"center"});';
+		echo '}';
 		echo '</script>';
 	}
 }

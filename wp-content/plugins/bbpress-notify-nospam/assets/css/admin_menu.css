@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+
+a[href$=bbPress_Notify_noSpam-addons] {
+	color: orange !important;
+}

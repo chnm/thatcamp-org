@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Twelve package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-11-03 08:44:57+0000\n"
+"PO-Revision-Date: 2018-12-24 17:23:54+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,19 +11,39 @@ msgstr ""
 "Language: fr\n"
 "Project-Id-Version: Themes - Twenty Twelve\n"
 
-#. Description of the plugin/theme
+#. Description of the theme
 msgid "The 2012 theme for WordPress is a fully responsive theme that looks great on any device. Features include a front page template with its own widgets, an optional display font, styling for post formats on both index and single views, and an optional no-sidebar page template. Make it yours with a custom menu, header image, and background."
 msgstr "Le thème 2012 de WordPress est un thème conçu pour s&rsquo;afficher de la meilleure manière sur n&rsquo;importe quelle taille d&rsquo;écran. Parmi ses fonctionnalités se trouvent un modèle de page d&rsquo;accueil avec ses propres widgets, une police d&rsquo;affichage optionnelle, un design pour les formats d&rsquo;article à la fois sur l&rsquo;index et en vue individuelle, et un modèle facultatif sans barre latérale. Vous pouvez le faire vôtre avec un menu personnalisé, une image d&rsquo;en-tête, et un fond d&rsquo;écran."
 
-#. Theme Name of the plugin/theme
+#. Theme Name of the theme
 msgid "Twenty Twelve"
 msgstr "Twenty Twelve"
 
-#. Template Name of the plugin/theme
+#: functions.php:89
+msgid "White"
+msgstr "Blanc"
+
+#: functions.php:84
+msgid "Light Gray"
+msgstr "Gris clair"
+
+#: functions.php:79
+msgid "Medium Gray"
+msgstr "Gris moyen"
+
+#: functions.php:74
+msgid "Dark Gray"
+msgstr "Gris foncé"
+
+#: functions.php:69
+msgid "Blue"
+msgstr "Bleu"
+
+#. Template Name of the theme
 msgid "Full-width Page Template, No Sidebar"
 msgstr "Modèle de page pleine largeur, sans barre latérale"
 
-#. Template Name of the plugin/theme
+#. Template Name of the theme
 msgid "Front Page Template"
 msgstr "Modèle de Page d&rsquo;Accueil"
 
@@ -77,115 +97,115 @@ msgstr "Aller au contenu"
 msgid "Menu"
 msgstr "Menu"
 
-#: functions.php:419
+#: functions.php:473
 msgid "This entry was posted on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Cette entrée a été publiée le %3$s <span class=\"by-author\">par %4$s</span>."
 
-#: functions.php:417
+#: functions.php:471
 msgid "This entry was posted in %1$s on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Cette entrée a été publiée dans %1$s le %3$s <span class=\"by-author\">par %4$s</span>."
 
 #. Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's
 #. name.
-#: functions.php:415
+#: functions.php:469
 msgid "This entry was posted in %1$s and tagged %2$s on %3$s<span class=\"by-author\"> by %4$s</span>."
 msgstr "Cette entrée a été publiée dans %1$s, et marquée avec %2$s, le %3$s <span class=\"by-author\">par %4$s</span>."
 
-#: functions.php:409
+#: functions.php:463
 msgid "View all posts by %s"
 msgstr "Afficher tous les articles par %s"
 
 #. Translators: used between list items, there is a space after the comma.
-#: functions.php:395 functions.php:398
+#: functions.php:449 functions.php:452
 msgid ", "
 msgstr ", "
 
-#: functions.php:374
+#: functions.php:428
 msgid "Reply"
 msgstr "Répondre"
 
-#: functions.php:365
+#: functions.php:419
 msgid "Your comment is awaiting moderation."
 msgstr "Votre commentaire est en attente de validation."
 
 #. translators: 1: date, 2: time
-#: functions.php:359
+#: functions.php:413
 msgid "%1$s at %2$s"
 msgstr "%1$s à %2$s"
 
-#: functions.php:353
+#: functions.php:407
 msgid "Post author"
 msgstr "Auteur de l&rsquo;article"
 
-#: functions.php:338
+#: functions.php:392
 msgid "(Edit)"
 msgstr "(Modifier)"
 
-#: functions.php:338
+#: functions.php:392
 msgid "Pingback:"
 msgstr "Ping&nbsp;:"
 
-#: functions.php:313
+#: functions.php:367
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Articles plus récents <span class=\"meta-nav\">&rarr;</span>"
 
-#: functions.php:312
+#: functions.php:366
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Articles plus anciens"
 
-#: functions.php:311 single.php:20
+#: functions.php:365 single.php:20
 msgid "Post navigation"
 msgstr "Navigation des articles"
 
-#: functions.php:289
+#: functions.php:343
 msgid "Second Front Page Widget Area"
 msgstr "Seconde zone de la Page d&rsquo;Accueil"
 
-#: functions.php:281 functions.php:291
+#: functions.php:335 functions.php:345
 msgid "Appears when using the optional Front Page template with a page set as Static Front Page"
 msgstr "Apparaît lorsque vous utilisez le modèle facultatif Page d&rsquo;Accueil avec une page configurée en Page d&rsquo;Accueil Statique."
 
-#: functions.php:279
+#: functions.php:333
 msgid "First Front Page Widget Area"
 msgstr "Première zone de la Page d&rsquo;Accueil"
 
-#: functions.php:271
+#: functions.php:325
 msgid "Appears on posts and pages except the optional Front Page template, which has its own widgets"
 msgstr "Apparaît sur les articles et les pages, sauf le modèle facultatif Page d&rsquo;Accueil, qui dispose de ses propres widgets."
 
-#: functions.php:269
+#: functions.php:323
 msgid "Main Sidebar"
 msgstr "Colonne principale"
 
-#: functions.php:240
+#: functions.php:294
 msgid "Page %s"
 msgstr "Page %s"
 
 #. translators: To add an additional Open Sans character subset specific to
-#. your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not
-#. translate into your own language.
-#: functions.php:110
+#. your language, * translate this to 'greek', 'cyrillic' or 'vietnamese'. Do
+#. not translate into your own language.
+#: functions.php:148
 msgctxt "Open Sans font: add new subset (greek, cyrillic, vietnamese)"
 msgid "no-subset"
 msgstr "no-subset"
 
 #. translators: If there are characters in your language that are not supported
-#. by Open Sans, translate this to 'off'. Do not translate into your own
+#. * by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:104
+#: functions.php:142
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr "on"
 
-#: functions.php:64
+#: functions.php:102
 msgid "Primary Menu"
 msgstr "Menu principal"
 
-#: footer.php:16
+#: footer.php:22
 msgid "Proudly powered by %s"
 msgstr "Fièrement propulsé par %s"
 
-#: footer.php:16
+#: footer.php:21
 msgid "Semantic Personal Publishing Platform"
 msgstr "Plate-forme de publication personnelle à la pointe de la sémantique"
 
@@ -197,15 +217,15 @@ msgstr "Voir tous les articles de %s <span class=\"meta-nav\">&rarr;</span>"
 msgid "Featured post"
 msgstr "Article mis en avant"
 
-#: content-page.php:21 content.php:45 image.php:102
+#: content.php:45 image.php:102 content-page.php:21
 msgid "Pages:"
 msgstr "Pages&nbsp;:"
 
-#: content-none.php:17 index.php:53
+#: index.php:53 content-none.php:17
 msgid "Apologies, but no results were found. Perhaps searching will help find a related post."
 msgstr "Toutes nos excuses, mais votre requête n&rsquo;a donné aucun résultat. Peut-être qu&rsquo;une recherche peut vous indiquer un article lié."
 
-#: content-none.php:13 index.php:49 search.php:34
+#: index.php:49 search.php:34 content-none.php:13
 msgid "Nothing Found"
 msgstr "Rien de trouvé"
 
@@ -213,34 +233,34 @@ msgstr "Rien de trouvé"
 msgid "Link"
 msgstr "Lien"
 
-#: content-aside.php:26 content-image.php:26 content-link.php:24
-#: content-page.php:24 content-quote.php:23 content-status.php:40
-#: content.php:51 functions.php:370 image.php:37
+#: content-link.php:24 content.php:51 functions.php:424 content-image.php:26
+#: content-quote.php:23 content-status.php:40 image.php:37 content-aside.php:26
+#: content-page.php:24
 msgid "Edit"
 msgstr "Modifier"
 
-#: content-aside.php:23 content-image.php:23 content-link.php:21
-#: content-quote.php:20 content-status.php:37 content.php:33
+#: content-link.php:21 content.php:33 content-image.php:23 content-quote.php:20
+#: content-status.php:37 content-aside.php:23
 msgid "% Replies"
 msgstr "% réponses"
 
-#: content-aside.php:23 content-image.php:23 content-link.php:21
-#: content-quote.php:20 content-status.php:37 content.php:33
+#: content-link.php:21 content.php:33 content-image.php:23 content-quote.php:20
+#: content-status.php:37 content-aside.php:23
 msgid "1 Reply"
 msgstr "1 réponse"
 
-#: content-aside.php:23 content-image.php:23 content-link.php:21
-#: content-quote.php:20 content-status.php:37 content.php:33
+#: content-link.php:21 content.php:33 content-image.php:23 content-quote.php:20
+#: content-status.php:37 content-aside.php:23
 msgid "Leave a reply"
 msgstr "Laisser un commentaire"
 
-#: content-aside.php:20 content-link.php:18 content-quote.php:17
-#: content-status.php:15
+#: content-link.php:18 content-quote.php:17 content-status.php:15
+#: content-aside.php:20
 msgid "Permalink to %s"
 msgstr "Permalien vers %s"
 
-#: content-aside.php:15 content-image.php:13 content-link.php:14
-#: content-quote.php:13 content-status.php:31 content.php:44
+#: content-link.php:14 content.php:44 content-image.php:13 content-quote.php:13
+#: content-status.php:31 content-aside.php:15
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Continuer la lecture <span class=\"meta-nav\">&rarr;</span>"
 
@@ -312,16 +332,15 @@ msgstr "Il semblerait que nous ne soyons pas en mesure de trouver votre contenu.
 msgid "This is somewhat embarrassing, isn&rsquo;t it?"
 msgstr "C&rsquo;est plutôt gênant, vous ne trouvez pas&nbsp;?"
 
-#. #-#-#-#-#  twentytwelve.pot (Twenty Twelve 2.3)  #-#-#-#-#
-#. Author URI of the plugin/theme
-#: footer.php:16
+#. Author URI of the theme
+#: footer.php:21
 msgid "https://wordpress.org/"
 msgstr "https://wordpress.org/"
 
-#. Author of the plugin/theme
+#. Author of the theme
 msgid "the WordPress team"
 msgstr "L&rsquo;équipe WordPress"
 
-#. Theme URI of the plugin/theme
+#. Theme URI of the theme
 msgid "https://wordpress.org/themes/twentytwelve/"
 msgstr "https://wordpress.org/themes/twentytwelve/"
