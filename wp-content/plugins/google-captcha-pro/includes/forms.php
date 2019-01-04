@@ -30,7 +30,8 @@ if ( ! function_exists( 'gglcptch_get_forms' ) ) {
 			'wpforo_register_form'		=> array( 'form_name' => __( 'wpForo Registration form', 'google-captcha-pro' ) ),
 			'wpforo_new_topic_form'		=> array( 'form_name' => __( 'wpForo New Topic form', 'google-captcha-pro' ) ),
 			'wpforo_reply_form'			=> array( 'form_name' => __( 'wpForo Reply form', 'google-captcha-pro') ),
-			'mailchimp'					=> array( 'form_name' => __( 'MailChimp for Wordpress', 'google-captcha-pro' ) )
+			'mailchimp'					=> array( 'form_name' => __( 'MailChimp for Wordpress', 'google-captcha-pro' ) ),
+			'testimonials'				=> array( 'form_name' => __( 'Testimonials', 'google-captcha-pro' ) )
 		);
 
 		$custom_forms = apply_filters( 'gglcptch_add_custom_form', array() );
@@ -68,7 +69,8 @@ if ( ! function_exists( 'gglcptch_get_sections' ) ) {
 					'si_contact_form',
 					'jetpack_contact_form',
 					'sbscrbr',
-					'mailchimp'
+					'mailchimp',
+					'testimonials'
 				)
 			),
 			'bbpress' => array(
@@ -196,6 +198,7 @@ if ( ! function_exists( 'gglcptch_get_form_notice' ) ) {
 			'si_contact_form'		=> 'si-contact-form/si-contact-form.php',
 			'jetpack_contact_form'	=> 'jetpack/jetpack.php',
 			'mailchimp'				=> 'mailchimp-for-wp/mailchimp-for-wp.php',
+			'testimonials'			=> 'bws-testimonials/bws-testimonials.php',
 		);
 
 		if ( isset( $plugins[ $form_slug ] ) ) {
@@ -484,7 +487,7 @@ if ( ! function_exists( 'gglcptch_login_display' ) ) {
 
 		global $gglcptch_options;
 
-		if ( isset( $gglcptch_options['recaptcha_version'] ) && in_array( $gglcptch_options['recaptcha_version'], array( 'v1', 'v2' ) ) ) {
+		if ( isset( $gglcptch_options['recaptcha_version'] ) ) {
 			if ( 'v2' == $gglcptch_options['recaptcha_version'] ) {
 				$from_width = 302;
 			} else {
@@ -688,6 +691,21 @@ if ( ! function_exists( 'gglcptch_susbscriber_check' ) ) {
 			$check_result = implode( "<br>", $gglcptch_check['errors']->get_error_messages() );
 		}
 		return $check_result;
+	}
+}
+
+/* Check google captcha in BWS Testimonials */
+if ( ! function_exists( 'gglcptch_testimonials_check' ) ) {
+	function gglcptch_testimonials_check( $allow = true ) {
+		global $gglcptch_check;
+		if ( ! $allow || is_string( $allow ) || is_wp_error( $allow ) ) {
+			return $allow;
+		}
+		$gglcptch_check = gglcptch_check( 'testimonials' );
+		if ( ! $gglcptch_check['response'] ) {
+			return $gglcptch_check['errors'];
+		}
+		return $allow;
 	}
 }
 

@@ -64,8 +64,8 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 			);
 
 			$this->versions = array(
-				'v1'			=> sprintf( '%s 1', __( 'Version', 'google-captcha-pro' ) ),
 				'v2'			=> sprintf( '%s 2', __( 'Version', 'google-captcha-pro' ) ),
+                'v3'			=> sprintf( '%s 3', __( 'Version', 'google-captcha-pro' ) ),
 				'invisible'		=> __( 'Invisible', 'google-captcha-pro' )
 			);
 
@@ -132,14 +132,13 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 				$this->options['public_key']				= trim( stripslashes( esc_html( $_POST['gglcptch_public_key'] ) ) );
 				$this->options['private_key']				= trim( stripslashes( esc_html( $_POST['gglcptch_private_key'] ) ) );
 
-				$this->options['recaptcha_version']	=	in_array( $_POST['gglcptch_recaptcha_version'], array( 'v1', 'v2', 'invisible' ) ) ? $_POST['gglcptch_recaptcha_version']: 'v2';
-				$this->options['theme']				=	stripslashes( esc_html( $_POST['gglcptch_theme'] ) );
+				$this->options['recaptcha_version']	=	in_array( $_POST['gglcptch_recaptcha_version'], array( 'v2', 'invisible', 'v3' ) ) ? $_POST['gglcptch_recaptcha_version']: 'v2';
 				$this->options['theme_v2']			=	stripslashes( esc_html( $_POST['gglcptch_theme_v2'] ) );
 
 				$this->options['size_v2']					= 'compact' == $_POST['gglcptch_size_v2'] ? 'compact' : 'normal';
 				$this->options['language']					= isset( $_POST['gglcptch_language'] ) ? stripslashes( esc_html( $_POST['gglcptch_language'] ) ) : 'en';
 				$this->options['use_multilanguage_locale']	= isset( $_POST['gglcptch_use_multilanguage_locale'] ) ? stripslashes( esc_html( $_POST['gglcptch_use_multilanguage_locale'] ) ) : 0;
-
+                $this->options['score_v3']          =    isset( $_POST['gglcptch_score_v3'] ) ? (float)$_POST['gglcptch_score_v3'] : 0.5;
 				$this->options['disable_submit']			= isset( $_POST['gglcptch_disable_submit'] ) ? 1 : 0;
 
 				foreach ( $this->forms as $form_slug => $form_data ) {
@@ -319,18 +318,6 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 							</fieldset>
 						</td>
 					</tr>
-					<tr class="gglcptch_theme_v1" valign="top">
-						<th scope="row">
-							<?php _e( 'Theme', 'google-captcha-pro' ); ?>
-						</th>
-						<td>
-							<select<?php echo $this->change_permission_attr; ?> name="gglcptch_theme">
-								<?php foreach ( $this->themes as $theme ) { ?>
-									<option value="<?php echo $theme[0]; ?>" <?php selected( $theme[0], $this->options['theme'] ); ?>><?php echo $theme[1]; ?></option>
-								<?php } ?>
-							</select>
-						</td>
-					</tr>
 					<tr class="gglcptch_theme_v2" valign="top">
 						<th scope="row">
 							<?php _e( 'Theme', 'google-captcha-pro' ); ?>
@@ -354,6 +341,16 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 							</fieldset>
 						</td>
 					</tr>
+                    <tr class="gglcptch_score_v3" valign="top">
+                        <th scope="row">
+                            <?php _e( 'Score', 'google-captcha-pro' ); ?>
+                        </th>
+                        <td>
+                            <input name="gglcptch_score_v3" id="gglcptch_score_v3" type="range" list="gglcptch_score_v3_rangeList" min="0" max="1.0" step="0.1" value="<?php  echo $this->options['score_v3']; ?>">
+                            <output id="gglcptch_score_out_v3" for="gglcptch_score_v3"></output>
+                            <span class="bws_info" style="display: block;"><?php echo __( 'Set the minimum verification score from 0 to 1', 'google-captcha-pro' ) . '.';?></span>
+                        </td>
+                    </tr>
 					<tr valign="top">
 						<th scope="row"><?php _e( 'Language', 'google-captcha-pro' ); ?></th>
 						<td>
@@ -404,13 +401,9 @@ if ( ! class_exists( 'Gglcptch_Settings_Tabs' ) ) {
 		/**
 		 * Display custom error\message\notice
 		 * @access public
-		 * @param  $save_results - array with error\message\notice
 		 * @return void
 		 */
-		public function display_custom_messages( $save_results ) {
-			if ( 'v1' == $this->options['recaptcha_version'] ) { ?>
-				<div class="updated inline bws-notice"><p><strong><?php _e( "Only one reCAPTCHA can be displayed on the page, it's related to reCAPTCHA version 1 features.", 'google-captcha-pro' ); ?></strong></p></div>
-			<?php }
+		public function display_custom_messages() {
 			if ( ! empty( $this->options['need_keys_verified_check'] ) ) { ?>
 				<div class="updated inline bws-notice"><p><strong><?php _e( 'reCAPTCHA version was changed. Please submit "Test reCAPTCHA" and regenerate Site and Secret keys if necessary.', 'google-captcha-pro' ); ?></strong></p></div>
 			<?php }

@@ -38,3 +38,8 @@ body.js .gglcptch-settings-accordion .gglcptch_section_forms > hr {
 .rtl .button.gglcptch-add-reason-button {
 	float: left;
 }
+
+#gglcptch_score_out_v3 {
+	transform: translateY(-50%);
+	display: inline-block;
+}

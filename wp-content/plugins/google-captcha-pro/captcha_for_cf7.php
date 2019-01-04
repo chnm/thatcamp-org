@@ -19,14 +19,16 @@ if ( ! function_exists ( 'wpcf7_bws_google_captcha_pro_shortcode_handler' ) ) {
 		if ( class_exists( 'WPCF7_FormTag' ) ) {
 			$tag = new WPCF7_FormTag( $tag );
 
-			if ( empty( $tag->name ) )
-				return '';
+			if ( empty( $tag->name ) ) {
+                return '';
+            }
 
 			$validation_error = wpcf7_get_validation_error( $tag->name );
 			$class = wpcf7_form_controls_class( $tag->type );
 
-			if ( $validation_error )
-				$class .= ' wpcf7-not-valid';
+			if ( $validation_error ) {
+                $class .= ' wpcf7-not-valid';
+            }
 
 			$atts = array();
 			$atts['class'] = $tag->get_class_option( $class, $tag->name );
@@ -38,8 +40,9 @@ if ( ! function_exists ( 'wpcf7_bws_google_captcha_pro_shortcode_handler' ) ) {
 			$atts['value'] = '';
 
 			$html = '<div ';
-			if ( '' != $atts['id'] )
-				$html .= 'id="' . $atts['id'] . '" ';
+			if ( '' != $atts['id'] ) {
+                $html .= 'id="' . $atts['id'] . '" ';
+            }
 			$html .= 'class="wpcf7-form-control-wrap ' . $atts['class'] . '">' . gglcptch_display() .
 				'<span class="wpcf7-form-control-wrap ' . $tag->name . '">' . $validation_error . '</span>' .
 			'</div>';
@@ -48,14 +51,16 @@ if ( ! function_exists ( 'wpcf7_bws_google_captcha_pro_shortcode_handler' ) ) {
 		} elseif ( class_exists( 'WPCF7_Shortcode' ) ) { /* deprecated since CF7 v.4.6 */
 			$tag = new WPCF7_Shortcode( $tag );
 
-			if ( empty( $tag->name ) )
-				return '';
+			if ( empty( $tag->name ) ) {
+                return '';
+            }
 
 			$validation_error = wpcf7_get_validation_error( $tag->name );
 			$class = wpcf7_form_controls_class( $tag->type );
 
-			if ( $validation_error )
-				$class .= ' wpcf7-not-valid';
+			if ( $validation_error ) {
+                $class .= ' wpcf7-not-valid';
+            }
 
 			$atts = array();
 			$atts['class'] = $tag->get_class_option( $class, $tag->name );
@@ -67,8 +72,9 @@ if ( ! function_exists ( 'wpcf7_bws_google_captcha_pro_shortcode_handler' ) ) {
 			$atts['value'] = '';
 
 			$html = '<div ';
-			if ( '' != $atts['id'] )
-				$html .= 'id="' . $atts['id'] . '" ';
+			if ( '' != $atts['id'] ) {
+                $html .= 'id="' . $atts['id'] . '" ';
+            }
 			$html .= 'class="wpcf7-form-control-wrap ' . $atts['class'] . '">' . gglcptch_display() .
 				'<span class="wpcf7-form-control-wrap ' . $tag->name . '">' . $validation_error . '</span>' .
 			'</div>';
@@ -81,15 +87,17 @@ if ( ! function_exists ( 'wpcf7_bws_google_captcha_pro_shortcode_handler' ) ) {
 /* tag generator */
 if ( ! function_exists ( 'wpcf7_add_tag_generator_bws_google_captcha_pro' ) ) {
 	function wpcf7_add_tag_generator_bws_google_captcha_pro() {
-		if ( ! function_exists( 'wpcf7_add_tag_generator' ) )
-			return;
+		if ( ! function_exists( 'wpcf7_add_tag_generator' ) ) {
+            return;
+        }
 		$cf7_plugin_info = get_plugin_data( dirname( dirname( __FILE__ ) ) . "/contact-form-7/wp-contact-form-7.php" );
-		if ( isset( $cf7_plugin_info ) && $cf7_plugin_info["Version"] >= '4.2' )
-			wpcf7_add_tag_generator( 'bwsgooglecaptcha', __( 'BWS Google Captcha', 'google-captcha-pro' ), 'wpcf7-bwsgooglecaptcha', 'wpcf7_tg_pane_bws_google_captcha_pro_after_4_2' );
-		elseif ( isset( $cf7_plugin_info ) && $cf7_plugin_info["Version"] >= '3.9' )
-			wpcf7_add_tag_generator( 'bwsgooglecaptcha', __( 'BWS Google Captcha', 'google-captcha-pro' ), 'wpcf7-bwsgooglecaptcha', 'wpcf7_tg_pane_bws_google_captcha_pro_after_3_9' );
-		else
-			wpcf7_add_tag_generator( 'bwsgooglecaptcha', __( 'BWS Google Captcha', 'google-captcha-pro' ), 'wpcf7-bwsgooglecaptcha', 'wpcf7_tg_pane_bws_google_captcha_pro' );
+		if ( isset( $cf7_plugin_info ) && $cf7_plugin_info["Version"] >= '4.2' ) {
+            wpcf7_add_tag_generator('bwsgooglecaptcha', __('BWS Google Captcha', 'google-captcha-pro'), 'wpcf7-bwsgooglecaptcha', 'wpcf7_tg_pane_bws_google_captcha_pro_after_4_2');
+        } elseif ( isset( $cf7_plugin_info ) && $cf7_plugin_info["Version"] >= '3.9' ) {
+            wpcf7_add_tag_generator('bwsgooglecaptcha', __('BWS Google Captcha', 'google-captcha-pro'), 'wpcf7-bwsgooglecaptcha', 'wpcf7_tg_pane_bws_google_captcha_pro_after_3_9');
+        } else {
+            wpcf7_add_tag_generator('bwsgooglecaptcha', __('BWS Google Captcha', 'google-captcha-pro'), 'wpcf7-bwsgooglecaptcha', 'wpcf7_tg_pane_bws_google_captcha_pro');
+        }
 	}
 }
 
@@ -193,8 +201,9 @@ if ( ! function_exists ( 'wpcf7_bws_google_captcha_pro_validation_filter' ) ) {
 
 			$contact_form = wpcf7_get_current_contact_form();
 
-			if ( ! $contact_form )
-				return $result;
+			if ( ! $contact_form ) {
+                return $result;
+            }
 
 			$tags = $contact_form->scan_form_tags( array( 'type' => 'bwsgooglecaptcha' ) );
 
@@ -222,8 +231,9 @@ if ( ! function_exists ( 'wpcf7_bws_google_captcha_pro_validation_filter' ) ) {
 
 			$contact_form = wpcf7_get_current_contact_form();
 
-			if ( ! $contact_form )
-				return $result;
+			if ( ! $contact_form ) {
+                return $result;
+            }
 
 			$tags = $contact_form->form_scan_shortcode( array( 'type' => 'bwsgooglecaptcha' ) );
 
@@ -269,8 +279,9 @@ if ( ! function_exists ( 'wpcf7_bws_google_captcha_pro_messages' ) ) {
 /* add warning message */
 if ( ! function_exists ( 'wpcf7_bws_google_captcha_pro_display_warning_message' ) ) {
 	function wpcf7_bws_google_captcha_pro_display_warning_message() {
-		if ( empty( $_GET['post'] ) || ! ( $contact_form = wpcf7_contact_form( $_GET['post'] ) ) )
-			return;
+		if ( empty( $_GET['post'] ) || ! ( $contact_form = wpcf7_contact_form( $_GET['post'] ) ) ) {
+            return;
+        }
 
 		if ( method_exists( $contact_form, 'scan_form_tags' ) ) {
 			$has_tags = ( bool )$contact_form->scan_form_tags( array( 'type' => array( 'bwsgooglecaptcha' ) ) );
@@ -278,7 +289,8 @@ if ( ! function_exists ( 'wpcf7_bws_google_captcha_pro_display_warning_message' 
 			$has_tags = ( bool )$contact_form->form_scan_shortcode( array( 'type' => array( 'bwsgooglecaptcha' ) ) );
 		}
 
-		if ( ! $has_tags )
-			return;
+		if ( ! $has_tags ) {
+            return;
+        }
 	}
 }

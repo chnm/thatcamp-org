@@ -107,11 +107,11 @@
 				var gglcptch_data = {
 					action: 'gglcptch_captcha_check'
 				};
-
 				if ( 'v1' == gglcptch_version ) {
 					gglcptch_data['recaptcha_challenge_field'] = form.find( '#recaptcha_challenge_field' ).val();
 					gglcptch_data['recaptcha_response_field']  = form.find( '#recaptcha_response_field' ).val();
 				}
+
 				if ( 'v2' == gglcptch_version || 'invisible' == gglcptch_version ) {
 					gglcptch_data['g-recaptcha-response'] = form.find( '.g-recaptcha-response' ).val();
 				}
@@ -186,10 +186,10 @@
 										show_all_a.html( BP_DTheme.show_x_comments.replace( '%d', new_count ) );
 									}
 								}
-
 								if ( 'v1' == gglcptch_version ) {
 									$( '#recaptcha_reload' ).click();
 								}
+
 								if ( 'v2' == gglcptch_version || 'invisible' == gglcptch_version ) {
 									var index = form.find( '.gglcptch_recaptcha' ).data( 'gglcptch_index' );
 									grecaptcha.reset( index );

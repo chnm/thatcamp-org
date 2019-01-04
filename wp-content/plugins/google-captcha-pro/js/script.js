@@ -82,7 +82,7 @@
 			 */
 			$( 'form' ).each( function() {
 				if ( $( this ).contents().find( 'iframe[title="recaptcha widget"]' ).length > 1 && ! $( this ).children( '.gglcptch_dublicate_error' ).length ) {
-					$( this ).prepend( '<div class="gglcptch_dublicate_error error" style="color: red;">'+ gglcptch.options.error + '</div><br />\n' );
+					$( this ).prepend( '<div class="gglcptch_dublicate_error error" style="color: red;">' + gglcptch.options.error + '</div><br />\n' );
 				}
 			} );
 		}
@@ -100,11 +100,12 @@
 			if ( typeof events != 'undefined' ) {
 				var storedEvents = {};
 				$.extend( true, storedEvents, events );
-				target.off();
+				delete events.submit;
+				target.off(events);
 				target.data( 'storedEvents', storedEvents );
 			}
 			/* storing and removing onclick action */
-			if ( 'undefined' != typeof target.attr( 'onclick') ) {
+			if ( 'undefined' != typeof target.attr( 'onclick' ) ) {
 				target.attr( 'gglcptch-onclick', target.attr( 'onclick') );
 				target.removeAttr( 'onclick' );
 			}
@@ -160,8 +161,10 @@
 		}
 
 		if ( 'v2' == gglcptch_version ) {
-			if ( gglcptch.options.size == 'normal' ) {
-				if ( $( '#' + container ).parent().width() <= 300 ) {
+			if ( 'normal' == gglcptch.options.size ) {
+				if ( $( '#' + container ).parent().width() <= 300 && $( '#' + container ).parent().width() != 0 ||
+				     /* This check is used for WP Foro Add Topic form */
+				     $( '#' + container ).parent().is(':hidden') && $( window ).width() < 400 ) {
 					var size = 'compact';
 				} else {
 					var size = 'normal';
@@ -295,31 +298,5 @@
 			return id;
 		}
 	}
-
-	if ( gglcptch.options.version == 'v2' && gglcptch.options.size == 'normal' ) {
-		var width = $( window ).width();
-		$( window ).on( 'resize', function( ) {
-			if( $( window ).width() != width ) {
-				width = $( window ).width();
-				if ( typeof grecaptcha != "undefined" ) {
-					$( '.gglcptch_recaptcha' ).html( '' );
-					$( 'script[src^="https://www.google.com/recaptcha/api.js"], script[src^="https://www.gstatic.com/recaptcha/api2"]' ).remove();
-					var src = "https://www.google.com/recaptcha/api.js";
-					$.getScript( {
-						url : src,
-						success : function() {
-							setTimeout( function() {
-								try {
-									gglcptch.prepare();
-								} catch ( e ) {
-									console.log( e );
-								}
-							}, 500 );
-						}
-					} );
-				}
-			}
-		} );
-	}
-
-} )( jQuery, gglcptch );
+}
+)( jQuery, gglcptch );

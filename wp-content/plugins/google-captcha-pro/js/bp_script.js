@@ -109,11 +109,11 @@
 					'form_id': form_id[2],
 					'content': content.val()
 				};
-
 				if ( 'v1' == gglcptch_version ) {
 					ajaxdata['recaptcha_challenge_field'] = form.find( '#recaptcha_challenge_field' ).val();
 					ajaxdata['recaptcha_response_field']  = form.find( '#recaptcha_response_field' ).val();
 				}
+
 				if ( 'v2' == gglcptch_version || 'invisible' == gglcptch_version ) {
 					ajaxdata['g-recaptcha-response'] = form.find( '.g-recaptcha-response' ).val();
 				}
@@ -162,10 +162,10 @@
 							show_all_a.html( BP_DTheme.show_x_comments.replace( '%d', new_count ) );
 						}
 					}
-
 					if ( 'v1' == gglcptch_version ) {
 						$( '#recaptcha_reload' ).click();
 					}
+
 					if ( 'v2' == gglcptch_version || 'invisible' == gglcptch_version ) {
 						var index = form.find( '.gglcptch_recaptcha' ).data( 'gglcptch_index' );
 						grecaptcha.reset( index );

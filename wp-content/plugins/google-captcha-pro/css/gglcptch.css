@@ -25,27 +25,16 @@
 	display: block;
 	margin: 12px 0;
 }
-.gglcptch_v1,
 .gglcptch_v2 {
 	min-width: 1px;
 	padding: 10px 0;
 	clear: both;
 }
+.gglcptch_recaptcha .grecaptcha-badge {
+	z-index: 100;
+}
 #bp-login-widget-form .gglcptch {
 	margin-top: 10px;
-}
-/* rtl fix recaptcha v1 */
-.rtl .gglcptch_v1 .recaptcha_r2_c1 {
-	background: url('https://www.google.com/recaptcha/api/img/red/sprite.png') -27px 0 no-repeat !important;
-}
-.rtl .gglcptch_v1 .recaptcha_r2_c2 {
-	background: url('https://www.google.com/recaptcha/api/img/red/sprite.png') -18px 0 no-repeat !important;
-}
-.rtl .gglcptch_v1 .recaptcha_r3_c1 {
-	background: url('https://www.google.com/recaptcha/api/img/red/sprite.png') -9px 0 no-repeat !important;
-}
-.rtl .gglcptch_v1 .recaptcha_r3_c3 {
-	background: url('https://www.google.com/recaptcha/api/img/red/sprite.png') 0 0 no-repeat !important;
 }
 /* woocommerce Checkout form */
 .woocommerce-billing-fields .gglcptch,

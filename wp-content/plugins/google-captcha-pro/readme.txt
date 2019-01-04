@@ -1,10 +1,10 @@
 === Google Captcha Pro (reCAPTCHA) by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
-Tags: anti-spam security, antispam, recaptcha, captcha, captha, Invisible reCaptcha, Invisible captcha, Invisibl reCaptcha, comment, cpatcha, google catcha, Invisible re captcha
+Tags: anti-spam security, antispam, recaptcha, captcha, captha, Invisible reCaptcha, Invisible captcha, Invisibl reCaptcha, comment, cpatcha, google catcha, Invisible re captcha, recaptcha version3
 Requires at least: 3.9
-Tested up to: 4.9.4
-Stable tag: 1.36
+Tested up to: 5.0.1
+Stable tag: 1.39
 License: Proprietary
 License URI: https://bestwebsoft.com/end-user-license-agreement/
 
@@ -12,7 +12,7 @@ Protect WordPress website forms from spam entries with Google reCAPTCHA.
 
 == Description ==
 
-Google Captcha (reCAPTCHA) plugin is an effective security solution that protects your WordPress website forms from spam entries while letting real people pass through with ease.  It can be used for login, registration, password recovery, comments, popular contact forms, and other.
+Google Captcha (reCAPTCHA) plugin is an effective security solution that protects your WordPress website forms from spam entries while letting real people pass through with ease.  It can be used for login, registration, password recovery, comments, popular contact forms, and other. reCAPTCHA Version 3, Version 2, Invisible are included.
 
 Users are required to confirm that they are not a robot before the form can be submitted. It's easy for people and hard for bots.
 
@@ -28,6 +28,7 @@ http://www.youtube.com/watch?v=qwHsW3IJ7gQ
 	* Reset password form
 	* Comments form
 	* [Contact Form](https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=56575444122cff9ab3ee3e640efb001a)
+	* Testimonials
 	* Custom form
 * Hide Google Captcha (reCAPTCHA) for the whitelisted IP addresses
 * Validity check of keys in admin panel
@@ -43,8 +44,8 @@ http://www.youtube.com/watch?v=qwHsW3IJ7gQ
 * Compatible with [Limit Attempts](https://bestwebsoft.com/products/wordpress/plugins/limit-attempts/?k=868b3be3ef88587238dd58785fe0f1d1)
 * Hide Google Captcha (reCAPTCHA) in your forms for certain user roles
 * Supports Google Captcha (reCAPTCHA):
-	* Version 1
 	* Version 2
+	* Version 3
 	* Invisible reCAPTCHA
 * Add custom code via plugin settings page
 * Compatible with latest WordPress version
@@ -261,14 +262,14 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 8. BuddyPress Comments form with Google Captcha (reCAPTCHA).
 9. BuddyPress "Create a Group" form with Google Captcha (reCAPTCHA).
 10. Subscriber form with Google Captcha (reCAPTCHA).
-11. The form with Google Captcha (reCAPTCHA) version 1.
-12. The form with Google Captcha (reCAPTCHA) dark theme.
-13. The form with Google Captcha (reCAPTCHA) compact size.
-14. WooCommerce "Login" and "Register" forms with Google Captcha (reCAPTCHA).
-15. WooCommerce "Lost Password" form with Google Captcha (reCAPTCHA).
-16. WooCommerce "Checkout Billing" form with Google Captcha (reCAPTCHA).
-17. Jetpack Contact Form with Google Captcha (reCAPTCHA).
-18. Fast Secure Contact Form with Google Captcha (reCAPTCHA).
+11. The form with Google Captcha (reCAPTCHA) dark theme.
+12. The form with Google Captcha (reCAPTCHA) compact size.
+13. WooCommerce "Login" and "Register" forms with Google Captcha (reCAPTCHA).
+14. WooCommerce "Lost Password" form with Google Captcha (reCAPTCHA).
+15. WooCommerce "Checkout Billing" form with Google Captcha (reCAPTCHA).
+16. Jetpack Contact Form with Google Captcha (reCAPTCHA).
+17. Fast Secure Contact Form with Google Captcha (reCAPTCHA).
+18. MailChimp for WordPress with Google Captcha (reCAPTCHA).
 19. bbPress New Topic form with Google Captcha (reCAPTCHA).
 20. bbPress Reply form form with Google Captcha (reCAPTCHA).
 21. Forums - wpForo Login form with Google Captcha (reCAPTCHA).
@@ -278,8 +279,21 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 25. Google Captcha Pro (reCAPTCHA) Settings page.
 26. Google Captcha Pro (reCAPTCHA) Settings page for Network.
 27. Google Captcha Pro (reCAPTCHA) Whitelist page.
+28. Testimonials form with Google Captcha (reCAPTCHA).
+
 
 == Changelog ==
+
+= V1.39 - 20.12.2018 =
+* Update : All functionality was updated for WordPress 5.0.1.
+
+= V1.38 - 26.11.2018 =
+* NEW : Google Captcha (reCAPTCHA) Version 3 has been added.
+
+= V1.37 - 07.08.2018 =
+* NEW : The compatibility with Testimonials by BestWebSoft has been added.
+* Update : The Czech language file has been updated.
+* Bugfix : The bug related to WooCommerce Checkout form has been fixed.
 
 = V1.36 - 19.03.2018 =
 * Bugfix : The bug related to BuddyPress registration form has been fixed.
@@ -371,6 +385,17 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : The Google Captcha Pro (reCAPTCHA) by BestWebSoft plugin is ready for use.
 
 == Upgrade Notice ==
+
+= V1.39 =
+* The compatibility with new WordPress version updated.
+
+= V1.38 =
+* New features added.
+
+= V1.37 =
+* New features added.
+* Languages updated.
+* Bugs fixed.
 
 = V1.36 =
 * Bugs fixed.

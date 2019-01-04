@@ -19,14 +19,23 @@
 			$( 'input[name="gglcptch_network_apply"]' ).change( function() { gglcptch_network_apply() });
 		}
 
+        $(	"#gglcptch_score_v3").change(function() {
+            var score;
+            score = $(this).val();
+            $("#gglcptch_score_out_v3").text(score);
+        })
+            .trigger('change');
+
 		$( 'input[name="gglcptch_recaptcha_version"]' ).change( function() {
 			var versions =  $( 'input[name="gglcptch_recaptcha_version"]' );
 			versions.each( function() {
-				if ( $( this ).is( ':checked' ) ) {
-					$( '.gglcptch_theme_' + $( this ).val() ).show();
-				} else {
-					$( '.gglcptch_theme_' + $( this ).val() ).hide();
-				}
+                if ( $( this ).is( ':checked' ) ) {
+                    $( '.gglcptch_theme_' + $( this ).val() ).show();
+                    $( '.gglcptch_score_' + $( this ).val() ).show();
+                } else {
+                    $( '.gglcptch_theme_' + $( this ).val() ).hide();
+                    $( '.gglcptch_score_' + $( this ).val() ).hide();
+                }
 			} );
 		} ).trigger( 'change' );
 
@@ -120,7 +129,7 @@
 
 		$( '.gglcptch-test-results' ).remove();
 		$( '#gglcptch-test-block' ).load( $( this ).prop( 'href' ), function() {
-			$( '.gglcptch_v1, .gglcptch_v2, .gglcptch_invisible' ).each( function() {
+			$( ' .gglcptch_v1, .gglcptch_v2, .gglcptch_invisible' ).each( function() {
 				var container = $( this ).find( '.gglcptch_recaptcha' ).attr( 'id' );
 				if ( $( this ).is( ':visible' ) ) {
 					gglcptch.display( container );
@@ -133,11 +142,18 @@
 		} );
 
 		e.stopPropagation();
-		$( '#gglcptch-test-keys' ).hide();
+        $( '#gglcptch-test-keys' ).hide();
+        setTimeout( function(){
+        	if( $( '#gglcptch_test_keys_verification' ).length > 0 ) {
+        		$( '#gglcptch_test_keys_verification' ).removeAttr('disabled');
+        	}
+		}, 2000 );
+
 		return false;
 	} );
 
 	$( document ).on( 'click', '#gglcptch_test_keys_verification', function( e ) {
+
 		e.preventDefault();
 		$.ajax( {
 			async   : false,
@@ -174,7 +190,7 @@
 
 		e.stopPropagation();
 		return false;
-	} );
+	});
 } )( jQuery );
 
 /**
