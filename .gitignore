@@ -40,6 +40,7 @@ wp-content/debug.log
 *.log
 robots.txt
 /docs
+/wp-content/mu-plugins/domain_mapping.php
 /wp-content/plugins/si-captcha-for-wordpress/captcha/cache/*
 /wp-content/plugins/multisite-maintenance-mode/*
 /wp-content/upgrade/*
